@@ -1,0 +1,542 @@
+[
+  {
+    "paper": "dc8435b7",
+    "ref": "2449",
+    "context": null,
+    "question": "If \\(y=e^{m\\sin^{-1}x}\\) and \\((1-x^2)\\left(\\dfrac{dy}{dx}\\right)^2=Ay^2\\), then \\(A=\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(m\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(-m\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(m^2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-m^2\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "dy/dx = m·y/sqrt(1-x^2), so (1-x^2)(y')^2 = m^2 y^2; sympy simplify of (1-x^2)(y')^2/y^2 returned exactly m**2."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2467",
+    "context": null,
+    "question": "If \\(x=ct\\) and \\(y=\\dfrac{c}{t}\\), find \\(\\dfrac{dy}{dx}\\) at \\(t=2\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(4\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{1}{4}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-\\dfrac{1}{4}\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "dy/dx = (dy/dt)/(dx/dt) = (-c/t^2)/c = -1/t^2; at t=2 this is -1/4 (sympy confirmed -1/4)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2478",
+    "context": null,
+    "question": "Let \\(f(x)=\\sin x\\), \\(g(x)=x^2\\) and \\(h(x)=\\log_e x\\). If \\(G(x)=h\\circ g\\circ f(x)\\), then \\(G''(x)\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2\\,\\mathrm{cosec}^2x\\cot x\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(-2\\,\\mathrm{cosec}^2x\\cot x\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2\\,\\mathrm{cosec}^2x\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-2\\,\\mathrm{cosec}^2x\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "G(x)=log(sin^2 x)=2 log|sin x|, G'=2cot x, G''=-2cosec^2 x; sympy: diff(G,x,2)+2/sin(x)**2 = 0."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2484",
+    "context": null,
+    "question": "If \\(f(x)\\) is a function such that \\(f''(x)+f(x)=0\\) and \\(g(x)=[f(x)]^2+[f'(x)]^2\\) and \\(g(3)=8\\), then \\(g(8)=\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(3\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(5\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(8\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "g'(x)=2f'(f+f'')=0 since f''+f=0, so g is constant; g(8)=g(3)=8."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2526",
+    "context": null,
+    "question": "The function \\(f(x) = x^2 + 2x - 5\\) is strictly increasing in the interval",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\([-1, \\infty)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\((-\\infty, -1)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\((-\\infty, -1]\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\((-1, \\infty)\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "medium",
+    "working": "f'(x)=2x+2>0 for x>-1, and f is still strictly increasing on the closed interval [-1,inf) (f(-1)=-6 < f(x) for all x>-1). Both A and D are true statements; A is the maximal interval, D is a proper subset, so A is the complete answer."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2540",
+    "context": null,
+    "question": "Which of the following functions is decreasing on \\(\\left(0, \\frac{\\pi}{2}\\right)\\)?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\sin 2x\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\cos 3x\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\tan x\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\cos 2x\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Numeric scan on (0,pi/2): only cos2x has strictly negative slope throughout (2x in (0,pi)); sin2x and cos3x turn, tan x increases."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2608",
+    "context": null,
+    "question": "The slopes of the tangent and normal at \\((0, 1)\\) for the curve \\(y = \\sin x + e^x\\) are respectively",
+    "options": [
+      {
+        "label": "A",
+        "text": "1 and \\(-1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(-\\dfrac{1}{2}\\) and 2"
+      },
+      {
+        "label": "C",
+        "text": "2 and \\(-\\dfrac{1}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-1\\) and 1"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "y'=cos x + e^x = 1+1 = 2 at x=0 (point (0,1) is on the curve); tangent slope 2, normal slope -1/2."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2666",
+    "context": null,
+    "question": "\\(27^{\\cos 2x} \\cdot 81^{\\sin 2x}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{1}{243}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{1}{27}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(-5\\)"
+      },
+      {
+        "label": "D",
+        "text": "1/5"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "medium",
+    "working": "27^cos2x·81^sin2x = 3^(3cos2x+4sin2x); exponent range is [-5,5] so the expression ranges over [3^-5,3^5]; numeric scan gives min 0.004115 = 1/243. The stem is truncated (evidently 'the minimum value of'), but 1/243 is the only value in the options that the expression attains as an extremum."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2693",
+    "context": null,
+    "question": "\\(\\displaystyle\\int \\frac{\\cos 2x - \\cos 2\\theta}{\\cos x - \\cos \\theta}\\,dx\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2(\\sin x + x\\cos\\theta) + C\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2(\\sin x - x\\cos\\theta) + C\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2(\\sin x + 2x\\cos\\theta) + C\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2(\\sin x - 2x\\cos\\theta) + C\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "(cos2x-cos2θ)/(cosx-cosθ) = 2(cos^2 x - cos^2 θ)/(cosx-cosθ) = 2(cos x + cos θ); verified numerically at three (x,θ) pairs. Integral = 2(sin x + x cos θ)+C, and d/dx of that matched the integrand to 1e-10."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2711",
+    "context": null,
+    "question": "\\(\\displaystyle\\int (1 + x - x^{-1})e^{x + x^{-1}}\\,dx\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\((x + 1)e^{x + x^{-1}} + C\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\((x - 1)e^{x + x^{-1}} + C\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(xe^{x + x^{-1}} + C\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(xe^{x - x^{-1}} + C\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "d/dx[x·e^(x+1/x)] = e^(x+1/x)(1 + x - 1/x); sympy gave diff(x*exp(x+1/x)) - (1+x-1/x)exp(x+1/x) = 0 exactly."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2753",
+    "context": null,
+    "question": "\\(\\int_{-1}^{0}\\dfrac{dx}{x^2+x+2}\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{\\pi}{4}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{4}{\\sqrt{7}}\\tan^{-1}\\left(\\dfrac{1}{\\sqrt{7}}\\right)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\pi\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(0\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "x^2+x+2=(x+1/2)^2+7/4, integral = (2/sqrt7)[arctan((2x+1)/sqrt7)]_-1^0 = (4/sqrt7)arctan(1/sqrt7); sympy value 0.5463357 matches option B numerically (pi/4=0.7854 does not)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2797",
+    "context": null,
+    "question": "If \\(I_n=\\int_{0}^{\\pi/4}\\tan^n x\\,dx\\), then \\(\\dfrac{1}{I_3+I_5}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{1}{4}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{1}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{1}{8}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(4\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "I3+I5 = ∫0^{π/4} tan^3 x sec^2 x dx = [tan^4 x/4] = 1/4; sympy confirmed I3+I5=1/4, so 1/(I3+I5)=4."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2821",
+    "context": null,
+    "question": "The value of \\(\\int_{0}^{\\pi/2}\\dfrac{dx}{1+\\tan x}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{\\pi}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{\\pi}{4}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{\\pi}{8}\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "King's-property pairing of 1/(1+tan x) with 1/(1+cot x) sums to 1 over (0,π/2), giving half of π/2; sympy returned pi/4 directly."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2854",
+    "context": null,
+    "question": "\\(\\displaystyle\\int_{-1}^{1} \\sin^3 x\\cos^4 x\\,dx\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(3\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "sin^3 x cos^4 x is an odd function and the limits are symmetric, so the integral is 0; sympy returned 0."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2890",
+    "context": null,
+    "question": "The set \\(\\{(x, y) : |x| + |y| = 1\\}\\) in the \\(xy\\) plane represents",
+    "options": [
+      {
+        "label": "A",
+        "text": "a square"
+      },
+      {
+        "label": "B",
+        "text": "a circle"
+      },
+      {
+        "label": "C",
+        "text": "an ellipse"
+      },
+      {
+        "label": "D",
+        "text": "a rectangle which is not a square"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "|x|+|y|=1 is the four segments joining (±1,0),(0,±1): a square of side sqrt2 rotated 45°, with all sides equal and adjacent slopes ±1 (perpendicular)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2929",
+    "context": null,
+    "question": "The area bounded by the parabola \\(y^2 = 8x\\) and its latus rectum in sq. units is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{16}{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{32}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{8}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{64}{3}\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "y^2=8x has 4a=8, latus rectum x=2; area = 2∫0^2 sqrt(8x) dx = 32/3 (sympy exact 32/3), matching the standard 8a^2/3 = 8·4/3."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2956",
+    "context": null,
+    "question": "The product of the degree and order of the differential equation \\(\\left(\\frac{d^2y}{dx^2}\\right)^2 - \\left(\\frac{dy}{dx}\\right)^3 = y^3\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "4"
+      },
+      {
+        "label": "B",
+        "text": "6"
+      },
+      {
+        "label": "C",
+        "text": "2"
+      },
+      {
+        "label": "D",
+        "text": "3"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "Highest derivative is d2y/dx2 so order 2; it appears to power 2 and the equation is polynomial in derivatives so degree 2; product = 4."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2957",
+    "context": null,
+    "question": "The differential equation \\(\\frac{dy}{dx} = \\frac{1}{ax+by+c}\\), where \\(a, b, c\\) are all non-zero real numbers, is",
+    "options": [
+      {
+        "label": "A",
+        "text": "linear in \\(y\\)"
+      },
+      {
+        "label": "B",
+        "text": "linear in \\(x\\)"
+      },
+      {
+        "label": "C",
+        "text": "linear in both \\(x\\) and \\(y\\)"
+      },
+      {
+        "label": "D",
+        "text": "homogeneous equation"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "Inverting: dx/dy = ax+by+c, i.e. dx/dy - a·x = by + c, which is first-order linear in x (treating x as the dependent variable). It is not linear in y (y sits inside the reciprocal) and is not homogeneous because of c."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2991",
+    "context": null,
+    "question": "The order of the differential equation of all parabolas whose axis of symmetry along \\(x\\)-axis is",
+    "options": [
+      {
+        "label": "A",
+        "text": "2"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "1"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "Parabolas with axis parallel to the x-axis: (y-k)^2 = 4a(x-h), three independent arbitrary constants a,h,k, so eliminating them needs three differentiations -> order 3."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "3055",
+    "context": null,
+    "question": "The particular solution of \\(\\dfrac{y}{x}\\dfrac{dy}{dx} = \\dfrac{1 + y^2}{1 + x^2}\\), when \\(x = 1\\), \\(y = 2\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(5(1 + y^2) = 2(1 + x^2)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2(1 + y^2) = 5(1 + x^2)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(5(1 + y^2) = (1 + x^2)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\((1 + y^2) = 2(1 + x^2)\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "Separating: y dy/(1+y^2) = x dx/(1+x^2) gives 1+y^2 = k(1+x^2) (sympy dsolve: f(x)^2 = C1(x^2+1)-1). At (1,2): 5 = 2k so k=5/2, i.e. 2(1+y^2)=5(1+x^2); checked 2·5 = 5·2."
+  }
+]

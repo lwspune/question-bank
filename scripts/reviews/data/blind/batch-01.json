@@ -1,0 +1,542 @@
+[
+  {
+    "paper": "bbf7d08b",
+    "ref": "26",
+    "context": null,
+    "question": "What is the interior angle of a regular octagon of side length 2 cm?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\pi}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{3\\pi}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{3\\pi}{5}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{3\\pi}{8}\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "Interior angle of a regular n-gon = (n-2)*180/n; for n=8 that is 6*180/8 = 135 deg = 3*pi/4. Side length 2 cm is irrelevant."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "36",
+    "context": "Consider the following for the next two (02) items that follow: The perimeter of a triangle \\(ABC\\) is 6 times the AM of sine of angles of the triangle. Further \\(BC=\\sqrt{3}\\) and \\(CA=1\\).",
+    "question": "Consider the following statements: 1. \\(ABC\\) is right angled triangle  2. The angles of the triangle are in AP  Which of the statements given above is/are correct?",
+    "options": [
+      {
+        "label": "A",
+        "text": "1 only"
+      },
+      {
+        "label": "B",
+        "text": "2 only"
+      },
+      {
+        "label": "C",
+        "text": "Both 1 and 2"
+      },
+      {
+        "label": "D",
+        "text": "Neither 1 nor 2"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "low",
+    "working": "Perimeter = 6*(sum sin)/3 = 2*sum sin, and a+b+c = 2R*sum sin, so R=1; then sinA = a/2 = sqrt(3)/2 and sinB = b/2 = 1/2. The intended branch A=60,B=30 gives C=90 (right angled) and 30,60,90 in AP, so both hold -> C. AMBIGUOUS: the SSA branch A=120,B=30,C=30 also satisfies every stated condition (perimeter 3.7321 = 6*AM 3.7321, verified numerically) and is neither right-angled nor AP, so strictly the data do not determine a unique triangle."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "47",
+    "context": null,
+    "question": "How many values of \\(\\theta\\), where \\(-\\pi<\\theta<\\pi\\), satisfy both the equations \\(\\cot\\theta=-\\sqrt{3}\\) and \\(\\csc\\theta=-2\\) simultaneously?",
+    "options": [
+      {
+        "label": "A",
+        "text": "4"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "1"
+      },
+      {
+        "label": "D",
+        "text": "None"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "cosec(theta) = -2 gives sin = -1/2; cot = -sqrt(3) then forces cos = -sqrt(3)*sin = +sqrt(3)/2. sin<0, cos>0 pins theta = -pi/6 uniquely in (-pi,pi), so exactly 1 value."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "87",
+    "context": null,
+    "question": "If \\(\\sin 2\\theta = \\cos 3\\theta\\), where \\(0 < \\theta < \\frac{\\pi}{2}\\), then what is \\(\\sin\\theta\\) equal to?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\sqrt{5} + 1}{4}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\sqrt{5} - 1}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\sqrt{5} + 1}{16}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\sqrt{5} - 1}{16}\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "cos3t = sin(pi/2-3t), so 2t = pi/2-3t giving t = pi/10 (the other branch t = -pi/2 is out of range). sin(pi/10) = 0.30901699 = (sqrt5-1)/4 = 0.30901699, and sin(2t)=cos(3t)=0.58778525 checked numerically."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1182",
+    "context": null,
+    "question": "The number of solutions of the equation \\(|\\cot x| = \\cot x + \\frac{1}{\\sin x}\\), \\((0 \\le x \\le 2\\pi)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "1"
+      },
+      {
+        "label": "C",
+        "text": "2"
+      },
+      {
+        "label": "D",
+        "text": "3"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "cot x >= 0 forces 1/sin x = 0, impossible; cot x < 0 gives -2cos x = 1, i.e. cos x = -1/2, so x = 2pi/3 or 4pi/3. Only x = 2pi/3 has cot x < 0 (checked: LHS = RHS = 0.57735 there, while at 4pi/3 LHS 0.57735 vs RHS -0.57735). Exactly 1 solution."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1188",
+    "context": null,
+    "question": "The number of real solutions of the equation \\((\\sin x - x)(\\cos x - x^2) = 0\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "sin x = x has the single root x = 0 (numeric sign-scan over [-3,3] found only x~0); cos x = x^2 has two roots, x = +/-0.824135. x=0 is not a root of the second factor, so the roots are distinct: 3 in total."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1191",
+    "context": null,
+    "question": "For \\(x \\in (0, \\pi)\\), the equation \\(\\sin x + 2\\sin 2x - \\sin 3x = 3\\) has",
+    "options": [
+      {
+        "label": "A",
+        "text": "infinitely many solutions"
+      },
+      {
+        "label": "B",
+        "text": "three solutions"
+      },
+      {
+        "label": "C",
+        "text": "one solution"
+      },
+      {
+        "label": "D",
+        "text": "no solution"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "sin x - sin3x = -2cos2x sin x, so f(x) = 2 sin x (2cos x - cos 2x). A 2,000,000-point scan of (0,pi) gives max f = 2.72600 at x = 1.20993, which is < 3, so the equation has no solution."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1199",
+    "context": null,
+    "question": "If \\(\\frac{\\sin x}{\\cos x} \\times \\frac{\\sec x}{\\operatorname{cosec} x} \\times \\frac{\\tan x}{\\cot x} = 9\\), where \\(x \\in \\left(0, \\frac{\\pi}{2}\\right)\\), then the value of x is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\pi}{4}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\pi}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\pi}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\pi\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "sec x/cosec x = tan x and tan x/cot x = tan^2 x, so the product is tan^4 x = 9 -> tan^2 x = 3 -> tan x = sqrt3 (positive on (0,pi/2)) -> x = pi/3. Numeric check at pi/3 gives 9.0."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1202",
+    "context": null,
+    "question": "Number of solutions of the equation \\(\\tan x + \\sec x = 2\\cos x\\), \\(x \\in [0, \\pi]\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "1"
+      },
+      {
+        "label": "C",
+        "text": "2"
+      },
+      {
+        "label": "D",
+        "text": "3"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "(1+sin x)/cos x = 2cos x gives 2sin^2 x + sin x - 1 = 0, i.e. sin x = 1/2 or sin x = -1; on [0,pi] only sin x = 1/2 survives, giving x = pi/6 and 5pi/6. Both verified: LHS = RHS = 1.732051 at pi/6 and -1.732051 at 5pi/6, so 2 solutions."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1209",
+    "context": null,
+    "question": "The equation \\(\\tan\\theta + \\tan 2\\theta + \\tan\\theta \\tan 2\\theta = 1\\), \\(\\theta =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{n\\pi}{2} + \\frac{\\pi}{6}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{n\\pi}{6} + 6\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{n\\pi}{3} + \\frac{\\pi}{12}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{n\\pi}{2} + \\frac{\\pi}{12}\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "The relation is tan t + tan2t = 1 - tan t tan 2t, i.e. tan 3t = 1, so 3theta = n*pi + pi/4 and theta = n*pi/3 + pi/12. Numeric check: LHS = 1.0 at pi/12 and 0.99999999 at pi/3+pi/12, whereas option A's pi/6 gives 3.3094."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1210",
+    "context": null,
+    "question": "The number of solutions of \\(2\\sin x + \\cos x = 3\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "infinite"
+      },
+      {
+        "label": "D",
+        "text": "no solution"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Amplitude of 2 sin x + cos x is sqrt(2^2+1^2) = 2.2360680 < 3, so the equation is never satisfiable: no solution."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1213",
+    "context": null,
+    "question": "The number of solutions of the equation \\(\\sin^4\\theta - 2\\sin^2\\theta - 1 = 0\\) which lie between 0 and \\(2\\pi\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "1"
+      },
+      {
+        "label": "C",
+        "text": "2"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "Put u = sin^2 theta: u^2 - 2u - 1 = 0 gives u = 1 +/- sqrt2, i.e. 2.4142 or -0.4142, both outside [0,1] (sympy confirms the only real t = sin theta roots are +/-1.5538, |t|>1). Hence 0 solutions."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1217",
+    "context": null,
+    "question": "The general solution of \\(\\tan\\left(\\frac{\\pi}{2}\\sin\\theta\\right) = \\cot\\left(\\frac{\\pi}{2}\\cos\\theta\\right)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\theta = 2r\\pi + \\frac{\\pi}{2}, r \\in Z\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\theta = 2r\\pi, r \\in Z\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\theta = 2r\\pi + \\frac{\\pi}{2}\\) and \\(\\theta = 2r\\pi, r \\in Z\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of the above"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "medium",
+    "working": "tan A = cot B means A+B = n*pi + pi/2, so sin theta + cos theta = 2n+1, i.e. = 1 or -1 (|sin+cos| <= sqrt2). The =-1 branch gives theta = 2r*pi + pi (verified: tan(pi/2*sin pi) = tan 0 = 0 and cot(pi/2*cos pi) = cot(-pi/2) = 0, so it IS a genuine solution) and theta = 2r*pi + pi/2 is actually inadmissible since tan(pi/2) is undefined. So the true solution set is theta = r*pi, which option C does not contain; C is both incomplete and includes an invalid family, so 'None of the above'. NOTE: a textbook key of C is likely, arrived at by dropping the 2n+1 = -1 branch."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1222",
+    "context": null,
+    "question": "Which one of the following is possible?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\tan\\theta = 45\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\cos\\theta = \\frac{7}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\sin\\theta = \\frac{a^2 + b^2}{a^2 - b^2}, (a \\ne b)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\sec\\theta = \\frac{4}{5}\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "tan takes every real value so tan theta = 45 is attainable; cos theta = 7/3 > 1, sec theta = 4/5 < 1 and (a^2+b^2)/(a^2-b^2) has modulus > 1 for a,b both nonzero, so B, C, D are impossible. (Degenerate b=0 would make C equal 1, but that is clearly not intended.)"
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1223",
+    "context": null,
+    "question": "The solution of the equation \\([\\sin x + \\cos x]^{1 + \\sin 2x} = 2\\), \\(-\\frac{\\pi}{2} \\le x \\le \\frac{\\pi}{2}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\pi/2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\pi\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\pi/4\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(3\\pi/4\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "1 + sin2x = (sin x + cos x)^2, so with t = sin x + cos x the equation is t^(t^2) = 2, satisfied by t = sqrt2 (since (sqrt2)^2 = 2). sin x + cos x = sqrt2 gives x = pi/4, which lies in [-pi/2, pi/2]; numeric check t = 1.414214 and t^(1+sin2x) = 2.000000."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1225",
+    "context": null,
+    "question": "The equation \\(\\sqrt{3}\\sin x + \\cos x = 4\\) has",
+    "options": [
+      {
+        "label": "A",
+        "text": "only one solution"
+      },
+      {
+        "label": "B",
+        "text": "two solutions"
+      },
+      {
+        "label": "C",
+        "text": "infinitely many solutions"
+      },
+      {
+        "label": "D",
+        "text": "no solution"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Amplitude of sqrt3 sin x + cos x is sqrt(3+1) = 2 < 4, so the equation has no solution."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1228",
+    "context": null,
+    "question": "The number of solutions of \\(\\sin x = \\sin 2x\\) between \\(-\\frac{\\pi}{2}\\) and \\(\\frac{\\pi}{2}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "3"
+      },
+      {
+        "label": "B",
+        "text": "4"
+      },
+      {
+        "label": "C",
+        "text": "1"
+      },
+      {
+        "label": "D",
+        "text": "0"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "sin x = 2 sin x cos x gives sin x (1 - 2cos x) = 0, so x = 0 or cos x = 1/2 -> x = +/-pi/3, all three inside (-pi/2, pi/2). Numeric sign-scan on [-pi/2, pi/2] found crossings at -1.047197, 0, 1.047197: 3 solutions."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1234",
+    "context": null,
+    "question": "If \\(\\tan\\left(\\frac{\\alpha\\pi}{4}\\right) = \\cot\\left(\\frac{\\beta\\pi}{4}\\right)\\) then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\alpha + \\beta = 0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\alpha + \\beta = 2n + 1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\alpha - \\beta = 2(2n + 1)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\alpha + \\beta = 2(2n + 1), n\\) is an integer"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "tan(alpha*pi/4) = cot(beta*pi/4) implies alpha*pi/4 + beta*pi/4 = n*pi + pi/2, so alpha + beta = 4n + 2 = 2(2n+1)."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1239",
+    "context": null,
+    "question": "The most general value of \\(\\theta\\) satisfying the equations \\(\\sin\\theta = \\sin\\alpha\\) and \\(\\cos\\theta = \\cos\\alpha\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2n\\pi + \\alpha\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2n\\pi - \\alpha\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(n\\pi + \\alpha\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(n\\pi - \\alpha\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "sin theta = sin alpha gives theta = n*pi + (-1)^n alpha and cos theta = cos alpha gives theta = 2n*pi +/- alpha; the intersection (both sine and cosine matching, i.e. same point on the unit circle) is theta = 2n*pi + alpha."
+  },
+  {
+    "paper": "bbf7d08b",
+    "ref": "1241",
+    "context": null,
+    "question": "The angles of a triangle are in the ratio \\(4 : 1 : 1\\), then the ratio of the longest side and perimeter is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\sqrt{3} : (2 + \\sqrt{3})\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1 : 6\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(1 : (2 + \\sqrt{3})\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2 : 6\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "Angles are 120, 30, 30; by the sine rule the sides are in ratio sin120 : sin30 : sin30 = sqrt3 : 1 : 1, so longest : perimeter = sqrt3 : (2 + sqrt3). Numeric check: sin120/(sin120+2 sin30) = 0.4641016 = sqrt3/(2+sqrt3) = 0.4641016 (option C would be 0.2679, option B 0.1667)."
+  }
+]

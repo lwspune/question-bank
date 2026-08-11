@@ -1,0 +1,542 @@
+[
+  {
+    "paper": "dc8435b7",
+    "ref": "403",
+    "context": null,
+    "question": "The sum of the coefficients in the expansion of \\((1-3x+3x^{2})^{3148}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "8"
+      },
+      {
+        "label": "B",
+        "text": "7"
+      },
+      {
+        "label": "C",
+        "text": "1"
+      },
+      {
+        "label": "D",
+        "text": "\\(-1\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Sum of coefficients = value at x=1: (1-3+3)^3148 = 1^3148 = 1. Verified by expanding the exponent-5 analogue in sympy and substituting x=1 (result 1)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "410",
+    "context": null,
+    "question": "\\(3 + 5 + 7 + \\ldots\\) to \\(n\\) terms is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(n^2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(n(n-2)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(n(n+2)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\((n+1)^2\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "AP with a=3, d=2: S = n/2[6+2(n-1)] = n(n+2). Sympy summation of 3+2(k-1) for k=1..n returns n(n+2); n=3 gives 3+5+7=15=3*5."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "412",
+    "context": null,
+    "question": "If \\(a + 1\\), \\(2a + 1\\), \\(4a - 1\\) are in arithmetic progression, then the value of \\(a\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "2(2a+1) = (a+1)+(4a-1) gives 4a+2 = 5a, so a=2. Check: terms 3, 5, 7 — common difference 2."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "434",
+    "context": null,
+    "question": "Let \\(S_n\\) denote the sum of first \\(n\\) terms of an A.P. and \\(S_{2n} = 3 S_n\\). If \\(S_{3n} = k\\,S_n\\), then the value of \\(k\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "4"
+      },
+      {
+        "label": "B",
+        "text": "5"
+      },
+      {
+        "label": "C",
+        "text": "6"
+      },
+      {
+        "label": "D",
+        "text": "7"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "S_2n = 3S_n forces 2a = (n+1)d; then S_n = n^2 d and S_3n = 6n^2 d, so k = 6. Sympy solved a = d(n+1)/2 and simplified S_3n/S_n to exactly 6."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "463",
+    "context": null,
+    "question": "Two numbers \\(x\\) and \\(y\\) have arithmetic mean 9 and geometric mean 4. Then \\(x\\) and \\(y\\) are the roots of",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(x^2 - 18x - 16 = 0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(x^2 - 18x + 16 = 0\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(x^2 + 18x - 16 = 0\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(x^2 + 18x + 16 = 0\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "x+y = 18 and xy = 16, so the monic quadratic is t^2 - 18t + 16 = 0. Sympy roots 9±sqrt(65) give AM = 9 and GM = 4 exactly."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "473",
+    "context": null,
+    "question": "The value of \\(\\left[(0.16)^{\\log_{2.5}\\left(\\frac{1}{3} + \\frac{1}{3^2} + \\frac{1}{3^3} + \\ldots\\,\\infty\\right)}\\right]^{1/2}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "\\(-1\\)"
+      },
+      {
+        "label": "C",
+        "text": "0"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "GP sum = (1/3)/(1-1/3) = 1/2; since 0.16 = 2.5^(-2), the bracket is (1/2)^(-2) = 4 and its square root is 2. Sympy numeric evaluation returns exactly 2.0, which matches no listed value, so 'None of these'."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "518",
+    "context": null,
+    "question": "If n is a non-negative integer and \\(A = \\begin{bmatrix} 1 & 0 \\\\ 1 & 1 \\end{bmatrix}\\), then \\(A^n =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\begin{bmatrix} 1 & 0 \\\\ n-1 & 1 \\end{bmatrix}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\begin{bmatrix} 1 & 0 \\\\ 1 & 1 \\end{bmatrix}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\begin{bmatrix} 1 & 0 \\\\ n & 1 \\end{bmatrix}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\begin{bmatrix} 1 & n \\\\ 0 & 1 \\end{bmatrix}\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "A = I + N with N nilpotent (N^2 = 0), so A^n = I + nN = [[1,0],[n,1]]. Sympy: A^5 = [[1,0],[5,1]]; also correct at n=0 (identity), unlike option A."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "537",
+    "context": null,
+    "question": "If \\(A = \\begin{bmatrix} 3 & x-1 \\\\ 2x+3 & x+2 \\end{bmatrix}\\) is a symmetric matrix, then the value of x is",
+    "options": [
+      {
+        "label": "A",
+        "text": "4"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "\\(-4\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-3\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Symmetry needs a12 = a21: x-1 = 2x+3, so x = -4. Check: both off-diagonal entries become -5."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "549",
+    "context": null,
+    "question": "If \\(\\begin{pmatrix} 1 & 2 & 4 \\\\ 1 & 3 & 5 \\\\ 1 & 4 & a \\end{pmatrix}\\) is singular, then the value of a is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(a = -6\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(a = 5\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(a = -5\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(a = 6\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Expanding gives det = a - 6, so singular when a = 6. Sympy solve of the symbolic determinant returns [6]."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "621",
+    "context": null,
+    "question": "If \\(\\omega \\ne 1\\) is a cube root of unity, then the value of \\(\\begin{vmatrix} 1+2\\omega^{100}+\\omega^{200} & \\omega^2 & 1 \\\\ \\omega & 1+\\omega^{100}+2\\omega^{200} & \\omega \\\\ \\omega & \\omega^2 & 2+\\omega^{100}+\\omega^{200} \\end{vmatrix}\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "1"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\omega\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\omega^2\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "w^100 = w, w^200 = w^2, and 1+w+w^2 = 0, so the diagonal entries reduce to w, w^2, 1 and the matrix becomes [[w,w^2,1],[w,w^2,w],[w,w^2,1]] — rows 1 and 3 identical, det = 0. Sympy with w = -1/2 + i*sqrt(3)/2 returns exactly 0."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "624",
+    "context": null,
+    "question": "The value of the determinant \\(\\begin{vmatrix} 1 & 1 & 1 \\\\ {}^{m}C_1 & {}^{m+1}C_1 & {}^{m+2}C_1 \\\\ {}^{m}C_2 & {}^{m+1}C_2 & {}^{m+2}C_2 \\end{vmatrix}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "\\(-1\\)"
+      },
+      {
+        "label": "C",
+        "text": "0"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "Column ops C3-C2, C2-C1 use Pascal's rule to give |1 0 0; m 1 1; mC2 m m+1| = (m+1) - m = 1. Sympy expansion of the symbolic determinant simplifies to exactly 1 for all m."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "626",
+    "context": null,
+    "question": "If \\(\\begin{vmatrix} x & y & z \\\\ -x & y & z \\\\ x & -y & z \\end{vmatrix} = kxyz\\), then \\(k = \\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "4"
+      },
+      {
+        "label": "D",
+        "text": "2"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Direct expansion: x(2yz) - y(-2xz) + z(0) = 4xyz. Sympy factors the determinant as 4*x*y*z, so k = 4."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "634",
+    "context": null,
+    "question": "If \\(A(x_1, y_1)\\), \\(B(x_2, y_2)\\) and \\(C(x_3, y_3)\\) are the vertices of an equilateral triangle whose each side is equal to \\(a\\), then \\(\\begin{vmatrix} x_1 & y_1 & 2 \\\\ x_2 & y_2 & 2 \\\\ x_3 & y_3 & 2 \\end{vmatrix}^2\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(3a^4\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(3a^2\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(3a^6\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "With a third column of 2 the determinant is 2x the standard one, i.e. 4*Area = 4*(sqrt(3)/4)a^2 = sqrt(3)a^2; squaring gives 3a^4. Sympy on vertices (0,0),(a,0),(a/2,a*sqrt(3)/2) returns det^2 = 3a^4 exactly."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "666",
+    "context": null,
+    "question": "If \\(A\\) is a non-singular matrix of order 3, then adj(adj \\(A\\)) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(A\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(A^{-1}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{1}{|A|} A\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(|A| A\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "adj(adj A) = |A|^(n-2) A; for n = 3 this is |A|A. Sympy on A = [[2,1,3],[0,4,1],[5,2,1]] gives adjugate(adjugate(A)) - det(A)*A = zero matrix."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "681",
+    "context": null,
+    "question": "The system of equations \\(x + 4y - 3z = 3\\), \\(x - y + 7z = 11\\), \\(2x + 8y - 6z = 7\\) have",
+    "options": [
+      {
+        "label": "A",
+        "text": "unique solution"
+      },
+      {
+        "label": "B",
+        "text": "infinitely many solutions"
+      },
+      {
+        "label": "C",
+        "text": "no solutions"
+      },
+      {
+        "label": "D",
+        "text": "only finite number of solutions"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Equation 3 is 2x equation 1 on the left but its RHS is 7, not 6 — a direct contradiction, so the system is inconsistent. Sympy linsolve on the augmented matrix returns EmptySet."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "688",
+    "context": null,
+    "question": "The system of homogeneous equations \\(tx + (t+1)y + (t-1)z = 0\\), \\((t+1)x + ty + (t+2)z = 0\\), \\((t-1)x + (t+2)y + tz = 0\\) has non-trivial solutions for",
+    "options": [
+      {
+        "label": "A",
+        "text": "exactly three real values of \\(t\\)"
+      },
+      {
+        "label": "B",
+        "text": "exactly two real values of \\(t\\)"
+      },
+      {
+        "label": "C",
+        "text": "exactly one real value of \\(t\\)"
+      },
+      {
+        "label": "D",
+        "text": "infinite number of values of \\(t\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "The cubic and quadratic terms of the coefficient determinant cancel: sympy factors det = -4(2t+1), which is linear, so det = 0 only at t = -1/2 — exactly one real value."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "720",
+    "context": null,
+    "question": "6 boys and 6 girls sit in a row at random. The probability that all the girls sit together is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{1}{432}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{12}{431}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{1}{132}\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Treat the 6 girls as one block: favourable = 7!*6!, total = 12!. Sympy: 5040*720/479001600 = 1/132 exactly."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "730",
+    "context": null,
+    "question": "The probability that A speaks the truth is \\(\\dfrac{3}{5}\\) and the probability that B speaks the truth is \\(\\dfrac{3}{4}\\). Find the probability that they contradict each other when asked to speak a fact.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{3}{20}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{4}{5}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{9}{20}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{7}{20}\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "P(contradict) = (3/5)(1/4) + (2/5)(3/4) = 3/20 + 6/20 = 9/20. Sympy rational arithmetic confirms 9/20."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "753",
+    "context": null,
+    "question": "Two events A and B have probabilities 0.3 and 0.4 respectively. The probability that both A and B occur simultaneously is 0.1. The probability that neither A nor B occur is",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.2"
+      },
+      {
+        "label": "B",
+        "text": "0.3"
+      },
+      {
+        "label": "C",
+        "text": "0.4"
+      },
+      {
+        "label": "D",
+        "text": "0.1"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "P(A∪B) = 0.3+0.4-0.1 = 0.6, so P(neither) = 1 - 0.6 = 0.4."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "757",
+    "context": null,
+    "question": "If \\(\\dfrac{1 + 3p}{3}\\), \\(\\dfrac{1 - p}{4}\\) and \\(\\dfrac{1 - 2p}{2}\\) are mutually exclusive events. Then, range of p is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{1}{3} \\le p \\le \\dfrac{1}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{1}{4} \\le p \\le \\dfrac{1}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{1}{2} \\le p \\le \\dfrac{2}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{1}{2} \\le p \\le \\dfrac{2}{5}\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "Sum of the three probabilities = (13-3p)/12 ≤ 1 gives p ≥ 1/3; each in [0,1] gives p ∈ [-1/3,2/3] ∩ [-3,1] ∩ [-1/2,1/2]. Sympy intersection of all constraints returns exactly Interval(1/3, 1/2)."
+  }
+]

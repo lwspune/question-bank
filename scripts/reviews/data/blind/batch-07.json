@@ -1,0 +1,542 @@
+[
+  {
+    "paper": "dc8435b7",
+    "ref": "1121",
+    "context": null,
+    "question": "The value of \\(\\left(\\frac{\\cos\\left(\\frac{\\pi}{2} + x\\right) + \\sin\\left(\\frac{\\pi}{2} + x\\right)}{\\cos\\left(\\frac{\\pi}{2} - x\\right) - \\sin\\left(\\frac{\\pi}{2} - x\\right)}\\right)^2\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1 - \\sin2x}{1 + \\sin2x}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1 + \\sin2x}{1 - \\sin2x}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Numerator = -sin x + cos x, denominator = sin x - cos x, so the ratio is exactly -1 and its square is 1. Sympy simplify returns 1 and numeric checks at x = 0.3, 1.1, 2.0 all give 1.000000."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1151",
+    "context": null,
+    "question": "The value of \\(\\left(1 + \\cos\\frac{\\pi}{6}\\right)\\left(1 + \\cos\\frac{\\pi}{3}\\right)\\left(1 + \\cos\\frac{2\\pi}{3}\\right)\\left(1 + \\cos\\frac{7\\pi}{6}\\right)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{3}{16}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{3}{8}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{3}{4}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{2}\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "Pair the supplementary cosines: (1+√3/2)(1-√3/2) = 1/4 and (1+1/2)(1-1/2) = 3/4, product 3/16. Sympy simplify of the full product returns exactly 3/16."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1155",
+    "context": null,
+    "question": "\\(\\sqrt{2 + \\sqrt{2 + 2\\cos4\\theta}}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\cos\\theta\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2\\cos\\theta\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\cos 2\\theta\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2\\cos2\\theta\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "2 + 2cos4θ = 4cos² 2θ so the inner root is 2cos2θ, then 2 + 2cos2θ = 4cos²θ giving 2cosθ. Numeric check at θ = 0.1/0.3/0.5 gives 1.99001/1.91067/1.75517 matching 2cosθ exactly (2cos2θ gives 1.96013/1.65067/1.08060)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1185",
+    "context": null,
+    "question": "The number of values of \\(\\theta \\in (-\\pi, \\pi)\\) satisfying \\(\\sin 5\\theta \\cos 3\\theta = \\sin 6\\theta \\cos 2\\theta\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "7"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Product-to-sum reduces both sides to (sin8θ + sin2θ)/2 = (sin8θ + sin4θ)/2, i.e. sin4θ = sin2θ ⇒ 2cos3θ sinθ = 0. A 2-million-point sign-change scan of (-π, π) found exactly 7 roots: θ/π = 0, ±1/6, ±1/2, ±5/6."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1231",
+    "context": null,
+    "question": "\\(2\\sin^2\\theta + \\sqrt{3}\\cos\\theta + 1 = 0\\). Then \\(\\theta =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\pi}{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\pi}{6}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{3\\pi}{6}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{5\\pi}{6}\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Substituting sin² = 1 - cos² gives 2cos²θ - √3 cosθ - 3 = 0, whose roots are cosθ = √3 (rejected) and cosθ = -√3/2. Sympy solveset on [0, 2π] returns {5π/6, 7π/6}; only 5π/6 is offered."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1251",
+    "context": null,
+    "question": "The angles of a triangle are in the ratio \\(1 : 2 : 3\\), then the corresponding sides are in the ratio",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(1 : \\sqrt{2} : \\sqrt{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1 : \\sqrt{3} : \\sqrt{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(1 : \\sqrt{2} : 3\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(1 : \\sqrt{3} : 2\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Angles are 30°, 60°, 90°; by the sine rule sides are proportional to sin30 : sin60 : sin90 = 1/2 : √3/2 : 1 = 1 : √3 : 2."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1274",
+    "context": null,
+    "question": "In any triangle \\(ABC\\), \\(c^2\\sin 2B + b^2\\sin 2C\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\Delta}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\Delta\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2\\Delta\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(4\\Delta\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Writing b = 2R sinB, c = 2R sinC gives 8R² sinB sinC sin(B+C) = 8R² sinA sinB sinC, while Δ = 2R² sinA sinB sinC, so the ratio is 4. Numeric check on four random triangles (A,B) = (0.7,0.9), (1.2,0.5), (0.4,1.9), (π/3,π/3) gave LHS/Δ = 4.000000 every time."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1287",
+    "context": null,
+    "question": "The period of \\(\\sin^4 x + \\cos^4 x\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{\\pi^4}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{\\pi^2}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\pi}{4}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\pi}{2}\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "sin⁴x + cos⁴x = 1 - ½ sin² 2x = 3/4 + (cos4x)/4, whose period is 2π/4 = π/2. Numeric shift test: max|f(t)-f(t+π/2)| = 7.8e-16 while max|f(t)-f(t+π/4)| = 0.5."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1294",
+    "context": null,
+    "question": "\\(\\sin(\\cot^{-1}x) = \\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{\\sqrt{2+x^2}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{-1}{\\sqrt{1+x^2}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{\\sqrt{1-x^2}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{\\sqrt{1+x^2}}\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "cot⁻¹x lies in (0, π) where sine is positive, and cotθ = x gives sinθ = 1/√(1+x²). Numeric check at x = -3, -0.5, 0.5, 3 matched 1/√(1+x²) to 15 digits, including the negative x values where option B would fail."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1358",
+    "context": null,
+    "question": "Find \\(\\cos^{-1}\\left(\\dfrac{4}{5}\\right) + \\tan^{-1}\\left(\\dfrac{3}{5}\\right)\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\tan^{-1}\\left(\\dfrac{7}{10}\\right)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\tan^{-1}\\left(\\dfrac{27}{11}\\right)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\sin^{-1}\\left(\\dfrac{7}{5}\\right)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\tan^{-1}\\left(\\dfrac{1}{5}\\right)\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "cos⁻¹(4/5) = tan⁻¹(3/4), and tan⁻¹(3/4)+tan⁻¹(3/5) = tan⁻¹((27/20)/(11/20)) = tan⁻¹(27/11) since the product 9/20 < 1. Numerically the LHS is 1.18392061 and atan(27/11) = 1.18392061 (atan(0.7) = 0.6107, so A is far off; option C is invalid as 7/5 > 1)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1427",
+    "context": null,
+    "question": "The area of the triangle whose vertices are the points \\((a(a+1),\\ a+1)\\), \\(((a+1)(a+2),\\ a+2)\\) and \\(((a+2)(a+3),\\ a+3)\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(a(a+1)(a+2)(a+3)\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "Edge vectors from the first vertex are (2a+2, 1) and (4a+6, 2), whose cross product is 2(2a+2) - (4a+6) = -2 independent of a, so the area is |-2|/2 = 1. Sympy simplification of the shoelace expression returns exactly 1 (a negative area, option A, is impossible)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1431",
+    "context": null,
+    "question": "If the distance between \\((2, 3)\\) and \\((-5, 2)\\) is equal to the distance between \\((x, 2)\\) and \\((1, 3)\\), then the values of \\(x\\) are",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-6, 8\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(6, 8\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(-8, 6\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-7, 7\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "First distance is √(49+1) = √50; setting (x-1)² + 1 = 50 gives (x-1)² = 49, so x - 1 = ±7 and x = 8 or x = -6."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1434",
+    "context": null,
+    "question": "Let \\(x_1, x_2, x_3\\) as well as \\(y_1, y_2, y_3\\) are in geometric progression with the same common ratio, then the points \\((x_1, y_1)\\), \\((x_2, y_2)\\), \\((x_3, y_3)\\) are",
+    "options": [
+      {
+        "label": "A",
+        "text": "vertices of an equilateral triangle"
+      },
+      {
+        "label": "B",
+        "text": "vertices of a right angled triangle"
+      },
+      {
+        "label": "C",
+        "text": "vertices of a right angled isosceles triangle"
+      },
+      {
+        "label": "D",
+        "text": "collinear"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "The points are (x1, y1), (r·x1, r·y1), (r²·x1, r²·y1), i.e. scalar multiples of one vector, so all three lie on the line y = (y1/x1)x through the origin. The shoelace determinant x1·y1·r²(r - 1) - ... vanishes identically."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1446",
+    "context": null,
+    "question": "The slope of the straight line \\(\\frac{x}{10} - \\frac{y}{4} = 3\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{5}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(-\\frac{5}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{2}{5}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-\\frac{2}{5}\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Solving for y: y = 4x/10 - 12 = (2/5)x - 12, so the slope is 2/5. Equivalently -A/B = -(1/10)/(-1/4) = 2/5."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1448",
+    "context": null,
+    "question": "A straight line meets the coordinate axes at \\(A\\) and \\(B\\), so that the centroid of the triangle \\(OAB\\) is \\((1, 2)\\). Then the equation of the line \\(AB\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(x + y = 6\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2x + y = 6\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(x + 2y = 6\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(3x + y = 6\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "With A = (p,0), B = (0,q), the centroid of OAB is (p/3, q/3) = (1,2), giving p = 3 and q = 6. The intercept form x/3 + y/6 = 1 clears to 2x + y = 6, which indeed passes through (3,0) and (0,6)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1510",
+    "context": null,
+    "question": "The distance between the parallel lines \\(5x-12y-14=0\\) and \\(5x-12y+12=0\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{13}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{2}{13}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(4\\)"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "|c1 - c2| / √(a²+b²) = |12 - (-14)| / √(25+144) = 26/13 = 2."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1820",
+    "context": null,
+    "question": "If ABCDEF is a regular hexagon with \\(\\vec{AB} = \\vec{a}\\) and \\(\\vec{BC} = \\vec{b}\\), then \\(\\vec{CE}\\) equals",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\vec{b} - \\vec{a}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(-\\vec{b}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\vec{b} - 2\\vec{a}\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "Using the unit hexagon A(1,0), B(0.5,0.866), C(-0.5,0.866), E(-0.5,-0.866): a = (-0.5,0.866), b = (-1,0), CE = (0,-1.7321). Then b - 2a = (0,-1.7321) matches exactly, while b - a = (-0.5,-0.866) and -b = (1,0) do not. (Algebraically CE = CD + DE = (b-a) + (-a).)"
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1825",
+    "context": null,
+    "question": "If \\(\\lambda(3\\hat{i} + 2\\hat{j} - 6\\hat{k})\\) is a unit vector, then the values of \\(\\lambda\\) are",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\pm \\dfrac{1}{7}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\pm 7\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\pm \\sqrt{43}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\pm \\dfrac{1}{\\sqrt{43}}\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "|3i + 2j - 6k| = √(9 + 4 + 36) = √49 = 7, so |λ|·7 = 1 gives λ = ±1/7. (Option D would apply if the magnitude were √43, i.e. if the k-component were -√30.)"
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1837",
+    "context": null,
+    "question": "If the vector \\(8\\hat{i} + a\\hat{j}\\) of magnitude 10 is in the direction of the vector \\(4\\hat{i} - 3\\hat{j}\\), then the value of \\(a\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(5\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(-3\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(6\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-6\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "The unit vector along 4i - 3j is (4i - 3j)/5, so a vector of magnitude 10 in that direction is 8i - 6j, giving a = -6. Consistency check: |8i - 6j| = √(64+36) = 10 and 8/4 = -6/-3 = 2, so it is genuinely parallel (not anti-parallel)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1907",
+    "context": null,
+    "question": "If \\( |\\vec{P} - \\vec{Q}| = |\\vec{Q}| \\) and \\( |\\vec{P} \\times \\vec{Q}| = |\\vec{P} \\cdot \\vec{Q}| \\), then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\( \\vec{P} \\parallel \\vec{Q} \\)"
+      },
+      {
+        "label": "B",
+        "text": "\\( \\vec{P} \\perp \\vec{Q} \\)"
+      },
+      {
+        "label": "C",
+        "text": "\\( \\vec{P} \\cdot \\vec{Q} = 0 \\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "medium",
+    "working": "The first condition expands to |P|² = 2|P||Q|cosθ, so cosθ > 0; the second gives sinθ = |cosθ|, hence θ = 45° — neither parallel (0°) nor perpendicular, and P·Q ≠ 0. Verified with Q = (1,0,0) and P = √2·(cos45°, sin45°, 0): |P-Q| = |Q| = 1 and |P×Q| = |P·Q| = 1. Marked medium only because the degenerate P = 0 case technically also satisfies both, but 45° is the intended non-trivial answer and none of A/B/C fits it."
+  }
+]

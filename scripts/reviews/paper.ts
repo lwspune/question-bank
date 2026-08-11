@@ -140,7 +140,11 @@ async function main() {
         reviewedContentHash: hash,
         method,
         verdict: r.verdict.trim(),
-        runLabel: `paper:${paperId}`,
+        // Method-qualified: a paper can be reviewed twice at different strengths
+        // (a read-through, then a blind re-derivation), and those are DIFFERENT
+        // facts. Sharing one label let the dedupe key silently discard the
+        // second pass — 118 blind confirmations vanished before this was fixed.
+        runLabel: `paper:${paperId}:${method}`,
         note: (r.note ?? `pre-print review of "${paper.title}"`).slice(0, 2000),
       });
     }

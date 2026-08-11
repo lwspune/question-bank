@@ -1,0 +1,6 @@
+[
+  {
+    "id": "a137a8ad-3a4e-40f6-81ed-c4941fc0968d",
+    "solution": "\\(x\\,\\rho\\,y\\) holds iff \\(x-y\\) is zero or irrational.\n\nReflexive: \\(x-x=0\\), so \\(x\\,\\rho\\,x\\) for every real \\(x\\).\n\nSymmetric: if \\(x-y\\) is zero or irrational, then so is \\(y-x=-(x-y)\\).\n\nNot transitive: take \\(x=\\sqrt2,\\ y=0,\\ z=\\sqrt2-1\\). Then \\(x-y=\\sqrt2\\) is irrational, so \\(x\\,\\rho\\,y\\); and \\(y-z=-(\\sqrt2-1)=1-\\sqrt2\\) is irrational, so \\(y\\,\\rho\\,z\\). But \\(x-z=\\sqrt2-(\\sqrt2-1)=1\\), which is rational and non-zero, so \\(x\\,\\rho\\,z\\) FAILS. Transitivity therefore does not hold.\n\nHence \\(\\rho\\) is reflexive and symmetric but not transitive. Matches option B.\n\n(Note the shape of the counterexample: two irrational steps whose sum is rational. Choices such as \\(1+\\sqrt2,\\ 1,\\ 1-\\sqrt2\\) do NOT work, since there \\(x-z=2\\sqrt2\\) is still irrational and the relation continues to hold.)"
+  }
+]

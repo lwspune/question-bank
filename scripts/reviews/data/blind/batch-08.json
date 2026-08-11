@@ -1,0 +1,542 @@
+[
+  {
+    "paper": "dc8435b7",
+    "ref": "1921",
+    "context": null,
+    "question": "If \\( \\vec{u} = \\vec{a} - \\vec{b} \\), \\( \\vec{v} = \\vec{a} + \\vec{b} \\) and \\( |\\vec{a}| = |\\vec{b}| = 2 \\), then \\( |\\vec{u} \\times \\vec{v}| \\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\( 2\\sqrt{16 - (\\vec{a} \\cdot \\vec{b})^2} \\)"
+      },
+      {
+        "label": "B",
+        "text": "\\( 2\\sqrt{4 - (\\vec{a} \\cdot \\vec{b})^2} \\)"
+      },
+      {
+        "label": "C",
+        "text": "\\( \\sqrt{16 - (\\vec{a} \\cdot \\vec{b})^2} \\)"
+      },
+      {
+        "label": "D",
+        "text": "\\( \\sqrt{4 - (\\vec{a} \\cdot \\vec{b})^2} \\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "(a-b)x(a+b)=2(a x b), so |u x v|=2|a||b|sin(t)=2*sqrt(|a|^2|b|^2-(a.b)^2)=2*sqrt(16-(a.b)^2). Numeric check with 3 random pairs of length-2 vectors matched option A exactly (e.g. 7.059439)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1945",
+    "context": null,
+    "question": "The value of \\( \\lambda \\) so that the vectors \\( \\vec{a} = 2\\hat{i} - \\hat{j} + \\hat{k} \\), \\( \\vec{b} = \\hat{i} + 2\\hat{j} - 3\\hat{k} \\) and \\( \\vec{c} = 3\\hat{i} + \\lambda \\hat{j} + 5\\hat{k} \\) are coplanar is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\( -1 \\)"
+      },
+      {
+        "label": "B",
+        "text": "\\( 2 \\)"
+      },
+      {
+        "label": "C",
+        "text": "\\( -3 \\)"
+      },
+      {
+        "label": "D",
+        "text": "\\( -4 \\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Coplanar iff scalar triple product = 0: det[[2,-1,1],[1,2,-3],[3,L,5]] = 7L+28; sympy solve gives L=-4."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1981",
+    "context": null,
+    "question": "The angle between two lines whose direction cosines satisfy the equations \\( l + m + n = 0 \\) and \\( l^2 = m^2 + n^2 \\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\( \\pi/6 \\)"
+      },
+      {
+        "label": "B",
+        "text": "\\( \\pi/4 \\)"
+      },
+      {
+        "label": "C",
+        "text": "\\( \\pi/2 \\)"
+      },
+      {
+        "label": "D",
+        "text": "\\( \\pi/3 \\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "l+m+n=0 with l^2=m^2+n^2 and sum of squares 1 gives l=+-1/sqrt2 and mn=0; the two distinct lines are (1/sqrt2,-1/sqrt2,0) and (1/sqrt2,0,-1/sqrt2), cos = 1/2 so angle = pi/3 (sympy enumeration confirmed cos 0.5)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "1983",
+    "context": null,
+    "question": "If \\( \\alpha, \\beta \\) and \\( \\gamma \\) are the direction cosines of a line in space, then the value of \\( \\sin^2\\alpha + \\sin^2\\beta + \\sin^2\\gamma \\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "1"
+      },
+      {
+        "label": "C",
+        "text": "\\( -1 \\)"
+      },
+      {
+        "label": "D",
+        "text": "2"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "alpha,beta,gamma are the direction angles with cos^2 sum = 1, so sin^2 sum = 3 - 1 = 2."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2016",
+    "context": null,
+    "question": "The foot of the perpendicular from \\( (2, 4, -1) \\) to the line \\( x + 5 = \\dfrac{1}{4}(y + 3) = -\\dfrac{1}{9}(z - 6) \\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\( (-4, 1, -3) \\)"
+      },
+      {
+        "label": "B",
+        "text": "\\( (4, -1, -3) \\)"
+      },
+      {
+        "label": "C",
+        "text": "\\( (-4, -1, 3) \\)"
+      },
+      {
+        "label": "D",
+        "text": "\\( (-4, -1, -3) \\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "Line: (t-5, 4t-3, 6-9t), direction (1,4,-9). Perpendicularity of (P-Q) to the direction gives 98-98t=0, t=1, foot (-4,1,-3)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2017",
+    "context": null,
+    "question": "The shortest distance between the lines \\( \\dfrac{x}{2} = \\dfrac{y}{2} = \\dfrac{z}{4} \\) and \\( \\dfrac{x-4}{-2} = \\dfrac{y-4}{8} = \\dfrac{z-5}{5} \\) lies in the interval",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\( (3, 4] \\)"
+      },
+      {
+        "label": "B",
+        "text": "\\( (2, 3] \\)"
+      },
+      {
+        "label": "C",
+        "text": "\\( [1, 2) \\)"
+      },
+      {
+        "label": "D",
+        "text": "\\( [0, 1) \\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "d1 x d2 = (1,1,2)x(-2,8,5) = (-11,-9,10), |.|=sqrt(302); (4,4,5).(-11,-9,10) = -30, so d = 30/sqrt(302) = 1.7263, which lies in [1,2)."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2059",
+    "context": null,
+    "question": "The distance between \\( (2, 1, 0) \\) and \\( 2x + y + 2z + 5 = 0 \\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\( 10 \\)"
+      },
+      {
+        "label": "B",
+        "text": "\\( \\frac{10}{9} \\)"
+      },
+      {
+        "label": "C",
+        "text": "\\( \\frac{10}{3} \\)"
+      },
+      {
+        "label": "D",
+        "text": "\\( \\frac{5}{3} \\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "|2*2+1*1+2*0+5|/sqrt(4+1+4) = 10/3."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2141",
+    "context": null,
+    "question": "The function \\(f(x)=\\dfrac{1}{2-\\cos 3x}\\), \\(x\\in\\left[0,\\dfrac{\\pi}{3}\\right]\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "one one, but not onto"
+      },
+      {
+        "label": "B",
+        "text": "onto but not one one"
+      },
+      {
+        "label": "C",
+        "text": "one to one as well as onto"
+      },
+      {
+        "label": "D",
+        "text": "neither one to one nor onto"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "medium",
+    "working": "f'(x) = -3sin3x/(2-cos3x)^2 < 0 on (0,pi/3), so f is strictly decreasing hence one-one; its range is [1/3,1] (sampled 1.0 -> 0.3333), so with the default codomain R it is not onto. AMBIGUOUS: no codomain is stated - if the intended codomain is [1/3,1] the answer would be C."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2153",
+    "context": null,
+    "question": "Let \\(f(x)=[x]\\), where \\([x]\\) denotes the greatest integer contained in \\(x\\). Which one of the following is correct?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(f(x)\\) is one-to-one"
+      },
+      {
+        "label": "B",
+        "text": "\\(f(x)\\) is onto"
+      },
+      {
+        "label": "C",
+        "text": "Domain of \\(f(x)\\) is set of real numbers and range of \\(f(x)\\) is set of integers"
+      },
+      {
+        "label": "D",
+        "text": "Both domain and range of \\(f(x)\\) are set of real numbers"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "[x] is not injective (f(1.2)=f(1.7)=1) and not surjective onto R; the true statement is that its domain is R and its range is Z."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2158",
+    "context": null,
+    "question": "\\(n(A)=8\\), total number of bijections defined on \\(A\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(8!\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(7!\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(6!\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(9!\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "Bijections on a set of 8 elements = permutations = 8!."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2160",
+    "context": null,
+    "question": "If \\(n(A)=4\\) and \\(n(B)=6\\). The number of one to one functions from \\(A\\) to \\(B\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(24\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(60\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(120\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(360\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "Injections from a 4-set into a 6-set = 6*5*4*3 = 360 = 6P4."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2183",
+    "context": null,
+    "question": "If \\(f(x) = x + 1\\) and \\(g(x) = 2x\\), then \\(f(g(x))\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2(x + 1)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2x(x + 1)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(x\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2x + 1\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "f(g(x)) = g(x)+1 = 2x+1."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2197",
+    "context": null,
+    "question": "The period of the function \\(f(x) = \\tan(4x - 1)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\pi\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{\\pi}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2\\pi\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{\\pi}{4}\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "tan has period pi, so tan(4x-1) has period pi/4."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2208",
+    "context": null,
+    "question": "Period of \\(\\sin\\theta - \\sqrt{3}\\cos\\theta\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{\\pi}{4}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{\\pi}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\pi\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2\\pi\\)"
+      }
+    ],
+    "derived_answer": "D",
+    "confidence": "high",
+    "working": "sin(t)-sqrt3 cos(t) = 2 sin(t - pi/3), a single sine of argument t, so the period is 2pi."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2226",
+    "context": null,
+    "question": "If \\(z_1, z_2, \\ldots, z_{n-1}\\) are the \\(n\\)th roots of unity, then \\((1-z_1)(1-z_2)\\cdots(1-z_{n-1}) =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(n-1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(n\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(1\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "x^n-1=(x-1)prod(x-z_k) gives prod(x-z_k)=1+x+...+x^(n-1); at x=1 this equals n. Numeric: n=3,5,7 gave products 3,5,7."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2282",
+    "context": null,
+    "question": "\\(\\lim_{x \\to \\infty} x \\sin\\left(\\dfrac{2}{x}\\right)\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{1}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\infty\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(0\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "x sin(2/x) = 2 * sin(2/x)/(2/x) -> 2*1 = 2; numeric at x=1e9 gives 2.0."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2298",
+    "context": null,
+    "question": "If \\(f\\) be a function such that \\(f(9) = 9\\) and \\(f'(9) = 3\\), then \\(\\lim_{x \\to 9} \\dfrac{\\sqrt{f(x)} - 3}{\\sqrt{x} - 3}\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(9\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(3\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "Write as [(f(x)-9)/(x-9)] * [(sqrt(x)+3)/(sqrt(f(x))+3)] -> f'(9) * (6/6) = 3."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2310",
+    "context": null,
+    "question": "If \\(\\lim_{x \\to \\infty} \\left(1 + \\dfrac{\\lambda}{x} + \\dfrac{\\mu}{x^2}\\right)^{2x} = e^2\\), then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\lambda = 1,\\ \\mu = 2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\lambda = 2,\\ \\mu = 1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\lambda = 1,\\ \\mu = \\text{any real constant}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\lambda = \\mu = 1\\)"
+      }
+    ],
+    "derived_answer": "C",
+    "confidence": "high",
+    "working": "(1+L/x+M/x^2)^(2x) -> e^(2L), so 2L=2 gives L=1 with M unrestricted; numeric at x=1e7 with M=0,5,-3 all gave 7.38906 = e^2."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2349",
+    "context": null,
+    "question": "The function \\(f(x) = [x]\\) where \\([x]\\) is the greatest integer function is continuous at",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(1.5\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(4\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2\\)"
+      }
+    ],
+    "derived_answer": "A",
+    "confidence": "high",
+    "working": "[x] is discontinuous exactly at integers (1, 2, 4 all fail); 1.5 is not an integer so it is continuous there."
+  },
+  {
+    "paper": "dc8435b7",
+    "ref": "2417",
+    "context": null,
+    "question": "If \\(f(x)\\) is an even function, then \\(f'(x)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "nothing can be said"
+      },
+      {
+        "label": "B",
+        "text": "an odd function"
+      },
+      {
+        "label": "C",
+        "text": "an even function"
+      },
+      {
+        "label": "D",
+        "text": "may be even or may be odd"
+      }
+    ],
+    "derived_answer": "B",
+    "confidence": "high",
+    "working": "Differentiating f(-x)=f(x) gives -f'(-x)=f'(x), i.e. f'(-x)=-f'(x), so f' is odd."
+  }
+]
