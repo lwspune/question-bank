@@ -38,6 +38,34 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-08-11
+
+### Declare the pre-0074 audits as SCOPE, so the best-checked subjects stop reading 0.0%
+
+`question_reviews` (0074) now holds 952 rows / 943 questions, but `npm run reviews:report` shows **NDA and MHT-CET at 0.0%** — the two subjects that went through the 2026-06-03 bank-wide content audit (9,546 questions, ~235 wrong-key flips). That audit produced no machine-readable artifact, so nothing can be backfilled from it, and a reader who doesn't know the history will read the zero as "unexamined". The report's copy says "not recorded, not unreviewed", but copy is a weaker guard than data.
+
+The right shape here is a **registry, not per-question rows** — and that is a deliberate inversion of the reasoning that rejected a registry for recording reviews. There, the per-question verdict existed and was expensive to discard. Here it was never captured and cannot be recovered; only the scope claim survives ("these 13 subjects were audited to closure on this date, at the no-source-needed surface").
+
+**Why:** the report currently misrepresents its own strongest data. Left alone it will keep doing so as coverage grows elsewhere, and the temptation to "fix" it by reconstructing verdicts from the Decisions log gets stronger the longer it sits — which is exactly the prose-reconstruction the table exists to prevent.
+
+**How to apply:** a small TS registry (`src/lib/reviews/declaredAudits.ts`) listing subject + closure date + what the audit did and did not cover, mirroring the `REVIEWED_CHAPTERS` pattern in `src/lib/relevance/config.ts`. Render it in `reviews:report` as a **third state** — never merged into "recorded", because it is not per-question evidence — and credit it only to questions whose `created_at` predates the closure date. NDA is unchanged at 4,860 so it comes out clean; MHT-CET has grown by ~1,929 PYQ since (the April-2025 ingests), and those must correctly stay uncovered.
+
+### Wire the `scripts/ncert/` emitters — it is the one pipeline left unrecorded
+
+Nine scripts across five pipelines now emit review provenance as they run (2026-08-11). **`scripts/ncert/` was not among them**, because unlike its siblings it has no `apply-errata.ts` and no `mark-mcq-verify.ts` — it carries `errata.ts` and produces `*.crosscheck.json` / `*.mcq-verify.json` artifacts, but nothing writes rows at run time.
+
+**Why:** NCERT is an active pipeline (3 chapters shipped, more Class-12 Maths planned). Every chapter ingested from here will produce exactly the adjudications the table wants and drop them on the floor, so the gap this session closed re-opens quietly for one exam. It is also the pipeline whose artifacts were richest in the backfill (271 of 566 ref-based rows), which is the evidence that its passes are worth recording.
+
+**How to apply:** either port the sibling `apply-errata.ts` + `mark-mcq-verify.ts` into `scripts/ncert/` (they are near-identical across the other four pipelines — see the `emit.ts` call sites), or, if NCERT's errata genuinely flow through a different step, call `recordErrataReviews` / `recordMcqVerifyReviews` from whatever that step is. Either way the run label should follow `liveRunLabel("ncert", chapterId, kind)` so live rows stay distinguishable from the `backfill:ncert:*` ones already present.
+
+### Roll `reviews:paper` across the live papers, and click the triage dropdown once
+
+`npm run reviews:paper` shipped and works, but has been exercised on **one paper, three questions deep**. There are 50 papers / 3,054 distinct questions, of which only 2 now carry a paper-review row. Separately, the verdict picker on `/dashboard/reports` has still never been rendered in a browser — it is auth-gated `ƒ` with no headless proof available here, though `reviews:resolve` now covers the common path so this is a fallback rather than the main route.
+
+**Why:** the value of the table compounds only once real coverage accumulates — the skip logic (a confirmed question is not re-derived on its next paper) pays nothing at 2 questions. And the first real run of the paper tool already surfaced a genuine defect (an NDA 2023-I pair that is under-determined), which suggests the remaining 49 papers are worth the pass.
+
+**How to apply:** run `npm run reviews:paper -- --paper=<id>` on the papers actually being printed, fill in the verdicts, `--record --apply`. Prefer `--method=blind_rederivation` where the answers matter most — it withholds the key and stored solution so the derivation is genuinely blind, which a post-hoc check can never be (see [[blind-check-contamination]]). For the dropdown: sign in as superadmin, resolve one of the 2 open wrong-answer reports as *Resolved*, pick a verdict, and confirm a row appears in `question_reviews` with `method = 'report_triage'`.
+
 ## 2026-08-09
 
 ### ~~Finish the spill diagnosis — the other half is still unidentified~~ — **RESOLVED 2026-08-09 (there was no other half)**
