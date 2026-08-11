@@ -1,0 +1,66 @@
+[
+  {
+    "id": "2d62d547-dcc0-417a-8cad-a863136bf776",
+    "ref": "PS2 Q.1 (1)",
+    "derived_answer": "B",
+    "solution": "A triplet of natural numbers is Pythagorean when the square of the largest equals the sum of the squares of the other two.\nTest \\((3, 4, 5)\\): \\(3^2 + 4^2 = 9 + 16 = 25 = 5^2\\).\nThe others fail: \\(1^2 + 5^2 = 26 \\ne 10^2\\), \\(2^2 + 2^2 = 8 \\ne 2^2\\), \\(2^2 + 5^2 = 29 \\ne 5^2\\).\nHence the Pythagorean triplet is \\((3, 4, 5)\\).",
+    "current_answer": "B",
+    "matches_current": true
+  },
+  {
+    "id": "4ff6603a-21fb-43be-83d5-2c5d0c316214",
+    "ref": "PS2 Q.1 (2)",
+    "derived_answer": "B",
+    "solution": "By Pythagoras' theorem the square of the hypotenuse equals the sum of the squares of the two sides making the right angle.\nSo \\((\\text{hypotenuse})^2 = 169\\).\n\\(\\therefore\\) hypotenuse \\(= \\sqrt{169} = 13\\).\nThe length of the hypotenuse is \\(13\\).",
+    "current_answer": "B",
+    "matches_current": true
+  },
+  {
+    "id": "a6a91afc-ec5c-42af-a1a4-e25dc7e5d845",
+    "ref": "PS2 Q.1 (3)",
+    "derived_answer": "A",
+    "solution": "Read each date as the triplet (day, month, year) and test the definition of a Pythagorean triplet.\n\\(15/08/17 \\Rightarrow 15^2 + 8^2 = 225 + 64 = 289 = 17^2\\), so it is a Pythagorean triplet.\nThe rest fail: \\(8^2 + 16^2 = 320 \\ne 16^2\\); \\(3^2 + 5^2 = 34 \\ne 17^2\\); \\(4^2 + 9^2 = 97 \\ne 15^2\\).\nHence the required date is \\(15/08/17\\).",
+    "current_answer": "A",
+    "matches_current": true
+  },
+  {
+    "id": "89a73582-8bae-43d5-ad1d-be84c178f019",
+    "ref": "PS2 Q.1 (4)",
+    "derived_answer": "C",
+    "solution": "Here the square of one side equals the sum of the squares of the remaining two sides, since \\(c^2 = a^2 + b^2\\).\nBy the converse of Pythagoras' theorem, such a triangle is right angled, the right angle being opposite side \\(c\\).\nHence the triangle is a right angled triangle.",
+    "current_answer": "C",
+    "matches_current": true
+  },
+  {
+    "id": "90cd33bb-2685-4de8-ad7e-5eeccff7e0b2",
+    "ref": "PS2 Q.1 (5)",
+    "derived_answer": "D",
+    "solution": "A diagonal of a square makes two \\(45^\\circ-45^\\circ-90^\\circ\\) triangles, the diagonal being the hypotenuse.\nBy the \\(45^\\circ-45^\\circ-90^\\circ\\) property, side \\(= \\frac{1}{\\sqrt{2}} \\times 10\\sqrt{2} = 10\\) cm.\n(Equivalently, by Pythagoras' theorem \\(2s^2 = (10\\sqrt{2})^2 = 200\\), so \\(s = 10\\) cm.)\n\\(\\therefore\\) perimeter \\(= 4 \\times 10 = 40\\) cm.",
+    "current_answer": "D",
+    "matches_current": true
+  },
+  {
+    "id": "56214ea9-8ba7-4777-b1ad-81930b280c62",
+    "ref": "PS2 Q.1 (6)",
+    "derived_answer": "C",
+    "solution": "The altitude to the hypotenuse is the geometric mean of the two segments it cuts on the hypotenuse.\nBy the theorem of geometric mean, \\((\\text{altitude})^2 = 4 \\times 9 = 36\\).\n\\(\\therefore\\) altitude \\(= \\sqrt{36} = 6\\) cm.\nThe length of the altitude is \\(6\\) cm.",
+    "current_answer": "C",
+    "matches_current": true
+  },
+  {
+    "id": "a4749797-5501-4431-9d20-89967c8dd5ce",
+    "ref": "PS2 Q.1 (7)",
+    "derived_answer": "B",
+    "solution": "The height and the base are the two sides making the right angle.\nBy Pythagoras' theorem, \\((\\text{hypotenuse})^2 = 24^2 + 18^2 = 576 + 324 = 900\\).\n\\(\\therefore\\) hypotenuse \\(= \\sqrt{900} = 30\\) cm.\nThe hypotenuse is \\(30\\) cm.",
+    "current_answer": "B",
+    "matches_current": true
+  },
+  {
+    "id": "72fdd3b4-6d45-42f1-a9f2-c719430b0038",
+    "ref": "PS2 Q.1 (8)",
+    "derived_answer": "A",
+    "solution": "In \\(\\triangle ABC\\), \\(BC^2 + AB^2 = 6^2 + (6\\sqrt{3})^2 = 36 + 108 = 144 = 12^2 = AC^2\\).\nBy the converse of Pythagoras' theorem the angle opposite AC is a right angle, so \\(\\angle B = 90^\\circ\\) and AC is the hypotenuse.\nNow \\(BC = 6 = \\frac{1}{2} \\times 12 = \\frac{1}{2}AC\\), and BC is the side opposite \\(\\angle A\\).\nIn a right angled triangle a side that is half the hypotenuse has \\(30^\\circ\\) opposite it, so \\(\\angle A = 30^\\circ\\).",
+    "current_answer": "A",
+    "matches_current": true
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "ref": "Application of Pythagoras theorem SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Application of Pythagoras Theorem",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\triangle ABC\\), \\(\\angle C\\) is an acute angle, seg AD \\(\\perp\\) seg BC. Prove that:\n\\(AB^2 = BC^2 + AC^2 - 2BC \\times DC\\)",
+    "solution": "In the given figure let AB = \\(c\\), AC = \\(b\\), AD = \\(p\\), BC = \\(a\\), DC = \\(x\\),\n\\(\\therefore\\) BD = \\(a - x\\)\nIn \\(\\triangle ADB\\), by Pythagoras theorem\n\\(c^2 = (a-x)^2 + p^2\\)\n\\(c^2 = a^2 - 2ax + x^2 + p^2\\) .......... (I)\nIn \\(\\triangle ADC\\), by Pythagoras theorem\n\\(b^2 = p^2 + x^2\\)\n\\(p^2 = b^2 - x^2\\) .......... (II)\nSubstituting value of \\(p^2\\) from (II) in (I),\n\\(c^2 = a^2 - 2ax + x^2 + b^2 - x^2\\)\n\\(\\therefore c^2 = a^2 + b^2 - 2ax\\)\n\\(\\therefore AB^2 = BC^2 + AC^2 - 2BC \\times DC\\)\n[Note: the textbook prints the four quantities \\(p^2\\), \\(p^2\\), \\(x^2\\) and \\(x^2\\) as empty boxes for the reader to fill in; they are filled in above.]"
+  },
+  {
+    "ref": "Application of Pythagoras theorem SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Application of Pythagoras Theorem",
+    "difficulty": "MODERATE",
+    "stem": "In \\(\\triangle ABC\\), \\(\\angle ACB\\) is obtuse angle, seg AD \\(\\perp\\) seg BC. Prove that:\n\\(AB^2 = BC^2 + AC^2 + 2BC \\times CD\\)",
+    "solution": "In the figure seg AD \\(\\perp\\) seg BC\nLet AD = \\(p\\), AC = \\(b\\), AB = \\(c\\), BC = \\(a\\) and DC = \\(x\\).\nDB = \\(a + x\\)\nIn \\(\\triangle ADB\\), by Pythagoras theorem,\n\\(c^2 = (a + x)^2 + p^2\\)\n\\(c^2 = a^2 + 2ax + x^2 + p^2\\) .......... (I)\nSimilarly, in \\(\\triangle ADC\\)\n\\(b^2 = x^2 + p^2\\)\n\\(\\therefore p^2 = b^2 - x^2\\) .......... (II)\n\\(\\therefore\\) substituting the value of \\(p^2\\) from (II) in (I)\n\\(\\therefore c^2 = a^2 + 2ax + b^2\\)\n\\(\\therefore AB^2 = BC^2 + AC^2 + 2BC \\times CD\\)"
+  },
+  {
+    "ref": "Apollonius theorem SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Apollonius Theorem",
+    "difficulty": "EASY",
+    "stem": "In the figure 2.26, seg PM is a median of \\(\\triangle PQR\\). PM = 9 and \\(PQ^2 + PR^2 = 290\\), then find QR.",
+    "solution": "In \\(\\triangle PQR\\), seg PM is a median.\nM is the midpoint of seg QR.\n\\(QM = MR = \\frac{1}{2} QR\\)\n\\(PQ^2 + PR^2 = 2PM^2 + 2QM^2\\) (by Apollonius theorem)\n\\(290 = 2 \\times 9^2 + 2QM^2\\)\n\\(290 = 2 \\times 81 + 2QM^2\\)\n\\(290 = 162 + 2QM^2\\)\n\\(2QM^2 = 290 - 162\\)\n\\(2QM^2 = 128\\)\n\\(QM^2 = 64\\)\n\\(QM = 8\\)\n\\(\\therefore QR = 2 \\times QM\\)\n\\(= 2 \\times 8\\)\n\\(= 16\\)"
+  },
+  {
+    "ref": "Apollonius theorem SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Apollonius Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Prove that, the sum of the squares of the diagonals of a rhombus is equal to the sum of the squares of the sides.",
+    "solution": "Given : \\(\\square PQRS\\) is a rhombus. Diagonals PR and SQ intersect each other at point T\nTo prove : \\(PS^2 + SR^2 + QR^2 + PQ^2 = PR^2 + QS^2\\)\nProof : Diagonals of a rhombus bisect each other.\n\\(\\therefore\\) by Apollonius' theorem,\n\\(PQ^2 + PS^2 = 2PT^2 + 2QT^2\\) .......... (I)\n\\(QR^2 + SR^2 = 2RT^2 + 2QT^2\\) .......... (II)\n\\(\\therefore\\) adding (I) and (II),\n\\(PQ^2 + PS^2 + QR^2 + SR^2 = 2(PT^2 + RT^2) + 4QT^2\\)\n\\(= 2(PT^2 + PT^2) + 4QT^2\\) .......... (RT = PT)\n\\(= 4PT^2 + 4QT^2\\)\n\\(= (2PT)^2 + (2QT)^2\\)\n\\(= PR^2 + QS^2\\)\n(The above proof can be written using Pythagoras theorem also.)"
+  }
+]

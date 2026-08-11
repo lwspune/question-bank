@@ -4,7 +4,12 @@
 //   scripts/mh-ssc-10/       → the board's past-year QUESTION PAPERS: scanned,
 //                              vision-only, question_kind='pyq'.
 //   scripts/mh-ssc-10-text/  → the Balbharati TEXTBOOK exercises for the same
-//                              exam: born-digital, text-first, question_kind='practice'.
+//                              exam, question_kind='practice'.
+// ⚠ EXTRACTION MODE IS PER-BOOK, NOT PER-PIPELINE. The humanities book
+// (10th_Hist_SB.pdf) is born-digital with clean prose and is read TEXT-FIRST via
+// dump-text.ts. The Maths book (10th_Maths_Part2_SB.pdf) is VISION-ONLY: its text
+// layer silently drops every radical, so it reads as clean English while being
+// arithmetically wrong. Check the chapter's own note before choosing.
 // Both write into the SAME exam and the SAME chapters, so a chapter carries its
 // board PYQs and its textbook exercises together and `/browse`'s PYQ/Practice
 // toggle separates them. That is why `chapterName` below must match the DB row
@@ -16,7 +21,8 @@
 // Science (5 ch), 112pp, born-digital with a clean prose text layer. Printed page
 // N → 0-based PDF index N+9 (the same offset as both Class-9 books).
 //
-// ⚠ NO ANSWERS SECTION anywhere in the book — verified across all 112 pages, the
+// ⚠ NO ANSWERS SECTION anywhere in the HISTORY/POLSCI book — verified across all
+// 112 pages of 10th_Hist_SB.pdf (the Maths book DOES have one; see MATHS2), the
 // same regime as the Class-9 History/PolSci book. So the step-6 answer-key
 // cross-check CANNOT run: every MCQ key is DERIVED and every model answer
 // AUTHORED, both grounded in the chapter's own prose, then blind-re-derived for
@@ -44,6 +50,10 @@ export const OUT = join(__dirname, "out"); // gitignored: rendered PNGs + text d
 export const DATA = join(__dirname, "data"); // committed: transcription source of truth
 
 const HIST = join(SOURCE_ROOT, "10th_Hist_SB.pdf"); // History + Political Science
+// Balbharati Mathematics Part II (Geometry), 180pp. Printed page N → 0-based PDF
+// index N+9, the same offset as HIST. Carries an ANSWERS section at idx 173+.
+// VISION-ONLY — see the note on "pythagoras-10" below before touching it.
+const MATHS2 = join(SOURCE_ROOT, "10th_Maths_Part2_SB.pdf");
 
 export type Chapter = {
   id: string; // slug → data/<id>.* + source_file
@@ -167,6 +177,69 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Challenges in Free and Fair Elections", // NEW
       "Electoral Reforms",
       "Types of Elections", // NEW
+    ],
+  },
+
+  // ── GEOMETRY Ch.2 — the first MATHS chapter in this pipeline, and it breaks
+  //    two of the assumptions the humanities chapters above were built on.
+  //
+  // (1) TRANSCRIPTION IS VISION-ONLY. Do NOT reach for dump-text.ts. The text
+  //     layer reads cleanly and is ARITHMETICALLY LOSSY — measured, not assumed:
+  //     p32 teaches "each perpendicular side is 1/√2 times the hypotenuse" and
+  //     the text layer returns "1\n2", which decodes to 1/2, a false statement;
+  //     "ZY = 3√2" extracts as "3 2". There are ZERO U+221A characters in the
+  //     whole chapter's text layer while the chapter uses surds throughout
+  //     (1/√2, 3√2, 6√3, 2√10, 4√13, 10√2) — the radicals are drawn as vector
+  //     art, so they are not merely mis-encoded, they are ABSENT. Stacked
+  //     fractions collapse the same way ("1\n3 BC", "QR\n2").
+  //     Separately, every geometry operator sits in the SymbolMT font and
+  //     extracts as the wrong Latin letter (△→"D", ∠→"Ð", ∴→"\", ⊥→"^", ≅→"@",
+  //     ×→"´", ∼→"~"). That half IS mechanically invertible — get_text("dict")
+  //     preserves the font per span, so "D"-in-SymbolMT is unambiguously △ even
+  //     beside a vertex named D — but inverting it does NOT make text-first
+  //     viable, because the dropped radicals are unrecoverable at any price.
+  //     Recorded so a later session doesn't re-derive the SymbolMT insight and
+  //     conclude the text layer can be used. It cannot.
+  //
+  // (2) THIS BOOK HAS AN ANSWERS SECTION (printed pp.164-165 = idx 173-174),
+  //     unlike 10th_Hist_SB.pdf. So the step-6 answer-key cross-check GATE runs
+  //     here — the first chapter in this pipeline where it can. Note the answer
+  //     pages carry the SAME radical-dropping defect ("PS = 6 3" is 6√3), so
+  //     they are read by vision too. Coverage is systematic: every numeric
+  //     question has a printed key; the 8 "prove that" questions have none
+  //     (2.1 Q9; 2.2 Q3,Q5; PS2 Q8,Q9,Q11,Q13,Q16) and carry authored proofs.
+  //
+  // Blocks → section_kind: three Solved-Example runs (idx 45-47, 49, 50-51) →
+  // solved_example · Practice set 2.1 + 2.2 → exercise · Problem set 2 →
+  // miscellaneous. Only 8 of ~65 rows are MCQs (Problem set 2 Q1(1)-(8)).
+  // The book's own "«" marks a challenging question (8 of them) — kept as a note.
+  // The chapter-end "ICT Tools" box (make a slide show on Pythagoras' life) is
+  // NOT ingested: open-ended, no determinate answer.
+  //
+  // Subtopics are the book's own headings, realigned 2026-08-11 (see
+  // data/_rollback.pythagoras-10.subtopic-backup.json). "Application of
+  // Pythagoras Theorem" is SINGULAR and narrow on purpose: the book's p40
+  // section of that name teaches ONLY the obtuse/acute extensions
+  // (AB² = BC² + AC² ∓ 2BC×DC). It is not a catch-all, and it starts with 0
+  // board PYQs because no past paper has ever sampled it.
+  "pythagoras-10": {
+    id: "pythagoras-10",
+    chapterName: "Pythagoras Theorem", // DB spelling — matches the book's own title
+    subjectName: "Geometry",
+    sourceFile: "StateBoard_10_Geometry__Pythagoras_Theorem.pdf",
+    pdf: MATHS2,
+    pages: range(39, 55), // printed pp 30-46
+    answersPdf: MATHS2,
+    answerPages: [173, 174], // printed pp 164-165; ch.2 block only
+    note: "Maharashtra State Board (Class 10) — Pythagoras Theorem (Balbharati textbook, Mathematics Part II / Geometry)",
+    subtopics: [
+      "Pythagorean Triplet",
+      "Property of 30-60-90 and 45-45-90 Triangles",
+      "Similarity and Right Angled Triangles",
+      "Theorem of Geometric Mean",
+      "Pythagoras Theorem and its Converse",
+      "Application of Pythagoras Theorem",
+      "Apollonius Theorem",
     ],
   },
 };
