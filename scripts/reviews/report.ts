@@ -34,6 +34,13 @@ import { REVIEW_VERDICT_LABELS, type ReviewVerdict } from "../../src/lib/reviews
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
 const PAGE = 1000;
+/**
+ * Chunk size for `.in("id", [...])`. Far smaller than PAGE because PostgREST
+ * passes the list in the URL: ~833 uuids exceeds the request-line limit and the
+ * server answers "Bad Request". Paging the RESULT and chunking the FILTER are
+ * two different limits and only one of them is 1000.
+ */
+const IN_CHUNK = 200;
 
 type ReviewRow = {
   question_id: string;
@@ -129,11 +136,11 @@ async function main() {
     string,
     { content_hash: string; chapter_id: string | null; question_number: string | null }
   >();
-  for (let i = 0; i < reviewedIds.length; i += PAGE) {
+  for (let i = 0; i < reviewedIds.length; i += IN_CHUNK) {
     const { data, error } = await admin
       .from("questions")
       .select("id, content_hash, chapter_id, question_number")
-      .in("id", reviewedIds.slice(i, i + PAGE));
+      .in("id", reviewedIds.slice(i, i + IN_CHUNK));
     if (error) throw error;
     for (const q of data ?? []) {
       questionById.set(q.id as string, {

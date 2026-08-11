@@ -1,0 +1,64 @@
+{
+  "_readme": [
+    "Adjudications that DIFFER from what the committed artifact records.",
+    "",
+    "An artifact captures what an agent concluded at the time. Where the",
+    "maintainer later overruled that conclusion, the file was never updated — so",
+    "backfilling it mechanically would write the opposite of the record. Each",
+    "entry below cites the CLAUDE.md Decisions-log date carrying the real outcome.",
+    "",
+    "Key format: <pipeline>/<artifactId>::<ref>, where artifactId is the filename",
+    "up to the first dot. That is DELIBERATELY coarse: NCERT Integrals is split",
+    "across integrals.ex123 / .ex45 / .ex678 / .ex8910 / .misc / .q9, all sharing",
+    "artifactId 'integrals', so one adjudication covers every artifact describing",
+    "the same ref. Ex 7.9 Q9 is exactly that case — it appears in both a",
+    "cross-check and a blind mcq-verify, and both should record the same verdict.",
+    "",
+    "Unmatched keys are reported by the backfill as a BLOCKING error, so a stale",
+    "entry cannot rot silently."
+  ],
+  "overrides": {
+    "ncert/integrals::Ex 7.9 Q9": {
+      "verdict": "defect_preserved",
+      "note": "[Backfill adjudication, Decisions log 2026-07-11] The artifact records OUR-ANSWER-WRONG and recommended flipping our (A) to the NCERT key (D). That was OVERTURNED: the cross-check agent had options:[] from a dump-review field-name bug, and reading the printed page shows our (A)=6 is correct while the NCERT key contradicts its own printed options. Our answer stands; the book key is the defect.",
+      "artifactVerdict": "OUR-ANSWER-WRONG"
+    },
+    "stateboard/trig-functions-12::Misc I Q.19": {
+      "verdict": "defect_preserved",
+      "note": "[Backfill adjudication, Decisions log 2026-07-06] Defective question: the true solution nπ/3 is not among the printed options. The blind derivation reports A; the official key is B (via 6θ=nπ), which the bank deliberately retains so the row matches the board. Recorded as a source defect, not as a disagreement to resolve.",
+      "artifactVerdict": "derived A vs live B"
+    },
+    "_ncert_ex78_q13_22_note": {
+      "_comment": [
+        "The ten entries below resolve a VERDICT CONFLICT, not a stale artifact.",
+        "NCERT Ex 7.8 Q13-22 sit in two overlapping agent batches of the same",
+        "cross-check. integrals.ex678 recorded CANT-READ-KEY ('the reprint lists",
+        "Ex 7.8 answers 1-12 only'); integrals.ex8910 recorded AGREE and, for all",
+        "ten, transcribed a concrete printed book_key — i.e. it located the key",
+        "under the old Exercise 7.9 numbering, exactly as the other batch",
+        "hypothesised it might sit. Seven match our answer verbatim; the other",
+        "three (Q16, Q17, Q20) are trivial equivalences, each verified by hand:",
+        "Q16 distributes to ours, Q17 is term reordering, Q20 is",
+        "4/pi - 2sqrt2/pi = (4-2sqrt2)/pi. Evidence beats absence of evidence, so",
+        "all ten are confirmed. Without these entries the dedupe constraint would",
+        "have let readdir order pick a winner - which is how the first backfill",
+        "run silently stored the weaker verdict."
+      ]
+    },
+    "ncert/integrals::Ex 7.8 Q13": { "verdict": "confirmed", "note": "[Backfill adjudication] Conflicting batches: ex678 said CANT-READ-KEY, ex8910 transcribed the printed key (1/2 log 2) and it matches our answer. Key found under the old Ex 7.9 numbering.", "artifactVerdict": "CANT-READ-KEY vs AGREE" },
+    "ncert/integrals::Ex 7.8 Q14": { "verdict": "confirmed", "note": "[Backfill adjudication] Conflicting batches: ex678 said CANT-READ-KEY, ex8910 transcribed the printed key and it matches our answer verbatim.", "artifactVerdict": "CANT-READ-KEY vs AGREE" },
+    "ncert/integrals::Ex 7.8 Q15": { "verdict": "confirmed", "note": "[Backfill adjudication] Conflicting batches: ex678 said CANT-READ-KEY, ex8910 transcribed the printed key and it matches our answer verbatim.", "artifactVerdict": "CANT-READ-KEY vs AGREE" },
+    "ncert/integrals::Ex 7.8 Q16": { "verdict": "confirmed", "note": "[Backfill adjudication] Conflicting batches. ex8910 transcribed the key as 5 - (5/2)(9 log 5/4 - log 3/2), which distributes to our 5 + (5/2)log(3/2) - (45/2)log(5/4). Algebraically identical.", "artifactVerdict": "CANT-READ-KEY vs AGREE" },
+    "ncert/integrals::Ex 7.8 Q17": { "verdict": "confirmed", "note": "[Backfill adjudication] Conflicting batches. Key and our answer differ only by term order (pi^4/1024 + pi/2 + 2 vs 2 + pi^4/1024 + pi/2).", "artifactVerdict": "CANT-READ-KEY vs AGREE" },
+    "ncert/integrals::Ex 7.8 Q18": { "verdict": "confirmed", "note": "[Backfill adjudication] Conflicting batches: ex678 said CANT-READ-KEY, ex8910 transcribed the printed key and it matches our answer verbatim.", "artifactVerdict": "CANT-READ-KEY vs AGREE" },
+    "ncert/integrals::Ex 7.8 Q19": { "verdict": "confirmed", "note": "[Backfill adjudication] Conflicting batches: ex678 said CANT-READ-KEY, ex8910 transcribed the printed key and it matches our answer verbatim.", "artifactVerdict": "CANT-READ-KEY vs AGREE" },
+    "ncert/integrals::Ex 7.8 Q20": { "verdict": "confirmed", "note": "[Backfill adjudication] Conflicting batches. Key 1 + 4/pi - 2sqrt2/pi equals our 1 + (4-2sqrt2)/pi.", "artifactVerdict": "CANT-READ-KEY vs AGREE" },
+    "ncert/integrals::Ex 7.8 Q21": { "verdict": "confirmed", "note": "[Backfill adjudication] Conflicting batches: ex678 said CANT-READ-KEY, ex8910 transcribed the printed key and it matches our answer verbatim.", "artifactVerdict": "CANT-READ-KEY vs AGREE" },
+    "ncert/integrals::Ex 7.8 Q22": { "verdict": "confirmed", "note": "[Backfill adjudication] Conflicting batches: ex678 said CANT-READ-KEY, ex8910 transcribed the printed key and it matches our answer verbatim. MCQ.", "artifactVerdict": "CANT-READ-KEY vs AGREE" },
+    "stateboard/line-planes-12::Misc I Q.5": {
+      "verdict": "defect_preserved",
+      "note": "[Backfill adjudication, Decisions log 2026-07-07] Defective options: the correct shortest distance 5/√26 ≈ 0.98 matches none of the four printed options. The artifact records matches_current=false for exactly that reason; official key D is retained. Recorded as a source defect.",
+      "artifactVerdict": "matches_current=false"
+    }
+  }
+}
