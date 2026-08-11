@@ -12,6 +12,30 @@ Day-to-day knobs and where to look when something goes sideways.
 - **Supabase logs:** dashboard → Logs → API/Postgres. Useful when an export 500s and you want to see the underlying SQL error.
 - **Supabase advisor:** run `mcp__supabase__get_advisors` periodically (or after a migration). Two acceptable lints today: `rls_enabled_no_policy` on `public.rate_limits` (intentional, service-role-only access) and `auth_leaked_password_protection` (Supabase auth setting, can be enabled in dashboard).
 
+### Database backups
+
+`npm run db:backup` → `backups/` (gitignored). ~25 MB, ~16 s. Full runbook:
+[scripts/backup/README.md](scripts/backup/README.md).
+
+- **Weekly, already registered:** Windows task "PYQ Vault DB backup" runs
+  `scripts/backup/weekly.cmd` every **Monday 11:00** (verified end-to-end, not
+  just registered). `-StartWhenAvailable` is set — without it a sleeping laptop
+  silently skips the week. Output appends to `backups/last-run.log`; a scheduled
+  run's console output otherwise goes nowhere.
+  Check: `Get-ScheduledTaskInfo -TaskName "PYQ Vault DB backup"` (0 = success),
+  but the real evidence is a dump in `backups/` newer than 7 days.
+- **Before any bulk-write script, by hand.** This is the habit that matters: the
+  realistic risk to this data has always been our own scripts, not Supabase.
+- Needs **PostgreSQL 17+ client tools** (command-line tools only, no server) and
+  `SUPABASE_DB_URL` in `.env.local`. The direct DB host is **IPv6-only** — on a
+  network without IPv6 use the session pooler instead.
+- The script **rejects and deletes** a dump that fails verification (non-zero
+  pg_dump exit, under 1 MB, or any live table absent from the `pg_restore` TOC),
+  and prunes nothing when it does — so a bad run can't cost you the good ones.
+- **Not covered:** Storage bucket files (figures — regenerable from source PDFs),
+  and anything off this machine. The dumps contain `auth.users`, student mobiles
+  and quiz-lead consent records, so they must never leave `backups/` unencrypted.
+
 ### When to upgrade tiers
 
 - **Vercel Hobby (current)** is bounded by ~100 GB-h/month of function execution and ~100 GB of bandwidth. The export endpoint is the heavy hitter — when daily traffic crosses ~500 papers, watch the dashboard's bandwidth meter weekly.
