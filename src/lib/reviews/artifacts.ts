@@ -10,7 +10,7 @@
  */
 import type { ReviewVerdict } from "./types";
 
-export type ArtifactKind = "crosscheck" | "mcq-verify";
+export type ArtifactKind = "crosscheck" | "mcq-verify" | "errata";
 
 export type VerdictResolution =
   | { kind: "verdict"; verdict: ReviewVerdict }
@@ -72,11 +72,23 @@ export function resolveMcqVerdict(input: {
 const KIND_SUFFIX: Record<ArtifactKind, string> = {
   crosscheck: "answer-key-crosscheck",
   "mcq-verify": "blind-mcq-verify",
+  errata: "errata",
 };
 
 /** Run label that traces a row back to the file it came from. */
 export function artifactRunLabel(pipeline: string, artifactId: string, kind: ArtifactKind): string {
   return `backfill:${pipeline}:${artifactId}:${KIND_SUFFIX[kind]}`;
+}
+
+/**
+ * Run label for a pass emitting reviews AS IT RUNS (an ingestion pipeline's
+ * mark-mcq-verify / apply-errata step), as opposed to the backfill's
+ * reconstruction of an old artifact. Deliberately a different label from
+ * `artifactRunLabel` for the same chapter: they are separate passes, and sharing
+ * a label would let the dedupe constraint drop one of them.
+ */
+export function liveRunLabel(pipeline: string, artifactId: string, kind: ArtifactKind): string {
+  return `${pipeline}:${artifactId}:${KIND_SUFFIX[kind]}`;
 }
 
 /** Stable key for an override entry. */
@@ -123,4 +135,19 @@ export function findVerdictConflicts(
 export const ARTIFACT_METHOD: Record<ArtifactKind, "textbook_answer_key" | "blind_rederivation"> = {
   crosscheck: "textbook_answer_key",
   "mcq-verify": "blind_rederivation",
+  errata: "textbook_answer_key",
 };
+
+/**
+ * An `errata.json` entry is a human-adjudicated book defect: the bracket says
+ * either the printed KEY is wrong (our answer stands) or the question / the
+ * book's own printed solution is defective and we preserve and explain it.
+ * Either way we changed nothing of ours, so it is `defect_preserved` and never a
+ * corrective verdict. The bracket prefix is validated by apply-errata.ts, so an
+ * entry that does not carry one is malformed rather than a different verdict.
+ */
+export function resolveErratumVerdict(bracket: string): VerdictResolution {
+  const text = String(bracket ?? "").trimStart();
+  if (!text.startsWith("[Textbook")) return { kind: "unknown", raw: text.slice(0, 60) };
+  return { kind: "verdict", verdict: "defect_preserved" };
+}

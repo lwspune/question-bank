@@ -27,6 +27,8 @@ import {
   normalizeOptionLabel,
   overrideKey,
   findVerdictConflicts,
+  liveRunLabel,
+  resolveErratumVerdict,
 } from "@/lib/reviews/artifacts";
 
 describe("resolveCrosscheckVerdict", () => {
@@ -95,6 +97,30 @@ describe("resolveMcqVerdict", () => {
     expect(resolveMcqVerdict({ derivedAnswer: null, liveCorrectLabel: "B" })).toMatchObject({
       kind: "needs_override",
     });
+  });
+});
+
+describe("resolveErratumVerdict", () => {
+  it("treats both bracket conventions as a preserved source defect", () => {
+    // "answer-key error" = the book's key is wrong and our answer stands.
+    // "misprint" = the question or the book's printed solution is broken and we
+    // preserve and explain it. Neither means WE were wrong, so neither may land
+    // in a corrective verdict.
+    for (const bracket of [
+      "[Textbook answer-key error: the printed key contradicts its own options]",
+      "[Textbook misprint: the stem prints (2x+3) where expanding gives (3x+2)]",
+      "  [Textbook note: the key omits the second branch]",
+    ]) {
+      expect(resolveErratumVerdict(bracket)).toEqual({
+        kind: "verdict",
+        verdict: "defect_preserved",
+      });
+    }
+  });
+
+  it("reports a bracket that is not an erratum rather than assuming one", () => {
+    expect(resolveErratumVerdict("our answer was wrong")).toMatchObject({ kind: "unknown" });
+    expect(resolveErratumVerdict("")).toMatchObject({ kind: "unknown" });
   });
 });
 
@@ -168,5 +194,17 @@ describe("artifactRunLabel + overrideKey", () => {
 
   it("keys an override by pipeline, artifact and ref", () => {
     expect(overrideKey("ncert", "integrals", "Ex 7.9 Q9")).toBe("ncert/integrals::Ex 7.9 Q9");
+  });
+
+  it("distinguishes a live emission from a backfilled one", () => {
+    // Live and backfilled rows for the same chapter must NOT share a run label:
+    // they are separate passes, and merging them would let the dedupe key drop
+    // one. Same suffix vocabulary so both read the same way in the report.
+    expect(liveRunLabel("stateboard", "vectors-12", "mcq-verify")).toBe(
+      "stateboard:vectors-12:blind-mcq-verify"
+    );
+    expect(liveRunLabel("stateboard", "vectors-12", "mcq-verify")).not.toBe(
+      artifactRunLabel("stateboard", "vectors-12", "mcq-verify")
+    );
   });
 });

@@ -26,6 +26,8 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { EXAM_ID, requirePaper } from "./config";
+import { recordErrataReviews, type ErratumApplied } from "../../src/lib/reviews/emit";
+import { formatRecordResult } from "../../src/lib/reviews/service";
 
 const APPLY = process.argv.includes("--apply");
 
@@ -154,27 +156,56 @@ async function main() {
     }
   }
 
+  // Review provenance (0074), per paper. Only the errata BRACKETS are recorded:
+  // a bracket is an adjudication that the SOURCE is defective and our answer
+  // stands. The wording repairs above are text tidying, not a finding that our
+  // answer was wrong — this pass recorded 0 ours-wrong, and emitting a
+  // corrective verdict for them would contradict that.
+  const recordedByPaper = new Map<string, ErratumApplied[]>();
+
   // 2. Errata brackets.
   for (const e of ERRATA) {
     const paper = requirePaper(e.paper);
     const { data, error } = await client
       .from("questions")
-      .select("id, solution")
+      .select("id, solution, content_hash")
       .eq("exam_id", EXAM_ID)
       .eq("source_file", paper.sourceFile)
       .eq("question_number", e.ref);
     if (error) throw new Error(`read failed: ${error.message}`);
-    const row = (data ?? [])[0] as { id: string; solution: string | null } | undefined;
+    const row = (data ?? [])[0] as
+      | { id: string; solution: string | null; content_hash: string }
+      | undefined;
     if (!row) { console.log(`  ! ${e.paper} ${e.ref}: row not found — SKIPPED`); continue; }
     const current = row.solution ?? "";
     if (current.trimStart().startsWith("[Textbook")) { skipped++; continue; }
 
     const next = normalizeNewlines(`[${e.note}]\n\n${current}`);
     stamped++;
+    // The write below touches `solution` only, which is not part of content_hash.
+    const forPaper = recordedByPaper.get(e.paper) ?? [];
+    forPaper.push({
+      questionId: row.id,
+      ref: e.ref,
+      bracket: `[${e.note}]`,
+      contentHash: row.content_hash,
+    });
+    recordedByPaper.set(e.paper, forPaper);
     console.log(`  [errata] ${e.paper} ${e.ref}: ${e.note.slice(0, 76)}…`);
     if (APPLY) {
       const { error: uErr } = await client.from("questions").update({ solution: next }).eq("id", row.id);
       if (uErr) throw new Error(`update failed: ${uErr.message}`);
+    }
+  }
+
+  if (APPLY) {
+    for (const [paperId, items] of recordedByPaper) {
+      const result = await recordErrataReviews(client, {
+        pipeline: "mh-ssc-10",
+        artifactId: paperId,
+        items,
+      });
+      console.log(formatRecordResult(result, `review provenance (${paperId})`));
     }
   }
 

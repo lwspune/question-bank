@@ -28,6 +28,15 @@ export const REVIEW_METHODS = [
   "structural_probe",
   /** A student report was triaged and the answer was adjudicated. */
   "report_triage",
+  /**
+   * Read-through of the stored solution for coherence, WITHOUT independently
+   * re-deriving the answer — the usual shape of a pre-print paper review. Cheap
+   * breadth, but blind to a stealth wrong key (a solution that is internally
+   * consistent and simply wrong), which is what most of the 2026-06-03 audit's
+   * flips turned out to be. Kept distinct from blind_rederivation because that
+   * difference decides what a later pass may skip — see coverage.ts.
+   */
+  "solution_audit",
 ] as const;
 
 export type ReviewMethod = (typeof REVIEW_METHODS)[number];
@@ -78,6 +87,28 @@ export const REVIEW_METHOD_LABELS: Record<ReviewMethod, string> = {
   textbook_answer_key: "Textbook answer-key cross-check",
   structural_probe: "Structural probe (adjudicated)",
   report_triage: "Student report triage",
+  solution_audit: "Solution read-through",
+};
+
+/**
+ * How strong a method's evidence is.
+ *
+ *   2 — the answer was checked against something INDEPENDENT of the stored
+ *       solution (a fresh derivation, a printed key, a specific complaint
+ *       adjudicated by a human).
+ *   1 — only the stored solution itself was inspected. Catches a solution that
+ *       contradicts itself; blind to one that is coherent and wrong.
+ *
+ * Used to decide what a later pass may skip. Deliberately coarse: a finer scale
+ * would imply a precision nobody can justify.
+ */
+export const METHOD_STRENGTH: Record<ReviewMethod, 1 | 2> = {
+  blind_rederivation: 2,
+  source_key_crosscheck: 2,
+  textbook_answer_key: 2,
+  report_triage: 2,
+  structural_probe: 1,
+  solution_audit: 1,
 };
 
 export const REVIEW_VERDICT_LABELS: Record<ReviewVerdict, string> = {
