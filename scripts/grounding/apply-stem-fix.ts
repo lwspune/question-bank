@@ -16,6 +16,8 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { contentHash } from "../../src/lib/upload/hash";
+import { recordReviews, formatRecordResult } from "../../src/lib/reviews/service";
+import type { ReviewInput } from "../../src/lib/reviews/record";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 const DATA = join(process.cwd(), "scripts", "grounding", "data");
@@ -38,6 +40,9 @@ async function main() {
     auth: { persistSession: false },
   });
 
+  // Review provenance (0074): recovering a corrupted stem from the source paper
+  // is a review whose verdict happens to be "our stored text was wrong".
+  const reviews: ReviewInput[] = [];
   for (const fix of fixes) {
     const { data: q, error } = await client
       .from("questions")
@@ -74,7 +79,20 @@ async function main() {
     const update: Record<string, unknown> = { text: fix.text, solution: fix.solution };
     if (!collides) update.content_hash = newHash;
     await client.from("questions").update(update).eq("id", fix.id);
+    reviews.push({
+      questionId: fix.id,
+      // Post-write hash (see apply-key-fix.ts for why it is not the old one).
+      reviewedContentHash: collides ? q.content_hash : newHash,
+      method: "blind_rederivation",
+      verdict: "stem_fixed",
+      runLabel: `grounding:${name}:stemfix`,
+      note: `stem + options rewritten from source; key ${oldCorrect} -> ${fix.correct}`,
+    });
     console.log(`    applied`);
+  }
+
+  if (reviews.length) {
+    console.log(formatRecordResult(await recordReviews(client, reviews), "review provenance"));
   }
 }
 

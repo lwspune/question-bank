@@ -18,6 +18,8 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { contentHash } from "../../src/lib/upload/hash";
+import { recordReviews, formatRecordResult } from "../../src/lib/reviews/service";
+import type { ReviewInput } from "../../src/lib/reviews/record";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -43,6 +45,9 @@ async function main() {
   });
 
   let done = 0;
+  // Review provenance (0074): a key flip IS an adjudicated review, and this is
+  // the step that concludes one the grounding audit only flagged.
+  const reviews: ReviewInput[] = [];
   for (const fix of fixes) {
     const { data: q, error } = await client
       .from("questions")
@@ -84,7 +89,22 @@ async function main() {
     const update: Record<string, unknown> = { solution: fix.solution };
     if (!collides) update.content_hash = newHash;
     await client.from("questions").update(update).eq("id", q.id);
+    reviews.push({
+      questionId: q.id,
+      // The hash the row HOLDS after this write — not the pre-fix value. The
+      // edit is this review's own output, so stamping the old hash would make
+      // every corrected row born stale.
+      reviewedContentHash: collides ? q.content_hash : newHash,
+      method: "blind_rederivation",
+      verdict: "key_fixed",
+      runLabel: `grounding:${name}:keyfix`,
+      note: `key ${oldLabel} -> ${fix.new_label}${collides ? " (content_hash unchanged — would collide)" : ""}`,
+    });
     done++;
+  }
+
+  if (reviews.length) {
+    console.log(formatRecordResult(await recordReviews(client, reviews), "review provenance"));
   }
 
   console.log(`${apply ? `applied ${done} key fixes` : `dry-run (${fixes.length} fixes) — re-run with --apply`}`);
