@@ -94,6 +94,7 @@ async function main() {
   // is_correct move + content_hash recompute) — it's flagged LOUD for a manual fix.
   const mcqFiles = readdirSync(DATA).filter((f) => f.startsWith(`${id}.`) && f.endsWith(".mcq-verify.json"));
   let mcqUpdated = 0;
+  const noSolution: string[] = [];
   const mismatches: string[] = [];
   for (const f of mcqFiles) {
     const frag = JSON.parse(readFileSync(join(DATA, f), "utf8")) as Array<{
@@ -101,7 +102,16 @@ async function main() {
     }>;
     for (const m of frag) {
       if (m.matches_current === false) mismatches.push(`${m.ref}: verifier says ${m.derived_answer}, differs from current key — RE-KEY MANUALLY`);
-      if (!m.solution) continue;
+      // A verify row with NO solution used to `continue` silently. That hid a real
+      // defect for two chapters: the maths verify agents wrote their reasoning into
+      // a field called `why` instead of `solution`, so 15 MCQ derivations were
+      // captured and never applied — the rows shipped PUBLIC with a key and no
+      // working, while every humanities chapter (which used `solution`) was fine.
+      // Nothing failed; the count just quietly read 0. Now it is reported.
+      if (!m.solution) {
+        noSolution.push(`${m.ref} (${f})`);
+        continue;
+      }
       const { error, count } = await client
         .from("questions")
         .update({ solution: normalizeNewlines(m.solution) }, { count: "exact" })
@@ -111,6 +121,12 @@ async function main() {
     }
   }
   if (mcqFiles.length) console.log(`updated solution on ${mcqUpdated} mcq row(s).`);
+  if (noSolution.length) {
+    console.log(
+      `\n!! ${noSolution.length} MCQ verify row(s) carry NO "solution" field, so nothing was applied ` +
+        `(a key with no working ships to students):\n  ${noSolution.join("\n  ")}`
+    );
+  }
   if (mismatches.length) console.log(`\n!! MCQ KEY MISMATCHES (${mismatches.length}) — re-key before flipping:\n  ${mismatches.join("\n  ")}`);
 }
 
