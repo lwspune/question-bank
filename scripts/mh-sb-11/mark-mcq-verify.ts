@@ -15,6 +15,8 @@ import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { DATA, requireChapter } from "./config";
+import { recordMcqVerifyReviews } from "../../src/lib/reviews/emit";
+import { formatRecordResult } from "../../src/lib/reviews/service";
 
 type VerifyRow = {
   id: string;
@@ -43,6 +45,9 @@ async function main() {
 
   let mismatches = 0;
   let nulls = 0;
+  // Every row we stamp, so an agreeing derivation can be recorded as review
+  // provenance (0074) rather than staying a console line.
+  const verified: { id: string; ref: string; derived_answer: string | null; matches_current?: boolean }[] = [];
   for (const f of files) {
     const path = join(DATA, f);
     const rows: VerifyRow[] = JSON.parse(readFileSync(path, "utf8"));
@@ -62,11 +67,23 @@ async function main() {
         console.log(`  ${r.ref}: MISMATCH — committed ${current}, verifier derived ${r.derived_answer}`);
       }
     }
+    verified.push(...rows);
     if (write) {
       writeFileSync(path, JSON.stringify(rows, null, 2), "utf-8");
       console.log(`patched ${f} (${rows.length} rows)`);
     }
   }
+  if (write) {
+    // Only agreeing rows are recorded; a MISMATCH is a flag awaiting human
+    // adjudication, not a verdict (same rule as the grounding HELD queue).
+    const result = await recordMcqVerifyReviews(db, {
+      pipeline: "mh-sb-11",
+      artifactId: id,
+      rows: verified,
+    });
+    console.log(formatRecordResult(result, "review provenance"));
+  }
+
   console.log(
     `\n${mismatches} mismatch(es), ${nulls} null(s).` +
       (mismatches || nulls ? " Adjudicate each against the source BEFORE flipping PUBLIC." : " Independent derivation agrees with every committed key.")

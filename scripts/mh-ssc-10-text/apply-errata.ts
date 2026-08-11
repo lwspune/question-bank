@@ -26,6 +26,8 @@ import { createClient } from "@supabase/supabase-js";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { findLatexImbalance } from "../practice/lib";
 import { DATA, EXAM_ID, requireChapter } from "./config";
+import { recordErrataReviews, type ErratumApplied } from "../../src/lib/reviews/emit";
+import { formatRecordResult } from "../../src/lib/reviews/service";
 
 type Erratum = { ref: string; bracket: string };
 
@@ -58,10 +60,13 @@ async function main() {
 
   let applied = 0;
   let skipped = 0;
+  // Review provenance (0074): a [Textbook ...] bracket is an adjudication that
+  // the SOURCE is defective and our content stands.
+  const recorded: ErratumApplied[] = [];
   for (const e of errata) {
     const { data, error } = await db
       .from("questions")
-      .select("id, solution")
+      .select("id, solution, content_hash")
       .eq("source_file", chapter.sourceFile)
       .eq("question_number", e.ref);
     if (error) throw error;
@@ -87,6 +92,14 @@ async function main() {
     if (uerr) throw new Error(`update ${e.ref}: ${uerr.message}`);
     if (count !== 1) throw new Error(`update ${e.ref}: matched ${count} rows`);
     applied++;
+    // An erratum edits the solution only, which is not part of content_hash, so
+    // the stored hash is unchanged by the write above.
+    recorded.push({
+      questionId: row.id,
+      ref: e.ref,
+      bracket: e.bracket,
+      contentHash: row.content_hash as string,
+    });
 
     // Mirror into whichever source JSON carries this ref, so DB and source agree.
     for (const f of jsonFiles) {
@@ -101,6 +114,15 @@ async function main() {
       }
       break;
     }
+  }
+
+  if (recorded.length) {
+    const result = await recordErrataReviews(db, {
+      pipeline: "mh-ssc-10-text",
+      artifactId: id,
+      items: recorded,
+    });
+    console.log(formatRecordResult(result, "review provenance"));
   }
 
   console.log(`\n${apply ? "applied" : "would apply"} ${apply ? applied : errata.length - skipped} bracket(s); ${skipped} already bracketed.`);

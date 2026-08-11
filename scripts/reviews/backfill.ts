@@ -44,7 +44,13 @@ import {
 } from "../../src/lib/reviews/artifacts";
 import { recordReviews, formatRecordResult } from "../../src/lib/reviews/service";
 import type { ReviewInput } from "../../src/lib/reviews/record";
+import { resolveErratumVerdict } from "../../src/lib/reviews/artifacts";
 import { isReviewVerdict } from "../../src/lib/reviews/types";
+// Chapter registries, imported rather than hand-derived: a stateboard chapter id
+// ("app-derivatives-12") does not map to its source_file by any string rule.
+import { CHAPTERS as STATEBOARD_CHAPTERS } from "../stateboard/config";
+import { CHAPTERS as MH_SB_9_CHAPTERS } from "../mh-sb-9/config";
+import { CHAPTERS as MH_SB_11_CHAPTERS } from "../mh-sb-11/config";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -68,7 +74,15 @@ const SSC_SUBJECT: Record<string, string> = {
   sci2: "Science_II",
 };
 
+const CHAPTER_REGISTRIES: Record<string, Record<string, { sourceFile: string }>> = {
+  stateboard: STATEBOARD_CHAPTERS,
+  "mh-sb-9": MH_SB_9_CHAPTERS,
+  "mh-sb-11": MH_SB_11_CHAPTERS,
+};
+
 function sourceFileFor(pipeline: string, artifactId: string): string | null {
+  const registry = CHAPTER_REGISTRIES[pipeline];
+  if (registry) return registry[artifactId]?.sourceFile ?? null;
   if (pipeline === "mh-ssc-10") {
     const m = /^([a-z0-9]+)-(\d{4})$/.exec(artifactId);
     const subject = m ? SSC_SUBJECT[m[1]] : undefined;
@@ -85,6 +99,8 @@ type ArtifactRow = {
   id?: string;
   verdict?: string;
   derived_answer?: string;
+  /** errata.json only: the `[Textbook …]` bracket, which IS the finding. */
+  bracket?: string;
   note?: string;
   why?: string;
   myDerivation?: string;
@@ -108,13 +124,14 @@ function loadArtifacts(pipelineFilter: string | null): Artifact[] {
       if (!file.endsWith(".json")) continue;
       const isCross = file.includes("crosscheck");
       const isMcq = file.includes("mcq-verify");
-      if (!isCross && !isMcq) continue;
+      const isErrata = file.endsWith(".errata.json");
+      if (!isCross && !isMcq && !isErrata) continue;
       const rows = JSON.parse(readFileSync(join(dataDir, file), "utf8")) as ArtifactRow[];
       if (!Array.isArray(rows)) continue;
       out.push({
         pipeline,
         artifactId: file.split(".")[0],
-        kind: isCross ? "crosscheck" : "mcq-verify",
+        kind: isCross ? "crosscheck" : isMcq ? "mcq-verify" : "errata",
         file,
         rows,
       });
@@ -151,10 +168,13 @@ async function main() {
   console.log(`\nartifacts: ${artifacts.length} files, ${artifacts.reduce((n, a) => n + a.rows.length, 0)} rows\n`);
 
   // ---- resolve refs -> question ids (ref-based artifacts) ----
+  /** crosscheck + errata identify a question by printed ref; mcq-verify by id. */
+  const isRefBased = (a: Artifact) => a.kind === "crosscheck" || a.kind === "errata";
+
   const neededSourceFiles = new Set<string>();
   const errors: string[] = [];
   for (const a of artifacts) {
-    if (a.kind !== "crosscheck") continue;
+    if (!isRefBased(a)) continue;
     const sf = sourceFileFor(a.pipeline, a.artifactId);
     if (!sf) errors.push(`${a.pipeline}/${a.file}: no source_file mapping for id "${a.artifactId}"`);
     else neededSourceFiles.add(sf);
@@ -212,7 +232,7 @@ async function main() {
   for (const a of artifacts) {
     const runLabel = artifactRunLabel(a.pipeline, a.artifactId, a.kind);
     const method = ARTIFACT_METHOD[a.kind];
-    const sf = a.kind === "crosscheck" ? sourceFileFor(a.pipeline, a.artifactId) : null;
+    const sf = isRefBased(a) ? sourceFileFor(a.pipeline, a.artifactId) : null;
     let built = 0;
 
     for (const row of a.rows) {
@@ -223,7 +243,7 @@ async function main() {
       let questionId: string | null = null;
       let hash: string | null = null;
       let liveCorrect: string | null = null;
-      if (a.kind === "crosscheck") {
+      if (isRefBased(a)) {
         const hit = sf ? byRef.get(`${sf}||${row.ref}`) : undefined;
         if (hit) ({ id: questionId, content_hash: hash } = hit);
       } else if (row.id) {
@@ -255,14 +275,21 @@ async function main() {
         const resolution =
           a.kind === "crosscheck"
             ? resolveCrosscheckVerdict(row.verdict ?? "")
-            : resolveMcqVerdict({ derivedAnswer: row.derived_answer, liveCorrectLabel: liveCorrect });
+            : a.kind === "errata"
+              ? resolveErratumVerdict(row.bracket ?? "")
+              : resolveMcqVerdict({ derivedAnswer: row.derived_answer, liveCorrectLabel: liveCorrect });
         if (resolution.kind === "verdict") {
           verdict = resolution.verdict;
-          const detail = (row.note ?? row.why ?? row.myDerivation ?? "").trim();
-          note =
-            `[Backfilled from ${a.pipeline}/${a.file}] artifact verdict: ` +
-            `${row.verdict ?? `derived ${row.derived_answer}`}` +
-            (detail ? ` — ${detail}` : "");
+          if (a.kind === "errata") {
+            // The bracket IS the finding — quote it rather than paraphrase.
+            note = `[Backfilled from ${a.pipeline}/${a.file}] ${row.ref}: ${row.bracket}`;
+          } else {
+            const detail = (row.note ?? row.why ?? row.myDerivation ?? "").trim();
+            note =
+              `[Backfilled from ${a.pipeline}/${a.file}] artifact verdict: ` +
+              `${row.verdict ?? `derived ${row.derived_answer}`}` +
+              (detail ? ` — ${detail}` : "");
+          }
         } else if (resolution.kind === "needs_override") {
           errors.push(
             `NEEDS ADJUDICATION: ${key} (${resolution.reason ?? row.verdict}) — ` +

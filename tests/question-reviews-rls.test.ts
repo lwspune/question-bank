@@ -24,6 +24,11 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { recordReviews } from "@/lib/reviews/service";
+import {
+  recordErrataReviews,
+  recordMcqVerifyReviews,
+  recordTriageReview,
+} from "@/lib/reviews/emit";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -35,6 +40,8 @@ const RUN_ID = randomUUID().slice(0, 8);
 const RUN_LABEL = `test:question-reviews:${RUN_ID}`;
 const OTHER_RUN_LABEL = `test:question-reviews:${RUN_ID}:second-pass`;
 const STUDENT_EMAIL = `qr-student-${RUN_ID}@test.local`;
+/** Artifact id for the emitter tests; its run labels are swept in afterAll. */
+const EMIT_ARTIFACT = `emit-${RUN_ID}`;
 
 describe.skipIf(!HAS_ENV)("question_reviews", () => {
   let admin: SupabaseClient;
@@ -43,6 +50,7 @@ describe.skipIf(!HAS_ENV)("question_reviews", () => {
   let studentId: string | null = null;
   let questionId: string | null = null;
   let contentHash: string | null = null;
+  let reportFixtureId: string | null = null;
 
   beforeAll(async () => {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -78,6 +86,11 @@ describe.skipIf(!HAS_ENV)("question_reviews", () => {
     if (admin) {
       await admin.from("question_reviews").delete().eq("run_label", RUN_LABEL);
       await admin.from("question_reviews").delete().eq("run_label", OTHER_RUN_LABEL);
+      await admin.from("question_reviews").delete().like("run_label", `test-pipeline:${EMIT_ARTIFACT}:%`);
+      if (reportFixtureId) {
+        await admin.from("question_reviews").delete().eq("run_label", `report-triage:${reportFixtureId}`);
+        await admin.from("question_reports").delete().eq("id", reportFixtureId);
+      }
       if (studentId) await admin.auth.admin.deleteUser(studentId);
     }
   });
@@ -162,6 +175,110 @@ describe.skipIf(!HAS_ENV)("question_reviews", () => {
       run_label: `${RUN_LABEL}:student-forge`,
     });
     expect(error).not.toBeNull();
+  });
+
+  it("records only the AGREEING rows from an mcq-verify pass", async () => {
+    if (!questionId) return;
+    const result = await recordMcqVerifyReviews(admin, {
+      pipeline: "test-pipeline",
+      artifactId: EMIT_ARTIFACT,
+      rows: [
+        { id: questionId, ref: "Q1", derived_answer: "B", matches_current: true },
+        // A MISMATCH is a flag awaiting adjudication, never a verdict — the
+        // script it comes from explicitly never auto-re-keys.
+        { id: questionId, ref: "Q2", derived_answer: "C", matches_current: false },
+        { id: questionId, ref: "Q3", derived_answer: null },
+      ],
+    });
+    expect(result.error).toBeUndefined();
+    expect(result.written).toBe(1);
+
+    const { data } = await admin
+      .from("question_reviews")
+      .select("verdict, method, note")
+      .eq("run_label", `test-pipeline:${EMIT_ARTIFACT}:blind-mcq-verify`);
+    expect(data).toHaveLength(1);
+    expect(data![0]).toMatchObject({ verdict: "confirmed", method: "blind_rederivation" });
+    expect(data![0].note).toContain("Q1");
+  });
+
+  it("records an errata bracket as a preserved source defect", async () => {
+    if (!questionId || !contentHash) return;
+    const result = await recordErrataReviews(admin, {
+      pipeline: "test-pipeline",
+      artifactId: EMIT_ARTIFACT,
+      items: [
+        {
+          questionId,
+          ref: "Ex 1 Q1",
+          bracket: "[Textbook answer-key error: the printed key contradicts its own options]",
+          contentHash,
+        },
+      ],
+    });
+    expect(result.written).toBe(1);
+
+    const { data } = await admin
+      .from("question_reviews")
+      .select("verdict, method")
+      .eq("run_label", `test-pipeline:${EMIT_ARTIFACT}:answer-key-crosscheck`);
+    expect(data).toHaveLength(1);
+    // A bracket never means WE were wrong — our content stands, the source is
+    // defective. So it must never land in a corrective verdict.
+    expect(data![0]).toMatchObject({ verdict: "defect_preserved", method: "textbook_answer_key" });
+  });
+
+  it("records a triage verdict from the report's STORED category", async () => {
+    // The glue shared by PATCH /api/reports/[id] and reviews:resolve — fetch the
+    // report, derive the verdict from its true category, stamp the question's
+    // hash. Tested here because most reports are resolved from the CLI, so a
+    // web-only proof would miss the common path.
+    if (!questionId) return;
+    const { data: q } = await admin
+      .from("questions")
+      .select("org_id")
+      .eq("id", questionId)
+      .maybeSingle();
+    const { data: report } = await admin
+      .from("question_reports")
+      .insert({
+        question_id: questionId,
+        org_id: q!.org_id,
+        reported_by: studentId,
+        category: "wrong-answer",
+        details: "triage-emit fixture",
+        status: "open",
+      })
+      .select("id")
+      .single();
+    reportFixtureId = report!.id as string;
+
+    // wont-fix on an answer complaint is unambiguous: the claim was rejected, so
+    // the stored answer stands. Derived WITHOUT a proposed verdict.
+    const rejected = await recordTriageReview(admin, {
+      reportId: reportFixtureId,
+      status: "wont-fix",
+    });
+    expect(rejected.verdict).toBe("confirmed");
+    expect(rejected.written).toBe(1);
+
+    const { data: rows } = await admin
+      .from("question_reviews")
+      .select("verdict, method")
+      .eq("run_label", `report-triage:${reportFixtureId}`);
+    expect(rows).toHaveLength(1);
+    expect(rows![0]).toMatchObject({ verdict: "confirmed", method: "report_triage" });
+  });
+
+  it("records nothing when a resolved report carries no verdict", async () => {
+    if (!reportFixtureId) return;
+    const result = await recordTriageReview(admin, {
+      reportId: reportFixtureId,
+      status: "resolved",
+    });
+    // Ambiguous by nature — key flipped? stem repaired? Nothing is guessed.
+    expect(result.verdict).toBeNull();
+    expect(result.written).toBe(0);
   });
 
   it("rejects an unknown verdict at the database, not just in the validator", async () => {
