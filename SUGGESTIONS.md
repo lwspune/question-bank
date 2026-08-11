@@ -40,6 +40,31 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-08-11
 
+### Rotate the database password — it was pasted into a chat transcript, and it is weak
+
+The `postgres` password was shared in conversation while wiring up `npm run db:backup`, so it now lives in a session transcript. It is also pattern-guessable (org name + `@123`) on a database that is directly reachable from the internet on port 5432. This is the **superuser** credential: it bypasses RLS entirely, so it reads every student mobile, every PRIVATE question, and can drop any table.
+
+**Why:** every other credential in this project is an API key scoped by RLS; this one is not. The exposure is small in practice (a transcript, not a public repo) but the blast radius is total, and the cost of fixing it is about ninety seconds.
+
+**How to apply:** Dashboard → Settings → Database → Reset database password, choosing something non-patterned. Then update the single line in `.env.local`:
+`SUPABASE_DB_URL=postgresql://postgres:<new>@db.wunvtnqlzjrkvolslbnm.supabase.co:5432/postgres` (percent-encode `@ : / #`, e.g. `@` → `%40`). Verified safe to rotate: nothing on this machine uses the direct Postgres connection — the app authenticates with the anon/service-role keys, which a password reset does not touch. Only the backup script consumes it. Confirm with `npm run db:backup -- --dry`.
+
+### Rehearse a restore — it is the half of the backup that has never been exercised
+
+`npm run db:backup` is verified as far as *producing* a good archive: 71 tables present in the `pg_restore` TOC, and reading it back yields 85.3 MB of SQL with `questions` 45,351 and `auth.users` 102 matching live exactly. But **no dump has ever been loaded into a running database.** Restore is where the untested code lives — dependency ordering, `--disable-triggers`, whether the target schema matches.
+
+**Why:** a backup you have never restored is a folder of files you hope are good. This project has twice found a migration applied to prod but never committed (0021, 0066), which is exactly the kind of drift a restore rehearsal surfaces and nothing else does.
+
+**How to apply:** the natural target is the dedicated test project — but note two costs before doing it: it copies production PII (`auth.users`, student mobiles, quiz-lead consent records) into a second Supabase account, and it clobbers the seeded fixtures, so `npm run testdb:reset` is required afterwards or `npm test` breaks. Cheaper alternative that still exercises the risky path: restore **one table** into the test project (`pg_restore --data-only --table=chapters -d "$TEST_SUPABASE_DB_URL" <dump>`) and check the row count against the manifest. If the PII copy is unacceptable, the honest answer is to say so and treat restore as unproven rather than assume it works.
+
+### Decide whether backups should leave this machine
+
+`backups/` is local-only by explicit decision (encryption was dropped along with the Drive plan, since the mitigation existed for uploading somewhere shared). That is coherent, but it leaves `C:` as a single point of failure for more than the backups: it also holds the **only** copies of the ingestion source PDFs and the NDA/MHT-CET Excel uploads, none of which are in the repo.
+
+**Why:** the backup script closes the "a bad script deleted rows" hole completely. It does nothing for "the drive failed", and that exposure covers material that cannot be regenerated from anything.
+
+**How to apply:** if it moves off-machine, encrypt first — the dumps carry `auth.users`, student mobiles and DPDP consent records, and an unencrypted file in a personal Drive is one accidental share-link from a breach. AES-256-GCM via Node's built-in `crypto` needs no new dependency. Use **copy** semantics, never a synced folder: sync replicates deletions, so a rotation prune would erase the remote history too. And note the passphrase then becomes its own single point of failure — password manager, never in the repo, never beside the backups. Scope note: this is really a question about the source material, not just the dumps; sizing that first would change the answer.
+
 ### Declare the pre-0074 audits as SCOPE, so the best-checked subjects stop reading 0.0%
 
 `question_reviews` (0074) now holds 952 rows / 943 questions, but `npm run reviews:report` shows **NDA and MHT-CET at 0.0%** — the two subjects that went through the 2026-06-03 bank-wide content audit (9,546 questions, ~235 wrong-key flips). That audit produced no machine-readable artifact, so nothing can be backfilled from it, and a reader who doesn't know the history will read the zero as "unexamined". The report's copy says "not recorded, not unreviewed", but copy is a weaker guard than data.

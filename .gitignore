@@ -67,3 +67,8 @@ generated-papers/*.tex
 
 # Supabase CLI project-ref cache (created by `supabase postgres-config` etc.)
 supabase/.temp/
+
+# Local database backups (npm run db:backup). NEVER commit these: the repo is
+# public and the dumps carry student mobiles, quiz-lead consent records and the
+# full auth.users table. Whole directory, so a new artifact type can't slip out.
+backups/
