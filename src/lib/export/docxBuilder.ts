@@ -689,21 +689,49 @@ function passageBanner(
   firstQ: number,
   lastQ: number,
   builder: Builder
-): Paragraph[] {
+): (Paragraph | Table)[] {
   if (!passage) return [];
-  return [
-    new Paragraph({
-      indent: { left: 0 },
-      children: [
-        new TextRun({
-          text: `Common context for questions ${firstQ}-${lastQ}: `,
-          italics: true,
-          bold: true,
-        }),
-        ...mathRuns(stripPassageCountPhrase(passage), builder),
-      ],
-    }),
-  ];
+  const text = stripPassageCountPhrase(passage);
+  const label = new TextRun({
+    text: `Common context for questions ${firstQ}-${lastQ}: `,
+    italics: true,
+    bold: true,
+  });
+
+  // A SHARED context can carry a pipe-table just as a solo one can — the
+  // co-ordinate table that several "are these segments congruent?" siblings all
+  // read is exactly that shape. This path rendered through `mathRuns` alone
+  // until 2026-08-11, so those tables printed as raw `| a | b |` pipes in every
+  // downloaded paper (36 PUBLIC rows across 10 sets). Same conversion the solo
+  // context and the stem already had; the contract is pinned by
+  // tests/docx-solution-table.test.ts.
+  const blocks = parseTableBlocks(text);
+  if (!blocks.some((b) => b.kind === "table")) {
+    return [new Paragraph({ indent: { left: 0 }, children: [label, ...mathRuns(text, builder)] })];
+  }
+
+  // Table-bearing: the banner label rides on the first prose paragraph so the
+  // "Common context for questions X-Y:" framing is not orphaned above a table.
+  const out: (Paragraph | Table)[] = [];
+  let labelPlaced = false;
+  for (const b of blocks) {
+    if (b.kind === "text") {
+      out.push(
+        new Paragraph({
+          indent: { left: 0 },
+          children: labelPlaced ? mathRuns(b.text, builder) : [label, ...mathRuns(b.text, builder)],
+        })
+      );
+      labelPlaced = true;
+    } else {
+      if (!labelPlaced) {
+        out.push(new Paragraph({ indent: { left: 0 }, children: [label] }));
+        labelPlaced = true;
+      }
+      out.push(docxTable(b, builder));
+    }
+  }
+  return out;
 }
 
 // Word's built-in math defaults (defJc="centerGroup", wrapIndent="1440",
