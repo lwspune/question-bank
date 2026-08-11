@@ -30,15 +30,33 @@
  * was the book's own printed SOLUTION that carried blanks, and those were
  * filled so PUBLIC ships whole worked solutions rather than holes.)
  */
-import { readFileSync, writeFileSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { DATA } from "./config";
 
 const APPLY = process.argv.includes("--apply");
 
-/** Stem typo fixes, keyed by ref. `from` must appear EXACTLY ONCE in the stem —
- *  a fix that matches nothing (or twice) is a hard error, so this table cannot
- *  silently rot if a fragment is re-transcribed. */
+/** `\b<literal>\b`, with regex metacharacters in the literal escaped. */
+function wordBoundary(literal: string): RegExp {
+  return new RegExp(`\\b${literal.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "g");
+}
+
+/** Stem typo fixes, keyed by ref.
+ *
+ * ⚠ MATCHING IS WORD-BOUNDARY ANCHORED, AND THAT IS LOAD-BEARING, NOT TIDINESS.
+ * The first version used a plain substring match and was NOT IDEMPOTENT: "hypotenus"
+ * is a PREFIX of its own replacement "hypotenuse", so a second run matched inside
+ * the text the first run had just written and produced "hypotenusee". That reached
+ * the database. The other two fixes survived only by luck — their search strings
+ * happen not to be substrings of their replacements.
+ *
+ * A repair that is applied twice must be a no-op the second time. With `\b` on both
+ * ends, "hypotenus" no longer matches inside "hypotenuse" (the following `e` is a
+ * word character), so re-running genuinely changes nothing — and the apply-twice
+ * check below PROVES that per fix rather than assuming it.
+ *
+ * `from` must match EXACTLY ONCE, so the table cannot silently rot if a fragment is
+ * re-transcribed. */
 const TYPO_FIXES: { ref: string; from: string; to: string; note: string }[] = [
   { ref: "PS2 Q.1 (7)", from: "hypotenus", to: "hypotenuse", note: "'hypotenus' — missing final 'e'" },
   { ref: "PS2 Q.2 (3)", from: "the length a diagonal", to: "the length of a diagonal", note: "'the length a diagonal' — dropped 'of'" },
@@ -46,12 +64,18 @@ const TYPO_FIXES: { ref: string; from: string; to: string; note: string }[] = [
 ];
 
 function main() {
-  const files = readdirSync(DATA).filter(
-    (f) => f.startsWith("pythagoras-10.") && f.endsWith(".json") && !f.endsWith(".fig.json") && !f.endsWith(".answers.json")
-  );
+  // The TRANSCRIPTION FRAGMENTS, named explicitly. An earlier version globbed
+  // `pythagoras-10.*.json` minus a couple of suffixes, which worked only while
+  // those were the only files in data/. As soon as the solution, mcq-verify and
+  // topaper artifacts landed it started reading rows with no `stem` at all —
+  // the identical over-broad-glob failure this session fixed in merge.ts, in a
+  // script written after that fix. A glob over a shared directory fails OPEN;
+  // name what you mean.
+  const files = ["solved-a", "ex21", "solved-b", "ex22", "ps2"].map((s) => `pythagoras-10.${s}.json`);
 
   let glyphFixed = 0;
   const typosApplied = new Set<string>();
+  let typosChanged = 0;
 
   for (const f of files) {
     const path = join(DATA, f);
@@ -69,7 +93,8 @@ function main() {
       // 2. typos
       for (const fix of TYPO_FIXES) {
         if (row.ref !== fix.ref) continue;
-        const hits = row.stem.split(fix.from).length - 1;
+        const re = wordBoundary(fix.from);
+        const hits = (row.stem.match(re) ?? []).length;
         if (hits === 0) {
           if (row.stem.includes(fix.to)) {
             typosApplied.add(fix.ref); // already normalised — re-run is a no-op
@@ -78,8 +103,15 @@ function main() {
           throw new Error(`typo fix for ${fix.ref} matched NOTHING: "${fix.from}"`);
         }
         if (hits > 1) throw new Error(`typo fix for ${fix.ref} matched ${hits}x (must be exactly 1): "${fix.from}"`);
-        row.stem = row.stem.replace(fix.from, fix.to);
+        const after = row.stem.replace(re, fix.to);
+        // Applying twice must change nothing. Proven, not assumed — the bug this
+        // guards against shipped to the database.
+        if (after.replace(re, fix.to) !== after) {
+          throw new Error(`typo fix for ${fix.ref} is NOT IDEMPOTENT: applying "${fix.from}" -> "${fix.to}" twice keeps changing the text`);
+        }
+        row.stem = after;
         console.log(`  typo   ${f} :: ${row.ref}  ${fix.note}`);
+        typosChanged++;
         typosApplied.add(fix.ref);
         touched = true;
       }
@@ -91,8 +123,16 @@ function main() {
   const missing = TYPO_FIXES.filter((t) => !typosApplied.has(t.ref));
   if (missing.length) throw new Error(`typo fixes never found their row: ${missing.map((m) => m.ref).join(", ")}`);
 
-  console.log(`\n${glyphFixed} glyph normalisation(s), ${typosApplied.size} typo fix(es).`);
-  console.log(APPLY ? "WRITTEN." : "dry run — pass --apply to write.");
+  // Report CHANGES MADE separately from rows merely verified. The original summary
+  // conflated the two ("3 typo fix(es)" printed identically whether a fix was
+  // applied or was already clean), and that ambiguity is precisely what let a
+  // double-application slip through unnoticed on a re-run.
+  const changed = glyphFixed + typosChanged;
+  console.log(
+    `\nchanged ${changed} (${glyphFixed} glyph, ${typosChanged} typo) · verified-already-clean ${typosApplied.size - typosChanged}`
+  );
+  if (changed === 0) console.log("no-op — inputs were already normalised.");
+  console.log(APPLY ? (changed === 0 ? "nothing written." : "WRITTEN.") : "dry run — pass --apply to write.");
 }
 
 main();
