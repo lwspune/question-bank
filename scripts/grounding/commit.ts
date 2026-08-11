@@ -19,6 +19,8 @@ import { readFileSync, appendFileSync, mkdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { validateSolutionJson, latexToPlainText, correctOptionLabel, detectKeyMismatch } from "./lib";
+import { recordReviews, formatRecordResult } from "../../src/lib/reviews/service";
+import type { ReviewInput } from "../../src/lib/reviews/record";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -61,6 +63,12 @@ async function main() {
   let skipped = 0;
   let held = 0;
   const mismatches: { id: string; option_matched: string | null; correct_label: string | null; final_answer: string }[] = [];
+  // Review provenance (0074). A row written here means the agent re-derived the
+  // answer BLIND and landed on the bank's stored key — that is a confirmation,
+  // and it is the fact that otherwise only survives as a line in the Decisions
+  // log. HELD disputes deliberately get NO row: a flag is not a verdict, and the
+  // adjudication that follows (apply-key-fix.ts) is what records one.
+  const reviews: ReviewInput[] = [];
 
   const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
   for (const raw of agentRows) {
@@ -84,7 +92,7 @@ async function main() {
     // 2. Pull canonical truth (context/text for plain_text, options for the audit).
     const { data: q, error: qerr } = await client
       .from("questions")
-      .select("id, context, text, solution_json")
+      .select("id, context, text, solution_json, content_hash")
       .eq("id", raw.id)
       .maybeSingle();
     if (qerr) throw qerr;
@@ -131,6 +139,15 @@ async function main() {
         })
         .eq("id", raw.id);
       if (uerr) throw uerr;
+      reviews.push({
+        questionId: raw.id,
+        reviewedContentHash: q.content_hash as string,
+        method: "blind_rederivation",
+        verdict: "confirmed",
+        runLabel: `grounding:${batch}`,
+        derivedModel: DERIVED_MODEL,
+        note: `blind re-derivation matched the stored key (${correctLabel})`,
+      });
     }
     written++;
   }
@@ -140,6 +157,10 @@ async function main() {
     mkdirSync(LOGS, { recursive: true });
     const ts = new Date().toISOString();
     for (const m of mismatches) appendFileSync(MISMATCH_LOG, JSON.stringify({ ...m, batch, ts }) + "\n");
+  }
+
+  if (reviews.length) {
+    console.log(formatRecordResult(await recordReviews(client, reviews), "review provenance"));
   }
 
   console.log(`${apply ? "wrote" : "would write"} ${written} | skipped ${skipped} (already grounded) | HELD ${held} (key dispute)`);

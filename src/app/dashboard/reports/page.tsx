@@ -178,6 +178,7 @@ export default async function ReportsTriagePage({
                     reportId={r.id}
                     currentStatus={r.status}
                     currentResolutionNote={r.resolutionNote}
+                    category={r.category}
                   />
                 </div>
               </li>

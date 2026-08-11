@@ -6,6 +6,67 @@ import {
   isReportStatus,
   REPORT_RESOLUTION_NOTE_MAX,
 } from "@/lib/reports/types";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { resolveTriageReview } from "@/lib/reviews/triage";
+import { recordReview } from "@/lib/reviews/service";
+
+/**
+ * Record the triage as review provenance (0074), best-effort.
+ *
+ * Runs on the SERVICE-ROLE client because question_reviews is service-role only
+ * (RLS on, no policies) — the admin's own JWT cannot write it.
+ *
+ * The verdict is decided from the report's TRUE category as stored, never from
+ * the client's word: a caller could otherwise stamp "confirmed" on a question
+ * nobody adjudicated. The client only proposes what the admin says they did.
+ *
+ * Never throws and never fails the request — the status transition is the
+ * primary action, and losing its audit row must not roll it back. A failure is
+ * logged so the hole in the trail is visible.
+ */
+async function recordTriageReview(
+  reportId: string,
+  status: string,
+  proposedVerdict: unknown
+): Promise<void> {
+  try {
+    const admin = createSupabaseAdminClient();
+    const { data: report } = await admin
+      .from("question_reports")
+      .select("question_id, category")
+      .eq("id", reportId)
+      .maybeSingle();
+    if (!report?.question_id) return;
+
+    const verdict = resolveTriageReview({
+      category: report.category,
+      status: status as never,
+      proposedVerdict: typeof proposedVerdict === "string" ? proposedVerdict : null,
+    });
+    if (!verdict) return;
+
+    const { data: question } = await admin
+      .from("questions")
+      .select("content_hash")
+      .eq("id", report.question_id)
+      .maybeSingle();
+    if (!question?.content_hash) return;
+
+    const result = await recordReview(admin, {
+      questionId: report.question_id,
+      reviewedContentHash: question.content_hash,
+      method: "report_triage",
+      verdict,
+      runLabel: `report-triage:${reportId}`,
+      note: `student report (${report.category}) marked ${status}`,
+    });
+    if (result.error || result.rejected.length > 0) {
+      console.error("question_reviews: triage row NOT recorded", result);
+    }
+  } catch (err) {
+    console.error("question_reviews: triage row NOT recorded", err);
+  }
+}
 
 /**
  * PATCH /api/reports/[id]
@@ -28,9 +89,10 @@ export async function PATCH(
         { status: 400 }
       );
     }
-    const { status, resolutionNote } = body as {
+    const { status, resolutionNote, reviewVerdict } = body as {
       status?: unknown;
       resolutionNote?: unknown;
+      reviewVerdict?: unknown;
     };
 
     if (!isReportStatus(status)) {
@@ -73,6 +135,7 @@ export async function PATCH(
 
     switch (result.kind) {
       case "ok":
+        await recordTriageReview(params.id, status, reviewVerdict);
         return NextResponse.json({ ok: true });
       case "not_found":
         return NextResponse.json(
