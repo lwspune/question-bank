@@ -93,6 +93,107 @@ export type WorksheetOverride = {
  */
 export type ShufflePlan = Record<string, string>;
 
+/**
+ * Normalise the "old dress" some source files use for math: LaTeX commands
+ * written with DOUBLED backslashes and NO math delimiters ("\\vec{a} = 2\\hat{i}\\?",
+ * options like "\\7\\"), where a stray "\\" also serves as a zone terminator and
+ * "\\word" before a non-command word (\\k, \\Let) is a delimiter, not a command.
+ * First seen in the Vectors chapter (all 10 base files); every earlier chapter's
+ * sources carried proper \(...\) zones, so those fields pass through unchanged.
+ *
+ * Steps: protect matrix row separators (\\\\) → collapse \\cmd for KNOWN LaTeX
+ * command names (strip the backslashes for unknown words) → delete leftover
+ * stray \\ pairs → restore matrix separators → wrap each maximal math token run
+ * (must contain a surviving \command) in \(...\), keeping trailing sentence
+ * punctuation outside the zone.
+ */
+const OLD_DRESS_COMMANDS = new Set([
+  "vec", "hat", "times", "cdot", "frac", "sqrt", "cos", "sin", "tan", "cot",
+  "sec", "csc", "theta", "alpha", "beta", "gamma", "lambda", "mu", "pi",
+  "omega", "Delta", "tau", "perp", "parallel", "pm", "mp", "neq", "geq",
+  "leq", "circ", "infty", "text", "mathbf", "mathbb", "overline", "bar",
+  "tilde", "left", "right", "begin", "end", "quad", "Rightarrow", "rightarrow",
+]);
+const MATH_SYMBOL_TOKEN = /^[0-9+\-−=×·*/^_(){}\[\]|.,;:±°√%&<>≤≥!']+$/;
+
+export function normalizeOldDress(field: string): string {
+  if (!field || field.includes("\\(") || !field.includes("\\\\")) return field;
+  const SEP = "\u0000";
+  // Some cells double the doubling (a LaTeX line-break "\\" or a command written
+  // "\\\\sqrt"): outside matrix environments, collapse runs of 3+ backslashes to
+  // the standard old-dress pair before the main pipeline.
+  let s = field.includes("begin{") ? field : field.replace(/\\{3,}/g, "\\\\");
+  s = s.replaceAll("\\\\\\\\", SEP); // matrix row separators
+  s = s.replace(/\\\\([a-zA-Z]+)/g, (_, name: string) =>
+    OLD_DRESS_COMMANDS.has(name) ? `\\${name}` : name
+  );
+  s = s.replaceAll("\\\\", ""); // leftover zone terminators
+  s = s.replaceAll(SEP, "\\\\");
+  if (!s.includes("\\")) return s;
+
+  // Wrap math runs line by line (solutions may be multi-line).
+  return s
+    .split("\n")
+    .map((line) => {
+      const tokens = line.split(/(\s+)/);
+      type Tok = { raw: string; core: string; trail: string; kind: "math" | "neutral" | "prose" | "ws" };
+      const parsed: Tok[] = tokens.map((raw) => {
+        if (/^\s*$/.test(raw)) return { raw, core: raw, trail: "", kind: "ws" };
+        const m = raw.match(/^(.*?)([,.?;:]*)$/s)!;
+        const core = m[1];
+        const trail = m[2];
+        let kind: Tok["kind"] = "prose";
+        if (core.includes("\\") || (core.length > 0 && MATH_SYMBOL_TOKEN.test(core))) kind = "math";
+        else if (/^[a-zA-Z]$/.test(core)) kind = "neutral";
+        return { raw, core, trail, kind };
+      });
+
+      const out: string[] = [];
+      let i = 0;
+      while (i < parsed.length) {
+        const t = parsed[i];
+        if (t.kind !== "math" && t.kind !== "neutral") {
+          out.push(t.raw);
+          i++;
+          continue;
+        }
+        // Collect the run of math/neutral tokens (whitespace between them stays in).
+        let j = i;
+        let last = i;
+        let hasCommand = false;
+        while (j < parsed.length) {
+          const u = parsed[j];
+          if (u.kind === "ws") {
+            j++;
+            continue;
+          }
+          if (u.kind !== "math" && u.kind !== "neutral") break;
+          if (u.core.includes("\\")) hasCommand = true;
+          last = j;
+          // A token carrying trailing punctuation ends its clause — stop the run there.
+          if (u.trail) {
+            j++;
+            break;
+          }
+          j++;
+        }
+        if (!hasCommand) {
+          for (let k = i; k <= last; k++) out.push(parsed[k].raw);
+          i = last + 1;
+          continue;
+        }
+        const runCores = parsed
+          .slice(i, last + 1)
+          .map((u) => (u.kind === "ws" ? u.raw : u.core))
+          .join("");
+        out.push(`\\(${runCores}\\)${parsed[last].trail}`);
+        i = last + 1;
+      }
+      return out.join("");
+    })
+    .join("\n");
+}
+
 // Rows whose option ORDER carries meaning must never be shuffled: combo/positional
 // options ("Both …", "All of the above", "None of these") or a solution that
 // references an option letter.
@@ -210,9 +311,9 @@ export function buildWorksheetRows(
       continue;
     }
 
-    const stem = normalizeNewlines((ov?.stem ?? q.stem).trim());
+    const stem = normalizeNewlines((ov?.stem ?? normalizeOldDress(q.stem)).trim());
     const optionTexts = LABELS.map((l, i) => {
-      const t = ov?.options?.[l] ?? q.options[i];
+      const t = ov?.options?.[l] ?? normalizeOldDress(q.options[i]);
       return normalizeNewlines(String(t ?? "").trim());
     });
     if (optionTexts.some((t) => !t)) {
@@ -241,7 +342,7 @@ export function buildWorksheetRows(
       answer = target;
     }
 
-    const solutionRaw = (ov?.solution ?? q.solution).trim();
+    const solutionRaw = (ov?.solution ?? normalizeOldDress(q.solution)).trim();
     if (!solutionRaw) {
       flags.push({ id, reason: "no solution in source" });
     } else if (!ov?.solution) {

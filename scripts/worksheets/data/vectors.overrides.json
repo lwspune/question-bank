@@ -1,0 +1,416 @@
+{
+  "_comment": "Adjudicated repairs for Vectors (Cadetprep worksheets). Signature defects: equivalent/duplicate option pairs where the twin IS the correct value (sqrt-N beside its evaluated form, byte-identical duplicates), plus no-correct-option rows repaired via the keyed option. Every entry re-derived by hand.",
+
+  "01-3": {
+    "options": { "A": "\\(\\sqrt{41}\\)" },
+    "reason": "Options A (√49) and the keyed C (7) were the same value. A replaced; key C retained (√(4+9+36) = 7)."
+  },
+
+  "01-12": {
+    "options": { "A": "\\(3\\hat{i} - \\hat{j} + 2\\hat{k}\\)" },
+    "reason": "Options A and B were byte-identical (both the correct sum 3î + ĵ + 2k̂). A replaced with a sign-flipped variant; key B retained."
+  },
+
+  "01-21": {
+    "options": { "D": "\\(4\\)" },
+    "reason": "Options C (5) and D (√25) were the same value. D replaced; key C retained (√(9+16) = 5)."
+  },
+
+  "01-32": {
+    "stem": "For what value of \\(k\\) does \\(\\vec{a} = k\\hat{i} + 2\\hat{j} + \\hat{k}\\) have magnitude \\(3\\)?",
+    "solution": "\\(|\\vec{a}| = 3\\) gives \\(\\sqrt{k^2 + 4 + 1} = 3\\), so \\(k^2 + 5 = 9\\), \\(k^2 = 4\\), \\(k = \\pm 2\\).",
+    "reason": "As printed ('a unit vector') no real k exists — k² + 5 = 1 has no solution, and the source solution dissolves into self-talk ('Let me recalculate…'). Stem changed to magnitude 3, for which the keyed A (±2) is exactly right."
+  },
+
+  "02-7": {
+    "options": { "C": "\\(8\\)" },
+    "reason": "Options A (10, keyed) and C (√100) were the same value. C replaced; key A retained (√(36+64) = 10)."
+  },
+
+  "02-16": {
+    "options": { "B": "Negative vectors" },
+    "reason": "Old option B ('Collinear vectors') was also defensible — same-direction vectors ARE collinear as free vectors. Replaced with a clearly false type; key C (parallel vectors) retained."
+  },
+
+  "02-21": {
+    "options": { "A": "\\(\\frac{1}{5}(4\\hat{i} - 3\\hat{j})\\)" },
+    "reason": "Options A ((1/5)(3î−4ĵ)) and the keyed C ((3/5)î−(4/5)ĵ) were the same vector. A replaced with swapped components; key C retained."
+  },
+
+  "02-27": {
+    "options": { "C": "\\(21\\)" },
+    "reason": "Options C (√289) and the keyed D (17) were the same value. C replaced; key D retained (√(64+225) = 17)."
+  },
+
+  "02-33": {
+    "options": { "C": "\\(4\\sqrt{10}\\)" },
+    "reason": "Options C (√40) and the keyed D (2√10) were the same value. C replaced with the doubled surd; key D retained."
+  },
+
+  "03-8": {
+    "options": { "C": "\\(6\\hat{i} + 4\\hat{j}\\)" },
+    "reason": "Options C and D were byte-identical (both the correct 6î − 4ĵ). C replaced with the sign-flipped variant; key D retained."
+  },
+
+  "03-20": {
+    "options": { "C": "\\(3\\hat{i} + 5\\hat{j} + 3\\hat{k}\\)" },
+    "reason": "Options A (keyed) and C were byte-identical (both 3î + 5ĵ − 3k̂). C replaced with a sign-flipped variant; key A retained."
+  },
+
+  "03-22": {
+    "options": { "A": "\\(4\\hat{k}\\)" },
+    "solution": "\\(\\vec{p} - \\vec{q} + \\vec{r}\\): \\(\\hat{i}\\!: 1 - 2 + 1 = 0\\), \\(\\hat{j}\\!: -1 - 1 + 2 = 0\\), \\(\\hat{k}\\!: 2 + 1 + 1 = 4\\) — so the result is \\(4\\hat{k}\\).",
+    "reason": "No printed option matched the correct 4k̂ — the source solution computed the î-coefficient as 0 and then wrote î anyway. Keyed option A repaired."
+  },
+
+  "03-31": {
+    "options": { "C": "\\(-7\\hat{j} - 5\\hat{k}\\)" },
+    "reason": "Options A (keyed) and C were byte-identical (both −7ĵ + 5k̂). C replaced with a sign-flipped variant; key A retained."
+  },
+
+  "03-36": {
+    "options": { "A": "\\(5\\hat{i} - 8\\hat{j}\\)" },
+    "reason": "Options A and the keyed C were byte-identical (both 5î). A replaced with the forgot-to-double-w error value; key C retained."
+  },
+
+  "04-22": {
+    "stem": "Find the scalar \\(k\\) such that \\(2\\vec{a} + k\\vec{b} = 2\\vec{a}\\) when \\(\\vec{a}\\) and \\(\\vec{b}\\) are non-collinear (\\(\\vec{b} \\neq \\vec{0}\\)):",
+    "solution": "\\(2\\vec{a} + k\\vec{b} = 2\\vec{a}\\) gives \\(k\\vec{b} = \\vec{0}\\), and since \\(\\vec{b} \\neq \\vec{0}\\), \\(k = 0\\).",
+    "reason": "As printed (3a + kb = 2a) the equation forces a + kb = 0 with a nonzero coefficient on a — NO k exists, and the source solution asserts 'both coefficients must be zero' while one of them is 1. Stem changed to 2a + kb = 2a, for which the keyed C (k = 0) is exactly right."
+  },
+
+  "04-27": {
+    "options": { "A": "\\(\\vec{a} \\cdot \\vec{b}\\)" },
+    "reason": "Old option A (a + b) IS a linear combination (p = q = 1), making two true answers. Replaced with the dot product (a scalar, not a combination); key C (the general form) retained."
+  },
+
+  "04-34": {
+    "options": { "B": "\\(2\\hat{i} + 2\\hat{j} - 4\\hat{k}\\)" },
+    "reason": "Options A (keyed) and B were byte-identical (both the correct 2î + 2ĵ + 4k̂). B replaced with a sign-flipped variant; key A retained."
+  },
+
+  "05-31": {
+    "options": { "A": "Equal vectors", "B": "Zero vectors" },
+    "reason": "Old options A (Orthogonal) and C (Perpendicular) were the same concept, and B (Collinear) was also defensible for same-direction vectors. A and B replaced with clearly false types; key D (Parallel) retained."
+  },
+
+  "05-33": {
+    "options": { "B": "\\(6, 3, 2\\)", "D": "\\(1, 2, 3\\)" },
+    "reason": "Old options B ((1, 2/3, 1/3)) and D ((6, 4, 2)) were both scalar multiples of the keyed C (3, 2, 1) — three valid direction vectors of 2x = 3y = 6z. Both replaced with non-proportional triples; key C retained."
+  },
+
+  "06-6": {
+    "options": { "B": "\\( \\frac{2}{3}, \\frac{2}{3}, \\frac{1}{3} \\)", "D": "\\( -2, -2, 1 \\)" },
+    "reason": "Old options B (A/3) and D (−A) were both proportional to the keyed A (2, −2, 1) — direction ratios are defined up to a nonzero scalar, so all three were valid. Signs dropped/flipped to make them non-proportional; key A retained."
+  },
+
+  "06-20": {
+    "options": { "C": "Negative vectors", "D": "Unit vectors" },
+    "reason": "Old options A (Orthogonal) and C (Perpendicular) were the same concept, and D (Collinear) was also defensible for same-direction vectors. C and D replaced with clearly false types; key B (Parallel) retained."
+  },
+
+  "07-32": {
+    "stem": "If G is the centroid of triangle ABC, then the position vector of any point P in the plane of the triangle can be expressed as:",
+    "reason": "As printed 'any point P' is true only for points in the triangle's plane (GA, GB, GC are coplanar). Clause added; key D retained — the source solution already states the in-plane condition."
+  },
+
+  "08-13": {
+    "stem": "If ABCD is a parallelogram with A(1, 2), B(3, 4), C(5, 2), then D is:",
+    "options": { "D": "\\( (3, 0) \\)" },
+    "solution": "In a parallelogram the diagonals bisect each other: \\(\\vec{a} + \\vec{c} = \\vec{b} + \\vec{d}\\), so \\((1, 2) + (5, 2) = (3, 4) + \\vec{d}\\), giving \\(\\vec{d} = (3, 0)\\).",
+    "reason": "As printed A(1,2), B(3,4), C(5,6) are COLLINEAR — no parallelogram exists, and the formula answer (3,4) coincides with vertex B. C moved off the line to (5, 2); keyed D repaired to the resulting (3, 0)."
+  },
+
+  "08-26": {
+    "options": { "B": "\\( 9 \\)", "C": "\\( 3\\sqrt{2} \\)" },
+    "reason": "Options C (3√3) and the keyed D (√27) were the same value, and A (6) ≡ B (√36) duplicated a distractor. B and C replaced with distinct false values; key D retained."
+  },
+
+  "10-23": {
+    "options": { "B": "\\( |\\vec{a}|\\cos\\theta \\)" },
+    "reason": "Options B (|b|cosθ) and the keyed C ((a·b)/|a|) were the same quantity — the scalar projection of b onto a. B replaced with the projection of a instead; key C retained."
+  },
+
+  "11-2": {
+    "stem": "The magnitude of the vector product (cross product) of two vectors \\(\\vec{a}\\) and \\(\\vec{b}\\) is:",
+    "reason": "As printed the stem asked for the cross product itself while all four options are scalars — the product is a vector |a||b|sinθ n̂. Stem narrowed to the magnitude, for which the keyed D is exactly right."
+  },
+
+  "11-19": {
+    "options": { "B": "\\(\\vec{M} = \\vec{F} \\times \\vec{r}\\)" },
+    "reason": "Option B was an EMPTY string in the source. Filled with the order-flipped product (= −M, a genuine trap); key C retained."
+  },
+
+  "11-20": {
+    "options": { "C": "\\(-\\hat{i} - \\hat{j}\\)" },
+    "reason": "Options A (keyed) and C were byte-identical (both the correct −î + ĵ). C replaced with a sign variant; key A retained."
+  },
+
+  "12-3": {
+    "options": { "D": "Commutative for unit vectors" },
+    "reason": "Old option D ('Distributive over addition') is ALSO a true property of the cross product, making two correct answers. Replaced with a false claim (anti-commutativity has no exceptions); key B retained."
+  },
+
+  "12-25": {
+    "stem": "The magnitude of \\( \\vec{a} \\times \\vec{b} \\) is maximum when:",
+    "reason": "As printed the stem was self-answering ('when a and b are perpendicular … is maximum when: Angle is 90°'). The perpendicular clause removed; key A (90°) retained."
+  },
+
+  "12-26": {
+    "options": { "A": "\\( -3\\hat{j} - 3\\hat{k} \\)", "B": "\\( 3\\hat{j} + 3\\hat{k} \\)" },
+    "solution": "\\( \\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & -1 & 1 \\\\ 1 & 1 & -1 \\end{vmatrix} = \\hat{i}(1 - 1) - \\hat{j}(-2 - 1) + \\hat{k}(2 + 1) = 3\\hat{j} + 3\\hat{k} \\), so \\( \\vec{b} \\times \\vec{a} = -(\\vec{a} \\times \\vec{b}) = -3\\hat{j} - 3\\hat{k} \\).",
+    "reason": "No printed option was correct: the true b × a is −3ĵ − 3k̂ (the î-component vanishes), while the keyed A carried a spurious −2î and option B literally displayed its own negation computation ('−(−2î−3ĵ−3k̂) = …') duplicating C. Keyed A repaired to the true value, B to the a × b distractor."
+  },
+
+  "13-13": {
+    "options": { "B": "\\([\\vec{a}, \\vec{b}, \\vec{c}] = [\\vec{b}, \\vec{a}, \\vec{c}]\\)" },
+    "reason": "Old option B (cyclic invariance [a,b,c] = [c,a,b]) is ALSO a true property, making two correct answers. Replaced with the sign-dropped swap (false — swapping two vectors negates); key A retained."
+  },
+
+  "13-21": {
+    "options": { "B": "\\(\\vec{b}(\\vec{a} \\cdot \\vec{c}) - \\vec{a}(\\vec{b} \\cdot \\vec{c})\\)" },
+    "solution": "\\((\\vec{a} \\times \\vec{b}) \\times \\vec{c} = -\\vec{c} \\times (\\vec{a} \\times \\vec{b}) = -[\\vec{a}(\\vec{c} \\cdot \\vec{b}) - \\vec{b}(\\vec{c} \\cdot \\vec{a})] = \\vec{b}(\\vec{a} \\cdot \\vec{c}) - \\vec{a}(\\vec{b} \\cdot \\vec{c})\\). Check with \\(\\vec{a} = \\hat{i}, \\vec{b} = \\hat{j}, \\vec{c} = \\hat{i}\\): \\((\\hat{i} \\times \\hat{j}) \\times \\hat{i} = \\hat{k} \\times \\hat{i} = \\hat{j}\\), and the formula gives \\(\\hat{j}(1) - \\hat{i}(0) = \\hat{j}\\).",
+    "reason": "No printed option was correct: the true expansion is b(a·c) − a(b·c), option A was its exact negative, and the keyed B (c(a·b) − b(a·c)) matched the source solution's wrong derivation. Keyed option B repaired, verified numerically."
+  },
+
+  "14-3": {
+    "options": { "A": "\\( \\begin{vmatrix} b_1 & b_2 & b_3 \\\\ a_1 & a_2 & a_3 \\\\ c_1 & c_2 & c_3 \\end{vmatrix} \\)", "C": "\\( \\begin{vmatrix} a_1 & a_2 & a_3 \\\\ c_1 & c_2 & c_3 \\\\ b_1 & b_2 & b_3 \\end{vmatrix} \\)" },
+    "reason": "Old options A (cyclic row permutation) and C (transpose) both EQUAL the keyed D — three correct determinants. Replaced with odd-permutation variants (each = −STP, false); key D retained."
+  },
+
+  "14-4": {
+    "options": { "A": "The vectors are mutually perpendicular" },
+    "reason": "Old option A ('all three parallel') is a special case of coplanar — also true. Replaced with a false condition (an orthogonal triple has maximal |STP|); key D retained."
+  },
+
+  "14-15": {
+    "options": { "A": "\\( -6 \\)" },
+    "solution": "\\( \\vec{a} \\cdot (\\vec{b} \\times \\vec{c}) = \\begin{vmatrix} 2 & 1 & -1 \\\\ 1 & -1 & 1 \\\\ 1 & 1 & 1 \\end{vmatrix} = 2(-1 - 1) - 1(1 - 1) + (-1)(1 + 1) = -4 - 0 - 2 = -6 \\).",
+    "reason": "No printed option was correct: the determinant evaluates to −6, and the source solution's own line reads '= −4 − 2 = −4'. Keyed option A repaired to −6."
+  },
+
+  "14-20": {
+    "options": { "A": "\\([\\vec{a} \\; \\vec{b} \\; \\vec{c}]\\)", "B": "\\((\\vec{a}, \\vec{b}, \\vec{c})\\)", "C": "Both A and B", "D": "None of these" },
+    "reason": "Option set was garbled: A carried bare LaTeX outside math delimiters, B used a meaningless '∘' chain, C read 'Both A and notation variations'. Rewritten as the two standard STP notations + 'Both A and B'; key C retained (the source solution names both notations)."
+  },
+
+  "14-21": {
+    "options": { "C": "\\(\\vec{a}(\\vec{b} \\cdot \\vec{c}) = (\\vec{a} \\cdot \\vec{b})\\vec{c}\\)" },
+    "solution": "Expanding both sides: \\(\\vec{a} \\times (\\vec{b} \\times \\vec{c}) = \\vec{b}(\\vec{a} \\cdot \\vec{c}) - \\vec{c}(\\vec{a} \\cdot \\vec{b})\\) and \\((\\vec{a} \\times \\vec{b}) \\times \\vec{c} = \\vec{b}(\\vec{a} \\cdot \\vec{c}) - \\vec{a}(\\vec{b} \\cdot \\vec{c})\\). They are equal exactly when \\(\\vec{a}(\\vec{b} \\cdot \\vec{c}) = (\\vec{a} \\cdot \\vec{b})\\vec{c}\\) — e.g. when \\(\\vec{a}\\) and \\(\\vec{c}\\) are collinear.",
+    "reason": "The keyed C ('they must be coplanar') is FALSE — associativity fails for general coplanar triples; the true condition is a(b·c) = (a·b)c (equivalently a ∥ c, or b orthogonal to both). Keyed option repaired to the true condition; the source solution's coplanarity claim replaced."
+  },
+
+  "14-31": {
+    "options": { "B": "Perpendicular to \\( \\vec{b} \\)" },
+    "reason": "Old option B ('perpendicular to a') is ALSO always true — a × (anything) is perpendicular to a. Replaced with a false claim; key C (in the plane of b and c) retained."
+  },
+
+  "14-32": {
+    "stem": "The expansion of \\( (\\vec{a} \\times (\\vec{b} + \\vec{c})) \\times \\vec{d} \\) involves:",
+    "reason": "As printed the expression a × (b + c) × d is ill-formed — the cross product is non-associative, so unparenthesised chains are ambiguous. Parenthesised; key C retained."
+  },
+
+  "15-8": {
+    "options": { "D": "Their sum is zero" },
+    "reason": "Old option D ('cross product is zero') is ALSO an iff-condition for parallelism, duplicating the keyed B. Replaced with a false condition; key B retained."
+  },
+
+  "15-28": {
+    "answer": "A",
+    "solution": "The projection of \\(\\vec{a}\\) on \\(\\vec{b}\\) conventionally means the SCALAR projection \\(\\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{b}|}\\) — a scalar (NCERT usage; the vector \\(\\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{b}|^2}\\vec{b}\\) is separately called the projection vector).",
+    "reason": "Key flip B→A: the keyed B ('Null vector') is indefensible — a projection is not a null vector. Standard convention makes 'projection of a on b' the scalar projection; solution rewritten accordingly."
+  },
+
+  "16-4": {
+    "options": { "C": "Parallel to \\( \\vec{b} - \\vec{c} \\)" },
+    "reason": "Old option C ('perpendicular to the plane containing b and c') is ALSO true whenever b and c span a plane. Replaced with a false claim; key A (the always-true dot-product result) retained."
+  },
+
+  "16-9": {
+    "stem": "\\( |\\vec{a} + \\vec{b}|^2 + |\\vec{a} - \\vec{b}|^2 = ? \\)",
+    "reason": "The printed stem opened with a dangling 'If'. Cleaned to the bare identity question; key D (the parallelogram law) retained."
+  },
+
+  "16-16": {
+    "options": { "A": "Mutually perpendicular, with \\( |\\vec{b}| = 1 \\)" },
+    "reason": "Old option A ('mutually perpendicular unit vectors') over-claims — the relations force mutual perpendicularity and |b| = 1, but |a| = |c| stays arbitrary. Tightened to the exact conclusion; key A retained."
+  },
+
+  "16-21": {
+    "stem": "If two vectors \\(\\vec{a}\\) and \\(\\vec{b}\\) have equal magnitude \\(k\\) and \\(|\\vec{a} + \\vec{b}| = k\\sqrt{2}\\), then:",
+    "solution": "\\(|\\vec{a} + \\vec{b}|^2 = |\\vec{a}|^2 + |\\vec{b}|^2 + 2\\vec{a} \\cdot \\vec{b} = 2k^2 + 2\\vec{a} \\cdot \\vec{b}\\). Setting this equal to \\(2k^2\\) gives \\(\\vec{a} \\cdot \\vec{b} = 0\\) — the vectors are perpendicular.",
+    "reason": "As printed the question was unanswerable: for EQUAL magnitudes the sum is automatically perpendicular to the difference (their dot product is |a|² − |b|² = 0), so the stated conditions force no angle — the source solution wrongly extracted 2a·b = 0 from that identity. Stem rebuilt on |a+b| = k√2, for which the keyed A (perpendicular) is exact."
+  },
+
+  "16-23": {
+    "options": { "C": "\\( \\vec{a} + \\vec{c} \\)" },
+    "reason": "Old option C (a − c) is trivially TRUE by rearranging the given a = b + c, making two correct answers. Sign flipped to false; key A (the substantive projection formula) retained."
+  },
+
+  "16-25": {
+    "options": { "A": "\\( 2\\lambda\\vec{b} \\)" },
+    "reason": "Old option A (λ(b × b)) evaluates to exactly the keyed B (the zero vector) — an intermediate step of the solution offered as a separate option. Replaced with a false vector; key B retained."
+  },
+
+  "17-21": {
+    "stem": "If the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\) is \\(45°\\), then \\(|\\vec{a} \\times \\vec{b}|\\) equals:",
+    "reason": "The stem asked for the vector a × b while every option is a scalar magnitude. Narrowed to |a × b|; key D ('Both B and C' — the two equal forms |a||b|/√2 and |a||b|sin 45°) retained."
+  },
+
+  "18-19": {
+    "stem": "If the angle between \\( \\vec{a} \\) and \\( \\vec{b} \\) is \\( 45° \\), then \\( |\\vec{a} \\times \\vec{b}| \\) equals:",
+    "reason": "Same defect as its sibling: the stem asked for the vector while the options are magnitudes. Narrowed to |a × b|; key D retained."
+  },
+
+  "18-34": {
+    "stem": "If \\( \\sin\\theta = \\frac{1}{2} \\) and \\( \\theta \\) is acute, the angle \\( \\theta \\) between two vectors is:",
+    "reason": "sinθ = 1/2 admits both 30° and 150° over the vector-angle range [0°, 180°] — the options offer only one root. Acute qualifier added; key A (30°) retained."
+  },
+
+  "18-35": {
+    "stem": "If \\( \\sin\\theta = \\frac{\\sqrt{3}}{2} \\) and \\( \\theta \\) is acute, the angle \\( \\theta \\) between two vectors is:",
+    "reason": "sinθ = √3/2 admits both 60° and 120° — the options offer only one root. Acute qualifier added; key C (60°) retained."
+  },
+
+  "02-36": {
+    "answer": "C",
+    "stem": "Evaluate the claim: 'The sum of two vectors is a scalar.'",
+    "reason": "Key flip B→C + stem reword: the printed stem presupposed its own false premise ('The scalar obtained when adding two vectors is:') and the keyed B was self-contradictory ('Correct; the result is always a vector' — affirming a scalar-claim with a vector). C states the coherent evaluation."
+  },
+
+  "03-34": {
+    "options": { "C": "The resultant of two vectors is the diagonal of the parallelogram formed by them" },
+    "reason": "Old option C (closing side taken in reverse is the resultant) is an equally standard statement of the polygon law, making two correct answers. Replaced with the parallelogram law (a different law); key D retained per the source solution's own formulation."
+  },
+
+  "10-27": {
+    "answer": "A",
+    "solution": "\\( \\vec{u} \\cdot \\vec{v} = (1)(2) + (2)(-1) + (2)(2) = 2 - 2 + 4 = 4 \\).",
+    "reason": "Key flip C→A: the dot product is 4, which the source solution itself derives (amid 'Wait, recalculating' self-talk) while the key said 6. Solution rewritten clean."
+  },
+
+  "14-24": {
+    "answer": "C",
+    "solution": "\\( (\\vec{a} \\times \\vec{b}) \\times \\vec{c} = \\vec{b}(\\vec{a} \\cdot \\vec{c}) - \\vec{a}(\\vec{b} \\cdot \\vec{c}) \\). Check with \\(\\vec{a} = \\hat{i}, \\vec{b} = \\hat{j}, \\vec{c} = \\hat{i}\\): \\((\\hat{i} \\times \\hat{j}) \\times \\hat{i} = \\hat{k} \\times \\hat{i} = \\hat{j}\\), and \\(\\vec{b}(1) - \\vec{a}(0) = \\hat{j}\\).",
+    "reason": "Key flip D→C: the true expansion is b(a·c) − a(b·c) — option C. The keyed D (c(a·b) − a(c·b)) fails the numeric test (gives 0 where the product is ĵ); the source solution asserted D's wrong form as 'the BAC-CAB rule'."
+  },
+
+  "15-12": {
+    "answer": "D",
+    "reason": "Key flip B→D: orthogonality is equivalent to a zero dot product (option D) — the source solution states exactly this while the key pointed at 'They are parallel'."
+  },
+
+  "15-17": {
+    "answer": "D",
+    "reason": "Key flip B→D: Cauchy-Schwarz is |a·b| ≤ |a||b| (option D) — the source solution states exactly this while the key pointed at the meaningless '|a| − |b| ≥ 0'."
+  },
+
+  "15-32": {
+    "answer": "D",
+    "reason": "Key flip B→D: a + b + c = 0 means the vectors close head-to-tail into a triangle (option D) — the source solution says 'closed triangle' while the key pointed at 'Perpendicular vectors'."
+  },
+
+  "15-34": {
+    "answer": "D",
+    "reason": "Key flip B→D: b = 2a, so the vectors are parallel (option D) — the source solution says 'parallel' while the key pointed at 'Equal'."
+  },
+
+  "16-2": {
+    "answer": "D",
+    "options": { "A": "\\( \\vec{b} \\times \\vec{a} \\)" },
+    "reason": "Key flip A→D + option repair: the question asks what a × b equals, and D (c × a) is the answer (a + b + c = 0 gives a×b = b×c = c×a). Old option A printed the identity 'c×a = b×c' — true but not a value of a×b, and arguably a fuller correct reading. Replaced with b × a (= −a×b, false)."
+  },
+
+  "16-20": {
+    "answer": "B",
+    "solution": "Scalar triple product: \\( \\begin{vmatrix} 1 & 1 & 0 \\\\ 0 & 1 & 1 \\\\ 1 & 0 & 1 \\end{vmatrix} = 1(1) - 1(-1) + 0 = 2 \\neq 0 \\) — the vectors are NON-coplanar.",
+    "reason": "Key flip A→B: the scalar triple product of (î+ĵ, ĵ+k̂, k̂+î) is 2, not 0 — a classic non-coplanar triple. The source solution asserted the determinant is 0 without computing it."
+  },
+
+  "19-14": {
+    "answer": "B",
+    "solution": "Momentum is \\(\\vec{p} = m\\vec{v}\\). Force × time is IMPULSE, which equals the CHANGE in momentum \\(\\Delta\\vec{p}\\) — not the momentum of the particle itself.",
+    "reason": "Key flip D→B: 'Both B and C' is wrong because C (Force × time) is impulse = Δp, not momentum. The source solution conflated the two."
+  },
+
+  "20-8": {
+    "options": { "B": "\\( \\vec{I} = \\frac{\\Delta \\vec{p}}{\\Delta t} \\)" },
+    "reason": "Old options A (F·Δt) and B (F×Δt) both read as the same scalar multiple of F — Δt is a scalar, so the dot/cross dressing is decorative. B replaced with Δp/Δt (that is force, false); key A retained."
+  },
+
+  "20-10": {
+    "options": { "C": "Perpendicular to the field lines" },
+    "reason": "Old option C ('tangent to the field lines') is ALSO universally true — E is always tangent to its own field lines, and for a point charge those are the radial lines. Negated to false; key B retained."
+  },
+
+  "20-29": {
+    "stem": "If two forces \\( \\vec{F_1} = 3\\hat{i} \\) N and \\( \\vec{F_2} = 4\\hat{j} \\) N act on an object, the magnitude of the net force is:",
+    "reason": "The stem asked for the net force (a vector) while every option is a magnitude. Narrowed to the magnitude; key C (5 N) retained."
+  },
+
+  "05-28": {
+    "solution": "The unit vector perpendicular to both the x-axis (direction \\(\\hat{i}\\)) and the y-axis (direction \\(\\hat{j}\\)) is \\(\\hat{k}\\), along the z-axis.",
+    "reason": "LaTeX imbalance: the source wrote '(direction \\hat{i}\\)' — a literal paren closed by a bare math delimiter. Solution rewritten with proper \\(...\\) zones."
+  },
+
+  "07-13": {
+    "solution": "The vector equation of a line through the point with position vector \\(\\vec{a}\\), parallel to \\(\\vec{b}\\), is \\(\\vec{r} = \\vec{a} + t\\vec{b}\\), where \\(t\\) is a parameter.",
+    "reason": "LaTeX imbalance in the source solution ('point A (with position vector \\vec{a}\\)'). Rewritten with proper math zones."
+  },
+
+  "07-14": {
+    "stem": "The equation of the line passing through points \\(A(\\vec{a})\\) and \\(B(\\vec{b})\\) is:",
+    "reason": "LaTeX imbalance: 'A(\\vec{a}\\)' mixed a literal paren with a bare \\) closer. Stem rewritten with proper math zones."
+  },
+
+  "07-15": {
+    "stem": "The equation of the plane passing through point \\(A(\\vec{a})\\) with normal vector \\(\\vec{n}\\) is:",
+    "reason": "LaTeX imbalance ('A(\\vec{a}\\)'). Stem rewritten with proper math zones."
+  },
+
+  "07-17": {
+    "stem": "The distance of point \\(P(\\vec{p})\\) from the line through \\(A(\\vec{a})\\) with direction \\(\\vec{b}\\) is:",
+    "reason": "LaTeX imbalance ('P(\\vec{p}\\)'). Stem rewritten with proper math zones."
+  },
+
+  "07-21": {
+    "stem": "The area of the triangle with vertices \\(A(\\vec{a})\\), \\(B(\\vec{b})\\), \\(C(\\vec{c})\\) is:",
+    "reason": "LaTeX imbalance ('A(\\vec{a}\\)' × 3). Stem rewritten with proper math zones."
+  },
+
+  "07-30": {
+    "stem": "The reflection of the point \\(P(\\vec{p})\\) across the origin is:",
+    "reason": "LaTeX imbalance ('P(\\vec{p}\\)'). Stem rewritten with proper math zones."
+  },
+
+  "07-31": {
+    "stem": "The foot of the perpendicular from point \\(P(\\vec{p})\\) to the line through \\(A(\\vec{a})\\) with direction \\(\\vec{b}\\) is:",
+    "reason": "LaTeX imbalance ('P(\\vec{p}\\)'). Stem rewritten with proper math zones."
+  },
+
+  "11-32": {
+    "stem": "The area of the triangle with vertices A, B, C (position vectors \\(\\vec{a}, \\vec{b}, \\vec{c}\\)) is:",
+    "reason": "LaTeX imbalance ('(with position vectors \\vec{a}, \\vec{b}, \\vec{c}\\)'). Stem rewritten with proper math zones."
+  },
+
+  "19-28": {
+    "solution": "For a line with direction \\(\\vec{b}\\) and a plane with normal \\(\\vec{n}\\), the angle \\(\\alpha\\) between the line and the plane satisfies \\(\\sin\\alpha = \\frac{|\\vec{b} \\cdot \\vec{n}|}{|\\vec{b}||\\vec{n}|}\\) — the modulus makes \\(\\alpha\\) the acute angle.",
+    "reason": "LaTeX imbalance in the source solution ('(direction \\vec{b}\\)'). Rewritten with proper math zones."
+  },
+
+  "20-12": {
+    "solution": "The area of the parallelogram formed by \\(\\vec{a}\\) and \\(\\vec{b}\\) is \\(|\\vec{a} \\times \\vec{b}|\\).",
+    "reason": "LaTeX imbalance: the source solution wrote '\\vec{b}\\)' with no opening delimiter. Rewritten with proper math zones."
+  },
+
+  "09-34": {
+    "solution": "The dot product distributes over addition: \\(\\vec{a} \\cdot (\\vec{b} + \\vec{c}) = (\\vec{a} \\cdot \\vec{b}) + (\\vec{a} \\cdot \\vec{c})\\). An 'associative' chain like \\((\\vec{a} \\cdot \\vec{b}) \\cdot \\vec{c}\\) is not even defined — \\(\\vec{a} \\cdot \\vec{b}\\) is a scalar, and a scalar has no dot product with a vector.",
+    "reason": "Solution referenced a non-keyed option letter ('option A is false because…'), which trips the concludedLetter audit. Reworded to name the content; key B unchanged."
+  },
+
+  "03-38": {
+    "options": { "C": "\\(4\\hat{i} - 2\\hat{j}\\)" },
+    "solution": "\\(\\vec{a} + \\vec{b} - \\vec{c}\\): \\(\\hat{i}\\!: 2 + 1 + 1 = 4\\), \\(\\hat{j}\\!: 1 - 1 - 2 = -2\\) — so the result is \\(4\\hat{i} - 2\\hat{j}\\).",
+    "reason": "No printed option was correct: the keyed C read 4î (duplicating A) while the true value — which the source solution itself derives — is 4î − 2ĵ. Keyed option C repaired; A stays as the dropped-ĵ distractor."
+  }
+}

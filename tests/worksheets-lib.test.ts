@@ -3,6 +3,7 @@
 import { describe, it, expect } from "vitest";
 import {
   normalizeDifficulty,
+  normalizeOldDress,
   parseSheet,
   buildWorksheetRows,
   isShuffleEligible,
@@ -222,6 +223,69 @@ describe("buildWorksheetRows", () => {
 
   it("throws on a shuffle keyed to a missing question", () => {
     expect(() => buildWorksheetRows(CTX, [q()], {}, { "01-99": "D" })).toThrow(/shuffle/i);
+  });
+});
+
+describe("normalizeOldDress", () => {
+  it("leaves new-dress fields untouched", () => {
+    const s = "What is the magnitude of vector \\(\\vec{v} = 6\\hat{i} - 8\\hat{j}\\)?";
+    expect(normalizeOldDress(s)).toBe(s);
+  });
+
+  it("leaves plain prose untouched", () => {
+    expect(normalizeOldDress("Equal vectors")).toBe("Equal vectors");
+  });
+
+  it("wraps a pure-math option and strips zone terminators", () => {
+    expect(normalizeOldDress("\\\\sqrt{49}\\\\")).toBe("\\(\\sqrt{49}\\)");
+  });
+
+  it("unwraps a bare-number option to plain text", () => {
+    expect(normalizeOldDress("\\\\7\\\\")).toBe("7");
+    expect(normalizeOldDress("180°\\\\")).toBe("180°");
+  });
+
+  it("treats \\\\word before a non-command as a delimiter, not a command", () => {
+    expect(normalizeOldDress("\\\\k = \\\\pm 2\\\\")).toBe("\\(k = \\pm 2\\)");
+  });
+
+  it("wraps math runs in a mixed stem, breaking at prose and keeping punctuation outside", () => {
+    const s =
+      "If \\\\vec{a} = \\\\hat{i} + 2\\\\hat{j} - \\\\hat{k}\\\\, and \\\\vec{b} = 2\\\\hat{i} - \\\\hat{j} + 3\\\\hat{k}\\\\, then what is \\\\vec{a} + \\\\vec{b}\\\\?";
+    expect(normalizeOldDress(s)).toBe(
+      "If \\(\\vec{a} = \\hat{i} + 2\\hat{j} - \\hat{k}\\), and \\(\\vec{b} = 2\\hat{i} - \\hat{j} + 3\\hat{k}\\), then what is \\(\\vec{a} + \\vec{b}\\)?"
+    );
+  });
+
+  it("preserves matrix row separators inside a determinant", () => {
+    const s =
+      "\\\\begin{vmatrix} \\\\hat{i} & \\\\hat{j} & \\\\hat{k} \\\\\\\\ 1 & 1 & 1 \\\\\\\\ 1 & 1 & 0 \\\\end{vmatrix}\\\\";
+    const out = normalizeOldDress(s);
+    expect(out).toContain("\\\\ 1 & 1 & 1 \\\\");
+    expect(out.startsWith("\\(\\begin{vmatrix}")).toBe(true);
+    expect(out.endsWith("\\end{vmatrix}\\)")).toBe(true);
+  });
+
+  it("wraps each math run separately in a solution sentence", () => {
+    const s =
+      "The distance of point P from line through A with direction \\\\vec{b}\\\\, is given by \\\\frac{|(\\\\vec{p} - \\\\vec{a}) \\\\times \\\\vec{b}|}{|\\\\vec{b}|}.";
+    expect(normalizeOldDress(s)).toBe(
+      "The distance of point P from line through A with direction \\(\\vec{b}\\), is given by \\(\\frac{|(\\vec{p} - \\vec{a}) \\times \\vec{b}|}{|\\vec{b}|}\\)."
+    );
+  });
+
+  it("collapses doubly-doubled backslashes (\\\\\\\\sqrt) outside matrices", () => {
+    expect(normalizeOldDress("\\\\\\\\sqrt{61}\\\\")).toBe("\\(\\sqrt{61}\\)");
+  });
+
+  it("strips a doubled line-break before a prose word", () => {
+    expect(normalizeOldDress("= 5 \\\\\\\\Therefore, unit vector = \\\\frac{3\\\\hat{i}}{5}\\\\")).toBe(
+      "= 5 Therefore, unit vector \\(= \\frac{3\\hat{i}}{5}\\)"
+    );
+  });
+
+  it("leaves a comma-separated numeric option unwrapped", () => {
+    expect(normalizeOldDress("2, 3, 6\\\\")).toBe("2, 3, 6");
   });
 });
 

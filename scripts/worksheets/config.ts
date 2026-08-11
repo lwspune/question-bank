@@ -213,6 +213,43 @@ export const CHAPTERS: Record<string, Chapter> = {
       { file: "08. Position of Point with Respect to Line.xlsx", subtopicName: "Position of a Point Relative to a Line" },
     ],
   },
+  vectors: {
+    id: "vectors",
+    chapterName: "Vectors",
+    dir: join(SOURCE_ROOT, "19. Vectors"),
+    sourceFile: "Cadetprep_Worksheets_Vectors",
+    note: "Cadetprep concept-practice worksheet — Vectors",
+    // CURATED: "02. Vector Algebra_v2.xlsx" excluded — exact duplicate of the base
+    // file (39/39 rows identical incl. options+keys, census 2026-08-07). Each
+    // subtopic pairs a base file with a "_new" variant; both map to ONE subtopic.
+    // Shared stems across pairs: exact dups dedup via content_hash at commit,
+    // re-authored distractor variants are kept (user's keep-duplicates ruling).
+    // The census's two apparent cross-file key conflicts dissolved on inspection:
+    // a sign-stripping normalizer had collapsed DIFFERENT questions (a·b = ±|a||b|;
+    // b with ±k̂) into "same stem". All four keys verified correct by the blind pass.
+    files: [
+      { file: "01. Fundamental Concepts.xlsx", subtopicName: "Fundamental Concepts" },
+      { file: "01. Fundamental Concepts_new.xlsx", subtopicName: "Fundamental Concepts" },
+      { file: "02. Vector Algebra.xlsx", subtopicName: "Vector Algebra" },
+      { file: "02. Vector Algebra_new.xlsx", subtopicName: "Vector Algebra" },
+      { file: "03. Unit Vector and Directions.xlsx", subtopicName: "Unit Vectors and Directions" },
+      { file: "03. Unit Vector and Directions_new.xlsx", subtopicName: "Unit Vectors and Directions" },
+      { file: "04. Position Vector and Geometric Applications.xlsx", subtopicName: "Position Vectors and Geometric Applications" },
+      { file: "04. Position Vector and Geometric Applications_new.xlsx", subtopicName: "Position Vectors and Geometric Applications" },
+      { file: "05. Scalar Product.xlsx", subtopicName: "Scalar Product" },
+      { file: "05. Scalar Product_new.xlsx", subtopicName: "Scalar Product" },
+      { file: "06. Vector Product.xlsx", subtopicName: "Vector Product" },
+      { file: "06. Vector Product_new.xlsx", subtopicName: "Vector Product" },
+      { file: "07. Triple Products.xlsx", subtopicName: "Triple Products" },
+      { file: "07. Triple Products_new.xlsx", subtopicName: "Triple Products" },
+      { file: "08. Vector Relationships.xlsx", subtopicName: "Vector Relationships" },
+      { file: "08. Vector Relationships_new.xlsx", subtopicName: "Vector Relationships" },
+      { file: "09. Special Angles.xlsx", subtopicName: "Special Angles" },
+      { file: "09. Special Angles_new.xlsx", subtopicName: "Special Angles" },
+      { file: "10. Applications.xlsx", subtopicName: "Applications" },
+      { file: "10. Applications_new.xlsx", subtopicName: "Applications" },
+    ],
+  },
 };
 
 export function requireChapter(id: string | undefined): Chapter {
