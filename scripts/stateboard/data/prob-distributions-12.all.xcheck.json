@@ -1,0 +1,695 @@
+[
+ {
+  "ref": "Ex 7.1 Q.1",
+  "book_key": "{ -6, -4, -2, 0, 2, 4, 6 }",
+  "our_answer": "leads with 6, 4, 2, 0 (numerical/absolute difference); gives {-6,-4,-2,0,2,4,6} only as a note",
+  "verdict": "OURS-WRONG",
+  "derivation": "Stem verified verbatim on the chapter page (printed p.232). Third ground truth: enumerate h = 0..6 heads, tails = 6-h. Signed difference 2h-6 gives {-6,-4,-2,0,2,4,6}; absolute |2h-6| gives {0,2,4,6}. Both readings are defensible for an ambiguous stem, so neither is wrong as arithmetic. The finding is that our solution LEADS with the absolute set AND asserts 'which is how the textbook intends it' - the printed key falsifies that claim outright, since the book prints the SIGNED set. Fix: swap lead and note (lead {-6,-4,-2,0,2,4,6}), and delete the false claim about the book's intent."
+ },
+ {
+  "ref": "Ex 7.1 Q.2",
+  "book_key": "{ 0, 1, 2 }",
+  "our_answer": "0, 1, 2",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.1 Q.3 (i)",
+  "book_key": "p.m.f.",
+  "our_answer": "IS a p.m.f.",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.1 Q.3 (ii)",
+  "book_key": "Not p.m.f",
+  "our_answer": "NOT a p.m.f.",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.1 Q.3 (iii)",
+  "book_key": "p.m.f",
+  "our_answer": "IS a p.m.f.",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.1 Q.3 (iv)",
+  "book_key": "Not p.m.f",
+  "our_answer": "NOT a p.m.f.",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.1 Q.3 (v)",
+  "book_key": "Not p.m.f.",
+  "our_answer": "NOT a p.m.f.",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.1 Q.3 (vi)",
+  "book_key": "p.m.f  [printed under a repeated label '(iv)' - a misprint for (vi); the six answers are in printed order]",
+  "our_answer": "IS a p.m.f.",
+  "verdict": "AGREE",
+  "derivation": "AGREE on content. Cosmetic book defect only: the Ex 7.1 Q.3 answer block reads '(i) p.m.f. (ii) Not p.m.f / (iii) p.m.f (iv) Not p.m.f / (v) Not p.m.f. (iv) p.m.f' - the last label should be (vi)."
+ },
+ {
+  "ref": "Ex 7.1 Q.4 (i)",
+  "book_key": "X: 0,1,2 ; P(X): 1/4, 1/2, 1/4",
+  "our_answer": "1/4, 1/2, 1/4",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.1 Q.4 (ii)",
+  "book_key": "X: 0,1,2,3 ; P(X): 1/8, 3/8, 3/8, 1/8",
+  "our_answer": "1/8, 3/8, 3/8, 1/8",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.1 Q.4 (iii)",
+  "book_key": "X: 0,1,2,3,4 ; P(X): 1/16, 1/4, 3/8, 1/4, 1/16",
+  "our_answer": "1/16, 4/16, 6/16, 4/16, 1/16",
+  "verdict": "AGREE",
+  "derivation": "Same numbers (4/16 = 1/4, 6/16 = 3/8)."
+ },
+ {
+  "ref": "Ex 7.1 Q.5",
+  "book_key": "X: 0,1,2 ; P(X): 2/3, 2/9, 1/9",
+  "our_answer": "4/9, 4/9, 1/9",
+  "verdict": "BOOK-WRONG",
+  "derivation": "Stem verified verbatim on printed p.232. Third ground truth = brute-force enumeration of all 36 equally likely ordered pairs, counting tosses exceeding 4: X=0 in 4*4=16 pairs, X=1 in 2*(2*4)=16, X=2 in 2*2=4, giving 16/36, 16/36, 4/36 = 4/9, 4/9, 1/9. The book's 2/3, 2/9, 1/9 sums to 1 but is INTERNALLY INCONSISTENT with independence: its own P(X=2)=1/9 forces p=1/3, hence P(X=0)=(2/3)^2=4/9, not 2/3 (2/3 is q, not q squared). It also matches neither reading of the ambiguous 'at least one die' phrasing - the compound-event reading (X in {0,1}) gives 4/9, 5/9. Our answer is also the published NCERT answer for the same question."
+ },
+ {
+  "ref": "Ex 7.1 Q.6",
+  "book_key": "X: 0,1,2,3,4 ; P(X): (4/5)^4 , (4/5)^3 (1/5) , (4/5)^2 (1/5)^2 , (4/5)(1/5)^3 , (1/5)^4   [read at 3x zoom - NO binomial coefficients are printed]",
+  "our_answer": "256/625, 256/625, 96/625, 16/625, 1/625",
+  "verdict": "BOOK-WRONG",
+  "derivation": "Stem verified verbatim on printed p.232 (30 bulbs, 6 defective, 4 drawn WITH replacement, so p=6/30=1/5, n=4, independent). Third ground truth = exact Fraction arithmetic over C(4,x) p^x q^(4-x): 256/625, 256/625, 96/625, 16/625, 1/625, summing to EXACTLY 1. The book's five printed entries omit C(4,1)=4, C(4,2)=6, C(4,3)=4 and therefore sum to (256+64+16+4+1)/625 = 341/625 = 0.5456, not 1 - the printed row is not a probability distribution at all. Only the x=0 and x=4 entries (coefficient 1) are correct."
+ },
+ {
+  "ref": "Ex 7.1 Q.7",
+  "book_key": "X: 0,1,2 ; P(X): 9/16, 3/8, 1/16",
+  "our_answer": "9/16, 6/16, 1/16",
+  "verdict": "AGREE",
+  "derivation": "6/16 = 3/8."
+ },
+ {
+  "ref": "Ex 7.1 Q.8 (i)",
+  "book_key": "1/10",
+  "our_answer": "k = 1/10",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.1 Q.8 (ii)",
+  "book_key": "3/10",
+  "our_answer": "3/10",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.1 Q.8 (iii)",
+  "book_key": "1/5",
+  "our_answer": "2/10 = 1/5",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.1 Q.9",
+  "book_key": "-0.05, 2.2475",
+  "our_answer": "-0.05, 2.2475 (= 899/400)",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.1 Q.10",
+  "book_key": "7/3 , 524/54   [read at 3x zoom - the printed values are unambiguous]",
+  "our_answer": "E(X) = 7/2 = 3.5, Var(X) = 35/12 = 2.9167",
+  "verdict": "BOOK-WRONG",
+  "derivation": "Stem verified verbatim on printed p.233 (X = number on the uppermost face of a FAIR die). Third ground truth = exact Fraction sums over the uniform p.m.f. on {1..6}: E(X)=21/6=7/2, E(X^2)=91/6, Var=91/6-49/4=35/12=2.91667. Two independent impossibility arguments against the printed key: (a) the distribution is symmetric about 3.5 so the mean MUST be 3.5, and 7/3=2.333 is not it; (b) for any random variable supported on [1,6] the variance cannot exceed (6-1)^2/4 = 6.25, but 524/54 = 9.7037 exceeds that, so it cannot be this variable's variance under ANY p.m.f. Both printed values are wrong."
+ },
+ {
+  "ref": "Ex 7.1 Q.11",
+  "book_key": "1.5",
+  "our_answer": "3/2 = 1.5",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.1 Q.12",
+  "book_key": "1/3",
+  "our_answer": "1/3",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.1 Q.13",
+  "book_key": "4.67",
+  "our_answer": "14/3 = 4.6667",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.1 Q.14",
+  "book_key": "2.41",
+  "our_answer": "sqrt(35/6) = 2.41523, quoted as 2.42",
+  "verdict": "AGREE",
+  "derivation": "Same exact value sqrt(35/6) = 2.415229...; the book truncates to 2.41 where we round to 2.42. Rounding convention only."
+ },
+ {
+  "ref": "Ex 7.1 Q.15",
+  "book_key": "17.53, 4.9, 2.21",
+  "our_answer": "17.53, 4.7822, 2.1868",
+  "verdict": "BOOK-WRONG",
+  "derivation": "Stem and all 15 ages verified verbatim on printed p.233. Third ground truth = exact Fraction arithmetic over the listed ages: sum=263 so mean=263/15=17.5333 (the book AGREES here); sum of squares=4683 so E(X^2)=4683/15=312.2; Var=312.2-(263/15)^2=1076/225=4.78222; SD=sqrt(1076/225)=2.186829. The book's 4.9 / 2.21 matches neither the population variance (4.78222) nor the sample (n-1) variance (5.12381), and 2.21^2=4.8841 does not even reproduce its own 4.9. Our values are also the published NCERT answers (4.78, 2.19) for the same data."
+ },
+ {
+  "ref": "Ex 7.1 Q.16",
+  "book_key": "0.7, 0.21",
+  "our_answer": "0.7, 0.21",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.1 (i)",
+  "book_key": "p.d.f.",
+  "our_answer": "IS a p.d.f.",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.1 (ii)",
+  "book_key": "Not a p.d.f",
+  "our_answer": "IS a p.d.f.",
+  "verdict": "BOOK-WRONG",
+  "derivation": "Stem verified verbatim on printed p.238: f(x)=x for 0<=x<=1 and =2-x for 1<x<2. Third ground truth = sympy integration of the actual piecewise function: integral of x over [0,1] = 1/2 and integral of (2-x) over [1,2] = 1/2, total area EXACTLY 1; non-negativity also checked explicitly (min of x on [0,1] is 0, min of 2-x on [1,2] is 0, neither negative). BOTH p.d.f. conditions hold - it is the standard triangular density on [0,2] peaking at x=1 - so it IS a p.d.f. and the printed 'Not a p.d.f' is wrong."
+ },
+ {
+  "ref": "Ex 7.2 Q.1 (iii)",
+  "book_key": "Not a p.d.f",
+  "our_answer": "NOT a p.d.f.",
+  "verdict": "AGREE",
+  "derivation": "Book right: integral of 2 over [0,1] = 2, not 1."
+ },
+ {
+  "ref": "Ex 7.2 Q.2 (a)",
+  "book_key": "2.25/16",
+  "our_answer": "9/64 = 0.140625",
+  "verdict": "AGREE",
+  "derivation": "2.25/16 = 0.140625 = 9/64; unsimplified printed form only."
+ },
+ {
+  "ref": "Ex 7.2 Q.2 (b)",
+  "book_key": "3/16",
+  "our_answer": "3/16",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.2 (c)",
+  "book_key": "3/4",
+  "our_answer": "12/16 = 3/4",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.3 (i)",
+  "book_key": "p.d.f.",
+  "our_answer": "IS a p.d.f.",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.3 (ii)",
+  "book_key": "1/9",
+  "our_answer": "1/9",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.3 (iii)",
+  "book_key": "1/9",
+  "our_answer": "1/9",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.4 (i)",
+  "book_key": "1/2 , 35/64",
+  "our_answer": "k = 1/2, P = 35/64",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.4 (ii)",
+  "book_key": "6 , 11/32 , 1/2",
+  "our_answer": "k = 6, 11/32, 1/2",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.5 (i)",
+  "book_key": "1/4",
+  "our_answer": "1/4",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.5 (ii)",
+  "book_key": "1/2",
+  "our_answer": "1/2",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.5 (iii)",
+  "book_key": "7/16",
+  "our_answer": "7/16",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.6 (i)",
+  "book_key": "2/5",
+  "our_answer": "2/5",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.6 (ii)",
+  "book_key": "1/5",
+  "our_answer": "1/5",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.7 (i)",
+  "book_key": "1/2",
+  "our_answer": "1/2",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.7 (ii)",
+  "book_key": "11/16",
+  "our_answer": "11/16",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.7 (iii)",
+  "book_key": "0.6328",
+  "our_answer": "81/128 = 0.6328125 (intended two-tail reading; literal reading noted separately)",
+  "verdict": "AGREE",
+  "derivation": "0.6328 = 81/128 to 4 d.p., so the book keys the intended two-tail reading, matching our lead answer (already-adjudicated item)."
+ },
+ {
+  "ref": "Ex 7.2 Q.8 (i)",
+  "book_key": "x^2/16",
+  "our_answer": "F(x) = x^2/16 on 0<x<4 (0 below, 1 above)",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.8 (ii)",
+  "book_key": "1/64 , 0.18 , 1",
+  "our_answer": "1/64 = 0.015625, 0.180625, 1",
+  "verdict": "AGREE",
+  "derivation": "0.180625 rounds to 0.18."
+ },
+ {
+  "ref": "Ex 7.2 Q.9",
+  "book_key": "2/9 , 0 , 8/9 , 7/9",
+  "our_answer": "2/9, 0, 8/9, 7/9",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Ex 7.2 Q.10",
+  "book_key": "1/log 3 , 4/log 3 , 4(log 3 - 1)/(log 3)^2",
+  "our_answer": "c = 1/log 3, E(X) = 2/log 3, Var(X) = 4(log 3 - 1)/(log 3)^2",
+  "verdict": "BOOK-WRONG",
+  "derivation": "Third ground truth = sympy integration of f(x)=c/x on (1,3). Normalisation c*ln3=1 gives c=1/log3 (book AGREES). E(X) = integral of x*(c/x) = 2c = 2/log3 = 1.82048. E(X^2) = integral of x^2*(c/x) = 4c = 4/log3 = 3.64096. So the book's SECOND value, 4/log3, is E(X^2) printed in the slot for E(X). Two independent proofs it cannot be the mean: (a) X is supported on (1,3) so E(X) must lie strictly inside (1,3), and 3.641 > 3; (b) the book's OWN third value 4(log3-1)/(log3)^2 = 0.32682 equals E(X^2)-[E(X)]^2 only if E(X)=2/log3 - using the book's middle value instead gives 4/log3 - (4/log3)^2 = -9.6156, a negative variance. The book's variance is right, its mean is wrong; our third value matches the book exactly."
+ },
+ {
+  "ref": "Misc 7 I (1)",
+  "book_key": "B",
+  "our_answer": "B",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Misc 7 I (2)",
+  "book_key": "C",
+  "our_answer": "C",
+  "verdict": "AGREE",
+  "derivation": "Already-adjudicated: the density 3(1-2x^2) on 0<x<1 integrates to 1 but is negative past 1/sqrt2, so it is not a valid p.d.f.; we answer as the book intends and flag it. The printed key C is consistent with that intended reading."
+ },
+ {
+  "ref": "Misc 7 I (3)",
+  "book_key": "A",
+  "our_answer": "A",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Misc 7 I (4)",
+  "book_key": "B",
+  "our_answer": "B",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Misc 7 I (5)",
+  "book_key": "C",
+  "our_answer": "C",
+  "verdict": "AGREE",
+  "derivation": "Already-adjudicated: the stem says 'E(X) =' while all options are a-vs-b relations; we key C on the intended reading and the printed key is C."
+ },
+ {
+  "ref": "Misc 7 I (6)",
+  "book_key": "B",
+  "our_answer": "B",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Misc 7 I (7)",
+  "book_key": "B",
+  "our_answer": "B",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Misc 7 I (8)",
+  "book_key": "A",
+  "our_answer": "A",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Misc 7 I (9)",
+  "book_key": "D",
+  "our_answer": "D",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Misc 7 I (10)",
+  "book_key": "B",
+  "our_answer": "B",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Misc 7 II (1)",
+  "book_key": "(i) Discrete {1, 2, 3, ..., 100000}  (ii) Continuous.  (iii) Continuous.  (iv) Discrete {0, 1, 2, 3, 4, 5}  (v) Continuous",
+  "our_answer": "(i) discrete, range {0,1,...,100000}  (ii) continuous  (iii) continuous  (iv) discrete, range {0,1,2,3,4,5}  (v) continuous",
+  "verdict": "AGREE",
+  "derivation": "All five type verdicts and the (iv) range match exactly. Only cosmetic divergence: for (i) we start the range at 0 and the book at 1 (a town can in principle have zero unemployed graduates); not treated as a disagreement."
+ },
+ {
+  "ref": "Misc 7 II (2)",
+  "book_key": "(i) 1/21  (ii) 10/21, 1/7, 6/7",
+  "our_answer": "k = 1/21; 10/21, 1/7, 6/7",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Misc 7 II (3)",
+  "book_key": "(i) 0.5  (ii) 0.7  (iii) 0.55  (iv) 0.45",
+  "our_answer": "0.5, 0.7, 0.55, 0.45",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Misc 7 II (4)",
+  "book_key": "(no entry printed)",
+  "our_answer": "show-that: P(X<=2) = P(X>=3) = 1/2",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": "'Show that' question - the answer block prints nothing between (3) and (5). Expected, not a finding."
+ },
+ {
+  "ref": "Misc 7 II (5)",
+  "book_key": "1/4 ; P(X): 1/20, 3/20, 1/4, 1/2, 1/20 ; F(x): 1/20, 1/5, 9/20, 19/20, 1",
+  "our_answer": "a = 1/4; F: 1/20, 4/20, 9/20, 19/20, 1",
+  "verdict": "AGREE",
+  "derivation": "Identical: the book's 1/5 is our 4/20, and its P(X) row (1/4 at x=3, 1/2 at x=4) is our a=1/4, 2a=1/2."
+ },
+ {
+  "ref": "Misc 7 II (6)",
+  "book_key": "X: 0..4 ; P(X): 1/16, 1/4, 3/8, 1/4, 1/16 ; formula 4Cx / 2^4",
+  "our_answer": "same table; P(X = x) = 4Cx / 2^4",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Misc 7 II (7)",
+  "book_key": "(i) X: 0,1,2 ; P(X): 4/9, 4/9, 1/9   (ii) X: 0,1,2 ; P(X): 25/36, 10/36, 1/36",
+  "our_answer": "(i) 4/9, 4/9, 1/9   (ii) two-valued: P(X=0)=25/36, P(X=1)=11/36 (the count-of-sixes table 25/36, 10/36, 1/36 given as a note)",
+  "verdict": "BOOK-WRONG",
+  "derivation": "(i) AGREES. (ii) disagrees. Stem verified verbatim on printed p.244: 'a success is defined as ... (ii) six appears on AT LEAST ONE die'. Third ground truth = enumeration of the 36 ordered pairs: the event 'six on at least one die' occurs in 11 of them, and it is ONE event about the PAIR of tosses, so the number of successes can only be 0 or 1, giving 25/36, 11/36 (also the published NCERT answer). The book's 25/36, 10/36, 1/36 is the distribution of the NUMBER OF SIXES - a different random variable - so its X=2 column asserts two occurrences of an event that can occur at most once per pair; it does not answer its own question. Both tables already appear in our solution. NOTE an inconsistency on OUR side worth settling: on the near-identical stem Ex 7.1 Q.5 ('number greater than 4 appears on at least one die') we lead with the PER-TOSS count reading, while here we lead with the compound-event reading. Pick one convention."
+ },
+ {
+  "ref": "Misc 7 II (8)",
+  "book_key": "(i) 1/10  (ii) 17/100  (iii) 3/10",
+  "our_answer": "k = 1/10, 17/100, 3/10",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Misc 7 II (9)",
+  "book_key": "p.m.f. row: 0.1, 0.2, 0.2, 0.15, 0.10, 0.10, 0.05, 0.10 ; (i) 0.55  (ii) 0.25",
+  "our_answer": "p.m.f. identical; (i) 0.55  (ii) 5/7 = 0.714286",
+  "verdict": "BOOK-WRONG",
+  "derivation": "Stem verified verbatim on printed p.244: '(ii) P(X <= 3 / X > 0)', a CONDITIONAL probability. Third ground truth = successive differences of the printed c.d.f. in exact Fractions, which reproduce the book's own p.m.f. row: P(-3..4) = 0.1, 0.2, 0.2, 0.15, 0.1, 0.1, 0.05, 0.1. Then P((X<=3) and (X>0)) = P(1)+P(2)+P(3) = 0.25 and P(X>0) = P(1)+P(2)+P(3)+P(4) = 0.35, so the conditional probability is 0.25/0.35 = 5/7 = 0.714286. The book's printed 0.25 is the NUMERATOR alone - the division by P(X>0)=0.35 was omitted (0.25 would be right only for the unconditional P(0 < X <= 3)). The book's p.m.f. row and its (i) both AGREE with ours, which isolates the defect to the division step."
+ },
+ {
+  "ref": "Misc 7 II (10)",
+  "book_key": "(i) 11/5, 14/25, sqrt14/5  (ii) 1/5, 14/25, sqrt14/5  (iii) (n+1)/2, (n^2-1)/12, sqrt((n^2-1)/12)  (iv) 5/2, 5/4, sqrt5/2",
+  "our_answer": "identical on all four parts",
+  "verdict": "AGREE",
+  "derivation": "Independently re-derived (ii), since a mean of 1/5 with the same variance as (i) looks odd at a glance: X=-1,0,1 with p=1/5,2/5,2/5 gives E(X)=(-1+0+2)/5=1/5 and E(X^2)=(1+0+2)/5=3/5, so Var=3/5-1/25=14/25. The book is right: (ii) is (i) shifted by -2, and a shift moves the mean but not the variance."
+ },
+ {
+  "ref": "Misc 7 II (11)",
+  "book_key": "Rs 5.5 , 8.25",
+  "our_answer": "11/2 = 5.5, 33/4 = 8.25",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Misc 7 II (12)",
+  "book_key": "0 , 1",
+  "our_answer": "E(X) = 0, Var(X) = 1",
+  "verdict": "AGREE",
+  "derivation": ""
+ },
+ {
+  "ref": "Misc 7 II (13)",
+  "book_key": "(i) 1/2  (ii) 11/16  (iii) 81/128",
+  "our_answer": "1/2, 11/16, 81/128 (intended reading; literal reading = 1, noted)",
+  "verdict": "AGREE",
+  "derivation": "Already-adjudicated self-overlapping event; the book keys the intended two-tail reading, which is our lead answer."
+ },
+ {
+  "ref": "Misc 7 II (14)",
+  "book_key": "(no entry printed)",
+  "our_answer": "show-that: common value 1/4",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": "'Show that' question - the answer block jumps from (13) to (15). Expected, not a finding."
+ },
+ {
+  "ref": "Misc 7 II (15)",
+  "book_key": "k = 1/4 , F(x) = sqrt(x)/2 , 1/sqrt2 , 1/2   [PRINTED AS ITEM (16) IN THE ANSWER BLOCK]",
+  "our_answer": "k = 1/4, F(x) = sqrt(x)/2 on 0<x<4, P(X<=2) = 1/sqrt2, P(X<=1) = 1/2",
+  "verdict": "AGREE",
+  "derivation": "Content AGREES item for item. But the answer block is MISNUMBERED at the tail: it prints entries up to (16) while Miscellaneous Exercise 7 (II) ends at question (15) - verified by reading the chapter's own last page (printed p.244), where (15) 'f(x) = k/sqrt(x), for 0<x<4 ... Determine k. Determine c.d.f. of X and hence P(X<=2) and P(X<=1)' is the LAST question, immediately followed by the end-of-chapter marker. So printed entry (16) is the key to question (15), and printed entry (15), 'k = 1/theta, 1/e', corresponds to NO question in the exercise - a stray/leftover answer, most plausibly for an exponential density f(x) = (1/theta)e^(-x/theta) not present in this edition. Our transcription is complete at 15 questions; the defect is in the book's answer block, not in our data."
+ },
+ {
+  "ref": "7.1 ForExample.1",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.3 ForExample.1",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.3.1 ForExample.1",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.3.1 ForExample.2",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.3.2 ForExample.1",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.3.2 ForExample.2",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.3.2 ForExample.3",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.3.2 SolvedEx.1",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.3.2 SolvedEx.2",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.3.2 SolvedEx.3",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.3.2 SolvedEx.4",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.3.2 SolvedEx.5",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.3.2 SolvedEx.6",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.3.3 SolvedEx.1",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.3.3 SolvedEx.2",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.3.3 SolvedEx.3",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.3.3 SolvedEx.4",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.4 SolvedEx.1",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.4 SolvedEx.2",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.4 SolvedEx.3",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.4 SolvedEx.4",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.4 SolvedEx.5",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.4 SolvedEx.6",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.4 SolvedEx.7",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.4 SolvedEx.8",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ },
+ {
+  "ref": "7.4 SolvedEx.9",
+  "book_key": "(no entry - worked example / For-Example carrying the book's own in-text solution)",
+  "our_answer": "see stored solution",
+  "verdict": "NO-KEY-PRINTED",
+  "derivation": ""
+ }
+]

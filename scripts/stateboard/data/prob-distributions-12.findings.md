@@ -76,3 +76,46 @@ confirmed on the rendered page at zoom rather than from the text layer.
   `<section> ForExample.n` ref so they cannot collide with a numbered block. The single boxed
   SOLVED EXAMPLES run covering 7.1-7.3.2 is prefixed `7.3.2 SolvedEx.n` (deepest preceding
   section) to stay unique against the sibling run after 7.3.3.
+
+---
+
+# Answer-key cross-check GATE — result (2026-08-13)
+
+Chapter-7 answer block: **Part-2 ans-p282 (printed 273) → ans-p284 (printed 275)**.
+
+**62 AGREE · 8 BOOK-WRONG · 1 OURS-WRONG · 28 NO-KEY-PRINTED** (0 illegible).
+
+The 8 book-key errors are recorded as errata brackets on the live rows. Several are
+self-refuting without any re-derivation: `Ex 7.1 Q.6` prints five terms with the binomial
+coefficients omitted, which sum to 341/625 rather than 1; `Ex 7.1 Q.10` gives a variance of
+9.7037 for a variable confined to [1,6], whose variance cannot exceed 6.25; `Ex 7.1 Q.15`
+prints a variance and an s.d. that contradict each other (2.21^2 = 4.8841, not 4.9);
+`Ex 7.2 Q.10` puts E(X^2) in the E(X) slot, which its own printed variance then reconciles
+to -9.6156.
+
+**The OURS-WRONG (fixed before flip):** `Ex 7.1 Q.1` led with the unsigned reading and
+asserted "which is how the textbook intends it" — a claim the printed key
+{-6,-4,-2,0,2,4,6} falsifies. Rewritten to lead with the signed reading, keep the unsigned
+one as a note, and state which the key follows. The lesson is narrow and worth keeping: it
+is fine to pick a reading of an ambiguous stem, but not to assert the book's INTENT unless
+the key has actually been read.
+
+## OPEN — needs a decision, does not block correctness
+
+`Ex 7.1 Q.5` and `Misc 7 II (7)(ii)` carry near-identical "…appears on at least one die"
+phrasing, and our two solutions LEAD with opposite readings:
+  - `Ex 7.1 Q.5` leads with a per-die success count (binomial, X in {0,1,2}) -> 4/9, 4/9, 1/9
+  - `Misc 7 II (7)(ii)` leads with one compound event about the PAIR (X in {0,1}) -> 25/36, 11/36
+Both are defensible for their own stem — the gate independently confirmed each value, and the
+book's key is wrong on BOTH — and each solution names the alternative reading in a note. So
+this is a presentation-consistency question, not a correctness one. Someone should read the
+two stems side by side and pick one convention.
+
+## Structural book defects found by the gate (verdict AGREE, no row affected)
+
+- The Misc-7 (II) answer block prints entries up to **(16)** while the exercise has only
+  **15 questions**. Printed entry (16) is the key to question (15) (matches item for item).
+  Printed entry (15), `k = 1/theta, 1/e`, corresponds to NO question in this edition's
+  exercise — a stray leftover, most plausibly for an exponential density since removed.
+  Our transcription is complete at 15; the defect is the book's.
+- The `Ex 7.1 Q.3` answer block repeats the label `(iv)` where `(vi)` belongs.

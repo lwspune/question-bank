@@ -1,0 +1,34 @@
+[
+  {
+    "ref": "Ex 7.1 Q.5",
+    "bracket": "[Textbook answer-key error: the key gives \\(2/3,\\ 2/9,\\ 1/9\\), which is self-inconsistent — its own \\(P(X=2)=1/9\\) forces \\(p=1/3\\), whence \\(P(X=0)=(2/3)^{2}=4/9\\), not \\(2/3\\) (the key printed \\(q\\) where \\(q^{2}\\) belongs). Enumerating all 36 ordered outcomes gives \\(16,16,4\\) out of 36, i.e. \\(4/9,\\ 4/9,\\ 1/9\\).]"
+  },
+  {
+    "ref": "Ex 7.1 Q.6",
+    "bracket": "[Textbook answer-key error: the key prints \\((4/5)^{4},\\ (4/5)^{3}(1/5),\\ (4/5)^{2}(1/5)^{2},\\ (4/5)(1/5)^{3},\\ (1/5)^{4}\\) with NO binomial coefficients. Those five terms sum to \\(341/625=0.5456\\), so the printed row is not a distribution at all. With the coefficients \\(1,4,6,4,1\\) the probabilities are \\(256,256,96,16,1\\) over 625 and sum to exactly 1.]"
+  },
+  {
+    "ref": "Ex 7.1 Q.10",
+    "bracket": "[Textbook answer-key error: the key gives mean \\(7/3\\) and variance \\(524/54\\); both are impossible. The distribution is symmetric on \\(1..6\\), which forces the mean to be \\(7/2\\). And a variable confined to \\([1,6]\\) has variance at most \\((6-1)^{2}/4=6.25\\), whereas \\(524/54=9.7037\\). The correct values are \\(7/2\\) and \\(35/12\\).]"
+  },
+  {
+    "ref": "Ex 7.1 Q.15",
+    "bracket": "[Textbook answer-key error: the key gives variance \\(4.9\\) and s.d. \\(2.21\\), which contradict each other — \\(2.21^{2}=4.8841\\), not 4.9. With \\(\\sum x=263\\) and \\(\\sum x^{2}=4683\\) over 15 values, \\(\\mathrm{Var}=312.2-(263/15)^{2}=1076/225=4.78222\\) and s.d. \\(=2.186829\\). The key matches neither the population nor the sample variance. The mean \\(17.53\\) is correct.]"
+  },
+  {
+    "ref": "Ex 7.2 Q.1 (ii)",
+    "bracket": "[Textbook answer-key error: the key says \"Not a p.d.f.\", but it is one. The function is the standard triangular density: \\(\\int_{0}^{1}x\\,dx=1/2\\) and \\(\\int_{1}^{2}(2-x)\\,dx=1/2\\), totalling exactly 1, and it is non-negative throughout its support (its minimum on each branch is 0). Both defining conditions hold.]"
+  },
+  {
+    "ref": "Ex 7.2 Q.10",
+    "bracket": "[Textbook answer-key error: the key prints \\(4/\\log 3\\) in the \\(E(X)\\) slot, but that is \\(E(X^{2})\\). \\(E(X)=2c=2/\\log 3=1.82048\\); \\(E(X^{2})=4c=3.64096\\). Two proofs: the support is \\((1,3)\\) so the mean must lie inside it, and \\(3.641>3\\); and the key's own variance reconciles only with \\(E(X)=2/\\log 3\\) — using its printed middle value gives a variance of \\(-9.6156\\), which is impossible. The values of \\(c\\) and of the variance are correct.]"
+  },
+  {
+    "ref": "Misc 7 II (7)",
+    "bracket": "[Textbook answer-key error in part (ii): the key gives \\(25/36,\\ 10/36,\\ 1/36\\). \"A six appears on at least one die\" is a SINGLE event about the pair — true for 11 of the 36 outcomes — so \\(X\\in\\{0,1\\}\\) and the distribution is \\(25/36,\\ 11/36\\). The printed key is the number-of-sixes distribution, whose \\(X=2\\) entry asserts two occurrences of an event that can happen at most once per throw of the pair. Part (i) is correct.]"
+  },
+  {
+    "ref": "Misc 7 II (9)",
+    "bracket": "[Textbook answer-key error in part (ii): the question asks the CONDITIONAL probability \\(P(X\\leq 3\\mid X>0)\\), and the key gives \\(0.25\\) — the numerator alone, undivided. From the book's own c.d.f., \\(P(0<X\\leq 3)=0.25\\) and \\(P(X>0)=0.35\\), so the answer is \\(0.25/0.35=5/7=0.714286\\). The p.m.f. row and part (i) are correct, which isolates the defect to the missing division.]"
+  }
+]

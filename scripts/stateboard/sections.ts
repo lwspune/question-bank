@@ -301,6 +301,36 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Miscellaneous Exercise 4", label: "Evaluate the following", kind: "miscellaneous", refPrefixes: ["Misc 4 IV ("] },
   ],
 
+  // ── Ch.7 Probability Distributions (Part 2) — verified against
+  //    Ch_07_Probability_Distributions.pdf via a get_text('blocks') (page, y)
+  //    scan (2026-08-12). Two halves — discrete (7.1-7.3) then continuous (7.4)
+  //    — each ending in its own exercise, then a two-part Miscellaneous.
+  //    Structural notes:
+  //    (a) The book prints ONE boxed SOLVED EXAMPLES run covering all of
+  //        §7.1-§7.3.2 and places it physically after §7.3.2 (p07 y76), so its
+  //        six items are ref'd "7.3.2 SolvedEx" (deepest preceding section).
+  //        §7.3.3 has its OWN later run (p10 y376) ref'd "7.3.3 SolvedEx", and
+  //        §7.4 a third (p15 y498) ref'd "7.4 SolvedEx". Three separate runs.
+  //    (b) Worked items the book prints as "For example" rather than "Ex. n"
+  //        carry "<section> ForExample" refs; they are threaded through the
+  //        theory and belong with their section's solved block, so both
+  //        prefixes are listed together.
+  //    (c) Prefix safety, checked: "7.3 ForExample" does NOT match
+  //        "7.3.1 ForExample" or "7.3.2 SolvedEx" (the 4th char is a space vs
+  //        '.'), and "Misc 7 I (" does NOT match "Misc 7 II (".
+  //    (d) Every block boundary is MID-PAGE; p15 alone carries three headings.
+  "prob-distributions-12": [
+    { group: "7.1-7.2 Random Variables and Their Types", label: "Illustrations", kind: "solved_example", refPrefixes: ["7.1 ForExample", "7.2 ForExample"] },
+    { group: "7.3 Probability Distribution of a Discrete Random Variable", label: "Illustrations", kind: "solved_example", refPrefixes: ["7.3 ForExample", "7.3.1 ForExample", "7.3.2 ForExample"] },
+    { group: "7.3 Probability Distribution of a Discrete Random Variable", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.3.2 SolvedEx"] },
+    { group: "7.3.3 Expected Value and Variance", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.3.3 SolvedEx"] },
+    { group: "Exercise 7.1", label: "Exercise 7.1", kind: "exercise", refPrefixes: ["Ex 7.1 "] },
+    { group: "7.4 Continuous Random Variables", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.4 SolvedEx", "7.4.1 SolvedEx", "7.4.2 SolvedEx"] },
+    { group: "Exercise 7.2", label: "Exercise 7.2", kind: "exercise", refPrefixes: ["Ex 7.2 "] },
+    { group: "Miscellaneous Exercise 7", label: "Choose the correct option", kind: "miscellaneous", refPrefixes: ["Misc 7 I ("] },
+    { group: "Miscellaneous Exercise 7", label: "Solve the following", kind: "miscellaneous", refPrefixes: ["Misc 7 II ("] },
+  ],
+
   // ── Ch.8 Binomial Distribution (Part 2) — verified against
   //    Ch_08_Binomial_Distributions.pdf via a get_text('blocks') (page, y) scan
   //    (2026-08-12). The smallest Part-2 chapter: three short teaching sections,

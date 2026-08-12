@@ -1,0 +1,117 @@
+[
+  {
+    "id": "bd06779d-ac50-4005-af57-1f749a7d1ca5",
+    "ref": "Ex 7.2 Q.1 (i)",
+    "solution": "A function \\(f\\) is a p.d.f. of a continuous r.v. only if BOTH conditions hold:\n(1) \\(f(x) \\geq 0\\) for every \\(x\\), and\n(2) the total area under \\(f\\) is 1.\nCondition (1): for \\(0 \\leq x \\leq \\dfrac{\\pi}{2}\\) we have \\(\\sin x \\geq 0\\), so \\(f(x) \\geq 0\\) throughout the support.\nCondition (2):\n\\(\\int_{0}^{\\pi/2} \\sin x \\, dx = \\Big[-\\cos x\\Big]_{0}^{\\pi/2} = -\\cos\\dfrac{\\pi}{2} + \\cos 0 = 0 + 1 = 1\\)\nBoth conditions are satisfied.\n\\(\\therefore f(x) = \\sin x\\), \\(0 \\leq x \\leq \\dfrac{\\pi}{2}\\), IS a p.d.f. of the r.v. \\(X\\)."
+  },
+  {
+    "id": "2efbaa78-c3a4-4292-b148-d726d1b11994",
+    "ref": "Ex 7.2 Q.1 (ii)",
+    "solution": "[Textbook answer-key error: the key says \"Not a p.d.f.\", but it is one. The function is the standard triangular density: \\(\\int_{0}^{1}x\\,dx=1/2\\) and \\(\\int_{1}^{2}(2-x)\\,dx=1/2\\), totalling exactly 1, and it is non-negative throughout its support (its minimum on each branch is 0). Both defining conditions hold.]\n\nHere \\(f(x) = x\\) on \\(0 \\leq x \\leq 1\\) and \\(f(x) = 2 - x\\) on \\(1 < x < 2\\).\nCondition (1), non-negativity: on \\([0, 1]\\), \\(x \\geq 0\\); on \\((1, 2)\\), \\(x < 2\\) so \\(2 - x > 0\\). Hence \\(f(x) \\geq 0\\) on the whole support.\nCondition (2), total area. The rule changes at \\(x = 1\\), so split the integral there:\n\\(\\int_{0}^{1} x \\, dx = \\left[\\dfrac{x^{2}}{2}\\right]_{0}^{1} = \\dfrac{1}{2}\\)\n\\(\\int_{1}^{2} (2 - x) \\, dx = \\left[2x - \\dfrac{x^{2}}{2}\\right]_{1}^{2} = (4 - 2) - \\left(2 - \\dfrac{1}{2}\\right) = 2 - \\dfrac{3}{2} = \\dfrac{1}{2}\\)\nTotal area \\(= \\dfrac{1}{2} + \\dfrac{1}{2} = 1\\)\nBoth conditions are satisfied.\n\\(\\therefore\\) this \\(f\\) IS a p.d.f. of the r.v. \\(X\\). (It is the triangular density on \\([0, 2]\\) rising to a peak at \\(x = 1\\).)"
+  },
+  {
+    "id": "521203f8-5c6c-401e-b922-6254d254dc0e",
+    "ref": "Ex 7.2 Q.1 (iii)",
+    "solution": "Condition (1), non-negativity: \\(f(x) = 2 > 0\\) on \\(0 \\leq x \\leq 1\\), so this condition holds.\nCondition (2), total area:\n\\(\\int_{0}^{1} 2 \\, dx = \\Big[2x\\Big]_{0}^{1} = 2 - 0 = 2\\)\nThe total area is 2, not 1, so condition (2) FAILS.\n\\(\\therefore f(x) = 2\\), \\(0 \\leq x \\leq 1\\), is NOT a p.d.f. of a r.v.\nNote: being non-negative is never enough by itself; the total area must be exactly 1. The same constant would work as a p.d.f. if the support were halved, i.e. \\(f(x) = 2\\) on \\(0 \\leq x \\leq \\dfrac{1}{2}\\), or if the value were halved, i.e. \\(f(x) = 1\\) on \\(0 \\leq x \\leq 1\\)."
+  },
+  {
+    "id": "bd8aa714-52f2-48e4-8759-1faa8c23a9bd",
+    "ref": "Ex 7.2 Q.2 (a)",
+    "solution": "Here \\(f(x) = \\dfrac{x}{8}\\) for \\(0 < x < 4\\) and \\(f(x) = 0\\) otherwise. (Check: \\(f \\geq 0\\) on \\((0,4)\\) and \\(\\int_{0}^{4} \\dfrac{x}{8}\\, dx = \\left[\\dfrac{x^{2}}{16}\\right]_{0}^{4} = 1\\), so it is a genuine p.d.f.)\nSince \\(f(x) = 0\\) for \\(x \\leq 0\\), only the part of the event lying inside \\((0, 4)\\) contributes:\n\\(P(X < 1.5) = \\int_{0}^{1.5} \\dfrac{x}{8}\\, dx = \\left[\\dfrac{x^{2}}{16}\\right]_{0}^{1.5} = \\dfrac{(1.5)^{2}}{16} = \\dfrac{2.25}{16}\\)\n\\(\\therefore P(X < 1.5) = \\dfrac{9}{64} = 0.140625\\)"
+  },
+  {
+    "id": "45164d67-a5aa-4746-a1a5-5bd8af420b10",
+    "ref": "Ex 7.2 Q.2 (b)",
+    "solution": "Here \\(f(x) = \\dfrac{x}{8}\\) for \\(0 < x < 4\\) and \\(f(x) = 0\\) otherwise. The interval \\((1, 2)\\) lies entirely inside the support, so\n\\(P(1 < X < 2) = \\int_{1}^{2} \\dfrac{x}{8}\\, dx = \\left[\\dfrac{x^{2}}{16}\\right]_{1}^{2} = \\dfrac{4}{16} - \\dfrac{1}{16} = \\dfrac{3}{16}\\)\n\\(\\therefore P(1 < X < 2) = \\dfrac{3}{16} = 0.1875\\)"
+  },
+  {
+    "id": "c0f7a2ad-8a29-456c-9ec8-a73577930f2e",
+    "ref": "Ex 7.2 Q.2 (c)",
+    "solution": "Here \\(f(x) = \\dfrac{x}{8}\\) for \\(0 < x < 4\\) and \\(f(x) = 0\\) otherwise. The event \\(X > 2\\) contributes only over \\((2, 4)\\), because \\(f\\) vanishes beyond \\(x = 4\\):\n\\(P(X > 2) = \\int_{2}^{4} \\dfrac{x}{8}\\, dx = \\left[\\dfrac{x^{2}}{16}\\right]_{2}^{4} = \\dfrac{16}{16} - \\dfrac{4}{16} = \\dfrac{12}{16}\\)\n\\(\\therefore P(X > 2) = \\dfrac{3}{4} = 0.75\\)\nCheck by complement: \\(P(X \\leq 2) = \\dfrac{2^{2}}{16} = \\dfrac{1}{4}\\), and \\(1 - \\dfrac{1}{4} = \\dfrac{3}{4}\\). (For a continuous r.v. \\(P(X = 2) = 0\\), so \\(P(X \\leq 2)\\) and \\(P(X < 2)\\) are the same number.)"
+  },
+  {
+    "id": "17160686-d620-4579-b73c-607c39c800cc",
+    "ref": "Ex 7.2 Q.3 (i)",
+    "solution": "Test both requirements for a p.d.f.\nCondition (1), non-negativity: \\(f(x) = \\dfrac{x^{2}}{3}\\) and \\(x^{2} \\geq 0\\) for every real \\(x\\), so \\(f(x) \\geq 0\\) on \\(-1 < x < 2\\). (Part of the support is negative, but it is \\(x\\) that is negative there, never \\(f(x)\\).)\nCondition (2), total area:\n\\(\\int_{-1}^{2} \\dfrac{x^{2}}{3}\\, dx = \\left[\\dfrac{x^{3}}{9}\\right]_{-1}^{2} = \\dfrac{8}{9} - \\left(\\dfrac{-1}{9}\\right) = \\dfrac{8}{9} + \\dfrac{1}{9} = 1\\)\nBoth conditions hold.\n\\(\\therefore f(x) = \\dfrac{x^{2}}{3}\\), \\(-1 < x < 2\\), IS a p.d.f. of the r.v. \\(X\\)."
+  },
+  {
+    "id": "75b59125-44b0-4616-b48e-149490d61b20",
+    "ref": "Ex 7.2 Q.3 (ii)",
+    "solution": "With \\(f(x) = \\dfrac{x^{2}}{3}\\) on \\(-1 < x < 2\\):\n\\(P(0 < X \\leq 1) = \\int_{0}^{1} \\dfrac{x^{2}}{3}\\, dx = \\left[\\dfrac{x^{3}}{9}\\right]_{0}^{1} = \\dfrac{1}{9} - 0\\)\n\\(\\therefore P(0 < X \\leq 1) = \\dfrac{1}{9} \\approx 0.1111\\)\n(The endpoint \\(x = 1\\) is included as printed, but for a continuous r.v. \\(P(X = 1) = 0\\), so including or excluding it does not change the value.)"
+  },
+  {
+    "id": "4821dbd8-f167-4ab9-9dd9-a380427ab7e8",
+    "ref": "Ex 7.2 Q.3 (iii)",
+    "solution": "\"\\(X\\) is negative\" is the event \\(X < 0\\). The p.d.f. is zero below \\(x = -1\\), so the integral runs only from \\(-1\\) to \\(0\\):\n\\(P(X < 0) = \\int_{-1}^{0} \\dfrac{x^{2}}{3}\\, dx = \\left[\\dfrac{x^{3}}{9}\\right]_{-1}^{0} = 0 - \\left(\\dfrac{-1}{9}\\right) = \\dfrac{1}{9}\\)\n\\(\\therefore P(X < 0) = \\dfrac{1}{9} \\approx 0.1111\\)"
+  },
+  {
+    "id": "edc0dca9-003f-4eb1-8b76-9c93e8a32d5a",
+    "ref": "Ex 7.2 Q.4 (i)",
+    "solution": "The constant \\(k\\) is precisely what makes the total area 1 (the function as printed is deliberately unnormalised until \\(k\\) is found).\n\\(\\int_{0}^{2} kx \\, dx = 1\\)\n\\(k\\left[\\dfrac{x^{2}}{2}\\right]_{0}^{2} = 1 \\Rightarrow k\\left(\\dfrac{4}{2} - 0\\right) = 1 \\Rightarrow 2k = 1\\)\n\\(\\therefore k = \\dfrac{1}{2}\\)\nSince \\(k > 0\\) and \\(x > 0\\) on the support, \\(f(x) = \\dfrac{x}{2} \\geq 0\\) there, so the non-negativity condition holds too.\nNow \\(f(x) = \\dfrac{x}{2}\\) for \\(0 < x < 2\\), and \\(\\left(\\dfrac{1}{4}, \\dfrac{3}{2}\\right)\\) lies inside the support:\n\\(P\\left(\\dfrac{1}{4} < X < \\dfrac{3}{2}\\right) = \\int_{1/4}^{3/2} \\dfrac{x}{2}\\, dx = \\left[\\dfrac{x^{2}}{4}\\right]_{1/4}^{3/2} = \\dfrac{9/4}{4} - \\dfrac{1/16}{4} = \\dfrac{9}{16} - \\dfrac{1}{64}\\)\n\\(= \\dfrac{36 - 1}{64} = \\dfrac{35}{64}\\)\n\\(\\therefore k = \\dfrac{1}{2}\\) and \\(P\\left(\\dfrac{1}{4} < X < \\dfrac{3}{2}\\right) = \\dfrac{35}{64} = 0.546875\\)"
+  },
+  {
+    "id": "161ac9ae-f806-47fa-8dbc-9d0222ede5d8",
+    "ref": "Ex 7.2 Q.4 (ii)",
+    "solution": "Find \\(k\\) from the total-area condition:\n\\(\\int_{0}^{1} kx(1 - x)\\, dx = 1\\)\n\\(k\\int_{0}^{1} (x - x^{2})\\, dx = k\\left[\\dfrac{x^{2}}{2} - \\dfrac{x^{3}}{3}\\right]_{0}^{1} = k\\left(\\dfrac{1}{2} - \\dfrac{1}{3}\\right) = \\dfrac{k}{6} = 1\\)\n\\(\\therefore k = 6\\)\nSince \\(k > 0\\) and \\(x(1 - x) \\geq 0\\) for \\(0 < x < 1\\), the non-negativity condition also holds.\nSo \\(f(x) = 6x(1 - x) = 6x - 6x^{2}\\), whose antiderivative is \\(3x^{2} - 2x^{3}\\).\nValues of \\(3x^{2} - 2x^{3}\\):\nat \\(x = \\dfrac{1}{2}\\): \\(3\\left(\\dfrac{1}{4}\\right) - 2\\left(\\dfrac{1}{8}\\right) = \\dfrac{3}{4} - \\dfrac{1}{4} = \\dfrac{1}{2}\\)\nat \\(x = \\dfrac{1}{4}\\): \\(3\\left(\\dfrac{1}{16}\\right) - 2\\left(\\dfrac{1}{64}\\right) = \\dfrac{3}{16} - \\dfrac{1}{32} = \\dfrac{5}{32}\\)\nat \\(x = 0\\): \\(0\\)\nHence\n\\(P\\left(\\dfrac{1}{4} < X < \\dfrac{1}{2}\\right) = \\dfrac{1}{2} - \\dfrac{5}{32} = \\dfrac{16 - 5}{32} = \\dfrac{11}{32}\\)\n\\(P\\left(X < \\dfrac{1}{2}\\right) = \\dfrac{1}{2} - 0 = \\dfrac{1}{2}\\)\n\\(\\therefore k = 6\\), \\(P\\left(\\dfrac{1}{4} < X < \\dfrac{1}{2}\\right) = \\dfrac{11}{32} = 0.34375\\), \\(P\\left(X < \\dfrac{1}{2}\\right) = \\dfrac{1}{2}\\).\n(The second answer is a useful check: \\(f\\) is symmetric about \\(x = \\dfrac{1}{2}\\), so exactly half the area lies on each side of it.)"
+  },
+  {
+    "id": "152b94f4-b8d7-4c57-ac9b-6ba4c0d0100a",
+    "ref": "Ex 7.2 Q.5 (i)",
+    "solution": "Here \\(f(x) = 0.5x = \\dfrac{x}{2}\\) for \\(0 \\leq x \\leq 2\\) and \\(f(x) = 0\\) otherwise. (Check: \\(f \\geq 0\\) there and \\(\\int_{0}^{2} \\dfrac{x}{2}\\, dx = \\left[\\dfrac{x^{2}}{4}\\right]_{0}^{2} = 1\\).)\n\\(P(X \\leq 1) = \\int_{0}^{1} \\dfrac{x}{2}\\, dx = \\left[\\dfrac{x^{2}}{4}\\right]_{0}^{1} = \\dfrac{1}{4}\\)\n\\(\\therefore P(X \\leq 1) = \\dfrac{1}{4} = 0.25\\)\n(\\(X\\) is continuous, so \\(P(X = 1) = 0\\); hence \\(P(X \\leq 1)\\) and \\(P(X < 1)\\) are the same number.)"
+  },
+  {
+    "id": "00d22905-8ae7-40ea-8cfa-d4606954faa8",
+    "ref": "Ex 7.2 Q.5 (ii)",
+    "solution": "With \\(f(x) = \\dfrac{x}{2}\\) on \\(0 \\leq x \\leq 2\\):\n\\(P(0.5 \\leq X \\leq 1.5) = \\int_{0.5}^{1.5} \\dfrac{x}{2}\\, dx = \\left[\\dfrac{x^{2}}{4}\\right]_{0.5}^{1.5} = \\dfrac{2.25}{4} - \\dfrac{0.25}{4} = \\dfrac{2}{4}\\)\n\\(\\therefore P(0.5 \\leq X \\leq 1.5) = \\dfrac{1}{2} = 0.5\\)"
+  },
+  {
+    "id": "f804ea91-fd86-4bb8-bb9c-2da5175e85dc",
+    "ref": "Ex 7.2 Q.5 (iii)",
+    "solution": "With \\(f(x) = \\dfrac{x}{2}\\) on \\(0 \\leq x \\leq 2\\) and \\(0\\) beyond \\(x = 2\\), the event \\(X \\geq 1.5\\) contributes only over \\([1.5, 2]\\):\n\\(P(X \\geq 1.5) = \\int_{1.5}^{2} \\dfrac{x}{2}\\, dx = \\left[\\dfrac{x^{2}}{4}\\right]_{1.5}^{2} = \\dfrac{4}{4} - \\dfrac{2.25}{4} = \\dfrac{1.75}{4}\\)\n\\(\\therefore P(X \\geq 1.5) = \\dfrac{7}{16} = 0.4375\\)\nCheck by complement: \\(P(X < 1.5) = \\dfrac{(1.5)^{2}}{4} = \\dfrac{2.25}{4} = 0.5625\\), and \\(1 - 0.5625 = 0.4375\\)."
+  },
+  {
+    "id": "86ee8031-da2c-44e6-b6d5-3c0f06d2bff9",
+    "ref": "Ex 7.2 Q.6 (i)",
+    "solution": "Here \\(f(x) = \\dfrac{1}{5}\\) for \\(0 \\leq x \\leq 5\\) and \\(0\\) otherwise: the waiting time is uniformly distributed over 5 minutes. (Check: \\(f > 0\\) and \\(\\int_{0}^{5} \\dfrac{1}{5}\\, dx = 1\\).)\n\\(P(1 < X < 3) = \\int_{1}^{3} \\dfrac{1}{5}\\, dx = \\left[\\dfrac{x}{5}\\right]_{1}^{3} = \\dfrac{3}{5} - \\dfrac{1}{5} = \\dfrac{2}{5}\\)\n\\(\\therefore\\) the probability that the waiting time is between 1 and 3 minutes is \\(\\dfrac{2}{5} = 0.4\\).\n(For a uniform density this is just the length of the interval divided by the length of the support: \\(\\dfrac{3 - 1}{5}\\).)"
+  },
+  {
+    "id": "eda9c5d4-5e83-4f67-b580-1dbc9f86d29a",
+    "ref": "Ex 7.2 Q.6 (ii)",
+    "solution": "With \\(f(x) = \\dfrac{1}{5}\\) on \\(0 \\leq x \\leq 5\\), the event \\(X > 4\\) contributes only over \\((4, 5]\\), since \\(f = 0\\) beyond 5 minutes:\n\\(P(X > 4) = \\int_{4}^{5} \\dfrac{1}{5}\\, dx = \\left[\\dfrac{x}{5}\\right]_{4}^{5} = 1 - \\dfrac{4}{5} = \\dfrac{1}{5}\\)\n\\(\\therefore\\) the probability that the waiting time is more than 4 minutes is \\(\\dfrac{1}{5} = 0.2\\)."
+  },
+  {
+    "id": "f665746a-3291-49f2-aacf-34ebd169d047",
+    "ref": "Ex 7.2 Q.7 (i)",
+    "solution": "First find \\(k\\) from the total-area condition:\n\\(\\int_{-2}^{2} k(4 - x^{2})\\, dx = 1\\)\n\\(k\\left[4x - \\dfrac{x^{3}}{3}\\right]_{-2}^{2} = k\\left[\\left(8 - \\dfrac{8}{3}\\right) - \\left(-8 + \\dfrac{8}{3}\\right)\\right] = k\\left(16 - \\dfrac{16}{3}\\right) = \\dfrac{32k}{3} = 1\\)\n\\(\\therefore k = \\dfrac{3}{32}\\)\nSince \\(k > 0\\) and \\(4 - x^{2} \\geq 0\\) for \\(-2 \\leq x \\leq 2\\), the non-negativity condition holds as well, so \\(f\\) is a genuine p.d.f.\nNow\n\\(P(X > 0) = \\int_{0}^{2} \\dfrac{3}{32}(4 - x^{2})\\, dx = \\dfrac{3}{32}\\left[4x - \\dfrac{x^{3}}{3}\\right]_{0}^{2} = \\dfrac{3}{32}\\left(8 - \\dfrac{8}{3}\\right) = \\dfrac{3}{32} \\times \\dfrac{16}{3}\\)\n\\(\\therefore P(X > 0) = \\dfrac{1}{2}\\)\nThis is exactly what symmetry predicts: \\(f(-x) = f(x)\\), so the area splits equally about \\(x = 0\\)."
+  },
+  {
+    "id": "eb016a5e-ffaf-4c7d-969f-c0aa41c2e4de",
+    "ref": "Ex 7.2 Q.7 (ii)",
+    "solution": "From the total-area condition \\(\\int_{-2}^{2} k(4 - x^{2})\\, dx = \\dfrac{32k}{3} = 1\\), so \\(k = \\dfrac{3}{32}\\).\n\\(P(-1 < X < 1) = \\dfrac{3}{32}\\int_{-1}^{1} (4 - x^{2})\\, dx = \\dfrac{3}{32}\\left[4x - \\dfrac{x^{3}}{3}\\right]_{-1}^{1}\\)\n\\(= \\dfrac{3}{32}\\left[\\left(4 - \\dfrac{1}{3}\\right) - \\left(-4 + \\dfrac{1}{3}\\right)\\right] = \\dfrac{3}{32}\\left(8 - \\dfrac{2}{3}\\right) = \\dfrac{3}{32} \\times \\dfrac{22}{3} = \\dfrac{22}{32}\\)\n\\(\\therefore P(-1 < X < 1) = \\dfrac{11}{16} = 0.6875\\)"
+  },
+  {
+    "id": "e5a90ef3-dc13-4db1-a5e2-da2e486eb9cc",
+    "ref": "Ex 7.2 Q.7 (iii)",
+    "solution": "A note on the statement: as printed, the two conditions \\(-0.5 < x\\) and \\(x > 0.5\\) overlap, because every \\(x\\) greater than \\(0.5\\) is automatically greater than \\(-0.5\\); their literal union is just \\(x > -0.5\\). The event plainly intended is the pair of TAILS, \\(X < -0.5\\) or \\(X > 0.5\\), i.e. the error exceeds \\(0.5\\) in magnitude. The intended reading is solved first.\nAs before, \\(k = \\dfrac{3}{32}\\), so \\(f(x) = \\dfrac{3}{32}(4 - x^{2})\\) on \\([-2, 2]\\).\nMiddle piece:\n\\(P(-0.5 < X < 0.5) = \\dfrac{3}{32}\\left[4x - \\dfrac{x^{3}}{3}\\right]_{-0.5}^{0.5} = \\dfrac{3}{32}\\left[\\left(2 - \\dfrac{1}{24}\\right) - \\left(-2 + \\dfrac{1}{24}\\right)\\right] = \\dfrac{3}{32}\\left(4 - \\dfrac{1}{12}\\right)\\)\n\\(= \\dfrac{3}{32} \\times \\dfrac{47}{12} = \\dfrac{47}{128}\\)\nIntended reading (the two tails), by complement:\n\\(P(X < -0.5 \\text{ or } X > 0.5) = 1 - \\dfrac{47}{128} = \\dfrac{81}{128}\\)\n\\(\\therefore\\) the required probability is \\(\\dfrac{81}{128} = 0.6328125\\).\nLiteral reading, for completeness: \\(P(X > -0.5) = 1 - P(X < -0.5)\\), and by symmetry \\(P(X < -0.5) = \\dfrac{1}{2}\\left(\\dfrac{81}{128}\\right) = \\dfrac{81}{256}\\), so \\(P(X > -0.5) = \\dfrac{175}{256} = 0.68359375\\)."
+  },
+  {
+    "id": "68ab2ad2-7b42-4f6d-94bd-8a2e27d7ab8a",
+    "ref": "Ex 7.2 Q.8 (i)",
+    "solution": "The c.d.f. is \\(F(x) = P(X \\leq x) = \\int_{-\\infty}^{x} f(t)\\, dt\\), which here means integrating from the lower end of the support, \\(t = 0\\).\nFor \\(x \\leq 0\\): \\(f = 0\\) throughout, so \\(F(x) = 0\\).\nFor \\(0 < x < 4\\):\n\\(F(x) = \\int_{0}^{x} \\dfrac{t}{8}\\, dt = \\left[\\dfrac{t^{2}}{16}\\right]_{0}^{x} = \\dfrac{x^{2}}{16}\\)\nFor \\(x \\geq 4\\): all the area has been accumulated, so \\(F(x) = \\dfrac{4^{2}}{16} = 1\\).\n\\(\\therefore\\)\n\\(F(x) = 0\\), for \\(x \\leq 0\\)\n\\(F(x) = \\dfrac{x^{2}}{16}\\), for \\(0 < x < 4\\)\n\\(F(x) = 1\\), for \\(x \\geq 4\\)\nThe expression is continuous at both joins (\\(F \\to 0\\) as \\(x \\to 0^{+}\\) and \\(F \\to 1\\) as \\(x \\to 4^{-}\\)) and non-decreasing, as a c.d.f. must be."
+  },
+  {
+    "id": "64529f77-7b65-4842-8ffd-2372431291c9",
+    "ref": "Ex 7.2 Q.8 (ii)",
+    "solution": "From part (i), \\(F(x) = 0\\) for \\(x \\leq 0\\); \\(F(x) = \\dfrac{x^{2}}{16}\\) for \\(0 < x < 4\\); \\(F(x) = 1\\) for \\(x \\geq 4\\). Pick the branch that contains each value of \\(x\\).\n\\(x = 0.5\\) lies in \\((0, 4)\\):\n\\(F(0.5) = \\dfrac{(0.5)^{2}}{16} = \\dfrac{0.25}{16} = \\dfrac{1}{64} = 0.015625\\)\n\\(x = 1.7\\) lies in \\((0, 4)\\):\n\\(F(1.7) = \\dfrac{(1.7)^{2}}{16} = \\dfrac{2.89}{16} = 0.180625\\)\n\\(x = 5\\) lies beyond the support, so the third branch applies:\n\\(F(5) = 1\\)\n\\(\\therefore F(0.5) = 0.015625\\), \\(F(1.7) = 0.180625\\), \\(F(5) = 1\\)."
+  },
+  {
+    "id": "a3f9223a-7432-4d31-9e32-8463e4c16ad6",
+    "ref": "Ex 7.2 Q.9",
+    "solution": "The support is \\(-1 < x < 2\\), so the c.d.f. accumulates area starting at \\(t = -1\\).\nFor \\(x \\leq -1\\): \\(F(x) = 0\\).\nFor \\(-1 < x < 2\\):\n\\(F(x) = \\int_{-1}^{x} \\dfrac{t^{2}}{3}\\, dt = \\left[\\dfrac{t^{3}}{9}\\right]_{-1}^{x} = \\dfrac{x^{3}}{9} - \\left(\\dfrac{-1}{9}\\right) = \\dfrac{x^{3} + 1}{9}\\)\nFor \\(x \\geq 2\\): \\(F(x) = \\dfrac{8 + 1}{9} = 1\\).\n\\(\\therefore\\)\n\\(F(x) = 0\\), for \\(x \\leq -1\\)\n\\(F(x) = \\dfrac{x^{3} + 1}{9}\\), for \\(-1 < x < 2\\)\n\\(F(x) = 1\\), for \\(x \\geq 2\\)\nNow read the required probabilities off \\(F\\).\n\\(P(X < 1) = F(1) = \\dfrac{1 + 1}{9} = \\dfrac{2}{9}\\)\n\\(P(X < -2) = F(-2) = 0\\), since \\(-2\\) is below the support (the error can never be that small).\n\\(P(X > 0) = 1 - F(0) = 1 - \\dfrac{0 + 1}{9} = 1 - \\dfrac{1}{9} = \\dfrac{8}{9}\\)\n\\(P(1 < X < 2) = F(2) - F(1) = 1 - \\dfrac{2}{9} = \\dfrac{7}{9}\\)\n\\(\\therefore P(X < 1) = \\dfrac{2}{9}\\), \\(P(X < -2) = 0\\), \\(P(X > 0) = \\dfrac{8}{9}\\), \\(P(1 < X < 2) = \\dfrac{7}{9}\\).\n(Because \\(X\\) is continuous, \\(P(X = c) = 0\\) at every single point, so strict and non-strict inequalities give the same values here.)"
+  },
+  {
+    "id": "e3058919-1107-4c2a-b8b1-604fc87784fe",
+    "ref": "Ex 7.2 Q.10",
+    "solution": "[Textbook answer-key error: the key prints \\(4/\\log 3\\) in the \\(E(X)\\) slot, but that is \\(E(X^{2})\\). \\(E(X)=2c=2/\\log 3=1.82048\\); \\(E(X^{2})=4c=3.64096\\). Two proofs: the support is \\((1,3)\\) so the mean must lie inside it, and \\(3.641>3\\); and the key's own variance reconciles only with \\(E(X)=2/\\log 3\\) — using its printed middle value gives a variance of \\(-9.6156\\), which is impossible. The values of \\(c\\) and of the variance are correct.]\n\nFind \\(c\\) from the total-area condition (throughout, \\(\\log\\) means the natural logarithm):\n\\(\\int_{1}^{3} \\dfrac{c}{x}\\, dx = 1\\)\n\\(c\\Big[\\log x\\Big]_{1}^{3} = c(\\log 3 - \\log 1) = c\\log 3 = 1\\)\n\\(\\therefore c = \\dfrac{1}{\\log 3} \\approx 0.9102\\)\nSince \\(c > 0\\) and \\(x > 0\\) on the support, \\(f(x) = \\dfrac{c}{x} > 0\\) there, so the non-negativity condition also holds.\nMean:\n\\(E(X) = \\int_{1}^{3} x \\cdot \\dfrac{c}{x}\\, dx = c\\int_{1}^{3} 1 \\, dx = c(3 - 1) = 2c\\)\n\\(\\therefore E(X) = \\dfrac{2}{\\log 3} \\approx 1.8205\\)\nSecond moment:\n\\(E(X^{2}) = \\int_{1}^{3} x^{2} \\cdot \\dfrac{c}{x}\\, dx = c\\int_{1}^{3} x \\, dx = c\\left[\\dfrac{x^{2}}{2}\\right]_{1}^{3} = c\\left(\\dfrac{9}{2} - \\dfrac{1}{2}\\right) = 4c = \\dfrac{4}{\\log 3}\\)\nVariance:\n\\(\\mathrm{Var}(X) = E(X^{2}) - \\big[E(X)\\big]^{2} = \\dfrac{4}{\\log 3} - \\left(\\dfrac{2}{\\log 3}\\right)^{2} = \\dfrac{4}{\\log 3} - \\dfrac{4}{(\\log 3)^{2}}\\)\n\\(= \\dfrac{4(\\log 3 - 1)}{(\\log 3)^{2}}\\)\n\\(\\therefore c = \\dfrac{1}{\\log 3}\\), \\(E(X) = \\dfrac{2}{\\log 3} \\approx 1.8205\\), \\(\\mathrm{Var}(X) = \\dfrac{4(\\log 3 - 1)}{(\\log 3)^{2}} \\approx 0.3268\\).\n(The mean lies inside \\((1, 3)\\) and the variance is positive, as they must be.)"
+  }
+]
