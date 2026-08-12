@@ -1,0 +1,208 @@
+{
+  "_readme": [
+    "SOURCE DEFECTS in the chapterwise compilation, found in Phase 0 and adjudicated",
+    "against the raw board papers where those are readable.",
+    "",
+    "THE RULE THAT DECIDED EVERY ENTRY: a defect report is a HYPOTHESIS ABOUT WHOSE",
+    "DEFECT IT IS, and only the printed paper settles it. Two findings here looked like",
+    "compilation errors and turned out to be the BOARD's own misprints, faithfully",
+    "transcribed (see `boardDefects`). One looked fine and turned out to be the",
+    "compilation silently CORRECTING the board (see `compilationDivergesFromPaper`).",
+    "Do not fix any of these from arithmetic alone.",
+    "",
+    "PAPER READABILITY — this is what makes a defect cheap or expensive to settle:",
+    "  March 2022, March 2023  → text layer, readable directly (5,652 / 6,826 chars)",
+    "  2015-2020, 2024, 2025   → SCANNED, 0-88 chars of text. Need render + vision.",
+    "",
+    "NOTHING HERE IS FIXED YET. This file is the work list for the repair pass; a",
+    "question whose defect cannot be settled from its own paper is SKIPPED, not guessed.",
+    "",
+    "REPAIR IS PER-CHAPTER, not one big pass. Each chapter's ingest settles its own",
+    "entries below before committing, because a scanned paper has to be located, cropped",
+    "and read one block at a time. Recipe that worked (see the logic-12-pyq#5 entry):",
+    "render the page with PyMuPDF at ~110 dpi clipped to a fraction of page height —",
+    "the full page at 170 dpi is 4217x6201 and too large to read in one go.",
+    "",
+    "A STEM CAN BE WRONG EVEN WHEN THE OPTIONS ARE MISSING, and the options are often",
+    "what proves it — logic-12-pyq#5 turned out to have a misread symbol in the stem that",
+    "would have shipped a question whose correct answer was not among its own options.",
+    "When recovering options, re-read the stem too.",
+    "",
+    "⚠ NEVER CALL TWO OPTIONS DUPLICATES FROM FLATTENED TEXT. A PDF text layer (and",
+    "pandoc's output) strips fraction structure, so \\dfrac{4-\\pi}{2} and 4-\\dfrac{\\pi}{2}",
+    "BOTH flatten to '4 - \\pi 2' and read as identical — while being 0.4292 and 2.4292.",
+    "This produced a false duplicate-option report during the sibling textbook ingest on",
+    "2026-08-12, refuted only by re-reading the page at 3x zoom. A duplicate-option claim",
+    "is only sound from the rendered page or from structured LaTeX, never from flat text."
+  ],
+
+  "mcqOptionsLost": {
+    "_finding": [
+      "18 questions are multiple-choice in the printed paper but reach us without a full",
+      "(a)-(d) option set. After the cross-chapter duplicate drops, 16 distinct questions",
+      "need repair.",
+      "",
+      "HOW THEY WERE FOUND, because the first count was badly wrong. An initial probe",
+      "looked for a literal 'Options:' label and found FIVE. That label is only present",
+      "when the compilation started an option list and lost it; ten more questions dropped",
+      "the label too and therefore read as ordinary subjective questions. The reliable",
+      "signals are structural, not textual:",
+      "  Q1-block       Q.1 IS the multiple-choice block — the 2022 and 2023 papers state",
+      "                 this in their own printed instructions ('Q. 1 contains Eight",
+      "                 multiple choice type of questions'). Q.1(B) in the pre-2022",
+      "                 pattern is short-answer and is excluded.",
+      "  colon-artifact a stem ending in a bare '\\:' is where the option list was stripped.",
+      "                 Confirmed: 'The maximum value of f(x) = log x / x is \\:' is printed",
+      "                 in the 2022 paper with four options.",
+      "A THIRD signal was tried and REJECTED: 'tagged Q.n(A) for n>=2'. It fired on 20",
+      "questions and is simply wrong — in the pre-2022 pattern Q.n(A) is the first",
+      "sub-part of question n, not a choice block. It swept in 'Discuss the statement",
+      "pattern, using truth table', 'prove that tan(theta) = ...' and 'Find the",
+      "probability ...'. Do not reinstate it."
+    ],
+    "recovered": [
+      {
+        "ref": "vectors-12-pyq#18",
+        "tag": "[Q. 1. iv., March 2022]",
+        "stem": "The value of i.(j x k) + j.(k x i) + k.(i x j) is",
+        "had": ["a", "b", "c"],
+        "options": { "a": "0", "b": "-1", "c": "1", "d": "3" },
+        "source": "Maths 2022 paper.pdf, Section-A Q.1 iv (text layer)"
+      },
+      {
+        "ref": "app-derivatives-12-pyq#15",
+        "tag": "[Q. 1. vi., March 2022]",
+        "stem": "The maximum value of the function f(x) = log x / x is",
+        "had": [],
+        "options": { "a": "e", "b": "1/e", "c": "e^2", "d": "1/e^2" },
+        "source": "Maths 2022 paper.pdf, Section-A Q.1 vi (text layer)",
+        "note": "differentiation-12-pyq#20 is the same question and is DROPPED as a cross-chapter duplicate; repair only the Application-of-Derivatives copy."
+      },
+      {
+        "ref": "diff-equations-12-pyq#21",
+        "tag": "[Q. 1. vii., March 2023]",
+        "stem": "The solution of the differential equation dx/dt = x log x / t is",
+        "had": [],
+        "options": { "a": "x = e^{ct}", "b": "x + e^{ct} = 0", "c": "x = e^t + t", "d": "x e^{ct} = 0" },
+        "source": "Maths 2023 paper.pdf, SECTION A Q.1 vii (text layer)"
+      },
+      {
+        "ref": "logic-12-pyq#5",
+        "tag": "[Q. 1. (i), 2024]",
+        "had": [],
+        "options": { "a": "c AND (p OR q)", "b": "c AND (p AND q)", "c": "t AND (p AND q)", "d": "t AND (p OR q)" },
+        "source": "Maths 2024 paper.pdf page index 1, SECTION A Q.1 (i) — SCANNED, read by rendering the page at 110 dpi cropped to 0.05-0.40 of page height",
+        "stemFix": {
+          "from": "The dual of statement r OR (p OR q) is ____",
+          "to": "The dual of statement t OR (p OR q) is ____",
+          "why": "The compilation misread the printed italic 't' as 'r'. The OPTION SET proves it: options (a)/(b) begin with 'c' (contradiction) and (c)/(d) with 't' (tautology), and duality swaps t <-> c. If the stem really were a propositional variable r, the correct dual would be 'r AND (p AND q)', which appears in none of the four options. A scanned italic serif t is easily read as r at low resolution.",
+          "consequence": "Answer is (b) c AND (p AND q). Ingesting the compilation's 'r' would have shipped a question whose correct answer is not among its own options."
+        },
+        "note": "This is the PILOT chapter's defective MCQ, repaired first so the pilot can run end-to-end."
+      },
+      {
+        "ref": "binomial-distributions-12-pyq#12",
+        "tag": "[Q. 1. viii., March 2023]",
+        "stem": "P(X = x) = 4Cx (5/9)^x (4/9)^(4-x) for x = 0,1,2,3,4; then E(X) is equal to",
+        "had": [],
+        "options": { "a": "20/9", "b": "9/20", "c": "12/9", "d": "9/25" },
+        "source": "Maths 2023 paper.pdf, SECTION A Q.1 viii (text layer)",
+        "note": "The March 2023 paper prints the range as x = 0,1,2,3,4, which the compilation omits — carry it over."
+      }
+    ],
+    "needVisionPass": [
+      { "ref": "app-derivatives-12-pyq#5", "tag": "[Q. 1. v., 2024]", "stem": "The slope of the tangent to x = sin(theta), y = cos(2 theta) at theta = pi/6 is" },
+      { "ref": "def-integration-12-pyq#2", "tag": "[Q. 1. vi., 2024]", "stem": "If integral from -pi/4 to pi/4 of x^3 sin^4 x dx = k then k =" },
+      { "ref": "diff-equations-12-pyq#5", "tag": "[Q. 1. vii., 2024]", "stem": "The integrating factor of x dy/dx + 2y = x^2 log x is" },
+      { "ref": "binomial-distributions-12-pyq#13", "tag": "[Q. 1. viii., 2024]", "stem": "mean 18, variance 12, then the value of n is" },
+      { "ref": "app-def-integration-12-pyq#7", "tag": "[Q. 1. viii., 2025]", "stem": "The area bounded by y = x, X-axis, x = -1 and x = 4 is", "note": "def-integration-12-pyq#15 is the dropped duplicate." },
+      { "ref": "binomial-distributions-12-pyq#14", "tag": "[Q. 1. vi., 2025]", "stem": "mean 18, variance 12, then n is equal to" },
+      { "ref": "diff-equations-12-pyq#2", "tag": "[Q. 1. viii., February 2020]", "stem": "Order and degree of d^4y/dx^4 = [1 + (dy/dx)^2]^..." },
+      { "ref": "differentiation-12-pyq#24", "tag": "[Q. 4. (A) i., March 2017]", "stem": "Derivative of tan^3(theta) w.r.t. sec^3(theta) at theta = pi/3 is" },
+      { "ref": "app-derivatives-12-pyq#2", "tag": "[Q. 4. (A) ii., March 2017]", "stem": "The equation of the tangent to y = 3x^2 - x + 1 at P(1,3) is" },
+      { "ref": "def-integration-12-pyq#1", "tag": "[Q. 4. (A) ii., March 2018]", "stem": "If integral from 0 to k of 1/(2 + 8x^2) dx = pi/16, then k is" },
+      { "ref": "diff-equations-12-pyq#9", "tag": "[Q. 6., March 2019]", "stem": "colon-artifact only — confirm against the paper that this IS an MCQ before treating it as one" }
+    ]
+  },
+
+  "copiesDisagreeOnContent": [
+    {
+      "tag": "[Q. 4. (B) iii., March 2018]",
+      "copies": {
+        "def-integration-12-pyq#13": "Find the area of the ellipse x^2/1 + y^2/4 = 1",
+        "app-def-integration-12-pyq#2": "Find the area of the ellipse x^2/1 + y^2/9 = 1"
+      },
+      "status": "UNRESOLVED — the March 2018 paper is scanned. Needs a vision pass.",
+      "why": "Same provenance tag, different ellipse. One copy is a transcription error and arithmetic cannot choose between them — both are well-formed ellipses with clean areas (2pi and 3pi). DO NOT pick one; settle it from the page or skip the question."
+    }
+  ],
+
+  "compilationDivergesFromPaper": [
+    {
+      "ref": "indef-integration-12-pyq#4",
+      "tag": "[Q. 1. vii., March 2022]",
+      "compilation": "If integral dx/(4x-1) = A log|4x-1| + c, then A =",
+      "printedPaper": "If integral dx/(4x-1) = A log|2x+1| + c, then A =",
+      "source": "Maths 2022 paper.pdf (text layer) — read directly",
+      "finding": "The compilation SILENTLY CORRECTED the board. The paper's own version is inconsistent (the integral of dx/(4x-1) is (1/4)log|4x-1|, which has nothing to do with |2x+1|), so LWS repaired the stem to make it answerable.",
+      "consequence": "The compilation is NOT a faithful transcription in every case. That matters beyond this one row: it means 'the compilation says X' is not evidence about what the board printed, and any future reconciliation against the raw papers must expect silent repairs as well as errors.",
+      "printedOptions": ["1", "1/2", "1/3", "1/4"],
+      "whyItIsAmbiguous": "The stem as printed admits NO value of A, so exactly one token is corrupt — and there are two equally small repairs giving DIFFERENT answers, BOTH of which are on the printed option list. (a) Fix the answer form to A log|4x-1|, giving A = 1/4 — this is the compilation's silent correction. (b) Fix the integrand to dx/(2x+1), giving A = 1/2. Nothing in the paper discriminates between them, so shipping the compilation's version does not resolve the ambiguity; it silently picks one of two coin-flip readings and presents it as the question.",
+      "decision": "RESOLVED 2026-08-12 (user's call): SHIP THE PAPER'S TEXT VERBATIM with a `[Textbook misprint: ...]` bracket that says the stem as printed has no solution, and names both repairs and both answers. Reasons: (1) these are question_kind='pyq' rows and fidelity to the printed paper is what a PYQ bank is for — a corrected PYQ is no longer a PYQ; (2) it matches settled precedent in this same corpus (the March 2022 tangent question whose given point is not on its curve, and the malformed `c^2 = a^2 + b^2 = ac`, both preserved with notes); (3) the honest note teaches more than either repair — a student who spots the inconsistency learns something, one handed a smoothed question learns nothing. Apply when the Indefinite Integration chapter is ingested in Phase 3."
+    }
+  ],
+
+  "boardDefects": {
+    "_note": "Verified against the printed paper: the compilation transcribed these FAITHFULLY and the defect is the board's. Project convention is to PRESERVE a printed-paper defect and flag it honestly, never to silently repair it.",
+    "items": [
+      {
+        "ref": "trig-functions-12-pyq#25",
+        "tag": "[Q. 1. ii., March 2022]",
+        "printed": "In triangle ABC, if c^2 = a^2 + b^2 = ac, then angle B =",
+        "defect": "A malformed double-equality that cannot hold (it forces both c^2 = ac and a^2 + b^2 = ac).",
+        "evidence": "The 2022 paper prints exactly this. The SAME question in the 2023 paper reads 'c^2 + a^2 - b^2 = ac', which is well-formed and gives cos B = ac/(2ac) = 1/2, so B = pi/3 — option (b), matching the option list printed in 2022.",
+        "action": "preserve + errata note naming the intended reading"
+      },
+      {
+        "ref": "app-derivatives-12-pyq#4",
+        "tag": "[Q. 9, March 2022]",
+        "printed": "Find the equation of tangent to the curve y = 2x^3 + x^2 + 2 at (1/2, 2)",
+        "defect": "The given point is NOT on the given curve: at x = 1/2 the curve gives 2(1/8) + 1/4 + 2 = 2.5, not 2.",
+        "evidence": "The 2022 paper prints 'y = 2x3 + x2 + 2 at (1/2, 2)' verbatim — read from its text layer. The 2025 paper asks the same question with y = 2x^3 - x^2 + 2, which DOES pass through (1/2, 2), so the intended sign is minus.",
+        "action": "preserve + errata note; a student answering from either reading should not be marked wrong"
+      }
+    ]
+  },
+
+  "lostSuperscripts": {
+    "_finding": "Four p.d.f. stems in Probability Distributions carry 'x2' where a superscript was lost. A blanket 'x2 -> x^2' rewrite would be WRONG for at least one of them, which is why they are listed individually rather than batch-fixed.",
+    "items": [
+      { "ref": "prob-distributions-12-pyq#3", "tag": "[Q. 6. (B) iii., March 2015]", "raw": "f(x) = x2/3 on -1 < x < 2", "check": "x^2/3 integrates to 1 over (-1,2) and is non-negative, so x^2 is right here. (2x/3 also integrates to 1 but goes negative on (-1,0), so it is excluded.)" },
+      { "ref": "prob-distributions-12-pyq#5", "tag": "[Q. 6. (B) iii., March 2016]", "raw": "f(x) = x2/32 on 0 < x < 8", "check": "x^2/32 integrates to 16/3, NOT 1 — so it is not a valid p.d.f. and 'x2 -> x^2' is wrong here. x/32 integrates to exactly 1. UNRESOLVED: the 2016 paper is scanned; settle by vision, do not assume." },
+      { "ref": "prob-distributions-12-pyq#6", "tag": "[Q. 6. (B) iii., March 2017]", "raw": "f(x) = x2/3 on -1 < x < 2", "check": "same as the 2015 question — a genuine cross-year repeat; x^2/3." },
+      { "ref": "prob-distributions-12-pyq#10", "tag": "[Q. 19 (OR), March 2019]", "raw": "f(x) = x2/18 on -3 < x < 3", "check": "x^2/18 integrates to 1 over (-3,3) and is non-negative — x^2 is right." }
+    ]
+  },
+
+  "mechanical": {
+    "_note": "Uniform transformations for the normaliser. Each was checked, not assumed.",
+    "vmatrixToBmatrix": {
+      "count": 20,
+      "scope": "all 20 occurrences, all in the Matrices chapter",
+      "finding": "EVERY one denotes a MATRIX, not a determinant — the stems read 'the inverse of the matrix', 'adjoint of matrix A', 'matrix of co-factors', 'is a non singular matrix'. Q10 even writes |A|I with genuine bars for the determinant alongside a vmatrix for the matrix itself, and the March 2023 paper prints its Q4 counterpart with brackets. So the conversion is uniform and needs no per-case judgement.",
+      "action": "vmatrix -> bmatrix for all 20"
+    },
+    "escapedBlanks": { "count": 119, "action": "pandoc's \\_\\_\\_\\_ renders as literal backslash-underscores outside a math zone (the JEE lesson) — unescape to plain ____" },
+    "mathZones": { "count": 948, "action": "$...$ -> \\(...\\) per project convention" },
+    "nonAscii": {
+      "count": 11,
+      "chars": { "U+1F86A wide arrow": 3, "U+2220 angle": 3, "U+221E infinity": 2, "U+00A0 nbsp": 1, "U+2260 not-equal": 1, "U+00B1 plus-minus": 1 },
+      "action": "The U+1F86A arrow is used as 'for' in p.d.f. definitions (f(x) = x^2/3 [arrow] -1 < x < 2) — render as the word 'for', NOT as \\rightarrow, which would read as a limit. Others map to \\angle, \\infty, \\neq, \\pm; strip the nbsp."
+    },
+    "editorialNote": {
+      "ref": "logic-12-pyq#7",
+      "text": "(Note: This question involves quantifiers but is set in the context of sets/numbers)",
+      "action": "LWS's own annotation, not part of the printed question — strip from the stem."
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "_readme": [
+    "OWNERSHIP LEDGER for questions the chapterwise compilation files under TWO chapters.",
+    "",
+    "WHY: content_hash dedup is per (org, exam, hash), so an exact duplicate lands in",
+    "whichever chapter commits FIRST and the other copy vanishes silently — an arbitrary",
+    "outcome that reads like a decision. A near-duplicate (the copies often differ by a",
+    "word) lands TWICE instead. Neither is acceptable, so ownership is decided here and",
+    "the losing copy is dropped explicitly by `drop` below.",
+    "",
+    "HOW THIS LIST WAS BUILT — worth knowing, because the first attempt was wrong. A",
+    "token-similarity threshold of 0.90 found 23 pairs and MISSED at least four genuine",
+    "duplicates sitting at 0.76-0.89 (the 'five cards' pair, the 45/60-degree line pair, an",
+    "area pair, and the ellipse pair). Cross-chapter filing turns out to concentrate in",
+    "exactly four chapter pairs, so the list below comes from reading BOTH sides of those",
+    "four pairs in full — 32 pairs. Do not regenerate this by threshold.",
+    "",
+    "SCOPE — cross-chapter ONLY. Same-chapter near-duplicates are deliberately NOT dropped:",
+    "they are genuine cross-year repeats (y = x^x set in both 2016 and 2019; the",
+    "homogeneous-equation proof in 2016, 2018 and 2020; the same p.d.f. in 2015 and 2017),",
+    "and recurrence is signal. See the project rule 'keep duplicates — recurrence signal'.",
+    "",
+    "TWO SEPARATE DECISIONS, deliberately not conflated:",
+    "  owner   — which chapter the question belongs to, decided on the TEXTBOOK's placement",
+    "            and the DB subtopic axis, never on which file happened to list it first.",
+    "  useText — which transcription to keep. The copies are not always identical and the",
+    "            owner's copy is not always the better one (see the direction-cosine proof).",
+    "",
+    "TAG CAVEAT: the provenance tag is NOT a unique key. 20 tags label different questions,",
+    "and eight pairs below disagree with each other on the question NUMBER for the same",
+    "question (Q.4(B)v vs Q.5(A)v, March 2015). Year and month agree everywhere; the number",
+    "is recorded best-effort and must not be used to reconcile against a raw paper.",
+    "",
+    "NET EFFECT: 352 question instances - 32 dropped = 320 rows to ingest."
+  ],
+
+  "pairs": [
+    {
+      "_group": "Definite Integration -> Application of Definite Integration",
+      "_finding": "ALL EIGHT of the App-of-Definite-Integration chapter's questions are duplicates of Definite Integration's Q10-Q17 — a perfect 1:1. The compilation cross-filed its whole 'area' block (its own section C, 'Definite Integrals Leading to Area'). So App of Definite Integration contributes ZERO unique questions, and Definite Integration's real contribution is its Q1-Q9 (evaluation + properties).",
+      "_rule": "AREA questions go to Application of Definite Integration — its two DB subtopics are literally 'Area Under a Curve' and 'Area Between Two Curves'. Definite Integration is about evaluating integrals and proving their properties.",
+      "items": [
+        { "keep": "app-def-integration-12-pyq#5", "drop": "def-integration-12-pyq#10", "tag": "[Q. 11, March 2023]", "subtopic": "Area Under a Curve" },
+        { "keep": "app-def-integration-12-pyq#6", "drop": "def-integration-12-pyq#11", "tag": "[Q. 14, March 2023]", "subtopic": "Area Between Two Curves" },
+        { "keep": "app-def-integration-12-pyq#4", "drop": "def-integration-12-pyq#12", "tag": "[Q. 33, March 2022]", "subtopic": "Area Between Two Curves" },
+        { "keep": "app-def-integration-12-pyq#2", "drop": "def-integration-12-pyq#13", "tag": "[Q. 4. (B) iii., March 2018]", "subtopic": "Area Under a Curve", "defect": "CONTENT DIVERGENCE — the two copies give DIFFERENT ellipses for the same tag: x^2/1 + y^2/4 = 1 (Definite Integration) vs x^2/1 + y^2/9 = 1 (App of Definite Integration). One is a transcription error. The March 2018 paper is SCANNED, so this needs a vision pass before either is ingested. See defects.json — DO NOT ship on the guess." },
+        { "keep": "app-def-integration-12-pyq#1", "drop": "def-integration-12-pyq#14", "tag": "[Q. 4. (B) iii. / iv., March 2016]", "subtopic": "Area Under a Curve", "note": "Copies disagree on the question number (iii. vs iv.)." },
+        { "keep": "app-def-integration-12-pyq#7", "drop": "def-integration-12-pyq#15", "tag": "[Q. 1. viii., 2025]", "subtopic": "Area Under a Curve", "defect": "MCQ declared with ZERO options in BOTH copies — see defects.json." },
+        { "keep": "app-def-integration-12-pyq#8", "drop": "def-integration-12-pyq#16", "tag": "[Q. 13, 2025]", "subtopic": "Area Under a Curve" },
+        { "keep": "app-def-integration-12-pyq#3", "drop": "def-integration-12-pyq#17", "tag": "[Q. 12, 2024]", "subtopic": "Area Under a Curve" }
+      ]
+    },
+
+    {
+      "_group": "Line and Planes -> Vectors",
+      "_finding": "Five pairs, all direction-cosine / direction-ratio questions.",
+      "_rule": "Direction cosines and ratios are taught in the VECTORS chapter, not Line and Planes — verified in the textbook AGAINST the opposite assumption. Ch.5 carries 38 'direction cosine' mentions and a dedicated section 5.3.4 'Direction Angles and Direction Cosines' sitting inside 5.3 Product of vectors (→ DB subtopic 'Dot Product of Vectors'); Ch.6's section list opens at 6.1 'Vector and Cartesian equations of a line' and has no DC/DR section at all. The shipped bank already files 15 DC/DR practice rows under Vectors → Dot Product.",
+      "_notADuplicate": "Vectors#23 [Q. 18, March 2023] and Line-and-Plane#1 [Q. 1.(B) i., March 2015] share the SAME direction ratios (-2,1,-1 and -3,-4,1) but ask for different things (ratios vs cosines) in different sittings. Two distinct PYQs that reuse data — both kept.",
+      "items": [
+        { "keep": "vectors-12-pyq#20", "drop": "line-planes-12-pyq#5", "tag": "[Q. 1. iii., 2024]", "subtopic": "Dot Product of Vectors", "useText": "line-planes-12-pyq#5", "why": "The Vectors copy's math zone is truncated — it reads 'then $= $ ____' with the quantity lost. The Line-and-Plane copy has 'then r = ____' intact." },
+        { "keep": "vectors-12-pyq#21", "drop": "line-planes-12-pyq#3", "tag": "[Q. 7, February 2020]", "subtopic": "Dot Product of Vectors", "useText": "either", "why": "Copies identical." },
+        { "keep": "vectors-12-pyq#22", "drop": "line-planes-12-pyq#4", "tag": "[Q. 3. (B) i., March 2017]", "subtopic": "Dot Product of Vectors", "useText": "line-planes-12-pyq#4", "why": "The dropped copy is the better text and must be carried over: it is FULLER (keeps the second part, 'Hence find the direction angles of the line with the X axis') and more correct — the Vectors copy writes the direction cosines as l-hat, m-hat, n-hat, putting unit-vector hats on scalars." },
+        { "keep": "vectors-12-pyq#23", "drop": "line-planes-12-pyq#6", "tag": "[Q. 18, March 2023]", "subtopic": "Cross Product of Vectors", "useText": "either", "why": "Direction ratios of a vector perpendicular to two lines is solved by the cross product, so this one sits on Cross Product rather than Dot Product. The bank already files 2 DC/DR practice rows there." },
+        { "keep": "vectors-12-pyq#24", "drop": "line-planes-12-pyq#8", "tag": "[Q. 7, 2025]", "subtopic": "Dot Product of Vectors", "useText": "either", "why": "Line makes 45 and 60 degrees with the Y and Z axes; find the angle with X. Missed by the 0.90 threshold at 0.83." }
+      ]
+    },
+
+    {
+      "_group": "Differentiation -> Application of Derivatives",
+      "_rule": "Monotonicity, extrema and the mean value theorems are APPLICATIONS of the derivative and each has its own subtopic on Application of Derivatives. Differentiation's eight subtopics are all differentiation METHODS and offer no home for them.",
+      "items": [
+        { "keep": "app-derivatives-12-pyq#9", "drop": "differentiation-12-pyq#11", "tag": "[Q. 9, March 2023]", "subtopic": "Increasing and Decreasing Functions", "useText": "either" },
+        { "keep": "app-derivatives-12-pyq#10", "drop": "differentiation-12-pyq#15", "tag": "[Q. 2. iv., 2025]", "subtopic": "Increasing and Decreasing Functions", "useText": "either", "why": "Missed by the 0.90 threshold." },
+        { "keep": "app-derivatives-12-pyq#15", "drop": "differentiation-12-pyq#20", "tag": "[Q. 1. vi., March 2022]", "subtopic": "Maxima and Minima", "useText": "either" },
+        { "keep": "app-derivatives-12-pyq#26", "drop": "differentiation-12-pyq#30", "tag": "[Q. 32, March 2023]", "subtopic": "Lagrange's Mean Value Theorem", "useText": "app-derivatives-12-pyq#26", "why": "Keep the owner's copy — it bolds the theorem name, matching how the shipped practice rows on that subtopic are written." }
+      ]
+    },
+
+    {
+      "_group": "Probability Distributions -> Binomial Distribution",
+      "_finding": "FIFTEEN of Binomial Distribution's SIXTEEN questions duplicate Probability Distributions. Only its Q5 [Q. 33, February 2020] (fair coin tossed 8 times) is unique to it. So the two chapters are largely one corpus filed twice.",
+      "_rule": "A question whose model is explicitly X~B(n,p), or which is a count of successes over n repeated independent trials (n tosses / n bombs / n patients / n cards with replacement), is BINOMIAL. A general p.m.f./p.d.f., or an expectation computed from a bare distribution table, stays in Probability Distributions.",
+      "_blocked": "NEITHER chapter exists in the DB yet — both are created by Phase 1 (the textbook ingest of Ch_07 and Ch_08). Adjudicated on content here, but not committable until then, and the `subtopic` fields are deliberately absent because that axis does not exist yet.",
+      "_notADuplicate": [
+        "Probability#2 [Q. 6.(A) ii., March 2015] uses the same 4Cx (5/9)^x (4/9)^(4-x) p.m.f. as Probability#15 / Binomial#12 [Q. 1. viii., March 2023], but it is a different sitting asking a different thing — cross-year recurrence, both kept.",
+        "Probability#3 [March 2015] and Probability#6 [March 2017] are the same p.d.f. question in two sittings — same-chapter recurrence, both kept."
+      ],
+      "items": [
+        { "keep": "binomial-distributions-12-pyq#1", "drop": "prob-distributions-12-pyq#19", "tag": "[Q. 4.(B) v. / Q. 5.(A) v., March 2015]", "note": "copies disagree on the question number" },
+        { "keep": "binomial-distributions-12-pyq#2", "drop": "prob-distributions-12-pyq#20", "tag": "[Q. 5. ii., March 2016]" },
+        { "keep": "binomial-distributions-12-pyq#3", "drop": "prob-distributions-12-pyq#21", "tag": "[Q. 4. (B) v., March 2017]" },
+        { "keep": "binomial-distributions-12-pyq#4", "drop": "prob-distributions-12-pyq#22", "tag": "[Q. 6. (B) iii., March 2017]", "useText": "binomial-distributions-12-pyq#4", "why": "The Probability copy carries a stray pandoc '<!-- -->' break between the stem and its two sub-items." },
+        { "keep": "binomial-distributions-12-pyq#6", "drop": "prob-distributions-12-pyq#26", "tag": "[Q. 16 / Q. 26, March 2022]", "note": "copies disagree on the question number" },
+        { "keep": "binomial-distributions-12-pyq#7", "drop": "prob-distributions-12-pyq#27", "tag": "[Q. 26 / Q. 28, March 2023]", "note": "copies disagree on the question number; DISTINCT from the 2024 'exactly 5 successes' question below — 'at least 5' vs 'exactly 5'" },
+        { "keep": "binomial-distributions-12-pyq#8", "drop": "prob-distributions-12-pyq#29", "tag": "[Q. 26, 2024]" },
+        { "keep": "binomial-distributions-12-pyq#9", "drop": "prob-distributions-12-pyq#32", "tag": "[Q. 26, 2025]", "why": "Five cards drawn with replacement. Missed by the 0.90 threshold at 0.76." },
+        { "keep": "binomial-distributions-12-pyq#10", "drop": "prob-distributions-12-pyq#23", "tag": "[Q. 20, March 2019]" },
+        { "keep": "binomial-distributions-12-pyq#11", "drop": "prob-distributions-12-pyq#24", "tag": "[Q. 2. iv., February 2020]" },
+        { "keep": "binomial-distributions-12-pyq#12", "drop": "prob-distributions-12-pyq#15", "tag": "[Q. 1. viii., March 2023]", "useText": "binomial-distributions-12-pyq#12", "why": "The p.m.f. 4Cx (5/9)^x (4/9)^(4-x) IS binomial despite being dressed as a general one. The Probability copy has a stray '\\text{ }' artefact before the binomial coefficient." },
+        { "keep": "binomial-distributions-12-pyq#13", "drop": "prob-distributions-12-pyq#28", "tag": "[Q. 1. viii., 2024]" },
+        { "keep": "binomial-distributions-12-pyq#14", "drop": "prob-distributions-12-pyq#30", "tag": "[Q. 1. vi., 2025]", "note": "2024 and 2025 asked the same thing (mean 18, variance 12, find n) with different wording. BOTH sittings are kept as separate rows — cross-year recurrence; only the Probability-chapter copies are dropped." },
+        { "keep": "binomial-distributions-12-pyq#15", "drop": "prob-distributions-12-pyq#25", "tag": "[Q. 25, March 2022]" },
+        { "keep": "binomial-distributions-12-pyq#16", "drop": "prob-distributions-12-pyq#31", "tag": "[Q. 24, 2025]" }
+      ]
+    }
+  ],
+
+  "expectedCounts": {
+    "_note": "Rows expected per chapter AFTER drops. A commit that disagrees with these is a bug in the parser or the drop list, not a surprise — check before shipping.",
+    "logic-12-pyq": 28,
+    "matrices-12-pyq": 14,
+    "trig-functions-12-pyq": 31,
+    "pair-lines-12-pyq": 21,
+    "vectors-12-pyq": 31,
+    "line-planes-12-pyq": 29,
+    "linear-prog-12-pyq": 11,
+    "differentiation-12-pyq": 28,
+    "app-derivatives-12-pyq": 26,
+    "indef-integration-12-pyq": 22,
+    "def-integration-12-pyq": 9,
+    "app-def-integration-12-pyq": 8,
+    "diff-equations-12-pyq": 28,
+    "prob-distributions-12-pyq": 18,
+    "binomial-distributions-12-pyq": 16,
+    "TOTAL": 320
+  }
+}
