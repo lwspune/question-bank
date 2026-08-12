@@ -271,6 +271,64 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Miscellaneous Exercise 5", label: "Select the correct answer", kind: "miscellaneous", refPrefixes: ["Misc I "] },
     { group: "Miscellaneous Exercise 5", label: "Solve the following", kind: "miscellaneous", refPrefixes: ["Misc II"] },
   ],
+
+  // ── Ch.4 Definite Integration (Part 2) — verified against
+  //    Ch_04_Definite_Integration.pdf via a get_text('blocks') (page, y) scan
+  //    (2026-08-12). Two teaching sections, each Solved Examples → Exercise, then
+  //    a four-part Miscellaneous. Structural notes:
+  //    (a) §4.2 carries TWO distinct runs of worked material and they are NOT the
+  //        same block: the inline illustrations threaded through the theory and
+  //        the eight numbered properties (p06 y70 → p11 y496, refs "4.2 Ex." and
+  //        "4.2.1 Property…"), and then the big boxed SOLVED EXAMPLES run
+  //        (p11 y496 → p20 y533, refs "4.2 SolvedEx"). Both sit under §4.2 but
+  //        the boxed run is where Ex.1-15 live.
+  //    (b) Prefix safety, checked: "4.2 Ex." does NOT match "4.2 SolvedEx.1"
+  //        (the character after "4.2 " is E vs S), and "Misc 4 I (" does NOT
+  //        match "Misc 4 II (" or "Misc 4 III (" (the required space-then-paren
+  //        fails). Both families are therefore listed separately and safely.
+  //    (c) Every block boundary in this chapter is MID-PAGE — Exercise 4.1 opens
+  //        at p05 y566 under a solved example, and Exercise 4.2 at p20 y533
+  //        directly under Solved Ex. 15.
+  "def-integration-12": [
+    { group: "4.1 Definite Integral as Limit of a Sum", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.1 SolvedEx"] },
+    { group: "4.1 Definite Integral as Limit of a Sum", label: "Exercise 4.1", kind: "exercise", refPrefixes: ["Ex 4.1 "] },
+    { group: "4.2 Fundamental Theorem and Properties", label: "Illustrations and Properties", kind: "solved_example", refPrefixes: ["4.2 Ex.", "4.2.1 Property"] },
+    { group: "4.2 Fundamental Theorem and Properties", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.2 SolvedEx"] },
+    { group: "4.2 Fundamental Theorem and Properties", label: "Exercise 4.2", kind: "exercise", refPrefixes: ["Ex 4.2 "] },
+    { group: "Miscellaneous Exercise 4", label: "Choose the correct option", kind: "miscellaneous", refPrefixes: ["Misc 4 I ("] },
+    { group: "Miscellaneous Exercise 4", label: "Evaluate the following", kind: "miscellaneous", refPrefixes: ["Misc 4 II ("] },
+    { group: "Miscellaneous Exercise 4", label: "Evaluate", kind: "miscellaneous", refPrefixes: ["Misc 4 III ("] },
+    { group: "Miscellaneous Exercise 4", label: "Evaluate the following", kind: "miscellaneous", refPrefixes: ["Misc 4 IV ("] },
+  ],
+
+  // ── Ch.8 Binomial Distribution (Part 2) — verified against
+  //    Ch_08_Binomial_Distributions.pdf via a get_text('blocks') (page, y) scan
+  //    (2026-08-12). The smallest Part-2 chapter: three short teaching sections,
+  //    ONE numbered exercise, and a two-part Miscellaneous. Structural notes:
+  //    (a) Every block boundary is MID-PAGE. In particular p06 carries the §8.3
+  //        Solved Examples at y≈73 AND Exercise 8.1 at y≈467 — the page is not
+  //        the unit, the (page, y) block is.
+  //    (b) §8.3 opens with a worked item the book prints as "For example :"
+  //        rather than "Ex. n :", sitting between the 8.3 heading and the boxed
+  //        SOLVED EXAMPLES run. It is given its own "8.3 ForExample" ref so it
+  //        cannot collide with the boxed block's own Ex.1/Ex.2, and BOTH
+  //        prefixes route to the same solved block, in that physical order.
+  //    (c) Miscellaneous 8 has two parts: (I) 7 MCQ, (II) 17 subjective.
+  //        "Misc 8 I (" and "Misc 8 Q." are mutually non-prefixing.
+  //    (d) No "8.1 SolvedEx" prefix exists — the Bernoulli solved example sits
+  //        under §8.1.1, so its ref is "8.1.1 SolvedEx". Listing a bare
+  //        "8.1 SolvedEx" here would match nothing.
+  "binomial-12": [
+    { group: "8.1 Bernoulli Trial", label: "Solved Example", kind: "solved_example", refPrefixes: ["8.1.1 SolvedEx"] },
+    { group: "8.2 Binomial Distribution", label: "Solved Examples", kind: "solved_example", refPrefixes: ["8.2 SolvedEx"] },
+    { group: "8.3 Mean and Variance of Binomial Distribution", label: "Solved Examples", kind: "solved_example", refPrefixes: ["8.3 ForExample", "8.3 SolvedEx"] },
+    // Its OWN group, not §8.3's: the book gives this chapter a single exercise
+    // covering all three sections, which happens to be printed after §8.3's
+    // solved examples. Filing it under 8.3 would read as "the §8.3 exercise".
+    { group: "Exercise 8.1", label: "Exercise 8.1", kind: "exercise", refPrefixes: ["Ex 8.1 "] },
+    { group: "Miscellaneous Exercise 8", label: "Choose the correct option", kind: "miscellaneous", refPrefixes: ["Misc 8 I ("] },
+    { group: "Miscellaneous Exercise 8", label: "Solve the following", kind: "miscellaneous", refPrefixes: ["Misc 8 Q."] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

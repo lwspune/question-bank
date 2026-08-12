@@ -1,0 +1,38 @@
+[
+  {
+    "ref": "7.3.3 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Expected Value and Variance of a Random Variable",
+    "difficulty": "MODERATE",
+    "stem": "Three coins are tossed simultaneously, \\(X\\) is the number of heads. Find expected value and variance of \\(X\\).",
+    "solution": "\\(S = \\{\\text{HHH, HHT, HTH, THH, HTT, THT, TTH, TTT}\\}\\) and \\(X = \\{0, 1, 2, 3\\}\\)\n\n| \\(X = x_i\\) | \\(P = p_i\\) | \\(x_i p_i\\) | \\(x_i^2 p_i\\) |\n|---|---|---|---|\n| 0 | \\(\\dfrac{1}{8}\\) | 0 | 0 |\n| 1 | \\(\\dfrac{3}{8}\\) | \\(\\dfrac{3}{8}\\) | \\(\\dfrac{3}{8}\\) |\n| 2 | \\(\\dfrac{3}{8}\\) | \\(\\dfrac{6}{8}\\) | \\(\\dfrac{12}{8}\\) |\n| 3 | \\(\\dfrac{1}{8}\\) | \\(\\dfrac{3}{8}\\) | \\(\\dfrac{9}{8}\\) |\n|  |  | \\(\\sum_{i=1}^{n} x_i p_i = \\dfrac{12}{8}\\) | \\(\\sum_{i=1}^{n} x_i^2 p_i = \\dfrac{24}{8}\\) |\n\nThen \\(E(X) = \\sum_{i=1}^{n} x_i p_i = \\dfrac{12}{8} = 1.5\\)\n\n\\(Var(X) = \\left(\\sum_{i=1}^{n} x_i^2 p_i\\right) - \\left(\\sum_{i=1}^{n} x_i p_i\\right)^2 = \\dfrac{24}{8} - (1.5)^2 = 3 - 2.25 = 0.75\\)"
+  },
+  {
+    "ref": "7.3.3 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Expected Value and Variance of a Random Variable",
+    "difficulty": "MODERATE",
+    "stem": "Let a pair of dice be thrown and the random variable \\(X\\) be the sum of the numbers that appear on the two dice. Find the mean or expectation of \\(X\\) and variance of \\(X\\).",
+    "solution": "The sample space of the experiment consists of 36 elementary events in the form of ordered pairs \\((x_i, y_i)\\), where \\(x_i = 1, 2, 3, 4, 5, 6\\) and \\(y_i = 1, 2, 3, 4, 5, 6\\).\n\nThe random variable \\(X\\) i.e. the sum of the numbers on the two dice takes the values 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 or 12.\n\n| \\(X = x_i\\) | \\(P = p_i\\) | \\(x_i p_i\\) | \\(x_i^2 p_i\\) |\n|---|---|---|---|\n| 2 | \\(\\dfrac{1}{36}\\) | \\(\\dfrac{2}{36}\\) | \\(\\dfrac{4}{36}\\) |\n| 3 | \\(\\dfrac{2}{36}\\) | \\(\\dfrac{6}{36}\\) | \\(\\dfrac{18}{36}\\) |\n| 4 | \\(\\dfrac{3}{36}\\) | \\(\\dfrac{12}{36}\\) | \\(\\dfrac{48}{36}\\) |\n| 5 | \\(\\dfrac{4}{36}\\) | \\(\\dfrac{20}{36}\\) | \\(\\dfrac{100}{36}\\) |\n| 6 | \\(\\dfrac{5}{36}\\) | \\(\\dfrac{30}{36}\\) | \\(\\dfrac{180}{36}\\) |\n| 7 | \\(\\dfrac{6}{36}\\) | \\(\\dfrac{42}{36}\\) | \\(\\dfrac{294}{36}\\) |\n| 8 | \\(\\dfrac{5}{36}\\) | \\(\\dfrac{40}{36}\\) | \\(\\dfrac{320}{36}\\) |\n| 9 | \\(\\dfrac{4}{36}\\) | \\(\\dfrac{36}{36}\\) | \\(\\dfrac{324}{36}\\) |\n| 10 | \\(\\dfrac{3}{36}\\) | \\(\\dfrac{30}{36}\\) | \\(\\dfrac{300}{36}\\) |\n| 11 | \\(\\dfrac{2}{36}\\) | \\(\\dfrac{22}{36}\\) | \\(\\dfrac{242}{36}\\) |\n| 12 | \\(\\dfrac{1}{36}\\) | \\(\\dfrac{12}{36}\\) | \\(\\dfrac{144}{36}\\) |\n|  |  | \\(\\sum_{i=1}^{n} x_i p_i = \\dfrac{252}{36} = 7\\) | \\(\\sum_{i=1}^{n} x_i^2 p_i = \\dfrac{1974}{36} = 54.83\\) |\n\nThen \\(E(X) = \\sum_{i=1}^{n} x_i p_i = 7\\)\n\n\\(Var(X) = \\left(\\sum_{i=1}^{n} x_i^2 p_i\\right) - \\left(\\sum_{i=1}^{n} x_i p_i\\right)^2 = 54.83 - (7)^2\\)\n\n\\(= 54.83 - 49\\)\n\n\\(= 5.83\\)"
+  },
+  {
+    "ref": "7.3.3 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Expected Value and Variance of a Random Variable",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean and variance of the number randomly selected from 1 to 15.",
+    "solution": "The sample space of the experiment is \\(S = \\{1, 2, 3, \\ldots, 15\\}\\).\n\nLet \\(X\\) denote the number selected.\n\nThen \\(X\\) is a random variable which can take values 1, 2, 3, \\(\\ldots\\), 15. Each number selected is equiprobable therefore\n\n\\(P(1) = P(2) = P(3) = \\ldots = P(15) = \\dfrac{1}{15}\\)\n\n\\(\\mu = E(X) = \\sum_{i=1}^{n} x_i p_i = 1 \\times \\dfrac{1}{15} + 2 \\times \\dfrac{1}{15} + 3 \\times \\dfrac{1}{15} + \\ldots + 15 \\times \\dfrac{1}{15}\\)\n\n\\(= (1 + 2 + 3 + \\ldots + 15) \\times \\dfrac{1}{15} = \\left(\\dfrac{15 \\times 16}{2}\\right) \\times \\dfrac{1}{15} = 8\\)\n\n\\(Var(X) = \\left(\\sum_{i=1}^{n} x_i^2 p_i\\right) - \\left(\\sum_{i=1}^{n} x_i p_i\\right)^2 = 1^2 \\times \\dfrac{1}{15} + 2^2 \\times \\dfrac{1}{15} + 3^2 \\times \\dfrac{1}{15} + \\ldots + 15^2 \\times \\dfrac{1}{15} - (8)^2\\)\n\n\\(= (1^2 + 2^2 + 3^2 + \\ldots + 15^2) \\times \\dfrac{1}{15} - (8)^2\\)\n\n\\(= \\left(\\dfrac{15 \\times 16 \\times 31}{6}\\right) \\times \\dfrac{1}{15} - (8)^2\\)\n\n\\(= 82.67 - 64 = 18.67\\)"
+  },
+  {
+    "ref": "7.3.3 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Expected Value and Variance of a Random Variable",
+    "difficulty": "HARD",
+    "stem": "Two cards are drawn simultaneously (or successively without replacement) from a well shuffled pack of 52 cards. Find the mean, variance and standard deviation of the number of kings drawn.",
+    "solution": "Let \\(X\\) denote the number of kings in a draw of two cards. \\(X\\) is a random variable which can assume the values 0, 1 or 2.\n\nThen \\(P(X = 0) = P(\\text{no card is king}) = \\dfrac{{}^{48}C_2}{{}^{52}C_2} = \\dfrac{48 \\times 47}{52 \\times 51} = \\dfrac{188}{221}\\)\n\nThen \\(P(X = 1) = P(\\text{exactly one card is king}) = \\dfrac{{}^{4}C_1 \\times {}^{48}C_1}{{}^{52}C_2} = \\dfrac{4 \\times 48 \\times 27}{52 \\times 51} = \\dfrac{32}{221}\\)\n\nThen \\(P(X = 2) = P(\\text{both cards are king}) = \\dfrac{{}^{4}C_2}{{}^{52}C_2} = \\dfrac{4 \\times 3}{52 \\times 51} = \\dfrac{1}{221}\\)\n\n\\(\\mu = E(X) = \\sum_{i=1}^{n} x_i p_i = 0 \\times \\dfrac{188}{221} + 1 \\times \\dfrac{32}{221} + 2 \\times \\dfrac{1}{221} = \\dfrac{34}{221}\\)\n\n\\(Var(X) = \\left(\\sum_{i=1}^{n} x_i^2 p_i\\right) - \\left(\\sum_{i=1}^{n} x_i p_i\\right)^2 = \\left(0^2 \\times \\dfrac{188}{221} + 1^2 \\times \\dfrac{32}{221} + 2^2 \\times \\dfrac{1}{221}\\right) - \\left(\\dfrac{34}{221}\\right)^2\\)\n\n\\(= \\dfrac{36}{221} - \\dfrac{1156}{48841} = \\dfrac{6800}{48841} = 0.1392\\)\n\n\\(\\sigma = \\sqrt{Var(X)} = \\sqrt{0.1392}\\)"
+  }
+]

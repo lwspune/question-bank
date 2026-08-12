@@ -1,0 +1,152 @@
+[
+  {
+    "id": "c3ccfdeb-9a38-44f3-9342-b04b3320b506",
+    "ref": "Ex 4.2 I (1)",
+    "solution": "Split the integrand into powers of \\(x\\) before integrating: \\(\\dfrac{x + 1}{\\sqrt{x}} = x^{1/2} + x^{-1/2}\\). By the fundamental theorem of integral calculus, \\(\\int_{1}^{9}\\left(x^{1/2} + x^{-1/2}\\right) dx = \\left[\\dfrac{2}{3} x^{3/2} + 2\\sqrt{x}\\right]_{1}^{9}\\). At \\(x = 9\\) the bracket is \\(\\dfrac{2}{3}(27) + 2(3) = 24\\), and at \\(x = 1\\) it is \\(\\dfrac{2}{3} + 2 = \\dfrac{8}{3}\\). \\(\\therefore\\) the value of the integral is \\(24 - \\dfrac{8}{3} = \\dfrac{64}{3} \\approx 21.33\\)."
+  },
+  {
+    "id": "effc31a8-4ce9-422b-a451-bc1cedbda203",
+    "ref": "Ex 4.2 I (2)",
+    "solution": "Factorise the denominator and use partial fractions: \\(x^{2} + 5x + 6 = (x + 2)(x + 3)\\) and \\(\\dfrac{1}{(x + 2)(x + 3)} = \\dfrac{1}{x + 2} - \\dfrac{1}{x + 3}\\). Hence \\(\\int_{2}^{3} \\dfrac{dx}{x^{2} + 5x + 6} = \\left[\\log\\left|\\dfrac{x + 2}{x + 3}\\right|\\right]_{2}^{3}\\), the integrand being continuous on \\([2, 3]\\). Substituting the limits gives \\(\\log\\dfrac{5}{6} - \\log\\dfrac{4}{5}\\). \\(\\therefore\\) the value is \\(\\log\\dfrac{25}{24} \\approx 0.04082\\)."
+  },
+  {
+    "id": "c23d6d3b-8ca3-42a7-8fd4-a5ce8bdb3acc",
+    "ref": "Ex 4.2 I (3)",
+    "solution": "[Textbook misprint: the integral is printed as \\(\\int_{0}^{\\pi/4}\\cot^{2}x\\) with no \\(dx\\), and as printed it DIVERGES: \\(\\cot^{2}x\\sim 1/x^{2}\\) at the lower limit, and the partial integrals \\(\\int_{\\varepsilon}^{\\pi/4}\\) measure 98.2, 998.2, 9998.2, 99998.2 for \\(\\varepsilon=10^{-2}\\ldots10^{-5}\\), matching \\(1/\\varepsilon-1-\\pi/4\\) exactly. Both standard repairs — integrand \\(\\tan^{2}x\\) on \\([0,\\pi/4]\\), or \\(\\cot^{2}x\\) on \\([\\pi/4,\\pi/2]\\) — give \\(1-\\pi/4\\).]\n\nThis item is printed without a \\(dx\\), unlike every other question in the group, so the evident reading is \\(\\int_{0}^{\\pi/4} \\cot^{2} x \\, dx\\). Writing \\(\\cot^{2} x = \\operatorname{cosec}^{2} x - 1\\) gives the antiderivative \\(-\\cot x - x\\), so \\(\\int_{\\varepsilon}^{\\pi/4} \\cot^{2} x \\, dx = \\left[-\\cot x - x\\right]_{\\varepsilon}^{\\pi/4} = \\left(-1 - \\dfrac{\\pi}{4}\\right) + \\cot\\varepsilon + \\varepsilon\\), and since \\(\\cot\\varepsilon \\to \\infty\\) as \\(\\varepsilon \\to 0^{+}\\) the integral as printed DIVERGES, the integrand behaving like \\(\\dfrac{1}{x^{2}}\\) at the lower limit. The item is therefore defective as printed, and the defect is confined to a single misprint. Both standard repairs, namely reading the integrand as \\(\\tan^{2} x\\) on \\([0, \\pi/4]\\), or keeping \\(\\cot^{2} x\\) with limits \\(\\dfrac{\\pi}{4}\\) to \\(\\dfrac{\\pi}{2}\\), give the same value, \\(\\left[\\tan x - x\\right]_{0}^{\\pi/4} = 1 - \\dfrac{\\pi}{4} \\approx 0.2146\\), which is the intended answer."
+  },
+  {
+    "id": "09b5bd8b-c4c4-4cc7-a4a2-db780789ef30",
+    "ref": "Ex 4.2 I (4)",
+    "solution": "Rationalise by multiplying numerator and denominator by \\(1 + \\sin x\\): \\(\\dfrac{1}{1 - \\sin x} = \\dfrac{1 + \\sin x}{1 - \\sin^{2} x} = \\dfrac{1 + \\sin x}{\\cos^{2} x} = \\sec^{2} x + \\sec x \\tan x\\), which is continuous on \\(\\left[-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right]\\). The antiderivative is \\(\\tan x + \\sec x\\), so the integral is \\(\\left[\\tan x + \\sec x\\right]_{-\\pi/4}^{\\pi/4}\\). At \\(x = \\dfrac{\\pi}{4}\\) this is \\(1 + \\sqrt{2}\\) and at \\(x = -\\dfrac{\\pi}{4}\\) it is \\(-1 + \\sqrt{2}\\). \\(\\therefore\\) the value is \\((1 + \\sqrt{2}) - (\\sqrt{2} - 1) = 2\\)."
+  },
+  {
+    "id": "fddf627b-4ed2-499b-a2d6-ecd2c7082081",
+    "ref": "Ex 4.2 I (5)",
+    "solution": "Rationalise the denominator by multiplying above and below by \\(\\sqrt{2x + 3} + \\sqrt{2x - 3}\\); since \\((2x + 3) - (2x - 3) = 6\\), the integrand becomes \\(\\dfrac{1}{6}\\left(\\sqrt{2x + 3} + \\sqrt{2x - 3}\\right)\\). Using \\(\\int (2x \\pm 3)^{1/2} dx = \\dfrac{1}{3}(2x \\pm 3)^{3/2}\\), the integral equals \\(\\dfrac{1}{18}\\left[(2x + 3)^{3/2} + (2x - 3)^{3/2}\\right]_{3}^{5}\\). At \\(x = 5\\) the bracket is \\(13^{3/2} + 7^{3/2} = 13\\sqrt{13} + 7\\sqrt{7}\\), and at \\(x = 3\\) it is \\(9^{3/2} + 3^{3/2} = 27 + 3\\sqrt{3}\\). \\(\\therefore\\) the value is \\(\\dfrac{1}{18}\\left(13\\sqrt{13} + 7\\sqrt{7} - 27 - 3\\sqrt{3}\\right) \\approx 1.844\\)."
+  },
+  {
+    "id": "59e9262f-9daa-4a5f-ac0a-c009f2fe5935",
+    "ref": "Ex 4.2 I (6)",
+    "solution": "Since the degree of the numerator is not less than that of the denominator, divide first: \\(\\dfrac{x^{2} - 2}{x^{2} + 1} = \\dfrac{(x^{2} + 1) - 3}{x^{2} + 1} = 1 - \\dfrac{3}{x^{2} + 1}\\). Hence \\(\\int_{0}^{1} \\dfrac{x^{2} - 2}{x^{2} + 1} dx = \\left[x - 3\\tan^{-1} x\\right]_{0}^{1}\\). At \\(x = 1\\) this is \\(1 - 3\\left(\\dfrac{\\pi}{4}\\right)\\) and at \\(x = 0\\) it is \\(0\\). \\(\\therefore\\) the value is \\(1 - \\dfrac{3\\pi}{4} \\approx -1.356\\); it is negative because \\(x^{2} - 2 < 0\\) throughout \\([0, 1]\\)."
+  },
+  {
+    "id": "b6238341-b1a5-46ea-aa1e-97a166dab27a",
+    "ref": "Ex 4.2 I (7)",
+    "solution": "Convert the product into a sum using \\(2\\sin A \\sin B = \\cos(A - B) - \\cos(A + B)\\), so \\(\\sin 4x \\sin 3x = \\dfrac{1}{2}\\left(\\cos x - \\cos 7x\\right)\\). Then \\(\\int_{0}^{\\pi/4} \\sin 4x \\sin 3x \\, dx = \\dfrac{1}{2}\\left[\\sin x - \\dfrac{\\sin 7x}{7}\\right]_{0}^{\\pi/4}\\). At \\(x = \\dfrac{\\pi}{4}\\), \\(\\sin\\dfrac{\\pi}{4} = \\dfrac{1}{\\sqrt{2}}\\) and \\(\\sin\\dfrac{7\\pi}{4} = -\\dfrac{1}{\\sqrt{2}}\\), giving \\(\\dfrac{1}{2}\\left(\\dfrac{1}{\\sqrt{2}} + \\dfrac{1}{7\\sqrt{2}}\\right)\\); the lower limit contributes \\(0\\). \\(\\therefore\\) the value is \\(\\dfrac{1}{2} \\cdot \\dfrac{8}{7\\sqrt{2}} = \\dfrac{2\\sqrt{2}}{7} \\approx 0.4041\\)."
+  },
+  {
+    "id": "9af39eae-391f-4505-9414-c75c7b770832",
+    "ref": "Ex 4.2 I (8)",
+    "solution": "Recognise the perfect square \\(1 + \\sin 2x = \\sin^{2} x + \\cos^{2} x + 2\\sin x \\cos x = (\\sin x + \\cos x)^{2}\\), so \\(\\sqrt{1 + \\sin 2x} = |\\sin x + \\cos x| = \\sin x + \\cos x\\) on \\(\\left[0, \\dfrac{\\pi}{4}\\right]\\), where both terms are positive. Hence the integral is \\(\\left[\\sin x - \\cos x\\right]_{0}^{\\pi/4}\\). At \\(x = \\dfrac{\\pi}{4}\\) this is \\(\\dfrac{1}{\\sqrt{2}} - \\dfrac{1}{\\sqrt{2}} = 0\\) and at \\(x = 0\\) it is \\(0 - 1 = -1\\). \\(\\therefore\\) the value is \\(0 - (-1) = 1\\)."
+  },
+  {
+    "id": "2e777bc2-867d-4850-88dd-bf129a8d02cd",
+    "ref": "Ex 4.2 I (9)",
+    "solution": "[Textbook answer-key error: the key gives \\(3\\pi/16\\), which is exactly \\(\\int_{0}^{\\pi/2}\\sin^{4}x\\,dx\\); the printed upper limit is \\(\\pi/4\\), for which the value is \\(3\\pi/32-1/4=0.04452\\). The key answers a different interval.]\n\nReduce the fourth power by repeated use of the half-angle formula: \\(\\sin^{4} x = \\left(\\dfrac{1 - \\cos 2x}{2}\\right)^{2} = \\dfrac{1 - 2\\cos 2x + \\cos^{2} 2x}{4} = \\dfrac{3 - 4\\cos 2x + \\cos 4x}{8}\\). Integrating term by term, \\(\\int_{0}^{\\pi/4} \\sin^{4} x \\, dx = \\dfrac{1}{8}\\left[3x - 2\\sin 2x + \\dfrac{\\sin 4x}{4}\\right]_{0}^{\\pi/4}\\). At \\(x = \\dfrac{\\pi}{4}\\) the bracket is \\(\\dfrac{3\\pi}{4} - 2 + 0\\), and at \\(x = 0\\) it is \\(0\\). \\(\\therefore\\) the value is \\(\\dfrac{3\\pi}{32} - \\dfrac{1}{4} \\approx 0.04452\\)."
+  },
+  {
+    "id": "a36a6992-07c8-42c0-b622-34e045491a2d",
+    "ref": "Ex 4.2 I (10)",
+    "solution": "Complete the square in the denominator: \\(x^{2} + 4x + 13 = (x + 2)^{2} + 3^{2}\\). Using \\(\\int \\dfrac{dx}{u^{2} + a^{2}} = \\dfrac{1}{a}\\tan^{-1}\\dfrac{u}{a}\\), the integral is \\(\\dfrac{1}{3}\\left[\\tan^{-1}\\dfrac{x + 2}{3}\\right]_{-4}^{2} = \\dfrac{1}{3}\\left(\\tan^{-1}\\dfrac{4}{3} - \\tan^{-1}\\left(-\\dfrac{2}{3}\\right)\\right) = \\dfrac{1}{3}\\left(\\tan^{-1}\\dfrac{4}{3} + \\tan^{-1}\\dfrac{2}{3}\\right)\\). The two arctangents combine, since \\(\\dfrac{\\frac{4}{3} + \\frac{2}{3}}{1 - \\frac{8}{9}} = 18\\) and the sum is acute. \\(\\therefore\\) the value is \\(\\dfrac{1}{3}\\tan^{-1} 18 \\approx 0.5051\\)."
+  },
+  {
+    "id": "f9e587b4-29a0-4e56-a916-f300281c53f8",
+    "ref": "Ex 4.2 I (11)",
+    "solution": "This integral is improper at BOTH endpoints, since the integrand is unbounded as \\(x \\to 0^{+}\\) and as \\(x \\to 4^{-}\\), but it converges, so it must be evaluated as a limit. Completing the square gives \\(4x - x^{2} = 4 - (x - 2)^{2}\\), so the antiderivative is \\(\\sin^{-1}\\dfrac{x - 2}{2}\\) and \\(\\int_{0}^{4} \\dfrac{dx}{\\sqrt{4x - x^{2}}} = \\lim_{a \\to 0^{+}} \\lim_{b \\to 4^{-}} \\left[\\sin^{-1}\\dfrac{x - 2}{2}\\right]_{a}^{b}\\). The bracket tends to \\(\\sin^{-1}(1) - \\sin^{-1}(-1) = \\dfrac{\\pi}{2} + \\dfrac{\\pi}{2}\\), both limits being finite. \\(\\therefore\\) the value is \\(\\pi \\approx 3.142\\)."
+  },
+  {
+    "id": "15ae1b67-544e-4fae-b56f-057ba5af9b1d",
+    "ref": "Ex 4.2 I (12)",
+    "solution": "Complete the square under the radical: \\(3 + 2x - x^{2} = 4 - (x - 1)^{2}\\), which is positive on \\([0, 1]\\), so the integrand is continuous there. Using \\(\\int \\dfrac{du}{\\sqrt{a^{2} - u^{2}}} = \\sin^{-1}\\dfrac{u}{a}\\), the integral is \\(\\left[\\sin^{-1}\\dfrac{x - 1}{2}\\right]_{0}^{1}\\). At \\(x = 1\\) this is \\(\\sin^{-1} 0 = 0\\) and at \\(x = 0\\) it is \\(\\sin^{-1}\\left(-\\dfrac{1}{2}\\right) = -\\dfrac{\\pi}{6}\\). \\(\\therefore\\) the value is \\(\\dfrac{\\pi}{6} \\approx 0.5236\\)."
+  },
+  {
+    "id": "a59e7b32-a9e8-4f1f-bf7e-1bac8febea92",
+    "ref": "Ex 4.2 I (13)",
+    "solution": "Integrate by parts taking \\(u = x\\) and \\(dv = \\sin x \\, dx\\), so that \\(du = dx\\) and \\(v = -\\cos x\\). Then \\(\\int_{0}^{\\pi/2} x \\sin x \\, dx = \\left[-x\\cos x\\right]_{0}^{\\pi/2} + \\int_{0}^{\\pi/2} \\cos x \\, dx = \\left[-x\\cos x + \\sin x\\right]_{0}^{\\pi/2}\\). At \\(x = \\dfrac{\\pi}{2}\\) the bracket is \\(-\\dfrac{\\pi}{2}(0) + 1 = 1\\), and at \\(x = 0\\) it is \\(0\\). \\(\\therefore\\) the value is \\(1\\)."
+  },
+  {
+    "id": "6e95ae6d-010a-4be7-a177-ff24cd853518",
+    "ref": "Ex 4.2 I (14)",
+    "solution": "Integrate by parts with \\(u = \\tan^{-1} x\\) (the inverse-trigonometric factor) and \\(dv = x \\, dx\\), giving \\(v = \\dfrac{x^{2}}{2}\\). Then \\(\\int_{0}^{1} x \\tan^{-1} x \\, dx = \\left[\\dfrac{x^{2}}{2}\\tan^{-1} x\\right]_{0}^{1} - \\dfrac{1}{2}\\int_{0}^{1} \\dfrac{x^{2}}{1 + x^{2}} dx = \\dfrac{\\pi}{8} - \\dfrac{1}{2}\\int_{0}^{1}\\left(1 - \\dfrac{1}{1 + x^{2}}\\right) dx\\). The remaining integral is \\(\\left[x - \\tan^{-1} x\\right]_{0}^{1} = 1 - \\dfrac{\\pi}{4}\\). \\(\\therefore\\) the value is \\(\\dfrac{\\pi}{8} - \\dfrac{1}{2}\\left(1 - \\dfrac{\\pi}{4}\\right) = \\dfrac{\\pi}{4} - \\dfrac{1}{2} \\approx 0.2854\\)."
+  },
+  {
+    "id": "9769adfb-db41-47ee-8103-e71876dbf2f9",
+    "ref": "Ex 4.2 I (15)",
+    "solution": "This integral is improper at the upper limit, so evaluate it over \\([0, b]\\) and let \\(b \\to \\infty\\). Integrating by parts with \\(u = x\\) and \\(dv = e^{-x} dx\\) gives \\(\\int_{0}^{b} x e^{-x} dx = \\left[-x e^{-x}\\right]_{0}^{b} + \\int_{0}^{b} e^{-x} dx = \\left[-(x + 1)e^{-x}\\right]_{0}^{b} = 1 - (b + 1)e^{-b}\\). Since the exponential beats the linear factor, \\((b + 1)e^{-b} \\to 0\\) as \\(b \\to \\infty\\), so the integral converges. \\(\\therefore\\) the value is \\(1\\)."
+  },
+  {
+    "id": "c6e55f9a-ec19-4f52-a0a4-0f1dd33f25a9",
+    "ref": "Ex 4.2 II (1)",
+    "solution": "Put \\(x = \\sin\\theta\\), so \\(dx = \\cos\\theta \\, d\\theta\\), \\(\\sin^{-1} x = \\theta\\) and \\((1 - x^{2})^{3/2} = \\cos^{3}\\theta\\); the limits \\(x = 0\\) and \\(x = \\dfrac{1}{\\sqrt{2}}\\) become \\(\\theta = 0\\) and \\(\\theta = \\dfrac{\\pi}{4}\\). The integral becomes \\(\\int_{0}^{\\pi/4} \\theta \\sec^{2}\\theta \\, d\\theta\\), which by parts (\\(u = \\theta\\), \\(dv = \\sec^{2}\\theta \\, d\\theta\\)) equals \\(\\left[\\theta\\tan\\theta\\right]_{0}^{\\pi/4} - \\int_{0}^{\\pi/4} \\tan\\theta \\, d\\theta\\). Here \\(\\left[\\theta\\tan\\theta\\right]_{0}^{\\pi/4} = \\dfrac{\\pi}{4}\\) and \\(\\int_{0}^{\\pi/4}\\tan\\theta \\, d\\theta = \\left[-\\log|\\cos\\theta|\\right]_{0}^{\\pi/4} = \\dfrac{1}{2}\\log 2\\). \\(\\therefore\\) the value is \\(\\dfrac{\\pi}{4} - \\dfrac{1}{2}\\log 2 \\approx 0.4388\\)."
+  },
+  {
+    "id": "a3e5bb1c-cda1-4761-8139-32f54f5c3ad0",
+    "ref": "Ex 4.2 II (2)",
+    "solution": "The presence of \\(\\sec^{2} x \\, dx\\) alongside \\(\\tan x\\) invites the substitution \\(t = \\tan x\\), \\(dt = \\sec^{2} x \\, dx\\), with limits \\(t = 0\\) to \\(t = 1\\). The integral becomes \\(\\int_{0}^{1} \\dfrac{dt}{3t^{2} + 4t + 1} = \\int_{0}^{1} \\dfrac{dt}{(3t + 1)(t + 1)}\\), and partial fractions give \\(\\dfrac{1}{(3t + 1)(t + 1)} = \\dfrac{3}{2}\\cdot\\dfrac{1}{3t + 1} - \\dfrac{1}{2}\\cdot\\dfrac{1}{t + 1}\\). Integrating, this is \\(\\dfrac{1}{2}\\left[\\log\\dfrac{3t + 1}{t + 1}\\right]_{0}^{1} = \\dfrac{1}{2}\\left(\\log 2 - \\log 1\\right)\\). \\(\\therefore\\) the value is \\(\\dfrac{1}{2}\\log 2 \\approx 0.3466\\)."
+  },
+  {
+    "id": "298528fb-c5c3-40e6-b532-0cd76fa07b25",
+    "ref": "Ex 4.2 II (3)",
+    "solution": "Rewrite the denominator in terms of \\(\\cos 2x\\): \\(\\sin^{4} x + \\cos^{4} x = 1 - 2\\sin^{2} x \\cos^{2} x = 1 - \\dfrac{\\sin^{2} 2x}{2} = \\dfrac{1 + \\cos^{2} 2x}{2}\\). Now substitute \\(t = \\cos 2x\\), so \\(\\sin 2x \\, dx = -\\dfrac{dt}{2}\\), and the limits \\(x = 0\\) to \\(x = \\dfrac{\\pi}{4}\\) become \\(t = 1\\) to \\(t = 0\\). The integral becomes \\(\\int_{1}^{0} \\dfrac{2}{1 + t^{2}}\\left(-\\dfrac{dt}{2}\\right) = \\int_{0}^{1} \\dfrac{dt}{1 + t^{2}} = \\left[\\tan^{-1} t\\right]_{0}^{1}\\). \\(\\therefore\\) the value is \\(\\dfrac{\\pi}{4} \\approx 0.7854\\)."
+  },
+  {
+    "id": "8aebb5d3-7d4f-4597-a02c-f7216bc2d7d0",
+    "ref": "Ex 4.2 II (4)",
+    "solution": "[Textbook answer-key error: the key gives 0, but the integrand is strictly positive on the interior so the integral cannot vanish. The value is \\(8/21=0.38095\\). The book appears to have SWAPPED this key with the one printed at Ex 4.2 III (6), where 8/21 is printed instead.]\n\nSince \\(\\sin x\\) occurs to an odd power, substitute \\(t = \\cos x\\), \\(dt = -\\sin x \\, dx\\), and write \\(\\sin^{3} x \\, dx = \\sin^{2} x \\cdot \\sin x \\, dx = -(1 - t^{2})\\, dt\\); the limits \\(x = 0\\) to \\(x = \\dfrac{\\pi}{2}\\) become \\(t = 1\\) to \\(t = 0\\). The integral becomes \\(\\int_{0}^{1} \\sqrt{t}\\,(1 - t^{2})\\, dt = \\int_{0}^{1}\\left(t^{1/2} - t^{5/2}\\right) dt = \\left[\\dfrac{2}{3}t^{3/2} - \\dfrac{2}{7}t^{7/2}\\right]_{0}^{1}\\). Substituting the limits gives \\(\\dfrac{2}{3} - \\dfrac{2}{7}\\). \\(\\therefore\\) the value is \\(\\dfrac{8}{21} \\approx 0.3810\\)."
+  },
+  {
+    "id": "f82a32a6-5694-466a-b62a-e89216f754b8",
+    "ref": "Ex 4.2 II (5)",
+    "solution": "Use the half-angle (Weierstrass) substitution \\(t = \\tan\\dfrac{x}{2}\\), for which \\(\\cos x = \\dfrac{1 - t^{2}}{1 + t^{2}}\\) and \\(dx = \\dfrac{2\\,dt}{1 + t^{2}}\\); the limits \\(x = 0\\) to \\(x = \\dfrac{\\pi}{2}\\) become \\(t = 0\\) to \\(t = 1\\). The denominator becomes \\(5 + \\dfrac{4(1 - t^{2})}{1 + t^{2}} = \\dfrac{9 + t^{2}}{1 + t^{2}}\\), so the integral reduces to \\(\\int_{0}^{1} \\dfrac{2\\,dt}{9 + t^{2}} = \\dfrac{2}{3}\\left[\\tan^{-1}\\dfrac{t}{3}\\right]_{0}^{1}\\). \\(\\therefore\\) the value is \\(\\dfrac{2}{3}\\tan^{-1}\\dfrac{1}{3} \\approx 0.2145\\)."
+  },
+  {
+    "id": "069b4f5e-7759-4edb-ab0e-36a1a6ef31d9",
+    "ref": "Ex 4.2 II (6)",
+    "solution": "Substitute \\(t = \\sin x\\), \\(dt = \\cos x \\, dx\\), with limits \\(t = 0\\) to \\(t = \\dfrac{1}{\\sqrt{2}}\\), reducing the integral to \\(\\int_{0}^{1/\\sqrt{2}} \\dfrac{dt}{4 - t^{2}}\\). Using \\(\\int \\dfrac{dt}{a^{2} - t^{2}} = \\dfrac{1}{2a}\\log\\left|\\dfrac{a + t}{a - t}\\right|\\) with \\(a = 2\\), this is \\(\\dfrac{1}{4}\\left[\\log\\dfrac{2 + t}{2 - t}\\right]_{0}^{1/\\sqrt{2}}\\). The lower limit contributes \\(\\log 1 = 0\\), and at \\(t = \\dfrac{1}{\\sqrt{2}}\\) the ratio is \\(\\dfrac{2 + \\frac{1}{\\sqrt{2}}}{2 - \\frac{1}{\\sqrt{2}}} = \\dfrac{2\\sqrt{2} + 1}{2\\sqrt{2} - 1}\\). \\(\\therefore\\) the value is \\(\\dfrac{1}{4}\\log\\dfrac{2\\sqrt{2} + 1}{2\\sqrt{2} - 1} \\approx 0.1847\\)."
+  },
+  {
+    "id": "7420451c-ab87-4c30-93ef-61d395c1ce93",
+    "ref": "Ex 4.2 II (7)",
+    "solution": "Substitute \\(t = \\sin x\\), \\(dt = \\cos x \\, dx\\), with limits \\(t = 0\\) to \\(t = 1\\), giving \\(\\int_{0}^{1} \\dfrac{dt}{(1 + t)(2 + t)}\\). Partial fractions give \\(\\dfrac{1}{(1 + t)(2 + t)} = \\dfrac{1}{1 + t} - \\dfrac{1}{2 + t}\\), so the integral is \\(\\left[\\log\\dfrac{1 + t}{2 + t}\\right]_{0}^{1}\\). At \\(t = 1\\) this is \\(\\log\\dfrac{2}{3}\\) and at \\(t = 0\\) it is \\(\\log\\dfrac{1}{2}\\). \\(\\therefore\\) the value is \\(\\log\\dfrac{2}{3} - \\log\\dfrac{1}{2} = \\log\\dfrac{4}{3} \\approx 0.2877\\)."
+  },
+  {
+    "id": "590380fa-77e8-4dde-b3a8-51d4aa521100",
+    "ref": "Ex 4.2 II (8)",
+    "solution": "Multiply numerator and denominator by \\(e^{x}\\) to clear the negative exponential: the integrand becomes \\(\\dfrac{e^{x}}{a^{2}e^{2x} + b^{2}}\\), which suggests \\(t = e^{x}\\), \\(dt = e^{x} dx\\), with limits \\(t = e^{-1}\\) to \\(t = e\\). The integral becomes \\(\\int_{1/e}^{e} \\dfrac{dt}{a^{2}t^{2} + b^{2}} = \\dfrac{1}{a^{2}}\\int_{1/e}^{e} \\dfrac{dt}{t^{2} + \\left(\\frac{b}{a}\\right)^{2}} = \\dfrac{1}{ab}\\left[\\tan^{-1}\\dfrac{at}{b}\\right]_{1/e}^{e}\\), assuming \\(a\\) and \\(b\\) are both non-zero. \\(\\therefore\\) the value is \\(\\dfrac{1}{ab}\\left[\\tan^{-1}\\left(\\dfrac{ae}{b}\\right) - \\tan^{-1}\\left(\\dfrac{a}{be}\\right)\\right]\\); for example, with \\(a = 2\\) and \\(b = 3\\) this is \\(\\approx 0.1377\\)."
+  },
+  {
+    "id": "676bf43d-7535-47e5-8de9-0114ce26d7da",
+    "ref": "Ex 4.2 II (9)",
+    "solution": "Use the half-angle substitution \\(t = \\tan\\dfrac{x}{2}\\), with \\(\\sin x = \\dfrac{2t}{1 + t^{2}}\\), \\(\\cos x = \\dfrac{1 - t^{2}}{1 + t^{2}}\\) and \\(dx = \\dfrac{2\\,dt}{1 + t^{2}}\\); the limits \\(x = 0\\) to \\(x = \\pi\\) become \\(t = 0\\) to \\(t \\to \\infty\\). The denominator becomes \\(\\dfrac{3(1 + t^{2}) + 4t + (1 - t^{2})}{1 + t^{2}} = \\dfrac{2t^{2} + 4t + 4}{1 + t^{2}}\\), so the integral reduces to \\(\\int_{0}^{\\infty} \\dfrac{dt}{t^{2} + 2t + 2} = \\int_{0}^{\\infty} \\dfrac{dt}{(t + 1)^{2} + 1} = \\left[\\tan^{-1}(t + 1)\\right]_{0}^{\\infty}\\). This equals \\(\\dfrac{\\pi}{2} - \\dfrac{\\pi}{4}\\). \\(\\therefore\\) the value is \\(\\dfrac{\\pi}{4} \\approx 0.7854\\)."
+  },
+  {
+    "id": "0ceec53c-0a93-4389-881d-b1f0eda7b3ac",
+    "ref": "Ex 4.2 II (10)",
+    "solution": "Peel off one \\(\\sec^{2} x\\) as the differential: \\(\\sec^{4} x \\, dx = \\left(1 + \\tan^{2} x\\right)\\sec^{2} x \\, dx\\), and put \\(t = \\tan x\\), \\(dt = \\sec^{2} x \\, dx\\), with limits \\(t = 0\\) to \\(t = 1\\). The integral becomes \\(\\int_{0}^{1}\\left(1 + t^{2}\\right) dt = \\left[t + \\dfrac{t^{3}}{3}\\right]_{0}^{1}\\). Substituting the limits gives \\(1 + \\dfrac{1}{3}\\). \\(\\therefore\\) the value is \\(\\dfrac{4}{3} \\approx 1.333\\)."
+  },
+  {
+    "id": "4cdb95df-b3b1-4cae-ae26-f8c59ffd47f7",
+    "ref": "Ex 4.2 II (11)",
+    "solution": "Rationalise by multiplying numerator and denominator inside the radical by \\(1 - x\\): \\(\\sqrt{\\dfrac{1 - x}{1 + x}} = \\dfrac{1 - x}{\\sqrt{1 - x^{2}}}\\), so the integral splits as \\(\\int_{0}^{1} \\dfrac{dx}{\\sqrt{1 - x^{2}}} - \\int_{0}^{1} \\dfrac{x \\, dx}{\\sqrt{1 - x^{2}}}\\) (each piece is improper at \\(x = 1\\) but convergent, and their sum is the original integrand, which is continuous on \\([0, 1]\\)). The first is \\(\\left[\\sin^{-1} x\\right]_{0}^{1} = \\dfrac{\\pi}{2}\\) and the second, by \\(u = 1 - x^{2}\\), is \\(\\left[-\\sqrt{1 - x^{2}}\\right]_{0}^{1} = 1\\). \\(\\therefore\\) the value is \\(\\dfrac{\\pi}{2} - 1 \\approx 0.5708\\)."
+  },
+  {
+    "id": "c449fece-6e8e-49a4-b502-346ab498768c",
+    "ref": "Ex 4.2 II (12)",
+    "solution": "Since \\(\\sin x\\) appears to an odd power, substitute \\(t = \\cos x\\), \\(dt = -\\sin x \\, dx\\), and write \\(\\sin^{3} x \\, dx = -(1 - t^{2})\\, dt\\); the limits \\(x = 0\\) to \\(x = \\pi\\) become \\(t = 1\\) to \\(t = -1\\), and the integral becomes \\(\\int_{-1}^{1} (1 - t^{2})(1 + 2t)(1 + t)^{2} dt\\). Now put \\(u = 1 + t\\) (so \\(1 - t = 2 - u\\) and \\(1 + 2t = 2u - 1\\), with \\(u\\) running from \\(0\\) to \\(2\\)), giving \\(\\int_{0}^{2} u^{3}(2 - u)(2u - 1)\\, du = \\int_{0}^{2}\\left(-2u^{5} + 5u^{4} - 2u^{3}\\right) du\\). Evaluating, \\(\\left[-\\dfrac{u^{6}}{3} + u^{5} - \\dfrac{u^{4}}{2}\\right]_{0}^{2} = -\\dfrac{64}{3} + 32 - 8\\). \\(\\therefore\\) the value is \\(\\dfrac{8}{3} \\approx 2.667\\)."
+  },
+  {
+    "id": "f048d7f3-e86f-4885-8195-4fffdb278636",
+    "ref": "Ex 4.2 II (13)",
+    "solution": "Write \\(\\sin 2x \\, dx = 2\\sin x \\cos x \\, dx\\) and substitute \\(t = \\sin x\\), \\(dt = \\cos x \\, dx\\), with limits \\(t = 0\\) to \\(t = 1\\); the integral becomes \\(\\int_{0}^{1} 2t \\tan^{-1} t \\, dt\\). Integrating by parts with \\(u = \\tan^{-1} t\\) and \\(dv = 2t \\, dt\\) gives \\(\\left[t^{2}\\tan^{-1} t\\right]_{0}^{1} - \\int_{0}^{1} \\dfrac{t^{2}}{1 + t^{2}} dt = \\dfrac{\\pi}{4} - \\int_{0}^{1}\\left(1 - \\dfrac{1}{1 + t^{2}}\\right) dt\\). The remaining integral is \\(\\left[t - \\tan^{-1} t\\right]_{0}^{1} = 1 - \\dfrac{\\pi}{4}\\). \\(\\therefore\\) the value is \\(\\dfrac{\\pi}{4} - \\left(1 - \\dfrac{\\pi}{4}\\right) = \\dfrac{\\pi}{2} - 1 \\approx 0.5708\\)."
+  },
+  {
+    "id": "4b3eb68e-e357-49d6-8632-62858649015e",
+    "ref": "Ex 4.2 II (14)",
+    "solution": "Put \\(\\theta = \\cos^{-1} x\\), so that \\(\\sin^{-1} x = \\dfrac{\\pi}{2} - \\theta\\) and \\(\\dfrac{dx}{\\sqrt{1 - x^{2}}} = -d\\theta\\); the limits \\(x = \\dfrac{1}{\\sqrt{2}}\\) and \\(x = 1\\) become \\(\\theta = \\dfrac{\\pi}{4}\\) and \\(\\theta = 0\\), and the sign from \\(-d\\theta\\) flips them back. The integral becomes \\(\\int_{0}^{\\pi/4} e^{\\theta}\\left(\\dfrac{\\pi}{2} - \\theta\\right) d\\theta\\). Here \\(\\int_{0}^{\\pi/4} e^{\\theta} d\\theta = e^{\\pi/4} - 1\\) and, by parts, \\(\\int_{0}^{\\pi/4} \\theta e^{\\theta} d\\theta = \\left[(\\theta - 1)e^{\\theta}\\right]_{0}^{\\pi/4} = \\left(\\dfrac{\\pi}{4} - 1\\right)e^{\\pi/4} + 1\\). \\(\\therefore\\) the value is \\(\\dfrac{\\pi}{2}\\left(e^{\\pi/4} - 1\\right) - \\left(\\dfrac{\\pi}{4} - 1\\right)e^{\\pi/4} - 1 = \\left(\\dfrac{\\pi}{4} + 1\\right)e^{\\pi/4} - \\left(\\dfrac{\\pi}{2} + 1\\right) \\approx 1.345\\)."
+  },
+  {
+    "id": "61683103-0276-46da-8e64-3114f1e380d0",
+    "ref": "Ex 4.2 II (15)",
+    "solution": "[Textbook answer-key error: the key gives \\(\\sin(\\log 3)\\), dropping the lower-limit contribution. With the printed lower limit 2 the value is \\(\\sin(\\log 3)-\\sin(\\log 2)=0.25162\\), not 0.89058.]\n\nThe factor \\(\\dfrac{1}{x}\\) is exactly the derivative of \\(\\log x\\), so substitute \\(u = \\log x\\), \\(du = \\dfrac{dx}{x}\\); the limits \\(x = 2\\) and \\(x = 3\\) become \\(u = \\log 2\\) and \\(u = \\log 3\\). The integral becomes \\(\\int_{\\log 2}^{\\log 3} \\cos u \\, du = \\left[\\sin u\\right]_{\\log 2}^{\\log 3}\\). \\(\\therefore\\) the value is \\(\\sin(\\log 3) - \\sin(\\log 2) \\approx 0.2516\\)."
+  }
+]

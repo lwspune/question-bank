@@ -1,0 +1,499 @@
+[
+  {
+    "ref": "Ex 8.1 Q.1 (i)",
+    "book_key": "3/2^5",
+    "our_answer": "3/32 = 0.09375",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.1 (ii)",
+    "book_key": "7/2^6",
+    "our_answer": "7/64 = 0.109375",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.1 (iii)",
+    "book_key": "63/64",
+    "our_answer": "63/64 = 0.984375",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.2",
+    "book_key": "25/216",
+    "our_answer": "25/216 = 0.1157407407",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.3",
+    "book_key": "29 (19^9 / 20^10)",
+    "our_answer": "(29/20)(19/20)^9 = 0.9138616441",
+    "verdict": "AGREE",
+    "derivation": "Equivalent forms: (29/20)(19/20)^9 = 29*19^9/20^10; both evaluate to 0.9138616441."
+  },
+  {
+    "ref": "Ex 8.1 Q.4 (i)",
+    "book_key": "1/1024",
+    "our_answer": "1/1024 = 0.0009765625",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.4 (ii)",
+    "book_key": "45/1024",
+    "our_answer": "45/512 = 0.087890625",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem: 5 draws WITH replacement, spade p=1/4, exactly 3 spades. Third ground truth = exhaustive enumeration of all 4^5 = 1024 equally-likely suit sequences: exactly 90 of them contain exactly 3 spades, so P = 90/1024 = 45/512 = 0.087890625. The closed form agrees: C(5,3)(1/4)^3(3/4)^2 = 10 * (1/64) * (9/16) = 90/1024 = 45/512. The book's 45/1024 = 0.0439453125 is exactly HALF the correct value - the key-setter cancelled the 90/1024 numerator by 2 without halving the denominator. Cross-check on the same question's family: parts (i) 1/1024, (ii) 45/512 and (iii) 243/1024 together with the two unasked terms C(5,4)(1/4)^4(3/4)=15/1024 and C(5,2)(1/4)^2(3/4)^3=270/1024 sum to exactly 1 using OUR value (1+15+90+270+405+243 = 1024); using the book's 45/1024 the distribution sums to 979/1024 < 1, which is impossible. Ours is right."
+  },
+  {
+    "ref": "Ex 8.1 Q.4 (iii)",
+    "book_key": "",
+    "our_answer": "243/1024 = 0.2373046875",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "The ANSWERS block prints only (i) and (ii) for Ex 8.1 Q.4; there is no (iii) entry. Verified independently anyway: P(X=0) = (3/4)^5 = 243/1024 = 0.2373046875, which matches our answer."
+  },
+  {
+    "ref": "Ex 8.1 Q.5 (i)",
+    "book_key": "(0.95)^5",
+    "our_answer": "(19/20)^5 = 0.7737809375",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.5 (ii)",
+    "book_key": "(1.2)(0.95)^4",
+    "our_answer": "(6/5)(19/20)^4 = 0.9774075",
+    "verdict": "AGREE",
+    "derivation": "6/5 = 1.2; identical expressions."
+  },
+  {
+    "ref": "Ex 8.1 Q.5 (iii)",
+    "book_key": "1 - (1.2)(0.95)^4",
+    "our_answer": "1 - (6/5)(19/20)^4 = 9037/400000 = 0.0225925",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.5 (iv)",
+    "book_key": "1 - (0.95)^5",
+    "our_answer": "723901/3200000 = 0.2262190625",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.6",
+    "book_key": "(9/10)^4",
+    "our_answer": "6561/10000 = 0.6561",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.7",
+    "book_key": "11/243",
+    "our_answer": "11/243 = 0.04526748971",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.8 (i)",
+    "book_key": "1 - (99/100)^50",
+    "our_answer": "1 - (99/100)^50 = 0.3949939329",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.8 (ii)",
+    "book_key": "50 (99^49 / 100^50)",
+    "our_answer": "(1/2)(99/100)^49 = 0.3055586198",
+    "verdict": "AGREE",
+    "derivation": "50*99^49/100^50 = (50/100)*(99/100)^49 = 0.5*(99/100)^49; both = 0.3055586198."
+  },
+  {
+    "ref": "Ex 8.1 Q.8 (iii)",
+    "book_key": "1 - 149 (99^49 / 100^50)",
+    "our_answer": "1 - (149/100)(99/100)^49 = 0.0894353131",
+    "verdict": "AGREE",
+    "derivation": "149*99^49/100^50 = (149/100)(99/100)^49; identical."
+  },
+  {
+    "ref": "Ex 8.1 Q.9 (i)",
+    "book_key": "1/20^3",
+    "our_answer": "1/8000 = 0.000125",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.9 (ii)",
+    "book_key": "3 (19 / 20^3)",
+    "our_answer": "57/8000 = 0.007125",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.9 (iii)",
+    "book_key": "3 (19^2 / 20^3)",
+    "our_answer": "1083/8000 = 0.135375",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.9 (iv)",
+    "book_key": "(19/20)^3",
+    "our_answer": "6859/8000 = 0.857375",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.10",
+    "book_key": "(7/3)(5/6)^5",
+    "our_answer": "21875/23328 = 0.9377143347",
+    "verdict": "AGREE",
+    "derivation": "(7/3)(3125/7776) = 21875/23328; both = 0.9377143347."
+  },
+  {
+    "ref": "Ex 8.1 Q.11",
+    "book_key": "22 (9^3 / 10^11)",
+    "our_answer": "160380/10^12 = 1.6038e-07",
+    "verdict": "AGREE",
+    "derivation": "22*729/10^11 = 16038/10^11 = 160380/10^12; both = 1.6038e-07."
+  },
+  {
+    "ref": "Ex 8.1 Q.12 (i)",
+    "book_key": "4, 2.4",
+    "our_answer": "E(X)=4, Var(X)=2.4",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.12 (ii)",
+    "book_key": "10, 2.4",
+    "our_answer": "n=10, Var(X)=2.4",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.12 (iii)",
+    "book_key": "2/5 ; sqrt(6)",
+    "our_answer": "p=0.4=2/5, SD(X)=sqrt(6)=2.449",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Ex 8.1 Q.12 (iv)",
+    "book_key": "8/5",
+    "our_answer": "Var(X)=1.6=8/5",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Misc 8 I (1)",
+    "book_key": "B",
+    "our_answer": "B",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Misc 8 I (2)",
+    "book_key": "D",
+    "our_answer": "D",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Misc 8 I (3)",
+    "book_key": "D",
+    "our_answer": "D",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Misc 8 I (4)",
+    "book_key": "C",
+    "our_answer": "C",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Misc 8 I (5)",
+    "book_key": "B",
+    "our_answer": "B",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Misc 8 I (6)",
+    "book_key": "C",
+    "our_answer": "C",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Misc 8 I (7)",
+    "book_key": "B",
+    "our_answer": "B",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Misc 8 Q.1 (i)",
+    "book_key": "2 x (0.8)^9",
+    "our_answer": "524288/1953125 = 0.268435456",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Misc 8 Q.1 (ii)",
+    "book_key": "1 - (0.8)^10",
+    "our_answer": "8717049/9765625 = 0.8926258176",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Misc 8 Q.1 (iii)",
+    "book_key": "1 - (8.2)(0.2)^9",
+    "our_answer": "9765584/9765625 = 0.9999958016",
+    "verdict": "AGREE",
+    "derivation": "P(X>=9) = 10(0.2)^9(0.8) + (0.2)^10 = (0.2)^9(8 + 0.2) = 8.2(0.2)^9; both give 0.9999958016."
+  },
+  {
+    "ref": "Misc 8 Q.2 (i)",
+    "book_key": "p = 1/2, Var(X) = 2.5",
+    "our_answer": "p = 0.5, Var(X) = 2.5",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Misc 8 Q.2 (ii)",
+    "book_key": "n = 10, p = 1/2",
+    "our_answer": "n = 10, p = 0.5",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Misc 8 Q.3 (i)",
+    "book_key": "63/256",
+    "our_answer": "63/256 = 0.24609375",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Misc 8 Q.3 (ii)",
+    "book_key": "105/512",
+    "our_answer": "1/1024 = 0.0009765625",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem: 'heads in the FIRST FOUR tosses and TAIL in LAST SIX tosses'. That is one specified outcome sequence H H H H T T T T T T, not a count, so no binomial coefficient enters. Third ground truth = the sample space of 2^10 = 1024 equally-likely head/tail sequences: exactly ONE of them is HHHHTTTTTT, so P = 1/1024 = 0.0009765625. The book's 105/512 = 210/1024 = 0.205078125, and 210 = C(10,4) - i.e. the book answered P(exactly 4 heads in any order), which is a different question and ignores the positional words 'first four' and 'last six'. Note the book's own part (i) is 63/256 = 252/1024 = C(10,5)/2^10, showing it uses the counting form when the stem asks for one ('5 times'); part (ii) does not ask for a count. Ours is right; the printed key answers the wrong event."
+  },
+  {
+    "ref": "Misc 8 Q.4",
+    "book_key": "45 (2^26 / 2^10)",
+    "our_answer": "589824/1953125 = 0.301989888",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem: 10 bombs, P(hit)=0.8, so P(miss)=0.2; exactly 2 miss. Independent derivation: P = C(10,2)(0.2)^2(0.8)^8 = 45 * (2/10)^2 * (8/10)^8 = 45 * (2^2 * 2^24)/10^10 = 45 * 2^26/10^10 = 3019898880/10^10 = 0.301989888 = 589824/1953125. The printed key's DENOMINATOR base is wrong: as printed, 45(2^26/2^10) = 45 * 2^16 = 2,949,120, which is not a probability at all (it exceeds 1 by six orders of magnitude). The intended denominator is plainly 10^10 (a dropped '1'), and with that correction the book's expression equals ours exactly. Ours is right; the printed key is a typographical defect that is self-refuting on its face."
+  },
+  {
+    "ref": "Misc 8 Q.5 (i)",
+    "book_key": "0.65 x (0.95)^16",
+    "our_answer": "17(0.05)(0.95)^16 = 0.85(0.95)^16 = 0.3741076684",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem: 17 riders, p = 0.05, exactly one burst tyre. P(X=1) = C(17,1)(0.05)(0.95)^16 = 17 * 0.05 * (0.95)^16 = 0.85 * (0.95)^16 = 0.3741076684. The coefficient 17*0.05 is 0.85, not 0.65; the book's 0.65*(0.95)^16 = 0.2860823346. The book REFUTES ITSELF one line later: its own part (ii) key is 2.0325*(0.95)^14, and factorising the true P(X<=3) gives (0.95)^14[(0.95)^3 + 0.85(0.95)^2 + 0.34(0.95) + 0.085] = (0.95)^14 * 2.0325 - the 2.0325 is only obtainable with the 0.85 coefficient. Verified numerically: 2.0325*(0.95)^14 = 0.9911993951 = exact P(X<=3); with 0.65 the constant would have been 1.8275. Ours is right."
+  },
+  {
+    "ref": "Misc 8 Q.5 (ii)",
+    "book_key": "(2.0325) x (0.95)^14",
+    "our_answer": "0.9912",
+    "verdict": "AGREE",
+    "derivation": "2.0325*(0.95)^14 = 0.9911993951; exact P(X<=3) for B(17,0.05) = 0.9911993951."
+  },
+  {
+    "ref": "Misc 8 Q.5 (iii)",
+    "book_key": "1 - (1.6) x (0.95)^16",
+    "our_answer": "1 - (0.95)^17 - 0.85(0.95)^16 = 0.2077719964",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem: two or more of 17 riders have burst tyres. P(X>=2) = 1 - P(X=0) - P(X=1) = 1 - (0.95)^17 - 17(0.05)(0.95)^16 = 1 - (0.95)^16[0.95 + 0.85] = 1 - 1.8(0.95)^16 = 0.2077719964. The book's constant is 1.6 = 0.95 + 0.65, i.e. it carries forward the same wrong 0.65 coefficient as its part (i); 1 - 1.6(0.95)^16 = 0.2957973302. Exact binomial sum confirms 0.2077719964 (sum of terms r=2..17 computed directly, not by complement, gives the same value). Ours is right."
+  },
+  {
+    "ref": "Misc 8 Q.6",
+    "book_key": "0.2114",
+    "our_answer": "25569/100000 = 0.25569",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem: 6 lamps, P(a lamp is burnt out) = 0.3; room unusable when the number of lamps BURNING is less than four. Third ground truth = exhaustive enumeration over all 2^6 = 64 lamp states with exact Fraction weights (each burnt-out lamp weight 3/10, each burning lamp 7/10), summing the states with fewer than 4 burning: total = 25569/100000 = 0.25569 exactly. Two independent closed forms agree: with X = number burnt out ~ B(6,0.3), unusable iff 6-X < 4 iff X >= 3, P(X>=3) = 25569/100000; with B = number burning ~ B(6,0.7), unusable iff B <= 3, P(B<=3) = 25569/100000. The book's 0.2114 is not reproducible from ANY reading of this stem: a brute-force search over n = 3..14, p on a 0.001 grid and every contiguous range of r found no (n,p,range) matching 0.2114 that corresponds to this question (the only near hits are things like B(6,0.174) at r=2, unrelated to the given data). Ours is right."
+  },
+  {
+    "ref": "Misc 8 Q.7",
+    "book_key": "1.4 x (0.9)^4",
+    "our_answer": "45927/50000 = 0.91854",
+    "verdict": "AGREE",
+    "derivation": "1.4*(0.9)^4 = 1.4*0.6561 = 0.91854; matches the binomial B(5,0.1) value of P(X<=1)."
+  },
+  {
+    "ref": "Misc 8 Q.8",
+    "book_key": "6.97 x (0.97)^19",
+    "our_answer": "0.8802",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem: 20 devices, defective rate 3%, at most one defective. P(X<=1) = (0.97)^20 + 20(0.03)(0.97)^19 = (0.97)^19[0.97 + 0.60] = 1.57(0.97)^19 = 0.8801619777. The printed coefficient 6.97 gives 6.97*(0.97)^19 = 3.9074706909, which is greater than 1 and therefore cannot be a probability - the key is self-refuting. The intended constant is 1.57 (misprinted); with it the book's expression equals ours to 16 digits. Ours is right."
+  },
+  {
+    "ref": "Misc 8 Q.9",
+    "book_key": "0.3456",
+    "our_answer": "216/625 = 0.3456",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Misc 8 Q.10",
+    "book_key": "30.44 / 5^8",
+    "our_answer": "761/9765625 = 7.79264e-05",
+    "verdict": "AGREE",
+    "derivation": "30.44/5^8 = 30.44/390625 = 7.79264e-05; 761/5^10 = 761/9765625 = 7.79264e-05 (761/25 = 30.44 and 5^10/25 = 5^8). Identical."
+  },
+  {
+    "ref": "Misc 8 Q.11 (i)",
+    "book_key": "(0.998)^8",
+    "our_answer": "(0.998)^8 = 0.9841115531",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Misc 8 Q.11 (ii)",
+    "book_key": "1.014 x (0.998)^7",
+    "our_answer": "0.9998888926",
+    "verdict": "AGREE",
+    "derivation": "P(X=7)+P(X=8) = (0.998)^7[8*0.002 + 0.998] = 1.014(0.998)^7 = 0.9998888926; matches ours."
+  },
+  {
+    "ref": "Misc 8 Q.11 (iii)",
+    "book_key": "1 - 1.014 x (0.998)^7",
+    "our_answer": "0.9999995553",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem: AT LEAST 6 of 8 machines produce all bolts within specification, X ~ B(8, 0.998). P(X>=6) = P(X=6)+P(X=7)+P(X=8) = 0.0001106627 + 0.0157773396 + 0.9841115531 = 0.9999995553. The book prints 1 - 1.014(0.998)^7 = 0.0001111074, which is exactly P(X<=6) (verified: direct sum of r=0..6 gives 0.00011110735) - i.e. the book took the complement of its own part (ii) answer instead of ADDING the extra term P(X=6). 'At least 6' must be at least as large as the part (ii) answer 0.99989, so a value of 0.000111 is impossible on monotonicity grounds alone. Ours is right."
+  },
+  {
+    "ref": "Misc 8 Q.12",
+    "book_key": "775.44 x (0.003)^38",
+    "our_answer": "0.9998",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem: 40 machines, P(a machine develops a fault) = 0.003; find P(38 or more will NOT develop any faults). Success = fault-free, p = 0.997, Y ~ B(40, 0.997). P(Y>=38) = (0.997)^40 + 40(0.997)^39(0.003) + C(40,38)(0.997)^38(0.003)^2 = 0.8867605 + 0.1067315 + 0.0062626 = 0.9997545158. The book's 775.44*(0.003)^38 = 1.0475e-93, effectively zero. That value is EXACTLY the answer to the mirror-image question: for X = number that DO develop faults, X ~ B(40,0.003), P(X>=38) = (0.003)^38[C(40,38)(0.997)^2 + 40(0.997)(0.003) + (0.003)^2] = (0.003)^38[775.32702 + 0.11964 + 0.000009] = 775.446669 x (0.003)^38 = 1.0475e-93 - the printed constant 775.44 reproduces this to 5 significant figures. So the book swapped p and q, answering 'P(38 or more DO develop faults)'. Since only 0.3% of machines fail, P(38+ of 40 are fault-free) must be near 1, not near 0. Ours is right."
+  },
+  {
+    "ref": "Misc 8 Q.13 (i)",
+    "book_key": "0.9^10",
+    "our_answer": "0.3486784401",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Misc 8 Q.13 (ii)",
+    "book_key": "0.9^9",
+    "our_answer": "0.387420489",
+    "verdict": "AGREE",
+    "derivation": "10(0.1)(0.9)^9 = (0.9)^9; identical."
+  },
+  {
+    "ref": "Misc 8 Q.13 (iii)",
+    "book_key": "0.45 x (0.9)^8",
+    "our_answer": "0.1937102445",
+    "verdict": "AGREE",
+    "derivation": "45(0.1)^2(0.9)^8 = 0.45(0.9)^8 = 0.1937102445."
+  },
+  {
+    "ref": "Misc 8 Q.13 (iv)",
+    "book_key": "1 - 2.16 x (0.9)^8",
+    "our_answer": "0.0701908264",
+    "verdict": "AGREE",
+    "derivation": "P(X=0)+P(X=1)+P(X=2) = (0.9)^8[0.81 + 0.9 + 0.45] = 2.16(0.9)^8; 1 - that = 0.0701908264."
+  },
+  {
+    "ref": "Misc 8 Q.14 (i)",
+    "book_key": "1/5^4, 16/5^4, 96/5^4, 256/5^4, 256/5^4",
+    "our_answer": "0.0016, 0.0256, 0.1536, 0.4096, 0.4096",
+    "verdict": "AGREE",
+    "derivation": "5^4 = 625; 1/625=0.0016, 16/625=0.0256, 96/625=0.1536, 256/625=0.4096, 256/625=0.4096. All five match term by term."
+  },
+  {
+    "ref": "Misc 8 Q.14 (ii) (a)",
+    "book_key": "608/5^4",
+    "our_answer": "608/625 = 0.9728",
+    "verdict": "AGREE",
+    "derivation": ""
+  },
+  {
+    "ref": "Misc 8 Q.14 (ii) (b)",
+    "book_key": "1 - 33/5^8",
+    "our_answer": "390592/390625 = 0.99991552",
+    "verdict": "AGREE",
+    "derivation": "5^8 = 390625; 1 - 33/390625 = 390592/390625 = 0.99991552."
+  },
+  {
+    "ref": "Misc 8 Q.15 (i)",
+    "book_key": "35 x 8 x 81 / 5^7",
+    "our_answer": "4536/15625 = 0.290304",
+    "verdict": "AGREE",
+    "derivation": "35*8*81 = 22680; 22680/78125 = 0.290304 = 4536/15625."
+  },
+  {
+    "ref": "Misc 8 Q.15 (ii)",
+    "book_key": "1 - 12393/5^7",
+    "our_answer": "65732/78125 = 0.8413696",
+    "verdict": "AGREE",
+    "derivation": "1 - 12393/78125 = 65732/78125 = 0.8413696."
+  },
+  {
+    "ref": "Misc 8 Q.16",
+    "book_key": "log 0.5 / log 0.99",
+    "our_answer": "n = 69",
+    "verdict": "AGREE",
+    "derivation": "Same computation; the book prints the unevaluated threshold log0.5/log0.99 = 68.9676 while we give the least admissible integer. Verified: 1-(0.99)^68 = 0.4951141 (not > 0.5) and 1-(0.99)^69 = 0.5001630 (> 0.5), so n = 69 is the correct integer answer to the question as asked."
+  },
+  {
+    "ref": "Misc 8 Q.17",
+    "book_key": "1/5",
+    "our_answer": "p = 0.2",
+    "verdict": "AGREE",
+    "derivation": "1/5 = 0.2."
+  },
+  {
+    "ref": "8.1.1 SolvedEx.1",
+    "book_key": "",
+    "our_answer": "(i) Bernoulli trials, p = 7/16 constant; (ii) not Bernoulli trials",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Solved example - carries the book's own in-text worked solution; the ANSWERS section keys only Exercise 8.1 and Miscellaneous 8."
+  },
+  {
+    "ref": "8.2 SolvedEx.1",
+    "book_key": "",
+    "our_answer": "(i) 105/512  (ii) 193/512  (iii) 53/64",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Solved example - no entry in the ANSWERS block."
+  },
+  {
+    "ref": "8.2 SolvedEx.2",
+    "book_key": "",
+    "our_answer": "1 - (9/10)^10",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Solved example - no entry in the ANSWERS block."
+  },
+  {
+    "ref": "8.3 ForExample.1",
+    "book_key": "",
+    "our_answer": "E(X) = 4, Var(X) = 2.4",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "In-text example - no entry in the ANSWERS block."
+  },
+  {
+    "ref": "8.3 SolvedEx.1",
+    "book_key": "",
+    "our_answer": "E(X) = 20/9, Var(X) = 80/81",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Solved example - no entry in the ANSWERS block."
+  },
+  {
+    "ref": "8.3 SolvedEx.2",
+    "book_key": "",
+    "our_answer": "n = 20, p = 0.3",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Solved example - no entry in the ANSWERS block."
+  }
+]

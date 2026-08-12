@@ -1,0 +1,29 @@
+[
+  {
+    "ref": "8.1.1 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bernoulli Trials",
+    "difficulty": "EASY",
+    "stem": "Six balls are drawn successively from an urn containing 7 red and 9 black balls. Tell whether or not the trials of drawing balls are Bernoulli trials when after each draw the ball drawn is\n(i) replaced\n(ii) not replaced in the urn.",
+    "solution": "(i) The number of trials is finite. When the drawing is done with replacement, the probability of success (say, red ball) is \\(p = \\dfrac{7}{16}\\) which is same for all six trials (draws). Hence, the drawing of balls with replacements are Bernoulli trials.\n\n(ii) When the drawing is done without replacement, the probability of success (i.e. red ball) in first trial is \\(\\dfrac{7}{16}\\), in second trial is \\(\\dfrac{6}{15}\\) if first ball drawn is red and is \\(\\dfrac{7}{15}\\) if first ball drawn is black and so on. Clearly probability of success is not same for all trials, hence the trials are not Bernoulli trials."
+  },
+  {
+    "ref": "8.2 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "The Binomial Distribution",
+    "difficulty": "MODERATE",
+    "stem": "If a fair coin is tossed 10 times, find the probability of getting\n(i) exactly six heads\n(ii) at least six heads\n(iii) at most six heads",
+    "solution": "The repeated tosses of a coin are Bernoulli trials. Let \\(X\\) denote the number of heads in an experiment of 10 trials.\nClearly, \\(X \\sim B(n, p)\\) with \\(n = 10\\) and \\(p = \\dfrac{1}{2}\\), \\(q = 1 - p = 1 - \\dfrac{1}{2}\\) \\(\\therefore q = \\dfrac{1}{2}\\)\n\\(P(X = x) = {}^{n}C_{x}\\, p^{x} \\times q^{n-x}\\)\n\\(= {}^{10}C_{x}\\left(\\dfrac{1}{2}\\right)^{x} \\times \\left(\\dfrac{1}{2}\\right)^{n-x}\\)\n\n(i) Exactly six successes means \\(x = 6\\)\n\\(P(X = 6) = {}^{10}C_{6}\\left(\\dfrac{1}{2}\\right)^{6} \\times \\left(\\dfrac{1}{2}\\right)^{10-6} = \\dfrac{10!}{6!\\,(10-6)!} \\times \\left(\\dfrac{1}{2}\\right)^{6} \\times \\left(\\dfrac{1}{2}\\right)^{4} = \\dfrac{10 \\times 9 \\times 8 \\times 7}{4 \\times 3 \\times 2 \\times 1} \\times \\left(\\dfrac{1}{2}\\right)^{10}\\)\n\\(= \\dfrac{105}{512}\\)\n\n(ii) At least six successes means \\(x \\geq 6\\)\n\\(P(X \\geq 6) = \\left[P(X = 6) + P(X = 7) + P(X = 8) + P(X = 9) + P(X = 10)\\right]\\)\n\\(= {}^{10}C_{6}\\left(\\dfrac{1}{2}\\right)^{6} \\times \\left(\\dfrac{1}{2}\\right)^{4} + {}^{10}C_{7}\\left(\\dfrac{1}{2}\\right)^{7} \\times \\left(\\dfrac{1}{2}\\right)^{3} + {}^{10}C_{8}\\left(\\dfrac{1}{2}\\right)^{8} \\times \\left(\\dfrac{1}{2}\\right)^{2} + {}^{10}C_{9}\\left(\\dfrac{1}{2}\\right)^{9} \\times \\left(\\dfrac{1}{2}\\right)^{1} + {}^{10}C_{10}\\left(\\dfrac{1}{2}\\right)^{10} \\times \\left(\\dfrac{1}{2}\\right)^{0}\\)\n\\(= \\dfrac{10 \\times 9 \\times 8 \\times 7}{4 \\times 3 \\times 2 \\times 1} \\times \\left(\\dfrac{1}{2}\\right)^{10} + \\dfrac{10 \\times 9 \\times 8}{3 \\times 2 \\times 1} \\times \\left(\\dfrac{1}{2}\\right)^{10} + \\dfrac{10 \\times 9}{2 \\times 1} \\times \\left(\\dfrac{1}{2}\\right)^{10} + 10\\left(\\dfrac{1}{2}\\right)^{10} + \\left(\\dfrac{1}{2}\\right)^{10}\\)\n\\(= \\left(210 + 120 + 45 + 10 + 1\\right) \\times \\dfrac{1}{1024}\\)\n\\(= \\dfrac{386}{1024} = \\dfrac{193}{512}\\)\n\n(iii) At most six successes means \\(x \\leq 6\\)\n\\(P(X \\leq 6) = 1 - (P(X > 6)\\)\n\\(= 1 - \\left[P(X = 7) + P(X = 8) + P(X = 9) + P(X = 10)\\right]\\)\n\\(= 1 - \\left[{}^{10}C_{7}\\left(\\dfrac{1}{2}\\right)^{7} \\times \\left(\\dfrac{1}{2}\\right)^{3} + {}^{10}C_{8}\\left(\\dfrac{1}{2}\\right)^{8} \\times \\left(\\dfrac{1}{2}\\right)^{2} + {}^{10}C_{9}\\left(\\dfrac{1}{2}\\right)^{9} \\times \\left(\\dfrac{1}{2}\\right)^{1} + {}^{10}C_{10}\\left(\\dfrac{1}{2}\\right)^{10} \\times \\left(\\dfrac{1}{2}\\right)^{0}\\right]\\)\n\\(= 1 - \\left[\\dfrac{10 \\times 9 \\times 8}{3 \\times 2 \\times 1} \\times \\left(\\dfrac{1}{2}\\right)^{10} + \\dfrac{10 \\times 9}{2 \\times 1} \\times \\left(\\dfrac{1}{2}\\right)^{10} + 10\\left(\\dfrac{1}{2}\\right)^{10} \\times \\left(\\dfrac{1}{2}\\right)^{10}\\right]\\)\n\\(= 1 - \\left[\\left(120 + 45 + 10 + 1\\right) \\times \\dfrac{1}{1024}\\right] = 1 - \\dfrac{176}{1024} = 1 - \\dfrac{88}{512} = \\dfrac{512 - 88}{512} = \\dfrac{424}{512} = \\dfrac{53}{64}\\)"
+  },
+  {
+    "ref": "8.2 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "The Binomial Distribution",
+    "difficulty": "EASY",
+    "stem": "Ten eggs are drawn successively with replacement from a lot containing 10% defective eggs. Find the probability that there is at least one defective egg.",
+    "solution": "Let \\(X\\) denote the number of defective eggs in the 10 eggs drawn.\nSince the drawing is done with replacement, the trials are Bernoulli trials.\nProbability of success \\(= \\dfrac{1}{10}\\)\n\\(p = \\dfrac{1}{10}\\), \\(q = 1 - p = 1 - \\dfrac{1}{10}\\) \\(\\therefore q = \\dfrac{9}{10}\\)\n\\(n = 10\\)\n\\(X \\sim B\\left(10, \\dfrac{1}{10}\\right)\\)\n\\(P(X = x) = {}^{10}C_{x}\\left(\\dfrac{1}{10}\\right)^{x} \\times \\left(\\dfrac{9}{10}\\right)^{10-x}\\)\nHere \\(X \\geq 1\\)\n\\(P(X \\geq 1) = 1 - {}^{10}C_{0}\\left(\\dfrac{1}{10}\\right)^{0} \\times \\left(\\dfrac{9}{10}\\right)^{10}\\)\n\\(= 1 - 1 \\times 1 \\times \\left(\\dfrac{9}{10}\\right)^{10}\\)\n\\(= 1 - \\left(\\dfrac{9}{10}\\right)^{10}\\)"
+  }
+]

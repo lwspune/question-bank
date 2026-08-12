@@ -1,0 +1,119 @@
+[
+  {
+    "ref": "7.1 ForExample.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Random Variables and Their Types",
+    "difficulty": "EASY",
+    "stem": "Three seeds are sown in order to find how many of them germinate. Every seed will either germinate or will not germinate. Use the letter \\(Y\\) when a seed germinates and the letter \\(N\\) when a seed does not germinate. Write the sample space of this experiment. Let \\(X\\) denote the number of times the letter \\(Y\\) appears in a possible outcome. Find the value of \\(X\\) for every outcome, the range of \\(X\\), and the four events \\([X = 0]\\), \\([X = 1]\\), \\([X = 2]\\), \\([X = 3]\\).",
+    "solution": "The sample space of this experiment can then be written as\n\\(S = \\{YYY,\\ YYN,\\ YNY,\\ NYY,\\ YNN,\\ NYN,\\ NNY,\\ NNN\\}\\), and \\(n(S) = 2^3 = 8\\).\nNone of these outcomes is a number. We shall try to represent every outcome by a number. Consider the number of times the letter \\(Y\\) appears in a possible outcome and denote it by \\(X\\). Then, we have\n\\(X(YYY) = 3\\), \\(X(YYN) = X(YNY) = X(NYY) = 2\\), \\(X(YNN) = X(NYN) = X(NNY) = 1\\), \\(X(NNN) = 0\\).\nThe variable \\(X\\) has four possible values, namely 0, 1, 2, and 3. The set of possible values of \\(X\\) is called the range of \\(X\\). Thus, in this example, the range of \\(X\\) is the set \\(\\{0, 1, 2, 3\\}\\).\nThe four events are then defined as follows.\n\\([X = 0] = \\{NNN\\}\\),\n\\([X = 1] = \\{YNN,\\ NYN,\\ NNY\\}\\),\n\\([X = 2] = \\{YYN,\\ YNY,\\ NYY\\}\\),\n\\([X = 3] = \\{YYY\\}\\)."
+  },
+  {
+    "ref": "7.3 ForExample.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability Mass Function of a Discrete Random Variable",
+    "difficulty": "MODERATE",
+    "stem": "Consider the experiment of throwing two dice and noting the numbers on the upper-most faces of the two dice. Let \\(X\\) denote the sum of the two numbers in any single throw. Obtain the probability distribution of \\(X\\).",
+    "solution": "The sample space of this experiment is\n\\(S = \\{(1, 1), (1, 2), \\ldots, (6, 6)\\}\\) and \\(n(S) = 36\\).\nThen \\(\\{2, 3, \\cdots, 12\\}\\) is the set of possible values of \\(X\\). Further,\n\\([X = 2] = \\{(1, 1)\\}\\),\n\\([X = 3] = \\{(1, 2), (2, 1)\\}\\),\n\\(\\cdots\\)\n\\([X = 12] = \\{(6, 6)\\}\\).\nNext, all of these 36 possible outcomes are equally likely if the two dice are fair, that is, if each of the six faces have the same probability of being uppermost when the die is thrown.\nAs the result, each of these 36 possible outcomes has the same probability \\(= \\dfrac{1}{36}\\)\nThis leads to the following results.\n\\(P[X = 2] = P\\{(1, 1)\\} = \\dfrac{1}{36}\\),\n\\(P[X = 3] = P\\{(1, 2), (2, 1)\\} = \\dfrac{2}{36}\\),\n\\(P[X = 4] = P\\{(1, 3), (2, 2), (3, 1)\\} = \\dfrac{3}{36}\\),\nand so on.\nThe following table shows the probabilities of all possible values of \\(X\\).\n\n| \\(x\\) | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| \\(P(x)\\) | \\(\\dfrac{1}{36}\\) | \\(\\dfrac{2}{36}\\) | \\(\\dfrac{3}{36}\\) | \\(\\dfrac{4}{36}\\) | \\(\\dfrac{5}{36}\\) | \\(\\dfrac{6}{36}\\) | \\(\\dfrac{5}{36}\\) | \\(\\dfrac{4}{36}\\) | \\(\\dfrac{3}{36}\\) | \\(\\dfrac{2}{36}\\) | \\(\\dfrac{1}{36}\\) |"
+  },
+  {
+    "ref": "7.3.1 ForExample.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability Mass Function of a Discrete Random Variable",
+    "difficulty": "MODERATE",
+    "stem": "Consider the coin-tossing experiment where the random variable \\(X\\) is defined as the number of tosses required to get a head. Let the probability of getting head be \\(t\\) and that of not getting head be \\(1 - t\\). Write the probability mass function of \\(X\\) and verify the result.",
+    "solution": "The possible values of \\(X\\) are given by the set of natural numbers, \\(1, 2, 3, \\ldots\\) and\n\\(P[X = i] = (1 - t)^{i-1}\\, t\\), for \\(i = 1, 2, 3, \\ldots\\)\nThis result can be verified by noting that if head is obtained for the first time on the \\(i^{\\,th}\\) toss, then the first \\(i - 1\\) tosses have resulted in tail. In other words, \\(X = i\\) represents the event of having \\(i - 1\\) tails followed by the first head on the toss."
+  },
+  {
+    "ref": "7.3.1 ForExample.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability Mass Function of a Discrete Random Variable",
+    "difficulty": "EASY",
+    "stem": "Consider the experiment of tossing a coin 4 times and defining the random variable \\(X\\) as the number of heads in 4 tosses. Write the probability distribution of \\(X\\) in tabular form and state the p.m.f. of \\(X\\).",
+    "solution": "The possible values of \\(X\\) are 0, 1, 2, 3, 4, and the probability distribution of \\(X\\) is given by the following table.\n\n| \\(x\\) | 0 | 1 | 2 | 3 | 4 |\n|---|---|---|---|---|---|\n| \\(P[X = x]\\) | \\(\\dfrac{1}{16}\\) | \\(\\dfrac{1}{4}\\) | \\(\\dfrac{3}{8}\\) | \\(\\dfrac{1}{4}\\) | \\(\\dfrac{1}{16}\\) |\n\nNote that : \\(P[X = x] = {}^{4}C_{x} \\left(\\dfrac{1}{2}\\right)^{4}\\), \\(x = 0, 1, 2, 3, 4, \\ldots\\)\nwhere \\({}^{4}C_{x}\\) is the number of ways of getting \\(x\\) heads in 4 tosses."
+  },
+  {
+    "ref": "7.3.2 ForExample.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cumulative Distribution Function",
+    "difficulty": "MODERATE",
+    "stem": "Consider the experiment of tossing 4 coins and counting the number of heads. Let \\(X\\) denote the number of heads obtained. Form the table showing the p.m.f. \\(f(x) = P[X = x]\\) and the c.d.f. \\(F(x) = P[X \\leq x]\\) of \\(X\\).",
+    "solution": "We can form the next table for the probability distribution of \\(X\\).\n\n| \\(x\\) | 0 | 1 | 2 | 3 | 4 |\n|---|---|---|---|---|---|\n| \\(f(x) = P[X = x]\\) | \\(\\dfrac{1}{16}\\) | \\(\\dfrac{1}{4}\\) | \\(\\dfrac{3}{8}\\) | \\(\\dfrac{1}{4}\\) | \\(\\dfrac{1}{16}\\) |\n| \\(F(x) = P[X \\leq x]\\) | \\(\\dfrac{1}{16}\\) | \\(\\dfrac{5}{16}\\) | \\(\\dfrac{11}{16}\\) | \\(\\dfrac{15}{16}\\) | 1 |"
+  },
+  {
+    "ref": "7.3.2 ForExample.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cumulative Distribution Function",
+    "difficulty": "MODERATE",
+    "stem": "Consider the experiment of tossing a coin till a head is obtained. Let the random variable \\(X\\) denote the number of tosses required for the first head. Show the p.m.f. \\(f(x)\\) and the c.d.f. \\(F(x)\\) of \\(X\\) in tabular form.",
+    "solution": "The following table shows the p.m.f. and the c.d.f. of the random variable \\(X\\), defined as the number of tosses required for the first head.\n\n| \\(x\\) | 1 | 2 | 3 | 4 | 5 | \\(\\cdots\\) |\n|---|---|---|---|---|---|---|\n| \\(f(x)\\) | \\(\\dfrac{1}{2}\\) | \\(\\dfrac{1}{4}\\) | \\(\\dfrac{1}{8}\\) | \\(\\dfrac{1}{16}\\) | \\(\\dfrac{1}{32}\\) | \\(\\cdots\\) |\n| \\(F(x)\\) | \\(\\dfrac{1}{2}\\) | \\(\\dfrac{3}{4}\\) | \\(\\dfrac{7}{8}\\) | \\(\\dfrac{15}{16}\\) | \\(\\dfrac{31}{32}\\) | \\(\\cdots\\) |"
+  },
+  {
+    "ref": "7.3.2 ForExample.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Random Variables and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "Consider the simple experiment of tossing a coin twice. The sample space of this experiment is \\(S = \\{HH,\\ HT,\\ TH,\\ TT\\}\\). Let \\(X\\) denote the number of heads obtained in two tosses, let \\(Y\\) denote the number of heads minus the number of tails in two tosses, and let \\(Z = \\dfrac{\\text{Number of heads}}{\\text{Number of tails} + 1}\\). Obtain the value of each of \\(X\\), \\(Y\\) and \\(Z\\) for every outcome of the experiment.",
+    "solution": "Let \\(X\\) denote the number of heads obtained in two tosses. Then \\(X\\) is a discrete random variable and its value for every outcome of the experiment is obtained as follows.\n\\(X(HH) = 2\\), \\(X(HT) = X(TH) = 1\\), \\(X(TT) = 0\\).\nLet \\(Y\\) denote the number of heads minus the number of tails in two tosses. Then \\(Y\\) is also a discrete random variable and its value for every outcome of the experiment is obtained as follows.\n\\(Y(HH) = 2\\), \\(Y(HT) = Y(TH) = 0\\), \\(Y(TT) = -2\\).\nThen \\(Z\\) is also a discrete random variable and its values for every outcome of the experiment is obtained as follows.\n\\(Z(HH) = 2\\), \\(Z(HT) = Z(TH) = \\dfrac{1}{2}\\), \\(Z(TT) = 0\\).\nThese example show that it is possible to define many distinct random variables on the same sample space. Possible values of a discrete random variables can be positive or negative, integer or fraction."
+  },
+  {
+    "ref": "7.3.2 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Random Variables and Their Types",
+    "difficulty": "MODERATE",
+    "stem": "Two persons A and B play a game of tossing a coin thrice. If the result of a toss is head, A gets ₹ 2 from B. If the result of a toss is tail, B gets ₹ 1.5 from A. Let \\(X\\) denote the amount gained or lost by A. Show that \\(X\\) is a discrete random variable and show how it can be defined as a function on the sample space of the experiment.",
+    "solution": "\\(X\\) is a number whose value depends on the outcome of a random experiment.\nTherefore, \\(X\\) is a random variable. Since the sample space of the experiment has only 8 possible outcomes, \\(X\\) is a discrete random variable. Now, the sample space of the experiment is\n\\(S = \\{HHH,\\ HHT,\\ HTH,\\ THH,\\ HTT,\\ THT,\\ TTH,\\ TTT\\}\\).\nThe values of \\(X\\) in rupees corresponding to these outcomes of the experiment are as follows.\n\\(X(HHH) = 2 \\times 3 = \\) ₹ 6\n\\(X(HHT) = X(HTH) = X(THH) = 2 \\times 2 - 1.50 \\times 1 = \\) ₹ 2.50\n\\(X(HTT) = X(THT) = X(TTH) = 2 \\times 1 - 1.50 \\times 2 = \\) ₹ \\(-1.00\\)\n\\(X(TTT) = -1.50 \\times 3 = \\) ₹ \\(-4.50\\)\nHere, a negative amount shows a loss to player A. This example shows that \\(X\\) takes a unique value for every element of the sample space and therefore \\(X\\) is a function on the sample space. Further, possible values of \\(X\\) are 4.50, 1, 2.50, 6."
+  },
+  {
+    "ref": "7.3.2 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability Mass Function of a Discrete Random Variable",
+    "difficulty": "MODERATE",
+    "stem": "A bag contains 1 red and 2 green balls. One ball is drawn from the bag at random, its colour is noted, and then ball is put back in the bag. One more ball is drawn from the bag at random and its colour is also noted. Let \\(X\\) denote the number of red balls drawn from the bag as described above. Derive the probability distribution of \\(X\\).",
+    "solution": "Let the balls in the bag be denoted by \\(r,\\ g_1,\\ g_2\\). The sample space of the experiment is then given by\n\\(S = \\{r\\,r,\\ r\\,g_1,\\ r\\,g_2,\\ g_1 r,\\ g_2 r,\\ g_1 g_1,\\ g_1 g_2,\\ g_2 g_1,\\ g_2 g_2\\}\\).\nSince \\(X\\) is defined as the number of red balls, we have\n\\(X(\\{r\\,r\\}) = 2\\),\n\\(X(\\{r\\,g_1\\}) = X(r\\,g_2) = X(g_1 r) = X(g_2 r) = 1\\),\n\\(X(\\{g_1 g_1\\}) = X(g_1 g_2) = X(g_2 g_1) = X(g_2 g_2) = 0\\).\nThus, \\(X\\) is a discrete random variable that can take values 0, 1, and 2.\nThe probability distribution of \\(X\\) is then obtained as follows :\n\n| \\(x\\) | 0 | 1 | 2 |\n|---|---|---|---|\n| \\(P[X = x]\\) | \\(\\dfrac{4}{9}\\) | \\(\\dfrac{4}{9}\\) | \\(\\dfrac{1}{9}\\) |"
+  },
+  {
+    "ref": "7.3.2 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability Mass Function of a Discrete Random Variable",
+    "difficulty": "MODERATE",
+    "stem": "Two cards are randomly drawn, with replacement, from a well shuffled deck of 52 playing cards. Find the probability distribution of the number of aces drawn.",
+    "solution": "Let \\(X\\) denote the number of aces among the two cards drawn with replacement.\nClearly, 0, 1, and 2 are the possible values of \\(X\\). Since the draws are with replacement, the outcomes of the two draws are independent of each other. Also, since there are 4 aces in the deck of 52 cards,\n\\(P[\\text{ace}] = \\dfrac{4}{52} = \\dfrac{1}{13}\\) and \\(P[\\text{non-ace}] = \\dfrac{12}{13}\\). Then\n\\(P[X = 0] = P[\\text{non-ace and non-ace}] = \\dfrac{12}{13} \\times \\dfrac{12}{13} = \\dfrac{144}{169}\\),\n\\(P[X = 1] = P[\\text{ace and non-ace}] + P[\\text{non-ace and ace}]\\)\n\\(= \\dfrac{1}{13} \\times \\dfrac{12}{13} + \\dfrac{12}{13} \\times \\dfrac{1}{13} = \\dfrac{24}{169}\\),\nand \\(P[X = 2] = P[\\text{ace and ace}] = \\dfrac{1}{13} \\times \\dfrac{1}{13} = \\dfrac{1}{169}\\).\nThe required probability distribution is then as follows.\n\n| \\(x\\) | 0 | 1 | 2 |\n|---|---|---|---|\n| \\(P[X = x]\\) | \\(\\dfrac{144}{169}\\) | \\(\\dfrac{24}{169}\\) | \\(\\dfrac{1}{169}\\) |"
+  },
+  {
+    "ref": "7.3.2 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability Mass Function of a Discrete Random Variable",
+    "difficulty": "MODERATE",
+    "stem": "A fair die is thrown. Let \\(X\\) denote the number of factors of the number on the upper face. Find the probability distribution of \\(X\\).",
+    "solution": "The sample space of the experiment is \\(S = \\{1, 2, 3, 4, 5, 6\\}\\). The values of \\(X\\) for the possible outcomes of the experiment are as follows.\n\\(X(1) = 1\\), \\(X(2) = 2\\), \\(X(3) = 2\\), \\(X(4) = 3\\), \\(X(5) = 2\\), \\(X(6) = 4\\). Therefore,\n\\(p_1 = P[X = 1] = P[\\{1\\}] = \\dfrac{1}{6}\\)\n\\(p_2 = P[X = 2] = P[\\{2, 3, 5\\}] = \\dfrac{3}{6}\\)\n\\(p_3 = P[X = 3] = P[\\{4\\}] = \\dfrac{1}{6}\\)\n\\(p_4 = P[X = 4] = P[\\{6\\}] = \\dfrac{1}{6}\\)\nThe probability distribution of \\(X\\) is then as follows.\n\n| \\(x\\) | 1 | 2 | 3 | 4 |\n|---|---|---|---|---|\n| \\(P[X = x]\\) | \\(\\dfrac{1}{6}\\) | \\(\\dfrac{3}{6}\\) | \\(\\dfrac{1}{6}\\) | \\(\\dfrac{1}{6}\\) |"
+  },
+  {
+    "ref": "7.3.2 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability Mass Function of a Discrete Random Variable",
+    "difficulty": "MODERATE",
+    "stem": "Find the probability distribution of the number of doublets in three throws of a pair of dice.",
+    "solution": "Let \\(X\\) denote the number of doublets. Possible doublets in a pair of dice are (1, 1), (2, 2), (3, 3), (4, 4), (5, 5, ), (6, 6).\nSince the dice are thrown thrice, 0, 1, 2, and 3 are possible values of \\(X\\). Probability of getting a doublet in a single throw of a pair of dice is \\(p = \\dfrac{1}{6}\\) and \\(q = 1 - \\dfrac{1}{6} = \\dfrac{5}{6}\\).\n\\(P[X = 0] = P[\\text{no doublet}] = qqq = \\dfrac{5}{6} \\times \\dfrac{5}{6} \\times \\dfrac{5}{6} = \\dfrac{125}{216}\\).\n\\(P[X = 1] = P[\\text{one doublet}] = pqq + qpq + qqp = 3pq^2 = \\dfrac{75}{216}\\).\n\\(P[X = 2] = P[\\text{two doublets}] = ppq + pqp + qpp = 3p^2 q = \\dfrac{15}{216}\\).\n\\(P[X = 3] = P[\\text{three doublets}] = ppp = \\dfrac{1}{216}\\)."
+  },
+  {
+    "ref": "7.3.2 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cumulative Distribution Function",
+    "difficulty": "MODERATE",
+    "stem": "The probability distribution of \\(X\\) is as follows :\n\n| \\(x\\) | 0 | 1 | 2 | 3 | 4 |\n|---|---|---|---|---|---|\n| \\(P[X = x]\\) | 0.1 | \\(k\\) | \\(2k\\) | \\(2k\\) | \\(k\\) |\n\nFind (i) \\(k\\), (ii) \\(P[X < 2]\\), (iii) \\(P[X \\geq 3]\\), (iv) \\(P[1 \\leq X < 4]\\), (v) \\(F(2)\\).",
+    "solution": "The table gives a probability distribution and therefore\n\\(P[X = 0] + P[X = 1] + P[X = 2] + P[X = 3] + P[X = 4] = 1\\).\nThat is, \\(0.1 + k + 2k + 2k + k = 1\\).\nThat is, \\(6k = 0.9\\). Therefore \\(k = 0.15\\).\n(i) \\(k = 0.15\\).\n(ii) \\(P[X < 2] = P[X = 0] + P[X = 1] = 0.1 + k = 0.1 + 0.15 = 0.25\\)\n(iii) \\(P[X \\geq 3] = P[X = 3] + P[X = 4] = 2k + k = 3(0.15) = 0.45\\)\n(iv) \\(P[1 \\leq X < 4] = P[X = 1] + P[X = 2] + P[X = 3] = k + 2k + 2k = 5k\\)\n\\(= 5(0.15) = 0.75\\).\n(v) \\(F(2) = P[X \\leq 2] = P[X = 0] + P[X = 1] + P[X = 2] = 0.1 + k + 2k = 0.1 + 3k\\)\n\\(= 0.1 + 3(0.15) = 0.1 + 0.45 = 0.55\\)."
+  }
+]

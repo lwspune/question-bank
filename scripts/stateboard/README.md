@@ -125,6 +125,16 @@ PDF only arrives later, run it as a post-flip pass (it's idempotent).
      (apply-solutions won't touch them, so it won't overwrite).
 6. Adjudicate every FIX yourself against the source before touching live content (agents
    over-flip and mis-read figures — verify circuit/figure reads against the rendered page).
+7. ⚠ **ORDER MATTERS: `apply-solutions` LAST-writes, `apply-errata` LAST-wins. Never re-run
+   `apply-solutions.ts` after `apply-errata.ts`** — it rewrites `solution` from the fragments and
+   silently strips any bracket it cannot restore. `apply-errata` mirrors each bracket back into the
+   `*.solutions.json` fragment, so most survive a re-run — but a bracket on an **MCQ** row does not:
+   MCQ solutions come from `*.mcq-verify.json`, which carries no bracket, so re-applying overwrites
+   it. Bit Definite Integration 2026-08-12: a late one-row solution fix forced a full re-apply and
+   took **27 brackets down to 20**, with no error raised. Two safe habits: run errata strictly after
+   the last solution write, and *verify by counting* afterwards
+   (`select count(*) … where solution like '[Textbook%'`) rather than trusting the apply log —
+   `apply-errata` is idempotent, so simply re-running it restores the missing brackets.
 
 ### 7. Figures + solution_image (gate before PUBLIC)
 - **Figures the student must read** (circuits, diagrams) → `snap-crop.ts` + `attach-images.ts`

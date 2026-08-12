@@ -1,0 +1,137 @@
+[
+  {
+    "id": "f05b47a0-eafe-4f5d-80e6-a4148838fe70",
+    "ref": "Ex 8.1 Q.1 (i)",
+    "solution": "A die has three odd faces out of six, so a single throw is a Bernoulli trial with success probability \\(p = \\dfrac{3}{6} = \\dfrac{1}{2}\\) and \\(q = 1 - p = \\dfrac{1}{2}\\). The die is thrown 6 times independently, so if \\(X\\) is the number of odd numbers obtained then \\(X \\sim B\\left(6, \\dfrac{1}{2}\\right)\\) and \\(P(X = r) = \\binom{6}{r} \\left(\\dfrac{1}{2}\\right)^{r} \\left(\\dfrac{1}{2}\\right)^{6-r} = \\dfrac{\\binom{6}{r}}{64}\\). For 5 successes take \\(r = 5\\): \\(P(X = 5) = \\dfrac{\\binom{6}{5}}{64} = \\dfrac{6}{64} = \\dfrac{3}{32}\\). \\(\\therefore\\) the probability of 5 successes is \\(\\dfrac{3}{32} = 0 \\cdot 09375\\)."
+  },
+  {
+    "id": "8f375dbe-e830-48b4-a837-fe870fb16428",
+    "ref": "Ex 8.1 Q.1 (ii)",
+    "solution": "As before \\(X \\sim B\\left(6, \\dfrac{1}{2}\\right)\\) with \\(p = q = \\dfrac{1}{2}\\), so \\(P(X = r) = \\dfrac{\\binom{6}{r}}{64}\\). \"At least 5 successes\" means \\(X = 5\\) or \\(X = 6\\), so \\(P(X \\geq 5) = P(X = 5) + P(X = 6) = \\dfrac{\\binom{6}{5}}{64} + \\dfrac{\\binom{6}{6}}{64} = \\dfrac{6 + 1}{64} = \\dfrac{7}{64}\\). \\(\\therefore\\) the probability of at least 5 successes is \\(\\dfrac{7}{64} = 0 \\cdot 1094\\) (to 4 significant figures)."
+  },
+  {
+    "id": "c7877908-6190-4921-8992-d4ce73dad720",
+    "ref": "Ex 8.1 Q.1 (iii)",
+    "solution": "Again \\(X \\sim B\\left(6, \\dfrac{1}{2}\\right)\\) and \\(P(X = r) = \\dfrac{\\binom{6}{r}}{64}\\). \"At most 5 successes\" means \\(X \\leq 5\\), and adding six terms is wasteful when the complement is a single term: \\(X \\leq 5\\) fails only when \\(X = 6\\). Hence \\(P(X \\leq 5) = 1 - P(X = 6) = 1 - \\dfrac{1}{64} = \\dfrac{63}{64}\\). \\(\\therefore\\) the probability of at most 5 successes is \\(\\dfrac{63}{64} = 0 \\cdot 9844\\) (to 4 significant figures)."
+  },
+  {
+    "id": "9b23d472-fb96-4ac6-832c-efa9b7ae4e3d",
+    "ref": "Ex 8.1 Q.2",
+    "solution": "A throw of a pair of dice has 36 equally likely outcomes, of which the 6 doublets \\((1,1), (2,2), \\ldots, (6,6)\\) are successes, so \\(p = \\dfrac{6}{36} = \\dfrac{1}{6}\\) and \\(q = \\dfrac{5}{6}\\). The pair is thrown \\(n = 4\\) times independently, so the number of doublets \\(X \\sim B\\left(4, \\dfrac{1}{6}\\right)\\). For two successes take \\(r = 2\\): \\(P(X = 2) = \\binom{4}{2} \\left(\\dfrac{1}{6}\\right)^{2} \\left(\\dfrac{5}{6}\\right)^{2} = 6 \\times \\dfrac{1}{36} \\times \\dfrac{25}{36} = \\dfrac{150}{1296} = \\dfrac{25}{216}\\). \\(\\therefore\\) the probability of exactly two doublets is \\(\\dfrac{25}{216} = 0 \\cdot 1157\\) (to 4 significant figures)."
+  },
+  {
+    "id": "ab066c3c-17eb-496b-a877-d5aa5e1a3848",
+    "ref": "Ex 8.1 Q.3",
+    "solution": "Call \"item is defective\" a success. Because the bulk is large, removing 10 items barely changes the proportion defective, so the 10 items may be treated as independent trials with \\(p = 5\\% = \\dfrac{1}{20}\\) and \\(q = \\dfrac{19}{20}\\); thus \\(X \\sim B\\left(10, \\dfrac{1}{20}\\right)\\). \"Not more than one defective\" means \\(X \\leq 1\\), so \\(P(X \\leq 1) = P(X = 0) + P(X = 1) = \\left(\\dfrac{19}{20}\\right)^{10} + \\binom{10}{1} \\left(\\dfrac{1}{20}\\right) \\left(\\dfrac{19}{20}\\right)^{9}\\). Taking \\(\\left(\\dfrac{19}{20}\\right)^{9}\\) common gives \\(P(X \\leq 1) = \\left(\\dfrac{19}{20}\\right)^{9} \\left(\\dfrac{19}{20} + \\dfrac{10}{20}\\right) = \\dfrac{29}{20} \\left(\\dfrac{19}{20}\\right)^{9}\\). \\(\\therefore\\) the required probability is \\(\\dfrac{29}{20}\\left(\\dfrac{19}{20}\\right)^{9} = 0 \\cdot 9139\\) (to 4 significant figures)."
+  },
+  {
+    "id": "1bce86e2-2ba0-4441-8c22-7afa8829b775",
+    "ref": "Ex 8.1 Q.4 (i)",
+    "solution": "A deck has 13 spades out of 52 cards, and because each card is replaced before the next draw the five draws are independent with the same success probability \\(p = \\dfrac{13}{52} = \\dfrac{1}{4}\\), \\(q = \\dfrac{3}{4}\\). So the number of spades \\(X \\sim B\\left(5, \\dfrac{1}{4}\\right)\\) with \\(P(X = r) = \\binom{5}{r} \\left(\\dfrac{1}{4}\\right)^{r} \\left(\\dfrac{3}{4}\\right)^{5-r}\\). All five cards spades means \\(r = 5\\): \\(P(X = 5) = \\left(\\dfrac{1}{4}\\right)^{5} = \\dfrac{1}{1024}\\). \\(\\therefore\\) the probability is \\(\\dfrac{1}{1024} = 0 \\cdot 0009766\\) (to 4 significant figures)."
+  },
+  {
+    "id": "22ae9c8b-304b-43f6-a715-f98b3fdd2dc8",
+    "ref": "Ex 8.1 Q.4 (ii)",
+    "solution": "[Textbook answer-key error: the printed key gives 45/1024. Exhaustive enumeration of all 4^5 = 1024 equally-likely suit sequences finds 90 with exactly 3 spades, so the probability is 90/1024 = 45/512. The book appears to have halved the numerator without halving the denominator; with 45/1024 the six outcome probabilities sum to 979/1024 instead of 1.]\n\nAs in part (i), \\(X \\sim B\\left(5, \\dfrac{1}{4}\\right)\\) where \\(X\\) is the number of spades drawn. \"Only 3 cards are spades\" means exactly \\(r = 3\\) spades and hence 2 non-spades: \\(P(X = 3) = \\binom{5}{3} \\left(\\dfrac{1}{4}\\right)^{3} \\left(\\dfrac{3}{4}\\right)^{2} = 10 \\times \\dfrac{1}{64} \\times \\dfrac{9}{16} = \\dfrac{90}{1024} = \\dfrac{45}{512}\\). \\(\\therefore\\) the probability that exactly 3 of the five cards are spades is \\(\\dfrac{45}{512} = 0 \\cdot 08789\\) (to 4 significant figures)."
+  },
+  {
+    "id": "0f4e096a-65b3-4467-ad63-1dc14752682b",
+    "ref": "Ex 8.1 Q.4 (iii)",
+    "solution": "Again \\(X \\sim B\\left(5, \\dfrac{1}{4}\\right)\\). \"None is a spade\" means every one of the five draws gives a non-spade, i.e. \\(r = 0\\): \\(P(X = 0) = \\binom{5}{0} \\left(\\dfrac{1}{4}\\right)^{0} \\left(\\dfrac{3}{4}\\right)^{5} = \\left(\\dfrac{3}{4}\\right)^{5} = \\dfrac{243}{1024}\\). \\(\\therefore\\) the probability that none of the five cards is a spade is \\(\\dfrac{243}{1024} = 0 \\cdot 2373\\) (to 4 significant figures)."
+  },
+  {
+    "id": "fad2550c-986f-4e73-9216-ecc86a923c54",
+    "ref": "Ex 8.1 Q.5 (i)",
+    "solution": "Call \"the bulb fuses after 150 days of use\" a success, so \\(p = 0 \\cdot 05 = \\dfrac{1}{20}\\) and \\(q = 1 - p = \\dfrac{19}{20}\\). The 5 bulbs are independent, so the number that fuse is \\(X \\sim B\\left(5, \\dfrac{1}{20}\\right)\\) with \\(P(X = r) = \\binom{5}{r} \\left(\\dfrac{1}{20}\\right)^{r} \\left(\\dfrac{19}{20}\\right)^{5-r}\\). \"None\" means \\(r = 0\\): \\(P(X = 0) = \\left(\\dfrac{19}{20}\\right)^{5} = \\dfrac{2476099}{3200000}\\). \\(\\therefore\\) the probability that none of the 5 bulbs fuses is \\(\\left(\\dfrac{19}{20}\\right)^{5} = 0 \\cdot 7738\\) (to 4 significant figures)."
+  },
+  {
+    "id": "335b02f2-2bb6-4aad-ae64-955ff048ec21",
+    "ref": "Ex 8.1 Q.5 (ii)",
+    "solution": "With \\(X \\sim B\\left(5, \\dfrac{1}{20}\\right)\\) as in part (i), \"not more than one\" means \\(X \\leq 1\\), so \\(P(X \\leq 1) = P(X = 0) + P(X = 1) = \\left(\\dfrac{19}{20}\\right)^{5} + \\binom{5}{1}\\left(\\dfrac{1}{20}\\right)\\left(\\dfrac{19}{20}\\right)^{4}\\). Taking \\(\\left(\\dfrac{19}{20}\\right)^{4}\\) common, \\(P(X \\leq 1) = \\left(\\dfrac{19}{20}\\right)^{4}\\left(\\dfrac{19}{20} + \\dfrac{5}{20}\\right) = \\dfrac{6}{5}\\left(\\dfrac{19}{20}\\right)^{4} = \\dfrac{390963}{400000}\\). \\(\\therefore\\) the probability that not more than one bulb fuses is \\(0 \\cdot 9774\\) (to 4 significant figures)."
+  },
+  {
+    "id": "9b97d2a6-d03c-411b-9c3b-4fe86a086e75",
+    "ref": "Ex 8.1 Q.5 (iii)",
+    "solution": "With \\(X \\sim B\\left(5, \\dfrac{1}{20}\\right)\\), \"more than one\" means \\(X > 1\\), which is exactly the complement of the event \\(X \\leq 1\\) computed in part (ii). So \\(P(X > 1) = 1 - P(X \\leq 1) = 1 - \\dfrac{6}{5}\\left(\\dfrac{19}{20}\\right)^{4} = 1 - \\dfrac{390963}{400000} = \\dfrac{9037}{400000}\\). \\(\\therefore\\) the probability that more than one bulb fuses is \\(\\dfrac{9037}{400000} = 0 \\cdot 02259\\) (to 4 significant figures)."
+  },
+  {
+    "id": "307cbb84-4615-4382-b74b-abbcbf5029b5",
+    "ref": "Ex 8.1 Q.5 (iv)",
+    "solution": "With \\(X \\sim B\\left(5, \\dfrac{1}{20}\\right)\\), \"at least one\" means \\(X \\geq 1\\), whose complement is the single term \\(X = 0\\) found in part (i). So \\(P(X \\geq 1) = 1 - P(X = 0) = 1 - \\left(\\dfrac{19}{20}\\right)^{5} = 1 - \\dfrac{2476099}{3200000} = \\dfrac{723901}{3200000}\\). \\(\\therefore\\) the probability that at least one of the 5 bulbs fuses is \\(0 \\cdot 2262\\) (to 4 significant figures)."
+  },
+  {
+    "id": "20ab9421-48fd-4bfe-924a-e5da467373bb",
+    "ref": "Ex 8.1 Q.6",
+    "solution": "Exactly one of the ten balls carries the digit 0, and each ball is replaced before the next draw, so the four draws are independent trials with \\(p = \\dfrac{1}{10}\\) (success = ball marked 0) and \\(q = \\dfrac{9}{10}\\). Hence \\(X \\sim B\\left(4, \\dfrac{1}{10}\\right)\\). \"None is marked with the digit 0\" means \\(r = 0\\): \\(P(X = 0) = \\binom{4}{0}\\left(\\dfrac{1}{10}\\right)^{0}\\left(\\dfrac{9}{10}\\right)^{4} = \\left(\\dfrac{9}{10}\\right)^{4} = \\dfrac{6561}{10000}\\). \\(\\therefore\\) the required probability is \\(\\dfrac{6561}{10000} = 0 \\cdot 6561\\)."
+  },
+  {
+    "id": "e83307ee-dfb9-4056-bfc8-e6ac93a49b5f",
+    "ref": "Ex 8.1 Q.7",
+    "solution": "Each question has 3 possible answers of which exactly one is correct, so a pure guess is a Bernoulli trial with \\(p = \\dfrac{1}{3}\\) and \\(q = \\dfrac{2}{3}\\); with \\(n = 5\\) questions answered independently, the number of correct answers is \\(X \\sim B\\left(5, \\dfrac{1}{3}\\right)\\). \"Four or more correct\" means \\(X \\geq 4\\), so \\(P(X \\geq 4) = P(X = 4) + P(X = 5) = \\binom{5}{4}\\left(\\dfrac{1}{3}\\right)^{4}\\left(\\dfrac{2}{3}\\right) + \\binom{5}{5}\\left(\\dfrac{1}{3}\\right)^{5} = \\dfrac{10}{243} + \\dfrac{1}{243} = \\dfrac{11}{243}\\). \\(\\therefore\\) the probability of scoring four or more just by guessing is \\(\\dfrac{11}{243} = 0 \\cdot 04527\\) (to 4 significant figures)."
+  },
+  {
+    "id": "d9634a03-9a87-47b5-b831-9c5ded191d85",
+    "ref": "Ex 8.1 Q.8 (i)",
+    "solution": "Each of the 50 lotteries is an independent trial with \\(p = \\dfrac{1}{100}\\) (winning a prize) and \\(q = \\dfrac{99}{100}\\), so the number of prizes won is \\(X \\sim B\\left(50, \\dfrac{1}{100}\\right)\\). \"At least once\" means \\(X \\geq 1\\), and its complement is the single term \\(X = 0\\): \\(P(X \\geq 1) = 1 - P(X = 0) = 1 - \\binom{50}{0}\\left(\\dfrac{1}{100}\\right)^{0}\\left(\\dfrac{99}{100}\\right)^{50} = 1 - \\left(\\dfrac{99}{100}\\right)^{50}\\). \\(\\therefore\\) the probability that he wins a prize at least once is \\(1 - \\left(\\dfrac{99}{100}\\right)^{50} = 0 \\cdot 3950\\) (to 4 significant figures)."
+  },
+  {
+    "id": "de40712a-4758-4d7a-9342-1648637dcc02",
+    "ref": "Ex 8.1 Q.8 (ii)",
+    "solution": "With \\(X \\sim B\\left(50, \\dfrac{1}{100}\\right)\\) as in part (i), \"exactly once\" means \\(r = 1\\): \\(P(X = 1) = \\binom{50}{1}\\left(\\dfrac{1}{100}\\right)^{1}\\left(\\dfrac{99}{100}\\right)^{49} = \\dfrac{50}{100}\\left(\\dfrac{99}{100}\\right)^{49} = \\dfrac{1}{2}\\left(\\dfrac{99}{100}\\right)^{49}\\). \\(\\therefore\\) the probability that he wins a prize exactly once is \\(\\dfrac{1}{2}\\left(\\dfrac{99}{100}\\right)^{49} = 0 \\cdot 3056\\) (to 4 significant figures)."
+  },
+  {
+    "id": "0e2e280c-b27b-49c1-8bf0-bc3796c29f25",
+    "ref": "Ex 8.1 Q.8 (iii)",
+    "solution": "With \\(X \\sim B\\left(50, \\dfrac{1}{100}\\right)\\), \"at least twice\" means \\(X \\geq 2\\). Summing 49 terms is impractical, so use the complement \\(X \\leq 1\\), whose two terms were found in parts (i) and (ii): \\(P(X \\geq 2) = 1 - P(X = 0) - P(X = 1) = 1 - \\left(\\dfrac{99}{100}\\right)^{50} - \\dfrac{1}{2}\\left(\\dfrac{99}{100}\\right)^{49}\\). Taking \\(\\left(\\dfrac{99}{100}\\right)^{49}\\) common gives \\(P(X \\geq 2) = 1 - \\left(\\dfrac{99}{100}\\right)^{49}\\left(\\dfrac{99}{100} + \\dfrac{1}{2}\\right) = 1 - \\dfrac{149}{100}\\left(\\dfrac{99}{100}\\right)^{49}\\). \\(\\therefore\\) the probability that he wins a prize at least twice is \\(0 \\cdot 08944\\) (to 4 significant figures)."
+  },
+  {
+    "id": "bb361699-c8e9-4bf7-bcd1-160380bad5de",
+    "ref": "Ex 8.1 Q.9 (i)",
+    "solution": "Let a success be \"the disc works\", so \\(p = 95\\% = \\dfrac{19}{20}\\) and \\(q = \\dfrac{1}{20}\\). Strictly the three discs are drawn from one box without replacement, but the number of discs in the box is not given, so as the chapter intends we treat the three discs as independent trials and take \\(X \\sim B\\left(3, \\dfrac{19}{20}\\right)\\), where \\(X\\) is the number that work. \"None of the sample will work\" means \\(r = 0\\): \\(P(X = 0) = \\binom{3}{0}\\left(\\dfrac{19}{20}\\right)^{0}\\left(\\dfrac{1}{20}\\right)^{3} = \\dfrac{1}{8000}\\). \\(\\therefore\\) the probability that none of the three discs works is \\(\\dfrac{1}{8000} = 0 \\cdot 000125\\)."
+  },
+  {
+    "id": "0bba51c5-6548-4ac9-b214-e9473814902f",
+    "ref": "Ex 8.1 Q.9 (ii)",
+    "solution": "As in part (i), \\(X \\sim B\\left(3, \\dfrac{19}{20}\\right)\\) counts the discs that work, with \\(p = \\dfrac{19}{20}\\) and \\(q = \\dfrac{1}{20}\\). \"1 of the sample will work\" means \\(r = 1\\), so one disc works and two do not: \\(P(X = 1) = \\binom{3}{1}\\left(\\dfrac{19}{20}\\right)^{1}\\left(\\dfrac{1}{20}\\right)^{2} = 3 \\times \\dfrac{19}{20} \\times \\dfrac{1}{400} = \\dfrac{57}{8000}\\). \\(\\therefore\\) the probability that exactly one disc works is \\(\\dfrac{57}{8000} = 0 \\cdot 007125\\)."
+  },
+  {
+    "id": "7074af69-10f9-4ede-bb50-09d92259eb7c",
+    "ref": "Ex 8.1 Q.9 (iii)",
+    "solution": "With \\(X \\sim B\\left(3, \\dfrac{19}{20}\\right)\\) counting the discs that work, \"2 of the sample will work\" means \\(r = 2\\), so two discs work and one does not: \\(P(X = 2) = \\binom{3}{2}\\left(\\dfrac{19}{20}\\right)^{2}\\left(\\dfrac{1}{20}\\right)^{1} = 3 \\times \\dfrac{361}{400} \\times \\dfrac{1}{20} = \\dfrac{1083}{8000}\\). \\(\\therefore\\) the probability that exactly two of the three discs work is \\(\\dfrac{1083}{8000} = 0 \\cdot 1354\\) (to 4 significant figures)."
+  },
+  {
+    "id": "540b0448-db87-4ae4-9b9a-551e672fe7c3",
+    "ref": "Ex 8.1 Q.9 (iv)",
+    "solution": "With \\(X \\sim B\\left(3, \\dfrac{19}{20}\\right)\\) counting the discs that work, \"all 3 of the sample will work\" means \\(r = 3\\): \\(P(X = 3) = \\binom{3}{3}\\left(\\dfrac{19}{20}\\right)^{3}\\left(\\dfrac{1}{20}\\right)^{0} = \\left(\\dfrac{19}{20}\\right)^{3} = \\dfrac{6859}{8000}\\). \\(\\therefore\\) the probability that all three discs work is \\(\\dfrac{6859}{8000} = 0 \\cdot 8574\\) (to 4 significant figures). As a check, the four probabilities in parts (i) to (iv) are \\(\\dfrac{1}{8000}, \\dfrac{57}{8000}, \\dfrac{1083}{8000}, \\dfrac{6859}{8000}\\), and they add to \\(\\dfrac{8000}{8000} = 1\\) as they must."
+  },
+  {
+    "id": "6a0f9a67-8448-4b6c-9840-902fac643e04",
+    "ref": "Ex 8.1 Q.10",
+    "solution": "Treat \"the die shows a six\" as a success, so \\(p = \\dfrac{1}{6}\\), \\(q = \\dfrac{5}{6}\\) and, for 6 independent throws, \\(X \\sim B\\left(6, \\dfrac{1}{6}\\right)\\). \"At most 2 sixes\" means \\(X \\leq 2\\), so \\(P(X \\leq 2) = P(X = 0) + P(X = 1) + P(X = 2) = \\left(\\dfrac{5}{6}\\right)^{6} + \\binom{6}{1}\\left(\\dfrac{1}{6}\\right)\\left(\\dfrac{5}{6}\\right)^{5} + \\binom{6}{2}\\left(\\dfrac{1}{6}\\right)^{2}\\left(\\dfrac{5}{6}\\right)^{4}\\). Writing every term over \\(6^{6} = 46656\\) gives \\(\\dfrac{15625}{46656} + \\dfrac{18750}{46656} + \\dfrac{9375}{46656} = \\dfrac{43750}{46656} = \\dfrac{21875}{23328}\\). \\(\\therefore\\) the probability of at most 2 sixes in 6 throws is \\(\\dfrac{21875}{23328} = 0 \\cdot 9377\\) (to 4 significant figures)."
+  },
+  {
+    "id": "0ab2ec80-1855-4a69-b5ee-48cd526cbd00",
+    "ref": "Ex 8.1 Q.11",
+    "solution": "Let a success be \"the article is defective\", so \\(p = 10\\% = \\dfrac{1}{10}\\) and \\(q = \\dfrac{9}{10}\\); for a random sample of \\(n = 12\\) articles, \\(X \\sim B\\left(12, \\dfrac{1}{10}\\right)\\). For 9 defectives take \\(r = 9\\): \\(P(X = 9) = \\binom{12}{9}\\left(\\dfrac{1}{10}\\right)^{9}\\left(\\dfrac{9}{10}\\right)^{3} = 220 \\times \\dfrac{1}{10^{9}} \\times \\dfrac{729}{10^{3}} = \\dfrac{160380}{10^{12}}\\). \\(\\therefore\\) the probability is \\(\\dfrac{160380}{10^{12}} = 1 \\cdot 6038 \\times 10^{-7}\\), which is extremely small \\(-\\) as expected, since 9 defectives out of 12 is far above the average of \\(np = 1 \\cdot 2\\)."
+  },
+  {
+    "id": "6d6bb282-ed90-4659-8e9b-7b3b2e59650d",
+    "ref": "Ex 8.1 Q.12 (i)",
+    "solution": "For \\(X \\sim B(n, p)\\) the mean is \\(E(X) = np\\) and the variance is \\(Var(X) = npq\\), where \\(q = 1 - p\\). Here \\(n = 10\\) and \\(p = 0 \\cdot 4\\), so \\(q = 1 - 0 \\cdot 4 = 0 \\cdot 6\\). Hence \\(E(X) = 10 \\times 0 \\cdot 4 = 4\\) and \\(Var(X) = npq = 10 \\times 0 \\cdot 4 \\times 0 \\cdot 6 = 2 \\cdot 4\\). \\(\\therefore\\) \\(E(X) = 4\\) and \\(Var(X) = 2 \\cdot 4 = \\dfrac{12}{5}\\)."
+  },
+  {
+    "id": "b26f2358-37fd-4c4e-9eac-9d0feb4da102",
+    "ref": "Ex 8.1 Q.12 (ii)",
+    "solution": "For \\(X \\sim B(n, p)\\) we have \\(E(X) = np\\), so here \\(np = 6\\) with \\(p = 0 \\cdot 6\\) gives \\(n = \\dfrac{6}{0 \\cdot 6} = 10\\) (a whole number, as \\(n\\) must be). With \\(q = 1 - 0 \\cdot 6 = 0 \\cdot 4\\), the variance is \\(Var(X) = npq = 10 \\times 0 \\cdot 6 \\times 0 \\cdot 4 = 2 \\cdot 4\\). \\(\\therefore\\) \\(n = 10\\) and \\(Var(X) = 2 \\cdot 4 = \\dfrac{12}{5}\\)."
+  },
+  {
+    "id": "9f565286-cda3-4624-93bd-5b6ca3f5d347",
+    "ref": "Ex 8.1 Q.12 (iii)",
+    "solution": "For \\(X \\sim B(n, p)\\), \\(E(X) = np\\), so from \\(n = 25\\) and \\(E(X) = 10\\) we get \\(p = \\dfrac{10}{25} = 0 \\cdot 4\\) and hence \\(q = 1 - 0 \\cdot 4 = 0 \\cdot 6\\). Then \\(Var(X) = npq = 25 \\times 0 \\cdot 4 \\times 0 \\cdot 6 = 6\\), and the standard deviation is \\(SD(X) = \\sqrt{npq} = \\sqrt{6}\\). \\(\\therefore\\) \\(p = 0 \\cdot 4 = \\dfrac{2}{5}\\) and \\(SD(X) = \\sqrt{6} = 2 \\cdot 449\\) (to 4 significant figures)."
+  },
+  {
+    "id": "01d5d890-6a73-477c-870c-23a722986557",
+    "ref": "Ex 8.1 Q.12 (iv)",
+    "solution": "For \\(X \\sim B(n, p)\\), \\(E(X) = np\\), so from \\(n = 10\\) and \\(E(X) = 8\\) we get \\(p = \\dfrac{8}{10} = 0 \\cdot 8\\), and therefore \\(q = 1 - 0 \\cdot 8 = 0 \\cdot 2\\). The variance is \\(Var(X) = npq = 10 \\times 0 \\cdot 8 \\times 0 \\cdot 2 = 1 \\cdot 6\\). \\(\\therefore\\) \\(Var(X) = 1 \\cdot 6 = \\dfrac{8}{5}\\)."
+  }
+]
