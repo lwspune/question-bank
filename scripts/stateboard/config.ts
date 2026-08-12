@@ -361,6 +361,100 @@ export const CHAPTERS: Record<string, Chapter> = {
       "General Second Degree Equation of Two Lines",
     ],
   },
+
+  // ══ The three Part-02 chapters the first pass never built. Added 2026-08-12 to
+  //    unblock the board-PYQ ingest (scripts/mh-hsc-12-pyq/), whose Definite
+  //    Integration / Probability / Binomial questions have no DB chapter to land
+  //    in. Chapter names are the PRINTED titles, read off page 0 of each PDF at
+  //    18pt — note "PROBABILITY DISTRIBUTIONS" is plural while "BINOMIAL
+  //    DISTRIBUTION" is singular, and the Ch_08 FILENAME says "Distributions".
+  //    The printed title wins; MHT-CET's "Probability Distribution" (singular) is
+  //    a different exam's taxonomy and must not be copied over.
+  //
+  //    ⚠ ALL THREE ARE VISION-ONLY, and this was measured rather than assumed:
+  //    U+222B (the integral sign) occurs ZERO times across 95k characters of text
+  //    layer in chapters that are entirely about integrals, and "/" occurs 3
+  //    times in Ch.4's 29,609 characters. The prose reads perfectly, which is
+  //    exactly what makes the text layer look trustworthy.
+  //
+  //    ANSWER-KEY CROSS-CHECK (step 6, a GATE before flip-public) CAN run for all
+  //    three — the whole-book PDF carries an ANSWERS section. Located 2026-08-12
+  //    in `12th/State_Board_Maths_12th_Part_2.pdf` (288pp), ANSWERS opens at
+  //    0-based page 265, and the per-chapter blocks are:
+  //        4. DEFINITE INTEGRATION      p277-278
+  //        7. PROBABILITY DISTRIBUTIONS p282-283
+  //        8. BINOMIAL DISTRIBUTION     p284-end
+  //    (neighbours, for bounding: 3. Indefinite p271, 5. App. of Definite p279,
+  //    6. Differential Equations p279.) Render those at fitz.Matrix(3.5,3.5).
+
+  // ── Ch.4 Definite Integration (12th, Part 2). 27pp. Two teaching sections:
+  //    §4.1 (p0-p5, Solved Examples @p01 y433, Ex 4.1 @p05 y566) and §4.2
+  //    Fundamental theorem (@p06 y70) carrying EIGHT numbered properties, its
+  //    own Solved Examples, then Ex 4.2 @p20 y533 and Miscellaneous 4 @p24 y76.
+  //    Block boundaries are (page, y) — every one of them starts MID-PAGE.
+  "def-integration-12": {
+    id: "def-integration-12",
+    chapterName: "Definite Integration",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_12_Maths__Definite_Integration.pdf",
+    pdf: cls12("Part 02/Ch_04_Definite_Integration.pdf"),
+    note: "Maharashtra State Board (Class 12) — Definite Integration (Balbharati textbook)",
+    // The chapter's own "Let us Study" box (p00) names three topics: "Definite
+    // integral as limit of sum", "Fundamental theorem of integral calculus",
+    // "Methods of evaluation AND properties of definite integral". The third is
+    // split in two here because evaluating by substitution/parts and applying
+    // the eight numbered properties (§4.2.1 Property I-VIII) are distinct
+    // skills — the README explicitly allows splitting a fused section.
+    subtopics: [
+      "Definite Integral as a Limit of a Sum",
+      "Fundamental Theorem of Integral Calculus",
+      "Methods of Evaluation of Definite Integrals",
+      "Properties of Definite Integrals",
+    ],
+  },
+
+  // ── Ch.7 Probability Distributions (12th, Part 2). 26pp, the richest section
+  //    structure of the three: 7.1 Random variables @p00 y447 · 7.2 Types @p02
+  //    y338 (7.2.1 discrete y385, 7.2.2 continuous y569) · 7.3 Distribution of a
+  //    discrete r.v. @p03 y237 (7.3.1 p.m.f. @p04 y580, 7.3.2 c.d.f. @p05 y467,
+  //    7.3.3 expectation/variance @p09 y635) · 7.4 Continuous r.v. @p14 y357
+  //    (7.4.1 p.d.f. @p15 y117, 7.4.2 c.d.f. @p15 y327). Exercises: 7.1 @p13 y75,
+  //    7.2 @p19 y641, Miscellaneous 7 @p22 y597.
+  "prob-distributions-12": {
+    id: "prob-distributions-12",
+    chapterName: "Probability Distributions",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_12_Maths__Probability_Distributions.pdf",
+    pdf: cls12("Part 02/Ch_07_Probability_Distributions.pdf"),
+    note: "Maharashtra State Board (Class 12) — Probability Distributions (Balbharati textbook)",
+    subtopics: [
+      "Random Variables and Their Types",
+      "Probability Mass Function of a Discrete Random Variable",
+      "Cumulative Distribution Function",
+      "Expected Value and Variance of a Random Variable",
+      "Continuous Random Variables and Probability Density Function",
+    ],
+  },
+
+  // ── Ch.8 Binomial Distribution (12th, Part 2). 11pp, the smallest of the
+  //    three. 8.1.1 Bernoulli Trial @p00 y424 · Solved Example @p01 y180 · 8.2
+  //    Binomial distribution @p01 y471 · Solved Examples @p04 y77 · 8.3 Mean and
+  //    Variance @p05 y454 · Solved Examples @p06 y73 · Ex 8.1 @p06 y467 ·
+  //    Miscellaneous 8 @p08 y76. NOTE Ex 8.1 and a Solved-Examples block share
+  //    p06 — the block map, not the page, is what separates them.
+  "binomial-12": {
+    id: "binomial-12",
+    chapterName: "Binomial Distribution", // printed title is SINGULAR; the filename is not
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_12_Maths__Binomial_Distribution.pdf",
+    pdf: cls12("Part 02/Ch_08_Binomial_Distributions.pdf"),
+    note: "Maharashtra State Board (Class 12) — Binomial Distribution (Balbharati textbook)",
+    subtopics: [
+      "Bernoulli Trials",
+      "The Binomial Distribution",
+      "Mean and Variance of a Binomial Distribution",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

@@ -1,0 +1,38 @@
+[
+  {
+    "ref": "Ex 8.1 Q.4 (ii)",
+    "bracket": "[Textbook answer-key error: the printed key gives 45/1024. Exhaustive enumeration of all 4^5 = 1024 equally-likely suit sequences finds 90 with exactly 3 spades, so the probability is 90/1024 = 45/512. The book appears to have halved the numerator without halving the denominator; with 45/1024 the six outcome probabilities sum to 979/1024 instead of 1.]"
+  },
+  {
+    "ref": "Misc 8 Q.3 (ii)",
+    "bracket": "[Textbook answer-key error: the printed key gives 105/512 = 210/1024, which is the probability of exactly four heads in ten tosses. The question fixes the positions ('heads in the first four tosses and tail in the last six'), so exactly one of the 2^10 equally-likely sequences qualifies and the probability is 1/1024.]"
+  },
+  {
+    "ref": "Misc 8 Q.4",
+    "bracket": "[Textbook answer-key error: the printed key reads 45(2^26/2^10), which evaluates to 2,949,120 and so cannot be a probability at all. The intended denominator is 10^10, not 2^10: 45 x 2^26 / 10^10 = 0.3019898880.]"
+  },
+  {
+    "ref": "Misc 8 Q.5 (i)",
+    "bracket": "[Textbook answer-key error: the printed key gives 0.65 x (0.95)^16. The correct coefficient is 17 x 0.05 = 0.85, giving 0.85 x (0.95)^16 = 0.3741. The book's own part (ii) is self-refuting on this point: its printed constant 2.0325 is obtainable only from 0.85, not from 0.65.]"
+  },
+  {
+    "ref": "Misc 8 Q.5 (iii)",
+    "bracket": "[Textbook answer-key error: the printed key gives 1 - 1.6 x (0.95)^16, where 1.6 = 0.95 + 0.65 carries forward the wrong coefficient flagged in part (i). With the correct 0.85 the constant is 1.8, giving 1 - 1.8 x (0.95)^16 = 0.2078.]"
+  },
+  {
+    "ref": "Misc 8 Q.6",
+    "bracket": "[Textbook answer-key error: the printed key gives 0.2114. Exhaustive enumeration over all 2^6 = 64 lamp states in exact arithmetic gives 25569/100000 = 0.25569, and the two natural readings agree with each other (P(X >= 3) for X ~ B(6, 0.3) counting burnt-out lamps, and P(Y <= 3) for Y ~ B(6, 0.7) counting burning lamps). A grid search over n = 3..14, p at 0.001 resolution and every contiguous range of successes found no reading of this stem that yields 0.2114.]"
+  },
+  {
+    "ref": "Misc 8 Q.8",
+    "bracket": "[Textbook answer-key error: the printed key reads 6.97 x (0.97)^19, which evaluates to 3.907 and so cannot be a probability. The correct constant is 1.57, giving 1.57 x (0.97)^19 = 0.8802.]"
+  },
+  {
+    "ref": "Misc 8 Q.11 (iii)",
+    "bracket": "[Textbook answer-key error: the printed key gives 1 - 1.014 x (0.998)^7 = 0.000111, which is P(X <= 6) — the book took the complement of its own part (ii) instead of adding P(X = 6). The question asks for at least 6, so the answer is 0.9999996. Monotonicity alone refutes the printed value: 'at least 6' cannot be smaller than the part (ii) answer of 0.99989.]"
+  },
+  {
+    "ref": "Misc 8 Q.12",
+    "bracket": "[Textbook answer-key error: the printed key gives 775.44 x (0.003)^38 = 1.05e-93. That constant reproduces, to five significant figures, the coefficient of the MIRROR event — P(X >= 38) for X ~ B(40, 0.003) counting faulty items — so the book has swapped p and q. The stem asks for at least 38 fault-FREE items, giving 0.9997545.]"
+  }
+]

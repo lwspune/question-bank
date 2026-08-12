@@ -1,0 +1,157 @@
+[
+  {
+    "id": "76ad91da-a739-4642-847f-3a11da8988ad",
+    "ref": "Misc 8 Q.1 (i)",
+    "solution": "Here \\(X \\sim B(10, 0.2)\\), so \\(n = 10\\), \\(p = 0.2\\) and \\(q = 1 - p = 0.8\\), and the required term is \\(r = 1\\). Using \\(P(X = r) = \\binom{n}{r} p^r q^{n-r}\\),\n\\(P(X = 1) = \\binom{10}{1}(0.2)^1(0.8)^9 = 10 \\times 0.2 \\times (0.8)^9 = 2(0.8)^9\\)\nSince \\((0.8)^9 = 0.134217728\\),\n\\(P(X = 1) = \\dfrac{524288}{1953125} \\approx 0.2684\\)"
+  },
+  {
+    "id": "cb1841d4-2550-4b87-a935-8d2dd4ade033",
+    "ref": "Misc 8 Q.1 (ii)",
+    "solution": "Again \\(n = 10\\), \\(p = 0.2\\), \\(q = 0.8\\). Instead of adding the ten terms \\(r = 1, 2, \\ldots, 10\\), use the complement: \"at least one\" is the opposite of \"none\", so \\(P(X \\geq 1) = 1 - P(X = 0)\\).\n\\(P(X = 0) = \\binom{10}{0}(0.2)^0(0.8)^{10} = (0.8)^{10} = \\dfrac{1048576}{9765625}\\)\n\\(\\therefore P(X \\geq 1) = 1 - \\dfrac{1048576}{9765625} = \\dfrac{8717049}{9765625} \\approx 0.8926\\)"
+  },
+  {
+    "id": "3d347621-2473-4947-959c-051b8ec1672f",
+    "ref": "Misc 8 Q.1 (iii)",
+    "solution": "With \\(n = 10\\), \\(p = 0.2 = \\dfrac{1}{5}\\), \\(q = 0.8 = \\dfrac{4}{5}\\), the event \\(X \\leq 8\\) leaves out only \\(r = 9\\) and \\(r = 10\\), so it is much shorter to subtract those two terms.\n\\(P(X = 9) = \\binom{10}{9}\\left(\\dfrac{1}{5}\\right)^9\\left(\\dfrac{4}{5}\\right) = \\dfrac{10 \\times 4}{5^{10}} = \\dfrac{40}{9765625}\\)\n\\(P(X = 10) = \\left(\\dfrac{1}{5}\\right)^{10} = \\dfrac{1}{9765625}\\)\n\\(\\therefore P(X \\leq 8) = 1 - \\dfrac{40 + 1}{9765625} = 1 - \\dfrac{41}{9765625} = \\dfrac{9765584}{9765625} \\approx 0.99999580\\)"
+  },
+  {
+    "id": "d28ab66e-480a-41ba-8877-904ae9292402",
+    "ref": "Misc 8 Q.2 (i)",
+    "solution": "For \\(X \\sim B(n, p)\\) the mean is \\(E(X) = np\\) and the variance is \\(Var(X) = npq\\). Given \\(n = 10\\) and \\(E(X) = 5\\),\n\\(10p = 5 \\Rightarrow p = \\dfrac{1}{2} = 0.5\\), and so \\(q = 1 - p = 0.5\\).\n\\(\\therefore Var(X) = npq = 10 \\times 0.5 \\times 0.5 = 2.5\\)\nSo \\(p = 0.5\\) and \\(Var(X) = 2.5\\)."
+  },
+  {
+    "id": "eb6dd623-d913-41c9-881f-37ebcfdfc2be",
+    "ref": "Misc 8 Q.2 (ii)",
+    "solution": "Here two facts are given: \\(np = E(X) = 5\\) and \\(npq = Var(X) = 2.5\\). Dividing the second equation by the first isolates \\(q\\), because \\(np\\) cancels.\n\\(q = \\dfrac{npq}{np} = \\dfrac{2.5}{5} = 0.5\\)\n\\(\\therefore p = 1 - q = 0.5\\), and from \\(np = 5\\) we get \\(n = \\dfrac{5}{0.5} = 10\\).\nSo \\(n = 10\\) and \\(p = 0.5\\)."
+  },
+  {
+    "id": "87119ea6-279c-41a2-b552-46a58b5bb211",
+    "ref": "Misc 8 Q.3 (i)",
+    "solution": "Let \\(X\\) be the number of heads in 10 tosses of a fair coin, so \\(X \\sim B(10, 0.5)\\) with \\(n = 10\\), \\(p = q = \\dfrac{1}{2}\\). For \\(r = 5\\),\n\\(P(X = 5) = \\binom{10}{5}\\left(\\dfrac{1}{2}\\right)^5\\left(\\dfrac{1}{2}\\right)^5 = \\dfrac{252}{2^{10}} = \\dfrac{252}{1024}\\)\n\\(\\therefore P(X = 5) = \\dfrac{63}{256} \\approx 0.2461\\)"
+  },
+  {
+    "id": "af41ca73-e34d-4de8-abdc-fea24278a483",
+    "ref": "Misc 8 Q.3 (ii)",
+    "solution": "[Textbook answer-key error: the printed key gives 105/512 = 210/1024, which is the probability of exactly four heads in ten tosses. The question fixes the positions ('heads in the first four tosses and tail in the last six'), so exactly one of the 2^10 equally-likely sequences qualifies and the probability is 1/1024.]\n\nRead this part carefully: it does not ask for 4 heads in any order, it fixes exactly which tosses show heads and which show tails. That is one particular sequence of outcomes, so no binomial coefficient appears. The tosses are independent and each has probability \\(\\dfrac{1}{2}\\), so\n\\(P = \\left(\\dfrac{1}{2}\\right)^4 \\times \\left(\\dfrac{1}{2}\\right)^6 = \\left(\\dfrac{1}{2}\\right)^{10} = \\dfrac{1}{1024} \\approx 0.0009766\\)\nBy contrast \\(P(X = 4) = \\binom{10}{4}\\left(\\dfrac{1}{2}\\right)^{10} = \\dfrac{210}{1024}\\), which counts all \\(\\binom{10}{4}\\) arrangements; only one of them is the arrangement asked for here."
+  },
+  {
+    "id": "8f6ed4fc-5da4-4635-9f6b-f3fb9b640311",
+    "ref": "Misc 8 Q.4",
+    "solution": "[Textbook answer-key error: the printed key reads 45(2^26/2^10), which evaluates to 2,949,120 and so cannot be a probability at all. The intended denominator is 10^10, not 2^10: 45 x 2^26 / 10^10 = 0.3019898880.]\n\nThe question counts bombs that MISS, so take \"miss\" as the success. Since the probability of a hit is \\(0.8\\), the probability of a miss is \\(p = 0.2\\) and \\(q = 0.8\\). Let \\(X\\) be the number of misses among 10 bombs, so \\(X \\sim B(10, 0.2)\\) and we need \\(r = 2\\).\n\\(P(X = 2) = \\binom{10}{2}(0.2)^2(0.8)^8 = 45 \\times 0.04 \\times 0.16777216\\)\n\\(\\therefore P(X = 2) = \\dfrac{589824}{1953125} \\approx 0.3020\\)"
+  },
+  {
+    "id": "77c25ba1-750c-420c-94c7-edb6d5061db7",
+    "ref": "Misc 8 Q.5 (i)",
+    "solution": "[Textbook answer-key error: the printed key gives 0.65 x (0.95)^16. The correct coefficient is 17 x 0.05 = 0.85, giving 0.85 x (0.95)^16 = 0.3741. The book's own part (ii) is self-refuting on this point: its printed constant 2.0325 is obtainable only from 0.85, not from 0.65.]\n\nLet \\(X\\) be the number of riders among the 17 who have a burst tyre. The riders are independent and each has the same chance of a burst, so \\(X \\sim B(17, 0.05)\\) with \\(n = 17\\), \\(p = 0.05\\), \\(q = 0.95\\). For \\(r = 1\\),\n\\(P(X = 1) = \\binom{17}{1}(0.05)^1(0.95)^{16} = 17 \\times 0.05 \\times (0.95)^{16}\\)\nSince \\((0.95)^{16} = 0.4401267\\),\n\\(P(X = 1) = 0.85 \\times 0.4401267 \\approx 0.3741\\)"
+  },
+  {
+    "id": "1e3da0d9-bbe1-4f22-b5bb-c8e7a308c924",
+    "ref": "Misc 8 Q.5 (ii)",
+    "solution": "\"At most three\" means \\(r = 0, 1, 2\\) or \\(3\\), so add the first four terms of \\(X \\sim B(17, 0.05)\\), with \\(p = 0.05\\) and \\(q = 0.95\\).\n\\(P(X = 0) = (0.95)^{17} = 0.4181203\\)\n\\(P(X = 1) = 17(0.05)(0.95)^{16} = 0.3741077\\)\n\\(P(X = 2) = \\binom{17}{2}(0.05)^2(0.95)^{15} = 136 \\times 0.0025 \\times 0.4632912 = 0.1575190\\)\n\\(P(X = 3) = \\binom{17}{3}(0.05)^3(0.95)^{14} = 680 \\times 0.000125 \\times 0.4876750 = 0.0414524\\)\n\\(\\therefore P(X \\leq 3) = 0.4181203 + 0.3741077 + 0.1575190 + 0.0414524 \\approx 0.9912\\)"
+  },
+  {
+    "id": "451bef9e-2d69-42ba-9b45-bbde84e11b3b",
+    "ref": "Misc 8 Q.5 (iii)",
+    "solution": "[Textbook answer-key error: the printed key gives 1 - 1.6 x (0.95)^16, where 1.6 = 0.95 + 0.65 carries forward the wrong coefficient flagged in part (i). With the correct 0.85 the constant is 1.8, giving 1 - 1.8 x (0.95)^16 = 0.2078.]\n\n\"Two or more\" is the complement of \"none or exactly one\", which is far quicker than adding sixteen terms. With \\(X \\sim B(17, 0.05)\\),\n\\(P(X = 0) = (0.95)^{17} = 0.4181203\\) and \\(P(X = 1) = 17(0.05)(0.95)^{16} = 0.3741077\\)\n\\(\\therefore P(X \\geq 2) = 1 - 0.4181203 - 0.3741077 \\approx 0.2078\\)"
+  },
+  {
+    "id": "a3e18be5-1456-4650-802e-5ad750d3e1f5",
+    "ref": "Misc 8 Q.6",
+    "solution": "[Textbook answer-key error: the printed key gives 0.2114. Exhaustive enumeration over all 2^6 = 64 lamp states in exact arithmetic gives 25569/100000 = 0.25569, and the two natural readings agree with each other (P(X >= 3) for X ~ B(6, 0.3) counting burnt-out lamps, and P(Y <= 3) for Y ~ B(6, 0.7) counting burning lamps). A grid search over n = 3..14, p at 0.001 resolution and every contiguous range of successes found no reading of this stem that yields 0.2114.]\n\nThe stem gives \\(0.3\\) as the probability that a lamp burns OUT (that is, fails), while the usability condition counts the lamps still BURNING, so state the reading first: a lamp is burnt out with probability \\(0.3\\) and is therefore burning with probability \\(0.7\\). Let \\(X\\) be the number of the 6 lamps that are burnt out, so \\(X \\sim B(6, 0.3)\\) with \\(p = 0.3\\), \\(q = 0.7\\). The room is unusable when fewer than 4 lamps are burning, i.e. when at most 3 burn, i.e. when \\(X \\geq 3\\).\n\\(P(X = 0) = (0.7)^6 = 0.117649\\)\n\\(P(X = 1) = \\binom{6}{1}(0.3)(0.7)^5 = 6 \\times 0.3 \\times 0.16807 = 0.302526\\)\n\\(P(X = 2) = \\binom{6}{2}(0.3)^2(0.7)^4 = 15 \\times 0.09 \\times 0.2401 = 0.324135\\)\n\\(\\therefore P(\\text{unusable}) = P(X \\geq 3) = 1 - (0.117649 + 0.302526 + 0.324135) = 1 - 0.744310\\)\n\\(P(\\text{unusable}) = \\dfrac{25569}{100000} = 0.25569 \\approx 0.2557\\)"
+  },
+  {
+    "id": "b4bd9c3e-3d6f-4509-9c24-4d44d60e3d60",
+    "ref": "Misc 8 Q.7",
+    "solution": "Of the 100 items, 10 are defective, so a single item drawn is defective with probability \\(p = \\dfrac{10}{100} = 0.1\\), giving \\(q = 0.9\\). Note that the five items are drawn from the lot without replacement, so the exact model is hypergeometric and the binomial \\(X \\sim B(5, 0.1)\\) used here is an approximation, justified because the lot of 100 is large compared with the sample of 5. \"At most one defective\" means \\(r = 0\\) or \\(r = 1\\).\n\\(P(X = 0) = (0.9)^5 = 0.59049\\)\n\\(P(X = 1) = \\binom{5}{1}(0.1)(0.9)^4 = 5 \\times 0.1 \\times 0.6561 = 0.32805\\)\n\\(\\therefore P(X \\leq 1) = 0.59049 + 0.32805 = \\dfrac{45927}{50000} = 0.91854 \\approx 0.9185\\)\n(For comparison, the exact without-replacement value is \\(\\dfrac{43877}{47530} \\approx 0.9231\\), close to the binomial answer as expected.)"
+  },
+  {
+    "id": "aa9be046-23dc-41c1-8331-8db780726a93",
+    "ref": "Misc 8 Q.8",
+    "solution": "[Textbook answer-key error: the printed key reads 6.97 x (0.97)^19, which evaluates to 3.907 and so cannot be a probability. The correct constant is 1.57, giving 1.57 x (0.97)^19 = 0.8802.]\n\nThe defective rate is 3%, so for each of the 20 inspected devices \\(p = 0.03\\) and \\(q = 0.97\\); the shipment is large, so the 20 items behave as independent trials and \\(X \\sim B(20, 0.03)\\), where \\(X\\) is the number of defectives. \"At most one\" means \\(r = 0\\) or \\(r = 1\\).\n\\(P(X = 0) = (0.97)^{20} = 0.5437943\\)\n\\(P(X = 1) = \\binom{20}{1}(0.03)(0.97)^{19} = 20 \\times 0.03 \\times 0.5606127 = 0.3363676\\)\n\\(\\therefore P(X \\leq 1) = 0.5437943 + 0.3363676 \\approx 0.8802\\)"
+  },
+  {
+    "id": "8afea6cd-f90b-4aad-9712-45df6de51528",
+    "ref": "Misc 8 Q.9",
+    "solution": "Let \\(X\\) be the number of components, out of the next 4 tested, that survive the check test. Surviving is the success, so \\(n = 4\\), \\(p = 0.6\\), \\(q = 0.4\\) and \\(X \\sim B(4, 0.6)\\). For \\(r = 2\\),\n\\(P(X = 2) = \\binom{4}{2}(0.6)^2(0.4)^2 = 6 \\times 0.36 \\times 0.16\\)\n\\(\\therefore P(X = 2) = \\dfrac{216}{625} = 0.3456\\)"
+  },
+  {
+    "id": "8f1dd82b-9383-450d-b1c3-1609856fbb88",
+    "ref": "Misc 8 Q.10",
+    "solution": "A random guess on a question with five suggested answers is correct with probability \\(p = \\dfrac{1}{5}\\), so \\(q = \\dfrac{4}{5}\\), and the number correct is \\(X \\sim B\\left(10, \\dfrac{1}{5}\\right)\\). \"8 or more\" means \\(r = 8, 9, 10\\), and each term has denominator \\(5^{10} = 9765625\\).\n\\(P(X \\geq 8) = \\dfrac{\\binom{10}{8}4^2 + \\binom{10}{9}4^1 + \\binom{10}{10}4^0}{5^{10}} = \\dfrac{45 \\times 16 + 10 \\times 4 + 1}{9765625}\\)\n\\(\\therefore P(X \\geq 8) = \\dfrac{761}{9765625} \\approx 0.00007793\\)\nThe moral: a completely unprepared guesser scores 8 or more about once in every 13000 attempts, i.e. under \\(0.008\\%\\) of the time, so guessing is no substitute for studying."
+  },
+  {
+    "id": "3845320c-12ba-4241-9bda-a4486dc07b36",
+    "ref": "Misc 8 Q.11 (i)",
+    "solution": "Let \\(X\\) be the number of the 8 sampled machines that produce all bolts within specification. Then \\(n = 8\\), \\(p = 0.998\\), \\(q = 0.002\\) and \\(X \\sim B(8, 0.998)\\). For all 8, take \\(r = 8\\).\n\\(P(X = 8) = \\binom{8}{8}(0.998)^8(0.002)^0 = (0.998)^8\\)\n\\(\\therefore P(X = 8) \\approx 0.9841\\)"
+  },
+  {
+    "id": "761419ed-4013-4a79-b278-9c9bfb1ac464",
+    "ref": "Misc 8 Q.11 (ii)",
+    "solution": "With \\(X \\sim B(8, 0.998)\\), \"7 or 8 machines\" means \\(r = 7\\) or \\(r = 8\\), so add those two terms.\n\\(P(X = 7) = \\binom{8}{7}(0.998)^7(0.002) = 8 \\times 0.9860837 \\times 0.002 = 0.0157773\\)\n\\(P(X = 8) = (0.998)^8 = 0.9841116\\)\n\\(\\therefore P(X \\geq 7) = 0.0157773 + 0.9841116 \\approx 0.9999\\) (more precisely \\(0.9998889\\))"
+  },
+  {
+    "id": "2da4b66c-0158-4a0c-be68-2401a591f8eb",
+    "ref": "Misc 8 Q.11 (iii)",
+    "solution": "[Textbook answer-key error: the printed key gives 1 - 1.014 x (0.998)^7 = 0.000111, which is P(X <= 6) — the book took the complement of its own part (ii) instead of adding P(X = 6). The question asks for at least 6, so the answer is 0.9999996. Monotonicity alone refutes the printed value: 'at least 6' cannot be smaller than the part (ii) answer of 0.99989.]\n\n\"At least 6\" means \\(r = 6, 7\\) or \\(8\\) for \\(X \\sim B(8, 0.998)\\), so add the one extra term to part (ii).\n\\(P(X = 6) = \\binom{8}{6}(0.998)^6(0.002)^2 = 28 \\times 0.9880598 \\times 0.000004 = 0.0001107\\)\n\\(\\therefore P(X \\geq 6) = 0.0001107 + 0.0157773 + 0.9841116 \\approx 0.9999996\\)\nSo it is almost certain that at least 6 of the 8 machines meet specification."
+  },
+  {
+    "id": "d955ab89-4dd9-424a-9999-cf854a259a68",
+    "ref": "Misc 8 Q.12",
+    "solution": "[Textbook answer-key error: the printed key gives 775.44 x (0.003)^38 = 1.05e-93. That constant reproduces, to five significant figures, the coefficient of the MIRROR event — P(X >= 38) for X ~ B(40, 0.003) counting faulty items — so the book has swapped p and q. The stem asks for at least 38 fault-FREE items, giving 0.9997545.]\n\nThe question counts machines that do NOT develop a fault, so take that as the success: \\(p = 1 - 0.003 = 0.997\\) and \\(q = 0.003\\). Let \\(Y\\) be the number of fault-free machines among 40, so \\(Y \\sim B(40, 0.997)\\), and \"38 or more\" means \\(r = 38, 39, 40\\).\n\\(P(Y = 40) = (0.997)^{40} = 0.8867605\\)\n\\(P(Y = 39) = \\binom{40}{39}(0.997)^{39}(0.003) = 40 \\times 0.8894288 \\times 0.003 = 0.1067315\\)\n\\(P(Y = 38) = \\binom{40}{38}(0.997)^{38}(0.003)^2 = 780 \\times 0.8921051 \\times 0.000009 = 0.0062626\\)\n\\(\\therefore P(Y \\geq 38) = 0.8867605 + 0.1067315 + 0.0062626 \\approx 0.9998\\)"
+  },
+  {
+    "id": "33f81152-d68f-4b2b-93ce-293ac7fd4536",
+    "ref": "Misc 8 Q.13 (i)",
+    "solution": "Let \\(X\\) be the number of terminals, out of 10, requiring attention next week. The terminals act independently with the same probability, so \\(X \\sim B(10, 0.1)\\) with \\(n = 10\\), \\(p = 0.1\\), \\(q = 0.9\\). For \\(r = 0\\),\n\\(P(X = 0) = \\binom{10}{0}(0.1)^0(0.9)^{10} = (0.9)^{10}\\)\n\\(\\therefore P(X = 0) = 0.3486784401 \\approx 0.3487\\)"
+  },
+  {
+    "id": "62a82b9f-775d-4af5-aa65-4c05f9515f9f",
+    "ref": "Misc 8 Q.13 (ii)",
+    "solution": "With \\(X \\sim B(10, 0.1)\\), \\(p = 0.1\\), \\(q = 0.9\\), put \\(r = 1\\).\n\\(P(X = 1) = \\binom{10}{1}(0.1)^1(0.9)^9 = 10 \\times 0.1 \\times 0.387420489\\)\n\\(\\therefore P(X = 1) = 0.387420489 \\approx 0.3874\\)"
+  },
+  {
+    "id": "20629bd5-acd2-4adf-889c-65d448723197",
+    "ref": "Misc 8 Q.13 (iii)",
+    "solution": "With \\(X \\sim B(10, 0.1)\\), \\(p = 0.1\\), \\(q = 0.9\\), put \\(r = 2\\).\n\\(P(X = 2) = \\binom{10}{2}(0.1)^2(0.9)^8 = 45 \\times 0.01 \\times 0.43046721\\)\n\\(\\therefore P(X = 2) = 0.1937102445 \\approx 0.1937\\)"
+  },
+  {
+    "id": "e4d9ebf9-1721-48d8-8f05-e29debcd66db",
+    "ref": "Misc 8 Q.13 (iv)",
+    "solution": "\"3 or more\" covers \\(r = 3, 4, \\ldots, 10\\), so use the complement of the three probabilities already found for \\(X \\sim B(10, 0.1)\\).\n\\(P(X \\geq 3) = 1 - [P(X = 0) + P(X = 1) + P(X = 2)]\\)\n\\(P(X \\geq 3) = 1 - (0.3486784401 + 0.387420489 + 0.1937102445) = 1 - 0.9298091736\\)\n\\(\\therefore P(X \\geq 3) = 0.0701908264 \\approx 0.07019\\)"
+  },
+  {
+    "id": "3e0fc61a-f6a1-446f-80df-3f508a3e6a39",
+    "ref": "Misc 8 Q.14 (i)",
+    "solution": "Let \\(X\\) be the number of the 4 pupils who answer yes. The school is large, so the four answers are independent with \\(p = 0.8\\) and \\(q = 0.2\\), giving \\(X \\sim B(4, 0.8)\\) and \\(P(X = r) = \\binom{4}{r}(0.8)^r(0.2)^{4-r}\\).\n\\(P(X = 0) = (0.2)^4 = 0.0016\\)\n\\(P(X = 1) = 4(0.8)(0.2)^3 = 0.0256\\)\n\\(P(X = 2) = 6(0.8)^2(0.2)^2 = 0.1536\\)\n\\(P(X = 3) = 4(0.8)^3(0.2) = 0.4096\\)\n\\(P(X = 4) = (0.8)^4 = 0.4096\\)\nAs a check these five probabilities add to \\(1\\)."
+  },
+  {
+    "id": "bc1ddc05-d219-4337-9653-3b7408e807dc",
+    "ref": "Misc 8 Q.14 (ii) (a)",
+    "solution": "With 4 pupils questioned, \\(X \\sim B(4, 0.8)\\), and \"at least 2\" is the complement of \"0 or 1\".\n\\(P(X \\geq 2) = 1 - P(X = 0) - P(X = 1) = 1 - 0.0016 - 0.0256\\)\n\\(\\therefore P(X \\geq 2) = \\dfrac{608}{625} = 0.9728\\)"
+  },
+  {
+    "id": "f925fa97-48c2-485d-848b-87bcba1fb259",
+    "ref": "Misc 8 Q.14 (ii) (b)",
+    "solution": "Now \\(n = 8\\) with the same \\(p = 0.8\\), \\(q = 0.2\\), so \\(X \\sim B(8, 0.8)\\) and again use the complement.\n\\(P(X = 0) = (0.2)^8 = 0.00000256\\)\n\\(P(X = 1) = \\binom{8}{1}(0.8)(0.2)^7 = 8 \\times 0.8 \\times 0.0000128 = 0.00008192\\)\n\\(\\therefore P(X \\geq 2) = 1 - 0.00000256 - 0.00008192 = \\dfrac{390592}{390625} = 0.99991552\\)\nQuestioning more pupils makes it even more nearly certain that at least two say yes."
+  },
+  {
+    "id": "4e65272a-36c2-4dd8-ae71-3408bcc63982",
+    "ref": "Misc 8 Q.15 (i)",
+    "solution": "It rains on 12 days out of 30, so the probability of rain on a given day is \\(p = \\dfrac{12}{30} = 0.4\\) and \\(q = 0.6\\). A week has 7 days, so \\(X \\sim B(7, 0.4)\\) where \\(X\\) is the number of rainy days. For \\(r = 3\\),\n\\(P(X = 3) = \\binom{7}{3}(0.4)^3(0.6)^4 = 35 \\times 0.064 \\times 0.1296\\)\n\\(\\therefore P(X = 3) = \\dfrac{4536}{15625} = 0.290304 \\approx 0.2903\\)"
+  },
+  {
+    "id": "080934b7-abe1-429f-a99c-ae611eaa3cc5",
+    "ref": "Misc 8 Q.15 (ii)",
+    "solution": "With \\(X \\sim B(7, 0.4)\\), \\(p = 0.4\\), \\(q = 0.6\\), \"at least 2\" is the complement of \"0 or 1\" rainy days.\n\\(P(X = 0) = (0.6)^7 = 0.0279936\\)\n\\(P(X = 1) = \\binom{7}{1}(0.4)(0.6)^6 = 7 \\times 0.4 \\times 0.046656 = 0.1306368\\)\n\\(\\therefore P(X \\geq 2) = 1 - 0.0279936 - 0.1306368 = \\dfrac{65732}{78125} = 0.8413696 \\approx 0.8414\\)"
+  },
+  {
+    "id": "290a5693-ce13-47e8-950b-25f17190541c",
+    "ref": "Misc 8 Q.16",
+    "solution": "Let \\(n\\) be the number of trials, with \\(p = 0.01\\) and \\(q = 0.99\\), so the number of successes is \\(X \\sim B(n, 0.01)\\). \"At least one success\" is the complement of \"no success\", and the requirement is\n\\(P(X \\geq 1) > 0.5 \\Rightarrow 1 - (0.99)^n > 0.5 \\Rightarrow (0.99)^n < 0.5\\)\nTaking logarithms (note \\(\\log 0.99\\) is negative, so the inequality reverses):\n\\(n > \\dfrac{\\log 0.5}{\\log 0.99} = 68.97\\)\nSince \\(n\\) must be a whole number, the smallest value is \\(n = 69\\). Checking: \\(1 - (0.99)^{68} = 0.4951 < 0.5\\) while \\(1 - (0.99)^{69} = 0.5002 > 0.5\\), so at least 69 trials are required."
+  },
+  {
+    "id": "197ad2e4-fb3a-4397-8751-5baa29e363c5",
+    "ref": "Misc 8 Q.17",
+    "solution": "Here \\(n = 5\\), and we are told \\(P(X = 1) = 0.4096\\) and \\(P(X = 2) = 0.2048\\). Rather than solve either equation directly, take their ratio, because the powers of \\(p\\) and \\(q\\) then collapse.\n\\(\\dfrac{P(X = 2)}{P(X = 1)} = \\dfrac{\\binom{5}{2}p^2q^3}{\\binom{5}{1}pq^4} = \\dfrac{10}{5} \\times \\dfrac{p}{q} = \\dfrac{2p}{q}\\)\n\\(\\therefore \\dfrac{2p}{q} = \\dfrac{0.2048}{0.4096} = 0.5 \\Rightarrow \\dfrac{p}{q} = 0.25 \\Rightarrow q = 4p\\)\nSince \\(p + q = 1\\), \\(5p = 1\\), giving \\(p = 0.2\\).\nCheck: \\(P(X = 1) = 5(0.2)(0.8)^4 = 0.4096\\) and \\(P(X = 2) = 10(0.2)^2(0.8)^3 = 0.2048\\), both matching the data, so the probability of success is \\(p = 0.2\\)."
+  }
+]

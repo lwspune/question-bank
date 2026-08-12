@@ -1,0 +1,727 @@
+[
+  {
+    "ref": "Ex 4.1 I (1)",
+    "book_key": "4",
+    "our_answer": "4",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.1 I (2)",
+    "book_key": "64/3",
+    "our_answer": "64/3",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.1 I (3)",
+    "book_key": "e^2 - 1",
+    "our_answer": "e^2 - 1",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.1 I (4)",
+    "book_key": "6",
+    "our_answer": "6",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.1 I (5)",
+    "book_key": "20",
+    "our_answer": "20",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 I (1)",
+    "book_key": "64/3",
+    "our_answer": "64/3",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 I (2)",
+    "book_key": "log(25/24)",
+    "our_answer": "log(25/24)",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 I (3)",
+    "book_key": "-(1 + pi/4)",
+    "our_answer": "1 - pi/4",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem source-verified on chapter p-20 (printed p171): the book prints \\int_0^{\\pi/4}\\cot^2 x (no dx). ALREADY-ADJUDICATED as divergent. Third ground truth, mpmath.quad on the stem as printed: truncating the lower limit at 1e-6 gives 999998.2146, at 1e-8 gives 99999998.2146 -> the integral grows like 1/eps and DIVERGES; no finite value is correct. The book's -(1+pi/4) = -1.7854 is the naive evaluation of the antiderivative -cot x - x at the two endpoints with cot(0) read as 0; it is also NEGATIVE, impossible for a non-negative integrand. Both standard repairs (tan^2 x on [0,pi/4]; cot^2 x on [pi/4,pi/2]) evaluate numerically to 0.2146018366025517 = 1 - pi/4, which is what we ship."
+  },
+  {
+    "ref": "Ex 4.2 I (4)",
+    "book_key": "2",
+    "our_answer": "2",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 I (5)",
+    "book_key": "(1/18)[13*sqrt13 + 7*sqrt7 - 3*sqrt3 - 27]",
+    "our_answer": "(1/18)(13*sqrt13 + 7*sqrt7 - 27 - 3*sqrt3)",
+    "verdict": "AGREE",
+    "derivation": "Identical expression, terms reordered."
+  },
+  {
+    "ref": "Ex 4.2 I (6)",
+    "book_key": "1 - 3pi/4",
+    "our_answer": "1 - 3pi/4",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 I (7)",
+    "book_key": "4/(7*sqrt2)",
+    "our_answer": "2*sqrt2/7",
+    "verdict": "AGREE",
+    "derivation": "Equivalent: 4/(7*sqrt2) = 4*sqrt2/14 = 2*sqrt2/7. mpmath.quad on the stem = 0.40406101782088430; both forms = 0.40406101782088430."
+  },
+  {
+    "ref": "Ex 4.2 I (8)",
+    "book_key": "1",
+    "our_answer": "1",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 I (9)",
+    "book_key": "3pi/16",
+    "our_answer": "3pi/32 - 1/4",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem source-verified on chapter p-20 (printed p171): the upper limit IS pi/4, not pi/2. Third ground truth, mpmath.quad(sin(x)**4, [0, pi/4]) = 0.044524311274043116. Ours 3pi/32 - 1/4 = 0.044524311274043116 (diff 1.4e-42). Book 3pi/16 = 0.5890486225480862, off by a factor of ~13. 3pi/16 is exactly \\int_0^{pi/2} sin^4 x dx (verified = 0.5890486225480862) -- the key was computed over the WRONG interval."
+  },
+  {
+    "ref": "Ex 4.2 I (10)",
+    "book_key": "(1/3)(tan^-1(4/3) + tan^-1(2/3))",
+    "our_answer": "(1/3)tan^-1(18)",
+    "verdict": "AGREE",
+    "derivation": "Equivalent by the arctan addition formula ((4/3+2/3)/(1-8/9) = 18, sum acute). mpmath.quad on the stem = 0.5050992738497266; both forms = 0.5050992738497266 (diff 0.0)."
+  },
+  {
+    "ref": "Ex 4.2 I (11)",
+    "book_key": "pi",
+    "our_answer": "pi",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 I (12)",
+    "book_key": "pi/6",
+    "our_answer": "pi/6",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 I (13)",
+    "book_key": "1",
+    "our_answer": "1",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 I (14)",
+    "book_key": "pi/4 - 1/2",
+    "our_answer": "pi/4 - 1/2",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 I (15)",
+    "book_key": "1",
+    "our_answer": "1",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 II (1)",
+    "book_key": "pi/4 - (1/2)log2",
+    "our_answer": "pi/4 - (1/2)log2",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 II (2)",
+    "book_key": "(1/2)log2",
+    "our_answer": "(1/2)log2",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 II (3)",
+    "book_key": "pi/4",
+    "our_answer": "pi/4",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 II (4)",
+    "book_key": "0",
+    "our_answer": "8/21",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Book key re-read at 1.3x zoom on ans-p278: II(4) is unambiguously '0'. Stem source-verified on chapter p-21 (printed p172): \\int_0^{pi/2} sqrt(cos x) sin^3 x dx. Third ground truth, mpmath.quad = 0.3809523809523810 = 8/21 exactly (diff 0.0). Book's 0 is impossible on inspection: the integrand is >= 0 on [0,pi/2] and strictly positive on the interior, so the integral must be strictly positive. NOTE: 8/21 is precisely the value the book prints at III(6) -- the printed key has SWAPPED the answers of II(4) and III(6)."
+  },
+  {
+    "ref": "Ex 4.2 II (5)",
+    "book_key": "(2/3)tan^-1(1/3)",
+    "our_answer": "(2/3)tan^-1(1/3)",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 II (6)",
+    "book_key": "(1/4)log((2sqrt2+1)/(2sqrt2-1))",
+    "our_answer": "(1/4)log((2sqrt2+1)/(2sqrt2-1))",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 II (7)",
+    "book_key": "log(4/3)",
+    "our_answer": "log(4/3)",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 II (8)",
+    "book_key": "(1/ab)[tan^-1(ae/b) - tan^-1(a/(be))]",
+    "our_answer": "(1/ab)[tan^-1(ae/b) - tan^-1(a/(be))]",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 II (9)",
+    "book_key": "pi/4",
+    "our_answer": "pi/4",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 II (10)",
+    "book_key": "4/3",
+    "our_answer": "4/3",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 II (11)",
+    "book_key": "pi/2 - 1",
+    "our_answer": "pi/2 - 1",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 II (12)",
+    "book_key": "8/3",
+    "our_answer": "8/3",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 II (13)",
+    "book_key": "pi/2 - 1",
+    "our_answer": "pi/2 - 1",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 II (14)",
+    "book_key": "e^(pi/4)[pi/4 + 1] - [pi/2 + 1]",
+    "our_answer": "(pi/4 + 1)e^(pi/4) - (pi/2 + 1)",
+    "verdict": "AGREE",
+    "derivation": "Identical expression. mpmath.quad on the stem = 1.3450818476090184; both forms = 1.3450818476090184."
+  },
+  {
+    "ref": "Ex 4.2 II (15)",
+    "book_key": "sin(log 3)",
+    "our_answer": "sin(log 3) - sin(log 2)",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Book key re-read at 1.3x zoom on ans-p278: 'sin (log 3)'. Stem source-verified on chapter p-21 (printed p172): the LOWER limit is 2, i.e. \\int_2^3 cos(log x)/x dx. Third ground truth, mpmath.quad = 0.25161576535411226. Ours sin(log3) - sin(log2) = 0.25161576535411226 (diff 5.7e-42). Book sin(log3) = 0.8905770416677471, which is the value only if the lower limit were 1 (sin(log 1) = 0) -- the key dropped the lower-limit contribution sin(log 2) = 0.6389612763136348."
+  },
+  {
+    "ref": "Ex 4.2 III (1)",
+    "book_key": "pi/4",
+    "our_answer": "pi/4",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 III (2)",
+    "book_key": "0",
+    "our_answer": "0",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 III (3)",
+    "book_key": "0",
+    "our_answer": "0",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 III (4)",
+    "book_key": "0",
+    "our_answer": "0",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 III (5)",
+    "book_key": "(16/77)(3)^(7/2)",
+    "our_answer": "432*sqrt3/77",
+    "verdict": "AGREE",
+    "derivation": "Equivalent: (16/77)*3^(7/2) = (16/77)*27*sqrt3 = 432*sqrt3/77. mpmath.quad on the stem = 9.717479855451364; both forms = 9.717479855451364."
+  },
+  {
+    "ref": "Ex 4.2 III (6)",
+    "book_key": "8/21",
+    "our_answer": "0",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Book key re-read at 1.5x zoom on ans-p278: III(6) is unambiguously '8/21'. Stem source-verified on chapter p-21 (printed p172): \\int_{-3}^{3} x^3/(9-x^2) dx. Third ground truth: the integrand is ODD and has non-integrable poles at x = +/-3. Symmetric truncation mpmath.quad over [-3+1e-8, 3-1e-8] = 0.0 exactly (odd symmetry), while the one-sided \\int_0^{3-1e-6} = 59.494 and grows without bound -- so the integral exists only as a Cauchy principal value, and that value is 0. 8/21 = 0.38095 is not attainable by any reading; it is exactly the value the book prints at II(4). The printed key has SWAPPED II(4) and III(6)."
+  },
+  {
+    "ref": "Ex 4.2 III (7)",
+    "book_key": "0",
+    "our_answer": "0",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 III (8)",
+    "book_key": "pi^2/(6*sqrt3)",
+    "our_answer": "pi^2/(6*sqrt3)",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 III (9)",
+    "book_key": "0",
+    "our_answer": "0",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 III (10)",
+    "book_key": "0",
+    "our_answer": "(pi/8)log2",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem source-verified on chapter p-21 (printed p172): \\int_0^1 log(x+1)/(x^2+1) dx (the classical Putnam integral). Third ground truth, mpmath.quad = 0.27219826128795027. Ours (pi/8)log2 = 0.27219826128795027 (diff 0.0). Book's 0 is impossible on inspection: log(x+1) > 0 and 1/(x^2+1) > 0 throughout (0,1], so the integral is strictly positive. The key appears to have applied an odd-function argument that does not hold here."
+  },
+  {
+    "ref": "Ex 4.2 III (11)",
+    "book_key": "4 log((1+sqrt5)/2)",
+    "our_answer": "4 log((1+sqrt5)/2)",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 III (12)",
+    "book_key": "0",
+    "our_answer": "0",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 III (13)",
+    "book_key": "16/105",
+    "our_answer": "16/105",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 III (14)",
+    "book_key": "pi/3",
+    "our_answer": "pi/3",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Ex 4.2 III (15)",
+    "book_key": "(pi/2)log(1/2)",
+    "our_answer": "-(pi/2)log2",
+    "verdict": "AGREE",
+    "derivation": "Equivalent: (pi/2)log(1/2) = -(pi/2)log2. mpmath.quad on the stem = -1.0887930451518011; both forms = -1.0887930451518011 (diff 0.0)."
+  },
+  {
+    "ref": "Misc 4 I (1)",
+    "book_key": "A",
+    "our_answer": "A",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 I (2)",
+    "book_key": "A",
+    "our_answer": "A",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 I (3)",
+    "book_key": "C",
+    "our_answer": "B",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem + options source-verified on chapter p-24 (printed p175): \\int_0^{log 5} e^x sqrt(e^x - 1)/(e^x + 3) dx, options (A) 3+2pi (B) 4-pi (C) 2+pi (D) 4+pi. Third ground truth, mpmath.quad on the stem = 0.8584073464102068. Option values: A = 9.283185, B = 4-pi = 0.8584073464102068 (diff 1.1e-41), C = 2+pi = 5.141593, D = 7.141593. Ours (B) matches to 40 digits. Independent bound check killing C: the integrand is increasing and at the upper endpoint equals 5*2/8 = 1.25, over an interval of length log 5 = 1.6094, so the integral is < 2.02 -- it cannot be 2+pi = 5.14. Book key C is wrong."
+  },
+  {
+    "ref": "Misc 4 I (4)",
+    "book_key": "C",
+    "our_answer": "C",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 I (5)",
+    "book_key": "D",
+    "our_answer": "D",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 I (6)",
+    "book_key": "C",
+    "our_answer": "C",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 I (7)",
+    "book_key": "A",
+    "our_answer": "A",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 I (8)",
+    "book_key": "D",
+    "our_answer": "D",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 I (9)",
+    "book_key": "B",
+    "our_answer": "B",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 I (10)",
+    "book_key": "A",
+    "our_answer": "A",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 II (1)",
+    "book_key": "(1/10)(3 - log 3)",
+    "our_answer": "3pi/20 - (1/10)log3",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem source-verified on chapter p-25 (printed p176): \\int_0^{pi/2} cos x/(3 cos x + sin x) dx. Third ground truth, mpmath.quad = 0.36137766917165802. Ours 3pi/20 - (1/10)log3 = 0.36137766917165802 (diff 5.7e-42). Book (1/10)(3 - log3) = 0.19013877113318903. The book's key is our answer with the term 3*(pi/2)/10 mis-set as 3/10 -- the pi/2 from evaluating [x] over [0, pi/2] was dropped."
+  },
+  {
+    "ref": "Misc 4 II (2)",
+    "book_key": "2 - sqrt2",
+    "our_answer": "2*sqrt(2 - sqrt2) - sqrt2",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem source-verified on chapter p-25 (printed p176): \\int_{pi/4}^{pi/2} cos(t)/[cos(t/2) + sin(t/2)]^3 dt. Third ground truth, mpmath.quad = 0.11652016708726404. Ours 2*sqrt(2 - sqrt2) - sqrt2 = 0.11652016708726404 (diff 1.3e-41). Book 2 - sqrt2 = 0.58578643762690495, five times too large. Independent closed form: with u = cos(t/2) + sin(t/2), du = ((cos - sin)/2) dt and cos t = (cos^2 - sin^2)(t/2) = (c-s)(c+s), so the integrand dt = 2 du/u^2 and the integral is [-2/u] = -sqrt2 - (-2/(cos(pi/8)+sin(pi/8))) = -1.4142136 + 1.5307337 = 0.1165202, matching ours."
+  },
+  {
+    "ref": "Misc 4 II (3)",
+    "book_key": "6 - 4 log 2",
+    "our_answer": "2 - 2 log 2",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem source-verified on chapter p-25 (printed p176): the limits are 0 to 1, i.e. \\int_0^1 dx/(1 + sqrt x). Third ground truth, mpmath.quad over [0,1] = 0.61370563888010938. Ours 2 - 2log2 = 0.61370563888010938 (diff 0.0). Book 6 - 4log2 = 3.22741127776021876, which is EXACTLY mpmath.quad over [0,9] = 3.22741127776021876 -- the key was computed with the upper limit 9 instead of 1."
+  },
+  {
+    "ref": "Misc 4 II (4)",
+    "book_key": "1/8",
+    "our_answer": "1/8",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 II (5)",
+    "book_key": "1/21",
+    "our_answer": "8/105",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem source-verified on chapter p-25 (printed p176): \\int_0^1 t^5 sqrt(1 - t^2) dt. Third ground truth, mpmath.quad = 0.07619047619047619. Ours 8/105 = 0.07619047619047619 (diff 0.0). Book 1/21 = 0.04761904761904762, exactly 5/8 of the true value. Independent closed form: with u = 1 - t^2 the integral is (1/2)*B(3/2, 3) = 1/((p+1)(p+2)(p+3)) at p = 1/2 = 1/13.125 = 8/105; no exponent p makes that product 21, so 1/21 corresponds to no neighbouring reading of the stem."
+  },
+  {
+    "ref": "Misc 4 II (6)",
+    "book_key": "pi - 2",
+    "our_answer": "pi - 2",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 II (7)",
+    "book_key": "(1/3)log2",
+    "our_answer": "(1/3)log2",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 II (8)",
+    "book_key": "pi/5",
+    "our_answer": "pi/5",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 II (9)",
+    "book_key": "0",
+    "our_answer": "pi^2/(2*sqrt2)",
+    "verdict": "BOOK-WRONG",
+    "derivation": "Stem source-verified on chapter p-25 (printed p176): \\int_0^{pi} x/(1 + sin^2 x) dx. Third ground truth, mpmath.quad = 3.48943209981943977. Ours pi^2/(2 sqrt2) = 3.48943209981943977 (diff 0.0). Book's 0 is impossible on inspection: the integrand is >= 0 on [0,pi] and strictly positive on the interior. The key appears to have mis-applied an odd-function argument; the correct route is the a-x property, giving I = (pi/2)\\int_0^{pi} dx/(1+sin^2 x) = (pi/2)(pi/sqrt2)."
+  },
+  {
+    "ref": "Misc 4 II (10)",
+    "book_key": "pi/2",
+    "our_answer": "pi/2",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 III (1)",
+    "book_key": "pi^2/16",
+    "our_answer": "pi^2/16",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 III (2)",
+    "book_key": "(2/sqrt35)tan^-1(sqrt(7/5))",
+    "our_answer": "(2/sqrt35)tan^-1(sqrt(7/5))",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 III (3)",
+    "book_key": "(1/(sqrt5 a))log((7 + 3sqrt5)/2)",
+    "our_answer": "(2/(a sqrt5))log((3 + sqrt5)/2)",
+    "verdict": "AGREE",
+    "derivation": "Equivalent: ((3+sqrt5)/2)^2 = (14 + 6sqrt5)/4 = (7 + 3sqrt5)/2, so 2*log((3+sqrt5)/2) = log((7+3sqrt5)/2). mpmath.quad on the stem with a = 1 = 0.86081788192800808; both forms = 0.86081788192800808 (diff 0.0)."
+  },
+  {
+    "ref": "Misc 4 III (4)",
+    "book_key": "pi/20",
+    "our_answer": "pi/20",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 III (5)",
+    "book_key": "pi/2 - log 2",
+    "our_answer": "pi/2 - log 2",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 III (6)",
+    "book_key": "(1/2)(pi/4 - log sqrt2)",
+    "our_answer": "pi/8 - (1/4)log2",
+    "verdict": "AGREE",
+    "derivation": "Equivalent: (1/2)(pi/4 - (1/2)log2) = pi/8 - (1/4)log2. mpmath.quad on the stem = 0.21941228655873783; both forms = 0.21941228655873783."
+  },
+  {
+    "ref": "Misc 4 III (7)",
+    "book_key": "-(pi/2)log2",
+    "our_answer": "-(pi/2)log2",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 III (8)",
+    "book_key": "pi^3/6",
+    "our_answer": "pi^3/6",
+    "verdict": "AGREE",
+    "derivation": "ALREADY-ADJUDICATED (limits run to pi while the identity sin^-1 x + cos^-1 x = pi/2 holds only on [-1,1]); we ship pi^3/6 and the book's printed key is CONSISTENT with that adjudication."
+  },
+  {
+    "ref": "Misc 4 III (9)",
+    "book_key": "log((5 + 3sqrt3)/(1 + sqrt3))",
+    "our_answer": "log(2 + sqrt3)",
+    "verdict": "AGREE",
+    "derivation": "Equivalent: (5 + 3sqrt3)/(1 + sqrt3) = 10.19615/2.73205 = 3.73205 = 2 + sqrt3. mpmath.quad on the stem = 1.31695789692481671; both forms = 1.31695789692481671."
+  },
+  {
+    "ref": "Misc 4 III (10)",
+    "book_key": "17/2",
+    "our_answer": "17/2",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 IV (1)",
+    "book_key": "1/2 when a = 0 ; 9/2 when a = 4",
+    "our_answer": "9/2",
+    "verdict": "OURS-WRONG",
+    "derivation": "Stem source-verified on chapter p-26 (printed p177). Third ground truth: \\int_0^{pi/2} sin^3 x dx = 0.6666666666666667 = 2/3 (mpmath), so the condition is (2/3)a^(3/2) = (4/3)a, i.e. a(sqrt a - 2) = 0, giving BOTH a = 0 and a = 4. Checked numerically: at a = 0, LHS = 0 and RHS = 0 (equal); at a = 4, LHS = 5.333333333333333 and RHS = 5.333333333333333 (equal). Then \\int_a^{a+1} x dx = ((a+1)^2 - a^2)/2 = 1/2 at a = 0 and 9/2 at a = 4. Our solution divided through by a, assuming a != 0, and so reports only the a = 4 branch. The book's key is the COMPLETE one; ours is incomplete and should be widened to '1/2 when a = 0; 9/2 when a = 4'."
+  },
+  {
+    "ref": "Misc 4 IV (2)",
+    "book_key": "k = 1/2",
+    "our_answer": "k = 1/2",
+    "verdict": "AGREE"
+  },
+  {
+    "ref": "Misc 4 IV (3)",
+    "book_key": "",
+    "our_answer": "proof (identity shown)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "A 'show that' proof question -- the ANSWERS section prints no entry for it, as expected for a proof."
+  },
+  {
+    "ref": "4.1 SolvedEx.1",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.1 SolvedEx.2",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.1 SolvedEx.3",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.1 SolvedEx.4",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2 Ex.1",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2.1 PropertyII Ex.1",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2.1 PropertyII Ex.2",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2.1 PropertyIII Ex.1",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2.1 PropertyIII Ex.2",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2.1 PropertyIV Ex.1",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2.1 PropertyV Ex.1",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2.1 PropertyVI Ex.1",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2.1 PropertyVIII Ex.1",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2.1 PropertyVIII Ex.2",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2 SolvedEx.1",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2 SolvedEx.2",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2 SolvedEx.3",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2 SolvedEx.4",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding. Stem already flagged defective (ALREADY-ADJUDICATED); the ANSWERS section prints nothing either way."
+  },
+  {
+    "ref": "4.2 SolvedEx.5",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2 SolvedEx.6",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2 SolvedEx.7",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2 SolvedEx.8",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2 SolvedEx.9",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2 SolvedEx.10",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2 SolvedEx.11",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding. Stem already flagged defective (ALREADY-ADJUDICATED); the ANSWERS section prints nothing either way."
+  },
+  {
+    "ref": "4.2 SolvedEx.12",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2 SolvedEx.13",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2 SolvedEx.14",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  },
+  {
+    "ref": "4.2 SolvedEx.15",
+    "book_key": "",
+    "our_answer": "(in-text worked solution)",
+    "verdict": "NO-KEY-PRINTED",
+    "derivation": "Worked example carrying the book's own in-text solution; the end-of-book ANSWERS section prints no entry for it. Expected, not a finding."
+  }
+]
