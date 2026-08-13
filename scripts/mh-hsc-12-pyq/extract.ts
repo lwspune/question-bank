@@ -42,6 +42,11 @@ export type Draft = {
    *  compilation lost. It currently reads as free-response, which is a silent
    *  downgrade — commit refuses such a row rather than shipping the wrong format. */
   pendingMcq?: string;
+  /** The chapter this question actually belongs to, when the compilation filed
+   *  it under another. Both known cases were CAUSED by a transcription defect:
+   *  a stem that acquired an integral sign from its neighbour acquired that
+   *  neighbour's chapter too. See defects.json -> chapterRelocations. */
+  chapterOverride?: string;
 };
 
 /** A repair from data/defects.json, applied by ref. */
@@ -71,6 +76,7 @@ function applyRepairs(drafts: Draft[], chapterId: string): string[] {
     mcqOptionsLost: { recovered: Recovered[]; needVisionPass: { ref: string; tag: string }[] };
     optionsMistranscribed: { fixes: OptionFix[] };
     stemsMistranscribed: { fixes: { ref: string; from: string; to: string; consequence: string }[] };
+    chapterRelocations: { moves: { ref: string; toChapter: string; why: string }[] };
   };
   const log: string[] = [];
 
@@ -147,6 +153,14 @@ function applyRepairs(drafts: Draft[], chapterId: string): string[] {
     }
     d.stem = fix.to;
     log.push(`${fix.ref}: stem corrected against the printed paper (${fix.consequence})`);
+  }
+
+  for (const move of defects.chapterRelocations.moves) {
+    if (!move.ref.startsWith(`${chapterId}#`)) continue;
+    const d = drafts.find((x) => x.ref === move.ref);
+    if (!d) throw new Error(`defects.json names ${move.ref}, which this extraction did not produce`);
+    d.chapterOverride = move.toChapter;
+    log.push(`${move.ref}: belongs to ${move.toChapter}, not this chapter`);
   }
 
   for (const fix of defects.optionsMistranscribed.fixes) {

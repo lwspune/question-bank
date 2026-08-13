@@ -344,6 +344,36 @@
         },
         "why": "The paper's (D) IS the correct negation, ~p or (q and ~r). The compilation wrote its outer 'or' as 'and', which deleted the answer from the question; it made the same or->and slip in (A). Two independent slips of the same kind in one option block.",
         "consequence": "Without this repair the question ships unanswerable. The key is D."
+      },
+      {
+        "ref": "trig-functions-12-pyq#6",
+        "source": "Vision pass 2026-08-13; per-item page index, crop box and dpi recorded in data/verify2.json.",
+        "printed": "(a) pi/3, 11pi/6   (b) pi/6, 11pi/6   (c) pi/4, 11pi/4   (d) pi/6, 11pi/4",
+        "options": {
+          "D": {
+            "from": "\\(\\frac{\\pi}{6},\\frac{11\\pi}{6}\\)",
+            "to": "\\(\\frac{\\pi}{6},\\frac{11\\pi}{4}\\)"
+          }
+        },
+        "why": "We hold D byte-identical to B, which made the key undeterminable — a blind pass correctly refused to choose. The page prints D's second term as 11pi/4, so the four printed options are all DISTINCT and there is no duplicate on the page.",
+        "consequence": "Key B, the only option carrying the correct pi/6, 11pi/6."
+      },
+      {
+        "ref": "line-planes-12-pyq#32",
+        "source": "Vision pass 2026-08-13; per-item page index, crop box and dpi recorded in data/verify2.json.",
+        "printed": "numerators 5, 5, 15, 15",
+        "options": {
+          "A": {
+            "from": "\\(\\sin^{- 1}\\left( \\frac{1}{\\sqrt{102}} \\right)\\)",
+            "to": "\\(\\sin^{- 1}\\left( \\frac{5}{\\sqrt{102}} \\right)\\)"
+          },
+          "B": {
+            "from": "\\(\\cos^{- 1}\\left( \\frac{1}{\\sqrt{102}} \\right)\\)",
+            "to": "\\(\\cos^{- 1}\\left( \\frac{5}{\\sqrt{102}} \\right)\\)"
+          }
+        },
+        "why": "We hold A and B with numerator 1; the page prints 5 in both. The printed sequence is 5,5,15,15 — not 1,1,15,15 — so the paper is internally consistent and the 15/sqrt(102) pair are ordinary distractors rather than misprints.",
+        "consequence": "Key B: cos(theta) = 5/(sqrt(6) sqrt(17)) = 5/sqrt(102)."
       }
     ]
   },
@@ -595,6 +625,110 @@
         "why": "The compilation transposed (x+2) into (2x+1). This one is nastier than most: (2x+1)/18 integrates to EXACTLY 1 over (-2,4), so it passes the obvious p.d.f. check — but it is NEGATIVE on (-2,-1/2), min -1/6, so it is not a density. The second tell is that it forces P(X<1) = 0 for a variable supported from -2.",
         "hypothesisReversed": "The authoring pass believed this was the BOARD's, on the reasoning that '2x+1' and 'x+2' are not confusable shapes for an extractor. That is true of OCR and false here: the compilation is human-typed, where a transposition is ordinary. The page settled it the other way.",
         "consequence": "f(x) = (x+2)/18 on (-2,4): integrates to 1 and is non-negative throughout. P(X<1) = 1/4, P(|X|<1) = 2/9."
+      },
+      {
+        "ref": "trig-functions-12-pyq#20",
+        "from": "In \\(\\bigtriangleup ABC\\), if \\(a = 13,b = 14,\\text{ and }c = 15\\), then \\(\\sin^{- 1}x\\) = ?",
+        "to": "In \\(\\bigtriangleup ABC\\), if \\(a = 13,b = 14,\\text{ and }c = 15\\), then \\(\\sin\\left( \\frac{A}{2} \\right)\\) = ______.",
+        "source": "Vision pass 2026-08-13; per-item page index, crop box and dpi recorded in data/verify2.json.",
+        "why": "We hold 'then sin^-1 x = ?', which names no quantity at all. The page prints a plain sin applied to A/2 — no inverse superscript and no x anywhere. That settles a dispute arithmetic could not: the two readings gave different printed options (sin A = 4/5 vs sin(A/2) = sqrt(1/5)).",
+        "consequence": "Key B. s = 21, sin(A/2) = sqrt((s-b)(s-c)/(bc)) = sqrt(7*6/210) = sqrt(1/5)."
+      },
+      {
+        "ref": "line-planes-12-pyq#2",
+        "from": "The direction ratios of the line which is perpendicular to the lines with direction ratios \\(1,2,2\\) and \\(0,2,1\\) are",
+        "to": "The direction ratios of the line which is perpendicular to the lines with direction ratios \\( - 1,2,2\\) and \\(0,2,1\\) are",
+        "source": "Vision pass 2026-08-13; per-item page index, crop box and dpi recorded in data/verify2.json.",
+        "why": "We hold the first direction-ratio triple as (1,2,2); the page prints (-1,2,2) with an unmistakable leading minus, re-cropped at 300 dpi specifically to settle it. All four OPTIONS are faithful — the defect was in the stem, which is why no option was perpendicular to the line we held.",
+        "consequence": "Key D. (-1,2,2) x (0,2,1) = (-2,1,-2), exactly option D."
+      },
+      {
+        "ref": "line-planes-12-pyq#5",
+        "from": "If \\(\\alpha,\\beta,\\gamma\\) are direction angles of a line and \\(\\alpha = 60^{\\circ},\\beta = 45^{\\circ}\\), then r = __________.",
+        "to": "If \\(\\alpha,\\beta,\\gamma\\) are direction angles of a line and \\(\\alpha = 60^{\\circ},\\beta = 45^{\\circ}\\), then \\(\\gamma\\) = __________.",
+        "source": "Vision pass 2026-08-13; per-item page index, crop box and dpi recorded in data/verify2.json.",
+        "why": "We hold a Latin 'r'; the printed glyph is a Greek gamma, identical to the third symbol in the stem's own 'alpha, beta, gamma' list. Same mis-read class as the italic-t sibling in logic#5.",
+        "consequence": "Key D. cos^2 60 + cos^2 45 + cos^2 gamma = 1 gives gamma = 60 or 120.",
+        "retargeted": "Adjudicated as vectors-12-pyq#20, but applied to line-planes-12-pyq#5 — the DROPPED half of a cross-chapter duplicate pair. The Vectors copy's own stem is truncated ('then (= )'), so the duplicate ledger carries useText pointing at the Line-and-Plane copy, whose text is intact. Since dedupe copies that text across AFTER extraction, a fix aimed at the Vectors ref would never match. Caught by the exact-match guard refusing rather than force-applying."
+      },
+      {
+        "ref": "trig-functions-12-pyq#21",
+        "from": "In \\(\\bigtriangleup ABC\\), prove that \\(\\sin\\left( \\frac{B - C}{2} \\right) = \\frac{(b - c)}{(b + c)}\\cos\\left( \\frac{A}{2} \\right)\\).",
+        "to": "In \\(\\bigtriangleup ABC\\), prove that \\(\\sin\\left( \\frac{B - C}{2} \\right) = \\frac{(b - c)}{a}\\cos\\left( \\frac{A}{2} \\right)\\).",
+        "source": "Vision pass 2026-08-13; per-item page index, crop box and dpi recorded in data/verify2.json.",
+        "why": "We hold the denominator as (b+c); the page prints a single lowercase a, with no parentheses, no plus and no second letter. So the printed identity is the CORRECT Napier-type form and the false one was ours alone.",
+        "consequence": "The identity is true as printed and provable."
+      },
+      {
+        "ref": "indef-integration-12-pyq#2",
+        "from": "Evaluate: \\(y = \\sqrt{\\sin x + \\sqrt{\\sin x + \\sqrt{\\sin x + \\sqrt{\\sin x + \\cdots}}}}\\)\\(\\infty\\) \\(dx\\), then show that \\(\\frac{dy}{dx} = \\frac{cosx}{2y - 1}\\).",
+        "to": "If \\(y = \\sqrt{\\sin x + \\sqrt{\\sin x + \\sqrt{\\sin x + \\cdots\\infty}}}\\), then show that \\(\\frac{dy}{dx} = \\frac{\\cos x}{2y - 1}\\).",
+        "source": "Vision pass 2026-08-13; per-item page index, crop box and dpi recorded in data/verify2.json.",
+        "why": "NEITHER the leading 'Evaluate:' nor the trailing 'dx' is printed. Both were glued on from the sibling item immediately above, which reads 'Evaluate: integral e^x[...] dx'. The printed question is a pure differentiation item, correctly stated by the board.",
+        "consequence": "Relocated to Differentiation — its integration flavour was entirely our own glue."
+      },
+      {
+        "ref": "def-integration-12-pyq#3",
+        "from": "Evaluate: \\(\\int_{0}^{\\frac{\\pi}{2}}\\frac{\\sin\\sqrt{x}}{\\sqrt{x}}dx\\).",
+        "to": "Evaluate: \\(\\int\\frac{\\sin\\sqrt{x}}{\\sqrt{x}}dx\\).",
+        "source": "Vision pass 2026-08-13; per-item page index, crop box and dpi recorded in data/verify2.json.",
+        "why": "BOTH limits are fabricated. The printed integral has NO limits — read at 280 dpi the integral sign stands alone with clear white space above and below. The dispute was never 'pi/2 vs pi^2/4': neither is on the page.",
+        "consequence": "Relocated to Indefinite Integration. Answer -2 cos sqrt(x) + c."
+      },
+      {
+        "ref": "app-derivatives-12-pyq#3",
+        "from": "Find the equation of the tangent to the curve \\(y = x^{2} + 4x - 1\\) at \\(( - 1, - 2)\\).",
+        "to": "Find the equation of the tangent to the curve \\(y = x^{2} + 4x + 1\\) at \\(( - 1, - 2)\\).",
+        "source": "Vision pass 2026-08-13; per-item page index, crop box and dpi recorded in data/verify2.json.",
+        "why": "We hold the constant as -1; the page prints +1. The point (-1,-2) DOES lie on y = x^2 + 4x + 1, so the paper is sound and the 'point not on curve' defect was ours.",
+        "consequence": "Tangent 2x - y = 0."
+      },
+      {
+        "ref": "differentiation-12-pyq#14",
+        "from": "Let \\(f(1) = 3,f'(1) = \\frac{1}{3},g(1) = - 4\\) and \\(g'(1) = - \\frac{8}{3}\\). The derivative of \\(\\sqrt{\\left\\lbrack f(x) \\right\\rbrack^{2} + \\left\\lbrack g(x) \\right\\rbrack^{2}}\\) w.r.t. \\(x\\) at \\(x = 1\\) is ______.",
+        "to": "Let \\(f(1) = 3,f'(1) = - \\frac{1}{3},g(1) = - 4\\) and \\(g'(1) = - \\frac{8}{3}\\). The derivative of \\(\\sqrt{\\left\\lbrack f(x) \\right\\rbrack^{2} + \\left\\lbrack g(x) \\right\\rbrack^{2}}\\) w.r.t. \\(x\\) at \\(x = 1\\) is ______.",
+        "source": "Vision pass 2026-08-13; per-item page index, crop box and dpi recorded in data/verify2.json.",
+        "why": "We hold f'(1) = +1/3; the page prints MINUS, at the same height and weight as the minus signs on g(1) and g'(1) in the same line. Both candidate answers were printed options, so nothing but the page could settle it.",
+        "consequence": "Key D, not B. ff' + gg' = -1 + 32/3 = 29/3 over sqrt(25) = 5, giving 29/15."
+      },
+      {
+        "ref": "prob-distributions-12-pyq#5",
+        "from": "The following is the p.d.f. (Probability Density Function) of a continuous random variable \\(X\\): f(x)= \\(\\frac{x2}{32}\\) for 0\\<x\\<8 = 0 otherwise a. Find the expression for c.d.f. (Cumulative Distribution Function) of \\(X\\). b. Also find \\(P(x)\\) at \\(x = 0.5\\) and \\(9\\).",
+        "to": "The following is the p.d.f. (Probability Density Function) of a continuous random variable \\(X\\): f(x)= \\(\\frac{x}{32}\\) for 0\\<x\\<8 = 0 otherwise a. Find the expression for c.d.f. (Cumulative Distribution Function) of \\(X\\). b. Also find \\(P(x)\\) at \\(x = 0.5\\) and \\(9\\).",
+        "source": "Vision pass 2026-08-13; per-item page index, crop box and dpi recorded in data/verify2.json.",
+        "why": "The numerator is a bare italic x with NO superscript — and this is not a flattening artifact: a superscript 2 renders clearly at this dpi elsewhere in the same corpus. The spurious square was ours, and it is what made the function fail to be a density (area 16/3).",
+        "consequence": "f(x) = x/32 on (0,8) integrates to exactly 1; the question is well-posed."
+      },
+      {
+        "ref": "diff-equations-12-pyq#26",
+        "from": "Find the particular solution of the differential equation \\(y(1 + logx)\\frac{dy}{dx} - xlogx = 0\\) when \\(y = e^{2}\\) and \\(x = e\\).",
+        "to": "Find the particular solution of the differential equation \\(y(1 + logx)\\frac{dx}{dy} - xlogx = 0\\) when \\(y = e^{2}\\) and \\(x = e\\).",
+        "source": "Vision pass 2026-08-13; per-item page index, crop box and dpi recorded in data/verify2.json.",
+        "why": "The page prints dx/dy — dx above the bar, dy below, the y carrying a clear descender. We hold dy/dx transposed, which is what made the equation non-elementary.",
+        "consequence": "As printed the equation separates cleanly and satisfies the initial condition."
+      }
+    ]
+  },
+  "chapterRelocations": {
+    "_finding": [
+      "Two questions sit in the wrong chapter, and in BOTH cases the mis-filing was",
+      "caused by a transcription defect rather than by a judgement call — which is",
+      "why they could only be found by reading the page.",
+      "",
+      "The compilation files a question by the chapter of the section it typed it",
+      "into, so a stem that acquired an integral sign from its neighbour also",
+      "acquired that neighbour's chapter."
+    ],
+    "moves": [
+      {
+        "ref": "indef-integration-12-pyq#2",
+        "toChapter": "differentiation-12-pyq",
+        "why": "With the fabricated 'Evaluate:' and 'dx' removed it is a pure differentiation item — an infinite nested radical differentiated implicitly. Nothing about it is an integral."
+      },
+      {
+        "ref": "def-integration-12-pyq#3",
+        "toChapter": "indef-integration-12-pyq",
+        "why": "The printed integral has no limits, so it is an indefinite integral. Our fabricated limits are the only reason it was filed under Definite Integration."
       }
     ]
   }
