@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   pickExamCardHref,
   shapeExamCatalog,
+  type ExamCatalogCachePayload,
 } from "@/lib/exam/allExamStats";
 import { getExamBySlug } from "@/lib/exam/examContext";
 
@@ -83,5 +84,40 @@ describe("shapeExamCatalog", () => {
     );
     expect(exams.every((e) => e.totalPublicQuestions === 0)).toBe(true);
     expect(totalPublicQuestions).toBe(0);
+  });
+});
+
+describe("ExamCatalogCachePayload — the unstable_cache serialisation contract", () => {
+  // `unstable_cache` SERIALISES whatever its callback returns. That makes the
+  // payload's shape load-bearing in a way nothing else in this file is: a Map
+  // serialises to `{}`, so every count would silently read 0 and the homepage
+  // would print "0 questions" on every card with no error anywhere. Hence the
+  // cached loader hands back entry ARRAYS and the Maps are rebuilt outside it.
+  it("survives a JSON round-trip and still produces correct counts", () => {
+    const payload: ExamCatalogCachePayload = {
+      counts: [
+        ["NDA", 9224],
+        ["JEE Mains", 10614],
+      ],
+      ids: [["nda", "id-nda"]],
+    };
+
+    const revived = JSON.parse(JSON.stringify(payload)) as ExamCatalogCachePayload;
+    const { exams, totalPublicQuestions } = shapeExamCatalog(
+      new Map(revived.counts),
+      new Map(revived.ids),
+      new Set(["nda"])
+    );
+
+    expect(exams.find((e) => e.examName === "NDA")!.totalPublicQuestions).toBe(9224);
+    expect(exams.find((e) => e.examName === "JEE Mains")!.totalPublicQuestions).toBe(10614);
+    expect(totalPublicQuestions).toBe(9224 + 10614);
+  });
+
+  it("proves the failure mode this contract exists to prevent: a Map does NOT survive", () => {
+    const asMap = new Map<string, number>([["NDA", 9224]]);
+    expect(JSON.parse(JSON.stringify(asMap))).toEqual({});
+    // …and rebuilding from that gives a catalog of zeroes, silently.
+    expect(shapeExamCatalog(new Map(), new Map(), new Set()).totalPublicQuestions).toBe(0);
   });
 });

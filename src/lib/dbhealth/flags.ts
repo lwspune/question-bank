@@ -46,7 +46,40 @@ export const THRESHOLDS = {
 
   /** Dead-row share only means something once a table is big enough to matter. */
   deadRowsMinLiveRows: 1000,
-  deadRowsWarnPct: 20,
+  /**
+   * MUST STAY ABOVE AUTOVACUUM'S OWN TRIGGER. Raised 20 → 35 on 2026-08-13.
+   *
+   * Postgres vacuums at `autovacuum_vacuum_threshold + scale_factor × live` =
+   * 50 + 0.2 × live, i.e. 9,415 dead rows on `questions`. The old 20% rule fired
+   * at 9,365 — the same point — so it could only ever report a condition the
+   * database was already fixing, and its message said exactly that. It never
+   * fired once in eleven snapshots.
+   *
+   * Real history shows the healthy sawtooth (7.7 → 14.5 → 18.3 → 7.2 → 14.0):
+   * it climbs, autovacuum runs, it drops. Warning inside that band would report
+   * normal operation. At 35% autovacuum is genuinely not keeping up — which is
+   * a finding. The thing that actually predicts slow index-only scans is
+   * visibility-map coverage below, NOT this.
+   */
+  deadRowsWarnPct: 35,
+
+  /**
+   * Visibility-map coverage — the share of a table's heap pages VACUUM has
+   * marked all-visible. Below this, an "Index Only Scan" keeps going to the heap.
+   *
+   * Gated on table SIZE, not row count: `user_activity` has the worst ratio on
+   * this database (30.4%) across 56 pages — under half a megabyte, costing
+   * nothing. 1,000 pages is ~8 MB, and today only `questions` (7,742 pages,
+   * 67.4%) and `options` (1,716, 66.0%) clear it. That keeps the rule at two
+   * genuine notes rather than a wall of noise.
+   *
+   * CALIBRATION IS PROVISIONAL. 80% is where the two known-slow tables land on
+   * the wrong side and everything else on the right; it has not yet met a week
+   * of real data. The spill thresholds needed loosening on first contact, and
+   * this one may too — a level that fires every single day is not information.
+   */
+  visibilityCoverageMinPages: 1000,
+  visibilityCoverageWarnPct: 80,
 
   /**
    * Database-level spill we cannot pin on any collected query. Below this it is
@@ -121,10 +154,32 @@ export function evaluateFlags(delta: HealthDelta): Flag[] {
     // read as "all clear" when it actually means "the culprit is off our radar".
     const dbSpill = delta.tempBytesDelta ?? 0;
     if (dbSpill >= THRESHOLDS.unattributedSpillMinBytes) {
-      // Only rows whose window is known can account for the window's spill.
-      const claimed = delta.queries
-        .filter((q) => q.windowKnown)
-        .reduce((sum, q) => sum + Math.max(0, q.tempBytesDelta), 0);
+      /**
+       * What the collected queries can account for.
+       *
+       * A row with a known window contributes its delta outright. A FIRST-SEEN
+       * row is the awkward case, and both naive answers are wrong:
+       *
+       *  - Excluding it always (the rule until 2026-08-13) produced a false
+       *    alarm on 08-12. Four of the six spilling queries were first-seen, so
+       *    177 MB was dropped and the report announced it could only account
+       *    for 0.9 MB of a 113 MB window — while the missing 177 MB sat in the
+       *    same `queries` array it was reading.
+       *  - Including it always would let a newly-COLLECTED query launder months
+       *    of lifetime history into this window and silence a genuine finding.
+       *    Migration 0070 made 100 long-lived queries appear at once, which is
+       *    exactly that scenario.
+       *
+       * The discriminator is a physical bound, not a heuristic: no single query
+       * can have spilled more IN THIS WINDOW than the entire database did. Under
+       * that bound a first-seen figure is credible as window activity; over it,
+       * the figure is provably a lifetime total and is ignored.
+       */
+      const claimed = delta.queries.reduce((sum, q) => {
+        const spill = Math.max(0, q.tempBytesDelta);
+        if (q.windowKnown) return sum + spill;
+        return spill <= dbSpill ? sum + spill : sum;
+      }, 0);
       if (claimed < dbSpill * THRESHOLDS.unattributedSpillFraction) {
         flags.push({
           level: "warn",
@@ -225,7 +280,31 @@ export function evaluateFlags(delta: HealthDelta): Flag[] {
     flags.push({
       level: "info",
       code: "dead-rows",
-      message: `${t.name} carries ${deadPct.toFixed(0)}% dead rows (${t.deadRows} of ${t.liveRows}). Autovacuum usually clears this on its own.`,
+      message:
+        `${t.name} carries ${deadPct.toFixed(0)}% dead rows (${t.deadRows} of ${t.liveRows}) — ` +
+        `past the point where autovacuum should already have cleared it, so it is not keeping up here.`,
+    });
+  }
+
+  // Visibility-map coverage. Skipped entirely when the pages were not recorded:
+  // a snapshot predating migration 0076 has no reading, and 0 pages all-visible
+  // out of 0 is not a measurement.
+  for (const t of delta.tables) {
+    const pages = t.heapPages ?? null;
+    const visible = t.allVisiblePages ?? null;
+    if (pages === null || visible === null) continue;
+    if (pages < THRESHOLDS.visibilityCoverageMinPages) continue;
+    const coverage = (visible / pages) * 100;
+    if (coverage >= THRESHOLDS.visibilityCoverageWarnPct) continue;
+    flags.push({
+      level: "info",
+      code: "visibility-map-coverage",
+      message:
+        `${t.name} has ${coverage.toFixed(0)}% of its ${t.heapPages} heap pages marked all-visible ` +
+        `(${t.allVisiblePages}). Index-only scans must visit the table for the rest — on questions at ` +
+        `67% this cost 13,092 heap fetches on one /browse query. Dead rows do NOT predict this ` +
+        `(bulk inserts create pages with neither), so it is tracked separately. A manual ` +
+        `VACUUM lifts it; under continuous ingestion it decays again.`,
     });
   }
 

@@ -21,8 +21,7 @@ import Footer from "@/components/Footer";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
-import { createSupabaseAnonClient } from "@/lib/supabase/server";
-import { getExamCatalog } from "@/lib/exam/allExamStats";
+import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
 
 export const revalidate = 86400;
 
@@ -129,8 +128,9 @@ export default async function Home() {
   const user = await getSessionUser();
   if (user) redirect("/dashboard");
 
-  const supabase = createSupabaseAnonClient();
-  const catalog = await getExamCatalog(supabase);
+  // Cached (24h) — the two session reads above make this route dynamic, so
+  // without the cache these 12 head-counts would run on every anonymous hit.
+  const catalog = await getCachedExamCatalog();
 
   return (
     <>
