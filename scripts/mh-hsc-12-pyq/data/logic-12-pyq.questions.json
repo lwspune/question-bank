@@ -1,0 +1,410 @@
+[
+  {
+    "ref": "logic-12-pyq#1",
+    "questionNumber": "Q. 1. (A) i.",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Quantifiers, Duality and Negation of Statements",
+    "stem": "The negation of \\(p \\land (q \\rightarrow r)\\) is __________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(p \\vee ( \\sim q \\vee r)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\sim p \\land (q \\rightarrow r)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\sim p \\land ( \\sim q \\rightarrow \\sim r)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\sim p \\vee (q \\land \\sim r)\\)"
+      }
+    ],
+    "answer": "D",
+    "solution": "**(D)**\n\nNegate the conjunction first, by De Morgan's law:\n\n\\(\\sim [p \\land (q \\rightarrow r)] \\equiv \\sim p \\vee \\sim (q \\rightarrow r)\\)\n\nNow negate the implication. Since \\(q \\rightarrow r \\equiv \\sim q \\vee r\\), its negation is \\(\\sim (\\sim q \\vee r) \\equiv q \\land \\sim r\\). Substituting:\n\n\\(\\equiv \\sim p \\vee (q \\land \\sim r)\\)\n\nwhich is option (D). The three distractors each go wrong at one step: (A) drops the negation on \\(p\\), (B) leaves the implication un-negated, and (C) negates the implication as though it were another implication.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "logic-12-pyq#2",
+    "questionNumber": "Q. 7",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Statements and Logical Connectives",
+    "stem": "Write the truth values of the following statements: i. \\(2\\) is a rational number and \\(\\sqrt{2}\\) is an irrational number. ii. \\(2 + 3 = 5\\) or \\(\\sqrt{2} \\neq \\sqrt{5}\\).",
+    "solution": "**i. \\(2\\) is a rational number and \\(\\sqrt{2}\\) is an irrational number.**\n\nLet \\(p\\): \\(2\\) is a rational number, \\(q\\): \\(\\sqrt{2}\\) is an irrational number. The connective is \"and\", so the statement is \\(p \\land q\\).\n\n\\(2 = \\dfrac{2}{1}\\) is a ratio of two integers, so \\(p\\) is T. \\(\\sqrt{2}\\) cannot be written as a ratio of two integers, so \\(q\\) is T.\n\nA conjunction is true only when both parts are true, so \\(p \\land q \\equiv T \\land T = T\\).\n\n**Truth value: T (True).**\n\n**ii. \\(2 + 3 = 5\\) or \\(\\sqrt{2} \\neq \\sqrt{5}\\).**\n\nLet \\(p\\): \\(2 + 3 = 5\\), \\(q\\): \\(\\sqrt{2} \\neq \\sqrt{5}\\). The connective is \"or\", so the statement is \\(p \\vee q\\).\n\n\\(2 + 3 = 5\\) is correct, so \\(p\\) is T. Since \\(2 \\neq 5\\), their square roots are also unequal, so \\(q\\) is T.\n\nA disjunction is true if at least one part is true, so \\(p \\vee q \\equiv T \\vee T = T\\).\n\n**Truth value: T (True).**",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "logic-12-pyq#3",
+    "questionNumber": "Q. 1. i.",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Quantifiers, Duality and Negation of Statements",
+    "stem": "The negation of \\(p \\land (q \\rightarrow r)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\sim p \\land (q \\rightarrow \\sim r)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(p \\vee ( \\sim q \\vee r)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\sim p \\vee (q \\rightarrow \\sim r)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(p \\rightarrow (q \\land r)\\)"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)** — but see the note below; this question is defective as printed.\n\nBy De Morgan's law, and using \\(\\sim (q \\rightarrow r) \\equiv q \\land \\sim r\\):\n\n\\(\\sim [p \\land (q \\rightarrow r)] \\equiv \\sim p \\vee (q \\land \\sim r)\\)\n\nNo printed option is this expression — the combination \\((q \\land \\sim r)\\) appears in none of the four. Option (C) reads \\(\\sim p \\vee (q \\rightarrow \\sim r)\\), which is the correct answer with a single connective mis-set, so it is the intended key.\n\n[Board misprint: as printed, none of the four options is the negation of the given statement. \\(\\sim (p \\land (q \\rightarrow r)) \\equiv \\sim p \\vee (q \\land \\sim r)\\), and the combination \\((q \\land \\sim r)\\) does not appear in any option. Option (c) is that expression with a single connective wrong — it prints \\(\\sim p \\vee (q \\rightarrow \\sim r)\\) — and the March 2016 paper sets this identical question with the correct form as its option (D), so (c) is what the board intended. Keyed (c) on that basis; a student who found no correct option has read the question correctly.]",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "logic-12-pyq#4",
+    "questionNumber": "Q. 1. i.",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Statements and Logical Connectives",
+    "stem": "If \\(p \\land q\\) is F, \\(p \\rightarrow q\\) is F then the truth values of \\(p\\) and \\(q\\) are _______ respectively.",
+    "options": [
+      {
+        "label": "A",
+        "text": "T, T"
+      },
+      {
+        "label": "B",
+        "text": "T, F"
+      },
+      {
+        "label": "C",
+        "text": "F, T"
+      },
+      {
+        "label": "D",
+        "text": "F, F"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)** \\(T,\\ F\\)\n\nWork from the stronger condition. \\(p \\rightarrow q\\) is false in exactly one case — a true antecedent with a false consequent — so \\(p \\equiv T\\) and \\(q \\equiv F\\).\n\nCheck this against the other condition: \\(p \\land q \\equiv T \\land F \\equiv F\\), as required. Both hold, so the truth values are \\(T,\\ F\\).\n\n| \\(p\\) | \\(q\\) | \\(p \\land q\\) | \\(p \\rightarrow q\\) |\n|---|---|---|---|\n| T | T | T | T |\n| T | F | F | F |\n| F | T | F | T |\n| F | F | F | T |\n\nOnly the second row makes both columns \\(F\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "logic-12-pyq#5",
+    "questionNumber": "Q. 1. (i)",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "mcq",
+    "subtopic": "Quantifiers, Duality and Negation of Statements",
+    "stem": "The dual of statement \\(t \\vee (p \\vee q)\\) is __________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(c \\land (p \\vee q)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(c \\land (p \\land q)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(t \\land (p \\land q)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(t \\land (p \\vee q)\\)"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)** \\(c \\land (p \\land q)\\)\n\nThe dual of a statement is obtained by interchanging \\(\\land\\) with \\(\\vee\\), and \\(t\\) (tautology) with \\(c\\) (contradiction), leaving the variables and their negations unchanged.\n\nApplying this to \\(t \\vee (p \\vee q)\\): the leading \\(t\\) becomes \\(c\\), and both occurrences of \\(\\vee\\) become \\(\\land\\), giving\n\n\\(c \\land (p \\land q)\\)\n\nOptions (C) and (D) keep \\(t\\) instead of replacing it, and (A) changes only the outer connective.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "logic-12-pyq#6",
+    "questionNumber": "Q. 2. (i)",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Quantifiers, Duality and Negation of Statements",
+    "stem": "Write the negation of the statement: '\\(\\exists n \\in N\\) such that \\(n + 8 > 11\\)'.",
+    "solution": "Let \\(p\\): \\(\\exists n \\in N\\) such that \\(n + 8 > 11\\).\n\nThe negation of an existential quantifier \\(\\exists\\) is the universal quantifier \\(\\forall\\), and the negation of \\(>\\) is \\(\\leq\\).\n\n**Negation \\((\\sim p)\\): \\(\\forall n \\in N\\), \\(n + 8 \\leq 11\\).**\n\nIn words: for every natural number \\(n\\), \\(n + 8\\) is not greater than \\(11\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "logic-12-pyq#7",
+    "questionNumber": "Q. 1. (i)",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "mcq",
+    "subtopic": "Quantifiers, Duality and Negation of Statements",
+    "stem": "If \\(A = \\{ 1,2,3,4,5\\}\\) then which of the following is not true?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\exists x \\in A\\) such that \\(x + 3 = 8\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\exists x \\in A\\) such that \\(x + 2 < 9\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\forall x \\in A,x + 6 \\geq 9\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\exists x \\in A\\) such that \\(x + 6 < 10\\)"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)**\n\nTest each statement against \\(A = \\{1,2,3,4,5\\}\\).\n\n- (A) \\(\\exists x \\in A\\) with \\(x + 3 = 8\\): take \\(x = 5\\). **True.**\n- (B) \\(\\exists x \\in A\\) with \\(x + 2 < 9\\): take \\(x = 1\\), giving \\(3 < 9\\). **True.**\n- (C) \\(\\forall x \\in A,\\ x + 6 \\geq 9\\): this one is universal, so a single counterexample defeats it. At \\(x = 1\\), \\(x + 6 = 7\\), and \\(7 \\geq 9\\) is false. **False.**\n- (D) \\(\\exists x \\in A\\) with \\(x + 6 < 10\\): take \\(x = 1\\), giving \\(7 < 10\\). **True.**\n\n(C) is the only false statement, and it is also the only universally-quantified one: an existential claim needs a single witness, a universal claim must survive every element.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "logic-12-pyq#8",
+    "questionNumber": "Q. 1. (B) i.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Converse, Inverse and Contrapositive",
+    "stem": "Write the converse and contrapositive of the statement- \"If two triangles are congruent then their areas are equal.\"",
+    "solution": "Let \\(p\\): two triangles are congruent, \\(q\\): their areas are equal.\n\nThe given statement is \\(p \\rightarrow q\\).\n\n**Converse \\((q \\rightarrow p)\\):** If the areas of two triangles are equal, then the two triangles are congruent.\n\n**Contrapositive \\((\\sim q \\rightarrow \\sim p)\\):** If the areas of two triangles are not equal, then the two triangles are not congruent.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "logic-12-pyq#9",
+    "questionNumber": "Q. 3. (B) iii.",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Converse, Inverse and Contrapositive",
+    "stem": "Write converse, inverse and contrapositive of the following conditional statement: If an angle is a right angle then its measure is \\(90^{\\circ}\\).",
+    "solution": "Let \\(p\\): an angle is a right angle, \\(q\\): its measure is \\(90^{\\circ}\\).\n\nThe given statement is \\(p \\rightarrow q\\).\n\n**Converse \\((q \\rightarrow p)\\):** If the measure of an angle is \\(90^{\\circ}\\), then it is a right angle.\n\n**Inverse \\((\\sim p \\rightarrow \\sim q)\\):** If an angle is not a right angle, then its measure is not \\(90^{\\circ}\\).\n\n**Contrapositive \\((\\sim q \\rightarrow \\sim p)\\):** If the measure of an angle is not \\(90^{\\circ}\\), then it is not a right angle.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "logic-12-pyq#10",
+    "questionNumber": "Q. 15",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Converse, Inverse and Contrapositive",
+    "stem": "State the converse, inverse and contrapositive of the conditional statement: \"If a sequence is bounded, then it is convergent.\"",
+    "solution": "Let \\(p\\): a sequence is bounded, \\(q\\): it is convergent.\n\nThe given statement is \\(p \\rightarrow q\\).\n\n**Converse \\((q \\rightarrow p)\\):** If a sequence is convergent, then it is bounded.\n\n**Inverse \\((\\sim p \\rightarrow \\sim q)\\):** If a sequence is not bounded, then it is not convergent.\n\n**Contrapositive \\((\\sim q \\rightarrow \\sim p)\\):** If a sequence is not convergent, then it is not bounded.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "logic-12-pyq#11",
+    "questionNumber": "Q. 3",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Converse, Inverse and Contrapositive",
+    "stem": "Write inverse and contrapositive of the following statement: If \\(x < y\\) then \\(x^{2} < y^{2}\\).",
+    "solution": "Let \\(p\\): \\(x < y\\), \\(q\\): \\(x^{2} < y^{2}\\).\n\nThe given statement is \\(p \\rightarrow q\\).\n\n**Inverse \\((\\sim p \\rightarrow \\sim q)\\):** If \\(x \\geq y\\), then \\(x^{2} \\geq y^{2}\\).\n\n**Contrapositive \\((\\sim q \\rightarrow \\sim p)\\):** If \\(x^{2} \\geq y^{2}\\), then \\(x \\geq y\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "logic-12-pyq#12",
+    "questionNumber": "Q. 2. (A) ii.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Tautology, Contradiction and Contingency",
+    "stem": "Discuss the statement pattern, using truth table: \\(\\sim (p \\land \\sim q) \\vee q\\).",
+    "solution": "Truth table for \\(\\sim (p \\land \\sim q) \\vee q\\):\n\n| \\(p\\) | \\(q\\) | \\(\\sim q\\) | \\(p \\land \\sim q\\) | \\(\\sim (p \\land \\sim q)\\) | \\(\\sim (p \\land \\sim q) \\vee q\\) |\n|---|---|---|---|---|---|\n| T | T | F | F | T | T |\n| T | F | T | T | F | F |\n| F | T | F | F | T | T |\n| F | F | T | F | T | T |\n\nThe last column contains the entries T, F, T, T, i.e. both T and F occur.\n\n**Conclusion: the statement pattern is a contingency** (it is neither a tautology nor a contradiction).\n\nCheck by the algebra of statements: \\(\\sim (p \\land \\sim q) \\equiv \\sim p \\vee q\\) (De Morgan's law and \\(\\sim(\\sim q) \\equiv q\\)), so the pattern is \\((\\sim p \\vee q) \\vee q \\equiv \\sim p \\vee q\\), which is false only when \\(p\\) is T and \\(q\\) is F — exactly the second row above.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "logic-12-pyq#13",
+    "questionNumber": "Q. 2. (A) i.",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Tautology, Contradiction and Contingency",
+    "stem": "Examine whether the following logical statement pattern is tautology, contradiction or contingency. \\(\\left\\lbrack (p \\rightarrow q) \\land q \\right\\rbrack \\rightarrow p\\).",
+    "solution": "Truth table for \\(\\left\\lbrack (p \\rightarrow q) \\land q \\right\\rbrack \\rightarrow p\\):\n\n| \\(p\\) | \\(q\\) | \\(p \\rightarrow q\\) | \\((p \\rightarrow q) \\land q\\) | \\(\\left\\lbrack (p \\rightarrow q) \\land q \\right\\rbrack \\rightarrow p\\) |\n|---|---|---|---|---|\n| T | T | T | T | T |\n| T | F | F | F | T |\n| F | T | T | T | F |\n| F | F | T | F | T |\n\nThe last column contains both T and F (it is F in the third row, where \\(p\\) is F and \\(q\\) is T).\n\n**Conclusion: the statement pattern is a contingency.** It is neither a tautology nor a contradiction.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "logic-12-pyq#14",
+    "questionNumber": "Q. 2. (A) i.",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Tautology, Contradiction and Contingency",
+    "stem": "Using truth tables, examine whether the statement pattern \\((p \\land q) \\vee (p \\vee r)\\) is a tautology, contradiction or contingency.",
+    "solution": "The pattern contains three variables \\(p\\), \\(q\\), \\(r\\), so the truth table has \\(2^{3} = 8\\) rows.\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(p \\land q\\) | \\(p \\vee r\\) | \\((p \\land q) \\vee (p \\vee r)\\) |\n|---|---|---|---|---|---|\n| T | T | T | T | T | T |\n| T | T | F | T | T | T |\n| T | F | T | F | T | T |\n| T | F | F | F | T | T |\n| F | T | T | F | T | T |\n| F | T | F | F | F | F |\n| F | F | T | F | T | T |\n| F | F | F | F | F | F |\n\nThe last column contains both T and F — it is F in the two rows where \\(p\\) is F and \\(r\\) is F.\n\n**Conclusion: the statement pattern is a contingency.**\n\n(Indeed \\((p \\land q) \\vee (p \\vee r) \\equiv p \\vee r\\), since \\(p \\land q\\) is absorbed by \\(p\\).)",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "logic-12-pyq#15",
+    "questionNumber": "Q. 2. (A) ii.",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Logical Equivalence and Algebra of Statements",
+    "stem": "Using the truth table prove the following logical equivalence: \\(p \\longleftrightarrow \\ q \\equiv (p \\land q) \\vee (\\sim p \\land \\sim q)\\).",
+    "solution": "To prove: \\(p \\longleftrightarrow q \\equiv (p \\land q) \\vee (\\sim p \\land \\sim q)\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\longleftrightarrow q\\) | \\(p \\land q\\) | \\(\\sim p \\land \\sim q\\) | \\((p \\land q) \\vee (\\sim p \\land \\sim q)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | F | F | T | T | F | T |\n| T | F | F | T | F | F | F | F |\n| F | T | T | F | F | F | F | F |\n| F | F | T | T | T | F | T | T |\n\nThe fifth column and the eighth column are identical in every row.\n\n**Hence \\(p \\longleftrightarrow q \\equiv (p \\land q) \\vee (\\sim p \\land \\sim q)\\). Proved.**",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "logic-12-pyq#16",
+    "questionNumber": "Q. 3",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Logical Equivalence and Algebra of Statements",
+    "stem": "Using truth table verify that \\(\\sim (p \\vee q) \\equiv \\sim p \\land \\sim q\\).",
+    "solution": "To verify: \\(\\sim (p \\vee q) \\equiv \\sim p \\land \\sim q\\) (one of De Morgan's laws).\n\n| \\(p\\) | \\(q\\) | \\(p \\vee q\\) | \\(\\sim (p \\vee q)\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(\\sim p \\land \\sim q\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | F | F | F | F |\n| T | F | T | F | F | T | F |\n| F | T | T | F | T | F | F |\n| F | F | F | T | T | T | T |\n\nThe fourth column and the seventh column are identical in every row.\n\n**Hence \\(\\sim (p \\vee q) \\equiv \\sim p \\land \\sim q\\). Verified.**",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "logic-12-pyq#17",
+    "questionNumber": "Q. 3",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Logical Equivalence and Algebra of Statements",
+    "stem": "Using truth table verify that: \\((p \\land q) \\vee \\sim q \\equiv p \\vee \\sim q\\).",
+    "solution": "To verify: \\((p \\land q) \\vee \\sim q \\equiv p \\vee \\sim q\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim q\\) | \\(p \\land q\\) | \\((p \\land q) \\vee \\sim q\\) | \\(p \\vee \\sim q\\) |\n|---|---|---|---|---|---|\n| T | T | F | T | T | T |\n| T | F | T | F | T | T |\n| F | T | F | F | F | F |\n| F | F | T | F | T | T |\n\nThe fifth column and the sixth column are identical in every row.\n\n**Hence \\((p \\land q) \\vee \\sim q \\equiv p \\vee \\sim q\\). Verified.**\n\n(The same result follows from the distributive law: \\((p \\land q) \\vee \\sim q \\equiv (p \\vee \\sim q) \\land (q \\vee \\sim q) \\equiv (p \\vee \\sim q) \\land t \\equiv p \\vee \\sim q\\).)",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "logic-12-pyq#18",
+    "questionNumber": "Q. 27",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Logical Equivalence and Algebra of Statements",
+    "stem": "Without using truth table prove that \\((p \\land q) \\vee ( \\sim p \\land q) \\vee (p \\land \\sim q) \\equiv p \\vee q\\).",
+    "solution": "To prove: \\((p \\land q) \\vee (\\sim p \\land q) \\vee (p \\land \\sim q) \\equiv p \\vee q\\), without using a truth table.\n\nConsider the L.H.S. and group the first two terms:\n\n\\((p \\land q) \\vee (\\sim p \\land q) \\vee (p \\land \\sim q)\\)\n\n\\(\\equiv \\left\\lbrack (p \\vee \\sim p) \\land q \\right\\rbrack \\vee (p \\land \\sim q)\\)  [Distributive Law]\n\n\\(\\equiv (t \\land q) \\vee (p \\land \\sim q)\\)  [Complement Law, \\(p \\vee \\sim p \\equiv t\\)]\n\n\\(\\equiv q \\vee (p \\land \\sim q)\\)  [Identity Law]\n\n\\(\\equiv (q \\vee p) \\land (q \\vee \\sim q)\\)  [Distributive Law]\n\n\\(\\equiv (q \\vee p) \\land t\\)  [Complement Law]\n\n\\(\\equiv q \\vee p\\)  [Identity Law]\n\n\\(\\equiv p \\vee q\\)  [Commutative Law]\n\n\\(=\\) R.H.S.\n\n**Hence \\((p \\land q) \\vee (\\sim p \\land q) \\vee (p \\land \\sim q) \\equiv p \\vee q\\). Proved.**",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "logic-12-pyq#19",
+    "questionNumber": "Q. 3",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Truth Tables of Compound Statements",
+    "stem": "Construct the truth table for the statement pattern: \\(\\left\\lbrack (p \\rightarrow q) \\land q \\right\\rbrack \\rightarrow p\\).",
+    "solution": "Truth table for \\(\\left\\lbrack (p \\rightarrow q) \\land q \\right\\rbrack \\rightarrow p\\):\n\n| \\(p\\) | \\(q\\) | \\(p \\rightarrow q\\) | \\((p \\rightarrow q) \\land q\\) | \\(\\left\\lbrack (p \\rightarrow q) \\land q \\right\\rbrack \\rightarrow p\\) |\n|---|---|---|---|---|\n| T | T | T | T | T |\n| T | F | F | F | T |\n| F | T | T | T | F |\n| F | F | T | F | T |\n\nThe entries of the last column are T, T, F, T.\n\nSince the last column contains both T and F, the statement pattern is a **contingency**.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "logic-12-pyq#20",
+    "questionNumber": "Q. 3",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Logical Equivalence and Algebra of Statements",
+    "stem": "Using truth table, prove that the statement patterns \\(p \\longleftrightarrow q\\) and \\((p \\land q) \\vee ( \\sim p \\land \\sim q)\\) are logically equivalent.",
+    "solution": "To prove: \\(p \\longleftrightarrow q \\equiv (p \\land q) \\vee (\\sim p \\land \\sim q)\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\longleftrightarrow q\\) | \\(p \\land q\\) | \\(\\sim p \\land \\sim q\\) | \\((p \\land q) \\vee (\\sim p \\land \\sim q)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | F | F | T | T | F | T |\n| T | F | F | T | F | F | F | F |\n| F | T | T | F | F | F | F | F |\n| F | F | T | T | T | F | T | T |\n\nColumn 5 (for \\(p \\longleftrightarrow q\\)) and column 8 (for \\((p \\land q) \\vee (\\sim p \\land \\sim q)\\)) have exactly the same entries T, F, F, T in the same order.\n\n**Hence the two statement patterns are logically equivalent: \\(p \\longleftrightarrow q \\equiv (p \\land q) \\vee (\\sim p \\land \\sim q)\\). Proved.**",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "logic-12-pyq#21",
+    "questionNumber": "Q. 3. (B) i.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "stem": "Construct the switching circuit for the following statement: \\(\\left\\lbrack p \\vee ( \\sim p \\land q) \\right\\rbrack \\vee \\lbrack( \\sim q \\land r) \\vee \\sim p \\rbrack\\).",
+    "solution": "Let \\(p\\): the switch \\(S_{1}\\) is closed, \\(q\\): the switch \\(S_{2}\\) is closed, \\(r\\): the switch \\(S_{3}\\) is closed. Then \\(\\sim p\\), \\(\\sim q\\), \\(\\sim r\\) stand for the switches \\(S_{1}'\\), \\(S_{2}'\\), \\(S_{3}'\\), which are closed exactly when \\(S_{1}\\), \\(S_{2}\\), \\(S_{3}\\) respectively are open.\n\nIn a switching circuit \\(\\land\\) means **series** and \\(\\vee\\) means **parallel**.\n\nSince \\(\\vee\\) is associative, \\(\\left\\lbrack p \\vee (\\sim p \\land q) \\right\\rbrack \\vee \\lbrack (\\sim q \\land r) \\vee \\sim p \\rbrack\\) is a **parallel combination of four branches**:\n\n- **Branch 1** \\((p)\\): the single switch \\(S_{1}\\).\n- **Branch 2** \\((\\sim p \\land q)\\): the switch \\(S_{1}'\\) in series with the switch \\(S_{2}\\).\n- **Branch 3** \\((\\sim q \\land r)\\): the switch \\(S_{2}'\\) in series with the switch \\(S_{3}\\).\n- **Branch 4** \\((\\sim p)\\): the single switch \\(S_{1}'\\).\n\nThese four branches are joined in parallel between the same two junctions, and this parallel block is connected in series with the lamp \\(L\\) and the battery to complete the circuit.\n\n(There is no figure to draw here, so the circuit is described in words; the description above fixes it completely.)",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "logic-12-pyq#22",
+    "questionNumber": "Q. 3. (A) i.",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "stem": "Construct the switching circuit for the statement \\((p \\land q) \\vee ( \\sim p) \\vee (p \\land \\sim q)\\).",
+    "solution": "Let \\(p\\): the switch \\(S_{1}\\) is closed, \\(q\\): the switch \\(S_{2}\\) is closed; \\(\\sim p\\) and \\(\\sim q\\) then stand for the switches \\(S_{1}'\\) and \\(S_{2}'\\).\n\nIn a switching circuit \\(\\land\\) means **series** and \\(\\vee\\) means **parallel**.\n\nSo \\((p \\land q) \\vee (\\sim p) \\vee (p \\land \\sim q)\\) is a **parallel combination of three branches**:\n\n- **Branch 1** \\((p \\land q)\\): the switch \\(S_{1}\\) in series with the switch \\(S_{2}\\).\n- **Branch 2** \\((\\sim p)\\): the single switch \\(S_{1}'\\).\n- **Branch 3** \\((p \\land \\sim q)\\): the switch \\(S_{1}\\) in series with the switch \\(S_{2}'\\).\n\nThe three branches are connected in parallel between the same two junctions, and this parallel block is put in series with the lamp \\(L\\) and the battery.\n\n(There is no figure to draw here, so the circuit is described in words.)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "logic-12-pyq#23",
+    "questionNumber": "Q. 21",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "stem": "Find the symbolic form of the given switching circuit. Construct its switching table and interpret your result.",
+    "image": "image1.png",
+    "solution": "Let \\(p\\): the switch \\(S_{1}\\) is closed, \\(q\\): the switch \\(S_{2}\\) is closed, \\(L\\): the lamp glows. The switches \\(S_{1}'\\) and \\(S_{2}'\\) stand for \\(\\sim p\\) and \\(\\sim q\\).\n\n**Reading the circuit:** \\(S_{1}\\) and \\(S_{2}\\) form a parallel block; that block is in series with \\(S_{1}'\\), which is in series with \\(S_{2}'\\).\n\n**Symbolic form:** \\((p \\vee q) \\land \\sim p \\land \\sim q\\).\n\n**Switching table** (1 = switch closed / current flows, 0 = switch open / no current):\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\vee q\\) | \\((p \\vee q) \\land \\sim p \\land \\sim q\\) |\n|---|---|---|---|---|---|\n| 1 | 1 | 0 | 0 | 1 | 0 |\n| 1 | 0 | 0 | 1 | 1 | 0 |\n| 0 | 1 | 1 | 0 | 1 | 0 |\n| 0 | 0 | 1 | 1 | 0 | 0 |\n\n**Interpretation:** the last column is 0 in every row, so the current never reaches the lamp. **The lamp will not glow whatever the positions of the switches \\(S_{1}\\) and \\(S_{2}\\).**\n\nThis is confirmed by the algebra of statements: by De Morgan's law \\(\\sim p \\land \\sim q \\equiv \\sim (p \\vee q)\\), so the expression is \\((p \\vee q) \\land \\sim (p \\vee q) \\equiv c\\), a contradiction.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "logic-12-pyq#24",
+    "questionNumber": "Q. 8",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "stem": "Express the following circuit in symbolic form:",
+    "image": "image2.png",
+    "solution": "Let \\(p\\): the switch \\(S_{1}\\) is closed, \\(q\\): the switch \\(S_{2}\\) is closed, \\(r\\): the switch \\(S_{3}\\) is closed.\n\nIn a switching circuit \\(\\land\\) means **series** and \\(\\vee\\) means **parallel**.\n\n**Reading the circuit:** there are two branches in parallel. The upper branch carries the single switch \\(S_{1}\\); the lower branch carries \\(S_{2}\\) and \\(S_{3}\\) in series. This parallel block is in series with the lamp \\(L\\) and the battery.\n\n**Symbolic form: \\(p \\vee (q \\land r)\\).**",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "logic-12-pyq#25",
+    "questionNumber": "Q. 27",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "stem": "Simplify the given circuit by writing its logical expression. Also write your conclusion.",
+    "image": "image3.png",
+    "solution": "Let \\(p\\): the switch \\(S_{1}\\) is closed, \\(q\\): the switch \\(S_{2}\\) is closed. The switches \\(S_{1}'\\) and \\(S_{2}'\\) stand for \\(\\sim p\\) and \\(\\sim q\\).\n\n**Reading the circuit:** \\(S_{1}\\) is in series with a parallel block of \\(S_{1}'\\) and \\(S_{2}'\\), and that whole arrangement is in series with \\(S_{2}\\).\n\n**Logical expression:** \\(p \\land (\\sim p \\vee \\sim q) \\land q\\).\n\n**Simplification:**\n\n\\(p \\land (\\sim p \\vee \\sim q) \\land q\\)\n\n\\(\\equiv \\left\\lbrack p \\land (\\sim p \\vee \\sim q) \\right\\rbrack \\land q\\)  [Associative Law]\n\n\\(\\equiv \\left\\lbrack (p \\land \\sim p) \\vee (p \\land \\sim q) \\right\\rbrack \\land q\\)  [Distributive Law]\n\n\\(\\equiv \\left\\lbrack c \\vee (p \\land \\sim q) \\right\\rbrack \\land q\\)  [Complement Law]\n\n\\(\\equiv (p \\land \\sim q) \\land q\\)  [Identity Law]\n\n\\(\\equiv p \\land (\\sim q \\land q)\\)  [Associative Law]\n\n\\(\\equiv p \\land c\\)  [Complement Law]\n\n\\(\\equiv c\\)  [Identity Law]\n\n**Conclusion:** the expression reduces to \\(c\\), a contradiction, so it is false for every setting of the switches. **The lamp will not glow irrespective of the positions of the switches \\(S_{1}\\) and \\(S_{2}\\)** — the circuit cannot be simplified into a working circuit, because the current can never reach the lamp.",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "logic-12-pyq#26",
+    "questionNumber": "Q. 2. (i)",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Statements and Logical Connectives",
+    "stem": "Write the compound statement 'Nagpur is in Maharashtra and Chennai is in Tamilnadu' symbolically.",
+    "solution": "Let \\(p\\): Nagpur is in Maharashtra, \\(q\\): Chennai is in Tamilnadu.\n\nThe two simple statements are joined by the connective \"and\", which is the conjunction \\(\\land\\).\n\n**Symbolic form: \\(p \\land q\\).**\n\n(Both \\(p\\) and \\(q\\) are true, so the truth value of the compound statement is T.)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "logic-12-pyq#27",
+    "questionNumber": "Q. 15",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "stem": "Express the following switching circuit in the symbolic form of logic. Construct the switching table.",
+    "image": "image4.png",
+    "solution": "Let \\(p\\): the switch \\(S_{1}\\) is closed, \\(q\\): the switch \\(S_{2}\\) is closed, \\(L\\): the lamp glows. The switches \\(S_{1}'\\) and \\(S_{2}'\\) stand for \\(\\sim p\\) and \\(\\sim q\\).\n\n**Reading the circuit:** \\(S_{1}\\) and \\(S_{2}\\) are in parallel; that parallel block is in series with \\(S_{1}'\\), which is in series with \\(S_{2}'\\).\n\n**Symbolic form: \\((p \\vee q) \\land \\sim p \\land \\sim q\\).**\n\n**Switching table** (1 = switch closed / current flows, 0 = switch open / no current):\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\vee q\\) | \\((p \\vee q) \\land \\sim p\\) | \\((p \\vee q) \\land \\sim p \\land \\sim q\\) |\n|---|---|---|---|---|---|---|\n| 1 | 1 | 0 | 0 | 1 | 0 | 0 |\n| 1 | 0 | 0 | 1 | 1 | 0 | 0 |\n| 0 | 1 | 1 | 0 | 1 | 1 | 0 |\n| 0 | 0 | 1 | 1 | 0 | 0 | 0 |\n\nEvery entry of the last column is 0, so the lamp does not glow for any setting of the switches.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "logic-12-pyq#28",
+    "questionNumber": "Q. 15",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Application of Logic to Switching Circuits",
+    "stem": "Express the following switching circuit in the symbolic form of logic. Construct the switching table and interpret it:",
+    "image": "image5.png",
+    "solution": "Let \\(p\\): the switch \\(S_{1}\\) is closed, \\(q\\): the switch \\(S_{2}\\) is closed, \\(L\\): the lamp glows. The switches \\(S_{1}'\\) and \\(S_{2}'\\) stand for \\(\\sim p\\) and \\(\\sim q\\).\n\n**Reading the circuit:** the block of \\(S_{1}\\) parallel to \\(S_{2}\\) is in series with \\(S_{1}'\\) and then with \\(S_{2}'\\).\n\n**Symbolic form: \\((p \\vee q) \\land \\sim p \\land \\sim q\\).**\n\n**Switching table** (1 = switch closed / current flows, 0 = switch open / no current):\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\vee q\\) | \\(\\sim p \\land \\sim q\\) | \\((p \\vee q) \\land \\sim p \\land \\sim q\\) |\n|---|---|---|---|---|---|---|\n| 1 | 1 | 0 | 0 | 1 | 0 | 0 |\n| 1 | 0 | 0 | 1 | 1 | 0 | 0 |\n| 0 | 1 | 1 | 0 | 1 | 0 | 0 |\n| 0 | 0 | 1 | 1 | 0 | 1 | 0 |\n\n**Interpretation:** the last column contains 0 in all four rows, so the current never reaches the lamp. **The lamp will not glow irrespective of the positions of the switches \\(S_{1}\\) and \\(S_{2}\\).**\n\nBy De Morgan's law \\(\\sim p \\land \\sim q \\equiv \\sim (p \\vee q)\\), so the expression is \\((p \\vee q) \\land \\sim (p \\vee q) \\equiv c\\), a contradiction — which is why the table is all zeros.",
+    "difficulty": "MODERATE"
+  }
+]

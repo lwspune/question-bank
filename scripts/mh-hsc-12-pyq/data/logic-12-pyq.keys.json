@@ -1,0 +1,48 @@
+{
+  "_readme": [
+    "ADJUDICATED MCQ keys for the Mathematical Logic board PYQs.",
+    "",
+    "There is NO answer key in the source — a board question paper never ships one",
+    "— so these are DERIVED, and every one was derived twice independently: once by",
+    "the reviewer and once by an agent that saw stem + options ONLY (out/",
+    "logic-12-pyq.blind-mcq.json, which carries no key or solution field at all).",
+    "The two passes agreed on all five, including on the one that has no answer.",
+    "",
+    "TWO of the five had NO correct option on first derivation, and source-verifying",
+    "them settled them in OPPOSITE directions. That is the whole reason both were",
+    "checked against the printed page instead of being repaired by arithmetic:",
+    "  #1 → OUR fault. The compilation mis-copied two options. Repaired; key D.",
+    "  #3 → the BOARD's. The paper prints it exactly as we have it. Preserved.",
+    "See data/defects.json → optionsMistranscribed and → boardDefects."
+  ],
+  "keys": {
+    "logic-12-pyq#1": {
+      "key": "D",
+      "basis": "~(p ^ (q -> r)) = ~p or (q ^ ~r), which is option D verbatim once the compilation's mis-copied 'and' is corrected back to the paper's 'or'. Agreed by both derivations; the blind agent built the full 8-row table and confirmed D matches the target column on all 8 rows while A, B and C each differ in at least two.",
+      "difficulty": "MODERATE"
+    },
+    "logic-12-pyq#3": {
+      "key": "C",
+      "defect": true,
+      "basis": "NO PRINTED OPTION IS CORRECT. The negation is ~p or (q ^ ~r); the combination (q ^ ~r) appears in none of the four options. Both derivations reached this independently and the March 2022 paper's own text layer confirms our stem and all four options are transcribed faithfully, so the defect is the board's.",
+      "whyC": "Option (c) is ~p or (q -> ~r) — the correct expression with ONE symbol wrong. Two single-character repairs are available and BOTH make (c) uniquely correct: fixing (c)'s inner connective, or fixing the stem's. The stem repair is ruled out by the March 2016 paper, which sets the SAME question with the SAME stem 'the negation of p ^ (q -> r)' and prints the correct answer as its option (D) — so the board's intended stem is what is printed and the corruption is in option (c). Under either repair the intended key is (c), which is what makes C safe to key despite the defect.",
+      "action": "preserve the printed text + errata bracket; key C. A student who answers (c) is following the board's intent, and one who answers nothing has read the question correctly.",
+      "difficulty": "MODERATE"
+    },
+    "logic-12-pyq#4": {
+      "key": "B",
+      "basis": "p -> q is false in exactly one row of the truth table, p=T q=F, and that row also satisfies p ^ q = F. So the truth values are T, F — option B. The other three rows all make p -> q true.",
+      "difficulty": "MODERATE"
+    },
+    "logic-12-pyq#5": {
+      "key": "B",
+      "basis": "The dual interchanges AND with OR and t with c. Dual of t or (p or q) is c and (p and q) — option B. Note this key depends on the stem repair recorded in defects.json: with the compilation's mis-read 'r' in place of 't' the correct dual would be 'r and (p and q)', which appears in none of the four options.",
+      "difficulty": "EASY"
+    },
+    "logic-12-pyq#7": {
+      "key": "C",
+      "basis": "C is the only universally-quantified claim and it fails at x = 1: 1 + 6 = 7 is not >= 9. Each of the other three is existential and is witnessed inside A = {1,2,3,4,5} — A by x = 5, B by x = 1, D by x = 1 — so all three are true and C is the one that is not.",
+      "difficulty": "EASY"
+    }
+  }
+}
