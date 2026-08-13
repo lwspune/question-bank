@@ -125,6 +125,49 @@ async function main() {
   if (uErr) throw new Error(`kind/visibility update failed: ${uErr.message}`);
   console.log(`set ${count} rows to PRIVATE + question_kind='pyq'.`);
 
+  // WHICH rows did the DB dedup swallow, and into what?
+  //
+  // content_hash is unique on (org_id, exam_id, content_hash) — per EXAM, not
+  // per chapter. This corpus adds board PYQs to chapters that already hold the
+  // Balbharati textbook exercises, and ~30% of these questions have a
+  // near-verbatim twin there. Where the match is EXACT the PYQ is absorbed into
+  // the existing practice row: no pyq row, no year, no provenance, and the only
+  // signal is `skipped=N`. Name them, because a silent skip in a PYQ ingest is
+  // indistinguishable from a question that was never in the paper.
+  if (skipped) {
+    const norm = (t: string) => t.trim().replace(/\s+/g, " ");
+    const { data: landed } = await client.from("questions").select("text")
+      .eq("exam_id", EXAM_ID).eq("source_file", ch.sourceFile);
+    const have = new Set((landed ?? []).map((r) => norm(r.text as string)));
+    const absorbed = questions.filter((q) => !have.has(norm(q.stem)));
+    console.log(`\n${absorbed.length} row(s) ABSORBED by an existing question (exam-scoped content_hash):`);
+    const { contentHash, subjectiveContentHash } = await import("../../src/lib/upload/hash");
+    for (const q of absorbed) {
+      // Must use the SAME helper the build used, or the lookup silently misses:
+      // a subjective row is hashed under its own namespace, so the MCQ hash
+      // finds nothing and the twin reads as "unidentified".
+      const hash =
+        q.format === "subjective"
+          ? subjectiveContentHash(q.stem, null)
+          : contentHash(q.stem, (q.options ?? []).map((o) => o.text), q.answer ?? "");
+      const { data: twin } = await client.from("questions")
+        .select("question_kind,source_file,chapters(name)")
+        .eq("exam_id", EXAM_ID).eq("content_hash", hash).maybeSingle();
+      const chapterName = Array.isArray(twin?.chapters)
+        ? (twin.chapters[0] as { name: string } | undefined)?.name
+        : (twin?.chapters as unknown as { name: string } | null)?.name;
+      const into = twin
+        ? `${twin.question_kind} row in ${chapterName ?? "?"} (${twin.source_file})`
+        : "an unidentified row";
+      console.log(`  ${q.ref} [${q.questionNumber}, ${q.pyqMonth ?? ""} ${q.pyqYear}] -> ${into}`);
+      console.log(`     ${q.stem.slice(0, 100)}`);
+    }
+    console.log(
+      `  These board PYQs now have NO pyq row and NO year. That is a coverage fact, not a\n` +
+      `  failure — the question IS in the bank — but it must be recorded rather than inferred.`,
+    );
+  }
+
   const { count: linked } = await client.from("questions")
     .select("id", { count: "exact", head: true }).eq("exam_id", EXAM_ID).eq("source_file", ch.sourceFile);
   await client.from("upload_jobs").update({

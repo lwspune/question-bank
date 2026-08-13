@@ -107,8 +107,31 @@ function main() {
     answers.push({ ref: s.ref, answer: s.answer, difficulty: s.difficulty.toUpperCase(), twin: s.twin ?? null, ...(s.flag ? { flag: s.flag } : {}) });
   }
 
+  // A flag naming an EXTRACTION artifact goes stale the moment the artifact is
+  // fixed, and it then ships as a "this question is defective" note about a
+  // perfectly sound question. Authoring and repair run concurrently here, so
+  // this is the normal case rather than an edge one: two chapters carried
+  // flags reading "the stored stem carries a trailing ' \ ####'... the question
+  // itself is sound" after that residue had already been removed.
+  // Dropped only when the row now passes the text probe clean — a flag about a
+  // defect that is STILL present is kept.
+  const ARTIFACT = /artifact|####|extraction|OPTION_LEAK|blockquote/i;
+  const dropped: string[] = [];
+  for (const s of answers) {
+    if (!s.flag || !ARTIFACT.test(s.flag)) continue;
+    const d = byRef.get(s.ref)!;
+    const stillBroken = probeRow(s.ref, [
+      ["stem", d.stem],
+      ...((d.options ?? []).map((o) => [`option ${o.label}`, o.text] as [string, string])),
+    ]);
+    if (!stillBroken.length) {
+      delete s.flag;
+      dropped.push(s.ref);
+    }
+  }
+
   const unkeyed = draft.filter((d) => d.format === "mcq" && !keys[d.ref]).map((d) => d.ref);
-  const flagged = sols.filter((s) => s.flag).map((s) => s.ref);
+  const flagged = answers.filter((s) => s.flag).map((s) => s.ref);
   const tally = new Map<string, number>();
   for (const a of assigned) tally.set(a.subtopic, (tally.get(a.subtopic) ?? 0) + 1);
 
@@ -116,6 +139,7 @@ function main() {
   for (const st of ch.subtopics) console.log(`  ${String(tally.get(st) ?? 0).padStart(3)}  ${st}`);
   console.log(`  keys ${Object.keys(keys).length}/${draft.filter((d) => d.format === "mcq").length} mcq | answers ${answers.length}`);
   console.log(`  difficulty: ${[...new Set(sols.map((s) => s.difficulty))].sort().join(" ")}`);
+  if (dropped.length) console.log(`  stale artifact flags dropped (now clean): ${dropped.join(", ")}`);
   if (unkeyed.length) console.log(`  NO KEY (stay PRIVATE): ${unkeyed.join(", ")}`);
   if (flagged.length) console.log(`  FLAGGED as defective: ${flagged.join(", ")}`);
 
