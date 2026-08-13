@@ -87,6 +87,23 @@ export function normaliseMath(text: string): string {
     });
   }
 
+  // pandoc's line-continuation backslash sometimes lands INSIDE a math zone.
+  // A zone ending in a lone backslash is a KaTeX parse error that takes the
+  // whole stem down with it — the JEE lesson. Strip it, but only when it is
+  // genuinely alone: `\\` is a legitimate LaTeX line break.
+  out = out.replace(/([^\\])\\\\\)/g, "$1\\)");
+
+  // A bare symbol command butted against a letter is CORRECT — `\(\angle\)B` is
+  // the angle named B, and inserting a space to get "∠ B" would be a
+  // regression. Pull the letter into the zone instead. Must run BEFORE the
+  // general de-gluing below, which would otherwise separate them.
+  out = out.replace(/\\\((\\(?:angle|triangle|Delta))\\\)([A-Z])/g, "\\($1 $2\\)");
+
+  // Any other math zone butted straight against the next word renders glued
+  // ("]³respectively"). Insert the missing space.
+  out = out.replace(/\\\)(?=[A-Za-z])/g, "\\) ");
+  out = out.replace(/(?<=[A-Za-z])\\\(/g, " \\(");
+
   return collapseSpaces(out);
 }
 

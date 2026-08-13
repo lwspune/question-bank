@@ -90,6 +90,31 @@ describe("normaliseMath", () => {
     expect(normaliseMath("a b")).toBe("a b");
   });
 
+  // Found by probing the extracted drafts, not by imagining it: pandoc's
+  // line-continuation backslash sometimes lands INSIDE a math zone, and a zone
+  // ending in a lone backslash is a KaTeX parse error that takes the whole stem
+  // down. Two rows carried it ("\tan^{3}\theta\\)").
+  it("strips a lone trailing backslash inside a math zone", () => {
+    expect(normaliseMath("$\\tan^{3}\\theta\\$ with")).toBe("\\(\\tan^{3}\\theta\\) with");
+  });
+
+  it("does not touch a legitimate command ending the zone", () => {
+    expect(normaliseMath("$a \\theta$ b")).toBe("\\(a \\theta\\) b");
+  });
+
+  // A math zone butted straight against the next word renders glued —
+  // "]³respectively". Five rows carried this.
+  it("separates a math zone from a word glued to it", () => {
+    expect(normaliseMath("$x^{3}$respectively are")).toBe("\\(x^{3}\\) respectively are");
+  });
+
+  // ...but NOT for a bare symbol command, where the glue is correct: "∠B" is an
+  // angle named B, and inserting a space to give "∠ B" would be a regression.
+  // The letter is pulled INTO the zone instead.
+  it("absorbs the letter into the zone after a bare angle symbol", () => {
+    expect(normaliseMath("then $\\angle$B = ?")).toBe("then \\(\\angle B\\) = ?");
+  });
+
   it("is idempotent — running it twice equals running it once", () => {
     const s = "If $A = \\begin{vmatrix} 1 \\end{vmatrix}$ then x ≠ y";
     expect(normaliseMath(normaliseMath(s))).toBe(normaliseMath(s));
