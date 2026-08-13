@@ -250,6 +250,47 @@ export const CHAPTERS: Record<string, Chapter> = {
       { file: "10. Applications_new.xlsx", subtopicName: "Applications" },
     ],
   },
+  "indefinite-integration": {
+    id: "indefinite-integration",
+    chapterName: "Indefinite Integration",
+    dir: join(SOURCE_ROOT, "17. Indefinite_Integration"),
+    sourceFile: "Cadetprep_Worksheets_Indefinite_Integration",
+    note: "Cadetprep concept-practice worksheet — Indefinite Integration",
+    // "04. Integration By Parts_old.xlsx" kept: 9 of its 11 q are unique
+    // (2 re-authored twins of base rows, 1 with a conflicting key — settled by
+    // the blind pass). Maps to the same subtopic as the base file.
+    files: [
+      { file: "01. Core Concepts.xlsx", subtopicName: "Core Concepts" },
+      { file: "02. Basic Integrals.xlsx", subtopicName: "Basic Integrals" },
+      { file: "03. Substitution Method.xlsx", subtopicName: "Substitution Method" },
+      { file: "04. Integration By Parts.xlsx", subtopicName: "Integration by Parts" },
+      { file: "04. Integration By Parts_old.xlsx", subtopicName: "Integration by Parts" },
+      { file: "05. Partial Fractions.xlsx", subtopicName: "Partial Fractions" },
+      { file: "06. Algebraic_Integrals.xlsx", subtopicName: "Algebraic Integrals" },
+      { file: "07. Trigonometric_Integrals.xlsx", subtopicName: "Trigonometric Integrals" },
+      { file: "08. Logarithmic_and_Exponential_Integrals.xlsx", subtopicName: "Logarithmic and Exponential Integrals" },
+      { file: "09. Composite and Special Structure Integrals.xlsx", subtopicName: "Composite and Special Integrals" },
+    ],
+  },
+  circles: {
+    id: "circles",
+    chapterName: "Circles",
+    dir: join(SOURCE_ROOT, "11. Circles"),
+    sourceFile: "Cadetprep_Worksheets_Circles",
+    note: "Cadetprep concept-practice worksheet — Circles",
+    // Legacy BIFF .xls files — SheetJS sniffs content, parses fine.
+    files: [
+      { file: "1)Basics.xls", subtopicName: "Basics" },
+      { file: "2)Points&Lines.xls", subtopicName: "Points and Lines" },
+      { file: "3)Tangent.xls", subtopicName: "Tangents" },
+      { file: "4)Normal.xls", subtopicName: "Normals" },
+      { file: "5)Intersection.xls", subtopicName: "Intersections" },
+      { file: "6)Special-Circles.xls", subtopicName: "Special Circles" },
+      { file: "7)Advanced-Circle.xls", subtopicName: "Advanced Problems" },
+      { file: "8)Optimization.xls", subtopicName: "Optimization" },
+      { file: "9)Co-ordinate.xls", subtopicName: "Coordinate Applications" },
+    ],
+  },
 };
 
 export function requireChapter(id: string | undefined): Chapter {

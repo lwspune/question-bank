@@ -1,0 +1,368 @@
+{
+  "_comment": "Adjudicated repairs for Circles — the source's dirtiest folder (93 of 417 blind verdicts disagreed with the key). Every disagreement was solved by TWO independent blind passes; rows where the passes agreed were spot-checked, the 5 pass-vs-pass conflicts were re-derived by the maintainer. 17 rows are EXCLUDED as geometrically impossible or ill-posed (tangents from interior points, area exceeding the maximum, an incircle in a non-square rectangle) — repairing those would mean inventing new questions.",
+
+  "01-42": { "answer": "B", "reason": "Key flip A→B: sector area (120/360)·(22/7)·36 = 264/7 ≈ 37.71 cm² — both blind passes agree." },
+  "02-10": { "answer": "B", "reason": "Key flip A→B: the tangency condition is (lg + mf − n)² = (l² + m²)(g² + f² − c) — both blind passes agree." },
+  "02-44": { "answer": "A", "reason": "Key flip B→A: tangent x·cosθ + y·sinθ = 1 to the unit circle cuts the axes in a triangle of area 1/|sin 2θ| ≥ 1, minimum 1 — both blind passes agree." },
+  "03-5": { "answer": "A", "reason": "Key flip D→A: by the tangent–chord (alternate segment) theorem the inscribed angle equals 30°, giving 60° for the asked angle — both blind passes agree." },
+  "03-10": { "answer": "C", "reason": "Key flip B→C: the angle evaluates to 60° (120° only under the far-intersection reading, which the options do not support) — both blind passes agree." },
+  "03-37": { "answer": "A", "reason": "Key flip B→A: with the tangents on opposite sides of PQ the angle is 30° + 50° = 80° — both blind passes agree." },
+  "03-38": {
+    "answer": "A",
+    "options": { "D": "\\(\\frac{150}{15}\\) cm" },
+    "reason": "Key flip C→A: chord of contact = 2rt/d = 2·9·12/15 = 216/15 cm (option A); the keyed C (162/15) matches no computation. Old option D (180/15 = 12) duplicated B — replaced."
+  },
+  "03-48": { "answer": "C", "reason": "Key flip A→C: the circle inscribed in the 8-cm square has diameter 8 cm — both blind passes agree." },
+  "04-18": { "answer": "C", "reason": "Key flip A→C: the condition is a(x₁+g) + b(y₁+f) = 0 — the line's direction must be perpendicular to the radius at the point; both blind passes agree." },
+  "04-6": { "answer": "D", "reason": "Key flip C→D: every normal passes through the centre, so a normal through (2a, 0) is the x-axis, forcing θ = 0 — both blind passes agree." },
+  "04-9": { "answer": "A", "reason": "Key flip D→A: the normal at (3,4) on x²+y²=25 is the line 4x − 3y = 0 through the point and the origin — both blind passes agree." },
+  "04-30": { "answer": "D", "reason": "Key flip A→D: the common normal of two circles is the line of centres, here y = 0 — both blind passes agree." },
+  "04-32": { "answer": "D", "reason": "Key flip A→D: the normal is 5x + 4y = 0 — both blind passes agree." },
+  "04-33": { "answer": "A", "reason": "Key flip D→A: the value is 3 — both blind passes agree." },
+  "04-26": {
+    "answer": "D",
+    "stem": "The equation of the normal to the circle \\(x^2 + y^2 - 6x + 4y - 7 = 0\\) at the point where it cuts the positive x-axis is:",
+    "solution": "Setting \\(y = 0\\): \\(x^2 - 6x - 7 = 0\\) gives \\(x = 7\\) (positive root). The normal passes through \\((7, 0)\\) and the centre \\((3, -2)\\): slope \\(= \\frac{0-(-2)}{7-3} = \\frac{1}{2}\\), so \\(y = \\frac{1}{2}(x - 7)\\), i.e. \\(x - 2y - 7 = 0\\).",
+    "reason": "Stem repair + key flip C→D: as printed (constant −3) the positive x-intercept is the irrational 3 + 2√3 and NO option is the normal there. With the intended −7 the intercept is (7,0), and the normal through (7,0) and the centre (3,−2) has slope +1/2 — option D, not the keyed C (whose line misses the centre)."
+  },
+  "05-21": {
+    "answer": "C",
+    "stem": "Two circles \\(x^2 + y^2 = a^2\\) and \\(x^2 + y^2 - 2ax = 0\\) intersect. The angle between them at an intersection point is:",
+    "solution": "Both circles have radius \\(a\\) and their centres \\((0,0)\\) and \\((a,0)\\) are \\(a\\) apart. \\(\\cos\\theta = \\frac{r_1^2 + r_2^2 - d^2}{2 r_1 r_2} = \\frac{a^2 + a^2 - a^2}{2a^2} = \\frac{1}{2}\\), so \\(\\theta = 60°\\).",
+    "reason": "Stem repair + key flip D→C: the printed stem asserted the circles intersect ORTHOGONALLY, which is false (the orthogonality condition fails: 0 ≠ −a²), and keyed the 90° option on that false premise. The actual angle is 60° — both blind passes agree."
+  },
+  "05-31": { "answer": "D", "reason": "Key flip B→D: three circle pairs, each externally separate with 4 common tangents, give 12 — both blind passes agree on the pairwise reading the options support." },
+  "05-5": { "answer": "D", "reason": "Key flip A→D: the family S₁ + λ(S₂−S₁) with centre (1,−2) forces λ = 1, which is exactly the second circle: (x−1)² + (y+2)² = 4 — both blind passes agree." },
+  "06-17": { "answer": "B", "reason": "Key flip D→B: a circle touching both axes with centre (r,r) through the given point satisfies r² − 14r + 25 = 0, giving TWO positive radii (7 ± 2√6) — 2 such circles; both blind passes agree." },
+  "06-48": { "answer": "B", "reason": "Key flip C→B: r² − 16r + 32 = 0 has two positive roots (8 ± 4√2) — 2 circles; both blind passes agree." },
+  "07-11": { "answer": "B", "reason": "Key flip C→B: only point B satisfies the condition — both blind passes agree." },
+  "07-17": { "answer": "B", "reason": "Key flip D→B: the point whose polar is undefined is the centre (−g, −f) — both blind passes agree." },
+  "07-36": { "answer": "B", "reason": "Key flip D→B: the polar 3x + 4y = 25 is a fixed line at distance 25/5 = 5 from the origin — both blind passes agree." },
+  "07-41": { "answer": "B", "reason": "Key flip A→B: the condition gives r² = 12/7 — both blind passes agree." },
+  "07-45": { "answer": "B", "reason": "Key flip C→B: the polar of (3,4) is 3x + 4y = 25, which is the tangent since (3,4) lies on the circle — both blind passes agree." },
+  "08-26": { "answer": "D", "reason": "Key flip A→D: genuine (non-degenerate) triangles on the circle have areas approaching but never reaching 0 — no minimum exists; both blind passes agree." },
+  "09-14": { "answer": "D", "reason": "Key flip A→D: the locus is 3x² + 3y² + 6x − 9 = 0, i.e. x² + y² + 2x − 3 = 0 — both blind passes agree." },
+
+  "01-50": {
+    "options": { "B": "\\(\\sqrt{\\frac{53}{17}}\\)" },
+    "solution": "The common chord of the two circles has half-length \\(\\sqrt{\\frac{53}{68}}\\), so the full chord is \\(2\\sqrt{\\frac{53}{68}} = \\sqrt{\\frac{53}{17}} \\approx 1.77\\).",
+    "reason": "No printed option was correct: the common chord evaluates to √(53/17), confirmed by two independent derivations from both circles. Keyed option B repaired."
+  },
+  "01-51": {
+    "options": { "A": "\\(x^2 + y^2 + 17x + 9y - 40 = 0\\)" },
+    "solution": "Substituting the three vertices into \\(x^2 + y^2 + Dx + Ey + F = 0\\) and solving gives \\(D = 17, E = 9, F = -40\\); all three vertices verify on \\(x^2 + y^2 + 17x + 9y - 40 = 0\\).",
+    "reason": "No printed option was correct — every offered circle fails at one of the vertices. Keyed option A repaired to the true circumcircle, verified at all three vertices by both blind passes."
+  },
+  "02-27": {
+    "options": { "A": "\\(h^2 + k^2 < 9\\)" },
+    "reason": "No printed option was correct: the point (h,k) lies inside x²+y²=9 exactly when h² + k² < 9; the keyed A's '< 10' came from averaging, not distance. Repaired."
+  },
+  "03-29": {
+    "options": { "B": "\\(2\\sqrt{29}\\) cm" },
+    "reason": "No printed option was correct: the computed difference is 2√29 ≈ 10.77 cm (both passes agree). Keyed option B repaired."
+  },
+  "03-42": {
+    "options": { "C": "\\(7\\) cm" },
+    "reason": "No printed option was correct: the tangent length from the vertex is s − a = 21 − 14 = 7 cm (both passes agree). Keyed option C repaired."
+  },
+  "03-47": {
+    "options": { "C": "\\(\\sqrt{5}\\) cm" },
+    "reason": "No printed option was correct: under the radical-centre reading both passes independently computed √5 cm. Keyed option C repaired."
+  },
+  "04-4": {
+    "stem": "The equation of the line passing through the point \\((7, 1)\\) and the centre of the circle \\(x^2 + y^2 - 6x + 8y - 11 = 0\\) is:",
+    "options": { "B": "\\(5x - 4y - 31 = 0\\)" },
+    "solution": "The centre is \\((3, -4)\\). The line through \\((7, 1)\\) and \\((3, -4)\\) has slope \\(\\frac{5}{4}\\): \\(y - 1 = \\frac{5}{4}(x - 7)\\), i.e. \\(5x - 4y - 31 = 0\\).",
+    "reason": "As printed the stem asked for 'the normal at (7,1)' but (7,1) does NOT lie on the circle — a normal there is undefined. Reworded to the line through the point and the centre (what every option shape attempts); keyed option B repaired to the true line 5x − 4y − 31 = 0 (both passes agree)."
+  },
+  "04-19": {
+    "stem": "The equation of the line passing through the point \\((5, -2)\\) and the centre of the circle \\(x^2 + y^2 - 8x + 6y + 9 = 0\\) is:",
+    "options": { "B": "\\(x - y - 7 = 0\\)" },
+    "solution": "The centre is \\((4, -3)\\). The line through \\((5, -2)\\) and \\((4, -3)\\) has slope \\(1\\): \\(y + 2 = x - 5\\), i.e. \\(x - y - 7 = 0\\).",
+    "reason": "As printed the stem asked for 'the normal at (5,−2)' but the point is NOT on the circle. Reworded to the line through the point and the centre; keyed option B repaired to x − y − 7 = 0 (both passes agree)."
+  },
+  "04-31": {
+    "options": { "C": "\\(11(x^2 + y^2) + 4x - 58y = 0\\)" },
+    "solution": "Solving the constraints gives the circle \\(11(x^2 + y^2) + 4x - 58y = 0\\) with centre \\(\\left(-\\frac{2}{11}, \\frac{29}{11}\\right)\\).",
+    "reason": "No printed option was correct — the keyed C was internally self-contradictory. Repaired to the true circle, whose centre (−2/11, 29/11) both passes derived independently."
+  },
+  "05-18": {
+    "options": { "C": "\\(-10\\)" },
+    "reason": "No printed option was correct: the power of the point evaluates to −10 (both passes agree). Keyed option C repaired."
+  },
+  "05-22": {
+    "options": { "C": "\\(5\\sqrt{3}\\)" },
+    "reason": "No printed option was correct: the chord length is 5√3 ≈ 8.66 (both passes agree). Keyed option C repaired."
+  },
+  "05-29": {
+    "options": { "A": "\\(\\frac{4 r_1 r_2 \\sqrt{r_1 r_2}}{r_1 + r_2}\\)" },
+    "reason": "No printed option was correct: AP·BP = 4r₁r₂√(r₁r₂)/(r₁+r₂) (both passes agree). Keyed option A repaired."
+  },
+  "05-35": {
+    "options": { "A": "\\(2\\sin^{-1}\\left(\\frac{3}{5}\\right)\\)" },
+    "reason": "No printed option was correct: the angle is 2·arcsin(3/5) ≈ 73.7°, matching no offered clean angle (both passes agree). Keyed option A repaired to the exact form."
+  },
+  "05-45": {
+    "options": { "B": "\\(\\frac{5\\sqrt{2}}{6}\\)" },
+    "reason": "No printed option was correct: r = 5√2/6 ≈ 1.18 with centre (7/6, 7/6) (both passes agree). Keyed option B repaired."
+  },
+  "06-28": {
+    "options": { "A": "\\(6 \\pm 3\\sqrt{2}\\)" },
+    "reason": "No printed option was correct: the touching condition gives r = 6 ± 3√2 (both passes agree). Keyed option A repaired."
+  },
+  "06-30": {
+    "options": { "A": "\\(4 \\pm \\sqrt{6}\\)" },
+    "reason": "No printed option was correct: r = 4 ± √6 (both passes agree). Keyed option A repaired."
+  },
+  "06-36": {
+    "options": { "C": "\\(8 - 4\\sqrt{2}\\)" },
+    "reason": "No printed option was correct: r = 8 − 4√2 = 4(2−√2) ≈ 2.34 — the keyed C was exactly HALF the true value (both passes agree). Repaired."
+  },
+  "06-38": {
+    "options": { "B": "\\((2, 0)\\)" },
+    "reason": "No printed option was correct: the constraints force the unique centre (2, 0) with radius 2 (both passes agree). Keyed option B repaired."
+  },
+  "06-46": {
+    "options": { "A": "\\((3 + \\sqrt{21}, 0)\\) and \\((3 - \\sqrt{21}, 0)\\)" },
+    "reason": "No printed option was correct: the x-intercepts are x = 3 ± √21 (both passes agree). Keyed option A repaired."
+  },
+  "06-49": {
+    "options": { "A": "\\((x-4)^2 + (y+3)^2 = 40\\)" },
+    "reason": "No printed option was correct: r² = 40 (both passes agree). Keyed option A repaired."
+  },
+  "06-5": {
+    "options": { "D": "\\(a = 2\\) or \\(a = 10\\)" },
+    "reason": "No printed option was correct: the tangency condition admits BOTH a = 2 and a = 10 (both passes agree). Keyed option D repaired to the complete answer."
+  },
+  "07-19": {
+    "options": { "B": "\\(\\left(\\frac{11}{6}, \\frac{17}{6}\\right)\\)" },
+    "reason": "No printed option was correct: the pole is (11/6, 17/6) (both passes agree). Keyed option B repaired."
+  },
+  "07-44": {
+    "options": { "D": "\\(\\frac{8\\sqrt{21}}{5}\\)" },
+    "reason": "No printed option was correct: AB = 8√21/5 ≈ 7.33 (both passes agree). Keyed option D repaired."
+  },
+  "07-48": {
+    "options": { "A": "\\(x^2 + y^2 - x - y = 0\\)" },
+    "solution": "The locus is the circle \\(x^2 + y^2 - x - y = 0\\) through the origin with centre \\((\\tfrac{1}{2}, \\tfrac{1}{2})\\).",
+    "reason": "No printed option was correct: the locus is a CIRCLE while every option was a line (both passes agree). Keyed option A repaired."
+  },
+  "07-8": {
+    "options": { "A": "\\((-1, 0)\\)" },
+    "reason": "No printed option was correct: the pole is (−1, 0) (both passes agree). Keyed option A repaired."
+  },
+  "08-11": {
+    "options": { "D": "\\(2\\sqrt{13} - 4\\)" },
+    "reason": "No printed option was correct: the minimum distance is d − r = 2√13 − 4 ≈ 3.21 (both passes agree). Keyed option D repaired."
+  },
+  "08-14": {
+    "options": { "B": "\\(5\\sqrt{2} + 2\\)" },
+    "reason": "No printed option was correct: the maximum distance is d + r = 5√2 + 2 ≈ 9.07 (both passes agree). Keyed option B repaired."
+  },
+  "08-19": {
+    "options": { "B": "\\(\\sqrt{13} + 2\\)" },
+    "reason": "No printed option was correct: the maximum distance is √13 + 2 ≈ 5.61 (both passes agree). Keyed option B repaired."
+  },
+  "08-22": {
+    "options": { "A": "\\(\\sqrt{10} + 3\\)" },
+    "reason": "No printed option was correct: the maximum distance is √10 + 3 ≈ 6.16 (both passes agree). Keyed option A repaired."
+  },
+  "08-32": {
+    "options": { "C": "\\(\\sqrt{32 + 2\\sqrt{3}}\\)" },
+    "reason": "No printed option was correct: the distance evaluates to √(32 + 2√3) ≈ 5.96 (both passes agree). Keyed option C repaired."
+  },
+  "08-45": {
+    "options": { "B": "\\(\\frac{75\\sqrt{3}}{4}\\)" },
+    "reason": "No printed option was correct: the maximum-area inscribed triangle is equilateral with area (3√3/4)r² = 75√3/4 — the keyed B (75/4) had the √3 dropped (both passes agree). Repaired."
+  },
+  "08-53": {
+    "options": { "B": "\\(5\\sqrt{3}\\)" },
+    "reason": "No printed option was correct: the value is 5√3 ≈ 8.66 (both passes agree). Keyed option B repaired."
+  },
+  "08-6": {
+    "options": { "D": "\\(2\\sqrt{10} - 2\\)" },
+    "reason": "No printed option was correct: the minimum distance is d − r = 2√10 − 2 ≈ 4.32 (both passes agree). Keyed option D repaired."
+  },
+  "09-12": {
+    "options": { "A": "\\((-3, -2)\\)" },
+    "solution": "Let the original centre be \\((a, b)\\). After the translation by \\((-2, 3)\\): \\((a-2, b+3)\\). After reflection about the y-axis: \\((2-a, b+3)\\). Setting this equal to \\((5, 1)\\): \\(2 - a = 5\\) gives \\(a = -3\\), and \\(b + 3 = 1\\) gives \\(b = -2\\). The original centre is \\((-3, -2)\\).",
+    "reason": "No printed option was correct: the original centre is (−3, −2) (both passes agree). Keyed option A repaired; the source solution's 'this doesn't match options… Let me recalculate' self-talk rewritten clean."
+  },
+  "09-36": {
+    "options": { "C": "The exterior of the circle: all points with \\(x^2 + y^2 > a^2\\)" },
+    "reason": "No printed option was correct: orthogonality forces c₁ = a², so the locus is the whole exterior region, not a curve (both passes agree). Keyed option C repaired."
+  },
+  "09-43": {
+    "options": { "A": "\\((x-2)^2 + (y-3)^2 = 23\\)" },
+    "reason": "No printed option was correct: the locus is (x−2)² + (y−3)² = 23 (both passes agree). Keyed option A repaired."
+  },
+
+  "01-13": {
+    "options": { "D": "\\(x^2 + y^2 + 2x - 6y + 15 = 0\\)" },
+    "reason": "Option D expanded to exactly the keyed A ((x+1)² + (y−3)² = 5). Constant corrupted so the 'circle' has negative r² (false); key A retained."
+  },
+  "01-52": {
+    "options": { "C": "\\((g_1 - g_2)x + (f_1 - f_2)y + 2(c_1 - c_2) = 0\\)", "D": "\\((g_1 - g_2)x - (f_1 - f_2)y + (c_1 - c_2) = 0\\)" },
+    "reason": "Options C (the keyed A halved) and D (the same identity rearranged) were both the SAME radical axis as A. C's constant scaled wrongly, D's middle sign flipped — both now false; key A retained."
+  },
+  "02-8": {
+    "stem": "If a line is tangent to a circle, then the distance from the centre of the circle to that line is:",
+    "options": { "A": "Half the radius", "B": "Twice the radius", "C": "Zero" },
+    "reason": "The printed stem asserted a specific line was tangent to a specific circle — it is NOT (distance 1/√13 vs radius 2), and option B (2) duplicated the keyed D under that false premise. Stem generalised to the concept the key teaches; numeric options replaced; key D (equal to the radius) retained."
+  },
+  "02-19": {
+    "options": { "D": "The line through the two given points" },
+    "reason": "Option D ('perpendicular bisector of the segment') named exactly the keyed A (x = 1) for these points — two correct answers. Replaced with the false chord line; key A retained."
+  },
+  "02-25": {
+    "options": { "B": "\\(x\\sin α + y\\cos α = 0\\)" },
+    "reason": "Options B and the keyed C were the SAME line (each the other × −1). B's sign flipped to a genuinely different (false) line; key C retained — the normal passes through the centre."
+  },
+  "02-26": {
+    "options": { "C": "\\(\\frac{a - b}{2}\\)" },
+    "reason": "Option C (|a − b|) equalled the keyed A (a − b) since a > b is given. Replaced with the halved false value; key A retained."
+  },
+  "02-29": {
+    "stem": "The angle between the tangents drawn from an external point to a circle is \\(60°\\). If the radius is \\(r\\), then the distance of the point from the centre is:",
+    "reason": "The printed stem garbled the angle's location ('between tangents … subtends 60° at the center'), making both 2r and 2r/√3 defensible. Pinned to the angle at the external point: sin 30° = r/d gives d = 2r — the keyed A."
+  },
+  "02-43": {
+    "options": { "B": "\\(\\frac{r^4}{2(a^2 + b^2)}\\)", "C": "\\(2(a^2 + b^2)\\)" },
+    "reason": "For a point ON the circle a² + b² = r², so options B (r⁴/(a²+b²)) and C (a²+b²) both equalled the keyed A (r²). Scaled to false values; key A retained."
+  },
+  "03-4": {
+    "options": { "C": "\\(4\\sqrt{3}\\) cm" },
+    "reason": "Option C (2√24) equalled the keyed A (4√6). Replaced; key A retained."
+  },
+  "03-34": {
+    "options": { "D": "\\(\\frac{r}{\\sqrt{3}}\\)" },
+    "reason": "Options B (r√3) and D (√3r) were identical distractors. D replaced with the reciprocal form; key A (2r) retained."
+  },
+  "04-12": {
+    "options": { "A": "\\((2, 3)\\)" },
+    "reason": "Option A ((2,−3)) WAS the centre, duplicating the keyed D ('The center itself'). Sign flipped to false; key D retained."
+  },
+  "04-23": {
+    "options": { "A": "\\(y = -\\frac{x}{\\sqrt{3}}\\)", "D": "\\(\\sqrt{3}x + y = 0\\)" },
+    "reason": "Option A (y = x/√3) equalled the keyed C (√3y = x), and D (√3x − y = 0) equalled B (y = √3x) — two equivalent pairs. A and D sign-flipped to false; key C retained (the normal through the centre with slope tan 30°)."
+  },
+  "04-5": {
+    "reason": "No change — key D ('Cannot be determined uniquely') CONFIRMED: 'the length of the normal from an external point' names no unique quantity (infinitely many normals of differing lengths), exactly as the source solution argues. The first blind pass's low-confidence B was wrong; the second pass agreed with the key."
+  },
+  "05-6": {
+    "options": { "B": "\\(2gg' - 2ff' = c + c'\\)", "C": "\\(2(gg' + ff') = c - c'\\)" },
+    "reason": "Options B (the keyed A halved) and C (the keyed A refactored) were both the SAME orthogonality condition as A. Signs corrupted to false; key A retained."
+  },
+  "05-13": {
+    "stem": "Two circles pass through a common point \\(A\\). If the tangent at \\(A\\) to the first circle is parallel to the tangent at \\(A\\) to the second circle, then the circles are:",
+    "reason": "The printed stem said the circles 'intersect at points A and B' — but a shared tangent direction at A means they TOUCH at A, meeting at one point only, contradicting the premise. Premise relaxed to a single common point; key D (touching) retained."
+  },
+  "05-16": {
+    "options": { "B": "\\(4x + 4y - 2 = 0\\)", "C": "\\(x + y + 1 = 0\\)" },
+    "reason": "Options B (2× the keyed A) and C (A ÷ 2) were the SAME line as A. Constants shifted to distinct false lines; key A retained."
+  },
+  "05-32": {
+    "options": { "A": "\\(1 + 2 + 2g + 4f + c = 3\\)" },
+    "reason": "Option A (1 + 4 + 2g + 4f + c = 3) was the keyed B with 5 written as 1+4 — identical. The 4 corrupted to 2 (a plausible substitution error); key B retained."
+  },
+  "05-34": {
+    "stem": "Two circles of radii \\(a\\) and \\(b\\) (where \\(a > b\\)) touch internally. The minimum distance between their circumferences is:",
+    "options": { "C": "\\(\\frac{a - b}{2}\\)" },
+    "reason": "As printed ('one lies completely inside the other') the answer depends on the unstated centre offset, and options B (a−b) and C (|a−b|) were identical. Pinned to internal tangency, where the circumferences meet — minimum distance 0, the keyed D. C replaced."
+  },
+  "05-38": {
+    "options": { "B": "\\(5\\sqrt{6}\\)" },
+    "reason": "Option B (5√5) equalled the keyed A (√125). Replaced; key A retained."
+  },
+  "05-39": {
+    "options": { "A": "The tangent at either intersection point" },
+    "reason": "Option A ('the line joining the intersection points') IS the common chord — identical to the keyed D. Replaced with a false line; key D retained."
+  },
+  "05-46": {
+    "options": { "B": "\\(x^2 + y^2 - 4 + k(2x - 2y - 4) = 0\\)", "C": "\\((1+k)(x^2 + y^2) + 4 - 2kx - 2ky = 0\\)", "D": "\\(x^2 + y^2 + 4 + k(2x + 2y - 4) = 0\\)" },
+    "reason": "ALL FOUR options parametrised the same pencil of circles (B is A with k → −k; C expands to exactly D = S₁ + kS₂). B/C/D corrupted with sign errors so only the keyed A (the canonical S₁ + k·L form the source solution derives) remains valid."
+  },
+  "06-50": {
+    "options": { "D": "\\(\\sqrt{18}\\)" },
+    "reason": "Option D (√16) equalled the keyed B (4). Replaced; key B retained."
+  },
+  "07-6": {
+    "options": { "D": "\\(2x - 3y - 12 = 0\\)" },
+    "reason": "Option D (2x − 3y + 12 = 0) was the keyed B (−2x + 3y − 12 = 0) times −1 — the same line. Constant sign flipped to a genuinely different line; key B retained."
+  },
+  "07-10": {
+    "options": { "B": "\\(x - 2y + 8 = 0\\)", "C": "\\(x + 2y - 8 = 0\\)", "D": "\\(x + 2y + 8 = 0\\)" },
+    "reason": "The keyed D (−x − 2y − 8 = 0) and C (x + 2y + 8 = 0) were the same polar line, and option B was raw unfinished working ('2x − 4y − 3x − 3 + 2y + 4 − 1 = 0'). D cleaned to the canonical form, C sign-flipped to false, B replaced; key D retained."
+  },
+  "07-14": {
+    "options": { "A": "\\(8x + 16 = 0\\)" },
+    "reason": "Option A was the keyed D (8y + 16 = 0) written as its own unsimplified working. Replaced with the axis-swapped false line; key D retained."
+  },
+  "07-20": {
+    "options": { "C": "\\(4x\\cos\\theta + 4y\\sin\\theta = 4\\)" },
+    "reason": "Option C (4x cosθ + 4y sinθ = 16) was the keyed A (x cosθ + y sinθ = 4) scaled by 4 — the same line. Constant broken to a false line; key A retained."
+  },
+  "07-28": {
+    "options": { "D": "\\(x + 2y = 0\\)" },
+    "reason": "Options A ('line at infinity', keyed) and D ('does not exist') were both defensible readings of the centre's polar (the polar equation degenerates to −4 = 0). D replaced with a concrete false line, leaving the standard projective answer unique; key A retained."
+  },
+  "07-35": {
+    "options": { "C": "Lie on one of the two parallel lines" },
+    "reason": "Options A (keyed) and C stated the same true fact — both poles lie on the line through the centre perpendicular to the parallel lines. C replaced with a false claim; key A retained."
+  },
+  "07-43": {
+    "options": { "B": "Passes through \\(P\\)" },
+    "reason": "Option B ('perpendicular to PQ') is ALSO true — the polar of P is perpendicular to OP, and Q lies on ray OP. Replaced with a false claim (the polar of an external P never passes through P); key A retained (La Hire: the polar of P passes through the inverse point Q)."
+  },
+  "08-2": {
+    "stem": "A point \\(P(3, 4)\\) lies on a circle with center \\(O(0, 0)\\) and radius \\(5\\). The greatest distance from \\(P\\) to any other point on the circle is:",
+    "options": { "B": "\\(5 + \\sqrt{20}\\)" },
+    "reason": "The printed stem called P(3,4) an OUTSIDE point when 3² + 4² = 25 puts it ON the circle, and option B (5 + √25) duplicated the keyed A (10). Stem corrected to 'lies on'; the greatest distance is the diameter 10 — key A retained; B replaced."
+  },
+  "09-25": {
+    "options": { "D": "\\(2x + 2y = 5\\)" },
+    "reason": "Option D (2x + 2y = 10) was the keyed A (x + y = 5) doubled — the same line. Constant broken; key A retained."
+  },
+  "09-31": {
+    "options": { "D": "\\(x^2 + y^2 = 10\\)" },
+    "reason": "Options C (2x² + 2y² = 10) and D (x² + y² = 5) were the same circle — a duplicated distractor pair. D replaced; key A retained."
+  },
+  "09-39": {
+    "options": { "B": "\\(x^2 + y^2 = kr^2\\)" },
+    "reason": "Option B (x²/k² + y²/k² = r²) equalled the keyed A (x² + y² = k²r²). Power dropped to false; key A retained."
+  },
+  "09-10": {
+    "options": { "B": "The line through \\((2,3)\\) and \\((6,7)\\)" },
+    "reason": "Option B ('the perpendicular bisector of the segment') named exactly the keyed A (x + y = 9) — two correct answers. Replaced with the false chord line; key A retained."
+  },
+  "09-29": {
+    "options": { "A": "\\((x-2)^2 + (y-1)^2 = 13\\)" },
+    "reason": "Option A ((x−3)² + (y−1)² = 13) expanded to exactly the keyed C (x² + y² − 6x − 2y − 3 = 0) — the diameter-endpoint circle, both correct. A's centre shifted to false; key C retained."
+  },
+  "03-26": {
+    "options": { "A": "\\(\\sqrt{115}\\) cm" },
+    "reason": "Option A (√135) equalled the keyed C (3√15) — the direct common tangent √(144 − 9). Replaced; key C retained."
+  },
+  "07-3": {
+    "options": { "A": "\\(h - k - 4 = 0\\)" },
+    "reason": "Option A (h − k + 4 = 0) was the keyed D (h − k = −4) rearranged — identical. Sign flipped to false; key D retained."
+  },
+
+  "03-11": { "exclude": true, "reason": "IMPOSSIBLE: the triangle's area is ½t²·sin(∠APB) ≤ 18 cm² while the stem demands 24 cm² — no configuration exists (both passes agree)." },
+  "03-24": { "exclude": true, "reason": "IMPOSSIBLE: the chord's midpoint would be r·cos60° = 3 cm from the centre, contradicting the stated 6 cm (both passes agree)." },
+  "03-30": { "exclude": true, "reason": "IMPOSSIBLE: the two tangents from an external point are always symmetric about the line to the centre — the stem's asymmetric configuration cannot exist (both passes agree)." },
+  "03-35": { "exclude": true, "reason": "IMPOSSIBLE: AB = 10 exceeds the maximum possible distance 7 between the two concentric circles (both passes agree)." },
+  "03-36": { "exclude": true, "reason": "IMPOSSIBLE: a circle can touch all four sides of a rectangle only if it is a square; the stem's rectangle is not (both passes agree)." },
+  "03-39": { "exclude": true, "reason": "UNDER-DETERMINED: by the alternate-segment theorem the asked angle equals ∠ABC, which the given data does not fix (both passes agree)." },
+  "03-41": { "exclude": true, "reason": "IMPOSSIBLE: the diagonals of a rectangle inscribed in a circle intersect at the CENTRE — the stem places their intersection elsewhere (both passes agree)." },
+  "03-44": { "exclude": true, "reason": "IMPOSSIBLE: r = 10, so every point of the stated chord is ≥ 6 cm from the centre — the stem's distance cannot occur (both passes agree)." },
+  "03-45": { "exclude": true, "reason": "IMPOSSIBLE: internally tangent circles have no external common tangent — only the single tangent at the contact point (both passes agree)." },
+  "03-46": { "exclude": true, "reason": "IMPOSSIBLE: the midpoint of a side of an inscribed regular hexagon is at the apothem distance, contradicting the stem's figure (both passes agree)." },
+  "03-7": { "exclude": true, "reason": "IMPOSSIBLE: the chord's midpoint sits 3 cm from the centre while r = 5 — the stem's configuration contradicts itself (both passes agree)." },
+  "04-20": { "exclude": true, "reason": "IMPOSSIBLE: every normal to x² + y² = a² passes through the origin, but the stem's line x + y = a/√2 does not (both passes agree)." },
+  "04-35": { "exclude": true, "reason": "ILL-POSED: only ONE normal (y = 0) passes through (5,0) besides the degenerate cases — the 'angle between the normals' is undefined (both passes agree)." },
+  "05-27": { "exclude": true, "reason": "IMPOSSIBLE: the chord's perpendicular bisector x + y = 5 is parallel to the required centre-line x + y = 0 — no such circle exists (both passes agree)." },
+  "05-28": { "exclude": true, "reason": "DEFECTIVE: the angle is 90° for EVERY value of the parameter, so tan θ is undefined and all offered values are wrong (both passes agree)." },
+  "06-6": { "exclude": true, "reason": "IMPOSSIBLE: a circle tangent to the x-axis AT the origin meets the x-axis only at the origin — it cannot also pass through (6,0) (both passes agree)." },
+  "08-41": { "exclude": true, "reason": "ILL-POSED: chords through an external point have no minimum length (length → 0 as the secant degenerates) and 'shortest chord from an external point' names no standard quantity (both passes agree)." }
+}
