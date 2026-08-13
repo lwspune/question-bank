@@ -1,0 +1,140 @@
+[
+  {
+    "ref": "logic-12-pyq#2",
+    "difficulty": "EASY",
+    "twin": "64 is a perfect square and 46 is a prime number.",
+    "answer": "**i. \\(2\\) is a rational number and \\(\\sqrt{2}\\) is an irrational number.**\n\nLet \\(p\\): \\(2\\) is a rational number, \\(q\\): \\(\\sqrt{2}\\) is an irrational number. The connective is \"and\", so the statement is \\(p \\land q\\).\n\n\\(2 = \\dfrac{2}{1}\\) is a ratio of two integers, so \\(p\\) is T. \\(\\sqrt{2}\\) cannot be written as a ratio of two integers, so \\(q\\) is T.\n\nA conjunction is true only when both parts are true, so \\(p \\land q \\equiv T \\land T = T\\).\n\n**Truth value: T (True).**\n\n**ii. \\(2 + 3 = 5\\) or \\(\\sqrt{2} \\neq \\sqrt{5}\\).**\n\nLet \\(p\\): \\(2 + 3 = 5\\), \\(q\\): \\(\\sqrt{2} \\neq \\sqrt{5}\\). The connective is \"or\", so the statement is \\(p \\vee q\\).\n\n\\(2 + 3 = 5\\) is correct, so \\(p\\) is T. Since \\(2 \\neq 5\\), their square roots are also unequal, so \\(q\\) is T.\n\nA disjunction is true if at least one part is true, so \\(p \\vee q \\equiv T \\vee T = T\\).\n\n**Truth value: T (True).**"
+  },
+  {
+    "ref": "logic-12-pyq#6",
+    "difficulty": "EASY",
+    "twin": "\\(\\exists n \\in N\\) such that \\(n + 8 > 11\\)",
+    "answer": "Let \\(p\\): \\(\\exists n \\in N\\) such that \\(n + 8 > 11\\).\n\nThe negation of an existential quantifier \\(\\exists\\) is the universal quantifier \\(\\forall\\), and the negation of \\(>\\) is \\(\\leq\\).\n\n**Negation \\((\\sim p)\\): \\(\\forall n \\in N\\), \\(n + 8 \\leq 11\\).**\n\nIn words: for every natural number \\(n\\), \\(n + 8\\) is not greater than \\(11\\)."
+  },
+  {
+    "ref": "logic-12-pyq#8",
+    "difficulty": "EASY",
+    "twin": null,
+    "answer": "Let \\(p\\): two triangles are congruent, \\(q\\): their areas are equal.\n\nThe given statement is \\(p \\rightarrow q\\).\n\n**Converse \\((q \\rightarrow p)\\):** If the areas of two triangles are equal, then the two triangles are congruent.\n\n**Contrapositive \\((\\sim q \\rightarrow \\sim p)\\):** If the areas of two triangles are not equal, then the two triangles are not congruent."
+  },
+  {
+    "ref": "logic-12-pyq#9",
+    "difficulty": "EASY",
+    "twin": null,
+    "answer": "Let \\(p\\): an angle is a right angle, \\(q\\): its measure is \\(90^{\\circ}\\).\n\nThe given statement is \\(p \\rightarrow q\\).\n\n**Converse \\((q \\rightarrow p)\\):** If the measure of an angle is \\(90^{\\circ}\\), then it is a right angle.\n\n**Inverse \\((\\sim p \\rightarrow \\sim q)\\):** If an angle is not a right angle, then its measure is not \\(90^{\\circ}\\).\n\n**Contrapositive \\((\\sim q \\rightarrow \\sim p)\\):** If the measure of an angle is not \\(90^{\\circ}\\), then it is not a right angle."
+  },
+  {
+    "ref": "logic-12-pyq#10",
+    "difficulty": "EASY",
+    "twin": null,
+    "answer": "Let \\(p\\): a sequence is bounded, \\(q\\): it is convergent.\n\nThe given statement is \\(p \\rightarrow q\\).\n\n**Converse \\((q \\rightarrow p)\\):** If a sequence is convergent, then it is bounded.\n\n**Inverse \\((\\sim p \\rightarrow \\sim q)\\):** If a sequence is not bounded, then it is not convergent.\n\n**Contrapositive \\((\\sim q \\rightarrow \\sim p)\\):** If a sequence is not convergent, then it is not bounded."
+  },
+  {
+    "ref": "logic-12-pyq#11",
+    "difficulty": "EASY",
+    "twin": "If \\(x < y\\) then \\(x^2 < y^2\\) \\((x, y \\in R)\\)",
+    "answer": "Let \\(p\\): \\(x < y\\), \\(q\\): \\(x^{2} < y^{2}\\).\n\nThe given statement is \\(p \\rightarrow q\\).\n\n**Inverse \\((\\sim p \\rightarrow \\sim q)\\):** If \\(x \\geq y\\), then \\(x^{2} \\geq y^{2}\\).\n\n**Contrapositive \\((\\sim q \\rightarrow \\sim p)\\):** If \\(x^{2} \\geq y^{2}\\), then \\(x \\geq y\\)."
+  },
+  {
+    "ref": "logic-12-pyq#12",
+    "difficulty": "MODERATE",
+    "twin": null,
+    "answer": "Truth table for \\(\\sim (p \\land \\sim q) \\vee q\\):\n\n| \\(p\\) | \\(q\\) | \\(\\sim q\\) | \\(p \\land \\sim q\\) | \\(\\sim (p \\land \\sim q)\\) | \\(\\sim (p \\land \\sim q) \\vee q\\) |\n|---|---|---|---|---|---|\n| T | T | F | F | T | T |\n| T | F | T | T | F | F |\n| F | T | F | F | T | T |\n| F | F | T | F | T | T |\n\nThe last column contains the entries T, F, T, T, i.e. both T and F occur.\n\n**Conclusion: the statement pattern is a contingency** (it is neither a tautology nor a contradiction).\n\nCheck by the algebra of statements: \\(\\sim (p \\land \\sim q) \\equiv \\sim p \\vee q\\) (De Morgan's law and \\(\\sim(\\sim q) \\equiv q\\)), so the pattern is \\((\\sim p \\vee q) \\vee q \\equiv \\sim p \\vee q\\), which is false only when \\(p\\) is T and \\(q\\) is F — exactly the second row above."
+  },
+  {
+    "ref": "logic-12-pyq#13",
+    "difficulty": "MODERATE",
+    "twin": "\\([(p \\to q) \\wedge q] \\to p\\)",
+    "answer": "Truth table for \\(\\left\\lbrack (p \\rightarrow q) \\land q \\right\\rbrack \\rightarrow p\\):\n\n| \\(p\\) | \\(q\\) | \\(p \\rightarrow q\\) | \\((p \\rightarrow q) \\land q\\) | \\(\\left\\lbrack (p \\rightarrow q) \\land q \\right\\rbrack \\rightarrow p\\) |\n|---|---|---|---|---|\n| T | T | T | T | T |\n| T | F | F | F | T |\n| F | T | T | T | F |\n| F | F | T | F | T |\n\nThe last column contains both T and F (it is F in the third row, where \\(p\\) is F and \\(q\\) is T).\n\n**Conclusion: the statement pattern is a contingency.** It is neither a tautology nor a contradiction."
+  },
+  {
+    "ref": "logic-12-pyq#14",
+    "difficulty": "MODERATE",
+    "twin": null,
+    "answer": "The pattern contains three variables \\(p\\), \\(q\\), \\(r\\), so the truth table has \\(2^{3} = 8\\) rows.\n\n| \\(p\\) | \\(q\\) | \\(r\\) | \\(p \\land q\\) | \\(p \\vee r\\) | \\((p \\land q) \\vee (p \\vee r)\\) |\n|---|---|---|---|---|---|\n| T | T | T | T | T | T |\n| T | T | F | T | T | T |\n| T | F | T | F | T | T |\n| T | F | F | F | T | T |\n| F | T | T | F | T | T |\n| F | T | F | F | F | F |\n| F | F | T | F | T | T |\n| F | F | F | F | F | F |\n\nThe last column contains both T and F — it is F in the two rows where \\(p\\) is F and \\(r\\) is F.\n\n**Conclusion: the statement pattern is a contingency.**\n\n(Indeed \\((p \\land q) \\vee (p \\vee r) \\equiv p \\vee r\\), since \\(p \\land q\\) is absorbed by \\(p\\).)"
+  },
+  {
+    "ref": "logic-12-pyq#15",
+    "difficulty": "MODERATE",
+    "twin": "\\(p \\leftrightarrow q \\equiv (p \\wedge q) \\vee (\\sim p \\wedge \\sim q)\\)",
+    "answer": "To prove: \\(p \\longleftrightarrow q \\equiv (p \\land q) \\vee (\\sim p \\land \\sim q)\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\longleftrightarrow q\\) | \\(p \\land q\\) | \\(\\sim p \\land \\sim q\\) | \\((p \\land q) \\vee (\\sim p \\land \\sim q)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | F | F | T | T | F | T |\n| T | F | F | T | F | F | F | F |\n| F | T | T | F | F | F | F | F |\n| F | F | T | T | T | F | T | T |\n\nThe fifth column and the eighth column are identical in every row.\n\n**Hence \\(p \\longleftrightarrow q \\equiv (p \\land q) \\vee (\\sim p \\land \\sim q)\\). Proved.**"
+  },
+  {
+    "ref": "logic-12-pyq#16",
+    "difficulty": "MODERATE",
+    "twin": null,
+    "answer": "To verify: \\(\\sim (p \\vee q) \\equiv \\sim p \\land \\sim q\\) (one of De Morgan's laws).\n\n| \\(p\\) | \\(q\\) | \\(p \\vee q\\) | \\(\\sim (p \\vee q)\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(\\sim p \\land \\sim q\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | F | F | F | F |\n| T | F | T | F | F | T | F |\n| F | T | T | F | T | F | F |\n| F | F | F | T | T | T | T |\n\nThe fourth column and the seventh column are identical in every row.\n\n**Hence \\(\\sim (p \\vee q) \\equiv \\sim p \\land \\sim q\\). Verified.**"
+  },
+  {
+    "ref": "logic-12-pyq#17",
+    "difficulty": "MODERATE",
+    "twin": null,
+    "answer": "To verify: \\((p \\land q) \\vee \\sim q \\equiv p \\vee \\sim q\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim q\\) | \\(p \\land q\\) | \\((p \\land q) \\vee \\sim q\\) | \\(p \\vee \\sim q\\) |\n|---|---|---|---|---|---|\n| T | T | F | T | T | T |\n| T | F | T | F | T | T |\n| F | T | F | F | F | F |\n| F | F | T | F | T | T |\n\nThe fifth column and the sixth column are identical in every row.\n\n**Hence \\((p \\land q) \\vee \\sim q \\equiv p \\vee \\sim q\\). Verified.**\n\n(The same result follows from the distributive law: \\((p \\land q) \\vee \\sim q \\equiv (p \\vee \\sim q) \\land (q \\vee \\sim q) \\equiv (p \\vee \\sim q) \\land t \\equiv p \\vee \\sim q\\).)"
+  },
+  {
+    "ref": "logic-12-pyq#18",
+    "difficulty": "HARD",
+    "twin": "\\((p \\wedge q) \\vee (\\sim p \\wedge q) \\vee (p \\wedge \\sim q) \\equiv p \\vee q\\)",
+    "answer": "To prove: \\((p \\land q) \\vee (\\sim p \\land q) \\vee (p \\land \\sim q) \\equiv p \\vee q\\), without using a truth table.\n\nConsider the L.H.S. and group the first two terms:\n\n\\((p \\land q) \\vee (\\sim p \\land q) \\vee (p \\land \\sim q)\\)\n\n\\(\\equiv \\left\\lbrack (p \\vee \\sim p) \\land q \\right\\rbrack \\vee (p \\land \\sim q)\\)  [Distributive Law]\n\n\\(\\equiv (t \\land q) \\vee (p \\land \\sim q)\\)  [Complement Law, \\(p \\vee \\sim p \\equiv t\\)]\n\n\\(\\equiv q \\vee (p \\land \\sim q)\\)  [Identity Law]\n\n\\(\\equiv (q \\vee p) \\land (q \\vee \\sim q)\\)  [Distributive Law]\n\n\\(\\equiv (q \\vee p) \\land t\\)  [Complement Law]\n\n\\(\\equiv q \\vee p\\)  [Identity Law]\n\n\\(\\equiv p \\vee q\\)  [Commutative Law]\n\n\\(=\\) R.H.S.\n\n**Hence \\((p \\land q) \\vee (\\sim p \\land q) \\vee (p \\land \\sim q) \\equiv p \\vee q\\). Proved.**"
+  },
+  {
+    "ref": "logic-12-pyq#19",
+    "difficulty": "MODERATE",
+    "twin": "\\([(p \\to q) \\wedge q] \\to p\\)",
+    "answer": "Truth table for \\(\\left\\lbrack (p \\rightarrow q) \\land q \\right\\rbrack \\rightarrow p\\):\n\n| \\(p\\) | \\(q\\) | \\(p \\rightarrow q\\) | \\((p \\rightarrow q) \\land q\\) | \\(\\left\\lbrack (p \\rightarrow q) \\land q \\right\\rbrack \\rightarrow p\\) |\n|---|---|---|---|---|\n| T | T | T | T | T |\n| T | F | F | F | T |\n| F | T | T | T | F |\n| F | F | T | F | T |\n\nThe entries of the last column are T, T, F, T.\n\nSince the last column contains both T and F, the statement pattern is a **contingency**."
+  },
+  {
+    "ref": "logic-12-pyq#20",
+    "difficulty": "MODERATE",
+    "twin": "\\(p \\leftrightarrow q \\equiv (p \\wedge q) \\vee (\\sim p \\wedge \\sim q)\\)",
+    "answer": "To prove: \\(p \\longleftrightarrow q \\equiv (p \\land q) \\vee (\\sim p \\land \\sim q)\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\longleftrightarrow q\\) | \\(p \\land q\\) | \\(\\sim p \\land \\sim q\\) | \\((p \\land q) \\vee (\\sim p \\land \\sim q)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | F | F | T | T | F | T |\n| T | F | F | T | F | F | F | F |\n| F | T | T | F | F | F | F | F |\n| F | F | T | T | T | F | T | T |\n\nColumn 5 (for \\(p \\longleftrightarrow q\\)) and column 8 (for \\((p \\land q) \\vee (\\sim p \\land \\sim q)\\)) have exactly the same entries T, F, F, T in the same order.\n\n**Hence the two statement patterns are logically equivalent: \\(p \\longleftrightarrow q \\equiv (p \\land q) \\vee (\\sim p \\land \\sim q)\\). Proved.**"
+  },
+  {
+    "ref": "logic-12-pyq#21",
+    "difficulty": "MODERATE",
+    "twin": "Construct the switching circuit of \\([(p \\vee (\\sim p \\wedge q)] \\vee [(\\sim q \\wedge r) \\vee \\sim p]\\).",
+    "answer": "Let \\(p\\): the switch \\(S_{1}\\) is closed, \\(q\\): the switch \\(S_{2}\\) is closed, \\(r\\): the switch \\(S_{3}\\) is closed. Then \\(\\sim p\\), \\(\\sim q\\), \\(\\sim r\\) stand for the switches \\(S_{1}'\\), \\(S_{2}'\\), \\(S_{3}'\\), which are closed exactly when \\(S_{1}\\), \\(S_{2}\\), \\(S_{3}\\) respectively are open.\n\nIn a switching circuit \\(\\land\\) means **series** and \\(\\vee\\) means **parallel**.\n\nSince \\(\\vee\\) is associative, \\(\\left\\lbrack p \\vee (\\sim p \\land q) \\right\\rbrack \\vee \\lbrack (\\sim q \\land r) \\vee \\sim p \\rbrack\\) is a **parallel combination of four branches**:\n\n- **Branch 1** \\((p)\\): the single switch \\(S_{1}\\).\n- **Branch 2** \\((\\sim p \\land q)\\): the switch \\(S_{1}'\\) in series with the switch \\(S_{2}\\).\n- **Branch 3** \\((\\sim q \\land r)\\): the switch \\(S_{2}'\\) in series with the switch \\(S_{3}\\).\n- **Branch 4** \\((\\sim p)\\): the single switch \\(S_{1}'\\).\n\nThese four branches are joined in parallel between the same two junctions, and this parallel block is connected in series with the lamp \\(L\\) and the battery to complete the circuit.\n\n(There is no figure to draw here, so the circuit is described in words; the description above fixes it completely.)"
+  },
+  {
+    "ref": "logic-12-pyq#22",
+    "difficulty": "EASY",
+    "twin": "Construct the switching circuit of \\((p \\wedge q) \\vee (\\sim p) \\vee (p \\wedge \\sim q)\\).",
+    "answer": "Let \\(p\\): the switch \\(S_{1}\\) is closed, \\(q\\): the switch \\(S_{2}\\) is closed; \\(\\sim p\\) and \\(\\sim q\\) then stand for the switches \\(S_{1}'\\) and \\(S_{2}'\\).\n\nIn a switching circuit \\(\\land\\) means **series** and \\(\\vee\\) means **parallel**.\n\nSo \\((p \\land q) \\vee (\\sim p) \\vee (p \\land \\sim q)\\) is a **parallel combination of three branches**:\n\n- **Branch 1** \\((p \\land q)\\): the switch \\(S_{1}\\) in series with the switch \\(S_{2}\\).\n- **Branch 2** \\((\\sim p)\\): the single switch \\(S_{1}'\\).\n- **Branch 3** \\((p \\land \\sim q)\\): the switch \\(S_{1}\\) in series with the switch \\(S_{2}'\\).\n\nThe three branches are connected in parallel between the same two junctions, and this parallel block is put in series with the lamp \\(L\\) and the battery.\n\n(There is no figure to draw here, so the circuit is described in words.)"
+  },
+  {
+    "ref": "logic-12-pyq#23",
+    "difficulty": "MODERATE",
+    "twin": "Circuit (Fig. 1.13)",
+    "answer": "Let \\(p\\): the switch \\(S_{1}\\) is closed, \\(q\\): the switch \\(S_{2}\\) is closed, \\(L\\): the lamp glows. The switches \\(S_{1}'\\) and \\(S_{2}'\\) stand for \\(\\sim p\\) and \\(\\sim q\\).\n\n**Reading the circuit:** \\(S_{1}\\) and \\(S_{2}\\) form a parallel block; that block is in series with \\(S_{1}'\\), which is in series with \\(S_{2}'\\).\n\n**Symbolic form:** \\((p \\vee q) \\land \\sim p \\land \\sim q\\).\n\n**Switching table** (1 = switch closed / current flows, 0 = switch open / no current):\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\vee q\\) | \\((p \\vee q) \\land \\sim p \\land \\sim q\\) |\n|---|---|---|---|---|---|\n| 1 | 1 | 0 | 0 | 1 | 0 |\n| 1 | 0 | 0 | 1 | 1 | 0 |\n| 0 | 1 | 1 | 0 | 1 | 0 |\n| 0 | 0 | 1 | 1 | 0 | 0 |\n\n**Interpretation:** the last column is 0 in every row, so the current never reaches the lamp. **The lamp will not glow whatever the positions of the switches \\(S_{1}\\) and \\(S_{2}\\).**\n\nThis is confirmed by the algebra of statements: by De Morgan's law \\(\\sim p \\land \\sim q \\equiv \\sim (p \\vee q)\\), so the expression is \\((p \\vee q) \\land \\sim (p \\vee q) \\equiv c\\), a contradiction."
+  },
+  {
+    "ref": "logic-12-pyq#24",
+    "difficulty": "EASY",
+    "twin": "Circuit (i)",
+    "answer": "Let \\(p\\): the switch \\(S_{1}\\) is closed, \\(q\\): the switch \\(S_{2}\\) is closed, \\(r\\): the switch \\(S_{3}\\) is closed.\n\nIn a switching circuit \\(\\land\\) means **series** and \\(\\vee\\) means **parallel**.\n\n**Reading the circuit:** there are two branches in parallel. The upper branch carries the single switch \\(S_{1}\\); the lower branch carries \\(S_{2}\\) and \\(S_{3}\\) in series. This parallel block is in series with the lamp \\(L\\) and the battery.\n\n**Symbolic form: \\(p \\vee (q \\land r)\\).**"
+  },
+  {
+    "ref": "logic-12-pyq#25",
+    "difficulty": "HARD",
+    "twin": "Circuit (Fig. 1.14)",
+    "answer": "Let \\(p\\): the switch \\(S_{1}\\) is closed, \\(q\\): the switch \\(S_{2}\\) is closed. The switches \\(S_{1}'\\) and \\(S_{2}'\\) stand for \\(\\sim p\\) and \\(\\sim q\\).\n\n**Reading the circuit:** \\(S_{1}\\) is in series with a parallel block of \\(S_{1}'\\) and \\(S_{2}'\\), and that whole arrangement is in series with \\(S_{2}\\).\n\n**Logical expression:** \\(p \\land (\\sim p \\vee \\sim q) \\land q\\).\n\n**Simplification:**\n\n\\(p \\land (\\sim p \\vee \\sim q) \\land q\\)\n\n\\(\\equiv \\left\\lbrack p \\land (\\sim p \\vee \\sim q) \\right\\rbrack \\land q\\)  [Associative Law]\n\n\\(\\equiv \\left\\lbrack (p \\land \\sim p) \\vee (p \\land \\sim q) \\right\\rbrack \\land q\\)  [Distributive Law]\n\n\\(\\equiv \\left\\lbrack c \\vee (p \\land \\sim q) \\right\\rbrack \\land q\\)  [Complement Law]\n\n\\(\\equiv (p \\land \\sim q) \\land q\\)  [Identity Law]\n\n\\(\\equiv p \\land (\\sim q \\land q)\\)  [Associative Law]\n\n\\(\\equiv p \\land c\\)  [Complement Law]\n\n\\(\\equiv c\\)  [Identity Law]\n\n**Conclusion:** the expression reduces to \\(c\\), a contradiction, so it is false for every setting of the switches. **The lamp will not glow irrespective of the positions of the switches \\(S_{1}\\) and \\(S_{2}\\)** — the circuit cannot be simplified into a working circuit, because the current can never reach the lamp."
+  },
+  {
+    "ref": "logic-12-pyq#26",
+    "difficulty": "EASY",
+    "twin": "Nagpur is in Maharashtra and Chennai is in Tamilnadu",
+    "answer": "Let \\(p\\): Nagpur is in Maharashtra, \\(q\\): Chennai is in Tamilnadu.\n\nThe two simple statements are joined by the connective \"and\", which is the conjunction \\(\\land\\).\n\n**Symbolic form: \\(p \\land q\\).**\n\n(Both \\(p\\) and \\(q\\) are true, so the truth value of the compound statement is T.)"
+  },
+  {
+    "ref": "logic-12-pyq#27",
+    "difficulty": "MODERATE",
+    "twin": "Circuit (Fig. 1.13)",
+    "answer": "Let \\(p\\): the switch \\(S_{1}\\) is closed, \\(q\\): the switch \\(S_{2}\\) is closed, \\(L\\): the lamp glows. The switches \\(S_{1}'\\) and \\(S_{2}'\\) stand for \\(\\sim p\\) and \\(\\sim q\\).\n\n**Reading the circuit:** \\(S_{1}\\) and \\(S_{2}\\) are in parallel; that parallel block is in series with \\(S_{1}'\\), which is in series with \\(S_{2}'\\).\n\n**Symbolic form: \\((p \\vee q) \\land \\sim p \\land \\sim q\\).**\n\n**Switching table** (1 = switch closed / current flows, 0 = switch open / no current):\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\vee q\\) | \\((p \\vee q) \\land \\sim p\\) | \\((p \\vee q) \\land \\sim p \\land \\sim q\\) |\n|---|---|---|---|---|---|---|\n| 1 | 1 | 0 | 0 | 1 | 0 | 0 |\n| 1 | 0 | 0 | 1 | 1 | 0 | 0 |\n| 0 | 1 | 1 | 0 | 1 | 1 | 0 |\n| 0 | 0 | 1 | 1 | 0 | 0 | 0 |\n\nEvery entry of the last column is 0, so the lamp does not glow for any setting of the switches."
+  },
+  {
+    "ref": "logic-12-pyq#28",
+    "difficulty": "MODERATE",
+    "twin": "Circuit (Fig. 1.13)",
+    "answer": "Let \\(p\\): the switch \\(S_{1}\\) is closed, \\(q\\): the switch \\(S_{2}\\) is closed, \\(L\\): the lamp glows. The switches \\(S_{1}'\\) and \\(S_{2}'\\) stand for \\(\\sim p\\) and \\(\\sim q\\).\n\n**Reading the circuit:** the block of \\(S_{1}\\) parallel to \\(S_{2}\\) is in series with \\(S_{1}'\\) and then with \\(S_{2}'\\).\n\n**Symbolic form: \\((p \\vee q) \\land \\sim p \\land \\sim q\\).**\n\n**Switching table** (1 = switch closed / current flows, 0 = switch open / no current):\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\vee q\\) | \\(\\sim p \\land \\sim q\\) | \\((p \\vee q) \\land \\sim p \\land \\sim q\\) |\n|---|---|---|---|---|---|---|\n| 1 | 1 | 0 | 0 | 1 | 0 | 0 |\n| 1 | 0 | 0 | 1 | 1 | 0 | 0 |\n| 0 | 1 | 1 | 0 | 1 | 0 | 0 |\n| 0 | 0 | 1 | 1 | 0 | 1 | 0 |\n\n**Interpretation:** the last column contains 0 in all four rows, so the current never reaches the lamp. **The lamp will not glow irrespective of the positions of the switches \\(S_{1}\\) and \\(S_{2}\\).**\n\nBy De Morgan's law \\(\\sim p \\land \\sim q \\equiv \\sim (p \\vee q)\\), so the expression is \\((p \\vee q) \\land \\sim (p \\vee q) \\equiv c\\), a contradiction — which is why the table is all zeros."
+  }
+]

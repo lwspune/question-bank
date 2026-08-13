@@ -90,11 +90,17 @@
         "ref": "logic-12-pyq#5",
         "tag": "[Q. 1. (i), 2024]",
         "had": [],
-        "options": { "a": "c AND (p OR q)", "b": "c AND (p AND q)", "c": "t AND (p AND q)", "d": "t AND (p OR q)" },
+        "_form": "options and stemFix are written in POST-NORMALISE form (project \\(...\\) delimiters), so extract.ts can compare stemFix.from to the extracted stem by EQUALITY. A tolerant comparison is what lets a repair land on a question it was not adjudicated for.",
+        "options": {
+          "a": "\\(c \\land (p \\vee q)\\)",
+          "b": "\\(c \\land (p \\land q)\\)",
+          "c": "\\(t \\land (p \\land q)\\)",
+          "d": "\\(t \\land (p \\vee q)\\)"
+        },
         "source": "Maths 2024 paper.pdf page index 1, SECTION A Q.1 (i) — SCANNED, read by rendering the page at 110 dpi cropped to 0.05-0.40 of page height",
         "stemFix": {
-          "from": "The dual of statement r OR (p OR q) is ____",
-          "to": "The dual of statement t OR (p OR q) is ____",
+          "from": "The dual of statement \\(r \\vee (p \\vee q)\\) is __________.",
+          "to": "The dual of statement \\(t \\vee (p \\vee q)\\) is __________.",
           "why": "The compilation misread the printed italic 't' as 'r'. The OPTION SET proves it: options (a)/(b) begin with 'c' (contradiction) and (c)/(d) with 't' (tautology), and duality swaps t <-> c. If the stem really were a propositional variable r, the correct dual would be 'r AND (p AND q)', which appears in none of the four options. A scanned italic serif t is easily read as r at low resolution.",
           "consequence": "Answer is (b) c AND (p AND q). Ingesting the compilation's 'r' would have shipped a question whose correct answer is not among its own options."
         },
@@ -136,6 +142,112 @@
       "why": "Same provenance tag, different ellipse. One copy is a transcription error and arithmetic cannot choose between them — both are well-formed ellipses with clean areas (2pi and 3pi). DO NOT pick one; settle it from the page or skip the question."
     }
   ],
+
+  "optionsMistranscribed": {
+    "_finding": [
+      "A question can arrive with a FULL (a)-(d) option set and still be broken —",
+      "the compilation mis-copied an option. This is invisible to every structural",
+      "probe (four options, one key, no duplicates) and shows up only when the",
+      "question is actually SOLVED and no option matches.",
+      "",
+      "FOUND 2026-08-13 while blind-deriving the pilot chapter's five MCQ keys: two",
+      "of the five (#1, #3) had NO correct option. Both are the same question — 'the",
+      "negation of p ^ (q -> r)' — set in March 2016 and again in March 2022, which",
+      "is what made the pattern visible. Source-verifying both settled them in",
+      "OPPOSITE directions, which is the point: an arithmetic dead end does not say",
+      "whose fault it is.",
+      "",
+      "  #1 (March 2016) → OURS. The compilation corrupted TWO options.",
+      "  #3 (March 2022) → the BOARD's. The paper prints it exactly as we have it.",
+      "",
+      "So a no-correct-option result is a HYPOTHESIS, never a verdict. Read the page."
+    ],
+    "fixes": [
+      {
+        "ref": "logic-12-pyq#1",
+        "tag": "[Q. 1. (A) i., March 2016]",
+        "source": "Maths 2016 paper.pdf page index 0 — SCANNED (88 chars of text layer), read by rendering at 170 dpi clipped to 0.28-0.42 of page height",
+        "printed": "(A) p or (~q or r)   (B) ~p and (q -> r)   (C) ~p and (~q -> ~r)   (D) ~p or (q and ~r)",
+        "options": {
+          "A": { "from": "\\(p \\vee ( \\sim q \\land r)\\)", "to": "\\(p \\vee ( \\sim q \\vee r)\\)" },
+          "D": { "from": "\\(\\sim p \\land (q \\land \\sim r)\\)", "to": "\\(\\sim p \\vee (q \\land \\sim r)\\)" }
+        },
+        "why": "The paper's (D) IS the correct negation, ~p or (q and ~r). The compilation wrote its outer 'or' as 'and', which deleted the answer from the question; it made the same or->and slip in (A). Two independent slips of the same kind in one option block.",
+        "consequence": "Without this repair the question ships unanswerable. The key is D."
+      }
+    ]
+  },
+
+  "circuitDescriptionsWrong": {
+    "_finding": [
+      "The compilation embeds the board's switching-circuit DIAGRAMS as images and",
+      "ALSO writes its own prose description of each one in the stem, e.g. '(Circuit",
+      "diagram depicting S1 and S2 in parallel, connected to S3 in series)'.",
+      "",
+      "All four descriptions were compared against the extracted PNGs on 2026-08-13.",
+      "NONE of the four is correct. This is the SECOND instance of the class the",
+      "compilationDivergesFromPaper section opens: the compilation is an LWS working",
+      "document, and its editorial additions carry no more authority than its",
+      "transcriptions do.",
+      "",
+      "ACTION: the real image is attached and the description is DROPPED (splitImage",
+      "in lib.ts). Dropping is only safe BECAUSE the figure is attached — a question",
+      "with a description and no figure keeps the description, since a suspect",
+      "description beats none.",
+      "",
+      "Corroboration that the readings below are right, not just different: images 1,",
+      "4 and 5 are the SAME circuit, and the 2019 / 2024 / 2025 papers do repeat this",
+      "question. Two of those three carry descriptions, and the two disagree with",
+      "each other while the drawings agree."
+    ],
+    "items": [
+      {
+        "ref": "logic-12-pyq#23",
+        "tag": "[Q. 21, March 2019]",
+        "image": "image1.png",
+        "compilationSays": null,
+        "drawn": "(S1 parallel S2) in series with S'1 in series with S'2",
+        "symbolic": "(p or q) and ~p and ~q",
+        "note": "No description on this one — nothing to drop."
+      },
+      {
+        "ref": "logic-12-pyq#24",
+        "tag": "[Q. 8, February 2020]",
+        "image": "image2.png",
+        "compilationSays": "S1 and S2 in parallel, connected to S3 in series",
+        "drawn": "S1 parallel with (S2 in series with S3)",
+        "symbolic": "p or (q and r)",
+        "verdict": "WRONG — the description brackets the parallel around S1,S2; the drawing brackets the series pair S2,S3 and puts S1 across it."
+      },
+      {
+        "ref": "logic-12-pyq#25",
+        "tag": "[Q. 27, March 2023]",
+        "image": "image3.png",
+        "compilationSays": "S1 and S2 in series, with S'1 and S'2 parallel to this combination, and S1 and S2 parallel to S'1 and S'2",
+        "drawn": "S1 in series with (S'1 parallel S'2) in series with S2",
+        "symbolic": "p and (~p or ~q) and q",
+        "verdict": "WRONG and self-contradictory — it asserts two different topologies for the same pair in one sentence."
+      },
+      {
+        "ref": "logic-12-pyq#27",
+        "tag": "[Q. 15, 2024]",
+        "image": "image4.png",
+        "compilationSays": "parallel combination of S1 and S2, connected in series with the parallel combination of S'1 and S'2",
+        "drawn": "(S1 parallel S2) in series with S'1 in series with S'2",
+        "symbolic": "(p or q) and ~p and ~q",
+        "verdict": "WRONG in the second half — S'1 and S'2 are drawn in SERIES, one after the other, not in parallel."
+      },
+      {
+        "ref": "logic-12-pyq#28",
+        "tag": "[Q. 15, 2025]",
+        "image": "image5.png",
+        "compilationSays": "S1 in series with the parallel combination of S'1 and S'2, and S2 in parallel with this entire combination",
+        "drawn": "(S1 parallel S2) in series with S'1 in series with S'2",
+        "symbolic": "(p or q) and ~p and ~q",
+        "verdict": "WRONG — identical drawing to image1/image4, but described as a third topology different from both."
+      }
+    ]
+  },
 
   "compilationDivergesFromPaper": [
     {

@@ -1,0 +1,36 @@
+[
+  {
+    "_readme": "MCQ model answers. Authored through the editor, NEVER through a shell heredoc or `python -c`: writing these via a heredoc on 2026-08-13 silently turned \\vee into 'ee' and \\rightarrow into 'ightarrow', because the shell consumed \\v and \\r as control characters. Delimiters stayed balanced, so the imbalance probe passed it. out/verify.mjs now checks for control characters directly.",
+    "ref": "_note"
+  },
+  {
+    "ref": "logic-12-pyq#1",
+    "difficulty": "MODERATE",
+    "twin": null,
+    "answer": "**(D)**\n\nNegate the conjunction first, by De Morgan's law:\n\n\\(\\sim [p \\land (q \\rightarrow r)] \\equiv \\sim p \\vee \\sim (q \\rightarrow r)\\)\n\nNow negate the implication. Since \\(q \\rightarrow r \\equiv \\sim q \\vee r\\), its negation is \\(\\sim (\\sim q \\vee r) \\equiv q \\land \\sim r\\). Substituting:\n\n\\(\\equiv \\sim p \\vee (q \\land \\sim r)\\)\n\nwhich is option (D). The three distractors each go wrong at one step: (A) drops the negation on \\(p\\), (B) leaves the implication un-negated, and (C) negates the implication as though it were another implication."
+  },
+  {
+    "ref": "logic-12-pyq#3",
+    "difficulty": "MODERATE",
+    "twin": null,
+    "answer": "**(C)** — but see the note below; this question is defective as printed.\n\nBy De Morgan's law, and using \\(\\sim (q \\rightarrow r) \\equiv q \\land \\sim r\\):\n\n\\(\\sim [p \\land (q \\rightarrow r)] \\equiv \\sim p \\vee (q \\land \\sim r)\\)\n\nNo printed option is this expression — the combination \\((q \\land \\sim r)\\) appears in none of the four. Option (C) reads \\(\\sim p \\vee (q \\rightarrow \\sim r)\\), which is the correct answer with a single connective mis-set, so it is the intended key."
+  },
+  {
+    "ref": "logic-12-pyq#4",
+    "difficulty": "MODERATE",
+    "twin": null,
+    "answer": "**(B)** \\(T,\\ F\\)\n\nWork from the stronger condition. \\(p \\rightarrow q\\) is false in exactly one case — a true antecedent with a false consequent — so \\(p \\equiv T\\) and \\(q \\equiv F\\).\n\nCheck this against the other condition: \\(p \\land q \\equiv T \\land F \\equiv F\\), as required. Both hold, so the truth values are \\(T,\\ F\\).\n\n| \\(p\\) | \\(q\\) | \\(p \\land q\\) | \\(p \\rightarrow q\\) |\n|---|---|---|---|\n| T | T | T | T |\n| T | F | F | F |\n| F | T | F | T |\n| F | F | F | T |\n\nOnly the second row makes both columns \\(F\\)."
+  },
+  {
+    "ref": "logic-12-pyq#5",
+    "difficulty": "EASY",
+    "twin": null,
+    "answer": "**(B)** \\(c \\land (p \\land q)\\)\n\nThe dual of a statement is obtained by interchanging \\(\\land\\) with \\(\\vee\\), and \\(t\\) (tautology) with \\(c\\) (contradiction), leaving the variables and their negations unchanged.\n\nApplying this to \\(t \\vee (p \\vee q)\\): the leading \\(t\\) becomes \\(c\\), and both occurrences of \\(\\vee\\) become \\(\\land\\), giving\n\n\\(c \\land (p \\land q)\\)\n\nOptions (C) and (D) keep \\(t\\) instead of replacing it, and (A) changes only the outer connective."
+  },
+  {
+    "ref": "logic-12-pyq#7",
+    "difficulty": "EASY",
+    "twin": null,
+    "answer": "**(C)**\n\nTest each statement against \\(A = \\{1,2,3,4,5\\}\\).\n\n- (A) \\(\\exists x \\in A\\) with \\(x + 3 = 8\\): take \\(x = 5\\). **True.**\n- (B) \\(\\exists x \\in A\\) with \\(x + 2 < 9\\): take \\(x = 1\\), giving \\(3 < 9\\). **True.**\n- (C) \\(\\forall x \\in A,\\ x + 6 \\geq 9\\): this one is universal, so a single counterexample defeats it. At \\(x = 1\\), \\(x + 6 = 7\\), and \\(7 \\geq 9\\) is false. **False.**\n- (D) \\(\\exists x \\in A\\) with \\(x + 6 < 10\\): take \\(x = 1\\), giving \\(7 < 10\\). **True.**\n\n(C) is the only false statement, and it is also the only universally-quantified one: an existential claim needs a single witness, a universal claim must survive every element."
+  }
+]
