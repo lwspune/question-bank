@@ -454,6 +454,15 @@
         "defect": "The given point is NOT on the given curve: at x = 1/2 the curve gives 2(1/8) + 1/4 + 2 = 2.5, not 2.",
         "evidence": "The 2022 paper prints 'y = 2x3 + x2 + 2 at (1/2, 2)' verbatim — read from its text layer. The 2025 paper asks the same question with y = 2x^3 - x^2 + 2, which DOES pass through (1/2, 2), so the intended sign is minus.",
         "action": "preserve + errata note; a student answering from either reading should not be marked wrong"
+      },
+      {
+        "ref": "def-integration-12-pyq#7",
+        "tag": "[Q. 34, March 2022]",
+        "printed": "Show that: integral from 0 to pi of log(1 + tan x) dx = (pi/8) log 2",
+        "defect": "The identity is false and the integral does not even exist: tan x is undefined at pi/2, and 1 + tan x is NEGATIVE on (pi/2, 3pi/4) so the logarithm is undefined there too. The stated right-hand side (pi/8) log 2 is exactly the value over [0, pi/4], which is the classical result — so the upper limit lost its /4.",
+        "evidence": "Maths 2022 paper.pdf page index 6, rendered at 200 dpi: the page prints the upper limit as a bare pi. Its text layer agrees and carries no '4' fragment anywhere near the integral sign. So the compilation transcribed it FAITHFULLY and the defect is the board's.",
+        "reversal": "The authoring pass hypothesised this was OUR slip, reasoning that a board would be unlikely to misprint a limit while leaving the right-hand side exactly right for the intended one. That reasoning is sound and the conclusion was still wrong — which is the whole reason a defect report is treated as a hypothesis about WHOSE defect it is until the page is read.",
+        "action": "preserve + errata note giving the correct limit and the correct value; do NOT repair the stem. A student who notices the integral diverges has read it correctly."
       }
     ]
   },
@@ -519,5 +528,47 @@
       "text": "(Note: This question involves quantifiers but is set in the context of sets/numbers)",
       "action": "LWS's own annotation, not part of the printed question — strip from the stem."
     }
+  },
+  "stemsMistranscribed": {
+    "_finding": [
+      "A stem the compilation copied WRONG, where the question still reads as a",
+      "well-formed question — which is what makes this class dangerous. Nothing",
+      "structural can catch it: the options are intact, the LaTeX is balanced, the",
+      "arithmetic is self-consistent. It surfaces only when someone SOLVES the",
+      "question and the answer comes out ugly, or contradicts a textbook twin.",
+      "",
+      "All three below were found that way and then settled against the printed",
+      "page. All three are OURS, not the board's. `from` is the post-normalise",
+      "stem so extract.ts can compare by EQUALITY and refuse a near-miss."
+    ],
+    "fixes": [
+      {
+        "ref": "indef-integration-12-pyq#5",
+        "tag": "[Q. 1. vi., March 2023]",
+        "from": "\\(\\frac{1}{4}\\) \\(\\int\\cos^{3}x\\) dx = _______.",
+        "to": "\\(\\int\\cos^{3}x\\ dx\\) = _______.",
+        "source": "Maths 2023 paper.pdf — TEXT LAYER, read directly. Item vi. of Q.1 reads 'cos^3 x dx = _______.' with no leading 1/4 anywhere.",
+        "why": "The compilation prefixed a spurious \\(1/4\\). It is almost certainly a leaked fragment of the identity cos^3 x = (1/4)(cos 3x + 3 cos x) used to solve it. Read literally the printed-as-we-had-it stem integrates to (1/48)sin 3x + (3/16)sin x, which matches NO option — while all four options carry 1/12 on sin 3x, i.e. they were built for the unscaled integral. The option set is the evidence that the 1/4 is not part of the question.",
+        "consequence": "Key A: (1/12)sin 3x + (3/4)sin x + c, which differentiates back to cos^3 x exactly."
+      },
+      {
+        "ref": "line-planes-12-pyq#28",
+        "tag": "[Q. 19, March 2023]",
+        "from": "Find the shortest distance between lines \\(\\frac{x - 1}{2} = \\frac{y - 2}{2} = \\frac{z - 3}{3}\\) and \\(\\frac{x - 2}{3} = \\frac{y - 4}{4} = \\frac{z - 5}{5}\\).",
+        "to": "Find the shortest distance between lines \\(\\frac{x - 1}{2} = \\frac{y - 2}{3} = \\frac{z - 3}{4}\\) and \\(\\frac{x - 2}{3} = \\frac{y - 4}{4} = \\frac{z - 5}{5}\\).",
+        "source": "Maths 2023 paper.pdf page index 2, rendered at 170 dpi around the 'shortest distance' hit. The page prints (x-1)/2 = (y-2)/3 = (z-3)/4.",
+        "why": "The compilation gave the FIRST line the denominators 2,2,3 where the paper prints 2,3,4. The tell was the answer: as we had it the shortest distance comes out exactly 0 (the lines intersect at (-1,0,0)), and a board is very unlikely to set a 'find the shortest distance' whose answer is that the lines meet. The textbook twin carries 2,3,4 too.",
+        "consequence": "With the printed direction ratios the shortest distance is 1/sqrt(6)."
+      },
+      {
+        "ref": "line-planes-12-pyq#29",
+        "tag": "[Q. 30, March 2023]",
+        "from": "Find the length of the perpendicular drawn from the point \\(P(3,2,1)\\) to the line \\(\\overrightarrow{r} = \\left( 7\\widehat{i} + 7\\widehat{j} + 6\\widehat{k} \\right) + \\lambda\\left( 2\\widehat{i} - 2\\widehat{j} + 3\\widehat{k} \\right)\\).",
+        "to": "Find the length of the perpendicular drawn from the point \\(P(3,2,1)\\) to the line \\(\\overrightarrow{r} = \\left( 7\\widehat{i} + 7\\widehat{j} + 6\\widehat{k} \\right) + \\lambda\\left( - 2\\widehat{i} + 2\\widehat{j} + 3\\widehat{k} \\right)\\).",
+        "source": "Maths 2023 paper.pdf page index 3, rendered at 170 dpi around the 'length of the perpendicular' hit. The page prints lambda(-2i + 2j + 3k).",
+        "why": "The compilation flipped the signs of the first TWO components of the direction vector. The tell was again the answer: as we had it the length is sqrt(953/17) = 7.49, an ugly surd, where the printed version gives exactly 7 — and the textbook twin is word-for-word identical with the printed signs.",
+        "consequence": "Length = 7."
+      }
+    ]
   }
 }

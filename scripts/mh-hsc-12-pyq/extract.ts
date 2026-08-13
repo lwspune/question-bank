@@ -70,6 +70,7 @@ function applyRepairs(drafts: Draft[], chapterId: string): string[] {
   const defects = JSON.parse(readFileSync(join(DATA, "defects.json"), "utf8")) as {
     mcqOptionsLost: { recovered: Recovered[]; needVisionPass: { ref: string; tag: string }[] };
     optionsMistranscribed: { fixes: OptionFix[] };
+    stemsMistranscribed: { fixes: { ref: string; from: string; to: string; consequence: string }[] };
   };
   const log: string[] = [];
 
@@ -127,6 +128,25 @@ function applyRepairs(drafts: Draft[], chapterId: string): string[] {
       }
       log.push(`${rec.ref}: ${d.options.length} options recovered from the printed paper`);
     }
+  }
+
+  // A stem the compilation copied wrong, where the question still READS as a
+  // well-formed question. Nothing structural catches this class — options
+  // intact, LaTeX balanced, arithmetic self-consistent — so each was found by
+  // someone solving the question and getting an ugly or degenerate answer, then
+  // settled against the printed page.
+  for (const fix of defects.stemsMistranscribed.fixes) {
+    if (!fix.ref.startsWith(`${chapterId}#`)) continue;
+    const d = drafts.find((x) => x.ref === fix.ref);
+    if (!d) throw new Error(`defects.json names ${fix.ref}, which this extraction did not produce`);
+    if (d.stem !== fix.from) {
+      throw new Error(
+        `${fix.ref}: stem does not match the adjudicated text — REFUSING.\n` +
+          `  adjudicated: ${fix.from}\n  extracted:   ${d.stem}`,
+      );
+    }
+    d.stem = fix.to;
+    log.push(`${fix.ref}: stem corrected against the printed paper (${fix.consequence})`);
   }
 
   for (const fix of defects.optionsMistranscribed.fixes) {
