@@ -1,0 +1,2028 @@
+[
+  {
+    "id": "01-2",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "01-3",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "01-4",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "01-5",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "01-6",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "01-7",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "01-8",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "01-9",
+    "derived": "X",
+    "confidence": "high",
+    "note": "True coefficient = C(7,4)*2^3*3^4 = 35*8*81 = 22680. No option matches. Option A (2835) = C(7,4)*3^4, i.e. the 2^3 factor from the (7-4) powers of 2 was dropped — likely intended key A, but it is wrong."
+  },
+  {
+    "id": "01-10",
+    "derived": "C",
+    "confidence": "high"
+  },
+  {
+    "id": "01-11",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "01-12",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "01-13",
+    "derived": "X",
+    "confidence": "high",
+    "note": "Coefficient of x^10 in (1+x+x^2)^10 is the central trinomial coefficient 8953 (OEIS A002426). Options (55/42/66/78) are off by two orders of magnitude — stem/options mismatch, defective question."
+  },
+  {
+    "id": "01-14",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "01-15",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "01-16",
+    "derived": "X",
+    "confidence": "high",
+    "note": "By symmetry C(25,10) = C(25,15), so the ratio is exactly 1. No option equals 1 — defective question (the setter overlooked nCr symmetry)."
+  },
+  {
+    "id": "01-17",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "01-18",
+    "derived": "B",
+    "confidence": "high",
+    "note": "13 terms; the 7th term is the unique term equidistant from both ends."
+  },
+  {
+    "id": "01-19",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "01-20",
+    "derived": "B",
+    "confidence": "medium",
+    "note": "Stem says 'sum of BINOMIAL COEFFICIENTS' = sum C(10,r) = 2^10 = 1024 (B). If it instead meant 'sum of the coefficients of the expansion' (x=y=1), the answer would be 0 (A). Ambiguous stem."
+  },
+  {
+    "id": "01-21",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "01-22",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Answer C(20,10) is unambiguous, but distractors B and C are mathematically EQUAL: C(20,9) = C(20,11) = 167960 — duplicate-value distractors, cosmetic defect."
+  },
+  {
+    "id": "01-23",
+    "derived": "B",
+    "confidence": "high",
+    "note": "C(7,4)*2^3*(-3)^4 = 35*8*81 = +22680; (-3)^4 is positive."
+  },
+  {
+    "id": "01-24",
+    "derived": "X",
+    "confidence": "high",
+    "note": "(1+x+x^2+x^3)^11 = (1+x)^11 (1+x^2)^11; coeff of x^11 = sum_k C(11,k)C(11,11-2k) = 1+605+18150+76230+54450+5082 = 154518. Options (165-330) are wildly off — defective question."
+  },
+  {
+    "id": "01-25",
+    "derived": "A",
+    "confidence": "high",
+    "note": "r-th term from the end = (n-r+2)-th from the beginning = 12-4+2 = 10th, i.e. T_10."
+  },
+  {
+    "id": "01-26",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Equals (1-1)^n = 0 for n >= 1."
+  },
+  {
+    "id": "01-27",
+    "derived": "B",
+    "confidence": "high",
+    "note": "30-3r = -3 gives r=11; C(15,11) = C(15,4) = 1365."
+  },
+  {
+    "id": "01-28",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "01-29",
+    "derived": "D",
+    "confidence": "high",
+    "note": "C(15,r)2^r / [C(15,r+1)2^(r+1)] = (r+1)/(2(15-r))."
+  },
+  {
+    "id": "01-30",
+    "derived": "X",
+    "confidence": "high",
+    "note": "Substituting y=x^2: coeff of y^6 in (1+y+y^2)^6 = central trinomial coefficient 141. Options (6-20) don't contain it — defective question."
+  },
+  {
+    "id": "01-31",
+    "derived": "B",
+    "confidence": "high",
+    "note": "n=16 even, single middle term = (16/2 + 1) = 9th."
+  },
+  {
+    "id": "01-32",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "01-33",
+    "derived": "X",
+    "confidence": "high",
+    "note": "x + 1/x + 2 = (sqrt(x) + 1/sqrt(x))^2, so the expression is (sqrt(x)+1/sqrt(x))^20; constant term = C(20,10) = 184756. No option matches (largest option is 1024) — defective question."
+  },
+  {
+    "id": "01-34",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Reading the ratio as coefficient ratio (or x=1): [C(n,6)2^(n-6)3^6] / [C(n,7)2^(n-7)3^7] = 14/(3(n-6)) = 7/12 gives n = 14. Strictly the term ratio depends on x; standard textbook reading gives 14."
+  },
+  {
+    "id": "01-35",
+    "derived": "D",
+    "confidence": "high",
+    "note": "With x=1/2, ratio T_(k+1)/T_k = ((11-k)/k)(3/4) > 1 for k <= 4 and < 1 for k >= 5, so T_5 is greatest."
+  },
+  {
+    "id": "01-36",
+    "derived": "X",
+    "confidence": "high",
+    "note": "Odd-power coefficient sum = (f(1)-f(-1))/2 = (3^20 - 1)/2 since f(-1) = (2-1)^20 = 1. Option A is 3^20 - 1 (missing the /2); B/C use 2^20 instead of 1. No option correct."
+  },
+  {
+    "id": "01-37",
+    "derived": "A",
+    "confidence": "high",
+    "note": "24-5r = -6 gives r=6; C(12,6)(1/2)^6(-4)^6 = 924*4096/64 = +59136."
+  },
+  {
+    "id": "01-38",
+    "derived": "A",
+    "confidence": "high",
+    "note": "C(n,2)a^2 = 6*C(n,1)a gives a(n-1)/2 = 6, so a = 12/(n-1)."
+  },
+  {
+    "id": "01-39",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Distractors B and C are mathematically EQUAL: C(100,49) = C(100,51) — duplicate-value distractors, cosmetic defect. D, C(50,100), is undefined/0."
+  },
+  {
+    "id": "01-40",
+    "derived": "D",
+    "confidence": "high",
+    "note": "Exponent of x in T_(r+1) is 9 - 5r/6; zero requires r = 10.8, not an integer, so no term independent of x exists as the stem is written. Options A-C suggest the setter may have intended a different stem (e.g. cube roots on both terms, which gives T_10), but for THIS stem D is correct."
+  },
+  {
+    "id": "01-41",
+    "derived": "A",
+    "confidence": "high",
+    "note": "22-3r = 7 gives r=5; C(11,5) a^6 / b^5."
+  },
+  {
+    "id": "01-42",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "01-43",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "01-44",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "01-45",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "01-46",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Odd positions = even lower indices: C(15,0)+C(15,2)+... = 2^14."
+  },
+  {
+    "id": "01-47",
+    "derived": "A",
+    "confidence": "high",
+    "note": "DUPLICATE CORRECT OPTIONS: coeff of x^20 = C(30,10), and option B C(30,20) = C(30,10) by symmetry — A and B are the SAME value, so two options are correct. Repair needed."
+  },
+  {
+    "id": "01-48",
+    "derived": "A",
+    "confidence": "high",
+    "note": "(1-1)^n = 0 for n > 0; option A's qualifier matches."
+  },
+  {
+    "id": "01-49",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Need (300-r)/3 and r/2 both integers, i.e. r ≡ 0 (mod 6); r in 0..300 gives 51 terms."
+  },
+  {
+    "id": "02-2",
+    "derived": "A",
+    "confidence": "medium",
+    "note": "Row-indexing ambiguity: 0-indexed 7th row sums to 2^7=128 (A); 1-indexed reading gives 2^6=64 (B). Packet's 02-3 uses 0-indexed convention, so A."
+  },
+  {
+    "id": "02-3",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "02-4",
+    "derived": "C",
+    "confidence": "high"
+  },
+  {
+    "id": "02-5",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "02-6",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "02-7",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Sum of first n triangular numbers = tetrahedral number C(n+2,3)."
+  },
+  {
+    "id": "02-8",
+    "derived": "B",
+    "confidence": "medium",
+    "note": "Row n (0-indexed) has n+1 elements, so row 20 has 21 (B). A 1-indexed reading would make the 21st row (C) correct. Same indexing ambiguity as 02-2."
+  },
+  {
+    "id": "02-9",
+    "derived": "B",
+    "confidence": "medium",
+    "note": "DEFECT: B and C are both true — 1,4,10,20,35 ARE the first five tetrahedral numbers (C), and their sum 70=C(8,4) is a hockey-stick result (B). A is false (8th-row sum is 256, not 70), so D is also false. Two defensible answers."
+  },
+  {
+    "id": "02-10",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "02-11",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "02-12",
+    "derived": "B",
+    "confidence": "high",
+    "note": "First diagonal is all 1s; second diagonal is 1,2,3,... (natural numbers)."
+  },
+  {
+    "id": "02-13",
+    "derived": "B",
+    "confidence": "high",
+    "note": "DEFECT: options B and D are numerically EQUIVALENT — C(9,4)=126, and D is literally 126. Intended answer is the Pascal's-rule form B, but D is equally correct."
+  },
+  {
+    "id": "02-14",
+    "derived": "A",
+    "confidence": "high",
+    "note": "DEFECT: 1+6+21+56=84=C(9,3), so A and D ('84') are numerically EQUIVALENT. Intended answer A, but D is equally correct."
+  },
+  {
+    "id": "02-15",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "02-16",
+    "derived": "A",
+    "confidence": "high",
+    "note": "C(10,7)=120."
+  },
+  {
+    "id": "02-17",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "02-18",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "02-19",
+    "derived": "A",
+    "confidence": "high",
+    "note": "1 appears on both edges of every row — far more often than any interior value."
+  },
+  {
+    "id": "02-20",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Each term C(k,k)=1; n+1 terms."
+  },
+  {
+    "id": "02-21",
+    "derived": "C",
+    "confidence": "medium",
+    "note": "DEFECT: C and D are BOTH fully correct (D's (2^n+0^n)/2 even covers n=0 where the sum is 1), and A is C without the qualifier (A fails only at n=0). Three overlapping options; C is the cleanest intended answer."
+  },
+  {
+    "id": "02-22",
+    "derived": "B",
+    "confidence": "medium",
+    "note": "0-indexed row 8 has max C(8,4)=70 (B). A 1-indexed reading (row 7, max C(7,3)=35) would give D. Same indexing ambiguity as 02-2/02-8."
+  },
+  {
+    "id": "02-23",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Odd entries in row n = 2^s where s = number of 1-bits of n; 16=10000b, so 2^1=2."
+  },
+  {
+    "id": "02-24",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Diagonal-sum form of the hockey stick identity; 'Christmas stocking' is an alternate name but is not offered here."
+  },
+  {
+    "id": "02-25",
+    "derived": "D",
+    "confidence": "high",
+    "note": "1+49+441+1225=1716."
+  },
+  {
+    "id": "02-26",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO OPTION CORRECT. Coefficient of x^10 in (1+x+x^2)^10 is the central trinomial coefficient 8953 (via (1-x^3)^10(1-x)^-10: 92378-114400+32175-1200). Options 42/55/66/77 are all wrong by two orders of magnitude. Defective question."
+  },
+  {
+    "id": "02-27",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO OPTION CORRECT for general n. E.g. n=2: sum = 1+1/2+1 = 5/2, but A=7/3, B=4/3, C=8/3, D=3. (C happens to match at n=1 only.) The true sum has no such simple closed form: (n+1)/2^{n+1} * sum_{k=1}^{n+1} 2^k/k. Defective question."
+  },
+  {
+    "id": "02-28",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "02-29",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "02-30",
+    "derived": "C",
+    "confidence": "high",
+    "note": "C(m+n,m)=C(m+n,n) by symmetry; 'Both A and B' is the designed answer."
+  },
+  {
+    "id": "02-31",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO OPTION EXACT. Sum_{k=1}^{10} C(9+k,k) = C(20,10) - 1 = 184755 (hockey stick with the k=0 term C(9,0)=1 missing). Option A = C(20,10) = 184756 is off by exactly 1 — clearly the intended answer, but strictly wrong as stated."
+  },
+  {
+    "id": "02-32",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Row includes the 1s, so gcd=1; even restricted to interior entries gcd(12,66,220,495,...)=1 since 12 is not a prime power."
+  },
+  {
+    "id": "02-33",
+    "derived": "A",
+    "confidence": "high",
+    "note": "(1+x)^n(1+x)^n=(1+x)^{2n}; coefficient of x^n is C(2n,n)."
+  },
+  {
+    "id": "02-34",
+    "derived": "A",
+    "confidence": "medium",
+    "note": "0-indexed: row 12 max is C(12,6)=924 < 1000; row 13 has C(13,6)=1716 > 1000, so 13th row (A). A 1-indexed reading would give B. Same indexing ambiguity as 02-2/02-8/02-22."
+  },
+  {
+    "id": "02-35",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "02-36",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "02-37",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "02-38",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Same identity as 02-35 (sum k*C(n,k) = n*2^{n-1}) — near-duplicate question within the packet."
+  },
+  {
+    "id": "02-39",
+    "derived": "A",
+    "confidence": "high",
+    "note": "(1-x^4)^5(1-x)^-5: C(9,4) - 5*C(5,4) = 126 - 25 = 101."
+  },
+  {
+    "id": "02-40",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "02-41",
+    "derived": "A",
+    "confidence": "high",
+    "note": "DEFECT: stars-and-bars gives C(12,2)=66, but option C = C(12,10) = 66 is EQUIVALENT by symmetry. Two correct options; A is the conventional form."
+  },
+  {
+    "id": "02-42",
+    "derived": "B",
+    "confidence": "medium",
+    "note": "DEFECT-ISH: this diagonal-sum identity is called BOTH the hockey stick identity (B) and the Christmas stocking identity (C) in standard usage — same identity as 02-24, where B was keyed. B intended, C defensible."
+  },
+  {
+    "id": "02-43",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Sum_{k=0}^{n} 2^k = 2^{n+1} - 1."
+  },
+  {
+    "id": "02-44",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO OPTION CORRECT. Coefficient of x^4 in (1+2x+3x^2)^3 is 63: p^2 = 1+4x+10x^2+12x^3+9x^4, then x^4 of p^2*p = 9*1 + 12*2 + 10*3 = 63. Options 36/54/72/108 all wrong. Defective question."
+  },
+  {
+    "id": "02-45",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "02-46",
+    "derived": "A",
+    "confidence": "medium",
+    "note": "Intended answer is Symmetry (A), but the stem is weak: C(1000,500) is the CENTRAL coefficient, where symmetry (r vs n-r) gives no saving at all. Symmetry helps for r far from n/2. Consider repairing the stem to e.g. C(1000,997)."
+  },
+  {
+    "id": "03-2",
+    "derived": "A",
+    "confidence": "high",
+    "note": "DUPLICATE-EQUIVALENT OPTIONS: A and C are mathematically identical — C is A with (2x)^{10-r} expanded to 2^{10-r} x^{10-r}. Both are correct forms of T_{r+1} = 10Cr (2x)^{10-r} 3^r. Defect: two correct options."
+  },
+  {
+    "id": "03-3",
+    "derived": "B",
+    "confidence": "high",
+    "note": "DUPLICATE-EQUIVALENT OPTIONS: B (10C6·2^6) and C (10C4·2^6) are equal since 10C6 = 10C4 = 210 (nCr symmetry). Coefficient of x^6 is 10C6·2^6 = 13440; both B and C evaluate to it. Defect: two correct options."
+  },
+  {
+    "id": "03-4",
+    "derived": "A",
+    "confidence": "high",
+    "note": "DUPLICATE-EQUIVALENT OPTIONS: middle term T5 = 8C4 x^4 (-1/x)^4 = 70x^0 = 70, so A (70) and C (70x^0) are the same value. Defect: two correct options."
+  },
+  {
+    "id": "03-5",
+    "derived": "D",
+    "confidence": "high"
+  },
+  {
+    "id": "03-6",
+    "derived": "A",
+    "confidence": "medium",
+    "note": "STEM UNDER-DETERMINED: nC3·a^3 = nC4·a^4 gives a(n-3) = 4, one equation in two unknowns, so n/a is not fixed (n/a = n(n-3)/4). The intended question is almost certainly (1+x)^n (a=1): nC3 = nC4 gives n = 7, n/a = 7 = option A. Answer A only under a=1."
+  },
+  {
+    "id": "03-7",
+    "derived": "B",
+    "confidence": "high",
+    "note": "T6 = 10C5 (x/2)^5 (-2/x)^5 = 252 · (x^5/32) · (-32/x^5) = -252. The x^5 factors cancel exactly, so the -8064/x^2 distractors (C, D) have the wrong shape."
+  },
+  {
+    "id": "03-8",
+    "derived": "C",
+    "confidence": "high",
+    "note": "coeff(x^10)/coeff(x^11) = [20C10·2^10·3^10]/[20C11·2^9·3^11] = (20C10/20C11)·(2/3) = (11/10)·(2/3) = 11/15."
+  },
+  {
+    "id": "03-9",
+    "derived": "X",
+    "confidence": "high",
+    "note": "DEFECTIVE STEM — NO OPTION CORRECT: T_{r+1} = 12Cr (x^2)^{12-r} (-1/x^3)^r has exponent 24-5r; 24-5r = -4 gives r = 28/5, not an integer, so the coefficient of x^{-4} is 0 (no such term). The options suggest the intended stem was coefficient of x^4 (r=4 → 12C4·(-1)^4 = 495 = option B) or x^{-1} (r=5 → -792 = option C)."
+  },
+  {
+    "id": "03-10",
+    "derived": "A",
+    "confidence": "high",
+    "note": "T_{r+1}/T_r = [20Cr x^r]/[20C(r-1) x^{r-1}] = x·(20-r+1)/r = (21-r)x/r."
+  },
+  {
+    "id": "03-11",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "03-12",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Exponent 18-3r = 6 gives r = 4, i.e. the 5th term."
+  },
+  {
+    "id": "03-13",
+    "derived": "B",
+    "confidence": "high",
+    "note": "C(10+2, 2) = 66."
+  },
+  {
+    "id": "03-14",
+    "derived": "A",
+    "confidence": "high",
+    "note": "8C3·(-1/2)^3 = 56·(-1/8) = -7."
+  },
+  {
+    "id": "03-15",
+    "derived": "B",
+    "confidence": "high",
+    "note": "T7 = nC6 a^{2(n-6)/3 - 2} = 84 for all a requires the exponent to vanish: 2(n-6)/3 = 2 gives n = 9, and 9C6 = 84 confirms."
+  },
+  {
+    "id": "03-16",
+    "derived": "X",
+    "confidence": "high",
+    "note": "DEFECTIVE STEM — NO OPTION CORRECT: exponent of x in T_{r+1} is (3/2)(10-r) - r/2 = 15 - 2r, which is odd for every integer r, so no term independent of x exists. The option pattern suggests the intended stem was (x^{3/2} + 2/x^{3/2})^{10}, where (3/2)(10-2r) = 0 gives r = 5 and the answer 10C5·2^5 = option C."
+  },
+  {
+    "id": "04-2",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "04-3",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "04-4",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "04-5",
+    "derived": "D",
+    "confidence": "high",
+    "note": "A, B, C are all equivalent (T6 = 252 = 10C5 x^0) — intentional all-of-the-above design, but still three equivalent options."
+  },
+  {
+    "id": "04-6",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "04-7",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Middle term of (x^2+1/x)^{2n} is C(2n,n) x^n; C(20,10)=184756 and x^10 gives n=10."
+  },
+  {
+    "id": "04-8",
+    "derived": "B",
+    "confidence": "high",
+    "note": "T5 = C(8,4)·2^4·(-3)^4 = 70·16·81 = +90720 (even power kills the sign)."
+  },
+  {
+    "id": "04-9",
+    "derived": "B",
+    "confidence": "high",
+    "note": "DEFECT: options A and C are mathematically equivalent (C = 14C7·3^7/3^7 = 14C7 = A). True middle term is -14C7 = -3432, so B is correct; D=3003 is 14C6."
+  },
+  {
+    "id": "04-10",
+    "derived": "A",
+    "confidence": "medium",
+    "note": "Ambiguous meta-stem. The given expression includes x^n, so it IS the middle term (A), not merely its coefficient (B). Intended answer may have been C; the expression as printed is the full term."
+  },
+  {
+    "id": "04-11",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "04-12",
+    "derived": "B",
+    "confidence": "high",
+    "note": "DEFECT: B and D are equivalent (70·16 = 1120, and the middle term is x^0 so 1120 alone is the term). T5 = C(8,4)·2^4·x^{4-4} = 1120."
+  },
+  {
+    "id": "04-13",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "04-14",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "04-15",
+    "derived": "A",
+    "confidence": "high",
+    "note": "T7 = C(12,6) = 924."
+  },
+  {
+    "id": "04-16",
+    "derived": "X",
+    "confidence": "medium",
+    "note": "NO OPTION CORRECT as asked. Full coefficients: T5 = C(9,4)·2^5/3^4 = 4032/81, T6 = C(9,5)·2^4/3^5 = 2016/243; ratio = 6:1, not listed. Option A (1:1) is right only for the BINOMIAL coefficients C(9,4):C(9,5). Stem defective or intended 'binomial coefficients'."
+  },
+  {
+    "id": "04-17",
+    "derived": "C",
+    "confidence": "high",
+    "note": "x^{30-3k}=x^0 at k=10 → T11."
+  },
+  {
+    "id": "04-18",
+    "derived": "D",
+    "confidence": "high",
+    "note": "A, B, C all equal 20C10 (the (2/3)^10·(3/2)^10 factor is 1) — intentional all-of-the-above design."
+  },
+  {
+    "id": "04-19",
+    "derived": "D",
+    "confidence": "medium",
+    "note": "DEFECTIVE STEM: for (1+x/k)^n the term coefficients carry 1/k^r, so the greatest coefficient is NOT generally the middle binomial coefficient. Options ignore k; D is the intended answer treating it as plain (1+x)^n. Also B and C are numerically equal when n is odd."
+  },
+  {
+    "id": "04-20",
+    "derived": "A",
+    "confidence": "high",
+    "note": "DEFECT: A and B are equivalent and both correct — C(2n-1,n) = C(2n-1,n-1), so B = 2·C(2n-1,n-1) = A. C and D fail (n=2: sum=6 vs 4/8)."
+  },
+  {
+    "id": "04-21",
+    "derived": "A",
+    "confidence": "high",
+    "note": "T10 = C(18,9) x^{9/3 - 18/3} = C(18,9) x^{-3}."
+  },
+  {
+    "id": "04-22",
+    "derived": "A",
+    "confidence": "high",
+    "note": "DEFECT: A and C are equivalent (-252·32 = -8064). T6 = C(10,5)·(-2)^5·x^5 = -8064 x^5."
+  },
+  {
+    "id": "04-23",
+    "derived": "C",
+    "confidence": "high",
+    "note": "T7 = C(12,6)·2^6·x^{12-6} = x^6."
+  },
+  {
+    "id": "04-24",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "04-25",
+    "derived": "D",
+    "confidence": "high",
+    "note": "A and C are the same expression reordered; option D ('Both A and C') acknowledges it, so D is the intended and correct pick."
+  },
+  {
+    "id": "04-26",
+    "derived": "X",
+    "confidence": "medium",
+    "note": "NO OPTION CORRECT. With x=1/5, T_{k+1}/T_k = ((51-k)/k)·(2/15) = 1 exactly at k=6, so T6 and T7 (6th and 7th terms) are jointly greatest. Options offer 24th-27th. Stem or option set defective."
+  },
+  {
+    "id": "04-27",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "04-28",
+    "derived": "A",
+    "confidence": "high",
+    "note": "DEFECT: A and C are equivalent and both correct — C(2n,n)/C(2n-2,n-1) = 2n(2n-1)/n^2 = (4n-2)/n."
+  },
+  {
+    "id": "04-29",
+    "derived": "D",
+    "confidence": "high",
+    "note": "k=5; C(10,5)·2^5·3^5 = 252·32·243 = 1959552; A, B, C all equal — intentional all-of-the-above."
+  },
+  {
+    "id": "04-30",
+    "derived": "D",
+    "confidence": "high"
+  },
+  {
+    "id": "04-31",
+    "derived": "B",
+    "confidence": "medium",
+    "note": "DEFECT: A and B are equivalent and both correct (C(4n-1,2n) = C(4n-1,2n-1)), but D ('All of the above') is WRONG because C fails: at n=1 the sum is C(3,1)+C(3,2)=6 while 2^{4n-2}=4. Two equivalent correct options with no way to pick — repair needed."
+  },
+  {
+    "id": "04-32",
+    "derived": "D",
+    "confidence": "high",
+    "note": "T4 = C(6,3)·3^{3/2}·2^{3/2} = 20·6√6 = 120√6. A (240√6) and C (540) are wrong; only D states the correct value."
+  },
+  {
+    "id": "04-33",
+    "derived": "D",
+    "confidence": "high",
+    "note": "A, B, C all equivalent — intentional all-of-the-above design."
+  },
+  {
+    "id": "04-34",
+    "derived": "D",
+    "confidence": "medium",
+    "note": "A and C clearly correct; B is vague but true via Vandermonde (C(2n,n) = sum of C(n,k)^2), so D is the intended answer."
+  },
+  {
+    "id": "04-35",
+    "derived": "C",
+    "confidence": "high",
+    "note": "n=99 odd: C(99,49) = C(99,50) are jointly greatest."
+  },
+  {
+    "id": "04-36",
+    "derived": "B",
+    "confidence": "medium",
+    "note": "DEFECT: A, B, D are all equivalent and correct (T11 = C(20,10)·(-1)^{10}·x^0 = C(20,10) = 184756) with no 'All of the above' option. Three-way duplicate — repair needed."
+  },
+  {
+    "id": "04-37",
+    "derived": "A",
+    "confidence": "medium",
+    "note": "Ambiguous stem: C(10,5)=252 is unique among the coefficients, so 1 counting the middle term itself (A), 0 if 'other terms' is meant (D). A is the conventional reading."
+  },
+  {
+    "id": "04-38",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "04-39",
+    "derived": "D",
+    "confidence": "high",
+    "note": "T9 = C(16,8)·(2/3)^8·x^0; A, B, C all correct — intentional all-of-the-above."
+  },
+  {
+    "id": "04-40",
+    "derived": "D",
+    "confidence": "high",
+    "note": "C(8,4)·2^4·3^4 = 70·16·81 = 90720; A, B, C all equal."
+  },
+  {
+    "id": "04-41",
+    "derived": "D",
+    "confidence": "high",
+    "note": "Power (36-3k)/6 = 0 at k=12 → T13 = C(18,12); middle term is T10, so all of A, B, C hold."
+  },
+  {
+    "id": "04-42",
+    "derived": "D",
+    "confidence": "high",
+    "note": "T6 = C(10,5) = 252, independent of both a and x; A, B, C all correct."
+  },
+  {
+    "id": "04-43",
+    "derived": "D",
+    "confidence": "medium",
+    "note": "A is the correct central-trinomial formula (choose k squares, n-2k singles); B and C are vague restatements, so D is intended."
+  },
+  {
+    "id": "04-44",
+    "derived": "D",
+    "confidence": "medium",
+    "note": "Meta-question: A and B are each conditionally correct and D subsumes them; D is the intended answer. C's ratio (n+1-2r)/r is not the standard equal-middle-coefficient result."
+  },
+  {
+    "id": "04-45",
+    "derived": "D",
+    "confidence": "high",
+    "note": "T7 = C(12,6)·2^{6x}·2^{-6x} = C(12,6); A as printed (2^6·2^{-6}=1) also reduces to it; A, B, C all correct."
+  },
+  {
+    "id": "04-46",
+    "derived": "D",
+    "confidence": "high",
+    "note": "T5 = C(9,4)(x^2)^5(2/x)^4 → x^6; T6 = C(9,5)(x^2)^4(2/x)^5 → x^3."
+  },
+  {
+    "id": "05-2",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "05-3",
+    "derived": "D",
+    "confidence": "high"
+  },
+  {
+    "id": "05-4",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "05-5",
+    "derived": "C",
+    "confidence": "high"
+  },
+  {
+    "id": "05-6",
+    "derived": "C",
+    "confidence": "high"
+  },
+  {
+    "id": "05-7",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "05-8",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "05-9",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "05-10",
+    "derived": "C",
+    "confidence": "high"
+  },
+  {
+    "id": "05-11",
+    "derived": "A",
+    "confidence": "low",
+    "note": "DEFECT: options A, C and D are mathematically EQUIVALENT statements of the same condition (general-term power 16-3r never zero for integer r <=> 16-3r != 0 for all integer r in 0..8 <=> r=16/3 is not an integer). Also the condition holds unconditionally for this binomial, so the 'if' is vacuous. A picked as the generic phrasing, but the question needs repair."
+  },
+  {
+    "id": "05-12",
+    "derived": "X",
+    "confidence": "medium",
+    "note": "No option is correct as written: (x + 1/x + 2)^10 = (sqrt(x)+1/sqrt(x))^20, so the (single) term independent of x has coefficient C(20,10) = 184756. Verified also by direct multinomial sum over a=b: 1024+23040+80640+67200+12600+252 = 184756. Options give 8064, 4^10, 3^10, 2^10 - none match. Likely the intended question was 'sum of ALL coefficients' (x=1 gives 4^10, option B), or the option list should contain C(20,10)."
+  },
+  {
+    "id": "05-13",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "05-14",
+    "derived": "A",
+    "confidence": "high",
+    "note": "DEFECT: options A and C are EQUAL - C(18,6) = C(18,12) by symmetry, and the correct coefficient is exactly this value (r=12, (-1)^12 positive). Both A and C are correct as printed; one must be repaired to a genuine distractor."
+  },
+  {
+    "id": "05-15",
+    "derived": "C",
+    "confidence": "high"
+  },
+  {
+    "id": "05-16",
+    "derived": "C",
+    "confidence": "high"
+  },
+  {
+    "id": "05-17",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "05-18",
+    "derived": "A",
+    "confidence": "high",
+    "note": "DEFECT: options A and C are EQUAL - middle term T6 = C(10,5)(-1)^5 = -252, and -C(10,5) = -252. Both A and C are correct as printed. Also this is a middle-term question filed under 'Term Independent of x'."
+  },
+  {
+    "id": "05-19",
+    "derived": "A",
+    "confidence": "medium",
+    "note": "The term independent of x exists (18-3r=0 at r=6), so by definition its x-power p = 0. Stem phrasing 'If x^p is the term independent of x' is circular/awkward but the only defensible answer is p=0."
+  },
+  {
+    "id": "05-20",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "05-21",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "06-2",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "06-3",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "06-4",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "06-5",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "06-6",
+    "derived": "B",
+    "confidence": "high",
+    "note": "2^n=256 so n=8; greatest = 8C4 = 70."
+  },
+  {
+    "id": "06-7",
+    "derived": "B",
+    "confidence": "high",
+    "note": "2^n=1024 so n=10; greatest coeff 10C5 sits at r=5 = 6th term."
+  },
+  {
+    "id": "06-8",
+    "derived": "B",
+    "confidence": "high",
+    "note": "12C6 at r=6 = 7th term."
+  },
+  {
+    "id": "06-9",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Ratio test on 8Cr·2^(8-r): max 1792, attained twice (r=2 and r=3), both equal 1792 so the value is unambiguous."
+  },
+  {
+    "id": "06-10",
+    "derived": "A",
+    "confidence": "high",
+    "note": "First-term coefficient is 30C0 = 1, so the ratio is 30C15 itself."
+  },
+  {
+    "id": "06-11",
+    "derived": "A",
+    "confidence": "high",
+    "note": "2nCn = 184756 = 20C10, so 2n = 20."
+  },
+  {
+    "id": "06-12",
+    "derived": "B",
+    "confidence": "high",
+    "note": "9C4 and 9C5 at r=4,5 = 5th and 6th terms."
+  },
+  {
+    "id": "06-13",
+    "derived": "B",
+    "confidence": "high",
+    "note": "16C8 = 12870."
+  },
+  {
+    "id": "06-14",
+    "derived": "B",
+    "confidence": "high",
+    "note": "2^n=4096 so n=12; 12C6 = 924."
+  },
+  {
+    "id": "06-15",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "06-16",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Ratio test on 12Cr·2^r: max at r=8, 12C8·2^8 = 495·256 = 126720."
+  },
+  {
+    "id": "06-17",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "06-18",
+    "derived": "B",
+    "confidence": "high",
+    "note": "18C9 = 48620."
+  },
+  {
+    "id": "06-19",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "06-20",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO option correct. Ratio test on 6Cr·3^(6-r)·2^r: c(r+1)/c(r) = 2(6-r)/(3(r+1)) >= 1 iff r <= 1.8, so max at r=2: 15·81·4 = 4860. Options give c1=2916 and c3=4320 but skip the true max 4860."
+  },
+  {
+    "id": "06-21",
+    "derived": "C",
+    "confidence": "high",
+    "note": "DEFECT — equivalent options: 25C12 = 25C13 by symmetry, so A (2×25C12), B (2×25C13) and C (25C12+25C13) are ALL mathematically equal. Value is correct in each; C states it most directly."
+  },
+  {
+    "id": "06-22",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "06-23",
+    "derived": "B",
+    "confidence": "high",
+    "note": "2^n=512 so n=9; greatest = 9C4 = 9C5 = 126."
+  },
+  {
+    "id": "06-24",
+    "derived": "B",
+    "confidence": "high",
+    "note": "14C7 at r=7 = 8th term."
+  },
+  {
+    "id": "06-25",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "06-26",
+    "derived": "B",
+    "confidence": "high",
+    "note": "2nCn = 252 = 10C5, so 2n = 10."
+  },
+  {
+    "id": "06-27",
+    "derived": "A",
+    "confidence": "high",
+    "note": "n=17: middle terms are 9th and 10th, coefficients 17C8 and 17C9."
+  },
+  {
+    "id": "06-28",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "06-29",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Middle (6th) term of n=10 carries 10C5."
+  },
+  {
+    "id": "06-30",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "06-31",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Signed coefficients of (1-2x)^8: greatest positive is at r=6, 28·64 = 1792 (magnitude max is also 1792, tied r=5 negative / r=6 positive), so 1792 either way."
+  },
+  {
+    "id": "06-32",
+    "derived": "D",
+    "confidence": "high",
+    "note": "Sum at x=1 is 5^n = 3125 so n=5; greatest BINOMIAL coefficient of n=5 is 5C2 = 10. Distractors 252 etc. bait 2n-style formulas."
+  },
+  {
+    "id": "06-33",
+    "derived": "B",
+    "confidence": "high",
+    "note": "All coefficients are 12Cr; max at r=6, term = (x^2)^6·x^-6 = x^6."
+  },
+  {
+    "id": "06-34",
+    "derived": "B",
+    "confidence": "high",
+    "note": "n=50 even: unique max 50C25; the other 50 coefficients are all smaller."
+  },
+  {
+    "id": "06-35",
+    "derived": "C",
+    "confidence": "high",
+    "note": "70/1 = 70."
+  },
+  {
+    "id": "06-36",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO option correct. Ratio test on 10Cr·2^(10-r): c(r+1)/c(r) = (10-r)/(2(r+1)) >= 1 iff r <= 8/3, so max at r=3 (coefficient of x^3 = 120·128 = 15360). Among the listed powers x^5 has the biggest coefficient (8064) but it is not the greatest overall."
+  },
+  {
+    "id": "06-37",
+    "derived": "A",
+    "confidence": "high",
+    "note": "21 terms means n=20 (even), unique greatest 20C10."
+  },
+  {
+    "id": "06-38",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO option correct. Ratio test on 8Cr·3^(8-r)·2^r: increase iff r <= 2.6, so max at r=3: 56·243·8 = 108864. Option A (90720) is c4, B is 2·c4 — the true max 108864 is absent."
+  },
+  {
+    "id": "06-39",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO option correct. Ratio test on 15Cr·2^r: c(r+1)/c(r) = 2(15-r)/(r+1) >= 1 iff r <= 29/3, so max at r=10 = 11th term. Options offer 15th/16th/1st/8th only."
+  },
+  {
+    "id": "06-40",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "06-41",
+    "derived": "D",
+    "confidence": "high",
+    "note": "462 = 11C5 = 11C6, so n=11 (odd). n=10 gives 252, so option A's '10 or 11' is wrong."
+  },
+  {
+    "id": "06-42",
+    "derived": "C",
+    "confidence": "high",
+    "note": "DEFECT — equivalent options: 13C6 = 13C7 by symmetry, so A (2×13C6), B (2×13C7) and C (13C6+13C7) are ALL mathematically equal. Same defect shape as 06-21."
+  },
+  {
+    "id": "06-43",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Middle (9th) term of n=16: 16C8·(2x)^8·3^8."
+  },
+  {
+    "id": "06-44",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "06-45",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "06-46",
+    "derived": "C",
+    "confidence": "low",
+    "note": "DEFECTIVE/AMBIGUOUS STEM — '(1+x+x^2)^10 using binomial theorem approach occurs when' is not a well-posed mathematical question; the options are meta-statements. The defensible reading is that a trinomial's greatest coefficient needs the multinomial theorem (C), but D is also arguable. Recommend repair or drop."
+  },
+  {
+    "id": "06-47",
+    "derived": "A",
+    "confidence": "high",
+    "note": "2nCn / (2n-2)C(n-1) = (2n)(2n-1)/n^2. Option C simplifies to 2(2n-1)/(n-1), which is different."
+  },
+  {
+    "id": "06-48",
+    "derived": "B",
+    "confidence": "high",
+    "note": "n=99: max coefficients at r=49,50 = 50th and 51st terms."
+  },
+  {
+    "id": "06-49",
+    "derived": "A",
+    "confidence": "high",
+    "note": "7C3 = 7C4 = 35; product 1225."
+  },
+  {
+    "id": "07-2",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "07-3",
+    "derived": "A",
+    "confidence": "high",
+    "note": "'Odd terms' is ambiguous (odd positions vs odd powers) but both readings give 2^14, so A either way."
+  },
+  {
+    "id": "07-4",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "07-5",
+    "derived": "C",
+    "confidence": "high"
+  },
+  {
+    "id": "07-6",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "07-7",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "07-8",
+    "derived": "A",
+    "confidence": "medium",
+    "note": "DUPLICATE OPTIONS: A and D are both 2^9. The value 2^9 is correct ([f(1)+f(-1)]/2 = [0+2^10]/2 = 512). Repair needed."
+  },
+  {
+    "id": "07-9",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "07-10",
+    "derived": "B",
+    "confidence": "medium",
+    "note": "DEFECTIVE STEM: no (n,r) actually satisfies C(n,r)=56 AND C(n,r+1)=84 (56/84=2/3 ratio gives 2n=5r+3, whose only integer fit among options is n=9, r=3, but C(9,3)=84 not 56; the real 3:2 consecutive pair in row 9 is 84,126). Ratio-method intended answer is n=9 (B)."
+  },
+  {
+    "id": "07-11",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO OPTION CORRECT. True coefficient of x^10 = sum over j=3,4,5 of C(10,j)*C(5,10-2j) = 120*5 + 210*10 + 252*1 = 2952. Option B=252 is the coefficient from (1+x^2)^10 alone, ignoring the (1+x)^5 factor."
+  },
+  {
+    "id": "07-12",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "07-13",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "07-14",
+    "derived": "B",
+    "confidence": "low",
+    "note": "EQUIVALENT OPTIONS: 'Vandermonde's Identity' (B) and 'Chu-Vandermonde Identity' (C) are two names for the SAME identity; the squared-sum is its m=n special case. Question is unrepairable as an MCQ without renaming one option. Picking B as the more common textbook name."
+  },
+  {
+    "id": "07-15",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "07-16",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "07-17",
+    "derived": "C",
+    "confidence": "medium",
+    "note": "EQUIVALENT OPTIONS: B (3^n/3) and C (3^{n-1}) are identical. Value verified: n=2 gives a0+a3 = 1+2 = 3 = 3^1. A is wrong because f(omega)=0 makes the cosine term vanish (it never does in A's formula). Repair needed."
+  },
+  {
+    "id": "07-18",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "07-19",
+    "derived": "D",
+    "confidence": "medium",
+    "note": "DEFECTIVE STEM: the 3:5 leg gives r=6 exactly (C(15,5):C(15,6)=3003:5005=3:5), but the 5:7 leg has no integer solution (r=17/3); at r=6 the third ratio is 9/7 not 7/5. No r yields 3:5:7. Intended answer r=6 (D) from the first leg."
+  },
+  {
+    "id": "07-20",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO OPTION CORRECT. True coefficient = C(2n-1,n) + C(2n-2,n-1), which is n-dependent: n=1 gives 2 (matches D) but n=2 gives 3+2=5, matching no constant option."
+  },
+  {
+    "id": "07-21",
+    "derived": "A",
+    "confidence": "medium",
+    "note": "INDEXING SLIP: the expression n^2 - n(4r+1) + 4r^2 - 2 = 0 holds when the AP coefficients are C(n,r-1), C(n,r), C(n,r+1), i.e. the rth, (r+1)th, (r+2)th TERMS (verified n=7, r=2: 7,21,35 AP and expression = 0). The stem's '(r-1)th, rth, (r+1)th terms' literally means C(n,r-2..r), for which the expression is nonzero (n=7,r=3 gives -8). Intended answer 0 (A) under the standard coefficient-index reading."
+  },
+  {
+    "id": "07-22",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "07-23",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO OPTION CORRECT (and stem defective: (1+x+x^2)^n has coefficients up to a_{2n}, not a_n). Literal sum to n*a_n: n=2 gives 2+6=8, matching no option (A=6, B=12, C=4, D=9). Full-range sum r*a_r = f'(1) = n*3^n (n=2: 18), also not offered."
+  },
+  {
+    "id": "07-24",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "07-25",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO OPTION CORRECT. Grouping ((1-x)+x^2)^n gives coefficient of x^{2r} = sum_k C(n,k)*C(n-k,2r-2k), all POSITIVE. Option A adds a spurious (-1)^k: at n=1,r=1 the actual coefficient is +1 but A gives -1; at n=2,r=1 actual is 3, A gives -1. B gives 2 at n=1,r=1; C, D also fail."
+  },
+  {
+    "id": "07-26",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO OPTION CORRECT. True identity: sum r^2*C(n,r) = n(n-1)2^{n-2} + n*2^{n-1} = n(n+1)2^{n-2}. At n=2 the true value is 6; options give A=4, B=8, C=8, D=8. Option B would be right if the first term were written A*n*2^{n-2} instead of A*2^n."
+  },
+  {
+    "id": "07-27",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "07-28",
+    "derived": "D",
+    "confidence": "high",
+    "note": "C(n,r)+C(n,n-r) = 2*C(n,r) varies with r, so the premise is false; D is correct."
+  },
+  {
+    "id": "07-29",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "07-30",
+    "derived": "C",
+    "confidence": "high"
+  },
+  {
+    "id": "07-31",
+    "derived": "A",
+    "confidence": "medium",
+    "note": "EQUIVALENT OPTIONS: A (r+1) and D (C(r+1,1)) are identical. The value r+1 is correct. Repair needed."
+  },
+  {
+    "id": "07-32",
+    "derived": "C",
+    "confidence": "low",
+    "note": "DEFECTIVE: for n>0, C ('largest when n>0') AND B ('always even': C(2n,n)=2*C(2n-1,n-1) for n>=1, though C(0,0)=1 breaks 'always') are both defensible, and A is also true if the trivial n=0 case (sole coefficient) counts as 'largest'. Picking C as the likely intended key, but the options do not cleanly separate."
+  },
+  {
+    "id": "07-33",
+    "derived": "B",
+    "confidence": "high",
+    "note": "nx(1+x)^{n-1} = n[(1+x)-1](1+x)^{n-1} = n(1+x)^n - n(1+x)^{n-1}, so A=-n, B=n. Verified n=2, x=1: -2*2 + 2*4 = 4 = sum k*C(2,k)."
+  },
+  {
+    "id": "07-34",
+    "derived": "X",
+    "confidence": "medium",
+    "note": "NO OPTION CORRECT. True coefficient = sum of C(40,a)*C(30,b)*C(20,c) over a+2b+3c=50 in range - option A drops the binomial weights (counts solutions only; already fails on (1+x)^2 coeff of x). D ('cannot be determined') is vacuous, not a value. If a key must be forced, D is the least-wrong."
+  },
+  {
+    "id": "07-35",
+    "derived": "X",
+    "confidence": "high",
+    "note": "TRIPLE-DUPLICATE AND ALL WRONG: A, B, D are all algebraically (4^n - 2^n)/2 (2^{2n}=4^n; 2^{2n-1}-2^{n-1} is the same halved difference). True value = [(sum a_i)^2 - sum a_i^2]/2 = (4^n - C(2n,n))/2: at n=2 pairwise products of 1,2,1 sum to 5, but A=B=D give 6 and C gives 6."
+  },
+  {
+    "id": "07-36",
+    "derived": "A",
+    "confidence": "high",
+    "note": "r=2, n=7: C(7,1):C(7,2):C(7,3) = 7:21:35 = 1:3:5."
+  },
+  {
+    "id": "07-37",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "07-38",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO OPTION CORRECT. Coefficient of x^12 in (1+x+x^2)^12 is the central trinomial coefficient T(12) = 73789 (verified method on n=3: coeff x^3 = 7). Options 1365/2380/1820/792 are all C(m,4)/C(12,5)-type values from some other question."
+  },
+  {
+    "id": "07-39",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Sum_{j=0..7} C(10-j,3) = C(11,4) = 330 by hockey stick."
+  },
+  {
+    "id": "07-40",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "07-41",
+    "derived": "B",
+    "confidence": "high",
+    "note": "= x^6(1+x^2+x^4)^6; needs x^9 from an even-powers-only series, so 0."
+  },
+  {
+    "id": "07-42",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "07-43",
+    "derived": "D",
+    "confidence": "high",
+    "note": "Option A's equation has the wrong RHS (a+b+c+d=4 instead of =100); D states the correct count (ordered 4-tuples, 0..50 each)."
+  },
+  {
+    "id": "07-44",
+    "derived": "C",
+    "confidence": "high",
+    "note": "t_n = 3t_{n-1} - t_{n-2}, t_0=2, t_1=3: 7, 18, 47, 123, 322, 843, 2207, 5778, 15127. Distractors A and B are t_5 and t_6."
+  },
+  {
+    "id": "08-2",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "08-3",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "08-4",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "08-5",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "08-6",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "08-7",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "08-8",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "08-9",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Verified directly: 1+28+70+28+1 = 128 = 2^7."
+  },
+  {
+    "id": "08-10",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Verified directly: 9+84+126+36+1 = 256 = 2^8."
+  },
+  {
+    "id": "08-11",
+    "derived": "A",
+    "confidence": "high",
+    "note": "S1 - S2 = (1-1)^n = 0 for n > 0; option A's qualifier is correct (n=0 gives 1)."
+  },
+  {
+    "id": "08-12",
+    "derived": "X",
+    "confidence": "high",
+    "note": "DEFECT: sum_{r=1}^{n} C(n,r)/r has NO elementary closed form (= sum_{k=1}^{n}(2^k-1)/k). n=2 gives 2 + 1/2 = 5/2; options evaluate to 3/2, 3, 2, 1 - none correct. Also an EXACT DUPLICATE of 08-37."
+  },
+  {
+    "id": "08-13",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "08-14",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Even and odd coefficient sums of (1+x)^{2n} are both 2^{2n-1}, so the odd sum equals k."
+  },
+  {
+    "id": "08-15",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "08-16",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "08-17",
+    "derived": "B",
+    "confidence": "high",
+    "note": "S = n*2^{n-1} + 2^n = (n+2)*2^{n-1}; checked n=1: 1+2 = 3 = 3*2^0."
+  },
+  {
+    "id": "08-18",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "08-19",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Sum = sum r*C(10,r) = 10*2^9 = 5120."
+  },
+  {
+    "id": "08-20",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "08-21",
+    "derived": "A",
+    "confidence": "high",
+    "note": "(1-2)^n = (-1)^n. Same identity as 08-48."
+  },
+  {
+    "id": "08-22",
+    "derived": "A",
+    "confidence": "high",
+    "note": "sum r^2 C(n,r) = n(n+1)2^{n-2}; checked n=2: 2+4 = 6 = 2*3*1. Same identity as 08-50."
+  },
+  {
+    "id": "08-23",
+    "derived": "X",
+    "confidence": "high",
+    "note": "DEFECT: true value is -8 (7 - 35 + 21 - 1 = -8, = Im(1+i)^7). No option matches (0, -32, 32, -64)."
+  },
+  {
+    "id": "08-24",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Vandermonde: sum C(n,k)C(n,n-k) = C(2n,n)."
+  },
+  {
+    "id": "08-25",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "08-26",
+    "derived": "A",
+    "confidence": "high",
+    "note": "DEFECT - EQUIVALENT OPTIONS: A (3/2)^n and B 3^n/2^n are mathematically identical, and both equal the sum (1 + 1/2)^n. Needs repair. Same sum as 08-47 (whose options are not equivalent)."
+  },
+  {
+    "id": "08-27",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Coefficient sum = (2-3)^{10} = (-1)^{10} = 1."
+  },
+  {
+    "id": "08-28",
+    "derived": "A",
+    "confidence": "high",
+    "note": "sum (-1)^r r C(n,r) = -n(1-1)^{n-1} = 0 for n > 1, and -1 at n = 1, so A's qualifier is correct."
+  },
+  {
+    "id": "08-29",
+    "derived": "X",
+    "confidence": "high",
+    "note": "DEFECT: true value is 810 (= 5*2*3^4; direct: 10+80+240+320+160 = 810). No option matches (240, 320, 360, 480)."
+  },
+  {
+    "id": "08-30",
+    "derived": "D",
+    "confidence": "high",
+    "note": "1 + 495 + 495 + 1 = 992; roots-of-unity check: (2^12 + 2*Re(1+i)^12)/4 = (4096-128)/4 = 992."
+  },
+  {
+    "id": "08-31",
+    "derived": "A",
+    "confidence": "high",
+    "note": "sum (-1)^r C(n,r)/(r+1) = integral_0^1 (1-x)^n dx = 1/(n+1). Same identity as 08-44."
+  },
+  {
+    "id": "08-32",
+    "derived": "X",
+    "confidence": "medium",
+    "note": "DEFECT (boundary): true value is 0 for n >= 3, but equals 2 at n = 2 (0 - 2 + 4 = 2). Option A explicitly claims '0 for n >= 2', which is false at n = 2; no other option is correct either. Intended answer is clearly A - repair the quantifier to n >= 3."
+  },
+  {
+    "id": "08-33",
+    "derived": "A",
+    "confidence": "high",
+    "note": "(2^{n+1}-1)/(n+1) at n = 10."
+  },
+  {
+    "id": "08-34",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "08-35",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Same identity as 08-8 / 08-19 / 08-25."
+  },
+  {
+    "id": "08-36",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Re(1+i)^{50} = Re(2^{25} i) = 0."
+  },
+  {
+    "id": "08-37",
+    "derived": "X",
+    "confidence": "high",
+    "note": "DEFECT: EXACT DUPLICATE of 08-12 (same sum, same options). No elementary closed form; n=2 gives 5/2, matching no option."
+  },
+  {
+    "id": "08-38",
+    "derived": "A",
+    "confidence": "high",
+    "note": "sum r(r-1)C(n,r) = n(n-1)2^{n-2}; checked n=2: 2 = 2*1*1."
+  },
+  {
+    "id": "08-39",
+    "derived": "C",
+    "confidence": "medium",
+    "note": "Sum = integral_0^1 (1-x^2)^n dx ~ sqrt(pi)/(2 sqrt(n)) -> 0, so C ('approaches 0') is correct. D has the wrong constant (1/sqrt(pi n) != sqrt(pi)/(2 sqrt(n))). Stem is a limit question, unusual for this subtopic."
+  },
+  {
+    "id": "08-40",
+    "derived": "X",
+    "confidence": "high",
+    "note": "DEFECT: true value is (n*2^{n+1} + 1)/((n+1)(n+2)) (= integral_0^1 x(1+x)^n dx). Option A coincidentally matches at n = 1 (both 5/6) but fails at n = 2: direct sum 1/2 + 2/3 + 1/4 = 17/12 vs A = 1. No option correct."
+  },
+  {
+    "id": "08-41",
+    "derived": "A",
+    "confidence": "low",
+    "note": "BOUNDARY DEFECT: sum (-1)^r r^2 C(2n,r) = 0 for 2n >= 3 (i.e. n >= 2), but at n = 1 it equals 2, and option A is unqualified. A is the intended answer; strictly it fails at n = 1. No other option works for any two values of n."
+  },
+  {
+    "id": "08-42",
+    "derived": "X",
+    "confidence": "high",
+    "note": "DEFECT: true value is n^2(n+3)*2^{n-3} (verified n=2: 10; n=3: 3+24+27 = 54). All four options fail at n = 2 (A=16, B=20, C=16, D=12 vs true 10)."
+  },
+  {
+    "id": "08-43",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "08-44",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Same identity as 08-31 (duplicate in different dress): equals 1/(n+1)."
+  },
+  {
+    "id": "08-45",
+    "derived": "A",
+    "confidence": "high",
+    "note": "sum r! C(n,r) = n! * sum_{j=0}^{n} 1/j! -> e*n!. Asymptotics question, unusual for Class 11."
+  },
+  {
+    "id": "08-46",
+    "derived": "B",
+    "confidence": "high",
+    "note": "sum k C(n,k) 3^k = 3n*4^{n-1}, so A = 3n."
+  },
+  {
+    "id": "08-47",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Same sum as 08-26 (duplicate); here options are not equivalent (B is the reciprocal), so A alone is correct."
+  },
+  {
+    "id": "08-48",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Same identity as 08-21 (duplicate): (1-2)^n = (-1)^n."
+  },
+  {
+    "id": "08-49",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Even- and odd-x-power coefficient sums of (x+y)^{2n} are each 2^{2n-1}, ratio 1."
+  },
+  {
+    "id": "08-50",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Same identity as 08-22 (duplicate): n(n+1)2^{n-2}."
+  },
+  {
+    "id": "08-51",
+    "derived": "A",
+    "confidence": "low",
+    "note": "BOUNDARY DEFECT: sum (-1)^r r^3 C(n,r) = 0 for n >= 4, but at even n = 2 it equals 6 (-2 + 8), and the stem says 'for even n' unqualified. A is the intended answer; strictly false at n = 2."
+  },
+  {
+    "id": "09-2",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-3",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-4",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "09-5",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-6",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Options A and C are mathematically EQUIVALENT (n!/(r!(n-r)!) = C(n,r)) — duplicate distractors; both are invalid for rational n, so B (falling-factorial form) is the only correct form."
+  },
+  {
+    "id": "09-7",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "09-8",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-9",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-10",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-11",
+    "derived": "D",
+    "confidence": "high"
+  },
+  {
+    "id": "09-12",
+    "derived": "A",
+    "confidence": "medium",
+    "note": "Stem/options mismatch: for the alternating series as written (1-2x+3x^2-...), the sum of first n terms is (1-(n+1)(-x)^n + n(-x)^{n+1})/(1+x)^2, i.e. denominator (1+x)^2 not (1-x)^2. Option A is correct for the standard series 1+2x+3x^2+... = (1-x)^{-2}, which is clearly the intended question. Defective stem (sign inconsistency)."
+  },
+  {
+    "id": "09-13",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "09-14",
+    "derived": "D",
+    "confidence": "high"
+  },
+  {
+    "id": "09-15",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-16",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-17",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO option correct. a = (1/4)(-3/4)/2 = -3/32, b = (1/4)(-3/4)(-7/4)/6 = 7/128; a+b = -5/128, so 16(a+b) = -5/8. Verified numerically: (1.1)^{1/4} = 1.024113 matches series with these coefficients. Options are -1, 0, 1, 2 — none equals -5/8."
+  },
+  {
+    "id": "09-18",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-19",
+    "derived": "X",
+    "confidence": "high",
+    "note": "The series 1 + 1/2 + (1·3)/(2·4) + ... = (1-x)^{-1/2} at x=1 DIVERGES (terms ~ 1/sqrt(pi*k)). Intended answer is presumably A (sqrt2) but no finite sum exists. ALSO options C and D are mathematically EQUIVALENT (sqrt2/2 = 1/sqrt2) — duplicate. Doubly defective."
+  },
+  {
+    "id": "09-20",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO option correct. c2 = (-3/2)(-5/2)/2 = 15/8, c3 = (-3/2)(-5/2)(-7/2)/6 = -35/16; ratio c3/c2 = -7/6. Verified numerically against 1.1^{-3/2} = 0.866784. Options ±5/2, ±7/3 — none equals -7/6."
+  },
+  {
+    "id": "09-21",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-22",
+    "derived": "D",
+    "confidence": "high"
+  },
+  {
+    "id": "09-23",
+    "derived": "C",
+    "confidence": "high"
+  },
+  {
+    "id": "09-24",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO option correct. Product = (1+x)^{-5/6}; coeff of x^5 = (-5/6)(-11/6)(-17/6)(-23/6)(-29/6)/120 = -124729/186624 ≈ -0.66834 (verified numerically: series sums to 1.1^{-5/6} = 0.923647 at x=0.1). Options ±63/256, ±231/1024 belong to (1∓x)^{-1/2} expansions — wrong question/options pairing."
+  },
+  {
+    "id": "09-25",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO option correct as written. (1-x)^{-2/3}: a = 2/3, b = (2/3)(5/3)/2 = 5/9 (numerically verified vs 0.9^{-2/3} = 1.072766); 3a+9b = 2+5 = 7. Options are 3,4,5,6. If the stem were (1+x)^{-2/3}, then a = -2/3, b = 5/9 and 3a+9b = 3 (option A) — likely a sign misprint in the stem."
+  },
+  {
+    "id": "09-26",
+    "derived": "X",
+    "confidence": "medium",
+    "note": "True value 1/sqrt(1.04) = 0.980581 → 0.9806 to four decimal places. Nearest option A (0.9804 = 1/1.02) is NOT correct to 4 dp as the stem demands (no legitimate binomial truncation yields 0.9804: two terms give 0.9800, three give 0.9806). A is clearly the intended key; option value is defective."
+  },
+  {
+    "id": "09-27",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-28",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-29",
+    "derived": "C",
+    "confidence": "high"
+  },
+  {
+    "id": "09-30",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Value is (1+x)^{-1/2} at x=1 = 1/sqrt2 (alternating, Leibniz-convergent). DEFECT: options A and B are EQUIVALENT (1/sqrt2 = sqrt2/2) so TWO options are correct; C and D are also equivalent to each other (sqrt2 = 2/sqrt2). Needs repair."
+  },
+  {
+    "id": "09-31",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-32",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO option correct. Coeff of x^4 in (1-2x)^{-1/3} = [(1/3)(4/3)(7/3)(10/3)/24]·2^4 = (35/243)·16 = 560/243 ≈ 2.3045 (numerically verified vs 0.9^{-1/3} = 1.035744 at x=0.05). Options 80/81, 160/81, 320/81, 40/81 — none equals 560/243."
+  },
+  {
+    "id": "09-33",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-34",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "09-35",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-36",
+    "derived": "C",
+    "confidence": "high",
+    "note": "C(2n,r) = C(2n+1,r+1) = C(2n,r)+C(2n,r+1) forces C(2n,r+1)=0, i.e. r+1 > 2n, so only r = 2n (both sides 1). Degenerate but well-defined; verified for n=1,2. The classic variant of this stem (equal coefficients within (1+x)^{2n+1}) gives r=n, but as written the answer is 2n."
+  },
+  {
+    "id": "09-37",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-38",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-39",
+    "derived": "A",
+    "confidence": "high",
+    "note": "DEFECT: options A and D are mathematically EQUIVALENT — (x^n-1)/(x-1) = (1-x^n)/(1-x). Both are correct; needs repair."
+  },
+  {
+    "id": "09-40",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-41",
+    "derived": "B",
+    "confidence": "high"
+  },
+  {
+    "id": "09-42",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-43",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-44",
+    "derived": "X",
+    "confidence": "high",
+    "note": "The series 1 + 2/3 + (2·5)/(3·6) + (2·5·8)/(3·6·9) + ... is (1-x)^{-2/3} at x=1, which DIVERGES (term_k ~ k^{-1/3}). No finite sum; no option can be correct. Likely a corrupted version of a convergent classic (e.g. denominators 6·12·18 would give 2^{2/3})."
+  },
+  {
+    "id": "09-45",
+    "derived": "C",
+    "confidence": "high"
+  },
+  {
+    "id": "09-46",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-47",
+    "derived": "A",
+    "confidence": "high"
+  },
+  {
+    "id": "09-48",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Expression simplifies to x^{10}(1+x)^{-5}, whose lowest-degree term is x^{10}, so the coefficient of x^5 is 0."
+  },
+  {
+    "id": "09-49",
+    "derived": "X",
+    "confidence": "high",
+    "note": "NO option correct. General term exponent = 6-r; independent term at r=6: C(9,6)·(-2)^6 = 84·64 = +5376. Options ±672 (= 84·2^3) and ±10752 suggest the key-setter used the wrong power of (-2). True value 5376."
+  }
+]
