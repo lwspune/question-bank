@@ -296,20 +296,13 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
-  // ── The three chapters the TEXTBOOK ingest never built (it shipped 12 of 15).
-  //    Their DB chapters do not exist, so committing here would auto-create bare
-  //    chapters with no subtopics and no solved corpus to author against. Phase 1
-  //    runs scripts/stateboard/ over Ch_04 / Ch_07 / Ch_08 first (all three PDFs
-  //    confirmed present under the stateboard SOURCE_ROOT); then fill `subtopics`
-  //    from the DB and drop `blockedOnTextbookChapter`.
-  //    ⚠ The three `chapterName`s below are PROVISIONAL — unlike every other
-  //    entry in this file they were NOT verified against a live DB row, because
-  //    no such row exists yet. Phase 1 creates them from the textbook's own
-  //    chapter titles; re-verify these three against the DB afterwards. The
-  //    singular/plural is a real hazard ("Binomial Distribution" is what both the
-  //    MHT-CET and NDA Maths banks call it; the compilation says "Binomial
-  //    Distributions"), and getting it wrong forks the chapter exactly the way
-  //    the header warns about.
+  // ── The three chapters the TEXTBOOK ingest had never built (it shipped 12 of
+  //    15). UNBLOCKED 2026-08-13: Phase 1 ingested Ch_04 / Ch_07 / Ch_08 via
+  //    scripts/stateboard/, so all 15 DB chapters now exist and the subtopics
+  //    below are read back from the live rows like every other entry here.
+  //    The provisional `chapterName`s were re-verified against the DB and all
+  //    three were right — note "Binomial Distribution" is SINGULAR, matching the
+  //    MHT-CET and NDA banks, while the compilation says "Binomial Distributions".
   "def-integration-12-pyq": {
     id: "def-integration-12-pyq",
     chapterName: "Definite Integration",
@@ -317,8 +310,12 @@ export const CHAPTERS: Record<string, Chapter> = {
     sourceFile: "MH_HSC_12_Maths_PYQ__Definite_Integration.docx",
     docx: P2("12th_Part_2_04.Definite_Integration.docx"),
     note: note("Definite Integration"),
-    subtopics: [],
-    blockedOnTextbookChapter: "Part 02/Ch_04_Definite_Integration.pdf",
+    subtopics: [
+      "Fundamental Theorem of Integral Calculus",
+      "Definite Integral as a Limit of a Sum",
+      "Methods of Evaluation of Definite Integrals",
+      "Properties of Definite Integrals",
+    ],
   },
 
   "prob-distributions-12-pyq": {
@@ -328,8 +325,13 @@ export const CHAPTERS: Record<string, Chapter> = {
     sourceFile: "MH_HSC_12_Maths_PYQ__Probability_Distributions.docx",
     docx: P2("12th_Part_2_07.Probability_Distributions.docx"),
     note: note("Probability Distributions"),
-    subtopics: [],
-    blockedOnTextbookChapter: "Part 02/Ch_07_Probability_Distributions.pdf",
+    subtopics: [
+      "Random Variables and Their Types",
+      "Probability Mass Function of a Discrete Random Variable",
+      "Cumulative Distribution Function",
+      "Expected Value and Variance of a Random Variable",
+      "Continuous Random Variables and Probability Density Function",
+    ],
   },
 
   "binomial-distributions-12-pyq": {
@@ -339,8 +341,11 @@ export const CHAPTERS: Record<string, Chapter> = {
     sourceFile: "MH_HSC_12_Maths_PYQ__Binomial_Distribution.docx",
     docx: P2("12th_Part_2_08.Binomial_Distributions.docx"),
     note: note("Binomial Distribution"),
-    subtopics: [],
-    blockedOnTextbookChapter: "Part 02/Ch_08_Binomial_Distributions.pdf",
+    subtopics: [
+      "Bernoulli Trials",
+      "The Binomial Distribution",
+      "Mean and Variance of a Binomial Distribution",
+    ],
   },
 };
 

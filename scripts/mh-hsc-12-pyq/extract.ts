@@ -36,6 +36,10 @@ export type Draft = {
   options?: { label: string; text: string }[];
   /** Filename inside the docx's word/media/, extracted by `npm run` step 2. */
   image?: string;
+  /** Set when this is a KNOWN multiple-choice question whose option list the
+   *  compilation lost. It currently reads as free-response, which is a silent
+   *  downgrade — commit refuses such a row rather than shipping the wrong format. */
+  pendingMcq?: string;
 };
 
 /** A repair from data/defects.json, applied by ref. */
@@ -62,10 +66,26 @@ type OptionFix = {
  */
 function applyRepairs(drafts: Draft[], chapterId: string): string[] {
   const defects = JSON.parse(readFileSync(join(DATA, "defects.json"), "utf8")) as {
-    mcqOptionsLost: { recovered: Recovered[] };
+    mcqOptionsLost: { recovered: Recovered[]; needVisionPass: { ref: string; tag: string }[] };
     optionsMistranscribed: { fixes: OptionFix[] };
   };
   const log: string[] = [];
+
+  // A question whose option list was lost has no full (a)-(d) run, so splitOptions
+  // reads it as free-response and it would ship as a SUBJECTIVE question — a
+  // silent downgrade, invisible in every count. These are known MCQs awaiting a
+  // vision pass, so name them loudly instead.
+  for (const pending of defects.mcqOptionsLost.needVisionPass) {
+    if (!pending.ref.startsWith(`${chapterId}#`)) continue;
+    const d = drafts.find((x) => x.ref === pending.ref);
+    if (!d) throw new Error(`defects.json names ${pending.ref}, which this extraction did not produce`);
+    if (d.format === "mcq") {
+      log.push(`${pending.ref}: NOW HAS OPTIONS — its needVisionPass entry is stale, remove it`);
+      continue;
+    }
+    d.pendingMcq = pending.tag;
+    log.push(`${pending.ref}: KNOWN MCQ with options still lost ${pending.tag} — needs a vision pass`);
+  }
 
   for (const rec of defects.mcqOptionsLost.recovered) {
     if (!rec.ref.startsWith(`${chapterId}#`)) continue;

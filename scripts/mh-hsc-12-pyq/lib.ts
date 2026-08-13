@@ -223,6 +223,9 @@ export type PyqQuestion = {
   solution?: string;
   /** Filename in the docx's word/media/, attached separately after commit. */
   image?: string;
+  /** A KNOWN MCQ whose option list the compilation lost. It reads as
+   *  free-response, which is the wrong format, so the build REFUSES it. */
+  pendingMcq?: string;
 };
 
 export type PyqChapter = { chapterName: string; subjectName: string; subtopics: string[] };
@@ -248,6 +251,15 @@ export function buildPyqRecords(
     const difficulty = q.difficulty.trim().toUpperCase() as Difficulty;
     if (!DIFFICULTIES.includes(difficulty)) {
       throw new Error(`${q.ref}: difficulty "${q.difficulty}" not EASY|MODERATE|HARD`);
+    }
+    // Shipping a known MCQ as free-response is a silent format downgrade: the
+    // student is asked to write an answer to a question that was set with four
+    // options, and nothing in the row records that anything is missing.
+    if (q.pendingMcq) {
+      throw new Error(
+        `${q.ref}: known MCQ ${q.pendingMcq} whose options are still lost — repair it in ` +
+          `data/defects.json (mcqOptionsLost) or drop the row. Refusing to ship it as subjective.`,
+      );
     }
 
     const base = {
