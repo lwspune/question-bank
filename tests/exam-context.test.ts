@@ -19,8 +19,23 @@ describe("isPracticeOnlyExam", () => {
   it("is true for the Foundation Course (worksheet-only corpus)", () => {
     expect(isPracticeOnlyExam("Foundation Course")).toBe(true);
   });
-  it("is true for Maharashtra HSC Class 12 (textbook/practice-first corpus)", () => {
-    expect(isPracticeOnlyExam("Maharashtra HSC Class 12")).toBe(true);
+  // FLIPPED 2026-08-13, deliberately. This asserted `true` while the exam held
+  // only the Balbharati textbook corpus. Its board PYQs are now in — 317
+  // questions across all 15 Maths chapters, every sitting 2015-2025 — so the
+  // flag has to read false: it tracks whether an exam HAS past-year questions,
+  // not which corpus is larger (the textbook side is still ~8x bigger and stays
+  // reachable on the /browse toggle). Same reasoning as mh-ssc-10, which has
+  // never been practiceOnly because Class 10 is a board year.
+  it("is FALSE for Maharashtra HSC Class 12 now that its board PYQs are in", () => {
+    expect(isPracticeOnlyExam("Maharashtra HSC Class 12")).toBe(false);
+  });
+
+  // Class 9 and 11 are NOT board years, so they can never acquire PYQs and stay
+  // practice-only permanently — unlike Class 12 above, whose flag was always
+  // going to flip once the papers were ingested.
+  it("is true for the non-board years, which can never have PYQs", () => {
+    expect(isPracticeOnlyExam("Maharashtra State Board Class 9")).toBe(true);
+    expect(isPracticeOnlyExam("Maharashtra State Board Class 11")).toBe(true);
   });
   it("is false for PYQ exams and unknown/empty names", () => {
     expect(isPracticeOnlyExam("NDA")).toBe(false);

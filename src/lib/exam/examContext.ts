@@ -130,7 +130,15 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "Maharashtra HSC Class 12", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/mh-hsc-12", // exam hub: "coming soon" until notes ship
-    practiceOnly: true, // textbook exercises/solved-examples corpus (board PYQs come later) → /browse defaults to Practice
+    // NOT practiceOnly since 2026-08-13: Class 12 IS a board year and the board
+    // PYQ corpus is now in — 317 questions across ALL 15 Maths chapters, every
+    // sitting 2015-2025 (no 2021, the exams were cancelled). The flag tracks
+    // whether an exam HAS past-year questions, not which corpus is larger; the
+    // textbook side is still ~8x bigger and reachable on the /browse toggle.
+    // Same call as mh-ssc-10, which is not practiceOnly for the same reason.
+    // Caveat worth knowing before reading the PYQ view as complete: the source
+    // is a chapterwise compilation, not reconstructed sittings — coverage runs
+    // 38-45 of the 44 questions in a paper — so it cannot back a /mock sitting.
     boardExam: true, // gets the /board reader + the "Board" nav tab
     board: "Maharashtra State Board",
     std: 12,

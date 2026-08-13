@@ -61,7 +61,13 @@ describe("shapeExamCatalog", () => {
     const board = exams.find((e) => e.slug === "mh-hsc-12")!;
     expect(board.totalPublicQuestions).toBe(1435);
     expect(board.boardExam).toBe(true);
-    expect(board.practiceOnly).toBe(true);
+    // FLIPPED 2026-08-13: mh-hsc-12's board PYQs are now in (317 q across all 15
+    // Maths chapters), so it is no longer practice-only. The flag tracks whether
+    // an exam HAS past-year questions, not which corpus is larger.
+    expect(board.practiceOnly).toBe(false);
+    // Keep coverage of the TRUE case, which is what this assertion was for —
+    // Class 9 is not a board year, so it can never acquire PYQs.
+    expect(exams.find((e) => e.slug === "mh-sb-9")!.practiceOnly).toBe(true);
     // No guide, no shipped notes → bank href with the resolved id.
     expect(board.href).toBe("/browse?examId=id-board");
 
