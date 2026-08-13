@@ -2227,6 +2227,130 @@ export const PAPERS: Record<string, PaperSpec> = {
     bankAdd: true,
     createPaper: false, // Excel is the requested deliverable; no /dashboard/papers paper
   },
+
+  // LWS "NDA GAT MOCK W07" — a 150-q GAT mock: Q1-50 English, Q51-150 Chemistry (the
+  // paper carries NO Physics/Biology/History/Geography/Polity/CA section, unlike W09).
+  // Source `NDA GAT MOCK W07 (2).pdf` is BORN-DIGITAL with a clean text layer, so the
+  // whole paper was extracted from `page.get_text()` — no vision pass. 137 of 150
+  // stem+option blocks parsed mechanically; the 13 that did not are hand-written (the
+  // 10 SPOTTING ERRORS items, whose options are inline `(a)/ ... (b)/` segments rather
+  // than an option block, plus the two Assertion-Reason items Q56/Q73 and the
+  // statement-list Q139, where an embedded "A." / "1." reads as an option marker).
+  //
+  // **A PRINTED ANSWER KEY EXISTS** (`NDA GAT MOCK W07 - Answer Key (1).pdf`, all 150),
+  // so unlike most LWS papers the answers are GIVEN, not derived. Every key was still
+  // re-derived independently before use, and that caught **THREE PROVABLY WRONG KEYS**,
+  // all corrected here (the W09 Q135 precedent — grading against a wrong key marks every
+  // correct student wrong):
+  //   Q138 key (c) Nitrogen -> **(b) Carbon dioxide**. Only \(\text{CO}_2\) reacts with
+  //        water (giving carbonic acid); \(\text{H}_2\), \(\text{N}_2\), \(\text{O}_2\)
+  //        give neutral solutions. THREE independent confirmations: my derivation, a
+  //        blind agent that never saw the key, and a SIBLING BANK ROW
+  //        (b6576b8d-d37f-425b-b09a-a5e610770845, "Which of the following is an acidic
+  //        oxide?") which already keys \(\text{CO}_2\).
+  //   Q139 key (b) 2,3,4 only -> **(a) 1,2,3 only**. Stainless steel is Fe+Cr+Ni and
+  //        contains NO copper, so statement 4 is false, while statement 1 (brass = Cu+Zn)
+  //        is true — the printed key both admits a false statement and drops a true one.
+  //   Q140 key (a) Copper oxide -> **(d) Sodium oxide**. CuO and \(\text{Fe}_2\text{O}_3\)
+  //        are water-insoluble and \(\text{Al}_2\text{O}_3\) is amphoteric but
+  //        water-insoluble; only \(\text{Na}_2\text{O}\) dissolves, giving NaOH.
+  // The official key is RETAINED on four further items that are defective or debatable
+  // but not provably wrong — a judgement call is not a licence to override the teacher:
+  // Q90 ("isomerism" is under-specified; read literally all four groups show isomerism,
+  // so the item works only as FUNCTIONAL isomerism), Q148 (potassium genuinely floats by
+  // density, so (c) is defensible; the key's (b) calcium rests on the NCERT "hydrogen
+  // bubbles make it float" framing), Q56 (the A-R explanation clause is historically
+  // contestable) and Q20 (English sequencing — the strictly best order QSPR is not
+  // offered, and two independent derivations preferred (d) QSRP over the key's (c)).
+  // Each carries a reviewNote.
+  //
+  // Q54 (Celsius-to-Fahrenheit) and Q130 (histone proteins) sit in the Chemistry half of
+  // the printed paper but are NOT chemistry, so they file to Physics > Temperature and
+  // Thermometry and Biology > Protein Structure respectively — the bank taxonomy is the
+  // authority on filing, not the paper's own section order.
+  "gat-mock-w07": {
+    slug: "gat-mock-w07",
+    title: "NDA GAT — LWS Mock W07",
+    recordsFile: "gat-mock-w07.records.json",
+    outName: "Tags_NDA_GAT_Mock_W07",
+    sourceFile: "NDA_GAT_MOCK_W07.pdf",
+    subjects: {
+      English: {
+        Vocabulary: ["Antonyms", "Confusable Word Pairs", "Synonyms", "Word Definition"],
+        Grammar: [
+          "Active and Passive Voice", "Articles, Determiners and Quantifiers",
+          "Correct Sentence Identification", "Direct and Indirect Speech",
+          "Discourse Markers and Connectors", "Parts of Speech", "Preposition Usage",
+          "Sentence Completion", "Subject-Verb Agreement",
+        ],
+        "Reading Comprehension": ["Inferential Comprehension", "Literal Comprehension", "Vocabulary in Context"],
+        "Sentence Rearrangement": ["Paragraph Sequencing (S1–S6)", "Sentence Part Rearrangement (PQRS)"],
+        "Spotting Errors": [
+          "Articles, Determiners and Pronouns", "Correct Sentence Identification",
+          "Mixed Error Detection", "No Error (Correct Sentence)", "Sentence Improvement",
+          "Subject-Verb Agreement", "Tense and Verb Form",
+          "Word Choice, Prepositions and Punctuation",
+        ],
+      },
+      Chemistry: {
+        "Acids, Bases and Salts": [
+          "Acid-Base Theory: Concepts, Oxides and Electrolytes", "Common Acids: Names, Formulas and Uses",
+          "Salts and Common Compounds", "Water of Crystallization", "pH Scale and Common Substances",
+        ],
+        "Atomic Structure and Periodic Classification": [
+          "Atomic Models: Dalton, Rutherford, Bohr", "Atomic Number, Mass Number and Subatomic Particles",
+          "Electron Configuration and Valence Shells", "Isotopes and Isoelectronic Species",
+          "Periodic Trends, Valency and Atomicity",
+        ],
+        "Carbon and Its Compounds": [
+          "Allotropes of Carbon", "Catenation, Tetra-valency and Isomerism",
+          "Common Carbon Compounds and Pigments", "Functional Groups and Common Organic Compounds",
+          "Hydrocarbons and Organic Classification", "Soaps, Detergents and Hydrogenation of Oils",
+        ],
+        "Chemical Bonding": [
+          "Bond Counting and Molecular Structure", "Ionic and Covalent Bonding",
+          "Valency, Oxidation States and Molecular Formula",
+        ],
+        "Chemical Reactions": [
+          "Endothermic and Exothermic Reactions", "Physical vs Chemical Changes",
+          "Redox: Oxidation, Reduction and Reducing Agents",
+          "Specific Reactions: Precipitation, Electrolysis and Daily Life",
+          "Thermal and Photochemical Decomposition",
+          "Types of Reactions: Combination, Decomposition, Displacement",
+        ],
+        "Chemistry in Everyday Life": ["Common Chemicals and Their Uses", "Medicines and Health Chemistry"],
+        "Hydrogen and Water": [
+          "Hardness and Purity of Water", "Properties and Anomalous Behaviour of Water",
+          "Properties of Hydrogen",
+        ],
+        "Industrial and Applied Chemistry": [
+          "Cement, Glass and Building Materials", "Common Industrial Substances and Alloys",
+          "Fertilizers", "Industrial Gases, Manufacturing and Reactions", "Paints and Coatings",
+        ],
+        "Matter and Its States": [
+          "Colloids and Suspensions", "Compounds, Mixtures and Solutions",
+          "Physical vs Chemical Changes", "Separation Techniques",
+          "States of Matter, Phase Changes and Diffusion",
+        ],
+        "Metals and Non-Metals": [
+          "Alloys and Their Composition", "Corrosion and Its Prevention",
+          "Extraction of Metals and Ores", "Reactivity Series and Reactions with Water",
+        ],
+        "Mole Concept and Stoichiometry": [
+          "Mole Concept, Avogadro's Law and Molar Calculations",
+          "Stoichiometry and Laws of Chemical Combination",
+        ],
+        "Practical Chemistry": ["Practical Applications: Health, Food and Lab Methods"],
+      },
+      // Q54 + Q130 only — printed in the Chemistry half but filed where they belong.
+      Physics: { "Heat and Thermodynamics": ["Temperature and Thermometry"] },
+      Biology: { Biochemistry: ["Protein Structure"] },
+    },
+    pyqNote: "NDA GAT practice — LWS GAT Mock W07",
+    examName: "NDA",
+    section: { key: "gat-mock-w07", label: "GAT Mock W07" },
+    bankAdd: true,
+  },
 };
 
 export function requirePaper(slug: string | undefined): PaperSpec {
