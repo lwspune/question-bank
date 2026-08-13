@@ -8,7 +8,7 @@ import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import DriftTable from "@/app/guide/_components/DriftTable";
 import ExamPaperMatrix from "@/app/guide/_components/ExamPaperMatrix";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { ROUTES } from "../_data/nda-maths";
 import {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Trends() {
-  const supabase = createSupabaseServerClient();
+  const supabase = createSupabaseAnonClient();
   const taxonomy = await resolveTaxonomy(supabase, "NDA", "Mathematics");
 
   const sideNav = ROUTES.map((r) => ({

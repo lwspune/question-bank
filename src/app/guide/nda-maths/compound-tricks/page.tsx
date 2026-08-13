@@ -5,7 +5,7 @@ import StatBlock from "@/app/guide/_components/StatBlock";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import CompoundCard from "@/app/guide/_components/CompoundCard";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { ROUTES } from "../_data/nda-maths";
 import { COMPOUNDS } from "../_data/compounds";
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 export default async function CompoundTricks() {
-  const supabase = createSupabaseServerClient();
+  const supabase = createSupabaseAnonClient();
   const taxonomy = await resolveTaxonomy(supabase, "NDA", "Mathematics");
 
   const sideNav = ROUTES.map((r) => ({
