@@ -29,6 +29,26 @@ export type TableStat = {
   totalBytes: number;
   seqScans: number;
   idxScans: number;
+  /**
+   * `pg_class.relpages` / `relallvisible` — heap pages, and how many of them
+   * VACUUM has marked all-visible.
+   *
+   * Their RATIO is what decides whether an Index Only Scan is actually
+   * index-only: for a page not marked all-visible, Postgres must visit the heap
+   * anyway. On `questions` at 67.4% coverage that meant 13,092 heap fetches on a
+   * scan reporting itself as Index Only — most of the cost behind the /browse
+   * slowness.
+   *
+   * NOT predicted by `deadRows`: a bulk INSERT creates pages with no dead rows
+   * that are also not marked all-visible, which is this project's whole
+   * ingestion pattern. `syllabus_concepts` runs 0 dead rows at 43.2% coverage.
+   *
+   * OPTIONAL, and absent (not zero) on snapshots predating migration 0076 —
+   * `rowToSnapshot` passes the stored jsonb straight through, so an older row
+   * simply has no such key. Reporting that as 0% would invent a measurement.
+   */
+  heapPages?: number | null;
+  allVisiblePages?: number | null;
 };
 
 export type HealthSnapshot = {

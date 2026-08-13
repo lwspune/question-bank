@@ -150,6 +150,51 @@ describe("evaluateFlags — spill nobody claims", () => {
   it("ignores a trivial amount of unexplained spill", () => {
     expect(codes(d({ tempBytesDelta: 1024, queries: [] }))).not.toContain("spill-unattributed");
   });
+
+  /**
+   * FALSE POSITIVE FIXED 2026-08-13. The rule fired on a window where the spill
+   * was fully recorded in the very snapshot the rule was reading.
+   *
+   * On 08-12 the database spilled 113 MB. Six queries had spill; FOUR of them
+   * were first-seen, so `windowKnown` was false and they were dropped from the
+   * total. The two survivors moved 0.9 MB between them — and 0.9 MB is exactly
+   * what the warning reported as "all we can account for", while 177 MB sat in
+   * the same `queries` array.
+   *
+   * The discriminator is ARITHMETIC, not a heuristic: a single query cannot have
+   * spilled more IN THIS WINDOW than the whole database did. Under that bound a
+   * first-seen row's figure is credible as window activity and counts; over it,
+   * the figure is provably a lifetime total and is still ignored — which is what
+   * keeps the test above (30 GB "appearing" inside a 200 MB window) green.
+   */
+  it("counts a first-seen spiller whose spill FITS inside the window", () => {
+    // The real 08-12 shape: 113 MB of database spill, three newly-seen queries
+    // at 81 / 63 / 32 MB. Each is physically possible within the window, so the
+    // window IS explained and the warning must not fire.
+    const MB = 1024 * 1024;
+    const newSpiller = (mb: number) =>
+      q({ isNew: true, windowKnown: false, callsDelta: 2, tempBytesDelta: mb * MB });
+    const flags = evaluateFlags(
+      d({
+        tempBytesDelta: 113 * MB,
+        queries: [newSpiller(81), newSpiller(63), newSpiller(32)],
+      })
+    );
+    expect(flags.map((f) => f.code)).not.toContain("spill-unattributed");
+  });
+
+  it("still ignores a first-seen figure too large to be this window's", () => {
+    // Same shape as the test above it, stated as the bound: 30 GB cannot have
+    // been written in a window where the database wrote 200 MB, so the row is
+    // carrying lifetime history and must not be allowed to explain anything.
+    const flags = evaluateFlags(
+      d({
+        tempBytesDelta: 200 * 1024 * 1024,
+        queries: [q({ isNew: true, windowKnown: false, tempBytesDelta: 30 * 1024 * 1024 * 1024 })],
+      })
+    );
+    expect(flags.map((f) => f.code)).toContain("spill-unattributed");
+  });
 });
 
 describe("evaluateFlags — the PostgREST 1000-row cap", () => {
@@ -199,6 +244,114 @@ describe("evaluateFlags — table hygiene", () => {
       d({ tables: [{ name: "tiny", liveRows: 10, deadRows: 9, totalBytes: 1, seqScans: 0, idxScans: 0 }] })
     );
     expect(flags.map((f) => f.code)).not.toContain("dead-rows");
+  });
+
+  /**
+   * THE THRESHOLD MUST SIT ABOVE AUTOVACUUM'S OWN TRIGGER (raised 20 → 35 on
+   * 2026-08-13).
+   *
+   * Postgres vacuums a table when dead rows exceed `autovacuum_vacuum_threshold
+   * + autovacuum_vacuum_scale_factor × live` = 50 + 0.2 × live. On `questions`
+   * that is 9,415 rows; the old 20% rule fired at 9,365 — the SAME POINT. A
+   * monitor placed where the automatic remediation already acts cannot carry
+   * information, and the message said as much ("autovacuum usually clears this
+   * on its own"). It had never once fired in 11 snapshots.
+   *
+   * Eleven days of real history show the healthy sawtooth: 7.7 → 8.8 → 14.5 →
+   * 15.6 → 18.3 → 7.2 → 14.0. It climbs, autovacuum runs, it drops. Warning
+   * anywhere inside that band reports normal operation as a problem.
+   */
+  it("sits above autovacuum's own trigger, so firing means autovacuum is losing", () => {
+    expect(THRESHOLDS.deadRowsWarnPct).toBeGreaterThan(20);
+  });
+
+  it("stays quiet across the normal autovacuum sawtooth", () => {
+    // 18.3% — the highest reading in eleven days of real snapshots, taken the
+    // day before autovacuum brought it back down to 7.2%.
+    const flags = evaluateFlags(
+      d({ tables: [{ name: "questions", liveRows: 44631, deadRows: 8167, totalBytes: 1, seqScans: 0, idxScans: 0 }] })
+    );
+    expect(flags.map((f) => f.code)).not.toContain("dead-rows");
+  });
+});
+
+/**
+ * VISIBILITY-MAP COVERAGE — added 2026-08-13, the blind spot behind a real
+ * slowdown.
+ *
+ * Postgres marks a page "all-visible" once VACUUM has confirmed every row on it
+ * is visible to everyone. An Index Only Scan can skip the table for such pages
+ * and MUST visit the table for the rest. That single ratio is what decides
+ * whether an "index only" scan is actually index-only.
+ *
+ * Measured on `questions`: 67.4% coverage, and the plan showed 13,092 heap
+ * fetches on a scan that reports itself as Index Only — about 57% of the cost of
+ * the query behind the `/browse` slowness.
+ *
+ * DEAD ROWS DO NOT PREDICT THIS, and `syllabus_concepts` proves it: ZERO dead
+ * rows — a perfect score on the metric already tracked — with 43.2% coverage.
+ * The reason is the workload: a bulk INSERT creates pages that have no dead rows
+ * AND are not marked all-visible, and this project ingests in batches of
+ * thousands. So the existing rule can be green while the real problem is present.
+ */
+describe("evaluateFlags — visibility-map coverage", () => {
+  const table = (over: Partial<HealthDelta["tables"][number]>) => ({
+    name: "questions",
+    liveRows: 46827,
+    deadRows: 0,
+    totalBytes: 64 * 1024 * 1024,
+    seqScans: 0,
+    idxScans: 0,
+    ...over,
+  });
+
+  it("notes a large table whose pages are mostly not marked all-visible", () => {
+    // The real reading: 5,216 of 7,742 pages = 67.4%.
+    const flags = evaluateFlags(
+      d({ tables: [table({ heapPages: 7742, allVisiblePages: 5216 })] })
+    );
+    const f = flags.find((x) => x.code === "visibility-map-coverage");
+    expect(f).toBeDefined();
+    expect(f!.message).toContain("questions");
+  });
+
+  it("stays quiet when coverage is healthy", () => {
+    expect(
+      codes(d({ tables: [table({ heapPages: 7742, allVisiblePages: 7500 })] }))
+    ).not.toContain("visibility-map-coverage");
+  });
+
+  it("ignores a small table, where reading the whole heap is trivial anyway", () => {
+    // user_activity sits at 30.4% coverage — the worst ratio on the database —
+    // across 56 pages. That is under half a megabyte; it costs nothing and
+    // flagging it would be pure noise. Size is what makes coverage matter.
+    expect(
+      codes(d({ tables: [table({ name: "user_activity", heapPages: 56, allVisiblePages: 17 })] }))
+    ).not.toContain("visibility-map-coverage");
+  });
+
+  it("catches what the dead-row rule structurally cannot", () => {
+    // syllabus_concepts: 0 dead rows, 43.2% coverage. The proof that these two
+    // metrics are not interchangeable — scaled here to clear the size gate.
+    const flags = evaluateFlags(
+      d({ tables: [table({ name: "syllabus_concepts", deadRows: 0, heapPages: 2500, allVisiblePages: 1080 })] })
+    );
+    const c = flags.map((f) => f.code);
+    expect(c).not.toContain("dead-rows");
+    expect(c).toContain("visibility-map-coverage");
+  });
+
+  it("says nothing when the reading was never recorded", () => {
+    // Snapshots predating migration 0076 carry no page counts. Treating absent
+    // as zero would render as 0% coverage — a measurement nobody took, and the
+    // one thing this tracker must never invent.
+    expect(codes(d({ tables: [table({})] }))).not.toContain("visibility-map-coverage");
+  });
+
+  it("does not divide by zero on an empty table", () => {
+    expect(
+      codes(d({ tables: [table({ heapPages: 0, allVisiblePages: 0 })] }))
+    ).not.toContain("visibility-map-coverage");
   });
 });
 
