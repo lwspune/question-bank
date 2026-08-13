@@ -64,7 +64,18 @@ function main() {
   // leaves two chapters disagreeing about who owns a question.
   for (const it of items) {
     if (!find(it.keep)) problems.push(`${it.tag}: keep ${it.keep} not found`);
-    if (!find(it.drop)) problems.push(`${it.tag}: drop ${it.drop} not found`);
+    if (!find(it.drop)) {
+      // This script is NOT idempotent by design — it rewrites the drafts in
+      // place, so a second run cannot find rows the first one removed. Say that,
+      // because the bare "not found" reads like a bad ledger entry. It must stay
+      // a refusal rather than a no-op: a `useText` edit made since the last run
+      // would otherwise be silently skipped.
+      problems.push(
+        find(it.keep)
+          ? `${it.tag}: drop ${it.drop} is already gone — re-run extract.ts before dedupe.ts`
+          : `${it.tag}: drop ${it.drop} not found`,
+      );
+    }
     if (it.useText && it.useText !== "either" && !find(it.useText)) {
       problems.push(`${it.tag}: useText ${it.useText} not found`);
     }
