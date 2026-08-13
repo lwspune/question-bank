@@ -39,6 +39,58 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-08-14
+
+### Stop `loadPrincipleStats` swallowing its error — the id count is the lesser problem
+
+`src/app/guide/nda-maths/principles/page.tsx` passes **all 488 principle-tagged question ids into a single `.in()`** (~18 kB of URL; the known failure in this repo was 833 ids ≈ 31 kB), and then does `if (error) return stats;` — discarding the error and returning an empty map. The page renders normally with no stats and no signal.
+
+**Why:** as of 2026-08-13 that page is **prerendered** (it moved off the cookie-bound client), so a single 400 at build time would bake an empty stats block into the artifact and serve it for the full 24-hour `revalidate` window — a silent content regression with a slow feedback loop. The id count itself is not urgent: principle tagging is curated and slow-growing (~20 principles, 488 tags), unlike question ingestion. It is the swallow that turns a loud failure into an invisible one.
+
+**How to apply:** log the error before returning (`console.error`) so it appears in Vercel's runtime logs and in the build output; then chunk the `.in()` at ~200 ids and merge the results, which removes the ceiling entirely. Both are small and independent — the log is the one that matters. While there, consider whether an empty stats map should fail the build rather than render a stats-less page.
+
+### Register migration 0077 in `schema_migrations` — hygiene, not risk
+
+`questions_public_kind_exam_created_idx` exists in production but has **no row in `supabase_migrations.schema_migrations`**, because it was built with `CREATE INDEX CONCURRENTLY` by hand and `apply_migration` cannot run that inside a transaction.
+
+**Why:** lower stakes than it first appears, and worth writing down so it is not re-escalated: the `.sql` file **does** exist in the repo and uses `CREATE INDEX IF NOT EXISTS`, so a replay against prod or the test project is a clean no-op. This is **not** the 0021/0066 class, where the *file* was missing and prod was genuinely unrebuildable. The only real cost is that `list_migrations` shows an incomplete history, so the index has no recorded provenance.
+
+**How to apply:** one INSERT into `supabase_migrations.schema_migrations` with the 0077 version stamp, or simply let the next `testdb:migrate` replay record it there and accept the prod gap. Do it opportunistically alongside the next migration.
+
+### Validate the `/browse` landing as a PRODUCT change — it was chosen on taste, not data
+
+The bare `/browse` page now shows exam start-pills instead of 25 questions. All three candidate designs saved **identical** compute, so the choice between "static front door" and "cache the existing list" was a product judgement made without product evidence, and it was labelled as such at the time.
+
+**Why:** the panel replaces the first thing an anonymous visitor sees on the site's most-visited page. If people were clicking into those 25 questions, showing navigation instead could raise bounce; if they were bouncing off an arbitrary list (it rendered 25 Maharashtra HSC Binomial-Distribution questions on 2026-08-13, being simply the newest ingest), it should improve. Nobody knows which, and the data to tell exists.
+
+**How to apply:** Vercel Analytics → **Routes** tab, filtered to `/browse` — compare bounce rate and click-through for the week before and after 2026-08-13. Pair it with the two outstanding measurements from the same change: whether the ~352 daily statement timeouts have gone to zero (Supabase postgres logs, `canceling statement due to statement timeout`), and whether Fluid Active CPU actually fell (`/browse` was 41% of it, but at a below-average 124 ms per invocation, so the saving is the *count* of renders, not their weight). If bounce worsens, "cache the list as-is" is the fallback and is a small diff.
+
+---
+
+## 2026-08-13
+
+### Measure the new `/browse` index's WRITE cost on the next ingest, and decide keep-or-drop
+
+Migration 0077 added `questions_public_kind_exam_created_idx` — the 17th index on the most heavily-written table here (index total 31 → 34 MB). The READ side is measured and large: kind+exam **1,986 → 5.3 ms**, kind-only **4,454 → 228 ms**. The WRITE side is **not measured at all**, and it is the exact objection on which this trade was declined before.
+
+**Why:** the decision to keep the index is currently half-evidenced. Ingests here run in batches of thousands, so a per-row cost that is invisible interactively is the one that actually matters — and nothing will surface it except an ingest. Left unmeasured, the index either sits there costing something nobody quantified, or gets dropped later on a hunch.
+
+**How to apply:** before the next bulk commit, note `pg_stat_user_tables.n_tup_ins` and the wall time; run the ingest; compare against a previous run of similar size from the git history of the same pipeline. If the slowdown is material, the honest options are (a) drop it and accept ~700 ms browse latency, or (b) keep it and accept the ingest cost — both defensible, but pick on the number. `DROP INDEX CONCURRENTLY` is non-blocking. Note also that `questions_public_filters_idx` may now be partially redundant (0077 covers exam + the sort key, with `question_kind` as a bonus); check `idx_scan` on both in `pg_stat_user_indexes` after a week before considering removing either — dropping the wrong one silently reverts this work.
+
+### Re-calibrate the visibility-map threshold once it has met a week of real data
+
+Migration 0076 warns below **80%** coverage on tables over 1,000 pages. That number is set from a **single reading** and fires on exactly two tables today (`questions` 67.4%, `options` 66.0%). After the manual `VACUUM (ANALYZE)` on 2026-08-13 `questions` sits at 100%, but it will decay under ingestion — and nobody yet knows what its steady state is.
+
+**Why:** if the steady state is ~67%, the rule prints the same two notes every single day, which is precisely how a report earns being ignored ([[monitor-threshold-calibration]] rule 2). If it holds near 100%, then 80% is a genuine alarm and worth keeping. Only elapsed time distinguishes those.
+
+**How to apply:** read a week of `db_health_snapshots` (`heapPages`/`allVisiblePages` now stored per table) and plot the decay for `questions` and `options`. If coverage settles well below 80%, either lower the threshold to just under the steady state, or — better — attack the cause: this is an INSERT-heavy workload, so the relevant knob is `autovacuum_vacuum_insert_scale_factor` (default 0.2, i.e. ~9,400 inserts before autovacuum fires on `questions`), **not** `autovacuum_vacuum_scale_factor` which only counts dead rows. Set it per-table via `ALTER TABLE public.questions SET (autovacuum_vacuum_insert_scale_factor = 0.05)`.
+
+### Carry-forward — relax `experimental.cpus: 4` + `staticPageGenerationTimeout: 180`
+
+Not a new suggestion: see the **2026-08-05** entry of the same name, still open. The case for it strengthened on 2026-08-13 — the `/questions` prerender contention those settings work around had two causes, and both are now fixed (the 2026-08-05 wide-sort, and the 0077 index gap plus the vacuum, which together took the browse query family from ~35 min of DB time per 4 days to a fraction of it). Three consecutive builds this session produced zero statement timeouts and zero SIGTERMs. Worth retesting the relaxation now rather than leaving a permanent build slowdown in place for a cause that no longer exists.
+
+---
+
 ## 2026-08-11
 
 ### Rotate the database password — it was pasted into a chat transcript, and it is weak
