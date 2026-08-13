@@ -9,7 +9,7 @@ import PrincipleCard from "@/app/guide/_components/PrincipleCard";
 import CollapsibleDomain from "@/app/guide/_components/CollapsibleDomain";
 import BrowseLink from "@/app/guide/_components/BrowseLink";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { loadPrincipleQuestionIds } from "@/lib/tags/principleTags";
 import { ROUTES } from "../_data/nda-maths";
@@ -79,7 +79,7 @@ const sideNav = ROUTES.map((r) => ({
 }));
 
 export default async function PrinciplesIndex() {
-  const supabase = createSupabaseServerClient();
+  const supabase = createSupabaseAnonClient();
 
   // Live tag counts + %HARD + chapter spread for TOP_11 slugs.
   const slugs = TOP_11.map((p) => p.slug!).filter(Boolean);

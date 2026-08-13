@@ -7,7 +7,7 @@ import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import SignFlipHeatmap from "@/app/guide/_components/SignFlipHeatmap";
 import WorkedExampleCard from "@/app/guide/_components/WorkedExampleCard";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { loadWorkedExamples } from "@/lib/guide/loadWorkedExamples";
 import { ROUTES } from "../_data/nda-maths";
 import {
@@ -36,7 +36,7 @@ const sideNav = ROUTES.map((r) => ({
 }));
 
 export default async function Traps() {
-  const supabase = createSupabaseServerClient();
+  const supabase = createSupabaseAnonClient();
   const exampleIds = [
     ...FACTOR2_EXAMPLE_IDS,
     ...SIGN_FLIP_EXAMPLE_IDS,
