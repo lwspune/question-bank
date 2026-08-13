@@ -1,0 +1,237 @@
+{
+  "_comment": "Adjudicated repairs for Indefinite Integration. Two defect epicentres: file 04 (Integration by Parts) carries a systematic key displacement — 10 rows whose printed solution derives the correct option while the key letter points elsewhere; file 10 (Composite) is an UNFINISHED EDITING SESSION — options carry leaked meta-text ('Duplicate check. Let's fix'), planned-but-never-applied replacements, and empty cells. Every entry re-derived by hand; antiderivative repairs verified by differentiation.",
+
+  "04-5": {
+    "answer": "D",
+    "reason": "Key flip B→D: the reduction formula gives −½csc x cot x + ½ln|csc x − cot x| (option D), which the source solution itself derives; the keyed B has both terms unhalved and positive."
+  },
+  "04-6": {
+    "answer": "B",
+    "reason": "Key flip C→B: e^{ax}(a sin bx − b cos bx)/(a²+b²) with a=−1, b=1 gives −(e^{−x}/2)(sin x + cos x) — option B, which the source solution derives. Verified by differentiation."
+  },
+  "04-13": {
+    "answer": "A",
+    "reason": "Key flip D→A: ∫x³ln x = (x⁴/4)ln x − x⁴/16 (option A), exactly the solution's own final line."
+  },
+  "04-14": {
+    "answer": "B",
+    "reason": "Key flip C→B: the substitution reduces to ∫e^t(sin t + cos t)dt = e^t sin t = x·e^{arcsin x} — option B, the solution's own final line."
+  },
+  "04-15": {
+    "answer": "A",
+    "reason": "Key flip C→A: ∫t sin t dt = −t cos t + sin t → −√(1−x²)·arcsin x + x (option A), the solution's own final line."
+  },
+  "04-23": {
+    "answer": "C",
+    "reason": "Key flip B→C: x²sin x + 2x cos x − 2sin x (option C), the solution's own final line; the keyed B swaps sin/cos wholesale."
+  },
+  "04-26": {
+    "answer": "D",
+    "reason": "Key flip A→D: the e^t(f+f′) form gives e^t/t = x/ln x (option D), the solution's own final line."
+  },
+  "04-27": {
+    "answer": "D",
+    "reason": "Key flip A→D: x sec⁻¹x − ln|x+√(x²−1)| (option D), the solution's own final line; the keyed A has the wrong tail √(x²−1)."
+  },
+  "04-39": {
+    "answer": "D",
+    "reason": "Key flip A→D: ∫ln(x²) = 2(x ln x − x) = 2x(ln x − 1) (option D); the keyed A drops the −2x term."
+  },
+  "04-47": {
+    "answer": "A",
+    "reason": "Key flip D→A: x·2ˣ/ln2 − 2ˣ/(ln2)² (option A), the solution's own final line."
+  },
+  "04-43": {
+    "options": { "D": "\\( \\frac{e^x}{2} (\\sin x - \\cos x) + C \\)" },
+    "reason": "Options C (keyed) and D were the same expression with the terms commuted. D replaced with the sign variant (that is ∫eˣsin x); key C retained."
+  },
+
+  "05-6": {
+    "answer": "B",
+    "solution": "By ILATE, the Logarithmic function ranks before the Algebraic one, so \\( u = \\ln x \\) and \\( dv = x^2\\,dx \\). Differentiating \\(\\ln x\\) removes the logarithm, leaving a pure power to integrate.",
+    "reason": "Key flip A→B: ILATE puts Log before Algebraic, so u = ln x. The source solution concedes this outright ('NDA generally expects ILATE, where u = ln x') while the key pointed at x². Solution rewritten clean."
+  },
+  "05-7": {
+    "options": { "C": "\\( \\frac{e^{2x}}{4}(2x+1) + C \\)" },
+    "reason": "Options B (keyed) and C were algebraically identical ((e²ˣ/2)(x−½) = (e²ˣ/4)(2x−1)). C's sign flipped to false; key B retained."
+  },
+  "05-8": {
+    "answer": "A",
+    "reason": "Key flip C→A: −x²cos x + 2x sin x + 2cos x (option A), the solution's own final line; the keyed C flips the middle sign."
+  },
+  "05-11": {
+    "answer": "A",
+    "reason": "Key flip C→A: eˣ(x² − 2x + 2) (option A), the solution's own final line; the keyed C flips the constant's sign."
+  },
+  "05-12": {
+    "answer": "C",
+    "solution": "Integration by parts: \\( \\int u\\,dv = uv - \\int v\\,du \\).",
+    "reason": "Key flip D→C: the parts formula is uv − ∫v du (option C) — the source solution literally says 'Option C would be correct'. Solution rewritten clean."
+  },
+
+  "02-23": {
+    "options": { "D": "\\( \\frac{x^5}{5} + C \\)" },
+    "reason": "Option D (e^{6ln x}/6 = x⁶/6) equalled the keyed A exactly. Replaced with the forgot-to-raise-the-power error; key A retained."
+  },
+
+  "06-19": {
+    "answer": "C",
+    "reason": "Key flip B→C: x − 5ln|x−2| + 10ln|x−3| (option C), the solution's own final line; the keyed B attaches the coefficients to the wrong factors."
+  },
+  "06-30": {
+    "answer": "D",
+    "solution": "Decompose \\( \\frac{x}{(x-1)^2(x+1)} = \\frac{A}{x-1} + \\frac{B}{(x-1)^2} + \\frac{C}{x+1} \\): at \\(x=1\\), \\(B = \\tfrac{1}{2}\\); at \\(x=-1\\), \\(C = -\\tfrac{1}{4}\\); comparing \\(x^2\\) coefficients, \\(A = \\tfrac{1}{4}\\). Integrating: \\( \\tfrac{1}{4}\\ln|x-1| - \\tfrac{1}{2(x-1)} - \\tfrac{1}{4}\\ln|x+1| = \\tfrac{1}{4}\\ln\\left|\\frac{x-1}{x+1}\\right| - \\frac{1}{2(x-1)} + C \\). Verified by differentiating back to \\( \\frac{x}{(x-1)^2(x+1)} \\).",
+    "reason": "Key flip A→D: the correct coefficients are A=+1/4, C=−1/4 (at x=−1, 4C=−1), giving option D — the source solution's signs (A=−1/4, C=+1/4) are wrong, and the keyed A is that wrong result. Verified by differentiation."
+  },
+  "06-33": {
+    "options": { "C": "\\( x + \\ln|x-1| - 4\\ln|x-2| + C \\)" },
+    "reason": "Option C was the keyed D with its terms reordered — identical. Replaced with a sign variant; key D retained."
+  },
+  "06-36": {
+    "answer": "A",
+    "solution": "Decompose \\( \\frac{3x-2}{(x+1)^2(x+3)} = \\frac{A}{x+1} + \\frac{B}{(x+1)^2} + \\frac{C}{x+3} \\): at \\(x=-1\\), \\(2B = -5\\) so \\(B = -\\tfrac{5}{2}\\); at \\(x=-3\\), \\(4C = -11\\) so \\(C = -\\tfrac{11}{4}\\); comparing \\(x^2\\) coefficients, \\(A = \\tfrac{11}{4}\\). Integrating: \\( \\tfrac{11}{4}\\ln|x+1| + \\frac{5}{2(x+1)} - \\tfrac{11}{4}\\ln|x+3| = \\tfrac{11}{4}\\ln\\left|\\frac{x+1}{x+3}\\right| + \\frac{5}{2(x+1)} + C \\). Verified by differentiating back to \\( \\frac{3x-2}{(x+1)^2(x+3)} \\).",
+    "reason": "Key flip B→A: the correct C is −11/4 (at x=−3, 4C=−11), giving option A — the source solution's C=+11/4 is wrong and the keyed B is that wrong result. Verified by differentiation."
+  },
+  "06-40": {
+    "options": { "A": "\\( -\\frac{1}{10}\\ln|x-1| + \\frac{5}{2}\\ln|x+1| - \\frac{12}{5}\\ln|2x+3| + C \\)" },
+    "solution": "Decompose \\( \\frac{2x-3}{(x-1)(x+1)(2x+3)} \\): at \\(x=1\\), \\(10A = -1\\) so \\(A = -\\tfrac{1}{10}\\); at \\(x=-1\\), \\(-2B = -5\\) so \\(B = \\tfrac{5}{2}\\); at \\(x=-\\tfrac{3}{2}\\), \\(\\tfrac{5}{4}C = -6\\) so \\(C = -\\tfrac{24}{5}\\). Integrating (the last term contributes \\(C/2\\) per \\(\\ln|2x+3|\\)): \\( -\\tfrac{1}{10}\\ln|x-1| + \\tfrac{5}{2}\\ln|x+1| - \\tfrac{12}{5}\\ln|2x+3| + C \\).",
+    "reason": "No printed option was correct: the true middle coefficient is +5/2 on ln|x+1| (the source solution's −1/10 is wrong). Keyed option A repaired to the true expression; key A retained."
+  },
+  "06-32": {
+    "options": { "A": "\\( \\frac{1}{2} \\ln|1-x^2| + C \\)" },
+    "reason": "Option A (½ln|(x+1)/(x−1)|) equalled the keyed C (½ln|(1+x)/(1−x)|) since |x−1| = |1−x|. A replaced; key C retained."
+  },
+  "06-59": {
+    "options": { "D": "\\( \\frac{1}{2} \\ln\\left|\\frac{e^{2x}+1}{e^{2x}}\\right| + C \\)" },
+    "reason": "Option D was the keyed B unexpanded (½ln|(e²ˣ−1)/e²ˣ| = ½ln|e²ˣ−1| − x). Sign flipped to false; key B retained."
+  },
+
+  "07-40": {
+    "options": { "C": "\\( 9x^3 - 6x^2 + 4x + C \\)" },
+    "reason": "Option C (the expanded 3x³−6x²+4x) was a valid antiderivative — it differs from the keyed B by the constant 8/9. Leading coefficient corrupted to false; key B retained."
+  },
+
+  "08-8": {
+    "options": { "C": "\\( \\ln|\\cos(x + \\pi/4)| + C \\)" },
+    "reason": "Option C (ln|sin(x+π/4)|) differs from the keyed A (ln|cos x + sin x|) only by the constant ln√2 — both antiderivatives. Phase flipped to false; key A retained."
+  },
+  "08-28": {
+    "answer": "B",
+    "reason": "Key flip A→B: parts gives ½sin2x·ln(cos x) + ∫sin²x dx = ½sin2x·ln(cos x) + x/2 − sin2x/4 (option B). Verified by differentiation; the keyed A has both tail signs flipped."
+  },
+  "08-46": {
+    "options": { "D": "\\( \\ln|\\sec x - \\tan x| + C \\)" },
+    "reason": "Option D (−ln|csc x − cot x|) equalled option A (ln|csc x + cot x|) via the conjugate identity — a duplicated WRONG pair. D replaced with an unrelated false form; key B retained."
+  },
+  "08-47": {
+    "options": { "A": "\\( \\ln|\\csc x| + C \\)" },
+    "reason": "Option A (−ln|csc x|) equalled the keyed C (ln|sin x|) exactly. Sign flipped to false; key C retained."
+  },
+
+  "09-16": {
+    "options": { "A": "\\( \\frac{(3e)^x}{\\ln 3} + C \\)" },
+    "reason": "Options A ((3e)ˣ/ln(3e)) and the keyed D ((3e)ˣ/(ln3+1)) were identical since ln(3e) = ln3 + 1. A's denominator truncated to false; key D retained."
+  },
+  "09-25": {
+    "answer": "B",
+    "solution": "Multiply through by \\(e^{-x}\\): \\( \\int \\frac{e^{-x}}{e^{-x}+1}\\,dx = -\\ln(e^{-x}+1) = -\\ln\\frac{e^x+1}{e^x} = x - \\ln(e^x+1) + C \\).",
+    "reason": "Key flip C→B: ∫1/(eˣ+1) = x − ln(eˣ+1) (option B) — the source solution derives exactly this amid 'Wait… Let's re-evaluate' self-talk while the key pointed at the +ln variant. Solution rewritten clean."
+  },
+  "09-29": {
+    "answer": "B",
+    "solution": "The numerator is the derivative of the denominator: \\( \\int \\frac{f'(x)}{f(x)}\\,dx = \\ln|f(x)| \\), so the integral is \\( \\ln|e^x + e^{-x}| + C \\).",
+    "reason": "Key flip D→B: the f′/f form gives ln|eˣ+e⁻ˣ| (option B); the keyed D (tan⁻¹eˣ) is wrong, and the source 'solution' is a leaked editing session ('Let me set Option D to be the correct answer text…'). Solution rewritten clean."
+  },
+
+  "10-7": {
+    "options": { "A": "\\( 2 \\cot^{-1} \\sqrt{x} + C \\)" },
+    "reason": "Option A duplicated the keyed B (same expression, merely missing '+C'). Replaced with the co-function false form; key B retained."
+  },
+  "10-9": {
+    "answer": "C",
+    "options": { "B": "\\( x + \\ln(1+e^x) + C \\)" },
+    "reason": "Key flip D→C + option repair: ∫1/(1+eˣ) = x − ln(1+eˣ) (option C, the solution's own final line); the keyed D differentiates to −1/(1+eˣ). Old option B (ln(e⁻ˣ+1)) was identical to D — replaced with a sign variant."
+  },
+  "10-11": {
+    "options": { "A": "\\( \\frac{1}{a^2+b^2} \\ln|a^2 \\sin^2 x + b^2 \\cos^2 x| + C \\)" },
+    "reason": "Options A and B (keyed) were byte-identical. A's denominator sign flipped to false; key B retained."
+  },
+  "10-16": {
+    "answer": "A",
+    "solution": "Since \\( \\sin(a-b) = \\sin((x-b)-(x-a)) = \\sin(x-b)\\cos(x-a) - \\cos(x-b)\\sin(x-a) \\), multiplying and dividing by \\(\\sin(a-b)\\) turns the integrand into \\( \\frac{\\cot(x-a) - \\cot(x-b)}{\\sin(a-b)} \\). Integrating: \\( \\frac{1}{\\sin(a-b)}\\left[\\ln|\\sin(x-a)| - \\ln|\\sin(x-b)|\\right] = \\frac{1}{\\sin(a-b)} \\ln\\left|\\frac{\\sin(x-a)}{\\sin(x-b)}\\right| + C \\). Differentiating back reproduces the integrand.",
+    "reason": "Key flip C→A: (1/sin(a−b))·ln|sin(x−a)/sin(x−b)| — verified by differentiating back via cot(x−a) − cot(x−b); the keyed C is the inverted ratio (the exact negative). The source solution's trailing 'Wait, if sin(a−b)…' self-talk rewritten clean."
+  },
+  "10-17": {
+    "answer": "B",
+    "options": { "D": "\\( \\sqrt{2} \\cos^{-1}(\\sin x - \\cos x) + C \\)" },
+    "solution": "\\( \\sqrt{\\tan x} + \\sqrt{\\cot x} = \\frac{\\sin x + \\cos x}{\\sqrt{\\sin x \\cos x}} = \\sqrt{2}\\,\\frac{\\sin x + \\cos x}{\\sqrt{1-(\\sin x - \\cos x)^2}} \\). With \\( t = \\sin x - \\cos x \\), \\( dt = (\\cos x + \\sin x)dx \\): \\( \\sqrt{2}\\int \\frac{dt}{\\sqrt{1-t^2}} = \\sqrt{2} \\sin^{-1}(\\sin x - \\cos x) + C \\).",
+    "reason": "Key flip D→B + option repair: the standard result is √2·arcsin(sin x − cos x) (option B), verified by differentiation. Old option D was leaked meta-text ('Duplicate check… Let's re-verify') around a mangled formula — replaced with the false arccos variant."
+  },
+  "10-19": {
+    "options": { "A": "\\( \\frac{1}{4} \\ln\\left|\\frac{x^4+1}{x^4}\\right| + C \\)", "B": "\\( \\frac{1}{4} \\ln\\left|\\frac{x^4-1}{x^4}\\right| + C \\)" },
+    "reason": "Options A and B (keyed) were identical, and B carried leaked meta-text ('Wait, duplicates? Let's verify signs'). B cleaned to the correct expression, A's sign flipped to false; key B retained."
+  },
+  "10-20": {
+    "options": { "B": "\\( \\frac{1}{\\sqrt{a^2+b^2}} \\ln\\left|\\tan\\left(\\frac{x}{2} - \\frac{\\alpha}{2}\\right)\\right| + C \\) where \\( \\tan \\alpha = b/a \\)" },
+    "reason": "Options B and C (keyed) were the same expression — C merely spells α = tan⁻¹(b/a) explicitly. B's phase sign flipped to false; key C retained."
+  },
+  "10-21": {
+    "options": { "A": "\\( x \\sin a - \\cos a \\ln|\\sin(x-a)| + C \\)", "C": "\\( -x \\cos a + \\sin a \\ln|\\sin(x-a)| + C \\)", "D": "\\( x \\cos a + \\sin a \\ln|\\sin(x-a)| + C \\)" },
+    "reason": "Option A duplicated the keyed D exactly (D also carried '(Duplicate check. Let's fix)' meta-text), and B ≡ C were the same expression reordered. D cleaned, A and C replaced with distinct sign variants; key D retained (the (x−a) vs x difference is the constant a·cos a)."
+  },
+  "10-29": {
+    "options": { "A": "\\( x \\cot(x/2) + C \\)", "D": "\\( x \\tan(x/2) + C \\)" },
+    "reason": "Option D duplicated A and carried the author's own unapplied instruction ('Let's make A: x cot(x/2)'). Applied it: A → the cot variant, D cleaned to the correct x·tan(x/2); key D retained."
+  },
+  "10-30": {
+    "options": { "D": "\\( \\frac{1}{(1-\\tan x)^2} + C \\)" },
+    "reason": "Option D ((1−tan x)⁻¹) was the keyed A in exponent notation — identical. Replaced with the squared false form; key A retained."
+  },
+  "10-31": {
+    "options": { "A": "\\( \\ln|\\tan x + \\sqrt{\\tan^2 x - 4}| + C \\)", "B": "\\( \\ln|\\tan x + \\sqrt{\\tan^2 x + 4}| + C \\)", "C": "\\( \\tan^{-1}\\left(\\frac{\\tan x}{2}\\right) + C \\)", "D": "\\( \\sqrt{\\tan^2 x + 4} + C \\)" },
+    "reason": "Option A duplicated the keyed B (which carried meta-text), and options C and D were EMPTY cells. Full option set rebuilt: B cleaned (correct), A sign-flipped, C/D filled with plausible false forms; key B retained."
+  },
+  "10-32": {
+    "options": { "C": "\\( -\\frac{2}{b^2} \\left[ \\ln|a+b \\cos x| + \\frac{a}{a+b \\cos x} \\right] + C \\)" },
+    "solution": "With \\( t = a + b\\cos x \\), \\( \\sin 2x\\,dx = 2\\sin x\\cos x\\,dx = -\\frac{2(t-a)}{b^2}\\,dt \\cdot \\frac{1}{1} \\): the integral becomes \\( -\\frac{2}{b^2}\\int \\left(\\frac{1}{t} - \\frac{a}{t^2}\\right) dt \\cdot (-1)^0 = -\\frac{2}{b^2}\\left[\\ln|t| + \\frac{a}{t}\\right] + C \\). Verified by differentiating back to \\( \\frac{\\sin 2x}{(a+b\\cos x)^2} \\).",
+    "reason": "No printed option was correct: the true value is −(2/b²)[ln|a+b cos x| + a/(a+b cos x)] — the source solution derives it and then says 'Option C adjusted in key' without adjusting anything. Keyed option C repaired to the true expression."
+  },
+  "10-35": {
+    "stem": "Evaluate \\( \\int \\frac{dx}{(x^2+1)\\sqrt{x^2+1}} \\).",
+    "reason": "The printed stem carried a doubled 'dx'. Cleaned; key B (x/√(x²+1)) retained."
+  },
+  "10-37": {
+    "options": { "A": "\\( \\frac{2}{3} \\ln\\left|\\frac{\\sqrt{1+x^3}-1}{\\sqrt{1+x^3}+1}\\right| + C \\)", "D": "\\( \\frac{1}{3} \\ln\\left|\\frac{\\sqrt{1+x^3}-1}{\\sqrt{1+x^3}+1}\\right| + C \\)" },
+    "reason": "Option A duplicated the keyed D, whose cell also contained the author's whole worked derivation as meta-text. D cleaned to the correct expression, A's coefficient corrupted to false; key D retained."
+  },
+  "10-39": {
+    "options": { "A": "\\( \\frac{1}{4} \\ln\\left|\\frac{3-\\sin^2 x}{1+\\sin^2 x}\\right| + C \\)", "B": "\\( \\frac{1}{4} \\ln\\left|\\frac{1+\\sin^2 x}{3-\\sin^2 x}\\right| + C \\)", "C": "\\( \\frac{1}{2} \\ln\\left|(1+\\sin^2 x)(3-\\sin^2 x)\\right| + C \\)", "D": "\\( \\tan^{-1}(\\sin^2 x) + C \\)" },
+    "reason": "Option A duplicated the keyed B (which carried 'Duplicate. Let's fix' meta-text), and options C and D were EMPTY. Full set rebuilt: B cleaned (correct), A inverted, C/D filled with false forms; key B retained."
+  },
+  "10-41": {
+    "options": { "A": "\\( \\frac{2}{3} \\sin^{-1}\\left(\\frac{x}{a}\\right) + C \\)" },
+    "reason": "Option A ((2/3)sin⁻¹((x/a)^{3/2})) equalled the keyed D ((x/a)^{3/2} = x^{3/2}/a^{3/2}). The inner power dropped to false; key D retained."
+  },
+  "10-43": {
+    "options": { "D": "\\( \\ln|x| - \\frac{1}{2}\\ln|x^2-1| + C \\)" },
+    "solution": "Decompose \\( \\frac{x^2+1}{x(x-1)(x+1)} \\): at \\(x=0\\), \\(A = -1\\); at \\(x=1\\), \\(B = 1\\); at \\(x=-1\\), \\(C = 1\\). Integrating: \\( -\\ln|x| + \\ln|x-1| + \\ln|x+1| = \\ln\\left|\\frac{x^2-1}{x}\\right| + C \\).",
+    "reason": "Option D (ln|x²−1| − ln|x|) was the keyed B in expanded dress — identical. Replaced with a false variant; key B retained. The source solution's abandoned self-talk ('Wait. … No.') rewritten clean."
+  },
+  "10-44": {
+    "options": { "A": "\\( \\cos^{-1} x + \\sqrt{1-x^2} + C \\)", "C": "\\( \\sin^{-1} x + \\sqrt{1-x^2} + C \\)" },
+    "reason": "Option A duplicated the keyed C (which carried '(Let's check C)' meta-text). C cleaned to the correct expression, A replaced with the arccos false variant; key C retained."
+  },
+  "10-45": {
+    "options": { "D": "\\( 2\\sin(x/2) - 2\\cos(x/2) - \\sqrt{2} \\ln\\left|\\tan\\left(\\frac{x}{4}+\\frac{\\pi}{8}\\right)\\right| + C \\)" },
+    "solution": "Write \\( \\frac{\\sin x}{\\sqrt{1+\\sin x}} = \\sqrt{1+\\sin x} - \\frac{1}{\\sqrt{1+\\sin x}} \\) and use \\( \\sqrt{1+\\sin x} = \\sin(x/2)+\\cos(x/2) \\): the first part integrates to \\( 2\\sin(x/2) - 2\\cos(x/2) \\), and \\( \\int \\frac{dx}{\\sin(x/2)+\\cos(x/2)} = \\frac{1}{\\sqrt{2}}\\int \\csc\\left(\\frac{x}{2}+\\frac{\\pi}{4}\\right) dx = \\sqrt{2}\\ln\\left|\\tan\\left(\\frac{x}{4}+\\frac{\\pi}{8}\\right)\\right| \\). Subtracting gives the result.",
+    "reason": "No printed option was correct: the keyed D was a leaked editing session ('(Too complex). Let's solve simple way…') whose buried final line even had a wrong first term. Repaired to the true value 2sin(x/2) − 2cos(x/2) − √2·ln|tan(x/4+π/8)|; key D retained."
+  },
+  "10-48": {
+    "options": { "A": "\\( -\\frac{e^x}{(x+1)^2} + C \\)", "C": "\\( \\frac{e^x}{(x+1)^2} + C \\)" },
+    "reason": "Option A duplicated the keyed C (which carried meta-text). C cleaned (the eˣ(f+f′) result), A sign-flipped to false; key C retained."
+  },
+  "10-51": {
+    "options": { "A": "\\( \\frac{1}{a^2-b^2} \\left( b \\tan^{-1}\\frac{x}{a} - a \\tan^{-1}\\frac{x}{b} \\right) + C \\)", "B": "\\( \\frac{1}{a^2-b^2} \\left( a \\tan^{-1}\\frac{x}{a} - b \\tan^{-1}\\frac{x}{b} \\right) + C \\)", "C": "\\( \\frac{1}{a^2+b^2} \\left( a \\tan^{-1}\\frac{x}{a} + b \\tan^{-1}\\frac{x}{b} \\right) + C \\)", "D": "\\( \\tan^{-1}\\frac{x}{ab} + C \\)" },
+    "reason": "Option A duplicated the keyed B (whose cell contained the author's entire scratch derivation), and options C and D were EMPTY. Full set rebuilt: B cleaned (correct), A's coefficients swapped, C/D filled with false forms; key B retained."
+  }
+}
