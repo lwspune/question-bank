@@ -23,7 +23,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { buildPyqRecords, groupBySitting, type PyqQuestion } from "./lib";
-import { ORG_ID, EXAM_ID, CREATED_BY, requireChapter, questionsJsonPath } from "./config";
+import { ORG_ID, EXAM_ID, CREATED_BY, CHAPTERS, requireChapter, questionsJsonPath } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -40,6 +40,11 @@ async function main() {
 
   const questions = JSON.parse(readFileSync(questionsJsonPath(id), "utf8")) as PyqQuestion[];
   const sittings = groupBySitting(questions);
+  // Every chapter is a possible relocation target: a row carrying
+  // `chapterOverride` commits under THAT chapter's name and axis.
+  const relocationTargets = Object.fromEntries(
+    Object.values(CHAPTERS).map((c) => [c.id, { chapterName: c.chapterName, subjectName: c.subjectName, subtopics: c.subtopics }]),
+  );
 
   // Build every group BEFORE writing anything, so a validation failure in the
   // last sitting cannot leave the first four committed.
@@ -48,6 +53,7 @@ async function main() {
     ...buildPyqRecords(
       { chapterName: ch.chapterName, subjectName: ch.subjectName, subtopics: ch.subtopics },
       s.questions,
+      relocationTargets,
     ),
   }));
 

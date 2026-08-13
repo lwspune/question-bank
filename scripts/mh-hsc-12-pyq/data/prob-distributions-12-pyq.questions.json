@@ -1,0 +1,257 @@
+[
+  {
+    "ref": "prob-distributions-12-pyq#1",
+    "questionNumber": "Q. 4. (A) i.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Expected Value and Variance of a Random Variable",
+    "stem": "A random variable \\(X\\) has the following probability distribution:\n| X = x | -2 | -1 | 0 | 1 | 2 | 3 |\n|-------|----:|----:|----:|----:|----:|----:|\n| P(x) | 0.1 | 0.1 | 0.2 | 0.2 | 0.3 | 0.1 |\nThen \\(E(x)\\) = ________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0.8\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(0.9\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(0.7\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(1.1\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)**\n\nFirst check the table is a valid p.m.f.:\n\n\\(\\sum P(x) = 0.1 + 0.1 + 0.2 + 0.2 + 0.3 + 0.1 = 1\\), and every entry is non-negative, so it is.\n\nNow use \\(E(X) = \\sum x_{i}\\,p_{i}\\).\n\n| \\(x_{i}\\) | \\(-2\\) | \\(-1\\) | 0 | 1 | 2 | 3 | Total |\n|---|---|---|---|---|---|---|---|\n| \\(p_{i}\\) | 0.1 | 0.1 | 0.2 | 0.2 | 0.3 | 0.1 | 1 |\n| \\(x_{i}p_{i}\\) | \\(-0.2\\) | \\(-0.1\\) | 0 | 0.2 | 0.6 | 0.3 | 0.8 |\n\n\\(E(X) = (-2)(0.1) + (-1)(0.1) + (0)(0.2) + (1)(0.2) + (2)(0.3) + (3)(0.1)\\)\n\n\\(= -0.2 - 0.1 + 0 + 0.2 + 0.6 + 0.3 = 0.8\\)\n\n\\(\\therefore E(X) = 0.8\\), which is option (A).\n\n(The two negative contributions cancel the \\(x = 1\\) term exactly, so the mean is carried entirely by \\(x = 2\\) and \\(x = 3\\).)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "prob-distributions-12-pyq#2",
+    "questionNumber": "Q. 6. (A) ii.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Expected Value and Variance of a Random Variable",
+    "stem": "Let the p.m.f. (probability mass function) of random variable \\(x\\) be *\\* \\(P(x) = \\binom{4}{x}\\left( \\frac{5}{9} \\right)^{x}\\left( \\frac{4}{9} \\right)^{4 - x}\\), x=0,1,2,3,4 = 0 otherwise Find \\(E(X)\\) and \\(Var(X)\\).",
+    "solution": "The p.m.f. is \\(P(x) = \\binom{4}{x}\\left(\\dfrac{5}{9}\\right)^{x}\\left(\\dfrac{4}{9}\\right)^{4-x}\\) for \\(x = 0, 1, 2, 3, 4\\), and \\(0\\) otherwise.\n\n**Recognise the distribution.** This is exactly the form \\(\\binom{n}{x}p^{x}q^{n-x}\\) with\n\n\\(n = 4\\), \\(p = \\dfrac{5}{9}\\), \\(q = \\dfrac{4}{9}\\)\n\nand indeed \\(p + q = \\dfrac{5}{9} + \\dfrac{4}{9} = 1\\), as it must be. So \\(X \\sim B\\left(4, \\dfrac{5}{9}\\right)\\).\n\n(The probabilities do sum to 1: \\(\\sum_{x=0}^{4}\\binom{4}{x}p^{x}q^{4-x} = (p + q)^{4} = 1^{4} = 1\\), by the binomial theorem.)\n\n**To find \\(E(X)\\).**\n\n\\(E(X) = np = 4 \\times \\dfrac{5}{9} = \\dfrac{20}{9}\\)\n\n**To find \\(\\mathrm{Var}(X)\\).**\n\n\\(\\mathrm{Var}(X) = npq = 4 \\times \\dfrac{5}{9} \\times \\dfrac{4}{9} = \\dfrac{80}{81}\\)\n\n\\(\\therefore E(X) = \\dfrac{20}{9} = 2.22\\) and \\(\\mathrm{Var}(X) = \\dfrac{80}{81} = 0.99\\) (both to 2 decimal places).\n\n**Check by direct summation.** Writing every probability over \\(9^{4} = 6561\\):\n\n| \\(x\\) | 0 | 1 | 2 | 3 | 4 | Total |\n|---|---|---|---|---|---|---|\n| \\(6561\\,P(x)\\) | 256 | 1280 | 2400 | 2000 | 625 | 6561 |\n| \\(6561\\,x\\,P(x)\\) | 0 | 1280 | 4800 | 6000 | 2500 | 14580 |\n\nThe probabilities do sum to \\(\\dfrac{6561}{6561} = 1\\), and\n\n\\(E(X) = \\dfrac{14580}{6561} = \\dfrac{20}{9}\\)\n\nwhich agrees with \\(np\\), confirming the shortcut.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "prob-distributions-12-pyq#3",
+    "questionNumber": "Q. 6. (B) iii.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Cumulative Distribution Function",
+    "stem": "Given the p.d.f. (probability density function) of a continuous random variable \\(X\\) as: f(x)=\\(\\ \\frac{x^{2}}{3}\\) for -1<x<2 = 0 otherwise Determine the c.d.f. (cumulative distribution function) of \\(x\\) and hence find \\(P(x < 1)\\), \\(P(x \\leq - 2),\\ P(x > 0)\\), \\(P(1 < X < 2)\\).",
+    "solution": "\\(f(x) = \\dfrac{x^{2}}{3}\\) for \\(-1 < x < 2\\), and \\(f(x) = 0\\) otherwise.\n\n**First confirm it is a p.d.f.** \\(f(x) = \\dfrac{x^{2}}{3} \\geq 0\\) everywhere (it is \\(x\\) that is negative on part of the support, never \\(f\\)), and\n\n\\(\\int_{-1}^{2}\\dfrac{x^{2}}{3}\\,dx = \\left[\\dfrac{x^{3}}{9}\\right]_{-1}^{2} = \\dfrac{8}{9} - \\left(-\\dfrac{1}{9}\\right) = \\dfrac{9}{9} = 1\\)\n\nso both conditions hold.\n\n**The c.d.f.** \\(F(x) = P(X \\leq x) = \\int_{-\\infty}^{x}f(t)\\,dt\\), and the density is zero below \\(t = -1\\), so the accumulation starts there.\n\nFor \\(x \\leq -1\\): \\(F(x) = 0\\).\n\nFor \\(-1 < x < 2\\):\n\n\\(F(x) = \\int_{-1}^{x}\\dfrac{t^{2}}{3}\\,dt = \\left[\\dfrac{t^{3}}{9}\\right]_{-1}^{x} = \\dfrac{x^{3}}{9} + \\dfrac{1}{9} = \\dfrac{x^{3} + 1}{9}\\)\n\nFor \\(x \\geq 2\\): all the area is already accumulated, so \\(F(x) = \\dfrac{8 + 1}{9} = 1\\).\n\n\\(\\therefore F(x) = \\begin{cases} 0, & x \\leq -1 \\\\[4pt] \\dfrac{x^{3} + 1}{9}, & -1 < x < 2 \\\\[4pt] 1, & x \\geq 2 \\end{cases}\\)\n\n**Now read the probabilities off \\(F\\).**\n\n\\(P(X < 1) = F(1) = \\dfrac{1 + 1}{9} = \\dfrac{2}{9}\\)\n\n\\(P(X \\leq -2) = F(-2) = 0\\), since \\(-2\\) lies below the support.\n\n\\(P(X > 0) = 1 - F(0) = 1 - \\dfrac{0 + 1}{9} = \\dfrac{8}{9}\\)\n\n\\(P(1 < X < 2) = F(2) - F(1) = 1 - \\dfrac{2}{9} = \\dfrac{7}{9}\\)\n\n\\(\\therefore P(X < 1) = \\dfrac{2}{9}\\), \\(P(X \\leq -2) = 0\\), \\(P(X > 0) = \\dfrac{8}{9}\\), \\(P(1 < X < 2) = \\dfrac{7}{9}\\).\n\n(Since \\(X\\) is continuous, \\(P(X = c) = 0\\) at every single point, so strict and non-strict inequalities give the same values throughout.)\n\n**Consistency check.** \\(P(X < 1) + P(1 < X < 2) = \\dfrac{2}{9} + \\dfrac{7}{9} = 1\\), as it must be, because together the two events cover the whole support.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "prob-distributions-12-pyq#4",
+    "questionNumber": "Q. 4. iv.",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Probability Mass Function of a Discrete Random Variable",
+    "stem": "The probability distribution of a discrete random variable \\(X\\) is:\n| X = x | 1 | 2 | 3 | 4 | 5 |\n|-------|----:|----:|----:|----:|----:|\n| P(x) | k | 2k | 3k | 4k | 5k |\nFind \\(P(X \\leq 4)\\).",
+    "solution": "The distribution is\n\n| \\(X = x\\) | 1 | 2 | 3 | 4 | 5 |\n|---|---|---|---|---|---|\n| \\(P(x)\\) | \\(k\\) | \\(2k\\) | \\(3k\\) | \\(4k\\) | \\(5k\\) |\n\n**Find \\(k\\) first.** For a p.m.f. the probabilities must be non-negative and must sum to 1:\n\n\\(k + 2k + 3k + 4k + 5k = 1\\)\n\n\\(\\therefore 15k = 1\\)\n\n\\(\\therefore k = \\dfrac{1}{15}\\)\n\nSince \\(k = \\dfrac{1}{15} > 0\\), each of \\(k, 2k, \\ldots, 5k\\) is positive, so this is a genuine p.m.f.\n\n**Now find \\(P(X \\leq 4)\\).** The values of \\(X\\) are integers, so \\(X \\leq 4\\) means \\(X = 1, 2, 3\\) or \\(4\\):\n\n\\(P(X \\leq 4) = P(1) + P(2) + P(3) + P(4) = k + 2k + 3k + 4k = 10k\\)\n\n\\(\\therefore P(X \\leq 4) = \\dfrac{10}{15} = \\dfrac{2}{3}\\)\n\n**Check.** The complement is \\(P(X = 5) = 5k = \\dfrac{5}{15} = \\dfrac{1}{3}\\), and \\(\\dfrac{2}{3} + \\dfrac{1}{3} = 1\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "prob-distributions-12-pyq#5",
+    "questionNumber": "Q. 6. (B) iii.",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Cumulative Distribution Function",
+    "stem": "The following is the p.d.f. (Probability Density Function) of a continuous random variable \\(X\\): f(x)= \\(\\frac{x}{32}\\) for 0<x<8 = 0 otherwise a. Find the expression for c.d.f. (Cumulative Distribution Function) of \\(X\\). b. Also find \\(P(x)\\) at \\(x = 0.5\\) and \\(9\\).",
+    "solution": "\\(f(x) = \\dfrac{x}{32}\\) for \\(0 < x < 8\\), and \\(f(x) = 0\\) otherwise.\n\n**Check first that this really is a p.d.f.** On \\((0,\\ 8)\\) we have \\(x > 0\\), so \\(f(x) > 0\\) — the function is non-negative everywhere. And the total area is\n\n\\(\\displaystyle\\int_{0}^{8}\\dfrac{x}{32}\\,dx = \\left[\\dfrac{x^{2}}{64}\\right]_{0}^{8} = \\dfrac{64}{64} - 0 = 1\\)\n\nBoth conditions hold, so \\(f\\) is a legitimate density.\n\n**(a) Expression for the c.d.f.**\n\n\\(F(x) = P\\left[X \\leq x\\right] = \\displaystyle\\int_{-\\infty}^{x}f(t)\\,dt\\)\n\nFor \\(x \\leq 0\\), the integrand is 0 throughout, so \\(F(x) = 0\\).\n\nFor \\(0 < x < 8\\):\n\n\\(F(x) = \\displaystyle\\int_{0}^{x}\\dfrac{t}{32}\\,dt = \\left[\\dfrac{t^{2}}{64}\\right]_{0}^{x} = \\dfrac{x^{2}}{64}\\)\n\nFor \\(x \\geq 8\\), the whole support has been covered, so \\(F(x) = 1\\).\n\n| range of \\(x\\) | \\(F(x)\\) |\n|---|---|\n| \\(x \\leq 0\\) | \\(0\\) |\n| \\(0 < x < 8\\) | \\(\\dfrac{x^{2}}{64}\\) |\n| \\(x \\geq 8\\) | \\(1\\) |\n\nThe expression is continuous at both joins — \\(F(0) = 0\\) and \\(\\dfrac{8^{2}}{64} = 1\\) — as a c.d.f. of a continuous random variable must be.\n\n**(b) Values at \\(x = 0.5\\) and \\(x = 9\\).**\n\nThe quantity asked for is the c.d.f. \\(F\\) evaluated at those points, i.e. the cumulative probability \\(P\\left[X \\leq x\\right]\\). (Stating this convention explicitly: for a CONTINUOUS random variable \\(P\\left[X = x\\right] = 0\\) at every single point, so the only non-trivial reading of a probability \"at\" a point is the cumulative one.)\n\n\\(x = 0.5\\) lies in \\((0,\\ 8)\\), so\n\n\\(F(0.5) = \\dfrac{(0.5)^{2}}{64} = \\dfrac{0.25}{64} = \\dfrac{1}{256} = 0.00390625\\)\n\n\\(x = 9\\) is greater than 8, so\n\n\\(F(9) = 1\\)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "prob-distributions-12-pyq#6",
+    "questionNumber": "Q. 6. (B) iii.",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Cumulative Distribution Function",
+    "stem": "Given the probability density function (p.d.f.) of a continuous random variable \\(X\\) as, f(x)= \\(\\frac{x^{2}}{3}\\) for -1<x<2 = 0 otherwise Determine the cumulative distribution function (c.d.f.) of \\(X\\) and hence find \\(P(X < 1)\\), \\(P(X > 0)\\), \\(P(1 < X < 2)\\).",
+    "solution": "\\(f(x) = \\dfrac{x^{2}}{3}\\) for \\(-1 < x < 2\\), and \\(f(x) = 0\\) otherwise.\n\n**Verify it is a p.d.f.** \\(f(x) = \\dfrac{x^{2}}{3} \\geq 0\\) for all \\(x\\), and\n\n\\(\\int_{-1}^{2}\\dfrac{x^{2}}{3}\\,dx = \\left[\\dfrac{x^{3}}{9}\\right]_{-1}^{2} = \\dfrac{8}{9} + \\dfrac{1}{9} = 1\\)\n\nso both conditions for a p.d.f. hold.\n\n**The c.d.f.** The density vanishes below \\(t = -1\\), so accumulation starts there.\n\nFor \\(x \\leq -1\\): \\(F(x) = 0\\).\n\nFor \\(-1 < x < 2\\):\n\n\\(F(x) = \\int_{-1}^{x}\\dfrac{t^{2}}{3}\\,dt = \\left[\\dfrac{t^{3}}{9}\\right]_{-1}^{x} = \\dfrac{x^{3}}{9} - \\left(-\\dfrac{1}{9}\\right) = \\dfrac{x^{3} + 1}{9}\\)\n\nFor \\(x \\geq 2\\): \\(F(x) = \\dfrac{8 + 1}{9} = 1\\).\n\n\\(\\therefore F(x) = \\begin{cases} 0, & x \\leq -1 \\\\[4pt] \\dfrac{x^{3} + 1}{9}, & -1 < x < 2 \\\\[4pt] 1, & x \\geq 2 \\end{cases}\\)\n\n**Hence the required probabilities.**\n\n\\(P(X < 1) = F(1) = \\dfrac{1^{3} + 1}{9} = \\dfrac{2}{9}\\)\n\n\\(P(X > 0) = 1 - F(0) = 1 - \\dfrac{0 + 1}{9} = \\dfrac{8}{9}\\)\n\n\\(P(1 < X < 2) = F(2) - F(1) = 1 - \\dfrac{2}{9} = \\dfrac{7}{9}\\)\n\n\\(\\therefore P(X < 1) = \\dfrac{2}{9}\\), \\(P(X > 0) = \\dfrac{8}{9}\\), \\(P(1 < X < 2) = \\dfrac{7}{9}\\).\n\n**Check.** \\(P(X < 1) + P(1 < X < 2) = \\dfrac{2}{9} + \\dfrac{7}{9} = 1\\), which is right because these two events between them exhaust the support \\((-1, 2)\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "prob-distributions-12-pyq#7",
+    "questionNumber": "Q. 4. i.",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Expected Value and Variance of a Random Variable",
+    "stem": "Let the p.m.f. of a random variable \\(X\\) be P(x) = \\(\\frac{3\\ - x}{10}\\) for x= -1, 0, 1, 2 P(x) = 0 otherwise Then \\(E(X)\\) is ____________ .",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(- 1\\)"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)**\n\nThe p.m.f. is \\(P(x) = \\dfrac{3 - x}{10}\\) for \\(x = -1, 0, 1, 2\\), and \\(0\\) otherwise.\n\n**Write out the distribution.**\n\n\\(P(-1) = \\dfrac{3 - (-1)}{10} = \\dfrac{4}{10}\\), \\(P(0) = \\dfrac{3}{10}\\), \\(P(1) = \\dfrac{2}{10}\\), \\(P(2) = \\dfrac{1}{10}\\)\n\n| \\(X = x\\) | \\(-1\\) | 0 | 1 | 2 |\n|---|---|---|---|---|\n| \\(P(X = x)\\) | \\(\\dfrac{4}{10}\\) | \\(\\dfrac{3}{10}\\) | \\(\\dfrac{2}{10}\\) | \\(\\dfrac{1}{10}\\) |\n\nAll four are positive and \\(\\dfrac{4 + 3 + 2 + 1}{10} = 1\\), so this is a valid p.m.f.\n\n**Compute \\(E(X)\\).**\n\n\\(E(X) = \\sum x_{i}p_{i} = (-1)\\dfrac{4}{10} + (0)\\dfrac{3}{10} + (1)\\dfrac{2}{10} + (2)\\dfrac{1}{10}\\)\n\n\\(= \\dfrac{-4 + 0 + 2 + 2}{10} = \\dfrac{0}{10} = 0\\)\n\n\\(\\therefore E(X) = 0\\), which is option (C).\n\n(The single negative term \\(-\\frac{4}{10}\\) is cancelled exactly by \\(\\frac{2}{10} + \\frac{2}{10}\\), so the mean sits at zero even though the distribution is not symmetric.)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "prob-distributions-12-pyq#8",
+    "questionNumber": "Q. 6. (B) iii.",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Expected Value and Variance of a Random Variable",
+    "stem": "Find the variance and standard deviation of the random variable \\(X\\) whose probability distribution is given below:\n| X = x | 0 | 1 | 2 | 3 |\n|-------|----------------:|----------------:|----------------:|----------------:|\n| P(x) | \\(\\(\\frac{1}{8}\\)\\( | \\)\\(\\frac{3}{8}\\)\\( | \\)\\(\\frac{3}{8}\\)\\( | \\)\\(\\frac{1}{8}\\)\\) |",
+    "solution": "The distribution is\n\n| \\(X = x\\) | 0 | 1 | 2 | 3 |\n|---|---|---|---|---|\n| \\(P(x)\\) | \\(\\dfrac{1}{8}\\) | \\(\\dfrac{3}{8}\\) | \\(\\dfrac{3}{8}\\) | \\(\\dfrac{1}{8}\\) |\n\n**Check it is a p.m.f.** All entries are positive and \\(\\dfrac{1 + 3 + 3 + 1}{8} = \\dfrac{8}{8} = 1\\).\n\nUse \\(E(X) = \\sum x_{i}p_{i}\\), \\(E\\left(X^{2}\\right) = \\sum x_{i}^{2}p_{i}\\) and \\(\\mathrm{Var}(X) = E\\left(X^{2}\\right) - \\left[E(X)\\right]^{2}\\).\n\n| \\(x_{i}\\) | \\(p_{i}\\) | \\(x_{i}p_{i}\\) | \\(x_{i}^{2}p_{i}\\) |\n|---|---|---|---|\n| 0 | \\(\\dfrac{1}{8}\\) | 0 | 0 |\n| 1 | \\(\\dfrac{3}{8}\\) | \\(\\dfrac{3}{8}\\) | \\(\\dfrac{3}{8}\\) |\n| 2 | \\(\\dfrac{3}{8}\\) | \\(\\dfrac{6}{8}\\) | \\(\\dfrac{12}{8}\\) |\n| 3 | \\(\\dfrac{1}{8}\\) | \\(\\dfrac{3}{8}\\) | \\(\\dfrac{9}{8}\\) |\n| **Total** | 1 | \\(\\dfrac{12}{8}\\) | \\(\\dfrac{24}{8}\\) |\n\n\\(E(X) = \\dfrac{12}{8} = \\dfrac{3}{2} = 1.5\\)\n\n\\(E\\left(X^{2}\\right) = \\dfrac{24}{8} = 3\\)\n\n**Variance.**\n\n\\(\\mathrm{Var}(X) = E\\left(X^{2}\\right) - \\left[E(X)\\right]^{2} = 3 - (1.5)^{2} = 3 - 2.25 = 0.75\\)\n\n**Standard deviation.**\n\n\\(\\text{S.D.}(X) = \\sqrt{\\mathrm{Var}(X)} = \\sqrt{0.75} = \\dfrac{\\sqrt{3}}{2} = 0.866\\) (to 3 decimal places)\n\n\\(\\therefore \\mathrm{Var}(X) = \\dfrac{3}{4} = 0.75\\) and \\(\\text{S.D.}(X) = \\dfrac{\\sqrt{3}}{2} \\approx 0.87\\).\n\n(The table is symmetric about \\(x = 1.5\\), which is exactly where the mean came out -- a useful check.)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "prob-distributions-12-pyq#9",
+    "questionNumber": "Q. 19",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Expected Value and Variance of a Random Variable",
+    "stem": "The probability distribution of a random variable \\(X\\), the number of defects per 10 meters of a fabric is given by\n| x | 0 | 1 | 2 | 3 | 4 |\n|-----------|-----:|-----:|-----:|-----:|-----:|\n| P (X = x) | 0.45 | 0.35 | 0.15 | 0.03 | 0.02 |\nFind the variance of \\(X\\).",
+    "solution": "The distribution of \\(X\\), the number of defects per 10 metres of fabric, is\n\n| \\(x\\) | 0 | 1 | 2 | 3 | 4 |\n|---|---|---|---|---|---|\n| \\(P(X = x)\\) | 0.45 | 0.35 | 0.15 | 0.03 | 0.02 |\n\n**Check it is a p.m.f.** All entries are non-negative and \\(0.45 + 0.35 + 0.15 + 0.03 + 0.02 = 1.00\\).\n\n| \\(x_{i}\\) | \\(p_{i}\\) | \\(x_{i}p_{i}\\) | \\(x_{i}^{2}p_{i}\\) |\n|---|---|---|---|\n| 0 | 0.45 | 0.00 | 0.00 |\n| 1 | 0.35 | 0.35 | 0.35 |\n| 2 | 0.15 | 0.30 | 0.60 |\n| 3 | 0.03 | 0.09 | 0.27 |\n| 4 | 0.02 | 0.08 | 0.32 |\n| **Total** | 1.00 | 0.82 | 1.54 |\n\n\\(E(X) = \\sum x_{i}p_{i} = 0.82\\)\n\n\\(E\\left(X^{2}\\right) = \\sum x_{i}^{2}p_{i} = 1.54\\)\n\n\\(\\mathrm{Var}(X) = E\\left(X^{2}\\right) - \\left[E(X)\\right]^{2} = 1.54 - (0.82)^{2} = 1.54 - 0.6724\\)\n\n\\(\\therefore \\mathrm{Var}(X) = 0.8676\\)\n\n\\(\\therefore\\) the variance of \\(X\\) is \\(0.8676\\) (and the standard deviation is \\(\\sqrt{0.8676} \\approx 0.9314\\)).\n\n(Sanity check: \\(X\\) is confined to \\([0, 4]\\), so its variance cannot exceed \\(\\left(\\frac{4-0}{2}\\right)^{2} = 4\\); \\(0.8676\\) is comfortably inside that bound.)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "prob-distributions-12-pyq#10",
+    "questionNumber": "Q. 19 (OR)",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Continuous Random Variables and Probability Density Function",
+    "stem": "For the following probability density function (p.d.f.) of \\(X\\), find: (i) \\(P(X < 1)\\), (ii) \\(P\\left( |X| < 1 \\right)\\). f(x)= \\(\\frac{x^{2}}{18}\\) -3<x<3 = 0, otherwise",
+    "solution": "\\(f(x) = \\dfrac{x^{2}}{18}\\) for \\(-3 < x < 3\\), and \\(f(x) = 0\\) otherwise.\n\n**First confirm the density is valid.** \\(f(x) = \\dfrac{x^{2}}{18} \\geq 0\\), and\n\n\\(\\int_{-3}^{3}\\dfrac{x^{2}}{18}\\,dx = \\dfrac{1}{18}\\left[\\dfrac{x^{3}}{3}\\right]_{-3}^{3} = \\dfrac{1}{54}\\left[27 - (-27)\\right] = \\dfrac{54}{54} = 1\\)\n\n**(i) \\(P(X < 1)\\).** The density is zero below \\(-3\\), so the integral runs from \\(-3\\) to \\(1\\):\n\n\\(P(X < 1) = \\int_{-3}^{1}\\dfrac{x^{2}}{18}\\,dx = \\dfrac{1}{18}\\left[\\dfrac{x^{3}}{3}\\right]_{-3}^{1} = \\dfrac{1}{54}\\left[1 - (-27)\\right]\\)\n\n\\(= \\dfrac{28}{54} = \\dfrac{14}{27}\\)\n\n**(ii) \\(P\\left(|X| < 1\\right)\\).** The condition \\(|X| < 1\\) is the same as \\(-1 < X < 1\\):\n\n\\(P\\left(|X| < 1\\right) = \\int_{-1}^{1}\\dfrac{x^{2}}{18}\\,dx = \\dfrac{1}{54}\\left[x^{3}\\right]_{-1}^{1} = \\dfrac{1}{54}\\left[1 - (-1)\\right]\\)\n\n\\(= \\dfrac{2}{54} = \\dfrac{1}{27}\\)\n\n\\(\\therefore P(X < 1) = \\dfrac{14}{27}\\) and \\(P\\left(|X| < 1\\right) = \\dfrac{1}{27}\\).\n\n(Note that (ii) is much the smaller: the density \\(\\frac{x^{2}}{18}\\) is *smallest* near the origin, so the middle of the range carries very little probability.)",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "prob-distributions-12-pyq#11",
+    "questionNumber": "Q. 13",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Expected Value and Variance of a Random Variable",
+    "stem": "Find the expected value of the random variable \\(X\\) whose probability mass function is:\n| X = x | 1 | 2 | 3 |\n|-----------|----------------:|----------------:|----------------:|\n| P (X = x) | \\(\\(\\frac{1}{5}\\)\\( | \\)\\(\\frac{2}{5}\\)\\( | \\)\\(\\frac{2}{5}\\)\\) |",
+    "solution": "The p.m.f. is\n\n| \\(X = x\\) | 1 | 2 | 3 |\n|---|---|---|---|\n| \\(P(X = x)\\) | \\(\\dfrac{1}{5}\\) | \\(\\dfrac{2}{5}\\) | \\(\\dfrac{2}{5}\\) |\n\n**Check it is a p.m.f.** All three entries are positive and \\(\\dfrac{1}{5} + \\dfrac{2}{5} + \\dfrac{2}{5} = \\dfrac{5}{5} = 1\\).\n\n**Expected value.** \\(E(X) = \\sum x_{i}p_{i}\\):\n\n| \\(x_{i}\\) | \\(p_{i}\\) | \\(x_{i}p_{i}\\) |\n|---|---|---|\n| 1 | \\(\\dfrac{1}{5}\\) | \\(\\dfrac{1}{5}\\) |\n| 2 | \\(\\dfrac{2}{5}\\) | \\(\\dfrac{4}{5}\\) |\n| 3 | \\(\\dfrac{2}{5}\\) | \\(\\dfrac{6}{5}\\) |\n| **Total** | 1 | \\(\\dfrac{11}{5}\\) |\n\n\\(E(X) = 1 \\times \\dfrac{1}{5} + 2 \\times \\dfrac{2}{5} + 3 \\times \\dfrac{2}{5} = \\dfrac{1 + 4 + 6}{5} = \\dfrac{11}{5}\\)\n\n\\(\\therefore E(X) = \\dfrac{11}{5} = 2.2\\)\n\n(The value is sensible: it lies between the smallest and largest values of \\(X\\), and above the midpoint 2 because the larger values carry the heavier probabilities.)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "prob-distributions-12-pyq#12",
+    "questionNumber": "Q. 26",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Continuous Random Variables and Probability Density Function",
+    "stem": "If \\(f(x) = kx,\\) \\(0 < x < 2\\) \\(\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ = 0,\\ \\ \\) otherwise, is a probability density function of a random variable \\(X\\), then find: i. Value of \\(k\\). ii. \\(P(1 < X < 2)\\).",
+    "solution": "\\(f(x) = kx\\) for \\(0 < x < 2\\), and \\(f(x) = 0\\) otherwise.\n\n**(i) To find \\(k\\).** The constant \\(k\\) is fixed by the requirement that the total area under a p.d.f. is 1:\n\n\\(\\int_{0}^{2}kx\\,dx = 1\\)\n\n\\(\\therefore k\\left[\\dfrac{x^{2}}{2}\\right]_{0}^{2} = 1\\)\n\n\\(\\therefore k\\left(\\dfrac{4}{2} - 0\\right) = 1\\), i.e. \\(2k = 1\\)\n\n\\(\\therefore k = \\dfrac{1}{2}\\)\n\nSince \\(k > 0\\) and \\(x > 0\\) throughout the support, \\(f(x) = \\dfrac{x}{2} \\geq 0\\) there, so the non-negativity condition holds as well and \\(f\\) is a genuine p.d.f.\n\n**(ii) To find \\(P(1 < X < 2)\\).** With \\(f(x) = \\dfrac{x}{2}\\):\n\n\\(P(1 < X < 2) = \\int_{1}^{2}\\dfrac{x}{2}\\,dx = \\left[\\dfrac{x^{2}}{4}\\right]_{1}^{2} = \\dfrac{4}{4} - \\dfrac{1}{4} = \\dfrac{3}{4}\\)\n\n\\(\\therefore k = \\dfrac{1}{2}\\) and \\(P(1 < X < 2) = \\dfrac{3}{4} = 0.75\\).\n\n**Check.** The complementary probability is \\(P(0 < X < 1) = \\left[\\dfrac{x^{2}}{4}\\right]_{0}^{1} = \\dfrac{1}{4}\\), and \\(\\dfrac{3}{4} + \\dfrac{1}{4} = 1\\). The upper half of the range carries three times as much probability, which is right for a density increasing linearly from 0.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "prob-distributions-12-pyq#13",
+    "questionNumber": "Q. 1. viii.",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Expected Value and Variance of a Random Variable",
+    "stem": "If the p.m.f of a r.v. \\(X\\) is \\(P(x) = \\frac{c}{x^{3}}\\), for \\(x = 1,2,3\\), \\(= 0\\) otherwise, then \\(E(X) =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{216}{251}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{294}{251}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{297}{294}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{294}{297}\\)"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)**\n\nThe p.m.f. is \\(P(x) = \\dfrac{c}{x^{3}}\\) for \\(x = 1, 2, 3\\), and \\(0\\) otherwise.\n\n**Find \\(c\\) first**, from \\(\\sum P(x) = 1\\):\n\n\\(c\\left(\\dfrac{1}{1^{3}} + \\dfrac{1}{2^{3}} + \\dfrac{1}{3^{3}}\\right) = 1\\)\n\n\\(\\therefore c\\left(1 + \\dfrac{1}{8} + \\dfrac{1}{27}\\right) = 1\\)\n\nTaking the L.C.M. 216: \\(1 + \\dfrac{1}{8} + \\dfrac{1}{27} = \\dfrac{216 + 27 + 8}{216} = \\dfrac{251}{216}\\)\n\n\\(\\therefore c \\cdot \\dfrac{251}{216} = 1\\), so \\(c = \\dfrac{216}{251}\\)\n\n**Now compute \\(E(X)\\).**\n\n\\(E(X) = \\sum_{x=1}^{3} x \\cdot \\dfrac{c}{x^{3}} = c\\sum_{x=1}^{3}\\dfrac{1}{x^{2}} = c\\left(1 + \\dfrac{1}{4} + \\dfrac{1}{9}\\right)\\)\n\nTaking the L.C.M. 36: \\(1 + \\dfrac{1}{4} + \\dfrac{1}{9} = \\dfrac{36 + 9 + 4}{36} = \\dfrac{49}{36}\\)\n\n\\(\\therefore E(X) = \\dfrac{216}{251} \\times \\dfrac{49}{36} = \\dfrac{6 \\times 49}{251} = \\dfrac{294}{251}\\)\n\n\\(\\therefore E(X) = \\dfrac{294}{251}\\), which is option (B).\n\n**Why the others fail.** Option (A), \\(\\dfrac{216}{251}\\), is the value of \\(c\\) itself, not of \\(E(X)\\). Options (C) and (D) are reciprocals of each other, \\(1.010\\) and \\(0.990\\), both within about \\(0.01\\) of 1. Option (D) is impossible on sight: \\(X \\geq 1\\) always and \\(X > 1\\) with positive probability, so \\(E(X) > 1\\) strictly. Option (C) does clear that bar but is far too small -- \\(P(X = 1) = c = \\dfrac{216}{251} = 0.861\\) already contributes \\(0.861\\) to the mean, and the terms for \\(x = 2\\) and \\(x = 3\\) add a further \\(0.310\\), giving \\(1.171\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "prob-distributions-12-pyq#14",
+    "questionNumber": "Q. 13",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Expected Value and Variance of a Random Variable",
+    "stem": "Find the mean of number randomly selected from 1 to 15.",
+    "solution": "The number is selected at random from \\(1\\) to \\(15\\), so the sample space is\n\n\\(S = \\{1, 2, 3, \\ldots, 15\\}\\)\n\nLet \\(X\\) denote the number selected. Then \\(X\\) takes the values \\(1, 2, 3, \\ldots, 15\\), and since every number is equally likely to be chosen,\n\n\\(P(1) = P(2) = P(3) = \\cdots = P(15) = \\dfrac{1}{15}\\)\n\n(These are 15 equal positive values summing to \\(15 \\times \\dfrac{1}{15} = 1\\), so it is a valid p.m.f.)\n\n**Mean.**\n\n\\(\\text{Mean} = E(X) = \\sum x_{i}p_{i} = 1 \\times \\dfrac{1}{15} + 2 \\times \\dfrac{1}{15} + \\cdots + 15 \\times \\dfrac{1}{15}\\)\n\n\\(= \\left(1 + 2 + 3 + \\cdots + 15\\right) \\times \\dfrac{1}{15}\\)\n\nUsing \\(\\sum_{r=1}^{n} r = \\dfrac{n(n+1)}{2}\\) with \\(n = 15\\):\n\n\\(= \\dfrac{15 \\times 16}{2} \\times \\dfrac{1}{15} = 120 \\times \\dfrac{1}{15} = 8\\)\n\n\\(\\therefore E(X) = 8\\)\n\n(For a uniform choice from \\(1\\) to \\(n\\) the mean is \\(\\dfrac{n+1}{2}\\); here \\(\\dfrac{15+1}{2} = 8\\), which confirms the arithmetic and also shows why the answer is simply the middle number of the list.)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "prob-distributions-12-pyq#16",
+    "questionNumber": "Q. 25",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Continuous Random Variables and Probability Density Function",
+    "stem": "For the following probability density function of a random variable \\(X\\), find (a) \\(P(X < 1)\\) and \\(b\\) \\(P\\left( |X| < 1 \\right)\\). \\(f(x) = \\frac{x + 2}{18}\\), for \\(- 2 < x < 4\\) \\(\\ \\ \\ \\ \\ \\ \\ \\ \\ = 0\\), otherwise",
+    "solution": "\\(f(x) = \\dfrac{x + 2}{18}\\) for \\(-2 < x < 4\\), and \\(f(x) = 0\\) otherwise.\n\n**Check first that this really is a p.d.f. — BOTH conditions, not just one.**\n\nNon-negativity: on \\((-2,\\ 4)\\) we have \\(x > -2\\), so \\(x + 2 > 0\\) and therefore \\(f(x) > 0\\) throughout the support.\n\nTotal area:\n\n\\(\\displaystyle\\int_{-2}^{4}\\dfrac{x + 2}{18}\\,dx = \\left[\\dfrac{(x + 2)^{2}}{36}\\right]_{-2}^{4} = \\dfrac{6^{2}}{36} - \\dfrac{0^{2}}{36} = \\dfrac{36}{36} = 1\\)\n\nBoth hold, so \\(f\\) is a legitimate density. (Both checks are needed. A function can integrate to exactly 1 over its stated support and still fail to be a density by dipping negative somewhere inside it, in which case the area test alone would pass it.)\n\n**(a) \\(P(X < 1)\\).**\n\nThe density is 0 below \\(-2\\), so the integral runs from the left end of the support, not from \\(-\\infty\\) in any meaningful sense:\n\n\\(P(X < 1) = \\displaystyle\\int_{-2}^{1}\\dfrac{x + 2}{18}\\,dx = \\left[\\dfrac{(x + 2)^{2}}{36}\\right]_{-2}^{1}\\)\n\n\\(= \\dfrac{(1 + 2)^{2}}{36} - \\dfrac{(-2 + 2)^{2}}{36} = \\dfrac{9}{36} - 0 = \\dfrac{1}{4}\\)\n\n**(b) \\(P\\left(|X| < 1\\right)\\).**\n\n\\(|X| < 1\\) means \\(-1 < X < 1\\), and that whole interval lies inside the support \\((-2,\\ 4)\\), so no clipping is needed:\n\n\\(P\\left(|X| < 1\\right) = \\displaystyle\\int_{-1}^{1}\\dfrac{x + 2}{18}\\,dx = \\left[\\dfrac{(x + 2)^{2}}{36}\\right]_{-1}^{1}\\)\n\n\\(= \\dfrac{(1 + 2)^{2}}{36} - \\dfrac{(-1 + 2)^{2}}{36} = \\dfrac{9}{36} - \\dfrac{1}{36} = \\dfrac{8}{36} = \\dfrac{2}{9}\\)\n\n**Answers:  \\(P(X < 1) = \\dfrac{1}{4}\\)  and  \\(P\\left(|X| < 1\\right) = \\dfrac{2}{9}\\).**\n\nConsistency check: \\(\\dfrac{2}{9} = \\dfrac{8}{36} < \\dfrac{9}{36} = \\dfrac{1}{4}\\), which is right, since \\((-1,\\ 1)\\) is a proper sub-interval of \\((-2,\\ 1)\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "prob-distributions-12-pyq#17",
+    "questionNumber": "Q. 25",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Continuous Random Variables and Probability Density Function",
+    "stem": "Find \\(k\\), if \\(f(x) = kx^{2}(1 - x)\\), for \\(0 < x < 1\\), \\(\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ = 0\\) otherwise is the p.d.f. of random variable \\(X\\).",
+    "solution": "\\(f(x) = kx^{2}(1 - x)\\) for \\(0 < x < 1\\), and \\(f(x) = 0\\) otherwise.\n\nSince \\(f(x)\\) is the p.d.f. of the random variable \\(X\\), the total area under it must be 1:\n\n\\(\\int_{0}^{1}kx^{2}(1 - x)\\,dx = 1\\)\n\nExpand the integrand:\n\n\\(\\therefore \\int_{0}^{1}k\\left(x^{2} - x^{3}\\right)dx = 1\\)\n\n\\(\\therefore k\\left[\\dfrac{x^{3}}{3} - \\dfrac{x^{4}}{4}\\right]_{0}^{1} = 1\\)\n\n\\(\\therefore k\\left[\\left(\\dfrac{1}{3} - \\dfrac{1}{4}\\right) - (0 - 0)\\right] = 1\\)\n\n\\(\\therefore k \\times \\dfrac{4 - 3}{12} = 1\\), i.e. \\(k \\times \\dfrac{1}{12} = 1\\)\n\n\\(\\therefore k = 12\\)\n\n**Check the other condition.** With \\(k = 12\\), \\(f(x) = 12x^{2}(1 - x)\\). On \\(0 < x < 1\\) both \\(x^{2} > 0\\) and \\(1 - x > 0\\), so \\(f(x) > 0\\) there. Hence \\(f\\) is non-negative as well, and \\(k = 12\\) makes it a genuine p.d.f.\n\n\\(\\therefore k = 12\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "prob-distributions-12-pyq#18",
+    "questionNumber": "Q. 14",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Continuous Random Variables and Probability Density Function",
+    "stem": "Suppose that \\(X\\) is waiting time in minutes for a bus and its p.d.f. is given by: \\(f(x) = \\frac{1}{5}\\), for \\(0 \\leq x \\leq 5\\) \\(= 0\\), otherwise. Find the probability that: (i) waiting time is between 1 to 3 minutes. (ii) waiting time is more than 4 minutes.",
+    "solution": "\\(X\\) is the waiting time in minutes, with\n\n\\(f(x) = \\dfrac{1}{5}\\) for \\(0 \\leq x \\leq 5\\), and \\(f(x) = 0\\) otherwise.\n\n**Check the density.** \\(f(x) = \\dfrac{1}{5} > 0\\), and \\(\\int_{0}^{5}\\dfrac{1}{5}\\,dx = \\left[\\dfrac{x}{5}\\right]_{0}^{5} = 1\\). So the waiting time is uniformly distributed over the 5 minutes.\n\n**(i) Waiting time between 1 and 3 minutes.**\n\n\\(P(1 < X < 3) = \\int_{1}^{3}\\dfrac{1}{5}\\,dx = \\left[\\dfrac{x}{5}\\right]_{1}^{3} = \\dfrac{3}{5} - \\dfrac{1}{5} = \\dfrac{2}{5}\\)\n\n\\(\\therefore P(1 < X < 3) = \\dfrac{2}{5} = 0.4\\)\n\n**(ii) Waiting time more than 4 minutes.**\n\nThe density is zero beyond 5 minutes, so the event \\(X > 4\\) contributes only over \\((4, 5]\\):\n\n\\(P(X > 4) = \\int_{4}^{5}\\dfrac{1}{5}\\,dx = \\left[\\dfrac{x}{5}\\right]_{4}^{5} = 1 - \\dfrac{4}{5} = \\dfrac{1}{5}\\)\n\n\\(\\therefore P(X > 4) = \\dfrac{1}{5} = 0.2\\)\n\n(For a uniform density each answer is simply the length of the interval divided by the length of the support: \\(\\dfrac{3-1}{5}\\) and \\(\\dfrac{5-4}{5}\\). The commonest slip in (ii) is to integrate to infinity instead of stopping at 5.)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "prob-distributions-12-pyq#33",
+    "questionNumber": "Q. 14",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Probability Mass Function of a Discrete Random Variable",
+    "stem": "If two coins are tossed simultaneously, write the probability distribution of the number of heads.",
+    "solution": "Two coins are tossed simultaneously. The sample space is\n\n\\(S = \\{HH,\\ HT,\\ TH,\\ TT\\}\\), so \\(n(S) = 4\\), each outcome being equally likely.\n\nLet \\(X\\) denote the number of heads obtained. Then \\(X\\) can take the values \\(0, 1, 2\\).\n\n- \\(X = 0\\) corresponds to \\(TT\\) (1 outcome), so \\(P(X = 0) = \\dfrac{1}{4}\\)\n- \\(X = 1\\) corresponds to \\(HT\\) and \\(TH\\) (2 outcomes), so \\(P(X = 1) = \\dfrac{2}{4} = \\dfrac{1}{2}\\)\n- \\(X = 2\\) corresponds to \\(HH\\) (1 outcome), so \\(P(X = 2) = \\dfrac{1}{4}\\)\n\nThe required probability distribution is\n\n| \\(X = x\\) | 0 | 1 | 2 |\n|---|---|---|---|\n| \\(P(X = x)\\) | \\(\\dfrac{1}{4}\\) | \\(\\dfrac{1}{2}\\) | \\(\\dfrac{1}{4}\\) |\n\n**Check.** Every probability is non-negative and \\(\\dfrac{1}{4} + \\dfrac{1}{2} + \\dfrac{1}{4} = 1\\), so this is a valid probability distribution.\n\n(\\(HT\\) and \\(TH\\) must be counted as two distinct outcomes; treating \"one head\" as a single case would wrongly give each of the three values probability \\(\\frac{1}{3}\\).)",
+    "difficulty": "EASY"
+  }
+]

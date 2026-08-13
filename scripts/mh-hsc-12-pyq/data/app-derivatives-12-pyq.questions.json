@@ -1,0 +1,345 @@
+[
+  {
+    "ref": "app-derivatives-12-pyq#1",
+    "questionNumber": "Q. 5. (B) i.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Tangents and Normals",
+    "stem": "Find the co-ordinates of the points on the curve \\(y = x - \\frac{4}{x}\\), where the tangents are parallel to the line \\(y = 2x\\).",
+    "solution": "Write the given line \\(y = 2x\\) in slope form: its slope is \\(2\\).\nThe tangents are parallel to this line, so the slope of each tangent must be \\(2\\).\n\nGiven the curve \\(y = x - \\frac{4}{x}\\), i.e. \\(y = x - 4x^{-1}\\).\nDifferentiate w. r. t. \\(x\\),\n\\(\\frac{dy}{dx} = 1 + 4x^{-2} = 1 + \\frac{4}{x^{2}}\\)\n\nSet the slope equal to \\(2\\),\n\\(1 + \\frac{4}{x^{2}} = 2\\)\n\\(\\therefore \\frac{4}{x^{2}} = 1\\)\n\\(\\therefore x^{2} = 4\\)\n\\(\\therefore x = 2\\) or \\(x = -2\\)\n\nFind \\(y\\) for each (both lie in the domain, since \\(x \\neq 0\\)):\nWhen \\(x = 2\\): \\(y = 2 - \\frac{4}{2} = 2 - 2 = 0\\), giving \\((2, 0)\\).\nWhen \\(x = -2\\): \\(y = -2 - \\frac{4}{-2} = -2 + 2 = 0\\), giving \\((-2, 0)\\).\n\n\\(\\therefore\\) The required points are \\((2, 0)\\) and \\((-2, 0)\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#2",
+    "questionNumber": "Q. 4. (A) ii.",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Tangents and Normals",
+    "stem": "The equation of the tangent to the curve \\(y = 3x^{2} - x + 1\\) at \\(P(1,3)\\) is ______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(5x - y = 2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(x + 5y = 16\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(5x - y + 2 = 0\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(5x = y\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)** \\(5x - y = 2\\)\n\nFirst check that \\(P\\) lies on the curve: at \\(x = 1\\), \\(y = 3(1)^{2} - 1 + 1 = 3\\). So \\(P(1, 3)\\) is on \\(y = 3x^{2} - x + 1\\).\n\nGiven \\(y = 3x^{2} - x + 1\\).\nDifferentiate w. r. t. \\(x\\),\n\\(\\frac{dy}{dx} = 6x - 1\\)\n\nSlope of the tangent at \\(P(1, 3)\\),\n\\(m = \\left(\\frac{dy}{dx}\\right)_{(1, 3)} = 6(1) - 1 = 5\\)\n\nEquation of the tangent,\n\\(y - 3 = 5(x - 1)\\)\n\\(y - 3 = 5x - 5\\)\n\\(\\therefore 5x - y = 2\\)\n\n[Option (C), \\(5x - y + 2 = 0\\), is the same line shifted: it is \\(y = 5x + 2\\), which does not pass through \\((1, 3)\\).]",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#3",
+    "questionNumber": "Q. 12",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Tangents and Normals",
+    "stem": "Find the equation of the tangent to the curve \\(y = x^{2} + 4x + 1\\) at \\(( - 1, - 2)\\).",
+    "solution": "**First confirm the point is on the curve.** At \\(x = -1\\),\n\n\\(y = (-1)^{2} + 4(-1) + 1 = 1 - 4 + 1 = -2\\)\n\nso \\((-1,\\ -2)\\) does lie on \\(y = x^{2} + 4x + 1\\), and the question is well posed.\n\n**Slope of the tangent.**\n\n\\(\\dfrac{dy}{dx} = 2x + 4\\)\n\n\\(m = \\left.\\dfrac{dy}{dx}\\right|_{x = -1} = 2(-1) + 4 = 2\\)\n\n**Equation of the tangent**, using \\(y - y_{1} = m\\left(x - x_{1}\\right)\\) at \\((-1,\\ -2)\\):\n\n\\(y - (-2) = 2\\left(x - (-1)\\right)\\)\n\n\\(y + 2 = 2(x + 1)\\)\n\n\\(y + 2 = 2x + 2\\)\n\n\\(y = 2x\\)\n\nThe equation of the tangent is \\(2x - y = 0\\).\n\nCheck: the line passes through \\((-1,\\ -2)\\) since \\(2(-1) - (-2) = -2 + 2 = 0\\), and its slope is \\(2\\), matching the derivative at that point.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#4",
+    "questionNumber": "Q. 9",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Tangents and Normals",
+    "stem": "Find the equation of tangent to the curve \\(y = 2x^{3} + x^{2} + 2\\) at \\(\\left( \\frac{1}{2},2 \\right)\\).",
+    "solution": "The point \\(\\left(\\dfrac{1}{2},\\ 2\\right)\\) does NOT lie on the curve as printed — see the errata note. Both defensible readings are worked out below.\n\n**Reading 1 — the intended curve \\(y = 2x^{3} - x^{2} + 2\\).** This is how the same question is set in the 2025 paper, and the given point does lie on it.\n\nCheck: at \\(x = \\dfrac{1}{2}\\),  \\(y = 2\\left(\\dfrac{1}{8}\\right) - \\dfrac{1}{4} + 2 = \\dfrac{1}{4} - \\dfrac{1}{4} + 2 = 2\\). The point is on the curve.\n\n\\(\\dfrac{dy}{dx} = 6x^{2} - 2x\\)\n\n\\(m = 6\\left(\\dfrac{1}{2}\\right)^{2} - 2\\left(\\dfrac{1}{2}\\right) = \\dfrac{6}{4} - 1 = \\dfrac{3}{2} - 1 = \\dfrac{1}{2}\\)\n\n\\(y - 2 = \\dfrac{1}{2}\\left(x - \\dfrac{1}{2}\\right)\\)\n\nMultiplying throughout by 4:  \\(4y - 8 = 2x - 1\\)\n\n\\(2x - 4y + 7 = 0\\)\n\nCheck: at \\(\\left(\\dfrac{1}{2},\\ 2\\right)\\),  \\(2\\left(\\dfrac{1}{2}\\right) - 4(2) + 7 = 1 - 8 + 7 = 0\\).\n\n**Reading 2 — the curve exactly as printed, \\(y = 2x^{3} + x^{2} + 2\\).** Here the given point is off the curve, so the only sensible tangent is the one at the point of the curve whose abscissa is \\(\\dfrac{1}{2}\\), namely \\(\\left(\\dfrac{1}{2},\\ \\dfrac{5}{2}\\right)\\), since \\(2\\left(\\dfrac{1}{8}\\right) + \\dfrac{1}{4} + 2 = \\dfrac{5}{2}\\).\n\n\\(\\dfrac{dy}{dx} = 6x^{2} + 2x\\)\n\n\\(m = \\dfrac{3}{2} + 1 = \\dfrac{5}{2}\\)\n\n\\(y - \\dfrac{5}{2} = \\dfrac{5}{2}\\left(x - \\dfrac{1}{2}\\right)\\)\n\nMultiplying throughout by 4:  \\(4y - 10 = 10x - 5\\)\n\n\\(10x - 4y + 5 = 0\\)\n\nCheck: at \\(\\left(\\dfrac{1}{2},\\ \\dfrac{5}{2}\\right)\\),  \\(10\\left(\\dfrac{1}{2}\\right) - 4\\left(\\dfrac{5}{2}\\right) + 5 = 5 - 10 + 5 = 0\\).\n\nEach answer is correct on its own curve. A student who noticed the inconsistency and answered from either reading has read the paper correctly.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#5",
+    "questionNumber": "Q. 1. v.",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "mcq",
+    "subtopic": "Tangents and Normals",
+    "stem": "The slope of the tangent to the curve \\(x = sin\\theta\\) and \\(y = cos2\\theta\\) at \\(\\theta = \\frac{\\pi}{6}\\) is ______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-2\\sqrt{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{-2}{\\sqrt{3}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(-2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-\\frac{1}{2}\\)"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)** \\(-2\\)\n\nThe curve is given parametrically, so use \\(\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta}\\).\n\n\\(x = \\sin\\theta\\)\nDifferentiate w. r. t. \\(\\theta\\),\n\\(\\frac{dx}{d\\theta} = \\cos\\theta\\) ... (I)\n\n\\(y = \\cos 2\\theta\\)\nDifferentiate w. r. t. \\(\\theta\\),\n\\(\\frac{dy}{d\\theta} = -2\\sin 2\\theta\\) ... (II)\n\nFrom (I) and (II),\n\\(\\frac{dy}{dx} = \\frac{-2\\sin 2\\theta}{\\cos\\theta}\\)\n\nAt \\(\\theta = \\frac{\\pi}{6}\\), using \\(\\sin\\frac{\\pi}{3} = \\frac{\\sqrt{3}}{2}\\) and \\(\\cos\\frac{\\pi}{6} = \\frac{\\sqrt{3}}{2}\\),\n\\(m = \\frac{-2\\left(\\frac{\\sqrt{3}}{2}\\right)}{\\frac{\\sqrt{3}}{2}} = \\frac{-\\sqrt{3}}{\\frac{\\sqrt{3}}{2}}\\)\n\\(\\therefore m = -2\\)\n\n[Shortcut worth knowing: \\(y = \\cos 2\\theta = 1 - 2\\sin^{2}\\theta = 1 - 2x^{2}\\), so \\(\\frac{dy}{dx} = -4x = -4\\sin\\frac{\\pi}{6} = -2\\), the same value.]",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#6",
+    "questionNumber": "Q. 23",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Tangents and Normals",
+    "stem": "Find the equations of tangent and normal to the curve \\(y = 2x^{3} - x^{2} + 2\\) at point \\(\\left( \\frac{1}{2},2 \\right)\\).",
+    "solution": "Given: \\(y = 2x^{3} - x^{2} + 2\\)\n\nCheck the point first: at \\(x = \\frac{1}{2}\\), \\(y = 2\\left(\\frac{1}{8}\\right) - \\frac{1}{4} + 2 = \\frac{1}{4} - \\frac{1}{4} + 2 = 2\\). So \\(\\left(\\frac{1}{2}, 2\\right)\\) does lie on the curve.\n\nDifferentiate w. r. t. \\(x\\),\n\\(\\frac{dy}{dx} = \\frac{d}{dx}\\left(2x^{3} - x^{2} + 2\\right) = 6x^{2} - 2x\\)\n\nSlope of the tangent at \\(\\left(\\frac{1}{2}, 2\\right)\\),\n\\(m = 6\\left(\\frac{1}{2}\\right)^{2} - 2\\left(\\frac{1}{2}\\right) = \\frac{3}{2} - 1\\)\n\\(\\therefore m = \\frac{1}{2}\\)\n\nSlope of the normal at \\(\\left(\\frac{1}{2}, 2\\right)\\),\n\\(m' = -\\frac{1}{m} = -2\\)\n\nEquation of the tangent,\n\\(y - 2 = \\frac{1}{2}\\left(x - \\frac{1}{2}\\right)\\)\n\\(\\Rightarrow 2y - 4 = x - \\frac{1}{2}\\)\n\\(\\Rightarrow 4y - 8 = 2x - 1\\)\n\\(\\therefore 2x - 4y + 7 = 0\\)\n\nEquation of the normal,\n\\(y - 2 = -2\\left(x - \\frac{1}{2}\\right)\\)\n\\(\\Rightarrow y - 2 = -2x + 1\\)\n\\(\\therefore 2x + y - 3 = 0\\)\n\n\\(\\therefore\\) Tangent: \\(2x - 4y + 7 = 0\\); Normal: \\(2x + y - 3 = 0\\).\n\n[Check: both lines pass through \\(\\left(\\frac{1}{2}, 2\\right)\\), and their slopes \\(\\frac{1}{2}\\) and \\(-2\\) multiply to \\(-1\\), as tangent and normal must.]",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#7",
+    "questionNumber": "Q. 4. (B) ii.",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "stem": "Test whether the function, \\(f(x) = x - \\frac{1}{x},x \\in R,x \\neq 0\\), is increasing or decreasing.",
+    "solution": "Given: \\(f(x) = x - \\frac{1}{x}\\), \\(x \\in R\\), \\(x \\neq 0\\)\n\nDifferentiate w. r. t. \\(x\\),\n\\(f'(x) = 1 + \\frac{1}{x^{2}} = \\frac{x^{2} + 1}{x^{2}}\\)\n\nFor every \\(x \\neq 0\\), the numerator \\(x^{2} + 1 > 0\\) and the denominator \\(x^{2} > 0\\).\n\\(\\therefore f'(x) > 0\\) at every point of the domain.\n\n\\(\\therefore f\\) is an increasing function wherever it is defined, i.e. it is increasing on \\((-\\infty, 0)\\) and increasing on \\((0, \\infty)\\).\n\n[The two branches must be stated separately because the domain is broken at \\(x = 0\\). The function is NOT increasing across the break: \\(f(-1) = 0\\) and \\(f(1) = 0\\), so \\(-1 < 1\\) does not give \\(f(-1) < f(1)\\).]",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#8",
+    "questionNumber": "Q. 12",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "stem": "Show that function \\(f(x) = tanx\\) is increasing in \\(\\left( 0,\\frac{\\pi}{2} \\right)\\).",
+    "solution": "Given: \\(f(x) = \\tan x\\), \\(x \\in \\left(0, \\frac{\\pi}{2}\\right)\\)\n\nDifferentiate w. r. t. \\(x\\),\n\\(f'(x) = \\sec^{2}x\\)\n\nFor \\(x \\in \\left(0, \\frac{\\pi}{2}\\right)\\), \\(\\cos x \\neq 0\\), so \\(\\sec x\\) is defined and real, and \\(\\sec x \\neq 0\\).\n\\(\\therefore \\sec^{2}x > 0\\)\n\\(\\therefore f'(x) > 0\\) for every \\(x \\in \\left(0, \\frac{\\pi}{2}\\right)\\).\n\n\\(\\therefore f(x) = \\tan x\\) is a (strictly) increasing function on \\(\\left(0, \\frac{\\pi}{2}\\right)\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#9",
+    "questionNumber": "Q. 9",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "stem": "Show that the function \\(f(x) = x^{3} + 10x + 7,x \\in R\\) is strictly increasing.",
+    "solution": "Given: \\(f(x) = x^{3} + 10x + 7\\), \\(x \\in R\\)\n\nDifferentiate w. r. t. \\(x\\),\n\\(f'(x) = 3x^{2} + 10\\)\n\nHere \\(3x^{2} \\geq 0\\) for all \\(x \\in R\\) and \\(10 > 0\\).\n\\(\\therefore 3x^{2} + 10 > 0\\), i.e. \\(f'(x) > 0\\) for every \\(x \\in R\\).\n\n\\(\\therefore f(x)\\) is a strictly increasing function on \\(R\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#10",
+    "questionNumber": "Q. 2. iv.",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "stem": "Write the condition for the function \\(f(x)\\), to be strictly increasing, for all \\(x \\in R\\).",
+    "solution": "The condition is: \\(f'(x) > 0\\) for all \\(x \\in R\\).\n\nThat is, a differentiable function \\(f\\) is strictly increasing on \\(R\\) if its derivative is positive at every point of \\(R\\) — the tangent at every point slopes upwards, so \\(x_{1} < x_{2} \\Rightarrow f(x_{1}) < f(x_{2})\\).\n\n[Precision worth knowing, since the syllabus states only the sufficient condition above: \\(f'(x) > 0\\) everywhere is sufficient but not necessary. \\(f(x) = x^{3}\\) is strictly increasing on \\(R\\) although \\(f'(0) = 0\\). The exact condition is \\(f'(x) \\geq 0\\) on \\(R\\) with \\(f'\\) not identically zero on any interval.]",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#11",
+    "questionNumber": "Q. 6. (B) i.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "stem": "Examine the maximal and minimal values of the function \\(f(x) = 2x^{3} - 21x^{2} + 36x - 20\\). Also, find the maximum and minimum values of \\(f(x)\\).",
+    "solution": "Given: \\(f(x) = 2x^{3} - 21x^{2} + 36x - 20\\)\n\nStep 1 — critical points:\n\\(f'(x) = 6x^{2} - 42x + 36 = 6\\left(x^{2} - 7x + 6\\right) = 6(x - 1)(x - 6)\\)\n\\(f'(x) = 0 \\Rightarrow x = 1\\) or \\(x = 6\\).\n\nStep 2 — second derivative test:\n\\(f''(x) = 12x - 42\\)\nAt \\(x = 1\\): \\(f''(1) = 12 - 42 = -30 < 0\\) \\(\\Rightarrow\\) \\(f\\) has a maximum at \\(x = 1\\).\nAt \\(x = 6\\): \\(f''(6) = 72 - 42 = 30 > 0\\) \\(\\Rightarrow\\) \\(f\\) has a minimum at \\(x = 6\\).\n\nStep 3 — the extreme values:\n\\(f(1) = 2 - 21 + 36 - 20 = -3\\)\n\\(f(6) = 2(216) - 21(36) + 36(6) - 20 = 432 - 756 + 216 - 20 = -128\\)\n\n\\(\\therefore\\) \\(f\\) is maximal at \\(x = 1\\) with maximum value \\(-3\\), and minimal at \\(x = 6\\) with minimum value \\(-128\\).\n\n[These are the local extrema. Being a cubic with a positive leading coefficient, \\(f \\rightarrow \\infty\\) as \\(x \\rightarrow \\infty\\) and \\(f \\rightarrow -\\infty\\) as \\(x \\rightarrow -\\infty\\), so there is no absolute maximum or minimum.]",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#12",
+    "questionNumber": "Q. 6. (B) ii.",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "stem": "A wire of length 'l' is cut into two parts. One part is bent into a circle and other into a square. Show that the sum of areas of the circle and square is the least, if the radius of circle is half the side of the square.",
+    "solution": "Let the wire of length \\(l\\) be cut into two parts. Let one part, of length \\(2\\pi r\\), be bent into a circle of radius \\(r\\), and the other, of length \\(4s\\), be bent into a square of side \\(s\\).\n\nStep 1 — constraint (the whole wire is used):\n\\(2\\pi r + 4s = l\\)\n\\(\\Rightarrow s = \\frac{l - 2\\pi r}{4}\\) ... (I)\n\nStep 2 — objective (the sum of the areas):\n\\(A = \\pi r^{2} + s^{2} = \\pi r^{2} + \\left(\\frac{l - 2\\pi r}{4}\\right)^{2} = \\pi r^{2} + \\frac{(l - 2\\pi r)^{2}}{16}\\)\n\nStep 3 — find the critical point. Differentiate w. r. t. \\(r\\),\n\\(\\frac{dA}{dr} = 2\\pi r + \\frac{2(l - 2\\pi r)(-2\\pi)}{16} = 2\\pi r - \\frac{\\pi(l - 2\\pi r)}{4}\\)\n\\(\\frac{dA}{dr} = 0 \\Rightarrow 2\\pi r = \\frac{\\pi(l - 2\\pi r)}{4}\\)\nDividing throughout by \\(\\pi\\) (\\(\\pi \\neq 0\\)) and multiplying by \\(4\\),\n\\(8r = l - 2\\pi r\\) ... (II)\n\nStep 4 — confirm it is a minimum:\n\\(\\frac{d^{2}A}{dr^{2}} = 2\\pi + \\frac{\\pi\\cdot 2\\pi}{4} = 2\\pi + \\frac{\\pi^{2}}{2} > 0\\)\n\\(\\therefore A\\) is least at the value of \\(r\\) given by (II).\n\nStep 5 — interpret (II). From (I), \\(l - 2\\pi r = 4s\\); substituting in (II),\n\\(8r = 4s\\)\n\\(\\Rightarrow s = 2r\\)\n\\(\\Rightarrow r = \\frac{s}{2}\\)\n\n\\(\\therefore\\) The sum of the areas of the circle and the square is least when the radius of the circle is half the side of the square.\n\n[Solving (II) outright gives \\(r = \\frac{l}{2(\\pi + 4)}\\) and \\(s = \\frac{l}{\\pi + 4}\\); both parts then have positive length and \\(2\\pi r + 4s = l\\) checks out.]",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#13",
+    "questionNumber": "Q. 5. (B) i.",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "stem": "Find the maximum and minimum value of the function: \\(f(x) = 2x^{3} - 21x^{2} + 36x - 20\\).",
+    "solution": "Given: \\(f(x) = 2x^{3} - 21x^{2} + 36x - 20\\)\n\nStep 1 — critical points:\n\\(f'(x) = 6x^{2} - 42x + 36 = 6\\left(x^{2} - 7x + 6\\right) = 6(x - 1)(x - 6)\\)\n\\(f'(x) = 0 \\Rightarrow x = 1\\) or \\(x = 6\\).\n\nStep 2 — second derivative test:\n\\(f''(x) = 12x - 42\\)\nAt \\(x = 1\\): \\(f''(1) = -30 < 0\\) \\(\\Rightarrow\\) maximum at \\(x = 1\\).\nAt \\(x = 6\\): \\(f''(6) = 30 > 0\\) \\(\\Rightarrow\\) minimum at \\(x = 6\\).\n\nStep 3 — the values:\n\\(f(1) = 2 - 21 + 36 - 20 = -3\\)\n\\(f(6) = 432 - 756 + 216 - 20 = -128\\)\n\n\\(\\therefore\\) Maximum value \\(= -3\\) (at \\(x = 1\\)); minimum value \\(= -128\\) (at \\(x = 6\\)).\n\n[Both extreme values are negative; that is not an error. They are local extrema of a cubic, which has no absolute maximum or minimum.]",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#14",
+    "questionNumber": "Q. 27 (OR)",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "stem": "A rod of 108 meters long is bent to form a rectangle. Find its dimensions if the area is maximum.",
+    "solution": "Let the length and the breadth of the rectangle be \\(x\\) m and \\(y\\) m.\n\nConstraint — the rod forms the perimeter:\n\\(2(x + y) = 108\\)\n\\(\\Rightarrow x + y = 54\\)\n\\(\\Rightarrow y = 54 - x\\), where \\(0 < x < 54\\) ... (I)\n\nObjective — maximise the area:\n\\(A = xy = x(54 - x) = 54x - x^{2}\\) ... [From (I)]\n\nDifferentiate w. r. t. \\(x\\),\n\\(\\frac{dA}{dx} = 54 - 2x\\) ... (II)\n\nFor maximum area \\(\\frac{dA}{dx} = 0\\),\n\\(54 - 2x = 0 \\Rightarrow x = 27\\)\n\nDifferentiate (II) w. r. t. \\(x\\),\n\\(\\frac{d^{2}A}{dx^{2}} = -2 < 0\\)\n\\(\\therefore\\) the area is maximum at \\(x = 27\\).\n\nPut \\(x = 27\\) in (I): \\(y = 54 - 27 = 27\\).\n\n\\(\\therefore\\) The dimensions are \\(27\\) m \\(\\times\\) \\(27\\) m (the rectangle is a square), and the maximum area is \\(27 \\times 27 = 729\\) sq. m.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#15",
+    "questionNumber": "Q. 1. vi.",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Maxima and Minima",
+    "stem": "The maximum value of the function \\(f(x) = \\frac{logx}{x}\\) is ______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "e"
+      },
+      {
+        "label": "B",
+        "text": "1/e"
+      },
+      {
+        "label": "C",
+        "text": "e^2"
+      },
+      {
+        "label": "D",
+        "text": "1/e^2"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)** \\(\\frac{1}{e}\\)\n\nLet \\(f(x) = \\frac{\\log x}{x}\\), \\(x > 0\\).\n\nStep 1 — critical point (quotient rule):\n\\(f'(x) = \\frac{x\\cdot\\frac{1}{x} - \\log x\\cdot 1}{x^{2}} = \\frac{1 - \\log x}{x^{2}}\\)\n\\(f'(x) = 0 \\Rightarrow \\log x = 1 \\Rightarrow x = e\\)\n\nStep 2 — second derivative test:\n\\(f''(x) = \\frac{x^{2}\\left(-\\frac{1}{x}\\right) - (1 - \\log x)(2x)}{x^{4}} = \\frac{2\\log x - 3}{x^{3}}\\)\nAt \\(x = e\\): \\(f''(e) = \\frac{2 - 3}{e^{3}} = -\\frac{1}{e^{3}} < 0\\) \\(\\Rightarrow\\) maximum.\n\nStep 3 — the maximum value:\n\\(f(e) = \\frac{\\log e}{e} = \\frac{1}{e}\\)\n\n\\(\\therefore\\) The maximum value of \\(f\\) is \\(\\frac{1}{e}\\).\n\n[Option (A) is the value of \\(x\\) at which the maximum occurs, not the maximum value — the commonest slip on this question.]",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#16",
+    "questionNumber": "Q. 24",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "stem": "A wire of length 36 meters is bent to form a rectangle. Find its dimensions if the area of the rectangle is maximum.",
+    "solution": "Let the length and the breadth of the rectangle be \\(x\\) m and \\(y\\) m.\n\nConstraint — the wire forms the perimeter:\n\\(2(x + y) = 36\\)\n\\(\\Rightarrow x + y = 18\\)\n\\(\\Rightarrow y = 18 - x\\), where \\(0 < x < 18\\) ... (I)\n\nObjective — maximise the area:\n\\(A = xy = x(18 - x) = 18x - x^{2}\\)\n\nDifferentiate w. r. t. \\(x\\),\n\\(\\frac{dA}{dx} = 18 - 2x\\) ... (II)\n\nFor maximum area \\(\\frac{dA}{dx} = 0\\),\n\\(18 - 2x = 0 \\Rightarrow x = 9\\)\n\nDifferentiate (II) w. r. t. \\(x\\),\n\\(\\frac{d^{2}A}{dx^{2}} = -2 < 0\\), so \\(x = 9\\) gives a maximum.\n\nPut \\(x = 9\\) in (I): \\(y = 18 - 9 = 9\\).\n\n\\(\\therefore\\) The dimensions are \\(9\\) m \\(\\times\\) \\(9\\) m (the rectangle is a square), giving the maximum area \\(81\\) sq. m.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#17",
+    "questionNumber": "Q. 32",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "stem": "A box with a square base is to have an open top. The surface area of box is \\(147\\text{ sq.cm}\\). What should be its dimensions in order that the volume is largest?",
+    "solution": "Let the side of the square base be \\(x\\) cm and the height be \\(h\\) cm. The box is open at the top, so its surface is one square base plus four rectangular walls.\n\nConstraint — the surface area is \\(147\\) sq. cm:\n\\(x^{2} + 4xh = 147\\)\n\\(\\Rightarrow h = \\frac{147 - x^{2}}{4x}\\) ... (I)\nFor \\(h > 0\\) we need \\(0 < x < \\sqrt{147}\\).\n\nObjective — maximise the volume:\n\\(V = x^{2}h = x^{2}\\cdot\\frac{147 - x^{2}}{4x} = \\frac{x\\left(147 - x^{2}\\right)}{4} = \\frac{147x - x^{3}}{4}\\)\n\nStep 1 — critical point. Differentiate w. r. t. \\(x\\),\n\\(\\frac{dV}{dx} = \\frac{147 - 3x^{2}}{4}\\)\n\\(\\frac{dV}{dx} = 0 \\Rightarrow 3x^{2} = 147 \\Rightarrow x^{2} = 49 \\Rightarrow x = 7\\) (taking \\(x > 0\\)).\n\nStep 2 — second derivative test:\n\\(\\frac{d^{2}V}{dx^{2}} = -\\frac{6x}{4} = -\\frac{3x}{2}\\); at \\(x = 7\\) this is \\(-\\frac{21}{2} < 0\\) \\(\\Rightarrow\\) maximum.\n\nStep 3 — check the domain: as \\(x \\rightarrow 0\\) and as \\(x \\rightarrow \\sqrt{147}\\) (where \\(h \\rightarrow 0\\)), \\(V \\rightarrow 0\\), so the interior critical point really is the largest volume.\n\nStep 4 — the dimensions. From (I),\n\\(h = \\frac{147 - 49}{4(7)} = \\frac{98}{28} = \\frac{7}{2} = 3.5\\)\n\n\\(\\therefore\\) The box should have a square base of side \\(7\\) cm and height \\(3.5\\) cm, i.e. \\(7\\) cm \\(\\times\\) \\(7\\) cm \\(\\times\\) \\(3.5\\) cm, giving the largest volume \\(49 \\times 3.5 = 171.5\\) cu. cm.\n\n[Check the constraint: \\(7^{2} + 4(7)(3.5) = 49 + 98 = 147\\) sq. cm, as given.]",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#18",
+    "questionNumber": "Q. 9",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "stem": "Divide the number 20 into two parts such that sum of their squares is minimum.",
+    "solution": "Let the two parts be \\(x\\) and \\(20 - x\\), where \\(0 < x < 20\\).\n\nObjective — minimise the sum of their squares:\n\\(S = x^{2} + (20 - x)^{2}\\)\n\nStep 1 — critical point. Differentiate w. r. t. \\(x\\),\n\\(\\frac{dS}{dx} = 2x + 2(20 - x)(-1) = 2x - 40 + 2x = 4x - 40\\)\n\\(\\frac{dS}{dx} = 0 \\Rightarrow 4x = 40 \\Rightarrow x = 10\\)\n\nStep 2 — second derivative test:\n\\(\\frac{d^{2}S}{dx^{2}} = 4 > 0\\) for every \\(x\\), so \\(x = 10\\) gives a minimum.\n\nStep 3 — check the domain: as \\(x \\rightarrow 0\\) and as \\(x \\rightarrow 20\\), \\(S \\rightarrow 400\\), which is larger than the value at \\(x = 10\\); so the interior critical point is indeed where \\(S\\) is least.\n\nStep 4 — the answer. The parts are \\(x = 10\\) and \\(20 - x = 10\\), and\n\\(S_{\\min} = 10^{2} + 10^{2} = 200\\)\n\n\\(\\therefore\\) The number \\(20\\) should be divided as \\(10\\) and \\(10\\); the minimum sum of the squares is \\(200\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#19",
+    "questionNumber": "Q. 4. (B) ii.",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Velocity, Acceleration and Jerk",
+    "stem": "The displacement 's' of a moving particle at time 't' is given by \\(s = 5 + 20t - 2t^{2}\\). Find its acceleration when the velocity is zero.",
+    "solution": "Displacement of the particle is given by\n\\(s = 5 + 20t - 2t^{2}\\) ... (I)\n\nDifferentiate (I) w. r. t. \\(t\\),\nVelocity, \\(v = \\frac{ds}{dt} = 20 - 4t\\) ... (II)\n\nDifferentiate (II) w. r. t. \\(t\\),\nAcceleration, \\(a = \\frac{dv}{dt} = \\frac{d^{2}s}{dt^{2}} = -4\\) ... (III)\n\nGiven: the velocity is zero.\nFrom (II), \\(20 - 4t = 0 \\Rightarrow 4t = 20 \\Rightarrow t = 5\\).\n\nAcceleration at \\(t = 5\\), from (III),\n\\(a = -4\\)\n\n\\(\\therefore\\) The acceleration is \\(-4\\) units/sec\\(^{2}\\) when the velocity is zero.\n\n[Note that (III) carries no \\(t\\): the acceleration of this particle is the constant \\(-4\\) at every instant, so finding \\(t = 5\\) was not strictly needed. The negative sign means the particle is decelerating — it is at the top of its travel when \\(v = 0\\).]",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#20",
+    "questionNumber": "Q. 22",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Derivative as a Rate Measure",
+    "stem": "The surface area of a spherical balloon is increasing at the rate of \\(2\\text{ cm}^{2}/\\text{sec}\\). At what rate the volume of the balloon is increasing when the radius of the balloon is \\(6\\text{ cm}\\)?",
+    "solution": "Let \\(r\\), \\(S\\) and \\(V\\) be the radius, the surface area and the volume of the balloon at time \\(t\\).\nGiven: \\(\\frac{dS}{dt} = 2\\) cm\\(^{2}\\)/sec. Required: \\(\\frac{dV}{dt}\\) when \\(r = 6\\) cm.\n\nStep 1 — find \\(\\frac{dr}{dt}\\) from the surface-area rate.\n\\(S = 4\\pi r^{2}\\)\nDifferentiate w. r. t. \\(t\\),\n\\(\\frac{dS}{dt} = 8\\pi r\\frac{dr}{dt}\\)\nAt \\(r = 6\\),\n\\(2 = 8\\pi(6)\\frac{dr}{dt} = 48\\pi\\frac{dr}{dt}\\)\n\\(\\therefore \\frac{dr}{dt} = \\frac{2}{48\\pi} = \\frac{1}{24\\pi}\\) cm/sec\n\nStep 2 — use this in the volume rate.\n\\(V = \\frac{4}{3}\\pi r^{3}\\)\nDifferentiate w. r. t. \\(t\\),\n\\(\\frac{dV}{dt} = \\frac{4}{3}\\pi\\cdot 3r^{2}\\cdot\\frac{dr}{dt} = 4\\pi r^{2}\\frac{dr}{dt}\\)\nSubstitute \\(r = 6\\) and \\(\\frac{dr}{dt} = \\frac{1}{24\\pi}\\),\n\\(\\frac{dV}{dt} = 4\\pi(36)\\left(\\frac{1}{24\\pi}\\right) = \\frac{144\\pi}{24\\pi} = 6\\)\n\n\\(\\therefore\\) The volume of the balloon is increasing at the rate of \\(6\\) cm\\(^{3}\\)/sec.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#21",
+    "questionNumber": "Q. 22",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Velocity, Acceleration and Jerk",
+    "stem": "The displacement of a particle at time \\(t\\) is given by \\(s = 2t^{3} - 5t^{2} + 4t - 3\\). Find the velocity and displacement at the time when the acceleration is \\(14\\text{ ft/sec}^{2}\\).",
+    "solution": "Displacement of the particle is given by\n\\(s = 2t^{3} - 5t^{2} + 4t - 3\\) ... (I)\n\nDifferentiate (I) w. r. t. \\(t\\),\nVelocity, \\(v = \\frac{ds}{dt} = 6t^{2} - 10t + 4\\) ... (II)\n\nDifferentiate (II) w. r. t. \\(t\\),\nAcceleration, \\(a = \\frac{dv}{dt} = 12t - 10\\) ... (III)\n\nGiven: acceleration \\(= 14\\) ft/sec\\(^{2}\\).\nFrom (III), \\(12t - 10 = 14 \\Rightarrow 12t = 24 \\Rightarrow t = 2\\).\n\nVelocity when \\(t = 2\\), from (II),\n\\(v = 6(2)^{2} - 10(2) + 4 = 24 - 20 + 4 = 8\\) ft/sec\n\nDisplacement when \\(t = 2\\), from (I),\n\\(s = 2(2)^{3} - 5(2)^{2} + 4(2) - 3 = 16 - 20 + 8 - 3 = 1\\) foot\n\n\\(\\therefore\\) After \\(2\\) seconds the velocity is \\(8\\) ft/sec and the displacement is \\(1\\) foot.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#22",
+    "questionNumber": "Q. 23",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Approximations",
+    "stem": "Find the approximate value of \\(e^{1.005}\\); given \\(e = 2.7183\\).",
+    "solution": "Let \\(f(x) = e^{x}\\) ... (I)\n\nDifferentiate (I) w. r. t. \\(x\\),\n\\(f'(x) = e^{x}\\) ... (II)\n\nLet \\(a = 1\\) and \\(h = 0.005\\), so that \\(a + h = 1.005\\).\n\nFor \\(x = a = 1\\), from (I),\n\\(f(a) = f(1) = e^{1} = 2.7183\\) ... (III)\n\nFor \\(x = a = 1\\), from (II),\n\\(f'(a) = f'(1) = e^{1} = 2.7183\\) ... (IV)\n\nWe have \\(f(a + h) \\approx f(a) + h f'(a)\\),\n\\(f(1.005) \\approx f(1) + (0.005)f'(1)\\)\n\\(f(1.005) \\approx 2.7183 + (0.005)(2.7183)\\) ... [From (III) and (IV)]\n\\(f(1.005) \\approx 2.7183 + 0.0135915\\)\n\\(\\approx 2.7318915\\)\n\n\\(\\therefore e^{1.005} \\approx 2.73189\\)\n\n[The true value is \\(2.731907\\ldots\\), so the linear approximation is right to five decimal places here.]",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#23",
+    "questionNumber": "Q. 22",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Approximations",
+    "stem": "Find the approximate value of \\(\\sin\\left( 30^{\\circ}30' \\right)\\). Give that \\(1^{\\circ} = {0.0175}^{c}\\) and \\(\\cos 30^{\\circ} = 0.866\\).",
+    "solution": "Let \\(f(x) = \\sin x\\) ... (I)\n\nDifferentiate (I) w. r. t. \\(x\\),\n\\(f'(x) = \\cos x\\) ... (II)\n\nConvert the angle to radians, since calculus formulae need radian measure.\n\\(30^{\\circ}30' = 30^{\\circ} + 30' = 30^{\\circ} + \\left(\\frac{1}{2}\\right)^{\\circ}\\)   [\\(60' = 1^{\\circ}\\)]\nUsing the given \\(1^{\\circ} = 0.0175^{c}\\), \\(\\left(\\frac{1}{2}\\right)^{\\circ} = \\frac{0.0175}{2} = 0.00875^{c}\\), and \\(30^{\\circ} = \\frac{\\pi}{6}\\).\n\\(\\therefore 30^{\\circ}30' = \\frac{\\pi}{6} + 0.00875\\) ... (III)\n\nLet \\(a = \\frac{\\pi}{6}\\) and \\(h = 0.00875\\).\n\nFrom (I), \\(f(a) = \\sin\\frac{\\pi}{6} = \\frac{1}{2} = 0.5\\) ... (IV)\nFrom (II), \\(f'(a) = \\cos\\frac{\\pi}{6} = 0.866\\) ... (V)   [given]\n\nWe have \\(f(a + h) \\approx f(a) + h f'(a)\\),\n\\(f\\left(\\frac{\\pi}{6} + 0.00875\\right) \\approx 0.5 + (0.00875)(0.866)\\) ... [From (IV) and (V)]\n\\(\\approx 0.5 + 0.0075775\\)\n\n\\(\\therefore \\sin\\left(30^{\\circ}30'\\right) \\approx 0.5075775\\)\n\n[The true value is \\(0.507538\\ldots\\), so the approximation is good to four decimal places.]",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#24",
+    "questionNumber": "Q. 22",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Approximations",
+    "stem": "Find the approximate value of \\(\\tan^{- 1}(1.002)\\).",
+    "solution": "Let \\(f(x) = \\tan^{-1}x\\) ... (I)\n\nDifferentiate (I) w. r. t. \\(x\\),\n\\(f'(x) = \\frac{1}{1 + x^{2}}\\) ... (II)\n\nLet \\(a = 1\\) and \\(h = 0.002\\), so that \\(a + h = 1.002\\).\n\nFrom (I), \\(f(a) = f(1) = \\tan^{-1}1 = \\frac{\\pi}{4}\\) ... (III)\nFrom (II), \\(f'(a) = f'(1) = \\frac{1}{1 + 1} = \\frac{1}{2}\\) ... (IV)\n\nWe have \\(f(a + h) \\approx f(a) + h f'(a)\\),\n\\(\\tan^{-1}(1.002) \\approx \\frac{\\pi}{4} + (0.002)\\left(\\frac{1}{2}\\right)\\) ... [From (III) and (IV)]\n\\(\\approx \\frac{\\pi}{4} + 0.001\\)\n\nThe paper supplies no value of \\(\\pi\\); taking \\(\\pi = 3.1416\\) (the value used elsewhere in this paper's approximation questions), \\(\\frac{\\pi}{4} = 0.7854\\).\n\n\\(\\therefore \\tan^{-1}(1.002) \\approx 0.7854 + 0.001 = 0.7864\\)\n\n\\(\\therefore \\tan^{-1}(1.002) \\approx \\frac{\\pi}{4} + 0.001 = 0.7864\\) radian.\n\n[The true value is \\(0.786397\\ldots\\), so the approximation is correct to four decimal places. Leaving the answer as \\(\\frac{\\pi}{4} + 0.001\\) is also acceptable when no value of \\(\\pi\\) is given.]",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#25",
+    "questionNumber": "Q. 27",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Lagrange's Mean Value Theorem",
+    "stem": "If \\(f(x) = x(x - 1)(x - 2)(x - 3)\\), \\(x \\in \\lbrack 0,\\ 4\\rbrack\\), find 'c' if **L.M.V.T** can be applied.",
+    "solution": "Given: \\(f(x) = x(x - 1)(x - 2)(x - 3)\\), \\(x \\in [0, 4]\\)\n\n\\(f\\) is a polynomial, so it is continuous on \\([0, 4]\\) and differentiable on \\((0, 4)\\); hence L.M.V.T. applies.\n(Note \\(f(0) = 0\\) and \\(f(4) = 24\\) are unequal, so this is a mean-value problem and not a Rolle's-theorem one.)\n\nLet \\(a = 0\\) and \\(b = 4\\).\n\\(f(a) = f(0) = 0\\)\n\\(f(b) = f(4) = 4(3)(2)(1) = 24\\)\n\nBy L.M.V.T. there exists \\(c \\in (0, 4)\\) such that\n\\(f'(c) = \\frac{f(b) - f(a)}{b - a} = \\frac{24 - 0}{4 - 0} = 6\\)\n\nNow find \\(f'(x)\\). Grouping the factors as \\(\\left[x(x - 3)\\right]\\left[(x - 1)(x - 2)\\right]\\) keeps the algebra short:\n\\(x(x - 3) = x^{2} - 3x\\) and \\((x - 1)(x - 2) = x^{2} - 3x + 2\\).\nPut \\(u = x^{2} - 3x\\), so \\(f = u(u + 2) = u^{2} + 2u\\).\nDifferentiate w. r. t. \\(x\\),\n\\(f'(x) = (2u + 2)\\frac{du}{dx} = 2(u + 1)(2x - 3) = 2\\left(x^{2} - 3x + 1\\right)(2x - 3)\\)\n\nSet \\(f'(c) = 6\\):\n\\(2\\left(c^{2} - 3c + 1\\right)(2c - 3) = 6\\)\n\\(\\Rightarrow \\left(c^{2} - 3c + 1\\right)(2c - 3) = 3\\)\nExpanding, \\(2c^{3} - 9c^{2} + 11c - 3 = 3\\)\n\\(\\therefore 2c^{3} - 9c^{2} + 11c - 6 = 0\\)\n\nBy inspection \\(c = 3\\) satisfies it: \\(54 - 81 + 33 - 6 = 0\\). So \\((c - 3)\\) is a factor,\n\\(2c^{3} - 9c^{2} + 11c - 6 = (c - 3)\\left(2c^{2} - 3c + 2\\right) = 0\\)\nFor the quadratic factor, discriminant \\(= 9 - 16 = -7 < 0\\), so it has no real root.\n\n\\(\\therefore c = 3\\), and \\(3 \\in (0, 4)\\).\n\nCheck: \\(f'(3) = 2\\left(9 - 9 + 1\\right)(6 - 3) = 2(1)(3) = 6\\), as required.\n\n\\(\\therefore c = 3\\).",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "app-derivatives-12-pyq#26",
+    "questionNumber": "Q. 32",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Lagrange's Mean Value Theorem",
+    "stem": "Verify **Lagrange's mean value theorem** for the function \\(f(x) = \\sqrt{4 + x}\\) on the interval \\[0, 5\\].",
+    "solution": "Given: \\(f(x) = \\sqrt{4 + x}\\) ... (I)\n\nThe function \\(f\\) is continuous on the closed interval \\([0, 5]\\) and differentiable on the open interval \\((0, 5)\\) (the radicand \\(4 + x\\) is positive throughout), so L.M.V.T. is applicable.\n\nDifferentiate (I) w. r. t. \\(x\\),\n\\(f'(x) = \\frac{1}{2\\sqrt{4 + x}}\\) ... (II)\n\nLet \\(a = 0\\) and \\(b = 5\\).\nFrom (I), \\(f(a) = f(0) = \\sqrt{4} = 2\\)\n\\(f(b) = f(5) = \\sqrt{9} = 3\\)\n\nLet \\(c \\in (0, 5)\\) be such that\n\\(f'(c) = \\frac{f(b) - f(a)}{b - a}\\)\n\\(\\frac{1}{2\\sqrt{4 + c}} = \\frac{3 - 2}{5 - 0} = \\frac{1}{5}\\)\n\\(\\therefore 2\\sqrt{4 + c} = 5\\)\n\\(\\therefore \\sqrt{4 + c} = \\frac{5}{2}\\)\n\\(\\therefore 4 + c = \\frac{25}{4}\\)\n\\(\\therefore c = \\frac{25}{4} - 4 = \\frac{9}{4}\\)\n\nSince \\(\\frac{9}{4} = 2.25 \\in (0, 5)\\), such a \\(c\\) exists in the open interval.\n\n\\(\\therefore\\) Lagrange's Mean Value Theorem is verified, with \\(c = \\frac{9}{4}\\).",
+    "difficulty": "EASY"
+  }
+]

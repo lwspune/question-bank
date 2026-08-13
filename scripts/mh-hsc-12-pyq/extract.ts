@@ -145,6 +145,18 @@ function applyRepairs(drafts: Draft[], chapterId: string): string[] {
     if (!fix.ref.startsWith(`${chapterId}#`)) continue;
     const d = drafts.find((x) => x.ref === fix.ref);
     if (!d) throw new Error(`defects.json names ${fix.ref}, which this extraction did not produce`);
+    // A fix whose `to` equals its `from` is a SILENT NO-OP that passes every
+    // other check here: the exact-match guard is satisfied, the assignment runs,
+    // the log prints "stem corrected", and the stem does not change. It happened
+    // — an authoring script built `to` with .replace() against a needle the
+    // shell had mangled, so the replace matched nothing and returned the input.
+    // The row then shipped the corrupted stem with a correct-looking audit trail.
+    if (fix.from === fix.to) {
+      throw new Error(
+        `${fix.ref}: stemFix from === to, so it corrects NOTHING. Its own note says the ` +
+          `intended result is "${fix.consequence}". Rebuild the \`to\` field.`,
+      );
+    }
     if (d.stem !== fix.from) {
       throw new Error(
         `${fix.ref}: stem does not match the adjudicated text — REFUSING.\n` +
@@ -227,7 +239,12 @@ function main() {
     );
   }
 
-  const md = spawnSync("pandoc", ["-f", "docx", "-t", "markdown", "--wrap=none", ch.docx], {
+  // Force PIPE tables. pandoc's default markdown emits "simple tables" — a
+  // dashed grid — which the project cannot parse and which ships as an
+  // unreadable run of hyphens. Five probability-distribution tables were doing
+  // exactly that. GFM pipe tables are what parseTableBlocks reads.
+  const TARGET = "markdown-simple_tables-multiline_tables-grid_tables";
+  const md = spawnSync("pandoc", ["-f", "docx", "-t", TARGET, "--wrap=none", ch.docx], {
     encoding: "utf8",
     maxBuffer: 64 * 1024 * 1024,
   });

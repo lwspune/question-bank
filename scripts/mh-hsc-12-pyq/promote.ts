@@ -56,9 +56,16 @@ function main() {
   diff("assigned", assigned.map((a) => a.ref));
   diff("solutions", sols.map((s) => s.ref));
 
-  const known = new Set(ch.subtopics);
+  // A RELOCATED row is validated against the axis of the chapter it is moving
+  // TO, not the one whose file it happens to sit in. Both relocations exist
+  // because a transcription defect mis-filed the question, so its subtopic
+  // necessarily belongs to the other chapter.
   for (const a of assigned) {
-    if (!known.has(a.subtopic)) problems.push(`${a.ref}: subtopic "${a.subtopic}" is not on ${ch.chapterName}'s axis`);
+    const row = byRef.get(a.ref);
+    const target = row?.chapterOverride ? requireChapter(row.chapterOverride) : ch;
+    if (!target.subtopics.includes(a.subtopic)) {
+      problems.push(`${a.ref}: subtopic "${a.subtopic}" is not on ${target.chapterName}'s axis`);
+    }
   }
 
   const solByRef = new Map(sols.map((s) => [s.ref, s]));

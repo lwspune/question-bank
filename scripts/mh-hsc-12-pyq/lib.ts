@@ -153,6 +153,15 @@ export function stripArtifacts(text: string): string {
   out = out.replace(/#{2,}[ \t]*(?:\*{0,2}[A-Z]\.[^\n]*)?/g, " ");
   out = out.replace(/\\_/g, "_");
   out = out.replace(/\\\^/g, "^");
+  // pandoc escapes < and > outside a math zone. Left alone they ship as literal
+  // backslashes — every p.d.f. support interval in the corpus reads "0\<x\<8".
+  out = out.replace(/\\([<>])/g, "$1");
+  // A trailing "\:" is the compilation's flattening of the printed fill-in
+  // blank, confirmed against the 2019 page (the item ends "______."). Where a
+  // blank is ALREADY present the artifact is pure noise; otherwise restore it,
+  // since a question ending "the differential equation is" reads as truncated.
+  out = out.replace(/\s*\\:\s*$/, (m, ...r) => "");
+  if (/\\:\s*$/.test(text) && !/_{3,}\s*\.?\s*$/.test(out)) out = `${out} ______.`;
   // pandoc sometimes closes a math zone one token early, stranding the closing
   // bracket outside it (item 21: "...\vee \sim p$\]."). A literal "\]" then
   // ships in the stem. The reading is unambiguous — a \lbrack is open inside the
@@ -164,6 +173,13 @@ export function stripArtifacts(text: string): string {
   // (Options:, comment separators) replace with a space, so by this point the
   // backslash is often followed by " \n" rather than "\n" directly.
   out = out.replace(/\\(?=[ \t]*(?:\n|$))/g, "");
+  // The same continuation backslash can also land MID-string — before the
+  // board's internal-choice "OR" marker — where it ships as a literal backslash
+  // between two sentences. Matched only as a STANDALONE token (space, backslash,
+  // space), which leaves `\ ` inside a math zone alone: that is a real LaTeX
+  // spacing command and is how this corpus lays out its piecewise p.d.f.
+  // definitions, e.g. `\(\ \ \ \ = 0\)`.
+  out = out.replace(/(^|[^\\(])\s\\\s(?=[^\\)])/g, "$1 ");
   return collapseSpaces(out);
 }
 
@@ -240,13 +256,42 @@ export function splitImage(block: string): { text: string; image?: string } {
   return { text: collapseSpaces(text), image: m[1] };
 }
 
+/**
+ * Join a question onto one line — EXCEPT across a GFM pipe table.
+ *
+ * Everything else in this corpus is a single paragraph, so collapsing is right.
+ * But a pipe table IS its line structure: flattened onto one line the `|---|`
+ * row stops being a separator, GFM refuses to build a table, and the whole thing
+ * ships as raw pipes. Five probability-distribution tables were doing exactly
+ * that — and the defect was invisible until the extractor was switched to emit
+ * pipe tables at all, because before that they were a dashed grid.
+ *
+ * Lines are therefore collapsed in RUNS: a line starting with `|` is a table row
+ * and keeps its own newline, fenced off from the prose either side of it.
+ */
 function collapseSpaces(s: string): string {
-  return s
-    .replace(/[ \t]{2,}/g, " ")
-    .replace(/\s*\n\s*\n\s*/g, " ")
-    .replace(/\s*\n\s*/g, " ")
-    .replace(/[ \t]{2,}/g, " ")
-    .trim();
+  const isRow = (l: string) => l.trim().startsWith("|");
+  const out: string[] = [];
+  let prose: string[] = [];
+  const flushProse = () => {
+    // Trim each line BEFORE joining, and drop the blanks. The rule this replaced
+    // was `/\s*\n\s*/ -> " "`, which consumed the whitespace either side of the
+    // break; joining raw lines instead leaves a double space wherever a line had
+    // a trailing one, and that silently invalidated every adjudicated stem.
+    const t = prose.map((l) => l.trim()).filter(Boolean).join(" ").replace(/[ \t]{2,}/g, " ").trim();
+    if (t) out.push(t);
+    prose = [];
+  };
+  for (const line of s.split("\n")) {
+    if (isRow(line)) {
+      flushProse();
+      out.push(line.trim());
+    } else {
+      prose.push(line);
+    }
+  }
+  flushProse();
+  return out.join("\n").replace(/\n{2,}/g, "\n").replace(/[ \t]{2,}/g, " ").trim();
 }
 
 // ───────────────────────────── record building ─────────────────────────────
@@ -288,6 +333,9 @@ export type PyqQuestion = {
   /** A KNOWN MCQ whose option list the compilation lost. It reads as
    *  free-response, which is the wrong format, so the build REFUSES it. */
   pendingMcq?: string;
+  /** The chapter this question actually belongs to, when the compilation filed
+   *  it elsewhere. Both known cases were CAUSED by a transcription defect. */
+  chapterOverride?: string;
 };
 
 export type PyqChapter = { chapterName: string; subjectName: string; subtopics: string[] };
@@ -296,10 +344,15 @@ export type Flag = { ref: string; reason: string };
 export function buildPyqRecords(
   chapter: PyqChapter,
   questions: PyqQuestion[],
+  /** Chapters a row may be RELOCATED into, by the id its `chapterOverride` names.
+   *  A relocated row commits under that chapter's name and is validated against
+   *  ITS axis — the compilation files a question by the section it was typed
+   *  into, so a stem that acquired an integral sign from its neighbour acquired
+   *  that neighbour's chapter too. */
+  relocationTargets: Record<string, PyqChapter> = {},
 ): { rows: ParsedRowPayload[]; flags: Flag[] } {
   const rows: ParsedRowPayload[] = [];
   const flags: Flag[] = [];
-  const known = new Set(chapter.subtopics);
   const seen = new Set<string>();
   let sourceRow = 0;
 
@@ -307,8 +360,12 @@ export function buildPyqRecords(
     sourceRow++;
     if (seen.has(q.ref)) throw new Error(`duplicate ref "${q.ref}"`);
     seen.add(q.ref);
-    if (!known.has(q.subtopic)) {
-      throw new Error(`${q.ref}: subtopic "${q.subtopic}" not one of [${chapter.subtopics.join(", ")}]`);
+    const home = q.chapterOverride ? relocationTargets[q.chapterOverride] : chapter;
+    if (!home) {
+      throw new Error(`${q.ref}: relocated to "${q.chapterOverride}", which was not supplied`);
+    }
+    if (!home.subtopics.includes(q.subtopic)) {
+      throw new Error(`${q.ref}: subtopic "${q.subtopic}" not one of [${home.subtopics.join(", ")}]`);
     }
     const difficulty = q.difficulty.trim().toUpperCase() as Difficulty;
     if (!DIFFICULTIES.includes(difficulty)) {
@@ -327,8 +384,8 @@ export function buildPyqRecords(
     const base = {
       sourceRow,
       questionNumber: q.questionNumber,
-      subjectName: chapter.subjectName,
-      chapterName: chapter.chapterName,
+      subjectName: home.subjectName,
+      chapterName: home.chapterName,
       subtopicName: q.subtopic,
       text: q.stem,
       difficulty,

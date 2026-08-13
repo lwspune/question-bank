@@ -27,14 +27,23 @@ function main() {
   if (!existsSync(mapPath)) throw new Error(`No reviewed assignment at ${mapPath}`);
   const map = JSON.parse(readFileSync(mapPath, "utf8")) as Record<string, string>;
 
-  const known = new Set(ch.subtopics);
-  const refs = new Set(draft.map((d) => d.ref));
+  const byRef = new Map(draft.map((d) => [d.ref, d]));
   const problems: string[] = [];
 
   for (const [ref, st] of Object.entries(map)) {
     if (ref.startsWith("_")) continue;
-    if (!refs.has(ref)) problems.push(`assignment names ${ref}, absent from the draft`);
-    else if (!known.has(st)) problems.push(`${ref}: "${st}" is not a subtopic of ${ch.chapterName}`);
+    const row = byRef.get(ref);
+    if (!row) {
+      problems.push(`assignment names ${ref}, absent from the draft`);
+      continue;
+    }
+    // A RELOCATED row is checked against the chapter it is moving TO. It sits in
+    // this file only because the compilation mis-filed it, which is the very
+    // thing chapterOverride records.
+    const target = row.chapterOverride ? requireChapter(row.chapterOverride) : ch;
+    if (!target.subtopics.includes(st)) {
+      problems.push(`${ref}: "${st}" is not a subtopic of ${target.chapterName}`);
+    }
   }
   for (const d of draft) if (!map[d.ref]) problems.push(`${d.ref}: unassigned`);
   if (problems.length) throw new Error(`REFUSING:\n  ${problems.join("\n  ")}`);

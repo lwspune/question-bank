@@ -1,0 +1,321 @@
+[
+  {
+    "ref": "indef-integration-12-pyq#1",
+    "questionNumber": "Q. 4. (B) i.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "stem": "Evaluate:\\(\\int_{}^{}{e^{x}\\left( \\frac{\\sqrt{1 - x^{2}}\\sin^{- 1}x + 1}{\\sqrt{1 - x^{2}}} \\right)dx}\\).",
+    "solution": "Split the bracket: \\(\\dfrac{\\sqrt{1-x^{2}}\\,\\sin^{-1}x+1}{\\sqrt{1-x^{2}}}=\\sin^{-1}x+\\dfrac{1}{\\sqrt{1-x^{2}}}\\).\n\nSo the integral is \\(\\displaystyle\\int e^{x}\\left[\\sin^{-1}x+\\dfrac{1}{\\sqrt{1-x^{2}}}\\right]dx\\), which is of the form \\(\\displaystyle\\int e^{x}\\left[f(x)+f'(x)\\right]dx\\) with \\(f(x)=\\sin^{-1}x\\) and \\(f'(x)=\\dfrac{1}{\\sqrt{1-x^{2}}}\\).\n\nUsing \\(\\displaystyle\\int e^{x}\\left[f(x)+f'(x)\\right]dx=e^{x}f(x)+c\\):\n\n\\(\\displaystyle\\int e^{x}\\left(\\dfrac{\\sqrt{1-x^{2}}\\,\\sin^{-1}x+1}{\\sqrt{1-x^{2}}}\\right)dx=e^{x}\\sin^{-1}x+c\\)\n\nVerified by differentiating the answer back: \\(\\dfrac{d}{dx}\\left(e^{x}\\sin^{-1}x\\right)=e^{x}\\sin^{-1}x+e^{x}\\cdot\\dfrac{1}{\\sqrt{1-x^{2}}}=e^{x}\\left(\\dfrac{\\sqrt{1-x^{2}}\\,\\sin^{-1}x+1}{\\sqrt{1-x^{2}}}\\right)\\), which is the original integrand.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "indef-integration-12-pyq#2",
+    "questionNumber": "Q. 4. (B) ii.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit Functions",
+    "stem": "If \\(y = \\sqrt{\\sin x + \\sqrt{\\sin x + \\sqrt{\\sin x + \\cdots\\infty}}}\\), then show that \\(\\frac{dy}{dx} = \\frac{\\cos x}{2y - 1}\\).",
+    "chapterOverride": "differentiation-12-pyq",
+    "solution": "Everything under the outermost radical, after the \\(\\sin x\\), repeats the whole expression, so the radical is self-similar:\n\n\\(y = \\sqrt{\\sin x + y}\\)\n\nSquaring both sides gives an implicit relation between \\(x\\) and \\(y\\):\n\n\\(y^{2} = \\sin x + y\\)\n\nDifferentiate both sides with respect to \\(x\\), treating \\(y\\) as a function of \\(x\\):\n\n\\(2y\\dfrac{dy}{dx} = \\cos x + \\dfrac{dy}{dx}\\)\n\n\\(2y\\dfrac{dy}{dx} - \\dfrac{dy}{dx} = \\cos x\\)\n\n\\((2y - 1)\\dfrac{dy}{dx} = \\cos x\\)\n\n\\(\\dfrac{dy}{dx} = \\dfrac{\\cos x}{2y - 1}\\)\n\nwhich is the required result.\n\n**Independent check.** Solving \\(y^{2} - y - \\sin x = 0\\) for the non-negative branch,\n\n\\(y = \\dfrac{1 + \\sqrt{1 + 4\\sin x}}{2}\\)\n\nDifferentiating this explicitly,\n\n\\(\\dfrac{dy}{dx} = \\dfrac{1}{2} \\cdot \\dfrac{4\\cos x}{2\\sqrt{1 + 4\\sin x}} = \\dfrac{\\cos x}{\\sqrt{1 + 4\\sin x}}\\)\n\nand since \\(2y - 1 = \\sqrt{1 + 4\\sin x}\\), this is the same expression as the one derived implicitly. The two routes agree.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "indef-integration-12-pyq#3",
+    "questionNumber": "Q. 5. (A) i.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "stem": "Integrate \\(\\sec^{3}x\\) w.r.t. \\(x\\).",
+    "solution": "Write \\(\\sec^{3}x=\\sec x\\cdot\\sec^{2}x\\) and integrate by parts with \\(u=\\sec x\\), \\(dv=\\sec^{2}x\\,dx\\), so \\(du=\\sec x\\tan x\\,dx\\) and \\(v=\\tan x\\). Let \\(I=\\displaystyle\\int\\sec^{3}x\\,dx\\).\n\n\\(I=\\sec x\\tan x-\\displaystyle\\int\\tan x\\cdot\\sec x\\tan x\\,dx=\\sec x\\tan x-\\displaystyle\\int\\sec x\\tan^{2}x\\,dx\\)\n\nUsing \\(\\tan^{2}x=\\sec^{2}x-1\\):\n\n\\(I=\\sec x\\tan x-\\displaystyle\\int\\sec x\\left(\\sec^{2}x-1\\right)dx=\\sec x\\tan x-\\displaystyle\\int\\sec^{3}x\\,dx+\\displaystyle\\int\\sec x\\,dx\\)\n\n\\(I=\\sec x\\tan x-I+\\log|\\sec x+\\tan x|\\)\n\n\\(2I=\\sec x\\tan x+\\log|\\sec x+\\tan x|\\)\n\n\\(\\therefore\\ \\displaystyle\\int\\sec^{3}x\\,dx=\\dfrac{1}{2}\\sec x\\tan x+\\dfrac{1}{2}\\log|\\sec x+\\tan x|+c\\)\n\nVerified by differentiating the answer back: \\(\\dfrac{d}{dx}\\left[\\dfrac{1}{2}\\sec x\\tan x\\right]=\\dfrac{1}{2}\\left(\\sec x\\tan^{2}x+\\sec^{3}x\\right)\\) and \\(\\dfrac{d}{dx}\\left[\\dfrac{1}{2}\\log|\\sec x+\\tan x|\\right]=\\dfrac{1}{2}\\cdot\\dfrac{\\sec x\\tan x+\\sec^{2}x}{\\sec x+\\tan x}=\\dfrac{1}{2}\\sec x\\). Adding, \\(\\dfrac{1}{2}\\left(\\sec x(\\sec^{2}x-1)+\\sec^{3}x+\\sec x\\right)=\\sec^{3}x\\), the original integrand.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "indef-integration-12-pyq#4",
+    "questionNumber": "Q. 1. vii.",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Elementary Integration and Standard Formulae",
+    "stem": "If \\(\\int\\frac{dx}{4x - 1} = Alog|4x - 1| + c\\), then \\(A =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{4}\\)"
+      }
+    ],
+    "answer": "D",
+    "solution": "**(D)** \\(\\dfrac{1}{4}\\)\n\nPut \\(t=4x-1\\), so \\(dt=4\\,dx\\), i.e. \\(dx=\\dfrac{dt}{4}\\).\n\n\\(\\displaystyle\\int\\dfrac{dx}{4x-1}=\\dfrac{1}{4}\\int\\dfrac{dt}{t}=\\dfrac{1}{4}\\log|t|+c=\\dfrac{1}{4}\\log|4x-1|+c\\)\n\nComparing with the given form \\(A\\log|4x-1|+c\\) gives \\(A=\\dfrac{1}{4}\\), which is option (D).\n\nVerified by differentiating back: \\(\\dfrac{d}{dx}\\left[\\dfrac{1}{4}\\log|4x-1|\\right]=\\dfrac{1}{4}\\cdot\\dfrac{4}{4x-1}=\\dfrac{1}{4x-1}\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "indef-integration-12-pyq#5",
+    "questionNumber": "Q. 1. vi.",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Elementary Integration and Standard Formulae",
+    "stem": "\\(\\int\\cos^{3}x\\ dx\\) = _______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\ \\frac{1}{12}sin3x + \\frac{3}{4}sinx + c\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{12}sin3x + \\frac{1}{4}sinx + c\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{12}sin3x - \\frac{3}{4}sinx + c\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{12}sin3x - \\frac{1}{4}sinx + c\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)**\n\nA power of cosine is brought down to a first power by the triple-angle identity\n\n\\(\\cos 3x = 4\\cos^{3}x - 3\\cos x\\)\n\nwhich rearranges to\n\n\\(\\cos^{3}x = \\dfrac{1}{4}\\left(\\cos 3x + 3\\cos x\\right)\\)\n\nHence\n\n\\(\\displaystyle\\int\\cos^{3}x\\,dx = \\dfrac{1}{4}\\int\\cos 3x\\,dx + \\dfrac{3}{4}\\int\\cos x\\,dx\\)\n\n\\(= \\dfrac{1}{4} \\cdot \\dfrac{\\sin 3x}{3} + \\dfrac{3}{4}\\sin x + c\\)\n\n\\(= \\dfrac{1}{12}\\sin 3x + \\dfrac{3}{4}\\sin x + c\\)\n\nwhich is option (A).\n\n**Verification by differentiating the answer back:**\n\n\\(\\dfrac{d}{dx}\\left[\\dfrac{1}{12}\\sin 3x + \\dfrac{3}{4}\\sin x\\right] = \\dfrac{3}{12}\\cos 3x + \\dfrac{3}{4}\\cos x = \\dfrac{1}{4}\\cos 3x + \\dfrac{3}{4}\\cos x\\)\n\n\\(= \\dfrac{1}{4}\\left(4\\cos^{3}x - 3\\cos x\\right) + \\dfrac{3}{4}\\cos x = \\cos^{3}x - \\dfrac{3}{4}\\cos x + \\dfrac{3}{4}\\cos x = \\cos^{3}x\\)\n\nThe integrand is recovered exactly, so (A) is confirmed. The other three options differ only in the coefficient of \\(\\sin x\\); differentiating any of them leaves a stray \\(\\cos x\\) term that does not cancel.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "indef-integration-12-pyq#6",
+    "questionNumber": "Q. 5",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Special Integrals of Quadratic Forms",
+    "stem": "\\(\\int\\frac{dx}{9x^{2} + 1}\\) = ______",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{3}\\tan^{- 1}(2x) + c\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{3}\\tan^{- 1}x + c\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{3}\\tan^{- 1}(3x) + c\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{3}\\tan^{- 1}(6x) + c\\)"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)** \\(\\dfrac{1}{3}\\tan^{-1}(3x)+c\\)\n\nTake the coefficient of \\(x^{2}\\) out: \\(9x^{2}+1=9\\left(x^{2}+\\dfrac{1}{9}\\right)\\), so\n\n\\(\\displaystyle\\int\\dfrac{dx}{9x^{2}+1}=\\dfrac{1}{9}\\int\\dfrac{dx}{x^{2}+\\left(\\frac{1}{3}\\right)^{2}}\\)\n\nUsing \\(\\displaystyle\\int\\dfrac{dx}{x^{2}+a^{2}}=\\dfrac{1}{a}\\tan^{-1}\\dfrac{x}{a}+c\\) with \\(a=\\dfrac{1}{3}\\):\n\n\\(=\\dfrac{1}{9}\\cdot 3\\tan^{-1}(3x)+c=\\dfrac{1}{3}\\tan^{-1}(3x)+c\\), which is option (C).\n\nVerified by differentiating back: \\(\\dfrac{d}{dx}\\left[\\dfrac{1}{3}\\tan^{-1}(3x)\\right]=\\dfrac{1}{3}\\cdot\\dfrac{3}{1+9x^{2}}=\\dfrac{1}{9x^{2}+1}\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "indef-integration-12-pyq#7",
+    "questionNumber": "Q. 33",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Integration by Partial Fractions",
+    "stem": "Evaluate: \\(\\int\\frac{5e^{x}}{\\left( e^{x} + 1 \\right)\\left( e^{2x} + 9 \\right)}dx\\).",
+    "solution": "Put \\(t=e^{x}\\), so \\(dt=e^{x}dx\\) and \\(e^{2x}=t^{2}\\). Let \\(I\\) be the integral.\n\n\\(I=\\displaystyle\\int\\dfrac{5\\,dt}{(t+1)\\left(t^{2}+9\\right)}\\)\n\nResolve into partial fractions: \\(\\dfrac{5}{(t+1)(t^{2}+9)}=\\dfrac{A}{t+1}+\\dfrac{Bt+C}{t^{2}+9}\\), so \\(5=A\\left(t^{2}+9\\right)+(Bt+C)(t+1)\\).\n\nPut \\(t=-1\\): \\(5=10A\\), so \\(A=\\dfrac{1}{2}\\).\nCompare coefficients of \\(t^{2}\\): \\(0=A+B\\), so \\(B=-\\dfrac{1}{2}\\).\nCompare constants: \\(5=9A+C\\), so \\(C=5-\\dfrac{9}{2}=\\dfrac{1}{2}\\).\n\n\\(\\therefore\\ I=\\dfrac{1}{2}\\displaystyle\\int\\dfrac{dt}{t+1}-\\dfrac{1}{2}\\displaystyle\\int\\dfrac{t-1}{t^{2}+9}\\,dt\\)\n\nNow \\(\\displaystyle\\int\\dfrac{t-1}{t^{2}+9}\\,dt=\\dfrac{1}{2}\\displaystyle\\int\\dfrac{2t}{t^{2}+9}\\,dt-\\displaystyle\\int\\dfrac{dt}{t^{2}+3^{2}}=\\dfrac{1}{2}\\log\\left(t^{2}+9\\right)-\\dfrac{1}{3}\\tan^{-1}\\dfrac{t}{3}\\).\n\n\\(\\therefore\\ I=\\dfrac{1}{2}\\log|t+1|-\\dfrac{1}{4}\\log\\left(t^{2}+9\\right)+\\dfrac{1}{6}\\tan^{-1}\\dfrac{t}{3}\\)\n\nRestoring \\(t=e^{x}\\):\n\n\\(\\therefore\\ \\displaystyle\\int\\dfrac{5e^{x}}{\\left(e^{x}+1\\right)\\left(e^{2x}+9\\right)}dx=\\dfrac{1}{2}\\log\\left(e^{x}+1\\right)-\\dfrac{1}{4}\\log\\left(e^{2x}+9\\right)+\\dfrac{1}{6}\\tan^{-1}\\dfrac{e^{x}}{3}+c\\)\n\nVerified by differentiating the answer back. With \\(t=e^{x}\\) the derivative is\n\\(\\dfrac{1}{2}\\cdot\\dfrac{t}{t+1}-\\dfrac{1}{2}\\cdot\\dfrac{t^{2}}{t^{2}+9}+\\dfrac{1}{2}\\cdot\\dfrac{t}{t^{2}+9}=\\dfrac{t}{2}\\left[\\dfrac{1}{t+1}-\\dfrac{t-1}{t^{2}+9}\\right]=\\dfrac{t}{2}\\cdot\\dfrac{\\left(t^{2}+9\\right)-\\left(t^{2}-1\\right)}{(t+1)\\left(t^{2}+9\\right)}=\\dfrac{5t}{(t+1)\\left(t^{2}+9\\right)}\\),\nwhich is the original integrand.",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "indef-integration-12-pyq#8",
+    "questionNumber": "Q. 1. vii.",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "mcq",
+    "subtopic": "Elementary Integration and Standard Formulae",
+    "stem": "The value of \\(\\int x^{x}(1 + logx)dx\\) is equal to __________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{2}(1 + logx)^{2} + c\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(x^{2x} + c\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(x^{x} \\cdot logx + c\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(x^{x} + c\\)"
+      }
+    ],
+    "answer": "D",
+    "solution": "**(D)** \\(x^{x}+c\\)\n\nLet \\(y=x^{x}\\). Taking logarithms, \\(\\log y=x\\log x\\).\n\nDifferentiating both sides with respect to \\(x\\): \\(\\dfrac{1}{y}\\dfrac{dy}{dx}=x\\cdot\\dfrac{1}{x}+\\log x=1+\\log x\\).\n\n\\(\\therefore\\ \\dfrac{d}{dx}\\left(x^{x}\\right)=x^{x}\\left(1+\\log x\\right)\\)\n\nSo the integrand is exactly the derivative of \\(x^{x}\\), and\n\n\\(\\displaystyle\\int x^{x}\\left(1+\\log x\\right)dx=x^{x}+c\\), which is option (D).\n\nThe differentiation above IS the check: the answer differentiated back reproduces the integrand.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "indef-integration-12-pyq#9",
+    "questionNumber": "Q. 10",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Integration by Substitution",
+    "stem": "Evaluate: \\(\\int x^{9}\\sec^{2}\\left( x^{10} \\right)dx\\).",
+    "solution": "Let \\(t=x^{10}\\), so \\(dt=10x^{9}dx\\), i.e. \\(x^{9}dx=\\dfrac{dt}{10}\\).\n\n\\(\\displaystyle\\int x^{9}\\sec^{2}\\left(x^{10}\\right)dx=\\dfrac{1}{10}\\displaystyle\\int\\sec^{2}t\\,dt=\\dfrac{1}{10}\\tan t+c\\)\n\nRestoring \\(t=x^{10}\\):\n\n\\(\\therefore\\ \\displaystyle\\int x^{9}\\sec^{2}\\left(x^{10}\\right)dx=\\dfrac{1}{10}\\tan\\left(x^{10}\\right)+c\\)\n\nVerified by differentiating back: \\(\\dfrac{d}{dx}\\left[\\dfrac{1}{10}\\tan\\left(x^{10}\\right)\\right]=\\dfrac{1}{10}\\sec^{2}\\left(x^{10}\\right)\\cdot 10x^{9}=x^{9}\\sec^{2}\\left(x^{10}\\right)\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "indef-integration-12-pyq#10",
+    "questionNumber": "Q. 11",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Special Integrals of Quadratic Forms",
+    "stem": "Evaluate: \\(\\int\\frac{1}{25 - 9x^{2}}dx\\).",
+    "solution": "Take the coefficient of \\(x^{2}\\) out: \\(25-9x^{2}=9\\left(\\dfrac{25}{9}-x^{2}\\right)\\), so\n\n\\(\\displaystyle\\int\\dfrac{1}{25-9x^{2}}dx=\\dfrac{1}{9}\\displaystyle\\int\\dfrac{dx}{\\left(\\frac{5}{3}\\right)^{2}-x^{2}}\\)\n\nUsing \\(\\displaystyle\\int\\dfrac{dx}{a^{2}-x^{2}}=\\dfrac{1}{2a}\\log\\left|\\dfrac{a+x}{a-x}\\right|+c\\) with \\(a=\\dfrac{5}{3}\\):\n\n\\(=\\dfrac{1}{9}\\cdot\\dfrac{1}{2\\cdot\\frac{5}{3}}\\log\\left|\\dfrac{\\frac{5}{3}+x}{\\frac{5}{3}-x}\\right|+c=\\dfrac{1}{30}\\log\\left|\\dfrac{5+3x}{5-3x}\\right|+c\\)\n\n\\(\\therefore\\ \\displaystyle\\int\\dfrac{1}{25-9x^{2}}dx=\\dfrac{1}{30}\\log\\left|\\dfrac{5+3x}{5-3x}\\right|+c\\)\n\nVerified by differentiating back: \\(\\dfrac{d}{dx}\\left[\\dfrac{1}{30}\\left(\\log|5+3x|-\\log|5-3x|\\right)\\right]=\\dfrac{1}{30}\\left[\\dfrac{3}{5+3x}+\\dfrac{3}{5-3x}\\right]=\\dfrac{1}{10}\\cdot\\dfrac{(5-3x)+(5+3x)}{25-9x^{2}}=\\dfrac{1}{25-9x^{2}}\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "indef-integration-12-pyq#12",
+    "questionNumber": "Q. 5. (A) ii.",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "stem": "If \\(u\\) and \\(v\\) are two functions of \\(x\\), then prove that \\(\\int uvdx = u\\int vdx - \\int\\left\\lbrack \\frac{du}{dx}\\int vdx \\right\\rbrack dx\\).",
+    "solution": "Let \\(u\\) and \\(v\\) be functions of \\(x\\), and write \\(w=\\displaystyle\\int v\\,dx\\), so that \\(\\dfrac{dw}{dx}=v\\).\n\nBy the product rule of differentiation,\n\n\\(\\dfrac{d}{dx}\\left(u\\,w\\right)=u\\dfrac{dw}{dx}+w\\dfrac{du}{dx}=uv+\\dfrac{du}{dx}\\displaystyle\\int v\\,dx\\)\n\nIntegrating both sides with respect to \\(x\\), and using \\(\\displaystyle\\int\\dfrac{d}{dx}\\left(u\\,w\\right)dx=u\\,w\\):\n\n\\(u\\displaystyle\\int v\\,dx=\\displaystyle\\int uv\\,dx+\\displaystyle\\int\\left[\\dfrac{du}{dx}\\displaystyle\\int v\\,dx\\right]dx\\)\n\nTransposing,\n\n\\(\\therefore\\ \\displaystyle\\int uv\\,dx=u\\displaystyle\\int v\\,dx-\\displaystyle\\int\\left[\\dfrac{du}{dx}\\displaystyle\\int v\\,dx\\right]dx\\)\n\nwhich is the required result. (Here \\(u\\) is the first function and \\(v\\) the second; the arbitrary constant of the inner integration cancels between the two terms, so \\(w\\) may be taken with constant zero.)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "indef-integration-12-pyq#13",
+    "questionNumber": "Q. 32",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "stem": "If \\(u\\) and \\(v\\) are differentiable functions of \\(x\\), then prove that \\(\\int udv = uv - \\int vdu\\). Hence evaluate \\(\\int logxdx\\).",
+    "solution": "**Proof.** Let \\(u\\) and \\(v\\) be differentiable functions of \\(x\\). By the product rule,\n\n\\(d(uv)=u\\,dv+v\\,du\\)\n\nIntegrating both sides,\n\n\\(\\displaystyle\\int d(uv)=\\displaystyle\\int u\\,dv+\\displaystyle\\int v\\,du\\), i.e. \\(uv=\\displaystyle\\int u\\,dv+\\displaystyle\\int v\\,du\\)\n\n\\(\\therefore\\ \\displaystyle\\int u\\,dv=uv-\\displaystyle\\int v\\,du\\)\n\n**Hence \\(\\displaystyle\\int\\log x\\,dx\\).** Write \\(\\displaystyle\\int\\log x\\,dx=\\displaystyle\\int\\log x\\cdot 1\\,dx\\) and take\n\n\\(u=\\log x\\), \\(dv=dx\\), so \\(du=\\dfrac{1}{x}dx\\) and \\(v=x\\).\n\n\\(\\displaystyle\\int\\log x\\,dx=x\\log x-\\displaystyle\\int x\\cdot\\dfrac{1}{x}dx=x\\log x-\\displaystyle\\int 1\\,dx\\)\n\n\\(\\therefore\\ \\displaystyle\\int\\log x\\,dx=x\\log x-x+c\\)\n\nVerified by differentiating back: \\(\\dfrac{d}{dx}\\left(x\\log x-x\\right)=\\log x+x\\cdot\\dfrac{1}{x}-1=\\log x\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "indef-integration-12-pyq#14",
+    "questionNumber": "Q. 23",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "stem": "Evaluate \\(\\int x\\tan^{- 1}xdx\\).",
+    "solution": "Take \\(\\tan^{-1}x\\) as the first function and \\(x\\) as the second (by LIATE, the inverse-trigonometric factor comes first). Let \\(I=\\displaystyle\\int x\\tan^{-1}x\\,dx\\).\n\n\\(I=\\tan^{-1}x\\displaystyle\\int x\\,dx-\\displaystyle\\int\\left[\\dfrac{d}{dx}\\left(\\tan^{-1}x\\right)\\displaystyle\\int x\\,dx\\right]dx\\)\n\n\\(=\\dfrac{x^{2}}{2}\\tan^{-1}x-\\displaystyle\\int\\dfrac{1}{1+x^{2}}\\cdot\\dfrac{x^{2}}{2}\\,dx\\)\n\n\\(=\\dfrac{x^{2}}{2}\\tan^{-1}x-\\dfrac{1}{2}\\displaystyle\\int\\dfrac{1+x^{2}-1}{1+x^{2}}\\,dx\\)\n\n\\(=\\dfrac{x^{2}}{2}\\tan^{-1}x-\\dfrac{1}{2}\\displaystyle\\int\\left[1-\\dfrac{1}{1+x^{2}}\\right]dx\\)\n\n\\(=\\dfrac{x^{2}}{2}\\tan^{-1}x-\\dfrac{1}{2}\\left[x-\\tan^{-1}x\\right]+c\\)\n\n\\(\\therefore\\ \\displaystyle\\int x\\tan^{-1}x\\,dx=\\dfrac{x^{2}}{2}\\tan^{-1}x-\\dfrac{x}{2}+\\dfrac{1}{2}\\tan^{-1}x+c\\)\n\nVerified by differentiating back:\n\\(\\dfrac{d}{dx}\\left[\\dfrac{x^{2}}{2}\\tan^{-1}x-\\dfrac{x}{2}+\\dfrac{1}{2}\\tan^{-1}x\\right]=x\\tan^{-1}x+\\dfrac{x^{2}}{2\\left(1+x^{2}\\right)}-\\dfrac{1}{2}+\\dfrac{1}{2\\left(1+x^{2}\\right)}=x\\tan^{-1}x+\\dfrac{x^{2}+1}{2\\left(1+x^{2}\\right)}-\\dfrac{1}{2}=x\\tan^{-1}x\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "indef-integration-12-pyq#15",
+    "questionNumber": "Q. 10",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "stem": "Evaluate: \\(\\int logxdx\\).",
+    "solution": "Write \\(\\displaystyle\\int\\log x\\,dx=\\displaystyle\\int\\log x\\cdot 1\\,dx\\) and integrate by parts with \\(\\log x\\) as the first function and \\(1\\) as the second.\n\n\\(\\displaystyle\\int\\log x\\cdot 1\\,dx=\\log x\\displaystyle\\int 1\\,dx-\\displaystyle\\int\\left[\\dfrac{d}{dx}\\left(\\log x\\right)\\displaystyle\\int 1\\,dx\\right]dx\\)\n\n\\(=x\\log x-\\displaystyle\\int\\dfrac{1}{x}\\cdot x\\,dx=x\\log x-\\displaystyle\\int 1\\,dx\\)\n\n\\(\\therefore\\ \\displaystyle\\int\\log x\\,dx=x\\log x-x+c\\)\n\nVerified by differentiating back: \\(\\dfrac{d}{dx}\\left(x\\log x-x\\right)=\\log x+x\\cdot\\dfrac{1}{x}-1=\\log x\\), the original integrand.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "indef-integration-12-pyq#16",
+    "questionNumber": "Q. 32",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "stem": "Evaluate: \\(\\int e^{\\sin^{- 1}x}\\left( \\frac{x + \\sqrt{1 - x^{2}}}{\\sqrt{1 - x^{2}}} \\right)dx\\).",
+    "solution": "Split the bracket: \\(\\dfrac{x+\\sqrt{1-x^{2}}}{\\sqrt{1-x^{2}}}=\\dfrac{x}{\\sqrt{1-x^{2}}}+1\\).\n\nPut \\(t=\\sin^{-1}x\\), so \\(x=\\sin t\\), \\(\\sqrt{1-x^{2}}=\\cos t\\) and \\(dx=\\cos t\\,dt\\).\n\n\\(\\displaystyle\\int e^{\\sin^{-1}x}\\left(\\dfrac{x}{\\sqrt{1-x^{2}}}+1\\right)dx=\\displaystyle\\int e^{t}\\left(\\dfrac{\\sin t}{\\cos t}+1\\right)\\cos t\\,dt=\\displaystyle\\int e^{t}\\left(\\sin t+\\cos t\\right)dt\\)\n\nThis is of the form \\(\\displaystyle\\int e^{t}\\left[f(t)+f'(t)\\right]dt=e^{t}f(t)+c\\) with \\(f(t)=\\sin t\\), \\(f'(t)=\\cos t\\):\n\n\\(=e^{t}\\sin t+c\\)\n\nRestoring \\(t=\\sin^{-1}x\\), so that \\(\\sin t=x\\):\n\n\\(\\therefore\\ \\displaystyle\\int e^{\\sin^{-1}x}\\left(\\dfrac{x+\\sqrt{1-x^{2}}}{\\sqrt{1-x^{2}}}\\right)dx=x\\,e^{\\sin^{-1}x}+c\\)\n\nVerified by differentiating back: \\(\\dfrac{d}{dx}\\left(x\\,e^{\\sin^{-1}x}\\right)=e^{\\sin^{-1}x}+x\\,e^{\\sin^{-1}x}\\cdot\\dfrac{1}{\\sqrt{1-x^{2}}}=e^{\\sin^{-1}x}\\left(\\dfrac{\\sqrt{1-x^{2}}+x}{\\sqrt{1-x^{2}}}\\right)\\), the original integrand.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "indef-integration-12-pyq#17",
+    "questionNumber": "Q. 5. (B) ii.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "stem": "Prove that: \\(\\int\\sqrt{x^{2} - a^{2}}dx = \\frac{x}{2}\\sqrt{x^{2} - a^{2}} - \\frac{a^{2}}{2}\\log\\left| x + \\sqrt{x^{2} - a^{2}} \\right| + c\\).",
+    "solution": "Let \\(I=\\displaystyle\\int\\sqrt{x^{2}-a^{2}}\\,dx=\\displaystyle\\int\\sqrt{x^{2}-a^{2}}\\cdot 1\\,dx\\) and integrate by parts, taking \\(\\sqrt{x^{2}-a^{2}}\\) as the first function and \\(1\\) as the second.\n\n\\(I=\\sqrt{x^{2}-a^{2}}\\displaystyle\\int 1\\,dx-\\displaystyle\\int\\left[\\dfrac{d}{dx}\\sqrt{x^{2}-a^{2}}\\displaystyle\\int 1\\,dx\\right]dx\\)\n\n\\(=x\\sqrt{x^{2}-a^{2}}-\\displaystyle\\int\\dfrac{2x}{2\\sqrt{x^{2}-a^{2}}}\\cdot x\\,dx=x\\sqrt{x^{2}-a^{2}}-\\displaystyle\\int\\dfrac{x^{2}}{\\sqrt{x^{2}-a^{2}}}\\,dx\\)\n\nWrite \\(x^{2}=\\left(x^{2}-a^{2}\\right)+a^{2}\\):\n\n\\(I=x\\sqrt{x^{2}-a^{2}}-\\displaystyle\\int\\dfrac{\\left(x^{2}-a^{2}\\right)+a^{2}}{\\sqrt{x^{2}-a^{2}}}\\,dx=x\\sqrt{x^{2}-a^{2}}-\\displaystyle\\int\\sqrt{x^{2}-a^{2}}\\,dx-a^{2}\\displaystyle\\int\\dfrac{dx}{\\sqrt{x^{2}-a^{2}}}\\)\n\nUsing the standard result \\(\\displaystyle\\int\\dfrac{dx}{\\sqrt{x^{2}-a^{2}}}=\\log\\left|x+\\sqrt{x^{2}-a^{2}}\\right|\\):\n\n\\(I=x\\sqrt{x^{2}-a^{2}}-I-a^{2}\\log\\left|x+\\sqrt{x^{2}-a^{2}}\\right|\\)\n\n\\(2I=x\\sqrt{x^{2}-a^{2}}-a^{2}\\log\\left|x+\\sqrt{x^{2}-a^{2}}\\right|\\)\n\n\\(\\therefore\\ \\displaystyle\\int\\sqrt{x^{2}-a^{2}}\\,dx=\\dfrac{x}{2}\\sqrt{x^{2}-a^{2}}-\\dfrac{a^{2}}{2}\\log\\left|x+\\sqrt{x^{2}-a^{2}}\\right|+c\\)\n\nVerified by differentiating the right-hand side back:\n\\(\\dfrac{d}{dx}\\left[\\dfrac{x}{2}\\sqrt{x^{2}-a^{2}}\\right]=\\dfrac{1}{2}\\sqrt{x^{2}-a^{2}}+\\dfrac{x^{2}}{2\\sqrt{x^{2}-a^{2}}}=\\dfrac{2x^{2}-a^{2}}{2\\sqrt{x^{2}-a^{2}}}\\), and\n\\(\\dfrac{d}{dx}\\left[-\\dfrac{a^{2}}{2}\\log\\left|x+\\sqrt{x^{2}-a^{2}}\\right|\\right]=-\\dfrac{a^{2}}{2}\\cdot\\dfrac{1+\\frac{x}{\\sqrt{x^{2}-a^{2}}}}{x+\\sqrt{x^{2}-a^{2}}}=-\\dfrac{a^{2}}{2\\sqrt{x^{2}-a^{2}}}\\).\nAdding, \\(\\dfrac{2x^{2}-2a^{2}}{2\\sqrt{x^{2}-a^{2}}}=\\sqrt{x^{2}-a^{2}}\\), as required.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "indef-integration-12-pyq#18",
+    "questionNumber": "Q. 6. (B) ii.",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "stem": "Prove that: \\(\\int\\sqrt{a^{2} - x^{2}}dx = \\frac{x}{2}\\sqrt{a^{2} - x^{2}} + \\frac{a^{2}}{2}\\sin^{- 1}\\left( \\frac{x}{a} \\right) + c\\).",
+    "solution": "Let \\(I=\\displaystyle\\int\\sqrt{a^{2}-x^{2}}\\,dx=\\displaystyle\\int\\sqrt{a^{2}-x^{2}}\\cdot 1\\,dx\\) and integrate by parts, taking \\(\\sqrt{a^{2}-x^{2}}\\) as the first function and \\(1\\) as the second.\n\n\\(I=\\sqrt{a^{2}-x^{2}}\\displaystyle\\int 1\\,dx-\\displaystyle\\int\\left[\\dfrac{d}{dx}\\sqrt{a^{2}-x^{2}}\\displaystyle\\int 1\\,dx\\right]dx\\)\n\n\\(=x\\sqrt{a^{2}-x^{2}}-\\displaystyle\\int\\dfrac{-2x}{2\\sqrt{a^{2}-x^{2}}}\\cdot x\\,dx=x\\sqrt{a^{2}-x^{2}}+\\displaystyle\\int\\dfrac{x^{2}}{\\sqrt{a^{2}-x^{2}}}\\,dx\\)\n\nWrite \\(x^{2}=a^{2}-\\left(a^{2}-x^{2}\\right)\\):\n\n\\(I=x\\sqrt{a^{2}-x^{2}}+\\displaystyle\\int\\dfrac{a^{2}-\\left(a^{2}-x^{2}\\right)}{\\sqrt{a^{2}-x^{2}}}\\,dx=x\\sqrt{a^{2}-x^{2}}+a^{2}\\displaystyle\\int\\dfrac{dx}{\\sqrt{a^{2}-x^{2}}}-\\displaystyle\\int\\sqrt{a^{2}-x^{2}}\\,dx\\)\n\nUsing \\(\\displaystyle\\int\\dfrac{dx}{\\sqrt{a^{2}-x^{2}}}=\\sin^{-1}\\dfrac{x}{a}\\):\n\n\\(I=x\\sqrt{a^{2}-x^{2}}+a^{2}\\sin^{-1}\\dfrac{x}{a}-I\\)\n\n\\(2I=x\\sqrt{a^{2}-x^{2}}+a^{2}\\sin^{-1}\\dfrac{x}{a}\\)\n\n\\(\\therefore\\ \\displaystyle\\int\\sqrt{a^{2}-x^{2}}\\,dx=\\dfrac{x}{2}\\sqrt{a^{2}-x^{2}}+\\dfrac{a^{2}}{2}\\sin^{-1}\\left(\\dfrac{x}{a}\\right)+c\\)\n\nVerified by differentiating the right-hand side back:\n\\(\\dfrac{d}{dx}\\left[\\dfrac{x}{2}\\sqrt{a^{2}-x^{2}}\\right]=\\dfrac{1}{2}\\sqrt{a^{2}-x^{2}}-\\dfrac{x^{2}}{2\\sqrt{a^{2}-x^{2}}}=\\dfrac{a^{2}-2x^{2}}{2\\sqrt{a^{2}-x^{2}}}\\), and\n\\(\\dfrac{d}{dx}\\left[\\dfrac{a^{2}}{2}\\sin^{-1}\\dfrac{x}{a}\\right]=\\dfrac{a^{2}}{2}\\cdot\\dfrac{1}{\\sqrt{a^{2}-x^{2}}}\\).\nAdding, \\(\\dfrac{2a^{2}-2x^{2}}{2\\sqrt{a^{2}-x^{2}}}=\\sqrt{a^{2}-x^{2}}\\), as required.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "indef-integration-12-pyq#19",
+    "questionNumber": "Q. 4. (B) i.",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Integration by Parts",
+    "stem": "Evaluate: \\(\\int e^{x}\\left( \\frac{cosx - sinx}{\\sin^{2}x} \\right)dx\\).",
+    "solution": "Split the bracket into two standard pieces:\n\n\\(\\dfrac{\\cos x-\\sin x}{\\sin^{2}x}=\\dfrac{\\cos x}{\\sin^{2}x}-\\dfrac{\\sin x}{\\sin^{2}x}=\\operatorname{cosec}x\\cot x-\\operatorname{cosec}x\\)\n\nSo the integral is \\(\\displaystyle\\int e^{x}\\left[\\left(-\\operatorname{cosec}x\\right)+\\left(\\operatorname{cosec}x\\cot x\\right)\\right]dx\\), which is of the form \\(\\displaystyle\\int e^{x}\\left[f(x)+f'(x)\\right]dx\\) with\n\n\\(f(x)=-\\operatorname{cosec}x\\) and \\(f'(x)=\\operatorname{cosec}x\\cot x\\)   (since \\(\\dfrac{d}{dx}\\operatorname{cosec}x=-\\operatorname{cosec}x\\cot x\\)).\n\nUsing \\(\\displaystyle\\int e^{x}\\left[f(x)+f'(x)\\right]dx=e^{x}f(x)+c\\):\n\n\\(\\therefore\\ \\displaystyle\\int e^{x}\\left(\\dfrac{\\cos x-\\sin x}{\\sin^{2}x}\\right)dx=-e^{x}\\operatorname{cosec}x+c\\)\n\nVerified by differentiating back:\n\\(\\dfrac{d}{dx}\\left(-e^{x}\\operatorname{cosec}x\\right)=-e^{x}\\operatorname{cosec}x-e^{x}\\left(-\\operatorname{cosec}x\\cot x\\right)=e^{x}\\operatorname{cosec}x\\left(\\cot x-1\\right)=e^{x}\\cdot\\dfrac{1}{\\sin x}\\left(\\dfrac{\\cos x}{\\sin x}-1\\right)=e^{x}\\left(\\dfrac{\\cos x-\\sin x}{\\sin^{2}x}\\right)\\), the original integrand.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "indef-integration-12-pyq#20",
+    "questionNumber": "Q. 5. (B) ii.",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Special Integrals of Quadratic Forms",
+    "stem": "Prove that: \\(\\int\\frac{dx}{a^{2} - x^{2}} = \\frac{1}{2a}\\log\\left| \\frac{a + x}{a - x} \\right| + c\\).",
+    "solution": "Factorise the denominator and resolve into partial fractions:\n\n\\(\\dfrac{1}{a^{2}-x^{2}}=\\dfrac{1}{(a-x)(a+x)}\\)\n\nSince \\((a+x)+(a-x)=2a\\),\n\n\\(\\dfrac{1}{(a-x)(a+x)}=\\dfrac{1}{2a}\\cdot\\dfrac{(a+x)+(a-x)}{(a-x)(a+x)}=\\dfrac{1}{2a}\\left[\\dfrac{1}{a-x}+\\dfrac{1}{a+x}\\right]\\)\n\n\\(\\therefore\\ \\displaystyle\\int\\dfrac{dx}{a^{2}-x^{2}}=\\dfrac{1}{2a}\\left[\\displaystyle\\int\\dfrac{dx}{a-x}+\\displaystyle\\int\\dfrac{dx}{a+x}\\right]=\\dfrac{1}{2a}\\left[-\\log|a-x|+\\log|a+x|\\right]+c\\)\n\n\\(\\therefore\\ \\displaystyle\\int\\dfrac{dx}{a^{2}-x^{2}}=\\dfrac{1}{2a}\\log\\left|\\dfrac{a+x}{a-x}\\right|+c\\)\n\nVerified by differentiating the right-hand side back:\n\\(\\dfrac{d}{dx}\\left[\\dfrac{1}{2a}\\left(\\log|a+x|-\\log|a-x|\\right)\\right]=\\dfrac{1}{2a}\\left[\\dfrac{1}{a+x}+\\dfrac{1}{a-x}\\right]=\\dfrac{1}{2a}\\cdot\\dfrac{(a-x)+(a+x)}{a^{2}-x^{2}}=\\dfrac{1}{a^{2}-x^{2}}\\), as required.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "indef-integration-12-pyq#21",
+    "questionNumber": "Q. 10",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Integrals of the Type (px+q) over a Quadratic",
+    "stem": "Evaluate: \\(\\int\\frac{x}{x^{2} + 4x + 8}dx\\).",
+    "solution": "Express the numerator in terms of the derivative of the denominator. Here \\(\\dfrac{d}{dx}\\left(x^{2}+4x+8\\right)=2x+4\\), so write\n\n\\(x=A(2x+4)+B\\)\n\nComparing coefficients of \\(x\\): \\(2A=1\\), so \\(A=\\dfrac{1}{2}\\). Comparing constants: \\(4A+B=0\\), so \\(B=-2\\).\n\nLet \\(I\\) be the integral. Then\n\n\\(I=\\dfrac{1}{2}\\displaystyle\\int\\dfrac{2x+4}{x^{2}+4x+8}\\,dx-2\\displaystyle\\int\\dfrac{dx}{x^{2}+4x+8}\\)\n\nThe first integral is of the form \\(\\displaystyle\\int\\dfrac{f'(x)}{f(x)}dx=\\log|f(x)|\\), so it equals \\(\\log\\left|x^{2}+4x+8\\right|\\).\n\nFor the second, complete the square: \\(x^{2}+4x+8=(x+2)^{2}+2^{2}\\), and \\(\\displaystyle\\int\\dfrac{dx}{(x+2)^{2}+2^{2}}=\\dfrac{1}{2}\\tan^{-1}\\left(\\dfrac{x+2}{2}\\right)\\).\n\n\\(\\therefore\\ I=\\dfrac{1}{2}\\log\\left|x^{2}+4x+8\\right|-2\\cdot\\dfrac{1}{2}\\tan^{-1}\\left(\\dfrac{x+2}{2}\\right)+c\\)\n\n\\(\\therefore\\ \\displaystyle\\int\\dfrac{x}{x^{2}+4x+8}\\,dx=\\dfrac{1}{2}\\log\\left(x^{2}+4x+8\\right)-\\tan^{-1}\\left(\\dfrac{x+2}{2}\\right)+c\\)\n\n(The modulus sign may be dropped because \\(x^{2}+4x+8=(x+2)^{2}+4>0\\) for all \\(x\\).)\n\nVerified by differentiating back:\n\\(\\dfrac{d}{dx}\\left[\\dfrac{1}{2}\\log\\left(x^{2}+4x+8\\right)\\right]=\\dfrac{x+2}{x^{2}+4x+8}\\) and \\(\\dfrac{d}{dx}\\left[\\tan^{-1}\\dfrac{x+2}{2}\\right]=\\dfrac{\\frac{1}{2}}{1+\\frac{(x+2)^{2}}{4}}=\\dfrac{2}{x^{2}+4x+8}\\).\nSubtracting, \\(\\dfrac{(x+2)-2}{x^{2}+4x+8}=\\dfrac{x}{x^{2}+4x+8}\\), the original integrand.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "indef-integration-12-pyq#22",
+    "questionNumber": "Q. 29",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Special Integrals of Quadratic Forms",
+    "stem": "Prove that: \\(\\int\\frac{dx}{\\sqrt{x^{2} + a^{2}}} = log\\left| x + \\sqrt{x^{2} + a^{2}} \\right| + c\\).",
+    "solution": "Put \\(x=a\\tan\\theta\\), so \\(dx=a\\sec^{2}\\theta\\,d\\theta\\) and\n\n\\(\\sqrt{x^{2}+a^{2}}=\\sqrt{a^{2}\\tan^{2}\\theta+a^{2}}=a\\sqrt{\\sec^{2}\\theta}=a\\sec\\theta\\)   (taking \\(a>0\\) and \\(\\sec\\theta>0\\)).\n\n\\(\\displaystyle\\int\\dfrac{dx}{\\sqrt{x^{2}+a^{2}}}=\\displaystyle\\int\\dfrac{a\\sec^{2}\\theta\\,d\\theta}{a\\sec\\theta}=\\displaystyle\\int\\sec\\theta\\,d\\theta=\\log\\left|\\sec\\theta+\\tan\\theta\\right|+c_{1}\\)\n\nNow \\(\\tan\\theta=\\dfrac{x}{a}\\) and \\(\\sec\\theta=\\dfrac{\\sqrt{x^{2}+a^{2}}}{a}\\), so\n\n\\(=\\log\\left|\\dfrac{\\sqrt{x^{2}+a^{2}}+x}{a}\\right|+c_{1}=\\log\\left|x+\\sqrt{x^{2}+a^{2}}\\right|-\\log a+c_{1}\\)\n\nAbsorbing the constant \\(-\\log a\\) into the constant of integration \\(\\left(c=c_{1}-\\log a\\right)\\):\n\n\\(\\therefore\\ \\displaystyle\\int\\dfrac{dx}{\\sqrt{x^{2}+a^{2}}}=\\log\\left|x+\\sqrt{x^{2}+a^{2}}\\right|+c\\)\n\nVerified by differentiating the right-hand side back:\n\\(\\dfrac{d}{dx}\\log\\left|x+\\sqrt{x^{2}+a^{2}}\\right|=\\dfrac{1+\\frac{x}{\\sqrt{x^{2}+a^{2}}}}{x+\\sqrt{x^{2}+a^{2}}}=\\dfrac{\\frac{\\sqrt{x^{2}+a^{2}}+x}{\\sqrt{x^{2}+a^{2}}}}{x+\\sqrt{x^{2}+a^{2}}}=\\dfrac{1}{\\sqrt{x^{2}+a^{2}}}\\), as required.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "indef-integration-12-pyq#23",
+    "questionNumber": "Q. 23",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Special Integrals of Quadratic Forms",
+    "stem": "Prove that: \\(\\int\\frac{dx}{a^{2} - x^{2}} = \\frac{1}{2a}\\log\\left| \\frac{a + x}{a - x} \\right| + c\\).",
+    "solution": "Factorise the denominator and resolve into partial fractions:\n\n\\(\\dfrac{1}{a^{2}-x^{2}}=\\dfrac{1}{(a-x)(a+x)}\\)\n\nSince \\((a+x)+(a-x)=2a\\),\n\n\\(\\dfrac{1}{(a-x)(a+x)}=\\dfrac{1}{2a}\\cdot\\dfrac{(a+x)+(a-x)}{(a-x)(a+x)}=\\dfrac{1}{2a}\\left[\\dfrac{1}{a-x}+\\dfrac{1}{a+x}\\right]\\)\n\n\\(\\therefore\\ \\displaystyle\\int\\dfrac{dx}{a^{2}-x^{2}}=\\dfrac{1}{2a}\\left[\\displaystyle\\int\\dfrac{dx}{a-x}+\\displaystyle\\int\\dfrac{dx}{a+x}\\right]=\\dfrac{1}{2a}\\left[-\\log|a-x|+\\log|a+x|\\right]+c\\)\n\n\\(\\therefore\\ \\displaystyle\\int\\dfrac{dx}{a^{2}-x^{2}}=\\dfrac{1}{2a}\\log\\left|\\dfrac{a+x}{a-x}\\right|+c\\)\n\nVerified by differentiating the right-hand side back:\n\\(\\dfrac{d}{dx}\\left[\\dfrac{1}{2a}\\left(\\log|a+x|-\\log|a-x|\\right)\\right]=\\dfrac{1}{2a}\\left[\\dfrac{1}{a+x}+\\dfrac{1}{a-x}\\right]=\\dfrac{1}{2a}\\cdot\\dfrac{2a}{a^{2}-x^{2}}=\\dfrac{1}{a^{2}-x^{2}}\\), as required.",
+    "difficulty": "EASY"
+  }
+]

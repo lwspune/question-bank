@@ -1,0 +1,533 @@
+[
+  {
+    "ref": "trig-functions-12-pyq#1",
+    "questionNumber": "Q. 1. (A) ii.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Inverse Trigonometric Functions and Principal Values",
+    "stem": "The principal solution of \\(\\cos^{- 1}\\left( - \\frac{1}{2} \\right)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\pi}{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\pi}{6}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{2\\pi}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{3\\pi}{2}\\)"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)**\n\nThe principal value of \\(\\cos^{-1}x\\) lies in \\([0,\\ \\pi]\\).\n\nLet \\(\\cos^{-1}\\left(-\\dfrac{1}{2}\\right) = \\theta\\), so \\(\\cos\\theta = -\\dfrac{1}{2}\\) with \\(\\theta \\in [0,\\ \\pi]\\).\n\nWe know \\(\\cos\\dfrac{\\pi}{3} = \\dfrac{1}{2}\\), and \\(\\cos(\\pi - \\theta) = -\\cos\\theta\\), so\n\\(\\cos\\left(\\pi - \\dfrac{\\pi}{3}\\right) = -\\dfrac{1}{2}\\), i.e. \\(\\cos\\dfrac{2\\pi}{3} = -\\dfrac{1}{2}\\).\n\nSince \\(\\dfrac{2\\pi}{3} \\in [0,\\ \\pi]\\), it is the required value.\n\n\\(\\therefore \\cos^{-1}\\left(-\\dfrac{1}{2}\\right) = \\dfrac{2\\pi}{3}\\).\n\n(Option D, \\(\\dfrac{3\\pi}{2}\\), is outside the principal branch and in any case \\(\\cos\\dfrac{3\\pi}{2} = 0\\); options A and B give \\(+\\dfrac{1}{2}\\) and \\(\\dfrac{\\sqrt{3}}{2}\\).)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "trig-functions-12-pyq#2",
+    "questionNumber": "Q. 3. (B) i.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Trigonometric Equations and General Solutions",
+    "stem": "Find the general solution of \\(cosx - sinx = 1.\\)",
+    "solution": "We have \\(\\cos x - \\sin x = 1\\).\n\nDivide throughout by \\(\\sqrt{1^{2} + 1^{2}} = \\sqrt{2}\\):\n\n\\(\\therefore \\dfrac{1}{\\sqrt{2}}\\cos x - \\dfrac{1}{\\sqrt{2}}\\sin x = \\dfrac{1}{\\sqrt{2}}\\)\n\n\\(\\therefore \\cos x\\cos\\dfrac{\\pi}{4} - \\sin x\\sin\\dfrac{\\pi}{4} = \\dfrac{1}{\\sqrt{2}}\\)\n\n\\(\\therefore \\cos\\left(x + \\dfrac{\\pi}{4}\\right) = \\cos\\dfrac{\\pi}{4}\\)\n\nThe general solution of \\(\\cos\\theta = \\cos\\alpha\\) is \\(\\theta = 2n\\pi \\pm \\alpha\\), \\(n \\in Z\\).\n\n\\(\\therefore x + \\dfrac{\\pi}{4} = 2n\\pi \\pm \\dfrac{\\pi}{4}\\)\n\n\\(\\therefore x + \\dfrac{\\pi}{4} = 2n\\pi + \\dfrac{\\pi}{4}\\) or \\(x + \\dfrac{\\pi}{4} = 2n\\pi - \\dfrac{\\pi}{4}\\)\n\n\\(\\therefore x = 2n\\pi\\) or \\(x = 2n\\pi - \\dfrac{\\pi}{2}\\), where \\(n \\in Z\\), is the required general solution.\n\nCheck: \\(x = 0\\) gives \\(1 - 0 = 1\\); \\(x = -\\dfrac{\\pi}{2}\\) gives \\(0 - (-1) = 1\\). Both satisfy the equation.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#3",
+    "questionNumber": "Q. 1. (A) ii.",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Properties of Inverse Trigonometric Functions",
+    "stem": "If \\(\\sin^{- 1}(1 - x) - 2\\sin^{- 1}x = \\frac{\\pi}{2}\\) then \\(x\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(- \\frac{1}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\ 0\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(1/2\\)"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)**\n\nLet \\(\\sin^{-1}x = \\alpha\\), so \\(x = \\sin\\alpha\\). The given equation becomes\n\n\\(\\sin^{-1}(1 - x) = \\dfrac{\\pi}{2} + 2\\alpha\\).\n\nTaking sine of both sides:\n\n\\(1 - x = \\sin\\left(\\dfrac{\\pi}{2} + 2\\alpha\\right) = \\cos 2\\alpha = 1 - 2\\sin^{2}\\alpha = 1 - 2x^{2}\\).\n\n\\(\\therefore 1 - x = 1 - 2x^{2}\\)\n\n\\(\\therefore 2x^{2} - x = 0\\)\n\n\\(\\therefore x(2x - 1) = 0\\), so \\(x = 0\\) or \\(x = \\dfrac{1}{2}\\).\n\nTaking sine can introduce extra roots, so both must be tested in the original equation:\n\n- \\(x = 0\\): \\(\\sin^{-1}(1) - 2\\sin^{-1}(0) = \\dfrac{\\pi}{2} - 0 = \\dfrac{\\pi}{2}\\). Valid.\n- \\(x = \\dfrac{1}{2}\\): \\(\\sin^{-1}\\left(\\dfrac{1}{2}\\right) - 2\\sin^{-1}\\left(\\dfrac{1}{2}\\right) = \\dfrac{\\pi}{6} - \\dfrac{\\pi}{3} = -\\dfrac{\\pi}{6} \\neq \\dfrac{\\pi}{2}\\). Rejected.\n\n\\(\\therefore x = 0\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#4",
+    "questionNumber": "Q. 3. (B) iii.",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Trigonometric Equations and General Solutions",
+    "stem": "Find the general solution of \\(sinx + sin3x + sin5x = 0\\).",
+    "solution": "We have \\(\\sin x + \\sin 3x + \\sin 5x = 0\\).\n\nGroup the first and last terms (they are the ones equidistant from \\(3x\\)) and use \\(\\sin C + \\sin D = 2\\sin\\dfrac{C+D}{2}\\cos\\dfrac{C-D}{2}\\):\n\n\\(\\therefore (\\sin x + \\sin 5x) + \\sin 3x = 0\\)\n\n\\(\\therefore 2\\sin 3x\\cos 2x + \\sin 3x = 0\\)\n\n\\(\\therefore \\sin 3x\\,(2\\cos 2x + 1) = 0\\)\n\n\\(\\therefore \\sin 3x = 0\\) or \\(\\cos 2x = -\\dfrac{1}{2}\\)\n\n\\(\\therefore \\sin 3x = 0\\) or \\(\\cos 2x = \\cos\\dfrac{2\\pi}{3}\\)\n\nThe general solution of \\(\\sin\\theta = 0\\) is \\(\\theta = n\\pi\\), and of \\(\\cos\\theta = \\cos\\alpha\\) is \\(\\theta = 2n\\pi \\pm \\alpha\\), \\(n \\in Z\\).\n\n\\(\\therefore 3x = n\\pi\\) or \\(2x = 2n\\pi \\pm \\dfrac{2\\pi}{3}\\)\n\n\\(\\therefore x = \\dfrac{n\\pi}{3}\\) or \\(x = n\\pi \\pm \\dfrac{\\pi}{3}\\), where \\(n \\in Z\\), is the required general solution.\n\nCheck: \\(x = \\dfrac{\\pi}{3}\\) gives \\(\\sin\\dfrac{\\pi}{3} + \\sin\\pi + \\sin\\dfrac{5\\pi}{3} = \\dfrac{\\sqrt{3}}{2} + 0 - \\dfrac{\\sqrt{3}}{2} = 0\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#5",
+    "questionNumber": "Q. 3. (B) ii.",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Properties of Inverse Trigonometric Functions",
+    "stem": "Show that \\(\\cos^{- 1}\\left( \\frac{4}{5} \\right) + \\cos^{- 1}\\left( \\frac{12}{13} \\right) = \\cos^{- 1}\\left( \\frac{33}{65} \\right)\\).",
+    "solution": "Let \\(\\cos^{-1}\\left(\\dfrac{4}{5}\\right) = \\theta\\). Then \\(\\cos\\theta = \\dfrac{4}{5}\\) and, since \\(\\dfrac{4}{5} > 0\\), \\(0 < \\theta < \\dfrac{\\pi}{2}\\).\n\n\\(\\therefore \\sin\\theta = \\sqrt{1 - \\cos^{2}\\theta} = \\sqrt{1 - \\dfrac{16}{25}} = \\dfrac{3}{5}\\)  (positive, as \\(\\theta\\) is in the first quadrant).\n\nLet \\(\\cos^{-1}\\left(\\dfrac{12}{13}\\right) = \\phi\\). Then \\(\\cos\\phi = \\dfrac{12}{13}\\) and \\(0 < \\phi < \\dfrac{\\pi}{2}\\).\n\n\\(\\therefore \\sin\\phi = \\sqrt{1 - \\dfrac{144}{169}} = \\dfrac{5}{13}\\).\n\nNow \\(\\cos(\\theta + \\phi) = \\cos\\theta\\cos\\phi - \\sin\\theta\\sin\\phi = \\left(\\dfrac{4}{5}\\right)\\left(\\dfrac{12}{13}\\right) - \\left(\\dfrac{3}{5}\\right)\\left(\\dfrac{5}{13}\\right) = \\dfrac{48}{65} - \\dfrac{15}{65} = \\dfrac{33}{65}\\)  ...(1)\n\nAlso \\(0 < \\theta < \\dfrac{\\pi}{2}\\) and \\(0 < \\phi < \\dfrac{\\pi}{2}\\), so \\(0 < \\theta + \\phi < \\pi\\), which is the principal branch of \\(\\cos^{-1}\\).\n\n\\(\\therefore\\) from (1), \\(\\theta + \\phi = \\cos^{-1}\\left(\\dfrac{33}{65}\\right)\\).\n\n\\(\\therefore \\cos^{-1}\\left(\\dfrac{4}{5}\\right) + \\cos^{-1}\\left(\\dfrac{12}{13}\\right) = \\cos^{-1}\\left(\\dfrac{33}{65}\\right)\\). Hence shown.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#6",
+    "questionNumber": "Q. 1. ii.",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Trigonometric Equations and General Solutions",
+    "stem": "The principal solutions of \\(secx = \\frac{2}{\\sqrt{3}}\\) are",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\pi}{3},\\frac{11\\pi}{6}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\pi}{6},\\frac{11\\pi}{6}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\pi}{4},\\frac{11\\pi}{4}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\pi}{6},\\frac{11\\pi}{4}\\)"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)**\n\n\\(\\sec x = \\dfrac{2}{\\sqrt{3}}\\ \\Rightarrow\\ \\cos x = \\dfrac{\\sqrt{3}}{2}\\)\n\nPrincipal solutions are the solutions that lie in \\([0,\\ 2\\pi)\\).\n\nHere \\(\\cos x > 0\\), so \\(x\\) lies in the first or the fourth quadrant, and the reference angle is \\(\\dfrac{\\pi}{6}\\) because \\(\\cos\\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}\\).\n\nFirst quadrant: \\(x = \\dfrac{\\pi}{6}\\)\n\nFourth quadrant: \\(x = 2\\pi - \\dfrac{\\pi}{6} = \\dfrac{11\\pi}{6}\\)\n\nCheck the second value: \\(\\cos\\dfrac{11\\pi}{6} = \\cos\\left(2\\pi - \\dfrac{\\pi}{6}\\right) = \\cos\\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}\\), so \\(\\sec\\dfrac{11\\pi}{6} = \\dfrac{2}{\\sqrt{3}}\\). Both values satisfy the equation.\n\nHence the principal solutions are \\(\\dfrac{\\pi}{6},\\ \\dfrac{11\\pi}{6}\\) — option (B).\n\nWhy the others fail: \\(\\sec\\dfrac{\\pi}{3} = 2 \\neq \\dfrac{2}{\\sqrt{3}}\\), which rules out (A); and \\(\\dfrac{11\\pi}{4} = 2.75\\pi\\) is greater than \\(2\\pi\\), so it is not a principal solution at all, which rules out (C) and (D).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "trig-functions-12-pyq#7",
+    "questionNumber": "Q. 3. (B) i.",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Properties of Inverse Trigonometric Functions",
+    "stem": "Prove that: \\(\\sin^{- 1}\\left( \\frac{3}{5} \\right) + \\cos^{- 1}\\left( \\frac{12}{13} \\right) = \\sin^{- 1}\\left( \\frac{56}{65} \\right)\\).",
+    "solution": "Let \\(\\sin^{-1}\\left(\\dfrac{3}{5}\\right) = \\theta\\). Then \\(\\sin\\theta = \\dfrac{3}{5}\\) and, as \\(\\dfrac{3}{5} > 0\\), \\(0 < \\theta < \\dfrac{\\pi}{2}\\).\n\n\\(\\therefore \\cos\\theta = \\sqrt{1 - \\dfrac{9}{25}} = \\dfrac{4}{5}\\).\n\nLet \\(\\cos^{-1}\\left(\\dfrac{12}{13}\\right) = \\phi\\). Then \\(\\cos\\phi = \\dfrac{12}{13}\\) and \\(0 < \\phi < \\dfrac{\\pi}{2}\\).\n\n\\(\\therefore \\sin\\phi = \\sqrt{1 - \\dfrac{144}{169}} = \\dfrac{5}{13}\\).\n\nNow \\(\\sin(\\theta + \\phi) = \\sin\\theta\\cos\\phi + \\cos\\theta\\sin\\phi = \\left(\\dfrac{3}{5}\\right)\\left(\\dfrac{12}{13}\\right) + \\left(\\dfrac{4}{5}\\right)\\left(\\dfrac{5}{13}\\right) = \\dfrac{36}{65} + \\dfrac{20}{65} = \\dfrac{56}{65}\\)  ...(1)\n\nWe must also confirm that \\(\\theta + \\phi\\) lies in the principal branch \\(\\left[-\\dfrac{\\pi}{2},\\ \\dfrac{\\pi}{2}\\right]\\) of \\(\\sin^{-1}\\). For that, compute\n\n\\(\\cos(\\theta + \\phi) = \\cos\\theta\\cos\\phi - \\sin\\theta\\sin\\phi = \\left(\\dfrac{4}{5}\\right)\\left(\\dfrac{12}{13}\\right) - \\left(\\dfrac{3}{5}\\right)\\left(\\dfrac{5}{13}\\right) = \\dfrac{48}{65} - \\dfrac{15}{65} = \\dfrac{33}{65} > 0\\).\n\nSince \\(\\theta + \\phi\\) is positive with positive cosine, \\(0 < \\theta + \\phi < \\dfrac{\\pi}{2}\\).\n\n\\(\\therefore\\) from (1), \\(\\theta + \\phi = \\sin^{-1}\\left(\\dfrac{56}{65}\\right)\\).\n\n\\(\\therefore \\sin^{-1}\\left(\\dfrac{3}{5}\\right) + \\cos^{-1}\\left(\\dfrac{12}{13}\\right) = \\sin^{-1}\\left(\\dfrac{56}{65}\\right)\\). Hence proved.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#8",
+    "questionNumber": "Q. 1.",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Trigonometric Equations and General Solutions",
+    "stem": "The principal solutions of \\(cotx = - \\sqrt{3}\\) are",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\pi}{6},\\frac{7\\pi}{6}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{5\\pi}{6},\\frac{7\\pi}{6}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{5\\pi}{6},\\frac{11\\pi}{6}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\pi}{6},\\frac{11\\pi}{6}\\)"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)**\n\n\\(\\cot x = -\\sqrt{3}\\) if and only if \\(\\tan x = -\\dfrac{1}{\\sqrt{3}}\\).\n\nWe know \\(\\tan\\dfrac{\\pi}{6} = \\dfrac{1}{\\sqrt{3}}\\), so the reference angle is \\(\\dfrac{\\pi}{6}\\). As the tangent is negative, \\(x\\) lies in the second or the fourth quadrant.\n\nUsing \\(\\tan(\\pi - x) = -\\tan x\\) and \\(\\tan(2\\pi - x) = -\\tan x\\):\n\n\\(\\tan\\dfrac{5\\pi}{6} = -\\dfrac{1}{\\sqrt{3}}\\) and \\(\\tan\\dfrac{11\\pi}{6} = -\\dfrac{1}{\\sqrt{3}}\\),\n\nand both \\(\\dfrac{5\\pi}{6}\\) and \\(\\dfrac{11\\pi}{6}\\) lie in \\([0,\\ 2\\pi)\\).\n\n\\(\\therefore\\) the principal solutions are \\(x = \\dfrac{5\\pi}{6},\\ \\dfrac{11\\pi}{6}\\).\n\n(Options A and D contain \\(\\dfrac{\\pi}{6}\\), where \\(\\cot x = +\\sqrt{3}\\); option B's \\(\\dfrac{7\\pi}{6}\\) is in the third quadrant, where \\(\\cot x\\) is also \\(+\\sqrt{3}\\).)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "trig-functions-12-pyq#9",
+    "questionNumber": "Q. 16",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Properties of Inverse Trigonometric Functions",
+    "stem": "Show that: \\(\\sin^{- 1}\\left( \\frac{3}{5} \\right) + \\sin^{- 1}\\left( \\frac{8}{17} \\right) = \\sin^{- 1}\\left( \\frac{77}{85} \\right)\\).",
+    "solution": "Let \\(\\sin^{-1}\\left(\\dfrac{3}{5}\\right) = \\theta\\). Then \\(\\sin\\theta = \\dfrac{3}{5}\\) with \\(0 < \\theta < \\dfrac{\\pi}{2}\\), so \\(\\cos\\theta = \\sqrt{1 - \\dfrac{9}{25}} = \\dfrac{4}{5}\\).\n\nLet \\(\\sin^{-1}\\left(\\dfrac{8}{17}\\right) = \\phi\\). Then \\(\\sin\\phi = \\dfrac{8}{17}\\) with \\(0 < \\phi < \\dfrac{\\pi}{2}\\), so \\(\\cos\\phi = \\sqrt{1 - \\dfrac{64}{289}} = \\dfrac{15}{17}\\).\n\nNow \\(\\sin(\\theta + \\phi) = \\sin\\theta\\cos\\phi + \\cos\\theta\\sin\\phi = \\left(\\dfrac{3}{5}\\right)\\left(\\dfrac{15}{17}\\right) + \\left(\\dfrac{4}{5}\\right)\\left(\\dfrac{8}{17}\\right) = \\dfrac{45}{85} + \\dfrac{32}{85} = \\dfrac{77}{85}\\)  ...(1)\n\nTo place \\(\\theta + \\phi\\) inside the principal branch \\(\\left[-\\dfrac{\\pi}{2},\\ \\dfrac{\\pi}{2}\\right]\\) of \\(\\sin^{-1}\\), compute\n\n\\(\\cos(\\theta + \\phi) = \\cos\\theta\\cos\\phi - \\sin\\theta\\sin\\phi = \\left(\\dfrac{4}{5}\\right)\\left(\\dfrac{15}{17}\\right) - \\left(\\dfrac{3}{5}\\right)\\left(\\dfrac{8}{17}\\right) = \\dfrac{60}{85} - \\dfrac{24}{85} = \\dfrac{36}{85} > 0\\).\n\nSo \\(\\theta + \\phi\\) is positive with positive cosine, i.e. \\(0 < \\theta + \\phi < \\dfrac{\\pi}{2}\\).\n\n\\(\\therefore\\) from (1), \\(\\theta + \\phi = \\sin^{-1}\\left(\\dfrac{77}{85}\\right)\\).\n\n\\(\\therefore \\sin^{-1}\\left(\\dfrac{3}{5}\\right) + \\sin^{-1}\\left(\\dfrac{8}{17}\\right) = \\sin^{-1}\\left(\\dfrac{77}{85}\\right)\\). Hence shown.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#10",
+    "questionNumber": "Q. 2. i.",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Inverse Trigonometric Functions and Principal Values",
+    "stem": "Find the principal value of \\(\\cot^{- 1}\\left( - \\frac{1}{\\sqrt{3}} \\right)\\).",
+    "solution": "The principal value of \\(\\cot^{-1}x\\) lies in \\((0,\\ \\pi)\\).\n\nLet \\(\\cot^{-1}\\left(-\\dfrac{1}{\\sqrt{3}}\\right) = \\theta\\), so \\(\\cot\\theta = -\\dfrac{1}{\\sqrt{3}}\\) with \\(\\theta \\in (0,\\ \\pi)\\).\n\nSince \\(\\cot\\theta\\) is negative, \\(\\theta\\) lies in the second quadrant. The reference angle is \\(\\dfrac{\\pi}{3}\\), because \\(\\cot\\dfrac{\\pi}{3} = \\dfrac{1}{\\sqrt{3}}\\).\n\nUsing \\(\\cot(\\pi - \\theta) = -\\cot\\theta\\):\n\n\\(\\cot\\left(\\pi - \\dfrac{\\pi}{3}\\right) = -\\dfrac{1}{\\sqrt{3}}\\), i.e. \\(\\cot\\dfrac{2\\pi}{3} = -\\dfrac{1}{\\sqrt{3}}\\), and \\(\\dfrac{2\\pi}{3} \\in (0,\\ \\pi)\\).\n\n\\(\\therefore\\) the principal value of \\(\\cot^{-1}\\left(-\\dfrac{1}{\\sqrt{3}}\\right)\\) is \\(\\dfrac{2\\pi}{3}\\).\n\nCheck directly: \\(\\cot\\dfrac{2\\pi}{3} = \\dfrac{\\cos\\frac{2\\pi}{3}}{\\sin\\frac{2\\pi}{3}} = \\dfrac{-\\frac{1}{2}}{\\frac{\\sqrt{3}}{2}} = -\\dfrac{1}{\\sqrt{3}}\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "trig-functions-12-pyq#11",
+    "questionNumber": "Q. 5",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Trigonometric Equations and General Solutions",
+    "stem": "Find the principal solutions of \\(cot\\theta = 0\\).",
+    "solution": "\\(\\cot\\theta = \\dfrac{\\cos\\theta}{\\sin\\theta} = 0\\) requires \\(\\cos\\theta = 0\\), with \\(\\sin\\theta \\neq 0\\) so that \\(\\cot\\theta\\) is defined.\n\nThe principal solutions are those in \\([0,\\ 2\\pi)\\). In that interval \\(\\cos\\theta = 0\\) at \\(\\theta = \\dfrac{\\pi}{2}\\) and \\(\\theta = \\dfrac{3\\pi}{2}\\), and at both of these \\(\\sin\\theta = \\pm 1 \\neq 0\\), so both are admissible.\n\n\\(\\therefore\\) the principal solutions are \\(\\theta = \\dfrac{\\pi}{2}\\) and \\(\\theta = \\dfrac{3\\pi}{2}\\).\n\nCheck: \\(\\cot\\dfrac{\\pi}{2} = \\dfrac{0}{1} = 0\\) and \\(\\cot\\dfrac{3\\pi}{2} = \\dfrac{0}{-1} = 0\\).\n\n(A common slip is to answer \\(0\\) and \\(\\pi\\). Those are the angles where \\(\\tan\\theta = 0\\), and there \\(\\cot\\theta\\) is **undefined**, not zero.)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "trig-functions-12-pyq#12",
+    "questionNumber": "Q. 15",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Properties of Inverse Trigonometric Functions",
+    "stem": "If \\(2\\tan^{- 1}(cosx) = \\tan^{- 1}(2cosecx)\\), then find the value of \\(x\\).",
+    "solution": "For \\(|y| < 1\\), \\(2\\tan^{-1}y = \\tan^{-1}\\dfrac{2y}{1 - y^{2}}\\). Taking \\(y = \\cos x\\) (so \\(|\\cos x| < 1\\), i.e. \\(\\sin x \\neq 0\\)):\n\n\\(2\\tan^{-1}(\\cos x) = \\tan^{-1}\\dfrac{2\\cos x}{1 - \\cos^{2}x} = \\tan^{-1}\\dfrac{2\\cos x}{\\sin^{2}x}\\).\n\nAlso \\(\\tan^{-1}(2\\,\\text{cosec}\\,x) = \\tan^{-1}\\dfrac{2}{\\sin x}\\).\n\nThe given equation therefore becomes\n\n\\(\\tan^{-1}\\dfrac{2\\cos x}{\\sin^{2}x} = \\tan^{-1}\\dfrac{2}{\\sin x}\\)\n\n\\(\\therefore \\dfrac{2\\cos x}{\\sin^{2}x} = \\dfrac{2}{\\sin x}\\)  (as \\(\\tan^{-1}\\) is one-one)\n\n\\(\\therefore \\dfrac{\\cos x}{\\sin^{2}x} = \\dfrac{1}{\\sin x}\\)\n\nMultiplying by \\(\\sin^{2}x\\) (permissible, \\(\\sin x \\neq 0\\)):\n\n\\(\\therefore \\cos x = \\sin x\\)\n\n\\(\\therefore \\tan x = 1\\)\n\n\\(\\therefore x = \\dfrac{\\pi}{4}\\).\n\nCheck: at \\(x = \\dfrac{\\pi}{4}\\), \\(\\cos x = \\dfrac{1}{\\sqrt{2}}\\), so L.H.S. \\(= 2\\tan^{-1}\\dfrac{1}{\\sqrt{2}}\\); and \\(2\\,\\text{cosec}\\dfrac{\\pi}{4} = 2\\sqrt{2}\\), so R.H.S. \\(= \\tan^{-1}(2\\sqrt{2})\\). Using the doubling formula, \\(\\tan\\left(2\\tan^{-1}\\dfrac{1}{\\sqrt{2}}\\right) = \\dfrac{2/\\sqrt{2}}{1 - 1/2} = \\dfrac{\\sqrt{2}}{1/2} = 2\\sqrt{2}\\), so the two sides agree.\n\n(The full solution set of \\(\\tan x = 1\\) consistent with the equation is \\(x = n\\pi + \\dfrac{\\pi}{4},\\ n \\in Z\\); \\(x = \\dfrac{\\pi}{4}\\) is the value asked for.)",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#13",
+    "questionNumber": "Q. 15",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Trigonometric Equations and General Solutions",
+    "stem": "Find the general solution of \\(sin\\theta + sin3\\theta + sin5\\theta = 0\\).",
+    "solution": "We have \\(\\sin\\theta + \\sin 3\\theta + \\sin 5\\theta = 0\\).\n\nGroup the first and last terms and use \\(\\sin C + \\sin D = 2\\sin\\dfrac{C+D}{2}\\cos\\dfrac{C-D}{2}\\):\n\n\\(\\therefore (\\sin\\theta + \\sin 5\\theta) + \\sin 3\\theta = 0\\)\n\n\\(\\therefore 2\\sin 3\\theta\\cos 2\\theta + \\sin 3\\theta = 0\\)\n\n\\(\\therefore \\sin 3\\theta\\,(2\\cos 2\\theta + 1) = 0\\)\n\n\\(\\therefore \\sin 3\\theta = 0\\) or \\(\\cos 2\\theta = -\\dfrac{1}{2}\\)\n\n\\(\\therefore \\sin 3\\theta = 0\\) or \\(\\cos 2\\theta = \\cos\\dfrac{2\\pi}{3}\\)\n\nThe general solution of \\(\\sin\\theta = 0\\) is \\(\\theta = n\\pi\\), and of \\(\\cos\\theta = \\cos\\alpha\\) is \\(\\theta = 2n\\pi \\pm \\alpha\\), \\(n \\in Z\\).\n\n\\(\\therefore 3\\theta = n\\pi\\) or \\(2\\theta = 2n\\pi \\pm \\dfrac{2\\pi}{3}\\)\n\n\\(\\therefore \\theta = \\dfrac{n\\pi}{3}\\) or \\(\\theta = n\\pi \\pm \\dfrac{\\pi}{3}\\), where \\(n \\in Z\\), is the required general solution.\n\nCheck: \\(\\theta = \\dfrac{\\pi}{3}\\) gives \\(\\dfrac{\\sqrt{3}}{2} + 0 - \\dfrac{\\sqrt{3}}{2} = 0\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#14",
+    "questionNumber": "Q. 16",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Properties of Inverse Trigonometric Functions",
+    "stem": "If \\(- 1 \\leq x \\leq 1\\), then prove that \\(\\sin^{- 1}x + \\cos^{- 1}x = \\frac{\\pi}{2}\\).",
+    "solution": "Let \\(-1 \\leq x \\leq 1\\) and put \\(\\sin^{-1}x = y\\).\n\nBy the definition of the principal branch of \\(\\sin^{-1}\\),\n\n\\(\\sin y = x\\) and \\(-\\dfrac{\\pi}{2} \\leq y \\leq \\dfrac{\\pi}{2}\\)  ...(1)\n\nNow use the complementary-angle identity \\(\\cos\\left(\\dfrac{\\pi}{2} - y\\right) = \\sin y\\):\n\n\\(\\therefore \\cos\\left(\\dfrac{\\pi}{2} - y\\right) = x\\)  ...(2)\n\nFrom (1), multiplying by \\(-1\\) gives \\(-\\dfrac{\\pi}{2} \\leq -y \\leq \\dfrac{\\pi}{2}\\), and adding \\(\\dfrac{\\pi}{2}\\) throughout,\n\n\\(0 \\leq \\dfrac{\\pi}{2} - y \\leq \\pi\\)  ...(3)\n\nStatement (3) says \\(\\dfrac{\\pi}{2} - y\\) lies in \\([0,\\ \\pi]\\), which is exactly the principal branch of \\(\\cos^{-1}\\). So (2) and (3) together give\n\n\\(\\cos^{-1}x = \\dfrac{\\pi}{2} - y = \\dfrac{\\pi}{2} - \\sin^{-1}x\\).\n\n\\(\\therefore \\sin^{-1}x + \\cos^{-1}x = \\dfrac{\\pi}{2}\\) for all \\(x\\) with \\(-1 \\leq x \\leq 1\\). Hence proved.\n\n(The restriction \\(-1 \\leq x \\leq 1\\) is needed because outside it neither \\(\\sin^{-1}x\\) nor \\(\\cos^{-1}x\\) is defined. Check at \\(x = \\dfrac{1}{2}\\): \\(\\dfrac{\\pi}{6} + \\dfrac{\\pi}{3} = \\dfrac{\\pi}{2}\\); at \\(x = -1\\): \\(-\\dfrac{\\pi}{2} + \\pi = \\dfrac{\\pi}{2}\\).)",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#15",
+    "questionNumber": "Q. 1. (ii)",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "mcq",
+    "subtopic": "Trigonometric Equations and General Solutions",
+    "stem": "The principle solutions of the equation \\(cos\\theta = \\frac{1}{2}\\) are _______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\pi}{6},\\frac{5\\pi}{6}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\pi}{3},\\frac{5\\pi}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\pi}{6},\\frac{7\\pi}{6}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\pi}{3},\\frac{2\\pi}{3}\\)"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)**\n\nAs \\(\\cos\\dfrac{\\pi}{3} = \\dfrac{1}{2}\\) and \\(0 \\leq \\dfrac{\\pi}{3} < 2\\pi\\), \\(\\dfrac{\\pi}{3}\\) is a principal solution.\n\nBy the allied-angle formula, \\(\\cos\\theta = \\cos(2\\pi - \\theta)\\).\n\n\\(\\therefore \\cos\\dfrac{\\pi}{3} = \\cos\\left(2\\pi - \\dfrac{\\pi}{3}\\right) = \\cos\\dfrac{5\\pi}{3}\\), and \\(0 \\leq \\dfrac{5\\pi}{3} < 2\\pi\\).\n\n\\(\\therefore \\dfrac{5\\pi}{3}\\) is also a principal solution.\n\n\\(\\therefore\\) the principal solutions of \\(\\cos\\theta = \\dfrac{1}{2}\\) are \\(\\dfrac{\\pi}{3}\\) and \\(\\dfrac{5\\pi}{3}\\).\n\n(Cosine is positive in the first and fourth quadrants, which rules out options A and D, whose second angles \\(\\dfrac{5\\pi}{6}\\) and \\(\\dfrac{2\\pi}{3}\\) are in the second quadrant; option C's \\(\\dfrac{7\\pi}{6}\\) is in the third.)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "trig-functions-12-pyq#16",
+    "questionNumber": "Q. 16",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Properties of Inverse Trigonometric Functions",
+    "stem": "Prove that: \\(\\tan^{- 1}\\left( \\frac{1}{2} \\right) + \\tan^{- 1}\\left( \\frac{1}{3} \\right) = \\frac{\\pi}{4}\\).",
+    "solution": "Here the product of the two arguments is \\(\\dfrac{1}{2} \\times \\dfrac{1}{3} = \\dfrac{1}{6} < 1\\), so the addition formula \\(\\tan^{-1}p + \\tan^{-1}q = \\tan^{-1}\\left(\\dfrac{p + q}{1 - pq}\\right)\\) applies directly (no \\(\\pi\\) adjustment is needed).\n\n\\(\\therefore \\tan^{-1}\\left(\\dfrac{1}{2}\\right) + \\tan^{-1}\\left(\\dfrac{1}{3}\\right) = \\tan^{-1}\\left(\\dfrac{\\frac{1}{2} + \\frac{1}{3}}{1 - \\frac{1}{2}\\cdot\\frac{1}{3}}\\right)\\)\n\n\\(= \\tan^{-1}\\left(\\dfrac{\\frac{5}{6}}{\\frac{5}{6}}\\right)\\)\n\n\\(= \\tan^{-1}(1)\\)\n\n\\(= \\dfrac{\\pi}{4}\\).\n\n\\(\\therefore \\tan^{-1}\\left(\\dfrac{1}{2}\\right) + \\tan^{-1}\\left(\\dfrac{1}{3}\\right) = \\dfrac{\\pi}{4}\\). Hence proved.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "trig-functions-12-pyq#17",
+    "questionNumber": "Q. 5",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Trigonometric Equations and General Solutions",
+    "stem": "Find the general solution of \\(\\tan^{2}\\theta = 1\\).",
+    "solution": "We have \\(\\tan^{2}\\theta = 1\\).\n\n\\(\\therefore \\tan^{2}\\theta = \\tan^{2}\\dfrac{\\pi}{4}\\)  (since \\(\\tan\\dfrac{\\pi}{4} = 1\\))\n\nThe general solution of \\(\\tan^{2}\\theta = \\tan^{2}\\alpha\\) is \\(\\theta = n\\pi \\pm \\alpha\\), where \\(n \\in Z\\).\n\n\\(\\therefore\\) with \\(\\alpha = \\dfrac{\\pi}{4}\\), the general solution of \\(\\tan^{2}\\theta = 1\\) is\n\n\\(\\theta = n\\pi \\pm \\dfrac{\\pi}{4}\\), where \\(n \\in Z\\).\n\nCheck: \\(\\theta = \\dfrac{\\pi}{4}\\) gives \\(\\tan^{2}\\theta = 1\\); \\(\\theta = -\\dfrac{\\pi}{4}\\) gives \\((-1)^{2} = 1\\); \\(\\theta = \\dfrac{3\\pi}{4}\\) gives \\((-1)^{2} = 1\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "trig-functions-12-pyq#18",
+    "questionNumber": "Q. 16",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Properties of Inverse Trigonometric Functions",
+    "stem": "Prove that: \\(2\\tan^{- 1}\\left( \\frac{1}{3} \\right) + \\cos^{- 1}\\left( \\frac{3}{5} \\right) = \\frac{\\pi}{2}\\).",
+    "solution": "**Step 1 - convert the first term.**\nSince \\(\\left|\\dfrac{1}{3}\\right| < 1\\), the doubling formula \\(2\\tan^{-1}y = \\tan^{-1}\\dfrac{2y}{1 - y^{2}}\\) applies:\n\n\\(2\\tan^{-1}\\left(\\dfrac{1}{3}\\right) = \\tan^{-1}\\left(\\dfrac{2 \\times \\frac{1}{3}}{1 - \\frac{1}{9}}\\right) = \\tan^{-1}\\left(\\dfrac{\\frac{2}{3}}{\\frac{8}{9}}\\right) = \\tan^{-1}\\left(\\dfrac{3}{4}\\right)\\).\n\n**Step 2 - convert the second term.**\nLet \\(\\cos^{-1}\\left(\\dfrac{3}{5}\\right) = \\phi\\), so \\(\\cos\\phi = \\dfrac{3}{5}\\) with \\(0 < \\phi < \\dfrac{\\pi}{2}\\).\n\n\\(\\therefore \\sin\\phi = \\sqrt{1 - \\dfrac{9}{25}} = \\dfrac{4}{5}\\) and \\(\\tan\\phi = \\dfrac{4/5}{3/5} = \\dfrac{4}{3}\\).\n\n\\(\\therefore \\cos^{-1}\\left(\\dfrac{3}{5}\\right) = \\tan^{-1}\\left(\\dfrac{4}{3}\\right)\\).\n\n**Step 3 - add.**\n\\(2\\tan^{-1}\\left(\\dfrac{1}{3}\\right) + \\cos^{-1}\\left(\\dfrac{3}{5}\\right) = \\tan^{-1}\\left(\\dfrac{3}{4}\\right) + \\tan^{-1}\\left(\\dfrac{4}{3}\\right)\\).\n\nFor \\(y > 0\\), \\(\\tan^{-1}y + \\tan^{-1}\\dfrac{1}{y} = \\dfrac{\\pi}{2}\\) (the two angles are complementary: if \\(\\tan\\alpha = y\\) then \\(\\tan\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cot\\alpha = \\dfrac{1}{y}\\), and both angles lie in \\(\\left(0, \\dfrac{\\pi}{2}\\right)\\)).\n\nHere \\(y = \\dfrac{3}{4}\\) and \\(\\dfrac{1}{y} = \\dfrac{4}{3}\\).\n\n\\(\\therefore 2\\tan^{-1}\\left(\\dfrac{1}{3}\\right) + \\cos^{-1}\\left(\\dfrac{3}{5}\\right) = \\dfrac{\\pi}{2}\\). Hence proved.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#19",
+    "questionNumber": "Q. 3. (B) i.",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Applications of Sine, Cosine and Projection Rules",
+    "stem": "In \\(\\bigtriangleup ABC\\) with the usual notations, prove that \\((a - b)^{2}\\cos^{2}\\left( \\frac{C}{2} \\right) + (a + b)^{2}\\sin^{2}\\left( \\frac{C}{2} \\right) = c^{2}\\).",
+    "solution": "L.H.S. \\(= (a - b)^{2}\\cos^{2}\\left(\\dfrac{C}{2}\\right) + (a + b)^{2}\\sin^{2}\\left(\\dfrac{C}{2}\\right)\\)\n\nExpand both squares:\n\n\\(= (a^{2} - 2ab + b^{2})\\cos^{2}\\dfrac{C}{2} + (a^{2} + 2ab + b^{2})\\sin^{2}\\dfrac{C}{2}\\)\n\nGroup the \\((a^{2} + b^{2})\\) terms and the \\(2ab\\) terms separately:\n\n\\(= (a^{2} + b^{2})\\left(\\cos^{2}\\dfrac{C}{2} + \\sin^{2}\\dfrac{C}{2}\\right) - 2ab\\left(\\cos^{2}\\dfrac{C}{2} - \\sin^{2}\\dfrac{C}{2}\\right)\\)\n\nNow use \\(\\cos^{2}\\dfrac{C}{2} + \\sin^{2}\\dfrac{C}{2} = 1\\) and \\(\\cos^{2}\\dfrac{C}{2} - \\sin^{2}\\dfrac{C}{2} = \\cos C\\):\n\n\\(= a^{2} + b^{2} - 2ab\\cos C\\)\n\n\\(= c^{2}\\)  (by the cosine rule, \\(\\cos C = \\dfrac{a^{2} + b^{2} - c^{2}}{2ab}\\))\n\n\\(=\\) R.H.S. Hence proved.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#20",
+    "questionNumber": "Q. 1. (A) iii.",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Applications of Sine, Cosine and Projection Rules",
+    "stem": "In \\(\\bigtriangleup ABC\\), if \\(a = 13,b = 14,\\text{ and }c = 15\\), then \\(\\sin\\left( \\frac{A}{2} \\right)\\) = ______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{5}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{\\sqrt{5}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{4}{5}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{2}{5}\\)"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)**\n\n\\(a = 13,\\ b = 14,\\ c = 15\\), so the semi-perimeter is\n\n\\(s = \\dfrac{a + b + c}{2} = \\dfrac{13 + 14 + 15}{2} = \\dfrac{42}{2} = 21\\)\n\nHalf-angle formula:\n\n\\(\\sin\\dfrac{A}{2} = \\sqrt{\\dfrac{(s - b)(s - c)}{bc}}\\)\n\n\\(s - b = 21 - 14 = 7\\), \\(s - c = 21 - 15 = 6\\), and \\(bc = 14 \\times 15 = 210\\).\n\n\\(\\sin\\dfrac{A}{2} = \\sqrt{\\dfrac{7 \\times 6}{210}} = \\sqrt{\\dfrac{42}{210}} = \\sqrt{\\dfrac{1}{5}} = \\dfrac{1}{\\sqrt{5}}\\)\n\nwhich is option (B).\n\nCross-check by the cosine rule:\n\n\\(\\cos A = \\dfrac{b^{2} + c^{2} - a^{2}}{2bc} = \\dfrac{196 + 225 - 169}{2 \\times 14 \\times 15} = \\dfrac{252}{420} = \\dfrac{3}{5}\\)\n\n\\(\\sin^{2}\\dfrac{A}{2} = \\dfrac{1 - \\cos A}{2} = \\dfrac{1 - \\dfrac{3}{5}}{2} = \\dfrac{\\dfrac{2}{5}}{2} = \\dfrac{1}{5}\\)\n\nso \\(\\sin\\dfrac{A}{2} = \\dfrac{1}{\\sqrt{5}}\\), the same value by a second route.\n\nNote the trap in the option list: \\(\\cos A = \\dfrac{3}{5}\\) gives \\(\\sin A = \\dfrac{4}{5}\\), which is option (C). That is \\(\\sin A\\), not \\(\\sin\\dfrac{A}{2}\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#21",
+    "questionNumber": "Q. 15",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Applications of Sine, Cosine and Projection Rules",
+    "stem": "In \\(\\bigtriangleup ABC\\), prove that \\(\\sin\\left( \\frac{B - C}{2} \\right) = \\frac{(b - c)}{a}\\cos\\left( \\frac{A}{2} \\right)\\).",
+    "solution": "By the sine rule, \\(\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R\\), so \\(a = 2R\\sin A\\), \\(b = 2R\\sin B\\) and \\(c = 2R\\sin C\\).\n\nStart from the ratio on the right-hand side:\n\n\\(\\dfrac{b - c}{a} = \\dfrac{2R\\sin B - 2R\\sin C}{2R\\sin A} = \\dfrac{\\sin B - \\sin C}{\\sin A}\\)\n\nApply the sum-to-product identity to the numerator:\n\n\\(\\sin B - \\sin C = 2\\cos\\left(\\dfrac{B + C}{2}\\right)\\sin\\left(\\dfrac{B - C}{2}\\right)\\)\n\nand the double-angle identity to the denominator:\n\n\\(\\sin A = 2\\sin\\dfrac{A}{2}\\cos\\dfrac{A}{2}\\)\n\nIn \\(\\triangle ABC\\) the angles add to \\(\\pi\\), so \\(B + C = \\pi - A\\), giving \\(\\dfrac{B + C}{2} = \\dfrac{\\pi}{2} - \\dfrac{A}{2}\\) and therefore\n\n\\(\\cos\\left(\\dfrac{B + C}{2}\\right) = \\cos\\left(\\dfrac{\\pi}{2} - \\dfrac{A}{2}\\right) = \\sin\\dfrac{A}{2}\\)\n\nSubstituting both results,\n\n\\(\\dfrac{b - c}{a} = \\dfrac{2\\sin\\dfrac{A}{2}\\ \\sin\\left(\\dfrac{B - C}{2}\\right)}{2\\sin\\dfrac{A}{2}\\ \\cos\\dfrac{A}{2}} = \\dfrac{\\sin\\left(\\dfrac{B - C}{2}\\right)}{\\cos\\dfrac{A}{2}}\\)\n\nThe cancellation is legitimate because \\(0 < A < \\pi\\) gives \\(0 < \\dfrac{A}{2} < \\dfrac{\\pi}{2}\\), so \\(\\sin\\dfrac{A}{2} \\neq 0\\).\n\nCross-multiplying,\n\n\\(\\sin\\left(\\dfrac{B - C}{2}\\right) = \\dfrac{b - c}{a}\\cos\\dfrac{A}{2}\\)\n\nwhich is the required identity.\n\nNumerical check with \\(a = 13,\\ b = 14,\\ c = 15\\): \\(\\cos A = \\dfrac{3}{5}\\) gives \\(A = 53.130^{\\circ}\\); \\(\\cos B = \\dfrac{a^{2} + c^{2} - b^{2}}{2ac} = \\dfrac{169 + 225 - 196}{390} = 0.50769\\) gives \\(B = 59.490^{\\circ}\\); hence \\(C = 67.380^{\\circ}\\). Left side \\(= \\sin\\left(-3.945^{\\circ}\\right) = -0.06881\\). Right side \\(= \\dfrac{14 - 15}{13}\\cos\\left(26.565^{\\circ}\\right) = -0.076923 \\times 0.894427 = -0.06880\\). The two sides agree.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#22",
+    "questionNumber": "Q. 15 (OR)",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Applications of Sine, Cosine and Projection Rules",
+    "stem": "In \\(\\bigtriangleup ABC\\), with usual notations prove that \\((a - b)^{2}\\cos^{2}\\left( \\frac{C}{2} \\right) + (a + b)^{2}\\sin^{2}\\left( \\frac{C}{2} \\right) = c^{2}\\).",
+    "solution": "L.H.S. \\(= (a - b)^{2}\\cos^{2}\\left(\\dfrac{C}{2}\\right) + (a + b)^{2}\\sin^{2}\\left(\\dfrac{C}{2}\\right)\\)\n\nExpand both squares:\n\n\\(= (a^{2} - 2ab + b^{2})\\cos^{2}\\dfrac{C}{2} + (a^{2} + 2ab + b^{2})\\sin^{2}\\dfrac{C}{2}\\)\n\nCollect the \\((a^{2} + b^{2})\\) terms together and the \\(2ab\\) terms together:\n\n\\(= (a^{2} + b^{2})\\left(\\cos^{2}\\dfrac{C}{2} + \\sin^{2}\\dfrac{C}{2}\\right) - 2ab\\left(\\cos^{2}\\dfrac{C}{2} - \\sin^{2}\\dfrac{C}{2}\\right)\\)\n\nUsing \\(\\cos^{2}\\dfrac{C}{2} + \\sin^{2}\\dfrac{C}{2} = 1\\) and \\(\\cos^{2}\\dfrac{C}{2} - \\sin^{2}\\dfrac{C}{2} = \\cos C\\),\n\n\\(= a^{2} + b^{2} - 2ab\\cos C\\)\n\n\\(= c^{2}\\)  (by the cosine rule)\n\n\\(=\\) R.H.S. Hence proved.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#23",
+    "questionNumber": "Q. 1. i.",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "mcq",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "stem": "In \\(\\bigtriangleup ABC\\), if \\(a = 2,b = 3\\) and \\(sinA = \\frac{2}{3}\\), then \\(\\angle B\\) = ?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\pi}{4}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\pi}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\pi}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\pi}{6}\\)"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)**\n\nBy the sine rule, \\(\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B}\\).\n\n\\(\\therefore \\dfrac{2}{\\frac{2}{3}} = \\dfrac{3}{\\sin B}\\)\n\n\\(\\therefore 3 = \\dfrac{3}{\\sin B}\\)\n\n\\(\\therefore \\sin B = 1\\)\n\n\\(\\therefore B = \\dfrac{\\pi}{2}\\)  (the only angle in \\((0, \\pi)\\) with sine 1).\n\n\\(\\therefore \\angle B = \\dfrac{\\pi}{2}\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "trig-functions-12-pyq#24",
+    "questionNumber": "Q. 30",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Applications of Sine, Cosine and Projection Rules",
+    "stem": "In \\(\\bigtriangleup ABC\\), if \\(a + b + c = 2s\\), then prove that \\(\\sin\\left( \\frac{A}{2} \\right) = \\sqrt{\\frac{(s - b)(s - c)}{bc}}\\), with usual notations.",
+    "solution": "By the cosine rule, \\(\\cos A = \\dfrac{b^{2} + c^{2} - a^{2}}{2bc}\\).\n\nAlso \\(\\cos A = 1 - 2\\sin^{2}\\dfrac{A}{2}\\), so\n\n\\(2\\sin^{2}\\dfrac{A}{2} = 1 - \\cos A\\)\n\n\\(\\therefore 2\\sin^{2}\\dfrac{A}{2} = 1 - \\dfrac{b^{2} + c^{2} - a^{2}}{2bc} = \\dfrac{2bc - b^{2} - c^{2} + a^{2}}{2bc}\\)\n\nThe numerator is \\(a^{2} - (b^{2} - 2bc + c^{2}) = a^{2} - (b - c)^{2}\\), a difference of two squares:\n\n\\(\\therefore 2\\sin^{2}\\dfrac{A}{2} = \\dfrac{\\big(a - (b - c)\\big)\\big(a + (b - c)\\big)}{2bc} = \\dfrac{(a - b + c)(a + b - c)}{2bc}\\)\n\nNow use \\(a + b + c = 2s\\):\n\n\\(a - b + c = (a + b + c) - 2b = 2s - 2b = 2(s - b)\\), and\n\\(a + b - c = (a + b + c) - 2c = 2s - 2c = 2(s - c)\\).\n\n\\(\\therefore 2\\sin^{2}\\dfrac{A}{2} = \\dfrac{2(s - b) \\cdot 2(s - c)}{2bc} = \\dfrac{2(s - b)(s - c)}{bc}\\)\n\n\\(\\therefore \\sin^{2}\\dfrac{A}{2} = \\dfrac{(s - b)(s - c)}{bc}\\)\n\nSince \\(0 < A < \\pi\\), we have \\(0 < \\dfrac{A}{2} < \\dfrac{\\pi}{2}\\), so \\(\\sin\\dfrac{A}{2} > 0\\) and only the positive square root is admissible.\n\n\\(\\therefore \\sin\\left(\\dfrac{A}{2}\\right) = \\sqrt{\\dfrac{(s - b)(s - c)}{bc}}\\). Hence proved.\n\nCheck on \\(a = 13\\), \\(b = 14\\), \\(c = 15\\): \\(s = 21\\), so the formula gives \\(\\sqrt{\\dfrac{7 \\times 6}{14 \\times 15}} = \\dfrac{1}{\\sqrt{5}}\\); and directly, \\(\\cos A = \\dfrac{196 + 225 - 169}{2(14)(15)} = \\dfrac{3}{5}\\), so \\(\\sin^{2}\\dfrac{A}{2} = \\dfrac{1 - 3/5}{2} = \\dfrac{1}{5}\\). They agree.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#25",
+    "questionNumber": "Q. 1. ii.",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "stem": "In \\(\\bigtriangleup ABC\\), if \\(c^{2} = a^{2} + b^{2} = ac\\), then \\(\\angle B\\) = ?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\pi/4\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\pi/3\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\pi/2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\pi/6\\)"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)**\n\nThe stem as printed reads \\(c^{2} = a^{2} + b^{2} = ac\\), a double equality no triangle can satisfy — see the errata note. The question is answered on the intended condition \\(c^{2} + a^{2} - b^{2} = ac\\), which is how the same question is printed in the March 2023 paper and how the Balbharati textbook carries it.\n\nBy the cosine rule,\n\n\\(\\cos B = \\dfrac{c^{2} + a^{2} - b^{2}}{2ac}\\)\n\nSubstituting the given condition \\(c^{2} + a^{2} - b^{2} = ac\\):\n\n\\(\\cos B = \\dfrac{ac}{2ac} = \\dfrac{1}{2}\\)\n\nSince \\(0 < B < \\pi\\), the only such angle is\n\n\\(B = \\dfrac{\\pi}{3}\\)\n\nwhich is option (B).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#26",
+    "questionNumber": "Q. 1. ii.",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "stem": "In \\(\\bigtriangleup ABC\\), if \\(c^{2} + a^{2} - b^{2} = ac\\), then \\(\\angle B\\) = ______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\pi}{4}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\pi}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\pi}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\pi}{6}\\)"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)**\n\nBy the cosine rule, \\(\\cos B = \\dfrac{c^{2} + a^{2} - b^{2}}{2ac}\\).\n\nThe given condition is \\(c^{2} + a^{2} - b^{2} = ac\\), which is exactly the numerator.\n\n\\(\\therefore \\cos B = \\dfrac{ac}{2ac} = \\dfrac{1}{2}\\)\n\n\\(\\therefore B = \\dfrac{\\pi}{3}\\)  (the only angle in \\((0, \\pi)\\) with cosine \\(\\dfrac{1}{2}\\)).\n\n\\(\\therefore \\angle B = \\dfrac{\\pi}{3}\\).\n\n(As a sanity check, options A, C and D would need \\(\\cos B = \\dfrac{1}{\\sqrt{2}}\\), \\(0\\) and \\(\\dfrac{\\sqrt{3}}{2}\\), i.e. \\(c^{2} + a^{2} - b^{2}\\) equal to \\(\\sqrt{2}\\,ac\\), \\(0\\) and \\(\\sqrt{3}\\,ac\\) respectively.)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "trig-functions-12-pyq#27",
+    "questionNumber": "Q. 5",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Applications of Sine, Cosine and Projection Rules",
+    "stem": "In \\(\\bigtriangleup ABC\\), if \\(a = 18,b = 24\\text{ and }c = 30\\) then find the value of \\(\\sin\\left( \\frac{A}{2} \\right)\\).",
+    "solution": "Here \\(a = 18\\), \\(b = 24\\), \\(c = 30\\).\n\n\\(s = \\dfrac{a + b + c}{2} = \\dfrac{18 + 24 + 30}{2} = 36\\).\n\n\\(\\therefore s - b = 36 - 24 = 12\\) and \\(s - c = 36 - 30 = 6\\).\n\nBy the half-angle formula,\n\n\\(\\sin\\dfrac{A}{2} = \\sqrt{\\dfrac{(s - b)(s - c)}{bc}}\\)\n\n\\(= \\sqrt{\\dfrac{12 \\times 6}{24 \\times 30}}\\)\n\n\\(= \\sqrt{\\dfrac{72}{720}}\\)\n\n\\(= \\sqrt{\\dfrac{1}{10}}\\)\n\n\\(= \\dfrac{1}{\\sqrt{10}}\\).\n\nCheck: \\(\\cos A = \\dfrac{b^{2} + c^{2} - a^{2}}{2bc} = \\dfrac{576 + 900 - 324}{2(24)(30)} = \\dfrac{1152}{1440} = \\dfrac{4}{5}\\), and \\(\\sin^{2}\\dfrac{A}{2} = \\dfrac{1 - \\cos A}{2} = \\dfrac{1 - 4/5}{2} = \\dfrac{1}{10}\\), which agrees.\n\n\\(\\therefore \\sin\\left(\\dfrac{A}{2}\\right) = \\dfrac{1}{\\sqrt{10}}\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "trig-functions-12-pyq#28",
+    "questionNumber": "Q. 17",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Applications of Sine, Cosine and Projection Rules",
+    "stem": "In \\(\\bigtriangleup ABC\\), prove that: \\(\\frac{cosA}{a} + \\frac{cosB}{b} + \\frac{cosC}{c} = \\frac{a^{2} + b^{2} + c^{2}}{2abc}\\).",
+    "solution": "By the cosine rule,\n\n\\(\\cos A = \\dfrac{b^{2} + c^{2} - a^{2}}{2bc}\\), so dividing by \\(a\\),  \\(\\dfrac{\\cos A}{a} = \\dfrac{b^{2} + c^{2} - a^{2}}{2abc}\\).\n\nSimilarly,\n\n\\(\\dfrac{\\cos B}{b} = \\dfrac{c^{2} + a^{2} - b^{2}}{2abc}\\)  and  \\(\\dfrac{\\cos C}{c} = \\dfrac{a^{2} + b^{2} - c^{2}}{2abc}\\).\n\nNotice that all three now have the same denominator \\(2abc\\). Adding,\n\nL.H.S. \\(= \\dfrac{\\cos A}{a} + \\dfrac{\\cos B}{b} + \\dfrac{\\cos C}{c} = \\dfrac{(b^{2} + c^{2} - a^{2}) + (c^{2} + a^{2} - b^{2}) + (a^{2} + b^{2} - c^{2})}{2abc}\\)\n\nIn the numerator each of \\(a^{2}\\), \\(b^{2}\\) and \\(c^{2}\\) appears twice with a \\(+\\) sign and once with a \\(-\\) sign, so the numerator is \\(a^{2} + b^{2} + c^{2}\\).\n\n\\(= \\dfrac{a^{2} + b^{2} + c^{2}}{2abc} = \\) R.H.S. Hence proved.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#29",
+    "questionNumber": "Q. 1. ii.",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "mcq",
+    "subtopic": "Solution of Triangle — Sine, Cosine and Projection Rules",
+    "stem": "In \\(\\bigtriangleup ABC\\), \\((a + b)cosC + (b + c)cosA + (c + a)cosB\\) is equal to _______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(a - b + c\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(a + b - c\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(a + b + c\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(a - b - c\\)"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)**\n\nL.H.S. \\(= (a + b)\\cos C + (b + c)\\cos A + (c + a)\\cos B\\)\n\nMultiply out every bracket:\n\n\\(= (a\\cos C + b\\cos C) + (b\\cos A + c\\cos A) + (c\\cos B + a\\cos B)\\)\n\nRegroup the six terms into projection-rule pairs:\n\n\\(= (a\\cos C + c\\cos A) + (b\\cos A + a\\cos B) + (c\\cos B + b\\cos C)\\)\n\nBy the projection rule, \\(a\\cos C + c\\cos A = b\\), \\(b\\cos A + a\\cos B = c\\) and \\(c\\cos B + b\\cos C = a\\).\n\n\\(= b + c + a\\)\n\n\\(= a + b + c\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "trig-functions-12-pyq#30",
+    "questionNumber": "Q. 17",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Applications of Sine, Cosine and Projection Rules",
+    "stem": "In \\(\\bigtriangleup ABC\\) if \\(a = 13,b = 14,c = 15\\) then find the values of (i) \\(secA\\) (ii) \\(\\csc\\frac{A}{2}\\).",
+    "solution": "Here \\(a = 13\\), \\(b = 14\\), \\(c = 15\\).\n\n\\(s = \\dfrac{a + b + c}{2} = \\dfrac{13 + 14 + 15}{2} = 21\\).\n\n\\(\\therefore s - a = 8\\), \\(s - b = 7\\), \\(s - c = 6\\).\n\n**(i) \\(\\sec A\\).**\nBy the cosine rule,\n\n\\(\\cos A = \\dfrac{b^{2} + c^{2} - a^{2}}{2bc} = \\dfrac{14^{2} + 15^{2} - 13^{2}}{2(14)(15)} = \\dfrac{196 + 225 - 169}{420} = \\dfrac{252}{420} = \\dfrac{3}{5}\\).\n\n\\(\\therefore \\sec A = \\dfrac{1}{\\cos A} = \\dfrac{5}{3}\\).\n\n**(ii) \\(\\text{cosec}\\dfrac{A}{2}\\).**\nBy the half-angle formula,\n\n\\(\\sin\\dfrac{A}{2} = \\sqrt{\\dfrac{(s - b)(s - c)}{bc}} = \\sqrt{\\dfrac{7 \\times 6}{14 \\times 15}} = \\sqrt{\\dfrac{42}{210}} = \\sqrt{\\dfrac{1}{5}} = \\dfrac{1}{\\sqrt{5}}\\).\n\n\\(\\therefore \\text{cosec}\\dfrac{A}{2} = \\dfrac{1}{\\sin\\frac{A}{2}} = \\sqrt{5}\\).\n\nCheck that the two parts agree: \\(\\cos A = 1 - 2\\sin^{2}\\dfrac{A}{2} = 1 - 2\\left(\\dfrac{1}{5}\\right) = \\dfrac{3}{5}\\), which is the value found in (i).\n\n\\(\\therefore \\sec A = \\dfrac{5}{3}\\) and \\(\\text{cosec}\\dfrac{A}{2} = \\sqrt{5}\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "trig-functions-12-pyq#31",
+    "questionNumber": "Q. 2. (A) iii.",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Trigonometric Equations and General Solutions",
+    "stem": "Find the general solution of \\(sin2x + sin4x + sin6x = 0\\).",
+    "solution": "We have \\(\\sin 2x + \\sin 4x + \\sin 6x = 0\\).\n\nGroup the first and last terms (the ones equidistant from \\(4x\\)) and use \\(\\sin C + \\sin D = 2\\sin\\dfrac{C+D}{2}\\cos\\dfrac{C-D}{2}\\):\n\n\\(\\therefore (\\sin 2x + \\sin 6x) + \\sin 4x = 0\\)\n\n\\(\\therefore 2\\sin 4x\\cos 2x + \\sin 4x = 0\\)\n\n\\(\\therefore \\sin 4x\\,(2\\cos 2x + 1) = 0\\)\n\n\\(\\therefore \\sin 4x = 0\\) or \\(\\cos 2x = -\\dfrac{1}{2}\\)\n\n\\(\\therefore \\sin 4x = 0\\) or \\(\\cos 2x = \\cos\\dfrac{2\\pi}{3}\\)\n\nThe general solution of \\(\\sin\\theta = 0\\) is \\(\\theta = n\\pi\\), and of \\(\\cos\\theta = \\cos\\alpha\\) is \\(\\theta = 2n\\pi \\pm \\alpha\\), \\(n \\in Z\\).\n\n\\(\\therefore 4x = n\\pi\\) or \\(2x = 2n\\pi \\pm \\dfrac{2\\pi}{3}\\)\n\n\\(\\therefore x = \\dfrac{n\\pi}{4}\\) or \\(x = n\\pi \\pm \\dfrac{\\pi}{3}\\), where \\(n \\in Z\\), is the required general solution.\n\nCheck: \\(x = \\dfrac{\\pi}{4}\\) gives \\(\\sin\\dfrac{\\pi}{2} + \\sin\\pi + \\sin\\dfrac{3\\pi}{2} = 1 + 0 - 1 = 0\\); \\(x = \\dfrac{\\pi}{3}\\) gives \\(\\sin\\dfrac{2\\pi}{3} + \\sin\\dfrac{4\\pi}{3} + \\sin 2\\pi = \\dfrac{\\sqrt{3}}{2} - \\dfrac{\\sqrt{3}}{2} + 0 = 0\\).",
+    "difficulty": "MODERATE"
+  }
+]

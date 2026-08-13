@@ -1,0 +1,405 @@
+[
+  {
+    "ref": "diff-equations-12-pyq#1",
+    "questionNumber": "Q. 4. iii.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Formation of a Differential Equation",
+    "stem": "The differential equation of \\(y = \\frac{c}{x} + c^{2}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\({\\ x^{4}\\left( \\frac{dy}{dx} \\right)}^{2} - x\\ \\frac{dy}{dx} = y\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{d^{2}y}{dx^{2}} + x\\frac{dy}{dx} + y = 0\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(x^{3}\\left( \\frac{dy}{dx} \\right)^{2} + x\\frac{dy}{dx} = y\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{d^{2}y}{dx^{2}} + \\frac{dy}{dx} - y = 0\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)**\n\nThe relation is \\(y = \\dfrac{c}{x} + c^{2}\\), with one arbitrary constant \\(c\\), so differentiate once and eliminate \\(c\\).\n\nDifferentiate with respect to \\(x\\):\n\n\\(\\dfrac{dy}{dx} = -\\dfrac{c}{x^{2}}\\)\n\n\\(\\therefore c = -x^{2}\\dfrac{dy}{dx}\\)\n\nSubstitute this value of \\(c\\) back into the given relation:\n\n\\(y = \\left(-x^{2}\\dfrac{dy}{dx}\\right)^{2} + \\dfrac{1}{x}\\left(-x^{2}\\dfrac{dy}{dx}\\right)\\)\n\n\\(\\therefore y = x^{4}\\left(\\dfrac{dy}{dx}\\right)^{2} - x\\dfrac{dy}{dx}\\)\n\n\\(\\therefore x^{4}\\left(\\dfrac{dy}{dx}\\right)^{2} - x\\dfrac{dy}{dx} = y\\)\n\nwhich is option (A).\n\n**Why the others fail.** Options (B) and (D) are second order, but one arbitrary constant can only produce a first-order equation. Option (C) carries \\(x^{3}\\) and a \\(+\\) sign; squaring \\(c = -x^{2}y'\\) gives \\(x^{4}(y')^{2}\\) and the second term is \\(-xy'\\), so (C) is the same elimination done with two slips.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "diff-equations-12-pyq#2",
+    "questionNumber": "Q. 1. viii.",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "mcq",
+    "subtopic": "Order and Degree of a Differential Equation",
+    "stem": "Order and degree of differential equation \\(\\frac{d^{4}y}{dx^{4}} = \\left\\lbrack 1 + \\left( \\frac{dy}{dx} \\right)^{2} \\right\\rbrack^{3}\\) respectively are ______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "Order: 1, Degree: 4"
+      },
+      {
+        "label": "B",
+        "text": "Order: 4, Degree: 1"
+      },
+      {
+        "label": "C",
+        "text": "Order: 6, Degree: 1"
+      },
+      {
+        "label": "D",
+        "text": "Order: 1, Degree: 6"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)**\n\nThe equation is \\(\\dfrac{d^{4}y}{dx^{4}} = \\left[1 + \\left(\\dfrac{dy}{dx}\\right)^{2}\\right]^{3}\\).\n\n**Order.** The highest-order derivative appearing is \\(\\dfrac{d^{4}y}{dx^{4}}\\), so the order is 4.\n\n**Degree.** The equation is already free of radicals and of fractional powers of the derivatives, so it is a polynomial in the derivatives. The degree is the power to which the highest-order derivative is raised, and \\(\\dfrac{d^{4}y}{dx^{4}}\\) occurs to the first power. So the degree is 1.\n\nNote that the exponent 3 sits on \\(\\left[1 + (y')^{2}\\right]\\), the term containing the *lowest* derivative, so it affects neither the order nor the degree.\n\n\\(\\therefore\\) Order 4, Degree 1, which is option (B).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "diff-equations-12-pyq#3",
+    "questionNumber": "Q. 2. iv.",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Order and Degree of a Differential Equation",
+    "stem": "Write the degree of differential equation \\((y''')^{4} + 3(y'') + 3xy + 5y = 0\\).",
+    "solution": "The equation is \\((y''')^{4} + 3(y'') + 3xy + 5y = 0\\).\n\nThe highest-order derivative present is \\(y''' = \\dfrac{d^{3}y}{dx^{3}}\\), so the order is 3.\n\nEvery derivative occurs raised to a positive integer power, with no radical and no derivative inside a transcendental function, so the equation IS a polynomial in the derivatives and the degree is defined. The degree is the power of the highest-order derivative, and \\(y'''\\) occurs raised to the power 4.\n\n\\(\\therefore\\) the degree of the differential equation is \\(4\\).\n\n(The order, had it been asked, is 3.)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "diff-equations-12-pyq#4",
+    "questionNumber": "Q. 2. iv.",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Order and Degree of a Differential Equation",
+    "stem": "Write the degree of the differential equation \\(e^{\\frac{dy}{dx}} + \\frac{dy}{dx} = x\\)",
+    "solution": "The equation is \\(e^{\\frac{dy}{dx}} + \\dfrac{dy}{dx} = x\\).\n\nThe highest-order derivative is \\(\\dfrac{dy}{dx}\\), so the order is 1.\n\nFor the degree to exist, the equation must be expressible as a polynomial in the derivatives. Here \\(\\dfrac{dy}{dx}\\) appears inside the exponential function \\(e^{\\frac{dy}{dx}}\\). Expanding it,\n\n\\(e^{\\frac{dy}{dx}} = 1 + \\dfrac{dy}{dx} + \\dfrac{1}{2!}\\left(\\dfrac{dy}{dx}\\right)^{2} + \\dfrac{1}{3!}\\left(\\dfrac{dy}{dx}\\right)^{3} + \\cdots\\)\n\nis an infinite series, so no finite highest power of \\(\\dfrac{dy}{dx}\\) exists.\n\n\\(\\therefore\\) the equation cannot be written as a polynomial differential equation, and the degree is **not defined**.\n\n(Contrast this with a radical, which can be cleared by raising both sides to a power; a derivative inside \\(e^{\\,\\cdot\\,}\\), \\(\\sin(\\cdot)\\), \\(\\log(\\cdot)\\) or \\(\\tan^{-1}(\\cdot)\\) can never be cleared.)",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "diff-equations-12-pyq#5",
+    "questionNumber": "Q. 1. vii.",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "mcq",
+    "subtopic": "Solution of a Differential Equation",
+    "stem": "The integrating factor of linear differential equation \\(x\\frac{dy}{dx} + 2y = x^{2}logx\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(x\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{x}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(x^2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{x^2}\\)"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)**\n\nThe equation \\(x\\dfrac{dy}{dx} + 2y = x^{2}\\log x\\) must first be put in the standard linear form \\(\\dfrac{dy}{dx} + Py = Q\\), which means the coefficient of \\(\\dfrac{dy}{dx}\\) has to be 1.\n\nDivide throughout by \\(x\\):\n\n\\(\\dfrac{dy}{dx} + \\dfrac{2}{x}y = x\\log x\\)\n\nSo \\(P = \\dfrac{2}{x}\\) and \\(Q = x\\log x\\).\n\n\\(\\text{I.F.} = e^{\\int P\\,dx} = e^{\\int \\frac{2}{x}dx} = e^{2\\log x} = e^{\\log x^{2}} = x^{2}\\)\n\n\\(\\therefore\\) the integrating factor is \\(x^{2}\\), which is option (C).\n\n**The trap.** Reading \\(P\\) off the equation as printed, without dividing by \\(x\\) first, gives \\(P = 2\\) and the wrong answer \\(e^{2x}\\); forgetting to double the logarithm gives option (A), \\(x\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "diff-equations-12-pyq#6",
+    "questionNumber": "Q. 2. iii.",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Order and Degree of a Differential Equation",
+    "stem": "Write the order of the differential equation \\(\\sqrt{1 + \\left( \\frac{dy}{dx} \\right)^{2}} = \\left( \\frac{d^{2}y}{dx^{2}} \\right)^{\\frac{3}{2}}\\).",
+    "solution": "The equation is \\(\\sqrt{1 + \\left(\\dfrac{dy}{dx}\\right)^{2}} = \\left(\\dfrac{d^{2}y}{dx^{2}}\\right)^{\\frac{3}{2}}\\).\n\nThe order is the order of the highest-order derivative that occurs, irrespective of what power it is raised to. Here the derivatives present are \\(\\dfrac{dy}{dx}\\) (order 1) and \\(\\dfrac{d^{2}y}{dx^{2}}\\) (order 2).\n\n\\(\\therefore\\) the order of the differential equation is \\(2\\).\n\n(Only the order was asked. For completeness: squaring both sides clears both fractional powers and gives \\(1 + \\left(\\dfrac{dy}{dx}\\right)^{2} = \\left(\\dfrac{d^{2}y}{dx^{2}}\\right)^{3}\\), so the degree is 3.)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "diff-equations-12-pyq#7",
+    "questionNumber": "Q. 4. B iv.",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "stem": "Form the differential equation by eliminating arbitrary constants from the relation \\(y = Ae^{5x} + Be^{- 5x}\\).",
+    "solution": "\\(y = Ae^{5x} + Be^{-5x}\\) ... (1)\n\nThe relation contains two arbitrary constants \\(A\\) and \\(B\\), so it must be differentiated twice and the constants eliminated between the results.\n\nDifferentiate (1) with respect to \\(x\\):\n\n\\(\\dfrac{dy}{dx} = 5Ae^{5x} - 5Be^{-5x}\\)\n\nDifferentiate again:\n\n\\(\\dfrac{d^{2}y}{dx^{2}} = 25Ae^{5x} + 25Be^{-5x} = 25\\left(Ae^{5x} + Be^{-5x}\\right)\\)\n\nThe bracket is exactly \\(y\\) from (1), so both constants disappear at once:\n\n\\(\\dfrac{d^{2}y}{dx^{2}} = 25y\\)\n\n\\(\\therefore \\dfrac{d^{2}y}{dx^{2}} - 25y = 0\\) is the required differential equation.\n\n**Check.** With \\(y = Ae^{5x} + Be^{-5x}\\), \\(y'' = 25Ae^{5x} + 25Be^{-5x}\\) and \\(25y = 25Ae^{5x} + 25Be^{-5x}\\), so \\(y'' - 25y = 0\\) for every \\(A\\) and \\(B\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "diff-equations-12-pyq#8",
+    "questionNumber": "Q. 4. v.",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "stem": "Obtain the differential equation by eliminating the arbitrary constants from the following equation: \\(y = c_{1}e^{2x} + c_{2}e^{- 2x}\\).",
+    "solution": "\\(y = c_{1}e^{2x} + c_{2}e^{-2x}\\) ... (1)\n\nTwo arbitrary constants, so differentiate twice.\n\nDifferentiate (1) with respect to \\(x\\):\n\n\\(\\dfrac{dy}{dx} = 2c_{1}e^{2x} - 2c_{2}e^{-2x}\\)\n\nDifferentiate again:\n\n\\(\\dfrac{d^{2}y}{dx^{2}} = 4c_{1}e^{2x} + 4c_{2}e^{-2x} = 4\\left(c_{1}e^{2x} + c_{2}e^{-2x}\\right) = 4y\\)\n\n\\(\\therefore \\dfrac{d^{2}y}{dx^{2}} - 4y = 0\\) is the required differential equation.\n\n**Check.** \\(y'' = 4c_{1}e^{2x} + 4c_{2}e^{-2x}\\) and \\(4y = 4c_{1}e^{2x} + 4c_{2}e^{-2x}\\), so \\(y'' - 4y = 0\\) identically, for all \\(c_{1}, c_{2}\\).\n\n(The pattern is worth remembering: \\(y = c_{1}e^{kx} + c_{2}e^{-kx}\\) always gives \\(\\dfrac{d^{2}y}{dx^{2}} = k^{2}y\\).)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "diff-equations-12-pyq#9",
+    "questionNumber": "Q. 6.",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Formation of a Differential Equation",
+    "stem": "If \\(y = ae^{5x} + be^{- 5x}\\), then the differential equation is ______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{d^2y}{dx^2} = 25y\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{d^2y}{dx^2} = -25y\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{d^2y}{dx^2} = -5y\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{d^2y}{dx^2} = 5y\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)**\n\n\\(y = ae^{5x} + be^{-5x}\\) ... (1)\n\nThere are two arbitrary constants, so differentiate twice.\n\n\\(\\dfrac{dy}{dx} = 5ae^{5x} - 5be^{-5x}\\)\n\n\\(\\dfrac{d^{2}y}{dx^{2}} = 25ae^{5x} + 25be^{-5x} = 25\\left(ae^{5x} + be^{-5x}\\right) = 25y\\)\n\n\\(\\therefore \\dfrac{d^{2}y}{dx^{2}} = 25y\\), which is option (A).\n\n**Why the others fail.** Options (C) and (D) are first-degree in \\(y\\) with coefficient \\(\\pm 5\\); that would come from \\(y = ce^{\\pm\\sqrt{5}x}\\), not from \\(e^{\\pm 5x}\\). Option (B), \\(y'' = -25y\\), is the equation of \\(y = a\\cos 5x + b\\sin 5x\\); the minus sign belongs to the trigonometric pair, not to the exponential pair.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "diff-equations-12-pyq#10",
+    "questionNumber": "Q. 13",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "stem": "Form the differential equation of all lines which make intercept 3 on x-axis.",
+    "solution": "A line that makes an intercept 3 on the X-axis passes through the fixed point \\((3, 0)\\). Its slope is arbitrary, so take the slope \\(m\\) as the single arbitrary constant of the family:\n\n\\(y = m(x - 3)\\) ... (1)\n\nDifferentiate (1) with respect to \\(x\\):\n\n\\(\\dfrac{dy}{dx} = m\\)\n\nSubstitute \\(m = \\dfrac{dy}{dx}\\) back into (1):\n\n\\(y = (x - 3)\\dfrac{dy}{dx}\\)\n\n\\(\\therefore (x - 3)\\dfrac{dy}{dx} = y\\), or equivalently \\((x - 3)\\dfrac{dy}{dx} - y = 0\\), is the required differential equation.\n\n**Check.** For \\(y = m(x-3)\\) we get \\((x-3)\\dfrac{dy}{dx} = (x-3)m = y\\) for every \\(m\\), so the whole family satisfies it and \\(m\\) has genuinely been eliminated.\n\n(The vertical line \\(x = 3\\) also meets the X-axis at 3 but has no finite slope, so it is not covered by this equation.)",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "diff-equations-12-pyq#11",
+    "questionNumber": "Q. 2. iv.",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Formation of a Differential Equation",
+    "stem": "A particle is moving along X-axis. Its acceleration at time \\(t\\) is proportional to its velocity at that time. Find the differential equation of the motion of the particle.",
+    "solution": "Let \\(s\\) be the displacement of the particle along the X-axis at time \\(t\\).\n\nThen its velocity is \\(\\dfrac{ds}{dt}\\) and its acceleration is \\(\\dfrac{d^{2}s}{dt^{2}}\\).\n\nIt is given that the acceleration at time \\(t\\) is proportional to the velocity at that time:\n\n\\(\\dfrac{d^{2}s}{dt^{2}} \\propto \\dfrac{ds}{dt}\\)\n\nReplacing the proportionality by a constant of proportionality \\(k\\):\n\n\\(\\dfrac{d^{2}s}{dt^{2}} = k\\dfrac{ds}{dt}\\), where \\(k\\) is a constant, \\(k \\neq 0\\)\n\n\\(\\therefore \\dfrac{d^{2}s}{dt^{2}} = k\\dfrac{ds}{dt}\\), i.e. \\(\\dfrac{d^{2}s}{dt^{2}} - k\\dfrac{ds}{dt} = 0\\), is the required differential equation of the motion.\n\n(If the particle is decelerating the constant is negative; writing the relation with \\(k\\) of unrestricted sign covers both cases. Only the equation is asked for here, not its solution.)",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "diff-equations-12-pyq#12",
+    "questionNumber": "Q. 4. (B) iv.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Solution of a Differential Equation",
+    "stem": "If y = \\(e^{ax},show\\ that\\ x\\frac{dy}{dx} = y\\ log\\ y\\).",
+    "solution": "Given \\(y = e^{ax}\\) ... (1)\n\nTaking logarithms of both sides of (1):\n\n\\(\\log y = \\log e^{ax} = ax\\) ... (2)\n\nDifferentiate (1) with respect to \\(x\\):\n\n\\(\\dfrac{dy}{dx} = a\\,e^{ax}\\)\n\nBy (1), \\(e^{ax} = y\\), so\n\n\\(\\dfrac{dy}{dx} = ay\\)\n\nMultiply both sides by \\(x\\):\n\n\\(x\\dfrac{dy}{dx} = (ax)\\,y\\)\n\nBy (2), \\(ax = \\log y\\). Substituting,\n\n\\(x\\dfrac{dy}{dx} = y\\log y\\)\n\nwhich is the required result.\n\nHence \\(y = e^{ax}\\) satisfies \\(x\\dfrac{dy}{dx} = y\\log y\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "diff-equations-12-pyq#13",
+    "questionNumber": "Q. 6. (B) iii.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Solution of a Differential Equation",
+    "stem": "Solve the differential equation \\(\\left( x^{2} + y^{2} \\right)dx - 2xydy = 0\\).",
+    "solution": "\\(\\left(x^{2} + y^{2}\\right)dx - 2xy\\,dy = 0\\)\n\n\\(\\therefore \\dfrac{dy}{dx} = \\dfrac{x^{2} + y^{2}}{2xy}\\)\n\nEvery term of the numerator and of the denominator is of degree 2, so this is a homogeneous differential equation.\n\nPut \\(y = vx\\), so that \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\):\n\n\\(v + x\\dfrac{dv}{dx} = \\dfrac{x^{2} + v^{2}x^{2}}{2x \\cdot vx} = \\dfrac{1 + v^{2}}{2v}\\)\n\n\\(\\therefore x\\dfrac{dv}{dx} = \\dfrac{1 + v^{2}}{2v} - v = \\dfrac{1 + v^{2} - 2v^{2}}{2v} = \\dfrac{1 - v^{2}}{2v}\\)\n\nSeparate the variables:\n\n\\(\\dfrac{2v}{1 - v^{2}}\\,dv = \\dfrac{dx}{x}\\)\n\nOn the left the numerator is the negative of the derivative of the denominator, so \\(\\int \\dfrac{2v}{1-v^{2}}\\,dv = -\\log\\left|1 - v^{2}\\right|\\). Integrating both sides:\n\n\\(-\\log\\left|1 - v^{2}\\right| = \\log|x| + \\log c_{1}\\)\n\n\\(\\therefore \\log\\left|1 - v^{2}\\right| = -\\log\\left|c_{1}x\\right| = \\log\\dfrac{1}{c_{1}x}\\)\n\n\\(\\therefore 1 - v^{2} = \\dfrac{c}{x}\\), where \\(c = \\dfrac{1}{c_{1}}\\)\n\nPut back \\(v = \\dfrac{y}{x}\\), so \\(1 - v^{2} = \\dfrac{x^{2} - y^{2}}{x^{2}}\\):\n\n\\(\\dfrac{x^{2} - y^{2}}{x^{2}} = \\dfrac{c}{x}\\)\n\nMultiplying throughout by \\(x^{2}\\), the general solution is\n\n\\(x^{2} - y^{2} = cx\\)\n\n**Check.** From \\(x^{2} - y^{2} = cx\\) we get \\(c = \\dfrac{x^{2} - y^{2}}{x}\\), and differentiating gives \\(2x - 2y\\dfrac{dy}{dx} = c = \\dfrac{x^{2}-y^{2}}{x}\\). Multiplying by \\(x\\): \\(2x^{2} - 2xy\\dfrac{dy}{dx} = x^{2} - y^{2}\\), i.e. \\(2xy\\dfrac{dy}{dx} = x^{2} + y^{2}\\), which is the given equation.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "diff-equations-12-pyq#14",
+    "questionNumber": "Q. 6. (B) i.",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Solution of a Differential Equation",
+    "stem": "Solve the differential equation \\(cos\\ (x + y)dy = dx\\). Hence find the particular solution for \\(x = 0\\) and \\(y = 0\\).",
+    "solution": "\\(\\cos(x + y)\\,dy = dx\\)\n\n\\(\\therefore \\dfrac{dy}{dx} = \\dfrac{1}{\\cos(x + y)} = \\sec(x + y)\\)\n\n**General solution.** The right side depends on \\(x\\) and \\(y\\) only through \\(x + y\\), so put\n\n\\(x + y = u\\)\n\nDifferentiating with respect to \\(x\\), \\(1 + \\dfrac{dy}{dx} = \\dfrac{du}{dx}\\), so \\(\\dfrac{dy}{dx} = \\dfrac{du}{dx} - 1\\). The equation becomes\n\n\\(\\dfrac{du}{dx} - 1 = \\sec u\\)\n\n\\(\\therefore \\dfrac{du}{dx} = 1 + \\sec u = 1 + \\dfrac{1}{\\cos u} = \\dfrac{\\cos u + 1}{\\cos u}\\)\n\nSeparate the variables:\n\n\\(\\dfrac{\\cos u}{1 + \\cos u}\\,du = dx\\)\n\nWrite the left side as \\(\\dfrac{(1 + \\cos u) - 1}{1 + \\cos u} = 1 - \\dfrac{1}{1 + \\cos u}\\), and use \\(1 + \\cos u = 2\\cos^{2}\\dfrac{u}{2}\\):\n\n\\(\\left[1 - \\dfrac{1}{2}\\sec^{2}\\dfrac{u}{2}\\right]du = dx\\)\n\nIntegrate both sides:\n\n\\(u - \\dfrac{1}{2}\\cdot\\dfrac{\\tan\\frac{u}{2}}{\\frac{1}{2}} = x + c\\)\n\n\\(\\therefore u - \\tan\\dfrac{u}{2} = x + c\\)\n\nReplace \\(u = x + y\\):\n\n\\((x + y) - \\tan\\left(\\dfrac{x + y}{2}\\right) = x + c\\)\n\n\\(\\therefore \\tan\\left(\\dfrac{x + y}{2}\\right) = y - c\\)\n\nWriting \\(-c\\) again as an arbitrary constant \\(c\\), the general solution is\n\n\\(\\tan\\left(\\dfrac{x + y}{2}\\right) = y + c\\)\n\n**Particular solution.** Put \\(x = 0\\), \\(y = 0\\):\n\n\\(\\tan 0 = 0 + c \\Rightarrow c = 0\\)\n\n\\(\\therefore \\tan\\left(\\dfrac{x + y}{2}\\right) = y\\) is the required particular solution.\n\n**Check.** Differentiating \\(\\tan\\left(\\frac{x+y}{2}\\right) = y\\) implicitly, \\(\\dfrac{1}{2}\\sec^{2}\\!\\left(\\frac{x+y}{2}\\right)\\left(1 + \\dfrac{dy}{dx}\\right) = \\dfrac{dy}{dx}\\). Writing \\(t = \\frac{x+y}{2}\\) and solving for \\(\\frac{dy}{dx}\\) gives \\(\\dfrac{dy}{dx} = \\dfrac{1}{2\\cos^{2}t - 1} = \\dfrac{1}{\\cos 2t} = \\sec(x+y)\\), which is the given equation; and \\((0,0)\\) satisfies it.",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "diff-equations-12-pyq#15",
+    "questionNumber": "Q. 30",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Solution of a Differential Equation",
+    "stem": "Solve the differential equation \\(\\frac{dy}{dx} + ysecx = tanx\\).",
+    "solution": "\\(\\dfrac{dy}{dx} + y\\sec x = \\tan x\\)\n\nThis is a linear differential equation of the form \\(\\dfrac{dy}{dx} + Py = Q\\), with \\(P = \\sec x\\) and \\(Q = \\tan x\\).\n\n**Integrating factor.**\n\n\\(\\text{I.F.} = e^{\\int P\\,dx} = e^{\\int \\sec x\\,dx} = e^{\\log\\left|\\sec x + \\tan x\\right|} = \\sec x + \\tan x\\)\n\n**Solution.** The solution of a linear equation is \\(y\\,(\\text{I.F.}) = \\int Q\\,(\\text{I.F.})\\,dx + c\\):\n\n\\(y(\\sec x + \\tan x) = \\int \\tan x\\,(\\sec x + \\tan x)\\,dx + c\\)\n\nEvaluate the integral:\n\n\\(\\int \\left(\\sec x\\tan x + \\tan^{2}x\\right)dx = \\int \\sec x\\tan x\\,dx + \\int \\left(\\sec^{2}x - 1\\right)dx\\)\n\n\\(= \\sec x + \\tan x - x\\)\n\nusing \\(\\tan^{2}x = \\sec^{2}x - 1\\).\n\n\\(\\therefore\\) the general solution is\n\n\\(y(\\sec x + \\tan x) = \\sec x + \\tan x - x + c\\)\n\n**Check.** With \\(\\text{I.F.} = \\sec x + \\tan x\\) we have \\(\\dfrac{d}{dx}(\\text{I.F.}) = \\sec x\\tan x + \\sec^{2}x = \\sec x(\\sec x + \\tan x) = \\sec x \\cdot \\text{I.F.}\\), which is exactly the property \\(\\text{(I.F.)}' = P\\cdot\\text{I.F.}\\) an integrating factor must have. Differentiating both sides of the answer then returns \\(\\dfrac{dy}{dx} + y\\sec x = \\tan x\\).",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "diff-equations-12-pyq#16",
+    "questionNumber": "Q. 30 (OR)",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Solution of a Differential Equation",
+    "stem": "Solve the differential equation \\((x + y)\\frac{dy}{dx} = 1\\).",
+    "solution": "\\((x + y)\\dfrac{dy}{dx} = 1\\)\n\nTreated as an equation for \\(y\\) this is not linear, because of the product \\(y\\dfrac{dy}{dx}\\). But inverting it makes it linear in \\(x\\).\n\n\\(\\dfrac{dx}{dy} = x + y\\)\n\n\\(\\therefore \\dfrac{dx}{dy} - x = y\\)\n\nThis is linear in \\(x\\), of the form \\(\\dfrac{dx}{dy} + Px = Q\\) with \\(P = -1\\) and \\(Q = y\\).\n\n**Integrating factor.**\n\n\\(\\text{I.F.} = e^{\\int P\\,dy} = e^{\\int (-1)dy} = e^{-y}\\)\n\n**Solution.** \\(x\\,(\\text{I.F.}) = \\int Q\\,(\\text{I.F.})\\,dy + c\\):\n\n\\(x\\,e^{-y} = \\int y\\,e^{-y}\\,dy + c\\)\n\nIntegrate by parts, taking \\(y\\) as the first function:\n\n\\(\\int y\\,e^{-y}\\,dy = y\\left(-e^{-y}\\right) - \\int 1 \\cdot \\left(-e^{-y}\\right)dy = -y\\,e^{-y} - e^{-y} = -(y + 1)e^{-y}\\)\n\n\\(\\therefore x\\,e^{-y} = -(y + 1)e^{-y} + c\\)\n\nMultiply throughout by \\(e^{y}\\):\n\n\\(x = -(y + 1) + c\\,e^{y}\\)\n\n\\(\\therefore\\) the general solution is \\(x + y + 1 = c\\,e^{y}\\).\n\n**Check.** Differentiating \\(x + y + 1 = ce^{y}\\) with respect to \\(y\\): \\(\\dfrac{dx}{dy} + 1 = ce^{y} = x + y + 1\\), so \\(\\dfrac{dx}{dy} = x + y\\), i.e. \\((x+y)\\dfrac{dy}{dx} = 1\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "diff-equations-12-pyq#17",
+    "questionNumber": "Q. 12",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Solution of a Differential Equation",
+    "stem": "Solve the differential equation \\(\\frac{dy}{dx} = x^{2}y + y\\).",
+    "solution": "\\(\\dfrac{dy}{dx} = x^{2}y + y\\)\n\nTake \\(y\\) common on the right, which shows the variables separate:\n\n\\(\\dfrac{dy}{dx} = y\\left(x^{2} + 1\\right)\\)\n\n\\(\\therefore \\dfrac{dy}{y} = \\left(x^{2} + 1\\right)dx\\)\n\nIntegrate both sides:\n\n\\(\\int \\dfrac{dy}{y} = \\int \\left(x^{2} + 1\\right)dx\\)\n\n\\(\\therefore \\log|y| = \\dfrac{x^{3}}{3} + x + c\\)\n\nwhich is the general solution. (Equivalently \\(y = k\\,e^{\\frac{x^{3}}{3} + x}\\), where \\(k = e^{c}\\).)\n\n**Check.** Differentiating \\(\\log|y| = \\dfrac{x^{3}}{3} + x + c\\) with respect to \\(x\\) gives \\(\\dfrac{1}{y}\\dfrac{dy}{dx} = x^{2} + 1\\), i.e. \\(\\dfrac{dy}{dx} = y\\left(x^{2}+1\\right) = x^{2}y + y\\), the given equation.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "diff-equations-12-pyq#18",
+    "questionNumber": "Q. 25",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Solution of a Differential Equation",
+    "stem": "Solve the differential equation \\(\\frac{dy}{dx} + y = e^{- x}\\).",
+    "solution": "\\(\\dfrac{dy}{dx} + y = e^{-x}\\)\n\nThis is a linear differential equation of the form \\(\\dfrac{dy}{dx} + Py = Q\\), with \\(P = 1\\) and \\(Q = e^{-x}\\).\n\n**Integrating factor.**\n\n\\(\\text{I.F.} = e^{\\int P\\,dx} = e^{\\int 1\\,dx} = e^{x}\\)\n\n**Solution.** \\(y\\,(\\text{I.F.}) = \\int Q\\,(\\text{I.F.})\\,dx + c\\):\n\n\\(y\\,e^{x} = \\int e^{-x}\\cdot e^{x}\\,dx + c\\)\n\n\\(\\therefore y\\,e^{x} = \\int e^{-x + x}\\,dx + c = \\int e^{0}\\,dx + c = \\int 1\\,dx + c\\)\n\n\\(\\therefore y\\,e^{x} = x + c\\)\n\nis the general solution. (Equivalently \\(y = (x + c)e^{-x}\\).)\n\n**Check.** With \\(y = (x+c)e^{-x}\\), \\(\\dfrac{dy}{dx} = e^{-x} - (x+c)e^{-x}\\), so \\(\\dfrac{dy}{dx} + y = e^{-x} - (x+c)e^{-x} + (x+c)e^{-x} = e^{-x}\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "diff-equations-12-pyq#19",
+    "questionNumber": "Q. 11",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Solution of a Differential Equation",
+    "stem": "Solve the differential equation \\(y\\frac{dy}{dx} + x = 0\\).",
+    "solution": "\\(y\\dfrac{dy}{dx} + x = 0\\)\n\n\\(\\therefore y\\dfrac{dy}{dx} = -x\\)\n\nThe variables separate immediately:\n\n\\(y\\,dy = -x\\,dx\\)\n\nIntegrate both sides:\n\n\\(\\int y\\,dy = -\\int x\\,dx\\)\n\n\\(\\therefore \\dfrac{y^{2}}{2} = -\\dfrac{x^{2}}{2} + c_{1}\\)\n\nMultiply throughout by 2 and write \\(c = 2c_{1}\\):\n\n\\(x^{2} + y^{2} = c\\)\n\nis the general solution.\n\n**Check.** Differentiating \\(x^{2} + y^{2} = c\\) gives \\(2x + 2y\\dfrac{dy}{dx} = 0\\), i.e. \\(y\\dfrac{dy}{dx} + x = 0\\).\n\nGeometrically the solution is the family of concentric circles centred at the origin (for \\(c > 0\\)).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "diff-equations-12-pyq#20",
+    "questionNumber": "Q. 23",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Solution of a Differential Equation",
+    "stem": "Solve \\(x + y\\frac{dy}{dx} = sec\\left( x^{2} + y^{2} \\right)\\).",
+    "solution": "\\(x + y\\dfrac{dy}{dx} = \\sec\\left(x^{2} + y^{2}\\right)\\)\n\nThe right side depends on \\(x\\) and \\(y\\) only through \\(x^{2} + y^{2}\\), and the left side is half the derivative of that same expression. So put\n\n\\(x^{2} + y^{2} = u\\)\n\nDifferentiating with respect to \\(x\\):\n\n\\(2x + 2y\\dfrac{dy}{dx} = \\dfrac{du}{dx}\\)\n\n\\(\\therefore x + y\\dfrac{dy}{dx} = \\dfrac{1}{2}\\dfrac{du}{dx}\\)\n\nSubstituting into the given equation:\n\n\\(\\dfrac{1}{2}\\dfrac{du}{dx} = \\sec u\\)\n\n\\(\\therefore \\dfrac{du}{dx} = 2\\sec u\\)\n\nSeparate the variables:\n\n\\(\\dfrac{du}{\\sec u} = 2\\,dx\\), i.e. \\(\\cos u\\,du = 2\\,dx\\)\n\nIntegrate both sides:\n\n\\(\\sin u = 2x + c\\)\n\nReplace \\(u = x^{2} + y^{2}\\):\n\n\\(\\sin\\left(x^{2} + y^{2}\\right) = 2x + c\\)\n\nis the general solution.\n\n**Check.** Differentiating, \\(\\cos\\left(x^{2}+y^{2}\\right)\\left(2x + 2y\\dfrac{dy}{dx}\\right) = 2\\), so \\(x + y\\dfrac{dy}{dx} = \\dfrac{1}{\\cos\\left(x^{2}+y^{2}\\right)} = \\sec\\left(x^{2}+y^{2}\\right)\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "diff-equations-12-pyq#21",
+    "questionNumber": "Q. 1. vii.",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Solution of a Differential Equation",
+    "stem": "The solution of the differential equation \\(\\frac{dx\\ }{dt} = \\frac{xlogx}{t}\\) is _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "x = e^{ct}"
+      },
+      {
+        "label": "B",
+        "text": "x + e^{ct} = 0"
+      },
+      {
+        "label": "C",
+        "text": "x = e^t + t"
+      },
+      {
+        "label": "D",
+        "text": "x e^{ct} = 0"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)**\n\n\\(\\dfrac{dx}{dt} = \\dfrac{x\\log x}{t}\\)\n\nThe variables separate:\n\n\\(\\dfrac{dx}{x\\log x} = \\dfrac{dt}{t}\\)\n\nIntegrate both sides. On the left put \\(\\log x = m\\), so \\(\\dfrac{1}{x}dx = dm\\) and \\(\\int \\dfrac{dx}{x\\log x} = \\int \\dfrac{dm}{m} = \\log|m| = \\log\\left|\\log x\\right|\\):\n\n\\(\\log\\left|\\log x\\right| = \\log|t| + \\log c\\)\n\n\\(\\therefore \\log\\left|\\log x\\right| = \\log|ct|\\)\n\n\\(\\therefore \\log x = ct\\)\n\n\\(\\therefore x = e^{ct}\\)\n\nwhich is option (A).\n\n**Why the others fail.** Option (B) gives \\(x = -e^{ct} < 0\\), for which \\(\\log x\\) is not defined. Option (D), \\(xe^{ct} = 0\\), forces \\(x = 0\\), again outside the domain of \\(\\log x\\). Option (C), \\(x = e^{t} + t\\), does not satisfy the equation: it gives \\(\\dfrac{dx}{dt} = e^{t} + 1\\), whereas \\(\\dfrac{x\\log x}{t} = \\dfrac{\\left(e^{t}+t\\right)\\log\\left(e^{t}+t\\right)}{t}\\), and the two are unequal (at \\(t = 1\\) they are \\(3.718\\) and \\(4.883\\)).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "diff-equations-12-pyq#22",
+    "questionNumber": "Q. 12",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Solution of a Differential Equation",
+    "stem": "Solve the differential equation \\(cosxcosydy - sinxsinydx = 0\\).",
+    "solution": "\\(\\cos x\\cos y\\,dy - \\sin x\\sin y\\,dx = 0\\)\n\n\\(\\therefore \\cos x\\cos y\\,dy = \\sin x\\sin y\\,dx\\)\n\nDivide throughout by \\(\\cos x\\sin y\\) to separate the variables:\n\n\\(\\dfrac{\\cos y}{\\sin y}\\,dy = \\dfrac{\\sin x}{\\cos x}\\,dx\\)\n\n\\(\\therefore \\cot y\\,dy = \\tan x\\,dx\\)\n\nIntegrate both sides:\n\n\\(\\int \\cot y\\,dy = \\int \\tan x\\,dx\\)\n\n\\(\\therefore \\log\\left|\\sin y\\right| = -\\log\\left|\\cos x\\right| + \\log c\\)\n\nusing \\(\\int \\tan x\\,dx = -\\log\\left|\\cos x\\right|\\).\n\n\\(\\therefore \\log\\left|\\sin y\\right| + \\log\\left|\\cos x\\right| = \\log c\\)\n\n\\(\\therefore \\log\\left|\\sin y\\cos x\\right| = \\log c\\)\n\n\\(\\therefore \\sin y\\cos x = c\\)\n\nis the general solution.\n\n**Check.** Differentiating \\(\\sin y\\cos x = c\\) with respect to \\(x\\): \\(\\cos y\\cos x\\dfrac{dy}{dx} - \\sin y\\sin x = 0\\), i.e. \\(\\cos x\\cos y\\,dy - \\sin x\\sin y\\,dx = 0\\), the given equation.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "diff-equations-12-pyq#23",
+    "questionNumber": "Q. 13",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Solution of a Differential Equation",
+    "stem": "Solve: \\(1 + \\frac{dy}{dx} = csc(x + y)\\); put \\(x + y = u\\).",
+    "solution": "\\(1 + \\dfrac{dy}{dx} = \\operatorname{cosec}(x + y)\\) ... (1)\n\nAs the question directs, put\n\n\\(x + y = u\\)\n\nDifferentiate with respect to \\(x\\):\n\n\\(1 + \\dfrac{dy}{dx} = \\dfrac{du}{dx}\\)\n\nThe whole left side of (1) is replaced at once, and (1) becomes\n\n\\(\\dfrac{du}{dx} = \\operatorname{cosec} u\\)\n\nSeparate the variables:\n\n\\(\\dfrac{du}{\\operatorname{cosec} u} = dx\\), i.e. \\(\\sin u\\,du = dx\\)\n\nIntegrate both sides:\n\n\\(\\int \\sin u\\,du = \\int dx\\)\n\n\\(\\therefore -\\cos u = x + c\\)\n\n\\(\\therefore x + \\cos u + c = 0\\)\n\nReplace \\(u = x + y\\):\n\n\\(x + \\cos(x + y) + c = 0\\)\n\nis the general solution.\n\n**Check.** Differentiating, \\(1 - \\sin(x+y)\\left(1 + \\dfrac{dy}{dx}\\right) = 0\\), so \\(1 + \\dfrac{dy}{dx} = \\dfrac{1}{\\sin(x+y)} = \\operatorname{cosec}(x+y)\\).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "diff-equations-12-pyq#24",
+    "questionNumber": "Q. 24",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Solution of a Differential Equation",
+    "stem": "Solve the differential equation: \\(x\\frac{dy}{dx} - y + xsin\\left( \\frac{y}{x} \\right) = 0\\).",
+    "solution": "\\(x\\dfrac{dy}{dx} - y + x\\sin\\left(\\dfrac{y}{x}\\right) = 0\\)\n\n\\(\\therefore \\dfrac{dy}{dx} = \\dfrac{y}{x} - \\sin\\left(\\dfrac{y}{x}\\right)\\)\n\nThe right side is a function of \\(\\dfrac{y}{x}\\) alone, so the equation is homogeneous.\n\nPut \\(y = vx\\), so that \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\):\n\n\\(v + x\\dfrac{dv}{dx} = v - \\sin v\\)\n\n\\(\\therefore x\\dfrac{dv}{dx} = -\\sin v\\)\n\nSeparate the variables:\n\n\\(\\dfrac{dv}{\\sin v} = -\\dfrac{dx}{x}\\), i.e. \\(\\operatorname{cosec} v\\,dv = -\\dfrac{dx}{x}\\)\n\nIntegrate both sides, using \\(\\int \\operatorname{cosec} v\\,dv = \\log\\left|\\tan\\dfrac{v}{2}\\right|\\):\n\n\\(\\log\\left|\\tan\\dfrac{v}{2}\\right| = -\\log|x| + \\log c\\)\n\n\\(\\therefore \\log\\left|\\tan\\dfrac{v}{2}\\right| + \\log|x| = \\log c\\)\n\n\\(\\therefore x\\tan\\dfrac{v}{2} = c\\)\n\nReplace \\(v = \\dfrac{y}{x}\\):\n\n\\(x\\tan\\left(\\dfrac{y}{2x}\\right) = c\\)\n\nis the general solution.\n\n**Check.** Differentiating \\(x\\tan\\left(\\frac{y}{2x}\\right) = c\\) and writing \\(w = \\dfrac{y}{2x}\\): \\(\\tan w + x\\sec^{2}w \\cdot \\dfrac{x\\frac{dy}{dx} - y}{2x^{2}} = 0\\), so \\(x\\dfrac{dy}{dx} - y = -2x\\tan w\\cos^{2}w = -2x\\sin w\\cos w = -x\\sin 2w = -x\\sin\\left(\\dfrac{y}{x}\\right)\\), which rearranges to the given equation.",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "diff-equations-12-pyq#25",
+    "questionNumber": "Q. 25",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Solution of a Differential Equation",
+    "stem": "Solve the differential equation: \\(x\\frac{dy}{dx} = xtan\\left( \\frac{y}{x} \\right) + y\\).",
+    "solution": "\\(x\\dfrac{dy}{dx} = x\\tan\\left(\\dfrac{y}{x}\\right) + y\\) ... (1)\n\nDividing by \\(x\\) gives \\(\\dfrac{dy}{dx} = \\tan\\left(\\dfrac{y}{x}\\right) + \\dfrac{y}{x}\\), a function of \\(\\dfrac{y}{x}\\) alone, so this is a homogeneous differential equation.\n\nPut \\(y = vx\\) ... (2)\n\nDifferentiating (2) with respect to \\(x\\): \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\) ... (3)\n\nSubstituting (2) and (3) into (1):\n\n\\(x\\left(v + x\\dfrac{dv}{dx}\\right) = x\\tan\\left(\\dfrac{vx}{x}\\right) + vx\\)\n\nDivide throughout by \\(x\\):\n\n\\(v + x\\dfrac{dv}{dx} = \\tan v + v\\)\n\n\\(\\therefore x\\dfrac{dv}{dx} = \\tan v\\)\n\nSeparate the variables:\n\n\\(\\dfrac{dv}{\\tan v} = \\dfrac{dx}{x}\\), i.e. \\(\\cot v\\,dv = \\dfrac{dx}{x}\\)\n\nIntegrate both sides:\n\n\\(\\int \\cot v\\,dv = \\int \\dfrac{dx}{x}\\)\n\n\\(\\therefore \\log\\left|\\sin v\\right| = \\log|x| + \\log c = \\log|cx|\\)\n\n\\(\\therefore \\sin v = cx\\)\n\nReplace \\(v = \\dfrac{y}{x}\\):\n\n\\(\\sin\\left(\\dfrac{y}{x}\\right) = cx\\)\n\nis the general solution.\n\n**Check.** Differentiating \\(\\sin\\left(\\frac{y}{x}\\right) = cx\\): \\(\\cos\\left(\\dfrac{y}{x}\\right)\\cdot\\dfrac{x\\frac{dy}{dx} - y}{x^{2}} = c = \\dfrac{\\sin\\left(\\frac{y}{x}\\right)}{x}\\), so \\(x\\dfrac{dy}{dx} - y = x\\tan\\left(\\dfrac{y}{x}\\right)\\), which is the given equation.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "diff-equations-12-pyq#26",
+    "questionNumber": "Q. 6. B ii.",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Solution of a Differential Equation",
+    "stem": "Find the particular solution of the differential equation \\(y(1 + logx)\\frac{dx}{dy} - xlogx = 0\\) when \\(y = e^{2}\\) and \\(x = e\\).",
+    "solution": "The equation is\n\n\\(y\\left(1 + \\log x\\right)\\dfrac{dx}{dy} - x\\log x = 0\\)\n\nthat is,\n\n\\(y\\left(1 + \\log x\\right)\\dfrac{dx}{dy} = x\\log x\\)\n\n**Step 1 — separate the variables.** Writing \\(\\dfrac{dx}{dy}\\) as \\(\\dfrac{dx}{dy}\\) and cross-multiplying,\n\n\\(y\\left(1 + \\log x\\right)dx = x\\log x\\,dy\\)\n\n\\(\\dfrac{1 + \\log x}{x\\log x}\\,dx = \\dfrac{dy}{y}\\)\n\n**Step 2 — integrate both sides.** For the left-hand side put\n\n\\(u = x\\log x\\)\n\nThen, by the product rule,\n\n\\(du = \\left(\\log x \\cdot 1 + x \\cdot \\dfrac{1}{x}\\right)dx = \\left(1 + \\log x\\right)dx\\)\n\nwhich is exactly the numerator, so\n\n\\(\\displaystyle\\int\\dfrac{1 + \\log x}{x\\log x}\\,dx = \\int\\dfrac{du}{u} = \\log|u| = \\log\\left|x\\log x\\right|\\)\n\nand \\(\\displaystyle\\int\\dfrac{dy}{y} = \\log|y|\\). Writing the constant of integration as \\(\\log|k|\\),\n\n\\(\\log\\left|x\\log x\\right| = \\log|y| + \\log|k|\\)\n\n\\(\\log\\left|x\\log x\\right| = \\log|ky|\\)\n\n\\(x\\log x = k\\,y\\)   (general solution)\n\n**Step 3 — apply the condition \\(x = e,\\ y = e^{2}\\).** Since \\(\\log e = 1\\),\n\n\\(e \\times 1 = k\\,e^{2}\\)\n\n\\(k = \\dfrac{1}{e}\\)\n\n**Particular solution.**\n\n\\(x\\log x = \\dfrac{y}{e}\\)\n\n\\(y = e\\,x\\log x\\)\n\n**Verification.** With \\(y = e\\,x\\log x\\),\n\n\\(\\dfrac{dy}{dx} = e\\left(\\log x + 1\\right)\\)  so  \\(\\dfrac{dx}{dy} = \\dfrac{1}{e\\left(1 + \\log x\\right)}\\)\n\nSubstituting into the left-hand side of the original equation,\n\n\\(y\\left(1 + \\log x\\right)\\dfrac{dx}{dy} - x\\log x = e\\,x\\log x\\left(1 + \\log x\\right) \\cdot \\dfrac{1}{e\\left(1 + \\log x\\right)} - x\\log x = x\\log x - x\\log x = 0\\)\n\nand at \\(x = e\\), \\(y = e \\cdot e \\cdot \\log e = e^{2}\\), so the initial condition is met as well.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "diff-equations-12-pyq#27",
+    "questionNumber": "Q. 24",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Solution of a Differential Equation",
+    "stem": "Find the particular solution of the differential equation \\(\\frac{dy}{dx} = e^{2y}cosx\\), when \\(x = \\frac{\\pi}{6},y = 0\\).",
+    "solution": "\\(\\dfrac{dy}{dx} = e^{2y}\\cos x\\)\n\nThe variables separate:\n\n\\(\\dfrac{dy}{e^{2y}} = \\cos x\\,dx\\)\n\n\\(\\therefore e^{-2y}\\,dy = \\cos x\\,dx\\)\n\nIntegrate both sides:\n\n\\(\\int e^{-2y}\\,dy = \\int \\cos x\\,dx\\)\n\n\\(\\therefore \\dfrac{e^{-2y}}{-2} = \\sin x + c\\) ... (1)\n\n**Apply the condition \\(x = \\dfrac{\\pi}{6}\\), \\(y = 0\\).** Then \\(e^{-2y} = e^{0} = 1\\) and \\(\\sin\\dfrac{\\pi}{6} = \\dfrac{1}{2}\\), so (1) gives\n\n\\(-\\dfrac{1}{2} = \\dfrac{1}{2} + c\\)\n\n\\(\\therefore c = -1\\)\n\nPutting \\(c = -1\\) in (1):\n\n\\(\\dfrac{e^{-2y}}{-2} = \\sin x - 1\\)\n\nMultiply throughout by \\(-2\\):\n\n\\(e^{-2y} = 2 - 2\\sin x\\)\n\nMultiplying by \\(e^{2y}\\) and rearranging, the particular solution is\n\n\\(e^{2y}(2\\sin x - 2) + 1 = 0\\)\n\n**Check.** Differentiating \\(e^{-2y} = 2 - 2\\sin x\\) gives \\(-2e^{-2y}\\dfrac{dy}{dx} = -2\\cos x\\), so \\(\\dfrac{dy}{dx} = e^{2y}\\cos x\\); and at \\(x = \\frac{\\pi}{6}\\), \\(y = 0\\) the relation reads \\(1 = 2 - 1\\), which holds.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "diff-equations-12-pyq#28",
+    "questionNumber": "Q. 34",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Applications of Differential Equations",
+    "stem": "If a body cools from \\(80^{\\circ}\\text{C}\\) to \\(50^{\\circ}\\text{C}\\) at room temperature of \\(25^{\\circ}\\text{C}\\) in 30 minutes, find the temperature of the body after 1 hour.",
+    "solution": "Let \\(\\theta\\) be the temperature of the body (in degrees Celsius) after time \\(t\\) minutes, and let the surrounding (room) temperature be \\(\\theta_{0} = 25^{\\circ}\\)C.\n\n**By Newton's law of cooling,** the rate of fall of temperature is proportional to the excess of the body's temperature over that of its surroundings:\n\n\\(\\dfrac{d\\theta}{dt} = -k(\\theta - 25)\\), where \\(k > 0\\) is a constant\n\nSeparate the variables and integrate:\n\n\\(\\dfrac{d\\theta}{\\theta - 25} = -k\\,dt\\)\n\n\\(\\therefore \\log(\\theta - 25) = -kt + c\\)\n\n\\(\\therefore \\theta - 25 = C\\,e^{-kt}\\), where \\(C = e^{c}\\) ... (1)\n\n**Condition 1: at \\(t = 0\\), \\(\\theta = 80^{\\circ}\\)C.**\n\n\\(80 - 25 = C \\Rightarrow C = 55\\)\n\nSo (1) becomes \\(\\theta - 25 = 55\\,e^{-kt}\\) ... (2)\n\n**Condition 2: at \\(t = 30\\) minutes, \\(\\theta = 50^{\\circ}\\)C.**\n\n\\(50 - 25 = 55\\,e^{-30k}\\)\n\n\\(\\therefore e^{-30k} = \\dfrac{25}{55} = \\dfrac{5}{11}\\) ... (3)\n\n**Required: the temperature after 1 hour, i.e. \\(t = 60\\) minutes.**\n\nSince \\(60 = 2 \\times 30\\), there is no need to find \\(k\\) itself:\n\n\\(\\theta - 25 = 55\\,e^{-60k} = 55\\left(e^{-30k}\\right)^{2} = 55\\left(\\dfrac{5}{11}\\right)^{2} = 55 \\times \\dfrac{25}{121} = \\dfrac{125}{11}\\)\n\n\\(\\therefore \\theta = 25 + \\dfrac{125}{11} = \\dfrac{275 + 125}{11} = \\dfrac{400}{11} = 36.36\\) (approximately)\n\n\\(\\therefore\\) the temperature of the body after 1 hour is about \\(36.36^{\\circ}\\)C.\n\n**Sanity check.** The body fell \\(80 \\rightarrow 50\\) in the first half hour and \\(50 \\rightarrow 36.36\\) in the second: the drop is smaller in the second interval, as it must be when the body is nearer the room temperature, and \\(\\theta\\) stays above \\(25^{\\circ}\\)C as it should.",
+    "difficulty": "MODERATE"
+  }
+]

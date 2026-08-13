@@ -255,7 +255,7 @@
     "pyqMonth": "March",
     "format": "subjective",
     "subtopic": "Logical Equivalence and Algebra of Statements",
-    "stem": "Using the truth table prove the following logical equivalence: \\(p \\longleftrightarrow \\ q \\equiv (p \\land q) \\vee (\\sim p \\land \\sim q)\\).",
+    "stem": "Using the truth table prove the following logical equivalence: \\(p \\longleftrightarrow q \\equiv (p \\land q) \\vee (\\sim p \\land \\sim q)\\).",
     "solution": "To prove: \\(p \\longleftrightarrow q \\equiv (p \\land q) \\vee (\\sim p \\land \\sim q)\\).\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\longleftrightarrow q\\) | \\(p \\land q\\) | \\(\\sim p \\land \\sim q\\) | \\((p \\land q) \\vee (\\sim p \\land \\sim q)\\) |\n|---|---|---|---|---|---|---|---|\n| T | T | F | F | T | T | F | T |\n| T | F | F | T | F | F | F | F |\n| F | T | T | F | F | F | F | F |\n| F | F | T | T | T | F | T | T |\n\nThe fifth column and the eighth column are identical in every row.\n\n**Hence \\(p \\longleftrightarrow q \\equiv (p \\land q) \\vee (\\sim p \\land \\sim q)\\). Proved.**",
     "difficulty": "MODERATE"
   },

@@ -181,6 +181,49 @@ describe("stripArtifacts", () => {
     expect(stripArtifacts("not true? \\ \n\ntail")).toBe("not true? tail");
   });
 
+  // pandoc escapes < and > outside math. Left alone they ship as literal
+  // backslashes — "0\<x\<8" — on every p.d.f. support interval in the corpus.
+  it("unescapes pandoc's escaped angle brackets", () => {
+    expect(stripArtifacts("for 0\\<x\\<8 = 0 otherwise")).toBe("for 0<x<8 = 0 otherwise");
+  });
+
+  // A trailing "\:" is the compilation's flattening of the printed fill-in
+  // blank. Confirmed against the 2019 page, where the item ends "______." and we
+  // hold "\:". It renders as a literal backslash-colon.
+  it("turns a trailing flattened blank into a real blank", () => {
+    expect(stripArtifacts("the differential equation is \\:")).toBe(
+      "the differential equation is ______.",
+    );
+  });
+
+  // ...but when the blank is ALREADY there the artifact is just noise.
+  it("drops the flattened blank when a real one is already present", () => {
+    expect(stripArtifacts("at \\(\\theta = \\frac{\\pi}{3}\\) is ___. \\:")).toBe(
+      "at \\(\\theta = \\frac{\\pi}{3}\\) is ___.",
+    );
+  });
+
+  it("leaves a mid-string colon alone", () => {
+    const s = "Evaluate: \\(\\int x\\,dx\\)";
+    expect(stripArtifacts(s)).toBe(s);
+  });
+
+  // pandoc's continuation backslash can land MID-string, not just at a line end
+  // — before the board's internal-choice "OR" marker. It ships as a literal
+  // backslash between two sentences.
+  it("removes a lone backslash standing between words", () => {
+    expect(stripArtifacts("find \\(p\\). \\ OR Find the value of q.")).toBe(
+      "find \\(p\\). OR Find the value of q.",
+    );
+  });
+
+  // ...but NOT the LaTeX spacing command inside a math zone, which is how this
+  // corpus lays out its piecewise p.d.f. definitions.
+  it("keeps a spacing command inside a math zone", () => {
+    const s = "\\(f(x) = x\\), for \\(0 < x < 8\\) \\(\\ \\ \\ \\ = 0\\), otherwise";
+    expect(stripArtifacts(s)).toBe(s);
+  });
+
   it("removes a comment separator split across lines", () => {
     expect(stripArtifacts("stem Options:\n\n<!-- --\n>\n\ntail")).toBe("stem tail");
   });
@@ -218,6 +261,26 @@ describe("stripArtifacts", () => {
     expect(stripArtifacts("\\(\\lbrack( \\sim q) \\vee \\sim p\\)\\].")).toBe(
       "\\(\\lbrack( \\sim q) \\vee \\sim p \\rbrack\\).",
     );
+  });
+});
+
+describe("pipe tables survive whitespace collapsing", () => {
+  // Everything else in this corpus is one paragraph, so the normaliser joins
+  // lines — but a GFM table IS its line structure. Flattened onto one line the
+  // separator row stops being a separator and the whole table ships as raw
+  // pipes. Five probability-distribution tables were doing exactly that.
+  it("keeps the line breaks of a pipe table", () => {
+    const out = normaliseMath(
+      "A random variable has the distribution:\n\n| X = x | -2 | -1 |\n|-------|----|----|\n| P(x) | 0.1 | 0.2 |\n\nThen $E(x)$ = ___.",
+    );
+    const lines = out.split("\n");
+    expect(lines.some((l) => /^\|[\s\-:|]+\|$/.test(l.trim()))).toBe(true);
+    expect(lines.filter((l) => l.trim().startsWith("|")).length).toBe(3);
+    expect(out).toContain("\\(E(x)\\)");
+  });
+
+  it("still collapses ordinary prose to one line", () => {
+    expect(normaliseMath("first line\nsecond line\n\nthird")).toBe("first line second line third");
   });
 });
 

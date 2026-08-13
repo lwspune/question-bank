@@ -19,7 +19,7 @@
  */
 import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-import { OUT, CHAPTERS } from "./config";
+import { OUT, DATA, CHAPTERS } from "./config";
 
 type Blind = { ref: string; key: string | null; confidence?: string; derivation?: string; flag?: string };
 type Sol = { ref: string; key?: string | null; flag?: string };
@@ -49,7 +49,25 @@ function main() {
     }
   }
 
+  // A blind derivation made BEFORE the row's stem or options were corrected was
+  // reasoning about a different question, so a mismatch is stale input rather
+  // than a disagreement. Without this the reconciliation reports five conflicts
+  // that are all explained, and a later reader has no way to tell them from real
+  // ones. Rows corrected by the printed page are listed in defects.json.
+  const defects = JSON.parse(readFileSync(join(DATA, "defects.json"), "utf8")) as {
+    stemsMistranscribed: { fixes: { ref: string }[] };
+    optionsMistranscribed: { fixes: { ref: string }[] };
+  };
+  const corrected = new Set([
+    ...defects.stemsMistranscribed.fixes.map((f) => f.ref),
+    ...defects.optionsMistranscribed.fixes.map((f) => f.ref),
+    // line-planes#5 is the dropped half of a duplicate pair; its corrected text
+    // is what vectors#20 now carries.
+    "vectors-12-pyq#20",
+  ]);
+
   const agree: string[] = [];
+  const stale: string[] = [];
   const disagree: string[] = [];
   const bothNull: string[] = [];
   const onlyOne: string[] = [];
@@ -59,6 +77,10 @@ function main() {
     if (!a || a.key === undefined) { onlyOne.push(`${ref}: blind says ${b.key ?? "null"}, no authored key`); continue; }
     if (b.key === null && a.key === null) { bothNull.push(ref); continue; }
     if (b.key === a.key) { agree.push(ref); continue; }
+    if (corrected.has(ref)) {
+      stale.push(`${ref}: blind=${b.key ?? "null"} (pre-correction) vs authored=${a.key ?? "null"}`);
+      continue;
+    }
     disagree.push(
       `${ref}: blind=${b.key ?? "null"} vs authored=${a.key ?? "null"}` +
         (b.confidence ? ` [blind confidence ${b.confidence}]` : "") +
@@ -73,6 +95,8 @@ function main() {
   console.log(`double-derived ${checked} MCQ key(s) across ${blindFiles.length} blind file(s)`);
   console.log(`  agree              ${agree.length}`);
   console.log(`  both say NO ANSWER ${bothNull.length}${bothNull.length ? ` (${bothNull.join(", ")})` : ""}`);
+  console.log(`  stale blind input  ${stale.length} — the row was corrected against the printed page AFTER the blind pass ran`);
+  for (const s2 of stale) console.log(`    ${s2}`);
   console.log(`  DISAGREE           ${disagree.length}`);
   for (const d of disagree) console.log(`    ${d}`);
   if (onlyOne.length) {

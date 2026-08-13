@@ -1,0 +1,435 @@
+[
+  {
+    "ref": "line-planes-12-pyq#1",
+    "questionNumber": "Q. 1. (B) i.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Vector and Cartesian Equations of a Line",
+    "stem": "Find the direction cosines of the line perpendicular to the lines whose direction ratios are \\(- 2,\\ 1, - 1\\) and \\(- 3,\\ - 4,\\ 1\\).",
+    "solution": "Let \\(\\bar{b_1} = -2\\hat{i} + \\hat{j} - \\hat{k}\\) and \\(\\bar{b_2} = -3\\hat{i} - 4\\hat{j} + \\hat{k}\\) be vectors along the two given lines. A line perpendicular to both is along \\(\\bar{b_1} \\times \\bar{b_2}\\).\n\n\\(\\bar{b_1} \\times \\bar{b_2} = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\-2&1&-1\\\\-3&-4&1\\end{vmatrix}\\)\n\n\\(= \\hat{i}\\big((1)(1) - (-1)(-4)\\big) - \\hat{j}\\big((-2)(1) - (-1)(-3)\\big) + \\hat{k}\\big((-2)(-4) - (1)(-3)\\big)\\)\n\n\\(= \\hat{i}(1 - 4) - \\hat{j}(-2 - 3) + \\hat{k}(8 + 3) = -3\\hat{i} + 5\\hat{j} + 11\\hat{k}\\).\n\nSo the direction ratios of the required line are \\(-3,\\ 5,\\ 11\\).\n\nCheck: \\((-3)(-2) + (5)(1) + (11)(-1) = 6 + 5 - 11 = 0\\) and \\((-3)(-3) + (5)(-4) + (11)(1) = 9 - 20 + 11 = 0\\), so it is indeed perpendicular to both lines.\n\n\\(\\sqrt{(-3)^2 + 5^2 + 11^2} = \\sqrt{9 + 25 + 121} = \\sqrt{155}\\).\n\n\\(\\therefore\\) the direction cosines are \\(\\left(\\dfrac{-3}{\\sqrt{155}},\\ \\dfrac{5}{\\sqrt{155}},\\ \\dfrac{11}{\\sqrt{155}}\\right)\\).\n\n(A line has two opposite directions, so \\(\\left(\\dfrac{3}{\\sqrt{155}},\\ \\dfrac{-5}{\\sqrt{155}},\\ \\dfrac{-11}{\\sqrt{155}}\\right)\\) is an equally correct answer.)",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "line-planes-12-pyq#2",
+    "questionNumber": "Q. 3",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Vector and Cartesian Equations of a Line",
+    "stem": "The direction ratios of the line which is perpendicular to the lines with direction ratios \\( - 1,2,2\\) and \\(0,2,1\\) are",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(- 2,\\ - 1, - 2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2,1,2\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2, - 1,\\ - 2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(- 2,1, - 2\\)"
+      }
+    ],
+    "answer": "D",
+    "solution": "**(D)**\n\nA line perpendicular to two given lines has direction ratios along the cross product of the two direction vectors.\n\nLet \\(\\bar{b_{1}} = -\\hat{i} + 2\\hat{j} + 2\\hat{k}\\) and \\(\\bar{b_{2}} = 0\\hat{i} + 2\\hat{j} + \\hat{k}\\).\n\n\\(\\bar{b_{1}} \\times \\bar{b_{2}} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ -1 & 2 & 2 \\\\ 0 & 2 & 1 \\end{vmatrix}\\)\n\n\\(= \\hat{i}\\left(2 \\times 1 - 2 \\times 2\\right) - \\hat{j}\\left((-1) \\times 1 - 2 \\times 0\\right) + \\hat{k}\\left((-1) \\times 2 - 2 \\times 0\\right)\\)\n\n\\(= \\hat{i}(2 - 4) - \\hat{j}(-1 - 0) + \\hat{k}(-2 - 0)\\)\n\n\\(= -2\\hat{i} + \\hat{j} - 2\\hat{k}\\)\n\nSo the direction ratios are \\(-2,\\ 1,\\ -2\\) — option (D).\n\nConfirm by testing both perpendicularity conditions directly:\n\n\\((-2)(-1) + (1)(2) + (-2)(2) = 2 + 2 - 4 = 0\\)\n\n\\((-2)(0) + (1)(2) + (-2)(1) = 0 + 2 - 2 = 0\\)\n\nBoth dot products vanish, so the answer is verified. Each of the other three options fails at least one of these: (A) \\(-2, -1, -2\\) gives \\(2 - 2 - 4 = -4\\); (B) \\(2, 1, 2\\) gives \\(-2 + 2 + 4 = 4\\); (C) \\(2, -1, -2\\) gives \\(-2 - 2 - 4 = -8\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "line-planes-12-pyq#7",
+    "questionNumber": "Q. 18",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Vector and Cartesian Equations of a Line",
+    "stem": "A line passes through the points \\((6, - 7, - 1)\\) and \\((2, - 3,1)\\). Find the direction ratios and the direction cosines of the line. Show that the line does not pass through the origin.",
+    "solution": "Let \\(A \\equiv (6, -7, -1)\\) and \\(B \\equiv (2, -3, 1)\\).\n\n**Direction ratios.** The direction ratios of \\(AB\\) are\n\\((2 - 6,\\ -3 - (-7),\\ 1 - (-1)) = (-4,\\ 4,\\ 2)\\), which are proportional to \\(-2,\\ 2,\\ 1\\).\n\n**Direction cosines.** \\(\\sqrt{(-2)^2 + 2^2 + 1^2} = \\sqrt{4 + 4 + 1} = \\sqrt{9} = 3\\).\n\n\\(\\therefore\\) the direction cosines are \\(\\left(\\dfrac{-2}{3},\\ \\dfrac{2}{3},\\ \\dfrac{1}{3}\\right)\\).\n\n(Check: \\(\\left(\\dfrac{-2}{3}\\right)^2 + \\left(\\dfrac{2}{3}\\right)^2 + \\left(\\dfrac{1}{3}\\right)^2 = \\dfrac{4 + 4 + 1}{9} = 1\\), as direction cosines must.)\n\n**The line does not pass through the origin.** Using \\(A(6, -7, -1)\\) and the direction ratios \\(-2, 2, 1\\), the Cartesian equations of the line are\n\n\\(\\dfrac{x - 6}{-2} = \\dfrac{y + 7}{2} = \\dfrac{z + 1}{1}\\).\n\nPut \\((x, y, z) = (0, 0, 0)\\):\n\n\\(\\dfrac{0 - 6}{-2} = 3,\\qquad \\dfrac{0 + 7}{2} = 3.5,\\qquad \\dfrac{0 + 1}{1} = 1\\).\n\nThese three ratios are not equal, so \\((0,0,0)\\) does not satisfy the equations of the line.\n\n\\(\\therefore\\) the line does not pass through the origin.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "line-planes-12-pyq#9",
+    "questionNumber": "Q. 1. (B) iv. (OR)",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Vector and Cartesian Equations of a Line",
+    "stem": "The cartesian equations of line are \\(\\frac{3x - 1}{1} = \\frac{6y + 2}{1} = \\frac{1 - z}{1}\\). Find the vector equation of line.",
+    "solution": "The Cartesian equations must first be written in the standard form \\(\\dfrac{x - x_1}{a} = \\dfrac{y - y_1}{b} = \\dfrac{z - z_1}{c}\\), in which the coefficient of each variable is \\(1\\).\n\n\\(3x - 1 = 3\\left(x - \\dfrac{1}{3}\\right)\\), so \\(\\dfrac{3x - 1}{1} = \\dfrac{x - \\frac{1}{3}}{\\frac{1}{3}}\\).\n\n\\(6y + 2 = 6\\left(y + \\dfrac{1}{3}\\right)\\), so \\(\\dfrac{6y + 2}{1} = \\dfrac{y + \\frac{1}{3}}{\\frac{1}{6}}\\).\n\n\\(1 - z = -(z - 1)\\), so \\(\\dfrac{1 - z}{1} = \\dfrac{z - 1}{-1}\\).\n\n\\(\\therefore\\) the line is \\(\\dfrac{x - \\frac{1}{3}}{\\frac{1}{3}} = \\dfrac{y + \\frac{1}{3}}{\\frac{1}{6}} = \\dfrac{z - 1}{-1}\\).\n\nIt therefore passes through \\(\\left(\\dfrac{1}{3},\\ -\\dfrac{1}{3},\\ 1\\right)\\) and has direction ratios \\(\\dfrac{1}{3},\\ \\dfrac{1}{6},\\ -1\\); multiplying by \\(6\\), the direction ratios are \\(2,\\ 1,\\ -6\\).\n\nWith \\(\\bar{a} = \\dfrac{1}{3}\\hat{i} - \\dfrac{1}{3}\\hat{j} + \\hat{k}\\) and \\(\\bar{b} = 2\\hat{i} + \\hat{j} - 6\\hat{k}\\), the vector equation \\(\\bar{r} = \\bar{a} + \\lambda\\bar{b}\\) is\n\n\\(\\therefore \\bar{r} = \\left(\\dfrac{1}{3}\\hat{i} - \\dfrac{1}{3}\\hat{j} + \\hat{k}\\right) + \\lambda\\left(2\\hat{i} + \\hat{j} - 6\\hat{k}\\right)\\).\n\nCheck that the base point lies on the given line: at \\(\\left(\\frac{1}{3}, -\\frac{1}{3}, 1\\right)\\), \\(3x - 1 = 0\\), \\(6y + 2 = 0\\) and \\(1 - z = 0\\), so all three ratios are \\(0\\) and equal.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "line-planes-12-pyq#10",
+    "questionNumber": "Q. 4. iv.",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Vector and Cartesian Equations of a Line",
+    "stem": "Find the vector equation of the line which passes through the point with position vector \\(4\\widehat{i} - \\widehat{j} + 2\\widehat{k}\\) and is in the direction of \\(- 2\\widehat{i} + \\widehat{j} + \\widehat{k}\\).",
+    "solution": "The equation of the line passing through \\(A(\\bar{a})\\) and having direction \\(\\bar{b}\\) is \\(\\bar{r} = \\bar{a} + \\lambda\\bar{b}\\).\n\nHere \\(\\bar{a} = 4\\hat{i} - \\hat{j} + 2\\hat{k}\\) and \\(\\bar{b} = -2\\hat{i} + \\hat{j} + \\hat{k}\\).\n\n\\(\\therefore \\bar{r} = \\left(4\\hat{i} - \\hat{j} + 2\\hat{k}\\right) + \\lambda\\left(-2\\hat{i} + \\hat{j} + \\hat{k}\\right)\\) is the required vector equation.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "line-planes-12-pyq#11",
+    "questionNumber": "Q. 1. iii.",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "mcq",
+    "subtopic": "Vector and Cartesian Equations of a Line",
+    "stem": "The cartesian equation of the line passing through the points \\(A(4,2,1)\\) and \\(B(2, - 1,3)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{x + 4}{2} = \\frac{y - 2}{3} = \\frac{z - 1}{- 2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{x - 4}{- 2} = \\frac{y - 2}{- 3} = \\frac{z - 1}{- 2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{x - 4}{2} = \\frac{y - 2}{3} = \\frac{z - 1}{- 2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{x - 4}{- 2} = \\frac{y - 2}{3} = \\frac{z - 2}{- 2}\\)"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)** The line through \\(A(x_1, y_1, z_1)\\) and \\(B(x_2, y_2, z_2)\\) has direction ratios \\(x_2 - x_1,\\ y_2 - y_1,\\ z_2 - z_1\\).\n\nHere \\(A(4, 2, 1)\\) and \\(B(2, -1, 3)\\), so the direction ratios of \\(AB\\) are\n\\((2 - 4,\\ -1 - 2,\\ 3 - 1) = (-2,\\ -3,\\ 2)\\), or equivalently \\((2,\\ 3,\\ -2)\\) after multiplying by \\(-1\\).\n\nUsing the point \\(A(4, 2, 1)\\) with direction ratios \\(2, 3, -2\\):\n\n\\(\\dfrac{x - 4}{2} = \\dfrac{y - 2}{3} = \\dfrac{z - 1}{-2}\\), which is option (C).\n\nCheck that \\(B(2, -1, 3)\\) satisfies it: \\(\\dfrac{2-4}{2} = -1\\), \\(\\dfrac{-1-2}{3} = -1\\), \\(\\dfrac{3-1}{-2} = -1\\) — all equal, so \\(B\\) lies on it.\n\n(Option (B) has the correct point but its third denominator \\(-2\\) does not match the \\(-2, -3\\) of its first two; option (A) uses \\(x + 4\\) and option (D) uses \\(z - 2\\), neither of which passes through \\(A\\).)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "line-planes-12-pyq#12",
+    "questionNumber": "Q. 1. iii.",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Vector and Cartesian Equations of a Line",
+    "stem": "Equation of line passing through the points \\((0,0,0)\\) and \\((2,1, - 3)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{x}{2} = \\frac{y}{1} = \\frac{z}{- 3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{x}{2} = \\frac{y}{1} = \\frac{z}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{x}{1} = \\frac{y}{2} = \\frac{z}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{x}{3} = \\frac{y}{1} = \\frac{z}{2}\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)** The line passes through the origin \\((0,0,0)\\) and \\((2, 1, -3)\\), so its direction ratios are\n\\((2 - 0,\\ 1 - 0,\\ -3 - 0) = (2,\\ 1,\\ -3)\\).\n\nUsing the origin as the base point, the equations are\n\n\\(\\dfrac{x - 0}{2} = \\dfrac{y - 0}{1} = \\dfrac{z - 0}{-3}\\), i.e. \\(\\dfrac{x}{2} = \\dfrac{y}{1} = \\dfrac{z}{-3}\\), which is option (A).\n\nCheck: at \\((2, 1, -3)\\) each ratio equals \\(1\\). Options (B), (C) and (D) all fail this test — for instance in (B), \\(\\dfrac{2}{2} = 1\\) but \\(\\dfrac{-3}{3} = -1\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "line-planes-12-pyq#13",
+    "questionNumber": "Q. 8",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Vector and Cartesian Equations of a Line",
+    "stem": "Find the vector equation of the line passing through the point having position vector \\(4\\widehat{i} - \\widehat{j} + 2\\widehat{k}\\) and parallel to the vector \\(- 2\\widehat{i} - \\widehat{j} + \\widehat{k}\\).",
+    "solution": "The equation of the line passing through \\(A(\\bar{a})\\) and parallel to the vector \\(\\bar{b}\\) is \\(\\bar{r} = \\bar{a} + \\lambda\\bar{b}\\).\n\nHere \\(\\bar{a} = 4\\hat{i} - \\hat{j} + 2\\hat{k}\\) and \\(\\bar{b} = -2\\hat{i} - \\hat{j} + \\hat{k}\\).\n\n\\(\\therefore \\bar{r} = \\left(4\\hat{i} - \\hat{j} + 2\\hat{k}\\right) + \\lambda\\left(-2\\hat{i} - \\hat{j} + \\hat{k}\\right)\\) is the required vector equation.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "line-planes-12-pyq#14",
+    "questionNumber": "Q. 1. iv.",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "mcq",
+    "subtopic": "Vector and Cartesian Equations of a Line",
+    "stem": "The vector equation of the line passing through the point having position vector \\(4\\widehat{i} - \\widehat{j} + 2\\widehat{k}\\) and parallel to vector \\(- 2\\widehat{i} - \\widehat{j} + \\widehat{k}\\) is given by __________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\left( 4\\widehat{i} - \\widehat{j} - 2\\widehat{k} \\right) + \\lambda\\left( - 2\\widehat{i} - \\widehat{j} + \\widehat{k} \\right)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\left( 4\\widehat{i} - \\widehat{j} + 2\\widehat{k} \\right) + \\lambda\\left( 2\\widehat{i} - \\widehat{j} + \\widehat{k} \\right)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\left( 4\\widehat{i} - \\widehat{j} + 2\\widehat{k} \\right) + \\lambda\\left( - 2\\widehat{i} - \\widehat{j} - \\widehat{k} \\right)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\left( 4\\widehat{i} - \\widehat{j} + 2\\widehat{k} \\right) + \\lambda\\left( - 2\\widehat{i} - \\widehat{j} + \\widehat{k} \\right)\\)"
+      }
+    ],
+    "answer": "D",
+    "solution": "**(D)** The line through \\(A(\\bar{a})\\) parallel to \\(\\bar{b}\\) is \\(\\bar{r} = \\bar{a} + \\lambda\\bar{b}\\), with \\(\\bar{a} = 4\\hat{i} - \\hat{j} + 2\\hat{k}\\) and \\(\\bar{b} = -2\\hat{i} - \\hat{j} + \\hat{k}\\).\n\n\\(\\therefore \\bar{r} = \\left(4\\hat{i} - \\hat{j} + 2\\hat{k}\\right) + \\lambda\\left(-2\\hat{i} - \\hat{j} + \\hat{k}\\right)\\), which is option (D).\n\nThe other options each alter one sign: (A) has \\(-2\\hat{k}\\) in the point instead of \\(+2\\hat{k}\\); (B) has \\(+2\\hat{i}\\) in the direction instead of \\(-2\\hat{i}\\); (C) has \\(-\\hat{k}\\) in the direction instead of \\(+\\hat{k}\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "line-planes-12-pyq#15",
+    "questionNumber": "Q. 19",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Vector and Cartesian Equations of a Line",
+    "stem": "Find the cartesian and vector equations of the line passing through \\(A(1,2,3)\\) and having direction ratios \\(2,3,7\\).",
+    "solution": "**Cartesian equations.** The line through \\(A(x_1, y_1, z_1)\\) with direction ratios \\(a, b, c\\) is \\(\\dfrac{x - x_1}{a} = \\dfrac{y - y_1}{b} = \\dfrac{z - z_1}{c}\\).\n\nHere \\((x_1, y_1, z_1) = (1, 2, 3)\\) and the direction ratios are \\(2, 3, 7\\).\n\n\\(\\therefore \\dfrac{x - 1}{2} = \\dfrac{y - 2}{3} = \\dfrac{z - 3}{7}\\).\n\n**Vector equation.** With \\(\\bar{a} = \\hat{i} + 2\\hat{j} + 3\\hat{k}\\) (the position vector of \\(A\\)) and \\(\\bar{b} = 2\\hat{i} + 3\\hat{j} + 7\\hat{k}\\), the equation \\(\\bar{r} = \\bar{a} + \\lambda\\bar{b}\\) gives\n\n\\(\\therefore \\bar{r} = \\left(\\hat{i} + 2\\hat{j} + 3\\hat{k}\\right) + \\lambda\\left(2\\hat{i} + 3\\hat{j} + 7\\hat{k}\\right)\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "line-planes-12-pyq#16",
+    "questionNumber": "Q. 3. (B) ii.",
+    "pyqYear": 2015,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Equations of a Plane",
+    "stem": "Find the equations of the planes parallel to the plane \\(x - 2y + 2z - 4 = 0\\) at a unit distance from the point \\((1,2,3)\\).",
+    "solution": "A plane parallel to \\(x - 2y + 2z - 4 = 0\\) has the same normal, so its equation is\n\n\\(x - 2y + 2z + k = 0\\) for some constant \\(k\\).\n\nThe distance of the point \\((x_1, y_1, z_1)\\) from the plane \\(ax + by + cz + d = 0\\) is \\(\\dfrac{|ax_1 + by_1 + cz_1 + d|}{\\sqrt{a^2 + b^2 + c^2}}\\).\n\nHere \\(\\sqrt{1^2 + (-2)^2 + 2^2} = \\sqrt{1 + 4 + 4} = 3\\), and the point is \\((1, 2, 3)\\):\n\n\\(\\dfrac{|(1)(1) + (-2)(2) + (2)(3) + k|}{3} = 1\\)\n\n\\(\\therefore |1 - 4 + 6 + k| = 3\\), i.e. \\(|3 + k| = 3\\).\n\n\\(\\therefore 3 + k = 3\\) or \\(3 + k = -3\\), giving \\(k = 0\\) or \\(k = -6\\).\n\n\\(\\therefore\\) the required planes are \\(x - 2y + 2z = 0\\) and \\(x - 2y + 2z - 6 = 0\\).\n\nCheck: the distance of \\((1,2,3)\\) from \\(x - 2y + 2z = 0\\) is \\(\\dfrac{|1 - 4 + 6|}{3} = \\dfrac{3}{3} = 1\\), and from \\(x - 2y + 2z - 6 = 0\\) it is \\(\\dfrac{|1 - 4 + 6 - 6|}{3} = \\dfrac{3}{3} = 1\\). Both are at unit distance, one on each side of the point.",
+    "difficulty": "HARD"
+  },
+  {
+    "ref": "line-planes-12-pyq#17",
+    "questionNumber": "Q. 2. (A) iii.",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Equations of a Plane",
+    "stem": "Find the vector equation of the plane passing through a point having position vector \\(3\\widehat{i} - 2\\widehat{j} + \\widehat{k}\\) and perpendicular to the vector \\(\\widehat{4i} + 3\\widehat{j} + 2\\widehat{k}\\).",
+    "solution": "The vector equation of the plane passing through \\(A(\\bar{a})\\) and perpendicular to \\(\\bar{n}\\) is \\(\\bar{r} \\cdot \\bar{n} = \\bar{a} \\cdot \\bar{n}\\).\n\nHere \\(\\bar{a} = 3\\hat{i} - 2\\hat{j} + \\hat{k}\\) and \\(\\bar{n} = 4\\hat{i} + 3\\hat{j} + 2\\hat{k}\\).\n\n\\(\\bar{a} \\cdot \\bar{n} = (3)(4) + (-2)(3) + (1)(2) = 12 - 6 + 2 = 8\\).\n\n\\(\\therefore \\bar{r} \\cdot \\left(4\\hat{i} + 3\\hat{j} + 2\\hat{k}\\right) = 8\\) is the required vector equation.\n\n(In Cartesian form, \\(4x + 3y + 2z = 8\\).)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "line-planes-12-pyq#18",
+    "questionNumber": "Q. 3. (B) ii.",
+    "pyqYear": 2017,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Equations of a Plane",
+    "stem": "Find the vector and cartesian equations of the plane passing through the points \\(A(1,1, - 2)\\) and \\(B(1,2,1)\\) and \\(C(2, - 1,1)\\).",
+    "solution": "Let \\(\\bar{a},\\ \\bar{b},\\ \\bar{c}\\) be the position vectors of \\(A(1, 1, -2)\\), \\(B(1, 2, 1)\\) and \\(C(2, -1, 1)\\).\n\n\\(\\bar{b} - \\bar{a} = (1 - 1)\\hat{i} + (2 - 1)\\hat{j} + (1 + 2)\\hat{k} = \\hat{j} + 3\\hat{k}\\)\n\n\\(\\bar{c} - \\bar{a} = (2 - 1)\\hat{i} + (-1 - 1)\\hat{j} + (1 + 2)\\hat{k} = \\hat{i} - 2\\hat{j} + 3\\hat{k}\\)\n\nThe normal to the plane is\n\n\\(\\bar{n} = (\\bar{b} - \\bar{a}) \\times (\\bar{c} - \\bar{a}) = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\0&1&3\\\\1&-2&3\\end{vmatrix}\\)\n\n\\(= \\hat{i}(3 + 6) - \\hat{j}(0 - 3) + \\hat{k}(0 - 1) = 9\\hat{i} + 3\\hat{j} - \\hat{k}\\)\n\n\\(\\bar{a} \\cdot \\bar{n} = (1)(9) + (1)(3) + (-2)(-1) = 9 + 3 + 2 = 14\\)\n\n\\(\\therefore\\) the vector equation \\(\\bar{r} \\cdot \\bar{n} = \\bar{a} \\cdot \\bar{n}\\) is\n\n\\(\\bar{r} \\cdot \\left(9\\hat{i} + 3\\hat{j} - \\hat{k}\\right) = 14\\)\n\nand the Cartesian equation is \\(9x + 3y - z = 14\\).\n\nCheck: at \\(B(1, 2, 1)\\), \\(9 + 6 - 1 = 14\\); at \\(C(2, -1, 1)\\), \\(18 - 3 - 1 = 14\\). Both points lie on the plane.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "line-planes-12-pyq#19",
+    "questionNumber": "Q. 10",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Equations of a Plane",
+    "stem": "Write the equation of the plane \\(3x + 4y - 2z = 5\\) in the vector form.",
+    "solution": "Write \\(\\bar{r} = x\\hat{i} + y\\hat{j} + z\\hat{k}\\). Then for \\(\\bar{n} = 3\\hat{i} + 4\\hat{j} - 2\\hat{k}\\),\n\n\\(\\bar{r} \\cdot \\bar{n} = \\left(x\\hat{i} + y\\hat{j} + z\\hat{k}\\right) \\cdot \\left(3\\hat{i} + 4\\hat{j} - 2\\hat{k}\\right) = 3x + 4y - 2z\\).\n\nThe given plane is \\(3x + 4y - 2z = 5\\).\n\n\\(\\therefore\\) its vector form is \\(\\bar{r} \\cdot \\left(3\\hat{i} + 4\\hat{j} - 2\\hat{k}\\right) = 5\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "line-planes-12-pyq#20",
+    "questionNumber": "Q. 7",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Equations of a Plane",
+    "stem": "Find the cartesian equation of the plane passing through \\(A(1,2,3)\\) and the direction ratios of whose normal are \\(3,2,5\\).",
+    "solution": "The equation of the plane passing through \\(A(x_1, y_1, z_1)\\) whose normal has direction ratios \\(a, b, c\\) is\n\n\\(a(x - x_1) + b(y - y_1) + c(z - z_1) = 0\\).\n\nHere \\((x_1, y_1, z_1) = (1, 2, 3)\\) and the direction ratios of the normal are \\(3, 2, 5\\).\n\n\\(\\therefore 3(x - 1) + 2(y - 2) + 5(z - 3) = 0\\)\n\n\\(\\therefore 3x - 3 + 2y - 4 + 5z - 15 = 0\\)\n\n\\(\\therefore 3x + 2y + 5z - 22 = 0\\), i.e. \\(3x + 2y + 5z = 22\\).\n\nCheck: at \\(A(1,2,3)\\), \\(3 + 4 + 15 = 22\\).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "line-planes-12-pyq#21",
+    "questionNumber": "Q. 20",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Equations of a Plane",
+    "stem": "Find the vector equation of the plane passing through the point \\(A( - 1,2, - 5)\\) and parallel to the vectors \\(4\\widehat{i} - \\widehat{j} + 3\\widehat{k}\\) and \\(\\widehat{i} + \\widehat{j} - \\widehat{k}\\).",
+    "solution": "The vector equation of the plane passing through \\(A(\\bar{a})\\) and parallel to \\(\\bar{b}\\) and \\(\\bar{c}\\) is \\(\\bar{r} \\cdot (\\bar{b} \\times \\bar{c}) = \\bar{a} \\cdot (\\bar{b} \\times \\bar{c})\\).\n\nHere \\(\\bar{a} = -\\hat{i} + 2\\hat{j} - 5\\hat{k}\\), \\(\\bar{b} = 4\\hat{i} - \\hat{j} + 3\\hat{k}\\), \\(\\bar{c} = \\hat{i} + \\hat{j} - \\hat{k}\\).\n\n\\(\\bar{b} \\times \\bar{c} = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\4&-1&3\\\\1&1&-1\\end{vmatrix} = \\hat{i}(1 - 3) - \\hat{j}(-4 - 3) + \\hat{k}(4 + 1) = -2\\hat{i} + 7\\hat{j} + 5\\hat{k}\\)\n\n\\(\\bar{a} \\cdot (\\bar{b} \\times \\bar{c}) = (-1)(-2) + (2)(7) + (-5)(5) = 2 + 14 - 25 = -9\\)\n\n\\(\\therefore \\bar{r} \\cdot \\left(-2\\hat{i} + 7\\hat{j} + 5\\hat{k}\\right) = -9\\) is the required vector equation.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "line-planes-12-pyq#22",
+    "questionNumber": "Q. 8",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Equations of a Plane",
+    "stem": "Find the vector equation of the plane passing through the point having position vector \\(2\\widehat{i} + \\widehat{j} + 3\\widehat{k}\\) and perpendicular to the vector \\(2\\widehat{i} + 3\\widehat{j} + 4\\widehat{k}\\).",
+    "solution": "The vector equation of the plane passing through \\(A(\\bar{a})\\) and perpendicular to \\(\\bar{n}\\) is \\(\\bar{r} \\cdot \\bar{n} = \\bar{a} \\cdot \\bar{n}\\).\n\nHere \\(\\bar{a} = 2\\hat{i} + \\hat{j} + 3\\hat{k}\\) and \\(\\bar{n} = 2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\).\n\n\\(\\bar{a} \\cdot \\bar{n} = (2)(2) + (1)(3) + (3)(4) = 4 + 3 + 12 = 19\\).\n\n\\(\\therefore \\bar{r} \\cdot \\left(2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\right) = 19\\) is the required vector equation.\n\n(In Cartesian form, \\(2x + 3y + 4z = 19\\).)",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "line-planes-12-pyq#23",
+    "questionNumber": "Q. 20",
+    "pyqYear": 2025,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Equations of a Plane",
+    "stem": "Find the vector equation of the plane passing through points \\(A(1,1,2)\\), \\(B(0,2,3)\\) and \\(C(4,5,6)\\).",
+    "solution": "Let \\(\\bar{a},\\ \\bar{b},\\ \\bar{c}\\) be the position vectors of \\(A(1, 1, 2)\\), \\(B(0, 2, 3)\\) and \\(C(4, 5, 6)\\).\n\n\\(\\therefore \\bar{a} = \\hat{i} + \\hat{j} + 2\\hat{k}\\), \\(\\bar{b} = 2\\hat{j} + 3\\hat{k}\\), \\(\\bar{c} = 4\\hat{i} + 5\\hat{j} + 6\\hat{k}\\).\n\n\\(\\bar{b} - \\bar{a} = -\\hat{i} + \\hat{j} + \\hat{k}\\) and \\(\\bar{c} - \\bar{a} = 3\\hat{i} + 4\\hat{j} + 4\\hat{k}\\).\n\n\\((\\bar{b} - \\bar{a}) \\times (\\bar{c} - \\bar{a}) = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\-1&1&1\\\\3&4&4\\end{vmatrix} = \\hat{i}(4 - 4) - \\hat{j}(-4 - 3) + \\hat{k}(-4 - 3) = 7\\hat{j} - 7\\hat{k}\\)\n\nThe plane passes through \\(\\bar{a}\\) and has \\(7\\hat{j} - 7\\hat{k}\\) as a normal, so its equation is \\((\\bar{r} - \\bar{a}) \\cdot (7\\hat{j} - 7\\hat{k}) = 0\\), i.e.\n\n\\(\\bar{r} \\cdot \\left(7\\hat{j} - 7\\hat{k}\\right) = \\left(\\hat{i} + \\hat{j} + 2\\hat{k}\\right) \\cdot \\left(7\\hat{j} - 7\\hat{k}\\right) = 7 - 14 = -7\\)\n\n\\(\\therefore \\bar{r} \\cdot \\left(7\\hat{j} - 7\\hat{k}\\right) = -7\\), which on dividing by \\(7\\) may also be written \\(\\bar{r} \\cdot \\left(\\hat{j} - \\hat{k}\\right) = -1\\), i.e. \\(y - z = -1\\).\n\nCheck: at \\(B(0,2,3)\\), \\(2 - 3 = -1\\); at \\(C(4,5,6)\\), \\(5 - 6 = -1\\). Both lie on the plane.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "line-planes-12-pyq#24",
+    "questionNumber": "Q. 2. (B) ii.",
+    "pyqYear": 2016,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Skew Lines and Shortest Distance",
+    "stem": "Find the shortest distance between the lines \\(\\overrightarrow{r} = \\left( \\widehat{4i} - \\widehat{j} \\right) + \\lambda\\left( \\widehat{i} + 2\\widehat{j} - 3\\widehat{k} \\right)\\) and \\(\\overrightarrow{r} = \\left( \\widehat{i} - \\widehat{j} + 2\\widehat{k} \\right) + \\mu\\left( \\widehat{i} + 4\\widehat{j} - 5\\widehat{k} \\right)\\).",
+    "solution": "The shortest distance between the skew lines \\(\\bar{r} = \\bar{a_1} + \\lambda\\bar{b_1}\\) and \\(\\bar{r} = \\bar{a_2} + \\mu\\bar{b_2}\\) is\n\n\\(d = \\left|\\dfrac{(\\bar{a_2} - \\bar{a_1}) \\cdot (\\bar{b_1} \\times \\bar{b_2})}{|\\bar{b_1} \\times \\bar{b_2}|}\\right|\\).\n\nHere \\(\\bar{a_1} = 4\\hat{i} - \\hat{j}\\), \\(\\bar{b_1} = \\hat{i} + 2\\hat{j} - 3\\hat{k}\\), \\(\\bar{a_2} = \\hat{i} - \\hat{j} + 2\\hat{k}\\), \\(\\bar{b_2} = \\hat{i} + 4\\hat{j} - 5\\hat{k}\\).\n\n\\(\\bar{b_1} \\times \\bar{b_2} = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\1&2&-3\\\\1&4&-5\\end{vmatrix} = \\hat{i}(-10 + 12) - \\hat{j}(-5 + 3) + \\hat{k}(4 - 2) = 2\\hat{i} + 2\\hat{j} + 2\\hat{k}\\)\n\n\\(|\\bar{b_1} \\times \\bar{b_2}| = \\sqrt{4 + 4 + 4} = 2\\sqrt{3}\\)\n\n\\(\\bar{a_2} - \\bar{a_1} = -3\\hat{i} + 0\\hat{j} + 2\\hat{k}\\)\n\n\\((\\bar{a_2} - \\bar{a_1}) \\cdot (\\bar{b_1} \\times \\bar{b_2}) = (-3)(2) + (0)(2) + (2)(2) = -6 + 4 = -2\\)\n\n\\(\\therefore d = \\dfrac{|-2|}{2\\sqrt{3}} = \\dfrac{1}{\\sqrt{3}} = \\dfrac{\\sqrt{3}}{3}\\) units.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "line-planes-12-pyq#25",
+    "questionNumber": "Q. 19",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Vector and Cartesian Equations of a Line",
+    "stem": "Find the equation of the line passing through the point (3,1,2) and perpendicular to the lines \\(\\frac{x - 1}{1} = \\frac{y - 2}{2} = \\frac{z - 3}{3}\\) and \\(\\frac{x}{- 3} = \\frac{y}{2} = \\frac{z - 3}{3}\\).",
+    "solution": "The required line is perpendicular to both given lines, whose direction ratios are \\(1, 2, 3\\) and \\(-3, 2, 3\\). So its direction is their cross product.\n\n\\(\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\1&2&3\\\\-3&2&3\\end{vmatrix} = \\hat{i}(6 - 6) - \\hat{j}(3 + 9) + \\hat{k}(2 + 6) = 0\\hat{i} - 12\\hat{j} + 8\\hat{k}\\),\n\nwhich is proportional to \\(0,\\ -3,\\ 2\\).\n\nCheck: \\((0)(1) + (-3)(2) + (2)(3) = -6 + 6 = 0\\) and \\((0)(-3) + (-3)(2) + (2)(3) = -6 + 6 = 0\\), so this direction is perpendicular to both lines.\n\nUsing the point \\((3, 1, 2)\\):\n\nVector form: \\(\\bar{r} = \\left(3\\hat{i} + \\hat{j} + 2\\hat{k}\\right) + \\lambda\\left(-3\\hat{j} + 2\\hat{k}\\right)\\).\n\nCartesian form: \\(\\dfrac{x - 3}{0} = \\dfrac{y - 1}{-3} = \\dfrac{z - 2}{2}\\), which is to be read as\n\n\\(x = 3\\) and \\(\\dfrac{y - 1}{-3} = \\dfrac{z - 2}{2}\\)\n\n(the first direction ratio is zero, so the line is parallel to the YZ-plane and every point on it has \\(x = 3\\)).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "line-planes-12-pyq#26",
+    "questionNumber": "Q. 20",
+    "pyqYear": 2020,
+    "pyqMonth": "February",
+    "format": "subjective",
+    "subtopic": "Distance of a Point from a Plane",
+    "stem": "Find the distance of the point \\(\\widehat{i} + 2\\widehat{j} - \\widehat{k}\\) from the plane \\(\\overrightarrow{r} \\cdot \\left( \\widehat{i} - 2\\widehat{j} + 4\\widehat{k} \\right) = 10\\).",
+    "solution": "The distance of the point \\(A(\\bar{a})\\) from the plane \\(\\bar{r} \\cdot \\bar{n} = p\\) is \\(d = \\dfrac{|\\bar{a} \\cdot \\bar{n} - p|}{|\\bar{n}|}\\).\n\nHere \\(\\bar{a} = \\hat{i} + 2\\hat{j} - \\hat{k}\\), \\(\\bar{n} = \\hat{i} - 2\\hat{j} + 4\\hat{k}\\) and \\(p = 10\\).\n\n\\(\\bar{a} \\cdot \\bar{n} = (1)(1) + (2)(-2) + (-1)(4) = 1 - 4 - 4 = -7\\)\n\n\\(|\\bar{n}| = \\sqrt{1^2 + (-2)^2 + 4^2} = \\sqrt{1 + 4 + 16} = \\sqrt{21}\\)\n\n\\(\\therefore d = \\dfrac{|-7 - 10|}{\\sqrt{21}} = \\dfrac{17}{\\sqrt{21}} = \\dfrac{17\\sqrt{21}}{21}\\) units.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "line-planes-12-pyq#27",
+    "questionNumber": "Q. 17",
+    "pyqYear": 2022,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Skew Lines and Shortest Distance",
+    "stem": "Find the distance between the parallel lines \\(\\frac{x}{2} = \\frac{y}{- 1} = \\frac{z}{2}\\) and \\(\\frac{x - 1}{2} = \\frac{y + 1}{- 1} = \\frac{z - 4}{2}\\).",
+    "solution": "Both lines have direction ratios \\(2, -1, 2\\), so they are parallel. Their vector equations are\n\n\\(\\bar{r} = \\bar{0} + \\lambda\\left(2\\hat{i} - \\hat{j} + 2\\hat{k}\\right)\\) and \\(\\bar{r} = \\left(\\hat{i} - \\hat{j} + 4\\hat{k}\\right) + \\mu\\left(2\\hat{i} - \\hat{j} + 2\\hat{k}\\right)\\).\n\nThe distance between the parallel lines \\(\\bar{r} = \\bar{a_1} + \\lambda\\bar{b}\\) and \\(\\bar{r} = \\bar{a_2} + \\mu\\bar{b}\\) is \\(d = \\left|(\\bar{a_2} - \\bar{a_1}) \\times \\hat{b}\\right|\\).\n\nHere \\(\\bar{a_1} = \\bar{0}\\), \\(\\bar{a_2} = \\hat{i} - \\hat{j} + 4\\hat{k}\\), \\(\\bar{b} = 2\\hat{i} - \\hat{j} + 2\\hat{k}\\), so \\(|\\bar{b}| = \\sqrt{4 + 1 + 4} = 3\\) and \\(\\hat{b} = \\dfrac{1}{3}\\left(2\\hat{i} - \\hat{j} + 2\\hat{k}\\right)\\).\n\n\\(\\bar{a_2} - \\bar{a_1} = \\hat{i} - \\hat{j} + 4\\hat{k}\\)\n\n\\((\\bar{a_2} - \\bar{a_1}) \\times \\hat{b} = \\dfrac{1}{3}\\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\1&-1&4\\\\2&-1&2\\end{vmatrix} = \\dfrac{1}{3}\\left[\\hat{i}(-2 + 4) - \\hat{j}(2 - 8) + \\hat{k}(-1 + 2)\\right] = \\dfrac{1}{3}\\left(2\\hat{i} + 6\\hat{j} + \\hat{k}\\right)\\)\n\n\\(\\therefore d = \\dfrac{1}{3}\\sqrt{4 + 36 + 1} = \\dfrac{\\sqrt{41}}{3}\\) units.\n\nAlternative check, using \\(d = \\sqrt{|\\bar{a_2} - \\bar{a_1}|^2 - \\left[\\dfrac{(\\bar{a_2} - \\bar{a_1}) \\cdot \\bar{b}}{|\\bar{b}|}\\right]^2}\\): \\(|\\bar{a_2} - \\bar{a_1}|^2 = 1 + 1 + 16 = 18\\) and \\((\\bar{a_2} - \\bar{a_1}) \\cdot \\bar{b} = 2 + 1 + 8 = 11\\), so \\(d = \\sqrt{18 - \\dfrac{121}{9}} = \\sqrt{\\dfrac{41}{9}} = \\dfrac{\\sqrt{41}}{3}\\) units.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "line-planes-12-pyq#28",
+    "questionNumber": "Q. 19",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Skew Lines and Shortest Distance",
+    "stem": "Find the shortest distance between lines \\(\\frac{x - 1}{2} = \\frac{y - 2}{3} = \\frac{z - 3}{4}\\) and \\(\\frac{x - 2}{3} = \\frac{y - 4}{4} = \\frac{z - 5}{5}\\).",
+    "solution": "Read each line off the symmetric form \\(\\dfrac{x - x_{1}}{a} = \\dfrac{y - y_{1}}{b} = \\dfrac{z - z_{1}}{c}\\).\n\nLine 1 passes through \\(A(1,\\ 2,\\ 3)\\) with direction vector \\(\\bar{b_{1}} = 2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\).\n\nLine 2 passes through \\(B(2,\\ 4,\\ 5)\\) with direction vector \\(\\bar{b_{2}} = 3\\hat{i} + 4\\hat{j} + 5\\hat{k}\\).\n\nThe shortest distance between two skew lines is\n\n\\(d = \\left|\\dfrac{\\left(\\bar{b_{1}} \\times \\bar{b_{2}}\\right) \\cdot \\overline{AB}}{\\left|\\bar{b_{1}} \\times \\bar{b_{2}}\\right|}\\right|\\)\n\n**Step 1 — the vector joining the two points.**\n\n\\(\\overline{AB} = (2 - 1)\\hat{i} + (4 - 2)\\hat{j} + (5 - 3)\\hat{k} = \\hat{i} + 2\\hat{j} + 2\\hat{k}\\)\n\n**Step 2 — the common perpendicular.**\n\n\\(\\bar{b_{1}} \\times \\bar{b_{2}} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & 3 & 4 \\\\ 3 & 4 & 5 \\end{vmatrix}\\)\n\n\\(= \\hat{i}(3 \\times 5 - 4 \\times 4) - \\hat{j}(2 \\times 5 - 4 \\times 3) + \\hat{k}(2 \\times 4 - 3 \\times 3)\\)\n\n\\(= \\hat{i}(15 - 16) - \\hat{j}(10 - 12) + \\hat{k}(8 - 9)\\)\n\n\\(= -\\hat{i} + 2\\hat{j} - \\hat{k}\\)\n\n\\(\\left|\\bar{b_{1}} \\times \\bar{b_{2}}\\right| = \\sqrt{(-1)^{2} + 2^{2} + (-1)^{2}} = \\sqrt{1 + 4 + 1} = \\sqrt{6}\\)\n\n**Step 3 — the scalar triple product.**\n\n\\(\\left(\\bar{b_{1}} \\times \\bar{b_{2}}\\right) \\cdot \\overline{AB} = (-1)(1) + (2)(2) + (-1)(2) = -1 + 4 - 2 = 1\\)\n\n**Step 4 — the distance.**\n\n\\(d = \\dfrac{|1|}{\\sqrt{6}} = \\dfrac{1}{\\sqrt{6}} = \\dfrac{\\sqrt{6}}{6} \\approx 0.408\\) units\n\nBecause the scalar triple product is non-zero the two lines do not lie in one plane, so they are genuinely skew and the shortest distance is strictly positive, as found.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "line-planes-12-pyq#29",
+    "questionNumber": "Q. 30",
+    "pyqYear": 2023,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Distance of a Point from a Line",
+    "stem": "Find the length of the perpendicular drawn from the point \\(P(3,2,1)\\) to the line \\(\\overrightarrow{r} = \\left( 7\\widehat{i} + 7\\widehat{j} + 6\\widehat{k} \\right) + \\lambda\\left( - 2\\widehat{i} + 2\\widehat{j} + 3\\widehat{k} \\right)\\).",
+    "solution": "The line is \\(\\bar{r} = \\left(7\\hat{i} + 7\\hat{j} + 6\\hat{k}\\right) + \\lambda\\left(-2\\hat{i} + 2\\hat{j} + 3\\hat{k}\\right)\\), with direction vector \\(\\bar{b} = -2\\hat{i} + 2\\hat{j} + 3\\hat{k}\\).\n\nLet \\(M\\) be the foot of the perpendicular from \\(P(3,\\ 2,\\ 1)\\). Since \\(M\\) lies on the line, for some \\(\\lambda\\)\n\n\\(\\bar{m} = (7 - 2\\lambda)\\hat{i} + (7 + 2\\lambda)\\hat{j} + (6 + 3\\lambda)\\hat{k}\\)\n\n\\(\\overline{PM} = \\bar{m} - \\bar{p} = (7 - 2\\lambda - 3)\\hat{i} + (7 + 2\\lambda - 2)\\hat{j} + (6 + 3\\lambda - 1)\\hat{k}\\)\n\n\\(\\overline{PM} = (4 - 2\\lambda)\\hat{i} + (5 + 2\\lambda)\\hat{j} + (5 + 3\\lambda)\\hat{k}\\)\n\n\\(PM\\) is perpendicular to the line, so \\(\\overline{PM} \\cdot \\bar{b} = 0\\):\n\n\\(-2(4 - 2\\lambda) + 2(5 + 2\\lambda) + 3(5 + 3\\lambda) = 0\\)\n\n\\(-8 + 4\\lambda + 10 + 4\\lambda + 15 + 9\\lambda = 0\\)\n\n\\(17 + 17\\lambda = 0\\)\n\n\\(\\lambda = -1\\)\n\nSubstituting \\(\\lambda = -1\\):\n\n\\(\\overline{PM} = (4 + 2)\\hat{i} + (5 - 2)\\hat{j} + (5 - 3)\\hat{k} = 6\\hat{i} + 3\\hat{j} + 2\\hat{k}\\)\n\n\\(\\left|\\overline{PM}\\right| = \\sqrt{6^{2} + 3^{2} + 2^{2}} = \\sqrt{36 + 9 + 4} = \\sqrt{49} = 7\\)\n\nThe length of the perpendicular is **7 units**.\n\nCheck: with \\(\\lambda = -1\\) the foot is \\(M(9,\\ 5,\\ 3)\\), which does lie on the line, and \\(\\overline{PM} \\cdot \\bar{b} = 6(-2) + 3(2) + 2(3) = -12 + 6 + 6 = 0\\), confirming that \\(PM\\) really is perpendicular to it.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "line-planes-12-pyq#30",
+    "questionNumber": "Q. 1. (iv)",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "mcq",
+    "subtopic": "Distance of a Point from a Plane",
+    "stem": "The perpendicular distance of the plane \\(\\overrightarrow{r} \\cdot \\left( 3\\widehat{i} + 4\\widehat{j} + 12\\widehat{k} \\right) = 78\\) from the origin is __________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "4"
+      },
+      {
+        "label": "B",
+        "text": "5"
+      },
+      {
+        "label": "C",
+        "text": "6"
+      },
+      {
+        "label": "D",
+        "text": "8"
+      }
+    ],
+    "answer": "C",
+    "solution": "**(C)** For the plane \\(\\bar{r} \\cdot \\bar{n} = p\\), the perpendicular distance from the origin is \\(\\dfrac{|p|}{|\\bar{n}|}\\) (the normal form is obtained by dividing throughout by \\(|\\bar{n}|\\)).\n\nHere \\(\\bar{n} = 3\\hat{i} + 4\\hat{j} + 12\\hat{k}\\) and \\(p = 78\\).\n\n\\(|\\bar{n}| = \\sqrt{3^2 + 4^2 + 12^2} = \\sqrt{9 + 16 + 144} = \\sqrt{169} = 13\\)\n\nDividing the equation by \\(13\\) gives the normal form \\(\\bar{r} \\cdot \\dfrac{1}{13}\\left(3\\hat{i} + 4\\hat{j} + 12\\hat{k}\\right) = \\dfrac{78}{13} = 6\\).\n\n\\(\\therefore\\) the perpendicular distance from the origin is \\(6\\) units, which is option (C).",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "line-planes-12-pyq#31",
+    "questionNumber": "Q. 19",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Skew Lines and Shortest Distance",
+    "stem": "Find the shortest distance between the lines \\(\\overrightarrow{r} = \\left( 4\\widehat{i} - \\widehat{j} \\right) + \\lambda\\left( \\widehat{i} + 2\\widehat{j} - 3\\widehat{k} \\right)\\) and \\(\\overrightarrow{r} = \\left( \\widehat{i} - \\widehat{j} + 2\\widehat{k} \\right) + \\mu\\left( \\widehat{i} + 4\\widehat{j} - 5\\widehat{k} \\right)\\).",
+    "solution": "The shortest distance between the skew lines \\(\\bar{r} = \\bar{a_1} + \\lambda\\bar{b_1}\\) and \\(\\bar{r} = \\bar{a_2} + \\mu\\bar{b_2}\\) is\n\n\\(d = \\left|\\dfrac{(\\bar{a_2} - \\bar{a_1}) \\cdot (\\bar{b_1} \\times \\bar{b_2})}{|\\bar{b_1} \\times \\bar{b_2}|}\\right|\\).\n\nHere \\(\\bar{a_1} = 4\\hat{i} - \\hat{j}\\), \\(\\bar{b_1} = \\hat{i} + 2\\hat{j} - 3\\hat{k}\\), \\(\\bar{a_2} = \\hat{i} - \\hat{j} + 2\\hat{k}\\), \\(\\bar{b_2} = \\hat{i} + 4\\hat{j} - 5\\hat{k}\\).\n\n\\(\\bar{b_1} \\times \\bar{b_2} = \\begin{vmatrix}\\hat{i}&\\hat{j}&\\hat{k}\\\\1&2&-3\\\\1&4&-5\\end{vmatrix} = \\hat{i}(-10 + 12) - \\hat{j}(-5 + 3) + \\hat{k}(4 - 2) = 2\\hat{i} + 2\\hat{j} + 2\\hat{k}\\)\n\n\\(|\\bar{b_1} \\times \\bar{b_2}| = \\sqrt{4 + 4 + 4} = 2\\sqrt{3}\\)\n\n\\(\\bar{a_2} - \\bar{a_1} = -3\\hat{i} + 0\\hat{j} + 2\\hat{k}\\)\n\n\\((\\bar{a_2} - \\bar{a_1}) \\cdot (\\bar{b_1} \\times \\bar{b_2}) = (-3)(2) + (0)(2) + (2)(2) = -6 + 4 = -2\\)\n\n\\(\\therefore d = \\dfrac{|-2|}{2\\sqrt{3}} = \\dfrac{1}{\\sqrt{3}} = \\dfrac{\\sqrt{3}}{3}\\) units.",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "line-planes-12-pyq#32",
+    "questionNumber": "Q. 2",
+    "pyqYear": 2019,
+    "pyqMonth": "March",
+    "format": "mcq",
+    "subtopic": "Angle Between Planes and Line-Plane Angle",
+    "stem": "The acute angle between the two planes \\(x + y + 2z = 3\\) and \\(3x - 2y + 2z = 7\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\sin^{- 1}\\left( \\frac{5}{\\sqrt{102}} \\right)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\cos^{- 1}\\left( \\frac{5}{\\sqrt{102}} \\right)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\sin^{- 1}\\left( \\frac{15}{\\sqrt{102}} \\right)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\cos^{- 1}\\left( \\frac{15}{\\sqrt{102}} \\right)\\)"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)**\n\nThe angle between two planes is the angle between their normal vectors.\n\nFor \\(x + y + 2z = 3\\): \\(\\bar{n_{1}} = \\hat{i} + \\hat{j} + 2\\hat{k}\\)\n\nFor \\(3x - 2y + 2z = 7\\): \\(\\bar{n_{2}} = 3\\hat{i} - 2\\hat{j} + 2\\hat{k}\\)\n\n\\(\\bar{n_{1}} \\cdot \\bar{n_{2}} = (1)(3) + (1)(-2) + (2)(2) = 3 - 2 + 4 = 5\\)\n\n\\(\\left|\\bar{n_{1}}\\right| = \\sqrt{1^{2} + 1^{2} + 2^{2}} = \\sqrt{6}\\)\n\n\\(\\left|\\bar{n_{2}}\\right| = \\sqrt{3^{2} + (-2)^{2} + 2^{2}} = \\sqrt{9 + 4 + 4} = \\sqrt{17}\\)\n\nFor the ACUTE angle take the modulus of the dot product:\n\n\\(\\cos\\theta = \\dfrac{\\left|\\bar{n_{1}} \\cdot \\bar{n_{2}}\\right|}{\\left|\\bar{n_{1}}\\right|\\left|\\bar{n_{2}}\\right|} = \\dfrac{5}{\\sqrt{6} \\times \\sqrt{17}} = \\dfrac{5}{\\sqrt{102}}\\)\n\n\\(\\theta = \\cos^{-1}\\left(\\dfrac{5}{\\sqrt{102}}\\right)\\)\n\nwhich is option (B).\n\nSanity check: \\(\\dfrac{5}{\\sqrt{102}} = \\dfrac{5}{10.0995} = 0.4951\\), which lies in \\([0,\\ 1]\\) and gives \\(\\theta \\approx 60.3^{\\circ}\\) — acute, as required. Options (C) and (D) carry \\(\\dfrac{15}{\\sqrt{102}} = 1.485\\), a value greater than 1 that no sine or cosine can take, so they are impossible on inspection. Option (A) has the right number but wraps it in \\(\\sin^{-1}\\), whereas the dot-product formula returns the COSINE of the angle.",
+    "difficulty": "EASY"
+  },
+  {
+    "ref": "line-planes-12-pyq#33",
+    "questionNumber": "Q. 3. (A) ii.",
+    "pyqYear": 2018,
+    "pyqMonth": "March",
+    "format": "subjective",
+    "subtopic": "Vector and Cartesian Equations of a Line",
+    "stem": "Find the angle between the lines \\(\\frac{x - 1}{4} = \\frac{y - 3}{1} = \\frac{z}{8}\\) and \\(\\frac{x - 2}{2} = \\frac{y + 1}{1} = \\frac{z - 4}{4}\\).",
+    "solution": "The acute angle \\(\\theta\\) between two lines with direction vectors \\(\\bar{b_1}\\) and \\(\\bar{b_2}\\) satisfies\n\n\\(\\cos\\theta = \\dfrac{|\\bar{b_1} \\cdot \\bar{b_2}|}{|\\bar{b_1}||\\bar{b_2}|}\\).\n\nFor \\(\\dfrac{x - 1}{4} = \\dfrac{y - 3}{1} = \\dfrac{z}{8}\\), \\(\\bar{b_1} = 4\\hat{i} + \\hat{j} + 8\\hat{k}\\); for \\(\\dfrac{x - 2}{2} = \\dfrac{y + 1}{1} = \\dfrac{z - 4}{4}\\), \\(\\bar{b_2} = 2\\hat{i} + \\hat{j} + 4\\hat{k}\\).\n\n\\(\\bar{b_1} \\cdot \\bar{b_2} = (4)(2) + (1)(1) + (8)(4) = 8 + 1 + 32 = 41\\)\n\n\\(|\\bar{b_1}| = \\sqrt{16 + 1 + 64} = \\sqrt{81} = 9\\), \\(|\\bar{b_2}| = \\sqrt{4 + 1 + 16} = \\sqrt{21}\\)\n\n\\(\\therefore \\cos\\theta = \\dfrac{41}{9\\sqrt{21}} = \\dfrac{41\\sqrt{21}}{189}\\)\n\n\\(\\therefore \\theta = \\cos^{-1}\\left(\\dfrac{41}{9\\sqrt{21}}\\right) = \\cos^{-1}\\left(\\dfrac{41\\sqrt{21}}{189}\\right)\\).\n\nSince \\(\\dfrac{41}{9\\sqrt{21}} \\approx 0.994\\), the angle is small, about \\(6^{\\circ}14'\\) — the two lines are nearly parallel (their direction ratios \\(4, 1, 8\\) and \\(2, 1, 4\\) are close to proportional, but not proportional, so they are not parallel).",
+    "difficulty": "MODERATE"
+  },
+  {
+    "ref": "line-planes-12-pyq#34",
+    "questionNumber": "Q. 20",
+    "pyqYear": 2024,
+    "pyqMonth": null,
+    "format": "subjective",
+    "subtopic": "Angle Between Planes and Line-Plane Angle",
+    "stem": "Find the angle between the line \\(\\overrightarrow{r} = \\left( \\widehat{i} + 2\\widehat{j} + \\widehat{k} \\right) + \\lambda\\left( \\widehat{i} + \\widehat{j} + \\widehat{k} \\right)\\) and the plane \\(\\overrightarrow{r} \\cdot \\left( 2\\widehat{i} + \\widehat{j} + \\widehat{k} \\right) = 8\\).",
+    "solution": "The angle \\(\\theta\\) between the line \\(\\bar{r} = \\bar{a} + \\lambda\\bar{b}\\) and the plane \\(\\bar{r} \\cdot \\bar{n} = d\\) is given by\n\n\\(\\sin\\theta = \\left|\\dfrac{\\bar{b} \\cdot \\bar{n}}{|\\bar{b}||\\bar{n}|}\\right|\\)\n\n(the sine appears because \\(\\theta\\) is the complement of the angle between the line and the normal).\n\nHere \\(\\bar{b} = \\hat{i} + \\hat{j} + \\hat{k}\\) and \\(\\bar{n} = 2\\hat{i} + \\hat{j} + \\hat{k}\\).\n\n\\(\\bar{b} \\cdot \\bar{n} = (1)(2) + (1)(1) + (1)(1) = 2 + 1 + 1 = 4\\)\n\n\\(|\\bar{b}| = \\sqrt{1 + 1 + 1} = \\sqrt{3}\\), \\(|\\bar{n}| = \\sqrt{4 + 1 + 1} = \\sqrt{6}\\)\n\n\\(\\therefore \\sin\\theta = \\dfrac{4}{\\sqrt{3}\\sqrt{6}} = \\dfrac{4}{\\sqrt{18}} = \\dfrac{4}{3\\sqrt{2}} = \\dfrac{2\\sqrt{2}}{3}\\)\n\n\\(\\therefore \\theta = \\sin^{-1}\\left(\\dfrac{2\\sqrt{2}}{3}\\right) \\approx 70^{\\circ}32'\\).",
+    "difficulty": "MODERATE"
+  }
+]

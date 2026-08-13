@@ -1,0 +1,50 @@
+[
+  {
+    "ref": "app-def-integration-12-pyq#1",
+    "answer": "**Convention used.** The X-axis is named as one of the boundaries of the region, so the region is the part of the parabola's interior lying ABOVE the X-axis (the upper branch \\(y=+2\\sqrt{ax}\\)), between \\(x=0\\) and \\(x=a\\). This is the bank's treatment of \\(y^{2}=4x\\), \\(x=1\\), \\(x=4\\), \\(y\\geq 0\\). (If instead both branches were intended, the region is symmetric about the X-axis and the area is twice the value below.)\n\nFor \\(y^{2}=4ax\\) with \\(a>0\\), the upper branch is \\(y=2\\sqrt{a}\\,\\sqrt{x}\\).\n\n\\(A=\\displaystyle\\int_{0}^{a}y\\,dx=\\displaystyle\\int_{0}^{a}2\\sqrt{a}\\,\\sqrt{x}\\,dx=2\\sqrt{a}\\displaystyle\\int_{0}^{a}x^{1/2}\\,dx\\)\n\n\\(=2\\sqrt{a}\\left[\\dfrac{2}{3}x^{3/2}\\right]_{0}^{a}=\\dfrac{4\\sqrt{a}}{3}\\left(a^{3/2}-0\\right)=\\dfrac{4}{3}\\sqrt{a}\\cdot a\\sqrt{a}\\)\n\n\\(\\therefore\\ A=\\dfrac{4a^{2}}{3}\\) sq. units.\n\nCheck by dimensions and by a special case: taking \\(a=4\\) gives the parabola \\(y^{2}=16x\\) between \\(x=0\\) and \\(x=4\\), whose upper half has area \\(\\int_{0}^{4}4\\sqrt{x}\\,dx=\\dfrac{64}{3}\\); the formula gives \\(\\dfrac{4(16)}{3}=\\dfrac{64}{3}\\) - the same value.",
+    "difficulty": "MODERATE",
+    "twin": "Find the area of the regions bounded by the following curve, the X-axis and the given lines: (ii) \\(y^2 = 4x\\), \\(x = 1\\), \\(x = 4\\), \\(y \\ge 0\\)"
+  },
+  {
+    "ref": "app-def-integration-12-pyq#2",
+    "answer": "For \\(\\dfrac{x^{2}}{1}+\\dfrac{y^{2}}{4}=1\\), comparing with \\(\\dfrac{x^{2}}{a^{2}}+\\dfrac{y^{2}}{b^{2}}=1\\) gives \\(a^{2}=1\\), \\(b^{2}=4\\), i.e. \\(a=1\\), \\(b=2\\).\n\nIn the first quadrant, \\(\\dfrac{y^{2}}{4}=1-x^{2}\\), so \\(y=2\\sqrt{1-x^{2}}\\).\n\nThe ellipse is symmetric about both axes, so the required area is \\(4\\) times the first-quadrant area:\n\n\\(A=4\\displaystyle\\int_{0}^{1}y\\,dx=4\\displaystyle\\int_{0}^{1}2\\sqrt{1-x^{2}}\\,dx=8\\displaystyle\\int_{0}^{1}\\sqrt{1-x^{2}}\\,dx\\)\n\nUsing \\(\\displaystyle\\int\\sqrt{a^{2}-x^{2}}\\,dx=\\dfrac{x}{2}\\sqrt{a^{2}-x^{2}}+\\dfrac{a^{2}}{2}\\sin^{-1}\\dfrac{x}{a}\\) with \\(a=1\\):\n\n\\(A=8\\left[\\dfrac{x}{2}\\sqrt{1-x^{2}}+\\dfrac{1}{2}\\sin^{-1}x\\right]_{0}^{1}=8\\left[\\left(0+\\dfrac{1}{2}\\cdot\\dfrac{\\pi}{2}\\right)-\\left(0+0\\right)\\right]=8\\cdot\\dfrac{\\pi}{4}\\)\n\n\\(\\therefore\\ A=2\\pi\\) sq. units.\n\nCheck against the general formula: the area of \\(\\dfrac{x^{2}}{a^{2}}+\\dfrac{y^{2}}{b^{2}}=1\\) is \\(\\pi ab\\), which here gives \\(\\pi(1)(2)=2\\pi\\) - the same value.",
+    "difficulty": "MODERATE",
+    "twin": "Find the area of the ellipse \\(\\dfrac{x^2}{25} + \\dfrac{y^2}{16} = 1\\) using integration."
+  },
+  {
+    "ref": "app-def-integration-12-pyq#3",
+    "answer": "The line \\(y=0\\) is the X-axis, and \\(y=x^{2}\\geq 0\\) throughout \\([1,2]\\), so the region lies wholly above the X-axis and\n\n\\(A=\\displaystyle\\int_{1}^{2}y\\,dx=\\displaystyle\\int_{1}^{2}x^{2}\\,dx\\)\n\n\\(=\\left[\\dfrac{x^{3}}{3}\\right]_{1}^{2}=\\dfrac{8}{3}-\\dfrac{1}{3}=\\dfrac{7}{3}\\)\n\n\\(\\therefore\\ A=\\dfrac{7}{3}\\) sq. units.\n\nCheck: the region lies between the horizontal lines \\(y=1\\) and \\(y=4\\) over an interval of width \\(1\\), so its area must lie between \\(1\\) and \\(4\\); \\(\\dfrac{7}{3}\\approx 2.33\\) is consistent.",
+    "difficulty": "EASY",
+    "twin": "Find the area of the regions bounded by the following curve, the X-axis and the given lines: (i) \\(y = x^2\\), \\(x = 1\\), \\(x = 2\\)"
+  },
+  {
+    "ref": "app-def-integration-12-pyq#4",
+    "answer": "The equations of the parabolas are\n\n\\(y^{2}=4ax\\)   ... (I)   and   \\(x^{2}=4ay\\)   ... (II)\n\n**Points of intersection.** From (II), \\(y=\\dfrac{x^{2}}{4a}\\). Substituting in (I):\n\n\\(\\left(\\dfrac{x^{2}}{4a}\\right)^{2}=4ax\\), i.e. \\(\\dfrac{x^{4}}{16a^{2}}=4ax\\), so \\(x^{4}=64a^{3}x\\)\n\n\\(x\\left(x^{3}-64a^{3}\\right)=0\\), i.e. \\(x\\left[x^{3}-(4a)^{3}\\right]=0\\)\n\n\\(\\therefore\\ x=0\\) or \\(x=4a\\), giving the points \\(O(0,0)\\) and \\(P(4a,4a)\\).\n\n**The area.** On \\([0,4a]\\) the parabola \\(y^{2}=4ax\\) (i.e. \\(y=\\sqrt{4ax}\\)) lies above \\(x^{2}=4ay\\) (i.e. \\(y=\\dfrac{x^{2}}{4a}\\)), so\n\n\\(A=\\displaystyle\\int_{0}^{4a}\\sqrt{4ax}\\,dx-\\displaystyle\\int_{0}^{4a}\\dfrac{x^{2}}{4a}\\,dx\\)\n\n\\(=2\\sqrt{a}\\left[\\dfrac{2}{3}x^{3/2}\\right]_{0}^{4a}-\\dfrac{1}{4a}\\left[\\dfrac{x^{3}}{3}\\right]_{0}^{4a}\\)\n\n\\(=\\dfrac{4\\sqrt{a}}{3}\\left(4a\\right)^{3/2}-\\dfrac{1}{12a}\\left(64a^{3}\\right)=\\dfrac{4\\sqrt{a}}{3}\\cdot 8a\\sqrt{a}-\\dfrac{16a^{2}}{3}\\)\n\n\\(=\\dfrac{32a^{2}}{3}-\\dfrac{16a^{2}}{3}\\)\n\n\\(\\therefore\\ A=\\dfrac{16a^{2}}{3}\\) sq. units.\n\nCheck: the two parabolas are reflections of each other in the line \\(y=x\\), so the region is symmetric about that line, and the area under \\(y=\\sqrt{4ax}\\) must be exactly twice the area under \\(y=\\dfrac{x^{2}}{4a}\\) over \\([0,4a]\\). It is: \\(\\dfrac{32a^{2}}{3}=2\\times\\dfrac{16a^{2}}{3}\\).",
+    "difficulty": "HARD",
+    "twin": "Find the area of the region lying between the parabolas \\(y^2 = 4ax\\) and \\(x^2 = 4ay\\) where \\(a > 0\\)."
+  },
+  {
+    "ref": "app-def-integration-12-pyq#5",
+    "answer": "Since \\(y\\geq 0\\) is stated, only the upper branch of the parabola is taken: \\(y^{2}=4x\\) gives \\(y=2\\sqrt{x}\\).\n\n\\(A=\\displaystyle\\int_{1}^{4}y\\,dx=\\displaystyle\\int_{1}^{4}2\\sqrt{x}\\,dx=2\\displaystyle\\int_{1}^{4}x^{1/2}\\,dx\\)\n\n\\(=2\\left[\\dfrac{2}{3}x^{3/2}\\right]_{1}^{4}=\\dfrac{4}{3}\\left[4^{3/2}-1^{3/2}\\right]=\\dfrac{4}{3}\\left(8-1\\right)\\)\n\n\\(\\therefore\\ A=\\dfrac{28}{3}\\) sq. units.\n\nCheck: on \\([1,4]\\) the height \\(2\\sqrt{x}\\) runs from \\(2\\) to \\(4\\), so over a width of \\(3\\) the area must lie between \\(6\\) and \\(12\\); \\(\\dfrac{28}{3}\\approx 9.33\\) is consistent.",
+    "difficulty": "EASY",
+    "twin": "Find the area of the regions bounded by the following curve, the X-axis and the given lines: (ii) \\(y^2 = 4x\\), \\(x = 1\\), \\(x = 4\\), \\(y \\ge 0\\)"
+  },
+  {
+    "ref": "app-def-integration-12-pyq#6",
+    "answer": "The parabola \\(y=x^{2}\\) meets \\(y=4\\) where \\(x^{2}=4\\), i.e. at \\(x=\\pm 2\\); the points are \\((-2,4)\\) and \\((2,4)\\).\n\nThe region is symmetric about the Y-axis, so the required area is twice the part in the first quadrant. Integrating with respect to \\(y\\), with \\(x=\\sqrt{y}\\) and \\(y\\) running from \\(0\\) to \\(4\\):\n\n\\(A=2\\displaystyle\\int_{0}^{4}x\\,dy=2\\displaystyle\\int_{0}^{4}\\sqrt{y}\\,dy=2\\left[\\dfrac{2}{3}y^{3/2}\\right]_{0}^{4}=\\dfrac{4}{3}\\left(4^{3/2}\\right)=\\dfrac{4}{3}\\left(8\\right)\\)\n\n\\(\\therefore\\ A=\\dfrac{32}{3}\\) sq. units.\n\nCheck by integrating with respect to \\(x\\) instead: \\(A=\\displaystyle\\int_{-2}^{2}\\left(4-x^{2}\\right)dx=\\left[4x-\\dfrac{x^{3}}{3}\\right]_{-2}^{2}=\\left(8-\\dfrac{8}{3}\\right)-\\left(-8+\\dfrac{8}{3}\\right)=16-\\dfrac{16}{3}=\\dfrac{32}{3}\\) - the same value.",
+    "difficulty": "MODERATE",
+    "twin": "Find the area of the region bounded by the curve \\(y = x^2\\) and the line \\(y = 4\\)."
+  },
+  {
+    "ref": "app-def-integration-12-pyq#7",
+    "answer": "**(C)** \\(\\dfrac{17}{2}\\)\n\nThe line \\(y=x\\) crosses the X-axis at \\(x=0\\), which lies inside \\([-1,4]\\), so the region falls into two parts and each must be taken positively.\n\nBelow the X-axis, for \\(-1\\leq x\\leq 0\\):\n\n\\(A_{1}=\\displaystyle\\int_{-1}^{0}y\\,dx=\\displaystyle\\int_{-1}^{0}x\\,dx=\\left[\\dfrac{x^{2}}{2}\\right]_{-1}^{0}=0-\\dfrac{1}{2}=-\\dfrac{1}{2}\\)\n\nArea is always positive, so \\(A_{1}=\\left|-\\dfrac{1}{2}\\right|=\\dfrac{1}{2}\\) sq. units.\n\nAbove the X-axis, for \\(0\\leq x\\leq 4\\):\n\n\\(A_{2}=\\displaystyle\\int_{0}^{4}x\\,dx=\\left[\\dfrac{x^{2}}{2}\\right]_{0}^{4}=\\dfrac{16}{2}=8\\) sq. units.\n\n\\(\\therefore\\ A=A_{1}+A_{2}=\\dfrac{1}{2}+8=\\dfrac{17}{2}\\) sq. units, which is option (C).\n\nCheck geometrically: the two parts are right-angled triangles with legs \\(1,1\\) and \\(4,4\\), of areas \\(\\dfrac{1}{2}\\) and \\(8\\) - total \\(\\dfrac{17}{2}\\). (Note that \\(\\displaystyle\\int_{-1}^{4}x\\,dx=\\dfrac{15}{2}\\) is NOT the area, because that treats the part below the axis as negative; \\(\\dfrac{15}{2}\\) is not offered as an option.)",
+    "difficulty": "MODERATE",
+    "twin": "Find the area bounded by the line \\(y = x\\), X axis and the lines \\(x = -1\\) and \\(x = 4\\)."
+  },
+  {
+    "ref": "app-def-integration-12-pyq#8",
+    "answer": "For the parabola \\(y^{2}=16x\\), comparing with \\(y^{2}=4ax\\) gives \\(4a=16\\), so \\(a=4\\).\n\nThe latus rectum is the line \\(x=a\\), i.e. \\(x=4\\).\n\nIn the first quadrant \\(y=4\\sqrt{x}\\). The region enclosed by the parabola and its latus rectum is symmetric about the X-axis (the parabola's axis), so the required area is twice the part above the X-axis:\n\n\\(A=2\\displaystyle\\int_{0}^{4}y\\,dx=2\\displaystyle\\int_{0}^{4}4\\sqrt{x}\\,dx=8\\displaystyle\\int_{0}^{4}x^{1/2}\\,dx\\)\n\n\\(=8\\left[\\dfrac{2}{3}x^{3/2}\\right]_{0}^{4}=\\dfrac{16}{3}\\left(4^{3/2}\\right)=\\dfrac{16}{3}\\left(8\\right)\\)\n\n\\(\\therefore\\ A=\\dfrac{128}{3}\\) sq. units.\n\nCheck: the region is inscribed in the rectangle \\(0\\leq x\\leq 4\\), \\(-8\\leq y\\leq 8\\) of area \\(64\\), and a parabolic segment fills two-thirds of its circumscribing rectangle: \\(\\dfrac{2}{3}\\times 64=\\dfrac{128}{3}\\) - the same value.",
+    "difficulty": "MODERATE",
+    "twin": "\\(y^2 = 16x\\) and its latus rectum."
+  }
+]

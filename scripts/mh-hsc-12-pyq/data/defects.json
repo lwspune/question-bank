@@ -620,11 +620,12 @@
         "ref": "prob-distributions-12-pyq#16",
         "tag": "[Q. 25, March 2023]",
         "from": "For the following probability density function of a random variable \\(X\\), find (a) \\(P(X < 1)\\) and \\(b\\) \\(P\\left( |X| < 1 \\right)\\). \\(f(x) = \\frac{2x + 1}{18}\\), for \\(- 2 < x < 4\\) \\(\\ \\ \\ \\ \\ \\ \\ \\ \\ = 0\\), otherwise",
-        "to": "For the following probability density function of a random variable \\(X\\), find (a) \\(P(X < 1)\\) and \\(b\\) \\(P\\left( |X| < 1 \\right)\\). \\(f(x) = \\frac{2x + 1}{18}\\), for \\(- 2 < x < 4\\) \\(\\ \\ \\ \\ \\ \\ \\ \\ \\ = 0\\), otherwise",
+        "to": "For the following probability density function of a random variable \\(X\\), find (a) \\(P(X < 1)\\) and \\(b\\) \\(P\\left( |X| < 1 \\right)\\). \\(f(x) = \\frac{x + 2}{18}\\), for \\(- 2 < x < 4\\) \\(\\ \\ \\ \\ \\ \\ \\ \\ \\ = 0\\), otherwise",
         "source": "Maths 2023 paper.pdf page index 2, rendered at 200 dpi. Q.25 prints f(x) = (x+2)/18 for -2 < x < 4.",
         "why": "The compilation transposed (x+2) into (2x+1). This one is nastier than most: (2x+1)/18 integrates to EXACTLY 1 over (-2,4), so it passes the obvious p.d.f. check — but it is NEGATIVE on (-2,-1/2), min -1/6, so it is not a density. The second tell is that it forces P(X<1) = 0 for a variable supported from -2.",
         "hypothesisReversed": "The authoring pass believed this was the BOARD's, on the reasoning that '2x+1' and 'x+2' are not confusable shapes for an extractor. That is true of OCR and false here: the compilation is human-typed, where a transposition is ordinary. The page settled it the other way.",
-        "consequence": "f(x) = (x+2)/18 on (-2,4): integrates to 1 and is non-negative throughout. P(X<1) = 1/4, P(|X|<1) = 2/9."
+        "consequence": "f(x) = (x+2)/18 on (-2,4): integrates to 1 and is non-negative throughout. P(X<1) = 1/4, P(|X|<1) = 2/9.",
+        "noOpHistory": "This entry shipped once with `to` byte-identical to `from`, i.e. correcting nothing, because it was built with .replace() against a needle a shell layer had mangled: the replace matched nothing and returned its input unchanged. Every downstream check passed — the exact-match guard was satisfied, the log printed 'stem corrected' — and the row would have shipped the corrupted (2x+1)/18 with a clean audit trail. extract.ts now REFUSES a fix whose from equals its to."
       },
       {
         "ref": "trig-functions-12-pyq#20",
@@ -693,8 +694,8 @@
       },
       {
         "ref": "prob-distributions-12-pyq#5",
-        "from": "The following is the p.d.f. (Probability Density Function) of a continuous random variable \\(X\\): f(x)= \\(\\frac{x2}{32}\\) for 0\\<x\\<8 = 0 otherwise a. Find the expression for c.d.f. (Cumulative Distribution Function) of \\(X\\). b. Also find \\(P(x)\\) at \\(x = 0.5\\) and \\(9\\).",
-        "to": "The following is the p.d.f. (Probability Density Function) of a continuous random variable \\(X\\): f(x)= \\(\\frac{x}{32}\\) for 0\\<x\\<8 = 0 otherwise a. Find the expression for c.d.f. (Cumulative Distribution Function) of \\(X\\). b. Also find \\(P(x)\\) at \\(x = 0.5\\) and \\(9\\).",
+        "from": "The following is the p.d.f. (Probability Density Function) of a continuous random variable \\(X\\): f(x)= \\(\\frac{x2}{32}\\) for 0<x<8 = 0 otherwise a. Find the expression for c.d.f. (Cumulative Distribution Function) of \\(X\\). b. Also find \\(P(x)\\) at \\(x = 0.5\\) and \\(9\\).",
+        "to": "The following is the p.d.f. (Probability Density Function) of a continuous random variable \\(X\\): f(x)= \\(\\frac{x}{32}\\) for 0<x<8 = 0 otherwise a. Find the expression for c.d.f. (Cumulative Distribution Function) of \\(X\\). b. Also find \\(P(x)\\) at \\(x = 0.5\\) and \\(9\\).",
         "source": "Vision pass 2026-08-13; per-item page index, crop box and dpi recorded in data/verify2.json.",
         "why": "The numerator is a bare italic x with NO superscript — and this is not a flattening artifact: a superscript 2 renders clearly at this dpi elsewhere in the same corpus. The spurious square was ours, and it is what made the function fail to be a density (area 16/3).",
         "consequence": "f(x) = x/32 on (0,8) integrates to exactly 1; the question is well-posed."
@@ -706,6 +707,33 @@
         "source": "Vision pass 2026-08-13; per-item page index, crop box and dpi recorded in data/verify2.json.",
         "why": "The page prints dx/dy — dx above the bar, dy below, the y carrying a clear descender. We hold dy/dx transposed, which is what made the equation non-elementary.",
         "consequence": "As printed the equation separates cleanly and satisfies the initial condition."
+      },
+      {
+        "ref": "prob-distributions-12-pyq#3",
+        "tag": "[Q. 6. (B) iii., March 2015]",
+        "from": "Given the p.d.f. (probability density function) of a continuous random variable \\(X\\) as: f(x)=\\(\\ \\frac{x2}{3}\\) for -1<x<2 = 0 otherwise Determine the c.d.f. (cumulative distribution function) of \\(x\\) and hence find \\(P(x < 1)\\), \\(P(x \\leq - 2),\\ P(x > 0)\\), \\(P(1 < X < 2)\\).",
+        "to": "Given the p.d.f. (probability density function) of a continuous random variable \\(X\\) as: f(x)=\\(\\ \\frac{x^{2}}{3}\\) for -1<x<2 = 0 otherwise Determine the c.d.f. (cumulative distribution function) of \\(x\\) and hence find \\(P(x < 1)\\), \\(P(x \\leq - 2),\\ P(x > 0)\\), \\(P(1 < X < 2)\\).",
+        "source": "audit:text PANDOC_ARTIFACT; value verified in defects.json -> lostSuperscripts before the fix was written.",
+        "why": "The compilation flattened the superscript, so the stem shipped as literal \"x2\" — which renders as x-two, not x-squared. x^{2}/3 on (-1,2) integrates to 1 and is non-negative; 2x/3 also integrates to 1 but goes negative on (-1,0), so it is excluded.",
+        "consequence": "A valid p.d.f.; the question is answerable as printed once the exponent is restored."
+      },
+      {
+        "ref": "prob-distributions-12-pyq#6",
+        "tag": "[Q. 6. (B) iii., March 2017]",
+        "from": "Given the probability density function (p.d.f.) of a continuous random variable \\(X\\) as, f(x)= \\(\\frac{x2}{3}\\) for -1<x<2 = 0 otherwise Determine the cumulative distribution function (c.d.f.) of \\(X\\) and hence find \\(P(X < 1)\\), \\(P(X > 0)\\), \\(P(1 < X < 2)\\).",
+        "to": "Given the probability density function (p.d.f.) of a continuous random variable \\(X\\) as, f(x)= \\(\\frac{x^{2}}{3}\\) for -1<x<2 = 0 otherwise Determine the cumulative distribution function (c.d.f.) of \\(X\\) and hence find \\(P(X < 1)\\), \\(P(X > 0)\\), \\(P(1 < X < 2)\\).",
+        "source": "audit:text PANDOC_ARTIFACT; value verified in defects.json -> lostSuperscripts before the fix was written.",
+        "why": "The compilation flattened the superscript, so the stem shipped as literal \"x2\" — which renders as x-two, not x-squared. The same question as #3, set again two years later — a genuine cross-year repeat, not a duplicate record.",
+        "consequence": "A valid p.d.f.; the question is answerable as printed once the exponent is restored."
+      },
+      {
+        "ref": "prob-distributions-12-pyq#10",
+        "tag": "[Q. 19 (OR), March 2019]",
+        "from": "For the following probability density function (p.d.f.) of \\(X\\), find: (i) \\(P(X < 1)\\), (ii) \\(P\\left( |X| < 1 \\right)\\). f(x)= \\(\\frac{x2}{18}\\) -3<x<3 = 0, otherwise",
+        "to": "For the following probability density function (p.d.f.) of \\(X\\), find: (i) \\(P(X < 1)\\), (ii) \\(P\\left( |X| < 1 \\right)\\). f(x)= \\(\\frac{x^{2}}{18}\\) -3<x<3 = 0, otherwise",
+        "source": "audit:text PANDOC_ARTIFACT; value verified in defects.json -> lostSuperscripts before the fix was written.",
+        "why": "The compilation flattened the superscript, so the stem shipped as literal \"x2\" — which renders as x-two, not x-squared. x^{2}/18 on (-3,3) integrates to exactly 1 and is non-negative.",
+        "consequence": "A valid p.d.f.; the question is answerable as printed once the exponent is restored."
       }
     ]
   },
