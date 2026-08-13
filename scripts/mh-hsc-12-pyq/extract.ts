@@ -22,6 +22,8 @@ import {
   normaliseMath,
   stripArtifacts,
   splitImage,
+  stripBlockquote,
+  stripLeakedOptionRun,
   type Provenance,
 } from "./lib";
 
@@ -114,6 +116,15 @@ function applyRepairs(drafts: Draft[], chapterId: string): string[] {
         text: stripArtifacts(normaliseMath(text)),
       }));
       d.format = "mcq";
+      // Such a question is here BECAUSE its printed option block failed to parse
+      // — one carries the labels (a)(b)(b)(c), a duplicated "b" and no "d" — so
+      // the unparsed run is still glued to the stem and would render in full on
+      // the card next to the real options.
+      const cut = stripLeakedOptionRun(d.stem);
+      if (cut !== d.stem) {
+        d.stem = cut;
+        log.push(`${rec.ref}: leaked option run cut from the stem`);
+      }
       log.push(`${rec.ref}: ${d.options.length} options recovered from the printed paper`);
     }
   }
@@ -203,8 +214,11 @@ function main() {
       problems.push(`item ${num}: NO PROVENANCE TAG`);
       return;
     }
-    // Drop the tag itself, then lift the image, then normalise, then split.
-    const body = raw.replace(ITEM, "").replace(/\[\s*Q\.[^\]]*\\?\]/, "");
+    // Blockquote markers FIRST, while the block still has its line breaks — a
+    // "> " is only identifiable at a line start, and once normaliseMath joins
+    // the lines it is indistinguishable from a genuine `x > 3`.
+    // Then drop the tag, lift the image, normalise, and split.
+    const body = stripBlockquote(raw).replace(ITEM, "").replace(/\[\s*Q\.[^\]]*\\?\]/, "");
     const { text, image } = splitImage(body);
     const { stem, options } = splitOptions(normaliseMath(text));
 

@@ -140,10 +140,17 @@ export function stripArtifacts(text: string): string {
   out = out.replace(/<!--[-\s>]*/g, " ");
   out = out.replace(EDITORIAL, "");
   // The compilation's own "#### **A. Negation, Dual, ...**" section banners. A
-  // question block runs to the next NUMBERED item, so a banner between two
+  // question block runs to the next NUMBERED item, so any banner between two
   // questions is absorbed by the one BEFORE it — three stems shipped with one
   // glued on in the first extraction run.
-  out = out.replace(/#{1,6}\s*\*{0,2}[A-Z]\.[^\n]*/g, " ");
+  //
+  // ONE global rule, not a banner rule plus a trailing-marker rule. The two-rule
+  // version left a gap: the compilation emits a BARE "####" line immediately
+  // before a titled banner, so an end-anchored cleanup ran while the banner was
+  // still there, and the banner rule then removed the banner and left the bare
+  // marker stranded at the end. Nine stems shipped with a trailing "####".
+  // The heading text is optional here precisely so both forms are covered.
+  out = out.replace(/#{2,}[ \t]*(?:\*{0,2}[A-Z]\.[^\n]*)?/g, " ");
   out = out.replace(/\\_/g, "_");
   out = out.replace(/\\\^/g, "^");
   // pandoc sometimes closes a math zone one token early, stranding the closing
@@ -158,6 +165,44 @@ export function stripArtifacts(text: string): string {
   // backslash is often followed by " \n" rather than "\n" directly.
   out = out.replace(/\\(?=[ \t]*(?:\n|$))/g, "");
   return collapseSpaces(out);
+}
+
+/**
+ * Strip pandoc's blockquote markers.
+ *
+ * pandoc renders the compilation's indented option lists as BLOCKQUOTES, so
+ * every wrapped line inside one begins "> ". Left alone these leak into the
+ * content — and in a matrix they land INSIDE `\begin{bmatrix}`, where they
+ * break it outright (four options of one Matrices row carried them).
+ *
+ * ⚠ MUST run on the RAW multi-line block, before any newline collapsing. The
+ * marker is only identifiable by sitting at the START OF A LINE; once the lines
+ * are joined it is indistinguishable from a genuine `x > 3`, and a rule loose
+ * enough to catch it there eats real inequalities. That is not hypothetical —
+ * the first attempt at this did exactly that.
+ */
+export function stripBlockquote(text: string): string {
+  return text.replace(/^[ \t]*>[ \t]?/gm, "");
+}
+
+/**
+ * Cut a leaked option run off the end of a stem.
+ *
+ * Applied ONLY when a question's real options are supplied from the adjudicated
+ * defects ledger. Such a question is there precisely because its printed option
+ * block failed to parse — e.g. one carries the labels (a)(b)(b)(c), a duplicated
+ * "b" and no "d" — so the run stays glued to the stem and renders in full on the
+ * card. Restricted to that case rather than run everywhere: a lone "(a)" is
+ * ordinary prose, and a stem that DID parse has nothing left to strip.
+ */
+export function stripLeakedOptionRun(stem: string): string {
+  const labels = [...stem.matchAll(/\\?\(\s*([a-d])\s*\\?\)/g)];
+  if (labels.length < 3) return stem;
+  const start = labels.find((m) => m[1] === "a");
+  if (!start) return stem;
+  const after = labels.filter((m) => m.index! > start.index!).map((m) => m[1]);
+  if (new Set(after).size < 2) return stem;
+  return collapseSpaces(stem.slice(0, start.index!).replace(/[\s\\>]+$/, ""));
 }
 
 /** pandoc renders an embedded picture as `![](media/imageN.png){width=... }`. */

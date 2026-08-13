@@ -185,10 +185,25 @@ describe("blueprintsFor", () => {
     ).toEqual([]);
   });
 
-  it("returns [] for Std 11 — no Class 11 corpus, so no pattern is offered", () => {
+  // Std 11 WAS an honest gap ("no Class 11 corpus") until the mh-sb-11 Class-11
+  // Maths corpus landed. What remains true is narrower and is what we pin now:
+  // Class 11 has no Algebra/Geometry split — that is an SSC-only division — so
+  // asking for "Algebra" at Std 11 must still return nothing.
+  it("returns [] for Std 11 Algebra — Class 11 Maths is a single subject", () => {
     expect(
       blueprintsFor({ board: "Maharashtra State Board", std: 11, subject: "Algebra" })
     ).toEqual([]);
+  });
+
+  it("offers the Class-11 unit-test pattern for Std 11 Mathematics", () => {
+    const found = blueprintsFor({
+      board: "Maharashtra State Board",
+      std: 11,
+      subject: "Mathematics",
+    });
+    expect(found.map((b) => b.id)).toEqual(["mh-sb-11-maths-unit-25"]);
+    expect(found[0].maxMarks).toBe(25);
+    expect(found[0].variant).toBe("unit");
   });
 
   it("narrows by maxMarks — the marks picker is a filter over templates", () => {

@@ -4,6 +4,8 @@ import {
   normaliseMath,
   stripArtifacts,
   splitImage,
+  stripBlockquote,
+  stripLeakedOptionRun,
 } from "../scripts/mh-hsc-12-pyq/lib";
 
 // Every case below is a REAL string observed in the compilation during the
@@ -192,6 +194,20 @@ describe("stripArtifacts", () => {
     ).toBe("Write inverse and contrapositive.");
   });
 
+  // THE GAP THE TWO-RULE VERSION LEFT. The compilation emits a BARE "####" line
+  // just before a titled banner, so an end-anchored cleanup ran while the banner
+  // was still present and the banner rule then stranded the bare marker at the
+  // end. Nine stems shipped with a trailing "####" before this became one rule.
+  it("removes a bare heading marker AND the titled banner after it", () => {
+    expect(
+      stripArtifacts("then \\(n\\) is equal to _______. \\\n\n#### \n\n#### **C. Expectation and Variance**"),
+    ).toBe("then \\(n\\) is equal to _______.");
+  });
+
+  it("removes a bare trailing heading marker on its own", () => {
+    expect(stripArtifacts("none is spade. \\ ####")).toBe("none is spade.");
+  });
+
   it("removes an absorbed banner that follows a continuation backslash", () => {
     expect(stripArtifacts("If \\(x<y\\). \\ #### **D. Symbolic Logic**")).toBe("If \\(x<y\\).");
   });
@@ -202,6 +218,57 @@ describe("stripArtifacts", () => {
     expect(stripArtifacts("\\(\\lbrack( \\sim q) \\vee \\sim p\\)\\].")).toBe(
       "\\(\\lbrack( \\sim q) \\vee \\sim p \\rbrack\\).",
     );
+  });
+});
+
+describe("stripBlockquote", () => {
+  // pandoc renders the compilation's indented option lists as BLOCKQUOTES. Left
+  // alone the "> " markers land INSIDE \begin{bmatrix} and break the matrix —
+  // four options of one Matrices row carried them.
+  it("removes the marker from every line of a blockquote", () => {
+    expect(stripBlockquote("> \\(a\\) $\\begin{vmatrix}\n> 1 & 3 \\\\\n>  - 4 & 2\n> \\end{vmatrix}$")).toBe(
+      "\\(a\\) $\\begin{vmatrix}\n1 & 3 \\\\\n - 4 & 2\n\\end{vmatrix}$",
+    );
+  });
+
+  // THE REASON THIS RUNS ON THE RAW BLOCK. Once lines are joined, a blockquote
+  // marker is indistinguishable from a real inequality, and the first attempt at
+  // this rule — written to match mid-string — ate exactly this.
+  it("leaves a genuine greater-than alone", () => {
+    expect(stripBlockquote("\\(x > 3\\) and \\(y \\geq 0\\)")).toBe("\\(x > 3\\) and \\(y \\geq 0\\)");
+  });
+
+  it("leaves an inequality that merely starts a line alone when not a marker", () => {
+    expect(stripBlockquote("find x\n\\(x > 3\\)")).toBe("find x\n\\(x > 3\\)");
+  });
+});
+
+describe("stripLeakedOptionRun", () => {
+  // vectors#18's printed labels are (a)(b)(b)(c) — a duplicated "b" and no "d" —
+  // so the run fails the strict A-D split and stays glued to the stem, where it
+  // renders in full on the card. Its real options come from the defects ledger.
+  it("cuts a leaked run off the end", () => {
+    expect(
+      stripLeakedOptionRun("The value of \\(x\\) is \\ > \\(a\\) \\(0\\) (b) \\(- 1\\) (b) \\(1\\) (c) \\(3\\)"),
+    ).toBe("The value of \\(x\\) is");
+  });
+
+  // A lone "(a)" is ordinary prose, not a leak.
+  it("keeps a single parenthesised letter", () => {
+    const s = "In part (a) find the value.";
+    expect(stripLeakedOptionRun(s)).toBe(s);
+  });
+
+  it("keeps a stem with no label run at all", () => {
+    const s = "Find the direction cosines of the line.";
+    expect(stripLeakedOptionRun(s)).toBe(s);
+  });
+
+  // Needs at least two DISTINCT labels after the "(a)", so a stem that happens to
+  // mention (a) twice is not mistaken for an option block.
+  it("keeps a stem whose repeated label is the same letter", () => {
+    const s = "Compare part (a) with part (a) again and (a) once more.";
+    expect(stripLeakedOptionRun(s)).toBe(s);
   });
 });
 
