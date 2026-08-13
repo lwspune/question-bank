@@ -27,6 +27,16 @@ import {
   type Filters,
 } from "@/lib/questions/filters";
 import { queryQuestions, DEFAULT_PAGE_SIZE } from "@/lib/questions/query";
+import {
+  shouldShowBrowseLanding,
+  buildExamStarters,
+  pickStarterChapters,
+} from "@/lib/questions/browseLanding";
+import { getDefaultViewCountsByExam } from "@/lib/questions/defaultViewCounts";
+import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
+import { getExamIdMap } from "@/lib/exam/examIdMap";
+import { listChapterLandings } from "@/lib/questions/landing";
+import BrowseLanding from "./BrowseLanding";
 import { mergeAndSortFacets, type FacetedOption } from "@/lib/questions/facets";
 import { getResourceTagsForQuestions } from "@/lib/links/getResourceTagsForQuestions";
 import FilterBar from "./FilterBar";
@@ -125,6 +135,14 @@ export default async function BrowsePage({ searchParams }: PageProps) {
     p_kind: filters.kind,
   };
 
+  // The bare page (no filters, anonymous viewer) skips the question query
+  // entirely and renders a cached starting panel instead. MEASURED: 48% of
+  // /browse renders carry no filters, and that shape runs the ~2.1s unfiltered
+  // id-query that produces 98% of this database's statement timeouts. Org
+  // members keep the live list — their reads include own-org PRIVATE rows that
+  // the PUBLIC-only cached catalog cannot see. See lib/questions/browseLanding.
+  const showLanding = shouldShowBrowseLanding({ filters, isStaff });
+
   // Taxonomy (exams/subjects/chapters/subtopics) is cached — it's identical for
   // every visitor and only moves on an ingest. The facet RPCs and the question
   // query below are NOT cached: they're `security invoker`, so their results are
@@ -138,6 +156,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
     { data: subtopicFacets },
     { data: pyqYears },
     questionsResult,
+    landing,
   ] = await Promise.all([
     listExams(),
     filters.examId ? listSubjects(filters.examId) : Promise.resolve([]),
@@ -157,22 +176,30 @@ export default async function BrowsePage({ searchParams }: PageProps) {
           data: [] as { subtopic_id: string; q_count: number }[],
         }),
     supabase.rpc("get_pyq_years"),
-    queryQuestions(supabase, null, filters, DEFAULT_PAGE_SIZE),
+    showLanding
+      ? Promise.resolve({ totalCount: 0, rows: [] })
+      : queryQuestions(supabase, null, filters, DEFAULT_PAGE_SIZE),
+    showLanding ? loadLandingPanel() : Promise.resolve(null),
   ]);
 
-  const totalPages = Math.max(
-    1,
-    Math.ceil(questionsResult.totalCount / DEFAULT_PAGE_SIZE)
-  );
+  // On the landing branch the hero + header count come from the cached catalog
+  // rather than the question query's `count: "exact"` — the SAME source the
+  // homepage uses, so the two pages can no longer print different totals.
+  const totalCount = landing?.totalPublicQuestions ?? questionsResult.totalCount;
+
+  const totalPages = Math.max(1, Math.ceil(totalCount / DEFAULT_PAGE_SIZE));
 
   // Tier 1.5 — batched per-question tag fetch for QuestionCard backlinks.
   // Two parallel SELECTs against the principle + concept tag tables, one
   // round-trip total. Failures degrade gracefully — backlinks fall back to
-  // the chapter-level chips.
-  const resourceTags = await getResourceTagsForQuestions(
-    supabase,
-    questionsResult.rows.map((r) => r.id)
-  ).catch(() => new Map());
+  // the chapter-level chips. Skipped outright on the landing branch: there are
+  // no rows to tag, and `.in("id", [])` is a PostgREST 400.
+  const resourceTags = landing
+    ? new Map()
+    : await getResourceTagsForQuestions(
+        supabase,
+        questionsResult.rows.map((r) => r.id)
+      ).catch(() => new Map());
 
   const examOpts = (exams ?? []).map((e) => ({ id: e.id, name: e.name }));
   const subjectOpts = (subjects ?? []).map((s) => ({ id: s.id, name: s.name }));
@@ -217,7 +244,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
       <AppHeader />
       <main className="mx-auto max-w-7xl px-4 pb-28 pt-8 sm:px-6 sm:pb-32">
         {!filtered && (
-          <Hero totalPublicQuestions={questionsResult.totalCount} />
+          <Hero totalPublicQuestions={totalCount} />
         )}
 
         <header className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -226,8 +253,8 @@ export default async function BrowsePage({ searchParams }: PageProps) {
               {filtered ? "Filtered questions" : "All questions"}
             </h2>
             <p className="mt-1 text-sm text-muted-foreground">
-              {questionsResult.totalCount.toLocaleString("en-IN")} question
-              {questionsResult.totalCount === 1 ? "" : "s"}
+              {totalCount.toLocaleString("en-IN")} question
+              {totalCount === 1 ? "" : "s"}
               {filtered ? " match" : " available"}
             </p>
           </div>
@@ -245,7 +272,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
             </div>
             <DownloadDialog
               filters={filters}
-              totalCount={questionsResult.totalCount}
+              totalCount={totalCount}
               isSignedIn={isSignedIn}
               isStaff={isStaff}
             />
@@ -288,7 +315,13 @@ export default async function BrowsePage({ searchParams }: PageProps) {
           </aside>
 
           <div className="min-w-0">
-            {questionsResult.rows.length === 0 ? (
+            {landing ? (
+              <BrowseLanding
+                exams={landing.exams}
+                chapters={landing.chapters}
+                chapterDirectoryCount={landing.chapterDirectoryCount}
+              />
+            ) : questionsResult.rows.length === 0 ? (
               <EmptyState filtered={filtered} />
             ) : (
               <QuestionList
@@ -305,7 +338,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
               />
             )}
 
-            {totalPages > 1 && (
+            {!landing && totalPages > 1 && (
               <Pagination
                 currentPage={filters.page}
                 totalPages={totalPages}
@@ -349,6 +382,32 @@ function EmptyState({ filtered }: { filtered: boolean }) {
       )}
     </div>
   );
+}
+
+/**
+ * Data for the bare-page starting panel. Three reads, ALL already cached and
+ * all already paid for by other surfaces — `getCachedExamCatalog` by the
+ * homepage, `getExamIdMap` by the header, `listChapterLandings` by /questions,
+ * the 317 chapter landing pages and the sitemap (so the build leaves it warm).
+ * No question query, and no cache this page is the sole owner of.
+ */
+async function loadLandingPanel() {
+  const [catalog, examIds, landings, defaultViewCounts] = await Promise.all([
+    getCachedExamCatalog(),
+    getExamIdMap(),
+    listChapterLandings(),
+    getDefaultViewCountsByExam(),
+  ]);
+  return {
+    // The hero's headline number stays the whole-bank total, on the same basis
+    // the homepage prints — the two pages must not disagree about bank size.
+    // The PILL counts are deliberately a different, narrower basis: each is
+    // what its own destination will show. See buildExamStarters.
+    totalPublicQuestions: catalog.totalPublicQuestions,
+    exams: buildExamStarters(catalog, examIds, defaultViewCounts),
+    chapters: pickStarterChapters(landings, { perExam: 2, total: 8 }),
+    chapterDirectoryCount: landings.length,
+  };
 }
 
 function countActiveFilters(f: Filters): number {
