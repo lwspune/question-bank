@@ -463,6 +463,14 @@
         "evidence": "Maths 2022 paper.pdf page index 6, rendered at 200 dpi: the page prints the upper limit as a bare pi. Its text layer agrees and carries no '4' fragment anywhere near the integral sign. So the compilation transcribed it FAITHFULLY and the defect is the board's.",
         "reversal": "The authoring pass hypothesised this was OUR slip, reasoning that a board would be unlikely to misprint a limit while leaving the right-hand side exactly right for the intended one. That reasoning is sound and the conclusion was still wrong — which is the whole reason a defect report is treated as a hypothesis about WHOSE defect it is until the page is read.",
         "action": "preserve + errata note giving the correct limit and the correct value; do NOT repair the stem. A student who notices the integral diverges has read it correctly."
+      },
+      {
+        "ref": "differentiation-12-pyq#28",
+        "tag": "[Q. 21, March 2022]",
+        "printed": "If y = e^{m arctan x}, then show that (1 + x^2)(dy/dx)^2 + (2x - 2m) dy/dx = 0",
+        "defect": "The identity is false. With y = e^{m arctan x} and y' = my/(1+x^2), at m = 1 and x = 0 the left-hand side is 1(1)^2 + (0 - 2)(1) = -1, not 0. Two symbols are wrong: the second derivative d^2y/dx^2 is printed as (dy/dx)^2, and m is printed as 2m. The true result, which is also the textbook's, is (1 + x^2) y_2 + (2x - m) y_1 = 0.",
+        "evidence": "Maths 2022 paper.pdf page index 5, rendered at 200 dpi: the page prints the squared-first-derivative form and the 2m verbatim, exactly as we hold it. So the compilation is faithful and BOTH corruptions are the board's.",
+        "action": "preserve + errata note giving the correct identity; prove the correct form in the model answer so the question is still teachable."
       }
     ]
   },
@@ -568,6 +576,25 @@
         "source": "Maths 2023 paper.pdf page index 3, rendered at 170 dpi around the 'length of the perpendicular' hit. The page prints lambda(-2i + 2j + 3k).",
         "why": "The compilation flipped the signs of the first TWO components of the direction vector. The tell was again the answer: as we had it the length is sqrt(953/17) = 7.49, an ugly surd, where the printed version gives exactly 7 — and the textbook twin is word-for-word identical with the printed signs.",
         "consequence": "Length = 7."
+      },
+      {
+        "ref": "differentiation-12-pyq#12",
+        "tag": "[Q. 21, March 2023]",
+        "from": "If \\(y = \\sqrt{\\sin x + \\sqrt{\\tan x + \\sqrt{\\tan x + \\sqrt{\\tan x + \\cdots}}}}\\) \\(\\infty\\), then show that \\(\\frac{dy}{dx} = \\frac{\\sec^{2}x}{2y - 1}\\). Find \\(\\frac{dy}{dx}\\) at \\(x = 0\\).",
+        "to": "If \\(y = \\sqrt{\\tan x + \\sqrt{\\tan x + \\sqrt{\\tan x + \\sqrt{\\tan x + \\cdots}}}}\\) \\(\\infty\\), then show that \\(\\frac{dy}{dx} = \\frac{\\sec^{2}x}{2y - 1}\\). Find \\(\\frac{dy}{dx}\\) at \\(x = 0\\).",
+        "source": "Maths 2023 paper.pdf page index 2, rendered at 200 dpi. The page prints tan x in EVERY radical, including the outermost.",
+        "why": "The compilation wrote the OUTERMOST radicand as sin x while every inner one is tan x. The tell was that the identity to be shown is sec^2 x/(2y-1), which is the all-tan result: numerically at x = 0.3 the printed stem gives 0.6793 against the claimed 0.7380. A mixed-radicand nested radical is also not a thing any board would set.",
+        "consequence": "All-tan. dy/dx = sec^2 x/(2y-1), and at x = 0 the convergent branch is y -> 1, giving dy/dx = 1."
+      },
+      {
+        "ref": "prob-distributions-12-pyq#16",
+        "tag": "[Q. 25, March 2023]",
+        "from": "For the following probability density function of a random variable \\(X\\), find (a) \\(P(X < 1)\\) and \\(b\\) \\(P\\left( |X| < 1 \\right)\\). \\(f(x) = \\frac{2x + 1}{18}\\), for \\(- 2 < x < 4\\) \\(\\ \\ \\ \\ \\ \\ \\ \\ \\ = 0\\), otherwise",
+        "to": "For the following probability density function of a random variable \\(X\\), find (a) \\(P(X < 1)\\) and \\(b\\) \\(P\\left( |X| < 1 \\right)\\). \\(f(x) = \\frac{2x + 1}{18}\\), for \\(- 2 < x < 4\\) \\(\\ \\ \\ \\ \\ \\ \\ \\ \\ = 0\\), otherwise",
+        "source": "Maths 2023 paper.pdf page index 2, rendered at 200 dpi. Q.25 prints f(x) = (x+2)/18 for -2 < x < 4.",
+        "why": "The compilation transposed (x+2) into (2x+1). This one is nastier than most: (2x+1)/18 integrates to EXACTLY 1 over (-2,4), so it passes the obvious p.d.f. check — but it is NEGATIVE on (-2,-1/2), min -1/6, so it is not a density. The second tell is that it forces P(X<1) = 0 for a variable supported from -2.",
+        "hypothesisReversed": "The authoring pass believed this was the BOARD's, on the reasoning that '2x+1' and 'x+2' are not confusable shapes for an extractor. That is true of OCR and false here: the compilation is human-typed, where a transposition is ordinary. The page settled it the other way.",
+        "consequence": "f(x) = (x+2)/18 on (-2,4): integrates to 1 and is non-negative throughout. P(X<1) = 1/4, P(|X|<1) = 2/9."
       }
     ]
   }
