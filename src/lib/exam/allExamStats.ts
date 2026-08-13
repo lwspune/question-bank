@@ -1,10 +1,12 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { unstable_cache } from "next/cache";
 import {
   EXAM_REGISTRY,
   resolveBankHref,
   type ExamEntry,
 } from "./examContext";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
+import { createSupabaseAnonClient } from "@/lib/supabase/server";
 
 /**
  * Catalog stats for the site homepage (`/`) — one row per exam in the
@@ -87,13 +89,30 @@ export function shapeExamCatalog(
 }
 
 /**
- * Load the homepage exam catalog. One head-count per exam (safe against the
- * PostgREST 1000-row implicit-truncation trap — we never read row payloads).
- * Called under ISR (`revalidate`), so the handful of counts is cheap.
+ * The DB half of the catalog, in a shape `unstable_cache` can store.
+ *
+ * ENTRY ARRAYS, NOT MAPS — deliberately, and the tests pin it. `unstable_cache`
+ * SERIALISES whatever its callback returns, and a Map serialises to `{}`. Cache
+ * a Map here and every count silently reads 0: the homepage prints "0 questions"
+ * on every card, with no error in any log. Rebuild the Maps on the way out.
  */
-export async function getExamCatalog(
+export type ExamCatalogCachePayload = {
+  /** exam DB name → PUBLIC question count */
+  counts: [string, number][];
+  /** exam slug → DB UUID */
+  ids: [string, string][];
+};
+
+/**
+ * Load the DB half of the homepage catalog: one head-count per exam (safe
+ * against the PostgREST 1000-row implicit-truncation trap — we never read row
+ * payloads), plus the slug→UUID map for the bank-href fallback.
+ *
+ * Client-injectable so it can be driven against a test project.
+ */
+export async function loadExamCatalogPayload(
   client: SupabaseClient
-): Promise<ExamCatalog> {
+): Promise<ExamCatalogCachePayload> {
   // Resolve every exam's UUID by name in one round-trip.
   const { data: examRows } = await client
     .from("exams")
@@ -102,33 +121,64 @@ export async function getExamCatalog(
     (examRows ?? []).map((r) => [r.name as string, r.id as string])
   );
 
-  const idsBySlug = new Map<string, string>();
+  const ids: [string, string][] = [];
   for (const exam of EXAM_REGISTRY) {
     const id = idByName.get(exam.examName);
-    if (id) idsBySlug.set(exam.slug, id);
+    if (id) ids.push([exam.slug, id]);
   }
 
   // One exact head-count per exam — total PUBLIC (pyq + practice).
-  const countsByExamName = new Map<string, number>();
-  await Promise.all(
-    EXAM_REGISTRY.map(async (exam) => {
+  const counts: [string, number][] = await Promise.all(
+    EXAM_REGISTRY.map(async (exam): Promise<[string, number]> => {
       const id = idByName.get(exam.examName);
-      if (!id) {
-        countsByExamName.set(exam.examName, 0);
-        return;
-      }
+      if (!id) return [exam.examName, 0];
       const { count } = await client
         .from("questions")
         .select("id", { count: "exact", head: true })
         .eq("exam_id", id)
         .eq("visibility", "PUBLIC");
-      countsByExamName.set(exam.examName, count ?? 0);
+      return [exam.examName, count ?? 0];
     })
   );
 
-  const notesSlugs = new Set<string>(
-    getNotesExamGroups().map((g) => g.slug)
-  );
+  return { counts, ids };
+}
 
-  return shapeExamCatalog(countsByExamName, idsBySlug, notesSlugs);
+/**
+ * Cached DB half, shared by every visitor.
+ *
+ * WHY THIS EXISTS. The homepage declares `revalidate = 86400`, but it reads
+ * cookies (to redirect signed-in staff to /dashboard) BEFORE fetching, which
+ * opts the route out of static rendering — so that directive has never taken
+ * effect and these 12 head-counts ran on EVERY anonymous request. Measured
+ * 2026-08-13: 3,921 calls at 585 ms mean = ~38 minutes of database time in
+ * four days, for numbers that only change when we ingest. Caching here fixes
+ * the cost whether or not the route ever becomes static again.
+ *
+ * Cache-legal because it uses the ANON client: RLS returns PUBLIC rows only and
+ * the payload is aggregate counts + exam UUIDs — no per-user data — so one copy
+ * really can be served to everyone. Same property `getExamIdMap` relies on.
+ */
+const loadCachedExamCatalogPayload = unstable_cache(
+  async (): Promise<ExamCatalogCachePayload> =>
+    loadExamCatalogPayload(createSupabaseAnonClient()),
+  ["exam-catalog-payload"],
+  { revalidate: 86400 }
+);
+
+/**
+ * The homepage exam catalog.
+ *
+ * Only the DB half is cached. The registry order, the flags, the card hrefs and
+ * the notes lookup are all recomputed per call from build-time constants — so
+ * adding an exam or shipping a notes chapter shows up on the next deploy rather
+ * than waiting out a 24-hour cache entry.
+ */
+export async function getCachedExamCatalog(): Promise<ExamCatalog> {
+  const { counts, ids } = await loadCachedExamCatalogPayload();
+  return shapeExamCatalog(
+    new Map(counts),
+    new Map(ids),
+    new Set(getNotesExamGroups().map((g) => g.slug))
+  );
 }
