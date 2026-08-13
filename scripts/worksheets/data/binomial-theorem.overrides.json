@@ -1,0 +1,581 @@
+{
+  "_comment": "Adjudicated repairs for Binomial Theorem. 85 of 362 blind verdicts disagreed with the key; every disagreement was solved by TWO independent blind passes (7 conflicts re-derived by the maintainer). Signature defects: nCr-SYMMETRY TWINS (the correct value offered twice as nCr and nC(n-r) — or three times), trinomial stems with binomial-sized option sets, and a Sum-of-Coefficients file whose alternating-sum options ignore boundary cases. 10 rows excluded (no closed form / inconsistent or ill-posed stems).",
+  "01-13": {
+    "options": {
+      "C": "\\(8953\\)"
+    },
+    "reason": "No printed option was correct: true value 8953 (both blind passes agree). Keyed option C repaired."
+  },
+  "01-16": {
+    "options": {
+      "A": "\\(1\\)"
+    },
+    "reason": "No printed option was correct: true value 1 (both blind passes agree). Keyed option A repaired."
+  },
+  "01-20": {
+    "answer": "B",
+    "reason": "Key flip A→B: 1024 (sum of binomial coefficients C(10,k) = 2^10); note: sum of the TERM coefficients with signs (x=y=1) would be 0 — both blind passes agree."
+  },
+  "01-23": {
+    "answer": "B",
+    "reason": "Key flip A→B: C(7,4)*2^3*(-3)^4 = 35*8*81 = +22680 — both blind passes agree."
+  },
+  "01-24": {
+    "options": {
+      "B": "\\(154518\\)"
+    },
+    "reason": "No printed option was correct: true value 154518 (both blind passes agree). Keyed option B repaired."
+  },
+  "01-29": {
+    "answer": "D",
+    "reason": "Key flip A→D: coeff(x^r)/coeff(x^{r+1}) = [C(15,r)2^r]/[C(15,r+1)2^{r+1}] = (r+1)/(2(15-r)) — both blind passes agree."
+  },
+  "01-30": {
+    "options": {
+      "A": "\\(141\\)"
+    },
+    "reason": "No printed option was correct: true value 141 (both blind passes agree). Keyed option A repaired."
+  },
+  "01-31": {
+    "answer": "B",
+    "reason": "Key flip A→B: n=16 even, single middle term = T_9 (the 9th term) = C(16,8)(2x/3)^8(-3/2x)^8 = C(16,8) = 12870 — both blind passes agree."
+  },
+  "01-33": {
+    "options": {
+      "D": "\\(184756\\)"
+    },
+    "reason": "No printed option was correct: true value 184756 (both blind passes agree). Keyed option D repaired."
+  },
+  "01-35": {
+    "answer": "D",
+    "reason": "Key flip A→D: T_5: ratio T_{r+1}/T_r = ((11-r)/r)(3/4) > 1 iff r < 33/7 = 4.71, so terms rise through T_5 and fall from T_6; greatest = T_5 = C(10,4)*2^6* — both blind passes agree."
+  },
+  "01-36": {
+    "options": {
+      "B": "\\(\\frac{3^{20} - 1}{2}\\)"
+    },
+    "reason": "No printed option was correct: true value (3^20 - 1)/2 (both blind passes agree). Keyed option B repaired."
+  },
+  "01-37": {
+    "answer": "A",
+    "reason": "Key flip B→A: exponent 24-5r = -6 gives r=6; C(12,6)*(1/2)^6*(-4)^6 = 924*4096/64 = +59136 — both blind passes agree."
+  },
+  "01-47": {
+    "options": {
+      "B": "\\(\\binom{30}{15}\\)"
+    },
+    "reason": "Option B (³⁰C₂₀) equalled the keyed A (³⁰C₁₀) by symmetry — two correct options. B replaced; key A retained."
+  },
+  "01-9": {
+    "options": {
+      "A": "\\(22680\\)"
+    },
+    "reason": "No printed option was correct: true value 22680 (both blind passes agree). Keyed option A repaired."
+  },
+  "02-13": {
+    "options": {
+      "D": "\\(120\\)"
+    },
+    "reason": "Option D (126) equalled the keyed B (⁹C₄ = 126). Replaced; key B retained."
+  },
+  "02-14": {
+    "options": {
+      "D": "\\(80\\)"
+    },
+    "reason": "Option D (84) equalled the keyed A (⁹C₃ = 84). Replaced; key A retained."
+  },
+  "02-21": {
+    "options": {
+      "C": "\\(2^n - 1\\)",
+      "D": "\\(\\frac{2^n - 1}{2}\\)"
+    },
+    "reason": "Old options C (the keyed A with an n>0 caveat) and D ((2ⁿ+0ⁿ)/2) were both equally TRUE forms of the even-index sum 2^{n−1}. Replaced with false values; key A retained."
+  },
+  "02-25": {
+    "answer": "D",
+    "reason": "Key flip B→D: 1 + 49 + 441 + 1225 = 1716 (= C(14,7)/2 by symmetry of C(7,k)^2) — both blind passes agree."
+  },
+  "02-26": {
+    "options": {
+      "C": "\\(8953\\)"
+    },
+    "reason": "No printed option was correct: true value 8953 (both blind passes agree). Keyed option C repaired."
+  },
+  "02-27": {
+    "exclude": true,
+    "reason": "DEFECTIVE: Σ 1/C(n,k) has no clean closed form ((n+1)/2^{n+1} · Σ 2^k/k) — no option can be right and no repair yields a teachable MCQ (both passes agree)."
+  },
+  "02-31": {
+    "options": {
+      "B": "\\(184755\\)"
+    },
+    "reason": "No printed option was correct: true value C(20,10) - 1 = 184755 (both blind passes agree). Keyed option B repaired."
+  },
+  "02-41": {
+    "options": {
+      "C": "\\(\\binom{12}{9}\\)"
+    },
+    "reason": "Option C (¹²C₁₀) equalled the keyed A (¹²C₂ = 66) by symmetry. Replaced; key A retained."
+  },
+  "02-42": {
+    "options": {
+      "B": "Vandermonde's identity"
+    },
+    "reason": "Old option B ('Hockey stick identity') names the SAME identity as the keyed C ('Christmas stocking identity'). Replaced with a genuinely different identity; key C retained."
+  },
+  "02-44": {
+    "options": {
+      "B": "\\(63\\)"
+    },
+    "reason": "No printed option was correct: true value 63 (both blind passes agree). Keyed option B repaired."
+  },
+  "02-9": {
+    "options": {
+      "B": "Fibonacci diagonal sum"
+    },
+    "reason": "Old option B ('Hockey stick identity result') was ALSO a true description of the sum, alongside the keyed C. Replaced with a false label; key C retained."
+  },
+  "03-10": {
+    "answer": "A",
+    "reason": "Key flip B→A: T_{r+1}/T_r = [C(20,r)/C(20,r-1)]x = ((21-r)/r)x — both blind passes agree."
+  },
+  "03-16": {
+    "options": {
+      "D": "No term independent of \\(x\\) exists"
+    },
+    "reason": "No printed option was correct: true value No term independent of x exists: exponent = (3/2)(10-r) - r/2 = 15 - 2r, which is odd for every integer r and can never  (both blind passes agree). Keyed option D repaired."
+  },
+  "03-2": {
+    "options": {
+      "C": "\\(^{10}C_r \\cdot 2^{10-r} \\cdot x^{r} \\cdot 3^r\\)"
+    },
+    "reason": "Option C was the keyed A with the x factored out — identical. Power moved to make it false; key A retained."
+  },
+  "03-3": {
+    "options": {
+      "C": "\\(^{10}C_4 \\cdot 2^5\\)"
+    },
+    "reason": "Option C (¹⁰C₄·2⁶) equalled the keyed B (¹⁰C₆·2⁶) by symmetry. Exponent dropped to false; key B retained."
+  },
+  "03-4": {
+    "options": {
+      "C": "\\(56\\)"
+    },
+    "reason": "Option C (70x⁰) equalled the keyed A (70). Replaced; key A retained."
+  },
+  "03-6": {
+    "answer": "A",
+    "stem": "If the coefficients of \\(x^3\\) and \\(x^4\\) in the expansion of \\((1 + x)^n\\) are equal, then \\(n\\) equals:",
+    "solution": "\\(\\binom{n}{3} = \\binom{n}{4}\\) forces \\(n = 3 + 4 = 7\\) (equal binomial coefficients are symmetric partners).",
+    "reason": "As printed ((1+ax)ⁿ, asking n/a) the data gives one equation a(n−3)=4 in two unknowns — indeterminate, both passes agree. Stem pinned to a=1, for which n = 7 (option A) is exact; key flip D→A."
+  },
+  "03-9": {
+    "options": {
+      "A": "\\(0\\) (no such term exists)"
+    },
+    "reason": "No printed option was correct: true value 0 — no x^{-4} term exists: exponent 24 - 5r = -4 requires r = 28/5, not an integer (both blind passes agree). Keyed option A repaired."
+  },
+  "04-10": {
+    "answer": "A",
+    "reason": "Key flip C→A: C(2n,n)x^n = [1*3*5*...*(2n-1)/n!]*2^n*x^n — the full middle term (T_{n+1}), i.e. the general middle-term formula — both blind passes agree."
+  },
+  "04-12": {
+    "options": {
+      "D": "\\(70 \\cdot 8\\)"
+    },
+    "reason": "Option D (70·16 = 1120) equalled the keyed B (1120). Replaced; key B retained."
+  },
+  "04-16": {
+    "options": {
+      "A": "\\(6 : 1\\)"
+    },
+    "reason": "No printed option was correct: true value 6:1 — T_5:T_6 coefficients = [C(9,4)2^5/3^4] : [C(9,5)2^4/3^5] = 2*3 : 1 = 6:1 (C(9,4)=C(9,5) cancel) (both blind passes agree). Keyed option A repaired."
+  },
+  "04-20": {
+    "options": {
+      "B": "\\(^{2n-1}C_{n-1} \\cdot {}^{2n-1}C_n\\)"
+    },
+    "reason": "Option B (the Pascal split of the keyed A — the two addends are equal, so B = 2·²ⁿ⁻¹Cₙ₋₁ = A). Sum turned into a product (false); key A retained."
+  },
+  "04-22": {
+    "options": {
+      "C": "\\(-252 \\cdot 16\\)"
+    },
+    "reason": "Option C (−252·32) equalled the keyed A (−8064). Halved to false; key A retained."
+  },
+  "04-23": {
+    "answer": "C",
+    "reason": "Key flip D→C: middle term T_7 (r=6): (2x^2)^6 (1/x)^6 gives x^{12-6} = x^6 — both blind passes agree. Source solution (self-talk naming the old letter) rewritten clean.",
+    "solution": "Since \\(n = 12\\) is even, the middle term is \\(T_7 = {}^{12}C_6 (2x^2)^6 \\left(\\frac{1}{x}\\right)^6 = {}^{12}C_6 \\cdot 64 \\cdot x^6\\)."
+  },
+  "04-26": {
+    "options": {
+      "B": "The 6th and 7th terms (equal and jointly greatest)"
+    },
+    "reason": "No printed option was correct: true value T_6 = T_7 (the 6th and 7th terms are equal and jointly greatest): ratio ((51-r)/r)(2/15) = 1 exactly at r=6 (both blind passes agree). Keyed option B repaired."
+  },
+  "04-28": {
+    "options": {
+      "C": "\\(\\frac{4n+2}{n}\\)"
+    },
+    "reason": "Option C ((4n−2)/n) equalled the keyed A (2n(2n−1)/n²). Sign broken to false; key A retained."
+  },
+  "04-31": {
+    "answer": "B",
+    "reason": "Options A and B were the same value (the two Pascal addends are equal), while C (2^{4n−2}) is false — so the keyed 'All of the above' was wrong. A replaced with the zero difference (false); key flipped to B by the crosstab entry.",
+    "options": {
+      "A": "\\(^{4n-1}C_{2n-1} - {}^{4n-1}C_{2n}\\)"
+    }
+  },
+  "04-36": {
+    "options": {
+      "A": "\\(^{20}C_{10} \\cdot (-1)^{9}\\)",
+      "D": "\\(167960\\)"
+    },
+    "reason": "Options A (²⁰C₁₀·(−1)¹⁰) and D (184756) BOTH equalled the keyed B (²⁰C₁₀) — three correct dresses. A sign-flipped, D replaced with ²⁰C₉; key B retained."
+  },
+  "04-41": {
+    "answer": "D",
+    "reason": "Key flip A→D: T_13 = C(18,12) = 18564; middle term is T_10 (r=9) — both blind passes agree."
+  },
+  "04-9": {
+    "options": {
+      "C": "\\(^{14}C_7 \\cdot 3\\)"
+    },
+    "reason": "Option C (¹⁴C₇·3⁷/3⁷) equalled option A (¹⁴C₇) — a duplicated distractor pair against the keyed B (−¹⁴C₇). C replaced; key B retained."
+  },
+  "05-11": {
+    "options": {
+      "A": "The power of \\(x\\) in the general term is always positive",
+      "C": "\\(16 - 3r = 0\\) has an integer solution"
+    },
+    "reason": "Old options A, C and the keyed D were three equivalent TRUE statements of the same fact (16−3r never vanishes at integer r). A and C replaced with false statements; key D retained."
+  },
+  "05-12": {
+    "options": {
+      "A": "\\(^{20}C_{10} = 184756\\)"
+    },
+    "reason": "No printed option was correct: true value C(20,10) = 184756  [ (x+1/x+2)^10 = (sqrt(x)+1/sqrt(x))^20, constant term at r=10 ] (both blind passes agree). Keyed option A repaired."
+  },
+  "05-13": {
+    "answer": "A",
+    "reason": "Key flip B→A: 4th term; exponent 9-3r=0 at r=3, T_4 = C(9,3)*3^{-6}*9^3 = 84 — both blind passes agree. Source solution (self-talk naming the old letter) rewritten clean.",
+    "solution": "The general term exponent is \\(9 - 3r\\), which vanishes at \\(r = 3\\) — so the term independent of \\(x\\) is \\(T_4\\), the 4th term."
+  },
+  "05-14": {
+    "options": {
+      "A": "\\({}^{18}C_9\\)"
+    },
+    "reason": "Option A (¹⁸C₆) equalled the keyed C (¹⁸C₁₂) by symmetry — both the correct constant-term coefficient. A replaced; key C retained."
+  },
+  "05-15": {
+    "answer": "C",
+    "reason": "Key flip A→C: 1/2  [ constant term at r=2: C(6,2)*2^4*a^2 = 240a^2 = 60 => a^2 = 1/4 ] — both blind passes agree."
+  },
+  "05-18": {
+    "options": {
+      "A": "\\(-{}^{10}C_4\\)"
+    },
+    "reason": "Option A (−¹⁰C₅) equalled the keyed C (−252) — both the correct middle term. A replaced with −¹⁰C₄ = −210 (false); key C retained."
+  },
+  "05-3": {
+    "answer": "D",
+    "reason": "Key flip B→D: Does not exist: exponent 10-3r=0 requires r=10/3, not an integer — both blind passes agree."
+  },
+  "05-4": {
+    "answer": "B",
+    "reason": "Key flip C→B: 84  [ exponent 18-3r=0 at r=6: C(9,6)(-1)^6 = 84 ] — both blind passes agree."
+  },
+  "05-5": {
+    "answer": "C",
+    "reason": "Key flip D→C: k = +/-3  [ r=2: C(10,2)(-k)^2 = 45k^2 = 405 => k^2 = 9; even power leaves sign undetermined ] — both blind passes agree."
+  },
+  "05-6": {
+    "answer": "C",
+    "reason": "Key flip A→C: Does not exist: exponent 20-3r=0 requires r=20/3, not an integer — both blind passes agree."
+  },
+  "05-9": {
+    "answer": "A",
+    "reason": "Key flip B→A: -84  [ exponent (9-3r)/3 = 3-r = 0 at r=3: C(9,3)(-1)^3 = -84 ] — both blind passes agree."
+  },
+  "06-11": {
+    "answer": "A",
+    "reason": "Key flip B→A: n = 10  [ C(2n,n) = 184756 = C(20,10) ] — both blind passes agree."
+  },
+  "06-16": {
+    "answer": "A",
+    "reason": "Key flip D→A: 126720  [ C(12,r)2^r maximal at r=8: 495*256 = 126720 (a_7=101376, a_9=112640) ] — both blind passes agree."
+  },
+  "06-20": {
+    "options": {
+      "B": "\\(4860\\)"
+    },
+    "reason": "No printed option was correct: true value 4860  [ C(6,r)3^{6-r}2^r maximal at r=2: 15*81*4 = 4860; neighbours a_1=2916, a_3=4320 ] (both blind passes agree). Keyed option B repaired."
+  },
+  "06-21": {
+    "options": {
+      "A": "\\(2 \\times {}^{25}C_{11}\\)",
+      "B": "\\(2 \\times {}^{25}C_{14}\\)"
+    },
+    "reason": "Options A (2·²⁵C₁₂) and B (2·²⁵C₁₃) BOTH equalled the keyed C (²⁵C₁₂+²⁵C₁₃, whose addends are equal). Indices shifted to false; key C retained."
+  },
+  "06-31": {
+    "answer": "B",
+    "reason": "Key flip C→B: 1792  [ |C(8,r)(-2)^r| maximal at r=5 and r=6 (tie, 56*32 = 28*64 = 1792); the r=6 term is +1792 ] — both blind passes agree."
+  },
+  "06-36": {
+    "options": {
+      "C": "\\(15360\\)"
+    },
+    "reason": "No printed option was correct: true value Coefficient of x^3 = C(10,3)*2^7 = 15360 is the greatest (a_2=11520, a_4=13440); not among the options (both blind passes agree). Keyed option C repaired."
+  },
+  "06-38": {
+    "options": {
+      "A": "\\(108864\\)"
+    },
+    "reason": "No printed option was correct: true value 108864  [ C(8,r)3^{8-r}2^r maximal at r=3: 56*243*8 = 108864; a_2=81648, a_4=90720 ] (both blind passes agree). Keyed option A repaired."
+  },
+  "06-39": {
+    "options": {
+      "B": "\\(11^{th}\\) term"
+    },
+    "reason": "No printed option was correct: true value 11th term  [ C(15,r)2^r increases while r <= 29/3, maximal at r=10 => T_11 = C(15,10)*2^10 = 3075072 ] (both blind passes agree). Keyed option B repaired."
+  },
+  "06-42": {
+    "options": {
+      "A": "\\(2 \\times {}^{13}C_5\\)",
+      "B": "\\(2 \\times {}^{13}C_8\\)"
+    },
+    "reason": "Options A (2·¹³C₆) and B (2·¹³C₇) BOTH equalled the keyed C (¹³C₆+¹³C₇). Indices shifted to false; key C retained."
+  },
+  "06-46": {
+    "exclude": true,
+    "reason": "ILL-POSED: '(1+x+x²)¹⁰ using binomial theorem approach occurs when' is not a well-formed question — the key and both blind passes each landed on a different defensible reading."
+  },
+  "06-7": {
+    "answer": "B",
+    "reason": "Key flip D→B: 6th term  [ 2^n = 1024 => n = 10; greatest coefficient C(10,5) at T_6 ] — both blind passes agree."
+  },
+  "06-9": {
+    "answer": "B",
+    "reason": "Key flip A→B: 1792  [ C(8,r)2^{8-r} ties at r=2 and r=3: 28*64 = 56*32 = 1792 ] — both blind passes agree."
+  },
+  "07-11": {
+    "options": {
+      "C": "\\(2952\\)"
+    },
+    "reason": "No printed option was correct: true value 2952  [ a+2b=10: C(5,0)C(10,5) + C(5,2)C(10,4) + C(5,4)C(10,3) = 252 + 2100 + 600 = 2952 ] (both blind passes agree). Keyed option C repaired."
+  },
+  "07-14": {
+    "options": {
+      "B": "Hockey stick identity"
+    },
+    "reason": "Old option B ('Vandermonde's Identity') names the SAME identity as the keyed C ('Chu-Vandermonde Identity'). Replaced with a different identity; key C retained."
+  },
+  "07-17": {
+    "options": {
+      "B": "\\(\\frac{3^n + 1}{3}\\)"
+    },
+    "reason": "Option B (3ⁿ/3) equalled the keyed C (3^{n−1}). Replaced; key C retained (option A's exotic closed form is false — the true exact form uses 2ⁿ, not 3ⁿ)."
+  },
+  "07-20": {
+    "exclude": true,
+    "reason": "UNDER-DETERMINED: the value C(2n−1,n) + C(2n−2,n−1) depends on n (2 at n=1, 5 at n=2) — no fixed option can be correct (both passes agree)."
+  },
+  "07-23": {
+    "exclude": true,
+    "reason": "INCONSISTENT STEM: (1+x+x²)ⁿ has 2n+1 coefficients but the stem sums a₀…aₙ as if there were n+1 — no reading matches any option (both passes agree)."
+  },
+  "07-25": {
+    "exclude": true,
+    "reason": "DEFECTIVE: the coefficient of xʳ in (1+x²−x)ⁿ is an alternating double sum with no option-sized form; the candidate repair failed its own sign check at n=2 — excluded rather than shipped unverified."
+  },
+  "07-26": {
+    "options": {
+      "B": "\\(n(n+1) \\cdot 2^{n-2}\\)"
+    },
+    "reason": "No printed option was correct: true value Sum r^2*C(n,r) = n(n+1)*2^{n-2} = n(n-1)*2^{n-2} + n*2^{n-1}; in the form A*2^n + B*n*2^{n-1} this needs A = n(n-1)/4, B (both blind passes agree). Keyed option B repaired."
+  },
+  "07-31": {
+    "options": {
+      "D": "\\(\\binom{r+1}{2}\\)"
+    },
+    "reason": "Option D (C(r+1,1)) equalled the keyed A (r+1). Replaced; key A retained."
+  },
+  "07-32": {
+    "options": {
+      "B": "Always odd"
+    },
+    "reason": "Old option B ('Always even') was near-defensible alongside the keyed C. Replaced with a clearly false claim; key C retained."
+  },
+  "07-33": {
+    "answer": "B",
+    "reason": "Key flip D→B: A = -n, B = n (since nx(1+x)^{n-1} = n(1+x)^n - n(1+x)^{n-1}) — both blind passes agree."
+  },
+  "07-34": {
+    "exclude": true,
+    "reason": "DEFECTIVE: the stem asks for a WEIGHTED sum over a+2b+3c=50 of C(40,a)C(30,b)C(20,c), not the count its options assume — no option is correct and no clean value exists (both passes agree)."
+  },
+  "07-35": {
+    "options": {
+      "B": "(\frac{4^n - \binom{2n}{n}}{2})",
+      "A": "(\frac{4^n - 2^n}{2})",
+      "D": "(\frac{4^n + 2^n}{2})"
+    },
+    "reason": "No printed option was correct AND options A, B, D were all the same wrong value (4^n-2^n)/2: the sum of pairwise products of binomial coefficients is (4^n - C(2n,n))/2, verified at n=2 (pairwise products of 1,2,1 sum to 5 = (16-6)/2). Keyed B repaired to the true value; A kept as the shared wrong value once; D sign-flipped."
+  },
+  "07-38": {
+    "options": {
+      "A": "\\(73789\\)"
+    },
+    "reason": "No printed option was correct: true value 73789 (central trinomial coefficient T(12); via (1-x^3)^{12}(1-x)^{-12}: C(23,11)-12C(20,11)+66C(17,11)-220C(14,11)+495  (both blind passes agree). Keyed option A repaired."
+  },
+  "07-8": {
+    "options": {
+      "D": "\\(2^8\\)"
+    },
+    "reason": "Option D was byte-identical to the keyed A (2⁹). Replaced; key A retained."
+  },
+  "08-12": {
+    "exclude": true,
+    "reason": "DEFECTIVE: Σ (2ᵏ−1)/k has no elementary closed form (5/2 at n=2 vs options 3/2, 3, 2) — verbatim duplicate of 08-37, both excluded (both passes agree)."
+  },
+  "08-23": {
+    "options": {
+      "A": "\\(-8\\)"
+    },
+    "reason": "No printed option was correct: true value -8 (7 - 35 + 21 - 1 = -8; also Im[(1+i)^7] = Im[8-8i] = -8) (both blind passes agree). Keyed option A repaired."
+  },
+  "08-26": {
+    "options": {
+      "B": "\\(\\frac{3^n}{2}\\)"
+    },
+    "reason": "Option B (3ⁿ/2ⁿ) equalled the keyed A ((3/2)ⁿ). Replaced; key A retained."
+  },
+  "08-29": {
+    "options": {
+      "D": "\\(810\\)"
+    },
+    "reason": "No printed option was correct: true value 810 (identity: sum k*C(5,k)*2^k = 5*2*(1+2)^4 = 10*81 = 810; direct: 10+80+240+320+160 = 810) (both blind passes agree). Keyed option D repaired."
+  },
+  "08-30": {
+    "answer": "D",
+    "reason": "Key flip A→D: 992 (1 + 495 + 495 + 1; roots-of-unity check: (4096 + (1+i)^12 + 0 + (1-i)^12)/4 = (4096-64-64)/4 = 992) — both blind passes agree."
+  },
+  "08-32": {
+    "answer": "A",
+    "options": {
+      "A": "\\(0\\) for \\(n \\geq 3\\)"
+    },
+    "reason": "Key flip B→A + qualifier repair: Σ(−1)ᵏk²C(n,k) = 0 for n ≥ 3 but equals 2 at n = 2, so the printed 'for n ≥ 2' was false at its own boundary and the keyed B holds only at n = 2. Both passes agree."
+  },
+  "08-37": {
+    "exclude": true,
+    "reason": "DEFECTIVE: Σ (2ᵏ−1)/k has no elementary closed form — verbatim duplicate of 08-12, both excluded (both passes agree)."
+  },
+  "08-39": {
+    "answer": "C",
+    "reason": "Key flip A→C: 0 (the sum equals integral_0^1 (1-x^2)^n dx = (2n)!!/(2n+1)!! ~ (1/2)sqrt(pi/n) -> 0) — both blind passes agree."
+  },
+  "08-40": {
+    "options": {
+      "A": "\\(\\frac{n \\cdot 2^{n+1} + 1}{(n+1)(n+2)}\\)"
+    },
+    "reason": "No printed option was correct: true value (n*2^{n+1} + 1)/((n+1)(n+2)) (= integral_0^1 x(1+x)^n dx; n=1: 5/6 ✓, n=2: 17/12) (both blind passes agree). Keyed option A repaired."
+  },
+  "08-41": {
+    "answer": "A",
+    "reason": "Key flip B→A: 0 for n >= 2 (i.e. 2n >= 4); at n = 1 the sum is 2 (-2 + 8 - ... : r=1 gives -2, r=2 gives +8, wait (1)(-1)(1)... direct for 2n=2: -1^2*2 +  — both blind passes agree."
+  },
+  "08-42": {
+    "options": {
+      "B": "\\(n^2(n+3) \\cdot 2^{n-3}\\)"
+    },
+    "reason": "No printed option was correct: true value n^2(n+3)*2^{n-3} (via k^3 = k(k-1)(k-2)+3k(k-1)+k; n=2: true sum 2+8=10, A gives 16, B 20, C 16, D 12) (both blind passes agree). Keyed option B repaired."
+  },
+  "08-51": {
+    "answer": "A",
+    "reason": "Key flip B→A: 0 for even n >= 4; at n = 2 the sum is 6 (-2 + 8 = 6), so strictly A fails at the n=2 boundary — both blind passes agree."
+  },
+  "09-11": {
+    "answer": "D",
+    "reason": "Key flip A→D: 4/81 (C(2/3,3) = (2/3)(-1/3)(-4/3)/6 = (8/27)/6 = 4/81) — both blind passes agree."
+  },
+  "09-17": {
+    "options": {
+      "A": "\\(-\\frac{5}{8}\\)"
+    },
+    "reason": "No printed option was correct: true value -5/8 (a = C(1/4,2) = -3/32, b = C(1/4,3) = 7/128; 16(a+b) = 16*(-5/128) = -5/8) (both blind passes agree). Keyed option A repaired."
+  },
+  "09-19": {
+    "exclude": true,
+    "reason": "IMPOSSIBLE — the series as printed is sum of (2k-1)!!/(2k)!! ~ 1/sqrt(pi*k), which DIVERGES (p-series with p=1/2). The intended series almost certainly carried an extra (1/2)^k factor, i.e. (1-1/2)^{-1/2} = sqrt(2), matc (both passes agree)."
+  },
+  "09-20": {
+    "options": {
+      "A": "\\(-\\frac{7}{6}\\)"
+    },
+    "reason": "No printed option was correct: true value -7/6 (c2 = 15/8, c3 = -35/16, ratio = -7/6; generally c_{k+1}/c_k = (alpha - k)/(k+1) = (-3/2 - 2)/3 = -7/6) (both blind passes agree). Keyed option A repaired."
+  },
+  "09-24": {
+    "options": {
+      "D": "\\(-\\frac{124729}{186624}\\)"
+    },
+    "reason": "No printed option was correct: true value -124729/186624 ≈ -0.6683 (product = (1+x)^{-5/6}; coeff x^5 = (-5/6)(-11/6)(-17/6)(-23/6)(-29/6)/120; verified by direct (both blind passes agree). Keyed option D repaired."
+  },
+  "09-25": {
+    "options": {
+      "C": "\\(7\\)"
+    },
+    "reason": "No printed option was correct: true value 7 (a = 2/3, b = (2/3)(5/3)/2 = 5/9; 3a + 9b = 2 + 5 = 7) (both blind passes agree). Keyed option C repaired."
+  },
+  "09-26": {
+    "options": {
+      "A": "\\(0.9806\\)"
+    },
+    "reason": "No printed option was correct: true value 0.9806 (1/sqrt(1.04) = 0.980580676...; binomial: 1 - 0.02 + 0.0006 - 0.00002 = 0.98058) (both blind passes agree). Keyed option A repaired."
+  },
+  "09-30": {
+    "options": {
+      "B": "\\(\\frac{1}{2}\\)",
+      "D": "\\(2\\sqrt{2}\\)"
+    },
+    "reason": "Option B (√2/2) equalled the keyed A (1/√2), and D (2/√2) equalled C (√2). Both twins replaced; key A retained."
+  },
+  "09-32": {
+    "options": {
+      "C": "\\(\\frac{560}{243}\\)"
+    },
+    "reason": "No printed option was correct: true value 560/243 (coeff = C(-1/3,4)(-2)^4 = (1/3)(4/3)(7/3)(10/3)/24 * 16 = (35/243)*16 = 560/243 ≈ 2.305) (both blind passes agree). Keyed option C repaired."
+  },
+  "09-36": {
+    "answer": "C",
+    "reason": "Key flip A→C: r = 2n (Pascal: C(2n+1,r+1) = C(2n,r) + C(2n,r+1); equality forces C(2n,r+1) = 0, i.e. r = 2n, where both coefficients are 1; verified n=1) — both blind passes agree."
+  },
+  "09-39": {
+    "options": {
+      "D": "\\(\\frac{1 - x^{n-1}}{1 - x}\\)"
+    },
+    "reason": "Option D ((xⁿ−1)/(x−1)) equalled the keyed A ((1−xⁿ)/(1−x)). Replaced; key A retained."
+  },
+  "09-40": {
+    "answer": "A",
+    "reason": "Key flip C→A: C(1001,11) (the sum telescopes to ((1+x)^{1001} - 1)/x, so coeff of x^10 = coeff of x^11 in (1+x)^{1001} = C(1001,11)) — both blind passes agree."
+  },
+  "09-44": {
+    "exclude": true,
+    "reason": "IMPOSSIBLE — term_k = [2·5···(3k-1)]/[3·6···(3k)] = Gamma(k+2/3)/(Gamma(2/3) k!) ~ k^{-1/3}/Gamma(2/3), so the series DIVERGES (terms decay like k^{-1/3}). It is (1-x)^{-2/3} evaluated at x = 1, outside the radius of con (both passes agree)."
+  },
+  "09-49": {
+    "options": {
+      "C": "\\(5376\\)"
+    },
+    "reason": "No printed option was correct: true value 5376 (general term exponent 6-k, so k=6; C(9,6)(-2)^6 = 84*64 = 5376) (both blind passes agree). Keyed option C repaired."
+  },
+  "09-6": {
+    "options": {
+      "C": "\\(\\frac{n^r}{r!} x^r\\)"
+    },
+    "reason": "Option C (C(n,r)xʳ) duplicated option A's factorial form — both undefined for rational n, twin distractors. C replaced; key B (the falling-factorial form) retained."
+  }
+}
