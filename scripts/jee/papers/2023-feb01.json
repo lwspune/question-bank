@@ -1065,7 +1065,7 @@
     43,
     53
   ],
-  "notes": "1 February 2023 — Maths only. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n1 February 2023 — Physics. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry option repair] Restored the full option block for Q31 from the agent's verbatim recovery — extraction had returned no options for these rows, which commit.ts cannot ship.\n[Chemistry stem repair] Q52: The symbol for Planck's constant was dropped from the 'Given' clause, which reads 'Given: = 6 x 10^-34 Js'. It is unambiguously \\(h\\), fixed both by the units and by the de Broglie calculation demanded in statement (A).\n[Chemistry stem repair] Q126: The opening words of the stem are missing in the source: it begins 'bond length in \\(H_{2}O_{2}\\) is X than the \\(O-O\\) bond length in \\(F_{2}O_{2}\\)'. The dropped phrase is 'The \\(O-O\\)', uniquely fixed by the parallel wording of the second sentence and by the comparison being drawn.\n[Chemistry stem repair] Q128: The text stem is EMPTY in the source, the question number being followed directly by the reaction figure; every word of the question ('X' is :, benzene + methylenecyclohexane, \\(HF\\)/heat, 'Major product') is inside the in-stem image. The question is therefore readable only if that figure is attached.\n1 February 2023 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry stem repair] Q57, Q46, Q135, Q42: content-free math zones left by pandoc where an answer blank stood. parseLatex reduces them to a bare backslash, which KaTeX rejects — taking the whole stem down — while scan-flip passes them because the delimiters balance. Cleaned by stripEmptyMath.",
+  "notes": "1 February 2023 — Maths only. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n1 February 2023 — Physics. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry option repair] Restored the full option block for Q31 from the agent's verbatim recovery — extraction had returned no options for these rows, which commit.ts cannot ship.\n[Chemistry stem repair] Q52: The symbol for Planck's constant was dropped from the 'Given' clause, which reads 'Given: = 6 x 10^-34 Js'. It is unambiguously \\(h\\), fixed both by the units and by the de Broglie calculation demanded in statement (A).\n[Chemistry stem repair] Q126: The opening words of the stem are missing in the source: it begins 'bond length in \\(H_{2}O_{2}\\) is X than the \\(O-O\\) bond length in \\(F_{2}O_{2}\\)'. The dropped phrase is 'The \\(O-O\\)', uniquely fixed by the parallel wording of the second sentence and by the comparison being drawn.\n[Chemistry stem repair] Q128: The text stem is EMPTY in the source, the question number being followed directly by the reaction figure; every word of the question ('X' is :, benzene + methylenecyclohexane, \\(HF\\)/heat, 'Major product') is inside the in-stem image. The question is therefore readable only if that figure is attached.\n1 February 2023 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry stem repair] Q57, Q46, Q135, Q42: content-free math zones left by pandoc where an answer blank stood. parseLatex reduces them to a bare backslash, which KaTeX rejects — taking the whole stem down — while scan-flip passes them because the delimiters balance. Cleaned by stripEmptyMath.\n[Chemistry render repair 2026-08-13] Q39/Q49 Match-List tables rebuilt as GFM (pandoc grid/simple-table wreckage); Q41 options F_{e} -> Fe; Q121 option (b) stray \"2. \" removed and (PO) -> (Po). Reported via /dashboard/reports; content source-verified against out/2023-feb01.md. Answers unchanged (39 D, 41 C, 49 B, 121 B).",
   "authoredSolutions": {
     "1": "The horizontal launch speed was lost from the printed stem; the only value consistent with the options is \\(u_x = 5\\text{ }ms^{-1}\\). Vertically the stone starts from rest and falls \\(h = 10\\text{ }m\\), so \\[v_y^2 = 2gh = 2\\times 10\\times 10 = 200\\text{ }m^2s^{-2}.\\] The horizontal component is unchanged, \\(v_x = 5\\text{ }ms^{-1}\\), so \\[v = \\sqrt{v_x^2+v_y^2} = \\sqrt{25+200} = \\sqrt{225} = 15\\text{ }ms^{-1}.\\] Hence the correct choice is A.",
     "2": "The figure shows two parallel infinite sheets, each carrying the SAME positive surface density \\(+\\sigma\\). A single infinite sheet produces \\(\\dfrac{\\sigma}{2\\epsilon_0}\\) pointing away from it on both sides. Take \\(\\widehat{n}\\) directed from region I towards region III. In region I both sheets push to the left, giving \\[{\\overrightarrow{E}}_{I} = -\\frac{\\sigma}{2\\epsilon_0}\\widehat{n}-\\frac{\\sigma}{2\\epsilon_0}\\widehat{n} = -\\frac{\\sigma}{\\epsilon_0}\\widehat{n}.\\] In region II the two contributions are opposite and equal, so \\({\\overrightarrow{E}}_{II}=0\\). In region III both point along \\(+\\widehat{n}\\), giving \\(\\dfrac{\\sigma}{\\epsilon_0}\\widehat{n}\\). Hence the correct choice is C.",
@@ -1253,8 +1253,10 @@
     "26": "In an experiment to find emf of a cell using potentiometer, the length of null point for a cell of emf \\(1.5\\text{ }V\\) is found to be \\(60\\text{ }cm\\). If this cell is replaced by another cell of emf \\(E\\), the length-of null point increases by \\(40\\text{ }cm\\). The value of \\(E\\) is \\(\\frac{x}{10}V\\). The value of \\(x\\) is___",
     "27": "A thin cylindrical rod of length \\(10\\text{ }cm\\) is placed horizontally on the principle axis of a concave mirror of focal length \\(20\\text{ }cm\\). The rod is placed in a such a way that mid point of the rod is at \\(40\\text{ }cm\\) from the pole of mirror. The length of the image formed by the mirror will be \\(\\frac{x}{3}\\text{ }cm\\). The value of \\(x\\) is___",
     "28": "A solid cylinder is released from rest from the top of an inclined plane of inclination \\(30^{\\circ}\\) and length \\(60\\text{ }cm\\). If the cylinder rolls without slipping, its speed upon reaching the bottom of the inclined ____plane is \\(ms^{- 1}\\). (Given \\(g = 10{\\text{ }ms}^{- 2}\\) )",
+    "39": "Match List I with List II\n\n|  | List I | List II |\n| --- | --- | --- |\n| (A) | Slaked lime | (I) \\(NaOH\\) |\n| (B) | Dead burnt plaster | (II) \\(Ca(OH)_{2}\\) |\n| (C) | Caustic soda | (III) \\(Na_{2}CO_{3}\\cdot 10H_{2}O\\) |\n| (D) | Washing soda | (IV) \\(CaSO_{4}\\) |\n\nChoose the correct answer from the options given below:",
     "42": "Which of the following are the example of double salt? (A) \\(FeSO_{4}\\cdot\\left( NH_{4} \\right)_{2}SO_{4}\\cdot 6H_{2}O\\) (B) \\(CuSO_{4},4NH_{3}H_{2}O\\) (C) \\(K_{2}SO_{4}\\cdot Al_{2}\\left( SO_{4} \\right)_{3}\\cdot 24H_{2}O\\) (D) \\(Fe(CN)_{2}\\cdot 4KCN\\) Choose the correct answer",
     "46": "Which of the following represents the lattice structure of \\(A_{0.95}O\\) containing \\(A^{2 +},A^{3 +}\\) and \\(O^{2 -}\\) ions? \\(\\odot A^{2 +}\\odot A^{3 +}\\odot O^{2 -}\\) (A) (B) (C)",
+    "49": "Match List I with List II\n\n|  | List I (Test) | List II (Functional group / Class of Compound) |\n| --- | --- | --- |\n| (A) | Molisch's Test | (I) Peptide |\n| (B) | Biuret Test | (II) Carbohydrate |\n| (C) | Carbylamine Test | (III) Primary amine |\n| (D) | Schiff's Test | (IV) Aldehyde |\n\nChoose the correct answer from the options given below:",
     "52": "Electrons in a cathode ray tube have been emitted with a velocity of \\(1000\\text{ }m{\\text{ }s}^{- 1}\\). The number of following statements which is/are true about the emitted radiation is Given: \\(h = 6 \\times10^{- 34}Js,m_{e}= 9 \\times10^{- 31}\\text{ }kg\\). (A) The deBroglie wavelength of the electron emitted is \\(666.67\\text{ }nm\\). (B) The characteristic of electrons emitted depend upon the material of the electrodes of the cathode ray tube. (C) The cathode rays start from cathode and move towards anode. (D) The nature of the emitted electrons depends on the nature of the gas present in cathode ray tube.",
     "57": "At what \\(pH\\), given half cell \\(MnO_{4}^{-}(0.1M) \\mid Mn^{2 +}(0.001M)\\) will have electrode potential of \\(1.282\\text{ }V\\) ? (Nearest Integer) \\[\\text{~Given~}E_{MnO_{4 \\mid}^{-}Mn^{+ 2}}^{o}= 1.54\\text{ }V,\\frac{2.303RT}{F}= 0.059\\text{ }V\\]",
     "96": "Two objects A and B are placed at \\(15\\text{ }cm\\) and \\(25\\text{ }cm\\) from the pole in front of a concave mirror having radius of curvature \\(40\\text{ }cm\\). The distance between images formed by the mirror is",
@@ -1275,12 +1277,34 @@
       "C": "\\(Fe\\left\\lbrack Fe(CN)_{6} \\right\\rbrack\\)",
       "D": "\\(Fe_{3}\\left\\lbrack Fe(CN)_{6} \\right\\rbrack_{2}\\)"
     },
+    "39": {
+      "A": "(A) - III, (B) - IV, (C) - II, (D) - I",
+      "B": "(A) - III, (B) - II, (C) - IV, (D) - I",
+      "C": "(A) - I, (B) - IV, (C) - II, (D) - III",
+      "D": "(A) - II, (B) - IV, (C) - I, (D) - III"
+    },
+    "41": {
+      "A": "\\(\\left\\lbrack FeF_{6} \\right\\rbrack^{3 -}\\)",
+      "B": "\\(\\left\\lbrack Fe\\left( C_{2}O_{4} \\right)_{3} \\right\\rbrack^{3 -}\\)",
+      "C": "\\(\\left\\lbrack Fe(CN)_{6} \\right\\rbrack^{3 -}\\)",
+      "D": "\\(\\left\\lbrack Fe\\left( {NH}_{3} \\right)_{6} \\right\\rbrack^{3 +}\\)"
+    },
+    "49": {
+      "A": "(A) - III, (B) - IV, (C) - I, (D) - II",
+      "B": "(A) - II, (B) - I, (C) - III, (D) - IV",
+      "C": "(A) - III, (B) - IV, (C) - II, (D) - I",
+      "D": "(A) - I, (B) - II, (C) - III, (D) - IV"
+    },
     "93": {
       "C": "Fig (d)",
       "D": "Fig (a)"
     },
     "100": {
       "C": "\\(\\left\\lbrack h^{1/2}c^{1/2}G^{- 1/2} \\right\\rbrack\\)"
+    },
+    "121": {
+      "A": "\\(\\Delta_{eg}H(Te) < \\Delta_{eg}H(Po)\\)",
+      "B": "\\(\\Delta_{eg}H(Se) < \\Delta_{eg}H(S)\\)"
     }
   }
 }
