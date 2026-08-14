@@ -1,0 +1,114 @@
+[
+  {
+    "id": "02-7",
+    "derived": "X",
+    "value": "a:b = sin60:sin45 = sqrt3:sqrt2 = sqrt6:2 = 1.224745",
+    "confidence": "high",
+    "note": "TWIN: C=D — sqrt6:sqrt2 simplifies to sqrt3:1 = 1.73205, byte-different but identical in value. No option equals the true ratio 1.224745; C looks like a mis-typed sqrt6:2. Repair an option to sqrt6:2 (equivalently sqrt3:sqrt2) and replace the redundant twin."
+  },
+  {
+    "id": "02-15",
+    "derived": "X",
+    "value": "b = 3 - sqrt3 = 1.2679492",
+    "confidence": "high",
+    "note": "C = 60 deg, b = sqrt3 * sin45 / sin75 = 2sqrt6/(sqrt6+sqrt2) = 3 - sqrt3 = 1.26795. Nearest option B (sqrt6/2 = 1.22474) is close but NOT equal — checked to 25 digits. No option matches."
+  },
+  {
+    "id": "02-23",
+    "derived": "X",
+    "value": "A = arctan(sqrt3/(2sqrt3-1)) = 35.1039 deg (then C = 84.8961 deg)",
+    "confidence": "high",
+    "note": "A+C = 120, sinA/sinC = 1/sqrt3 gives tanA = sqrt3/(2sqrt3-1), A = 35.104 deg — not a special angle. Tested all four options directly: 75 gives ratio 1.36603, 45 gives 0.73205, 60 gives 1, 30 gives 0.5; the stem needs 0.577350. None works, so the stem's data is inconsistent with any listed angle."
+  },
+  {
+    "id": "03-17",
+    "derived": "B",
+    "value": "c = sqrt(549) = 3*sqrt(61) = 23.4307490",
+    "confidence": "high",
+    "note": "TWIN: B=C — sqrt549 and 3sqrt61 are the SAME number (549 = 9*61), difference 0 to 25 digits. Cosine rule: c^2 = 144+225+180 = 549. Either letter is a correct key, so this is an option defect, NOT a key flip: replace the redundant one."
+  },
+  {
+    "id": "03-23",
+    "derived": "X",
+    "value": "SSA: two valid triangles, c = (5sqrt7 + sqrt31)/4 = 4.699130 or c = (5sqrt7 - sqrt31)/4 = 1.915248",
+    "confidence": "high",
+    "note": "sinA = 3/4 with a=4 gives 2R = 16/3 and sinB = 15/16, so B = 69.636 deg OR its supplement 110.364 deg; both leave C > 0 (61.774 deg and 21.045 deg), so BOTH triangles exist. c = 4cosB + 5cosA gives 4.6991 or 1.9152. Neither is 3, 6 or 5, and option B 'No real solution' is false — real solutions exist, in fact two of them."
+  },
+  {
+    "id": "03-24",
+    "derived": "X",
+    "value": "no real a — a^2 - 7a + 13 = 0 has discriminant -3; the triangle does not exist",
+    "confidence": "high",
+    "note": "B = 60 deg, so b^2 = a^2 + c^2 - 2ac cosB gives 36 = a^2 + 49 - 7a, i.e. a^2 - 7a + 13 = 0 with disc = 49-52 = -3. Geometrically the shortest possible b for B=60, c=7 is 7 sin60 = 6.0622 > 6, so no triangle has these data. Back-substituting each option confirms it: sqrt37 gives b^2 = 43.42, sqrt43 gives 46.10, sqrt85 gives 69.46, sqrt29 gives 40.30 — none is 36. The stem, not the key, needs repair (e.g. c = 6 or b = 7)."
+  },
+  {
+    "id": "03-29",
+    "derived": "X",
+    "value": "A = arctan(sqrt3/(2sqrt3-1)) = 35.1039 deg (B = 84.8961 deg, C = 60 deg)",
+    "confidence": "high",
+    "note": "C = 60 deg; sinA/sinB = 1/sqrt3 with B = 120-A gives tanA = sqrt3/(2sqrt3-1) = 0.702915, A = 35.104 deg. Cross-checked by Napier: tan((A-B)/2) = ((1-sqrt3)/(1+sqrt3))cot30 = -0.46410, A-B = -49.79, same root. Tested every option: 30 gives a:b = 1:2, 45 gives 0.73205, 60 gives 1, 75 gives 1.36603 — none is 1/sqrt3 = 0.57735. Same defective shape as 02-23."
+  },
+  {
+    "id": "05-18",
+    "derived": "X",
+    "value": "sin(A/2)cos(A/2) = (1/2)sinA = sqrt6/7 = 0.3499271",
+    "confidence": "high",
+    "note": "s = 9, area = sqrt(9*4*3*2) = 6sqrt6; sinA = 2*area/(bc) = 2sqrt6/7, so half of it is sqrt6/7 = 0.349927. Option A (1/3 = 0.333333) is near but not equal. Also checked the other side-labellings in case A is not opposite 5: they give 0.419913 and 0.489898 — still no option. X."
+  },
+  {
+    "id": "05-20",
+    "derived": "X",
+    "value": "sin(C/2) = sqrt2/2 = 1/sqrt2 = 0.7071068 (C = 90 deg)",
+    "confidence": "high",
+    "note": "9-12-15 is 3x(3-4-5), so with c = 15 the angle C is exactly 90 deg and sin(C/2) = sin45 = sqrt2/2. Confirmed by the half-angle formula: s = 18, sqrt((s-a)(s-b)/ab) = sqrt(9*6/108) = sqrt(0.5). No option equals 0.70711 (they are 0.89443, 0.44721, 0.63246, 1.34164 — and D exceeds 1, impossible for a sine)."
+  },
+  {
+    "id": "05-22",
+    "derived": "X",
+    "value": "sin(A/2) = 1/sqrt17 = sqrt17/17 = 0.2425356",
+    "confidence": "high",
+    "note": "8-15-17 is right-angled at C. s = 20; sin(A/2) = sqrt((s-b)(s-c)/bc) = sqrt(5*3/255) = sqrt(1/17). Cross-checked independently: sinA = 8/17 gives A = 28.0725 deg, half-angle sine 0.242536 — agrees. Option C (1/sqrt15 = 0.258199) is the nearest and is NOT equal. No option matches."
+  },
+  {
+    "id": "05-24",
+    "derived": "X",
+    "value": "cos(B/2) = 3/sqrt10 = 3sqrt10/10 = 0.9486833",
+    "confidence": "high",
+    "note": "Triangle is valid (11+13 > 20; Heron area = 66, real). s = 22; cos(B/2) = sqrt(s(s-b)/ac) = sqrt(22*9/220) = sqrt(0.9). Cross-checked via cosB = (121+400-169)/440 = 0.8 and the half-angle identity — same 0.948683. No option matches (0.70711, 0.86603, 1.11803, 0.5), and option C exceeds 1 so it cannot be any cosine."
+  },
+  {
+    "id": "05-25",
+    "derived": "A",
+    "value": "tan(C/2) = 3/4 = 0.75",
+    "confidence": "high",
+    "note": "s = 16; sqrt((s-a)(s-b)/(s(s-c))) = sqrt(36/64) = 3/4. Cross-checked from cosC = 7/25 and geometrically (isosceles: 6-8-10 half-triangle). No twins."
+  },
+  {
+    "id": "07-6",
+    "derived": "X",
+    "value": "tan((A+B)/2) = cot(C/2) — there is NO side-ratio factor",
+    "confidence": "high",
+    "note": "Since A+B = 180-C, (A+B)/2 = 90 - C/2 identically, so tan((A+B)/2) = cot(C/2) with no dependence on a or b. All four options attach a spurious (a+b)/(a-b) or (a-b)/(a+b) factor. Verified numerically on three scalene triangles (3-4-5, 5-6-7, 7-9-12): the LHS equals cot(C/2) exactly every time, while the four option RHS values are all negative (e.g. -7, -0.1429, -7, -0.1429 for 3-4-5 against a true value of 1). Every option is false; the stem's own Napier analogy is the DIFFERENCE form tan((A-B)/2) = ((a-b)/(a+b))cot(C/2)."
+  },
+  {
+    "id": "07-8",
+    "derived": "B",
+    "value": "tan((A+B)/2) = cot(30 deg) = sqrt3 = 1.7320508",
+    "confidence": "high",
+    "note": "a and b are a red herring: A+B = 120 always, so tan60 = sqrt3. Confirmed by solving the triangle fully (c = sqrt28, A = 100.893, B = 19.107). No twins."
+  },
+  {
+    "id": "07-16",
+    "derived": "A",
+    "value": "A = B; the Napier route is tan((A-B)/2) = ((a-b)/(a+b))cot(C/2) = 0, so A = B",
+    "confidence": "medium",
+    "note": "TWO SIMULTANEOUSLY TRUE: A and D. Both stated proofs are mathematically valid — A's Napier argument works because |A-B|/2 < 90 deg so tan = 0 forces A = B, and B's sine-rule argument works because sinA = sinB gives A = B or A+B = 180, the latter impossible in a triangle. So D ('Both A and B are correct') is a TRUE statement and is defensible as the key. I pick A because the stem explicitly demands the proof be made USING NAPIER'S ANALOGY, which option B does not do. The adjudicator should decide between A and D; the defect is the stem/option set, not an arithmetic error."
+  },
+  {
+    "id": "07-17",
+    "derived": "X",
+    "value": "(a-b)/(a+b) = tan(10 deg) * tan(20 deg) = 0.0641778",
+    "confidence": "high",
+    "note": "C = 40 deg, so Napier gives (a-b)/(a+b) = tan((A-B)/2)tan(C/2) = tan10 * tan20. Verified directly from the sides: with c = 10, a = 15.32089, b = 13.47296, (a-b)/(a+b) = 0.0641778, matching tan10 tan20 to 24 digits. The options evaluate to 0.484454 (A), 0.133022 (B), 0.147956 (C) and 6.75877 (D) — none is correct. Option C is the intended answer with C/2 mistakenly written as C; repair it to tan10 tan20."
+  }
+]

@@ -1,0 +1,174 @@
+{
+  "_comment": "Adjudicated repairs for 3D Geometry (Batch J). 235 blind verdicts, 18 disagreements and 65 AGREEING-twin rows — 28% of the chapter, by far the highest duplicate-option density of any chapter in the exam. Only 2 key flips. THE GENERATOR SIGNATURE IS UNMISTAKABLE HERE: it writes the square root of a PERFECT SQUARE as though it were a surd (6/sqrt(49) beside 6/7, 20/sqrt(25) beside 4, 12/sqrt(9) beside 4, 3/sqrt(27) beside 1/sqrt(3)), so a great many rows print their own key a second time. The chapter-specific trap cuts both ways and every repair below was tested mechanically rather than by eye: direction RATIOS and plane equations scaled by any non-zero constant are the SAME answer, whereas direction COSINES are not — there proportional triples are genuinely different, since only one member of a proportional family satisfies l^2+m^2+n^2 = 1. NOT REPAIRED, deliberately: the 09-* sphere block (09-3, 09-4, 09-5, 09-6, 09-8, 09-18, 09-24) keys 'Both A and B' by design, so its twin IS the question. NOTED FOR A LATER PASS: on 07-11 the two planes are actually IDENTICAL at the answer k = 4, so the 'parallel' the stem asks about is degenerate; the key is unaffected and the stem is left alone.",
+
+  "09-19": {
+    "answer": "A",
+    "reason": "Key flip C→A. The GENERAL equation of a sphere is x^2+y^2+z^2+2ux+2vy+2wz+d = 0, with centre (-u,-v,-w) and radius sqrt(u^2+v^2+w^2-d); the other form named is the centre-radius (standard) form, which is a different thing. The keyed 'Both A and B' therefore conflates two distinct named forms. The decisive evidence is the source's OWN solution, which labels them apart and in the correct order before keying C anyway."
+  },
+  "09-14": {
+    "answer": "A",
+    "options": { "B": "\\(\\sqrt{12}\\)" },
+    "reason": "Key flip D→A, plus a repair on the same row. The diameter is |(3,4,5)-(1,0,3)| = sqrt(24), so the radius is sqrt(6) = option A while option C, sqrt(24), is the DIAMETER — a factor of 2 apart, so the keyed 'Both A and C' asserts two different values and cannot be right. The source's own solution proves it ('Step 2: Radius = sqrt(24)/2 = sqrt(6)') and then keys D regardless, the derive-right-name-wrong pattern seen throughout this batch. B is repaired to sqrt(12) so it stays distinct from both the radius and the diameter."
+  },
+
+  "06-19": {
+    "options": {
+      "B": "\\(\\frac{1}{3}x + \\frac{2}{3}y - \\frac{2}{3}z = 5\\)",
+      "D": "\\(x + 2y + 2z = 5\\)"
+    },
+    "reason": "TWO twin pairs in one row; key C retained. This was the batch's only CONFLICT — the two blind passes named different letters — and the resolution is that they named the same plane: B = (1/3, 2/3, -2/3, 5/3) and C = (1, 2, -2, 5) are proportional with k = 1/3 exactly, both at distance 5/3 from the origin. Since the stem asks to 'find the plane' rather than to write it in normal form, either equation answers it, so the key cannot be overwritten on the letter disagreement. The second pair is among the WRONG options: the old A (x+2y-2z = 5/3) and old D (3x+6y-6z = 5) are both the plane at distance 5/9. B is re-pointed to the correct unit normal with the wrong distance, and D to a flipped normal sign; A is left as the sole distance-5/9 distractor."
+  },
+  "07-4": {
+    "options": { "C": "\\(a_1 + b_1 + c_1 = a_2 + b_2 + c_2\\)" },
+    "reason": "KEY-STANDS with a repair; key B retained. Both blind passes picked C, and C is NOT the same statement as B — but neither is the key wrong. Proportional normals alone (C) are satisfied by COINCIDENT planes as well as parallel ones, so on its own C does not characterise parallelism, whereas the keyed B adds the constant-term condition that excludes coincidence. The replacement is a sum condition that has nothing to do with parallelism and is false for most parallel pairs."
+  },
+  "01-9": {
+    "options": { "A": "\\(\\sqrt{12}\\)" },
+    "reason": "Twin repair; key B retained. OP = sqrt(9+16+25) = sqrt(50), and options A (5 sqrt(2)) and B (sqrt(50)) are bit-for-bit the same 7.0710678 — the surd simplified and unsimplified. Both passes computed 50 correctly and named the other letter; this is the illusory-flip pattern. The replacement, sqrt(12) = 3.464, is distinct from B, from C (sqrt(34)) and from D."
+  },
+  "02-23": {
+    "options": {
+      "A": "\\(\\left(\\frac{1}{2}, \\frac{1}{2}, \\frac{1}{\\sqrt{2}}\\right)\\)",
+      "B": "\\(\\left(\\frac{1}{2}, -\\frac{1}{2}, \\frac{1}{2}\\right)\\)"
+    },
+    "reason": "A THREE-WAY tie; key C retained. Options A, B and C all evaluate to (0.5, -0.5, 0.7071068) — the same direction-cosine triple written three ways, since sqrt(2)/2 = 1/sqrt(2) and C's cosines evaluate to exactly that. Because these are direction COSINES, identity is exact equality rather than proportionality, and the unit test l^2+m^2+n^2 = 1 is met by that one triple alone. The new A is a valid but different DC triple (0.25+0.25+0.5 = 1, with the sign on the second component flipped); the new B fails the unit test outright (0.75), so it cannot be any line's direction cosines."
+  },
+  "03-12": {
+    "options": {
+      "A": "\\(\\vec{r} = (2\\vec{i} + 3\\vec{j} + 4\\vec{k}) + \\lambda(2\\vec{i} + \\vec{j} + 3\\vec{k})\\)",
+      "C": "\\(\\vec{r} = (\\vec{i} + \\vec{j} + \\vec{k}) + \\lambda(\\vec{i} + \\vec{j} + 2\\vec{k})\\)"
+    },
+    "reason": "A THREE-WAY tie; key B retained. The direction is (1,1,1)-(2,3,4) = (-1,-2,-3), which is (1,2,3) re-signed: the cross product (-1,-2,-3) x (1,2,3) is the zero vector, so the old A and the keyed B are the identical line differing only in the sign of the parameter. The old C was the same line again, anchored at the other given point (1,1,1) with direction (1,2,3), which reaches (2,3,4) at lambda = 1. Only D's direction (1,-2,3) was genuinely different. The replacements use directions (2,1,3) and (1,1,2), each verified non-parallel to (1,2,3), to D's direction and to each other; the new C also fails to pass through (2,3,4)."
+  },
+  "03-17": {
+    "options": { "A": "\\(\\frac{x}{0} = \\frac{y}{1} = \\frac{z}{0}\\)" },
+    "reason": "Twin repair; key B retained. The x-axis is {(t,0,0)}, and the old A's zero denominators are the standard notation for 'that coordinate is identically zero', so it unpacked to exactly the keyed y = 0, z = 0 — the same point set in symmetric rather than Cartesian form. The replacement is the Y-axis, a different line."
+  },
+  "04-20": {
+    "options": {
+      "C": "\\(30°\\)",
+      "B": "\\(\\cos^{-1}\\left(\\frac{1}{3}\\right)\\)"
+    },
+    "reason": "TWO twin pairs in one row; key D retained. The direction cosines (1/sqrt(2), 1/2, 1/2) are valid (0.5+0.25+0.25 = 1) and the angle with the x-axis is arccos(1/sqrt(2)) = 45° exactly, so the old C (45°) and the keyed D were the same angle in degree and inverse-cosine notation. The second pair is among the wrong options: A (60°) and the old B (arccos(1/2)) are likewise identical. C becomes 30° and B becomes arccos(1/3) = 70.5°, leaving four distinct angles."
+  },
+  "06-14": {
+    "options": {
+      "B": "\\(x - y + z = 4\\)",
+      "C": "\\(x - y - z = -12\\)"
+    },
+    "reason": "A THREE-WAY tie; key D retained. The normal is (2,1,-1) x (1,2,1) = (3,-3,3), and through (1,2,-3) the plane is 3x-3y+3z = -12. The old B (1,-1,1,-4) is that with k = 1/3, and the old C (3x-3y+3z+12 = 0) rearranges to it verbatim, so B, C and D were one plane written three ways; only A's normal (1,1,-1) differed. The replacements flip the constant on B and use the normal (1,-1,-1) on C, each verified non-parallel to (3,-3,3), to A's normal and to each other."
+  },
+  "08-12": {
+    "options": {
+      "C": "\\((1, 2, 1)\\)",
+      "B": "\\((1, -2, -1)\\)"
+    },
+    "solution": "The line of intersection is perpendicular to both normals, so its direction is \\((1, 2, 3) \\times (3, 2, 1) = \\left(2\\cdot 1 - 3\\cdot 2,\\ 3\\cdot 3 - 1\\cdot 1,\\ 1\\cdot 2 - 2\\cdot 3\\right) = (-4, 8, -4)\\). Checking: \\((-4, 8, -4)\\cdot(1,2,3) = 0\\) and \\((-4, 8, -4)\\cdot(3,2,1) = 0\\).",
+    "reason": "A THREE-WAY tie, plus a solution rewrite; key D retained. The line of intersection has direction n1 x n2 = (1,2,3) x (3,2,1) = (-4,8,-4). These are direction RATIOS, so scaling does not change the answer: the old B (4,-8,4) and old C (1,-2,1) both cross to zero against (-4,8,-4), and all three satisfy the defining orthogonality (dot zero with both normals). Only A (2,3,1) was a genuine distractor. Both replacements were tested by cross product against the keyed direction, against A and against each other — no pair is parallel — and neither is orthogonal to both normals."
+  },
+  "08-21": {
+    "options": { "B": "\\(\\sin\\theta = \\frac{2}{3}\\)" },
+    "reason": "Twin repair; key A retained. With d = (1,1,1) and n = (2,1,-1), sin(theta) = 2/(sqrt(3) sqrt(6)) = 2/(3 sqrt(2)) = 0.4714045, and the old B (sqrt(2)/3) is that same number rationalised. The replacement, 2/3 = 0.667, is distinct from it and from C (1/sqrt(6) = 0.408)."
+  },
+  "04-7": {
+    "options": { "A": "\\(\\cos^{-1}\\left(\\frac{9}{\\sqrt{87}}\\right)\\)" },
+    "reason": "No option was correct; keyed option A repaired, key A retained. With d1 = (2,3,4) and d2 = (1,1,1), cos(theta) = 9/(sqrt(29) sqrt(3)) = 9/sqrt(87) = 0.9649. The printed A was 9/(3 sqrt(29)) and option B was 3/sqrt(29) — the identical number, since 9/3 = 3, so the row also carried a duplicate. Both were 0.5571, and C (1/3) and D were further off still. B is left as the distinct distractor."
+  },
+  "05-3": {
+    "options": { "B": "\\(\\frac{1}{\\sqrt{3}}\\)" },
+    "reason": "No option was correct; keyed option B repaired, key B retained. For the skew pair with a1 = (0,0,0), d1 = (1,1,0) and a2 = (1,0,0), d2 = (0,1,1), the common perpendicular is d1 x d2 = (1,-1,1) of length sqrt(3), and the shortest distance is 1/sqrt(3) = 0.5774. The printed options were 0, 0.7071, 1.4142 and 0.5 — the keyed value was 22% high."
+  },
+  "07-17": {
+    "options": { "D": "\\(\\cos^{-1}\\left(\\frac{2}{\\sqrt{6}}\\right)\\)" },
+    "reason": "No option was correct; keyed option D repaired, key D retained. With normals (2,-2,1) and (1,-1,2), cos(theta) = 6/(3 sqrt(6)) = 2/sqrt(6) = 0.8165 (35.26°). The printed D was 6/15 = 0.4 and option B was 2/5 = 0.4 — the same value, so this row too carried a duplicate before the repair. B is left as the distinct distractor."
+  },
+  "08-7": {
+    "options": { "C": "\\(\\left(\\frac{1}{2}, 2, -\\frac{3}{2}\\right)\\)" },
+    "reason": "No option was correct; keyed option C repaired, key C retained. Parametrising the line as x = t, y = 1+2t, z = -1-t and substituting into x+y+z = 1 gives 2t = 1, so t = 1/2 and the intersection is (1/2, 2, -3/2). The printed C had -1/2 in place of -3/2 and so lies on neither the line nor the plane; every other option was checked against both and failed at least one."
+  },
+
+  "05-12": {
+    "exclude": true,
+    "reason": "Excluded: the stem is under-determined. It asks for the distance from the z-axis of a line through (1,1,0) parallel to the xy-plane, but never fixes that line's direction — and the distance depends on it. Computed in code: direction (1,1,0) gives 0 (the line meets the z-axis), (1,0,0) and (0,1,0) each give 1, (2,1,0) gives 0.447. With the answer ranging over an interval, no option can be right and there is nothing to repair toward without inventing a direction."
+  },
+  "06-15": {
+    "exclude": true,
+    "reason": "Excluded: the question has at least three correct answers. It asks for a plane containing the line x = y = z, and verified in code, options A, B and C ALL contain it — each normal is orthogonal to (1,1,1) ((1,2,-3), (2,-1,-1) and (1,-2,1) all dot to zero) and each plane passes through the origin, so each contains the whole line. Repairing two of the three would mean choosing arbitrarily which correct answers to destroy."
+  },
+
+  "04-9": {
+    "solution": "Two lines are parallel exactly when their direction ratios are proportional. For \\((2, 4, 6)\\) and \\((1, 2, 3)\\), \\(\\dfrac{2}{1} = \\dfrac{4}{2} = \\dfrac{6}{3} = 2\\), so that pair is proportional and those lines are parallel. No other listed pair is proportional: \\((1,2,2)\\) and \\((2,2,1)\\) give ratios \\(0.5, 1, 2\\); \\((2,3,4)\\) and \\((3,4,2)\\) give \\(0.67, 0.75, 2\\); \\((1,1,1)\\) and \\((1,2,3)\\) give \\(1, 0.5, 0.33\\).",
+    "reason": "Solution rewrite only; key D correct and retained (blind-confirmed). Found by audit:keys after commit. The source's Step 2 says 'Check option B' and then tests the ratios 2/1 = 4/2 = 6/3 — but that is the pair printed as option D, not B. The mathematics was right and the letter label was stale; the rewrite names no letter so the contradiction cannot recur."
+  },
+  "01-12": { "options": { "C": "Acute-angled isosceles triangle" }, "reason": "Two-simultaneously-true repair; key correct. The old C ('Right-angled triangle') was a strictly weaker but true description of the keyed shape. The replacement contradicts the right angle and so is false." },
+  "01-18": { "options": { "C": "\\(7\\)" }, "reason": "Twin repair; key A retained. Old C was sqrt(49)/2 = 7/2, numerically identical to the key — the perfect-square-as-surd signature. Replaced with 7, twice the correct value." },
+  "01-24": { "options": { "B": "\\(1:2\\)" }, "reason": "Twin repair; key C retained. Old B was '2:2', the keyed 1:1 written unsimplified." },
+  "01-28": { "options": { "B": "\\(3\\sqrt{2}\\)" }, "reason": "Twin repair; key D retained. Old B was sqrt(12), exactly the keyed 2 sqrt(3) unsimplified. The replacement, 4.243, is distinct from 3.464." },
+  "02-4": {
+    "options": {
+      "B": "\\(\\left(\\frac{3}{\\sqrt{3}}, \\frac{3}{\\sqrt{3}}, \\frac{3}{\\sqrt{3}}\\right)\\)",
+      "D": "\\(\\left(\\frac{1}{\\sqrt{27}}, \\frac{1}{\\sqrt{27}}, \\frac{1}{\\sqrt{27}}\\right)\\)"
+    },
+    "reason": "TWO twin pairs; key A retained. Old B was 3/sqrt(27) per component, which is exactly 1/sqrt(3) — the keyed triple. A second tie sat among the wrong options: old D was 3/9 = 1/3 per component, identical to C. Both replacements fail the direction-cosine unit test (sum of squares 9 and 1/9 respectively), so neither can be any line's direction cosines."
+  },
+  "02-5": { "options": { "A": "\\(0\\)" }, "reason": "Two-simultaneously-true repair; key C retained. Old A (2/3) is one of the two admissible branches of the keyed ±2/3, so it was simultaneously correct. The replacement is neither branch." },
+  "02-9": { "options": { "C": "\\((0, 1, 1)\\)" }, "reason": "Two-simultaneously-true repair; key correct. Old C (1,0,0) satisfies the only condition the stem imposes, so it was a second right answer. The replacement violates that condition." },
+  "02-12": { "options": { "C": "\\(\\left(-\\frac{9}{17}, \\frac{6}{17}, -\\frac{2}{17}\\right)\\)" }, "reason": "Twin repair; key D retained. Old C was (-18/22, 12/22, -4/22), which reduces exactly to the keyed (-9/11, 6/11, -2/11). The replacement changes the denominator to 17, breaking the unit-sum property these direction cosines must have." },
+  "02-16": { "options": { "B": "\\(\\left(\\frac{6}{11}, -\\frac{2}{11}, -\\frac{3}{11}\\right)\\)" }, "reason": "Twin repair; key A retained. Old B wrote the keyed components over sqrt(49), which is 7 — identical values, the perfect-square-as-surd signature again." },
+  "03-3": {
+    "options": {
+      "B": "\\(\\frac{x-1}{4} = \\frac{y-2}{5} = \\frac{z-3}{6}\\)",
+      "C": "\\(\\frac{x-1}{1} = \\frac{y-2}{2} = \\frac{z-3}{3}\\)"
+    },
+    "reason": "A THREE-WAY tie; key A retained. Old B was the keyed line with its direction (3,3,3) reduced to (1,1,1) — a scalar multiple, hence the same line — and old C wrote that same line anchored at the other given point (4,5,6). Both replacements carry directions non-parallel to (1,1,1) and to each other."
+  },
+  "03-7": { "options": { "C": "\\(x = 1, z = 3\\)" }, "reason": "Twin repair; key D retained. Old C ('x = 1, y = 2') is by definition the same line as the keyed symmetric form. The replacement fixes a different pair of coordinates and so is a different line." },
+  "03-11": { "options": { "C": "\\((4, 1, -3)\\)" }, "reason": "Twin repair; key D retained. Old C was (-4,1,3), which is -1 times the keyed direction ratios — the same direction. The replacement was cross-product tested against all three survivors and is parallel to none." },
+  "03-20": {
+    "options": {
+      "D": "\\(3x = 2y = z\\)",
+      "C": "\\(\\frac{x}{1} = \\frac{y}{2} = \\frac{z}{3}\\)"
+    },
+    "reason": "TWO twin pairs; key A retained. Old D (2x = 3y = 6z) divides through by 6 to give x/3 = y/2 = z/1, the keyed line. A second tie sat among the wrong options: old C ('x = y = z') is literally option B (x/1 = y/1 = z/1) in another notation. Both replacements were checked to be parallel to neither the keyed direction nor each other."
+  },
+  "03-23": { "options": { "B": "\\((0, 4, -8)\\)" }, "reason": "Twin repair; key A retained. Old B was (0,1,2), which is A/4 — direction ratios scaled by a non-zero constant are the same direction. The replacement flips the sign of the third component, which no scaling of A produces." },
+  "04-15": { "options": { "B": "\\(\\cos^{-1}\\left(\\frac{3}{14}\\right)\\)" }, "reason": "Twin repair; key A retained. Old B was 3/sqrt(14), exactly the keyed 9/(3 sqrt(14)). The replacement, 3/14 = 0.214, differs from 0.802." },
+  "04-18": { "options": { "C": "Perpendicular" }, "reason": "Two-simultaneously-true repair; key correct. Old B ('Intersecting') and old C ('Coplanar and intersecting') are logically equivalent, since two intersecting lines are necessarily coplanar — so the row offered one relation under two labels. The replacement is a stronger and distinguishable condition." },
+  "04-24": { "options": { "D": "\\(90° + \\alpha\\)" }, "reason": "Containment repair; key A retained. Old D ('alpha or supplementary to it') is a disjunction that INCLUDES the keyed answer, so it was true whenever the key was. The replacement names a single specific angle that is neither alpha nor its supplement." },
+  "05-4": { "options": { "B": "\\(\\frac{2}{7}\\)" }, "reason": "Twin repair; key D retained. Old B was 2/sqrt(25) = 2/5, identical to the key." },
+  "05-5": { "options": { "B": "\\(\\frac{20}{7}\\)" }, "reason": "Twin repair; key A retained. Old B was 20/5, the keyed 4 written unsimplified." },
+  "05-6": { "options": { "B": "\\(\\frac{6}{5}\\)" }, "reason": "Twin repair; key A retained. Old B was 6 sqrt(5)/5, the rationalised form of the keyed 6/sqrt(5)." },
+  "05-9": { "options": { "C": "\\(\\frac{3}{\\sqrt{13}}\\)" }, "reason": "Twin repair; key A retained. Old C was 3/sqrt(52), and sqrt(52) = 2 sqrt(13), so it equalled the keyed 3/(2 sqrt(13)) exactly. The replacement drops the factor 2 and is twice the correct value." },
+  "05-13": { "options": { "B": "\\(\\frac{5}{3}\\)" }, "reason": "Twin repair; key D retained. Old B was 5/sqrt(5), which simplifies to exactly the keyed sqrt(5)." },
+  "05-16": { "options": { "B": "\\(\\frac{5}{7}\\)" }, "reason": "Twin repair; key C retained. Old B was 5/5, the keyed 1 written unsimplified." },
+  "05-18": { "options": { "B": "\\(2\\)" }, "reason": "Twin repair; key D retained. Old B was 2 sqrt(5)/5, the rationalised form of the keyed 2/sqrt(5)." },
+  "05-20": { "options": { "A": "Perpendicular to both but does not intersect either" }, "reason": "Two-simultaneously-true repair; key correct. Old A ('Perpendicular to both lines') was a strictly weaker but true statement alongside the key. The replacement adds a clause that the keyed configuration contradicts." },
+  "05-21": { "options": { "B": "\\(\\frac{50}{31}\\)" }, "reason": "Twin repair; key D retained. Old B was 50/25, the keyed 2 written unsimplified." },
+  "05-22": { "options": { "B": "\\(\\frac{3}{5}\\)" }, "reason": "Twin repair; key A retained. Old B was 3 sqrt(5)/5, the rationalised form of the keyed 3/sqrt(5)." },
+  "05-23": { "options": { "B": "\\(\\frac{3}{2}\\)" }, "reason": "Twin repair; key D retained. Old B was 3 sqrt(2)/2, the rationalised form of the keyed 3/sqrt(2)." },
+  "05-25": { "options": { "B": "\\(\\frac{2}{5}\\)" }, "reason": "Twin repair; key D retained. Old B was 2 sqrt(5)/5, the rationalised form of the keyed 2/sqrt(5)." },
+  "05-27": { "options": { "B": "\\(\\frac{15}{7}\\)" }, "reason": "Twin repair; key D retained. Old B was 15/5, the keyed 3 written unsimplified." },
+  "05-29": { "options": { "B": "\\(\\frac{4}{5}\\)" }, "reason": "Twin repair; key A retained. Old B was 4 sqrt(13)/13, the rationalised form of the keyed 4/sqrt(13)." },
+  "06-5": {
+    "options": { "A": "\\(\\frac{12}{5}\\)", "B": "\\(\\frac{4}{3}\\)" },
+    "reason": "A THREE-WAY tie; key C retained. Old A was 12/3 and old B was 12/sqrt(9), both exactly the keyed 4 — the perfect-square-as-surd signature producing two copies of the key at once. The replacements are 2.4 and 1.333, distinct from 4 and from each other."
+  },
+  "06-6": {
+    "options": {
+      "B": "\\(\\frac{2}{7}x - \\frac{3}{7}y + \\frac{6}{7}z = 28\\)",
+      "A": "\\(2x - 3y + 6z = 7\\)"
+    },
+    "reason": "TWO twin pairs; key D retained. Old B (2x-3y+6z = 28) is exactly 7 times the keyed plane, and a plane equation scaled by a non-zero constant is the same plane. A second tie sat among the wrong options: old A was exactly 1/7 times option C. Both replacements were tested for 4-vector proportionality against all survivors and match none."
+  },
+  "06-12": { "options": { "C": "\\(\\left(\\frac{2}{29}, -\\frac{3}{29}, \\frac{4}{29}\\right)\\)" }, "reason": "Twin repair; key retained. Old C was (58/29, -87/29, 116/29), which reduces to (2,-3,4) — byte-different from but identical to the keyed triple. The replacement is the same triple divided by 29, which is not proportional to it as a POINT and so is a genuine distractor here." },
+  "06-16": { "options": { "A": "\\(\\vec{r} \\cdot (2\\vec{i} - 3\\vec{j} + 6\\vec{k}) = 7\\)" }, "reason": "Twin repair; key B retained. Old A had the right-hand side 28, exactly 7 times the keyed 4 with the same normal — hence the same plane. The replacement changes the constant to 7, giving a genuinely different parallel plane." },
+  "06-25": { "options": { "D": "\\(x + 2y + 3z = 6\\)" }, "reason": "Twin repair; key retained. Under the stem's 'passes through the origin' reading the old D was equivalent to the keyed plane. The replacement has a non-zero constant term and so does not pass through the origin at all." },
+  "06-27": {
+    "options": { "B": "\\(\\frac{6}{11}\\)", "C": "\\(\\frac{6}{49}\\)" },
+    "reason": "A THREE-WAY tie, and the only BYTE-IDENTICAL pair in the chapter; key A retained. Old B and old C were both 6/sqrt(49), character for character, and both equal the keyed 6/7. The replacements are 0.545 and 0.122, distinct from 0.857 and from each other."
+  },
+  "07-8": { "options": { "B": "\\(\\frac{8}{5}\\)" }, "reason": "Twin repair; key C retained. Old B was 8/sqrt(9) = 8/3, identical to the key." },
+  "07-20": { "options": { "D": "\\(120°\\)" }, "reason": "Twin repair; key A retained. Old D (60°) is exactly the keyed arccos(1/2) written in degrees. The replacement is the supplementary angle, a plausible slip when the dot product's sign is dropped." },
+  "07-21": { "options": { "B": "\\(\\frac{7}{5}\\)" }, "reason": "Twin repair; key D retained. Old B was 7/sqrt(9) = 7/3, identical to the key." },
+  "08-17": { "options": { "C": "\\(\\frac{1}{3}\\)" }, "reason": "Twin repair among the WRONG options; key retained and untouched. Old B (1/sqrt(3)) and old C (sqrt(3)/3) are the same number, so the row printed a duplicated distractor. The replacement, 1/3, is distinct from 0.577." }
+}

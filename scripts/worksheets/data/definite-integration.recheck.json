@@ -1,0 +1,121 @@
+[
+  {
+    "id": "01-2",
+    "derived": "B",
+    "value": "26/3 = 8.66667",
+    "confidence": "high",
+    "note": "[x^3/3] from 1 to 3 = 27/3 - 1/3. C=27/3 drops the lower limit."
+  },
+  {
+    "id": "01-3",
+    "derived": "D",
+    "value": "2",
+    "confidence": "high",
+    "note": "[x^2 + x] from 0 to 1 = 1 + 1."
+  },
+  {
+    "id": "01-6",
+    "derived": "D",
+    "value": "1",
+    "confidence": "high",
+    "note": "sin(pi/2) - sin(0) = 1. Integrand positive on (0,pi/2), so sign checks."
+  },
+  {
+    "id": "01-7",
+    "derived": "A",
+    "value": "1/4 = 0.25",
+    "confidence": "high",
+    "note": "[x^4/4] from 0 to 1."
+  },
+  {
+    "id": "01-16",
+    "derived": "A",
+    "value": "2",
+    "confidence": "high",
+    "note": "[-cos x] from 0 to pi = 1 + 1. Positive integrand, so C = -2 impossible."
+  },
+  {
+    "id": "01-18",
+    "derived": "C",
+    "value": "8",
+    "confidence": "high",
+    "note": "[x^2] from 1 to 3 = 9 - 1."
+  },
+  {
+    "id": "01-25",
+    "derived": "A",
+    "value": "f(x)",
+    "confidence": "high",
+    "note": "FTC part 1. Lower limit a is constant, contributes nothing on differentiating."
+  },
+  {
+    "id": "01-27",
+    "derived": "B",
+    "value": "3",
+    "confidence": "high",
+    "note": "Additivity: int_b^c = int_0^c - int_0^b = 8 - 5."
+  },
+  {
+    "id": "03-7",
+    "derived": "B",
+    "value": "1/(2*sqrt(3)) = sqrt(3)/6 = 0.2886751",
+    "confidence": "high",
+    "note": "TWIN: B=D. u=2x, du=2dx, limits become 0 to pi/6, so (1/2)tan(pi/6). B is 1/(2sqrt3)=0.288675 and D is sqrt3/6=0.288675 - the same number, rationalised vs not. Picked B as the direct substitution result; the key may legitimately be D. Neither A (0.35355) nor C (0.33333) matches."
+  },
+  {
+    "id": "03-16",
+    "derived": "C",
+    "value": "ln((1+e)/2) = ln(1+e) - ln 2 = 0.6201145",
+    "confidence": "high",
+    "note": "TWIN: B=C. u=1+e^x runs 2 to 1+e, giving [ln u] = ln(1+e) - ln 2 = 0.620114; B writes the same value as a single log of the quotient. Picked C as the direct form; B is equally correct. A = 1.3133 and D = 1.7183 both exceed the true value."
+  },
+  {
+    "id": "03-17",
+    "derived": "D",
+    "value": "(ln 2)^2 / 2 = 0.2402265",
+    "confidence": "high",
+    "note": "TWIN: B=D. u=ln x runs 0 to ln2, giving [u^2/2] = (ln2)^2/2 = 0.240227. B is (1/2)(ln2)^2 - the identical expression with the half written in front. Picked D as the literal [u^2/2] form. C is twice the answer, A = 0.34657 is unrelated."
+  },
+  {
+    "id": "03-30",
+    "derived": "A",
+    "value": "sqrt(3) - 1/sqrt(3) = 2/sqrt(3) = 2*sqrt(3)/3 = 1.1547005",
+    "confidence": "high",
+    "note": "TWIN: A=B. [-cot x] from pi/6 to pi/3 = -1/sqrt3 + sqrt3 = 1.154701; B is that same number rationalised. Picked A as the direct limit substitution; B is equally correct. C = 0.86603 and D = 0.73205 do not match."
+  },
+  {
+    "id": "04-19",
+    "derived": "A",
+    "value": "pi/4 - 1/2 = 0.2853982",
+    "confidence": "high",
+    "note": "Parts with v = x^2/2: pi/8 - (1/2)[x - arctan x] = pi/8 - 1/2 + pi/8. Numeric spot-check of the integrand agrees (~0.28)."
+  },
+  {
+    "id": "04-22",
+    "derived": "X",
+    "value": "ln 2 + pi/2 - 2 = 0.2639434",
+    "confidence": "high",
+    "note": "NO OPTION MATCHES. Antiderivative x*ln(1+x^2) - 2x + 2*arctan x differentiates back to ln(1+x^2) exactly, and at x=1 gives ln2 - 2 + pi/2 = 0.263943. Options evaluate to A = 0.122351, B = -0.184502, C = 1.193147, D = 0.306853. B is NEGATIVE, which is impossible since ln(1+x^2) >= 0 on [0,1]. A appears to be the intended answer written with a sign error and a 1 where a 2 belongs; the correct text would be \\(\\ln 2 + \\frac{\\pi}{2} - 2\\)."
+  },
+  {
+    "id": "04-26",
+    "derived": "B",
+    "value": "pi/8 = 0.3926991",
+    "confidence": "high",
+    "note": "Parts: boundary term vanishes at both ends, leaving (1/2)*int_0^1 x^2/sqrt(1-x^2) dx = (1/2)(pi/4). Cross-checked: int x*arccos x + int x*arcsin x = int (pi/2)x = pi/4, and both halves equal pi/8."
+  },
+  {
+    "id": "05-18",
+    "derived": "B",
+    "value": "1/2 = 0.5",
+    "confidence": "high",
+    "note": "Split at the breakpoint x=1/2: int_0^(1/2)(1-2x) = 1/4 and int_(1/2)^1(2x-1) = 1/4. Also read off as two triangles of base 1/2, height 1."
+  },
+  {
+    "id": "05-24",
+    "derived": "A",
+    "value": "pi/sqrt(2) = pi*sqrt(2)/2 = 2.2214415",
+    "confidence": "high",
+    "note": "sqrt(tan)+sqrt(cot) = sqrt2*(sin+cos)/sqrt(1-t^2) with t = sin x - cos x running -1 to 0, giving sqrt2*(pi/2). Independently confirmed: x -> pi/2 - x turns the cot integral into int_(pi/4)^(pi/2) sqrt(tan x) dx, so the sum is the standard int_0^(pi/2) sqrt(tan x) dx = pi/sqrt2. D = pi/2 = 1.5708 is too small - the integrand exceeds 2 over much of the range."
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "_comment": "Adjudicated repairs for Conics (Batch J). 116 blind verdicts, 4 disagreements, all put through a second independent blind pass and then re-derived by hand. ZERO key flips — the four disputes are one twin and three rows where NO option was correct, so every repair here is to option TEXT and every source key is retained. Two of the twin repairs (03-17, 04-22) are a shape worth noting: the redundant option was not a formatting duplicate but a genuinely equivalent PARAMETRISATION of the same conic, which a numeric spot-check would not catch.",
+
+  "01-7": {
+    "solution": "Comparing with \\(ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0\\) gives \\(a = 1, h = 0, b = 4, g = -1, f = -2, c = 2\\). The type is fixed by \\(h^2 - ab = 0 - 4 = -4 < 0\\) with \\(a \\neq b\\), which is the ellipse case. Completing the square shows this particular member is degenerate: \\(x^2 - 2x + 4y^2 - 4y + 2 = (x-1)^2 + 4\\left(y - \\tfrac{1}{2}\\right)^2 = 0\\), which is satisfied only at the single point \\(\\left(1, \\tfrac{1}{2}\\right)\\) — a point-ellipse, consistent with \\(\\Delta = abc + 2fgh - af^2 - bg^2 - ch^2 = 8 + 0 - 4 - 4 - 0 = 0\\). Classified by conic type it is an ellipse.",
+    "reason": "Solution rewrite only; key C retained. The source solution computed the discriminant Delta = 0 correctly and then ignored its own result, writing 'Wait, let me recalculate' before concluding 'this represents an ellipse' as though the conic were non-degenerate. Delta = 0 means it IS degenerate, and completing the square confirms the locus is the single point (1, 1/2). None of the four options offers 'a point', so the key is retained on the discriminant classification the chapter teaches (h^2 - ab < 0 is the ellipse case) — but the rewritten solution states the degeneracy plainly instead of hiding it, since a student who completes the square will find a point and deserves to know why the answer is still C."
+  },
+  "04-17": {
+    "options": { "B": "\\(\\frac{y^2}{a^2} - \\frac{x^2}{b^2} = 1\\)" },
+    "reason": "Twin repair; key D retained. Old B was \\(\\frac{y^2}{b^2} - \\frac{x^2}{a^2} = 1\\), which is the keyed D \\(\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = -1\\) multiplied by -1 — the same curve, so both blind passes computed the right conjugate hyperbola and named the other letter. This is the illusory-flip pattern; acting on it would have overwritten a correct key. The replacement swaps the denominators, a real student slip, and is a different hyperbola from D (and from C, whose x-term is positive)."
+  },
+  "02-21": {
+    "options": { "D": "\\(\\frac{1}{a}\\sqrt{(4ah - k^2)(4a^2 + k^2)}\\)" },
+    "reason": "No option was correct; keyed option D repaired, key D retained. The chord of \\(y^2=4ax\\) with midpoint (h,k) is T = S1, i.e. ky - 2ax = k^2 - 2ah; eliminating x gives y^2 - 2ky + 2k^2 - 4ah = 0, so |y1-y2| = 2*sqrt(4ah - k^2) and L^2 = (4ah - k^2)(4a^2 + k^2)/a^2. The printed D was wrong twice over: its prefactor was 2/k rather than 1/a, and its radicand (k^2 - 4ah) is NEGATIVE for every genuine chord, because a midpoint with k^2 > 4ah lies outside the parabola. Verified on the chord of y^2 = 4x joining (1,2) and (4,4), midpoint (2.5,3): true length sqrt(13) = 3.606, and the repaired formula gives sqrt((10-9)(4+9)) = sqrt(13)."
+  },
+  "02-24": {
+    "options": { "D": "\\(p = 2\\sqrt{3}\\,q\\)" },
+    "reason": "No option was correct; keyed option D repaired, key D retained. For \\(x^2 = \\sqrt{3}y\\) the latus rectum is q = sqrt(3). With one vertex at the origin the other two are (±x0, y0) by symmetry, and equilaterality forces x0^2 + y0^2 = (2x0)^2, i.e. y0 = sqrt(3) x0; substituting into the parabola gives x0^2 = 3x0, so x0 = 3 and the side is p = 6. Hence p/q = 6/sqrt(3) = 2 sqrt(3) = 3.4641, and the printed D (p = 2q, ratio 2) is wrong. The ratio is 2 sqrt(3) for EVERY parabola x^2 = 4Ay, so no rescaling of the stem rescues an option."
+  },
+  "02-26": {
+    "options": { "A": "\\(\\sqrt{20 - 12\\sqrt[3]{4}}\\)" },
+    "reason": "No option was correct; keyed option A repaired, key A retained. With (t^2, 2t) on y^2 = 4x, D^2 = t^4 + 16t + 20 and dD^2/dt = 4t^3 + 16 = 0 gives t^3 = -4; then t^4 = -4t, so D^2 = 12t + 20 = 20 - 12*cbrt(4) = 0.9512 and D = 0.9753. The printed A (2) is the distance to (4,-4), which lies on the parabola but is NOT the nearest point — the source solution actually computes t = -cbrt(4) and then abandons it, asserting the value there is 'close to 2' when it is 0.98. CAVEAT: the repaired answer is irrational and awkward for an MCQ, which suggests the stem's point or parabola may be mis-transcribed at source; the value above is nonetheless the correct answer to the question as printed, and no source paper is available to check the stem against."
+  },
+
+  "01-24": {
+    "options": { "B": "A chord passing through the vertex" },
+    "reason": "Twin repair on a row whose key is correct. The axis of a conic is perpendicular to the directrix, so the old B ('parallel to the directrix') described exactly the same chords as the keyed option, giving two correct answers. A chord through the vertex is not a double ordinate: the vertex lies on the curve, so such a chord meets the axis at the vertex rather than crossing it perpendicularly."
+  },
+  "02-16": {
+    "options": { "D": "\\(y - tx = 2at - at^3\\)" },
+    "reason": "Twin repair on a row whose key is correct. Old D (\\(y = tx + 2at + at^3\\)) rearranges term-for-term into option B (\\(y - tx = 2at + at^3\\)) — the identical line. The correct normal at \\((at^2, 2at)\\) is \\(y + tx = 2at + at^3\\), so the replacement (sign flipped on the cubic term) is wrong and distinct from B, from the keyed option and from A."
+  },
+  "03-17": {
+    "options": { "A": "\\(x = a\\sec\\theta,\\ y = b\\tan\\theta\\)" },
+    "reason": "Twin repair on a row whose key is correct. Old A (\\(a\\sin\\theta, b\\cos\\theta\\)) was not a formatting duplicate but a genuinely valid alternative PARAMETRISATION of the same ellipse, so it was a second correct answer. Replaced with the hyperbola parametrisation, which fails the ellipse: it gives \\(\\sec^2\\theta + \\tan^2\\theta\\), equal to 3 at \\(\\theta = \\pi/4\\), not 1."
+  },
+  "04-3": {
+    "options": { "D": "\\(e = 1 + \\frac{b^2}{a^2}\\)" },
+    "reason": "Twin repair on a row whose key is correct. Old D (\\(\\sqrt{(a^2+b^2)/a^2}\\)) is algebraically identical to the keyed B (\\(\\sqrt{1 + b^2/a^2}\\)). The replacement is the same expression with the square root dropped — a common slip — and is wrong for every non-zero b."
+  },
+  "04-22": {
+    "options": { "B": "\\(x = a\\cos\\theta,\\ y = b\\tan\\theta\\)" },
+    "reason": "Twin repair on a row whose key is correct. Old B (\\(a\\cosh\\theta, b\\sinh\\theta\\)) was a genuinely valid alternative parametrisation of the same hyperbola, not a formatting duplicate, so the row had two correct answers. The replacement gives \\(\\cos^2\\theta - \\tan^2\\theta\\), which is -0.5 at \\(\\theta = \\pi/4\\) rather than 1, so it lies on no branch of the hyperbola."
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "_comment": "Adjudicated repairs for Definite Integration (Batch J). 140 blind verdicts, 17 disagreements, all put through a second independent blind pass and then re-derived by hand. THE FINDING: 8 of the 12 key flips sit in ONE file, 01. Fundamental Concepts.xlsx (8 wrong keys in 30 rows, 27%), and every one of those eight source SOLUTIONS derives the correct value — this is pure answer-key-COLUMN corruption, the same signature as Binary Numbers' file 01 in Batch I, not a reasoning failure. The five agreeing-twin rows at the foot of this file (03-5, 03-8, 03-12, 05-11, 05-14) were drafted by an agent and then each identity was checked by hand before being folded in.",
+
+  "01-2": {
+    "answer": "B",
+    "reason": "Key flip D→B. [x^3/3] from 1 to 3 = 27/3 - 1/3 = 26/3. The keyed D (25/3) is off by 1/3; the source solution derives 26/3 correctly."
+  },
+  "01-3": {
+    "answer": "D",
+    "reason": "Key flip A→D. [x^2 + x] from 0 to 1 = 2. The keyed A (1) drops one of the two terms; the source solution reaches 2."
+  },
+  "01-6": {
+    "answer": "D",
+    "reason": "Key flip C→D. [sin x] from 0 to pi/2 = 1 - 0 = 1. The keyed C (0) is the value at the lower limit alone."
+  },
+  "01-7": {
+    "answer": "A",
+    "reason": "Key flip D→A. [x^4/4] from 0 to 1 = 1/4. The keyed D (1/3) is the integral of x^2, not x^3."
+  },
+  "01-16": {
+    "answer": "A",
+    "reason": "Key flip D→A. [-cos x] from 0 to pi = 1 + 1 = 2. The keyed D (0) would require the integrand to be odd over a symmetric interval, which this is not."
+  },
+  "01-17": {
+    "solution": "\\(\\int_0^2 (3x^2 - 4x)\\,dx = \\left[x^3 - 2x^2\\right]_0^2 = (8 - 8) - (0 - 0) = 0\\).",
+    "reason": "Solution rewrite only; key A retained and correct. The source solution was pure self-talk — it computed 0 correctly at Step 2, then wrote 'Wait, recalculate', 'Hmm, 0 gives B' and finally 'So answer is B not A'. That conclusion is wrong on its own arithmetic: option B is 4 while the integral is 0, which is the keyed A. The blind pass independently derived A."
+  },
+  "01-18": {
+    "answer": "C",
+    "reason": "Key flip B→C. [x^2] from 1 to 3 = 9 - 1 = 8. The keyed B (10) is 9 + 1."
+  },
+  "01-25": {
+    "answer": "A",
+    "reason": "Key flip C→A. The second Fundamental Theorem gives d/dx of the integral from a to x of f(t) dt = f(x). The keyed C (f(a)) is a constant, whose derivative is 0. The source solution states f(x) explicitly."
+  },
+  "01-27": {
+    "answer": "B",
+    "reason": "Key flip C→B. Additivity gives 8 = 5 + the integral from b to c, so the answer is 3. The keyed C (13) ADDS the two given integrals instead of subtracting."
+  },
+
+  "03-7": {
+    "options": { "B": "\\(\\frac{1}{\\sqrt{3}}\\)" },
+    "reason": "Options B (1/(2 sqrt 3)) and the keyed D (sqrt3/6) are the SAME number, 0.288675. B replaced with 1/sqrt(3) = 0.577, the value obtained by forgetting the factor 1/2 that the substitution u = 2x introduces — a real student error, and distinct from A (0.354), C (0.333) and D. Key D retained. Both blind passes named B, which is the illusory-flip pattern: they were right about the value and named the twin's letter."
+  },
+  "03-16": {
+    "options": { "B": "\\(\\ln\\left(2(1+e)\\right)\\)" },
+    "reason": "Options B (ln((1+e)/2)) and the keyed C (ln(1+e) - ln 2) are the SAME number, 0.620115 — the crosstab called this a CONFLICT because the two passes named different letters, but both computed the identical value, which is what exposed it as a twin. B replaced with ln(2(1+e)) = 2.013, the sign-flipped slip (adding ln 2 instead of subtracting). Key C retained."
+  },
+  "03-17": {
+    "options": { "B": "\\(2(\\ln 2)^2\\)" },
+    "reason": "Options B ((1/2)(ln 2)^2) and the keyed D ((ln 2)^2 / 2) are the SAME number, 0.240227 — written two ways. B replaced with 2(ln 2)^2 = 0.961, distinct from A (0.347), C (0.480) and D. Key D retained; another illusory flip caught by the value field."
+  },
+  "03-30": {
+    "options": { "A": "\\(\\frac{1}{\\sqrt{3}} - \\sqrt{3}\\)" },
+    "reason": "Options A (sqrt3 - 1/sqrt3) and the keyed B (2 sqrt3 / 3) are the SAME number, 1.154701. A replaced with the same expression reversed, 1/sqrt3 - sqrt3 = -1.155, which is what a student gets by dropping the minus sign in the antiderivative of cosec^2. Key B retained."
+  },
+
+  "04-19": {
+    "answer": "A",
+    "solution": "By parts with \\(u = \\tan^{-1}x\\): \\(\\left[\\frac{x^2}{2}\\tan^{-1}x\\right]_0^1 - \\frac{1}{2}\\int_0^1 \\frac{x^2}{1+x^2}dx = \\frac{\\pi}{8} - \\frac{1}{2}\\left(1 - \\frac{\\pi}{4}\\right) = \\frac{\\pi}{4} - \\frac{1}{2}\\).",
+    "reason": "Key flip B→A. The value is pi/4 - 1/2 = 0.285398; the keyed B (pi/8 - ln2/4 = 0.220) carries a spurious logarithm that this integrand never produces."
+  },
+  "04-26": {
+    "answer": "B",
+    "solution": "By parts with \\(u = \\cos^{-1}x\\): the boundary term \\(\\left[\\frac{x^2}{2}\\cos^{-1}x\\right]_0^1\\) vanishes at both ends, leaving \\(+\\frac{1}{2}\\int_0^1 \\frac{x^2}{\\sqrt{1-x^2}}dx = \\frac{1}{2}\\cdot\\frac{\\pi}{4} = \\frac{\\pi}{8}\\).",
+    "reason": "Key flip C→B. The value is pi/8 = 0.3927. The boundary term is zero because cos^-1(1) = 0, which the keyed C (pi/4 - 1/4) appears to have mishandled."
+  },
+  "04-22": {
+    "options": { "A": "\\(\\ln 2 + \\frac{\\pi}{2} - 2\\)" },
+    "solution": "By parts: \\(\\left[x\\ln(1+x^2)\\right]_0^1 - \\int_0^1 \\frac{2x^2}{1+x^2}dx = \\ln 2 - 2\\left(1 - \\frac{\\pi}{4}\\right) = \\ln 2 + \\frac{\\pi}{2} - 2\\).",
+    "reason": "No option was correct: the value is ln2 + pi/2 - 2 = 0.263943, while the keyed A had the sign of pi/2 inverted (0.122) and option B is NEGATIVE (-0.185), which is impossible for an integrand that is non-negative on [0,1]. Keyed option A repaired; key A retained."
+  },
+
+  "05-18": {
+    "answer": "B",
+    "solution": "Split at the kink \\(x = \\frac{1}{2}\\): \\(\\int_0^{1/2}(1-2x)dx + \\int_{1/2}^{1}(2x-1)dx = \\frac{1}{4} + \\frac{1}{4} = \\frac{1}{2}\\).",
+    "reason": "Key flip D→B. The two triangular pieces each contribute 1/4, giving 1/2. The keyed D (2) is four times too large — the modulus was not split at its breakpoint."
+  },
+  "03-5": {
+    "options": { "C": "\\(e^{\\pi/4} - 1\\)" },
+    "reason": "Twin repair; key A retained. Old C was \\(e^{1/\\sqrt{2}} - 1\\), the keyed \\(e^{\\sqrt{2}/2} - 1\\) unrationalised — sqrt(2)/2 and 1/sqrt(2) are the same number. The replacement is the classic 'substituted but never transformed the limits' error, evaluating the new integral over the OLD interval."
+  },
+  "03-8": {
+    "options": { "C": "\\(2\\sqrt{2}\\)" },
+    "reason": "Twin repair; key D retained. Old C was \\(2\\sqrt{2} - 2\\), which is the keyed \\(2(\\sqrt{2} - 1)\\) multiplied out — identical value, factored versus expanded. The replacement is the dropped-boundary-term error: the antiderivative is 2 sqrt(u) over u in [1,2], and a student who evaluates only at the upper limit gets 2 sqrt(2) = 2.828 against the correct 0.828."
+  },
+  "03-12": {
+    "options": { "C": "\\(\\ln(\\sqrt{2} + 1)\\)" },
+    "reason": "Twin repair; key B retained. Old C was \\(\\ln\\sqrt{2}\\), which is exactly the keyed \\(\\frac{1}{2}\\ln 2\\) with the one-half written as a square root instead. The replacement is the tan-for-sec antiderivative confusion, giving 0.881 against the correct 0.347."
+  },
+  "05-11": {
+    "options": { "A": "\\(\\frac{1}{e} - 1\\)" },
+    "reason": "Twin repair; key D retained. Old A was \\(\\frac{e-1}{e}\\), which is identically the keyed \\(1 - \\frac{1}{e}\\) — divide the numerator through. The replacement is the dropped-minus-sign error: the antiderivative of e^-x is -e^-x, and forgetting that sign gives 1/e - 1 = -0.632, a negative value for a positive integrand."
+  },
+  "05-14": {
+    "options": { "C": "\\(-\\frac{1}{2}\\ln 2\\)" },
+    "reason": "Twin repair; key A retained. Old C was \\(\\frac{\\ln 2}{2}\\), a byte-different rendering of the keyed \\(\\frac{1}{2}\\ln 2\\) with the one-half moved into the denominator. The replacement is the swapped-limits sign error."
+  },
+
+  "05-24": {
+    "answer": "A",
+    "solution": "\\(\\int(\\sqrt{\\tan x} + \\sqrt{\\cot x})dx = \\sqrt{2}\\,\\sin^{-1}(\\sin x - \\cos x) + C\\). Evaluating from \\(0\\) to \\(\\frac{\\pi}{4}\\) gives \\(\\sqrt{2}\\left[0 - \\left(-\\frac{\\pi}{2}\\right)\\right] = \\frac{\\pi}{\\sqrt{2}}\\).",
+    "reason": "Key flip D→A. The combined integrand has the closed form above (verified by differentiating it back), giving pi/sqrt(2) = 2.2214. The keyed D (pi/2 = 1.571) is the value without the sqrt(2) factor."
+  }
+}

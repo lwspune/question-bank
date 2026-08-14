@@ -74,6 +74,20 @@ kept as-source (re-balancing would need key remaps + solution rewrites for the
    that file duplicates its keyed answer verbatim into option A (one row carries
    it three times). Always open a `FLIP?TWIN` row and compare the two option
    texts before touching the key.
+
+   The `FLIP?TWIN` gate matches ONLY the structured `TWIN: A=C` prefix the
+   brief mandates, never free prose. Batch J's first version matched words
+   like `twin|both|equal|identical` and fired on a pass-2 note reading
+   "p = 0 (equivalently q = 1)", which buried a GENUINE key flip in the one
+   bucket a reviewer is primed to dismiss. A twin claim is a structured
+   assertion, not a turn of phrase — a filter over prose does not discriminate,
+   it relocates the error somewhere quieter.
+
+   Pass 2's `value` field is what makes the crosstab work. Two Batch-J rows
+   were reported as CONFLICT (the passes named different letters) and turned
+   out to be twins: both had computed the identical quantity. Comparing
+   letters would have sent them to hand-derivation; comparing VALUES settled
+   them on sight.
 5. **Rebalance the correct-answer letters** — the source skews keys toward
    A/B (~32/30/19/19 on the first 691 q), so plan a deterministic
    transposition shuffle (eligible rows only; plans are committed and applied
@@ -92,6 +106,26 @@ kept as-source (re-balancing would need key remaps + solution rewrites for the
    ```
 7. **Post-commit checks** — `npm run audit:text -- Cadetprep_Worksheets` +
    `npm run audit:keys Cadetprep_Worksheets` + spot-check `/browse`.
+
+   `audit:keys` earns its keep HERE, after the write, and its `SOLN≠KEY` hits
+   sort into three classes — decide which before changing anything:
+   - **Probe false positive.** It reads a letter inside ordinary notation, so
+     a probability solution containing `P(A)` reports `SOLN_A`. Three Batch-J
+     hits were this. No action.
+   - **Your own flip.** You changed the key; the source's solution still names
+     the old letter. Rewrite the solution.
+   - **Stale option letters in the source.** Nine Batch-J rows had solutions
+     naming letters that do not match the printed option order — `y = x^3 + 5`
+     is option D and the solution calls it C, `(3,4,5)` is B and the solution
+     calls it A. The maths is right, the label is wrong, and the blind pass
+     had already confirmed the key. **Rewrite the solution to state its
+     conclusion and name NO letter**, which removes the contradiction instead
+     of moving it (and keeps the row shuffle-eligible).
+
+   A solution-only override does NOT reach the database through `commit.ts`:
+   `content_hash` excludes `solution`, so the upsert skips the existing row.
+   Use `out/_patchsol.ts <chapter> --apply`; the override file stays the source
+   of record. Anything touching options, stem or key needs DELETE + re-commit.
 8. **Flip PUBLIC**:
    ```sh
    npx tsx scripts/worksheets/flip-public.ts trig-identities --apply [--except=ids]

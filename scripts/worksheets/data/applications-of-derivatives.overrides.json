@@ -1,0 +1,40 @@
+{
+  "_comment": "Adjudicated repairs for Applications of Derivatives (Batch J). 79 blind verdicts, 3 disagreements, all put through a second independent blind pass and then re-derived by hand. THE FINDING: 03-11 and 03-12 ask about the SAME function and the source's two answers are MUTUALLY IMPOSSIBLE — it claims local maxima at x = -0.59 and x = 1 with only one minimum between them, and a differentiable function cannot have two consecutive maxima with no minimum separating them. Both keys are wrong. Separately, 10 of the 14 rows the twin-dossier surfaced were false positives: pass 1's phrase 'Both true' referred to the two STATEMENTS of a statement-pair question, not to two equal options.",
+
+  "03-11": {
+    "answer": "C",
+    "solution": "\\(f'(x) = (x-1)(x-2)^2(6x^2-5x-5)\\). Since \\((x-2)^2 \\ge 0\\), the sign of \\(f'\\) is the sign of \\((x-1)(6x^2-5x-5)\\), whose roots are \\(x = \\frac{5 \\pm \\sqrt{145}}{12} \\approx -0.587,\\ 1.420\\) together with \\(x = 1\\). Sign chart: \\(f' < 0\\) for \\(x < -0.587\\), \\(> 0\\) on \\((-0.587, 1)\\), \\(< 0\\) on \\((1, 1.420)\\), \\(> 0\\) for \\(x > 1.420\\). The two \\(-\\to+\\) crossings, at \\(x \\approx -0.587\\) and \\(x \\approx 1.420\\), are local minima. \\(x = 2\\) is a stationary point of even multiplicity, so \\(f'\\) keeps its sign there and it is not an extremum. Hence two points of local minima.",
+    "reason": "Key flip B→C. Checked numerically: f'(-0.7) = -17.9 and f'(-0.4) = +16.5, so x = -0.587 is a minus-to-plus crossing and therefore a local minimum; f'(1.3) = -0.20 and f'(1.5) = +0.125 give a second one at x = 1.420. The source solution finds only the second and never tests the first. Cross-check: this answer and 03-12's must be consistent, and two minima with one maximum between them is the only sign chart the derivative admits."
+  },
+  "03-12": {
+    "answer": "B",
+    "solution": "\\(f'(x) = (x-1)(x-2)^2(6x^2-5x-5)\\), with sign determined by \\((x-1)(6x^2-5x-5)\\). The only \\(+\\to-\\) crossing is at \\(x = 1\\): \\(f'(0.9) = +0.561\\) and \\(f'(1.1) = -0.262\\). At \\(x \\approx -0.587\\) the derivative runs \\(-\\to+\\) (a minimum, not a maximum), and at \\(x = 2\\) the factor \\((x-2)^2\\) has even multiplicity so \\(f'\\) stays positive on both sides (\\(f'(1.9) = +0.064\\), \\(f'(2.1) = +0.121\\)) and there is no extremum. Hence exactly one point of local maximum.",
+    "reason": "Key flip C→B. The source counts x = -0.59 as a maximum, but the derivative is negative to its left and positive to its right, so it is a minimum. Its answer is also impossible on its own terms: together with its answer to 03-11 it asserts maxima at -0.59 and 1 with a single minimum, and a differentiable function cannot have two consecutive maxima without a minimum between them."
+  },
+  "03-37": {
+    "stem": "Consider the function \\(f(x) = \\frac{x}{\\ln x}\\) (\\(x > 1\\)). Which of the following statements is/are correct? 1. \\(f(x)\\) attains local minimum value at \\(x = e\\). 2. A local minimum value of \\(f(x)\\) is \\(e\\). [Q84, 2023, September]",
+    "options": {
+      "B": "1 only",
+      "C": "2 only",
+      "D": "Neither 1 nor 2"
+    },
+    "reason": "The stem states two numbered statements but three of the four options referred to a statement 3 that the stem never gives — B was '2 and 3 only', C was '1 and 3 only', D was '1, 2 and 3'. Two of those (B, C) were unanswerable by construction, since each denies one of the two statements and BOTH are demonstrably true: f'(x) = (ln x - 1)/(ln x)^2 changes from negative to positive at x = e, and f(e) = e/1 = e. The keyed A ('1 and 2 only') is therefore correct as printed and is retained; the three phantom-referencing options are replaced by the standard two-statement set so the question is answerable. Also removed the extraction note '(Note: PDF lists 2 statements but options reference a 3rd...)' that had been left inside the student-facing stem."
+  },
+
+  "01-2": {
+    "options": { "A": "\\(\\sec x\\)" },
+    "reason": "Twin repair on a row whose key is correct. For \\(y = \\cos^{-1}(\\sin x)\\), \\(y' = -\\cos x/|\\cos x|\\), which is \\(-1\\) where \\(\\cos x > 0\\) and \\(+1\\) where \\(\\cos x < 0\\) — the old A printed the same value as the keyed option. Replaced with sec x, which is wrong everywhere: where cos x > 0 the slope is -1 while sec x > 0, and where cos x < 0 the slope is +1 while sec x < 0."
+  },
+  "01-4": {
+    "options": { "D": "\\(\\frac{\\pi}{2} + \\tan^{-1}(m^2)\\)" },
+    "reason": "Twin repair on a row whose key is correct. Old D was \\(\\sec^{-1}\\sqrt{1+m^4}\\), which IS the keyed \\(\\tan^{-1}(m^2)\\): putting tan(alpha) = m^2 gives sec(alpha) = sqrt(1+m^4). Replaced with pi/2 + arctan(m^2), which exceeds pi/2 for every non-zero m and so cannot be the acute angle the stem asks for."
+  },
+  "02-11": {
+    "options": { "D": "It is decreasing in the interval \\(\\left(-\\frac{\\pi}{2}, 0\\right)\\)" },
+    "reason": "Two-simultaneously-true repair on a row whose key is correct. f'(x) = cos x (x - 2 sin x) is negative throughout (0, pi/2), so the keyed C ('decreasing on (0, pi/2)') is right — but the old D asserted a second thing that was also true, giving the question two correct answers. The replacement is false: on (-pi/2, 0) both factors are positive (cos x > 0, and x - 2 sin x > 0 there, e.g. +0.68 at x = -1), so f is strictly increasing on that interval."
+  },
+  "03-25": {
+    "options": { "D": "\\(a^2+ab+b^2\\)" },
+    "reason": "Twin repair on a row whose key is correct. Old D was \\(|a^2+b^2|\\) and option C was \\(a^2+b^2\\); with a > 0 and b > 0 the modulus does nothing, so the two printed the same value. Replaced with a^2+ab+b^2, which is distinct from both a^2+b^2 and the correct minimum (a+b)^2 = a^2+2ab+b^2, since a^2/cos^2 x + b^2/sin^2 x = a^2+b^2+a^2 tan^2 x + b^2 cot^2 x >= a^2+b^2+2ab by AM-GM."
+  }
+}
