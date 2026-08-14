@@ -208,7 +208,8 @@
   "02-8": {
     "stem": "If a line is tangent to a circle, then the distance from the centre of the circle to that line is:",
     "options": { "A": "Half the radius", "B": "Twice the radius", "C": "Zero" },
-    "reason": "The printed stem asserted a specific line was tangent to a specific circle — it is NOT (distance 1/√13 vs radius 2), and option B (2) duplicated the keyed D under that false premise. Stem generalised to the concept the key teaches; numeric options replaced; key D (equal to the radius) retained."
+    "solution": "A tangent meets a circle at exactly one point. Let \\(d\\) be the perpendicular distance from the centre to the line and \\(r\\) the radius. If \\(d < r\\) the line is a secant and cuts the circle twice; if \\(d > r\\) it misses the circle altogether. Exactly one point of contact therefore forces \\(d = r\\) — the standard test for tangency, and the reason the perpendicular dropped from the centre to a tangent meets it at the point of contact.",
+    "reason": "The printed stem asserted a specific line was tangent to a specific circle — it is NOT (distance 1/√13 vs radius 2), and option B (2) duplicated the keyed D under that false premise. Stem generalised to the concept the key teaches; numeric options replaced; key D (equal to the radius) retained. SOLUTION ADDED 2026-08-14 (backfill, user-approved): generalising the stem left the stored solution behind — it still read 'Circle: x^2+y^2-4x-6y+9=0, Center: (2,3), Radius: 2 …', arithmetic about a specific circle the repaired question no longer mentions. Rewritten to prove the general statement the key tests. This was the ONLY genuine instance among all 43 stem-overrides-without-a-solution-override (triaged by out/_stemtriage.ts; see the SUGGESTIONS.md backfill ledger) — the other 42 needed nothing."
   },
   "02-19": {
     "options": { "D": "The line through the two given points" },
