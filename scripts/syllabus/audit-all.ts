@@ -18,6 +18,12 @@
  *   - audit-spine             TRIAGE, per subject (reports section holes and
  *                             prose-swallowed titles; a book may genuinely
  *                             skip a number, so it never fails the run)
+ *   - audit-spine-freshness   TRIAGE, per subject (reports a bank spine that no
+ *                             longer describes the bank it was sampled from.
+ *                             Triage because drift is the EXPECTED state between
+ *                             an ingest and the next refresh, and the remedy is a
+ *                             careful migration -- failing the run for it would
+ *                             just train people to skip the whole chain)
  *
  * Deliberately NOT wired into prepush: these are live-DB scans, and the gate
  * chain must stay runnable without touching prod more than it already does.
@@ -42,6 +48,14 @@ function main() {
   for (const key of syllabusSubjectKeys()) {
     results.push(run(`audit-alignment --subject=${key}`, true, "audit-alignment.ts", `--subject=${key}`));
     results.push(run(`audit-spine --subject=${key} (triage)`, false, "audit-spine.ts", `--subject=${key}`));
+    results.push(
+      run(
+        `audit-spine-freshness --subject=${key} (triage)`,
+        false,
+        "audit-spine-freshness.ts",
+        `--subject=${key}`,
+      ),
+    );
   }
 
   console.log("\n===== syllabus:audit summary =====");
