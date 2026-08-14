@@ -1,0 +1,101 @@
+{
+  "_comment": "Adjudicated repairs for Properties of Triangle (Batch J). 185 blind verdicts, 16 disagreements, all put through a second independent blind pass and then re-derived by hand. Only 2 key flips — but TEN rows had NO CORRECT OPTION and TWO describe triangles that cannot exist, making this by some distance the most defective chapter of the batch. The failure is concentrated in files 02, 05 and 07 and has one signature: the source generates a plausible-looking stem, computes the wrong quantity, and prints four options none of which is the answer to the question it asked. 07-16 is a KEY-STANDS: both blind passes read 'using Napier's Analogy' as excluding the sine-rule route and picked A, but that is a reading of the instruction rather than a mathematical finding, and neither pass showed statement B to be false, so the keyed 'Both A and B' stands. Two rows are EXCLUDED rather than repaired, because no option repair can rescue a question whose given data is self-contradictory.",
+
+  "01-4": {
+    "solution": "The triangle inequality requires the sum of any two sides to EXCEED the third. For \\(3, 4, 5\\): \\(3+4 = 7 > 5\\), \\(3+5 = 8 > 4\\) and \\(4+5 = 9 > 3\\), so these lengths form a triangle. Each other set fails: \\(2+3 = 5\\) is not greater than \\(5\\); \\(1+2 = 3\\) is not greater than \\(3\\); and \\(1+1 = 2\\) is not greater than \\(3\\).",
+    "reason": "Solution rewrite only; key B correct and retained (blind-confirmed). Found by audit:keys after commit. The source solution labelled the valid triple (3,4,5) as 'Option A' and the degenerate (2,3,5) as 'Option B', but the printed order is the reverse — (2,3,5) is A and (3,4,5) is B. So the solution appeared to contradict its own correct key. Rewritten to name the side lengths rather than any letter."
+  },
+  "01-2": {
+    "solution": "By the angle sum property, \\(\\angle A + \\angle B + \\angle C = 180°\\). Substituting the given angles, \\(45° + 60° + \\angle C = 180°\\), so \\(105° + \\angle C = 180°\\) and \\(\\angle C = 75°\\).",
+    "reason": "Solution rewrite only; key and options untouched. The source solution opened a math zone inside another without closing the first (\\(\\angle A + \\angle B + \\(\\angle C = 180°\\)), which would have broken KaTeX rendering. The reasoning is correct and is preserved verbatim."
+  },
+  "05-25": {
+    "answer": "A",
+    "reason": "Key flip D→A. With s = 16, tan(C/2) = sqrt((s-a)(s-b)/(s(s-c))) = sqrt(36/64) = 3/4. Confirmed geometrically without the half-angle formula: the 10-10-12 triangle is isosceles on base c = 12, so the altitude to that base is sqrt(100-36) = 8 and bisects C, giving tan(C/2) = 6/8 = 3/4 directly. The keyed 1/3 is a different value, not a surd rewriting of 0.75."
+  },
+  "07-8": {
+    "answer": "B",
+    "reason": "Key flip C→B. The answer is forced by the angle sum alone: (A+B)/2 = 90 - C/2 = 60, so tan((A+B)/2) = cot(C/2) = cot 30 = sqrt(3) = 1.7321, independent of the side lengths. The keyed 2sqrt(3)/3 is 2/sqrt(3) = 1.1547 — a different number, and specifically NOT a rationalisation of sqrt(3), which would be 3/sqrt(3)."
+  },
+
+  "02-23": {
+    "stem": "In triangle \\(ABC\\), if \\(\\angle B = 60°\\) (middle angle in AP) and \\(\\frac{a}{b} = \\frac{1}{\\sqrt{3}}\\). Find \\(\\angle A\\).",
+    "solution": "With \\(B = 60°\\) the middle angle of an AP, \\(A + C = 120°\\). By the sine rule \\(\\dfrac{a}{b} = \\dfrac{\\sin A}{\\sin B}\\), so \\(\\sin A = \\dfrac{\\sin 60°}{\\sqrt{3}} = \\dfrac{\\sqrt{3}/2}{\\sqrt{3}} = \\dfrac{1}{2}\\) and \\(A = 30°\\). Then \\(C = 90°\\), and the angles \\(30°, 60°, 90°\\) are indeed in AP, as the stem states.",
+    "reason": "Stem repair (a single side label) PLUS the matching solution rewrite, key D retained. The solution is rewritten because the source's derivation used the OLD ratio a/c — repairing the stem alone would have left the two contradicting each other, which is how this was caught: by reading the committed row back out of the database rather than trusting the commit report. As printed the stem gave a/c = 1/sqrt(3) with B = 60, which yields tanA = sqrt(3)/(2sqrt(3)-1) and A = 35.104° — a value matching none of the four options, all of which are standard angles. Substituting b for c makes everything cohere: sinA/sin60 = 1/sqrt(3) gives sinA = 1/2 and A = 30°, the keyed answer, in the 30-60-90 triangle whose sides are 1 : sqrt(3) : 2 (so a/b is indeed 1/sqrt(3)). The stem's OWN parenthetical settles it independently — '(middle angle in AP)' is true of 30, 60, 90 with 60 in the middle, and is false for the 35.1-84.9-60 triangle the printed data describes. Repairing the option to 35.1° instead would have kept a corrupt stem and shipped an answer visibly foreign to its own option set."
+  },
+  "03-29": {
+    "stem": "In triangle \\(ABC\\), if \\(\\angle A + \\angle B = 120°\\) and \\(a : c = 1 : \\sqrt{3}\\), find \\(\\angle A\\).",
+    "solution": "Since \\(A + B = 120°\\), \\(C = 60°\\). By the sine rule \\(\\dfrac{a}{c} = \\dfrac{\\sin A}{\\sin C}\\), so \\(\\sin A = \\dfrac{\\sin 60°}{\\sqrt{3}} = \\dfrac{\\sqrt{3}/2}{\\sqrt{3}} = \\dfrac{1}{2}\\) and \\(A = 30°\\) (hence \\(B = 90°\\)). The sides are then in the ratio \\(1 : 2 : \\sqrt{3}\\), consistent with the given \\(a : c = 1 : \\sqrt{3}\\).",
+    "reason": "Stem repair (a single side label) PLUS the matching solution rewrite, key A retained — the mirror image of 02-23, and the two together show the defect is systematic rather than a one-off typo. As printed, a : b = 1 : sqrt(3) with C = 60 gives A = 35.104°, matching no option. Substituting c for b gives sinA/sin60 = 1/sqrt(3), so sinA = 1/2 and A = 30°, the keyed answer, in the same 30-60-90 triangle (a : b : c = 1 : 2 : sqrt(3), so a : c = 1 : sqrt(3))."
+  },
+
+  "03-23": {
+    "exclude": true,
+    "reason": "Excluded: defective beyond repair. This is the classic ambiguous SSA configuration and the keyed 'No real solution' is flatly false — sinB = b sinA/a = 5(0.75)/4 = 0.9375 <= 1, so B = 69.64° or 110.36°, giving TWO genuine triangles with c = 4.6991 and c = 1.9152 respectively (both verified against the cosine rule). The question asks for a single value of c, so it has two correct answers and no option repair can fix that: repairing the key to either value leaves the other equally right. Repairing the stem would mean inventing a side length."
+  },
+  "03-24": {
+    "exclude": true,
+    "reason": "Excluded: the stem describes a triangle that cannot exist. With b = 6, c = 7 and B = 60°, two independent proofs of non-existence agree — the cosine rule gives a^2 - 7a + 13 = 0 with discriminant 49 - 52 = -3, so a is complex; and the sine rule gives sinC = c sinB/b = 7(sqrt(3)/2)/6 = 1.0104, which is out of range for a sine. Every option including the keyed sqrt(43) is therefore wrong, and there is no correct answer to repair toward without fabricating one of the three givens."
+  },
+
+  "02-7": {
+    "options": { "D": "\\(\\sqrt{3}:\\sqrt{2}\\)" },
+    "reason": "No option was correct; keyed option D repaired, key D retained. a:b = sinA:sinB = sin60:sin45 = sqrt(3):sqrt(2) = 1.2247. The printed options were 2:1 (2), 1:sqrt(3) (0.5774), sqrt(6):sqrt(2) (1.7321) and sqrt(3):1 (1.7321) — note the last two were themselves a twin pair, so the row already carried a duplicate before the repair. The new D is 1.2247, distinct from all three survivors."
+  },
+  "02-15": {
+    "options": { "D": "\\(3-\\sqrt{3}\\)" },
+    "reason": "No option was correct; keyed option D repaired, key D retained. b = a sinB/sinA = sqrt(3) sin45/sin75 = 2sqrt(6)/(sqrt(6)+sqrt(2)), which rationalises to 3 - sqrt(3) = 1.2679. The printed options were 0.8660, 1.2247, 1.7321 and 1.4142; the nearest (sqrt(6)/2) is 3.4% low and is NOT a surd rewriting of 3 - sqrt(3)."
+  },
+  "05-18": {
+    "options": { "C": "\\(\\frac{\\sqrt{6}}{7}\\)" },
+    "reason": "No option was correct; keyed option C repaired, key C retained. Confirmed three ways for the 5-6-7 triangle with a = 5: the half-angle product sqrt((s-b)(s-c)/(bc)) x sqrt(s(s-a)/(bc)); the identity sin(A/2)cos(A/2) = (1/2)sinA with cosA = 5/7 so sinA = 2sqrt(6)/7; and directly from A = 44.415°. All give sqrt(6)/7 = 0.3499, against the printed 1/6."
+  },
+  "05-20": {
+    "options": { "B": "\\(\\frac{\\sqrt{2}}{2}\\)" },
+    "reason": "No option was correct; keyed option B repaired, key B retained. The 9-12-15 triangle is right-angled (81 + 144 = 225), so C = 90° exactly and sin(C/2) = sin45° = sqrt(2)/2 = 0.7071; the half-angle formula agrees. The printed options were all fifths of sqrt(5) or sqrt(10) (0.4472, 0.8944, 0.6325, 1.3416), none of which reduces to 1/sqrt(2) — and the last exceeds 1, which no sine can."
+  },
+  "05-22": {
+    "options": { "A": "\\(\\frac{1}{\\sqrt{17}}\\)" },
+    "reason": "No option was correct; keyed option A repaired, key A retained. The 8-15-17 triangle is right-angled and s = 20, so sin(A/2) = sqrt((s-b)(s-c)/(bc)) = sqrt(15/255) = 1/sqrt(17) = 0.2425. Cross-checked directly: sinA = 8/17 gives A = 28.0725° and sin(14.036°) = 0.2425. The printed 1/sqrt(10) = 0.3162 is a different surd family."
+  },
+  "05-24": {
+    "options": { "A": "\\(\\frac{3}{\\sqrt{10}}\\)" },
+    "reason": "No option was correct; keyed option A repaired, key A retained. For the 11-13-20 triangle (valid: 11 + 13 = 24 > 20) with s = 22, cos(B/2) = sqrt(s(s-b)/(ac)) = sqrt(198/220) = sqrt(0.9) = 0.9487. Second derivation agrees: cosB = 0.8, so cos(B/2) = sqrt(1.8/2). The printed sqrt(2)/2 = 0.7071 is not a rewriting of it."
+  },
+  "07-6": {
+    "options": { "C": "\\(\\tan\\frac{A+B}{2} = \\cot\\frac{C}{2}\\)" },
+    "reason": "No option was correct; keyed option C repaired, key C retained. In any plane triangle (A+B)/2 = 90° - C/2, so tan((A+B)/2) = cot(C/2) with NO side factor whatever — all four printed options attached a spurious (a±b)/(a∓b) to an identity that has none (Napier's analogy carries that factor only on tan((A-B)/2)). Tested on a = 7, b = 5, C = 60, where the true value is tan60 = 1.7321: the options give 10.3923, 0.2887 and so on."
+  },
+  "07-17": {
+    "options": { "A": "\\(\\frac{a-b}{a+b} = \\tan 10° \\tan 20°\\)" },
+    "reason": "No option was correct; keyed option A repaired, key A retained. With A = 80° and B = 60°, C = 40°, and Napier gives (a-b)/(a+b) = tan((A-B)/2)tan(C/2) = tan10° tan20° = 0.06418. Cross-checked from the sine rule with no Napier at all: (sin80 - sin60)/(sin80 + sin60) = 0.11878/1.85083 = 0.06418. The printed key had cot20° in place of tan20°, giving 0.48445."
+  },
+
+  "03-17": {
+    "options": { "B": "\\(\\sqrt{189}\\)" },
+    "reason": "Twin repair; key C retained. c^2 = 144 + 225 - 2(12)(15)cos120° = 369 + 180 = 549, and 549 = 9 x 61, so option B (sqrt(549)) and the keyed C (3 sqrt(61)) are the same length written two ways — both blind passes computed 549 correctly and named the other letter. This is the illusory-flip pattern; acting on it would have overwritten a correct key. The replacement, sqrt(189) = 13.75, is what a student gets by taking cos120 as +1/2 and so subtracting the 180."
+  },
+  "01-25": {
+    "options": { "A": "\\(\\text{angle} \\geq 60°\\)" },
+    "reason": "Two-simultaneously-true repair on a row whose key is correct. The old A (0° <= angle <= 180°) is implied by the keyed B (0° < angle < 180°) for every angle of a genuine triangle, so both were true. The replacement is false for any triangle containing an angle below 60°, which most do."
+  },
+  "01-30": {
+    "options": { "B": "\\(a + b < c\\)" },
+    "reason": "Two-simultaneously-true repair on a row whose key is correct. The old B (a - b < c) holds in every triangle, since a - b <= |a - b| < c, so it duplicated the truth of the keyed option. The replacement is the negation of the triangle inequality and so is false in every triangle."
+  },
+  "04-19": {
+    "options": {
+      "B": "\\(b = c \\cos A + a \\cos B\\)",
+      "D": "\\(b = a \\cos C + c \\cos B\\)"
+    },
+    "reason": "TWO ties in one row; key A retained. The old B (b = a cosC + c cosA) was the keyed projection formula with its terms merely commuted — the identical identity. Pass 1 missed a second tie: the old C (b = a cosB + c cosB) and old D (b = c cosB + a cosB) are also each other's commutation. Both replacements substitute a wrong angle into one term, so each fails the projection formula on a concrete scalene triangle while remaining distinct from A, from C and from one another."
+  },
+  "04-22": {
+    "options": { "B": "Twice the perimeter of the triangle" },
+    "reason": "Two-simultaneously-true repair on a row whose key is correct. The old B ('Sum of projections of all sides') is a literally true description of the right-hand side, so it competed with the keyed option. The replacement is false: the projection sum equals the perimeter, not twice it."
+  },
+  "07-25": {
+    "options": { "D": "\\(\\frac{2\\tan 25°}{9}\\)" },
+    "reason": "Twin repair on a row whose key is correct. The old D (4cot25°/18) is the keyed C (2cot25°/9) unreduced — the identical value. The replacement swaps cot for tan, giving 0.1036 against the correct 0.4765."
+  }
+}

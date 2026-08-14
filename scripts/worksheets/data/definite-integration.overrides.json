@@ -1,5 +1,5 @@
 {
-  "_comment": "Adjudicated repairs for Definite Integration (Batch J). 140 blind verdicts, 17 disagreements, all put through a second independent blind pass and then re-derived by hand. THE FINDING: 8 of the 12 key flips sit in ONE file, 01. Fundamental Concepts.xlsx (8 wrong keys in 30 rows, 27%), and every one of those eight source SOLUTIONS derives the correct value — this is pure answer-key-COLUMN corruption, the same signature as Binary Numbers' file 01 in Batch I, not a reasoning failure. INCOMPLETE: the five agreeing-twin rows drafted in out/definite-integration/twin-repairs.json (03-5, 03-8, 03-12, 05-11, 05-14) are NOT yet folded in — they are agent proposals and the runbook makes those evidence, not authority. Do not flip this chapter PUBLIC until they are reviewed and merged.",
+  "_comment": "Adjudicated repairs for Definite Integration (Batch J). 140 blind verdicts, 17 disagreements, all put through a second independent blind pass and then re-derived by hand. THE FINDING: 8 of the 12 key flips sit in ONE file, 01. Fundamental Concepts.xlsx (8 wrong keys in 30 rows, 27%), and every one of those eight source SOLUTIONS derives the correct value — this is pure answer-key-COLUMN corruption, the same signature as Binary Numbers' file 01 in Batch I, not a reasoning failure. The five agreeing-twin rows at the foot of this file (03-5, 03-8, 03-12, 05-11, 05-14) were drafted by an agent and then each identity was checked by hand before being folded in.",
 
   "01-2": {
     "answer": "B",
@@ -20,6 +20,10 @@
   "01-16": {
     "answer": "A",
     "reason": "Key flip D→A. [-cos x] from 0 to pi = 1 + 1 = 2. The keyed D (0) would require the integrand to be odd over a symmetric interval, which this is not."
+  },
+  "01-17": {
+    "solution": "\\(\\int_0^2 (3x^2 - 4x)\\,dx = \\left[x^3 - 2x^2\\right]_0^2 = (8 - 8) - (0 - 0) = 0\\).",
+    "reason": "Solution rewrite only; key A retained and correct. The source solution was pure self-talk — it computed 0 correctly at Step 2, then wrote 'Wait, recalculate', 'Hmm, 0 gives B' and finally 'So answer is B not A'. That conclusion is wrong on its own arithmetic: option B is 4 while the integral is 0, which is the keyed A. The blind pass independently derived A."
   },
   "01-18": {
     "answer": "C",
@@ -72,6 +76,27 @@
     "solution": "Split at the kink \\(x = \\frac{1}{2}\\): \\(\\int_0^{1/2}(1-2x)dx + \\int_{1/2}^{1}(2x-1)dx = \\frac{1}{4} + \\frac{1}{4} = \\frac{1}{2}\\).",
     "reason": "Key flip D→B. The two triangular pieces each contribute 1/4, giving 1/2. The keyed D (2) is four times too large — the modulus was not split at its breakpoint."
   },
+  "03-5": {
+    "options": { "C": "\\(e^{\\pi/4} - 1\\)" },
+    "reason": "Twin repair; key A retained. Old C was \\(e^{1/\\sqrt{2}} - 1\\), the keyed \\(e^{\\sqrt{2}/2} - 1\\) unrationalised — sqrt(2)/2 and 1/sqrt(2) are the same number. The replacement is the classic 'substituted but never transformed the limits' error, evaluating the new integral over the OLD interval."
+  },
+  "03-8": {
+    "options": { "C": "\\(2\\sqrt{2}\\)" },
+    "reason": "Twin repair; key D retained. Old C was \\(2\\sqrt{2} - 2\\), which is the keyed \\(2(\\sqrt{2} - 1)\\) multiplied out — identical value, factored versus expanded. The replacement is the dropped-boundary-term error: the antiderivative is 2 sqrt(u) over u in [1,2], and a student who evaluates only at the upper limit gets 2 sqrt(2) = 2.828 against the correct 0.828."
+  },
+  "03-12": {
+    "options": { "C": "\\(\\ln(\\sqrt{2} + 1)\\)" },
+    "reason": "Twin repair; key B retained. Old C was \\(\\ln\\sqrt{2}\\), which is exactly the keyed \\(\\frac{1}{2}\\ln 2\\) with the one-half written as a square root instead. The replacement is the tan-for-sec antiderivative confusion, giving 0.881 against the correct 0.347."
+  },
+  "05-11": {
+    "options": { "A": "\\(\\frac{1}{e} - 1\\)" },
+    "reason": "Twin repair; key D retained. Old A was \\(\\frac{e-1}{e}\\), which is identically the keyed \\(1 - \\frac{1}{e}\\) — divide the numerator through. The replacement is the dropped-minus-sign error: the antiderivative of e^-x is -e^-x, and forgetting that sign gives 1/e - 1 = -0.632, a negative value for a positive integrand."
+  },
+  "05-14": {
+    "options": { "C": "\\(-\\frac{1}{2}\\ln 2\\)" },
+    "reason": "Twin repair; key A retained. Old C was \\(\\frac{\\ln 2}{2}\\), a byte-different rendering of the keyed \\(\\frac{1}{2}\\ln 2\\) with the one-half moved into the denominator. The replacement is the swapped-limits sign error."
+  },
+
   "05-24": {
     "answer": "A",
     "solution": "\\(\\int(\\sqrt{\\tan x} + \\sqrt{\\cot x})dx = \\sqrt{2}\\,\\sin^{-1}(\\sin x - \\cos x) + C\\). Evaluating from \\(0\\) to \\(\\frac{\\pi}{4}\\) gives \\(\\sqrt{2}\\left[0 - \\left(-\\frac{\\pi}{2}\\right)\\right] = \\frac{\\pi}{\\sqrt{2}}\\).",

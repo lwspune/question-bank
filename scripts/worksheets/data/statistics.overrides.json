@@ -1,0 +1,135 @@
+{
+  "_comment": "Adjudicated repairs for Statistics (Batch J). 189 blind verdicts, 20 disagreements, all put through a second independent blind pass and then re-derived by hand. 4 key flips. THE ROW WORTH READING IS 05-5, WHERE BOTH BLIND PASSES WERE WRONG AND THE SOURCE KEY STANDS: given a non-zero sum of deviations, the precise conclusion is that the value used is not the mean (keyed), not the looser 'error in calculation' both passes picked — the first KEY-STANDS of the batch, and the reason a letter disagreement is never applied automatically. Twelve more disputes were byte-identical duplicate options, where both passes computed the right value and named the other letter. Three rows had NO correct option, all in the same shape: the source computed a statistic against a total it never checked against its own frequency list.",
+
+  "02-19": {
+    "answer": "A",
+    "reason": "Key flip B→A. The stem specifies the EXCLUSIVE method (classes 30-40, 40-50, 50-60), where the upper limit of one class is the lower limit of the next and the limits are already continuous. Class boundaries therefore equal the class limits, 40 and 50. The keyed 39.5 and 50.5 apply the +/-0.5 correction, which belongs to the INCLUSIVE method (classes such as 30-39, 40-49) where a gap exists between consecutive classes."
+  },
+  "03-26": {
+    "answer": "B",
+    "reason": "Key flip A→B. A cumulative frequency counted as 'the number of observations greater than or equal to a boundary' is by definition the 'more than' type. The keyed 'less than or equal to' names the opposite accumulation; these are different concepts, not two names for one."
+  },
+  "05-16": {
+    "answer": "D",
+    "reason": "Key flip B→D. (x + 2x + 3x + 4x)/4 = 10x/4 = 10 gives x = 4. Verified forward: 4, 8, 12, 16 has mean 40/4 = 10. The keyed x = 2 gives 2, 4, 6, 8, whose mean is 5."
+  },
+  "07-21": {
+    "answer": "C",
+    "reason": "Key flip A→C. b_XY = r(SD_X/SD_Y), so 0.4 = r(5/10) = 0.5r and r = 0.8, which is admissible since |r| <= 1. The keyed 0.2 is 0.4 x (5/10) — the SD ratio applied as a multiplier instead of a divisor."
+  },
+
+  "02-4": {
+    "options": { "D": "0.3947" },
+    "reason": "No option was correct; keyed option D repaired, key D retained. The stem's frequencies 5, 10, 15, 8 total 38, and the third class has f = 15, so the relative frequency is 15/38 = 0.39474. The printed 0.375 is 15/40 — the source divided by a total it never checked against its own frequency list. The stem is left verbatim: it states no total, so 38 is what it gives and inventing a fourth frequency to reach 40 would be fabricating data."
+  },
+  "05-25": {
+    "options": { "C": "22.8" },
+    "reason": "No option was correct; keyed option C repaired, key C retained. Sum(f*m) = 10(5) + 20(10) + 30(8) + 40(2) = 570 and Sum(f) = 25, so the mean is 570/25 = 22.8. None of the printed 18.75, 19.5, 20, 21.25 equals it."
+  },
+  "06-10": {
+    "options": { "D": "18" },
+    "reason": "No option was correct; keyed option D repaired, key D retained. The mean of 3, 6, 9, 12, 15 is 9; the squared deviations 36, 9, 0, 9, 36 sum to 90, so the population variance is 90/5 = 18 (cross-checked as Sum(x^2)/n - mean^2 = 99 - 81). The sample variance 90/4 = 22.5 is not offered either, so the printed 30 matches neither convention."
+  },
+
+  "02-17": {
+    "options": { "A": "6, 9, 22, 32, 44" },
+    "reason": "Twin repair; key C retained. Options A and C printed '6, 9, 13, 10, 12' byte-identically. Successive differences of the CF list 6, 15, 28, 38, 50 give exactly that, and re-accumulating returns the original CFs. The replacement is what a student gets by always subtracting the FIRST cumulative frequency rather than the immediately preceding one."
+  },
+  "03-3": {
+    "options": { "A": "0, 6, 16, 31, 43" },
+    "reason": "Twin repair; key B retained. Options A and B were byte-identical. Running sums of 6, 10, 15, 12, 7 are 6, 16, 31, 43, 50, and the final CF equals the total frequency, which closes the check. The replacement is the classic off-by-one that starts the cumulative column at 0 and lags every entry."
+  },
+  "03-8": {
+    "options": { "A": "30, 60, 120" },
+    "reason": "Twin repair; key C retained. Options A and C were byte-identical. For n = 120 the quartile positions are n/4 = 30, n/2 = 60, 3n/4 = 90. The replacement puts Q3 at the TOTAL cumulative frequency instead of at three-quarters of it."
+  },
+  "03-21": {
+    "options": { "B": "250" },
+    "reason": "Twin repair; key D retained. Options B and D both printed 150. With a total of 200 and a 'less than' CF of 50, the 'more than' CF is 200 - 50 = 150, and 50 + 150 = 200 closes. The replacement adds the two cumulative frequencies instead of subtracting, which also exceeds the total and is therefore impossible."
+  },
+  "03-27": {
+    "options": { "A": "6, 12, 18, 24, 30, 36, 42, 48, 54, 60" },
+    "reason": "Twin repair; key B retained. Options A and B were byte-identical. For n = 60 the decile positions are kn/10 = 6k for k = 1..9, with D5 = 30 = n/2 the median, as expected. The replacement appends k = 10, the 'ten parts means ten cut points' error — dividing data into ten parts needs nine cuts, and the tenth would be the whole dataset."
+  },
+  "05-3": {
+    "options": { "B": "3.63" },
+    "reason": "Twin repair; key D retained. Options B and D both printed 3.27. HM = 3/(1/2 + 1/4 + 1/6) = 36/11 = 3.2727. The replacement is the GEOMETRIC mean of 2, 4, 6 (cube root of 48 = 3.634), the standard mean-confusion distractor, and it satisfies the ordering check AM (4) >= GM (3.63) >= HM (3.27)."
+  },
+  "05-13": {
+    "options": { "A": "9" },
+    "reason": "Twin repair; key B retained. Options A and B both printed 5. Sorting 3, 7, 2, 9, 1, 5, 8 gives 1, 2, 3, 5, 7, 8, 9, and with n = 7 the median is the 4th value, 5. The replacement is the forgot-to-sort distractor: the 4th term of the data AS GIVEN is 9."
+  },
+  "05-17": {
+    "options": { "C": "40" },
+    "reason": "Twin repair; key D retained. Options C and D both printed 60. Adding a constant k to every observation shifts the mean by exactly k, so 50 + 10 = 60. The replacement subtracts the constant instead."
+  },
+  "05-21": {
+    "options": { "A": "4.67" },
+    "reason": "Twin repair; key C retained. Options A and C both printed 4. GM = (2 x 4 x 8)^(1/3) = 64^(1/3) = 4, verified as 4^3 = 64. The replacement is the ARITHMETIC mean 14/3 = 4.667."
+  },
+  "06-4": {
+    "options": { "A": "275" },
+    "reason": "Twin repair; key C retained. Options A and C both printed 50. Mean = 300/20 = 15; Sum f(m - mean)^2 = 5(100) + 10(0) + 5(100) = 1000; variance = 1000/20 = 50. The replacement is Sum(f m^2)/Sum(f) = 5500/20 = 275, i.e. the mean of the squares with the 'subtract the square of the mean' step omitted."
+  },
+  "06-12": {
+    "options": { "B": "Unchanged" },
+    "reason": "Twin repair; key D retained. Options B and D both printed 'Multiplied by 9'. Scaling every observation by k scales each squared deviation by k^2, so the variance is multiplied by 9. The replacement is the add-versus-multiply confusion: a variance IS unchanged when a constant is ADDED, but not when the data are scaled."
+  },
+  "07-4": {
+    "options": { "B": "0.64" },
+    "reason": "Twin repair; key C retained. Options B and C both printed 0.36. The coefficient of determination is r^2 = 0.6^2 = 0.36. The replacement is 1 - r^2, the UNEXPLAINED proportion of variance."
+  },
+
+  "01-24": {
+    "options": { "A": "Collection of data" },
+    "reason": "Two-simultaneously-true repair on a row whose key is correct. The old A ('Classification') was a second defensible answer, since arranging raw data into classes with frequencies is literally classification. The replacement names a prior step in the statistical process and so is not what the stem describes."
+  },
+  "03-4": {
+    "options": { "D": "Lorenz curve" },
+    "reason": "Twin repair on a row whose key is correct. Options B and D were byte-identical ('Histogram'), so the row printed the same distractor twice. The keyed C is untouched; the replacement is a distinct graphical device used for concentration, not for this."
+  },
+  "03-13": {
+    "options": { "C": "At CF = (100/k) × n for kth percentile" },
+    "reason": "Two-simultaneously-true repair on a row whose key is correct. The old C ('n/100 intervals') was arguably true, since consecutive percentiles are spaced n/100 apart, so it competed with the keyed option. The replacement inverts the fraction and is wrong for every k other than 100."
+  },
+  "04-8": {
+    "options": { "D": "Bar widths proportional to frequency" },
+    "reason": "Two-simultaneously-true repair on a row whose key is correct. The old D ('Fixed width for all bars') is true of a typical bar chart, so the row had two correct options. The replacement is false: it is the bar HEIGHT, not the width, that carries frequency."
+  },
+  "06-3": {
+    "options": { "D": "Standard deviation is undefined" },
+    "reason": "Two-simultaneously-true repair on a row whose key is correct. A dataset with zero variance is a single repeated value, which made the old D true alongside the keyed option. The replacement is false: the standard deviation of such a dataset is 0, which is defined."
+  },
+  "06-8": {
+    "options": { "C": "Interquartile range" },
+    "reason": "Two-simultaneously-true repair on a row whose key is correct. The old C ('Range') competed directly with the keyed D, since both range and SD have a breakdown point of 0. The replacement is the standard robust alternative and so is not the answer to a question about sensitivity to outliers."
+  },
+  "06-13": {
+    "options": { "A": "1.2" },
+    "reason": "Twin repair on a row whose key is correct. The old A (1.4) is sqrt(2) = 1.41421 rounded to one decimal, i.e. the keyed value written approximately. The replacement is a distinct value that no rounding of the answer produces."
+  },
+  "06-18": {
+    "options": { "D": "Step deviation method" },
+    "reason": "Twin repair on a row whose key is correct. The old D ('Shortcut method') is a genuine synonym for the keyed A, so the row offered one method under two names. The replacement names a different and distinguishable technique."
+  },
+  "06-21": {
+    "options": { "A": "Var = Σf(m - mean) / Σf" },
+    "reason": "Twin repair on a row whose key is correct. The old A and the keyed B were the same formula, since for grouped data n conventionally denotes the total frequency Sum(f). The replacement drops the square, which makes it identically zero for every dataset and therefore unambiguously wrong — the forgot-to-square error."
+  },
+  "06-28": {
+    "options": { "C": "4" },
+    "reason": "Twin repair on a row whose key is correct. The old C (10) is the SAMPLE variance 40/4 of the same data, so the row offered both conventions and marked only one right. The replacement is a distinct value under either convention."
+  },
+  "07-9": {
+    "options": { "A": "The presence of outliers" },
+    "reason": "Two-simultaneously-true repair on a row whose key is correct. The old A ('The units of measurement') is a true statement on its own, since r is dimensionless, so it duplicated part of the keyed claim. The replacement is something r genuinely IS sensitive to, and so is false as an answer here."
+  },
+  "07-11": {
+    "options": { "C": "Sum of squared perpendicular distances from the points to the line" },
+    "reason": "Two-simultaneously-true repair on a row whose key is correct. The old C differed from the keyed D only by the positive constant 1/n, so it is minimised by exactly the same line. The replacement is the criterion for the orthogonal-regression line, which is a DIFFERENT line from the least-squares line."
+  },
+  "07-16": {
+    "options": { "C": "0.95" },
+    "reason": "Twin repair on a row whose key is correct. The old C (0.77) and the keyed D (0.775) are the same number at different precision, since sqrt(1.5 x 0.4) = sqrt(0.6) = 0.7746. The replacement is not a rounding of that value at any precision."
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "_comment": "Adjudicated repairs for Probability (Batch J). 222 blind verdicts and ZERO wrong keys — the cleanest chapter of the batch and of the exam so far. Every repair below is to option TEXT or to a stem; not one key moves. THE DOMINANT DEFECT is the unreduced-fraction twin: file 01 repeatedly prints the keyed answer a second time in lowest-vs-unreduced form (4/10 beside 2/5, 26/52 beside 1/2, 6/36 beside 1/6), so a student can be right and still have two options to choose between. Row 01-24 carries TWO such pairs at once. Also repaired here: one option that was an EMPTY STRING in the source (07-6) and one stem whose stated probabilities are mutually contradictory (01-28).",
+
+  "07-6": {
+    "options": { "A": "\\(C(6,2) × (\\frac{1}{6})^4 × (\\frac{5}{6})^2\\)" },
+    "reason": "Option A was an EMPTY STRING in the source — the row shipped with three options. Key B is correct and is retained: C(6,2)(1/6)^2(5/6)^4 = 9375/46656 = 0.2009. The replacement swaps the two exponents, the standard binomial slip, giving 375/46656 = 0.00804 — distinct from B (0.2009), C (0.0804) and D (1/46656)."
+  },
+  "01-28": {
+    "stem": "A bag contains balls of different colors. If P(red) = \\(\\frac{4}{5}\\), P(blue) = \\(\\frac{1}{5}\\), and there are only red and blue balls, what is P(not blue)?",
+    "solution": "The bag holds only red and blue balls, so \\(P(\\text{red}) + P(\\text{blue}) = \\dfrac{4}{5} + \\dfrac{1}{5} = 1\\), as it must. By the complement rule \\(P(\\text{not blue}) = 1 - P(\\text{blue}) = 1 - \\dfrac{1}{5} = \\dfrac{4}{5}\\), which agrees with the direct reading \\(P(\\text{not blue}) = P(\\text{red}) = \\dfrac{4}{5}\\).",
+    "reason": "Stem repair; key B retained. As printed the stem was self-contradictory: it stipulated that the bag holds only red and blue balls while giving P(red) = 2/5 and P(blue) = 1/5, which sum to 3/5 rather than 1. That made the question have two defensible answers — the complement axiom gives P(not blue) = 1 - 1/5 = 4/5 (keyed B), while 'not blue = red' gives 2/5 (option C). The source's own solution visibly flounders on this, writing 'No, this doesn't match. Wait:' mid-derivation. P(red) is corrected to 4/5 so the two probabilities sum to 1; both routes then give 4/5 and the keyed B is the unique answer."
+  },
+
+  "03-28": {
+    "solution": "From \\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}\\), rearranging gives \\(P(B) = \\dfrac{P(A \\cap B)}{P(A \\mid B)} = \\dfrac{1/8}{1/4} = \\dfrac{1}{8} \\times 4 = \\dfrac{1}{2}\\).",
+    "reason": "Solution rewrite only; key and options untouched. The source solution had a malformed math zone — a stray closing delimiter inside a nested fraction produced an unbalanced \\) that would have broken KaTeX rendering for the whole solution. The arithmetic it was reaching for is correct and is preserved."
+  },
+  "01-4": {
+    "options": { "D": "\\(\\frac{2}{3}\\)" },
+    "reason": "Twin repair; key B retained. Old D was 4/10, the keyed 2/5 unreduced — the same 0.4. The replacement is the red:blue ODDS 4/6 = 2/3 read as a probability, a standard slip, and is distinct from A (3/5), B (2/5) and C."
+  },
+  "01-13": {
+    "options": { "B": "\\(\\frac{3}{10}\\)" },
+    "reason": "Twin repair; key C retained. Old B was 5/10, the keyed 1/2 unreduced. The replacement counts only the 3 red as 'not green' and forgets the 2 blue: 0.3 against the correct 0.5."
+  },
+  "01-14": {
+    "options": { "A": "\\(\\frac{3}{4}\\)" },
+    "reason": "Twin repair; key D retained. Old A was 9/36, the keyed 1/4 unreduced. The replacement is the complement P(product even) = 27/36 = 0.75, the classic forgot-to-read-'odd' error."
+  },
+  "01-20": {
+    "options": { "A": "\\(\\frac{2}{5}\\)" },
+    "reason": "Twin repair; key retained. Old A was 5/10 and option B is 1/2 — the same 0.5. Neither is the keyed answer, so the unreduced A is the one replaced and B survives. The replacement is the off-by-one count that treats 10 to 20 as ten numbers: 4/10 = 0.4 against the correct 4/11 = 0.364."
+  },
+  "01-21": {
+    "options": { "D": "\\(\\frac{6}{25}\\)" },
+    "reason": "Twin repair; key A retained. Old D was 6/20, the keyed 3/10 unreduced. The replacement (3/5)(2/5) = 0.24 is the without-replacement error that drops a white ball from the numerator but not from the second draw's denominator."
+  },
+  "01-24": {
+    "options": {
+      "D": "\\(\\frac{1}{26}\\)",
+      "C": "\\(\\frac{3}{4}\\)"
+    },
+    "reason": "TWO twin pairs in one row; key A retained. Old D was 26/52, the keyed 1/2 unreduced; separately old C was 13/52 and option B is 1/4, the same 0.25. B survives as the reduced form of that second pair. The new D counts the 2 black SUITS instead of the 26 black cards (0.038); the new C is the complement of the one-suit slip, 1 - 1/4 = 0.75. Both are distinct from A (0.5), B (0.25) and each other."
+  },
+  "01-29": {
+    "options": { "A": "\\(\\frac{5}{32}\\)" },
+    "solution": "Tossing 5 coins gives \\(2^5 = 32\\) equally likely outcomes. Exactly 3 heads can occur in \\(\\binom{5}{3} = 10\\) ways, so \\(P = \\dfrac{10}{32} = \\dfrac{5}{16}\\).",
+    "reason": "Twin repair plus a solution rewrite; key B retained. The source solution found the twin itself and then shrugged at it — 'Wait, 10/32 = 5/16, so option A is equivalent to B. Let me keep B as stated' — leaving both printed. Option A (5/16) and the keyed B (10/32) are the same number, which is why the blind pass named A. The replacement, 5/32, is the halve-instead-of-reduce slip and is distinct from 5/16, from C (1/5) and from D (3/5)."
+  },
+  "01-32": {
+    "options": { "A": "\\(\\frac{11}{12}\\)" },
+    "reason": "Twin repair; key B retained. Old A was 6/12, the keyed 1/2 unreduced. The replacement is the UNION rather than the intersection, 2/3 + 3/4 - 1/2 = 11/12, the standard 'passes at least one' confusion."
+  },
+  "01-33": {
+    "options": { "A": "\\(\\frac{1}{9}\\)" },
+    "reason": "Twin repair; key C retained. Old A was 4/6, the keyed 2/3 unreduced. The replacement multiplies where the stem needs a union: (2/6)(2/6) = 1/9."
+  },
+  "01-38": {
+    "options": { "B": "\\(\\frac{1}{36}\\)" },
+    "reason": "Twin repair; key D retained. Old B was 6/36, the keyed 1/6 unreduced. The replacement is the probability of ONE specified doublet, forgetting that there are six of them."
+  },
+  "02-21": {
+    "options": { "A": "Only if P(A) = P(B) = 1/2" },
+    "reason": "Two-simultaneously-true repair; key B retained. Mutual exclusivity plus independence forces P(A)P(B) = P(A ∩ B) = 0, so the keyed B ('Only if P(A) = 0 or P(B) = 0') is the precise statement — but the old A ('Both can be true together') was loosely true in exactly that degenerate case, giving the row two defensible answers. The replacement is false: with P(A) = P(B) = 1/2, independence forces P(A ∩ B) = 1/4, which is non-zero, so the two events cannot also be mutually exclusive."
+  },
+  "02-28": {
+    "options": { "C": "P(A ∩ B) ≥ P(A)" },
+    "reason": "Two-simultaneously-true repair; key D retained. The keyed D is the Bonferroni bound P(A ∩ B) ≥ P(A) + P(B) - 1, which is necessarily true — but so was the old C ('P(A ∩ B) ≥ 0 always'), the non-negativity axiom, so the row had two correct answers to a question asking which statement is necessarily true. The replacement is false in general: A ∩ B is a subset of A, so P(A ∩ B) ≤ P(A), with equality only when A is contained in B."
+  },
+  "03-14": {
+    "options": { "B": "\\(\\frac{5}{7}\\)" },
+    "reason": "Twin repair; key D retained. Old B was 25/60, the keyed 5/12 unreduced. The replacement is the REVERSED conditional P(Maths | Physics) = 25/35 = 5/7, the commonest error on this stem."
+  },
+  "03-17": {
+    "options": { "C": "\\(\\frac{3}{52}\\)" },
+    "reason": "Twin repair; key A retained. Old C was 12/52, which reduces to 3/13 — exactly the keyed value, since face cards are spread evenly over the four suits. The replacement is the JOINT probability P(heart and face), i.e. failing to condition on the heart."
+  },
+  "03-34": {
+    "options": { "C": "\\(\\frac{13}{47}\\)" },
+    "reason": "Twin repair; key D retained. Old C was 13/52 and option B is 1/4 — the same 0.25; neither is keyed, so the unreduced C is replaced and B survives. The replacement uses the right denominator but forgets to remove the 3 hearts already drawn: 13/47 = 0.277 against the correct 10/47 = 0.213."
+  },
+  "05-7": {
+    "options": { "A": "\\(\\frac{p}{p + m(1-p)}\\)" },
+    "reason": "Twin repair; key D retained. Old A was mp/(mp + (1-p)), which is the keyed mp/(1 + p(m-1)) with the denominator regrouped — identical for all p and m. The replacement multiplies the guessing branch by m instead of by 1/m; at p = 0.5, m = 4 it gives 0.200 against the correct posterior 0.800."
+  },
+  "06-19": {
+    "options": { "C": "\\(9e^{-3}\\)" },
+    "reason": "Twin repair; key B retained. Old C was 9/(2e^3), the keyed 9e^{-3}/2 with the exponential moved into the denominator. The replacement omits the 2! divisor — 0.448 against the correct 0.224 — the standard forgot-the-factorial error."
+  }
+}

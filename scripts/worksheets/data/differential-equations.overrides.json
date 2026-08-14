@@ -1,0 +1,89 @@
+{
+  "_comment": "Adjudicated repairs for Differential Equations (Batch J). 93 blind verdicts, 10 disagreements, all put through a second independent blind pass and then re-derived by hand. 6 key flips. THE FINDING: three of this chapter's source solutions REFUTE THEMSELVES — 02-6 derives option D across five numbered steps and then writes 'Option A is correct'; 02-17 reaches the correct equation at Step 5 and keys a different one; 03-20 separates the variables correctly, then declares at Step 4 that 'the standard simpler separation' is dy/(1+y^2) = cos x dx, which is plain algebra error (it moves 1+y^2 to the wrong side) and is where its wrong key comes from. The two Basic-Concepts rows (01-5, 01-25) share one root cause: both hinge on whether a radical over a derivative can be cleared before the degree is read, and both are repaired on the SAME convention — clear it — so the chapter cannot teach two contradictory rules.",
+
+  "_comment_letters": "The nine solution-only rewrites below share one cause, found by audit:keys after commit: the source's solutions name option letters that do not match the option order actually printed. In 01-7 the non-differential-equation y = x^3 + 5 is option D and the solution calls it C; the same off-by-one runs through the file. Every key here was independently confirmed by the blind pass, so the KEY is right and the LETTER REFERENCE is wrong. Each solution is rewritten to state its mathematical conclusion and name no letter at all, which removes the contradiction permanently rather than moving it.",
+
+  "01-7": {
+    "solution": "A differential equation must involve at least one derivative of the unknown function. The relations \\(\\dfrac{d^2 y}{dx^2} + x^2 = 0\\), \\(\\dfrac{dy}{dx} = x + y\\) and \\(x\\dfrac{dy}{dx} - y = 0\\) each contain a derivative. The relation \\(y = x^3 + 5\\) contains none — it is an ordinary algebraic relation between \\(x\\) and \\(y\\) — so it is not a differential equation.",
+    "reason": "Solution rewrite only; key D correct and retained. The source solution identified the right relation (y = x^3 + 5) but labelled it 'Option C' when it is printed as option D."
+  },
+  "01-9": {
+    "solution": "A general solution carries arbitrary constants. Using conditions such as \\(y(x_0) = y_0\\) fixes those constants and singles out one member of the family. A solution containing no arbitrary constant is called a particular solution.",
+    "reason": "Solution rewrite only; key D correct and retained. The reasoning was right but the closing step named a letter that does not hold 'particular solution'."
+  },
+  "01-14": {
+    "solution": "An \\(n\\)-th order differential equation has a general solution containing exactly \\(n\\) arbitrary constants. A second order equation therefore has a general solution with two arbitrary constants.",
+    "reason": "Solution rewrite only; key D correct and retained. Same stale-letter defect."
+  },
+  "02-15": {
+    "solution": "Differentiating \\(xy = c\\) with respect to \\(x\\) by the product rule gives \\(x\\dfrac{dy}{dx} + y = 0\\). This no longer contains \\(c\\) and is therefore the required differential equation.",
+    "reason": "Solution rewrite only; key D correct and retained. Same stale-letter defect."
+  },
+  "02-18": {
+    "solution": "With the slope \\(m\\) held fixed, the only arbitrary constant in \\(y = mx + c\\) is \\(c\\). Differentiating once gives \\(\\dfrac{dy}{dx} = m\\), which eliminates \\(c\\), and that is the required differential equation.",
+    "reason": "Solution rewrite only; key D correct and retained. Same stale-letter defect."
+  },
+  "02-19": {
+    "solution": "The family \\(y^2 + x^2 = 2ax\\) contains a single arbitrary constant, \\(a\\). Eliminating one constant requires differentiating once, so the resulting differential equation has order \\(1\\).",
+    "reason": "Solution rewrite only; key C correct and retained. The source derived order 1 correctly and then wrote 'So option A (order 1) is correct', but order 1 is printed as option C."
+  },
+  "02-23": {
+    "solution": "Differentiating \\(y = Ae^{kx}\\) gives \\(\\dfrac{dy}{dx} = Ake^{kx} = ky\\). With \\(A\\) eliminated, the differential equation is \\(\\dfrac{dy}{dx} = ky\\).",
+    "reason": "Solution rewrite only; key C correct and retained. The source derived dy/dx = ky and then wrote 'Therefore, option A is correct', but that equation is printed as option C."
+  },
+
+  "01-4": {
+    "answer": "C",
+    "reason": "Key flip D→C. The order is that of the highest derivative present, y'', and the degree is the power on THAT derivative, which is 1. The exponent 4 sits on dy/dx and never sets the degree. Order 2, degree 1."
+  },
+  "02-20": {
+    "answer": "A",
+    "solution": "Differentiating \\(y^2 + x^2 = 2ax\\) gives \\(2y\\dfrac{dy}{dx} + 2x = 2a\\), so \\(a = x + y\\dfrac{dy}{dx}\\). The original relation gives \\(a = \\dfrac{x^2 + y^2}{2x}\\). Equating the two and clearing the denominator yields \\(2xy\\dfrac{dy}{dx} = y^2 - x^2\\).",
+    "reason": "Key flip B→A, with a solution rewrite. Differentiating y^2 + x^2 = 2ax gives 2yy' + 2x = 2a, so a = x + yy'; the original gives a = (x^2+y^2)/(2x). Equating and clearing yields 2xy dy/dx = y^2 - x^2, which is option A verbatim. Checked numerically on the member a = 1 at two distinct points. The solution is rewritten because the source's closing step named the old keyed letter, which audit:keys correctly flagged as contradicting the corrected key."
+  },
+  "03-16": {
+    "answer": "B",
+    "solution": "Bernoulli with n = 2. Dividing by \\(y^2\\) and putting \\(v = 1/y\\) gives \\(v' - v = -1\\), whose integrating factor \\(e^{-x}\\) yields \\(v = 1 + Ce^{x}\\). Hence \\(y = \\dfrac{1}{1 + Ce^{x}}\\); with the arbitrary constant renamed this is \\(y = \\dfrac{1}{1 - Ce^{x}}\\).",
+    "reason": "Key flip C→B. Verified by substitution rather than by matching form: for y = 1/(1 - Ce^x), y' = Ce^x/(1 - Ce^x)^2 and y' + y = [Ce^x + 1 - Ce^x]/(1 - Ce^x)^2 = y^2, so B satisfies the equation. The keyed C does not."
+  },
+  "04-3": {
+    "answer": "B",
+    "solution": "From the general solution \\(y = x^3 + C\\), \\(y(1) = 1 + C\\). Setting \\(y(1) = 5\\) gives \\(C = 4\\), so the particular solution is \\(y = x^3 + 4\\).",
+    "reason": "Key flip A→B, with a solution rewrite. y(1) = 1 + C = 5 gives C = 4, so the particular solution is y = x^3 + 4. The source derived exactly that and then wrote 'Among options, this corresponds to option A (since 2 in A is a distractor, we must choose...)' — self-talk ending on the wrong letter, which audit:keys flagged against the corrected key."
+  },
+  "04-17": {
+    "answer": "A",
+    "reason": "Key flip B→A. Integrating dy/dx = 3x^2 - 2 gives y = x^3 - 2x + C, and y(1) = 1 - 2 + C = 0 gives C = 1. Differentiated back to confirm: 3x^2 - 2."
+  },
+  "03-20": {
+    "answer": "C",
+    "options": { "B": "\\(\\frac{y^2}{2} + \\frac{y^4}{4} = \\sin x + C\\)" },
+    "solution": "Separating, \\((1 + y^2)\\,dy = \\cos x\\,dx\\). Integrating both sides gives \\(y + \\dfrac{y^3}{3} = \\sin x + C\\).",
+    "reason": "Key flip A→C, PLUS a twin repair on the same row. The flip: multiplying both sides by (1+y^2) puts it on the left with dy, so the integral is y + y^3/3, not arctan y. The source solution does this correctly at Steps 1-3 and then reverses itself at Step 4 with 'the standard simpler separation is dy/(1+y^2) = cos x dx' — which would be the answer to dy/dx = cos x (1+y^2), a different equation. The twin: the old A and B were the same relation (B is A solved for y), so after the flip the row still carried a duplicate pair among its distractors. B is replaced with the integral of y(1+y^2), a plausible mis-separation, distinct in value from A, C and D."
+  },
+
+  "02-6": {
+    "options": { "B": "\\(x\\dfrac{dy}{dx} = 2y\\)" },
+    "reason": "Twin repair; key D retained. Old B (2x y' = y) is the keyed D (2xy y' = y^2) divided by y, so both are correct differential equations for the family y^2 = 4ax and both blind passes named B. This is the illusory-flip pattern — acting on the letter disagreement would have overwritten a correct key. D is kept because it is the direct result of the elimination (substituting 4a = y^2/x into 2yy' = 4a), which is exactly what the source solution derives before contradicting itself by naming option A. The replacement x y' = 2y is wrong: for y^2 = 4ax, y' = 2a/y, so x y' = y/2, not 2y."
+  },
+  "01-5": {
+    "options": { "D": "\\(\\dfrac{d^2 y}{dx^2} + \\sin\\left(\\dfrac{dy}{dx}\\right) = 0\\)" },
+    "reason": "No option was correct; keyed option D repaired, key D retained. Degree is defined once the equation has been made free of radicals and fractions in the derivatives. The printed D was sqrt(y'') + y = 0, whose radical DOES clear (square to get y'' = y^2), leaving a polynomial in the derivatives of degree 1 — so under the stated convention no option had an undefined degree and the question had no answer. Replaced with a transcendental function of a derivative, which cannot be cleared by any algebraic operation, so its degree is genuinely undefined while A (2), B (1) and C (1) all remain defined."
+  },
+  "01-25": {
+    "options": { "D": "Order \\(2\\), degree \\(2\\)" },
+    "reason": "No option was correct; keyed option D repaired, key D retained. For y'' + sqrt(y') = 0, clearing the radical gives sqrt(y') = -y'' and hence y' = (y'')^2, a polynomial in the derivatives in which the highest-order derivative y'' carries power 2. So the pair is order 2, degree 2 — not offered. The printed D asserted the degree was undefined, which contradicts the same convention applied in 01-5 above; both rows are now repaired consistently. A (order 2, degree 1), B and C remain distinct and wrong."
+  },
+  "02-17": {
+    "options": { "B": "\\(\\dfrac{dy}{dx} - y + x - 1 = 0\\)" },
+    "reason": "No option was correct; keyed option B repaired, key B retained. From y = x + k e^x, y' = 1 + k e^x and k e^x = y - x, so y' = 1 + y - x, i.e. y' - y + x - 1 = 0. Tested k = 1 at x = 0 (y = 1, y' = 2): A gives 1, B gave 2, C gives 2, D gives 1 — none zero, so no printed option was a solution. The source's own Step 5 reaches the correct equation and then keys a different one. The repaired B is distinct from A (missing the -1), C (+1 instead of -1) and D."
+  },
+  "04-2": {
+    "options": { "B": "\\(y = \\dfrac{x^3}{3} + C\\)" },
+    "reason": "Twin repair on a row whose key is correct. Old B was y = x^3 + 3C; since C is arbitrary, 3C is just another arbitrary constant, so B described exactly the same family as the keyed y = x^3 + C. The replacement differentiates to x^2, not 3x^2, so it does not satisfy the stem."
+  },
+  "04-16": {
+    "options": { "C": "\\(y = C_1 x^2 + C_2 x + C_3\\)" },
+    "reason": "Twin repair on a row whose key is correct. Old C (y = C_1 x + C_2) carried exactly two independent arbitrary constants, the same count as the keyed option, so it was equally defensible on the property the item tests. The replacement carries three, which is wrong by that same rule for a second-order equation."
+  }
+}
