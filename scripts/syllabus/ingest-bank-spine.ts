@@ -22,6 +22,26 @@
  * (JEE-001, JEE-002, ...), so if the bank's taxonomy changes the numbering
  * shifts; the prune below removes rows past the new end rather than leaving
  * ghosts behind.
+ *
+ * RE-RUNNING --apply ON A SPINE THAT ALREADY CARRIES RULINGS NEEDS THREE STEPS,
+ * IN THIS ORDER. Numbering runs across ALL THREE exams at once, so growing one
+ * exam renumbers the other two: on 2026-08-14 adding 53 JEE Chemistry subtopics
+ * moved MHT-CET from MHT-150.. to MHT-203.. and NDA from NDA-272.. to NDA-325..,
+ * which overlapped nothing. Rows whose ref survived were upserted IN PLACE — new
+ * subtopic, same row id, ruling still attached and now describing something else
+ * — and rows whose ref did not survive were pruned, taking their rulings with
+ * them (syllabus_concept_exams.concept_id is ON DELETE CASCADE).
+ *
+ *   1. npx tsx scripts/syllabus/renumber-rulings.ts --subject=X --snapshot
+ *      BEFORE this script. It captures the old (chapter, subtopic) per ref,
+ *      which is the only thing that survives a renumber and the only way to
+ *      disambiguate the subtopic names that repeat across chapters.
+ *   2. this script --apply
+ *   3. renumber-rulings.ts --files=... --apply, then re-commit each file with
+ *      commit-bank-rulings.ts. Its guard #2 re-checks every subtopic name
+ *      against the spine, so a mis-landed ruling fails loudly.
+ *
+ * Take a database backup first (`npm run db:backup`): step 2 deletes rows.
  */
 import { join } from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";

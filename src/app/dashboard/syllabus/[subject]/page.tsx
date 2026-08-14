@@ -242,7 +242,9 @@ export default async function SyllabusMapPage({
             Rows are each exam&rsquo;s OWN subtopics, taken from the question bank. This is the
             inverse of the chapter matrix below, and the only direction that can say &ldquo;the exam
             asks something the books never teach&rdquo;. Chapters an exam no longer sets are
-            excluded &mdash; counting them inflates the gap with history.
+            excluded &mdash; counting them inflates the gap with history.{" "}
+            <strong>Not assessed</strong> is not a verdict: those subtopics have no ruling yet,
+            so they are absent from the other three columns rather than counted as covered.
           </p>
           <div className="overflow-x-auto rounded-md border">
             <table className="w-full min-w-[38rem] text-sm">
@@ -253,6 +255,10 @@ export default async function SyllabusMapPage({
                   <th scope="col" className="p-3 text-right font-medium">Covered</th>
                   <th scope="col" className="p-3 text-right font-medium">Partly</th>
                   <th scope="col" className="p-3 text-right font-medium">Not covered</th>
+                  {/* Without this column the other three silently fail to sum to
+                      "its own subtopics", which reads as a broken table rather
+                      than as work nobody has done yet. */}
+                  <th scope="col" className="p-3 text-right font-medium">Not assessed</th>
                 </tr>
               </thead>
               <tbody>
@@ -274,6 +280,9 @@ export default async function SyllabusMapPage({
                       }`}
                     >
                       {e.not}
+                    </td>
+                    <td className="p-3 text-right tabular-nums text-muted-foreground">
+                      {e.unassessed || "—"}
                     </td>
                   </tr>
                 ))}

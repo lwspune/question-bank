@@ -26,14 +26,36 @@ export type SyllabusSubject = {
    * last question predates this is treated as dropped (`loadOldSyllabusChapters`
    * tests `lastYear < liveFromYear`).
    *
-   * This is DERIVED from each subject's bank, not asserted, and the two subjects
-   * genuinely differ — sharing one constant gives the wrong answer:
-   *   Chemistry — seven rationalised chapters stop at 2021 (metallurgy, polymers,
-   *               surface chemistry, ...), every live chapter reaches 2026.
-   *   Physics   — Communication Systems (63 PYQ) was still set in 2023 and has
-   *               nothing since; all 27 other JEE Physics chapters reach 2026.
-   * At 2023, Physics' one dropped chapter reads as live. At 2024, the split is
-   * 1 dead / 27 live with a two-year margin either side.
+   * THIS IS A JEE-ONLY FACT. It exists because JEE rationalised its syllabus and
+   * genuinely stopped setting whole chapters — a dated event, visible in a
+   * 3,455-question corpus where a chapter going silent is real evidence. Neither
+   * other exam has such an event: MHT-CET is set on the State Board syllabus, and
+   * NDA is a services exam that does not rationalise. Do NOT read this as a knob
+   * to tune per exam.
+   *
+   * That the value is applied to all three exams is a containment measure, not a
+   * feature. The dead SET is keyed per exam (see `loadOldSyllabusByExam`) so that
+   * JEE's deadness cannot leak onto the others by shared chapter name — which was
+   * a real defect that buried 183 live MHT-CET PYQ. Raising this value to make the
+   * JEE column sharper therefore flags the other two exams as collateral, and the
+   * arithmetic is brutal:
+   *   2026 — correct for JEE (7 dead), but MHT-CET has NO 2026 papers at all, so
+   *          all 30 of its chapters read as dropped and its row collapses to
+   *          live=0; NDA loses 5, three of them merely unsampled in a single
+   *          15-question 2026 sitting.
+   *   2025 — JEE 5 dead, MHT-CET 0, but NDA 2 — and NDA averages ~29 questions a
+   *          year over 12 chapters, so absence in a year is noise, not a signal.
+   * Hence 2023 for Chemistry: nothing is assumed dead for anyone. It costs 3 rows
+   * of history on JEE's 37-row gap list, which is cheaper than asserting a
+   * syllabus change that did not happen.
+   *
+   * Physics 2024 is calibrated the same way and happens to be safe because it
+   * sits BELOW every exam's newest year: Communication Systems (63 PYQ, last set
+   * 2023) is dead, and no MHT-CET or NDA chapter is touched.
+   *
+   * Measure before changing this: per exam, the newest year in the bank AND the
+   * per-chapter last year. A threshold at or above an exam's newest year marks
+   * that entire exam dead.
    */
   liveFromYear: number;
   /** State Board spine seed files under scripts/syllabus/data/. */

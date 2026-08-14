@@ -60,6 +60,8 @@ Four independent false "absent" claims, each from a different cause:
 | substring | `cement` matched displa*cement* 96 times |
 | **-s- vs -z-** | `polymerisation` finds 9 NCERT hits and misses the State Board's **61** — that book spells it `polymerization` |
 | **different name** | `bisulphite` is zero in NCERT, which calls the same reagent `hydrogensulphite` |
+| **the book's own typo** | `titrimetric` is ZERO in the State Board — it prints **`titrametric`**. Both spellings and `titration` come back empty, and only `volumetric` reaches the section |
+| **a mistyped `--source`** | `--source="MH State"` is not the source name, so it selected NO chapters and every term printed "ZERO hits in MH State — absence is weak evidence", which reads as a finding. `search_corpus.py` now refuses an unknown source, but check the tool spoke to the data before believing any absence |
 
 **The last two are systematic between these two books, not one-off.** The State
 Board prefers -z- (polymerization, trimerization) where NCERT uses -s-, and the
@@ -159,6 +161,23 @@ The mirror of the false-absence table above. Each of these produced a wrong
 - **A chapter TITLE.** NCERT ch.4 is still titled "…and Quadratic Equations";
   every 'quadratic equation' hit is the title/header/intro — the teaching
   section was deleted.
+- **A DIFFERENT named reaction sharing the surname.** NCERT's only 'Hofmann'
+  hit is *Hofmann's bromamide reaction* — an amine PREPARATION — sitting in a
+  list of named reactions. The subtopic asked about Hofmann ELIMINATION, which
+  NCERT does not teach. The State Board has both, under 13.3.6 and 13.6.3.
+  A surname is not a topic: open the sentence.
+- **A LIST of named reactions**, in a summary or exercise, is not a section that
+  teaches any of them — the same hit above is one item in a list of seven.
+
+## Read the sentence, not the count
+
+`search_corpus.py` answers "how many hits, in which chapter" — where a ruling
+STARTS. `corpus_context.py` prints the surrounding sentences, which is what
+settles it, and the three hardest calls in the Chemistry batch were all decided
+there and would all have gone the other way on counts alone (Hofmann above;
+Moseley, named in ONE qualitative sentence in each book with no relation and no
+K/L series, so `partial` not `full`; and the `titrametric` spelling, found only
+by reading the paragraph a `volumetric` hit sat in).
 
 ## Per-subject addenda
 

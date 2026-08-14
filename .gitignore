@@ -72,3 +72,9 @@ supabase/.temp/
 # public and the dumps carry student mobiles, quiz-lead consent records and the
 # full auth.users table. Whole directory, so a new artifact type can't slip out.
 backups/
+
+# Transient spine snapshots (scripts/syllabus/renumber-rulings.ts --snapshot).
+# Written immediately BEFORE a bank-spine re-ingest and consumed immediately
+# after, purely to carry the old (chapter, subtopic) pairs across the renumber.
+# Committing one would leave a stale map in the tree that looks authoritative.
+scripts/syllabus/data/.spine-snapshot-*.json

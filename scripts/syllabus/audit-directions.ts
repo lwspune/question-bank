@@ -30,18 +30,63 @@ import { join } from "node:path";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
-// Retired JEE chapters per subject — a pointer from a chapter JEE stopped
-// setting does not contradict "not required by JEE today". Chapter names do
-// not collide across subjects, so one flat set is safe.
-const OLD_JEE_CHAPTERS = new Set([
-  // Chemistry (dead after 2021)
-  "General Principles and Processes of Isolation of Elements", "Environmental Chemistry",
-  "Hydrogen", "Polymers", "Surface Chemistry", "Chemistry in Everyday Life", "Solid State",
-  // Physics (dead after 2023)
-  "Communication Systems",
-  // Mathematics (dead after 2023)
-  "Mathematical Reasoning", "Height & Distance",
-]);
+/**
+ * A JEE subtopic is retired if its own newest PYQ predates this — three full
+ * cycles of silence across a 3,455-question corpus, which is evidence.
+ *
+ * JEE-only and deliberately NOT the page's `liveFromYear`. That constant has to
+ * serve all three exams at once and is pinned low because raising it would mark
+ * MHT-CET (no 2026 papers at all) and NDA (~29 questions a year over 12
+ * chapters) wholesale dead. This probe audits only the JEE spine — NDA and
+ * MHT-CET carry no covered_by pointers — so it can use the sharper JEE-specific
+ * rule without touching what the page shows.
+ */
+const JEE_RETIRED_BEFORE = 2024;
+
+/**
+ * Which JEE subtopics are retired, DERIVED from the bank per (chapter,
+ * subtopic).
+ *
+ * This replaced a hardcoded list of chapter NAMES, which was wrong in both
+ * directions. It had rotted — it recorded Chemistry's chapters as dead "after
+ * 2021" when the completed corpus shows they ran to 2023 — and, more
+ * importantly, it was at the wrong GRAIN. JEE's rationalisation retired content
+ * at subtopic level, and our taxonomy files some of that into chapters that are
+ * still very much set: "Gas Laws and Ideal Gas Equation" (13 PYQ, none since
+ * 2023) sits inside Some Basic Concepts of Chemistry, 205 PYQ and still set in
+ * 2026. A chapter-grained flag cannot express a dead subtopic in a live chapter,
+ * so it reported four contradictions where BOTH rulings were correct.
+ */
+async function loadRetiredJeeSubtopics(db: any): Promise<Set<string>> {
+  const newest = new Map<string, number>();
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await db
+      .from("questions")
+      .select("pyq_year,exams!inner(name),chapters!inner(name),subtopics!inner(name)")
+      .eq("exams.name", "JEE Mains")
+      .eq("visibility", "PUBLIC")
+      .eq("question_kind", "pyq")
+      .range(from, from + 999);
+    if (error) throw new Error(`retired subtopics: ${error.message}`);
+    const rows = (data ?? []) as {
+      pyq_year: number | null;
+      chapters: { name: string } | null;
+      subtopics: { name: string } | null;
+    }[];
+    for (const r of rows) {
+      if (!r.pyq_year || !r.chapters?.name || !r.subtopics?.name) continue;
+      const k = `${r.chapters.name}\t${r.subtopics.name}`;
+      newest.set(k, Math.max(newest.get(k) ?? 0, r.pyq_year));
+    }
+    if (rows.length < 1000) break;
+  }
+  return new Set([...newest].filter(([, y]) => y < JEE_RETIRED_BEFORE).map(([k]) => k));
+}
+
+/** Strip the " (N PYQ)" the bank spine bakes into a concept name. */
+function bareSubtopic(concept: string): string {
+  return concept.replace(/\s*\(\d+\s*PYQ\)\s*$/, "").trim();
+}
 
 type C = { id: string; subject: string; source: string; class: number; chapter_no: number; chapter_name: string; section_no: string; concept: string };
 type L = { concept_id: string; exam: string; status: string | null; covered_by: string | null };
@@ -64,6 +109,7 @@ async function main() {
   const concepts = await page<C>(db, "syllabus_concepts", "id,subject,source,class,chapter_no,chapter_name,section_no,concept");
   const links = await page<L>(db, "syllabus_concept_exams", "concept_id,exam,status,covered_by");
   const byId = new Map(concepts.map((c) => [c.id, c]));
+  const retiredJee = await loadRetiredJeeSubtopics(db);
 
   // Every LIVE pointer into a State Board section, keyed `exam|cls|section`.
   const pointers = new Map<string, string[]>();
@@ -74,7 +120,9 @@ async function main() {
     const isJee = c.source === "JEE Mains bank taxonomy";
     const isNcert = c.source === "NCERT";
     if (!isJee && !isNcert) continue;
-    if (isJee && OLD_JEE_CHAPTERS.has(c.chapter_name)) continue;   // retired ≠ contradiction
+    // Retired ≠ contradiction. Tested per SUBTOPIC, not per chapter: the
+    // rationalisation retired subtopics inside chapters that are still set.
+    if (isJee && retiredJee.has(`${c.chapter_name}\t${bareSubtopic(c.concept)}`)) continue;
     const targetExam = isJee ? "JEE Mains" : "CBSE Class 12";
     for (const raw of l.covered_by.split(",").map((s) => s.trim()).filter(Boolean)) {
       const m = /^(XI|XII):(.+)$/.exec(raw);

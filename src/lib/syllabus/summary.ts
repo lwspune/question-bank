@@ -39,6 +39,34 @@ export const STATUS_SHORT: Record<ConceptStatus, string> = {
   not: "—",
 };
 
+/**
+ * What one book-column cell of a mapping table is actually saying.
+ *
+ * `"diffuse"` and `"unassessed"` are the pair worth separating, and they were
+ * conflated on the shipped page: the cell branched only on `status === "not"`,
+ * so a row with NO RULING fell into the same arm as a row ruled covered-but-
+ * scattered and rendered "no single section". That reads as a finding about the
+ * book — it teaches this, just not in one place — when in fact nobody had looked.
+ * It went live for 53 JEE Chemistry subtopics (318 PYQ) the moment that spine was
+ * refreshed, against 2 genuinely diffuse rows, so 96% of the phrase was false.
+ *
+ * Same failure as an unreviewed pair defaulting to `full` in the data, one layer
+ * out: absence of review must never borrow the wording of a review.
+ */
+export type CoverCellState = "located" | "not-covered" | "diffuse" | "unassessed";
+
+export function coverCellState(
+  cover: { status: ConceptStatus | null; refs: unknown[] } | undefined,
+): CoverCellState {
+  // Checked FIRST. A missing row and a null status both mean nobody ruled on
+  // this pair, and no later branch may claim otherwise.
+  if (!cover || cover.status === null) return "unassessed";
+  // Sections named beats the verdict word: a partial ruling that points at two
+  // sections is still a located topic, and the "partly" badge carries the nuance.
+  if (cover.refs.length > 0) return "located";
+  return cover.status === "not" ? "not-covered" : "diffuse";
+}
+
 export function rollUpChapterStatus(statuses: (ConceptStatus | null)[]): ChapterStatus {
   if (statuses.length === 0) return null;
   const present = statuses.filter((s): s is ConceptStatus => s !== null);
