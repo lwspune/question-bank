@@ -1,0 +1,72 @@
+[
+  {
+    "id": "01-4",
+    "derived": "C",
+    "value": "order 2, degree 1",
+    "confidence": "high",
+    "note": "Highest derivative is y''; its power is 1. The exponent 4 sits on dy/dx and never sets the degree."
+  },
+  {
+    "id": "01-5",
+    "derived": "X",
+    "value": "no option has an undefined degree: A degree 2, B degree 1, C degree 1, D degree 1 (sqrt(y'') = -y squares to y'' = y^2, which is polynomial in y'')",
+    "confidence": "medium",
+    "note": "X because the stem has no correct answer under the standard convention. Degree is assessed AFTER clearing radicals and fractional powers in the derivatives (the same rule that makes [1+(y')^2]^(3/2) = y'' degree 2, NCERT Exemplar). Option D clears completely to y'' = y^2, so its degree is 1, not undefined. D is only the answer on an as-written reading that refuses to square, and nothing here is genuinely non-polynomial (no sin/log/exp of a derivative), which is what an undefined degree actually requires. Repair: replace D with something truly non-polynomial, e.g. y'' + sin(dy/dx) = 0."
+  },
+  {
+    "id": "01-25",
+    "derived": "X",
+    "value": "order 2, degree 2",
+    "confidence": "medium",
+    "note": "X because my computed pair is not offered. y'' + sqrt(y') = 0 gives sqrt(y') = -y'', and squaring gives (y'')^2 = y', a polynomial equation in the derivatives; highest-order derivative y'' carries power 2, so order 2 and degree 2. Option D (order 2, degree not defined) is right only if radicals are left uncleared, which contradicts the convention applied to the classic sqrt(1+(y')^2) = y'' item; option A (degree 1) is wrong under either reading. Same convention defect as 01-5 and the two rows should be adjudicated together."
+  },
+  {
+    "id": "02-6",
+    "derived": "B",
+    "value": "2x dy/dx = y",
+    "confidence": "high",
+    "note": "TWIN: B=D. D is exactly B multiplied through by y, so both are correct differential equations for y^2 = 4ax; D additionally admits the spurious branch y = 0. Derivation: 2yy' = 4a gives a = yy'/2, substituting into y^2 = 4ax gives y^2 = 2xyy', cancel y. Checked at y = 2*sqrt(ax): 2x*sqrt(a/x) = 2*sqrt(ax) = y."
+  },
+  {
+    "id": "02-17",
+    "derived": "X",
+    "value": "dy/dx - y + x - 1 = 0, i.e. dy/dx = y - x + 1",
+    "confidence": "high",
+    "note": "X: no option matches. y = x + k e^x gives y' = 1 + k e^x and k e^x = y - x, so y' = 1 + y - x. Option C is the same shape with the constant sign flipped (y' = y - x - 1). Verified at k = 1: y = x + e^x, y' = 1 + e^x, and y - x + 1 = e^x + 1 (agrees), while C's y - x - 1 = e^x - 1 (disagrees). Repair: option C should read dy/dx - y + x - 1 = 0."
+  },
+  {
+    "id": "02-20",
+    "derived": "A",
+    "value": "2xy dy/dx = y^2 - x^2, equivalently x + y dy/dx = (x^2 + y^2)/(2x)",
+    "confidence": "high",
+    "note": "Differentiating gives a = x + yy'; the stem gives a = (x^2+y^2)/(2x). Equating is option A verbatim. Cross-checked numerically on a = 1 at (1,1) and (1.5, 0.866): both sides equal 1."
+  },
+  {
+    "id": "03-16",
+    "derived": "B",
+    "value": "1/y = 1 + Ce^x, i.e. y = 1/(1 + Ce^x); B is the same family with C -> -C",
+    "confidence": "high",
+    "note": "Substituted B back in: for y = 1/(1-Ce^x), y' = Ce^x/(1-Ce^x)^2 and y' + y = [Ce^x + 1 - Ce^x]/(1-Ce^x)^2 = y^2, so B satisfies the equation. C fails the same test (y' + y leaves an extra Ce^(-x) in the numerator)."
+  },
+  {
+    "id": "03-20",
+    "derived": "C",
+    "value": "y + y^3/3 = sin x + C",
+    "confidence": "high",
+    "note": "TWIN: A=B (B is just A solved for y; both are the answer to dy/dx = cos x (1+y^2), not this stem, so the twin pair is a redundant distractor rather than the key). Separating gives (1+y^2)dy = cos x dx. Differentiated C back: (1+y^2)y' = cos x, which is the stem."
+  },
+  {
+    "id": "04-3",
+    "derived": "B",
+    "value": "y = x^3 + 4",
+    "confidence": "high",
+    "note": "y(1) = 1 + C = 5 gives C = 4; check 1 + 4 = 5."
+  },
+  {
+    "id": "04-17",
+    "derived": "A",
+    "value": "y = x^3 - 2x + 1",
+    "confidence": "high",
+    "note": "Integrating gives y = x^3 - 2x + C; y(1) = 1 - 2 + C = 0 gives C = 1. Differentiated back: 3x^2 - 2."
+  }
+]

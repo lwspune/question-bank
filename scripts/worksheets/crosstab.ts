@@ -46,7 +46,12 @@ for (const v2 of p2) {
   const key = keyOf.get(id) ?? "?";
   const a = up(m1.get(id)?.derived);
   const b = up(v2.derived);
-  const twinFlag = /twin|both|two |identical|equal/i.test(`${m1.get(id)?.note ?? ""} ${v2.note ?? ""}`);
+  // Match ONLY the structured prefix the brief mandates ("TWIN: A=C"). An
+  // earlier version matched free prose (twin|both|equal|identical) and fired on
+  // a pass-2 note reading "p = 0 (equivalently q = 1)" — burying a GENUINE key
+  // flip in the FLIP?TWIN bucket, which is the one bucket a reviewer is primed
+  // to dismiss. A twin claim is a structured assertion, not a turn of phrase.
+  const twinFlag = /\bTWIN:\s*[A-D]\s*=\s*[A-D]/i.test(`${m1.get(id)?.note ?? ""} ${v2.note ?? ""}`);
 
   let bucket: string;
   if (a !== b) bucket = "CONFLICT (passes disagree — hand-derive)";

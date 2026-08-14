@@ -408,6 +408,139 @@ export const CHAPTERS: Record<string, Chapter> = {
       { file: "5)Rational-Irrational-Inequalities.xls", subtopicName: "Rational and Irrational Inequalities" },
     ],
   },
+  // ─── Batch J: the remaining eight chapters with content, which complete the
+  // source. Chapters 22 and 29 hold no worksheet files at all (empty/duplicate
+  // placeholders) and are deliberately absent from this registry.
+  //
+  // NOTE ON KEY SKEW: six of these eight already sit at ~25% per letter, unlike
+  // every earlier chapter (A ran 41-57%). Either they are a later, better-QC'd
+  // generation, or the keys were assigned to hit a distribution rather than
+  // derived — the second reading would make them WORSE, not better, and the
+  // rebalance step cannot help because there is nothing to rebalance. The blind
+  // pass is the only thing that settles it.
+  "geometry-3d": {
+    id: "geometry-3d",
+    chapterName: "3D Geometry",
+    dir: join(SOURCE_ROOT, "24. 3D - Line and Plane"),
+    sourceFile: "Cadetprep_Worksheets_3D_Geometry",
+    note: "Cadetprep concept-practice worksheet — 3D Geometry",
+    files: [
+      { file: "01. Foundational Concepts.xlsx", subtopicName: "Foundational Concepts" },
+      // The filename reads "Direction and Ratios"; the subtopic is spelled correctly.
+      { file: "02. Direction Cosines and Direction and Ratios.xlsx", subtopicName: "Direction Cosines and Direction Ratios" },
+      { file: "03. Equation of Line.xlsx", subtopicName: "Equation of a Line" },
+      { file: "04. Angle and Relationships between Lines.xlsx", subtopicName: "Angle and Relationships Between Lines" },
+      { file: "05. Distance Between Lines.xlsx", subtopicName: "Distance Between Lines" },
+      { file: "06. Equation of Plane.xlsx", subtopicName: "Equation of a Plane" },
+      { file: "07. Angle and Relationships between Plane.xlsx", subtopicName: "Angle and Relationships Between Planes" },
+      { file: "08. Line and Plane Intersection.xlsx", subtopicName: "Line and Plane Intersection" },
+      { file: "09. Sphere.xlsx", subtopicName: "Sphere" },
+    ],
+  },
+  probability: {
+    id: "probability",
+    chapterName: "Probability",
+    dir: join(SOURCE_ROOT, "20. Probability"),
+    sourceFile: "Cadetprep_Worksheets_Probability",
+    note: "Cadetprep concept-practice worksheet — Probability",
+    files: [
+      { file: "01. Fundamental Concepts.xlsx", subtopicName: "Fundamental Concepts" },
+      { file: "02. Probability Definition and Theorems.xlsx", subtopicName: "Definition and Theorems" },
+      { file: "03. Conditional Probability.xlsx", subtopicName: "Conditional Probability" },
+      { file: "04. Independant Events.xlsx", subtopicName: "Independent Events" },
+      { file: "05. Bayes Theorem.xlsx", subtopicName: "Bayes' Theorem" },
+      { file: "06. Random Variables and Distributions.xlsx", subtopicName: "Random Variables and Distributions" },
+      { file: "07. Binomial Distribution.xlsx", subtopicName: "Binomial Distribution" },
+    ],
+  },
+  statistics: {
+    id: "statistics",
+    chapterName: "Statistics",
+    dir: join(SOURCE_ROOT, "25. Statistics"),
+    sourceFile: "Cadetprep_Worksheets_Statistics",
+    note: "Cadetprep concept-practice worksheet — Statistics",
+    files: [
+      { file: "01. Classification of Data.xlsx", subtopicName: "Classification of Data" },
+      { file: "02. Frequency Distribution.xlsx", subtopicName: "Frequency Distribution" },
+      { file: "03. Cumulative Frequency Distribution.xlsx", subtopicName: "Cumulative Frequency Distribution" },
+      { file: "04. Graphical Representation.xlsx", subtopicName: "Graphical Representation" },
+      { file: "05. Measures of Central Tendency.xlsx", subtopicName: "Measures of Central Tendency" },
+      { file: "06. Variance and Standard Deviation.xlsx", subtopicName: "Variance and Standard Deviation" },
+      { file: "07. Correlation and Regression.xlsx", subtopicName: "Correlation and Regression" },
+    ],
+  },
+  "properties-of-triangle": {
+    id: "properties-of-triangle",
+    chapterName: "Properties of Triangle",
+    dir: join(SOURCE_ROOT, "23. Properties of Triangle"),
+    sourceFile: "Cadetprep_Worksheets_Properties_of_Triangle",
+    note: "Cadetprep concept-practice worksheet — Properties of Triangle",
+    // Files 05 and 06 carry "Formula" in their names but are ORDINARY concept
+    // practice, not the out-of-scope Formula Revision content class.
+    files: [
+      { file: "01. Fundamentals.xlsx", subtopicName: "Fundamentals" },
+      { file: "02. Sine Rule.xlsx", subtopicName: "Sine Rule" },
+      { file: "03. Cosine Rule.xlsx", subtopicName: "Cosine Rule" },
+      { file: "04. Projection Rule.xlsx", subtopicName: "Projection Rule" },
+      { file: "05. Half Angle Formula.xlsx", subtopicName: "Half-Angle Formulae" },
+      { file: "06. Herons Formula.xlsx", subtopicName: "Heron's Formula" },
+      { file: "07. Napiers Analogy.xlsx", subtopicName: "Napier's Analogy" },
+    ],
+  },
+  "definite-integration": {
+    id: "definite-integration",
+    chapterName: "Definite Integration",
+    dir: join(SOURCE_ROOT, "21. Definite_Inegration"),
+    sourceFile: "Cadetprep_Worksheets_Definite_Integration",
+    note: "Cadetprep concept-practice worksheet — Definite Integration",
+    files: [
+      { file: "01. Fundamental Concepts.xlsx", subtopicName: "Fundamental Concepts" },
+      { file: "02. Properties.xlsx", subtopicName: "Properties of Definite Integrals" },
+      { file: "03. Substitution Method.xlsx", subtopicName: "Substitution Method" },
+      { file: "04. Integration by Parts.xlsx", subtopicName: "Integration by Parts" },
+      { file: "05. Special Functions.xlsx", subtopicName: "Special Functions" },
+    ],
+  },
+  conics: {
+    id: "conics",
+    chapterName: "Conics",
+    dir: join(SOURCE_ROOT, "28. Conics"),
+    sourceFile: "Cadetprep_Worksheets_Conics",
+    note: "Cadetprep concept-practice worksheet — Conics",
+    files: [
+      { file: "01. General Concepts.xlsx", subtopicName: "General Concepts" },
+      { file: "02. Parabola.xlsx", subtopicName: "Parabola" },
+      { file: "03. Ellipse.xlsx", subtopicName: "Ellipse" },
+      { file: "04. Hyperbola.xlsx", subtopicName: "Hyperbola" },
+    ],
+  },
+  "differential-equations": {
+    id: "differential-equations",
+    chapterName: "Differential Equations",
+    dir: join(SOURCE_ROOT, "27. Differential Equations"),
+    sourceFile: "Cadetprep_Worksheets_Differential_Equations",
+    note: "Cadetprep concept-practice worksheet — Differential Equations",
+    // Folder "29. Differential Equations" is an empty duplicate — no files.
+    files: [
+      { file: "01. Basic Concepts.xlsx", subtopicName: "Basic Concepts" },
+      { file: "02. Formation of DE.xlsx", subtopicName: "Formation of Differential Equations" },
+      { file: "03. Solving DE.xlsx", subtopicName: "Solving Differential Equations" },
+      { file: "04. General Soln and Particular Soln.xlsx", subtopicName: "General and Particular Solutions" },
+    ],
+  },
+  "applications-of-derivatives": {
+    id: "applications-of-derivatives",
+    chapterName: "Applications of Derivatives",
+    dir: join(SOURCE_ROOT, "30. AOD"),
+    sourceFile: "Cadetprep_Worksheets_Applications_of_Derivatives",
+    note: "Cadetprep concept-practice worksheet — Applications of Derivatives",
+    files: [
+      { file: "01. NDA_AoD_Tangents_Normals_Rate_of_Change.xlsx", subtopicName: "Tangents, Normals and Rate of Change" },
+      { file: "02. NDA_AoD_Increasing_Decreasing_Functions.xlsx", subtopicName: "Increasing and Decreasing Functions" },
+      { file: "03. NDA_AoD_Maxima_Minima.xlsx", subtopicName: "Maxima and Minima" },
+      { file: "04. NDA_AoD_Applied_Maxima_Minima.xlsx", subtopicName: "Applied Maxima and Minima" },
+    ],
+  },
   "binary-numbers": {
     id: "binary-numbers",
     chapterName: "Binary Numbers",

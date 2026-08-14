@@ -1,0 +1,30 @@
+[
+  {
+    "id": "02-21",
+    "derived": "X",
+    "value": "L = sqrt((4ah - k^2)(k^2 + 4a^2)) / a  [e.g. a=1, midpoint (2.5,1) -> L = sqrt(45) = 6.7082]",
+    "confidence": "high",
+    "note": "X: no option matches. Chord T=S1 is ky-2ax=k^2-2ah; eliminating x gives y^2-2ky+(2k^2-4ah)=0, so (dy)^2=4(4ah-k^2), slope=2a/k, L=sqrt((4ah-k^2)(4a^2+k^2))/a. Verified against real chords: (1,-2)-(4,4) has midpoint (2.5,1) and length sqrt(45)=6.708; formula gives 6.708; option D gives an imaginary number (k^2-4ah=-9<0) and even with the sign corrected gives 13.42. D is doubly defective: the radicand sign is reversed (an interior midpoint forces k^2<4ah, so D is imaginary for EVERY valid chord) and the prefactor 2/k should be 1/a (2/k comes from using the reciprocal slope k/2a instead of 2a/k). The two coincide only when k=2a, which is why the error survives casual checking. Intended repair: D -> (1/a)sqrt((4ah-k^2)(4a^2+k^2))."
+  },
+  {
+    "id": "02-24",
+    "derived": "X",
+    "value": "p = 6, q = sqrt(3); ratio p = 2*sqrt(3)*q = 3.4641 q",
+    "confidence": "high",
+    "note": "X: computed p = 2*sqrt(3) q, which is no option. Other two vertices are symmetric about the axis (|OA|=|OB| forces x2=-x1 since t^2+t^4/3 is even and increasing in |t|), so p=2x0 and x0^2+y0^2=4x0^2 gives y0=sqrt(3)x0; with x0^2=sqrt(3)y0 this gives x0=3, vertices (0,0),(3,3sqrt3),(-3,3sqrt3), all three sides exactly 6. Latus rectum of x^2=sqrt(3)y is 4A=sqrt(3)=1.7321. p/q = 6/sqrt(3) = 2sqrt(3) = 3.4641. The ratio is scale-invariant: for x^2=4Ay, x0=4sqrt(3)A, p=8sqrt(3)A, q=4A, so p/q=2sqrt(3) always - the option set cannot be rescued by re-reading the coefficient. Closest option A (p=sqrt(3)q) is wrong by a factor of 2; D (p=2q) is wrong by sqrt(3). Suggested repair: an option p = 2*sqrt(3)*q."
+  },
+  {
+    "id": "02-26",
+    "derived": "X",
+    "value": "sqrt(20 - 12*cbrt(4)) = 0.97529 (nearest point (cbrt(16), -2*cbrt(4)) = (2.5198, -3.1748))",
+    "confidence": "high",
+    "note": "X: computed 0.9753, matching no option. With (t^2,2t) on y^2=4x, D^2=(t^2-2)^2+(2t+4)^2=t^4+16t+20; D^2'=4t^3+16=0 gives t^3=-4, t=-cbrt(4)=-1.5874, and t^4=-4t so D^2=12t+20=20-12*cbrt(4)=0.95119, D=0.97529. Cross-checked independently by the normal condition: the normal at t to y^2=4x is y=-tx+2t+t^3, and through (2,-4) it reduces to t^3=-4, the same t. Also confirmed by a brute-force scan over t in [-3,3] (min 0.9752884 at t=-1.5874). Option A=2 is the horizontal distance from (2,-4) to the parabola point (4,-4) - a plausible trap, but not the minimum. C=2.236, B=4.243, D=4.472 are all larger still. No option is correct; the exact value is irrational and ugly, so the stem's numbers are probably mistyped."
+  },
+  {
+    "id": "04-17",
+    "derived": "B",
+    "value": "y^2/b^2 - x^2/a^2 = 1, identically the same curve as x^2/a^2 - y^2/b^2 = -1",
+    "confidence": "high",
+    "note": "TWIN: B=D. Both are correct and are the SAME conic - multiplying D by the constant -1 gives B exactly, the 'equation scaled by a non-zero constant' twin shape. Verified by substituting points of y^2/b^2-x^2/a^2=1 (a=2,b=3): B evaluates to 1 and D to -1 at every such point, so the two equations have identical solution sets. Two simultaneously-true options: whichever of B/D the key names, the other is equally right, so this must be repaired by rewriting an option, NOT by flipping the key. I pick B only because y^2/b^2-x^2/a^2=1 is the canonical printed form of the conjugate hyperbola. A is an ellipse (not a hyperbola at all); C is x^2/b^2-y^2/a^2=1, a different hyperbola that still has its transverse axis along x, so it is not the conjugate."
+  }
+]

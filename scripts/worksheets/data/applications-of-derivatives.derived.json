@@ -1,0 +1,476 @@
+[
+  {
+    "id": "01-2",
+    "derived": "B",
+    "confidence": "medium",
+    "note": "d/dx = -cos x/|cos x| = -1 on principal branch. Caution: A and B are BOTH true at different x (+1 wherever cos x < 0); no point is specified, so the stem is under-determined. Standard/principal answer is -1."
+  },
+  {
+    "id": "01-3",
+    "derived": "B",
+    "confidence": "high",
+    "note": "y' = m^2 e^(mx); at P on y-axis x=0 gives m^2."
+  },
+  {
+    "id": "01-4",
+    "derived": "C",
+    "confidence": "high",
+    "note": "TWIN: A=D. tan(alpha)=m^2 is the x-axis angle; sec^-1(sqrt(1+m^4)) has cos=1/sqrt(1+m^4), the same alpha, so A and D are equal. Angle with y-axis is pi/2-alpha, whose sine is cos(alpha)=1/sqrt(1+m^4) = C. Checked at m=1: alpha=45deg, y-axis angle 45deg, C=sin^-1(1/sqrt2)=45deg."
+  },
+  {
+    "id": "01-5",
+    "derived": "C",
+    "confidence": "high",
+    "note": "P=(0,m), slope m^2; y-m=m^2 x. Point (0,m) satisfies C."
+  },
+  {
+    "id": "01-6",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Slope e^0=1, tangent y=x+1; y=0 gives x=-1."
+  },
+  {
+    "id": "01-7",
+    "derived": "A",
+    "confidence": "high",
+    "note": "d/dx cos^-1(cos x) = sgn(sin x); sin(-pi/4)<0 so slope -1. Also y=-x on (-pi,0)."
+  },
+  {
+    "id": "01-8",
+    "derived": "D",
+    "confidence": "high",
+    "note": "Slope 2x=2, theta=arctan2=63.43deg, lies in (pi/3, pi/2)."
+  },
+  {
+    "id": "01-9",
+    "derived": "A",
+    "confidence": "high",
+    "note": "[1/(1+x^2)] / [-1/(1+x^2)] = -1; also tan^-1 x + cot^-1 x is constant."
+  },
+  {
+    "id": "01-10",
+    "derived": "A",
+    "confidence": "high",
+    "note": "dC/dt = 2*pi*0.7 = 1.4pi = 4.4 cm/sec (pi=22/7 exact). Units cm/sec correct."
+  },
+  {
+    "id": "01-11",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Total (not approximate) change: 3(10.1^2)-3(10^2)=306.03-300=6.03. Differential dy=6(0.1)=6.0 is the distractor, matching no option."
+  },
+  {
+    "id": "02-2",
+    "derived": "C",
+    "confidence": "high",
+    "note": "cosh': sinh x >= 0 on [0,inf); sinh': cosh x > 0 everywhere. Both true."
+  },
+  {
+    "id": "02-3",
+    "derived": "C",
+    "confidence": "high",
+    "note": "f'=2(x-sin x)>0 on (0,pi). ln(sqrt(1+x^2)-x) = -arcsinh x, derivative -1/sqrt(1+x^2)<0. Both true."
+  },
+  {
+    "id": "02-4",
+    "derived": "C",
+    "confidence": "high",
+    "note": "f' = e^{-x} x(2-x) > 0 exactly on 0<x<2; D is the decreasing set."
+  },
+  {
+    "id": "02-5",
+    "derived": "A",
+    "confidence": "high",
+    "note": "f' = -6(x+1)(x+2) > 0 only on (-2,-1)."
+  },
+  {
+    "id": "02-6",
+    "derived": "D",
+    "confidence": "high",
+    "note": "f'<0 for x<-2 or x>-1; B and C each say 'only' so are incomplete, D is the full set."
+  },
+  {
+    "id": "02-7",
+    "derived": "B",
+    "confidence": "high",
+    "note": "x<1: f'=2x-1, sign flips at 1/2; x>=1: f'=1+2x>0. Decreasing then increasing about 1/2."
+  },
+  {
+    "id": "02-8",
+    "derived": "A",
+    "confidence": "high",
+    "note": "f = sin 3x, f'=3cos 3x>0 on x in (-pi/6+2kpi/3, pi/6+2kpi/3); length pi/3."
+  },
+  {
+    "id": "02-9",
+    "derived": "C",
+    "confidence": "high",
+    "note": "f' = 1 - 1/x^2 < 0 for 0<x<1, so strictly decreasing on (0,1)."
+  },
+  {
+    "id": "02-10",
+    "derived": "A",
+    "confidence": "high",
+    "note": "f'=1-cos x >= 0 (zero only at isolated 2kpi), so f increases from f(0)=0, giving x>sin x. II explains I."
+  },
+  {
+    "id": "02-11",
+    "derived": "C",
+    "confidence": "high",
+    "note": "f' = cos x (x - 2 sin x) < 0 throughout (0,pi/2) (checked numerically at 9 points). TWO SIMULTANEOUSLY TRUE: C and D are both correct statements, since (pi/4,pi/2) is a subinterval of (0,pi/2); C is the maximal/intended one."
+  },
+  {
+    "id": "02-12",
+    "derived": "A",
+    "confidence": "high",
+    "note": "f'=2x-5<0 for x<5/2; (-inf,2] is contained in that. D straddles 5/2, B is increasing."
+  },
+  {
+    "id": "02-13",
+    "derived": "A",
+    "confidence": "high",
+    "note": "f' = 12(x+2)(x-3)(x-4); increasing on (-2,3) and (4,inf). Only (-2,3) is offered."
+  },
+  {
+    "id": "02-14",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Same f' = 12(x+2)(x-3)(x-4); decreasing on (-inf,-2) and (3,4). Only (3,4) offered."
+  },
+  {
+    "id": "02-15",
+    "derived": "A",
+    "confidence": "high",
+    "note": "f'=(x-2)(x-3); T=(-inf,2)U(3,inf), S=(2,3). D is the exact swap."
+  },
+  {
+    "id": "02-16",
+    "derived": "C",
+    "confidence": "high",
+    "note": "1/x>0 on (0,inf); sec^2 x>0 on (-pi/2,pi/2) with no discontinuity inside. Both true."
+  },
+  {
+    "id": "02-17",
+    "derived": "A",
+    "confidence": "high",
+    "note": "f'=2x-k>=0 for all x>1 requires k<=2. Exact condition k<=2 is not offered; A is the only option every value of which works (B,C,D all fail, e.g. k=2.5 gives f'<0 on (1,1.25))."
+  },
+  {
+    "id": "02-18",
+    "derived": "B",
+    "confidence": "high",
+    "note": "f'=(x-1)(x-6)<0 exactly on (1,6); A, C, D are all increasing regions."
+  },
+  {
+    "id": "02-19",
+    "derived": "A",
+    "confidence": "high",
+    "note": "1 true. 2 false: g'=e^x - e^{1/x}/x^2 is negative below x=1 and positive above (g'(2)=+6.98), so g is not decreasing on (0,inf)."
+  },
+  {
+    "id": "02-20",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Matrix is xI+vv^T with v=(1,2,3), so det = x^2(x+14) = x^3+14x^2 (verified numerically at x=0,1,2,-3). f'=x(3x+28)<0 on (-28/3,0)."
+  },
+  {
+    "id": "02-21",
+    "derived": "C",
+    "confidence": "high",
+    "note": "x|x| has f'=2|x|>=0, strictly increasing; difference quotient h|h|/h=|h|->0 so differentiable at 0 with f'(0)=0. Both true."
+  },
+  {
+    "id": "02-22",
+    "derived": "C",
+    "confidence": "high",
+    "note": "f'=-1/(x-5)^2 < 0 for all x!=5, so I is true and II has the sign backwards."
+  },
+  {
+    "id": "03-2",
+    "derived": "B",
+    "confidence": "high",
+    "note": "f=1-2/(x^2+1) rises with x^2; min at x=0. Value -1 is option A (point-vs-value trap)."
+  },
+  {
+    "id": "03-3",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Min value f(0)=-1. Option A=0 is the point, not the value."
+  },
+  {
+    "id": "03-4",
+    "derived": "C",
+    "confidence": "high",
+    "note": "f'=3x(x-3)(x+2); x=0 is local max, f(0)=7. Quartic is unbounded above, so this is the LOCAL max."
+  },
+  {
+    "id": "03-5",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Sign of f'=3x(x-3)(x+2): minima at -2 and 3; f'>0 on (-2,0). Both true."
+  },
+  {
+    "id": "03-6",
+    "derived": "C",
+    "confidence": "high",
+    "note": "ln f=-2x^2 ln x, f'=0 at ln x=-1/2 so x=1/sqrt(e). Checked f(0.5),f(0.7) both lower."
+  },
+  {
+    "id": "03-7",
+    "derived": "C",
+    "confidence": "high",
+    "note": "At x=e^(-1/2): (e^(1/2))^(2/e)=e^(1/e)=1.4447. Numerically confirmed."
+  },
+  {
+    "id": "03-8",
+    "derived": "D",
+    "confidence": "high",
+    "note": "c=cos^2, f=4(c^2-c+1) on [0,1]; endpoints give 4, vertex gives 3. Max 4."
+  },
+  {
+    "id": "03-9",
+    "derived": "D",
+    "confidence": "high",
+    "note": "Min at c=1/2 (theta=pi/4): 4(3/4)=3."
+  },
+  {
+    "id": "03-10",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Local min only at x=1/2; at the corner x=1 both one-sided derivatives are positive."
+  },
+  {
+    "id": "03-11",
+    "derived": "C",
+    "confidence": "high",
+    "note": "f'=(x-1)(x-2)^2(6x^2-5x-5); minima at x=(5-sqrt145)/12 and (5+sqrt145)/12. x=2 is inflection."
+  },
+  {
+    "id": "03-12",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Only x=1 is a local max (f'>0 both sides of x=2 due to even multiplicity)."
+  },
+  {
+    "id": "03-13",
+    "derived": "B",
+    "confidence": "high",
+    "note": "x^3 sin x ~ x^4 near 0, positive on both sides of f(0)=0. Local minimum."
+  },
+  {
+    "id": "03-14",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Both pieces give 35 at x=2 (continuous, and greatest since 37-x<35 for x>2); derivatives 24 vs -1, not differentiable."
+  },
+  {
+    "id": "03-15",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Equals sqrt2 sin(x+5pi/12); peak at x=pi/12, inside (0,pi/2)."
+  },
+  {
+    "id": "03-16",
+    "derived": "A",
+    "confidence": "high",
+    "note": "sin^2 x max 1 gives 4+1=5."
+  },
+  {
+    "id": "03-17",
+    "derived": "A",
+    "confidence": "high",
+    "note": "f=x^3-x; local max 2/(3sqrt3) at x=-1/sqrt3 exceeds local min -2/(3sqrt3)."
+  },
+  {
+    "id": "03-18",
+    "derived": "B",
+    "confidence": "high",
+    "note": "f'=(1-ln x)/x^2=0 at x=e; value 1/e. Option A is the point."
+  },
+  {
+    "id": "03-19",
+    "derived": "B",
+    "confidence": "high",
+    "note": "sqrt(a^2+b^2): A-sqrt2(2), B-5(3), C-sqrt5(4), D-sqrt10(1)."
+  },
+  {
+    "id": "03-20",
+    "derived": "C",
+    "confidence": "high",
+    "note": "s=sin x, -12s^2+16s peaks at s=2/3 (attainable), value 16/3."
+  },
+  {
+    "id": "03-21",
+    "derived": "A",
+    "confidence": "high",
+    "note": "x^2-x+1 min 3/4 at x=1/2; cube root increasing, so (3/4)^(1/3). Endpoints give 1."
+  },
+  {
+    "id": "03-22",
+    "derived": "D",
+    "confidence": "high",
+    "note": "61+25cot^2+36tan^2 >= 61+60=121; equality at tan^2 x=5/6, attainable."
+  },
+  {
+    "id": "03-23",
+    "derived": "B",
+    "confidence": "high",
+    "note": "AM-GM: a^2x+b^2y >= 2sqrt(a^2b^2c^2)=2abc. Assumes x,y,a,b,c positive."
+  },
+  {
+    "id": "03-24",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Sum of squares=(k-2)^2+(k+1)=k^2-3k+5, minimised at k=3/2."
+  },
+  {
+    "id": "03-25",
+    "derived": "A",
+    "confidence": "high",
+    "note": "TWIN: C=D. a^2+b^2 equals |a^2+b^2| always, so those options are identical. My answer is A: expression = a^2+b^2+a^2tan^2+b^2cot^2 >= a^2+b^2+2ab = (a+b)^2."
+  },
+  {
+    "id": "03-26",
+    "derived": "A",
+    "confidence": "high",
+    "note": "cos ranges over [-1,1] for real A, so 3cos(...) has minimum -3."
+  },
+  {
+    "id": "03-27",
+    "derived": "D",
+    "confidence": "high",
+    "note": "Interval is OPEN (1,2); f is strictly increasing so 2 and 5 are bounds never attained."
+  },
+  {
+    "id": "03-28",
+    "derived": "B",
+    "confidence": "high",
+    "note": "tan x+cot x=2/sin2x, so f=sin2x/2, max 1/2 at x=pi/4."
+  },
+  {
+    "id": "03-29",
+    "derived": "B",
+    "confidence": "high",
+    "note": "(x+1)^2+10 has min 10; log base 10 of 10 = 1."
+  },
+  {
+    "id": "03-30",
+    "derived": "B",
+    "confidence": "high",
+    "note": "t=sinx-cosx gives 2t^3-3t on [-sqrt2,sqrt2]; max sqrt2 at t=-1/sqrt2 and t=sqrt2. Checked x=pi/12 and 3pi/4, both 1.4142."
+  },
+  {
+    "id": "03-31",
+    "derived": "A",
+    "confidence": "high",
+    "note": "p^2tan^2=q^2cot^2 gives tan^4=q^2/p^2, tan^2 x=q/p. Verified with p=1,q=4 (min 25 at tan^2=4)."
+  },
+  {
+    "id": "03-32",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Sum of squared deviations minimised at the mean of 1..7, which is 4."
+  },
+  {
+    "id": "03-33",
+    "derived": "C",
+    "confidence": "high",
+    "note": "f=s+1/s+1 with s=sin A in (0,1]; decreasing on (0,1], so min 3 at s=1."
+  },
+  {
+    "id": "03-34",
+    "derived": "D",
+    "confidence": "high",
+    "note": "Minimum occurs at sin A=1, i.e. A=pi/2. Checked A=pi/6 gives 3.5 > 3."
+  },
+  {
+    "id": "03-35",
+    "derived": "D",
+    "confidence": "high",
+    "note": "cot^2+n^2tan^2 >= 2n by AM-GM (product n^2), so m >= 2n+2n=4n; attainable at tan^4=1/n."
+  },
+  {
+    "id": "03-36",
+    "derived": "C",
+    "confidence": "high",
+    "note": "f^2=4+2sqrt(4-x^2), max at x=0 gives f^2=8, f=sqrt8."
+  },
+  {
+    "id": "03-37",
+    "derived": "X",
+    "confidence": "low",
+    "note": "STEM BROKEN: options refer to a statement 3 that the stem never gives. Both stated statements are verifiably TRUE - f'=(ln x-1)/(ln x)^2 changes sign minus-to-plus at x=e, and f(e)=e/1=e - so B and C are impossible, but the answer is A if the missing statement 3 is false and D if it is true. Cannot decide without statement 3; restore it from the source paper."
+  },
+  {
+    "id": "03-38",
+    "derived": "A",
+    "confidence": "high",
+    "note": "sin(a-90deg)=-cos a, so p=|sin a+cos a|=sqrt2|sin(a+pi/4)|; min 0 at a=3pi/4."
+  },
+  {
+    "id": "03-39",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Same reduction: max of sqrt2|sin(a+pi/4)| is sqrt2."
+  },
+  {
+    "id": "04-2",
+    "derived": "B",
+    "confidence": "high",
+    "note": "S=3*pi*r^2 gives h=r, so diameter=2r=2h; k=2."
+  },
+  {
+    "id": "04-3",
+    "derived": "C",
+    "confidence": "high",
+    "note": "A=36 sin a(1+cos a); 2cos^2a+cos a-1=0 gives cos a=1/2, a=pi/3, in (0,pi/2)."
+  },
+  {
+    "id": "04-4",
+    "derived": "D",
+    "confidence": "high",
+    "note": "Fourth side = 6 + 12 cos(pi/3) = 12 cm."
+  },
+  {
+    "id": "04-5",
+    "derived": "C",
+    "confidence": "high",
+    "note": "36 sin(pi/3)(1+cos pi/3) = 36*(sqrt3/2)*(3/2) = 27 sqrt3."
+  },
+  {
+    "id": "04-6",
+    "derived": "C",
+    "confidence": "high",
+    "note": "2r+r*theta=40, A=20r-r^2, max r=10; theta=2 rad, admissible."
+  },
+  {
+    "id": "04-7",
+    "derived": "A",
+    "confidence": "medium",
+    "note": "V=pi r^2 L/2 fixed, S=2rL+pi r^2+pi rL minimised gives L/r=2pi/(pi+2), so L:2r=pi:(pi+2). Reads 'height' as the length L; if height meant r the ratio would be a trivial 1:2."
+  },
+  {
+    "id": "04-8",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Max is the square on diagonal 4: side 2 sqrt2, area 8. Also = 2R^2."
+  },
+  {
+    "id": "04-9",
+    "derived": "D",
+    "confidence": "high",
+    "note": "AM-GM: max lb at l=b=k/2, area k^2/4."
+  },
+  {
+    "id": "04-10",
+    "derived": "A",
+    "confidence": "high",
+    "note": "s=a+b gives ab=16s-192 and s^2>=4ab forces s<=16, so equilateral side 8; altitude 4 sqrt3."
+  },
+  {
+    "id": "04-11",
+    "derived": "A",
+    "confidence": "high",
+    "note": "l+b=10, max area 25 (square), so I true and II (27) impossible."
+  }
+]

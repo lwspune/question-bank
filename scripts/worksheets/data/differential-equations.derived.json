@@ -1,0 +1,560 @@
+[
+  {
+    "id": "01-2",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Only A contains a derivative."
+  },
+  {
+    "id": "01-3",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Highest derivative is third order."
+  },
+  {
+    "id": "01-4",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Highest derivative y'' has power 1; the 4 belongs to y'."
+  },
+  {
+    "id": "01-5",
+    "derived": "X",
+    "confidence": "medium",
+    "note": "No option has an undefined degree once radicals are cleared. A: (y'')^2+y'=0 polynomial, degree 2. B: degree 1. C: degree 1. D: sqrt(y'')+y=0 squares to y''=y^2, polynomial in derivatives, degree 1. Source almost certainly intends D under the stricter as-written convention (a radical over a derivative = not polynomial). Repair: replace D with a genuinely non-clearable form, e.g. y'' + sin(dy/dx) = 0 or y'' + log(dy/dx) = 0."
+  },
+  {
+    "id": "01-6",
+    "derived": "A",
+    "confidence": "high",
+    "note": "y and y' both to power 1, coefficients in x; e^x is the forcing term."
+  },
+  {
+    "id": "01-7",
+    "derived": "D",
+    "confidence": "high",
+    "note": "D has no derivative."
+  },
+  {
+    "id": "01-8",
+    "derived": "C",
+    "confidence": "high",
+    "note": "One constant per order."
+  },
+  {
+    "id": "01-9",
+    "derived": "D",
+    "confidence": "high",
+    "note": "Definition of a particular solution."
+  },
+  {
+    "id": "01-10",
+    "derived": "C",
+    "confidence": "high",
+    "note": "A has y^2, B has y*y', D has (y')^2; only C is linear in y and y'."
+  },
+  {
+    "id": "01-11",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Highest derivative is fourth order."
+  },
+  {
+    "id": "01-12",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Highest derivative y'' is cubed; the (y')^2 term does not set the degree."
+  },
+  {
+    "id": "01-13",
+    "derived": "B",
+    "confidence": "high",
+    "note": "B restates order 1 and degree 1 exactly."
+  },
+  {
+    "id": "01-14",
+    "derived": "D",
+    "confidence": "high",
+    "note": "Order 2 gives exactly two constants."
+  },
+  {
+    "id": "01-15",
+    "derived": "A",
+    "confidence": "high",
+    "note": "A is order 1, degree 2; B and D are order 2; C is degree 1."
+  },
+  {
+    "id": "01-16",
+    "derived": "A",
+    "confidence": "high",
+    "note": "One arbitrary constant C implies order 1; check: y'=2y."
+  },
+  {
+    "id": "01-17",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Only C carries no arbitrary constant."
+  },
+  {
+    "id": "01-18",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Substitution after differentiating is the verification test."
+  },
+  {
+    "id": "01-19",
+    "derived": "B",
+    "confidence": "high",
+    "note": "y' - f(x) = 0 is order 1, degree 1, linear in y."
+  },
+  {
+    "id": "01-20",
+    "derived": "A",
+    "confidence": "high",
+    "note": "y^2 makes it non-linear; highest derivative is second order."
+  },
+  {
+    "id": "01-21",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Single parameter C."
+  },
+  {
+    "id": "01-22",
+    "derived": "C",
+    "confidence": "high",
+    "note": "n constants eliminated by n differentiations give order n."
+  },
+  {
+    "id": "01-23",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Product y*y' is non-linear; order 1."
+  },
+  {
+    "id": "01-24",
+    "derived": "A",
+    "confidence": "high",
+    "note": "A is y' + P(x)y = Q(x); B has y^2, C has (y')^2, D has y*y'."
+  },
+  {
+    "id": "01-25",
+    "derived": "X",
+    "confidence": "medium",
+    "note": "Computed order 2, degree 2 - not among the options. Clearing the radical: sqrt(y') = -y'' gives y' = (y'')^2, polynomial in derivatives, and the highest derivative y'' carries power 2. Option A has the right order but degree 1; option C has the right degree but order 1; options B and D assert an undefined degree, but this radical does clear. Source likely intends D. Repair: change an option to 'Order 2, degree 2'."
+  },
+  {
+    "id": "01-26",
+    "derived": "B",
+    "confidence": "high",
+    "note": "y' = 3x^2 is linear in y, order 1, degree 1."
+  },
+  {
+    "id": "01-27",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Two arbitrary constants need two differentiations; check: y''=y."
+  },
+  {
+    "id": "02-2",
+    "derived": "A",
+    "confidence": "high",
+    "note": "y'=2Ce^{2x}=2y."
+  },
+  {
+    "id": "02-3",
+    "derived": "C",
+    "confidence": "high",
+    "note": "y'=2Cx=2y/x, so xy'-2y=0."
+  },
+  {
+    "id": "02-4",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Two arbitrary constants m,c, so order 2."
+  },
+  {
+    "id": "02-5",
+    "derived": "D",
+    "confidence": "high",
+    "note": "2x+2yy'=0 gives x+yy'=0."
+  },
+  {
+    "id": "02-6",
+    "derived": "B",
+    "confidence": "high",
+    "note": "TWIN: B=D. D is B multiplied by y; 2yy'=4a=y^2/x gives 2xy'=y. Checked a=1 (y=2sqrt x): both hold."
+  },
+  {
+    "id": "02-7",
+    "derived": "C",
+    "confidence": "high",
+    "note": "y'=m=y/x, so xy'-y=0."
+  },
+  {
+    "id": "02-8",
+    "derived": "D",
+    "confidence": "high",
+    "note": "y''=C1e^x+C2e^{-x}=y."
+  },
+  {
+    "id": "02-9",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Two arbitrary constants, so differentiate twice."
+  },
+  {
+    "id": "02-10",
+    "derived": "C",
+    "confidence": "high",
+    "note": "C=y/sin x gives y'sin x=y cos x. D is also satisfied but is order 2, wrong for one constant."
+  },
+  {
+    "id": "02-11",
+    "derived": "A",
+    "confidence": "high",
+    "note": "y=c gives dy/dx=0."
+  },
+  {
+    "id": "02-12",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Two arbitrary constants, order 2."
+  },
+  {
+    "id": "02-13",
+    "derived": "A",
+    "confidence": "high",
+    "note": "y''=-Acos x-Bsin x=-y, so y''+y=0."
+  },
+  {
+    "id": "02-14",
+    "derived": "A",
+    "confidence": "high",
+    "note": "y'=c and y=cx+1 give xy'-(y-1)=0."
+  },
+  {
+    "id": "02-15",
+    "derived": "D",
+    "confidence": "high",
+    "note": "Differentiating xy=c gives y+xy'=0."
+  },
+  {
+    "id": "02-16",
+    "derived": "A",
+    "confidence": "high",
+    "note": "One arbitrary constant a, so order 1 (degree 2)."
+  },
+  {
+    "id": "02-17",
+    "derived": "X",
+    "confidence": "high",
+    "note": "y'=1+ke^x and ke^x=y-x give y'-y+x-1=0. No option matches: tested k=1 at x=0 (y=1,y'=2), A gives 1, B gives 2, C gives 2, D gives 1, none zero. Option A appears to be missing the constant -1."
+  },
+  {
+    "id": "02-18",
+    "derived": "D",
+    "confidence": "high",
+    "note": "Only c is arbitrary, so order 1: dy/dx=m. B is satisfied but is order 2."
+  },
+  {
+    "id": "02-19",
+    "derived": "C",
+    "confidence": "high",
+    "note": "One arbitrary constant a, so order 1."
+  },
+  {
+    "id": "02-20",
+    "derived": "A",
+    "confidence": "high",
+    "note": "a=(x^2+y^2)/(2x) and x+yy'=a. Verified at (1,1) on x^2+y^2=2x: y'=0, both sides 1."
+  },
+  {
+    "id": "02-21",
+    "derived": "C",
+    "confidence": "high",
+    "note": "n constants require n differentiations; order equals n."
+  },
+  {
+    "id": "02-22",
+    "derived": "B",
+    "confidence": "high",
+    "note": "y'=2ax, y''=2a: order 2, degree 1."
+  },
+  {
+    "id": "02-23",
+    "derived": "C",
+    "confidence": "high",
+    "note": "y'=kAe^{kx}=ky. A is true but order 2, since only A is arbitrary."
+  },
+  {
+    "id": "02-24",
+    "derived": "D",
+    "confidence": "high",
+    "note": "One arbitrary constant alpha, so order 1 (degree 2 Clairaut form)."
+  },
+  {
+    "id": "02-25",
+    "derived": "A",
+    "confidence": "high",
+    "note": "y''=4C1e^{2x}+4C2e^{-2x}=4y, so y''-4y=0."
+  },
+  {
+    "id": "03-2",
+    "derived": "A",
+    "confidence": "medium",
+    "note": "TWO TRUE: A is order 1, degree 1 and linear. But D (y·dy/dx + x = 0) is ALSO order 1 and degree 1 under the standard definition (degree = power of the highest-order derivative, here 1). D is excluded only if 'first-degree in y' is read as 'first degree in the dependent variable and its derivatives' (i.e. linear), under which y·y' is degree 2. A is the intended answer; adjudicator should note D is defensible."
+  },
+  {
+    "id": "03-3",
+    "derived": "B",
+    "confidence": "high",
+    "note": "y = 2x^2 + C; differentiated back gives 4x."
+  },
+  {
+    "id": "03-4",
+    "derived": "C",
+    "confidence": "high",
+    "note": "y dy = (x+1)dx gives y^2 = x^2 + 2x + C; implicit diff: 2yy' = 2x+2, y' = (x+1)/y."
+  },
+  {
+    "id": "03-5",
+    "derived": "D",
+    "confidence": "high",
+    "note": "ln y = ln x + c, y = Cx; verified y' = C = y/x."
+  },
+  {
+    "id": "03-6",
+    "derived": "A",
+    "confidence": "high",
+    "note": "IF e^x gives e^x y = e^{2x}/2 + C; substituted back, y'+y = e^x. B gives 2e^x."
+  },
+  {
+    "id": "03-7",
+    "derived": "B",
+    "confidence": "high",
+    "note": "IF = exp(int 3 dx) = e^{3x}."
+  },
+  {
+    "id": "03-8",
+    "derived": "C",
+    "confidence": "high",
+    "note": "IF e^{2x}: y = 2 + Ce^{-2x}; substituted back y'+2y = 4. B has wrong exponent sign."
+  },
+  {
+    "id": "03-9",
+    "derived": "D",
+    "confidence": "high",
+    "note": "v=y/x gives (1-v)/(1+v^2)dv = dx/x, so arctan(y/x) - (1/2)ln(1+(y/x)^2) = ln|x| + C. A drops the log term."
+  },
+  {
+    "id": "03-10",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Linear y' - y/x = 1, IF 1/x, y = x ln x + Cx; check 1 + y/x = 1 + ln x + C = y'. D fails unless C=0."
+  },
+  {
+    "id": "03-11",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Only B has y and y' appearing to first power with coefficients in x alone."
+  },
+  {
+    "id": "03-12",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Exact: M_y = N_x = 2x+2y; potential F = x^2 y + x y^2, so x^2 y + x y^2 = C."
+  },
+  {
+    "id": "03-13",
+    "derived": "D",
+    "confidence": "high",
+    "note": "y = Ae^x, y(0)=2 gives y = 2e^x."
+  },
+  {
+    "id": "03-14",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Partial fractions 1/y + 1/(1-y); differentiating ln(y/(1-y)) back returns y' = y(1-y)."
+  },
+  {
+    "id": "03-15",
+    "derived": "B",
+    "confidence": "high",
+    "note": "-1/y = x + C so y = -1/(x+C); y' = (x+C)^{-2} = y^2. D is the sign trap: it satisfies y' = -y^2, and is NOT the same family as B."
+  },
+  {
+    "id": "03-16",
+    "derived": "B",
+    "confidence": "high",
+    "note": "v=1/y gives v = 1 + Ce^x, i.e. y = 1/(1+Ce^x) — same general family as B with C -> -C, since C is arbitrary. Substituting B: y'+y-y^2 = 0 exactly. C and D both fail substitution."
+  },
+  {
+    "id": "03-17",
+    "derived": "D",
+    "confidence": "high",
+    "note": "P = 500e^{2t}; P(0)=500 and dP/dt = 2P both check."
+  },
+  {
+    "id": "03-18",
+    "derived": "A",
+    "confidence": "high",
+    "note": "IF x^2: x^2 y = (3/5)x^5 + C, y = (3/5)x^3 + C/x^2; substituted back gives 3x^2. C gives 5x^2."
+  },
+  {
+    "id": "03-19",
+    "derived": "B",
+    "confidence": "high",
+    "note": "IF = exp(int -1/x dx) = e^{-ln x} = 1/x for x>0."
+  },
+  {
+    "id": "03-20",
+    "derived": "C",
+    "confidence": "high",
+    "note": "(1+y^2)dy = cos x dx gives y + y^3/3 = sin x + C. A/B would answer y' = cos x (1+y^2), a different equation."
+  },
+  {
+    "id": "03-21",
+    "derived": "D",
+    "confidence": "high",
+    "note": "(x+y)/(x-y) = (1+y/x)/(1-y/x) = F(y/x); the others are not functions of y/x alone."
+  },
+  {
+    "id": "03-22",
+    "derived": "A",
+    "confidence": "high",
+    "note": "LHS is (xy)', so xy = x^3/3 + C, y = x^2/3 + C/x; substituted back xy'+y = x^2."
+  },
+  {
+    "id": "03-23",
+    "derived": "B",
+    "confidence": "high",
+    "note": "y + y^2/2 = x^2 + C; (0,1) gives C = 3/2. A is 2x(B) but with constant 1 instead of 3, and fails the IC (LHS 3, RHS 1)."
+  },
+  {
+    "id": "03-24",
+    "derived": "C",
+    "confidence": "high",
+    "note": "IF e^{-x}: y e^{-x} = e^x + C, y = e^{2x} + Ce^x; substituted back y'-y = e^{2x}."
+  },
+  {
+    "id": "03-25",
+    "derived": "D",
+    "confidence": "high",
+    "note": "Exact (M_y = N_x = 1), F = xy + x^2/2 = c, i.e. x^2 + 2xy = C. Differentiating D returns (y+x)dx + x dy = 0 exactly; C does not."
+  },
+  {
+    "id": "03-26",
+    "derived": "A",
+    "confidence": "high",
+    "note": "v=1/y: v' - 2v = -3, v = 3/2 + Ce^{2x}. Substituting A: y'+2y-3y^2 = 0 identically."
+  },
+  {
+    "id": "03-27",
+    "derived": "B",
+    "confidence": "high",
+    "note": "dy/(1+y^2) = x dx separates; A, C, D mix x and y additively/as a ratio."
+  },
+  {
+    "id": "04-2",
+    "derived": "A",
+    "confidence": "high",
+    "note": "TWIN: A=B. Integrating gives y = x^3 + C (differentiated back to check). B writes the same arbitrary constant as 3C, so {x^3+3C} is the identical solution family as {x^3+C} — A and B are equal as general solutions. A is the conventional form. C and D fail differentiation (9x^2 and 2x)."
+  },
+  {
+    "id": "04-3",
+    "derived": "B",
+    "confidence": "high",
+    "note": "y(1)=1+C=5 gives C=4. Checked: 1^3+4=5."
+  },
+  {
+    "id": "04-4",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Order n general solution carries n arbitrary constants; n=3."
+  },
+  {
+    "id": "04-5",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Particular solution has no arbitrary constants. A has C, C has C1,C2, D has C; only B is constant-free."
+  },
+  {
+    "id": "04-6",
+    "derived": "A",
+    "confidence": "high",
+    "note": "dy/y = dx gives y = Ce^x; verified y' = Ce^x = y. B fails: y' = e^x but y = e^x + C. D gives y' = -y."
+  },
+  {
+    "id": "04-7",
+    "derived": "A",
+    "confidence": "high",
+    "note": "C = 5. Checked the condition on the distractors: B gives y(0)=e^5, C gives y(0)=5e, D solves a different ODE."
+  },
+  {
+    "id": "04-8",
+    "derived": "D",
+    "confidence": "high",
+    "note": "Two arbitrary constants C1, C2; order equals number of constants, so 2 and 2."
+  },
+  {
+    "id": "04-9",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Only A has both constants pinned (3 and -2). B, C retain one arbitrary constant; D is the general solution itself."
+  },
+  {
+    "id": "04-10",
+    "derived": "A",
+    "confidence": "high",
+    "note": "y = x^2 + C; 4 + C = 7 gives C = 3. Checked (2,7) satisfies y = x^2 + 3."
+  },
+  {
+    "id": "04-11",
+    "derived": "D",
+    "confidence": "high",
+    "note": "C=2 gives y = 2e^{-3x}: x=0 yields 2 (B true) and x=1 yields 2e^{-3} (C true). B and C are both individually true, which is exactly what D asserts, so D is the complete answer. A is false since y(0)=2, not 1."
+  },
+  {
+    "id": "04-12",
+    "derived": "A",
+    "confidence": "high",
+    "note": "C1+C2=4 and y'(0)=3C1-3C2=0 give C1=C2=2. Verified y=2e^{3x}+2e^{-3x} satisfies y''=9y, y(0)=4, y'(0)=0."
+  },
+  {
+    "id": "04-13",
+    "derived": "A",
+    "confidence": "high",
+    "note": "y = x^2/2 + C; y1 = x^2/2 and y2 = x^2/2 + 4 differ by 4 everywhere, so they never intersect."
+  },
+  {
+    "id": "04-14",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Standard definition; A, B, D each invert or confuse it."
+  },
+  {
+    "id": "04-15",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Two unknowns need two conditions: C1+C2=1, C1 e + C2 = 2 give C1 = 1/(e-1), C2 = 1 - 1/(e-1) uniquely. A and B are single conditions (underdetermined); D is false."
+  },
+  {
+    "id": "04-16",
+    "derived": "D",
+    "confidence": "low",
+    "note": "TWO SIMULTANEOUSLY TRUE: C and D are both genuine general solutions of second-order ODEs — C (y = C1 x + C2) is the general solution of y'' = 0 and D (y = C1 e^x + C2 e^{-x}) of y'' - y = 0; both carry exactly two arbitrary constants, which is the only stated criterion. A has none and B has one, so both are correctly excluded. Picked D as the likely intended answer (it is the source's recurring second-order exemplar, used verbatim in 04-8), but the stem as asked admits C equally and needs repair."
+  },
+  {
+    "id": "04-17",
+    "derived": "A",
+    "confidence": "high",
+    "note": "y = x^3 - 2x + C; y(1) = -1 + C = 0 gives C = 1. Differentiated back: y' = 3x^2 - 2, and y(1)=0."
+  },
+  {
+    "id": "04-18",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Solutions are y = Ke^{2x}. Tested each: A (K=5) and B (K=-3) satisfy y'=2y; D (y=0, K=0) gives 0=0, a valid trivial solution. C gives y'=2e^{2x} but 2y=2e^{2x}+2, so C is the one that is NOT a solution."
+  }
+]
