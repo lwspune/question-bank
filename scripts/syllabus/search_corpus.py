@@ -109,6 +109,23 @@ def main() -> int:
     with open(path, encoding="utf-8") as f:
         data = json.load(f)
 
+    # A --source that matches no book must be a LOUD failure, never a search.
+    # The filter is an exact match, so "--source=MH State" (the obvious guess for
+    # "MH State Board") selected zero chapters and every term then printed
+    # "ZERO hits in MH State — absence is weak evidence", which reads as a finding
+    # about the book. Absence is what this tool is most often used to establish,
+    # so an operator typo silently manufacturing it across every term is the worst
+    # failure available here: it produces confident, plausible, wrong `not`
+    # rulings that no later probe can catch.
+    known = sorted({key.split("|")[0] for key in data})
+    if source_filter and not any(s.lower() == source_filter.lower() for s in known):
+        print(
+            f"unknown --source={source_filter!r}; this corpus has: "
+            + ", ".join(repr(s) for s in known),
+            file=sys.stderr,
+        )
+        return 2
+
     # Normalise once, not per term: these corpora are ~3M chars.
     chapters = []
     for key, v in data.items():
