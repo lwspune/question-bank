@@ -1,0 +1,512 @@
+[
+  {
+    "id": "01-2",
+    "derived": "A",
+    "confidence": "high",
+    "note": "Binary uses digits 0 and 1 only."
+  },
+  {
+    "id": "01-3",
+    "derived": "B",
+    "confidence": "high",
+    "note": ""
+  },
+  {
+    "id": "01-4",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Only 101101 uses digits 0/1; others contain 2,3,9,8,7."
+  },
+  {
+    "id": "01-5",
+    "derived": "C",
+    "confidence": "high",
+    "note": ""
+  },
+  {
+    "id": "01-6",
+    "derived": "C",
+    "confidence": "high",
+    "note": "1010: leftmost 1 sits in the 2^3 place."
+  },
+  {
+    "id": "01-7",
+    "derived": "B",
+    "confidence": "high",
+    "note": "2^3 = 8 distinct values."
+  },
+  {
+    "id": "01-8",
+    "derived": "D",
+    "confidence": "high",
+    "note": "1111 = 15; option C (16) is the count, not the max."
+  },
+  {
+    "id": "01-9",
+    "derived": "D",
+    "confidence": "high",
+    "note": ""
+  },
+  {
+    "id": "01-10",
+    "derived": "B",
+    "confidence": "high",
+    "note": ""
+  },
+  {
+    "id": "01-11",
+    "derived": "C",
+    "confidence": "high",
+    "note": ""
+  },
+  {
+    "id": "01-12",
+    "derived": "B",
+    "confidence": "high",
+    "note": "11001: rightmost bit is 1, weight 2^0."
+  },
+  {
+    "id": "01-13",
+    "derived": "C",
+    "confidence": "high",
+    "note": ""
+  },
+  {
+    "id": "01-14",
+    "derived": "C",
+    "confidence": "high",
+    "note": "10102 contains digit 2; leading zeros in A are legal."
+  },
+  {
+    "id": "01-15",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Single 1 in position k gives 2^k."
+  },
+  {
+    "id": "01-16",
+    "derived": "C",
+    "confidence": "high",
+    "note": "2^5 = 32 strings of length 5."
+  },
+  {
+    "id": "01-17",
+    "derived": "D",
+    "confidence": "high",
+    "note": "111 = 7."
+  },
+  {
+    "id": "01-18",
+    "derived": "D",
+    "confidence": "high",
+    "note": "Nibble = 4 bits, 2^4 = 16 values including 0."
+  },
+  {
+    "id": "01-19",
+    "derived": "B",
+    "confidence": "high",
+    "note": ""
+  },
+  {
+    "id": "01-20",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Leading zeros carry weight times 0."
+  },
+  {
+    "id": "01-21",
+    "derived": "C",
+    "confidence": "high",
+    "note": "e.g. 1000 (8) > 0111 (7) despite fewer 1s."
+  },
+  {
+    "id": "01-22",
+    "derived": "A",
+    "confidence": "high",
+    "note": ""
+  },
+  {
+    "id": "01-23",
+    "derived": "B",
+    "confidence": "high",
+    "note": "Integer division by 2."
+  },
+  {
+    "id": "01-24",
+    "derived": "B",
+    "confidence": "high",
+    "note": ""
+  },
+  {
+    "id": "01-25",
+    "derived": "C",
+    "confidence": "high",
+    "note": "Bit=1, Nibble=4, Byte=8; only C matches."
+  },
+  {
+    "id": "01-26",
+    "derived": "A",
+    "confidence": "high",
+    "note": ""
+  },
+  {
+    "id": "01-27",
+    "derived": "D",
+    "confidence": "high",
+    "note": "Only b2 set gives 2^2 = 4."
+  },
+  {
+    "id": "01-28",
+    "derived": "B",
+    "confidence": "high",
+    "note": ""
+  },
+  {
+    "id": "01-29",
+    "derived": "C",
+    "confidence": "high",
+    "note": "1 < 2 < 3; bases are explicit subscripts, no ambiguity."
+  },
+  {
+    "id": "01-30",
+    "derived": "C",
+    "confidence": "high",
+    "note": "111111 = 2^6 - 1 = 63."
+  },
+  {
+    "id": "02-2",
+    "derived": "A",
+    "confidence": "high",
+    "note": "13=8+4+1=1101"
+  },
+  {
+    "id": "02-3",
+    "derived": "B",
+    "confidence": "high",
+    "note": "25=16+8+1=11001"
+  },
+  {
+    "id": "02-4",
+    "derived": "C",
+    "confidence": "high",
+    "note": "32+8+4+1=45"
+  },
+  {
+    "id": "02-5",
+    "derived": "D",
+    "confidence": "high",
+    "note": "4+1+0.25=5.25"
+  },
+  {
+    "id": "02-6",
+    "derived": "A",
+    "confidence": "high",
+    "note": "0.625=1/2+1/8=0.101"
+  },
+  {
+    "id": "02-7",
+    "derived": "B",
+    "confidence": "high",
+    "note": "19=10011, .5=.1"
+  },
+  {
+    "id": "02-8",
+    "derived": "C",
+    "confidence": "high",
+    "note": "16+8+4+1=29"
+  },
+  {
+    "id": "02-9",
+    "derived": "D",
+    "confidence": "high",
+    "note": "52=32+16+4=110100"
+  },
+  {
+    "id": "02-10",
+    "derived": "A",
+    "confidence": "high",
+    "note": "100=64+32+4=1100100"
+  },
+  {
+    "id": "02-11",
+    "derived": "B",
+    "confidence": "high",
+    "note": "2^5=32"
+  },
+  {
+    "id": "02-12",
+    "derived": "C",
+    "confidence": "high",
+    "note": "8+1+0.5=9.5"
+  },
+  {
+    "id": "02-13",
+    "derived": "D",
+    "confidence": "high",
+    "note": "0.25=1/4=0.01"
+  },
+  {
+    "id": "02-14",
+    "derived": "A",
+    "confidence": "high",
+    "note": "31=11111, .125=.001"
+  },
+  {
+    "id": "02-15",
+    "derived": "B",
+    "confidence": "high",
+    "note": "c>d forces c=1,d=0; 1010=10"
+  },
+  {
+    "id": "02-16",
+    "derived": "C",
+    "confidence": "high",
+    "note": "1010=10; A=12, B=11, D=15"
+  },
+  {
+    "id": "02-17",
+    "derived": "D",
+    "confidence": "high",
+    "note": "7/8=0.875=0.111"
+  },
+  {
+    "id": "02-18",
+    "derived": "A",
+    "confidence": "high",
+    "note": "64+32+4=100"
+  },
+  {
+    "id": "02-19",
+    "derived": "B",
+    "confidence": "high",
+    "note": "45=101101, .75=.11"
+  },
+  {
+    "id": "02-20",
+    "derived": "C",
+    "confidence": "high",
+    "note": "1/2=0.1"
+  },
+  {
+    "id": "02-21",
+    "derived": "D",
+    "confidence": "high",
+    "note": "0.5+0.125=0.625"
+  },
+  {
+    "id": "02-22",
+    "derived": "A",
+    "confidence": "high",
+    "note": "32<=50<64 so 6 bits"
+  },
+  {
+    "id": "02-23",
+    "derived": "B",
+    "confidence": "high",
+    "note": "20=16+4=10100"
+  },
+  {
+    "id": "02-24",
+    "derived": "C",
+    "confidence": "high",
+    "note": "sum=31=11111"
+  },
+  {
+    "id": "02-25",
+    "derived": "D",
+    "confidence": "high",
+    "note": "2^6=64"
+  },
+  {
+    "id": "02-26",
+    "derived": "A",
+    "confidence": "high",
+    "note": "0.375=1/4+1/8=0.011"
+  },
+  {
+    "id": "02-27",
+    "derived": "B",
+    "confidence": "high",
+    "note": "73=64+8+1=1001001"
+  },
+  {
+    "id": "02-28",
+    "derived": "C",
+    "confidence": "high",
+    "note": "2^6-1=63"
+  },
+  {
+    "id": "02-29",
+    "derived": "D",
+    "confidence": "high",
+    "note": "11100=28; A=18, B=25, C=23"
+  },
+  {
+    "id": "03-2",
+    "derived": "B",
+    "confidence": "high",
+    "note": "0.75+0.25=1.0"
+  },
+  {
+    "id": "03-3",
+    "derived": "D",
+    "confidence": "high",
+    "note": "20/2=10=1010"
+  },
+  {
+    "id": "03-4",
+    "derived": "C",
+    "confidence": "high",
+    "note": "15+1=16=10000"
+  },
+  {
+    "id": "03-5",
+    "derived": "C",
+    "confidence": "high",
+    "note": "5x6=30"
+  },
+  {
+    "id": "03-6",
+    "derived": "C",
+    "confidence": "high",
+    "note": "3x10=30=11110"
+  },
+  {
+    "id": "03-7",
+    "derived": "D",
+    "confidence": "high",
+    "note": "25-10=15=1111"
+  },
+  {
+    "id": "03-8",
+    "derived": "A",
+    "confidence": "high",
+    "note": "9.5+2.25=11.75"
+  },
+  {
+    "id": "03-9",
+    "derived": "D",
+    "confidence": "high",
+    "note": "56/2=28=11100"
+  },
+  {
+    "id": "03-10",
+    "derived": "B",
+    "confidence": "high",
+    "note": "18+13=31"
+  },
+  {
+    "id": "03-11",
+    "derived": "C",
+    "confidence": "high",
+    "note": "21/3=7"
+  },
+  {
+    "id": "03-12",
+    "derived": "B",
+    "confidence": "high",
+    "note": "11+4-2=13=1101"
+  },
+  {
+    "id": "03-13",
+    "derived": "A",
+    "confidence": "high",
+    "note": "22/2=11"
+  },
+  {
+    "id": "03-14",
+    "derived": "A",
+    "confidence": "high",
+    "note": "13.5-1.25=12.25"
+  },
+  {
+    "id": "03-15",
+    "derived": "B",
+    "confidence": "high",
+    "note": "13x3=39=100111"
+  },
+  {
+    "id": "03-16",
+    "derived": "A",
+    "confidence": "high",
+    "note": "16-1=15"
+  },
+  {
+    "id": "03-17",
+    "derived": "B",
+    "confidence": "high",
+    "note": "28-10=18"
+  },
+  {
+    "id": "03-18",
+    "derived": "C",
+    "confidence": "high",
+    "note": "7+5+1=13=1101"
+  },
+  {
+    "id": "03-19",
+    "derived": "C",
+    "confidence": "high",
+    "note": "11x2=22=10110 (left shift)"
+  },
+  {
+    "id": "03-20",
+    "derived": "D",
+    "confidence": "high",
+    "note": "9x2+1=19"
+  },
+  {
+    "id": "03-21",
+    "derived": "A",
+    "confidence": "high",
+    "note": "18+18=36"
+  },
+  {
+    "id": "03-22",
+    "derived": "D",
+    "confidence": "high",
+    "note": "32/4=8=1000"
+  },
+  {
+    "id": "03-23",
+    "derived": "A",
+    "confidence": "high",
+    "note": "11+6=17=10001"
+  },
+  {
+    "id": "03-24",
+    "derived": "C",
+    "confidence": "high",
+    "note": "5x5=25=11001"
+  },
+  {
+    "id": "03-25",
+    "derived": "A",
+    "confidence": "high",
+    "note": "6+5=11=1011"
+  },
+  {
+    "id": "03-26",
+    "derived": "B",
+    "confidence": "high",
+    "note": "7.25-1.5=5.75=101.11"
+  },
+  {
+    "id": "03-27",
+    "derived": "B",
+    "confidence": "high",
+    "note": "15-5=10"
+  },
+  {
+    "id": "03-28",
+    "derived": "D",
+    "confidence": "high",
+    "note": "24/3=8=1000"
+  },
+  {
+    "id": "03-29",
+    "derived": "D",
+    "confidence": "high",
+    "note": "21-9=12=1100"
+  }
+]

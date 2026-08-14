@@ -1,0 +1,68 @@
+{
+  "_comment": "Adjudicated repairs for Binary Numbers (Batch I). 85 blind verdicts, 9 disagreements — ALL NINE in 01. Basic Concepts.xlsx (9 of its 29 rows, 31%), and all nine are pure ANSWER-KEY-COLUMN corruption: the source's own worked solution is CORRECT in every case and six of them even name the right letter in words ('which corresponds to option B'), while the key column says something else. Two independent blind passes agreed with each other and with the source solution on all nine; the maintainer re-derived each by hand as well. No solution rewrites were needed — the solutions were never wrong. Files 02 (Conversions) and 03 (Binary Arithmetic) came back completely clean: 0 disagreements, 0 twins, 0 defective option sets in 56 rows.",
+
+  "01-5": {
+    "answer": "C",
+    "reason": "Key flip D→C. A binary integer is base 2, so successive positions right to left carry weights 2^0, 2^1, 2^2, … The keyed D ('Powers of 10') describes the DECIMAL system."
+  },
+
+  "01-6": {
+    "answer": "C",
+    "reason": "Key flip A→C. In 1010 the bits right to left are b0=0, b1=1, b2=0, b3=1, so the leftmost 1 sits at position 3 and carries weight 2^3. The keyed A (2^0) is the weight of the rightmost position; D (2^4) would need a five-bit number."
+  },
+
+  "01-10": {
+    "answer": "B",
+    "reason": "Key flip A→B. Four bits are a nibble; a byte (the keyed A) is eight. The source's own solution says so in its first two steps and closes with 'the correct term for 4 bits is Nibble, which corresponds to option B'."
+  },
+
+  "01-11": {
+    "answer": "C",
+    "reason": "Key flip B→C. A byte is 8 bits. The keyed B (4 bits) is a nibble — the source has swapped the answers to this question and 01-10 with each other."
+  },
+
+  "01-12": {
+    "answer": "B",
+    "reason": "Key flip C→B. The least significant bit is the rightmost, which in 11001 is a 1, so 'the rightmost 1' identifies it. The keyed C ('the central 0') is neither the least nor the most significant position. The source solution reaches B explicitly."
+  },
+
+  "01-13": {
+    "answer": "C",
+    "reason": "Key flip D→C. The most significant bit is the leftmost, weight 2^4 in 11001. The keyed D ('the central 0') is the same wrong answer the source gave for the LSB question 01-12."
+  },
+
+  "01-14": {
+    "answer": "C",
+    "reason": "Key flip A→C. Only 10102 is invalid — it uses the digit 2, which does not exist in base 2. The keyed A (001011) is perfectly valid binary; leading zeros are permitted and it equals 11 in decimal."
+  },
+
+  "01-15": {
+    "answer": "C",
+    "reason": "Key flip A→C. A single 1 bit at position k has decimal value 2^k, i.e. always a power of 2. The keyed A ('a prime number greater than 2') is false for every such number: powers of 2 above 2 are composite, and 2 itself is not greater than 2. The source solution derives C."
+  },
+
+  "01-18": {
+    "solution": "A nibble is a group of \\(4\\) bits, so there are \\(2^4 = 16\\) distinct bit patterns. These represent the unsigned decimal values \\(0\\) through \\(15\\) — \\(16\\) values in all.",
+    "reason": "Key D is CORRECT and the reasoning was correct; only the closing sentence misnamed the letter ('the correct answer is 16, which is option C' — 16 is option D). Rewritten to state the value and drop the letter reference. Caught by audit:keys as SOLN_C!=KEY_D."
+  },
+
+  "01-22": {
+    "solution": "Shifting an unsigned binary number one place left and inserting a \\(0\\) on the right multiplies its value by \\(2\\). For example \\((101)_2 = 5\\) becomes \\((1010)_2 = 10\\).",
+    "reason": "Key A is CORRECT and the reasoning was correct; only the closing sentence misnamed the letter ('the correct option is B' after correctly deriving 'multiplied by 2', which is option A). Rewritten to drop the letter reference."
+  },
+
+  "01-26": {
+    "solution": "With \\(n\\) bits there are \\(2^n\\) distinct patterns. In unsigned form the smallest is \\(0\\) (all bits \\(0\\)) and the largest is \\(2^n - 1\\) (all bits \\(1\\)), so the range is \\(0\\) to \\(2^n - 1\\) inclusive.",
+    "reason": "Key A is CORRECT and the reasoning was correct; only the closing sentence misnamed the letter ('option B correctly...' after deriving 0 to 2^n - 1, which is option A). Rewritten to drop the letter reference."
+  },
+
+  "01-27": {
+    "solution": "Bit \\(b_k\\) carries weight \\(2^k\\). With only \\(b_2 = 1\\) and every other bit \\(0\\), the value is \\(2^2 = 4\\).",
+    "reason": "Key D is CORRECT and the reasoning was correct; only the closing sentence misnamed the letter ('this corresponds to option C' after deriving 2^2, which is option D). Rewritten to drop the letter reference."
+  },
+
+  "01-24": {
+    "answer": "B",
+    "reason": "Key flip D→B. Fractional positions to the right of the binary point mirror the integer side with NEGATIVE exponents: 2^-1, 2^-2, 2^-3. The keyed D gives positive exponents; C is the decimal weighting."
+  }
+}

@@ -1,0 +1,107 @@
+[
+  {
+    "id": "01-21",
+    "derived": "D",
+    "confidence": "medium",
+    "value": "any interval [n*pi, (n+1)*pi] with n != 0; both [-pi, 0] and [2pi, 3pi] qualify",
+    "note": "TWO TRUE OPTIONS: B and D are BOTH valid non-principal branches of cos^-1 (cos is injective onto [-1,1] on every [n*pi,(n+1)*pi]). D=[-pi,0] is n=-1, B=[2pi,3pi] is n=2. A=[3pi/2,5pi/2] is invalid (cos rises 0->1 then falls 1->0, not injective). C=(0,pi) IS the principal branch, so it fails 'other than'. Picked D as the branch textbooks list first, but B is equally correct - defective question."
+  },
+  {
+    "id": "01-41",
+    "derived": "D",
+    "confidence": "medium",
+    "value": "sin^-1 and cos^-1 share [-1,1]; tan^-1 and cot^-1 share R",
+    "note": "TWO TRUE OPTIONS: C and D are BOTH correct. Domains: sin^-1=cos^-1=[-1,1]; tan^-1=cot^-1=R; sec^-1=cosec^-1=|x|>=1. A (sin^-1 vs tan^-1) and B (sec^-1 vs tan^-1) are false. Picked D but C is equally correct - defective question."
+  },
+  {
+    "id": "02-39",
+    "derived": "X",
+    "confidence": "high",
+    "value": "sin^-1(24/25) = 2*sin^-1(3/5) ~= 1.28700 rad ~= 73.74 degrees",
+    "note": "sin^-1(3/5) = cos^-1(4/5) = 36.87 deg (SAME angle), so the sum is 2*36.87 = 73.74 deg, not 90 deg. pi/2 would need sin^-1(3/5)+cos^-1(3/5) or sin^-1(3/5)+sin^-1(4/5). No option equals 1.2870 (pi/3=1.047, pi/2=1.571, pi/4=0.785, 2pi/3=2.094)."
+  },
+  {
+    "id": "03-30",
+    "derived": "B",
+    "confidence": "high",
+    "value": "56/65",
+    "note": "cos^-1(4/5): sin=3/5,cos=4/5. sin^-1(5/13): sin=5/13,cos=12/13. sin(A+B)=(3/5)(12/13)+(4/5)(5/13)=36/65+20/65=56/65. Option A 63/65 is cos(A+B)'s partner / the 3-4-5 with 5-12-13 cross-term trap."
+  },
+  {
+    "id": "04-8",
+    "derived": "X",
+    "confidence": "high",
+    "value": "sum = pi/4 = tan^-1(1), so k = 1",
+    "note": "tan^-1(1/2)+tan^-1(1/5)=tan^-1(7/9) (product 1/10<1, no branch fix); +tan^-1(1/8) gives (7/9+1/8)/(1-7/72)=(65/72)/(65/72)=1, so tan^-1(1)=pi/4. Numeric: 0.463648+0.197396+0.124355=0.785398=pi/4. k=1 is not among 3,4,5,2."
+  },
+  {
+    "id": "04-9",
+    "derived": "X",
+    "confidence": "high",
+    "value": "tan^-1(31/17) ~= 1.06921 rad ~= 61.26 degrees",
+    "note": "TWIN: B=C (pi/4 and tan^-1(1) are the same number) - but neither is the answer. 2tan^-1(1/2)=tan^-1((2*(1/2))/(1-1/4))=tan^-1(4/3); tan^-1(4/3)+tan^-1(1/7), product 4/21<1, =tan^-1((4/3+1/7)/(1-4/21))=tan^-1((31/21)/(17/21))=tan^-1(31/17). Option A tan^-1(4/3) is the halfway trap. The pi/4 identity is 2tan^-1(1/3)+tan^-1(1/7), not 1/2 - stem likely mis-typed."
+  },
+  {
+    "id": "04-10",
+    "derived": "B",
+    "confidence": "high",
+    "value": "pi/4",
+    "note": "TWIN: B=C (pi/4 == tan^-1(1), identical value, both correct). (1/3+1/2)/(1-(1/3)(1/2))=(5/6)/(5/6)=1, product 1/6<1 so no branch correction; sum=tan^-1(1)=pi/4. Option A tan^-1(5/6) is the forgot-the-denominator trap. Picked B as the closed form; C is equally correct."
+  },
+  {
+    "id": "05-15",
+    "derived": "C",
+    "confidence": "high",
+    "value": "1/(2(1+x^2))",
+    "note": "x=tan(t): x/(1+sqrt(1+x^2)) = tan(t)/(1+sec t) = sin t/(1+cos t) = tan(t/2), so the expression is (1/2)tan^-1(x); derivative 1/(2(1+x^2)). Note options A/B/D carry sqrt(1+x^2) in the denominator, which is the wrong shape."
+  },
+  {
+    "id": "05-27",
+    "derived": "A",
+    "confidence": "high",
+    "value": "1/(1+x^2)",
+    "note": "tan^-1((x-1)/(x+1)) = tan^-1(x) - pi/4 for x>-1, so derivative = 1/(1+x^2). Direct check: u'=2/(x+1)^2 and 1/(1+u^2)=(x+1)^2/(2x^2+2), product = 2/(2x^2+2) = 1/(1+x^2). Options C/D (x^2+2x+2 = (x+1)^2+1) are the un-simplified-wrongly trap."
+  },
+  {
+    "id": "05-33",
+    "derived": "X",
+    "confidence": "high",
+    "value": "-16/63 (negative)",
+    "note": "sin^-1(3/5)=36.87 deg (tan 3/4); cos^-1(5/13)=67.38 deg (tan 12/5). Sum=104.25 deg is OBTUSE, so cot is negative. tan(A+B)=(3/4+12/5)/(1-(3/4)(12/5))=(63/20)/(-16/20)=-63/16, so cot=-16/63 ~= -0.2540 (numeric cos/sin at 104.25 deg = -0.2462/0.9692 = -0.254, confirms). Option B is the correct MAGNITUDE with the wrong sign; no option equals -16/63. (Option C 33/56 would be the answer if the second term were sin^-1(5/13).)"
+  },
+  {
+    "id": "05-37",
+    "derived": "X",
+    "confidence": "high",
+    "value": "-1/(2*sqrt(1-x^2))",
+    "note": "sqrt((1-x)/2) = sin(t/2) with x=cos t, so the expression is (1/2)cos^-1(x) and the derivative is -1/(2*sqrt(1-x^2)). All four options carry sqrt(x(2-x)) = sqrt(2x-x^2), which equals sqrt(1-x^2) ONLY at x=0.5 (checked x=0.3: 1-x^2=0.91 vs x(2-x)=0.51). Central-difference at x=0.5 gives -0.5774 = -1/(2*sqrt(0.75)), consistent with my form. Option A is the derivative of sin^-1(sqrt((2-x)/2)), so the stem's numerator was probably meant to be 2-x."
+  },
+  {
+    "id": "05-39",
+    "derived": "X",
+    "confidence": "high",
+    "value": "pi/4 ~= 0.7854",
+    "note": "x*sin^-1(x) is EVEN (odd*odd), so the integral is 2*int_0^1. By parts: [x^2/2 * asin x]_0^1 - (1/2)int_0^1 x^2/sqrt(1-x^2) dx = pi/4 - (1/2)(pi/4) = pi/8. Doubled = pi/4. Cross-checked by x=sin t: (1/2)int_0^{pi/2} t sin2t dt = pi/8. Option A (0) is the 'assume odd, so zero' trap - the integrand is even, not odd. pi/4 is not offered."
+  },
+  {
+    "id": "05-41",
+    "derived": "X",
+    "confidence": "high",
+    "value": "1/(2(1+x^2))",
+    "note": "x=tan(t): (sec t - 1)/tan t = (1-cos t)/sin t = tan(t/2), so the expression is (1/2)tan^-1(x) and the derivative is 1/(2(1+x^2)) - the SAME function as 05-15. Here every option has sqrt(1+x^2) in the denominator; 1/(2(1+x^2)) is absent, so no option matches. (05-15 does offer it as its option C.)"
+  },
+  {
+    "id": "05-44",
+    "derived": "B",
+    "confidence": "high",
+    "value": "exactly 1 solution (x = 0)",
+    "note": "Domain [-1,1]. f(x)=2sin^-1(x)-tan^-1(x) has f'(x)=2/sqrt(1-x^2) - 1/(1+x^2) >= 2 - 1 > 0 on (-1,1), so f is strictly increasing and has at most one zero; f(0)=0. Endpoints confirm sign change (f(1)=pi-pi/4>0, f(-1)<0). Exactly 1."
+  },
+  {
+    "id": "05-45",
+    "derived": "X",
+    "confidence": "high",
+    "value": "-1/2",
+    "note": "tan^-1 x = x - x^3/3 + O(x^5); sin^-1 x = x + x^3/6 + O(x^5). Difference = -(1/3+1/6)x^3 = -x^3/2, so the limit is -1/2. Numeric at x=0.1: (0.0996687-0.1001674)/0.001 = -0.4987. Options only offer +-1/3 and +-1/6 (the two individual series coefficients), not their sum -1/2."
+  }
+]

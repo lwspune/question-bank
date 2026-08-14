@@ -50,6 +50,30 @@ kept as-source (re-balancing would need key remaps + solution rewrites for the
    `data/<id>.overrides.json` (`answer` / `options` / `solution` / `stem` /
    `exclude`, each with a `reason`). Solutions flagged for self-talk get clean
    rewrites in the same file.
+
+4b. **Dual-blind pass — mandatory once a chapter exceeds ~5% disagreement.**
+   Re-derive the disputed rows a SECOND time, independently, then crosstab:
+   ```sh
+   npx tsx scripts/worksheets/recheck.ts <chapterId>    # blind packet, disputed rows only
+   # → agents write out/<chapterId>/recheck-verdicts.json
+   cp out/<chapterId>/recheck-verdicts.json data/<chapterId>.recheck.json   # COMMIT the evidence
+   npx tsx scripts/worksheets/crosstab.ts <chapterId>
+   ```
+   The pass-2 packet carries stem + options ONLY — not the key, not pass 1's
+   verdict. Pass 2 must also return a `value` field stating what it computed in
+   plain terms, so the crosstab compares two derivations of the same QUANTITY
+   rather than two letter guesses. Hand-derivation then goes to the CONFLICT
+   bucket, not to all 30+ rows.
+
+   **The `FLIP?TWIN` bucket is the one that has burned us twice.** Both passes
+   naming the same letter is NOT sufficient evidence for a key flip: if the
+   keyed option and the derived option are the same VALUE, both passes were
+   right about the maths and simply named the other letter, and the correct
+   repair is to the option text with the key RETAINED. Batch H produced 21 such
+   illusory flips; Batch I's `4) Modulus-Inequality.xls` produced 15, because
+   that file duplicates its keyed answer verbatim into option A (one row carries
+   it three times). Always open a `FLIP?TWIN` row and compare the two option
+   texts before touching the key.
 5. **Rebalance the correct-answer letters** — the source skews keys toward
    A/B (~32/30/19/19 on the first 691 q), so plan a deterministic
    transposition shuffle (eligible rows only; plans are committed and applied
