@@ -7,6 +7,7 @@ import {
   parseChapterKey,
   rollUpChapterStatus,
   sectionGroupKey,
+  coverCellState,
   tallyByExam,
 } from "../src/lib/syllabus/summary";
 
@@ -116,5 +117,41 @@ describe("chapterKey / parseChapterKey", () => {
     expect(parseChapterKey("13-1")).toBeNull();
     expect(parseChapterKey("11-0")).toBeNull();
     expect(parseChapterKey("11-2; drop table")).toBeNull();
+  });
+});
+
+describe("coverCellState", () => {
+  const cover = (status: "full" | "partial" | "not" | null, refCount = 0) => ({
+    status,
+    refs: Array.from({ length: refCount }, (_, i) => i),
+  });
+
+  it("reports a located topic when the ruling names sections", () => {
+    expect(coverCellState(cover("full", 2))).toBe("located");
+    expect(coverCellState(cover("partial", 1))).toBe("located");
+  });
+
+  it("reports not-covered when the ruling says the book lacks it", () => {
+    expect(coverCellState(cover("not"))).toBe("not-covered");
+  });
+
+  it("reports diffuse when the ruling says covered but names no section", () => {
+    expect(coverCellState(cover("full"))).toBe("diffuse");
+    expect(coverCellState(cover("partial"))).toBe("diffuse");
+  });
+
+  // The whole reason this function exists. A null status means NO RULING ROW,
+  // and it used to fall into the same branch as "diffuse" — so 53 never-reviewed
+  // JEE Chemistry subtopics rendered "no single section", an affirmative claim
+  // that the book teaches them in scattered places. Absence of review is not a
+  // finding, and must not borrow the wording of one.
+  it("reports unassessed when there is no ruling at all", () => {
+    expect(coverCellState(cover(null))).toBe("unassessed");
+    expect(coverCellState(undefined)).toBe("unassessed");
+  });
+
+  it("treats unassessed as distinct from every assessed state", () => {
+    const assessed = [cover("full", 1), cover("not"), cover("full")].map(coverCellState);
+    expect(assessed).not.toContain("unassessed");
   });
 });

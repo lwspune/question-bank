@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import type { CoveredRef, MappingRow } from "@/lib/syllabus/query";
+import { coverCellState } from "@/lib/syllabus/summary";
 
 /**
  * "Where does the other book cover this?"
@@ -126,20 +127,26 @@ export default function MappingTable({
                   {books.map((b) => {
                     const cover = r.covers[b.exam];
                     const refs = cover?.refs ?? [];
+                    const state = coverCellState(cover);
                     return (
                       <Fragment key={`${r.id}-${b.exam}`}>
                         <td className="p-3 align-top text-xs text-muted-foreground">
                           {chapterLabels(refs)}
                         </td>
                         <td className="p-3 align-top">
-                          {refs.length > 0 ? (
+                          {state === "located" ? (
                             <RefCell refs={refs} />
                           ) : (
                             <span className="text-xs text-muted-foreground">
-                              {cover?.status === "not" ? (
+                              {state === "not-covered" ? (
                                 <span className="rounded bg-rose-50 px-1.5 py-0.5 text-rose-900 dark:bg-rose-950/50 dark:text-rose-200">
                                   not covered
                                 </span>
+                              ) : state === "unassessed" ? (
+                                // Deliberately NOT styled as a verdict: no colour
+                                // chip, because this is the absence of a finding
+                                // and must not look like one.
+                                <span className="italic">not assessed</span>
                               ) : (
                                 "no single section"
                               )}

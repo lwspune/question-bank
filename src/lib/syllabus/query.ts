@@ -82,11 +82,21 @@ type RawLink = {
  * Pages past the PostgREST 1000-row cap. This is not hypothetical here: the map
  * already holds 864 concepts and ~3.4k exam links, so an unpaged select would
  * silently truncate and under-report every tally.
+ *
+ * `orderBy` must be a UNIQUE key of the table, and is not optional garnish —
+ * LIMIT/OFFSET without ORDER BY has no stability guarantee, so consecutive pages
+ * are free to repeat some rows and skip others as the heap shifts underneath.
+ * That is not theoretical: before this was pinned, two identical runs of
+ * scripts/syllabus/smoke-page-data.ts returned 410 and 438 alignment rows off the
+ * same data, with authored pairings swinging 188 vs 90 — the page rendering
+ * different content on consecutive requests. Sorting on a NON-unique column would
+ * leave ties free to reorder across the page boundary and reintroduce it.
  */
 async function fetchAll<T>(
   db: SupabaseClient,
   table: string,
   columns: string,
+  orderBy: string[],
   eq?: { column: string; value: string },
 ): Promise<T[]> {
   const out: T[] = [];
@@ -94,6 +104,7 @@ async function fetchAll<T>(
   for (let from = 0; ; from += PAGE) {
     let q = db.from(table).select(columns);
     if (eq) q = q.eq(eq.column, eq.value);
+    for (const col of orderBy) q = q.order(col, { ascending: true });
     const { data, error } = await q.range(from, from + PAGE - 1);
     if (error) throw new Error(`${table}: ${error.message}`);
     const rows = (data ?? []) as unknown as T[];
@@ -127,9 +138,15 @@ export async function loadSyllabusData(
       db,
       "syllabus_concepts",
       "id,source,class,chapter_no,chapter_name,section_no,concept,seq",
+      ["id"],
       { column: "subject", value: subject },
     ),
-    fetchAll<RawLink>(db, "syllabus_concept_exams", "concept_id,exam,status,note,covered_by"),
+    // (concept_id, exam) is this table's unique key — one verdict per concept per
+    // exam, which is the assumption every `${concept_id}|${exam}` Map below makes.
+    fetchAll<RawLink>(db, "syllabus_concept_exams", "concept_id,exam,status,note,covered_by", [
+      "concept_id",
+      "exam",
+    ]),
   ]);
   return { concepts, links };
 }
@@ -616,6 +633,15 @@ export type ExamSpineSummary = {
   full: number;
   partial: number;
   not: number;
+  /**
+   * Live subtopics with NO State Board ruling at all.
+   *
+   * Reported rather than folded into `not`, and rendered as its own column:
+   * without it `full + partial + not` silently fails to reach `live` and the row
+   * reads as an arithmetic error. It is 53 of JEE Chemistry's 202 — the subtopics
+   * the 2026-08-06 corpus completion surfaced, which nobody has adjudicated.
+   */
+  unassessed: number;
   /** Subtopics excluded because the exam no longer sets that chapter. */
   oldExcluded: number;
   /** The uncovered ones, for the gap list. */
@@ -695,6 +721,7 @@ export async function loadExamSpineSummaries(
         full: live.filter((r) => st(r) === "full").length,
         partial: live.filter((r) => st(r) === "partial").length,
         not: live.filter((r) => st(r) === "not").length,
+        unassessed: live.filter((r) => st(r) === null).length,
         oldExcluded: rows.length - live.length,
         gaps: live.filter((r) => st(r) === "not").sort((a, b) => b.pyq - a.pyq),
         partials: live.filter((r) => st(r) === "partial").sort((a, b) => b.pyq - a.pyq),
