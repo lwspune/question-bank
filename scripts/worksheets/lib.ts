@@ -198,7 +198,16 @@ export function normalizeOldDress(field: string): string {
 // options ("Both …", "All of the above", "None of these") or a solution that
 // references an option letter.
 const POSITIONAL_OPTION = /\b(both|neither|all of the above|none of (the above|these))\b/i;
-const SOLUTION_LETTER_REF = /\boption\s+\(?[A-D]\)?\b/i;
+// A solution that names an option LETTER pins the option order, so the row must
+// not be rebalanced. The keyword and the letter are often separated by a few
+// words ("the correct option is C", "this corresponds to option (B)"), so we
+// allow a bounded same-sentence gap rather than requiring adjacency — an earlier
+// adjacency-only pattern let five Binary-Numbers rows through and the shuffle
+// moved their keys out from under the text.
+// The keyword half is case-insensitive; the LETTER half is deliberately
+// case-SENSITIVE, because the article "a" appears in almost every solution and
+// matching it would make the corpus ineligible and silently kill the rebalance.
+const SOLUTION_LETTER_REF = /(?:[Oo]ption|[Aa]nswer|[Cc]hoice|[Cc]orrect)[^.!?]{0,24}?\(?\b[A-D]\b\)?/;
 
 export function isShuffleEligible(optionTexts: string[], solution: string): boolean {
   if (optionTexts.some((t) => POSITIONAL_OPTION.test(t))) return false;

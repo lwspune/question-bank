@@ -358,6 +358,69 @@ export const CHAPTERS: Record<string, Chapter> = {
       { file: "Moving-Observer-Problems.xls", subtopicName: "Moving Observer Problems" },
     ],
   },
+  "matrices-determinants": {
+    id: "matrices-determinants",
+    chapterName: "Matrices and Determinants",
+    dir: join(SOURCE_ROOT, "18. Determinants&Matrices"),
+    sourceFile: "Cadetprep_Worksheets_Matrices_Determinants",
+    note: "Cadetprep concept-practice worksheet — Matrices and Determinants",
+    // Legacy BIFF .xls — SheetJS sniffs content. File order = the folder's own
+    // 1)…7) numbering, which is already the teaching sequence (matrices → determinants).
+    files: [
+      { file: "1)Basic-Matrix.xls", subtopicName: "Matrix Basics" },
+      { file: "2)Matrix-Operations.xls", subtopicName: "Matrix Operations" },
+      { file: "3)Special-Matrices.xls", subtopicName: "Special Matrices" },
+      { file: "4)Determinant-Basic.xls", subtopicName: "Determinant Basics" },
+      { file: "5)Determinant-Properties.xls", subtopicName: "Properties of Determinants" },
+      { file: "6)Determinant-Calculation.xls", subtopicName: "Evaluating Determinants" },
+      { file: "7)Adjoint&Inverse.xls", subtopicName: "Adjoint and Inverse" },
+    ],
+  },
+  "inverse-trigonometry": {
+    id: "inverse-trigonometry",
+    chapterName: "Inverse Trigonometry",
+    dir: join(SOURCE_ROOT, "15. Inverse-Trigonometery"),
+    sourceFile: "Cadetprep_Worksheets_Inverse_Trigonometry",
+    note: "Cadetprep concept-practice worksheet — Inverse Trigonometry",
+    // Files are unnumbered; order is the teaching sequence (definitions → values →
+    // properties → compound-angle formulas → calculus), not the alphabetical listing.
+    files: [
+      { file: "Core-Fundamentals.xls", subtopicName: "Core Fundamentals" },
+      { file: "Standard-Values.xls", subtopicName: "Standard Values" },
+      { file: "Fundamental-Properties.xls", subtopicName: "Fundamental Properties" },
+      { file: "Addition&Subtraction-Formulas.xls", subtopicName: "Addition and Subtraction Formulas" },
+      { file: "Calculus-Applications.xls", subtopicName: "Calculus Applications" },
+    ],
+  },
+  inequalities: {
+    id: "inequalities",
+    chapterName: "Inequalities",
+    dir: join(SOURCE_ROOT, "14. Inequalities"),
+    sourceFile: "Cadetprep_Worksheets_Inequalities",
+    note: "Cadetprep concept-practice worksheet — Inequalities",
+    // Filenames are irregular on purpose — "2) Quadratic-Inequalities .xls" carries a
+    // trailing space before the extension and files 2/4 a space after the paren.
+    files: [
+      { file: "1)Linear-Inequalities.xls", subtopicName: "Linear Inequalities" },
+      { file: "2) Quadratic-Inequalities .xls", subtopicName: "Quadratic Inequalities" },
+      { file: "3)Advanced-Ineqality.xls", subtopicName: "Advanced Inequalities" },
+      { file: "4) Modulus-Inequality.xls", subtopicName: "Modulus Inequalities" },
+      { file: "5)Rational-Irrational-Inequalities.xls", subtopicName: "Rational and Irrational Inequalities" },
+    ],
+  },
+  "binary-numbers": {
+    id: "binary-numbers",
+    chapterName: "Binary Numbers",
+    dir: join(SOURCE_ROOT, "26. Binary Numbers"),
+    sourceFile: "Cadetprep_Worksheets_Binary_Numbers",
+    note: "Cadetprep concept-practice worksheet — Binary Numbers",
+    // "Binary_Syllabus.docx" in the same folder is a syllabus doc, not a worksheet.
+    files: [
+      { file: "01. Basic Concepts.xlsx", subtopicName: "Basic Concepts" },
+      { file: "02. Conversions.xlsx", subtopicName: "Conversions" },
+      { file: "03. Binary Aritmetics.xlsx", subtopicName: "Binary Arithmetic" },
+    ],
+  },
 };
 
 export function requireChapter(id: string | undefined): Chapter {

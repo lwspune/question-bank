@@ -1,0 +1,65 @@
+[
+  {
+    "id": "01-5",
+    "derived": "C",
+    "confidence": "high",
+    "value": "Powers of 2 (positions right-to-left carry weights 2^0=1, 2^1=2, 2^2=4, 2^3=8 decimal)",
+    "note": "Definition of a base-2 positional system. Powers of 10 is decimal; 3 and 5 are unrelated bases."
+  },
+  {
+    "id": "01-6",
+    "derived": "C",
+    "confidence": "high",
+    "value": "2^3 = 8 decimal. Full number 1010 binary = 8+0+2+0 = 10 decimal",
+    "note": "Bits of 1010 right-to-left: b0=0, b1=1, b2=0, b3=1. Leftmost 1 is b3, weight 2^3=8. D (2^4=16) would require a 5-bit number; 1010 has only 4 positions (b0..b3)."
+  },
+  {
+    "id": "01-10",
+    "derived": "B",
+    "confidence": "high",
+    "value": "Nibble = 4 bits (a nibble spans decimal values 0-15)",
+    "note": "Byte=8 bits, kilobyte=1024 bytes, word is machine-dependent (typically 16/32/64 bits)."
+  },
+  {
+    "id": "01-11",
+    "derived": "C",
+    "confidence": "high",
+    "value": "8 bits (unsigned range 0-255 decimal)",
+    "note": "Standard definition of a byte/octet."
+  },
+  {
+    "id": "01-12",
+    "derived": "B",
+    "confidence": "high",
+    "value": "LSB = the rightmost bit of 11001, which is a 1 with weight 2^0 = 1 decimal. Whole number 11001 binary = 25 decimal",
+    "note": "Bits right-to-left: b0=1, b1=0, b2=0, b3=1, b4=1. The least significant position b0 happens to hold a 1, so 'the rightmost 1' identifies it correctly and unambiguously."
+  },
+  {
+    "id": "01-13",
+    "derived": "C",
+    "confidence": "high",
+    "value": "MSB = the leftmost bit of 11001, a 1 with weight 2^4 = 16 decimal. Whole number 11001 binary = 16+8+0+0+1 = 25 decimal",
+    "note": "b4=1 is the highest-weight position. Option B ('second 1 from the right') points at b3, weight 2^3=8 decimal, which is not the MSB. Only one option is true."
+  },
+  {
+    "id": "01-14",
+    "derived": "C",
+    "confidence": "high",
+    "value": "10102 is NOT valid binary - it contains the digit 2, which does not exist in base 2. (Read as a decimal numeral it is 10102 decimal; as an intended binary string it is malformed.)",
+    "note": "A=001011 is valid (leading zeros permitted) = 11 decimal; B=1100 valid = 12 decimal; D=0 valid = 0 decimal. Only C uses an out-of-range digit."
+  },
+  {
+    "id": "01-15",
+    "derived": "C",
+    "confidence": "high",
+    "value": "A power of 2. A single 1 at position k equals 2^k: 1, 10, 100, 1000 binary = 1, 2, 4, 8 decimal",
+    "note": "Checked each distractor against the set {1,2,4,8,16,...}: 2 is prime but not greater than 2 and no larger power of 2 is prime, so A fails; 1 is not composite and every other member is even, so B fails; none is divisible by 3, so D fails. Exactly one true option."
+  },
+  {
+    "id": "01-24",
+    "derived": "B",
+    "confidence": "high",
+    "value": "2^-1, 2^-2, 2^-3 = 0.5, 0.25, 0.125 decimal (e.g. 0.101 binary = 0.5+0.125 = 0.625 decimal)",
+    "note": "Fractional positions mirror the integer side with negative exponents of the base. C is the decimal-point weighting; A and D are non-negative exponents."
+  }
+]

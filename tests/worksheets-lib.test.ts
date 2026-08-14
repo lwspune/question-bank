@@ -298,6 +298,35 @@ describe("isShuffleEligible", () => {
     expect(isShuffleEligible(["1", "2", "3", "4"], "This matches option B.")).toBe(false);
     expect(isShuffleEligible(["1", "2", "3", "4"], "")).toBe(true);
   });
+
+  // Batch I: five Binary-Numbers rows were shuffled despite naming a letter,
+  // because the old pattern required the letter to follow "option" IMMEDIATELY.
+  // "Hence, the correct option is C" slipped through and the key moved out from
+  // under the text, which audit:keys then caught as SOLN_C!=KEY_A.
+  it("rejects a letter reference separated from its keyword by words", () => {
+    expect(isShuffleEligible(["1", "2", "3", "4"], "Hence, the correct option is C.")).toBe(false);
+    expect(isShuffleEligible(["1", "2", "3", "4"], "This corresponds to option (B).")).toBe(false);
+    expect(isShuffleEligible(["1", "2", "3", "4"], "Therefore the answer is D.")).toBe(false);
+    expect(isShuffleEligible(["1", "2", "3", "4"], "So the correct choice is A.")).toBe(false);
+    expect(isShuffleEligible(["1", "2", "3", "4"], "The correct answer is (C).")).toBe(false);
+  });
+
+  // The letter half of the pattern stays CASE-SENSITIVE on purpose: the English
+  // article "a" is everywhere in these solutions, and matching it would make
+  // most of the corpus ineligible and quietly kill the rebalance.
+  it("does not fire on prose that merely contains the article 'a'", () => {
+    expect(isShuffleEligible(["1", "2", "3", "4"], "The answer is a power of 2.")).toBe(true);
+    expect(isShuffleEligible(["1", "2", "3", "4"], "The correct value is a perfect square.")).toBe(true);
+    expect(isShuffleEligible(["1", "2", "3", "4"], "Hence the answer is 4.")).toBe(true);
+  });
+
+  // A keyword far from the letter is not a reference — the window is bounded so
+  // an unrelated sentence mentioning a matrix named A cannot suppress shuffling.
+  it("does not fire across a sentence boundary or a long gap", () => {
+    expect(
+      isShuffleEligible(["1", "2", "3", "4"], "The correct value is 12. Let A be the given matrix.")
+    ).toBe(true);
+  });
 });
 
 describe("planShuffles", () => {

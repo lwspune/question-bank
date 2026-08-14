@@ -1,0 +1,198 @@
+{
+  "_comment": "Adjudicated repairs for Matrices and Determinants (Batch I). 290 blind verdicts, 26 disagreements + 9 agreeing-but-defective rows, every one re-derived by hand by the maintainer. The chapter's signature defect is in 6)Determinant-Calculation.xls: the AI-written solution DERIVES THE CORRECT VALUE and then overrides itself ('Determinant = -2 - 13 = -15. Recalculating properly gives 11'), with the option list generated around the wrong value — so five of its rows have no correct option at all. Repairs follow the house rule: fix the KEYED option's text and keep the keyed letter where the correct value is absent; flip the key only where the correct value is already on the page.",
+
+  "01-17": {
+    "answer": "C",
+    "solution": "The matrix has \\(1\\)s on the main diagonal and \\(0\\)s elsewhere, so it is the unit (identity) matrix. A scalar matrix is any diagonal matrix \\(kI\\) with all diagonal entries equal; here \\(k = 1\\), so it is a scalar matrix too. Both descriptions apply.",
+    "reason": "Key flip A→C. A scalar matrix is kI for any k, and the identity is the case k = 1 — so it is genuinely both. With 'Both A and B' explicitly offered, C is the only complete answer. The source solution concedes 'it is technically also a scalar matrix' and then picks A anyway on the grounds that unit matrix is the commoner term, which is a naming preference, not a fact about the matrix."
+  },
+
+  "02-12": {
+    "options": { "B": "\\(\\begin{bmatrix} 11 \\end{bmatrix}\\)" },
+    "reason": "Options B (the bare scalar 13) and the keyed C (the 1x1 matrix [13]) were the same answer — a 1x1 matrix and its single entry are not distinguishable choices. B replaced with [11], the value a student gets by mispairing 1x3 + 2x4. Key C retained: a (1x3)(3x1) product is a 1x1 matrix."
+  },
+
+  "02-18": {
+    "options": { "A": "\\(\\begin{bmatrix} 5 & 2 \\\\ -3 & 7 \\end{bmatrix}\\)" },
+    "reason": "Options A and the keyed D were BYTE-IDENTICAL, both the correct [[5,0],[-1,7]]. A replaced with A^T + B computed wrongly as [[5,2],[-3,7]]; key D retained."
+  },
+
+  "02-41": {
+    "options": {
+      "C": "\\(\\frac{1}{k}A^T\\)",
+      "D": "\\(k^2 A^T\\)"
+    },
+    "reason": "Three of the four options were the same answer: the keyed A (kA^T), C (A^T k — scalars commute) and D ((kA^T), merely A parenthesised). C and D replaced with genuinely false scalings. Key A retained; B (k^T A^T) stays as the category-error distractor."
+  },
+
+  "03-20": {
+    "answer": "D",
+    "solution": "Every square matrix \\(M\\) can be written as \\(M = \\frac{1}{2}(M + M^T) + \\frac{1}{2}(M - M^T)\\), where the first bracket is symmetric and the second is skew-symmetric. So a symmetric matrix plus a skew-symmetric matrix can be ANY square matrix of that order.",
+    "reason": "Key flip C→D. This is the standard decomposition theorem, and D states it exactly. C ('neither symmetric nor skew-symmetric') is not merely less precise but false as an always-claim: take the skew part to be the zero matrix and the sum is symmetric."
+  },
+
+  "03-25": {
+    "answer": "B",
+    "solution": "A matrix is periodic with period \\(k\\) when \\(A^{k+1} = A\\) for the smallest such positive \\(k\\). Here \\(A^3 = A\\), i.e. \\(A^{2+1} = A\\), so \\(k = 2\\). Idempotent would need \\(A^2 = A\\), involutory \\(A^2 = I\\) and nilpotent \\(A^m = O\\); none of these follows from \\(A^3 = A\\).",
+    "reason": "Key flip C→B. A^3 = A is the definition of period 2. Idempotency does not follow — a matrix with A^3 = A need not satisfy A^2 = A. The source solution factors A(A^2 - I) = 0, wrongly concludes 'either A = 0 or A^2 = I' (false for matrices, which have zero divisors), and then keys idempotent, which its own reasoning never reached."
+  },
+
+  "03-31": {
+    "stem": "If \\(A = \\begin{bmatrix} \\frac{1}{\\sqrt{2}} & -\\frac{1}{\\sqrt{2}} \\\\ \\frac{1}{\\sqrt{2}} & \\frac{1}{\\sqrt{2}} \\end{bmatrix}\\), then \\(A\\) is:",
+    "reason": "As printed the matrix was symmetric AND orthogonal, so options A and C were both true. Stem repaired to the rotation matrix (angle 45 degrees), which is orthogonal, NOT symmetric, not skew-symmetric (non-zero diagonal) and not idempotent. Key C retained and is now uniquely correct."
+  },
+
+  "03-35": {
+    "options": { "C": "Determinant is never negative" },
+    "reason": "No option was true as printed. For a real skew-symmetric matrix of even order, det = (Pfaffian)^2, so the determinant is a non-negative perfect square: it can be zero (the zero matrix) and can be positive, but NEVER negative. That kills A (always zero), B (always positive), D (always invertible) and the keyed C (can be positive or negative). C repaired to the true statement; key C retained. The source solution's closing claim that 'the determinant can be any real number' is simply wrong."
+  },
+
+  "03-45": {
+    "stem": "The matrix \\(\\begin{bmatrix} \\frac{3}{5} & -\\frac{4}{5} \\\\ \\frac{4}{5} & \\frac{3}{5} \\end{bmatrix}\\) is:",
+    "reason": "Same defect as 03-31: as printed the matrix was symmetric AND orthogonal, so A and C were both true. Stem repaired to the 3-4-5 rotation matrix — orthogonal, not symmetric, not skew-symmetric, not nilpotent. Key C retained and now uniquely correct."
+  },
+
+  "04-38": {
+    "options": { "C": "\\((a-b)(b-c)\\)" },
+    "reason": "Option C, -(a-b)(b-c)(a-c), is algebraically identical to the keyed A, (a-b)(b-c)(c-a) — both evaluate to 2 at (a,b,c) = (1,2,3). C replaced with the incomplete two-factor product, a real student error. Key A retained."
+  },
+
+  "05-15": {
+    "options": { "B": "\\(3abc - a^3 - b^3 - c^3\\)" },
+    "solution": "Apply \\(C_1 \\to C_1 + C_2 + C_3\\); each entry of the first column becomes \\(a+b+c\\), which factors out. Expanding what remains gives \\(-(a^3 + b^3 + c^3 - 3abc)\\). Check with \\(a,b,c = 1,2,3\\): the determinant is \\(-18\\) while \\(a^3+b^3+c^3-3abc = 18\\), confirming the minus sign.",
+    "reason": "Two defects at once. Options B and D were the same quantity (D is the standard factorisation of B), AND both had the WRONG SIGN: this circulant equals -(a^3+b^3+c^3-3abc), verified numerically at (1,2,3) where the determinant is -18. Repairing B to the correct signed value fixes both — D now stands as the genuine sign-error distractor. Key B retained."
+  },
+
+  "05-20": {
+    "answer": "A",
+    "solution": "This is the Vandermonde determinant. Expanding gives \\(bc(c-b) - ac(c-a) + ab(b-a)\\), which factors as \\((a-b)(b-c)(c-a)\\). Check with \\(a,b,c = 1,2,3\\): the determinant is \\(2\\), and \\((1-2)(2-3)(3-1) = 2\\).",
+    "reason": "Key flip D→A. At (a,b,c) = (1,2,3) the determinant is 2; option A gives 2 and the keyed D gives -2. The source solution states the correct factorisation and then reverses itself with 'But considering the standard ordering, it equals (a-b)(a-c)(b-c)'."
+  },
+
+  "05-27": {
+    "options": { "C": "Orthogonal" },
+    "reason": "Options A (non-singular) and C (invertible) were the same condition stated twice — both wrong, but a student should never see one answer printed as two choices. C replaced with 'Orthogonal', which is false here since an orthogonal matrix has determinant +/-1. Key B (singular) retained."
+  },
+
+  "05-28": {
+    "options": { "C": "\\((x+y)(x^2+y^2)\\)" },
+    "solution": "Expanding along the first row gives \\((x+y)\\left[(x+y)^2 - xy\\right] - y\\left[x(x+y) - xy\\right] + y\\left[x^2 - x(x+y)\\right]\\), which simplifies to \\((x+y)(x^2+xy+y^2) - xy(x+y) = (x+y)(x^2+y^2)\\). Check at \\(x = y = 1\\): the determinant is \\(4\\).",
+    "reason": "No option was correct. The determinant is (x+y)(x^2+y^2) = x^3 + x^2y + xy^2 + y^3, which is 4 at x = y = 1 while the four options give 2, 3, 5 and 8. Keyed option C repaired to the true value; key C retained. The source solution's row operation is wrong (R1+R2+R3 gives 2x+3y only in the first entry, not all three)."
+  },
+
+  "05-32": {
+    "stem": "The determinant \\(\\begin{vmatrix} a+b+c & -c & -b \\\\ -c & a+b+c & -a \\\\ -b & -a & a+b+c \\end{vmatrix}\\) equals:",
+    "options": { "B": "\\(2(a+b)(b+c)(c+a)\\)" },
+    "solution": "With the off-diagonal entries negated the determinant factors cleanly as \\(2(a+b)(b+c)(c+a)\\). Check at \\(a=b=c=1\\): the determinant is \\(16\\) and \\(2 \\cdot 2 \\cdot 2 \\cdot 2 = 16\\); at \\((a,b,c) = (1,2,3)\\) both give \\(120\\).",
+    "reason": "As printed (all off-diagonals positive) the determinant is (a+b+c)^3 - (a+b+c)(a^2+b^2+c^2) + 2abc, which is 20 at a=b=c=1 while the options give 6, 0, 27 and 54 — no correct option, and no tidy closed form either. This is the well-known identity with NEGATED off-diagonals, so the stem was repaired to the intended matrix and keyed option B set to its value 2(a+b)(b+c)(c+a). Verified at two independent points. Key B retained; A, C and D are all false at a=b=c=1 (6, 27, 54 vs 16)."
+  },
+
+  "05-34": {
+    "options": { "C": "Adding \\(3\\) to each element of row \\(1\\)" },
+    "reason": "Both C ('adding 3 times row 1 to row 2') and the keyed D ('taking transpose') left the determinant unchanged, so two options were correct — a fact the source solution states outright before keying D anyway. C replaced with adding a CONSTANT to a row, which does change the value, and which is the classic confusion with adding a MULTIPLE OF A ROW. Key D retained."
+  },
+
+  "05-35": {
+    "answer": "A",
+    "solution": "Expanding: \\(x(x^2-2) - 2(x-3) + 3(2-3x) = x^3 - 13x + 12 = 0\\), which factors as \\((x-1)(x-3)(x+4) = 0\\). The roots are \\(1, 3, -4\\) and their sum is \\(0\\) — as the coefficient of \\(x^2\\) being zero already tells us.",
+    "reason": "Key flip B→A. The source solution derives x^3 - 13x + 12 = 0, factors it correctly, lists the roots 1, 3, -4 and computes the sum as 0 — and the key still says 6. The cubic has no x^2 term, so the sum of roots is 0 by Vieta independently of the factorisation."
+  },
+
+  "05-38": {
+    "answer": "C",
+    "solution": "Expanding along the third column: \\(\\sin(B-C) - \\sin(A-C) + \\sin(A-B) = \\sin(A-B) + \\sin(B-C) + \\sin(C-A)\\).",
+    "reason": "Key flip D→C. Expansion along column 3 gives exactly option C. Option D is the half-angle form of the same expression but with the WRONG COEFFICIENT: the identity is sin(A-B)+sin(B-C)+sin(C-A) = -4 sin((A-B)/2) sin((B-C)/2) sin((C-A)/2), not 2. Checked numerically at (A,B,C) = (90,30,0) degrees: the determinant is 0.366, the -4 form gives 0.366, D's 2 form gives -0.183."
+  },
+
+  "06-8": {
+    "answer": "B",
+    "solution": "Expanding along the first row: \\(2(2 \\cdot 2 - 3 \\cdot 1) - 3(1 \\cdot 2 - 3 \\cdot 3) + 1(1 \\cdot 1 - 2 \\cdot 3) = 2(1) - 3(-7) + (-5) = 18\\).",
+    "reason": "Key flip A→B. The determinant is +18. The source solution computes the positive diagonals correctly as 36, fumbles the negative diagonals twice ('Wait, recalculating'), and lands on -18 by asserting '36 - 54' without ever obtaining 54."
+  },
+
+  "06-13": {
+    "options": { "C": "\\(16\\)" },
+    "solution": "Expanding along the third row: \\(0 \\cdot C_{31} + 1 \\cdot C_{32} + 4 \\cdot C_{33}\\), where \\(C_{32} = -\\begin{vmatrix} 2 & 0 \\\\ 1 & 2 \\end{vmatrix} = -4\\) and \\(C_{33} = \\begin{vmatrix} 2 & 1 \\\\ 1 & 3 \\end{vmatrix} = 5\\). So the determinant is \\(-4 + 20 = 16\\).",
+    "reason": "No option was correct: the determinant is 16 while the options gave 22, 26, 24 and 20. The source solution drops the cofactor sign on C32 (writing -1 x (-1) x 4 = +4 instead of -4) and so reaches 24. Keyed option C repaired to 16; key C retained."
+  },
+
+  "06-17": {
+    "options": { "B": "\\(20\\)" },
+    "solution": "By Sarrus, the positive diagonals give \\(0 + 1 \\cdot 1 \\cdot 2 + 2 \\cdot 3 \\cdot 3 = 20\\) and the negative diagonals give \\(0\\). The determinant is \\(20\\).",
+    "reason": "No option was correct: the determinant is 20 while the options gave 18, -18, 12 and -12. The source solution computes the positive diagonals as 20 and the negative as 0 — which is right — then writes 'Actually the correct calculation gives -18'. Keyed option B repaired to 20; key B retained."
+  },
+
+  "06-18": {
+    "answer": "C",
+    "solution": "Every entry of the second matrix is twice the corresponding entry of the first, and for a \\(2 \\times 2\\) matrix \\(|2A| = 2^2|A| = 4|A|\\). So the value is \\(4k\\). (Directly: \\(2 \\cdot 8 - 4 \\cdot 6 = -8 = 4 \\times (-2)\\).)",
+    "reason": "Key flip D→C. The second matrix is 2A, so its determinant is 4k, confirmed directly as -8 = 4(-2). The source solution's justification is factually false: it claims row 2 is 3 times row 1, but (6,8) is not 3 x (2,4)."
+  },
+
+  "06-23": {
+    "options": { "D": "\\(-15\\)" },
+    "solution": "Expanding along the first row: \\(1(3 \\cdot 0 - 1 \\cdot 1) - 0(\\ldots) + 2((-1) \\cdot 1 - 3 \\cdot 2) = -1 + 2(-7) = -15\\).",
+    "reason": "No option was correct: the determinant is -15 while the options gave -13, 13, -11 and 11. The source solution computes -2 - 13 = -15 and then writes 'Recalculating properly gives 11'. Keyed option D repaired to -15; key D retained."
+  },
+
+  "06-25": {
+    "answer": "A",
+    "solution": "This is the Vandermonde determinant, equal to \\((a-b)(b-c)(c-a)\\). Check with \\(a,b,c = 1,2,3\\): the determinant is \\(2\\) and \\((1-2)(2-3)(3-1) = 2\\), whereas \\((b-a)(c-b)(a-c) = -2\\).",
+    "reason": "Key flip B→A. At (1,2,3) the determinant is 2; option A gives 2 and the keyed B gives -2. The source solution even states B = -(a-b)(b-c)(c-a), which is the admission that B carries the wrong sign."
+  },
+
+  "06-29": {
+    "answer": "A",
+    "solution": "\\(C_{23} = (-1)^{2+3} \\begin{vmatrix} 1 & 2 \\\\ 7 & 8 \\end{vmatrix} = -(8 - 14) = 6\\).",
+    "reason": "Key flip B→A. The minor is 8 - 14 = -6 and the sign factor is -1, so the cofactor is +6. The source solution computes exactly that, then appends 'But C23 = (-1)^{2+3} = -1, so C23 = -6' — applying the sign factor a second time."
+  },
+
+  "06-33": {
+    "stem": "If \\(\\begin{vmatrix} 2x & x+1 \\\\ x-1 & x \\end{vmatrix} = 5\\), then the positive value of \\(x\\) is:",
+    "reason": "The determinant is 2x^2 - (x^2 - 1) = x^2 + 1, so x^2 = 4 and BOTH x = 2 (option A) and x = -2 (option C) satisfied the stem as printed. Stem narrowed to the positive root; key A retained and C survives as a genuine near-miss distractor."
+  },
+
+  "06-35": {
+    "answer": "A",
+    "solution": "Expanding along the first row: \\(1(5k-16) - 2(10-12) + 3(8-3k) = 5k - 16 + 4 + 24 - 9k = -4k + 12\\). Setting this to zero gives \\(k = 3\\).",
+    "reason": "Key flip D→A. The source solution performs the expansion twice, reaches -4k + 12 = 0 and states 'so k=3' — then closes with 'But rechecking the calculation gives k = 22/5', a value it never derives and which does not satisfy the equation."
+  },
+
+  "06-41": {
+    "options": { "D": "\\((a+b)(b+c)(c+a)\\)" },
+    "reason": "Options B and D were the same quantity, -(a-b)(b-c)(c-a), i.e. both the sign-flipped answer. D replaced with a plainly false symmetric product (60 vs the true 2 at (a,b,c) = (1,2,3)). Key A retained."
+  },
+
+  "06-42": {
+    "options": { "C": "\\(19\\)" },
+    "solution": "Expanding along the first row: \\(3(4 \\cdot 3 - 1 \\cdot 1) - 0 + 2(1 \\cdot 1 - 4 \\cdot 2) = 33 - 14 = 19\\).",
+    "reason": "No option was correct: the determinant is 19 while the options gave 25, 27, 29 and 31. The source solution computes the negative diagonals three different ways in three consecutive lines (19, 19, then 11) and subtracts a fourth value (9) to reach 29. Keyed option C repaired to 19; key C retained."
+  },
+
+  "06-46": {
+    "options": { "A": "\\(-4\\)" },
+    "solution": "After \\(R_2 \\to R_2 - 2R_1\\) and \\(R_3 \\to R_3 - R_1\\) the matrix is upper-left triangular in the first column; continuing with \\(R_3 \\to R_3 + \\frac{1}{3}R_2\\) gives diagonal entries \\(1, -3, \\frac{4}{3}\\), so the determinant is \\(1 \\times (-3) \\times \\frac{4}{3} = -4\\). Direct expansion agrees: \\(-7 - 2 + 5 = -4\\).",
+    "reason": "No option was correct: the determinant is -4 while the options gave -6, 6, -8 and 8. The source solution carries out the triangularisation correctly, obtains -4, and then writes 'But using direct expansion gives -6' — direct expansion also gives -4. Keyed option A repaired to -4; key A retained."
+  },
+
+  "06-47": {
+    "options": { "C": "\\(-4\\sin\\frac{A-B}{2}\\sin\\frac{B-C}{2}\\sin\\frac{C-A}{2}\\)" },
+    "solution": "Expanding along the third column gives \\(\\sin(A-B) + \\sin(B-C) + \\sin(C-A)\\), which factors as \\(-4\\sin\\frac{A-B}{2}\\sin\\frac{B-C}{2}\\sin\\frac{C-A}{2}\\).",
+    "reason": "The keyed option carried the wrong coefficient: the identity is -4 times the product of half-angle sines, not 2, so no option was correct as printed. Checked numerically at (A,B,C) = (90,30,0) degrees: determinant 0.366, the -4 form 0.366, the printed 2 form -0.183. Keyed option C repaired; key C retained."
+  },
+
+  "07-5": {
+    "options": { "A": "\\(\\begin{bmatrix} 2 & -1 \\\\ -\\frac{3}{2} & \\frac{1}{2} \\end{bmatrix}\\)" },
+    "reason": "Options A and the keyed D were BYTE-IDENTICAL, both the correct inverse [[-2,1],[3/2,-1/2]]. A replaced with the same matrix negated — the result of dividing by |A| = 2 instead of -2. Key D retained."
+  },
+
+  "07-7": {
+    "stem": "If \\(A^{-1} = \\frac{1}{7}\\begin{bmatrix} 3 & -1 \\\\ -2 & 3 \\end{bmatrix}\\), then \\(|A|\\) equals:",
+    "solution": "For a \\(2 \\times 2\\) matrix, \\(A^{-1} = \\frac{1}{|A|}\\,\\mathrm{adj}(A)\\) and \\(|\\mathrm{adj}(A)| = |A|\\). Matching the given form, \\(\\frac{1}{|A|} = \\frac{1}{7}\\), so \\(|A| = 7\\). This is consistent: the bracket has determinant \\(9 - 2 = 7\\), so \\(|A^{-1}| = \\frac{1}{49} \\times 7 = \\frac{1}{7}\\).",
+    "reason": "The stem as printed was self-inconsistent. Reading it as (1/|A|)adj(A) forces |adj A| = |A| = 7, but the printed bracket [[3,-1],[-2,4]] has determinant 10, which instead gives |A| = 49/10 — so the intended answer 7 was unreachable. The bracket's bottom-right entry was changed 4→3, making its determinant exactly 7 and the whole stem consistent. Key B (7) retained."
+  },
+
+  "07-23": {
+    "options": { "C": "\\(A^{-1} + B^{-1}\\)" },
+    "reason": "Option C was the keyed answer's rival written twice: (A^-1)(B^-1) is literally option A. C replaced with the sum of the inverses, a distinct and plainly false candidate. Key B (B^-1 A^-1, the reversal law) retained."
+  }
+}

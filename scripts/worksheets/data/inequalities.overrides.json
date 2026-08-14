@@ -1,0 +1,223 @@
+{
+  "_comment": "Adjudicated repairs for Inequalities (Batch I). 212 blind verdicts, 34 disagreements, all put through a SECOND independent blind pass and then re-derived by hand. THE HEADLINE: only 10 genuine key flips. Fifteen of the 34 'disagreements' were ILLUSORY — in 4) Modulus-Inequality.xls the keyed answer is duplicated VERBATIM into option A (04-44 carries it three times), so both blind passes derived the right SET and simply named the first letter carrying it. Taking the crosstab at face value would have shipped 13 wrong key flips on rows whose keys were correct. That is the Batch-H trap, and this file is the worst instance of it in the source so far. Second defect class: 11 rows where no option holds the correct set, concentrated in Advanced and Rational/Irrational.",
+
+  "01-17": {
+    "answer": "A",
+    "solution": "Multiply through by \\(6\\): \\(3(x+1) - 2(x-1) \\geq 6\\), i.e. \\(x + 5 \\geq 6\\), so \\(x \\geq 1\\).",
+    "reason": "Key flip B→A. Clearing denominators gives x >= 1; the keyed B has the inequality reversed."
+  },
+
+  "01-47": {
+    "answer": "D",
+    "solution": "Multiply through by \\(10\\): \\(5(x+7) > 2(2x-3)\\), i.e. \\(5x + 35 > 4x - 6\\), so \\(x > -41\\).",
+    "reason": "Key flip A→D. The solution is x > -41; the keyed A (x < 41) has both the sign of the bound and the direction wrong."
+  },
+
+  "02-39": {
+    "options": { "C": "\\(x \\in (-\\infty, 1]\\)" },
+    "reason": "Options B (R) and C ((-inf,1] union [1,inf), which IS R) denoted the same set — both wrong. C replaced with the half-line. Key A retained: -3(x-1)^2 >= 0 holds only at x = 1."
+  },
+
+  "02-40": {
+    "answer": "A",
+    "solution": "If \\(a < 0\\) the parabola opens downward and takes negative values, so solutions exist. If \\(a = 0\\) the inequality is \\(-2x + 1 < 0\\), satisfied by \\(x > \\frac{1}{2}\\). If \\(a > 0\\) we need the discriminant positive: \\(4 - 4a > 0\\), i.e. \\(a < 1\\). Collecting all three cases, the condition is \\(a < 1\\).",
+    "reason": "Key flip C→A. The two options differ on exactly one point, a = 0, and a = 0 DOES admit solutions (the expression is then linear, negative for x > 1/2), so the keyed C wrongly excludes it. The stem says 'ax^2 - 2x + 1 < 0', not 'the quadratic', so a = 0 is admissible — and the fact that both A and C are offered shows the a = 0 case is the discrimination being tested."
+  },
+
+  "03-5": {
+    "answer": "D",
+    "solution": "\\((a^2+b^2+c^2)^2 \\geq 3(a^3b + b^3c + c^3a)\\) is a known sum-of-squares identity: the difference equals \\(\\frac{1}{2}\\sum (a^2 - 2ab + bc - c^2 + ca)^2 \\geq 0\\), which requires no sign assumption on \\(a\\), \\(b\\), \\(c\\).",
+    "reason": "Key flip A→D. The inequality holds for ALL real a, b, c, so D is the complete answer; the keyed A names a strictly weaker sufficient condition. Both independent blind passes agreed."
+  },
+
+  "03-6": {
+    "answer": "A",
+    "solution": "Factor: \\(\\frac{(x-1)(x-3)}{(x-2)(x-4)} > 0\\). The critical points are \\(1, 2, 3, 4\\); testing each interval gives positive on \\((-\\infty,1)\\), \\((2,3)\\) and \\((4,\\infty)\\).",
+    "reason": "Key flip B→A. The keyed B is exactly the complement — the intervals where the quotient is NEGATIVE."
+  },
+
+  "03-8": {
+    "answer": "B",
+    "solution": "For positive \\(a\\), \\(b\\), \\(c\\) the sum \\(\\sqrt{\\frac{a}{b+c}} + \\sqrt{\\frac{b}{c+a}} + \\sqrt{\\frac{c}{a+b}}\\) is always greater than \\(2\\) (its infimum, approached as one variable tends to \\(0\\)), and equals \\(\\frac{3}{\\sqrt{2}} \\approx 2.121\\) at \\(a = b = c\\). Since \\(\\sqrt{\\frac{3}{2}} \\approx 1.225\\), the stated inequality never holds.",
+    "reason": "Key flip A→B. The sum is bounded BELOW by 2, so it can never be at most 1.225. The keyed A ('always true') has the inequality backwards."
+  },
+
+  "03-17": {
+    "answer": "B",
+    "solution": "\\(xy + yz + zx \\leq x^2 + y^2 + z^2 = 1\\), with equality when \\(x = y = z = \\frac{1}{\\sqrt{3}}\\) (which does satisfy the constraint). So the maximum is \\(1\\).",
+    "reason": "Key flip A→B. The maximum is 1, attained at x = y = z = 1/sqrt(3). The keyed A (1/2) is not attained by any point on the sphere."
+  },
+
+  "03-22": {
+    "options": { "C": "\\((-2, 0] \\cup (2, \\infty)\\)" },
+    "solution": "Bringing both sides together, \\(\\frac{(x+1)(x+2) - (x-1)(x-2)}{(x-2)(x+2)} = \\frac{6x}{(x-2)(x+2)} \\geq 0\\). With \\(x = \\pm 2\\) excluded and equality at \\(x = 0\\), the solution is \\((-2, 0] \\cup (2, \\infty)\\).",
+    "reason": "No option was correct. The numerator collapses to 6x, so the critical points are -2, 0 and 2 — but every option used -1/3 instead of 0. Keyed option C repaired; key C retained. B now stands as the near-miss with the wrong critical point."
+  },
+
+  "03-30": {
+    "answer": "B",
+    "solution": "Rationalising each term with common difference \\(d\\): \\(\\frac{1}{\\sqrt{a}+\\sqrt{b}} = \\frac{\\sqrt{b}-\\sqrt{a}}{d}\\) and \\(\\frac{1}{\\sqrt{b}+\\sqrt{c}} = \\frac{\\sqrt{c}-\\sqrt{b}}{d}\\). The sum telescopes to \\(\\frac{\\sqrt{c}-\\sqrt{a}}{d}\\), and since \\(c - a = 2d\\) this equals \\(\\frac{2(\\sqrt{c}-\\sqrt{a})}{c-a} = \\frac{2}{\\sqrt{a}+\\sqrt{c}}\\).",
+    "reason": "Key flip A→B. The telescoping sum carries a factor of 2 that the keyed A drops."
+  },
+
+  "03-33": {
+    "options": { "B": "\\(x \\in (-2, -1) \\cup (0, \\infty)\\)" },
+    "solution": "Combining, \\(\\frac{(x-1)(x+2) - (x-2)(x+1)}{(x+1)(x+2)} = \\frac{2x}{(x+1)(x+2)} > 0\\). The critical points are \\(-2\\), \\(-1\\) and \\(0\\), giving \\((-2,-1) \\cup (0,\\infty)\\).",
+    "reason": "No option was correct: the numerator reduces to 2x, so the third critical point is 0, and no option used it. Keyed option B repaired; key B retained. A now stands as the near-miss (it gets the first interval right and uses 2 instead of 0)."
+  },
+
+  "03-39": {
+    "options": { "C": "\\(x \\leq 0\\) or \\(x \\geq 1\\)" },
+    "solution": "For \\(x \\geq 2\\), \\(x^2 + x - 4 \\geq 0\\) holds throughout. For \\(x < 2\\) the inequality becomes \\(x^2 - x \\geq 0\\), i.e. \\(x(x-1) \\geq 0\\), giving \\(x \\leq 0\\) or \\(1 \\leq x < 2\\). Combining, the solution is \\(x \\leq 0\\) or \\(x \\geq 1\\).",
+    "reason": "No option was correct. Case analysis on the modulus gives x <= 0 or x >= 1; the keyed C used -1 as the left bound, but x = -0.5 satisfies the inequality (0.25 + 2.5 = 2.75 >= 2). Keyed option C repaired; key C retained."
+  },
+
+  "03-44": {
+    "options": { "C": "\\(\\left(\\frac{13}{4}, \\infty\\right)\\)" },
+    "solution": "On the domain \\(x \\geq 1\\), \\(\\sqrt{x+3} - \\sqrt{x-1} = \\frac{4}{\\sqrt{x+3}+\\sqrt{x-1}}\\), so the inequality is equivalent to \\(\\sqrt{x+3}+\\sqrt{x-1} > 4\\). Squaring and simplifying gives \\(x > \\frac{13}{4}\\).",
+    "reason": "No option was correct. At x = 1 the left side is 2, not less than 1, so the solution cannot start at 1 — every option began there. Solving the boundary equation gives x = 13/4. Keyed option C repaired; key C retained."
+  },
+
+  "04-3": {
+    "options": { "A": "\\(x \\in (-\\infty, -3] \\cup [4, \\infty)\\)" },
+    "reason": "Options A and the keyed B were BYTE-IDENTICAL. A replaced with the set obtained by mis-solving 2x + 1 = ±7 as x = -3 and x = 4. Key B retained."
+  },
+
+  "04-5": {
+    "options": { "A": "\\(x \\in (-\\infty, -4) \\cup (\\frac{4}{3}, \\infty)\\)" },
+    "reason": "Options A and the keyed D were BYTE-IDENTICAL. A replaced with the two bounds interchanged. Key D retained."
+  },
+
+  "04-9": {
+    "options": { "A": "\\(x = 4\\) or \\(x = -\\frac{2}{3}\\)" },
+    "reason": "Options A and the keyed D were BYTE-IDENTICAL. A replaced with a sign-flipped second root. Key D retained: 2x - 3 = ±(x + 1) gives x = 4 and x = 2/3."
+  },
+
+  "04-12": {
+    "options": { "A": "\\(x \\in (-3, 3)\\)" },
+    "reason": "Options A and the keyed C were BYTE-IDENTICAL. A replaced with the interval a student gets by forgetting that |x| > 1 excludes the middle. Key C retained."
+  },
+
+  "04-13": {
+    "options": { "A": "\\(x \\in [-7, -1]\\)" },
+    "reason": "Options A and the keyed D were BYTE-IDENTICAL. A replaced with a sign-slipped right endpoint. Key D retained: -4 <= x + 3 <= 4 gives [-7, 1]."
+  },
+
+  "04-21": {
+    "options": { "D": "\\(x \\in (-\\infty, -1]\\)" },
+    "reason": "Options A and D were BYTE-IDENTICAL ([1, inf)) — the same wrong answer twice. D replaced with a distinct half-line. Key B retained: squaring gives -8x >= -8, i.e. x <= 1."
+  },
+
+  "04-24": {
+    "options": { "A": "\\(x = -\\frac{2}{3}, 2\\)" },
+    "reason": "Options A and the keyed C were BYTE-IDENTICAL. A replaced with a mixed-sign root pair — NOT the both-positive pair, which is already option B (a first repair attempt used {2/3, 2} and audit:keys correctly caught it as a fresh duplicate of B). Key C retained: 3x + 4 = ±2 gives x = -2/3 and x = -2."
+  },
+
+  "04-29": {
+    "options": { "C": "\\(x \\in [-4, -\\frac{2}{3}]\\)" },
+    "reason": "Options A and C were BYTE-IDENTICAL ([2/3, 4]) — the same wrong answer twice. C replaced with a sign-slipped variant of the correct interval. Key B retained: (3x-2)(x+4) <= 0 gives [-4, 2/3]."
+  },
+
+  "04-32": {
+    "options": { "C": "\\(x \\in \\left(-\\infty, \\frac{3}{2}\\right]\\)" },
+    "solution": "The function \\(|x+1| - |x-2|\\) equals \\(-3\\) for \\(x \\leq -1\\), \\(2x-1\\) on \\([-1,2]\\) and \\(3\\) for \\(x \\geq 2\\). It is at most \\(2\\) precisely when \\(x \\leq \\frac{3}{2}\\).",
+    "reason": "No option was correct. The keyed C (all of R) fails for x >= 2, where the expression is 3 > 2. Solving the middle branch 2x - 1 <= 2 gives the cut at 3/2. Keyed option C repaired; key C retained, with A ((-inf, 1/2]) surviving as the near-miss."
+  },
+
+  "04-33": {
+    "options": { "A": "\\(x \\leq -3\\) or \\(x \\geq \\frac{9}{5}\\)" },
+    "reason": "Options A and the keyed D were BYTE-IDENTICAL. A replaced with the two bounds swapped and sign-slipped. Key D retained: 5x - 3 = ±12 gives x = -9/5 and x = 3."
+  },
+
+  "04-37": {
+    "options": { "A": "\\(x \\in \\left(-\\frac{2}{3}, 4\\right)\\)" },
+    "reason": "Options A and the keyed D were BYTE-IDENTICAL. A replaced with the complementary interval (which is option B's shape but with the correct endpoints — the classic direction error). Key D retained: 3x^2 - 10x - 8 > 0."
+  },
+
+  "04-40": {
+    "options": { "A": "\\(x \\in [-5, 1]\\)" },
+    "reason": "Options A and the keyed C were BYTE-IDENTICAL. A replaced with a distinct wrong interval. Key C retained: squaring gives (x-5)(x+1) <= 0, i.e. [-1, 5]."
+  },
+
+  "04-41": {
+    "options": { "A": "\\(x \\in (\\frac{-b-c}{a}, \\frac{-b+c}{a})\\) if \\(a < 0\\)" },
+    "reason": "Options A and the keyed D were BYTE-IDENTICAL. A's condition changed to a < 0, which makes it false — dividing by a negative a reverses the interval. Key D retained."
+  },
+
+  "04-42": {
+    "options": { "A": "\\(x \\in \\{-2, 8\\}\\)" },
+    "reason": "Options A and the keyed D were BYTE-IDENTICAL. A replaced with the roots a student gets by taking both distances in the same direction. Key D retained: the sum of distances to 2 and 4 is 6 at x = 0 and x = 6."
+  },
+
+  "04-44": {
+    "options": {
+      "A": "\\(x \\in (-\\infty, -1] \\cup [4, \\infty)\\)",
+      "D": "\\(x \\in (-\\infty, 0) \\cup (3, \\infty)\\)"
+    },
+    "reason": "THREE options were BYTE-IDENTICAL: A, the keyed C, and D all carried the correct set. A repaired to the closed-endpoint variant (wrong, since the inequality is strict) and D to the interval a student gets by using the kink points 0 and 3 as the bounds. Key C retained."
+  },
+
+  "04-45": {
+    "answer": "B",
+    "options": { "D": "\\(x \\in \\{-2, 1\\}\\)" },
+    "solution": "Since \\((x+2) + (x-1) = 2x+1\\), the equation says \\(|x+2| + |x-1| = |(x+2) + (x-1)|\\). Equality in the triangle inequality holds exactly when the two quantities have the same sign, i.e. \\((x+2)(x-1) \\geq 0\\), giving \\(x \\leq -2\\) or \\(x \\geq 1\\).",
+    "reason": "Two defects. The keyed D was WRONG — [-2, 1] is precisely where the equality fails (at x = 0 the left side is 3 and the right side 1) — so the key flips to B. And options A and D were byte-identical, so D was additionally repaired to a distinct wrong set once the key moved off it."
+  },
+
+  "04-46": {
+    "options": { "D": "\\(x \\in \\{-2, 2\\}\\)" },
+    "reason": "Option D, {3, -3}, is the keyed A, {-3, 3}, with the elements listed in the other order — the same set. D replaced with {-2, 2}. Key A retained: |x| - 1 = ±2 gives |x| = 3 (|x| = -1 is rejected)."
+  },
+
+  "04-47": {
+    "answer": "A",
+    "solution": "The function is undefined only where the denominator vanishes: \\(|x-2| = 3\\), i.e. \\(x = 5\\) or \\(x = -1\\). Every other real number is in the domain, so the domain is \\(\\mathbb{R} \\setminus \\{-1, 5\\}\\).",
+    "reason": "Key flip B→A. Only two POINTS are excluded, not an interval — the keyed B is the domain of sqrt(|x-2| - 3), a different function."
+  },
+
+  "04-49": {
+    "options": { "A": "Exactly one solution" },
+    "reason": "Options A and the keyed D were BYTE-IDENTICAL ('Exactly two solutions'). A replaced with 'Exactly one solution', which is the c = b - a boundary case. Key D retained: for c > b - a the two solutions lie outside [a, b]."
+  },
+
+  "05-6": {
+    "options": { "C": "\\(x \\in (-3, 1]\\)" },
+    "reason": "Option C, (-3,1) minus {2}, IS the interval (-3,1) — 2 is not in it — so it duplicated the keyed A. C repaired to include the endpoint 1, which makes it wrong (at x = 1 the expression is 0, not negative). Key A retained."
+  },
+
+  "05-7": {
+    "options": { "A": "\\(x \\in \\{2\\} \\cup [3, \\infty)\\)" },
+    "solution": "The radicand \\((x-2)(x-3) \\geq 0\\) needs \\(x \\leq 2\\) or \\(x \\geq 3\\), and the right side needs \\(x \\geq 2\\); together, \\(x = 2\\) or \\(x \\geq 3\\). Squaring on \\(x \\geq 3\\) gives \\((x-2)(x-3) \\leq (x-2)^2\\), i.e. \\(x \\geq 2\\), which holds throughout. At \\(x = 2\\) both sides are \\(0\\).",
+    "reason": "No option was correct. The solution set is unbounded above and has the isolated point x = 2; every option was a bounded interval. Keyed option A repaired; key A retained."
+  },
+
+  "05-10": {
+    "options": { "B": "Infinitely many" },
+    "solution": "\\(\\frac{(x-3)(x+2)}{x-5} < 0\\) holds on \\((-\\infty,-2) \\cup (3,5)\\). The second interval contributes the single integer \\(4\\), but the first is unbounded below and contains infinitely many integers, so there are infinitely many integer solutions.",
+    "reason": "No option was correct and the question as posed has no finite answer: the solution set includes the whole unbounded interval (-inf, -2). Keyed option B repaired from '5' to 'Infinitely many', which is the true answer and turns the row into a genuine trap for students who only count the bounded piece. Key B retained."
+  },
+
+  "05-13": {
+    "options": { "A": "\\(x \\in [4, 5)\\)", "B": "\\(x \\in [4, 5]\\)" },
+    "solution": "The domain is \\(x \\geq 4\\), and \\(\\sqrt{x-1}+\\sqrt{x-4}\\) increases there. Solving \\(\\sqrt{x-1}+\\sqrt{x-4} = 3\\) gives \\(\\sqrt{x-4} = 1\\), i.e. \\(x = 5\\). So the inequality holds on \\([4, 5)\\).",
+    "reason": "No option was correct — all four used 8 as the right endpoint, but at x = 8 the sum is sqrt(7) + 2 = 4.65, well above 3. Keyed option A repaired to [4,5); B also repaired to [4,5] so the strict-versus-inclusive endpoint remains the discrimination the row is testing. Key A retained."
+  },
+
+  "05-14": {
+    "options": { "A": "\\(x \\in (-\\infty, -1) \\cup \\left[\\frac{1}{2}, \\infty\\right)\\)" },
+    "solution": "For \\(x > -1\\) the denominator is positive, so the inequality is \\(|x-2| \\leq x+1\\), giving \\(x \\geq \\frac{1}{2}\\). For \\(x < -1\\) the denominator is negative and the quotient is negative, so the inequality holds automatically. Hence \\((-\\infty,-1) \\cup [\\frac{1}{2}, \\infty)\\).",
+    "reason": "No option was correct. The x < -1 branch is satisfied throughout — a modulus over a negative denominator is always negative — and the right piece is unbounded; the keyed A captured neither. Keyed option A repaired; key A retained, with C surviving as the near-miss that truncates at 3."
+  },
+
+  "05-16": {
+    "options": { "A": "\\(x \\in (-\\infty, 1)\\)" },
+    "solution": "Cancelling the common factor \\((x-3)\\) (with \\(x \\neq 3\\)) leaves \\(\\frac{x-2}{x-1} \\geq 1\\), i.e. \\(\\frac{-1}{x-1} \\geq 0\\), which needs \\(x - 1 < 0\\). So the solution is \\(x < 1\\).",
+    "reason": "Two defects fixed by one edit: options A and B were BYTE-IDENTICAL, and neither was correct. After cancelling (x-3) the inequality reduces to -1/(x-1) >= 0, giving x < 1 — the (3, inf) piece both options carried is spurious (at x = 4 the quotient is 2/3 < 1). A repaired to the correct set; B left as the now-distinct 'kept the cancelled factor' distractor. Key A retained."
+  },
+
+  "05-20": {
+    "options": { "D": "\\(x \\in [1, 3)\\)" },
+    "solution": "Factor: \\(\\frac{(x+2)(x-1)}{(x-3)(x+2)} \\leq 0\\). Cancelling \\((x+2)\\) with \\(x \\neq -2\\) leaves \\(\\frac{x-1}{x-3} \\leq 0\\), i.e. \\(1 \\leq x < 3\\).",
+    "reason": "No option was correct. The (x+2) factor cancels, so nothing to the left of 1 belongs to the solution — the keyed D dragged in the whole half-line (-inf, -2]. Keyed option D repaired; key D retained, with A surviving as the near-miss that keeps the cancelled factor's interval."
+  }
+}
