@@ -523,6 +523,93 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Ch.7 Co-ordinate Geometry (Part 2, Geometry). Pages 88-99 (1-based) →
+  //    0-based 97-108. Boundary VERIFIED, and the derived one was WRONG BY ONE:
+  //    the practice-set positions suggested the chapter opened at 0-based 98, but
+  //    97 carries the "7 Co-ordinate Geometry" banner. Always confirm an opener
+  //    against the page rather than inferring it from the first practice set.
+  //    0-based 109 opens "8 Trigonometry".
+  //    Structure: Practice set 7.1 (printed p93) · Practice set 7.2 (p97) ·
+  //    Problem set 7 (pp98-99, Q.1 = a SIX-part MCQ block — the largest MCQ block
+  //    in the volume so far).
+  //    Answers: 0-based 136-137.
+  //
+  //    ⚠ THIS CHAPTER IS WELL-KEYED, unlike Ch.2. The Part-2 key is terse and
+  //    normally skips proofs, but Co-ordinate Geometry has almost none, so every
+  //    question except Problem set 7 Q4 carries a printed answer. Its full key,
+  //    for the cross-check to diff against:
+  //      PS 7.1  1. A:QII B:QIII K:QI D:QI E:QI F:QIV G:QIV H:Y-axis M:X-axis
+  //                 N:Y-axis P:Y-axis Q:QIII
+  //              2. (i) QI (ii) QIII (iii) QIV (iv) QII
+  //      PS 7.2  1. Square · 2. x = -7 · 3. y = -5 · 4. x = -3 · 5. 4
+  //              6. (i) Y-axis (ii) X-axis (iii) Y-axis (iv) X-axis
+  //              7. To X-axis (5,0), to Y-axis (0,5)
+  //              8. (-4,1), (-1.5,1), (-1.5,5), (-4,5)
+  //      Prob 7  1. (i) C (ii) A (iii) B (iv) C (v) C (vi) B
+  //              2. (i) Q(-2,2), R(4,-1) (ii) T(0,-1), M(3,0) (iii) point S
+  //                 (iv) point O
+  //              3. (i) QIV (ii) QIII (iii) QII (iv) QII (v) Y-axis (vi) X-axis
+  //              5. (i) 3 (ii) P(3,2), Q(3,-1), R(3,0) (iii) 0
+  //              6. y = 5, y = -5 · 7. |a|
+  //              (Q4 is the one unanswered item.)
+  //
+  //    ⚠ Vision-only for the Part-2 reason (operator-glyph substitution). Only
+  //    LIGHTLY figure-bearing, unlike Ch.2: PS 7.1 Q1 lists its twelve points as
+  //    text, so only Problem set 7 Q2 (Fig 7.11) and Q5 (Fig 7.12) read points
+  //    off a printed grid - 2 crops across 7 rows.
+  //
+  //    EXERCISE INVENTORY, read page by page - 42 rows:
+  //      PS 7.1 (p93)      6 rows  - Q1 (12 points, one row) + Q2(i)-(iv) + Q3.
+  //      PS 7.2 (pp97-98) 14 rows  - Q1-Q5 + Q6(i)-(iv) + Q7 + Q8 + Q9(i)-(iii).
+  //                                  **NINE questions, not eight**: Q5-Q9 are
+  //                                  overleaf on printed p98, and the key stops
+  //                                  at Q8 because Q9 is a drawing task.
+  //      Prob 7 (pp98-99) 22 rows  - Q1(i)-(vi) MCQ + Q2(i)-(iv) [Fig 7.11] +
+  //                                  Q3(i)-(vi) + Q4 + Q5(i)-(iii) [Fig 7.12] +
+  //                                  Q6 + Q7*.
+  //    ALL 6 Problem-set MCQ keys blind-re-derived, 6/6 match (C A B C C B), and
+  //    every other printed answer re-derived and AGREES.
+  //
+  //    ⚠ TWO BOOK DEFECTS:
+  //      PS 7.2 Q5 STEM MISPRINT - "X-axis and line x = -4 are parallel lines.
+  //        What is the distance between them?" The line x = -4 is parallel to the
+  //        Y-AXIS and PERPENDICULAR to the X-axis, so as printed the question has
+  //        no answer. The printed key of 4 is the distance from the Y-axis, which
+  //        is what the question means to ask.
+  //      p93 solved example - the question lists "(vi) (-2, 2.5)" while its own
+  //        printed solution table reads "(vi) (-2, -2.5) Quadrant III". The
+  //        solution is self-consistent (both co-ordinates negative IS Quadrant
+  //        III); the question dropped the minus sign. As printed, (-2, 2.5) would
+  //        be Quadrant II.
+  //
+  //    🚧 SOLVED EXAMPLES DEFERRED. Probing the text layer finds Ex./Solution
+  //    blocks on 0-based 99, 100, 102, 105 and 106 - five pages. Two are read
+  //    (p93's quadrant table and p97's graph of 2x - y + 1 = 0) and three are
+  //    not, so the chapter ships EXERCISES ONLY rather than a partial solved
+  //    block, which /board would render as a complete "Solved Examples" section
+  //    with an invisible gap. sections.ts therefore carries three exercise
+  //    blocks; add a solved block when 99, 100 and 105 are transcribed.
+  "coordinate-geometry-9": {
+    id: "coordinate-geometry-9",
+    chapterName: "Co-ordinate Geometry",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_09_Maths__Co_ordinate_Geometry.pdf",
+    pdf: PART2,
+    pages: range(97, 108),
+    answersPdf: PART2,
+    answerPages: range(136, 137),
+    note: "Maharashtra State Board (Class 9) — Co-ordinate Geometry (Balbharati textbook, Part 2 Geometry)",
+    // The chapter's own "Let's study" list (printed p88), verbatim - six bullets.
+    subtopics: [
+      "Axis, Origin, Quadrant",
+      "Co-ordinates of a Point in a Plane",
+      "To Plot a Point",
+      "Line Parallel to X-axis",
+      "Line Parallel to Y-axis",
+      "Equation of a Line",
+    ],
+  },
+
   // ── Ch.2 Parallel Lines (Part 2, Geometry). Pages 13-23 (1-based) → 0-based
   //    22-32. Boundaries VERIFIED from the PDF, not derived: 0-based 22 opens
   //    "2 Parallel Lines" and 0-based 33 opens "3 Triangles". Structure:
