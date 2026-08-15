@@ -373,6 +373,151 @@ class Canvas:
         return self.img.resize((W, H), Image.LANCZOS).convert("RGB")
 
 
+# ── Statistics bar diagrams (Class-9 Ch.7) ──────────────────────────────────
+# A SEPARATE canvas rather than a mode on `Canvas`, and that is deliberate: a bar
+# diagram's x-axis is CATEGORICAL (a year, a family) while `Canvas.px()` assumes a
+# numeric x. Shoehorning one in would mean inventing fake x-coordinates for every
+# category and then hiding the real axis, so the two share the output contract
+# (a W x H RGB image, supersampled SS x) and nothing else. `Canvas` is untouched,
+# so every already-shipped chapter renders byte-identical.
+#
+# STACKED ONLY, because that is the whole of the chapter: a "sub-divided bar
+# diagram" stacks raw values and a "percentage bar diagram" stacks values that
+# sum to 100. There is no grouped/side-by-side variant in the book.
+#
+# Spec shape:
+#   {"kind": "bars", "ref": ..., "caption": ..., "categories": [...],
+#    "series": ["Wheat", "Jowar"],            # bottom-to-top within each stack
+#    "values": [[30, 10], [35, 15], ...],     # per category, per series
+#    "ymax": 100, "ytick": 10,                # y scale
+#    "xlabel": "Year", "ylabel": "Production (Quintal)",
+#    "scale": "On Y-axis 1 cm = 10%",         # the book always prints one
+#    "value_labels": True}
+BAR_FILLS = [
+    (150, 195, 240),   # light blue
+    (250, 200, 150),   # light orange
+    (170, 220, 175),   # light green
+    (215, 180, 235),   # light violet
+    (245, 225, 150),   # light gold
+]
+BAR_EDGE = (40, 40, 40)
+
+
+class BarCanvas:
+    def __init__(self, spec):
+        self.spec = spec
+        self.w, self.h = W * SS, H * SS
+        self.img = Image.new("RGBA", (self.w, self.h), (255, 255, 255, 255))
+        self.d = ImageDraw.Draw(self.img, "RGBA")
+        self.f = _font(15 * SS)
+        self.fs = _font(13 * SS)
+        self.ft = _font(11 * SS)
+        # Plot box. Wider left gutter for the y tick labels + rotated axis title;
+        # taller bottom gutter for the category labels and the x-axis title.
+        self.left = 62 * SS
+        self.right = self.w - 14 * SS
+        self.top = 62 * SS          # room for the caption + legend strip
+        self.bottom = self.h - 54 * SS
+
+    def _y(self, v):
+        ymax = float(self.spec.get("ymax") or 1.0)
+        return self.bottom - (v / ymax) * (self.bottom - self.top)
+
+    def _axes(self):
+        ymax = float(self.spec.get("ymax") or 1.0)
+        step = float(self.spec.get("ytick") or (ymax / 5.0))
+        # horizontal gridlines + y tick labels
+        v = 0.0
+        while v <= ymax + 1e-9:
+            y = self._y(v)
+            if v > 0:
+                self.d.line([(self.left, y), (self.right, y)], fill=(228, 228, 228), width=1 * SS)
+            lbl = f"{v:g}"
+            tw = self.d.textlength(lbl, font=self.ft)
+            self.d.text((self.left - 6 * SS - tw, y - 7 * SS), lbl, font=self.ft, fill=AXIS)
+            self.d.line([(self.left - 4 * SS, y), (self.left, y)], fill=AXIS, width=2 * SS)
+            v += step
+        self.d.line([(self.left, self.top - 6 * SS), (self.left, self.bottom)], fill=AXIS, width=2 * SS)
+        self.d.line([(self.left, self.bottom), (self.right, self.bottom)], fill=AXIS, width=2 * SS)
+        if self.spec.get("xlabel"):
+            t = self.spec["xlabel"]
+            tw = self.d.textlength(t, font=self.fs)
+            self.d.text(((self.left + self.right) / 2 - tw / 2, self.bottom + 30 * SS),
+                        t, font=self.fs, fill=AXIS)
+        if self.spec.get("ylabel"):
+            # Rotated on its own layer — Pillow cannot draw rotated text in place.
+            t = self.spec["ylabel"]
+            tw = int(self.d.textlength(t, font=self.fs)) + 4 * SS
+            strip = Image.new("RGBA", (tw, 20 * SS), (255, 255, 255, 0))
+            ImageDraw.Draw(strip).text((2 * SS, 2 * SS), t, font=self.fs, fill=AXIS)
+            strip = strip.rotate(90, expand=True)
+            self.img.paste(strip, (4 * SS, int((self.top + self.bottom) / 2 - strip.height / 2)), strip)
+
+    def _legend(self):
+        series = self.spec.get("series") or []
+        if not series:
+            return
+        x = self.left
+        y = self.top - 34 * SS
+        sw = 16 * SS
+        for i, name in enumerate(series):
+            self.d.rectangle([x, y, x + sw, y + 12 * SS], fill=BAR_FILLS[i % len(BAR_FILLS)],
+                             outline=BAR_EDGE, width=1 * SS)
+            self.d.text((x + sw + 5 * SS, y - 1 * SS), name, font=self.ft, fill=AXIS)
+            x += sw + 9 * SS + self.d.textlength(name, font=self.ft) + 16 * SS
+
+    def _bars(self):
+        cats = self.spec.get("categories") or []
+        vals = self.spec.get("values") or []
+        if not cats or not vals:
+            return
+        n = len(cats)
+        span = (self.right - self.left) / n
+        bw = span * float(self.spec.get("bar_width", 0.52))
+        show_vals = self.spec.get("value_labels", True)
+        for i, cat in enumerate(cats):
+            cx = self.left + span * (i + 0.5)
+            x0, x1 = cx - bw / 2, cx + bw / 2
+            base = 0.0
+            for j, v in enumerate(vals[i]):
+                top, bot = self._y(base + v), self._y(base)
+                self.d.rectangle([x0, top, x1, bot],
+                                 fill=BAR_FILLS[j % len(BAR_FILLS)], outline=BAR_EDGE, width=2 * SS)
+                if show_vals and (bot - top) > 15 * SS:
+                    t = f"{v:g}"
+                    tw = self.d.textlength(t, font=self.ft)
+                    self.d.text((cx - tw / 2, (top + bot) / 2 - 7 * SS), t, font=self.ft, fill=(20, 20, 20))
+                base += v
+            tw = self.d.textlength(str(cat), font=self.ft)
+            # Long category labels (a "2006-2007" year range) collide at 4+ bars,
+            # so shrink to the bar's own span rather than overprinting a neighbour.
+            fnt = self.ft if tw <= span - 4 * SS else _font(9 * SS)
+            tw = self.d.textlength(str(cat), font=fnt)
+            self.d.text((cx - tw / 2, self.bottom + 8 * SS), str(cat), font=fnt, fill=AXIS)
+
+    def _caption(self):
+        cap = self.spec.get("caption", "")
+        if cap:
+            self.d.text((8 * SS, 8 * SS), cap, font=self.fs, fill=(60, 60, 60))
+        scale = self.spec.get("scale", "")
+        if scale:
+            tw = self.d.textlength(scale, font=self.ft)
+            self.d.text((self.right - tw, 10 * SS), scale, font=self.ft, fill=(90, 90, 90))
+
+    def render(self):
+        self._caption()
+        self._legend()
+        self._axes()
+        self._bars()
+        return self.img.resize((W, H), Image.LANCZOS).convert("RGB")
+
+
+def canvas_for(spec):
+    """Pick the renderer for a spec. Dispatch is on a NEW `kind` key that no
+    existing spec carries, so every shipped chapter keeps the `Canvas` path."""
+    return BarCanvas(spec) if spec.get("kind") == "bars" else Canvas(spec)
+
+
 def slug(ref):
     return re.sub(r"[^A-Za-z0-9]+", "_", ref).strip("_")
 
@@ -614,8 +759,67 @@ def build_app_derivatives_specs():
     return specs
 
 
+def build_statistics_specs():
+    """Class-9 Ch.7 Practice set 7.1 — the two DRAW-the-diagram questions.
+    The book prints no answers for 7.1 (its answers are drawings), so these are
+    the answer, and the percentages below are derived from the printed tables
+    and rounded to the nearest integer as the questions instruct.
+    Worth noting: in BOTH questions every rounded pair happens to sum to exactly
+    100, so no bar needs a rounding fudge."""
+    q1 = [(47, 9), (56, 13), (60, 16), (63, 18)]          # trucks, buses
+    q1_years = ["2006-2007", "2007-2008", "2008-2009", "2009-2010"]
+    q2 = [(14, 10), (15, 11), (17, 13), (20, 19)]         # permanent, temporary
+    q2_years = ["2000-2001", "2001-2002", "2002-2003", "2003-2004"]
+
+    def pct(rows):
+        out = []
+        for a, b in rows:
+            t = a + b
+            pa = round(a * 100.0 / t)
+            out.append([pa, 100 - pa])   # complement, so each bar closes at 100
+        return out
+
+    return [
+        # The p110 solved example is a FIGURE-READING question: the percentage bar
+        # diagram carries all its data, so without it the five sub-parts are
+        # unanswerable. Rendered rather than cropped — the printed figure is a
+        # hatched graph-paper plot that crops illegibly, and the component
+        # percentages come from the book's OWN printed solution on p111, so the
+        # rendering is faithful by construction.
+        # `value_labels` is OFF here ON PURPOSE: sub-part (i) asks the student to
+        # READ the percentages off the diagram, and printing them inside the
+        # segments would answer the question in the stem.
+        {"kind": "bars", "ref": "Bar SolvedEx.1",
+         "caption": "Percentage expenses of two families",
+         "categories": ["Family A", "Family B"],
+         "series": ["Food", "Clothes", "Education", "Electricity", "Others"],
+         "values": [[60, 10, 10, 5, 15], [50, 15, 15, 10, 10]],
+         "ymax": 100, "ytick": 10, "xlabel": "", "ylabel": "Expenses %",
+         "scale": "On Y-axis 1 cm = 10%", "value_labels": False, "bar_width": 0.34,
+         "manifest": False},
+        {"kind": "bars", "ref": "Ex 7.1 Q1",
+         "caption": "Percentage bar diagram - Trucks and Buses",
+         "categories": q1_years, "series": ["Trucks", "Buses"], "values": pct(q1),
+         "ymax": 100, "ytick": 10, "xlabel": "Year", "ylabel": "Percentage",
+         "scale": "On Y-axis 1 cm = 10%"},
+        {"kind": "bars", "ref": "Ex 7.1 Q2",
+         "caption": "Sub-divided bar diagram - Permanent and Temporary roads",
+         "categories": q2_years, "series": ["Permanent roads", "Temporary roads"],
+         "values": [[a, b] for a, b in q2],
+         "ymax": 40, "ytick": 5, "xlabel": "Year", "ylabel": "Length (Lakh km.)",
+         "scale": "On Y-axis 1 cm = 5 lakh km."},
+        {"kind": "bars", "ref": "Ex 7.1 Q2 percentage", "manifest": False,
+         "caption": "Percentage bar diagram - Permanent and Temporary roads",
+         "categories": q2_years, "series": ["Permanent roads", "Temporary roads"],
+         "values": pct(q2),
+         "ymax": 100, "ytick": 10, "xlabel": "Year", "ylabel": "Percentage",
+         "scale": "On Y-axis 1 cm = 10%"},
+    ]
+
+
 # chapterId -> spec builder. Add an entry when a new chapter authors diagrams.
 SPEC_BUILDERS = {
+    "statistics-9": build_statistics_specs,
     "pair-lines-12": build_pair_lines_specs,
     "linear-prog-12": build_linear_prog_specs,
     "app-def-integration-12": build_app_integration_specs,
@@ -645,11 +849,22 @@ def main(chapter):
     manifest = []
     paths = []
     for spec in specs:
-        img = Canvas(spec).render()
+        img = canvas_for(spec).render()
         p = os.path.join(outdir, slug(spec["ref"]) + ".png")
         img.save(p)
         paths.append(p)
-        manifest.append({"ref": spec["ref"], "png": os.path.relpath(p, os.getcwd()).replace("\\", "/")})
+        # Anchor the manifest path to the REPO ROOT, not os.getcwd(). Using the cwd
+        # makes the committed manifest depend on which directory you happened to run
+        # from — a verification run from `scripts/` rewrote every path in the shipped
+        # `pair-lines-12` manifest, dropping the leading `scripts/`, with no error.
+        # The repo root reproduces the shipped values exactly and cannot drift.
+        repo_root = os.path.dirname(os.path.dirname(HERE))
+        # `manifest: False` renders the PNG but keeps it OUT of the solution-images
+        # manifest — used for a figure that is attached as a QUESTION image instead
+        # (via data/<id>.fig.json), and for an extra reference panel. Every ref that
+        # DOES land here must match a committed question_number.
+        if spec.get("manifest", True):
+            manifest.append({"ref": spec["ref"], "png": os.path.relpath(p, repo_root).replace("\\", "/")})
     if paths:
         montage(paths).save(os.path.join(outdir, "_montage.png"))
     with open(manifest_path, "w", encoding="utf-8") as f:

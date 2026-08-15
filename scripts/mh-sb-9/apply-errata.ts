@@ -53,10 +53,36 @@ async function main() {
     auth: { persistSession: false },
   });
 
-  // Source JSON files that may hold each ref's solution text.
-  const jsonFiles = readdirSync(DATA).filter(
-    (f) => f.startsWith(`${id}.`) && (f.endsWith(".solutions.json") || /\.s\d|\.misc\.json$/.test(f))
+  // Source JSON files that may hold each ref's solution text: the authored
+  // *.solutions.json AND the transcription fragments (which carry the `solution`
+  // of every solved example inline).
+  //
+  // This deliberately does NOT hand-list fragment name shapes. It used to match
+  // only `.solutions.json` / `.s<digit>` / `.misc.json`, which silently mirrored
+  // NOTHING for any chapter whose fragments were named differently — the bracket
+  // landed in the DB alone and the next re-commit would revert it. Excluding the
+  // known REGENERATED artifacts (and the merged output) is the safe polarity: an
+  // unrecognised file is searched, never skipped.
+  const SCRATCH =
+    /\.(errata|topaper|mcq-blind|mcq-verify|anchors|fig|figneed|figtext|review|xcheck|diagram-specs|solution-images)\.json$/;
+  //
+  // ORDER MATTERS: authored *.solutions.json first, transcription fragments
+  // after. An exercise row exists in BOTH — as a question in its fragment (with
+  // no `solution`) and as an authored answer in the solutions file — and only
+  // the latter is where its solution lives. Searching fragments first would
+  // write a bracket-only `solution` into the transcription source, which
+  // commit.ts would then treat as an answered row.
+  const allJson = readdirSync(DATA).filter(
+    (f) =>
+      f.startsWith(`${id}.`) &&
+      f.endsWith(".json") &&
+      f !== `${id}.questions.json` &&
+      !SCRATCH.test(f)
   );
+  const jsonFiles = [
+    ...allJson.filter((f) => f.endsWith(".solutions.json")),
+    ...allJson.filter((f) => !f.endsWith(".solutions.json")),
+  ];
 
   let applied = 0;
   let skipped = 0;
@@ -75,44 +101,65 @@ async function main() {
 
     const row = data[0];
     const current = row.solution ?? "";
-    if (current.trimStart().startsWith("[Textbook")) {
-      console.log(`  skip (already bracketed): ${e.ref}`);
+    const dbAlready = current.trimStart().startsWith("[Textbook");
+    if (dbAlready) {
+      console.log(`  skip DB (already bracketed): ${e.ref}`);
       skipped++;
-      continue;
+    } else {
+      const next = normalizeNewlines(`${e.bracket}\n\n${current}`);
+      console.log(`  ${apply ? "apply" : "would apply"}: ${e.ref} (+${e.bracket.length} chars)`);
     }
-    const next = normalizeNewlines(`${e.bracket}\n\n${current}`);
-    console.log(`  ${apply ? "apply" : "would apply"}: ${e.ref} (+${e.bracket.length} chars)`);
     if (!apply) continue;
 
-    const { error: uerr, count } = await db
-      .from("questions")
-      .update({ solution: next }, { count: "exact" })
-      .eq("id", row.id)
-      .eq("exam_id", EXAM_ID);
-    if (uerr) throw new Error(`update ${e.ref}: ${uerr.message}`);
-    if (count !== 1) throw new Error(`update ${e.ref}: matched ${count} rows`);
-    applied++;
-    // An erratum edits the solution only, which is not part of content_hash, so
-    // the stored hash is unchanged by the write above.
-    recorded.push({
-      questionId: row.id,
-      ref: e.ref,
-      bracket: e.bracket,
-      contentHash: row.content_hash as string,
-    });
+    if (!dbAlready) {
+      const { error: uerr, count } = await db
+        .from("questions")
+        .update({ solution: normalizeNewlines(`${e.bracket}\n\n${current}`) }, { count: "exact" })
+        .eq("id", row.id)
+        .eq("exam_id", EXAM_ID);
+      if (uerr) throw new Error(`update ${e.ref}: ${uerr.message}`);
+      if (count !== 1) throw new Error(`update ${e.ref}: matched ${count} rows`);
+      applied++;
+      // An erratum edits the solution only, which is not part of content_hash, so
+      // the stored hash is unchanged by the write above.
+      recorded.push({
+        questionId: row.id,
+        ref: e.ref,
+        bracket: e.bracket,
+        contentHash: row.content_hash as string,
+      });
+    }
 
     // Mirror into whichever source JSON carries this ref, so DB and source agree.
+    // Deliberately INDEPENDENT of the DB skip above: if a previous run bracketed
+    // the row but failed to mirror, the source is still stale and a re-commit
+    // would revert it — so re-running this script must be able to heal that.
+    let mirrored = false;
     for (const f of jsonFiles) {
       const path = join(DATA, f);
       const arr = JSON.parse(readFileSync(path, "utf8")) as any[];
       const hit = arr.find((r) => r.ref === e.ref);
       if (!hit) continue;
-      if (typeof hit.solution === "string" && !hit.solution.trimStart().startsWith("[Textbook")) {
-        hit.solution = `${e.bracket}\n\n${hit.solution}`;
-        writeFileSync(path, JSON.stringify(arr, null, 2), "utf-8");
-        console.log(`      mirrored -> ${f}`);
+      const src = typeof hit.solution === "string" ? hit.solution : "";
+      if (src.trimStart().startsWith("[Textbook")) {
+        mirrored = true; // already carries it
+        break;
       }
+      // `src` is "" for a row that has no solution field yet (an MCQ, or a
+      // fragment row whose answer is authored elsewhere) — CREATE the field
+      // rather than skipping, or the bracket lives only in the database.
+      hit.solution = src ? `${e.bracket}\n\n${src}` : e.bracket;
+      writeFileSync(path, JSON.stringify(arr, null, 2), "utf-8");
+      console.log(`      mirrored -> ${f}`);
+      mirrored = true;
       break;
+    }
+    if (!mirrored) {
+      console.warn(
+        `      !! NOT MIRRORED: "${e.ref}" was not found in any source JSON for ${id}. ` +
+          `The bracket now exists ONLY in the database and the next re-commit will revert it. ` +
+          `Check the ref spelling and that its fragment is in data/.`
+      );
     }
   }
 
