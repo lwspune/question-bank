@@ -121,6 +121,22 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Problem Set 5", label: "Problem Set 5", kind: "miscellaneous", refPrefixes: ["Prob "] },
   ],
 
+  // ── Ch.9 Surface Area and Volume (Part 2, Geometry) — verified against
+  //    9th_Maths_Part2_SB.pdf (printed pp.114-123), the LAST chapter of the
+  //    volume. Reading order: a revision of the cuboid/cube/cylinder formulas →
+  //    Practice set 9.1 → terms related to a cone, its surface area and volume →
+  //    Practice set 9.2 → surface area and volume of a sphere and hemisphere →
+  //    Practice set 9.3 and Problem set 9, which SHARE the chapter's last page.
+  //    Solved block DEFERRED like Ch.7's: Ex./Solution blocks sit on 0-based 127,
+  //    128 and 131 and only one is transcribed, so three exercise blocks ship and
+  //    the solved block goes in when the rest are read — see config.ts.
+  "surface-area-volume-9": [
+    { group: "Practice Set 9.1", label: "Practice Set 9.1", kind: "exercise", refPrefixes: ["Ex 9.1 "] },
+    { group: "Practice Set 9.2", label: "Practice Set 9.2", kind: "exercise", refPrefixes: ["Ex 9.2 "] },
+    { group: "Practice Set 9.3", label: "Practice Set 9.3", kind: "exercise", refPrefixes: ["Ex 9.3 "] },
+    { group: "Problem Set 9", label: "Problem Set 9", kind: "miscellaneous", refPrefixes: ["Prob "] },
+  ],
+
   // ── Ch.7 Co-ordinate Geometry (Part 2, Geometry) — verified against
   //    9th_Maths_Part2_SB.pdf (printed pp.88-99). Reading order: axes/origin/
   //    quadrants → co-ordinates and plotting → Practice set 7.1 → lines parallel
