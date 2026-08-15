@@ -593,13 +593,19 @@ export const CHAPTERS: Record<string, Chapter> = {
     answersPdf: PART2,
     answerPages: range(136, 137),
     note: "Maharashtra State Board (Class 9) — Surface Area and Volume (Balbharati textbook, Part 2 Geometry)",
-    // 🚧 PROVISIONAL — replace with the chapter's own "Let's study" list once the
-    // opener page (0-based 123) is read.
+    // THIS CHAPTER HAS NO "Let's study" BOX - the only one in the volume that
+    // does not. It opens straight into a revision of the cuboid, cube and
+    // cylinder formulas from earlier standards, so the subtopics are taken from
+    // its own printed section headings ("Terms related to a cone and their
+    // relation", "Surface area of a cone", "Surface area of a sphere") plus the
+    // solids the exercises actually drill.
     subtopics: [
-      "Cuboid and Cube",
-      "Cylinder",
-      "Cone",
-      "Sphere",
+      "Surface Area and Volume of Cuboid and Cube",
+      "Surface Area and Volume of a Cylinder",
+      "Terms Related to a Cone",
+      "Surface Area of a Cone",
+      "Volume of a Cone",
+      "Surface Area and Volume of a Sphere and Hemisphere",
     ],
   },
 
