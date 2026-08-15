@@ -24,14 +24,18 @@ function main() {
   if (explicit.length) {
     files = explicit.map((s) => `${id}.${s}.json`);
   } else {
+    // Auto-discovery is an ALLOW-by-exclusion glob, so every non-fragment artifact
+    // this pipeline writes into data/ must be excluded BY NAME. Dropping
+    // `.solutions.json` alone is not enough: the dumps and audit files are also
+    // `<id>.*.json` and are shaped just enough like a fragment to be merged, so a
+    // stray one enters the SOURCE OF TRUTH silently. Observed for real on the
+    // Class-11 pipeline — `.blind.mcq-verify.json` was ingested as "10 questions"
+    // and only a coincidental duplicate ref stopped 10 garbage rows landing.
+    // Anything REGENERATED rather than authored belongs on this list.
+    const SCRATCH =
+      /\.(solutions|errata|topaper|mcq-blind|mcq-verify|anchors|fig|figneed|figtext|review|xcheck|diagram-specs|solution-images)\.json$/;
     files = readdirSync(DATA)
-      .filter(
-        (f) =>
-          f.startsWith(`${id}.`) &&
-          f.endsWith(".json") &&
-          f !== outName &&
-          !f.endsWith(".solutions.json") // solution files are {id,ref,solution}, applied by apply-solutions.ts — not question fragments
-      )
+      .filter((f) => f.startsWith(`${id}.`) && f.endsWith(".json") && f !== outName && !SCRATCH.test(f))
       .sort();
   }
 
