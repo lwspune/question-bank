@@ -121,6 +121,23 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Problem Set 5", label: "Problem Set 5", kind: "miscellaneous", refPrefixes: ["Prob "] },
   ],
 
+  // ── Ch.2 Parallel Lines (Part 2, Geometry) — verified against
+  //    9th_Maths_Part2_SB.pdf (printed pp.13-23). Reading order: the eight angles
+  //    a transversal forms (theory) → the interior/corresponding/alternate angle
+  //    theorems → Practice set 2.1 → the parallelness TESTS + two corollaries →
+  //    Practice set 2.2 → Problem set 2.
+  //    THREE EXERCISE BLOCKS AND NO SOLVED BLOCK, deliberately: probing the text
+  //    layer of all 11 pages finds only Theorems and Corollaries, never a
+  //    "Solved example". Unlike Ch.1, which had three genuine worked number-line
+  //    examples alongside its two worked proofs, this chapter's only candidates
+  //    are half-page formal theorems that ARE the chapter's theory rather than a
+  //    model for an exercise type. Recorded as scope, not oversight.
+  "parallel-lines-9": [
+    { group: "Practice Set 2.1", label: "Practice Set 2.1", kind: "exercise", refPrefixes: ["Ex 2.1 "] },
+    { group: "Practice Set 2.2", label: "Practice Set 2.2", kind: "exercise", refPrefixes: ["Ex 2.2 "] },
+    { group: "Problem Set 2", label: "Problem Set 2", kind: "miscellaneous", refPrefixes: ["Prob "] },
+  ],
+
   // ── Ch.7 Statistics (Part 1, Algebra) — verified against 9th_Maths_Part1_SB.pdf
   //    (pp.108-128), the LAST chapter of the volume. Reading order: sub-divided
   //    and percentage bar diagrams with one worked example → Practice set 7.1 →

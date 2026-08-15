@@ -523,6 +523,96 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Ch.2 Parallel Lines (Part 2, Geometry). Pages 13-23 (1-based) → 0-based
+  //    22-32. Boundaries VERIFIED from the PDF, not derived: 0-based 22 opens
+  //    "2 Parallel Lines" and 0-based 33 opens "3 Triangles". Structure:
+  //    Practice set 2.1 (p17) · Practice set 2.2 (p21) · Problem set 2 (pp22-23,
+  //    Q.1 = a FIVE-part MCQ block).
+  //    Answers: Part2 printed p125 → 0-based 134, a SINGLE page that also carries
+  //    the start of Ch.3's key.
+  //
+  //    ⚠ THE PART-2 ANSWERS SECTION IS 0-BASED 133-137 (printed 124-128) — five
+  //    pages for all NINE chapters, so the key is TERSE and coverage is partial
+  //    by design. For this chapter it answers PS 2.1 Q1,2,3,5 (not Q4), PS 2.2
+  //    Q1 and Q4 (not Q2,Q3) and Problem set 2 Q1,4,5,6 (not Q2,Q3) — the
+  //    unanswered ones are proofs, which the book never keys. So the step-6
+  //    cross-check covers this chapter PARTIALLY; do not read a missing entry as
+  //    a defect.
+  //    Its full transcribed key, for the cross-check to diff against:
+  //      PS 2.1  1. (i) 95 (ii) 95 (iii) 85 (iv) 85 · 2. a=70, b=70, c=115, d=65
+  //              3. a=135, b=135, c=135 · 5. (i) 75 (ii) 75 (iii) 105 (iv) 75
+  //      PS 2.2  1. No. · 4. ABC = 130
+  //      Prob 2  1. (i) C (ii) C (iii) A (iv) B (v) C · 4. x=130, y=50
+  //              5. x=1260 · 6. f=100, g=80
+  //      (all in degrees; blind-re-derive the 5 MCQ keys before trusting them.)
+  //
+  //    ⚠ VISION-ONLY, and for the Part-2 reason rather than the Part-1 one: this
+  //    volume's text layer substitutes SYMBOL-FONT glyphs — `Ð` for the angle
+  //    sign, `^` for perpendicular, `\` for therefore, `D` for triangle, `@` for
+  //    congruent — so a text dump reads "Ð a = 70" and every proof turns to
+  //    noise. Part 1 flattened exponents and fractions; this one substitutes
+  //    operators. Same conclusion, different cause.
+  //
+  //    ⚠ FIGURES ARE LOAD-BEARING, as in Ch.1 and unlike all of Part 1, and here
+  //    it is near-total: EVERY question of Practice set 2.1 references a numbered
+  //    figure carrying the angle measures the question asks about, so not one of
+  //    them is answerable from the stem alone. VECTOR art → snapCrop, and every
+  //    crop must clear the montage verify-gate before flip.
+  //
+  //    🚧 NOT COMMITTED YET — pages rendered under out/parallel-lines-9/ and the
+  //    answer page under out/_answers/parallel-lines-9/. EXERCISE INVENTORY IS
+  //    COMPLETE, read page by page: 31 exercise ROWS.
+  //      Practice set 2.1 (printed pp17-18) = 5 q / 11 rows — Q1 (Fig 2.5, four
+  //        sub-items) · Q2 (Fig 2.6, find a,b,c,d) · Q3 (Fig 2.7, find a,b,c) ·
+  //        Q4* (Fig 2.8, a PROOF) · Q5 (Fig 2.9, four sub-items).
+  //      Practice set 2.2 (printed pp21-22) = 6 q / 6 rows — Q1 (Fig 2.18) ·
+  //        Q2 (Fig 2.19, proof) · Q3 (Fig 2.20, proof) · Q4 (Fig 2.21) ·
+  //        Q5 (Fig 2.22, proof) · Q6 (Fig 2.23, proof). **Q5 and Q6 sit at the
+  //        TOP of printed p22, overleaf from Q1-Q4** — a band cut at the page
+  //        break would silently lose them (the Ch.4 Ratio lesson).
+  //      Problem set 2 (printed pp22-23) = 8 q / 14 rows — Q1(i)-(v) MCQ ·
+  //        Q2* (draw a figure, three sub-items) · Q3 (proof) · Q4 (Fig 2.24) ·
+  //        Q5 (Fig 2.25) · Q6 (Fig 2.26) · Q7 (Fig 2.27, proof) ·
+  //        Q8 (Fig 2.28, proof).
+  //      SIXTEEN crops needed: Fig 2.5-2.9, 2.18-2.24, 2.25-2.28. That figure
+  //      load, not the transcription, is the bulk of this chapter.
+  //
+  //    · NO SOLVED EXAMPLES AT ALL — probed the text layer of all 11 pages: the
+  //      chapter carries only Theorems (printed pp15, 16, 18, 19, 20) and two
+  //      Corollaries (p21), no "Solved example" block anywhere. The theorems ARE
+  //      printed complete (Given / To prove / Construction / Proof), so they are
+  //      ingestable as `solved` on the Ch.1 precedent, which took that chapter's
+  //      two worked proofs the same way. Corollary II is NOT — the book says
+  //      "Write the proof of the corollary", i.e. it is an exercise prompt with
+  //      no printed proof.
+  //    · ALL 5 Problem-set MCQ KEYS BLIND-RE-DERIVED, 5/5 match (C C A B C).
+  //    · A BOOK DEFECT: **Problem set 2 Q5's key prints "x = 1260"**, which is not
+  //      an angle. With AB || CD || EF and y : z = 3 : 7, the co-interior pair
+  //      gives 10k = 180, so y = 54 and z = 126, and x = z = 126 as corresponding
+  //      angles. The key has an extra zero: the answer is **126 degrees**.
+  //      Q4 (x=130, y=50) and Q6 (f=100, g=80) were re-derived and AGREE.
+  "parallel-lines-9": {
+    id: "parallel-lines-9",
+    chapterName: "Parallel Lines",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_09_Maths__Parallel_Lines.pdf",
+    pdf: PART2,
+    pages: range(22, 32),
+    answersPdf: PART2,
+    answerPages: [134],
+    note: "Maharashtra State Board (Class 9) — Parallel Lines (Balbharati textbook, Part 2 Geometry)",
+    // The chapter's own "Let's study" list (printed p13), which is only THREE
+    // bullets, plus a subtopic for the "Let's recall" section on the eight angles
+    // a transversal forms — the list omits it, but Practice set 2.1 drills it
+    // directly. Same call as Ch.1's added "Line Segment, Ray and Congruence".
+    subtopics: [
+      "Pairs of Angles Formed by a Transversal",
+      "Properties of Parallel Lines",
+      "Tests of Parallelness of Two Lines",
+      "Use of Properties of Parallel Lines",
+    ],
+  },
+
   // ── Ch.1 Basic Concepts in Geometry (Part 2, Geometry) — the FIRST chapter from
   //    the Geometry volume. Pages 1-12 (1-based) → 0-based 10-21. Structure:
   //    Practice set 1.1 (p5 — distance on a number line, betweenness) ·
