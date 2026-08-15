@@ -121,6 +121,22 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Problem Set 5", label: "Problem Set 5", kind: "miscellaneous", refPrefixes: ["Prob "] },
   ],
 
+  // ── Ch.7 Co-ordinate Geometry (Part 2, Geometry) — verified against
+  //    9th_Maths_Part2_SB.pdf (printed pp.88-99). Reading order: axes/origin/
+  //    quadrants → co-ordinates and plotting → Practice set 7.1 → lines parallel
+  //    to the axes and the equation of a line → Practice set 7.2 → Problem set 7.
+  //    THREE EXERCISE BLOCKS AND NO SOLVED BLOCK — but here that is DEFERRAL, not
+  //    scope, and the distinction matters. Unlike Ch.2, this chapter really does
+  //    carry solved examples (Ex./Solution blocks on 0-based 99, 100, 102, 105,
+  //    106); only two are transcribed, so shipping now would render a partial
+  //    block as a complete "Solved Examples" section with an invisible gap. Add
+  //    the block once 99, 100 and 105 are read — see config.ts.
+  "coordinate-geometry-9": [
+    { group: "Practice Set 7.1", label: "Practice Set 7.1", kind: "exercise", refPrefixes: ["Ex 7.1 "] },
+    { group: "Practice Set 7.2", label: "Practice Set 7.2", kind: "exercise", refPrefixes: ["Ex 7.2 "] },
+    { group: "Problem Set 7", label: "Problem Set 7", kind: "miscellaneous", refPrefixes: ["Prob "] },
+  ],
+
   // ── Ch.2 Parallel Lines (Part 2, Geometry) — verified against
   //    9th_Maths_Part2_SB.pdf (printed pp.13-23). Reading order: the eight angles
   //    a transversal forms (theory) → the interior/corresponding/alternate angle
