@@ -52,6 +52,122 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Problem Set 2", label: "Problem Set 2", kind: "miscellaneous", refPrefixes: ["Prob "] },
   ],
 
+  // ── Ch.3 Polynomials (Part 1, Algebra) — verified against 9th_Maths_Part1_SB.pdf
+  //    (pp.36-56). Same interleaved shape as Ch.2 Real Numbers: a theory block with
+  //    the book's own worked examples, then the Practice set it leads into. Solved
+  //    refs are keyed to the practice set that FOLLOWS them (`3.4 SolvedEx.N`),
+  //    because this book — unlike the Class-11/12 ones — does not number its
+  //    sections, so the practice-set number is the only stable positional handle.
+  //    `3.5 SolvedEx` deliberately spans BOTH the Remainder-theorem and the
+  //    Factor-theorem worked examples: they are consecutive theory blocks feeding
+  //    one practice set, the same call as Ch.2's "Binomial Surds and
+  //    Rationalization". Problem set 3 is ONE book block (Q.1 = the ten-part MCQ,
+  //    Q.2+ free-response) → a single miscellaneous block in source_row order.
+  "polynomials-9": [
+    { group: "Introduction, Degree and Types", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.1 SolvedEx"] },
+    { group: "Practice Set 3.1", label: "Practice Set 3.1", kind: "exercise", refPrefixes: ["Ex 3.1 "] },
+    { group: "Operations on Polynomials", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.2 SolvedEx"] },
+    { group: "Practice Set 3.2", label: "Practice Set 3.2", kind: "exercise", refPrefixes: ["Ex 3.2 "] },
+    { group: "Division and Synthetic Division", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.3 SolvedEx"] },
+    { group: "Practice Set 3.3", label: "Practice Set 3.3", kind: "exercise", refPrefixes: ["Ex 3.3 "] },
+    { group: "Value of a Polynomial", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.4 SolvedEx"] },
+    { group: "Practice Set 3.4", label: "Practice Set 3.4", kind: "exercise", refPrefixes: ["Ex 3.4 "] },
+    { group: "Remainder and Factor Theorems", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.5 SolvedEx"] },
+    { group: "Practice Set 3.5", label: "Practice Set 3.5", kind: "exercise", refPrefixes: ["Ex 3.5 "] },
+    { group: "Factorisation of Polynomials", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.6 SolvedEx"] },
+    { group: "Practice Set 3.6", label: "Practice Set 3.6", kind: "exercise", refPrefixes: ["Ex 3.6 "] },
+    { group: "Problem Set 3", label: "Problem Set 3", kind: "miscellaneous", refPrefixes: ["Prob "] },
+  ],
+
+  // ── Ch.4 Ratio and Proportion (Part 1, Algebra) — verified against
+  //    9th_Maths_Part1_SB.pdf (pp.57-79). The most solved-example-dense chapter of
+  //    the volume (28 worked examples), in five theory→practice pairs. Solved refs
+  //    are keyed to the practice set that FOLLOWS them (`4.3 SolvedEx.N`), the
+  //    Ch.2/Ch.3 convention. Two blocks deliberately fuse two taught sections that
+  //    feed ONE practice set: `4.3 SolvedEx` covers the equal-ratio properties AND
+  //    their application to solving equations, and `4.5 SolvedEx` covers continued
+  //    proportion AND the k-method. Problem set 4 is one book block (Q.1 = the
+  //    five-part MCQ, Q.2-13 free-response) → a single miscellaneous block.
+  "ratio-proportion-9": [
+    { group: "Ratio, Proportion and Properties of Ratio", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.1 SolvedEx"] },
+    { group: "Practice Set 4.1", label: "Practice Set 4.1", kind: "exercise", refPrefixes: ["Ex 4.1 "] },
+    { group: "Comparison of Ratios", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.2 SolvedEx"] },
+    { group: "Practice Set 4.2", label: "Practice Set 4.2", kind: "exercise", refPrefixes: ["Ex 4.2 "] },
+    { group: "Operations on Equal Ratios", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.3 SolvedEx"] },
+    { group: "Practice Set 4.3", label: "Practice Set 4.3", kind: "exercise", refPrefixes: ["Ex 4.3 "] },
+    { group: "Theorem on Equal Ratios", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.4 SolvedEx"] },
+    { group: "Practice Set 4.4", label: "Practice Set 4.4", kind: "exercise", refPrefixes: ["Ex 4.4 "] },
+    { group: "Continued Proportion and the k-Method", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.5 SolvedEx"] },
+    { group: "Practice Set 4.5", label: "Practice Set 4.5", kind: "exercise", refPrefixes: ["Ex 4.5 "] },
+    { group: "Problem Set 4", label: "Problem Set 4", kind: "miscellaneous", refPrefixes: ["Prob "] },
+  ],
+
+  // ── Ch.5 Linear Equations in Two Variables (Part 1, Algebra) — verified against
+  //    9th_Maths_Part1_SB.pdf (pp.80-92). Reading order: graphical intro (theory,
+  //    no questions) → elimination method with 4 worked examples → substitution
+  //    method with 2 → Practice set 5.1 → word problems with 4 worked examples →
+  //    Practice set 5.2 → Problem set 5.
+  //    Solved refs here are NAMED for their section rather than numbered after the
+  //    practice set (the Ch.2/Ch.3 convention), because elimination and
+  //    substitution are two separate taught methods that BOTH feed Practice set
+  //    5.1 — numbering them all "5.1 SolvedEx" would collapse two book sections
+  //    into one reader block. No prefix nests inside another.
+  "linear-equations-9": [
+    { group: "Elimination Method", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Elimination SolvedEx"] },
+    { group: "Substitution Method", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Substitution SolvedEx"] },
+    { group: "Practice Set 5.1", label: "Practice Set 5.1", kind: "exercise", refPrefixes: ["Ex 5.1 "] },
+    { group: "Word Problems on Simultaneous Equations", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.2 SolvedEx"] },
+    { group: "Practice Set 5.2", label: "Practice Set 5.2", kind: "exercise", refPrefixes: ["Ex 5.2 "] },
+    { group: "Problem Set 5", label: "Problem Set 5", kind: "miscellaneous", refPrefixes: ["Prob "] },
+  ],
+
+  // ── Ch.7 Statistics (Part 1, Algebra) — verified against 9th_Maths_Part1_SB.pdf
+  //    (pp.108-128), the LAST chapter of the volume. Reading order: sub-divided
+  //    and percentage bar diagrams with one worked example → Practice set 7.1 →
+  //    data-collection theory → Practice set 7.2 → classification and frequency
+  //    distribution with one worked example → Practice set 7.3 → cumulative
+  //    frequency → Practice set 7.4 → measures of central tendency with six
+  //    worked examples → Practice set 7.5 → Problem set 7.
+  //    NOTE there is deliberately NO solved block before Practice set 7.2 or 7.4:
+  //    the data-collection section is a dialogue with no worked example at all,
+  //    and every "example" in the cumulative-frequency section (pp.119-121) is a
+  //    fill-in-the-blanks table for the student to complete, not a printed
+  //    solution — the same call as basic-geometry-9's missing 1.2 block. Blocks
+  //    for them would sit empty and gap the section_seq run.
+  "statistics-9": [
+    { group: "Sub-divided and Percentage Bar Diagrams", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Bar SolvedEx"] },
+    { group: "Practice Set 7.1", label: "Practice Set 7.1", kind: "exercise", refPrefixes: ["Ex 7.1 "] },
+    { group: "Practice Set 7.2", label: "Practice Set 7.2", kind: "exercise", refPrefixes: ["Ex 7.2 "] },
+    { group: "Classification of Data and Frequency Distribution", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Frequency SolvedEx"] },
+    { group: "Practice Set 7.3", label: "Practice Set 7.3", kind: "exercise", refPrefixes: ["Ex 7.3 "] },
+    { group: "Practice Set 7.4", label: "Practice Set 7.4", kind: "exercise", refPrefixes: ["Ex 7.4 "] },
+    { group: "Measures of Central Tendency", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Central Tendency SolvedEx"] },
+    { group: "Practice Set 7.5", label: "Practice Set 7.5", kind: "exercise", refPrefixes: ["Ex 7.5 "] },
+    { group: "Problem Set 7", label: "Problem Set 7", kind: "miscellaneous", refPrefixes: ["Prob "] },
+  ],
+
+  // ── Ch.6 Financial Planning (Part 1, Algebra) — verified against
+  //    9th_Maths_Part1_SB.pdf (pp.93-107). Reading order: savings/expenditure and
+  //    investment theory → 4 worked examples → Practice set 6.1 → tax-structure
+  //    theory with the three slab tables → 3 worked examples on computing income
+  //    tax → Practice set 6.2 → Problem set 6.
+  //    Solved refs are NAMED for their section (the Ch.5 convention) because this
+  //    chapter has titled sections, not numbered ones — there is no "6.1"/"6.2" in
+  //    the body text, only in the practice-set headings, so "6.1 SolvedEx" would
+  //    invent a section number the book never prints.
+  //    DELIBERATELY ABSENT: the three "Activity" fill-in boxes (Mr. Mehta p102,
+  //    Mr. Pandit p103, Amita p97). Those are classroom activities for the student
+  //    to complete, not part of the book's worked-example block — Mehta and Amita
+  //    print no answer at all. Unlike Ch.5's Ex 5.2 Q9 they are not numbered
+  //    exercise questions, so the skip-Activity rule applies cleanly.
+  "financial-planning-9": [
+    { group: "Investments", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Investments SolvedEx"] },
+    { group: "Practice Set 6.1", label: "Practice Set 6.1", kind: "exercise", refPrefixes: ["Ex 6.1 "] },
+    { group: "Computation of Income Tax", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Income Tax SolvedEx"] },
+    { group: "Practice Set 6.2", label: "Practice Set 6.2", kind: "exercise", refPrefixes: ["Ex 6.2 "] },
+    { group: "Problem Set 6", label: "Problem Set 6", kind: "miscellaneous", refPrefixes: ["Prob "] },
+  ],
+
   // ── Ch.1 Basic Concepts in Geometry (Part 2, Geometry) — verified against
   //    9th_Maths_Part2_SB.pdf (pp.1-12). Reading order is: co-ordinate/betweenness
   //    theory with worked examples → Practice set 1.1 → segment/ray/congruence

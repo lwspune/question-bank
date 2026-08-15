@@ -143,6 +143,386 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Ch.3 Polynomials (Part 1, Algebra). Pages 36-56 (1-based) → 0-based 45-65.
+  //    Structure: theory + 2 Activities (pp36-38) · Practice set 3.1 (p39-40 — is it
+  //    a polynomial / degree / types) · Operations solved Ex(1)-(5) (pp41-42) ·
+  //    3.2 (p43 — add, subtract, multiply, divide) · Euclid's division lemma +
+  //    Synthetic division (pp44-46) · 3.3 (p46 — divide, write quotient+remainder) ·
+  //    Value of a polynomial (pp46-47) · 3.4 (p48) · Remainder theorem (pp48-50) ·
+  //    Factor theorem (pp51-52) · 3.5 (p53) · Factorization (pp53-54) · 3.6 (p54) ·
+  //    Problem Set 3 (pp55-56; Q.1 = a TEN-part MCQ block (i)-(x), Q.2+ free-response).
+  //    Answers: Part1 p131-133 (1-based) → 0-based 140-142 (ch.3's block opens
+  //    mid-page on 140, right after the tail of Problem set 2).
+  //
+  //    ⚠ VISION-ONLY — do NOT reach for dump-text.ts here. Unlike Ch.1 Sets (whose
+  //    prose text layer is clean) this chapter's text layer is arithmetically WRONG
+  //    and gives no signal that it is: U+FFFD occurs ZERO times and there are no
+  //    radicals to vanish, but EXPONENTS ARE SEPARATE 7.6pt SPANS against a 13-14pt
+  //    body, so `get_text()` flattens \(63x^2 + 5x - 2\) to "63x2 + 5x - 2" — a
+  //    DIFFERENT polynomial, silently. 575 such spans across the chapter. The
+  //    synthetic-division layouts flatten to bare number runs ("- 2 3 2 0 - 1 -6")
+  //    with the grid lost. Read the rendered pages.
+  //
+  //    No figures: the chapter is pure symbol manipulation (0 exercise figures).
+  "polynomials-9": {
+    id: "polynomials-9",
+    chapterName: "Polynomials",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_09_Maths__Polynomials.pdf",
+    pdf: PART1,
+    pages: range(45, 65),
+    answersPdf: PART1,
+    answerPages: range(140, 142),
+    note: "Maharashtra State Board (Class 9) — Polynomials (Balbharati textbook, Part 1 Algebra)",
+    // The chapter-opener "Let's study" bullet list (p36), plus "Factor Theorem" and
+    // "Factorization" — two "Let's learn" sections the opener list omits but which
+    // Practice sets 3.5 and 3.6 drill (the same call as Ch.2's "Absolute value").
+    subtopics: [
+      "Introduction to Polynomials",
+      "Degree of a Polynomial",
+      "Operations on Polynomials",
+      "Synthetic Division",
+      "Value of a Polynomial",
+      "Remainder Theorem",
+      "Factor Theorem",
+      "Factorization of Polynomials",
+    ],
+  },
+
+  // ── Ch.6 Financial Planning (Part 1, Algebra). Pages 93-107 (1-based) →
+  //    0-based 102-116. Structure: savings/expenditure + investments with solved
+  //    examples (pp93-97) · Practice set 6.1 (p98) · taxation, types of tax,
+  //    income tax terms (pp99-100) · computation of income tax + the three
+  //    age-band SLAB TABLES (pp101-102) · worked computations (pp104-105) ·
+  //    Practice set 6.2 (p106) · Problem Set 6 (p107; Q.1 is a TWO-part MCQ block
+  //    — the smallest in the volume).
+  //    Answers: Part1 p135-136 (1-based) → 0-based 144-145.
+  //
+  //    ⚠ THE RUPEE SIGN IS A FONT HACK. The book sets ₹ from a font named
+  //    `RupeeForadian` whose glyph is mapped onto the BACKTICK character, so the
+  //    text layer yields "` 1200" for ₹1200 — 25 occurrences chapter-wide. It
+  //    reaches the DB looking like ordinary text and passes `audit:text`, so
+  //    transcribe the printed ₹ (or the book's own "Rs.") and never the backtick.
+  //
+  //    ⚠ CHAPTER-LEVEL REFERENCE TABLES. The income-tax slab Tables I/II/III are
+  //    printed ONCE in the theory (pp101-102) — one per age band — and Practice
+  //    set 6.2 / Problem set 6 then ask "compute the tax for a 62-year-old with
+  //    income X". Those questions are unanswerable without the slabs, and this is
+  //    NOT a per-question figure: it is a chapter-level table. Per the user's call
+  //    (2026-08-15) the relevant band's slab table is inlined into each dependent
+  //    question's `context` as a GFM pipe-table — searchable, and a native
+  //    <w:tbl> in the Word export. `context` is part of subjectiveContentHash, so
+  //    this MUST be settled before commit; it cannot be backfilled.
+  //
+  //    ⚠ Practice set 6.1's two "Activity" prompts (write your family's weekly
+  //    income/expenditure; discuss dry-land farming) are open-ended and NOT
+  //    ingested — but 6.1 ALSO carries 5 real numbered questions with printed
+  //    answers, so the set is not skipped wholesale. The p103 "Mr. Pandit" box and
+  //    the p102 "Mr. Mehta" box are likewise Activities (fill-in-the-boxes) and
+  //    are not ingested; the chapter-end "Project" (look up 80C/80G/80D, study a
+  //    PAN card) is open-ended and never ingested.
+  //
+  //    Inventory, CONFIRMED page by page: 7 solved examples (4 in the Investments
+  //    section pp95-97, 3 in the income-tax section pp104-106) + Practice set 6.1
+  //    = Q1-Q5 (5 q) + Practice set 6.2 = Q1(i)-(v) + Q2 (6 q) + Problem set 6 =
+  //    Q1(i)-(ii) MCQ + Q2-Q7 + Q8(i)-(iii) (11 q). 29 rows.
+  //    Both Problem-set MCQ keys blind-re-derived — (i) A (80C caps at 1,50,000)
+  //    and (ii) B (income earned in FY 2017-18 is assessed in 2018-19) — 2/2 match
+  //    the printed key. Every printed answer value re-derived; all AGREE except:
+  //      (a) p96 Ex(4) STEM MISPRINT — it reads "If Anil's monthly EXPENDITURE is
+  //          96,000 rupees", but the book's own solution on p97 sets 5x = 9600
+  //          from "Anil's monthly INCOME is 9600 rupees", and the printed answers
+  //          (Aman 16,800; Anil's saving 1,920) follow from that. Wrong in BOTH
+  //          the quantity (expenditure for income) and the magnitude.
+  //      (b) Problem set 6 Q3 ANSWER-KEY ERROR — the key gives Hiralal's gain as
+  //          36.73%. He invested 2,15,000 and received 3,05,000, so the gain is
+  //          90,000 and 90000/215000 = 41.86%. The key's figure is exactly
+  //          90000/245000, i.e. it divided by 2,45,000 — a 1-for-4 digit slip in
+  //          the principal. (Ramniklal's 16.64% is correct and the verdict
+  //          "Hiralal's profit is more" is unaffected either way.)
+  //      (c) Problem set 6 Q8(i)/(ii) ANSWER-KEY NOTE — the key gives 2,13,000 and
+  //          7,500, which are the income tax BEFORE the 2% + 1% cess. The question
+  //          asks for the tax PAYABLE and all three of the chapter's own worked
+  //          examples (Mhatre, Ahmed, Hinduja) add the cess to reach a total, so
+  //          our answers give both figures and name the inconsistency.
+  "financial-planning-9": {
+    id: "financial-planning-9",
+    chapterName: "Financial Planning",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_09_Maths__Financial_Planning.pdf",
+    pdf: PART1,
+    pages: range(102, 116),
+    answersPdf: PART1,
+    answerPages: range(144, 145),
+    note: "Maharashtra State Board (Class 9) — Financial Planning (Balbharati textbook, Part 1 Algebra)",
+    // The chapter-opener "Let's study" list (p93). Its first bullet is printed
+    // truncated as "Introduction to" (the noun is lost in the setting), so the
+    // savings/expenditure section is named from its own "Savings" heading on p94.
+    subtopics: [
+      "Savings and Expenditure",
+      "Investments",
+      "Tax Structure",
+      "Computation of Income Tax",
+    ],
+  },
+
+  // ── Ch.7 Statistics (Part 1, Algebra). Pages 108-128 (1-based) → 0-based
+  //    117-137. The LAST chapter of the volume. Structure: sub-divided and
+  //    percentage bar diagrams with solved examples (pp108-110) · Practice set 7.1
+  //    (p111 — DRAW the diagrams) · data collection, primary/secondary (pp112-113) ·
+  //    Practice set 7.2 (p113) · classification + frequency distribution tables
+  //    (pp114-117) · Practice set 7.3 (p118) · cumulative frequency (pp119-120) ·
+  //    Practice set 7.4 (p121) · measures of central tendency (pp122-124) ·
+  //    Practice set 7.5 (p125) · Problem Set 7 (pp126-127; Q.1 = the MCQ block).
+  //    Answers: Part1 p136 (1-based) → 0-based 145.
+  //
+  //    ⚠ TABLE-HEAVY, NOT FIGURE-HEAVY, and that is the useful distinction. 40
+  //    data tables across pp.114-127, and they belong in the STEM as GFM
+  //    pipe-tables (searchable, and a native <w:tbl> in the Word export) rather
+  //    than as cropped images. Only the bar-diagram READING questions need a
+  //    figure. VISION for the tables (the text layer flattens a grid into a bare
+  //    number run with the row/column structure lost).
+  //
+  //    ⚠ Practice set 7.1 has NO printed answers — CONFIRMED against the rendered
+  //    ANSWERS page (out/_answers/statistics-9/p-145.png), which runs 7.2 → 7.3 →
+  //    7.4 → 7.5 → Problem set 7 with no 7.1 block, because its answers are
+  //    DRAWINGS. Its determinate maths (the percentage/component figures) is to be
+  //    authored, and its diagrams rendered as `solution_image` (the user's call,
+  //    2026-08-15). PS 7.1 is exactly TWO questions: Q1 (trucks/buses →
+  //    percentage bar) and Q2 (permanent/temporary roads → sub-divided AND
+  //    percentage bar), so ~3 diagrams. The "girls per 1000 boys" block below them
+  //    is an Activity and is NOT ingested.
+  //
+  //    🚧 NOT TRANSCRIBED YET — no data/statistics-9.*.json exists and nothing is
+  //    committed. Pages are rendered under out/statistics-9/ and the answers under
+  //    out/_answers/statistics-9/. Established so far:
+  //      · Problem set 7's MCQ key, read off the ANSWERS page: (i) C (ii) B
+  //        (iii) D (iv) B (v) A (vi) D (vii) B (viii) A (ix) C (x) C — ten items.
+  //        Blind-re-derive before trusting these; they are recorded here only so
+  //        the cross-check has something to diff against.
+  //      · The book prints answers for only PART of Practice sets 7.3 and 7.4
+  //        (7.3 → Q1-Q3 only; 7.4 → Q3 and Q4 only), so the step-6 cross-check
+  //        covers those two sets PARTIALLY. 7.2 and 7.5 are fully answered.
+  //      · EXERCISE INVENTORY — COMPLETE, every practice set and the problem set
+  //        read page by page. 57 exercise ROWS (a sub-item is its own row):
+  //          PS 7.1  (p111)      2 q  — draw the diagrams; no printed answers.
+  //          PS 7.2  (p113)      1 q / 4 sub-items — see the defect below.
+  //          PS 7.3  (p118)      6 q  — Q1-Q3 one-liners on class limits/marks,
+  //                                     Q4 fill-in tally table, Q5 a 45-value raw
+  //                                     data set, Q6 the 50 decimals of pi.
+  //          PS 7.4  (p121-122) 10 rows — Q1 + Q2 fill-in cumulative tables,
+  //                                     Q3(i)-(iv) on 62 students' marks,
+  //                                     Q4(i)-(iv) reusing Q3's data.
+  //          PS 7.5  (p125)     14 q  — mean/median/mode one-liners, all on one
+  //                                     page, ALL fully answered by the key.
+  //          Prob 7  (p126-128) 21 rows — Q1(i)-(x) MCQ + Q2 + Q3 + Q4(i)-(ii)
+  //                                     + Q5 + Q6(i)-(iii) + Q7(i)-(ii) + Q8.
+  //      · SOLVED EXAMPLES — the central-tendency block (pp.123-124) is READ and
+  //        every value re-derived: Mean Ex.(1) 130/5 = 26 · Mean Ex.(2) the
+  //        35-mark fx table (all 13 frequencies re-counted from the raw list,
+  //        Sum f = 35, Sum fx = 956, mean 27.31) · Median Ex.(1) = 72 ·
+  //        Median Ex.(2) = 32.5 · Mode Ex.(1) = 55 · Mode Ex.(2) = 21 and 27
+  //        (a genuine BIMODAL example, worth keeping). Six rows.
+  //        p117's exclusive-method Ex. is also READ and verified: with classes
+  //        6-10 / 11-15 / 16-20 the frequencies 2 / 3 / 2 are right and exactly
+  //        two of the nine observations fit no class, and the re-cut table
+  //        (5-10 / 10-15 / 15-20 / 20-25 -> 1 / 5 / 2 / 1) is right too.
+  //        STILL TO READ: p116 (inclusive method, class limits) and pp.119-121
+  //        (cumulative frequency). That plus authoring is all that remains.
+  //      · TWO MORE MISPRINTS in that block, neither changing an answer, both to
+  //        be carried as `[Textbook misprint: ...]` on the row:
+  //          Median Ex.(1) — the stem lists "54, 63, 66, 72, 98, 87, 92" but the
+  //          solution's ascending order reads "54, 63, 66, 72, 78, 87, 92". The
+  //          4th value is 72 either way, so the median is unaffected.
+  //          Mean Ex.(2) — the prose says Sum fx is "14 x 1 + 15 x 6 + ... + 40 x 3"
+  //          while its own table gives 15 the frequency 2, not 6. The table is
+  //          right (Sum f = 35 only with 2), so the prose digit is the misprint.
+  //          p117 exclusive-method Ex. — the prose twice names the two values
+  //          that fit no class as "10.3 and 15.7", but the stem's observations
+  //          are 6, 10, 10.5, 11, 15.5, 19, 20, 12, 13: the excluded pair is
+  //          10.5 and 15.5. Both of the page's tables are correct for the
+  //          printed data, so only the prose is wrong. (Two cosmetic slips in
+  //          the same paragraph, not worth a bracket: "In 5-10 or 10-20 ?" for
+  //          10-15, and "convension" for convention.)
+  //      · NOT ingested, and the line is the Ch.6 one: p114 Ex.(1) (the 50-mark
+  //        "Let's recall" lead-in) and the p115 "complete the table" block print
+  //        NO solution and sit in the theory as activities, so they are skipped
+  //        like the Mehta/Pandit boxes. The p124 "Let's recall" (i)/(ii) prompts
+  //        about n odd/even and the p128 "Fun with maths" Pascal's triangle are
+  //        likewise open-ended.
+  //      · ALL 10 Problem-set-7 MCQ KEYS BLIND-RE-DERIVED, 10/10 match the
+  //        printed key (C B D B A D B A C C). Every PS 7.5 answer (14 of 14) and
+  //        Problem set Q2/Q3/Q4/Q5/Q8 were independently re-derived and AGREE.
+  //      · A SECOND BOOK DEFECT — Problem set 7 Q1(vi) STEM MISPRINT. It reads
+  //        "The mean of five numbers is 80, out of which mean of 4 numbers is 46,
+  //        find the 5th number", whose answer is 5(80) - 4(46) = 216 — matching
+  //        NONE of the four printed options (4, 20, 434, 66). The key's D = 66 is
+  //        exactly 5(50) - 4(46), so the intended first mean is 50, not 80. This
+  //        is the only repair that makes the key right; solving 5a - 4(46) for
+  //        each option gives a non-integer or impossible partner mean otherwise.
+  //        Preserve the stem as printed, key D, and carry a
+  //        `[Textbook misprint: ...]` bracket.
+  //      · SOLVED EXAMPLES: the bar-diagram block has exactly ONE (p110 Ex.1,
+  //        five sub-parts (i)-(v), answered on p111). It is a FIGURE-READING
+  //        question — the percentage bar diagram carries all the data, so the
+  //        five siblings need the figure attached or they are unanswerable.
+  //        pp.109-110 are otherwise pure theory with no exercise questions.
+  //      · A BOOK DEFECT, confirmed by reading both pages at zoom: **Practice
+  //        set 7.2's printed list ends at (iv) on p113 and p114 opens a new
+  //        section, so the question has exactly FOUR sub-items — but the printed
+  //        answer key names FIVE** ("Primary data : (i), (iii), (v)  Secondary
+  //        data : (ii), (iv)"). The key is also off by one against the printed
+  //        list: its (iv) = secondary, whereas the printed (iv) ("information of
+  //        trees gathered by visiting a forest") is unambiguously PRIMARY. Both
+  //        facts are explained by the same cause — an item that was secondary
+  //        was dropped between (iii) and the trees item during typesetting, so
+  //        the key's (v) IS our (iv). Ingest the four printed items, classify
+  //        them on their own merits ((i) primary · (ii) secondary · (iii)
+  //        primary · (iv) primary) and carry a `[Textbook answer-key error: ...]`
+  //        bracket explaining the numbering. Do NOT renumber to match the key.
+  //      · NOT ingested (Activity boxes, no determinate answer): the
+  //        girls-per-1000-boys fill-in table below PS 7.1 (p111) and the
+  //        primary-vs-secondary discussion prompt above PS 7.2 (p113).
+  //      · Suggested bands, cut at block boundaries: idx 117-120 (bar diagrams +
+  //        PS 7.1) · 121-122 (data collection + PS 7.2) · 123-127 (classification
+  //        + frequency tables + PS 7.3) · 128-130 (cumulative frequency + PS 7.4)
+  //        · 131-134 (central tendency + PS 7.5) · 135-137 (Problem set 7).
+  //    THE BAR RENDERER NOW EXISTS (2026-08-15). `render_solution_diagrams.py`
+  //    gained a `BarCanvas` selected by `kind: "bars"`, plus a `statistics-9`
+  //    spec builder, and all three PS 7.1 diagrams render:
+  //      npx --no-install -- python scripts/mh-sb-9/render_solution_diagrams.py statistics-9
+  //    → out/statistics-9-diagrams/ + data/statistics-9.solution-images.json.
+  //    It is a SEPARATE canvas, not a mode on `Canvas`: a bar diagram's x-axis is
+  //    CATEGORICAL while `Canvas.px()` assumes a numeric x, so sharing would mean
+  //    inventing fake x-coordinates. Stacked-only, because both the sub-divided
+  //    and the percentage bar diagram are stacks — the book has no grouped
+  //    variant. Dispatch is `canvas_for(spec)` on a `kind` key no existing spec
+  //    carries, PROVEN a pass-through: rendering `pair-lines-12` through this
+  //    copy and through the untouched `scripts/stateboard` original gives 21 of
+  //    21 byte-identical PNGs.
+  //    The derived percentages (rounded to the nearest integer, as both questions
+  //    instruct) are Q1 84/16 · 81/19 · 79/21 · 78/22 and Q2 58/42 · 58/42 ·
+  //    57/43 · 51/49 — every pair happens to close at exactly 100, so no bar
+  //    needs a rounding fudge.
+  "statistics-9": {
+    id: "statistics-9",
+    chapterName: "Statistics",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_09_Maths__Statistics.pdf",
+    pdf: PART1,
+    pages: range(117, 137),
+    answersPdf: PART1,
+    answerPages: [145],
+    note: "Maharashtra State Board (Class 9) — Statistics (Balbharati textbook, Part 1 Algebra)",
+    // The chapter-opener "Let's study" list (p108) plus the "Let's learn" sections
+    // it omits but which Practice sets 7.3-7.5 drill (classification/frequency
+    // tables, cumulative frequency, measures of central tendency).
+    subtopics: [
+      "Sub-divided Bar Diagram",
+      "Percentage Bar Diagram",
+      "Primary and Secondary Data",
+      "Classification of Data and Frequency Distribution",
+      "Cumulative Frequency",
+      "Measures of Central Tendency",
+    ],
+  },
+
+  // ── Ch.4 Ratio and Proportion (Part 1, Algebra). Pages 57-79 (1-based) →
+  //    0-based 66-88. The LONGEST chapter of the volume at 23pp and the most
+  //    solved-example-dense (~28 worked examples across 6 theory blocks).
+  //    Structure: ratio/proportion + direct & inverse proportion + properties,
+  //    solved Ex(1)-(5) (pp57-61) · Practice set 4.1 (p61) · comparison of
+  //    ratios, solved Ex(1)-(4) (pp62-63) · Practice set 4.2 (p63) · operations
+  //    on equal ratios + componendo-dividendo + applications, solved Ex(1)-(6)
+  //    and Ex(1)-(2) (pp64-70) · Practice set 4.3 (p70) · theorem on equal
+  //    ratios, solved Ex(1)-(4) (pp71-72) · Practice set 4.4 (p73) · continued
+  //    proportion + k-method, solved Ex(1)-(3) and Ex(1)-(4) (pp74-76) ·
+  //    Practice set 4.5 (p77) · Problem Set 4 (pp77-79; Q.1 is a FIVE-part MCQ
+  //    block using the wording "Select the appropriate alternative answer" —
+  //    each Part-1 chapter words this instruction differently, so a transcription
+  //    contract must key on the block's SHAPE, never on one phrase).
+  //    Answers: Part1 p133-134 (1-based) → 0-based 142-143.
+  //
+  //    ⚠ VISION-ONLY, and this is the chapter where the text layer is WORST.
+  //    Stacked fractions do not merely lose their bar — the extractor interleaves
+  //    numerator and denominator into unrecoverable word order: \(\frac{a}{b} =
+  //    \frac{7}{3}\) comes out as "3 b a 7 =", and \(\frac{a-2b}{a+2b}\) as
+  //    "2 2 a b a b - +". 256 fraction bars chapter-wide. There is no repair for
+  //    this at the text layer; read the rendered pages.
+  //
+  //    No figures: the chapter is pure ratio algebra (0 exercise figures).
+  //
+  //    Six transcription bands (b1-ps41 … b6-prob). Band boundaries are cut at
+  //    BLOCK boundaries, not page breaks — Practice set 4.4 spans pp.73-74, so the
+  //    b4/b5 cut sits inside it and b4 carries Q3(iii)-(v) and Q4 from p74.
+  "ratio-proportion-9": {
+    id: "ratio-proportion-9",
+    chapterName: "Ratio and Proportion",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_09_Maths__Ratio_and_Proportion.pdf",
+    pdf: PART1,
+    pages: range(66, 88),
+    answersPdf: PART1,
+    answerPages: range(142, 143),
+    note: "Maharashtra State Board (Class 9) — Ratio and Proportion (Balbharati textbook, Part 1 Algebra)",
+    // The chapter-opener "Let's study" list (p57) plus "Comparison of ratios" and
+    // the direct/inverse proportion pair — "Let's learn" sections the opener list
+    // omits but which Practice sets 4.1 and 4.2 drill (the Ch.2 "Absolute value"
+    // and Ch.3 "Factor Theorem" call).
+    subtopics: [
+      "Ratio and Proportion",
+      "Direct and Inverse Proportion",
+      "Properties of Ratio",
+      "Comparison of Ratios",
+      "Operations on Equal Ratios",
+      "Theorem on Equal Ratios",
+      "Continued Proportion",
+      "k-Method",
+    ],
+  },
+
+  // ── Ch.5 Linear Equations in Two Variables (Part 1, Algebra). Pages 80-92
+  //    (1-based) → 0-based 89-101. The SMALLEST chapter of the volume at 13pp.
+  //    Structure: intro + graphical solution (pp80-82) · elimination method with
+  //    solved Ex(1)-(2) (pp83-84) · general form + substitution method with
+  //    solved Ex(1)-(2) (pp85) · Practice set 5.1 (p86) · word problems with
+  //    solved Ex(1)-(4) (pp87-89) · Practice set 5.2 (pp90-91) · Problem Set 5
+  //    (pp91-92; Q.1 is a THREE-part MCQ block (i)-(iii) — NOT the ten-part block
+  //    every other Part-1 chapter uses; Q.2+ free-response).
+  //    Answers: Part1 p134-135 (1-based) → 0-based 143-144.
+  //
+  //    ⚠ VISION like its siblings, though this is the chapter where the text
+  //    layer comes CLOSEST to usable: only 9 sub-body spans and 15 fraction bars
+  //    chapter-wide (vs 575 and 256 in Polynomials / Ratio). It is still read
+  //    from the rendered pages, so the whole volume is transcribed one way and a
+  //    later session does not have to re-derive which chapters are exceptions.
+  //
+  //    NO graph figures are needed: the graphical-solution material is theory
+  //    (pp80-82) and NOT ONE exercise question asks the student to draw or read a
+  //    graph — verified by scanning every "draw"/"graph" instruction in the
+  //    chapter's exercises, which returns zero.
+  "linear-equations-9": {
+    id: "linear-equations-9",
+    chapterName: "Linear Equations in Two Variables",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_09_Maths__Linear_Equations_in_Two_Variables.pdf",
+    pdf: PART1,
+    pages: range(89, 101),
+    answersPdf: PART1,
+    answerPages: range(143, 144),
+    note: "Maharashtra State Board (Class 9) — Linear Equations in Two Variables (Balbharati textbook, Part 1 Algebra)",
+    // The chapter-opener "Let's study" list (p80) resolved against the book's own
+    // section headings: the opener's "Solving simultaneous equations" is taught as
+    // TWO named methods (elimination, substitution), each with its own heading and
+    // its own worked examples, so they are separate subtopics.
+    subtopics: [
+      "Linear Equations in Two Variables",
+      "Elimination Method",
+      "Substitution Method",
+      "Word Problems on Simultaneous Equations",
+    ],
+  },
+
   // ── Ch.1 Basic Concepts in Geometry (Part 2, Geometry) — the FIRST chapter from
   //    the Geometry volume. Pages 1-12 (1-based) → 0-based 10-21. Structure:
   //    Practice set 1.1 (p5 — distance on a number line, betweenness) ·
