@@ -523,6 +523,86 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Ch.9 Surface Area and Volume (Part 2, Geometry). Pages 114-123 (1-based)
+  //    → 0-based 123-132, the LAST chapter of the volume. Opener VERIFIED: 0-based
+  //    123 carries the "9 Surface Area and Volume" banner and 133 begins the
+  //    ANSWERS section, so the chapter runs to 132.
+  //    Structure: Practice set 9.1 (printed p115) · Practice set 9.2 (p119) ·
+  //    Practice set 9.3 AND Problem set 9 (both on p123 - the two share the
+  //    chapter's last page).
+  //    Answers: 0-based 136-137.
+  //
+  //    ⚠ THE KEY IS COMPLETE AND PURELY NUMERIC, which makes this the easiest
+  //    Part-2 chapter to verify: every answer is an area, a volume or a length,
+  //    so the cross-check is arithmetic rather than judgement. Transcribed key:
+  //      PS 9.1  1. 640 sq.cm, 1120 sq.cm · 2. 20 units · 3. 81 sq.cm, 121.50
+  //              sq.cm · 4. 3600 sq.cm · 5. 20 m · 6. 421.88 cu.cm
+  //              7. 1632.80 sq.cm, 4144.80 sq.cm · 8. 21 cm
+  //      PS 9.2  1. 5 cm · 2. 36960 cu.cm · 3. 10 cm, 6 cm · 4. Rs 2640 · 5. 15 cm
+  //              6. 8 cm · 7. 550 sq.cm · 8. 2816 sq.cm, 9856 cu.cm
+  //              9. 600 cu.m · 10. 28.51 cu.m, 47.18 sq.m
+  //      PS 9.3  1. (i) 200.96 sq.cm, 267.95 cu.cm (ii) 1017.36 sq.cm, 3052.08
+  //              cu.cm (iii) 153.86 sq.m, 179.50 cu.cm  ** the units disagree
+  //              within (iii) - sq.m against cu.cm - so one of them is a misprint;
+  //              settle it against the question before authoring **
+  //              2. 157 sq.cm, 235.5 sq.cm · 3. 14130 cu.cm · 4. 5544 sq.cm
+  //              5. 60 cm
+  //      Prob 9  1. 1980 sq.m · 2. 96801.6 cu.cm · 3. 12 m, 13 m · 4. 6 cm
+  //              5. 1728 cu.cm · 6. 179.67 cu.cm · 7. 21 cm · 8. 132 sq.m, Rs 6864
+  //              9. 4620 sq.m, Rs 32340
+  //
+  //    ⚠ THE RUPEE SIGN IS THE SAME FONT HACK AS PART 1 - the answers page prints
+  //    "` 2640" because the glyph is mapped onto the BACKTICK. Transcribe the
+  //    printed rupee amount, never the backtick.
+  //
+  //    ⚠ Vision-only (Part-2 operator-glyph substitution). Solved examples sit on
+  //    0-based 127, 128 and 131, plus a worked Activity on 130.
+  //
+  //    🚧 NOT COMMITTED YET - pages rendered under out/surface-area-volume-9/ and
+  //    the answers under out/_answers/surface-area-volume-9/. Established:
+  //      · PS 9.1 (printed p115) = 8 questions, NO figures (all text), and ALL
+  //        EIGHT printed answers were re-derived and AGREE.
+  //      · PS 9.2 (pp119-120) = 10 questions; Q1-Q9 read, Q10 overleaf on p120
+  //        NOT yet read. Q1, Q2, Q3, Q4, Q6, Q8 and Q9 re-derived and AGREE.
+  //      · PS 9.3 (p123) = 5 questions and Problem set 9 (p123) = 9 questions -
+  //        the two SHARE the chapter's last page; neither is read yet.
+  //
+  //    ⚠ TWO STEM MISPRINTS FOUND IN PS 9.2, both of the shape "the key is right
+  //    and the stem is wrong", and both diagnosed the same way - the printed
+  //    answer is clean only for one nearby value:
+  //      Q5 "Volume of a cone is 6280 cubic cm and base radius is 30 cm. Find its
+  //        perpendicular height." With r = 30 this gives h = 6.67, but the key
+  //        says 15. With r = **20**, (1/3)(3.14)(400)h = 6280 gives h = 15
+  //        EXACTLY. The radius should read 20 cm.
+  //      Q7 "Volume of a cone is 1212 cubic cm and its height is 24 cm. Find the
+  //        surface area." The key is 550 sq.cm, which needs r = 7 (then l = 25
+  //        and CSA = (22/7)(7)(25) = 550). But r = 7 with h = 24 gives a volume
+  //        of **1232**, not 1212. The volume should read 1232 cubic cm.
+  //      Verify BOTH against the printed page before authoring - each rests on a
+  //      single-digit reading.
+  //    ⚠ PS 9.3 Q1(iii)'s key reads "153.86 sq.m, 179.50 cubic cm" - the two
+  //      units disagree within one answer, so one is a misprint. Settle it
+  //      against the question when p123 is read.
+  "surface-area-volume-9": {
+    id: "surface-area-volume-9",
+    chapterName: "Surface Area and Volume",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_09_Maths__Surface_Area_and_Volume.pdf",
+    pdf: PART2,
+    pages: range(123, 132),
+    answersPdf: PART2,
+    answerPages: range(136, 137),
+    note: "Maharashtra State Board (Class 9) — Surface Area and Volume (Balbharati textbook, Part 2 Geometry)",
+    // 🚧 PROVISIONAL — replace with the chapter's own "Let's study" list once the
+    // opener page (0-based 123) is read.
+    subtopics: [
+      "Cuboid and Cube",
+      "Cylinder",
+      "Cone",
+      "Sphere",
+    ],
+  },
+
   // ── Ch.7 Co-ordinate Geometry (Part 2, Geometry). Pages 88-99 (1-based) →
   //    0-based 97-108. Boundary VERIFIED, and the derived one was WRONG BY ONE:
   //    the practice-set positions suggested the chapter opened at 0-based 98, but
