@@ -33,6 +33,14 @@ type Props = {
   subtopics: Option[];
   pyqYears: number[];
   /**
+   * Whether to render the question-format control. Resolved server-side from
+   * the bank's actual per-exam format mix — it is hidden on the five exams that
+   * are 100% MCQ, where it could only ever be a no-op. See
+   * `shouldShowFormatFilter` in lib/questions/formatMix.ts, which also pins it
+   * ON whenever the filter is active so it can never become unreachable.
+   */
+  showFormat?: boolean;
+  /**
    * "live"   — each change commits to the URL immediately (desktop sidebar).
    * "staged" — each change calls onChange(next); nothing routes. Used by
    *            MobileFilters which buffers staged changes and commits on
@@ -53,6 +61,7 @@ export default function FilterBar({
   chapters,
   subtopics,
   pyqYears,
+  showFormat = false,
   mode = "live",
   onChange,
   onApply,
@@ -107,6 +116,7 @@ export default function FilterBar({
     extraIds: [],
     principleSlug: null,
     kind: "pyq",
+    format: "all",
     fit: "all",
     q: "",
     page: 1,
@@ -120,6 +130,7 @@ export default function FilterBar({
     filters.difficulties.length > 0 ||
     filters.pyqYears.length > 0 ||
     filters.kind !== "pyq" ||
+    filters.format !== "all" ||
     filters.fit !== "all" ||
     !!filters.q;
 
@@ -151,6 +162,37 @@ export default function FilterBar({
                 aria-pressed={on}
               >
                 {k.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    ),
+    format: (
+      <div className="space-y-1.5">
+        <Label>Format</Label>
+        <div
+          role="group"
+          aria-label="Question format"
+          className="inline-flex w-full rounded-md border border-input bg-background p-0.5"
+        >
+          {FORMATS.map((f) => {
+            const on = filters.format === f.value;
+            return (
+              <button
+                key={f.value}
+                type="button"
+                onClick={() => update({ format: f.value })}
+                className={cn(
+                  "flex-1 rounded-sm px-2 py-1.5 text-xs font-medium transition-colors",
+                  on
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+                aria-pressed={on}
+                title={f.title}
+              >
+                {f.label}
               </button>
             );
           })}
@@ -398,11 +440,17 @@ export default function FilterBar({
     ),
   };
 
-  // The syllabus-fit screen only means anything on JEE Mains — elsewhere the
-  // question already belongs to the student's own exam. Hidden rather than
-  // disabled so it doesn't add noise to the nine other exams' filter bars.
+  // Two conditional sections, both hidden rather than disabled so they add no
+  // noise to the exams they have nothing to say about:
+  //   fit    — only means anything on JEE Mains; elsewhere the question already
+  //            belongs to the student's own exam.
+  //   format — only where the bank actually holds more than one format. Five of
+  //            eleven exams are 100% MCQ (29,524 questions). The decision is
+  //            made server-side; see shouldShowFormatFilter.
   const order: SectionKey[] = (mode === "staged" ? STAGED_ORDER : LIVE_ORDER).filter(
-    (k) => k !== "fit" || isFitExam(filters.examId)
+    (k) =>
+      (k !== "fit" || isFitExam(filters.examId)) &&
+      (k !== "format" || showFormat)
   );
 
   return (
@@ -434,6 +482,7 @@ export default function FilterBar({
 
 type SectionKey =
   | "kind"
+  | "format"
   | "fit"
   | "exam"
   | "subject"
@@ -449,6 +498,30 @@ const KINDS: { value: Filters["kind"]; label: string }[] = [
   { value: "pyq", label: "PYQ" },
   { value: "practice", label: "Practice" },
   { value: "all", label: "All" },
+];
+
+// Question-format screen (migrations 0041 + 0061). Orthogonal to KINDS above:
+// either corpus can hold any format. Rendered only where the scope is actually
+// mixed. 'Numeric' is JEE Section-B (NAT) — no options, an exact value — which
+// is why this is a four-way choice and not an "MCQ only" checkbox: on JEE that
+// checkbox would silently also drop 2,900 NAT questions.
+const FORMATS: { value: Filters["format"]; label: string; title: string }[] = [
+  { value: "all", label: "All", title: "Every question format" },
+  {
+    value: "mcq",
+    label: "MCQ",
+    title: "Multiple choice only — four options, one correct",
+  },
+  {
+    value: "subjective",
+    label: "Written",
+    title: "Free-response only — no options, a model answer",
+  },
+  {
+    value: "numeric",
+    label: "Numeric",
+    title: "Numeric-answer only (JEE Section B) — no options, an exact value",
+  },
 ];
 
 // Cross-exam syllabus screen (migration 0062). Rendered only when the selected
@@ -470,6 +543,7 @@ const FITS: { value: Filters["fit"]; label: string; title: string }[] = [
 
 const LIVE_ORDER: SectionKey[] = [
   "kind",
+  "format",
   "fit",
   "exam",
   "subject",
@@ -482,6 +556,7 @@ const LIVE_ORDER: SectionKey[] = [
 
 const STAGED_ORDER: SectionKey[] = [
   "kind",
+  "format",
   "fit",
   "exam",
   "subject",

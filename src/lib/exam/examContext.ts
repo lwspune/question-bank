@@ -65,6 +65,26 @@ export type ExamEntry = {
    */
   hasMocks?: boolean;
   /**
+   * The exam's PUBLIC corpus holds more than one `question_format` (migrations
+   * 0041 + 0061) — MCQ alongside subjective and/or numeric. Drives whether the
+   * `/browse` Format control is rendered at all: five exams are 100% MCQ, where
+   * it could only ever be a no-op.
+   *
+   * A REGISTRY FLAG rather than a live count, and that was measured, not
+   * assumed. The obvious implementation — one grouped aggregate per render
+   * window — is a 49,372-row seq scan (~4.4s, 8,838 buffers) that EXCEEDS the
+   * anon role's 3s statement_timeout, and splitting it per exam still leaves
+   * JEE Mains at ~3.7s. Serving it would mean either an index on the most
+   * heavily written table in the schema or raising a timeout, to decide whether
+   * to draw a control. So it is declared here, where `practiceOnly` /
+   * `boardExam` / `hasMocks` already live, and `tests/format-mix-registry`
+   * re-measures it against the live bank on every prod-contract run so it
+   * cannot silently rot. Both drift directions are benign — see
+   * shouldShowFormatFilter, which pins the control on whenever the filter is
+   * active and so can never strand a viewer with an invisible narrowing.
+   */
+  mixedFormats?: boolean;
+  /**
    * The board+class this exam IS. The `exams` table conflates the two into one
    * row ("Maharashtra State Board Class 10"), so this registry is the ONLY place
    * they can be separated — which is what lets the written-paper builder offer
@@ -98,6 +118,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "jee-mains",
     displayName: "JEE Mains",
     examName: "JEE Mains", // must match the `exams` DB row exactly
+    mixedFormats: true, // Section-B NAT: 2,900 numeric alongside 7,593 MCQ
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/jee-mains", // exam hub: "coming soon" until JEE notes ship
   },
@@ -128,6 +149,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "mh-hsc-12",
     displayName: "MH HSC 12",
     examName: "Maharashtra HSC Class 12", // must match the `exams` DB row exactly
+    mixedFormats: true, // 2,582 subjective vs 268 MCQ
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/mh-hsc-12", // exam hub: "coming soon" until notes ship
     // NOT practiceOnly since 2026-08-13: Class 12 IS a board year and the board
@@ -147,6 +169,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "cbse-12",
     displayName: "CBSE Class 12",
     examName: "CBSE Class 12", // must match the `exams` DB row exactly
+    mixedFormats: true, // 480 subjective vs 41 MCQ
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/cbse-12", // exam hub: "coming soon" until notes ship
     practiceOnly: true, // NCERT textbook exercises/solved-examples corpus (CBSE PYQs later) → /browse defaults to Practice
@@ -158,6 +181,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "mh-sb-9",
     displayName: "MH State Board 9",
     examName: "Maharashtra State Board Class 9", // must match the `exams` DB row exactly
+    mixedFormats: true, // 1,176 subjective vs 111 MCQ
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/mh-sb-9", // exam hub: "coming soon" until notes ship
     practiceOnly: true, // Balbharati textbook exercises/solved-examples corpus (9th is not a board year → no PYQs) → /browse defaults to Practice
@@ -169,6 +193,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "mh-sb-11",
     displayName: "MH State Board 11",
     examName: "Maharashtra State Board Class 11", // must match the `exams` DB row exactly
+    mixedFormats: true, // 2,738 subjective vs 203 MCQ
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/mh-sb-11", // exam hub: "coming soon" until notes ship
     practiceOnly: true, // Balbharati textbook exercises/solved-examples corpus (11th is not a board year → no PYQs) → /browse defaults to Practice
@@ -180,6 +205,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "mh-ssc-10",
     displayName: "MH SSC 10",
     examName: "Maharashtra State Board Class 10", // must match the `exams` DB row exactly
+    mixedFormats: true, // 1,390 subjective vs 245 MCQ
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/mh-ssc-10", // exam hub: "coming soon" until notes ship
     // NOT practiceOnly: Class 10 IS a board year → these are real past-year board

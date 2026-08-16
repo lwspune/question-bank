@@ -10,6 +10,11 @@ export type QuestionKind = "pyq" | "practice" | "all";
  *  has zero options and its model answer lives in `questions.solution`. */
 export type QuestionFormat = "mcq" | "subjective" | "numeric";
 
+/** The question_format axis as a FILTER — the three real formats plus the
+ *  'all' default. Kept distinct from `QuestionFormat` (the column's own type)
+ *  so a row can never be assigned the sentinel. */
+export type FormatFilter = QuestionFormat | "all";
+
 export type Filters = {
   examId: string | null;
   subjectId: string | null;
@@ -32,6 +37,14 @@ export type Filters = {
   principleSlug: string | null;
   /** PYQ (default) / Practice / All — the question_kind axis (migration 0036). */
   kind: QuestionKind;
+  /** MCQ / Subjective / Numeric — the question_format axis (migrations 0041 +
+   *  0061). Orthogonal to `kind`: either corpus can hold any format.
+   *
+   *  Defaults to 'all' and MUST stay that way. 8,370 subjective + 2,900 numeric
+   *  PUBLIC questions are the primary corpus of the six board/JEE exams; any
+   *  other default would silently empty them out of every pre-existing URL,
+   *  guide CTA and notes drill link. */
+  format: FormatFilter;
   /** Cross-exam syllabus screen (migration 0062). Only meaningful on JEE Mains:
    *  narrows to questions an NDA+CET-taught student can actually solve, or to
    *  the excluded set for auditing. 'all' (default) applies no screen. */
@@ -42,6 +55,24 @@ export type Filters = {
 
 const ALL_DIFFICULTIES: Difficulty[] = ["EASY", "MODERATE", "HARD"];
 const KINDS: QuestionKind[] = ["pyq", "practice", "all"];
+// Allow-list, not a regex. The parsed value reaches `.eq("question_format", …)`
+// verbatim, and an unrecognised literal makes Postgres raise `invalid input
+// value for enum question_format` — a 500 rather than an empty result set.
+const FORMATS: FormatFilter[] = ["all", "mcq", "subjective", "numeric"];
+
+/** Narrow an untrusted value to a FormatFilter, defaulting to 'all'.
+ *
+ *  Exported because `/api/export` accepts a client-supplied `Filters` object
+ *  and hands it straight to `queryQuestions` without re-parsing. Anything not
+ *  on the allow-list would reach `.eq("question_format", …)` and make Postgres
+ *  raise `invalid input value for enum` — a 500. (The sibling fields on that
+ *  route are trusted the same way and have the same gap; this at least does
+ *  not widen it. See ROADMAP.) */
+export function coerceFormat(value: unknown): FormatFilter {
+  return FORMATS.includes(value as FormatFilter)
+    ? (value as FormatFilter)
+    : "all";
+}
 const MIN_YEAR = 1900;
 const MAX_YEAR = 2100;
 // UUID v1-v5 shape — relaxed enough to also accept v7/v8 variants.
@@ -60,6 +91,7 @@ export const EMPTY_FILTERS: Filters = {
   extraIds: [],
   principleSlug: null,
   kind: "pyq",
+  format: "all",
   fit: "all",
   q: "",
   page: 1,
@@ -88,6 +120,7 @@ export function parseFilters(params: URLSearchParams): Filters {
   const kind: QuestionKind = KINDS.includes(rawKind as QuestionKind)
     ? (rawKind as QuestionKind)
     : "pyq";
+  const format = coerceFormat(params.get("format"));
   const fit = parseFit(params.get("fit"));
   const q = params.get("q") ?? "";
   const pageRaw = parseInt(params.get("page") ?? "1", 10);
@@ -102,6 +135,7 @@ export function parseFilters(params: URLSearchParams): Filters {
     extraIds,
     principleSlug,
     kind,
+    format,
     fit,
     q,
     page,
@@ -124,6 +158,9 @@ export function buildSearchParams(filters: Filters): URLSearchParams {
     sp.set("extras", filters.extraIds.join(","));
   if (filters.principleSlug) sp.set("principle", filters.principleSlug);
   if (filters.kind !== "pyq") sp.set("kind", filters.kind);
+  // Omitted at the default so every URL minted before this filter existed —
+  // and every guide/notes CTA built through buildBrowseUrl — stays byte-identical.
+  if (filters.format !== "all") sp.set("format", filters.format);
   if (filters.fit !== "all") sp.set("fit", filters.fit);
   if (filters.q) sp.set("q", filters.q);
   if (filters.page > 1) sp.set("page", String(filters.page));

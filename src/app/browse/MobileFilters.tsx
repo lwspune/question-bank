@@ -26,6 +26,8 @@ type Props = {
   chapters: Option[];
   subtopics: Option[];
   pyqYears: number[];
+  /** Resolved server-side — see FilterBar's own `showFormat` note. */
+  showFormat?: boolean;
   activeCount: number;
 };
 
@@ -36,6 +38,7 @@ export default function MobileFilters({
   chapters,
   subtopics,
   pyqYears,
+  showFormat,
   activeCount,
 }: Props) {
   const router = useRouter();
@@ -108,6 +111,7 @@ export default function MobileFilters({
             chapters={chapters}
             subtopics={subtopics}
             pyqYears={pyqYears}
+            showFormat={showFormat}
             mode="staged"
             onChange={handleChange}
           />

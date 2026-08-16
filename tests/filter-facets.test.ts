@@ -145,6 +145,47 @@ describe.skipIf(!HAS_ENV)("filter facets RPCs", () => {
       expect(totalOneYear).toBeGreaterThan(0);
       expect(totalOneYear).toBeLessThan(totalUnfiltered);
     });
+
+    // p_format, migration 0078. Without it the sidebar prints the unfiltered
+    // total beside a filtered list — measured at 13-25x out on the board exams.
+    // Kept data-agnostic: the seeded test project is MCQ-only, so the partition
+    // identity is the assertion, not a non-zero subjective count.
+    it("p_format partitions the counts and defaults to 'all'", async () => {
+      const args = { p_exam_id: ndaExamId, p_subject_id: mathsSubjectId };
+      const sum = (rows: unknown) =>
+        (rows as { q_count: number }[]).reduce((s, r) => s + r.q_count, 0);
+
+      const [dflt, all, mcq, subjective, numeric] = await Promise.all(
+        [undefined, "all", "mcq", "subjective", "numeric"].map((p_format) =>
+          client.rpc(
+            "get_chapter_facets",
+            p_format === undefined ? args : { ...args, p_format }
+          )
+        )
+      );
+      for (const r of [dflt, all, mcq, subjective, numeric]) {
+        expect(r.error).toBeNull();
+      }
+      // Omitting the argument must behave exactly as 'all' — that default is
+      // what let migration 0078 land while the previous build was still live.
+      expect(sum(dflt.data)).toBe(sum(all.data));
+      expect(sum(all.data)).toBeGreaterThan(0);
+      expect(sum(mcq.data) + sum(subjective.data) + sum(numeric.data)).toBe(
+        sum(all.data)
+      );
+    });
+
+    it("rejects nothing and returns empty for a format with no rows", async () => {
+      // A format absent from the scope must yield zero rows, never an error —
+      // the sidebar then renders no chapters, which is the honest answer.
+      const { data, error } = await client.rpc("get_chapter_facets", {
+        p_exam_id: ndaExamId,
+        p_subject_id: mathsSubjectId,
+        p_format: "numeric", // NDA has no Section-B NAT questions.
+      });
+      expect(error).toBeNull();
+      expect(data).toEqual([]);
+    });
   });
 
   describe("get_subtopic_facets", () => {
@@ -218,6 +259,39 @@ describe.skipIf(!HAS_ENV)("filter facets RPCs", () => {
         .eq("question_kind", "pyq");
 
       expect(facetMap.get(subtopic!.id)).toBe(count);
+    });
+
+    it("p_format partitions the counts and defaults to 'all'", async () => {
+      const { data: chapter } = await client
+        .from("chapters")
+        .select("id")
+        .eq("subject_id", mathsSubjectId)
+        .eq("name", "Matrices & Determinants")
+        .single();
+      const args = {
+        p_chapter_ids: [chapter!.id],
+        p_exam_id: ndaExamId,
+        p_subject_id: mathsSubjectId,
+      };
+      const sum = (rows: unknown) =>
+        (rows as { q_count: number }[]).reduce((s, r) => s + r.q_count, 0);
+
+      const [dflt, all, mcq, subjective, numeric] = await Promise.all(
+        [undefined, "all", "mcq", "subjective", "numeric"].map((p_format) =>
+          client.rpc(
+            "get_subtopic_facets",
+            p_format === undefined ? args : { ...args, p_format }
+          )
+        )
+      );
+      for (const r of [dflt, all, mcq, subjective, numeric]) {
+        expect(r.error).toBeNull();
+      }
+      expect(sum(dflt.data)).toBe(sum(all.data));
+      expect(sum(all.data)).toBeGreaterThan(0);
+      expect(sum(mcq.data) + sum(subjective.data) + sum(numeric.data)).toBe(
+        sum(all.data)
+      );
     });
   });
 

@@ -22,6 +22,7 @@ const EMPTY_FILTERS: Filters = {
   extraIds: [],
   principleSlug: null,
   kind: "pyq",
+  format: "all",
   fit: "all",
   q: "",
   page: 1,
@@ -332,5 +333,60 @@ describe.skipIf(!HAS_ENV)("queryQuestions (against LWS Pune seed)", () => {
     // seed instead (deterministic, robust to future 0-option ingests).
     const mcq = await queryQuestions(anonClient, null, { ...EMPTY_FILTERS, examId }, 25);
     expect(mcq.rows.some((r) => r.options.length === 4)).toBe(true);
+  });
+
+  // The question_format axis (migrations 0041 + 0061). Written to be
+  // data-agnostic: the seeded test project is MCQ-only, so asserting a
+  // non-zero subjective count here would pin a fact about prod's board
+  // corpora that this database does not hold. The partition identity and the
+  // per-row invariant hold on ANY dataset, including an all-MCQ one.
+  describe("format filter", () => {
+    it("partitions the result set — the three formats sum to 'all'", async () => {
+      const base = { ...EMPTY_FILTERS, examId, kind: "all" as const };
+      const [all, mcq, subjective, numeric] = await Promise.all(
+        (["all", "mcq", "subjective", "numeric"] as const).map((format) =>
+          queryQuestions(client, orgId, { ...base, format }, 1)
+        )
+      );
+      expect(all.totalCount).toBeGreaterThan(0);
+      expect(mcq.totalCount + subjective.totalCount + numeric.totalCount).toBe(
+        all.totalCount
+      );
+    });
+
+    it("returns only rows of the requested format", async () => {
+      for (const format of ["mcq", "subjective", "numeric"] as const) {
+        const result = await queryQuestions(
+          client,
+          orgId,
+          { ...EMPTY_FILTERS, examId, kind: "all", format },
+          25
+        );
+        for (const row of result.rows) {
+          expect(row.questionFormat).toBe(format);
+        }
+      }
+    });
+
+    it("'all' is a true no-op — same rows as a caller that never knew the field", async () => {
+      // The guard that keeps every pre-existing URL, guide CTA and notes drill
+      // link returning exactly what it returned before this filter shipped.
+      const withDefault = await queryQuestions(
+        client,
+        orgId,
+        { ...EMPTY_FILTERS, examId },
+        25
+      );
+      const explicit = await queryQuestions(
+        client,
+        orgId,
+        { ...EMPTY_FILTERS, examId, format: "all" },
+        25
+      );
+      expect(explicit.totalCount).toBe(withDefault.totalCount);
+      expect(explicit.rows.map((r) => r.id)).toEqual(
+        withDefault.rows.map((r) => r.id)
+      );
+    });
   });
 });

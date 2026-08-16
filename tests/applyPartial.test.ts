@@ -12,6 +12,7 @@ const SEEDED: Filters = {
   extraIds: [],
   principleSlug: null,
   kind: "pyq",
+  format: "all",
   fit: "all",
   q: "vectors",
   page: 4,
@@ -104,6 +105,18 @@ describe("applyPartial", () => {
     expect(next.subjectId).toBeNull();
     expect(next.chapterIds).toEqual([]);
     expect(next.subtopicIds).toEqual([]);
+  });
+
+  it("format does NOT cascade — it is orthogonal to exam → subject → chapter", () => {
+    // A teacher narrowing a chapter to its MCQs must keep the chapter. Folding
+    // format into the cascade would silently throw them back to the whole exam.
+    const next = applyPartial(SEEDED, { format: "mcq" });
+    expect(next.format).toBe("mcq");
+    expect(next.examId).toBe("exam-mht");
+    expect(next.subjectId).toBe("subj-maths");
+    expect(next.chapterIds).toEqual(["ch-1", "ch-2"]);
+    expect(next.subtopicIds).toEqual(["st-1"]);
+    expect(next.page).toBe(1);
   });
 
   it("can be used to build EMPTY_FILTERS from a seeded state via field-by-field clear", () => {

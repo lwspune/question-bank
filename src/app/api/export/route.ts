@@ -8,7 +8,7 @@ import {
   queryQuestionsByIds,
   type QuestionRow,
 } from "@/lib/questions/query";
-import type { Filters } from "@/lib/questions/filters";
+import { coerceFormat, type Filters } from "@/lib/questions/filters";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/http";
 import {
@@ -181,10 +181,13 @@ export async function POST(request: NextRequest) {
         );
       }
     } else {
+      // `format` reaches an ENUM column, so an unrecognised literal would be a
+      // 500 (`invalid input value for enum`) rather than an empty result. The
+      // filters object arrives from the client unparsed, so narrow it here.
       const result = await queryQuestions(
         supabase,
         null,
-        body.filters!,
+        { ...body.filters!, format: coerceFormat(body.filters!.format) },
         EXPORT_CAP
       );
       if (result.totalCount === 0) {

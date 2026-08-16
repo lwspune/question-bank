@@ -33,6 +33,10 @@ import {
   pickStarterChapters,
 } from "@/lib/questions/browseLanding";
 import { getDefaultViewCountsByExam } from "@/lib/questions/defaultViewCounts";
+import {
+  mixedFormatExamIds,
+  shouldShowFormatFilter,
+} from "@/lib/questions/formatMix";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { listChapterLandings } from "@/lib/questions/landing";
@@ -133,6 +137,10 @@ export default async function BrowsePage({ searchParams }: PageProps) {
     p_pyq_years: filters.pyqYears.length > 0 ? filters.pyqYears : null,
     p_q: filters.q || null,
     p_kind: filters.kind,
+    // Without this the sidebar keeps printing the unfiltered total while the
+    // list shows the filtered subset — ~13-25x out on the board exams. See
+    // migration 0078.
+    p_format: filters.format,
   };
 
   // The bare page (no filters, anonymous viewer) skips the question query
@@ -157,6 +165,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
     { data: pyqYears },
     questionsResult,
     landing,
+    examIdsBySlug,
   ] = await Promise.all([
     listExams(),
     filters.examId ? listSubjects(filters.examId) : Promise.resolve([]),
@@ -180,7 +189,21 @@ export default async function BrowsePage({ searchParams }: PageProps) {
       ? Promise.resolve({ totalCount: 0, rows: [] })
       : queryQuestions(supabase, null, filters, DEFAULT_PAGE_SIZE),
     showLanding ? loadLandingPanel() : Promise.resolve(null),
+    // slug → uuid, cached hourly and already paid for by the header. Needed
+    // because /browse filters by examId while the registry is keyed by slug.
+    getExamIdMap(),
   ]);
+
+  // Hidden on the five exams that are 100% MCQ, where it could only be a no-op.
+  // Sourced from EXAM_REGISTRY.mixedFormats, NOT a live count — the live count
+  // is a 49k-row seq scan that exceeds the anon statement_timeout. See
+  // lib/questions/formatMix.ts, and tests/format-mix-registry for the probe
+  // that keeps the flag honest.
+  const showFormat = shouldShowFormatFilter({
+    mixedExamIds: mixedFormatExamIds(examIdsBySlug),
+    examId: filters.examId,
+    activeFormat: filters.format,
+  });
 
   // On the landing branch the hero + header count come from the cached catalog
   // rather than the question query's `count: "exact"` — the SAME source the
@@ -267,6 +290,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
                 chapters={chapterOpts}
                 subtopics={subtopicOpts}
                 pyqYears={pyqYearOpts}
+                showFormat={showFormat}
                 activeCount={activeCount}
               />
             </div>
@@ -310,6 +334,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
                 chapters={chapterOpts}
                 subtopics={subtopicOpts}
                 pyqYears={pyqYearOpts}
+                showFormat={showFormat}
               />
             </div>
           </aside>
@@ -420,6 +445,7 @@ function countActiveFilters(f: Filters): number {
   if (f.pyqYears.length > 0) n++;
   if (f.principleSlug) n++;
   if (f.kind !== "pyq") n++;
+  if (f.format !== "all") n++;
   if (f.q) n++;
   return n;
 }

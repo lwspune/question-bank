@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   parseFilters,
   buildSearchParams,
+  coerceFormat,
   type Filters,
 } from "@/lib/questions/filters";
 
@@ -18,6 +19,7 @@ describe("parseFilters", () => {
       principleSlug: null,
       fit: "all",
       kind: "pyq",
+      format: "all",
       q: "",
       page: 1,
     });
@@ -124,6 +126,7 @@ describe("buildSearchParams", () => {
     principleSlug: null,
     fit: "all",
     kind: "pyq",
+    format: "all",
     q: "",
     page: 1,
   };
@@ -151,6 +154,7 @@ describe("buildSearchParams", () => {
       principleSlug: null,
       fit: "all",
       kind: "pyq",
+      format: "all",
       q: "lens",
       page: 2,
     });
@@ -175,6 +179,7 @@ describe("buildSearchParams", () => {
       principleSlug: null,
       fit: "all",
       kind: "pyq",
+      format: "all",
       q: "wave",
       page: 3,
     };
@@ -199,6 +204,7 @@ describe("buildSearchParams", () => {
       principleSlug: null,
       fit: "all",
       kind: "pyq",
+      format: "all",
       q: "",
       page: 1,
     };
@@ -219,6 +225,7 @@ describe("buildSearchParams", () => {
       principleSlug: "vieta-symmetric-roots",
       fit: "all",
       kind: "pyq",
+      format: "all",
       q: "",
       page: 1,
     };
@@ -239,6 +246,7 @@ describe("buildSearchParams", () => {
       principleSlug: null,
       fit: "all",
       kind: "pyq",
+      format: "all",
       q: "",
       page: 1,
     });
@@ -257,6 +265,7 @@ describe("buildSearchParams", () => {
       principleSlug: null,
       fit: "all",
       kind: "pyq",
+      format: "all",
       q: "",
       page: 1,
     });
@@ -275,10 +284,69 @@ describe("buildSearchParams", () => {
       principleSlug: null,
       fit: "all",
       kind: "pyq",
+      format: "all",
       q: "",
       page: 1,
     });
     expect(sp.get("pyqYears")).toBe("2024,2023");
+  });
+});
+
+describe("question format (MCQ / subjective / numeric screen)", () => {
+  it("defaults to 'all' — every pre-existing URL must keep its result set", () => {
+    expect(parseFilters(new URLSearchParams("")).format).toBe("all");
+    expect(parseFilters(new URLSearchParams("examId=e1&kind=practice")).format).toBe(
+      "all"
+    );
+  });
+
+  it("parses the three real formats", () => {
+    expect(parseFilters(new URLSearchParams("format=mcq")).format).toBe("mcq");
+    expect(parseFilters(new URLSearchParams("format=subjective")).format).toBe(
+      "subjective"
+    );
+    expect(parseFilters(new URLSearchParams("format=numeric")).format).toBe(
+      "numeric"
+    );
+  });
+
+  it("falls back to 'all' for anything unrecognised", () => {
+    // The value reaches `.eq("question_format", …)` verbatim, and an unknown
+    // literal makes Postgres raise `invalid input value for enum` — a 500,
+    // not an empty list. The allow-list is what keeps that unreachable.
+    expect(parseFilters(new URLSearchParams("format=garbage")).format).toBe("all");
+    expect(parseFilters(new URLSearchParams("format=MCQ")).format).toBe("all");
+    expect(parseFilters(new URLSearchParams("format=")).format).toBe("all");
+    expect(
+      parseFilters(new URLSearchParams("format=mcq'; drop table questions--")).format
+    ).toBe("all");
+  });
+
+  it("omits the param when 'all' so existing /browse URLs stay byte-identical", () => {
+    const base = parseFilters(new URLSearchParams(""));
+    expect(buildSearchParams(base).has("format")).toBe(false);
+    expect(buildSearchParams({ ...base, format: "mcq" }).get("format")).toBe("mcq");
+  });
+
+  it("coerceFormat narrows an untrusted value — the /api/export entry point", () => {
+    // That route hands a client-supplied Filters object straight to
+    // queryQuestions without re-parsing, and the value lands on an enum column.
+    expect(coerceFormat("mcq")).toBe("mcq");
+    expect(coerceFormat("all")).toBe("all");
+    expect(coerceFormat("bogus")).toBe("all");
+    expect(coerceFormat(undefined)).toBe("all");
+    expect(coerceFormat(null)).toBe("all");
+    expect(coerceFormat(42)).toBe("all");
+    expect(coerceFormat({ format: "mcq" })).toBe("all");
+  });
+
+  it("round-trips every value", () => {
+    const base = parseFilters(new URLSearchParams(""));
+    for (const format of ["all", "mcq", "subjective", "numeric"] as const) {
+      expect(parseFilters(buildSearchParams({ ...base, format })).format).toBe(
+        format
+      );
+    }
   });
 });
 
