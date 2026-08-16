@@ -78,3 +78,7 @@ backups/
 # after, purely to carry the old (chapter, subtopic) pairs across the renumber.
 # Committing one would leave a stale map in the tree that looks authoritative.
 scripts/syllabus/data/.spine-snapshot-*.json
+
+# scripts/reviews: regenerable working dumps (redump-papers.ts). Evidence lives
+# in data/blind/<run>/ and data/findings/<run>/, which ARE committed.
+scripts/reviews/data/audit-run/

@@ -31,7 +31,7 @@
   "id": "34b77053-fec4-47f6-bd17-df3749a93f5a",
   "ref": "Misc I Q.5",
   "derived_answer": "D",
-  "solution": "**[MISMATCH: computed value \\(\\frac{5}{\\sqrt{26}}\\approx0.98\\) matches no option]** \\(\\bar{a_1}=(1,2,1),\\bar{b_1}=(1,-1,-1),\\bar{a_2}=(2,-1,-1),\\bar{b_2}=(2,1,2)\\). \\(\\bar{b_1}\\times\\bar{b_2}=(-1,-4,3)\\), \\(|\\bar{b_1}\\times\\bar{b_2}|=\\sqrt{26}\\). \\(\\bar{a_2}-\\bar{a_1}=(1,-3,-2)\\); dot \\(=(1)(-1)+(-3)(-4)+(-2)(3)=5\\). Shortest distance \\(=\\frac{|5|}{\\sqrt{26}}=\\frac{5}{\\sqrt{26}}\\approx0.98\\), which equals none of the options (\\(\\frac{1}{\\sqrt3}\\approx0.58,\\frac{1}{\\sqrt2}\\approx0.71,\\frac{3}{\\sqrt2}\\approx2.12,\\frac{\\sqrt3}{2}\\approx0.87\\)). Closest is \\(\\frac{\\sqrt3}{2}\\) (D). Likely book defect.",
+  "solution": "[Textbook defect: the printed alternatives are wrong. The shortest distance computes to \\(\\dfrac{5}{\\sqrt{26}}\\approx 0.98\\), which matches none of the four printed values. The official key marks \\(\\dfrac{\\sqrt{3}}{2}\\approx 0.87\\), retained here to match the board.]\n\n\\(\\bar{a_1}=(1,2,1),\\ \\bar{b_1}=(1,-1,-1),\\ \\bar{a_2}=(2,-1,-1),\\ \\bar{b_2}=(2,1,2)\\).\n\n\\(\\bar{b_1}\\times\\bar{b_2}=(-1,-4,3)\\), so \\(\\left|\\bar{b_1}\\times\\bar{b_2}\\right|=\\sqrt{26}\\).\n\n\\(\\bar{a_2}-\\bar{a_1}=(1,-3,-2)\\), and \\(\\left(\\bar{a_2}-\\bar{a_1}\\right)\\cdot\\left(\\bar{b_1}\\times\\bar{b_2}\\right)=(1)(-1)+(-3)(-4)+(-2)(3)=5\\).\n\nShortest distance \\(=\\dfrac{|5|}{\\sqrt{26}}=\\dfrac{5}{\\sqrt{26}}\\approx 0.98\\), whereas the printed values are \\(\\dfrac{1}{\\sqrt{3}}\\approx 0.58\\), \\(\\dfrac{1}{\\sqrt{2}}\\approx 0.71\\), \\(\\dfrac{3}{\\sqrt{2}}\\approx 2.12\\) and \\(\\dfrac{\\sqrt{3}}{2}\\approx 0.87\\).\n\nFollowing the official key, (D).",
   "matches_current": false
  },
  {
@@ -122,7 +122,7 @@
   "id": "4cbb13ba-f4f1-4276-9417-1f8a545288f1",
   "ref": "Misc I Q.18",
   "derived_answer": "A",
-  "solution": "Normal \\(=\\bar{b_1}\\times\\bar{b_2}\\), \\(\\bar{b_1}=(4,4,-5),\\bar{b_2}=(7,1,3)\\): \\(i:4(3)-(-5)(1)=17\\); \\(j:-(4(3)-(-5)(7))=-47\\); \\(k:4(1)-4(7)=-24\\). Plane through \\((5,7,-3)\\): \\(17(x-5)-47(y-7)-24(z+3)=0\\Rightarrow17x-47y-24z+172=0\\). (Note: substituting the second line's point \\((8,4,-5)\\) gives \\(240\\neq0\\), i.e. \\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=240\\neq0\\), so the two given lines are actually skew, not coplanar — a mild book defect; option A is the plane determined by line 1 and the common normal.)",
+  "solution": "[Textbook answer-key error: the book's printed key is \\(17x+47y-24z+172=0\\), whose normal \\((17,47,-24)\\) is not perpendicular to the first line's direction \\((4,4,-5)\\), so that plane does not contain even the first line. In fact the two given lines are skew — \\(\\left(\\bar{a_2}-\\bar{a_1}\\right)\\cdot\\left(\\bar{b_1}\\times\\bar{b_2}\\right)=240\\neq 0\\) — so no plane contains both. The alternative keyed here is the plane through the first line with normal \\(\\bar{b_1}\\times\\bar{b_2}\\).]\n\n\\(\\bar{b_1}=(4,4,-5),\\ \\bar{b_2}=(7,1,3)\\), so the normal is \\(\\bar{b_1}\\times\\bar{b_2}\\):\n\n\\(i:\\ 4(3)-(-5)(1)=17\\); \\(j:\\ -\\left(4(3)-(-5)(7)\\right)=-47\\); \\(k:\\ 4(1)-4(7)=-24\\).\n\nPlane through \\((5,7,-3)\\): \\(17(x-5)-47(y-7)-24(z+3)=0\\Rightarrow 17x-47y-24z+172=0\\).\n\nHence (A).",
   "matches_current": true
  },
  {

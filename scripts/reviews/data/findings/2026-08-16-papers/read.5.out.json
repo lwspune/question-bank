@@ -1,0 +1,16 @@
+[
+  {
+    "questionNumber": "Misc 4A I Q1",
+    "questionId": "9d01b216-4edb-4fcb-8186-4e6c3edb0046",
+    "issue": "META_COMMENTARY (outside the six categories, but student-facing)",
+    "evidence": "The stored solution is a single bracketed erratum, and it ends with an internal-tooling aside that will print verbatim in the answer key: \"(Worded without option letters on purpose: naming a letter inside a caveat makes the standing key-audit probe read it as the concluded answer.)\" A student reading the answer key is told about our `audit:keys` probe and our wording policy. The mathematics itself is sound — the determinant does factor as -(ac - b^2)(a + 2b + c) (verified by symbolic expansion), so it vanishes for a, b, c in G.P. or for a + 2b + c = 0, and the erratum's claim that the printed stem contains no alpha is factually correct (the third row/column read a+b, b+c, i.e. the classic ax+b / bx+c stem with x = 1 substituted, which is exactly why the 'alpha is a root of ax^2 + 2bx + c = 0' alternative lost its variable). Only the trailing parenthetical is the defect. The row also carries a trailing \"\\n\\n\" after it.",
+    "proposedFix": "Delete the final parenthetical sentence and the trailing blank lines. The policy it describes (state the condition, never the option letter) is already followed by the rest of the note, so removing the meta-explanation loses nothing and keeps the probe quiet. Optionally add the one-line derivation the note asserts: R3 -> R3 - R1 - R2 makes the third row (0, 0, -(a + 2b + c)), so D = -(a + 2b + c)(ac - b^2)."
+  },
+  {
+    "questionNumber": "Misc I (3)",
+    "questionId": "7364a1db-bdfb-4eed-8881-07fcdeca420c",
+    "issue": "FALSE_STEP (inside the erratum note; the worked solution below it is correct)",
+    "evidence": "The erratum reads: \"the textbook key marks (C) 15/4 - the signed integral \\int x^3\\,dx\". The signed integral is NOT 15/4: \\int_{-2}^{1} x^3 dx = 1/4 - 4 = -15/4 (confirmed symbolically). And -15/4 is printed as option (B) in this very question. So as written the note identifies 15/4 with a quantity that actually equals the *other* distractor, and a student who checks the claim by integrating straight through lands on (B), not (C) - which makes the note read as though the book's key were B. The book's key of 15/4 is better explained as |\\int_{-2}^{1} x^3 dx|, i.e. taking the modulus of the through-integral instead of splitting the interval at 0. The worked solution itself (4 + 1/4 = 17/4) is correct and matches key (D).",
+    "proposedFix": "Reword the note to: \"[Textbook answer-key error: the textbook key marks 15/4, which is the MAGNITUDE of the through-integral \\int_{-2}^{1} x^3 dx = -15/4 - the book integrated straight through instead of splitting at x = 0. The geometric AREA bounded by y = x^3 over [-2, 1] is 4 + 1/4 = 17/4, the keyed alternative. Key kept.]\" (Also drop the option letters (C) and (D) from the bracket, per the convention already applied on Misc 4A I Q1, so the standing key-audit probe does not read \"(C)\" as the concluded answer.)"
+  }
+]

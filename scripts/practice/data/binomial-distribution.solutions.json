@@ -97,7 +97,7 @@
   },
   {
     "number": 861,
-    "solution": "For a fair coin, the probability of an odd number of tails in any number of tosses equals \\(\\frac{1}{2}\\) (the even and odd cases split the binomial expansion equally when \\(p = q = \\frac{1}{2}\\)). So \\(P(\\text{odd number of tails}) = \\frac{1}{2}\\). Matches option A."
+    "solution": "Let \\(X\\) be the number of tails, so \\(P(X = k) = {}^{100}C_k\\left(\\tfrac{1}{2}\\right)^{100}\\) and the total number of outcomes is \\(2^{100}\\). Putting \\(x = 1\\) in \\((1+x)^{100}\\) gives \\(\\sum_k {}^{100}C_k = 2^{100}\\); putting \\(x = -1\\) gives \\(\\sum_k (-1)^k\\,{}^{100}C_k = 0\\). Subtracting the second from the first, \\(2\\sum_{k\\ \\text{odd}} {}^{100}C_k = 2^{100}\\), so \\(\\sum_{k\\ \\text{odd}} {}^{100}C_k = 2^{99}\\). Hence \\(P(X\\ \\text{odd}) = \\dfrac{2^{99}}{2^{100}} = \\dfrac{1}{2}\\). Equivalently: whatever the parity of the first 99 tosses, exactly one outcome of the 100th toss makes the total odd, and that outcome has probability \\(\\tfrac{1}{2}\\) — so the answer is \\(\\tfrac{1}{2}\\) for any number of tosses. Hence (A)."
   },
   {
     "number": 862,
@@ -117,7 +117,7 @@
   },
   {
     "number": 866,
-    "solution": "\\(p = \\frac{1}{4}\\), \\(q = \\frac{3}{4}\\). \\(P(\\text{at least one success}) = 1 - \\left(\\frac{3}{4}\\right)^n \\ge \\frac{9}{10} \\Rightarrow \\left(\\frac{3}{4}\\right)^n \\le \\frac{1}{10}\\). Taking \\(\\log_{10}\\): \\(n(\\log_{10} 3 - \\log_{10} 4) \\le -1\\). Dividing by the negative quantity flips the inequality: \\(n(\\log_{10} 4 - \\log_{10} 3) \\ge 1 \\Rightarrow n \\ge \\frac{1}{\\log_{10} 4 - \\log_{10} 3}\\). This is option D. NOTE: the supplied answer key marks A, but both this derivation and the book's own printed solution give \\(\\frac{1}{\\log_{10} 4 - \\log_{10} 3}\\) = option D."
+    "solution": "\\(p = \\frac{1}{4}\\), \\(q = \\frac{3}{4}\\). \\(P(\\text{at least one success}) = 1 - \\left(\\frac{3}{4}\\right)^n \\ge \\frac{9}{10} \\Rightarrow \\left(\\frac{3}{4}\\right)^n \\le \\frac{1}{10}\\). Taking \\(\\log_{10}\\): \\(n(\\log_{10} 3 - \\log_{10} 4) \\le -1\\). Dividing by the negative quantity flips the inequality: \\(n(\\log_{10} 4 - \\log_{10} 3) \\ge 1 \\Rightarrow n \\ge \\frac{1}{\\log_{10} 4 - \\log_{10} 3}\\). This is option D. NOTE: the source booklet's key column marks \\(\\frac{1}{\\log_{10} 4 + \\log_{10} 3}\\), which contradicts the booklet's own printed solution; that solution and this derivation both give \\(\\frac{1}{\\log_{10} 4 - \\log_{10} 3}\\), which is the answer recorded here."
   },
   {
     "number": 867,

@@ -1,0 +1,37 @@
+[
+  {
+    "questionId": "44681c8a-8621-4be7-9cff-29d48ae38fc3",
+    "questionNumber": "1402",
+    "newSolution": "Let the minar height be \\(x\\), the tower height \\(h\\), and the horizontal separation \\(d\\). From the foot of the tower the elevation of the minar top is \\(\\alpha\\): \\(d = x\\cot\\alpha\\) ...(i). The elevation of the minar top from the tower foot equals the depression of the tower foot from the minar top, so from the top of the minar the tower foot lies at depression \\(\\alpha\\); since the tower subtends \\(\\beta\\) there, its top lies at depression \\((\\alpha-\\beta)\\). Hence \\(\\dfrac{x-h}{d} = \\tan(\\alpha-\\beta)\\), i.e. \\(d = (x-h)\\cot(\\alpha-\\beta)\\) ...(ii). Equating the two expressions for \\(d\\): \\(x\\cot\\alpha = (x-h)\\cot(\\alpha-\\beta)\\). Solving, \\(x[\\cot(\\alpha-\\beta) - \\cot\\alpha] = h\\cot(\\alpha-\\beta)\\), so \\(x = \\dfrac{h\\cot(\\alpha-\\beta)}{\\cot(\\alpha-\\beta) - \\cot\\alpha}\\). Hence (A).",
+    "whatChanged": "Deleted the inverted 'Dividing (ii) by (i)' equality and the abandoned '... rather,' fragment; added the one line justifying why the tower top sits at depression (alpha-beta). The equating-the-two-expressions route and the final answer are unchanged.",
+    "concern": ""
+  },
+  {
+    "questionId": "c4a14c31-bb55-40e7-b110-2a8ab8449c24",
+    "questionNumber": "1403",
+    "newSolution": "Let the tower height be \\(h\\). The depression of the ground point is \\(60^\\circ\\), so the elevation of the top from that point is also \\(60^\\circ\\): \\(\\tan 60^\\circ = \\dfrac{h}{\\text{distance}}\\). With horizontal distance \\(\\dfrac{1}{\\sqrt{3}+1}\\), \\(h = \\dfrac{1}{\\sqrt{3}+1}\\times\\sqrt{3} = \\dfrac{\\sqrt{3}}{\\sqrt{3}+1} = \\dfrac{\\sqrt{3}(\\sqrt{3}-1)}{(\\sqrt{3}+1)(\\sqrt{3}-1)} = \\dfrac{3-\\sqrt{3}}{2}\\) metres. Hence (C).",
+    "whatChanged": "Deleted the false closing parenthetical claiming the printed alternative reverses the sign; the printed value already is \\(\\dfrac{3-\\sqrt{3}}{2}\\). Derivation untouched.",
+    "concern": ""
+  },
+  {
+    "questionId": "182ecc79-e776-4cba-b18e-7d50f2a73703",
+    "questionNumber": "1619",
+    "newSolution": "The centre is the intersection of the diameters \\(2x + 3y + 1 = 0\\) and \\(3x - y - 4 = 0\\). Solving: from the second \\(y = 3x - 4\\); then \\(2x + 3(3x - 4) + 1 = 0 \\Rightarrow 11x = 11 \\Rightarrow x = 1,\\ y = -1\\). For \\(x^2 + y^2 + px + qy + r = 0\\) the centre is \\(\\left(-\\tfrac{p}{2},\\ -\\tfrac{q}{2}\\right)\\), so \\(-\\tfrac{p}{2} = 1 \\Rightarrow p = -2\\) and \\(-\\tfrac{q}{2} = -1 \\Rightarrow q = 2\\). Let the radius be \\(R\\): circumference \\(= 2\\pi R = 10\\pi \\Rightarrow R = 5\\). With \\(g = \\tfrac{p}{2} = -1\\) and \\(f = \\tfrac{q}{2} = 1\\), the radius satisfies \\(R^2 = g^2 + f^2 - r\\), so \\(25 = 1 + 1 - r \\Rightarrow r = -23\\). So \\(p = -2,\\ q = 2,\\ r = -23\\). Hence (A).",
+    "whatChanged": "Renamed the radius to \\(R\\) so the symbol \\(r\\) is used only for the equation's constant term, which is now identified once at the end; added the centre formula line that the p and q values rest on. Values unchanged.",
+    "concern": ""
+  },
+  {
+    "questionId": "12ad5224-b32f-4db4-8256-619100068ca6",
+    "questionNumber": "982",
+    "newSolution": "\\(\\log_7\\log_5\\left(\\sqrt{x^2 + x + 5}\\right) = 0 \\Rightarrow \\log_5\\left(\\sqrt{x^2 + x + 5}\\right) = 1 \\Rightarrow \\sqrt{x^2 + x + 5} = 5 \\Rightarrow x^2 + x + 5 = 25 \\Rightarrow x^2 + x - 20 = 0 \\Rightarrow (x - 4)(x + 5) = 0\\), so \\(x = 4\\) or \\(x = -5\\). Both are genuine roots: at \\(x = -5\\) we get \\(x^2 + x + 5 = 25\\), \\(\\sqrt{25} = 5\\), \\(\\log_5 5 = 1\\) and \\(\\log_7 1 = 0\\), with every logarithm defined. So the equation has solution set \\(\\{4,\\ -5\\}\\); of these only \\(x = 4\\) is offered among the alternatives, so that is the one to mark. Hence (C).",
+    "whatChanged": "Replaced the unjustified '(rejecting x = -5)' with the verification that x = -5 also satisfies the equation with every logarithm defined, and stated plainly that it is set aside only because it is not among the printed alternatives.",
+    "concern": "The item is defective as printed: its solution set is {4, -5} and only one root is offered, so a student who finds -5 first has nothing to mark. Key (C) is correct and unchanged."
+  },
+  {
+    "questionId": "4b7117ce-6227-406f-a6e9-4037e711b875",
+    "questionNumber": "861",
+    "newSolution": "Let \\(X\\) be the number of tails, so \\(P(X = k) = {}^{100}C_k\\left(\\tfrac{1}{2}\\right)^{100}\\) and the total number of outcomes is \\(2^{100}\\). Putting \\(x = 1\\) in \\((1+x)^{100}\\) gives \\(\\sum_k {}^{100}C_k = 2^{100}\\); putting \\(x = -1\\) gives \\(\\sum_k (-1)^k\\,{}^{100}C_k = 0\\). Subtracting the second from the first, \\(2\\sum_{k\\ \\text{odd}} {}^{100}C_k = 2^{100}\\), so \\(\\sum_{k\\ \\text{odd}} {}^{100}C_k = 2^{99}\\). Hence \\(P(X\\ \\text{odd}) = \\dfrac{2^{99}}{2^{100}} = \\dfrac{1}{2}\\). Equivalently: whatever the parity of the first 99 tosses, exactly one outcome of the 100th toss makes the total odd, and that outcome has probability \\(\\tfrac{1}{2}\\) — so the answer is \\(\\tfrac{1}{2}\\) for any number of tosses. Hence (A).",
+    "whatChanged": "Replaced the restatement of the claim with an actual derivation: the odd-index binomial sum evaluated by \\((1+x)^{100}\\) at \\(x = \\pm 1\\), giving \\(2^{99}/2^{100}\\), plus the one-line last-toss parity argument that justifies the 'any number of tosses' remark.",
+    "concern": ""
+  }
+]

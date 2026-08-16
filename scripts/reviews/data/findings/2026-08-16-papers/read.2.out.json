@@ -1,0 +1,9 @@
+[
+  {
+    "questionNumber": "1619",
+    "questionId": "182ecc79-e776-4cba-b18e-7d50f2a73703",
+    "issue": "FALSE_STEP",
+    "evidence": "The solution assigns the symbol r twice, to two different quantities, two sentences apart: \"Circumference \\(= 2\\pi r = 10\\pi \\Rightarrow r = 5\\)\" (r = the radius), then \"\\(r^2 = g^2 + f^2 - r_{\\text{const}} \\Rightarrow 25 = 1 + 1 - r \\Rightarrow r = -23\\)\" (r = the constant term of the question's equation). As printed, the derivation asserts r = 5 and then r = -23, and the final equality is untrue under the notation established immediately above it (with r = 5, 1 + 1 - r = -3, not 25). It also introduces r_const in the formula and then silently drops it for a bare r, so nothing on the page tells the reader the two r's are different objects. The arithmetic and the answer are correct: g = -1, f = 1, g^2 + f^2 - c = 25 gives c = -23, so (p, q, r) = (-2, 2, -23).",
+    "proposedFix": "Name the constant term distinctly throughout and state the identification with the question's r once at the end. E.g. \"... Centre \\((1, -1) \\Rightarrow p = -2,\\ q = 2\\). Circumference \\(= 2\\pi R = 10\\pi \\Rightarrow R = 5\\). For \\(x^2 + y^2 + px + qy + r = 0\\) we have \\(g = \\tfrac{p}{2} = -1\\), \\(f = \\tfrac{q}{2} = 1\\) and \\(R^2 = g^2 + f^2 - r\\), so \\(25 = 1 + 1 - r \\Rightarrow r = -23\\). Hence \\(p = -2,\\ q = 2,\\ r = -23\\), option (A).\""
+  }
+]

@@ -1,0 +1,93 @@
+[
+  {
+    "questionNumber": "01-30",
+    "questionId": "14846641-3b7d-442d-8c73-f8f852224749",
+    "classification": "OK",
+    "evidence": "Key: 6 bits all 1 => 2^6 - 1 = 63 = option C. Correct. Solution derives it correctly and closes 'the correct option is C (63)'. BOTH flags are probe artifacts. (1) FALSE_EQUALITY '6 - 1 = 64' is the LaTeX-exponent pattern: the source line is '2^6 - 1 = 64 - 1 = 63', so the regex took the exponent 6 and the 64 from the next term; they were never on one line of arithmetic. (2) LETTER_CONFLICT 'solution_says=A' has no letter A anywhere in the solution — the only candidate is the English article in 'Therefore, a \\(6\\)-bit number', i.e. the probe's letter matcher is behaving case-insensitively and matched the word 'a'. Same family as the known article-'a' trap; the solution names only C.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "02-16",
+    "questionId": "1cd83b82-01c7-468e-afc5-c6758125fab5",
+    "classification": "OK",
+    "evidence": "Re-derived all four: (1100)2=12 (A claims 14, false), (1011)2=11 (B claims 12, false), (1010)2=10 (C claims 10, TRUE), (1111)2=15 (D claims 14, false). Key C correct; every step of the solution is true and it eliminates the other three explicitly. All four FALSE_EQUALITY hits are the binary/positional-expansion pattern — e.g. '1·2^3 + 1·2^2 = 8 + 4 = 12' was read as '2 + 1 = 8'. Positional expansions, not arithmetic claims.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "02-28",
+    "questionId": "36ee9a39-979c-4aaf-8652-aff1d94df4a2",
+    "classification": "OK",
+    "evidence": "(111111)2 = 32+16+8+4+2+1 = 63 = option C. Key correct, solution sound. FALSE_EQUALITY '2 + 1 = 63' is the positional-expansion artifact: the regex took the base and exponent out of '1·2^1 + 1·2^0' and paired them with the 63 from the following line.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "02-29",
+    "questionId": "031d903f-f411-423e-801e-b393a16c152b",
+    "classification": "OK",
+    "evidence": "Re-derived all four pairs: (10010)2=18 (A claims 20, false), (11001)2=25 (B claims 24, false), (10111)2=23 (C claims 22, false), (11100)2=28 (D claims 28, TRUE). Key D correct; solution's eliminations are all accurate. The four FALSE_EQUALITY hits are the binary positional-expansion pattern (digits pulled out of '16 + 0 + 4 + 2 + 1'-style expansions).",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "03-11",
+    "questionId": "10fc687f-9d3b-4dc2-aae8-e5759ec45799",
+    "classification": "OK",
+    "evidence": "(10101)2 = 16+4+1 = 21; (11)2 = 3; 21/3 = 7 = option C. Key correct, division exact as the stem states, solution sound. FALSE_EQUALITY '4 + 1 = 21' is the LaTeX-exponent artifact — it took the 4 from '2^4' and the 1 from '2^0' in the expansion line whose true total is 21.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "03-13",
+    "questionId": "2118601a-7c5c-42ef-9f45-85533b5cefe0",
+    "classification": "OK",
+    "evidence": "(10110)2 = 16+4+2 = 22; (10)2 = 2; 22/2 = 11 = option A. Key correct, solution sound. Both FALSE_EQUALITY hits ('1 + 0 = 16', '4 + 2 = 22') are the exponent/positional-expansion pattern taken out of '1·2^4 + 0·2^3 + 1·2^2 + 1·2^1 + 0 = 16 + 4 + 2 = 22'.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "03-17",
+    "questionId": "1737c5af-c2b4-4d49-8c1d-42a5a09e536f",
+    "classification": "OK",
+    "evidence": "(11100)2 = 16+8+4 = 28; (1010)2 = 8+2 = 10; 28-10 = 18 = option B. Key correct, solution sound. FALSE_EQUALITY '8 + 4 = 28' is a partial grab of the true chain '16 + 8 + 4 = 28' — the regex captured only the last two addends.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "03-18",
+    "questionId": "1185ae7a-55f7-4ebf-a2ab-5f6b6e2974e7",
+    "classification": "OK",
+    "evidence": "(111)2=7, (101)2=5, (1)2=1; 7+5+1 = 13; 13 = 8+4+1 = (1101)2 = option C. Key correct, solution sound. '5 + 1 = 13' is a partial grab of '7 + 5 + 1 = 13'; '4 + 1 = 1101' is the binary-numeral pattern from '13 = 8 + 4 + 1 = 1101_2', where 1101 is a base-2 numeral, not a decimal sum.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "03-27",
+    "questionId": "1c0f33bf-4d83-4953-877d-069a9c27249d",
+    "classification": "OK",
+    "evidence": "a = (1111)2 = 15, b = (101)2 = 5, a-b = 10 = option B. Key correct, solution sound. FALSE_EQUALITY '2 + 1 = 15' is a partial grab of the true expansion '8 + 4 + 2 + 1 = 15'.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "03-6",
+    "questionId": "1311f177-57ca-44a0-9c6d-f66e69ddc906",
+    "classification": "OK",
+    "evidence": "(1010)2 = 10; 10+10+10 = 30; 30 = 16+8+4+2 = (11110)2 = option C (verified back: 11110 -> 30). Key correct, solution sound. '10 + 10 = 30' is a partial grab of the three-term sum '10 + 10 + 10 = 30'; '4 + 2 = 11110' is the binary-numeral pattern from '30 = 16 + 8 + 4 + 2 = 11110_2'.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "1555",
+    "questionId": "357989bb-97e4-4ac8-a2be-abfd30c18041",
+    "classification": "OK",
+    "evidence": "Power of P(4,7) w.r.t. x^2+y^2-9=0 is 16+49-9 = 56 > 0, so P is outside and a secant through it gives PA·PB = 56 = option A. Key correct; the solution's appeal to the power-of-a-point theorem is valid and its arithmetic is right. '2 - 9 = 16' is the LaTeX-exponent artifact (from '4^2 + 7^2 - 9 = 16 + 49 - 9'); '49 - 9 = 56' is a partial grab of '16 + 49 - 9 = 56'.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "1559",
+    "questionId": "3f633ccc-08d7-47e5-a5dc-b1885f07605e",
+    "classification": "OK",
+    "evidence": "x^2+y^2+4x+6y+13 = 0 has g=2, f=3, c=13, so r^2 = 4+9-13 = 0; equivalently (x+2)^2+(y+3)^2 = 0, satisfied only by the single real point (-2,-3). That is a point circle = option D (it is NOT a real pair of lines, so A and B are out). Key correct, solution sound. '9 - 13 = 0' is a partial grab of '4 + 9 - 13 = 0'.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "1627",
+    "questionId": "2d7071ed-960b-4e5a-852e-b37763de7765",
+    "classification": "OK",
+    "evidence": "Evaluated S at (5,-7) for each option: A: 25+49-25-49-1 = -1 (inside); B: 25+49-40-49-2 = -17 (inside); C: 25+49-40 = 34 > 0 (outside); D: 25+49-25-49 = 0 (on the circle). Exactly one option gives S > 0, so key C is correct and the solution's four evaluations all reproduce exactly. All four FALSE_EQUALITY hits are partial grabs of these longer five-term chains (e.g. '49 - 1 = -1' out of '25 + 49 - 25 - 49 - 1 = -1').",
+    "proposedFix": null
+  }
+]

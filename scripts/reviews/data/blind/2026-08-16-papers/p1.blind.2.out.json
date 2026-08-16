@@ -1,0 +1,122 @@
+[
+  {
+    "questionNumber": "Misc I Q2",
+    "questionId": "77439cca-7230-45d1-80c4-66f961025cb4",
+    "value": "-1",
+    "letter": "D",
+    "confidence": "high",
+    "note": "Each numerator term is i^10 = -1 times the matching denominator term, so the ratio is -1 without evaluating the bracket; also directly: num = i^584(i^8+i^6+i^4+i^2+1) = 1(1) = 1, den = i^574(1) = -1. Sympy confirms num=1, den=-1."
+  },
+  {
+    "questionNumber": "Misc I Q4",
+    "questionId": "4aaa8f24-0e29-46b4-8dcb-97c5ff4b9fa7",
+    "value": "2/9",
+    "letter": "D",
+    "confidence": "medium",
+    "note": "STEM MISPRINT: printed denominator is \\sqrt{3x-11-2} i.e. sqrt(3x-13); read literally the limit is (3-3)/sqrt(2) = 0, which matches NO option. Intended reading sqrt(3x-11) - 2 gives 0/0 -> L'Hopital (1/6)/(3/4) = 2/9, confirmed by sympy and by two-sided numeric approach (0.2222222 from both sides at h=1e-7). Answer D under the repaired stem; the '-2' belongs outside the radical."
+  },
+  {
+    "questionNumber": "Misc I Q4",
+    "questionId": "3b7f07aa-7870-49f6-aa75-e4b3a76b807e",
+    "value": "x = 4 and x = 2^(-1/3) (two real roots; one integral, one irrational, neither prime)",
+    "letter": "MULTI",
+    "confidence": "high",
+    "note": "ALL FOUR OPTIONS ARE TRUE. With t = log2 x: 2/t + 6/(1+t) = 3 -> 3t^2 - 5t - 2 = 0 -> t = 2 or -1/3, i.e. x = 4 and x = 2^(-1/3) ~ 0.7937; both satisfy the base restrictions (x>0, x != 1, x != 1/2) and both check to exactly 3 (sympy). Hence: one irrational solution (A) TRUE, no prime solution (B) TRUE, two real solutions (C) TRUE, one integral solution (D) TRUE. Original is a multiple-correct item; as a single-answer MCQ it is defective."
+  },
+  {
+    "questionNumber": "Misc I Q5",
+    "questionId": "c5e2ed4c-642a-4a9b-813e-eba36e40501c",
+    "value": "31/48 = 0.64583 if a shelf is chosen at random first; 9/14 = 0.64286 if all 14 books are equally likely",
+    "letter": "B",
+    "confidence": "low",
+    "note": "AMBIGUOUS STEM and BOTH readings are printed as options. The stem never says a shelf is selected at random, so uniform-over-14-books gives 9/14 (option A); the two-shelf framing implies total probability 1/2(5/8) + 1/2(4/6) = 31/48 (option B). I name B because mentioning two shelves is pointless under the lumped reading, but A is equally defensible on the words as printed. Needs the page/key to settle; C = 9/38 and D = 1/2 are not derivable under either reading."
+  },
+  {
+    "questionNumber": "Misc I Q5",
+    "questionId": "e1a3e69e-61ab-43c5-91f2-d975a1a72a6c",
+    "value": "x",
+    "letter": "C",
+    "confidence": "high",
+    "note": "f(f(x)) = (x-1)/x, then f(f(f(x))) = 1/(1 - (x-1)/x) = x; f is an involution of order 3. Sympy simplifies to x, and spot-checks x = 2, 3/7, -5 all return themselves."
+  },
+  {
+    "questionNumber": "Misc I Q6",
+    "questionId": "32d5a1fa-4942-4ad2-a7c4-43ceaa90338c",
+    "value": "25*pi",
+    "letter": "C",
+    "confidence": "high",
+    "note": "r^2 = (4-1)^2 + (6-2)^2 = 9 + 16 = 25, r = 5, area = pi r^2 = 25 pi. (Option A 5pi is the trap of using r in place of r^2, D 100pi uses the diameter.)"
+  },
+  {
+    "questionNumber": "Misc I Q7",
+    "questionId": "de7d33fe-1d80-4878-a476-cb70dc7b3e3e",
+    "value": "(x-1)/(3x+2)",
+    "letter": "A",
+    "confidence": "high",
+    "note": "y = (2x+1)/(1-3x) -> y - 3xy = 2x + 1 -> x = (y-1)/(3y+2). Sympy solve gives (z-1)/(3z+2); round-trip check f(f^-1(3)) = 3."
+  },
+  {
+    "questionNumber": "Misc I Q7",
+    "questionId": "46655cd5-c3f9-44a0-adeb-5416ebe7800d",
+    "value": "2 sin(alpha) sin(beta) cos(gamma)",
+    "letter": "C",
+    "confidence": "high",
+    "note": "Standard identity for alpha+beta+gamma = pi. Tested each option as an identity with gamma = pi - alpha - beta over 7 unrelated (alpha, beta) pairs at 25+ digits: only option C holds at every point; A, B, D fail. (Symmetric check alpha=beta=gamma=pi/3 gives 3/4 both sides.)"
+  },
+  {
+    "questionNumber": "Misc I Q9",
+    "questionId": "6198f316-e2ae-491d-a87d-18965ccbfbee",
+    "value": "R = {(x,y) : y = x} on N, i.e. the identity relation - reflexive, symmetric AND transitive, hence an equivalence relation",
+    "letter": "MULTI",
+    "confidence": "high",
+    "note": "On N (no 0) xy = x^2 forces y = x, so R is equality. Enumerated over N = 1..11: R equals the identity set, and reflexive/symmetric/transitive all return True. Therefore A, B, C are each true statements and D (Equivalence) is the complete characterisation - as a single-answer MCQ it is defective; D is the strongest option."
+  },
+  {
+    "questionNumber": "Misc I Q10",
+    "questionId": "6fbb22c3-765d-450d-8dd6-af839e9d1fd2",
+    "value": "6 + pi cm",
+    "letter": "C",
+    "confidence": "high",
+    "note": "Circle area 9pi -> r = 3. Arc = r*theta = 3*(pi/3) = pi. Perimeter of a sector = 2r + arc = 6 + pi. (Option A pi is the arc alone, D 6 the two radii alone.)"
+  },
+  {
+    "questionNumber": "Misc I Q11",
+    "questionId": "ffdc9e7e-e7f4-4074-b5b9-c54955c645b8",
+    "value": "sqrt(2)",
+    "letter": "C",
+    "confidence": "high",
+    "note": "Rectangular hyperbola has a = b, so e = sqrt(1 + b^2/a^2) = sqrt(2). Options are FLATTENED EXPONENTS (the batch-3 Conics pattern): C '2 1/2' = 2^(1/2) = 1.41421 is the only option equal to sqrt(2); B = 1/sqrt(2) = 0.7071, D = 1/sqrt(3) = 0.5774, A = 0.5 - and an eccentricity must exceed 1, which uniquely identifies C."
+  },
+  {
+    "questionNumber": "Misc I Q13",
+    "questionId": "458b4ab9-b3e6-4fbf-9a74-5c3901a33c07",
+    "value": "x^2 + 4y^2 = 100",
+    "letter": "B",
+    "confidence": "high",
+    "note": "b^2 = a^2(1-e^2) = a^2/4, so x^2 + 4y^2 = 4b^2; through (-8,3): 64 + 36 = 100. Checked all four options directly: every one has e = sqrt(3)/2 (they are the same shape scaled), so the discriminator is the point - only B satisfies 1(64) + 4(9) = 100. The y-major orientation would need 4x^2 + y^2 = 265, not printed."
+  },
+  {
+    "questionNumber": "Misc I Q14",
+    "questionId": "691fb3eb-81df-42ea-a0f9-c66d3bb8e5ee",
+    "value": "k = +/- 3*sqrt(21) (= +/- 13.7477)",
+    "letter": "B",
+    "confidence": "high",
+    "note": "Ellipse x^2/9 + y^2/5 = 1, line y = (4/3)x + k/3; tangency c^2 = a^2m^2 + b^2 -> k^2/9 = 16 + 5 = 21 -> k = +/-3sqrt(21). Confirmed by setting the substituted quadratic's discriminant to zero (sympy: k = +/-3sqrt(21)). CAVEAT: option D's text '+ 3 (21)' is garbled and may be a mangled duplicate of B (3(21)^(1/2)); as printed it reads 63 and is not equal, so I do not call MULTI - worth a page check."
+  },
+  {
+    "questionNumber": "Misc I Q20",
+    "questionId": "24f20dd3-d5aa-4d75-8135-c3b5b45d5424",
+    "value": "(+/- sqrt(13), 0)",
+    "letter": "A",
+    "confidence": "high",
+    "note": "4x^2 - 9y^2 = 36 -> x^2/9 - y^2/4 = 1, a^2 = 9, b^2 = 4, c^2 = a^2 + b^2 = 13 (hyperbola adds, unlike the ellipse), foci (+/-sqrt(13), 0). Option B sqrt(11) and C sqrt(12) come from subtracting; D also puts them on the wrong axis."
+  },
+  {
+    "questionNumber": "Q. 1. (A) ii.",
+    "questionId": "1adf782d-ab13-46f1-83d7-285865091236",
+    "value": "x = 0 only",
+    "letter": "C",
+    "confidence": "high",
+    "note": "With theta = asin(x): asin(1-x) = pi/2 + 2theta requires theta <= 0, i.e. x <= 0. Taking sin: 1-x = cos(2theta) = 1 - 2x^2 -> x(2x-1) = 0 -> x = 0 or 1/2; x = 1/2 is extraneous (LHS = -pi/6, verified exactly). Domain is [0,1] (needs |1-x| <= 1 and |x| <= 1), so option A x = -1/2 is outside it (asin(1.5) undefined). Sympy's solve raised NotImplementedError - a CAS miss, not evidence - so a 5000-point scan of [0,1] was run and found exactly one root, x = 0."
+  }
+]

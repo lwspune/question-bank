@@ -1,0 +1,30 @@
+[
+  {
+    "questionNumber": "965",
+    "questionId": "4cee0ae9-9169-458d-a32f-e3635b92af3f",
+    "issue": "INCOMPLETE",
+    "evidence": "\"\\\\(\\\\log ab - \\\\log|b| = \\\\log\\\\dfrac{ab}{|b|} = \\\\log|a|\\\\) (since \\\\(b/|b| = \\\\pm 1\\\\)).\" The stated reason is the only step that carries the question, and it does not deliver the answer: b/|b| = ±1 gives ab/|b| = ±a, i.e. \\\\(\\\\log(\\\\pm a)\\\\), not \\\\(\\\\log|a|\\\\). A student following the printed reason cannot get from ±a to |a|. The absolute value comes from the DOMAIN, which the solution never mentions: for \\\\(\\\\log ab\\\\) to be defined we need ab > 0, so a and b share a sign, and then ab/|b| = a·sign(b) = |a| in both cases.",
+    "proposedFix": "Replace the parenthetical with the domain argument: \"\\\\(\\\\log ab\\\\) is defined only when \\\\(ab > 0\\\\), so \\\\(a\\\\) and \\\\(b\\\\) have the same sign. Then \\\\(\\\\dfrac{ab}{|b|} = a\\\\cdot\\\\operatorname{sign}(b) = |a|\\\\) (if \\\\(b>0\\\\) then \\\\(a>0\\\\) and the value is \\\\(a=|a|\\\\); if \\\\(b<0\\\\) then \\\\(a<0\\\\) and the value is \\\\(-a=|a|\\\\)). Hence \\\\(\\\\log ab - \\\\log|b| = \\\\log|a|\\\\).\""
+  },
+  {
+    "questionNumber": "978",
+    "questionId": "a7b967ec-a0f4-4997-88d3-e38acc2eeeb7",
+    "issue": "CITES_NOT_DERIVES",
+    "evidence": "The entire solution is \"Writing each in change-of-base form and simplifying, \\\\(1 + abc = 2bc\\\\) (a standard identity for this chain of bases).\" No working at all — it names a method it does not carry out and then appeals to the result being standard. Nothing here would let a student reproduce the answer, and nothing distinguishes 2bc from the distractors 2ab and 2ac (numerically 1+abc = 1.6419 = 2bc, while 2ab = 1.3869 and 2ac = 1.4476, so the choice is not self-evident).",
+    "proposedFix": "Derive it by chaining: \"\\\\(bc = \\\\log_{36}24\\\\cdot\\\\log_{48}36 = \\\\log_{48}24\\\\), and \\\\(abc = \\\\log_{24}12\\\\cdot\\\\log_{48}24 = \\\\log_{48}12\\\\). So \\\\(1 + abc = \\\\log_{48}48 + \\\\log_{48}12 = \\\\log_{48}576 = \\\\log_{48}24^2 = 2\\\\log_{48}24 = 2bc\\\\).\""
+  },
+  {
+    "questionNumber": "982",
+    "questionId": "12ad5224-b32f-4db4-8256-619100068ca6",
+    "issue": "FALSE_STEP",
+    "evidence": "\"So \\\\(x = 4\\\\) (rejecting \\\\(x = -5\\\\)).\" There is no ground for that rejection and it is untrue as an implied claim: \\\\(x=-5\\\\) satisfies the equation exactly — \\\\((-5)^2 + 5 + (-5) = 25\\\\), \\\\(\\\\sqrt{25}=5\\\\), \\\\(\\\\log_5 5 = 1\\\\), \\\\(\\\\log_7 1 = 0\\\\), with every log defined and the radicand positive (verified numerically). The stem's equation has solution set {4, −5}; \\\\(-5\\\\) is discarded only because it is not among the printed options, which is a property of the paper, not of the mathematics. As printed, the solution teaches a student to expect a domain violation that does not exist.",
+    "proposedFix": "Replace the parenthetical with an honest statement: \"\\\\(x = 4\\\\) or \\\\(x = -5\\\\); both satisfy the equation (at \\\\(x=-5\\\\), \\\\(x^2+x+5 = 25\\\\) as well), and only \\\\(x = 4\\\\) appears among the given options, so (C) is the answer. [Note: the question offers an incomplete solution set — \\\\(x=-5\\\\) is an equally valid root.]\""
+  },
+  {
+    "questionNumber": "983",
+    "questionId": "30764e3c-e8c0-4d1e-9715-1d1ee6cb2da4",
+    "issue": "INCOMPLETE",
+    "evidence": "\"\\\\(\\\\log_4 18 = \\\\dfrac{\\\\log_2 18}{2} = \\\\dfrac{1 + \\\\log_2 9}{2}\\\\), which is irrational.\" The rewrite is correct but does no work toward the question actually asked — rational or irrational is the whole question, and irrationality is then simply asserted. The sibling row 961 in the same set proves the analogous claim properly (2^p = 7^q, LHS even RHS odd), so the omission here is a gap, not a house style.",
+    "proposedFix": "Append the parity argument: \"If \\\\(\\\\log_2 9 = p/q\\\\) were rational then \\\\(2^p = 9^q\\\\), impossible since the LHS is even and the RHS is odd. So \\\\(\\\\log_2 9\\\\) is irrational, and hence so is \\\\(\\\\dfrac{1+\\\\log_2 9}{2}\\\\) — a rational value would force \\\\(\\\\log_2 9\\\\) to be rational.\""
+  }
+]

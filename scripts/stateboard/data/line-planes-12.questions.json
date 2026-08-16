@@ -325,7 +325,7 @@
       }
     ],
     "answer": "B",
-    "solution": "MISPRINT (book options appear defective). \\(\\bar{b}_1\\times\\bar{b}_2=(1,-1,-1)\\times(2,1,2)=(-1,-4,3)\\), \\(|\\bar{b}_1\\times\\bar{b}_2|=\\sqrt{26}\\). With \\(\\bar{a}_2-\\bar{a}_1=(1,-3,-2)\\), \\((\\bar{a}_2-\\bar{a}_1)\\cdot(\\bar{b}_1\\times\\bar{b}_2)=-1+12-6=5\\), so shortest distance \\(=\\frac{5}{\\sqrt{26}}\\), which matches none of the printed options — needs downstream verification of the intended line vectors."
+    "solution": "[Textbook defect: the printed alternatives are wrong. The shortest distance computes to \\(\\dfrac{5}{\\sqrt{26}}\\approx 0.98\\), which matches none of the four printed values. The official key marks \\(\\dfrac{\\sqrt{3}}{2}\\approx 0.87\\), retained here to match the board.]\n\n\\(\\bar{a_1}=(1,2,1),\\ \\bar{b_1}=(1,-1,-1),\\ \\bar{a_2}=(2,-1,-1),\\ \\bar{b_2}=(2,1,2)\\).\n\n\\(\\bar{b_1}\\times\\bar{b_2}=(-1,-4,3)\\), so \\(\\left|\\bar{b_1}\\times\\bar{b_2}\\right|=\\sqrt{26}\\).\n\n\\(\\bar{a_2}-\\bar{a_1}=(1,-3,-2)\\), and \\(\\left(\\bar{a_2}-\\bar{a_1}\\right)\\cdot\\left(\\bar{b_1}\\times\\bar{b_2}\\right)=(1)(-1)+(-3)(-4)+(-2)(3)=5\\).\n\nShortest distance \\(=\\dfrac{|5|}{\\sqrt{26}}=\\dfrac{5}{\\sqrt{26}}\\approx 0.98\\), whereas the printed values are \\(\\dfrac{1}{\\sqrt{3}}\\approx 0.58\\), \\(\\dfrac{1}{\\sqrt{2}}\\approx 0.71\\), \\(\\dfrac{3}{\\sqrt{2}}\\approx 2.12\\) and \\(\\dfrac{\\sqrt{3}}{2}\\approx 0.87\\).\n\nFollowing the official key, (D)."
   },
   {
     "ref": "Misc I Q.6",
@@ -689,7 +689,7 @@
       }
     ],
     "answer": "A",
-    "solution": "Normal \\(=(4,4,-5)\\times(7,1,3)=(17,-47,-24)\\). Through \\((5,7,-3)\\): \\(17(x-5)-47(y-7)-24(z+3)=0\\Rightarrow 17x-47y-24z+172=0\\)."
+    "solution": "[Textbook answer-key error: the book's printed key is \\(17x+47y-24z+172=0\\), whose normal \\((17,47,-24)\\) is not perpendicular to the first line's direction \\((4,4,-5)\\), so that plane does not contain even the first line. In fact the two given lines are skew — \\(\\left(\\bar{a_2}-\\bar{a_1}\\right)\\cdot\\left(\\bar{b_1}\\times\\bar{b_2}\\right)=240\\neq 0\\) — so no plane contains both. The alternative keyed here is the plane through the first line with normal \\(\\bar{b_1}\\times\\bar{b_2}\\).]\n\n\\(\\bar{b_1}=(4,4,-5),\\ \\bar{b_2}=(7,1,3)\\), so the normal is \\(\\bar{b_1}\\times\\bar{b_2}\\):\n\n\\(i:\\ 4(3)-(-5)(1)=17\\); \\(j:\\ -\\left(4(3)-(-5)(7)\\right)=-47\\); \\(k:\\ 4(1)-4(7)=-24\\).\n\nPlane through \\((5,7,-3)\\): \\(17(x-5)-47(y-7)-24(z+3)=0\\Rightarrow 17x-47y-24z+172=0\\).\n\nHence (A)."
   },
   {
     "ref": "Misc I Q.19",

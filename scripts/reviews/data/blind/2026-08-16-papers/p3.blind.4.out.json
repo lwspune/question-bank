@@ -1,0 +1,122 @@
+[
+  {
+    "questionNumber": "969",
+    "questionId": "0a9d6c48-0a9e-41af-974b-38bfcd905672",
+    "value": "890",
+    "letter": "D",
+    "confidence": "high",
+    "note": "1/log_5 3 = log_3 5 so 81^(log_3 5)=5^4=625; 27^(log_9 36)=36^(3/2)=216; 3^(4 log_9 7)=7^2=49. Sum 890. Each distractor is one of the three terms; verified 625+216+49=890 to 40 dps."
+  },
+  {
+    "questionNumber": "970",
+    "questionId": "1c38d081-190f-4de0-8bd3-895ba7a9fece",
+    "value": "log 2",
+    "letter": "C",
+    "confidence": "high",
+    "note": "Prime-exponent tally: 2 -> 28-15-12 = 1, 3 -> -7-5+12 = 0, 5 -> -7+10-3 = 0, so the argument is exactly 2. Numeric sum 0.693147180559945 = ln 2 to 39 dps."
+  },
+  {
+    "questionNumber": "971",
+    "questionId": "eb2d0113-03d5-423b-a71e-bbb1e99946a9",
+    "value": "1/(2ab - 1)",
+    "letter": "D",
+    "confidence": "high",
+    "note": "ab = log 6/(2 log 2) = (1 + log_2 3)/2, so log_2 3 = 2ab - 1 and log_3 2 = 1/(2ab-1). Numeric: a=1.16096, b=1.11328, D=0.6309298 = log_3 2 exactly; A=0.30103, B=0.30993, C=3.58496 all miss."
+  },
+  {
+    "questionNumber": "973",
+    "questionId": "807062d6-0062-4db0-946e-11aeb63da8df",
+    "value": "x = 25",
+    "letter": "C",
+    "confidence": "high",
+    "note": "Chain rule: log_5 a * log_a x = log_5 x = 2 => x = 25, independent of a. Verified log_5 a * log_a 25 = 2 for a = 3, 7, 100. Option B (a^2) only coincides when a = 5, so it is not a twin."
+  },
+  {
+    "questionNumber": "974",
+    "questionId": "1dd5d691-f6f4-4f8a-a0ca-ecc0a74fab21",
+    "value": "(1/2)[log a + log b + 4 log 2]",
+    "letter": "C",
+    "confidence": "high",
+    "note": "(a+2b)^2 = a^2+4b^2+4ab = 16ab, so log(a+2b) = log4 + (1/2)(log a + log b) = C. CAUTION: C and D are numerically EQUAL at b=1 (log b = 0), the tempting test point; at b=3, a=34.9706 the true value 3.712854 = C while D = 2.614242, so they are not twins and C is unique. Both roots a = (6 +/- 4 sqrt 2) b tested."
+  },
+  {
+    "questionNumber": "975",
+    "questionId": "62b0da07-c8d2-43ce-8b0c-2be8736dea43",
+    "value": "5",
+    "letter": "C",
+    "confidence": "high",
+    "note": "log_4 256 = 4, log_2 4 = 2, log_2 2 = 1; 2 log_(sqrt2) 2 = 2*2 = 4; A = 1 + 4 = 5. Verified 5.0."
+  },
+  {
+    "questionNumber": "976",
+    "questionId": "62cccf4e-bc64-4706-9031-bdba1d753222",
+    "value": "2y/3",
+    "letter": "D",
+    "confidence": "high",
+    "note": "log_1000 x^2 = 2 log_10 x / log_10 1000 = 2y/3. Verified at x=7 (0.5633987 = 2y/3) and x=500 (1.7993133 = 2y/3); 3y/2, 2y, y^2 all miss at both."
+  },
+  {
+    "questionNumber": "977",
+    "questionId": "8a63d7a3-ad96-41ef-8f8b-67fc9366640a",
+    "value": "(1+x)^-1 + (1+y)^-1 + (1+z)^-1 = 1",
+    "letter": "B",
+    "confidence": "high",
+    "note": "1+x = log_a(abc) so (1+x)^-1 = log_abc a; the three terms sum to log_abc(abc) = 1. Verified exactly 1.0 for (a,b,c) = (2,3,5), (7,11,13) and (1/2,3,10); x+y+z and xyz were 7.116/9.116, 6.125/8.125, -3.266/-1.266 respectively, so neither A nor C. (Degenerate only if abc = 1.)"
+  },
+  {
+    "questionNumber": "978",
+    "questionId": "a7b967ec-a0f4-4997-88d3-e38acc2eeeb7",
+    "value": "2bc",
+    "letter": "C",
+    "confidence": "high",
+    "note": "abc telescopes to log_48 12, so 1+abc = log_48 576 = log_48 24^2 = 2 log_48 24 = 2bc. Numeric: 1+abc = 1.6418955 = 2bc exactly; 2ab = 1.386853, 2ac = 1.447581 both miss."
+  },
+  {
+    "questionNumber": "979",
+    "questionId": "4217a742-485e-47ba-bb41-b26f14b3711c",
+    "value": "1",
+    "letter": "B",
+    "confidence": "high",
+    "note": "a^(xyz) = (a^x)^(yz) = b^(yz) = (b^y)^z = c^z = a, so xyz = 1. Verified with a=2, x=3, y=0.7: c^z returned a = 2.0 and xyz = 1.0."
+  },
+  {
+    "questionNumber": "980",
+    "questionId": "c9b5f5b2-0569-4245-b76a-9ff79642aba3",
+    "value": "9 digits",
+    "letter": "C",
+    "confidence": "high",
+    "note": "log = 12(0.47712) + 8(0.30103) = 8.13368, characteristic 8 => 9 digits. Confirmed against the exact integer: 3^12 * 2^8 = 136048896, which has 9 digits."
+  },
+  {
+    "questionNumber": "981",
+    "questionId": "0a76b11d-4624-41d5-ad7f-780060cd2ee2",
+    "value": "n(n+1)/2 * log_a 2",
+    "letter": "A",
+    "confidence": "medium",
+    "note": "1/log_(2^r) a = log_a 2^r = r log_a 2, summing to n(n+1)/2 log_a 2. Verified exactly for n = 1,2,3,5 with a = 3 and a = 7 (option B and C miss at every point). MEDIUM only because the stem reuses the index as its own upper limit ('sum_{n=1}^{n}'), a transcription defect; under the only sensible reading (dummy r) the answer is determinate and A is the sole match."
+  },
+  {
+    "questionNumber": "982",
+    "questionId": "12ad5224-b32f-4db4-8256-619100068ca6",
+    "value": "x = 4",
+    "letter": "C",
+    "confidence": "medium",
+    "note": "Literal stem sqrt(x^2+5+x): log_5 = 1 => x^2+x+5 = 25 => x = 4 or x = -5; only 4 is offered, and x=4 checks exactly (sqrt25=5, log_5 5=1, log_7 1=0). MEDIUM because the stem shows corruption: the classic form sqrt(x+5)+sqrt(x) also gives x=4 (verified), but the parse sqrt(x^2+5)+x gives x=2 = option A (verified, log_7 log_5 5 = 0). Two of three parses, including the literal one printed, give C."
+  },
+  {
+    "questionNumber": "983",
+    "questionId": "30764e3c-e8c0-4d1e-9715-1d1ee6cb2da4",
+    "value": "irrational (= 1/2 + log_2 3 = 2.084963...)",
+    "letter": "B",
+    "confidence": "high",
+    "note": "log_4 18 = (log 2 + 2 log 3)/(2 log 2) = 1/2 + log_2 3; log_2 3 is irrational (2^p = 3^q impossible for positive integers), so the sum is irrational. Numerically 2.0849625, not an integer, so 'prime' is also out."
+  },
+  {
+    "questionNumber": "984",
+    "questionId": "5e9e89d9-e3b4-4f80-8346-c4fde719149b",
+    "value": "81",
+    "letter": "A",
+    "confidence": "high",
+    "note": "Series 0.1+0.01+... = 0.1/0.9 = 1/9. Exponent log_(sqrt20)(1/9) = -4 ln3/ln20 = -1.4669032; 0.05 = 1/20 so (1/20)^that = 20^(4 ln3/ln20) = 3^4 = 81. Verified 81.0 to 40 dps."
+  }
+]
