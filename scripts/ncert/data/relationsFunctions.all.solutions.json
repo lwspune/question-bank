@@ -1,0 +1,238 @@
+[
+  {
+    "id": "b8dfe6dd-7993-4663-9cea-9bb8220e80b7",
+    "ref": "Ex 1.1 Q1(i)",
+    "solution": "The condition \\(3x - y = 0\\) means \\(y = 3x\\), so within \\(A\\) the relation is \\(R = \\{(1,3), (2,6), (3,9), (4,12)\\}\\).\n\nReflexive: \\((1,1)\\) would need \\(3(1) - 1 = 2 = 0\\), which is false, so \\((1,1) \\notin R\\) and R is not reflexive.\n\nSymmetric: \\((1,3) \\in R\\) but \\((3,1) \\notin R\\), since \\(3(3) - 1 = 8 \\ne 0\\). So R is not symmetric.\n\nTransitive: \\((1,3) \\in R\\) and \\((3,9) \\in R\\), but \\((1,9) \\notin R\\), since \\(3(1) - 9 = -6 \\ne 0\\). So R is not transitive.\n\nHence R is neither reflexive, nor symmetric, nor transitive."
+  },
+  {
+    "id": "16023b6b-0095-4635-90bc-b461bff87012",
+    "ref": "Ex 1.1 Q1(ii)",
+    "solution": "The conditions \\(y = x + 5\\) and \\(x < 4\\) allow only \\(x = 1, 2, 3\\), so \\(R = \\{(1,6), (2,7), (3,8)\\}\\).\n\nReflexive: \\((1,1) \\notin R\\), since \\(1 \\ne 1 + 5\\). So R is not reflexive.\n\nSymmetric: \\((1,6) \\in R\\) but \\((6,1) \\notin R\\) (indeed \\(6 \\not< 4\\)). So R is not symmetric.\n\nTransitive: the first entries of the pairs are \\(1, 2, 3\\) and the second entries are \\(6, 7, 8\\), so no second entry is ever a first entry. Hence there is no pair \\((x,y), (y,z) \\in R\\) at all, and the transitivity condition holds vacuously.\n\nHence R is transitive but neither reflexive nor symmetric."
+  },
+  {
+    "id": "e30e96d6-8055-413c-91bf-42eb740042da",
+    "ref": "Ex 1.1 Q1(iii)",
+    "solution": "Here \\((x,y) \\in R\\) means \\(x\\) divides \\(y\\).\n\nReflexive: every \\(x \\in A\\) divides itself, so \\((x,x) \\in R\\) for all \\(x\\). R is reflexive.\n\nSymmetric: \\((1,2) \\in R\\) since 2 is divisible by 1, but \\((2,1) \\notin R\\) since 1 is not divisible by 2. So R is not symmetric.\n\nTransitive: if \\(y = kx\\) and \\(z = my\\) with \\(k, m\\) integers, then \\(z = (mk)x\\), so \\(x\\) divides \\(z\\). Hence \\((x,y), (y,z) \\in R \\Rightarrow (x,z) \\in R\\), and R is transitive.\n\nHence R is reflexive and transitive but not symmetric."
+  },
+  {
+    "id": "80d49aff-0749-43a4-90b4-3bd373098652",
+    "ref": "Ex 1.1 Q1(iv)",
+    "solution": "For any \\(x, y \\in \\mathbf{Z}\\) the difference \\(x - y\\) is again an integer, so every ordered pair of integers belongs to R, i.e. \\(R = \\mathbf{Z} \\times \\mathbf{Z}\\).\n\nReflexive: \\(x - x = 0 \\in \\mathbf{Z}\\), so \\((x,x) \\in R\\) for all \\(x\\).\n\nSymmetric: if \\(x - y \\in \\mathbf{Z}\\) then \\(y - x = -(x - y) \\in \\mathbf{Z}\\), so \\((y,x) \\in R\\).\n\nTransitive: if \\(x - y \\in \\mathbf{Z}\\) and \\(y - z \\in \\mathbf{Z}\\), then \\(x - z = (x - y) + (y - z) \\in \\mathbf{Z}\\), so \\((x,z) \\in R\\).\n\nHence R is reflexive, symmetric and transitive."
+  },
+  {
+    "id": "1964ae7f-69ef-44f4-ab82-37c955197848",
+    "ref": "Ex 1.1 Q1(v)(a)",
+    "solution": "Reflexive: every person \\(x\\) works at the same place as \\(x\\), so \\((x,x) \\in R\\). R is reflexive.\n\nSymmetric: if \\(x\\) works at the same place as \\(y\\), then \\(y\\) works at the same place as \\(x\\), so \\((x,y) \\in R \\Rightarrow (y,x) \\in R\\). R is symmetric.\n\nTransitive: if \\(x\\) and \\(y\\) work at the same place, and \\(y\\) and \\(z\\) work at the same place, then that one place is common to \\(x\\) and \\(z\\), so \\((x,z) \\in R\\). R is transitive.\n\nHence R is reflexive, symmetric and transitive."
+  },
+  {
+    "id": "3fe6432a-3e8f-49a3-b0a5-416fe16e440a",
+    "ref": "Ex 1.1 Q1(v)(b)",
+    "solution": "Reflexive: every person \\(x\\) lives in the same locality as \\(x\\), so \\((x,x) \\in R\\). R is reflexive.\n\nSymmetric: if \\(x\\) lives in the same locality as \\(y\\), then \\(y\\) lives in the same locality as \\(x\\), so \\((x,y) \\in R \\Rightarrow (y,x) \\in R\\). R is symmetric.\n\nTransitive: if \\(x\\) and \\(y\\) live in the same locality and \\(y\\) and \\(z\\) live in the same locality, then \\(x\\) and \\(z\\) live in that same locality, so \\((x,z) \\in R\\). R is transitive.\n\nHence R is reflexive, symmetric and transitive."
+  },
+  {
+    "id": "9906ade1-2028-4fd5-b57d-dd41faf08ca1",
+    "ref": "Ex 1.1 Q1(v)(c)",
+    "solution": "Reflexive: \\(x\\) cannot be 7 cm taller than \\(x\\) (the difference in height is 0), so \\((x,x) \\notin R\\). R is not reflexive.\n\nSymmetric: if \\(x\\) is exactly 7 cm taller than \\(y\\), then \\(y\\) is 7 cm shorter than \\(x\\), not taller; so \\((x,y) \\in R\\) but \\((y,x) \\notin R\\). R is not symmetric.\n\nTransitive: let \\(x\\) be 7 cm taller than \\(y\\) and \\(y\\) be 7 cm taller than \\(z\\). Then \\(x\\) is 14 cm taller than \\(z\\), not 7 cm, so \\((x,y), (y,z) \\in R\\) while \\((x,z) \\notin R\\). R is not transitive.\n\nHence R is neither reflexive, nor symmetric, nor transitive."
+  },
+  {
+    "id": "cc1387c1-0768-42f9-8963-54541b17e4f6",
+    "ref": "Ex 1.1 Q1(v)(d)",
+    "solution": "Reflexive: \\(x\\) cannot be the wife of \\(x\\), so \\((x,x) \\notin R\\). R is not reflexive.\n\nSymmetric: if \\(x\\) is the wife of \\(y\\), then \\(y\\) is the husband of \\(x\\) and not the wife of \\(x\\). Taking \\(x\\) to be a married woman and \\(y\\) her husband gives \\((x,y) \\in R\\) but \\((y,x) \\notin R\\). R is not symmetric.\n\nTransitive: suppose \\((x,y) \\in R\\) and \\((y,z) \\in R\\). Then \\(y\\) would have to be a husband (of \\(x\\)) and simultaneously a wife (of \\(z\\)), which cannot happen. So R contains no chain of two such pairs at all, and the implication defining transitivity is never tested — it holds vacuously. Hence R is transitive.\n\nHence R is transitive but neither reflexive nor symmetric.",
+    "_note": "Vacuous transitivity. No chain (x,y),(y,z) can exist in R (y would be simultaneously husband and wife), so the transitivity implication is never tested and holds vacuously — R IS transitive. The printed NCERT key agrees: '(d) Neither reflexive nor symmetric but transitive'. An earlier draft of this solution used the impossibility of the chain as grounds for transitivity FAILING, which is exactly backwards; do not reinstate it. Its structural twin Ex 1.1 Q1(ii) is the same vacuous shape and is keyed transitive too."
+  },
+  {
+    "id": "744d5da0-dc09-49bf-be02-3d899568379a",
+    "ref": "Ex 1.1 Q1(v)(e)",
+    "solution": "Reflexive: \\(x\\) cannot be the father of \\(x\\), so \\((x,x) \\notin R\\). R is not reflexive.\n\nSymmetric: if \\(x\\) is the father of \\(y\\), then \\(y\\) is a son or daughter of \\(x\\), not the father of \\(x\\); so \\((x,y) \\in R\\) but \\((y,x) \\notin R\\). R is not symmetric.\n\nTransitive: let \\(x\\) be the father of \\(y\\) and \\(y\\) be the father of \\(z\\). Then \\(x\\) is the grandfather of \\(z\\), not his father, so \\((x,y), (y,z) \\in R\\) while \\((x,z) \\notin R\\). R is not transitive.\n\nHence R is neither reflexive, nor symmetric, nor transitive."
+  },
+  {
+    "id": "17c02520-f378-4834-af30-b8c8ad0a9581",
+    "ref": "Ex 1.1 Q2",
+    "solution": "Reflexive: take \\(a = \\frac{1}{2}\\). Then \\(a \\le a^{2}\\) reads \\(\\frac{1}{2} \\le \\frac{1}{4}\\), which is false, so \\(\\left(\\frac{1}{2}, \\frac{1}{2}\\right) \\notin R\\). Hence R is not reflexive.\n\nSymmetric: \\((1, 4) \\in R\\) since \\(1 \\le 16\\), but \\((4, 1) \\notin R\\) since \\(4 \\le 1\\) is false. Hence R is not symmetric.\n\nTransitive: \\((3, 2) \\in R\\) since \\(3 \\le 4\\), and \\(\\left(2, \\frac{3}{2}\\right) \\in R\\) since \\(2 \\le \\frac{9}{4}\\); but \\(\\left(3, \\frac{3}{2}\\right) \\notin R\\) since \\(3 \\le \\frac{9}{4}\\) is false. Hence R is not transitive.\n\nHence R is neither reflexive, nor symmetric, nor transitive."
+  },
+  {
+    "id": "528e2de0-9358-44a2-9959-ee5423815f6d",
+    "ref": "Ex 1.1 Q3",
+    "solution": "Listing the pairs, \\(R = \\{(1,2), (2,3), (3,4), (4,5), (5,6)\\}\\).\n\nReflexive: \\((1,1) \\notin R\\), since \\(1 \\ne 1 + 1\\). So R is not reflexive.\n\nSymmetric: \\((1,2) \\in R\\) but \\((2,1) \\notin R\\), since \\(1 \\ne 2 + 1\\). So R is not symmetric.\n\nTransitive: \\((1,2) \\in R\\) and \\((2,3) \\in R\\), but \\((1,3) \\notin R\\), since \\(3 \\ne 1 + 1\\). So R is not transitive.\n\nHence R is neither reflexive, nor symmetric, nor transitive."
+  },
+  {
+    "id": "886c5380-284f-4183-8dce-edd55b58fd59",
+    "ref": "Ex 1.1 Q4",
+    "solution": "Reflexive: for every \\(a \\in \\mathbf{R}\\), \\(a \\le a\\) is true, so \\((a,a) \\in R\\). R is reflexive.\n\nSymmetric: \\((1,2) \\in R\\) since \\(1 \\le 2\\), but \\((2,1) \\notin R\\) since \\(2 \\le 1\\) is false. R is not symmetric.\n\nTransitive: if \\(a \\le b\\) and \\(b \\le c\\), then \\(a \\le c\\) by the transitivity of the order on \\(\\mathbf{R}\\), so \\((a,b), (b,c) \\in R \\Rightarrow (a,c) \\in R\\). R is transitive.\n\nHence R is reflexive and transitive but not symmetric."
+  },
+  {
+    "id": "a8fd3c12-6257-4187-b78c-1a3f35357382",
+    "ref": "Ex 1.1 Q5",
+    "solution": "Reflexive: take \\(a = \\frac{1}{2}\\). Then \\(a \\le a^{3}\\) reads \\(\\frac{1}{2} \\le \\frac{1}{8}\\), which is false, so \\(\\left(\\frac{1}{2}, \\frac{1}{2}\\right) \\notin R\\). R is not reflexive.\n\nSymmetric: \\((1, 2) \\in R\\) since \\(1 \\le 8\\), but \\((2, 1) \\notin R\\) since \\(2 \\le 1\\) is false. R is not symmetric.\n\nTransitive: \\(\\left(3, \\frac{3}{2}\\right) \\in R\\) since \\(3 \\le \\frac{27}{8} = 3.375\\), and \\(\\left(\\frac{3}{2}, \\frac{6}{5}\\right) \\in R\\) since \\(\\frac{3}{2} = 1.5 \\le \\left(\\frac{6}{5}\\right)^{3} = 1.728\\); but \\(\\left(3, \\frac{6}{5}\\right) \\notin R\\) since \\(3 \\le 1.728\\) is false. R is not transitive.\n\nHence R is neither reflexive, nor symmetric, nor transitive."
+  },
+  {
+    "id": "70aec6b5-2f6a-4f89-8e02-0325d3a62e56",
+    "ref": "Ex 1.1 Q6",
+    "solution": "Reflexive: \\((1,1) \\notin R\\) (nor are \\((2,2)\\) and \\((3,3)\\)), so R is not reflexive.\n\nSymmetric: R has exactly two elements, \\((1,2)\\) and \\((2,1)\\), and each is the reverse of the other, so \\((a,b) \\in R \\Rightarrow (b,a) \\in R\\). R is symmetric.\n\nTransitive: \\((1,2) \\in R\\) and \\((2,1) \\in R\\), but \\((1,1) \\notin R\\). R is not transitive.\n\nHence R is symmetric but neither reflexive nor transitive."
+  },
+  {
+    "id": "95304227-3e5e-49ed-b0e1-c74d51167a9b",
+    "ref": "Ex 1.1 Q7",
+    "solution": "Reflexive: every book \\(x\\) has the same number of pages as itself, so \\((x,x) \\in R\\) for all \\(x \\in A\\).\n\nSymmetric: if \\(x\\) and \\(y\\) have the same number of pages, then \\(y\\) and \\(x\\) have the same number of pages, so \\((x,y) \\in R \\Rightarrow (y,x) \\in R\\).\n\nTransitive: if \\(x\\) and \\(y\\) have the same number of pages, say \\(n\\), and \\(y\\) and \\(z\\) have the same number of pages, then \\(z\\) also has \\(n\\) pages, so \\((x,z) \\in R\\).\n\nSince R is reflexive, symmetric and transitive, R is an equivalence relation."
+  },
+  {
+    "id": "1788300f-fb16-4332-a376-3f6aac813dc6",
+    "ref": "Ex 1.1 Q8",
+    "solution": "Reflexive: \\(|a - a| = 0\\), which is even, so \\((a,a) \\in R\\) for every \\(a \\in A\\).\n\nSymmetric: \\(|a - b| = |b - a|\\), so if \\(|a-b|\\) is even then so is \\(|b-a|\\), giving \\((a,b) \\in R \\Rightarrow (b,a) \\in R\\).\n\nTransitive: \\(|a-b|\\) even means \\(a\\) and \\(b\\) have the same parity, and \\(|b-c|\\) even means \\(b\\) and \\(c\\) have the same parity. Then \\(a\\) and \\(c\\) have the same parity, so \\(|a-c|\\) is even and \\((a,c) \\in R\\).\n\nHence R is an equivalence relation.\n\nElements of \\(\\{1, 3, 5\\}\\) are all odd, and the differences are \\(|1-3| = 2\\), \\(|3-5| = 2\\), \\(|1-5| = 4\\), all even, so all of them are related to each other. Elements of \\(\\{2, 4\\}\\) are both even and \\(|2-4| = 2\\) is even, so they are related to each other.\n\nIf \\(a \\in \\{1,3,5\\}\\) and \\(b \\in \\{2,4\\}\\), then \\(a\\) is odd and \\(b\\) is even, so \\(a - b\\) is odd and \\(|a-b|\\) is odd, e.g. \\(|1-2| = 1\\), \\(|3-4| = 1\\), \\(|5-2| = 3\\). Hence no element of \\(\\{1,3,5\\}\\) is related to any element of \\(\\{2,4\\}\\)."
+  },
+  {
+    "id": "986735f9-f5e0-4325-97ee-e76e39a544f3",
+    "ref": "Ex 1.1 Q9(i)",
+    "solution": "Here \\(A = \\{0, 1, 2, \\ldots, 12\\}\\).\n\nReflexive: \\(|a - a| = 0 = 4 \\times 0\\), a multiple of 4, so \\((a,a) \\in R\\) for every \\(a \\in A\\).\n\nSymmetric: \\(|a - b| = |b - a|\\), so if \\(|a-b|\\) is a multiple of 4 then so is \\(|b-a|\\).\n\nTransitive: if \\(|a-b| = 4k\\) and \\(|b-c| = 4m\\), then \\(a - b = \\pm 4k\\) and \\(b - c = \\pm 4m\\), so \\(a - c = (a-b) + (b-c)\\) is a multiple of 4, hence \\(|a-c|\\) is a multiple of 4 and \\((a,c) \\in R\\).\n\nHence R is an equivalence relation.\n\nElements related to 1: we need \\(|a - 1| \\in \\{0, 4, 8, 12, \\ldots\\}\\), i.e. \\(a \\in \\{1, 5, 9, 13, -3, \\ldots\\}\\). Keeping only those in \\(A\\): \\(a = 1\\) (\\(|1-1| = 0\\)), \\(a = 5\\) (\\(|5-1| = 4\\)), \\(a = 9\\) (\\(|9-1| = 8\\)); \\(a = 13\\) and \\(a = -3\\) are outside \\(A\\).\n\nThe set of all elements related to 1 is \\(\\{1, 5, 9\\}\\)."
+  },
+  {
+    "id": "f17af619-4d9b-4b13-abdb-47cb8fbd543b",
+    "ref": "Ex 1.1 Q9(ii)",
+    "solution": "Here \\(A = \\{0, 1, 2, \\ldots, 12\\}\\) and \\(R = \\{(a,b) : a = b\\}\\).\n\nReflexive: \\(a = a\\) for every \\(a \\in A\\), so \\((a,a) \\in R\\).\n\nSymmetric: if \\(a = b\\), then \\(b = a\\), so \\((a,b) \\in R \\Rightarrow (b,a) \\in R\\).\n\nTransitive: if \\(a = b\\) and \\(b = c\\), then \\(a = c\\), so \\((a,b), (b,c) \\in R \\Rightarrow (a,c) \\in R\\).\n\nHence R is an equivalence relation.\n\nElements related to 1: \\((1, b) \\in R\\) requires \\(b = 1\\), and no other element of \\(A\\) equals 1.\n\nThe set of all elements related to 1 is \\(\\{1\\}\\)."
+  },
+  {
+    "id": "530b626f-6ce5-47b6-83bd-9adafb526fbd",
+    "ref": "Ex 1.1 Q10(i)",
+    "solution": "Take \\(A = \\{1, 2, 3\\}\\) and \\(R = \\{(1,2), (2,1)\\}\\).\n\nNot reflexive: \\((1,1) \\notin R\\).\n\nSymmetric: the only members of R are \\((1,2)\\) and \\((2,1)\\), and each is the reverse of the other, so \\((a,b) \\in R \\Rightarrow (b,a) \\in R\\).\n\nNot transitive: \\((1,2) \\in R\\) and \\((2,1) \\in R\\), but \\((1,1) \\notin R\\).\n\nHence \\(R = \\{(1,2), (2,1)\\}\\) on \\(\\{1,2,3\\}\\) is symmetric but neither reflexive nor transitive."
+  },
+  {
+    "id": "bf9032a3-9ff4-4417-9d1a-a7a6ff0f032a",
+    "ref": "Ex 1.1 Q10(ii)",
+    "solution": "Take R on \\(\\mathbf{R}\\) given by \\(R = \\{(a,b) : a < b\\}\\).\n\nNot reflexive: \\(a < a\\) is false for every real \\(a\\), so \\((1,1) \\notin R\\).\n\nNot symmetric: \\((1,2) \\in R\\) since \\(1 < 2\\), but \\((2,1) \\notin R\\) since \\(2 < 1\\) is false.\n\nTransitive: if \\(a < b\\) and \\(b < c\\), then \\(a < c\\), so \\((a,b), (b,c) \\in R \\Rightarrow (a,c) \\in R\\).\n\nHence \\(R = \\{(a,b) : a < b\\}\\) on \\(\\mathbf{R}\\) is transitive but neither reflexive nor symmetric."
+  },
+  {
+    "id": "e9a707bd-c8ad-4395-b858-8f66d53c0c1f",
+    "ref": "Ex 1.1 Q10(iii)",
+    "solution": "Take \\(A = \\{1, 2, 3\\}\\) and \\(R = \\{(1,1), (2,2), (3,3), (1,2), (2,1), (2,3), (3,2)\\}\\).\n\nReflexive: \\((1,1), (2,2), (3,3) \\in R\\).\n\nSymmetric: the off-diagonal members occur in the reversed pairs \\((1,2), (2,1)\\) and \\((2,3), (3,2)\\), so \\((a,b) \\in R \\Rightarrow (b,a) \\in R\\).\n\nNot transitive: \\((1,2) \\in R\\) and \\((2,3) \\in R\\), but \\((1,3) \\notin R\\).\n\nHence this R is reflexive and symmetric but not transitive."
+  },
+  {
+    "id": "109a3907-afc4-4631-953d-33512fd2dea8",
+    "ref": "Ex 1.1 Q10(iv)",
+    "solution": "Take R on \\(\\mathbf{R}\\) given by \\(R = \\{(a,b) : a \\le b\\}\\).\n\nReflexive: \\(a \\le a\\) holds for every real \\(a\\), so \\((a,a) \\in R\\).\n\nTransitive: if \\(a \\le b\\) and \\(b \\le c\\), then \\(a \\le c\\), so \\((a,b), (b,c) \\in R \\Rightarrow (a,c) \\in R\\).\n\nNot symmetric: \\((1,2) \\in R\\) since \\(1 \\le 2\\), but \\((2,1) \\notin R\\) since \\(2 \\le 1\\) is false.\n\nHence \\(R = \\{(a,b) : a \\le b\\}\\) on \\(\\mathbf{R}\\) is reflexive and transitive but not symmetric."
+  },
+  {
+    "id": "9fdfaf05-6834-405c-9364-15248c10f3f5",
+    "ref": "Ex 1.1 Q10(v)",
+    "solution": "Take \\(A = \\{1, 2, 3\\}\\) and \\(R = \\{(1,1), (2,2), (1,2), (2,1)\\}\\).\n\nSymmetric: \\((1,1)\\) and \\((2,2)\\) are their own reverses, and \\((1,2), (2,1)\\) form a reversed pair, so \\((a,b) \\in R \\Rightarrow (b,a) \\in R\\).\n\nTransitive: every chain lies inside \\(\\{1,2\\}\\), and R contains all four pairs from \\(\\{1,2\\} \\times \\{1,2\\}\\); e.g. \\((1,2), (2,1) \\Rightarrow (1,1) \\in R\\) and \\((2,1), (1,2) \\Rightarrow (2,2) \\in R\\). So R is transitive.\n\nNot reflexive: \\(3 \\in A\\) but \\((3,3) \\notin R\\).\n\nHence this R is symmetric and transitive but not reflexive."
+  },
+  {
+    "id": "2a822772-f15a-476b-a232-0d8d0abf75a0",
+    "ref": "Ex 1.1 Q11",
+    "solution": "Write \\(d(P)\\) for the distance of a point P from the origin O, so \\((P,Q) \\in R\\) means \\(d(P) = d(Q)\\).\n\nReflexive: \\(d(P) = d(P)\\), so \\((P,P) \\in R\\) for every point P.\n\nSymmetric: if \\(d(P) = d(Q)\\), then \\(d(Q) = d(P)\\), so \\((P,Q) \\in R \\Rightarrow (Q,P) \\in R\\).\n\nTransitive: if \\(d(P) = d(Q)\\) and \\(d(Q) = d(S)\\), then \\(d(P) = d(S)\\), so \\((P,Q), (Q,S) \\in R \\Rightarrow (P,S) \\in R\\).\n\nHence R is an equivalence relation.\n\nNow fix \\(P \\ne (0,0)\\) and put \\(r = d(P) > 0\\). A point Q is related to P precisely when \\(d(Q) = r\\), that is, when Q lies at distance \\(r\\) from the origin. Writing \\(Q = (x,y)\\), this says \\(\\sqrt{x^{2} + y^{2}} = r\\), i.e. \\(x^{2} + y^{2} = r^{2}\\).\n\nSo the set of all points related to P is the circle with centre the origin and radius \\(r = d(P)\\), which passes through P since \\(d(P) = r\\)."
+  },
+  {
+    "id": "e7ece11d-4954-4f1c-b602-3d66200188a7",
+    "ref": "Ex 1.1 Q12",
+    "solution": "Reflexive: every triangle is similar to itself (the identity correspondence preserves all angles), so \\((T, T) \\in R\\).\n\nSymmetric: if \\(T_{1}\\) is similar to \\(T_{2}\\), then \\(T_{2}\\) is similar to \\(T_{1}\\) (reverse the correspondence), so \\((T_{1}, T_{2}) \\in R \\Rightarrow (T_{2}, T_{1}) \\in R\\).\n\nTransitive: if \\(T_{1} \\sim T_{2}\\) with ratio \\(k_{1}\\) and \\(T_{2} \\sim T_{3}\\) with ratio \\(k_{2}\\), then corresponding sides of \\(T_{1}\\) and \\(T_{3}\\) are in the ratio \\(k_{1}k_{2}\\), so \\(T_{1} \\sim T_{3}\\) and \\((T_{1}, T_{3}) \\in R\\).\n\nHence R is an equivalence relation.\n\nNow compare the three triangles. For \\(T_{1}\\) (sides 3, 4, 5) and \\(T_{3}\\) (sides 6, 8, 10): \\(\\frac{6}{3} = \\frac{8}{4} = \\frac{10}{5} = 2\\), so the sides are proportional and \\(T_{1} \\sim T_{3}\\).\n\nFor \\(T_{1}\\) and \\(T_{2}\\) (sides 5, 12, 13): \\(\\frac{5}{3}\\), \\(\\frac{12}{4} = 3\\), \\(\\frac{13}{5}\\) are not all equal, so \\(T_{1}\\) and \\(T_{2}\\) are not similar. Likewise \\(\\frac{5}{6}\\), \\(\\frac{12}{8} = \\frac{3}{2}\\), \\(\\frac{13}{10}\\) are not all equal, so \\(T_{2}\\) and \\(T_{3}\\) are not similar.\n\nHence \\(T_{1}\\) and \\(T_{3}\\) are related, and \\(T_{2}\\) is related to neither."
+  },
+  {
+    "id": "969853c0-a42d-4ecb-9330-8a9395960c46",
+    "ref": "Ex 1.1 Q13",
+    "solution": "Reflexive: a polygon \\(P\\) has the same number of sides as itself, so \\((P, P) \\in R\\).\n\nSymmetric: if \\(P_{1}\\) and \\(P_{2}\\) have the same number of sides, then \\(P_{2}\\) and \\(P_{1}\\) do, so \\((P_{1}, P_{2}) \\in R \\Rightarrow (P_{2}, P_{1}) \\in R\\).\n\nTransitive: if \\(P_{1}\\) and \\(P_{2}\\) both have \\(n\\) sides and \\(P_{2}\\) and \\(P_{3}\\) have the same number of sides, then \\(P_{3}\\) also has \\(n\\) sides, so \\((P_{1}, P_{3}) \\in R\\).\n\nHence R is an equivalence relation.\n\nThe triangle T with sides 3, 4 and 5 has 3 sides, and a polygon \\(P\\) is related to T exactly when \\(P\\) also has 3 sides.\n\nHence the set of all elements of A related to T is the set of all triangles in A."
+  },
+  {
+    "id": "867f1e27-9c97-452b-8e83-bb6e15c1ba78",
+    "ref": "Ex 1.1 Q14",
+    "solution": "Reflexive: every line is parallel to itself, so \\((L_{1}, L_{1}) \\in R\\) for every \\(L_{1} \\in L\\).\n\nSymmetric: if \\(L_{1}\\) is parallel to \\(L_{2}\\), then \\(L_{2}\\) is parallel to \\(L_{1}\\), so \\((L_{1}, L_{2}) \\in R \\Rightarrow (L_{2}, L_{1}) \\in R\\).\n\nTransitive: if \\(L_{1}\\) is parallel to \\(L_{2}\\) and \\(L_{2}\\) is parallel to \\(L_{3}\\), then \\(L_{1}\\) and \\(L_{3}\\) have the same direction as \\(L_{2}\\), so \\(L_{1}\\) is parallel to \\(L_{3}\\) and \\((L_{1}, L_{3}) \\in R\\).\n\nHence R is an equivalence relation.\n\nThe line \\(y = 2x + 4\\) has slope 2, and a line is parallel to it exactly when it has the same slope 2.\n\nHence the set of all lines related to \\(y = 2x + 4\\) is \\(\\{y = 2x + c : c \\in \\mathbf{R}\\}\\)."
+  },
+  {
+    "id": "a235616f-9cfe-4189-9626-e0a682ab653b",
+    "ref": "Ex 1.2 Q1",
+    "solution": "One-one: let \\(x, y \\in \\mathbf{R}_{*}\\) with \\(f(x) = f(y)\\). Then \\(\\frac{1}{x} = \\frac{1}{y}\\), so \\(y = x\\). Hence \\(f\\) is one-one.\n\nOnto: let \\(y \\in \\mathbf{R}_{*}\\). Put \\(x = \\frac{1}{y}\\), which is a non-zero real number, so \\(x \\in \\mathbf{R}_{*}\\), and \\(f(x) = \\frac{1}{1/y} = y\\). Hence \\(f\\) is onto.\n\nSo \\(f : \\mathbf{R}_{*} \\to \\mathbf{R}_{*}\\) is one-one and onto.\n\nNow let \\(g : \\mathbf{N} \\to \\mathbf{R}_{*}\\) be given by \\(g(x) = \\frac{1}{x}\\). It is still one-one, since \\(\\frac{1}{x} = \\frac{1}{y} \\Rightarrow x = y\\). But it is not onto: take \\(2 \\in \\mathbf{R}_{*}\\); \\(\\frac{1}{x} = 2\\) gives \\(x = \\frac{1}{2}\\), which is not a natural number, so 2 has no preimage in \\(\\mathbf{N}\\).\n\nHence the result is not true when the domain is replaced by \\(\\mathbf{N}\\): \\(g\\) is one-one but not onto."
+  },
+  {
+    "id": "95034dd2-0f4d-48e9-9249-7de1ba1512d2",
+    "ref": "Ex 1.2 Q2(i)",
+    "solution": "Injectivity: let \\(x, y \\in \\mathbf{N}\\) with \\(f(x) = f(y)\\), i.e. \\(x^{2} = y^{2}\\). Then \\((x-y)(x+y) = 0\\), and since \\(x, y\\) are natural numbers \\(x + y > 0\\), so \\(x = y\\). Hence \\(f\\) is injective.\n\nSurjectivity: take \\(2 \\in \\mathbf{N}\\). Then \\(x^{2} = 2\\) gives \\(x = \\sqrt{2}\\), which is not a natural number, so 2 has no preimage. Hence \\(f\\) is not surjective.\n\nHence \\(f\\) is injective but not surjective."
+  },
+  {
+    "id": "43e9e354-655a-42dc-b618-b84fd7365ac6",
+    "ref": "Ex 1.2 Q2(ii)",
+    "solution": "Injectivity: \\(f(-1) = (-1)^{2} = 1\\) and \\(f(1) = 1^{2} = 1\\), so \\(f(-1) = f(1)\\) while \\(-1 \\ne 1\\). Hence \\(f\\) is not injective.\n\nSurjectivity: take \\(-1 \\in \\mathbf{Z}\\). Then \\(x^{2} = -1\\) has no solution at all, since \\(x^{2} \\ge 0\\) for every integer \\(x\\). Hence \\(f\\) is not surjective.\n\nHence \\(f\\) is neither injective nor surjective."
+  },
+  {
+    "id": "3127231f-9742-4207-8d21-a5445ab1d4dc",
+    "ref": "Ex 1.2 Q2(iii)",
+    "solution": "Injectivity: \\(f(-1) = (-1)^{2} = 1\\) and \\(f(1) = 1^{2} = 1\\), so \\(f(-1) = f(1)\\) while \\(-1 \\ne 1\\). Hence \\(f\\) is not injective.\n\nSurjectivity: take \\(-1 \\in \\mathbf{R}\\). Then \\(x^{2} = -1\\) has no real solution, since \\(x^{2} \\ge 0\\) for every real \\(x\\). Hence \\(f\\) is not surjective.\n\nHence \\(f\\) is neither injective nor surjective."
+  },
+  {
+    "id": "547806d7-2f49-4f3e-ae9e-82e81c89fe22",
+    "ref": "Ex 1.2 Q2(iv)",
+    "solution": "Injectivity: let \\(x, y \\in \\mathbf{N}\\) with \\(x^{3} = y^{3}\\). Taking cube roots (the cube function is strictly increasing on \\(\\mathbf{N}\\)) gives \\(x = y\\). Hence \\(f\\) is injective.\n\nSurjectivity: take \\(2 \\in \\mathbf{N}\\). Then \\(x^{3} = 2\\) gives \\(x = 2^{1/3}\\), which is not a natural number (indeed \\(1^{3} = 1\\) and \\(2^{3} = 8\\), so no natural number cubes to 2). Hence 2 has no preimage and \\(f\\) is not surjective.\n\nHence \\(f\\) is injective but not surjective."
+  },
+  {
+    "id": "e0b99d3b-9d8f-4e9c-bfcd-04bf48351037",
+    "ref": "Ex 1.2 Q2(v)",
+    "solution": "Injectivity: let \\(x, y \\in \\mathbf{Z}\\) with \\(x^{3} = y^{3}\\). Then \\(x^{3} - y^{3} = (x - y)\\left(x^{2} + xy + y^{2}\\right) = 0\\), and \\(x^{2} + xy + y^{2} = \\left(x + \\frac{y}{2}\\right)^{2} + \\frac{3y^{2}}{4} > 0\\) unless \\(x = y = 0\\). In either case \\(x = y\\). Hence \\(f\\) is injective.\n\nSurjectivity: take \\(2 \\in \\mathbf{Z}\\). Then \\(x^{3} = 2\\) gives \\(x = 2^{1/3}\\), which is not an integer (\\(1^{3} = 1\\), \\(2^{3} = 8\\)). Hence 2 has no preimage and \\(f\\) is not surjective.\n\nHence \\(f\\) is injective but not surjective."
+  },
+  {
+    "id": "964255c6-d41a-44a0-ab40-aeb919dfd4cb",
+    "ref": "Ex 1.2 Q3",
+    "solution": "Not one-one: take \\(x = 1.2\\) and \\(y = 1.5\\). Then \\(f(1.2) = [1.2] = 1\\) and \\(f(1.5) = [1.5] = 1\\), so \\(f(1.2) = f(1.5)\\) while \\(1.2 \\ne 1.5\\). Hence \\(f\\) is not one-one.\n\nNot onto: for every real \\(x\\), \\([x]\\) is an integer, so the range of \\(f\\) is \\(\\mathbf{Z}\\), a proper subset of the codomain \\(\\mathbf{R}\\). Take \\(0.5 \\in \\mathbf{R}\\); there is no \\(x\\) with \\([x] = 0.5\\), since \\([x]\\) is never a non-integer. Hence \\(f\\) is not onto.\n\nHence the greatest integer function is neither one-one nor onto."
+  },
+  {
+    "id": "20169983-ef7f-4daf-8816-1b8bdcef6c87",
+    "ref": "Ex 1.2 Q4",
+    "solution": "Not one-one: take \\(x = -1\\) and \\(y = 1\\). Then \\(f(-1) = |-1| = 1\\) and \\(f(1) = |1| = 1\\), so \\(f(-1) = f(1)\\) while \\(-1 \\ne 1\\). Hence \\(f\\) is not one-one.\n\nNot onto: \\(|x| \\ge 0\\) for every real \\(x\\), so the range of \\(f\\) is \\([0, \\infty)\\). Take \\(-1 \\in \\mathbf{R}\\); there is no real \\(x\\) with \\(|x| = -1\\). Hence \\(-1\\) has no preimage and \\(f\\) is not onto.\n\nHence the modulus function is neither one-one nor onto."
+  },
+  {
+    "id": "03395f0f-a801-46e4-8546-48364074bee1",
+    "ref": "Ex 1.2 Q5",
+    "solution": "[Textbook misprint: the third branch is printed as \\(1\\) but the Signum Function requires \\(-1\\) for \\(x<0\\). The stem is preserved as printed; the conclusion is the same under either reading.]\n\nNot one-one: take \\(x = 1\\) and \\(y = 2\\). Both are positive, so \\(f(1) = 1\\) and \\(f(2) = 1\\), giving \\(f(1) = f(2)\\) while \\(1 \\ne 2\\). This pair uses only the \\(x > 0\\) branch, so it works for the printed definition and for the intended one alike.\n\nNot onto: every value of \\(f\\) comes from the listed branches, so the range is contained in \\(\\{-1, 0, 1\\}\\) (and in \\(\\{0, 1\\}\\) for the definition as printed). Take \\(2 \\in \\mathbf{R}\\); there is no \\(x\\) with \\(f(x) = 2\\), since \\(f\\) takes no value outside \\(\\{-1, 0, 1\\}\\). Hence \\(f\\) is not onto, again under either reading.\n\nHence the signum function is neither one-one nor onto."
+  },
+  {
+    "id": "c3a8585f-b885-4fbc-946d-c93de5e675e2",
+    "ref": "Ex 1.2 Q6",
+    "solution": "The three elements of A have images \\(f(1) = 4\\), \\(f(2) = 5\\) and \\(f(3) = 6\\).\n\nThese images \\(4, 5, 6\\) are distinct, so distinct elements of A have distinct images: \\(f(1) \\ne f(2)\\), \\(f(2) \\ne f(3)\\) and \\(f(1) \\ne f(3)\\). Equivalently, \\(f(a) = f(b)\\) can hold only when \\(a = b\\).\n\nHence \\(f\\) is one-one."
+  },
+  {
+    "id": "6539fb57-c614-4693-a463-921a8d972754",
+    "ref": "Ex 1.2 Q7(i)",
+    "solution": "One-one: let \\(f(x_{1}) = f(x_{2})\\), i.e. \\(3 - 4x_{1} = 3 - 4x_{2}\\). Then \\(-4x_{1} = -4x_{2}\\), so \\(x_{1} = x_{2}\\). Hence \\(f\\) is one-one.\n\nOnto: let \\(y \\in \\mathbf{R}\\). Solving \\(y = 3 - 4x\\) gives \\(x = \\frac{3 - y}{4}\\), which is a real number, and \\(f\\left(\\frac{3-y}{4}\\right) = 3 - 4 \\cdot \\frac{3-y}{4} = y\\). Hence every \\(y\\) has a preimage and \\(f\\) is onto.\n\nHence \\(f\\) is one-one and onto, that is, bijective."
+  },
+  {
+    "id": "e8ee328e-1aae-403b-9783-af1f44d1317f",
+    "ref": "Ex 1.2 Q7(ii)",
+    "solution": "One-one: \\(f(-1) = 1 + (-1)^{2} = 2\\) and \\(f(1) = 1 + 1^{2} = 2\\), so \\(f(-1) = f(1)\\) while \\(-1 \\ne 1\\). Hence \\(f\\) is not one-one.\n\nOnto: since \\(x^{2} \\ge 0\\), we have \\(f(x) = 1 + x^{2} \\ge 1\\), so the range of \\(f\\) is \\([1, \\infty)\\). Take \\(0 \\in \\mathbf{R}\\); \\(1 + x^{2} = 0\\) gives \\(x^{2} = -1\\), which has no real solution, so 0 has no preimage. Hence \\(f\\) is not onto.\n\nHence \\(f\\) is neither one-one nor onto, and so it is not bijective."
+  },
+  {
+    "id": "133176a4-a561-4e43-9676-2164379c4ffe",
+    "ref": "Ex 1.2 Q8",
+    "solution": "One-one: let \\((a_{1}, b_{1}), (a_{2}, b_{2}) \\in \\mathrm{A} \\times \\mathrm{B}\\) with \\(f(a_{1}, b_{1}) = f(a_{2}, b_{2})\\). Then \\((b_{1}, a_{1}) = (b_{2}, a_{2})\\), and equality of ordered pairs gives \\(b_{1} = b_{2}\\) and \\(a_{1} = a_{2}\\), so \\((a_{1}, b_{1}) = (a_{2}, b_{2})\\). Hence \\(f\\) is one-one.\n\nOnto: let \\((b, a)\\) be any element of \\(\\mathrm{B} \\times \\mathrm{A}\\), so \\(b \\in \\mathrm{B}\\) and \\(a \\in \\mathrm{A}\\). Then \\((a, b) \\in \\mathrm{A} \\times \\mathrm{B}\\) and \\(f(a, b) = (b, a)\\). Hence every element of \\(\\mathrm{B} \\times \\mathrm{A}\\) has a preimage and \\(f\\) is onto.\n\nHence \\(f\\) is one-one and onto, that is, \\(f\\) is a bijective function."
+  },
+  {
+    "id": "c148d42e-7886-41d7-9199-0ac33feb33b2",
+    "ref": "Ex 1.2 Q9",
+    "solution": "One-one: take \\(n = 1\\) (odd) and \\(n = 2\\) (even). Then \\(f(1) = \\frac{1+1}{2} = 1\\) and \\(f(2) = \\frac{2}{2} = 1\\), so \\(f(1) = f(2)\\) while \\(1 \\ne 2\\). Hence \\(f\\) is not one-one.\n\nOnto: let \\(y \\in \\mathbf{N}\\). Then \\(2y \\in \\mathbf{N}\\) is even, and \\(f(2y) = \\frac{2y}{2} = y\\). So every \\(y\\) has a preimage and \\(f\\) is onto.\n\nSince \\(f\\) is onto but not one-one, \\(f\\) is not bijective."
+  },
+  {
+    "id": "90694e8f-2222-4adc-837e-d896478fa97a",
+    "ref": "Ex 1.2 Q10",
+    "solution": "One-one: let \\(x, y \\in \\mathrm{A}\\) with \\(f(x) = f(y)\\), i.e. \\(\\frac{x-2}{x-3} = \\frac{y-2}{y-3}\\). Cross-multiplying, \\((x-2)(y-3) = (y-2)(x-3)\\), so \\(xy - 3x - 2y + 6 = xy - 3y - 2x + 6\\), giving \\(-3x - 2y = -3y - 2x\\), i.e. \\(-x = -y\\) and so \\(x = y\\). Hence \\(f\\) is one-one.\n\nOnto: let \\(y \\in \\mathrm{B}\\), so \\(y \\ne 1\\). Solving \\(y = \\frac{x-2}{x-3}\\) gives \\(y(x-3) = x-2\\), so \\(x(y-1) = 3y-2\\) and \\(x = \\frac{3y-2}{y-1}\\), which is defined because \\(y \\ne 1\\). Also \\(x \\ne 3\\), for \\(\\frac{3y-2}{y-1} = 3\\) would give \\(3y - 2 = 3y - 3\\), i.e. \\(-2 = -3\\), which is impossible. So \\(x \\in \\mathrm{A}\\), and substituting back, \\(f(x) = \\frac{\\frac{3y-2}{y-1} - 2}{\\frac{3y-2}{y-1} - 3} = \\frac{(3y-2) - 2(y-1)}{(3y-2) - 3(y-1)} = \\frac{y}{1} = y\\). Hence \\(f\\) is onto.\n\nHence \\(f\\) is both one-one and onto."
+  },
+  {
+    "id": "31f54099-149b-4c59-b606-b43b38b88382",
+    "ref": "Misc Q1",
+    "solution": "First note that \\(f(x)\\) has the same sign as \\(x\\), since \\(1 + |x| > 0\\); also \\(|f(x)| = \\frac{|x|}{1+|x|} < 1\\), so \\(f\\) does map into \\((-1, 1)\\).\n\nOne-one: suppose \\(f(x) = f(y)\\). By the sign remark \\(x\\) and \\(y\\) have the same sign (or both are 0). If \\(x, y \\ge 0\\), then \\(\\frac{x}{1+x} = \\frac{y}{1+y}\\), so \\(x(1+y) = y(1+x)\\), i.e. \\(x + xy = y + xy\\), giving \\(x = y\\). If \\(x, y \\le 0\\), then \\(\\frac{x}{1-x} = \\frac{y}{1-y}\\), so \\(x(1-y) = y(1-x)\\), i.e. \\(x - xy = y - xy\\), giving \\(x = y\\). Hence \\(f\\) is one-one.\n\nOnto: let \\(y \\in (-1, 1)\\), so \\(|y| < 1\\) and \\(1 - |y| > 0\\). Put \\(x = \\frac{y}{1 - |y|}\\), a real number with the same sign as \\(y\\), so \\(|x| = \\frac{|y|}{1-|y|}\\) and \\(1 + |x| = \\frac{1}{1-|y|}\\). Then \\(f(x) = \\frac{x}{1+|x|} = \\frac{y}{1-|y|} \\cdot (1 - |y|) = y\\). Hence every \\(y \\in (-1,1)\\) has a preimage and \\(f\\) is onto.\n\nHence \\(f\\) is one-one and onto."
+  },
+  {
+    "id": "1457c13b-e8f6-429c-b030-cb4a6b2d3700",
+    "ref": "Misc Q2",
+    "solution": "Let \\(x, y \\in \\mathbf{R}\\) with \\(f(x) = f(y)\\), i.e. \\(x^{3} = y^{3}\\).\n\nThen \\(x^{3} - y^{3} = 0\\), so \\((x - y)\\left(x^{2} + xy + y^{2}\\right) = 0\\).\n\nCompleting the square, \\(x^{2} + xy + y^{2} = \\left(x + \\frac{y}{2}\\right)^{2} + \\frac{3y^{2}}{4}\\), which is a sum of two squares and is therefore \\(0\\) only when \\(x + \\frac{y}{2} = 0\\) and \\(y = 0\\), i.e. only when \\(x = y = 0\\). In that case \\(x = y\\) already; otherwise the second factor is strictly positive, forcing \\(x - y = 0\\), i.e. \\(x = y\\).\n\nIn every case \\(f(x) = f(y) \\Rightarrow x = y\\), so \\(f\\) is injective."
+  },
+  {
+    "id": "a6ec878d-0a03-4b4b-805c-dc3e8c3e7b3e",
+    "ref": "Misc Q3",
+    "solution": "Reflexive: for every \\(\\mathrm{A} \\in P(X)\\), every element of A lies in A, so \\(\\mathrm{A} \\subset \\mathrm{A}\\) and \\((\\mathrm{A}, \\mathrm{A}) \\in R\\). Hence R is reflexive.\n\nSymmetric: since X is non-empty, take \\(\\mathrm{A} = \\phi\\) and \\(\\mathrm{B} = X\\), both in \\(P(X)\\). Then \\(\\phi \\subset X\\), so \\((\\mathrm{A}, \\mathrm{B}) \\in R\\); but \\(X \\subset \\phi\\) is false, because X has at least one element and \\(\\phi\\) has none, so \\((\\mathrm{B}, \\mathrm{A}) \\notin R\\). Hence R is not symmetric.\n\nTransitive: if \\(\\mathrm{A} \\subset \\mathrm{B}\\) and \\(\\mathrm{B} \\subset \\mathrm{C}\\), then each element of A lies in B and hence in C, so \\(\\mathrm{A} \\subset \\mathrm{C}\\) and \\((\\mathrm{A}, \\mathrm{C}) \\in R\\). Hence R is transitive.\n\nSince R is not symmetric, R is not an equivalence relation on \\(P(X)\\)."
+  },
+  {
+    "id": "78565e63-3865-4691-b338-359f1734f470",
+    "ref": "Misc Q4",
+    "solution": "Let \\(S = \\{1, 2, 3, \\ldots, n\\}\\) and let \\(f : S \\to S\\) be onto. Since S is finite with \\(n\\) elements and \\(f(S) = S\\), the \\(n\\) images \\(f(1), f(2), \\ldots, f(n)\\) must exhaust all \\(n\\) elements of S, so no two of them can coincide. Hence \\(f\\) is also one-one, and an onto map from S to itself is exactly a bijection, i.e. an arrangement of \\(1, 2, \\ldots, n\\).\n\nCounting such arrangements: \\(f(1)\\) can be any of the \\(n\\) elements; \\(f(2)\\) any of the remaining \\(n-1\\); \\(f(3)\\) any of the remaining \\(n-2\\); and so on down to \\(f(n)\\), for which only 1 element is left. By the multiplication principle the total is \\(n \\times (n-1) \\times (n-2) \\times \\cdots \\times 2 \\times 1\\).\n\nAs a check, for \\(n = 3\\) this gives 6, and the onto maps are precisely the 6 arrangements \\((1,2,3)\\), \\((1,3,2)\\), \\((2,1,3)\\), \\((2,3,1)\\), \\((3,1,2)\\), \\((3,2,1)\\) of the images \\((f(1), f(2), f(3))\\).\n\nHence the number of all onto functions from \\(\\{1, 2, \\ldots, n\\}\\) to itself is \\(n!\\)."
+  },
+  {
+    "id": "e5cd8037-802e-4d38-a4b7-4698718e7b9b",
+    "ref": "Misc Q5",
+    "solution": "Two functions with the same domain and codomain are equal exactly when they agree at every element of the domain, so evaluate both at each of the four elements of \\(\\mathrm{A} = \\{-1, 0, 1, 2\\}\\).\n\nAt \\(x = -1\\): \\(f(-1) = (-1)^{2} - (-1) = 1 + 1 = 2\\) and \\(g(-1) = 2\\left|-1 - \\frac{1}{2}\\right| - 1 = 2 \\cdot \\frac{3}{2} - 1 = 2\\).\n\nAt \\(x = 0\\): \\(f(0) = 0^{2} - 0 = 0\\) and \\(g(0) = 2\\left|0 - \\frac{1}{2}\\right| - 1 = 2 \\cdot \\frac{1}{2} - 1 = 0\\).\n\nAt \\(x = 1\\): \\(f(1) = 1^{2} - 1 = 0\\) and \\(g(1) = 2\\left|1 - \\frac{1}{2}\\right| - 1 = 2 \\cdot \\frac{1}{2} - 1 = 0\\).\n\nAt \\(x = 2\\): \\(f(2) = 2^{2} - 2 = 2\\) and \\(g(2) = 2\\left|2 - \\frac{1}{2}\\right| - 1 = 2 \\cdot \\frac{3}{2} - 1 = 2\\).\n\n(All four values \\(2, 0, 0, 2\\) lie in \\(\\mathrm{B} = \\{-4, -2, 0, 2\\}\\), so both are indeed functions from A to B.)\n\nSince \\(f(a) = g(a)\\) for every \\(a \\in \\mathrm{A}\\), the functions \\(f\\) and \\(g\\) are equal."
+  }
+]

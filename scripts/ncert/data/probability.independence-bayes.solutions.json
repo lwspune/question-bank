@@ -1,0 +1,214 @@
+[
+  {
+    "id": "5c1fb52c-4328-4cc1-8439-ae6125093ecc",
+    "ref": "Ex 13.2 Q1",
+    "solution": "A and B are given to be independent, so the product rule applies: \\(P(A \\cap B) = P(A)\\,P(B)\\). Therefore \\(P(A \\cap B) = \\frac{3}{5} \\times \\frac{1}{5} = \\frac{3}{25}\\)."
+  },
+  {
+    "id": "6f53aa43-70bf-4efc-81c0-c820c131c83d",
+    "ref": "Ex 13.2 Q4",
+    "solution": "The sample space is \\(S = \\{(H,1),\\ldots,(H,6),(T,1),\\ldots,(T,6)\\}\\), so \\(n(S) = 12\\) equally likely outcomes. Then \\(A = \\{(H,1),\\ldots,(H,6)\\}\\) gives \\(P(A) = \\frac{6}{12} = \\frac{1}{2}\\), and \\(B = \\{(H,3),(T,3)\\}\\) gives \\(P(B) = \\frac{2}{12} = \\frac{1}{6}\\). Also \\(A \\cap B = \\{(H,3)\\}\\), so \\(P(A \\cap B) = \\frac{1}{12}\\). Since \\(P(A)\\,P(B) = \\frac{1}{2} \\times \\frac{1}{6} = \\frac{1}{12} = P(A \\cap B)\\), the events A and B are independent."
+  },
+  {
+    "id": "590b9c7f-5e3d-42a4-8848-8c5c1148ccfb",
+    "ref": "Ex 13.2 Q5",
+    "solution": "Here \\(S = \\{1,2,3,4,5,6\\}\\), \\(A = \\{2,4,6\\}\\) and \\(B = \\{1,2,3\\}\\), so \\(P(A) = \\frac{3}{6} = \\frac{1}{2}\\) and \\(P(B) = \\frac{3}{6} = \\frac{1}{2}\\). Now \\(A \\cap B = \\{2\\}\\), so \\(P(A \\cap B) = \\frac{1}{6}\\). Comparing, \\(P(A)\\,P(B) = \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\), and \\(\\frac{1}{4} \\ne \\frac{1}{6}\\). Hence A and B are not independent."
+  },
+  {
+    "id": "ddb7b0a2-ad2a-4a3a-ac1f-b7f918c1f106",
+    "ref": "Ex 13.2 Q6",
+    "solution": "Compute the product of the separate probabilities: \\(P(E)\\,P(F) = \\frac{3}{5} \\times \\frac{3}{10} = \\frac{9}{50}\\). The given intersection is \\(P(E \\cap F) = \\frac{1}{5} = \\frac{10}{50}\\). Since \\(\\frac{10}{50} \\ne \\frac{9}{50}\\), we have \\(P(E \\cap F) \\ne P(E)\\,P(F)\\). Hence E and F are not independent."
+  },
+  {
+    "id": "5e00dbd5-64a9-4986-b15d-f850abf86754",
+    "ref": "Ex 13.2 Q7(i)",
+    "solution": "If A and B are mutually exclusive then \\(P(A \\cap B) = 0\\), so \\(P(A \\cup B) = P(A) + P(B)\\). Substituting, \\(\\frac{3}{5} = \\frac{1}{2} + p\\), so \\(p = \\frac{3}{5} - \\frac{1}{2} = \\frac{6-5}{10} = \\frac{1}{10}\\). Hence \\(p = \\frac{1}{10}\\)."
+  },
+  {
+    "id": "901e998f-65b0-4536-b0e5-92ca61d91483",
+    "ref": "Ex 13.2 Q7(ii)",
+    "solution": "If A and B are independent then \\(P(A \\cap B) = P(A)\\,P(B) = \\frac{1}{2}p\\), so the addition theorem gives \\(P(A \\cup B) = P(A) + P(B) - P(A)P(B) = \\frac{1}{2} + p - \\frac{p}{2}\\). Substituting the given value, \\(\\frac{3}{5} = \\frac{1}{2} + \\frac{p}{2}\\), so \\(\\frac{p}{2} = \\frac{3}{5} - \\frac{1}{2} = \\frac{1}{10}\\). Hence \\(p = \\frac{1}{5}\\)."
+  },
+  {
+    "id": "e0fdf6e6-d28e-4ffa-8b3c-f5c085c52ceb",
+    "ref": "Ex 13.2 Q8(i)",
+    "solution": "A and B are given independent, so the product rule applies: \\(P(A \\cap B) = P(A)\\,P(B) = 0.3 \\times 0.4 = 0.12\\). Hence \\(P(A \\cap B) = 0.12\\)."
+  },
+  {
+    "id": "fa9397f3-a47b-4d5a-be72-283ed55483c4",
+    "ref": "Ex 13.2 Q8(ii)",
+    "solution": "By the addition theorem, \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\), and by independence \\(P(A \\cap B) = 0.3 \\times 0.4 = 0.12\\). Therefore \\(P(A \\cup B) = 0.3 + 0.4 - 0.12 = 0.58\\)."
+  },
+  {
+    "id": "aaf11bd7-aa66-480a-8e29-d6fabece5f49",
+    "ref": "Ex 13.2 Q8(iii)",
+    "solution": "By definition \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)}\\), and by independence \\(P(A \\cap B) = P(A)P(B) = 0.12\\). Hence \\(P(A|B) = \\frac{0.12}{0.4} = 0.3\\), which is just \\(P(A)\\) — as independence requires. So \\(P(A|B) = 0.3\\)."
+  },
+  {
+    "id": "7b80da2b-87d5-4e53-8a31-b80afffff944",
+    "ref": "Ex 13.2 Q8(iv)",
+    "solution": "By definition \\(P(B|A) = \\frac{P(A \\cap B)}{P(A)}\\), and by independence \\(P(A \\cap B) = P(A)P(B) = 0.12\\). Hence \\(P(B|A) = \\frac{0.12}{0.3} = 0.4\\), which is just \\(P(B)\\) — as independence requires. So \\(P(B|A) = 0.4\\)."
+  },
+  {
+    "id": "ea4fbdc5-bf61-4c69-8084-d76e8ec85d2d",
+    "ref": "Ex 13.2 Q9",
+    "solution": "By De Morgan's law, \\(P(\\text{not A and not B}) = P(A' \\cap B') = P(\\overline{A \\cup B}) = 1 - P(A \\cup B)\\). First, \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = \\frac{1}{4} + \\frac{1}{2} - \\frac{1}{8} = \\frac{2+4-1}{8} = \\frac{5}{8}\\). Therefore \\(P(A' \\cap B') = 1 - \\frac{5}{8} = \\frac{3}{8}\\)."
+  },
+  {
+    "id": "b61d40d1-0e05-4738-8a8f-c3e1c74fce40",
+    "ref": "Ex 13.2 Q10",
+    "solution": "[Textbook misprint: the three given values are mutually inconsistent. \\(P(\\text{not A or not B}) = \\tfrac14\\) forces \\(P(A \\cap B) = \\tfrac34\\), but an intersection cannot exceed either event and \\(P(A) = \\tfrac12\\). No probability measure realises these values; the conclusion below is unaffected, since \\(P(A \\cap B) \\ne P(A)P(B)\\) on the numbers as given.] By De Morgan's law, \\(P(\\text{not A or not B}) = P(A' \\cup B') = P(\\overline{A \\cap B}) = 1 - P(A \\cap B)\\). The given value therefore yields \\(1 - P(A \\cap B) = \\frac{1}{4}\\), so \\(P(A \\cap B) = \\frac{3}{4}\\). The product of the separate probabilities is \\(P(A)\\,P(B) = \\frac{1}{2} \\times \\frac{7}{12} = \\frac{7}{24}\\). Since \\(\\frac{3}{4} = \\frac{18}{24} \\ne \\frac{7}{24}\\), we have \\(P(A \\cap B) \\ne P(A)P(B)\\). Hence A and B are not independent.",
+    "_note": "The data as printed are mutually inconsistent: the stated values force \\(P(A \\cap B) = 3/4\\), but an intersection can never exceed either event, and \\(P(A) = 1/2 < 3/4\\). So no probability measure realises this A and B. The verdict is unaffected — on the numbers given, \\(P(A \\cap B) \\ne P(A)P(B)\\), so the answer 'not independent' stands either way — but the stem's third datum is almost certainly a misprint (any value of \\(P(\\text{not A or not B}) \\ge 1/2\\) would be consistent)."
+  },
+  {
+    "id": "9f9eb8e0-2b81-41a1-bc72-7f7a2286fccc",
+    "ref": "Ex 13.2 Q11(i)",
+    "solution": "Since A and B are independent, \\(P(\\text{A and B}) = P(A \\cap B) = P(A)\\,P(B) = 0.3 \\times 0.6 = 0.18\\)."
+  },
+  {
+    "id": "a4e013b0-861f-4772-978c-f14f46a22c1c",
+    "ref": "Ex 13.2 Q11(ii)",
+    "solution": "If A and B are independent then so are A and \\(B'\\). Here \\(P(B') = 1 - 0.6 = 0.4\\), so \\(P(\\text{A and not B}) = P(A \\cap B') = P(A)\\,P(B') = 0.3 \\times 0.4 = 0.12\\)."
+  },
+  {
+    "id": "c3ab4106-585e-4c0b-a01b-f49b3de9c071",
+    "ref": "Ex 13.2 Q11(iii)",
+    "solution": "By the addition theorem with \\(P(A \\cap B) = P(A)P(B) = 0.18\\) from independence, \\(P(\\text{A or B}) = P(A) + P(B) - P(A \\cap B) = 0.3 + 0.6 - 0.18 = 0.72\\)."
+  },
+  {
+    "id": "6414b3ba-17c3-4caf-bc8e-b41a3de50102",
+    "ref": "Ex 13.2 Q11(iv)",
+    "solution": "Neither A nor B occurs means \\(A' \\cap B'\\), and independence of A, B carries over to \\(A'\\), \\(B'\\). Hence \\(P(A' \\cap B') = P(A')\\,P(B') = (1-0.3)(1-0.6) = 0.7 \\times 0.4 = 0.28\\). (Equivalently \\(1 - P(A \\cup B) = 1 - 0.72 = 0.28\\).)"
+  },
+  {
+    "id": "467a3bba-5c7b-48db-894f-513c096a286c",
+    "ref": "Ex 13.2 Q12",
+    "solution": "The three tosses are independent, and on one toss \\(P(\\text{odd}) = \\frac{3}{6} = \\frac{1}{2}\\), so \\(P(\\text{even}) = \\frac{1}{2}\\). Use the complement: 'at least one odd' fails only when all three tosses are even, and \\(P(\\text{no odd}) = \\left(\\frac{1}{2}\\right)^3 = \\frac{1}{8}\\). Hence \\(P(\\text{at least one odd}) = 1 - \\frac{1}{8} = \\frac{7}{8}\\)."
+  },
+  {
+    "id": "42b01c43-211a-454a-896a-681a09e65884",
+    "ref": "Ex 13.2 Q13(i)",
+    "solution": "The box has \\(10 + 8 = 18\\) balls, and because the drawing is with replacement the two draws are independent with unchanged probabilities: \\(P(\\text{red}) = \\frac{8}{18} = \\frac{4}{9}\\). Hence \\(P(\\text{both red}) = \\frac{4}{9} \\times \\frac{4}{9} = \\frac{16}{81}\\)."
+  },
+  {
+    "id": "61ebc263-1e72-416e-970f-9b8d6be89ffa",
+    "ref": "Ex 13.2 Q13(ii)",
+    "solution": "With replacement the draws are independent, with \\(P(\\text{black}) = \\frac{10}{18} = \\frac{5}{9}\\) and \\(P(\\text{red}) = \\frac{8}{18} = \\frac{4}{9}\\) on each draw. Hence \\(P(\\text{first black and second red}) = \\frac{5}{9} \\times \\frac{4}{9} = \\frac{20}{81}\\)."
+  },
+  {
+    "id": "1b31cbf1-c9f7-468a-9be8-f5a054d0cf91",
+    "ref": "Ex 13.2 Q13(iii)",
+    "solution": "'One black and the other red' happens in two mutually exclusive ways: black then red, or red then black. With replacement each draw is independent, so \\(P = \\frac{5}{9} \\times \\frac{4}{9} + \\frac{4}{9} \\times \\frac{5}{9} = \\frac{20}{81} + \\frac{20}{81} = \\frac{40}{81}\\)."
+  },
+  {
+    "id": "a23ce033-08c8-44f3-81f7-7b04be996727",
+    "ref": "Ex 13.2 Q14(i)",
+    "solution": "Let A and B be the events that the respective students solve it, with \\(P(A) = \\frac{1}{2}\\), \\(P(B) = \\frac{1}{3}\\), independent. The problem is solved if at least one succeeds, so use the complement: \\(P(\\text{not solved}) = P(A')P(B') = \\frac{1}{2} \\times \\frac{2}{3} = \\frac{1}{3}\\). Hence \\(P(\\text{problem is solved}) = 1 - \\frac{1}{3} = \\frac{2}{3}\\)."
+  },
+  {
+    "id": "9fd73cf6-d505-44e4-9fad-512b7062a52c",
+    "ref": "Ex 13.2 Q14(ii)",
+    "solution": "'Exactly one solves it' is the union of the two mutually exclusive events \\(A \\cap B'\\) and \\(A' \\cap B\\), each of which factorises by independence: \\(P = P(A)P(B') + P(A')P(B) = \\frac{1}{2} \\times \\frac{2}{3} + \\frac{1}{2} \\times \\frac{1}{3} = \\frac{1}{3} + \\frac{1}{6} = \\frac{1}{2}\\)."
+  },
+  {
+    "id": "f340fb95-f2e2-482e-8677-ff7ce52e3f1e",
+    "ref": "Ex 13.2 Q15(i)",
+    "solution": "There are 13 spades and 4 aces, so \\(P(E) = \\frac{13}{52} = \\frac{1}{4}\\) and \\(P(F) = \\frac{4}{52} = \\frac{1}{13}\\). The event \\(E \\cap F\\) is 'the ace of spades', a single card, so \\(P(E \\cap F) = \\frac{1}{52}\\). Since \\(P(E)\\,P(F) = \\frac{1}{4} \\times \\frac{1}{13} = \\frac{1}{52} = P(E \\cap F)\\), the events E and F are independent."
+  },
+  {
+    "id": "22639498-dc28-470e-911c-55e871b163a4",
+    "ref": "Ex 13.2 Q15(ii)",
+    "solution": "There are 26 black cards and 4 kings, so \\(P(E) = \\frac{26}{52} = \\frac{1}{2}\\) and \\(P(F) = \\frac{4}{52} = \\frac{1}{13}\\). The event \\(E \\cap F\\) is 'a black king' — the king of spades and the king of clubs — so \\(P(E \\cap F) = \\frac{2}{52} = \\frac{1}{26}\\). Since \\(P(E)\\,P(F) = \\frac{1}{2} \\times \\frac{1}{13} = \\frac{1}{26} = P(E \\cap F)\\), the events E and F are independent."
+  },
+  {
+    "id": "f6c34652-450c-4fac-8db5-e84fb633781a",
+    "ref": "Ex 13.2 Q15(iii)",
+    "solution": "There are 8 cards that are a king or a queen and 8 that are a queen or a jack, so \\(P(E) = \\frac{8}{52} = \\frac{2}{13}\\) and \\(P(F) = \\frac{8}{52} = \\frac{2}{13}\\). Their intersection is the set of queens, so \\(P(E \\cap F) = \\frac{4}{52} = \\frac{1}{13}\\). Now \\(P(E)\\,P(F) = \\frac{2}{13} \\times \\frac{2}{13} = \\frac{4}{169}\\), while \\(P(E \\cap F) = \\frac{1}{13} = \\frac{13}{169}\\). Since \\(\\frac{13}{169} \\ne \\frac{4}{169}\\), the events E and F are not independent."
+  },
+  {
+    "id": "fe8940d0-4bbe-47a0-b757-57b4e102f925",
+    "ref": "Misc Q4",
+    "solution": "[Textbook note: this question requires the binomial distribution, which the rationalised 2025-26 edition no longer teaches in this chapter — the chapter now ends at Bayes' theorem. The solution below uses the binomial model.] The ten people are chosen independently and each is right-handed with probability \\(p = \\frac{9}{10}\\), so the number X of right-handed people in the sample is binomial with \\(n = 10\\), \\(p = \\frac{9}{10}\\), \\(q = \\frac{1}{10}\\), and \\(P(X = r) = \\binom{10}{r}\\left(\\frac{9}{10}\\right)^{r}\\left(\\frac{1}{10}\\right)^{10-r}\\). Summing \\(r = 0\\) to \\(6\\) is long, so use the complement: \\(P(X \\le 6) = 1 - \\left[P(X=7) + P(X=8) + P(X=9) + P(X=10)\\right]\\). Each of those four terms has the common factor \\(\\frac{9^{7}}{10^{10}}\\), since \\(\\left(\\frac{9}{10}\\right)^{r}\\left(\\frac{1}{10}\\right)^{10-r} = \\frac{9^{r}}{10^{10}}\\); the coefficients are \\(\\binom{10}{7} = 120\\), \\(\\binom{10}{8}\\cdot 9 = 45 \\times 9 = 405\\), \\(\\binom{10}{9}\\cdot 9^{2} = 10 \\times 81 = 810\\) and \\(9^{3} = 729\\), which total \\(120 + 405 + 810 + 729 = 2064\\). Hence \\(P(X \\le 6) = 1 - \\frac{2064 \\times 9^{7}}{10^{10}} = 1 - \\frac{9872048016}{10^{10}} \\approx 0.0128\\).",
+    "_note": "Derivation cross-checked against the coordinator's two quoted reference forms. My answer AGREES with the explicit form \\(1-[\\binom{10}{7}(0.9)^7(0.1)^3+\\binom{10}{8}(0.9)^8(0.1)^2+\\binom{10}{9}(0.9)^9(0.1)+(0.9)^{10}]\\), which evaluates to 0.01280. It DISAGREES with the closed form quoted as \\(1-\\frac{9^7 \\cdot 217}{10^{10}}\\): the correct coefficient is 2064, not 217. Note the two quoted forms also contradict each other — \\(1-\\frac{9^7 \\cdot 217}{10^{10}} = 0.8962\\), which cannot be \\(P(X \\le 6)\\) when \\(E(X) = 9\\) (the mass sits at the top of the range, so \\(P(X \\le 6)\\) must be small). Per the brief I have written my own derivation's conclusion, 0.0128. If the book genuinely prints 217, that is a book defect for the cross-check gate to adjudicate."
+  },
+  {
+    "id": "9a12f925-23d3-4a63-bc48-1491e5deeee0",
+    "ref": "Misc Q8",
+    "solution": "Write the determinant as \\(\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix} = ad - bc\\), where \\(a,b,c,d\\) are chosen independently from \\(\\{0,1\\}\\), each with probability \\(\\frac{1}{2}\\); there are \\(2^4 = 16\\) equally likely determinants. Since \\(ad \\in \\{0,1\\}\\) and \\(bc \\in \\{0,1\\}\\), the value \\(ad - bc\\) lies in \\(\\{-1,0,1\\}\\), so it is positive exactly when \\(ad = 1\\) and \\(bc = 0\\). Now \\(ad = 1\\) forces \\(a = d = 1\\), so \\(P(ad = 1) = \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\), while \\(bc = 0\\) fails only when \\(b = c = 1\\), so \\(P(bc = 0) = 1 - \\frac{1}{4} = \\frac{3}{4}\\). These two events involve disjoint sets of entries and are therefore independent, giving \\(P(\\text{determinant positive}) = \\frac{1}{4} \\times \\frac{3}{4} = \\frac{3}{16}\\)."
+  },
+  {
+    "id": "2b024c67-ef59-4272-afb2-cc588e416ef5",
+    "ref": "Ex 13.3 Q2",
+    "solution": "Let \\(E_1\\) be 'the first bag is chosen' and \\(E_2\\) 'the second bag is chosen'; these partition the sample space with \\(P(E_1) = P(E_2) = \\frac{1}{2}\\). Let A be 'the ball drawn is red', so \\(P(A|E_1) = \\frac{4}{8} = \\frac{1}{2}\\) and \\(P(A|E_2) = \\frac{2}{8} = \\frac{1}{4}\\). By Bayes' theorem, \\(P(E_1|A) = \\frac{P(E_1)P(A|E_1)}{P(E_1)P(A|E_1) + P(E_2)P(A|E_2)}\\). The denominator expands to \\(\\frac{1}{2} \\times \\frac{1}{2} + \\frac{1}{2} \\times \\frac{1}{4} = \\frac{1}{4} + \\frac{1}{8} = \\frac{3}{8}\\), so \\(P(E_1|A) = \\frac{1/4}{3/8} = \\frac{2}{3}\\). (Check: the companion posterior is \\(\\frac{1/8}{3/8} = \\frac{1}{3}\\), and \\(\\frac{2}{3} + \\frac{1}{3} = 1\\), both in \\([0,1]\\).) Hence the required probability is \\(\\frac{2}{3}\\)."
+  },
+  {
+    "id": "54b1f4b9-913c-404e-b688-d4984ccf0420",
+    "ref": "Ex 13.3 Q3",
+    "solution": "Let \\(E_1\\) be 'the student is a hostlier' and \\(E_2\\) 'the student is a day scholar', a partition with \\(P(E_1) = 0.6\\) and \\(P(E_2) = 0.4\\). Let A be 'the student attains A grade', so \\(P(A|E_1) = 0.3\\) and \\(P(A|E_2) = 0.2\\). By Bayes' theorem, \\(P(E_1|A) = \\frac{P(E_1)P(A|E_1)}{P(E_1)P(A|E_1) + P(E_2)P(A|E_2)}\\). The denominator expands to \\(0.6 \\times 0.3 + 0.4 \\times 0.2 = 0.18 + 0.08 = 0.26\\), so \\(P(E_1|A) = \\frac{0.18}{0.26} = \\frac{18}{26} = \\frac{9}{13}\\). (Check: the day-scholar posterior is \\(\\frac{0.08}{0.26} = \\frac{4}{13}\\), and \\(\\frac{9}{13} + \\frac{4}{13} = 1\\).) Hence the required probability is \\(\\frac{9}{13}\\)."
+  },
+  {
+    "id": "e4b44d4c-31ea-4fcc-b640-2991c5bfdec1",
+    "ref": "Ex 13.3 Q4",
+    "solution": "Let \\(E_1\\) be 'the student knows the answer' and \\(E_2\\) 'the student guesses', a partition with \\(P(E_1) = \\frac{3}{4}\\) and \\(P(E_2) = \\frac{1}{4}\\). Let A be 'the answer is correct'. A student who knows is certainly correct, so \\(P(A|E_1) = 1\\), while \\(P(A|E_2) = \\frac{1}{4}\\). By Bayes' theorem, \\(P(E_1|A) = \\frac{P(E_1)P(A|E_1)}{P(E_1)P(A|E_1) + P(E_2)P(A|E_2)}\\). The denominator expands to \\(\\frac{3}{4} \\times 1 + \\frac{1}{4} \\times \\frac{1}{4} = \\frac{3}{4} + \\frac{1}{16} = \\frac{13}{16}\\), so \\(P(E_1|A) = \\frac{3/4}{13/16} = \\frac{3}{4} \\times \\frac{16}{13} = \\frac{12}{13}\\). (Check: the guessing posterior is \\(\\frac{1/16}{13/16} = \\frac{1}{13}\\), summing with \\(\\frac{12}{13}\\) to 1.) Hence the required probability is \\(\\frac{12}{13}\\)."
+  },
+  {
+    "id": "0a070b5f-9672-400a-a395-f8227eb38d67",
+    "ref": "Ex 13.3 Q5",
+    "solution": "Let \\(E_1\\) be 'the person has the disease' and \\(E_2\\) 'the person is healthy', a partition with \\(P(E_1) = 0.001\\) and \\(P(E_2) = 0.999\\). Let A be 'the test is positive', so \\(P(A|E_1) = 0.99\\) and \\(P(A|E_2) = 0.005\\). By Bayes' theorem, \\(P(E_1|A) = \\frac{P(E_1)P(A|E_1)}{P(E_1)P(A|E_1) + P(E_2)P(A|E_2)}\\). The denominator expands to \\(0.001 \\times 0.99 + 0.999 \\times 0.005 = 0.00099 + 0.004995 = 0.005985\\), so \\(P(E_1|A) = \\frac{0.00099}{0.005985} = \\frac{990}{5985} = \\frac{22}{133}\\) after dividing numerator and denominator by 45. (Check: the healthy posterior is \\(\\frac{111}{133}\\), and \\(\\frac{22}{133} + \\frac{111}{133} = 1\\).) Hence the required probability is \\(\\frac{22}{133} \\approx 0.165\\)."
+  },
+  {
+    "id": "ea823578-58eb-45d0-9c8a-81f97c1edc8a",
+    "ref": "Ex 13.3 Q6",
+    "solution": "Let \\(E_1, E_2, E_3\\) be 'the two-headed coin', 'the biased coin' and 'the unbiased coin' respectively; the choice is at random, so \\(P(E_1) = P(E_2) = P(E_3) = \\frac{1}{3}\\). Let A be 'the toss shows heads', so \\(P(A|E_1) = 1\\), \\(P(A|E_2) = \\frac{3}{4}\\) and \\(P(A|E_3) = \\frac{1}{2}\\). By Bayes' theorem, \\(P(E_1|A) = \\frac{P(E_1)P(A|E_1)}{P(E_1)P(A|E_1) + P(E_2)P(A|E_2) + P(E_3)P(A|E_3)}\\). The denominator expands to \\(\\frac{1}{3}\\left(1 + \\frac{3}{4} + \\frac{1}{2}\\right) = \\frac{1}{3} \\times \\frac{9}{4} = \\frac{3}{4}\\), so \\(P(E_1|A) = \\frac{1/3}{3/4} = \\frac{4}{9}\\). (Check: the other posteriors are \\(\\frac{1/4}{3/4} = \\frac{3}{9}\\) and \\(\\frac{1/6}{3/4} = \\frac{2}{9}\\), and \\(\\frac{4}{9} + \\frac{3}{9} + \\frac{2}{9} = 1\\).) Hence the required probability is \\(\\frac{4}{9}\\)."
+  },
+  {
+    "id": "2414d0f6-01b1-40d1-8130-71c8963dbabc",
+    "ref": "Ex 13.3 Q7",
+    "solution": "The company insured \\(2000 + 4000 + 6000 = 12000\\) drivers. Let \\(E_1, E_2, E_3\\) be 'the insured person is a scooter, car, truck driver' respectively, so \\(P(E_1) = \\frac{2000}{12000} = \\frac{1}{6}\\), \\(P(E_2) = \\frac{4000}{12000} = \\frac{1}{3}\\), \\(P(E_3) = \\frac{6000}{12000} = \\frac{1}{2}\\). Let A be 'the person meets with an accident', with \\(P(A|E_1) = 0.01\\), \\(P(A|E_2) = 0.03\\), \\(P(A|E_3) = 0.15\\). By Bayes' theorem, \\(P(E_1|A) = \\frac{P(E_1)P(A|E_1)}{P(E_1)P(A|E_1) + P(E_2)P(A|E_2) + P(E_3)P(A|E_3)}\\). The denominator expands to \\(\\frac{1}{6}(0.01) + \\frac{1}{3}(0.03) + \\frac{1}{2}(0.15) = \\frac{0.01 + 0.06 + 0.45}{6} = \\frac{0.52}{6}\\), while the numerator is \\(\\frac{0.01}{6}\\). Hence \\(P(E_1|A) = \\frac{0.01}{0.52} = \\frac{1}{52}\\). (Check: the other posteriors are \\(\\frac{6}{52}\\) and \\(\\frac{45}{52}\\), and \\(\\frac{1+6+45}{52} = 1\\).) The required probability is \\(\\frac{1}{52}\\)."
+  },
+  {
+    "id": "13a07490-f7ab-466f-84ce-4a065e76a9f3",
+    "ref": "Ex 13.3 Q8",
+    "solution": "Let \\(E_1\\) be 'the item came from machine A' and \\(E_2\\) 'from machine B', a partition with \\(P(E_1) = 0.6\\) and \\(P(E_2) = 0.4\\). Let D be 'the item is defective', so \\(P(D|E_1) = 0.02\\) and \\(P(D|E_2) = 0.01\\). By Bayes' theorem, \\(P(E_2|D) = \\frac{P(E_2)P(D|E_2)}{P(E_1)P(D|E_1) + P(E_2)P(D|E_2)}\\). The denominator expands to \\(0.6 \\times 0.02 + 0.4 \\times 0.01 = 0.012 + 0.004 = 0.016\\), so \\(P(E_2|D) = \\frac{0.004}{0.016} = \\frac{1}{4}\\). (Check: the machine-A posterior is \\(\\frac{0.012}{0.016} = \\frac{3}{4}\\), and \\(\\frac{1}{4} + \\frac{3}{4} = 1\\).) Hence the required probability is \\(\\frac{1}{4}\\)."
+  },
+  {
+    "id": "b93fda8b-83a7-4470-b603-8df522789cde",
+    "ref": "Ex 13.3 Q9",
+    "solution": "Let \\(E_1\\) be 'the first group wins' and \\(E_2\\) 'the second group wins', a partition with \\(P(E_1) = 0.6\\) and \\(P(E_2) = 0.4\\). Let A be 'a new product is introduced', so \\(P(A|E_1) = 0.7\\) and \\(P(A|E_2) = 0.3\\). By Bayes' theorem, \\(P(E_2|A) = \\frac{P(E_2)P(A|E_2)}{P(E_1)P(A|E_1) + P(E_2)P(A|E_2)}\\). The denominator expands to \\(0.6 \\times 0.7 + 0.4 \\times 0.3 = 0.42 + 0.12 = 0.54\\), so \\(P(E_2|A) = \\frac{0.12}{0.54} = \\frac{12}{54} = \\frac{2}{9}\\). (Check: the first-group posterior is \\(\\frac{0.42}{0.54} = \\frac{7}{9}\\), and \\(\\frac{2}{9} + \\frac{7}{9} = 1\\).) Hence the required probability is \\(\\frac{2}{9}\\)."
+  },
+  {
+    "id": "bfa56ec1-1f24-4b67-b54a-35f1487ca750",
+    "ref": "Ex 13.3 Q10",
+    "solution": "Let \\(E_1\\) be 'the die shows 5 or 6' and \\(E_2\\) 'the die shows 1, 2, 3 or 4', a partition with \\(P(E_1) = \\frac{2}{6} = \\frac{1}{3}\\) and \\(P(E_2) = \\frac{4}{6} = \\frac{2}{3}\\). Let A be 'exactly one head is obtained'. Under \\(E_1\\) the coin is tossed three times, and exactly one head occurs in \\(3\\) of the \\(8\\) equally likely outcomes, so \\(P(A|E_1) = \\frac{3}{8}\\); under \\(E_2\\) the coin is tossed once, so \\(P(A|E_2) = \\frac{1}{2}\\). By Bayes' theorem, \\(P(E_2|A) = \\frac{P(E_2)P(A|E_2)}{P(E_1)P(A|E_1) + P(E_2)P(A|E_2)}\\). The denominator expands to \\(\\frac{1}{3} \\times \\frac{3}{8} + \\frac{2}{3} \\times \\frac{1}{2} = \\frac{1}{8} + \\frac{1}{3} = \\frac{3 + 8}{24} = \\frac{11}{24}\\), so \\(P(E_2|A) = \\frac{1/3}{11/24} = \\frac{1}{3} \\times \\frac{24}{11} = \\frac{8}{11}\\). (Check: the other posterior is \\(\\frac{1/8}{11/24} = \\frac{3}{11}\\), and \\(\\frac{8}{11} + \\frac{3}{11} = 1\\).) Hence the required probability is \\(\\frac{8}{11}\\)."
+  },
+  {
+    "id": "5f2f914f-c6dc-4cb4-95cd-8a5ee4367063",
+    "ref": "Ex 13.3 Q11",
+    "solution": "Let \\(E_1, E_2, E_3\\) be 'the item was produced by operator A, B, C' respectively, a partition given by the time each is on the job: \\(P(E_1) = 0.5\\), \\(P(E_2) = 0.3\\), \\(P(E_3) = 0.2\\). Let D be 'the item is defective', so \\(P(D|E_1) = 0.01\\), \\(P(D|E_2) = 0.05\\), \\(P(D|E_3) = 0.07\\). By Bayes' theorem, \\(P(E_1|D) = \\frac{P(E_1)P(D|E_1)}{P(E_1)P(D|E_1) + P(E_2)P(D|E_2) + P(E_3)P(D|E_3)}\\). The denominator expands to \\(0.5 \\times 0.01 + 0.3 \\times 0.05 + 0.2 \\times 0.07 = 0.005 + 0.015 + 0.014 = 0.034\\), so \\(P(E_1|D) = \\frac{0.005}{0.034} = \\frac{5}{34}\\). (Check: the other posteriors are \\(\\frac{15}{34}\\) and \\(\\frac{14}{34}\\), and \\(\\frac{5+15+14}{34} = 1\\).) Hence the required probability is \\(\\frac{5}{34}\\)."
+  },
+  {
+    "id": "4db0e96a-06ec-4c78-b30c-06bb3545a9f1",
+    "ref": "Ex 13.3 Q12",
+    "solution": "Let \\(E_1\\) be 'the lost card is a diamond' and \\(E_2\\) 'the lost card is not a diamond', a partition with \\(P(E_1) = \\frac{13}{52} = \\frac{1}{4}\\) and \\(P(E_2) = \\frac{39}{52} = \\frac{3}{4}\\). Let A be 'the two cards drawn from the remaining 51 are both diamonds'. If the lost card is a diamond, 12 diamonds remain among 51 cards, so \\(P(A|E_1) = \\frac{\\binom{12}{2}}{\\binom{51}{2}} = \\frac{66}{1275}\\); otherwise 13 diamonds remain, so \\(P(A|E_2) = \\frac{\\binom{13}{2}}{\\binom{51}{2}} = \\frac{78}{1275}\\). By Bayes' theorem, \\(P(E_1|A) = \\frac{P(E_1)P(A|E_1)}{P(E_1)P(A|E_1) + P(E_2)P(A|E_2)}\\). The denominator expands to \\(\\frac{1}{4} \\times \\frac{66}{1275} + \\frac{3}{4} \\times \\frac{78}{1275} = \\frac{66 + 234}{4 \\times 1275} = \\frac{300}{5100}\\), while the numerator is \\(\\frac{66}{5100}\\). Hence \\(P(E_1|A) = \\frac{66}{300} = \\frac{11}{50}\\). (Check: the complementary posterior is \\(\\frac{234}{300} = \\frac{39}{50}\\), and \\(\\frac{11}{50} + \\frac{39}{50} = 1\\).) The required probability is \\(\\frac{11}{50}\\)."
+  },
+  {
+    "id": "2d9b78b7-9fca-4faf-bf38-230b99e7f88b",
+    "ref": "Misc Q3",
+    "solution": "Let \\(E_1\\) be 'the person selected is male' and \\(E_2\\) 'female'; there are equal numbers, so \\(P(E_1) = P(E_2) = \\frac{1}{2}\\). Let G be 'the person is grey haired', so \\(P(G|E_1) = 0.05\\) and \\(P(G|E_2) = 0.0025\\). By Bayes' theorem, \\(P(E_1|G) = \\frac{P(E_1)P(G|E_1)}{P(E_1)P(G|E_1) + P(E_2)P(G|E_2)}\\). The denominator expands to \\(\\frac{1}{2}(0.05) + \\frac{1}{2}(0.0025) = \\frac{0.0525}{2}\\), while the numerator is \\(\\frac{0.05}{2}\\), so \\(P(E_1|G) = \\frac{0.05}{0.0525} = \\frac{500}{525} = \\frac{20}{21}\\). (Check: the female posterior is \\(\\frac{1}{21}\\), and \\(\\frac{20}{21} + \\frac{1}{21} = 1\\).) Hence the required probability is \\(\\frac{20}{21}\\)."
+  },
+  {
+    "id": "25183a62-1ee0-4aae-a258-e5fb0f725cdc",
+    "ref": "Misc Q6",
+    "solution": "Let \\(E_1, E_2, E_3, E_4\\) be the events that box A, B, C, D is selected; the selection is at random, so \\(P(E_i) = \\frac{1}{4}\\) for each. Each box holds 10 marbles, so with R = 'the marble drawn is red', \\(P(R|E_1) = \\frac{1}{10}\\), \\(P(R|E_2) = \\frac{6}{10}\\), \\(P(R|E_3) = \\frac{8}{10}\\), \\(P(R|E_4) = \\frac{0}{10} = 0\\). The common denominator in Bayes' theorem expands to \\(\\sum_j P(E_j)P(R|E_j) = \\frac{1}{4}\\left(\\frac{1}{10} + \\frac{6}{10} + \\frac{8}{10} + 0\\right) = \\frac{1}{4} \\times \\frac{15}{10} = \\frac{3}{8}\\). Hence \\(P(E_1|R) = \\frac{(1/4)(1/10)}{3/8} = \\frac{1/40}{3/8} = \\frac{1}{15}\\), \\(P(E_2|R) = \\frac{6/40}{3/8} = \\frac{6}{15} = \\frac{2}{5}\\) and \\(P(E_3|R) = \\frac{8/40}{3/8} = \\frac{8}{15}\\). (Check: box D has no red marbles so \\(P(E_4|R) = 0\\), and \\(\\frac{1}{15} + \\frac{6}{15} + \\frac{8}{15} + 0 = 1\\).) The required probabilities are \\(\\frac{1}{15}\\) for box A, \\(\\frac{2}{5}\\) for box B and \\(\\frac{8}{15}\\) for box C."
+  },
+  {
+    "id": "3aaf0947-29e2-4c93-961d-794b95f72ed1",
+    "ref": "Misc Q7",
+    "solution": "Let \\(E_1\\) be 'the patient followed meditation and yoga' and \\(E_2\\) 'the patient took the drug', a partition with \\(P(E_1) = P(E_2) = \\frac{1}{2}\\). The base chance of a heart attack is \\(0.40\\). Yoga cuts that risk by 30%, leaving \\(P(A|E_1) = 0.40 \\times 0.70 = 0.28\\); the drug cuts it by 25%, leaving \\(P(A|E_2) = 0.40 \\times 0.75 = 0.30\\), where A is 'the patient suffers a heart attack'. By Bayes' theorem, \\(P(E_1|A) = \\frac{P(E_1)P(A|E_1)}{P(E_1)P(A|E_1) + P(E_2)P(A|E_2)}\\). The denominator expands to \\(\\frac{1}{2}(0.28) + \\frac{1}{2}(0.30) = 0.14 + 0.15 = 0.29\\), so \\(P(E_1|A) = \\frac{0.14}{0.29} = \\frac{14}{29}\\). (Check: the drug posterior is \\(\\frac{15}{29}\\), and \\(\\frac{14}{29} + \\frac{15}{29} = 1\\).) Hence the required probability is \\(\\frac{14}{29}\\)."
+  },
+  {
+    "id": "6c22e01e-1c4a-4a57-93da-2741c559c91d",
+    "ref": "Misc Q10",
+    "solution": "Let \\(E_1\\) be 'a red ball is transferred' and \\(E_2\\) 'a black ball is transferred'. Bag I holds 3 red and 4 black, so \\(P(E_1) = \\frac{3}{7}\\) and \\(P(E_2) = \\frac{4}{7}\\). Bag II then holds 10 balls: under \\(E_1\\) it has 5 red and 5 black, so \\(P(R|E_1) = \\frac{5}{10} = \\frac{1}{2}\\); under \\(E_2\\) it has 4 red and 6 black, so \\(P(R|E_2) = \\frac{4}{10} = \\frac{2}{5}\\), where R is 'the ball drawn from Bag II is red'. By Bayes' theorem, \\(P(E_2|R) = \\frac{P(E_2)P(R|E_2)}{P(E_1)P(R|E_1) + P(E_2)P(R|E_2)}\\). The denominator expands to \\(\\frac{3}{7} \\times \\frac{1}{2} + \\frac{4}{7} \\times \\frac{2}{5} = \\frac{3}{14} + \\frac{8}{35} = \\frac{15 + 16}{70} = \\frac{31}{70}\\), while the numerator is \\(\\frac{8}{35} = \\frac{16}{70}\\). Hence \\(P(E_2|R) = \\frac{16}{31}\\). (Check: the red-transfer posterior is \\(\\frac{15}{31}\\), and \\(\\frac{16}{31} + \\frac{15}{31} = 1\\).) The required probability is \\(\\frac{16}{31}\\)."
+  }
+]

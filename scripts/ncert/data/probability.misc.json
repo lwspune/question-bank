@@ -1,0 +1,192 @@
+[
+  {
+    "ref": "Misc Eg.22",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Coloured balls are distributed in four boxes as shown in the following table:\n\n| Box | Black | White | Red | Blue |\n|---|---|---|---|---|\n| I | 3 | 4 | 5 | 6 |\n| II | 2 | 2 | 2 | 2 |\n| III | 1 | 2 | 3 | 1 |\n| IV | 4 | 3 | 1 | 5 |\n\nA box is selected at random and then a ball is randomly drawn from the selected box. The colour of the ball is black, what is the probability that ball drawn is from the box III?",
+    "solution": "Let \\(A, E_1, E_2, E_3\\) and \\(E_4\\) be the events as defined below :\n\nA : a black ball is selected\n\n\\(E_1\\) : box I is selected\n\n\\(E_2\\) : box II is selected\n\n\\(E_3\\) : box III is selected\n\n\\(E_4\\) : box IV is selected\n\nSince the boxes are chosen at random, therefore \\(P(E_1) = P(E_2) = P(E_3) = P(E_4) = \\frac{1}{4}\\).\n\nAlso \\(P(A|E_1) = \\frac{3}{18}\\), \\(P(A|E_2) = \\frac{2}{8}\\), \\(P(A|E_3) = \\frac{1}{7}\\) and \\(P(A|E_4) = \\frac{4}{13}\\).\n\nP(box III is selected, given that the drawn ball is black) = \\(P(E_3|A)\\). By Bayes' theorem,\n\n\\(P(E_3|A) = \\frac{P(E_3)\\cdot P(A|E_3)}{P(E_1)P(A|E_1) + P(E_2)P(A|E_2) + P(E_3)P(A|E_3) + P(E_4)P(A|E_4)}\\)\n\n\\(= \\frac{\\frac{1}{4}\\times\\frac{1}{7}}{\\frac{1}{4}\\times\\frac{3}{18} + \\frac{1}{4}\\times\\frac{1}{4} + \\frac{1}{4}\\times\\frac{1}{7} + \\frac{1}{4}\\times\\frac{4}{13}} = 0.165\\)"
+  },
+  {
+    "ref": "Misc Eg.23",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "HARD",
+    "stem": "A and B throw a die alternatively till one of them gets a '6' and wins the game. Find their respective probabilities of winning, if A starts first.",
+    "solution": "Let S denote the success (getting a '6') and F denote the failure (not getting a '6').\n\nThus, \\(P(S) = \\frac{1}{6}\\), \\(P(F) = \\frac{5}{6}\\)\n\n\\(P(\\text{A wins in the first throw}) = P(S) = \\frac{1}{6}\\)\n\nA gets the third throw, when the first throw by A and second throw by B result into failures.\n\nTherefore, \\(P(\\text{A wins in the 3rd throw}) = P(FFS) = P(F)\\,P(F)\\,P(S) = \\frac{5}{6}\\times\\frac{5}{6}\\times\\frac{1}{6} = \\left(\\frac{5}{6}\\right)^{2}\\times\\frac{1}{6}\\)\n\n\\(P(\\text{A wins in the 5th throw}) = P(FFFFS) = \\left(\\frac{5}{6}\\right)^{4}\\left(\\frac{1}{6}\\right)\\) and so on.\n\nHence, \\(P(\\text{A wins}) = \\frac{1}{6} + \\left(\\frac{5}{6}\\right)^{2}\\left(\\frac{1}{6}\\right) + \\left(\\frac{5}{6}\\right)^{4}\\left(\\frac{1}{6}\\right) + \\ldots = \\frac{\\frac{1}{6}}{1-\\frac{25}{36}} = \\frac{6}{11}\\)\n\n\\(P(\\text{B wins}) = 1 - P(\\text{A wins}) = 1 - \\frac{6}{11} = \\frac{5}{11}\\)\n\nRemark : If \\(a + ar + ar^{2} + \\ldots + ar^{n-1} + \\ldots\\), where \\(|r| < 1\\), then sum of this infinite G.P. is given by \\(\\frac{a}{1-r}\\). (Refer A.1.3 of Class XI Text book.)"
+  },
+  {
+    "ref": "Misc Eg.24",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "If a machine is correctly set up, it produces 90% acceptable items. If it is incorrectly set up, it produces only 40% acceptable items. Past experience shows that 80% of the set ups are correctly done. If after a certain set up, the machine produces 2 acceptable items, find the probability that the machine is correctly setup.",
+    "solution": "Let A be the event that the machine produces 2 acceptable items.\n\nAlso let \\(B_1\\) represent the event of correct set up and \\(B_2\\) represent the event of incorrect setup.\n\nNow \\(P(B_1) = 0.8\\), \\(P(B_2) = 0.2\\)\n\n\\(P(A|B_1) = 0.9\\times 0.9\\) and \\(P(A|B_2) = 0.4\\times 0.4\\)\n\nTherefore \\(P(B_1|A) = \\frac{P(B_1)\\,P(A|B_1)}{P(B_1)\\,P(A|B_1) + P(B_2)\\,P(A|B_2)}\\)\n\n\\(= \\frac{0.8\\times 0.9\\times 0.9}{0.8\\times 0.9\\times 0.9 + 0.2\\times 0.4\\times 0.4} = \\frac{648}{680} = 0.95\\)"
+  },
+  {
+    "ref": "Misc Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "context": "A and B are two events such that \\(P(A) \\neq 0\\). Find \\(P(B|A)\\), if",
+    "setLabel": "Misc Q1",
+    "stem": "A is a subset of B"
+  },
+  {
+    "ref": "Misc Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "context": "A and B are two events such that \\(P(A) \\neq 0\\). Find \\(P(B|A)\\), if",
+    "setLabel": "Misc Q1",
+    "stem": "\\(A \\cap B = \\phi\\)"
+  },
+  {
+    "ref": "Misc Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "context": "A couple has two children,",
+    "setLabel": "Misc Q2",
+    "stem": "Find the probability that both children are males, if it is known that at least one of the children is male."
+  },
+  {
+    "ref": "Misc Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "context": "A couple has two children,",
+    "setLabel": "Misc Q2",
+    "stem": "Find the probability that both children are females, if it is known that the elder child is a female."
+  },
+  {
+    "ref": "Misc Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Suppose that 5% of men and 0.25% of women have grey hair. A grey haired person is selected at random. What is the probability of this person being male? Assume that there are equal number of males and females."
+  },
+  {
+    "ref": "Misc Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "stem": "Suppose that 90% of people are right-handed. What is the probability that at most 6 of a random sample of 10 people are right-handed?",
+    "_note": "STALE-CONTENT FLAG: this question needs the binomial distribution (Bernoulli trials), a section the rationalised 2025-26 edition has REMOVED from Chapter 13 — the chapter now ends at Bayes' theorem (Exercises 13.1, 13.2, 13.3 only). Transcribed faithfully as printed; the subtopic assigned is the nearest canonical fit (repeated independent trials), not an exact one."
+  },
+  {
+    "ref": "Misc Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "stem": "If a leap year is selected at random, what is the chance that it will contain 53 tuesdays?",
+    "_note": "Subtopic is a nearest-fit only: this is plain classical probability (366 days = 52 weeks + 2 extra days), involving no conditioning, independence or Bayes. None of the five canonical subtopics describes it exactly. Book prints 'tuesdays' lowercase — transcribed as printed."
+  },
+  {
+    "ref": "Misc Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "HARD",
+    "stem": "Suppose we have four boxes A,B,C and D containing coloured marbles as given below:\n\n| Box | Red | White | Black |\n|---|---|---|---|\n| A | 1 | 6 | 3 |\n| B | 6 | 2 | 2 |\n| C | 8 | 1 | 1 |\n| D | 0 | 6 | 4 |\n\nOne of the boxes has been selected at random and a single marble is drawn from it. If the marble is red, what is the probability that it was drawn from box A?, box B?, box C?"
+  },
+  {
+    "ref": "Misc Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "HARD",
+    "stem": "Assume that the chances of a patient having a heart attack is 40%. It is also assumed that a meditation and yoga course reduce the risk of heart attack by 30% and prescription of certain drug reduces its chances by 25%. At a time a patient can choose any one of the two options with equal probabilities. It is given that after going through one of the two options the patient selected at random suffers a heart attack. Find the probability that the patient followed a course of meditation and yoga?"
+  },
+  {
+    "ref": "Misc Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "HARD",
+    "stem": "If each element of a second order determinant is either zero or one, what is the probability that the value of the determinant is positive? (Assume that the individual entries of the determinant are chosen independently, each value being assumed with probability \\(\\frac{1}{2}\\))."
+  },
+  {
+    "ref": "Misc Q9(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "context": "An electronic assembly consists of two subsystems, say, A and B. From previous testing procedures, the following probabilities are assumed to be known:\n\nP(A fails) = 0.2\n\nP(B fails alone) = 0.15\n\nP(A and B fail) = 0.15\n\nEvaluate the following probabilities",
+    "setLabel": "Misc Q9",
+    "stem": "P(A fails|B has failed)"
+  },
+  {
+    "ref": "Misc Q9(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "context": "An electronic assembly consists of two subsystems, say, A and B. From previous testing procedures, the following probabilities are assumed to be known:\n\nP(A fails) = 0.2\n\nP(B fails alone) = 0.15\n\nP(A and B fail) = 0.15\n\nEvaluate the following probabilities",
+    "setLabel": "Misc Q9",
+    "stem": "P(A fails alone)"
+  },
+  {
+    "ref": "Misc Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Bag I contains 3 red and 4 black balls and Bag II contains 4 red and 5 black balls. One ball is transferred from Bag I to Bag II and then a ball is drawn from Bag II. The ball so drawn is found to be red in colour. Find the probability that the transferred ball is black."
+  },
+  {
+    "ref": "Misc Q11",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "stem": "If A and B are two events such that \\(P(A) \\neq 0\\) and \\(P(B \\mid A) = 1\\), then",
+    "options": [
+      { "label": "A", "text": "\\(A \\subset B\\)" },
+      { "label": "B", "text": "\\(B \\subset A\\)" },
+      { "label": "C", "text": "\\(B = \\phi\\)" },
+      { "label": "D", "text": "\\(A = \\phi\\)" }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Misc Q12",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "stem": "If \\(P(A|B) > P(A)\\), then which of the following is correct :",
+    "options": [
+      { "label": "A", "text": "\\(P(B|A) < P(B)\\)" },
+      { "label": "B", "text": "\\(P(A \\cap B) < P(A)\\cdot P(B)\\)" },
+      { "label": "C", "text": "\\(P(B|A) > P(B)\\)" },
+      { "label": "D", "text": "\\(P(B|A) = P(B)\\)" }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc Q13",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "stem": "If A and B are any two events such that \\(P(A) + P(B) - P(A \\text{ and } B) = P(A)\\), then",
+    "options": [
+      { "label": "A", "text": "\\(P(B|A) = 1\\)" },
+      { "label": "B", "text": "\\(P(A|B) = 1\\)" },
+      { "label": "C", "text": "\\(P(B|A) = 0\\)" },
+      { "label": "D", "text": "\\(P(A|B) = 0\\)" }
+    ],
+    "answer": "B"
+  }
+]

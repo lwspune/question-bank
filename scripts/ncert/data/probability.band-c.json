@@ -1,0 +1,192 @@
+[
+  {
+    "ref": "13.3 Eg.15",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Theorem of Total Probability",
+    "difficulty": "MODERATE",
+    "stem": "A person has undertaken a construction job. The probabilities are 0.65 that there will be strike, 0.80 that the construction job will be completed on time if there is no strike, and 0.32 that the construction job will be completed on time if there is a strike. Determine the probability that the construction job will be completed on time.",
+    "solution": "Let A be the event that the construction job will be completed on time, and B be the event that there will be a strike. We have to find \\(P(A)\\).\n\nWe have\n\\(P(B) = 0.65\\), \\(P(\\text{no strike}) = P(B') = 1 - P(B) = 1 - 0.65 = 0.35\\)\n\n\\(P(A|B) = 0.32\\), \\(P(A|B') = 0.80\\)\n\nSince events B and \\(B'\\) form a partition of the sample space S, therefore, by theorem on total probability, we have\n\n\\(P(A) = P(B)\\,P(A|B) + P(B')\\,P(A|B')\\)\n\n\\(= 0.65 \\times 0.32 + 0.35 \\times 0.8\\)\n\n\\(= 0.208 + 0.28 = 0.488\\)\n\nThus, the probability that the construction job will be completed in time is 0.488."
+  },
+  {
+    "ref": "13.3 Eg.16",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Bag I contains 3 red and 4 black balls while another Bag II contains 5 red and 6 black balls. One ball is drawn at random from one of the bags and it is found to be red. Find the probability that it was drawn from Bag II.",
+    "solution": "Let \\(E_1\\) be the event of choosing the bag I, \\(E_2\\) the event of choosing the bag II and A be the event of drawing a red ball.\n\nThen \\(P(E_1) = P(E_2) = \\frac{1}{2}\\)\n\nAlso \\(P(A|E_1) = P(\\text{drawing a red ball from Bag I}) = \\frac{3}{7}\\)\n\nand \\(P(A|E_2) = P(\\text{drawing a red ball from Bag II}) = \\frac{5}{11}\\)\n\nNow, the probability of drawing a ball from Bag II, being given that it is red, is \\(P(E_2|A)\\).\n\nBy using Bayes' theorem, we have\n\n\\(P(E_2|A) = \\frac{P(E_2)\\,P(A|E_2)}{P(E_1)\\,P(A|E_1) + P(E_2)\\,P(A|E_2)} = \\frac{\\frac{1}{2} \\times \\frac{5}{11}}{\\frac{1}{2} \\times \\frac{3}{7} + \\frac{1}{2} \\times \\frac{5}{11}} = \\frac{35}{68}\\)"
+  },
+  {
+    "ref": "13.3 Eg.17",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Given three identical boxes I, II and III, each containing two coins. In box I, both coins are gold coins, in box II, both are silver coins and in the box III, there is one gold and one silver coin. A person chooses a box at random and takes out a coin. If the coin is of gold, what is the probability that the other coin in the box is also of gold?",
+    "solution": "Let \\(E_1\\), \\(E_2\\) and \\(E_3\\) be the events that boxes I, II and III are chosen, respectively.\n\nThen \\(P(E_1) = P(E_2) = P(E_3) = \\frac{1}{3}\\)\n\nAlso, let A be the event that 'the coin drawn is of gold'.\n\nThen \\(P(A|E_1) = P(\\text{a gold coin from bag I}) = \\frac{2}{2} = 1\\)\n\n\\(P(A|E_2) = P(\\text{a gold coin from bag II}) = 0\\)\n\n\\(P(A|E_3) = P(\\text{a gold coin from bag III}) = \\frac{1}{2}\\)\n\nNow, the probability that the other coin in the box is of gold = the probability that gold coin is drawn from the box I = \\(P(E_1|A)\\).\n\nBy Bayes' theorem, we know that\n\n\\(P(E_1|A) = \\frac{P(E_1)\\,P(A|E_1)}{P(E_1)\\,P(A|E_1) + P(E_2)\\,P(A|E_2) + P(E_3)\\,P(A|E_3)}\\)\n\n\\(= \\frac{\\frac{1}{3} \\times 1}{\\frac{1}{3} \\times 1 + \\frac{1}{3} \\times 0 + \\frac{1}{3} \\times \\frac{1}{2}} = \\frac{2}{3}\\)"
+  },
+  {
+    "ref": "13.3 Eg.18",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Suppose that the reliability of a HIV test is specified as follows: Of people having HIV, 90% of the test detect the disease but 10% go undetected. Of people free of HIV, 99% of the test are judged HIV\\(-\\)ive but 1% are diagnosed as showing HIV+ive. From a large population of which only 0.1% have HIV, one person is selected at random, given the HIV test, and the pathologist reports him/her as HIV+ive. What is the probability that the person actually has HIV?",
+    "solution": "Let E denote the event that the person selected is actually having HIV and A the event that the person's HIV test is diagnosed as +ive. We need to find \\(P(E|A)\\).\n\nAlso \\(E'\\) denotes the event that the person selected is actually not having HIV.\n\nClearly, \\(\\{E, E'\\}\\) is a partition of the sample space of all people in the population. We are given that\n\n\\(P(E) = 0.1\\% = \\frac{0.1}{100} = 0.001\\)\n\n\\(P(E') = 1 - P(E) = 0.999\\)\n\n\\(P(A|E) = P(\\text{Person tested as HIV+ive given that he/she is actually having HIV}) = 90\\% = \\frac{90}{100} = 0.9\\)\n\nand \\(P(A|E') = P(\\text{Person tested as HIV+ive given that he/she is actually not having HIV}) = 1\\% = \\frac{1}{100} = 0.01\\)\n\nNow, by Bayes' theorem\n\n\\(P(E|A) = \\frac{P(E)\\,P(A|E)}{P(E)\\,P(A|E) + P(E')\\,P(A|E')} = \\frac{0.001 \\times 0.9}{0.001 \\times 0.9 + 0.999 \\times 0.01} = \\frac{90}{1089} = 0.083\\) approx.\n\nThus, the probability that a person selected at random is actually having HIV given that he/she is tested HIV+ive is 0.083."
+  },
+  {
+    "ref": "13.3 Eg.19",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "In a factory which manufactures bolts, machines A, B and C manufacture respectively 25%, 35% and 40% of the bolts. Of their outputs, 5, 4 and 2 percent are respectively defective bolts. A bolt is drawn at random from the product and is found to be defective. What is the probability that it is manufactured by the machine B?",
+    "solution": "Let events \\(B_1\\), \\(B_2\\), \\(B_3\\) be the following:\n\n\\(B_1\\) : the bolt is manufactured by machine A\n\n\\(B_2\\) : the bolt is manufactured by machine B\n\n\\(B_3\\) : the bolt is manufactured by machine C\n\nClearly, \\(B_1\\), \\(B_2\\), \\(B_3\\) are mutually exclusive and exhaustive events and hence, they represent a partition of the sample space.\n\nLet the event E be 'the bolt is defective'. The event E occurs with \\(B_1\\) or with \\(B_2\\) or with \\(B_3\\). Given that,\n\n\\(P(B_1) = 25\\% = 0.25\\), \\(P(B_2) = 0.35\\) and \\(P(B_3) = 0.40\\)\n\nAgain \\(P(E|B_1) = \\) Probability that the bolt drawn is defective given that it is manufactured by machine A \\(= 5\\% = 0.05\\)\n\nSimilarly, \\(P(E|B_2) = 0.04\\), \\(P(E|B_3) = 0.02\\).\n\nHence, by Bayes' Theorem, we have\n\n\\(P(B_2|E) = \\frac{P(B_2)\\,P(E|B_2)}{P(B_1)\\,P(E|B_1) + P(B_2)\\,P(E|B_2) + P(B_3)\\,P(E|B_3)}\\)\n\n\\(= \\frac{0.35 \\times 0.04}{0.25 \\times 0.05 + 0.35 \\times 0.04 + 0.40 \\times 0.02} = \\frac{0.0140}{0.0345} = \\frac{28}{69}\\)"
+  },
+  {
+    "ref": "13.3 Eg.20",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A doctor is to visit a patient. From the past experience, it is known that the probabilities that he will come by train, bus, scooter or by other means of transport are respectively \\(\\frac{3}{10}, \\frac{1}{5}, \\frac{1}{10}\\) and \\(\\frac{2}{5}\\). The probabilities that he will be late are \\(\\frac{1}{4}, \\frac{1}{3}\\), and \\(\\frac{1}{12}\\), if he comes by train, bus and scooter respectively, but if he comes by other means of transport, then he will not be late. When he arrives, he is late. What is the probability that he comes by train?",
+    "solution": "Let E be the event that the doctor visits the patient late and let \\(T_1\\), \\(T_2\\), \\(T_3\\), \\(T_4\\) be the events that the doctor comes by train, bus, scooter, and other means of transport respectively.\n\nThen \\(P(T_1) = \\frac{3}{10}\\), \\(P(T_2) = \\frac{1}{5}\\), \\(P(T_3) = \\frac{1}{10}\\) and \\(P(T_4) = \\frac{2}{5}\\) (given)\n\n\\(P(E|T_1) = \\) Probability that the doctor arriving late comes by train \\(= \\frac{1}{4}\\)\n\nSimilarly, \\(P(E|T_2) = \\frac{1}{3}\\), \\(P(E|T_3) = \\frac{1}{12}\\) and \\(P(E|T_4) = 0\\), since he is not late if he comes by other means of transport.\n\nTherefore, by Bayes' Theorem, we have\n\n\\(P(T_1|E) = \\) Probability that the doctor arriving late comes by train\n\n\\(= \\frac{P(T_1)\\,P(E|T_1)}{P(T_1)\\,P(E|T_1) + P(T_2)\\,P(E|T_2) + P(T_3)\\,P(E|T_3) + P(T_4)\\,P(E|T_4)}\\)\n\n\\(= \\frac{\\frac{3}{10} \\times \\frac{1}{4}}{\\frac{3}{10} \\times \\frac{1}{4} + \\frac{1}{5} \\times \\frac{1}{3} + \\frac{1}{10} \\times \\frac{1}{12} + \\frac{2}{5} \\times 0} = \\frac{3}{40} \\times \\frac{120}{18} = \\frac{1}{2}\\)\n\nHence, the required probability is \\(\\frac{1}{2}\\).",
+    "_note": "Book wording defect, transcribed faithfully: the printed solution glosses \\(P(E|T_1)\\) as 'Probability that the doctor arriving late comes by train', which is in fact the description of \\(P(T_1|E)\\) — and the same phrase is used again, correctly, for \\(P(T_1|E)\\) two lines later. \\(P(E|T_1)\\) is the probability that he is LATE GIVEN he comes by train. The arithmetic and the final answer 1/2 are correct."
+  },
+  {
+    "ref": "13.3 Eg.21",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A man is known to speak truth 3 out of 4 times. He throws a die and reports that it is a six. Find the probability that it is actually a six.",
+    "solution": "Let E be the event that the man reports that six occurs in the throwing of the die and let \\(S_1\\) be the event that six occurs and \\(S_2\\) be the event that six does not occur.\n\nThen \\(P(S_1) = \\) Probability that six occurs \\(= \\frac{1}{6}\\)\n\n\\(P(S_2) = \\) Probability that six does not occur \\(= \\frac{5}{6}\\)\n\n\\(P(E|S_1) = \\) Probability that the man reports that six occurs when six has actually occurred on the die = Probability that the man speaks the truth \\(= \\frac{3}{4}\\)\n\n\\(P(E|S_2) = \\) Probability that the man reports that six occurs when six has not actually occurred on the die = Probability that the man does not speak the truth \\(= 1 - \\frac{3}{4} = \\frac{1}{4}\\)\n\nThus, by Bayes' theorem, we get\n\n\\(P(S_1|E) = \\) Probability that the report of the man that six has occurred is actually a six\n\n\\(= \\frac{P(S_1)\\,P(E|S_1)}{P(S_1)\\,P(E|S_1) + P(S_2)\\,P(E|S_2)}\\)\n\n\\(= \\frac{\\frac{1}{6} \\times \\frac{3}{4}}{\\frac{1}{6} \\times \\frac{3}{4} + \\frac{5}{6} \\times \\frac{1}{4}} = \\frac{1}{8} \\times \\frac{24}{8} = \\frac{3}{8}\\)\n\nHence, the required probability is \\(\\frac{3}{8}\\)."
+  },
+  {
+    "ref": "Ex 13.3 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Theorem of Total Probability",
+    "difficulty": "MODERATE",
+    "stem": "An urn contains 5 red and 5 black balls. A ball is drawn at random, its colour is noted and is returned to the urn. Moreover, 2 additional balls of the colour drawn are put in the urn and then a ball is drawn at random. What is the probability that the second ball is red?"
+  },
+  {
+    "ref": "Ex 13.3 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A bag contains 4 red and 4 black balls, another bag contains 2 red and 6 black balls. One of the two bags is selected at random and a ball is drawn from the bag which is found to be red. Find the probability that the ball is drawn from the first bag."
+  },
+  {
+    "ref": "Ex 13.3 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Of the students in a college, it is known that 60% reside in hostel and 40% are day scholars (not residing in hostel). Previous year results report that 30% of all students who reside in hostel attain A grade and 20% of day scholars attain A grade in their annual examination. At the end of the year, one student is chosen at random from the college and he has an A grade, what is the probability that the student is a hostlier?"
+  },
+  {
+    "ref": "Ex 13.3 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "In answering a question on a multiple choice test, a student either knows the answer or guesses. Let \\(\\frac{3}{4}\\) be the probability that he knows the answer and \\(\\frac{1}{4}\\) be the probability that he guesses. Assuming that a student who guesses at the answer will be correct with probability \\(\\frac{1}{4}\\). What is the probability that the student knows the answer given that he answered it correctly?"
+  },
+  {
+    "ref": "Ex 13.3 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A laboratory blood test is 99% effective in detecting a certain disease when it is in fact, present. However, the test also yields a false positive result for 0.5% of the healthy person tested (i.e. if a healthy person is tested, then, with probability 0.005, the test will imply he has the disease). If 0.1 percent of the population actually has the disease, what is the probability that a person has the disease given that his test result is positive?"
+  },
+  {
+    "ref": "Ex 13.3 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "There are three coins. One is a two headed coin (having head on both faces), another is a biased coin that comes up heads 75% of the time and third is an unbiased coin. One of the three coins is chosen at random and tossed, it shows heads, what is the probability that it was the two headed coin?"
+  },
+  {
+    "ref": "Ex 13.3 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "An insurance company insured 2000 scooter drivers, 4000 car drivers and 6000 truck drivers. The probability of an accidents are 0.01, 0.03 and 0.15 respectively. One of the insured persons meets with an accident. What is the probability that he is a scooter driver?"
+  },
+  {
+    "ref": "Ex 13.3 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A factory has two machines A and B. Past record shows that machine A produced 60% of the items of output and machine B produced 40% of the items. Further, 2% of the items produced by machine A and 1% produced by machine B were defective. All the items are put into one stockpile and then one item is chosen at random from this and is found to be defective. What is the probability that it was produced by machine B?"
+  },
+  {
+    "ref": "Ex 13.3 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Two groups are competing for the position on the Board of directors of a corporation. The probabilities that the first and the second groups will win are 0.6 and 0.4 respectively. Further, if the first group wins, the probability of introducing a new product is 0.7 and the corresponding probability is 0.3 if the second group wins. Find the probability that the new product introduced was by the second group."
+  },
+  {
+    "ref": "Ex 13.3 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "HARD",
+    "stem": "Suppose a girl throws a die. If she gets a 5 or 6, she tosses a coin three times and notes the number of heads. If she gets 1, 2, 3 or 4, she tosses a coin once and notes whether a head or tail is obtained. If she obtained exactly one head, what is the probability that she threw 1, 2, 3 or 4 with the die?"
+  },
+  {
+    "ref": "Ex 13.3 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A manufacturer has three machine operators A, B and C. The first operator A produces 1% defective items, where as the other two operators B and C produce 5% and 7% defective items respectively. A is on the job for 50% of the time, B is on the job for 30% of the time and C is on the job for 20% of the time. A defective item is produced, what is the probability that it was produced by A?"
+  },
+  {
+    "ref": "Ex 13.3 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "HARD",
+    "stem": "A card from a pack of 52 cards is lost. From the remaining cards of the pack, two cards are drawn and are found to be both diamonds. Find the probability of the lost card being a diamond."
+  },
+  {
+    "ref": "Ex 13.3 Q13",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Probability that A speaks truth is \\(\\frac{4}{5}\\). A coin is tossed. A reports that a head appears. The probability that actually there was head is",
+    "options": [
+      {"label": "A", "text": "\\(\\frac{4}{5}\\)"},
+      {"label": "B", "text": "\\(\\frac{1}{2}\\)"},
+      {"label": "C", "text": "\\(\\frac{1}{5}\\)"},
+      {"label": "D", "text": "\\(\\frac{2}{5}\\)"}
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex 13.3 Q14",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "stem": "If A and B are two events such that \\(A \\subset B\\) and \\(P(B) \\neq 0\\), then which of the following is correct?",
+    "options": [
+      {"label": "A", "text": "\\(P(A|B) = \\frac{P(B)}{P(A)}\\)"},
+      {"label": "B", "text": "\\(P(A|B) < P(A)\\)"},
+      {"label": "C", "text": "\\(P(A|B) \\ge P(A)\\)"},
+      {"label": "D", "text": "None of these"}
+    ],
+    "answer": "C"
+  }
+]

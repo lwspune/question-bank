@@ -1,0 +1,183 @@
+[
+  {
+    "id": "7ba1762b-cd8c-44c2-a56f-d250dac2dcd7",
+    "ref": "Ex 9.4 Q1",
+    "solution": "Here \\(\\frac{dy}{dx} = \\frac{x^2 + y^2}{x^2 + xy} = F(x, y)\\), and \\(F(\\lambda x, \\lambda y) = \\frac{\\lambda^2(x^2+y^2)}{\\lambda^2(x^2+xy)} = F(x, y)\\), so the equation is homogeneous of degree zero. Put \\(y = vx\\), \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\): \\(v + x\\frac{dv}{dx} = \\frac{1+v^2}{1+v}\\), so \\(x\\frac{dv}{dx} = \\frac{1+v^2-v-v^2}{1+v} = \\frac{1-v}{1+v}\\). Separating, \\(\\frac{1+v}{1-v}\\,dv = \\frac{dx}{x}\\), and since \\(\\frac{1+v}{1-v} = \\frac{2}{1-v} - 1\\) this integrates to \\(-2\\log|1-v| - v = \\log|x| + C\\). Putting \\(v = \\frac{y}{x}\\) and using \\(1 - \\frac{y}{x} = \\frac{x-y}{x}\\), \\(2\\log|x-y| + \\frac{y}{x} = \\log|x| + C\\), that is \\((x-y)^2 = Cx\\,e^{-y/x}\\). Differentiating this implicitly returns \\(\\frac{dy}{dx} = \\frac{x^2+y^2}{x^2+xy}\\), so it checks. The general solution is \\((x-y)^2 = Cx\\,e^{-y/x}\\)."
+  },
+  {
+    "id": "19d0ca29-4794-41b0-a296-7191306386da",
+    "ref": "Ex 9.4 Q2",
+    "solution": "Here \\(\\frac{dy}{dx} = \\frac{x+y}{x} = 1 + \\frac{y}{x}\\), which is a function of \\(\\frac{y}{x}\\) alone, so the equation is homogeneous. Put \\(y = vx\\), \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\): \\(v + x\\frac{dv}{dx} = 1 + v\\), so \\(x\\frac{dv}{dx} = 1\\). Separating, \\(dv = \\frac{dx}{x}\\), hence \\(v = \\log|x| + C\\). Back-substituting \\(v = \\frac{y}{x}\\) gives \\(y = x\\log|x| + Cx\\). Checking, \\(y' = \\log|x| + 1 + C = 1 + \\frac{y}{x}\\). The general solution is \\(y = x\\log|x| + Cx\\)."
+  },
+  {
+    "id": "f0bf84ff-466c-440b-b375-f430ca780ae0",
+    "ref": "Ex 9.4 Q3",
+    "solution": "Writing it as \\(\\frac{dy}{dx} = \\frac{x+y}{x-y}\\), both \\(x+y\\) and \\(x-y\\) are homogeneous of degree 1, so the equation is homogeneous. Put \\(y = vx\\): \\(v + x\\frac{dv}{dx} = \\frac{1+v}{1-v}\\), so \\(x\\frac{dv}{dx} = \\frac{1+v-v+v^2}{1-v} = \\frac{1+v^2}{1-v}\\). Separating, \\(\\frac{1-v}{1+v^2}\\,dv = \\frac{dx}{x}\\), which integrates to \\(\\tan^{-1}v - \\frac{1}{2}\\log(1+v^2) = \\log|x| + C\\). With \\(v = \\frac{y}{x}\\), \\(\\frac{1}{2}\\log\\left(1+\\frac{y^2}{x^2}\\right) = \\frac{1}{2}\\log(x^2+y^2) - \\log|x|\\), so the \\(\\log|x|\\) terms cancel. Implicit differentiation of the result returns \\(\\frac{dy}{dx} = \\frac{x+y}{x-y}\\), so it checks. The general solution is \\(\\tan^{-1}\\left(\\frac{y}{x}\\right) = \\frac{1}{2}\\log(x^2+y^2) + C\\)."
+  },
+  {
+    "id": "4b843242-6b28-4b8f-8733-1b66692ae279",
+    "ref": "Ex 9.4 Q4",
+    "solution": "Writing it as \\(\\frac{dy}{dx} = \\frac{y^2-x^2}{2xy}\\), numerator and denominator are both homogeneous of degree 2, so the equation is homogeneous. Put \\(y = vx\\): \\(v + x\\frac{dv}{dx} = \\frac{v^2-1}{2v}\\), so \\(x\\frac{dv}{dx} = \\frac{v^2-1-2v^2}{2v} = -\\frac{1+v^2}{2v}\\). Separating, \\(\\frac{2v}{1+v^2}\\,dv = -\\frac{dx}{x}\\), hence \\(\\log(1+v^2) + \\log|x| = C\\). With \\(v = \\frac{y}{x}\\) this is \\(\\log\\frac{x^2+y^2}{x^2} + \\log|x| = C\\), i.e. \\(\\log\\frac{x^2+y^2}{|x|} = C\\). Implicit differentiation of \\(\\frac{x^2+y^2}{x}\\) confirms \\(\\frac{dy}{dx} = \\frac{y^2-x^2}{2xy}\\). The general solution is \\(x^2 + y^2 = Cx\\)."
+  },
+  {
+    "id": "5039b1f9-5fd0-414e-a229-75960e793ca6",
+    "ref": "Ex 9.4 Q5",
+    "solution": "Here \\(\\frac{dy}{dx} = \\frac{x^2 - 2y^2 + xy}{x^2} = 1 - 2\\left(\\frac{y}{x}\\right)^2 + \\frac{y}{x}\\), a function of \\(\\frac{y}{x}\\) alone, so the equation is homogeneous. Put \\(y = vx\\): \\(v + x\\frac{dv}{dx} = 1 - 2v^2 + v\\), so \\(x\\frac{dv}{dx} = 1 - 2v^2\\). Separating, \\(\\frac{dv}{1-2v^2} = \\frac{dx}{x}\\), and \\(\\int\\frac{dv}{1-2v^2} = \\frac{1}{2\\sqrt{2}}\\log\\left|\\frac{1+\\sqrt{2}\\,v}{1-\\sqrt{2}\\,v}\\right|\\). Hence \\(\\frac{1}{2\\sqrt{2}}\\log\\left|\\frac{1+\\sqrt{2}\\,v}{1-\\sqrt{2}\\,v}\\right| = \\log|x| + C\\). Back-substituting \\(v = \\frac{y}{x}\\) and multiplying numerator and denominator by \\(\\sqrt{2}\\), the general solution is \\(\\frac{1}{2\\sqrt{2}}\\log\\left|\\frac{\\sqrt{2}\\,x + 2y}{\\sqrt{2}\\,x - 2y}\\right| = \\log|x| + C\\)."
+  },
+  {
+    "id": "c1859be5-c0d9-4cfd-998f-deb4a90af4d2",
+    "ref": "Ex 9.4 Q6",
+    "solution": "Writing it as \\(\\frac{dy}{dx} = \\frac{y + \\sqrt{x^2+y^2}}{x}\\), the right side is homogeneous of degree zero, so the equation is homogeneous. Put \\(y = vx\\) (take \\(x > 0\\), so \\(\\sqrt{x^2+y^2} = x\\sqrt{1+v^2}\\)): \\(v + x\\frac{dv}{dx} = v + \\sqrt{1+v^2}\\), so \\(x\\frac{dv}{dx} = \\sqrt{1+v^2}\\). Separating, \\(\\frac{dv}{\\sqrt{1+v^2}} = \\frac{dx}{x}\\), hence \\(\\log\\left|v + \\sqrt{1+v^2}\\right| = \\log|x| + C\\), i.e. \\(v + \\sqrt{1+v^2} = Cx\\). Back-substituting \\(v = \\frac{y}{x}\\) gives \\(\\frac{y}{x} + \\frac{\\sqrt{x^2+y^2}}{x} = Cx\\). Implicit differentiation confirms the original equation. The general solution is \\(y + \\sqrt{x^2+y^2} = Cx^2\\)."
+  },
+  {
+    "id": "b32e2e25-3b92-49c0-a11e-75d7dd4c9f9f",
+    "ref": "Ex 9.4 Q7",
+    "solution": "Here \\(\\frac{dy}{dx} = \\frac{y\\left\\{x\\cos\\frac{y}{x} + y\\sin\\frac{y}{x}\\right\\}}{x\\left\\{y\\sin\\frac{y}{x} - x\\cos\\frac{y}{x}\\right\\}}\\); numerator and denominator are both homogeneous of degree 2, so the equation is homogeneous. Put \\(y = vx\\): the \\(x^2\\) cancels and \\(v + x\\frac{dv}{dx} = \\frac{v(v\\sin v + \\cos v)}{v\\sin v - \\cos v}\\), so \\(x\\frac{dv}{dx} = \\frac{v(v\\sin v+\\cos v) - v(v\\sin v-\\cos v)}{v\\sin v - \\cos v} = \\frac{2v\\cos v}{v\\sin v - \\cos v}\\). Separating, \\(\\frac{v\\sin v - \\cos v}{2v\\cos v}\\,dv = \\frac{dx}{x}\\), i.e. \\(\\left(\\frac{\\tan v}{2} - \\frac{1}{2v}\\right)dv = \\frac{dx}{x}\\), which integrates to \\(-\\frac{1}{2}\\log|v\\cos v| = \\log|x| + C\\). Hence \\(v\\cos v = \\frac{C_1}{x^2}\\); with \\(v = \\frac{y}{x}\\) this gives \\(\\frac{y}{x}\\cos\\frac{y}{x} = \\frac{C_1}{x^2}\\). Implicit differentiation of the result returns the original equation. The general solution is \\(xy\\cos\\left(\\frac{y}{x}\\right) = C\\)."
+  },
+  {
+    "id": "8c1fc87c-c7cd-49ec-9769-81dff3df9849",
+    "ref": "Ex 9.4 Q8",
+    "solution": "Rearranging, \\(\\frac{dy}{dx} = \\frac{y - x\\sin\\frac{y}{x}}{x} = \\frac{y}{x} - \\sin\\left(\\frac{y}{x}\\right)\\), a function of \\(\\frac{y}{x}\\) alone, so the equation is homogeneous. Put \\(y = vx\\): \\(v + x\\frac{dv}{dx} = v - \\sin v\\), so \\(x\\frac{dv}{dx} = -\\sin v\\). Separating, \\(\\operatorname{cosec} v\\,dv = -\\frac{dx}{x}\\), hence \\(\\log\\left|\\tan\\frac{v}{2}\\right| = -\\log|x| + C\\), i.e. \\(x\\tan\\frac{v}{2} = C\\). Back-substituting \\(v = \\frac{y}{x}\\) and differentiating implicitly returns \\(\\frac{dy}{dx} = \\frac{y}{x} - \\sin\\frac{y}{x}\\), so it checks. The general solution is \\(x\\tan\\left(\\frac{y}{2x}\\right) = C\\)."
+  },
+  {
+    "id": "f5ab19b1-9c1e-4ef3-8e9e-af4c01e48552",
+    "ref": "Ex 9.4 Q9",
+    "solution": "Collecting the \\(dy\\) terms, \\(y\\,dx = x\\left\\{2 - \\log\\frac{y}{x}\\right\\}dy\\), so \\(\\frac{dy}{dx} = \\frac{y}{x\\left(2 - \\log\\frac{y}{x}\\right)}\\), which depends only on \\(\\frac{y}{x}\\); the equation is homogeneous. Put \\(y = vx\\): \\(v + x\\frac{dv}{dx} = \\frac{v}{2-\\log v}\\), so \\(x\\frac{dv}{dx} = \\frac{v(\\log v - 1)}{2 - \\log v}\\). Separating, \\(\\frac{2-\\log v}{v(\\log v - 1)}\\,dv = \\frac{dx}{x}\\). Put \\(t = \\log v - 1\\), so \\(dt = \\frac{dv}{v}\\) and \\(2 - \\log v = 1-t\\): the left side becomes \\(\\int\\left(\\frac{1}{t}-1\\right)dt = \\log|t| - t\\). Hence \\(\\log|\\log v - 1| - \\log v = \\log|x| + C\\). With \\(v = \\frac{y}{x}\\), \\(\\log v + \\log|x| = \\log|y|\\), so \\(\\log|\\log v - 1| - \\log|y| = C\\). Implicit differentiation of the result returns the original equation. The general solution is \\(\\log\\left|\\frac{y}{x}\\right| - 1 = Cy\\)."
+  },
+  {
+    "id": "628b89f5-e2d9-4d54-a751-cce21bddc98d",
+    "ref": "Ex 9.4 Q10",
+    "solution": "Both coefficients are homogeneous of degree zero and involve \\(\\frac{x}{y}\\), so the equation is homogeneous and the substitution to use is \\(x = vy\\), \\(\\frac{dx}{dy} = v + y\\frac{dv}{dy}\\). From the equation, \\(\\frac{dx}{dy} = -\\frac{e^{x/y}\\left(1-\\frac{x}{y}\\right)}{1+e^{x/y}}\\), so \\(v + y\\frac{dv}{dy} = -\\frac{e^{v}(1-v)}{1+e^{v}}\\), giving \\(y\\frac{dv}{dy} = \\frac{-e^{v}+ve^{v}-v-ve^{v}}{1+e^{v}} = -\\frac{v+e^{v}}{1+e^{v}}\\). Separating, \\(\\frac{1+e^{v}}{v+e^{v}}\\,dv = -\\frac{dy}{y}\\), hence \\(\\log|v+e^{v}| = -\\log|y| + C\\), i.e. \\(y(v+e^{v}) = C\\). Back-substituting \\(v = \\frac{x}{y}\\) and differentiating implicitly returns the original equation. The general solution is \\(x + y\\,e^{x/y} = C\\)."
+  },
+  {
+    "id": "ddd65b82-2318-4ce3-a512-6a412759cdff",
+    "ref": "Ex 9.4 Q11",
+    "solution": "Writing it as \\(\\frac{dy}{dx} = \\frac{y-x}{x+y}\\), the equation is homogeneous. Put \\(y = vx\\): \\(v + x\\frac{dv}{dx} = \\frac{v-1}{1+v}\\), so \\(x\\frac{dv}{dx} = \\frac{v-1-v-v^2}{1+v} = -\\frac{1+v^2}{1+v}\\). Separating, \\(\\frac{1+v}{1+v^2}\\,dv = -\\frac{dx}{x}\\), hence \\(\\tan^{-1}v + \\frac{1}{2}\\log(1+v^2) + \\log|x| = C\\). With \\(v = \\frac{y}{x}\\), \\(\\frac{1}{2}\\log\\left(1+\\frac{y^2}{x^2}\\right) + \\log|x| = \\frac{1}{2}\\log(x^2+y^2)\\), so \\(\\tan^{-1}\\left(\\frac{y}{x}\\right) + \\frac{1}{2}\\log(x^2+y^2) = C\\). Putting \\(y = 1\\) when \\(x = 1\\), \\(C = \\tan^{-1}1 + \\frac{1}{2}\\log 2 = \\frac{\\pi}{4} + \\frac{1}{2}\\log 2\\). The particular solution is \\(\\log(x^2+y^2) + 2\\tan^{-1}\\left(\\frac{y}{x}\\right) = \\frac{\\pi}{2} + \\log 2\\)."
+  },
+  {
+    "id": "bbc9fe93-30e4-45c8-a451-e0976334e797",
+    "ref": "Ex 9.4 Q12",
+    "solution": "Writing it as \\(\\frac{dy}{dx} = -\\frac{xy+y^2}{x^2}\\), the equation is homogeneous of degree 2. Put \\(y = vx\\): \\(v + x\\frac{dv}{dx} = -(v+v^2)\\), so \\(x\\frac{dv}{dx} = -(v^2+2v) = -v(v+2)\\). Separating, \\(\\frac{dv}{v(v+2)} = -\\frac{dx}{x}\\), and \\(\\frac{1}{v(v+2)} = \\frac{1}{2}\\left(\\frac{1}{v}-\\frac{1}{v+2}\\right)\\), so \\(\\frac{1}{2}\\log\\left|\\frac{v}{v+2}\\right| = -\\log|x| + C\\), i.e. \\(\\frac{v}{v+2} = \\frac{K}{x^2}\\). With \\(v = \\frac{y}{x}\\) this is \\(\\frac{y}{y+2x} = \\frac{K}{x^2}\\), i.e. \\(x^2y = K(y+2x)\\). Putting \\(y = 1\\) when \\(x = 1\\) gives \\(1 = 3K\\), so \\(K = \\frac{1}{3}\\) and \\(3x^2y = y + 2x\\). Implicit differentiation confirms \\(\\frac{dy}{dx} = -\\frac{xy+y^2}{x^2}\\). The particular solution is \\(y = \\frac{2x}{3x^2-1}\\)."
+  },
+  {
+    "id": "ca6ee5dc-edc1-4c5b-a2cd-94ede305f20a",
+    "ref": "Ex 9.4 Q13",
+    "solution": "Rearranging, \\(\\frac{dy}{dx} = \\frac{y - x\\sin^2\\frac{y}{x}}{x} = \\frac{y}{x} - \\sin^2\\left(\\frac{y}{x}\\right)\\), a function of \\(\\frac{y}{x}\\) alone, so the equation is homogeneous. Put \\(y = vx\\): \\(v + x\\frac{dv}{dx} = v - \\sin^2 v\\), so \\(x\\frac{dv}{dx} = -\\sin^2 v\\). Separating, \\(\\operatorname{cosec}^2 v\\,dv = -\\frac{dx}{x}\\), hence \\(-\\cot v = -\\log|x| + C\\), i.e. \\(\\cot\\left(\\frac{y}{x}\\right) = \\log|x| + C_1\\). Putting \\(y = \\frac{\\pi}{4}\\) when \\(x = 1\\), \\(\\cot\\frac{\\pi}{4} = 1 = 0 + C_1\\), so \\(C_1 = 1\\). The particular solution is \\(\\cot\\left(\\frac{y}{x}\\right) = \\log|x| + 1 = \\log|ex|\\)."
+  },
+  {
+    "id": "135a06c1-8682-4298-b81b-71d8655c86c8",
+    "ref": "Ex 9.4 Q14",
+    "solution": "Rearranging, \\(\\frac{dy}{dx} = \\frac{y}{x} - \\operatorname{cosec}\\left(\\frac{y}{x}\\right)\\), a function of \\(\\frac{y}{x}\\) alone, so the equation is homogeneous. Put \\(y = vx\\): \\(v + x\\frac{dv}{dx} = v - \\operatorname{cosec} v\\), so \\(x\\frac{dv}{dx} = -\\operatorname{cosec} v\\). Separating, \\(\\sin v\\,dv = -\\frac{dx}{x}\\), hence \\(-\\cos v = -\\log|x| + C\\), i.e. \\(\\cos\\left(\\frac{y}{x}\\right) = \\log|x| + C_1\\). Putting \\(y = 0\\) when \\(x = 1\\), \\(\\cos 0 = 1 = 0 + C_1\\), so \\(C_1 = 1\\). The particular solution is \\(\\cos\\left(\\frac{y}{x}\\right) = \\log|x| + 1 = \\log|ex|\\)."
+  },
+  {
+    "id": "957f4ded-2b1d-401c-8e56-ff605757ccba",
+    "ref": "Ex 9.4 Q15",
+    "solution": "Rearranging, \\(\\frac{dy}{dx} = \\frac{2xy+y^2}{2x^2}\\), whose numerator and denominator are homogeneous of degree 2, so the equation is homogeneous. Put \\(y = vx\\): \\(v + x\\frac{dv}{dx} = \\frac{2v+v^2}{2} = v + \\frac{v^2}{2}\\), so \\(x\\frac{dv}{dx} = \\frac{v^2}{2}\\). Separating, \\(\\frac{2\\,dv}{v^2} = \\frac{dx}{x}\\), hence \\(-\\frac{2}{v} = \\log|x| + C\\), i.e. \\(-\\frac{2x}{y} = \\log|x| + C\\). Putting \\(y = 2\\) when \\(x = 1\\) gives \\(-1 = 0 + C\\), so \\(C = -1\\) and \\(\\frac{2x}{y} = 1 - \\log|x|\\). Implicit differentiation confirms the original equation. The particular solution is \\(y = \\frac{2x}{1-\\log|x|}\\), \\(x \\ne 0\\), \\(x \\ne e\\)."
+  },
+  {
+    "id": "e183bae3-abb2-4fab-b98a-edfb960de00e",
+    "ref": "Ex 9.5 Q1",
+    "solution": "The equation is already in the form \\(\\frac{dy}{dx} + Py = Q\\) with \\(P = 2\\) and \\(Q = \\sin x\\). Integrating factor \\(= e^{\\int 2\\,dx} = e^{2x}\\). Then \\(y\\,e^{2x} = \\int e^{2x}\\sin x\\,dx = \\frac{e^{2x}}{5}(2\\sin x - \\cos x) + C\\), using \\(\\int e^{ax}\\sin bx\\,dx = \\frac{e^{ax}(a\\sin bx - b\\cos bx)}{a^2+b^2}\\). Differentiating the result back gives \\(\\frac{dy}{dx}+2y = \\sin x\\), so it checks. The general solution is \\(y = \\frac{2\\sin x - \\cos x}{5} + C\\,e^{-2x}\\)."
+  },
+  {
+    "id": "709fa243-d17b-493b-8c5f-db447fd40ea5",
+    "ref": "Ex 9.5 Q2",
+    "solution": "Here \\(P = 3\\) and \\(Q = e^{-2x}\\). Integrating factor \\(= e^{\\int 3\\,dx} = e^{3x}\\). Then \\(y\\,e^{3x} = \\int e^{3x}e^{-2x}\\,dx = \\int e^{x}\\,dx = e^{x} + C\\). Differentiating the result back gives \\(\\frac{dy}{dx}+3y = e^{-2x}\\), so it checks. The general solution is \\(y = e^{-2x} + C\\,e^{-3x}\\)."
+  },
+  {
+    "id": "090eb7a4-5774-45a0-a64b-eeddeda30154",
+    "ref": "Ex 9.5 Q3",
+    "solution": "Here \\(P = \\frac{1}{x}\\) and \\(Q = x^2\\). Integrating factor \\(= e^{\\int \\frac{1}{x}dx} = e^{\\log x} = x\\). Then \\(y\\,x = \\int x^2\\cdot x\\,dx = \\frac{x^4}{4} + C\\). Differentiating the result back gives \\(\\frac{dy}{dx}+\\frac{y}{x} = x^2\\), so it checks. The general solution is \\(y = \\frac{x^3}{4} + \\frac{C}{x}\\)."
+  },
+  {
+    "id": "acde237d-43f3-4933-844d-e1549589cc77",
+    "ref": "Ex 9.5 Q4",
+    "solution": "Here \\(P = \\sec x\\) and \\(Q = \\tan x\\). Integrating factor \\(= e^{\\int\\sec x\\,dx} = e^{\\log|\\sec x + \\tan x|} = \\sec x + \\tan x\\). Then \\(y(\\sec x + \\tan x) = \\int \\tan x(\\sec x + \\tan x)\\,dx = \\int(\\sec x\\tan x + \\sec^2 x - 1)\\,dx = \\sec x + \\tan x - x + C\\). Differentiating the result back reproduces the equation, so it checks. The general solution is \\(y(\\sec x + \\tan x) = \\sec x + \\tan x - x + C\\)."
+  },
+  {
+    "id": "04964d60-6d2e-4db0-8503-ef2c93fc261d",
+    "ref": "Ex 9.5 Q5",
+    "solution": "Dividing by \\(\\cos^2 x\\), \\(\\frac{dy}{dx} + (\\sec^2 x)\\,y = \\tan x\\sec^2 x\\), so \\(P = \\sec^2 x\\) and integrating factor \\(= e^{\\int\\sec^2 x\\,dx} = e^{\\tan x}\\). Then \\(y\\,e^{\\tan x} = \\int \\tan x\\sec^2 x\\,e^{\\tan x}\\,dx\\); putting \\(t = \\tan x\\), \\(dt = \\sec^2 x\\,dx\\), this is \\(\\int t\\,e^{t}\\,dt = e^{t}(t-1) + C = e^{\\tan x}(\\tan x - 1) + C\\). Differentiating the result back reproduces the equation, so it checks. The general solution is \\(y = (\\tan x - 1) + C\\,e^{-\\tan x}\\)."
+  },
+  {
+    "id": "faab06b2-ffac-4d8b-b095-4f22f5a3e311",
+    "ref": "Ex 9.5 Q6",
+    "solution": "Dividing by \\(x\\), \\(\\frac{dy}{dx} + \\frac{2}{x}y = x\\log x\\), so \\(P = \\frac{2}{x}\\) and integrating factor \\(= e^{2\\log x} = x^2\\). Then \\(y\\,x^2 = \\int x^3\\log x\\,dx = \\frac{x^4}{4}\\log x - \\int\\frac{x^3}{4}\\,dx = \\frac{x^4}{4}\\log x - \\frac{x^4}{16} + C\\). Differentiating the result back reproduces the equation, so it checks. The general solution is \\(y = \\frac{x^2}{4}\\log x - \\frac{x^2}{16} + \\frac{C}{x^2}\\)."
+  },
+  {
+    "id": "d36be2fe-7075-4d3f-80b9-540759c9fb0e",
+    "ref": "Ex 9.5 Q7",
+    "solution": "Dividing by \\(x\\log x\\), \\(\\frac{dy}{dx} + \\frac{1}{x\\log x}y = \\frac{2}{x^2}\\), so \\(P = \\frac{1}{x\\log x}\\) and \\(\\int P\\,dx = \\log|\\log x|\\), giving integrating factor \\(= \\log x\\). Then \\(y\\log x = \\int\\frac{2\\log x}{x^2}\\,dx\\). By parts, \\(\\int\\frac{\\log x}{x^2}\\,dx = -\\frac{\\log x}{x} + \\int\\frac{dx}{x^2} = -\\frac{\\log x}{x} - \\frac{1}{x}\\), so the integral is \\(-\\frac{2}{x}(\\log x + 1) + C\\). Differentiating the result back reproduces the equation, so it checks. The general solution is \\(y\\log x = -\\frac{2}{x}(1 + \\log x) + C\\)."
+  },
+  {
+    "id": "11fe42f0-2dea-4609-ae8a-919503227f57",
+    "ref": "Ex 9.5 Q8",
+    "solution": "[Textbook answer-key error: the printed key gives \\(y = (1+x)^{-1}\\log|\\sin x| + C(1+x^2)^{-1}\\); the first factor has lost its exponent and should read \\((1+x^2)^{-1}\\). As printed the expression does not satisfy the equation for any \\(C\\). The key’s own second term carries the correct \\((1+x^2)\\).] Dividing by \\((1+x^2)\\,dx\\), \\(\\frac{dy}{dx} + \\frac{2x}{1+x^2}y = \\frac{\\cot x}{1+x^2}\\), so \\(P = \\frac{2x}{1+x^2}\\) and integrating factor \\(= e^{\\log(1+x^2)} = 1+x^2\\). Then \\(y(1+x^2) = \\int\\frac{\\cot x}{1+x^2}(1+x^2)\\,dx = \\int\\cot x\\,dx = \\log|\\sin x| + C\\). Differentiating the result back reproduces the equation, so it checks. The general solution is \\(y = \\frac{\\log|\\sin x| + C}{1+x^2}\\)."
+  },
+  {
+    "id": "30684aa1-cd1d-4ac0-a486-7149b22335ac",
+    "ref": "Ex 9.5 Q9",
+    "solution": "Dividing by \\(x\\) and rearranging, \\(\\frac{dy}{dx} + \\left(\\frac{1}{x} + \\cot x\\right)y = 1\\), so \\(P = \\frac{1}{x}+\\cot x\\) and \\(\\int P\\,dx = \\log|x| + \\log|\\sin x|\\), giving integrating factor \\(= x\\sin x\\). Then \\(y\\,x\\sin x = \\int x\\sin x\\,dx = -x\\cos x + \\sin x + C\\). Dividing by \\(x\\sin x\\) and differentiating back reproduces the equation, so it checks. The general solution is \\(y = \\frac{1}{x} - \\cot x + \\frac{C}{x\\sin x}\\)."
+  },
+  {
+    "id": "aae4fe72-7281-4d0f-84fa-a810b95889c5",
+    "ref": "Ex 9.5 Q10",
+    "solution": "The equation is not linear in \\(y\\), but writing \\(\\frac{dx}{dy} = x + y\\) it is linear in \\(x\\) as the dependent variable: \\(\\frac{dx}{dy} - x = y\\), so \\(P_1 = -1\\) and integrating factor \\(= e^{\\int(-1)dy} = e^{-y}\\). Then \\(x\\,e^{-y} = \\int y\\,e^{-y}\\,dy = -y\\,e^{-y} - e^{-y} + C\\). Multiplying by \\(e^{y}\\), \\(x = -y - 1 + C\\,e^{y}\\). Differentiating back gives \\(\\frac{dx}{dy} = -1 + C e^{y} = x + y\\), so it checks. The general solution is \\(x + y + 1 = C\\,e^{y}\\)."
+  },
+  {
+    "id": "8735dbfc-9ee0-4137-be9c-441d3ce34479",
+    "ref": "Ex 9.5 Q11",
+    "solution": "Rearranging, \\(y\\frac{dx}{dy} + x = y^2\\), i.e. \\(\\frac{dx}{dy} + \\frac{1}{y}x = y\\), which is linear in \\(x\\) as the dependent variable with \\(P_1 = \\frac{1}{y}\\). Integrating factor \\(= e^{\\int\\frac{1}{y}dy} = e^{\\log y} = y\\). Then \\(x\\,y = \\int y\\cdot y\\,dy = \\frac{y^3}{3} + C\\). Differentiating back reproduces the equation, so it checks. The general solution is \\(x = \\frac{y^2}{3} + \\frac{C}{y}\\)."
+  },
+  {
+    "id": "46e04878-4575-438f-abf5-102ae82d25af",
+    "ref": "Ex 9.5 Q12",
+    "solution": "Writing \\(\\frac{dx}{dy} = \\frac{x+3y^2}{y}\\), the equation is linear in \\(x\\) as the dependent variable: \\(\\frac{dx}{dy} - \\frac{1}{y}x = 3y\\), so \\(P_1 = -\\frac{1}{y}\\) and integrating factor \\(= e^{-\\log y} = \\frac{1}{y}\\) (using \\(y > 0\\)). Then \\(\\frac{x}{y} = \\int 3y\\cdot\\frac{1}{y}\\,dy = 3y + C\\). Differentiating back reproduces the equation, so it checks. The general solution is \\(x = 3y^2 + Cy\\)."
+  },
+  {
+    "id": "1a8e4c97-a200-43f3-aec2-fa8583862050",
+    "ref": "Ex 9.5 Q13",
+    "solution": "Here \\(P = 2\\tan x\\) and \\(Q = \\sin x\\). Integrating factor \\(= e^{2\\int\\tan x\\,dx} = e^{2\\log|\\sec x|} = \\sec^2 x\\). Then \\(y\\sec^2 x = \\int\\sin x\\sec^2 x\\,dx = \\int\\frac{\\sin x}{\\cos^2 x}\\,dx = \\sec x + C\\). Putting \\(y = 0\\) when \\(x = \\frac{\\pi}{3}\\): \\(0 = \\sec\\frac{\\pi}{3} + C = 2 + C\\), so \\(C = -2\\). Hence \\(y\\sec^2 x = \\sec x - 2\\). Multiplying by \\(\\cos^2 x\\) and differentiating back reproduces the equation, so it checks. The particular solution is \\(y = \\cos x - 2\\cos^2 x\\)."
+  },
+  {
+    "id": "0b118ae8-e645-49cc-b763-791b04f7be51",
+    "ref": "Ex 9.5 Q14",
+    "solution": "Dividing by \\((1+x^2)\\), \\(\\frac{dy}{dx} + \\frac{2x}{1+x^2}y = \\frac{1}{(1+x^2)^2}\\), so \\(P = \\frac{2x}{1+x^2}\\) and integrating factor \\(= e^{\\log(1+x^2)} = 1+x^2\\). Then \\(y(1+x^2) = \\int\\frac{dx}{1+x^2} = \\tan^{-1}x + C\\). Putting \\(y = 0\\) when \\(x = 1\\): \\(0 = \\frac{\\pi}{4} + C\\), so \\(C = -\\frac{\\pi}{4}\\). Differentiating the result back reproduces the equation, so it checks. The particular solution is \\(y(1+x^2) = \\tan^{-1}x - \\frac{\\pi}{4}\\)."
+  },
+  {
+    "id": "bb5841cb-f881-4bae-9960-6a610bf30d76",
+    "ref": "Ex 9.5 Q15",
+    "solution": "Here \\(P = -3\\cot x\\) and \\(Q = \\sin 2x\\). Integrating factor \\(= e^{-3\\int\\cot x\\,dx} = e^{-3\\log|\\sin x|} = \\operatorname{cosec}^3 x\\). Then \\(y\\operatorname{cosec}^3 x = \\int\\frac{\\sin 2x}{\\sin^3 x}\\,dx = \\int\\frac{2\\cos x}{\\sin^2 x}\\,dx = -\\frac{2}{\\sin x} + C\\), so \\(y = -2\\sin^2 x + C\\sin^3 x\\). Putting \\(y = 2\\) when \\(x = \\frac{\\pi}{2}\\): \\(2 = -2 + C\\), so \\(C = 4\\). Differentiating the result back reproduces the equation, so it checks. The particular solution is \\(y = 4\\sin^3 x - 2\\sin^2 x\\)."
+  },
+  {
+    "id": "f074477a-4465-4d43-b7ba-c7e4390d637d",
+    "ref": "Ex 9.5 Q16",
+    "solution": "The slope condition gives \\(\\frac{dy}{dx} = x + y\\), i.e. \\(\\frac{dy}{dx} - y = x\\), which is linear with \\(P = -1\\) and integrating factor \\(= e^{-x}\\). Then \\(y\\,e^{-x} = \\int x\\,e^{-x}\\,dx = -x\\,e^{-x} - e^{-x} + C\\), so \\(y = -x - 1 + C\\,e^{x}\\). The curve passes through \\((0,0)\\): \\(0 = -1 + C\\), so \\(C = 1\\). Checking, \\(\\frac{dy}{dx} = e^{x} - 1 = x + y\\). The required curve is \\(y = e^{x} - x - 1\\), that is \\(x + y + 1 = e^{x}\\)."
+  },
+  {
+    "id": "c78edd13-e04b-4e5d-a8af-b8a9062bacf2",
+    "ref": "Ex 9.5 Q17",
+    "solution": "The condition \"the sum of the coordinates exceeds the slope by 5\" gives \\(x + y = \\frac{dy}{dx} + 5\\), i.e. \\(\\frac{dy}{dx} - y = x - 5\\), which is linear with \\(P = -1\\) and integrating factor \\(= e^{-x}\\). Then \\(y\\,e^{-x} = \\int(x-5)e^{-x}\\,dx = -(x-5)e^{-x} - e^{-x} + C = -(x-4)e^{-x} + C\\), so \\(y = 4 - x + C\\,e^{x}\\). The curve passes through \\((0,2)\\): \\(2 = 4 + C\\), so \\(C = -2\\). Checking, \\(\\frac{dy}{dx} = -1 - 2e^{x}\\) and \\(x+y-5 = x + 4 - x - 2e^{x} - 5 = -1 - 2e^{x}\\), which agree. The required curve is \\(y = 4 - x - 2e^{x}\\)."
+  },
+  {
+    "id": "dde17d5e-3c21-4557-a026-3468f6c9e4c8",
+    "ref": "Misc Q3",
+    "solution": "Writing the equation as \\(\\frac{dy}{dx} = \\frac{x^3 - 3xy^2}{y^3 - 3x^2y}\\), numerator and denominator are both homogeneous of degree 3, so the equation is homogeneous. Put \\(y = vx\\), \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\): the factor \\(x^3\\) cancels and \\(v + x\\frac{dv}{dx} = \\frac{1-3v^2}{v^3-3v}\\), so \\(x\\frac{dv}{dx} = \\frac{1-3v^2 - v^4 + 3v^2}{v^3-3v} = \\frac{1-v^4}{v^3-3v}\\). Separating, \\(\\frac{v^3-3v}{1-v^4}\\,dv = \\frac{dx}{x}\\). Put \\(t = v^2\\), \\(dt = 2v\\,dv\\): the left side becomes \\(\\frac{1}{2}\\int\\frac{t-3}{(1-t)(1+t)}\\,dt = \\frac{1}{2}\\int\\left(\\frac{-1}{1-t} - \\frac{2}{1+t}\\right)dt = \\frac{1}{2}\\log|1-t| - \\log|1+t|\\). Hence \\(\\log|1-v^2| - 2\\log(1+v^2) = 2\\log|x| + C_1\\), i.e. \\(\\frac{1-v^2}{(1+v^2)^2} = c\\,x^2\\). Back-substituting \\(v = \\frac{y}{x}\\), \\(1-v^2 = \\frac{x^2-y^2}{x^2}\\) and \\((1+v^2)^2 = \\frac{(x^2+y^2)^2}{x^4}\\), so \\(\\frac{x^2(x^2-y^2)}{(x^2+y^2)^2} = c\\,x^2\\). Cancelling \\(x^2\\) gives \\(x^2 - y^2 = c\\,(x^2+y^2)^2\\), which is the required general solution."
+  },
+  {
+    "id": "2a37b751-584b-45d5-a31a-34736e3e90d4",
+    "ref": "Misc Q8",
+    "solution": "Since \\(x/y\\) occurs throughout, treat \\(x\\) as the dependent variable: \\(\\frac{dx}{dy} = \\frac{x\\,e^{x/y} + y^2}{y\\,e^{x/y}} = \\frac{x}{y} + y\\,e^{-x/y}\\). Put \\(x = vy\\), \\(\\frac{dx}{dy} = v + y\\frac{dv}{dy}\\): \\(v + y\\frac{dv}{dy} = v + y\\,e^{-v}\\), so \\(y\\frac{dv}{dy} = y\\,e^{-v}\\), i.e. \\(e^{v}\\,dv = dy\\). Integrating, \\(e^{v} = y + C\\). Back-substituting \\(v = \\frac{x}{y}\\) and differentiating implicitly gives \\(e^{x/y}\\frac{y\\,dx - x\\,dy}{y^2} = dy\\), i.e. \\(y\\,e^{x/y}\\,dx = \\left(x\\,e^{x/y} + y^2\\right)dy\\), so it checks. The solution is \\(e^{x/y} = y + C\\).",
+    "_note": "The equation is not homogeneous in the strict degree sense (the term y^2 has degree 2 while x*e^(x/y) has degree 1), but it still separates under the same substitution x = vy, which is why it sits with the homogeneous group. Solved as printed; no defect implied."
+  },
+  {
+    "id": "6b51c8ce-5979-4570-b872-35c2da23e4f9",
+    "ref": "Misc Q10",
+    "solution": "Taking the reciprocal of both sides, \\(\\frac{dy}{dx} = \\frac{e^{-2\\sqrt{x}}}{\\sqrt{x}} - \\frac{y}{\\sqrt{x}}\\), i.e. \\(\\frac{dy}{dx} + \\frac{1}{\\sqrt{x}}\\,y = \\frac{e^{-2\\sqrt{x}}}{\\sqrt{x}}\\), which is linear with \\(P = \\frac{1}{\\sqrt{x}}\\). Since \\(\\int x^{-1/2}dx = 2\\sqrt{x}\\), the integrating factor is \\(e^{2\\sqrt{x}}\\). Then \\(y\\,e^{2\\sqrt{x}} = \\int e^{2\\sqrt{x}}\\cdot\\frac{e^{-2\\sqrt{x}}}{\\sqrt{x}}\\,dx = \\int\\frac{dx}{\\sqrt{x}} = 2\\sqrt{x} + C\\). Differentiating the result back reproduces the equation, so it checks. The solution is \\(y\\,e^{2\\sqrt{x}} = 2\\sqrt{x} + C\\)."
+  },
+  {
+    "id": "808c547d-57c4-49ff-ba8f-fad0f5b4d1b6",
+    "ref": "Misc Q11",
+    "solution": "Here \\(P = \\cot x\\) and \\(Q = 4x\\operatorname{cosec} x\\). Integrating factor \\(= e^{\\int\\cot x\\,dx} = e^{\\log|\\sin x|} = \\sin x\\). Then \\(y\\sin x = \\int 4x\\operatorname{cosec} x\\cdot\\sin x\\,dx = \\int 4x\\,dx = 2x^2 + C\\). Putting \\(y = 0\\) when \\(x = \\frac{\\pi}{2}\\): \\(0 = 2\\cdot\\frac{\\pi^2}{4} + C\\), so \\(C = -\\frac{\\pi^2}{2}\\). Differentiating the result back reproduces the equation, so it checks. The particular solution is \\(y\\sin x = 2x^2 - \\frac{\\pi^2}{2}\\)."
+  }
+]

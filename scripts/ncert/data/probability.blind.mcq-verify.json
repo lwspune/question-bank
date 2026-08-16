@@ -1,0 +1,65 @@
+[
+  {
+    "id": "2918e4c1-7781-453b-b918-a76f44b5381a",
+    "ref": "Ex 13.1 Q16",
+    "derived_answer": "C",
+    "solution": "By definition \\(P(A|B) = \\dfrac{P(A \\cap B)}{P(B)}\\), and this expression exists only when \\(P(B) > 0\\). Here \\(P(B) = 0\\), so the quotient involves division by zero and the conditional probability has no value at all. The value \\(0\\) is the near-miss: one is tempted to argue \\(A \\cap B \\subseteq B\\) gives \\(P(A \\cap B) = 0\\) and hence \\(0/0 = 0\\), but \\(0/0\\) is indeterminate, not zero. Likewise \\(\\frac{1}{2}\\) would require independence to be meaningful, which still needs \\(P(B) > 0\\) for the conditioning to exist, and \\(1\\) would require \\(P(A \\cap B) = P(B)\\) as a genuine ratio. Hence \\(P(A|B)\\) is not defined.",
+    "matches_current": true
+  },
+  {
+    "id": "4649ee08-37e4-4417-9b23-c6b6046303fb",
+    "ref": "Ex 13.1 Q17",
+    "derived_answer": "D",
+    "solution": "Both conditional probabilities exist, so \\(P(A) > 0\\) and \\(P(B) > 0\\). Then \\(P(A|B) = P(B|A)\\) means \\(\\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{P(A \\cap B)}{P(A)}\\). With \\(P(A \\cap B) > 0\\), cancelling gives \\(P(A) = P(B)\\). The near-misses are all conditions that are sufficient or unrelated rather than forced: \\(A = B\\) certainly makes the two conditional probabilities equal, but the hypothesis does not force the events themselves to coincide (two different faces of a die each have probability \\(\\frac{1}{6}\\)); \\(A \\subset B\\) with \\(A \\ne B\\) gives \\(P(A|B) = \\frac{P(A)}{P(B)}\\) and \\(P(B|A) = 1\\), which are equal only if \\(P(A) = P(B)\\) anyway; and \\(A \\cap B = \\phi\\) is a special degenerate case, not something the hypothesis implies. Hence \\(P(A) = P(B)\\).",
+    "matches_current": true
+  },
+  {
+    "id": "cf9c9f1b-b1ec-473c-be49-2a4dd59bf85e",
+    "ref": "Ex 13.2 Q17",
+    "derived_answer": "D",
+    "solution": "The only even prime number is \\(2\\), so on a single die the favourable outcome is the single face \\(2\\) and its probability is \\(\\dfrac{1}{6}\\). The two dice are independent, so the probability of an even prime on each is \\(\\dfrac{1}{6} \\times \\dfrac{1}{6} = \\dfrac{1}{36}\\). The distractors come from mis-reading the event: \\(0\\) would follow from wrongly believing no prime is even; \\(\\frac{1}{3}\\) is the chance of a prime (\\(2, 3, 5\\)) on one die; and \\(\\frac{1}{12}\\) mixes one die's \\(\\frac{1}{6}\\) with the other's \\(\\frac{1}{2}\\) for an even face. Hence the probability is \\(\\dfrac{1}{36}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "4ba36fcc-8d0e-4cfa-8fee-0189eb0822f1",
+    "ref": "Ex 13.2 Q18",
+    "derived_answer": "B",
+    "solution": "If \\(A\\) and \\(B\\) are independent then so are \\(A'\\) and \\(B'\\), and \\(P(A' \\cap B') = P(A')P(B') = [1 - P(A)]\\,[1 - P(B)]\\). Conversely, \\(P(A' \\cap B') = 1 - P(A) - P(B) + P(A \\cap B)\\) while \\([1-P(A)][1-P(B)] = 1 - P(A) - P(B) + P(A)P(B)\\); equating them gives \\(P(A \\cap B) = P(A)P(B)\\), which is independence. So that statement is exactly equivalent to independence. Mutual exclusiveness is the trap: if \\(A\\) and \\(B\\) are disjoint with non-zero probabilities then \\(P(A \\cap B) = 0 \\ne P(A)P(B) > 0\\), so disjoint events are dependent, never independent. Equality of the two probabilities, and their sum being \\(1\\), say nothing about \\(P(A \\cap B)\\) and so cannot imply independence. Hence the criterion is \\(P(A'B') = [1 - P(A)]\\,[1 - P(B)]\\).",
+    "matches_current": true
+  },
+  {
+    "id": "4c3a2da3-4a87-427d-90ad-313ed1f73f76",
+    "ref": "Ex 13.3 Q13",
+    "derived_answer": "A",
+    "solution": "Let \\(E_1\\) be the event that the coin actually shows a head and \\(E_2\\) that it shows a tail, so \\(P(E_1) = P(E_2) = \\dfrac{1}{2}\\). Let \\(R\\) be the event that A reports a head. A reports a head either by telling the truth about a head, \\(P(R|E_1) = \\dfrac{4}{5}\\), or by lying about a tail, \\(P(R|E_2) = 1 - \\dfrac{4}{5} = \\dfrac{1}{5}\\). By Bayes' theorem, \\(P(E_1|R) = \\dfrac{\\frac{1}{2}\\cdot\\frac{4}{5}}{\\frac{1}{2}\\cdot\\frac{4}{5} + \\frac{1}{2}\\cdot\\frac{1}{5}} = \\dfrac{\\frac{4}{10}}{\\frac{4}{10} + \\frac{1}{10}} = \\dfrac{4}{5}\\). The equal priors are what make the posterior coincide numerically with the truthfulness rate; \\(\\frac{1}{2}\\) is the prior itself and would be the answer only if the report carried no information, while \\(\\frac{1}{5}\\) is the lying rate. Hence the required probability is \\(\\dfrac{4}{5}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "50e57cca-9363-4ea3-9b9c-4d86a21613eb",
+    "ref": "Ex 13.3 Q14",
+    "derived_answer": "C",
+    "solution": "Since \\(A \\subset B\\) we have \\(A \\cap B = A\\), so \\(P(A|B) = \\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{P(A)}{P(B)}\\). As \\(0 < P(B) \\le 1\\), dividing by \\(P(B)\\) cannot decrease the value, so \\(P(A|B) \\ge P(A)\\), with equality exactly when \\(P(B) = 1\\). That equality case is what rules out the strict inequality \\(P(A|B) < P(A)\\) — it points the wrong way in every case, and is false even weakly. The ratio \\(\\frac{P(B)}{P(A)}\\) inverts the correct quotient (and would exceed \\(1\\) here, impossible for a probability), and since a correct statement is present, \"None of these\" is not available. Hence \\(P(A|B) \\ge P(A)\\).",
+    "matches_current": true
+  },
+  {
+    "id": "ffaf99f8-47e5-4443-a424-37893352e0a1",
+    "ref": "Misc Q11",
+    "derived_answer": "A",
+    "solution": "Given \\(P(A) \\ne 0\\), \\(P(B|A) = \\dfrac{P(A \\cap B)}{P(A)} = 1\\) gives \\(P(A \\cap B) = P(A)\\). Since \\(A \\cap B \\subseteq A\\), the outcomes of \\(A\\) lying outside \\(B\\) carry total probability \\(P(A) - P(A \\cap B) = 0\\), so \\(A\\) is contained in \\(B\\). The reverse containment \\(B \\subset A\\) is the near-miss: it would instead give \\(P(A \\cap B) = P(B)\\) and hence \\(P(A|B) = 1\\), which is a different statement. \\(B = \\phi\\) would force \\(P(A \\cap B) = 0\\), contradicting \\(P(A \\cap B) = P(A) \\ne 0\\), and \\(A = \\phi\\) is excluded outright by \\(P(A) \\ne 0\\). Hence \\(A \\subset B\\).",
+    "matches_current": true
+  },
+  {
+    "id": "56431421-cbcc-44fe-89dd-1a20d2623a24",
+    "ref": "Misc Q12",
+    "derived_answer": "C",
+    "solution": "From \\(P(A|B) > P(A)\\) we get \\(\\dfrac{P(A \\cap B)}{P(B)} > P(A)\\), so \\(P(A \\cap B) > P(A)\\,P(B)\\) (note \\(P(B) > 0\\), else the hypothesis is meaningless). Dividing that same inequality by \\(P(A)\\), which is positive because \\(P(A \\cap B) > P(A)P(B) \\ge 0\\) forces \\(P(A) > 0\\), gives \\(\\dfrac{P(A \\cap B)}{P(A)} > P(B)\\), that is \\(P(B|A) > P(B)\\). The relation is symmetric: positive association read one way is positive association read the other way. This rules out the reversed inequalities \\(P(B|A) < P(B)\\) and \\(P(A \\cap B) < P(A)\\cdot P(B)\\), which assert the opposite of what was just derived, and \\(P(B|A) = P(B)\\), which is independence and would force \\(P(A|B) = P(A)\\), contradicting the strict inequality given. Hence \\(P(B|A) > P(B)\\).",
+    "matches_current": true
+  },
+  {
+    "id": "7e28d5fc-c0d6-4fdd-9c0f-7c3ec94409ba",
+    "ref": "Misc Q13",
+    "derived_answer": "B",
+    "solution": "The given relation \\(P(A) + P(B) - P(A \\cap B) = P(A)\\) simplifies to \\(P(B) = P(A \\cap B)\\). (Equivalently the left side is \\(P(A \\cup B)\\), so \\(P(A \\cup B) = P(A)\\), meaning \\(B\\) adds nothing outside \\(A\\).) For this to be a genuine conditioning statement \\(P(B) > 0\\), and then \\(P(A|B) = \\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{P(B)}{P(B)} = 1\\). The reversed conditional is the near-miss: \\(P(B|A) = \\dfrac{P(A \\cap B)}{P(A)} = \\dfrac{P(B)}{P(A)}\\), which equals \\(1\\) only in the special case \\(P(A) = P(B)\\) and is not forced here. The two statements setting a conditional probability to \\(0\\) require \\(P(A \\cap B) = 0\\), which would force \\(P(B) = 0\\) and make the conditioning undefined. Hence \\(P(A|B) = 1\\).",
+    "matches_current": true
+  }
+]

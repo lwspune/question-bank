@@ -1,0 +1,1195 @@
+[
+  {
+    "ref": "13.1 Eg.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "stem": "If \\(P(A) = \\frac{7}{13}\\), \\(P(B) = \\frac{9}{13}\\) and \\(P(A \\cap B) = \\frac{4}{13}\\), evaluate \\(P(A|B)\\).",
+    "solution": "We have \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{\\frac{4}{13}}{\\frac{9}{13}} = \\frac{4}{9}\\)."
+  },
+  {
+    "ref": "13.1 Eg.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "stem": "A family has two children. What is the probability that both the children are boys given that at least one of them is a boy?",
+    "solution": "Let \\(b\\) stand for boy and \\(g\\) for girl. The sample space of the experiment is\n\n\\(S = \\{(b, b), (g, b), (b, g), (g, g)\\}\\)\n\nLet E and F denote the following events :\n\nE : 'both the children are boys'\n\nF : 'at least one of the child is a boy'\n\nThen \\(E = \\{(b,b)\\}\\) and \\(F = \\{(b,b), (g,b), (b,g)\\}\\)\n\nNow \\(E \\cap F = \\{(b,b)\\}\\)\n\nThus \\(P(F) = \\frac{3}{4}\\) and \\(P(E \\cap F) = \\frac{1}{4}\\)\n\nTherefore \\(P(E|F) = \\frac{P(E \\cap F)}{P(F)} = \\frac{\\frac{1}{4}}{\\frac{3}{4}} = \\frac{1}{3}\\)."
+  },
+  {
+    "ref": "13.1 Eg.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "stem": "Ten cards numbered 1 to 10 are placed in a box, mixed up thoroughly and then one card is drawn randomly. If it is known that the number on the drawn card is more than 3, what is the probability that it is an even number?",
+    "solution": "Let A be the event 'the number on the card drawn is even' and B be the event 'the number on the card drawn is greater than 3'. We have to find \\(P(A|B)\\).\n\nNow, the sample space of the experiment is \\(S = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}\\)\n\nThen \\(A = \\{2, 4, 6, 8, 10\\}\\), \\(B = \\{4, 5, 6, 7, 8, 9, 10\\}\\)\n\nand \\(A \\cap B = \\{4, 6, 8, 10\\}\\)\n\nAlso \\(P(A) = \\frac{5}{10}\\), \\(P(B) = \\frac{7}{10}\\) and \\(P(A \\cap B) = \\frac{4}{10}\\)\n\nThen \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{\\frac{4}{10}}{\\frac{7}{10}} = \\frac{4}{7}\\)."
+  },
+  {
+    "ref": "13.1 Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "stem": "In a school, there are 1000 students, out of which 430 are girls. It is known that out of 430, 10% of the girls study in class XII. What is the probability that a student chosen randomly studies in Class XII given that the chosen student is a girl?",
+    "solution": "Let E denote the event that a student chosen randomly studies in Class XII and F be the event that the randomly chosen student is a girl. We have to find \\(P(E|F)\\).\n\nNow \\(P(F) = \\frac{430}{1000} = 0.43\\) and \\(P(E \\cap F) = \\frac{43}{1000} = 0.043\\) (Why?)\n\nThen \\(P(E|F) = \\frac{P(E \\cap F)}{P(F)} = \\frac{0.043}{0.43} = 0.1\\)."
+  },
+  {
+    "ref": "13.1 Eg.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "stem": "A die is thrown three times. Events A and B are defined as below:\n\nA : 4 on the third throw\n\nB : 6 on the first and 5 on the second throw\n\nFind the probability of A given that B has already occurred.",
+    "solution": "The sample space has 216 outcomes.\n\nNow \\(A = \\{(1,1,4), (1,2,4), \\ldots, (1,6,4), (2,1,4), (2,2,4), \\ldots, (2,6,4), (3,1,4), (3,2,4), \\ldots, (3,6,4), (4,1,4), (4,2,4), \\ldots, (4,6,4), (5,1,4), (5,2,4), \\ldots, (5,6,4), (6,1,4), (6,2,4), \\ldots, (6,6,4)\\}\\)\n\n\\(B = \\{(6,5,1), (6,5,2), (6,5,3), (6,5,4), (6,5,5), (6,5,6)\\}\\)\n\nand \\(A \\cap B = \\{(6,5,4)\\}\\).\n\nNow \\(P(B) = \\frac{6}{216}\\) and \\(P(A \\cap B) = \\frac{1}{216}\\)\n\nThen \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{\\frac{1}{216}}{\\frac{6}{216}} = \\frac{1}{6}\\)."
+  },
+  {
+    "ref": "13.1 Eg.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "stem": "A die is thrown twice and the sum of the numbers appearing is observed to be 6. What is the conditional probability that the number 4 has appeared at least once?",
+    "solution": "Let E be the event that 'number 4 appears at least once' and F be the event that 'the sum of the numbers appearing is 6'.\n\nThen, \\(E = \\{(4,1), (4,2), (4,3), (4,4), (4,5), (4,6), (1,4), (2,4), (3,4), (5,4), (6,4)\\}\\)\n\nand \\(F = \\{(1,5), (2,4), (3,3), (4,2), (5,1)\\}\\)\n\nWe have \\(P(E) = \\frac{11}{36}\\) and \\(P(F) = \\frac{5}{36}\\)\n\nAlso \\(E \\cap F = \\{(2,4), (4,2)\\}\\)\n\nTherefore \\(P(E \\cap F) = \\frac{2}{36}\\)\n\nHence, the required probability \\(P(E|F) = \\frac{P(E \\cap F)}{P(F)} = \\frac{\\frac{2}{36}}{\\frac{5}{36}} = \\frac{2}{5}\\)."
+  },
+  {
+    "ref": "13.1 Eg.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "HARD",
+    "stem": "Consider the experiment of tossing a coin. If the coin shows head, toss it again but if it shows tail, then throw a die. Find the conditional probability of the event that 'the die shows a number greater than 4' given that 'there is at least one tail'.",
+    "solution": "The outcomes of the experiment can be represented in a diagrammatic manner called the 'tree diagram'.\n\nThe sample space of the experiment may be described as\n\n\\(S = \\{(H,H), (H,T), (T,1), (T,2), (T,3), (T,4), (T,5), (T,6)\\}\\)\n\nwhere \\((H, H)\\) denotes that both the tosses result into head and \\((T, i)\\) denote the first toss result into a tail and the number \\(i\\) appeared on the die for \\(i = 1, 2, 3, 4, 5, 6\\).\n\nThus, the probabilities assigned to the 8 elementary events \\((H, H), (H, T), (T, 1), (T, 2), (T, 3), (T, 4), (T, 5), (T, 6)\\) are \\(\\frac{1}{4}, \\frac{1}{4}, \\frac{1}{12}, \\frac{1}{12}, \\frac{1}{12}, \\frac{1}{12}, \\frac{1}{12}, \\frac{1}{12}\\) respectively.\n\nLet F be the event that 'there is at least one tail' and E be the event 'the die shows a number greater than 4'. Then\n\n\\(F = \\{(H,T), (T,1), (T,2), (T,3), (T,4), (T,5), (T,6)\\}\\)\n\n\\(E = \\{(T,5), (T,6)\\}\\) and \\(E \\cap F = \\{(T,5), (T,6)\\}\\)\n\nNow \\(P(F) = P(\\{(H,T)\\}) + P(\\{(T,1)\\}) + P(\\{(T,2)\\}) + P(\\{(T,3)\\}) + P(\\{(T,4)\\}) + P(\\{(T,5)\\}) + P(\\{(T,6)\\})\\)\n\n\\(= \\frac{1}{4} + \\frac{1}{12} + \\frac{1}{12} + \\frac{1}{12} + \\frac{1}{12} + \\frac{1}{12} + \\frac{1}{12} = \\frac{3}{4}\\)\n\nand \\(P(E \\cap F) = P(\\{(T,5)\\}) + P(\\{(T,6)\\}) = \\frac{1}{12} + \\frac{1}{12} = \\frac{1}{6}\\)\n\nHence \\(P(E|F) = \\frac{P(E \\cap F)}{P(F)} = \\frac{\\frac{1}{6}}{\\frac{3}{4}} = \\frac{2}{9}\\).",
+    "_note": "The book's printed solution is accompanied by two tree diagrams (Fig 13.1 and Fig 13.2) showing the branching and the assigned branch probabilities. The transcribed solution states the sample space and the elementary-event probabilities in text, so it is complete without the figures."
+  },
+  {
+    "ref": "Ex 13.1 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "stem": "Given that E and F are events such that \\(P(E) = 0.6\\), \\(P(F) = 0.3\\) and \\(P(E \\cap F) = 0.2\\), find \\(P(E|F)\\) and \\(P(F|E)\\)."
+  },
+  {
+    "ref": "Ex 13.1 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "stem": "Compute \\(P(A|B)\\), if \\(P(B) = 0.5\\) and \\(P(A \\cap B) = 0.32\\)."
+  },
+  {
+    "ref": "Ex 13.1 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "context": "If \\(P(A) = 0.8\\), \\(P(B) = 0.5\\) and \\(P(B|A) = 0.4\\), find",
+    "setLabel": "Ex 13.1 Q3",
+    "stem": "\\(P(A \\cap B)\\)"
+  },
+  {
+    "ref": "Ex 13.1 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "context": "If \\(P(A) = 0.8\\), \\(P(B) = 0.5\\) and \\(P(B|A) = 0.4\\), find",
+    "setLabel": "Ex 13.1 Q3",
+    "stem": "\\(P(A|B)\\)"
+  },
+  {
+    "ref": "Ex 13.1 Q3(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "context": "If \\(P(A) = 0.8\\), \\(P(B) = 0.5\\) and \\(P(B|A) = 0.4\\), find",
+    "setLabel": "Ex 13.1 Q3",
+    "stem": "\\(P(A \\cup B)\\)"
+  },
+  {
+    "ref": "Ex 13.1 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate \\(P(A \\cup B)\\), if \\(2P(A) = P(B) = \\frac{5}{13}\\) and \\(P(A|B) = \\frac{2}{5}\\)."
+  },
+  {
+    "ref": "Ex 13.1 Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "context": "If \\(P(A) = \\frac{6}{11}\\), \\(P(B) = \\frac{5}{11}\\) and \\(P(A \\cup B) = \\frac{7}{11}\\), find",
+    "setLabel": "Ex 13.1 Q5",
+    "stem": "\\(P(A \\cap B)\\)"
+  },
+  {
+    "ref": "Ex 13.1 Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "context": "If \\(P(A) = \\frac{6}{11}\\), \\(P(B) = \\frac{5}{11}\\) and \\(P(A \\cup B) = \\frac{7}{11}\\), find",
+    "setLabel": "Ex 13.1 Q5",
+    "stem": "\\(P(A|B)\\)"
+  },
+  {
+    "ref": "Ex 13.1 Q5(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "context": "If \\(P(A) = \\frac{6}{11}\\), \\(P(B) = \\frac{5}{11}\\) and \\(P(A \\cup B) = \\frac{7}{11}\\), find",
+    "setLabel": "Ex 13.1 Q5",
+    "stem": "\\(P(B|A)\\)"
+  },
+  {
+    "ref": "Ex 13.1 Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "context": "Determine \\(P(E|F)\\). A coin is tossed three times, where",
+    "setLabel": "Ex 13.1 Q6",
+    "stem": "E : head on third toss, F : heads on first two tosses"
+  },
+  {
+    "ref": "Ex 13.1 Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "context": "Determine \\(P(E|F)\\). A coin is tossed three times, where",
+    "setLabel": "Ex 13.1 Q6",
+    "stem": "E : at least two heads, F : at most two heads"
+  },
+  {
+    "ref": "Ex 13.1 Q6(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "context": "Determine \\(P(E|F)\\). A coin is tossed three times, where",
+    "setLabel": "Ex 13.1 Q6",
+    "stem": "E : at most two tails, F : at least one tail"
+  },
+  {
+    "ref": "Ex 13.1 Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "context": "Determine \\(P(E|F)\\). Two coins are tossed once, where",
+    "setLabel": "Ex 13.1 Q7",
+    "stem": "E : tail appears on one coin, F : one coin shows head"
+  },
+  {
+    "ref": "Ex 13.1 Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "context": "Determine \\(P(E|F)\\). Two coins are tossed once, where",
+    "setLabel": "Ex 13.1 Q7",
+    "stem": "E : no tail appears, F : no head appears"
+  },
+  {
+    "ref": "Ex 13.1 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "stem": "Determine \\(P(E|F)\\). A die is thrown three times,\n\nE : 4 appears on the third toss, F : 6 and 5 appears respectively on first two tosses"
+  },
+  {
+    "ref": "Ex 13.1 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "stem": "Determine \\(P(E|F)\\). Mother, father and son line up at random for a family picture\n\nE : son on one end, F : father in middle"
+  },
+  {
+    "ref": "Ex 13.1 Q10(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "context": "A black and a red dice are rolled.",
+    "setLabel": "Ex 13.1 Q10",
+    "stem": "Find the conditional probability of obtaining a sum greater than 9, given that the black die resulted in a 5."
+  },
+  {
+    "ref": "Ex 13.1 Q10(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "context": "A black and a red dice are rolled.",
+    "setLabel": "Ex 13.1 Q10",
+    "stem": "Find the conditional probability of obtaining the sum 8, given that the red die resulted in a number less than 4."
+  },
+  {
+    "ref": "Ex 13.1 Q11(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "context": "A fair die is rolled. Consider events \\(E = \\{1,3,5\\}\\), \\(F = \\{2,3\\}\\) and \\(G = \\{2,3,4,5\\}\\). Find",
+    "setLabel": "Ex 13.1 Q11",
+    "stem": "\\(P(E|F)\\) and \\(P(F|E)\\)"
+  },
+  {
+    "ref": "Ex 13.1 Q11(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "context": "A fair die is rolled. Consider events \\(E = \\{1,3,5\\}\\), \\(F = \\{2,3\\}\\) and \\(G = \\{2,3,4,5\\}\\). Find",
+    "setLabel": "Ex 13.1 Q11",
+    "stem": "\\(P(E|G)\\) and \\(P(G|E)\\)"
+  },
+  {
+    "ref": "Ex 13.1 Q11(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "HARD",
+    "context": "A fair die is rolled. Consider events \\(E = \\{1,3,5\\}\\), \\(F = \\{2,3\\}\\) and \\(G = \\{2,3,4,5\\}\\). Find",
+    "setLabel": "Ex 13.1 Q11",
+    "stem": "\\(P((E \\cup F)|G)\\) and \\(P((E \\cap F)|G)\\)"
+  },
+  {
+    "ref": "Ex 13.1 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "stem": "Assume that each born child is equally likely to be a boy or a girl. If a family has two children, what is the conditional probability that both are girls given that (i) the youngest is a girl, (ii) at least one is a girl?"
+  },
+  {
+    "ref": "Ex 13.1 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "stem": "An instructor has a question bank consisting of 300 easy True / False questions, 200 difficult True / False questions, 500 easy multiple choice questions and 400 difficult multiple choice questions. If a question is selected at random from the question bank, what is the probability that it will be an easy question given that it is a multiple choice question?"
+  },
+  {
+    "ref": "Ex 13.1 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "stem": "Given that the two numbers appearing on throwing two dice are different. Find the probability of the event 'the sum of numbers on the dice is 4'."
+  },
+  {
+    "ref": "Ex 13.1 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "HARD",
+    "stem": "Consider the experiment of throwing a die, if a multiple of 3 comes up, throw the die again and if any other number comes, toss a coin. Find the conditional probability of the event 'the coin shows a tail', given that 'at least one die shows a 3'."
+  },
+  {
+    "ref": "Ex 13.1 Q16",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "stem": "If \\(P(A) = \\frac{1}{2}\\), \\(P(B) = 0\\), then \\(P(A|B)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "not defined"
+      },
+      {
+        "label": "D",
+        "text": "1"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex 13.1 Q17",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "stem": "If A and B are events such that \\(P(A|B) = P(B|A)\\), then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(A \\subset B\\) but \\(A \\ne B\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(A = B\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(A \\cap B = \\phi\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(P(A) = P(B)\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "13.2 Eg.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Multiplication Theorem on Probability",
+    "difficulty": "MODERATE",
+    "stem": "An urn contains 10 black and 5 white balls. Two balls are drawn from the urn one after the other without replacement. What is the probability that both drawn balls are black?",
+    "solution": "Let E and F denote respectively the events that first and second ball drawn are black. We have to find \\(P(E \\cap F)\\) or \\(P(EF)\\).\n\nNow \\(P(E) = P(\\text{black ball in first draw}) = \\frac{10}{15}\\)\n\nAlso given that the first ball drawn is black, i.e., event E has occurred, now there are 9 black balls and five white balls left in the urn. Therefore, the probability that the second ball drawn is black, given that the ball in the first draw is black, is nothing but the conditional probability of F given that E has occurred.\n\ni.e. \\(P(F|E) = \\frac{9}{14}\\)\n\nBy multiplication rule of probability, we have\n\n\\(P(E \\cap F) = P(E)\\,P(F|E) = \\frac{10}{15} \\times \\frac{9}{14} = \\frac{3}{7}\\)"
+  },
+  {
+    "ref": "13.2 Eg.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Multiplication Theorem on Probability",
+    "difficulty": "MODERATE",
+    "stem": "Three cards are drawn successively, without replacement from a pack of 52 well shuffled cards. What is the probability that first two cards are kings and the third card drawn is an ace?",
+    "solution": "Let K denote the event that the card drawn is king and A be the event that the card drawn is an ace. Clearly, we have to find \\(P(KKA)\\).\n\nNow \\(P(K) = \\frac{4}{52}\\)\n\nAlso, \\(P(K|K)\\) is the probability of second king with the condition that one king has already been drawn. Now there are three kings in \\((52 - 1) = 51\\) cards.\n\nTherefore \\(P(K|K) = \\frac{3}{51}\\)\n\nLastly, \\(P(A|KK)\\) is the probability of third drawn card to be an ace, with the condition that two kings have already been drawn. Now there are four aces in left 50 cards.\n\nTherefore \\(P(A|KK) = \\frac{4}{50}\\)\n\nBy multiplication law of probability, we have\n\n\\(P(KKA) = P(K)\\,P(K|K)\\,P(A|KK) = \\frac{4}{52} \\times \\frac{3}{51} \\times \\frac{4}{50} = \\frac{2}{5525}\\)"
+  },
+  {
+    "ref": "13.2 Eg.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "stem": "A die is thrown. If E is the event 'the number appearing is a multiple of 3' and F be the event 'the number appearing is even' then find whether E and F are independent ?",
+    "solution": "We know that the sample space is \\(S = \\{1, 2, 3, 4, 5, 6\\}\\)\n\nNow \\(E = \\{3, 6\\}\\), \\(F = \\{2, 4, 6\\}\\) and \\(E \\cap F = \\{6\\}\\)\n\nThen \\(P(E) = \\frac{2}{6} = \\frac{1}{3}\\), \\(P(F) = \\frac{3}{6} = \\frac{1}{2}\\) and \\(P(E \\cap F) = \\frac{1}{6}\\)\n\nClearly \\(P(E \\cap F) = P(E)\\,P(F)\\)\n\nHence E and F are independent events."
+  },
+  {
+    "ref": "13.2 Eg.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "stem": "An unbiased die is thrown twice. Let the event A be 'odd number on the first throw' and B the event 'odd number on the second throw'. Check the independence of the events A and B.",
+    "solution": "If all the 36 elementary events of the experiment are considered to be equally likely, we have\n\n\\(P(A) = \\frac{18}{36} = \\frac{1}{2}\\) and \\(P(B) = \\frac{18}{36} = \\frac{1}{2}\\)\n\nAlso \\(P(A \\cap B) = P(\\text{odd number on both throws}) = \\frac{9}{36} = \\frac{1}{4}\\)\n\nNow \\(P(A)\\,P(B) = \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)\n\nClearly \\(P(A \\cap B) = P(A) \\times P(B)\\)\n\nThus, A and B are independent events."
+  },
+  {
+    "ref": "13.2 Eg.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "stem": "Three coins are tossed simultaneously. Consider the event E 'three heads or three tails', F 'at least two heads' and G 'at most two heads'. Of the pairs (E,F), (E,G) and (F,G), which are independent? which are dependent?",
+    "solution": "The sample space of the experiment is given by\n\n\\(S = \\{HHH, HHT, HTH, THH, HTT, THT, TTH, TTT\\}\\)\n\nClearly \\(E = \\{HHH, TTT\\}\\), \\(F = \\{HHH, HHT, HTH, THH\\}\\)\n\nand \\(G = \\{HHT, HTH, THH, HTT, THT, TTH, TTT\\}\\)\n\nAlso \\(E \\cap F = \\{HHH\\}\\), \\(E \\cap G = \\{TTT\\}\\), \\(F \\cap G = \\{HHT, HTH, THH\\}\\)\n\nTherefore \\(P(E) = \\frac{2}{8} = \\frac{1}{4}\\), \\(P(F) = \\frac{4}{8} = \\frac{1}{2}\\), \\(P(G) = \\frac{7}{8}\\)\n\nand \\(P(E \\cap F) = \\frac{1}{8}\\), \\(P(E \\cap G) = \\frac{1}{8}\\), \\(P(F \\cap G) = \\frac{3}{8}\\)\n\nAlso \\(P(E)\\,P(F) = \\frac{1}{4} \\times \\frac{1}{2} = \\frac{1}{8}\\), \\(P(E) \\cdot P(G) = \\frac{1}{4} \\times \\frac{7}{8} = \\frac{7}{32}\\)\n\nand \\(P(F)\\,P(G) = \\frac{1}{2} \\times \\frac{7}{8} = \\frac{7}{16}\\)\n\nThus \\(P(E \\cap F) = P(E)\\,P(F)\\)\n\n\\(P(E \\cap G) \\ne P(E)\\,P(G)\\)\n\nand \\(P(F \\cap G) \\ne P(F)\\,P(G)\\)\n\nHence, the events (E and F) are independent, and the events (E and G) and (F and G) are dependent."
+  },
+  {
+    "ref": "13.2 Eg.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "stem": "Prove that if E and F are independent events, then so are the events E and \\(F'\\).",
+    "solution": "Since E and F are independent, we have\n\n\\(P(E \\cap F) = P(E)\\,P(F)\\)  ....(1)\n\nFrom the Venn diagram in Fig 13.3, it is clear that \\(E \\cap F\\) and \\(E \\cap F'\\) are mutually exclusive events and also \\(E = (E \\cap F) \\cup (E \\cap F')\\).\n\nTherefore \\(P(E) = P(E \\cap F) + P(E \\cap F')\\)\n\nor \\(P(E \\cap F') = P(E) - P(E \\cap F)\\)\n\n\\(= P(E) - P(E)\\,P(F)\\)  (by (1))\n\n\\(= P(E)\\,(1 - P(F))\\)\n\n\\(= P(E)\\,P(F')\\)\n\nHence, E and \\(F'\\) are independent.",
+    "_note": "The book's solution refers to a Venn diagram (Fig 13.3) printed alongside on page 420. The figure is not reproduced here; the algebraic argument is complete without it."
+  },
+  {
+    "ref": "13.2 Eg.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "stem": "If A and B are two independent events, then the probability of occurrence of at least one of A and B is given by \\(1 - P(A')\\,P(B')\\).",
+    "solution": "We have\n\n\\(P(\\text{at least one of A and B}) = P(A \\cup B)\\)\n\n\\(= P(A) + P(B) - P(A \\cap B)\\)\n\n\\(= P(A) + P(B) - P(A)\\,P(B)\\)\n\n\\(= P(A) + P(B)\\,[1 - P(A)]\\)\n\n\\(= P(A) + P(B)\\,P(A')\\)\n\n\\(= 1 - P(A') + P(B)\\,P(A')\\)\n\n\\(= 1 - P(A')\\,[1 - P(B)]\\)\n\n\\(= 1 - P(A')\\,P(B')\\)"
+  },
+  {
+    "ref": "Ex 13.2 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "stem": "If \\(P(A) = \\frac{3}{5}\\) and \\(P(B) = \\frac{1}{5}\\), find \\(P(A \\cap B)\\) if A and B are independent events."
+  },
+  {
+    "ref": "Ex 13.2 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication Theorem on Probability",
+    "difficulty": "EASY",
+    "stem": "Two cards are drawn at random and without replacement from a pack of 52 playing cards. Find the probability that both the cards are black."
+  },
+  {
+    "ref": "Ex 13.2 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Multiplication Theorem on Probability",
+    "difficulty": "MODERATE",
+    "stem": "A box of oranges is inspected by examining three randomly selected oranges drawn without replacement. If all the three oranges are good, the box is approved for sale, otherwise, it is rejected. Find the probability that a box containing 15 oranges out of which 12 are good and 3 are bad ones will be approved for sale."
+  },
+  {
+    "ref": "Ex 13.2 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "stem": "A fair coin and an unbiased die are tossed. Let A be the event 'head appears on the coin' and B be the event '3 on the die'. Check whether A and B are independent events or not."
+  },
+  {
+    "ref": "Ex 13.2 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "stem": "A die marked 1, 2, 3 in red and 4, 5, 6 in green is tossed. Let A be the event, 'the number is even,' and B be the event, 'the number is red'. Are A and B independent?"
+  },
+  {
+    "ref": "Ex 13.2 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "stem": "Let E and F be events with \\(P(E) = \\frac{3}{5}\\), \\(P(F) = \\frac{3}{10}\\) and \\(P(E \\cap F) = \\frac{1}{5}\\). Are E and F independent?"
+  },
+  {
+    "ref": "Ex 13.2 Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "Given that the events A and B are such that \\(P(A) = \\frac{1}{2}\\), \\(P(A \\cup B) = \\frac{3}{5}\\) and \\(P(B) = p\\). Find \\(p\\) if they are",
+    "setLabel": "Ex 13.2 Q7",
+    "stem": "mutually exclusive"
+  },
+  {
+    "ref": "Ex 13.2 Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "Given that the events A and B are such that \\(P(A) = \\frac{1}{2}\\), \\(P(A \\cup B) = \\frac{3}{5}\\) and \\(P(B) = p\\). Find \\(p\\) if they are",
+    "setLabel": "Ex 13.2 Q7",
+    "stem": "independent"
+  },
+  {
+    "ref": "Ex 13.2 Q8(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "Let A and B be independent events with \\(P(A) = 0.3\\) and \\(P(B) = 0.4\\). Find",
+    "setLabel": "Ex 13.2 Q8",
+    "stem": "\\(P(A \\cap B)\\)"
+  },
+  {
+    "ref": "Ex 13.2 Q8(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "Let A and B be independent events with \\(P(A) = 0.3\\) and \\(P(B) = 0.4\\). Find",
+    "setLabel": "Ex 13.2 Q8",
+    "stem": "\\(P(A \\cup B)\\)"
+  },
+  {
+    "ref": "Ex 13.2 Q8(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "Let A and B be independent events with \\(P(A) = 0.3\\) and \\(P(B) = 0.4\\). Find",
+    "setLabel": "Ex 13.2 Q8",
+    "stem": "\\(P(A|B)\\)"
+  },
+  {
+    "ref": "Ex 13.2 Q8(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "Let A and B be independent events with \\(P(A) = 0.3\\) and \\(P(B) = 0.4\\). Find",
+    "setLabel": "Ex 13.2 Q8",
+    "stem": "\\(P(B|A)\\)"
+  },
+  {
+    "ref": "Ex 13.2 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "stem": "If A and B are two events such that \\(P(A) = \\frac{1}{4}\\), \\(P(B) = \\frac{1}{2}\\) and \\(P(A \\cap B) = \\frac{1}{8}\\), find \\(P(\\text{not A and not B})\\)."
+  },
+  {
+    "ref": "Ex 13.2 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "stem": "Events A and B are such that \\(P(A) = \\frac{1}{2}\\), \\(P(B) = \\frac{7}{12}\\) and \\(P(\\text{not A or not B}) = \\frac{1}{4}\\). State whether A and B are independent ?"
+  },
+  {
+    "ref": "Ex 13.2 Q11(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "Given two independent events A and B such that \\(P(A) = 0.3\\), \\(P(B) = 0.6\\). Find",
+    "setLabel": "Ex 13.2 Q11",
+    "stem": "\\(P(\\text{A and B})\\)"
+  },
+  {
+    "ref": "Ex 13.2 Q11(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "Given two independent events A and B such that \\(P(A) = 0.3\\), \\(P(B) = 0.6\\). Find",
+    "setLabel": "Ex 13.2 Q11",
+    "stem": "\\(P(\\text{A and not B})\\)"
+  },
+  {
+    "ref": "Ex 13.2 Q11(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "Given two independent events A and B such that \\(P(A) = 0.3\\), \\(P(B) = 0.6\\). Find",
+    "setLabel": "Ex 13.2 Q11",
+    "stem": "\\(P(\\text{A or B})\\)"
+  },
+  {
+    "ref": "Ex 13.2 Q11(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "Given two independent events A and B such that \\(P(A) = 0.3\\), \\(P(B) = 0.6\\). Find",
+    "setLabel": "Ex 13.2 Q11",
+    "stem": "\\(P(\\text{neither A nor B})\\)"
+  },
+  {
+    "ref": "Ex 13.2 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "stem": "A die is tossed thrice. Find the probability of getting an odd number at least once."
+  },
+  {
+    "ref": "Ex 13.2 Q13(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "Two balls are drawn at random with replacement from a box containing 10 black and 8 red balls. Find the probability that",
+    "setLabel": "Ex 13.2 Q13",
+    "stem": "both balls are red."
+  },
+  {
+    "ref": "Ex 13.2 Q13(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "Two balls are drawn at random with replacement from a box containing 10 black and 8 red balls. Find the probability that",
+    "setLabel": "Ex 13.2 Q13",
+    "stem": "first ball is black and second is red."
+  },
+  {
+    "ref": "Ex 13.2 Q13(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "Two balls are drawn at random with replacement from a box containing 10 black and 8 red balls. Find the probability that",
+    "setLabel": "Ex 13.2 Q13",
+    "stem": "one of them is black and other is red."
+  },
+  {
+    "ref": "Ex 13.2 Q14(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "Probability of solving specific problem independently by A and B are \\(\\frac{1}{2}\\) and \\(\\frac{1}{3}\\) respectively. If both try to solve the problem independently, find the probability that",
+    "setLabel": "Ex 13.2 Q14",
+    "stem": "the problem is solved"
+  },
+  {
+    "ref": "Ex 13.2 Q14(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "Probability of solving specific problem independently by A and B are \\(\\frac{1}{2}\\) and \\(\\frac{1}{3}\\) respectively. If both try to solve the problem independently, find the probability that",
+    "setLabel": "Ex 13.2 Q14",
+    "stem": "exactly one of them solves the problem."
+  },
+  {
+    "ref": "Ex 13.2 Q15(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "One card is drawn at random from a well shuffled deck of 52 cards. In which of the following cases are the events E and F independent ?",
+    "setLabel": "Ex 13.2 Q15",
+    "stem": "E : 'the card drawn is a spade'\nF : 'the card drawn is an ace'"
+  },
+  {
+    "ref": "Ex 13.2 Q15(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "One card is drawn at random from a well shuffled deck of 52 cards. In which of the following cases are the events E and F independent ?",
+    "setLabel": "Ex 13.2 Q15",
+    "stem": "E : 'the card drawn is black'\nF : 'the card drawn is a king'"
+  },
+  {
+    "ref": "Ex 13.2 Q15(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "One card is drawn at random from a well shuffled deck of 52 cards. In which of the following cases are the events E and F independent ?",
+    "setLabel": "Ex 13.2 Q15",
+    "stem": "E : 'the card drawn is a king or queen'\nF : 'the card drawn is a queen or jack'."
+  },
+  {
+    "ref": "Ex 13.2 Q16(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "context": "In a hostel, 60% of the students read Hindi newspaper, 40% read English newspaper and 20% read both Hindi and English newspapers. A student is selected at random.",
+    "setLabel": "Ex 13.2 Q16",
+    "stem": "Find the probability that she reads neither Hindi nor English newspapers.",
+    "_note": "The book labels this question's sub-items (a), (b), (c) — not (i), (ii), (iii) — so the refs follow the printed labels."
+  },
+  {
+    "ref": "Ex 13.2 Q16(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "context": "In a hostel, 60% of the students read Hindi newspaper, 40% read English newspaper and 20% read both Hindi and English newspapers. A student is selected at random.",
+    "setLabel": "Ex 13.2 Q16",
+    "stem": "If she reads Hindi newspaper, find the probability that she reads English newspaper."
+  },
+  {
+    "ref": "Ex 13.2 Q16(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "context": "In a hostel, 60% of the students read Hindi newspaper, 40% read English newspaper and 20% read both Hindi and English newspapers. A student is selected at random.",
+    "setLabel": "Ex 13.2 Q16",
+    "stem": "If she reads English newspaper, find the probability that she reads Hindi newspaper."
+  },
+  {
+    "ref": "Ex 13.2 Q17",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "stem": "The probability of obtaining an even prime number on each die, when a pair of dice is rolled is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{12}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{36}\\)"
+      }
+    ],
+    "answer": "D",
+    "_note": "This chapter DOES print the MCQ instruction: 'Choose the correct answer in Exercises 17 and 18.' sits above Q17 on page 423. Derivation: the only even prime is 2, so the required probability is \\(\\frac{1}{6} \\times \\frac{1}{6} = \\frac{1}{36}\\)."
+  },
+  {
+    "ref": "Ex 13.2 Q18",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "stem": "Two events A and B will be independent, if",
+    "options": [
+      {
+        "label": "A",
+        "text": "A and B are mutually exclusive"
+      },
+      {
+        "label": "B",
+        "text": "\\(P(A'B') = [1 - P(A)]\\,[1 - P(B)]\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(P(A) = P(B)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(P(A) + P(B) = 1\\)"
+      }
+    ],
+    "answer": "B",
+    "_note": "Derivation: A and B independent \\(\\Leftrightarrow\\) \\(A'\\) and \\(B'\\) independent \\(\\Leftrightarrow\\) \\(P(A' \\cap B') = P(A')\\,P(B') = [1 - P(A)][1 - P(B)]\\), which is option B. Option A is false (mutually exclusive events with non-zero probabilities cannot be independent), and options C and D impose no independence condition at all."
+  },
+  {
+    "ref": "13.3 Eg.15",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Theorem of Total Probability",
+    "difficulty": "MODERATE",
+    "stem": "A person has undertaken a construction job. The probabilities are 0.65 that there will be strike, 0.80 that the construction job will be completed on time if there is no strike, and 0.32 that the construction job will be completed on time if there is a strike. Determine the probability that the construction job will be completed on time.",
+    "solution": "Let A be the event that the construction job will be completed on time, and B be the event that there will be a strike. We have to find \\(P(A)\\).\n\nWe have\n\\(P(B) = 0.65\\), \\(P(\\text{no strike}) = P(B') = 1 - P(B) = 1 - 0.65 = 0.35\\)\n\n\\(P(A|B) = 0.32\\), \\(P(A|B') = 0.80\\)\n\nSince events B and \\(B'\\) form a partition of the sample space S, therefore, by theorem on total probability, we have\n\n\\(P(A) = P(B)\\,P(A|B) + P(B')\\,P(A|B')\\)\n\n\\(= 0.65 \\times 0.32 + 0.35 \\times 0.8\\)\n\n\\(= 0.208 + 0.28 = 0.488\\)\n\nThus, the probability that the construction job will be completed in time is 0.488."
+  },
+  {
+    "ref": "13.3 Eg.16",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Bag I contains 3 red and 4 black balls while another Bag II contains 5 red and 6 black balls. One ball is drawn at random from one of the bags and it is found to be red. Find the probability that it was drawn from Bag II.",
+    "solution": "Let \\(E_1\\) be the event of choosing the bag I, \\(E_2\\) the event of choosing the bag II and A be the event of drawing a red ball.\n\nThen \\(P(E_1) = P(E_2) = \\frac{1}{2}\\)\n\nAlso \\(P(A|E_1) = P(\\text{drawing a red ball from Bag I}) = \\frac{3}{7}\\)\n\nand \\(P(A|E_2) = P(\\text{drawing a red ball from Bag II}) = \\frac{5}{11}\\)\n\nNow, the probability of drawing a ball from Bag II, being given that it is red, is \\(P(E_2|A)\\).\n\nBy using Bayes' theorem, we have\n\n\\(P(E_2|A) = \\frac{P(E_2)\\,P(A|E_2)}{P(E_1)\\,P(A|E_1) + P(E_2)\\,P(A|E_2)} = \\frac{\\frac{1}{2} \\times \\frac{5}{11}}{\\frac{1}{2} \\times \\frac{3}{7} + \\frac{1}{2} \\times \\frac{5}{11}} = \\frac{35}{68}\\)"
+  },
+  {
+    "ref": "13.3 Eg.17",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Given three identical boxes I, II and III, each containing two coins. In box I, both coins are gold coins, in box II, both are silver coins and in the box III, there is one gold and one silver coin. A person chooses a box at random and takes out a coin. If the coin is of gold, what is the probability that the other coin in the box is also of gold?",
+    "solution": "Let \\(E_1\\), \\(E_2\\) and \\(E_3\\) be the events that boxes I, II and III are chosen, respectively.\n\nThen \\(P(E_1) = P(E_2) = P(E_3) = \\frac{1}{3}\\)\n\nAlso, let A be the event that 'the coin drawn is of gold'.\n\nThen \\(P(A|E_1) = P(\\text{a gold coin from bag I}) = \\frac{2}{2} = 1\\)\n\n\\(P(A|E_2) = P(\\text{a gold coin from bag II}) = 0\\)\n\n\\(P(A|E_3) = P(\\text{a gold coin from bag III}) = \\frac{1}{2}\\)\n\nNow, the probability that the other coin in the box is of gold = the probability that gold coin is drawn from the box I = \\(P(E_1|A)\\).\n\nBy Bayes' theorem, we know that\n\n\\(P(E_1|A) = \\frac{P(E_1)\\,P(A|E_1)}{P(E_1)\\,P(A|E_1) + P(E_2)\\,P(A|E_2) + P(E_3)\\,P(A|E_3)}\\)\n\n\\(= \\frac{\\frac{1}{3} \\times 1}{\\frac{1}{3} \\times 1 + \\frac{1}{3} \\times 0 + \\frac{1}{3} \\times \\frac{1}{2}} = \\frac{2}{3}\\)"
+  },
+  {
+    "ref": "13.3 Eg.18",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Suppose that the reliability of a HIV test is specified as follows: Of people having HIV, 90% of the test detect the disease but 10% go undetected. Of people free of HIV, 99% of the test are judged HIV\\(-\\)ive but 1% are diagnosed as showing HIV+ive. From a large population of which only 0.1% have HIV, one person is selected at random, given the HIV test, and the pathologist reports him/her as HIV+ive. What is the probability that the person actually has HIV?",
+    "solution": "Let E denote the event that the person selected is actually having HIV and A the event that the person's HIV test is diagnosed as +ive. We need to find \\(P(E|A)\\).\n\nAlso \\(E'\\) denotes the event that the person selected is actually not having HIV.\n\nClearly, \\(\\{E, E'\\}\\) is a partition of the sample space of all people in the population. We are given that\n\n\\(P(E) = 0.1\\% = \\frac{0.1}{100} = 0.001\\)\n\n\\(P(E') = 1 - P(E) = 0.999\\)\n\n\\(P(A|E) = P(\\text{Person tested as HIV+ive given that he/she is actually having HIV}) = 90\\% = \\frac{90}{100} = 0.9\\)\n\nand \\(P(A|E') = P(\\text{Person tested as HIV+ive given that he/she is actually not having HIV}) = 1\\% = \\frac{1}{100} = 0.01\\)\n\nNow, by Bayes' theorem\n\n\\(P(E|A) = \\frac{P(E)\\,P(A|E)}{P(E)\\,P(A|E) + P(E')\\,P(A|E')} = \\frac{0.001 \\times 0.9}{0.001 \\times 0.9 + 0.999 \\times 0.01} = \\frac{90}{1089} = 0.083\\) approx.\n\nThus, the probability that a person selected at random is actually having HIV given that he/she is tested HIV+ive is 0.083."
+  },
+  {
+    "ref": "13.3 Eg.19",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "In a factory which manufactures bolts, machines A, B and C manufacture respectively 25%, 35% and 40% of the bolts. Of their outputs, 5, 4 and 2 percent are respectively defective bolts. A bolt is drawn at random from the product and is found to be defective. What is the probability that it is manufactured by the machine B?",
+    "solution": "Let events \\(B_1\\), \\(B_2\\), \\(B_3\\) be the following:\n\n\\(B_1\\) : the bolt is manufactured by machine A\n\n\\(B_2\\) : the bolt is manufactured by machine B\n\n\\(B_3\\) : the bolt is manufactured by machine C\n\nClearly, \\(B_1\\), \\(B_2\\), \\(B_3\\) are mutually exclusive and exhaustive events and hence, they represent a partition of the sample space.\n\nLet the event E be 'the bolt is defective'. The event E occurs with \\(B_1\\) or with \\(B_2\\) or with \\(B_3\\). Given that,\n\n\\(P(B_1) = 25\\% = 0.25\\), \\(P(B_2) = 0.35\\) and \\(P(B_3) = 0.40\\)\n\nAgain \\(P(E|B_1) = \\) Probability that the bolt drawn is defective given that it is manufactured by machine A \\(= 5\\% = 0.05\\)\n\nSimilarly, \\(P(E|B_2) = 0.04\\), \\(P(E|B_3) = 0.02\\).\n\nHence, by Bayes' Theorem, we have\n\n\\(P(B_2|E) = \\frac{P(B_2)\\,P(E|B_2)}{P(B_1)\\,P(E|B_1) + P(B_2)\\,P(E|B_2) + P(B_3)\\,P(E|B_3)}\\)\n\n\\(= \\frac{0.35 \\times 0.04}{0.25 \\times 0.05 + 0.35 \\times 0.04 + 0.40 \\times 0.02} = \\frac{0.0140}{0.0345} = \\frac{28}{69}\\)"
+  },
+  {
+    "ref": "13.3 Eg.20",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A doctor is to visit a patient. From the past experience, it is known that the probabilities that he will come by train, bus, scooter or by other means of transport are respectively \\(\\frac{3}{10}, \\frac{1}{5}, \\frac{1}{10}\\) and \\(\\frac{2}{5}\\). The probabilities that he will be late are \\(\\frac{1}{4}, \\frac{1}{3}\\), and \\(\\frac{1}{12}\\), if he comes by train, bus and scooter respectively, but if he comes by other means of transport, then he will not be late. When he arrives, he is late. What is the probability that he comes by train?",
+    "solution": "Let E be the event that the doctor visits the patient late and let \\(T_1\\), \\(T_2\\), \\(T_3\\), \\(T_4\\) be the events that the doctor comes by train, bus, scooter, and other means of transport respectively.\n\nThen \\(P(T_1) = \\frac{3}{10}\\), \\(P(T_2) = \\frac{1}{5}\\), \\(P(T_3) = \\frac{1}{10}\\) and \\(P(T_4) = \\frac{2}{5}\\) (given)\n\n\\(P(E|T_1) = \\) Probability that the doctor arriving late comes by train \\(= \\frac{1}{4}\\)\n\nSimilarly, \\(P(E|T_2) = \\frac{1}{3}\\), \\(P(E|T_3) = \\frac{1}{12}\\) and \\(P(E|T_4) = 0\\), since he is not late if he comes by other means of transport.\n\nTherefore, by Bayes' Theorem, we have\n\n\\(P(T_1|E) = \\) Probability that the doctor arriving late comes by train\n\n\\(= \\frac{P(T_1)\\,P(E|T_1)}{P(T_1)\\,P(E|T_1) + P(T_2)\\,P(E|T_2) + P(T_3)\\,P(E|T_3) + P(T_4)\\,P(E|T_4)}\\)\n\n\\(= \\frac{\\frac{3}{10} \\times \\frac{1}{4}}{\\frac{3}{10} \\times \\frac{1}{4} + \\frac{1}{5} \\times \\frac{1}{3} + \\frac{1}{10} \\times \\frac{1}{12} + \\frac{2}{5} \\times 0} = \\frac{3}{40} \\times \\frac{120}{18} = \\frac{1}{2}\\)\n\nHence, the required probability is \\(\\frac{1}{2}\\).",
+    "_note": "Book wording defect, transcribed faithfully: the printed solution glosses \\(P(E|T_1)\\) as 'Probability that the doctor arriving late comes by train', which is in fact the description of \\(P(T_1|E)\\) — and the same phrase is used again, correctly, for \\(P(T_1|E)\\) two lines later. \\(P(E|T_1)\\) is the probability that he is LATE GIVEN he comes by train. The arithmetic and the final answer 1/2 are correct."
+  },
+  {
+    "ref": "13.3 Eg.21",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A man is known to speak truth 3 out of 4 times. He throws a die and reports that it is a six. Find the probability that it is actually a six.",
+    "solution": "Let E be the event that the man reports that six occurs in the throwing of the die and let \\(S_1\\) be the event that six occurs and \\(S_2\\) be the event that six does not occur.\n\nThen \\(P(S_1) = \\) Probability that six occurs \\(= \\frac{1}{6}\\)\n\n\\(P(S_2) = \\) Probability that six does not occur \\(= \\frac{5}{6}\\)\n\n\\(P(E|S_1) = \\) Probability that the man reports that six occurs when six has actually occurred on the die = Probability that the man speaks the truth \\(= \\frac{3}{4}\\)\n\n\\(P(E|S_2) = \\) Probability that the man reports that six occurs when six has not actually occurred on the die = Probability that the man does not speak the truth \\(= 1 - \\frac{3}{4} = \\frac{1}{4}\\)\n\nThus, by Bayes' theorem, we get\n\n\\(P(S_1|E) = \\) Probability that the report of the man that six has occurred is actually a six\n\n\\(= \\frac{P(S_1)\\,P(E|S_1)}{P(S_1)\\,P(E|S_1) + P(S_2)\\,P(E|S_2)}\\)\n\n\\(= \\frac{\\frac{1}{6} \\times \\frac{3}{4}}{\\frac{1}{6} \\times \\frac{3}{4} + \\frac{5}{6} \\times \\frac{1}{4}} = \\frac{1}{8} \\times \\frac{24}{8} = \\frac{3}{8}\\)\n\nHence, the required probability is \\(\\frac{3}{8}\\)."
+  },
+  {
+    "ref": "Ex 13.3 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Theorem of Total Probability",
+    "difficulty": "MODERATE",
+    "stem": "An urn contains 5 red and 5 black balls. A ball is drawn at random, its colour is noted and is returned to the urn. Moreover, 2 additional balls of the colour drawn are put in the urn and then a ball is drawn at random. What is the probability that the second ball is red?"
+  },
+  {
+    "ref": "Ex 13.3 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A bag contains 4 red and 4 black balls, another bag contains 2 red and 6 black balls. One of the two bags is selected at random and a ball is drawn from the bag which is found to be red. Find the probability that the ball is drawn from the first bag."
+  },
+  {
+    "ref": "Ex 13.3 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Of the students in a college, it is known that 60% reside in hostel and 40% are day scholars (not residing in hostel). Previous year results report that 30% of all students who reside in hostel attain A grade and 20% of day scholars attain A grade in their annual examination. At the end of the year, one student is chosen at random from the college and he has an A grade, what is the probability that the student is a hostlier?"
+  },
+  {
+    "ref": "Ex 13.3 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "In answering a question on a multiple choice test, a student either knows the answer or guesses. Let \\(\\frac{3}{4}\\) be the probability that he knows the answer and \\(\\frac{1}{4}\\) be the probability that he guesses. Assuming that a student who guesses at the answer will be correct with probability \\(\\frac{1}{4}\\). What is the probability that the student knows the answer given that he answered it correctly?"
+  },
+  {
+    "ref": "Ex 13.3 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A laboratory blood test is 99% effective in detecting a certain disease when it is in fact, present. However, the test also yields a false positive result for 0.5% of the healthy person tested (i.e. if a healthy person is tested, then, with probability 0.005, the test will imply he has the disease). If 0.1 percent of the population actually has the disease, what is the probability that a person has the disease given that his test result is positive?"
+  },
+  {
+    "ref": "Ex 13.3 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "There are three coins. One is a two headed coin (having head on both faces), another is a biased coin that comes up heads 75% of the time and third is an unbiased coin. One of the three coins is chosen at random and tossed, it shows heads, what is the probability that it was the two headed coin?"
+  },
+  {
+    "ref": "Ex 13.3 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "An insurance company insured 2000 scooter drivers, 4000 car drivers and 6000 truck drivers. The probability of an accidents are 0.01, 0.03 and 0.15 respectively. One of the insured persons meets with an accident. What is the probability that he is a scooter driver?"
+  },
+  {
+    "ref": "Ex 13.3 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A factory has two machines A and B. Past record shows that machine A produced 60% of the items of output and machine B produced 40% of the items. Further, 2% of the items produced by machine A and 1% produced by machine B were defective. All the items are put into one stockpile and then one item is chosen at random from this and is found to be defective. What is the probability that it was produced by machine B?"
+  },
+  {
+    "ref": "Ex 13.3 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Two groups are competing for the position on the Board of directors of a corporation. The probabilities that the first and the second groups will win are 0.6 and 0.4 respectively. Further, if the first group wins, the probability of introducing a new product is 0.7 and the corresponding probability is 0.3 if the second group wins. Find the probability that the new product introduced was by the second group."
+  },
+  {
+    "ref": "Ex 13.3 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "HARD",
+    "stem": "Suppose a girl throws a die. If she gets a 5 or 6, she tosses a coin three times and notes the number of heads. If she gets 1, 2, 3 or 4, she tosses a coin once and notes whether a head or tail is obtained. If she obtained exactly one head, what is the probability that she threw 1, 2, 3 or 4 with the die?"
+  },
+  {
+    "ref": "Ex 13.3 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A manufacturer has three machine operators A, B and C. The first operator A produces 1% defective items, where as the other two operators B and C produce 5% and 7% defective items respectively. A is on the job for 50% of the time, B is on the job for 30% of the time and C is on the job for 20% of the time. A defective item is produced, what is the probability that it was produced by A?"
+  },
+  {
+    "ref": "Ex 13.3 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "HARD",
+    "stem": "A card from a pack of 52 cards is lost. From the remaining cards of the pack, two cards are drawn and are found to be both diamonds. Find the probability of the lost card being a diamond."
+  },
+  {
+    "ref": "Ex 13.3 Q13",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Probability that A speaks truth is \\(\\frac{4}{5}\\). A coin is tossed. A reports that a head appears. The probability that actually there was head is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{4}{5}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{5}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{2}{5}\\)"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex 13.3 Q14",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "stem": "If A and B are two events such that \\(A \\subset B\\) and \\(P(B) \\neq 0\\), then which of the following is correct?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(P(A|B) = \\frac{P(B)}{P(A)}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(P(A|B) < P(A)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(P(A|B) \\ge P(A)\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc Eg.22",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Coloured balls are distributed in four boxes as shown in the following table:\n\n| Box | Black | White | Red | Blue |\n|---|---|---|---|---|\n| I | 3 | 4 | 5 | 6 |\n| II | 2 | 2 | 2 | 2 |\n| III | 1 | 2 | 3 | 1 |\n| IV | 4 | 3 | 1 | 5 |\n\nA box is selected at random and then a ball is randomly drawn from the selected box. The colour of the ball is black, what is the probability that ball drawn is from the box III?",
+    "solution": "Let \\(A, E_1, E_2, E_3\\) and \\(E_4\\) be the events as defined below :\n\nA : a black ball is selected\n\n\\(E_1\\) : box I is selected\n\n\\(E_2\\) : box II is selected\n\n\\(E_3\\) : box III is selected\n\n\\(E_4\\) : box IV is selected\n\nSince the boxes are chosen at random, therefore \\(P(E_1) = P(E_2) = P(E_3) = P(E_4) = \\frac{1}{4}\\).\n\nAlso \\(P(A|E_1) = \\frac{3}{18}\\), \\(P(A|E_2) = \\frac{2}{8}\\), \\(P(A|E_3) = \\frac{1}{7}\\) and \\(P(A|E_4) = \\frac{4}{13}\\).\n\nP(box III is selected, given that the drawn ball is black) = \\(P(E_3|A)\\). By Bayes' theorem,\n\n\\(P(E_3|A) = \\frac{P(E_3)\\cdot P(A|E_3)}{P(E_1)P(A|E_1) + P(E_2)P(A|E_2) + P(E_3)P(A|E_3) + P(E_4)P(A|E_4)}\\)\n\n\\(= \\frac{\\frac{1}{4}\\times\\frac{1}{7}}{\\frac{1}{4}\\times\\frac{3}{18} + \\frac{1}{4}\\times\\frac{1}{4} + \\frac{1}{4}\\times\\frac{1}{7} + \\frac{1}{4}\\times\\frac{4}{13}} = 0.165\\)"
+  },
+  {
+    "ref": "Misc Eg.23",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "HARD",
+    "stem": "A and B throw a die alternatively till one of them gets a '6' and wins the game. Find their respective probabilities of winning, if A starts first.",
+    "solution": "Let S denote the success (getting a '6') and F denote the failure (not getting a '6').\n\nThus, \\(P(S) = \\frac{1}{6}\\), \\(P(F) = \\frac{5}{6}\\)\n\n\\(P(\\text{A wins in the first throw}) = P(S) = \\frac{1}{6}\\)\n\nA gets the third throw, when the first throw by A and second throw by B result into failures.\n\nTherefore, \\(P(\\text{A wins in the 3rd throw}) = P(FFS) = P(F)\\,P(F)\\,P(S) = \\frac{5}{6}\\times\\frac{5}{6}\\times\\frac{1}{6} = \\left(\\frac{5}{6}\\right)^{2}\\times\\frac{1}{6}\\)\n\n\\(P(\\text{A wins in the 5th throw}) = P(FFFFS) = \\left(\\frac{5}{6}\\right)^{4}\\left(\\frac{1}{6}\\right)\\) and so on.\n\nHence, \\(P(\\text{A wins}) = \\frac{1}{6} + \\left(\\frac{5}{6}\\right)^{2}\\left(\\frac{1}{6}\\right) + \\left(\\frac{5}{6}\\right)^{4}\\left(\\frac{1}{6}\\right) + \\ldots = \\frac{\\frac{1}{6}}{1-\\frac{25}{36}} = \\frac{6}{11}\\)\n\n\\(P(\\text{B wins}) = 1 - P(\\text{A wins}) = 1 - \\frac{6}{11} = \\frac{5}{11}\\)\n\nRemark : If \\(a + ar + ar^{2} + \\ldots + ar^{n-1} + \\ldots\\), where \\(|r| < 1\\), then sum of this infinite G.P. is given by \\(\\frac{a}{1-r}\\). (Refer A.1.3 of Class XI Text book.)"
+  },
+  {
+    "ref": "Misc Eg.24",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "If a machine is correctly set up, it produces 90% acceptable items. If it is incorrectly set up, it produces only 40% acceptable items. Past experience shows that 80% of the set ups are correctly done. If after a certain set up, the machine produces 2 acceptable items, find the probability that the machine is correctly setup.",
+    "solution": "Let A be the event that the machine produces 2 acceptable items.\n\nAlso let \\(B_1\\) represent the event of correct set up and \\(B_2\\) represent the event of incorrect setup.\n\nNow \\(P(B_1) = 0.8\\), \\(P(B_2) = 0.2\\)\n\n\\(P(A|B_1) = 0.9\\times 0.9\\) and \\(P(A|B_2) = 0.4\\times 0.4\\)\n\nTherefore \\(P(B_1|A) = \\frac{P(B_1)\\,P(A|B_1)}{P(B_1)\\,P(A|B_1) + P(B_2)\\,P(A|B_2)}\\)\n\n\\(= \\frac{0.8\\times 0.9\\times 0.9}{0.8\\times 0.9\\times 0.9 + 0.2\\times 0.4\\times 0.4} = \\frac{648}{680} = 0.95\\)"
+  },
+  {
+    "ref": "Misc Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "context": "A and B are two events such that \\(P(A) \\neq 0\\). Find \\(P(B|A)\\), if",
+    "setLabel": "Misc Q1",
+    "stem": "A is a subset of B"
+  },
+  {
+    "ref": "Misc Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "context": "A and B are two events such that \\(P(A) \\neq 0\\). Find \\(P(B|A)\\), if",
+    "setLabel": "Misc Q1",
+    "stem": "\\(A \\cap B = \\phi\\)"
+  },
+  {
+    "ref": "Misc Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "context": "A couple has two children,",
+    "setLabel": "Misc Q2",
+    "stem": "Find the probability that both children are males, if it is known that at least one of the children is male."
+  },
+  {
+    "ref": "Misc Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "context": "A couple has two children,",
+    "setLabel": "Misc Q2",
+    "stem": "Find the probability that both children are females, if it is known that the elder child is a female."
+  },
+  {
+    "ref": "Misc Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Suppose that 5% of men and 0.25% of women have grey hair. A grey haired person is selected at random. What is the probability of this person being male? Assume that there are equal number of males and females."
+  },
+  {
+    "ref": "Misc Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "stem": "Suppose that 90% of people are right-handed. What is the probability that at most 6 of a random sample of 10 people are right-handed?",
+    "_note": "STALE-CONTENT FLAG: this question needs the binomial distribution (Bernoulli trials), a section the rationalised 2025-26 edition has REMOVED from Chapter 13 — the chapter now ends at Bayes' theorem (Exercises 13.1, 13.2, 13.3 only). Transcribed faithfully as printed; the subtopic assigned is the nearest canonical fit (repeated independent trials), not an exact one."
+  },
+  {
+    "ref": "Misc Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "stem": "If a leap year is selected at random, what is the chance that it will contain 53 tuesdays?",
+    "_note": "Subtopic is a nearest-fit only: this is plain classical probability (366 days = 52 weeks + 2 extra days), involving no conditioning, independence or Bayes. None of the five canonical subtopics describes it exactly. Book prints 'tuesdays' lowercase — transcribed as printed."
+  },
+  {
+    "ref": "Misc Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "HARD",
+    "stem": "Suppose we have four boxes A,B,C and D containing coloured marbles as given below:\n\n| Box | Red | White | Black |\n|---|---|---|---|\n| A | 1 | 6 | 3 |\n| B | 6 | 2 | 2 |\n| C | 8 | 1 | 1 |\n| D | 0 | 6 | 4 |\n\nOne of the boxes has been selected at random and a single marble is drawn from it. If the marble is red, what is the probability that it was drawn from box A?, box B?, box C?"
+  },
+  {
+    "ref": "Misc Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "HARD",
+    "stem": "Assume that the chances of a patient having a heart attack is 40%. It is also assumed that a meditation and yoga course reduce the risk of heart attack by 30% and prescription of certain drug reduces its chances by 25%. At a time a patient can choose any one of the two options with equal probabilities. It is given that after going through one of the two options the patient selected at random suffers a heart attack. Find the probability that the patient followed a course of meditation and yoga?"
+  },
+  {
+    "ref": "Misc Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "HARD",
+    "stem": "If each element of a second order determinant is either zero or one, what is the probability that the value of the determinant is positive? (Assume that the individual entries of the determinant are chosen independently, each value being assumed with probability \\(\\frac{1}{2}\\))."
+  },
+  {
+    "ref": "Misc Q9(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "context": "An electronic assembly consists of two subsystems, say, A and B. From previous testing procedures, the following probabilities are assumed to be known:\n\nP(A fails) = 0.2\n\nP(B fails alone) = 0.15\n\nP(A and B fail) = 0.15\n\nEvaluate the following probabilities",
+    "setLabel": "Misc Q9",
+    "stem": "P(A fails|B has failed)"
+  },
+  {
+    "ref": "Misc Q9(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "context": "An electronic assembly consists of two subsystems, say, A and B. From previous testing procedures, the following probabilities are assumed to be known:\n\nP(A fails) = 0.2\n\nP(B fails alone) = 0.15\n\nP(A and B fail) = 0.15\n\nEvaluate the following probabilities",
+    "setLabel": "Misc Q9",
+    "stem": "P(A fails alone)"
+  },
+  {
+    "ref": "Misc Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Bag I contains 3 red and 4 black balls and Bag II contains 4 red and 5 black balls. One ball is transferred from Bag I to Bag II and then a ball is drawn from Bag II. The ball so drawn is found to be red in colour. Find the probability that the transferred ball is black."
+  },
+  {
+    "ref": "Misc Q11",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Conditional Probability",
+    "difficulty": "EASY",
+    "stem": "If A and B are two events such that \\(P(A) \\neq 0\\) and \\(P(B \\mid A) = 1\\), then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(A \\subset B\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(B \\subset A\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(B = \\phi\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(A = \\phi\\)"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Misc Q12",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "stem": "If \\(P(A|B) > P(A)\\), then which of the following is correct :",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(P(B|A) < P(B)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(P(A \\cap B) < P(A)\\cdot P(B)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(P(B|A) > P(B)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(P(B|A) = P(B)\\)"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc Q13",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Conditional Probability",
+    "difficulty": "MODERATE",
+    "stem": "If A and B are any two events such that \\(P(A) + P(B) - P(A \\text{ and } B) = P(A)\\), then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(P(B|A) = 1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(P(A|B) = 1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(P(B|A) = 0\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(P(A|B) = 0\\)"
+      }
+    ],
+    "answer": "B"
+  }
+]

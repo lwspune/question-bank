@@ -1,0 +1,44 @@
+[
+  {
+    "id": "0190af3d-9ee3-40a0-934d-d21e5231f6a5",
+    "ref": "Ex 1.1 Q15",
+    "derived_answer": "B",
+    "solution": "Test each property on \\(A = \\{1, 2, 3, 4\\}\\) with \\(R = \\{(1,2), (2,2), (1,1), (4,4), (1,3), (3,3), (3,2)\\}\\).\n\nReflexive: all four diagonal pairs \\((1,1), (2,2), (3,3), (4,4)\\) belong to \\(R\\), so \\(R\\) is reflexive.\n\nSymmetric: \\((1,2) \\in R\\) but \\((2,1) \\notin R\\), so \\(R\\) is not symmetric. (\\((1,3)\\) and \\((3,2)\\) fail likewise.)\n\nTransitive: the only chains \\((a,b), (b,c)\\) with \\(a \\neq b\\) or \\(b \\neq c\\) are \\((1,2)(2,2) \\Rightarrow (1,2)\\), \\((1,3)(3,3) \\Rightarrow (1,3)\\), \\((1,3)(3,2) \\Rightarrow (1,2)\\), \\((3,2)(2,2) \\Rightarrow (3,2)\\), \\((1,1)(1,2) \\Rightarrow (1,2)\\), \\((1,1)(1,3) \\Rightarrow (1,3)\\). Every required pair is already in \\(R\\), so \\(R\\) is transitive.\n\nHence \\(R\\) is reflexive and transitive but not symmetric.",
+    "matches_current": true
+  },
+  {
+    "id": "59229260-6882-406f-b592-7eae20fa76b9",
+    "ref": "Ex 1.1 Q16",
+    "derived_answer": "C",
+    "solution": "A pair \\((a, b)\\) lies in \\(R\\) exactly when \\(b > 6\\) and \\(a = b - 2\\). Test each pair.\n\n\\((2, 4)\\): here \\(b = 4\\), which is not greater than \\(6\\), so it fails the condition \\(b > 6\\).\n\n\\((3, 8)\\): here \\(b = 8 > 6\\), but \\(b - 2 = 6 \\neq 3\\), so \\(a = b - 2\\) fails.\n\n\\((6, 8)\\): here \\(b = 8 > 6\\) and \\(b - 2 = 6 = a\\). Both conditions hold, so this pair belongs to \\(R\\).\n\n\\((8, 7)\\): here \\(b = 7 > 6\\), but \\(b - 2 = 5 \\neq 8\\), so \\(a = b - 2\\) fails.\n\nHence \\((6, 8) \\in R\\).",
+    "matches_current": true
+  },
+  {
+    "id": "fd03488b-aaed-45dc-a887-7762ed11cb3b",
+    "ref": "Ex 1.2 Q11",
+    "derived_answer": "D",
+    "solution": "Let \\(f : \\mathbf{R} \\to \\mathbf{R}\\), \\(f(x) = x^{4}\\).\n\nNot one-one: take \\(a = 1\\) and \\(b = -1\\). Then \\(a \\neq b\\) but \\(f(1) = 1^{4} = 1\\) and \\(f(-1) = (-1)^{4} = 1\\), so \\(f(1) = f(-1)\\). Two distinct inputs share an image, so \\(f\\) is many-one.\n\nNot onto: for every real \\(x\\) we have \\(x^{4} \\geq 0\\), so the range is contained in \\([0, \\infty)\\). The codomain element \\(-1\\) has no preimage, since \\(x^{4} = -1\\) has no real solution.\n\nHence \\(f\\) is neither one-one nor onto.",
+    "matches_current": true
+  },
+  {
+    "id": "9329389b-d766-4b5b-b884-80406216d0fb",
+    "ref": "Ex 1.2 Q12",
+    "derived_answer": "A",
+    "solution": "Let \\(f : \\mathbf{R} \\to \\mathbf{R}\\), \\(f(x) = 3x\\).\n\nOne-one: if \\(f(x_{1}) = f(x_{2})\\) then \\(3x_{1} = 3x_{2}\\), and dividing by \\(3\\) gives \\(x_{1} = x_{2}\\). So distinct inputs have distinct images.\n\nOnto: let \\(y\\) be any real number. Put \\(x = \\dfrac{y}{3}\\), which is a real number. Then \\(f(x) = 3 \\cdot \\dfrac{y}{3} = y\\), so every element of the codomain has a preimage.\n\nHence \\(f\\) is one-one onto (a bijection).",
+    "matches_current": true
+  },
+  {
+    "id": "49f0a600-4619-4add-95b3-0bda10411a8b",
+    "ref": "Misc Q6",
+    "derived_answer": "A",
+    "solution": "Let \\(A = \\{1, 2, 3\\}\\) and let \\(R\\) be reflexive, symmetric, contain \\((1,2)\\) and \\((1,3)\\), and not be transitive.\n\nForced pairs: reflexivity forces \\((1,1), (2,2), (3,3)\\); symmetry together with the given \\((1,2)\\) and \\((1,3)\\) forces \\((2,1)\\) and \\((3,1)\\). So \\(R\\) must contain the seven pairs \\(\\{(1,1), (2,2), (3,3), (1,2), (2,1), (1,3), (3,1)\\}\\).\n\nThe only pairs of \\(A \\times A\\) not yet fixed are \\((2,3)\\) and \\((3,2)\\), and symmetry means they must be taken together or not at all. That leaves exactly two candidate relations, and each is checked:\n\n1. Include both. Then \\(R = A \\times A\\), which is transitive, so it is rejected.\n2. Include neither. Then \\(R\\) is the seven-element set above; here \\((2,1) \\in R\\) and \\((1,3) \\in R\\) but \\((2,3) \\notin R\\), so \\(R\\) is not transitive, and it is reflexive, symmetric and contains \\((1,2)\\) and \\((1,3)\\). This one is accepted.\n\nExactly one relation qualifies, so the number is \\(1\\).",
+    "matches_current": true
+  },
+  {
+    "id": "0e4a6e2d-d4a3-4cc9-b98d-290f6afe27e5",
+    "ref": "Misc Q7",
+    "derived_answer": "B",
+    "solution": "Equivalence relations on \\(A = \\{1, 2, 3\\}\\) correspond exactly to partitions of \\(A\\), the blocks being the equivalence classes. The five partitions are \\(\\{1\\}\\{2\\}\\{3\\}\\), \\(\\{1,2\\}\\{3\\}\\), \\(\\{1,3\\}\\{2\\}\\), \\(\\{2,3\\}\\{1\\}\\) and \\(\\{1,2,3\\}\\).\n\nContaining \\((1,2)\\) means \\(1\\) and \\(2\\) lie in the same block. Of the five partitions, only \\(\\{1,2\\}\\{3\\}\\) and \\(\\{1,2,3\\}\\) satisfy this. Explicitly these give\n\n\\(R_{1} = \\{(1,1), (2,2), (3,3), (1,2), (2,1)\\}\\) and \\(R_{2} = A \\times A\\),\n\nand both are readily checked to be reflexive, symmetric and transitive.\n\nHence the number of such equivalence relations is \\(2\\).",
+    "matches_current": true
+  }
+]

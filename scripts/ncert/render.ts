@@ -13,13 +13,35 @@ import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import { OUT, requireChapter } from "./config";
 
-function render(id: string) {
+function render(id: string, answers: boolean) {
   const ch = requireChapter(id);
-  const dir = join(OUT, id);
-  rmSync(dir, { recursive: true, force: true });
-  mkdirSync(dir, { recursive: true });
+  // The ANSWERS render goes to out/_answers/<id>/, a SIBLING of out/<id>, because
+  // the chapter render rmSync's out/<id> — writing the answer pages inside it would
+  // destroy them on the next chapter re-render (and pull the page images out from
+  // under an in-flight transcription agent). Only the chapter render clears its dir.
+  const dir = answers ? join(OUT, "_answers", id) : join(OUT, id);
+  if (answers) {
+    if (!ch.answersPdf) throw new Error(`chapter "${id}" has no answersPdf — nothing to render`);
+    if (!ch.answerPages?.length) throw new Error(`chapter "${id}" has no answerPages range in config.ts`);
+    mkdirSync(dir, { recursive: true }); // additive: never clears
+  } else {
+    rmSync(dir, { recursive: true, force: true });
+    mkdirSync(dir, { recursive: true });
+  }
 
-  const py = `
+  const py = answers
+    ? `
+import fitz, json, sys
+ch = json.loads(sys.argv[1]); outdir = sys.argv[2]
+d = fitz.open(ch["answersPdf"])
+ZOOM = 3.0
+n = 0
+for p in ch["answerPages"]:
+    pix = d[p].get_pixmap(matrix=fitz.Matrix(ZOOM, ZOOM))
+    pix.save(outdir + "/ak-" + str(p).zfill(2) + ".png"); n += 1
+d.close(); print("rendered", n, "answer-key pages")
+`
+    : `
 import fitz, json, sys
 ch = json.loads(sys.argv[1]); outdir = sys.argv[2]
 d = fitz.open(ch["pdf"])
@@ -42,7 +64,7 @@ d.close(); print("rendered", n, "pages")
 
 const id = process.argv[2];
 if (!id) {
-  console.error("usage: tsx scripts/ncert/render.ts <chapterId>");
+  console.error("usage: tsx scripts/ncert/render.ts <chapterId> [--answers]");
   process.exit(1);
 }
-render(id);
+render(id, process.argv.includes("--answers"));

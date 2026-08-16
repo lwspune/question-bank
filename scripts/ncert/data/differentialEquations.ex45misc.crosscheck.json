@@ -1,0 +1,404 @@
+[
+  {
+    "ref": "Ex 9.4 Q1",
+    "book_key": "(x-y)^2 = Cx e^{-y/x}",
+    "our_answer": "(x-y)^2 = Cx e^{-y/x}",
+    "verdict": "AGREE",
+    "note": "Identical. Our solution also records the equivalent log form 2 log|x-y| + y/x = log|x| + C; implicit differentiation returns dy/dx = (x^2+y^2)/(x^2+xy) (numerically verified 6/6)."
+  },
+  {
+    "ref": "Ex 9.4 Q2",
+    "book_key": "y = x log|x| + Cx",
+    "our_answer": "y = x log|x| + Cx",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.4 Q3",
+    "book_key": "tan^{-1}(y/x) = (1/2) log(x^2+y^2) + C",
+    "our_answer": "tan^{-1}(y/x) = (1/2) log(x^2+y^2) + C",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.4 Q4",
+    "book_key": "x^2 + y^2 = Cx",
+    "our_answer": "x^2 + y^2 = Cx",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.4 Q5",
+    "book_key": "(1/(2\\sqrt2)) log|(x+\\sqrt2 y)/(x-\\sqrt2 y)| = log|x| + C",
+    "our_answer": "(1/(2\\sqrt2)) log|(\\sqrt2 x + 2y)/(\\sqrt2 x - 2y)| = log|x| + C",
+    "verdict": "AGREE",
+    "note": "Equivalent form of the same expression: multiplying numerator and denominator of (x+\\sqrt2 y)/(x-\\sqrt2 y) by \\sqrt2 gives (\\sqrt2 x + 2y)/(\\sqrt2 x - 2y). Numerically verified against the DE 6/6."
+  },
+  {
+    "ref": "Ex 9.4 Q6",
+    "book_key": "y + \\sqrt(x^2+y^2) = Cx^2",
+    "our_answer": "y + \\sqrt(x^2+y^2) = Cx^2",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.4 Q7",
+    "book_key": "xy cos|y/x| = C",
+    "our_answer": "xy cos(y/x) = C",
+    "verdict": "AGREE",
+    "note": "cos is even, so cos|y/x| = cos(y/x); the modulus in the key is redundant, not a difference."
+  },
+  {
+    "ref": "Ex 9.4 Q8",
+    "book_key": "x[1 - cos(y/x)] = C sin(y/x)",
+    "our_answer": "x tan(y/(2x)) = C",
+    "verdict": "AGREE",
+    "note": "Equivalent by the half-angle identity tan(v/2) = (1 - cos v)/sin v with v = y/x: x(1-cos v)/sin v = C is exactly x(1-cos v) = C sin v. Both differentiate back to dy/dx = y/x - sin(y/x) (numerically verified 6/6)."
+  },
+  {
+    "ref": "Ex 9.4 Q9",
+    "book_key": "cy = log|y/x| - 1",
+    "our_answer": "log|y/x| - 1 = Cy",
+    "verdict": "AGREE",
+    "note": "Same equation, sides transposed and the constant named C rather than c."
+  },
+  {
+    "ref": "Ex 9.4 Q10",
+    "book_key": "y e^{x/y} + x = C",
+    "our_answer": "x + y e^{x/y} = C",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.4 Q11",
+    "book_key": "log(x^2+y^2) + 2 tan^{-1}(y/x) = \\pi/2 + log 2",
+    "our_answer": "log(x^2+y^2) + 2 tan^{-1}(y/x) = \\pi/2 + log 2",
+    "verdict": "AGREE",
+    "note": "Particular solution; the condition y=1 at x=1 gives log 2 + \\pi/2, which matches."
+  },
+  {
+    "ref": "Ex 9.4 Q12",
+    "book_key": "y + 2x = 3x^2 y",
+    "our_answer": "y = 2x/(3x^2 - 1)",
+    "verdict": "AGREE",
+    "note": "3x^2 y = y + 2x rearranges to y(3x^2-1) = 2x, i.e. y = 2x/(3x^2-1). Our solution derives the implicit form 3x^2 y = y + 2x en route. IC y=1 at x=1 holds."
+  },
+  {
+    "ref": "Ex 9.4 Q13",
+    "book_key": "cot(y/x) = log|ex|",
+    "our_answer": "cot(y/x) = log|x| + 1 = log|ex|",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.4 Q14",
+    "book_key": "cos(y/x) = log|ex|",
+    "our_answer": "cos(y/x) = log|x| + 1 = log|ex|",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.4 Q15",
+    "book_key": "y = 2x/(1 - log|x|)  (x != 0, x != e)",
+    "our_answer": "y = 2x/(1 - log|x|), x != 0, x != e",
+    "verdict": "AGREE",
+    "note": "Domain exclusions match the key exactly."
+  },
+  {
+    "ref": "Ex 9.4 Q16",
+    "book_key": "C",
+    "our_answer": "C — x = vy",
+    "verdict": "AGREE",
+    "note": "Option TEXT checked: our marked option C reads \\(x = vy\\), which is the correct substitution for dx/dy = h(x/y) (x is the dependent variable). Letter and text both agree with the key."
+  },
+  {
+    "ref": "Ex 9.4 Q17",
+    "book_key": "D",
+    "our_answer": "D — y^2 dx + (x^2 - xy - y^2) dy = 0",
+    "verdict": "AGREE",
+    "note": "Option TEXT checked: our marked option D has both coefficients homogeneous of degree 2; A carries constants, B mixes degrees 2 and 3, C mixes degrees 3 and 2. Letter and text both agree with the key."
+  },
+
+  {
+    "ref": "Ex 9.5 Q1",
+    "book_key": "y = (1/5)(2 sin x - cos x) + C e^{-2x}",
+    "our_answer": "y = (2 sin x - cos x)/5 + C e^{-2x}",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.5 Q2",
+    "book_key": "y = e^{-2x} + C e^{-3x}",
+    "our_answer": "y = e^{-2x} + C e^{-3x}",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.5 Q3",
+    "book_key": "xy = x^4/4 + C",
+    "our_answer": "y = x^3/4 + C/x",
+    "verdict": "AGREE",
+    "note": "Dividing the key's implicit form by x gives our explicit form exactly."
+  },
+  {
+    "ref": "Ex 9.5 Q4",
+    "book_key": "y(sec x + tan x) = sec x + tan x - x + C",
+    "our_answer": "y(sec x + tan x) = sec x + tan x - x + C",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.5 Q5",
+    "book_key": "y = (tan x - 1) + C e^{-tan x}",
+    "our_answer": "y = (tan x - 1) + C e^{-tan x}",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.5 Q6",
+    "book_key": "y = (x^2/16)(4 log|x| - 1) + C x^{-2}",
+    "our_answer": "y = (x^2/4) log x - x^2/16 + C/x^2",
+    "verdict": "AGREE",
+    "note": "Expanding the key: (x^2/16)(4 log|x| - 1) = (x^2/4) log|x| - x^2/16. Identical."
+  },
+  {
+    "ref": "Ex 9.5 Q7",
+    "book_key": "y log x = (-2/x)(1 + log|x|) + C",
+    "our_answer": "y log x = -(2/x)(1 + log x) + C",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.5 Q8",
+    "book_key": "y = (1+x)^{-1} log|sin x| + C(1+x^2)^{-1}",
+    "our_answer": "y = (log|sin x| + C)/(1+x^2)",
+    "verdict": "BOOK-KEY-WRONG",
+    "note": "The printed key's FIRST factor is (1+x)^{-1}, not (1+x^2)^{-1} — read at 9x zoom off the source page (lemh2an.pdf p451/index 11); the second term's exponent 2 is unmistakable on the same line and the first has none, so this is a dropped superscript 2, not a misread on my part. Re-derivation: (1+x^2)dy + 2xy dx = cot x dx gives dy/dx + (2x/(1+x^2))y = cot x/(1+x^2), IF = 1+x^2, so d/dx[y(1+x^2)] = cot x and y(1+x^2) = log|sin x| + C, i.e. y = (1+x^2)^{-1} log|sin x| + C(1+x^2)^{-1}. Verification: OUR form gives residual d/dx[(1+x^2)y] - cot x = 0 identically (sympy, exact); the key AS PRINTED gives a NON-ZERO residual at every x tested (-0.2821 at x=0.7, -0.0363 at x=1.1, -0.0633 at x=1.7) and independent of C, so the printed form is not a solution of the equation at all. Our answer is correct; the defect is typographic (the key's own second term shows the intended (1+x^2))."
+  },
+  {
+    "ref": "Ex 9.5 Q9",
+    "book_key": "y = 1/x - cot x + C/(x sin x)",
+    "our_answer": "y = 1/x - cot x + C/(x sin x)",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.5 Q10",
+    "book_key": "(x + y + 1) = C e^y",
+    "our_answer": "x + y + 1 = C e^y",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.5 Q11",
+    "book_key": "x = y^2/3 + C/y",
+    "our_answer": "x = y^2/3 + C/y",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.5 Q12",
+    "book_key": "x = 3y^2 + Cy",
+    "our_answer": "x = 3y^2 + Cy",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.5 Q13",
+    "book_key": "y = cos x - 2 cos^2 x",
+    "our_answer": "y = cos x - 2 cos^2 x",
+    "verdict": "AGREE",
+    "note": "IC y=0 at x=\\pi/3 holds: 1/2 - 2(1/4) = 0."
+  },
+  {
+    "ref": "Ex 9.5 Q14",
+    "book_key": "y(1 + x^2) = tan^{-1} x - \\pi/4",
+    "our_answer": "y(1 + x^2) = tan^{-1} x - \\pi/4",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.5 Q15",
+    "book_key": "y = 4 sin^3 x - 2 sin^2 x",
+    "our_answer": "y = 4 sin^3 x - 2 sin^2 x",
+    "verdict": "AGREE",
+    "note": "IC y=2 at x=\\pi/2 holds: 4 - 2 = 2."
+  },
+  {
+    "ref": "Ex 9.5 Q16",
+    "book_key": "x + y + 1 = e^x",
+    "our_answer": "y = e^x - x - 1, that is x + y + 1 = e^x",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.5 Q17",
+    "book_key": "y = 4 - x - 2 e^x",
+    "our_answer": "y = 4 - x - 2 e^x",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 9.5 Q18",
+    "book_key": "C",
+    "our_answer": "C — 1/x",
+    "verdict": "AGREE",
+    "note": "Option TEXT checked: our marked option C reads \\(1/x\\). Standard form dy/dx - (1/x)y = 2x gives IF = e^{-log x} = 1/x. Letter and text both agree with the key."
+  },
+  {
+    "ref": "Ex 9.5 Q19",
+    "book_key": "D",
+    "our_answer": "D — 1/\\sqrt(1-y^2)",
+    "verdict": "AGREE",
+    "note": "Option TEXT checked: our marked option D reads \\(1/\\sqrt{1-y^2}\\). P_1 = y/(1-y^2), \\int P_1 dy = -(1/2)log(1-y^2), IF = (1-y^2)^{-1/2}. Letter and text both agree with the key."
+  },
+
+  {
+    "ref": "Misc Q1(i)",
+    "book_key": "Order 2; Degree 1",
+    "our_answer": "Order 2; degree 1",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Misc Q1(ii)",
+    "book_key": "Order 1; Degree 3",
+    "our_answer": "Order 1; degree 3",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Misc Q1(iii)",
+    "book_key": "Order 4; Degree not defined",
+    "our_answer": "Order 4; degree not defined",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Misc Q2(i)",
+    "book_key": "(none printed)",
+    "our_answer": "Verification that xy = a e^x + b e^{-x} + x^2 satisfies the equation",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "The key jumps 1 -> 4; Q2 is a 'verify that the given function is a solution' question with no final answer to print. Expected, not a defect."
+  },
+  {
+    "ref": "Misc Q2(ii)",
+    "book_key": "(none printed)",
+    "our_answer": "Verification that y = e^x(a cos x + b sin x) satisfies the equation",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "Verification question; the key prints no entry for Q2."
+  },
+  {
+    "ref": "Misc Q2(iii)",
+    "book_key": "(none printed)",
+    "our_answer": "Verification that y = x sin 3x satisfies the equation",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "Verification question; the key prints no entry for Q2."
+  },
+  {
+    "ref": "Misc Q2(iv)",
+    "book_key": "(none printed)",
+    "our_answer": "Verification that x^2 = 2y^2 log y satisfies the equation",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "Verification question; the key prints no entry for Q2."
+  },
+  {
+    "ref": "Misc Q3",
+    "book_key": "(none printed)",
+    "our_answer": "Derivation ending in x^2 - y^2 = c(x^2 + y^2)^2, the stated result",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "'Prove that ...' — the answer is given in the stem, so the key prints nothing (it jumps 1 -> 4). Our derivation reaches the stated general solution."
+  },
+  {
+    "ref": "Misc Q4",
+    "book_key": "sin^{-1} y + sin^{-1} x = C",
+    "our_answer": "sin^{-1} x + sin^{-1} y = C",
+    "verdict": "AGREE",
+    "note": "Key read off lemh2an.pdf page index 12 (printed p451) — see the coverage note at the end of this file."
+  },
+  {
+    "ref": "Misc Q5",
+    "book_key": "(none printed)",
+    "our_answer": "Derivation ending in (x + y + 1) = A(1 - x - y - 2xy), the stated result",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "'Show that the general solution ... is given by ...' — the answer is in the stem, so the key prints nothing (it goes 4 -> 6). Our derivation reaches the stated form with A = (tan B)/\\sqrt3."
+  },
+  {
+    "ref": "Misc Q6",
+    "book_key": "cos y = sec x / \\sqrt2",
+    "our_answer": "sec x sec y = \\sqrt2, that is cos x cos y = 1/\\sqrt2",
+    "verdict": "AGREE",
+    "note": "cos y = sec x/\\sqrt2 = 1/(\\sqrt2 cos x) rearranges to cos x cos y = 1/\\sqrt2, which is our form. Numerically verified against the DE 6/6, and the point (0, \\pi/4) satisfies it."
+  },
+  {
+    "ref": "Misc Q7",
+    "book_key": "tan^{-1} y + tan^{-1}(e^x) = \\pi/2",
+    "our_answer": "tan^{-1} y + tan^{-1}(e^x) = \\pi/2",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Misc Q8",
+    "book_key": "e^{x/y} = y + C",
+    "our_answer": "e^{x/y} = y + C",
+    "verdict": "AGREE",
+    "note": "Identical. (The equation is not homogeneous in the strict equal-degree sense but separates under x = vy, exactly as our solution does; that is not a defect.)"
+  },
+  {
+    "ref": "Misc Q9",
+    "book_key": "log|x - y| = x + y + 1",
+    "our_answer": "log|x - y| = x + y + 1",
+    "verdict": "AGREE",
+    "note": "IC y=-1 at x=0 holds: log 1 = 0 = 0 - 1 + 1."
+  },
+  {
+    "ref": "Misc Q10",
+    "book_key": "y e^{2\\sqrt x} = (2\\sqrt x + C)",
+    "our_answer": "y e^{2\\sqrt x} = 2\\sqrt x + C",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Misc Q11",
+    "book_key": "y sin x = 2x^2 - \\pi^2/2  (sin x != 0)",
+    "our_answer": "y sin x = 2x^2 - \\pi^2/2",
+    "verdict": "AGREE",
+    "note": "The key's (sin x != 0) is the domain restriction already implied by the stem's x != 0 / the integrating factor sin x."
+  },
+  {
+    "ref": "Misc Q12",
+    "book_key": "y = log|(2x+1)/(x+1)|, x != -1",
+    "our_answer": "y = log|(2x+1)/(x+1)|",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Misc Q13",
+    "book_key": "C",
+    "our_answer": "C — y = Cx",
+    "verdict": "AGREE",
+    "note": "Option TEXT checked: our marked option C reads \\(y = Cx\\). (y dx - x dy)/y = 0 with y != 0 gives dx/x = dy/y, so y = Cx. Letter and text both agree with the key."
+  },
+  {
+    "ref": "Misc Q14",
+    "book_key": "C",
+    "our_answer": "C — x e^{\\int P_1 dy} = \\int (Q_1 e^{\\int P_1 dy}) dy + C",
+    "verdict": "AGREE",
+    "note": "Option TEXT checked: our marked option C is the x-dependent-variable form with all integrations with respect to y — correct for dx/dy + P_1 x = Q_1. Option A has y outside the exponential; B and D integrate with respect to x. Letter and text both agree with the key."
+  },
+  {
+    "ref": "Misc Q15",
+    "book_key": "C",
+    "our_answer": "C — y e^x + x^2 = C",
+    "verdict": "AGREE",
+    "note": "Option TEXT checked: our marked option C reads \\(y e^x + x^2 = C\\). e^x dy + (y e^x + 2x) dx = 0 is d(y e^x) + d(x^2) = 0. Letter and text both agree with the key."
+  },
+
+  {
+    "ref": "_COVERAGE-NOTE",
+    "book_key": "",
+    "our_answer": "",
+    "verdict": "NOTE",
+    "note": "config.ts sets answerPages: [9, 10, 11] for this chapter, but the Miscellaneous Exercise key SPILLS onto page index 12 (printed p451): ak-11.png ends at Misc Q1 and pages 12 carries Misc Q4, Q6-Q12 and the MCQ letters for Q13/Q14/Q15. I rendered lemh2an.pdf page index 12 at 3x myself to complete this gate; without it, twelve Miscellaneous rows would have had no key to diff against. Recommend widening answerPages to [9, 10, 11, 12]."
+  }
+]

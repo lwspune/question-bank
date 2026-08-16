@@ -1,0 +1,248 @@
+[
+  {
+    "ref": "9.3 Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "EASY",
+    "stem": "Find the general solution of the differential equation \\(\\frac{dy}{dx} = \\frac{x+1}{2-y}\\), \\((y \\neq 2)\\).",
+    "solution": "We have\n\n\\(\\frac{dy}{dx} = \\frac{x+1}{2-y}\\) ... (1)\n\nSeparating the variables in equation (1), we get\n\n\\((2 - y)\\,dy = (x + 1)\\,dx\\) ... (2)\n\nIntegrating both sides of equation (2), we get\n\n\\(\\int (2 - y)\\,dy = \\int (x + 1)\\,dx\\)\n\nor \\(2y - \\frac{y^2}{2} = \\frac{x^2}{2} + x + \\mathrm{C}_1\\)\n\nor \\(x^2 + y^2 + 2x - 4y + 2\\mathrm{C}_1 = 0\\)\n\nor \\(x^2 + y^2 + 2x - 4y + \\mathrm{C} = 0\\), where \\(\\mathrm{C} = 2\\mathrm{C}_1\\)\n\nwhich is the general solution of equation (1)."
+  },
+  {
+    "ref": "9.3 Eg.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "EASY",
+    "stem": "Find the general solution of the differential equation \\(\\frac{dy}{dx} = \\frac{1+y^2}{1+x^2}\\).",
+    "solution": "Since \\(1 + y^2 \\neq 0\\), therefore separating the variables, the given differential equation can be written as\n\n\\(\\frac{dy}{1+y^2} = \\frac{dx}{1+x^2}\\) ... (1)\n\nIntegrating both sides of equation (1), we get\n\n\\(\\int \\frac{dy}{1+y^2} = \\int \\frac{dx}{1+x^2}\\)\n\nor \\(\\tan^{-1} y = \\tan^{-1} x + \\mathrm{C}\\)\n\nwhich is the general solution of equation (1)."
+  },
+  {
+    "ref": "9.3 Eg.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find the particular solution of the differential equation \\(\\frac{dy}{dx} = -4xy^2\\) given that \\(y = 1\\), when \\(x = 0\\).",
+    "solution": "If \\(y \\neq 0\\), the given differential equation can be written as\n\n\\(\\frac{dy}{y^2} = -4x\\,dx\\) ... (1)\n\nIntegrating both sides of equation (1), we get\n\n\\(\\int \\frac{dy}{y^2} = -4\\int x\\,dx\\)\n\nor \\(-\\frac{1}{y} = -2x^2 + \\mathrm{C}\\)\n\nor \\(y = \\frac{1}{2x^2 - \\mathrm{C}}\\) ... (2)\n\nSubstituting \\(y = 1\\) and \\(x = 0\\) in equation (2), we get \\(\\mathrm{C} = -1\\).\n\nNow substituting the value of C in equation (2), we get the particular solution of the given differential equation as \\(y = \\frac{1}{2x^2 + 1}\\)."
+  },
+  {
+    "ref": "9.3 Eg.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find the equation of the curve passing through the point \\((1, 1)\\) whose differential equation is \\(x\\,dy = (2x^2 + 1)\\,dx\\) \\((x \\neq 0)\\).",
+    "solution": "The given differential equation can be expressed as\n\n\\(dy = \\left(\\frac{2x^2+1}{x}\\right)dx\\)\n\nor \\(dy = \\left(2x + \\frac{1}{x}\\right)dx\\) ... (1)\n\nIntegrating both sides of equation (1), we get\n\n\\(\\int dy = \\int \\left(2x + \\frac{1}{x}\\right)dx\\)\n\nor \\(y = x^2 + \\log|x| + \\mathrm{C}\\) ... (2)\n\nEquation (2) represents the family of solution curves of the given differential equation but we are interested in finding the equation of a particular member of the family which passes through the point \\((1, 1)\\). Therefore substituting \\(x = 1\\), \\(y = 1\\) in equation (2), we get \\(\\mathrm{C} = 0\\).\n\nNow substituting the value of C in equation (2) we get the equation of the required curve as \\(y = x^2 + \\log|x|\\)."
+  },
+  {
+    "ref": "9.3 Eg.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find the equation of a curve passing through the point \\((-2, 3)\\), given that the slope of the tangent to the curve at any point \\((x, y)\\) is \\(\\frac{2x}{y^2}\\).",
+    "solution": "We know that the slope of the tangent to a curve is given by \\(\\frac{dy}{dx}\\).\n\nso, \\(\\frac{dy}{dx} = \\frac{2x}{y^2}\\) ... (1)\n\nSeparating the variables, equation (1) can be written as\n\n\\(y^2\\,dy = 2x\\,dx\\) ... (2)\n\nIntegrating both sides of equation (2), we get\n\n\\(\\int y^2\\,dy = \\int 2x\\,dx\\)\n\nor \\(\\frac{y^3}{3} = x^2 + \\mathrm{C}\\) ... (3)\n\nSubstituting \\(x = -2\\), \\(y = 3\\) in equation (3), we get \\(\\mathrm{C} = 5\\).\n\nSubstituting the value of C in equation (3), we get the equation of the required curve as\n\n\\(\\frac{y^3}{3} = x^2 + 5\\) or \\(y = (3x^2 + 15)^{\\frac{1}{3}}\\)"
+  },
+  {
+    "ref": "9.3 Eg.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "In a bank, principal increases continuously at the rate of 5% per year. In how many years Rs 1000 double itself?",
+    "solution": "Let P be the principal at any time \\(t\\). According to the given problem,\n\n\\(\\frac{dp}{dt} = \\left(\\frac{5}{100}\\right) \\times \\mathrm{P}\\)\n\nor \\(\\frac{dp}{dt} = \\frac{\\mathrm{P}}{20}\\) ... (1)\n\nseparating the variables in equation (1), we get\n\n\\(\\frac{dp}{\\mathrm{P}} = \\frac{dt}{20}\\) ... (2)\n\nIntegrating both sides of equation (2), we get\n\n\\(\\log \\mathrm{P} = \\frac{t}{20} + \\mathrm{C}_1\\)\n\nor \\(\\mathrm{P} = e^{\\frac{t}{20}} \\cdot e^{\\mathrm{C}_1}\\)\n\nor \\(\\mathrm{P} = \\mathrm{C}\\,e^{\\frac{t}{20}}\\) (where \\(e^{\\mathrm{C}_1} = \\mathrm{C}\\)) ... (3)\n\nNow \\(\\mathrm{P} = 1000\\), when \\(t = 0\\)\n\nSubstituting the values of P and \\(t\\) in (3), we get \\(\\mathrm{C} = 1000\\). Therefore, equation (3), gives\n\n\\(\\mathrm{P} = 1000\\,e^{\\frac{t}{20}}\\)\n\nLet \\(t\\) years be the time required to double the principal. Then\n\n\\(2000 = 1000\\,e^{\\frac{t}{20}} \\Rightarrow t = 20 \\log_e 2\\)",
+    "_note": "Book prints the derivative as \\(\\frac{dp}{dt}\\) (lowercase p) while the principal is denoted by capital P everywhere else, including in the same equation. Transcribed faithfully as printed."
+  },
+  {
+    "ref": "Ex 9.3 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation:\n\n\\(\\frac{dy}{dx} = \\frac{1 - \\cos x}{1 + \\cos x}\\)"
+  },
+  {
+    "ref": "Ex 9.3 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation:\n\n\\(\\frac{dy}{dx} = \\sqrt{4 - y^2}\\ (-2 < y < 2)\\)"
+  },
+  {
+    "ref": "Ex 9.3 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "EASY",
+    "stem": "Find the general solution of the differential equation:\n\n\\(\\frac{dy}{dx} + y = 1\\ (y \\neq 1)\\)"
+  },
+  {
+    "ref": "Ex 9.3 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation:\n\n\\(\\sec^2 x \\tan y\\,dx + \\sec^2 y \\tan x\\,dy = 0\\)"
+  },
+  {
+    "ref": "Ex 9.3 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation:\n\n\\((e^x + e^{-x})\\,dy - (e^x - e^{-x})\\,dx = 0\\)"
+  },
+  {
+    "ref": "Ex 9.3 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "EASY",
+    "stem": "Find the general solution of the differential equation:\n\n\\(\\frac{dy}{dx} = (1 + x^2)(1 + y^2)\\)"
+  },
+  {
+    "ref": "Ex 9.3 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation:\n\n\\(y \\log y\\,dx - x\\,dy = 0\\)"
+  },
+  {
+    "ref": "Ex 9.3 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation:\n\n\\(x^5 \\frac{dy}{dx} = -y^5\\)"
+  },
+  {
+    "ref": "Ex 9.3 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation:\n\n\\(\\frac{dy}{dx} = \\sin^{-1} x\\)"
+  },
+  {
+    "ref": "Ex 9.3 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation:\n\n\\(e^x \\tan y\\,dx + (1 - e^x)\\sec^2 y\\,dy = 0\\)"
+  },
+  {
+    "ref": "Ex 9.3 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "HARD",
+    "stem": "Find a particular solution of the differential equation satisfying the given condition:\n\n\\((x^3 + x^2 + x + 1)\\frac{dy}{dx} = 2x^2 + x\\); \\(y = 1\\) when \\(x = 0\\)"
+  },
+  {
+    "ref": "Ex 9.3 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "HARD",
+    "stem": "Find a particular solution of the differential equation satisfying the given condition:\n\n\\(x(x^2 - 1)\\frac{dy}{dx} = 1\\); \\(y = 0\\) when \\(x = 2\\)"
+  },
+  {
+    "ref": "Ex 9.3 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find a particular solution of the differential equation satisfying the given condition:\n\n\\(\\cos\\left(\\frac{dy}{dx}\\right) = a\\ (a \\in \\mathbf{R})\\); \\(y = 1\\) when \\(x = 0\\)"
+  },
+  {
+    "ref": "Ex 9.3 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "EASY",
+    "stem": "Find a particular solution of the differential equation satisfying the given condition:\n\n\\(\\frac{dy}{dx} = y \\tan x\\); \\(y = 1\\) when \\(x = 0\\)"
+  },
+  {
+    "ref": "Ex 9.3 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "HARD",
+    "stem": "Find the equation of a curve passing through the point \\((0, 0)\\) and whose differential equation is \\(y' = e^x \\sin x\\)."
+  },
+  {
+    "ref": "Ex 9.3 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "HARD",
+    "stem": "For the differential equation \\(xy\\frac{dy}{dx} = (x + 2)(y + 2)\\), find the solution curve passing through the point \\((1, -1)\\)."
+  },
+  {
+    "ref": "Ex 9.3 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find the equation of a curve passing through the point \\((0, -2)\\) given that at any point \\((x, y)\\) on the curve, the product of the slope of its tangent and \\(y\\) coordinate of the point is equal to the \\(x\\) coordinate of the point."
+  },
+  {
+    "ref": "Ex 9.3 Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "HARD",
+    "stem": "At any point \\((x, y)\\) of a curve, the slope of the tangent is twice the slope of the line segment joining the point of contact to the point \\((-4, -3)\\). Find the equation of the curve given that it passes through \\((-2, 1)\\)."
+  },
+  {
+    "ref": "Ex 9.3 Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "HARD",
+    "stem": "The volume of spherical balloon being inflated changes at a constant rate. If initially its radius is 3 units and after 3 seconds it is 6 units. Find the radius of balloon after \\(t\\) seconds."
+  },
+  {
+    "ref": "Ex 9.3 Q20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "In a bank, principal increases continuously at the rate of \\(r\\%\\) per year. Find the value of \\(r\\) if Rs 100 double itself in 10 years \\((\\log_e 2 = 0.6931)\\)."
+  },
+  {
+    "ref": "Ex 9.3 Q21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "In a bank, principal increases continuously at the rate of 5% per year. An amount of Rs 1000 is deposited with this bank, how much will it worth after 10 years \\((e^{0.5} = 1.648)\\)."
+  },
+  {
+    "ref": "Ex 9.3 Q22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "HARD",
+    "stem": "In a culture, the bacteria count is 1,00,000. The number is increased by 10% in 2 hours. In how many hours will the count reach 2,00,000, if the rate of growth of bacteria is proportional to the number present?"
+  },
+  {
+    "ref": "Ex 9.3 Q23",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "The general solution of the differential equation \\(\\frac{dy}{dx} = e^{x+y}\\) is",
+    "options": [
+      { "label": "A", "text": "\\(e^x + e^{-y} = \\mathrm{C}\\)" },
+      { "label": "B", "text": "\\(e^x + e^{y} = \\mathrm{C}\\)" },
+      { "label": "C", "text": "\\(e^{-x} + e^{y} = \\mathrm{C}\\)" },
+      { "label": "D", "text": "\\(e^{-x} + e^{-y} = \\mathrm{C}\\)" }
+    ],
+    "answer": "A"
+  }
+]
