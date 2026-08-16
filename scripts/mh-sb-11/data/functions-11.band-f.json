@@ -1,0 +1,522 @@
+[
+  {
+    "ref": "6.2 SolvedEx.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "MODERATE",
+    "stem": "Solve \\(|4x-5|\\le 3\\).",
+    "solution": "If \\(|x|\\le m\\), then \\(-m\\le x\\le m\\).\n\nTherefore\n\n\\(-3\\le 4x-5\\le 3\\)\n\n\\(-3+5\\le 4x\\le 3+5\\)\n\n\\(2\\le 4x\\le 8\\)\n\n\\(\\frac{2}{4}\\le x\\le \\frac{8}{4}\\)\n\n\\(\\frac{1}{2}\\le x\\le 2\\)"
+  },
+  {
+    "ref": "6.2 SolvedEx.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "HARD",
+    "stem": "Find the domain of \\(\\dfrac{1}{\\sqrt{\\,\\big||x|-1\\big|-3\\,}}\\).",
+    "solution": "[Textbook error, answer-affecting: the printed solution correctly reaches \\(|x| > 4\\) and then states the COMPLEMENT of it, \\(-4 < x < 4\\), i.e. \\(x \\in (-4, 4)\\). The correct domain is \\((-\\infty, -4) \\cup (4, \\infty)\\). On the printed answer the function is undefined everywhere in the stated interval — at \\(x = 0\\), \\(\\bigl||0| - 1\\bigr| - 3 = -2 < 0\\).]\n\nAs function is defined for \\(\\big||x|-1\\big|-3>0\\)\n\nTherefore \\(\\big||x|-1\\big|>3\\)\n\nSo \\(|x|-1>3\\) or \\(|x|-1<-3\\)\n\nThat is\n\n\\(|x|>3+1\\) or \\(|x|<-3+1\\)\n\n\\(|x|>4\\) or \\(|x|<-2\\)\n\nBut \\(|x|<-2\\) is not possible as \\(|x|>0\\) always\n\nSo \\(-4<x<4\\), \\(x\\in(-4,4)\\).",
+    "_note": "BOOK DEFECT (answer-affecting, last line of the printed solution). The solution correctly reduces to \\(|x|>4\\), which means \\(x<-4\\) or \\(x>4\\), i.e. domain \\((-\\infty,-4)\\cup(4,\\infty)\\). The book instead prints \\(-4<x<4\\), \\(x\\in(-4,4)\\) — the COMPLEMENT of the correct set, and a set on which the function is undefined everywhere (at \\(x=0\\), \\(||0|-1|-3=-2<0\\)). Every earlier line of the printed solution is correct; only the concluding line is wrong. Transcribed as printed per the brief."
+  },
+  {
+    "ref": "6.2 SolvedEx.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "HARD",
+    "stem": "Solve \\(|x-1|+|x+2|=8\\).",
+    "solution": "Let \\(f(x)=|x-1|+|x+2|\\)\n\nHere the critical points are at \\(x=1\\) and \\(x=-2\\).\n\nThey divide the number line into 3 parts, as follows.\n\n| Region | Test Value | Sign | \\(f(x)\\) |\n|---|---|---|---|\n| I, \\(x<-2\\) | \\(-3\\) | \\((x-1)<0\\), \\((x+2)<0\\) | \\(-(x-1)-(x+2)=-2x-1\\) |\n| II, \\(-2\\le x\\le 1\\) | \\(0\\) | \\((x-1)<0\\), \\((x+2)>0\\) | \\(-(x-1)+(x+2)=3\\) |\n| III, \\(x>1\\) | \\(2\\) | \\((x-1)>0\\), \\((x+2)>0\\) | \\((x-1)+(x+2)=2x+1\\) |\n\nAs \\(f(x)=8\\)\n\nFrom I, \\(-2x-1=8\\) \\(\\therefore -2x=9\\) \\(\\therefore x=-\\frac{9}{2}\\).\n\nFrom II, \\(3=8\\), which is impossible, hence there is no solution in this region.\n\nFrom III, \\(2x+1=8\\) \\(\\therefore 2x=7\\) \\(\\therefore x=\\frac{7}{2}\\).\n\nSolutions are \\(x=-\\frac{9}{2}\\) and \\(x=\\frac{7}{2}\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "SOLUTION-side figure. The book prints Fig. 6.44, a sign chart on the number line: the row labelled \\(x-1\\) is marked \\(-\\)ve to the left of \\(x=1\\) and \\(+\\)ve to its right; the row labelled \\(x+2\\) is marked \\(-\\)ve to the left of \\(x=-2\\) and \\(+\\)ve to its right; ticks at \\(-3,-2,-1,0,1,2\\). The stem itself needs no figure — the sign chart supports the region table already transcribed in the solution."
+  },
+  {
+    "ref": "6.2 SolvedEx.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "stem": "Evaluate \\(\\{5.2\\}+\\{-5.2\\}\\) and \\(\\{7\\}+\\{-7\\}\\), where \\(\\{x\\}\\) is the fractional part function.",
+    "solution": "\\(\\{5.2\\}+\\{-5.2\\}=0.2+0.8=1\\) where \\(5.2\\notin I\\)\n\n\\(\\{7\\}+\\{-7\\}=0+(0)=0\\) where \\(7\\in I\\)",
+    "_note": "TRANSCRIBER JUDGEMENT — flag for review. The book prints this as \"Ex. 13\" in the continuous Ex.1-Ex.16 run, but it carries NO \"Solution :\" marker and NO printed instruction: it is a two-line ILLUSTRATION of property 3 of the fractional part function, \\(\\{x\\}+\\{-x\\}=0\\) if \\(x\\in I\\) and \\(=1\\) if \\(x\\notin I\\), printed immediately below that property. Two unnumbered \"Ex.\" illustrations of exactly the same genre sit in the left column of the same page for the greatest-integer properties. The stem above is a faithful restatement of the printed expressions (nothing mathematical invented); the solution is the book's two printed lines verbatim. If the review pass judges illustrations out of scope, DROP this row and 6.2 SolvedEx.14 together — the run then reads 12, 15, 16.\nBOOK DEFECT (typographical, not answer-affecting): the first line is printed \"where 5.2 \\(\\in\\) 1\" — the membership sign should be \\(\\notin\\) and the numeral 1 should be the letter I (the set of integers). Corrected to \\(5.2\\notin I\\) above because as printed it asserts the exact opposite of the property being illustrated; the printed form is recorded here."
+  },
+  {
+    "ref": "6.2 SolvedEx.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "stem": "Evaluate \\(\\{2.8+5\\}\\) and \\(\\{2.8-5\\}\\), and compare each with \\(\\{2.8\\}\\), where \\(\\{x\\}\\) is the fractional part function.",
+    "solution": "\\(\\{2.8+5\\}=\\{7.8\\}=0.8\\) and \\(\\{2.8\\}=0.8\\)\n\n\\(\\{2.8-5\\}=\\{-2.2\\}=-2.2-(-2.2)=-2.2-(-3)=0.8\\) \\(\\;(\\because \\{x\\}=x-[x])\\)",
+    "_note": "TRANSCRIBER JUDGEMENT — flag for review. Same genre as 6.2 SolvedEx.13: printed as \"Ex. 14\" in the Ex.1-Ex.16 run but with NO \"Solution :\" marker and NO printed instruction; it is an illustration of property 4 of the fractional part function, \\(\\{x\\pm n\\}=\\{x\\}\\) for \\(n\\in I\\), printed immediately below that property. Stem is a faithful restatement of the printed expressions.\nBOOK DEFECT (typographical, not answer-affecting): the second line prints \\(\\{-2.2\\}=-2.2-(-2.2)=-2.2-(-3)=0.8\\). The first \\((-2.2)\\) should be \\([-2.2]\\) — square brackets, the greatest-integer function — which is what the very next step evaluates to \\(-3\\). As printed the step reads \\(-2.2-(-2.2)=0\\), contradicting both the next step and the final answer. Transcribed exactly as printed; the intended reading is \\(\\{-2.2\\}=-2.2-[-2.2]=-2.2-(-3)=0.8\\)."
+  },
+  {
+    "ref": "6.2 SolvedEx.15",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "HARD",
+    "stem": "If \\(\\{x\\}\\) and \\([x]\\) are the fractional part function and greatest integer function of \\(x\\) respectively, solve for \\(x\\), if \\(\\{x+1\\}+2x=4[x+1]-6\\).",
+    "solution": "[Textbook error, answer-affecting: having found \\([x] \\in \\{1, 2\\}\\) the book never substitutes back into its own equation \\(3\\{x\\} = 2[x] - 2\\); it simply unions the two intervals and prints \\(x \\in [1, 3)\\). Substituting gives \\(\\{x\\} = 0\\) for \\([x] = 1\\) and \\(\\{x\\} = \\dfrac{2}{3}\\) for \\([x] = 2\\), so the solution set is the two points \\(\\left\\{1, \\dfrac{8}{3}\\right\\}\\). Counterexample against the printed interval: at \\(x = 1.5\\) the left side is \\(3(0.5) = 1.5\\) and the right side is \\(2(1) - 2 = 0\\).]\n\n\\(\\{x+1\\}+2x=4[x+1]-6\\)\n\nSince \\(\\{x+n\\}=\\{x\\}\\) and \\([x+n]=[x]+n\\), for \\(n\\in I\\), also \\(x=[x]+\\{x\\}\\)\n\n\\(\\therefore\\;\\{x\\}+2(\\{x\\}+[x])=4([x]+1)-6\\)\n\n\\(\\therefore\\;\\{x\\}+2\\{x\\}+2[x]=4[x]+4-6\\)\n\n\\(\\therefore\\;3\\{x\\}=4[x]-2[x]-2\\)\n\n\\(\\therefore\\;3\\{x\\}=2[x]-2\\)  ... (I)\n\nSince \\(0\\le\\{x\\}<1\\)\n\n\\(\\therefore\\;0\\le 3\\{x\\}<3\\)\n\n\\(\\therefore\\;0\\le 2[x]-2<3\\)  \\((\\because\\) from I\\()\\)\n\n\\(\\therefore\\;0+2\\le 2[x]<3+2\\)\n\n\\(\\therefore\\;2\\le 2[x]<5\\)\n\n\\(\\therefore\\;\\frac{2}{2}\\le[x]<\\frac{5}{2}\\)\n\n\\(\\therefore\\;1\\le[x]<2.5\\)\n\nBut as \\([x]\\) takes only integer values\n\n\\([x]=1,2\\) since \\([x]=1\\Rightarrow 1\\le x<2\\) and \\([x]=2\\Rightarrow 2\\le x<3\\)\n\nTherefore \\(x\\in[1,3)\\)",
+    "_note": "COLUMN-WISE STRADDLE: stem, \"Solution :\" and the working down to \\(1\\le[x]<2.5\\) are in the RIGHT column of p-20; the final three lines (\"But as \\([x]\\) takes only integer values\" ... \"Therefore \\(x\\in[1,3)\\)\") continue at the TOP of the LEFT column of p-21. Transcribed whole.\nBOOK DEFECT (answer-affecting, concluding lines). Having found \\([x]\\in\\{1,2\\}\\), the book never substitutes back into its own equation (I) \\(3\\{x\\}=2[x]-2\\) to recover \\(\\{x\\}\\); it simply unions the two intervals \\([x]=1\\Rightarrow 1\\le x<2\\) and \\([x]=2\\Rightarrow 2\\le x<3\\) and prints \\(x\\in[1,3)\\). Substituting gives \\([x]=1\\Rightarrow 3\\{x\\}=0\\Rightarrow\\{x\\}=0\\Rightarrow x=1\\), and \\([x]=2\\Rightarrow 3\\{x\\}=2\\Rightarrow\\{x\\}=\\frac{2}{3}\\Rightarrow x=\\frac{8}{3}\\). So the solution set is \\(\\{1,\\frac{8}{3}\\}\\), two isolated points, not the interval \\([1,3)\\) — e.g. \\(x=1.5\\) lies in the printed answer but gives LHS \\(=0.5+3=3.5\\) and RHS \\(=4(2)-6=2\\). Transcribed as printed per the brief."
+  },
+  {
+    "ref": "6.2 SolvedEx.16",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Given that \\(\\log_{10}2=0.3010\\), find the number of digits in the number \\(20^{10}\\).",
+    "solution": "Let \\(x=20^{10}\\), taking \\(\\log_{10}\\) on either sides, we get\n\n\\(\\log_{10}x=\\log_{10}(20^{10})=10\\log_{10}20\\)\n\n\\(=10\\log_{10}(2\\times 10)=10\\{\\log_{10}2+\\log_{10}10\\}\\)\n\n\\(=10\\{\\log_{10}2+1\\}=10\\{0.3010+1\\}\\)\n\n\\(=10(1.3010)=13.010\\)\n\nThat is characteristic of \\(x\\) is 13.\n\nSo number of digits in \\(x\\) is \\(13+1=14\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q1(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x)=3x+5\\), \\(g(x)=6x-1\\), then find",
+    "setLabel": "Ex 6.2 Q1",
+    "stem": "\\((f+g)(x)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q1(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x)=3x+5\\), \\(g(x)=6x-1\\), then find",
+    "setLabel": "Ex 6.2 Q1",
+    "stem": "\\((f-g)(2)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q1(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x)=3x+5\\), \\(g(x)=6x-1\\), then find",
+    "setLabel": "Ex 6.2 Q1",
+    "stem": "\\((fg)(3)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q1(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Functions",
+    "difficulty": "MODERATE",
+    "context": "If \\(f(x)=3x+5\\), \\(g(x)=6x-1\\), then find",
+    "setLabel": "Ex 6.2 Q1",
+    "stem": "\\(\\left(\\dfrac{f}{g}\\right)(x)\\) and its domain."
+  },
+  {
+    "ref": "Ex 6.2 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Composition of Functions",
+    "difficulty": "MODERATE",
+    "stem": "Let \\(f:\\{2,4,5\\}\\to\\{2,3,6\\}\\) and \\(g:\\{2,3,6\\}\\to\\{2,4\\}\\) be given by \\(f=\\{(2,3),(4,6),(5,2)\\}\\) and \\(g=\\{(2,4),(3,4),(6,2)\\}\\). Write down \\(g\\circ f\\)."
+  },
+  {
+    "ref": "Ex 6.2 Q3(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Composition of Functions",
+    "difficulty": "MODERATE",
+    "context": "If \\(f(x)=2x^{2}+3\\), \\(g(x)=5x-2\\), then find",
+    "setLabel": "Ex 6.2 Q3",
+    "stem": "\\(f\\circ g\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q3(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Composition of Functions",
+    "difficulty": "MODERATE",
+    "context": "If \\(f(x)=2x^{2}+3\\), \\(g(x)=5x-2\\), then find",
+    "setLabel": "Ex 6.2 Q3",
+    "stem": "\\(g\\circ f\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q3(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Composition of Functions",
+    "difficulty": "MODERATE",
+    "context": "If \\(f(x)=2x^{2}+3\\), \\(g(x)=5x-2\\), then find",
+    "setLabel": "Ex 6.2 Q3",
+    "stem": "\\(f\\circ f\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q3(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Composition of Functions",
+    "difficulty": "MODERATE",
+    "context": "If \\(f(x)=2x^{2}+3\\), \\(g(x)=5x-2\\), then find",
+    "setLabel": "Ex 6.2 Q3",
+    "stem": "\\(g\\circ g\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q4(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inverse Functions",
+    "difficulty": "MODERATE",
+    "context": "Verify that \\(f\\) and \\(g\\) are inverse functions of each other, where",
+    "setLabel": "Ex 6.2 Q4",
+    "stem": "\\(f(x)=\\dfrac{x-7}{4}\\), \\(g(x)=4x+7\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q4(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inverse Functions",
+    "difficulty": "MODERATE",
+    "context": "Verify that \\(f\\) and \\(g\\) are inverse functions of each other, where",
+    "setLabel": "Ex 6.2 Q4",
+    "stem": "\\(f(x)=x^{3}+4\\), \\(g(x)=\\sqrt[3]{x-4}\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q4(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inverse Functions",
+    "difficulty": "HARD",
+    "context": "Verify that \\(f\\) and \\(g\\) are inverse functions of each other, where",
+    "setLabel": "Ex 6.2 Q4",
+    "stem": "\\(f(x)=\\dfrac{x+3}{x-2}\\), \\(g(x)=\\dfrac{2x+3}{x-1}\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q5(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inverse Functions",
+    "difficulty": "MODERATE",
+    "context": "Check if the following functions have an inverse function. If yes, find the inverse function.",
+    "setLabel": "Ex 6.2 Q5",
+    "stem": "\\(f(x)=5x^{2}\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q5(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inverse Functions",
+    "difficulty": "MODERATE",
+    "context": "Check if the following functions have an inverse function. If yes, find the inverse function.",
+    "setLabel": "Ex 6.2 Q5",
+    "stem": "\\(f(x)=8\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q5(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inverse Functions",
+    "difficulty": "EASY",
+    "context": "Check if the following functions have an inverse function. If yes, find the inverse function.",
+    "setLabel": "Ex 6.2 Q5",
+    "stem": "\\(f(x)=\\dfrac{6x-7}{3}\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q5(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inverse Functions",
+    "difficulty": "MODERATE",
+    "context": "Check if the following functions have an inverse function. If yes, find the inverse function.",
+    "setLabel": "Ex 6.2 Q5",
+    "stem": "\\(f(x)=\\sqrt{4x+5}\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q5(e)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inverse Functions",
+    "difficulty": "MODERATE",
+    "context": "Check if the following functions have an inverse function. If yes, find the inverse function.",
+    "setLabel": "Ex 6.2 Q5",
+    "stem": "\\(f(x)=9x^{3}+8\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q5(f)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Inverse Functions",
+    "difficulty": "HARD",
+    "context": "Check if the following functions have an inverse function. If yes, find the inverse function.",
+    "setLabel": "Ex 6.2 Q5",
+    "stem": "\\(f(x)=\\begin{cases} x+7 & x<0 \\\\ 8-x & x\\ge 0 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q6(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x)=\\begin{cases} x^{2}+3, & x\\le 2 \\\\ 5x+7, & x>2 \\end{cases}\\), then find",
+    "setLabel": "Ex 6.2 Q6",
+    "stem": "\\(f(3)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q6(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x)=\\begin{cases} x^{2}+3, & x\\le 2 \\\\ 5x+7, & x>2 \\end{cases}\\), then find",
+    "setLabel": "Ex 6.2 Q6",
+    "stem": "\\(f(2)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q6(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x)=\\begin{cases} x^{2}+3, & x\\le 2 \\\\ 5x+7, & x>2 \\end{cases}\\), then find",
+    "setLabel": "Ex 6.2 Q6",
+    "stem": "\\(f(0)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q7(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x)=\\begin{cases} 4x-2, & x\\le -3 \\\\ 5, & -3<x<3 \\\\ x^{2}, & x\\ge 3 \\end{cases}\\), then find",
+    "setLabel": "Ex 6.2 Q7",
+    "stem": "\\(f(-4)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q7(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x)=\\begin{cases} 4x-2, & x\\le -3 \\\\ 5, & -3<x<3 \\\\ x^{2}, & x\\ge 3 \\end{cases}\\), then find",
+    "setLabel": "Ex 6.2 Q7",
+    "stem": "\\(f(-3)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q7(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x)=\\begin{cases} 4x-2, & x\\le -3 \\\\ 5, & -3<x<3 \\\\ x^{2}, & x\\ge 3 \\end{cases}\\), then find",
+    "setLabel": "Ex 6.2 Q7",
+    "stem": "\\(f(1)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q7(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x)=\\begin{cases} 4x-2, & x\\le -3 \\\\ 5, & -3<x<3 \\\\ x^{2}, & x\\ge 3 \\end{cases}\\), then find",
+    "setLabel": "Ex 6.2 Q7",
+    "stem": "\\(f(5)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q8(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x)=2|x|+3x\\), then find",
+    "setLabel": "Ex 6.2 Q8",
+    "stem": "\\(f(2)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q8(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x)=2|x|+3x\\), then find",
+    "setLabel": "Ex 6.2 Q8",
+    "stem": "\\(f(-5)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q9(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x)=4[x]-3\\), where \\([x]\\) is greatest integer function of \\(x\\), then find",
+    "setLabel": "Ex 6.2 Q9",
+    "stem": "\\(f(7.2)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q9(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x)=4[x]-3\\), where \\([x]\\) is greatest integer function of \\(x\\), then find",
+    "setLabel": "Ex 6.2 Q9",
+    "stem": "\\(f(0.5)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q9(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "MODERATE",
+    "context": "If \\(f(x)=4[x]-3\\), where \\([x]\\) is greatest integer function of \\(x\\), then find",
+    "setLabel": "Ex 6.2 Q9",
+    "stem": "\\(f\\left(-\\dfrac{5}{2}\\right)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q9(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x)=4[x]-3\\), where \\([x]\\) is greatest integer function of \\(x\\), then find",
+    "setLabel": "Ex 6.2 Q9",
+    "stem": "\\(f(2\\pi)\\), where \\(\\pi=3.14\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q10(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "MODERATE",
+    "context": "If \\(f(x)=2\\{x\\}+5x\\), where \\(\\{x\\}\\) is fractional part function of \\(x\\), then find",
+    "setLabel": "Ex 6.2 Q10",
+    "stem": "\\(f(-1)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q10(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "MODERATE",
+    "context": "If \\(f(x)=2\\{x\\}+5x\\), where \\(\\{x\\}\\) is fractional part function of \\(x\\), then find",
+    "setLabel": "Ex 6.2 Q10",
+    "stem": "\\(f\\left(\\dfrac{1}{4}\\right)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q10(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "MODERATE",
+    "context": "If \\(f(x)=2\\{x\\}+5x\\), where \\(\\{x\\}\\) is fractional part function of \\(x\\), then find",
+    "setLabel": "Ex 6.2 Q10",
+    "stem": "\\(f(-1.2)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q10(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "MODERATE",
+    "context": "If \\(f(x)=2\\{x\\}+5x\\), where \\(\\{x\\}\\) is fractional part function of \\(x\\), then find",
+    "setLabel": "Ex 6.2 Q10",
+    "stem": "\\(f(-6)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q11(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "MODERATE",
+    "context": "Solve the following for \\(x\\), where \\(|x|\\) is modulus function, \\([x]\\) is greatest integer function, \\([x]\\) is a fractional part function.",
+    "setLabel": "Ex 6.2 Q11",
+    "stem": "\\(|x+4|\\ge 5\\)",
+    "_note": "BOOK DEFECT in the shared instruction (transcribed as printed): the third clause reads \"\\([x]\\) is a fractional part function\" — the symbol should be \\(\\{x\\}\\), since \\([x]\\) has already been declared the greatest integer function in the same sentence. Sub-items (g)-(j) use \\(\\{x\\}\\), so the intended reading is unambiguous."
+  },
+  {
+    "ref": "Ex 6.2 Q11(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "HARD",
+    "context": "Solve the following for \\(x\\), where \\(|x|\\) is modulus function, \\([x]\\) is greatest integer function, \\([x]\\) is a fractional part function.",
+    "setLabel": "Ex 6.2 Q11",
+    "stem": "\\(|x-4|+|x-2|=3\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q11(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "MODERATE",
+    "context": "Solve the following for \\(x\\), where \\(|x|\\) is modulus function, \\([x]\\) is greatest integer function, \\([x]\\) is a fractional part function.",
+    "setLabel": "Ex 6.2 Q11",
+    "stem": "\\(x^{2}+7|x|+12=0\\)",
+    "_note": "LABEL DEFECT in the printed exercise: this item is printed with the label \"(b)\", a duplicate of the item above it — the book's sub-item labels run (a), (b), (b), (d), (e), (f), (g), (h), (i), (j). Emitted here as \"(c)\", which is (i) the only label consistent with the surrounding sequence and (ii) the label the book's OWN answer key uses for this item on p.208 (\"11) ... c) { }\"). Refs must be unique, so the printed duplicate could not be mirrored."
+  },
+  {
+    "ref": "Ex 6.2 Q11(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "context": "Solve the following for \\(x\\), where \\(|x|\\) is modulus function, \\([x]\\) is greatest integer function, \\([x]\\) is a fractional part function.",
+    "setLabel": "Ex 6.2 Q11",
+    "stem": "\\(|x|\\le 3\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q11(e)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "context": "Solve the following for \\(x\\), where \\(|x|\\) is modulus function, \\([x]\\) is greatest integer function, \\([x]\\) is a fractional part function.",
+    "setLabel": "Ex 6.2 Q11",
+    "stem": "\\(2|x|=5\\)",
+    "solution": "[Textbook omission: the printed key for this question answers sub-items a), b), c), d), f), g), h), i) and j) but omits (e). The answer given here is derived without a key to check against.]"
+  },
+  {
+    "ref": "Ex 6.2 Q11(f)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "HARD",
+    "context": "Solve the following for \\(x\\), where \\(|x|\\) is modulus function, \\([x]\\) is greatest integer function, \\([x]\\) is a fractional part function.",
+    "setLabel": "Ex 6.2 Q11",
+    "stem": "\\(\\big[x+[x+[x]]\\big]=9\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q11(g)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "context": "Solve the following for \\(x\\), where \\(|x|\\) is modulus function, \\([x]\\) is greatest integer function, \\([x]\\) is a fractional part function.",
+    "setLabel": "Ex 6.2 Q11",
+    "stem": "\\(\\{x\\}>4\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q11(h)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "EASY",
+    "context": "Solve the following for \\(x\\), where \\(|x|\\) is modulus function, \\([x]\\) is greatest integer function, \\([x]\\) is a fractional part function.",
+    "setLabel": "Ex 6.2 Q11",
+    "stem": "\\(\\{x\\}=0\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q11(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "MODERATE",
+    "context": "Solve the following for \\(x\\), where \\(|x|\\) is modulus function, \\([x]\\) is greatest integer function, \\([x]\\) is a fractional part function.",
+    "setLabel": "Ex 6.2 Q11",
+    "stem": "\\(\\{x\\}=0.5\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q11(j)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Piecewise Defined Functions",
+    "difficulty": "HARD",
+    "context": "Solve the following for \\(x\\), where \\(|x|\\) is modulus function, \\([x]\\) is greatest integer function, \\([x]\\) is a fractional part function.",
+    "setLabel": "Ex 6.2 Q11",
+    "stem": "\\(2\\{x\\}=x+[x]\\)"
+  }
+]

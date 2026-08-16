@@ -278,6 +278,106 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Miscellaneous Exercise 2", label: "(I) Select the correct option", kind: "miscellaneous", refPrefixes: ["Misc I "] },
     { group: "Miscellaneous Exercise 2", label: "(II)", kind: "miscellaneous", refPrefixes: ["Misc II "] },
   ],
+
+  // ── Ch.5 Straight Line (Part 1) — verified against Ch_05_Straight_Line.pdf (24pp).
+  //    NINE solved blocks in the boxed sense, but THIRTEEN prefixes: the book also
+  //    embeds a worked example in the theory of each standard form (§5.3.1-§5.3.4),
+  //    each headed a bare `Ex.` with no number. Every block restarts at "Ex. 1)", so
+  //    each is scoped to the sub-section it FOLLOWS — the chapter with the most
+  //    collisions in this book.
+  //
+  //    `5.3 SolvedEx` is the BOXED block on p-09..p-10 and deliberately sits AFTER
+  //    the four theory-embedded `5.3.x` ones in this list: it follows the whole
+  //    §5.3.1-§5.3.5 standard-forms development, which is its physical position.
+  //    No prefix collision results — "5.3.1 SolvedEx" does not start with
+  //    "5.3 SolvedEx" (the char after "5.3" is "." vs " "), and assignSections
+  //    resolves longest-prefix-wins regardless.
+  //
+  //    The book misnumbers a heading on p-03: "5.1.2 Inclination of a line" under
+  //    §5.2, where 5.1.2 is already Shift of Origin on p-01 and 5.2.2 Slope follows
+  //    immediately. It means 5.2.1. Refs are unaffected (that block is scoped 5.2.2)
+  //    but do NOT reintroduce 5.1.2 here — it belongs to the p-02 block.
+  "straight-line-11": [
+    { group: "5.1.1 Equation of Locus", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.1.1 SolvedEx"] },
+    { group: "5.1.2 Shift of Origin", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.1.2 SolvedEx"] },
+    { group: "Exercise 5.1", label: "Exercise 5.1", kind: "exercise", refPrefixes: ["Ex 5.1 "] },
+    { group: "5.2.2 Slope of a Line", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.2.2 SolvedEx"] },
+    { group: "5.2.3 Perpendicular Lines", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.2.3 SolvedEx"] },
+    { group: "5.2.4 Angle Between Intersecting Lines", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.2.4 SolvedEx"] },
+    { group: "Exercise 5.2", label: "Exercise 5.2", kind: "exercise", refPrefixes: ["Ex 5.2 "] },
+    { group: "5.3.1 Point-slope Form", label: "Solved Example", kind: "solved_example", refPrefixes: ["5.3.1 SolvedEx"] },
+    { group: "5.3.2 Slope-Intercept Form", label: "Solved Example", kind: "solved_example", refPrefixes: ["5.3.2 SolvedEx"] },
+    { group: "5.3.3 Two-points Form", label: "Solved Example", kind: "solved_example", refPrefixes: ["5.3.3 SolvedEx"] },
+    { group: "5.3.4 Double-Intercept Form", label: "Solved Example", kind: "solved_example", refPrefixes: ["5.3.4 SolvedEx"] },
+    { group: "5.3 Equation of a Line in Standard Forms", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.3 SolvedEx"] },
+    { group: "Exercise 5.3", label: "Exercise 5.3", kind: "exercise", refPrefixes: ["Ex 5.3 "] },
+    { group: "5.4 General Form of the Equation of a Line", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.4 SolvedEx"] },
+    { group: "5.4.3 Distance Between Two Parallel Lines", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.4.3 SolvedEx"] },
+    { group: "5.4.4 Family of Lines", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.4.4 SolvedEx"] },
+    { group: "Exercise 5.4", label: "Exercise 5.4", kind: "exercise", refPrefixes: ["Ex 5.4 "] },
+    { group: "Miscellaneous Exercise 5", label: "(I) Select the correct option", kind: "miscellaneous", refPrefixes: ["Misc I "] },
+    { group: "Miscellaneous Exercise 5", label: "(II) Answer the following", kind: "miscellaneous", refPrefixes: ["Misc II "] },
+  ],
+
+  // ── Ch.2 Sequences and Series (Part 2) — verified against Ch_02_Sequence_and_Series.pdf
+  //    (20pp). The DENSEST chapter of this book by solutions per page (36 markers/20pp).
+  //
+  //    TWO invented prefixes, both marking content the book leaves unnumbered — the
+  //    shipped 9.1.1a / 4.5b device, NOT the book's own numbering:
+  //      `2.3.1a` a worked example embedded in the §2.3.1 theory that PRECEDES the
+  //               boxed 2.3.1 block and would otherwise collide with it.
+  //      `2.4a`   likewise inside §2.4's own body text, above its banner.
+  //      `2.7.2`  the block under the book's UNNUMBERED "Properties of Summation"
+  //               heading, which sits between Exercise 2.5 and the real §2.8 Power
+  //               Series. It must NOT take the `2.8` namespace: §2.8 is a genuine
+  //               separate section (pure theory, no examples, no exercise of its own).
+  //    Each `a`-suffixed block is ordered BEFORE its parent, which is reading order.
+  //
+  //    Note Exercise 2.6 is physically PRINTED under §2.8 Power Series but is entirely
+  //    summation-of-special-series work; its rows carry the "Properties of Summation"
+  //    subtopic. That divergence is the book-structure vs conceptual axis working as
+  //    designed — see the Design axes section of CLAUDE.md.
+  "sequences-series-11": [
+    { group: "2.3.1 General Term of a G.P.", label: "Worked Example", kind: "solved_example", refPrefixes: ["2.3.1a SolvedEx"] },
+    { group: "2.3.1 General Term of a G.P.", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.3.1 SolvedEx"] },
+    { group: "Exercise 2.1", label: "Exercise 2.1", kind: "exercise", refPrefixes: ["Ex 2.1 "] },
+    { group: "2.3.2 Sum of the First n Terms of a G.P.", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.3.2 SolvedEx"] },
+    { group: "Exercise 2.2", label: "Exercise 2.2", kind: "exercise", refPrefixes: ["Ex 2.2 "] },
+    { group: "2.4 Sum of Infinite Terms of a G.P.", label: "Worked Example", kind: "solved_example", refPrefixes: ["2.4a SolvedEx"] },
+    { group: "2.4 Sum of Infinite Terms of a G.P.", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.4 SolvedEx"] },
+    { group: "2.4.1 Recurring Decimals as Rational Numbers", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.4.1 SolvedEx"] },
+    { group: "Exercise 2.3", label: "Exercise 2.3", kind: "exercise", refPrefixes: ["Ex 2.3 "] },
+    { group: "2.5 Harmonic Progression", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.5 SolvedEx"] },
+    { group: "2.6.3 Harmonic Mean", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.6.3 SolvedEx"] },
+    { group: "Exercise 2.4", label: "Exercise 2.4", kind: "exercise", refPrefixes: ["Ex 2.4 "] },
+    { group: "2.7.1 Sum of n Terms of an A.G.P.", label: "Solved Example", kind: "solved_example", refPrefixes: ["2.7.1 SolvedEx"] },
+    { group: "Exercise 2.5", label: "Exercise 2.5", kind: "exercise", refPrefixes: ["Ex 2.5 "] },
+    { group: "Properties of Summation", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.7.2 SolvedEx"] },
+    { group: "Exercise 2.6", label: "Exercise 2.6", kind: "exercise", refPrefixes: ["Ex 2.6 "] },
+    { group: "Miscellaneous Exercise 2", label: "(I) Select the correct answer", kind: "miscellaneous", refPrefixes: ["Misc I "] },
+    { group: "Miscellaneous Exercise 2", label: "(II) Answer the following", kind: "miscellaneous", refPrefixes: ["Misc II "] },
+  ],
+
+  // ── Ch.6 Functions (Part 2) — verified against Ch_06_Functions.pdf (27pp).
+  //    The SIMPLEST outline in this book, and for an unusual reason: the chapter
+  //    prints NO `SOLVED EXAMPLES` banner anywhere (a scan of all 27 pages returns
+  //    zero) while carrying ~34 worked examples. They sit in TWO theory-embedded
+  //    runs, each numbered CONTINUOUSLY across its sub-sections — Ex.1..18 under
+  //    6.1 (p-03..p-11) and Ex.1..16 under 6.2 (p-14..p-21). Because neither run
+  //    restarts, neither needs sub-section scoping: one prefix per RUN is enough,
+  //    which is why this chapter has 6 blocks where Straight Line needed 19.
+  //
+  //    Do NOT "fix" this into per-6.1.x / per-6.2.x blocks. Splitting a continuously
+  //    numbered run would put Ex.6 in a different /board block from Ex.5 purely
+  //    because a sub-section heading falls between them.
+  "functions-11": [
+    { group: "6.1 Function", label: "Worked Examples", kind: "solved_example", refPrefixes: ["6.1 SolvedEx"] },
+    { group: "Exercise 6.1", label: "Exercise 6.1", kind: "exercise", refPrefixes: ["Ex 6.1 "] },
+    { group: "6.2 Algebra of Functions", label: "Worked Examples", kind: "solved_example", refPrefixes: ["6.2 SolvedEx"] },
+    { group: "Exercise 6.2", label: "Exercise 6.2", kind: "exercise", refPrefixes: ["Ex 6.2 "] },
+    { group: "Miscellaneous Exercise 6", label: "(I) Select the correct answer", kind: "miscellaneous", refPrefixes: ["Misc I "] },
+    { group: "Miscellaneous Exercise 6", label: "(II) Answer the following", kind: "miscellaneous", refPrefixes: ["Misc II "] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

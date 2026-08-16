@@ -242,6 +242,43 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── INGESTED 2026-08-16. Structure mapped before dispatch; two facts matter.
+  //
+  //    1. NINE separate SOLVED EXAMPLES blocks, each restarting at "Ex. 1)" — the
+  //       most of any chapter in this book. The bare `<N.M> SolvedEx.<n>` namespace
+  //       therefore collides nine ways, so every block is scoped to the sub-section
+  //       it FOLLOWS: 5.1.1 (p-01) · 5.1.2 (p-02) · 5.2.2 (p-03..04) · 5.2.3 (p-04) ·
+  //       5.2.4 (p-05) · 5.3 (p-09..10) · 5.4 (p-12..15) · 5.4.3 (p-16..17) ·
+  //       5.4.4 (p-18). See sections.ts. Decide this BEFORE transcription — refs
+  //       route the /board structure, so a late discovery means re-transcribing.
+  //
+  //    2. A PRINTED SECTION-NUMBER DEFECT on p-03: the book heads the inclination
+  //       section "5.1.2 Inclination of a line", but 5.1.2 is already "Shift of
+  //       Origin" on p-01, and this one sits under §5.2 with "5.2.2 Slope of a line"
+  //       immediately after. The book means 5.2.1 (which it otherwise never prints).
+  //       Refs are unaffected — the p-03 solved block follows §5.2.2 — but do not
+  //       "restore" 5.1.2 as a prefix here; it would collide with the p-02 block.
+  //
+  //    Figures: 18 (Fig. 5.1-5.18), ALL in the theory. Verified that no exercise or
+  //    Miscellaneous question references one — Fig. 5.9 sits in the §5.3 theory on
+  //    p-06, above which Exercise 5.2 ends. So this chapter needs no figure-attach.
+  //
+  //    SHIPPED: 183 q (46 solved + 127 subjective + 10 MCQ). 12 errata.
+  //    ZERO our-answer-wrong: every one of the ~120 keyed items was independently
+  //    derived and matched, and the 10 MCQ keys are TRIPLE-confirmed (transcriber
+  //    derivation = blind pass = printed key).
+  //    The sharpest defect is `Ex 5.4 Q15`, which is IMPOSSIBLE as printed: it asks
+  //    for points at distance 1 from a line PARALLEL to the one they must lie on,
+  //    so every candidate is at √2. The key's two points are at distance exactly 1
+  //    from 4x+3y-10=0, which identifies the line the stem lost. Two more are
+  //    answer-affecting solution errors (5.3 SolvedEx.3(i) y=3 for y=-3; (ii)
+  //    asserting tan 30° = √3). The rest are typesetting.
+  //
+  //    EXERCISE 5.1 AND 5.3 BOTH SPILL PAST THE PAGE THEIR BANNER SITS ON — 5.1 runs
+  //    to Q10 on p-03 and 5.3 to Q15 on p-12, against a page-scan estimate of 7 and
+  //    9. Both were recovered only by checking the printed key's highest question
+  //    number (README rule 2c). Nine solved blocks and a chapter this fragmented is
+  //    exactly where that check pays.
   "straight-line-11": {
     id: "straight-line-11",
     chapterName: "Straight Line",
@@ -432,6 +469,52 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── INGESTED 2026-08-16. The DENSEST chapter in the book by solutions per page
+  //    (36 `Solution :` markers in 20pp). Three structural facts.
+  //
+  //    1. EIGHT solved blocks, scoped to the sub-section each FOLLOWS: 2.3.1
+  //       (p-01..03) · 2.3.2 (p-05..08) · 2.4 (p-09) · 2.4.1 (p-10) · 2.5 (p-11) ·
+  //       2.6.3 (p-12..13) · 2.7.1 (p-15) · 2.8 (p-16). Note 2.4.1 and 2.7.1 are
+  //       THEORY-EMBEDDED (no banner) and are invisible to a banner scan — the §2b
+  //       trap. Six of the eight carry a banner; two do not.
+  //
+  //    2. TWO shared-page seams, both needing an explicit split named in both
+  //       agents' prompts: p-14 (EXERCISE 2.4 above, §2.7 A.G.P. below) and — the
+  //       sharper one — p-17, which carries `EXERCISE 2.6` AND `MISCELLANEOUS
+  //       EXERCISE - 2` on the same page. p-05 also reads column-wise: the text
+  //       layer returns the SOLVED EXAMPLES banner BEFORE the §2.3.2 heading, which
+  //       cannot be the physical order (examples never precede their own theory).
+  //
+  //    3. §2.2 Arithmetic Progression is RECALL ONLY — it shares p-00 with §2.1 and
+  //       §2.3 and has no exercise of its own, Class 10 having covered A.P. So the
+  //       "Arithmetic Progression" subtopic draws almost entirely on Miscellaneous
+  //       questions. A thin count there is the book's shape, not a transcription miss.
+  //
+  //    Figures: exactly ONE (Fig. 2.1, in the §2.4 infinite-G.P. theory). No question
+  //    references a figure; no figure-attach needed.
+  //
+  //    SHIPPED: 187 q (44 solved + 133 subjective + 10 MCQ). 12 errata.
+  //    ZERO our-answer-wrong; the 10 MCQ keys are TRIPLE-confirmed. This chapter has
+  //    the DIRTIEST KEY of the three — FOUR genuine answer-key errors, each verified
+  //    by direct computation rather than algebra:
+  //      Ex 2.6 Q2  printed closed form is wrong at EVERY n (n=1 gives 5/2, not even
+  //                 an integer). 0 of 5 test values pass; the correction passes 5/5.
+  //      Ex 2.6 Q8  the book summed r(2r+1)(2r+3) where the question prints 2r-1. It
+  //                 AGREES at n=1 (both 15) and diverges from n=2 (120 vs 85) — the
+  //                 canonical non-discriminating test point, see
+  //                 [[discriminating-test-points]].
+  //      Ex 2.3 Q8  bouncing ball keyed 25 m; the true distance is 40 m. The key
+  //                 counts each rebound once, i.e. the ball rises but never falls.
+  //      Ex 2.1 Q11 bacteria keyed 800 (four doublings) where "end of the 5th hour"
+  //                 is 1600. What settles it is the book contradicting ITSELF in the
+  //                 same exercise: Q12 and Q14 both put the exponent equal to periods
+  //                 ELAPSED. Internal inconsistency beats a lone re-derivation.
+  //    Plus Ex 2.3 Q4, whose data force |r| = 11/6 > 1 for a sum to infinity, and a
+  //    key that numbers Exercise 2.2's last answer "15)" when the exercise has 13
+  //    questions — the mirror image of the spill defects.
+  //
+  //    THREE exercises spill past their banner page (2.1 -> 15 on p-05, 2.2 -> 13 on
+  //    p-09, 2.3 -> 8 on p-11). All three were caught by README rule 2c.
   "sequences-series-11": {
     id: "sequences-series-11",
     chapterName: "Sequences and Series",
@@ -450,6 +533,19 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Harmonic Progression",
       "Arithmetic, Geometric and Harmonic Means",
       "Arithmetico-Geometric Progression",
+      // The book's own heading for the section between 2.7 A.G.P. and 2.8 Power
+      // Series, which it prints WITHOUT a section number — which is why the XI
+      // spine (built from numbered headings) has no entry for it and this list
+      // originally lacked it. Added 2026-08-16: Exercise 2.6 and the solved block
+      // above it are entirely summation-of-special-series work (Sigma r, r^2, r^3),
+      // 26 rows, and TWO transcription agents independently reported that "Power
+      // Series" was the only slot available and a poor fit. Exercise 2.6 is
+      // physically PRINTED under 2.8 Power Series, so the book-structure axis
+      // (sections.ts) files it there while this conceptual axis files it here —
+      // the two axes diverging is the documented design, not a discrepancy.
+      "Properties of Summation",
+      // Zero rows, correctly: 2.8 Power Series is pure theory (five printed
+      // expansions) with no worked example and no exercise of its own.
       "Power Series",
     ],
   },
@@ -513,6 +609,90 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── INGESTED 2026-08-16. The FIRST chapter in this book to need FIGURES, and the
+  //    first with no solved-example banners at all. Four facts.
+  //
+  //    1. THERE IS NO `SOLVED EXAMPLES` BANNER ANYWHERE IN THE CHAPTER — a banner
+  //       scan over all 27 pages returns ZERO, while the chapter carries 34 numbered
+  //       worked examples. They sit in TWO theory-embedded runs, each numbered
+  //       continuously: Ex.1-18 under §6.1 (p-03..p-11) and Ex.1-16 under §6.2
+  //       (p-14..p-21). Prefixes `6.1 SolvedEx.` and `6.2 SolvedEx.` — one per RUN,
+  //       not per sub-section, because each run's numbering is already continuous
+  //       across its sub-sections. This is the §2b trap in its purest form: plan
+  //       bands from a `Solution :` scan here, never from banners.
+  //
+  //    2. FIGURES ARE LOAD-BEARING IN THE EXERCISES, unlike every earlier chapter —
+  //       but the scope is SMALL and was over-estimated at first. 46 figures exist
+  //       (Fig. 6.1-6.46) and all but three are THEORY illustrations needing no row.
+  //       The three that matter are `Ex 6.1 Q1(a)(b)(c)`, arrow-diagram "is this
+  //       relation a function?" questions carrying Fig. 6.32 and 6.33 on p-11 and
+  //       Fig. 6.34 on p-12 — so ONE question's figure set SPANS A PAGE BREAK (the
+  //       mh-sb-9 Precipitation case).
+  //
+  //       CORRECTED 2026-08-16: `Misc II Q39` was predicted to read intervals off a
+  //       graph, on the strength of key answers like (-3,0), (2,5) and {-2,2,4}.
+  //       That was WRONG and the transcription agent refuted it from the page. Q39
+  //       is "Solve the following for x" over modulus / greatest-integer /
+  //       fractional-part functions, and those key entries are the SOLUTION SETS of
+  //       its equations (|x^2-x-6| = x+2 gives {-2,2,4}, and so on). It has no
+  //       figure and no figure number to join on. There are NO printed figures at
+  //       all on p-24..p-26. An interval-shaped answer is not evidence of a graph.
+  //
+  //       Only `Misc II Q16` (f(x)=x+5) and `Q17` (f(x)=x^3+1) are "draw its graph"
+  //       questions whose ANSWER is a graph; those two get a rendered
+  //       `solution_image`. Total figure work for this chapter: 3 crops + 2 renders.
+  //
+  //    3. EXERCISE 6.1 IS MISNUMBERED ON THE PAGE, and the printed key is the one
+  //       that is right. The exercise runs 1..12, skips 13, and then prints TWO
+  //       consecutive questions numbered 14 — "14) Check the injectivity and
+  //       surjectivity" at the foot of p-12 and "14) Show that if f : A -> B and
+  //       g : B -> C are..." at the top of p-13. The key numbers the injectivity
+  //       question **13**, leaves the two "Show that" proofs unkeyed (14, 15), and
+  //       every later number then aligns exactly (16 -> 3/16 for f(x)=3(4x+1) at
+  //       x=-3; 24, 25 likewise). So the page is self-inconsistent and the key is
+  //       coherent. REFS FOLLOW THE KEY: the injectivity question is `Ex 6.1 Q13`.
+  //       Numbering it Q14 as printed would collide with the next question's ref
+  //       and would disagree with the answer key the step-6 gate diffs against.
+  //       Recorded as an erratum; do NOT "restore" the printed duplicate.
+  //       Exercise 6.2's printed key omits Q4 (a "show that" question) — normal.
+  //       Note the key stops at Q25 while the exercise runs to Q28; Q26-Q28 are
+  //       logarithm-identity proofs, so an unkeyed tail there is expected.
+  //
+  //    4. The largest Miscellaneous block in the book: part (I) is 10 MCQs (printed
+  //       key B B B C C A A B C B) and part (II) runs to ~44 questions over p-24..26.
+  //
+  //    SHIPPED: 252 q (41 solved + 201 subjective + 10 MCQ) — the LARGEST chapter of
+  //    the three. 20 errata, the most of any chapter here. ZERO our-answer-wrong; the
+  //    10 MCQ keys are TRIPLE-confirmed (transcriber = blind pass = printed key).
+  //    FOUR answer-affecting errors in the book's own printed SOLUTIONS, which is
+  //    more than the other two chapters combined:
+  //      6.1 SolvedEx.2   states g(3) = -5 while the book's OWN Fig. 6.14 puts the
+  //                       minimum at y ≈ -4. Settled without scale calibration: the
+  //                       minimum marker sits at the same page height as the labelled
+  //                       point (-6,-4), and two points at the same height share a
+  //                       y-value.
+  //      6.1 SolvedEx.13  an inner sign flips + to - mid-derivation and is carried to
+  //                       the final line.
+  //      6.2 SolvedEx.11  reaches |x| > 4 correctly and then prints the COMPLEMENT.
+  //                       On the printed answer the function is undefined everywhere.
+  //      6.2 SolvedEx.15  never substitutes back into its own equation; it unions the
+  //                       intervals and prints [1,3) where the answer is two points.
+  //    Plus Ex 6.1 Q6(b), where the key prints both roots of the SQUARED equation and
+  //    one is extraneous, and Misc I Q4, a multiple-correct item reused as a
+  //    single-answer MCQ (all four statements are true at once).
+  //
+  //    THE KEY RUNS OUT BEFORE THE QUESTIONS DO. It stops PART-WAY THROUGH Misc II
+  //    Q39 — its (g) and (h) are unanswered — while the exercise continues to Q44, so
+  //    21 answerable parts have no printed answer at all. That is NOT the usual
+  //    "the key omits proofs" pattern (Q40 is find-the-domain in 7 parts, Q41
+  //    find-the-range in 5). Those answers were derived unaided and checked by
+  //    substitution, which is weaker evidence than the rest of the chapter carries.
+  //
+  //    Note `render_solution_diagrams.py` here is the 663-line pre-BarCanvas copy and
+  //    had NEVER been run on this book before this chapter — `curves` already plots
+  //    y=f(x) from an expression, but `point` drew only FILLED dots, so an `open`
+  //    marker was added for the step/piecewise graphs where the open-vs-closed
+  //    endpoint IS the mathematical content.
   "functions-11": {
     id: "functions-11",
     chapterName: "Functions",

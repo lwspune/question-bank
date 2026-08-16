@@ -1,0 +1,229 @@
+[
+  {
+    "id": "070b569e-55cd-475e-9d9c-01481dcb071b",
+    "ref": "Ex 6.2 Q1(a)",
+    "solution": "By definition \\((f+g)(x) = f(x)+g(x)\\).\n\\((f+g)(x) = (3x+5)+(6x-1)\\).\nCollecting like terms, \\((f+g)(x) = 9x+4\\)."
+  },
+  {
+    "id": "e9e53517-7980-42c5-83c5-034bd3c24e0d",
+    "ref": "Ex 6.2 Q1(b)",
+    "solution": "\\((f-g)(2) = f(2)-g(2)\\).\n\\(f(2) = 3(2)+5 = 11\\) and \\(g(2) = 6(2)-1 = 11\\).\n\\(\\therefore (f-g)(2) = 11-11 = 0\\)."
+  },
+  {
+    "id": "7d4b1cab-5f85-4dd0-855f-5e395adb572e",
+    "ref": "Ex 6.2 Q1(c)",
+    "solution": "\\((fg)(3) = f(3) \\times g(3)\\).\n\\(f(3) = 3(3)+5 = 14\\) and \\(g(3) = 6(3)-1 = 17\\).\n\\(\\therefore (fg)(3) = 14 \\times 17 = 238\\)."
+  },
+  {
+    "id": "f404bdb0-c056-409f-8509-47ec95145f9c",
+    "ref": "Ex 6.2 Q1(d)",
+    "solution": "\\(\\left(\\dfrac{f}{g}\\right)(x) = \\dfrac{f(x)}{g(x)} = \\dfrac{3x+5}{6x-1}\\).\nThis quotient is defined only where \\(g(x) \\ne 0\\), i.e. \\(6x-1 \\ne 0\\), i.e. \\(x \\ne \\dfrac{1}{6}\\).\n\\(\\therefore \\left(\\dfrac{f}{g}\\right)(x) = \\dfrac{3x+5}{6x-1}\\), with domain \\(\\mathbb{R} - \\left\\{\\dfrac{1}{6}\\right\\}\\)."
+  },
+  {
+    "id": "48a08b3a-2ec5-4ec6-98b3-fc845564361a",
+    "ref": "Ex 6.2 Q2",
+    "solution": "\\((g \\circ f)(x) = g(f(x))\\), so apply \\(f\\) first and feed its output to \\(g\\).\n\\((g \\circ f)(2) = g(f(2)) = g(3) = 4\\).\n\\((g \\circ f)(4) = g(f(4)) = g(6) = 2\\).\n\\((g \\circ f)(5) = g(f(5)) = g(2) = 4\\).\n\\(\\therefore g \\circ f = \\{(2,4),(4,2),(5,4)\\}\\)."
+  },
+  {
+    "id": "9426f685-7d0c-4a04-9fa8-2da962ba5731",
+    "ref": "Ex 6.2 Q3(a)",
+    "solution": "\\((f \\circ g)(x) = f(g(x)) = f(5x-2) = 2(5x-2)^{2}+3\\).\nSince \\((5x-2)^{2} = 25x^{2}-20x+4\\), this is \\(2(25x^{2}-20x+4)+3 = 50x^{2}-40x+8+3\\).\n\\(\\therefore (f \\circ g)(x) = 50x^{2}-40x+11\\)."
+  },
+  {
+    "id": "932c6ab3-968c-47f0-bb04-ea92d29e833d",
+    "ref": "Ex 6.2 Q3(b)",
+    "solution": "\\((g \\circ f)(x) = g(f(x)) = g(2x^{2}+3) = 5(2x^{2}+3)-2\\).\n\\(= 10x^{2}+15-2\\).\n\\(\\therefore (g \\circ f)(x) = 10x^{2}+13\\)."
+  },
+  {
+    "id": "2a185b92-4d83-497b-ab45-da3ae9584afb",
+    "ref": "Ex 6.2 Q3(c)",
+    "solution": "\\((f \\circ f)(x) = f(f(x)) = f(2x^{2}+3) = 2(2x^{2}+3)^{2}+3\\).\nSince \\((2x^{2}+3)^{2} = 4x^{4}+12x^{2}+9\\), this is \\(2(4x^{4}+12x^{2}+9)+3 = 8x^{4}+24x^{2}+18+3\\).\n\\(\\therefore (f \\circ f)(x) = 8x^{4}+24x^{2}+21\\)."
+  },
+  {
+    "id": "6600524f-14bd-44d3-8752-0a56198acede",
+    "ref": "Ex 6.2 Q3(d)",
+    "solution": "\\((g \\circ g)(x) = g(g(x)) = g(5x-2) = 5(5x-2)-2\\).\n\\(= 25x-10-2\\).\n\\(\\therefore (g \\circ g)(x) = 25x-12\\)."
+  },
+  {
+    "id": "5e188aab-b3c1-4db0-9a9f-96ddbff966f5",
+    "ref": "Ex 6.2 Q4(a)",
+    "solution": "\\(f\\) and \\(g\\) are inverses of each other when both composites give the identity function.\n\\((f \\circ g)(x) = f(4x+7) = \\dfrac{(4x+7)-7}{4} = \\dfrac{4x}{4} = x\\).\n\\((g \\circ f)(x) = g\\left(\\dfrac{x-7}{4}\\right) = 4\\left(\\dfrac{x-7}{4}\\right)+7 = (x-7)+7 = x\\).\nSince \\((f \\circ g)(x) = (g \\circ f)(x) = x\\) for every real \\(x\\), \\(f\\) and \\(g\\) are inverse functions of each other."
+  },
+  {
+    "id": "59a99889-ba4b-4d6f-8486-51cc04227ef1",
+    "ref": "Ex 6.2 Q4(b)",
+    "solution": "\\((f \\circ g)(x) = f\\left(\\sqrt[3]{x-4}\\right) = \\left(\\sqrt[3]{x-4}\\right)^{3}+4 = (x-4)+4 = x\\).\n\\((g \\circ f)(x) = g(x^{3}+4) = \\sqrt[3]{(x^{3}+4)-4} = \\sqrt[3]{x^{3}} = x\\).\nSince \\((f \\circ g)(x) = (g \\circ f)(x) = x\\) for every real \\(x\\), \\(f\\) and \\(g\\) are inverse functions of each other."
+  },
+  {
+    "id": "66b581ba-11a2-4f97-98b2-e594489de57c",
+    "ref": "Ex 6.2 Q4(c)",
+    "solution": "\\((f \\circ g)(x) = f\\left(\\dfrac{2x+3}{x-1}\\right) = \\dfrac{\\dfrac{2x+3}{x-1}+3}{\\dfrac{2x+3}{x-1}-2}\\).\nMultiplying numerator and denominator by \\((x-1)\\): \\(= \\dfrac{(2x+3)+3(x-1)}{(2x+3)-2(x-1)} = \\dfrac{5x}{5} = x\\).\n\\((g \\circ f)(x) = g\\left(\\dfrac{x+3}{x-2}\\right) = \\dfrac{2\\left(\\dfrac{x+3}{x-2}\\right)+3}{\\dfrac{x+3}{x-2}-1} = \\dfrac{2(x+3)+3(x-2)}{(x+3)-(x-2)} = \\dfrac{5x}{5} = x\\).\nBoth composites reduce to the identity (for \\(x \\ne 1\\) and \\(x \\ne 2\\) respectively, where the expressions are defined), hence \\(f\\) and \\(g\\) are inverse functions of each other."
+  },
+  {
+    "id": "efe74f41-c497-4fcc-ba6f-c04fd50d1ee9",
+    "ref": "Ex 6.2 Q5(a)",
+    "solution": "An inverse function exists only if \\(f\\) is one-one and onto.\nHere \\(f(-1) = 5(-1)^{2} = 5\\) and \\(f(1) = 5(1)^{2} = 5\\), so two different inputs give the same output.\nHence \\(f\\) is not one-one.\n\\(\\therefore f^{-1}\\) does not exist."
+  },
+  {
+    "id": "ea27ec8f-ee32-4837-ba01-a5d5f2cb58a4",
+    "ref": "Ex 6.2 Q5(b)",
+    "solution": "\\(f(x) = 8\\) is a constant function, so every input is sent to \\(8\\); e.g. \\(f(1) = f(2) = 8\\).\nHence \\(f\\) is not one-one (and its range is only \\(\\{8\\}\\), so it is not onto \\(\\mathbb{R}\\) either).\n\\(\\therefore f^{-1}\\) does not exist."
+  },
+  {
+    "id": "1d517667-3535-4f6c-ac92-43c40f1fd77f",
+    "ref": "Ex 6.2 Q5(c)",
+    "solution": "\\(f(x) = \\dfrac{6x-7}{3}\\) is a non-constant linear function, hence one-one and onto \\(\\mathbb{R}\\); so \\(f^{-1}\\) exists.\nLet \\(y = \\dfrac{6x-7}{3}\\). Then \\(3y = 6x-7\\), so \\(6x = 3y+7\\) and \\(x = \\dfrac{3y+7}{6}\\).\nInterchanging \\(x\\) and \\(y\\), \\(f^{-1}(x) = \\dfrac{3x+7}{6}\\)."
+  },
+  {
+    "id": "aa93c686-0be7-4ecf-8f7a-3bc27d8b09c1",
+    "ref": "Ex 6.2 Q5(d)",
+    "solution": "\\(f(x) = \\sqrt{4x+5}\\) is real only when \\(4x+5 \\ge 0\\), i.e. \\(x \\ge -\\dfrac{5}{4}\\), and a square root is never negative, so the range of \\(f\\) is \\([0,\\infty)\\).\nSince the range is not the whole of \\(\\mathbb{R}\\), \\(f\\) is not onto \\(\\mathbb{R}\\), and an inverse function cannot be defined on \\(\\mathbb{R}\\). (Only after restricting it to \\(f : \\left[-\\dfrac{5}{4},\\infty\\right) \\to [0,\\infty)\\) does \\(f\\) become a bijection, the rule of the inverse then being \\(\\dfrac{x^{2}-5}{4}\\).)\n\\(\\therefore f^{-1}\\) does not exist."
+  },
+  {
+    "id": "504a0893-88a1-49f2-b95d-920de90e630d",
+    "ref": "Ex 6.2 Q5(e)",
+    "solution": "\\(f(x) = 9x^{3}+8\\) is strictly increasing on \\(\\mathbb{R}\\) and takes every real value, so it is one-one and onto; \\(f^{-1}\\) exists.\nLet \\(y = 9x^{3}+8\\). Then \\(9x^{3} = y-8\\), so \\(x^{3} = \\dfrac{y-8}{9}\\) and \\(x = \\sqrt[3]{\\dfrac{y-8}{9}}\\).\nInterchanging \\(x\\) and \\(y\\), \\(f^{-1}(x) = \\sqrt[3]{\\dfrac{x-8}{9}}\\)."
+  },
+  {
+    "id": "0836c85c-376f-48c6-b7e7-17519deee65b",
+    "ref": "Ex 6.2 Q5(f)",
+    "solution": "Test whether \\(f\\) is one-one across its two branches.\nFor \\(x = -1 < 0\\): \\(f(-1) = -1+7 = 6\\). For \\(x = 2 \\ge 0\\): \\(f(2) = 8-2 = 6\\).\nSo \\(f(-1) = f(2) = 6\\) with \\(-1 \\ne 2\\), i.e. \\(f\\) is not one-one.\n\\(\\therefore f^{-1}\\) does not exist."
+  },
+  {
+    "id": "82627fd3-4608-4e5f-9aa8-538ef728088d",
+    "ref": "Ex 6.2 Q6(a)",
+    "solution": "Here \\(3 > 2\\), so the branch \\(f(x) = 5x+7\\) applies.\n\\(f(3) = 5(3)+7 = 15+7\\).\n\\(\\therefore f(3) = 22\\)."
+  },
+  {
+    "id": "f139fa95-98c5-4120-bb42-0f77c03bfaaf",
+    "ref": "Ex 6.2 Q6(b)",
+    "solution": "Here \\(2 \\le 2\\), so the branch \\(f(x) = x^{2}+3\\) applies.\n\\(f(2) = 2^{2}+3 = 4+3\\).\n\\(\\therefore f(2) = 7\\)."
+  },
+  {
+    "id": "47003153-906a-405f-8ac6-5d97d4e80cfa",
+    "ref": "Ex 6.2 Q6(c)",
+    "solution": "Here \\(0 \\le 2\\), so the branch \\(f(x) = x^{2}+3\\) applies.\n\\(f(0) = 0^{2}+3\\).\n\\(\\therefore f(0) = 3\\)."
+  },
+  {
+    "id": "213ede00-d4b5-4f95-b7d0-4fdcb81665ad",
+    "ref": "Ex 6.2 Q7(a)",
+    "solution": "Here \\(-4 \\le -3\\), so the branch \\(f(x) = 4x-2\\) applies.\n\\(f(-4) = 4(-4)-2 = -16-2\\).\n\\(\\therefore f(-4) = -18\\)."
+  },
+  {
+    "id": "d56e3131-2983-41b9-beed-20a14f43a29a",
+    "ref": "Ex 6.2 Q7(b)",
+    "solution": "The middle branch needs \\(-3 < x\\), which \\(x = -3\\) does not satisfy; but \\(-3 \\le -3\\), so the branch \\(f(x) = 4x-2\\) applies.\n\\(f(-3) = 4(-3)-2 = -12-2\\).\n\\(\\therefore f(-3) = -14\\)."
+  },
+  {
+    "id": "0a26888b-d4f1-4d0f-afb6-cb8c2f34f0a8",
+    "ref": "Ex 6.2 Q7(c)",
+    "solution": "Here \\(-3 < 1 < 3\\), so the constant branch applies.\n\\(\\therefore f(1) = 5\\)."
+  },
+  {
+    "id": "aa8bd907-a434-47d3-a885-e5f5e08b40d3",
+    "ref": "Ex 6.2 Q7(d)",
+    "solution": "Here \\(5 \\ge 3\\), so the branch \\(f(x) = x^{2}\\) applies.\n\\(f(5) = 5^{2}\\).\n\\(\\therefore f(5) = 25\\)."
+  },
+  {
+    "id": "e6771d62-3738-4237-8423-05a985687eec",
+    "ref": "Ex 6.2 Q8(a)",
+    "solution": "\\(|2| = 2\\), so \\(f(2) = 2|2|+3(2) = 2(2)+6 = 4+6\\).\n\\(\\therefore f(2) = 10\\)."
+  },
+  {
+    "id": "24bf3f43-2ce8-4822-b7b4-e62a363e8e6d",
+    "ref": "Ex 6.2 Q8(b)",
+    "solution": "\\(|-5| = 5\\), so \\(f(-5) = 2(5)+3(-5) = 10-15\\).\n\\(\\therefore f(-5) = -5\\)."
+  },
+  {
+    "id": "17e835f7-8cca-4fe7-bea7-7f28d613b0e5",
+    "ref": "Ex 6.2 Q9(a)",
+    "solution": "\\([7.2] = 7\\), the greatest integer not exceeding \\(7.2\\).\n\\(f(7.2) = 4(7)-3 = 28-3\\).\n\\(\\therefore f(7.2) = 25\\)."
+  },
+  {
+    "id": "617ab42d-893c-4a7c-9175-e6fc767d2f1c",
+    "ref": "Ex 6.2 Q9(b)",
+    "solution": "\\([0.5] = 0\\), the greatest integer not exceeding \\(0.5\\).\n\\(f(0.5) = 4(0)-3\\).\n\\(\\therefore f(0.5) = -3\\)."
+  },
+  {
+    "id": "344f7464-86a4-4f02-a870-642361d82c6a",
+    "ref": "Ex 6.2 Q9(c)",
+    "solution": "\\(-\\dfrac{5}{2} = -2.5\\), and the greatest integer not exceeding \\(-2.5\\) is \\(-3\\) (not \\(-2\\), since \\(-2 > -2.5\\)). So \\(\\left[-\\dfrac{5}{2}\\right] = -3\\).\n\\(f\\left(-\\dfrac{5}{2}\\right) = 4(-3)-3 = -12-3\\).\n\\(\\therefore f\\left(-\\dfrac{5}{2}\\right) = -15\\)."
+  },
+  {
+    "id": "53fe614a-9576-4b14-89a7-a37521db0116",
+    "ref": "Ex 6.2 Q9(d)",
+    "solution": "\\(2\\pi = 2(3.14) = 6.28\\), so \\([2\\pi] = 6\\).\n\\(f(2\\pi) = 4(6)-3 = 24-3\\).\n\\(\\therefore f(2\\pi) = 21\\)."
+  },
+  {
+    "id": "403c2ebd-ea6a-4767-b000-994a8a6252e7",
+    "ref": "Ex 6.2 Q10(a)",
+    "solution": "\\(-1\\) is an integer, so its fractional part is \\(\\{-1\\} = -1-[-1] = -1-(-1) = 0\\).\n\\(f(-1) = 2(0)+5(-1) = 0-5\\).\n\\(\\therefore f(-1) = -5\\)."
+  },
+  {
+    "id": "f0275ada-c05d-4f2e-bdea-62004dca67d2",
+    "ref": "Ex 6.2 Q10(b)",
+    "solution": "Since \\(0 \\le \\dfrac{1}{4} < 1\\), \\(\\left[\\dfrac{1}{4}\\right] = 0\\) and \\(\\left\\{\\dfrac{1}{4}\\right\\} = \\dfrac{1}{4}\\).\n\\(f\\left(\\dfrac{1}{4}\\right) = 2\\left(\\dfrac{1}{4}\\right)+5\\left(\\dfrac{1}{4}\\right) = \\dfrac{1}{2}+\\dfrac{5}{4} = \\dfrac{7}{4}\\).\n\\(\\therefore f\\left(\\dfrac{1}{4}\\right) = 1.75\\)."
+  },
+  {
+    "id": "3d324cb3-d0d7-4134-8878-28e52f730ef9",
+    "ref": "Ex 6.2 Q10(c)",
+    "solution": "\\([-1.2] = -2\\), so \\(\\{-1.2\\} = -1.2-(-2) = 0.8\\).\n\\(f(-1.2) = 2(0.8)+5(-1.2) = 1.6-6\\).\n\\(\\therefore f(-1.2) = -4.4\\)."
+  },
+  {
+    "id": "236b4a90-ef67-4194-ac9b-7111e3a55e52",
+    "ref": "Ex 6.2 Q10(d)",
+    "solution": "\\(-6\\) is an integer, so \\(\\{-6\\} = -6-(-6) = 0\\).\n\\(f(-6) = 2(0)+5(-6)\\).\n\\(\\therefore f(-6) = -30\\)."
+  },
+  {
+    "id": "fdf95d77-f6de-44f0-8cc9-3e30ecb92204",
+    "ref": "Ex 6.2 Q11(a)",
+    "solution": "\\(|a| \\ge k\\) (with \\(k>0\\)) means \\(a \\ge k\\) or \\(a \\le -k\\). Here \\(a = x+4\\) and \\(k = 5\\).\nFrom \\(x+4 \\ge 5\\): \\(x \\ge 1\\).\nFrom \\(x+4 \\le -5\\): \\(x \\le -9\\).\n\\(\\therefore x \\in (-\\infty,-9] \\cup [1,\\infty)\\)."
+  },
+  {
+    "id": "89d21cc1-0cbf-4baa-ab2e-42d937b8d541",
+    "ref": "Ex 6.2 Q11(b)",
+    "solution": "The moduli change sign at \\(x = 2\\) and \\(x = 4\\), so examine the three intervals.\nFor \\(x < 2\\): both \\(x-4\\) and \\(x-2\\) are negative, so \\((4-x)+(2-x) = 3\\), i.e. \\(6-2x = 3\\), giving \\(x = 1.5\\), which does satisfy \\(x < 2\\); accepted.\nFor \\(2 \\le x \\le 4\\): \\((4-x)+(x-2) = 2\\), and \\(2 \\ne 3\\), so there is no solution here.\nFor \\(x > 4\\): both are positive, so \\((x-4)+(x-2) = 3\\), i.e. \\(2x-6 = 3\\), giving \\(x = 4.5\\), which does satisfy \\(x > 4\\); accepted.\nCheck: at \\(x = 1.5\\), \\(|{-2.5}|+|{-0.5}| = 3\\); at \\(x = 4.5\\), \\(|0.5|+|2.5| = 3\\).\n\\(\\therefore x = 1.5\\) or \\(x = 4.5\\)."
+  },
+  {
+    "id": "0f20fabb-0056-4fee-94b6-01378df2baee",
+    "ref": "Ex 6.2 Q11(c)",
+    "solution": "Since \\(x^{2} = |x|^{2}\\), put \\(t = |x|\\), where \\(t \\ge 0\\). The equation becomes \\(t^{2}+7t+12 = 0\\).\n\\((t+3)(t+4) = 0\\), so \\(t = -3\\) or \\(t = -4\\).\nBoth values are negative, whereas \\(|x| \\ge 0\\) for every real \\(x\\), so neither is admissible.\n(Directly: for every real \\(x\\), \\(x^{2}+7|x|+12 \\ge 12 > 0\\), so the left side can never be \\(0\\).)\n\\(\\therefore\\) there is no real solution; the solution set is \\(\\{\\ \\}\\)."
+  },
+  {
+    "id": "94491ffd-2d49-4493-8564-fa672b86cd7f",
+    "ref": "Ex 6.2 Q11(d)",
+    "solution": "\\(|x| \\le k\\) (with \\(k>0\\)) means \\(-k \\le x \\le k\\). Here \\(k = 3\\).\nSo \\(-3 \\le x \\le 3\\).\n\\(\\therefore x \\in [-3,3]\\)."
+  },
+  {
+    "id": "e39b5ed4-7ddd-472e-8e7a-90fa41471bcc",
+    "ref": "Ex 6.2 Q11(e)",
+    "solution": "\\(2|x| = 5\\) gives \\(|x| = \\dfrac{5}{2}\\).\n\\(|x| = k\\) (with \\(k>0\\)) means \\(x = k\\) or \\(x = -k\\), so \\(x = \\dfrac{5}{2}\\) or \\(x = -\\dfrac{5}{2}\\).\nCheck: \\(2\\left|\\pm\\dfrac{5}{2}\\right| = 2 \\times \\dfrac{5}{2} = 5\\), so both values satisfy the equation.\n\\(\\therefore x = \\pm\\dfrac{5}{2}\\), i.e. \\(x = \\pm 2.5\\).",
+    "_note": "The book's printed answer block for Ex 6.2 Q11 lists a), b), c), d), f), g), h), i), j) but OMITS e). This answer is derived independently; no key entry exists to compare against."
+  },
+  {
+    "id": "f169f1a3-c054-4faf-9714-7022bbc3d19d",
+    "ref": "Ex 6.2 Q11(f)",
+    "solution": "Write \\(x = [x]+\\{x\\}\\), where \\([x] = n\\) is an integer and \\(0 \\le \\{x\\} < 1\\).\nAn integer can be pulled out of the greatest-integer bracket, so \\([x+[x]] = [n+\\{x\\}+n] = [2n+\\{x\\}] = 2n+[\\{x\\}] = 2n\\).\nThen \\(\\big[x+[x+[x]]\\big] = [n+\\{x\\}+2n] = [3n+\\{x\\}] = 3n\\).\nSo \\(3n = 9\\), i.e. \\([x] = 3\\), which holds exactly when \\(3 \\le x < 4\\).\nCheck with \\(x = 3.5\\): \\([3.5] = 3\\), then \\([3.5+3] = [6.5] = 6\\), then \\([3.5+6] = [9.5] = 9\\), as required.\n\\(\\therefore x \\in [3,4)\\), i.e. \\(x = 3+r\\) where \\(0 \\le r < 1\\)."
+  },
+  {
+    "id": "ead927df-43e4-4876-8ac2-fd625378c787",
+    "ref": "Ex 6.2 Q11(g)",
+    "solution": "By definition \\(\\{x\\} = x-[x]\\), and this always satisfies \\(0 \\le \\{x\\} < 1\\).\nSo \\(\\{x\\}\\) is always less than \\(1\\) and can never exceed \\(4\\).\n\\(\\therefore\\) there is no such \\(x\\); the solution set is \\(\\{\\ \\}\\)."
+  },
+  {
+    "id": "b2fa1fd3-99ea-4a50-89d8-7eecc48958fc",
+    "ref": "Ex 6.2 Q11(h)",
+    "solution": "\\(\\{x\\} = x-[x]\\), so \\(\\{x\\} = 0\\) means \\(x = [x]\\), i.e. \\(x\\) equals the greatest integer not exceeding it.\nThat happens precisely when \\(x\\) is itself an integer, and for every integer \\(x\\) we do get \\(\\{x\\} = 0\\).\n\\(\\therefore x \\in \\mathbb{Z}\\).",
+    "_note": "The book's key prints \"N, Z\" for this part. Every natural number is an integer, so the complete solution set is \\(\\mathbb{Z}\\); the answer given here states that. Not counted as a book error, only as a loosely worded key entry."
+  },
+  {
+    "id": "c20242e2-df36-4f9d-825b-c7c75dfef944",
+    "ref": "Ex 6.2 Q11(i)",
+    "solution": "\\(\\{x\\} = x-[x] = 0.5\\) gives \\(x = [x]+0.5\\).\nLet \\([x] = n\\), an integer; then \\(x = n+0.5\\).\nCheck: for \\(x = n+0.5\\) we get \\([x] = n\\) (since \\(n \\le n+0.5 < n+1\\)) and \\(\\{x\\} = 0.5\\), as required.\n\\(\\therefore x = n+0.5\\), where \\(n \\in \\mathbb{Z}\\)."
+  },
+  {
+    "id": "5876383a-cfd7-4714-8a7a-299aeb18a300",
+    "ref": "Ex 6.2 Q11(j)",
+    "solution": "Write \\(x = [x]+\\{x\\}\\). Then \\(x+[x] = 2[x]+\\{x\\}\\), so the equation \\(2\\{x\\} = x+[x]\\) becomes \\(2\\{x\\} = 2[x]+\\{x\\}\\), i.e. \\(\\{x\\} = 2[x]\\).\nNow \\(0 \\le \\{x\\} < 1\\), so \\(0 \\le 2[x] < 1\\), i.e. \\(0 \\le [x] < \\dfrac{1}{2}\\).\nAs \\([x]\\) is an integer, the only possibility is \\([x] = 0\\), and then \\(\\{x\\} = 2(0) = 0\\), so \\(x = [x]+\\{x\\} = 0\\).\nCheck in the original equation: \\(2\\{0\\} = 0\\) and \\(0+[0] = 0\\), so \\(x = 0\\) does satisfy it.\n\\(\\therefore x = 0\\)."
+  }
+]

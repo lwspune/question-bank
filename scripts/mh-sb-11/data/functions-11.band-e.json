@@ -1,0 +1,162 @@
+[
+  {
+    "ref": "6.2 SolvedEx.1(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x) = x^2 + 2\\) and \\(g(x) = 5x - 8\\), then find",
+    "setLabel": "6.2 SolvedEx.1",
+    "stem": "\\((f + g)(1)\\)",
+    "solution": "As \\((f + g)(x) = f(x) + g(x)\\)\n\\((f + g)(1) = f(1) + g(1)\\)\n\\(= [(1)^2 + 2] + [5(1) - 8]\\)\n\\(= 3 + (-3)\\)\n\\(= 0\\)"
+  },
+  {
+    "ref": "6.2 SolvedEx.1(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x) = x^2 + 2\\) and \\(g(x) = 5x - 8\\), then find",
+    "setLabel": "6.2 SolvedEx.1",
+    "stem": "\\((f - g)(-2)\\)",
+    "solution": "As \\((f - g)(x) = f(x) - g(x)\\)\n\\((f - g)(-2) = f(-2) - g(-2)\\)\n\\(= [(-2)^2 + 2] - [5(-2) - 8]\\)\n\\(= [4 + 2] - [-10 - 8]\\)\n\\(= 6 + 18\\)\n\\(= 24\\)"
+  },
+  {
+    "ref": "6.2 SolvedEx.1(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Functions",
+    "difficulty": "MODERATE",
+    "context": "If \\(f(x) = x^2 + 2\\) and \\(g(x) = 5x - 8\\), then find",
+    "setLabel": "6.2 SolvedEx.1",
+    "stem": "\\((f \\circ g)(3m)\\)",
+    "solution": "As \\((fg)(x) = f(x)\\,g(x)\\)\n\\((f \\circ g)(3m) = f(3m)\\,g(3m)\\)\n\\(= [(3m)^2 + 2]\\,[5(3m) - 8]\\)\n\\(= [9m^2 + 2]\\,[15m - 8]\\)\n\\(= 135m^3 - 72m^2 + 30m - 16\\)",
+    "_note": "TWO printed defects, both verified on the page image at high zoom. (1) The book labels this sub-item 'ii)' — the SAME label it gives the previous sub-item (f - g)(-2); the fourth is correctly 'iv)', so 'iii)' is simply misprinted as 'ii)'. Transcribed here as (iii) so the refs stay unique. (2) The stem prints the COMPOSITION symbol, \\((f \\circ g)(3m)\\), but the book's own solution opens 'As \\((fg)(x) = f(x)g(x)\\)' and computes the PRODUCT \\(f(3m)\\cdot g(3m)\\); the printed answer \\(135m^3 - 72m^2 + 30m - 16\\) is exactly \\((9m^2+2)(15m-8)\\), confirming the product reading. The true composition \\((f \\circ g)(3m) = f(g(3m)) = (15m-8)^2 + 2 = 225m^2 - 240m + 66\\) is a different answer, so the stem's symbol is wrong, not the solution."
+  },
+  {
+    "ref": "6.2 SolvedEx.1(iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Functions",
+    "difficulty": "EASY",
+    "context": "If \\(f(x) = x^2 + 2\\) and \\(g(x) = 5x - 8\\), then find",
+    "setLabel": "6.2 SolvedEx.1",
+    "stem": "\\(\\dfrac{f}{g}(0)\\)",
+    "solution": "As \\(\\left(\\dfrac{f}{g}\\right)(x) = \\dfrac{f(x)}{g(x)},\\ g(x) \\ne 0\\)\n\\(\\left(\\dfrac{f}{g}\\right)(0) = \\dfrac{f(0)}{g(0)} = \\dfrac{0^2 + 2}{5(0) - 8}\\)\n\\(= \\dfrac{2}{-8} = -\\dfrac{1}{4}\\)"
+  },
+  {
+    "ref": "6.2 SolvedEx.2(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Functions",
+    "difficulty": "MODERATE",
+    "context": "Given the function \\(f(x) = 5x^2\\) and \\(g(x) = \\sqrt{4 - x}\\) find the domain of",
+    "setLabel": "6.2 SolvedEx.2",
+    "stem": "\\((f + g)(x)\\)",
+    "solution": "Domain of \\(f(x) = 5x^2\\) is \\((-\\infty, \\infty)\\).\nTo find domain of \\(g(x) = \\sqrt{4 - x}\\)\n\\(4 - x \\ge 0\\)\n\\(x - 4 \\le 0\\)\nLet \\(x \\le 4\\), So domain is \\((-\\infty, 4]\\).\nTherefore, domain of \\((f + g)(x)\\) is \\((-\\infty, \\infty) \\cap (-\\infty, 4]\\), that is \\((-\\infty, 4]\\)"
+  },
+  {
+    "ref": "6.2 SolvedEx.2(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Functions",
+    "difficulty": "MODERATE",
+    "context": "Given the function \\(f(x) = 5x^2\\) and \\(g(x) = \\sqrt{4 - x}\\) find the domain of",
+    "setLabel": "6.2 SolvedEx.2",
+    "stem": "\\((f \\circ g)(x)\\)",
+    "solution": "Similarly, domain of \\((f \\circ g)(x) = 5x^2\\sqrt{4 - x}\\) is \\((-\\infty, 4]\\)",
+    "_note": "Same defect as SolvedEx.1(iii): the stem prints the COMPOSITION symbol \\((f \\circ g)(x)\\) but the solution writes the PRODUCT \\(5x^2\\sqrt{4 - x}\\), i.e. \\((fg)(x)\\). The true composition \\(f(g(x)) = 5(\\sqrt{4-x})^2 = 5(4 - x) = 20 - 5x\\) has domain \\((-\\infty, 4]\\) too, so the printed ANSWER happens to be right either way; only the symbol in the stem is wrong."
+  },
+  {
+    "ref": "6.2 SolvedEx.2(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Functions",
+    "difficulty": "MODERATE",
+    "context": "Given the function \\(f(x) = 5x^2\\) and \\(g(x) = \\sqrt{4 - x}\\) find the domain of",
+    "setLabel": "6.2 SolvedEx.2",
+    "stem": "\\(\\dfrac{f}{g}(x)\\)",
+    "solution": "And domain of \\(\\left(\\dfrac{f}{g}\\right)(x) = \\dfrac{5x^2}{\\sqrt{4 - x}}\\) is \\((-\\infty, 4)\\)\nAs, at \\(x = 4\\) the denominator \\(g(x) = 0\\)."
+  },
+  {
+    "ref": "6.2 SolvedEx.3(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Composition of Functions",
+    "difficulty": "MODERATE",
+    "context": "If \\(f(x) = \\dfrac{2}{x + 5}\\) and \\(g(x) = x^2 - 1\\), then find",
+    "setLabel": "6.2 SolvedEx.3",
+    "stem": "\\((f \\circ g)(x)\\)",
+    "solution": "As \\((f \\circ g)(x) = f[g(x)]\\) and \\(f(x) = \\dfrac{2}{x + 5}\\)\nReplace \\(x\\) from \\(f(x)\\) by \\(g(x)\\), to get\n\\((f \\circ g)(x) = \\dfrac{2}{g(x) + 5}\\)\n\\(= \\dfrac{2}{x^2 - 1 + 5}\\)\n\\(= \\dfrac{2}{x^2 + 4}\\)"
+  },
+  {
+    "ref": "6.2 SolvedEx.3(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Composition of Functions",
+    "difficulty": "MODERATE",
+    "context": "If \\(f(x) = \\dfrac{2}{x + 5}\\) and \\(g(x) = x^2 - 1\\), then find",
+    "setLabel": "6.2 SolvedEx.3",
+    "stem": "\\((g \\circ f)(3)\\)",
+    "solution": "As \\((g \\circ f)(x) = g[f(x)]\\) and \\(g(x) = x^2 - 1\\)\nReplace \\(x\\) by \\(f(x)\\), to get\n\\((g \\circ f)(x) = [f(x)]^2 - 1\\)\n\\(= \\left(\\dfrac{2}{x + 5}\\right)^2 - 1\\)\nNow let \\(x = 3\\)\n\\((g \\circ f)(3) = \\left(\\dfrac{2}{3 + 5}\\right)^2 - 1\\)\n\\(= \\left(\\dfrac{2}{8}\\right)^2 - 1\\)\n\\(= \\left(\\dfrac{1}{4}\\right)^2 - 1\\)\n\\(= \\dfrac{1 - 16}{16}\\)\n\\(= -\\dfrac{15}{16}\\)",
+    "_note": "The stem of this sub-item sits at the foot of the LEFT column of the page while its printed solution sits at the top of the RIGHT column — a column-wise, not page-wise, boundary."
+  },
+  {
+    "ref": "6.2 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Composition of Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(f(x) = x^2\\), \\(g(x) = x + 5\\), and \\(h(x) = \\dfrac{1}{x}\\), \\(x \\ne 0\\), find \\((g \\circ f \\circ h)(x)\\)",
+    "solution": "\\((g \\circ f \\circ h)(x)\\)\n\\(= g\\left\\{f[h(x)]\\right\\}\\)\n\\(= g\\left[f\\left(\\dfrac{1}{x}\\right)\\right]\\)\n\\(= g\\left[\\left(\\dfrac{1}{x}\\right)^2\\right]\\)\n\\(= \\left(\\dfrac{1}{x}\\right)^2 + 5\\)\n\\(= \\dfrac{1}{x^2} + 5\\)"
+  },
+  {
+    "ref": "6.2 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Composition of Functions",
+    "difficulty": "EASY",
+    "stem": "If \\(h(x) = (x - 5)^2\\), find the functions \\(f\\) and \\(g\\), such that \\(h = f \\circ g\\).",
+    "solution": "In \\(h(x)\\), 5 is subtracted from \\(x\\) first and then squared. Let \\(g(x) = x - 5\\) and \\(f(x) = x^2\\), (verify)",
+    "_note": "The book marks this solution with an arrow glyph rather than the word 'Solution :' — it is still the book's printed solution."
+  },
+  {
+    "ref": "6.2 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Composition of Functions",
+    "difficulty": "MODERATE",
+    "stem": "Express \\(m(x) = \\dfrac{1}{x^3 + 7}\\) in the form of \\(f \\circ g \\circ h\\)",
+    "solution": "In \\(m(x)\\), \\(x\\) is cubed first then 7 is added and then its reciprocal taken. So, \\(h(x) = x^3\\), \\(g(x) = x + 7\\) and \\(f(x) = \\dfrac{1}{x}\\), (verify)",
+    "_note": "The printed solution STRADDLES a page break: it opens at the foot of the right column of p-15 and its final line ('h(x) = x^3, g(x) = x + 7 and f(x) = 1/x, (verify)') is the first line of the left column of p-16. Both pages are inside this band, so the solution is complete. Like SolvedEx.5 it is marked with an arrow glyph rather than 'Solution :'."
+  },
+  {
+    "ref": "6.2 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Inverse Functions",
+    "difficulty": "EASY",
+    "stem": "If \\(f\\) is one-one onto function with \\(f(x) = 9 - 5x\\), find \\(f^{-1}(-1)\\).",
+    "solution": "Let \\(f^{-1}(-1) = m\\), then \\(-1 = f(m)\\)\nTherefore,\n\\(-1 = 9 - 5m\\)\n\\(5m = 9 + 1\\)\n\\(5m = 10\\)\n\\(m = 2\\)\nThat is \\(f(2) = -1\\), so \\(f^{-1}(-1) = 2\\).",
+    "_note": "The book marks this solution 'Soln. :' (the abbreviation) rather than 'Solution :', on the very page where the neighbouring examples use the full word."
+  },
+  {
+    "ref": "6.2 SolvedEx.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Inverse Functions",
+    "difficulty": "MODERATE",
+    "stem": "Verify that \\(f(x) = \\dfrac{x - 5}{8}\\) and \\(g(x) = 8x + 5\\) are inverse functions of each other.",
+    "solution": "As \\(f(x) = \\dfrac{x - 5}{8}\\), replace \\(x\\) in \\(f(x)\\) with \\(g(x)\\)\n\\(f[g(x)] = \\dfrac{g(x) - 5}{8} = \\dfrac{8x + 5 - 5}{8} = \\dfrac{8x}{8} = x\\)\nand \\(g(x) = 8x + 5\\), replace \\(x\\) in \\(g(x)\\) with \\(f(x)\\)\n\\(g[f(x)] = 8f(x) + 5 = 8\\left[\\dfrac{x - 5}{8}\\right] + 5 = x - 5 + 5\\)\n\\(= x\\)\nAs \\(f[g(x)] = x\\) and \\(g[f(x)] = x\\), \\(f\\) and \\(g\\) are inverse functions of each other."
+  },
+  {
+    "ref": "6.2 SolvedEx.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Inverse Functions",
+    "difficulty": "HARD",
+    "stem": "Determine whether the function \\(f(x) = \\dfrac{2x + 1}{x - 3}\\) has inverse, if it exists find it.",
+    "solution": "\\(f^{-1}\\) exists only if \\(f\\) is one-one and onto.\nConsider \\(f(x_1) = f(x_2)\\),\nTherefore,\n\\(\\dfrac{2x_1 + 1}{x_1 - 3} = \\dfrac{2x_2 + 1}{x_2 - 3}\\)\n\\((2x_1 + 1)(x_2 - 3) = (2x_2 + 1)(x_1 - 3)\\)\n\\(2x_1x_2 - 6x_1 + x_2 - 3 = 2x_1x_2 - 6x_2 + x_1 - 3\\)\n\\(-6x_1 + x_2 = -6x_2 + x_1\\)\n\\(6x_1 + x_2 = 6x_2 + x_1\\)\n\\(7x_2 = 7x_1\\)\n\\(x_2 = x_1\\)\nHence, \\(f\\) is one-one function.\nLet \\(f(x) = y\\), so \\(y = \\dfrac{2x + 1}{x - 3}\\)\nExpress \\(x\\) as function of \\(y\\), as follows\n\\(y = \\dfrac{2x + 1}{x - 3}\\)\n\\(y(x - 3) = 2x + 1\\)\n\\(xy - 3y = 2x + 1\\)\n\\(xy - 2x = 3y + 1\\)\n\\(x(y - 2) = 3y + 1\\)\n\\(\\therefore\\ x = \\dfrac{3y + 1}{y - 2}\\) for \\(y \\ne 2\\).\nThus for any \\(y \\ne 2\\),\nwe have \\(x\\) such that \\(f(x) = y\\)\n\\(f^{-1}\\) is well defined on \\(R - \\{2\\}\\)\nIf \\(f(x) = 2\\) i.e. \\(2x + 1 = 2(x - 3)\\)\ni.e. \\(2x + 1 = 2x - 6\\) i.e. \\(1 = -6\\)\nWhich is contradiction.\n\\(2 \\notin\\) Range of \\(f\\).\nHere the range of \\(f(x)\\) is \\(R - \\{2\\}\\).\n\\(x\\) is defined for all \\(y\\) in the range.\nTherefore \\(f(x)\\) is onto function.\nAs \\(f\\) is one-one and onto, so \\(f^{-1}\\) exists.\nAs \\(f(x) = y\\), so \\(f^{-1}(y) = x\\)\nTherefore, \\(f^{-1}(y) = \\dfrac{3y + 1}{y - 2}\\)\nReplace \\(x\\) by \\(y\\), to get\n\\(f^{-1}(x) = \\dfrac{3x + 1}{x - 2}\\).",
+    "_note": "TWO printed defects in the solution, both transcribed as printed. (1) The line \\(6x_1 + x_2 = 6x_2 + x_1\\) is a subscript misprint: it does NOT follow from the line above it (\\(-6x_1 + x_2 = -6x_2 + x_1\\)), and the line BELOW it (\\(7x_2 = 7x_1\\)) does not follow from it either — from \\(6x_1 + x_2 = 6x_2 + x_1\\) one gets \\(5x_1 = 5x_2\\), not \\(7x_2 = 7x_1\\). The intended line is \\(6x_2 + x_2 = 6x_1 + x_1\\), which does give \\(7x_2 = 7x_1\\). Verified on the page image at high zoom. The final conclusion \\(x_1 = x_2\\) is correct either way. (2) The closing instruction reads 'Replace \\(x\\) by \\(y\\)' where the step performed is the reverse — replacing \\(y\\) by \\(x\\) in \\(f^{-1}(y) = \\dfrac{3y+1}{y-2}\\) to obtain \\(f^{-1}(x) = \\dfrac{3x+1}{x-2}\\). The resulting formula is correct. The printed solution also STRADDLES a page break: it begins on p-16 (right column, ending at \\(y(x-3) = 2x+1\\)) and continues at the top of the left column of p-17; both pages are inside this band, so the solution is complete."
+  }
+]

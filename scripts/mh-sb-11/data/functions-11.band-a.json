@@ -1,0 +1,69 @@
+[
+  {
+    "ref": "6.1 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Functions and Types of Functions",
+    "difficulty": "EASY",
+    "stem": "Evaluate \\(f(x) = 2x^2 - 3x + 4\\) at \\(x = 7\\) and \\(x = -2t\\).",
+    "solution": "\\(f(x)\\) at \\(x = 7\\) is \\(f(7)\\)\n\\(f(7) = 2(7)^2 - 3(7) + 4\\)\n\\(= 2(49) - 21 + 4\\)\n\\(= 98 - 21 + 4\\)\n\\(= 81\\)\n\\(f(-2t) = 2(-2t)^2 - 3(-2t) + 4\\)\n\\(= 2(4t^2) + 6t + 4\\)\n\\(= 8t^2 + 6t + 4\\)"
+  },
+  {
+    "ref": "6.1 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Representation and Graph of a Function",
+    "difficulty": "EASY",
+    "stem": "Using the graph of \\(y = g(x)\\) given below, find \\(g(-4)\\) and \\(g(3)\\). (In the figure each grid square is 2 units along both axes. The curve rises from the lower left through the marked points \\((-6,\\,-4)\\) and \\((-4,\\,0)\\) to a local maximum at the marked point \\((-1,\\,4)\\), then falls to a local minimum near \\(x = 3\\), and rises again, crossing the X-axis near \\(x = 9\\).)",
+    "solution": "[Textbook error, answer-affecting: the printed solution states \"From graph when \\(x = 3\\), \\(y = -5\\) so \\(g(3) = -5\\)\", but that disagrees with the book's OWN figure. On Fig. 6.14 the curve's minimum marker sits at the same height on the page as the labelled point \\((-6, -4)\\) — two points at the same height have the same \\(y\\)-value — so the minimum is at \\(y \\approx -4\\), and \\(g(3) \\approx -4\\), a full unit above the printed value. The companion reading \\(g(-4) = 0\\) is confirmed correct by the figure.]\n\nFrom graph when \\(x = -4\\), \\(y = 0\\)\nso \\(g(-4) = 0\\)\nFrom graph when \\(x = 3\\), \\(y = -5\\) so \\(g(3) = -5\\)",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. 6.14 (printed p.109, bottom of the left column) — the graph of \\(y = g(x)\\) on a square grid whose every square is 2 units on both axes. Marked points: \\((-6,-4)\\), \\((-4,0)\\), \\((-1,4)\\) (labelled), plus three unlabelled markers at the local minimum, on the rising right branch, and at the right-hand X-axis crossing. Load-bearing: \\(g(3)\\) cannot be obtained without the figure.",
+    "_note": "BOOK DEFECT CANDIDATE — printed solution disagrees with the book's own figure. The solution states 'From graph when x = 3, y = -5 so g(3) = -5'. Fig. 6.14 was pixel-measured against its own grid: the gridlines are uniform at 44.5 px and the origin is exact, and calibrating on all three LABELLED points gives 1 square = 2 units on both axes with each labelled point accurate to within 0.15 units — measured (-6.00, -3.88), (-4.06, -0.02), (-1.10, 4.14). At that accuracy the plotted curve at x = 3 reads y = -4.2, and the unlabelled marker at the local minimum reads (3.28, -4.38), whose nearest lattice point is (3, -4), NOT (3, -5). So -5 is not readable off the printed grid; the discrepancy (0.6-0.8 units) is 4-5x the figure's own drafting error. Transcribed exactly as printed per the brief; flagged for the answer-key cross-check pass to adjudicate whether the printed -5 or the drawn figure is wrong. Also note the stem+figure sit at the BOTTOM of the left column while this Solution sits at the TOP of the right column (column-wise straddle)."
+  },
+  {
+    "ref": "6.1 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Functions and Types of Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(t(m) = 3m^2 - m\\) and \\(t(m) = 4\\), then find \\(m\\).",
+    "solution": "As\n\\(t(m) = 4\\)\n\\(3m^2 - m = 4\\)\n\\(3m^2 - m - 4 = 0\\)\n\\(3m^2 - 4m + 3m - 4 = 0\\)\n\\(m(3m - 4) + 1(3m - 4) = 0\\)\n\\((3m - 4)(m + 1) = 0\\)\nTherefore, \\(m = \\frac{4}{3}\\) or \\(m = -1\\)",
+    "_note": "The book prints the sub-heading 'Function Solution:' immediately before this example. Factorisation and both roots independently re-derived and correct."
+  },
+  {
+    "ref": "6.1 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Representation and Graph of a Function",
+    "difficulty": "EASY",
+    "stem": "From the graph below find \\(x\\) for which \\(f(x) = 4\\). (Fig. 6.15 shows \\(y = f(x)\\), an upward-opening parabola whose vertex touches the X-axis at \\((1,\\,0)\\), drawn on a unit grid with the X-axis marked from \\(-2\\) to \\(5\\) and the Y-axis marked \\(1\\) to \\(5\\), together with the horizontal line \\(y = 4\\).)",
+    "solution": "To solve \\(f(x) = 4\\) i.e. \\(y = 4\\)\nFind the values of \\(x\\) where graph intersects line \\(y = 4\\).\nTherefore, \\(x = -1\\) and \\(x = 3\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. 6.15 (printed p.109, right column) — \\(y = f(x)\\), an upward parabola with vertex at \\((1,0)\\) on the X-axis, with the horizontal line \\(y = 4\\) drawn across it. Fig. 6.16 (same page, lower right) is the solution figure: the same graph redrawn, with the two intersections of the curve and \\(y = 4\\) to be read off. Either figure alone answers the question.",
+    "_note": "STRADDLES THE PAGE BOUNDARY. The stem, Fig. 6.15, the 'Solution :' opening and Fig. 6.16 are all on p-03 (printed p.109); the concluding line 'Therefore, x = -1 and x = 3.' is the FIRST line of the left column of p-04 (printed p.110), above the 'Function from equation:' heading. Both halves are transcribed here. Figure verified by inspection: the vertex sits exactly on the X-axis at x = 1 and the curve meets y = 4 at the gridlines x = -1 and x = 3, consistent with f(x) = (x-1)^2, so the printed answer is correct."
+  },
+  {
+    "ref": "6.1 SolvedEx.5(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Representation and Graph of a Function",
+    "difficulty": "EASY",
+    "context": "From the equation \\(4x + 7y = 1\\) express",
+    "setLabel": "6.1 SolvedEx.5",
+    "stem": "\\(y\\) as a function of \\(x\\).",
+    "solution": "Given equation is \\(4x + 7y = 1\\)\nFrom the given equation\n\\(7y = 1 - 4x\\)\n\\(y = \\frac{1 - 4x}{7}\\) = function of \\(x\\)\nSo \\(y = f(x) = \\frac{1 - 4x}{7}\\)",
+    "_note": "The book labels this example 'Ex. 5) (Activity)' under the heading 'Function from equation:'. Its printed solution is a fill-in-the-blank scaffold — in part (i) three empty boxes, printed as '7y = [ ]', 'y = [ ] = function of x' and 'So y = f(x) = [ ]'. The result is fully determinate, so per the shipped Class-11/Class-12 precedent for numbered Activity examples the blanks are COMPLETED here: 1 - 4x, (1-4x)/7 and (1-4x)/7 respectively are DERIVED, not printed in the book."
+  },
+  {
+    "ref": "6.1 SolvedEx.5(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Representation and Graph of a Function",
+    "difficulty": "EASY",
+    "context": "From the equation \\(4x + 7y = 1\\) express",
+    "setLabel": "6.1 SolvedEx.5",
+    "stem": "\\(x\\) as a function of \\(y\\).",
+    "solution": "Given equation is \\(4x + 7y = 1\\)\nFrom the given equation\n\\(4x = 1 - 7y\\)\n\\(x = \\frac{1 - 7y}{4}\\) = function of \\(y\\)\nSo \\(x = g(y) = \\frac{1 - 7y}{4}\\)",
+    "_note": "Part (ii) of the same 'Ex. 5) (Activity)'. Its printed solution likewise carries three empty boxes: '4x = [ ]', 'x = [ ] = function of y' and 'So x = g(y) = [ ]'. Completed here: 1 - 7y, (1-7y)/4 and (1-7y)/4 are DERIVED, not printed in the book."
+  }
+]

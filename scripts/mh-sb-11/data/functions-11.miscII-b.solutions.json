@@ -1,0 +1,222 @@
+[
+  {
+    "id": "635ad99f-d105-4987-be26-c748fbfa671d",
+    "ref": "Misc II Q23",
+    "solution": "Combine the four terms with \\(\\log m - \\log n = \\log\\frac{m}{n}\\) and \\(\\log m + \\log n = \\log(mn)\\):\n\\(= \\log_{10}\\left(\\frac{28}{45}\\times\\frac{324}{35}\\times\\frac{325}{432}\\times\\frac{15}{13}\\right)\\).\nCancel step by step: \\(\\frac{28}{45}\\times\\frac{324}{35} = \\frac{144}{25}\\), then \\(\\frac{144}{25}\\times\\frac{325}{432} = \\frac{13}{3}\\), then \\(\\frac{13}{3}\\times\\frac{15}{13} = 5\\).\n\\(\\therefore\\) the expression \\(= \\log_{10} 5\\)."
+  },
+  {
+    "id": "6ca197bf-dce1-4e84-830a-a198d7739e7a",
+    "ref": "Misc II Q24",
+    "solution": "Write the right side as a single logarithm:\n\\(\\frac{1}{2}(\\log a + \\log b) = \\frac{1}{2}\\log(ab) = \\log\\sqrt{ab}\\).\nSo \\(\\log\\left(\\frac{a+b}{2}\\right) = \\log\\sqrt{ab}\\), and since \\(\\log\\) is one-one, \\(\\frac{a+b}{2} = \\sqrt{ab}\\).\nHence \\(a + b = 2\\sqrt{ab}\\), i.e. \\(a - 2\\sqrt{ab} + b = 0\\), i.e. \\(\\left(\\sqrt{a} - \\sqrt{b}\\right)^2 = 0\\).\n\\(\\therefore \\sqrt{a} = \\sqrt{b}\\), and squaring, \\(a = b\\)."
+  },
+  {
+    "id": "f9e356fa-3e31-44a0-828e-7d6df599826d",
+    "ref": "Misc II Q25",
+    "solution": "Take logarithms of both sides of \\(b^2 = ac\\) (both sides are positive):\n\\(\\log b^2 = \\log(ac)\\).\nUsing \\(\\log m^n = n\\log m\\) on the left and \\(\\log(mn) = \\log m + \\log n\\) on the right,\n\\(2\\log b = \\log a + \\log c\\).\n\\(\\therefore \\log a + \\log c = 2\\log b\\)."
+  },
+  {
+    "id": "34f7a9d7-51cd-4a88-977d-77a26289cdbb",
+    "ref": "Misc II Q26",
+    "solution": "Combine the left side: \\(\\log_x(8x-3) - \\log_x 4 = \\log_x\\left(\\frac{8x-3}{4}\\right)\\).\nSo \\(\\log_x\\left(\\frac{8x-3}{4}\\right) = 2\\), which means \\(\\frac{8x-3}{4} = x^2\\).\nHence \\(4x^2 - 8x + 3 = 0\\), i.e. \\((2x-1)(2x-3) = 0\\), giving \\(x = \\frac{1}{2}\\) or \\(x = \\frac{3}{2}\\).\nBoth values are admissible bases: each is positive and not equal to \\(1\\); also \\(8x-3\\) is positive for each, being \\(1\\) when \\(x=\\frac{1}{2}\\) and \\(9\\) when \\(x=\\frac{3}{2}\\).\n\\(\\therefore x = \\frac{3}{2}\\) or \\(x = \\frac{1}{2}\\)."
+  },
+  {
+    "id": "def24988-bdde-4922-ab12-0507101331b0",
+    "ref": "Misc II Q27",
+    "solution": "Add \\(2ab\\) to the given relation: \\(a^2 + b^2 + 2ab = 7ab + 2ab\\), so \\((a+b)^2 = 9ab\\).\nDivide by \\(9\\): \\(\\left(\\frac{a+b}{3}\\right)^2 = ab\\).\nTake logarithms: \\(2\\log\\left(\\frac{a+b}{3}\\right) = \\log(ab) = \\log a + \\log b\\).\n\\(\\therefore \\log\\left(\\frac{a+b}{3}\\right) = \\frac{1}{2}\\log a + \\frac{1}{2}\\log b\\)."
+  },
+  {
+    "id": "17aaac76-ede8-4253-acf4-657535898b10",
+    "ref": "Misc II Q28",
+    "solution": "The right side is \\(\\frac{1}{2}\\log x + \\frac{1}{2}\\log y = \\frac{1}{2}\\log(xy) = \\log\\sqrt{xy}\\).\nSo \\(\\log\\left(\\frac{x-y}{5}\\right) = \\log\\sqrt{xy}\\), giving \\(\\frac{x-y}{5} = \\sqrt{xy}\\), i.e. \\(x - y = 5\\sqrt{xy}\\).\nSquaring both sides: \\(x^2 - 2xy + y^2 = 25xy\\).\n\\(\\therefore x^2 + y^2 = 27xy\\)."
+  },
+  {
+    "id": "8277badc-40d9-493b-a3e0-b075830c784d",
+    "ref": "Misc II Q29",
+    "solution": "Peel the logarithms one at a time, using \\(\\log_b N = m \\Rightarrow N = b^m\\).\n\\(\\log_3\\left[\\log_2(\\log_3 x)\\right] = 1 \\Rightarrow \\log_2(\\log_3 x) = 3^1 = 3\\).\n\\(\\log_2(\\log_3 x) = 3 \\Rightarrow \\log_3 x = 2^3 = 8\\).\n\\(\\log_3 x = 8 \\Rightarrow x = 3^8\\).\n\\(\\therefore x = 6561\\)."
+  },
+  {
+    "id": "2a50bb62-c3f2-412c-b03c-ab6224280544",
+    "ref": "Misc II Q30",
+    "solution": "Here \\(f(t) = \\log(1-t)\\), so substitute into each side.\nLeft side: \\(f\\left(\\frac{1}{1+x}\\right) = \\log\\left(1 - \\frac{1}{1+x}\\right) = \\log\\left(\\frac{x}{1+x}\\right) = \\log x - \\log(1+x)\\).\nRight side: \\(f(1-x) = \\log\\left(1-(1-x)\\right) = \\log x\\) and \\(f(-x) = \\log\\left(1-(-x)\\right) = \\log(1+x)\\),\nso \\(f(1-x) - f(-x) = \\log x - \\log(1+x)\\).\nBoth sides are \\(\\log x - \\log(1+x)\\).\n\\(\\therefore f\\left(\\frac{1}{1+x}\\right) = f(1-x) - f(-x)\\)."
+  },
+  {
+    "id": "4853a88a-b322-4e47-8ff6-ae303904bf23",
+    "ref": "Misc II Q31",
+    "solution": "Prove each inequality by clearing the logarithm with a suitable power.\nLeft inequality: \\(\\log_{10}3 > \\frac{2}{5} \\iff 3 > 10^{2/5} \\iff 3^5 > 10^2\\) (raising both sides to the 5th power), and \\(243 > 100\\) is true.\nRight inequality: \\(\\log_{10}3 < \\frac{1}{2} \\iff 3 < 10^{1/2} \\iff 3^2 < 10\\) (squaring), and \\(9 < 10\\) is true.\n\\(\\therefore \\frac{2}{5} < \\log_{10}3 < \\frac{1}{2}\\)."
+  },
+  {
+    "id": "21c2e955-f6f8-4223-99c3-c599fb162e0b",
+    "ref": "Misc II Q32",
+    "solution": "Using \\(n\\log m = \\log m^n\\) and \\(\\log m + \\log n = \\log(mn)\\), the left side equals\n\\(\\log\\left[\\left(\\frac{15}{16}\\right)^7\\left(\\frac{8}{3}\\right)^6\\left(\\frac{2}{5}\\right)^5\\left(\\frac{32}{25}\\right)\\right]\\).\nWrite each base in primes: \\(\\frac{15}{16} = \\frac{3\\cdot 5}{2^4},\\ \\frac{8}{3} = \\frac{2^3}{3},\\ \\frac{2}{5},\\ \\frac{32}{25} = \\frac{2^5}{5^2}\\).\nNow collect exponents: for \\(2\\), \\(-28 + 18 + 5 + 5 = 0\\); for \\(3\\), \\(7 - 6 = 1\\); for \\(5\\), \\(7 - 5 - 2 = 0\\).\nSo the product is \\(2^0\\cdot 3^1\\cdot 5^0 = 3\\).\n\\(\\therefore\\) the left side \\(= \\log 3\\)."
+  },
+  {
+    "id": "2fc0a5d3-528d-4075-a70e-674fa7e6a6dc",
+    "ref": "Misc II Q33",
+    "solution": "Simplify each term. \\(\\sqrt{\\log_2 x^4} = \\sqrt{4\\log_2 x} = 2\\sqrt{\\log_2 x}\\).\n\\(4\\log_4\\sqrt{\\frac{2}{x}} = 2\\log_4\\left(\\frac{2}{x}\\right) = 2\\cdot\\frac{\\log_2\\left(\\frac{2}{x}\\right)}{\\log_2 4} = \\log_2\\left(\\frac{2}{x}\\right) = 1 - \\log_2 x\\).\nPut \\(t = \\log_2 x\\) (with \\(t \\ge 0\\), needed for the square root). The equation becomes \\(2\\sqrt{t} + 1 - t = 2\\), i.e. \\(2\\sqrt{t} = t + 1\\).\nThen \\(t - 2\\sqrt{t} + 1 = 0\\), i.e. \\(\\left(\\sqrt{t} - 1\\right)^2 = 0\\), so \\(\\sqrt{t} = 1\\) and \\(t = 1\\).\nHence \\(\\log_2 x = 1\\).\n\\(\\therefore x = 2\\)."
+  },
+  {
+    "id": "4775b37e-4aad-4204-b84c-d6cfe352826a",
+    "ref": "Misc II Q34",
+    "solution": "Simplify the numerator: \\(3 + \\log_{10}343 = 3 + 3\\log_{10}7 = 3\\left(1 + \\log_{10}7\\right) = 3\\log_{10}70\\).\nSimplify the denominator: \\(\\frac{1}{2}\\log_{10}\\left(\\frac{49}{4}\\right) = \\log_{10}\\frac{7}{2}\\) and \\(\\frac{1}{2}\\log_{10}\\left(\\frac{1}{25}\\right) = \\log_{10}\\frac{1}{5}\\),\nso it is \\(2 + \\log_{10}\\frac{7}{2} + \\log_{10}\\frac{1}{5} = 2 + \\log_{10}\\frac{7}{10} = \\log_{10}100 + \\log_{10}\\frac{7}{10} = \\log_{10}70\\).\nThe quotient is \\(\\frac{3\\log_{10}70}{\\log_{10}70}\\).\n\\(\\therefore\\) the value is \\(3\\)."
+  },
+  {
+    "id": "8894b027-3249-4781-b5e5-ace3788246a0",
+    "ref": "Misc II Q35",
+    "solution": "Let each of the equal ratios be \\(k\\). Then\n\\(\\log a = k(x+y-2z)\\), \\(\\log b = k(y+z-2x)\\), \\(\\log c = k(z+x-2y)\\).\nAdd the three: the bracket total is \\((x+y-2z)+(y+z-2x)+(z+x-2y) = 0\\),\nso \\(\\log a + \\log b + \\log c = k\\cdot 0 = 0\\).\nHence \\(\\log(abc) = 0\\).\n\\(\\therefore abc = 1\\)."
+  },
+  {
+    "id": "7951dd3b-1ef4-4c30-a7b1-57b6195b2ae9",
+    "ref": "Misc II Q36",
+    "solution": "Bring the exponents down with \\(\\log_b m^n = n\\log_b m\\):\n\\(\\log_y x^3\\cdot\\log_z y^4\\cdot\\log_x z^5 = 3\\log_y x\\cdot 4\\log_z y\\cdot 5\\log_x z = 60\\left(\\log_y x\\cdot\\log_z y\\cdot\\log_x z\\right)\\).\nChange all three to a common base: \\(\\log_y x\\cdot\\log_z y\\cdot\\log_x z = \\frac{\\log x}{\\log y}\\cdot\\frac{\\log y}{\\log z}\\cdot\\frac{\\log z}{\\log x} = 1\\).\n\\(\\therefore \\log_y x^3\\cdot\\log_z y^4\\cdot\\log_x z^5 = 60\\times 1 = 60\\)."
+  },
+  {
+    "id": "1bd94bcd-3058-40f8-8e20-9afd9aba1c36",
+    "ref": "Misc II Q37",
+    "solution": "Let each ratio be \\(t\\), so \\(\\log_2 a = 4t\\), \\(\\log_2 b = 6t\\), \\(\\log_2 c = 3kt\\).\nTake \\(\\log_2\\) of \\(a^3b^2c = 1\\): \\(3\\log_2 a + 2\\log_2 b + \\log_2 c = \\log_2 1 = 0\\).\nSubstituting, \\(3(4t) + 2(6t) + 3kt = 0\\), i.e. \\(t(24 + 3k) = 0\\).\nSince \\(t \\ne 0\\) (otherwise \\(a = b = c = 1\\) and the given ratios are indeterminate), \\(24 + 3k = 0\\).\n\\(\\therefore k = -8\\)."
+  },
+  {
+    "id": "c85d661b-5e00-493b-82d5-2a7aab078209",
+    "ref": "Misc II Q38",
+    "solution": "Let \\(a^2 = b^3 = c^4 = d^5 = m\\). Then \\(a = m^{1/2}\\), \\(b = m^{1/3}\\), \\(c = m^{1/4}\\), \\(d = m^{1/5}\\).\nSo \\(\\log_a bcd = \\frac{\\log(bcd)}{\\log a} = \\frac{\\left(\\frac{1}{3}+\\frac{1}{4}+\\frac{1}{5}\\right)\\log m}{\\frac{1}{2}\\log m} = 2\\left(\\frac{1}{3}+\\frac{1}{4}+\\frac{1}{5}\\right)\\).\nNow \\(\\frac{1}{3}+\\frac{1}{4}+\\frac{1}{5} = \\frac{20+15+12}{60} = \\frac{47}{60}\\).\n\\(\\therefore \\log_a bcd = 2\\times\\frac{47}{60} = \\frac{47}{30}\\)."
+  },
+  {
+    "id": "4b2d8637-5dec-4b81-a9db-4354d9fdc0f6",
+    "ref": "Misc II Q39(a)",
+    "solution": "Split the double inequality into two conditions.\n\\(|x-1| < 4\\) gives \\(-4 < x-1 < 4\\), i.e. \\(-3 < x < 5\\).\n\\(|x-1| > 1\\) gives \\(x-1 > 1\\) or \\(x-1 < -1\\), i.e. \\(x > 2\\) or \\(x < 0\\).\nIntersecting \\((-3,5)\\) with \\((-\\infty,0)\\cup(2,\\infty)\\):\n\\(\\therefore x \\in (-3, 0)\\cup(2, 5)\\)."
+  },
+  {
+    "id": "ef2f0cf5-e4a2-4ac5-ae97-e0db635263aa",
+    "ref": "Misc II Q39(b)",
+    "solution": "Factorise: \\(x^2 - x - 6 = (x-3)(x+2)\\), so the equation is \\(|x-3|\\,|x+2| = x+2\\).\nA modulus is never negative, so we need \\(x + 2 \\ge 0\\), i.e. \\(x \\ge -2\\).\nIf \\(x = -2\\): left side \\(= 0\\) and right side \\(= 0\\), so \\(x = -2\\) is a solution.\nIf \\(x > -2\\): then \\(|x+2| = x+2 > 0\\), and dividing by it gives \\(|x-3| = 1\\), so \\(x - 3 = \\pm 1\\), i.e. \\(x = 4\\) or \\(x = 2\\); both satisfy \\(x > -2\\).\nChecking: \\(x=2\\) gives \\(|-4| = 4 = 2+2\\); \\(x=4\\) gives \\(|6| = 6 = 4+2\\).\n\\(\\therefore x \\in \\{-2, 2, 4\\}\\)."
+  },
+  {
+    "id": "820ca8eb-c3d7-4802-8fef-c60b39b0eb0f",
+    "ref": "Misc II Q39(c)",
+    "solution": "Put \\(t = x^2\\), so \\(t \\ge 0\\) and the equation is \\(|t-9| + |t-4| = 5\\).\nIf \\(4 \\le t \\le 9\\): \\((9-t) + (t-4) = 5\\), which is true for every such \\(t\\).\nIf \\(t < 4\\): \\((9-t) + (4-t) = 13 - 2t > 5\\), so no solution.\nIf \\(t > 9\\): \\((t-9) + (t-4) = 2t - 13 > 5\\), so no solution.\nHence \\(4 \\le x^2 \\le 9\\), i.e. \\(2 \\le |x| \\le 3\\).\n\\(\\therefore x \\in [-3, -2]\\cup[2, 3]\\)."
+  },
+  {
+    "id": "9175c82c-309d-40a9-9238-f7b6e7857130",
+    "ref": "Misc II Q39(d)",
+    "solution": "\\([x]\\) is always an integer, so \\(-2 < [x] \\le 7\\) means \\([x]\\) takes one of the values \\(-1, 0, 1, \\ldots, 7\\).\nFor an integer \\(n\\), \\([x] = n\\) exactly when \\(n \\le x < n+1\\).\nSo \\(x\\) lies in \\([-1,0)\\cup[0,1)\\cup\\cdots\\cup[7,8)\\), and these consecutive intervals join up.\n\\(\\therefore x \\in [-1, 8)\\).",
+    "_note": "Book answer-key error. The key prints (-2, 8); the correct solution set is [-1, 8), since [x] > -2 forces [x] >= -1 and hence x >= -1. x = -1.5 lies in the printed key but has [x] = -2, which fails -2 < [x]."
+  },
+  {
+    "id": "242bfb2e-c4d8-4803-9eae-0feb1ef05800",
+    "ref": "Misc II Q39(e)",
+    "solution": "\\(2[2x-5] - 1 = 7\\) gives \\(2[2x-5] = 8\\), so \\([2x-5] = 4\\).\nFor an integer \\(n\\), \\([y] = n\\) means \\(n \\le y < n+1\\); here \\(4 \\le 2x - 5 < 5\\).\nAdding \\(5\\): \\(9 \\le 2x < 10\\), so \\(\\frac{9}{2} \\le x < 5\\).\nChecking \\(x = 4.6\\): \\([2(4.6)-5] = [4.2] = 4\\) and \\(2(4)-1 = 7\\).\n\\(\\therefore x \\in \\left[\\frac{9}{2}, 5\\right)\\).",
+    "_note": "The printed key lists this answer, [9/2, 5), against label f) rather than e). Our derived answer agrees with that value; only the key's labelling is off."
+  },
+  {
+    "id": "0dfd99b7-e509-4978-945a-d66f14cc83d7",
+    "ref": "Misc II Q39(f)",
+    "solution": "Let \\([x] = n\\), an integer, so \\(n \\le x < n+1\\). The equation gives \\([x^2] = 5n - 6\\), which means \\(5n - 6 \\le x^2 < 5n - 5\\).\nIf \\(n \\le 1\\), the band requires \\(x^2 < 5n-5 \\le 0\\), which is impossible since \\(x^2 \\ge 0\\).\nIf \\(n \\ge 4\\), then \\(x \\ge n\\) forces \\(x^2 \\ge n^2\\), and \\(n^2 - (5n-5) = n^2-5n+5 > 0\\) for \\(n \\ge 4\\), so \\(x^2\\) is already past the band and no \\(x\\) works.\n\\(n = 2\\): need \\(2 \\le x < 3\\) and \\(4 \\le x^2 < 5\\), giving \\(2 \\le x < \\sqrt{5}\\).\n\\(n = 3\\): need \\(3 \\le x < 4\\) and \\(9 \\le x^2 < 10\\), giving \\(3 \\le x < \\sqrt{10}\\).\nChecking \\(x = 2.1\\): \\([4.41] - 5(2) + 6 = 4 - 10 + 6 = 0\\); and \\(x = 2.5\\) fails since \\([6.25] - 10 + 6 = 2\\).\n\\(\\therefore x \\in \\left[2, \\sqrt{5}\\right)\\cup\\left[3, \\sqrt{10}\\right)\\).",
+    "_note": "No usable printed key. The key's e) entry, [13/5, 7), matches no reading of this stem (nor of any other item of Q39); the key's f) entry, [9/2, 5), is in fact the answer to item e). Our answer [2, sqrt 5) u [3, sqrt 10) was derived unaided and verified by direct substitution."
+  },
+  {
+    "id": "62f541fb-cc04-4d26-9bdb-6d6acc69fdb3",
+    "ref": "Misc II Q39(g)",
+    "solution": "Since \\(2\\) and \\(-2\\) are integers, \\([x-2] = [x] - 2\\) and \\([x+2] = [x] + 2\\).\nSo the equation becomes \\(\\left([x]-2\\right) + \\left([x]+2\\right) + \\{x\\} = 0\\), i.e. \\(2[x] + \\{x\\} = 0\\).\nLet \\([x] = n\\) (an integer) and \\(\\{x\\} = f\\), where \\(0 \\le f < 1\\). Then \\(f = -2n\\).\nThe condition \\(0 \\le -2n < 1\\) gives \\(-\\frac{1}{2} < n \\le 0\\), and the only integer there is \\(n = 0\\); then \\(f = 0\\).\nSo \\(x = n + f = 0\\). Check: \\([-2] + [2] + \\{0\\} = -2 + 2 + 0 = 0\\).\n\\(\\therefore x = 0\\).",
+    "_note": "No printed answer: the book's key for Misc. Ex. 6 part (II) Q39 stops at f). Answer derived unaided and verified by substitution."
+  },
+  {
+    "id": "159da776-cf06-4c97-b025-f902f8cd4424",
+    "ref": "Misc II Q39(h)",
+    "solution": "The left side is a sum of two integers, so \\(\\frac{5x}{6}\\) must be an integer.\nAlso \\([y] \\le y\\) for every real \\(y\\), with equality only when \\(y\\) is an integer. Hence\n\\(\\left[\\frac{x}{2}\\right] + \\left[\\frac{x}{3}\\right] \\le \\frac{x}{2} + \\frac{x}{3} = \\frac{5x}{6}\\),\nand the given equality holds only when \\(\\frac{x}{2}\\) and \\(\\frac{x}{3}\\) are both integers.\n\\(\\frac{x}{2} \\in \\mathbb{Z}\\) and \\(\\frac{x}{3} \\in \\mathbb{Z}\\) together mean \\(x\\) is a multiple of \\(6\\).\nCheck \\(x = 6\\): \\([3] + [2] = 5 = \\frac{5(6)}{6}\\); and \\(x = -6\\): \\([-3] + [-2] = -5 = \\frac{5(-6)}{6}\\).\n\\(\\therefore x = 6k\\), where \\(k \\in \\mathbb{Z}\\) (all integer multiples of \\(6\\)).",
+    "_note": "No printed answer: the book's key for Misc. Ex. 6 part (II) Q39 stops at f). Answer derived unaided and verified by substitution."
+  },
+  {
+    "id": "521885cc-f84b-4bc2-beeb-f3fc2be41758",
+    "ref": "Misc II Q40(a)",
+    "solution": "\\(f\\) is a ratio of polynomials, so the only restriction is that the denominator must not vanish.\n\\(x^2 + x - 6 = (x+3)(x-2)\\), which is \\(0\\) when \\(x = -3\\) or \\(x = 2\\).\n\\(\\therefore\\) domain \\(= \\mathbb{R} - \\{-3,\\ 2\\}\\).",
+    "_note": "No printed key: the book's answer block for Misc. Ex. 6 part (II) ends at Q39, while the printed exercise runs to Q44. Derived unaided."
+  },
+  {
+    "id": "cc0dc3d4-24c9-4958-994a-8d4d769262a2",
+    "ref": "Misc II Q40(b)",
+    "solution": "Three conditions must hold together.\nThe square root needs \\(x - 3 \\ge 0\\), i.e. \\(x \\ge 3\\).\nThe logarithm needs \\(5 - x > 0\\), i.e. \\(x < 5\\).\nThe logarithm is in a denominator, so \\(\\log(5-x) \\ne 0\\), i.e. \\(5 - x \\ne 1\\), i.e. \\(x \\ne 4\\).\nCombining: \\(3 \\le x < 5\\) with \\(x \\ne 4\\).\n\\(\\therefore\\) domain \\(= [3, 4)\\cup(4, 5)\\)."
+  },
+  {
+    "id": "26cbb60d-0ce0-495c-99c8-cc60b2f531c2",
+    "ref": "Misc II Q40(c)",
+    "solution": "Work from the innermost root outwards.\nInnermost: \\(1 - x^2 \\ge 0\\), i.e. \\(x^2 \\le 1\\), i.e. \\(-1 \\le x \\le 1\\).\nFor such \\(x\\), \\(\\sqrt{1-x^2} \\in [0,1]\\), so \\(1 - \\sqrt{1-x^2} \\in [0,1]\\), which is already \\(\\ge 0\\).\nThen \\(\\sqrt{1-\\sqrt{1-x^2}} \\in [0,1]\\), so \\(1 - \\sqrt{1-\\sqrt{1-x^2}} \\in [0,1] \\ge 0\\).\nSo the outer two roots impose no extra restriction.\n\\(\\therefore\\) domain \\(= [-1, 1]\\)."
+  },
+  {
+    "id": "1c7a18c0-0c97-4559-9e24-db2513f04554",
+    "ref": "Misc II Q40(d)",
+    "solution": "\\(x!\\) is defined by \\(x! = x(x-1)(x-2)\\cdots 2\\cdot 1\\) with \\(0! = 1\\), so it has a meaning only when \\(x\\) is a non-negative integer (there is no factorial of a negative number or of a fraction such as \\(\\frac{3}{2}\\)).\n\\(\\therefore\\) domain \\(= \\{0, 1, 2, 3, \\ldots\\}\\), the set of whole numbers (\\(\\mathbb{N}\\cup\\{0\\}\\))."
+  },
+  {
+    "id": "2d7d3fd2-ab33-48b7-b8a4-1283a830730b",
+    "ref": "Misc II Q40(e)",
+    "solution": "For \\({}^{n}P_{r}\\) to be defined we need \\(n\\) and \\(r\\) to be integers with \\(0 \\le r \\le n\\). Here \\(n = 5-x\\) and \\(r = x-1\\).\nSo \\(x\\) must be an integer, and:\n\\(r \\ge 0\\) gives \\(x - 1 \\ge 0\\), i.e. \\(x \\ge 1\\);\n\\(r \\le n\\) gives \\(x - 1 \\le 5 - x\\), i.e. \\(2x \\le 6\\), i.e. \\(x \\le 3\\).\nSo \\(x\\) is an integer with \\(1 \\le x \\le 3\\). Checking: \\(x=1\\) gives \\({}^{4}P_{0}\\), \\(x=2\\) gives \\({}^{3}P_{1}\\), \\(x=3\\) gives \\({}^{2}P_{2}\\), all defined.\n\\(\\therefore\\) domain \\(= \\{1, 2, 3\\}\\)."
+  },
+  {
+    "id": "88bc7a04-a984-44bd-98b6-3753d5019637",
+    "ref": "Misc II Q40(f)",
+    "solution": "Both square roots need non-negative radicands.\n\\(x - x^2 \\ge 0\\) gives \\(x(1-x) \\ge 0\\), i.e. \\(0 \\le x \\le 1\\).\n\\(5 - x \\ge 0\\) gives \\(x \\le 5\\).\nThe intersection of \\([0,1]\\) and \\((-\\infty, 5]\\) is \\([0,1]\\).\n\\(\\therefore\\) domain \\(= [0, 1]\\)."
+  },
+  {
+    "id": "1ffd7ddd-7475-4e25-9365-5419fdc22184",
+    "ref": "Misc II Q40(g)",
+    "solution": "The square root needs \\(\\log(x^2-6x+6) \\ge 0\\), i.e. \\(x^2 - 6x + 6 \\ge 10^0 = 1\\).\nSo \\(x^2 - 6x + 5 \\ge 0\\), i.e. \\((x-1)(x-5) \\ge 0\\), giving \\(x \\le 1\\) or \\(x \\ge 5\\).\n(This automatically makes \\(x^2-6x+6 \\ge 1 > 0\\), so the logarithm itself is defined.)\n\\(\\therefore\\) domain \\(= (-\\infty, 1]\\cup[5, \\infty)\\)."
+  },
+  {
+    "id": "83390c37-8a0f-419e-a9e2-931a91c8cb49",
+    "ref": "Misc II Q41(a)",
+    "solution": "A modulus is never negative, so \\(|x-5| \\ge 0\\) for every real \\(x\\).\nThe value \\(0\\) is attained at \\(x = 5\\), and \\(|x-5|\\) grows without bound as \\(x\\) moves away from \\(5\\), taking every positive value.\n\\(\\therefore\\) range \\(= [0, \\infty)\\).",
+    "_note": "No printed key: the book's answer block for Misc. Ex. 6 part (II) ends at Q39, while the printed exercise runs to Q44. Derived unaided."
+  },
+  {
+    "id": "2a700eba-4f59-4831-8cc1-db1d6ea512f2",
+    "ref": "Misc II Q41(b)",
+    "solution": "Let \\(y = \\frac{x}{9+x^2}\\). Then \\(y(9+x^2) = x\\), i.e. \\(yx^2 - x + 9y = 0\\).\nIf \\(y = 0\\), this gives \\(x = 0\\), so \\(y = 0\\) is attained.\nIf \\(y \\ne 0\\), it is a quadratic in \\(x\\), and \\(x\\) is real only if its discriminant is non-negative:\n\\((-1)^2 - 4(y)(9y) \\ge 0\\), i.e. \\(1 - 36y^2 \\ge 0\\), i.e. \\(y^2 \\le \\frac{1}{36}\\), i.e. \\(-\\frac{1}{6} \\le y \\le \\frac{1}{6}\\).\nThe end values are attained: \\(x = 3\\) gives \\(y = \\frac{1}{6}\\) and \\(x = -3\\) gives \\(y = -\\frac{1}{6}\\).\n\\(\\therefore\\) range \\(= \\left[-\\frac{1}{6},\\ \\frac{1}{6}\\right]\\)."
+  },
+  {
+    "id": "7e340c24-527e-4682-ae50-ba40fed358ad",
+    "ref": "Misc II Q41(c)",
+    "solution": "The domain is \\(x \\ge 0\\), so \\(\\sqrt{x}\\) takes every value in \\([0, \\infty)\\).\nThen \\(1 + \\sqrt{x}\\) takes every value in \\([1, \\infty)\\), and taking reciprocals reverses the order.\nSo \\(f(x) = \\frac{1}{1+\\sqrt{x}}\\) takes every value in \\((0, 1]\\): the value \\(1\\) at \\(x = 0\\), and values approaching \\(0\\) (never equal to \\(0\\)) as \\(x \\to \\infty\\).\n\\(\\therefore\\) range \\(= (0, 1]\\)."
+  },
+  {
+    "id": "82e4fc86-04a3-429f-a767-b52c2e72538f",
+    "ref": "Misc II Q41(d)",
+    "solution": "By definition of the fractional part, \\(\\{x\\} = x - [x]\\), so \\(f(x) = [x] - x = -\\{x\\}\\).\nNow \\(0 \\le \\{x\\} < 1\\) for every real \\(x\\), and \\(\\{x\\}\\) attains every value in \\([0,1)\\).\nMultiplying by \\(-1\\) reverses the inequalities: \\(-1 < -\\{x\\} \\le 0\\).\n\\(\\therefore\\) range \\(= (-1, 0]\\)."
+  },
+  {
+    "id": "a4d2edc0-d3fc-4ac8-9f22-0fd416616484",
+    "ref": "Misc II Q41(e)",
+    "solution": "Put \\(t = 2^x\\); as \\(x\\) runs over \\(\\mathbb{R}\\), \\(t\\) takes every value in \\((0, \\infty)\\). Since \\(4^x = \\left(2^x\\right)^2 = t^2\\),\n\\(f = 1 + t + t^2\\).\nOn \\(t > 0\\) this is strictly increasing, so it takes every value between its limits: as \\(t \\to 0^{+}\\), \\(f \\to 1\\) (not attained), and as \\(t \\to \\infty\\), \\(f \\to \\infty\\).\n\\(\\therefore\\) range \\(= (1, \\infty)\\)."
+  },
+  {
+    "id": "0ef30be7-1974-4c4e-8826-5120d4642648",
+    "ref": "Misc II Q42(a)",
+    "solution": "\\((f\\circ g)(x) = f\\left(g(x)\\right) = f(\\log x) = e^{\\log x} = x\\), defined for \\(x > 0\\).\n\\((g\\circ f)(x) = g\\left(f(x)\\right) = g(e^x) = \\log\\left(e^x\\right) = x\\), defined for all \\(x \\in \\mathbb{R}\\).\n\\(\\therefore (f\\circ g)(x) = x\\) (for \\(x>0\\)) and \\((g\\circ f)(x) = x\\) (for \\(x \\in \\mathbb{R}\\)); \\(f\\) and \\(g\\) are inverses of each other.",
+    "_note": "No printed key: the book's answer block for Misc. Ex. 6 part (II) ends at Q39. Derived unaided."
+  },
+  {
+    "id": "6e78ba1e-0458-4537-b185-1cc9911744dd",
+    "ref": "Misc II Q42(b)",
+    "solution": "\\((f\\circ g)(x) = f\\left(\\frac{x}{1-x}\\right) = \\dfrac{\\frac{x}{1-x}}{\\frac{x}{1-x}+1} = \\dfrac{\\frac{x}{1-x}}{\\frac{x+1-x}{1-x}} = \\frac{x}{1-x}\\times\\frac{1-x}{1} = x\\), for \\(x \\ne 1\\).\n\\((g\\circ f)(x) = g\\left(\\frac{x}{x+1}\\right) = \\dfrac{\\frac{x}{x+1}}{1-\\frac{x}{x+1}} = \\dfrac{\\frac{x}{x+1}}{\\frac{x+1-x}{x+1}} = \\frac{x}{x+1}\\times\\frac{x+1}{1} = x\\), for \\(x \\ne -1\\).\n\\(\\therefore (f\\circ g)(x) = x\\ (x \\ne 1)\\) and \\((g\\circ f)(x) = x\\ (x \\ne -1)\\)."
+  },
+  {
+    "id": "4384bb89-fa19-4628-a2f5-48bd3e410d97",
+    "ref": "Misc II Q43(a)",
+    "solution": "\\((g\\circ f)(x) = g\\left(f(x)\\right) = \\left[f(x)\\right]^2 + f(x) - 2\\), and this equals \\(4x^2 - 10x + 4\\).\nSo \\(\\left[f(x)\\right]^2 + f(x) = 4x^2 - 10x + 6\\). Complete the square on the left by adding \\(\\frac{1}{4}\\):\n\\(\\left[f(x) + \\frac{1}{2}\\right]^2 = 4x^2 - 10x + \\frac{25}{4} = \\left(2x - \\frac{5}{2}\\right)^2\\).\nHence \\(f(x) + \\frac{1}{2} = \\pm\\left(2x - \\frac{5}{2}\\right)\\), giving \\(f(x) = 2x - 3\\) or \\(f(x) = 2 - 2x\\).\nCheck \\(f(x) = 2x-3\\): \\(g(2x-3) = (2x-3)^2 + (2x-3) - 2 = 4x^2 - 10x + 4\\).\n\\(\\therefore f(x) = 2x - 3\\) (the linear function \\(f(x) = 2 - 2x\\) also satisfies the condition).",
+    "_note": "No printed key (the book's answer block ends at Q39). Note the condition has two linear solutions, f(x) = 2x - 3 and f(x) = 2 - 2x; both satisfy (gof)(x) = 4x^2 - 10x + 4."
+  },
+  {
+    "id": "d364ee52-138b-4b5f-9111-8ea4f0ede027",
+    "ref": "Misc II Q43(b)",
+    "solution": "Put \\(t = g(x) = 1 + \\sqrt{x}\\), so that \\(\\sqrt{x} = t - 1\\) and \\(x = (t-1)^2\\).\nThen \\(f\\left[g(x)\\right] = f(t)\\), and rewriting the right side in terms of \\(t\\):\n\\(3 + 2\\sqrt{x} + x = 3 + 2(t-1) + (t-1)^2 = 3 + 2t - 2 + t^2 - 2t + 1 = t^2 + 2\\).\nSo \\(f(t) = t^2 + 2\\) for every \\(t\\) in the range of \\(g\\).\nCheck: \\(f\\left(1+\\sqrt{x}\\right) = \\left(1+\\sqrt{x}\\right)^2 + 2 = 1 + 2\\sqrt{x} + x + 2 = 3 + 2\\sqrt{x} + x\\).\n\\(\\therefore f(x) = x^2 + 2\\)."
+  },
+  {
+    "id": "46629d96-3e20-49af-bfb6-6656c01194cf",
+    "ref": "Misc II Q44(a)",
+    "solution": "\\((f\\circ f)(x) = f\\left(f(x)\\right) = \\dfrac{f(x)}{\\sqrt{1 + \\left[f(x)\\right]^2}}\\), where \\(f(x) = \\dfrac{x}{\\sqrt{1+x^2}}\\).\nFirst, \\(1 + \\left[f(x)\\right]^2 = 1 + \\frac{x^2}{1+x^2} = \\frac{1+x^2+x^2}{1+x^2} = \\frac{1+2x^2}{1+x^2}\\).\nSo \\((f\\circ f)(x) = \\dfrac{\\frac{x}{\\sqrt{1+x^2}}}{\\sqrt{\\frac{1+2x^2}{1+x^2}}} = \\frac{x}{\\sqrt{1+x^2}}\\times\\frac{\\sqrt{1+x^2}}{\\sqrt{1+2x^2}}\\).\n\\(\\therefore (f\\circ f)(x) = \\dfrac{x}{\\sqrt{1+2x^2}}\\), for all \\(x \\in \\mathbb{R}\\).",
+    "_note": "No printed key: the book's answer block for Misc. Ex. 6 part (II) ends at Q39. Derived unaided."
+  },
+  {
+    "id": "6dcbca07-a4d8-4399-b63e-2570f501ad2c",
+    "ref": "Misc II Q44(b)",
+    "solution": "\\((f\\circ f)(x) = f\\left(f(x)\\right) = \\dfrac{2f(x) + 1}{3f(x) - 2}\\), where \\(f(x) = \\dfrac{2x+1}{3x-2}\\).\nNumerator: \\(2\\left(\\frac{2x+1}{3x-2}\\right) + 1 = \\frac{4x+2+3x-2}{3x-2} = \\frac{7x}{3x-2}\\).\nDenominator: \\(3\\left(\\frac{2x+1}{3x-2}\\right) - 2 = \\frac{6x+3-6x+4}{3x-2} = \\frac{7}{3x-2}\\).\nDividing, \\((f\\circ f)(x) = \\frac{7x}{3x-2}\\times\\frac{3x-2}{7} = x\\).\n\\(\\therefore (f\\circ f)(x) = x\\), for \\(x \\ne \\frac{2}{3}\\) (so \\(f\\) is its own inverse)."
+  }
+]

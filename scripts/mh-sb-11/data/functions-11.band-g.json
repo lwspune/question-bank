@@ -1,0 +1,291 @@
+[
+  {
+    "ref": "Misc I Q1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "EASY",
+    "stem": "If \\(\\log(5x-9)-\\log(x+3)=\\log 2\\) then \\(x=\\) ...............",
+    "options": [
+      {
+        "label": "A",
+        "text": "3"
+      },
+      {
+        "label": "B",
+        "text": "5"
+      },
+      {
+        "label": "C",
+        "text": "2"
+      },
+      {
+        "label": "D",
+        "text": "7"
+      }
+    ],
+    "answer": "B",
+    "_derivation": "\\(\\log\\frac{5x-9}{x+3}=\\log 2\\Rightarrow 5x-9=2(x+3)\\Rightarrow 3x=15\\Rightarrow x=5\\). Domain check: \\(5(5)-9=16>0\\) and \\(5+3=8>0\\), so \\(x=5\\) is admissible."
+  },
+  {
+    "ref": "Misc I Q2",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\log_{10}\\left(\\log_{10}\\left(\\log_{10}x\\right)\\right)=0\\) then \\(x=\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "1000"
+      },
+      {
+        "label": "B",
+        "text": "\\(10^{10}\\)"
+      },
+      {
+        "label": "C",
+        "text": "10"
+      },
+      {
+        "label": "D",
+        "text": "0"
+      }
+    ],
+    "answer": "B",
+    "_derivation": "Peel the logs outward: \\(\\log_{10}(\\log_{10}x)=10^{0}=1\\Rightarrow \\log_{10}x=10^{1}=10\\Rightarrow x=10^{10}\\)."
+  },
+  {
+    "ref": "Misc I Q3",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "EASY",
+    "stem": "Find \\(x\\), if \\(2\\log_{2}x=4\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(4,\\ -4\\)"
+      },
+      {
+        "label": "B",
+        "text": "4"
+      },
+      {
+        "label": "C",
+        "text": "\\(-4\\)"
+      },
+      {
+        "label": "D",
+        "text": "not defined"
+      }
+    ],
+    "answer": "B",
+    "_derivation": "\\(2\\log_{2}x=4\\Rightarrow \\log_{2}x=2\\Rightarrow x=2^{2}=4\\). Option A is the trap from writing \\(2\\log_{2}x=\\log_{2}x^{2}=4\\Rightarrow x^{2}=16\\Rightarrow x=\\pm 4\\); \\(x=-4\\) is outside the domain of \\(\\log_{2}\\), so only \\(x=4\\) survives."
+  },
+  {
+    "ref": "Misc I Q4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "HARD",
+    "stem": "The equation \\(\\log_{x^{2}}16+\\log_{2x}64=3\\) has,",
+    "options": [
+      {
+        "label": "A",
+        "text": "one irrational solution"
+      },
+      {
+        "label": "B",
+        "text": "no prime solution"
+      },
+      {
+        "label": "C",
+        "text": "two real solutions"
+      },
+      {
+        "label": "D",
+        "text": "one integral solution"
+      }
+    ],
+    "answer": "C",
+    "_derivation": "Base restrictions: \\(x^{2}>0,\\ x^{2}\\ne 1\\) and \\(2x>0,\\ 2x\\ne 1\\) force \\(x>0,\\ x\\ne 1,\\ x\\ne \\tfrac12\\). Put \\(t=\\log_{2}x\\): \\(\\log_{x^{2}}16=\\frac{4}{2t}=\\frac{2}{t}\\) and \\(\\log_{2x}64=\\frac{6}{1+t}\\). Then \\(\\frac{2}{t}+\\frac{6}{1+t}=3\\Rightarrow 2(1+t)+6t=3t(1+t)\\Rightarrow 3t^{2}-5t-2=0\\Rightarrow t=2\\) or \\(t=-\\tfrac13\\). So \\(x=4\\) and \\(x=2^{-1/3}\\), both admissible — two real solutions.",
+    "_note": "DEFECTIVE OPTION SET (not a wrong key). The two roots are \\(x=4\\) and \\(x=2^{-1/3}\\), which makes ALL FOUR printed statements true: exactly one root is irrational (A), neither root is prime (B), both roots are real (C), and exactly one root is an integer (D). This is the well-known multiple-correct original re-used here as a single-answer MCQ. Derived letter C is retained because 'two real solutions' is the complete and primary characterisation of the solution set, and it is the only option that remains true under the stricter reading of A and D as 'exactly one solution, and it is irrational/integral' (both of which are false under that reading). The printed key also gives C.",
+    "solution": "[Textbook defect: this is a multiple-correct item reused as a single-answer MCQ. The equation's roots are \\(x = 4\\) and \\(x = 2^{-1/3}\\), and both are admissible, so ALL FOUR printed statements are true at once — one root is irrational, neither is prime, both are real, and one is an integer. Option C is retained because it characterises the whole solution set, but any of the other three is equally defensible as printed.]"
+  },
+  {
+    "ref": "Misc I Q5",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Composition of Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(f(x)=\\frac{1}{1-x}\\), then \\(f(f\\{f(x)\\}]\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(x-1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1-x\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(x\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-x\\)"
+      }
+    ],
+    "answer": "C",
+    "_derivation": "\\(f(f(x))=\\frac{1}{1-\\frac{1}{1-x}}=\\frac{1-x}{(1-x)-1}=\\frac{1-x}{-x}=\\frac{x-1}{x}\\). Then \\(f(f(f(x)))=\\frac{1}{1-\\frac{x-1}{x}}=\\frac{1}{\\frac{x-(x-1)}{x}}=\\frac{1}{1/x}=x\\). So \\(f\\) is an involution of order 3.",
+    "_note": "Book misprint preserved: the bracket pair is mismatched in print — it reads \\(f(f\\{f(x)\\}]\\), opening with '(' and closing with ']'. The intended expression is unambiguously \\(f(f(f(x)))\\). Transcribed as printed per the faithfulness rule.",
+    "solution": "[Textbook misprint (typesetting only): the composite is printed with mismatched brackets, opening with \\((\\) and closing with \\(]\\). The intended triple composite is unambiguous, and the answer is the same under every bracketing since the function has order 3.]"
+  },
+  {
+    "ref": "Misc I Q6",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Inverse Functions",
+    "difficulty": "EASY",
+    "stem": "If \\(f:\\mathbb{R}\\to\\mathbb{R}\\) is defined by \\(f(x)=x^{3}\\) then \\(f^{-1}(8)\\) is equal to :",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\{2\\}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\{-2.\\ 2\\}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\{-2\\}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\((-2.\\ 2)\\)"
+      }
+    ],
+    "answer": "A",
+    "_derivation": "\\(f^{-1}(8)=\\{x\\in\\mathbb{R}:x^{3}=8\\}\\). Over \\(\\mathbb{R}\\) the cube function is a bijection, so \\(x^{3}=8\\) has the single real root \\(x=2\\) (the other two cube roots of 8 are non-real). Hence \\(f^{-1}(8)=\\{2\\}\\).",
+    "_note": "Book misprints preserved. (1) Options B and D separate their two entries with a FULL STOP rather than a comma — printed as '{-2. 2}' and '(-2. 2)' — where every other option block on this page uses a comma; the intended forms are the set \\(\\{-2,2\\}\\) and the interval/pair \\((-2,2)\\). Neither reading changes the answer, since the cube function has exactly one real preimage. (2) The stem misspells 'equal' as 'euqal' in print; the spelling is corrected here as it carries no mathematical content.",
+    "solution": "[Textbook misprint (punctuation only): options B and D separate their two entries with a FULL STOP rather than a comma, printed \\(\\{-2.\\,2\\}\\) and \\((-2.\\,2)\\). Other questions on the same page use clear commas. The intended set and interval are \\(\\{-2, 2\\}\\) and \\((-2, 2)\\); note these are a SET and an INTERVAL and are therefore genuinely different answers, not duplicates. The stem also misspells \"equal\" as \"euqal\".]"
+  },
+  {
+    "ref": "Misc I Q7",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Inverse Functions",
+    "difficulty": "MODERATE",
+    "stem": "Let the function \\(f\\) be defined by \\(f(x)=\\frac{2x+1}{1-3x}\\) then \\(f^{-1}(x)\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{x-1}{3x+2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{x+1}{3x-2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{2x+1}{1-3x}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{3x+2}{x-1}\\)"
+      }
+    ],
+    "answer": "A",
+    "_derivation": "Put \\(y=\\frac{2x+1}{1-3x}\\Rightarrow y(1-3x)=2x+1\\Rightarrow y-3xy=2x+1\\Rightarrow y-1=x(2+3y)\\Rightarrow x=\\frac{y-1}{3y+2}\\). Hence \\(f^{-1}(x)=\\frac{x-1}{3x+2}\\). Check: \\(f(0)=1\\) and \\(f^{-1}(1)=\\frac{0}{5}=0\\).",
+    "_note": "Book misprint preserved in the labels: the FOURTH option is printed 'C)' — the page shows the labels as A), B), C), C), with no D). Emitted here as D so the row carries the required A–D set; the option TEXTS are transcribed exactly as printed. Option C is \\(f\\) itself (a distractor for students who forget to invert).",
+    "solution": "[Textbook misprint (labelling only): the four alternatives are printed A), B), C), C) — the fourth option carries the label C) instead of D). It is stored here as D so the row carries a valid A-D set; the option texts are verbatim.]"
+  },
+  {
+    "ref": "Misc I Q8",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Functions and Types of Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(f(x)=2x^{2}+bx+c\\) and \\(f(0)=3\\) and \\(f(2)=1\\), then \\(f(1)\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-2\\)"
+      },
+      {
+        "label": "B",
+        "text": "0"
+      },
+      {
+        "label": "C",
+        "text": "1"
+      },
+      {
+        "label": "D",
+        "text": "2"
+      }
+    ],
+    "answer": "B",
+    "_derivation": "\\(f(0)=c=3\\). \\(f(2)=8+2b+c=1\\Rightarrow 8+2b+3=1\\Rightarrow 2b=-10\\Rightarrow b=-5\\). Hence \\(f(x)=2x^{2}-5x+3\\) and \\(f(1)=2-5+3=0\\)."
+  },
+  {
+    "ref": "Misc I Q9",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "MODERATE",
+    "stem": "The domain of \\(\\frac{1}{[x]-x}\\) where \\([x]\\) is greatest integer function is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\mathbb{R}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\mathbb{Z}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\mathbb{R}-\\mathbb{Z}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\mathbb{Q}-\\{0\\}\\)"
+      }
+    ],
+    "answer": "C",
+    "_derivation": "\\([x]-x=-\\{x\\}\\), the negative of the fractional part, which vanishes exactly when \\(x\\) is an integer and is non-zero otherwise. The expression is therefore defined precisely on the non-integers, i.e. \\(\\mathbb{R}-\\mathbb{Z}\\).",
+    "_note": "Option D is printed 'Q - {o}' with a lowercase letter o where the digit 0 is intended; transcribed as \\(\\mathbb{Q}-\\{0\\}\\). It is a distractor either way."
+  },
+  {
+    "ref": "Misc I Q10",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "MODERATE",
+    "stem": "The domain and range of \\(f(x)=2-|x-5|\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\mathbb{R}^{+},\\ (-\\infty,1]\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\mathbb{R},\\ (-\\infty,2]\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\mathbb{R},\\ (-\\infty,2)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\mathbb{R}^{+},\\ (-\\infty,2]\\)"
+      }
+    ],
+    "answer": "B",
+    "_derivation": "\\(|x-5|\\) is defined for every real \\(x\\), so the domain is \\(\\mathbb{R}\\). Since \\(|x-5|\\ge 0\\) with equality at \\(x=5\\), we get \\(f(x)\\le 2\\) and \\(f(5)=2\\) is attained; as \\(|x-5|\\to\\infty\\), \\(f(x)\\to-\\infty\\), and \\(f\\) is continuous, so the range is \\((-\\infty,2]\\). Option C fails because the maximum 2 IS attained."
+  }
+]
