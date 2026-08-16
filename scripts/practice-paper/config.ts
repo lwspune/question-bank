@@ -289,6 +289,166 @@ export const PAPERS: Record<string, PaperSpec> = {
   // plants "Noamundi" for Kiriburu and a non-existent "Krishna Valley Corporation", and the
   // option set offers "None". Q117's stem carries a stray leftover "75." which WAS dropped.
   // Net: 138 new / 11 dup / 1 flawed.
+  "gat-mock-w011": {
+    slug: "gat-mock-w011",
+    title: "NDA GAT — LWS Mock W011",
+    recordsFile: "gat-mock-w011.records.json",
+    outName: "Tags_NDA_GAT_Mock_W011",
+    sourceFile: "NDA_GAT_MOCK_W011.docx",
+    subjects: {
+      Biology: {
+        "Biodiversity and Classification": ["Animal Kingdom Classification"],
+        "Cell Biology": [
+          "Cell Division and DNA Replication",
+          "Cell Organelles and Functions",
+          "Cell Wall and Cell Membrane",
+        ],
+        "Genetics and Evolution": ["Heredity and DNA"],
+        "Human Physiology": [
+          "Circulatory and Lymphatic System",
+          "Connective and Epithelial Tissues",
+        ],
+        "Plant Biology": ["Plant Tissues and Meristems"],
+      },
+      Chemistry: {
+        "Acids, Bases and Salts": ["pH Scale and Common Substances"],
+        "Atomic Structure and Periodic Classification": [
+          "Electron Configuration and Valence Shells",
+          "Periodic Trends, Valency and Atomicity",
+        ],
+        "Chemical Bonding": ["Valency, Oxidation States and Molecular Formula"],
+        "Chemical Reactions": [
+          "Endothermic and Exothermic Reactions",
+          "Redox: Oxidation, Reduction and Reducing Agents",
+          "Types of Reactions: Combination, Decomposition, Displacement",
+        ],
+        "Matter and Its States": [
+          "Compounds, Mixtures and Solutions",
+          "States of Matter, Phase Changes and Diffusion",
+        ],
+        "Metals and Non-Metals": ["Reactivity Series and Reactions with Water"],
+        "Mole Concept and Stoichiometry": ["Stoichiometry and Laws of Chemical Combination"],
+      },
+      "Current Affairs": {
+        "Awards, Honours, Books and Culture": ["Books, Literature and Authors"],
+        "Defence and Military Exercises": ["Military Exercises — Bilateral and Multilateral"],
+        "Government Schemes, Policy and Governance": ["Health, Education and Welfare Schemes"],
+        "International Affairs and Relations": [
+          "International Organizations and Multilateral Bodies",
+        ],
+        "National Events, Persons and India General Knowledge": [
+          "Indian Economy, Geography and Resources",
+        ],
+        "Science and Technology": ["Information Technology and Railway Safety"],
+        Sports: ["Cricket — Records, Tournaments and Players"],
+      },
+      Economics: {
+        "Indian Economy": [
+          "Five Year Plans and Indian Planning",
+          "International Trade and Finance",
+        ],
+      },
+      English: {
+        "Fill in the Blanks": ["Contextual Fill-in-Blank"],
+        Grammar: [
+          "Active and Passive Voice",
+          "Direct and Indirect Speech",
+          "Discourse Markers and Connectors",
+        ],
+        "Reading Comprehension": ["Inferential Comprehension"],
+        "Sentence Rearrangement": [
+          "Paragraph Sequencing (S1–S6)",
+          "Sentence Part Rearrangement (PQRS)",
+        ],
+        Vocabulary: ["Confusable Word Pairs", "Synonyms", "Word Definition"],
+      },
+      Geography: {
+        "Climatology, Atmosphere and Weather": [
+          "Atmospheric Layers, Composition and Aurora",
+          "Cyclones, Fronts and Local Winds",
+          "Insolation, Temperature and Solar Geometry",
+        ],
+        "Earth's Structure, Landforms and Geological Time": [
+          "Earthquakes and Seismic Waves",
+          "Rocks, Minerals and Geological Time",
+          "Soils",
+          "Volcanoes and Igneous Activity",
+        ],
+        "Indian Geography — Economy, Resources and Transport": [
+          "Agriculture, Crops, Soils and Land Use",
+          "Energy and Industries — Power, Petroleum, Iron and Steel",
+          "Highways, Railways and Transport Corridors",
+          "Minerals and Mining",
+          "Ports and Maritime Infrastructure",
+        ],
+        "Indian Geography — Physical Features": [
+          "Forests and Natural Vegetation of India",
+          "Indian Rivers, Lakes and Water Bodies",
+          "Indian States and Islands",
+          "Location, Extent and Frontiers of India",
+          "Mountains, Plateaus and Plains of India",
+        ],
+        Oceanography: ["Ocean Currents", "Ocean Waves and Sea-Floor Topography"],
+        "World and Human Geography": [
+          "Human Geography — Megacities and Population",
+          "World — Rivers, Canals and Water Bodies",
+        ],
+      },
+      History: {
+        "Ancient India": [
+          "Ancient Indian Literature and Inscriptions",
+          "Mahajanapadas, Magadha and Mauryan Empire",
+        ],
+        "Modern India": [
+          "19th Century Social and Religious Reform",
+          "British Administration, Acts and Legislation",
+        ],
+      },
+      Physics: {
+        "Electricity and Magnetism": ["Magnetic Force and Fleming's Rules"],
+        Gravitation: ["Gravitational Field and Potential", "Orbits, Kepler and Escape"],
+        "Heat and Thermodynamics": ["Temperature and Thermometry"],
+        "Kinematics and Motion": [
+          "Circular Motion",
+          "Equations of Motion and Graphs",
+          "Projectile and Vertical Motion",
+        ],
+        "Laws of Motion and Forces": [
+          "Conservation of Momentum and Collisions",
+          "Friction",
+          "Impulse and Momentum",
+          "Newton's Laws of Motion",
+        ],
+        "Light and Optics": [
+          "Lenses and Lens Formula",
+          "Light Phenomena and Spectrum",
+          "Reflection and Mirrors",
+        ],
+        "Units, Measurement and Dimensions": ["Units and Dimensions"],
+        "Work, Energy and Power": [
+          "Energy and Conservation",
+          "Work and Work Done",
+          "Work-Energy Theorem and Power",
+        ],
+      },
+      Polity: {
+        "Fundamental Rights, DPSP and Local Governance": ["Electoral Systems"],
+        "Government Structure — Parliament, Judiciary and Constitutional Bodies": [
+          "Government Departments and Schemes",
+          "Parliament — Composition, Procedures and Powers",
+        ],
+      },
+    },
+    pyqNote: "NDA GAT practice — LWS GAT Mock W011",
+    examName: "NDA",
+    section: { key: "gat-mock-w011", label: "GAT Mock W011" },
+    bankAdd: true,
+    // Like W2/W03 (and unlike W1/G1/W09, which are Excel-only) this one DOES get
+    // a /dashboard/papers paper — the whole 150-question printed test, dups
+    // included, so it reads as the paper the students actually sat.
+    createPaper: true,
+  },
+
   "gat-mock-w03": {
     slug: "gat-mock-w03",
     title: "NDA GAT — LWS Full Mock W03",
