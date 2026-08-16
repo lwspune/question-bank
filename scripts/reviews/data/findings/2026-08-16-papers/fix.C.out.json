@@ -1,0 +1,23 @@
+[
+  {
+    "questionId": "4cee0ae9-9169-458d-a32f-e3635b92af3f",
+    "questionNumber": "965",
+    "newSolution": "\\(\\log ab\\) is defined only when \\(ab > 0\\), so \\(a\\) and \\(b\\) are non-zero and have the same sign. Then \\(\\log ab - \\log|b| = \\log\\dfrac{ab}{|b|}\\). If \\(b > 0\\) then \\(|b| = b\\), so \\(\\dfrac{ab}{|b|} = a\\), and here \\(a > 0\\), giving \\(a = |a|\\). If \\(b < 0\\) then \\(|b| = -b\\), so \\(\\dfrac{ab}{|b|} = -a\\), and here \\(a < 0\\), giving \\(-a = |a|\\). Either way the quotient is \\(|a|\\), so the expression equals \\(\\log|a|\\). The alternative \\(\\log a\\) is not valid in general: when \\(a\\) and \\(b\\) are both negative it is undefined, while \\(\\log|a|\\) holds throughout the domain. Hence (B).",
+    "whatChanged": "Replaced the false parenthetical (b/|b| = plus-or-minus 1, which only yields log of plus-or-minus a) with the domain argument ab>0 forcing a and b to share a sign, worked out for b>0 and b<0 separately, plus a line saying why log a is not universally valid.",
+    "concern": ""
+  },
+  {
+    "questionId": "a7b967ec-a0f4-4997-88d3-e38acc2eeeb7",
+    "questionNumber": "978",
+    "newSolution": "Change of base gives the chain rule \\(\\log_x y \\cdot \\log_z x = \\log_z y\\). So \\(bc = \\log_{36}24 \\cdot \\log_{48}36 = \\log_{48}24\\), and hence \\(abc = a\\,(bc) = \\log_{24}12 \\cdot \\log_{48}24 = \\log_{48}12\\). Therefore \\(1 + abc = \\log_{48}48 + \\log_{48}12 = \\log_{48}(48 \\cdot 12) = \\log_{48}576 = \\log_{48}\\left(24^{2}\\right) = 2\\log_{48}24 = 2bc\\). Hence (C).",
+    "whatChanged": "Replaced the bare appeal to a standard identity with the full three-step change-of-base chain (bc = log_48 24, abc = log_48 12, then 1 + abc = log_48 576 = 2 log_48 24), so the answer is derived rather than cited.",
+    "concern": ""
+  },
+  {
+    "questionId": "30764e3c-e8c0-4d1e-9715-1d1ee6cb2da4",
+    "questionNumber": "983",
+    "newSolution": "\\(\\log_4 18 = \\dfrac{\\log_2 18}{\\log_2 4} = \\dfrac{\\log_2 18}{2} = \\dfrac{1 + \\log_2 9}{2}\\). Now \\(\\log_2 9\\) is irrational: it is positive, so if it were rational we could write \\(\\log_2 9 = p/q\\) with \\(p, q\\) positive integers, giving \\(2^{p} = 9^{q}\\) - impossible, since the left side is even and the right side is odd. Finally, if \\(\\dfrac{1 + \\log_2 9}{2}\\) were rational then \\(\\log_2 9\\) would be rational as well, so the whole expression is irrational. Hence (B).",
+    "whatChanged": "Kept the correct rewrite to (1 + log_2 9)/2 and added the missing proof: the parity contradiction 2^p = 9^q (even = odd) showing log_2 9 is irrational, then the step carrying that irrationality through to (1 + log_2 9)/2.",
+    "concern": ""
+  }
+]

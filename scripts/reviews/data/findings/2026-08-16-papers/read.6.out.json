@@ -1,0 +1,9 @@
+[
+  {
+    "questionNumber": "Misc I Q.1",
+    "questionId": "9ac7a587-5482-4912-87f2-5ef940a7d3b2",
+    "issue": "FALSE_STEP",
+    "evidence": "The solution opens with two equalities that are both untrue, then abandons them mid-sentence with an ellipsis before reaching the correct factorisation. It claims \\(1+x+\\sqrt{x+x^2}=(\\sqrt{x})^2+(\\sqrt{1+x})^2+\\sqrt{x}\\sqrt{1+x}\\), but that right-hand side is \\(x+(1+x)+\\sqrt{x+x^2}=1+2x+\\sqrt{x+x^2}\\) — it exceeds the numerator by \\(x\\), so the two agree only at \\(x=0\\). It then restates the same wrong quantity as \\((\\sqrt{x}+\\sqrt{1+x})^2-\\sqrt{x}\\sqrt{1+x}\\), which expands to \\(1+2x+\\sqrt{x+x^2}\\) as well — internally consistent with the first false line, and equally not the numerator. Only the third claim, that the numerator is \\((\\sqrt{x}+\\sqrt{1+x})\\sqrt{x+1}\\), is correct: \\((\\sqrt{x}+\\sqrt{1+x})\\sqrt{1+x}=\\sqrt{x+x^2}+(1+x)\\). The final answer B is right; the printed route to it opens with two false lines of abandoned scratch work.",
+    "proposedFix": "Delete the two false opening equalities and the trailing '... more directly' and print the factorisation alone: \"Numerator \\(=1+x+\\sqrt{x+x^2}=\\sqrt{1+x}\\left(\\sqrt{1+x}+\\sqrt{x}\\right)\\). Dividing by \\(\\sqrt{x}+\\sqrt{1+x}\\) leaves the integrand \\(\\sqrt{x+1}\\). Hence \\(\\int\\sqrt{x+1}\\,dx=\\frac{2}{3}(x+1)^{3/2}+c\\). Answer B.\""
+  }
+]

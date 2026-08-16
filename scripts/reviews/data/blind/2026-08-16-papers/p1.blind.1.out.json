@@ -1,0 +1,122 @@
+[
+  {
+    "questionNumber": "Misc 4 I (3)",
+    "questionId": "f7b7adeb-f248-4001-8cb1-fdc62aa8372d",
+    "value": "4 - pi (approx 0.858407)",
+    "letter": "B",
+    "confidence": "high",
+    "note": "Sub t=sqrt(e^x-1): 2*int_0^2 t^2/(t^2+4) dt = 2[t - 2 arctan(t/2)]_0^2 = 4 - pi. Confirmed by sympy closed form and mpmath quadrature (both 0.858407346410207). No twin options."
+  },
+  {
+    "questionNumber": "Misc 4A I Q1",
+    "questionId": "9d01b216-4edb-4fcb-8186-4e6c3edb0046",
+    "value": "D = -(ac - b^2)(a + 2b + c); zero iff b^2 = ac (G.P.) OR a + 2b + c = 0",
+    "letter": "B",
+    "confidence": "medium",
+    "note": "R3 -> R3-(R1+R2) gives D = -(a+2b+c)(ac-b^2), verified symbolically in sympy. G.P. => ac=b^2 => D=0, so B is a correct sufficient condition and is the only evaluable correct option. STEM DEFECT: the general form of this problem has entries a*alpha+b and b*alpha+c; here alpha has been set to 1 and dropped, so option D ('alpha is root of ax^2+2bx+c=0') references a symbol absent from the stem and cannot be evaluated as printed. With alpha=1 restored, D would also be correct (a+2b+c=0 <=> x=1 is a root), i.e. the intended answer set is B or D. Marked B, not MULTI, because as printed D is indeterminate rather than an equal-valued twin."
+  },
+  {
+    "questionNumber": "Misc 4A I Q5",
+    "questionId": "36874f7b-c46a-4371-9e08-f5579e6f740f",
+    "value": "2 * det[[a,b,c],[p,q,r],[x,y,z]]",
+    "letter": "C",
+    "confidence": "high",
+    "note": "N = M*T with T = [[0,1,1],[1,0,1],[1,1,0]], det T = 2, so det N = 2 det M. Verified in sympy: det N - 2 det M simplifies to 0 identically. Options A, B, D are column-permuted (sign-flipped or reordered) forms and are not equal to det N in general, so no twin."
+  },
+  {
+    "questionNumber": "Misc I (2)",
+    "questionId": "57a1db73-6861-434f-b9c0-a33b997540b0",
+    "value": "1 sq. unit",
+    "letter": "A",
+    "confidence": "high",
+    "note": "int_e^{e^2} dx/x = ln(e^2) - ln(e) = 2 - 1 = 1. Confirmed in sympy."
+  },
+  {
+    "questionNumber": "Misc I (3)",
+    "questionId": "7364a1db-bdfb-4eed-8881-07fcdeca420c",
+    "value": "17/4 sq. units",
+    "letter": "D",
+    "confidence": "high",
+    "note": "Area (unsigned) = int_{-2}^{0}|x^3|dx + int_0^1 x^3 dx = 4 + 1/4 = 17/4. Confirmed by sympy integral of Abs(x^3). Option B (-15/4) and C (15/4) are the signed-integral trap (-4 + 1/4); an area cannot be negative, so A and B are excluded on sign alone."
+  },
+  {
+    "questionNumber": "Misc I (4)",
+    "questionId": "247b68a5-7149-4bba-9ce5-8857e480c30a",
+    "value": "1/3 sq. units",
+    "letter": "B",
+    "confidence": "high",
+    "note": "Intersections at x=0 and x=1; int_0^1 (2 sqrt(x) - 2x) dx = 4/3 - 1 = 1/3. Confirmed in sympy."
+  },
+  {
+    "questionNumber": "Misc I (8)",
+    "questionId": "ab664f5f-52e1-44e3-a786-5fae382d36f6",
+    "value": "4/3 sq. units",
+    "letter": "D",
+    "confidence": "high",
+    "note": "int_0^1 2 sqrt(x) dx = 2*(2/3) = 4/3. Confirmed in sympy. Option C (2/3) is the y=sqrt(x) variant without the factor 2."
+  },
+  {
+    "questionNumber": "Misc I (9)",
+    "questionId": "814ca973-912c-4a8b-943f-217ebb676957",
+    "value": "25*pi/4 (approx 19.6350) sq. units",
+    "letter": "NONE",
+    "confidence": "high",
+    "note": "Quarter of a disc of radius 5: (1/4)*pi*5^2 = 25pi/4 = 19.63495. Confirmed by int_0^5 sqrt(25-x^2) dx = 25pi/4 in sympy. No option carries this value: A = 25pi/3 = 26.180, B = 5pi = 15.708, C = 5, D = 3. Nearest option is A (25pi/3), which is the same numerator with 3 in place of 4 - a plausible printing defect - but it is not equal to the true area, so NONE per rule 3."
+  },
+  {
+    "questionNumber": "Misc I (13)",
+    "questionId": "866cb0d2-06e6-49a5-ad39-8f31d0f4e7bd",
+    "value": "9 sq. units",
+    "letter": "B",
+    "confidence": "high",
+    "note": "Curve and line meet where y^2 = 2y+3 => y = 3 (y = -1 rejected, first quadrant), i.e. (9,3). Integrating in y: int_0^3 (2y+3 - y^2) dy = 9 + 9 - 9 = 9. Cross-checked by integrating in x: int_0^3 sqrt(x) dx + int_3^9 (sqrt(x) - (x-3)/2) dx = 2sqrt(3) + (18 - 9 - 2sqrt(3)) = 9. Option A (2sqrt(3)) is the partial first-piece trap."
+  },
+  {
+    "questionNumber": "Misc I (19)",
+    "questionId": "56bfec1a-d484-48d7-9f12-88744c04a799",
+    "value": "16a^2/3",
+    "letter": "A",
+    "confidence": "high",
+    "note": "Parabolas meet at (0,0) and (4a,4a); int_0^{4a} (2 sqrt(ax) - x^2/(4a)) dx = 32a^2/3 - 16a^2/3 = 16a^2/3. Confirmed symbolically in sympy for a > 0."
+  },
+  {
+    "questionNumber": "Misc I Q.5",
+    "questionId": "34b77053-fec4-47f6-bd17-df3749a93f5a",
+    "value": "5/sqrt(26) (approx 0.980581)",
+    "letter": "NONE",
+    "confidence": "high",
+    "note": "b1 x b2 = (-1,-4,3), |b1 x b2| = sqrt(26); (a2-a1) = (1,-3,-2), dot = -1+12-6 = 5; SD = 5/sqrt(26) = 0.98058. Lines are genuinely skew (dot != 0), so the formula applies. No option matches: A = 0.5774, B = 0.7071, C = 2.1213, D = 0.8660. Nearest is D (sqrt(3)/2 = 0.8660), still 12% off. Defective option set."
+  },
+  {
+    "questionNumber": "Misc I Q.6",
+    "questionId": "9fa84dae-2d4d-4501-9d18-0bb9ffc8b19d",
+    "value": "alpha = 2, beta = -1/2",
+    "letter": "C",
+    "confidence": "high",
+    "note": "y' = alpha/x + 2*beta*x + 1. y'(-1)=0 => -alpha - 2beta + 1 = 0; y'(2)=0 => alpha/2 + 4beta + 1 = 0. Solving (sympy) gives alpha = 2, beta = -1/2 uniquely. Minor stem defect: log x is undefined at x = -1 over the reals; the derivation is valid verbatim if the term is read as alpha*log|x| (same derivative 1/x), and the answer is unchanged either way."
+  },
+  {
+    "questionNumber": "Misc I Q.19",
+    "questionId": "0dd998ff-51e1-4dd8-a1fa-7481002a34e8",
+    "value": "theta = n*pi/3",
+    "letter": "NONE",
+    "confidence": "medium",
+    "note": "Since 3t = t + 2t, tan3t(1 - tan t tan2t) = tan t + tan 2t, so LHS - RHS = 2 tan3t (1 - tan t tan 2t); as tan t tan 2t = 1 is exactly where tan 3t is undefined, the equation reduces to tan 3t = 0, i.e. theta = n*pi/3. sympy simplifies LHS-RHS to 2 tan(t)(tan^2 t - 3)/(tan^2 t - 1), zero at tan t = 0 or tan t = +-sqrt(3), which is the same set n*pi/3. Numeric check: theta = k*pi/6 satisfies the equation for k EVEN and is undefined for k ODD (tan(3t) blows up at pi/6, pi/2, 5pi/6, ...). So option B (n*pi/6) is over-inclusive (theta = pi/6 is not a solution - both sides undefined), option A (n*pi) is a proper subset that misses the n*pi +- pi/3 solutions, option C (n*pi +- pi/4) fails (tan 3t undefined at pi/4), option D (n*pi/2) fails (tan t undefined at pi/2). The correct general value n*pi/3 is not printed => NONE. Confidence medium only because a key could defensibly have intended B via the A+B+C = n*pi identity, which is invalid here since the three angles are dependent (C = A + B)."
+  },
+  {
+    "questionNumber": "Misc I Q1",
+    "questionId": "07db6b80-d5b9-44fd-b4fe-3b398d3d6143",
+    "value": "51 terms",
+    "letter": "B",
+    "confidence": "high",
+    "note": "Odd powers of y cancel, even powers double; y-exponents 0,2,...,100 give 51 surviving terms. Verified by sympy expansion of (x+y)^100+(x-y)^100 (51 args) and by the pattern at n=4,6,10 (3,4,6 = n/2+1)."
+  },
+  {
+    "questionNumber": "Misc I Q2",
+    "questionId": "fa639751-fd86-4ff5-884d-3d8664d5f9b1",
+    "value": "sqrt(5) approx 2.236 patients (population SD); sample SD = sqrt(20/3) approx 2.582",
+    "letter": "NONE",
+    "confidence": "high",
+    "note": "Mean = 56/4 = 14; deviations -1, 3, -3, 1; sum of squares = 20; variance = 20/4 = 5; SD = sqrt(5) = 2.2361. Neither the population SD (2.236) nor the sample SD (2.582) nor the mean deviation (2) matches any option. Option A ('5 patients') is the VARIANCE, not the standard deviation - the likely source of the printed key. Nearest option numerically is B (4), still off by ~79%. NONE per rule 3."
+  }
+]

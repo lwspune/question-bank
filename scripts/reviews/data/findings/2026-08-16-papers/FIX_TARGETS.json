@@ -1,0 +1,830 @@
+[
+  {
+    "src": "read.1.out.json",
+    "questionNumber": "1402",
+    "questionId": "44681c8a-8621-4be7-9cff-29d48ae38fc3",
+    "issue": "FALSE_STEP",
+    "evidence": "The solution writes \"Dividing (ii) by (i): \\(\\dfrac{x-h}{x} = \\dfrac{\\cot(\\alpha-\\beta)}{\\cot\\alpha}\\)... rather, equating the two expressions for \\(d\\): ...\". That ratio is INVERTED: from \\(x\\cot\\alpha = (x-h)\\cot(\\alpha-\\beta)\\) the correct consequence is \\(\\dfrac{x-h}{x} = \\dfrac{\\cot\\alpha}{\\cot(\\alpha-\\beta)}\\). Checked numerically at \\(\\alpha=60^\\circ, \\beta=20^\\circ, h=10\\): \\((x-h)/x = 0.4",
+    "proposedFix": "Delete the abandoned clause entirely and go straight from (i) and (ii) to the equality: \"Equating the two expressions for \\(d\\): \\(x\\cot\\alpha = (x-h)\\cot(\\alpha-\\beta)\\), so \\(x[\\cot(\\alpha-\\beta)-\\cot\\alpha] = h\\cot(\\alpha-\\beta)\\), giving \\(x = \\dfrac{h\\cot(\\alpha-\\beta)}{\\cot(\\alpha-\\beta)-\\cot\\alpha}\\).\" (Optionally add the one line that justifies step (ii): the elevation \\(\\alpha\\) of the minar top from the tower foot equals the depression of the tower foot from the minar top, so the tower top sits at depression \\(\\alpha-\\beta\\).)",
+    "found": true,
+    "chapter": "Height & Distance",
+    "sourceFile": "NDA_Maths_Practice__Trigonometry__Height_and_Distance.pdf",
+    "contentHash": "a2082063607e9c792087bd853d3ec838d80b0c3852e3397d311eb90e90880e8d",
+    "stem": "Elevation angle of the top of the minar from the foot of the tower of height \\(h\\) is \\(\\alpha\\) and the tower subtend an angle \\(\\beta\\) at the top of the minar. Then, height of minar is",
+    "options": [
+      {
+        "text": "\\(\\dfrac{h\\cot(\\alpha-\\beta)}{\\cot(\\alpha-\\beta)-\\cot\\alpha}\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\dfrac{h\\tan(\\alpha-\\beta)}{\\tan(\\alpha-\\beta)-\\tan\\alpha}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{h\\cot(\\alpha-\\beta)}{\\cot(\\alpha-\\beta)+\\cot\\alpha}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "None of the above",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "Let the minar height be \\(x\\), the tower height \\(h\\), and the horizontal separation \\(d\\). From the foot of the tower the elevation of the minar top is \\(\\alpha\\): \\(d = x\\cot\\alpha\\) ...(i). From the top of the minar the tower subtends \\(\\beta\\); the depression of the tower top is \\((\\alpha-\\beta)\\), so \\(\\dfrac{x-h}{d} = \\tan(\\alpha-\\beta)\\), i.e. \\(d = (x-h)\\cot(\\alpha-\\beta)\\) ...(ii). Dividing (ii) by (i): \\(\\dfrac{x-h}{x} = \\dfrac{\\cot(\\alpha-\\beta)}{\\cot\\alpha}\\)... rather, equating the two expressions for \\(d\\): \\(x\\cot\\alpha = (x-h)\\cot(\\alpha-\\beta)\\). Solving, \\(x[\\cot(\\alpha-\\beta) - \\cot\\alpha] = h\\cot(\\alpha-\\beta)\\), so \\(x = \\dfrac{h\\cot(\\alpha-\\beta)}{\\cot(\\alpha-\\beta) - \\cot\\alpha}\\). Hence (A)."
+  },
+  {
+    "src": "read.1.out.json",
+    "questionNumber": "1403",
+    "questionId": "c4a14c31-bb55-40e7-b110-2a8ab8449c24",
+    "issue": "FALSE_STEP",
+    "evidence": "The solution ends \"(The printed option C reverses the sign; the intended value is \\(\\dfrac{3-\\sqrt{3}}{2}\\).)\" — but printed option C IS \\(\\dfrac{3-\\sqrt{3}}{2}\\), byte-for-byte the value the note claims is missing. The derivation itself is correct (\\(h = \\sqrt{3}/(\\sqrt{3}+1) = (3-\\sqrt{3})/2 \\approx 0.6340\\), verified numerically). The note appears to be a stale erratum from a version where opti",
+    "proposedFix": "Delete the parenthetical sentence. The solution should end: \"... \\(= \\dfrac{\\sqrt{3}(\\sqrt{3}-1)}{(\\sqrt{3}+1)(\\sqrt{3}-1)} = \\dfrac{3-\\sqrt{3}}{2}\\) metres. Hence (C).\"",
+    "found": true,
+    "chapter": "Height & Distance",
+    "sourceFile": "NDA_Maths_Practice__Trigonometry__Height_and_Distance.pdf",
+    "contentHash": "874b17d1594d7843137aff584caafd62146211310d85a12cb167881adf8abf8f",
+    "stem": "From the top of a tower, the angle of depression of a point on the ground is \\(60^\\circ\\). If the distance of this point from the tower is \\(\\dfrac{1}{\\sqrt{3}+1}\\) metres, then the height of the tower is",
+    "options": [
+      {
+        "text": "\\(\\dfrac{4\\sqrt{3}}{2}\\) metres",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{\\sqrt{3}+3}{2}\\) metres",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{3-\\sqrt{3}}{2}\\) metres",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\dfrac{\\sqrt{3}}{2}\\) metres",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "Let the tower height be \\(h\\). The depression of the ground point is \\(60^\\circ\\), so the elevation of the top from that point is also \\(60^\\circ\\): \\(\\tan 60^\\circ = \\dfrac{h}{\\text{distance}}\\). With horizontal distance \\(\\dfrac{1}{\\sqrt{3}+1}\\), \\(h = \\dfrac{1}{\\sqrt{3}+1}\\times\\sqrt{3} = \\dfrac{\\sqrt{3}}{\\sqrt{3}+1} = \\dfrac{\\sqrt{3}(\\sqrt{3}-1)}{(\\sqrt{3}+1)(\\sqrt{3}-1)} = \\dfrac{3-\\sqrt{3}}{2}\\) metres. (The printed option C reverses the sign; the intended value is \\(\\dfrac{3-\\sqrt{3}}{2}\\).) Hence (C)."
+  },
+  {
+    "src": "read.2.out.json",
+    "questionNumber": "1619",
+    "questionId": "182ecc79-e776-4cba-b18e-7d50f2a73703",
+    "issue": "FALSE_STEP",
+    "evidence": "The solution assigns the symbol r twice, to two different quantities, two sentences apart: \"Circumference \\(= 2\\pi r = 10\\pi \\Rightarrow r = 5\\)\" (r = the radius), then \"\\(r^2 = g^2 + f^2 - r_{\\text{const}} \\Rightarrow 25 = 1 + 1 - r \\Rightarrow r = -23\\)\" (r = the constant term of the question's equation). As printed, the derivation asserts r = 5 and then r = -23, and the final equality is untrue",
+    "proposedFix": "Name the constant term distinctly throughout and state the identification with the question's r once at the end. E.g. \"... Centre \\((1, -1) \\Rightarrow p = -2,\\ q = 2\\). Circumference \\(= 2\\pi R = 10\\pi \\Rightarrow R = 5\\). For \\(x^2 + y^2 + px + qy + r = 0\\) we have \\(g = \\tfrac{p}{2} = -1\\), \\(f = \\tfrac{q}{2} = 1\\) and \\(R^2 = g^2 + f^2 - r\\), so \\(25 = 1 + 1 - r \\Rightarrow r = -23\\). Hence \\(p = -2,\\ q = 2,\\ r = -23\\), option (A).\"",
+    "found": true,
+    "chapter": "Circles",
+    "sourceFile": "NDA_Maths_Practice__2D__Circles.pdf",
+    "contentHash": "70a60009926a20cc23fc3357907b0d4ee094c5bb4f29ba10aa2c996103224127",
+    "stem": "If the lines \\(2x + 3y + 1 = 0\\), \\(3x - y - 4 = 0\\) are diameters of a circle \\(x^2 + y^2 + px + qy + r = 0\\) of circumference \\(10\\pi\\), then values of \\(p\\), \\(q\\), \\(r\\) respectively are",
+    "options": [
+      {
+        "text": "\\(-2, 2, -23\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(2, -2, 23\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(-1, 2, 23\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(-2, -2, 23\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "The centre is the intersection of the diameters \\(2x + 3y + 1 = 0\\) and \\(3x - y - 4 = 0\\). Solving: from the second \\(y = 3x - 4\\); then \\(2x + 3(3x - 4) + 1 = 0 \\Rightarrow 11x = 11 \\Rightarrow x = 1, y = -1\\). Centre \\((1, -1) \\Rightarrow -\\tfrac{p}{2} = 1 \\Rightarrow p = -2\\), \\(-\\tfrac{q}{2} = -1 \\Rightarrow q = 2\\). Circumference \\(= 2\\pi r = 10\\pi \\Rightarrow r = 5\\). Then \\(r^2 = g^2 + f^2 - r_{\\text{const}} \\Rightarrow 25 = 1 + 1 - r \\Rightarrow r = -23\\). So \\(p = -2, q = 2, r = -23\\). Hence (A)."
+  },
+  {
+    "src": "read.3.out.json",
+    "questionNumber": "861",
+    "questionId": "4b7117ce-6227-406f-a6e9-4037e711b875",
+    "issue": "CITES_NOT_DERIVES",
+    "evidence": "The whole solution is \"For a fair coin, the probability of an odd number of tails in any number of tosses equals \\\\(\\\\frac{1}{2}\\\\) (the even and odd cases split the binomial expansion equally when \\\\(p = q = \\\\frac{1}{2}\\\\)). So \\\\(P(\\\\text{odd number of tails}) = \\\\frac{1}{2}\\\\).\" There is no computation anywhere. The parenthetical asserts the equal split of the binomial expansion, and that asse",
+    "proposedFix": "Replace with a derivation, e.g.: \"Total outcomes \\\\(= 2^{100}\\\\). Putting \\\\(x = 1\\\\) in \\\\((1+x)^{100}\\\\) gives \\\\(\\\\sum_k {}^{100}C_k = 2^{100}\\\\); putting \\\\(x = -1\\\\) gives \\\\(\\\\sum_k (-1)^k\\\\,{}^{100}C_k = 0\\\\). Adding and subtracting, \\\\(\\\\sum_{k \\\\text{ even}} {}^{100}C_k = \\\\sum_{k \\\\text{ odd}} {}^{100}C_k = 2^{99}\\\\). Hence \\\\(P(\\\\text{odd number of tails}) = \\\\frac{2^{99}}{2^{100}} = \\\\frac{1}{2}\\\\).\" (Equivalently, the one-line argument: whatever the parity of the first 99 tosses, the 100th toss makes the total odd with probability exactly \\\\(\\\\frac{1}{2}\\\\).)",
+    "found": true,
+    "chapter": "Binomial Distribution",
+    "sourceFile": "NDA_Maths_Practice__Algebra__Binomial_Distribution.pdf",
+    "contentHash": "8796853cb79bc3e4c36169e6b558ec68b23e59872260924b5b44190b8a0c2ef8",
+    "stem": "A fair coin is tossed 100 times. The probability of getting tail an odd number of times is",
+    "options": [
+      {
+        "text": "\\(\\frac{1}{2}\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\frac{1}{4}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "0",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "1",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "For a fair coin, the probability of an odd number of tails in any number of tosses equals \\(\\frac{1}{2}\\) (the even and odd cases split the binomial expansion equally when \\(p = q = \\frac{1}{2}\\)). So \\(P(\\text{odd number of tails}) = \\frac{1}{2}\\). Matches option A."
+  },
+  {
+    "src": "read.4.out.json",
+    "questionNumber": "965",
+    "questionId": "4cee0ae9-9169-458d-a32f-e3635b92af3f",
+    "issue": "INCOMPLETE",
+    "evidence": "\"\\\\(\\\\log ab - \\\\log|b| = \\\\log\\\\dfrac{ab}{|b|} = \\\\log|a|\\\\) (since \\\\(b/|b| = \\\\pm 1\\\\)).\" The stated reason is the only step that carries the question, and it does not deliver the answer: b/|b| = ±1 gives ab/|b| = ±a, i.e. \\\\(\\\\log(\\\\pm a)\\\\), not \\\\(\\\\log|a|\\\\). A student following the printed reason cannot get from ±a to |a|. The absolute value comes from the DOMAIN, which the solution never ",
+    "proposedFix": "Replace the parenthetical with the domain argument: \"\\\\(\\\\log ab\\\\) is defined only when \\\\(ab > 0\\\\), so \\\\(a\\\\) and \\\\(b\\\\) have the same sign. Then \\\\(\\\\dfrac{ab}{|b|} = a\\\\cdot\\\\operatorname{sign}(b) = |a|\\\\) (if \\\\(b>0\\\\) then \\\\(a>0\\\\) and the value is \\\\(a=|a|\\\\); if \\\\(b<0\\\\) then \\\\(a<0\\\\) and the value is \\\\(-a=|a|\\\\)). Hence \\\\(\\\\log ab - \\\\log|b| = \\\\log|a|\\\\).\"",
+    "found": true,
+    "chapter": "Logarithms",
+    "sourceFile": "NDA_Maths_Practice__Algebra__Logarithms.pdf",
+    "contentHash": "925a416f7f0251ae278d22090480a7163b296cf5e1a455a0b94ff9257f90d258",
+    "stem": "\\(\\log ab - \\log|b| =\\)",
+    "options": [
+      {
+        "text": "\\(\\log a\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\log|a|\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(-\\log a\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "None of these",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "\\(\\log ab - \\log|b| = \\log\\dfrac{ab}{|b|} = \\log|a|\\) (since \\(b/|b| = \\pm 1\\))."
+  },
+  {
+    "src": "read.4.out.json",
+    "questionNumber": "978",
+    "questionId": "a7b967ec-a0f4-4997-88d3-e38acc2eeeb7",
+    "issue": "CITES_NOT_DERIVES",
+    "evidence": "The entire solution is \"Writing each in change-of-base form and simplifying, \\\\(1 + abc = 2bc\\\\) (a standard identity for this chain of bases).\" No working at all — it names a method it does not carry out and then appeals to the result being standard. Nothing here would let a student reproduce the answer, and nothing distinguishes 2bc from the distractors 2ab and 2ac (numerically 1+abc = 1.6419 = ",
+    "proposedFix": "Derive it by chaining: \"\\\\(bc = \\\\log_{36}24\\\\cdot\\\\log_{48}36 = \\\\log_{48}24\\\\), and \\\\(abc = \\\\log_{24}12\\\\cdot\\\\log_{48}24 = \\\\log_{48}12\\\\). So \\\\(1 + abc = \\\\log_{48}48 + \\\\log_{48}12 = \\\\log_{48}576 = \\\\log_{48}24^2 = 2\\\\log_{48}24 = 2bc\\\\).\"",
+    "found": true,
+    "chapter": "Logarithms",
+    "sourceFile": "NDA_Maths_Practice__Algebra__Logarithms.pdf",
+    "contentHash": "81d5b75437de15898faa87ef7e4c7f65a9a26795f8d5b92e682d250ee2f47a18",
+    "stem": "If \\(a = \\log_{24} 12\\), \\(b = \\log_{36} 24\\), \\(c = \\log_{48} 36\\), then \\(1 + abc\\) is equal to",
+    "options": [
+      {
+        "text": "\\(2ab\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(2ac\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(2bc\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "0",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "Writing each in change-of-base form and simplifying, \\(1 + abc = 2bc\\) (a standard identity for this chain of bases)."
+  },
+  {
+    "src": "read.4.out.json",
+    "questionNumber": "982",
+    "questionId": "12ad5224-b32f-4db4-8256-619100068ca6",
+    "issue": "FALSE_STEP",
+    "evidence": "\"So \\\\(x = 4\\\\) (rejecting \\\\(x = -5\\\\)).\" There is no ground for that rejection and it is untrue as an implied claim: \\\\(x=-5\\\\) satisfies the equation exactly — \\\\((-5)^2 + 5 + (-5) = 25\\\\), \\\\(\\\\sqrt{25}=5\\\\), \\\\(\\\\log_5 5 = 1\\\\), \\\\(\\\\log_7 1 = 0\\\\), with every log defined and the radicand positive (verified numerically). The stem's equation has solution set {4, −5}; \\\\(-5\\\\) is discarded only",
+    "proposedFix": "Replace the parenthetical with an honest statement: \"\\\\(x = 4\\\\) or \\\\(x = -5\\\\); both satisfy the equation (at \\\\(x=-5\\\\), \\\\(x^2+x+5 = 25\\\\) as well), and only \\\\(x = 4\\\\) appears among the given options, so (C) is the answer. [Note: the question offers an incomplete solution set — \\\\(x=-5\\\\) is an equally valid root.]\"",
+    "found": true,
+    "chapter": "Logarithms",
+    "sourceFile": "NDA_Maths_Practice__Algebra__Logarithms.pdf",
+    "contentHash": "4a60fe03fa9ba420b72bfd33061f7104701bc7e5b45ec2714dcec290978ea52d",
+    "stem": "The solution of the equation \\(\\log_7 \\log_5 \\left(\\sqrt{x^2 + 5 + x}\\right) = 0\\) is",
+    "options": [
+      {
+        "text": "\\(x = 2\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(x = 3\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(x = 4\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(x = -2\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "\\(\\log_7\\log_5(\\sqrt{x^2 + 5 + x}) = 0 \\Rightarrow \\log_5(\\sqrt{x^2 + x + 5}) = 1 \\Rightarrow \\sqrt{x^2 + x + 5} = 5 \\Rightarrow x^2 + x - 20 = 0 \\Rightarrow (x - 4)(x + 5) = 0\\). So \\(x = 4\\) (rejecting \\(x = -5\\))."
+  },
+  {
+    "src": "read.4.out.json",
+    "questionNumber": "983",
+    "questionId": "30764e3c-e8c0-4d1e-9715-1d1ee6cb2da4",
+    "issue": "INCOMPLETE",
+    "evidence": "\"\\\\(\\\\log_4 18 = \\\\dfrac{\\\\log_2 18}{2} = \\\\dfrac{1 + \\\\log_2 9}{2}\\\\), which is irrational.\" The rewrite is correct but does no work toward the question actually asked — rational or irrational is the whole question, and irrationality is then simply asserted. The sibling row 961 in the same set proves the analogous claim properly (2^p = 7^q, LHS even RHS odd), so the omission here is a gap, not a ",
+    "proposedFix": "Append the parity argument: \"If \\\\(\\\\log_2 9 = p/q\\\\) were rational then \\\\(2^p = 9^q\\\\), impossible since the LHS is even and the RHS is odd. So \\\\(\\\\log_2 9\\\\) is irrational, and hence so is \\\\(\\\\dfrac{1+\\\\log_2 9}{2}\\\\) — a rational value would force \\\\(\\\\log_2 9\\\\) to be rational.\"",
+    "found": true,
+    "chapter": "Logarithms",
+    "sourceFile": "NDA_Maths_Practice__Algebra__Logarithms.pdf",
+    "contentHash": "f27a6dc6b3c0f1fb28fc2b81f17712ce0123b2d19beb7b29c02c12b8237afa99",
+    "stem": "\\(\\log_4 18\\) is",
+    "options": [
+      {
+        "text": "A rational number",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "An irrational number",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "A prime number",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "None of these",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "\\(\\log_4 18 = \\dfrac{\\log_2 18}{2} = \\dfrac{1 + \\log_2 9}{2}\\), which is irrational."
+  },
+  {
+    "src": "read.5.out.json",
+    "questionNumber": "Misc 4A I Q1",
+    "questionId": "9d01b216-4edb-4fcb-8186-4e6c3edb0046",
+    "issue": "META_COMMENTARY (outside the six categories, but student-facing)",
+    "evidence": "The stored solution is a single bracketed erratum, and it ends with an internal-tooling aside that will print verbatim in the answer key: \"(Worded without option letters on purpose: naming a letter inside a caveat makes the standing key-audit probe read it as the concluded answer.)\" A student reading the answer key is told about our `audit:keys` probe and our wording policy. The mathematics itself",
+    "proposedFix": "Delete the final parenthetical sentence and the trailing blank lines. The policy it describes (state the condition, never the option letter) is already followed by the rest of the note, so removing the meta-explanation loses nothing and keeps the probe quiet. Optionally add the one-line derivation the note asserts: R3 -> R3 - R1 - R2 makes the third row (0, 0, -(a + 2b + c)), so D = -(a + 2b + c)(ac - b^2).",
+    "found": true,
+    "chapter": "Determinants and Matrices",
+    "sourceFile": "StateBoard_11_Maths__Determinants_and_Matrices.pdf",
+    "contentHash": "6c08739d576326265bb14fd3f76d676f3520cfa347c0b39e2c9f0ad21f954a92",
+    "stem": "The determinant \\(D = \\begin{vmatrix} a & b & a+b \\\\ b & c & b+c \\\\ a+b & b+c & 0 \\end{vmatrix} = 0\\) if",
+    "options": [
+      {
+        "text": "\\(a, b, c\\) are in A.P.",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(a, b, c\\) are in G.P.",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(a, b, c\\) are in H.P.",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\alpha\\) is root of \\(ax^2 + 2bx + c = 0\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "[Textbook misprint: one alternative speaks of \\(\\alpha\\) being a root of \\(ax^2 + 2bx + c = 0\\), but \\(\\alpha\\) appears nowhere in the printed stem. The determinant factors as \\(-(ac - b^2)(a + 2b + c)\\), so it vanishes either when \\(ac = b^2\\) — that is, when \\(a, b, c\\) are in G.P., the keyed alternative — or when \\(a + 2b + c = 0\\); the \\(\\alpha\\) alternative is the garbled remnant of that second branch. As printed, only the G.P. condition is well formed. (Worded without option letters on purpose: naming a letter inside a caveat makes the standing key-audit probe read it as the concluded answer.)]\n\n"
+  },
+  {
+    "src": "read.5.out.json",
+    "questionNumber": "Misc I (3)",
+    "questionId": "7364a1db-bdfb-4eed-8881-07fcdeca420c",
+    "issue": "FALSE_STEP (inside the erratum note; the worked solution below it is correct)",
+    "evidence": "The erratum reads: \"the textbook key marks (C) 15/4 - the signed integral \\int x^3\\,dx\". The signed integral is NOT 15/4: \\int_{-2}^{1} x^3 dx = 1/4 - 4 = -15/4 (confirmed symbolically). And -15/4 is printed as option (B) in this very question. So as written the note identifies 15/4 with a quantity that actually equals the *other* distractor, and a student who checks the claim by integrating strai",
+    "proposedFix": "Reword the note to: \"[Textbook answer-key error: the textbook key marks 15/4, which is the MAGNITUDE of the through-integral \\int_{-2}^{1} x^3 dx = -15/4 - the book integrated straight through instead of splitting at x = 0. The geometric AREA bounded by y = x^3 over [-2, 1] is 4 + 1/4 = 17/4, the keyed alternative. Key kept.]\" (Also drop the option letters (C) and (D) from the bracket, per the convention already applied on Misc 4A I Q1, so the standing key-audit probe does not read \"(C)\" as the concluded answer.)",
+    "found": true,
+    "chapter": "Application of Definite Integration",
+    "sourceFile": "StateBoard_12_Maths__Application_of_Definite_Integration.pdf",
+    "contentHash": "bb4659b0b7dbea7ee5ebfb47ff1305afba612248715d31e1691d45e7168b2dcc",
+    "stem": "The area bounded by the curve \\(y = x^3\\), the X-axis and the lines \\(x = -2\\) and \\(x = 1\\) is",
+    "options": [
+      {
+        "text": "\\(-9\\) sq. units",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(-\\dfrac{15}{4}\\) sq. units",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{15}{4}\\) sq. units",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{17}{4}\\) sq. units",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "currentSolution": "[Textbook answer-key error: the textbook key marks (C) 15/4 — the signed integral \\(\\int x^3\\,dx\\). The geometric AREA bounded by \\(y = x^3\\) over \\([-2, 1]\\) is \\(4 + \\tfrac14 = \\tfrac{17}{4}\\), option (D). Key (D) kept.]\n\nThe curve lies below the X-axis on \\([-2,0]\\) and above on \\([0,1]\\). Area \\(= \\left|\\displaystyle\\int_{-2}^{0} x^3\\,dx\\right| + \\displaystyle\\int_{0}^{1} x^3\\,dx = \\left|\\dfrac{0-16}{4}\\right| + \\dfrac{1}{4} = 4 + \\dfrac{1}{4} = \\dfrac{17}{4}\\) sq. units."
+  },
+  {
+    "src": "read.6.out.json",
+    "questionNumber": "Misc I Q.1",
+    "questionId": "9ac7a587-5482-4912-87f2-5ef940a7d3b2",
+    "issue": "FALSE_STEP",
+    "evidence": "The solution opens with two equalities that are both untrue, then abandons them mid-sentence with an ellipsis before reaching the correct factorisation. It claims \\(1+x+\\sqrt{x+x^2}=(\\sqrt{x})^2+(\\sqrt{1+x})^2+\\sqrt{x}\\sqrt{1+x}\\), but that right-hand side is \\(x+(1+x)+\\sqrt{x+x^2}=1+2x+\\sqrt{x+x^2}\\) — it exceeds the numerator by \\(x\\), so the two agree only at \\(x=0\\). It then restates the same ",
+    "proposedFix": "Delete the two false opening equalities and the trailing '... more directly' and print the factorisation alone: \"Numerator \\(=1+x+\\sqrt{x+x^2}=\\sqrt{1+x}\\left(\\sqrt{1+x}+\\sqrt{x}\\right)\\). Dividing by \\(\\sqrt{x}+\\sqrt{1+x}\\) leaves the integrand \\(\\sqrt{x+1}\\). Hence \\(\\int\\sqrt{x+1}\\,dx=\\frac{2}{3}(x+1)^{3/2}+c\\). Answer B.\"",
+    "found": true,
+    "chapter": "Indefinite Integration",
+    "sourceFile": "StateBoard_12_Maths__Indefinite_Integration.pdf",
+    "contentHash": "aa30e71b638e688c259a93860550496e3d174cde1c83e6d45919140f66e8922d",
+    "stem": "\\(\\int \\frac{1+x+\\sqrt{x+x^2}}{\\sqrt{x}+\\sqrt{1+x}}\\, dx =\\)",
+    "options": [
+      {
+        "text": "\\(\\frac{1}{2}\\sqrt{x+1}+c\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{2}{3}(x+1)^{3/2}+c\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\sqrt{x+1}+c\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(2(x+1)^{3/2}+c\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "Note \\(1+x+\\sqrt{x+x^2}=(\\sqrt{x})^2+(\\sqrt{1+x})^2+\\sqrt{x}\\sqrt{1+x}\\), which is \\((\\sqrt{x}+\\sqrt{1+x})^2-\\sqrt{x}\\sqrt{1+x}\\)... more directly, the numerator equals \\((\\sqrt{x}+\\sqrt{1+x})\\sqrt{x+1}\\) after factoring: dividing by \\(\\sqrt{x}+\\sqrt{1+x}\\) gives integrand \\(\\sqrt{x+1}\\). Then \\(\\int\\sqrt{x+1}\\,dx=\\frac{2}{3}(x+1)^{3/2}+c\\). Differentiating option B returns \\(\\sqrt{x+1}\\), matching. Answer B."
+  },
+  {
+    "src": "read.7.out.json",
+    "questionNumber": "Misc I Q.4",
+    "questionId": "5e630b22-e43e-4ee2-8f75-acb3b7e0a149",
+    "issue": "NON_SEQUITUR",
+    "evidence": "The solution reasons: \"there exists c in (0,1) with f'(c) = 2g'(c), that is h'(c) = 0. This is precisely the conclusion of Rolle's theorem applied to h on [0,1], and the hypothesis that delivers it is h(1) = h(0). So we need h(1) = 0.\" That is the CONVERSE of Rolle's theorem and is false: h'(c) = 0 for some c does not force h(1) = h(0). Counterexample satisfying every printed hypothesis: f(x) = 6x",
+    "proposedFix": "Open with an erratum bracket stating that the item is under-determined as printed (give the f = 6x, g = 4x^2 counterexample), then state the evidently intended reading — that the data is meant to be exactly the HYPOTHESES of Rolle's theorem for h = f - 2g, i.e. h(1) = h(0) is assumed — and derive g(1) = 3 from that, so the deduction is presented as reading the setter's intent rather than as a valid implication. Key B is unaffected.",
+    "found": true,
+    "chapter": "Application of Derivatives",
+    "sourceFile": "StateBoard_12_Maths__Application_of_Derivatives.pdf",
+    "contentHash": "73cfa8865a9df3ad2b0f5b6024e5d278b9a88ee6d77ad3318ca755615eb8fe42",
+    "stem": "Let \\(f(x)\\) and \\(g(x)\\) be differentiable for \\(0 < x < 1\\) such \\(f(0) = 0\\), \\(g(0) = 0\\), \\(f(1) = 6\\). Let there exist a real number c in \\((0, 1)\\) such that \\(f'(c) = 2g'(c)\\), then the value of \\(g(1)\\) must be",
+    "options": [
+      {
+        "text": "\\(1\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(3\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(2.5\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(-1\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "Define \\(h(x) = f(x) - 2g(x)\\). As \\(f\\) and \\(g\\) are differentiable, so is \\(h\\), with \\(h'(x) = f'(x) - 2g'(x)\\). At the left endpoint, \\(h(0) = f(0) - 2g(0) = 0 - 2(0) = 0\\). We are told there exists \\(c \\in (0, 1)\\) with \\(f'(c) = 2g'(c)\\), that is \\(h'(c) = 0\\). This is precisely the conclusion of Rolle's theorem applied to \\(h\\) on \\([0, 1]\\), and the hypothesis that delivers it is \\(h(1) = h(0)\\). So we need \\(h(1) = 0\\), i.e. \\(f(1) - 2g(1) = 0\\). With \\(f(1) = 6\\): \\(6 = 2g(1)\\), hence \\(g(1) = 3\\). A concrete pair confirming this is \\(f(x) = 6x,\\ g(x) = 3x\\): here \\(f(0) = g(0) = 0\\), \\(f(1) = 6\\), \\(g(1) = 3\\), and \\(f'(c) = 6 = 2g'(c)\\) for every \\(c\\) in \\((0, 1)\\). \\(\\therefore g(1) = 3\\)."
+  },
+  {
+    "src": "read.7.out.json",
+    "questionNumber": "Misc I Q.8",
+    "questionId": "3c728267-e02b-49d7-afa9-d713938f320c",
+    "issue": "MISLEADING",
+    "evidence": "The solution itself concedes the correct condition — the direction ratios (a+2, b-1, c+8) must be \"a scalar multiple of\" (6,2,3) — and then silently drops the scalar: \"Taking the direct match (a+2,b-1,c+8)=(6,2,3) gives a=4,b=3,c=-5.\" But TWO other printed options satisfy the stated condition exactly. Option B (1, 2, -13/2): (3, 1, 3/2) = (1/2)(6,2,3). Option C (10, 5, -2): (12, 4, 6) = 2(6,2,3). ",
+    "proposedFix": "Add an erratum bracket: parallelism fixes the direction ratios only up to a non-zero scalar, so options A (k=1), B (k=1/2) and C (k=2) are all parallel to (6,2,3) and the item has three correct alternatives as printed. Retain key A as the setter's intended k = 1 reading, and show the check for B and C explicitly rather than asserting the direct match.",
+    "found": true,
+    "chapter": "Vectors",
+    "sourceFile": "StateBoard_12_Maths__Vectors.pdf",
+    "contentHash": "1ddcf7dc38dc703e0a767d97250ad5fff73e8ff4be99d7bf983114c07a82bdd7",
+    "stem": "The line joining the points \\((-2, 1, -8)\\) and \\((a, b, c)\\) is parallel to the line whose direction ratios are 6, 2, 3. The value of a, b, c are",
+    "options": [
+      {
+        "text": "4, 3, -5",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(1, 2, \\dfrac{-13}{2}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "10, 5, -2",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "3, 5, 11",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "The direction ratios of the joining line are \\((a+2, b-1, c+8)\\), which must equal (a scalar multiple of) \\((6,2,3)\\). Taking the direct match \\((a+2,b-1,c+8)=(6,2,3)\\) gives \\(a=4,b=3,c=-5\\)."
+  },
+  {
+    "src": "read.7.out.json",
+    "questionNumber": "Misc I Q1",
+    "questionId": "07db6b80-d5b9-44fd-b4fe-3b398d3d6143",
+    "issue": "INCOMPLETE",
+    "evidence": "The entire stored solution is \"[Textbook misprint in the stem: it reads in the EXPRESSION of where expansion is meant.]\" followed by a blank line. There is no derivation at all — the answer 51 is never obtained, and the one piece of mathematics the question turns on (that the odd-power terms of (x+y)^100 and (x-y)^100 cancel and the even-power terms survive) is never stated. Every other erratum-br",
+    "proposedFix": "Keep the stem note, then add the derivation after it: in (x+y)^100 + (x-y)^100 the terms in which y carries an odd power appear with opposite signs and cancel, while the even-power terms double; the surviving terms are those with y^k for k = 0, 2, 4, ..., 100, which is 51 terms. Hence B.",
+    "found": true,
+    "chapter": "Binomial Theorem",
+    "sourceFile": "StateBoard_11_Maths__Binomial_Theorem.pdf",
+    "contentHash": "ed945c214bff6470fa8a5e0274ec46cff9ddb5319c34a69815d588ca7cfba779",
+    "stem": "The total number of terms in the expression of \\((x+y)^{100} + (x-y)^{100}\\) after simplification is :",
+    "options": [
+      {
+        "text": "50",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "51",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "100",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "202",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "[Textbook misprint in the stem: it reads in the EXPRESSION of where expansion is meant.]\n\n"
+  },
+  {
+    "src": "read.8.out.json",
+    "questionNumber": "Misc I Q5",
+    "questionId": "c5e2ed4c-642a-4a9b-813e-eba36e40501c",
+    "issue": "INCOMPLETE",
+    "evidence": "The stored solution is ONLY the erratum bracket. The keyed answer 31/48 is never derived — the bracket names the required reading (\"a SHELF is chosen at random and then a book from it\") but never carries it out. The one arithmetic result the student is shown, 9/14, is the reading the key REJECTS, so the printed key argues for the wrong option and then declines to compute the right one. The missing",
+    "proposedFix": "Keep the bracket (its claims are accurate: the stem genuinely omits the selection mechanism, and 9/14 is genuinely printed option A), but append the derivation of the keyed reading: P = (1/2)(5/8) + (1/2)(4/6) = 15/48 + 16/48 = 31/48, noting that the 8-versus-6 shelf sizes are what make the two readings differ.",
+    "found": true,
+    "chapter": "Probability",
+    "sourceFile": "StateBoard_11_Maths__Probability.pdf",
+    "contentHash": "bd2884f95dd0241bb4f519148f9735eefaaad8e98a9eb1571e524c1a0e84a0be",
+    "stem": "There are 2 shelves. One shelf has 5 Physics and 3 Biology books and the other has 4 Physics and 2 Biology books. The probability of drawing a Physics book is",
+    "options": [
+      {
+        "text": "\\(\\frac{9}{14}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{31}{48}\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\frac{9}{38}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{1}{2}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "[Textbook misprint: the stem never states HOW the book is chosen. Read literally — every book on both shelves equally likely — the answer is \\(\\dfrac{9}{14}\\), which is also a printed option. The keyed answer \\(\\dfrac{31}{48}\\) requires the reading that a SHELF is chosen at random and then a book from it, which is what makes the 8-versus-6 split relevant. The key's reading is followed here; a student who answers \\(\\dfrac{9}{14}\\) has read the stem as printed.]\n\n"
+  },
+  {
+    "src": "read.8.out.json",
+    "questionNumber": "Misc I Q5",
+    "questionId": "e1a3e69e-61ab-43c5-91f2-d975a1a72a6c",
+    "issue": "CITES_NOT_DERIVES",
+    "evidence": "The stored solution is only the typesetting erratum. It asserts \"the answer is the same under every bracketing since the function has order 3\" — order 3 is exactly the fact the question exists to establish, and it is stated rather than shown. Nothing in the printed solution computes a single composite, so a student who cannot already see that f has order 3 gets no route to option (C) at all. (The ",
+    "proposedFix": "Keep the bracket (the stem is genuinely printed with a mismatched opening '(' and closing ']'), and add the two-line derivation: f(f(x)) = 1/(1 - 1/(1-x)) = (1-x)/(-x) = (x-1)/x, then f(f(f(x))) = 1/(1 - (x-1)/x) = x. The order-3 remark then follows from the working instead of standing in for it.",
+    "found": true,
+    "chapter": "Functions",
+    "sourceFile": "StateBoard_11_Maths__Functions.pdf",
+    "contentHash": "39ca6c4a91d6a281f425c6a95620247f412543ba5895c36488757313a4a14599",
+    "stem": "If \\(f(x)=\\frac{1}{1-x}\\), then \\(f(f\\{f(x)\\}]\\) is",
+    "options": [
+      {
+        "text": "\\(x-1\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(1-x\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(x\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(-x\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "[Textbook misprint (typesetting only): the composite is printed with mismatched brackets, opening with \\((\\) and closing with \\(]\\). The intended triple composite is unambiguous, and the answer is the same under every bracketing since the function has order 3.]\n\n"
+  },
+  {
+    "src": "read.8.out.json",
+    "questionNumber": "Misc I Q7",
+    "questionId": "de7d33fe-1d80-4878-a476-cb70dc7b3e3e",
+    "issue": "INCOMPLETE",
+    "evidence": "The stored solution contains no mathematics whatsoever — it is entirely a note about the fourth option carrying the label 'C)' instead of 'D)'. The student is shown nothing about how an inverse function is found, which is the whole content of the question. The keyed option A is correct (y(1-3x) = 2x+1 gives x = (y-1)/(3y+2)), but the answer key as printed asserts it without a word of support.",
+    "proposedFix": "Keep the labelling bracket and add the derivation: put y = (2x+1)/(1-3x), so y - 3xy = 2x + 1, hence y - 1 = x(2 + 3y) and x = (y-1)/(3y+2); therefore f^{-1}(x) = (x-1)/(3x+2), option (A).",
+    "found": true,
+    "chapter": "Functions",
+    "sourceFile": "StateBoard_11_Maths__Functions.pdf",
+    "contentHash": "5cbe1e57a6a8233ccea0799d05513f41c4b1861ee6c5f4821892b0a24a1b9574",
+    "stem": "Let the function \\(f\\) be defined by \\(f(x)=\\frac{2x+1}{1-3x}\\) then \\(f^{-1}(x)\\) is:",
+    "options": [
+      {
+        "text": "\\(\\frac{x-1}{3x+2}\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\frac{x+1}{3x-2}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{2x+1}{1-3x}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{3x+2}{x-1}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "[Textbook misprint (labelling only): the four alternatives are printed A), B), C), C) — the fourth option carries the label C) instead of D). It is stored here as D so the row carries a valid A-D set; the option texts are verbatim.]\n\n"
+  },
+  {
+    "src": "read.8.out.json",
+    "questionNumber": "Misc I Q7",
+    "questionId": "46655cd5-c3f9-44a0-adeb-5416ebe7800d",
+    "issue": "INCOMPLETE",
+    "evidence": "The stored solution is entirely a note about the third angle being set with the curly-kappa glyph. The identity sin^2(alpha) + sin^2(beta) - sin^2(gamma) = 2 sin(alpha) sin(beta) cos(gamma) for alpha + beta + gamma = pi is never derived, never even stated as a named standard result, and no distractor is dismissed. The glyph observation is accurate (three of the four alternatives do carry it), but ",
+    "proposedFix": "Keep the glyph bracket and add a derivation: write sin^2(alpha) - sin^2(gamma) = sin(alpha+gamma) sin(alpha-gamma) = sin(beta) sin(alpha-gamma) using alpha + gamma = pi - beta, so the expression is sin(beta)[sin(alpha-gamma) + sin(beta)] = sin(beta)[sin(alpha-gamma) + sin(alpha+gamma)] = 2 sin(alpha) sin(beta) cos(gamma), which is option (C).",
+    "found": true,
+    "chapter": "Trigonometry - II",
+    "sourceFile": "StateBoard_11_Maths__Trigonometry_II.pdf",
+    "contentHash": "9a7db463755a872dc1958fe88bc8ed6fb53dba5818927d9572c2e503078b90b5",
+    "stem": "If \\(\\alpha + \\beta + \\varkappa = \\pi\\) then the value of \\(\\sin^{2}\\alpha + \\sin^{2}\\beta - \\sin^{2}\\varkappa\\) is equal to\\(\\ldots\\ldots\\)",
+    "options": [
+      {
+        "text": "\\(2\\sin\\alpha\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(2\\sin\\alpha\\,\\cos\\beta\\,\\sin\\varkappa\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(2\\sin\\alpha\\,\\sin\\beta\\,\\cos\\varkappa\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(2\\sin\\alpha\\,\\sin\\beta\\,\\sin\\varkappa\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "[Textbook misprint: the third angle of the triangle is set with the curly-kappa glyph \\(\\varkappa\\) rather than \\(\\gamma\\), in the stem and in three of the four alternatives. Transcribed as printed.]\n\n"
+  },
+  {
+    "src": "read.8.out.json",
+    "questionNumber": "Q. 1. v.",
+    "questionId": "930819d1-f485-4349-8429-0d0e7e0859d8",
+    "issue": "RENDER",
+    "evidence": "Not the solution (that derivation is sound) but option C, whose stored text is the two ASCII hyphens \"--1\". It sits outside any math zone, so it prints literally as '--1' rather than as minus one, while its three sibling options are the bare digits 2, 0, 1. This is a pandoc/markdown dash artefact from extraction; the structural probe cannot see it because the option is not the keyed one and the op",
+    "proposedFix": "Set option C's text to \\(-1\\) (or the plain single hyphen -1, matching the plain-digit style of the other three options in this row).",
+    "found": true,
+    "chapter": "Differentiation",
+    "sourceFile": "MH_HSC_12_Maths_PYQ__Differentiation.docx",
+    "contentHash": "7a2436e606b505a3c6f9a514f5d80e6536aefa510d393123535c23d55197c8d3",
+    "stem": "If \\(y\\) is a function of \\(x\\) and \\(\\log(x + y) = 2xy\\), then the value of \\(y'(0) =\\) _______.",
+    "options": [
+      {
+        "text": "2",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "0",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "--1",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "1",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "currentSolution": "**(D)** \\(1\\)\n\nFirst find \\(y\\) when \\(x = 0\\). Putting \\(x = 0\\) in \\(\\log(x + y) = 2xy\\),\n\\(\\log(0 + y) = 0\\) \\(\\therefore \\log y = 0\\) \\(\\therefore y = 1\\).\n\nNow differentiate \\(\\log(x + y) = 2xy\\) w. r. t. \\(x\\), treating \\(y\\) as a function of \\(x\\) (chain rule on the left, product rule on the right),\n\\(\\frac{1}{x + y}\\left(1 + \\frac{dy}{dx}\\right) = 2\\left(y + x\\frac{dy}{dx}\\right)\\)\n\nSubstitute \\(x = 0\\), \\(y = 1\\),\n\\(\\frac{1 + y'}{0 + 1} = 2\\left(1 + 0\\right)\\)\n\\(1 + y' = 2\\)\n\\(\\therefore y'(0) = 1\\)"
+  },
+  {
+    "src": "triage.2.out.json",
+    "questionNumber": "Misc 4A I Q5",
+    "questionId": "36874f7b-c46a-4371-9e08-f5579e6f740f",
+    "issue": "SOLUTION_ONLY",
+    "evidence": "Key C is CORRECT and every claim in the stored text is true, but the stored solution is an errata bracket ONLY — it contains no derivation at all. It asserts 'The given determinant equals 2|a b c; p q r; x y z|' without showing why, so the /browse and /board 'show model answer' reveal gives a student a verdict and no working. Verified independently two ways: (1) the given matrix is N*T with N = [[",
+    "proposedFix": "Append a worked derivation after the errata bracket, e.g.: \"Apply \\\\(C_1 \\\\to C_1 + C_2 + C_3\\\\); the first column becomes \\\\(2(a+b+c),\\\\,2(p+q+r),\\\\,2(x+y+z)\\\\), so take out the factor 2. Now \\\\(C_2 \\\\to C_2 - C_1\\\\) and \\\\(C_3 \\\\to C_3 - C_1\\\\) turn the second and third columns into \\\\((-b,-q,-y)\\\\) and \\\\((-c,-r,-z)\\\\), and a further \\\\(C_1 \\\\to C_1 + C_2 + C_3\\\\) turns the first into \\\\((a,p,x)\\\\). Taking \\\\(-1\\\\) out of each of the last two columns, the determinant \\\\(= 2(-1)(-1)\\\\begin{vmatrix} a & b & c \\\\\\\\ p & q & r \\\\\\\\ x & y & z \\\\end{vmatrix} = 2\\\\begin{vmatrix} a & b & c \\\\\\\\ p & q & r \\\\\\\\ x & y & z \\\\end{vmatrix}\\\\), which is option C.\"",
+    "found": true,
+    "chapter": "Determinants and Matrices",
+    "sourceFile": "StateBoard_11_Maths__Determinants_and_Matrices.pdf",
+    "contentHash": "8e25fc2a7e3d965242e09c9ad2d8209298999a8983648faf7eeb1648395d3434",
+    "stem": "\\(\\begin{vmatrix} b+c & c+a & a+b \\\\ q+r & r+p & p+q \\\\ y+z & z+x & x+y \\end{vmatrix} = \\)",
+    "options": [
+      {
+        "text": "\\(2\\begin{vmatrix} c & b & a \\\\ r & q & p \\\\ z & y & x \\end{vmatrix}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(2\\begin{vmatrix} b & a & c \\\\ q & p & r \\\\ y & x & z \\end{vmatrix}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(2\\begin{vmatrix} a & b & c \\\\ p & q & r \\\\ x & y & z \\end{vmatrix}\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(2\\begin{vmatrix} a & c & b \\\\ p & r & q \\\\ x & z & y \\end{vmatrix}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "[Textbook answer-key error: the printed key gives option B. The given determinant equals \\(2\\begin{vmatrix} a & b & c \\\\ p & q & r \\\\ x & y & z \\end{vmatrix}\\), which is option C. Options A, B and D are each that determinant with one pair of columns interchanged, so all three equal its negative and are therefore equal to ONE ANOTHER — a key of B would make A and D equally correct. The answer is C.]\n\n"
+  },
+  {
+    "src": "triage.2.out.json",
+    "questionNumber": "Misc I Q.18",
+    "questionId": "4cbb13ba-f4f1-4276-9417-1f8a545288f1",
+    "issue": "SOLUTION_ONLY",
+    "evidence": "Key A is CORRECT and the derivation is present and right, so the NO_DERIVATION flag is a false positive. Verified independently: b1 x b2 = (4,4,-5) x (7,1,3) = (17,-47,-24); the plane through (5,7,-3) is 17x - 47y - 24z + 172 = 0 (option A); and (a2 - a1).(b1 x b2) = (3,-3,-2).(17,-47,-24) = 51 + 141 + 48 = 240 != 0, so the two lines are genuinely skew and the printed key B is wrong. THE REAL DEFE",
+    "proposedFix": "Replace the errata bracket with: \"[Textbook answer-key error: the official key is (B), but the two given lines are actually skew — \\\\((\\\\bar{a_2}-\\\\bar{a_1})\\\\cdot(\\\\bar{b_1}\\\\times\\\\bar{b_2}) = 240 \\\\neq 0\\\\) — so no plane contains both. Option (A) is the plane through the first line whose normal is \\\\(\\\\bar{b_1}\\\\times\\\\bar{b_2} = (17,-47,-24)\\\\); option (B)'s normal is not perpendicular to the first line's direction, so (A) is the correct choice.]\" Author it through the editor, not a shell heredoc.",
+    "found": true,
+    "chapter": "Line and Planes",
+    "sourceFile": "StateBoard_12_Maths__Line_and_Planes.pdf",
+    "contentHash": "9e8bb7c970f042ae917f59d1fc3232f0c3475e70b2be0e386111acbaf3699414",
+    "stem": "The equation of the plane in which the line \\(\\frac{x-5}{4}=\\frac{y-7}{4}=\\frac{z+3}{-5}\\) and \\(\\frac{x-8}{7}=\\frac{y-4}{1}=\\frac{z+5}{3}\\) lie, is",
+    "options": [
+      {
+        "text": "\\(17x-47y-24z+172=0\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(17x+47y-24z+172=0\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(17x+47y+24z+172=0\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(17x-47y+24z+172=0\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "[Textbook answer-key error: the official key is (B), but the two given lines are actually skew — their scalar triple product ((\bar{a_2}-\bar{a_1})cdot(\bar{b_1}\times\bar{b_2})=240\neq0) — so no plane contains both. Option (A) is the plane through the first line with normal along the common perpendicular (\bar{b_1}\times\bar{b_2}=(17,-47,-24)); option (B)'s normal is not perpendicular to the first line's direction, so (A) is the correct choice.]\n\nNormal \\(=\\bar{b_1}\\times\\bar{b_2}\\), \\(\\bar{b_1}=(4,4,-5),\\bar{b_2}=(7,1,3)\\): \\(i:4(3)-(-5)(1)=17\\); \\(j:-(4(3)-(-5)(7))=-47\\); \\(k:4(1)-4(7)=-24\\). Plane through \\((5,7,-3)\\): \\(17(x-5)-47(y-7)-24(z+3)=0\\Rightarrow17x-47y-24z+172=0\\). (Note: substituting the second line's point \\((8,4,-5)\\) gives \\(240\\neq0\\), i.e. \\((\\bar{a_2}-\\bar{a_1})\\cdot(\\bar{b_1}\\times\\bar{b_2})=240\\neq0\\), so the two given lines are actually skew, not coplanar — a mild book defect; option A is the plane determined by line 1 and the common normal.)"
+  },
+  {
+    "src": "triage.2.out.json",
+    "questionNumber": "Misc I Q.19",
+    "questionId": "0dd998ff-51e1-4dd8-a1fa-7481002a34e8",
+    "issue": "DEFECT",
+    "evidence": "THE QUESTION IS DEFECTIVE: no option is the solution set. Using tan 3theta = (tan theta + tan 2theta)/(1 - tan theta tan 2theta), the equation collapses to tan 3theta (1 - tan theta tan 2theta) = 0; the second factor is exactly where tan 3theta is undefined, so the solution set is precisely tan 3theta = 0, i.e. theta = n*pi/3. A numeric sweep over (-pi, pi) returns roots at exactly -pi, -2pi/3, -p",
+    "proposedFix": "Delete the final sentence of the body ('NONE of the options equals ... where tan 3 theta is undefined.') and replace it with: \"The full solution set is therefore \\\\(\\\\theta = \\\\dfrac{n\\\\pi}{3}\\\\), which is not among the four printed options. The official key B \\\\(\\\\left(\\\\dfrac{n\\\\pi}{6}\\\\right)\\\\) is retained to match the board: it contains the whole solution set as its even-\\\\(n\\\\) members, but also contains points such as \\\\(\\\\theta = \\\\dfrac{\\\\pi}{6}\\\\) where \\\\(\\\\tan 3\\\\theta\\\\) is undefined. Option A \\\\((n\\\\pi)\\\\) contains only genuine solutions but omits \\\\(\\\\theta = \\\\pm\\\\dfrac{\\\\pi}{3}\\\\).\" Keep the key at B.",
+    "found": true,
+    "chapter": "Trigonometric Functions",
+    "sourceFile": "StateBoard_12_Maths__Trigonometric_Functions.pdf",
+    "contentHash": "b1f39d7f88ac6755fb54a4e8d79fa9c5620e911948aaf233ab0d56918687ea2b",
+    "stem": "If \\(\\tan\\theta + \\tan 2\\theta + \\tan 3\\theta = \\tan\\theta\\,\\tan 2\\theta\\,\\tan 3\\theta\\), then the general value of \\(\\theta\\) is ______.",
+    "options": [
+      {
+        "text": "\\(n\\pi\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{n\\pi}{6}\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(n\\pi \\pm \\dfrac{\\pi}{4}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{n\\pi}{2}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "currentSolution": "[Textbook note: The complete solution set is theta = n(pi)/3 (from tan(3 theta)=0), which is not among the four options. The official key B (n(pi)/6) follows from the identity tanA+tanB+tanC = tanA tanB tanC when A+B+C = n(pi), i.e. 6 theta = n(pi); it is the intended answer, though n(pi)/6 technically includes points such as theta = pi/6 where tan(3 theta) is undefined.]\n\nThe equation reduces to \\(\\tan\\theta+\\tan2\\theta=0\\Rightarrow\\tan\\theta(3-\\tan^2\\theta)=0\\), giving \\(\\tan\\theta=0\\) or \\(\\tan\\theta=\\pm\\sqrt3\\), i.e. the full set \\(\\theta=\\tfrac{n\\pi}{3}\\). NONE of the options equals \\(\\tfrac{n\\pi}{3}\\); best pick is A \\((n\\pi)\\), which is the valid \\(\\tan\\theta=0\\) sub-branch (all such \\(\\theta\\) are genuine solutions), whereas B \\(\\tfrac{n\\pi}{6}\\) includes points where \\(\\tan3\\theta\\) is undefined."
+  },
+  {
+    "src": "triage.2.out.json",
+    "questionNumber": "Misc I Q.5",
+    "questionId": "34b77053-fec4-47f6-bd17-df3749a93f5a",
+    "issue": "DEFECT",
+    "evidence": "THE QUESTION IS DEFECTIVE and the stored solution already says so correctly. Verified independently: b1 x b2 = (1,-1,-1) x (2,1,2) = (-1,-4,3) with magnitude sqrt(26); a2 - a1 = (1,-3,-2); the dot product is -1 + 12 - 6 = 5, so the shortest distance is 5/sqrt(26) = 0.98058. The four printed options are 0.57735, 0.70711, 2.12132, 0.86603 — none of them. Key D is the official key, deliberately retai",
+    "proposedFix": "Replace the bracket with: \"[Textbook defect: the printed options are wrong — the correct shortest distance is \\\\(\\\\dfrac{5}{\\\\sqrt{26}} \\\\approx 0.98\\\\), which matches none of the four printed alternatives. The official key marks (D) \\\\(\\\\dfrac{\\\\sqrt{3}}{2} \\\\approx 0.87\\\\), retained here to match the board.]\" and DELETE the leading '**[MISMATCH: ...]**' marker from the body (the derivation that follows already states the mismatch in prose). Keep the key at D.",
+    "found": true,
+    "chapter": "Line and Planes",
+    "sourceFile": "StateBoard_12_Maths__Line_and_Planes.pdf",
+    "contentHash": "827d5b68879b5e966c97c19c55a07b76d4ec263df00f423110013051c6e0c56a",
+    "stem": "The shortest distance between the lines \\(\\bar{r}=\\left(\\hat{i}+2\\hat{j}+\\hat{k}\\right)+\\lambda\\left(\\hat{i}-\\hat{j}-\\hat{k}\\right)\\) and \\(\\bar{r}=\\left(2\\hat{i}-\\hat{j}-\\hat{k}\\right)+\\mu\\left(2\\hat{i}+\\hat{j}+2\\hat{k}\\right)\\) is",
+    "options": [
+      {
+        "text": "\\(\\frac{1}{\\sqrt{3}}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{1}{\\sqrt{2}}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{3}{\\sqrt{2}}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{\\sqrt{3}}{2}\\)",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "currentSolution": "[Textbook answer-key error: the printed options are defective — the correct shortest distance computes to (dfrac{5}{sqrt{26}}approx0.98), which matches none of the four printed options; the official key marks (D) (dfrac{sqrt{3}}{2}), retained here to match the board.]\n\n**[MISMATCH: computed value \\(\\frac{5}{\\sqrt{26}}\\approx0.98\\) matches no option]** \\(\\bar{a_1}=(1,2,1),\\bar{b_1}=(1,-1,-1),\\bar{a_2}=(2,-1,-1),\\bar{b_2}=(2,1,2)\\). \\(\\bar{b_1}\\times\\bar{b_2}=(-1,-4,3)\\), \\(|\\bar{b_1}\\times\\bar{b_2}|=\\sqrt{26}\\). \\(\\bar{a_2}-\\bar{a_1}=(1,-3,-2)\\); dot \\(=(1)(-1)+(-3)(-4)+(-2)(3)=5\\). Shortest distance \\(=\\frac{|5|}{\\sqrt{26}}=\\frac{5}{\\sqrt{26}}\\approx0.98\\), which equals none of the options (\\(\\frac{1}{\\sqrt3}\\approx0.58,\\frac{1}{\\sqrt2}\\approx0.71,\\frac{3}{\\sqrt2}\\approx2.12,\\frac{\\sqrt3}{2}\\approx0.87\\)). Closest is \\(\\frac{\\sqrt3}{2}\\) (D). Likely book defect."
+  }
+]

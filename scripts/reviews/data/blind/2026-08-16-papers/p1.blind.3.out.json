@@ -1,0 +1,106 @@
+[
+  {
+    "questionNumber": "Q. 1. (ii)",
+    "questionId": "31afd71b-bed6-4653-8aef-ba615cb3a35d",
+    "value": "theta = pi/3 and 5pi/3",
+    "letter": "B",
+    "confidence": "high",
+    "note": "Principal solutions lie in [0,2pi); cos t = 1/2 gives t = pi/3 (Q1) and t = 2pi - pi/3 = 5pi/3 (Q4). D (pi/3, 2pi/3) is the cos = +-1/2 distractor; A and C solve sin/other values."
+  },
+  {
+    "questionNumber": "Q. 1. i.",
+    "questionId": "1a487337-6938-4b49-8319-0ba3cb9faa93",
+    "value": "[[1, 3], [-4, 2]]",
+    "letter": "A",
+    "confidence": "high",
+    "note": "adj[[a,b],[c,d]] = [[d,-b],[-c,a]]; with a=2,b=-3,c=4,d=1 this is [[1,3],[-4,2]]. Check: A*adjA = det(A)*I = 14*I, verified."
+  },
+  {
+    "questionNumber": "Q. 1. ii.",
+    "questionId": "2813a677-af18-4faa-a64e-ce76ab5585e7",
+    "value": "a + b + c",
+    "letter": "C",
+    "confidence": "high",
+    "note": "Expand and regroup by the projection formulae: (b cosC + c cosB) + (c cosA + a cosC) + (a cosB + b cosA) = a + b + c. Confirmed numerically on 3 random valid triangles (agreement to 1e-15)."
+  },
+  {
+    "questionNumber": "Q. 1. iv.",
+    "questionId": "26e85f1a-278a-479e-9180-cd63d305f4ff",
+    "value": "m = 2",
+    "letter": "D",
+    "confidence": "high",
+    "note": "Line parallel to plane => direction . normal = 0: (2,1,2).(3,-2,-m) = 6 - 2 - 2m = 0 => m = 2 (unique, so C '+-2' is wrong: m=-2 gives 6, not 0). Also checked the line is not IN the plane: (2,-1,3).(3,-2,-2) = 2 != 10."
+  },
+  {
+    "questionNumber": "Q. 1. v.",
+    "questionId": "90f3fc38-701e-4a87-abd5-c6a40ce36a76",
+    "value": "-2",
+    "letter": "C",
+    "confidence": "high",
+    "note": "dy/dx = (-2 sin2t)/(cos t) = -4 sin t; at t = pi/6 gives -4(1/2) = -2. Central-difference check at h=1e-6 returns -2.0000000."
+  },
+  {
+    "questionNumber": "Q. 1. v.",
+    "questionId": "930819d1-f485-4349-8429-0d0e7e0859d8",
+    "value": "y'(0) = 1",
+    "letter": "D",
+    "confidence": "high",
+    "note": "x=0 gives log y = 0 so y=1. Differentiating: (1+y')/(x+y) = 2(y + x y'); at (0,1) => 1 + y' = 2 => y' = 1. Numerically solved the implicit equation at x = +-1e-5; central slope = 1.0000000."
+  },
+  {
+    "questionNumber": "Q. 1. vii.",
+    "questionId": "2f85b32e-0086-4a5b-bd14-9738a41eb8af",
+    "value": "A = 1/4",
+    "letter": "D",
+    "confidence": "high",
+    "note": "d/dx [ (1/4) log|4x-1| ] = (1/4)(4/(4x-1)) = 1/(4x-1), the integrand. So A = 1/4."
+  },
+  {
+    "questionNumber": "Q. 1. vii.",
+    "questionId": "2d9c9c12-3346-41d8-924e-ea4e95d83d36",
+    "value": "x^x + c",
+    "letter": "D",
+    "confidence": "high",
+    "note": "d/dx x^x = x^x(1 + log x) exactly the integrand. Differentiated back numerically at x = 0.7, 1.5, 3.0 - matches to 8 significant figures."
+  },
+  {
+    "questionNumber": "Q. 1. viii.",
+    "questionId": "12fe39a0-0611-47d3-ac15-a8ba01c0aa30",
+    "value": "order 4, degree 1",
+    "letter": "B",
+    "confidence": "high",
+    "note": "Highest derivative is d4y/dx4 => order 4; the equation is already polynomial in the derivatives and d4y/dx4 appears to the first power => degree 1. The exponent 3 is on the (dy/dx) bracket and does not affect degree."
+  },
+  {
+    "questionNumber": "Q. 1. viii.",
+    "questionId": "440bddd8-38d7-4a48-aec0-cd840f83b9e7",
+    "value": "294/251",
+    "letter": "B",
+    "confidence": "high",
+    "note": "Sum P = c(1 + 1/8 + 1/27) = 251c/216 = 1 => c = 216/251 (that value is printed as distractor A). E(X) = sum c/x^2 = c(49/36) = 294/251 = 1.171315; verified numerically."
+  },
+  {
+    "questionNumber": "Q. 4. (A) i.",
+    "questionId": "02333e03-002b-4787-a8bb-5fe5123f6c53",
+    "value": "sqrt(3)/2",
+    "letter": "B",
+    "confidence": "high",
+    "note": "d(tan^3)/dt = 3 tan^2 sec^2, d(sec^3)/dt = 3 sec^3 tan, ratio = tan/sec = sin t; at t = pi/3 gives sqrt(3)/2 = 0.8660254. Numeric ratio of central differences at h=1e-6 = 0.8660254038."
+  },
+  {
+    "questionNumber": "Q. 4. (A) ii.",
+    "questionId": "45f04546-bbf9-45fd-9da8-161284ce22cb",
+    "value": "5x - y = 2  (y = 5x - 2)",
+    "letter": "A",
+    "confidence": "high",
+    "note": "P(1,3) is on the curve (3-1+1=3). dy/dx = 6x-1 = 5 at x=1, so y-3 = 5(x-1) => 5x - y = 2. Option C is 5x - y = -2, a sign distractor, not a twin."
+  },
+  {
+    "questionNumber": "Q. 4. iii.",
+    "questionId": "72c33c5c-6958-44ea-973e-e128cfcce608",
+    "value": "x^4 (dy/dx)^2 - x (dy/dx) = y",
+    "letter": "A",
+    "confidence": "high",
+    "note": "y = c/x + c^2 => y' = -c/x^2 => c = -x^2 y'. Substituting: y = -x y' + x^4 (y')^2. Verified on 6 (c,x) pairs incl. negative c: LHS equals y each time, while option C's x^3 form fails."
+  }
+]

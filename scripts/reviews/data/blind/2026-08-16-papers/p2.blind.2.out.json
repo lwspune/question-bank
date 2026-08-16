@@ -1,0 +1,122 @@
+[
+  {
+    "questionNumber": "03-11",
+    "questionId": "10fc687f-9d3b-4dc2-aae8-e5759ec45799",
+    "value": "7  [(10101)2 = 16+4+1 = 21; (11)2 = 3; 21/3 = 7 exactly]",
+    "letter": "C",
+    "confidence": "high",
+    "note": "Positional expansion of both operands then exact decimal division; 21 = 3x7 so the division is exact as the stem asserts. No twin: options 5,6,7,8 all distinct."
+  },
+  {
+    "questionNumber": "03-13",
+    "questionId": "2118601a-7c5c-42ef-9f45-85533b5cefe0",
+    "value": "11  [(10110)2 = 16+4+2 = 22; (10)2 = 2; 22/2 = 11]",
+    "letter": "A",
+    "confidence": "high",
+    "note": "Positional expansion then division; cross-checked in binary since dividing by (10)2 is a one-place right shift, 10110 -> 1011 = 11. No twin: 11,10,12,9 all distinct."
+  },
+  {
+    "questionNumber": "03-17",
+    "questionId": "1737c5af-c2b4-4d49-8c1d-42a5a09e536f",
+    "value": "18  [(11100)2 = 16+8+4 = 28; (1010)2 = 8+2 = 10; 28-10 = 18]",
+    "letter": "B",
+    "confidence": "high",
+    "note": "Decimal subtraction after positional expansion; cross-checked in binary, 11100 - 1010 = 10010 = 16+2 = 18. No twin: 16,18,20,22 all distinct."
+  },
+  {
+    "questionNumber": "03-18",
+    "questionId": "1185ae7a-55f7-4ebf-a2ab-5f6b6e2974e7",
+    "value": "(1101)2 = 13  [(111)2=7, (101)2=5, (1)2=1; 7+5+1 = 13 = 8+4+1 = 1101]",
+    "letter": "C",
+    "confidence": "high",
+    "note": "Summed in decimal then re-expressed in binary; cross-checked by direct binary addition 111+101 = 1100, 1100+1 = 1101. No twin: 1100=12, 1110=14, 1101=13, 1011=11 all distinct."
+  },
+  {
+    "questionNumber": "03-27",
+    "questionId": "1c0f33bf-4d83-4953-877d-069a9c27249d",
+    "value": "10  [(1111)2 = 8+4+2+1 = 15; (101)2 = 4+1 = 5; 15-5 = 10]",
+    "letter": "B",
+    "confidence": "high",
+    "note": "Unsigned positional expansion then subtraction; cross-checked in binary, 1111 - 101 = 1010 = 10. No twin: 8,10,12,14 all distinct."
+  },
+  {
+    "questionNumber": "1395",
+    "questionId": "14134a09-5121-45cc-9420-2e113049cabd",
+    "value": "5 minutes  [foot-distances A = h*cot30 = h*sqrt3 and B = h*cot60 = h/sqrt3; AB = 2h/sqrt3 takes 10 min, so B-to-pillar = h/sqrt3 = AB/2 takes 5 min]",
+    "letter": "D",
+    "confidence": "high",
+    "note": "Uniform speed so time is proportional to distance; the ratio (B to foot)/(AB) = 1/2 is independent of the unknown pillar height h. No twin: 6,10,20,5 all distinct."
+  },
+  {
+    "questionNumber": "1396",
+    "questionId": "bc016e45-e857-4c1d-a55e-b120b662c5d3",
+    "value": "54 m  [foot O at origin, A = (H,0) due east since tan45 = H/OA gives OA = H; B due south of A so OB^2 = H^2 + AB^2; tan30 = H/OB gives OB = H*sqrt3, hence 3H^2 = H^2 + AB^2, AB = H*sqrt2 = 54*sqrt2, H = 54]",
+    "letter": "D",
+    "confidence": "high",
+    "note": "3-D setup: OA (east) and AB (south) are perpendicular, so Pythagoras in the horizontal plane gives OB; each elevation is read from its own point's foot-distance. No twin: 108, 36sqrt3=62.35, 54sqrt3=93.53, 54 all distinct."
+  },
+  {
+    "questionNumber": "1397",
+    "questionId": "3c628ac5-5e1f-4853-b943-d3807986882f",
+    "value": "AB : BC = sqrt3 : 1  [FA = h*sqrt3, FB = h, FC = h/sqrt3; AB = h(sqrt3-1), BC = h(sqrt3-1)/sqrt3]",
+    "letter": "C",
+    "confidence": "high",
+    "note": "Angles increase 30->45->60 towards the foot so A is farthest; h cancels. Numeric check with h=1: AB=0.7321, BC=0.4226, ratio 1.7321 = sqrt3. No twin: 1:sqrt3, 2:3, sqrt3:1, sqrt3:sqrt2 all distinct."
+  },
+  {
+    "questionNumber": "1398",
+    "questionId": "4ac0893f-0868-468a-a04e-e87180e82ce2",
+    "value": "h*tan(alpha)*cot(beta)  [depression of the foot from B gives tan(beta) = h/d so d = h*cot(beta); the subtense at A gives H = d*tan(alpha)]",
+    "letter": "D",
+    "confidence": "high",
+    "note": "Two right triangles sharing the horizontal distance d; beta is measured at B (height h) down to the tower foot, alpha at A up to the tower top. Numeric check alpha=45, beta=60, h=3: d = 1.7321, H = 1.7321 = 3*1*0.5774, matches D. No twin: cot*cot, cot*tan, tan*tan, tan*cot all distinct."
+  },
+  {
+    "questionNumber": "1399",
+    "questionId": "1c358df4-5093-48f6-a61c-992c7ca5aa3f",
+    "value": "sqrt3/2 km  [consecutive milestones 1 km apart; horizontal distances h*sqrt3 and h/sqrt3; difference 2h/sqrt3 = 1 gives h = sqrt3/2]",
+    "letter": "B",
+    "confidence": "high",
+    "note": "Uses the standard convention that consecutive stones on a road are milestones 1 km apart, which the stem implies by asking for the height in km. Numeric check: h = 0.8660, distances 1.5 and 0.5, difference 1.0. No twin: 2.309, 0.866, 1.155, 2 all distinct."
+  },
+  {
+    "questionNumber": "1400",
+    "questionId": "ea78f035-d6cc-40c9-b1bd-9b01870f4509",
+    "value": "100 m  [d = 150/tan(phi) = 150/(5/2) = 60; tan(theta) = (150-h1)/d gives 150-h1 = 80 so the first chimney is 70 m; distance between tops = sqrt(60^2 + 80^2) = 100]",
+    "letter": "D",
+    "confidence": "high",
+    "note": "Both angles are depressions from the top of the 150 m chimney: phi to the foot fixes the horizontal separation 60, theta to the top fixes the vertical drop 80, giving a 60-80-100 right triangle. No twin: 86.60, 173.21, 150, 100 all distinct."
+  },
+  {
+    "questionNumber": "1401",
+    "questionId": "907ba974-7eb0-43e1-8836-16dea234c358",
+    "value": "h/3  [d = h*cot60 = h/sqrt3; H = d*tan30 = (h/sqrt3)(1/sqrt3) = h/3]",
+    "letter": "D",
+    "confidence": "high",
+    "note": "Same configuration as Q1398 with alpha=30, beta=60, so H = h*tan(alpha)*cot(beta) = h/3. That matches none of h, 3h, sqrt3*h, so option D 'None of these' IS the correct choice - a correct-by-exclusion D, not a NONE verdict. No twin among h, 3h, 1.732h."
+  },
+  {
+    "questionNumber": "1402",
+    "questionId": "44681c8a-8621-4be7-9cff-29d48ae38fc3",
+    "value": "h*cot(alpha-beta) / (cot(alpha-beta) - cot(alpha))  [tan(alpha) = H/d; the depression of the tower foot from the minar top is also alpha by alternate angles, and the depression of the tower top is alpha-beta, so tan(alpha-beta) = (H-h)/d; eliminating d gives H = h/(1 - cot(alpha)tan(alpha-beta))]",
+    "letter": "A",
+    "confidence": "high",
+    "note": "Key step is that the elevation of the minar top from the tower foot equals the depression of the tower foot from the minar top, so beta sits between the angles alpha and alpha-beta at the minar top. Numeric check H=10, d=10 (alpha=45), h=4: gamma=30.9638, beta=14.0362, cot(alpha-beta)=1.66667, formula A gives 4*1.66667/(1.66667-1) = 10 = H. Option B fails the same check (negative denominator); A and C differ by the denominator sign and are not equal, so no twin."
+  },
+  {
+    "questionNumber": "1403",
+    "questionId": "c4a14c31-bb55-40e7-b110-2a8ab8449c24",
+    "value": "(3 - sqrt3)/2 m  [H = d*tan60 = sqrt3/(sqrt3+1); rationalising gives sqrt3(sqrt3-1)/2 = (3-sqrt3)/2]",
+    "letter": "C",
+    "confidence": "high",
+    "note": "The depression from the top equals the elevation from the ground point, so H = d*tan60 with d = 1/(sqrt3+1). Numeric check: d = 0.36603, H = 0.63397 = (3-1.7321)/2. No twin: 3.464, 2.366, 0.634, 0.866 all distinct."
+  },
+  {
+    "questionNumber": "1404",
+    "questionId": "1c99ccac-9203-417c-b7cc-54a828854565",
+    "value": "50(1 - sqrt3/3) m, about 21.13 m  [tan45 = 50/d gives d = 50; tan30 = (50-y)/50 gives 50-y = 50/sqrt3, so the tower height y = 50 - 50/sqrt3]",
+    "letter": "D",
+    "confidence": "high",
+    "note": "The 45 depression is to the tower BOTTOM (same ground level as the cliff) and fixes d = 50; the 30 depression to the tower TOP gives the vertical drop from the cliff top. Height is positive and less than the cliff (21.13 < 50) as required. 1/sqrt3 = sqrt3/3 so option D is the rationalised form of the derived value. No twin: 50, 86.60, 36.60, 21.13 all distinct."
+  }
+]

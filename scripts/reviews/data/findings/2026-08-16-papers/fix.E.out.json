@@ -1,0 +1,37 @@
+[
+  {
+    "questionId": "07db6b80-d5b9-44fd-b4fe-3b398d3d6143",
+    "questionNumber": "Misc I Q1",
+    "newSolution": "[Textbook misprint in the stem: it prints \"the expression of\" where \"the expansion of\" is meant.]\n\nIn \\((x+y)^{100}\\) the term containing \\(y^{k}\\) is \\(\\binom{100}{k}x^{100-k}y^{k}\\), while in \\((x-y)^{100}\\) the corresponding term is \\((-1)^{k}\\binom{100}{k}x^{100-k}y^{k}\\).\n\nOn adding the two expansions, every term in which \\(y\\) carries an odd power appears with opposite signs and cancels, while every term with \\(y\\) to an even power is doubled. The surviving terms are those with \\(k = 0, 2, 4, \\ldots, 100\\), and there are \\(51\\) such values of \\(k\\).\n\nHence (B).",
+    "whatChanged": "Repaired the garbled erratum wording (it now names the expression/expansion misprint) and added the derivation: odd-power terms cancel, even-power terms double, leaving k = 0, 2, ..., 100, i.e. 51 terms.",
+    "concern": ""
+  },
+  {
+    "questionId": "c5e2ed4c-642a-4a9b-813e-eba36e40501c",
+    "questionNumber": "Misc I Q5",
+    "newSolution": "[Textbook misprint: the stem never states HOW the book is chosen. Read literally — every book on both shelves equally likely — the answer is \\(\\dfrac{9}{14}\\), which is also a printed option. The keyed answer \\(\\dfrac{31}{48}\\) requires the reading that a SHELF is chosen at random and then a book from it, which is what makes the 8-versus-6 split relevant. The key's reading is followed here; a student who answers \\(\\dfrac{9}{14}\\) has read the stem as printed.]\n\nThe first shelf holds \\(5 + 3 = 8\\) books, of which \\(5\\) are Physics; the second holds \\(4 + 2 = 6\\) books, of which \\(4\\) are Physics. The two shelves are equally likely, so by total probability\n\n\\(P = \\dfrac{1}{2}\\times\\dfrac{5}{8} + \\dfrac{1}{2}\\times\\dfrac{4}{6} = \\dfrac{5}{16} + \\dfrac{1}{3} = \\dfrac{15}{48} + \\dfrac{16}{48} = \\dfrac{31}{48}\\).\n\nHence (B).",
+    "whatChanged": "Kept the erratum bracket verbatim and appended the total-probability computation the key depends on ((1/2)(5/8) + (1/2)(4/6) = 31/48), so the key's reading is now the one that is worked rather than only the rejected literal reading.",
+    "concern": ""
+  },
+  {
+    "questionId": "e1a3e69e-61ab-43c5-91f2-d975a1a72a6c",
+    "questionNumber": "Misc I Q5",
+    "newSolution": "[Textbook misprint (typesetting only): the composite is printed with mismatched brackets, opening with \\((\\) and closing with \\(]\\). The intended triple composite is unambiguous, and the answer is the same under every bracketing since the function has order 3.]\n\n\\(f(f(x)) = \\dfrac{1}{\\,1 - \\dfrac{1}{1-x}\\,} = \\dfrac{1-x}{(1-x)-1} = \\dfrac{1-x}{-x} = \\dfrac{x-1}{x}\\).\n\n\\(f(f(f(x))) = \\dfrac{1}{\\,1 - \\dfrac{x-1}{x}\\,} = \\dfrac{x}{x-(x-1)} = \\dfrac{x}{1} = x\\).\n\nHence (C).",
+    "whatChanged": "Kept the bracket and added the two composites explicitly — f(f(x)) = (x-1)/x, then f(f(f(x))) = x — so the order-3 remark now follows from the working instead of replacing it.",
+    "concern": ""
+  },
+  {
+    "questionId": "de7d33fe-1d80-4878-a476-cb70dc7b3e3e",
+    "questionNumber": "Misc I Q7",
+    "newSolution": "[Textbook misprint (labelling only): the fourth alternative is printed carrying the same label as the third. It is stored here under the fourth label so the row holds a valid four-option set; the option texts are verbatim.]\n\nPut \\(y = \\dfrac{2x+1}{1-3x}\\). Then \\(y(1-3x) = 2x+1\\), so \\(y - 3xy = 2x+1\\) and \\(y - 1 = x(3y+2)\\), giving \\(x = \\dfrac{y-1}{3y+2}\\).\n\nInterchanging \\(x\\) and \\(y\\), \\(f^{-1}(x) = \\dfrac{x-1}{3x+2}\\).\n\nHence (A).",
+    "whatChanged": "Kept the duplicated-label note but reworded it to name the option positions rather than their letters, then added the inversion: set y = f(x), clear the denominator, solve x = (y-1)/(3y+2) and swap to get f-inverse(x) = (x-1)/(3x+2).",
+    "concern": ""
+  },
+  {
+    "questionId": "46655cd5-c3f9-44a0-adeb-5416ebe7800d",
+    "questionNumber": "Misc I Q7",
+    "newSolution": "[Textbook misprint: the third angle of the triangle is set with the curly-kappa glyph \\(\\varkappa\\) rather than \\(\\gamma\\), in the stem and in three of the four alternatives. Transcribed as printed.]\n\nSince \\(\\alpha + \\beta + \\varkappa = \\pi\\), we have \\(\\alpha + \\varkappa = \\pi - \\beta\\), so \\(\\sin(\\alpha+\\varkappa) = \\sin\\beta\\).\n\nApplying the standard identity \\(\\sin^{2}A - \\sin^{2}B = \\sin(A+B)\\sin(A-B)\\),\n\n\\(\\sin^{2}\\alpha - \\sin^{2}\\varkappa = \\sin(\\alpha+\\varkappa)\\,\\sin(\\alpha-\\varkappa) = \\sin\\beta\\,\\sin(\\alpha-\\varkappa)\\).\n\nTherefore \\(\\sin^{2}\\alpha + \\sin^{2}\\beta - \\sin^{2}\\varkappa = \\sin^{2}\\beta + \\sin\\beta\\,\\sin(\\alpha-\\varkappa) = \\sin\\beta\\left(\\sin\\beta + \\sin(\\alpha-\\varkappa)\\right)\\).\n\nReplacing the inner \\(\\sin\\beta\\) by \\(\\sin(\\alpha+\\varkappa)\\) gives \\(\\sin(\\alpha+\\varkappa) + \\sin(\\alpha-\\varkappa) = 2\\sin\\alpha\\,\\cos\\varkappa\\), so the value is \\(2\\sin\\alpha\\,\\sin\\beta\\,\\cos\\varkappa\\).\n\nHence (C).",
+    "whatChanged": "Kept the curly-kappa glyph note and added the derivation: name the identity sin^2 A - sin^2 B = sin(A+B) sin(A-B), use alpha + kappa = pi - beta, and reduce to 2 sin(alpha) sin(beta) cos(kappa).",
+    "concern": ""
+  }
+]

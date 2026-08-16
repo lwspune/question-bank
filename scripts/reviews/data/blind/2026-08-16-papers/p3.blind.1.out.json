@@ -1,0 +1,122 @@
+[
+  {
+    "questionNumber": "837",
+    "questionId": "20325cee-b6a6-4f02-a52f-426fb415dfca",
+    "value": "k = 0.14 (= 7/50)",
+    "letter": "D",
+    "confidence": "high",
+    "note": "Sum of probabilities = 1: 0.3 + k + 2k + 2k = 1 => 5k = 0.7 => k = 0.14. No twin options."
+  },
+  {
+    "questionNumber": "838",
+    "questionId": "57c064ad-b1dd-491a-85cc-a6f9f73bcee6",
+    "value": "0.37",
+    "letter": "B",
+    "confidence": "high",
+    "note": "F is the CDF, so P(3 < X <= 5) = F(5) - F(3) = 0.85 - 0.48 = 0.37. Distractor A (0.48) is F(3) itself. No twins."
+  },
+  {
+    "questionNumber": "839",
+    "questionId": "adf50d2a-f0c6-474b-ac89-edffc6de3a57",
+    "value": "8/10 (= 4/5 = 0.8)",
+    "letter": "C",
+    "confidence": "high",
+    "note": "Sum = 10k^2 + 9k = 1 => k = 1/10 (positive root; verified the eight probabilities sum to exactly 1). P(0<X<5) = k+2k+2k+3k = 8k = 8/10."
+  },
+  {
+    "questionNumber": "842",
+    "questionId": "8366d39a-5d36-4302-8d21-22dd6eec18a2",
+    "value": "12/5 (= 2.4)",
+    "letter": "D",
+    "confidence": "high",
+    "note": "With replacement => binomial, n = 10, p = 15/25 = 3/5, q = 2/5. Variance = npq = 10*(3/5)*(2/5) = 12/5. Option C (6/25) is pq alone. No twins."
+  },
+  {
+    "questionNumber": "843",
+    "questionId": "4cc8b8a3-da7e-426e-a6be-f4ffbca6b744",
+    "value": "127/128",
+    "letter": "C",
+    "confidence": "high",
+    "note": "1 - P(all heads) - P(all tails) = 1 - 2/2^8 = 1 - 1/128 = 127/128. Option B (255/256) is the 1-tail-only complement. No twins."
+  },
+  {
+    "questionNumber": "844",
+    "questionId": "bc36772f-1ba7-43d3-89ac-7a323b72738f",
+    "value": "(9/10)^5 + (1/2)(9/10)^4 = 45927/50000 = 0.91854",
+    "letter": "C",
+    "confidence": "high",
+    "note": "p(defective) = 10/100 = 1/10, n = 5, with replacement. P(at most 1) = (9/10)^5 + 5*(1/10)*(9/10)^4, and 5*(1/10) = 1/2, so this is exactly option C. Verified as exact fraction. No twins."
+  },
+  {
+    "questionNumber": "845",
+    "questionId": "a15d99a9-67fa-41f0-93b3-db4bb05c0e22",
+    "value": "(0.8)^8",
+    "letter": "B",
+    "confidence": "high",
+    "note": "All 8 independently develop immunity: p^n = (0.8)^8. Option A is the all-fail probability. No twins."
+  },
+  {
+    "questionNumber": "847",
+    "questionId": "b9bb30ef-cf73-433e-be8a-7b762a86ea4a",
+    "value": "256/729",
+    "letter": "D",
+    "confidence": "high",
+    "note": "Succeeds twice as often as it fails => p = 2/3, q = 1/3, n = 6. P(X>=5) = C(6,5)(2/3)^5(1/3) + (2/3)^6 = 192/729 + 64/729 = 256/729. Option B (192/729) is the P(X=5) term only. No twins."
+  },
+  {
+    "questionNumber": "848",
+    "questionId": "0c68ecc1-0d29-4f7c-a8cf-f872261fb955",
+    "value": "0.0875",
+    "letter": "A",
+    "confidence": "high",
+    "note": "4 matches, max 8 points. P(8) = 0.5^4 = 0.0625; P(7) = three 2s and one 1 = C(4,1)*0.5^3*0.05 = 0.025. Total 0.0875. Option B (1/16 = 0.0625) is the 8-point term only, so it is NOT a twin of A."
+  },
+  {
+    "questionNumber": "849",
+    "questionId": "8ef3cb6a-af06-4935-b8d3-3fd7793179d3",
+    "value": "0.896",
+    "letter": "A",
+    "confidence": "high",
+    "note": "p = 0.2, q = 0.8, n = 3. P(X<=1) = 0.8^3 + 3(0.2)(0.8)^2 = 0.512 + 0.384 = 0.896. No twins."
+  },
+  {
+    "questionNumber": "850",
+    "questionId": "3fa469a0-c399-4a1a-8296-83c5e7d5c454",
+    "value": "137/2^16",
+    "letter": "A",
+    "confidence": "high",
+    "note": "np = 8, npq = 4 => q = 1/2, p = 1/2, n = 16. P(X<3) = [C(16,0)+C(16,1)+C(16,2)]/2^16 = (1+16+120)/2^16 = 137/2^16. Options C/D (265/2^16 vs 265/2^15) differ by a factor 2, so they are not twins of each other either."
+  },
+  {
+    "questionNumber": "851",
+    "questionId": "98cdb0f6-9d03-4ba0-8c87-bcb0b3809dae",
+    "value": "15/16",
+    "letter": "D",
+    "confidence": "high",
+    "note": "np = 2, npq = 1 => q = 1/2, p = 1/2, n = 4. P(X>=1) = 1 - (1/2)^4 = 15/16. Option A (1/16) is P(X=0). No twins."
+  },
+  {
+    "questionNumber": "853",
+    "questionId": "2f3b95ea-6fa8-4e1e-ba7a-4c1549dcad08",
+    "value": "1 - [(2n)!/(n!)^2] * (1/4^n)",
+    "letter": "C",
+    "confidence": "high",
+    "note": "P(heads != tails) = 1 - P(exactly n heads) = 1 - C(2n,n)/2^(2n), and 2^(2n) = 4^n. Option A is the complement (the equal case); option B omits the 1/4^n and is not a probability. No twins."
+  },
+  {
+    "questionNumber": "854",
+    "questionId": "3b85d03f-3ddd-448b-abbb-4513cadad7b2",
+    "value": "11C6 * (0.24)^5 = 0.3678732288",
+    "letter": "A",
+    "confidence": "high",
+    "note": "11 steps is odd so f-b is always odd; one step away means (f,b) = (6,5) or (5,6). Sum = C(11,6)(0.4)^6(0.6)^5 + C(11,5)(0.4)^5(0.6)^6 = 462*(0.4*0.6)^5*(0.4+0.6) = 462*(0.24)^5. Verified numerically = option A exactly. NOT a twin of C: C(11,6) = C(11,5) = 462 but (0.48)^5 != (0.24)^5 (option C evaluates to 11.77, above 1, so it is not even a probability)."
+  },
+  {
+    "questionNumber": "855",
+    "questionId": "0690bc26-7ce0-40a2-86e1-fab96449b880",
+    "value": "1/32",
+    "letter": "B",
+    "confidence": "high",
+    "note": "C(n,3) = C(n,5) => n = 8 (verified: both equal 56). P(exactly 1 head) = C(8,1)/2^8 = 8/256 = 1/32. No twins."
+  }
+]

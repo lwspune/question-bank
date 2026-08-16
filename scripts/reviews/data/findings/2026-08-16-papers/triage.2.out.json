@@ -1,0 +1,93 @@
+[
+  {
+    "questionNumber": "969",
+    "questionId": "0a9d6c48-0a9e-41af-974b-38bfcd905672",
+    "classification": "OK",
+    "evidence": "Key D correct. Independently derived: 81^(1/log_5 3) = 81^(log_3 5) = 3^(4 log_3 5) = 5^4 = 625; 27^(log_9 36) = 3^(3 log_9 36) = 36^(3/2) = 216; 3^(4/log_7 9) = 3^(2 log_3 7) = 7^2 = 49. Sum = 890. Numeric check evaluates the whole expression to 889.99999999999966. Solution derives every term and names no letter. PROBE FALSE POSITIVE: partial-expression capture — the regex grabbed '216 + 49 = 890' out of the true three-term sum '625 + 216 + 49 = 890'.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "970",
+    "questionId": "1c38d081-190f-4de0-8bd3-895ba7a9fece",
+    "classification": "OK",
+    "evidence": "Key C correct. Prime-exponent bookkeeping: 16/15 = 2^4/(3*5), 25/24 = 5^2/(2^3*3), 81/80 = 3^4/(2^4*5). Exponent of 2 = 7*4 - 5*3 - 3*4 = 28 - 15 - 12 = 1; of 3 = -7 - 5 + 12 = 0; of 5 = -7 + 10 - 3 = 0. So the sum is log 2. Numeric check: 0.6931471805599454 vs log 2 = 0.6931471805599453. PROBE FALSE POSITIVE: partial-expression capture — the regex grabbed '15 - 12 = 1' out of the true '28 - 15 - 12 = 1'.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "Misc 4 I (3)",
+    "questionId": "f7b7adeb-f248-4001-8cb1-fdc62aa8372d",
+    "classification": "OK",
+    "evidence": "Key B correct. Substitution t = sqrt(e^x - 1) gives I = int_0^2 2t^2/(t^2+4) dt = 2[t - 2 arctan(t/2)]_0^2 = 4 - pi. Simpson check on the original integrand over [0, log 5]: 0.8584073459, against 4 - pi = 0.8584073464. Every step of the stored solution reproduces. PROBE FALSE POSITIVE: LETTER_CONFLICT of the dismissal kind — the solution names option C only inside the errata bracket, to state that the printed key C (= 2 + pi = 5.1416) is unreachable, and its bound argument is sound (integrand <= 1.25 on an interval of length 1.6094, so I < 2.02). The bracket then names B, which matches the stored key.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "Misc 4A I Q5",
+    "questionId": "36874f7b-c46a-4371-9e08-f5579e6f740f",
+    "classification": "SOLUTION_ONLY",
+    "evidence": "Key C is CORRECT and every claim in the stored text is true, but the stored solution is an errata bracket ONLY — it contains no derivation at all. It asserts 'The given determinant equals 2|a b c; p q r; x y z|' without showing why, so the /browse and /board 'show model answer' reveal gives a student a verdict and no working. Verified independently two ways: (1) the given matrix is N*T with N = [[a,b,c],[p,q,r],[x,y,z]] and T = [[0,1,1],[1,0,1],[1,1,0]], and det T = 2, so the determinant is 2*det N = option C; (2) random integer check gives LHS = 798, option C = 798, option B = -798. The solution's symmetry argument (a key of B would make A and D equally correct, since all three are that determinant with one column pair swapped) is also correct. This is NOT the preserve-the-official-key convention — the stored key OVERRIDES the printed key B — so the missing derivation is a genuine gap, not the documented exception.",
+    "proposedFix": "Append a worked derivation after the errata bracket, e.g.: \"Apply \\\\(C_1 \\\\to C_1 + C_2 + C_3\\\\); the first column becomes \\\\(2(a+b+c),\\\\,2(p+q+r),\\\\,2(x+y+z)\\\\), so take out the factor 2. Now \\\\(C_2 \\\\to C_2 - C_1\\\\) and \\\\(C_3 \\\\to C_3 - C_1\\\\) turn the second and third columns into \\\\((-b,-q,-y)\\\\) and \\\\((-c,-r,-z)\\\\), and a further \\\\(C_1 \\\\to C_1 + C_2 + C_3\\\\) turns the first into \\\\((a,p,x)\\\\). Taking \\\\(-1\\\\) out of each of the last two columns, the determinant \\\\(= 2(-1)(-1)\\\\begin{vmatrix} a & b & c \\\\\\\\ p & q & r \\\\\\\\ x & y & z \\\\end{vmatrix} = 2\\\\begin{vmatrix} a & b & c \\\\\\\\ p & q & r \\\\\\\\ x & y & z \\\\end{vmatrix}\\\\), which is option C.\""
+  },
+  {
+    "questionNumber": "Misc 7 I (1)",
+    "questionId": "5cdf91d7-e265-4f53-bcc7-96e6fd118efb",
+    "classification": "OK",
+    "evidence": "Key B correct. f(x) = 6x(1-x) is symmetric about x = 1/2 on [0,1], so the median is 1/2; the cdf check gives F(1/2) = 3(1/4) - 2(1/8) = 0.5 exactly. The stored solution's cubic 4a^3 - 6a^2 + 1 = 0 and its factorisation (2a-1)(2a^2-2a-1) = 0 both expand correctly, and the rejected roots (1 +/- sqrt 3)/2 = 1.366 and -0.366 are indeed outside [0,1]. PROBE FALSE POSITIVE: the question's own unknown is the letter 'a', so phrases such as 'the only admissible root is a = 1/2' read to the probe as 'option A'. No option letter is named anywhere in the solution.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "Misc I (13)",
+    "questionId": "866cb0d2-06e6-49a5-ad39-8f31d0f4e7bd",
+    "classification": "OK",
+    "evidence": "Key B correct. Integrating in y from 0 to 3 of ((2y+3) - y^2) gives [y^2 + 3y - y^3/3] = 9 + 9 - 9 = 9 sq. units; the intersection y^2 = 2y + 3 gives y = 3 (y = -1 rejected, not in the first quadrant), and the line meets the x-axis at (3,0), so the region is bounded below by the x-axis, left by the parabola and right by the line, exactly as integrated. PROBE FALSE POSITIVE: partial-expression capture — the regex grabbed '9 - 9 = 9' out of the true '9 + 9 - 9 = 9'.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "Misc I (6)",
+    "questionId": "841e10bb-3ceb-4e76-8491-a2e73db8a720",
+    "classification": "OK",
+    "evidence": "Key B correct. |A| = (lambda)(-lambda) - (1)(-1) = -lambda^2 + 1, which vanishes at lambda = +/- 1, so A^(-1) fails to exist there. Solution derives this and names B, matching the key. PROBE FALSE POSITIVE: FALSE_EQUALITY across a LaTeX exponent — the regex read '2 + 1 = 0' out of the source string '-\\lambda^2 + 1 = 0', where the '2' is the superscript on lambda and was never a term of the arithmetic.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "Misc I Q.14",
+    "questionId": "09bd3646-41dc-4beb-927c-28bc0be4de90",
+    "classification": "OK",
+    "evidence": "Key D correct. Equal intercepts give x/a + y/a + z/a = 1, i.e. x + y + z = a; substituting (2,-1,3) gives a = 2 - 1 + 3 = 4, so the plane is x + y + z = 4. Solution derives it and names no letter. PROBE FALSE POSITIVE: partial-expression capture — the regex grabbed '-1+3=4' out of the true 'a=2-1+3=4'.",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "Misc I Q.16",
+    "questionId": "30aa9918-9ddb-40ed-831c-2ec8bb137714",
+    "classification": "OK",
+    "evidence": "Key D correct. 2 arctan(1/5) has tangent (2/5)/(1 - 1/25) = 5/12; then tan(phi - pi/4) = (5/12 - 1)/(1 + 5/12) = (-7/12)/(17/12) = -7/17. Direct numeric evaluation: tan(2*atan(0.2) - pi/4) = -0.4117647058823529 = -7/17 exactly, against the printed key A = 17/7 = 2.4286. PROBE FALSE POSITIVE: the errata bracket cites the printed key, but a complete derivation FOLLOWS it, so the NO_DERIVATION flag does not hold. This is the book-key error already logged for this chapter (Misc I Q16 -> -7/17 = D, not A).",
+    "proposedFix": null
+  },
+  {
+    "questionNumber": "Misc I Q.18",
+    "questionId": "4cbb13ba-f4f1-4276-9417-1f8a545288f1",
+    "classification": "SOLUTION_ONLY",
+    "evidence": "Key A is CORRECT and the derivation is present and right, so the NO_DERIVATION flag is a false positive. Verified independently: b1 x b2 = (4,4,-5) x (7,1,3) = (17,-47,-24); the plane through (5,7,-3) is 17x - 47y - 24z + 172 = 0 (option A); and (a2 - a1).(b1 x b2) = (3,-3,-2).(17,-47,-24) = 51 + 141 + 48 = 240 != 0, so the two lines are genuinely skew and the printed key B is wrong. THE REAL DEFECT IS TEXT CORRUPTION IN THE ERRATA BRACKET: it stores the literal string \"((\\bar{a_2}-\\bar{a_1})cdot(\\bar{b_1}\\times\\bar{b_2})=240\\neq0)\" — the math is NOT inside \\\\( ... \\\\) delimiters and 'cdot' has lost its backslash, so a reader sees raw '\\bar{a_2}', 'cdot' and '\\neq0' as literal text. Same signature as the known heredoc-backslash-eating hazard. (The identical formula is written correctly later in the body, so only the bracket is broken.)",
+    "proposedFix": "Replace the errata bracket with: \"[Textbook answer-key error: the official key is (B), but the two given lines are actually skew — \\\\((\\\\bar{a_2}-\\\\bar{a_1})\\\\cdot(\\\\bar{b_1}\\\\times\\\\bar{b_2}) = 240 \\\\neq 0\\\\) — so no plane contains both. Option (A) is the plane through the first line whose normal is \\\\(\\\\bar{b_1}\\\\times\\\\bar{b_2} = (17,-47,-24)\\\\); option (B)'s normal is not perpendicular to the first line's direction, so (A) is the correct choice.]\" Author it through the editor, not a shell heredoc."
+  },
+  {
+    "questionNumber": "Misc I Q.19",
+    "questionId": "0dd998ff-51e1-4dd8-a1fa-7481002a34e8",
+    "classification": "DEFECT",
+    "evidence": "THE QUESTION IS DEFECTIVE: no option is the solution set. Using tan 3theta = (tan theta + tan 2theta)/(1 - tan theta tan 2theta), the equation collapses to tan 3theta (1 - tan theta tan 2theta) = 0; the second factor is exactly where tan 3theta is undefined, so the solution set is precisely tan 3theta = 0, i.e. theta = n*pi/3. A numeric sweep over (-pi, pi) returns roots at exactly -pi, -2pi/3, -pi/3, 0, pi/3, 2pi/3 and nothing else, confirming n*pi/3. Option A (n*pi) is a proper SUBSET (all genuine, but misses +/- pi/3); option B (n*pi/6) is a SUPERSET whose odd-n members are not solutions — theta = pi/6 fails because tan 3theta = tan(pi/2) is undefined (verified numerically); C and D contain points where tan 2theta / tan theta are undefined. SECOND, INDEPENDENT DEFECT — THE STORED SOLUTION CONTRADICTS ITS OWN KEY: the bracket says 'The official key B ... is the intended answer', but the body ends 'NONE of the options equals n(pi)/3; best pick is A ((n pi)), which is the valid tan theta = 0 sub-branch ... whereas B n(pi)/6 includes points where tan 3 theta is undefined.' The stored key is B, so the model answer tells the student the key is wrong. The preserve-the-printed-key convention is the right call here, so the key stays B and the body must stop recommending A.",
+    "proposedFix": "Delete the final sentence of the body ('NONE of the options equals ... where tan 3 theta is undefined.') and replace it with: \"The full solution set is therefore \\\\(\\\\theta = \\\\dfrac{n\\\\pi}{3}\\\\), which is not among the four printed options. The official key B \\\\(\\\\left(\\\\dfrac{n\\\\pi}{6}\\\\right)\\\\) is retained to match the board: it contains the whole solution set as its even-\\\\(n\\\\) members, but also contains points such as \\\\(\\\\theta = \\\\dfrac{\\\\pi}{6}\\\\) where \\\\(\\\\tan 3\\\\theta\\\\) is undefined. Option A \\\\((n\\\\pi)\\\\) contains only genuine solutions but omits \\\\(\\\\theta = \\\\pm\\\\dfrac{\\\\pi}{3}\\\\).\" Keep the key at B."
+  },
+  {
+    "questionNumber": "Misc I Q.5",
+    "questionId": "34b77053-fec4-47f6-bd17-df3749a93f5a",
+    "classification": "DEFECT",
+    "evidence": "THE QUESTION IS DEFECTIVE and the stored solution already says so correctly. Verified independently: b1 x b2 = (1,-1,-1) x (2,1,2) = (-1,-4,3) with magnitude sqrt(26); a2 - a1 = (1,-3,-2); the dot product is -1 + 12 - 6 = 5, so the shortest distance is 5/sqrt(26) = 0.98058. The four printed options are 0.57735, 0.70711, 2.12132, 0.86603 — none of them. Key D is the official key, deliberately retained per the preserve-the-source-defect convention, and the solution explains the defect, so the NO_DERIVATION flag is a false positive (a full derivation follows the bracket). TWO TEXT DEFECTS remain in the stored solution: (1) the errata bracket has lost its backslashes and delimiters — it stores '(dfrac{5}{sqrt{26}}approx0.98)' and '(D) (dfrac{sqrt{3}}{2})', which render as literal garbage; (2) the body opens with a pipeline artefact marker, '**[MISMATCH: computed value \\\\frac{5}{\\\\sqrt{26}}\\\\approx0.98 matches no option]**', which is build-time triage output that should never be shown to a student.",
+    "proposedFix": "Replace the bracket with: \"[Textbook defect: the printed options are wrong — the correct shortest distance is \\\\(\\\\dfrac{5}{\\\\sqrt{26}} \\\\approx 0.98\\\\), which matches none of the four printed alternatives. The official key marks (D) \\\\(\\\\dfrac{\\\\sqrt{3}}{2} \\\\approx 0.87\\\\), retained here to match the board.]\" and DELETE the leading '**[MISMATCH: ...]**' marker from the body (the derivation that follows already states the mismatch in prose). Keep the key at D."
+  },
+  {
+    "questionNumber": "Misc I Q20",
+    "questionId": "24f20dd3-d5aa-4d75-8135-c3b5b45d5424",
+    "classification": "OK",
+    "evidence": "Key A correct. 4x^2 - 9y^2 - 36 = 0 is x^2/9 - y^2/4 = 1, so a^2 = 9, b^2 = 4 and c^2 = a^2 + b^2 = 13, giving foci (+/- sqrt 13, 0). PROBE FALSE POSITIVE: FALSE_EQUALITY across a LaTeX exponent — the regex read '2 - 36 = 0' out of the stem string '4x^2 - 9y^2 - 36 = 0', where the trailing '2' is the superscript on y. Minor style note only (not a defect): the whole model answer sits inside the errata bracket about the printed option label 'S)' rather than 'D)', but the derivation IS present and complete inside it, so unlike Misc 4A I Q5 there is no missing working.",
+    "proposedFix": null
+  }
+]

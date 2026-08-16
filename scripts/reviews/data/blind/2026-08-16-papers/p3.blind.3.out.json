@@ -1,0 +1,122 @@
+[
+  {
+    "questionNumber": "873",
+    "questionId": "892d34cd-2024-476e-9770-2ae4bc2481a8",
+    "value": "0 < variance < mean, i.e. 0 < beta < alpha",
+    "letter": "B",
+    "confidence": "high",
+    "note": "Binomial: mean alpha = np, variance beta = npq with 0<q<1, so beta = alpha*q < alpha and both positive."
+  },
+  {
+    "questionNumber": "874",
+    "questionId": "566b19a0-23cb-4cad-8e4d-c28e4dfc5727",
+    "value": "8/243",
+    "letter": "B",
+    "confidence": "high",
+    "note": "P(sum=9)=4/36=1/9; C(3,2)(1/9)^2(8/9)=24/729=8/243. Verified exactly with fractions."
+  },
+  {
+    "questionNumber": "875",
+    "questionId": "7a7953b2-73e9-4322-874b-c5972b1cf6ff",
+    "value": "9/256",
+    "letter": "C",
+    "confidence": "high",
+    "note": "np=4, npq=2 => q=1/2, p=1/2, n=8; P(X>6)=P(7)+P(8)=(8+1)/2^8=9/256."
+  },
+  {
+    "questionNumber": "876",
+    "questionId": "2556c47b-ec3b-4515-9202-9c1131114e94",
+    "value": "1/4",
+    "letter": "C",
+    "confidence": "high",
+    "note": "Equally strong => p=1/2; C(4,3)(1/2)^4 = 4/16 = 1/4."
+  },
+  {
+    "questionNumber": "877",
+    "questionId": "3636c061-e94e-4913-b394-8d0b8570aa3e",
+    "value": "r = 33",
+    "letter": "C",
+    "confidence": "high",
+    "note": "P(r)/P(r-1)=((101-r)/r)(1/2)>1 iff r<33.67, so mode = floor((n+1)p) = 33; confirmed by direct argmax over r=0..100."
+  },
+  {
+    "questionNumber": "959",
+    "questionId": "00a7173d-5723-42be-aa11-7555b39c2c15",
+    "value": "a > 0 and a != 1",
+    "letter": "D",
+    "confidence": "high",
+    "note": "Base must be positive and not 1 (a=1 makes a^y=1 for all y, so the log is undefined); A wrongly admits a=1, C is needlessly restrictive."
+  },
+  {
+    "questionNumber": "960",
+    "questionId": "de024607-10cf-48c9-a646-71c3e90bffed",
+    "value": "18/5 = 3.6",
+    "letter": "A",
+    "confidence": "high",
+    "note": "32*4^(1/5)=2^(5+2/5)=2^(27/5); base 2sqrt2 = 2^(3/2); (27/5)/(3/2)=18/5=3.6. Numerically 3.6."
+  },
+  {
+    "questionNumber": "961",
+    "questionId": "f165c4c5-5996-497b-a986-6a55fe9da2e2",
+    "value": "irrational (approx 2.8074)",
+    "letter": "C",
+    "confidence": "high",
+    "note": "If log_2 7 = p/q then 2^p = 7^q, impossible by unique factorisation for positive integers; so irrational, hence not an integer/rational/prime."
+  },
+  {
+    "questionNumber": "962",
+    "questionId": "e37187e6-7133-4ad3-bc5a-9bb67d000095",
+    "value": "(1 + 2m)/2, numerically 0.85621 for m = log_7 2",
+    "letter": "B",
+    "confidence": "high",
+    "note": "log_49 28 = log_7(4*7)/2 = (2log_7 2 + 1)/2 = (1+2m)/2; checked numerically 0.856207 vs A=3.4248, C=1.1679, D=1.3562."
+  },
+  {
+    "questionNumber": "963",
+    "questionId": "3a3baee9-a380-4971-a87c-df90b9b0a454",
+    "value": "a = b",
+    "letter": "A",
+    "confidence": "high",
+    "note": "RHS = log sqrt(ab), so (a+b)/2 = sqrt(ab) => (sqrt a - sqrt b)^2 = 0 => a = b (AM = GM equality case; a,b>0 for the logs to be defined)."
+  },
+  {
+    "questionNumber": "964",
+    "questionId": "76abb028-e831-497d-b264-5ed73c114fa3",
+    "value": "log_10 a < log_3 a < log_e a < log_2 a (for a > 1)",
+    "letter": "B",
+    "confidence": "medium",
+    "note": "log_b a = ln a / ln b, so for a>1 the value decreases as the base grows and bases order 2 < e < 3 < 10; verified with a=100 (2, 4.192, 4.605, 6.644). Medium only because the stem does not state a>1: for 0<a<1 the order reverses to log_2, log_e, log_3, log_10, which matches NO option (A has log_3 and log_e swapped)."
+  },
+  {
+    "questionNumber": "965",
+    "questionId": "4cee0ae9-9169-458d-a32f-e3635b92af3f",
+    "value": "log|a|",
+    "letter": "B",
+    "confidence": "high",
+    "note": "log(ab) requires ab>0, so a and b share a sign. If b>0 then a>0 and the value is log a = log|a|; if b<0 then a<0 and ab/|b| = -a > 0 giving log(-a) = log|a|. Verified with a=b=-3,-4: both sides 1.09861. Option A (log a) is undefined on the a<0 branch, so B is the only universally valid form - not a twin of A."
+  },
+  {
+    "questionNumber": "966",
+    "questionId": "006dc2a0-baaa-4e93-9736-a64716529c82",
+    "value": "2",
+    "letter": "C",
+    "confidence": "high",
+    "note": "log_0.5 4 = -2; sqrt((-2)^2) = sqrt 4 = +2 (principal root, so not -2). Option B sqrt(-4) is not even real."
+  },
+  {
+    "questionNumber": "967",
+    "questionId": "30c16bff-ceac-478f-afff-29512c8932df",
+    "value": "2",
+    "letter": "B",
+    "confidence": "high",
+    "note": "Chain telescopes: product = log_3 9 = 2. Numeric product 2.0000000000000004."
+  },
+  {
+    "questionNumber": "968",
+    "questionId": "e02bef52-71ae-4bb5-9a44-39f7a2260bf5",
+    "value": "1 - 3*log_7 2, numerically -0.068622",
+    "letter": "C",
+    "confidence": "high",
+    "note": "sqrt(7*sqrt(7*sqrt7)) = 7^(7/8); inner log_7 = 7/8; log_7(7/8) = 1 - log_7 8 = 1 - 3log_7 2. Numeric check: LHS -0.0686216 = option C -0.0686216 (A=8.422, B=-4.314)."
+  }
+]

@@ -3,7 +3,7 @@
     "id": "9ac7a587-5482-4912-87f2-5ef940a7d3b2",
     "ref": "Misc I Q.1",
     "derived_answer": "B",
-    "solution": "Note \\(1+x+\\sqrt{x+x^2}=(\\sqrt{x})^2+(\\sqrt{1+x})^2+\\sqrt{x}\\sqrt{1+x}\\), which is \\((\\sqrt{x}+\\sqrt{1+x})^2-\\sqrt{x}\\sqrt{1+x}\\)... more directly, the numerator equals \\((\\sqrt{x}+\\sqrt{1+x})\\sqrt{x+1}\\) after factoring: dividing by \\(\\sqrt{x}+\\sqrt{1+x}\\) gives integrand \\(\\sqrt{x+1}\\). Then \\(\\int\\sqrt{x+1}\\,dx=\\frac{2}{3}(x+1)^{3/2}+c\\). Differentiating option B returns \\(\\sqrt{x+1}\\), matching. Answer B.",
+    "solution": "Factorise the numerator: \\((\\sqrt{x} + \\sqrt{1+x})\\,\\sqrt{1+x} = \\sqrt{x}\\,\\sqrt{1+x} + (1+x) = 1 + x + \\sqrt{x + x^2}\\), which is exactly the numerator.\n\nSo the integrand reduces to \\(\\dfrac{(\\sqrt{x} + \\sqrt{1+x})\\,\\sqrt{x+1}}{\\sqrt{x} + \\sqrt{1+x}} = \\sqrt{x+1}\\).\n\nHence \\(\\displaystyle\\int \\sqrt{x+1}\\,dx = \\dfrac{2}{3}(x+1)^{3/2} + c\\).\n\nCheck: \\(\\dfrac{d}{dx}\\left[\\dfrac{2}{3}(x+1)^{3/2}\\right] = \\sqrt{x+1}\\), the integrand.\n\nHence (B).",
     "matches_current": true
   },
   {

@@ -1,0 +1,9 @@
+[
+  {
+    "questionNumber": "861",
+    "questionId": "4b7117ce-6227-406f-a6e9-4037e711b875",
+    "issue": "CITES_NOT_DERIVES",
+    "evidence": "The whole solution is \"For a fair coin, the probability of an odd number of tails in any number of tosses equals \\\\(\\\\frac{1}{2}\\\\) (the even and odd cases split the binomial expansion equally when \\\\(p = q = \\\\frac{1}{2}\\\\)). So \\\\(P(\\\\text{odd number of tails}) = \\\\frac{1}{2}\\\\).\" There is no computation anywhere. The parenthetical asserts the equal split of the binomial expansion, and that assertion IS the entire content of the question — restating it is not deriving it. A student who did not already know the result learns nothing about why it holds, and cannot reproduce the argument on the next question of this shape.",
+    "proposedFix": "Replace with a derivation, e.g.: \"Total outcomes \\\\(= 2^{100}\\\\). Putting \\\\(x = 1\\\\) in \\\\((1+x)^{100}\\\\) gives \\\\(\\\\sum_k {}^{100}C_k = 2^{100}\\\\); putting \\\\(x = -1\\\\) gives \\\\(\\\\sum_k (-1)^k\\\\,{}^{100}C_k = 0\\\\). Adding and subtracting, \\\\(\\\\sum_{k \\\\text{ even}} {}^{100}C_k = \\\\sum_{k \\\\text{ odd}} {}^{100}C_k = 2^{99}\\\\). Hence \\\\(P(\\\\text{odd number of tails}) = \\\\frac{2^{99}}{2^{100}} = \\\\frac{1}{2}\\\\).\" (Equivalently, the one-line argument: whatever the parity of the first 99 tosses, the 100th toss makes the total odd with probability exactly \\\\(\\\\frac{1}{2}\\\\).)"
+  }
+]

@@ -141,7 +141,7 @@
     "answer": "C",
     "_derivation": "\\(f(f(x))=\\frac{1}{1-\\frac{1}{1-x}}=\\frac{1-x}{(1-x)-1}=\\frac{1-x}{-x}=\\frac{x-1}{x}\\). Then \\(f(f(f(x)))=\\frac{1}{1-\\frac{x-1}{x}}=\\frac{1}{\\frac{x-(x-1)}{x}}=\\frac{1}{1/x}=x\\). So \\(f\\) is an involution of order 3.",
     "_note": "Book misprint preserved: the bracket pair is mismatched in print — it reads \\(f(f\\{f(x)\\}]\\), opening with '(' and closing with ']'. The intended expression is unambiguously \\(f(f(f(x)))\\). Transcribed as printed per the faithfulness rule.",
-    "solution": "[Textbook misprint (typesetting only): the composite is printed with mismatched brackets, opening with \\((\\) and closing with \\(]\\). The intended triple composite is unambiguous, and the answer is the same under every bracketing since the function has order 3.]"
+    "solution": "[Textbook misprint (typesetting only): the composite is printed with mismatched brackets, opening with \\((\\) and closing with \\(]\\). The intended triple composite is unambiguous, and the answer is the same under every bracketing since the function has order 3.]\n\n\\(f(f(x)) = \\dfrac{1}{\\,1 - \\dfrac{1}{1-x}\\,} = \\dfrac{1-x}{(1-x)-1} = \\dfrac{1-x}{-x} = \\dfrac{x-1}{x}\\).\n\n\\(f(f(f(x))) = \\dfrac{1}{\\,1 - \\dfrac{x-1}{x}\\,} = \\dfrac{x}{x-(x-1)} = \\dfrac{x}{1} = x\\).\n\nHence (C)."
   },
   {
     "ref": "Misc I Q6",
@@ -201,7 +201,7 @@
     "answer": "A",
     "_derivation": "Put \\(y=\\frac{2x+1}{1-3x}\\Rightarrow y(1-3x)=2x+1\\Rightarrow y-3xy=2x+1\\Rightarrow y-1=x(2+3y)\\Rightarrow x=\\frac{y-1}{3y+2}\\). Hence \\(f^{-1}(x)=\\frac{x-1}{3x+2}\\). Check: \\(f(0)=1\\) and \\(f^{-1}(1)=\\frac{0}{5}=0\\).",
     "_note": "Book misprint preserved in the labels: the FOURTH option is printed 'C)' — the page shows the labels as A), B), C), C), with no D). Emitted here as D so the row carries the required A–D set; the option TEXTS are transcribed exactly as printed. Option C is \\(f\\) itself (a distractor for students who forget to invert).",
-    "solution": "[Textbook misprint (labelling only): the four alternatives are printed A), B), C), C) — the fourth option carries the label C) instead of D). It is stored here as D so the row carries a valid A-D set; the option texts are verbatim.]"
+    "solution": "[Textbook misprint (labelling only): the fourth alternative is printed carrying the same label as the third. It is stored here under the fourth label so the row holds a valid four-option set; the option texts are verbatim.]\n\nPut \\(y = \\dfrac{2x+1}{1-3x}\\). Then \\(y(1-3x) = 2x+1\\), so \\(y - 3xy = 2x+1\\) and \\(y - 1 = x(3y+2)\\), giving \\(x = \\dfrac{y-1}{3y+2}\\).\n\nInterchanging \\(x\\) and \\(y\\), \\(f^{-1}(x) = \\dfrac{x-1}{3x+2}\\).\n\nHence (A)."
   },
   {
     "ref": "Misc I Q8",

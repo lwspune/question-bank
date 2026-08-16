@@ -1,0 +1,122 @@
+[
+  {
+    "questionNumber": "01-9",
+    "questionId": "2577a84d-c315-4c78-9365-43c13c700322",
+    "value": "bit (a single binary digit)",
+    "letter": "D",
+    "confidence": "high",
+    "note": "Definition: 'bit' is a contraction of BInary digiT; nibble = 4 bits, byte = 8 bits, word = machine-dependent multi-byte unit."
+  },
+  {
+    "questionNumber": "01-11",
+    "questionId": "27fb88c5-1c26-4215-a3b9-1cf743b97795",
+    "value": "8 bits",
+    "letter": "C",
+    "confidence": "high",
+    "note": "Definition: 1 byte = 8 bits (a nibble is the 4-bit half-byte)."
+  },
+  {
+    "questionNumber": "01-14",
+    "questionId": "323c5e80-d9de-4524-a5b6-50903faddc6f",
+    "value": "the string 10102, which contains the digit 2",
+    "letter": "C",
+    "confidence": "high",
+    "note": "Binary digits are only 0 and 1; A (001011), B (1100) and D (0) use only 0/1, so C is the invalid one."
+  },
+  {
+    "questionNumber": "01-15",
+    "questionId": "031e73cd-ba9e-4f2f-9d39-050581fed210",
+    "value": "2^k, i.e. a power of 2",
+    "letter": "C",
+    "confidence": "high",
+    "note": "A single 1 in position k (0-indexed from the right) has value 2^k exactly; e.g. 1=2^0, 100=4. Not prime in general (4, 8), not odd composite, not a multiple of 3."
+  },
+  {
+    "questionNumber": "01-23",
+    "questionId": "0dddb8a2-41a9-4e7f-85cb-07b0025fe1b2",
+    "value": "value becomes floor(N/2) — divided by 2",
+    "letter": "B",
+    "confidence": "high",
+    "note": "Right shift drops the 2^0 bit and each remaining bit's weight halves; e.g. 1011 (11) -> 101 (5) = floor(11/2). Left shift is the ×2 operation."
+  },
+  {
+    "questionNumber": "01-30",
+    "questionId": "14846641-3b7d-442d-8c73-f8f852224749",
+    "value": "63",
+    "letter": "C",
+    "confidence": "high",
+    "note": "111111 = 2^6 - 1 = 64 - 1 = 63 (32+16+8+4+2+1). 31 would be 5 bits of 1s; 64 is 1000000."
+  },
+  {
+    "questionNumber": "02-9",
+    "questionId": "037d0e68-ee1b-43fb-b607-e7f733e5a5e5",
+    "value": "110100_2",
+    "letter": "D",
+    "confidence": "high",
+    "note": "52 = 32+16+4 = 110100. Checked the distractors: A=50, B=54, C=58."
+  },
+  {
+    "questionNumber": "02-11",
+    "questionId": "3499844e-c0ed-448a-851d-a2a3e7cd5e53",
+    "value": "32",
+    "letter": "B",
+    "confidence": "high",
+    "note": "(100000)_2 is a single 1 in bit position 5, so value = 2^5 = 32."
+  },
+  {
+    "questionNumber": "02-16",
+    "questionId": "1cd83b82-01c7-468e-afc5-c6758125fab5",
+    "value": "(1010)_2 = 10_10 is the only correct statement",
+    "letter": "C",
+    "confidence": "high",
+    "note": "Evaluated all four: 1100=12 (not 14), 1011=11 (not 12), 1010=10 correct, 1111=15 (not 14)."
+  },
+  {
+    "questionNumber": "02-17",
+    "questionId": "07e9ef68-f436-4fd3-83cb-5b03b2248bdb",
+    "value": "0.111_2",
+    "letter": "D",
+    "confidence": "high",
+    "note": "7/8 = 1/2 + 1/4 + 1/8 = 0.111. Back-check of distractors: A=0.625, B=0.75, C=0.5625."
+  },
+  {
+    "questionNumber": "02-26",
+    "questionId": "109b919e-0c28-4dc2-82e9-9b6346ece022",
+    "value": "0.011_2",
+    "letter": "A",
+    "confidence": "high",
+    "note": "0.375 = 3/8 = 1/4 + 1/8 = 0.011. Doubling method: 0.375->0.75 (0), 0.75->1.5 (1), 0.5->1.0 (1)."
+  },
+  {
+    "questionNumber": "02-28",
+    "questionId": "36ee9a39-979c-4aaf-8652-aff1d94df4a2",
+    "value": "63",
+    "letter": "C",
+    "confidence": "high",
+    "note": "(111111)_2 = 2^6 - 1 = 63. Same quantity as 01-30."
+  },
+  {
+    "questionNumber": "02-29",
+    "questionId": "031d903f-f411-423e-801e-b393a16c152b",
+    "value": "(11100)_2 = 28_10 is the only correct pair",
+    "letter": "D",
+    "confidence": "high",
+    "note": "Evaluated all four: 10010=18 (not 20), 11001=25 (not 24), 10111=23 (not 22), 11100=16+8+4=28 correct."
+  },
+  {
+    "questionNumber": "03-6",
+    "questionId": "1311f177-57ca-44a0-9c6d-f66e69ddc906",
+    "value": "11110_2 (decimal 30)",
+    "letter": "C",
+    "confidence": "high",
+    "note": "1010 = 10; 10 x 3 = 30 = 16+8+4+2 = 11110. Distractors: A=28, B=26, D=21."
+  },
+  {
+    "questionNumber": "03-8",
+    "questionId": "0179ba20-788d-44df-8ce2-a48d2d81ef9b",
+    "value": "11.75",
+    "letter": "A",
+    "confidence": "high",
+    "note": "(1001.1)_2 = 9.5 and (10.01)_2 = 2.25; sum = 11.75. Binary check: 1001.10 + 0010.01 = 1011.11 = 8+2+1+0.5+0.25 = 11.75."
+  }
+]
