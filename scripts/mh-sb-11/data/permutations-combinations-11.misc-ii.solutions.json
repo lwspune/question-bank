@@ -1,0 +1,111 @@
+[
+  {
+    "id": "2277e748-5da4-439a-a558-8f1fa18c6244",
+    "ref": "Misc II Q1",
+    "solution": "Here \\({}^{56}P_{r+6}=\\frac{56!}{(56-r-6)!}=\\frac{56!}{(50-r)!}\\) and \\({}^{54}P_{r+3}=\\frac{54!}{(54-r-3)!}=\\frac{54!}{(51-r)!}\\). Dividing, \\(\\frac{{}^{56}P_{r+6}}{{}^{54}P_{r+3}}=\\frac{56!}{54!}\\times\\frac{(51-r)!}{(50-r)!}=56\\times55\\times(51-r)=3080(51-r)\\). So \\(3080(51-r)=30800\\), giving \\(51-r=10\\). \\(\\therefore r=41\\)",
+    "_note": "The printed key gives \\(r=45\\). The ratio reduces exactly to \\(3080(51-r)\\): \\(r=41\\) gives \\(3080\\times10=30800\\) as required, while \\(r=45\\) gives \\(3080\\times6=18480\\). Both values are admissible in the permutation symbols (\\(r+6\\le56\\), \\(r+3\\le54\\)), so the discrepancy is a genuine key error, not a domain issue."
+  },
+  {
+    "id": "e4ab412b-670c-4198-9132-3fd2e3d03359",
+    "ref": "Misc II Q2",
+    "solution": "CROWN has 5 letters and no letter is repeated, so all 5 objects are distinct and all 5 are being arranged (order matters, repetition not allowed). The number of arrangements is \\(5! = 120\\). \\(\\therefore\\) 120 words"
+  },
+  {
+    "id": "0e739d1b-b1f5-495b-8115-31c8a80f9a27",
+    "ref": "Misc II Q3",
+    "solution": "REMAIN has 6 letters, all different, and all are arranged, so the number of words is \\(6! = 720\\). For dictionary order the letters rank A, E, I, M, N, R. Words beginning with A number \\(5! = 120\\), so the \\(40^{\\text{th}}\\) word begins with A. Each choice of the second letter gives \\(4! = 24\\) words: AE... occupies places 1-24 and AI... occupies 25-48, so the required word is the \\(16^{\\text{th}}\\) word of the AI block. Each choice of the third letter gives \\(3! = 6\\) words: AIE 1-6, AIM 7-12, AIN 13-18, so it is the \\(4^{\\text{th}}\\) word of the AIN block. Each choice of the fourth letter gives \\(2! = 2\\) words: AINE 1-2, AINM 3-4, so it is the \\(2^{\\text{nd}}\\) word of the AINM block, i.e. AINMRE. \\(\\therefore\\) 720 words, and the \\(40^{\\text{th}}\\) word is AINMRE"
+  },
+  {
+    "id": "6841da57-e33d-4319-9a34-57bc3ebe0f4e",
+    "ref": "Misc II Q4",
+    "solution": "A password is an ordered string of three of the 11 symmetric letters, and the three letters are taken to be different (no repetition). So we both choose and arrange: \\({}^{11}P_3 = 11\\times10\\times9 = 990\\). \\(\\therefore\\) 990 symmetric three-letter passwords",
+    "_note": "The stem does not say whether a letter may repeat; the printed key of 990 fixes the intended reading as \"no repetition\". Had repetition been allowed the count would be \\(11^3 = 1331\\)."
+  },
+  {
+    "id": "6227e701-894e-47ca-8953-6251e3e5a558",
+    "ref": "Misc II Q5",
+    "solution": "The seven digits 3, 2, 0, 4, 3, 2, 3 are arranged (order matters) but they are not all distinct: 3 occurs three times and 2 occurs twice. All arrangements number \\(\\frac{7!}{3!\\,2!}=\\frac{5040}{12}=420\\). A number exceeds one million exactly when it is a genuine seven-digit number, i.e. it does not begin with 0. Arrangements beginning with 0 use the other six digits: \\(\\frac{6!}{3!\\,2!}=\\frac{720}{12}=60\\). So the count is \\(420-60=360\\). \\(\\therefore\\) 360 numbers"
+  },
+  {
+    "id": "2cfe0dd6-dd00-43b0-a2c7-105507e228d1",
+    "ref": "Misc II Q6",
+    "solution": "Only which students are selected matters, not any order, and no student repeats. The 4 friends are either all selected or all rejected. If all 4 are in, the other 6 places are filled from the remaining 26 students: \\({}^{26}C_6 = 230230\\). If all 4 are out, all 10 places are filled from the remaining 26: \\({}^{26}C_{10} = 5311735\\). The two cases are disjoint, so the total is \\(230230 + 5311735 = 5541965\\). \\(\\therefore\\) 5541965 selections"
+  },
+  {
+    "id": "ee18bfc1-b2d9-48ab-941e-b347fc499fa3",
+    "ref": "Misc II Q7",
+    "solution": "A borrowing is a selection of 3 of the 7 books; order does not matter and no book is repeated. Without any restriction there are \\({}^{7}C_3 = 35\\) choices. The condition forbids exactly those selections that contain Chemistry Part II but not Chemistry Part I: such a selection takes Chemistry Part II together with 2 of the 5 books other than Chemistry Part I, i.e. \\({}^{5}C_2 = 10\\) selections. Hence the number of allowed selections is \\(35 - 10 = 25\\). \\(\\therefore\\) 25 ways",
+    "_note": "The printed key gives 15. That value comes from reading \"Chemistry II only if Chemistry I\" as a package — take both or neither — which also bars Chemistry I alone: neither book, \\({}^{5}C_3 = 10\\), plus both books with 1 of the remaining 5, \\(5\\), total 15. Read strictly, the condition only rules out Chemistry II without Chemistry I, so Chemistry I on its own is permitted and the count is \\(35-10=25\\). The strict reading is followed here."
+  },
+  {
+    "id": "e1954fae-075f-4cc1-8a63-3ccf041e3a7f",
+    "ref": "Misc II Q8",
+    "solution": "Within each group only the selection matters, not the order; and since the three group sizes 7, 10, 13 are all different the groups are distinguishable, so no division by a group-interchange factor is needed. Choose 7 objects, then 10 from the remaining 23, and the last 13 form the third group: \\({}^{30}C_7\\times{}^{23}C_{10}\\times{}^{13}C_{13}=\\frac{30!}{7!\\,23!}\\times\\frac{23!}{10!\\,13!}=\\frac{30!}{7!\\,10!\\,13!}\\). \\(\\therefore\\) the number of ways is \\(\\frac{30!}{7!\\,10!\\,13!}\\)"
+  },
+  {
+    "id": "20633cb2-1d43-4eae-a4b7-62d6c2df24bd",
+    "ref": "Misc II Q9",
+    "solution": "For each of the 7 subjects the student independently either secures the minimum or does not, so there are \\(2^7 = 128\\) possible outcomes. Exactly one of these — securing the minimum in all 7 subjects — is a pass; every other outcome is a fail. Hence the number of ways of failing is \\(2^7 - 1 = 128 - 1 = 127\\). \\(\\therefore\\) 127 ways"
+  },
+  {
+    "id": "7b01892d-0495-4078-bd27-d76c93ebbfcb",
+    "ref": "Misc II Q10",
+    "solution": "The two groups are distinguishable — one travels by car, the other by train — so a split is fixed once the car group is chosen; only the selection matters, not any order. With at least 3 friends in each group the car group may contain 3, 4, 5 or 6 of the 9 friends. The number of ways is \\({}^{9}C_3+{}^{9}C_4+{}^{9}C_5+{}^{9}C_6 = 84+126+126+84 = 420\\). \\(\\therefore\\) 420 ways",
+    "_note": "The printed key stops at \\({}^{9}C_3+{}^{9}C_4+{}^{9}C_5 = 336\\). Because the car group and the train group are distinguishable, \"6 by car and 3 by train\" is a different arrangement from \"3 by car and 6 by train\", so \\({}^{9}C_6\\) belongs in the sum as well and the correct total is 420. (A count of 336 would be right only if the two groups were interchangeable, which they are not.)"
+  },
+  {
+    "id": "71a144a7-86c9-4285-b0b4-a0488e102e03",
+    "ref": "Misc II Q11",
+    "solution": "Each of the 12 lamps is switched on or off independently, so there are \\(2^{12} = 4096\\) states of the hall. The hall is illuminated only if at least one lamp is on, so the single all-off state is excluded: \\(2^{12}-1 = 4095\\). \\(\\therefore\\) 4095 ways"
+  },
+  {
+    "id": "8fa3e3cc-e31b-4b8e-87de-fb7644c8c40c",
+    "ref": "Misc II Q12",
+    "solution": "A quadratic equation \\(ax^2+bx+c=0\\) requires \\(a\\ne0\\). The three coefficients occupy fixed positions (so the choice is ordered) and repetition is allowed. Hence \\(a\\) can be chosen in 3 ways (2, 4 or 5, since \\(a\\ne0\\)), while \\(b\\) and \\(c\\) can each be chosen in 4 ways: \\(3\\times4\\times4 = 48\\). \\(\\therefore\\) 48 quadratic equations"
+  },
+  {
+    "id": "1aef023f-2310-4f65-9bd2-2bc34371481c",
+    "ref": "Misc II Q13",
+    "solution": "The first two places are fixed as 4 and 5, so those two digits are already used and cannot appear again. The remaining 4 places are filled from the other 8 digits, in order and without repetition: \\({}^{8}P_4 = 8\\times7\\times6\\times5 = 1680\\). \\(\\therefore\\) 1680 telephone numbers"
+  },
+  {
+    "id": "2a9c71cf-fe50-4826-ba84-f263e95c6f1d",
+    "ref": "Misc II Q14",
+    "solution": "Each of the 6 questions is either attempted or left out, independently, so the questions attempted form any one of \\(2^6 = 64\\) subsets. Since the student solves at least one question, the empty subset is excluded: \\(2^6 - 1 = 63\\). \\(\\therefore\\) 63 ways"
+  },
+  {
+    "id": "c2b471e3-b344-4837-aac2-a1e7d422cd46",
+    "ref": "Misc II Q15",
+    "solution": "Within each group only the selection matters, and since the sizes 8, 7 and 5 are all different the groups are distinguishable, so no division by a group-interchange factor is needed. Choose 8 objects, then 7 from the remaining 12, and the last 5 form the third group: \\({}^{20}C_8\\times{}^{12}C_7\\times{}^{5}C_5=\\frac{20!}{8!\\,12!}\\times\\frac{12!}{7!\\,5!}=\\frac{20!}{8!\\,7!\\,5!}\\). \\(\\therefore\\) the number of ways is \\(\\frac{20!}{8!\\,7!\\,5!}\\)"
+  },
+  {
+    "id": "f8bfdbd4-b197-483d-b8cb-406010f2fd3b",
+    "ref": "Misc II Q16",
+    "solution": "A team is a selection of 6 people from the 12 panellists; order does not matter and nobody repeats. Total teams: \\({}^{12}C_6 = 924\\). Teams with no doctor are formed from the 8 lawyers alone: \\({}^{8}C_6 = 28\\). Teams with at least one doctor are the rest: \\(924 - 28 = 896\\). \\(\\therefore\\) 896 ways"
+  },
+  {
+    "id": "f95c744a-999c-41eb-b364-17499ba41a91",
+    "ref": "Misc II Q17",
+    "solution": "A parallelogram is determined by a pair of lines from the first set together with a pair from the second set; the lines in a pair are merely chosen, not ordered. So the count is \\({}^{4}C_2\\times{}^{5}C_2 = 6\\times10 = 60\\). \\(\\therefore\\) 60 distinct parallelograms"
+  },
+  {
+    "id": "48f92817-3c7e-4f89-a970-f3aaffc1e44f",
+    "ref": "Misc II Q18(i)",
+    "solution": "A line is fixed by an unordered pair of points (the pair AB gives the same line as BA), and since the 12 points lie on a circle no three of them are collinear, so distinct pairs give distinct lines. Hence the number of lines is \\({}^{12}C_2 = \\frac{12\\times11}{2} = 66\\). \\(\\therefore\\) 66 lines"
+  },
+  {
+    "id": "2a8a4856-3922-4e82-8971-5bcca7b730ef",
+    "ref": "Misc II Q18(ii)",
+    "solution": "A line through D is fixed once its other end point is chosen from the remaining 11 points; the choice is unordered and no point repeats. Hence \\({}^{11}C_1 = 11\\). \\(\\therefore\\) 11 lines pass through D"
+  },
+  {
+    "id": "c5adb4b7-1f65-4c3e-a8a7-7151bef7e9bc",
+    "ref": "Misc II Q18(iii)",
+    "solution": "A triangle is fixed by an unordered choice of 3 of the 12 points, and as the points lie on a circle no three are collinear, so every such choice really does give a triangle. Hence \\({}^{12}C_3 = \\frac{12\\times11\\times10}{3\\times2\\times1} = 220\\). \\(\\therefore\\) 220 triangles"
+  },
+  {
+    "id": "5d5b2277-dd98-4b92-8729-7afa6ef3326f",
+    "ref": "Misc II Q18(iv)",
+    "solution": "Keep C as one vertex and choose the other two vertices, unordered, from the remaining 11 points: \\({}^{11}C_2 = \\frac{11\\times10}{2} = 55\\). \\(\\therefore\\) 55 triangles have C as a vertex"
+  }
+]

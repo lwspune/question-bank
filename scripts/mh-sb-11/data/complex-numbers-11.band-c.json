@@ -1,0 +1,447 @@
+[
+  {
+    "ref": "1.5.2 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Argand Diagram, Modulus and Argument",
+    "difficulty": "EASY",
+    "stem": "If \\(z = 1+3i\\), find the modulus and amplitude of \\(z\\).",
+    "solution": "\\(z = 1+3i\\)  here \\(a = 1\\), \\(b = 3\\) and \\(a,\\ b > 0\\)\n\n\\(\\therefore |z| = \\sqrt{1^2 + 3^2} = \\sqrt{10}\\)\n\n\\(\\operatorname{amp} z = \\tan^{-1}\\left(\\frac{b}{a}\\right) = \\tan^{-1}\\left(\\frac{3}{1}\\right) = \\tan^{-1}(3)\\)"
+  },
+  {
+    "ref": "1.5.2 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Argand Diagram, Modulus and Argument",
+    "difficulty": "MODERATE",
+    "stem": "Find the modulus, argument of the complex number \\(-7 + 24i\\).",
+    "solution": "[Textbook defects (two): the modulus line prints \\(\\sqrt{(7)^2 + (24)^2}\\) with a positive 7 where \\(a = -7\\) (the value is unaffected, since it is squared), and the printed solution STOPS at \"\\(\\theta\\) lies in the 2nd quadrant\" without ever stating the argument the question asks for. The argument is supplied above.]\n\nlet \\(z = -7+24i\\)    \\(a = -7\\), \\(b = 24\\)\n\n\\(\\therefore |z| = \\sqrt{(7)^2 + (24)^2} = \\sqrt{625} = 25\\)\n\nHere,\n\n\\(\\arg z = \\tan^{-1}\\left(\\frac{b}{a}\\right) = \\tan^{-1}\\left(\\frac{24}{-7}\\right)\\)\n\nAs \\(a < 0\\), \\(b > 0\\), \\(\\theta\\) lies in 2nd quadrant.",
+    "_note": "TWO printed slips in the book's own solution, transcribed as printed: (a) the modulus line prints \\(\\sqrt{(7)^2+(24)^2}\\) with a positive 7 where \\(a=-7\\) (the value 25 is unaffected); (b) the solution STOPS at 'θ lies in 2nd quadrant' and never states the argument itself — the completed value is \\(\\pi - \\tan^{-1}(24/7)\\)."
+  },
+  {
+    "ref": "1.5.5 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Argand Diagram, Modulus and Argument",
+    "difficulty": "MODERATE",
+    "stem": "Represent the complex numbers \\(z = 1+i\\), \\(\\overline{z} = 1-i\\), \\(-\\overline{z} = -1+i\\), \\(-z = -1-i\\) in Argand's diagram and hence find their arguments from the figure. (In the book's figure the four numbers are plotted as A\\((1, 1) \\equiv z\\), B\\((-1, 1) \\equiv -\\overline{z}\\), C\\((-1, -1) \\equiv -z\\) and D\\((1, -1) \\equiv \\overline{z}\\) on axes marked from \\(-4\\) to \\(4\\).)",
+    "solution": "arg \\(z\\) is the angle made by the segment OA with the positive direction of the X-axis. (Fig. 1.5)\n\nThus, \\(\\theta\\) together with \\(r\\) gives the position of the point A in the Argand's diagram.\n\nHence, from the figure 1.5,\n\n\\(\\arg z = 45^\\circ = \\frac{\\pi}{4}\\),  \\(\\arg(-\\overline{z}) = 135^\\circ = \\frac{3\\pi}{4}\\)\n\n\\(\\arg(-z) = 225^\\circ = \\frac{5\\pi}{4}\\),  \\(\\arg \\overline{z} = 315^\\circ = \\frac{7\\pi}{4}\\)",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. 1.5 — Argand plane with A(1, 1), B(-1, 1), C(-1, -1), D(1, -1) plotted and labelled z, -z-bar, -z, z-bar respectively."
+  },
+  {
+    "ref": "1.5.5 SolvedEx.2(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "context": "Represent the following complex numbers in the polar form and in the exponential form.",
+    "setLabel": "1.5.5 SolvedEx.2",
+    "stem": "\\(4+4\\sqrt{3}\\,i\\)",
+    "solution": "Let, \\(z = 4 + 4\\sqrt{3}\\,i\\)\n\n\\(a = 4\\), \\(b = 4\\sqrt{3}\\)\n\n\\(r = \\sqrt{4^2 + (4\\sqrt{3})^2} = \\sqrt{16+48} = \\sqrt{64} = 8\\)\n\nAs \\(\\theta\\) lies in quadrant I\n\n\\(\\theta = \\tan^{-1}\\left(\\frac{b}{a}\\right) = \\tan^{-1}\\left(\\frac{4\\sqrt{3}}{4}\\right) = \\tan^{-1}(\\sqrt{3}) = \\frac{\\pi}{3}\\) or \\(60^\\circ\\)\n\n\\(\\therefore\\) The polar form of \\(z = 4 + 4\\sqrt{3}\\,i\\) is\n\n\\(z = r(\\cos\\theta + i\\sin\\theta)\\)\n\n\\(z = 8(\\cos 60^\\circ + i\\sin 60^\\circ) = 8\\left(\\cos\\frac{\\pi}{3} + i\\sin\\frac{\\pi}{3}\\right)\\)\n\n\\(\\therefore\\) The exponential form of \\(z = 8\\,e^{i\\left(\\frac{\\pi}{3}\\right)}\\)"
+  },
+  {
+    "ref": "1.5.5 SolvedEx.2(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "EASY",
+    "context": "Represent the following complex numbers in the polar form and in the exponential form.",
+    "setLabel": "1.5.5 SolvedEx.2",
+    "stem": "\\(-2\\)",
+    "solution": "Let \\(z = -2\\)\n\n\\(\\therefore a = -2\\), \\(b = 0\\)\n\nHence, \\(r = \\sqrt{(-2)^2 + 0^2} = \\sqrt{4} = 2\\)\n\nAs point \\((-2,\\ 0)\\) lies on negative real axis \\(\\theta = \\pi^c\\) or \\(180^\\circ\\)\n\n\\(\\therefore\\) The polar form of \\(z = 2(\\cos 180^\\circ + i\\sin 180^\\circ) = 2(\\cos\\pi + i\\sin\\pi)\\)\n\n\\(\\therefore\\) The exponential form of \\(z = 2e^{i\\pi}\\)"
+  },
+  {
+    "ref": "1.5.5 SolvedEx.2(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "EASY",
+    "context": "Represent the following complex numbers in the polar form and in the exponential form.",
+    "setLabel": "1.5.5 SolvedEx.2",
+    "stem": "\\(3i\\)",
+    "solution": "Let \\(z = 3i\\)\n\n\\(a = 0\\), \\(b = 3\\)\n\nHence, \\(r = \\sqrt{0^2 + 3^2} = 3\\)\n\nAs point \\((0,\\ 3)\\) lies on positive imaginary axis \\(\\theta = \\frac{\\pi^c}{2}\\) or \\(90^\\circ\\)\n\n\\(\\therefore\\) The polar form of \\(z = 3(\\cos 90^\\circ + i\\sin 90^\\circ) = 3\\left(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}\\right)\\)\n\n\\(\\therefore\\) The exponential form of \\(z = 3e^{i\\frac{\\pi}{2}}\\)"
+  },
+  {
+    "ref": "1.5.5 SolvedEx.2(iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "context": "Represent the following complex numbers in the polar form and in the exponential form.",
+    "setLabel": "1.5.5 SolvedEx.2",
+    "stem": "\\(-\\sqrt{3} + i\\)",
+    "solution": "[Textbook misprint: the working prints \\(\\theta = \\tan^{-1}(b/a) = \\pi\\) where the continuation requires \\(+\\,\\pi\\); the glyph was checked at high zoom and is an equals sign. The final answer \\(\\frac{5\\pi}{6}\\) is correct.]\n\nLet, \\(z = -\\sqrt{3} + i\\)\n\n\\(\\therefore a = -\\sqrt{3}\\),  \\(b = 1\\)\n\n\\(r = \\sqrt{(-\\sqrt{3})^2 + 1^2} = \\sqrt{3+1} = \\sqrt{4} = 2\\)\n\nAs \\((-\\sqrt{3},\\ 1)\\) lies in quadrant II\n\n\\(\\theta = \\tan^{-1}\\left(\\frac{b}{a}\\right) = \\pi\\)\n\n\\(= \\tan^{-1}\\left(\\frac{1}{-\\sqrt{3}}\\right) + \\pi = -\\frac{\\pi}{6} + \\pi\\)\n\n\\(= \\frac{5\\pi}{6}\\)\n\n\\(\\therefore\\) The polar form of\n\n\\(z = r(\\cos\\theta + i\\sin\\theta)\\)\n\n\\(z = 2\\left(\\cos\\frac{5\\pi}{6} + i\\sin\\frac{5\\pi}{6}\\right)\\)\n\n\\(\\therefore\\) The exponential form of\n\n\\(z = re^{i\\theta} = 2\\,e^{i\\left(\\frac{5\\pi}{6}\\right)}\\)",
+    "_note": "Printed misprint transcribed as printed: the last line of the left column reads \\(\\theta = \\tan^{-1}(b/a) = \\pi\\), but the continuation at the top of the right column is \\(= \\tan^{-1}(1/-\\sqrt{3}) + \\pi\\), so the '=' before \\(\\pi\\) should be '+'. Verified by zooming the printed glyph — it is an equals sign, not a plus. The final answer \\(5\\pi/6\\) is correct."
+  },
+  {
+    "ref": "1.5.5 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "stem": "Express \\(z = \\sqrt{2}\\cdot e^{\\frac{3\\pi}{4}i}\\) in the \\(a + ib\\) form.",
+    "solution": "\\(z = \\sqrt{2}\\cdot e^{\\frac{3\\pi}{4}i} = r\\,e^{i\\theta}\\)\n\n\\(\\therefore r = \\sqrt{2}\\), \\(\\theta = \\frac{3\\pi}{4}\\)\n\nAs the polar form of \\(z\\) is\n\n\\(z = r(\\cos\\theta + i\\sin\\theta)\\)\n\n\\(= \\sqrt{2}\\left(\\cos\\frac{3\\pi}{4} + i\\sin\\frac{3\\pi}{4}\\right)\\)\n\nBy using allied angles results in trigonometry, we get\n\n\\(\\cos\\frac{3\\pi}{4} = \\cos\\left(\\pi - \\frac{\\pi}{4}\\right) = -\\cos\\frac{\\pi}{4} = -\\frac{1}{\\sqrt{2}}\\)\n\n\\(\\sin\\frac{3\\pi}{4} = \\sin\\left(\\pi - \\frac{\\pi}{4}\\right) = \\sin\\frac{\\pi}{4} = \\frac{1}{\\sqrt{2}}\\)\n\n\\(\\therefore z = \\sqrt{2}\\left[\\frac{-1}{\\sqrt{2}} + i\\left(\\frac{1}{\\sqrt{2}}\\right)\\right]\\)\n\n\\(= -1 + i\\)"
+  },
+  {
+    "ref": "1.5.5 SolvedEx.4(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "context": "Express the following in \\(a + ib\\) form.",
+    "setLabel": "1.5.5 SolvedEx.4",
+    "stem": "\\(3\\cdot e^{\\frac{5\\pi}{12}i} \\times 4\\cdot e^{\\frac{\\pi}{12}i}\\)",
+    "solution": "\\(3\\cdot e^{\\frac{5\\pi}{12}i} \\times 4\\cdot e^{\\frac{\\pi}{12}i}\\)\n\n\\(= (3\\times 4)\\,e^{\\left(\\frac{5\\pi}{12} + \\frac{\\pi}{12}\\right)i}\\)\n\n\\(= 12\\,e^{\\frac{6\\pi}{12}i} = 12\\,e^{\\frac{\\pi}{2}i}\\)\n\n\\(= 12\\left(\\cos\\frac{\\pi}{2} + i\\sin\\frac{\\pi}{2}\\right)\\)\n\n\\(= 12(0 + i) = 12i\\)",
+    "_note": "The book prints the shared instruction as 'Ex. 4 : Express (i) ... (ii) ... in a + ib form', with the phrase 'in a + ib form' appearing only after sub-item (ii); it governs both sub-items."
+  },
+  {
+    "ref": "1.5.5 SolvedEx.4(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "HARD",
+    "context": "Express the following in \\(a + ib\\) form.",
+    "setLabel": "1.5.5 SolvedEx.4",
+    "stem": "\\(\\dfrac{\\sqrt{2}\\left(\\cos\\frac{\\pi}{12} + i\\sin\\frac{\\pi}{12}\\right)}{2\\left(\\cos\\frac{5\\pi}{6} + i\\sin\\frac{5\\pi}{6}\\right)}\\)",
+    "solution": "\\(\\dfrac{\\sqrt{2}\\left(\\cos\\frac{\\pi}{12} + i\\sin\\frac{\\pi}{12}\\right)}{2\\left(\\cos\\frac{5\\pi}{6} + i\\sin\\frac{5\\pi}{6}\\right)} = \\dfrac{\\sqrt{2}\\,e^{\\frac{\\pi}{12}i}}{2\\,e^{\\frac{5\\pi}{6}i}}\\)\n\n\\(= \\left(\\frac{\\sqrt{2}}{2}\\right)e^{\\left(\\frac{\\pi}{12} - \\frac{5\\pi}{6}\\right)i} = \\left(\\frac{\\sqrt{2}}{2}\\right)e^{\\left(-\\frac{3\\pi}{4}\\right)i}\\)\n\n\\(= \\left(\\frac{\\sqrt{2}}{2}\\right)\\left[\\cos\\left(-\\frac{3\\pi}{4}\\right) + i\\sin\\left(-\\frac{3\\pi}{4}\\right)\\right]\\)\n\n\\(= \\left(\\frac{\\sqrt{2}}{2}\\right)\\left[-\\frac{1}{\\sqrt{2}} + i\\left(-\\frac{1}{\\sqrt{2}}\\right)\\right]\\)\n\n\\(= -\\frac{1}{2} - \\frac{i}{2}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Argand Diagram, Modulus and Argument",
+    "difficulty": "MODERATE",
+    "context": "Find the modulus and amplitude for each of the following complex numbers.",
+    "setLabel": "Ex 1.3 Q1",
+    "stem": "\\(7 - 5i\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Argand Diagram, Modulus and Argument",
+    "difficulty": "EASY",
+    "context": "Find the modulus and amplitude for each of the following complex numbers.",
+    "setLabel": "Ex 1.3 Q1",
+    "stem": "\\(\\sqrt{3} + \\sqrt{2}\\,i\\)",
+    "solution": "[Textbook misprint: where the modulus belongs the key prints a lone italic \\(i\\), checked at high zoom. A modulus is a non-negative real number and cannot be \\(i\\); the value is \\(\\sqrt{5}\\). The amplitude printed alongside it is correct.]"
+  },
+  {
+    "ref": "Ex 1.3 Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Argand Diagram, Modulus and Argument",
+    "difficulty": "MODERATE",
+    "context": "Find the modulus and amplitude for each of the following complex numbers.",
+    "setLabel": "Ex 1.3 Q1",
+    "stem": "\\(-8 + 15i\\)",
+    "solution": "[Textbook answer-key error (quadrant term dropped): the printed key gives \\(-\\tan^{-1}\\frac{15}{8} \\approx -1.081\\), which points into the FOURTH quadrant, while \\(-8 + 15i\\) lies in the SECOND. The correct amplitude is \\(\\pi - \\tan^{-1}\\frac{15}{8} \\approx 2.061\\), which matches \\(\\arg(-8+15i)\\) exactly. The book's own section on amplitudes states \\(\\theta = \\tan^{-1}\\frac{b}{a} + \\pi\\) for a second-quadrant point; the key omits that \\(+\\pi\\).]"
+  },
+  {
+    "ref": "Ex 1.3 Q1(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Argand Diagram, Modulus and Argument",
+    "difficulty": "MODERATE",
+    "context": "Find the modulus and amplitude for each of the following complex numbers.",
+    "setLabel": "Ex 1.3 Q1",
+    "stem": "\\(-3(1-i)\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q1(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Argand Diagram, Modulus and Argument",
+    "difficulty": "MODERATE",
+    "context": "Find the modulus and amplitude for each of the following complex numbers.",
+    "setLabel": "Ex 1.3 Q1",
+    "stem": "\\(-4 - 4i\\)",
+    "solution": "[Textbook answer-key error (quadrant term dropped — the same slip as in sub-item (iii), which is what marks it a pattern rather than a lone typo): the printed key gives \\(\\frac{\\pi}{4}\\), a FIRST-quadrant direction, while \\(-4 - 4i\\) lies in the THIRD. The correct amplitude is \\(\\frac{5\\pi}{4}\\) (equivalently \\(-\\frac{3\\pi}{4}\\)). Every other sub-item of this question follows the book's own quadrant convention correctly.]"
+  },
+  {
+    "ref": "Ex 1.3 Q1(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Argand Diagram, Modulus and Argument",
+    "difficulty": "MODERATE",
+    "context": "Find the modulus and amplitude for each of the following complex numbers.",
+    "setLabel": "Ex 1.3 Q1",
+    "stem": "\\(\\sqrt{3} - i\\)",
+    "solution": "[Textbook answer-key omission: only the amplitude \\(\\frac{11\\pi}{6}\\) is printed, with no modulus, though every other sub-item of this question gives the pair. The missing modulus is \\(2\\).]"
+  },
+  {
+    "ref": "Ex 1.3 Q1(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Argand Diagram, Modulus and Argument",
+    "difficulty": "EASY",
+    "context": "Find the modulus and amplitude for each of the following complex numbers.",
+    "setLabel": "Ex 1.3 Q1",
+    "stem": "\\(3\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q1(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Argand Diagram, Modulus and Argument",
+    "difficulty": "EASY",
+    "context": "Find the modulus and amplitude for each of the following complex numbers.",
+    "setLabel": "Ex 1.3 Q1",
+    "stem": "\\(1 + i\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q1(ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Argand Diagram, Modulus and Argument",
+    "difficulty": "EASY",
+    "context": "Find the modulus and amplitude for each of the following complex numbers.",
+    "setLabel": "Ex 1.3 Q1",
+    "stem": "\\(1 + i\\sqrt{3}\\)",
+    "_note": "Printed label defect: the book labels this ninth sub-item 'iv)' (a repeat of the fourth label) instead of 'ix)'. The printed answer key labels it 'ix) 2, pi/3', which matches this number, so the ref here uses (ix).",
+    "solution": "[Textbook misprint (labelling only): the book labels this ninth sub-item \"iv)\", a repeat of the fourth item's label. The printed key labels it ix), which is the numbering used here — the book's own label would collide with the genuine sub-item (iv).]"
+  },
+  {
+    "ref": "Ex 1.3 Q1(x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Argand Diagram, Modulus and Argument",
+    "difficulty": "HARD",
+    "context": "Find the modulus and amplitude for each of the following complex numbers.",
+    "setLabel": "Ex 1.3 Q1",
+    "stem": "\\((1+2i)^2\\,(1-i)\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Powers of i and Division",
+    "difficulty": "MODERATE",
+    "stem": "Find real values of \\(\\theta\\) for which \\(\\left(\\dfrac{4 + 3i\\sin\\theta}{1 - 2i\\sin\\theta}\\right)\\) is purely real."
+  },
+  {
+    "ref": "Ex 1.3 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Argand Diagram, Modulus and Argument",
+    "difficulty": "EASY",
+    "stem": "If \\(z = 3 + 5i\\) then represent the \\(z\\), \\(\\overline{z}\\), \\(-z\\), \\(-\\overline{z}\\) in Argand's diagram."
+  },
+  {
+    "ref": "Ex 1.3 Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "context": "Express the following complex numbers in polar form and exponential form.",
+    "setLabel": "Ex 1.3 Q4",
+    "stem": "\\(-1 + \\sqrt{3}\\,i\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "EASY",
+    "context": "Express the following complex numbers in polar form and exponential form.",
+    "setLabel": "Ex 1.3 Q4",
+    "stem": "\\(-i\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q4(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "EASY",
+    "context": "Express the following complex numbers in polar form and exponential form.",
+    "setLabel": "Ex 1.3 Q4",
+    "stem": "\\(-1\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q4(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "context": "Express the following complex numbers in polar form and exponential form.",
+    "setLabel": "Ex 1.3 Q4",
+    "stem": "\\(\\dfrac{1}{1+i}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q4(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "HARD",
+    "context": "Express the following complex numbers in polar form and exponential form.",
+    "setLabel": "Ex 1.3 Q4",
+    "stem": "\\(\\dfrac{1 + 2i}{1 - 3i}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q4(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "HARD",
+    "context": "Express the following complex numbers in polar form and exponential form.",
+    "setLabel": "Ex 1.3 Q4",
+    "stem": "\\(\\dfrac{1 + 7i}{(2-i)^2}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "EASY",
+    "context": "Express the following numbers in the form \\(x + iy\\).",
+    "setLabel": "Ex 1.3 Q5",
+    "stem": "\\(\\sqrt{3}\\left(\\cos\\frac{\\pi}{6} + i\\sin\\frac{\\pi}{6}\\right)\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "context": "Express the following numbers in the form \\(x + iy\\).",
+    "setLabel": "Ex 1.3 Q5",
+    "stem": "\\(\\sqrt{2}\\left(\\cos\\frac{7\\pi}{4} + i\\sin\\frac{7\\pi}{4}\\right)\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q5(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "context": "Express the following numbers in the form \\(x + iy\\).",
+    "setLabel": "Ex 1.3 Q5",
+    "stem": "\\(7\\left(\\cos\\left(-\\frac{5\\pi}{6}\\right) + i\\sin\\left(-\\frac{5\\pi}{6}\\right)\\right)\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q5(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "EASY",
+    "context": "Express the following numbers in the form \\(x + iy\\).",
+    "setLabel": "Ex 1.3 Q5",
+    "stem": "\\(e^{\\frac{\\pi}{3}i}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q5(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "context": "Express the following numbers in the form \\(x + iy\\).",
+    "setLabel": "Ex 1.3 Q5",
+    "stem": "\\(e^{\\frac{-4\\pi}{3}i}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q5(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "context": "Express the following numbers in the form \\(x + iy\\).",
+    "setLabel": "Ex 1.3 Q5",
+    "stem": "\\(e^{\\frac{5\\pi}{6}i}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Argand Diagram, Modulus and Argument",
+    "difficulty": "MODERATE",
+    "stem": "Find the modulus and argument of the complex number \\(\\dfrac{1 + 2i}{1 - 3i}\\)."
+  },
+  {
+    "ref": "Ex 1.3 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "HARD",
+    "stem": "Convert the complex number \\(z = \\dfrac{i - 1}{\\cos\\frac{\\pi}{3} + i\\sin\\frac{\\pi}{3}}\\) in the polar form."
+  },
+  {
+    "ref": "Ex 1.3 Q8(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conjugate and Algebra of Complex Numbers",
+    "difficulty": "EASY",
+    "context": "For \\(z = 2 + 3i\\) verify the following :",
+    "setLabel": "Ex 1.3 Q8",
+    "stem": "\\(\\overline{(\\overline{z})} = z\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q8(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conjugate and Algebra of Complex Numbers",
+    "difficulty": "EASY",
+    "context": "For \\(z = 2 + 3i\\) verify the following :",
+    "setLabel": "Ex 1.3 Q8",
+    "stem": "\\(z\\,\\overline{z} = |z|^2\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q8(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conjugate and Algebra of Complex Numbers",
+    "difficulty": "EASY",
+    "context": "For \\(z = 2 + 3i\\) verify the following :",
+    "setLabel": "Ex 1.3 Q8",
+    "stem": "\\((z + \\overline{z})\\) is real"
+  },
+  {
+    "ref": "Ex 1.3 Q8(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conjugate and Algebra of Complex Numbers",
+    "difficulty": "EASY",
+    "context": "For \\(z = 2 + 3i\\) verify the following :",
+    "setLabel": "Ex 1.3 Q8",
+    "stem": "\\(z - \\overline{z} = 6i\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q9(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conjugate and Algebra of Complex Numbers",
+    "difficulty": "EASY",
+    "context": "\\(z_1 = 1 + i\\), \\(z_2 = 2 - 3i\\). Verify the following :",
+    "setLabel": "Ex 1.3 Q9",
+    "stem": "\\(\\overline{z_1 + z_2} = \\overline{z_1} + \\overline{z_2}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q9(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conjugate and Algebra of Complex Numbers",
+    "difficulty": "EASY",
+    "context": "\\(z_1 = 1 + i\\), \\(z_2 = 2 - 3i\\). Verify the following :",
+    "setLabel": "Ex 1.3 Q9",
+    "stem": "\\(\\overline{z_1 - z_2} = \\overline{z_1} - \\overline{z_2}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q9(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conjugate and Algebra of Complex Numbers",
+    "difficulty": "MODERATE",
+    "context": "\\(z_1 = 1 + i\\), \\(z_2 = 2 - 3i\\). Verify the following :",
+    "setLabel": "Ex 1.3 Q9",
+    "stem": "\\(\\overline{z_1 \\cdot z_2} = \\overline{z_1} \\cdot \\overline{z_2}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q9(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conjugate and Algebra of Complex Numbers",
+    "difficulty": "HARD",
+    "context": "\\(z_1 = 1 + i\\), \\(z_2 = 2 - 3i\\). Verify the following :",
+    "setLabel": "Ex 1.3 Q9",
+    "stem": "\\(\\overline{\\left(\\dfrac{z_1}{z_2}\\right)} = \\dfrac{\\overline{z_1}}{\\overline{z_2}}\\)"
+  }
+]

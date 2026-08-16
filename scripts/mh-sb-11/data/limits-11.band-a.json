@@ -1,0 +1,340 @@
+[
+  {
+    "ref": "7.1.2 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Definition of a Limit and One-Sided Limits",
+    "difficulty": "MODERATE",
+    "stem": "Consider the example \\(f(x) = 3x + 1\\), take \\(a = 0\\) and \\(l = 1\\). Verify the \\(\\varepsilon\\)-\\(\\delta\\) definition of the limit, i.e. find \\(\\delta > 0\\) such that \\(0 < |x - 0| < \\delta\\) implies \\(|f(x) - l| < \\varepsilon\\).",
+    "solution": "[Textbook misprints (typography): the book sets the set-membership glyph \\(\\in\\) throughout this section where the epsilon of the \\(\\varepsilon\\)-\\(\\delta\\) definition is meant — it prints a genuine \\(\\varepsilon\\) later in this same block, confirming the intent — and writes \"If fact any \\(\\delta \\le \\varepsilon/3\\) will do\" for \"In fact\".]\n\nWe want to find some \\(\\delta > 0\\) such that \\(0 < |x - 0| < \\delta\\) implies that \\(|(3x + 1) - 1| < \\varepsilon\\)\n\nif \\(|3x| < \\varepsilon\\)  i.e. if \\(3|x| < \\varepsilon\\)  i.e. if \\(|x| < \\dfrac{\\varepsilon}{3}\\)\n\nSo, we can choose \\(\\delta = \\dfrac{\\varepsilon}{3}\\)\n\n(In fact any \\(\\delta \\le \\dfrac{\\varepsilon}{3}\\) will do.)\n\n\\(\\therefore\\ 0 < |x - 0| < \\delta \\Rightarrow |f(x) - l| < \\varepsilon\\)\n\n\\(\\therefore\\ \\lim_{x \\to 0} (3x + 1) = 1\\)",
+    "_note": "Printed stem is only 'Consider the example f(x) = 3x + 1, take a = 0 and l = 1'; the instruction to verify the definition comes from the block's shared lead-in 'Strategy : Steps for verifying the ∈ - δ definition' printed above Ex. 1 — folded into the stem here so the question is self-contained. The book prints the set-membership glyph '∈' throughout this chapter where epsilon is meant (it prints a genuine ε in Ex. 6 of the 7.1.7 block, confirming the intent); transcribed as \\varepsilon. The book also misprints 'If fact any δ ≤ ∈/3 will do' for 'In fact'. Fig. 7.2 sits below this example illustrating the band 1−∈ < y < 1+∈; it is illustrative and the example is answerable without it."
+  },
+  {
+    "ref": "7.1.2 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Definition of a Limit and One-Sided Limits",
+    "difficulty": "HARD",
+    "stem": "\\(f(x) = x^2\\). Here take \\(a = 3\\) and \\(l = 9\\). Find \\(\\delta > 0\\) such that \\(0 < |x - 3| < \\delta\\) implies \\(|x^2 - 9| < \\varepsilon\\).",
+    "solution": "[Textbook misprint: the closing note says we must find the \"lower bound\" of \\(|x + 3|\\). To bound the product \\(|x+3||x-3|\\) ABOVE the argument in fact uses an UPPER bound, \\(|x + 3| < 7\\), which is what the derivation itself does. Only the word is wrong.]\n\nWe want to find some \\(\\delta > 0\\) such that \\(0 < |x - 3| < \\delta\\) implies \\(|x^2 - 9| < \\varepsilon\\)\n\ni.e. \\(3 - \\delta < x < 3 + \\delta \\Rightarrow |x^2 - 9| < \\varepsilon\\)\n\n\\(\\delta\\) can be chosen as small as we like and take \\(\\delta < 1\\)\n\nThen, \\(3 - \\delta < x < 3 + \\delta \\Rightarrow 2 < x < 4\\) or \\(5 < x + 3 < 7\\)\n\nWe want \\(|(x + 3)(x - 3)| < \\varepsilon\\)\n\nBut \\(|(x + 3)(x - 3)| < 7|x - 3|\\)\n\nSo \\(7|(x - 3)| < \\varepsilon \\Rightarrow |x^2 - 9| < \\varepsilon\\)\n\nIf \\(\\delta = \\dfrac{\\varepsilon}{7}\\), \\(|(x - 3)| < \\delta \\Rightarrow |x^2 - 9| < \\varepsilon\\)\n\nSo we choose \\(\\delta = \\min\\left\\{\\dfrac{\\varepsilon}{7}, 1\\right\\}\\)\n\nthen \\(|(x - 3)| < \\delta \\Rightarrow |f(x) - 9| < \\varepsilon\\)\n\n* Note that, we want to get rid of factor \\(|x + 3|\\). Hence we have to get its lower bound.",
+    "_note": "The book's closing note says we must get the 'lower bound' of |x + 3|; to bound the product |x+3||x−3| ABOVE the argument actually uses an UPPER bound (|x + 3| < 7, from 5 < x + 3 < 7). The derivation itself is correct — only the word is wrong."
+  },
+  {
+    "ref": "7.1.2 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Definition of a Limit and One-Sided Limits",
+    "difficulty": "HARD",
+    "stem": "\\(f(x) = [x]\\), \\(2 < x < 4\\), where \\([x]\\) is the greatest integer function. Study the limits of \\(f(x)\\) as \\(x \\to 3\\) and as \\(x \\to 2.7\\).",
+    "solution": "[Textbook inconsistencies (two, neither affecting the answer): the stem gives the domain as \\(2 < x < 4\\) while the next line of the solution restates it as \\(2 \\le x \\le 4\\); and with \\(\\delta = 0.3\\) the chain \"\\(2.7 + \\delta < 3\\)\" reads \\(3 < 3\\), false as a strict inequality. Any \\(\\delta < 0.3\\) repairs it, and the conclusion \\(\\lim = 2\\) is correct either way.]\n\nWe have seen the \\(f(x) = [x]\\), \\(2 \\le x \\le 4\\)\n\nNote that \\([x] = 2\\) for \\(2 \\le x < 3\\)\n\n\\(= 3\\) for \\(3 \\le x < 4\\)\n\nLet us study the limits of \\(f(x)\\) as \\(x \\to 3\\) and \\(x \\to 2.7\\)\n\n\\(\\lim_{x \\to 3^+} f(x) = 3\\),\n\nBut for \\(x < 3\\), \\(f(x) = 2\\). So, \\(\\lim_{x \\to 3^-} f(x) = 2\\).\n\nIf we take \\(l = 3\\), then for \\(\\varepsilon = \\dfrac{1}{2}\\) and any \\(\\delta > 0\\)\n\n\\(3 - \\delta < x < 3 \\Rightarrow f(x) = 2\\) and \\(|f(x) - l| = 1 \\not< \\varepsilon\\)\n\nIf we take \\(l = 2\\), then \\(3 < x < 3 + \\delta \\Rightarrow f(x) = 3\\),\n\n\\(|f(x) - 2| = 1 \\not< \\varepsilon\\)\n\n\\(\\therefore\\ \\lim_{x \\to 3} f(x)\\) does not exist.\n\nConsider \\(\\lim_{x \\to 2.7} f(x)\\)\n\nConsider \\(a = 2.7\\). We see that for \\(2 < x < 3\\), \\(f(x) = 2\\).\n\nIf we choose \\(\\delta = 0.3\\),\n\nthen \\(2 < 2.7 - \\delta < 2.7 < 2.7 + \\delta < 3\\)\n\nand \\(f(x) = 2\\) is a constant.\n\n\\(\\therefore\\ \\lim_{x \\to 2.7} f(x) = 2\\)",
+    "_note": "Two printed inconsistencies. (1) The stem states the domain as 2 < x < 4 while the very next line of the solution restates it as 2 ≤ x ≤ 4. (2) With δ = 0.3 the chain '2.7 + δ < 3' reads 3 < 3, which is false as a strict inequality; any δ < 0.3 (or reading the interval as open) makes the argument correct, and the conclusion lim = 2 is right either way."
+  },
+  {
+    "ref": "7.1.6 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Definition of a Limit and One-Sided Limits",
+    "difficulty": "MODERATE",
+    "stem": "Find left hand limit and right hand limit for the following function.\n\n\\(f(x) = \\begin{cases} 3x + 1 & \\text{if } x < 1 \\\\ 7x^2 - 3 & \\text{if } x \\ge 1 \\end{cases}\\)",
+    "solution": "Right hand limit, \\(\\lim_{x \\to 1} f(x)\\), for \\(x > 1\\)\n\ni.e. \\(\\lim_{x \\to 1^+} f(x) = \\lim_{x \\to 1} (7x^2 - 3) = 4\\)\n\nLeft hand limit, \\(\\lim_{x \\to 1} f(x)\\), for \\(x < 1\\):\n\n\\(\\lim_{x \\to 1^-} f(x) = \\lim_{x \\to 1} (3x + 1) = 4\\)\n\nSince left and right-hand limits are equal, the two-sided limit is defined, and \\(\\lim_{x \\to 1} f(x) = 4\\).",
+    "_note": "Printed as an unnumbered 'Example:' immediately after §7.1.6 (Existence of a limit of a function at a point x = a), with its own 'Solution :' — it carries no 'Ex. n' label, hence the ref number 1 assigned here."
+  },
+  {
+    "ref": "7.1.7 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate \\(\\lim_{n \\to 3} \\left( \\sum_{r=1}^{n} r^2 \\right)\\)",
+    "solution": "\\(\\lim_{n \\to 3} \\left( \\sum_{r=1}^{n} r^2 \\right) = \\lim_{n \\to 3} \\left( \\dfrac{n(n+1)(2n+1)}{6} \\right)\\)\n\n\\(= \\dfrac{(3) \\times (3+1) \\times (6+1)}{6}\\)\n\n\\(= \\dfrac{3 \\times 4 \\times 7}{6}\\)\n\n\\(= 14\\)",
+    "_note": "The book prints no instruction word — the item reads 'Ex. 1 : lim … = lim …', the first '=' already beginning the solution. 'Evaluate' supplied so the stem is a question."
+  },
+  {
+    "ref": "7.1.7 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "EASY",
+    "stem": "Evaluate \\(\\lim_{y \\to 2} \\left[ (y^2 - 3)(y + 2) \\right]\\)",
+    "solution": "[Textbook error, answer-affecting: the printed solution contradicts its own stem. With \\(y \\to 2\\) the first factor is \\(2^2 - 3 = 1\\), so the limit is \\(1 \\times 4 = 4\\); the book writes \\((2^2 - 3)(2 + 2) = (8 - 3)(4) = 20\\), evaluating \\(2^2\\) as \\(8\\). Either the stem should read \\(y^3 - 3\\) — which does give \\(20\\) — or the printed answer should be \\(4\\). The stem's exponent was checked at high zoom and is unambiguously \\(2\\), so the corrected value \\(4\\) is given above. The book also opens the second factor with a square bracket it never closes.]\n\n\\(\\lim_{y \\to 2} \\left[ (y^2 - 3)(y + 2) \\right] = \\lim_{y \\to 2} (y^2 - 3) \\cdot \\lim_{y \\to 2} (y + 2)\\)\n\n\\(= (2^2 - 3)(2 + 2) = (4 - 3)(4) = 1 \\times 4 = 4\\)",
+    "_note": "BOOK DEFECT — the example contradicts itself. The stem's exponent is unambiguously 2 (verified at 5x zoom), so \\(2^2 - 3 = 1\\) and the limit is \\(1 \\times 4 = 4\\). But the printed solution evaluates \\(2^2\\) as 8 — i.e. as \\(2^3\\) — giving \\((8-3)(4) = 20\\). Either the stem should read \\(y^3 - 3\\) (making the printed answer 20 correct) or the printed answer should be 4. Transcribed exactly as printed. Separately, the second line of the solution prints a mismatched delimiter, '(y^2 − 3) [y + 2]', opening a square bracket for the second factor."
+  },
+  {
+    "ref": "7.1.7 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "EASY",
+    "stem": "Evaluate \\(\\lim_{x \\to 3} \\left( \\dfrac{\\sqrt{6 + x} - \\sqrt{7 - x}}{x} \\right)\\)",
+    "solution": "[Textbook error, answer-affecting: the book's final step prints \\(\\dfrac{3-2}{3} = \\dfrac{1}{2}\\). Every line before it is correct — \\(\\sqrt{9} - \\sqrt{4} = 1\\) over \\(3\\) — so the value is \\(\\dfrac{1}{3}\\), not \\(\\dfrac{1}{2}\\). The corrected value is given above.]\n\n\\(\\lim_{x \\to 3} \\left( \\dfrac{\\sqrt{6 + x} - \\sqrt{7 - x}}{x} \\right) = \\dfrac{\\lim_{x \\to 3} \\left( \\sqrt{6 + x} \\right) - \\lim_{x \\to 3} \\left( \\sqrt{7 - x} \\right)}{\\lim_{x \\to 3} (x)}\\)\n\n\\(= \\dfrac{\\sqrt{6 + 3} - \\sqrt{7 - 3}}{3}\\)\n\n\\(= \\dfrac{\\sqrt{9} - \\sqrt{4}}{3} = \\dfrac{3 - 2}{3} = \\dfrac{1}{3}\\)",
+    "_note": "The book's final step prints \\(\\frac{3-2}{3} = \\frac{1}{2}\\); the value of \\(\\frac{3-2}{3}\\) is \\(\\frac{1}{3}\\), not \\(\\frac{1}{2}\\). Transcribed as printed."
+  },
+  {
+    "ref": "7.1.7 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate \\(\\lim_{x \\to 1} \\left( \\dfrac{\\dfrac{1}{x} - 1}{x - 1} \\right)\\)",
+    "solution": "\\(\\lim_{x \\to 1} \\left( \\dfrac{\\dfrac{1}{x} - 1}{x - 1} \\right) = \\lim_{x \\to 1} \\left( \\dfrac{\\dfrac{1 - x}{x}}{x - 1} \\right)\\)\n\n\\(= \\lim_{x \\to 1} \\left[ \\dfrac{(1 - x)}{(x - 1) \\times x} \\right]\\)\n\n\\(= \\lim_{x \\to 1} \\left[ \\dfrac{-(x - 1)}{(x - 1) \\times x} \\right]\\)\n\n\\(= \\lim_{x \\to 1} \\left[ \\dfrac{-1}{x} \\right]\\)  \\(\\left[ \\text{As } x \\to 1,\\ x - 1 \\ne 0 \\right]\\)\n\n\\(= -\\lim_{x \\to 1} \\left[ \\dfrac{1}{x} \\right] = -\\dfrac{1}{1}\\)\n\n\\(= -1\\)"
+  },
+  {
+    "ref": "7.1.7 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Definition of a Limit and One-Sided Limits",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the limit of the following function as \\(x\\) tends to 3 if\n\n\\(f(x) = \\begin{cases} x^2 + x + 1, & 2 \\le x \\le 3 \\\\ 2x + 1, & 3 < x \\le 4 \\end{cases}\\)",
+    "solution": "As \\(f(x)\\) is defined seperately for \\(x \\le 3\\) and \\(x > 3\\), we have to find left hand limit (when \\(x \\le 3\\)) and right hand limit (when \\(x > 3\\)) to discuss the existance of limit of \\(f(x)\\) as \\(x \\to 3\\).\n\nFor the interval \\(2 \\le x \\le 3\\); \\(f(x) = x^2 + x + 1\\)\n\n\\(\\therefore\\ \\lim_{x \\to 3^-} f(x) = \\lim_{x \\to 3^-} (x^2 + x + 1) = (3)^2 + 3 + 1\\)\n\n\\(= 9 + 3 + 1 = 13\\)   -----(I)\n\nSimilarly for the interval \\(3 < x \\le 4\\); \\(f(x) = 2x + 1\\)\n\n\\(\\lim_{x \\to 3^+} f(x) = \\lim_{x \\to 3^+} (2x + 1) = (2 \\times 3) + 1\\)\n\n\\(= 6 + 1 = 7\\)   -----(II)\n\nFrom (I) and (II), \\(\\lim_{x \\to 3^-} f(x) \\ne \\lim_{x \\to 3^+} f(x)\\)\n\n\\(\\therefore\\ \\lim_{x \\to 3} f(x)\\) does not exist.",
+    "_note": "The book prints 'seperately' and 'existance'; transcribed as printed."
+  },
+  {
+    "ref": "7.1.7 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Definition of a Limit and One-Sided Limits",
+    "difficulty": "MODERATE",
+    "stem": "For a given \\(\\varepsilon > 0\\), find \\(\\delta > 0\\) such that whenever \\(|x - a| < \\delta\\), we have \\(|f(x) - l| < \\varepsilon\\) so that \\(\\lim_{x \\to 1} (4x + 3) = 7\\)",
+    "solution": "We want to find \\(\\delta\\) so that \\(\\lim_{x \\to 1} (4x + 3) = 7\\)\n\nHere \\(a = 1\\), \\(l = 7\\) and \\(f(x) = 4x + 3\\)\n\nConsider \\(\\varepsilon > 0\\) and \\(|f(x) - l| < \\varepsilon\\)\n\n\\(|(4x + 3) - 7| < \\varepsilon\\)\n\nif \\(|(4x - 4)| < \\varepsilon\\)\n\ni.e. if \\(|4(x - 1)| < \\varepsilon\\)\n\ni.e. if \\(|x - 1| < \\dfrac{\\varepsilon}{4}\\)\n\nWe can have \\(\\delta \\le \\dfrac{\\varepsilon}{4}\\) so that \\(|(x - 1)| < \\delta \\Rightarrow |f(x) - 7| < \\varepsilon\\)"
+  },
+  {
+    "ref": "7.1.8 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "EASY",
+    "stem": "Evaluate \\(\\lim_{x \\to 5} \\left( \\dfrac{x^4 - 625}{x - 5} \\right)\\)",
+    "solution": "\\(\\lim_{x \\to 5} \\left( \\dfrac{x^4 - 625}{x - 5} \\right) = \\lim_{x \\to 5} \\left( \\dfrac{x^4 - 5^4}{x - 5} \\right)\\)\n\n\\(= 4(5)^{4-1}\\)  \\(\\ldots \\left[ \\because \\lim_{x \\to a} \\dfrac{x^n - a^n}{x - a} = na^{n-1} \\right]\\)\n\n\\(= 4(125) = 500\\)"
+  },
+  {
+    "ref": "7.1.8 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate \\(\\lim_{x \\to 2} \\left( \\dfrac{x^7 - 128}{x^5 - 32} \\right)\\)",
+    "solution": "[Textbook misprint: the compound-fraction step of the printed solution is labelled \\(\\lim_{x \\to 5}\\) where it must be \\(\\lim_{x \\to 2}\\) — every other line of the example, and its own bracketed remark, use \\(x \\to 2\\). The value \\(\\frac{28}{5}\\) is correct.]\n\n\\(\\lim_{x \\to 2} \\left( \\dfrac{x^7 - 128}{x^5 - 32} \\right) = \\lim_{x \\to 2} \\left( \\dfrac{x^7 - 2^7}{x^5 - 2^5} \\right)\\)\n\n\\(= \\lim_{x \\to 2} \\left( \\dfrac{\\dfrac{x^7 - 2^7}{x - 2}}{\\dfrac{x^5 - 2^5}{x - 2}} \\right)\\)  \\(\\ldots \\left[ \\text{As } x \\to 2,\\ x - 2 \\ne 0 \\right]\\)\n\n\\(= \\dfrac{7(2)^6}{5(2)^4}\\)  \\(\\ldots \\left[ \\because \\lim_{x \\to a} \\dfrac{x^n - a^n}{x - a} = na^{n-1} \\right]\\)\n\n\\(= \\dfrac{7(2)^2}{5}\\)\n\n\\(= \\dfrac{28}{5}\\)",
+    "_note": "Misprint in the printed solution: the third line (the compound-fraction step) is labelled \\(\\lim_{x \\to 5}\\) where it must be \\(\\lim_{x \\to 2}\\) — every other line of the example, and its own bracketed remark 'As x→2, x − 2 ≠ 0', use x→2. The value 28/5 is correct."
+  },
+  {
+    "ref": "7.1.8 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\lim_{x \\to 4} \\left[ \\dfrac{x^n - 4^n}{x - 4} \\right] = 48\\) and \\(n \\in N\\), find \\(n\\).",
+    "solution": "Given \\(\\lim_{x \\to 4} \\left[ \\dfrac{x^n - 4^n}{x - 4} \\right] = 48\\)\n\n\\(\\therefore\\ n(4)^{n-1} = 48\\)\n\n\\(\\therefore\\ n(4)^{n-1} = 3(4)^{3-1}\\)\n\n\\(\\therefore\\ n = 3\\)  \\(\\ldots\\) by comparing"
+  },
+  {
+    "ref": "7.1.8 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "HARD",
+    "stem": "Evaluate \\(\\lim_{x \\to 1} \\left[ \\dfrac{2x - 2}{\\sqrt[3]{26 + x} - 3} \\right]\\)",
+    "solution": "[Textbook misprint: the step \\(\\lim\\left[\\dfrac{2\\left(t^3 - 3^3\\right)}{t - 3}\\right]\\) is labelled \\(x \\to 3\\) where it must be \\(t \\to 3\\); the expression contains no \\(x\\), and the line immediately below correctly reads \\(t \\to 3\\). The value \\(54\\) is correct.]\n\nPut \\(26 + x = t^3\\), \\(\\therefore x = t^3 - 26\\)\n\nAs \\(x \\to 1\\), \\(t \\to 3\\)\n\n\\(\\therefore\\ \\lim_{x \\to 1} \\left[ \\dfrac{2x - 2}{\\sqrt[3]{26 + x} - 3} \\right] = \\lim_{t \\to 3} \\left[ \\dfrac{2(t^3 - 26) - 2}{\\sqrt[3]{t^3} - 3} \\right]\\)\n\n\\(= \\lim_{t \\to 3} \\left[ \\dfrac{2(t^3 - 3^3)}{t - 3} \\right]\\)\n\n\\(= 2 \\lim_{t \\to 3} \\left[ \\dfrac{t^3 - 3^3}{t - 3} \\right]\\)\n\n\\(= 2 \\times 3(3)^{3-1}\\)\n\n\\(= 54\\)",
+    "_note": "Misprint in the printed solution: the step \\(\\lim \\left[ \\frac{2(t^3-3^3)}{t-3} \\right]\\) is labelled \\(x \\to 3\\) where it must be \\(t \\to 3\\) — the expression contains no x at that point, and the line immediately below correctly reads \\(t \\to 3\\). Value 54 is correct."
+  },
+  {
+    "ref": "Ex 7.1 I Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "EASY",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.1 I",
+    "stem": "\\(\\lim_{z \\to -3} \\left[ \\dfrac{\\sqrt{z + 6}}{z} \\right]\\)"
+  },
+  {
+    "ref": "Ex 7.1 I Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.1 I",
+    "stem": "\\(\\lim_{y \\to -3} \\left[ \\dfrac{y^5 + 243}{y^3 + 27} \\right]\\)"
+  },
+  {
+    "ref": "Ex 7.1 I Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.1 I",
+    "stem": "\\(\\lim_{z \\to -5} \\left[ \\dfrac{\\left( \\dfrac{1}{z} + \\dfrac{1}{5} \\right)}{z + 5} \\right]\\)"
+  },
+  {
+    "ref": "Ex 7.1 II Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "EASY",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.1 II",
+    "stem": "\\(\\lim_{x \\to 3} \\left[ \\dfrac{\\sqrt{2x + 6}}{x} \\right]\\)",
+    "_note": "The book prints a stray leading '=' before the limit sign ('1.  = lim …'), a typesetting artefact left over from a worked line; there is nothing for it to equate. Omitted here so the stem is well-formed.",
+    "solution": "[Textbook misprint: the item is printed with a stray leading \\(=\\) before the limit sign, a typesetting artefact with nothing on its left to equate. Omitted above so the question is well-formed.]"
+  },
+  {
+    "ref": "Ex 7.1 II Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.1 II",
+    "stem": "\\(\\lim_{x \\to 2} \\left[ \\dfrac{x^{-3} - 2^{-3}}{x - 2} \\right]\\)"
+  },
+  {
+    "ref": "Ex 7.1 II Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.1 II",
+    "stem": "\\(\\lim_{x \\to 5} \\left[ \\dfrac{x^3 - 125}{x^5 - 3125} \\right]\\)"
+  },
+  {
+    "ref": "Ex 7.1 II Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.1 II",
+    "stem": "If \\(\\lim_{x \\to 1} \\left[ \\dfrac{x^4 - 1}{x - 1} \\right] = \\lim_{x \\to a} \\left[ \\dfrac{x^3 - a^3}{x - a} \\right]\\), find all possible values of \\(a\\)."
+  },
+  {
+    "ref": "Ex 7.1 III Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "HARD",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.1 III",
+    "stem": "\\(\\lim_{x \\to 1} \\left[ \\dfrac{x + x^2 + x^3 + \\ldots\\ldots\\ldots + x^n - n}{x - 1} \\right]\\)"
+  },
+  {
+    "ref": "Ex 7.1 III Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.1 III",
+    "stem": "\\(\\lim_{x \\to 7} \\left[ \\dfrac{\\left( \\sqrt[3]{x} - \\sqrt[3]{7} \\right)\\left( \\sqrt[3]{x} + \\sqrt[3]{7} \\right)}{x - 7} \\right]\\)"
+  },
+  {
+    "ref": "Ex 7.1 III Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.1 III",
+    "stem": "If \\(\\lim_{x \\to 5} \\left[ \\dfrac{x^k - 5^k}{x - 5} \\right] = 500\\), find all possible values of \\(k\\)."
+  },
+  {
+    "ref": "Ex 7.1 III Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.1 III",
+    "stem": "\\(\\lim_{x \\to 0} \\left[ \\dfrac{(1 - x)^8 - 1}{(1 - x)^2 - 1} \\right]\\)"
+  },
+  {
+    "ref": "Ex 7.1 III Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.1 III",
+    "stem": "\\(\\lim_{x \\to 0} \\left[ \\dfrac{\\sqrt[3]{1 + x} - \\sqrt{1 + x}}{x} \\right]\\)"
+  },
+  {
+    "ref": "Ex 7.1 III Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "HARD",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.1 III",
+    "stem": "\\(\\lim_{y \\to 1} \\left[ \\dfrac{2y - 2}{\\sqrt[3]{7 + y} - 2} \\right]\\)"
+  },
+  {
+    "ref": "Ex 7.1 III Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.1 III",
+    "stem": "\\(\\lim_{z \\to a} \\left[ \\dfrac{(z + 2)^{\\frac{3}{2}} - (a + 2)^{\\frac{3}{2}}}{z - a} \\right]\\)"
+  },
+  {
+    "ref": "Ex 7.1 III Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "HARD",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.1 III",
+    "stem": "\\(\\lim_{x \\to 7} \\left[ \\dfrac{x^3 - 343}{\\sqrt{x} - \\sqrt{7}} \\right]\\)"
+  },
+  {
+    "ref": "Ex 7.1 III Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "HARD",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.1 III",
+    "stem": "\\(\\lim_{x \\to 1} \\left( \\dfrac{x + x^3 + x^5 + \\ldots + x^{2n-1} - n}{x - 1} \\right)\\)"
+  },
+  {
+    "ref": "Ex 7.1 IV Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definition of a Limit and One-Sided Limits",
+    "difficulty": "MODERATE",
+    "context": "In the following examples, given \\(\\varepsilon > 0\\), find a \\(\\delta > 0\\) such that whenever \\(|x - a| < \\delta\\), we must have \\(|f(x) - l| < \\varepsilon\\)",
+    "setLabel": "Ex 7.1 IV",
+    "stem": "\\(\\lim_{x \\to 2} (2x + 3) = 7\\)"
+  },
+  {
+    "ref": "Ex 7.1 IV Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definition of a Limit and One-Sided Limits",
+    "difficulty": "MODERATE",
+    "context": "In the following examples, given \\(\\varepsilon > 0\\), find a \\(\\delta > 0\\) such that whenever \\(|x - a| < \\delta\\), we must have \\(|f(x) - l| < \\varepsilon\\)",
+    "setLabel": "Ex 7.1 IV",
+    "stem": "\\(\\lim_{x \\to -3} (3x + 2) = -7\\)"
+  },
+  {
+    "ref": "Ex 7.1 IV Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definition of a Limit and One-Sided Limits",
+    "difficulty": "MODERATE",
+    "context": "In the following examples, given \\(\\varepsilon > 0\\), find a \\(\\delta > 0\\) such that whenever \\(|x - a| < \\delta\\), we must have \\(|f(x) - l| < \\varepsilon\\)",
+    "setLabel": "Ex 7.1 IV",
+    "stem": "\\(\\lim_{x \\to 2} (x^2 - 1) = 3\\)"
+  },
+  {
+    "ref": "Ex 7.1 IV Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definition of a Limit and One-Sided Limits",
+    "difficulty": "MODERATE",
+    "context": "In the following examples, given \\(\\varepsilon > 0\\), find a \\(\\delta > 0\\) such that whenever \\(|x - a| < \\delta\\), we must have \\(|f(x) - l| < \\varepsilon\\)",
+    "setLabel": "Ex 7.1 IV",
+    "stem": "\\(\\lim_{x \\to 1} (x^2 + x + 1) = 3\\)"
+  }
+]

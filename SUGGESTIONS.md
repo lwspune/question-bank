@@ -41,6 +41,36 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-08-16
+
+### Measure whether any SHIPPED chapter has already lost errata brackets — the 5a defect is not new, only newly understood
+
+2026-08-16 found that `apply-errata.ts` mirrors an EXERCISE row's `[Textbook…]` bracket into the transcription *band* fragment, which `apply-solutions.ts` does not read — so any `apply-solutions` run **after** an errata pass silently rewrites those rows without the bracket. It destroyed 9 of 17 on `probability-11` and was repaired the same session. Nothing establishes that earlier runs were immune: the same script shape exists in `scripts/stateboard` (Class 12, ~76 brackets), `scripts/mh-sb-9`, `scripts/mh-ssc-10` and `scripts/ncert`, and any chapter whose author looped back to fix a solution after writing errata would have hit it.
+
+**Why:** the loss is invisible to every gate — `board:lint`, `audit:text`, `audit:keys` and `audit:omml` all pass with the brackets gone, because a missing erratum is not malformed, it is absent. So a shipped chapter can be carrying a book defect with no disclosure and nothing will ever say so. This is a **measurement, not a rework** — it needs no permission and no 360; only if it finds gaps does the repair become a backfill candidate (and the repair is trivial, since `apply-errata` is idempotent).
+
+**How to apply:** for every `<id>.errata.json` in `scripts/{stateboard,mh-sb-9,mh-sb-11,mh-ssc-10,mh-ssc-10-text,ncert,mh-hsc-12-pyq}/data/`, count its entries and compare against `select count(*) from questions where source_file = '<sourceFile>' and solution like '[Textbook%'`. Equal = clean. A shortfall names exactly which refs to re-apply. Worth wiring the same comparison into `flip-public.ts` as a pre-flip warning, so the class cannot ship again — that is a ~15-line check and the only mechanical defence that exists for it.
+
+### ~~Port the `--answers` flag from `scripts/mh-sb-9/render.ts` to the mh-sb-11 (and stateboard) copies~~ — **DONE 2026-08-16 (mh-sb-11 only)**
+
+Shipped in `scripts/mh-sb-11/render.ts`: `--answers` reads `answersPdf`/`answerPages` and writes to `out/_answers/<id>/`, additively (only the chapter render `rmSync`s its directory), refusing loudly when a chapter has no answers block configured. The interim warning is gone from the pipeline README, replaced by the command. **Still open for `scripts/stateboard/`** — that copy is untouched.
+
+`scripts/mh-sb-9/render.ts` takes `--answers` and rasterises a chapter's block of the end-of-book ANSWERS section into `out/_answers/<id>/`. The `mh-sb-11` copy has no such flag, so all four chapters this session rendered their answer pages with a hand-written one-off PyMuPDF call. The README now documents the gap (with the warning that re-running plain `render.ts <id>` rmSync's the chapter PNGs that in-flight transcription agents are reading) rather than closing it, because it is a shipped script and the run was mid-flight.
+
+**Why:** the step-6 answer-key cross-check is the mandatory gate for every chapter of these books, and its input is currently produced by retyping a command. That is a per-chapter opportunity to render the wrong page range, or to reach for `render.ts <id>` by reflex and destroy the working set. Eleven Class-11 chapters remain, plus whatever Class-12 and Class-9 work follows.
+
+**How to apply:** copy the `--answers` branch from `scripts/mh-sb-9/render.ts`, reading `answersPdf` + `answerPages` from the chapter config and writing to `out/_answers/<id>/` (a SIBLING of `out/<id>/`, never inside it). Make the flag refuse when a chapter has no `answersPdf` — the humanities chapters legitimately have none, and a silent no-op there would read as "the answers are missing". Then delete the interim warning from `scripts/mh-sb-11/README.md`.
+
+### Lint for merged sub-item solved rows — the convention is uniform only because an agent happened to ask
+
+The shipped convention across every completed chapter of these textbook pipelines is that a solved example with printed sub-items `i)/ii)/iii)` becomes ONE ROW PER SUB-ITEM sharing `context` + `setLabel`. On 2026-08-16 one transcription band instead merged all sub-items inline into a single row (three examples, eleven real questions), citing a shipped precedent that a one-line query disproved — across five completed chapters, *every* sub-item ref carries a `setLabel`. It surfaced only because a **different** band flagged the divergence and asked rather than silently conforming; nothing mechanical would have caught it.
+
+**Why:** a merged row is a worse artifact than the split — `/board` renders three questions as one, a student cannot attempt them separately, and the row's single `difficulty` and `subtopic` describe a set rather than a question. It is also invisible downstream: the rows commit, counts reconcile, and every audit passes. Relying on one agent noticing another's inconsistency is not a control.
+
+**How to apply:** add a check to `merge.ts` (or a standalone lint alongside `board:lint`) that flags any `bucket:"solved"` row whose `stem` contains an inline sub-item marker — `(^|\s)i\)\s`, `ii)`, `iii)` — while carrying no `setLabel`. Triage, not a gate, since a stem could legitimately quote a list; but it turns a convention into something checkable. Pin the three `trigonometry-2-11` rows that were re-split as regression fixtures.
+
+---
+
 ## 2026-08-14
 
 ### Stop `loadPrincipleStats` swallowing its error — the id count is the lesser problem

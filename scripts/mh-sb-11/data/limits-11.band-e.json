@@ -1,0 +1,120 @@
+[
+  {
+    "ref": "7.7 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Limits at Infinity and Infinite Limits",
+    "difficulty": "EASY",
+    "stem": "Evaluate : \\(\\lim_{x \\to \\infty}\\left[\\frac{ax+b}{cx+d}\\right]\\)",
+    "solution": "\\(\\lim_{x \\to \\infty}\\left[\\frac{ax+b}{cx+d}\\right]\\)\n\n\\(= \\lim_{x \\to \\infty}\\left[\\dfrac{\\dfrac{ax+b}{x}}{\\dfrac{cx+d}{x}}\\right]\\)\n\n\\(= \\dfrac{\\lim_{x \\to \\infty}\\left[a + \\dfrac{b}{x}\\right]}{\\lim_{x \\to \\infty}\\left[c + \\dfrac{d}{x}\\right]}\\)\n\n\\(= \\dfrac{a+0}{c+0}\\)  --- as \\(x \\to \\infty\\), \\(\\dfrac{1}{x} \\to 0\\)\n\n\\(= \\dfrac{a}{c}\\)"
+  },
+  {
+    "ref": "7.7 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Limits at Infinity and Infinite Limits",
+    "difficulty": "EASY",
+    "stem": "Evaluate : \\(\\lim_{x \\to \\infty}\\left[\\frac{10x^2+5x+3}{5x^2-3x+8}\\right]\\)",
+    "solution": "\\(\\lim_{x \\to \\infty}\\left[\\frac{10x^2+5x+3}{5x^2-3x+8}\\right]\\)\n\nDivide by \\(x^2\\) to get finite limits of the numerator as well as of the denominator.\n\n\\(= \\lim_{x \\to \\infty}\\left[\\dfrac{\\dfrac{10x^2+5x+3}{x^2}}{\\dfrac{5x^2-3x+8}{x^2}}\\right]\\)\n\n\\(= \\dfrac{\\lim_{x \\to \\infty}\\left[10 + \\dfrac{5}{x} + \\dfrac{3}{x^2}\\right]}{\\lim_{x \\to \\infty}\\left[5 - \\dfrac{3}{x} + \\dfrac{8}{x^2}\\right]}\\)\n\n\\(= \\dfrac{10+0+0}{5-0+0}\\)   \\(\\left(\\because \\lim_{x \\to \\infty}\\dfrac{1}{x} = 0\\right)\\)\n\n\\(= \\dfrac{10}{5}\\)\n\n\\(= 2\\)"
+  },
+  {
+    "ref": "7.7 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Limits at Infinity and Infinite Limits",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate : \\(\\lim_{x \\to \\infty}\\left[\\sqrt{x^2+3x} - x\\right]\\)",
+    "solution": "\\(\\lim_{x \\to \\infty}\\left[\\sqrt{x^2+3x} - x\\right]\\)\n\n\\(= \\lim_{x \\to \\infty}\\left[\\dfrac{(\\sqrt{x^2+3x} - x)(\\sqrt{x^2+3x} + x)}{(\\sqrt{x^2+3x} + x)}\\right]\\)\n\n\\(= \\lim_{x \\to \\infty}\\left[\\dfrac{x^2+3x-x^2}{\\sqrt{x^2+3x} + x}\\right]\\)\n\n\\(= \\lim_{x \\to \\infty}\\left[\\dfrac{3x}{\\sqrt{x^2+3x} + x}\\right]\\)\n\n\\(= \\lim_{x \\to \\infty}\\left[\\dfrac{3x}{x\\sqrt{1 + \\dfrac{3}{x}} + x}\\right]\\)\n\n\\(= \\lim_{x \\to \\infty}\\left[\\dfrac{3}{\\sqrt{1 + \\dfrac{3}{x}} + 1}\\right]\\)\n\n\\(= \\dfrac{3}{\\sqrt{1+0} + 1}\\)   \\(\\left(\\because \\lim_{x \\to \\infty}\\dfrac{1}{x} = 0\\right)\\)\n\n\\(= \\dfrac{3}{1+1}\\)\n\n\\(= \\dfrac{3}{2}\\)"
+  },
+
+  {
+    "ref": "Ex 7.7 I Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits at Infinity and Infinite Limits",
+    "difficulty": "EASY",
+    "stem": "Evaluate the following : \\(\\lim_{x \\to \\infty}\\left[\\frac{ax^3 + bx^2 + cx + d}{ex^3 + fx^2 + gx + h}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.7 I Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits at Infinity and Infinite Limits",
+    "difficulty": "EASY",
+    "stem": "Evaluate the following : \\(\\lim_{x \\to \\infty}\\left[\\frac{x^3 + 3x + 2}{(x+4)(x-6)(x-3)}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.7 I Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits at Infinity and Infinite Limits",
+    "difficulty": "EASY",
+    "stem": "Evaluate the following : \\(\\lim_{x \\to \\infty}\\left[\\frac{7x^2 + 5x - 3}{8x^2 - 2x + 7}\\right]\\)"
+  },
+
+  {
+    "ref": "Ex 7.7 II Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits at Infinity and Infinite Limits",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the following : \\(\\lim_{x \\to \\infty}\\left[\\frac{7x^2 + 2x - 3}{\\sqrt{x^4 + x + 2}}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.7 II Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits at Infinity and Infinite Limits",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the following : \\(\\lim_{x \\to \\infty}\\left[\\sqrt{x^2 + 4x + 16} - \\sqrt{x^2 + 16}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.7 II Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits at Infinity and Infinite Limits",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the following : \\(\\lim_{x \\to \\infty}\\left[\\sqrt{x^4 + 4x^2} - x^2\\right]\\)"
+  },
+
+  {
+    "ref": "Ex 7.7 III Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits at Infinity and Infinite Limits",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the following : \\(\\lim_{x \\to \\infty}\\left[\\frac{(3x^2+4)(4x^2-6)(5x^2+2)}{4x^6 + 2x^4 - 1}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.7 III Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits at Infinity and Infinite Limits",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the following : \\(\\lim_{x \\to \\infty}\\left[\\frac{(3x-4)^3 (4x+3)^4}{(3x+2)^7}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.7 III Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits at Infinity and Infinite Limits",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the following : \\(\\lim_{x \\to \\infty}\\left[\\sqrt{x}\\left(\\sqrt{x+1} - \\sqrt{x}\\right)\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.7 III Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits at Infinity and Infinite Limits",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate the following : \\(\\lim_{x \\to \\infty}\\left[\\frac{(2x-1)^{20}(3x-1)^{30}}{(2x+1)^{50}}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.7 III Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits at Infinity and Infinite Limits",
+    "difficulty": "HARD",
+    "stem": "Evaluate the following : \\(\\lim_{x \\to \\infty}\\left[\\frac{\\sqrt{x^2+5} - \\sqrt{x^2-3}}{\\sqrt{x^2+3} - \\sqrt{x^2+1}}\\right]\\)"
+  }
+]

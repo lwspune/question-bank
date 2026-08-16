@@ -1,0 +1,82 @@
+[
+  {
+    "id": "da91ea05-0cf7-4c9d-8307-1f3b06beadd2",
+    "ref": "Ex 3.1 Q1",
+    "solution": "Only one person is chosen and there is no ordering, so this is a selection. \"A girl or a boy\" are mutually exclusive alternatives, so the addition principle applies. Number of ways \\(= 30 + 20 = 50\\). The monitor can be selected in 50 ways."
+  },
+  {
+    "id": "b3ee26c0-a62c-4830-a4a2-e911644b6157",
+    "ref": "Ex 3.1 Q2",
+    "solution": "The two flags occupy an upper and a lower position, so the two flags are ORDERED (upper-red/lower-blue differs from upper-blue/lower-red). Only one flag of each colour exists, so no repetition. Upper position: 4 choices; lower position: 3 of the remaining flags. By the multiplication principle, number of signals \\(= 4 \\times 3 = 12\\). 12 different signals can be generated."
+  },
+  {
+    "id": "a3e065c3-dd21-4dd7-bf0e-fa90569edd7c",
+    "ref": "Ex 3.1 Q3(i)",
+    "solution": "SPACE has 5 distinct letters S, P, A, C, E. A two-letter \"word\" is an ordered pair of places, and here repetition is allowed, so each place can be filled independently. First letter: 5 ways; second letter: 5 ways. Number of words \\(= 5 \\times 5 = 25\\). 25 two-letter words."
+  },
+  {
+    "id": "bc363807-a050-4261-8644-589bb7c5389d",
+    "ref": "Ex 3.1 Q3(ii)",
+    "solution": "The two places are ordered, but now a letter once used cannot be repeated. First letter: 5 ways; second letter: the 4 remaining letters. Number of words \\(= 5 \\times 4 = 20\\). 20 two-letter words."
+  },
+  {
+    "id": "22f33bd2-5665-4e96-83bb-f4d370fe1d3f",
+    "ref": "Ex 3.1 Q4(i)",
+    "solution": "The three places (hundreds, tens, units) are ordered and repetition is allowed. The hundreds place cannot be 0, or the number is not a three-digit number, so it has 4 choices from 1, 3, 5, 6. The tens and units places may take any of the 5 digits. Number of numbers \\(= 4 \\times 5 \\times 5 = 100\\). 100 three-digit numbers."
+  },
+  {
+    "id": "3ca5bf26-1bf7-4904-bfe9-abf6db4b3404",
+    "ref": "Ex 3.1 Q4(ii)",
+    "solution": "Ordered places, no repetition. Hundreds place: 4 choices (any of 1, 3, 5, 6, since 0 is not allowed as the leading digit). Tens place: 4 of the 5 digits remain, and 0 is now permitted. Units place: 3 digits remain. Number of numbers \\(= 4 \\times 4 \\times 3 = 48\\). 48 three-digit numbers."
+  },
+  {
+    "id": "b45b727d-1566-4d9d-81c8-1fc45ed4098b",
+    "ref": "Ex 3.1 Q5",
+    "solution": "The three places are ordered, repetition is allowed, and none of the digits 2, 3, 4, 5, 6 is 0, so there is no leading-digit restriction. Each of the three places can be filled in 5 ways. Number of numbers \\(= 5 \\times 5 \\times 5 = 5^{3} = 125\\). 125 three-digit numbers."
+  },
+  {
+    "id": "d62b85ad-88c1-4c16-be78-045c2957e086",
+    "ref": "Ex 3.1 Q6",
+    "solution": "Each ring is set independently and its letter may repeat a letter on another ring, so the settings are ordered triples with repetition allowed. Total number of settings \\(= 5 \\times 5 \\times 5 = 125\\). Exactly one setting opens the lock, so in the worst case every other setting is tried first. Maximum number of false trials \\(= 125 - 1 = 124\\). 124 false trials."
+  },
+  {
+    "id": "1220bf61-10cd-4229-a638-302d65bb2c98",
+    "ref": "Ex 3.1 Q7",
+    "solution": "Each of the 5 questions is answered independently in 2 ways (true or false), so the number of possible answer patterns is \\(2^{5} = 32\\). Every student's pattern is different, so the number of students is at most the number of patterns; and no student has the all-correct pattern, so that one pattern is unused. Number of students \\(= 32 - 1 = 31\\). 31 students appeared."
+  },
+  {
+    "id": "64cc0bcc-b06c-4bfe-a835-c17eb14e6258",
+    "ref": "Ex 3.1 Q8",
+    "solution": "Numbers between 100 and 1000 are exactly the three-digit numbers. The units digit is fixed as 4, so it contributes 1 way. The hundreds digit can be any of \\(1, 2, \\ldots, 9\\), i.e. 9 ways; the tens digit can be any of \\(0, 1, \\ldots, 9\\), i.e. 10 ways. Number of such numbers \\(= 9 \\times 10 \\times 1 = 90\\). 90 numbers."
+  },
+  {
+    "id": "7a3e2ef8-e80c-4932-bc19-82c06e4e4c37",
+    "ref": "Ex 3.1 Q9",
+    "solution": "These are three-digit numbers, and the digit 7 must occupy exactly one of the three places, the other two places taking any digit other than 7. The three cases are mutually exclusive, so add them.\nCase 1, 7 in the hundreds place: tens and units each have 9 choices (all digits except 7), giving \\(9 \\times 9 = 81\\).\nCase 2, 7 in the tens place: hundreds is from 1 to 9 excluding 7, i.e. 8 choices; units has 9 choices, giving \\(8 \\times 9 = 72\\).\nCase 3, 7 in the units place: hundreds 8 choices, tens 9 choices, giving \\(8 \\times 9 = 72\\).\nTotal \\(= 81 + 72 + 72 = 225\\). 225 numbers."
+  },
+  {
+    "id": "5d975f72-4299-434d-93c3-836f578d789e",
+    "ref": "Ex 3.1 Q10",
+    "solution": "A four-digit number is to be formed from the four digits 2, 3, 4, 7 without repetition, so all four digits are used and the numbers are simply the arrangements of these four distinct digits. Total number of such numbers \\(= 4! = 24\\). The largest arrangement is 7432 itself, so every one of these 24 numbers does not exceed 7432. Number of numbers \\(= 24\\)."
+  },
+  {
+    "id": "2fc713d3-4fd1-4255-bde6-ad2e06f33dbc",
+    "ref": "Ex 3.1 Q11",
+    "solution": "Numbers of any length can be formed from 2, 3, 4, 5, 6 without repetition, so consider each length separately; the digits are all distinct and the arrangements are ordered.\nOne-digit and two-digit numbers are at most 65, so none exceeds 400.\nThree-digit numbers exceeding 400 need the hundreds digit to be 4, 5 or 6, i.e. 3 choices, and then \\(4 \\times 3\\) ways for the remaining two places: \\(3 \\times 4 \\times 3 = 36\\).\nEvery four-digit number exceeds 400: \\(5 \\times 4 \\times 3 \\times 2 = 120\\).\nEvery five-digit number exceeds 400: \\(5! = 120\\).\nTotal \\(= 36 + 120 + 120 = 276\\). 276 numbers exceed 400."
+  },
+  {
+    "id": "c4039629-43a1-4a49-9287-a8329b447b83",
+    "ref": "Ex 3.1 Q12",
+    "solution": "The digits available are 0, 1, 2, 5, 7, 8 and repetition is allowed. A number strictly between 13 and 1000 has two or three digits.\nThree-digit numbers: the leading digit cannot be 0, so 5 choices, and the other two places have 6 choices each, giving \\(5 \\times 6 \\times 6 = 180\\). All of these lie between 100 and 999, hence all are counted.\nTwo-digit numbers: leading digit 5 choices, units digit 6 choices, giving \\(5 \\times 6 = 30\\). Of these, those not exceeding 13 are 10, 11 and 12 (13 itself cannot be formed, as 3 is not available), i.e. 3 numbers, which must be discarded: \\(30 - 3 = 27\\).\nTotal \\(= 180 + 27 = 207\\). 207 numbers."
+  },
+  {
+    "id": "19b47c96-4868-4ad2-a5b1-dd494892d480",
+    "ref": "Ex 3.1 Q13",
+    "solution": "The journey has two independent stages: choosing a gate, then choosing a staircase. Gate: 3 ways; staircase: 4 ways. By the multiplication principle, number of ways \\(= 3 \\times 4 = 12\\). 12 ways."
+  },
+  {
+    "id": "0ba84430-07eb-48b2-8744-0e7d928ef9aa",
+    "ref": "Ex 3.1 Q14",
+    "solution": "Five of the six digits 0, 1, 2, 3, 4, 5 are arranged with no repetition, and the number is divisible by 5, so the units digit is 0 or 5. These two cases are mutually exclusive.\nCase 1, units digit 0: the remaining four places are filled by 4 of the digits 1, 2, 3, 4, 5, none of which is 0, so there is no leading-digit restriction: \\(5 \\times 4 \\times 3 \\times 2 = 120\\).\nCase 2, units digit 5: the remaining four places take 4 of the digits 0, 1, 2, 3, 4, giving \\(5 \\times 4 \\times 3 \\times 2 = 120\\) arrangements, of which those beginning with 0 are not five-digit numbers and number \\(4 \\times 3 \\times 2 = 24\\); so \\(120 - 24 = 96\\).\nTotal \\(= 120 + 96 = 216\\). 216 numbers."
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "646d767b-e77a-4548-917f-ca970eae5a7f",
+    "ref": "Ex 7.5 I Q1",
+    "solution": "Put \\(x = \\frac{\\pi}{2} - h\\), so \\(h \\to 0\\) and \\(\\operatorname{cosec} x = \\frac{1}{\\cos h}\\).\n\\(\\lim_{h \\to 0}\\frac{\\frac{1}{\\cos h} - 1}{h^2} = \\lim_{h \\to 0}\\frac{1 - \\cos h}{h^2\\cos h} = \\lim_{h \\to 0}\\left[\\frac{2\\sin^2\\left(\\frac{h}{2}\\right)}{h^2}\\cdot\\frac{1}{\\cos h}\\right] = \\frac{1}{2}\\cdot 1\\)\n\\(\\therefore\\) the limit \\(= \\frac{1}{2}\\)"
+  },
+  {
+    "id": "e31eb4b1-1e40-45b9-b094-faa565340f48",
+    "ref": "Ex 7.5 I Q2",
+    "solution": "Divide numerator and denominator by \\(x - a\\) and use \\(\\lim_{x \\to a}\\frac{x^n - a^n}{x - a} = n\\,a^{n-1}\\).\n\\(\\lim_{x \\to a}\\frac{\\sin x - \\sin a}{\\sqrt[5]{x} - \\sqrt[5]{a}} = \\frac{\\lim_{x \\to a}\\frac{\\sin x - \\sin a}{x - a}}{\\lim_{x \\to a}\\frac{x^{\\frac{1}{5}} - a^{\\frac{1}{5}}}{x - a}} = \\frac{\\cos a}{\\frac{1}{5}a^{\\frac{1}{5} - 1}} = \\frac{\\cos a}{\\frac{1}{5}a^{-\\frac{4}{5}}}\\)\n\\(\\therefore\\) the limit \\(= 5a^{\\frac{4}{5}}\\cos a\\)"
+  },
+  {
+    "id": "e48816b0-c0ef-4ab3-a736-d883194f1222",
+    "ref": "Ex 7.5 I Q3",
+    "solution": "Put \\(x = \\pi + h\\), so \\(h \\to 0\\), \\(\\cos x = -\\cos h\\) and \\((\\pi - x)^2 = h^2\\). Rationalise the numerator.\n\\(\\lim_{h \\to 0}\\frac{\\sqrt{5 - \\cos h} - 2}{h^2} = \\lim_{h \\to 0}\\frac{(5 - \\cos h) - 4}{h^2\\left(\\sqrt{5 - \\cos h} + 2\\right)} = \\lim_{h \\to 0}\\frac{1 - \\cos h}{h^2}\\cdot\\frac{1}{\\sqrt{5 - \\cos h} + 2}\\)\n\\(= \\frac{1}{2}\\times\\frac{1}{2 + 2} = \\frac{1}{8}\\)\n\\(\\therefore\\) the limit \\(= \\frac{1}{8}\\)"
+  },
+  {
+    "id": "120255a4-32f7-400f-9f86-2447dbe2aaae",
+    "ref": "Ex 7.5 I Q4",
+    "solution": "Write \\(\\cos x - \\sqrt{3}\\sin x = 2\\left(\\frac{1}{2}\\cos x - \\frac{\\sqrt{3}}{2}\\sin x\\right) = 2\\cos\\left(x + \\frac{\\pi}{3}\\right)\\).\nPut \\(x = \\frac{\\pi}{6} + h\\), so \\(h \\to 0\\), \\(x + \\frac{\\pi}{3} = \\frac{\\pi}{2} + h\\) and \\(\\pi - 6x = -6h\\).\n\\(\\lim_{h \\to 0}\\frac{2\\cos\\left(\\frac{\\pi}{2} + h\\right)}{-6h} = \\lim_{h \\to 0}\\frac{-2\\sin h}{-6h} = \\frac{2}{6}\\)\n\\(\\therefore\\) the limit \\(= \\frac{1}{3}\\)"
+  },
+  {
+    "id": "f62adb31-59c7-45ac-8b7a-10c71d5073bb",
+    "ref": "Ex 7.5 I Q5",
+    "solution": "Put \\(x = 1 + h\\), so \\(h \\to 0\\). Then \\(1 - x^2 = -2h - h^2\\) and \\(\\sin(\\pi x) = \\sin(\\pi + \\pi h) = -\\sin(\\pi h)\\).\n\\(\\lim_{h \\to 0}\\frac{-h(2 + h)}{-\\sin(\\pi h)} = \\lim_{h \\to 0}\\left[\\frac{\\pi h}{\\sin(\\pi h)}\\cdot\\frac{2 + h}{\\pi}\\right] = 1 \\times \\frac{2}{\\pi}\\)\n\\(\\therefore\\) the limit \\(= \\frac{2}{\\pi}\\)"
+  },
+  {
+    "id": "31b37c1d-caef-4e08-929d-249bb95ed290",
+    "ref": "Ex 7.5 II Q1",
+    "solution": "Put \\(x = \\frac{\\pi}{6} + h\\), so \\(h \\to 0\\) and \\(\\pi - 6x = -6h\\).\n\\(2\\sin\\left(\\frac{\\pi}{6} + h\\right) - 1 = 2\\left(\\frac{1}{2}\\cos h + \\frac{\\sqrt{3}}{2}\\sin h\\right) - 1 = \\sqrt{3}\\sin h - (1 - \\cos h)\\)\n\\(\\lim_{h \\to 0}\\frac{\\sqrt{3}\\sin h - (1 - \\cos h)}{-6h} = \\lim_{h \\to 0}\\left[-\\frac{\\sqrt{3}}{6}\\cdot\\frac{\\sin h}{h} + \\frac{1}{6}\\cdot\\frac{1 - \\cos h}{h^2}\\cdot h\\right] = -\\frac{\\sqrt{3}}{6} + 0\\)\n\\(\\therefore\\) the limit \\(= -\\frac{\\sqrt{3}}{6} = -\\frac{1}{2\\sqrt{3}}\\)"
+  },
+  {
+    "id": "67f363e9-2e35-43b6-84d1-50328fb4b26b",
+    "ref": "Ex 7.5 II Q2",
+    "solution": "Write \\(\\cos x + \\sin x = \\sqrt{2}\\sin\\left(x + \\frac{\\pi}{4}\\right)\\). Put \\(x = \\frac{\\pi}{4} + h\\), so \\(h \\to 0\\), \\(x + \\frac{\\pi}{4} = \\frac{\\pi}{2} + h\\) and \\(4x - \\pi = 4h\\).\n\\(\\lim_{h \\to 0}\\frac{\\sqrt{2} - \\sqrt{2}\\cos h}{16h^2} = \\frac{\\sqrt{2}}{16}\\lim_{h \\to 0}\\frac{1 - \\cos h}{h^2} = \\frac{\\sqrt{2}}{16}\\times\\frac{1}{2} = \\frac{\\sqrt{2}}{32}\\)\n\\(\\therefore\\) the limit \\(= \\frac{1}{16\\sqrt{2}}\\)"
+  },
+  {
+    "id": "1247c65b-7874-4a8b-ba82-c7d9c33a8f80",
+    "ref": "Ex 7.5 II Q3",
+    "solution": "Write \\(\\sqrt{3}\\cos x + \\sin x = 2\\left(\\frac{\\sqrt{3}}{2}\\cos x + \\frac{1}{2}\\sin x\\right) = 2\\cos\\left(x - \\frac{\\pi}{6}\\right)\\).\nPut \\(x = \\frac{\\pi}{6} + h\\), so \\(h \\to 0\\) and \\(6x - \\pi = 6h\\).\n\\(\\lim_{h \\to 0}\\frac{2 - 2\\cos h}{36h^2} = \\frac{2}{36}\\lim_{h \\to 0}\\frac{1 - \\cos h}{h^2} = \\frac{1}{18}\\times\\frac{1}{2}\\)\n\\(\\therefore\\) the limit \\(= \\frac{1}{36}\\)"
+  },
+  {
+    "id": "f50109c9-7138-4080-87f1-c1160c008f63",
+    "ref": "Ex 7.5 II Q4",
+    "solution": "Put \\(\\sqrt{x} = t\\) and \\(\\sqrt{a} = c\\), so \\(x = t^2\\), \\(a = c^2\\) and \\(t \\to c\\).\n\\(\\lim_{t \\to c}\\frac{\\sin t - \\sin c}{t^2 - c^2} = \\lim_{t \\to c}\\left[\\frac{\\sin t - \\sin c}{t - c}\\cdot\\frac{1}{t + c}\\right] = \\cos c\\cdot\\frac{1}{2c}\\)\nReplacing \\(c\\) by \\(\\sqrt{a}\\),\n\\(\\therefore\\) the limit \\(= \\frac{\\cos\\sqrt{a}}{2\\sqrt{a}}\\)"
+  },
+  {
+    "id": "d8ec6d02-19a4-433b-901d-4c86fd7de0f4",
+    "ref": "Ex 7.5 II Q5",
+    "solution": "Put \\(x = \\frac{\\pi}{2} + h\\), so \\(h \\to 0\\) and \\((2x - \\pi)^3 = 8h^3\\).\nThen \\(\\cos x = -\\sin h\\) and \\(\\cos 3x = \\cos\\left(\\frac{3\\pi}{2} + 3h\\right) = \\sin 3h\\).\nNumerator \\(= \\sin 3h - 3\\sin h = (3\\sin h - 4\\sin^3 h) - 3\\sin h = -4\\sin^3 h\\).\n\\(\\lim_{h \\to 0}\\frac{-4\\sin^3 h}{8h^3} = -\\frac{1}{2}\\left(\\lim_{h \\to 0}\\frac{\\sin h}{h}\\right)^3 = -\\frac{1}{2}\\)\n\\(\\therefore\\) the limit \\(= -\\frac{1}{2}\\)"
+  }
+]

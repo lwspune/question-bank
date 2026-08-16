@@ -1,0 +1,382 @@
+[
+  {
+    "ref": "7.2 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate \\(\\lim_{z \\to 3}\\left[\\dfrac{z(2z-3)-9}{z^{2}-4z+3}\\right]\\)",
+    "solution": "If we substitute \\(z = 3\\) in numerator and denominator, we get \\(z(2z-3)-9 = 0\\) and \\(z^{2}-4z+3 = 0\\)\nSo \\((z-3)\\) is a factor in the numerator and denominator.\n\\(\\lim_{z \\to 3}\\left[\\dfrac{z(2z-3)-9}{z^{2}-4z+3}\\right] = \\lim_{z \\to 3}\\left[\\dfrac{2z^{2}-3z-9}{z^{2}-4z+3}\\right]\\)\n\\(= \\lim_{z \\to 3}\\left[\\dfrac{(z-3)(2z+3)}{(z-3)(z-1)}\\right]\\)\n\\(= \\lim_{z \\to 3}\\left[\\dfrac{(2z+3)}{(z-1)}\\right]\\) ...[As \\(z \\to 3\\), \\(z-3 \\ne 0\\)]\n\\(= \\dfrac{2(3)+3}{3-1}\\)\n\\(= \\dfrac{9}{2}\\)"
+  },
+  {
+    "ref": "7.2 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate \\(\\lim_{x \\to 4}\\left[\\dfrac{\\left(x^{3}-8x^{2}+16x\\right)^{9}}{\\left(x^{2}-x-12\\right)^{18}}\\right]\\)",
+    "solution": "\\(\\lim_{x \\to 4}\\left[\\dfrac{\\left[x(x-4)^{2}\\right]^{9}}{(x-4)^{18}(x+3)^{18}}\\right]\\)\n\\(= \\lim_{x \\to 4}\\left[\\dfrac{(x-4)^{18}\\,x^{9}}{(x-4)^{18}(x+3)^{18}}\\right]\\)\n\\(= \\lim_{x \\to 4}\\left[\\dfrac{x^{9}}{(x+3)^{18}}\\right]\\) ...[As \\(x \\to 4\\), \\(x-4 \\ne 0\\)]\n\\(= \\dfrac{4^{9}}{7^{18}}\\)"
+  },
+  {
+    "ref": "7.2 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate \\(\\lim_{x \\to 1}\\left[\\dfrac{1}{x-1}+\\dfrac{2}{1-x^{2}}\\right]\\)",
+    "solution": "\\(\\lim_{x \\to 1}\\left[\\dfrac{1}{x-1}+\\dfrac{2}{(1-x)(x+1)}\\right]\\)\n\\(= \\lim_{x \\to 1}\\left[\\dfrac{1}{x-1}-\\dfrac{2}{(x-1)(x+1)}\\right]\\)\n\\(= \\lim_{x \\to 1}\\left[\\dfrac{1+x-2}{(x-1)(x+1)}\\right]\\)\n\\(= \\lim_{x \\to 1}\\left[\\dfrac{x-1}{(x-1)(x+1)}\\right]\\)\n\\(= \\lim_{x \\to 1}\\left[\\dfrac{1}{(x+1)}\\right]\\) ...[As \\(x \\to 1\\), \\(x-1 \\ne 0\\)]\n\\(= \\dfrac{1}{2}\\)"
+  },
+  {
+    "ref": "7.2 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate \\(\\lim_{x \\to 1}\\left[\\dfrac{x^{3}+x^{2}-5x+3}{x^{2}-1}\\right]\\)",
+    "solution": "In this case \\((x-1)\\) is a factor of the numerator and denominator\nTo find another factor we use synthetic division.\nNumerator: \\(x^{3}+x^{2}-5x+3\\)\n\n| 1 | 1 | 1 | -5 | 3 |\n|---|---|---|---|---|\n|  |  | 1 | 2 | -3 |\n|  | 1 | 2 | -3 | 0 |\n\n\\(\\therefore x^{3}+x^{2}-5x+3 = (x-1)\\left(x^{2}+2x-3\\right)\\)\nDenominator: \\(x^{2}-1 = (x+1)(x-1)\\)\n\\(\\lim_{x \\to 1}\\left[\\dfrac{x^{3}+x^{2}-5x+3}{x^{2}-1}\\right]\\)\n\\(= \\lim_{x \\to 1}\\left[\\dfrac{(x-1)\\left(x^{2}+2x-3\\right)}{(x+1)(x-1)}\\right]\\)\n\\(= \\lim_{x \\to 1}\\left[\\dfrac{x^{2}+2x-3}{x+1}\\right]\\) ...[As \\(x \\to 1\\), \\(x-1 \\ne 0\\)]\n\\(= \\dfrac{1+2-3}{1+1} = 0\\)"
+  },
+  {
+    "ref": "7.2 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "HARD",
+    "stem": "Evaluate \\(\\lim_{x \\to 0}\\left(\\dfrac{1-\\sqrt[3]{x^{2}+1}}{x^{2}}\\right)\\)",
+    "solution": "Put \\(\\sqrt[3]{x^{2}+1} = t\\), \\(x^{2}+1 = t^{3}\\)\n\\(\\therefore x^{2} = t^{3}-1\\), as \\(x \\to 0\\), \\(t \\to 1\\)\n\\(\\lim_{x \\to 0}\\left(\\dfrac{1-\\sqrt[3]{x^{2}+1}}{x^{2}}\\right) = \\lim_{t \\to 1}\\left(\\dfrac{(1-t)}{\\left(t^{3}-1\\right)}\\right)\\)\n\\(= \\lim_{t \\to 1}\\left(\\dfrac{-(t-1)}{(t-1)\\left(t^{2}+t+1\\right)}\\right)\\)\n\\(= \\lim_{t \\to 1}\\left(\\dfrac{-1}{t^{2}+t+1}\\right)\\) ...[As \\(t \\to 1\\), \\(t-1 \\ne 0\\)]\n\\(= \\dfrac{-1}{1+1+1} = -\\dfrac{1}{3}\\)"
+  },
+  {
+    "ref": "Ex 7.2 I Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "EASY",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.2 I",
+    "stem": "\\(\\lim_{z \\to 2}\\left[\\dfrac{z^{2}-5z+6}{z^{2}-4}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.2 I Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "EASY",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.2 I",
+    "stem": "\\(\\lim_{x \\to -3}\\left[\\dfrac{x+3}{x^{2}+4x+3}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.2 I Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "EASY",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.2 I",
+    "stem": "\\(\\lim_{y \\to 0}\\left[\\dfrac{5y^{3}+8y^{2}}{3y^{4}-16y^{2}}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.2 I Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "EASY",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.2 I",
+    "stem": "\\(\\lim_{x \\to -2}\\left[\\dfrac{-2x-4}{x^{3}+2x^{2}}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.2 I Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "EASY",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.2 I",
+    "stem": "\\(\\lim_{x \\to 3}\\left[\\dfrac{x^{2}+2x-15}{x^{2}-5x+6}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.2 II Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.2 II",
+    "stem": "\\(\\lim_{u \\to 1}\\left[\\dfrac{u^{4}-1}{u^{3}-1}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.2 II Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.2 II",
+    "stem": "\\(\\lim_{x \\to 3}\\left[\\dfrac{1}{x-3}-\\dfrac{9x}{x^{3}-27}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.2 II Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "EASY",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.2 II",
+    "stem": "\\(\\lim_{x \\to 2}\\left[\\dfrac{x^{3}-4x^{2}+4x}{x^{2}-1}\\right]\\)",
+    "_note": "Denominator transcribed as printed: \\(x^{2}-1\\), verified at 5x zoom. Note this is NOT a 0/0 form (at x=2 it is 0/3), so it needs no factorization at all, which is out of character for a Method-of-Factorization exercise; a misprint for \\(x^{2}-4\\) is plausible. The printed key (0) does not discriminate - both readings give 0 - so no repair is made here.",
+    "solution": "[Textbook oddity, checked and left as printed: the denominator reads \\(x^2 - 1\\), verified at high zoom. At \\(x = 2\\) that is \\(0/3\\), not a \\(0/0\\) form, so the question needs no factorization at all — out of character for an exercise whose whole subject is the method of factorization, and a misprint for \\(x^2 - 4\\) is plausible. No repair is made because the printed key \\((0)\\) does not discriminate: both readings give \\(0\\).]"
+  },
+  {
+    "ref": "Ex 7.2 II Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.2 II",
+    "stem": "\\(\\lim_{\\Delta x \\to 0}\\left[\\dfrac{(x+\\Delta x)^{2}-2(x+\\Delta x)+1-\\left(x^{2}-2x+1\\right)}{\\Delta x}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.2 II Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.2 II",
+    "stem": "\\(\\lim_{x \\to \\sqrt{2}}\\left[\\dfrac{x^{2}+x\\sqrt{2}-4}{x^{2}-3x\\sqrt{2}+4}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.2 II Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "HARD",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.2 II",
+    "stem": "\\(\\lim_{x \\to 2}\\left[\\dfrac{x^{3}-7x+6}{x^{3}-7x^{2}+16x-12}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.2 III Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the Following limits :",
+    "setLabel": "Ex 7.2 III",
+    "stem": "\\(\\lim_{y \\to \\frac{1}{2}}\\left[\\dfrac{1-8y^{3}}{y-4y^{3}}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.2 III Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "HARD",
+    "context": "Evaluate the Following limits :",
+    "setLabel": "Ex 7.2 III",
+    "stem": "\\(\\lim_{x \\to 1}\\left[\\dfrac{x-2}{x^{2}-x}-\\dfrac{1}{x^{3}-3x^{2}+2x}\\right]\\)",
+    "_note": "Stem verified at 5x zoom exactly as printed. SUSPECTED BOOK ANSWER-KEY ERROR (sign): the printed key gives -2, but the expression simplifies to \\(\\dfrac{x-3}{x(x-2)}\\) (since \\((x-2)^{2}-1=(x-1)(x-3)\\)), whose value at \\(x=1\\) is \\(\\dfrac{-2}{-1}=+2\\); a numerical check at \\(x=1.001\\) gives 1.999. Flagged for the cross-check pass; nothing repaired.",
+    "solution": "[Textbook answer-key error: the printed key gives \\(-2\\). Combining the two fractions over \\(x(x-1)(x-2)\\) gives numerator \\((x-2)^2 - 1 = (x-1)(x-3)\\), so the expression is exactly \\(\\dfrac{x-3}{x(x-2)}\\), whose value at \\(x = 1\\) is \\(\\dfrac{-2}{-1} = +2\\). Confirmed numerically: at \\(x = 1.001\\) the original expression evaluates to \\(1.99900\\). The MAGNITUDE is right; the SIGN is wrong.]"
+  },
+  {
+    "ref": "Ex 7.2 III Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "HARD",
+    "context": "Evaluate the Following limits :",
+    "setLabel": "Ex 7.2 III",
+    "stem": "\\(\\lim_{x \\to 1}\\left[\\dfrac{x^{4}-3x^{2}+2}{x^{3}-5x^{2}+3x+1}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.2 III Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "HARD",
+    "context": "Evaluate the Following limits :",
+    "setLabel": "Ex 7.2 III",
+    "stem": "\\(\\lim_{x \\to 1}\\left[\\dfrac{x+2}{x^{2}-5x+4}+\\dfrac{x-4}{3\\left(x^{2}-3x+2\\right)}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.2 III Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "HARD",
+    "context": "Evaluate the Following limits :",
+    "setLabel": "Ex 7.2 III",
+    "stem": "\\(\\lim_{x \\to a}\\left[\\dfrac{1}{x^{2}-3ax+2a^{2}}+\\dfrac{1}{2x^{2}-3ax+a^{2}}\\right]\\)"
+  },
+  {
+    "ref": "7.3 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate : \\(\\lim_{x \\to 0}\\left(\\dfrac{\\sqrt{1+x}-1}{x}\\right)\\)",
+    "solution": "[Textbook misprint: the label is printed \"Soluton :\" for this example only.]\n\n\\(\\lim_{x \\to 0}\\left(\\dfrac{\\sqrt{1+x}-1}{x}\\right)\\)\n\\(= \\lim_{x \\to 0}\\left(\\dfrac{\\sqrt{1+x}-1}{x} \\times \\dfrac{\\sqrt{1+x}+1}{\\sqrt{1+x}+1}\\right)\\)\n\\(= \\lim_{x \\to 0}\\left(\\dfrac{1+x-1}{x\\left(\\sqrt{1+x}+1\\right)}\\right)\\)\n\\(= \\lim_{x \\to 0}\\left(\\dfrac{x}{x\\left(\\sqrt{1+x}+1\\right)}\\right)\\)\n\\(= \\lim_{x \\to 0}\\left(\\dfrac{1}{\\sqrt{1+x}+1}\\right)\\) ...[As \\(x \\to 0\\), \\(x \\ne 0\\)]\n\\(= \\dfrac{1}{\\sqrt{1+0}+1} = \\dfrac{1}{2}\\)",
+    "_note": "The book prints the label as \"Soluton :\" (misspelt) for this example only."
+  },
+  {
+    "ref": "7.3 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate \\(\\lim_{z \\to 0}\\left[\\dfrac{(b+z)^{\\frac{1}{2}}-(b-z)^{\\frac{1}{2}}}{z}\\right]\\)",
+    "solution": "\\(\\lim_{z \\to 0}\\left[\\dfrac{(b+z)^{\\frac{1}{2}}-(b-z)^{\\frac{1}{2}}}{z}\\right]\\)\n\\(= \\lim_{z \\to 0}\\left[\\dfrac{\\sqrt{b+z}-\\sqrt{b-z}}{z}\\right]\\)\n\\(= \\lim_{z \\to 0}\\left[\\dfrac{\\sqrt{b+z}-\\sqrt{b-z}}{z} \\times \\dfrac{\\sqrt{b+z}+\\sqrt{b-z}}{\\sqrt{b+z}+\\sqrt{b-z}}\\right]\\)\n\\(= \\lim_{z \\to 0}\\left[\\dfrac{(b+z)-(b-z)}{z} \\times \\dfrac{1}{\\sqrt{b+z}+\\sqrt{b-z}}\\right]\\)\n\\(= \\lim_{z \\to 0}\\left[\\dfrac{2z}{z} \\times \\dfrac{1}{\\sqrt{b+z}+\\sqrt{b-z}}\\right]\\)\n\\(= \\lim_{z \\to 0}\\left[\\dfrac{2}{\\sqrt{b+z}+\\sqrt{b-z}}\\right]\\) ...[As \\(z \\to 0\\), \\(z \\ne 0\\)]\n\\(= \\dfrac{2}{\\sqrt{b+0}+\\sqrt{b-0}}\\)\n\\(= \\dfrac{2}{2\\sqrt{b}}\\)\n\\(= \\dfrac{1}{\\sqrt{b}}\\)"
+  },
+  {
+    "ref": "7.3 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "HARD",
+    "stem": "Evaluate \\(\\lim_{x \\to 4}\\left(\\dfrac{x^{2}+x-20}{\\sqrt{x^{2}-7}-\\sqrt{25-x^{2}}}\\right)\\)",
+    "solution": "\\(\\lim_{x \\to 4}\\left(\\dfrac{x^{2}+x-20}{\\sqrt{x^{2}-7}-\\sqrt{25-x^{2}}}\\right)\\)\n\\(= \\lim_{x \\to 4}\\left(\\dfrac{x^{2}+x-20}{\\sqrt{x^{2}-7}-\\sqrt{25-x^{2}}} \\times \\dfrac{\\sqrt{x^{2}-7}+\\sqrt{25-x^{2}}}{\\sqrt{x^{2}-7}+\\sqrt{25-x^{2}}}\\right)\\)\n\\(= \\lim_{x \\to 4}\\left(\\dfrac{(x-4)(x+5)\\left(\\sqrt{x^{2}-7}+\\sqrt{25-x^{2}}\\right)}{x^{2}-7-25+x^{2}}\\right)\\)\n\\(= \\lim_{x \\to 4}\\left(\\dfrac{(x-4)(x+5)\\left(\\sqrt{x^{2}-7}+\\sqrt{25-x^{2}}\\right)}{2\\left(x^{2}-16\\right)}\\right)\\)\n\\(= \\lim_{x \\to 4}\\left(\\dfrac{(x-4)(x+5)\\left(\\sqrt{x^{2}-7}+\\sqrt{25-x^{2}}\\right)}{2(x-4)(x+4)}\\right)\\)\n\\(= \\lim_{x \\to 4}\\left(\\dfrac{(x+5)\\left(\\sqrt{x^{2}-7}+\\sqrt{25-x^{2}}\\right)}{2(x+4)}\\right)\\) ...[As \\(x \\to 4\\), \\(x-4 \\ne 0\\)]\n\\(= \\dfrac{(4+5)\\left(\\sqrt{4^{2}-7}+\\sqrt{25-4^{2}}\\right)}{2(4+4)} = \\dfrac{(9)(3+3)}{2(8)} = \\dfrac{27}{8}\\)",
+    "_note": "The stem and the first five lines of this solution are printed on p-09 (printed p.142); the working is completed at the top of the left column of p-10 (printed p.143)."
+  },
+  {
+    "ref": "Ex 7.3 I Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.3 I",
+    "stem": "\\(\\lim_{x \\to 0}\\left[\\dfrac{\\sqrt{6+x+x^{2}}-\\sqrt{6}}{x}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.3 I Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.3 I",
+    "stem": "\\(\\lim_{x \\to 3}\\left[\\dfrac{\\sqrt{2x+3}-\\sqrt{4x-3}}{x^{2}-9}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.3 I Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.3 I",
+    "stem": "\\(\\lim_{y \\to 0}\\left[\\dfrac{\\sqrt{1-y^{2}}-\\sqrt{1+y^{2}}}{y^{2}}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.3 I Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "HARD",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.3 I",
+    "stem": "\\(\\lim_{x \\to 2}\\left[\\dfrac{\\sqrt{2+x}-\\sqrt{6-x}}{\\sqrt{x}-\\sqrt{2}}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.3 II Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "HARD",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.3 II",
+    "stem": "\\(\\lim_{x \\to a}\\left[\\dfrac{\\sqrt{a+2x}-\\sqrt{3x}}{\\sqrt{3a+x}-2\\sqrt{x}}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.3 II Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.3 II",
+    "stem": "\\(\\lim_{x \\to 2}\\left[\\dfrac{x^{2}-4}{\\sqrt{x+2}-\\sqrt{3x-2}}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.3 II Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "HARD",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.3 II",
+    "stem": "\\(\\lim_{x \\to 2}\\left[\\dfrac{\\sqrt{1+\\sqrt{2+x}}-\\sqrt{3}}{x-2}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.3 II Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.3 II",
+    "stem": "\\(\\lim_{y \\to 0}\\left[\\dfrac{\\sqrt{a+y}-\\sqrt{a}}{y\\sqrt{a+y}}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.3 II Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "HARD",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.3 II",
+    "stem": "\\(\\lim_{x \\to 0}\\left(\\dfrac{\\sqrt{x^{2}+9}-\\sqrt{2x^{2}+9}}{\\sqrt{3x^{2}+4}-\\sqrt{2x^{2}+4}}\\right)\\)",
+    "_note": "Typographic misprint: the book prints this item as \"5.  = lim ...\" - a stray \"=\" sign stands between the item number and \"lim\", with nothing on its left. Transcribed here without the stray sign; the limit expression itself is exactly as printed. This item sits at the TOP of the RIGHT column of p-10, overleaf from items 1-4 in the left column.",
+    "solution": "[Textbook misprint: the item is printed as \"5. \\(=\\) lim ...\", a stray \\(=\\) standing between the item number and the limit with nothing on its left. Omitted above; the limit expression itself is exactly as printed.]"
+  },
+  {
+    "ref": "Ex 7.3 III Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "HARD",
+    "context": "Evaluate the Following limits :",
+    "setLabel": "Ex 7.3 III",
+    "stem": "\\(\\lim_{x \\to 1}\\left[\\dfrac{x^{2}+x\\sqrt{x}-2}{x-1}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.3 III Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "HARD",
+    "context": "Evaluate the Following limits :",
+    "setLabel": "Ex 7.3 III",
+    "stem": "\\(\\lim_{x \\to 0}\\left[\\dfrac{\\sqrt{1+x^{2}}-\\sqrt{1+x}}{\\sqrt{1+x^{3}}-\\sqrt{1+x}}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.3 III Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the Following limits :",
+    "setLabel": "Ex 7.3 III",
+    "stem": "\\(\\lim_{x \\to 4}\\left[\\dfrac{x^{2}+x-20}{\\sqrt{3x+4}-4}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.3 III Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the Following limits :",
+    "setLabel": "Ex 7.3 III",
+    "stem": "\\(\\lim_{z \\to 4}\\left[\\dfrac{3-\\sqrt{5+z}}{1-\\sqrt{5-z}}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.3 III Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "HARD",
+    "context": "Evaluate the Following limits :",
+    "setLabel": "Ex 7.3 III",
+    "stem": "\\(\\lim_{x \\to 0}\\left(\\dfrac{3}{x\\sqrt{9-x}}-\\dfrac{1}{x}\\right)\\)"
+  }
+]

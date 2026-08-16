@@ -1,0 +1,57 @@
+[
+  {
+    "id": "c279eb04-fe70-45e3-8052-1e9d48ebb25e",
+    "ref": "Ex 7.4 I Q1",
+    "solution": "Divide numerator and denominator by \\(\\theta\\) and adjust each to the standard form.\n\\(\\lim_{\\theta \\to 0}\\frac{\\sin(m\\theta)}{\\tan(n\\theta)} = \\lim_{\\theta \\to 0}\\left[\\frac{\\sin(m\\theta)}{m\\theta}\\cdot\\frac{n\\theta}{\\tan(n\\theta)}\\cdot\\frac{m}{n}\\right]\\)\nAs \\(\\theta \\to 0\\), \\(\\frac{\\sin(m\\theta)}{m\\theta} \\to 1\\) and \\(\\frac{n\\theta}{\\tan(n\\theta)} \\to 1\\).\n\\(\\therefore\\) the limit \\(= 1 \\times 1 \\times \\frac{m}{n} = \\frac{m}{n}\\)"
+  },
+  {
+    "id": "dc0b387c-670c-41af-ad02-47bad1805540",
+    "ref": "Ex 7.4 I Q2",
+    "solution": "Use \\(1 - \\cos 2\\theta = 2\\sin^2\\theta\\).\n\\(\\lim_{\\theta \\to 0}\\frac{1 - \\cos 2\\theta}{\\theta^2} = \\lim_{\\theta \\to 0}\\frac{2\\sin^2\\theta}{\\theta^2} = 2\\left(\\lim_{\\theta \\to 0}\\frac{\\sin\\theta}{\\theta}\\right)^2 = 2(1)^2\\)\n\\(\\therefore\\) the limit \\(= 2\\)"
+  },
+  {
+    "id": "5402c172-9395-4bbf-a290-8ef115adc818",
+    "ref": "Ex 7.4 I Q3",
+    "solution": "Use \\(1 - \\cos x = 2\\sin^2\\left(\\frac{x}{2}\\right)\\).\n\\(\\lim_{x \\to 0}\\frac{x\\tan x}{1 - \\cos x} = \\lim_{x \\to 0}\\frac{x\\tan x}{2\\sin^2\\left(\\frac{x}{2}\\right)} = \\lim_{x \\to 0}\\left[\\frac{\\tan x}{x}\\cdot\\frac{x^2}{2\\sin^2\\left(\\frac{x}{2}\\right)}\\right]\\)\nNow \\(\\frac{x^2}{2\\sin^2\\left(\\frac{x}{2}\\right)} = \\frac{2\\left(\\frac{x}{2}\\right)^2}{\\sin^2\\left(\\frac{x}{2}\\right)} \\to 2\\) and \\(\\frac{\\tan x}{x} \\to 1\\).\n\\(\\therefore\\) the limit \\(= 1 \\times 2 = 2\\)"
+  },
+  {
+    "id": "7a6124c2-f2f0-400d-a663-37540ccdb2e8",
+    "ref": "Ex 7.4 I Q4",
+    "solution": "Write \\(\\sec x - 1 = \\frac{1 - \\cos x}{\\cos x}\\) and use \\(1 - \\cos x = 2\\sin^2\\left(\\frac{x}{2}\\right)\\).\n\\(\\lim_{x \\to 0}\\frac{\\sec x - 1}{x^2} = \\lim_{x \\to 0}\\frac{2\\sin^2\\left(\\frac{x}{2}\\right)}{x^2\\cos x} = \\lim_{x \\to 0}\\left[\\frac{1}{2}\\cdot\\left(\\frac{\\sin\\left(\\frac{x}{2}\\right)}{\\frac{x}{2}}\\right)^2\\cdot\\frac{1}{\\cos x}\\right]\\)\n\\(= \\frac{1}{2}(1)^2\\cdot\\frac{1}{1}\\)\n\\(\\therefore\\) the limit \\(= \\frac{1}{2}\\)"
+  },
+  {
+    "id": "8c66d969-0eac-4f3e-94f9-15a35f1a511f",
+    "ref": "Ex 7.4 II Q1",
+    "solution": "Use \\(1 - \\cos\\theta = 2\\sin^2\\left(\\frac{\\theta}{2}\\right)\\) on both parts.\n\\(\\lim_{x \\to 0}\\frac{1 - \\cos(nx)}{1 - \\cos(mx)} = \\lim_{x \\to 0}\\frac{2\\sin^2\\left(\\frac{nx}{2}\\right)}{2\\sin^2\\left(\\frac{mx}{2}\\right)} = \\lim_{x \\to 0}\\left[\\frac{\\left(\\frac{\\sin\\left(\\frac{nx}{2}\\right)}{\\frac{nx}{2}}\\right)^2}{\\left(\\frac{\\sin\\left(\\frac{mx}{2}\\right)}{\\frac{mx}{2}}\\right)^2}\\cdot\\frac{n^2}{m^2}\\right]\\)\nEach bracketed ratio tends to \\(1\\).\n\\(\\therefore\\) the limit \\(= \\frac{n^2}{m^2}\\)"
+  },
+  {
+    "id": "f5ab3eb8-9ecc-4e92-9562-3409f40ddf58",
+    "ref": "Ex 7.4 II Q2",
+    "solution": "Direct substitution gives \\(\\frac{0}{0}\\), since \\(\\operatorname{cosec}\\frac{\\pi}{6} = 2\\) and \\(\\cot^2\\frac{\\pi}{6} = 3\\).\nUse \\(\\cot^2 x = \\operatorname{cosec}^2 x - 1\\), so \\(\\cot^2 x - 3 = \\operatorname{cosec}^2 x - 4 = (\\operatorname{cosec} x - 2)(\\operatorname{cosec} x + 2)\\).\n\\(\\lim_{x \\to \\frac{\\pi}{6}}\\frac{2 - \\operatorname{cosec} x}{(\\operatorname{cosec} x - 2)(\\operatorname{cosec} x + 2)} = \\lim_{x \\to \\frac{\\pi}{6}}\\frac{-1}{\\operatorname{cosec} x + 2} = \\frac{-1}{2 + 2}\\)\n\\(\\therefore\\) the limit \\(= -\\frac{1}{4}\\)"
+  },
+  {
+    "id": "f848a64a-2fde-4d02-9d88-cc9e416a1ac3",
+    "ref": "Ex 7.4 II Q3",
+    "solution": "Direct substitution gives \\(\\frac{0}{0}\\). Use \\(\\cos 2x = \\cos^2 x - \\sin^2 x = (\\cos x - \\sin x)(\\cos x + \\sin x)\\).\n\\(\\lim_{x \\to \\frac{\\pi}{4}}\\frac{\\cos x - \\sin x}{(\\cos x - \\sin x)(\\cos x + \\sin x)} = \\lim_{x \\to \\frac{\\pi}{4}}\\frac{1}{\\cos x + \\sin x} = \\frac{1}{\\frac{1}{\\sqrt{2}} + \\frac{1}{\\sqrt{2}}}\\)\n\\(\\therefore\\) the limit \\(= \\frac{1}{\\sqrt{2}}\\)"
+  },
+  {
+    "id": "6455f457-8ecd-491d-9959-f73641c68705",
+    "ref": "Ex 7.4 III Q1",
+    "solution": "Write the numerator as \\((\\cos(ax) - 1) - (\\cos(bx) - 1)\\) and divide throughout by \\(x^2\\), using \\(\\lim_{x \\to 0}\\frac{1 - \\cos(kx)}{x^2} = \\frac{k^2}{2}\\).\nNumerator \\(\\div x^2 \\to -\\frac{a^2}{2} + \\frac{b^2}{2} = \\frac{b^2 - a^2}{2}\\); denominator \\(\\div x^2 \\to -\\frac{c^2}{2}\\).\n\\(\\therefore\\) the limit \\(= \\frac{\\frac{b^2 - a^2}{2}}{-\\frac{c^2}{2}} = \\frac{a^2 - b^2}{c^2}\\)"
+  },
+  {
+    "id": "273a7b62-70c1-40b7-99c4-2fbf955e719e",
+    "ref": "Ex 7.4 III Q2",
+    "solution": "Put \\(x = \\pi + h\\), so \\(h \\to 0\\). Then \\(\\cos x = -\\cos h\\), so \\(1 - \\cos x = 1 + \\cos h = 2\\cos^2\\left(\\frac{h}{2}\\right)\\) and \\(\\sqrt{1 - \\cos x} = \\sqrt{2}\\cos\\left(\\frac{h}{2}\\right)\\); also \\(\\sin^2 x = \\sin^2 h\\).\n\\(\\lim_{h \\to 0}\\frac{\\sqrt{2}\\cos\\left(\\frac{h}{2}\\right) - \\sqrt{2}}{\\sin^2 h} = \\lim_{h \\to 0}\\frac{-\\sqrt{2}\\left(1 - \\cos\\frac{h}{2}\\right)}{\\sin^2 h} = \\lim_{h \\to 0}\\frac{-\\sqrt{2}\\cdot 2\\sin^2\\left(\\frac{h}{4}\\right)}{\\sin^2 h}\\)\n\\(= -2\\sqrt{2}\\cdot\\lim_{h \\to 0}\\left[\\left(\\frac{\\sin\\left(\\frac{h}{4}\\right)}{\\frac{h}{4}}\\right)^2\\left(\\frac{h}{\\sin h}\\right)^2\\cdot\\frac{1}{16}\\right] = -\\frac{2\\sqrt{2}}{16} = -\\frac{\\sqrt{2}}{8}\\)\n\\(\\therefore\\) the limit \\(= -\\frac{1}{4\\sqrt{2}}\\)"
+  },
+  {
+    "id": "718b3896-6017-4333-afa4-238de7c6faf3",
+    "ref": "Ex 7.4 III Q3",
+    "solution": "Express everything in \\(\\sin x\\) and \\(\\cos x\\).\nNumerator: \\(\\tan^2 x - \\cot^2 x = \\frac{\\sin^4 x - \\cos^4 x}{\\sin^2 x\\cos^2 x} = \\frac{(\\sin x - \\cos x)(\\sin x + \\cos x)}{\\sin^2 x\\cos^2 x}\\).\nDenominator: \\(\\sec x - \\operatorname{cosec} x = \\frac{\\sin x - \\cos x}{\\sin x\\cos x}\\).\nSo the ratio \\(= \\frac{\\sin x + \\cos x}{\\sin x\\cos x}\\), and at \\(x = \\frac{\\pi}{4}\\) this is \\(\\frac{\\sqrt{2}}{\\frac{1}{2}}\\).\n\\(\\therefore\\) the limit \\(= 2\\sqrt{2}\\)"
+  },
+  {
+    "id": "684fb22e-9f03-4c7e-91ff-d6c2e2b356b3",
+    "ref": "Ex 7.4 III Q4",
+    "solution": "Put \\(s = \\sin x\\), so \\(s \\to \\frac{1}{2}\\) as \\(x \\to \\frac{\\pi}{6}\\), and factorise both quadratics.\n\\(2s^2 + s - 1 = (2s - 1)(s + 1)\\) and \\(2s^2 - 3s + 1 = (2s - 1)(s - 1)\\).\nSince \\(2s - 1 \\ne 0\\) near (but not at) \\(s = \\frac{1}{2}\\), the ratio \\(= \\frac{s + 1}{s - 1} \\to \\frac{\\frac{1}{2} + 1}{\\frac{1}{2} - 1} = \\frac{\\frac{3}{2}}{-\\frac{1}{2}}\\)\n\\(\\therefore\\) the limit \\(= -3\\)"
+  }
+]

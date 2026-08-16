@@ -1,0 +1,437 @@
+[
+  {
+    "ref": "3.5.1 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "stem": "Find the value of \\({}^{5}P_{2}\\).",
+    "solution": "\\({}^{5}P_{2} = \\frac{5!}{(5-2)!} = \\frac{5!}{3!} = \\frac{5\\times 4\\times 3!}{3!}\\)\n\\(= 5\\times 4 = 20\\)."
+  },
+  {
+    "ref": "3.5.1 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "How many different ways are there to arrange letters of the word 'WORLD'? How many of these arrangements begin with the letter R? How many arrangements can be made taking three letters at a time?",
+    "solution": "[Textbook misprint (typography only): the printed solution writes \\({}^5P_5 = 5! = 120!\\) — a stray factorial sign on the result. The value is \\(120\\).]\n\nThe word WORLD has 5 letters W, O, R, L, D. These can be arranged among themselves in \\({}^{5}P_{5} = 5! = 120!\\) different ways.\n\nIf an arrangement begins with R, the remaining four letters can be arranged among themselves in \\({}^{4}P_{4} = 4! = 24\\) ways.\n\nThe Number of arrangements of 5 letters, taken 3 at a time, is \\({}^{5}P_{3} = \\frac{5!}{2!} = 60\\).",
+    "_note": "The printed solution reads '5! = 120!' with a stray factorial sign after 120; the value of \\(5!\\) is 120, not \\(120!\\). Transcribed as printed."
+  },
+  {
+    "ref": "3.5.1 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "stem": "How many three digit numbers can be formed from the digits 2, 4, 5, 6, 7 if no digit is repeated?",
+    "solution": "[Textbook misprint: the stem line says \"arrangements of five digits taken TWO at a time\" on the same line that evaluates \\({}^5P_3\\). The expression and the printed answer \\(60\\) are both correct for THREE at a time, so \"two\" is the misprint.]\n\nEvery arrangement of digits gives a different number. Therefore, the problem is to find the number of arrangements of five digits taken two at a time This is given by \\({}^{5}P_{3} = \\frac{5!}{2!} = 60\\).",
+    "_note": "The printed solution says 'taken two at a time' while the very same line evaluates \\({}^{5}P_{3}\\) (three at a time). The expression and the value 60 are correct for three-digit numbers, so 'two' is a misprint for 'three'. Transcribed as printed."
+  },
+  {
+    "ref": "3.5.1 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "HARD",
+    "stem": "How many numbers can be formed with the digits 3, 4, 6, 7, 8 taken all at a time? Find the sum of all such numbers.",
+    "solution": "The five digits can be arranged in \\({}^{5}P_{5} = 5! = 120\\) ways.\n\nNow, consider any one of the five given digits, say 3. Suppose the digit 3 is in the unit's place. The other four digits can be arranged in \\({}^{4}P_{4} = 4! = 24\\) ways to form numbers that have 3 in the unit's place. This shows that 24 of the 120 numbers have 3 in the unit's place.\n\nSimilarly, each of the other four digits is in the unit's place in 24 of the 120 numbers.\n\nThe sum of the digits in the units place among all 120 numbers is \\(24(3+4+6+7+8) = 24\\times 28 = 672\\).\n\nSimilarly, the sum of the digits in the ten's place among all 120 numbers is 672. The same is also the sum of the digits in each place among all 120 numbers.\n\nThe required sum is 672 units + 672 tens + 672 hundreds + 672 thousands + 672 ten thousands.\n\n\\(= 672\\times(1+10+100+1000+10000)\\)\n\n\\(= 672\\times 11111 = 74{,}66{,}592\\)"
+  },
+  {
+    "ref": "3.5.1 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "A teacher has 2 different books on English, 3 different books on Physics, and 4 different books on Mathematics. These books are to be placed in a shelf so that all books on any one subjects are together. How many different ways are there to do this?",
+    "solution": "First, let us consider all books on each subjects to be one set, so that there are three sets, say E, P, M. These three can be arranged in \\({}^{3}P_{3} = 3! = 6\\) different ways. Now, in each of these ways, the 2 books on English can be arranged in \\({}^{2}P_{2} = 2! = 2\\) different ways the 3 books on physics can be arranged in \\({}^{3}P_{3} = 3! = 6\\) different ways, and the four books on Mathematics can be arranged in \\({}^{4}P_{4} = 4! = 24\\) different ways.\n\nThe required number of arrangements is then given by \\(6\\times 2\\times 6\\times 24 = 1728\\)"
+  },
+  {
+    "ref": "3.5.1 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "Find n if \\({}^{n}P_{5} = 42\\times {}^{n}P_{3}\\)",
+    "solution": "We are given that \\({}^{n}P_{5} = 42\\times {}^{n}P_{3}\\)\n\nThat is, \\(\\frac{n!}{(n-5)!} = 42\\,\\frac{n!}{(n-3)!}\\)\n\n\\(\\therefore \\frac{n!}{(n-5)!} = 42\\,\\frac{n!}{(n-3)(n-4)(n-5)!}\\)\n\n\\(\\therefore (n-3)(n-4) = 42\\)\n\n\\(\\therefore (n-3)(n-4) = 7\\times 6\\)\n\n\\(\\therefore n-3 = 7\\)\n\n\\(\\therefore n = 3+7 = 10\\)"
+  },
+  {
+    "ref": "3.5.2 SolvedEx.1(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "It is required to arrange 8 books on a shelf. Find the number of ways to do this if two specified books are",
+    "setLabel": "3.5.2 SolvedEx.1",
+    "stem": "always together",
+    "solution": "[Textbook structural oddity: this block is printed under the heading \"Permutations when repetitions are allowed\", yet none of its examples involves repetition — all three are restricted arrangements of DISTINCT objects, and the theorem the section is about is only stated afterwards on the following page. The refs follow the book's physical placement; the subtopic follows the content.]\n\nConsider 2 books as one single set. These 2 books can be arranged among themselves in \\(2!\\) ways. The total 7 books can be arranged among themselves in \\(7!\\) ways.\n\nThe total number of ways \\(= 2!\\,7! = 2\\times 5040 = 10080\\).",
+    "_note": "This SOLVED EXAMPLES block sits physically after the section heading 3.5.2 'Permutations when repetitions are allowed', but none of its three examples involves repetition — all three are restricted arrangements of DISTINCT objects, and the theorem they use (m specified objects together) is stated only afterwards, on the next page. Refs use the 3.5.2 prefix because that is where the block is printed; the subtopic follows the content."
+  },
+  {
+    "ref": "3.5.2 SolvedEx.1(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "It is required to arrange 8 books on a shelf. Find the number of ways to do this if two specified books are",
+    "setLabel": "3.5.2 SolvedEx.1",
+    "stem": "never together.",
+    "solution": "We take one of the two books and remaining 6 books and arrange these in \\(7!\\) ways. Then we can place the remaining book in such a way to avoid 2 places adjacent to the 1st book, so there are 6 places available hence \\(6\\times 7! = 6\\times 5040 = 30240\\).\n\nAlternative Method :\n\nThe number is also obtained by subtracting from the total arrangements those when these books are together i.e.\n\n\\(8! - 2\\times 7! = (8-2)\\times 7! = 6\\times 7! = 6\\times 5040 = 30240\\)."
+  },
+  {
+    "ref": "3.5.2 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "In how many ways can 7 examination papers be arranged so that papers 6 and 7 are never together?",
+    "solution": "By the same argument as in example above, the number of ways in which any two papers are never together is.\n\n\\((7-2)(7-1)! = 5\\times 6! = 3600\\)"
+  },
+  {
+    "ref": "3.5.2 SolvedEx.3(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "A family of 3 brothers and 5 sisters is to be arranged for a photograph in such a ways that,",
+    "setLabel": "3.5.2 SolvedEx.3",
+    "stem": "all brothers sit together.",
+    "solution": "Since all 3 brothers are together, treat them as one person, so that there are \\(5+1=6\\) persons. the number of arranging them is\n\n\\({}^{6}P_{6} = 6! = 720\\).\n\nOnce this is done, the three brothers can be arranged among themselves in \\({}^{3}P_{3} = 3! = 6\\) ways.\n\nThe total number of arrangements is then given by \\(6!\\times 3! = 720\\times 6 = 4320\\)."
+  },
+  {
+    "ref": "3.5.2 SolvedEx.3(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "HARD",
+    "context": "A family of 3 brothers and 5 sisters is to be arranged for a photograph in such a ways that,",
+    "setLabel": "3.5.2 SolvedEx.3",
+    "stem": "no two brothers sit together.",
+    "solution": "5 sisters can be arranged among themselves in \\({}^{5}P_{5} = 5! = 120\\) ways.\n\nConsider the following arrangement.\n\n\\(*\\ S_{1}\\ *\\ S_{2}\\ *\\ S_{3}\\ *\\ S_{4}\\ *\\ S_{5}\\ *\\)\n\nWhere \\(*\\) indicates a position where one brother can be placed so that no two brothers are together. Since there are 6 such positions and 3 brothers, the number of arrangements is\n\n\\({}^{6}P_{3} = \\frac{6!}{3!} = 120\\)\n\nThe required number of arrangements is then given by\n\n\\({}^{5}P_{5}\\times {}^{6}P_{3} = 120\\times 120 = 14400\\)."
+  },
+  {
+    "ref": "Ex 3.3 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "Find n, if \\({}^{n}P_{6} : {}^{n}P_{3} = 120:1\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "Find m and n, if \\({}^{(m+n)}P_{2} = 56\\) and \\({}^{(m-n)}P_{2} = 12\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "Find r, if \\({}^{12}P_{r-2} : {}^{11}P_{r-1} = 3:14\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "HARD",
+    "stem": "Show that \\((n+1)\\left({}^{n}P_{r}\\right) = (n-r+1)\\left[{}^{(n+1)}P_{r}\\right]\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q5(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Repetition",
+    "difficulty": "EASY",
+    "context": "How many 4 letter words can be formed using letters in the word MADHURI if",
+    "setLabel": "Ex 3.3 Q5",
+    "stem": "letters can be repeated"
+  },
+  {
+    "ref": "Ex 3.3 Q5(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "context": "How many 4 letter words can be formed using letters in the word MADHURI if",
+    "setLabel": "Ex 3.3 Q5",
+    "stem": "letters cannot be repeated."
+  },
+  {
+    "ref": "Ex 3.3 Q6(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Determine the number of arrangements of letters of the word ALGORITHM if",
+    "setLabel": "Ex 3.3 Q6",
+    "stem": "vowels are always together"
+  },
+  {
+    "ref": "Ex 3.3 Q6(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Determine the number of arrangements of letters of the word ALGORITHM if",
+    "setLabel": "Ex 3.3 Q6",
+    "stem": "no two vowels are together."
+  },
+  {
+    "ref": "Ex 3.3 Q6(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "HARD",
+    "context": "Determine the number of arrangements of letters of the word ALGORITHM if",
+    "setLabel": "Ex 3.3 Q6",
+    "stem": "consonants are at even positions."
+  },
+  {
+    "ref": "Ex 3.3 Q6(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "context": "Determine the number of arrangements of letters of the word ALGORITHM if",
+    "setLabel": "Ex 3.3 Q6",
+    "stem": "O is the first and T is the last letter."
+  },
+  {
+    "ref": "Ex 3.3 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "HARD",
+    "stem": "In a group photograph, 6 teachers are in the first row and 18 students are in the second row. There are 12 boys and 6 girls among the students. If the middle position is reserved for the principal and if no two girls are together, find the number of arrangements."
+  },
+  {
+    "ref": "Ex 3.3 Q8(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Find the number of ways so that letters of the word HISTORY can be arranged as,",
+    "setLabel": "Ex 3.3 Q8",
+    "stem": "Y and T are together"
+  },
+  {
+    "ref": "Ex 3.3 Q8(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Find the number of ways so that letters of the word HISTORY can be arranged as,",
+    "setLabel": "Ex 3.3 Q8",
+    "stem": "Y is next to T."
+  },
+  {
+    "ref": "Ex 3.3 Q8(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "context": "Find the number of ways so that letters of the word HISTORY can be arranged as,",
+    "setLabel": "Ex 3.3 Q8",
+    "stem": "there is no restriction"
+  },
+  {
+    "ref": "Ex 3.3 Q8(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Find the number of ways so that letters of the word HISTORY can be arranged as,",
+    "setLabel": "Ex 3.3 Q8",
+    "stem": "begin and end with vowel"
+  },
+  {
+    "ref": "Ex 3.3 Q8(e)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "context": "Find the number of ways so that letters of the word HISTORY can be arranged as,",
+    "setLabel": "Ex 3.3 Q8",
+    "stem": "end in ST"
+  },
+  {
+    "ref": "Ex 3.3 Q8(f)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "context": "Find the number of ways so that letters of the word HISTORY can be arranged as,",
+    "setLabel": "Ex 3.3 Q8",
+    "stem": "begin with S and end with T"
+  },
+  {
+    "ref": "Ex 3.3 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "Find the number of arrangements of the letters in the word SOLAPUR so that consonants and vowels are placed alternately"
+  },
+  {
+    "ref": "Ex 3.3 Q10(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Repetition",
+    "difficulty": "EASY",
+    "context": "Find the number of 4-digit numbers that can be formed using the digits 1, 2, 4, 5, 6, 8 if",
+    "setLabel": "Ex 3.3 Q10",
+    "stem": "digits can be repeated"
+  },
+  {
+    "ref": "Ex 3.3 Q10(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "context": "Find the number of 4-digit numbers that can be formed using the digits 1, 2, 4, 5, 6, 8 if",
+    "setLabel": "Ex 3.3 Q10",
+    "stem": "digits cannot be repeated"
+  },
+  {
+    "ref": "Ex 3.3 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "How many numbers can be formed using the digits 0, 1, 2, 3, 4, 5 without repetition so that resulting numbers are between 100 and 1000?"
+  },
+  {
+    "ref": "Ex 3.3 Q12(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Find the number of 6-digit numbers using the digits 3, 4, 5, 6, 7, 8 without repetition. How many of these numbers are",
+    "setLabel": "Ex 3.3 Q12",
+    "stem": "divisible by 5,",
+    "_note": "The lead sentence also asks for the TOTAL count of such 6-digit numbers, which the book prints without a sub-item label (the printed key gives it separately as 720, then a) 120 and b) 600). It is kept in the shared context so both sub-items carry it; an authored answer for (a) should state the total as well."
+  },
+  {
+    "ref": "Ex 3.3 Q12(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Find the number of 6-digit numbers using the digits 3, 4, 5, 6, 7, 8 without repetition. How many of these numbers are",
+    "setLabel": "Ex 3.3 Q12",
+    "stem": "not divisible by 5."
+  },
+  {
+    "ref": "Ex 3.3 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "A code word is formed by two different English letters followed by two non-zero distinct digits. Find the number of such code words. Also, find the number of such code words that end with an even digit."
+  },
+  {
+    "ref": "Ex 3.3 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Repetition",
+    "difficulty": "MODERATE",
+    "stem": "Find the number of ways in which 5 letters can be posted in 3 post boxes if any number of letters can be posted in a post box."
+  },
+  {
+    "ref": "Ex 3.3 Q15(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Find the number of arranging 11 distinct objects taken 4 at a time so that a specified object",
+    "setLabel": "Ex 3.3 Q15",
+    "stem": "always occurs",
+    "_note": "The lead sentence is printed exactly as 'Find the number of arranging 11 distinct objects taken 4 at a time so that a specified object' — a grammatical slip in the book ('the number of arranging'); the sentence is completed by each sub-item. Transcribed as printed."
+  },
+  {
+    "ref": "Ex 3.3 Q15(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Find the number of arranging 11 distinct objects taken 4 at a time so that a specified object",
+    "setLabel": "Ex 3.3 Q15",
+    "stem": "never occurs."
+  },
+  {
+    "ref": "Ex 3.3 Q16(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "context": "In how many ways can 5 different books be arranged on a shelf if",
+    "setLabel": "Ex 3.3 Q16",
+    "stem": "there are no restrictions"
+  },
+  {
+    "ref": "Ex 3.3 Q16(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "In how many ways can 5 different books be arranged on a shelf if",
+    "setLabel": "Ex 3.3 Q16",
+    "stem": "2 books are always together"
+  },
+  {
+    "ref": "Ex 3.3 Q16(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "In how many ways can 5 different books be arranged on a shelf if",
+    "setLabel": "Ex 3.3 Q16",
+    "stem": "2 books are never together"
+  },
+  {
+    "ref": "Ex 3.3 Q17(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "context": "3 boys and 3 girls are to sit in a row. How many ways can this be done if",
+    "setLabel": "Ex 3.3 Q17",
+    "stem": "there are no restrictions"
+  },
+  {
+    "ref": "Ex 3.3 Q17(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "3 boys and 3 girls are to sit in a row. How many ways can this be done if",
+    "setLabel": "Ex 3.3 Q17",
+    "stem": "there is a girl at each end"
+  },
+  {
+    "ref": "Ex 3.3 Q17(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "3 boys and 3 girls are to sit in a row. How many ways can this be done if",
+    "setLabel": "Ex 3.3 Q17",
+    "stem": "boys and girls are at alternate places",
+    "solution": "[Textbook answer-key error: the printed key gives \\(288\\). With three boys and three girls in alternate places only two patterns exist — BGBGBG and GBGBGB — so the count is \\(2 \\times 3! \\times 3! = 72\\). What makes this an isolated slip rather than a different reading of the question is that this sub-item's three siblings all reconcile with the key exactly (720, 144 and 144); only (iii) does not.]"
+  },
+  {
+    "ref": "Ex 3.3 Q17(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "3 boys and 3 girls are to sit in a row. How many ways can this be done if",
+    "setLabel": "Ex 3.3 Q17",
+    "stem": "all boys sit together"
+  }
+]

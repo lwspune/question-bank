@@ -1,0 +1,218 @@
+[
+  {
+    "id": "6589023e-1270-4df8-ab89-5dbe05bd14a2",
+    "ref": "Ex 8.1 Q1(i)",
+    "solution": "\\(f\\) is a polynomial, so it is defined for every real \\(x\\) and its limit at any point equals its value there.\n\\(f(-2) = (-2)^{3} + 2(-2)^{2} - (-2) - 2 = -8 + 8 + 2 - 2 = 0\\).\n\\(\\lim_{x \\to -2} f(x) = \\lim_{x \\to -2} (x^{3} + 2x^{2} - x - 2) = 0 = f(-2)\\).\nAll three conditions hold, so \\(f\\) is continuous at \\(x = -2\\)."
+  },
+  {
+    "id": "2f06ca11-7bdb-4dfc-8fd1-14d6efab798c",
+    "ref": "Ex 8.1 Q1(ii)",
+    "solution": "Since \\(x = \\dfrac{\\pi}{4}\\) satisfies \\(x \\le \\dfrac{\\pi}{4}\\), \\(f\\left(\\dfrac{\\pi}{4}\\right) = \\sin\\dfrac{\\pi}{4} = \\dfrac{1}{\\sqrt{2}}\\).\nLeft limit: \\(\\lim_{x \\to \\pi/4^{-}} \\sin x = \\sin\\dfrac{\\pi}{4} = \\dfrac{1}{\\sqrt{2}}\\).\nRight limit: \\(\\lim_{x \\to \\pi/4^{+}} \\cos x = \\cos\\dfrac{\\pi}{4} = \\dfrac{1}{\\sqrt{2}}\\).\nThe two one-sided limits agree, so the limit exists and equals the value of the function.\n\\(\\therefore f\\) is continuous at \\(x = \\dfrac{\\pi}{4}\\)."
+  },
+  {
+    "id": "62730864-7158-4108-987c-5ce7bfeb9665",
+    "ref": "Ex 8.1 Q1(iii)",
+    "solution": "\\(f(3) = 8\\) (given).\nFor \\(x \\ne 3\\), \\(f(x) = \\dfrac{x^{2} - 9}{x - 3} = \\dfrac{(x - 3)(x + 3)}{x - 3} = x + 3\\).\n\\(\\therefore \\lim_{x \\to 3} f(x) = 3 + 3 = 6\\).\nThe limit exists but \\(6 \\ne 8 = f(3)\\), so the third condition fails.\n\\(\\therefore f\\) is discontinuous at \\(x = 3\\), and the discontinuity is removable (redefining \\(f(3) = 6\\) would make it continuous)."
+  },
+  {
+    "id": "e63168d9-e335-42ed-8cc4-2be9edd6badc",
+    "ref": "Ex 8.1 Q2(i)",
+    "solution": "\\(x = 2\\) satisfies \\(x \\le 2\\), so \\(f(2) = 2^{3} - 2(2) + 1 = 8 - 4 + 1 = 5\\).\nLeft limit: \\(\\lim_{x \\to 2^{-}} (x^{3} - 2x + 1) = 5\\).\nRight limit: \\(\\lim_{x \\to 2^{+}} (3x - 2) = 6 - 2 = 4\\).\nSince \\(5 \\ne 4\\), the two one-sided limits differ, so \\(\\lim_{x \\to 2} f(x)\\) does not exist.\n\\(\\therefore f\\) is discontinuous at \\(x = 2\\) (a jump discontinuity)."
+  },
+  {
+    "id": "b894023e-5e92-43c3-ba8d-bdad9d0f77d7",
+    "ref": "Ex 8.1 Q2(ii)",
+    "solution": "\\(f(1) = 20\\) (given).\nFor \\(x \\ne 1\\), \\(x^{2} + 18x - 19 = (x + 19)(x - 1)\\), so \\(f(x) = \\dfrac{(x + 19)(x - 1)}{x - 1} = x + 19\\).\n\\(\\therefore \\lim_{x \\to 1} f(x) = 1 + 19 = 20 = f(1)\\).\n\\(\\therefore f\\) is continuous at \\(x = 1\\)."
+  },
+  {
+    "id": "6608a3c4-6530-4837-b997-00c65ab239cf",
+    "ref": "Ex 8.1 Q2(iii)",
+    "solution": "\\(x = 0\\) satisfies \\(x \\ge 0\\), so \\(f(0) = \\dfrac{7}{3}\\), and the right limit is also \\(\\dfrac{7}{3}\\).\nLeft limit: \\(\\lim_{x \\to 0^{-}} \\left( \\dfrac{x}{\\tan 3x} + 2 \\right) = \\lim_{x \\to 0^{-}} \\dfrac{1}{3} \\cdot \\dfrac{3x}{\\tan 3x} + 2 = \\dfrac{1}{3}(1) + 2 = \\dfrac{7}{3}\\), using \\(\\lim_{\\theta \\to 0} \\dfrac{\\tan\\theta}{\\theta} = 1\\).\nBoth one-sided limits equal \\(\\dfrac{7}{3} = f(0)\\).\n\\(\\therefore f\\) is continuous at \\(x = 0\\)."
+  },
+  {
+    "id": "1ff97d44-8d50-4cbc-ac0b-206c32c742bd",
+    "ref": "Ex 8.1 Q3",
+    "solution": "\\(f(x) = \\lfloor x \\rfloor\\) is constant on each interval between consecutive integers, so it can only break at integers. The integers lying in \\((-3, 2)\\) are \\(-2, -1, 0, 1\\).\nAt any such integer \\(n\\): \\(\\lim_{x \\to n^{-}} \\lfloor x \\rfloor = n - 1\\) while \\(\\lim_{x \\to n^{+}} \\lfloor x \\rfloor = n = f(n)\\), so the one-sided limits differ and \\(\\lim_{x \\to n} f(x)\\) does not exist.\nFor example at \\(x = 0\\): left limit \\(= -1\\), right limit \\(= 0\\).\n\\(\\therefore f\\) is discontinuous at \\(x = -2,\\ x = -1,\\ x = 0,\\ x = 1\\) (jump discontinuities), and continuous at every other point of \\((-3, 2)\\)."
+  },
+  {
+    "id": "df666fdf-ef96-4eb9-8a16-540ba7051902",
+    "ref": "Ex 8.1 Q4",
+    "solution": "\\(f\\left(-\\dfrac{3}{2}\\right) = \\left| 2\\left(-\\dfrac{3}{2}\\right) + 3 \\right| = |0| = 0\\).\nFor \\(x < -\\dfrac{3}{2}\\), \\(2x + 3 < 0\\), so \\(f(x) = -(2x + 3)\\) and \\(\\lim_{x \\to -3/2^{-}} f(x) = 0\\).\nFor \\(x > -\\dfrac{3}{2}\\), \\(2x + 3 > 0\\), so \\(f(x) = 2x + 3\\) and \\(\\lim_{x \\to -3/2^{+}} f(x) = 0\\).\nBoth one-sided limits equal \\(0 = f\\left(-\\dfrac{3}{2}\\right)\\).\n\\(\\therefore f\\) is continuous at \\(x = -\\dfrac{3}{2}\\)."
+  },
+  {
+    "id": "046a41a8-face-4c1a-be2b-3af700a19836",
+    "ref": "Ex 8.1 Q5(i)",
+    "solution": "\\(f(2) = \\dfrac{1}{5}\\) (given). Put \\(t = x - 1\\), so \\(x - 2 = t - 1\\) and \\(t \\to 1\\) as \\(x \\to 2\\).\n\\(\\lim_{x \\to 2} f(x) = \\lim_{t \\to 1} \\dfrac{t^{1/2} - t^{1/3}}{t - 1} = \\lim_{t \\to 1} \\dfrac{t^{1/2} - 1}{t - 1} - \\lim_{t \\to 1} \\dfrac{t^{1/3} - 1}{t - 1}\\).\nUsing \\(\\lim_{t \\to a} \\dfrac{t^{n} - a^{n}}{t - a} = n a^{n-1}\\) with \\(a = 1\\), these are \\(\\dfrac{1}{2}\\) and \\(\\dfrac{1}{3}\\).\n\\(\\therefore \\lim_{x \\to 2} f(x) = \\dfrac{1}{2} - \\dfrac{1}{3} = \\dfrac{1}{6}\\).\nThe limit exists but \\(\\dfrac{1}{6} \\ne \\dfrac{1}{5} = f(2)\\).\n\\(\\therefore f\\) is discontinuous at \\(x = 2\\) (removable discontinuity)."
+  },
+  {
+    "id": "1b23a06b-9f57-491b-9bc3-ab6e61dce055",
+    "ref": "Ex 8.1 Q5(ii)",
+    "solution": "\\(f(2) = -24\\) (given). For \\(x \\ne 2\\), multiply numerator and denominator by the conjugate \\(\\sqrt{x + 2} + \\sqrt{3x - 2}\\):\n\\(f(x) = \\dfrac{(x^{3} - 8)\\left( \\sqrt{x + 2} + \\sqrt{3x - 2} \\right)}{(x + 2) - (3x - 2)} = \\dfrac{(x - 2)(x^{2} + 2x + 4)\\left( \\sqrt{x + 2} + \\sqrt{3x - 2} \\right)}{-2(x - 2)}\\).\nCancelling \\(x - 2\\) and letting \\(x \\to 2\\):\n\\(\\lim_{x \\to 2} f(x) = \\dfrac{(4 + 4 + 4)(2 + 2)}{-2} = \\dfrac{48}{-2} = -24 = f(2)\\).\n\\(\\therefore f\\) is continuous at \\(x = 2\\)."
+  },
+  {
+    "id": "ccf7863b-0e24-495b-a0e9-6ba5b4058644",
+    "ref": "Ex 8.1 Q5(iii)",
+    "solution": "\\(x = \\dfrac{8}{3}\\) satisfies \\(x \\le \\dfrac{8}{3}\\), so \\(f\\left(\\dfrac{8}{3}\\right) = 4\\left(\\dfrac{8}{3}\\right) + 1 = \\dfrac{35}{3}\\).\nLeft limit: \\(\\lim_{x \\to 8/3^{-}} (4x + 1) = \\dfrac{35}{3}\\).\nRight limit: \\(\\lim_{x \\to 8/3^{+}} \\dfrac{59 - 9x}{3} = \\dfrac{59 - 24}{3} = \\dfrac{35}{3}\\).\nBoth one-sided limits equal the value of the function.\n\\(\\therefore f\\) is continuous at \\(x = \\dfrac{8}{3}\\)."
+  },
+  {
+    "id": "17664262-94f2-4267-aec9-391a10dbfd92",
+    "ref": "Ex 8.1 Q5(iv)",
+    "solution": "\\(f(0) = 2\\) (given). For \\(x \\ne 0\\), write both roots about their values at \\(x = 0\\):\nNumerator \\(= 3\\left[ \\left(1 - \\dfrac{2x}{27}\\right)^{1/3} - 1 \\right]\\) and denominator \\(= 9\\left[ 1 - \\left(1 + \\dfrac{5x}{243}\\right)^{1/5} \\right]\\).\nUsing \\(\\lim_{u \\to 0} \\dfrac{(1 + u)^{n} - 1}{u} = n\\):\nNumerator \\(\\approx 3 \\cdot \\dfrac{1}{3}\\left(-\\dfrac{2x}{27}\\right) = -\\dfrac{2x}{27}\\), denominator \\(\\approx -9 \\cdot \\dfrac{1}{5}\\left(\\dfrac{5x}{243}\\right) = -\\dfrac{x}{27}\\).\n\\(\\therefore \\lim_{x \\to 0} f(x) = \\dfrac{-2x/27}{-x/27} = 2 = f(0)\\).\n\\(\\therefore f\\) is continuous at \\(x = 0\\)."
+  },
+  {
+    "id": "75fa3ec6-fd48-42da-9afe-937088239605",
+    "ref": "Ex 8.1 Q5(v)",
+    "solution": "\\(f(2) = 12\\) (given). Near \\(x = 2\\) only the first branch applies, since \\(2 \\in (0, 3)\\).\n\\(x^{2} + 8x - 20 = (x + 10)(x - 2)\\) and \\(2x^{2} - 9x + 10 = (2x - 5)(x - 2)\\).\n\\(\\therefore \\lim_{x \\to 2} f(x) = \\lim_{x \\to 2} \\dfrac{x + 10}{2x - 5} = \\dfrac{12}{-1} = -12\\).\nThe limit exists but \\(-12 \\ne 12 = f(2)\\).\n\\(\\therefore f\\) is discontinuous at \\(x = 2\\) (removable discontinuity)."
+  },
+  {
+    "id": "5927d50b-e534-4eeb-9e34-f46a150f034c",
+    "ref": "Ex 8.1 Q6(i)",
+    "solution": "\\(f\\) is not defined at \\(x = 7\\), so it is discontinuous there.\nFor \\(x \\ne 7\\), \\(f(x) = \\dfrac{(x - 3)(x - 7)}{x - 7} = x - 3\\), so \\(\\lim_{x \\to 7} f(x) = 4\\).\nThe limit exists and is finite, only the value is missing, so the gap can be closed by defining \\(f(7) = 4\\).\n\\(\\therefore\\) the discontinuity at \\(x = 7\\) is removable."
+  },
+  {
+    "id": "2e1491d0-ab42-45be-a109-8fc2dfa1a669",
+    "ref": "Ex 8.1 Q6(ii)",
+    "solution": "Each branch is a polynomial, so the only possible break is at \\(x = 4\\).\n\\(f(4) = 16 + 12 - 2 = 26\\); left limit \\(= \\lim_{x \\to 4^{-}} (x^{2} + 3x - 2) = 26\\).\nRight limit \\(= \\lim_{x \\to 4^{+}} (5x + 3) = 23\\).\nThe one-sided limits are finite but unequal \\((26 \\ne 23)\\), so the limit does not exist and no redefinition of \\(f(4)\\) can help.\n\\(\\therefore f\\) has a jump discontinuity at \\(x = 4\\), of jump \\(23 - 26 = -3\\)."
+  },
+  {
+    "id": "22d3160e-b7f5-4b45-b8a8-3786cfa7d4f5",
+    "ref": "Ex 8.1 Q6(iii)",
+    "solution": "\\(f\\) is not defined at \\(x = -3\\) (neither branch includes it), so that is the only doubtful point.\nLeft limit \\(= \\lim_{x \\to -3^{-}} (x^{2} - 3x - 2) = 9 + 9 - 2 = 16\\).\nRight limit \\(= \\lim_{x \\to -3^{+}} (3 + 8x) = 3 - 24 = -21\\).\nThe one-sided limits are finite but unequal, so \\(\\lim_{x \\to -3} f(x)\\) does not exist.\n\\(\\therefore f\\) has a jump discontinuity at \\(x = -3\\), of jump \\(-21 - 16 = -37\\)."
+  },
+  {
+    "id": "dded79d8-9ae8-45c5-b178-8727e62d12ae",
+    "ref": "Ex 8.1 Q6(iv)",
+    "solution": "\\(f\\) is not defined at \\(x = \\pi\\).\nLeft limit \\(= \\lim_{x \\to \\pi^{-}} (4 + \\sin x) = 4 + 0 = 4\\).\nRight limit \\(= \\lim_{x \\to \\pi^{+}} (3 - \\cos x) = 3 - (-1) = 4\\).\nThe two agree, so \\(\\lim_{x \\to \\pi} f(x) = 4\\) exists; only the value at \\(x = \\pi\\) is missing.\n\\(\\therefore\\) the discontinuity at \\(x = \\pi\\) is removable (define \\(f(\\pi) = 4\\))."
+  },
+  {
+    "id": "86bf0b84-d2b0-4276-bbba-815e51311160",
+    "ref": "Ex 8.1 Q7(i)",
+    "solution": "\\(f\\) is not defined at \\(x = 0\\), since \\(\\sin 0 = 0\\).\nUsing \\(1 - \\cos 2x = 2\\sin^{2} x\\), for \\(x \\ne 0\\) near \\(0\\): \\(f(x) = \\dfrac{2\\sin^{2} x}{\\sin x} = 2\\sin x\\).\n\\(\\therefore \\lim_{x \\to 0} f(x) = 2\\sin 0 = 0\\), a finite limit, so a continuous extension exists.\nThe continuous extension is obtained by defining \\(f(0) = 0\\)."
+  },
+  {
+    "id": "8ec662c3-398a-4a0f-bb36-0cb0794b97ec",
+    "ref": "Ex 8.1 Q7(ii)",
+    "solution": "\\(f\\) is not defined at \\(x = 0\\), since \\(1 - \\cos^{2} x = \\sin^{2} x = 0\\) there.\nUsing \\(1 - \\cos 2x = 2\\sin^{2} x\\) and \\(1 - \\cos^{2} x = \\sin^{2} x\\), for \\(x \\ne 0\\):\n\\(f(x) = \\dfrac{3\\sin^{2} x + 4\\sin^{2} x \\cos x}{2\\sin^{2} x} = \\dfrac{3 + 4\\cos x}{2}\\).\n\\(\\therefore \\lim_{x \\to 0} f(x) = \\dfrac{3 + 4}{2} = \\dfrac{7}{2}\\), a finite limit, so a continuous extension exists.\nThe continuous extension is obtained by defining \\(f(0) = \\dfrac{7}{2}\\)."
+  },
+  {
+    "id": "95e3c256-5a3d-4b16-8318-33d1f07e96ec",
+    "ref": "Ex 8.1 Q7(iii)",
+    "solution": "\\(f\\) is not defined at \\(x = -1\\), since \\(x^{3} + 1 = 0\\) there.\nFor \\(x \\ne -1\\): \\(f(x) = \\dfrac{(x - 1)(x + 1)}{(x + 1)(x^{2} - x + 1)} = \\dfrac{x - 1}{x^{2} - x + 1}\\).\n\\(\\therefore \\lim_{x \\to -1} f(x) = \\dfrac{-2}{1 + 1 + 1} = -\\dfrac{2}{3}\\), a finite limit, so a continuous extension exists.\nThe continuous extension is obtained by defining \\(f(-1) = -\\dfrac{2}{3}\\)."
+  },
+  {
+    "id": "0cd677be-5186-4a30-97b9-96d3b2cf1c47",
+    "ref": "Ex 8.1 Q8(i)",
+    "solution": "\\(f\\left(\\dfrac{\\pi}{3}\\right) = \\dfrac{3}{4}\\) (given). Put \\(x = \\dfrac{\\pi}{3} + h\\), so \\(h \\to 0\\) and \\(\\pi - 3x = -3h\\).\n\\(\\sqrt{3} - \\tan\\left(\\dfrac{\\pi}{3} + h\\right) = \\sqrt{3} - \\dfrac{\\sqrt{3} + \\tan h}{1 - \\sqrt{3}\\tan h} = \\dfrac{-4\\tan h}{1 - \\sqrt{3}\\tan h}\\).\n\\(\\therefore \\lim_{x \\to \\pi/3} f(x) = \\lim_{h \\to 0} \\dfrac{-4\\tan h}{-3h\\left(1 - \\sqrt{3}\\tan h\\right)} = \\dfrac{4}{3} \\cdot 1 = \\dfrac{4}{3}\\).\nThe limit exists but \\(\\dfrac{4}{3} \\ne \\dfrac{3}{4} = f\\left(\\dfrac{\\pi}{3}\\right)\\).\n\\(\\therefore f\\) is discontinuous at \\(x = \\dfrac{\\pi}{3}\\) (removable discontinuity)."
+  },
+  {
+    "id": "1bc4782f-0ec5-487e-b94e-8534284990f4",
+    "ref": "Ex 8.1 Q8(ii)",
+    "solution": "\\(f(0) = 1\\) (given).\nAs \\(x \\to 0^{+}\\), \\(\\dfrac{1}{x} \\to +\\infty\\) so \\(e^{1/x} \\to \\infty\\). Dividing above and below by \\(e^{1/x}\\): \\(\\lim_{x \\to 0^{+}} \\dfrac{1 - e^{-1/x}}{1 + e^{-1/x}} = \\dfrac{1 - 0}{1 + 0} = 1\\).\nAs \\(x \\to 0^{-}\\), \\(\\dfrac{1}{x} \\to -\\infty\\) so \\(e^{1/x} \\to 0\\), giving \\(\\lim_{x \\to 0^{-}} f(x) = \\dfrac{0 - 1}{0 + 1} = -1\\).\nSince \\(1 \\ne -1\\), \\(\\lim_{x \\to 0} f(x)\\) does not exist.\n\\(\\therefore f\\) is discontinuous at \\(x = 0\\) (an irremovable jump discontinuity)."
+  },
+  {
+    "id": "afab95db-a7fe-496d-a8c8-2f4a220fe36a",
+    "ref": "Ex 8.1 Q8(iii)",
+    "solution": "\\(f(0) = \\dfrac{(\\log 2)^{2}}{2}\\) (given).\nNumerator \\(= \\left(2^{x}\\right)^{2} - 2 \\cdot 2^{x} + 1 = \\left(2^{x} - 1\\right)^{2}\\); denominator \\(= 1 - \\cos 2x = 2\\sin^{2} x\\).\n\\(\\therefore \\lim_{x \\to 0} f(x) = \\lim_{x \\to 0} \\dfrac{1}{2}\\left( \\dfrac{2^{x} - 1}{x} \\right)^{2} \\left( \\dfrac{x}{\\sin x} \\right)^{2} = \\dfrac{1}{2}(\\log 2)^{2}(1)^{2} = \\dfrac{(\\log 2)^{2}}{2}\\).\nThis equals \\(f(0)\\).\n\\(\\therefore f\\) is continuous at \\(x = 0\\)."
+  },
+  {
+    "id": "1b32fe10-1b12-4448-8b3b-217c108837e2",
+    "ref": "Ex 8.1 Q9(i)",
+    "solution": "\\(f(0) = \\dfrac{3}{4}\\) (given). Divide numerator and denominator by \\(x\\):\nNumerator: \\(\\dfrac{e^{5\\sin x} - 1}{x} - \\dfrac{e^{2x} - 1}{x} = 5 \\cdot \\dfrac{e^{5\\sin x} - 1}{5\\sin x} \\cdot \\dfrac{\\sin x}{x} - 2 \\cdot \\dfrac{e^{2x} - 1}{2x} \\to 5 - 2 = 3\\).\nDenominator: \\(\\dfrac{5\\tan x - 3x}{x} = 5 \\cdot \\dfrac{\\tan x}{x} - 3 \\to 5 - 3 = 2\\).\n\\(\\therefore \\lim_{x \\to 0} f(x) = \\dfrac{3}{2}\\), which exists but differs from \\(f(0) = \\dfrac{3}{4}\\).\nThe discontinuity is removable; redefining \\(f(0) = \\dfrac{3}{2}\\) makes \\(f\\) continuous at \\(x = 0\\)."
+  },
+  {
+    "id": "64393141-595a-4079-bd25-e97011c182f2",
+    "ref": "Ex 8.1 Q9(ii)",
+    "solution": "\\(f\\) is not defined at \\(x = 0\\).\nRight limit: \\(\\lim_{x \\to 0^{+}} \\dfrac{\\log(1 + 5x)}{\\log(1 + 3x)} = \\lim_{x \\to 0^{+}} \\dfrac{5 \\cdot \\dfrac{\\log(1 + 5x)}{5x}}{3 \\cdot \\dfrac{\\log(1 + 3x)}{3x}} = \\dfrac{5}{3}\\).\nLeft limit: \\(\\lim_{x \\to 0^{-}} \\dfrac{32^{x} - 1}{8^{x} - 1} = \\dfrac{\\log 32}{\\log 8} = \\dfrac{5\\log 2}{3\\log 2} = \\dfrac{5}{3}\\).\nBoth one-sided limits are \\(\\dfrac{5}{3}\\), so \\(\\lim_{x \\to 0} f(x) = \\dfrac{5}{3}\\) exists while \\(f(0)\\) is undefined.\nThe discontinuity is removable; defining \\(f(0) = \\dfrac{5}{3}\\) makes \\(f\\) continuous at \\(x = 0\\)."
+  },
+  {
+    "id": "b1db441d-bbbf-4851-9d59-e11b76175c52",
+    "ref": "Ex 8.1 Q9(iii)",
+    "solution": "\\(f\\) is not defined at \\(x = 0\\). As \\(x \\to 0\\) the base \\(\\to 1\\) and the index \\(\\to \\infty\\), an \\(1^{\\infty}\\) form.\nBase \\(- 1 = \\dfrac{3 - 8x}{3 - 2x} - 1 = \\dfrac{-6x}{3 - 2x}\\).\n\\(\\therefore \\lim_{x \\to 0} f(x) = e^{\\lim_{x \\to 0} \\frac{1}{x} \\cdot \\frac{-6x}{3 - 2x}} = e^{-6/3} = e^{-2}\\).\nThe limit exists and is finite while \\(f(0)\\) is undefined.\nThe discontinuity is removable; defining \\(f(0) = e^{-2}\\) makes \\(f\\) continuous at \\(x = 0\\)."
+  },
+  {
+    "id": "21ebefa0-0b86-4645-a440-73f3affd0e34",
+    "ref": "Ex 8.1 Q9(iv)",
+    "solution": "Each branch is a polynomial, so the only doubtful point is \\(x = -2\\).\n\\(f(-2) = 3(-2) + 2 = -4\\); left limit \\(= \\lim_{x \\to -2^{-}} (3x + 2) = -4\\).\nRight limit \\(= \\lim_{x \\to -2^{+}} (2x - 3) = -4 - 3 = -7\\).\nSince \\(-4 \\ne -7\\), the limit does not exist, and no choice of \\(f(-2)\\) can repair that.\n\\(\\therefore f\\) has an irremovable (jump) discontinuity at \\(x = -2\\); it cannot be redefined to become continuous."
+  },
+  {
+    "id": "e685a5bb-1f1a-4051-9363-1c44425579ab",
+    "ref": "Ex 8.1 Q9(v)",
+    "solution": "\\(f(2) = 3\\) (given).\nRight limit: \\(\\lim_{x \\to 2^{+}} \\dfrac{(x - 2)(x^{2} + 2x + 4)}{(x - 2)(x + 2)} = \\dfrac{4 + 4 + 4}{4} = 3\\).\nLeft limit: put \\(t = 3(x - 2)^{2} \\to 0\\), then \\(\\dfrac{e^{t} - 1}{2(x - 2)^{2}} = \\dfrac{e^{t} - 1}{t} \\cdot \\dfrac{3(x - 2)^{2}}{2(x - 2)^{2}} \\to 1 \\cdot \\dfrac{3}{2} = \\dfrac{3}{2}\\).\nSince \\(\\dfrac{3}{2} \\ne 3\\), the one-sided limits differ and \\(\\lim_{x \\to 2} f(x)\\) does not exist.\n\\(\\therefore f\\) has an irremovable (jump) discontinuity at \\(x = 2\\); it cannot be redefined to become continuous."
+  },
+  {
+    "id": "16ab7d31-560f-4e4c-95de-70571d963e9a",
+    "ref": "Ex 8.1 Q10(i)",
+    "solution": "For continuity at \\(x = \\dfrac{\\pi}{2}\\) we need \\(f\\left(\\dfrac{\\pi}{2}\\right) = \\lim_{x \\to \\pi/2} f(x)\\).\nMultiplying by the conjugate \\(\\sqrt{2 + \\sin x} + \\sqrt{3}\\) and using \\(\\cos^{2} x = 1 - \\sin^{2} x\\):\n\\(f(x) = \\dfrac{\\sin x - 1}{(1 - \\sin x)(1 + \\sin x)\\left( \\sqrt{2 + \\sin x} + \\sqrt{3} \\right)} = \\dfrac{-1}{(1 + \\sin x)\\left( \\sqrt{2 + \\sin x} + \\sqrt{3} \\right)}\\).\n\\(\\therefore \\lim_{x \\to \\pi/2} f(x) = \\dfrac{-1}{(1 + 1)\\left( \\sqrt{3} + \\sqrt{3} \\right)} = \\dfrac{-1}{4\\sqrt{3}}\\).\n\\(\\therefore f\\left(\\dfrac{\\pi}{2}\\right) = -\\dfrac{1}{4\\sqrt{3}}\\)."
+  },
+  {
+    "id": "4ba3af5c-0422-4cc1-8285-9b5cace97107",
+    "ref": "Ex 8.1 Q10(ii)",
+    "solution": "For continuity at \\(x = 0\\) we need \\(f(0) = \\lim_{x \\to 0} f(x)\\).\nNumerator \\(= \\cos 2x - 1 = -2\\sin^{2} x\\); rationalising the denominator, \\(\\sqrt{3x^{2} + 1} - 1 = \\dfrac{3x^{2}}{\\sqrt{3x^{2} + 1} + 1}\\).\n\\(\\therefore f(x) = \\dfrac{-2\\sin^{2} x \\left( \\sqrt{3x^{2} + 1} + 1 \\right)}{3x^{2}} = -\\dfrac{2}{3}\\left( \\dfrac{\\sin x}{x} \\right)^{2}\\left( \\sqrt{3x^{2} + 1} + 1 \\right)\\).\n\\(\\therefore \\lim_{x \\to 0} f(x) = -\\dfrac{2}{3}(1)^{2}(1 + 1) = -\\dfrac{4}{3}\\).\n\\(\\therefore f(0) = -\\dfrac{4}{3}\\)."
+  },
+  {
+    "id": "75752705-205e-47c9-b035-f1999a366b25",
+    "ref": "Ex 8.1 Q10(iii)",
+    "solution": "For continuity at \\(x = \\pi\\) we need \\(f(\\pi) = \\lim_{x \\to \\pi} f(x)\\). Put \\(t = x - \\pi \\to 0\\).\n\\(4^{t} + 4^{-t} - 2 = \\left( 2^{t} - 2^{-t} \\right)^{2}\\), so \\(f = \\left( \\dfrac{2^{t} - 2^{-t}}{t} \\right)^{2}\\).\nNow \\(\\dfrac{2^{t} - 2^{-t}}{t} = \\dfrac{2^{t} - 1}{t} + \\dfrac{2^{-t} - 1}{-t} \\to \\log 2 + \\log 2 = 2\\log 2\\).\n\\(\\therefore \\lim_{x \\to \\pi} f(x) = (2\\log 2)^{2} = 4(\\log 2)^{2}\\).\n\\(\\therefore f(\\pi) = 4(\\log 2)^{2}\\)."
+  },
+  {
+    "id": "3351f12a-e916-4662-a67d-f5bbcb2d58c8",
+    "ref": "Ex 8.1 Q11(i)",
+    "solution": "Factorise both by grouping:\nNumerator \\(= 8^{x}3^{x} - 8^{x} - 3^{x} + 1 = \\left( 8^{x} - 1 \\right)\\left( 3^{x} - 1 \\right)\\).\nDenominator \\(= 4^{x}3^{x} - 4^{x} - 3^{x} + 1 = \\left( 4^{x} - 1 \\right)\\left( 3^{x} - 1 \\right)\\).\n\\(\\therefore \\lim_{x \\to 0} f(x) = \\lim_{x \\to 0} \\dfrac{\\left( 8^{x} - 1 \\right)/x}{\\left( 4^{x} - 1 \\right)/x} = \\dfrac{\\log 8}{\\log 4} = \\dfrac{3\\log 2}{2\\log 2} = \\dfrac{3}{2}\\).\nFor continuity at \\(x = 0\\), \\(k = \\lim_{x \\to 0} f(x)\\).\n\\(\\therefore k = \\dfrac{3}{2}\\)."
+  },
+  {
+    "id": "a8298c5a-7800-46ed-9954-c78302333b1e",
+    "ref": "Ex 8.1 Q11(ii)",
+    "solution": "\\(5^{x} + 5^{-x} - 2 = \\left( 5^{x} - 1 \\right)\\left( 1 - 5^{-x} \\right)\\), since expanding gives \\(5^{x} - 1 - 1 + 5^{-x}\\).\n\\(\\therefore \\lim_{x \\to 0} f(x) = \\lim_{x \\to 0} \\dfrac{5^{x} - 1}{x} \\cdot \\dfrac{1 - 5^{-x}}{x} = \\log 5 \\cdot \\log 5 = (\\log 5)^{2}\\),\nusing \\(\\lim_{x \\to 0} \\dfrac{5^{-x} - 1}{-x} = \\log 5\\).\nFor continuity at \\(x = 0\\), \\(k = \\lim_{x \\to 0} f(x)\\).\n\\(\\therefore k = (\\log 5)^{2}\\)."
+  },
+  {
+    "id": "1eafe735-c910-41eb-b3d7-c87d827122be",
+    "ref": "Ex 8.1 Q11(iii)",
+    "solution": "\\(f(0) = 4\\). For continuity at \\(x = 0\\) both one-sided limits must equal \\(4\\).\nRight limit: \\(\\lim_{x \\to 0^{+}} \\left( \\dfrac{\\sin 2x}{5x} - a \\right) = \\dfrac{2}{5}\\lim_{x \\to 0^{+}} \\dfrac{\\sin 2x}{2x} - a = \\dfrac{2}{5} - a\\).\n\\(\\dfrac{2}{5} - a = 4 \\Rightarrow a = \\dfrac{2}{5} - 4 = -\\dfrac{18}{5}\\).\nLeft limit: \\(\\lim_{x \\to 0^{-}} \\left( x^{2} + b - 3 \\right) = b - 3\\), and \\(b - 3 = 4 \\Rightarrow b = 7\\).\n\\(\\therefore a = -\\dfrac{18}{5},\\ b = 7\\)."
+  },
+  {
+    "id": "cfffba30-192c-4833-a53c-41e371185fef",
+    "ref": "Ex 8.1 Q11(iv)",
+    "solution": "Each branch is a polynomial, so continuity can only fail at \\(x = 0\\) and \\(x = 2\\).\nAt \\(x = 0\\): \\(f(0) = 2b + 18\\) and \\(\\lim_{x \\to 0^{+}} f(x) = 3a - b\\), so \\(2b + 18 = 3a - b\\), i.e. \\(a - b = 6\\).\nAt \\(x = 2\\): \\(f(2) = 4 + 3a - b\\) and \\(\\lim_{x \\to 2^{+}} f(x) = 16 - 2 = 14\\), so \\(3a - b = 10\\).\nSubstituting \\(b = a - 6\\) into \\(3a - b = 10\\): \\(3a - a + 6 = 10 \\Rightarrow a = 2\\), hence \\(b = -4\\).\n\\(\\therefore a = 2,\\ b = -4\\)."
+  },
+  {
+    "id": "e1fab7c6-65ef-415b-9fdb-f095fda44040",
+    "ref": "Ex 8.1 Q11(v)",
+    "solution": "The only doubtful points are \\(x = 2\\) and \\(x = 3\\).\nAt \\(x = 2\\): \\(\\lim_{x \\to 2^{-}} \\dfrac{(x - 2)(x + 2)}{x - 2} = 4\\) and \\(f(2) = 4a - 2b + 3\\), so \\(4a - 2b + 3 = 4\\), i.e. \\(4a - 2b = 1\\).\nAt \\(x = 3\\): \\(\\lim_{x \\to 3^{-}} \\left( ax^{2} - bx + 3 \\right) = 9a - 3b + 3\\) and \\(f(3) = 6 - a + b\\), so \\(9a - 3b + 3 = 6 - a + b\\), i.e. \\(10a - 4b = 3\\).\nDoubling the first gives \\(8a - 4b = 2\\); subtracting from \\(10a - 4b = 3\\) gives \\(2a = 1\\), so \\(a = \\dfrac{1}{2}\\) and then \\(2 - 2b = 1\\) gives \\(b = \\dfrac{1}{2}\\).\n\\(\\therefore a = \\dfrac{1}{2},\\ b = \\dfrac{1}{2}\\)."
+  },
+  {
+    "id": "734bf30d-71db-4cfa-9bcd-447c6b60aec5",
+    "ref": "Ex 8.1 Q12",
+    "solution": "The domain is \\([-3, 7]\\). Modulus functions are continuous everywhere, so \\(f\\) is continuous on \\([-3, 2)\\) and on \\((2, 7]\\); only \\(x = 2\\) needs checking.\n\\(f(2) = |2 + 1| = 3\\) and \\(\\lim_{x \\to 2^{-}} |x + 1| = 3\\).\n\\(\\lim_{x \\to 2^{+}} |x - 5| = |2 - 5| = 3\\).\nAll three are equal, so \\(f\\) is continuous at \\(x = 2\\) as well.\n\\(\\therefore f\\) is continuous on its whole domain \\([-3, 7]\\)."
+  },
+  {
+    "id": "83a801fa-1961-427d-ab1a-9235e323342a",
+    "ref": "Ex 8.1 Q13",
+    "solution": "\\(f\\left(\\dfrac{\\pi}{4}\\right) = \\dfrac{3}{\\sqrt{2}}\\) (given). Put \\(t = 1 + \\sin 2x\\); then \\((\\sin x + \\cos x)^{2} = 1 + \\sin 2x = t\\), so \\((\\sin x + \\cos x)^{3} = t^{3/2}\\) and \\(\\sin 2x - 1 = t - 2\\).\nAs \\(x \\to \\dfrac{\\pi}{4}\\), \\(\\sin 2x \\to 1\\) so \\(t \\to 2\\), and \\(2\\sqrt{2} = 2^{3/2}\\).\n\\(\\therefore \\lim_{x \\to \\pi/4} f(x) = \\lim_{t \\to 2} \\dfrac{t^{3/2} - 2^{3/2}}{t - 2} = \\dfrac{3}{2} \\cdot 2^{1/2} = \\dfrac{3}{\\sqrt{2}}\\), using \\(\\lim_{t \\to a} \\dfrac{t^{n} - a^{n}}{t - a} = n a^{n-1}\\).\nThis equals \\(f\\left(\\dfrac{\\pi}{4}\\right)\\).\n\\(\\therefore f\\) is continuous at \\(x = \\dfrac{\\pi}{4}\\)."
+  },
+  {
+    "id": "9092cea7-7c32-41f9-9c1c-b384d5be9a8d",
+    "ref": "Ex 8.1 Q14",
+    "solution": "\\(|x - 2| \\ge 1\\) means \\(x \\le 1\\) or \\(x \\ge 3\\), so \\(f(x) = x^{2} + px + q\\) there and \\(f(x) = x + 1\\) on \\((1, 3)\\). Each piece is a polynomial, so only \\(x = 1\\) and \\(x = 3\\) need checking.\nAt \\(x = 1\\): \\(f(1) = 1 + p + q\\) and \\(\\lim_{x \\to 1^{+}} (x + 1) = 2\\), so \\(1 + p + q = 2\\), i.e. \\(p + q = 1\\).\nAt \\(x = 3\\): \\(\\lim_{x \\to 3^{-}} (x + 1) = 4\\) and \\(f(3) = 9 + 3p + q\\), so \\(9 + 3p + q = 4\\), i.e. \\(3p + q = -5\\).\nSubtracting, \\(2p = -6\\), so \\(p = -3\\) and \\(q = 1 - p = 4\\).\n\\(\\therefore p = -3,\\ q = 4\\)."
+  },
+  {
+    "id": "5e613e1d-c385-48b9-a07c-009aa6241cc6",
+    "ref": "Ex 8.1 Q15",
+    "solution": "Let \\(f(x) = 2x^{3} - x - 16\\). Being a polynomial, \\(f\\) is continuous on \\([2, 3]\\).\n\\(f(2) = 2(8) - 2 - 16 = -2 < 0\\).\n\\(f(3) = 2(27) - 3 - 16 = 35 > 0\\).\nSo \\(f(2)\\) and \\(f(3)\\) have opposite signs, and \\(0\\) lies between \\(f(2)\\) and \\(f(3)\\).\nBy the Intermediate Value Theorem there exists \\(c \\in (2, 3)\\) with \\(f(c) = 0\\).\n\\(\\therefore\\) the equation \\(2x^{3} - x - 16 = 0\\) has a root between \\(2\\) and \\(3\\)."
+  },
+  {
+    "id": "160cd7cd-7e99-4530-a7da-863205b784b2",
+    "ref": "Ex 8.1 Q16",
+    "solution": "Let \\(f(x) = x^{3} - 3x\\). Being a polynomial, \\(f\\) is continuous on \\([1, 2]\\).\n\\(f(1) = 1 - 3 = -2 < 0\\).\n\\(f(2) = 8 - 6 = 2 > 0\\).\nSo \\(f(1)\\) and \\(f(2)\\) have opposite signs, and \\(0\\) lies between them.\nBy the Intermediate Value Theorem there exists \\(c \\in (1, 2)\\) with \\(f(c) = 0\\).\n\\(\\therefore\\) the equation \\(x^{3} - 3x = 0\\) has a root between \\(1\\) and \\(2\\) (in fact \\(c = \\sqrt{3}\\))."
+  },
+  {
+    "id": "f2fbc84d-90bd-4b67-aa0e-ae71020929a5",
+    "ref": "Ex 8.1 Q17",
+    "solution": "The stem prints no interval against either branch, so as written both formulas would apply on all of \\(\\mathbb{R}\\). Fig. 8.11 settles the intent: the parabola \\(y = x^{2} + 5\\) is drawn only for \\(x \\ge 1\\), with a solid dot at \\((1, 6)\\) and nothing to its left, so the linear piece is meant for \\(x < 1\\):\n\\(f(x) = ax + b\\) for \\(x < 1\\), \\(f(x) = x^{2} + 5\\) for \\(x \\ge 1\\).\nThen \\(f(1) = 1 + 5 = 6\\) and \\(\\lim_{x \\to 1^{+}} f(x) = 6\\), while \\(\\lim_{x \\to 1^{-}} f(x) = a + b\\).\nContinuity at \\(x = 1\\) therefore requires only \\(a + b = 6\\).\nThat is ONE equation in TWO unknowns, so \\(a\\) and \\(b\\) are not determined individually: every pair with \\(a + b = 6\\) works, for instance \\(a = 1,\\ b = 5\\) or \\(a = 6,\\ b = 0\\).\n\\(\\therefore\\) the required condition is \\(a + b = 6\\); the question as printed is under-determined and fixes no unique \\(a\\) and \\(b\\).",
+    "_note": "Under-determined as printed, and the book prints no answer for Q17. Continuity at x = 1 gives only a + b = 6. Reported as the condition rather than inventing a second equation to pin a and b down."
+  },
+  {
+    "id": "48cc3732-9820-4a40-bbb3-4c0a9f1e9835",
+    "ref": "Ex 8.1 Q18",
+    "solution": "Each piece is a polynomial, so \\(f\\) is continuous on \\([a, b)\\) and on \\((b, c]\\); only \\(x = b\\) needs checking. Since \\(b\\) lies in the first piece:\n\\(f(b) = pb + 3\\).\n\\(\\lim_{x \\to b^{+}} f(x) = \\lim_{x \\to b^{+}} \\left( 5x^{2} - q \\right) = 5b^{2} - q\\).\nFor continuity at \\(x = b\\) these must be equal:\n\\(\\therefore pb + 3 = 5b^{2} - q\\).\n\\(\\therefore pb = 5b^{2} - q - 3\\), so \\(p = \\dfrac{5b^{2} - q - 3}{b}\\) is the required condition (with \\(b \\ne 0\\))."
+  }
+]

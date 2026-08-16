@@ -1,0 +1,648 @@
+[
+  {
+    "ref": "3.2.1 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "A restaurant offers five types of fruit juices and three types of milk shakes. If a customer wants to order a drink, how many choices does the customer have?",
+    "solution": "Since the restaurant offers five fruit juices, the customer has five ways of selecting a fruit juice. Similarly, since the restaurant offers three types of milk shakes, the customer has three ways of selecting a milk shake. Finally, since the customer wants to select only one drink, there are \\(5 + 3 = 8\\) choices for the customer."
+  },
+  {
+    "ref": "3.2.1 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "Consider an experiment of drawing a card from a pack of 52 playing cards. What is the number of ways in which the drawn card is a spade or a club?",
+    "solution": "Since there are 13 spade cards and 13 club cards hence the number of ways in which the drawn card is spade or club is \\(13 + 13 = 26\\) ways."
+  },
+  {
+    "ref": "3.2.2 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "Samadhan Bhojanalay offers a thali that has four items: roti, rice, vegetable and dal. Following choices are available and one option is to be selected for each item.\nRoti: chapati, tandoor roti\nRice: plain rice, jeera rice, dal khichadi\nVegetable: dum aloo, paneer masala, mixed veg\nDal: dal fry, dal tadka\nHow many different menus are possible?",
+    "solution": "Since one option is to be selected for each item, the number of different possible thali choices are identified as follows.\nRoti 2, Rice 3, Vegetable 3, Dal 2 and hence the total number of different possible thali menus is \\(2 \\times 3 \\times 3 \\times 2 = 36\\)."
+  },
+  {
+    "ref": "3.2.2 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "stem": "A company decides to label each of its different products with a code that consists of two letters followed by three digits. How many different products can be labeled in this way?",
+    "solution": "Since the first two characters in a label are letters, they can be formed in \\(26 \\times 26 = 676\\) ways. The next three characters are digits and can be formed in \\(10 \\times 10 \\times 10 = 1000\\) ways. The total number of distinct labels is, by the multiplication principle, given by \\(676 \\times 1000 = 6{,}76{,}000\\)."
+  },
+  {
+    "ref": "3.3 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "stem": "From the figure below, find the total number of routes from A to B. e.g. one upper route is \\(A \\to D \\to N \\to E \\to B\\). (See fig 3.4)\nIn the figure, A (on the left) and B (on the right) are joined only through two intermediate points, N above and S below. There are two routes from A to N, labelled C and D; three routes from N to B, labelled E, F and G; one route from A to S; and two routes from S to B, labelled H and I.",
+    "solution": "\\(A \\to D \\to N \\to E \\to B\\) is one route through N. \\(A \\to C \\to N \\to F \\to B\\) is another route through N. Thus there are in all \\(2 \\times 3 = 6\\) routes through N. There are 2 routes through S. Hence the total number of routes is \\(6 + 2 = 8\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig 3.4 — a network from A (left) to B (right) via N (top) and S (bottom): arcs C and D from A to N, arcs E, F and G from N to B, one unlabelled arc from A to S, and arcs H and I from S to B. The arc labels are the route names used in the solution.",
+    "_note": "The book writes the route labels above the arrows (A --D--> N --E--> B); transcribed inline as A -> D -> N -> E -> B, which is the form the printed stem itself uses."
+  },
+  {
+    "ref": "3.3 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "stem": "Suppose 5 chocolates of different type are to be distributed among 4 children and there is no condition on how many chocolates a child can get (including zero.) How many different ways are possible for doing so?",
+    "solution": "The first chocolate can be given to any of the four children. Therefore, there are four different ways of giving the first chocolate. Similarly, the second chocolate can be given in four different ways, and similarly for each of the remaining chocolates. The multiplication principle then gives the total number of different ways as \\(4 \\times 4 \\times 4 \\times 4 \\times 4 = 4^5 = 1024\\).",
+    "_note": "The book misspells 'chocolates' as 'chocoloates' in the printed stem; transcribed with the correct spelling (orthographic only, no mathematical change)."
+  },
+  {
+    "ref": "3.3 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "HARD",
+    "stem": "How many even numbers can be formed using the digits 2, 3, 7, 8 so that the number formed is less than 1000?",
+    "solution": "The condition that the number formed from the given digits is less than 1000 means that this number can have upto 3 digits. Let us therefore consider the three cases separately.\n**case i) One digit numbers**\nSince the number must be even, the one-digit number can be only 2 or 8. Hence, there are 2 ways of forming a one digit even number.\n**case ii) Two digit numbers**\nSince the required number is even, the units place of a two-digit number must be either 2 or 8 i.e. 2 ways. The ten's place can be filled with any of the four given digits. Therefore, there are \\(4 \\times 2 = 8\\) ways of forming a two-digit even number.\n**case iii) Three digit numbers**\nFinally, since the required number is even, the units place can be filled in two ways, ten's place can be filled in four ways, and hundred's place can also be filled in four ways. The number of ways of forming a three digit even number is \\(4 \\times 4 \\times 2 = 32\\).\nThe addition principle finally gives the total number of ways of forming an even number less than 1000 using digits 2, 3, 7, 8 is \\(2 + 8 + 32 = 42\\).",
+    "_note": "The printed solution carries two spelling slips, 'less that 1000' and 'requried'; transcribed with the correct spellings (orthographic only, no mathematical change). The solution's tail sits at the top of the RIGHT column of p-04, above the EXERCISE 3.1 banner."
+  },
+  {
+    "ref": "Ex 3.1 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "A teacher wants to select the class monitor in a class of 30 boys and 20 girls. In how many ways can the monitor be selected if the monitor must be either a girl or a boy?"
+  },
+  {
+    "ref": "Ex 3.1 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "A Signal is generated from 2 flags by putting one flag above the other. If 4 flags of different colours are available, how many different signals can be generated?"
+  },
+  {
+    "ref": "Ex 3.1 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "context": "How many two letter words can be formed using letters from the word SPACE, when repetition of letters (i) is allowed, (ii) is not allowed?",
+    "setLabel": "Ex 3.1 Q3",
+    "stem": "Repetition of letters is allowed."
+  },
+  {
+    "ref": "Ex 3.1 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "context": "How many two letter words can be formed using letters from the word SPACE, when repetition of letters (i) is allowed, (ii) is not allowed?",
+    "setLabel": "Ex 3.1 Q3",
+    "stem": "Repetition of letters is not allowed."
+  },
+  {
+    "ref": "Ex 3.1 Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "context": "How many three-digit numbers can be formed from the digits 0, 1, 3, 5, 6 if repetitions of digits (i) are allowed, (ii) are not allowed?",
+    "setLabel": "Ex 3.1 Q4",
+    "stem": "Repetitions of digits are allowed."
+  },
+  {
+    "ref": "Ex 3.1 Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "context": "How many three-digit numbers can be formed from the digits 0, 1, 3, 5, 6 if repetitions of digits (i) are allowed, (ii) are not allowed?",
+    "setLabel": "Ex 3.1 Q4",
+    "stem": "Repetitions of digits are not allowed."
+  },
+  {
+    "ref": "Ex 3.1 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "How many three-digit numbers can be formed using the digits 2, 3, 4, 5, 6 if digits can be repeated?"
+  },
+  {
+    "ref": "Ex 3.1 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "stem": "A letter lock contains 3 rings and each ring containing 5 different letters. Determine the maximum number of false trials that can be made before the lock is opened?"
+  },
+  {
+    "ref": "Ex 3.1 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "stem": "In a test, 5 questions are of the form 'state, true or false'. No student has got all answers correct. Also, the answer of every student is different. Find the number of students appeared for the test."
+  },
+  {
+    "ref": "Ex 3.1 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "How many numbers between 100 and 1000 have 4 in the units place?"
+  },
+  {
+    "ref": "Ex 3.1 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "stem": "How many numbers between 100 and 1000 have the digit 7 exactly once?"
+  },
+  {
+    "ref": "Ex 3.1 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "stem": "How many four digit numbers will not exceed 7432 if they are formed using the digits 2, 3, 4, 7 without repetition?"
+  },
+  {
+    "ref": "Ex 3.1 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "HARD",
+    "stem": "If numbers are formed using digits 2, 3, 4, 5, 6 without repetition, how many of them will exceed 400?"
+  },
+  {
+    "ref": "Ex 3.1 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "HARD",
+    "stem": "How many numbers formed with the digits 0, 1, 2, 5, 7, 8 will fall between 13 and 1000 if digits can be repeated?"
+  },
+  {
+    "ref": "Ex 3.1 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "A school has three gates and four staircases from the first floor to the second floor. How many ways does a student have to go from outside the school to his classroom on the second floor?"
+  },
+  {
+    "ref": "Ex 3.1 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "stem": "How many five-digit numbers formed using the digit 0, 1, 2, 3, 4, 5 are divisible by 5 if digits are not repeated?"
+  },
+  {
+    "ref": "3.4 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "stem": "Find the value of \\(6!\\)",
+    "solution": "\\(6! = 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1 = 720\\)"
+  },
+  {
+    "ref": "3.4 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "stem": "Show that \\((7-3)! \\ne 7! - 3!\\)",
+    "solution": "\\((7-3)! = 4! = 4 \\times 3 \\times 2 \\times 1 = 24\\).\n\\(7! = 7 \\times 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1 = 5040\\)\nAlso, \\(3! = 3 \\times 2 \\times 1 = 6\\).\n\\(7! - 3! = 5040 - 6 = 5034\\)\nTherefore, \\((7-3)! \\ne 7! - 3!\\)"
+  },
+  {
+    "ref": "3.4 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(n\\) if \\((n+6)! = 56\\,(n+4)!\\)",
+    "solution": "\\((n+6)! = 56(n+4)!\\)\n\\(\\therefore (n+6)(n+5)(n+4)! = 56(n+4)!\\)\n\\(\\therefore (n+6)(n+5) = 56\\)\nHere instead of solving quadratic in \\(n\\), we write 56 as product of 2 consecutive numbers as \\(56 = 8 \\times 7\\)\n\\(\\therefore (n+6)(n+5) = 8 \\times 7\\)\nEquating bigger factors from either side\n\\(\\therefore (n+6) = 8\\)\n\\(n = 8 - 6 = 2\\)"
+  },
+  {
+    "ref": "3.4 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "stem": "Show that \\(\\frac{12!}{5!\\,7!} + \\frac{12!}{6!\\,6!} = \\frac{13!}{6!\\,7!}\\)",
+    "solution": "Consider,\n\\(\\text{L. H. S.} = \\frac{12!}{5!\\,7!} + \\frac{12!}{6!\\,6!}\\)\n\\(= 12!\\left[\\frac{1}{5! \\times 7 \\times 6!} + \\frac{1}{5! \\times 6 \\times 6!}\\right]\\)\n\\((\\because 7! = 7 \\times 6!,\\ 6! = 6 \\times 5!)\\)\n\\(= \\frac{12!}{5!\\,6!}\\left[\\frac{1}{7} + \\frac{1}{6}\\right]\\)\n\\(= \\frac{12!}{5!\\,6!}\\left[\\frac{13}{6 \\times 7}\\right]\\)\n\\(= \\frac{12! \\times 13}{(5! \\times 6) \\times (6! \\times 7)}\\)\n\\(= \\frac{13!}{6! \\times 7!}\\)\n\\(= \\text{R. H. S.}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Evaluate:",
+    "setLabel": "Ex 3.2 Q1",
+    "stem": "\\(8!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Evaluate:",
+    "setLabel": "Ex 3.2 Q1",
+    "stem": "\\(10!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Evaluate:",
+    "setLabel": "Ex 3.2 Q1",
+    "stem": "\\(10! - 6!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q1(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Evaluate:",
+    "setLabel": "Ex 3.2 Q1",
+    "stem": "\\((10 - 6)!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Compute:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(\\frac{12!}{6!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Compute:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(\\left(\\frac{12}{6}\\right)!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Compute:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\((3 \\times 2)!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Compute:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(3! \\times 2!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Compute:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(\\frac{9!}{3!\\,6!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Compute:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(\\frac{6! - 4!}{4!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Compute:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(\\frac{8!}{6! - 4!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Compute:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(\\frac{8!}{(6-4)!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Write in terms of factorials",
+    "setLabel": "Ex 3.2 Q3",
+    "stem": "\\(5 \\times 6 \\times 7 \\times 8 \\times 9 \\times 10\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Write in terms of factorials",
+    "setLabel": "Ex 3.2 Q3",
+    "stem": "\\(3 \\times 6 \\times 9 \\times 12 \\times 15\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q3(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Write in terms of factorials",
+    "setLabel": "Ex 3.2 Q3",
+    "stem": "\\(6 \\times 7 \\times 8 \\times 9\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q3(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Write in terms of factorials",
+    "setLabel": "Ex 3.2 Q3",
+    "stem": "\\(5 \\times 10 \\times 15 \\times 20\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Evaluate : \\(\\frac{n!}{r!\\,(n-r)!}\\) for",
+    "setLabel": "Ex 3.2 Q4",
+    "stem": "\\(n = 8,\\ r = 6\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Evaluate : \\(\\frac{n!}{r!\\,(n-r)!}\\) for",
+    "setLabel": "Ex 3.2 Q4",
+    "stem": "\\(n = 12,\\ r = 12\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q4(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Evaluate : \\(\\frac{n!}{r!\\,(n-r)!}\\) for",
+    "setLabel": "Ex 3.2 Q4",
+    "stem": "\\(n = 15,\\ r = 10\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q4(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Evaluate : \\(\\frac{n!}{r!\\,(n-r)!}\\) for",
+    "setLabel": "Ex 3.2 Q4",
+    "stem": "\\(n = 15,\\ r = 8\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\), if",
+    "setLabel": "Ex 3.2 Q5",
+    "stem": "\\(\\frac{n}{8!} = \\frac{3}{6!} + \\frac{1}{4!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\), if",
+    "setLabel": "Ex 3.2 Q5",
+    "stem": "\\(\\frac{n}{6!} = \\frac{4}{8!} + \\frac{3}{6!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q5(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\), if",
+    "setLabel": "Ex 3.2 Q5",
+    "stem": "\\(\\frac{1!}{n!} = \\frac{1!}{4!} - \\frac{4}{5!}\\)",
+    "_note": "The book prints the numerators of the first two terms as \\(1!\\) (not \\(1\\)); transcribed as printed. Numerically \\(1! = 1\\), so the intended equation is \\(\\frac{1}{n!} = \\frac{1}{4!} - \\frac{4}{5!}\\), giving \\(n = 5\\), which matches the printed key."
+  },
+  {
+    "ref": "Ex 3.2 Q5(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\), if",
+    "setLabel": "Ex 3.2 Q5",
+    "stem": "\\((n+1)! = 42 \\times (n-1)!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q5(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\), if",
+    "setLabel": "Ex 3.2 Q5",
+    "stem": "\\((n+3)! = 110 \\times (n+1)!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\), if:",
+    "setLabel": "Ex 3.2 Q6",
+    "stem": "\\(\\frac{(17-n)!}{(14-n)!} = 5!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\), if:",
+    "setLabel": "Ex 3.2 Q6",
+    "stem": "\\(\\frac{(15-n)!}{(13-n)!} = 12\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q6(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "context": "Find \\(n\\), if:",
+    "setLabel": "Ex 3.2 Q6",
+    "stem": "\\(\\frac{n!}{3!\\,(n-3)!} : \\frac{n!}{5!\\,(n-5)!} = 5 : 3\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q6(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "context": "Find \\(n\\), if:",
+    "setLabel": "Ex 3.2 Q6",
+    "stem": "\\(\\frac{n!}{3!\\,(n-3)!} : \\frac{n!}{5!\\,(n-7)!} = 1 : 6\\)",
+    "_note": "The second ratio term prints \\((n-7)!\\), not \\((n-5)!\\) — deliberate, not a misprint: with \\(n = 8\\) (the printed key) the ratio is \\(56 : 336 = 1 : 6\\), which holds only for \\((n-7)!\\)."
+  },
+  {
+    "ref": "Ex 3.2 Q6(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "context": "Find \\(n\\), if:",
+    "setLabel": "Ex 3.2 Q6",
+    "stem": "\\(\\frac{(2n)!}{7!\\,(2n-7)!} : \\frac{n!}{4!\\,(n-4)!} = 24 : 1\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "stem": "Show that \\(\\frac{n!}{r!\\,(n-r)!} + \\frac{n!}{(r-1)!\\,(n-r+1)!} = \\frac{(n+1)!}{r!\\,(n-r+1)!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "stem": "Show that \\(\\frac{9!}{3!\\,6!} + \\frac{9!}{4!\\,5!} = \\frac{10!}{4!\\,6!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "stem": "Show that \\(\\frac{(2n)!}{n!} = 2^{n}(2n-1)(2n-3)\\cdots 5 \\cdot 3 \\cdot 1\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q10(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Simplify",
+    "setLabel": "Ex 3.2 Q10",
+    "stem": "\\(\\frac{(2n+2)!}{(2n)!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q10(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Simplify",
+    "setLabel": "Ex 3.2 Q10",
+    "stem": "\\(\\frac{(n+3)!}{(n^{2}-4)(n+1)!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q10(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Simplify",
+    "setLabel": "Ex 3.2 Q10",
+    "stem": "\\(\\frac{1}{n!} - \\frac{1}{(n-1)!} - \\frac{1}{(n-2)!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q10(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "context": "Simplify",
+    "setLabel": "Ex 3.2 Q10",
+    "stem": "\\(n\\,[\\,n! + (n-1)!\\,] + n^{2}(n-1)! + (n+1)!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q10(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Simplify",
+    "setLabel": "Ex 3.2 Q10",
+    "stem": "\\(\\frac{n+2}{n!} - \\frac{3n+1}{(n+1)!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q10(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Simplify",
+    "setLabel": "Ex 3.2 Q10",
+    "stem": "\\(\\frac{1}{(n-1)!} + \\frac{1-n}{(n+1)!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q10(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "context": "Simplify",
+    "setLabel": "Ex 3.2 Q10",
+    "stem": "\\(\\frac{1}{n!} - \\frac{3}{(n+1)!} - \\frac{n^{2}-4}{(n+2)!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q10(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "context": "Simplify",
+    "setLabel": "Ex 3.2 Q10",
+    "stem": "\\(\\frac{n^{2}-9}{(n+3)!} + \\frac{6}{(n+2)!} - \\frac{1}{(n+1)!}\\)"
+  }
+]

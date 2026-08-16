@@ -1,0 +1,82 @@
+[
+  {
+    "id": "77f604e8-84bc-4109-85e6-144ae2f28a38",
+    "ref": "Ex 7.6 I Q1",
+    "solution": "Write the numerator as \\((9^x - 1) - (5^x - 1)\\) and divide numerator and denominator by \\(x\\), using \\(\\lim_{x \\to 0}\\frac{a^x - 1}{x} = \\log a\\).\n\\(\\lim_{x \\to 0}\\frac{9^x - 5^x}{4^x - 1} = \\frac{\\lim_{x \\to 0}\\frac{9^x - 1}{x} - \\lim_{x \\to 0}\\frac{5^x - 1}{x}}{\\lim_{x \\to 0}\\frac{4^x - 1}{x}} = \\frac{\\log 9 - \\log 5}{\\log 4}\\)\n\\(\\therefore\\) the limit \\(= \\frac{\\log\\left(\\frac{9}{5}\\right)}{\\log 4}\\)"
+  },
+  {
+    "id": "5a400f09-355d-4666-ac80-4cef413a40cc",
+    "ref": "Ex 7.6 I Q2",
+    "solution": "Group the numerator as \\((5^x - 1) + (3^x - 1) - (2^x - 1)\\); the added constants cancel with the given \\(-1\\).\n\\(\\lim_{x \\to 0}\\frac{5^x + 3^x - 2^x - 1}{x} = \\lim_{x \\to 0}\\left[\\frac{5^x - 1}{x} + \\frac{3^x - 1}{x} - \\frac{2^x - 1}{x}\\right] = \\log 5 + \\log 3 - \\log 2\\)\n\\(\\therefore\\) the limit \\(= \\log\\left(\\frac{15}{2}\\right)\\)"
+  },
+  {
+    "id": "5b26b018-e33a-44b1-a5cd-3a7a164d7c5c",
+    "ref": "Ex 7.6 I Q3",
+    "solution": "Write the numerator as \\((a^x - 1) + (b^x - 1) + (c^x - 1)\\) and divide numerator and denominator by \\(x\\).\n\\(\\lim_{x \\to 0}\\frac{a^x + b^x + c^x - 3}{\\sin x} = \\lim_{x \\to 0}\\frac{\\frac{a^x - 1}{x} + \\frac{b^x - 1}{x} + \\frac{c^x - 1}{x}}{\\frac{\\sin x}{x}} = \\frac{\\log a + \\log b + \\log c}{1}\\)\n\\(\\therefore\\) the limit \\(= \\log(abc)\\)"
+  },
+  {
+    "id": "33fa94f1-7eb9-4efd-b83b-7779568a1dde",
+    "ref": "Ex 7.6 I Q4",
+    "solution": "Since \\(3^{x+1} = 3\\cdot 3^x\\), the numerator is \\((6^x - 1) + (5^x - 1) + (4^x - 1) - 3(3^x - 1)\\).\nDividing numerator and denominator by \\(x\\) and using \\(\\frac{\\sin x}{x} \\to 1\\),\nthe limit \\(= \\log 6 + \\log 5 + \\log 4 - 3\\log 3 = \\log\\left(\\frac{6 \\times 5 \\times 4}{27}\\right) = \\log\\left(\\frac{120}{27}\\right)\\)\n\\(\\therefore\\) the limit \\(= \\log\\left(\\frac{40}{9}\\right)\\)"
+  },
+  {
+    "id": "b99103cc-8082-404c-9870-85af1e7efedc",
+    "ref": "Ex 7.6 I Q5",
+    "solution": "Write the numerator as \\(\\left(8^{\\sin x} - 1\\right) - \\left(2^{\\tan x} - 1\\right)\\) and divide throughout by \\(x\\).\n\\(\\frac{8^{\\sin x} - 1}{x} = \\frac{8^{\\sin x} - 1}{\\sin x}\\cdot\\frac{\\sin x}{x} \\to \\log 8 = 3\\log 2\\), and similarly \\(\\frac{2^{\\tan x} - 1}{x} \\to \\log 2\\).\nAlso \\(\\frac{e^{2x} - 1}{x} = 2\\cdot\\frac{e^{2x} - 1}{2x} \\to 2\\).\n\\(\\therefore\\) the limit \\(= \\frac{3\\log 2 - \\log 2}{2} = \\frac{2\\log 2}{2} = \\log 2\\)"
+  },
+  {
+    "id": "18aee521-6a07-4da7-a56f-4e4e93048cbc",
+    "ref": "Ex 7.6 II Q1",
+    "solution": "Since \\(3^x + 3^{-x} - 2 = \\frac{\\left(3^x\\right)^2 - 2\\cdot 3^x + 1}{3^x} = \\frac{\\left(3^x - 1\\right)^2}{3^x}\\),\n\\(\\lim_{x \\to 0}\\frac{3^x + 3^{-x} - 2}{x\\tan x} = \\lim_{x \\to 0}\\left[\\left(\\frac{3^x - 1}{x}\\right)^2\\cdot\\frac{x}{\\tan x}\\cdot\\frac{1}{3^x}\\right] = (\\log 3)^2 \\times 1 \\times 1\\)\n\\(\\therefore\\) the limit \\(= (\\log 3)^2\\)"
+  },
+  {
+    "id": "3bfcb78d-8e70-4b81-b613-ef858736492f",
+    "ref": "Ex 7.6 II Q2",
+    "solution": "Let \\(y = \\left(\\frac{3 + x}{3 - x}\\right)^{\\frac{1}{x}}\\), so \\(\\log y = \\frac{1}{x}\\left[\\log\\left(1 + \\frac{x}{3}\\right) - \\log\\left(1 - \\frac{x}{3}\\right)\\right]\\).\nUsing \\(\\lim_{t \\to 0}\\frac{\\log(1 + t)}{t} = 1\\),\n\\(\\lim_{x \\to 0}\\log y = \\frac{1}{3}(1) + \\frac{1}{3}(1) = \\frac{2}{3}\\)\n\\(\\therefore\\) the limit \\(= e^{\\frac{2}{3}}\\)"
+  },
+  {
+    "id": "2ff8beb7-342f-46f2-a611-7375a6611268",
+    "ref": "Ex 7.6 II Q3",
+    "solution": "Let \\(y = \\left(\\frac{3 + 5x}{3 - 2x}\\right)^{\\frac{2}{x}}\\), so \\(\\log y = \\frac{2}{x}\\left[\\log\\left(1 + \\frac{5x}{3}\\right) - \\log\\left(1 - \\frac{2x}{3}\\right)\\right]\\).\nUsing \\(\\lim_{t \\to 0}\\frac{\\log(1 + t)}{t} = 1\\),\n\\(\\lim_{x \\to 0}\\log y = 2\\left(\\frac{5}{3} + \\frac{2}{3}\\right) = 2\\times\\frac{7}{3} = \\frac{14}{3}\\)\n\\(\\therefore\\) the limit \\(= e^{\\frac{14}{3}}\\)"
+  },
+  {
+    "id": "662226a2-32fc-4ac9-9260-78f68bf1f949",
+    "ref": "Ex 7.6 II Q4",
+    "solution": "Write \\(\\log(3 - x) - \\log(3 + x) = \\log\\left(1 - \\frac{x}{3}\\right) - \\log\\left(1 + \\frac{x}{3}\\right)\\), since \\(\\log 3\\) cancels.\n\\(\\lim_{x \\to 0}\\frac{1}{x}\\left[\\log\\left(1 - \\frac{x}{3}\\right) - \\log\\left(1 + \\frac{x}{3}\\right)\\right] = -\\frac{1}{3}(1) - \\frac{1}{3}(1)\\)\n\\(\\therefore\\) the limit \\(= -\\frac{2}{3}\\)"
+  },
+  {
+    "id": "b8514654-2e36-4a1c-9fa8-ca11bffb9608",
+    "ref": "Ex 7.6 II Q5",
+    "solution": "Let \\(y = \\left(\\frac{1 + 4x}{1 - 4x}\\right)^{\\frac{1}{x}}\\), so \\(\\log y = \\frac{1}{x}\\left[\\log(1 + 4x) - \\log(1 - 4x)\\right]\\).\nUsing \\(\\lim_{t \\to 0}\\frac{\\log(1 + t)}{t} = 1\\),\n\\(\\lim_{x \\to 0}\\log y = 4 + 4 = 8\\)\n\\(\\therefore\\) the limit \\(= e^{8}\\)"
+  },
+  {
+    "id": "962df166-1de1-4981-a7f6-c373c7918542",
+    "ref": "Ex 7.6 II Q6",
+    "solution": "Let \\(y = \\left(\\frac{5 + 7x}{5 - 3x}\\right)^{\\frac{1}{3x}}\\), so \\(\\log y = \\frac{1}{3x}\\left[\\log\\left(1 + \\frac{7x}{5}\\right) - \\log\\left(1 - \\frac{3x}{5}\\right)\\right]\\).\nUsing \\(\\lim_{t \\to 0}\\frac{\\log(1 + t)}{t} = 1\\),\n\\(\\lim_{x \\to 0}\\log y = \\frac{1}{3}\\left(\\frac{7}{5} + \\frac{3}{5}\\right) = \\frac{1}{3}\\times 2 = \\frac{2}{3}\\)\n\\(\\therefore\\) the limit \\(= e^{\\frac{2}{3}}\\)"
+  },
+  {
+    "id": "58b1dcff-862a-4911-a80a-646cf738f2cc",
+    "ref": "Ex 7.6 III Q1",
+    "solution": "Divide numerator and denominator by \\(x\\).\nNumerator: \\(\\frac{a^x - 1}{x} - \\frac{b^x - 1}{x} \\to \\log a - \\log b\\).\nDenominator: \\(4\\cdot\\frac{\\sin 4x}{4x} - 2\\cdot\\frac{\\sin 2x}{2x} \\to 4 - 2 = 2\\).\n\\(\\therefore\\) the limit \\(= \\frac{\\log a - \\log b}{2} = \\frac{1}{2}\\log\\left(\\frac{a}{b}\\right)\\)"
+  },
+  {
+    "id": "4e60e713-0475-43a5-9b71-d40fed206282",
+    "ref": "Ex 7.6 III Q2",
+    "solution": "Divide numerator and denominator by \\(x^3\\).\n\\(\\lim_{x \\to 0}\\frac{\\left(\\frac{2^x - 1}{x}\\right)^3}{\\frac{3^x - 1}{x}\\cdot\\frac{\\sin x}{x}\\cdot\\frac{\\log(1 + x)}{x}} = \\frac{(\\log 2)^3}{\\log 3 \\times 1 \\times 1}\\)\n\\(\\therefore\\) the limit \\(= \\frac{(\\log 2)^3}{\\log 3}\\)"
+  },
+  {
+    "id": "82ec7198-b7a1-4d68-9dec-cd777469a9d1",
+    "ref": "Ex 7.6 III Q3",
+    "solution": "Factorise the numerator: \\(15^x - 5^x - 3^x + 1 = 5^x\\cdot 3^x - 5^x - 3^x + 1 = \\left(5^x - 1\\right)\\left(3^x - 1\\right)\\).\n\\(\\lim_{x \\to 0}\\frac{\\left(5^x - 1\\right)\\left(3^x - 1\\right)}{x\\sin x} = \\lim_{x \\to 0}\\left[\\frac{5^x - 1}{x}\\cdot\\frac{3^x - 1}{x}\\cdot\\frac{x}{\\sin x}\\right] = \\log 5\\cdot\\log 3\\cdot 1\\)\n\\(\\therefore\\) the limit \\(= \\log 3\\cdot\\log 5\\)"
+  },
+  {
+    "id": "5d66f989-b6a4-44ed-a0b2-8afc0595602e",
+    "ref": "Ex 7.6 III Q4",
+    "solution": "Since \\((25)^x = \\left(5^x\\right)^2\\), the numerator is \\(\\left(5^x\\right)^2 - 2\\left(5^x\\right) + 1 = \\left(5^x - 1\\right)^2\\).\n\\(\\lim_{x \\to 0}\\frac{\\left(5^x - 1\\right)^2}{x\\sin x} = \\lim_{x \\to 0}\\left[\\left(\\frac{5^x - 1}{x}\\right)^2\\cdot\\frac{x}{\\sin x}\\right] = (\\log 5)^2 \\times 1\\)\n\\(\\therefore\\) the limit \\(= (\\log 5)^2\\)"
+  },
+  {
+    "id": "fcc2b7b5-9bcf-4c46-a7b6-96596f0e0600",
+    "ref": "Ex 7.6 III Q5",
+    "solution": "Since \\((49)^x = \\left(7^x\\right)^2\\), \\((35)^x = 7^x\\cdot 5^x\\) and \\((25)^x = \\left(5^x\\right)^2\\), the numerator is \\(\\left(7^x - 5^x\\right)^2\\).\nDividing numerator and denominator by \\(x^2\\):\n\\(\\frac{7^x - 5^x}{x} = \\frac{7^x - 1}{x} - \\frac{5^x - 1}{x} \\to \\log 7 - \\log 5 = \\log\\left(\\frac{7}{5}\\right)\\), and \\(\\frac{\\sin x}{x}\\cdot\\frac{\\log(1 + 2x)}{x} \\to 1 \\times 2 = 2\\).\n\\(\\therefore\\) the limit \\(= \\frac{1}{2}\\left[\\log\\left(\\frac{7}{5}\\right)\\right]^2\\)"
+  }
+]

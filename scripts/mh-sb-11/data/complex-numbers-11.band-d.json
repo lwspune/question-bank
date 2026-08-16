@@ -1,0 +1,1224 @@
+[
+  {
+    "ref": "1.6 SolvedEx.1(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "De Moivre's Theorem",
+    "difficulty": "MODERATE",
+    "context": "Use De Moivres Theorem and simplify.",
+    "setLabel": "1.6 SolvedEx.1",
+    "stem": "\\(\\left(\\cos\\frac{\\pi}{3}+i\\sin\\frac{\\pi}{3}\\right)^{8}\\)",
+    "solution": "[Textbook misprint (one line, not answer-affecting): the second line prints \\(\\cos\\frac{2\\pi}{3} - i\\sin\\frac{2\\pi}{3}\\) with a minus where De Moivre's theorem gives a plus. The very next line reverts to the plus and the final answer is correct.]\n\n\\(\\left(\\cos\\frac{\\pi}{3}+i\\sin\\frac{\\pi}{3}\\right)^{8}\\)\n\\(=\\cos\\left(8\\times\\frac{\\pi}{3}\\right)+i\\sin\\left(8\\times\\frac{\\pi}{3}\\right)\\)\n\\(=\\cos\\left(\\frac{2\\pi}{3}\\right)-i\\sin\\left(\\frac{2\\pi}{3}\\right)\\)\n\\(\\left(\\because\\ \\frac{8\\pi}{3}-2\\pi=\\frac{2\\pi}{3}\\right)\\)\n\\(=\\cos\\left(\\pi-\\frac{\\pi}{3}\\right)+i\\sin\\left(\\pi-\\frac{\\pi}{3}\\right)\\)\n\\(=-\\cos\\left(\\frac{\\pi}{3}\\right)+i\\sin\\left(\\frac{\\pi}{3}\\right)\\)\n\\(=-\\frac{1}{2}+i\\frac{\\sqrt{3}}{2}\\)",
+    "_note": "BOOK MISPRINT in the printed solution (transcribed as printed, not repaired): the second line prints \\(\\cos\\frac{2\\pi}{3}-i\\sin\\frac{2\\pi}{3}\\) with a MINUS sign, where De Moivre gives a PLUS. The very next line reverts to \\(+i\\sin\\left(\\pi-\\frac{\\pi}{3}\\right)\\) and the printed final answer \\(-\\frac12+i\\frac{\\sqrt3}{2}\\) is correct, so the minus is a typesetting slip on one line only and is not answer-affecting."
+  },
+  {
+    "ref": "1.6 SolvedEx.1(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "De Moivre's Theorem",
+    "difficulty": "MODERATE",
+    "context": "Use De Moivres Theorem and simplify.",
+    "setLabel": "1.6 SolvedEx.1",
+    "stem": "\\(\\left(\\cos\\frac{\\pi}{10}-i\\sin\\frac{\\pi}{10}\\right)^{15}\\)",
+    "solution": "\\(\\left(\\cos\\frac{\\pi}{10}-i\\sin\\frac{\\pi}{10}\\right)^{15}\\)\n\\(=\\cos\\left(\\frac{15\\pi}{10}\\right)-i\\sin\\left(\\frac{15\\pi}{10}\\right)\\)\n\\(=\\cos\\left(\\frac{3\\pi}{2}\\right)-i\\sin\\left(\\frac{3\\pi}{2}\\right)\\)\n\\(=\\cos\\left(\\pi+\\frac{\\pi}{2}\\right)-i\\sin\\left(\\pi+\\frac{\\pi}{2}\\right)\\)\n\\(=-\\cos\\frac{\\pi}{2}-i\\left(-\\sin\\frac{\\pi}{2}\\right)\\)\n\\(=-0-i(-1)=i\\)"
+  },
+  {
+    "ref": "1.6 SolvedEx.1(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "De Moivre's Theorem",
+    "difficulty": "MODERATE",
+    "context": "Use De Moivres Theorem and simplify.",
+    "setLabel": "1.6 SolvedEx.1",
+    "stem": "\\(\\dfrac{(\\cos 5\\theta+i\\sin 5\\theta)^{2}}{(\\cos 4\\theta-i\\sin 4\\theta)^{3}}\\)",
+    "solution": "\\(\\dfrac{(\\cos 5\\theta+i\\sin 5\\theta)^{2}}{(\\cos 4\\theta-i\\sin 4\\theta)^{3}}\\)\n\\(=\\dfrac{\\cos 10\\theta+i\\sin 10\\theta}{\\cos 12\\theta-i\\sin 12\\theta}\\)\n\\(=\\dfrac{\\cos 10\\theta+i\\sin 10\\theta}{\\cos(-12\\theta)+i\\sin(-12\\theta)}\\)\n\\(=\\cos\\left[10\\theta-(-12\\theta)\\right]+i\\sin\\left[10\\theta-(-12\\theta)\\right]\\)\n\\(=\\cos 22\\theta+i\\sin 22\\theta\\)"
+  },
+  {
+    "ref": "1.6 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "De Moivre's Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Express \\((1+i)^{4}\\) in \\(a+ib\\) form.",
+    "solution": "[Textbook error, answer-affecting: the printed final answer is wrong. Expressing \\((1+i)^4\\) in polar form the book writes \\(z^4 = \\sqrt{2}\\left[\\cos\\frac{\\pi}{4} + i\\sin\\frac{\\pi}{4}\\right]^4\\) — the exponent is applied to the BRACKET only and never to the modulus — carries a bare \\(\\sqrt{2}\\) through every remaining line, and prints \\(-\\sqrt{2} + 0i\\). The modulus must also be raised: \\((\\sqrt{2})^4 = 4\\), so the answer is \\(-4 + 0i\\). Confirmed directly: \\((1+i)^2 = 2i\\) and \\((2i)^2 = -4\\). The same example also writes \\(\\theta = \\tan^{-1}(x/y)\\) where it should be \\(\\tan^{-1}(y/x)\\); that one is harmless here because \\(x = y = 1\\).]\n\nLet \\(z=1+i\\)\n\\(\\therefore x=1,\\ y=1\\)\n\\(r=\\sqrt{1+1}=\\sqrt{2}\\),\n\\(\\theta=\\tan^{-1}\\frac{x}{y}=\\tan^{-1}1=\\frac{\\pi}{4}\\)\n\\(\\therefore z=r(\\cos\\theta+i\\sin\\theta)=\\sqrt{2}\\left[\\cos\\frac{\\pi}{4}+i\\sin\\frac{\\pi}{4}\\right]\\)\n\\(\\therefore z^{4}=(1+i)^{4}=\\sqrt{2}\\left[\\cos\\frac{\\pi}{4}+i\\sin\\frac{\\pi}{4}\\right]^{4}\\)\n\\(=\\sqrt{2}\\left[\\cos\\frac{4\\pi}{4}+i\\sin\\frac{4\\pi}{4}\\right]\\)\n\\(=\\sqrt{2}\\left[\\cos\\pi+i\\sin\\pi\\right]\\)\n\\(=\\sqrt{2}\\left[-1+i(0)\\right]\\)\n\\(=\\sqrt{2}\\left[-1\\right]=-\\sqrt{2}=-\\sqrt{2}+0i\\)",
+    "_note": "TWO BOOK DEFECTS in the printed solution (transcribed exactly as printed, not repaired). (1) ANSWER-AFFECTING: the modulus is never raised to the fourth power. The book writes \\(z^4=\\sqrt2\\left[\\cos\\frac\\pi4+i\\sin\\frac\\pi4\\right]^4\\) with the exponent on the bracket only, and carries a bare \\(\\sqrt2\\) through every remaining line, ending at \\(-\\sqrt2+0i\\). It should be \\((\\sqrt2)^4=4\\), giving \\(4(\\cos\\pi+i\\sin\\pi)=-4+0i\\). Verified independently: \\((1+i)^2=2i\\) and \\((2i)^2=-4\\). The PRINTED FINAL ANSWER IS WRONG. (2) Not answer-affecting: the book writes \\(\\theta=\\tan^{-1}\\frac{x}{y}\\); the argument is \\(\\tan^{-1}\\frac{y}{x}\\). Here \\(x=y=1\\) so both give \\(\\frac\\pi4\\)."
+  },
+  {
+    "ref": "1.8 SolvedEx.1(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "EASY",
+    "context": "If \\(w\\) is a complex cube root of unity, then prove that",
+    "setLabel": "1.8 SolvedEx.1",
+    "stem": "\\(\\dfrac{1}{w}+\\dfrac{1}{w^{2}}=-1\\)",
+    "solution": "Given, \\(w\\) is a complex cube root of unity.\n\\(\\therefore w^{3}=1\\)  Also \\(w^{2}+w+1=0\\)\n\\(\\therefore w^{2}+1=-w\\) and \\(w+1=-w^{2}\\)\n\\(\\dfrac{1}{w}+\\dfrac{1}{w^{2}}=\\dfrac{w+1}{w^{2}}=\\dfrac{-w^{2}}{w^{2}}=-1\\)"
+  },
+  {
+    "ref": "1.8 SolvedEx.1(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "EASY",
+    "context": "If \\(w\\) is a complex cube root of unity, then prove that",
+    "setLabel": "1.8 SolvedEx.1",
+    "stem": "\\((1+w^{2})^{3}=-1\\)",
+    "solution": "Given, \\(w\\) is a complex cube root of unity.\n\\(\\therefore w^{3}=1\\)  Also \\(w^{2}+w+1=0\\)\n\\(\\therefore w^{2}+1=-w\\) and \\(w+1=-w^{2}\\)\n\\((1+w^{2})^{3}=(-w)^{3}=-w^{3}=-1\\)"
+  },
+  {
+    "ref": "1.8 SolvedEx.1(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "MODERATE",
+    "context": "If \\(w\\) is a complex cube root of unity, then prove that",
+    "setLabel": "1.8 SolvedEx.1",
+    "stem": "\\((1-w+w^{2})^{3}=-8\\)",
+    "solution": "Given, \\(w\\) is a complex cube root of unity.\n\\(\\therefore w^{3}=1\\)  Also \\(w^{2}+w+1=0\\)\n\\(\\therefore w^{2}+1=-w\\) and \\(w+1=-w^{2}\\)\n\\((1-w+w^{2})^{3}=(1+w^{2}-w)^{3}\\)\n\\(=(-w-w)^{3}\\)  \\((\\because 1+w^{2}=-w)\\)\n\\(=(-2w)^{3}=-8w^{3}=-8\\times 1=-8\\)"
+  },
+  {
+    "ref": "1.8 SolvedEx.2(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "HARD",
+    "context": "If \\(w\\) is a complex cube root of unity, then show that",
+    "setLabel": "1.8 SolvedEx.2",
+    "stem": "\\((1-w+w^{2})^{5}+(1+w-w^{2})^{5}=32\\)",
+    "solution": "Since \\(w^{3}=1\\) and \\(w\\ne 1\\)  \\(\\therefore w^{2}+w+1=0\\)\nAlso \\(w^{2}+1=-w\\), \\(w^{2}+w=-1\\) and \\(w+1=-w^{2}\\)\nNow, \\((1-w+w^{2})^{5}\\)\n\\(=(-w-w)^{5}\\)  \\((\\because 1+w^{2}=-w)\\)\n\\(=(-2w)^{5}\\)\n\\(=-32w^{5}\\)\n\\((1+w-w^{2})^{5}=(-w^{2}-w^{2})^{5}\\)\n\\(=(-2w^{2})^{5}\\)\n\\(=-32w^{10}\\)\n\\(\\therefore (1-w+w^{2})^{5}+(1+w-w^{2})^{5}=-32w^{5}-32w^{10}\\)\n\\(=-32w^{5}(1+w^{2})\\)\n\\(=-32w^{5}\\times(-w)=32w^{6}=32(w^{3})^{2}\\)\n\\(=32\\times(1)^{2}=32\\)"
+  },
+  {
+    "ref": "1.8 SolvedEx.2(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "HARD",
+    "context": "If \\(w\\) is a complex cube root of unity, then show that",
+    "setLabel": "1.8 SolvedEx.2",
+    "stem": "\\((1-w)(1-w^{2})(1-w^{4})(1-w^{5})=9\\)",
+    "solution": "Since \\(w^{3}=1\\) and \\(w\\ne 1\\)  \\(\\therefore w^{2}+w+1=0\\)\n\\((1-w)(1-w^{2})(1-w^{4})(1-w^{5})\\)\n\\(=(1-w)(1-w^{2})(1-w^{3}\\cdot w)(1-w^{3}\\cdot w^{2})\\)\n\\(=(1-w)(1-w^{2})(1-w)(1-w^{2})\\)\n\\(=(1-w)^{2}(1-w^{2})^{2}\\)\n\\(=[(1-w)(1-w^{2})]^{2}\\)\n\\(=(1-w^{2}-w+w^{3})^{2}\\)\n\\(=[1-(w^{2}+w)+1]^{2}\\)\n\\(=[1-(-1)+1]^{2}=(1+1+1)^{2}=(3)^{2}=9\\)"
+  },
+  {
+    "ref": "1.8 SolvedEx.3(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "HARD",
+    "context": "If \\(w\\) is a complex cube root of unity such that \\(x=a+b\\), \\(y=aw+bw^{2}\\) and \\(z=aw^{2}+bw\\), \\(a,\\ b\\in R\\) prove that",
+    "setLabel": "1.8 SolvedEx.3",
+    "stem": "\\(x+y+z=0\\)",
+    "solution": "Since \\(w\\) is a complex cube root of unity\n\\(\\therefore w^{3}=1\\) and \\(w^{2}+w+1=0\\) but \\(w\\ne 1\\) given\n\\(\\therefore w^{2}+1=-w,\\ w+1=-w^{2},\\ w^{3}=w^{6}=1\\)\n\\(x+y+z=a+b+aw+bw^{2}+aw^{2}+bw\\)\n\\(=a(1+w+w^{2})+b(1+w+w^{2})\\)\n\\(=a\\cdot 0+b\\cdot 0\\)\n\\(=0\\)"
+  },
+  {
+    "ref": "1.8 SolvedEx.3(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "HARD",
+    "context": "If \\(w\\) is a complex cube root of unity such that \\(x=a+b\\), \\(y=aw+bw^{2}\\) and \\(z=aw^{2}+bw\\), \\(a,\\ b\\in R\\) prove that",
+    "setLabel": "1.8 SolvedEx.3",
+    "stem": "\\(x^{3}+y^{3}+z^{3}=3(a^{3}+b^{3})\\)",
+    "solution": "Since \\(w\\) is a complex cube root of unity\n\\(\\therefore w^{3}=1\\) and \\(w^{2}+w+1=0\\) but \\(w\\ne 1\\) given\n\\(\\therefore w^{2}+1=-w,\\ w+1=-w^{2},\\ w^{3}=w^{6}=1\\)\n\\(x^{3}=a^{3}+3a^{2}b+3ab^{2}+b^{3}\\)\n\\(y^{3}=a^{3}w^{3}+3a^{2}bw^{4}+3ab^{2}w^{5}+b^{3}w^{6}\\)\n\\(z^{3}=a^{3}w^{6}+3a^{2}bw^{5}+3ab^{2}w^{4}+b^{3}w^{3}\\)\nadding the above three equations\n\\(x^{3}+y^{3}+z^{3}=a^{3}(1+w^{3}+w^{6})+3a^{2}b(1+w+w^{2})+3ab^{2}(1+w^{2}+w)+b^{3}(1+w^{6}+w^{3})\\)\n\\(=3a^{3}+3a^{2}b(0)+3ab^{2}(0)+3b^{3}\\)\n\\(=3(a^{3}+b^{3})\\)"
+  },
+  {
+    "ref": "1.8 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "HARD",
+    "stem": "Prove that\n\\(1+w^{n}+w^{2n}=3\\), if \\(n\\) is multiple of 3\n\\(1+w^{n}+w^{2n}=0\\), if \\(n\\) is not multiple of 3, \\(n\\in N\\)",
+    "solution": "for \\(n,\\ k\\in N\\), if \\(n\\) is multiple of 3 then \\(n=3k\\) and if \\(n\\) is not multiple of 3 then \\(n=3k+1\\) or \\(3k+2\\)\n\\(\\therefore\\) if \\(n\\) is multiple of 3\ni.e. \\(n=3k\\)\nthen \\(1+w^{n}+w^{2n}=1+w^{3k}+w^{2\\times 3k}\\)\n\\(=1+(w^{3})^{k}+(w^{3})^{2k}\\)\n\\(=1+(1)^{k}+(1)^{2k}\\)\n\\(=1+1+1\\)\n\\(=3\\)\nIf \\(n=3k+r\\), \\(r=1,2\\).\nAs \\(w\\) is complex root of Unity.\n\\(w^{r}\\), \\(r=1,2\\) is also complex root of Unity.\n\\(\\therefore 1+w^{r}+w^{2r}=0\\)\nwe have, \\(1+w^{n}+w^{2n}=0\\), if \\(n\\) is not a multiple of 3."
+  },
+  {
+    "ref": "Ex 1.4 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "EASY",
+    "context": "Find the value of",
+    "setLabel": "Ex 1.4 Q1",
+    "stem": "\\(w^{18}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "EASY",
+    "context": "Find the value of",
+    "setLabel": "Ex 1.4 Q1",
+    "stem": "\\(w^{21}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "EASY",
+    "context": "Find the value of",
+    "setLabel": "Ex 1.4 Q1",
+    "stem": "\\(w^{-30}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q1(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "EASY",
+    "context": "Find the value of",
+    "setLabel": "Ex 1.4 Q1",
+    "stem": "\\(w^{-105}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "MODERATE",
+    "context": "If \\(w\\) is a complex cube root of unity, show that",
+    "setLabel": "Ex 1.4 Q2",
+    "stem": "\\((2-w)(2-w^{2})=7\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "MODERATE",
+    "context": "If \\(w\\) is a complex cube root of unity, show that",
+    "setLabel": "Ex 1.4 Q2",
+    "stem": "\\((1+w-w^{2})^{6}=64\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "MODERATE",
+    "context": "If \\(w\\) is a complex cube root of unity, show that",
+    "setLabel": "Ex 1.4 Q2",
+    "stem": "\\((1+w)^{3}-(1+w^{2})^{3}=0\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q2(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "MODERATE",
+    "context": "If \\(w\\) is a complex cube root of unity, show that",
+    "setLabel": "Ex 1.4 Q2",
+    "stem": "\\((2+w+w^{2})^{3}-(1-3w+w^{2})^{3}=65\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q2(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "HARD",
+    "context": "If \\(w\\) is a complex cube root of unity, show that",
+    "setLabel": "Ex 1.4 Q2",
+    "stem": "\\((3+3w+5w^{2})^{6}-(2+6w+2w^{2})^{3}=0\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q2(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "HARD",
+    "context": "If \\(w\\) is a complex cube root of unity, show that",
+    "setLabel": "Ex 1.4 Q2",
+    "stem": "\\(\\dfrac{a+bw+cw^{2}}{c+aw+bw^{2}}=w^{2}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q2(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "MODERATE",
+    "context": "If \\(w\\) is a complex cube root of unity, show that",
+    "setLabel": "Ex 1.4 Q2",
+    "stem": "\\((a+b)+(aw+bw^{2})+(aw^{2}+bw)=0\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q2(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "HARD",
+    "context": "If \\(w\\) is a complex cube root of unity, show that",
+    "setLabel": "Ex 1.4 Q2",
+    "stem": "\\((a-b)(a-bw)(a-bw^{2})=a^{3}-b^{3}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q2(ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "HARD",
+    "context": "If \\(w\\) is a complex cube root of unity, show that",
+    "setLabel": "Ex 1.4 Q2",
+    "stem": "\\((a+b)^{2}+(aw+bw^{2})^{2}+(aw^{2}+bw)^{2}=6ab\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "EASY",
+    "context": "If \\(w\\) is a complex cube root of unity, find the value of",
+    "setLabel": "Ex 1.4 Q3",
+    "stem": "\\(w+\\dfrac{1}{w}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "EASY",
+    "context": "If \\(w\\) is a complex cube root of unity, find the value of",
+    "setLabel": "Ex 1.4 Q3",
+    "stem": "\\(w^{2}+w^{3}+w^{4}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q3(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "EASY",
+    "context": "If \\(w\\) is a complex cube root of unity, find the value of",
+    "setLabel": "Ex 1.4 Q3",
+    "stem": "\\((1+w^{2})^{3}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q3(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "MODERATE",
+    "context": "If \\(w\\) is a complex cube root of unity, find the value of",
+    "setLabel": "Ex 1.4 Q3",
+    "stem": "\\((1-w-w^{2})^{3}+(1-w+w^{2})^{3}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q3(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "MODERATE",
+    "context": "If \\(w\\) is a complex cube root of unity, find the value of",
+    "setLabel": "Ex 1.4 Q3",
+    "stem": "\\((1+w)(1+w^{2})(1+w^{4})(1+w^{8})\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q4(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "MODERATE",
+    "context": "If \\(\\alpha\\) and \\(\\beta\\) are the complex cube root of unity, show that",
+    "setLabel": "Ex 1.4 Q4",
+    "stem": "\\(\\alpha^{2}+\\beta^{2}+\\alpha\\beta=0\\)",
+    "_note": "The book labels this question's sub-items (a) and (b), not (i)/(ii) as elsewhere in the exercise. Refs follow the book's own labels."
+  },
+  {
+    "ref": "Ex 1.4 Q4(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "HARD",
+    "context": "If \\(\\alpha\\) and \\(\\beta\\) are the complex cube root of unity, show that",
+    "setLabel": "Ex 1.4 Q4",
+    "stem": "\\(\\alpha^{4}+\\beta^{4}+\\alpha^{-1}\\beta^{-1}=0\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "HARD",
+    "stem": "If \\(x=a+b\\), \\(y=\\alpha a+\\beta b\\) and \\(z=a\\beta+b\\alpha\\) where \\(\\alpha\\) and \\(\\beta\\) are the complex cube-roots of unity, show that \\(xyz=a^{3}+b^{3}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sets of Points in the Complex Plane",
+    "difficulty": "EASY",
+    "context": "Find the equation in cartesian coordinates of the locus of \\(z\\) if",
+    "setLabel": "Ex 1.4 Q6",
+    "stem": "\\(|z|=10\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sets of Points in the Complex Plane",
+    "difficulty": "EASY",
+    "context": "Find the equation in cartesian coordinates of the locus of \\(z\\) if",
+    "setLabel": "Ex 1.4 Q6",
+    "stem": "\\(|z-3|=2\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q6(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sets of Points in the Complex Plane",
+    "difficulty": "MODERATE",
+    "context": "Find the equation in cartesian coordinates of the locus of \\(z\\) if",
+    "setLabel": "Ex 1.4 Q6",
+    "stem": "\\(|z-5+6i|=5\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q6(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sets of Points in the Complex Plane",
+    "difficulty": "MODERATE",
+    "context": "Find the equation in cartesian coordinates of the locus of \\(z\\) if",
+    "setLabel": "Ex 1.4 Q6",
+    "stem": "\\(|z+8|=|z-4|\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q6(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sets of Points in the Complex Plane",
+    "difficulty": "MODERATE",
+    "context": "Find the equation in cartesian coordinates of the locus of \\(z\\) if",
+    "setLabel": "Ex 1.4 Q6",
+    "stem": "\\(|z-2-2i|=|z+2+2i|\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q6(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sets of Points in the Complex Plane",
+    "difficulty": "MODERATE",
+    "context": "Find the equation in cartesian coordinates of the locus of \\(z\\) if",
+    "setLabel": "Ex 1.4 Q6",
+    "stem": "\\(\\dfrac{|z+3i|}{|z-6i|}=1\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "De Moivre's Theorem",
+    "difficulty": "MODERATE",
+    "context": "Use De Moivres theorem and simplify the following",
+    "setLabel": "Ex 1.4 Q7",
+    "stem": "\\(\\dfrac{(\\cos 2\\theta+i\\sin 2\\theta)^{7}}{(\\cos 4\\theta+i\\sin 4\\theta)^{3}}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "De Moivre's Theorem",
+    "difficulty": "MODERATE",
+    "context": "Use De Moivres theorem and simplify the following",
+    "setLabel": "Ex 1.4 Q7",
+    "stem": "\\(\\dfrac{\\cos 5\\theta+i\\sin 5\\theta}{(\\cos 3\\theta-i\\sin 3\\theta)^{2}}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q7(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "De Moivre's Theorem",
+    "difficulty": "HARD",
+    "context": "Use De Moivres theorem and simplify the following",
+    "setLabel": "Ex 1.4 Q7",
+    "stem": "\\(\\dfrac{\\left(\\cos\\frac{7\\pi}{13}+i\\sin\\frac{7\\pi}{13}\\right)^{4}}{\\left(\\cos\\frac{4\\pi}{13}-i\\sin\\frac{4\\pi}{13}\\right)^{6}}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q8(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "De Moivre's Theorem",
+    "difficulty": "MODERATE",
+    "context": "Express the following in the form \\(a+ib\\), \\(a,\\ b\\in R\\), using De Moivre's theorem.",
+    "setLabel": "Ex 1.4 Q8",
+    "stem": "\\((1-i)^{5}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q8(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "De Moivre's Theorem",
+    "difficulty": "MODERATE",
+    "context": "Express the following in the form \\(a+ib\\), \\(a,\\ b\\in R\\), using De Moivre's theorem.",
+    "setLabel": "Ex 1.4 Q8",
+    "stem": "\\((1+i)^{6}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q8(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "De Moivre's Theorem",
+    "difficulty": "MODERATE",
+    "context": "Express the following in the form \\(a+ib\\), \\(a,\\ b\\in R\\), using De Moivre's theorem.",
+    "setLabel": "Ex 1.4 Q8",
+    "stem": "\\((1-\\sqrt{3}\\,i)^{4}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q8(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "De Moivre's Theorem",
+    "difficulty": "HARD",
+    "context": "Express the following in the form \\(a+ib\\), \\(a,\\ b\\in R\\), using De Moivre's theorem.",
+    "setLabel": "Ex 1.4 Q8",
+    "stem": "\\((-2\\sqrt{3}-2i)^{5}\\)",
+    "_note": "SUSPECTED BOOK ANSWER-KEY ERROR (flagged for the cross-check pass; the stem itself is transcribed exactly as printed and is fine). The printed key on p.198 gives \\(512\\sqrt{3}+512i\\). Deriving: \\(-2\\sqrt3-2i\\) has modulus 4 and argument \\(-\\frac{5\\pi}{6}\\) (third quadrant), so the fifth power has modulus \\(4^5=1024\\) and argument \\(-\\frac{25\\pi}{6}\\equiv-\\frac{\\pi}{6}\\), giving \\(1024\\left(\\frac{\\sqrt3}{2}-\\frac{i}{2}\\right)=512\\sqrt3-512i\\). Confirmed by direct expansion: \\(z^2=8+2\\sqrt3\\cdot 4\\,i\\) route gives \\(z^5\\approx 886.81-512i\\), and \\(512\\sqrt3\\approx 886.81\\). The key's imaginary sign appears to be wrong; the real part matches.",
+    "solution": "[Textbook answer-key error: the printed key gives \\(512\\sqrt{3} + 512i\\). Here \\(-2\\sqrt{3} - 2i\\) has modulus \\(4\\) and argument \\(-\\frac{5\\pi}{6}\\), so its fifth power has modulus \\(1024\\) and argument \\(-\\frac{25\\pi}{6} \\equiv -\\frac{\\pi}{6}\\), giving \\(512\\sqrt{3} - 512i\\). Confirmed by direct expansion: the value is \\(886.810 - 512i\\), and \\(512\\sqrt{3} = 886.810\\). The real part is right; the IMAGINARY SIGN is wrong.]"
+  },
+  {
+    "ref": "Misc I Q1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Powers of i and Division",
+    "difficulty": "MODERATE",
+    "stem": "If \\(n\\) is an odd positive integer then the value of \\(1+(i)^{2n}+(i)^{4n}+(i)^{6n}\\) is :",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-4i\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(4i\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(4\\)"
+      }
+    ],
+    "answer": "B",
+    "_note": "Derived before consulting the key: \\(n\\) odd \\(\\Rightarrow i^{2n}=(-1)^n=-1\\), \\(i^{4n}=1\\), \\(i^{6n}=(-1)^{3n}=-1\\), so the sum is \\(1-1+1-1=0\\). Printed key (p.198) also B — AGREE."
+  },
+  {
+    "ref": "Misc I Q2",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Powers of i and Division",
+    "difficulty": "MODERATE",
+    "stem": "The value of is \\(\\dfrac{i^{592}+i^{590}+i^{588}+i^{586}+i^{584}}{i^{582}+i^{580}+i^{578}+i^{576}+i^{574}}\\) is equal to :",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-1\\)"
+      }
+    ],
+    "answer": "D",
+    "_note": "Stem transcribed as printed: the book prints the stray words \"The value of is\" before the fraction (a typesetting slip; \"The value of\" and \"is equal to\" both appear). Derived before consulting the key: both numerator and denominator factor as \\(i^{k}(i^{8}+i^{6}+i^{4}+i^{2}+1)=i^{k}\\cdot 1\\), so the ratio is \\(i^{584-574}=i^{10}=-1\\). Printed key (p.198) also D — AGREE.",
+    "solution": "[Textbook misprint: the stem prints the stray words \"The value of is\" before the expression, with the subject of the sentence missing.]"
+  },
+  {
+    "ref": "Misc I Q3",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Complex Numbers and Equality",
+    "difficulty": "EASY",
+    "stem": "\\(\\sqrt{-3}\\ \\sqrt{-6}\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-3\\sqrt{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(3\\sqrt{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(3\\sqrt{2}\\,i\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-3\\sqrt{2}\\,i\\)"
+      }
+    ],
+    "answer": "A",
+    "_note": "Derived before consulting the key: \\(\\sqrt{-3}\\,\\sqrt{-6}=(i\\sqrt3)(i\\sqrt6)=i^2\\sqrt{18}=-3\\sqrt2\\). Printed key (p.198) also A — AGREE."
+  },
+  {
+    "ref": "Misc I Q4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "EASY",
+    "stem": "If \\(w\\) is a complex cube root of unity, then the value of \\(w^{99}+w^{100}+w^{101}\\) is :",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(3\\)"
+      }
+    ],
+    "answer": "C",
+    "_note": "Derived before consulting the key: \\(w^{99}(1+w+w^{2})=1\\cdot 0=0\\) since \\(w^{99}=(w^{3})^{33}=1\\). Printed key (p.198) also C — AGREE."
+  },
+  {
+    "ref": "Misc I Q5",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "stem": "If \\(z=r(\\cos\\theta+i\\sin\\theta)\\), then the value of \\(\\dfrac{z}{\\bar{z}}+\\dfrac{\\bar{z}}{z}\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\cos 2\\theta\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2\\cos 2\\theta\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2\\cos\\theta\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2\\sin\\theta\\)"
+      }
+    ],
+    "answer": "B",
+    "_note": "Derived before consulting the key: \\(z=re^{i\\theta}\\Rightarrow \\frac{z}{\\bar z}=e^{2i\\theta}\\) and \\(\\frac{\\bar z}{z}=e^{-2i\\theta}\\); their sum is \\(2\\cos 2\\theta\\). Printed key (p.198) also B — AGREE."
+  },
+  {
+    "ref": "Misc I Q6",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "MODERATE",
+    "stem": "If \\(w\\ (\\ne 1)\\) is a cube root of unity and \\((1+w)^{7}=A+Bw\\), then \\(A\\) and \\(B\\) are respectively the numbers",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0,\\ 1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1,\\ 1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(1,\\ 0\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-1,\\ 1\\)"
+      }
+    ],
+    "answer": "B",
+    "_note": "Derived before consulting the key: \\(1+w=-w^{2}\\), so \\((1+w)^{7}=(-w^{2})^{7}=-w^{14}=-w^{2}=1+w\\), i.e. \\(A=1,\\ B=1\\). Printed key (p.198) also B — AGREE."
+  },
+  {
+    "ref": "Misc I Q7",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "De Moivre's Theorem",
+    "difficulty": "MODERATE",
+    "stem": "The modulus and argument of \\((1+i\\sqrt{3})^{8}\\) are respectively",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2\\) and \\(\\dfrac{2\\pi}{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(256\\) and \\(\\dfrac{8\\pi}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(256\\) and \\(\\dfrac{2\\pi}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(64\\) and \\(\\dfrac{4\\pi}{3}\\)"
+      }
+    ],
+    "answer": "C",
+    "_note": "DISAGREEMENT WITH THE PRINTED KEY + TWIN. Derived before consulting the key: \\(1+i\\sqrt3\\) has modulus 2 and argument \\(\\frac\\pi3\\), so the eighth power has modulus \\(2^{8}=256\\) and argument \\(8\\cdot\\frac\\pi3=\\frac{8\\pi}{3}\\), whose PRINCIPAL value is \\(\\frac{8\\pi}{3}-2\\pi=\\frac{2\\pi}{3}\\) — option C. The printed key (p.198) gives B. TWIN: options B and C name the SAME modulus and two arguments differing by exactly \\(2\\pi\\), i.e. the same point of the Argand plane, so BOTH are true readings of \"an argument\" and the option set is defective. C is kept because \"the argument\" conventionally means the principal argument, and \\(\\frac{8\\pi}{3}\\) lies outside every principal range; the book's OWN worked example \\(1.6\\ \\mathrm{SolvedEx.}1(i)\\) reduces \\(\\frac{8\\pi}{3}\\) to \\(\\frac{2\\pi}{3}\\) for exactly this reason. This is a defect in the OPTION SET, not evidence that either letter is wrong.",
+    "solution": "[Textbook defect in the OPTION SET, not the key: \\((1+i\\sqrt{3})^8\\) has modulus \\(256\\) and argument \\(\\frac{8\\pi}{3} \\equiv \\frac{2\\pi}{3}\\), and TWO printed options name that same modulus and that same point, their arguments differing by exactly \\(2\\pi\\). Both are therefore true as printed. The option giving the PRINCIPAL argument \\(\\frac{2\\pi}{3}\\) is retained, because \"the argument\" means the principal one and \\(\\frac{8\\pi}{3}\\) lies outside every principal range — and because this chapter's own solved example on De Moivre's theorem reduces \\(\\frac{8\\pi}{3}\\) to \\(\\frac{2\\pi}{3}\\) for exactly this reason.]"
+  },
+  {
+    "ref": "Misc I Q8",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Argand Diagram, Modulus and Argument",
+    "difficulty": "EASY",
+    "stem": "If \\(\\arg(z)=\\theta\\), then \\(\\arg(\\overline{z})=\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-\\theta\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\theta\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\pi-\\theta\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\pi+\\theta\\)"
+      }
+    ],
+    "answer": "A",
+    "_note": "Derived before consulting the key: conjugation reflects the point in the real axis, so the argument changes sign. Printed key (p.198) also A — AGREE."
+  },
+  {
+    "ref": "Misc I Q9",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "stem": "If \\(-1+\\sqrt{3}\\,i=re^{i\\theta}\\), then \\(\\theta=\\) ................. .",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-\\dfrac{2\\pi}{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{\\pi}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(-\\dfrac{\\pi}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{2\\pi}{3}\\)"
+      }
+    ],
+    "answer": "D",
+    "_note": "Derived before consulting the key: the point \\((-1,\\sqrt3)\\) is in the second quadrant with reference angle \\(\\frac\\pi3\\), so \\(\\theta=\\pi-\\frac\\pi3=\\frac{2\\pi}{3}\\). Printed key (p.198) also D — AGREE."
+  },
+  {
+    "ref": "Misc I Q10",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Sets of Points in the Complex Plane",
+    "difficulty": "MODERATE",
+    "stem": "If \\(z=x+iy\\) and \\(|z-zi|=1\\) then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(z\\) lies on X-axis"
+      },
+      {
+        "label": "B",
+        "text": "\\(z\\) lies on Y-axis"
+      },
+      {
+        "label": "C",
+        "text": "\\(z\\) lies on a circle"
+      },
+      {
+        "label": "D",
+        "text": "\\(z\\) lies on a rectangle"
+      }
+    ],
+    "answer": "C",
+    "_note": "DISAGREEMENT WITH THE PRINTED KEY, with a likely explanation. Derived before consulting the key: \\(z-zi=z(1-i)\\), so \\(|z-zi|=|z|\\,|1-i|=\\sqrt2\\,|z|=1\\), giving \\(x^{2}+y^{2}=\\tfrac12\\) — a circle centred at the origin of radius \\(\\tfrac{1}{\\sqrt2}\\), i.e. option C. The printed key (p.198) gives D. NOTE THE PRINTED LABEL ORDER IS SCRAMBLED on p.21: the four options are laid out as \"A) X-axis   B) Y-axis\" then \"D) z lies on a rectangle   C) z lies on a circle\" — the third printed POSITION carries the label D and the fourth carries C. The correct answer text \"a circle\" therefore sits in the fourth position, which a key-setter reading BY POSITION would record as D. A modulus equation of this form cannot produce a rectangle under any reading, so the key's letter is almost certainly a positional slip and the intended answer is \"z lies on a circle\". Options are emitted in LABEL order (A,B,C,D), not printed order.",
+    "solution": "[Textbook misprint in the printed OPTION LABELS, which in turn misleads the key: the four alternatives are laid out A) X-axis, B) Y-axis, then D) a rectangle, then C) a circle — the third printed POSITION carries the label D and the fourth carries C. The answer is a circle: \\(|z - zi| = |z||1-i| = \\sqrt{2}|z| = 1\\) gives \\(x^2 + y^2 = \\tfrac12\\), and a modulus equation of this form cannot describe a rectangle. The key records the fourth POSITION, i.e. D. Options are stored here in label order A, B, C, D, so the correct answer is the option labelled C.]"
+  },
+  {
+    "ref": "Misc II Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complex Numbers and Equality",
+    "difficulty": "EASY",
+    "context": "Simplify the following and express in the form \\(a+ib\\).",
+    "setLabel": "Misc II Q1",
+    "stem": "\\(3+\\sqrt{-64}\\)"
+  },
+  {
+    "ref": "Misc II Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Powers of i and Division",
+    "difficulty": "EASY",
+    "context": "Simplify the following and express in the form \\(a+ib\\).",
+    "setLabel": "Misc II Q1",
+    "stem": "\\((2i^{3})^{2}\\)"
+  },
+  {
+    "ref": "Misc II Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conjugate and Algebra of Complex Numbers",
+    "difficulty": "EASY",
+    "context": "Simplify the following and express in the form \\(a+ib\\).",
+    "setLabel": "Misc II Q1",
+    "stem": "\\((2+3i)(1-4i)\\)"
+  },
+  {
+    "ref": "Misc II Q1(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conjugate and Algebra of Complex Numbers",
+    "difficulty": "EASY",
+    "context": "Simplify the following and express in the form \\(a+ib\\).",
+    "setLabel": "Misc II Q1",
+    "stem": "\\(\\dfrac{5}{2}\\,i(-4-3i)\\)"
+  },
+  {
+    "ref": "Misc II Q1(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conjugate and Algebra of Complex Numbers",
+    "difficulty": "MODERATE",
+    "context": "Simplify the following and express in the form \\(a+ib\\).",
+    "setLabel": "Misc II Q1",
+    "stem": "\\((1+3i)^{2}(3+i)\\)"
+  },
+  {
+    "ref": "Misc II Q1(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Powers of i and Division",
+    "difficulty": "EASY",
+    "context": "Simplify the following and express in the form \\(a+ib\\).",
+    "setLabel": "Misc II Q1",
+    "stem": "\\(\\dfrac{4+3i}{1-i}\\)"
+  },
+  {
+    "ref": "Misc II Q1(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Powers of i and Division",
+    "difficulty": "MODERATE",
+    "context": "Simplify the following and express in the form \\(a+ib\\).",
+    "setLabel": "Misc II Q1",
+    "stem": "\\(\\left(1+\\dfrac{2}{i}\\right)\\left(3+\\dfrac{4}{i}\\right)(5+i)^{-1}\\)"
+  },
+  {
+    "ref": "Misc II Q1(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Powers of i and Division",
+    "difficulty": "MODERATE",
+    "context": "Simplify the following and express in the form \\(a+ib\\).",
+    "setLabel": "Misc II Q1",
+    "stem": "\\(\\dfrac{\\sqrt{5}+\\sqrt{3}\\,i}{\\sqrt{5}-\\sqrt{3}\\,i}\\)"
+  },
+  {
+    "ref": "Misc II Q1(ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Powers of i and Division",
+    "difficulty": "MODERATE",
+    "context": "Simplify the following and express in the form \\(a+ib\\).",
+    "setLabel": "Misc II Q1",
+    "stem": "\\(\\dfrac{3i^{5}+2i^{7}+i^{9}}{i^{6}+2i^{8}+3i^{18}}\\)"
+  },
+  {
+    "ref": "Misc II Q1(x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Powers of i and Division",
+    "difficulty": "MODERATE",
+    "context": "Simplify the following and express in the form \\(a+ib\\).",
+    "setLabel": "Misc II Q1",
+    "stem": "\\(\\dfrac{5+7i}{4+3i}+\\dfrac{5+7i}{4-3i}\\)"
+  },
+  {
+    "ref": "Misc II Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complex Numbers and Equality",
+    "difficulty": "MODERATE",
+    "context": "Solve the following equations for \\(x,\\ y\\in R\\)",
+    "setLabel": "Misc II Q2",
+    "stem": "\\((4-5i)x+(2+3i)y=10-7i\\)"
+  },
+  {
+    "ref": "Misc II Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complex Numbers and Equality",
+    "difficulty": "MODERATE",
+    "context": "Solve the following equations for \\(x,\\ y\\in R\\)",
+    "setLabel": "Misc II Q2",
+    "stem": "\\(\\dfrac{x+iy}{2+3i}=7-i\\)"
+  },
+  {
+    "ref": "Misc II Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complex Numbers and Equality",
+    "difficulty": "MODERATE",
+    "context": "Solve the following equations for \\(x,\\ y\\in R\\)",
+    "setLabel": "Misc II Q2",
+    "stem": "\\((x+iy)(5+6i)=2+3i\\)"
+  },
+  {
+    "ref": "Misc II Q2(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complex Numbers and Equality",
+    "difficulty": "HARD",
+    "context": "Solve the following equations for \\(x,\\ y\\in R\\)",
+    "setLabel": "Misc II Q2",
+    "stem": "\\(2x+i^{9}y\\,(2+i)=xi^{7}+10i^{16}\\)"
+  },
+  {
+    "ref": "Misc II Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Powers of i and Division",
+    "difficulty": "MODERATE",
+    "context": "Evaluate",
+    "setLabel": "Misc II Q3",
+    "stem": "\\((1-i+i^{2})^{-15}\\)"
+  },
+  {
+    "ref": "Misc II Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Powers of i and Division",
+    "difficulty": "EASY",
+    "context": "Evaluate",
+    "setLabel": "Misc II Q3",
+    "stem": "\\((i^{131}+i^{49})\\)"
+  },
+  {
+    "ref": "Misc II Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conjugate and Algebra of Complex Numbers",
+    "difficulty": "MODERATE",
+    "context": "Find the value of",
+    "setLabel": "Misc II Q4",
+    "stem": "\\(x^{3}+2x^{2}-3x+21\\), if \\(x=1+2i\\)."
+  },
+  {
+    "ref": "Misc II Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conjugate and Algebra of Complex Numbers",
+    "difficulty": "HARD",
+    "context": "Find the value of",
+    "setLabel": "Misc II Q4",
+    "stem": "\\(x^{4}+9x^{3}+35x^{2}-x+164\\), if \\(x=-5+4i\\)."
+  },
+  {
+    "ref": "Misc II Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Square Root of a Complex Number",
+    "difficulty": "MODERATE",
+    "context": "Find the square roots of",
+    "setLabel": "Misc II Q5",
+    "stem": "\\(-16+30i\\)"
+  },
+  {
+    "ref": "Misc II Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Square Root of a Complex Number",
+    "difficulty": "MODERATE",
+    "context": "Find the square roots of",
+    "setLabel": "Misc II Q5",
+    "stem": "\\(15-8i\\)"
+  },
+  {
+    "ref": "Misc II Q5(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Square Root of a Complex Number",
+    "difficulty": "MODERATE",
+    "context": "Find the square roots of",
+    "setLabel": "Misc II Q5",
+    "stem": "\\(2+2\\sqrt{3}\\,i\\)"
+  },
+  {
+    "ref": "Misc II Q5(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Square Root of a Complex Number",
+    "difficulty": "EASY",
+    "context": "Find the square roots of",
+    "setLabel": "Misc II Q5",
+    "stem": "\\(18i\\)"
+  },
+  {
+    "ref": "Misc II Q5(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Square Root of a Complex Number",
+    "difficulty": "MODERATE",
+    "context": "Find the square roots of",
+    "setLabel": "Misc II Q5",
+    "stem": "\\(3-4i\\)"
+  },
+  {
+    "ref": "Misc II Q5(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Square Root of a Complex Number",
+    "difficulty": "MODERATE",
+    "context": "Find the square roots of",
+    "setLabel": "Misc II Q5",
+    "stem": "\\(6+8i\\)"
+  },
+  {
+    "ref": "Misc II Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "context": "Find the modulus and amplitude of each complex number and express it in the polar form.",
+    "setLabel": "Misc II Q6",
+    "stem": "\\(8+15i\\)"
+  },
+  {
+    "ref": "Misc II Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "context": "Find the modulus and amplitude of each complex number and express it in the polar form.",
+    "setLabel": "Misc II Q6",
+    "stem": "\\(6-i\\)"
+  },
+  {
+    "ref": "Misc II Q6(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "context": "Find the modulus and amplitude of each complex number and express it in the polar form.",
+    "setLabel": "Misc II Q6",
+    "stem": "\\(\\dfrac{1+\\sqrt{3}\\,i}{2}\\)"
+  },
+  {
+    "ref": "Misc II Q6(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "context": "Find the modulus and amplitude of each complex number and express it in the polar form.",
+    "setLabel": "Misc II Q6",
+    "stem": "\\(\\dfrac{-1-i}{\\sqrt{2}}\\)"
+  },
+  {
+    "ref": "Misc II Q6(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "EASY",
+    "context": "Find the modulus and amplitude of each complex number and express it in the polar form.",
+    "setLabel": "Misc II Q6",
+    "stem": "\\(2i\\)"
+  },
+  {
+    "ref": "Misc II Q6(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "EASY",
+    "context": "Find the modulus and amplitude of each complex number and express it in the polar form.",
+    "setLabel": "Misc II Q6",
+    "stem": "\\(-3i\\)"
+  },
+  {
+    "ref": "Misc II Q6(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "context": "Find the modulus and amplitude of each complex number and express it in the polar form.",
+    "setLabel": "Misc II Q6",
+    "stem": "\\(\\dfrac{1}{\\sqrt{2}}+\\dfrac{1}{\\sqrt{2}}i\\)"
+  },
+  {
+    "ref": "Misc II Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Argand Diagram, Modulus and Argument",
+    "difficulty": "EASY",
+    "stem": "Represent \\(1+2i\\), \\(2-i\\), \\(-3-2i\\), \\(-2+3i\\) by points in Argand's diagram.",
+    "diagramWouldHelp": true,
+    "diagramNote": "The answer is a single Argand diagram: an \\(x\\)-\\(y\\) plane with the real axis horizontal and the imaginary axis vertical, carrying the four plotted points \\((1,2)\\), \\((2,-1)\\), \\((-3,-2)\\) and \\((-2,3)\\), one in each quadrant, each labelled with its complex number."
+  },
+  {
+    "ref": "Misc II Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Powers of i and Division",
+    "difficulty": "MODERATE",
+    "stem": "Show that \\(z=\\dfrac{5}{(1-i)(2-i)(3-i)}\\) is purely imaginary number."
+  },
+  {
+    "ref": "Misc II Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complex Numbers and Equality",
+    "difficulty": "HARD",
+    "stem": "Find the real numbers \\(x\\) and \\(y\\) such that \\(\\dfrac{x}{1+2i}+\\dfrac{y}{3+2i}=\\dfrac{5+6i}{-1+8i}\\)"
+  },
+  {
+    "ref": "Misc II Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "De Moivre's Theorem",
+    "difficulty": "HARD",
+    "stem": "Show that \\(\\left(\\dfrac{1}{\\sqrt{2}}+\\dfrac{i}{\\sqrt{2}}\\right)^{10}+\\left(\\dfrac{1}{\\sqrt{2}}-\\dfrac{i}{\\sqrt{2}}\\right)^{10}=0\\)"
+  },
+  {
+    "ref": "Misc II Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "De Moivre's Theorem",
+    "difficulty": "HARD",
+    "stem": "Show that \\(\\left(\\dfrac{1+i}{\\sqrt{2}}\\right)^{8}+\\left(\\dfrac{1-i}{\\sqrt{2}}\\right)^{8}=2\\)."
+  },
+  {
+    "ref": "Misc II Q12(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "HARD",
+    "context": "Convert the complex numbers in polar form and also in exponential form.",
+    "setLabel": "Misc II Q12",
+    "stem": "\\(z=\\dfrac{2+6\\sqrt{3}\\,i}{5+\\sqrt{3}\\,i}\\)"
+  },
+  {
+    "ref": "Misc II Q12(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "context": "Convert the complex numbers in polar form and also in exponential form.",
+    "setLabel": "Misc II Q12",
+    "stem": "\\(z=-6+\\sqrt{2}\\,i\\)"
+  },
+  {
+    "ref": "Misc II Q12(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Polar and Exponential Form",
+    "difficulty": "MODERATE",
+    "context": "Convert the complex numbers in polar form and also in exponential form.",
+    "setLabel": "Misc II Q12",
+    "stem": "\\(\\dfrac{-3}{2}+\\dfrac{3\\sqrt{3}\\,i}{2}\\)"
+  },
+  {
+    "ref": "Misc II Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conjugate and Algebra of Complex Numbers",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x+iy=\\dfrac{a+ib}{a-ib}\\), prove that \\(x^{2}+y^{2}=1\\)."
+  },
+  {
+    "ref": "Misc II Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "MODERATE",
+    "stem": "Show that \\(z=\\left(\\dfrac{-1+\\sqrt{-3}}{2}\\right)^{3}\\) is a rational number."
+  },
+  {
+    "ref": "Misc II Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conjugate and Algebra of Complex Numbers",
+    "difficulty": "MODERATE",
+    "stem": "Show that \\(\\dfrac{1-2i}{3-4i}+\\dfrac{1+2i}{3+4i}\\) is real."
+  },
+  {
+    "ref": "Misc II Q16(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Powers of i and Division",
+    "difficulty": "MODERATE",
+    "context": "Simplify",
+    "setLabel": "Misc II Q16",
+    "stem": "\\(\\dfrac{i^{29}+i^{39}+i^{49}}{i^{30}+i^{40}+i^{50}}\\)"
+  },
+  {
+    "ref": "Misc II Q16(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Powers of i and Division",
+    "difficulty": "MODERATE",
+    "context": "Simplify",
+    "setLabel": "Misc II Q16",
+    "stem": "\\(\\left(i^{65}+\\dfrac{1}{i^{145}}\\right)\\)"
+  },
+  {
+    "ref": "Misc II Q16(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Powers of i and Division",
+    "difficulty": "MODERATE",
+    "context": "Simplify",
+    "setLabel": "Misc II Q16",
+    "stem": "\\(\\dfrac{i^{238}+i^{236}+i^{234}+i^{232}+i^{230}}{i^{228}+i^{226}+i^{224}+i^{222}+i^{220}}\\)"
+  },
+  {
+    "ref": "Misc II Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Powers of i and Division",
+    "difficulty": "HARD",
+    "stem": "Simplify \\(\\left[\\dfrac{1}{1-2i}+\\dfrac{3}{1+i}\\right]\\left[\\dfrac{3+4i}{2-4i}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "HARD",
+    "stem": "If \\(\\alpha\\) and \\(\\beta\\) are complex cube roots of unity, prove that \\((1-\\alpha)(1-\\beta)(1-\\alpha^{2})(1-\\beta^{2})=9\\)"
+  },
+  {
+    "ref": "Misc II Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "HARD",
+    "stem": "If \\(w\\) is a complex cube root of unity, prove that \\((1-w+w^{2})^{6}+(1+w-w^{2})^{6}=128\\)"
+  },
+  {
+    "ref": "Misc II Q20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "MODERATE",
+    "stem": "If \\(w\\) is the cube root of unity then find the value of \\(\\left(\\dfrac{-1+i\\sqrt{3}}{2}\\right)^{18}+\\left(\\dfrac{-1-i\\sqrt{3}}{2}\\right)^{18}\\)"
+  }
+]

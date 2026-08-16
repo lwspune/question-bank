@@ -1,0 +1,64 @@
+[
+  {
+    "id": "c0285c9d-d930-4144-a61c-79d7f220562b",
+    "ref": "Ex 3.5 Q1",
+    "solution": "Around a table only the positions relative to one another matter, so one person is fixed and the rest are arranged: the number of circular permutations of \\(n\\) distinct persons is \\((n-1)!\\). Seats round a table are approached from one side, so a clockwise order and its mirror image (anticlockwise) are different seatings and there is no halving. With \\(n = 8\\), number of ways \\(= (8-1)! = 7! = 5040\\)."
+  },
+  {
+    "id": "c6fdae5d-9b66-425a-b201-a54f958f88f0",
+    "ref": "Ex 3.5 Q2",
+    "solution": "Including the host there are \\(20 + 1 = 21\\) persons round the table, so the number of distinct seatings is \\((21-1)! = 20!\\). (Reflections are distinct here — this is seating, not a garland.) For the second part, treat the host together with the two specified persons as one block; within the block the host is in the middle and the two specified persons can be interchanged in \\(2!\\) ways. The block and the other \\(18\\) persons give \\(19\\) units, arranged circularly in \\((19-1)! = 18!\\) ways. Number of such seatings \\(= 2! \\times 18! = 2 \\times 18!\\). Answers: \\(20!\\) in all, of which \\(2 \\times 18!\\) have the two specified persons on either side of the host."
+  },
+  {
+    "id": "cf4cd951-05f8-496e-99b5-33db54f88e90",
+    "ref": "Ex 3.5 Q3(a)",
+    "solution": "There are \\(24\\) delegates, so the total number of round-table arrangements is \\((24-1)! = 23!\\) (reflections counted as distinct, since this is seating). Tie the two specified delegates into a single block: the block and the remaining \\(22\\) delegates are \\(23\\) units, arranged circularly in \\((23-1)! = 22!\\) ways, and the two delegates can be interchanged inside the block in \\(2!\\) ways. Number of arrangements with them always together \\(= 2! \\times 22! = 2 \\times 22!\\).",
+    "_note": "The printed key gives \\(2 \\cdot 23!\\) for this part, which is 23 times too large — a block of 2 among 24 people leaves 23 units, so the circular factor is \\((23-1)! = 22!\\), not \\(23!\\). The book's own answer to part (b), \\(21 \\cdot 22!\\), refutes it: \\(23! - 2 \\cdot 22! = 22!(23-2) = 21 \\cdot 22!\\) exactly, whereas \\(23! - 2 \\cdot 23!\\) would be negative. So (b) is right and (a) is a misprint of \\(2 \\cdot 22!\\)."
+  },
+  {
+    "id": "3744e852-1ea9-45aa-8144-b1cc97f70e79",
+    "ref": "Ex 3.5 Q3(b)",
+    "solution": "Total round-table arrangements of the \\(24\\) delegates \\(= (24-1)! = 23!\\), and from part (a) the number with the two specified delegates together is \\(2 \\times 22!\\). Number with them never together \\(= 23! - 2 \\times 22! = 22!(23 - 2) = 21 \\times 22!\\)."
+  },
+  {
+    "id": "7cfb0991-ac37-4f25-8791-1dcd2b22d4f9",
+    "ref": "Ex 3.5 Q4",
+    "solution": "Two seatings give every person the same pair of neighbours exactly when one is the reverse (mirror image) of the other, so here a clockwise arrangement and its anticlockwise reflection must be counted as one — the necklace count, not the seating count. The circular arrangements of \\(15\\) persons number \\((15-1)! = 14!\\), and these fall into pairs of mutually reversed arrangements. Number of ways \\(= \\dfrac{14!}{2}\\)."
+  },
+  {
+    "id": "f87a2e51-2dca-41ae-96fb-33714a5396fd",
+    "ref": "Ex 3.5 Q5",
+    "solution": "Treat the president and the vice president as a single block. The block together with the other \\(8\\) members gives \\(9\\) units, arranged round the table in \\((9-1)! = 8!\\) ways, and the two officers can be interchanged within the block in \\(2!\\) ways. (Reflections are distinct — this is seating.) Number of arrangements \\(= 2! \\times 8! = 2 \\times 8! = 80640\\)."
+  },
+  {
+    "id": "81eb2e52-ed72-41ab-a556-60c5465a53fb",
+    "ref": "Ex 3.5 Q6(a)",
+    "solution": "There are \\(5 + 2 + 1 = 8\\) persons. Treat the two women and the child between them as one block. The block together with the \\(5\\) men gives \\(6\\) units, arranged round the table in \\((6-1)! = 5!\\) ways; inside the block the child is fixed in the middle and the two women can take the two sides in \\(2!\\) ways. Number of arrangements \\(= 5! \\times 2! = 120 \\times 2 = 240\\)."
+  },
+  {
+    "id": "053f86d7-8f99-4071-a33c-edcb2a6bb0b8",
+    "ref": "Ex 3.5 Q6(b)",
+    "solution": "Choose the two men who will flank the child and fix which of them sits on which side: this can be done in \\({}^{5}P_{2} = 20\\) ways. Treat these two men with the child between them as one block; the block together with the remaining \\(3\\) men and \\(2\\) women gives \\(6\\) units, arranged round the table in \\((6-1)! = 5! = 120\\) ways. Number of arrangements \\(= 20 \\times 120 = 2400\\)."
+  },
+  {
+    "id": "e6bbb565-9230-4011-a872-bccc1028d1ad",
+    "ref": "Ex 3.5 Q7",
+    "solution": "First seat the \\(8\\) men round the table: \\((8-1)! = 7!\\) ways. This creates \\(8\\) gaps between consecutive men, and no two women are together exactly when the \\(6\\) women occupy \\(6\\) different gaps, one woman per gap. Filling \\(6\\) of the \\(8\\) gaps with the \\(6\\) distinct women can be done in \\({}^{8}P_{6}\\) ways. Number of arrangements \\(= 7! \\times {}^{8}P_{6} = 5040 \\times 20160 = 101606400\\)."
+  },
+  {
+    "id": "c63ac336-99cc-44d2-9955-24c6e06cc58b",
+    "ref": "Ex 3.5 Q8",
+    "solution": "Seat the \\(3\\) men round the table first: \\((3-1)! = 2\\) ways. This creates \\(3\\) gaps, and \"exactly two women together\" means one gap receives two women and a second gap receives the remaining woman (the third gap stays empty) — if all three went into one gap all three women would be together, and one woman per gap would leave no two together. Choose the gap for the pair in \\(3\\) ways and the gap for the single woman in \\(2\\) ways; the two women who sit together can be chosen and ordered in \\({}^{3}P_{2} = 6\\) ways, and the last woman fills the remaining chosen gap. Number of arrangements \\(= 2 \\times 3 \\times 2 \\times 6 = 72\\).",
+    "_note": "The printed key gives 144, which cannot be a count of these seatings at all: the total number of round-table arrangements of the 6 persons is only \\((6-1)! = 5! = 120\\). 144 is the sum, over the \\({}^{3}C_{2} = 3\\) pairs of women, of the arrangements in which that pair is adjacent (\\(3 \\times 4! \\times 2! = 144\\)); that double-counts every arrangement in which all three women sit together, since such an arrangement contains two adjacent pairs. Checking the partition of the 120 arrangements: all three women together \\(= 3! \\times 3! = 36\\), no two women together \\(= 2 \\times 3! = 12\\), so exactly two together \\(= 120 - 36 - 12 = 72\\), confirming the answer above."
+  },
+  {
+    "id": "0ea0a72d-663c-4ce6-a1fe-d096eeaf181d",
+    "ref": "Ex 3.5 Q9",
+    "solution": "The \\(10\\) objects give \\(\\dfrac{10!}{4!}\\) distinguishable arrangements in a row, since \\(4\\) of them are alike. Each circular arrangement gives \\(10\\) different row arrangements (one for each starting point), and no arrangement repeats itself under a rotation because the \\(6\\) unlike objects break any symmetry. Number of circular arrangements \\(= \\dfrac{1}{10} \\times \\dfrac{10!}{4!} = \\dfrac{9!}{4!} = 15120\\)."
+  },
+  {
+    "id": "12868be4-ad13-497d-a861-7962ab37057b",
+    "ref": "Ex 3.5 Q10",
+    "solution": "Total round-table arrangements of \\(15\\) persons \\(= (15-1)! = 14!\\). Treating the two specified persons as one block gives \\(14\\) units, arranged in \\((14-1)! = 13!\\) ways, with \\(2!\\) ways of interchanging them inside the block, so \\(2 \\times 13!\\) arrangements have them side by side. Number with them not side by side \\(= 14! - 2 \\times 13! = 13!(14 - 2) = 12 \\times 13!\\)."
+  }
+]

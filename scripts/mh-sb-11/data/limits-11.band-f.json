@@ -1,0 +1,608 @@
+[
+  {
+    "ref": "Misc I Q1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Method of Factorization",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to 2}\\left(\\frac{x^{4}-16}{x^{2}-5x+6}\\right) =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(23\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(32\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(-32\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-16\\)"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc I Q2",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Method of Factorization",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to -2}\\left(\\frac{x^{7}+128}{x^{3}+8}\\right) =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{56}{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{112}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{121}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{28}{3}\\)"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Misc I Q3",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Method of Factorization",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to 3}\\left(\\frac{1}{x^{2}-11x+24}+\\frac{1}{x^{2}-x-6}\\right) =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-\\frac{2}{25}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{2}{25}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{7}{25}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-\\frac{7}{25}\\)"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Misc I Q4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Method of Rationalization",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to 5}\\left(\\frac{\\sqrt{x+4}-3}{\\sqrt{3x-11-2}}\\right) =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{-2}{9}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{2}{7}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{5}{9}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{2}{9}\\)"
+      }
+    ],
+    "answer": "D",
+    "_note": "STEM DEFECT (printed radical vinculum too wide) — transcribed AS PRINTED per the brief; RECOMMENDED REPAIR: denominator should be \\(\\sqrt{3x-11}-2\\), i.e. change '\\\\sqrt{3x-11-2}' to '\\\\sqrt{3x-11}-2'. Evidence: (a) on the page the denominator's radical vinculum runs the full width of '3x-11-2' (verified at 10x zoom - two distinct horizontal rules, the upper being the fraction bar and the lower starting just after the radical tick and ending at the far right), whereas the NUMERATOR's vinculum in the same fraction correctly stops after '4' leaving '-3' outside; (b) the book CAN set a short vinculum in a denominator - Misc II Q17 prints \\(\\sqrt{2}-\\sin x-\\cos x\\) correctly - so this is a defect, not house style; (c) AS PRINTED the denominator is \\(\\sqrt{3x-13}\\), which at x=5 equals \\(\\sqrt{2}\\ne 0\\) while the numerator tends to 0, so the limit is 0 and NO option matches; (d) under the intended reading the 0/0 form rationalises to \\((\\sqrt{3x-11}+2)/(3(\\sqrt{x+4}+3))\\to 4/18 = 2/9\\), exactly option D. My derived letter D is under the intended reading and matches the book's printed key.",
+    "solution": "[Textbook misprint in the stem: the denominator's radical vinculum is set too wide, running over the whole of \\(3x - 11 - 2\\), so as printed the denominator reads \\(\\sqrt{3x-13}\\). That reading makes the question unanswerable — at \\(x = 5\\) the denominator is \\(\\sqrt{2} \\ne 0\\) while the numerator tends to \\(0\\), giving a limit of \\(0\\), which is none of the four options. The intended denominator is \\(\\sqrt{3x-11} - 2\\): the numerator's own vinculum in the same fraction correctly stops after the \\(4\\), leaving its \\(-3\\) outside, and the book sets a short denominator vinculum correctly elsewhere in this very exercise. Under the intended reading the \\(0/0\\) form rationalises to \\(\\dfrac{\\sqrt{3x-11}+2}{3\\left(\\sqrt{x+4}+3\\right)} \\to \\dfrac{4}{18} = \\dfrac{2}{9}\\), which is the printed key. The answer above follows the intended reading.]"
+  },
+  {
+    "ref": "Misc I Q5",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Substitution Method",
+    "difficulty": "HARD",
+    "stem": "\\(\\lim_{x \\to \\frac{\\pi}{3}}\\left(\\frac{\\tan^{2}x-3}{\\sec^{3}x-8}\\right) =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{4}\\)"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc I Q6",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to 0}\\left(\\frac{5\\sin x - x\\cos x}{2\\tan x - 3x^{2}}\\right) =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(3\\)"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc I Q7",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "\\(\\lim_{x \\to \\frac{\\pi}{2}}\\left[\\frac{3\\cos x + \\cos 3x}{(2x-\\pi)^{3}}\\right] =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{3}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(-\\frac{1}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{4}\\)"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc I Q8",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Limits of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to 0}\\left(\\frac{15^{x}-3^{x}-5^{x}+1}{\\sin^{2}x}\\right) =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\log 15\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\log 3 + \\log 5\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\log 3 \\cdot \\log 5\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(3\\log 5\\)"
+      }
+    ],
+    "answer": "C",
+    "_note": "TWIN: A=B. \\(\\log 15 = \\log(3\\times 5) = \\log 3 + \\log 5\\), so options A and B are the SAME number written two ways. That is a defect in the OPTION SET, not evidence about the key: the correct value is \\(\\log 3\\cdot\\log 5\\) (option C), since \\(15^{x}-3^{x}-5^{x}+1=(3^{x}-1)(5^{x}-1)\\). The twin pair is a pair of distractors, so the key is unaffected.",
+    "solution": "[Textbook defect in the OPTION SET, not in the key: options A and B are the SAME number written two ways, since \\(\\log 15 = \\log(3 \\times 5) = \\log 3 + \\log 5\\). Both are distractors, so the key is unaffected — factoring the numerator as \\(\\left(3^x - 1\\right)\\left(5^x - 1\\right)\\) gives \\(\\log 3 \\cdot \\log 5\\). Verified numerically: the quotient converges to \\(1.768148\\) from both sides, which is \\(\\log 3 \\cdot \\log 5\\).]"
+  },
+  {
+    "ref": "Misc I Q9",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Limits of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to 0}\\left(\\frac{3+5x}{3-4x}\\right)^{\\frac{1}{x}} =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(e^{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(e^{6}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(e^{9}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(e^{-3}\\)"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Misc I Q10",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Limits of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to 0}\\left[\\frac{\\log(5+x)-\\log(5-x)}{\\sin x}\\right] =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{3}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(-\\frac{5}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(-\\frac{1}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{2}{5}\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc I Q11",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Limits of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to \\frac{\\pi}{2}}\\left(\\frac{3^{\\cos x}-1}{\\frac{\\pi}{2}-x}\\right) =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\log 3\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(3^{\\frac{\\pi}{2}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(3\\log 3\\)"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Misc I Q12",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Limits of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to 0}\\left[\\frac{x \\cdot \\log(1+3x)}{(e^{3x}-1)^{2}}\\right] =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{e^{9}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{e^{3}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{9}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{3}\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc I Q13",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Limits of Exponential and Logarithmic Functions",
+    "difficulty": "HARD",
+    "stem": "\\(\\lim_{x \\to 0}\\left[\\frac{(3^{\\sin x}-1)^{3}}{(3^{x}-1)\\cdot \\tan x \\cdot \\log(1+x)}\\right] =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(3\\log 3\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2\\log 3\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\((\\log 3)^{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\((\\log 3)^{3}\\)"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc I Q14",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Limits of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to 3}\\left[\\frac{5^{x-3}-4^{x-3}}{\\sin(x-3)}\\right] =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\log 5 - 4\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\log \\frac{5}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\log 5}{\\log 4}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\log 5}{4}\\)"
+      }
+    ],
+    "answer": "B",
+    "_note": "Option A is printed exactly as '\\(\\log 5 - 4\\)' (verified at 2x zoom - there is no 'log' before the 4). Almost certainly a misprint for \\(\\log 5-\\log 4\\), which WOULD have been an equal-value twin of option B. As printed A and B are NOT twins, so no twin flag; the key is unaffected either way. Flagged for the errata pass as a probable dropped 'log'.",
+    "solution": "[Textbook misprint in an option: option A is printed as \\(\\log 5 - 4\\), checked at high zoom, with no \\(\\log\\) before the \\(4\\). It is almost certainly meant to be \\(\\log 5 - \\log 4\\) — which would have made it an equal-value twin of option B and so a defect of a different kind. Either way the key is unaffected: the limit is \\(\\log 5 - \\log 4 = \\log\\frac{5}{4}\\).]"
+  },
+  {
+    "ref": "Misc I Q15",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Limits at Infinity and Infinite Limits",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to \\infty}\\left[\\frac{(2x+3)^{7}(x-5)^{3}}{(2x-5)^{10}}\\right] =\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{3}{8}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{8}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{6}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{4}\\)"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Misc II Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Substitution Method",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to 0}\\left[\\frac{(1-x)^{5}-1}{(1-x)^{3}-1}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definition of a Limit and One-Sided Limits",
+    "difficulty": "EASY",
+    "stem": "\\(\\lim_{x \\to 0}[x]\\)  (\\([\\ast]\\) is a greatest integer function.)"
+  },
+  {
+    "ref": "Misc II Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "EASY",
+    "stem": "If \\(f(r) = \\pi r^{2}\\) then find \\(\\lim_{h \\to 0}\\left[\\frac{f(r+h)-f(r)}{h}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definition of a Limit and One-Sided Limits",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to 0}\\left[\\frac{x}{|x|+x^{2}}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definition of a Limit and One-Sided Limits",
+    "difficulty": "EASY",
+    "stem": "Find the limit of the function, if it exists, at \\(x = 1\\)\n\n\\(f(x) = \\begin{cases} 7-4x & \\text{for } x<1 \\\\ x^{2}+2 & \\text{for } x \\ge 1 \\end{cases}\\)"
+  },
+  {
+    "ref": "Misc II Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Limits",
+    "difficulty": "MODERATE",
+    "stem": "Given that \\(7x \\le f(x) \\le 3x^{2}-6\\) for all \\(x\\). Determine the value of \\(\\lim_{x \\to 3} f(x)\\)"
+  },
+  {
+    "ref": "Misc II Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "\\(\\lim_{x \\to 0}\\left[\\frac{\\sec x^{2}-1}{x^{4}}\\right]\\)",
+    "_note": "Printed exactly as 'secx^2 - 1' (italic 'secx' with a superscript 2 sitting on the x), i.e. \\(\\sec(x^{2})-1\\), NOT \\(\\sec^{2}x-1\\). Confirmed by the book's own key, which gives 1/2: \\(\\sec(x^{2})-1\\sim x^{4}/2\\) gives 1/2, whereas \\(\\sec^{2}x-1=\\tan^{2}x\\sim x^{2}\\) over \\(x^{4}\\) would diverge. Transcribed as printed; the notation is ambiguous to a reader and could be worth an errata clarification.",
+    "solution": "[Textbook notation, ambiguous as set: the numerator is printed with the \\(2\\) as a superscript on the \\(x\\) of an italic \\(\\sec x\\), i.e. \\(\\sec\\left(x^2\\right) - 1\\), NOT \\(\\sec^2 x - 1\\). The book's own key settles it: \\(\\sec\\left(x^2\\right) - 1 \\sim \\frac{x^4}{2}\\) gives the printed \\(\\frac{1}{2}\\), whereas \\(\\sec^2 x - 1 = \\tan^2 x \\sim x^2\\) over \\(x^4\\) would diverge. Read the argument as \\(x^2\\).]"
+  },
+  {
+    "ref": "Misc II Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to 0}\\left[\\frac{e^{x}+e^{-x}-2}{x \\cdot \\tan x}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Exponential and Logarithmic Functions",
+    "difficulty": "HARD",
+    "stem": "\\(\\lim_{x \\to 0}\\left[\\frac{x(6^{x}-3^{x})}{\\cos(6x)-\\cos(4x)}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Exponential and Logarithmic Functions",
+    "difficulty": "HARD",
+    "stem": "\\(\\lim_{x \\to 0}\\left[\\frac{a^{3x}-a^{2x}-a^{x}+1}{x \\cdot \\tan x}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to a}\\left[\\frac{\\sin x - \\sin a}{x-a}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Exponential and Logarithmic Functions",
+    "difficulty": "EASY",
+    "stem": "\\(\\lim_{x \\to 2}\\left[\\frac{\\log x - \\log 2}{x-2}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Exponential and Logarithmic Functions",
+    "difficulty": "HARD",
+    "stem": "\\(\\lim_{x \\to 1}\\left[\\frac{ab^{x}-a^{x}b}{x^{2}-1}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to 0}\\left[\\frac{(5^{x}-1)^{2}}{(2^{x}-1)\\log(1+x)}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits at Infinity and Infinite Limits",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to \\infty}\\left[\\frac{(2x+1)^{2}(7x-3)^{3}}{(5x+2)^{5}}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to a}\\left[\\frac{x\\cos a - a\\cos x}{x-a}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "\\(\\lim_{x \\to \\frac{\\pi}{4}}\\left[\\frac{(\\sin x - \\cos x)^{2}}{\\sqrt{2}-\\sin x - \\cos x}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Exponential and Logarithmic Functions",
+    "difficulty": "HARD",
+    "stem": "\\(\\lim_{x \\to 1}\\left[\\frac{2^{2x-2}-2^{x}+1}{\\sin^{2}(x-1)}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Exponential and Logarithmic Functions",
+    "difficulty": "HARD",
+    "stem": "\\(\\lim_{x \\to 1}\\left[\\frac{4^{x-1}-2^{x}+1}{(x-1)^{2}}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to 1}\\left[\\frac{\\sqrt{x}-1}{\\log x}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to 0}\\left(\\frac{\\sqrt{1-\\cos x}}{x}\\right)\\)",
+    "_note": "The vinculum covers '1 - cos x' only; the '/x' is outside the radical (verified at 2x zoom). The limit DOES NOT EXIST: \\(\\sqrt{1-\\cos x}=\\sqrt{2}\\,|\\sin(x/2)|\\), so the right-hand limit is \\(1/\\sqrt{2}\\) and the left-hand limit is \\(-1/\\sqrt{2}\\). Subtopic could equally be 'Definition of a Limit and One-Sided Limits' - assigned to the trigonometric subtopic because the half-angle identity is the technique the question drills, but the one-sided split is what decides the answer."
+  },
+  {
+    "ref": "Misc II Q22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Method of Factorization",
+    "difficulty": "HARD",
+    "stem": "\\(\\lim_{x \\to 1}\\left(\\frac{x+3x^{2}+5x^{3}+\\cdots+(2n-1)x^{n}-n^{2}}{x-1}\\right)\\)"
+  },
+  {
+    "ref": "Misc II Q23",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "\\(\\lim_{x \\to 0}\\left\\{\\frac{1}{x^{12}}\\left[1-\\cos\\left(\\frac{x^{2}}{2}\\right)-\\cos\\left(\\frac{x^{4}}{4}\\right)+\\cos\\left(\\frac{x^{2}}{2}\\right)\\cos\\left(\\frac{x^{4}}{4}\\right)\\right]\\right\\}\\)"
+  },
+  {
+    "ref": "Misc II Q24",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits at Infinity and Infinite Limits",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\lim_{x \\to \\infty}\\left(\\frac{8x^{2}+5x+3}{2x^{2}-7x-5}\\right)^{\\frac{4x+3}{8x-1}}\\)"
+  }
+]

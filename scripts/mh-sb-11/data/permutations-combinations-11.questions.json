@@ -1,0 +1,2538 @@
+[
+  {
+    "ref": "3.2.1 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "A restaurant offers five types of fruit juices and three types of milk shakes. If a customer wants to order a drink, how many choices does the customer have?",
+    "solution": "Since the restaurant offers five fruit juices, the customer has five ways of selecting a fruit juice. Similarly, since the restaurant offers three types of milk shakes, the customer has three ways of selecting a milk shake. Finally, since the customer wants to select only one drink, there are \\(5 + 3 = 8\\) choices for the customer."
+  },
+  {
+    "ref": "3.2.1 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "Consider an experiment of drawing a card from a pack of 52 playing cards. What is the number of ways in which the drawn card is a spade or a club?",
+    "solution": "Since there are 13 spade cards and 13 club cards hence the number of ways in which the drawn card is spade or club is \\(13 + 13 = 26\\) ways."
+  },
+  {
+    "ref": "3.2.2 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "Samadhan Bhojanalay offers a thali that has four items: roti, rice, vegetable and dal. Following choices are available and one option is to be selected for each item.\nRoti: chapati, tandoor roti\nRice: plain rice, jeera rice, dal khichadi\nVegetable: dum aloo, paneer masala, mixed veg\nDal: dal fry, dal tadka\nHow many different menus are possible?",
+    "solution": "Since one option is to be selected for each item, the number of different possible thali choices are identified as follows.\nRoti 2, Rice 3, Vegetable 3, Dal 2 and hence the total number of different possible thali menus is \\(2 \\times 3 \\times 3 \\times 2 = 36\\)."
+  },
+  {
+    "ref": "3.2.2 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "stem": "A company decides to label each of its different products with a code that consists of two letters followed by three digits. How many different products can be labeled in this way?",
+    "solution": "Since the first two characters in a label are letters, they can be formed in \\(26 \\times 26 = 676\\) ways. The next three characters are digits and can be formed in \\(10 \\times 10 \\times 10 = 1000\\) ways. The total number of distinct labels is, by the multiplication principle, given by \\(676 \\times 1000 = 6{,}76{,}000\\)."
+  },
+  {
+    "ref": "3.3 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "stem": "From the figure below, find the total number of routes from A to B. e.g. one upper route is \\(A \\to D \\to N \\to E \\to B\\). (See fig 3.4)\nIn the figure, A (on the left) and B (on the right) are joined only through two intermediate points, N above and S below. There are two routes from A to N, labelled C and D; three routes from N to B, labelled E, F and G; one route from A to S; and two routes from S to B, labelled H and I.",
+    "solution": "\\(A \\to D \\to N \\to E \\to B\\) is one route through N. \\(A \\to C \\to N \\to F \\to B\\) is another route through N. Thus there are in all \\(2 \\times 3 = 6\\) routes through N. There are 2 routes through S. Hence the total number of routes is \\(6 + 2 = 8\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig 3.4 — a network from A (left) to B (right) via N (top) and S (bottom): arcs C and D from A to N, arcs E, F and G from N to B, one unlabelled arc from A to S, and arcs H and I from S to B. The arc labels are the route names used in the solution.",
+    "_note": "The book writes the route labels above the arrows (A --D--> N --E--> B); transcribed inline as A -> D -> N -> E -> B, which is the form the printed stem itself uses."
+  },
+  {
+    "ref": "3.3 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "stem": "Suppose 5 chocolates of different type are to be distributed among 4 children and there is no condition on how many chocolates a child can get (including zero.) How many different ways are possible for doing so?",
+    "solution": "The first chocolate can be given to any of the four children. Therefore, there are four different ways of giving the first chocolate. Similarly, the second chocolate can be given in four different ways, and similarly for each of the remaining chocolates. The multiplication principle then gives the total number of different ways as \\(4 \\times 4 \\times 4 \\times 4 \\times 4 = 4^5 = 1024\\).",
+    "_note": "The book misspells 'chocolates' as 'chocoloates' in the printed stem; transcribed with the correct spelling (orthographic only, no mathematical change)."
+  },
+  {
+    "ref": "3.3 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "HARD",
+    "stem": "How many even numbers can be formed using the digits 2, 3, 7, 8 so that the number formed is less than 1000?",
+    "solution": "The condition that the number formed from the given digits is less than 1000 means that this number can have upto 3 digits. Let us therefore consider the three cases separately.\n**case i) One digit numbers**\nSince the number must be even, the one-digit number can be only 2 or 8. Hence, there are 2 ways of forming a one digit even number.\n**case ii) Two digit numbers**\nSince the required number is even, the units place of a two-digit number must be either 2 or 8 i.e. 2 ways. The ten's place can be filled with any of the four given digits. Therefore, there are \\(4 \\times 2 = 8\\) ways of forming a two-digit even number.\n**case iii) Three digit numbers**\nFinally, since the required number is even, the units place can be filled in two ways, ten's place can be filled in four ways, and hundred's place can also be filled in four ways. The number of ways of forming a three digit even number is \\(4 \\times 4 \\times 2 = 32\\).\nThe addition principle finally gives the total number of ways of forming an even number less than 1000 using digits 2, 3, 7, 8 is \\(2 + 8 + 32 = 42\\).",
+    "_note": "The printed solution carries two spelling slips, 'less that 1000' and 'requried'; transcribed with the correct spellings (orthographic only, no mathematical change). The solution's tail sits at the top of the RIGHT column of p-04, above the EXERCISE 3.1 banner."
+  },
+  {
+    "ref": "Ex 3.1 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "A teacher wants to select the class monitor in a class of 30 boys and 20 girls. In how many ways can the monitor be selected if the monitor must be either a girl or a boy?"
+  },
+  {
+    "ref": "Ex 3.1 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "A Signal is generated from 2 flags by putting one flag above the other. If 4 flags of different colours are available, how many different signals can be generated?"
+  },
+  {
+    "ref": "Ex 3.1 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "context": "How many two letter words can be formed using letters from the word SPACE, when repetition of letters (i) is allowed, (ii) is not allowed?",
+    "setLabel": "Ex 3.1 Q3",
+    "stem": "Repetition of letters is allowed."
+  },
+  {
+    "ref": "Ex 3.1 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "context": "How many two letter words can be formed using letters from the word SPACE, when repetition of letters (i) is allowed, (ii) is not allowed?",
+    "setLabel": "Ex 3.1 Q3",
+    "stem": "Repetition of letters is not allowed."
+  },
+  {
+    "ref": "Ex 3.1 Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "context": "How many three-digit numbers can be formed from the digits 0, 1, 3, 5, 6 if repetitions of digits (i) are allowed, (ii) are not allowed?",
+    "setLabel": "Ex 3.1 Q4",
+    "stem": "Repetitions of digits are allowed."
+  },
+  {
+    "ref": "Ex 3.1 Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "context": "How many three-digit numbers can be formed from the digits 0, 1, 3, 5, 6 if repetitions of digits (i) are allowed, (ii) are not allowed?",
+    "setLabel": "Ex 3.1 Q4",
+    "stem": "Repetitions of digits are not allowed."
+  },
+  {
+    "ref": "Ex 3.1 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "How many three-digit numbers can be formed using the digits 2, 3, 4, 5, 6 if digits can be repeated?"
+  },
+  {
+    "ref": "Ex 3.1 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "stem": "A letter lock contains 3 rings and each ring containing 5 different letters. Determine the maximum number of false trials that can be made before the lock is opened?"
+  },
+  {
+    "ref": "Ex 3.1 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "stem": "In a test, 5 questions are of the form 'state, true or false'. No student has got all answers correct. Also, the answer of every student is different. Find the number of students appeared for the test."
+  },
+  {
+    "ref": "Ex 3.1 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "How many numbers between 100 and 1000 have 4 in the units place?"
+  },
+  {
+    "ref": "Ex 3.1 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "stem": "How many numbers between 100 and 1000 have the digit 7 exactly once?"
+  },
+  {
+    "ref": "Ex 3.1 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "stem": "How many four digit numbers will not exceed 7432 if they are formed using the digits 2, 3, 4, 7 without repetition?"
+  },
+  {
+    "ref": "Ex 3.1 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "HARD",
+    "stem": "If numbers are formed using digits 2, 3, 4, 5, 6 without repetition, how many of them will exceed 400?"
+  },
+  {
+    "ref": "Ex 3.1 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "HARD",
+    "stem": "How many numbers formed with the digits 0, 1, 2, 5, 7, 8 will fall between 13 and 1000 if digits can be repeated?"
+  },
+  {
+    "ref": "Ex 3.1 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "A school has three gates and four staircases from the first floor to the second floor. How many ways does a student have to go from outside the school to his classroom on the second floor?"
+  },
+  {
+    "ref": "Ex 3.1 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "MODERATE",
+    "stem": "How many five-digit numbers formed using the digit 0, 1, 2, 3, 4, 5 are divisible by 5 if digits are not repeated?"
+  },
+  {
+    "ref": "3.4 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "stem": "Find the value of \\(6!\\)",
+    "solution": "\\(6! = 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1 = 720\\)"
+  },
+  {
+    "ref": "3.4 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "stem": "Show that \\((7-3)! \\ne 7! - 3!\\)",
+    "solution": "\\((7-3)! = 4! = 4 \\times 3 \\times 2 \\times 1 = 24\\).\n\\(7! = 7 \\times 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1 = 5040\\)\nAlso, \\(3! = 3 \\times 2 \\times 1 = 6\\).\n\\(7! - 3! = 5040 - 6 = 5034\\)\nTherefore, \\((7-3)! \\ne 7! - 3!\\)"
+  },
+  {
+    "ref": "3.4 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(n\\) if \\((n+6)! = 56\\,(n+4)!\\)",
+    "solution": "\\((n+6)! = 56(n+4)!\\)\n\\(\\therefore (n+6)(n+5)(n+4)! = 56(n+4)!\\)\n\\(\\therefore (n+6)(n+5) = 56\\)\nHere instead of solving quadratic in \\(n\\), we write 56 as product of 2 consecutive numbers as \\(56 = 8 \\times 7\\)\n\\(\\therefore (n+6)(n+5) = 8 \\times 7\\)\nEquating bigger factors from either side\n\\(\\therefore (n+6) = 8\\)\n\\(n = 8 - 6 = 2\\)"
+  },
+  {
+    "ref": "3.4 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "stem": "Show that \\(\\frac{12!}{5!\\,7!} + \\frac{12!}{6!\\,6!} = \\frac{13!}{6!\\,7!}\\)",
+    "solution": "Consider,\n\\(\\text{L. H. S.} = \\frac{12!}{5!\\,7!} + \\frac{12!}{6!\\,6!}\\)\n\\(= 12!\\left[\\frac{1}{5! \\times 7 \\times 6!} + \\frac{1}{5! \\times 6 \\times 6!}\\right]\\)\n\\((\\because 7! = 7 \\times 6!,\\ 6! = 6 \\times 5!)\\)\n\\(= \\frac{12!}{5!\\,6!}\\left[\\frac{1}{7} + \\frac{1}{6}\\right]\\)\n\\(= \\frac{12!}{5!\\,6!}\\left[\\frac{13}{6 \\times 7}\\right]\\)\n\\(= \\frac{12! \\times 13}{(5! \\times 6) \\times (6! \\times 7)}\\)\n\\(= \\frac{13!}{6! \\times 7!}\\)\n\\(= \\text{R. H. S.}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Evaluate:",
+    "setLabel": "Ex 3.2 Q1",
+    "stem": "\\(8!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Evaluate:",
+    "setLabel": "Ex 3.2 Q1",
+    "stem": "\\(10!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Evaluate:",
+    "setLabel": "Ex 3.2 Q1",
+    "stem": "\\(10! - 6!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q1(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Evaluate:",
+    "setLabel": "Ex 3.2 Q1",
+    "stem": "\\((10 - 6)!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Compute:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(\\frac{12!}{6!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Compute:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(\\left(\\frac{12}{6}\\right)!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Compute:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\((3 \\times 2)!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Compute:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(3! \\times 2!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Compute:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(\\frac{9!}{3!\\,6!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Compute:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(\\frac{6! - 4!}{4!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Compute:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(\\frac{8!}{6! - 4!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q2(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Compute:",
+    "setLabel": "Ex 3.2 Q2",
+    "stem": "\\(\\frac{8!}{(6-4)!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Write in terms of factorials",
+    "setLabel": "Ex 3.2 Q3",
+    "stem": "\\(5 \\times 6 \\times 7 \\times 8 \\times 9 \\times 10\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Write in terms of factorials",
+    "setLabel": "Ex 3.2 Q3",
+    "stem": "\\(3 \\times 6 \\times 9 \\times 12 \\times 15\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q3(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Write in terms of factorials",
+    "setLabel": "Ex 3.2 Q3",
+    "stem": "\\(6 \\times 7 \\times 8 \\times 9\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q3(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Write in terms of factorials",
+    "setLabel": "Ex 3.2 Q3",
+    "stem": "\\(5 \\times 10 \\times 15 \\times 20\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Evaluate : \\(\\frac{n!}{r!\\,(n-r)!}\\) for",
+    "setLabel": "Ex 3.2 Q4",
+    "stem": "\\(n = 8,\\ r = 6\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Evaluate : \\(\\frac{n!}{r!\\,(n-r)!}\\) for",
+    "setLabel": "Ex 3.2 Q4",
+    "stem": "\\(n = 12,\\ r = 12\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q4(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Evaluate : \\(\\frac{n!}{r!\\,(n-r)!}\\) for",
+    "setLabel": "Ex 3.2 Q4",
+    "stem": "\\(n = 15,\\ r = 10\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q4(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Evaluate : \\(\\frac{n!}{r!\\,(n-r)!}\\) for",
+    "setLabel": "Ex 3.2 Q4",
+    "stem": "\\(n = 15,\\ r = 8\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\), if",
+    "setLabel": "Ex 3.2 Q5",
+    "stem": "\\(\\frac{n}{8!} = \\frac{3}{6!} + \\frac{1}{4!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\), if",
+    "setLabel": "Ex 3.2 Q5",
+    "stem": "\\(\\frac{n}{6!} = \\frac{4}{8!} + \\frac{3}{6!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q5(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\), if",
+    "setLabel": "Ex 3.2 Q5",
+    "stem": "\\(\\frac{1!}{n!} = \\frac{1!}{4!} - \\frac{4}{5!}\\)",
+    "_note": "The book prints the numerators of the first two terms as \\(1!\\) (not \\(1\\)); transcribed as printed. Numerically \\(1! = 1\\), so the intended equation is \\(\\frac{1}{n!} = \\frac{1}{4!} - \\frac{4}{5!}\\), giving \\(n = 5\\), which matches the printed key."
+  },
+  {
+    "ref": "Ex 3.2 Q5(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\), if",
+    "setLabel": "Ex 3.2 Q5",
+    "stem": "\\((n+1)! = 42 \\times (n-1)!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q5(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\), if",
+    "setLabel": "Ex 3.2 Q5",
+    "stem": "\\((n+3)! = 110 \\times (n+1)!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\), if:",
+    "setLabel": "Ex 3.2 Q6",
+    "stem": "\\(\\frac{(17-n)!}{(14-n)!} = 5!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\), if:",
+    "setLabel": "Ex 3.2 Q6",
+    "stem": "\\(\\frac{(15-n)!}{(13-n)!} = 12\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q6(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "context": "Find \\(n\\), if:",
+    "setLabel": "Ex 3.2 Q6",
+    "stem": "\\(\\frac{n!}{3!\\,(n-3)!} : \\frac{n!}{5!\\,(n-5)!} = 5 : 3\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q6(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "context": "Find \\(n\\), if:",
+    "setLabel": "Ex 3.2 Q6",
+    "stem": "\\(\\frac{n!}{3!\\,(n-3)!} : \\frac{n!}{5!\\,(n-7)!} = 1 : 6\\)",
+    "_note": "The second ratio term prints \\((n-7)!\\), not \\((n-5)!\\) — deliberate, not a misprint: with \\(n = 8\\) (the printed key) the ratio is \\(56 : 336 = 1 : 6\\), which holds only for \\((n-7)!\\)."
+  },
+  {
+    "ref": "Ex 3.2 Q6(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "context": "Find \\(n\\), if:",
+    "setLabel": "Ex 3.2 Q6",
+    "stem": "\\(\\frac{(2n)!}{7!\\,(2n-7)!} : \\frac{n!}{4!\\,(n-4)!} = 24 : 1\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "stem": "Show that \\(\\frac{n!}{r!\\,(n-r)!} + \\frac{n!}{(r-1)!\\,(n-r+1)!} = \\frac{(n+1)!}{r!\\,(n-r+1)!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "stem": "Show that \\(\\frac{9!}{3!\\,6!} + \\frac{9!}{4!\\,5!} = \\frac{10!}{4!\\,6!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "stem": "Show that \\(\\frac{(2n)!}{n!} = 2^{n}(2n-1)(2n-3)\\cdots 5 \\cdot 3 \\cdot 1\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q10(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "EASY",
+    "context": "Simplify",
+    "setLabel": "Ex 3.2 Q10",
+    "stem": "\\(\\frac{(2n+2)!}{(2n)!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q10(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Simplify",
+    "setLabel": "Ex 3.2 Q10",
+    "stem": "\\(\\frac{(n+3)!}{(n^{2}-4)(n+1)!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q10(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Simplify",
+    "setLabel": "Ex 3.2 Q10",
+    "stem": "\\(\\frac{1}{n!} - \\frac{1}{(n-1)!} - \\frac{1}{(n-2)!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q10(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "context": "Simplify",
+    "setLabel": "Ex 3.2 Q10",
+    "stem": "\\(n\\,[\\,n! + (n-1)!\\,] + n^{2}(n-1)! + (n+1)!\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q10(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Simplify",
+    "setLabel": "Ex 3.2 Q10",
+    "stem": "\\(\\frac{n+2}{n!} - \\frac{3n+1}{(n+1)!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q10(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "MODERATE",
+    "context": "Simplify",
+    "setLabel": "Ex 3.2 Q10",
+    "stem": "\\(\\frac{1}{(n-1)!} + \\frac{1-n}{(n+1)!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q10(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "context": "Simplify",
+    "setLabel": "Ex 3.2 Q10",
+    "stem": "\\(\\frac{1}{n!} - \\frac{3}{(n+1)!} - \\frac{n^{2}-4}{(n+2)!}\\)"
+  },
+  {
+    "ref": "Ex 3.2 Q10(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Factorial Notation",
+    "difficulty": "HARD",
+    "context": "Simplify",
+    "setLabel": "Ex 3.2 Q10",
+    "stem": "\\(\\frac{n^{2}-9}{(n+3)!} + \\frac{6}{(n+2)!} - \\frac{1}{(n+1)!}\\)"
+  },
+  {
+    "ref": "3.5.1 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "stem": "Find the value of \\({}^{5}P_{2}\\).",
+    "solution": "\\({}^{5}P_{2} = \\frac{5!}{(5-2)!} = \\frac{5!}{3!} = \\frac{5\\times 4\\times 3!}{3!}\\)\n\\(= 5\\times 4 = 20\\)."
+  },
+  {
+    "ref": "3.5.1 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "How many different ways are there to arrange letters of the word 'WORLD'? How many of these arrangements begin with the letter R? How many arrangements can be made taking three letters at a time?",
+    "solution": "The word WORLD has 5 letters W, O, R, L, D. These can be arranged among themselves in \\({}^{5}P_{5} = 5! = 120!\\) different ways.\n\nIf an arrangement begins with R, the remaining four letters can be arranged among themselves in \\({}^{4}P_{4} = 4! = 24\\) ways.\n\nThe Number of arrangements of 5 letters, taken 3 at a time, is \\({}^{5}P_{3} = \\frac{5!}{2!} = 60\\).",
+    "_note": "The printed solution reads '5! = 120!' with a stray factorial sign after 120; the value of \\(5!\\) is 120, not \\(120!\\). Transcribed as printed."
+  },
+  {
+    "ref": "3.5.1 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "stem": "How many three digit numbers can be formed from the digits 2, 4, 5, 6, 7 if no digit is repeated?",
+    "solution": "Every arrangement of digits gives a different number. Therefore, the problem is to find the number of arrangements of five digits taken two at a time This is given by \\({}^{5}P_{3} = \\frac{5!}{2!} = 60\\).",
+    "_note": "The printed solution says 'taken two at a time' while the very same line evaluates \\({}^{5}P_{3}\\) (three at a time). The expression and the value 60 are correct for three-digit numbers, so 'two' is a misprint for 'three'. Transcribed as printed."
+  },
+  {
+    "ref": "3.5.1 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "HARD",
+    "stem": "How many numbers can be formed with the digits 3, 4, 6, 7, 8 taken all at a time? Find the sum of all such numbers.",
+    "solution": "The five digits can be arranged in \\({}^{5}P_{5} = 5! = 120\\) ways.\n\nNow, consider any one of the five given digits, say 3. Suppose the digit 3 is in the unit's place. The other four digits can be arranged in \\({}^{4}P_{4} = 4! = 24\\) ways to form numbers that have 3 in the unit's place. This shows that 24 of the 120 numbers have 3 in the unit's place.\n\nSimilarly, each of the other four digits is in the unit's place in 24 of the 120 numbers.\n\nThe sum of the digits in the units place among all 120 numbers is \\(24(3+4+6+7+8) = 24\\times 28 = 672\\).\n\nSimilarly, the sum of the digits in the ten's place among all 120 numbers is 672. The same is also the sum of the digits in each place among all 120 numbers.\n\nThe required sum is 672 units + 672 tens + 672 hundreds + 672 thousands + 672 ten thousands.\n\n\\(= 672\\times(1+10+100+1000+10000)\\)\n\n\\(= 672\\times 11111 = 74{,}66{,}592\\)"
+  },
+  {
+    "ref": "3.5.1 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "A teacher has 2 different books on English, 3 different books on Physics, and 4 different books on Mathematics. These books are to be placed in a shelf so that all books on any one subjects are together. How many different ways are there to do this?",
+    "solution": "First, let us consider all books on each subjects to be one set, so that there are three sets, say E, P, M. These three can be arranged in \\({}^{3}P_{3} = 3! = 6\\) different ways. Now, in each of these ways, the 2 books on English can be arranged in \\({}^{2}P_{2} = 2! = 2\\) different ways the 3 books on physics can be arranged in \\({}^{3}P_{3} = 3! = 6\\) different ways, and the four books on Mathematics can be arranged in \\({}^{4}P_{4} = 4! = 24\\) different ways.\n\nThe required number of arrangements is then given by \\(6\\times 2\\times 6\\times 24 = 1728\\)"
+  },
+  {
+    "ref": "3.5.1 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "Find n if \\({}^{n}P_{5} = 42\\times {}^{n}P_{3}\\)",
+    "solution": "We are given that \\({}^{n}P_{5} = 42\\times {}^{n}P_{3}\\)\n\nThat is, \\(\\frac{n!}{(n-5)!} = 42\\,\\frac{n!}{(n-3)!}\\)\n\n\\(\\therefore \\frac{n!}{(n-5)!} = 42\\,\\frac{n!}{(n-3)(n-4)(n-5)!}\\)\n\n\\(\\therefore (n-3)(n-4) = 42\\)\n\n\\(\\therefore (n-3)(n-4) = 7\\times 6\\)\n\n\\(\\therefore n-3 = 7\\)\n\n\\(\\therefore n = 3+7 = 10\\)"
+  },
+  {
+    "ref": "3.5.2 SolvedEx.1(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "It is required to arrange 8 books on a shelf. Find the number of ways to do this if two specified books are",
+    "setLabel": "3.5.2 SolvedEx.1",
+    "stem": "always together",
+    "solution": "Consider 2 books as one single set. These 2 books can be arranged among themselves in \\(2!\\) ways. The total 7 books can be arranged among themselves in \\(7!\\) ways.\n\nThe total number of ways \\(= 2!\\,7! = 2\\times 5040 = 10080\\).",
+    "_note": "This SOLVED EXAMPLES block sits physically after the section heading 3.5.2 'Permutations when repetitions are allowed', but none of its three examples involves repetition — all three are restricted arrangements of DISTINCT objects, and the theorem they use (m specified objects together) is stated only afterwards, on the next page. Refs use the 3.5.2 prefix because that is where the block is printed; the subtopic follows the content."
+  },
+  {
+    "ref": "3.5.2 SolvedEx.1(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "It is required to arrange 8 books on a shelf. Find the number of ways to do this if two specified books are",
+    "setLabel": "3.5.2 SolvedEx.1",
+    "stem": "never together.",
+    "solution": "We take one of the two books and remaining 6 books and arrange these in \\(7!\\) ways. Then we can place the remaining book in such a way to avoid 2 places adjacent to the 1st book, so there are 6 places available hence \\(6\\times 7! = 6\\times 5040 = 30240\\).\n\nAlternative Method :\n\nThe number is also obtained by subtracting from the total arrangements those when these books are together i.e.\n\n\\(8! - 2\\times 7! = (8-2)\\times 7! = 6\\times 7! = 6\\times 5040 = 30240\\)."
+  },
+  {
+    "ref": "3.5.2 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "In how many ways can 7 examination papers be arranged so that papers 6 and 7 are never together?",
+    "solution": "By the same argument as in example above, the number of ways in which any two papers are never together is.\n\n\\((7-2)(7-1)! = 5\\times 6! = 3600\\)"
+  },
+  {
+    "ref": "3.5.2 SolvedEx.3(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "A family of 3 brothers and 5 sisters is to be arranged for a photograph in such a ways that,",
+    "setLabel": "3.5.2 SolvedEx.3",
+    "stem": "all brothers sit together.",
+    "solution": "Since all 3 brothers are together, treat them as one person, so that there are \\(5+1=6\\) persons. the number of arranging them is\n\n\\({}^{6}P_{6} = 6! = 720\\).\n\nOnce this is done, the three brothers can be arranged among themselves in \\({}^{3}P_{3} = 3! = 6\\) ways.\n\nThe total number of arrangements is then given by \\(6!\\times 3! = 720\\times 6 = 4320\\)."
+  },
+  {
+    "ref": "3.5.2 SolvedEx.3(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "HARD",
+    "context": "A family of 3 brothers and 5 sisters is to be arranged for a photograph in such a ways that,",
+    "setLabel": "3.5.2 SolvedEx.3",
+    "stem": "no two brothers sit together.",
+    "solution": "5 sisters can be arranged among themselves in \\({}^{5}P_{5} = 5! = 120\\) ways.\n\nConsider the following arrangement.\n\n\\(*\\ S_{1}\\ *\\ S_{2}\\ *\\ S_{3}\\ *\\ S_{4}\\ *\\ S_{5}\\ *\\)\n\nWhere \\(*\\) indicates a position where one brother can be placed so that no two brothers are together. Since there are 6 such positions and 3 brothers, the number of arrangements is\n\n\\({}^{6}P_{3} = \\frac{6!}{3!} = 120\\)\n\nThe required number of arrangements is then given by\n\n\\({}^{5}P_{5}\\times {}^{6}P_{3} = 120\\times 120 = 14400\\)."
+  },
+  {
+    "ref": "Ex 3.3 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "Find n, if \\({}^{n}P_{6} : {}^{n}P_{3} = 120:1\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "Find m and n, if \\({}^{(m+n)}P_{2} = 56\\) and \\({}^{(m-n)}P_{2} = 12\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "Find r, if \\({}^{12}P_{r-2} : {}^{11}P_{r-1} = 3:14\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "HARD",
+    "stem": "Show that \\((n+1)\\left({}^{n}P_{r}\\right) = (n-r+1)\\left[{}^{(n+1)}P_{r}\\right]\\)"
+  },
+  {
+    "ref": "Ex 3.3 Q5(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Repetition",
+    "difficulty": "EASY",
+    "context": "How many 4 letter words can be formed using letters in the word MADHURI if",
+    "setLabel": "Ex 3.3 Q5",
+    "stem": "letters can be repeated"
+  },
+  {
+    "ref": "Ex 3.3 Q5(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "context": "How many 4 letter words can be formed using letters in the word MADHURI if",
+    "setLabel": "Ex 3.3 Q5",
+    "stem": "letters cannot be repeated."
+  },
+  {
+    "ref": "Ex 3.3 Q6(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Determine the number of arrangements of letters of the word ALGORITHM if",
+    "setLabel": "Ex 3.3 Q6",
+    "stem": "vowels are always together"
+  },
+  {
+    "ref": "Ex 3.3 Q6(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Determine the number of arrangements of letters of the word ALGORITHM if",
+    "setLabel": "Ex 3.3 Q6",
+    "stem": "no two vowels are together."
+  },
+  {
+    "ref": "Ex 3.3 Q6(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "HARD",
+    "context": "Determine the number of arrangements of letters of the word ALGORITHM if",
+    "setLabel": "Ex 3.3 Q6",
+    "stem": "consonants are at even positions."
+  },
+  {
+    "ref": "Ex 3.3 Q6(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "context": "Determine the number of arrangements of letters of the word ALGORITHM if",
+    "setLabel": "Ex 3.3 Q6",
+    "stem": "O is the first and T is the last letter."
+  },
+  {
+    "ref": "Ex 3.3 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "HARD",
+    "stem": "In a group photograph, 6 teachers are in the first row and 18 students are in the second row. There are 12 boys and 6 girls among the students. If the middle position is reserved for the principal and if no two girls are together, find the number of arrangements."
+  },
+  {
+    "ref": "Ex 3.3 Q8(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Find the number of ways so that letters of the word HISTORY can be arranged as,",
+    "setLabel": "Ex 3.3 Q8",
+    "stem": "Y and T are together"
+  },
+  {
+    "ref": "Ex 3.3 Q8(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Find the number of ways so that letters of the word HISTORY can be arranged as,",
+    "setLabel": "Ex 3.3 Q8",
+    "stem": "Y is next to T."
+  },
+  {
+    "ref": "Ex 3.3 Q8(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "context": "Find the number of ways so that letters of the word HISTORY can be arranged as,",
+    "setLabel": "Ex 3.3 Q8",
+    "stem": "there is no restriction"
+  },
+  {
+    "ref": "Ex 3.3 Q8(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Find the number of ways so that letters of the word HISTORY can be arranged as,",
+    "setLabel": "Ex 3.3 Q8",
+    "stem": "begin and end with vowel"
+  },
+  {
+    "ref": "Ex 3.3 Q8(e)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "context": "Find the number of ways so that letters of the word HISTORY can be arranged as,",
+    "setLabel": "Ex 3.3 Q8",
+    "stem": "end in ST"
+  },
+  {
+    "ref": "Ex 3.3 Q8(f)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "context": "Find the number of ways so that letters of the word HISTORY can be arranged as,",
+    "setLabel": "Ex 3.3 Q8",
+    "stem": "begin with S and end with T"
+  },
+  {
+    "ref": "Ex 3.3 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "Find the number of arrangements of the letters in the word SOLAPUR so that consonants and vowels are placed alternately"
+  },
+  {
+    "ref": "Ex 3.3 Q10(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Repetition",
+    "difficulty": "EASY",
+    "context": "Find the number of 4-digit numbers that can be formed using the digits 1, 2, 4, 5, 6, 8 if",
+    "setLabel": "Ex 3.3 Q10",
+    "stem": "digits can be repeated"
+  },
+  {
+    "ref": "Ex 3.3 Q10(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "context": "Find the number of 4-digit numbers that can be formed using the digits 1, 2, 4, 5, 6, 8 if",
+    "setLabel": "Ex 3.3 Q10",
+    "stem": "digits cannot be repeated"
+  },
+  {
+    "ref": "Ex 3.3 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "How many numbers can be formed using the digits 0, 1, 2, 3, 4, 5 without repetition so that resulting numbers are between 100 and 1000?"
+  },
+  {
+    "ref": "Ex 3.3 Q12(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Find the number of 6-digit numbers using the digits 3, 4, 5, 6, 7, 8 without repetition. How many of these numbers are",
+    "setLabel": "Ex 3.3 Q12",
+    "stem": "divisible by 5,",
+    "_note": "The lead sentence also asks for the TOTAL count of such 6-digit numbers, which the book prints without a sub-item label (the printed key gives it separately as 720, then a) 120 and b) 600). It is kept in the shared context so both sub-items carry it; an authored answer for (a) should state the total as well."
+  },
+  {
+    "ref": "Ex 3.3 Q12(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Find the number of 6-digit numbers using the digits 3, 4, 5, 6, 7, 8 without repetition. How many of these numbers are",
+    "setLabel": "Ex 3.3 Q12",
+    "stem": "not divisible by 5."
+  },
+  {
+    "ref": "Ex 3.3 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "A code word is formed by two different English letters followed by two non-zero distinct digits. Find the number of such code words. Also, find the number of such code words that end with an even digit."
+  },
+  {
+    "ref": "Ex 3.3 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Repetition",
+    "difficulty": "MODERATE",
+    "stem": "Find the number of ways in which 5 letters can be posted in 3 post boxes if any number of letters can be posted in a post box."
+  },
+  {
+    "ref": "Ex 3.3 Q15(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Find the number of arranging 11 distinct objects taken 4 at a time so that a specified object",
+    "setLabel": "Ex 3.3 Q15",
+    "stem": "always occurs",
+    "_note": "The lead sentence is printed exactly as 'Find the number of arranging 11 distinct objects taken 4 at a time so that a specified object' — a grammatical slip in the book ('the number of arranging'); the sentence is completed by each sub-item. Transcribed as printed."
+  },
+  {
+    "ref": "Ex 3.3 Q15(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "Find the number of arranging 11 distinct objects taken 4 at a time so that a specified object",
+    "setLabel": "Ex 3.3 Q15",
+    "stem": "never occurs."
+  },
+  {
+    "ref": "Ex 3.3 Q16(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "context": "In how many ways can 5 different books be arranged on a shelf if",
+    "setLabel": "Ex 3.3 Q16",
+    "stem": "there are no restrictions"
+  },
+  {
+    "ref": "Ex 3.3 Q16(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "In how many ways can 5 different books be arranged on a shelf if",
+    "setLabel": "Ex 3.3 Q16",
+    "stem": "2 books are always together"
+  },
+  {
+    "ref": "Ex 3.3 Q16(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "In how many ways can 5 different books be arranged on a shelf if",
+    "setLabel": "Ex 3.3 Q16",
+    "stem": "2 books are never together"
+  },
+  {
+    "ref": "Ex 3.3 Q17(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "context": "3 boys and 3 girls are to sit in a row. How many ways can this be done if",
+    "setLabel": "Ex 3.3 Q17",
+    "stem": "there are no restrictions"
+  },
+  {
+    "ref": "Ex 3.3 Q17(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "3 boys and 3 girls are to sit in a row. How many ways can this be done if",
+    "setLabel": "Ex 3.3 Q17",
+    "stem": "there is a girl at each end"
+  },
+  {
+    "ref": "Ex 3.3 Q17(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "3 boys and 3 girls are to sit in a row. How many ways can this be done if",
+    "setLabel": "Ex 3.3 Q17",
+    "stem": "boys and girls are at alternate places"
+  },
+  {
+    "ref": "Ex 3.3 Q17(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "context": "3 boys and 3 girls are to sit in a row. How many ways can this be done if",
+    "setLabel": "Ex 3.3 Q17",
+    "stem": "all boys sit together"
+  },
+  {
+    "ref": "3.5.3 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "EASY",
+    "stem": "Find he number of permutations of the letters of the word UBUNTU.",
+    "solution": "The word UBUNTU consists of 6 letters, in which letter 'U' is repeated 3 times.\n\nTherefore, number of permutations of the letters of the word UBUNTU \\(= \\frac{6!}{3!} = 120\\).",
+    "_note": "The book prints 'Find he number' (missing 't' in 'the') in the printed stem; transcribed as printed."
+  },
+  {
+    "ref": "3.5.3 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "MODERATE",
+    "stem": "How many arrangements can be made, with the letters of the word CALCULATOR? In how many of these arrangements, vowels occur together?",
+    "solution": "The word CALCULATOR consists of 10 letters, in which 'C' is repeated two times, 'A' is repeated two times, 'L' is repreated two times and rest all are different.\n\nTherefore, number of permutations of the letters of the word CALCULATOR \\(= \\frac{10!}{2!\\,2!\\,2!}\\).\n\nThe word CALCULATOR consists of 4 vowels A, U, A, O. Let us consider them as a single letter say P.\n\nTherefore, now we have 7 letters P, C, L, C, L, T, R in which 'C' is repeated two times, 'L' is repeated two times. The number of arrangement of these 7 letters is given \\(\\frac{7!}{2!\\,2!} = 1260\\). After this is done, 4 vowels (in which 'A' is repeated 2 times) can be arranged in \\(\\frac{4!}{2!} = 12\\) ways.\n\nTherefore, number of arrangements of the letters of the word CALCULATOR in which vowels are together \\(= 1260 \\times 12 = 15120\\).",
+    "_note": "The book's printed solution spells 'repreated' for 'repeated'; transcribed as printed."
+  },
+  {
+    "ref": "Ex 3.4 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "EASY",
+    "context": "Find the number of permutations of letters in each of the following words.",
+    "setLabel": "Ex 3.4 Q1",
+    "stem": "DIVYA"
+  },
+  {
+    "ref": "Ex 3.4 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "EASY",
+    "context": "Find the number of permutations of letters in each of the following words.",
+    "setLabel": "Ex 3.4 Q1",
+    "stem": "SHANTARAM"
+  },
+  {
+    "ref": "Ex 3.4 Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "EASY",
+    "context": "Find the number of permutations of letters in each of the following words.",
+    "setLabel": "Ex 3.4 Q1",
+    "stem": "REPRESENT"
+  },
+  {
+    "ref": "Ex 3.4 Q1(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "EASY",
+    "context": "Find the number of permutations of letters in each of the following words.",
+    "setLabel": "Ex 3.4 Q1",
+    "stem": "COMBINE"
+  },
+  {
+    "ref": "Ex 3.4 Q1(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "EASY",
+    "context": "Find the number of permutations of letters in each of the following words.",
+    "setLabel": "Ex 3.4 Q1",
+    "stem": "BALBHARATI"
+  },
+  {
+    "ref": "Ex 3.4 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "EASY",
+    "stem": "You have 2 identical books on English, 3 identical books on Hindi, and 4 identical books on Mathematics. Find the number of distinct ways of arranging them on a shelf ."
+  },
+  {
+    "ref": "Ex 3.4 Q3(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "MODERATE",
+    "context": "A coin is tossed 8 times. In how many ways can we obtain.",
+    "setLabel": "Ex 3.4 Q3",
+    "stem": "4 heads and 4 tails?"
+  },
+  {
+    "ref": "Ex 3.4 Q3(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "MODERATE",
+    "context": "A coin is tossed 8 times. In how many ways can we obtain.",
+    "setLabel": "Ex 3.4 Q3",
+    "stem": "at least 6 heads?"
+  },
+  {
+    "ref": "Ex 3.4 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "EASY",
+    "stem": "A bag has 5 red, 4 blue, and 4 green marbles. If all are drawn one by one and their colours are recorded, how many different arrangements can be found?"
+  },
+  {
+    "ref": "Ex 3.4 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "MODERATE",
+    "stem": "Find the number of ways of arranging letters of the word MATHEMATICAL How many of these arrangements have all vowels together?",
+    "_note": "The book prints no full stop after MATHEMATICAL, so the two sentences run together; transcribed as printed."
+  },
+  {
+    "ref": "Ex 3.4 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "HARD",
+    "stem": "Find the number of different arrangements of letters in the word MAHARASHTRA. How many of these arrangements have (a) letters R and H never together? (b) all vowels together?",
+    "_note": "The book prints (a)/(b) sub-labels, but the opening sentence is itself a scored question (the printed answer key gives three values for Q6: the total plus (a) and (b)). Kept as ONE row so the lead question is not lost."
+  },
+  {
+    "ref": "Ex 3.4 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "MODERATE",
+    "stem": "How many different words are formed if the letters R is used thrice and letters S and T are used twice each?"
+  },
+  {
+    "ref": "Ex 3.4 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "MODERATE",
+    "stem": "Find the number of arrangements of letters in the word MUMBAI so that the letter B is always next to A."
+  },
+  {
+    "ref": "Ex 3.4 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "MODERATE",
+    "stem": "Find the number of arrangements of letters in the word CONSTITUTION that begin and end with N."
+  },
+  {
+    "ref": "Ex 3.4 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "HARD",
+    "stem": "Find the number of different ways of arranging letters in the word ARRANGE. How many of these arrangement do not have the two R's and two A's together?",
+    "_note": "The book prints 'arrangement' (singular) where 'arrangements' is intended; transcribed as printed. The phrase 'do not have the two R's and two A's together' is ambiguous (it can be read as neither pair together, or as not-both-pairs-together) and the printed key value does not match either reading on our derivation - flagged for the cross-check pass."
+  },
+  {
+    "ref": "Ex 3.4 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "HARD",
+    "stem": "How many distinct 5 digit numbers can be formed using the digits 3, 2, 3, 2, 4, 5."
+  },
+  {
+    "ref": "Ex 3.4 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "Find the number of distinct numbers formed using the digits 3, 4, 5, 6, 7, 8, 9, so that odd positions are occupied by odd digits.",
+    "_note": "All seven given digits are distinct, so despite sitting in the identical-objects exercise this question is a distinct-objects permutation; subtopic assigned on the technique."
+  },
+  {
+    "ref": "Ex 3.4 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "HARD",
+    "stem": "How many different 6-digit numbers can be formed using digits in the number 659942? How many of them are divisible by 4?"
+  },
+  {
+    "ref": "Ex 3.4 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "MODERATE",
+    "stem": "Find the number of distinct words formed from letters in the word INDIAN. How many of them have the two N's togethers?",
+    "_note": "The book prints 'togethers'; transcribed as printed."
+  },
+  {
+    "ref": "Ex 3.4 Q15(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "MODERATE",
+    "context": "Find the number of different ways of arranging letters in the word PLATOON if.",
+    "setLabel": "Ex 3.4 Q15",
+    "stem": "the two O's are never together."
+  },
+  {
+    "ref": "Ex 3.4 Q15(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "HARD",
+    "context": "Find the number of different ways of arranging letters in the word PLATOON if.",
+    "setLabel": "Ex 3.4 Q15",
+    "stem": "consonants and vowels occupy alternate positions."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.1(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "context": "In how many ways can 8 students be arranged at a round table so that 2 particular students are together, if",
+    "setLabel": "3.5.4 SolvedEx.1",
+    "stem": "students are arranged with respect to each other? (That is the seats are not numbered.)",
+    "solution": "Considering those 2 particular students as one student, we have 7 students.\n\nIn circular arrangement 7 students can be arranged at a round table, in \\(6!\\) ways and 2 students can be arranged among themselves in \\(^{2}p_{2} = 2!\\) ways. Hence, the required number of ways in which two particular students come together \\(= 6! \\times 2! = 1440\\)."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.1(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "context": "In how many ways can 8 students be arranged at a round table so that 2 particular students are together, if",
+    "setLabel": "3.5.4 SolvedEx.1",
+    "stem": "students are arranged with respect to the table? (That is the seats are numbered serially)",
+    "solution": "Considering those 2 particular students as one student, we have 7 students.\n\nHere the arrangement is like an arrangement in a row.\n\nSo 7 students can be arranged in \\(7!\\) ways and 2 students can be arranged amongst themselves in \\(^{2}p_{2} = 2!\\) ways. Hence, the required number of ways in which two particular students come together \\(= 7! \\times 2! = 10080\\)."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "In how many ways 6 men and 3 women can be seated at a round table so that every man has woman by his side.",
+    "solution": "3 women have \\((3 - 1)! = 2\\) ways of circular seatings.\n\nIn each seating a women has one place on each side for a man. Thus there are 6 different places for 6 men which can be filled in \\(6!\\) ways.\n\nHence, the total number of required arrangements \\(= 6! \\times 2 = 720 \\times 2 = 1440\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. 3.6 — a round table with 9 seats shown as the repeating block M, W, M around the circle: each of the 3 women sits between two men, giving 3 women-seats separating 6 men-seats.",
+    "_note": "Printed stem reads \"every man has woman by his side\" (missing the article \"a\") — transcribed as printed."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "Find the number of ways in which 12 different flowers can be arranged in a garland so that 4 particular flowers are always together",
+    "solution": "Considering 4 particular flowers as a single flower, we have 9 flowers which can be arranged to form a garland in \\(8!\\) ways. But 4 particular flowers can be arranged in \\(4!\\) ways. Hence, the required number of ways \\(= \\frac{1}{2}(8! \\times 4!) = 483840\\)."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "How many necklaces of 12 bead each, can be made from 18 beads of different colours?",
+    "solution": "Here, clockwise and anticlockwise arrangements are same. Hence, total number of circular permutations \\(= \\frac{^{18}P_{12}}{2 \\times 12} = \\frac{^{18}P_{12}}{24}\\)."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "HARD",
+    "stem": "Three boys and three girls are to be seated around a table in a circle. Among them, the boy X does not want any girl as neighbour and girl Y does not want any boy as neighbour. How many such distinct arrangements are possible?",
+    "solution": "The arrangement is as shown in the figure (fig. 3.7). The boy X will have \\(B_2\\) and \\(B_3\\) as neighbours. The girl Y will have \\(G_2\\), \\(G_3\\) as neighbours. The two boys \\(B_2\\), \\(B_3\\) can be arranged in two ways. The two girls \\(G_2\\), \\(G_3\\) can be arranged in two ways.\n\nHence, the total number of arrangements \\(= 2 \\times 2 = 4\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. 3.7 — six seats round a circle. The boy X (marked \\(B_1\\)) sits at the top with \\(B_3\\) on his left and \\(B_2\\) on his right; the girl Y (marked \\(G_1\\)) sits at the bottom with \\(G_3\\) on one side and \\(G_2\\) on the other. So the three boys occupy one half of the circle and the three girls the other half, with X and Y in the middle of their own blocks."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.6(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "EASY",
+    "context": "In how many different arrangements can 6 gentlemen and 6 ladies sit around a table if",
+    "setLabel": "3.5.4 SolvedEx.6",
+    "stem": "there is no restriction.",
+    "solution": "There is no restriction.\n\nHere, the total number \\(= 6 + 6 = 12\\).\n\n12 persons can be arranged in circular permutation in \\((12 - 1)! = 11!\\) ways."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.6(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "context": "In how many different arrangements can 6 gentlemen and 6 ladies sit around a table if",
+    "setLabel": "3.5.4 SolvedEx.6",
+    "stem": "no two ladies sit side by side?",
+    "solution": "No two ladies sit side by side.\n\nWhen 6 gentlemen are arranged around a table, there are 6 positions, each being between two gentlemen, for 6 ladies when no two ladies sit side by side. Now, the number of ways in which 6 gentlemen can be seated around a table \\(= (6 - 1)! = 5!\\)\n\nNow, corresponding to each seating arrangement for the gentlemen, the 6 ladies can be seated in \\(6!\\) ways.\n\nThus, the required number of arrangements \\(= (5!)\\,(6!) = 86400\\)."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.7(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "HARD",
+    "context": "In how many different ways can 4 married couples occupy seats around a circular table if",
+    "setLabel": "3.5.4 SolvedEx.7",
+    "stem": "Spouses sit opposite to each other?",
+    "solution": "Spouses sit opposite to each other. Since there is no fixed starting point let one woman occupy one seat. Let, \\(W_1 H_1\\), \\(W_2 H_2\\), \\(W_3 H_3\\) and \\(W_4 H_4\\) be the four couples. Since there is no fixed starting point of the circle, Let \\(W_1\\) occupy one seat then \\(H_1\\) has to sit exactly opposite. There are 3 seats on either side of \\(W_1\\). Then \\(W_2\\) can occupy any of the 6 seats which confirms the seat of her husband \\(H_2\\). Now there are 4 seats left. \\(W_3\\) can occupy anyone of them so that her husband's seat is fixed. Now \\(W_4\\) has 2 choices, fixing the seat of her husband. In all there are \\(6 \\times 4 \\times 2 = 48\\) ways.",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. 3.8 — a circular table with 8 seats marked round the circle, \\(H_1\\) at the top and \\(W_1\\) directly opposite at the bottom, with the remaining 6 seats shown as small circles (3 on each side)."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.7(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "context": "In how many different ways can 4 married couples occupy seats around a circular table if",
+    "setLabel": "3.5.4 SolvedEx.7",
+    "stem": "Men and women alternate?",
+    "solution": "Let 4 women sit on alternate seats around a table starting at any place. This is done in \\(3!\\) ways. It leaves 4 alternate seats empty. They are fixd by 4 men in \\(4!\\) ways. Hence, the total number of ways is \\(4! \\times 3! = 144\\).",
+    "_note": "Printed solution spells \"fixd\" for \"fixed\" — transcribed as printed."
+  },
+  {
+    "ref": "Ex 3.5 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "EASY",
+    "stem": "In how many different ways can 8 friends sit around a table?"
+  },
+  {
+    "ref": "Ex 3.5 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "A party has 20 participants. Find the number of distinct ways for the host to sit with them around a circular table. How many of these ways have two specified persons on either side of the host?"
+  },
+  {
+    "ref": "Ex 3.5 Q3(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "context": "Delegates from 24 countries participate in a round table discussion. Find the number of seating arrangements where two specified delegates are.",
+    "setLabel": "Ex 3.5 Q3",
+    "stem": "always together,"
+  },
+  {
+    "ref": "Ex 3.5 Q3(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "context": "Delegates from 24 countries participate in a round table discussion. Find the number of seating arrangements where two specified delegates are.",
+    "setLabel": "Ex 3.5 Q3",
+    "stem": "never together."
+  },
+  {
+    "ref": "Ex 3.5 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "Find the number of ways for 15 people to sit around the table so that no two arrangements have the same neighbours."
+  },
+  {
+    "ref": "Ex 3.5 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "A committee of 10 members sits around a table. Find the number of arrangements that have the president and the vice president together."
+  },
+  {
+    "ref": "Ex 3.5 Q6(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "context": "Five men, two women, and a child sit around a table. Find the number of arrangements where the child is seated",
+    "setLabel": "Ex 3.5 Q6",
+    "stem": "between the two women."
+  },
+  {
+    "ref": "Ex 3.5 Q6(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "context": "Five men, two women, and a child sit around a table. Find the number of arrangements where the child is seated",
+    "setLabel": "Ex 3.5 Q6",
+    "stem": "between two men."
+  },
+  {
+    "ref": "Ex 3.5 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "Eight men and six women sit around a table. How many of sitting arrangements will have no two women together?",
+    "_note": "Printed stem reads \"How many of sitting arrangements will have\" — transcribed as printed."
+  },
+  {
+    "ref": "Ex 3.5 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "HARD",
+    "stem": "Find the number of seating arrangements for 3 men and 3 women to sit around a table so that exactly two women are together",
+    "_note": "Printed stem carries no terminal punctuation — transcribed as printed."
+  },
+  {
+    "ref": "Ex 3.5 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "Four objects in a set of ten objects are alike. Find the number of ways of arranging them in a circular order."
+  },
+  {
+    "ref": "Ex 3.5 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "Fifteen persons sit around a table. Find the number of arrangements that have two specified persons not sitting side by side."
+  },
+  {
+    "ref": "3.6.1 SolvedEx.1(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Find the value of",
+    "setLabel": "3.6.1 SolvedEx.1",
+    "stem": "\\({}^{7}C_{3}\\)",
+    "solution": "We know that \\({}^{n}C_{r} = \\frac{n!}{r!(n-r)!}\\)\n\n\\({}^{7}C_{3} = \\frac{7!}{3!(7-3)!} = \\frac{7!}{3!(4)!} = \\frac{7 \\times 6 \\times 5 \\times 4!}{3 \\times 2 \\times 1 \\times 4!} = \\frac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = 35\\)"
+  },
+  {
+    "ref": "3.6.1 SolvedEx.1(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Find the value of",
+    "setLabel": "3.6.1 SolvedEx.1",
+    "stem": "\\({}^{10}C_{7}\\)",
+    "solution": "\\({}^{10}C_{7} = \\frac{10!}{7!(10-7)!} = \\frac{10!}{7!(3)!} = \\frac{10 \\times 9 \\times 8}{3 \\times 2} = 120\\)"
+  },
+  {
+    "ref": "3.6.1 SolvedEx.1(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Find the value of",
+    "setLabel": "3.6.1 SolvedEx.1",
+    "stem": "\\({}^{52}C_{3}\\)",
+    "solution": "\\({}^{52}C_{3} = \\frac{52!}{3!(52-3)!} = \\frac{52!}{3!(49)!} = \\frac{52 \\times 51 \\times 50}{3 \\times 2 \\times 1} = 22100\\)"
+  },
+  {
+    "ref": "3.6.1 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "HARD",
+    "stem": "Find \\(n\\) and \\(r\\) if \\({}^{n}C_{r-1} : {}^{n}C_{r} : {}^{n}C_{r+1} = 14 : 8 : 3\\)",
+    "solution": "\\(\\frac{{}^{n}C_{r-1}}{{}^{n}C_{r}} = \\frac{14}{8} = \\frac{7}{4}\\) and \\(\\frac{{}^{n}C_{r}}{{}^{n}C_{r+1}} = \\frac{8}{3}\\)\n\n\\(\\therefore \\frac{r}{n-r+1} = \\frac{7}{4}\\) and \\(\\frac{r+1}{n-r} = \\frac{8}{3}\\)\n\n\\(\\therefore (n-r) = \\left(\\frac{4}{7}r\\right) - 1\\) and \\((n-r) = \\frac{3}{8}(r+1)\\)\n\n\\(\\therefore \\left(\\frac{4}{7}r\\right) - 1 = \\frac{3}{8}(r+1)\\)\n\nSolving this we get \\(r = 7\\) and \\(n = 10\\)"
+  },
+  {
+    "ref": "3.6.1 SolvedEx.3(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "There are \\(n\\) points in a plane. Find the number of straight lines and triangles that can be obtained by joining points on a plane if",
+    "setLabel": "3.6.1 SolvedEx.3",
+    "stem": "no three points are collinear",
+    "solution": "Straight line can be drawn by joining any two points and traingle can be drawn by joining any three non-collinear points.\n\nFrom \\(n\\)-points, any two points can be selected in \\({}^{n}C_{2}\\) ways.\n\n\\(\\therefore\\) Number of straight lines \\(= {}^{n}C_{2}\\)\n\nSince no three points are collinear, any three non-collinear points can be selected in \\({}^{n}C_{3}\\) ways.\n\n\\(\\therefore\\) Number of triangles \\(= {}^{n}C_{3}\\)",
+    "_note": "The book's printed solution spells 'traingle' for 'triangle'; transcribed as printed."
+  },
+  {
+    "ref": "3.6.1 SolvedEx.3(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "HARD",
+    "context": "There are \\(n\\) points in a plane. Find the number of straight lines and triangles that can be obtained by joining points on a plane if",
+    "setLabel": "3.6.1 SolvedEx.3",
+    "stem": "\\(p\\)-points are collinear \\((p \\ge 3)\\)",
+    "solution": "If \\(P\\) points are non-collinear then, we can obtain \\({}^{p}C_{2}\\) straight lines and \\({}^{p}C_{3}\\) triangles from those \\(p\\) points. But we are given that \\(p\\) points are collinear, therefore they form only one line and no triangle i.e. we have counted \\(({}^{p}C_{2} - 1)\\) extra lines and \\({}^{p}C_{3}\\) extra triangles.\n\n\\(\\therefore\\) If \\(p\\)-points \\((p \\ge 3)\\) are collinear, then number of straight lines \\(= {}^{n}C_{2} - ({}^{p}C_{2} - 1)\\) and number of triangles \\(= {}^{n}C_{3} - {}^{p}C_{3}\\)"
+  },
+  {
+    "ref": "3.6.1 SolvedEx.4(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Four cards are drawn from a pack of 52 playing cards. In how many different ways can this be done? How many selections will contain",
+    "setLabel": "3.6.1 SolvedEx.4",
+    "stem": "exactly one card of each suit?",
+    "solution": "A pack of 52 cards contains 4 different suits, viz. Club, Spade, Diamond and Heart. Each suit contains 13 cards. Club and Spade are black coloured cards. Diamond and Heart are red colour cards. i.e. pack of 52 cards contains 26 black and 26 red colour cards.\n\nFrom a pack of 52 cards, any 4 cards can be drawn in \\({}^{52}C_{4} = \\frac{52!}{4! \\times 48!}\\) ways.\n\n(i) Exactly one card of each suit.\n\nOne club card can be selected in \\({}^{13}C_{1} = 13\\) ways. One heart card can be selected in \\({}^{13}C_{1} = 13\\) ways. One spade card can be selected in \\({}^{13}C_{1} = 13\\) ways. One diamond card can be selected in \\({}^{13}C_{1} = 13\\) ways.\n\n\\(\\therefore\\) Using fundamental principle, exactly one card of each suit can be selected in \\(13 \\times 13 \\times 13 \\times 13 = (13)^{4}\\) ways.",
+    "_note": "The book prints one shared solution preamble for this example (the composition of the pack, and the total \\({}^{52}C_4\\) which answers the stem's 'In how many different ways can this be done?'). It is carried at the head of sub-item (i)'s solution, since (i) is the first sub-item; sub-items (ii)-(vi) each carry their own printed working."
+  },
+  {
+    "ref": "3.6.1 SolvedEx.4(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Four cards are drawn from a pack of 52 playing cards. In how many different ways can this be done? How many selections will contain",
+    "setLabel": "3.6.1 SolvedEx.4",
+    "stem": "all cards of the same suit?",
+    "solution": "From 4 suits, any one suit can be selected in \\({}^{4}C_{1} = 4\\) ways. After this is done, any four cards from selected suit can be drawn in \\({}^{13}C_{4} = 715\\) ways.\n\n\\(\\therefore\\) Using fundamental principle, all 4 cards of the same suit can be selected in \\(4 \\times 715 = 2860\\) ways."
+  },
+  {
+    "ref": "3.6.1 SolvedEx.4(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Four cards are drawn from a pack of 52 playing cards. In how many different ways can this be done? How many selections will contain",
+    "setLabel": "3.6.1 SolvedEx.4",
+    "stem": "all club cards?",
+    "solution": "From 13 club cards, any 4 club cards can be drawn in \\({}^{13}C_{4} = 715\\) ways."
+  },
+  {
+    "ref": "3.6.1 SolvedEx.4(iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Four cards are drawn from a pack of 52 playing cards. In how many different ways can this be done? How many selections will contain",
+    "setLabel": "3.6.1 SolvedEx.4",
+    "stem": "at least one club card?",
+    "solution": "From a pack of 52 cards, any 4 cards can be drawn in \\({}^{52}C_{4}\\) ways if there is no condition.\n\nFrom \\({}^{52}C_{4}\\) selections, remove those selections that do not contain any club card, so that in the remaining selection we have at least one club card.\n\nIf the selection does not contain any club card i.e. 4 cards are drawn from remaining 39 non-club cards, then this can be done in \\({}^{39}C_{4}\\) ways.\n\n\\(\\therefore\\) Number of selections which contain at least one club card \\(= {}^{52}C_{4} - {}^{39}C_{4}\\)."
+  },
+  {
+    "ref": "3.6.1 SolvedEx.4(v)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Four cards are drawn from a pack of 52 playing cards. In how many different ways can this be done? How many selections will contain",
+    "setLabel": "3.6.1 SolvedEx.4",
+    "stem": "three kings and one queen?",
+    "solution": "From 4 kings, any 3 king cards can be selected in \\({}^{4}C_{3} = 4\\) ways and from 4 queen cards 1 queen card can be selected in \\({}^{4}C_{1} = 4\\) ways.\n\n\\(\\therefore\\) Using fundamental principle, three king cards and one queen card can be selected in \\(4 \\times 4 = 16\\) ways."
+  },
+  {
+    "ref": "3.6.1 SolvedEx.4(vi)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Four cards are drawn from a pack of 52 playing cards. In how many different ways can this be done? How many selections will contain",
+    "setLabel": "3.6.1 SolvedEx.4",
+    "stem": "three black and one red cards?",
+    "solution": "From 26 black cards, any 3 black cards can be selected in \\({}^{26}C_{3}\\) ways and from 26 red cards, any one red card can be selected in \\({}^{26}C_{1}\\) ways.\n\nUsing fundamental principle, three black and one red card can be selected in \\({}^{26}C_{3} \\times {}^{26}C_{1}\\) ways."
+  },
+  {
+    "ref": "3.6.1 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "EASY",
+    "stem": "Find \\(n\\), if \\({}^{n}C_{8} = {}^{n}C_{6}\\)",
+    "solution": "If \\({}^{n}C_{x} = {}^{n}C_{y}\\), then either \\(x = y\\) or \\(x = n - y\\)\n\n\\(\\therefore 8 = n - 6\\) \\((\\because x \\ne y)\\)\n\n\\(\\therefore n = 14\\)"
+  },
+  {
+    "ref": "3.6.1 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(r\\), if \\({}^{16}C_{4} + {}^{16}C_{5} + {}^{17}C_{6} + {}^{18}C_{7} = {}^{19}C_{r}\\)",
+    "solution": "\\(({}^{16}C_{4} + {}^{16}C_{5}) + {}^{17}C_{6} + {}^{18}C_{7} = {}^{19}C_{r}\\)\n\n\\(\\therefore ({}^{17}C_{5} + {}^{17}C_{6}) + {}^{18}C_{7} = {}^{19}C_{r}\\)\n\n\\(\\therefore ({}^{18}C_{6} + {}^{18}C_{7}) = {}^{19}C_{r}\\)\n\n\\(\\therefore {}^{19}C_{7} = {}^{19}C_{r}\\)\n\n\\(\\therefore r = 7\\) or \\(r = 19 - 7 = 12\\)"
+  },
+  {
+    "ref": "3.6.1 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "stem": "Find the difference between the maximum values of \\({}^{8}C_{r}\\) and \\({}^{11}C_{r}\\)",
+    "solution": "Maximum value of \\({}^{8}C_{r}\\) occurs at \\(r = \\frac{8}{2} = 4\\)\n\n\\(\\therefore\\) maximum value of \\({}^{8}C_{r} = {}^{8}C_{4} = 70\\)\n\nMaximum value of \\({}^{11}C_{r}\\) occurs at \\(r = \\frac{10}{2} = 5\\) or at \\(\\frac{12}{2} = 6\\)\n\n\\(\\therefore\\) Maximum value of \\({}^{11}C_{r} = {}^{11}C_{5} = {}^{11}C_{6} = 462\\)\n\n\\(\\therefore\\) difference between the maximum values of \\({}^{8}C_{r}\\) and \\({}^{11}C_{r} = {}^{11}C_{5} - {}^{8}C_{4} = 462 - 70 = 392\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q1(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Find the value of",
+    "setLabel": "Ex 3.6 Q1",
+    "stem": "\\({}^{15}C_{4}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q1(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Find the value of",
+    "setLabel": "Ex 3.6 Q1",
+    "stem": "\\({}^{80}C_{2}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q1(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "EASY",
+    "context": "Find the value of",
+    "setLabel": "Ex 3.6 Q1",
+    "stem": "\\({}^{15}C_{4} + {}^{15}C_{5}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q1(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the value of",
+    "setLabel": "Ex 3.6 Q1",
+    "stem": "\\({}^{20}C_{16} - {}^{19}C_{16}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q2(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "EASY",
+    "context": "Find \\(n\\) if",
+    "setLabel": "Ex 3.6 Q2",
+    "stem": "\\({}^{6}P_{2} = n\\, {}^{6}C_{2}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q2(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "HARD",
+    "context": "Find \\(n\\) if",
+    "setLabel": "Ex 3.6 Q2",
+    "stem": "\\({}^{2n}C_{3} : {}^{n}C_{2} = 52 : 3\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q2(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\) if",
+    "setLabel": "Ex 3.6 Q2",
+    "stem": "\\({}^{n}C_{n-3} = 84\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "HARD",
+    "stem": "Find \\(r\\) if \\({}^{14}C_{2r} : {}^{10}C_{2r-4} = 143 : 10\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q4(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\) and \\(r\\) if.",
+    "setLabel": "Ex 3.6 Q4",
+    "stem": "\\({}^{n}P_{r} = 720\\) and \\({}^{n}C_{n-r} = 120\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q4(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "HARD",
+    "context": "Find \\(n\\) and \\(r\\) if.",
+    "setLabel": "Ex 3.6 Q4",
+    "stem": "\\({}^{n}C_{r-1} : {}^{n}C_{r} : {}^{n}C_{r+1} = 20 : 35 : 42\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "HARD",
+    "stem": "If \\({}^{n}P_{r} = 1814400\\) and \\({}^{n}C_{r} = 45\\), find \\({}^{n+4}C_{r+3}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "HARD",
+    "stem": "If \\({}^{n}C_{r-1} = 6435\\), \\({}^{n}C_{r} = 5005\\), \\({}^{n}C_{r+1} = 3003\\), find \\({}^{r}C_{5}\\)."
+  },
+  {
+    "ref": "Ex 3.6 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "Find the number of ways of drawing 9 balls from a bag that has 6 red balls, 8 green balls, and 7 blue balls so that 3 balls of every colour are drawn."
+  },
+  {
+    "ref": "Ex 3.6 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "stem": "Find the number of ways of selecting a team of 3 boys and 2 girls from 6 boys and 4 girls."
+  },
+  {
+    "ref": "Ex 3.6 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "After a meeting, every participant shakes hands with every other participants. If the number of handshakes is 66, find the number of participants in the meeting."
+  },
+  {
+    "ref": "Ex 3.6 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "stem": "If 20 points are marked on a circle, how many chords can be drawn?"
+  },
+  {
+    "ref": "Ex 3.6 Q11(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the number of diagonals of an \\(n\\)-sided polygon. In particular, find the number of diagonals when.",
+    "setLabel": "Ex 3.6 Q11",
+    "stem": "\\(n = 10\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q11(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the number of diagonals of an \\(n\\)-sided polygon. In particular, find the number of diagonals when.",
+    "setLabel": "Ex 3.6 Q11",
+    "stem": "\\(n = 15\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q11(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the number of diagonals of an \\(n\\)-sided polygon. In particular, find the number of diagonals when.",
+    "setLabel": "Ex 3.6 Q11",
+    "stem": "\\(n = 12\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q11(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the number of diagonals of an \\(n\\)-sided polygon. In particular, find the number of diagonals when.",
+    "setLabel": "Ex 3.6 Q11",
+    "stem": "\\(n = 8\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "There are 20 straight lines in a plane so that no two lines are parallel and no three lines are concurrent. Determine the number of points of intersection."
+  },
+  {
+    "ref": "Ex 3.6 Q13(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Ten points are plotted on a plane. Find the number of straight lines obtained by joining these points if",
+    "setLabel": "Ex 3.6 Q13",
+    "stem": "no three points are collinear."
+  },
+  {
+    "ref": "Ex 3.6 Q13(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Ten points are plotted on a plane. Find the number of straight lines obtained by joining these points if",
+    "setLabel": "Ex 3.6 Q13",
+    "stem": "four points are collinear."
+  },
+  {
+    "ref": "Ex 3.6 Q14(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Find the number of triangles formed by joining 12 points if",
+    "setLabel": "Ex 3.6 Q14",
+    "stem": "no three points are collinear"
+  },
+  {
+    "ref": "Ex 3.6 Q14(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the number of triangles formed by joining 12 points if",
+    "setLabel": "Ex 3.6 Q14",
+    "stem": "four points are collineas.",
+    "_note": "The book prints 'collineas.' for 'collinear.'; transcribed as printed."
+  },
+  {
+    "ref": "Ex 3.6 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "A word has 8 consonants and 3 vowels. How many distinct words can be formed if 4 consonants and 2 vowels are chosen?"
+  },
+  {
+    "ref": "Ex 3.6 Q16(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "EASY",
+    "context": "Find \\(n\\) if,",
+    "setLabel": "Ex 3.6 Q16",
+    "stem": "\\({}^{n}C_{8} = {}^{n}C_{12}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q16(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\) if,",
+    "setLabel": "Ex 3.6 Q16",
+    "stem": "\\({}^{23}C_{3n} = {}^{23}C_{2n+3}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q16(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "HARD",
+    "context": "Find \\(n\\) if,",
+    "setLabel": "Ex 3.6 Q16",
+    "stem": "\\({}^{21}C_{6n} = {}^{21}C_{(n^{2}+5)}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q16(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\) if,",
+    "setLabel": "Ex 3.6 Q16",
+    "stem": "\\({}^{2n}C_{r-1} = {}^{2n}C_{r+1}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q16(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\) if,",
+    "setLabel": "Ex 3.6 Q16",
+    "stem": "\\({}^{n}C_{n-2} = 15\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "EASY",
+    "stem": "Find \\(x\\) if \\({}^{n}P_{r} = x\\, {}^{n}C_{r}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(r\\) if \\({}^{11}C_{4} + {}^{11}C_{5} + {}^{12}C_{6} + {}^{13}C_{7} = {}^{14}C_{r}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "Find the value of \\(\\sum_{r=1}^{4} {}^{(21-r)}C_{4}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q20(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the differences between the greatest values in the following:",
+    "setLabel": "Ex 3.6 Q20",
+    "stem": "\\({}^{14}C_{r}\\) and \\({}^{12}C_{r}\\),"
+  },
+  {
+    "ref": "Ex 3.6 Q20(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the differences between the greatest values in the following:",
+    "setLabel": "Ex 3.6 Q20",
+    "stem": "\\({}^{13}C_{r}\\) and \\({}^{8}C_{r}\\),"
+  },
+  {
+    "ref": "Ex 3.6 Q20(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the differences between the greatest values in the following:",
+    "setLabel": "Ex 3.6 Q20",
+    "stem": "\\({}^{15}C_{r}\\) and \\({}^{11}C_{r}\\),"
+  },
+  {
+    "ref": "Ex 3.6 Q21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "In how many ways can a boy invite his 5 friends to a party so that at least three join the party?"
+  },
+  {
+    "ref": "Ex 3.6 Q22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "HARD",
+    "stem": "A group consists of 9 men and 6 women. A team of 6 is to be selected. How many of possible selections will have at least 3 women?"
+  },
+  {
+    "ref": "Ex 3.6 Q23",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "HARD",
+    "stem": "A committee of 10 persons is to be formed from a group of 10 women and 8 men. How many possible committees will have at least 5 women? How many possible committees will have men in majority?"
+  },
+  {
+    "ref": "Ex 3.6 Q24",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "HARD",
+    "stem": "A question paper has two sections. section I has 5 questions and section II has 6 questions. A student must answer at least two question from each section among 6 questions he answers. How many different choices does the student have in choosing questions?"
+  },
+  {
+    "ref": "Ex 3.6 Q25",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "HARD",
+    "stem": "There are 3 wicketkeepers and 5 bowlers among 22 cricket players. A team of 11 players is to be selected so that there is exactly one wicketkeeper and at least 4 bowlers in the team. How many different teams can be formed?"
+  },
+  {
+    "ref": "Ex 3.6 Q26(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Five students are selected from 11. How many ways can these students be selected if.",
+    "setLabel": "Ex 3.6 Q26",
+    "stem": "two specified students are selected?"
+  },
+  {
+    "ref": "Ex 3.6 Q26(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Five students are selected from 11. How many ways can these students be selected if.",
+    "setLabel": "Ex 3.6 Q26",
+    "stem": "two specified students are not selected?"
+  },
+  {
+    "ref": "Misc I Q1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "A college offers 5 courses in the morning and 3 in the evening. The number of ways a student can select exactly one course, either in the morning or in the evening.",
+    "options": [
+      {
+        "label": "A",
+        "text": "5"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "8"
+      },
+      {
+        "label": "D",
+        "text": "15"
+      }
+    ],
+    "answer": "C",
+    "_note": "Derived independently before consulting the printed key: 'either ... or' is the addition principle, so \\(5 + 3 = 8\\). Printed key: C. AGREE."
+  },
+  {
+    "ref": "Misc I Q2",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "A college has 7 courses in the morning and 3 in the evening. The possible number of choices with the student if he wants to study one course in the morning and one in the evening is-.",
+    "options": [
+      {
+        "label": "A",
+        "text": "21"
+      },
+      {
+        "label": "B",
+        "text": "4"
+      },
+      {
+        "label": "C",
+        "text": "42"
+      },
+      {
+        "label": "D",
+        "text": "10"
+      }
+    ],
+    "answer": "A",
+    "_note": "Derived independently before consulting the printed key: 'and' is the multiplication principle, so \\(7 \\times 3 = 21\\). Printed key: A. AGREE. Stem transcribed faithfully including the printed trailing 'is-.'"
+  },
+  {
+    "ref": "Misc I Q3",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "In how many ways can 8 Indians and, 4 American and 4 Englishmen can be seated in a row so that all person of the same nationality sit together?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(3!\\,8!\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(3!\\,4!\\,8!\\,4!\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(4!\\,4!\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(8!\\,4!\\,4!\\)"
+      }
+    ],
+    "answer": "B",
+    "_note": "Derived independently before consulting the printed key: three nationality blocks arrange in \\(3!\\) ways, and within the blocks \\(8!\\), \\(4!\\), \\(4!\\), giving \\(3!\\,8!\\,4!\\,4!\\) — option B (the printed order of the factorials differs but the product is the same). Printed key: B. AGREE. [Textbook] The stem carries a stray comma after '8 Indians and,' and prints 'American' / 'all person' in the singular; transcribed as printed."
+  },
+  {
+    "ref": "Misc I Q4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "In how many ways can 10 examination papers be arranged so that the best and the worst papers never come together?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(9 \\times 8!\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(8 \\times 8!\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(9 \\times 9!\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(8 \\times 9!\\)"
+      }
+    ],
+    "answer": "D",
+    "_note": "Derived independently before consulting the printed key: \\(10! - 2 \\times 9! = 9!(10 - 2) = 8 \\times 9!\\). Printed key: D. AGREE. Option A equals \\(9!\\) but no two options are equal in value."
+  },
+  {
+    "ref": "Misc I Q5",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "In how many ways 4 boys and 3 girls can be seated in a row so that they are alternate.",
+    "options": [
+      {
+        "label": "A",
+        "text": "12"
+      },
+      {
+        "label": "B",
+        "text": "288"
+      },
+      {
+        "label": "C",
+        "text": "144"
+      },
+      {
+        "label": "D",
+        "text": "256"
+      }
+    ],
+    "answer": "C",
+    "_note": "Derived independently before consulting the printed key: with 4 boys and 3 girls the only alternating pattern in 7 seats is BGBGBGB, so \\(4! \\times 3! = 24 \\times 6 = 144\\). Printed key: C. AGREE."
+  },
+  {
+    "ref": "Misc I Q6",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "stem": "Find the number of triangles which can be formed by joining the angular points of a polygon of 8 sides as vertices.",
+    "options": [
+      {
+        "label": "A",
+        "text": "16"
+      },
+      {
+        "label": "B",
+        "text": "56"
+      },
+      {
+        "label": "C",
+        "text": "24"
+      },
+      {
+        "label": "D",
+        "text": "8"
+      }
+    ],
+    "answer": "B",
+    "_note": "Derived independently before consulting the printed key: no three vertices of a convex polygon are collinear, so every 3-subset gives a triangle: \\({}^{8}C_{3} = 56\\). Printed key: B. AGREE."
+  },
+  {
+    "ref": "Misc I Q7",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "A question paper has two parts, A and B, each containing 10 questions. If a student has to choose 8 from part A and 5 from part B, In how many ways can he choose the questions?",
+    "options": [
+      {
+        "label": "A",
+        "text": "320"
+      },
+      {
+        "label": "B",
+        "text": "750"
+      },
+      {
+        "label": "C",
+        "text": "40"
+      },
+      {
+        "label": "D",
+        "text": "11340"
+      }
+    ],
+    "answer": "D",
+    "_note": "Derived independently before consulting the printed key: \\({}^{10}C_{8} \\times {}^{10}C_{5} = 45 \\times 252 = 11340\\). Printed key: D. AGREE. Stem transcribed faithfully including the printed mid-sentence capital in 'part B, In how many ways'."
+  },
+  {
+    "ref": "Misc I Q8",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Circular Permutations",
+    "difficulty": "HARD",
+    "stem": "There are 10 persons among whom two are brothers. The total number of ways in which these persons can be seated around a round table so that exactly one person sits between the brothers, is equal to:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2! \\times 7!\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2! \\times 8!\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(3! \\times 7!\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(3! \\times 8!\\)"
+      }
+    ],
+    "answer": "B",
+    "_note": "Derived independently before consulting the printed key: choose the person seated between the brothers in 8 ways, order the brothers in \\(2!\\) ways, then treat the 3-person block plus the remaining 7 as 8 units round a circle, \\((8-1)! = 7!\\). Total \\(8 \\times 2 \\times 7! = 16 \\times 7! = 2 \\times 8! = 2! \\times 8!\\). Cross-checked by probability: fixing one brother, the other has 9 seats of which 2 are one seat away, and \\(80640/9! = 2/9\\). Printed key: B. AGREE."
+  },
+  {
+    "ref": "Misc I Q9",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "MODERATE",
+    "stem": "The number of arrangements of the letters of the word BANANA in which two N's do not appear adjacently",
+    "options": [
+      {
+        "label": "A",
+        "text": "80"
+      },
+      {
+        "label": "B",
+        "text": "60"
+      },
+      {
+        "label": "C",
+        "text": "40"
+      },
+      {
+        "label": "D",
+        "text": "100"
+      }
+    ],
+    "answer": "C",
+    "_note": "Derived independently before consulting the printed key: BANANA has B, three A's and two N's, so total \\(6!/(3!\\,2!) = 60\\); treating NN as one unit gives \\(5!/3! = 20\\); hence \\(60 - 20 = 40\\). Printed key: C. AGREE. Note option B (60) is the total-arrangements distractor."
+  },
+  {
+    "ref": "Misc I Q10",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "The number of ways in which 5 male and 2 female members of a committee can be seated around a round table so that the two females are not seated together is",
+    "options": [
+      {
+        "label": "A",
+        "text": "840"
+      },
+      {
+        "label": "B",
+        "text": "600"
+      },
+      {
+        "label": "C",
+        "text": "720"
+      },
+      {
+        "label": "D",
+        "text": "480"
+      }
+    ],
+    "answer": "D",
+    "_note": "Derived independently before consulting the printed key: total circular arrangements \\((7-1)! = 720\\); the two females together give \\((6-1)! \\times 2! = 240\\); hence \\(720 - 240 = 480\\). Cross-checked by direct construction: seat the 5 males in \\(4! = 24\\) ways and place the females in 2 of the 5 gaps, \\({}^{5}P_{2} = 20\\), giving \\(24 \\times 20 = 480\\). Printed key: D. AGREE. Option C (720) is the total-arrangements distractor."
+  },
+  {
+    "ref": "Misc II Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "Find the value of \\(r\\) if \\({}^{56}P_{r+6} : {}^{54}P_{r+3} = 30800 : 1\\)",
+    "_note": "ANSWER-KEY DISAGREEMENT (flagged for the cross-check pass, not repaired here). \\({}^{56}P_{r+6} \\div {}^{54}P_{r+3} = \\frac{56!}{(50-r)!} \\times \\frac{(51-r)!}{54!} = 56 \\times 55 \\times (51-r) = 3080(51-r)\\). Setting \\(3080(51-r) = 30800\\) gives \\(51-r = 10\\), so \\(r = 41\\). The printed key gives 45, and \\(r = 45\\) yields \\(56 \\times 55 \\times 6 = 18480\\), not 30800. So either the key should read 41, or the stem's ratio should read 18480 : 1. Stem transcribed exactly as printed."
+  },
+  {
+    "ref": "Misc II Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "stem": "How many words can be formed by writing letters in the word CROWN in different order?"
+  },
+  {
+    "ref": "Misc II Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "HARD",
+    "stem": "Find the number of words that can be formed by using all the letters in the word REMAIN If these words are written in dictionary order, what will be the \\(40^{\\text{th}}\\) word?",
+    "_note": "[Textbook] The book prints no full stop after 'REMAIN', so two sentences run together; transcribed as printed. Independently verified the printed key: \\(6! = 720\\) words, and walking the dictionary order (A: 120 words; AE: 24, AI: 24 covering 25-48; AIN covering 37-42; AINM covering 40-41; AINMRE is the 2nd of those) gives AINMRE as the 40th word, matching the key '720 ; AINMRE'."
+  },
+  {
+    "ref": "Misc II Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "stem": "Capital English alphabet has 11 symmetric letters that appear same when looked at in a mirror. These letters are A, H, I, M, O, T, U, V, W, X, and Y. How many symmentric three letter passwords can be formed using these letters?",
+    "_note": "[Textbook] The book prints 'symmentric' for 'symmetric'; transcribed as printed. The printed key 990 = \\({}^{11}P_{3}\\), i.e. the intended convention is that a letter may not be repeated within a password — the stem does not state this."
+  },
+  {
+    "ref": "Misc II Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "MODERATE",
+    "stem": "How many numbers formed using the digits 3,2,0,4,3,2,3 exceed one million?"
+  },
+  {
+    "ref": "Misc II Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "Ten students are to be selected for a project from a class of 30 stdudents. There are 4 students who want to be together either in the project or not in the project. Find the number of possible selections.",
+    "_note": "[Textbook] The book prints 'stdudents' for 'students'; transcribed as printed."
+  },
+  {
+    "ref": "Misc II Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "A student finds 7 books of his interest, but can borrow only three books. He wants to borrow Chemistry part II book only if Chemistry Part I can also be borrowed. Find the number of ways he can choose three books that he wants to borrow.",
+    "_note": "UNSTATED CONVENTION (flagged, not forced). Read strictly, 'II only if I' bars only the case II-without-I, giving \\({}^{7}C_{3} - {}^{5}C_{2} = 35 - 10 = 25\\). The printed key 15 corresponds to the stricter reading in which the two Chemistry parts are taken as a package — either both (\\({}^{5}C_{1} = 5\\)) or neither (\\({}^{5}C_{3} = 10\\)) — which additionally bars I-without-II. The stem does not say which is intended."
+  },
+  {
+    "ref": "Misc II Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "stem": "30 objects are to be divided in three groups containing 7,10,13 objects. Find the number of distinct ways for doing so."
+  },
+  {
+    "ref": "Misc II Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "stem": "A student passes an examination if he secures a minimum in each of the 7 subjects. Find the number of ways a student can fail."
+  },
+  {
+    "ref": "Misc II Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "Nine friends decide to go for a picnic in two groups. One group decides to go by car and the other group decides to go by train. Find the number of different ways of doing so if there must be at least 3 friends in each group.",
+    "_note": "ANSWER-KEY QUERY (flagged for the cross-check pass). The two groups are distinguishable (car vs train), so the car group may hold 3, 4, 5 or 6 friends and the count is \\({}^{9}C_{3} + {}^{9}C_{4} + {}^{9}C_{5} + {}^{9}C_{6} = 84 + 126 + 126 + 84 = 420\\). The printed key stops at \\({}^{9}C_{3} + {}^{9}C_{4} + {}^{9}C_{5} = 336\\), which appears to drop the \\({}^{9}C_{6}\\) term."
+  },
+  {
+    "ref": "Misc II Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "EASY",
+    "stem": "A hall has 12 lamps and every lamp can be switched on independently. Find the number of ways of illuminating the hall."
+  },
+  {
+    "ref": "Misc II Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Repetition",
+    "difficulty": "MODERATE",
+    "stem": "How many quadratic equations can be formed using numbers from 0,2,4,5 as coefficients if a coefficient can be repeated in an equation."
+  },
+  {
+    "ref": "Misc II Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "stem": "How many six\\(-\\)digit telephone numbers can be formed if the first two digits are 45 and no digit can appear more than once?"
+  },
+  {
+    "ref": "Misc II Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "EASY",
+    "stem": "A question paper has 6 questions. How many ways does a student have to answer if he wants to solve at least one question?"
+  },
+  {
+    "ref": "Misc II Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "stem": "Find the number of ways of dividing 20 objects in three groups of sizes 8,7,and 5."
+  },
+  {
+    "ref": "Misc II Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "There are 4 doctors and 8 lawyers in a panel. Find the number of ways for selecting a team of 6 if at least one doctor must be in the team."
+  },
+  {
+    "ref": "Misc II Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "Four parallel lines intersect another set of five parallel lines. Find the number of distinct parallelograms formed."
+  },
+  {
+    "ref": "Misc II Q18(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "There are 12 distinct points A,B,C,.....,L, in order, on a circle. Lines are drawn passing through each pair of points",
+    "setLabel": "Misc II Q18",
+    "stem": "How many lines are there in total."
+  },
+  {
+    "ref": "Misc II Q18(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "There are 12 distinct points A,B,C,.....,L, in order, on a circle. Lines are drawn passing through each pair of points",
+    "setLabel": "Misc II Q18",
+    "stem": "How many lines pass through D."
+  },
+  {
+    "ref": "Misc II Q18(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "There are 12 distinct points A,B,C,.....,L, in order, on a circle. Lines are drawn passing through each pair of points",
+    "setLabel": "Misc II Q18",
+    "stem": "How many triangles are determined by lines."
+  },
+  {
+    "ref": "Misc II Q18(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "There are 12 distinct points A,B,C,.....,L, in order, on a circle. Lines are drawn passing through each pair of points",
+    "setLabel": "Misc II Q18",
+    "stem": "How many triangles have on vertex C.",
+    "_note": "[Textbook] The book prints 'have on vertex C' where 'have one vertex C' is intended; transcribed as printed. The printed key 55 = \\({}^{11}C_{2}\\) confirms the intended reading is 'exactly one vertex at C'."
+  }
+]

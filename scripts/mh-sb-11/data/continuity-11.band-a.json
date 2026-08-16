@@ -1,0 +1,111 @@
+[
+  {
+    "ref": "8.1 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "EASY",
+    "stem": "Discuss the continuity of the function \\(f(x) = |x - 3|\\) at \\(x = 3\\).",
+    "solution": "By definition of a modulus function, the given function can be rewritten as\n\\(f(x) = -(x - 3)\\) if \\(x < 3\\)\n\\(f(x) = x - 3\\) if \\(x \\ge 3\\)\nNow, for \\(x = 3\\), \\(f(3) = 3 - 3 = 0\\).\n\\(\\lim_{x \\to 3^-} f(x) = -(3 - 3) = 0\\) and\n\\(\\lim_{x \\to 3^+} f(x) = 3 - 3 = 0\\)\nso, \\(\\lim_{x \\to 3^-} f(x) = \\lim_{x \\to 3^+} f(x) = 0 \\Rightarrow \\lim_{x \\to 3} f(x) = 0\\)\nand \\(\\lim_{x \\to 3} f(x) = f(3) = 0\\)\nTherefore the function \\(f(x)\\) is continuous at \\(x = 3\\)."
+  },
+  {
+    "ref": "8.1 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "MODERATE",
+    "stem": "Determine whether the function \\(f\\) is continuous on the set of real numbers where\n\\(f(x) = 3x + 1\\), for \\(x < 2\\)\n\\(= 7\\), for \\(2 \\le x < 4\\)\n\\(= x^2 - 8\\) for \\(x \\ge 4\\).\nIf it is discontinuous, state the type of discontinuity.",
+    "solution": "[Textbook defects (two, both in the printed solution): the sentence \"Since one of the three conditions does not hold at \\(x = 4\\), the function.\" breaks off unfinished, and \"continuous on it's domain , except at \\(x = 4\\)\" carries a blank gap where a symbol — presumably \\(R\\) — dropped out of the typesetting.]\n\nThe function is defined in three parts, by polynomial functions, and all polynomial functions are continuous on their respective domains. Any discontinuity, if at all it exists, would be at the points where the definition changes. That is at \\(x = 2\\) and \\(x = 4\\).\nLet us check at \\(x = 2\\).\n\\(f(2) = 7\\) (Given)\n\\(\\lim_{x \\to 2^-} f(x) = \\lim_{x \\to 2^-} (3x + 1) = 3(2) + 1 = 7\\).\nand \\(\\lim_{x \\to 2^+} f(x) = 7\\),\nSo \\(\\lim_{x \\to 2^-} f(x) = \\lim_{x \\to 2^+} f(x) = 7 \\Rightarrow \\lim_{x \\to 2} f(x) = 7\\)\nAlso, \\(\\lim_{x \\to 2} f(x) = f(2) = 7\\)\n\\(\\therefore f(x)\\) is continuous at \\(x = 2\\).\nLet us check the continuity at \\(x = 4\\).\n\\(f(4) = (4^2 - 8) = 8\\)\n\\(\\lim_{x \\to 4^-} f(x) = \\lim_{x \\to 4} (7) = 7\\) and\n\\(\\lim_{x \\to 4^+} f(x) = \\lim_{x \\to 4} (x^2 - 8) = 4^2 - 8 = 8\\)\n\\(\\lim_{x \\to 4^-} f(x) \\ne \\lim_{x \\to 4^+} f(x)\\)\nso \\(\\lim_{x \\to 4} f(x)\\) does not exist.\nSince one of the three conditions does not hold at \\(x = 4\\), the function. Hence \\(f(x)\\) is discontinuous at \\(x = 4\\). Therefore the function \\(f(x)\\) is continuous on it's domain , except at \\(x = 4\\). There exists a jump discontinuity at \\(x = 4\\).\n\\(\\therefore f\\) is discontinuous at \\(x = 4\\).",
+    "_note": "Two misprints in the printed solution, transcribed as printed. (a) The sentence 'Since one of the three conditions does not hold at x = 4, the function.' breaks off unfinished. (b) 'continuous on it's domain , except at x = 4' has a blank gap before the comma where a symbol (presumably the domain R) has dropped out of the typesetting."
+  },
+  {
+    "ref": "8.1 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "MODERATE",
+    "stem": "Test whether the function \\(f(x)\\) is continuous at \\(x = -4\\), where\n\\(f(x) = \\frac{x^2 + 16x + 48}{x + 4}\\), for \\(x \\ne -4\\)\n\\(= 8\\), for \\(x = -4\\).",
+    "solution": "\\(f(-4) = 8\\) (defined)\n\\(\\lim_{x \\to -4} f(x) = \\lim_{x \\to -4} \\left( \\frac{x^2 + 16x + 48}{x + 4} \\right)\\)\n\\(= \\lim_{x \\to -4} \\left( \\frac{(x + 4)(x + 12)}{x + 4} \\right)\\)\n\\(= \\lim_{x \\to -4} (x + 12)\\) ....... \\([\\because x + 4 \\ne 0]\\)\n\\(= -4 + 12 = 8\\)\n\\(\\therefore \\lim_{x \\to -4} f(x) = f(-4) = 8\\)\n\\(\\therefore\\) by definition, the function \\(f(x)\\) is continuous at \\(x = -4\\)."
+  },
+  {
+    "ref": "8.1 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity Over an Interval",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of \\(f(x) = \\sqrt{9 - a^2}\\), on the interval \\([-3, 3]\\).",
+    "solution": "[Textbook misprint: the stem prints \\(f(x) = \\sqrt{9 - a^2}\\), with the radicand in \\(a\\) for a function of \\(x\\). The book's own bracketed note and its printed solution both use \\(9 - x^2\\), which is the intended function.]\n\nThe domain of \\(f\\) is \\([-3, 3]\\).\n[Note, \\(f(x)\\) is defined if \\(9 - x^2 \\ge 0\\)]\nLet \\(x = a\\) be any point in the interval \\((-3, 3)\\) that is \\(a \\in (-3, 3)\\).\n\\(\\lim_{x \\to a} f(x) = \\lim_{x \\to a} \\sqrt{9 - x^2} = \\sqrt{9 - a^2} = f(a)\\)\n\\(\\therefore\\) for \\(a = 3\\), \\(f(3) = 0\\) and for \\(a = -3\\), \\(f(-3) = 0\\)\nNow, \\(\\lim_{x \\to 3^-} f(x) = f(3) = 0\\)\nand \\(\\lim_{x \\to -3^+} f(x) = f(-3) = 0\\)\nThus \\(f(x)\\) is continuous at every point on \\((-3, 3)\\) and also continuous to the right at \\(x = -3\\) and to the left at \\(x = 3\\).\nHence, \\(f(x)\\) is continuous on \\([-3, 3]\\).",
+    "_note": "The printed stem writes the radicand in \\(a\\) — \\(f(x) = \\sqrt{9 - a^2}\\) — while the function is a function of \\(x\\). Verified on the page image at high zoom: the superscripted letter really is 'a', not 'x'. The book's own bracketed note and the first line of its solution both use \\(9 - x^2\\), so the intended stem is \\(f(x) = \\sqrt{9 - x^2}\\). Transcribed as printed."
+  },
+  {
+    "ref": "8.1 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity from the Left and from the Right",
+    "difficulty": "MODERATE",
+    "stem": "Show that the function \\(f(x) = \\lfloor x \\rfloor\\) is not continuous at \\(x = 0, 1\\) in the interval \\([-1, 2)\\).",
+    "solution": "[Textbook misprint: the printed solution opens with \\(x \\in [-1, 3)\\), while the stem, the solution's own three-case list and its closing sentence all give \\([-1, 2)\\).]\n\n\\(f(x) = \\lfloor x \\rfloor\\) for \\(x \\in [-1, 3)\\)\nthat is \\(f(x) = -1\\) for \\(x \\in [-1, 0)\\)\n\\(f(x) = 0\\) for \\(x \\in [0, 1)\\)\n\\(f(x) = 1\\) for \\(x \\in [1, 2)\\)\nTest of continuity of \\(f\\) at \\(x = 0\\).\nFor \\(x = 0\\), \\(f(0) = 0\\)\n\\(\\lim_{x \\to 0^-} f(x) = \\lim_{x \\to 0^-} \\lfloor x \\rfloor = \\lim_{x \\to 0^-} (-1) = -1\\) and\n\\(\\lim_{x \\to 0^+} f(x) = \\lim_{x \\to 0^+} \\lfloor x \\rfloor = \\lim_{x \\to 0^+} (0) = 0\\)\n\\(\\lim_{x \\to 0^-} f(x) \\ne \\lim_{x \\to 0^+} f(x)\\)\nTherefore \\(f(x)\\) is discontinuous at \\(x = 0\\).\nTest of continuity of \\(f\\) at \\(x = 1\\).\nFor \\(x = 1\\), \\(f(1) = 1\\)\n\\(\\lim_{x \\to 1^-} f(x) = \\lim_{x \\to 1^-} \\lfloor x \\rfloor = \\lim_{x \\to 1^-} (0) = 0\\) and\n\\(\\lim_{x \\to 1^+} f(x) = \\lim_{x \\to 1^+} \\lfloor x \\rfloor = \\lim_{x \\to 1^+} (1) = 1\\)\n\\(\\lim_{x \\to 1^-} f(x) \\ne \\lim_{x \\to 1^+} f(x)\\)\nTherefore \\(f(x)\\) is discontinuous at \\(x = 1\\).\nHence the function \\(f(x) = \\lfloor x \\rfloor\\) is not continuous at \\(x = 0, 1\\) in the interval \\([-1, 2)\\).",
+    "_note": "Misprint in the printed solution, transcribed as printed: its opening line gives \\(x \\in [-1, 3)\\) where the stem, the three cases listed immediately below it, and the solution's own closing sentence all give \\([-1, 2)\\). Verified at high zoom — the digit is a 3."
+  },
+  {
+    "ref": "8.1 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "stem": "Discuss the continuity of the following function at \\(x = 0\\), where\n\\(f(x) = x^2 \\sin\\left(\\frac{1}{x}\\right)\\), for \\(x \\ne 0\\)\n\\(= 0\\), for \\(x = 0\\).",
+    "solution": "The function \\(f(x)\\) is defined for all \\(x \\in R\\).\nLet's check the continuity of \\(f(x)\\) at \\(x = 0\\).\nGiven, for \\(x = 0\\), \\(f(0) = 0\\).\nwe know that, \\(-1 \\le \\sin\\left(\\frac{1}{x}\\right) \\le 1\\) for any \\(x \\ne 0\\)\nMultiplying throughout by \\(x^2\\) we get\n\\(-x^2 \\le x^2 \\sin\\left(\\frac{1}{x}\\right) \\le x^2\\)\nTaking limit as \\(x \\to 0\\) throughout we get,\n\\(\\lim_{x \\to 0} (-x^2) \\le \\lim_{x \\to 0} \\left[ x^2 \\sin\\left(\\frac{1}{x}\\right) \\right] \\le \\lim_{x \\to 0} (x^2)\\)\n\\(0 \\le \\lim_{x \\to 0} \\left[ x^2 \\sin\\left(\\frac{1}{x}\\right) \\right] \\le 0\\)\n\\(\\therefore\\) by squeeze theorem we get,\n\\(\\lim_{x \\to 0} \\left[ x^2 \\sin\\left(\\frac{1}{x}\\right) \\right] = 0\\)\n\\(\\lim_{x \\to 0} f(x) = \\lim_{x \\to 0} \\left[ x^2 \\sin\\left(\\frac{1}{x}\\right) \\right] = 0\\)\n\\(\\lim_{x \\to 0} f(x) = f(0) = 0\\)\n\\(\\therefore f(x)\\) is continuous at \\(x = 0\\)."
+  },
+  {
+    "ref": "8.1 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "stem": "Find \\(k\\) if \\(f(x)\\) is continuous at \\(x = 0\\), where\n\\(f(x) = \\frac{x e^x + \\tan x}{\\sin 3x}\\), for \\(x \\ne 0\\)\n\\(= k\\), for \\(x = 0\\).",
+    "solution": "Given that \\(f(x)\\) is continuous at \\(x = 0\\),\n\\(\\therefore f(0) = \\lim_{x \\to 0} f(x)\\)\n\\(k = \\lim_{x \\to 0} \\left( \\frac{x e^x + \\tan x}{\\sin 3x} \\right)\\)\n\\(= \\lim_{x \\to 0} \\left( \\frac{e^x + \\frac{\\tan x}{x}}{\\frac{\\sin 3x}{x}} \\right)\\)\n\\(= \\frac{\\lim_{x \\to 0} (e^x) + \\lim_{x \\to 0} \\left( \\frac{\\tan x}{x} \\right)}{\\lim_{x \\to 0} \\left( \\frac{\\sin 3x}{3x} \\right) \\times 3}\\)\n\\(= \\frac{1 + 1}{1} \\times \\frac{1}{3} = \\frac{2}{3}\\) as \\(x \\to 0\\), \\(3x \\to 0\\)\n\\(\\left[ \\text{since } \\lim_{\\theta \\to 0} \\left( \\frac{\\sin \\theta}{\\theta} \\right) = 1 = \\lim_{\\theta \\to 0} \\left( \\frac{\\tan \\theta}{\\theta} \\right) \\right]\\)\n\\(\\therefore k = \\frac{2}{3}\\)"
+  },
+  {
+    "ref": "8.1 SolvedEx.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "stem": "If \\(f\\) is continuous at \\(x = 1\\), where\n\\(f(x) = \\frac{\\sin(\\pi x)}{x - 1} + a\\), for \\(x < 1\\)\n\\(= 2\\pi\\), for \\(x = 1\\)\n\\(= \\frac{1 + \\cos(\\pi x)}{\\pi(1 - x)^2} + b\\), for \\(x > 1\\),\nthen find the values of \\(a\\) and \\(b\\).",
+    "solution": "Given that \\(f(x)\\) is continuous at \\(x = 1\\)\n\\(\\therefore \\lim_{x \\to 1^-} f(x) = \\lim_{x \\to 1^+} f(x) = f(1)\\) ............ (1)\nNow, \\(\\lim_{x \\to 1^-} f(x) = f(1)\\)\n\\(\\lim_{x \\to 1^-} \\left( \\frac{\\sin(\\pi x)}{x - 1} + a \\right) = 2\\pi\\)\nPut \\(x - 1 = t\\), \\(x = 1 + t\\) as \\(x \\to 1\\), \\(t \\to 0\\)\n\\(\\lim_{t \\to 0} \\left( \\frac{\\sin \\pi(1 + t)}{t} + a \\right) = 2\\pi\\)\n\\(\\lim_{t \\to 0} \\left( \\frac{\\sin(\\pi + \\pi t)}{t} + a \\right) = 2\\pi\\)\n\\(\\lim_{t \\to 0} \\left( \\frac{-\\sin \\pi t}{t} + a \\right) = 2\\pi\\)\n\\(-\\lim_{t \\to 0} \\left( \\frac{\\sin \\pi t}{\\pi t} \\right) \\times \\pi + \\lim_{t \\to 0} (a) = 2\\pi\\)\n\\(-(1) \\pi + a = 2\\pi \\Rightarrow a = 3\\pi\\)\n\\(\\left[ \\lim_{\\theta \\to 0} \\left( \\frac{\\sin \\theta}{\\theta} \\right) = 1 \\right]\\)\nFrom (1), \\(\\lim_{x \\to 1^+} f(x) = f(1)\\)\n\\(\\lim_{x \\to 1^+} \\left( \\frac{1 + \\cos(\\pi x)}{\\pi(1 - x)^2} + b \\right) = 2\\pi\\)\nPut \\(1 - x = \\theta \\therefore x = 1 - \\theta\\), as \\(x \\to 1\\), \\(\\theta \\to 0\\)\n\\(\\therefore \\lim_{\\theta \\to 0} \\left( \\frac{1 + \\cos(\\pi(1 - \\theta))}{\\pi \\theta^2} + b \\right) = 2\\pi\\)\n\\(\\therefore \\lim_{\\theta \\to 0} \\left( \\frac{1 + \\cos(\\pi - \\pi\\theta)}{\\pi \\theta^2} + b \\right) = 2\\pi\\)\n\\(\\therefore \\lim_{\\theta \\to 0} \\left( \\frac{1 - \\cos \\pi\\theta}{\\pi \\theta^2} + b \\right) = 2\\pi\\)\n\\(\\therefore \\lim_{\\theta \\to 0} \\left( \\frac{2 \\sin^2\\left(\\frac{\\pi\\theta}{2}\\right)}{\\pi \\theta^2} + b \\right) = 2\\pi\\)\n\\(\\frac{2}{\\pi} \\lim_{\\theta \\to 0} \\left[ \\frac{\\sin\\left(\\frac{\\pi\\theta}{2}\\right)}{\\frac{\\pi\\theta}{2}} \\right]^2 \\left( \\frac{\\pi}{2} \\right)^2 + \\lim_{\\theta \\to 0} (b) = 2\\pi\\)\n\\(\\frac{2}{\\pi} (1) \\times \\frac{\\pi^2}{4} + b = 2\\pi\\) \\(\\left[ \\lim_{\\theta \\to 0} \\left( \\frac{\\sin \\theta}{\\theta} \\right) = 1 \\right]\\)\n\\(\\therefore \\frac{\\pi}{2} + b = 2\\pi \\therefore b = \\frac{3\\pi}{2}\\)\n\\(\\therefore a = 3\\pi\\), \\(b = \\frac{3\\pi}{2}\\)"
+  },
+  {
+    "ref": "8.1 SolvedEx.9(1)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "MODERATE",
+    "context": "Identify discontinuities for the following functions as either a jump or a removable discontinuity on R.",
+    "setLabel": "8.1 SolvedEx.9",
+    "stem": "\\(f(x) = \\frac{x^2 - 3x - 18}{x - 6}\\)",
+    "solution": "\\(f(x) = \\frac{x^2 - 3x - 18}{x - 6}\\)\nHere \\(f(x)\\) is a rational function, which is continuous for all real values of \\(x\\), except for \\(x = 6\\). Therefore \\(f(6)\\) is not defined.\nNow, \\(\\lim_{x \\to 6} f(x) = \\lim_{x \\to 6} \\left( \\frac{x^2 - 3x - 18}{x - 6} \\right)\\)\n\\(= \\lim_{x \\to 6} \\left( \\frac{(x - 6)(x + 3)}{x - 6} \\right)\\)\n\\(= \\lim_{x \\to 6} (x + 3)\\) \\([\\because (x - 6) \\ne 0]\\)\n\\(\\therefore \\lim_{x \\to 6} f(x) = 9\\)\nHere \\(f(6)\\) is not defined but \\(\\lim_{x \\to 6} f(x)\\) exists.\nHence \\(f(x)\\) has a removable discontinuity."
+  },
+  {
+    "ref": "8.1 SolvedEx.9(2)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "MODERATE",
+    "context": "Identify discontinuities for the following functions as either a jump or a removable discontinuity on R.",
+    "setLabel": "8.1 SolvedEx.9",
+    "stem": "\\(g(x) = 3x + 1\\), for \\(x < 3\\)\n\\(= 2 - 3x\\), for \\(x \\ge 3\\)",
+    "solution": "\\(g(x) = 3x + 1\\), for \\(x < 3\\)\n\\(= 2 - 3x\\), for \\(x \\ge 3\\)\nThis function is defined by different polynomials on two intervals. So they are continuous on the open intervals \\((-\\infty, 3)\\) and \\((3, \\infty)\\).\nWe examine continuity at \\(x = 3\\).\nFor \\(x = 3\\), \\(g(3) = 2 - 3(3) = -7\\)\n\\(\\lim_{x \\to 3^-} g(x) = \\lim_{x \\to 3^-} (3x + 1) = 10\\) and\n\\(\\lim_{x \\to 3^+} g(x) = \\lim_{x \\to 3^+} (2 - 3x) = -7\\)\n\\(\\lim_{x \\to 3^-} g(x) \\ne \\lim_{x \\to 3^+} g(x) \\therefore \\lim_{x \\to 3} g(x)\\) does not exist.\nHence \\(g\\) is not continuous at \\(x = 3\\).\nThe function \\(g(x)\\) has a jump discontinuity at \\(x = 3\\)."
+  },
+  {
+    "ref": "8.1 SolvedEx.9(3)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "MODERATE",
+    "context": "Identify discontinuities for the following functions as either a jump or a removable discontinuity on R.",
+    "setLabel": "8.1 SolvedEx.9",
+    "stem": "\\(h(x) = 13 - x^2\\), for \\(x < 5\\)\n\\(= 13 - 5x\\), for \\(x > 5\\)",
+    "solution": "[Textbook misprint: the printed solution says \"But for \\(x = 5\\), \\(f(x)\\) is not defined\", where the function used throughout this part is \\(h(x)\\).]\n\n\\(h(x) = 13 - x^2\\), for \\(x < 5\\),\n\\(= 13 - 5x\\), for \\(x > 5\\),\nbut \\(h(5)\\) is not defined.\n\\(h(x)\\) is continuous at any \\(x < 5\\) and \\(x > 5\\)\n\\(\\lim_{x \\to 5^-} h(x) = \\lim_{x \\to 5^-} (13 - x^2) = 13 - 25 = -12\\)\nand \\(\\lim_{x \\to 5^+} h(x) = \\lim_{x \\to 5^+} (13 - 5x) = 13 - 25 = -12\\)\nSo, \\(\\lim_{x \\to 5^-} h(x) = \\lim_{x \\to 5^+} h(x) \\therefore \\lim_{x \\to 5} h(x) = -12\\)\nBut for \\(x = 5\\), \\(f(x)\\) is not defined.\nSo the function \\(h(x)\\) has a removable discontinuity.",
+    "_note": "Misprint in the printed solution, transcribed as printed: the penultimate line reads 'But for x = 5, f(x) is not defined' where the function under discussion throughout this part is h(x). This part's solution straddles the page break — the stem and parts (1),(2) plus the opening of (3) are on p-08, and the tail transcribed here runs at the top of the left column of p-09."
+  }
+]

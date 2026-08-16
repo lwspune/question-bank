@@ -28,14 +28,17 @@ points at a whole chapter and `pages` is omitted. Those chapter files carry **no
 `answersPdf` points at the whole-book PDF and `answerPages` at that chapter's block inside it.
 The full answer-section map (Part 1 idx 225-241, Part 2 idx 205-221) is in `config.ts`.
 
-Render answer pages to **`out/_answers/<chapterId>/`** — a SIBLING of `out/<chapterId>/`,
-because `render.ts` does `rmSync(out/<chapterId>)` and would otherwise delete them (the same
-trap `dump-text.ts` hit in `mh-sb-9`).
+Render the answer block with **`npx tsx scripts/mh-sb-11/render.ts <chapterId> --answers`**
+(ported 2026-08-16 — the pipeline previously needed a hand-written one-off PyMuPDF call each
+time, which cost seven chapters' worth of retyping).
 
-> ⚠️ **`render.ts` here has NO `--answers` flag** (the `mh-sb-9` one does). Until it is ported,
-> render the answer block with a one-off PyMuPDF call writing into `out/_answers/<chapterId>/`.
-> Do NOT re-run `render.ts <chapterId>` to get them: it rmSync's the chapter's page PNGs, which
-> destroys the images any in-flight transcription agents are reading.
+It writes to **`out/_answers/<chapterId>/`**, a SIBLING of `out/<chapterId>/` rather than a
+child, and that placement is load-bearing: the chapter render does `rmSync(out/<chapterId>)`,
+so answer pages written inside it are destroyed by the next `render.ts <chapterId>` — and worse,
+that same rmSync would pull the page images out from under any in-flight transcription agent.
+Keeping the trees apart makes the two commands order-independent instead of requiring a
+remembered order (the trap `dump-text.ts` hit in `mh-sb-9`). Only the chapter render clears its
+directory; `--answers` is additive.
 
 **2a. RUN `render_solution_diagrams.py` FROM THE REPO ROOT, not from this directory.**
 It writes its manifest paths with `os.path.relpath(p, os.getcwd())`, so running it from
@@ -116,6 +119,51 @@ Sequences' Exercise 2.2 has 13 questions and its key numbers the last answer `15
 A ~30-line probe over the answers block gives every block's max in one pass; do it once per
 chapter, not once per band.
 
+**THE KEY USES THREE DIFFERENT QUESTION-NUMBERING FORMATS, and a probe that knows only one
+returns 0 instead of failing.** Measured 2026-08-16 across the answers section:
+
+| form | example | chapters seen |
+|---|---|---|
+| `1)` or `1.` | `1) 2x - 4y + 5 = 0` | most |
+| `Q.1` — the dot comes BEFORE the number | `Q.1  i) 0  ii) 11i` | Complex Numbers |
+| `(1)` under roman group headers `(I)`…`(V)` | `(IV) (1) ...` | Differentiation |
+
+So match all three, and note the `Q.` form needs its own alternative rather than a shared trailing
+delimiter:
+
+```python
+NUM = re.compile(r'(?m)^\s*(?:Q\.\s*(\d{1,2})\b|\((\d{1,2})\)|(\d{1,2})\s*[\).])')
+```
+
+This bit twice in one sitting: the first pass reported Complex Numbers as having **zero** keyed
+questions in all four of its exercises, and Differentiation as 9 when it is 25 — and a zero reads
+exactly like "this chapter has no key", which is a conclusion about the BOOK drawn from a defect in
+the PROBE. If a block reports 0, open the key page and look at it before believing it.
+
+**A FOURTH failure mode, and it under-counts rather than zeroing: the key is set in TWO COLUMNS.**
+A line-anchored regex reads only the left column of a block and stops where it ends. Measured on
+P&C's Miscellaneous part (II): the probe reported a max of 6 because the key's left column runs
+1)–6) and its right column continues 7)–18). The real count is 18. So a key-floor that looks
+implausibly SMALL for the page area it occupies is as suspicious as a zero — reconcile it against
+the block's physical extent before using it as a band boundary, and treat every floor as a floor.
+
+**A FIFTH: an exercise printed in ROMAN PARTS restarts its numbering in each part, and the probe
+flattens them.** Limits' Exercise 7.7 is printed `I)`, `II)`, `III)`, each headed "Evaluate the
+following" and each numbering from 1) — 3, 3 and 5 questions, eleven in total. The probe reported a
+max of 5, which is part III's last item, not any block total. Exercise 7.6 is the same shape. So a
+key-floor from a parted exercise is neither the total NOR a floor on the total; it is the largest
+number in whichever part happens to have the most items. **Check for `I)` / `II)` / `III)` headers
+before using the number at all**, and when an exercise IS parted, mirror the book's part labels in
+the refs (`Ex 7.7 I Q1`) and give `sections.ts` one block per part.
+
+Net: this one probe has misread the key in FIVE distinct ways in a single sitting — unknown
+numbering format (silent zero), a `Q.`-prefix it could not match, a two-column layout it read half
+of, a roman-part structure it flattened, and a chapter whose real total it under-reported by 16. It
+is genuinely useful: it caught EIGHT exercises spilling past their banner page, including one whose
+eleven-row tail was owned by nobody. But its output is a HINT to be reconciled against the page,
+never a measurement to plan against on its own — and it is the agents reading the images, told to
+report on territory they do not own, that have caught every one of these.
+
 **3. Book layout is the Class-12 shape, not the Class-9 shape.** Interleaved `SOLVED EXAMPLES`
 blocks, numbered `EXERCISE N.M` blocks, then `MISCELLANEOUS EXERCISE - N` split into part
 **(I)** (MCQ) and part **(II)** (free-response). Refs therefore follow the Class-12 convention:
@@ -177,6 +225,46 @@ select count(*) filter (where solution like '[Textbook%') from questions where s
 `apply-errata` is idempotent (it skips a solution already starting with `[`), so the repair
 is simply to re-run it.
 
+**5d. HAND-AUTHORED JSON IS DOUBLE-ESCAPED SO RELIABLY THAT BOTH APPLIERS NOW REFUSE IT.**
+Writing an errata bracket or a solution that quotes the book's own words, the natural thing to
+type for an inner quote is `\\"` — which JSON-decodes to a *literal backslash then a quote*, so
+the page renders a stray `\` beside every quoted phrase. `findLatexImbalance` cannot see it (the
+delimiters still balance) and neither can `board:lint`. It reached the batch-1 chapters (14 files
+repaired after `audit:text` flagged them) and then reached the batch-2 chapters again — **written
+by the same hand that had just repaired the first set, and then a THIRD time in the very next
+file.** That is why it is a guard rather than another repair: fixing the data does not fix the
+hand that writes the data.
+
+`apply-errata.ts` and `apply-solutions.ts` both now REFUSE (never silently normalise — the source
+file has to be corrected or the next re-apply reinstates it) on:
+
+| symptom | what it means | correct form in the file |
+|---|---|---|
+| `\"` in the decoded string | JSON escaping applied twice | `\"` for a quote — one level |
+| `\\(` in the decoded string | same, on a math delimiter | `\\(` in the file decodes to `\(` |
+| a control char (`\f` `\t` `\b` `\v`) | authored through a heredoc or `python -c`: the shell ate one backslash and Python string-escaped the rest, so `\theta` arrived as TAB+`heta` | author with the **Write tool**, never a heredoc |
+
+The known false positive is LaTeX's umlaut accent `\"o`; no Balbharati maths erratum has needed
+one. If that ever changes, widen the check to ignore `\"` followed by a letter or a brace.
+
+**5e. `apply-solutions.ts` GATES THE `ref` -> `id` PAIRING, not just the id set.** An authoring
+agent that drops one row and pads the tail produces a *permutation*: the id set matches, the count
+matches, every downstream gate passes, and every solution is attached to the wrong question. It has
+happened twice on this book. The applier now rebuilds the pairing from each group's own
+`<id>.<group>.topaper.json` and refuses on any mismatch. Keep the topaper files until after the
+apply — the check silently skips a group whose input has been deleted.
+
+**5f. `apply-solved-fixes.ts` — repairing a SOLVED example whose printed derivation is WRONG.**
+`apply-solutions.ts` only fills rows where `solution IS NULL`, so it never touches a `solved` row
+(those carry the book's own worked solution, committed inline from the band fragment). When that
+printed derivation is not merely ugly but arithmetically wrong, preserving it verbatim ships a
+model answer that teaches the error — Limits `7.1.7 SolvedEx.2` evaluates \(2^2\) as 8, and
+`SolvedEx.3` prints \((3-2)/3 = 1/2\). Per the shipped Ch.4 precedent, **correct the derivation AND
+carry an errata bracket naming the defect**. Input is `data/<id>.solved-fixes.json`
+(`{ref, why, find, replace}`); the `find` must match the stored solution EXACTLY ONCE or the fix is
+refused, and a fix whose `find` equals its `replace` is refused too, since that is what a
+shell-mangled needle looks like. Runs BEFORE `apply-errata` (rule 5a).
+
 **5c. Run `npm run audit:omml -- <source_file>` before calling a chapter done.**
 It is scoped, cheap, and it checks the WORD EXPORT, which no other gate touches — an
 unconvertible math zone renders fine on the web (KaTeX) and degrades to raw LaTeX in a
@@ -189,6 +277,28 @@ candidate through `findOmmlFailures` rather than guessing which form converts.
 **6. The step-6 answer-key cross-check gate IS feasible for every chapter** — both volumes
 carry a full ANSWERS section including MCQ key tables. Run it; it is mandatory. Read the
 answer pages as IMAGES (rule 1 applies to the answer section too).
+
+**6a. THE GATE STRUCTURALLY CANNOT COVER SOLVED EXAMPLES, AND ITS "0 OUR-ANSWER-WRONG" MUST BE
+READ WITH THAT SCOPE ATTACHED.** The printed ANSWERS section is organised under `EXERCISE N.M`
+and `MISCELLANEOUS` headings only; a solved example's answer is printed *inside its own worked
+solution*, so there is no external key to diff it against. Measured across the 2026-08-16 batch:
+**153 of 770 committed rows (20%) are `bucket: solved` and were outside the gate** — Limits 44,
+Complex Numbers 46, Perm & Comb 49, Continuity 14. That is not a dispatch oversight; feeding those
+refs to `dump-review.ts` would only produce rows with nothing to compare against.
+
+It matters because **that is exactly where this book's answer-affecting errors have been found**:
+Limits `7.1.7 SolvedEx.2` evaluates \(2^2\) as 8 and `SolvedEx.3` prints \((3-2)/3 = 1/2\), both
+caught by the TRANSCRIPTION agent noticing the printed derivation contradicts itself — not by any
+gate. So the regime for solved examples is:
+
+- the transcription agent must be told to check each printed derivation for INTERNAL consistency
+  (does the working actually reach the number the book prints?) and report, not repair;
+- an answer-affecting hit goes through `apply-solved-fixes.ts` + an errata bracket (rule 5f);
+- when reporting a chapter, say the cross-check covered the exercise rows and give the solved
+  count separately. "0 our-answer-wrong" over 137 rows is a different claim from one over 181.
+
+A cross-check agent flagged this scope gap itself on Limits, from a row-count mismatch in its own
+brief. Give every gate the total it should expect, so a shortfall is visible to it.
 
 ## Book defects recorded so far
 - The Part-1/Part-2 answer sections misspell three of their own headers:

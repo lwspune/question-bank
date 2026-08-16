@@ -48,6 +48,36 @@ async function main() {
   if (imbalanced.length) {
     throw new Error(`LaTeX imbalance in bracket:\n  ${imbalanced.map(([r, m]) => `${r}: ${m}`).join("\n  ")}`);
   }
+  // DOUBLE-ESCAPING GUARD. An errata file is hand-authored JSON, and the easy
+  // mistake is applying JSON escaping twice: writing \\" for a quote (which
+  // DECODES to backslash-quote and renders as a visible \" on the page) or \\(
+  // for a math delimiter (decodes to a doubled backslash, which KaTeX rejects).
+  // Neither is caught by findLatexImbalance — the delimiters still balance — and
+  // both reach the student. This bit the batch-1 chapters (14 files repaired
+  // after audit:text flagged them) and then bit the batch-2 chapters again,
+  // which is why it is a guard here rather than another one-off repair.
+  //
+  // REFUSE rather than silently repair: the bracket must be fixed in the SOURCE
+  // file, or the next re-apply reinstates it. Same reasoning as commitStaged's
+  // literal-newline rejection.
+  //
+  // Known false positive: LaTeX's umlaut accent is \" (as in \"o for ö). No
+  // Balbharati maths erratum has ever needed one; if that changes, widen this to
+  // ignore \" followed by a letter or a brace.
+  const escaped = errata
+    .map((e) => [e.ref, /\\"/.test(e.bracket), /\\\\[()[\]]/.test(e.bracket)] as const)
+    .filter(([, q, d]) => q || d);
+  if (escaped.length) {
+    throw new Error(
+      "double-JSON-escaped bracket — apply ONE level of JSON escaping, not two. " +
+        "A quote inside the bracket is a backslash then a quote in the file; a math " +
+        "delimiter is a doubled backslash then the paren. Adding an extra backslash " +
+        "to either puts a stray backslash into the rendered page.\n  " +
+        escaped
+          .map(([r, q, d]) => `${r}: ${[q && "backslash-quote", d && "doubled math delimiter"].filter(Boolean).join(", ")}`)
+          .join("\n  ")
+    );
+  }
 
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },
