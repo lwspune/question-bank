@@ -1,0 +1,316 @@
+[
+  {
+    "ref": "5.4 Eg.25",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Is it true that \\(x = e^{\\log x}\\) for all real \\(x\\)?",
+    "solution": "First, observe that the domain of log function is set of all positive real numbers. So the above equation is not true for non-positive real numbers.\n\nNow, let \\(y = e^{\\log x}\\). If \\(y > 0\\), we may take logarithm which gives us\n\n\\(\\log y = \\log(e^{\\log x}) = \\log x \\cdot \\log e = \\log x\\)\n\nThus \\(y = x\\). Hence \\(x = e^{\\log x}\\) is true only for positive values of \\(x\\)."
+  },
+  {
+    "ref": "5.4 Eg.26(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "EASY",
+    "context": "Differentiate the following w.r.t. \\(x\\):",
+    "setLabel": "5.4 Eg.26",
+    "stem": "\\(e^{-x}\\)",
+    "solution": "Let \\(y = e^{-x}\\). Using chain rule, we have\n\n\\(\\frac{dy}{dx} = e^{-x} \\cdot \\frac{d}{dx}(-x) = -e^{-x}\\)"
+  },
+  {
+    "ref": "5.4 Eg.26(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "EASY",
+    "context": "Differentiate the following w.r.t. \\(x\\):",
+    "setLabel": "5.4 Eg.26",
+    "stem": "\\(\\sin(\\log x)\\), \\(x > 0\\)",
+    "solution": "Let \\(y = \\sin(\\log x)\\). Using chain rule, we have\n\n\\(\\frac{dy}{dx} = \\cos(\\log x) \\cdot \\frac{d}{dx}(\\log x) = \\frac{\\cos(\\log x)}{x}\\)"
+  },
+  {
+    "ref": "5.4 Eg.26(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "context": "Differentiate the following w.r.t. \\(x\\):",
+    "setLabel": "5.4 Eg.26",
+    "stem": "\\(\\cos^{-1}(e^x)\\)",
+    "solution": "Let \\(y = \\cos^{-1}(e^x)\\). Using chain rule, we have\n\n\\(\\frac{dy}{dx} = \\frac{-1}{\\sqrt{1 - (e^x)^2}} \\cdot \\frac{d}{dx}(e^x) = \\frac{-e^x}{\\sqrt{1 - e^{2x}}}\\)"
+  },
+  {
+    "ref": "5.4 Eg.26(iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "EASY",
+    "context": "Differentiate the following w.r.t. \\(x\\):",
+    "setLabel": "5.4 Eg.26",
+    "stem": "\\(e^{\\cos x}\\)",
+    "solution": "Let \\(y = e^{\\cos x}\\). Using chain rule, we have\n\n\\(\\frac{dy}{dx} = e^{\\cos x} \\cdot (-\\sin x) = -(\\sin x)\\, e^{\\cos x}\\)"
+  },
+  {
+    "ref": "Ex 5.4 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "EASY",
+    "stem": "Differentiate \\(\\dfrac{e^x}{\\sin x}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "EASY",
+    "stem": "Differentiate \\(e^{\\sin^{-1} x}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "EASY",
+    "stem": "Differentiate \\(e^{x^3}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(\\sin(\\tan^{-1} e^{-x})\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(\\log(\\cos e^x)\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(e^x + e^{x^2} + \\ldots + e^{x^5}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(\\sqrt{e^{\\sqrt{x}}}\\), \\(x > 0\\), w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "EASY",
+    "stem": "Differentiate \\(\\log(\\log x)\\), \\(x > 1\\), w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(\\dfrac{\\cos x}{\\log x}\\), \\(x > 0\\), w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "EASY",
+    "stem": "Differentiate \\(\\cos(\\log x + e^x)\\), \\(x > 0\\), w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "5.5 Eg.27",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate \\(\\sqrt{\\dfrac{(x-3)(x^2+4)}{3x^2+4x+5}}\\) w.r.t. \\(x\\).",
+    "solution": "Let \\(y = \\sqrt{\\frac{(x-3)(x^2+4)}{(3x^2+4x+5)}}\\)\n\nTaking logarithm on both sides, we have\n\n\\(\\log y = \\frac{1}{2}\\left[\\log(x-3) + \\log(x^2+4) - \\log(3x^2+4x+5)\\right]\\)\n\nNow, differentiating both sides w.r.t. \\(x\\), we get\n\n\\(\\frac{1}{y}\\cdot\\frac{dy}{dx} = \\frac{1}{2}\\left[\\frac{1}{(x-3)} + \\frac{2x}{x^2+4} - \\frac{6x+4}{3x^2+4x+5}\\right]\\)\n\nor \\(\\frac{dy}{dx} = \\frac{y}{2}\\left[\\frac{1}{(x-3)} + \\frac{2x}{x^2+4} - \\frac{6x+4}{3x^2+4x+5}\\right]\\)\n\n\\(= \\frac{1}{2}\\sqrt{\\frac{(x-3)(x^2+4)}{3x^2+4x+5}}\\left[\\frac{1}{(x-3)} + \\frac{2x}{x^2+4} - \\frac{6x+4}{3x^2+4x+5}\\right]\\)"
+  },
+  {
+    "ref": "5.5 Eg.28",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(a^x\\) w.r.t. \\(x\\), where \\(a\\) is a positive constant.",
+    "solution": "Let \\(y = a^x\\). Then\n\n\\(\\log y = x \\log a\\)\n\nDifferentiating both sides w.r.t. \\(x\\), we have\n\n\\(\\frac{1}{y}\\frac{dy}{dx} = \\log a\\)\n\nor \\(\\frac{dy}{dx} = y \\log a\\)\n\nThus \\(\\frac{d}{dx}(a^x) = a^x \\log a\\).\n\nAlternatively \\(\\frac{d}{dx}(a^x) = \\frac{d}{dx}\\left(e^{x\\log a}\\right) = e^{x\\log a}\\frac{d}{dx}(x\\log a)\\)\n\n\\(= e^{x\\log a} \\cdot \\log a = a^x \\log a\\)."
+  },
+  {
+    "ref": "5.5 Eg.29",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(x^{\\sin x}\\), \\(x > 0\\) w.r.t. \\(x\\).",
+    "solution": "Let \\(y = x^{\\sin x}\\). Taking logarithm on both sides, we have\n\n\\(\\log y = \\sin x \\log x\\)\n\nTherefore \\(\\frac{1}{y}\\cdot\\frac{dy}{dx} = \\sin x \\frac{d}{dx}(\\log x) + \\log x \\frac{d}{dx}(\\sin x)\\)\n\nor \\(\\frac{1}{y}\\frac{dy}{dx} = (\\sin x)\\frac{1}{x} + \\log x \\cos x\\)\n\nor \\(\\frac{dy}{dx} = y\\left[\\frac{\\sin x}{x} + \\cos x \\log x\\right]\\)\n\n\\(= x^{\\sin x}\\left[\\frac{\\sin x}{x} + \\cos x \\log x\\right]\\)\n\n\\(= x^{\\sin x - 1}\\cdot\\sin x + x^{\\sin x}\\cdot\\cos x \\log x\\)"
+  },
+  {
+    "ref": "5.5 Eg.30",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\dfrac{dy}{dx}\\), if \\(y^x + x^y + x^x = a^b\\).",
+    "solution": "Given that \\(y^x + x^y + x^x = a^b\\).\n\nPutting \\(u = y^x\\), \\(v = x^y\\) and \\(w = x^x\\), we get \\(u + v + w = a^b\\)\n\nTherefore \\(\\frac{du}{dx} + \\frac{dv}{dx} + \\frac{dw}{dx} = 0\\) ... (1)\n\nNow, \\(u = y^x\\). Taking logarithm on both sides, we have\n\n\\(\\log u = x \\log y\\)\n\nDifferentiating both sides w.r.t. \\(x\\), we have\n\n\\(\\frac{1}{u}\\cdot\\frac{du}{dx} = x\\frac{d}{dx}(\\log y) + \\log y \\frac{d}{dx}(x)\\)\n\n\\(= x\\frac{1}{y}\\cdot\\frac{dy}{dx} + \\log y \\cdot 1\\)\n\nSo \\(\\frac{du}{dx} = u\\left(\\frac{x}{y}\\frac{dy}{dx} + \\log y\\right) = y^x\\left[\\frac{x}{y}\\frac{dy}{dx} + \\log y\\right]\\) ... (2)\n\nAlso \\(v = x^y\\)\n\nTaking logarithm on both sides, we have\n\n\\(\\log v = y \\log x\\)\n\nDifferentiating both sides w.r.t. \\(x\\), we have\n\n\\(\\frac{1}{v}\\cdot\\frac{dv}{dx} = y\\frac{d}{dx}(\\log x) + \\log x \\frac{dy}{dx}\\)\n\n\\(= y\\cdot\\frac{1}{x} + \\log x\\cdot\\frac{dy}{dx}\\)\n\nSo \\(\\frac{dv}{dx} = v\\left[\\frac{y}{x} + \\log x \\frac{dy}{dx}\\right] = x^y\\left[\\frac{y}{x} + \\log x \\frac{dy}{dx}\\right]\\) ... (3)\n\nAgain \\(w = x^x\\)\n\nTaking logarithm on both sides, we have\n\n\\(\\log w = x \\log x\\).\n\nDifferentiating both sides w.r.t. \\(x\\), we have\n\n\\(\\frac{1}{w}\\cdot\\frac{dw}{dx} = x\\frac{d}{dx}(\\log x) + \\log x \\cdot \\frac{d}{dx}(x)\\)\n\n\\(= x\\cdot\\frac{1}{x} + \\log x \\cdot 1\\)\n\ni.e. \\(\\frac{dw}{dx} = w(1 + \\log x)\\)\n\n\\(= x^x(1 + \\log x)\\) ... (4)\n\nFrom (1), (2), (3), (4), we have\n\n\\(y^x\\left(\\frac{x}{y}\\frac{dy}{dx} + \\log y\\right) + x^y\\left(\\frac{y}{x} + \\log x \\frac{dy}{dx}\\right) + x^x(1 + \\log x) = 0\\)\n\nor \\((x\\cdot y^{x-1} + x^y\\cdot\\log x)\\frac{dy}{dx} = -x^x(1 + \\log x) - y\\cdot x^{y-1} - y^x \\log y\\)\n\nTherefore \\(\\frac{dy}{dx} = \\frac{-\\left[y^x \\log y + y\\cdot x^{y-1} + x^x(1 + \\log x)\\right]}{x\\cdot y^{x-1} + x^y \\log x}\\)"
+  },
+  {
+    "ref": "Ex 5.5 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(\\cos x \\cdot \\cos 2x \\cdot \\cos 3x\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(\\sqrt{\\dfrac{(x-1)(x-2)}{(x-3)(x-4)(x-5)}}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\((\\log x)^{\\cos x}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(x^x - 2^{\\sin x}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\((x+3)^2 \\cdot (x+4)^3 \\cdot (x+5)^4\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate \\(\\left(x + \\dfrac{1}{x}\\right)^x + x^{\\left(1 + \\frac{1}{x}\\right)}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate \\((\\log x)^x + x^{\\log x}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate \\((\\sin x)^x + \\sin^{-1}\\sqrt{x}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate \\(x^{\\sin x} + (\\sin x)^{\\cos x}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate \\(x^{x\\cos x} + \\dfrac{x^2+1}{x^2-1}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate \\((x\\cos x)^x + (x\\sin x)^{\\frac{1}{x}}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\dfrac{dy}{dx}\\) of the function \\(x^y + y^x = 1\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\dfrac{dy}{dx}\\) of the function \\(y^x = x^y\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\dfrac{dy}{dx}\\) of the function \\((\\cos x)^y = (\\cos y)^x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\dfrac{dy}{dx}\\) of the function \\(xy = e^{(x-y)}\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Find the derivative of the function given by \\(f(x) = (1+x)(1+x^2)(1+x^4)(1+x^8)\\) and hence find \\(f'(1)\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\((x^2 - 5x + 8)(x^3 + 7x + 9)\\) in three ways mentioned below:\n\n(i) by using product rule\n\n(ii) by expanding the product to obtain a single polynomial.\n\n(iii) by logarithmic differentiation.\n\nDo they all give the same answer?",
+    "_note": "Kept as ONE row rather than set-grouped: the three labelled items are METHODS for one differentiation task, not independent sub-questions, and the closing 'Do they all give the same answer?' compares across all three, so it belongs to none of them individually."
+  },
+  {
+    "ref": "Ex 5.5 Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "If \\(u\\), \\(v\\) and \\(w\\) are functions of \\(x\\), then show that\n\n\\(\\frac{d}{dx}(u \\cdot v \\cdot w) = \\frac{du}{dx}\\, v \\cdot w + u \\cdot \\frac{dv}{dx} \\cdot w + u \\cdot v \\frac{dw}{dx}\\)\n\nin two ways - first by repeated application of product rule, second by logarithmic differentiation."
+  }
+]

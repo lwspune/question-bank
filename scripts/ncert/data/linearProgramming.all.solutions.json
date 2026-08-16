@@ -1,0 +1,52 @@
+[
+  {
+    "id": "9e920075-5184-4743-add5-8891addfdea0",
+    "ref": "Ex 12.1 Q1",
+    "solution": "The feasible region is the triangle bounded by \\(x + y = 4\\) and the two axes. Its corner points are \\((0,0)\\), \\((4,0)\\) and \\((0,4)\\). Evaluating \\(Z = 3x + 4y\\): at \\((0,0)\\), \\(Z = 0\\); at \\((4,0)\\), \\(Z = 12\\); at \\((0,4)\\), \\(Z = 16\\). The region is bounded, so the largest of these is the maximum. Hence \\(Z\\) is maximum at \\((0,4)\\) and the maximum value is \\(16\\)."
+  },
+  {
+    "id": "7c8b8ab1-1c82-4313-8107-fae6b4cd4788",
+    "ref": "Ex 12.1 Q2",
+    "solution": "The feasible region is bounded by \\(x + 2y = 8\\), \\(3x + 2y = 12\\) and the axes. Solving \\(x + 2y = 8\\) and \\(3x + 2y = 12\\) simultaneously gives \\(2x = 4\\), so \\(x = 2\\), \\(y = 3\\). The corner points are \\((0,0)\\), \\((4,0)\\), \\((2,3)\\) and \\((0,4)\\). Evaluating \\(Z = -3x + 4y\\): at \\((0,0)\\), \\(Z = 0\\); at \\((4,0)\\), \\(Z = -12\\); at \\((2,3)\\), \\(Z = -6 + 12 = 6\\); at \\((0,4)\\), \\(Z = 16\\). The region is bounded, so the smallest of these is the minimum. Hence \\(Z\\) is minimum at \\((4,0)\\) and the minimum value is \\(-12\\)."
+  },
+  {
+    "id": "20b665df-8f48-4c4e-848e-3193424c4795",
+    "ref": "Ex 12.1 Q3",
+    "solution": "The feasible region is bounded by \\(3x + 5y = 15\\), \\(5x + 2y = 10\\) and the axes. Solving \\(3x + 5y = 15\\) and \\(5x + 2y = 10\\) simultaneously: multiplying by \\(5\\) and \\(3\\) gives \\(15x + 25y = 75\\) and \\(15x + 6y = 30\\), so \\(19y = 45\\), \\(y = \\frac{45}{19}\\) and then \\(x = \\frac{10 - 2y}{5} = \\frac{20}{19}\\). The corner points are \\((0,0)\\), \\((2,0)\\), \\(\\left(\\frac{20}{19}, \\frac{45}{19}\\right)\\) and \\((0,3)\\). Evaluating \\(Z = 5x + 3y\\): at \\((0,0)\\), \\(Z = 0\\); at \\((2,0)\\), \\(Z = 10\\); at \\(\\left(\\frac{20}{19}, \\frac{45}{19}\\right)\\), \\(Z = \\frac{100}{19} + \\frac{135}{19} = \\frac{235}{19}\\); at \\((0,3)\\), \\(Z = 9\\). The region is bounded, so \\(Z\\) is maximum at \\(\\left(\\frac{20}{19}, \\frac{45}{19}\\right)\\) and the maximum value is \\(\\frac{235}{19}\\)."
+  },
+  {
+    "id": "496d1ec4-56cf-4d59-961d-cf93d80d9e68",
+    "ref": "Ex 12.1 Q4",
+    "solution": "The constraints \\(x + 3y \\ge 3\\), \\(x + y \\ge 2\\), \\(x, y \\ge 0\\) give an unbounded feasible region. Solving \\(x + 3y = 3\\) and \\(x + y = 2\\) simultaneously gives \\(2y = 1\\), so \\(y = \\frac{1}{2}\\), \\(x = \\frac{3}{2}\\). The corner points are \\((3,0)\\), \\(\\left(\\frac{3}{2}, \\frac{1}{2}\\right)\\) and \\((0,2)\\). Evaluating \\(Z = 3x + 5y\\): at \\((3,0)\\), \\(Z = 9\\); at \\(\\left(\\frac{3}{2}, \\frac{1}{2}\\right)\\), \\(Z = \\frac{9}{2} + \\frac{5}{2} = 7\\); at \\((0,2)\\), \\(Z = 10\\). The smallest value is \\(7\\). Since the region is unbounded, check the open half plane \\(3x + 5y < 7\\): it has no point in common with the feasible region, because \\(3x + 5y = 2(x+y) + (x + 3y) \\ge 2(2) + 3 = 7\\) for every feasible \\((x,y)\\). Hence \\(Z\\) is minimum at \\(\\left(\\frac{3}{2}, \\frac{1}{2}\\right)\\) and the minimum value is \\(7\\)."
+  },
+  {
+    "id": "0a8a63f8-91db-4b5f-94b5-67da832c46ae",
+    "ref": "Ex 12.1 Q5",
+    "solution": "The feasible region is bounded by \\(x + 2y = 10\\), \\(3x + y = 15\\) and the axes. Solving \\(x + 2y = 10\\) and \\(3x + y = 15\\) simultaneously: from the second, \\(y = 15 - 3x\\), so \\(x + 30 - 6x = 10\\), giving \\(x = 4\\) and \\(y = 3\\). The corner points are \\((0,0)\\), \\((5,0)\\), \\((4,3)\\) and \\((0,5)\\). Evaluating \\(Z = 3x + 2y\\): at \\((0,0)\\), \\(Z = 0\\); at \\((5,0)\\), \\(Z = 15\\); at \\((4,3)\\), \\(Z = 12 + 6 = 18\\); at \\((0,5)\\), \\(Z = 10\\). The region is bounded, so \\(Z\\) is maximum at \\((4,3)\\) and the maximum value is \\(18\\)."
+  },
+  {
+    "id": "20970d3f-1b5f-4337-aa38-8ddb42d9f4a3",
+    "ref": "Ex 12.1 Q6",
+    "solution": "The feasible region is unbounded. Solving \\(2x + y = 3\\) and \\(x + 2y = 6\\) at \\(x = 0\\) shows both lines meet the \\(y\\)-axis at \\(y = 3\\), so they intersect at \\((0,3)\\); the line \\(x + 2y = 6\\) meets the \\(x\\)-axis at \\((6,0)\\), which satisfies \\(2x + y = 12 \\ge 3\\). The corner points are \\((0,3)\\) and \\((6,0)\\). Evaluating \\(Z = x + 2y\\): at \\((0,3)\\), \\(Z = 6\\); at \\((6,0)\\), \\(Z = 6\\). Since the region is unbounded, check \\(x + 2y < 6\\): it has no point in common with the feasible region, because the constraint itself forces \\(x + 2y \\ge 6\\). Hence the minimum value of \\(Z\\) is \\(6\\), and since \\(Z = x + 2y\\) is identically \\(6\\) on the whole edge \\(x + 2y = 6\\) of the region, it is attained at every point of the line segment joining \\((0,3)\\) and \\((6,0)\\) — that is, at infinitely many points, so certainly at more than two."
+  },
+  {
+    "id": "39153f3c-118d-495f-a625-6f8edb75260d",
+    "ref": "Ex 12.1 Q7",
+    "solution": "The feasible region is bounded. Its corner points come from the constraint pairs: \\(x + y = 60\\) with \\(y = 0\\) gives \\((60,0)\\); \\(x + 2y = 120\\) with \\(y = 0\\) gives \\((120,0)\\); \\(x + 2y = 120\\) with \\(x - 2y = 0\\) gives \\(4y = 120\\), so \\((60,30)\\); \\(x + y = 60\\) with \\(x - 2y = 0\\) gives \\(3y = 60\\), so \\((40,20)\\). Evaluating \\(Z = 5x + 10y\\): at \\((60,0)\\), \\(Z = 300\\); at \\((120,0)\\), \\(Z = 600\\); at \\((60,30)\\), \\(Z = 300 + 300 = 600\\); at \\((40,20)\\), \\(Z = 200 + 200 = 400\\). Hence the minimum value is \\(300\\), attained at \\((60,0)\\). The maximum value is \\(600\\), attained at \\((120,0)\\) and at \\((60,30)\\) — and since \\(Z = 5(x + 2y)\\) is identically \\(600\\) on the edge \\(x + 2y = 120\\), it is attained at every point of the line segment joining \\((120,0)\\) and \\((60,30)\\)."
+  },
+  {
+    "id": "f60ee6e9-9a8e-4530-be84-39c73f860e3f",
+    "ref": "Ex 12.1 Q8",
+    "solution": "The feasible region is bounded. Its corner points: \\(x = 0\\) with \\(x + 2y = 100\\) gives \\((0,50)\\); \\(2x - y = 0\\) with \\(x + 2y = 100\\) gives \\(y = 2x\\) and \\(5x = 100\\), so \\((20,40)\\); \\(2x - y = 0\\) with \\(2x + y = 200\\) gives \\(4x = 200\\), so \\((50,100)\\); \\(x = 0\\) with \\(2x + y = 200\\) gives \\((0,200)\\). Evaluating \\(Z = x + 2y\\): at \\((0,50)\\), \\(Z = 100\\); at \\((20,40)\\), \\(Z = 20 + 80 = 100\\); at \\((50,100)\\), \\(Z = 50 + 200 = 250\\); at \\((0,200)\\), \\(Z = 400\\). Hence the maximum value is \\(400\\), attained at \\((0,200)\\). The minimum value is \\(100\\), attained at \\((0,50)\\) and at \\((20,40)\\) — and since \\(Z = x + 2y\\) is identically \\(100\\) on the edge \\(x + 2y = 100\\), it is attained at every point of the line segment joining \\((0,50)\\) and \\((20,40)\\)."
+  },
+  {
+    "id": "d46ab983-8ed1-4078-aa4e-a10ea1cd2551",
+    "ref": "Ex 12.1 Q9",
+    "solution": "The constraints \\(x \\ge 3\\), \\(x + y \\ge 5\\), \\(x + 2y \\ge 6\\), \\(y \\ge 0\\) give an unbounded feasible region. Its corner points: \\(x = 3\\) with \\(x + y = 5\\) gives \\((3,2)\\) (this also satisfies \\(x + 2y = 7 \\ge 6\\)); \\(x + y = 5\\) with \\(x + 2y = 6\\) gives \\(y = 1\\), \\(x = 4\\), i.e. \\((4,1)\\); \\(x + 2y = 6\\) with \\(y = 0\\) gives \\((6,0)\\). Evaluating \\(Z = -x + 2y\\): at \\((3,2)\\), \\(Z = 1\\); at \\((4,1)\\), \\(Z = -2\\); at \\((6,0)\\), \\(Z = -6\\). The largest corner value is \\(1\\), but the region is unbounded, so this must be tested: the open half plane \\(-x + 2y > 1\\) does contain feasible points, for example \\((3, t)\\) for every \\(t > 2\\), which satisfies all four constraints and gives \\(Z = 2t - 3 \\to \\infty\\). Hence \\(Z\\) has no maximum value — it is unbounded above on the feasible region."
+  },
+  {
+    "id": "84144aca-0d18-4d76-90ce-490b9497adc2",
+    "ref": "Ex 12.1 Q10",
+    "solution": "Rewrite the constraints: \\(x - y \\le -1\\) means \\(y \\ge x + 1\\), and \\(-x + y \\le 0\\) means \\(y \\le x\\). Both together would require \\(x + 1 \\le y \\le x\\), that is \\(x + 1 \\le x\\), which is impossible. So the two half planes have no point in common and there is no feasible region at all. Hence the problem has no feasible solution, and consequently \\(Z = x + y\\) has no maximum value."
+  }
+]

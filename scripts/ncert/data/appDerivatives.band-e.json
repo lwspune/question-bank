@@ -1,0 +1,213 @@
+[
+  {
+    "ref": "Misc Eg.30",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "MODERATE",
+    "stem": "A car starts from a point P at time \\(t = 0\\) seconds and stops at point Q. The distance \\(x\\), in metres, covered by it, in \\(t\\) seconds is given by \\(x = t^2\\left(2 - \\frac{t}{3}\\right)\\). Find the time taken by it to reach Q and also find distance between P and Q.",
+    "solution": "Let \\(v\\) be the velocity of the car at \\(t\\) seconds.\nNow \\(x = t^2\\left(2 - \\frac{t}{3}\\right)\\).\nTherefore \\(v = \\frac{dx}{dt} = 4t - t^2 = t(4-t)\\).\nThus, \\(v = 0\\) gives \\(t = 0\\) and/or \\(t = 4\\).\nNow \\(v = 0\\) at P as well as at Q and at P, \\(t = 0\\). So, at Q, \\(t = 4\\). Thus, the car will reach the point Q after 4 seconds.\nAlso the distance travelled in 4 seconds is given by the value of \\(x\\) at \\(t = 4\\), namely \\(4^2\\left(2 - \\frac{4}{3}\\right) = 16\\left(\\frac{2}{3}\\right) = \\frac{32}{3}\\) m.\nHence the car reaches Q after 4 seconds and the distance between P and Q is \\(\\frac{32}{3}\\) m."
+  },
+  {
+    "ref": "Misc Eg.31",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "MODERATE",
+    "stem": "A water tank has the shape of an inverted right circular cone with its axis vertical and vertex lowermost. Its semi-vertical angle is \\(\\tan^{-1}(0.5)\\). Water is poured into it at a constant rate of 5 cubic metre per hour. Find the rate at which the level of the water is rising at the instant when the depth of water in the tank is 4 m.",
+    "solution": "Let \\(r\\), \\(h\\) and \\(\\alpha\\) be as in Fig 6.20. Then \\(\\tan\\alpha = \\frac{r}{h}\\).\nSo \\(\\alpha = \\tan^{-1}\\left(\\frac{r}{h}\\right)\\).\nBut \\(\\alpha = \\tan^{-1}(0.5)\\) (given), or \\(\\frac{r}{h} = 0.5\\), or \\(r = \\frac{h}{2}\\).\nLet V be the volume of the cone. Then \\(\\mathrm{V} = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi\\left(\\frac{h}{2}\\right)^2 h = \\frac{\\pi h^3}{12}\\).\nTherefore, by the Chain Rule, \\(\\frac{d\\mathrm{V}}{dt} = \\frac{d}{dh}\\left(\\frac{\\pi h^3}{12}\\right)\\cdot\\frac{dh}{dt} = \\frac{\\pi}{4}h^2\\frac{dh}{dt}\\).\nNow rate of change of volume, i.e., \\(\\frac{d\\mathrm{V}}{dt} = 5\\) m\\(^3\\)/h and \\(h = 4\\) m.\nTherefore \\(5 = \\frac{\\pi}{4}(4)^2\\cdot\\frac{dh}{dt}\\),\nor \\(\\frac{dh}{dt} = \\frac{5}{4\\pi} = \\frac{35}{88}\\) m/h \\(\\left(\\pi = \\frac{22}{7}\\right)\\).\nThus, the rate of change of water level is \\(\\frac{35}{88}\\) m/h."
+  },
+  {
+    "ref": "Misc Eg.32",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "MODERATE",
+    "stem": "A man of height 2 metres walks at a uniform speed of 5 km/h away from a lamp post which is 6 metres high. Find the rate at which the length of his shadow increases.",
+    "solution": "In Fig 6.21, let AB be the lamp-post, the lamp being at the position B and let MN be the man at a particular time \\(t\\) and let \\(\\mathrm{AM} = l\\) metres. Then, MS is the shadow of the man. Let \\(\\mathrm{MS} = s\\) metres.\nNote that \\(\\triangle\\mathrm{MSN} \\sim \\triangle\\mathrm{ASB}\\),\nor \\(\\frac{\\mathrm{MS}}{\\mathrm{AS}} = \\frac{\\mathrm{MN}}{\\mathrm{AB}}\\),\nor \\(\\mathrm{AS} = 3s\\) (as \\(\\mathrm{MN} = 2\\) and \\(\\mathrm{AB} = 6\\) (given)).\nThus \\(\\mathrm{AM} = 3s - s = 2s\\). But \\(\\mathrm{AM} = l\\), so \\(l = 2s\\).\nTherefore \\(\\frac{dl}{dt} = 2\\frac{ds}{dt}\\).\nSince \\(\\frac{dl}{dt} = 5\\) km/h, hence, the length of the shadow increases at the rate \\(\\frac{5}{2}\\) km/h."
+  },
+  {
+    "ref": "Misc Eg.33",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find intervals in which the function given by \\(f(x) = \\frac{3}{10}x^4 - \\frac{4}{5}x^3 - 3x^2 + \\frac{36}{5}x + 11\\) is (a) increasing (b) decreasing.",
+    "solution": "We have \\(f(x) = \\frac{3}{10}x^4 - \\frac{4}{5}x^3 - 3x^2 + \\frac{36}{5}x + 11\\).\nTherefore \\(f'(x) = \\frac{3}{10}(4x^3) - \\frac{4}{5}(3x^2) - 3(2x) + \\frac{36}{5} = \\frac{6}{5}(x-1)(x+2)(x-3)\\) (on simplification).\nNow \\(f'(x) = 0\\) gives \\(x = 1\\), \\(x = -2\\), or \\(x = 3\\). The points \\(x = 1, -2\\) and 3 divide the real line into four disjoint intervals namely, \\((-\\infty, -2)\\), \\((-2, 1)\\), \\((1, 3)\\) and \\((3, \\infty)\\) (Fig 6.22).\nConsider the interval \\((-\\infty, -2)\\), i.e., when \\(-\\infty < x < -2\\). In this case, we have \\(x - 1 < 0\\), \\(x + 2 < 0\\) and \\(x - 3 < 0\\). (In particular, observe that for \\(x = -3\\), \\(f'(x) = (x-1)(x+2)(x-3) = (-4)(-1)(-6) < 0\\).)\nTherefore, \\(f'(x) < 0\\) when \\(-\\infty < x < -2\\). Thus, the function \\(f\\) is decreasing in \\((-\\infty, -2)\\).\nConsider the interval \\((-2, 1)\\), i.e., when \\(-2 < x < 1\\). In this case, we have \\(x - 1 < 0\\), \\(x + 2 > 0\\) and \\(x - 3 < 0\\). (In particular, observe that for \\(x = 0\\), \\(f'(x) = (x-1)(x+2)(x-3) = (-1)(2)(-3) = 6 > 0\\).)\nSo \\(f'(x) > 0\\) when \\(-2 < x < 1\\). Thus, \\(f\\) is increasing in \\((-2, 1)\\).\nNow consider the interval \\((1, 3)\\), i.e., when \\(1 < x < 3\\). In this case, we have \\(x - 1 > 0\\), \\(x + 2 > 0\\) and \\(x - 3 < 0\\). So, \\(f'(x) < 0\\) when \\(1 < x < 3\\). Thus, \\(f\\) is decreasing in \\((1, 3)\\).\nFinally, consider the interval \\((3, \\infty)\\), i.e., when \\(x > 3\\). In this case, we have \\(x - 1 > 0\\), \\(x + 2 > 0\\) and \\(x - 3 > 0\\). So \\(f'(x) > 0\\) when \\(x > 3\\). Thus, \\(f\\) is increasing in the interval \\((3, \\infty)\\).",
+    "_note": "Book inconsistency (transcribed faithfully): in the two parenthetical sign checks the printed solution writes \\(f'(x) = (x-1)(x+2)(x-3)\\), dropping the factor \\(\\frac{6}{5}\\) it derived one line above. Harmless — the factor is positive so no sign conclusion changes — but the two lines contradict each other as printed."
+  },
+  {
+    "ref": "Misc Eg.34",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Show that the function \\(f\\) given by \\(f(x) = \\tan^{-1}(\\sin x + \\cos x)\\), \\(x > 0\\) is always an increasing function in \\(\\left(0, \\frac{\\pi}{4}\\right)\\).",
+    "solution": "We have \\(f(x) = \\tan^{-1}(\\sin x + \\cos x)\\), \\(x > 0\\).\nTherefore \\(f'(x) = \\frac{1}{1 + (\\sin x + \\cos x)^2}(\\cos x - \\sin x) = \\frac{\\cos x - \\sin x}{2 + \\sin 2x}\\) (on simplification).\nNote that \\(2 + \\sin 2x > 0\\) for all \\(x\\) in \\(\\left(0, \\frac{\\pi}{4}\\right)\\).\nTherefore \\(f'(x) > 0\\) if \\(\\cos x - \\sin x > 0\\),\nor \\(f'(x) > 0\\) if \\(\\cos x > \\sin x\\) or \\(\\cot x > 1\\).\nNow \\(\\cot x > 1\\) if \\(\\tan x < 1\\), i.e., if \\(0 < x < \\frac{\\pi}{4}\\).\nThus \\(f'(x) > 0\\) in \\(\\left(0, \\frac{\\pi}{4}\\right)\\).\nHence \\(f\\) is increasing function in \\(\\left(0, \\frac{\\pi}{4}\\right)\\)."
+  },
+  {
+    "ref": "Misc Eg.35",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "EASY",
+    "stem": "A circular disc of radius 3 cm is being heated. Due to expansion, its radius increases at the rate of 0.05 cm/s. Find the rate at which its area is increasing when radius is 3.2 cm.",
+    "solution": "Let \\(r\\) be the radius of the given disc and A be its area. Then \\(\\mathrm{A} = \\pi r^2\\),\nor \\(\\frac{d\\mathrm{A}}{dt} = 2\\pi r\\frac{dr}{dt}\\) (by Chain Rule).\nNow approximate rate of increase of radius \\(= dr = \\frac{dr}{dt}\\Delta t = 0.05\\) cm/s.\nTherefore, the approximate rate of increase in area is given by\n\\(d\\mathrm{A} = \\frac{d\\mathrm{A}}{dt}(\\Delta t) = 2\\pi r\\left(\\frac{dr}{dt}\\Delta t\\right) = 2\\pi(3.2)(0.05) = 0.320\\pi\\) cm\\(^2\\)/s \\((r = 3.2\\) cm\\()\\).",
+    "_note": "DELETED-TOPIC LEFTOVER (transcribed faithfully): the stem is a plain rate-of-change question, but the book's printed SOLUTION is written in the vocabulary of the dropped approximations/differentials topic — 'approximate rate of increase', \\(dr = \\frac{dr}{dt}\\Delta t\\) and \\(d\\mathrm{A} = \\frac{d\\mathrm{A}}{dt}(\\Delta t)\\) — even though nothing here is actually an approximation. The rationalised 2025-26 edition prints no section teaching differentials, so a student meets this notation here with no prior definition. Also note the given radius of 3 cm is never used; the rate is evaluated at r = 3.2 cm."
+  },
+  {
+    "ref": "Misc Eg.36",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "MODERATE",
+    "stem": "An open topped box is to be constructed by removing equal squares from each corner of a 3 metre by 8 metre rectangular sheet of aluminium and folding up the sides. Find the volume of the largest such box.",
+    "solution": "Let \\(x\\) metre be the length of a side of the removed squares. Then, the height of the box is \\(x\\), length is \\(8 - 2x\\) and breadth is \\(3 - 2x\\) (Fig 6.23). If \\(\\mathrm{V}(x)\\) is the volume of the box, then\n\\(\\mathrm{V}(x) = x(3-2x)(8-2x) = 4x^3 - 22x^2 + 24x\\).\nTherefore \\(\\mathrm{V}'(x) = 12x^2 - 44x + 24 = 4(x-3)(3x-2)\\) and \\(\\mathrm{V}''(x) = 24x - 44\\).\nNow \\(\\mathrm{V}'(x) = 0\\) gives \\(x = 3, \\frac{2}{3}\\). But \\(x \\ne 3\\) (Why?).\nThus, we have \\(x = \\frac{2}{3}\\). Now \\(\\mathrm{V}''\\left(\\frac{2}{3}\\right) = 24\\left(\\frac{2}{3}\\right) - 44 = -28 < 0\\).\nTherefore, \\(x = \\frac{2}{3}\\) is the point of maxima, i.e., if we remove a square of side \\(\\frac{2}{3}\\) metre from each corner of the sheet and make a box from the remaining sheet, then the volume of the box such obtained will be the largest and it is given by\n\\(\\mathrm{V}\\left(\\frac{2}{3}\\right) = 4\\left(\\frac{2}{3}\\right)^3 - 22\\left(\\frac{2}{3}\\right)^2 + 24\\left(\\frac{2}{3}\\right) = \\frac{200}{27}\\) m\\(^3\\)."
+  },
+  {
+    "ref": "Misc Eg.37",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "MODERATE",
+    "stem": "Manufacturer can sell \\(x\\) items at a price of rupees \\(\\left(5 - \\frac{x}{100}\\right)\\) each. The cost price of \\(x\\) items is Rs \\(\\left(\\frac{x}{5} + 500\\right)\\). Find the number of items he should sell to earn maximum profit.",
+    "solution": "Let \\(\\mathrm{S}(x)\\) be the selling price of \\(x\\) items and let \\(\\mathrm{C}(x)\\) be the cost price of \\(x\\) items. Then, we have\n\\(\\mathrm{S}(x) = \\left(5 - \\frac{x}{100}\\right)x = 5x - \\frac{x^2}{100}\\)\nand \\(\\mathrm{C}(x) = \\frac{x}{5} + 500\\).\nThus, the profit function \\(\\mathrm{P}(x)\\) is given by\n\\(\\mathrm{P}(x) = \\mathrm{S}(x) - \\mathrm{C}(x) = 5x - \\frac{x^2}{100} - \\frac{x}{5} - 500\\),\ni.e., \\(\\mathrm{P}(x) = \\frac{24}{5}x - \\frac{x^2}{100} - 500\\),\nor \\(\\mathrm{P}'(x) = \\frac{24}{5} - \\frac{x}{50}\\).\nNow \\(\\mathrm{P}'(x) = 0\\) gives \\(x = 240\\). Also \\(\\mathrm{P}''(x) = \\frac{-1}{50}\\). So \\(\\mathrm{P}''(240) = \\frac{-1}{50} < 0\\).\nThus, \\(x = 240\\) is a point of maxima. Hence, the manufacturer can earn maximum profit, if he sells 240 items."
+  },
+  {
+    "ref": "Misc Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "MODERATE",
+    "stem": "Show that the function given by \\(f(x) = \\frac{\\log x}{x}\\) has maximum at \\(x = e\\)."
+  },
+  {
+    "ref": "Misc Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "HARD",
+    "stem": "The two equal sides of an isosceles triangle with fixed base \\(b\\) are decreasing at the rate of 3 cm per second. How fast is the area decreasing when the two equal sides are equal to the base?"
+  },
+  {
+    "ref": "Misc Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "HARD",
+    "stem": "Find the intervals in which the function \\(f\\) given by \\(f(x) = \\frac{4\\sin x - 2x - x\\cos x}{2 + \\cos x}\\) is (i) increasing (ii) decreasing."
+  },
+  {
+    "ref": "Misc Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find the intervals in which the function \\(f\\) given by \\(f(x) = x^3 + \\frac{1}{x^3}\\), \\(x \\ne 0\\) is (i) increasing (ii) decreasing."
+  },
+  {
+    "ref": "Misc Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "HARD",
+    "stem": "Find the maximum area of an isosceles triangle inscribed in the ellipse \\(\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1\\) with its vertex at one end of the major axis."
+  },
+  {
+    "ref": "Misc Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "MODERATE",
+    "stem": "A tank with rectangular base and rectangular sides, open at the top is to be constructed so that its depth is 2 m and volume is 8 m\\(^3\\). If building of tank costs Rs 70 per sq metres for the base and Rs 45 per square metre for sides. What is the cost of least expensive tank?"
+  },
+  {
+    "ref": "Misc Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "MODERATE",
+    "stem": "The sum of the perimeter of a circle and square is \\(k\\), where \\(k\\) is some constant. Prove that the sum of their areas is least when the side of square is double the radius of the circle."
+  },
+  {
+    "ref": "Misc Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "MODERATE",
+    "stem": "A window is in the form of a rectangle surmounted by a semicircular opening. The total perimeter of the window is 10 m. Find the dimensions of the window to admit maximum light through the whole opening."
+  },
+  {
+    "ref": "Misc Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "HARD",
+    "stem": "A point on the hypotenuse of a triangle is at distance \\(a\\) and \\(b\\) from the sides of the triangle. Show that the minimum length of the hypotenuse is \\(\\left(a^{\\frac{2}{3}} + b^{\\frac{2}{3}}\\right)^{\\frac{3}{2}}\\)."
+  },
+  {
+    "ref": "Misc Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "HARD",
+    "stem": "Find the points at which the function \\(f\\) given by \\(f(x) = (x-2)^4(x+1)^3\\) has (i) local maxima (ii) local minima (iii) point of inflexion."
+  },
+  {
+    "ref": "Misc Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Absolute Maximum and Minimum on a Closed Interval",
+    "difficulty": "MODERATE",
+    "stem": "Find the absolute maximum and minimum values of the function \\(f\\) given by \\(f(x) = \\cos^2 x + \\sin x\\), \\(x \\in [0, \\pi]\\)."
+  },
+  {
+    "ref": "Misc Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "HARD",
+    "stem": "Show that the altitude of the right circular cone of maximum volume that can be inscribed in a sphere of radius \\(r\\) is \\(\\frac{4r}{3}\\)."
+  },
+  {
+    "ref": "Misc Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Let \\(f\\) be a function defined on \\([a, b]\\) such that \\(f'(x) > 0\\), for all \\(x \\in (a, b)\\). Then prove that \\(f\\) is an increasing function on \\((a, b)\\).",
+    "_note": "This asks the student to PROVE the statement the chapter states as Theorem 1 in Section 6.2 without proof. The standard proof needs the Mean Value Theorem, which this chapter does not teach — worth knowing when the model answer is authored."
+  },
+  {
+    "ref": "Misc Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "HARD",
+    "stem": "Show that the height of the cylinder of maximum volume that can be inscribed in a sphere of radius R is \\(\\frac{2\\mathrm{R}}{\\sqrt{3}}\\). Also find the maximum volume."
+  },
+  {
+    "ref": "Misc Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "HARD",
+    "stem": "Show that height of the cylinder of greatest volume which can be inscribed in a right circular cone of height \\(h\\) and semi vertical angle \\(\\alpha\\) is one-third that of the cone and the greatest volume of cylinder is \\(\\frac{4}{27}\\pi h^3 \\tan^2\\alpha\\)."
+  },
+  {
+    "ref": "Misc Q16",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "EASY",
+    "stem": "A cylindrical tank of radius 10 m is being filled with wheat at the rate of 314 cubic metre per hour. Then the depth of the wheat is increasing at the rate of",
+    "options": [
+      { "label": "A", "text": "1 m/h" },
+      { "label": "B", "text": "0.1 m/h" },
+      { "label": "C", "text": "1.1 m/h" },
+      { "label": "D", "text": "0.5 m/h" }
+    ],
+    "answer": "A",
+    "_note": "The Miscellaneous Exercise prints NO 'Choose the correct answer' instruction line before this item — it is identified as an MCQ purely by its four-alternative shape. (Exercise 6.4 in the preceding band does print such a line.) Answer derived: \\(\\mathrm{V} = \\pi r^2 h = 100\\pi h\\), so \\(\\frac{d\\mathrm{V}}{dt} = 100\\pi\\frac{dh}{dt} = 314\\), giving \\(\\frac{dh}{dt} = \\frac{314}{100\\pi} = 1\\) m/h with \\(\\pi = 3.14\\)."
+  }
+]

@@ -67,11 +67,41 @@ routes to the exercise it precedes:
 with a phrase like *"is equal to"*, *"is"*, *"then"* and is followed by four alternatives
 labelled `(A) (B) (C) (D)`. Key on that SHAPE, never on an instruction line.
 
-### Set-grouping (only if a single numbered question has sub-items i)/ii)/iii))
+### A question that references a printed FIGURE
+
+Almost every `Fig N.M` in an NCERT chapter sits in the teaching prose and is expository —
+it illustrates the theory and no exercise question depends on it. Occasionally an
+EXERCISE question genuinely reads data off a printed figure (angles, a labelled vertex).
+That question is **unanswerable from its stem alone**, so it needs the figure cropped and
+attached later.
+
+When an exercise question you are transcribing refers to a figure, add:
+
+```jsonc
+"_figure": { "fig": "Fig 10.18", "page": 17 }   // page = the 0-based index of the page the FIGURE is printed on
+```
+
+The figure is not always on the page the question is on — a question at the foot of one
+page can read a figure printed overleaf. Give the page the **figure** is on, and say in
+your final message which refs carry `_figure`. Do NOT add `_figure` for a figure that
+merely illustrates a worked Example whose solution you have transcribed in full.
+
+### Set-grouping (only if a single numbered question has sub-items)
 Most NCERT exercise questions are standalone. If one question groups sub-items under a
 shared instruction, emit ONE row per sub-item, all sharing:
 `"context": "<the shared instruction>"`, `"setLabel": "Ex <c>.<k> Q<n>"`, and refs
 `"Ex <c>.<k> Q<n>(i)"`, `"(ii)"`, …. Otherwise omit `context`/`setLabel`.
+
+**Use the book's OWN sub-item labels** — NCERT prints `(a) (b) (c)` in some chapters and
+`(i) (ii) (iii)` in others, sometimes within one chapter. Follow the page; do not normalise
+to the roman form this brief happens to show.
+
+**A shared lead-in spanning several NUMBERED questions is not a set.** NCERT often prints
+one instruction over a run of numbered items — *"Find all points of discontinuity of f,
+where f is defined by"* covering Q6–Q12, or *"…in Exercises 26 to 29."*. Those are separate
+questions, so `context`/`setLabel` do not apply. **Fold the instruction into each stem**, or
+the row ships as a bare piecewise definition with nothing asked and is unanswerable on its
+own. `context`/`setLabel` are only for sub-items of a SINGLE numbered question.
 
 ## Transcription rules
 - **Math → LaTeX inside `\(...\)`** (inline). Never leave raw unicode math

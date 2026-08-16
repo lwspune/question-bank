@@ -1,0 +1,384 @@
+[
+  {
+    "id": "b47d1dd3-41a0-4905-bde6-9cdc304e102b",
+    "ref": "Ex 5.1 Q1",
+    "solution": "\\(f\\) is defined at every real point, and for any \\(c\\), \\(\\lim_{x \\to c} (5x - 3) = 5c - 3 = f(c)\\). Taking \\(c = 0\\): \\(\\lim_{x \\to 0} f(x) = -3 = f(0)\\). Taking \\(c = -3\\): \\(\\lim_{x \\to -3} f(x) = -18 = f(-3)\\). Taking \\(c = 5\\): \\(\\lim_{x \\to 5} f(x) = 22 = f(5)\\). In each case the limit equals the value, so \\(f\\) is continuous at \\(x = 0\\), at \\(x = -3\\) and at \\(x = 5\\)."
+  },
+  {
+    "id": "c63b80f9-3032-46de-81ee-ce238063f2dc",
+    "ref": "Ex 5.1 Q2",
+    "solution": "\\(f\\) is defined at \\(x = 3\\) with \\(f(3) = 2(3)^2 - 1 = 17\\). Also \\(\\lim_{x \\to 3} (2x^2 - 1) = 2(9) - 1 = 17\\). Since \\(\\lim_{x \\to 3} f(x) = f(3)\\), the function \\(f\\) is continuous at \\(x = 3\\)."
+  },
+  {
+    "id": "f74ab1a7-43f3-4324-b0ac-6eb8d2224d21",
+    "ref": "Ex 5.1 Q3(a)",
+    "solution": "The domain of \\(f\\) is \\(\\mathbb{R}\\). For any \\(c \\in \\mathbb{R}\\), \\(\\lim_{x \\to c} (x - 5) = c - 5 = f(c)\\). Hence \\(f\\) is continuous at every real number, i.e. \\(f\\) is continuous on \\(\\mathbb{R}\\)."
+  },
+  {
+    "id": "b79006a3-c4e9-4e7f-a1fc-0e10dfb6cb91",
+    "ref": "Ex 5.1 Q3(b)",
+    "solution": "The domain of \\(f\\) is \\(\\mathbb{R} - \\{5\\}\\). Let \\(c\\) be any point of the domain, so \\(c \\ne 5\\). Then \\(\\lim_{x \\to c} \\frac{1}{x - 5} = \\frac{1}{c - 5} = f(c)\\), since the denominator does not vanish at \\(c\\). Hence \\(f\\) is continuous at every point of its domain \\(\\mathbb{R} - \\{5\\}\\); the point \\(x = 5\\) is not a point of discontinuity because \\(f\\) is not defined there."
+  },
+  {
+    "id": "07fd04f1-d3db-4af2-a6ce-950972c0fcbc",
+    "ref": "Ex 5.1 Q3(c)",
+    "solution": "The domain of \\(f\\) is \\(\\mathbb{R} - \\{-5\\}\\), and for \\(x \\ne -5\\), \\(f(x) = \\frac{(x-5)(x+5)}{x+5} = x - 5\\). For any \\(c \\ne -5\\), \\(\\lim_{x \\to c} f(x) = c - 5 = f(c)\\). Hence \\(f\\) is continuous at every point of its domain \\(\\mathbb{R} - \\{-5\\}\\); \\(x = -5\\) is not in the domain, so it is not a point of discontinuity."
+  },
+  {
+    "id": "0d513cf8-952d-4614-859c-8f3cb7f7bea7",
+    "ref": "Ex 5.1 Q3(d)",
+    "solution": "Write \\(f(x) = |x - 5| = \\begin{cases} 5 - x, & x < 5 \\\\ x - 5, & x \\ge 5 \\end{cases}\\). For \\(c < 5\\) and for \\(c > 5\\), \\(f\\) agrees with a polynomial near \\(c\\), so \\(\\lim_{x \\to c} f(x) = f(c)\\). At \\(c = 5\\): the left limit is \\(\\lim_{x \\to 5^-}(5 - x) = 0\\), the right limit is \\(\\lim_{x \\to 5^+}(x - 5) = 0\\), and \\(f(5) = 0\\). All three agree, so \\(f\\) is continuous at \\(x = 5\\) as well. Hence \\(f\\) is continuous on \\(\\mathbb{R}\\)."
+  },
+  {
+    "id": "9f69b2b5-ce5d-4b03-8034-5debd44671eb",
+    "ref": "Ex 5.1 Q4",
+    "solution": "\\(f(x) = x^n\\) is defined for all real \\(x\\), and \\(f(n) = n^n\\). Using the algebra of limits repeatedly, \\(\\lim_{x \\to n} x^n = \\left(\\lim_{x \\to n} x\\right)^n = n^n\\). Since \\(\\lim_{x \\to n} f(x) = n^n = f(n)\\), the function \\(f(x) = x^n\\) is continuous at \\(x = n\\)."
+  },
+  {
+    "id": "aafc78cc-8a60-4c3a-aaad-faab8b4ce4e6",
+    "ref": "Ex 5.1 Q5",
+    "solution": "At \\(x = 0\\): here \\(0 < 1\\), and for all \\(x\\) near \\(0\\) we have \\(x \\le 1\\), so \\(f(x) = x\\) near \\(0\\). Then \\(\\lim_{x \\to 0} f(x) = 0 = f(0)\\), so \\(f\\) is continuous at \\(x = 0\\).\n\nAt \\(x = 1\\): \\(\\lim_{x \\to 1^-} f(x) = \\lim_{x \\to 1^-} x = 1\\) and \\(\\lim_{x \\to 1^+} f(x) = \\lim_{x \\to 1^+} 5 = 5\\). The two one-sided limits are unequal, so \\(\\lim_{x \\to 1} f(x)\\) does not exist and \\(f\\) is not continuous at \\(x = 1\\).\n\nAt \\(x = 2\\): here \\(2 > 1\\), and \\(f(x) = 5\\) for all \\(x\\) near \\(2\\), so \\(\\lim_{x \\to 2} f(x) = 5 = f(2)\\) and \\(f\\) is continuous at \\(x = 2\\).\n\nHence \\(f\\) is continuous at \\(x = 0\\) and at \\(x = 2\\), but not continuous at \\(x = 1\\)."
+  },
+  {
+    "id": "6970e8ab-cf34-4467-b583-1937986dbeee",
+    "ref": "Ex 5.1 Q6",
+    "solution": "For \\(x < 2\\) and for \\(x > 2\\), \\(f\\) coincides with a polynomial in a neighbourhood of the point, so \\(f\\) is continuous at every \\(x \\ne 2\\). At \\(x = 2\\): \\(\\lim_{x \\to 2^-} f(x) = \\lim_{x \\to 2^-}(2x + 3) = 7\\) and \\(f(2) = 7\\), while \\(\\lim_{x \\to 2^+} f(x) = \\lim_{x \\to 2^+}(2x - 3) = 1\\). Since \\(7 \\ne 1\\), the limit does not exist at \\(x = 2\\). Hence \\(x = 2\\) is the only point of discontinuity of \\(f\\)."
+  },
+  {
+    "id": "cab73466-21e0-4975-a146-d2401bef866f",
+    "ref": "Ex 5.1 Q7",
+    "solution": "On \\(x < -3\\), on \\(-3 < x < 3\\) and on \\(x > 3\\) the function agrees with a polynomial (note \\(|x| = -x\\) for \\(x \\le -3\\)), so it is continuous at every point of those open intervals. Only \\(x = -3\\) and \\(x = 3\\) need checking.\n\nAt \\(x = -3\\): \\(\\lim_{x \\to -3^-} (|x| + 3) = 3 + 3 = 6\\), \\(f(-3) = |-3| + 3 = 6\\), and \\(\\lim_{x \\to -3^+} (-2x) = 6\\). All three agree, so \\(f\\) is continuous at \\(x = -3\\).\n\nAt \\(x = 3\\): \\(\\lim_{x \\to 3^-} (-2x) = -6\\), while \\(\\lim_{x \\to 3^+}(6x + 2) = 20 = f(3)\\). Since \\(-6 \\ne 20\\), \\(f\\) is discontinuous at \\(x = 3\\).\n\nHence \\(x = 3\\) is the only point of discontinuity of \\(f\\)."
+  },
+  {
+    "id": "ca74ef5d-9499-4202-96c8-9cdde5cd2065",
+    "ref": "Ex 5.1 Q8",
+    "solution": "For \\(x < 0\\), \\(f(x) = \\frac{-x}{x} = -1\\); for \\(x > 0\\), \\(f(x) = \\frac{x}{x} = 1\\). So \\(f\\) is constant near any \\(c \\ne 0\\) and is therefore continuous at every \\(c \\ne 0\\). At \\(x = 0\\): \\(\\lim_{x \\to 0^-} f(x) = -1\\) and \\(\\lim_{x \\to 0^+} f(x) = 1\\). The one-sided limits differ, so \\(\\lim_{x \\to 0} f(x)\\) does not exist. Hence \\(x = 0\\) is the only point of discontinuity of \\(f\\)."
+  },
+  {
+    "id": "89c5b784-dc5a-4668-b0b9-54fd96bf0ee3",
+    "ref": "Ex 5.1 Q9",
+    "solution": "For \\(x < 0\\), \\(|x| = -x\\), so \\(f(x) = \\frac{x}{-x} = -1\\). For \\(x \\ge 0\\), \\(f(x) = -1\\) by definition. Hence \\(f(x) = -1\\) for every real \\(x\\), i.e. \\(f\\) is the constant function \\(-1\\). A constant function satisfies \\(\\lim_{x \\to c} f(x) = -1 = f(c)\\) at every \\(c\\), so \\(f\\) is continuous on \\(\\mathbb{R}\\) and has no point of discontinuity."
+  },
+  {
+    "id": "5f5dd7c1-11e3-4106-b3c2-e6b5a4e73277",
+    "ref": "Ex 5.1 Q10",
+    "solution": "At every \\(c \\ne 1\\) the function agrees with a polynomial near \\(c\\), hence is continuous there. At \\(x = 1\\): \\(\\lim_{x \\to 1^-} (x^2 + 1) = 2\\), \\(\\lim_{x \\to 1^+} (x + 1) = 2\\) and \\(f(1) = 1 + 1 = 2\\). All three are equal, so \\(f\\) is continuous at \\(x = 1\\) too. Hence \\(f\\) is continuous on \\(\\mathbb{R}\\) and has no point of discontinuity."
+  },
+  {
+    "id": "74ea5a3e-70a5-4b30-94c1-2c9bd2bd6017",
+    "ref": "Ex 5.1 Q11",
+    "solution": "At every \\(c \\ne 2\\) the function agrees with a polynomial near \\(c\\), hence is continuous there. At \\(x = 2\\): \\(\\lim_{x \\to 2^-} (x^3 - 3) = 8 - 3 = 5\\), \\(f(2) = 5\\), and \\(\\lim_{x \\to 2^+} (x^2 + 1) = 4 + 1 = 5\\). All three agree, so \\(f\\) is continuous at \\(x = 2\\) as well. Hence \\(f\\) is continuous on \\(\\mathbb{R}\\) and has no point of discontinuity."
+  },
+  {
+    "id": "f3f9bb6d-696f-4b0d-b0b0-b01181e6072c",
+    "ref": "Ex 5.1 Q12",
+    "solution": "At every \\(c \\ne 1\\) the function agrees with a polynomial near \\(c\\), hence is continuous there. At \\(x = 1\\): \\(\\lim_{x \\to 1^-} (x^{10} - 1) = 1 - 1 = 0\\) and \\(f(1) = 0\\), while \\(\\lim_{x \\to 1^+} x^2 = 1\\). Since \\(0 \\ne 1\\), the limit does not exist at \\(x = 1\\). Hence \\(x = 1\\) is the only point of discontinuity of \\(f\\)."
+  },
+  {
+    "id": "f183967f-44c8-45a9-a499-ddb8ff9bc579",
+    "ref": "Ex 5.1 Q13",
+    "solution": "At every \\(c \\ne 1\\) the function agrees with a polynomial near \\(c\\), so it is continuous there. At \\(x = 1\\): \\(\\lim_{x \\to 1^-} (x + 5) = 6 = f(1)\\), whereas \\(\\lim_{x \\to 1^+} (x - 5) = -4\\). Since \\(6 \\ne -4\\), \\(\\lim_{x \\to 1} f(x)\\) does not exist and \\(f\\) is discontinuous at \\(x = 1\\). Hence \\(f\\) is not a continuous function: it is continuous at every point except \\(x = 1\\)."
+  },
+  {
+    "id": "fbe62d63-b921-4e1a-9c9a-8816bda40a75",
+    "ref": "Ex 5.1 Q14",
+    "solution": "The domain of \\(f\\) is \\([0, 10]\\), and on each of \\([0,1)\\), \\((1,3)\\) and \\((3,10]\\) the function is constant, hence continuous there. Only \\(x = 1\\) and \\(x = 3\\) need checking.\n\nAt \\(x = 1\\): \\(\\lim_{x \\to 1^-} f(x) = 3 = f(1)\\) but \\(\\lim_{x \\to 1^+} f(x) = 4\\). The one-sided limits differ, so \\(f\\) is discontinuous at \\(x = 1\\).\n\nAt \\(x = 3\\): \\(\\lim_{x \\to 3^-} f(x) = 4\\) but \\(\\lim_{x \\to 3^+} f(x) = 5 = f(3)\\). Again they differ, so \\(f\\) is discontinuous at \\(x = 3\\).\n\nHence \\(f\\) is continuous at every point of \\([0,10]\\) except \\(x = 1\\) and \\(x = 3\\)."
+  },
+  {
+    "id": "ff3e5979-e6a3-454e-84c0-0ed14117c347",
+    "ref": "Ex 5.1 Q15",
+    "solution": "On \\(x < 0\\), on \\(0 < x < 1\\) and on \\(x > 1\\) the function agrees with a polynomial, hence is continuous there. Only \\(x = 0\\) and \\(x = 1\\) need checking.\n\nAt \\(x = 0\\): \\(\\lim_{x \\to 0^-} 2x = 0\\), \\(f(0) = 0\\), and \\(\\lim_{x \\to 0^+} 0 = 0\\). All three agree, so \\(f\\) is continuous at \\(x = 0\\).\n\nAt \\(x = 1\\): \\(\\lim_{x \\to 1^-} f(x) = 0\\) and \\(f(1) = 0\\), but \\(\\lim_{x \\to 1^+} 4x = 4\\). Since \\(0 \\ne 4\\), \\(f\\) is discontinuous at \\(x = 1\\).\n\nHence \\(f\\) is continuous at every real point except \\(x = 1\\)."
+  },
+  {
+    "id": "b53ca246-497f-44b8-8535-45db78e19a52",
+    "ref": "Ex 5.1 Q16",
+    "solution": "On \\(x < -1\\), on \\(-1 < x < 1\\) and on \\(x > 1\\) the function agrees with a polynomial, hence is continuous there. Only \\(x = -1\\) and \\(x = 1\\) need checking.\n\nAt \\(x = -1\\): \\(\\lim_{x \\to -1^-} (-2) = -2\\), \\(f(-1) = -2\\), and \\(\\lim_{x \\to -1^+} 2x = -2\\). All three agree, so \\(f\\) is continuous at \\(x = -1\\).\n\nAt \\(x = 1\\): \\(\\lim_{x \\to 1^-} 2x = 2\\), \\(f(1) = 2(1) = 2\\), and \\(\\lim_{x \\to 1^+} 2 = 2\\). All three agree, so \\(f\\) is continuous at \\(x = 1\\).\n\nHence \\(f\\) is continuous at every real point, i.e. \\(f\\) is continuous on \\(\\mathbb{R}\\) with no point of discontinuity."
+  },
+  {
+    "id": "b6576f9c-ce5f-4c7b-91eb-a7da5150ef67",
+    "ref": "Ex 5.1 Q17",
+    "solution": "Continuity at \\(x = 3\\) requires the left limit, the right limit and the value to agree. Here \\(\\lim_{x \\to 3^-} f(x) = 3a + 1 = f(3)\\) and \\(\\lim_{x \\to 3^+} f(x) = 3b + 3\\). Equating, \\(3a + 1 = 3b + 3\\), so \\(3a - 3b = 2\\). Hence the required relationship is \\(a = b + \\frac{2}{3}\\)."
+  },
+  {
+    "id": "13cec376-9da8-4fcd-bf1d-9799d4acbf01",
+    "ref": "Ex 5.1 Q18",
+    "solution": "At \\(x = 0\\): \\(\\lim_{x \\to 0^-} \\lambda(x^2 - 2x) = \\lambda(0 - 0) = 0\\), and \\(f(0) = \\lambda(0) = 0\\), while \\(\\lim_{x \\to 0^+} (4x + 1) = 1\\). The left limit is \\(0\\) for every \\(\\lambda\\) and the right limit is \\(1\\), so they can never be equal. Hence there is no value of \\(\\lambda\\) for which \\(f\\) is continuous at \\(x = 0\\).\n\nAt \\(x = 1\\): since \\(1 > 0\\), \\(f(x) = 4x + 1\\) for all \\(x\\) near \\(1\\), so \\(\\lim_{x \\to 1} f(x) = 5 = f(1)\\). Hence \\(f\\) is continuous at \\(x = 1\\) for every value of \\(\\lambda\\)."
+  },
+  {
+    "id": "b8177a19-d326-418d-8071-65a7056092e5",
+    "ref": "Ex 5.1 Q19",
+    "solution": "Let \\(c\\) be any integer. For \\(x\\) slightly less than \\(c\\) we have \\(c - 1 \\le x < c\\), so \\([x] = c - 1\\) and \\(g(x) = x - (c-1)\\); hence \\(\\lim_{x \\to c^-} g(x) = c - (c - 1) = 1\\). For \\(x\\) slightly greater than \\(c\\) (and less than \\(c+1\\)) we have \\([x] = c\\), so \\(g(x) = x - c\\); hence \\(\\lim_{x \\to c^+} g(x) = 0\\). Also \\(g(c) = c - c = 0\\). Since \\(\\lim_{x \\to c^-} g(x) = 1 \\ne 0 = \\lim_{x \\to c^+} g(x)\\), the limit \\(\\lim_{x \\to c} g(x)\\) does not exist. Hence \\(g(x) = x - [x]\\) is discontinuous at every integral point."
+  },
+  {
+    "id": "e5cb0e23-03e8-4098-a622-b74d5cd54077",
+    "ref": "Ex 5.1 Q20",
+    "solution": "\\(x^2\\) is a polynomial and \\(\\sin x\\) is continuous on \\(\\mathbb{R}\\), so their difference plus a constant is continuous everywhere; in particular \\(\\lim_{x \\to \\pi} f(x) = \\pi^2 - \\sin \\pi + 5 = \\pi^2 + 5\\). Also \\(f(\\pi) = \\pi^2 - \\sin\\pi + 5 = \\pi^2 + 5\\). Since the limit equals the value, yes, \\(f\\) is continuous at \\(x = \\pi\\)."
+  },
+  {
+    "id": "3c6114c1-b74d-4077-8d08-9d2aaf15af7b",
+    "ref": "Ex 5.1 Q21(a)",
+    "solution": "Both \\(g(x) = \\sin x\\) and \\(h(x) = \\cos x\\) are continuous at every real number. By the algebra of continuous functions, the sum of two functions continuous at a point is continuous at that point. Hence \\(f(x) = \\sin x + \\cos x\\) is continuous on \\(\\mathbb{R}\\)."
+  },
+  {
+    "id": "a39ed31d-3ee9-45a2-a531-a011275b3b42",
+    "ref": "Ex 5.1 Q21(b)",
+    "solution": "Both \\(g(x) = \\sin x\\) and \\(h(x) = \\cos x\\) are continuous at every real number. By the algebra of continuous functions, the difference of two functions continuous at a point is continuous at that point. Hence \\(f(x) = \\sin x - \\cos x\\) is continuous on \\(\\mathbb{R}\\)."
+  },
+  {
+    "id": "5c59f63e-1da2-4c78-a1b4-4e80a6ff91f2",
+    "ref": "Ex 5.1 Q21(c)",
+    "solution": "Both \\(g(x) = \\sin x\\) and \\(h(x) = \\cos x\\) are continuous at every real number. By the algebra of continuous functions, the product of two functions continuous at a point is continuous at that point. Hence \\(f(x) = \\sin x \\cdot \\cos x\\) is continuous on \\(\\mathbb{R}\\)."
+  },
+  {
+    "id": "9390eda0-021c-4ea1-876b-9dc29e9e4a93",
+    "ref": "Ex 5.1 Q22",
+    "solution": "Take as known that \\(\\sin x\\) and \\(\\cos x\\) are continuous on \\(\\mathbb{R}\\), and that a quotient of continuous functions is continuous wherever the denominator is non-zero.\n\nCosine: \\(\\cos x\\) is defined and continuous at every real number, so it is continuous on \\(\\mathbb{R}\\).\n\nCosecant: \\(\\csc x = \\frac{1}{\\sin x}\\) is defined where \\(\\sin x \\ne 0\\), i.e. for \\(x \\ne n\\pi\\). It is continuous at every point of that domain \\(\\mathbb{R} - \\{n\\pi : n \\in \\mathbb{Z}\\}\\).\n\nSecant: \\(\\sec x = \\frac{1}{\\cos x}\\) is defined where \\(\\cos x \\ne 0\\), i.e. for \\(x \\ne (2n+1)\\frac{\\pi}{2}\\). It is continuous at every point of that domain.\n\nCotangent: \\(\\cot x = \\frac{\\cos x}{\\sin x}\\) is defined where \\(\\sin x \\ne 0\\), i.e. for \\(x \\ne n\\pi\\). It is continuous at every point of that domain.\n\nHence all four functions are continuous throughout their respective domains, cosine being continuous on all of \\(\\mathbb{R}\\), while cosecant and cotangent are undefined at \\(x = n\\pi\\) and secant is undefined at \\(x = (2n+1)\\frac{\\pi}{2}\\), \\(n \\in \\mathbb{Z}\\)."
+  },
+  {
+    "id": "86a72496-cb73-4007-9fa9-2a4dda592f07",
+    "ref": "Ex 5.1 Q23",
+    "solution": "For \\(x < 0\\), \\(f\\) is a quotient of continuous functions with non-zero denominator, hence continuous; for \\(x > 0\\), \\(f\\) is a polynomial, hence continuous. At \\(x = 0\\): \\(\\lim_{x \\to 0^-} \\frac{\\sin x}{x} = 1\\), \\(\\lim_{x \\to 0^+} (x + 1) = 1\\), and \\(f(0) = 0 + 1 = 1\\). All three agree, so \\(f\\) is continuous at \\(x = 0\\) too. Hence \\(f\\) is continuous on \\(\\mathbb{R}\\) and has no point of discontinuity."
+  },
+  {
+    "id": "bbce0bbc-7f38-4426-9494-274cc1452709",
+    "ref": "Ex 5.1 Q24",
+    "solution": "For \\(x \\ne 0\\), \\(f\\) is a product of \\(x^2\\) and \\(\\sin\\frac{1}{x}\\), both continuous there, so \\(f\\) is continuous at every \\(x \\ne 0\\). At \\(x = 0\\), use \\(\\left|\\sin\\frac{1}{x}\\right| \\le 1\\), so \\(0 \\le \\left|x^2 \\sin\\frac{1}{x}\\right| \\le x^2\\). As \\(x \\to 0\\), \\(x^2 \\to 0\\), so by the sandwich theorem \\(\\lim_{x \\to 0} x^2\\sin\\frac{1}{x} = 0 = f(0)\\). Hence \\(f\\) is continuous at \\(x = 0\\) as well, and \\(f\\) is a continuous function on \\(\\mathbb{R}\\)."
+  },
+  {
+    "id": "0afe2ba6-8fdb-4819-8aa1-c16badb2b8d5",
+    "ref": "Ex 5.1 Q25",
+    "solution": "For \\(x \\ne 0\\), \\(f(x) = \\sin x - \\cos x\\) is a difference of continuous functions, hence continuous. At \\(x = 0\\): \\(\\lim_{x \\to 0} (\\sin x - \\cos x) = 0 - 1 = -1\\), and \\(f(0) = -1\\). Since the limit equals the value, \\(f\\) is continuous at \\(x = 0\\) too. Hence \\(f\\) is continuous at every real number, i.e. \\(f\\) is continuous on \\(\\mathbb{R}\\)."
+  },
+  {
+    "id": "e2383ee1-2085-4426-a3df-72b8b3b96e8d",
+    "ref": "Ex 5.1 Q26",
+    "solution": "Put \\(x = \\frac{\\pi}{2} + h\\), so that \\(h \\to 0\\) as \\(x \\to \\frac{\\pi}{2}\\). Then \\(\\cos x = \\cos\\left(\\frac{\\pi}{2} + h\\right) = -\\sin h\\) and \\(\\pi - 2x = -2h\\), so \\(\\frac{k\\cos x}{\\pi - 2x} = \\frac{-k\\sin h}{-2h} = \\frac{k}{2}\\cdot\\frac{\\sin h}{h}\\). Hence \\(\\lim_{x \\to \\pi/2} f(x) = \\frac{k}{2}\\cdot 1 = \\frac{k}{2}\\). Continuity at \\(x = \\frac{\\pi}{2}\\) requires this to equal \\(f\\!\\left(\\frac{\\pi}{2}\\right) = 3\\), so \\(\\frac{k}{2} = 3\\). Hence \\(k = 6\\)."
+  },
+  {
+    "id": "2817ca23-901f-41ca-94b2-bcbe14f6b6f5",
+    "ref": "Ex 5.1 Q27",
+    "solution": "Here \\(\\lim_{x \\to 2^-} kx^2 = 4k = f(2)\\) and \\(\\lim_{x \\to 2^+} 3 = 3\\). Continuity at \\(x = 2\\) requires \\(4k = 3\\). Hence \\(k = \\frac{3}{4}\\)."
+  },
+  {
+    "id": "51d6161d-1330-4d8d-b203-e0178074a772",
+    "ref": "Ex 5.1 Q28",
+    "solution": "Here \\(\\lim_{x \\to \\pi^-}(kx + 1) = k\\pi + 1 = f(\\pi)\\) and \\(\\lim_{x \\to \\pi^+}\\cos x = \\cos\\pi = -1\\). Continuity at \\(x = \\pi\\) requires \\(k\\pi + 1 = -1\\), so \\(k\\pi = -2\\). Hence \\(k = -\\frac{2}{\\pi}\\)."
+  },
+  {
+    "id": "e8d14cac-4c4e-450c-8d1b-560b59f2a330",
+    "ref": "Ex 5.1 Q29",
+    "solution": "Here \\(\\lim_{x \\to 5^-}(kx + 1) = 5k + 1 = f(5)\\) and \\(\\lim_{x \\to 5^+}(3x - 5) = 10\\). Continuity at \\(x = 5\\) requires \\(5k + 1 = 10\\), so \\(5k = 9\\). Hence \\(k = \\frac{9}{5}\\)."
+  },
+  {
+    "id": "63b04b30-1c92-49cf-addf-88bd9e006557",
+    "ref": "Ex 5.1 Q30",
+    "solution": "Away from \\(x = 2\\) and \\(x = 10\\) the function is constant or linear, hence continuous, so continuity is only a condition at those two points.\n\nAt \\(x = 2\\): \\(\\lim_{x \\to 2^-} f(x) = 5 = f(2)\\) and \\(\\lim_{x \\to 2^+} f(x) = 2a + b\\), so \\(2a + b = 5\\).\n\nAt \\(x = 10\\): \\(\\lim_{x \\to 10^-} f(x) = 10a + b\\) and \\(f(10) = 21\\), so \\(10a + b = 21\\).\n\nSubtracting the first from the second gives \\(8a = 16\\), so \\(a = 2\\), and then \\(b = 5 - 2(2) = 1\\). Hence \\(a = 2\\) and \\(b = 1\\)."
+  },
+  {
+    "id": "553175f3-76b2-4c2c-961e-feff9219bf00",
+    "ref": "Ex 5.1 Q31",
+    "solution": "Let \\(g(x) = x^2\\) and \\(h(t) = \\cos t\\). Then \\(f = h \\circ g\\). The polynomial \\(g\\) is continuous on \\(\\mathbb{R}\\) and \\(h\\) is continuous on \\(\\mathbb{R}\\). Since the composite of two continuous functions is continuous, \\(f(x) = (h \\circ g)(x) = \\cos(x^2)\\) is continuous at every real number. Hence \\(f(x) = \\cos(x^2)\\) is a continuous function."
+  },
+  {
+    "id": "09ed6333-da2a-40b5-9cce-48afa27e5ec3",
+    "ref": "Ex 5.1 Q32",
+    "solution": "Let \\(g(x) = \\cos x\\) and \\(h(t) = |t|\\). Then \\(f = h \\circ g\\). Now \\(g\\) is continuous on \\(\\mathbb{R}\\), and \\(h(t) = |t|\\) is continuous on \\(\\mathbb{R}\\) (for \\(t < 0\\) and \\(t > 0\\) it agrees with \\(-t\\) and \\(t\\), and at \\(t = 0\\) both one-sided limits and the value are \\(0\\)). Since the composite of continuous functions is continuous, \\(f(x) = |\\cos x|\\) is continuous at every real number. Hence \\(f(x) = |\\cos x|\\) is a continuous function."
+  },
+  {
+    "id": "45d11274-6145-4368-b263-f9c1ccf6afaa",
+    "ref": "Ex 5.1 Q33",
+    "solution": "Let \\(g(x) = |x|\\) and \\(h(t) = \\sin t\\), so that \\(\\sin|x| = (h \\circ g)(x)\\). Now \\(g(x) = |x|\\) is continuous on \\(\\mathbb{R}\\) (it agrees with \\(-x\\) for \\(x < 0\\) and \\(x\\) for \\(x > 0\\), and at \\(x = 0\\) both one-sided limits and the value are \\(0\\)), and \\(h(t) = \\sin t\\) is continuous on \\(\\mathbb{R}\\). Since the composite of continuous functions is continuous, \\(\\sin|x|\\) is continuous at every real number. Hence \\(\\sin|x|\\) is a continuous function."
+  },
+  {
+    "id": "ba9bed61-014f-4985-a10d-35fc4efd5016",
+    "ref": "Ex 5.1 Q34",
+    "solution": "The functions \\(g(x) = |x|\\) and \\(h(x) = |x + 1|\\) are each continuous on \\(\\mathbb{R}\\), being composites of the continuous absolute-value function with polynomials. By the algebra of continuous functions their difference is continuous at every real number. (Writing \\(f\\) piecewise, \\(f(x) = 1\\) for \\(x \\le -1\\), \\(f(x) = -2x - 1\\) for \\(-1 < x < 0\\) and \\(f(x) = -1\\) for \\(x \\ge 0\\); at \\(x = -1\\) both one-sided limits and the value are \\(1\\), and at \\(x = 0\\) both one-sided limits and the value are \\(-1\\).) Hence \\(f\\) is continuous on \\(\\mathbb{R}\\) and there is no point of discontinuity."
+  },
+  {
+    "id": "1e818c1d-ca76-44df-a2cb-47bb49abec35",
+    "ref": "Ex 5.2 Q1",
+    "solution": "Put \\(u = x^2 + 5\\), so the function is \\(\\sin u\\). By the chain rule \\(\\frac{d}{dx}\\sin u = \\cos u \\cdot \\frac{du}{dx}\\), and \\(\\frac{du}{dx} = 2x\\). Hence \\(\\frac{d}{dx}\\sin(x^2 + 5) = 2x\\cos(x^2 + 5)\\)."
+  },
+  {
+    "id": "3b86e159-3226-455a-b0fc-301984436d0c",
+    "ref": "Ex 5.2 Q2",
+    "solution": "Put \\(u = \\sin x\\), so the function is \\(\\cos u\\). By the chain rule \\(\\frac{d}{dx}\\cos u = -\\sin u \\cdot \\frac{du}{dx}\\), and \\(\\frac{du}{dx} = \\cos x\\). Hence \\(\\frac{d}{dx}\\cos(\\sin x) = -\\cos x \\, \\sin(\\sin x)\\)."
+  },
+  {
+    "id": "ee74761a-eef5-494b-bbec-24e42b9a2c2b",
+    "ref": "Ex 5.2 Q3",
+    "solution": "Put \\(u = ax + b\\), so the function is \\(\\sin u\\) with \\(\\frac{du}{dx} = a\\). By the chain rule, \\(\\frac{d}{dx}\\sin(ax+b) = \\cos u \\cdot a\\). Hence \\(\\frac{d}{dx}\\sin(ax + b) = a\\cos(ax + b)\\)."
+  },
+  {
+    "id": "cdafa3e7-fbf4-4323-85af-1183428be391",
+    "ref": "Ex 5.2 Q4",
+    "solution": "Apply the chain rule to the three-fold composite \\(\\sec \\to \\tan \\to \\sqrt{\\ }\\). With \\(u = \\sqrt{x}\\) and \\(v = \\tan u\\), the function is \\(\\sec v\\), and \\(\\frac{d}{dx}\\sec v = \\sec v \\tan v \\cdot \\frac{dv}{du}\\cdot\\frac{du}{dx}\\), where \\(\\frac{dv}{du} = \\sec^2 u\\) and \\(\\frac{du}{dx} = \\frac{1}{2\\sqrt{x}}\\). Hence \\(\\frac{d}{dx}\\sec(\\tan\\sqrt{x}) = \\frac{\\sec(\\tan\\sqrt{x})\\,\\tan(\\tan\\sqrt{x})\\,\\sec^2\\sqrt{x}}{2\\sqrt{x}}\\)."
+  },
+  {
+    "id": "b5468080-185b-45cc-9211-9575c84a07c7",
+    "ref": "Ex 5.2 Q5",
+    "solution": "Use the quotient rule with \\(u = \\sin(ax+b)\\) and \\(v = \\cos(cx+d)\\), so \\(u' = a\\cos(ax+b)\\) and \\(v' = -c\\sin(cx+d)\\) by the chain rule. Then \\(\\frac{d}{dx}\\frac{u}{v} = \\frac{u'v - uv'}{v^2} = \\frac{a\\cos(ax+b)\\cos(cx+d) + c\\sin(ax+b)\\sin(cx+d)}{\\cos^2(cx+d)}\\). Hence the derivative is \\(\\frac{a\\cos(ax+b)\\cos(cx+d) + c\\,\\sin(ax+b)\\sin(cx+d)}{\\cos^2(cx+d)}\\), valid where \\(\\cos(cx+d) \\ne 0\\)."
+  },
+  {
+    "id": "4932b909-525a-4869-9969-2c6b9c925182",
+    "ref": "Ex 5.2 Q6",
+    "solution": "Use the product rule with \\(u = \\cos x^3\\) and \\(v = \\sin^2(x^5)\\). By the chain rule \\(u' = -3x^2\\sin x^3\\), and \\(v' = 2\\sin(x^5)\\cos(x^5)\\cdot 5x^4 = 10x^4\\sin(x^5)\\cos(x^5)\\). Hence \\(\\frac{d}{dx}\\left[\\cos x^3 \\cdot \\sin^2(x^5)\\right] = 10x^4\\cos x^3 \\sin(x^5)\\cos(x^5) - 3x^2 \\sin x^3 \\sin^2(x^5)\\)."
+  },
+  {
+    "id": "5ea20125-6510-4104-a44b-1a5b3c630656",
+    "ref": "Ex 5.2 Q7",
+    "solution": "Let \\(y = 2\\sqrt{\\cot(x^2)}\\). By the chain rule, \\(\\frac{dy}{dx} = 2\\cdot\\frac{1}{2\\sqrt{\\cot(x^2)}}\\cdot\\frac{d}{dx}\\cot(x^2) = \\frac{1}{\\sqrt{\\cot(x^2)}}\\cdot\\left(-\\csc^2(x^2)\\right)\\cdot 2x\\). Hence \\(\\frac{dy}{dx} = \\frac{-2x\\,\\csc^2(x^2)}{\\sqrt{\\cot(x^2)}}\\), which may also be written as \\(\\frac{-2\\sqrt{2}\\,x}{\\sin(x^2)\\sqrt{\\sin(2x^2)}}\\)."
+  },
+  {
+    "id": "67c7017e-48e1-4120-a092-44243cc2089c",
+    "ref": "Ex 5.2 Q8",
+    "solution": "Put \\(u = \\sqrt{x}\\), so the function is \\(\\cos u\\) with \\(\\frac{du}{dx} = \\frac{1}{2\\sqrt{x}}\\). By the chain rule \\(\\frac{d}{dx}\\cos\\sqrt{x} = -\\sin u \\cdot \\frac{du}{dx}\\). Hence \\(\\frac{d}{dx}\\cos(\\sqrt{x}) = \\frac{-\\sin\\sqrt{x}}{2\\sqrt{x}}\\), for \\(x > 0\\)."
+  },
+  {
+    "id": "98e7ea6b-2aca-4114-bd9f-ac12548dbb46",
+    "ref": "Ex 5.2 Q9",
+    "solution": "Here \\(f(1) = 0\\), so the two one-sided derivatives at \\(x = 1\\) are \\(\\lim_{h \\to 0}\\frac{f(1+h) - f(1)}{h} = \\lim_{h \\to 0}\\frac{|h|}{h}\\).\n\nLeft-hand derivative: for \\(h < 0\\), \\(|h| = -h\\), so \\(\\frac{|h|}{h} = -1\\) and \\(\\lim_{h \\to 0^-}\\frac{|h|}{h} = -1\\).\n\nRight-hand derivative: for \\(h > 0\\), \\(|h| = h\\), so \\(\\frac{|h|}{h} = 1\\) and \\(\\lim_{h \\to 0^+}\\frac{|h|}{h} = 1\\).\n\nSince \\(-1 \\ne 1\\), the limit \\(\\lim_{h \\to 0}\\frac{f(1+h)-f(1)}{h}\\) does not exist. Hence \\(f(x) = |x - 1|\\) is not differentiable at \\(x = 1\\)."
+  },
+  {
+    "id": "2224bfa4-ee2b-4184-8c9e-7ca732b8d684",
+    "ref": "Ex 5.2 Q10",
+    "solution": "At \\(x = 1\\), \\(f(1) = [1] = 1\\). For small \\(h > 0\\), \\([1+h] = 1\\), so the right-hand derivative is \\(\\lim_{h \\to 0^+}\\frac{1 - 1}{h} = 0\\). For small \\(h < 0\\), \\([1+h] = 0\\), so the difference quotient is \\(\\frac{0 - 1}{h} = \\frac{-1}{h}\\), which tends to \\(+\\infty\\) as \\(h \\to 0^-\\); the left-hand derivative does not exist (finitely). Hence \\(f\\) is not differentiable at \\(x = 1\\).\n\nAt \\(x = 2\\), \\(f(2) = 2\\). For small \\(h > 0\\), \\([2+h] = 2\\), so the right-hand derivative is \\(\\lim_{h \\to 0^+}\\frac{2-2}{h} = 0\\). For small \\(h < 0\\), \\([2+h] = 1\\), so the difference quotient is \\(\\frac{1-2}{h} = \\frac{-1}{h} \\to +\\infty\\) as \\(h \\to 0^-\\), and the left-hand derivative does not exist. Hence \\(f\\) is not differentiable at \\(x = 2\\).\n\n(Equivalently, \\(f\\) is discontinuous at \\(x = 1\\) and \\(x = 2\\), and a function that is not continuous at a point cannot be differentiable there.) Therefore the greatest integer function \\(f(x) = [x]\\) on \\(0 < x < 3\\) is not differentiable at \\(x = 1\\) and \\(x = 2\\)."
+  },
+  {
+    "id": "41770110-0013-4c12-bc98-5decd5cd3f35",
+    "ref": "Misc Q1",
+    "solution": "Put \\(u = 3x^2 - 9x + 5\\), so the function is \\(u^9\\) with \\(\\frac{du}{dx} = 6x - 9\\). By the chain rule, \\(\\frac{d}{dx}u^9 = 9u^8\\frac{du}{dx} = 9(3x^2-9x+5)^8(6x-9)\\). Hence the derivative is \\(27(3x^2 - 9x + 5)^8(2x - 3)\\)."
+  },
+  {
+    "id": "dfe6b1c0-ff62-4c2c-8795-e6d79cb15e97",
+    "ref": "Misc Q2",
+    "solution": "Differentiate term by term using the chain rule: \\(\\frac{d}{dx}\\sin^3 x = 3\\sin^2 x\\cos x\\) and \\(\\frac{d}{dx}\\cos^6 x = 6\\cos^5 x(-\\sin x) = -6\\sin x\\cos^5 x\\). Adding, the derivative is \\(3\\sin^2 x\\cos x - 6\\sin x\\cos^5 x = 3\\sin x\\cos x\\left(\\sin x - 2\\cos^4 x\\right)\\)."
+  },
+  {
+    "id": "d0e2829e-6051-4793-8a87-0ede0792a06d",
+    "ref": "Misc Q8",
+    "solution": "Put \\(u = a\\cos x + b\\sin x\\), so the function is \\(\\cos u\\) with \\(\\frac{du}{dx} = -a\\sin x + b\\cos x\\). By the chain rule, \\(\\frac{d}{dx}\\cos u = -\\sin u \\cdot \\frac{du}{dx} = -\\sin(a\\cos x + b\\sin x)(b\\cos x - a\\sin x)\\). Hence the derivative is \\((a\\sin x - b\\cos x)\\,\\sin(a\\cos x + b\\sin x)\\)."
+  },
+  {
+    "id": "d8592b78-5f0c-4685-9a7e-345d340b7bd2",
+    "ref": "Misc Q19",
+    "solution": "Start from the identity \\(\\sin(A+B) = \\sin A\\cos B + \\cos A\\sin B\\), which holds for all \\(A\\), and differentiate both sides with respect to \\(A\\), treating \\(B\\) as a constant.\n\nLeft side: by the chain rule, \\(\\frac{d}{dA}\\sin(A+B) = \\cos(A+B)\\cdot\\frac{d}{dA}(A+B) = \\cos(A+B)\\).\n\nRight side: \\(\\frac{d}{dA}\\left(\\sin A\\cos B + \\cos A\\sin B\\right) = \\cos A\\cos B - \\sin A\\sin B\\), since \\(\\cos B\\) and \\(\\sin B\\) are constants.\n\nEquating the two, the sum formula for cosines is \\(\\cos(A + B) = \\cos A\\cos B - \\sin A\\sin B\\)."
+  },
+  {
+    "id": "bf81d2ad-d9ac-41f3-b7b5-229f43705282",
+    "ref": "Misc Q20",
+    "solution": "Yes, such a function exists. Take \\(f(x) = |x| + |x - 1|\\).\n\nContinuity: \\(|x|\\) and \\(|x-1|\\) are each continuous on \\(\\mathbb{R}\\), and the sum of continuous functions is continuous, so \\(f\\) is continuous everywhere.\n\nNon-differentiability at exactly two points: away from \\(0\\) and \\(1\\), both \\(|x|\\) and \\(|x-1|\\) are differentiable, so \\(f\\) is differentiable there. At \\(x = 0\\), \\(|x-1|\\) is differentiable but \\(|x|\\) is not, since \\(\\lim_{h \\to 0^-}\\frac{|h|}{h} = -1 \\ne 1 = \\lim_{h \\to 0^+}\\frac{|h|}{h}\\); a differentiable function plus a non-differentiable one is non-differentiable, so \\(f\\) is not differentiable at \\(x = 0\\). The same argument at \\(x = 1\\) shows \\(f\\) is not differentiable at \\(x = 1\\). (Directly, \\(f'(x) = -2\\) on \\(x<0\\), \\(f(x) = 1\\) is constant on \\(0<x<1\\), and \\(f'(x) = 2\\) on \\(x>1\\), so the one-sided derivatives disagree at \\(0\\) and at \\(1\\) and nowhere else.)\n\nHence \\(f(x) = |x| + |x-1|\\) is continuous everywhere and fails to be differentiable at exactly the two points \\(x = 0\\) and \\(x = 1\\)."
+  },
+  {
+    "id": "97afe590-d3f1-4b57-a4fe-7016b6185568",
+    "ref": "Misc Q21",
+    "solution": "Expand the determinant along the first row: \\(y = f(x)(mc - nb) - g(x)(lc - na) + h(x)(lb - ma)\\). The three bracketed quantities are built only from the constants \\(l, m, n, a, b, c\\), so each is a constant. Differentiating term by term, \\(\\frac{dy}{dx} = f'(x)(mc - nb) - g'(x)(lc - na) + h'(x)(lb - ma)\\). This is exactly the expansion along the first row of the determinant whose first row is \\(f'(x), g'(x), h'(x)\\) and whose other two rows are unchanged. Hence \\(\\frac{dy}{dx} = \\begin{vmatrix} f'(x) & g'(x) & h'(x) \\\\ l & m & n \\\\ a & b & c \\end{vmatrix}\\)."
+  },
+  {
+    "id": "2a340abe-4f6e-4bd9-b9fe-f457a3b63c10",
+    "ref": "Ex 5.3 Q1",
+    "solution": "Differentiate both sides with respect to \\(x\\), treating \\(y\\) as a function of \\(x\\): \\(2 + 3\\frac{dy}{dx} = \\cos x\\). Solving, \\(3\\frac{dy}{dx} = \\cos x - 2\\). Hence \\(\\frac{dy}{dx} = \\frac{\\cos x - 2}{3}\\)."
+  },
+  {
+    "id": "ba0fb4ca-4a30-4a64-afb1-f71d41364a48",
+    "ref": "Ex 5.3 Q2",
+    "solution": "Differentiate both sides with respect to \\(x\\), using the chain rule on \\(\\sin y\\): \\(2 + 3\\frac{dy}{dx} = \\cos y\\,\\frac{dy}{dx}\\). Collecting the derivative terms, \\(\\frac{dy}{dx}(\\cos y - 3) = 2\\). Hence \\(\\frac{dy}{dx} = \\frac{2}{\\cos y - 3}\\)."
+  },
+  {
+    "id": "bc85fa22-ce07-4c74-90c2-2905f0503ba8",
+    "ref": "Ex 5.3 Q3",
+    "solution": "Differentiate both sides with respect to \\(x\\): \\(a + 2by\\,\\frac{dy}{dx} = -\\sin y\\,\\frac{dy}{dx}\\). Collecting the derivative terms, \\(\\frac{dy}{dx}\\left(2by + \\sin y\\right) = -a\\). Hence \\(\\frac{dy}{dx} = \\frac{-a}{2by + \\sin y}\\)."
+  },
+  {
+    "id": "666b4768-90ae-4f73-a6ce-c0d071e10f4c",
+    "ref": "Ex 5.3 Q4",
+    "solution": "Differentiate both sides with respect to \\(x\\), using the product rule on \\(xy\\): \\(y + x\\frac{dy}{dx} + 2y\\frac{dy}{dx} = \\sec^2 x + \\frac{dy}{dx}\\). Collecting the derivative terms, \\(\\frac{dy}{dx}\\left(x + 2y - 1\\right) = \\sec^2 x - y\\). Hence \\(\\frac{dy}{dx} = \\frac{\\sec^2 x - y}{x + 2y - 1}\\)."
+  },
+  {
+    "id": "3bc13c1e-1e8f-46f1-ad60-251fee68a3c8",
+    "ref": "Ex 5.3 Q5",
+    "solution": "Differentiate both sides with respect to \\(x\\), using the product rule on \\(xy\\): \\(2x + y + x\\frac{dy}{dx} + 2y\\frac{dy}{dx} = 0\\). Collecting the derivative terms, \\(\\frac{dy}{dx}(x + 2y) = -(2x + y)\\). Hence \\(\\frac{dy}{dx} = \\frac{-(2x + y)}{x + 2y}\\)."
+  },
+  {
+    "id": "ab440899-f863-4892-86f2-32b31206b595",
+    "ref": "Ex 5.3 Q6",
+    "solution": "Differentiate both sides with respect to \\(x\\), using the product rule on \\(x^2y\\) and \\(xy^2\\): \\(3x^2 + \\left(2xy + x^2\\frac{dy}{dx}\\right) + \\left(y^2 + 2xy\\frac{dy}{dx}\\right) + 3y^2\\frac{dy}{dx} = 0\\). Collecting the derivative terms, \\(\\frac{dy}{dx}\\left(x^2 + 2xy + 3y^2\\right) = -\\left(3x^2 + 2xy + y^2\\right)\\). Hence \\(\\frac{dy}{dx} = \\frac{-\\left(3x^2 + 2xy + y^2\\right)}{x^2 + 2xy + 3y^2}\\)."
+  },
+  {
+    "id": "24e89c84-b929-4cfc-af81-cb84e0ff2951",
+    "ref": "Ex 5.3 Q7",
+    "solution": "The right side is a constant, so its derivative is \\(0\\). Differentiating the left side with respect to \\(x\\), using the chain rule on \\(\\sin^2 y\\) and the product rule inside \\(\\cos(xy)\\): \\(2\\sin y\\cos y\\,\\frac{dy}{dx} - \\sin(xy)\\left(y + x\\frac{dy}{dx}\\right) = 0\\). Since \\(2\\sin y\\cos y = \\sin 2y\\), this is \\(\\frac{dy}{dx}\\left(\\sin 2y - x\\sin(xy)\\right) = y\\sin(xy)\\). Hence \\(\\frac{dy}{dx} = \\frac{y\\sin(xy)}{\\sin 2y - x\\sin(xy)}\\).",
+    "_note": "The stem prints the right-hand side as the Greek letter \\(\\kappa\\); earlier printings of this exercise use the Roman letter k. Either way it is an arbitrary constant, so its derivative is 0 and the answer is unaffected. Solved as printed, with the right side treated as a constant."
+  },
+  {
+    "id": "3e572a5d-5249-45a0-90d9-92b33c0c32c3",
+    "ref": "Ex 5.3 Q8",
+    "solution": "Differentiate both sides with respect to \\(x\\): \\(2\\sin x\\cos x - 2\\cos y\\sin y\\,\\frac{dy}{dx} = 0\\), that is \\(\\sin 2x - \\sin 2y\\,\\frac{dy}{dx} = 0\\). Hence \\(\\frac{dy}{dx} = \\frac{\\sin 2x}{\\sin 2y}\\), valid where \\(\\sin 2y \\ne 0\\)."
+  },
+  {
+    "id": "f7a63dc6-2841-44da-8d20-61dd5df6b40a",
+    "ref": "Ex 5.3 Q9",
+    "solution": "Put \\(x = \\tan\\theta\\), so \\(\\theta = \\tan^{-1}x\\). Then \\(\\frac{2x}{1+x^2} = \\frac{2\\tan\\theta}{1+\\tan^2\\theta} = \\sin 2\\theta\\), so \\(y = \\sin^{-1}(\\sin 2\\theta)\\). For \\(-1 < x < 1\\) we have \\(-\\frac{\\pi}{4} < \\theta < \\frac{\\pi}{4}\\), hence \\(2\\theta \\in \\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\), the principal branch, so \\(y = 2\\theta = 2\\tan^{-1}x\\). Differentiating, \\(\\frac{dy}{dx} = \\frac{2}{1+x^2}\\).",
+    "_note": "The stem prints no restriction on x. The identity \\(\\sin^{-1}\\!\\left(\\frac{2x}{1+x^2}\\right) = 2\\tan^{-1}x\\) holds only for \\(|x| \\le 1\\); for \\(x > 1\\) the value is \\(\\pi - 2\\tan^{-1}x\\) and for \\(x < -1\\) it is \\(-\\pi - 2\\tan^{-1}x\\), in both of which cases \\(\\frac{dy}{dx} = \\frac{-2}{1+x^2}\\). The function is not differentiable at \\(x = \\pm 1\\). Answered for the principal case \\(|x| < 1\\)."
+  },
+  {
+    "id": "894f6a3b-a58b-4240-92f7-8591212873cf",
+    "ref": "Ex 5.3 Q10",
+    "solution": "Put \\(x = \\tan\\theta\\), so \\(\\theta = \\tan^{-1}x\\). Then \\(\\frac{3x - x^3}{1 - 3x^2} = \\frac{3\\tan\\theta - \\tan^3\\theta}{1 - 3\\tan^2\\theta} = \\tan 3\\theta\\), so \\(y = \\tan^{-1}(\\tan 3\\theta)\\). The condition \\(-\\frac{1}{\\sqrt{3}} < x < \\frac{1}{\\sqrt{3}}\\) gives \\(-\\frac{\\pi}{6} < \\theta < \\frac{\\pi}{6}\\), so \\(3\\theta \\in \\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\), the principal branch, and \\(y = 3\\theta = 3\\tan^{-1}x\\). Differentiating, \\(\\frac{dy}{dx} = \\frac{3}{1+x^2}\\)."
+  },
+  {
+    "id": "c02e0361-3839-464d-b494-b7b20b40126a",
+    "ref": "Ex 5.3 Q11",
+    "solution": "Put \\(x = \\tan\\theta\\), so \\(\\theta = \\tan^{-1}x\\). Then \\(\\frac{1-x^2}{1+x^2} = \\frac{1-\\tan^2\\theta}{1+\\tan^2\\theta} = \\cos 2\\theta\\), so \\(y = \\cos^{-1}(\\cos 2\\theta)\\). For \\(0 < x < 1\\) we have \\(0 < \\theta < \\frac{\\pi}{4}\\), so \\(2\\theta \\in \\left(0, \\frac{\\pi}{2}\\right) \\subset [0, \\pi]\\), the principal branch of \\(\\cos^{-1}\\), and hence \\(y = 2\\theta = 2\\tan^{-1}x\\). Differentiating, \\(\\frac{dy}{dx} = \\frac{2}{1+x^2}\\)."
+  },
+  {
+    "id": "a2b06d23-fa8d-430e-aba5-923cd1495679",
+    "ref": "Ex 5.3 Q12",
+    "solution": "Put \\(x = \\tan\\theta\\), so \\(\\theta = \\tan^{-1}x\\). Then \\(\\frac{1-x^2}{1+x^2} = \\cos 2\\theta = \\sin\\!\\left(\\frac{\\pi}{2} - 2\\theta\\right)\\), so \\(y = \\sin^{-1}\\!\\left[\\sin\\!\\left(\\frac{\\pi}{2} - 2\\theta\\right)\\right]\\). For \\(0 < x < 1\\) we have \\(0 < \\theta < \\frac{\\pi}{4}\\), so \\(\\frac{\\pi}{2} - 2\\theta \\in \\left(0, \\frac{\\pi}{2}\\right)\\), which lies in the principal branch of \\(\\sin^{-1}\\), and hence \\(y = \\frac{\\pi}{2} - 2\\tan^{-1}x\\). Differentiating, \\(\\frac{dy}{dx} = \\frac{-2}{1+x^2}\\)."
+  },
+  {
+    "id": "3e69bf83-189f-42ec-9595-d9ce9ceaa8e3",
+    "ref": "Ex 5.3 Q13",
+    "solution": "Put \\(x = \\tan\\theta\\), so \\(\\theta = \\tan^{-1}x\\). Then \\(\\frac{2x}{1+x^2} = \\sin 2\\theta = \\cos\\!\\left(\\frac{\\pi}{2} - 2\\theta\\right)\\), so \\(y = \\cos^{-1}\\!\\left[\\cos\\!\\left(\\frac{\\pi}{2} - 2\\theta\\right)\\right]\\). For \\(-1 < x < 1\\) we have \\(-\\frac{\\pi}{4} < \\theta < \\frac{\\pi}{4}\\), so \\(\\frac{\\pi}{2} - 2\\theta \\in (0, \\pi)\\), which lies in the principal branch of \\(\\cos^{-1}\\), and hence \\(y = \\frac{\\pi}{2} - 2\\tan^{-1}x\\). Differentiating, \\(\\frac{dy}{dx} = \\frac{-2}{1+x^2}\\)."
+  },
+  {
+    "id": "a8c9ad33-4465-402b-9736-47bee5c19da6",
+    "ref": "Ex 5.3 Q14",
+    "solution": "Put \\(x = \\sin\\theta\\), so \\(\\theta = \\sin^{-1}x\\). The condition \\(-\\frac{1}{\\sqrt{2}} < x < \\frac{1}{\\sqrt{2}}\\) gives \\(-\\frac{\\pi}{4} < \\theta < \\frac{\\pi}{4}\\), where \\(\\cos\\theta > 0\\), so \\(\\sqrt{1-x^2} = \\cos\\theta\\) and \\(2x\\sqrt{1-x^2} = 2\\sin\\theta\\cos\\theta = \\sin 2\\theta\\). Since \\(2\\theta \\in \\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\), the principal branch, \\(y = \\sin^{-1}(\\sin 2\\theta) = 2\\theta = 2\\sin^{-1}x\\). Differentiating, \\(\\frac{dy}{dx} = \\frac{2}{\\sqrt{1-x^2}}\\)."
+  },
+  {
+    "id": "c30db79a-955b-44b3-a2f1-0f1ddc495a10",
+    "ref": "Ex 5.3 Q15",
+    "solution": "Put \\(x = \\cos\\theta\\), so \\(\\theta = \\cos^{-1}x\\). Then \\(2x^2 - 1 = 2\\cos^2\\theta - 1 = \\cos 2\\theta\\), so \\(\\frac{1}{2x^2-1} = \\sec 2\\theta\\) and \\(y = \\sec^{-1}(\\sec 2\\theta)\\). The condition \\(0 < x < \\frac{1}{\\sqrt{2}}\\) gives \\(\\frac{\\pi}{4} < \\theta < \\frac{\\pi}{2}\\), so \\(2\\theta \\in \\left(\\frac{\\pi}{2}, \\pi\\right)\\), which lies in the principal branch \\([0,\\pi] - \\left\\{\\frac{\\pi}{2}\\right\\}\\) of \\(\\sec^{-1}\\). Hence \\(y = 2\\theta = 2\\cos^{-1}x\\), and differentiating gives \\(\\frac{dy}{dx} = \\frac{-2}{\\sqrt{1-x^2}}\\)."
+  },
+  {
+    "id": "06d2838e-0843-4d24-922e-bcd4d2434341",
+    "ref": "Misc Q4",
+    "solution": "Write \\(x\\sqrt{x} = x^{3/2}\\), so \\(y = \\sin^{-1}\\!\\left(x^{3/2}\\right)\\). By the chain rule, \\(\\frac{dy}{dx} = \\frac{1}{\\sqrt{1 - \\left(x^{3/2}\\right)^2}}\\cdot\\frac{3}{2}x^{1/2} = \\frac{3\\sqrt{x}}{2\\sqrt{1 - x^3}}\\). Hence the derivative is \\(\\frac{3\\sqrt{x}}{2\\sqrt{1-x^3}}\\), valid for \\(0 < x < 1\\)."
+  },
+  {
+    "id": "15a8adf2-adcf-4124-a9cd-bdd9111fde69",
+    "ref": "Misc Q5",
+    "solution": "Let \\(u = \\cos^{-1}\\frac{x}{2}\\) and \\(v = \\sqrt{2x+7}\\). Then \\(u' = \\frac{-1}{\\sqrt{1 - \\frac{x^2}{4}}}\\cdot\\frac{1}{2} = \\frac{-1}{\\sqrt{4-x^2}}\\) and \\(v' = \\frac{2}{2\\sqrt{2x+7}} = \\frac{1}{\\sqrt{2x+7}}\\). By the quotient rule, \\(\\frac{d}{dx}\\frac{u}{v} = \\frac{u'v - uv'}{v^2} = \\frac{\\frac{-\\sqrt{2x+7}}{\\sqrt{4-x^2}} - \\frac{\\cos^{-1}\\frac{x}{2}}{\\sqrt{2x+7}}}{2x+7}\\). Hence the derivative is \\(\\frac{-1}{\\sqrt{4-x^2}\\,\\sqrt{2x+7}} - \\frac{\\cos^{-1}\\frac{x}{2}}{(2x+7)^{3/2}}\\)."
+  },
+  {
+    "id": "e31042e7-bd00-4854-bb0d-090f2cec6ac2",
+    "ref": "Misc Q6",
+    "solution": "Use \\(1 \\pm \\sin x = \\cos^2\\frac{x}{2} + \\sin^2\\frac{x}{2} \\pm 2\\sin\\frac{x}{2}\\cos\\frac{x}{2} = \\left(\\cos\\frac{x}{2} \\pm \\sin\\frac{x}{2}\\right)^2\\). For \\(0 < x < \\frac{\\pi}{2}\\) we have \\(0 < \\frac{x}{2} < \\frac{\\pi}{4}\\), so \\(\\cos\\frac{x}{2} > \\sin\\frac{x}{2} > 0\\) and both square roots are taken positive: \\(\\sqrt{1+\\sin x} = \\cos\\frac{x}{2} + \\sin\\frac{x}{2}\\), \\(\\sqrt{1-\\sin x} = \\cos\\frac{x}{2} - \\sin\\frac{x}{2}\\). The bracket therefore becomes \\(\\frac{2\\cos\\frac{x}{2}}{2\\sin\\frac{x}{2}} = \\cot\\frac{x}{2}\\), so \\(y = \\cot^{-1}\\!\\left(\\cot\\frac{x}{2}\\right) = \\frac{x}{2}\\), since \\(\\frac{x}{2} \\in \\left(0, \\frac{\\pi}{4}\\right)\\) lies in the principal branch \\((0,\\pi)\\). Differentiating, \\(\\frac{dy}{dx} = \\frac{1}{2}\\)."
+  },
+  {
+    "id": "21e6f671-8284-4f6b-a789-1ecde34bb6e2",
+    "ref": "Misc Q13",
+    "solution": "Put \\(x = \\sin\\theta\\) with \\(\\theta = \\sin^{-1}x\\); for \\(0 < x < 1\\) we get \\(0 < \\theta < \\frac{\\pi}{2}\\), so \\(\\sqrt{1-x^2} = \\cos\\theta\\) and \\(\\sin^{-1}\\!\\left(\\sqrt{1-x^2}\\right) = \\sin^{-1}(\\cos\\theta) = \\frac{\\pi}{2} - \\theta\\) (as \\(\\frac{\\pi}{2} - \\theta\\) lies in the principal branch). Therefore \\(y = \\theta + \\left(\\frac{\\pi}{2} - \\theta\\right) = \\frac{\\pi}{2}\\), a constant on \\(0 < x < 1\\). Hence \\(\\frac{dy}{dx} = 0\\)."
+  },
+  {
+    "id": "39f3f604-2b04-4b67-ba25-74835f5342e6",
+    "ref": "Misc Q14",
+    "solution": "From \\(x\\sqrt{1+y} = -y\\sqrt{1+x}\\), squaring gives \\(x^2(1+y) = y^2(1+x)\\), i.e. \\(x^2 - y^2 + x^2y - xy^2 = 0\\), which factorises as \\((x-y)(x+y) + xy(x-y) = 0\\), i.e. \\((x-y)(x + y + xy) = 0\\).\n\nIf \\(x = y\\) the original equation gives \\(2x\\sqrt{1+x} = 0\\), so \\(x = 0\\); this is a single point and cannot define \\(y\\) as a function of \\(x\\) on \\(-1 < x < 1\\). Hence \\(x + y + xy = 0\\), so \\(y(1+x) = -x\\) and \\(y = \\frac{-x}{1+x}\\) (note \\(1 + x \\ne 0\\) since \\(x > -1\\)).\n\nDifferentiating by the quotient rule, \\(\\frac{dy}{dx} = -\\frac{(1)(1+x) - x(1)}{(1+x)^2} = -\\frac{1}{(1+x)^2}\\). Hence \\(\\frac{dy}{dx} = -\\frac{1}{(1+x)^2}\\), as required."
+  },
+  {
+    "id": "eb13d470-0913-4df2-8602-cd460a03b859",
+    "ref": "Misc Q16",
+    "solution": "Since \\(\\cos a \\ne \\pm 1\\) we have \\(\\sin a \\ne 0\\). From the given relation, \\(x = \\frac{\\cos y}{\\cos(a+y)}\\). Differentiate with respect to \\(y\\) by the quotient rule: \\(\\frac{dx}{dy} = \\frac{-\\sin y\\cos(a+y) + \\cos y\\sin(a+y)}{\\cos^2(a+y)}\\). The numerator is \\(\\sin\\big((a+y) - y\\big) = \\sin a\\), so \\(\\frac{dx}{dy} = \\frac{\\sin a}{\\cos^2(a+y)}\\), which is non-zero. Taking reciprocals, \\(\\frac{dy}{dx} = \\frac{\\cos^2(a+y)}{\\sin a}\\), as required."
+  }
+]

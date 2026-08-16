@@ -1,0 +1,333 @@
+[
+  {
+    "id": "6b38fb33-a3d3-4efe-b925-5d2fff4bd4b6",
+    "ref": "Ex 5.4 Q1",
+    "solution": "Apply the quotient rule with \\(u = e^x\\) and \\(v = \\sin x\\). Then \\(\\frac{d}{dx}\\left(\\frac{e^x}{\\sin x}\\right) = \\frac{e^x\\sin x - e^x\\cos x}{\\sin^2 x}\\). Hence the derivative is \\(\\frac{e^x(\\sin x - \\cos x)}{\\sin^2 x}\\), defined for \\(x \\ne n\\pi\\), \\(n \\in \\mathbf{Z}\\)."
+  },
+  {
+    "id": "37390685-71fd-44a9-96a3-903b02690289",
+    "ref": "Ex 5.4 Q2",
+    "solution": "Use the chain rule with outer function \\(e^u\\) and \\(u = \\sin^{-1} x\\). Since \\(\\frac{du}{dx} = \\frac{1}{\\sqrt{1-x^2}}\\), we get \\(\\frac{d}{dx}\\left(e^{\\sin^{-1} x}\\right) = e^{\\sin^{-1} x}\\cdot\\frac{1}{\\sqrt{1-x^2}}\\). Hence the derivative is \\(\\frac{e^{\\sin^{-1} x}}{\\sqrt{1-x^2}}\\), \\(-1 < x < 1\\)."
+  },
+  {
+    "id": "8334b1e1-cd67-431d-817f-0f44466bafad",
+    "ref": "Ex 5.4 Q3",
+    "solution": "Use the chain rule with \\(u = x^3\\), so \\(\\frac{du}{dx} = 3x^2\\). Then \\(\\frac{d}{dx}\\left(e^{x^3}\\right) = e^{x^3}\\cdot 3x^2\\). Hence the derivative is \\(3x^2 e^{x^3}\\)."
+  },
+  {
+    "id": "bdc1aac7-3e7c-444c-859f-7c11fc39e34f",
+    "ref": "Ex 5.4 Q4",
+    "solution": "Differentiate outward using the chain rule. With \\(u = \\tan^{-1}\\left(e^{-x}\\right)\\), \\(\\frac{d}{dx}\\sin u = \\cos u \\cdot \\frac{du}{dx}\\), and \\(\\frac{du}{dx} = \\frac{1}{1+\\left(e^{-x}\\right)^2}\\cdot\\left(-e^{-x}\\right) = \\frac{-e^{-x}}{1+e^{-2x}}\\). Hence the derivative is \\(-\\frac{e^{-x}\\cos\\left(\\tan^{-1} e^{-x}\\right)}{1+e^{-2x}}\\)."
+  },
+  {
+    "id": "1825761e-2b32-4215-98f3-a060d3c29cd9",
+    "ref": "Ex 5.4 Q5",
+    "solution": "Chain rule, working outward: \\(\\frac{d}{dx}\\log\\left(\\cos e^x\\right) = \\frac{1}{\\cos e^x}\\cdot\\left(-\\sin e^x\\right)\\cdot e^x\\). Hence the derivative is \\(-e^x\\tan\\left(e^x\\right)\\), defined where \\(\\cos e^x > 0\\)."
+  },
+  {
+    "id": "9934c17d-f4b7-461c-a16c-bd54d0d00772",
+    "ref": "Ex 5.4 Q6",
+    "solution": "Differentiate term by term. For each \\(k\\), \\(\\frac{d}{dx}e^{x^k} = k x^{k-1} e^{x^k}\\) by the chain rule. Hence the derivative is \\(e^x + 2x\\,e^{x^2} + 3x^2 e^{x^3} + 4x^3 e^{x^4} + 5x^4 e^{x^5}\\)."
+  },
+  {
+    "id": "ea131874-816b-43e2-93cc-81891fb6504a",
+    "ref": "Ex 5.4 Q7",
+    "solution": "First simplify: \\(\\sqrt{e^{\\sqrt{x}}} = e^{\\frac{\\sqrt{x}}{2}}\\). Then by the chain rule \\(\\frac{d}{dx}e^{\\frac{\\sqrt{x}}{2}} = e^{\\frac{\\sqrt{x}}{2}}\\cdot\\frac{1}{2}\\cdot\\frac{1}{2\\sqrt{x}}\\). Hence the derivative is \\(\\frac{e^{\\frac{\\sqrt{x}}{2}}}{4\\sqrt{x}} = \\frac{\\sqrt{e^{\\sqrt{x}}}}{4\\sqrt{x}}\\), \\(x > 0\\)."
+  },
+  {
+    "id": "adaa5c53-89ad-497e-89a5-baa6730e4634",
+    "ref": "Ex 5.4 Q8",
+    "solution": "Chain rule with \\(u = \\log x\\): \\(\\frac{d}{dx}\\log(\\log x) = \\frac{1}{\\log x}\\cdot\\frac{1}{x}\\). Hence the derivative is \\(\\frac{1}{x\\log x}\\), \\(x > 1\\)."
+  },
+  {
+    "id": "f767c898-c328-4a49-bb68-943fc78c449e",
+    "ref": "Ex 5.4 Q9",
+    "solution": "Apply the quotient rule with \\(u = \\cos x\\), \\(v = \\log x\\): \\(\\frac{d}{dx}\\left(\\frac{\\cos x}{\\log x}\\right) = \\frac{(-\\sin x)\\log x - \\cos x\\cdot\\frac{1}{x}}{(\\log x)^2}\\). Taking \\(\\frac{1}{x}\\) out of the numerator, the derivative is \\(-\\frac{x\\log x\\,\\sin x + \\cos x}{x(\\log x)^2}\\), \\(x > 0\\), \\(x \\ne 1\\)."
+  },
+  {
+    "id": "af4d7ed5-9a14-4228-a3ac-abd976b8e0f4",
+    "ref": "Ex 5.4 Q10",
+    "solution": "Chain rule with \\(u = \\log x + e^x\\), so \\(\\frac{du}{dx} = \\frac{1}{x} + e^x\\). Then \\(\\frac{d}{dx}\\cos u = -\\sin u\\cdot\\frac{du}{dx}\\). Hence the derivative is \\(-\\left(\\frac{1}{x} + e^x\\right)\\sin\\left(\\log x + e^x\\right)\\), \\(x > 0\\)."
+  },
+  {
+    "id": "b1d5b23e-4952-4f87-bc56-8b0f804d00e9",
+    "ref": "Ex 5.5 Q1",
+    "solution": "Let \\(y = \\cos x\\cos 2x\\cos 3x\\). Taking logarithms, \\(\\log y = \\log\\cos x + \\log\\cos 2x + \\log\\cos 3x\\). Differentiating implicitly, \\(\\frac{1}{y}\\frac{dy}{dx} = -\\tan x - 2\\tan 2x - 3\\tan 3x\\). Hence \\(\\frac{dy}{dx} = -\\cos x\\cos 2x\\cos 3x\\left(\\tan x + 2\\tan 2x + 3\\tan 3x\\right)\\)."
+  },
+  {
+    "id": "0701c552-c615-4e9a-b142-0e4ddf675428",
+    "ref": "Ex 5.5 Q2",
+    "solution": "Let \\(y = \\sqrt{\\frac{(x-1)(x-2)}{(x-3)(x-4)(x-5)}}\\). Taking logarithms, \\(\\log y = \\frac{1}{2}\\left[\\log(x-1) + \\log(x-2) - \\log(x-3) - \\log(x-4) - \\log(x-5)\\right]\\). Differentiating implicitly, \\(\\frac{1}{y}\\frac{dy}{dx} = \\frac{1}{2}\\left[\\frac{1}{x-1} + \\frac{1}{x-2} - \\frac{1}{x-3} - \\frac{1}{x-4} - \\frac{1}{x-5}\\right]\\). Hence \\(\\frac{dy}{dx} = \\frac{1}{2}\\sqrt{\\frac{(x-1)(x-2)}{(x-3)(x-4)(x-5)}}\\left[\\frac{1}{x-1} + \\frac{1}{x-2} - \\frac{1}{x-3} - \\frac{1}{x-4} - \\frac{1}{x-5}\\right]\\)."
+  },
+  {
+    "id": "7f707a6e-1739-4f41-8d19-27561f7415f9",
+    "ref": "Ex 5.5 Q3",
+    "solution": "Let \\(y = (\\log x)^{\\cos x}\\). Taking logarithms, \\(\\log y = \\cos x\\,\\log(\\log x)\\). Differentiating implicitly, \\(\\frac{1}{y}\\frac{dy}{dx} = -\\sin x\\,\\log(\\log x) + \\cos x\\cdot\\frac{1}{x\\log x}\\). Hence \\(\\frac{dy}{dx} = (\\log x)^{\\cos x}\\left[\\frac{\\cos x}{x\\log x} - \\sin x\\,\\log(\\log x)\\right]\\)."
+  },
+  {
+    "id": "738060b4-2d89-44eb-abc3-14f5e81623a8",
+    "ref": "Ex 5.5 Q4",
+    "solution": "Write \\(y = u - v\\) with \\(u = x^x\\) and \\(v = 2^{\\sin x}\\), and differentiate each term separately. From \\(\\log u = x\\log x\\), \\(\\frac{1}{u}\\frac{du}{dx} = \\log x + 1\\), so \\(\\frac{du}{dx} = x^x(1 + \\log x)\\). From \\(\\log v = \\sin x\\,\\log 2\\), \\(\\frac{1}{v}\\frac{dv}{dx} = \\cos x\\,\\log 2\\), so \\(\\frac{dv}{dx} = 2^{\\sin x}\\cos x\\,\\log 2\\). Hence \\(\\frac{dy}{dx} = x^x(1 + \\log x) - 2^{\\sin x}\\cos x\\,\\log 2\\)."
+  },
+  {
+    "id": "b8740642-dd82-4ef4-b236-b7c2e0b04ae8",
+    "ref": "Ex 5.5 Q5",
+    "solution": "Let \\(y = (x+3)^2(x+4)^3(x+5)^4\\). Taking logarithms, \\(\\log y = 2\\log(x+3) + 3\\log(x+4) + 4\\log(x+5)\\). Differentiating implicitly, \\(\\frac{1}{y}\\frac{dy}{dx} = \\frac{2}{x+3} + \\frac{3}{x+4} + \\frac{4}{x+5}\\). Hence \\(\\frac{dy}{dx} = (x+3)^2(x+4)^3(x+5)^4\\left[\\frac{2}{x+3} + \\frac{3}{x+4} + \\frac{4}{x+5}\\right]\\), which on combining the bracket simplifies to \\(\\frac{dy}{dx} = (x+3)(x+4)^2(x+5)^3\\left(9x^2 + 70x + 133\\right)\\)."
+  },
+  {
+    "id": "46084a37-b734-4303-b2f7-d992bb59713b",
+    "ref": "Ex 5.5 Q6",
+    "solution": "Write \\(y = u + v\\) with \\(u = \\left(x + \\frac{1}{x}\\right)^x\\) and \\(v = x^{\\left(1 + \\frac{1}{x}\\right)}\\), and differentiate each term separately. From \\(\\log u = x\\log\\left(x + \\frac{1}{x}\\right)\\), \\(\\frac{1}{u}\\frac{du}{dx} = \\log\\left(x + \\frac{1}{x}\\right) + x\\cdot\\frac{1 - \\frac{1}{x^2}}{x + \\frac{1}{x}} = \\log\\left(x + \\frac{1}{x}\\right) + \\frac{x^2-1}{x^2+1}\\), so \\(\\frac{du}{dx} = \\left(x + \\frac{1}{x}\\right)^x\\left[\\log\\left(x + \\frac{1}{x}\\right) + \\frac{x^2-1}{x^2+1}\\right]\\). From \\(\\log v = \\left(1 + \\frac{1}{x}\\right)\\log x\\), \\(\\frac{1}{v}\\frac{dv}{dx} = -\\frac{\\log x}{x^2} + \\left(1 + \\frac{1}{x}\\right)\\frac{1}{x} = \\frac{x + 1 - \\log x}{x^2}\\), so \\(\\frac{dv}{dx} = x^{\\left(1 + \\frac{1}{x}\\right)}\\cdot\\frac{x + 1 - \\log x}{x^2}\\). Hence \\(\\frac{dy}{dx} = \\left(x + \\frac{1}{x}\\right)^x\\left[\\log\\left(x + \\frac{1}{x}\\right) + \\frac{x^2-1}{x^2+1}\\right] + x^{\\left(1 + \\frac{1}{x}\\right)}\\cdot\\frac{x + 1 - \\log x}{x^2}\\)."
+  },
+  {
+    "id": "6ef1a01e-def6-49c0-83cd-0888545aaa60",
+    "ref": "Ex 5.5 Q7",
+    "solution": "Write \\(y = u + v\\) with \\(u = (\\log x)^x\\) and \\(v = x^{\\log x}\\), and differentiate each term separately. From \\(\\log u = x\\log(\\log x)\\), \\(\\frac{1}{u}\\frac{du}{dx} = \\log(\\log x) + x\\cdot\\frac{1}{x\\log x} = \\log(\\log x) + \\frac{1}{\\log x}\\), so \\(\\frac{du}{dx} = (\\log x)^x\\left[\\log(\\log x) + \\frac{1}{\\log x}\\right]\\). From \\(\\log v = (\\log x)^2\\), \\(\\frac{1}{v}\\frac{dv}{dx} = \\frac{2\\log x}{x}\\), so \\(\\frac{dv}{dx} = 2x^{\\log x - 1}\\log x\\). Hence \\(\\frac{dy}{dx} = (\\log x)^x\\left[\\log(\\log x) + \\frac{1}{\\log x}\\right] + 2x^{\\log x - 1}\\log x\\)."
+  },
+  {
+    "id": "3b389e56-e41c-4382-8d51-18f96cb548c8",
+    "ref": "Ex 5.5 Q8",
+    "solution": "Write \\(y = u + v\\) with \\(u = (\\sin x)^x\\) and \\(v = \\sin^{-1}\\sqrt{x}\\), and differentiate each term separately. From \\(\\log u = x\\log\\sin x\\), \\(\\frac{1}{u}\\frac{du}{dx} = \\log\\sin x + x\\cot x\\), so \\(\\frac{du}{dx} = (\\sin x)^x\\left(x\\cot x + \\log\\sin x\\right)\\). By the chain rule, \\(\\frac{dv}{dx} = \\frac{1}{\\sqrt{1-x}}\\cdot\\frac{1}{2\\sqrt{x}} = \\frac{1}{2\\sqrt{x - x^2}}\\). Hence \\(\\frac{dy}{dx} = (\\sin x)^x\\left(x\\cot x + \\log\\sin x\\right) + \\frac{1}{2\\sqrt{x - x^2}}\\)."
+  },
+  {
+    "id": "026ec9b6-7fd3-4dc0-ae5b-62f27b68ec4c",
+    "ref": "Ex 5.5 Q9",
+    "solution": "Write \\(y = u + v\\) with \\(u = x^{\\sin x}\\) and \\(v = (\\sin x)^{\\cos x}\\), and differentiate each term separately. From \\(\\log u = \\sin x\\,\\log x\\), \\(\\frac{1}{u}\\frac{du}{dx} = \\cos x\\,\\log x + \\frac{\\sin x}{x}\\), so \\(\\frac{du}{dx} = x^{\\sin x}\\left(\\cos x\\,\\log x + \\frac{\\sin x}{x}\\right)\\). From \\(\\log v = \\cos x\\,\\log\\sin x\\), \\(\\frac{1}{v}\\frac{dv}{dx} = -\\sin x\\,\\log\\sin x + \\cos x\\cot x\\), so \\(\\frac{dv}{dx} = (\\sin x)^{\\cos x}\\left(\\cos x\\cot x - \\sin x\\,\\log\\sin x\\right)\\). Hence \\(\\frac{dy}{dx} = x^{\\sin x}\\left(\\cos x\\,\\log x + \\frac{\\sin x}{x}\\right) + (\\sin x)^{\\cos x}\\left(\\cos x\\cot x - \\sin x\\,\\log\\sin x\\right)\\)."
+  },
+  {
+    "id": "e585400f-f625-4739-8dfe-650d64274aa0",
+    "ref": "Ex 5.5 Q10",
+    "solution": "Write \\(y = u + v\\) with \\(u = x^{x\\cos x}\\) and \\(v = \\frac{x^2+1}{x^2-1}\\), and differentiate each term separately. From \\(\\log u = x\\cos x\\,\\log x\\), \\(\\frac{1}{u}\\frac{du}{dx} = (\\cos x - x\\sin x)\\log x + \\cos x\\), so \\(\\frac{du}{dx} = x^{x\\cos x}\\left[\\cos x(1 + \\log x) - x\\sin x\\,\\log x\\right]\\). By the quotient rule, \\(\\frac{dv}{dx} = \\frac{2x(x^2-1) - (x^2+1)2x}{(x^2-1)^2} = \\frac{-4x}{(x^2-1)^2}\\). Hence \\(\\frac{dy}{dx} = x^{x\\cos x}\\left[\\cos x(1 + \\log x) - x\\sin x\\,\\log x\\right] - \\frac{4x}{(x^2-1)^2}\\)."
+  },
+  {
+    "id": "da8f8a58-6855-4dd2-b0d7-f14ac9d1578d",
+    "ref": "Ex 5.5 Q11",
+    "solution": "Write \\(y = u + v\\) with \\(u = (x\\cos x)^x\\) and \\(v = (x\\sin x)^{\\frac{1}{x}}\\), and differentiate each term separately. From \\(\\log u = x\\log(x\\cos x)\\), \\(\\frac{1}{u}\\frac{du}{dx} = \\log(x\\cos x) + x\\left(\\frac{1}{x} - \\tan x\\right)\\), so \\(\\frac{du}{dx} = (x\\cos x)^x\\left[1 - x\\tan x + \\log(x\\cos x)\\right]\\). From \\(\\log v = \\frac{1}{x}\\log(x\\sin x)\\), \\(\\frac{1}{v}\\frac{dv}{dx} = -\\frac{\\log(x\\sin x)}{x^2} + \\frac{1}{x}\\left(\\frac{1}{x} + \\cot x\\right) = \\frac{1 + x\\cot x - \\log(x\\sin x)}{x^2}\\), so \\(\\frac{dv}{dx} = (x\\sin x)^{\\frac{1}{x}}\\cdot\\frac{1 + x\\cot x - \\log(x\\sin x)}{x^2}\\). Hence \\(\\frac{dy}{dx} = (x\\cos x)^x\\left[1 - x\\tan x + \\log(x\\cos x)\\right] + (x\\sin x)^{\\frac{1}{x}}\\cdot\\frac{1 + x\\cot x - \\log(x\\sin x)}{x^2}\\)."
+  },
+  {
+    "id": "ecd81ade-f9e7-4f1a-9ee8-a3ce8de14944",
+    "ref": "Ex 5.5 Q12",
+    "solution": "Put \\(u = x^y\\) and \\(v = y^x\\), so that \\(u + v = 1\\) and \\(\\frac{du}{dx} + \\frac{dv}{dx} = 0\\). From \\(\\log u = y\\log x\\), \\(\\frac{1}{u}\\frac{du}{dx} = \\frac{dy}{dx}\\log x + \\frac{y}{x}\\), so \\(\\frac{du}{dx} = x^y\\left(\\log x\\,\\frac{dy}{dx} + \\frac{y}{x}\\right)\\). From \\(\\log v = x\\log y\\), \\(\\frac{1}{v}\\frac{dv}{dx} = \\log y + \\frac{x}{y}\\frac{dy}{dx}\\), so \\(\\frac{dv}{dx} = y^x\\left(\\log y + \\frac{x}{y}\\frac{dy}{dx}\\right)\\). Adding and collecting the terms in \\(\\frac{dy}{dx}\\), \\(\\left(x^y\\log x + xy^{x-1}\\right)\\frac{dy}{dx} = -\\left(yx^{y-1} + y^x\\log y\\right)\\). Hence \\(\\frac{dy}{dx} = -\\frac{yx^{y-1} + y^x\\log y}{x^y\\log x + xy^{x-1}}\\)."
+  },
+  {
+    "id": "f0bcde64-2a94-43c8-b17a-92be6cacd0a3",
+    "ref": "Ex 5.5 Q13",
+    "solution": "Take logarithms of \\(y^x = x^y\\) to get \\(x\\log y = y\\log x\\). Differentiating both sides w.r.t. \\(x\\), \\(\\log y + \\frac{x}{y}\\frac{dy}{dx} = \\frac{dy}{dx}\\log x + \\frac{y}{x}\\). Collecting the terms in \\(\\frac{dy}{dx}\\), \\(\\left(\\frac{x}{y} - \\log x\\right)\\frac{dy}{dx} = \\frac{y}{x} - \\log y\\). Multiplying numerator and denominator by \\(xy\\), \\(\\frac{dy}{dx} = \\frac{y^2 - xy\\log y}{x^2 - xy\\log x}\\). Hence \\(\\frac{dy}{dx} = \\frac{y(y - x\\log y)}{x(x - y\\log x)}\\)."
+  },
+  {
+    "id": "188167b9-9071-4d12-a61e-7d2988578718",
+    "ref": "Ex 5.5 Q14",
+    "solution": "Take logarithms of \\((\\cos x)^y = (\\cos y)^x\\) to get \\(y\\log\\cos x = x\\log\\cos y\\). Differentiating both sides w.r.t. \\(x\\), \\(\\frac{dy}{dx}\\log\\cos x - y\\tan x = \\log\\cos y - x\\tan y\\,\\frac{dy}{dx}\\). Collecting the terms in \\(\\frac{dy}{dx}\\), \\(\\left(\\log\\cos x + x\\tan y\\right)\\frac{dy}{dx} = \\log\\cos y + y\\tan x\\). Hence \\(\\frac{dy}{dx} = \\frac{\\log\\cos y + y\\tan x}{\\log\\cos x + x\\tan y}\\)."
+  },
+  {
+    "id": "d98542ec-231a-4fec-a253-2f4443cde4db",
+    "ref": "Ex 5.5 Q15",
+    "solution": "Take logarithms of \\(xy = e^{(x-y)}\\) to get \\(\\log x + \\log y = x - y\\). Differentiating both sides w.r.t. \\(x\\), \\(\\frac{1}{x} + \\frac{1}{y}\\frac{dy}{dx} = 1 - \\frac{dy}{dx}\\). Collecting the terms in \\(\\frac{dy}{dx}\\), \\(\\left(\\frac{1}{y} + 1\\right)\\frac{dy}{dx} = 1 - \\frac{1}{x}\\), that is \\(\\frac{1+y}{y}\\cdot\\frac{dy}{dx} = \\frac{x-1}{x}\\). Hence \\(\\frac{dy}{dx} = \\frac{y(x-1)}{x(1+y)}\\)."
+  },
+  {
+    "id": "422396ef-a7d1-48bb-9dcb-99da50cb805e",
+    "ref": "Ex 5.5 Q16",
+    "solution": "Taking logarithms, \\(\\log f(x) = \\log(1+x) + \\log(1+x^2) + \\log(1+x^4) + \\log(1+x^8)\\). Differentiating implicitly, \\(\\frac{f'(x)}{f(x)} = \\frac{1}{1+x} + \\frac{2x}{1+x^2} + \\frac{4x^3}{1+x^4} + \\frac{8x^7}{1+x^8}\\), so \\(f'(x) = (1+x)(1+x^2)(1+x^4)(1+x^8)\\left[\\frac{1}{1+x} + \\frac{2x}{1+x^2} + \\frac{4x^3}{1+x^4} + \\frac{8x^7}{1+x^8}\\right]\\). At \\(x = 1\\), \\(f(1) = 2\\cdot 2\\cdot 2\\cdot 2 = 16\\) and the bracket equals \\(\\frac{1}{2} + \\frac{2}{2} + \\frac{4}{2} + \\frac{8}{2} = \\frac{15}{2}\\). Hence \\(f'(1) = 16\\times\\frac{15}{2} = 120\\)."
+  },
+  {
+    "id": "bc066d4e-c084-40ad-9ea1-e956690bbb41",
+    "ref": "Ex 5.5 Q17",
+    "solution": "Let \\(y = (x^2 - 5x + 8)(x^3 + 7x + 9)\\).\n\n(i) By the product rule, \\(\\frac{dy}{dx} = (2x-5)(x^3+7x+9) + (x^2-5x+8)(3x^2+7)\\). Expanding, \\((2x^4 - 5x^3 + 14x^2 - 17x - 45) + (3x^4 - 15x^3 + 31x^2 - 35x + 56) = 5x^4 - 20x^3 + 45x^2 - 52x + 11\\).\n\n(ii) Expanding the product first, \\(y = x^5 - 5x^4 + 15x^3 - 26x^2 + 11x + 72\\), so differentiating term by term \\(\\frac{dy}{dx} = 5x^4 - 20x^3 + 45x^2 - 52x + 11\\).\n\n(iii) Taking logarithms, \\(\\log y = \\log(x^2-5x+8) + \\log(x^3+7x+9)\\), so \\(\\frac{1}{y}\\frac{dy}{dx} = \\frac{2x-5}{x^2-5x+8} + \\frac{3x^2+7}{x^3+7x+9}\\). Multiplying by \\(y\\) gives \\(\\frac{dy}{dx} = (2x-5)(x^3+7x+9) + (x^2-5x+8)(3x^2+7) = 5x^4 - 20x^3 + 45x^2 - 52x + 11\\).\n\nYes, all three methods give the same answer, namely \\(\\frac{dy}{dx} = 5x^4 - 20x^3 + 45x^2 - 52x + 11\\)."
+  },
+  {
+    "id": "b734a9e5-3d28-4f12-bcf7-f01e3314f2e8",
+    "ref": "Ex 5.5 Q18",
+    "solution": "First method (repeated product rule). Treat \\(u\\cdot v\\cdot w\\) as \\((u v)\\cdot w\\). By the product rule, \\(\\frac{d}{dx}\\left[(uv)w\\right] = \\frac{d(uv)}{dx}\\,w + (uv)\\frac{dw}{dx}\\). Applying the product rule again to \\(uv\\) gives \\(\\frac{d(uv)}{dx} = \\frac{du}{dx}v + u\\frac{dv}{dx}\\). Substituting, \\(\\frac{d}{dx}(u\\cdot v\\cdot w) = \\frac{du}{dx}\\,v\\cdot w + u\\cdot\\frac{dv}{dx}\\cdot w + u\\cdot v\\frac{dw}{dx}\\).\n\nSecond method (logarithmic differentiation). Let \\(y = u\\,v\\,w\\), and suppose \\(u, v, w\\) are non-zero so that logarithms may be taken. Then \\(\\log|y| = \\log|u| + \\log|v| + \\log|w|\\). Differentiating w.r.t. \\(x\\), \\(\\frac{1}{y}\\frac{dy}{dx} = \\frac{1}{u}\\frac{du}{dx} + \\frac{1}{v}\\frac{dv}{dx} + \\frac{1}{w}\\frac{dw}{dx}\\). Multiplying through by \\(y = u\\,v\\,w\\), each term cancels one factor and \\(\\frac{dy}{dx} = \\frac{du}{dx}\\,v\\cdot w + u\\cdot\\frac{dv}{dx}\\cdot w + u\\cdot v\\frac{dw}{dx}\\), which is the required result."
+  },
+  {
+    "id": "ea2c68b0-f320-4509-9f39-bbcb1bd34eb8",
+    "ref": "Ex 5.6 Q1",
+    "solution": "Differentiate each equation w.r.t. the parameter \\(t\\): \\(\\frac{dx}{dt} = 4at\\) and \\(\\frac{dy}{dt} = 4at^3\\). Hence \\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{4at^3}{4at} = t^2\\), for \\(t \\ne 0\\)."
+  },
+  {
+    "id": "e9ca654f-ac1e-410a-aaae-024d324ba2d3",
+    "ref": "Ex 5.6 Q2",
+    "solution": "Differentiate each equation w.r.t. the parameter \\(\\theta\\): \\(\\frac{dx}{d\\theta} = -a\\sin\\theta\\) and \\(\\frac{dy}{d\\theta} = -b\\sin\\theta\\). Hence \\(\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta} = \\frac{-b\\sin\\theta}{-a\\sin\\theta} = \\frac{b}{a}\\), for \\(\\sin\\theta \\ne 0\\). (The two equations give \\(bx = ay\\), a straight line of slope \\(\\frac{b}{a}\\), which is consistent.)",
+    "_note": "The stem prints BOTH coordinates as cosine, x = a cos(theta), y = b cos(theta). A sibling agent verified this against the page image and the PDF text layer, so it is what NCERT prints, not a transcription slip. As printed the parametrisation is degenerate (it traces the segment bx = ay rather than an ellipse) but it is still answerable, giving the constant dy/dx = b/a, which is what I have solved. The near-certain intended reading is y = b sin(theta), which would give dy/dx = -(b/a) cot(theta); if the key answers that, the defect is in the printed stem, not in this solution."
+  },
+  {
+    "id": "b49bab73-ae96-44f5-bc7b-d008547db9c4",
+    "ref": "Ex 5.6 Q3",
+    "solution": "Differentiate each equation w.r.t. the parameter \\(t\\): \\(\\frac{dx}{dt} = \\cos t\\) and \\(\\frac{dy}{dt} = -2\\sin 2t = -4\\sin t\\cos t\\). Hence \\(\\frac{dy}{dx} = \\frac{-4\\sin t\\cos t}{\\cos t} = -4\\sin t\\), for \\(\\cos t \\ne 0\\)."
+  },
+  {
+    "id": "044179a3-ed4f-4382-bbb1-769fccfdf0fd",
+    "ref": "Ex 5.6 Q4",
+    "solution": "Differentiate each equation w.r.t. the parameter \\(t\\): \\(\\frac{dx}{dt} = 4\\) and \\(\\frac{dy}{dt} = -\\frac{4}{t^2}\\). Hence \\(\\frac{dy}{dx} = \\frac{-4/t^2}{4} = -\\frac{1}{t^2}\\), for \\(t \\ne 0\\)."
+  },
+  {
+    "id": "36095dd1-16fa-4e4b-ae24-0ba3bc5fe287",
+    "ref": "Ex 5.6 Q5",
+    "solution": "Differentiate each equation w.r.t. the parameter \\(\\theta\\): \\(\\frac{dx}{d\\theta} = -\\sin\\theta + 2\\sin 2\\theta\\) and \\(\\frac{dy}{d\\theta} = \\cos\\theta - 2\\cos 2\\theta\\). Hence \\(\\frac{dy}{dx} = \\frac{\\cos\\theta - 2\\cos 2\\theta}{2\\sin 2\\theta - \\sin\\theta}\\), provided \\(2\\sin 2\\theta \\ne \\sin\\theta\\)."
+  },
+  {
+    "id": "77edfe60-0f27-420b-9546-5ebb2ef67ec0",
+    "ref": "Ex 5.6 Q6",
+    "solution": "Differentiate each equation w.r.t. the parameter \\(\\theta\\): \\(\\frac{dx}{d\\theta} = a(1 - \\cos\\theta)\\) and \\(\\frac{dy}{d\\theta} = -a\\sin\\theta\\). So \\(\\frac{dy}{dx} = \\frac{-a\\sin\\theta}{a(1-\\cos\\theta)}\\). Using \\(\\sin\\theta = 2\\sin\\frac{\\theta}{2}\\cos\\frac{\\theta}{2}\\) and \\(1 - \\cos\\theta = 2\\sin^2\\frac{\\theta}{2}\\), this becomes \\(-\\frac{2\\sin\\frac{\\theta}{2}\\cos\\frac{\\theta}{2}}{2\\sin^2\\frac{\\theta}{2}}\\). Hence \\(\\frac{dy}{dx} = -\\cot\\frac{\\theta}{2}\\), for \\(\\theta \\ne 2n\\pi\\)."
+  },
+  {
+    "id": "32afea2d-37f0-4ca2-9168-44d425c781d4",
+    "ref": "Ex 5.6 Q7",
+    "solution": "Use logarithmic differentiation on each equation. From \\(\\log x = 3\\log\\sin t - \\frac{1}{2}\\log\\cos 2t\\), \\(\\frac{1}{x}\\frac{dx}{dt} = 3\\cot t + \\tan 2t\\). From \\(\\log y = 3\\log\\cos t - \\frac{1}{2}\\log\\cos 2t\\), \\(\\frac{1}{y}\\frac{dy}{dt} = -3\\tan t + \\tan 2t\\). Hence \\(\\frac{dy}{dx} = \\frac{y}{x}\\cdot\\frac{\\tan 2t - 3\\tan t}{3\\cot t + \\tan 2t} = \\cot^3 t\\cdot\\frac{\\tan 2t - 3\\tan t}{3\\cot t + \\tan 2t}\\). Writing \\(T = \\tan t\\) and \\(\\tan 2t = \\frac{2T}{1-T^2}\\), the fraction reduces to \\(\\frac{T^2(3T^2-1)}{3-T^2}\\), so \\(\\frac{dy}{dx} = \\frac{1}{T^3}\\cdot\\frac{T^2(3T^2-1)}{3-T^2} = \\frac{3T^2-1}{T(3-T^2)}\\). Since \\(\\tan 3t = \\frac{T(3-T^2)}{1-3T^2}\\), this is \\(-\\cot 3t\\). Hence \\(\\frac{dy}{dx} = -\\cot 3t\\)."
+  },
+  {
+    "id": "6995d916-7580-480a-ac81-fccdd08c667e",
+    "ref": "Ex 5.6 Q8",
+    "solution": "Differentiate each equation w.r.t. the parameter \\(t\\). For \\(x\\), \\(\\frac{d}{dt}\\log\\tan\\frac{t}{2} = \\frac{1}{\\tan\\frac{t}{2}}\\cdot\\frac{1}{2}\\sec^2\\frac{t}{2} = \\frac{1}{2\\sin\\frac{t}{2}\\cos\\frac{t}{2}} = \\frac{1}{\\sin t}\\), so \\(\\frac{dx}{dt} = a\\left(-\\sin t + \\frac{1}{\\sin t}\\right) = a\\cdot\\frac{1-\\sin^2 t}{\\sin t} = \\frac{a\\cos^2 t}{\\sin t}\\). Also \\(\\frac{dy}{dt} = a\\cos t\\). Hence \\(\\frac{dy}{dx} = a\\cos t\\cdot\\frac{\\sin t}{a\\cos^2 t} = \\tan t\\)."
+  },
+  {
+    "id": "3363e4ea-f6fe-4163-b524-244425de80e5",
+    "ref": "Ex 5.6 Q9",
+    "solution": "Differentiate each equation w.r.t. the parameter \\(\\theta\\): \\(\\frac{dx}{d\\theta} = a\\sec\\theta\\tan\\theta\\) and \\(\\frac{dy}{d\\theta} = b\\sec^2\\theta\\). So \\(\\frac{dy}{dx} = \\frac{b\\sec^2\\theta}{a\\sec\\theta\\tan\\theta} = \\frac{b\\sec\\theta}{a\\tan\\theta} = \\frac{b}{a}\\cdot\\frac{1}{\\sin\\theta}\\). Hence \\(\\frac{dy}{dx} = \\frac{b}{a}\\operatorname{cosec}\\theta\\), for \\(\\sin\\theta \\ne 0\\)."
+  },
+  {
+    "id": "6c0f42d4-15f5-4467-a4b1-b1e6967ce05b",
+    "ref": "Ex 5.6 Q10",
+    "solution": "Differentiate each equation w.r.t. the parameter \\(\\theta\\), using the product rule on the second term of each. \\(\\frac{dx}{d\\theta} = a(-\\sin\\theta + \\sin\\theta + \\theta\\cos\\theta) = a\\theta\\cos\\theta\\), and \\(\\frac{dy}{d\\theta} = a(\\cos\\theta - \\cos\\theta + \\theta\\sin\\theta) = a\\theta\\sin\\theta\\). Hence \\(\\frac{dy}{dx} = \\frac{a\\theta\\sin\\theta}{a\\theta\\cos\\theta} = \\tan\\theta\\), for \\(\\theta \\ne 0\\) and \\(\\cos\\theta \\ne 0\\)."
+  },
+  {
+    "id": "52810c9d-0114-447f-b78e-e541ca410f60",
+    "ref": "Ex 5.6 Q11",
+    "solution": "Write \\(x = a^{\\frac{1}{2}\\sin^{-1} t}\\) and \\(y = a^{\\frac{1}{2}\\cos^{-1} t}\\), and differentiate each logarithmically. From \\(\\log x = \\frac{1}{2}\\sin^{-1} t\\,\\log a\\), \\(\\frac{1}{x}\\frac{dx}{dt} = \\frac{\\log a}{2\\sqrt{1-t^2}}\\), so \\(\\frac{dx}{dt} = \\frac{x\\log a}{2\\sqrt{1-t^2}}\\). From \\(\\log y = \\frac{1}{2}\\cos^{-1} t\\,\\log a\\), \\(\\frac{1}{y}\\frac{dy}{dt} = -\\frac{\\log a}{2\\sqrt{1-t^2}}\\), so \\(\\frac{dy}{dt} = -\\frac{y\\log a}{2\\sqrt{1-t^2}}\\). Dividing, the common factor \\(\\frac{\\log a}{2\\sqrt{1-t^2}}\\) cancels and \\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = -\\frac{y}{x}\\), as required."
+  },
+  {
+    "id": "c3db7d82-2364-4571-8a34-57a05ab02b77",
+    "ref": "Misc Q12",
+    "solution": "Differentiate each equation w.r.t. the parameter \\(t\\): \\(\\frac{dx}{dt} = 10(1 - \\cos t)\\) and \\(\\frac{dy}{dt} = 12\\sin t\\). So \\(\\frac{dy}{dx} = \\frac{12\\sin t}{10(1-\\cos t)}\\). Using \\(\\sin t = 2\\sin\\frac{t}{2}\\cos\\frac{t}{2}\\) and \\(1 - \\cos t = 2\\sin^2\\frac{t}{2}\\), this becomes \\(\\frac{6}{5}\\cdot\\frac{\\cos\\frac{t}{2}}{\\sin\\frac{t}{2}}\\). Hence \\(\\frac{dy}{dx} = \\frac{6}{5}\\cot\\frac{t}{2}\\), for \\(t \\ne 0\\) in the given interval."
+  },
+  {
+    "id": "0b3c763f-7bf1-405d-af0a-054d76b43f93",
+    "ref": "Ex 5.7 Q1",
+    "solution": "Let \\(y = x^2 + 3x + 2\\). Differentiating once, \\(\\frac{dy}{dx} = 2x + 3\\). Differentiating again, \\(\\frac{d^2y}{dx^2} = 2\\)."
+  },
+  {
+    "id": "31b73015-11d7-4dc2-86de-4b426bfa206c",
+    "ref": "Ex 5.7 Q2",
+    "solution": "Let \\(y = x^{20}\\). Differentiating once, \\(\\frac{dy}{dx} = 20x^{19}\\). Differentiating again, \\(\\frac{d^2y}{dx^2} = 20\\times 19\\,x^{18} = 380x^{18}\\)."
+  },
+  {
+    "id": "cfd13382-5c6a-4c12-b0d3-13f9044d495c",
+    "ref": "Ex 5.7 Q3",
+    "solution": "Let \\(y = x\\cos x\\). By the product rule, \\(\\frac{dy}{dx} = \\cos x - x\\sin x\\). Differentiating again, \\(\\frac{d^2y}{dx^2} = -\\sin x - (\\sin x + x\\cos x)\\). Hence \\(\\frac{d^2y}{dx^2} = -(x\\cos x + 2\\sin x)\\)."
+  },
+  {
+    "id": "b22f22a7-76a2-4d1b-97f3-b03dcbb5ff9b",
+    "ref": "Ex 5.7 Q4",
+    "solution": "Let \\(y = \\log x\\). Differentiating once, \\(\\frac{dy}{dx} = \\frac{1}{x}\\). Differentiating again, \\(\\frac{d^2y}{dx^2} = -\\frac{1}{x^2}\\)."
+  },
+  {
+    "id": "90f45b4f-50cc-49e4-a27f-017769886c3f",
+    "ref": "Ex 5.7 Q5",
+    "solution": "Let \\(y = x^3\\log x\\). By the product rule, \\(\\frac{dy}{dx} = 3x^2\\log x + x^3\\cdot\\frac{1}{x} = 3x^2\\log x + x^2\\). Differentiating again, \\(\\frac{d^2y}{dx^2} = 6x\\log x + 3x + 2x\\). Hence \\(\\frac{d^2y}{dx^2} = x(6\\log x + 5)\\)."
+  },
+  {
+    "id": "64b33edf-2fc6-49b4-abd6-bd4c271ae8c4",
+    "ref": "Ex 5.7 Q6",
+    "solution": "Let \\(y = e^x\\sin 5x\\). By the product rule, \\(\\frac{dy}{dx} = e^x\\sin 5x + 5e^x\\cos 5x = e^x(\\sin 5x + 5\\cos 5x)\\). Differentiating again, \\(\\frac{d^2y}{dx^2} = e^x(\\sin 5x + 5\\cos 5x) + e^x(5\\cos 5x - 25\\sin 5x) = e^x(10\\cos 5x - 24\\sin 5x)\\). Hence \\(\\frac{d^2y}{dx^2} = 2e^x(5\\cos 5x - 12\\sin 5x)\\)."
+  },
+  {
+    "id": "439bb99e-97c3-4484-a008-85053919cbbb",
+    "ref": "Ex 5.7 Q7",
+    "solution": "Let \\(y = e^{6x}\\cos 3x\\). By the product rule, \\(\\frac{dy}{dx} = 6e^{6x}\\cos 3x - 3e^{6x}\\sin 3x = e^{6x}(6\\cos 3x - 3\\sin 3x)\\). Differentiating again, \\(\\frac{d^2y}{dx^2} = 6e^{6x}(6\\cos 3x - 3\\sin 3x) + e^{6x}(-18\\sin 3x - 9\\cos 3x) = e^{6x}(27\\cos 3x - 36\\sin 3x)\\). Hence \\(\\frac{d^2y}{dx^2} = 9e^{6x}(3\\cos 3x - 4\\sin 3x)\\)."
+  },
+  {
+    "id": "c6b9b9d4-3f2a-471b-bf47-ed68e9a75266",
+    "ref": "Ex 5.7 Q8",
+    "solution": "Let \\(y = \\tan^{-1} x\\). Differentiating once, \\(\\frac{dy}{dx} = \\frac{1}{1+x^2} = (1+x^2)^{-1}\\). Differentiating again by the chain rule, \\(\\frac{d^2y}{dx^2} = -(1+x^2)^{-2}\\cdot 2x\\). Hence \\(\\frac{d^2y}{dx^2} = -\\frac{2x}{(1+x^2)^2}\\)."
+  },
+  {
+    "id": "57940a87-ef65-4fb4-93b2-cc6743d40c40",
+    "ref": "Ex 5.7 Q9",
+    "solution": "Let \\(y = \\log(\\log x)\\). By the chain rule, \\(\\frac{dy}{dx} = \\frac{1}{x\\log x} = (x\\log x)^{-1}\\). Differentiating again, \\(\\frac{d^2y}{dx^2} = -\\frac{1}{(x\\log x)^2}\\cdot\\frac{d}{dx}(x\\log x) = -\\frac{\\log x + 1}{(x\\log x)^2}\\). Hence \\(\\frac{d^2y}{dx^2} = -\\frac{1 + \\log x}{x^2(\\log x)^2}\\)."
+  },
+  {
+    "id": "23c28fa8-c620-4d44-8e28-a53f2b5510d8",
+    "ref": "Ex 5.7 Q10",
+    "solution": "Let \\(y = \\sin(\\log x)\\). By the chain rule, \\(\\frac{dy}{dx} = \\frac{\\cos(\\log x)}{x}\\). Differentiating again by the quotient rule, \\(\\frac{d^2y}{dx^2} = \\frac{-\\sin(\\log x)\\cdot\\frac{1}{x}\\cdot x - \\cos(\\log x)}{x^2}\\). Hence \\(\\frac{d^2y}{dx^2} = -\\frac{\\sin(\\log x) + \\cos(\\log x)}{x^2}\\)."
+  },
+  {
+    "id": "df72e0fb-f21e-403b-a73b-187884114299",
+    "ref": "Ex 5.7 Q11",
+    "solution": "Given \\(y = 5\\cos x - 3\\sin x\\), differentiate once to get \\(\\frac{dy}{dx} = -5\\sin x - 3\\cos x\\). Differentiating again, \\(\\frac{d^2y}{dx^2} = -5\\cos x + 3\\sin x = -(5\\cos x - 3\\sin x) = -y\\). Hence \\(\\frac{d^2y}{dx^2} + y = 0\\)."
+  },
+  {
+    "id": "d5e021f4-9f0c-4362-b0ab-ecaba24f5ae6",
+    "ref": "Ex 5.7 Q12",
+    "solution": "Let \\(y = \\cos^{-1} x\\), so \\(x = \\cos y\\) and \\(\\frac{dy}{dx} = -\\frac{1}{\\sqrt{1-x^2}} = -(1-x^2)^{-\\frac{1}{2}}\\). Differentiating again by the chain rule, \\(\\frac{d^2y}{dx^2} = \\frac{1}{2}(1-x^2)^{-\\frac{3}{2}}\\cdot(-2x) = -\\frac{x}{(1-x^2)^{\\frac{3}{2}}}\\). Now express this in terms of \\(y\\): since \\(x = \\cos y\\), \\(1 - x^2 = \\sin^2 y\\) and \\((1-x^2)^{\\frac{3}{2}} = \\sin^3 y\\) (taking \\(\\sin y \\ge 0\\), as \\(y \\in [0,\\pi]\\)). Hence \\(\\frac{d^2y}{dx^2} = -\\frac{\\cos y}{\\sin^3 y} = -\\cot y\\,\\operatorname{cosec}^2 y\\)."
+  },
+  {
+    "id": "e61a3dff-b99a-4e00-b5c4-1f53ff02f9b4",
+    "ref": "Ex 5.7 Q13",
+    "solution": "Given \\(y = 3\\cos(\\log x) + 4\\sin(\\log x)\\), differentiate once to get \\(y_1 = \\frac{-3\\sin(\\log x) + 4\\cos(\\log x)}{x}\\), that is \\(xy_1 = -3\\sin(\\log x) + 4\\cos(\\log x)\\). Differentiating this equation w.r.t. \\(x\\), \\(y_1 + xy_2 = \\frac{-3\\cos(\\log x) - 4\\sin(\\log x)}{x} = -\\frac{y}{x}\\). Multiplying throughout by \\(x\\), \\(xy_1 + x^2y_2 = -y\\). Hence \\(x^2y_2 + xy_1 + y = 0\\)."
+  },
+  {
+    "id": "2f724a3f-fe6f-40de-af7a-5291f6092365",
+    "ref": "Ex 5.7 Q14",
+    "solution": "Given \\(y = \\mathrm{A}e^{mx} + \\mathrm{B}e^{nx}\\), differentiate twice: \\(\\frac{dy}{dx} = \\mathrm{A}me^{mx} + \\mathrm{B}ne^{nx}\\) and \\(\\frac{d^2y}{dx^2} = \\mathrm{A}m^2e^{mx} + \\mathrm{B}n^2e^{nx}\\). Substituting into the left side and grouping the two exponentials, \\(\\frac{d^2y}{dx^2} - (m+n)\\frac{dy}{dx} + mny = \\mathrm{A}e^{mx}\\left[m^2 - (m+n)m + mn\\right] + \\mathrm{B}e^{nx}\\left[n^2 - (m+n)n + mn\\right]\\). Each bracket vanishes, since \\(m^2 - m^2 - mn + mn = 0\\) and \\(n^2 - mn - n^2 + mn = 0\\). Hence \\(\\frac{d^2y}{dx^2} - (m+n)\\frac{dy}{dx} + mny = 0\\)."
+  },
+  {
+    "id": "427a1d09-2356-4555-a22a-100d2a75447e",
+    "ref": "Ex 5.7 Q15",
+    "solution": "Given \\(y = 500e^{7x} + 600e^{-7x}\\), differentiate once to get \\(\\frac{dy}{dx} = 3500e^{7x} - 4200e^{-7x}\\). Differentiating again, \\(\\frac{d^2y}{dx^2} = 24500e^{7x} + 29400e^{-7x} = 49\\left(500e^{7x} + 600e^{-7x}\\right)\\). Hence \\(\\frac{d^2y}{dx^2} = 49y\\)."
+  },
+  {
+    "id": "afe969b1-a194-4a4d-91dc-06a0d5664ffd",
+    "ref": "Ex 5.7 Q16",
+    "solution": "From \\(e^y(x+1) = 1\\) we get \\(e^y = \\frac{1}{x+1}\\), so taking logarithms \\(y = -\\log(x+1)\\), \\(x > -1\\). Differentiating once, \\(\\frac{dy}{dx} = -\\frac{1}{x+1}\\). Differentiating again, \\(\\frac{d^2y}{dx^2} = \\frac{1}{(x+1)^2}\\). Since \\(\\left(\\frac{dy}{dx}\\right)^2 = \\left(-\\frac{1}{x+1}\\right)^2 = \\frac{1}{(x+1)^2}\\), the two agree. Hence \\(\\frac{d^2y}{dx^2} = \\left(\\frac{dy}{dx}\\right)^2\\)."
+  },
+  {
+    "id": "5b74a8cb-241a-46b2-8ab4-fd8e9161772c",
+    "ref": "Ex 5.7 Q17",
+    "solution": "Given \\(y = (\\tan^{-1} x)^2\\), differentiate once to get \\(y_1 = \\frac{2\\tan^{-1} x}{1+x^2}\\), that is \\((1+x^2)y_1 = 2\\tan^{-1} x\\). Differentiating this equation w.r.t. \\(x\\), \\(2xy_1 + (1+x^2)y_2 = \\frac{2}{1+x^2}\\). Multiplying throughout by \\((1+x^2)\\), \\(2x(1+x^2)y_1 + (1+x^2)^2y_2 = 2\\). Hence \\((x^2+1)^2y_2 + 2x(x^2+1)y_1 = 2\\)."
+  },
+  {
+    "id": "d6934bbb-d2c1-4cfe-84e5-a4ad0bd21c90",
+    "ref": "Misc Q3",
+    "solution": "Let \\(y = (5x)^{3\\cos 2x}\\). Taking logarithms, \\(\\log y = 3\\cos 2x\\,\\log(5x)\\). Differentiating implicitly, and using \\(\\frac{d}{dx}\\log(5x) = \\frac{1}{x}\\), \\(\\frac{1}{y}\\frac{dy}{dx} = -6\\sin 2x\\,\\log(5x) + \\frac{3\\cos 2x}{x}\\). Hence \\(\\frac{dy}{dx} = (5x)^{3\\cos 2x}\\left[\\frac{3\\cos 2x}{x} - 6\\sin 2x\\,\\log(5x)\\right]\\)."
+  },
+  {
+    "id": "c8022f2d-fc02-4bd8-98f0-a4be9993865c",
+    "ref": "Misc Q7",
+    "solution": "Let \\(y = (\\log x)^{\\log x}\\). Taking logarithms, \\(\\log y = \\log x\\,\\log(\\log x)\\). Differentiating implicitly, \\(\\frac{1}{y}\\frac{dy}{dx} = \\frac{1}{x}\\log(\\log x) + \\log x\\cdot\\frac{1}{x\\log x} = \\frac{1}{x}\\left[\\log(\\log x) + 1\\right]\\). Hence \\(\\frac{dy}{dx} = \\frac{(\\log x)^{\\log x}\\left[1 + \\log(\\log x)\\right]}{x}\\), \\(x > 1\\)."
+  },
+  {
+    "id": "9b4ec051-07f8-4005-bb02-75a737632884",
+    "ref": "Misc Q9",
+    "solution": "Put \\(u = \\sin x - \\cos x\\), which is positive on the given interval, so \\(y = u^u\\). Taking logarithms, \\(\\log y = u\\log u\\). Differentiating implicitly, \\(\\frac{1}{y}\\frac{dy}{dx} = \\frac{du}{dx}\\left(\\log u + 1\\right)\\), where \\(\\frac{du}{dx} = \\cos x + \\sin x\\). Hence \\(\\frac{dy}{dx} = (\\sin x - \\cos x)^{(\\sin x - \\cos x)}(\\cos x + \\sin x)\\left[1 + \\log(\\sin x - \\cos x)\\right]\\), \\(\\frac{\\pi}{4} < x < \\frac{3\\pi}{4}\\)."
+  },
+  {
+    "id": "55b99008-6db0-41a3-9d3d-71385ddb399e",
+    "ref": "Misc Q10",
+    "solution": "Differentiate the four terms separately. For \\(x^x\\), take logarithms: \\(\\log u = x\\log x\\) gives \\(\\frac{du}{dx} = x^x(1 + \\log x)\\). The term \\(x^a\\) is a power with constant index, so its derivative is \\(ax^{a-1}\\). The term \\(a^x\\) is an exponential with constant base, so its derivative is \\(a^x\\log a\\). The term \\(a^a\\) is a constant, so its derivative is \\(0\\). Hence \\(\\frac{dy}{dx} = x^x(1 + \\log x) + ax^{a-1} + a^x\\log a\\)."
+  },
+  {
+    "id": "1ecae927-9b9f-490c-944b-d12da0df0e9f",
+    "ref": "Misc Q11",
+    "solution": "Write \\(y = u + v\\) with \\(u = x^{x^2-3}\\) and \\(v = (x-3)^{x^2}\\), and differentiate each term separately. From \\(\\log u = (x^2-3)\\log x\\), \\(\\frac{1}{u}\\frac{du}{dx} = 2x\\log x + \\frac{x^2-3}{x}\\), so \\(\\frac{du}{dx} = x^{x^2-3}\\left[2x\\log x + \\frac{x^2-3}{x}\\right]\\). From \\(\\log v = x^2\\log(x-3)\\), \\(\\frac{1}{v}\\frac{dv}{dx} = 2x\\log(x-3) + \\frac{x^2}{x-3}\\), so \\(\\frac{dv}{dx} = (x-3)^{x^2}\\left[2x\\log(x-3) + \\frac{x^2}{x-3}\\right]\\). Hence \\(\\frac{dy}{dx} = x^{x^2-3}\\left[2x\\log x + \\frac{x^2-3}{x}\\right] + (x-3)^{x^2}\\left[2x\\log(x-3) + \\frac{x^2}{x-3}\\right]\\), \\(x > 3\\)."
+  },
+  {
+    "id": "a986c0f0-edfc-4f6a-b0e7-0828407bddf5",
+    "ref": "Misc Q15",
+    "solution": "Differentiate \\((x-a)^2 + (y-b)^2 = c^2\\) w.r.t. \\(x\\): \\(2(x-a) + 2(y-b)\\frac{dy}{dx} = 0\\), so \\(x - a = -(y-b)\\frac{dy}{dx}\\). Differentiating again, \\(1 + \\left(\\frac{dy}{dx}\\right)^2 + (y-b)\\frac{d^2y}{dx^2} = 0\\), so \\(y - b = -\\frac{1+\\left(\\frac{dy}{dx}\\right)^2}{\\frac{d^2y}{dx^2}}\\) and therefore \\(x - a = \\frac{\\frac{dy}{dx}\\left[1+\\left(\\frac{dy}{dx}\\right)^2\\right]}{\\frac{d^2y}{dx^2}}\\). Substituting both into the given equation, \\(\\frac{\\left[1+\\left(\\frac{dy}{dx}\\right)^2\\right]^2\\left[\\left(\\frac{dy}{dx}\\right)^2 + 1\\right]}{\\left(\\frac{d^2y}{dx^2}\\right)^2} = c^2\\), that is \\(\\frac{\\left[1+\\left(\\frac{dy}{dx}\\right)^2\\right]^3}{\\left(\\frac{d^2y}{dx^2}\\right)^2} = c^2\\). Taking square roots, \\(\\frac{\\left[1+\\left(\\frac{dy}{dx}\\right)^2\\right]^{\\frac{3}{2}}}{\\frac{d^2y}{dx^2}} = \\pm c\\), the sign depending only on which arc of the circle is taken. Hence the expression has constant magnitude \\(c\\), independent of \\(a\\) and \\(b\\)."
+  },
+  {
+    "id": "9e4e8e26-cb52-4fee-8e3f-fef1e20de3a1",
+    "ref": "Misc Q17",
+    "solution": "Differentiate each equation w.r.t. \\(t\\), using the product rule: \\(\\frac{dx}{dt} = a(-\\sin t + \\sin t + t\\cos t) = at\\cos t\\) and \\(\\frac{dy}{dt} = a(\\cos t - \\cos t + t\\sin t) = at\\sin t\\). So \\(\\frac{dy}{dx} = \\frac{at\\sin t}{at\\cos t} = \\tan t\\). For the second derivative, differentiate \\(\\tan t\\) w.r.t. \\(x\\) through \\(t\\): \\(\\frac{d^2y}{dx^2} = \\frac{d}{dt}(\\tan t)\\cdot\\frac{dt}{dx} = \\sec^2 t\\cdot\\frac{1}{at\\cos t}\\). Hence \\(\\frac{d^2y}{dx^2} = \\frac{\\sec^3 t}{at}\\), for \\(t \\ne 0\\) and \\(\\cos t \\ne 0\\)."
+  },
+  {
+    "id": "cc1fd629-9849-4bf9-b1fd-826f186659c9",
+    "ref": "Misc Q18",
+    "solution": "Write \\(f(x) = |x|^3 = x^2|x|\\). For \\(x > 0\\), \\(f(x) = x^3\\) so \\(f'(x) = 3x^2\\); for \\(x < 0\\), \\(f(x) = -x^3\\) so \\(f'(x) = -3x^2\\). At \\(x = 0\\), \\(\\lim_{h\\to 0}\\frac{f(h)-f(0)}{h} = \\lim_{h\\to 0}\\frac{|h|^3}{h} = 0\\), so \\(f'(0) = 0\\). These three cases combine as \\(f'(x) = 3x|x|\\) for every real \\(x\\). Differentiating again: for \\(x > 0\\), \\(f''(x) = 6x\\); for \\(x < 0\\), \\(f''(x) = -6x\\). At \\(x = 0\\), \\(\\lim_{h\\to 0}\\frac{f'(h)-f'(0)}{h} = \\lim_{h\\to 0}\\frac{3h|h|}{h} = \\lim_{h\\to 0}3|h| = 0\\), which exists, so \\(f''(0) = 0\\). Thus \\(f''\\) exists for all real \\(x\\), and \\(f''(x) = 6|x|\\)."
+  },
+  {
+    "id": "f1260966-7ab8-45b5-970a-1b5decfa57fc",
+    "ref": "Misc Q22",
+    "solution": "Given \\(y = e^{a\\cos^{-1} x}\\), differentiate once: \\(\\frac{dy}{dx} = e^{a\\cos^{-1} x}\\cdot\\left(-\\frac{a}{\\sqrt{1-x^2}}\\right) = -\\frac{ay}{\\sqrt{1-x^2}}\\), that is \\(\\sqrt{1-x^2}\\,\\frac{dy}{dx} = -ay\\). Squaring to clear the radical, \\((1-x^2)\\left(\\frac{dy}{dx}\\right)^2 = a^2y^2\\). Differentiating this w.r.t. \\(x\\), \\(-2x\\left(\\frac{dy}{dx}\\right)^2 + (1-x^2)\\cdot 2\\frac{dy}{dx}\\frac{d^2y}{dx^2} = 2a^2y\\frac{dy}{dx}\\). Dividing throughout by \\(2\\frac{dy}{dx}\\) (which is non-zero for \\(a \\ne 0\\)), \\((1-x^2)\\frac{d^2y}{dx^2} - x\\frac{dy}{dx} = a^2y\\). Hence \\(\\left(1-x^2\\right)\\frac{d^2y}{dx^2} - x\\frac{dy}{dx} - a^2y = 0\\)."
+  }
+]

@@ -1,0 +1,267 @@
+[
+  {
+    "ref": "12.1 Eg.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Graphical Solution and the Feasible Region",
+    "difficulty": "EASY",
+    "stem": "Solve the following linear programming problem graphically:\n\nMaximise \\(Z = 4x + y\\)\n\nsubject to the constraints:\n\n\\(x + y \\le 50\\)\n\n\\(3x + y \\le 90\\)\n\n\\(x \\ge 0\\), \\(y \\ge 0\\)",
+    "solution": "The shaded region in Fig 12.2 is the feasible region determined by the system of constraints (2) to (4). We observe that the feasible region OABC is **bounded**. So, we now use Corner Point Method to determine the maximum value of \\(Z\\).\n\nThe coordinates of the corner points O, A, B and C are \\((0, 0)\\), \\((30, 0)\\), \\((20, 30)\\) and \\((0, 50)\\) respectively. Now we evaluate \\(Z\\) at each corner point.\n\n| Corner Point | Corresponding value of \\(Z\\) |\n|---|---|\n| \\((0, 0)\\) | 0 |\n| \\((30, 0)\\) | **120** — Maximum |\n| \\((20, 30)\\) | 110 |\n| \\((0, 50)\\) | 50 |\n\nHence, maximum value of \\(Z\\) is 120 at the point \\((30, 0)\\).",
+    "_lpp": {
+      "objective": "Maximise Z = 4x + y",
+      "constraints": [
+        "x + y <= 50",
+        "3x + y <= 90",
+        "x >= 0",
+        "y >= 0"
+      ]
+    }
+  },
+  {
+    "ref": "12.1 Eg.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Graphical Solution and the Feasible Region",
+    "difficulty": "MODERATE",
+    "stem": "Solve the following linear programming problem graphically:\n\nMinimise \\(Z = 200x + 500y\\)\n\nsubject to the constraints:\n\n\\(x + 2y \\ge 10\\)\n\n\\(3x + 4y \\le 24\\)\n\n\\(x \\ge 0\\), \\(y \\ge 0\\)",
+    "solution": "The shaded region in Fig 12.3 is the feasible region ABC determined by the system of constraints (2) to (4), which is **bounded**. The coordinates of corner points A, B and C are \\((0, 5)\\), \\((4, 3)\\) and \\((0, 6)\\) respectively. Now we evaluate \\(Z = 200x + 500y\\) at these points.\n\n| Corner Point | Corresponding value of \\(Z\\) |\n|---|---|\n| \\((0, 5)\\) | 2500 |\n| \\((4, 3)\\) | **2300** — Minimum |\n| \\((0, 6)\\) | 3000 |\n\nHence, minimum value of \\(Z\\) is 2300 attained at the point \\((4, 3)\\).",
+    "_lpp": {
+      "objective": "Minimise Z = 200x + 500y",
+      "constraints": [
+        "x + 2y >= 10",
+        "3x + 4y <= 24",
+        "x >= 0",
+        "y >= 0"
+      ]
+    }
+  },
+  {
+    "ref": "12.1 Eg.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Graphical Solution and the Feasible Region",
+    "difficulty": "HARD",
+    "stem": "Solve the following problem graphically:\n\nMinimise and Maximise \\(Z = 3x + 9y\\)\n\nsubject to the constraints:\n\n\\(x + 3y \\le 60\\)\n\n\\(x + y \\ge 10\\)\n\n\\(x \\le y\\)\n\n\\(x \\ge 0\\), \\(y \\ge 0\\)",
+    "solution": "First of all, let us graph the feasible region of the system of linear inequalities (2) to (5). The feasible region ABCD is shown in the Fig 12.4. Note that the region is **bounded**. The coordinates of the corner points A, B, C and D are \\((0, 10)\\), \\((5, 5)\\), \\((15, 15)\\) and \\((0, 20)\\) respectively.\n\n| Corner Point | Corresponding value of \\(Z = 3x + 9y\\) |\n|---|---|\n| A \\((0, 10)\\) | 90 |\n| B \\((5, 5)\\) | **60** — Minimum |\n| C \\((15, 15)\\) | **180** — Maximum (multiple optimal solutions) |\n| D \\((0, 20)\\) | **180** — Maximum (multiple optimal solutions) |\n\nWe now find the minimum and maximum value of \\(Z\\). From the table, we find that the minimum value of \\(Z\\) is 60 at the point B \\((5, 5)\\) of the feasible region.\n\nThe maximum value of \\(Z\\) on the feasible region occurs at the two corner points C \\((15, 15)\\) and D \\((0, 20)\\) and it is 180 in each case.\n\n**Remark** Observe that in the above example, the problem has multiple optimal solutions at the corner points C and D, i.e. the both points produce same maximum value 180. In such cases, you can see that every point on the line segment CD joining the two corner points C and D also give the same maximum value. Same is also true in the case if the two points produce same minimum value.",
+    "_lpp": {
+      "objective": "Minimise and Maximise Z = 3x + 9y",
+      "constraints": [
+        "x + 3y <= 60",
+        "x + y >= 10",
+        "x <= y",
+        "x >= 0",
+        "y >= 0"
+      ]
+    }
+  },
+  {
+    "ref": "12.1 Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Graphical Solution and the Feasible Region",
+    "difficulty": "HARD",
+    "stem": "Determine graphically the minimum value of the objective function\n\n\\(Z = -50x + 20y\\)\n\nsubject to the constraints:\n\n\\(2x - y \\ge -5\\)\n\n\\(3x + y \\ge 3\\)\n\n\\(2x - 3y \\le 12\\)\n\n\\(x \\ge 0\\), \\(y \\ge 0\\)",
+    "solution": "First of all, let us graph the feasible region of the system of inequalities (2) to (5). The feasible region (shaded) is shown in the Fig 12.5. Observe that the feasible region is **unbounded**.\n\nWe now evaluate \\(Z\\) at the corner points.\n\n| Corner Point | \\(Z = -50x + 20y\\) |\n|---|---|\n| \\((0, 5)\\) | 100 |\n| \\((0, 3)\\) | 60 |\n| \\((1, 0)\\) | \\(-50\\) |\n| \\((6, 0)\\) | \\(-300\\) — smallest |\n\nFrom this table, we find that \\(-300\\) is the smallest value of \\(Z\\) at the corner point \\((6, 0)\\). Can we say that minimum value of \\(Z\\) is \\(-300\\)? Note that if the region would have been bounded, this smallest value of \\(Z\\) is the minimum value of \\(Z\\) (Theorem 2). But here we see that the feasible region is unbounded. Therefore, \\(-300\\) may or may not be the minimum value of \\(Z\\). To decide this issue, we graph the inequality\n\n\\(-50x + 20y < -300\\) (see Step 3(ii) of Corner Point Method)\n\ni.e., \\(-5x + 2y < -30\\)\n\nand check whether the resulting open half plane has points in common with feasible region or not. If it has common points, then \\(-300\\) will not be the minimum value of \\(Z\\). Otherwise, \\(-300\\) will be the minimum value of \\(Z\\).\n\nAs shown in the Fig 12.5, it has common points. Therefore, \\(Z = -50x + 20y\\) has no minimum value subject to the given constraints.",
+    "_lpp": {
+      "objective": "Minimise Z = -50x + 20y",
+      "constraints": [
+        "2x - y >= -5",
+        "3x + y >= 3",
+        "2x - 3y <= 12",
+        "x >= 0",
+        "y >= 0"
+      ]
+    }
+  },
+  {
+    "ref": "12.1 Eg.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Graphical Solution and the Feasible Region",
+    "difficulty": "MODERATE",
+    "stem": "Minimise \\(Z = 3x + 2y\\)\n\nsubject to the constraints:\n\n\\(x + y \\ge 8\\)\n\n\\(3x + 5y \\le 15\\)\n\n\\(x \\ge 0\\), \\(y \\ge 0\\)",
+    "solution": "Let us graph the inequalities (1) to (3) (Fig 12.6). Is there any feasible region? Why is so?\n\nFrom Fig 12.6, you can see that there is no point satisfying all the constraints simultaneously. Thus, the problem is having no feasible region and hence no feasible solution.",
+    "_lpp": {
+      "objective": "Minimise Z = 3x + 2y",
+      "constraints": [
+        "x + y >= 8",
+        "3x + 5y <= 15",
+        "x >= 0",
+        "y >= 0"
+      ]
+    }
+  },
+  {
+    "ref": "Ex 12.1 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Graphical Solution and the Feasible Region",
+    "difficulty": "EASY",
+    "stem": "Solve the following Linear Programming Problem graphically:\n\nMaximise \\(Z = 3x + 4y\\)\n\nsubject to the constraints : \\(x + y \\le 4\\), \\(x \\ge 0\\), \\(y \\ge 0\\).",
+    "_lpp": {
+      "objective": "Maximise Z = 3x + 4y",
+      "constraints": [
+        "x + y <= 4",
+        "x >= 0",
+        "y >= 0"
+      ]
+    }
+  },
+  {
+    "ref": "Ex 12.1 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Graphical Solution and the Feasible Region",
+    "difficulty": "MODERATE",
+    "stem": "Solve the following Linear Programming Problem graphically:\n\nMinimise \\(Z = -3x + 4y\\)\n\nsubject to \\(x + 2y \\le 8\\), \\(3x + 2y \\le 12\\), \\(x \\ge 0\\), \\(y \\ge 0\\).",
+    "_lpp": {
+      "objective": "Minimise Z = -3x + 4y",
+      "constraints": [
+        "x + 2y <= 8",
+        "3x + 2y <= 12",
+        "x >= 0",
+        "y >= 0"
+      ]
+    }
+  },
+  {
+    "ref": "Ex 12.1 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Graphical Solution and the Feasible Region",
+    "difficulty": "MODERATE",
+    "stem": "Solve the following Linear Programming Problem graphically:\n\nMaximise \\(Z = 5x + 3y\\)\n\nsubject to \\(3x + 5y \\le 15\\), \\(5x + 2y \\le 10\\), \\(x \\ge 0\\), \\(y \\ge 0\\).",
+    "_lpp": {
+      "objective": "Maximise Z = 5x + 3y",
+      "constraints": [
+        "3x + 5y <= 15",
+        "5x + 2y <= 10",
+        "x >= 0",
+        "y >= 0"
+      ]
+    }
+  },
+  {
+    "ref": "Ex 12.1 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Graphical Solution and the Feasible Region",
+    "difficulty": "MODERATE",
+    "stem": "Solve the following Linear Programming Problem graphically:\n\nMinimise \\(Z = 3x + 5y\\)\n\nsuch that \\(x + 3y \\ge 3\\), \\(x + y \\ge 2\\), \\(x, y \\ge 0\\).",
+    "_lpp": {
+      "objective": "Minimise Z = 3x + 5y",
+      "constraints": [
+        "x + 3y >= 3",
+        "x + y >= 2",
+        "x >= 0",
+        "y >= 0"
+      ]
+    }
+  },
+  {
+    "ref": "Ex 12.1 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Graphical Solution and the Feasible Region",
+    "difficulty": "MODERATE",
+    "stem": "Solve the following Linear Programming Problem graphically:\n\nMaximise \\(Z = 3x + 2y\\)\n\nsubject to \\(x + 2y \\le 10\\), \\(3x + y \\le 15\\), \\(x, y \\ge 0\\).",
+    "_lpp": {
+      "objective": "Maximise Z = 3x + 2y",
+      "constraints": [
+        "x + 2y <= 10",
+        "3x + y <= 15",
+        "x >= 0",
+        "y >= 0"
+      ]
+    }
+  },
+  {
+    "ref": "Ex 12.1 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Graphical Solution and the Feasible Region",
+    "difficulty": "HARD",
+    "stem": "Solve the following Linear Programming Problem graphically:\n\nMinimise \\(Z = x + 2y\\)\n\nsubject to \\(2x + y \\ge 3\\), \\(x + 2y \\ge 6\\), \\(x, y \\ge 0\\).\n\nShow that the minimum of \\(Z\\) occurs at more than two points.",
+    "_note": "The sentence 'Show that the minimum of Z occurs at more than two points.' is printed FLUSH TO THE LEFT MARGIN on p-10, outside the numbered-item indent that every other question in this exercise uses. Transcribed as part of Q6 (it is the standard NCERT wording for this question and follows directly from Q6's constraints); the un-indented setting is a typesetting oddity, not a separate instruction.",
+    "_lpp": {
+      "objective": "Minimise Z = x + 2y",
+      "constraints": [
+        "2x + y >= 3",
+        "x + 2y >= 6",
+        "x >= 0",
+        "y >= 0"
+      ]
+    }
+  },
+  {
+    "ref": "Ex 12.1 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Graphical Solution and the Feasible Region",
+    "difficulty": "HARD",
+    "stem": "Solve the following Linear Programming Problem graphically:\n\nMinimise and Maximise \\(Z = 5x + 10y\\)\n\nsubject to \\(x + 2y \\le 120\\), \\(x + y \\ge 60\\), \\(x - 2y \\ge 0\\), \\(x, y \\ge 0\\).",
+    "_lpp": {
+      "objective": "Minimise and Maximise Z = 5x + 10y",
+      "constraints": [
+        "x + 2y <= 120",
+        "x + y >= 60",
+        "x - 2y >= 0",
+        "x >= 0",
+        "y >= 0"
+      ]
+    }
+  },
+  {
+    "ref": "Ex 12.1 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Graphical Solution and the Feasible Region",
+    "difficulty": "HARD",
+    "stem": "Solve the following Linear Programming Problem graphically:\n\nMinimise and Maximise \\(Z = x + 2y\\)\n\nsubject to \\(x + 2y \\ge 100\\), \\(2x - y \\le 0\\), \\(2x + y \\le 200\\); \\(x, y \\ge 0\\).",
+    "_lpp": {
+      "objective": "Minimise and Maximise Z = x + 2y",
+      "constraints": [
+        "x + 2y >= 100",
+        "2x - y <= 0",
+        "2x + y <= 200",
+        "x >= 0",
+        "y >= 0"
+      ]
+    }
+  },
+  {
+    "ref": "Ex 12.1 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Graphical Solution and the Feasible Region",
+    "difficulty": "HARD",
+    "stem": "Solve the following Linear Programming Problem graphically:\n\nMaximise \\(Z = -x + 2y\\), subject to the constraints:\n\n\\(x \\ge 3\\), \\(x + y \\ge 5\\), \\(x + 2y \\ge 6\\), \\(y \\ge 0\\).",
+    "_note": "Q9 prints no separate \\(x \\ge 0\\) constraint — the non-negativity of \\(x\\) is implied by \\(x \\ge 3\\). Transcribed exactly as printed.",
+    "_lpp": {
+      "objective": "Maximise Z = -x + 2y",
+      "constraints": [
+        "x >= 3",
+        "x + y >= 5",
+        "x + 2y >= 6",
+        "y >= 0"
+      ]
+    }
+  },
+  {
+    "ref": "Ex 12.1 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Graphical Solution and the Feasible Region",
+    "difficulty": "MODERATE",
+    "stem": "Solve the following Linear Programming Problem graphically:\n\nMaximise \\(Z = x + y\\), subject to \\(x - y \\le -1\\), \\(-x + y \\le 0\\), \\(x, y \\ge 0\\).",
+    "_lpp": {
+      "objective": "Maximise Z = x + y",
+      "constraints": [
+        "x - y <= -1",
+        "-x + y <= 0",
+        "x >= 0",
+        "y >= 0"
+      ]
+    }
+  }
+]

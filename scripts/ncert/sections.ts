@@ -16,6 +16,103 @@
 import type { SectionSpec } from "./lib";
 
 export const SECTIONS: Record<string, SectionSpec[]> = {
+  // ── Ch.2 Inverse Trigonometric Functions (12th, Part 1). Two numbered
+  //    exercises + a terminal Miscellaneous block. Examples 1-2 precede
+  //    Exercise 2.1, Examples 3-5 precede Exercise 2.2, Example 6 is the book's
+  //    single Miscellaneous Example.
+  inverseTrig: [
+    { group: "2.2 Basic Concepts", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.1 Eg"] },
+    { group: "2.2 Basic Concepts", label: "Exercise 2.1", kind: "exercise", refPrefixes: ["Ex 2.1 Q"] },
+    { group: "2.3 Properties of Inverse Trigonometric Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.2 Eg"] },
+    { group: "2.3 Properties of Inverse Trigonometric Functions", label: "Exercise 2.2", kind: "exercise", refPrefixes: ["Ex 2.2 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 2", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 2", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // ── Ch.5 Continuity and Differentiability (12th, Part 1) — the book's largest
+  //    chapter: SEVEN numbered exercises + a Miscellaneous block. Examples run
+  //    1-43 continuously and band to the exercise each precedes (1-20 → Ex 5.1,
+  //    21 → 5.2, 22-24 → 5.3, 25-26 → 5.4, 27-30 → 5.5, 31-34 → 5.6, 35-38 → 5.7,
+  //    39-43 → Miscellaneous).
+  //    **§5.5 HAS NO PRINTED SECTION HEADING.** The book's numbered sections run
+  //    5.1, 5.2, 5.2.1, 5.3, 5.3.1-5.3.3, 5.4, 5.6, 5.7 — yet Exercise 5.5 exists
+  //    and drills logarithmic differentiation. The group title below therefore
+  //    names what the exercise teaches rather than quoting a heading that is not
+  //    on the page, and says so, so nobody "fixes" it later.
+  continuityDiff: [
+    { group: "5.2 Continuity", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.1 Eg"] },
+    { group: "5.2 Continuity", label: "Exercise 5.1", kind: "exercise", refPrefixes: ["Ex 5.1 Q"] },
+    { group: "5.3.1 Derivatives of Composite Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.2 Eg"] },
+    { group: "5.3.1 Derivatives of Composite Functions", label: "Exercise 5.2", kind: "exercise", refPrefixes: ["Ex 5.2 Q"] },
+    { group: "5.3.2-5.3.3 Derivatives of Implicit and Inverse Trigonometric Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.3 Eg"] },
+    { group: "5.3.2-5.3.3 Derivatives of Implicit and Inverse Trigonometric Functions", label: "Exercise 5.3", kind: "exercise", refPrefixes: ["Ex 5.3 Q"] },
+    { group: "5.4 Exponential and Logarithmic Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.4 Eg"] },
+    { group: "5.4 Exponential and Logarithmic Functions", label: "Exercise 5.4", kind: "exercise", refPrefixes: ["Ex 5.4 Q"] },
+    { group: "5.5 Logarithmic Differentiation", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.5 Eg"] },
+    { group: "5.5 Logarithmic Differentiation", label: "Exercise 5.5", kind: "exercise", refPrefixes: ["Ex 5.5 Q"] },
+    { group: "5.6 Derivatives of Functions in Parametric Forms", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.6 Eg"] },
+    { group: "5.6 Derivatives of Functions in Parametric Forms", label: "Exercise 5.6", kind: "exercise", refPrefixes: ["Ex 5.6 Q"] },
+    { group: "5.7 Second Order Derivative", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.7 Eg"] },
+    { group: "5.7 Second Order Derivative", label: "Exercise 5.7", kind: "exercise", refPrefixes: ["Ex 5.7 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 5", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 5", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // ── Ch.6 Application of Derivatives (12th, Part 1). THREE numbered exercises +
+  //    a Miscellaneous block. §6.4.1 (closed interval) shares Exercise 6.3 with
+  //    §6.4, so those two sections share one group. Examples 1-6 → Ex 6.1,
+  //    7-13 → Ex 6.2, 14-29 → Ex 6.3, 30-37 → Miscellaneous.
+  //    The rationalised edition has DROPPED tangents & normals and approximations
+  //    — there is no §6.5/§6.6 and no exercise for either.
+  appDerivatives: [
+    { group: "6.2 Rate of Change of Quantities", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.1 Eg"] },
+    { group: "6.2 Rate of Change of Quantities", label: "Exercise 6.1", kind: "exercise", refPrefixes: ["Ex 6.1 Q"] },
+    { group: "6.3 Increasing and Decreasing Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.2 Eg"] },
+    { group: "6.3 Increasing and Decreasing Functions", label: "Exercise 6.2", kind: "exercise", refPrefixes: ["Ex 6.2 Q"] },
+    { group: "6.4 Maxima and Minima", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.3 Eg"] },
+    { group: "6.4 Maxima and Minima", label: "Exercise 6.3", kind: "exercise", refPrefixes: ["Ex 6.3 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 6", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 6", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // ── Ch.8 Application of Integrals (12th, Part 2) — the smallest chapter: ONE
+  //    numbered exercise + a Miscellaneous block. The rationalised edition keeps
+  //    §8.1 and §8.2 only. Examples 1-2 → Ex 8.1, 3-4 → Miscellaneous.
+  appIntegrals: [
+    { group: "8.2 Area under Simple Curves", label: "Solved Examples", kind: "solved_example", refPrefixes: ["8.1 Eg"] },
+    { group: "8.2 Area under Simple Curves", label: "Exercise 8.1", kind: "exercise", refPrefixes: ["Ex 8.1 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 8", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 8", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // ── Ch.10 Vector Algebra (12th, Part 2). FOUR numbered exercises + a
+  //    Miscellaneous block. Exercise 10.2 is preceded by the worked examples of
+  //    §10.4 (addition), §10.5 (scalar multiplication/components), §10.5.2 and
+  //    §10.5.3 (section formula), so those share one group. Examples 1-3 → Ex 10.1,
+  //    4-12 → Ex 10.2, 13-21 → Ex 10.3, 22-25 → Ex 10.4, 26-30 → Miscellaneous.
+  vectorAlgebra: [
+    { group: "10.3 Types of Vectors", label: "Solved Examples", kind: "solved_example", refPrefixes: ["10.1 Eg"] },
+    { group: "10.3 Types of Vectors", label: "Exercise 10.1", kind: "exercise", refPrefixes: ["Ex 10.1 Q"] },
+    { group: "10.4-10.5 Addition, Components and Section Formula", label: "Solved Examples", kind: "solved_example", refPrefixes: ["10.2 Eg"] },
+    { group: "10.4-10.5 Addition, Components and Section Formula", label: "Exercise 10.2", kind: "exercise", refPrefixes: ["Ex 10.2 Q"] },
+    { group: "10.6.1-10.6.2 Scalar (Dot) Product and Projection", label: "Solved Examples", kind: "solved_example", refPrefixes: ["10.3 Eg"] },
+    { group: "10.6.1-10.6.2 Scalar (Dot) Product and Projection", label: "Exercise 10.3", kind: "exercise", refPrefixes: ["Ex 10.3 Q"] },
+    { group: "10.6.3 Vector (Cross) Product of Two Vectors", label: "Solved Examples", kind: "solved_example", refPrefixes: ["10.4 Eg"] },
+    { group: "10.6.3 Vector (Cross) Product of Two Vectors", label: "Exercise 10.4", kind: "exercise", refPrefixes: ["Ex 10.4 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 10", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 10", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // ── Ch.12 Linear Programming (12th, Part 2). ONE numbered exercise and NOTHING
+  //    ELSE — this chapter has **no Miscellaneous Exercise and no Miscellaneous
+  //    Examples**, verified by a full heading sweep of all 12 pages, so the
+  //    absence of a `Misc` block below is deliberate rather than an omission.
+  //    Examples 1-5 all precede Exercise 12.1.
+  linearProgramming: [
+    { group: "12.2.2 Graphical Method of Solving Linear Programming Problems", label: "Solved Examples", kind: "solved_example", refPrefixes: ["12.1 Eg"] },
+    { group: "12.2.2 Graphical Method of Solving Linear Programming Problems", label: "Exercise 12.1", kind: "exercise", refPrefixes: ["Ex 12.1 Q"] },
+  ],
+
   // ── Ch.1 Relations and Functions (12th, Part 1). Only TWO numbered exercises:
   //    the rationalised 2025-26 edition gives §1.4 (Composition of Functions and
   //    Invertible Function) NO exercise of its own — verified on the page, its

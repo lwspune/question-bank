@@ -1,0 +1,1618 @@
+[
+  {
+    "ref": "5.1 Eg.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Check the continuity of the function \\(f\\) given by \\(f(x) = 2x + 3\\) at \\(x = 1\\).",
+    "solution": "First note that the function is defined at the given point \\(x = 1\\) and its value is 5. Then find the limit of the function at \\(x = 1\\). Clearly\n\n\\(\\lim_{x \\to 1} f(x) = \\lim_{x \\to 1}(2x + 3) = 2(1) + 3 = 5\\)\n\nThus \\(\\lim_{x \\to 1} f(x) = 5 = f(1)\\).\n\nHence, \\(f\\) is continuous at \\(x = 1\\)."
+  },
+  {
+    "ref": "5.1 Eg.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Examine whether the function \\(f\\) given by \\(f(x) = x^2\\) is continuous at \\(x = 0\\).",
+    "solution": "First note that the function is defined at the given point \\(x = 0\\) and its value is 0. Then find the limit of the function at \\(x = 0\\). Clearly\n\n\\(\\lim_{x \\to 0} f(x) = \\lim_{x \\to 0} x^2 = 0^2 = 0\\)\n\nThus \\(\\lim_{x \\to 0} f(x) = 0 = f(0)\\).\n\nHence, \\(f\\) is continuous at \\(x = 0\\)."
+  },
+  {
+    "ref": "5.1 Eg.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Discuss the continuity of the function \\(f\\) given by \\(f(x) = |x|\\) at \\(x = 0\\).",
+    "solution": "By definition\n\n\\(f(x) = \\begin{cases} -x, & \\text{if } x < 0 \\\\ x, & \\text{if } x \\ge 0 \\end{cases}\\)\n\nClearly the function is defined at 0 and \\(f(0) = 0\\). Left hand limit of \\(f\\) at 0 is\n\n\\(\\lim_{x \\to 0^-} f(x) = \\lim_{x \\to 0^-} (-x) = 0\\)\n\nSimilarly, the right hand limit of \\(f\\) at 0 is\n\n\\(\\lim_{x \\to 0^+} f(x) = \\lim_{x \\to 0^+} x = 0\\)\n\nThus, the left hand limit, right hand limit and the value of the function coincide at \\(x = 0\\). Hence, \\(f\\) is continuous at \\(x = 0\\)."
+  },
+  {
+    "ref": "5.1 Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Show that the function \\(f\\) given by \\(f(x) = \\begin{cases} x^3 + 3, & \\text{if } x \\ne 0 \\\\ 1, & \\text{if } x = 0 \\end{cases}\\) is not continuous at \\(x = 0\\).",
+    "solution": "The function is defined at \\(x = 0\\) and its value at \\(x = 0\\) is 1. When \\(x \\ne 0\\), the function is given by a polynomial. Hence,\n\n\\(\\lim_{x \\to 0} f(x) = \\lim_{x \\to 0} (x^3 + 3) = 0^3 + 3 = 3\\)\n\nSince the limit of \\(f\\) at \\(x = 0\\) does not coincide with \\(f(0)\\), the function is not continuous at \\(x = 0\\). It may be noted that \\(x = 0\\) is the only point of discontinuity for this function."
+  },
+  {
+    "ref": "5.1 Eg.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Check the points where the constant function \\(f(x) = k\\) is continuous.",
+    "solution": "The function is defined at all real numbers and by definition, its value at any real number equals \\(k\\). Let \\(c\\) be any real number. Then\n\n\\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} k = k\\)\n\nSince \\(f(c) = k = \\lim_{x \\to c} f(x)\\) for any real number \\(c\\), the function \\(f\\) is continuous at every real number."
+  },
+  {
+    "ref": "5.1 Eg.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Prove that the identity function on real numbers given by \\(f(x) = x\\) is continuous at every real number.",
+    "solution": "The function is clearly defined at every point and \\(f(c) = c\\) for every real number \\(c\\). Also,\n\n\\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} x = c\\)\n\nThus \\(\\lim_{x \\to c} f(x) = c = f(c)\\) and hence the function is continuous at every real number."
+  },
+  {
+    "ref": "5.1 Eg.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Is the function defined by \\(f(x) = |x|\\), a continuous function?",
+    "solution": "We may rewrite \\(f\\) as\n\n\\(f(x) = \\begin{cases} -x, & \\text{if } x < 0 \\\\ x, & \\text{if } x \\ge 0 \\end{cases}\\)\n\nBy Example 3, we know that \\(f\\) is continuous at \\(x = 0\\).\n\nLet \\(c\\) be a real number such that \\(c < 0\\). Then \\(f(c) = -c\\). Also\n\n\\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} (-x) = -c\\)\n\nSince \\(\\lim_{x \\to c} f(x) = f(c)\\), \\(f\\) is continuous at all negative real numbers.\n\nNow, let \\(c\\) be a real number such that \\(c > 0\\). Then \\(f(c) = c\\). Also\n\n\\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} x = c\\)\n\nSince \\(\\lim_{x \\to c} f(x) = f(c)\\), \\(f\\) is continuous at all positive real numbers. Hence, \\(f\\) is continuous at all points."
+  },
+  {
+    "ref": "5.1 Eg.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Discuss the continuity of the function \\(f\\) given by \\(f(x) = x^3 + x^2 - 1\\).",
+    "solution": "Clearly \\(f\\) is defined at every real number \\(c\\) and its value at \\(c\\) is \\(c^3 + c^2 - 1\\). We also know that\n\n\\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} (x^3 + x^2 - 1) = c^3 + c^2 - 1\\)\n\nThus \\(\\lim_{x \\to c} f(x) = f(c)\\), and hence \\(f\\) is continuous at every real number. This means \\(f\\) is a continuous function."
+  },
+  {
+    "ref": "5.1 Eg.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Discuss the continuity of the function \\(f\\) defined by \\(f(x) = \\dfrac{1}{x}\\), \\(x \\ne 0\\).",
+    "solution": "Fix any non zero real number \\(c\\), we have\n\n\\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} \\dfrac{1}{x} = \\dfrac{1}{c}\\)\n\nAlso, since for \\(c \\ne 0\\), \\(f(c) = \\dfrac{1}{c}\\), we have \\(\\lim_{x \\to c} f(x) = f(c)\\) and hence, \\(f\\) is continuous at every point in the domain of \\(f\\). Thus \\(f\\) is a continuous function."
+  },
+  {
+    "ref": "5.1 Eg.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the function \\(f\\) defined by \\(f(x) = \\begin{cases} x + 2, & \\text{if } x \\le 1 \\\\ x - 2, & \\text{if } x > 1 \\end{cases}\\)",
+    "solution": "The function \\(f\\) is defined at all points of the real line.\n\nCase 1 If \\(c < 1\\), then \\(f(c) = c + 2\\). Therefore, \\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c}(x + 2) = c + 2\\). Thus, \\(f\\) is continuous at all real numbers less than 1.\n\nCase 2 If \\(c > 1\\), then \\(f(c) = c - 2\\). Therefore, \\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c}(x - 2) = c - 2 = f(c)\\). Thus, \\(f\\) is continuous at all points \\(x > 1\\).\n\nCase 3 If \\(c = 1\\), then the left hand limit of \\(f\\) at \\(x = 1\\) is\n\n\\(\\lim_{x \\to 1^-} f(x) = \\lim_{x \\to 1^-} (x + 2) = 1 + 2 = 3\\)\n\nThe right hand limit of \\(f\\) at \\(x = 1\\) is\n\n\\(\\lim_{x \\to 1^+} f(x) = \\lim_{x \\to 1^+} (x - 2) = 1 - 2 = -1\\)\n\nSince the left and right hand limits of \\(f\\) at \\(x = 1\\) do not coincide, \\(f\\) is not continuous at \\(x = 1\\). Hence \\(x = 1\\) is the only point of discontinuity of \\(f\\). The graph of the function is given in Fig 5.4."
+  },
+  {
+    "ref": "5.1 Eg.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find all the points of discontinuity of the function \\(f\\) defined by \\(f(x) = \\begin{cases} x + 2, & \\text{if } x < 1 \\\\ 0, & \\text{if } x = 1 \\\\ x - 2, & \\text{if } x > 1 \\end{cases}\\)",
+    "solution": "As in the previous example we find that \\(f\\) is continuous at all real numbers \\(x \\ne 1\\). The left hand limit of \\(f\\) at \\(x = 1\\) is\n\n\\(\\lim_{x \\to 1^-} f(x) = \\lim_{x \\to 1^-} (x + 2) = 1 + 2 = 3\\)\n\nThe right hand limit of \\(f\\) at \\(x = 1\\) is\n\n\\(\\lim_{x \\to 1^+} f(x) = \\lim_{x \\to 1^+} (x - 2) = 1 - 2 = -1\\)\n\nSince, the left and right hand limits of \\(f\\) at \\(x = 1\\) do not coincide, \\(f\\) is not continuous at \\(x = 1\\). Hence \\(x = 1\\) is the only point of discontinuity of \\(f\\). The graph of the function is given in the Fig 5.5."
+  },
+  {
+    "ref": "5.1 Eg.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the function defined by \\(f(x) = \\begin{cases} x + 2, & \\text{if } x < 0 \\\\ -x + 2, & \\text{if } x > 0 \\end{cases}\\)",
+    "solution": "Observe that the function is defined at all real numbers except at 0. Domain of definition of this function is \\(\\mathrm{D}_1 \\cup \\mathrm{D}_2\\) where \\(\\mathrm{D}_1 = \\{x \\in \\mathbf{R} : x < 0\\}\\) and \\(\\mathrm{D}_2 = \\{x \\in \\mathbf{R} : x > 0\\}\\).\n\nCase 1 If \\(c \\in \\mathrm{D}_1\\), then \\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} (x + 2) = c + 2 = f(c)\\) and hence \\(f\\) is continuous in \\(\\mathrm{D}_1\\).\n\nCase 2 If \\(c \\in \\mathrm{D}_2\\), then \\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} (-x + 2) = -c + 2 = f(c)\\) and hence \\(f\\) is continuous in \\(\\mathrm{D}_2\\).\n\nSince \\(f\\) is continuous at all points in the domain of \\(f\\), we deduce that \\(f\\) is continuous. Graph of this function is given in the Fig 5.6. Note that to graph this function we need to lift the pen from the plane of the paper, but we need to do that only for those points where the function is not defined."
+  },
+  {
+    "ref": "5.1 Eg.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the function \\(f\\) given by \\(f(x) = \\begin{cases} x, & \\text{if } x \\ge 0 \\\\ x^2, & \\text{if } x < 0 \\end{cases}\\)",
+    "solution": "Clearly the function is defined at every real number. Graph of the function is given in Fig 5.7. By inspection, it seems prudent to partition the domain of definition of \\(f\\) into three disjoint subsets of the real line.\n\nLet \\(\\mathrm{D}_1 = \\{x \\in \\mathbf{R} : x < 0\\}\\), \\(\\mathrm{D}_2 = \\{0\\}\\) and \\(\\mathrm{D}_3 = \\{x \\in \\mathbf{R} : x > 0\\}\\).\n\nCase 1 At any point in \\(\\mathrm{D}_1\\), we have \\(f(x) = x^2\\) and it is easy to see that it is continuous there (see Example 2).\n\nCase 2 At any point in \\(\\mathrm{D}_3\\), we have \\(f(x) = x\\) and it is easy to see that it is continuous there (see Example 6).\n\nCase 3 Now we analyse the function at \\(x = 0\\). The value of the function at 0 is \\(f(0) = 0\\). The left hand limit of \\(f\\) at 0 is\n\n\\(\\lim_{x \\to 0^-} f(x) = \\lim_{x \\to 0^-} x^2 = 0^2 = 0\\)\n\nThe right hand limit of \\(f\\) at 0 is\n\n\\(\\lim_{x \\to 0^+} f(x) = \\lim_{x \\to 0^+} x = 0\\)\n\nThus \\(\\lim_{x \\to 0} f(x) = 0 = f(0)\\) and hence \\(f\\) is continuous at 0. This means that \\(f\\) is continuous at every point in its domain and hence, \\(f\\) is a continuous function."
+  },
+  {
+    "ref": "5.1 Eg.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Show that every polynomial function is continuous.",
+    "solution": "Recall that a function \\(p\\) is a polynomial function if it is defined by \\(p(x) = a_0 + a_1 x + \\ldots + a_n x^n\\) for some natural number \\(n\\), \\(a_n \\ne 0\\) and \\(a_i \\in \\mathbf{R}\\). Clearly this function is defined for every real number. For a fixed real number \\(c\\), we have\n\n\\(\\lim_{x \\to c} p(x) = p(c)\\)\n\nBy definition, \\(p\\) is continuous at \\(c\\). Since \\(c\\) is any real number, \\(p\\) is continuous at every real number and hence \\(p\\) is a continuous function."
+  },
+  {
+    "ref": "5.1 Eg.15",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "HARD",
+    "stem": "Find all the points of discontinuity of the greatest integer function defined by \\(f(x) = [x]\\), where \\([x]\\) denotes the greatest integer less than or equal to \\(x\\).",
+    "solution": "First observe that \\(f\\) is defined for all real numbers. Graph of the function is given in Fig 5.8. From the graph it looks like that \\(f\\) is discontinuous at every integral point. Below we explore, if this is true.\n\nCase 1 Let \\(c\\) be a real number which is not equal to any integer. It is evident from the graph that for all real numbers close to \\(c\\) the value of the function is equal to \\([c]\\); i.e., \\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} [x] = [c]\\). Also \\(f(c) = [c]\\) and hence the function is continuous at all real numbers not equal to integers.\n\nCase 2 Let \\(c\\) be an integer. Then we can find a sufficiently small real number \\(r > 0\\) such that \\([c - r] = c - 1\\) whereas \\([c + r] = c\\).\n\nThis, in terms of limits mean that\n\n\\(\\lim_{x \\to c^-} f(x) = c - 1\\), \\(\\lim_{x \\to c^+} f(x) = c\\)\n\nSince these limits cannot be equal to each other for any \\(c\\), the function is discontinuous at every integral point."
+  },
+  {
+    "ref": "5.1 Eg.16",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Prove that every rational function is continuous.",
+    "solution": "Recall that every rational function \\(f\\) is given by\n\n\\(f(x) = \\dfrac{p(x)}{q(x)}\\), \\(q(x) \\ne 0\\)\n\nwhere \\(p\\) and \\(q\\) are polynomial functions. The domain of \\(f\\) is all real numbers except points at which \\(q\\) is zero. Since polynomial functions are continuous (Example 14), \\(f\\) is continuous by (4) of Theorem 1."
+  },
+  {
+    "ref": "5.1 Eg.17",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of sine function.",
+    "solution": "To see this we use the following facts\n\n\\(\\lim_{x \\to 0} \\sin x = 0\\)\n\nWe have not proved it, but is intuitively clear from the graph of \\(\\sin x\\) near 0.\n\nNow, observe that \\(f(x) = \\sin x\\) is defined for every real number. Let \\(c\\) be a real number. Put \\(x = c + h\\). If \\(x \\to c\\) we know that \\(h \\to 0\\). Therefore\n\n\\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} \\sin x\\)\n\n\\(= \\lim_{h \\to 0} \\sin(c + h)\\)\n\n\\(= \\lim_{h \\to 0} [\\sin c \\cos h + \\cos c \\sin h]\\)\n\n\\(= \\lim_{h \\to 0} [\\sin c \\cos h] + \\lim_{h \\to 0} [\\cos c \\sin h]\\)\n\n\\(= \\sin c + 0 = \\sin c = f(c)\\)\n\nThus \\(\\lim_{x \\to c} f(x) = f(c)\\) and hence \\(f\\) is a continuous function."
+  },
+  {
+    "ref": "5.1 Eg.18",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Prove that the function defined by \\(f(x) = \\tan x\\) is a continuous function.",
+    "solution": "The function \\(f(x) = \\tan x = \\dfrac{\\sin x}{\\cos x}\\). This is defined for all real numbers such that \\(\\cos x \\ne 0\\), i.e., \\(x \\ne (2n + 1)\\dfrac{\\pi}{2}\\). We have just proved that both sine and cosine functions are continuous. Thus \\(\\tan x\\) being a quotient of two continuous functions is continuous wherever it is defined."
+  },
+  {
+    "ref": "5.1 Eg.19",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Show that the function defined by \\(f(x) = \\sin(x^2)\\) is a continuous function.",
+    "solution": "Observe that the function is defined for every real number. The function \\(f\\) may be thought of as a composition \\(g \\circ h\\) of the two functions \\(g\\) and \\(h\\), where \\(g(x) = \\sin x\\) and \\(h(x) = x^2\\). Since both \\(g\\) and \\(h\\) are continuous functions, by Theorem 2, it can be deduced that \\(f\\) is a continuous function."
+  },
+  {
+    "ref": "5.1 Eg.20",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Show that the function \\(f\\) defined by \\(f(x) = |1 - x + |x||\\), where \\(x\\) is any real number, is a continuous function.",
+    "solution": "Define \\(g\\) by \\(g(x) = 1 - x + |x|\\) and \\(h\\) by \\(h(x) = |x|\\) for all real \\(x\\). Then\n\n\\((h \\circ g)(x) = h(g(x))\\)\n\n\\(= h(1 - x + |x|)\\)\n\n\\(= |1 - x + |x|| = f(x)\\)\n\nIn Example 7, we have seen that \\(h\\) is a continuous function. Hence \\(g\\) being a sum of a polynomial function and the modulus function is continuous. But then \\(f\\) being a composite of two continuous functions is continuous."
+  },
+  {
+    "ref": "Ex 5.1 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Prove that the function \\(f(x) = 5x - 3\\) is continuous at \\(x = 0\\), at \\(x = -3\\) and at \\(x = 5\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Examine the continuity of the function \\(f(x) = 2x^2 - 1\\) at \\(x = 3\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q3(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "context": "Examine the following functions for continuity.",
+    "setLabel": "Ex 5.1 Q3",
+    "stem": "\\(f(x) = x - 5\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q3(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "context": "Examine the following functions for continuity.",
+    "setLabel": "Ex 5.1 Q3",
+    "stem": "\\(f(x) = \\dfrac{1}{x - 5}\\), \\(x \\ne 5\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q3(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "context": "Examine the following functions for continuity.",
+    "setLabel": "Ex 5.1 Q3",
+    "stem": "\\(f(x) = \\dfrac{x^2 - 25}{x + 5}\\), \\(x \\ne -5\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q3(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "context": "Examine the following functions for continuity.",
+    "setLabel": "Ex 5.1 Q3",
+    "stem": "\\(f(x) = |x - 5|\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Prove that the function \\(f(x) = x^n\\) is continuous at \\(x = n\\), where \\(n\\) is a positive integer."
+  },
+  {
+    "ref": "Ex 5.1 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Is the function \\(f\\) defined by \\(f(x) = \\begin{cases} x, & \\text{if } x \\le 1 \\\\ 5, & \\text{if } x > 1 \\end{cases}\\) continuous at \\(x = 0\\)? At \\(x = 1\\)? At \\(x = 2\\)?"
+  },
+  {
+    "ref": "Ex 5.1 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Find all points of discontinuity of \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} 2x + 3, & \\text{if } x \\le 2 \\\\ 2x - 3, & \\text{if } x > 2 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find all points of discontinuity of \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} |x| + 3, & \\text{if } x \\le -3 \\\\ -2x, & \\text{if } -3 < x < 3 \\\\ 6x + 2, & \\text{if } x \\ge 3 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find all points of discontinuity of \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} \\dfrac{|x|}{x}, & \\text{if } x \\ne 0 \\\\ 0, & \\text{if } x = 0 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find all points of discontinuity of \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} \\dfrac{x}{|x|}, & \\text{if } x < 0 \\\\ -1, & \\text{if } x \\ge 0 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Find all points of discontinuity of \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} x + 1, & \\text{if } x \\ge 1 \\\\ x^2 + 1, & \\text{if } x < 1 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Find all points of discontinuity of \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} x^3 - 3, & \\text{if } x \\le 2 \\\\ x^2 + 1, & \\text{if } x > 2 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Find all points of discontinuity of \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} x^{10} - 1, & \\text{if } x \\le 1 \\\\ x^2, & \\text{if } x > 1 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Is the function defined by \\(f(x) = \\begin{cases} x + 5, & \\text{if } x \\le 1 \\\\ x - 5, & \\text{if } x > 1 \\end{cases}\\) a continuous function?"
+  },
+  {
+    "ref": "Ex 5.1 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the function \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} 3, & \\text{if } 0 \\le x \\le 1 \\\\ 4, & \\text{if } 1 < x < 3 \\\\ 5, & \\text{if } 3 \\le x \\le 10 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the function \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} 2x, & \\text{if } x < 0 \\\\ 0, & \\text{if } 0 \\le x \\le 1 \\\\ 4x, & \\text{if } x > 1 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the function \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} -2, & \\text{if } x \\le -1 \\\\ 2x, & \\text{if } -1 < x \\le 1 \\\\ 2, & \\text{if } x > 1 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find the relationship between \\(a\\) and \\(b\\) so that the function \\(f\\) defined by \\(f(x) = \\begin{cases} ax + 1, & \\text{if } x \\le 3 \\\\ bx + 3, & \\text{if } x > 3 \\end{cases}\\) is continuous at \\(x = 3\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "For what value of \\(\\lambda\\) is the function defined by \\(f(x) = \\begin{cases} \\lambda(x^2 - 2x), & \\text{if } x \\le 0 \\\\ 4x + 1, & \\text{if } x > 0 \\end{cases}\\) continuous at \\(x = 0\\)? What about continuity at \\(x = 1\\)?"
+  },
+  {
+    "ref": "Ex 5.1 Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Show that the function defined by \\(g(x) = x - [x]\\) is discontinuous at all integral points. Here \\([x]\\) denotes the greatest integer less than or equal to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Is the function defined by \\(f(x) = x^2 - \\sin x + 5\\) continuous at \\(x = \\pi\\)?"
+  },
+  {
+    "ref": "Ex 5.1 Q21(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "context": "Discuss the continuity of the following functions:",
+    "setLabel": "Ex 5.1 Q21",
+    "stem": "\\(f(x) = \\sin x + \\cos x\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q21(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "context": "Discuss the continuity of the following functions:",
+    "setLabel": "Ex 5.1 Q21",
+    "stem": "\\(f(x) = \\sin x - \\cos x\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q21(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "context": "Discuss the continuity of the following functions:",
+    "setLabel": "Ex 5.1 Q21",
+    "stem": "\\(f(x) = \\sin x \\cdot \\cos x\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the cosine, cosecant, secant and cotangent functions."
+  },
+  {
+    "ref": "Ex 5.1 Q23",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find all points of discontinuity of \\(f\\), where \\(f(x) = \\begin{cases} \\dfrac{\\sin x}{x}, & \\text{if } x < 0 \\\\ x + 1, & \\text{if } x \\ge 0 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q24",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "HARD",
+    "stem": "Determine if \\(f\\) defined by \\(f(x) = \\begin{cases} x^2 \\sin \\dfrac{1}{x}, & \\text{if } x \\ne 0 \\\\ 0, & \\text{if } x = 0 \\end{cases}\\) is a continuous function?"
+  },
+  {
+    "ref": "Ex 5.1 Q25",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Examine the continuity of \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} \\sin x - \\cos x, & \\text{if } x \\ne 0 \\\\ -1, & \\text{if } x = 0 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q26",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find the value of \\(k\\) so that the function \\(f\\) is continuous at the indicated point: \\(f(x) = \\begin{cases} \\dfrac{k \\cos x}{\\pi - 2x}, & \\text{if } x \\ne \\dfrac{\\pi}{2} \\\\ 3, & \\text{if } x = \\dfrac{\\pi}{2} \\end{cases}\\) at \\(x = \\dfrac{\\pi}{2}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q27",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Find the value of \\(k\\) so that the function \\(f\\) is continuous at the indicated point: \\(f(x) = \\begin{cases} kx^2, & \\text{if } x \\le 2 \\\\ 3, & \\text{if } x > 2 \\end{cases}\\) at \\(x = 2\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q28",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find the value of \\(k\\) so that the function \\(f\\) is continuous at the indicated point: \\(f(x) = \\begin{cases} kx + 1, & \\text{if } x \\le \\pi \\\\ \\cos x, & \\text{if } x > \\pi \\end{cases}\\) at \\(x = \\pi\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q29",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Find the value of \\(k\\) so that the function \\(f\\) is continuous at the indicated point: \\(f(x) = \\begin{cases} kx + 1, & \\text{if } x \\le 5 \\\\ 3x - 5, & \\text{if } x > 5 \\end{cases}\\) at \\(x = 5\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q30",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find the values of \\(a\\) and \\(b\\) such that the function defined by \\(f(x) = \\begin{cases} 5, & \\text{if } x \\le 2 \\\\ ax + b, & \\text{if } 2 < x < 10 \\\\ 21, & \\text{if } x \\ge 10 \\end{cases}\\) is a continuous function."
+  },
+  {
+    "ref": "Ex 5.1 Q31",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Show that the function defined by \\(f(x) = \\cos(x^2)\\) is a continuous function."
+  },
+  {
+    "ref": "Ex 5.1 Q32",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Show that the function defined by \\(f(x) = |\\cos x|\\) is a continuous function."
+  },
+  {
+    "ref": "Ex 5.1 Q33",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Examine that \\(\\sin |x|\\) is a continuous function."
+  },
+  {
+    "ref": "Ex 5.1 Q34",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "HARD",
+    "stem": "Find all the points of discontinuity of \\(f\\) defined by \\(f(x) = |x| - |x + 1|\\)."
+  },
+  {
+    "ref": "5.2 Eg.21",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "EASY",
+    "stem": "Find the derivative of the function given by \\(f(x) = \\sin(x^2)\\).",
+    "solution": "Observe that the given function is a composite of two functions. Indeed, if \\(t = u(x) = x^2\\) and \\(v(t) = \\sin t\\), then\n\\(f(x) = (v \\circ u)(x) = v(u(x)) = v(x^2) = \\sin x^2\\)\nPut \\(t = u(x) = x^2\\). Observe that \\(\\frac{dv}{dt} = \\cos t\\) and \\(\\frac{dt}{dx} = 2x\\) exist. Hence, by chain rule\n\\(\\frac{df}{dx} = \\frac{dv}{dt} \\cdot \\frac{dt}{dx} = \\cos t \\cdot 2x\\)\nIt is normal practice to express the final result only in terms of \\(x\\). Thus\n\\(\\frac{df}{dx} = \\cos t \\cdot 2x = 2x \\cos x^2\\)"
+  },
+  {
+    "ref": "Ex 5.2 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "EASY",
+    "stem": "Differentiate the function \\(\\sin(x^2 + 5)\\) with respect to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "EASY",
+    "stem": "Differentiate the function \\(\\cos(\\sin x)\\) with respect to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "EASY",
+    "stem": "Differentiate the function \\(\\sin(ax + b)\\) with respect to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the function \\(\\sec(\\tan(\\sqrt{x}))\\) with respect to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the function \\(\\frac{\\sin(ax + b)}{\\cos(cx + d)}\\) with respect to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the function \\(\\cos x^3 \\cdot \\sin^2(x^5)\\) with respect to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the function \\(2\\sqrt{\\cot(x^2)}\\) with respect to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "EASY",
+    "stem": "Differentiate the function \\(\\cos(\\sqrt{x})\\) with respect to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Prove that the function \\(f\\) given by\n\\(f(x) = |x - 1|,\\ x \\in \\mathbf{R}\\)\nis not differentiable at \\(x = 1\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Prove that the greatest integer function defined by\n\\(f(x) = [x],\\ 0 < x < 3\\)\nis not differentiable at \\(x = 1\\) and \\(x = 2\\)."
+  },
+  {
+    "ref": "5.3 Eg.22",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{dy}{dx}\\) if \\(x - y = \\pi\\).",
+    "solution": "One way is to solve for \\(y\\) and rewrite the above as\n\\(y = x - \\pi\\)\nBut then\n\\(\\frac{dy}{dx} = 1\\)\nAlternatively, directly differentiating the relationship w.r.t. \\(x\\), we have\n\\(\\frac{d}{dx}(x - y) = \\frac{d\\pi}{dx}\\)\nRecall that \\(\\frac{d\\pi}{dx}\\) means to differentiate the constant function taking value \\(\\pi\\) everywhere w.r.t. \\(x\\). Thus\n\\(\\frac{d}{dx}(x) - \\frac{d}{dx}(y) = 0\\)\nwhich implies that\n\\(\\frac{dy}{dx} = \\frac{dx}{dx} = 1\\)"
+  },
+  {
+    "ref": "5.3 Eg.23",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\), if \\(y + \\sin y = \\cos x\\).",
+    "solution": "We differentiate the relationship directly with respect to \\(x\\), i.e.,\n\\(\\frac{dy}{dx} + \\frac{d}{dx}(\\sin y) = \\frac{d}{dx}(\\cos x)\\)\nwhich implies using chain rule\n\\(\\frac{dy}{dx} + \\cos y \\cdot \\frac{dy}{dx} = -\\sin x\\)\nThis gives\n\\(\\frac{dy}{dx} = -\\frac{\\sin x}{1 + \\cos y}\\)\nwhere \\(y \\neq (2n + 1)\\pi\\)"
+  },
+  {
+    "ref": "5.3 Eg.24",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find the derivative of \\(f\\) given by \\(f(x) = \\sin^{-1} x\\) assuming it exists.",
+    "solution": "Let \\(y = \\sin^{-1} x\\). Then, \\(x = \\sin y\\).\nDifferentiating both sides w.r.t. \\(x\\), we get\n\\(1 = \\cos y \\, \\frac{dy}{dx}\\)\nwhich implies that\n\\(\\frac{dy}{dx} = \\frac{1}{\\cos y} = \\frac{1}{\\cos(\\sin^{-1} x)}\\)\nObserve that this is defined only for \\(\\cos y \\neq 0\\), i.e., \\(\\sin^{-1} x \\neq -\\frac{\\pi}{2}, \\frac{\\pi}{2}\\), i.e., \\(x \\neq -1, 1\\), i.e., \\(x \\in (-1, 1)\\).\nTo make this result a bit more attractive, we carry out the following manipulation. Recall that for \\(x \\in (-1, 1)\\), \\(\\sin(\\sin^{-1} x) = x\\) and hence\n\\(\\cos^2 y = 1 - (\\sin y)^2 = 1 - (\\sin(\\sin^{-1} x))^2 = 1 - x^2\\)\nAlso, since \\(y \\in \\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\), \\(\\cos y\\) is positive and hence \\(\\cos y = \\sqrt{1 - x^2}\\)\nThus, for \\(x \\in (-1, 1)\\),\n\\(\\frac{dy}{dx} = \\frac{1}{\\cos y} = \\frac{1}{\\sqrt{1 - x^2}}\\)"
+  },
+  {
+    "ref": "Ex 5.3 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(2x + 3y = \\sin x\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(2x + 3y = \\sin y\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(ax + by^2 = \\cos y\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(xy + y^2 = \\tan x + y\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(x^2 + xy + y^2 = 100\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(x^3 + x^2y + xy^2 + y^3 = 81\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(\\sin^2 y + \\cos xy = \\kappa\\).",
+    "_note": "The book prints a lowercase Greek kappa (\\kappa) as the constant on the right-hand side; transcribed faithfully. It is an arbitrary constant (earlier printings of this exercise set it as the Latin letter K), so its derivative is 0 either way and the answer is unaffected."
+  },
+  {
+    "ref": "Ex 5.3 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(\\sin^2 x + \\cos^2 y = 1\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(y = \\sin^{-1}\\left(\\frac{2x}{1 + x^2}\\right)\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(y = \\tan^{-1}\\left(\\frac{3x - x^3}{1 - 3x^2}\\right)\\), \\(-\\frac{1}{\\sqrt{3}} < x < \\frac{1}{\\sqrt{3}}\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(y = \\cos^{-1}\\left(\\frac{1 - x^2}{1 + x^2}\\right)\\), \\(0 < x < 1\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(y = \\sin^{-1}\\left(\\frac{1 - x^2}{1 + x^2}\\right)\\), \\(0 < x < 1\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(y = \\cos^{-1}\\left(\\frac{2x}{1 + x^2}\\right)\\), \\(-1 < x < 1\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(y = \\sin^{-1}\\left(2x\\sqrt{1 - x^2}\\right)\\), \\(-\\frac{1}{\\sqrt{2}} < x < \\frac{1}{\\sqrt{2}}\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(y = \\sec^{-1}\\left(\\frac{1}{2x^2 - 1}\\right)\\), \\(0 < x < \\frac{1}{\\sqrt{2}}\\)."
+  },
+  {
+    "ref": "5.4 Eg.25",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Is it true that \\(x = e^{\\log x}\\) for all real \\(x\\)?",
+    "solution": "First, observe that the domain of log function is set of all positive real numbers. So the above equation is not true for non-positive real numbers.\n\nNow, let \\(y = e^{\\log x}\\). If \\(y > 0\\), we may take logarithm which gives us\n\n\\(\\log y = \\log(e^{\\log x}) = \\log x \\cdot \\log e = \\log x\\)\n\nThus \\(y = x\\). Hence \\(x = e^{\\log x}\\) is true only for positive values of \\(x\\)."
+  },
+  {
+    "ref": "5.4 Eg.26(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "EASY",
+    "context": "Differentiate the following w.r.t. \\(x\\):",
+    "setLabel": "5.4 Eg.26",
+    "stem": "\\(e^{-x}\\)",
+    "solution": "Let \\(y = e^{-x}\\). Using chain rule, we have\n\n\\(\\frac{dy}{dx} = e^{-x} \\cdot \\frac{d}{dx}(-x) = -e^{-x}\\)"
+  },
+  {
+    "ref": "5.4 Eg.26(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "EASY",
+    "context": "Differentiate the following w.r.t. \\(x\\):",
+    "setLabel": "5.4 Eg.26",
+    "stem": "\\(\\sin(\\log x)\\), \\(x > 0\\)",
+    "solution": "Let \\(y = \\sin(\\log x)\\). Using chain rule, we have\n\n\\(\\frac{dy}{dx} = \\cos(\\log x) \\cdot \\frac{d}{dx}(\\log x) = \\frac{\\cos(\\log x)}{x}\\)"
+  },
+  {
+    "ref": "5.4 Eg.26(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "context": "Differentiate the following w.r.t. \\(x\\):",
+    "setLabel": "5.4 Eg.26",
+    "stem": "\\(\\cos^{-1}(e^x)\\)",
+    "solution": "Let \\(y = \\cos^{-1}(e^x)\\). Using chain rule, we have\n\n\\(\\frac{dy}{dx} = \\frac{-1}{\\sqrt{1 - (e^x)^2}} \\cdot \\frac{d}{dx}(e^x) = \\frac{-e^x}{\\sqrt{1 - e^{2x}}}\\)"
+  },
+  {
+    "ref": "5.4 Eg.26(iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "EASY",
+    "context": "Differentiate the following w.r.t. \\(x\\):",
+    "setLabel": "5.4 Eg.26",
+    "stem": "\\(e^{\\cos x}\\)",
+    "solution": "Let \\(y = e^{\\cos x}\\). Using chain rule, we have\n\n\\(\\frac{dy}{dx} = e^{\\cos x} \\cdot (-\\sin x) = -(\\sin x)\\, e^{\\cos x}\\)"
+  },
+  {
+    "ref": "Ex 5.4 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "EASY",
+    "stem": "Differentiate \\(\\dfrac{e^x}{\\sin x}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "EASY",
+    "stem": "Differentiate \\(e^{\\sin^{-1} x}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "EASY",
+    "stem": "Differentiate \\(e^{x^3}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(\\sin(\\tan^{-1} e^{-x})\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(\\log(\\cos e^x)\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(e^x + e^{x^2} + \\ldots + e^{x^5}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(\\sqrt{e^{\\sqrt{x}}}\\), \\(x > 0\\), w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "EASY",
+    "stem": "Differentiate \\(\\log(\\log x)\\), \\(x > 1\\), w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(\\dfrac{\\cos x}{\\log x}\\), \\(x > 0\\), w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.4 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "EASY",
+    "stem": "Differentiate \\(\\cos(\\log x + e^x)\\), \\(x > 0\\), w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "5.5 Eg.27",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate \\(\\sqrt{\\dfrac{(x-3)(x^2+4)}{3x^2+4x+5}}\\) w.r.t. \\(x\\).",
+    "solution": "Let \\(y = \\sqrt{\\frac{(x-3)(x^2+4)}{(3x^2+4x+5)}}\\)\n\nTaking logarithm on both sides, we have\n\n\\(\\log y = \\frac{1}{2}\\left[\\log(x-3) + \\log(x^2+4) - \\log(3x^2+4x+5)\\right]\\)\n\nNow, differentiating both sides w.r.t. \\(x\\), we get\n\n\\(\\frac{1}{y}\\cdot\\frac{dy}{dx} = \\frac{1}{2}\\left[\\frac{1}{(x-3)} + \\frac{2x}{x^2+4} - \\frac{6x+4}{3x^2+4x+5}\\right]\\)\n\nor \\(\\frac{dy}{dx} = \\frac{y}{2}\\left[\\frac{1}{(x-3)} + \\frac{2x}{x^2+4} - \\frac{6x+4}{3x^2+4x+5}\\right]\\)\n\n\\(= \\frac{1}{2}\\sqrt{\\frac{(x-3)(x^2+4)}{3x^2+4x+5}}\\left[\\frac{1}{(x-3)} + \\frac{2x}{x^2+4} - \\frac{6x+4}{3x^2+4x+5}\\right]\\)"
+  },
+  {
+    "ref": "5.5 Eg.28",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(a^x\\) w.r.t. \\(x\\), where \\(a\\) is a positive constant.",
+    "solution": "Let \\(y = a^x\\). Then\n\n\\(\\log y = x \\log a\\)\n\nDifferentiating both sides w.r.t. \\(x\\), we have\n\n\\(\\frac{1}{y}\\frac{dy}{dx} = \\log a\\)\n\nor \\(\\frac{dy}{dx} = y \\log a\\)\n\nThus \\(\\frac{d}{dx}(a^x) = a^x \\log a\\).\n\nAlternatively \\(\\frac{d}{dx}(a^x) = \\frac{d}{dx}\\left(e^{x\\log a}\\right) = e^{x\\log a}\\frac{d}{dx}(x\\log a)\\)\n\n\\(= e^{x\\log a} \\cdot \\log a = a^x \\log a\\)."
+  },
+  {
+    "ref": "5.5 Eg.29",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(x^{\\sin x}\\), \\(x > 0\\) w.r.t. \\(x\\).",
+    "solution": "Let \\(y = x^{\\sin x}\\). Taking logarithm on both sides, we have\n\n\\(\\log y = \\sin x \\log x\\)\n\nTherefore \\(\\frac{1}{y}\\cdot\\frac{dy}{dx} = \\sin x \\frac{d}{dx}(\\log x) + \\log x \\frac{d}{dx}(\\sin x)\\)\n\nor \\(\\frac{1}{y}\\frac{dy}{dx} = (\\sin x)\\frac{1}{x} + \\log x \\cos x\\)\n\nor \\(\\frac{dy}{dx} = y\\left[\\frac{\\sin x}{x} + \\cos x \\log x\\right]\\)\n\n\\(= x^{\\sin x}\\left[\\frac{\\sin x}{x} + \\cos x \\log x\\right]\\)\n\n\\(= x^{\\sin x - 1}\\cdot\\sin x + x^{\\sin x}\\cdot\\cos x \\log x\\)"
+  },
+  {
+    "ref": "5.5 Eg.30",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\dfrac{dy}{dx}\\), if \\(y^x + x^y + x^x = a^b\\).",
+    "solution": "Given that \\(y^x + x^y + x^x = a^b\\).\n\nPutting \\(u = y^x\\), \\(v = x^y\\) and \\(w = x^x\\), we get \\(u + v + w = a^b\\)\n\nTherefore \\(\\frac{du}{dx} + \\frac{dv}{dx} + \\frac{dw}{dx} = 0\\) ... (1)\n\nNow, \\(u = y^x\\). Taking logarithm on both sides, we have\n\n\\(\\log u = x \\log y\\)\n\nDifferentiating both sides w.r.t. \\(x\\), we have\n\n\\(\\frac{1}{u}\\cdot\\frac{du}{dx} = x\\frac{d}{dx}(\\log y) + \\log y \\frac{d}{dx}(x)\\)\n\n\\(= x\\frac{1}{y}\\cdot\\frac{dy}{dx} + \\log y \\cdot 1\\)\n\nSo \\(\\frac{du}{dx} = u\\left(\\frac{x}{y}\\frac{dy}{dx} + \\log y\\right) = y^x\\left[\\frac{x}{y}\\frac{dy}{dx} + \\log y\\right]\\) ... (2)\n\nAlso \\(v = x^y\\)\n\nTaking logarithm on both sides, we have\n\n\\(\\log v = y \\log x\\)\n\nDifferentiating both sides w.r.t. \\(x\\), we have\n\n\\(\\frac{1}{v}\\cdot\\frac{dv}{dx} = y\\frac{d}{dx}(\\log x) + \\log x \\frac{dy}{dx}\\)\n\n\\(= y\\cdot\\frac{1}{x} + \\log x\\cdot\\frac{dy}{dx}\\)\n\nSo \\(\\frac{dv}{dx} = v\\left[\\frac{y}{x} + \\log x \\frac{dy}{dx}\\right] = x^y\\left[\\frac{y}{x} + \\log x \\frac{dy}{dx}\\right]\\) ... (3)\n\nAgain \\(w = x^x\\)\n\nTaking logarithm on both sides, we have\n\n\\(\\log w = x \\log x\\).\n\nDifferentiating both sides w.r.t. \\(x\\), we have\n\n\\(\\frac{1}{w}\\cdot\\frac{dw}{dx} = x\\frac{d}{dx}(\\log x) + \\log x \\cdot \\frac{d}{dx}(x)\\)\n\n\\(= x\\cdot\\frac{1}{x} + \\log x \\cdot 1\\)\n\ni.e. \\(\\frac{dw}{dx} = w(1 + \\log x)\\)\n\n\\(= x^x(1 + \\log x)\\) ... (4)\n\nFrom (1), (2), (3), (4), we have\n\n\\(y^x\\left(\\frac{x}{y}\\frac{dy}{dx} + \\log y\\right) + x^y\\left(\\frac{y}{x} + \\log x \\frac{dy}{dx}\\right) + x^x(1 + \\log x) = 0\\)\n\nor \\((x\\cdot y^{x-1} + x^y\\cdot\\log x)\\frac{dy}{dx} = -x^x(1 + \\log x) - y\\cdot x^{y-1} - y^x \\log y\\)\n\nTherefore \\(\\frac{dy}{dx} = \\frac{-\\left[y^x \\log y + y\\cdot x^{y-1} + x^x(1 + \\log x)\\right]}{x\\cdot y^{x-1} + x^y \\log x}\\)"
+  },
+  {
+    "ref": "Ex 5.5 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(\\cos x \\cdot \\cos 2x \\cdot \\cos 3x\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(\\sqrt{\\dfrac{(x-1)(x-2)}{(x-3)(x-4)(x-5)}}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\((\\log x)^{\\cos x}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(x^x - 2^{\\sin x}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\((x+3)^2 \\cdot (x+4)^3 \\cdot (x+5)^4\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate \\(\\left(x + \\dfrac{1}{x}\\right)^x + x^{\\left(1 + \\frac{1}{x}\\right)}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate \\((\\log x)^x + x^{\\log x}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate \\((\\sin x)^x + \\sin^{-1}\\sqrt{x}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate \\(x^{\\sin x} + (\\sin x)^{\\cos x}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate \\(x^{x\\cos x} + \\dfrac{x^2+1}{x^2-1}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate \\((x\\cos x)^x + (x\\sin x)^{\\frac{1}{x}}\\) w.r.t. \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\dfrac{dy}{dx}\\) of the function \\(x^y + y^x = 1\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\dfrac{dy}{dx}\\) of the function \\(y^x = x^y\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\dfrac{dy}{dx}\\) of the function \\((\\cos x)^y = (\\cos y)^x\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\dfrac{dy}{dx}\\) of the function \\(xy = e^{(x-y)}\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Find the derivative of the function given by \\(f(x) = (1+x)(1+x^2)(1+x^4)(1+x^8)\\) and hence find \\(f'(1)\\)."
+  },
+  {
+    "ref": "Ex 5.5 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\((x^2 - 5x + 8)(x^3 + 7x + 9)\\) in three ways mentioned below:\n\n(i) by using product rule\n\n(ii) by expanding the product to obtain a single polynomial.\n\n(iii) by logarithmic differentiation.\n\nDo they all give the same answer?",
+    "_note": "Kept as ONE row rather than set-grouped: the three labelled items are METHODS for one differentiation task, not independent sub-questions, and the closing 'Do they all give the same answer?' compares across all three, so it belongs to none of them individually."
+  },
+  {
+    "ref": "Ex 5.5 Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "If \\(u\\), \\(v\\) and \\(w\\) are functions of \\(x\\), then show that\n\n\\(\\frac{d}{dx}(u \\cdot v \\cdot w) = \\frac{du}{dx}\\, v \\cdot w + u \\cdot \\frac{dv}{dx} \\cdot w + u \\cdot v \\frac{dw}{dx}\\)\n\nin two ways - first by repeated application of product rule, second by logarithmic differentiation."
+  },
+  {
+    "ref": "5.6 Eg.31",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{dy}{dx}\\), if \\(x = a \\cos \\theta\\), \\(y = a \\sin \\theta\\).",
+    "solution": "Given that \\(x = a \\cos \\theta\\), \\(y = a \\sin \\theta\\).\n\nTherefore \\(\\frac{dx}{d\\theta} = -a \\sin \\theta\\), \\(\\frac{dy}{d\\theta} = a \\cos \\theta\\).\n\nHence \\(\\frac{dy}{dx} = \\frac{\\frac{dy}{d\\theta}}{\\frac{dx}{d\\theta}} = \\frac{a \\cos \\theta}{-a \\sin \\theta} = -\\cot \\theta\\)."
+  },
+  {
+    "ref": "5.6 Eg.32",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{dy}{dx}\\), if \\(x = at^2\\), \\(y = 2at\\).",
+    "solution": "Given that \\(x = at^2\\), \\(y = 2at\\).\n\nSo \\(\\frac{dx}{dt} = 2at\\) and \\(\\frac{dy}{dt} = 2a\\).\n\nTherefore \\(\\frac{dy}{dx} = \\frac{\\frac{dy}{dt}}{\\frac{dx}{dt}} = \\frac{2a}{2at} = \\frac{1}{t}\\)."
+  },
+  {
+    "ref": "5.6 Eg.33",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\), if \\(x = a(\\theta + \\sin \\theta)\\), \\(y = a(1 - \\cos \\theta)\\).",
+    "solution": "We have \\(\\frac{dx}{d\\theta} = a(1 + \\cos \\theta)\\), \\(\\frac{dy}{d\\theta} = a(\\sin \\theta)\\).\n\nTherefore \\(\\frac{dy}{dx} = \\frac{\\frac{dy}{d\\theta}}{\\frac{dx}{d\\theta}} = \\frac{a \\sin \\theta}{a(1 + \\cos \\theta)} = \\tan \\frac{\\theta}{2}\\).\n\nNote: It may be noted here that \\(\\frac{dy}{dx}\\) is expressed in terms of the parameter only without directly involving the main variables \\(x\\) and \\(y\\)."
+  },
+  {
+    "ref": "5.6 Eg.34",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\frac{dy}{dx}\\), if \\(x^{\\frac{2}{3}} + y^{\\frac{2}{3}} = a^{\\frac{2}{3}}\\).",
+    "solution": "Let \\(x = a \\cos^3 \\theta\\), \\(y = a \\sin^3 \\theta\\). Then\n\n\\(x^{\\frac{2}{3}} + y^{\\frac{2}{3}} = (a \\cos^3 \\theta)^{\\frac{2}{3}} + (a \\sin^3 \\theta)^{\\frac{2}{3}} = a^{\\frac{2}{3}}(\\cos^2 \\theta + \\sin^2 \\theta) = a^{\\frac{2}{3}}\\)\n\nHence, \\(x = a \\cos^3 \\theta\\), \\(y = a \\sin^3 \\theta\\) is a parametric equation of \\(x^{\\frac{2}{3}} + y^{\\frac{2}{3}} = a^{\\frac{2}{3}}\\).\n\nNow \\(\\frac{dx}{d\\theta} = -3a \\cos^2 \\theta \\sin \\theta\\) and \\(\\frac{dy}{d\\theta} = 3a \\sin^2 \\theta \\cos \\theta\\).\n\nTherefore \\(\\frac{dy}{dx} = \\frac{\\frac{dy}{d\\theta}}{\\frac{dx}{d\\theta}} = \\frac{3a \\sin^2 \\theta \\cos \\theta}{-3a \\cos^2 \\theta \\sin \\theta} = -\\tan \\theta = -\\sqrt[3]{\\frac{y}{x}}\\).",
+    "_note": "Book misprint in the printed solution: the identity line is set as \\(= a^{2/3}(\\cos^2\\theta + (\\sin^2\\theta) = a^{2/3}\\) with a stray extra opening parenthesis before \\(\\sin^2\\theta\\), leaving the bracket unbalanced. Transcribed here in the balanced form the book's own working requires; no step or answer is affected."
+  },
+  {
+    "ref": "Ex 5.6 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "EASY",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = 2at^2\\), \\(y = at^4\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "EASY",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = a \\cos \\theta\\), \\(y = b \\cos \\theta\\).",
+    "_note": "Transcribed exactly as printed: BOTH equations use cosine (\\(x = a\\cos\\theta\\), \\(y = b\\cos\\theta\\)) — verified on the rendered page AND independently in the PDF text layer, so this is what the book prints, not a transcription slip. Almost certainly a book misprint for \\(y = b\\sin\\theta\\) (the standard ellipse parametrisation, and the form every neighbouring question uses). As printed the question is still answerable but degenerate: \\(\\frac{dy}{dx} = \\frac{-b\\sin\\theta}{-a\\sin\\theta} = \\frac{b}{a}\\), a constant, because the two equations describe the straight segment \\(bx = ay\\). Flagging for the answer-key cross-check: compare against the printed key for Ex 5.6 Q2 before authoring the model answer."
+  },
+  {
+    "ref": "Ex 5.6 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "EASY",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = \\sin t\\), \\(y = \\cos 2t\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "EASY",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = 4t\\), \\(y = \\frac{4}{t}\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = \\cos \\theta - \\cos 2\\theta\\), \\(y = \\sin \\theta - \\sin 2\\theta\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = a(\\theta - \\sin \\theta)\\), \\(y = a(1 + \\cos \\theta)\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "HARD",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = \\frac{\\sin^3 t}{\\sqrt{\\cos 2t}}\\), \\(y = \\frac{\\cos^3 t}{\\sqrt{\\cos 2t}}\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "HARD",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = a\\left(\\cos t + \\log \\tan \\frac{t}{2}\\right)\\), \\(y = a \\sin t\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = a \\sec \\theta\\), \\(y = b \\tan \\theta\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = a(\\cos \\theta + \\theta \\sin \\theta)\\), \\(y = a(\\sin \\theta - \\theta \\cos \\theta)\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "HARD",
+    "stem": "If \\(x = \\sqrt{a^{\\sin^{-1} t}}\\), \\(y = \\sqrt{a^{\\cos^{-1} t}}\\), show that \\(\\frac{dy}{dx} = -\\frac{y}{x}\\)."
+  },
+  {
+    "ref": "5.7 Eg.35",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{d^2y}{dx^2}\\), if \\(y = x^3 + \\tan x\\).",
+    "solution": "Given that \\(y = x^3 + \\tan x\\). Then\n\n\\(\\frac{dy}{dx} = 3x^2 + \\sec^2 x\\)\n\nTherefore \\(\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\left(3x^2 + \\sec^2 x\\right) = 6x + 2 \\sec x \\cdot \\sec x \\tan x = 6x + 2 \\sec^2 x \\tan x\\)."
+  },
+  {
+    "ref": "5.7 Eg.36",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "EASY",
+    "stem": "If \\(y = \\mathrm{A} \\sin x + \\mathrm{B} \\cos x\\), then prove that \\(\\frac{d^2y}{dx^2} + y = 0\\).",
+    "solution": "We have \\(\\frac{dy}{dx} = \\mathrm{A} \\cos x - \\mathrm{B} \\sin x\\)\n\nand \\(\\frac{d^2y}{dx^2} = \\frac{d}{dx}(\\mathrm{A} \\cos x - \\mathrm{B} \\sin x) = -\\mathrm{A} \\sin x - \\mathrm{B} \\cos x = -y\\)\n\nHence \\(\\frac{d^2y}{dx^2} + y = 0\\)."
+  },
+  {
+    "ref": "5.7 Eg.37",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "If \\(y = 3e^{2x} + 2e^{3x}\\), prove that \\(\\frac{d^2y}{dx^2} - 5\\frac{dy}{dx} + 6y = 0\\).",
+    "solution": "Given that \\(y = 3e^{2x} + 2e^{3x}\\). Then\n\n\\(\\frac{dy}{dx} = 6e^{2x} + 6e^{3x} = 6(e^{2x} + e^{3x})\\)\n\nTherefore \\(\\frac{d^2y}{dx^2} = 12e^{2x} + 18e^{3x} = 6(2e^{2x} + 3e^{3x})\\)\n\nHence \\(\\frac{d^2y}{dx^2} - 5\\frac{dy}{dx} + 6y = 6(2e^{2x} + 3e^{3x}) - 30(e^{2x} + e^{3x}) + 6(3e^{2x} + 2e^{3x}) = 0\\)."
+  },
+  {
+    "ref": "5.7 Eg.38",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "If \\(y = \\sin^{-1} x\\), show that \\((1 - x^2)\\frac{d^2y}{dx^2} - x\\frac{dy}{dx} = 0\\).",
+    "solution": "We have \\(y = \\sin^{-1} x\\). Then\n\n\\(\\frac{dy}{dx} = \\frac{1}{\\sqrt{(1 - x^2)}}\\)\n\nor \\(\\sqrt{(1 - x^2)}\\,\\frac{dy}{dx} = 1\\)\n\nSo \\(\\frac{d}{dx}\\left(\\sqrt{(1 - x^2)} \\cdot \\frac{dy}{dx}\\right) = 0\\)\n\nor \\(\\sqrt{(1 - x^2)} \\cdot \\frac{d^2y}{dx^2} + \\frac{dy}{dx} \\cdot \\frac{d}{dx}\\left(\\sqrt{(1 - x^2)}\\right) = 0\\)\n\nor \\(\\sqrt{(1 - x^2)} \\cdot \\frac{d^2y}{dx^2} - \\frac{dy}{dx} \\cdot \\frac{2x}{2\\sqrt{1 - x^2}} = 0\\)\n\nHence \\((1 - x^2)\\frac{d^2y}{dx^2} - x\\frac{dy}{dx} = 0\\)\n\nAlternatively, given that \\(y = \\sin^{-1} x\\), we have\n\n\\(y_1 = \\frac{1}{\\sqrt{1 - x^2}}\\), i.e., \\((1 - x^2)y_1^2 = 1\\)\n\nSo \\((1 - x^2) \\cdot 2y_1y_2 + y_1^2(0 - 2x) = 0\\)\n\nHence \\((1 - x^2)y_2 - xy_1 = 0\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "EASY",
+    "stem": "Find the second order derivative of the function \\(x^2 + 3x + 2\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "EASY",
+    "stem": "Find the second order derivative of the function \\(x^{20}\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "EASY",
+    "stem": "Find the second order derivative of the function \\(x \\cdot \\cos x\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "EASY",
+    "stem": "Find the second order derivative of the function \\(\\log x\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "Find the second order derivative of the function \\(x^3 \\log x\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "Find the second order derivative of the function \\(e^x \\sin 5x\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "Find the second order derivative of the function \\(e^{6x} \\cos 3x\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "Find the second order derivative of the function \\(\\tan^{-1} x\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "Find the second order derivative of the function \\(\\log(\\log x)\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "Find the second order derivative of the function \\(\\sin(\\log x)\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "EASY",
+    "stem": "If \\(y = 5 \\cos x - 3 \\sin x\\), prove that \\(\\frac{d^2y}{dx^2} + y = 0\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "If \\(y = \\cos^{-1} x\\), find \\(\\frac{d^2y}{dx^2}\\) in terms of \\(y\\) alone."
+  },
+  {
+    "ref": "Ex 5.7 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "If \\(y = 3 \\cos(\\log x) + 4 \\sin(\\log x)\\), show that \\(x^2 y_2 + x y_1 + y = 0\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "If \\(y = \\mathrm{A}e^{mx} + \\mathrm{B}e^{nx}\\), show that \\(\\frac{d^2y}{dx^2} - (m + n)\\frac{dy}{dx} + mny = 0\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "EASY",
+    "stem": "If \\(y = 500e^{7x} + 600e^{-7x}\\), show that \\(\\frac{d^2y}{dx^2} = 49y\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "If \\(e^y(x + 1) = 1\\), show that \\(\\frac{d^2y}{dx^2} = \\left(\\frac{dy}{dx}\\right)^2\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "If \\(y = (\\tan^{-1} x)^2\\), show that \\((x^2 + 1)^2 y_2 + 2x(x^2 + 1)y_1 = 2\\)."
+  },
+  {
+    "ref": "Misc Eg.39(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "context": "Differentiate w.r.t. \\(x\\), the following function:",
+    "setLabel": "Misc Eg.39",
+    "stem": "\\(\\sqrt{3x+2} + \\dfrac{1}{\\sqrt{2x^2+4}}\\)",
+    "solution": "Let \\(y = \\sqrt{3x+2} + \\dfrac{1}{\\sqrt{2x^2+4}} = (3x+2)^{\\frac{1}{2}} + (2x^2+4)^{-\\frac{1}{2}}\\).\n\nNote that this function is defined at all real numbers \\(x > -\\dfrac{2}{3}\\). Therefore\n\n\\(\\dfrac{dy}{dx} = \\dfrac{1}{2}(3x+2)^{\\frac{1}{2}-1}\\cdot\\dfrac{d}{dx}(3x+2) + \\left(-\\dfrac{1}{2}\\right)(2x^2+4)^{-\\frac{1}{2}-1}\\cdot\\dfrac{d}{dx}(2x^2+4)\\)\n\n\\(= \\dfrac{1}{2}(3x+2)^{-\\frac{1}{2}}\\cdot(3) - \\left(\\dfrac{1}{2}\\right)(2x^2+4)^{-\\frac{3}{2}}\\cdot 4x\\)\n\n\\(= \\dfrac{3}{2\\sqrt{3x+2}} - \\dfrac{2x}{\\left(2x^2+4\\right)^{\\frac{3}{2}}}\\)\n\nThis is defined for all real numbers \\(x > -\\dfrac{2}{3}\\)."
+  },
+  {
+    "ref": "Misc Eg.39(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "context": "Differentiate w.r.t. \\(x\\), the following function:",
+    "setLabel": "Misc Eg.39",
+    "stem": "\\(\\log_7(\\log x)\\)",
+    "solution": "Let \\(y = \\log_7(\\log x) = \\dfrac{\\log(\\log x)}{\\log 7}\\) (by change of base formula).\n\nThe function is defined for all real numbers \\(x > 1\\). Therefore\n\n\\(\\dfrac{dy}{dx} = \\dfrac{1}{\\log 7}\\dfrac{d}{dx}(\\log(\\log x))\\)\n\n\\(= \\dfrac{1}{\\log 7}\\cdot\\dfrac{1}{\\log x}\\cdot\\dfrac{d}{dx}(\\log x)\\)\n\n\\(= \\dfrac{1}{x\\log 7\\log x}\\)"
+  },
+  {
+    "ref": "Misc Eg.40(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "context": "Differentiate the following w.r.t. \\(x\\).",
+    "setLabel": "Misc Eg.40",
+    "stem": "\\(\\cos^{-1}(\\sin x)\\)",
+    "solution": "Let \\(f(x) = \\cos^{-1}(\\sin x)\\). Observe that this function is defined for all real numbers. We may rewrite this function as\n\n\\(f(x) = \\cos^{-1}(\\sin x)\\)\n\n\\(= \\cos^{-1}\\left[\\cos\\left(\\dfrac{\\pi}{2} - x\\right)\\right]\\)\n\n\\(= \\dfrac{\\pi}{2} - x\\)\n\nThus \\(f'(x) = -1\\)."
+  },
+  {
+    "ref": "Misc Eg.40(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "HARD",
+    "context": "Differentiate the following w.r.t. \\(x\\).",
+    "setLabel": "Misc Eg.40",
+    "stem": "\\(\\tan^{-1}\\left(\\dfrac{\\sin x}{1+\\cos x}\\right)\\)",
+    "solution": "Let \\(f(x) = \\tan^{-1}\\left(\\dfrac{\\sin x}{1+\\cos x}\\right)\\). Observe that this function is defined for all real numbers, where \\(\\cos x \\ne -1\\); i.e., at all odd multiplies of \\(\\pi\\). We may rewrite this function as\n\n\\(f(x) = \\tan^{-1}\\left(\\dfrac{\\sin x}{1+\\cos x}\\right)\\)\n\n\\(= \\tan^{-1}\\left[\\dfrac{2\\sin\\left(\\frac{x}{2}\\right)\\cos\\left(\\frac{x}{2}\\right)}{2\\cos^2\\frac{x}{2}}\\right]\\)\n\n\\(= \\tan^{-1}\\left[\\tan\\left(\\dfrac{x}{2}\\right)\\right] = \\dfrac{x}{2}\\)\n\nObserve that we could cancel \\(\\cos\\left(\\dfrac{x}{2}\\right)\\) in both numerator and denominator as it is not equal to zero. Thus \\(f'(x) = \\dfrac{1}{2}\\).",
+    "_note": "Book's printed solution says the function 'is defined for all real numbers, where cos x != -1; i.e., at all odd multiplies of pi'. Two defects preserved as printed: (a) 'multiplies' is a misprint for 'multiples'; (b) as worded it reads as though the function IS defined at the odd multiples of pi, whereas cos x = -1 exactly there, so those are precisely the points where it is NOT defined."
+  },
+  {
+    "ref": "Misc Eg.40(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "HARD",
+    "context": "Differentiate the following w.r.t. \\(x\\).",
+    "setLabel": "Misc Eg.40",
+    "stem": "\\(\\sin^{-1}\\left(\\dfrac{2^{x+1}}{1+4^x}\\right)\\)",
+    "solution": "Let \\(f(x) = \\sin^{-1}\\left(\\dfrac{2^{x+1}}{1+4^x}\\right)\\). To find the domain of this function we need to find all \\(x\\) such that \\(-1 \\le \\dfrac{2^{x+1}}{1+4^x} \\le 1\\). Since the quantity in the middle is always positive, we need to find all \\(x\\) such that \\(\\dfrac{2^{x+1}}{1+4^x} \\le 1\\), i.e., all \\(x\\) such that \\(2^{x+1} \\le 1+4^x\\). We may rewrite this as \\(2 \\le \\dfrac{1}{2^x} + 2^x\\) which is true for all \\(x\\). Hence the function is defined at every real number. By putting \\(2^x = \\tan\\theta\\), this function may be rewritten as\n\n\\(f(x) = \\sin^{-1}\\left[\\dfrac{2^{x+1}}{1+4^x}\\right]\\)\n\n\\(= \\sin^{-1}\\left[\\dfrac{2^x\\cdot 2}{1+\\left(2^x\\right)^2}\\right]\\)\n\n\\(= \\sin^{-1}\\left[\\dfrac{2\\tan\\theta}{1+\\tan^2\\theta}\\right]\\)\n\n\\(= \\sin^{-1}[\\sin 2\\theta] = 2\\theta = 2\\tan^{-1}(2^x)\\)\n\nThus \\(f'(x) = 2\\cdot\\dfrac{1}{1+\\left(2^x\\right)^2}\\cdot\\dfrac{d}{dx}(2^x)\\)\n\n\\(= \\dfrac{2}{1+4^x}\\cdot(2^x)\\log 2\\)\n\n\\(= \\dfrac{2^{x+1}\\log 2}{1+4^x}\\)"
+  },
+  {
+    "ref": "Misc Eg.41",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(f'(x)\\) if \\(f(x) = (\\sin x)^{\\sin x}\\) for all \\(0 < x < \\pi\\).",
+    "solution": "The function \\(y = (\\sin x)^{\\sin x}\\) is defined for all positive real numbers. Taking logarithms, we have\n\n\\(\\log y = \\log(\\sin x)^{\\sin x} = \\sin x\\log(\\sin x)\\)\n\nThen \\(\\dfrac{1}{y}\\dfrac{dy}{dx} = \\dfrac{d}{dx}(\\sin x\\log(\\sin x))\\)\n\n\\(= \\cos x\\log(\\sin x) + \\sin x\\cdot\\dfrac{1}{\\sin x}\\cdot\\dfrac{d}{dx}(\\sin x)\\)\n\n\\(= \\cos x\\log(\\sin x) + \\cos x\\)\n\n\\(= (1+\\log(\\sin x))\\cos x\\)\n\nThus \\(\\dfrac{dy}{dx} = y((1+\\log(\\sin x))\\cos x) = (1+\\log(\\sin x))(\\sin x)^{\\sin x}\\cos x\\)",
+    "_note": "Book oddity preserved: the stem restricts to \\(0 < x < \\pi\\), but the printed solution opens 'The function y = (sin x)^{sin x} is defined for all positive real numbers', which is not the same set."
+  },
+  {
+    "ref": "Misc Eg.42",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "HARD",
+    "stem": "For a positive constant \\(a\\) find \\(\\dfrac{dy}{dx}\\), where \\(y = a^{t+\\frac{1}{t}}\\), and \\(x = \\left(t+\\dfrac{1}{t}\\right)^a\\).",
+    "solution": "Observe that both \\(y\\) and \\(x\\) are defined for all real \\(t \\ne 0\\). Clearly\n\n\\(\\dfrac{dy}{dt} = \\dfrac{d}{dt}\\left(a^{t+\\frac{1}{t}}\\right) = a^{t+\\frac{1}{t}}\\dfrac{d}{dt}\\left(t+\\dfrac{1}{t}\\right)\\cdot\\log a\\)\n\n\\(= a^{t+\\frac{1}{t}}\\left(1-\\dfrac{1}{t^2}\\right)\\log a\\)\n\nSimilarly \\(\\dfrac{dx}{dt} = a\\left[t+\\dfrac{1}{t}\\right]^{a-1}\\cdot\\dfrac{d}{dt}\\left(t+\\dfrac{1}{t}\\right)\\)\n\n\\(= a\\left[t+\\dfrac{1}{t}\\right]^{a-1}\\cdot\\left(1-\\dfrac{1}{t^2}\\right)\\)\n\n\\(\\dfrac{dx}{dt} \\ne 0\\) only if \\(t \\ne \\pm 1\\). Thus for \\(t \\ne \\pm 1\\),\n\n\\(\\dfrac{dy}{dx} = \\dfrac{\\frac{dy}{dt}}{\\frac{dx}{dt}} = \\dfrac{a^{t+\\frac{1}{t}}\\left(1-\\frac{1}{t^2}\\right)\\log a}{a\\left[t+\\frac{1}{t}\\right]^{a-1}\\cdot\\left(1-\\frac{1}{t^2}\\right)}\\)\n\n\\(= \\dfrac{a^{t+\\frac{1}{t}}\\log a}{a\\left(t+\\frac{1}{t}\\right)^{a-1}}\\)"
+  },
+  {
+    "ref": "Misc Eg.43",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(\\sin^2 x\\) w.r.t. \\(e^{\\cos x}\\).",
+    "solution": "Let \\(u(x) = \\sin^2 x\\) and \\(v(x) = e^{\\cos x}\\). We want to find \\(\\dfrac{du}{dv} = \\dfrac{du/dx}{dv/dx}\\). Clearly\n\n\\(\\dfrac{du}{dx} = 2\\sin x\\cos x\\) and \\(\\dfrac{dv}{dx} = e^{\\cos x}(-\\sin x) = -(\\sin x)e^{\\cos x}\\)\n\nThus \\(\\dfrac{du}{dv} = \\dfrac{2\\sin x\\cos x}{-\\sin x\\,e^{\\cos x}} = -\\dfrac{2\\cos x}{e^{\\cos x}}\\)"
+  },
+  {
+    "ref": "Misc Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "EASY",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\((3x^2 - 9x + 5)^9\\)."
+  },
+  {
+    "ref": "Misc Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "EASY",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\(\\sin^3 x + \\cos^6 x\\)."
+  },
+  {
+    "ref": "Misc Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\((5x)^{3\\cos 2x}\\)."
+  },
+  {
+    "ref": "Misc Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\(\\sin^{-1}(x\\sqrt{x})\\), \\(0 \\le x \\le 1\\)."
+  },
+  {
+    "ref": "Misc Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\(\\dfrac{\\cos^{-1}\\frac{x}{2}}{\\sqrt{2x+7}}\\), \\(-2 < x < 2\\)."
+  },
+  {
+    "ref": "Misc Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\(\\cot^{-1}\\left[\\dfrac{\\sqrt{1+\\sin x}+\\sqrt{1-\\sin x}}{\\sqrt{1+\\sin x}-\\sqrt{1-\\sin x}}\\right]\\), \\(0 < x < \\dfrac{\\pi}{2}\\)."
+  },
+  {
+    "ref": "Misc Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\((\\log x)^{\\log x}\\), \\(x > 1\\)."
+  },
+  {
+    "ref": "Misc Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "EASY",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\(\\cos(a\\cos x + b\\sin x)\\), for some constant \\(a\\) and \\(b\\)."
+  },
+  {
+    "ref": "Misc Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\((\\sin x - \\cos x)^{(\\sin x - \\cos x)}\\), \\(\\dfrac{\\pi}{4} < x < \\dfrac{3\\pi}{4}\\)."
+  },
+  {
+    "ref": "Misc Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\(x^x + x^a + a^x + a^a\\), for some fixed \\(a > 0\\) and \\(x > 0\\)."
+  },
+  {
+    "ref": "Misc Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\(x^{x^2-3} + (x-3)^{x^2}\\), for \\(x > 3\\)."
+  },
+  {
+    "ref": "Misc Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\dfrac{dy}{dx}\\), if \\(y = 12(1-\\cos t)\\), \\(x = 10(t-\\sin t)\\), \\(-\\dfrac{\\pi}{2} < t < \\dfrac{\\pi}{2}\\)."
+  },
+  {
+    "ref": "Misc Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\dfrac{dy}{dx}\\), if \\(y = \\sin^{-1} x + \\sin^{-1}\\sqrt{1-x^2}\\), \\(0 < x < 1\\)."
+  },
+  {
+    "ref": "Misc Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "If \\(x\\sqrt{1+y} + y\\sqrt{1+x} = 0\\), for , \\(-1 < x < 1\\), prove that \\(\\dfrac{dy}{dx} = -\\dfrac{1}{(1+x)^2}\\).",
+    "_note": "Book prints a stray comma after 'for' ('for , - 1 < x < 1'). Transcribed as printed."
+  },
+  {
+    "ref": "Misc Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "If \\((x-a)^2 + (y-b)^2 = c^2\\), for some \\(c > 0\\), prove that \\(\\dfrac{\\left[1+\\left(\\frac{dy}{dx}\\right)^2\\right]^{\\frac{3}{2}}}{\\frac{d^2y}{dx^2}}\\) is a constant independent of \\(a\\) and \\(b\\)."
+  },
+  {
+    "ref": "Misc Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "If \\(\\cos y = x\\cos(a+y)\\), with \\(\\cos a \\ne \\pm 1\\), prove that \\(\\dfrac{dy}{dx} = \\dfrac{\\cos^2(a+y)}{\\sin a}\\)."
+  },
+  {
+    "ref": "Misc Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "If \\(x = a(\\cos t + t\\sin t)\\) and \\(y = a(\\sin t - t\\cos t)\\), find \\(\\dfrac{d^2y}{dx^2}\\)."
+  },
+  {
+    "ref": "Misc Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "If \\(f(x) = |x|^3\\), show that \\(f''(x)\\) exists for all real \\(x\\) and find it."
+  },
+  {
+    "ref": "Misc Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Using the fact that \\(\\sin(A+B) = \\sin A\\cos B + \\cos A\\sin B\\) and the differentiation, obtain the sum formula for cosines."
+  },
+  {
+    "ref": "Misc Q20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Does there exist a function which is continuous everywhere but not differentiable at exactly two points? Justify your answer."
+  },
+  {
+    "ref": "Misc Q21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "HARD",
+    "stem": "If \\(y = \\begin{vmatrix} f(x) & g(x) & h(x) \\\\ l & m & n \\\\ a & b & c \\end{vmatrix}\\), prove that \\(\\dfrac{dy}{dx} = \\begin{vmatrix} f'(x) & g'(x) & h'(x) \\\\ l & m & n \\\\ a & b & c \\end{vmatrix}\\)."
+  },
+  {
+    "ref": "Misc Q22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "If \\(y = e^{a\\cos^{-1} x}\\), \\(-1 \\le x \\le 1\\), show that \\(\\left(1-x^2\\right)\\dfrac{d^2y}{dx^2} - x\\dfrac{dy}{dx} - a^2 y = 0\\)."
+  }
+]

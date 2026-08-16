@@ -1,0 +1,30 @@
+[
+  {
+    "id": "2744f216-eb79-4c3b-adca-b9325fbcc1aa",
+    "ref": "Ex 8.1 Q3",
+    "derived_answer": "A",
+    "solution": "The circle \\(x^{2} + y^{2} = 4\\) has radius \\(2\\), so in the first quadrant it runs from \\(x = 0\\) to \\(x = 2\\); the lines \\(x = 0\\) and \\(x = 2\\) are exactly the two bounding ordinates, so the region is the full first-quadrant quarter disc. Area \\(= \\tfrac{1}{4}\\pi r^{2} = \\tfrac{1}{4}\\pi(4) = \\pi\\). Equivalently \\(\\int_{0}^{2}\\sqrt{4-x^{2}}\\,dx = \\left[\\tfrac{x\\sqrt{4-x^{2}}}{2} + 2\\sin^{-1}\\tfrac{x}{2}\\right]_{0}^{2} = 0 + 2\\left(\\tfrac{\\pi}{2}\\right) = \\pi\\).",
+    "matches_current": true
+  },
+  {
+    "id": "83b68126-90f1-4689-bb8d-170669d6b408",
+    "ref": "Ex 8.1 Q4",
+    "derived_answer": "B",
+    "solution": "The region is bounded by the \\(y\\)-axis, so integrate with respect to \\(y\\): \\(y^{2} = 4x\\) gives \\(x = \\tfrac{y^{2}}{4}\\). Area \\(= \\int_{0}^{3}\\tfrac{y^{2}}{4}\\,dy = \\left[\\tfrac{y^{3}}{12}\\right]_{0}^{3} = \\tfrac{27}{12} = \\tfrac{9}{4} = 2.25\\). The value \\(\\tfrac{9}{3} = 3\\) is the trap of dividing by \\(3\\) instead of \\(12\\).",
+    "matches_current": true
+  },
+  {
+    "id": "62a3b426-9d43-4afc-bef6-6f96d5d499e1",
+    "ref": "Misc Q4",
+    "derived_answer": "D",
+    "solution": "\\(y = x^{3}\\) is negative on \\((-2, 0)\\) and positive on \\((0, 1)\\), so AREA requires the absolute value on each side separately, not one signed integral. \\(\\left|\\int_{-2}^{0}x^{3}\\,dx\\right| = \\left|0 - \\tfrac{16}{4}\\right| = 4\\) and \\(\\int_{0}^{1}x^{3}\\,dx = \\tfrac{1}{4}\\), giving a total of \\(4 + \\tfrac{1}{4} = \\tfrac{17}{4}\\). Verified by numeric midpoint integration of \\(\\left|x^{3}\\right|\\) over \\([-2, 1]\\) with 2,000,000 subintervals: \\(4.2499999999988\\), matching \\(\\tfrac{17}{4} = 4.25\\). The value \\(-\\tfrac{15}{4}\\) is the signed integral \\(-4 + \\tfrac{1}{4}\\) and is the trap; a negative area is impossible, which also rules out \\(-9\\) and \\(-\\tfrac{15}{4}\\) on sight.",
+    "matches_current": true
+  },
+  {
+    "id": "aa82b4c2-b257-413b-9493-d0acd339b744",
+    "ref": "Misc Q5",
+    "derived_answer": "C",
+    "solution": "\\(y = x|x|\\) equals \\(x^{2}\\) for \\(x > 0\\) and \\(-x^{2}\\) for \\(x < 0\\), so the curve lies below the axis on \\((-1, 0)\\) and above it on \\((0, 1)\\). Area \\(= \\left|\\int_{-1}^{0}-x^{2}\\,dx\\right| + \\int_{0}^{1}x^{2}\\,dx = \\tfrac{1}{3} + \\tfrac{1}{3} = \\tfrac{2}{3}\\). Verified by numeric midpoint integration of \\(\\left|\\,x|x|\\,\\right|\\) over \\([-1, 1]\\) with 1,000,000 subintervals: \\(0.66666666667\\), matching \\(\\tfrac{2}{3}\\). The value \\(0\\) is the signed integral of this odd function, i.e. the trap.",
+    "matches_current": true
+  }
+]

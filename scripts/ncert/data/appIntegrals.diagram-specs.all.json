@@ -1,0 +1,290 @@
+[
+  {
+    "ref": "8.1 Eg.1",
+    "xr": [-2.6, 2.6],
+    "yr": [-2.6, 2.6],
+    "equal_aspect": true,
+    "caption": "Region enclosed by the circle x^2 + y^2 = a^2, shown for a = 2. Outlined in red is the first-quadrant part AOBA, which the solution integrates and multiplies by 4.",
+    "conics": [
+      { "cx": 0, "cy": 0, "r": 2, "label": "x^2 + y^2 = a^2", "color": "blue" },
+      { "cx": 0, "cy": 0, "r": 2, "t0": 0, "t1": 90, "color": "red" }
+    ],
+    "segments": [
+      { "x1": 0, "y1": 0, "x2": 2, "y2": 0, "color": "red" },
+      { "x1": 0, "y1": 0, "x2": 0, "y2": 2, "color": "red" }
+    ],
+    "shade": [
+      { "dom": [-2, 2], "hi": "np.sqrt(np.maximum(4 - x**2, 0))", "lo": "-np.sqrt(np.maximum(4 - x**2, 0))" }
+    ],
+    "points": [
+      { "x": 2, "y": 0, "label": "A(a, 0)", "dx": -66, "dy": 14 },
+      { "x": 0, "y": 2, "label": "B(0, a)", "dx": 12, "dy": 14 }
+    ]
+  },
+  {
+    "ref": "8.1 Eg.2",
+    "xr": [-3.8, 3.8],
+    "yr": [-2.8, 2.8],
+    "equal_aspect": true,
+    "caption": "Region enclosed by the ellipse x^2/a^2 + y^2/b^2 = 1, shown for a = 3, b = 2. Outlined in red is the first-quadrant part AOBA, which the solution integrates and multiplies by 4.",
+    "conics": [
+      { "cx": 0, "cy": 0, "a": 3, "b": 2, "label": "x^2/a^2 + y^2/b^2 = 1", "color": "blue" },
+      { "cx": 0, "cy": 0, "a": 3, "b": 2, "t0": 0, "t1": 90, "color": "red" }
+    ],
+    "segments": [
+      { "x1": 0, "y1": 0, "x2": 3, "y2": 0, "color": "red" },
+      { "x1": 0, "y1": 0, "x2": 0, "y2": 2, "color": "red" }
+    ],
+    "shade": [
+      { "dom": [-3, 3], "hi": "2*np.sqrt(np.maximum(1 - x**2/9.0, 0))", "lo": "-2*np.sqrt(np.maximum(1 - x**2/9.0, 0))" }
+    ],
+    "points": [
+      { "x": 3, "y": 0, "label": "A(a, 0)", "dx": -66, "dy": 14 },
+      { "x": 0, "y": 2, "label": "B(0, b)", "dx": 12, "dy": 14 }
+    ]
+  },
+  {
+    "ref": "Ex 8.1 Q1",
+    "xr": [-5.0, 5.0],
+    "yr": [-4.0, 4.0],
+    "equal_aspect": true,
+    "caption": "Region enclosed by the ellipse x^2/16 + y^2/9 = 1 (semi-axes 4 along x, 3 along y)",
+    "conics": [
+      { "cx": 0, "cy": 0, "a": 4, "b": 3, "label": "x^2/16 + y^2/9 = 1", "color": "blue" }
+    ],
+    "shade": [
+      { "dom": [-4, 4], "hi": "3*np.sqrt(np.maximum(1 - x**2/16.0, 0))", "lo": "-3*np.sqrt(np.maximum(1 - x**2/16.0, 0))" }
+    ],
+    "points": [
+      { "x": 4, "y": 0, "label": "(4, 0)", "dx": -56, "dy": 14 },
+      { "x": 0, "y": 3, "label": "(0, 3)", "dx": 12, "dy": 14 },
+      { "x": -4, "y": 0, "label": "(-4, 0)", "dx": -60, "dy": 12 },
+      { "x": 0, "y": -3, "label": "(0, -3)", "dx": 12, "dy": 4 }
+    ]
+  },
+  {
+    "ref": "Ex 8.1 Q2",
+    "xr": [-3.2, 3.2],
+    "yr": [-4.0, 4.0],
+    "equal_aspect": true,
+    "caption": "Region enclosed by the ellipse x^2/4 + y^2/9 = 1 (semi-axis 2 along x, 3 along y; major axis vertical)",
+    "conics": [
+      { "cx": 0, "cy": 0, "a": 2, "b": 3, "label": "x^2/4 + y^2/9 = 1", "color": "blue" }
+    ],
+    "shade": [
+      { "dom": [-2, 2], "hi": "3*np.sqrt(np.maximum(1 - x**2/4.0, 0))", "lo": "-3*np.sqrt(np.maximum(1 - x**2/4.0, 0))" }
+    ],
+    "points": [
+      { "x": 2, "y": 0, "label": "(2, 0)", "dx": 8, "dy": 12 },
+      { "x": 0, "y": 3, "label": "(0, 3)", "dx": 12, "dy": 14 },
+      { "x": -2, "y": 0, "label": "(-2, 0)", "dx": -60, "dy": 12 },
+      { "x": 0, "y": -3, "label": "(0, -3)", "dx": 12, "dy": 4 }
+    ]
+  },
+  {
+    "ref": "Ex 8.1 Q3",
+    "xr": [-0.6, 2.8],
+    "yr": [-0.6, 2.8],
+    "equal_aspect": true,
+    "caption": "First-quadrant region bounded by the circle x^2 + y^2 = 4, the x-axis and the ordinates x = 0 (the y-axis) and x = 2",
+    "conics": [
+      { "cx": 0, "cy": 0, "r": 2, "t0": 0, "t1": 90, "label": "x^2 + y^2 = 4", "color": "blue" }
+    ],
+    "shade": [
+      { "dom": [0, 2], "hi": "np.sqrt(np.maximum(4 - x**2, 0))", "lo": "0" }
+    ],
+    "lines": [
+      { "A": 1, "B": 0, "C": -2, "label": "x = 2", "color": "gray", "dashed": true }
+    ],
+    "points": [
+      { "x": 2, "y": 0, "label": "(2, 0)", "dx": -30, "dy": 10 },
+      { "x": 0, "y": 2, "label": "(0, 2)", "dx": 14, "dy": 18 }
+    ]
+  },
+  {
+    "ref": "Ex 8.1 Q4",
+    "xr": [-0.5, 3.2],
+    "yr": [-0.5, 3.8],
+    "caption": "Region bounded by the parabola y^2 = 4x on the right, the y-axis on the left and the line y = 3 above",
+    "curves": [
+      { "expr": "2*np.sqrt(np.maximum(x, 0))", "dom": [0, 2.9], "label": "y^2 = 4x", "color": "blue" }
+    ],
+    "shade": [
+      { "dom": [0, 2.25], "hi": "3", "lo": "2*np.sqrt(np.maximum(x, 0))" }
+    ],
+    "lines": [
+      { "A": 0, "B": 1, "C": -3, "label": "y = 3", "color": "green", "dashed": true }
+    ],
+    "points": [
+      { "x": 0, "y": 3, "label": "(0, 3)", "dx": 10, "dy": -20 },
+      { "x": 2.25, "y": 3, "label": "", "dx": 8, "dy": -18 }
+    ]
+  },
+  {
+    "ref": "Misc Eg.3",
+    "xr": [-1.7, 1.7],
+    "yr": [-1.9, 6.0],
+    "caption": "y = 3x + 2 between x = -1 and x = 1: the part BELOW the x-axis on [-1, -2/3] and the part ABOVE it on [-2/3, 1] are shaded, and measured, separately",
+    "curves": [
+      { "expr": "3*x + 2", "dom": [-1.25, 1.25], "label": "y = 3x + 2", "color": "blue" }
+    ],
+    "shade": [
+      { "dom": [-1, -0.6666666667], "hi": "0", "lo": "3*x + 2" },
+      { "dom": [-0.6666666667, 1], "hi": "3*x + 2", "lo": "0" }
+    ],
+    "lines": [
+      { "A": 1, "B": 0, "C": 1, "label": "x = -1", "color": "gray", "dashed": true },
+      { "A": 1, "B": 0, "C": -1, "label": "x = 1", "color": "gray", "dashed": true }
+    ],
+    "points": [
+      { "x": -0.6666666667, "y": 0, "label": "(-2/3, 0)", "dx": 8, "dy": 10 },
+      { "x": -1, "y": -1, "label": "(-1, -1)", "dx": 6, "dy": 8 },
+      { "x": 1, "y": 5, "label": "(1, 5)", "dx": -56, "dy": -20 }
+    ]
+  },
+  {
+    "ref": "Misc Eg.4",
+    "xr": [-0.7, 7.2],
+    "yr": [-1.7, 1.7],
+    "caption": "y = cos x from x = 0 to x = 2pi: three parts - above the axis on [0, pi/2], below it on [pi/2, 3pi/2], above it again on [3pi/2, 2pi]",
+    "curves": [
+      { "expr": "np.cos(x)", "dom": [-0.3, 6.7], "label": "y = cos x", "color": "blue" }
+    ],
+    "shade": [
+      { "dom": [0, 1.5707963268], "hi": "np.cos(x)", "lo": "0" },
+      { "dom": [1.5707963268, 4.7123889804], "hi": "0", "lo": "np.cos(x)" },
+      { "dom": [4.7123889804, 6.2831853072], "hi": "np.cos(x)", "lo": "0" }
+    ],
+    "lines": [
+      { "A": 1, "B": 0, "C": -6.2831853072, "label": "x = 2pi", "color": "gray", "dashed": true }
+    ],
+    "points": [
+      { "x": 0, "y": 1, "label": "(0, 1)", "dx": 10, "dy": -22 },
+      { "x": 1.5707963268, "y": 0, "label": "(pi/2, 0)", "dx": 6, "dy": -26 },
+      { "x": 4.7123889804, "y": 0, "label": "(3pi/2, 0)", "dx": -34, "dy": 12 }
+    ]
+  },
+  {
+    "ref": "Misc Q1(i)",
+    "xr": [-0.5, 2.9],
+    "yr": [-0.7, 5.4],
+    "caption": "Region under y = x^2, above the x-axis, between the ordinates x = 1 and x = 2",
+    "curves": [
+      { "expr": "x**2", "dom": [-0.3, 2.4], "label": "y = x^2", "color": "blue" }
+    ],
+    "shade": [
+      { "dom": [1, 2], "hi": "x**2", "lo": "0" }
+    ],
+    "lines": [
+      { "A": 1, "B": 0, "C": -1, "label": "x = 1", "color": "gray", "dashed": true },
+      { "A": 1, "B": 0, "C": -2, "label": "x = 2", "color": "gray", "dashed": true }
+    ],
+    "points": [
+      { "x": 1, "y": 1, "label": "(1, 1)", "dx": -54, "dy": -20 },
+      { "x": 2, "y": 4, "label": "(2, 4)", "dx": -56, "dy": -22 }
+    ]
+  },
+  {
+    "ref": "Misc Q1(ii)",
+    "xr": [-0.4, 5.8],
+    "yr": [-55, 740],
+    "caption": "Region under y = x^4, above the x-axis, between the ordinates x = 1 and x = 5 (note how steep the y-scale is)",
+    "curves": [
+      { "expr": "x**4", "dom": [-0.3, 5.2], "label": "y = x^4", "color": "blue" }
+    ],
+    "shade": [
+      { "dom": [1, 5], "hi": "x**4", "lo": "0" }
+    ],
+    "lines": [
+      { "A": 1, "B": 0, "C": -1, "label": "x = 1", "color": "gray", "dashed": true },
+      { "A": 1, "B": 0, "C": -5, "label": "x = 5", "color": "gray", "dashed": true }
+    ],
+    "points": [
+      { "x": 1, "y": 1, "label": "(1, 1)", "dx": 8, "dy": -24 },
+      { "x": 5, "y": 625, "label": "(5, 5^4)", "dx": -78, "dy": -22 }
+    ]
+  },
+  {
+    "ref": "Misc Q2",
+    "xr": [-7.4, 1.6],
+    "yr": [-0.9, 4.6],
+    "caption": "Region under y = |x + 3|, above the x-axis, between x = -6 and x = 0 - two congruent triangles meeting at the vertex (-3, 0)",
+    "curves": [
+      { "expr": "np.abs(x + 3)", "dom": [-6.7, 0.9], "label": "y = |x + 3|", "color": "blue" }
+    ],
+    "shade": [
+      { "dom": [-6, -3], "hi": "np.abs(x + 3)", "lo": "0" },
+      { "dom": [-3, 0], "hi": "np.abs(x + 3)", "lo": "0" }
+    ],
+    "lines": [
+      { "A": 1, "B": 0, "C": 6, "label": "x = -6", "color": "gray", "dashed": true }
+    ],
+    "points": [
+      { "x": -6, "y": 3, "label": "(-6, 3)", "dx": 6, "dy": -22 },
+      { "x": -3, "y": 0, "label": "(-3, 0)", "dx": -24, "dy": 10 },
+      { "x": 0, "y": 3, "label": "(0, 3)", "dx": -58, "dy": -22 }
+    ]
+  },
+  {
+    "ref": "Misc Q3",
+    "xr": [-0.7, 7.2],
+    "yr": [-1.7, 1.7],
+    "caption": "y = sin x from x = 0 to x = 2pi: the arch ABOVE the axis on [0, pi] and the arch BELOW it on [pi, 2pi] are shaded, and measured, separately",
+    "curves": [
+      { "expr": "np.sin(x)", "dom": [-0.3, 6.7], "label": "y = sin x", "color": "blue" }
+    ],
+    "shade": [
+      { "dom": [0, 3.1415926536], "hi": "np.sin(x)", "lo": "0" },
+      { "dom": [3.1415926536, 6.2831853072], "hi": "0", "lo": "np.sin(x)" }
+    ],
+    "lines": [
+      { "A": 1, "B": 0, "C": -6.2831853072, "label": "x = 2pi", "color": "gray", "dashed": true }
+    ],
+    "points": [
+      { "x": 3.1415926536, "y": 0, "label": "(pi, 0)", "dx": 6, "dy": -26 },
+      { "x": 6.2831853072, "y": 0, "label": "(2pi, 0)", "dx": -66, "dy": 14 }
+    ]
+  },
+  {
+    "ref": "Misc Q4",
+    "xr": [-2.7, 1.9],
+    "yr": [-9.8, 2.9],
+    "caption": "y = x^3 between x = -2 and x = 1: the part BELOW the x-axis on [-2, 0] and the part ABOVE it on [0, 1] are shaded, and measured, separately",
+    "curves": [
+      { "expr": "x**3", "dom": [-2.1, 1.3], "label": "y = x^3", "color": "blue" }
+    ],
+    "shade": [
+      { "dom": [-2, 0], "hi": "0", "lo": "x**3" },
+      { "dom": [0, 1], "hi": "x**3", "lo": "0" }
+    ],
+    "lines": [
+      { "A": 1, "B": 0, "C": 2, "label": "x = -2", "color": "gray", "dashed": true },
+      { "A": 1, "B": 0, "C": -1, "label": "x = 1", "color": "gray", "dashed": true }
+    ],
+    "points": [
+      { "x": -2, "y": -8, "label": "(-2, -8)", "dx": 8, "dy": 8 },
+      { "x": 1, "y": 1, "label": "(1, 1)", "dx": -54, "dy": -22 }
+    ]
+  },
+  {
+    "ref": "Misc Q5",
+    "xr": [-1.7, 1.7],
+    "yr": [-1.9, 1.9],
+    "caption": "y = x|x| between x = -1 and x = 1: y = -x^2 BELOW the axis on [-1, 0] and y = x^2 ABOVE it on [0, 1], shaded, and measured, separately",
+    "curves": [
+      { "expr": "x*np.abs(x)", "dom": [-1.3, 1.3], "label": "y = x|x|", "color": "blue" }
+    ],
+    "shade": [
+      { "dom": [-1, 0], "hi": "0", "lo": "-x**2" },
+      { "dom": [0, 1], "hi": "x**2", "lo": "0" }
+    ],
+    "lines": [
+      { "A": 1, "B": 0, "C": 1, "label": "x = -1", "color": "gray", "dashed": true },
+      { "A": 1, "B": 0, "C": -1, "label": "x = 1", "color": "gray", "dashed": true }
+    ],
+    "points": [
+      { "x": -1, "y": -1, "label": "(-1, -1)", "dx": 8, "dy": 10 },
+      { "x": 1, "y": 1, "label": "(1, 1)", "dx": -54, "dy": -22 }
+    ]
+  }
+]
