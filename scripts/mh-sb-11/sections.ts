@@ -499,6 +499,109 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Miscellaneous Exercise 7", label: "(I) Select the correct answer", kind: "miscellaneous", refPrefixes: ["Misc I "] },
     { group: "Miscellaneous Exercise 7", label: "(II) Answer the following", kind: "miscellaneous", refPrefixes: ["Misc II "] },
   ],
+
+  // ── Ch.6 Circle (Part 1) — verified against Ch_06_Circles.pdf (13pp).
+  //    A small, regular chapter: three solved blocks each followed by its own
+  //    exercise, then one terminal Miscellaneous split (I) MCQ / (II) free.
+  //    Every one of the 11 `Solution :` markers sits inside a boxed block — this
+  //    chapter has NO theory-embedded worked example, so no `a`-suffix is needed.
+  //    Prefix `6.3.4` names the third block for §6.3.4 Director Circle, the
+  //    sub-section it follows (§6.3.1-6.3.3 are pure theory with no block).
+  "circle-11": [
+    { group: "6.1 Different Forms of the Equation of a Circle", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.1 SolvedEx"] },
+    { group: "Exercise 6.1", label: "Exercise 6.1", kind: "exercise", refPrefixes: ["Ex 6.1 Q"] },
+    { group: "6.2 General Equation of a Circle", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.2 SolvedEx"] },
+    { group: "Exercise 6.2", label: "Exercise 6.2", kind: "exercise", refPrefixes: ["Ex 6.2 Q"] },
+    { group: "6.3 Tangents and the Director Circle", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.3.4 SolvedEx"] },
+    { group: "Exercise 6.3", label: "Exercise 6.3", kind: "exercise", refPrefixes: ["Ex 6.3 Q"] },
+    { group: "Miscellaneous Exercise 6", label: "(I) Choose the correct alternative", kind: "miscellaneous", refPrefixes: ["Misc I "] },
+    { group: "Miscellaneous Exercise 6", label: "(II) Answer the following", kind: "miscellaneous", refPrefixes: ["Misc II "] },
+  ],
+
+  // ── Ch.7 Conic Sections (Part 1) — verified against Ch_07_Conics_Section.pdf
+  //    (39pp, the second-largest chapter in the book). Structurally THREE
+  //    half-chapters sharing one number — §7.1 Parabola (p-00..p-09), §7.2 Ellipse
+  //    (p-10..p-23), §7.3 Hyperbola (p-24..p-35) — each opening with its own
+  //    "Let's Study" box and closed by its own exercise, then ONE terminal
+  //    Miscellaneous covering all three.
+  //
+  //    SIX solved blocks, each named for the sub-section it follows and each
+  //    restarting at "Ex. 1)", so all six prefixes are distinct and no `b`-suffix
+  //    is needed: 7.1.10 (p-04..06) · 7.1.13 (p-08) · 7.2.2 (p-15..18) ·
+  //    7.2.8 (p-21..22) · 7.3.3 (p-28..29) · 7.3.9 (p-32..34). Note 7.2.8 and
+  //    7.3.3 open under a SINGULAR `SOLVED EXAMPLE` banner, and 7.3.3's block is
+  //    theory-embedded ahead of the p-32 banner — a banner-only scan misses both.
+  //
+  //    `Ex 7.3` is correct despite the book's ANSWERS section heading that block
+  //    "Exercise : 7.4"; the chapter body is the contiguous source. See config.ts.
+  "conic-sections-11": [
+    { group: "7.1 Parabola", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.1.10 SolvedEx"] },
+    { group: "7.1 Tangents to a Parabola", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.1.13 SolvedEx"] },
+    { group: "Exercise 7.1", label: "Exercise 7.1", kind: "exercise", refPrefixes: ["Ex 7.1 Q"] },
+    { group: "7.2 Ellipse", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.2.2 SolvedEx"] },
+    { group: "7.2 Tangents and the Auxiliary Circle", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.2.8 SolvedEx"] },
+    { group: "Exercise 7.2", label: "Exercise 7.2", kind: "exercise", refPrefixes: ["Ex 7.2 Q"] },
+    { group: "7.3 Hyperbola", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.3.3 SolvedEx"] },
+    { group: "7.3 Tangents and Asymptotes", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.3.9 SolvedEx"] },
+    { group: "Exercise 7.3", label: "Exercise 7.3", kind: "exercise", refPrefixes: ["Ex 7.3 Q"] },
+    { group: "Miscellaneous Exercise 7", label: "(I) Select the correct option", kind: "miscellaneous", refPrefixes: ["Misc I "] },
+    { group: "Miscellaneous Exercise 7", label: "(II) Answer the following", kind: "miscellaneous", refPrefixes: ["Misc II "] },
+  ],
+
+  // ── Binomial Theorem (Part 2 Ch.4, §4.2-§4.5 only) — verified against
+  //    Ch_04_Method_of_induction_Binomial_Theorem.pdf p-05..p-17.
+  //    The induction half (§4.1 + Exercise 4.1) is deliberately out of scope, so
+  //    this outline opens at §4.2 rather than at the chapter's first page, and
+  //    `Misc II` starts at Q4 (Q1-Q3 and Q11 are induction). See config.ts.
+  //
+  //    Four solved blocks, one per section, each followed by its own exercise.
+  //    The book prints TWO sections numbered 4.3, but the first is theory only
+  //    (no worked example, no exercise), so the `4.3` prefix is unambiguous and
+  //    NO `4.3b` block exists — do not add one.
+  "binomial-theorem-11": [
+    { group: "4.2 Binomial Theorem for a Positive Integral Index", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.2 SolvedEx"] },
+    { group: "Exercise 4.2", label: "Exercise 4.2", kind: "exercise", refPrefixes: ["Ex 4.2 Q"] },
+    { group: "4.3 General Term and Middle Term", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.3 SolvedEx"] },
+    { group: "Exercise 4.3", label: "Exercise 4.3", kind: "exercise", refPrefixes: ["Ex 4.3 Q"] },
+    { group: "4.4 Binomial Theorem for a Negative or Fractional Index", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.4 SolvedEx"] },
+    { group: "Exercise 4.4", label: "Exercise 4.4", kind: "exercise", refPrefixes: ["Ex 4.4 Q"] },
+    { group: "4.5 Binomial Coefficients", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.5 SolvedEx"] },
+    { group: "Exercise 4.5", label: "Exercise 4.5 — Show That", kind: "exercise", refPrefixes: ["Ex 4.5 Q"] },
+    { group: "Miscellaneous Exercise 4", label: "(I) Select the correct answer", kind: "miscellaneous", refPrefixes: ["Misc I "] },
+    { group: "Miscellaneous Exercise 4", label: "(II) Answer the following", kind: "miscellaneous", refPrefixes: ["Misc II "] },
+  ],
+
+  // ── Ch.9 Differentiation (Part 2) — the LAST chapter of the book, verified
+  //    against Ch_09_Diffrentiation.pdf (17pp).
+  //
+  //    TWO things here are unlike any other chapter in this book:
+  //    1. `9.1.4a` and `9.1.4` are the SAME sub-section. §9.1.4's first-principle
+  //       derivations are embedded in the theory narrative (p-01..p-03, ahead of
+  //       any banner) and the boxed `SOLVED EXAMPLES` block follows on p-04..p-05.
+  //       Per the documented rule the theory-embedded run takes the `a` suffix and
+  //       is ordered FIRST. A banner-only scan sees only the second of the two.
+  //    2. **EXERCISE 9.2 IS PRINTED IN FIVE ROMAN PARTS**, each restarting its
+  //       numbering at (1), so it needs FIVE blocks rather than one. The trailing
+  //       " Q" in each prefix is load-bearing: without it `Ex 9.2 I Q` would also
+  //       match `Ex 9.2 II Q1` under longest-prefix routing. Part (VI) is a
+  //       fill-in-the-blank Activity block and is deliberately not ingested.
+  //
+  //    No solved block exists between §9.2.5 and Exercise 9.2, and none is
+  //    emitted from p-13 onward — see config.ts note 5.
+  "differentiation-11": [
+    { group: "9.1 Derivatives from First Principle", label: "Worked Examples", kind: "solved_example", refPrefixes: ["9.1.4a SolvedEx"] },
+    { group: "9.1 Derivatives of Standard Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["9.1.4 SolvedEx"] },
+    { group: "9.1.5 Differentiability and Continuity", label: "Solved Examples", kind: "solved_example", refPrefixes: ["9.1.5 SolvedEx"] },
+    { group: "Exercise 9.1", label: "Exercise 9.1", kind: "exercise", refPrefixes: ["Ex 9.1 Q"] },
+    { group: "9.2 Rules of Differentiation", label: "Solved Examples", kind: "solved_example", refPrefixes: ["9.2.4 SolvedEx"] },
+    { group: "Exercise 9.2", label: "Exercise 9.2 (I)", kind: "exercise", refPrefixes: ["Ex 9.2 I Q"] },
+    { group: "Exercise 9.2", label: "Exercise 9.2 (II)", kind: "exercise", refPrefixes: ["Ex 9.2 II Q"] },
+    { group: "Exercise 9.2", label: "Exercise 9.2 (III)", kind: "exercise", refPrefixes: ["Ex 9.2 III Q"] },
+    { group: "Exercise 9.2", label: "Exercise 9.2 (IV)", kind: "exercise", refPrefixes: ["Ex 9.2 IV Q"] },
+    { group: "Exercise 9.2", label: "Exercise 9.2 (V)", kind: "exercise", refPrefixes: ["Ex 9.2 V Q"] },
+    { group: "Miscellaneous Exercise 9", label: "(I) Select the appropriate option", kind: "miscellaneous", refPrefixes: ["Misc I "] },
+    { group: "Miscellaneous Exercise 9", label: "(II) Answer the following", kind: "miscellaneous", refPrefixes: ["Misc II "] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "804268af-c406-4ff5-a4c3-d51b914b65a1",
+    "ref": "Misc I Q1",
+    "derived_answer": "C",
+    "why": "Ambiguous vinculum: read as (x-4)/(sqrt(x)+2) the numerator factors as (sqrt(x)-2)(sqrt(x)+2) so y = sqrt(x)-2 and dy/dx = 1/(2 sqrt(x)) = option C exactly; the rival reading (x-4)/sqrt(x+2) gives (x+8)/(2 (x+2)^(3/2)), which matches none of the four options (checked symbolically and numerically at x=3), and that asymmetry fixes the intended reading.",
+    "matches_current": true
+  },
+  {
+    "id": "5c307043-3a65-4358-a9dd-50588225dfd3",
+    "ref": "Misc I Q2",
+    "derived_answer": "D",
+    "why": "Quotient rule: [a(cx+d) - c(ax+b)]/(cx+d)^2 = (ad-bc)/(cx+d)^2; the cross terms acx cancel, leaving ad-bc, not ac-bd or ab-cd.",
+    "matches_current": true
+  },
+  {
+    "id": "26ea432c-7db1-4017-93e7-450566899d5e",
+    "ref": "Misc I Q3",
+    "derived_answer": "C",
+    "why": "Quotient rule: [3(4x+5) - 4(3x+5)]/(4x+5)^2 = (12x+15-12x-20)/(4x+5)^2 = -5/(4x+5)^2.",
+    "matches_current": true
+  },
+  {
+    "id": "b5c104fb-97e2-4b62-aefc-cde90f8285de",
+    "ref": "Misc I Q4",
+    "derived_answer": "B",
+    "why": "Quotient rule with u = 5 sin x - 2, v = 4 sin x + 3: numerator = cos x (20 sin x + 15 - 20 sin x + 8) = 23 cos x, so dy/dx = 23 cos x/(4 sin x + 3)^2.",
+    "matches_current": true
+  },
+  {
+    "id": "5ae62310-d6e0-4776-97d9-489ca689c957",
+    "ref": "Misc I Q5",
+    "derived_answer": "B",
+    "why": "g = h' = a cos x - b sin x and f = g' = h'' = -(a sin x + b cos x), so f + h = -(a sin x + b cos x) + (a sin x + b cos x + c) = c.",
+    "matches_current": true
+  },
+  {
+    "id": "c7fa6846-3e12-4472-92a3-732bf5d8bd94",
+    "ref": "Misc I Q6",
+    "derived_answer": "D",
+    "why": "Continuity at x=2 gives 4a + 2b = 10 and matching one-sided derivatives gives 4a + b = 2; subtracting yields b = 8 and then a = -3/2.",
+    "matches_current": true
+  },
+  {
+    "id": "93bcef4e-a2fb-4000-b034-e48ad4f6c664",
+    "ref": "Misc I Q7",
+    "derived_answer": "A",
+    "why": "Printed defect: both branches carry the condition x <= 0, which leaves f undefined for x > 0; adopting the evidently intended reading (second branch for x > 0), both branches give f(0)=1 so f is continuous, while the left derivative 2x + cos x at 0 equals 1 and the right derivative 2x - 2 at 0 equals -2, so f is not differentiable at 0.",
+    "matches_current": true
+  },
+  {
+    "id": "9f4172a6-8674-4a59-82d7-f364246772dd",
+    "ref": "Misc I Q8",
+    "derived_answer": "C",
+    "why": "Term-by-term, f'(x) = x^49 + x^48 + ... + x + 1 (the constant 1 differentiates away), which is 50 terms each equal to 1 at x = 1, so f'(1) = 50.",
+    "matches_current": true
+  }
+]

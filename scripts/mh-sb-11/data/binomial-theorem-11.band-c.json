@@ -1,0 +1,599 @@
+[
+  {
+    "ref": "4.5 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Binomial Coefficients",
+    "difficulty": "EASY",
+    "stem": "Show that \\(C_0 + C_1 + C_2 + \\dots + C_{10} = 1024\\)",
+    "solution": "We have \\(C_0 + C_1 + C_2 + \\dots + C_n = 2^n\\)\n\nPut \\(n = 10\\), we get\n\n\\(C_0 + C_1 + C_2 + \\dots + C_{10} = 2^{10}\\)\n\n\\(\\therefore C_0 + C_1 + C_2 + \\dots + C_{10} = 1024\\)"
+  },
+  {
+    "ref": "4.5 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Binomial Coefficients",
+    "difficulty": "MODERATE",
+    "stem": "Show that \\(C_0 + C_2 + C_4 + \\dots + C_{12} = C_1 + C_3 + C_5 + \\dots + C_{11} = 2048\\)",
+    "solution": "We have\n\n\\(C_0 + C_1 + C_2 + C_3 + C_4 + C_5 + \\dots + C_{n-1} + C_n = 2^n\\)\n\nPut \\(n = 12\\), we get\n\n\\(C_0 + C_1 + C_2 + C_3 + C_4 + C_5 + \\dots + C_{11} + C_{12} = 2^{12} = 4096\\) …(i)\n\nWe know that\n\nThe sum of even coefficients = The sum of odd coefficients.\n\n\\(\\therefore C_0 + C_2 + C_4 + \\dots + C_{12} = C_1 + C_3 + C_5 + \\dots + C_{11} = k\\) …(ii)\n\nNow from (i)\n\n\\((C_0 + C_2 + C_4 + \\dots + C_{12}) + (C_1 + C_3 + C_5 + \\dots + C_{11}) = 4096\\)\n\n\\(\\therefore k + k = 4096\\)\n\n\\(\\therefore 2k = 4096\\)\n\n\\(\\therefore k = 2048\\)\n\n\\(\\therefore C_0 + C_2 + C_4 + \\dots + C_{12} = C_1 + C_3 + C_5 + \\dots + C_{11} = 2048\\)"
+  },
+  {
+    "ref": "4.5 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Binomial Coefficients",
+    "difficulty": "HARD",
+    "stem": "Prove that \\(C_1 + 2C_2 + 3C_3 + 4C_4 + \\dots + nC_n = n \\cdot 2^{n-1}\\)",
+    "solution": "L.H.S. \\(= C_1 + 2C_2 + 3C_3 + 4C_4 + \\dots + nC_n\\)\n\n\\(= n + 2\\frac{n(n-1)}{2!} + \\frac{3n(n-1)(n-2)}{3!} + \\dots + n \\cdot 1\\)\n\n\\(= n\\left[1 + (n-1) + \\frac{(n-1)(n-2)}{2!} + \\dots + 1\\right]\\)\n\n\\(= n\\left[{}^{n-1}C_0 + {}^{n-1}C_1 + {}^{n-1}C_2 + \\dots + {}^{n-1}C_{n-1}\\right]\\)\n\n\\(= n\\left[C_0 + C_1 + C_2 + \\dots + C_{n-1}\\right]\\)\n\n\\(= n \\cdot 2^{n-1}\\)\n\n= R.H.S.\n\n\\(\\therefore C_1 + 2C_2 + 3C_3 + \\dots + nC_n = n \\cdot 2^{n-1}\\)"
+  },
+  {
+    "ref": "4.5 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Binomial Coefficients",
+    "difficulty": "HARD",
+    "stem": "Prove that \\(C_0 + \\frac{C_1}{2} + \\frac{C_2}{3} + \\dots + \\frac{C_n}{n+1} = \\frac{2^{n+1}-1}{n+1}\\)",
+    "solution": "L.H.S.\n\n\\(= \\frac{C_0}{1} + \\frac{C_1}{2} + \\frac{C_2}{3} + \\frac{C_3}{4} \\dots + \\frac{C_n}{n+1}\\)\n\n\\(= 1 + \\frac{n}{2} + \\frac{1}{3}\\frac{n(n-1)}{2!} + \\frac{1}{4}\\frac{n(n-1)(n-2)}{3!} + \\dots + \\frac{1}{n+1}\\)\n\n\\(= \\frac{1}{(n+1)}\\left[(n+1) + \\frac{n(n+1)}{2!} + \\frac{(n+1)n(n-1)}{3!} + \\dots + 1\\right]\\)\n\n\\(= \\frac{1}{(n+1)}\\left[{}^{n+1}C_1 + {}^{n+1}C_2 + {}^{n+1}C_3 + \\dots + {}^{n+1}C_{n+1}\\right]\\)\n\n\\(= \\frac{1}{(n+1)}\\left[1 + {}^{n+1}C_1 + {}^{n+1}C_2 + {}^{n+1}C_3 + \\dots + {}^{n+1}C_{n+1} - 1\\right]\\)\n\n\\(= \\frac{1}{(n+1)}\\left[{}^{n+1}C_0 + {}^{n+1}C_1 + {}^{n+1}C_2 + \\dots + {}^{n+1}C_{n+1} - 1\\right]\\)\n\n\\(= \\frac{1}{(n+1)}\\left[C_0 + C_1 + C_2 + \\dots + C_{n+1} - 1\\right]\\)\n\n\\(= \\frac{1}{(n+1)}(2^{n+1} - 1)\\)\n\n\\(= \\frac{(2^{n+1}-1)}{n+1}\\) = R.H.S.\n\n\\(\\therefore C_0 + \\frac{C_1}{2} + \\frac{C_2}{3} + \\dots + \\frac{C_n}{n+1} = \\frac{2^{n+1}-1}{n+1}\\)"
+  },
+  {
+    "ref": "Ex 4.5 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Coefficients",
+    "difficulty": "EASY",
+    "stem": "Show that \\(C_0 + C_1 + C_2 + \\dots + C_8 = 256\\)"
+  },
+  {
+    "ref": "Ex 4.5 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Coefficients",
+    "difficulty": "EASY",
+    "stem": "Show that \\(C_0 + C_1 + C_2 + \\dots + C_9 = 512\\)"
+  },
+  {
+    "ref": "Ex 4.5 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Coefficients",
+    "difficulty": "EASY",
+    "stem": "Show that \\(C_1 + C_2 + C_3 + \\dots + C_7 = 127\\)"
+  },
+  {
+    "ref": "Ex 4.5 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Coefficients",
+    "difficulty": "EASY",
+    "stem": "Show that \\(C_1 + C_2 + C_3 + \\dots + C_6 = 63\\)"
+  },
+  {
+    "ref": "Ex 4.5 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Coefficients",
+    "difficulty": "MODERATE",
+    "stem": "Show that \\(C_0 + C_2 + C_4 + C_6 + C_8 = C_1 + C_3 + C_5 + C_7 = 128\\)"
+  },
+  {
+    "ref": "Ex 4.5 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Coefficients",
+    "difficulty": "MODERATE",
+    "stem": "Show that \\(C_1 + C_2 + C_3 + \\dots + C_n = 2^n - 1\\)"
+  },
+  {
+    "ref": "Ex 4.5 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Coefficients",
+    "difficulty": "HARD",
+    "stem": "Show that \\(C_0 + 2C_1 + 3C_2 + 4C_3 + \\dots + (n+1)C_n = (n+2)2^{n-1}\\)"
+  },
+  {
+    "ref": "Misc I Q1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "stem": "The total number of terms in the expression of \\((x+y)^{100} + (x-y)^{100}\\) after simplification is :",
+    "options": [
+      {
+        "label": "A",
+        "text": "50"
+      },
+      {
+        "label": "B",
+        "text": "51"
+      },
+      {
+        "label": "C",
+        "text": "100"
+      },
+      {
+        "label": "D",
+        "text": "202"
+      }
+    ],
+    "answer": "B",
+    "_note": "The book prints 'in the expression of' where 'in the expansion of' is clearly meant — transcribed as printed.",
+    "solution": "[Textbook misprint in the stem: it reads in the EXPRESSION of where expansion is meant.]"
+  },
+  {
+    "ref": "Misc I Q2",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "EASY",
+    "stem": "The middle term in the expansion of \\((1+x)^{2n}\\) will be :",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\((n-1)^{\\text{th}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(n^{\\text{th}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\((n+1)^{\\text{th}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\((n+2)^{\\text{th}}\\)"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc I Q3",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "stem": "In the expansion of \\((x^2 - 2x)^{10}\\), the coefficient of \\(x^{16}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-1680\\)"
+      },
+      {
+        "label": "B",
+        "text": "1680"
+      },
+      {
+        "label": "C",
+        "text": "3360"
+      },
+      {
+        "label": "D",
+        "text": "6720"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc I Q4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "HARD",
+    "stem": "The term not containing \\(x\\) in expansion of \\((1-x)^2\\left(x + \\frac{1}{x}\\right)^{10}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\({}^{11}C_{5}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\({}^{10}C_{5}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\({}^{10}C_{4}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\({}^{10}C_{7}\\)"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Misc I Q5",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "stem": "The number of terms in expansion of \\((4y+x)^8 - (4y-x)^8\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "4"
+      },
+      {
+        "label": "B",
+        "text": "5"
+      },
+      {
+        "label": "C",
+        "text": "8"
+      },
+      {
+        "label": "D",
+        "text": "9"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Misc I Q6",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Binomial Coefficients",
+    "difficulty": "MODERATE",
+    "stem": "The value \\({}^{14}C_{1} + {}^{14}C_{3} + {}^{14}C_{5} + \\dots + {}^{14}C_{11}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2^{14} - 1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2^{14} - 14\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2^{12}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2^{13} - 14\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc I Q7",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Binomial Coefficients",
+    "difficulty": "MODERATE",
+    "stem": "The value \\({}^{11}C_{2} + {}^{11}C_{4} + {}^{11}C_{6} + {}^{11}C_{8}\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2^{10} - 1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2^{10} - 11\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2^{10} + 12\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2^{10} - 12\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc I Q8",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "EASY",
+    "stem": "In the expansion of \\((3x+2)^4\\), the coefficient of middle term is",
+    "options": [
+      {
+        "label": "A",
+        "text": "36"
+      },
+      {
+        "label": "B",
+        "text": "54"
+      },
+      {
+        "label": "C",
+        "text": "81"
+      },
+      {
+        "label": "D",
+        "text": "216"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc I Q9",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "EASY",
+    "stem": "The coefficient of the \\(8^{\\text{th}}\\) term in the expansion of \\((1+x)^{10}\\) is :",
+    "options": [
+      {
+        "label": "A",
+        "text": "7"
+      },
+      {
+        "label": "B",
+        "text": "120"
+      },
+      {
+        "label": "C",
+        "text": "\\({}^{10}C_{8}\\)"
+      },
+      {
+        "label": "D",
+        "text": "210"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Misc I Q10",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "stem": "If the coefficient of \\(x^2\\) and \\(x^3\\) in the expansion of \\((3+ax)^9\\) are the same, then the value of \\(a\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-\\frac{7}{9}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(-\\frac{9}{7}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{7}{9}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{9}{7}\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc II Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "stem": "Expand \\((3x^2 + 2y)^5\\)"
+  },
+  {
+    "ref": "Misc II Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "stem": "Expand \\(\\left(\\frac{2x}{3} - \\frac{3}{2x}\\right)^4\\)"
+  },
+  {
+    "ref": "Misc II Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "EASY",
+    "stem": "Find third term in the expansion of \\(\\left(9x^2 - \\frac{y^3}{6}\\right)^4\\)"
+  },
+  {
+    "ref": "Misc II Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "stem": "Find tenth term in the expansion of \\(\\left(2x^2 + \\frac{1}{x}\\right)^{12}\\)"
+  },
+  {
+    "ref": "Misc II Q8(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the middle term (s) in the expansion of",
+    "setLabel": "Misc II Q8",
+    "stem": "\\(\\left(\\frac{2a}{3} - \\frac{3}{2a}\\right)^6\\)"
+  },
+  {
+    "ref": "Misc II Q8(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the middle term (s) in the expansion of",
+    "setLabel": "Misc II Q8",
+    "stem": "\\(\\left(x - \\frac{1}{2y}\\right)^{10}\\)"
+  },
+  {
+    "ref": "Misc II Q8(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the middle term (s) in the expansion of",
+    "setLabel": "Misc II Q8",
+    "stem": "\\((x^2 + 2y^2)^7\\)"
+  },
+  {
+    "ref": "Misc II Q8(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the middle term (s) in the expansion of",
+    "setLabel": "Misc II Q8",
+    "stem": "\\(\\left(\\frac{3x^2}{2} - \\frac{1}{3x}\\right)^9\\)"
+  },
+  {
+    "ref": "Misc II Q9(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the coefficients of",
+    "setLabel": "Misc II Q9",
+    "stem": "\\(x^6\\) in the expansion of \\(\\left(3x^2 - \\frac{1}{3x}\\right)^9\\)"
+  },
+  {
+    "ref": "Misc II Q9(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the coefficients of",
+    "setLabel": "Misc II Q9",
+    "stem": "\\(x^{60}\\) in the expansion of \\(\\left(\\frac{1}{x^2} + x^4\\right)^{18}\\)"
+  },
+  {
+    "ref": "Misc II Q10(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the constant term in the expansion of",
+    "setLabel": "Misc II Q10",
+    "stem": "\\(\\left(\\frac{4x^2}{3} + \\frac{3}{2x}\\right)^9\\)"
+  },
+  {
+    "ref": "Misc II Q10(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the constant term in the expansion of",
+    "setLabel": "Misc II Q10",
+    "stem": "\\(\\left(2x^2 - \\frac{1}{x}\\right)^{12}\\)"
+  },
+  {
+    "ref": "Misc II Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "stem": "If the coefficient of \\(x^{16}\\) in the expansion of \\((x^2 + ax)^{10}\\) is 3360, find \\(a\\)."
+  },
+  {
+    "ref": "Misc II Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "stem": "If the middle term in the expansion of \\(\\left(x + \\frac{b}{x}\\right)^6\\) is 160, find \\(b\\)."
+  },
+  {
+    "ref": "Misc II Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "stem": "If the coefficient of \\(x^2\\) and \\(x^3\\) in the expansion of \\((3 + kx)^9\\) are equal, find \\(k\\)."
+  },
+  {
+    "ref": "Misc II Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "stem": "If the constant term in the expansion of \\(\\left(x^3 + \\frac{k}{x^8}\\right)^{11}\\) is 1320, find \\(k\\)."
+  },
+  {
+    "ref": "Misc II Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "stem": "Show that there is no term containing \\(x^6\\) in the expansion of \\(\\left(x^2 - \\frac{3}{x}\\right)^{11}\\)."
+  },
+  {
+    "ref": "Misc II Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "stem": "Show that there is no constant term in the expansion of \\(\\left(2x - \\frac{x^2}{4}\\right)^9\\)."
+  },
+  {
+    "ref": "Misc II Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "MODERATE",
+    "stem": "State, first four terms in the expansion of \\(\\left(1 - \\frac{2x}{3}\\right)^{-\\frac{1}{2}}\\)"
+  },
+  {
+    "ref": "Misc II Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "MODERATE",
+    "stem": "State, first four terms in the expansion of \\((1-x)^{-\\frac{1}{4}}\\)"
+  },
+  {
+    "ref": "Misc II Q20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "MODERATE",
+    "stem": "State, first three terms in the expansion of \\((5 + 4x)^{-\\frac{1}{2}}\\)"
+  },
+  {
+    "ref": "Misc II Q21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "HARD",
+    "stem": "Using binomial theorem, find the value of \\(\\sqrt[3]{995}\\) upto four places of decimals."
+  },
+  {
+    "ref": "Misc II Q22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "HARD",
+    "stem": "Find approximate value of \\(\\frac{1}{4.08}\\) upto four places of decimals."
+  },
+  {
+    "ref": "Misc II Q23",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "HARD",
+    "stem": "Find the term independent of \\(x\\) in the in expansion of \\((1 - x^2)\\left(x + \\frac{2}{x}\\right)^6\\)",
+    "_note": "The book prints 'in the in expansion of' — a doubled word. Transcribed as printed."
+  },
+  {
+    "ref": "Misc II Q24",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "HARD",
+    "stem": "\\((a + bx)(1 - x)^6 = 3 - 20x + cx^2 + \\dots\\) then find \\(a\\), \\(b\\), \\(c\\)."
+  },
+  {
+    "ref": "Misc II Q25",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "stem": "The \\(3^{\\text{rd}}\\) term of \\((1+x)^n\\) is \\(36x^2\\). Find \\(5^{\\text{th}}\\) term."
+  },
+  {
+    "ref": "Misc II Q26",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "HARD",
+    "stem": "Suppose \\((1+kx)^n = 1 - 12x + 60x^2 - \\dots\\) find \\(k\\) and \\(n\\)."
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "c93aad8e-c0bb-479d-8781-07ab0d289bd3",
+    "ref": "Ex 4.5 Q1",
+    "solution": "The last coefficient is \\(C_8\\), so \\(C_0, C_1, \\dots, C_8\\) are the coefficients in the expansion of \\((1+x)^8\\):\n\\((1+x)^8 = C_0 + C_1 x + C_2 x^2 + \\dots + C_8 x^8\\)\nPut \\(x = 1\\). Every power of \\(x\\) becomes 1, so the right side collapses to the plain sum of the coefficients:\n\\((1+1)^8 = C_0 + C_1 + C_2 + \\dots + C_8\\)\n\\(\\therefore C_0 + C_1 + C_2 + \\dots + C_8 = 2^8 = 256\\)"
+  },
+  {
+    "id": "6028647f-2547-491d-9702-077282e411da",
+    "ref": "Ex 4.5 Q2",
+    "solution": "The last coefficient is \\(C_9\\), so \\(C_0, C_1, \\dots, C_9\\) are the coefficients in the expansion of \\((1+x)^9\\):\n\\((1+x)^9 = C_0 + C_1 x + C_2 x^2 + \\dots + C_9 x^9\\)\nPut \\(x = 1\\). Every power of \\(x\\) becomes 1, so the right side collapses to the plain sum of the coefficients:\n\\((1+1)^9 = C_0 + C_1 + C_2 + \\dots + C_9\\)\n\\(\\therefore C_0 + C_1 + C_2 + \\dots + C_9 = 2^9 = 512\\)"
+  },
+  {
+    "id": "01d74467-1a0e-4ee9-a6ad-2f814158a98f",
+    "ref": "Ex 4.5 Q3",
+    "solution": "The last coefficient is \\(C_7\\), so \\(C_0, C_1, \\dots, C_7\\) are the coefficients in the expansion of \\((1+x)^7\\):\n\\((1+x)^7 = C_0 + C_1 x + C_2 x^2 + \\dots + C_7 x^7\\)\nPut \\(x = 1\\):\n\\(C_0 + C_1 + C_2 + \\dots + C_7 = 2^7 = 128\\)\nThe required sum starts at \\(C_1\\), so subtract the first term \\(C_0 = {}^{7}C_{0} = 1\\) from both sides:\n\\(C_1 + C_2 + C_3 + \\dots + C_7 = 128 - 1\\)\n\\(\\therefore C_1 + C_2 + C_3 + \\dots + C_7 = 127\\)"
+  },
+  {
+    "id": "933ec50a-75b1-4051-946d-81badfb43eb2",
+    "ref": "Ex 4.5 Q4",
+    "solution": "The last coefficient is \\(C_6\\), so \\(C_0, C_1, \\dots, C_6\\) are the coefficients in the expansion of \\((1+x)^6\\):\n\\((1+x)^6 = C_0 + C_1 x + C_2 x^2 + \\dots + C_6 x^6\\)\nPut \\(x = 1\\):\n\\(C_0 + C_1 + C_2 + \\dots + C_6 = 2^6 = 64\\)\nThe required sum starts at \\(C_1\\), so subtract the first term \\(C_0 = {}^{6}C_{0} = 1\\) from both sides:\n\\(C_1 + C_2 + C_3 + \\dots + C_6 = 64 - 1\\)\n\\(\\therefore C_1 + C_2 + C_3 + \\dots + C_6 = 63\\)"
+  },
+  {
+    "id": "310eeeb5-1c6f-4d4d-ade0-a9a3bee553da",
+    "ref": "Ex 4.5 Q5",
+    "solution": "The last coefficient is \\(C_8\\), so \\(C_0, C_1, \\dots, C_8\\) are the coefficients in the expansion of \\((1+x)^8\\):\n\\((1+x)^8 = C_0 + C_1 x + C_2 x^2 + \\dots + C_8 x^8\\)\nPut \\(x = 1\\). This gives the total of all nine coefficients:\n\\(C_0 + C_1 + C_2 + \\dots + C_8 = 2^8 = 256\\) ... (1)\nPut \\(x = -1\\). The odd powers of \\(x\\) become \\(-1\\) and the left side is \\((1-1)^8 = 0\\):\n\\(0 = C_0 - C_1 + C_2 - C_3 + C_4 - C_5 + C_6 - C_7 + C_8\\)\nTaking the negative terms to the other side,\n\\(C_0 + C_2 + C_4 + C_6 + C_8 = C_1 + C_3 + C_5 + C_7\\) ... (2)\nSo the two sums are equal, and by (1) they add up to 256. Hence each of them is half of 256:\n\\(\\therefore C_0 + C_2 + C_4 + C_6 + C_8 = C_1 + C_3 + C_5 + C_7 = \\frac{256}{2} = 128\\)"
+  },
+  {
+    "id": "6f744a53-6564-4d3a-8526-e766cda0d110",
+    "ref": "Ex 4.5 Q6",
+    "solution": "Here \\(C_0, C_1, \\dots, C_n\\) are the coefficients in the expansion of \\((1+x)^n\\):\n\\((1+x)^n = C_0 + C_1 x + C_2 x^2 + \\dots + C_n x^n\\)\nPut \\(x = 1\\). Every power of \\(x\\) becomes 1, so the right side collapses to the plain sum of the coefficients:\n\\(C_0 + C_1 + C_2 + \\dots + C_n = 2^n\\)\nThe required sum starts at \\(C_1\\), and \\(C_0 = {}^{n}C_{0} = 1\\), so subtract it from both sides:\n\\(\\therefore C_1 + C_2 + C_3 + \\dots + C_n = 2^n - 1\\)"
+  },
+  {
+    "id": "50910574-9072-4bbb-bd4c-c9e9692a21e0",
+    "ref": "Ex 4.5 Q7",
+    "solution": "Here \\(C_r = {}^{n}C_{r}\\) are the coefficients in the expansion of \\((1+x)^n\\). The general term of the left side is \\((r+1)C_r\\), so splitting \\((r+1) = r + 1\\),\n\\(C_0 + 2C_1 + 3C_2 + \\dots + (n+1)C_n = \\sum_{r=0}^{n} (r+1)C_r = \\sum_{r=1}^{n} r\\,C_r + \\sum_{r=0}^{n} C_r\\)\n(the \\(r = 0\\) term of the first sum is 0, so it may start at \\(r = 1\\)).\nFor the second sum, put \\(x = 1\\) in \\((1+x)^n = C_0 + C_1 x + \\dots + C_n x^n\\):\n\\(\\sum_{r=0}^{n} C_r = 2^n\\)\nFor the first sum, note that for \\(r \\ge 1\\),\n\\(r \\cdot {}^{n}C_{r} = r \\cdot \\frac{n!}{r!\\,(n-r)!} = \\frac{n!}{(r-1)!\\,(n-r)!} = n \\cdot \\frac{(n-1)!}{(r-1)!\\,(n-r)!} = n \\cdot {}^{n-1}C_{r-1}\\)\nsince \\((n-1) - (r-1) = n - r\\). Hence, writing \\(k = r-1\\),\n\\(\\sum_{r=1}^{n} r\\,C_r = n \\sum_{r=1}^{n} {}^{n-1}C_{r-1} = n \\sum_{k=0}^{n-1} {}^{n-1}C_{k} = n \\cdot 2^{n-1}\\)\nAdding the two parts:\n\\(C_0 + 2C_1 + 3C_2 + \\dots + (n+1)C_n = n \\cdot 2^{n-1} + 2^n = n \\cdot 2^{n-1} + 2 \\cdot 2^{n-1}\\)\n\\(\\therefore C_0 + 2C_1 + 3C_2 + 4C_3 + \\dots + (n+1)C_n = (n+2)2^{n-1}\\)"
+  }
+]

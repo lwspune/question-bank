@@ -1,0 +1,924 @@
+[
+  {
+    "ref": "9.1.4a SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "HARD",
+    "stem": "Find the derivative of \\(x^{n}\\) w. r. t. \\(x\\) for \\(n \\in N\\).",
+    "solution": "Let \\(f(x) = x^{n}\\)\n\\(f(x+h) = (x+h)^{n}\\)\nBy method of first principle,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{(x+h)^{n}-x^{n}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{x^{n} + {}^{n}C_{1}x^{n-1}h + {}^{n}C_{2}x^{n-2}h^{2} + \\ldots\\ldots + h^{n} - x^{n}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{{}^{n}C_{1}x^{n-1}h + {}^{n}C_{2}x^{n-2}h^{2} + {}^{n}C_{3}x^{n-3}h^{3} + \\ldots\\ldots + h^{n}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{h\\left({}^{n}C_{1}x^{n-1} + {}^{n}C_{2}x^{n-2}h + {}^{n}C_{3}x^{n-3}h^{2} + \\ldots\\ldots + h^{n-1}\\right)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(nx^{n-1} + {}^{n}C_{2}x^{n-2}h + {}^{n}C_{3}x^{n-3}h^{2} + \\ldots\\ldots + h^{n-1}\\right)\\)\n\\(= nx^{n-1} + 0 + 0 + \\ldots + 0\\)  (as \\(h \\to 0\\), \\(h \\ne 0\\))\n\\(\\therefore\\) if \\(f(x) = x^{n}\\), \\(f'(x) = nx^{n-1}\\)"
+  },
+  {
+    "ref": "9.1.4a SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find derivative of \\(\\sin x\\) w. r. t. \\(x\\).",
+    "solution": "Let \\(f(x) = \\sin x\\)\n\\(f(x+h) = \\sin(x+h)\\)\nBy method of first principle,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{\\sin(x+h)-\\sin x}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{2\\cos\\left(\\frac{2x+h}{2}\\right)\\cdot\\sin\\left(\\frac{h}{2}\\right)}{h}\\right)\\)\n\\(= 2\\lim_{h \\to 0}\\cos\\left(\\frac{2x+h}{2}\\right)\\lim_{h \\to 0}\\left(\\frac{\\sin\\left(\\frac{h}{2}\\right)}{\\frac{h}{2}}\\right)\\left(\\frac{1}{2}\\right)\\)\n\\(= 2\\lim_{h \\to 0}\\cos\\left(x+\\frac{h}{2}\\right)\\lim_{h \\to 0}\\left(\\frac{\\sin\\left(\\frac{h}{2}\\right)}{\\frac{h}{2}}\\right)\\left(\\frac{1}{2}\\right)\\)\n\\(= 2\\cos x\\cdot(1)\\left(\\frac{1}{2}\\right)\\) \\(\\ldots\\ldots\\) \\(\\left[\\because \\lim_{\\theta \\to 0}\\left(\\frac{\\sin p\\theta}{p\\theta}\\right) = 1\\right]\\)\n\\(\\therefore\\) if \\(f(x) = \\sin x\\), \\(f'(x) = \\cos x\\)",
+    "_note": "In the printed final line the prime mark on \\(f'(x)\\) appears DOUBLED (reads as \\(f''(x)\\)) — every sibling example on the same spread prints a single prime. Transcribed here as \\(f'(x)\\); a typesetting slip, not answer-affecting (the stated result \\(\\cos x\\) is the first derivative and matches the derivation above it)."
+  },
+  {
+    "ref": "9.1.4a SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find the derivative of \\(\\tan x\\) w. r. t. \\(x\\).",
+    "solution": "Let \\(f(x) = \\tan x\\)\n\\(f(x+h) = \\tan(x+h)\\)\nFrom the definition,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{\\tan(x+h)-\\tan x}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\frac{\\sin(x+h)}{\\cos(x+h)} - \\frac{\\sin x}{\\cos x}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\frac{\\sin(x+h)\\cdot\\cos x - \\cos(x+h)\\sin x}{\\cos(x+h)\\cdot\\cos x}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\sin h}{h\\cdot\\cos(x+h)\\cdot\\cos x}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\sin h}{h}\\right)\\cdot\\lim_{h \\to 0}\\left(\\frac{1}{\\cos(x+h)\\cdot\\cos x}\\right)\\)\n\\(= (1)\\cdot\\left(\\frac{1}{\\cos^{2}x}\\right)\\) \\(\\ldots\\ldots\\) \\(\\left[\\because \\lim_{\\theta \\to 0}\\left(\\frac{\\sin\\theta}{\\theta}\\right) = 1\\right]\\)\n\\(\\therefore\\) if \\(f(x) = \\tan x\\), \\(f'(x) = \\sec^{2}x\\)"
+  },
+  {
+    "ref": "9.1.4a SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "HARD",
+    "stem": "Find the derivative of \\(\\sec x\\) w. r. t. \\(x\\).",
+    "solution": "Let \\(f(x) = \\sec x\\)\n\\(f(x+h) = \\sec(x+h)\\)\nFrom the definition,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{\\sec(x+h)-\\sec x}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\frac{1}{\\cos(x+h)} - \\frac{1}{\\cos x}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\frac{\\cos x - \\cos(x+h)}{\\cos(x+h)\\cdot\\cos x}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{-2\\sin\\left(\\frac{2x+h}{2}\\right)\\cdot\\sin\\left(\\frac{-h}{2}\\right)}{h\\cdot\\cos(x+h)\\cdot\\cos x}\\right)\\)\n\\(= 2\\lim_{h \\to 0}\\left(\\frac{\\sin\\left(\\frac{2x+h}{2}\\right)}{\\cos(x+h)\\cdot\\cos x}\\right)\\lim_{h \\to 0}\\left(\\frac{\\sin\\left(\\frac{h}{2}\\right)}{\\frac{h}{2}}\\right)\\left(\\frac{1}{2}\\right)\\)\n\\(= \\frac{2\\sin x}{\\cos^{2}x}\\cdot(1)\\cdot\\left(\\frac{1}{2}\\right)\\) \\(\\ldots\\ldots\\) \\(\\left[\\because \\lim_{\\theta \\to 0}\\left(\\frac{\\sin p\\theta}{p\\theta}\\right) = 1\\right]\\)\n\\(\\therefore\\) if \\(f(x) = \\sec x\\), \\(f'(x) = \\sec x\\,\\tan x\\)"
+  },
+  {
+    "ref": "9.1.4a SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find the derivative of \\(\\log x\\) w. r. t. \\(x\\). \\((x > 0)\\)",
+    "solution": "Let \\(f(x) = \\log x\\)\n\\(f(x+h) = \\log(x+h)\\)\nFrom the definition,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{\\log(x+h)-\\log(x)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\log\\left(\\frac{x+h}{x}\\right)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\log\\left(1+\\frac{h}{x}\\right)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\log\\left(1+\\frac{h}{x}\\right)}{\\frac{h}{x}}\\right)\\times\\left(\\frac{1}{x}\\right)\\)\n\\(= 1\\cdot\\left(\\frac{1}{x}\\right)\\) \\(\\left[\\because \\lim_{x \\to 0}\\left(\\frac{\\log(1+x)}{x}\\right) = 1\\right]\\)\n\\(\\therefore\\) if \\(f(x) = \\log x\\), \\(f'(x) = \\frac{1}{x}\\)"
+  },
+  {
+    "ref": "9.1.4a SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find then derivative of \\(a^{x}\\) w. r. t. \\(x\\). \\((a > 0)\\)",
+    "solution": "Let \\(f(x) = a^{x}\\)\n\\(f(x+h) = a^{x+h}\\)\nFrom the definition,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{a^{(x+h)}-a^{x}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{a^{x}\\left(a^{h}-1\\right)}{h}\\right)\\)\n\\(= a^{x}\\lim_{h \\to 0}\\left(\\frac{a^{h}-1}{h}\\right)\\)\n\\(f'(x) = a^{x}\\log a\\) \\(\\ldots\\ldots\\) \\(\\left[\\because \\lim_{x \\to 0}\\left(\\frac{a^{x}-1}{x}\\right) = \\log a\\right]\\)\n\\(\\therefore\\) if \\(f(x) = a^{x}\\), \\(f'(x) = a^{x}\\cdot\\log a\\)",
+    "_note": "Stem transcribed as printed: the book prints \"Find then derivative of\" — \"then\" is a misprint for \"the\". Not answer-affecting."
+  },
+  {
+    "ref": "9.1.4 SolvedEx.1(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "MODERATE",
+    "context": "Find the derivatives of the following from the definition,",
+    "setLabel": "9.1.4 SolvedEx.1",
+    "stem": "\\(\\sqrt{x}\\)",
+    "solution": "Let \\(f(x) = \\sqrt{x}\\)\n\\(f(x+h) = \\sqrt{x+h}\\)\nFrom the definition,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{\\sqrt{x+h}-\\sqrt{x}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\sqrt{x+h}-\\sqrt{x}}{h}\\times\\frac{\\sqrt{x+h}+\\sqrt{x}}{\\sqrt{x+h}+\\sqrt{x}}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{x+h-x}{h\\left(\\sqrt{x+h}+\\sqrt{x}\\right)}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{h}{h\\left(\\sqrt{x+h}+\\sqrt{x}\\right)}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{1}{\\sqrt{x+h}+\\sqrt{x}}\\right)\\) \\(\\ldots\\)[As \\(h \\to 0\\), \\(h \\ne 0\\)]\n\\(= \\frac{1}{2\\sqrt{x}}\\)"
+  },
+  {
+    "ref": "9.1.4 SolvedEx.1(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "HARD",
+    "context": "Find the derivatives of the following from the definition,",
+    "setLabel": "9.1.4 SolvedEx.1",
+    "stem": "\\(\\cos(2x+3)\\)",
+    "solution": "Let \\(f(x) = \\cos(2x+3)\\)\n\\(f(x+h) = \\cos(2(x+h)+3) = \\cos((2x+3)+2h)\\)\nFrom the definition,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{\\cos[(2x+3)+2h]-\\cos(2x+3)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{-2\\sin\\left(\\frac{2(2x+3)+2h}{2}\\right)\\sin(h)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{-2\\sin(2x+3+h)\\sin(h)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left[-2\\sin(2x+3+h)\\right]\\lim_{h \\to 0}\\left(\\frac{\\sin h}{h}\\right)\\)\n\\(= \\left[-2\\sin(2x+3)\\right](1)\\) \\(\\ldots\\ldots\\) \\(\\left[\\because \\lim_{\\theta \\to 0}\\left(\\frac{\\sin\\theta}{\\theta}\\right) = 1\\right]\\)\n\\(= -2\\sin(2x+3)\\)"
+  },
+  {
+    "ref": "9.1.4 SolvedEx.1(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "MODERATE",
+    "context": "Find the derivatives of the following from the definition,",
+    "setLabel": "9.1.4 SolvedEx.1",
+    "stem": "\\(4^{x}\\)",
+    "solution": "Let \\(f(x) = 4^{x}\\)\n\\(f(x+h) = 4^{x+h}\\)\nFrom the definition\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{4^{x+h}-4^{x}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{4^{x}\\left(4^{h}-1\\right)}{h}\\right)\\)\n\\(= 4^{x}\\lim_{h \\to 0}\\left(\\frac{4^{h}-1}{h}\\right)\\)\n\\(= 4^{x}\\log 4\\) \\(\\ldots\\ldots\\) \\(\\left[\\because \\lim_{x \\to 0}\\left(\\frac{a^{x}-1}{x}\\right) = \\log a\\right]\\)"
+  },
+  {
+    "ref": "9.1.4 SolvedEx.1(iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "HARD",
+    "context": "Find the derivatives of the following from the definition,",
+    "setLabel": "9.1.4 SolvedEx.1",
+    "stem": "\\(\\log(3x-2)\\)",
+    "solution": "Let \\(f(x) = \\log(3x-2)\\)\n\\(f(x+h) = \\log[3(x+h)-2] = \\log[(3x-2)+3h]\\)\nFrom the definition,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{\\log[(3x-2)+3h]-\\log(3x-2)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\log\\left(\\frac{(3x-2)+3h}{3x-2}\\right)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\log\\left(1+\\frac{3h}{3x-2}\\right)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\log\\left(1+\\frac{3h}{3x-2}\\right)}{\\frac{3h}{3x-2}}\\right)\\times\\left(\\frac{3}{3x-2}\\right)\\)\n\\(= (1)\\times\\left(\\frac{3}{3x-2}\\right)\\) \\(\\left[\\because \\lim_{x \\to 0}\\left(\\frac{\\log(1+px)}{px}\\right) = 1\\right]\\)\n\\(= \\frac{3}{3x-2}\\)"
+  },
+  {
+    "ref": "9.1.4 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "MODERATE",
+    "stem": "Find the derivative of \\(f(x) = \\sin x\\), at \\(x = \\pi\\)",
+    "solution": "\\(f(x) = \\sin x\\)\n\\(f(\\pi) = \\sin \\pi = 0\\)\n\\(f(\\pi+h) = \\sin(\\pi+h) = -\\sin h\\)\nFrom the definition,\n\\(f'(a) = \\lim_{h \\to 0}\\left(\\frac{f(a+h)-f(a)}{h}\\right)\\)\n\\(f'(\\pi) = \\lim_{h \\to 0}\\left(\\frac{f(\\pi+h)-f(\\pi)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{-\\sin h - 0}{h}\\right) = \\lim_{h \\to 0}\\left(-\\frac{\\sin h}{h}\\right)\\)\n\\(= -\\lim_{h \\to 0}\\left(\\frac{\\sin h}{h}\\right)\\)\n\\(= -1\\) \\(\\left[\\because \\lim_{\\theta \\to 0}\\left(\\frac{\\sin\\theta}{\\theta}\\right) = 1\\right]\\)"
+  },
+  {
+    "ref": "9.1.4 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "EASY",
+    "stem": "Find the derivative of \\(x^{2}+x+2\\), at \\(x = -3\\)",
+    "solution": "Let \\(f(x) = x^{2}+x+2\\)\nFor \\(x = -3\\), \\(f(-3) = (-3)^{2}-3+2 = 9-3+2 = 8\\)\n\\(f(-3+h) = (-3+h)^{2}+(-3+h)+2 = h^{2}-6h+9-3+h+2 = h^{2}-5h+8\\)\nFrom the definition,\n\\(f'(a) = \\lim_{h \\to 0}\\left(\\frac{f(a+h)-f(a)}{h}\\right)\\)\n\\(f'(-3) = \\lim_{h \\to 0}\\left(\\frac{f(-3+h)-f(-3)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{h^{2}-5h+8-8}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{h^{2}-5h}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{h(h-5)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}(h-5)\\) \\(\\ldots\\ldots\\)[\\(h \\to 0\\), \\(h \\ne 0\\)]\n\\(= -5\\)"
+  },
+  {
+    "ref": "9.1.5 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Definition of the Derivative and Differentiability",
+    "difficulty": "MODERATE",
+    "stem": "Test whether the function \\(f(x)=(3x-2)^{\\frac{2}{5}}\\) is differentiable at \\(x=\\frac{2}{3}\\).",
+    "solution": "Given that, \\(f(x)=(3x-2)^{\\frac{2}{5}}\\)\n\n\\(f'(a)=\\lim_{h\\to 0}\\left(\\frac{f(a+h)-f(a)}{h}\\right)\\)\n\nNote that \\(f\\left(\\frac{2}{3}\\right)=0\\)\n\nFor \\(x=\\frac{2}{3}\\), \\(f'\\left(\\frac{2}{3}\\right)=\\lim_{h\\to 0}\\left(\\frac{f\\left(\\frac{2}{3}+h\\right)-f\\left(\\frac{2}{3}\\right)}{h}\\right)\\)\n\n\\(=\\lim_{h\\to 0}\\left(\\frac{\\left[3\\left(\\frac{2}{3}+h\\right)-2\\right]^{\\frac{2}{5}}}{h}\\right)\\)\n\n\\(=\\lim_{h\\to 0}\\left(\\frac{[2+3h-2]^{\\frac{2}{5}}}{h}\\right)\\)\n\n\\(=\\lim_{h\\to 0}\\left(\\frac{(3h)^{\\frac{2}{5}}}{h}\\right)=3^{\\frac{2}{5}}\\lim_{h\\to 0}\\left(\\frac{h^{\\frac{2}{5}}}{h}\\right)\\)\n\n\\(=3^{\\frac{2}{5}}\\lim_{h\\to 0}\\left(\\frac{1}{h^{\\frac{3}{5}}}\\right)\\)\n\nThis limit does not exist.\n\n\\(\\therefore f(x)\\) is not differentiable at \\(x=\\frac{2}{3}\\)."
+  },
+  {
+    "ref": "9.1.5 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Definition of the Derivative and Differentiability",
+    "difficulty": "MODERATE",
+    "stem": "Examine the differentiability of \\(f(x)=(x-2)|x-2|\\) at \\(x=2\\).",
+    "solution": "Given that \\(f(x)=(x-2)|x-2|\\)\n\nThat is \\(f(x)=-(x-2)^2\\) for \\(x<2\\)\n\n\\(\\quad\\quad\\quad\\;\\; =(x-2)^2\\) for \\(x\\ge 2\\)\n\n\\(Lf'(2)=\\lim_{h\\to 0^-}\\left(\\frac{f(2+h)-f(2)}{h}\\right)\\)\n\n\\(=\\lim_{h\\to 0^-}\\left(\\frac{-(2+h-2)^2-(2-2)^2}{h}\\right)\\)\n\n\\(=\\lim_{h\\to 0^-}\\left(\\frac{-h^2}{h}\\right)=\\lim_{h\\to 0^-}(-h)\\)\n\n\\(Lf'(2)=0\\)\n\n\\(Rf'(2)=\\lim_{h\\to 0^+}\\left(\\frac{f(2+h)-f(2)}{h}\\right)\\)\n\n\\(=\\lim_{h\\to 0^+}\\left(\\frac{(2+h-2)^2-(2-2)^2}{h}\\right)\\)\n\n\\(=\\lim_{h\\to 0^+}\\left(\\frac{h^2}{h}\\right)=\\lim_{h\\to 0^+}(h)\\)\n\n\\(Rf'(2)=0\\)\n\nSo, \\(Lf'(2)=Rf'(2)=0\\)\n\nHence the function \\(f(x)\\) is differentiable at \\(x=2\\)."
+  },
+  {
+    "ref": "9.1.5 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Relationship Between Differentiability and Continuity",
+    "difficulty": "HARD",
+    "stem": "Show the function \\(f(x)\\) is continuous at \\(x=3\\), but not differentiable at \\(x=3\\). if\n\n\\(f(x)=2x+1\\) for \\(x\\le 3\\)\n\n\\(\\quad\\quad\\;\\; =16-x^2\\) for \\(x>3\\).",
+    "solution": "\\(f(x)=2x+1\\) for \\(x\\le 3\\)\n\n\\(\\quad\\quad\\;\\; =16-x^2\\) for \\(x>3\\).\n\nFor \\(x=3\\), \\(f(3)=2(3)+1=7\\)\n\n\\(\\lim_{x\\to 3^-}f(x)=\\lim_{x\\to 3}(2x+1)=2(3)+1=7\\)\n\n\\(\\lim_{x\\to 3^+}f(x)=\\lim_{x\\to 3}(16-x^2)=16-(3)^2=7\\)\n\n\\(\\lim_{x\\to 3^-}f(x)=\\lim_{x\\to 3^+}f(x)=f(3)=7\\)\n\n\\(\\therefore f(x)\\) is continuous at \\(x=3\\).\n\n\\(Lf'(3)=\\lim_{h\\to 0^-}\\left(\\frac{f(3+h)-f(3)}{h}\\right)\\)\n\n\\(=\\lim_{h\\to 0}\\left(\\frac{2(3+h)+1-7}{h}\\right)\\)\n\n\\(=\\lim_{h\\to 0}\\left(\\frac{6+2h+1-7}{h}\\right)\\)\n\n\\(=\\lim_{h\\to 0}\\left(\\frac{2h}{h}\\right)=\\lim_{h\\to 0}(2)\\)\n\n\\(Lf'(3)=2\\) ................. (1)\n\n\\(Rf'(3)=\\lim_{h\\to 0^+}\\left(\\frac{f(3+h)-f(3)}{h}\\right)\\)\n\n\\(=\\lim_{h\\to 0}\\left(\\frac{16-(3+h)^2-7}{h}\\right)=\\lim_{h\\to 0}\\left(\\frac{16-9-6h-h^2-7}{h}\\right)\\)\n\n\\(=\\lim_{h\\to 0}\\left(\\frac{-h(6+h)}{h}\\right)=\\lim_{h\\to 0}(-(6+h))\\)\n\n\\(Rf'(3)=-6\\) ................. (2)\n\nfrom (1) and (2), \\(Lf'(3)\\ne Rf'(3)\\)\n\n\\(\\therefore f(x)\\) is not differentiable at \\(x=3\\).\n\nHence \\(f(x)\\) is continuous at \\(x=3\\), but not differentiable at \\(x=3\\)."
+  },
+  {
+    "ref": "9.1.5 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Definition of the Derivative and Differentiability",
+    "difficulty": "EASY",
+    "stem": "Show that the function \\(f(x)\\) is differentiable at \\(x=-3\\) where, \\(f(x)=x^2+2\\).",
+    "solution": "For \\(x=-3\\), \\(f'(-3)=\\lim_{h\\to 0}\\left(\\frac{f(-3+h)-f(-3)}{h}\\right)\\)\n\n\\(=\\lim_{h\\to 0}\\left(\\frac{(-3+h)^2+2-11}{h}\\right)\\)\n\n\\(=\\lim_{h\\to 0}\\left(\\frac{9-6h+h^2+2-11}{h}\\right)\\)\n\n\\(=\\lim_{h\\to 0}\\left(\\frac{h^2-6h}{h}\\right)\\)\n\n\\(=\\lim_{h\\to 0}(h-6)\\quad(\\because h\\to 0,\\ h\\ne 0)\\)\n\n\\(=-6\\)\n\n\\(f'(-3)\\) exists so, \\(f(x)\\) is differentiable at \\(x=-3\\)."
+  },
+  {
+    "ref": "Ex 9.1 Q1(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "EASY",
+    "context": "Find the derivatives of the following w. r. t. \\(x\\) by using method of first principle.",
+    "setLabel": "Ex 9.1 Q1",
+    "stem": "\\(x^2+3x-1\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q1(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "MODERATE",
+    "context": "Find the derivatives of the following w. r. t. \\(x\\) by using method of first principle.",
+    "setLabel": "Ex 9.1 Q1",
+    "stem": "\\(\\sin(3x)\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q1(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "MODERATE",
+    "context": "Find the derivatives of the following w. r. t. \\(x\\) by using method of first principle.",
+    "setLabel": "Ex 9.1 Q1",
+    "stem": "\\(e^{2x+1}\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q1(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "MODERATE",
+    "context": "Find the derivatives of the following w. r. t. \\(x\\) by using method of first principle.",
+    "setLabel": "Ex 9.1 Q1",
+    "stem": "\\(3^{x}\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q1(e)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "MODERATE",
+    "context": "Find the derivatives of the following w. r. t. \\(x\\) by using method of first principle.",
+    "setLabel": "Ex 9.1 Q1",
+    "stem": "\\(\\log(2x+5)\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q1(f)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "HARD",
+    "context": "Find the derivatives of the following w. r. t. \\(x\\) by using method of first principle.",
+    "setLabel": "Ex 9.1 Q1",
+    "stem": "\\(\\tan(2x+3)\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q1(g)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "HARD",
+    "context": "Find the derivatives of the following w. r. t. \\(x\\) by using method of first principle.",
+    "setLabel": "Ex 9.1 Q1",
+    "stem": "\\(\\sec(5x-2)\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q1(h)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "MODERATE",
+    "context": "Find the derivatives of the following w. r. t. \\(x\\) by using method of first principle.",
+    "setLabel": "Ex 9.1 Q1",
+    "stem": "\\(x\\sqrt{x}\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q2(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "MODERATE",
+    "context": "Find the derivatives of the following w. r. t. \\(x\\). at the points indicated against them by using method of first principle",
+    "setLabel": "Ex 9.1 Q2",
+    "stem": "\\(\\sqrt{2x+5}\\) at \\(x=2\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q2(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "MODERATE",
+    "context": "Find the derivatives of the following w. r. t. \\(x\\). at the points indicated against them by using method of first principle",
+    "setLabel": "Ex 9.1 Q2",
+    "stem": "\\(\\tan x\\) at \\(x=\\pi/4\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q2(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "MODERATE",
+    "context": "Find the derivatives of the following w. r. t. \\(x\\). at the points indicated against them by using method of first principle",
+    "setLabel": "Ex 9.1 Q2",
+    "stem": "\\(2^{3x+1}\\) at \\(x=2\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q2(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "MODERATE",
+    "context": "Find the derivatives of the following w. r. t. \\(x\\). at the points indicated against them by using method of first principle",
+    "setLabel": "Ex 9.1 Q2",
+    "stem": "\\(\\log(2x+1)\\) at \\(x=2\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q2(e)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "MODERATE",
+    "context": "Find the derivatives of the following w. r. t. \\(x\\). at the points indicated against them by using method of first principle",
+    "setLabel": "Ex 9.1 Q2",
+    "stem": "\\(e^{3x-4}\\) at \\(x=2\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q2(f)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "MODERATE",
+    "context": "Find the derivatives of the following w. r. t. \\(x\\). at the points indicated against them by using method of first principle",
+    "setLabel": "Ex 9.1 Q2",
+    "stem": "\\(\\cos x\\) at \\(x=\\frac{5\\pi}{4}\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definition of the Derivative and Differentiability",
+    "difficulty": "MODERATE",
+    "stem": "Show that the function \\(f\\) is not differentiable at \\(x=-3\\),\n\nwhere \\(f(x)=x^2+2\\) for \\(x<-3\\)\n\n\\(\\quad\\quad\\quad\\;\\; =2-3x\\) for \\(x\\ge -3\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relationship Between Differentiability and Continuity",
+    "difficulty": "EASY",
+    "stem": "Show that \\(f(x)=x^2\\) is continuous and differentiable at \\(x=0\\)."
+  },
+  {
+    "ref": "Ex 9.1 Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relationship Between Differentiability and Continuity",
+    "difficulty": "MODERATE",
+    "context": "Discuss the continuity and differentiability of",
+    "setLabel": "Ex 9.1 Q5",
+    "stem": "\\(f(x)=x|x|\\) at \\(x=0\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relationship Between Differentiability and Continuity",
+    "difficulty": "MODERATE",
+    "context": "Discuss the continuity and differentiability of",
+    "setLabel": "Ex 9.1 Q5",
+    "stem": "\\(f(x)=(2x+3)|2x+3|\\) at \\(x=-3/2\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relationship Between Differentiability and Continuity",
+    "difficulty": "HARD",
+    "stem": "Discuss the continuity and differentiability of \\(f(x)\\) at \\(x=2\\)\n\n\\(f(x)=[x]\\) if \\(x\\in[0,4)\\). [where \\([*]\\) is a greatest integer ( floor ) function]"
+  },
+  {
+    "ref": "Ex 9.1 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relationship Between Differentiability and Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Test the continuity and differentiability of\n\n\\(f(x)=3x+2\\) if \\(x>2\\)\n\n\\(\\quad\\quad\\;\\; =12-x^2\\) if \\(x\\le 2\\) at \\(x=2\\)."
+  },
+  {
+    "ref": "Ex 9.1 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relationship Between Differentiability and Continuity",
+    "difficulty": "HARD",
+    "stem": "If \\(f(x)=\\sin x-\\cos x\\) if \\(x\\le \\pi/2\\)\n\n\\(\\quad\\quad\\;\\; =2x-\\pi+1\\) if \\(x>\\pi/2\\). Test the continuity and differentiability of \\(f\\) at \\(x=\\pi/2\\)"
+  },
+  {
+    "ref": "Ex 9.1 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relationship Between Differentiability and Continuity",
+    "difficulty": "HARD",
+    "stem": "Examine the function\n\n\\(f(x)=x^2\\cos\\left(\\frac{1}{x}\\right)\\), for \\(x\\ne 0\\)\n\n\\(\\quad\\quad\\;\\; =0\\), for \\(x=0\\)\n\nfor continuity and differentiability at \\(x=0\\)."
+  },
+  {
+    "ref": "9.2.4 SolvedEx.1(1)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "EASY",
+    "context": "Find the derivatives of the following functions",
+    "setLabel": "9.2.4 SolvedEx.1",
+    "stem": "\\(y=x^{\\frac{3}{2}}+\\log x-\\cos x\\)",
+    "solution": "Given, \\(y=x^{\\frac{3}{2}}+\\log x-\\cos x\\)\n\nDifferentiate w.r.t.x.\n\n\\(\\frac{dy}{dx}=\\frac{d}{dx}\\left(x^{\\frac{3}{2}}+\\log x-\\cos x\\right)\\)\n\n\\(=\\frac{d}{dx}\\left(x^{\\frac{3}{2}}\\right)+\\frac{d}{dx}(\\log x)-\\frac{d}{dx}(\\cos x)\\)\n\n\\(=\\frac{3}{2}x^{\\frac{1}{2}}+\\frac{1}{x}-(-\\sin x)\\)\n\n\\(\\frac{dy}{dx}=\\frac{3}{2}\\sqrt{x}+\\frac{1}{x}+\\sin x\\)"
+  },
+  {
+    "ref": "9.2.4 SolvedEx.1(2)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "MODERATE",
+    "context": "Find the derivatives of the following functions",
+    "setLabel": "9.2.4 SolvedEx.1",
+    "stem": "\\(f(x)=x^5\\operatorname{cosec}x+\\sqrt{x}\\tan x\\)",
+    "solution": "Given \\(f(x)=x^5\\operatorname{cosec}x+\\sqrt{x}\\tan x\\)\n\nDifferentiate w.r.t.x.\n\n\\(f'(x)=\\frac{d}{dx}\\left(x^5\\operatorname{cosec}x+\\sqrt{x}\\tan x\\right)\\)\n\n\\(=\\frac{d}{dx}\\left(x^5\\operatorname{cosec}x\\right)+\\frac{d}{dx}\\left(\\sqrt{x}\\tan x\\right)\\)\n\n\\(=x^5\\times\\frac{d}{dx}(\\operatorname{cosec}x)+\\operatorname{cosec}x\\times\\frac{d}{dx}(x^5)+\\sqrt{x}\\times\\frac{d}{dx}(\\tan x)+\\tan x\\times\\frac{d}{dx}\\sqrt{x}\\)\n\n\\(=x^5\\times(-\\operatorname{cosec}x\\times\\cot x)+\\operatorname{cosec}x\\times(5x^4)+\\sqrt{x}\\times(\\sec^2 x)+\\tan x\\times\\left(\\frac{1}{2\\sqrt{x}}\\right)\\)\n\n\\(=-x^5\\operatorname{cosec}x.\\cot x+5x^4\\operatorname{cosec}x+\\sqrt{x}\\times(\\sec^2 x)+\\frac{1}{2\\sqrt{x}}\\tan x\\)"
+  },
+  {
+    "ref": "9.2.4 SolvedEx.1(3)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "MODERATE",
+    "context": "Find the derivatives of the following functions",
+    "setLabel": "9.2.4 SolvedEx.1",
+    "stem": "\\(y=\\frac{e^x-5}{e^x+5}\\)",
+    "solution": "Given that \\(y=\\left(\\frac{e^x-5}{e^x+5}\\right)\\)\n\nDifferentiate w.r.t.x.\n\n\\(\\frac{dy}{dx}=\\frac{d}{dx}\\left(\\frac{e^x-5}{e^x+5}\\right)\\)\n\n\\(=\\frac{(e^x+5)\\times\\frac{d}{dx}(e^x-5)-(e^x-5)\\times\\frac{d}{dx}(e^x+5)}{(e^x+5)^2}\\)\n\n\\(=\\frac{(e^x+5).(e^x)-(e^x-5).(e^x)}{(e^x+5)^2}\\)\n\n\\(=\\frac{e^{2x}+5(e^x)-e^{2x}+5(e^x)}{(e^x+5)^2}\\)\n\n\\(=\\frac{10e^x}{(e^x+5)^2}\\)"
+  },
+  {
+    "ref": "9.2.4 SolvedEx.1(4)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "HARD",
+    "context": "Find the derivatives of the following functions",
+    "setLabel": "9.2.4 SolvedEx.1",
+    "stem": "\\(y=\\frac{x\\sin x}{x+\\sin x}\\)",
+    "solution": "\\(y=\\frac{x\\sin x}{x+\\sin x}\\)\n\nDifferentiate w.r.t.x.,\n\n\\(\\frac{dy}{dx}=\\frac{d}{dx}\\left(\\frac{x\\sin x}{x+\\sin x}\\right)\\)\n\n\\(=\\frac{(x+\\sin x)\\times\\frac{d}{dx}(x\\sin x)-(x\\sin x)\\times\\frac{d}{dx}(x+\\sin x)}{(x+\\sin x)^2}\\)\n\n\\(=\\frac{(x+\\sin x)\\times\\left(x\\frac{d}{dx}(\\sin x)+\\sin x\\frac{d}{dx}(x)\\right)-(x\\sin x).(1+\\cos x)}{(x+\\sin x)^2}\\)\n\n\\(=\\frac{(x+\\sin x).(x\\cos x+\\sin x)-(x\\sin x).(1+\\cos x)}{(x+\\sin x)^2}\\)\n\n\\(=\\frac{x^2\\cos x+x\\sin x+x\\sin x\\cos x+\\sin^2 x-x\\sin x-x\\sin x\\cos x}{(x+\\sin x)^2}\\)\n\n\\(=\\frac{x^2\\cos x+\\sin^2 x}{(x+\\sin x)^2}\\)"
+  },
+  {
+    "ref": "9.2.4 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "HARD",
+    "stem": "If \\(f(x)=p\\tan x+q\\sin x+r\\), \\(f(0)=-4\\sqrt{3}\\), \\(f\\left(\\frac{\\pi}{3}\\right)=-7\\sqrt{3}\\), \\(f'\\left(\\frac{\\pi}{3}\\right)=3\\) then find \\(p\\), \\(q\\) and \\(r\\).",
+    "solution": "Given that \\(f(x)=p\\tan x+q\\sin x+r\\) ...(1)\n\n\\(f'(x)=p\\sec^2 x+q\\cos x\\) ...(2)\n\n\\(f(0)=-4\\sqrt{3}\\)\n\nput \\(x=0\\) in (1)\n\n\\(f(0)=p\\tan 0+q\\sin 0+r=r\\) \\(\\therefore r=-4\\sqrt{3}\\)\n\n\\(f\\left(\\frac{\\pi}{3}\\right)=-7\\sqrt{3}\\),\n\n\\(\\therefore\\) from (1) \\(p\\tan\\left(\\frac{\\pi}{3}\\right)+q\\sin\\left(\\frac{\\pi}{3}\\right)+r=-7\\sqrt{3}\\)\n\n\\(p\\sqrt{3}+q\\frac{\\sqrt{3}}{2}-4\\sqrt{3}=-7\\sqrt{3}\\) \\(\\therefore 2p+q=-6\\) ...(3)\n\n\\(f'\\left(\\frac{\\pi}{3}\\right)=3\\)\n\n\\(\\therefore\\) from (2), \\(p\\sec^2\\left(\\frac{\\pi}{3}\\right)+q\\cos\\left(\\frac{\\pi}{3}\\right)=3\\)\n\n\\(4p+\\frac{q}{2}=3\\) \\(\\therefore 8p+q=6\\) ...(4)\n\n(4) \\(-\\) (3) gives \\(6p=12\\) \\(\\therefore p=2\\), put \\(p=2\\) in (3), we get \\(q=-10\\) \\(\\therefore p=2\\), \\(q=-10\\) and \\(r=-4\\sqrt{3}\\)"
+  },
+  {
+    "ref": "Ex 9.2 I Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "EASY",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=x^{\\frac{4}{3}}+e^{x}-\\sin x\\)"
+  },
+  {
+    "ref": "Ex 9.2 I Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "EASY",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=\\sqrt{x}+\\tan x-x^{3}\\)"
+  },
+  {
+    "ref": "Ex 9.2 I Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=\\log x-\\operatorname{cosec} x+5^{x}-\\frac{3}{x^{\\frac{3}{2}}}\\)"
+  },
+  {
+    "ref": "Ex 9.2 I Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=x^{\\frac{7}{3}}+5x^{\\frac{4}{5}}-\\frac{5}{x^{\\frac{2}{5}}}\\)"
+  },
+  {
+    "ref": "Ex 9.2 I Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=7^{x}+x^{7}-\\frac{2}{3}x\\sqrt{x}-\\log x+7^{7}\\)"
+  },
+  {
+    "ref": "Ex 9.2 I Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=3\\cot x-5e^{x}+3\\log x-\\frac{4}{x^{\\frac{3}{4}}}\\)"
+  },
+  {
+    "ref": "Ex 9.2 II Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=x^{5}\\tan x\\)"
+  },
+  {
+    "ref": "Ex 9.2 II Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=x^{3}\\log x\\)"
+  },
+  {
+    "ref": "Ex 9.2 II Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=(x^{2}+2)^{2}\\sin x\\)"
+  },
+  {
+    "ref": "Ex 9.2 II Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=e^{x}\\log x\\)"
+  },
+  {
+    "ref": "Ex 9.2 II Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=x^{\\frac{3}{2}}e^{x}\\log x\\)"
+  },
+  {
+    "ref": "Ex 9.2 II Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Logarithmic and Exponential Functions",
+    "difficulty": "HARD",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=\\log e^{x^{3}}\\log x^{3}\\)"
+  },
+  {
+    "ref": "Ex 9.2 III Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=x^{2}\\sqrt{x}+x^{4}\\log x\\)"
+  },
+  {
+    "ref": "Ex 9.2 III Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=e^{x}\\sec x-x^{\\frac{5}{3}}\\log x\\)"
+  },
+  {
+    "ref": "Ex 9.2 III Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=x^{4}+x\\sqrt{x}\\cos x-x^{2}e^{x}\\)"
+  },
+  {
+    "ref": "Ex 9.2 III Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=(x^{3}-2)\\tan x-x\\cos x+7^{x}\\cdot x^{7}\\)"
+  },
+  {
+    "ref": "Ex 9.2 III Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=\\sin x\\log x+e^{x}\\cos x-e^{x}\\sqrt{x}\\)"
+  },
+  {
+    "ref": "Ex 9.2 III Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=e^{x}\\tan x+\\cos x\\log x-\\sqrt{x}\\,5^{x}\\)"
+  },
+  {
+    "ref": "Ex 9.2 IV Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=\\frac{x^{2}+3}{x^{2}-5}\\)"
+  },
+  {
+    "ref": "Ex 9.2 IV Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=\\frac{\\sqrt{x}+5}{\\sqrt{x}-5}\\)"
+  },
+  {
+    "ref": "Ex 9.2 IV Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=\\frac{xe^{x}}{x+e^{x}}\\)"
+  },
+  {
+    "ref": "Ex 9.2 IV Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=\\frac{x\\log x}{x+\\log x}\\)"
+  },
+  {
+    "ref": "Ex 9.2 IV Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=\\frac{x^{2}\\sin x}{x+\\cos x}\\)"
+  },
+  {
+    "ref": "Ex 9.2 IV Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the following w.r.t. \\(x\\) : \\(y=\\frac{5e^{x}-4}{3e^{x}-2}\\)"
+  },
+  {
+    "ref": "Ex 9.2 V Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Algebraic Functions",
+    "difficulty": "HARD",
+    "stem": "If \\(f(x)\\) is a quadratic polynomial such that \\(f(0)=3\\), \\(f'(2)=2\\) and \\(f'(3)=12\\) then find \\(f(x)\\)."
+  },
+  {
+    "ref": "Ex 9.2 V Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "If \\(f(x)=a\\sin x-b\\cos x\\), \\(f'\\left(\\frac{\\pi}{4}\\right)=\\sqrt{2}\\) and \\(f'\\left(\\frac{\\pi}{6}\\right)=2\\), then find \\(f(x)\\)."
+  },
+  {
+    "ref": "Misc I Q1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Derivatives of Algebraic Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(y=\\frac{x-4}{\\sqrt{x+2}}\\), then \\(\\frac{dy}{dx}=\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{x+4}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\sqrt{x}}{\\left(\\sqrt{x+2}\\right)^{2}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{2\\sqrt{x}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{x}{\\left(\\sqrt{x}+2\\right)^{2}}\\)"
+      }
+    ],
+    "answer": "C",
+    "_note": "BOOK DEFECT (typesetting). As printed the radical bar in the stem covers 'x + 2', i.e. \\(\\sqrt{x+2}\\) — verified by pixel measurement of the vinculum (spans the whole of x + 2, 72 px, against the 22 px vinculum the same book uses for \\(\\sqrt{x}\\) elsewhere on the page, e.g. Ex 9.2 IV Q2). Option B carries the same over-wide bar; option D's bar correctly covers only x. Under the printed reading \\(\\frac{d}{dx}\\frac{x-4}{\\sqrt{x+2}}=\\frac{x+8}{2(x+2)^{3/2}}\\), which matches NO option, so the question is unanswerable as printed. The evidently-intended stem is \\(y=\\frac{x-4}{\\sqrt{x}+2}\\): then \\(x-4=(\\sqrt{x}-2)(\\sqrt{x}+2)\\) so \\(y=\\sqrt{x}-2\\) and \\(\\frac{dy}{dx}=\\frac{1}{2\\sqrt{x}}\\) = option C, which is exactly option C as printed. Answer C is derived from that intended reading; the stem and option B are transcribed as printed, not repaired."
+  },
+  {
+    "ref": "Misc I Q2",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "If \\(y=\\frac{ax+b}{cx+d}\\), then \\(\\frac{dy}{dx}=\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{ab-cd}{(cx+d)^{2}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{ax-c}{(cx+d)^{2}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{ac-bd}{(cx+d)^{2}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{ad-bc}{(cx+d)^{2}}\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc I Q3",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "EASY",
+    "stem": "If \\(y=\\frac{3x+5}{4x+5}\\), then \\(\\frac{dy}{dx}=\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-\\frac{15}{(3x+5)^{2}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(-\\frac{15}{(4x+5)^{2}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(-\\frac{5}{(4x+5)^{2}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-\\frac{13}{(4x+5)^{2}}\\)"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc I Q4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "If \\(y=\\frac{5\\sin x-2}{4\\sin x+3}\\), then \\(\\frac{dy}{dx}=\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{7\\cos x}{(4\\sin x+3)^{2}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{23\\cos x}{(4\\sin x+3)^{2}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(-\\frac{7\\cos x}{(4\\sin x+3)^{2}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-\\frac{15\\cos x}{(4\\sin x+3)^{2}}\\)"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Misc I Q5",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Derivatives of Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "Suppose \\(f(x)\\) is the derivative of \\(g(x)\\) and \\(g(x)\\) is the derivative of \\(h(x)\\). If \\(h(x)=a\\sin x+b\\cos x+c\\) then \\(f(x)+h(x)=\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(c\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(-c\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-2(a\\sin +b\\cos x)\\)"
+      }
+    ],
+    "answer": "B",
+    "_note": "Option D is printed as \\(-2(a\\sin + b\\cos x)\\) — the first term's 'sin' carries no argument (the book has dropped the x). Transcribed exactly as printed. It is a distractor either way and does not affect the answer."
+  },
+  {
+    "ref": "Misc I Q6",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Relationship Between Differentiability and Continuity",
+    "difficulty": "HARD",
+    "stem": "If \\(f(x)=2x+6\\) for \\(0\\le x\\le 2\\)\n\\(=ax^{2}+bx\\) for \\(2<x\\le 4\\)\nis differentiable at \\(x=2\\) then the values of \\(a\\) and \\(b\\) are.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(a=-\\frac{3}{2},\\ b=3\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(a=\\frac{3}{2},\\ b=8\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(a=\\frac{1}{2},\\ b=8\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(a=-\\frac{3}{2},\\ b=8\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc I Q7",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Relationship Between Differentiability and Continuity",
+    "difficulty": "MODERATE",
+    "stem": "If \\(f(x)=x^{2}+\\sin x+1\\) for \\(x\\le 0\\)\n\\(=x^{2}-2x+1\\) for \\(x\\le 0\\) then",
+    "options": [
+      {
+        "label": "A",
+        "text": "f is continuous at \\(x=0\\), but not differentiable at \\(x=0\\)"
+      },
+      {
+        "label": "B",
+        "text": "f is neither continuous nor differentiable at \\(x=0\\)"
+      },
+      {
+        "label": "C",
+        "text": "f is not continuous at \\(x=0\\), but differentiable at \\(x=0\\)"
+      },
+      {
+        "label": "D",
+        "text": "f is both continuous and differentiable at \\(x=0\\)"
+      }
+    ],
+    "answer": "A",
+    "_note": "BOOK DEFECT. The condition \\(x\\le 0\\) is printed TWICE, once for each branch (verified on the page image at 2x zoom). As printed the definition is self-contradictory — it assigns two different values to every \\(x\\le 0\\) and leaves \\(f\\) undefined for \\(x>0\\) — so the question has no answer. The evidently-intended second condition is \\(x>0\\). Transcribed exactly as printed, NOT repaired. The answer is derived from the intended reading: at \\(x=0\\) the left value is \\(0+0+1=1\\) and the right value is \\(0-0+1=1\\), so \\(f\\) is continuous; \\(Lf'(0)=\\left[2x+\\cos x\\right]_{x=0}=1\\) while \\(Rf'(0)=\\left[2x-2\\right]_{x=0}=-2\\), so \\(f\\) is not differentiable at \\(x=0\\) — option A."
+  },
+  {
+    "ref": "Misc I Q8",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Derivatives of Algebraic Functions",
+    "difficulty": "MODERATE",
+    "stem": "If, \\(f(x)=\\frac{x^{50}}{50}+\\frac{x^{49}}{49}+\\frac{x^{48}}{48}+....+\\frac{x^{2}}{2}+x+1\\), then \\(f'(1)=\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(48\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(49\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(50\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(51\\)"
+      }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc II Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definition of the Derivative and Differentiability",
+    "difficulty": "MODERATE",
+    "stem": "Determine whether the following function is differentiable at \\(x=3\\) where,\n\\(f(x)=x^{2}+2\\), for \\(x\\ge 3\\)\n\\(=6x-7\\), for \\(x<3\\)."
+  },
+  {
+    "ref": "Misc II Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relationship Between Differentiability and Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find the values of \\(p\\) and \\(q\\) that make function \\(f(x)\\) differentiable everywhere on \\(R\\)\n\\(f(x)=3-x\\), for \\(x<1\\)\n\\(=px^{2}+qx\\), for \\(x\\ge 1\\)."
+  },
+  {
+    "ref": "Misc II Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relationship Between Differentiability and Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Determine the values of \\(p\\) and \\(q\\) that make the function \\(f(x)\\) differentiable on \\(R\\) where\n\\(f(x)=px^{3}\\), for \\(x<2\\)\n\\(=x^{2}+q\\), for \\(x\\ge 2\\)."
+  },
+  {
+    "ref": "Misc II Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Relationship Between Differentiability and Continuity",
+    "difficulty": "HARD",
+    "stem": "Determine all real values of \\(p\\) and \\(q\\) that ensure the function\n\\(f(x)=px+q\\) for, \\(x\\le 1\\)\n\\(=\\tan\\left(\\frac{\\pi x}{4}\\right)\\), for \\(1<x<2\\)\nis differentiable at \\(x=1\\)."
+  },
+  {
+    "ref": "Misc II Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definition of the Derivative and Differentiability",
+    "difficulty": "HARD",
+    "stem": "Discuss whether the function \\(f(x)=\\left|x+1\\right|+\\left|x-1\\right|\\) is differentiable \\(\\forall x\\in R\\)"
+  },
+  {
+    "ref": "Misc II Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definition of the Derivative and Differentiability",
+    "difficulty": "MODERATE",
+    "stem": "Test whether the function\n\\(f(x)=2x-3\\), for \\(x\\ge 2\\)\n\\(=x-1\\), for \\(x<2\\)\nis differentiable at \\(x=2\\)."
+  },
+  {
+    "ref": "Misc II Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definition of the Derivative and Differentiability",
+    "difficulty": "MODERATE",
+    "stem": "Test whether the function\n\\(f(x)=x^{2}+1\\), for \\(x\\ge 2\\)\n\\(=2x+1\\), for \\(x<2\\)\nis differentiable at \\(x=2\\)."
+  },
+  {
+    "ref": "Misc II Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definition of the Derivative and Differentiability",
+    "difficulty": "MODERATE",
+    "stem": "Test whether the function\n\\(f(x)=5x-3x^{2}\\) for \\(x\\ge 1\\)\n\\(=3-x\\), for \\(x<1\\)\nis differentiable at \\(x=1\\)."
+  },
+  {
+    "ref": "Misc II Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Definition of the Derivative and Differentiability",
+    "difficulty": "HARD",
+    "stem": "If \\(f(2)=4\\), \\(f'(2)=1\\) then find \\(\\lim\\limits_{x\\to 2}\\left[\\frac{xf(2)-2f(x)}{x-2}\\right]\\)"
+  },
+  {
+    "ref": "Misc II Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rules of Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "If \\(y=\\frac{e^{x}}{\\sqrt{x}}\\) find \\(\\frac{dy}{dx}\\) when \\(x=1\\)."
+  }
+]

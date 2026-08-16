@@ -1,0 +1,102 @@
+[
+  {
+    "id": "8af65fb0-77cb-4954-9885-1455ec5172ff",
+    "ref": "Ex 4.4 Q1(i)",
+    "solution": "For any rational \\(n\\) and \\(|x| < 1\\),\n\\((1+x)^{n} = 1 + nx + \\frac{n(n-1)}{2!}x^{2} + \\frac{n(n-1)(n-2)}{3!}x^{3} + \\cdots\\)\nHere \\(n = -4\\), so\n\\((1+x)^{-4} = 1 + (-4)x + \\frac{(-4)(-5)}{2!}x^{2} + \\frac{(-4)(-5)(-6)}{3!}x^{3} + \\cdots\\)\n\\(= 1 - 4x + \\frac{20}{2}x^{2} - \\frac{120}{6}x^{3} + \\cdots\\)\n\\(\\therefore (1+x)^{-4} = 1 - 4x + 10x^{2} - 20x^{3} + \\cdots\\)"
+  },
+  {
+    "id": "3880de83-f4ae-49ed-b0d8-fb0b5bdc6dae",
+    "ref": "Ex 4.4 Q1(ii)",
+    "solution": "Here \\(n = \\frac{1}{3}\\) and \\(x\\) is replaced by \\(-x\\); the expansion holds for \\(|x| < 1\\).\n\\((1-x)^{1/3} = 1 + \\frac{1}{3}(-x) + \\frac{\\frac{1}{3}\\left(-\\frac{2}{3}\\right)}{2!}(-x)^{2} + \\frac{\\frac{1}{3}\\left(-\\frac{2}{3}\\right)\\left(-\\frac{5}{3}\\right)}{3!}(-x)^{3} + \\cdots\\)\n\\(= 1 - \\frac{x}{3} + \\left(-\\frac{1}{9}\\right)x^{2} + \\frac{5}{81}\\left(-x^{3}\\right) + \\cdots\\)\n\\(\\therefore (1-x)^{1/3} = 1 - \\frac{x}{3} - \\frac{x^{2}}{9} - \\frac{5x^{3}}{81} - \\cdots\\)"
+  },
+  {
+    "id": "9d6b5b9c-eaaa-47cf-afec-b760425f815c",
+    "ref": "Ex 4.4 Q1(iii)",
+    "solution": "Here \\(n = -3\\) and \\(x\\) is replaced by \\(-x^{2}\\). The expansion holds for \\(\\left|x^{2}\\right| < 1\\), i.e. \\(|x| < 1\\).\n\\((1-x^{2})^{-3} = 1 + (-3)(-x^{2}) + \\frac{(-3)(-4)}{2!}(-x^{2})^{2} + \\frac{(-3)(-4)(-5)}{3!}(-x^{2})^{3} + \\cdots\\)\n\\(= 1 + 3x^{2} + 6x^{4} + (-10)(-x^{6}) + \\cdots\\)\n\\(\\therefore (1-x^{2})^{-3} = 1 + 3x^{2} + 6x^{4} + 10x^{6} + \\cdots\\)"
+  },
+  {
+    "id": "ef79381d-fe2e-4ea7-82a7-b5003d44c3f9",
+    "ref": "Ex 4.4 Q1(iv)",
+    "solution": "Here \\(n = -\\frac{1}{5}\\), and the expansion holds for \\(|x| < 1\\).\n\\((1+x)^{-1/5} = 1 + \\left(-\\frac{1}{5}\\right)x + \\frac{\\left(-\\frac{1}{5}\\right)\\left(-\\frac{6}{5}\\right)}{2!}x^{2} + \\frac{\\left(-\\frac{1}{5}\\right)\\left(-\\frac{6}{5}\\right)\\left(-\\frac{11}{5}\\right)}{3!}x^{3} + \\cdots\\)\n\\(= 1 - \\frac{x}{5} + \\frac{6/25}{2}x^{2} - \\frac{66/125}{6}x^{3} + \\cdots\\)\n\\(\\therefore (1+x)^{-1/5} = 1 - \\frac{x}{5} + \\frac{3x^{2}}{25} - \\frac{11x^{3}}{125} + \\cdots\\)"
+  },
+  {
+    "id": "14f0c090-cc70-4353-beec-60e883630cbf",
+    "ref": "Ex 4.4 Q1(v)",
+    "solution": "Here \\(n = -1\\) and \\(x\\) is replaced by \\(x^{2}\\). The expansion holds for \\(\\left|x^{2}\\right| < 1\\), i.e. \\(|x| < 1\\).\n\\((1+x^{2})^{-1} = 1 + (-1)x^{2} + \\frac{(-1)(-2)}{2!}(x^{2})^{2} + \\frac{(-1)(-2)(-3)}{3!}(x^{2})^{3} + \\cdots\\)\n\\(= 1 - x^{2} + x^{4} - x^{6} + \\cdots\\)\n(This is the geometric series with ratio \\(-x^{2}\\), as expected.)\n\\(\\therefore (1+x^{2})^{-1} = 1 - x^{2} + x^{4} - x^{6} + \\cdots\\)"
+  },
+  {
+    "id": "7d6dcd21-a060-4433-90c9-593c0765470f",
+    "ref": "Ex 4.4 Q2(i)",
+    "solution": "First bring it to the form \\((1+t)^{n}\\) by taking \\(a\\) out:\n\\((a-b)^{-3} = a^{-3}\\left(1-\\frac{b}{a}\\right)^{-3}\\), valid for \\(\\left|\\frac{b}{a}\\right| < 1\\), i.e. \\(|b| < |a|\\).\nWith \\(n = -3\\) and \\(x\\) replaced by \\(-\\frac{b}{a}\\),\n\\(\\left(1-\\frac{b}{a}\\right)^{-3} = 1 + (-3)\\left(-\\frac{b}{a}\\right) + \\frac{(-3)(-4)}{2!}\\left(-\\frac{b}{a}\\right)^{2} + \\frac{(-3)(-4)(-5)}{3!}\\left(-\\frac{b}{a}\\right)^{3} + \\cdots\\)\n\\(= 1 + \\frac{3b}{a} + \\frac{6b^{2}}{a^{2}} + \\frac{10b^{3}}{a^{3}} + \\cdots\\)\n\\(\\therefore (a-b)^{-3} = a^{-3}\\left[1 + \\frac{3b}{a} + \\frac{6b^{2}}{a^{2}} + \\frac{10b^{3}}{a^{3}} + \\cdots\\right]\\)"
+  },
+  {
+    "id": "5967ea19-ed9f-42e6-ad16-6e507f66dd32",
+    "ref": "Ex 4.4 Q2(ii)",
+    "solution": "Take \\(a\\) out: \\((a+b)^{-4} = a^{-4}\\left(1+\\frac{b}{a}\\right)^{-4}\\), valid for \\(\\left|\\frac{b}{a}\\right| < 1\\), i.e. \\(|b| < |a|\\).\nWith \\(n = -4\\) and \\(x\\) replaced by \\(\\frac{b}{a}\\),\n\\(\\left(1+\\frac{b}{a}\\right)^{-4} = 1 + (-4)\\frac{b}{a} + \\frac{(-4)(-5)}{2!}\\frac{b^{2}}{a^{2}} + \\frac{(-4)(-5)(-6)}{3!}\\frac{b^{3}}{a^{3}} + \\cdots\\)\n\\(= 1 - \\frac{4b}{a} + \\frac{10b^{2}}{a^{2}} - \\frac{20b^{3}}{a^{3}} + \\cdots\\)\n\\(\\therefore (a+b)^{-4} = a^{-4}\\left[1 - \\frac{4b}{a} + \\frac{10b^{2}}{a^{2}} - \\frac{20b^{3}}{a^{3}} + \\cdots\\right]\\)"
+  },
+  {
+    "id": "b9201cca-c04a-41cb-b88a-e248ff3e367c",
+    "ref": "Ex 4.4 Q2(iii)",
+    "solution": "Take \\(a\\) out: \\((a+b)^{1/4} = a^{1/4}\\left(1+\\frac{b}{a}\\right)^{1/4}\\), valid for \\(\\left|\\frac{b}{a}\\right| < 1\\), i.e. \\(|b| < |a|\\).\nWith \\(n = \\frac{1}{4}\\) and \\(x\\) replaced by \\(\\frac{b}{a}\\),\n\\(\\left(1+\\frac{b}{a}\\right)^{1/4} = 1 + \\frac{1}{4}\\cdot\\frac{b}{a} + \\frac{\\frac{1}{4}\\left(-\\frac{3}{4}\\right)}{2!}\\cdot\\frac{b^{2}}{a^{2}} + \\frac{\\frac{1}{4}\\left(-\\frac{3}{4}\\right)\\left(-\\frac{7}{4}\\right)}{3!}\\cdot\\frac{b^{3}}{a^{3}} + \\cdots\\)\n\\(= 1 + \\frac{b}{4a} - \\frac{3b^{2}}{32a^{2}} + \\frac{7b^{3}}{128a^{3}} + \\cdots\\)\n\\(\\therefore (a+b)^{1/4} = a^{1/4}\\left[1 + \\frac{b}{4a} - \\frac{3b^{2}}{32a^{2}} + \\frac{7b^{3}}{128a^{3}} + \\cdots\\right]\\)"
+  },
+  {
+    "id": "3b94424f-70ce-453f-8a89-18ae89fa92fc",
+    "ref": "Ex 4.4 Q2(iv)",
+    "solution": "Take \\(a\\) out: \\((a-b)^{-1/4} = a^{-1/4}\\left(1-\\frac{b}{a}\\right)^{-1/4}\\), valid for \\(\\left|\\frac{b}{a}\\right| < 1\\), i.e. \\(|b| < |a|\\).\nWith \\(n = -\\frac{1}{4}\\) and \\(x\\) replaced by \\(-\\frac{b}{a}\\),\n\\(\\left(1-\\frac{b}{a}\\right)^{-1/4} = 1 + \\left(-\\frac{1}{4}\\right)\\left(-\\frac{b}{a}\\right) + \\frac{\\left(-\\frac{1}{4}\\right)\\left(-\\frac{5}{4}\\right)}{2!}\\left(-\\frac{b}{a}\\right)^{2} + \\frac{\\left(-\\frac{1}{4}\\right)\\left(-\\frac{5}{4}\\right)\\left(-\\frac{9}{4}\\right)}{3!}\\left(-\\frac{b}{a}\\right)^{3} + \\cdots\\)\n\\(= 1 + \\frac{b}{4a} + \\frac{5b^{2}}{32a^{2}} + \\left(-\\frac{15}{128}\\right)\\left(-\\frac{b^{3}}{a^{3}}\\right) + \\cdots\\)\n\\(\\therefore (a-b)^{-1/4} = a^{-1/4}\\left[1 + \\frac{b}{4a} + \\frac{5b^{2}}{32a^{2}} + \\frac{15b^{3}}{128a^{3}} + \\cdots\\right]\\)"
+  },
+  {
+    "id": "daf8e625-a8b1-4d6d-a8fc-fa81c68cb416",
+    "ref": "Ex 4.4 Q2(v)",
+    "solution": "Take \\(a\\) out: \\((a+b)^{-1/3} = a^{-1/3}\\left(1+\\frac{b}{a}\\right)^{-1/3}\\), valid for \\(\\left|\\frac{b}{a}\\right| < 1\\), i.e. \\(|b| < |a|\\).\nWith \\(n = -\\frac{1}{3}\\) and \\(x\\) replaced by \\(\\frac{b}{a}\\),\n\\(\\left(1+\\frac{b}{a}\\right)^{-1/3} = 1 + \\left(-\\frac{1}{3}\\right)\\frac{b}{a} + \\frac{\\left(-\\frac{1}{3}\\right)\\left(-\\frac{4}{3}\\right)}{2!}\\cdot\\frac{b^{2}}{a^{2}} + \\frac{\\left(-\\frac{1}{3}\\right)\\left(-\\frac{4}{3}\\right)\\left(-\\frac{7}{3}\\right)}{3!}\\cdot\\frac{b^{3}}{a^{3}} + \\cdots\\)\n\\(= 1 - \\frac{b}{3a} + \\frac{2b^{2}}{9a^{2}} - \\frac{14b^{3}}{81a^{3}} + \\cdots\\)\n\\(\\therefore (a+b)^{-1/3} = a^{-1/3}\\left[1 - \\frac{b}{3a} + \\frac{2b^{2}}{9a^{2}} - \\frac{14b^{3}}{81a^{3}} + \\cdots\\right]\\)"
+  },
+  {
+    "id": "a649a493-1af9-4ac9-8253-3b2b2b76d9e9",
+    "ref": "Ex 4.4 Q3(i)",
+    "solution": "Here \\(n = -4\\) and \\(x\\) is replaced by \\(2x\\); the expansion holds for \\(|2x| < 1\\), i.e. \\(|x| < \\frac{1}{2}\\).\n\\((1+2x)^{-4} = 1 + (-4)(2x) + \\frac{(-4)(-5)}{2!}(2x)^{2} + \\cdots\\)\n\\(= 1 - 8x + 10\\left(4x^{2}\\right) + \\cdots\\)\n\\(\\therefore (1+2x)^{-4} = 1 - 8x + 40x^{2} + \\cdots\\)"
+  },
+  {
+    "id": "84294ca9-7408-43c3-96b0-8843744dc98e",
+    "ref": "Ex 4.4 Q3(ii)",
+    "solution": "Here \\(n = -\\frac{1}{2}\\) and \\(x\\) is replaced by \\(3x\\); the expansion holds for \\(|3x| < 1\\), i.e. \\(|x| < \\frac{1}{3}\\).\n\\((1+3x)^{-1/2} = 1 + \\left(-\\frac{1}{2}\\right)(3x) + \\frac{\\left(-\\frac{1}{2}\\right)\\left(-\\frac{3}{2}\\right)}{2!}(3x)^{2} + \\cdots\\)\n\\(= 1 - \\frac{3x}{2} + \\frac{3}{8}\\left(9x^{2}\\right) + \\cdots\\)\n\\(\\therefore (1+3x)^{-1/2} = 1 - \\frac{3x}{2} + \\frac{27x^{2}}{8} + \\cdots\\)"
+  },
+  {
+    "id": "0157e59a-1c4e-4585-9dfc-702b5e4b0724",
+    "ref": "Ex 4.4 Q3(iii)",
+    "solution": "Take the constant \\(2\\) out first so the bracket becomes \\((1+t)^{n}\\):\n\\((2-3x)^{1/3} = 2^{1/3}\\left(1-\\frac{3x}{2}\\right)^{1/3}\\), valid for \\(\\left|\\frac{3x}{2}\\right| < 1\\), i.e. \\(|x| < \\frac{2}{3}\\).\nWith \\(n = \\frac{1}{3}\\) and \\(x\\) replaced by \\(-\\frac{3x}{2}\\),\n\\(\\left(1-\\frac{3x}{2}\\right)^{1/3} = 1 + \\frac{1}{3}\\left(-\\frac{3x}{2}\\right) + \\frac{\\frac{1}{3}\\left(-\\frac{2}{3}\\right)}{2!}\\left(-\\frac{3x}{2}\\right)^{2} + \\cdots = 1 - \\frac{x}{2} - \\frac{1}{9}\\cdot\\frac{9x^{2}}{4} + \\cdots\\)\n\\(\\therefore (2-3x)^{1/3} = 2^{1/3}\\left(1 - \\frac{x}{2} - \\frac{x^{2}}{4} + \\cdots\\right)\\)"
+  },
+  {
+    "id": "b8040c83-b661-4935-872c-ceb5e80a9a7b",
+    "ref": "Ex 4.4 Q3(iv)",
+    "solution": "Take the constant \\(5\\) out first:\n\\((5+4x)^{-1/2} = 5^{-1/2}\\left(1+\\frac{4x}{5}\\right)^{-1/2}\\), valid for \\(\\left|\\frac{4x}{5}\\right| < 1\\), i.e. \\(|x| < \\frac{5}{4}\\).\nWith \\(n = -\\frac{1}{2}\\) and \\(x\\) replaced by \\(\\frac{4x}{5}\\),\n\\(\\left(1+\\frac{4x}{5}\\right)^{-1/2} = 1 + \\left(-\\frac{1}{2}\\right)\\frac{4x}{5} + \\frac{\\left(-\\frac{1}{2}\\right)\\left(-\\frac{3}{2}\\right)}{2!}\\cdot\\frac{16x^{2}}{25} + \\cdots = 1 - \\frac{2x}{5} + \\frac{3}{8}\\cdot\\frac{16x^{2}}{25} + \\cdots\\)\n\\(\\therefore (5+4x)^{-1/2} = 5^{-1/2}\\left(1 - \\frac{2x}{5} + \\frac{6x^{2}}{25} + \\cdots\\right)\\)"
+  },
+  {
+    "id": "50859931-7ce4-43fd-a778-d87549a5a03e",
+    "ref": "Ex 4.4 Q3(v)",
+    "solution": "Take the constant \\(5\\) out first:\n\\((5-3x)^{-1/3} = 5^{-1/3}\\left(1-\\frac{3x}{5}\\right)^{-1/3}\\), valid for \\(\\left|\\frac{3x}{5}\\right| < 1\\), i.e. \\(|x| < \\frac{5}{3}\\).\nWith \\(n = -\\frac{1}{3}\\) and \\(x\\) replaced by \\(-\\frac{3x}{5}\\),\n\\(\\left(1-\\frac{3x}{5}\\right)^{-1/3} = 1 + \\left(-\\frac{1}{3}\\right)\\left(-\\frac{3x}{5}\\right) + \\frac{\\left(-\\frac{1}{3}\\right)\\left(-\\frac{4}{3}\\right)}{2!}\\cdot\\frac{9x^{2}}{25} + \\cdots = 1 + \\frac{x}{5} + \\frac{2}{9}\\cdot\\frac{9x^{2}}{25} + \\cdots\\)\n\\(\\therefore (5-3x)^{-1/3} = 5^{-1/3}\\left(1 + \\frac{x}{5} + \\frac{2x^{2}}{25} + \\cdots\\right)\\)"
+  },
+  {
+    "id": "d02b7f1c-2cf9-4431-b373-76b3f47cbcf6",
+    "ref": "Ex 4.4 Q4(i)",
+    "solution": "Split off the nearest perfect square so that the correction term is small:\n\\(\\sqrt{99} = \\sqrt{100-1} = \\sqrt{100\\left(1-\\frac{1}{100}\\right)} = 10(1-0.01)^{1/2}\\), and \\(|-0.01| < 1\\).\nWith \\(n = \\frac{1}{2}\\) and \\(x\\) replaced by \\(-0.01\\),\n\\((1-0.01)^{1/2} = 1 + \\frac{1}{2}(-0.01) + \\frac{\\frac{1}{2}\\left(-\\frac{1}{2}\\right)}{2!}(-0.01)^{2} + \\frac{\\frac{1}{2}\\left(-\\frac{1}{2}\\right)\\left(-\\frac{3}{2}\\right)}{3!}(-0.01)^{3} + \\cdots\\)\n\\(= 1 - 0.005 - 0.0000125 - 0.0000000625 - \\cdots = 0.99498744\\)\nSo \\(\\sqrt{99} = 10 \\times 0.99498744 = 9.9498744\\)\n\\(\\therefore \\sqrt{99} = 9.9499\\) (correct to four decimal places)."
+  },
+  {
+    "id": "8bc5b0ab-8099-411e-a196-07013b863781",
+    "ref": "Ex 4.4 Q4(ii)",
+    "solution": "Split off the nearest perfect cube:\n\\(\\sqrt[3]{126} = \\sqrt[3]{125+1} = \\sqrt[3]{125\\left(1+\\frac{1}{125}\\right)} = 5(1+0.008)^{1/3}\\), and \\(|0.008| < 1\\).\nWith \\(n = \\frac{1}{3}\\) and \\(x\\) replaced by \\(0.008\\),\n\\((1+0.008)^{1/3} = 1 + \\frac{1}{3}(0.008) + \\frac{\\frac{1}{3}\\left(-\\frac{2}{3}\\right)}{2!}(0.008)^{2} + \\frac{\\frac{1}{3}\\left(-\\frac{2}{3}\\right)\\left(-\\frac{5}{3}\\right)}{3!}(0.008)^{3} + \\cdots\\)\n\\(= 1 + 0.00266667 - 0.00000711 + 0.00000003 + \\cdots = 1.00265959\\)\nSo \\(\\sqrt[3]{126} = 5 \\times 1.00265959 = 5.0132980\\)\n\\(\\therefore \\sqrt[3]{126} = 5.0133\\) (correct to four decimal places)."
+  },
+  {
+    "id": "288e34b2-9ae8-4b45-abbf-18fb14b3e837",
+    "ref": "Ex 4.4 Q4(iii)",
+    "solution": "Split off the nearest perfect fourth power, \\(16 = 2^{4}\\):\n\\(\\sqrt[4]{16.08} = \\sqrt[4]{16\\left(1+\\frac{0.08}{16}\\right)} = 2(1+0.005)^{1/4}\\), and \\(|0.005| < 1\\).\nWith \\(n = \\frac{1}{4}\\) and \\(x\\) replaced by \\(0.005\\),\n\\((1+0.005)^{1/4} = 1 + \\frac{1}{4}(0.005) + \\frac{\\frac{1}{4}\\left(-\\frac{3}{4}\\right)}{2!}(0.005)^{2} + \\cdots\\)\n\\(= 1 + 0.00125 - 0.00000234 + \\cdots = 1.00124766\\)\nSo \\(\\sqrt[4]{16.08} = 2 \\times 1.00124766 = 2.00249532\\)\n\\(\\therefore \\sqrt[4]{16.08} = 2.0025\\) (correct to four decimal places)."
+  },
+  {
+    "id": "186a0f98-7d7f-4ccd-af23-c4a938ea609e",
+    "ref": "Ex 4.4 Q4(iv)",
+    "solution": "Write \\((1.02)^{-5} = (1+0.02)^{-5}\\); here \\(n = -5\\), \\(x = 0.02\\) and \\(|0.02| < 1\\).\n\\((1+0.02)^{-5} = 1 + (-5)(0.02) + \\frac{(-5)(-6)}{2!}(0.02)^{2} + \\frac{(-5)(-6)(-7)}{3!}(0.02)^{3} + \\frac{(-5)(-6)(-7)(-8)}{4!}(0.02)^{4} + \\cdots\\)\n\\(= 1 - 0.1 + 15(0.0004) - 35(0.000008) + 70(0.00000016) + \\cdots\\)\n\\(= 1 - 0.1 + 0.006 - 0.00028 + 0.0000112 + \\cdots = 0.9057312\\)\n\\(\\therefore (1.02)^{-5} = 0.9057\\) (correct to four decimal places)."
+  },
+  {
+    "id": "d153f4cc-50dc-46c3-ad88-8d118f93fc14",
+    "ref": "Ex 4.4 Q4(v)",
+    "solution": "Write \\((0.98)^{-3} = (1-0.02)^{-3}\\); here \\(n = -3\\), \\(x\\) is replaced by \\(-0.02\\) and \\(|-0.02| < 1\\).\n\\((1-0.02)^{-3} = 1 + (-3)(-0.02) + \\frac{(-3)(-4)}{2!}(-0.02)^{2} + \\frac{(-3)(-4)(-5)}{3!}(-0.02)^{3} + \\frac{(-3)(-4)(-5)(-6)}{4!}(-0.02)^{4} + \\cdots\\)\n\\(= 1 + 0.06 + 6(0.0004) + (-10)(-0.000008) + 15(0.00000016) + \\cdots\\)\n\\(= 1 + 0.06 + 0.0024 + 0.00008 + 0.0000024 + \\cdots = 1.0624824\\)\n\\(\\therefore (0.98)^{-3} = 1.0625\\) (correct to four decimal places)."
+  }
+]

@@ -1,0 +1,87 @@
+[
+  {
+    "id": "92db71c1-9af7-4939-8fa6-b65988ab8878",
+    "ref": "Ex 4.2 Q1(i)",
+    "solution": "Take \\(a = \\sqrt{3}\\), \\(b = \\sqrt{2}\\), \\(n = 4\\) in \\((a+b)^n = \\sum {}^{n}C_{r}\\,a^{n-r}b^{r}\\):\n\\((a+b)^4 = a^4 + {}^{4}C_{1}a^3b + {}^{4}C_{2}a^2b^2 + {}^{4}C_{3}ab^3 + b^4\\)\nTerm by term, with \\({}^{4}C_{1} = 4\\), \\({}^{4}C_{2} = 6\\), \\({}^{4}C_{3} = 4\\):\n\\(a^4 = (\\sqrt{3})^4 = 9\\)\n\\({}^{4}C_{1}a^3b = 4 \\cdot 3\\sqrt{3} \\cdot \\sqrt{2} = 12\\sqrt{6}\\)\n\\({}^{4}C_{2}a^2b^2 = 6 \\cdot 3 \\cdot 2 = 36\\)\n\\({}^{4}C_{3}ab^3 = 4 \\cdot \\sqrt{3} \\cdot 2\\sqrt{2} = 8\\sqrt{6}\\)\n\\(b^4 = (\\sqrt{2})^4 = 4\\)\nCollecting like terms: \\(9 + 36 + 4 = 49\\) and \\(12\\sqrt{6} + 8\\sqrt{6} = 20\\sqrt{6}\\).\n\\(\\left(\\sqrt{3}+\\sqrt{2}\\right)^4 = 49 + 20\\sqrt{6}\\)"
+  },
+  {
+    "id": "86fb0f10-51d5-4d9c-a466-7ad2232f41ca",
+    "ref": "Ex 4.2 Q1(ii)",
+    "solution": "Take \\(a = \\sqrt{5}\\), \\(b = \\sqrt{2}\\), \\(n = 5\\); in \\((a-b)^5\\) the signs alternate:\n\\((a-b)^5 = a^5 - {}^{5}C_{1}a^4b + {}^{5}C_{2}a^3b^2 - {}^{5}C_{3}a^2b^3 + {}^{5}C_{4}ab^4 - b^5\\)\nWith \\({}^{5}C_{1} = 5\\), \\({}^{5}C_{2} = 10\\), \\({}^{5}C_{3} = 10\\), \\({}^{5}C_{4} = 5\\):\n\\(a^5 = (\\sqrt{5})^5 = 25\\sqrt{5}\\)\n\\({}^{5}C_{1}a^4b = 5 \\cdot 25 \\cdot \\sqrt{2} = 125\\sqrt{2}\\)\n\\({}^{5}C_{2}a^3b^2 = 10 \\cdot 5\\sqrt{5} \\cdot 2 = 100\\sqrt{5}\\)\n\\({}^{5}C_{3}a^2b^3 = 10 \\cdot 5 \\cdot 2\\sqrt{2} = 100\\sqrt{2}\\)\n\\({}^{5}C_{4}ab^4 = 5 \\cdot \\sqrt{5} \\cdot 4 = 20\\sqrt{5}\\)\n\\(b^5 = (\\sqrt{2})^5 = 4\\sqrt{2}\\)\nSo the expansion is \\(25\\sqrt{5} - 125\\sqrt{2} + 100\\sqrt{5} - 100\\sqrt{2} + 20\\sqrt{5} - 4\\sqrt{2}\\).\nCollecting: \\((25 + 100 + 20)\\sqrt{5} = 145\\sqrt{5}\\) and \\((125 + 100 + 4)\\sqrt{2} = 229\\sqrt{2}\\).\n\\(\\left(\\sqrt{5}-\\sqrt{2}\\right)^5 = 145\\sqrt{5} - 229\\sqrt{2}\\)"
+  },
+  {
+    "id": "5df3e925-9b91-4248-a39b-f3610b469385",
+    "ref": "Ex 4.2 Q2(i)",
+    "solution": "Take \\(a = 2x^2\\), \\(b = 3\\), \\(n = 4\\):\n\\((a+b)^4 = a^4 + {}^{4}C_{1}a^3b + {}^{4}C_{2}a^2b^2 + {}^{4}C_{3}ab^3 + b^4\\)\nTerm by term, with \\({}^{4}C_{1} = 4\\), \\({}^{4}C_{2} = 6\\), \\({}^{4}C_{3} = 4\\):\n\\((2x^2)^4 = 16x^8\\)\n\\(4 \\cdot (2x^2)^3 \\cdot 3 = 4 \\cdot 8x^6 \\cdot 3 = 96x^6\\)\n\\(6 \\cdot (2x^2)^2 \\cdot 3^2 = 6 \\cdot 4x^4 \\cdot 9 = 216x^4\\)\n\\(4 \\cdot (2x^2) \\cdot 3^3 = 4 \\cdot 2x^2 \\cdot 27 = 216x^2\\)\n\\(3^4 = 81\\)\n\\((2x^2+3)^4 = 16x^8 + 96x^6 + 216x^4 + 216x^2 + 81\\)"
+  },
+  {
+    "id": "17f09350-8ddb-41bd-a6c0-386ec71668c2",
+    "ref": "Ex 4.2 Q2(ii)",
+    "solution": "Take \\(a = 2x\\), \\(b = \\dfrac{1}{x}\\), \\(n = 6\\); the general term is \\({}^{6}C_{r}(2x)^{6-r}\\left(-\\dfrac{1}{x}\\right)^{r}\\), so the signs alternate.\nWith \\({}^{6}C_{1} = 6\\), \\({}^{6}C_{2} = 15\\), \\({}^{6}C_{3} = 20\\), \\({}^{6}C_{4} = 15\\), \\({}^{6}C_{5} = 6\\):\n\\(r = 0:\\ (2x)^6 = 64x^6\\)\n\\(r = 1:\\ -6 \\cdot (2x)^5 \\cdot \\dfrac{1}{x} = -6 \\cdot 32x^5 \\cdot \\dfrac{1}{x} = -192x^4\\)\n\\(r = 2:\\ 15 \\cdot (2x)^4 \\cdot \\dfrac{1}{x^2} = 15 \\cdot 16x^4 \\cdot \\dfrac{1}{x^2} = 240x^2\\)\n\\(r = 3:\\ -20 \\cdot (2x)^3 \\cdot \\dfrac{1}{x^3} = -20 \\cdot 8x^3 \\cdot \\dfrac{1}{x^3} = -160\\)\n\\(r = 4:\\ 15 \\cdot (2x)^2 \\cdot \\dfrac{1}{x^4} = 15 \\cdot 4x^2 \\cdot \\dfrac{1}{x^4} = \\dfrac{60}{x^2}\\)\n\\(r = 5:\\ -6 \\cdot (2x) \\cdot \\dfrac{1}{x^5} = -\\dfrac{12}{x^4}\\)\n\\(r = 6:\\ \\dfrac{1}{x^6}\\)\n\\(\\left(2x - \\dfrac{1}{x}\\right)^6 = 64x^6 - 192x^4 + 240x^2 - 160 + \\dfrac{60}{x^2} - \\dfrac{12}{x^4} + \\dfrac{1}{x^6}\\)"
+  },
+  {
+    "id": "8f0d77cb-9c98-4e6c-8f5e-198388bcf031",
+    "ref": "Ex 4.2 Q3(i)",
+    "solution": "In \\((a+b)^4 - (a-b)^4\\) the even-power terms cancel and the odd-power terms double:\n\\((a+b)^4 - (a-b)^4 = 2\\left[{}^{4}C_{1}a^3b + {}^{4}C_{3}ab^3\\right]\\)\nPut \\(a = \\sqrt{3}\\), \\(b = 1\\), with \\({}^{4}C_{1} = {}^{4}C_{3} = 4\\):\n\\({}^{4}C_{1}a^3b = 4 \\cdot (\\sqrt{3})^3 \\cdot 1 = 4 \\cdot 3\\sqrt{3} = 12\\sqrt{3}\\)\n\\({}^{4}C_{3}ab^3 = 4 \\cdot \\sqrt{3} \\cdot 1 = 4\\sqrt{3}\\)\nSo the value is \\(2\\left[12\\sqrt{3} + 4\\sqrt{3}\\right] = 2 \\cdot 16\\sqrt{3}\\).\n\\(\\left(\\sqrt{3}+1\\right)^4 - \\left(\\sqrt{3}-1\\right)^4 = 32\\sqrt{3}\\)"
+  },
+  {
+    "id": "599b0e12-ed10-43fd-b5d3-de1a3ebb0b15",
+    "ref": "Ex 4.2 Q3(ii)",
+    "solution": "In \\((a+b)^5 + (a-b)^5\\) the odd-power terms cancel and the even-power terms double:\n\\((a+b)^5 + (a-b)^5 = 2\\left[a^5 + {}^{5}C_{2}a^3b^2 + {}^{5}C_{4}ab^4\\right]\\)\nPut \\(a = 2\\), \\(b = \\sqrt{5}\\), with \\({}^{5}C_{2} = 10\\), \\({}^{5}C_{4} = 5\\):\n\\(a^5 = 2^5 = 32\\)\n\\({}^{5}C_{2}a^3b^2 = 10 \\cdot 8 \\cdot 5 = 400\\)\n\\({}^{5}C_{4}ab^4 = 5 \\cdot 2 \\cdot 25 = 250\\)\nSo the value is \\(2\\left[32 + 400 + 250\\right] = 2 \\cdot 682\\).\n\\(\\left(2+\\sqrt{5}\\right)^5 + \\left(2-\\sqrt{5}\\right)^5 = 1364\\)"
+  },
+  {
+    "id": "3ac7f558-2c99-47f4-b8ab-24523ee8b949",
+    "ref": "Ex 4.2 Q4(i)",
+    "solution": "In \\((a+b)^6 + (a-b)^6\\) the odd-power terms cancel and the even-power terms double:\n\\((a+b)^6 + (a-b)^6 = 2\\left[a^6 + {}^{6}C_{2}a^4b^2 + {}^{6}C_{4}a^2b^4 + b^6\\right]\\)\nPut \\(a = \\sqrt{3}\\), \\(b = \\sqrt{2}\\), with \\({}^{6}C_{2} = {}^{6}C_{4} = 15\\):\n\\(a^6 = (\\sqrt{3})^6 = 27\\)\n\\({}^{6}C_{2}a^4b^2 = 15 \\cdot 9 \\cdot 2 = 270\\)\n\\({}^{6}C_{4}a^2b^4 = 15 \\cdot 3 \\cdot 4 = 180\\)\n\\(b^6 = (\\sqrt{2})^6 = 8\\)\nHence the sum is \\(2\\left[27 + 270 + 180 + 8\\right] = 2 \\cdot 485 = 970\\).\n\\(\\therefore \\left(\\sqrt{3}+\\sqrt{2}\\right)^6 + \\left(\\sqrt{3}-\\sqrt{2}\\right)^6 = 970\\), as required."
+  },
+  {
+    "id": "acb5ecc6-f02b-449c-ae30-9458bf977c1f",
+    "ref": "Ex 4.2 Q4(ii)",
+    "solution": "In \\((a+b)^5 - (a-b)^5\\) the even-power terms cancel and the odd-power terms double:\n\\((a+b)^5 - (a-b)^5 = 2\\left[{}^{5}C_{1}a^4b + {}^{5}C_{3}a^2b^3 + {}^{5}C_{5}b^5\\right]\\)\nPut \\(a = \\sqrt{5}\\), \\(b = 1\\), with \\({}^{5}C_{1} = 5\\), \\({}^{5}C_{3} = 10\\), \\({}^{5}C_{5} = 1\\):\n\\({}^{5}C_{1}a^4b = 5 \\cdot (\\sqrt{5})^4 \\cdot 1 = 5 \\cdot 25 = 125\\)\n\\({}^{5}C_{3}a^2b^3 = 10 \\cdot 5 \\cdot 1 = 50\\)\n\\({}^{5}C_{5}b^5 = 1\\)\nHence the difference is \\(2\\left[125 + 50 + 1\\right] = 2 \\cdot 176 = 352\\).\n\\(\\therefore \\left(\\sqrt{5}+1\\right)^5 - \\left(\\sqrt{5}-1\\right)^5 = 352\\), as required."
+  },
+  {
+    "id": "149a2685-dadd-4eb7-96c6-9c8bed5fb99f",
+    "ref": "Ex 4.2 Q5(i)",
+    "solution": "Write \\(102 = 100 + 2\\) and expand with \\(a = 100\\), \\(b = 2\\), \\(n = 4\\):\n\\((100+2)^4 = 100^4 + {}^{4}C_{1}(100)^3(2) + {}^{4}C_{2}(100)^2(2)^2 + {}^{4}C_{3}(100)(2)^3 + 2^4\\)\nTerm by term, with \\({}^{4}C_{1} = 4\\), \\({}^{4}C_{2} = 6\\), \\({}^{4}C_{3} = 4\\):\n\\(100^4 = 100000000\\)\n\\(4 \\cdot 1000000 \\cdot 2 = 8000000\\)\n\\(6 \\cdot 10000 \\cdot 4 = 240000\\)\n\\(4 \\cdot 100 \\cdot 8 = 3200\\)\n\\(2^4 = 16\\)\nAdding: \\(100000000 + 8000000 + 240000 + 3200 + 16 = 108243216\\).\n\\((102)^4 = 108243216\\)"
+  },
+  {
+    "id": "004c5d71-124f-4237-a1a9-d9186c8d0f82",
+    "ref": "Ex 4.2 Q5(ii)",
+    "solution": "Write \\(1.1 = 1 + 0.1\\) and expand with \\(a = 1\\), \\(b = 0.1\\), \\(n = 5\\):\n\\((1+0.1)^5 = 1 + {}^{5}C_{1}(0.1) + {}^{5}C_{2}(0.1)^2 + {}^{5}C_{3}(0.1)^3 + {}^{5}C_{4}(0.1)^4 + (0.1)^5\\)\nWith \\({}^{5}C_{1} = 5\\), \\({}^{5}C_{2} = 10\\), \\({}^{5}C_{3} = 10\\), \\({}^{5}C_{4} = 5\\):\n\\(= 1 + 5(0.1) + 10(0.01) + 10(0.001) + 5(0.0001) + 0.00001\\)\n\\(= 1 + 0.5 + 0.1 + 0.01 + 0.0005 + 0.00001\\)\nThe expansion terminates, so this sum is exact.\n\\((1.1)^5 = 1.61051\\)"
+  },
+  {
+    "id": "5cc8b4fe-e7d6-4873-a01b-befaa1e7cccb",
+    "ref": "Ex 4.2 Q6(i)",
+    "solution": "Write \\(9.9 = 10 - 0.1\\) and expand with \\(a = 10\\), \\(b = 0.1\\), \\(n = 3\\):\n\\((10-0.1)^3 = 10^3 - {}^{3}C_{1}(10)^2(0.1) + {}^{3}C_{2}(10)(0.1)^2 - (0.1)^3\\)\nWith \\({}^{3}C_{1} = {}^{3}C_{2} = 3\\):\n\\(= 1000 - 3(100)(0.1) + 3(10)(0.01) - 0.001\\)\n\\(= 1000 - 30 + 0.3 - 0.001\\)\nThe expansion terminates, so this sum is exact.\n\\((9.9)^3 = 970.299\\)"
+  },
+  {
+    "id": "1e10276f-691e-48fb-9740-5f31928a1ffa",
+    "ref": "Ex 4.2 Q6(ii)",
+    "solution": "Write \\(0.9 = 1 - 0.1\\) and expand with \\(a = 1\\), \\(b = 0.1\\), \\(n = 4\\):\n\\((1-0.1)^4 = 1 - {}^{4}C_{1}(0.1) + {}^{4}C_{2}(0.1)^2 - {}^{4}C_{3}(0.1)^3 + (0.1)^4\\)\nWith \\({}^{4}C_{1} = 4\\), \\({}^{4}C_{2} = 6\\), \\({}^{4}C_{3} = 4\\):\n\\(= 1 - 4(0.1) + 6(0.01) - 4(0.001) + 0.0001\\)\n\\(= 1 - 0.4 + 0.06 - 0.004 + 0.0001\\)\nThe expansion terminates, so this sum is exact.\n\\((0.9)^4 = 0.6561\\)"
+  },
+  {
+    "id": "22221bc1-6ad4-4b19-865d-230373d4b66e",
+    "ref": "Ex 4.2 Q7(i)",
+    "solution": "The coefficients \\(1, -4, 6, -4, 1\\) are \\({}^{4}C_{0}, -{}^{4}C_{1}, {}^{4}C_{2}, -{}^{4}C_{3}, {}^{4}C_{4}\\), and the powers of \\((x+1)\\) fall from \\(4\\) to \\(0\\) while those of \\((x-1)\\) rise from \\(0\\) to \\(4\\).\nSo the expression is \\((a-b)^4\\) with \\(a = x+1\\) and \\(b = x-1\\):\n\\((a-b)^4 = \\left[(x+1) - (x-1)\\right]^4 = 2^4\\)\nThe value is \\(16\\)."
+  },
+  {
+    "id": "94e4c1af-f1d3-4d6d-8aae-0841040a52cc",
+    "ref": "Ex 4.2 Q7(ii)",
+    "solution": "The coefficients \\(1, 4, 6, 4, 1\\) are \\({}^{4}C_{0}, {}^{4}C_{1}, {}^{4}C_{2}, {}^{4}C_{3}, {}^{4}C_{4}\\), all positive, and the powers of \\((2x-1)\\) fall from \\(4\\) to \\(0\\) while those of \\((3-2x)\\) rise from \\(0\\) to \\(4\\).\nSo the expression is \\((a+b)^4\\) with \\(a = 2x-1\\) and \\(b = 3-2x\\):\n\\((a+b)^4 = \\left[(2x-1) + (3-2x)\\right]^4 = 2^4\\)\nThe value is \\(16\\)."
+  },
+  {
+    "id": "fb824903-ac56-4f35-95b5-2ca21f92e372",
+    "ref": "Ex 4.2 Q8",
+    "solution": "Write \\(1.02 = 1 + 0.02\\) and expand with \\(a = 1\\), \\(b = 0.02\\), \\(n = 6\\):\n\\((1+0.02)^6 = 1 + {}^{6}C_{1}(0.02) + {}^{6}C_{2}(0.02)^2 + {}^{6}C_{3}(0.02)^3 + {}^{6}C_{4}(0.02)^4 + \\cdots\\)\nWith \\({}^{6}C_{1} = 6\\), \\({}^{6}C_{2} = 15\\), \\({}^{6}C_{3} = 20\\), \\({}^{6}C_{4} = 15\\):\n\\(= 1 + 6(0.02) + 15(0.0004) + 20(0.000008) + 15(0.00000016) + \\cdots\\)\n\\(= 1 + 0.12 + 0.006 + 0.00016 + 0.0000024 + \\cdots\\)\nThe remaining two terms are \\(0.0000000192\\) and \\(0.000000000064\\), far below the fourth decimal place, so they may be dropped.\nSum of the terms kept \\(= 1.1261624\\), which rounds to \\(1.1262\\).\nThe exact value is \\(1.126162419264\\), so the fourth decimal place is confirmed as \\(2\\); note that stopping one term earlier, at \\(1 + 0.12 + 0.006 = 1.126\\), would give the wrong fourth decimal.\n\\((1.02)^6 = 1.1262\\) correct to four decimal places."
+  },
+  {
+    "id": "e0392365-bb59-4a61-be4b-d07638aed557",
+    "ref": "Ex 4.2 Q9",
+    "solution": "Write \\(1.01 = 1 + 0.01\\) and expand with \\(a = 1\\), \\(b = 0.01\\), \\(n = 5\\):\n\\((1+0.01)^5 = 1 + {}^{5}C_{1}(0.01) + {}^{5}C_{2}(0.01)^2 + {}^{5}C_{3}(0.01)^3 + \\cdots\\)\nWith \\({}^{5}C_{1} = 5\\), \\({}^{5}C_{2} = 10\\), \\({}^{5}C_{3} = 10\\):\n\\(= 1 + 5(0.01) + 10(0.0001) + 10(0.000001) + \\cdots\\)\n\\(= 1 + 0.05 + 0.001 + 0.00001 + \\cdots\\)\nThe remaining terms are \\(0.00000005\\) and \\(0.0000000001\\), far below the third decimal place.\nSum of the terms kept \\(= 1.05101\\), which rounds to \\(1.051\\).\nThe exact value is \\(1.0510100501\\), so the third decimal place is confirmed as \\(1\\).\n\\((1.01)^5 = 1.051\\) correct to three decimal places."
+  },
+  {
+    "id": "3245093d-ea09-444f-babc-9404dd95cd51",
+    "ref": "Ex 4.2 Q10",
+    "solution": "Write \\(0.9 = 1 - 0.1\\) and expand with \\(a = 1\\), \\(b = 0.1\\), \\(n = 6\\):\n\\((1-0.1)^6 = 1 - {}^{6}C_{1}(0.1) + {}^{6}C_{2}(0.1)^2 - {}^{6}C_{3}(0.1)^3 + {}^{6}C_{4}(0.1)^4 - {}^{6}C_{5}(0.1)^5 + (0.1)^6\\)\nWith \\({}^{6}C_{1} = {}^{6}C_{5} = 6\\), \\({}^{6}C_{2} = {}^{6}C_{4} = 15\\), \\({}^{6}C_{3} = 20\\):\n\\(= 1 - 6(0.1) + 15(0.01) - 20(0.001) + 15(0.0001) - 6(0.00001) + 0.000001\\)\n\\(= 1 - 0.6 + 0.15 - 0.02 + 0.0015 - 0.00006 + 0.000001\\)\n\\(= 0.531441\\)\nThe expansion terminates, so this value is exact; rounded, the fourth decimal place is \\(4\\).\nNote that the small terms cannot be dropped here: stopping after \\(+0.0015\\) gives \\(0.5315\\), which is wrong at the fourth decimal place, and the \\(-0.00006\\) term is what brings it down to \\(0.5314\\).\n\\((0.9)^6 = 0.5314\\) correct to four decimal places."
+  }
+]

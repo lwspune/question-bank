@@ -225,6 +225,32 @@ select count(*) filter (where solution like '[Textbook%') from questions where s
 `apply-errata` is idempotent (it skips a solution already starting with `[`), so the repair
 is simply to re-run it.
 
+**5a-bis. `apply-errata.ts` MIRRORS INTO THE FIRST MATCHING FILE AND STOPS, so file ORDER
+decides where a bracket lands.** Fixed 2026-08-16, after it had already fired on three
+chapters. For an exercise-subjective row TWO source files hold the ref — the transcription
+band fragment, which has **no `solution` key** (exercise answers are authored later), and the
+authored `*.solutions.json`, which does. In `readdirSync` order `<id>.band-a.json` sorts
+before `<id>.ex-6.solutions.json`, so the applier **created** a `solution` field on the band
+row holding the bracket ALONE and never touched the real one. Two ways that bites: the
+authored solution keeps no record of the bracket, and a later re-commit would read the band's
+bracket-only field as that question's entire model answer. `*.solutions.json` files are now
+ranked first. Same defect and same fix as `scripts/mh-sb-9`; this pipeline had never taken it.
+
+**An MCQ row is the legitimate create-the-field case** — it has no `*.solutions.json` entry at
+all, so the band fragment IS its only home. A repair that moves every bracket out of the band
+files is therefore WRONG; classify by whether a solutions file owns the ref (6 of the 12
+affected rows in that batch were MCQs and correctly stayed put).
+
+**5d-bis. A PROBE MANGLED BY THE SHELL MANUFACTURES FALSE DEFECTS AS READILY AS IT HIDES REAL
+ONES.** Five separate agents in the 2026-08-16 batch had a hygiene probe written through a
+heredoc / `python -c` / `node -e` report a CLEAN file as double-escaped; one nearly "repaired"
+29 correct rows, and another had its script clobbered by a concurrent agent sharing `/c/tmp`
+and unknowingly ran a different chapter's checker against its own file. Two rules: **write
+probes to a FILE** (use `chr(92)` for backslashes so no escaping layer can reach them), and
+**put per-agent scratch in the session scratchpad, never a shared tmp**. The corollary is what
+matters — when a probe and the data disagree, suspect the probe first; on this book it has
+been the probe every time.
+
 **5d. HAND-AUTHORED JSON IS DOUBLE-ESCAPED SO RELIABLY THAT BOTH APPLIERS NOW REFUSE IT.**
 Writing an errata bracket or a solution that quotes the book's own words, the natural thing to
 type for an inner quote is `\\"` — which JSON-decodes to a *literal backslash then a quote*, so
@@ -300,14 +326,40 @@ gate. So the regime for solved examples is:
 A cross-check agent flagged this scope gap itself on Limits, from a row-count mismatch in its own
 brief. Give every gate the total it should expect, so a shortfall is visible to it.
 
+**6b. WHEN THE CHAPTER AND THE KEY DISAGREE ABOUT AN EXERCISE *NUMBER*, FOLLOW WHICHEVER IS
+INTERNALLY CONTIGUOUS — and check it per chapter, because this book has gone both ways.**
+Three chapters have now printed an exercise-numbering disagreement, and guessing a house rule
+from any one of them gets another wrong:
+
+| chapter | the page says | the key says | who is right | ref used |
+|---|---|---|---|---|
+| Ch.7 Limits (P2) | `7.1`…`7.7`, contiguous | `7.1`…`7.6` then **`7.8`** | the CHAPTER | `Ex 7.7 Q<n>` |
+| Ch.7 Conic Sections (P1) | `7.1`, `7.2`, `7.3`, contiguous | `7.1`, `7.2`, **`7.4`**, no `7.3` | the CHAPTER | `Ex 7.3 Q<n>` |
+| Ch.6 Functions (P2) | Ex 6.1 prints **two** questions numbered `14)` | numbers them 13, 14, 15 and stays aligned to the end | the KEY | `Ex 6.1 Q13` |
+
+Settle it by CONTENT, never by which source looks more authoritative: match the key's answers
+against the questions they must belong to. Conic Sections' "Exercise 7.4" block answers *length of
+transverse axis, conjugate axis, eccentricity, foci* over ten sub-items (i)–(x), which is the
+chapter's Ex 7.3 Q1(i)–(x) exactly — and the chapter contains no 7.4 anywhere. **Tell the agent
+the resolved number, or it will hunt a block that does not exist.**
+
 ## Book defects recorded so far
 - The Part-1/Part-2 answer sections misspell three of their own headers:
   `DETERMINANTS AND MARTICES`, `PERMUTIONS AND COMBINATIONS`, `MISECLLANEOUS EXERCISE`.
   Navigation-only; do not carry those spellings into chapter names.
-- Part 2 Ch.7 Limits prints `EXERCISE 7.6` then `7.8` with no `7.7` (visible in the book's own
-  answers section) — a printed numbering gap, not a transcription miss.
+- **Part 2 Ch.7 Limits** — the CHAPTER is coherent (`7.1`…`7.7`); the ANSWERS SECTION labels that
+  final block `EXERCISE 7.8` and never prints `7.7`. *(This bullet had the polarity BACKWARDS
+  until 2026-08-16 — it read as though the chapter skipped 7.7. `config.ts` carries the
+  correction and the evidence; see rule 6b above.)*
+- **Part 1 Ch.7 Conic Sections** — same shape: the chapter prints `7.1`, `7.2`, `7.3`; the answers
+  section keys `7.1`, `7.2`, `7.4` and never prints a `7.3`.
 - Publisher filename typos kept verbatim in `config.ts`: `Ch_04_Determinent_Matrices.pdf`,
   `Ch_07_Conics_Section.pdf`, `Ch_09_Diffrentiation.pdf`.
+- **Part 2 Ch.4** is ingested as **binomial only** and its DB chapter is named `Binomial Theorem`,
+  not the book's "Methods of Induction and Binomial Theorem" — the one deliberate divergence from
+  rule 5. Induction has zero PYQ weight in every exam bank; binomial is a live chapter in three.
+  `MISCELLANEOUS - 4` is shared, so its part (II) is ingested from `Q4` (Q1–Q3 are induction) with
+  the book's numbering kept. `EXERCISE 4.5` is all proofs and is correctly unkeyed. See `config.ts`.
 
 ## Not applicable here
 `audit-grounding.ts` and the HUMANITIES briefs from `mh-sb-9` are deliberately NOT copied —

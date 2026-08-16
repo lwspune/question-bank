@@ -1,0 +1,118 @@
+[
+  {
+    "id": "62a7e018-a85d-4d6e-8a50-4cc11d48ce55",
+    "ref": "Ex 4.3 Q1(i)",
+    "solution": "Here \\(a=2x^{2}\\), \\(b=\\frac{3}{2x}\\), \\(n=8\\), so the general term is \\(t_{r+1}={}^{8}C_{r}\\left(2x^{2}\\right)^{8-r}\\left(\\frac{3}{2x}\\right)^{r}\\).\nFor the \\(3^{\\text{rd}}\\) term, \\(r=2\\).\n\\(t_{3}={}^{8}C_{2}\\left(2x^{2}\\right)^{6}\\left(\\frac{3}{2x}\\right)^{2}=28\\cdot 64x^{12}\\cdot\\frac{9}{4x^{2}}\\)\n\\(=28\\cdot 64\\cdot\\frac{9}{4}\\cdot x^{10}\\)\nThe \\(3^{\\text{rd}}\\) term is \\(4032x^{10}\\)."
+  },
+  {
+    "id": "4b2eeb9c-74aa-46a4-85a3-bcb6f69abd65",
+    "ref": "Ex 4.3 Q1(ii)",
+    "solution": "The general term is \\(t_{r+1}={}^{11}C_{r}\\left(x^{2}\\right)^{11-r}\\left(-\\frac{4}{x^{3}}\\right)^{r}\\).\nFor the \\(5^{\\text{th}}\\) term, \\(r=4\\).\n\\(t_{5}={}^{11}C_{4}\\left(x^{2}\\right)^{7}\\left(-\\frac{4}{x^{3}}\\right)^{4}=330\\cdot x^{14}\\cdot\\frac{256}{x^{12}}\\)\n\\(=330\\cdot 256\\cdot x^{2}\\)\nThe \\(5^{\\text{th}}\\) term is \\(84480x^{2}\\)."
+  },
+  {
+    "id": "e64aef17-1663-4b90-b3eb-f8a844e1523a",
+    "ref": "Ex 4.3 Q1(iii)",
+    "solution": "The general term is \\(t_{r+1}={}^{9}C_{r}\\left(\\frac{4x}{5}\\right)^{9-r}\\left(-\\frac{5}{2x}\\right)^{r}\\).\nFor the \\(7^{\\text{th}}\\) term, \\(r=6\\), which is even, so the sign is positive.\n\\(t_{7}={}^{9}C_{6}\\left(\\frac{4x}{5}\\right)^{3}\\left(-\\frac{5}{2x}\\right)^{6}=84\\cdot\\frac{64x^{3}}{125}\\cdot\\frac{15625}{64x^{6}}\\)\n\\(=84\\cdot 125\\cdot\\frac{1}{x^{3}}\\)\nThe \\(7^{\\text{th}}\\) term is \\(\\frac{10500}{x^{3}}\\)."
+  },
+  {
+    "id": "6313d3e3-8465-42a7-b7fd-66c1155868f6",
+    "ref": "Ex 4.3 Q1(iv)",
+    "solution": "The general term is \\(t_{r+1}={}^{12}C_{r}\\left(\\frac{1}{3}\\right)^{12-r}\\left(a^{2}\\right)^{r}\\).\nFor the \\(9^{\\text{th}}\\) term, \\(r=8\\).\n\\(t_{9}={}^{12}C_{8}\\left(\\frac{1}{3}\\right)^{4}\\left(a^{2}\\right)^{8}=495\\cdot\\frac{1}{81}\\cdot a^{16}\\)\nThe \\(9^{\\text{th}}\\) term is \\(\\frac{55a^{16}}{9}\\)."
+  },
+  {
+    "id": "65477f93-f39c-4843-937a-d6c10c087a19",
+    "ref": "Ex 4.3 Q1(v)",
+    "solution": "The general term is \\(t_{r+1}={}^{13}C_{r}\\left(3a\\right)^{13-r}\\left(\\frac{4}{a}\\right)^{r}\\).\nFor the \\(10^{\\text{th}}\\) term, \\(r=9\\).\n\\(t_{10}={}^{13}C_{9}\\left(3a\\right)^{4}\\left(\\frac{4}{a}\\right)^{9}={}^{13}C_{9}\\cdot 3^{4}a^{4}\\cdot\\frac{4^{9}}{a^{9}}\\)\nSince \\({}^{13}C_{9}=715\\), the numerical value is \\(715\\cdot 81\\cdot 262144=15182069760\\).\nThe \\(10^{\\text{th}}\\) term is \\(\\frac{{}^{13}C_{9}\\cdot 3^{4}\\cdot 4^{9}}{a^{5}}=\\frac{15182069760}{a^{5}}\\)."
+  },
+  {
+    "id": "8c700fdb-a646-499c-a468-2def82af705c",
+    "ref": "Ex 4.3 Q2(i)",
+    "solution": "The general term is \\(t_{r+1}={}^{9}C_{r}\\left(x^{2}\\right)^{9-r}\\left(\\frac{3\\sqrt{2}}{x}\\right)^{r}={}^{9}C_{r}\\left(3\\sqrt{2}\\right)^{r}x^{18-2r-r}\\).\nCollecting the power of \\(x\\), the general term carries \\(x^{18-3r}\\). For \\(x^{3}\\), set \\(18-3r=3\\), so \\(r=5\\).\nCoefficient \\(={}^{9}C_{5}\\left(3\\sqrt{2}\\right)^{5}=126\\cdot 3^{5}\\cdot\\left(\\sqrt{2}\\right)^{5}=126\\cdot 243\\cdot 4\\sqrt{2}\\)\nThe coefficient of \\(x^{3}\\) is \\(122472\\sqrt{2}\\)."
+  },
+  {
+    "id": "7cd24ee1-e640-48aa-911e-fb4df8b9831c",
+    "ref": "Ex 4.3 Q2(ii)",
+    "solution": "The general term is \\(t_{r+1}={}^{8}C_{r}\\left(2x^{5}\\right)^{8-r}\\left(-\\frac{5}{x^{3}}\\right)^{r}={}^{8}C_{r}\\,2^{8-r}(-5)^{r}x^{40-5r-3r}\\).\nCollecting the power of \\(x\\), the general term carries \\(x^{40-8r}\\). For \\(x^{8}\\), set \\(40-8r=8\\), so \\(r=4\\).\nCoefficient \\(={}^{8}C_{4}\\cdot 2^{4}\\cdot(-5)^{4}=70\\cdot 16\\cdot 625\\)\nThe coefficient of \\(x^{8}\\) is \\(700000\\)."
+  },
+  {
+    "id": "3fb26802-23d2-44a5-926b-9cf0a202d23b",
+    "ref": "Ex 4.3 Q2(iii)",
+    "solution": "The general term is \\(t_{r+1}={}^{18}C_{r}\\left(\\frac{1}{x}\\right)^{18-r}\\left(x^{2}\\right)^{r}={}^{18}C_{r}\\,x^{-(18-r)+2r}\\).\nCollecting the power of \\(x\\), the general term carries \\(x^{3r-18}\\). For \\(x^{9}\\), set \\(3r-18=9\\), so \\(r=9\\).\nCoefficient \\(={}^{18}C_{9}\\)\nThe coefficient of \\(x^{9}\\) is \\(48620\\)."
+  },
+  {
+    "id": "68466d6b-a2dd-48ea-9f48-746a6eb6395e",
+    "ref": "Ex 4.3 Q2(iv)",
+    "solution": "The general term is \\(t_{r+1}={}^{5}C_{r}\\,x^{5-r}\\left(-\\frac{1}{2x}\\right)^{r}={}^{5}C_{r}\\left(-\\frac{1}{2}\\right)^{r}x^{5-r-r}\\).\nCollecting the power of \\(x\\), the general term carries \\(x^{5-2r}\\). For \\(x^{-3}\\), set \\(5-2r=-3\\), so \\(r=4\\).\nCoefficient \\(={}^{5}C_{4}\\left(-\\frac{1}{2}\\right)^{4}=5\\cdot\\frac{1}{16}\\)\nThe coefficient of \\(x^{-3}\\) is \\(\\frac{5}{16}\\)."
+  },
+  {
+    "id": "0f99cf4d-7ca1-4b58-a620-d03c1cdc1a62",
+    "ref": "Ex 4.3 Q2(v)",
+    "solution": "The general term is \\(t_{r+1}={}^{15}C_{r}\\left(x^{3}\\right)^{15-r}\\left(-\\frac{1}{2x^{2}}\\right)^{r}={}^{15}C_{r}\\left(-\\frac{1}{2}\\right)^{r}x^{45-3r-2r}\\).\nCollecting the power of \\(x\\), the general term carries \\(x^{45-5r}\\). For \\(x^{-20}\\), set \\(45-5r=-20\\), so \\(r=13\\).\nCoefficient \\(={}^{15}C_{13}\\left(-\\frac{1}{2}\\right)^{13}=105\\cdot\\left(-\\frac{1}{8192}\\right)\\)\nThe coefficient of \\(x^{-20}\\) is \\(-\\frac{105}{8192}\\)."
+  },
+  {
+    "id": "c121b0db-daa6-45d7-bcdb-8708f46f50f3",
+    "ref": "Ex 4.3 Q3(i)",
+    "solution": "The general term is \\(t_{r+1}={}^{9}C_{r}\\left(2x\\right)^{9-r}\\left(\\frac{1}{3x^{2}}\\right)^{r}={}^{9}C_{r}\\,2^{9-r}\\left(\\frac{1}{3}\\right)^{r}x^{9-r-2r}\\).\nCollecting the power of \\(x\\), the general term carries \\(x^{9-3r}\\). For the term independent of \\(x\\), set \\(9-3r=0\\), so \\(r=3\\).\n\\(t_{4}={}^{9}C_{3}\\cdot 2^{6}\\cdot\\frac{1}{27}=84\\cdot\\frac{64}{27}=\\frac{5376}{27}\\)\nThe constant term is \\(\\frac{1792}{9}\\)."
+  },
+  {
+    "id": "8a02f346-ac2d-4dfa-b8b9-89c5ef3bbf94",
+    "ref": "Ex 4.3 Q3(ii)",
+    "solution": "The general term is \\(t_{r+1}={}^{15}C_{r}\\,x^{15-r}\\left(-\\frac{2}{x^{2}}\\right)^{r}={}^{15}C_{r}(-2)^{r}x^{15-r-2r}\\).\nCollecting the power of \\(x\\), the general term carries \\(x^{15-3r}\\). For the term independent of \\(x\\), set \\(15-3r=0\\), so \\(r=5\\).\n\\(t_{6}={}^{15}C_{5}(-2)^{5}=3003\\cdot(-32)\\)\nThe constant term is \\(-96096\\)."
+  },
+  {
+    "id": "39ad4d57-a45a-436b-b984-655ed54601b9",
+    "ref": "Ex 4.3 Q3(iii)",
+    "solution": "The general term is \\(t_{r+1}={}^{10}C_{r}\\left(\\sqrt{x}\\right)^{10-r}\\left(-\\frac{3}{x^{2}}\\right)^{r}={}^{10}C_{r}(-3)^{r}x^{\\frac{10-r}{2}-2r}\\).\nFor the term independent of \\(x\\), set \\(\\frac{10-r}{2}-2r=0\\), that is \\(10-r-4r=0\\), so \\(r=2\\).\n\\(t_{3}={}^{10}C_{2}(-3)^{2}=45\\cdot 9\\)\nThe constant term is \\(405\\)."
+  },
+  {
+    "id": "53b2a8af-2e12-402c-96ae-26b36cf98faf",
+    "ref": "Ex 4.3 Q3(iv)",
+    "solution": "[Textbook misprint in the stem, answer-affecting: the stem and the printed key contradict each other. As printed the expression is \\(\\left(x^2 - \\dfrac{1}{x}\\right)^8\\), whose general term is \\({}^{8}C_{r}\\left(x^2\\right)^{8-r}\\left(-\\dfrac{1}{x}\\right)^{r}\\), carrying \\(x^{16-3r}\\). Setting \\(16 - 3r = 0\\) gives \\(r = \\dfrac{16}{3}\\), not an integer, so NO term is free of \\(x\\) — the exponents run \\(16, 13, 10, 7, 4, 1, -2, -5, -8\\). The key gives \\(84\\), which is exactly \\({}^{9}C_{6}\\), the constant term of the NINTH power. The printed index was checked at high zoom and our transcription is faithful: part (iv) prints a closed-loop \\(8\\) while part (v) directly below it prints an open-tailed \\(9\\) in the same crop, so the typesetting distinguishes the two digits. With index \\(9\\) the working is \\(18 - 3r = 0\\), \\(r = 6\\), \\(t_{7} = {}^{9}C_{6} = 84\\), which is the printed key.]\n\nThe general term is \\(t_{r+1}={}^{8}C_{r}\\left(x^{2}\\right)^{8-r}\\left(-\\frac{1}{x}\\right)^{r}={}^{8}C_{r}(-1)^{r}x^{16-2r-r}\\).\nCollecting the power of \\(x\\), the general term carries \\(x^{16-3r}\\). For a term independent of \\(x\\), set \\(16-3r=0\\), which gives \\(r=\\frac{16}{3}\\).\nBut \\(r\\) must be an integer with \\(0\\le r\\le 8\\), and \\(\\frac{16}{3}\\) is not an integer, so no value of \\(r\\) makes the power of \\(x\\) zero. Indeed the powers occurring are \\(16,13,10,7,4,1,-2,-5,-8\\), and \\(0\\) is not among them.\nThere is no constant term in this expansion.",
+    "_note": "BOOK DEFECT (stem and key disagree). The printed key answers 84 for this part, but 84 is \\({}^{9}C_{6}\\), which is the constant term of \\(\\left(x^{2}-\\frac{1}{x}\\right)^{9}\\), not of the printed 8th power. Our stem is FAITHFUL: the exponent was read at high zoom on out/binomial-theorem-11/p-11.png (printed p.80), where part (iv) prints a closed-loop 8 while part (v) directly below prints an open-tailed 9 in the same crop, so the two glyphs are distinguishable and (iv) is unambiguously 8. Verified by full sympy expansion: with index 8 the exponents are all congruent to 1 mod 3 and the constant term is 0; with index 9 the working is 18-3r=0, r=6, t7 = 9C6 = 84, exactly the printed key. So either the book's stem should read 9 or its key is stale. Answered as printed; the maintainer should adjudicate."
+  },
+  {
+    "id": "544e32eb-9aa0-4cfb-aec7-25404e7f08d8",
+    "ref": "Ex 4.3 Q3(v)",
+    "solution": "The general term is \\(t_{r+1}={}^{9}C_{r}\\left(2x^{2}\\right)^{9-r}\\left(-\\frac{5}{x}\\right)^{r}={}^{9}C_{r}\\,2^{9-r}(-5)^{r}x^{18-2r-r}\\).\nCollecting the power of \\(x\\), the general term carries \\(x^{18-3r}\\). For the term independent of \\(x\\), set \\(18-3r=0\\), so \\(r=6\\).\n\\(t_{7}={}^{9}C_{6}\\cdot 2^{3}\\cdot(-5)^{6}=84\\cdot 8\\cdot 15625\\)\nThe constant term is \\(10500000\\)."
+  },
+  {
+    "id": "cecf0da4-6592-4b50-8867-c237d6fb8957",
+    "ref": "Ex 4.3 Q4(i)",
+    "solution": "Here \\(n=12\\) is even, so the expansion has only ONE middle term, namely the \\(\\left(\\frac{n}{2}+1\\right)^{\\text{th}}=7^{\\text{th}}\\) term, given by \\(r=6\\).\n\\(t_{7}={}^{12}C_{6}\\left(\\frac{x}{y}\\right)^{6}\\left(\\frac{y}{x}\\right)^{6}=924\\cdot\\frac{x^{6}}{y^{6}}\\cdot\\frac{y^{6}}{x^{6}}\\)\nThe middle term is \\(924\\)."
+  },
+  {
+    "id": "b67c1c4a-43ee-4e02-a92c-e54174ae2d06",
+    "ref": "Ex 4.3 Q4(ii)",
+    "solution": "Here \\(n=7\\) is odd, so the expansion has TWO middle terms, namely the \\(\\left(\\frac{n+1}{2}\\right)^{\\text{th}}=4^{\\text{th}}\\) and the \\(\\left(\\frac{n+3}{2}\\right)^{\\text{th}}=5^{\\text{th}}\\) terms, given by \\(r=3\\) and \\(r=4\\).\n\\(t_{4}={}^{7}C_{3}\\left(x^{2}\\right)^{4}\\left(\\frac{1}{x}\\right)^{3}=35\\cdot\\frac{x^{8}}{x^{3}}=35x^{5}\\)\n\\(t_{5}={}^{7}C_{4}\\left(x^{2}\\right)^{3}\\left(\\frac{1}{x}\\right)^{4}=35\\cdot\\frac{x^{6}}{x^{4}}=35x^{2}\\)\nThe middle terms are \\(35x^{5}\\) and \\(35x^{2}\\)."
+  },
+  {
+    "id": "8b005e99-e7fb-4b19-8715-3365444525f2",
+    "ref": "Ex 4.3 Q4(iii)",
+    "solution": "Here \\(n=8\\) is even, so the expansion has only ONE middle term, namely the \\(\\left(\\frac{n}{2}+1\\right)^{\\text{th}}=5^{\\text{th}}\\) term, given by \\(r=4\\).\n\\(t_{5}={}^{8}C_{4}\\left(x^{2}\\right)^{4}\\left(-\\frac{2}{x}\\right)^{4}=70\\cdot x^{8}\\cdot\\frac{16}{x^{4}}\\)\nThe middle term is \\(1120x^{4}\\)."
+  },
+  {
+    "id": "a1396b02-e2d6-4aca-8375-7d4e1c0fc619",
+    "ref": "Ex 4.3 Q4(iv)",
+    "solution": "Here \\(n=10\\) is even, so the expansion has only ONE middle term, namely the \\(\\left(\\frac{n}{2}+1\\right)^{\\text{th}}=6^{\\text{th}}\\) term, given by \\(r=5\\).\n\\(t_{6}={}^{10}C_{5}\\left(\\frac{x}{a}\\right)^{5}\\left(-\\frac{a}{x}\\right)^{5}=252\\cdot(-1)\\cdot\\frac{x^{5}}{a^{5}}\\cdot\\frac{a^{5}}{x^{5}}\\)\nThe middle term is \\(-252\\)."
+  },
+  {
+    "id": "a5eff5cf-569d-451c-a339-e6875bf60722",
+    "ref": "Ex 4.3 Q4(v)",
+    "solution": "Here \\(n=11\\) is odd, so the expansion has TWO middle terms, namely the \\(\\left(\\frac{n+1}{2}\\right)^{\\text{th}}=6^{\\text{th}}\\) and the \\(\\left(\\frac{n+3}{2}\\right)^{\\text{th}}=7^{\\text{th}}\\) terms, given by \\(r=5\\) and \\(r=6\\).\n\\(t_{6}={}^{11}C_{5}\\left(x^{4}\\right)^{6}\\left(-\\frac{1}{x^{3}}\\right)^{5}=462\\cdot x^{24}\\cdot\\left(-\\frac{1}{x^{15}}\\right)=-462x^{9}\\)\n\\(t_{7}={}^{11}C_{6}\\left(x^{4}\\right)^{5}\\left(-\\frac{1}{x^{3}}\\right)^{6}=462\\cdot x^{20}\\cdot\\frac{1}{x^{18}}=462x^{2}\\)\nThe middle terms are \\(-462x^{9}\\) and \\(462x^{2}\\)."
+  },
+  {
+    "id": "4e9dd4a5-5175-492b-b898-464d20c51eca",
+    "ref": "Ex 4.3 Q5",
+    "solution": "In \\((k+x)^{8}\\) the general term is \\(t_{r+1}={}^{8}C_{r}\\,k^{8-r}x^{r}\\).\nTaking \\(r=5\\), the coefficient of \\(x^{5}\\) is \\({}^{8}C_{5}k^{3}=56k^{3}\\); taking \\(r=6\\), the coefficient of \\(x^{6}\\) is \\({}^{8}C_{6}k^{2}=28k^{2}\\).\nGiven \\(56k^{3}=10\\left(28k^{2}\\right)\\), so \\(56k^{3}=280k^{2}\\), that is \\(56k^{2}(k-5)=0\\).\nThe root \\(k=0\\) is rejected, since it makes both coefficients \\(0\\).\n\\(k=5\\)"
+  },
+  {
+    "id": "aac52e0f-fb72-4512-8dc7-becd81570bbb",
+    "ref": "Ex 4.3 Q6",
+    "solution": "In \\((3x+1)^{9}\\) the general term is \\(t_{r+1}={}^{9}C_{r}\\left(3x\\right)^{r}(1)^{9-r}={}^{9}C_{r}\\,3^{r}x^{r}\\), so the coefficient of \\(x^{r}\\) is \\({}^{9}C_{r}3^{r}\\).\nOn multiplying by \\((2-x)\\), a term in \\(x^{6}\\) arises in two ways: \\(2\\) times the \\(x^{6}\\) term, and \\(-x\\) times the \\(x^{5}\\) term.\nCoefficient of \\(x^{6}=2\\cdot{}^{9}C_{6}\\cdot 3^{6}-{}^{9}C_{5}\\cdot 3^{5}=2\\cdot 84\\cdot 729-126\\cdot 243=122472-30618\\)\nThe term containing \\(x^{6}\\) is \\(91854x^{6}\\)."
+  },
+  {
+    "id": "715800e5-bdae-4cb7-88a4-30a235948c71",
+    "ref": "Ex 4.3 Q7",
+    "solution": "The general term of \\((1+2x)^{m}\\) is \\(t_{r+1}={}^{m}C_{r}\\left(2x\\right)^{r}={}^{m}C_{r}\\,2^{r}x^{r}\\), so the coefficient of \\(x^{2}\\) is \\({}^{m}C_{2}\\cdot 2^{2}\\).\nGiven \\({}^{m}C_{2}\\cdot 4=112\\), so \\({}^{m}C_{2}=28\\), that is \\(\\frac{m(m-1)}{2}=28\\).\n\\(m^{2}-m-56=0\\), so \\((m-8)(m+7)=0\\).\nSince \\(m\\) is a positive integer, \\(m=-7\\) is rejected.\n\\(m=8\\)"
+  }
+]

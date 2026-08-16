@@ -93,9 +93,24 @@ async function main() {
   // bracket then lived only in the DB and the next re-commit would revert it.
   // Exclude the scratch/dump artifacts, which are regenerated and carry no truth.
   const SCRATCH = /\.(errata|topaper|mcq-blind|mcq-verify|review|xcheck|diagram-specs|solution-images)\.json$/;
-  const jsonFiles = readdirSync(DATA).filter(
-    (f) => f.startsWith(`${id}.`) && f.endsWith(".json") && !SCRATCH.test(f)
-  );
+  //
+  // ORDER IS LOAD-BEARING: authored `*.solutions.json` files are searched FIRST.
+  // The loop below stops at the first file it mirrors into, and for an
+  // exercise-subjective row TWO files can hold the ref — the transcription band
+  // fragment (which has NO `solution` key, since exercise answers are authored
+  // later) and the authored `*.solutions.json` (which does). In `readdirSync`
+  // order `<id>.band-a.json` sorts before `<id>.ex-6.solutions.json`, so the
+  // applier CREATED a solution field on the band row holding the bracket alone
+  // and never touched the real one. Two ways that bites: the authored solution
+  // keeps no record of the bracket, and a later re-commit would read the band's
+  // bracket-only field as that question's whole model answer.
+  // (An MCQ row is the legitimate create-the-field case — it has no
+  // `*.solutions.json` entry at all, so the band fragment IS its only home.)
+  // Same defect and same fix as `scripts/mh-sb-9`; this pipeline never took it.
+  const rank = (f: string) => (f.endsWith(".solutions.json") ? 0 : 1);
+  const jsonFiles = readdirSync(DATA)
+    .filter((f) => f.startsWith(`${id}.`) && f.endsWith(".json") && !SCRATCH.test(f))
+    .sort((a, b) => rank(a) - rank(b) || a.localeCompare(b));
 
   let applied = 0;
   let skipped = 0;

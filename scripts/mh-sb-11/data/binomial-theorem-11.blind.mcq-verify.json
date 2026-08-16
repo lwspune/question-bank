@@ -1,0 +1,72 @@
+[
+  {
+    "id": "07db6b80-d5b9-44fd-b4fe-3b398d3d6143",
+    "ref": "Misc I Q1",
+    "derived_answer": "B",
+    "why": "Odd-power-of-y terms cancel, leaving k = 0, 2, ..., 100, i.e. 51 terms; sympy expansion of (x+y)^100 + (x-y)^100 returns exactly 51 monomials.",
+    "matches_current": true
+  },
+  {
+    "id": "9e47c1cf-8d5a-4269-9d40-71a043df40fc",
+    "ref": "Misc I Q2",
+    "derived_answer": "C",
+    "why": "(1+x)^(2n) has 2n+1 terms, an odd count, so the single middle term is at position (2n+1+1)/2 = n+1 (checked for n = 1, 2, 3, 4).",
+    "matches_current": true
+  },
+  {
+    "id": "eabcac25-77fc-49a0-83e9-75ebcbfafd1e",
+    "ref": "Misc I Q3",
+    "derived_answer": "C",
+    "why": "General term C(10,r)(-2)^r x^(20-r); 20 - r = 16 gives r = 4, so the coefficient is C(10,4)(-2)^4 = 210*16 = 3360 (sympy expansion agrees).",
+    "matches_current": true
+  },
+  {
+    "id": "e95f672c-57df-4107-9252-24896b884b61",
+    "ref": "Misc I Q4",
+    "derived_answer": "A",
+    "why": "(x+1/x)^10 gives x^(10-2r); the 1 contributes r = 5 and the x^2 contributes r = 6, while -2x needs r = 5.5 and drops out, so the constant is C(10,5)+C(10,6) = 462 = C(11,5).",
+    "matches_current": true
+  },
+  {
+    "id": "3481401b-784c-43e5-8685-9fbc09cb7d8f",
+    "ref": "Misc I Q5",
+    "derived_answer": "A",
+    "why": "Even powers of x cancel in the difference, leaving only x^1, x^3, x^5, x^7 = 4 terms (sympy expansion returns exactly those four monomials).",
+    "matches_current": true
+  },
+  {
+    "id": "51707fd3-be1d-47a2-9751-e5eb1305f860",
+    "ref": "Misc I Q6",
+    "derived_answer": "D",
+    "why": "The full odd-index sum C(14,1)+...+C(14,13) = 2^13 = 8192; the listed sum stops at C(14,11), so subtract the missing C(14,13) = 14, giving 8178 = 2^13 - 14 (direct summation confirms 8178).",
+    "matches_current": true
+  },
+  {
+    "id": "366c43ac-72bf-4a90-9bac-246372175f02",
+    "ref": "Misc I Q7",
+    "derived_answer": "D",
+    "why": "The full even-index sum C(11,0)+...+C(11,10) = 2^10 = 1024; the listed sum omits C(11,0) = 1 and C(11,10) = 11, so it equals 1024 - 12 = 1012 = 2^10 - 12 (direct summation confirms 1012).",
+    "matches_current": true
+  },
+  {
+    "id": "a69b4070-308f-4a87-aab3-f8dcedffc9b8",
+    "ref": "Misc I Q8",
+    "derived_answer": "D",
+    "why": "(3x+2)^4 has 5 terms, so the middle is the 3rd: C(4,2)(3x)^2(2)^2 = 6*9*4 = 216 x^2, and 216 is the 3rd coefficient whether the expansion is read ascending or descending.",
+    "matches_current": true
+  },
+  {
+    "id": "fd157fca-eddd-4e1e-bc29-9bf11305ec75",
+    "ref": "Misc I Q9",
+    "derived_answer": "B",
+    "why": "T8 = T(7+1) = C(10,7) x^7, so the coefficient is C(10,7) = 120; option C is C(10,8) = 45, the off-by-one distractor, and is not equal to it.",
+    "matches_current": true
+  },
+  {
+    "id": "8d0ed6dc-facf-4aed-9d29-1b08b439829f",
+    "ref": "Misc I Q10",
+    "derived_answer": "D",
+    "why": "C(9,2)*3^7*a^2 = C(9,3)*3^6*a^3 gives 78732 a^2 = 61236 a^3, so a = 78732/61236 = 9/7 (the other root a = 0 is degenerate).",
+    "matches_current": true
+  }
+]

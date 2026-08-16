@@ -301,6 +301,29 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Structure mapped 2026-08-16 before dispatch. A SMALL, REGULAR chapter —
+  //    13pp, three exercises, one terminal Miscellaneous — so the default refs
+  //    (`Ex 6.M Q<n>`, `Misc I `, `Misc II `) apply with no collision.
+  //
+  //    1. THREE solved blocks, each following the sub-section it sits under:
+  //       p-01 (5 examples, after §6.1) · p-03..04 (3, after §6.2) · p-07..08
+  //       (3, after §6.3.4). 11 `Solution :` markers, all inside boxed blocks —
+  //       this chapter has NO theory-embedded worked example, so the §2b trap
+  //       does not apply here. Verified page by page.
+  //    2. "6.10" .. "6.14" ARE FIGURE CAPTIONS, NOT SECTIONS. A heading regex
+  //       reads `Fig. 6.11` + `Circles touching each other internally.` on p-12
+  //       as a numbered section and invents five that do not exist. The real
+  //       sections are 6.1, 6.2, 6.3 and 6.3.1-6.3.4, full stop. (Same trap as
+  //       the Class-9 books; p-11..p-12 is a "Let's Remember" summary spread of
+  //       two-circle configurations, which is theory and carries no question.)
+  //    3. MISC PART (II) USES THE `Q. 1` NUMBERING FORMAT — the Complex-Numbers
+  //       variant, dot BEFORE the number — while part (I) and every exercise use
+  //       `1)`. That is the form that silently reported ZERO keyed questions once
+  //       (README rule 2c); match all three forms.
+  //
+  //    Figures: 14, all theory. Three exercise pages sit above §6.3 theory that
+  //    cites Fig. 6.7-6.9, but no exercise or Miscellaneous QUESTION references a
+  //    figure — checked on every exercise page. No figure-attach.
   "circle-11": {
     id: "circle-11",
     chapterName: "Circle",
@@ -319,6 +342,67 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── THE SECOND-LARGEST CHAPTER IN THE BOOK at 39pp (only Determinants and
+  //    Matrices is bigger), and structurally it is THREE half-chapters sharing one
+  //    number: §7.1 Parabola (p-00..p-09) · §7.2 Ellipse (p-10..p-23) · §7.3
+  //    Hyperbola (p-24..p-35), each opening with its own "Let's Study" box and each
+  //    closed by its own exercise. One terminal MISCELLANEOUS - 7 covers all three.
+  //
+  //    1. THE PRINTED KEY MISLABELS THE THIRD EXERCISE, and the CHAPTER is the
+  //       coherent one. The chapter prints EXERCISE 7.1, 7.2, 7.3 contiguously and
+  //       contains NO 7.4 anywhere. The answers section keys 7.1, 7.2, **7.4** and
+  //       never prints a 7.3. Content settles it beyond doubt: the key's "7.4"
+  //       block answers "length of transverse axis, length of conjugate axis, the
+  //       eccentricity, co-ordinates of foci..." across ten sub-items (i)-(x),
+  //       which is chapter Ex 7.3 Q1(i)-(x) exactly — hyperbola work, and the
+  //       chapter's only hyperbola exercise.
+  //       REFS FOLLOW THE CHAPTER: `Ex 7.3 Q<n>`. THERE IS NO EXERCISE 7.4 TO
+  //       FIND, and an agent told to look for one will hunt a block that does not
+  //       exist. Record as an erratum against the answers section.
+  //       Note this is the SAME polarity as Ch.7 Limits (chapter contiguous, key
+  //       defective) and the OPPOSITE of Ch.6 Functions (page self-inconsistent,
+  //       key coherent) — so neither source outranks the other by default.
+  //       Whichever is internally contiguous is the one to follow, checked per
+  //       chapter.
+  //
+  //    2. SOLVED BLOCKS ARE PART BOXED, PART THEORY-EMBEDDED — the §2b trap is
+  //       live here. Banners appear on p-04, p-08, p-15, p-32 plus a SINGULAR
+  //       "SOLVED EXAMPLE" on p-21, but `Solution :` markers also sit on p-05,
+  //       p-06, p-18, p-21, p-22, p-28, p-29, p-33 and p-34. 24 markers total.
+  //       Plan bands from the marker scan and give the theory-embedded ones
+  //       sub-section-scoped refs (`7.1.9 SolvedEx.1`, `7.2.6 SolvedEx.1`, ...),
+  //       because each boxed block restarts at "Ex. 1)".
+  //
+  //    3. Figures: 31, the most of any chapter here — and ALL of them are theory
+  //       illustrations. NO exercise or Miscellaneous question cites a figure
+  //       (checked on every exercise page), so despite being the most visual
+  //       chapter in the book it needs NO figure-attach. Conic tracing is done
+  //       from the equation, not from a printed diagram.
+  //
+  //    KEY FLOORS (from the printed answers, idx 235-238):
+  //       Ex 7.1 -> Q19 · Ex 7.2 -> Q18 · Ex 7.3 -> Q10 (keyed under the wrong
+  //       label "7.4", see 1 above) · Misc II -> >=Q14.
+  //    4. **THE BOOK REPEATS TWO OF ITS OWN EXERCISE QUESTIONS VERBATIM IN THE
+  //       MISCELLANEOUS BLOCK**, so 181 transcribed rows commit as 179 and the
+  //       two `skipped` are CORRECT, not a defect:
+  //         `Misc II Q19` is word-for-word `Ex 7.2 Q8`  (8y + x = 17 touches
+  //                       x^2 + 4y^2 = 17; find the point of contact)
+  //         `Misc II Q20` is word-for-word `Ex 7.2 Q13` (tangents through P to
+  //                       4x^2 + 5y^2 = 20 with tan(t1) + tan(t2) = 2)
+  //       `content_hash` absorbed both. Same shape as the Class-9 History repeat
+  //       that dedup caught. Consequence to expect and NOT "fix": the /board
+  //       Miscellaneous block skips from Q18 to Q21, which is the book's own
+  //       duplication showing through, not a transcription miss.
+  //       (Unrelated and deliberately NOT deduped: `Ex 7.2 Q6` and `Ex 7.2 Q18`
+  //       are also the same question, but the book prints "slop" in one and
+  //       "slope" in the other — so their hashes differ and both ship. Do not
+  //       "correct" that typo: doing so would silently dedup one of them away.)
+  //
+  //    **MISCELLANEOUS PART (I) IS TWENTY MCQs**, keyed as two ten-cell tables:
+  //       1-10  `A C A C A B C C B B`
+  //       11-20 `C C B B B C B A C A`
+  //    That ties Determinants for the largest MCQ block in the book, and a
+  //    transcriber that stops at the first table ships only half of it.
   "conic-sections-11": {
     id: "conic-sections-11",
     chapterName: "Conic Sections",
@@ -591,17 +675,85 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
-  "induction-binomial-11": {
-    id: "induction-binomial-11",
-    chapterName: "Methods of Induction and Binomial Theorem",
+  // ── PARTIAL CHAPTER BY DESIGN — read this before "completing" it.
+  //
+  //    The BOOK prints one chapter, "Methods of Induction and Binomial Theorem",
+  //    whose §4.1 is mathematical induction and whose §4.2-§4.5 are the binomial
+  //    theorem. ONLY THE BINOMIAL HALF IS INGESTED (user's scope call, 2026-08-16),
+  //    and the DB chapter is therefore named "Binomial Theorem" rather than the
+  //    book's own chapter title — the one place in this pipeline where a chapter
+  //    name deliberately diverges from the printed one (rule 5 / mh-ssc-10-text).
+  //
+  //    WHY, so a later session does not "restore" the induction half as a gap:
+  //    Binomial Theorem is a live chapter in three exam banks (JEE Mains 165 PYQ,
+  //    NDA 54) while MATHEMATICAL INDUCTION HAS NO CHAPTER ANYWHERE IN THE BANK —
+  //    zero PYQ across every exam. The name matches both the content and what the
+  //    other banks already call it.
+  //
+  //    CONSEQUENCES, all three load-bearing:
+  //    1. `pages` is 5-17, not the whole file. §4.1 runs p-00..p-04 (EXERCISE 4.1
+  //       on p-04) and §4.2 Binomial Theorem opens on p-05. p-05 is rendered
+  //       because it carries the boundary itself — an agent must SEE where
+  //       induction stops. Nothing before p-05 is transcribed.
+  //    2. MISCELLANEOUS - 4 IS SHARED BETWEEN THE TWO HALVES and interleaves
+  //       them — it is NOT cleanly split into an induction prefix and a binomial
+  //       tail. Part (I) is 10 MCQs, all binomial. Part (II) runs Q1..Q26 and its
+  //       INDUCTION questions are **Q1, Q2, Q3 AND Q11** — Q11 ("Prove the
+  //       following by using by method of induction": the log power rule,
+  //       15^(2n-1)+1 divisible by 16, 5^2n - 2^2n divisible by 3) sits in the
+  //       middle of otherwise-binomial questions and has zero binomial content.
+  //       All four are SKIPPED. The first pass assumed "Q4 onward is binomial";
+  //       a transcription agent falsified that from the page and flagged it
+  //       rather than importing induction rows — do not "restore" Q11 as a gap.
+  //       So the shipped range is `Misc II Q4` … `Misc II Q26`, minus Q11.
+  //       **The refs KEEP THE BOOK'S NUMBERING** — the first row is `Misc II Q4`,
+  //       not `Q1` — because renumbering would break the step-6 diff against the
+  //       printed key. The key does not answer Q1-Q3 or Q11 either (it never
+  //       answers a proof), so the skips produce no gate noise.
+  //    3. EXERCISE 4.5 IS UNKEYED, AND THAT IS NOT A DEFECT. It is titled
+  //       "Show That" and is entirely proofs (`C0 + C1 + ... + C8 = 256`), and
+  //       this key never answers a proof. The key prints 4.1, 4.2, 4.3, 4.4 and
+  //       Miscellaneous, then stops. Do not read the gap as a finding.
+  //
+  //    4. BOOK DEFECT — **TWO CONSECUTIVE SECTIONS ARE BOTH NUMBERED 4.3** on
+  //       p-08's right column: "4.3 General term in expansion of (a+b)^n" and then
+  //       "4.3 Middle term (s) in the expansion of (a+b)^n:". The second is
+  //       presumably meant to be 4.4 (the book's real 4.4 is "Negative Index or
+  //       Fractional Index"). Confirmed at high zoom by two independent agents;
+  //       they are even typeset differently — the first puts its number in the
+  //       standard left-hand number column like 4.4 and 4.5 do, the second runs it
+  //       inline and ends with a colon.
+  //       **IT CAUSES NO REF COLLISION, so do NOT "fix" it with a `4.3b` prefix.**
+  //       The first 4.3 is theory only (a few lines on t_1, t_2, ... t_{r+1}) with
+  //       no worked example and no exercise, so there is exactly ONE solved block
+  //       between either heading and EXERCISE 4.3, and it belongs to the second.
+  //       A `4.3b` prefix would assert a block that does not exist and strand it
+  //       with no `Exercise 4.3b` to anchor to. Prefixes are `4.3` and `4.4` only.
+  //    5. `4.2 SolvedEx.5` IS AN "Ex. 5 (Activity)" whose printed solution is a
+  //       fill-in-the-blank scaffold — every substantive value is an empty box,
+  //       INCLUDING the final answer. Per the Ch.3 Indefinite Integration
+  //       precedent (a NUMBERED example gets its blanks completed so PUBLIC ships
+  //       a whole worked solution rather than a hole — as against Ch.8's UNNUMBERED
+  //       activity scaffolds, which are skipped), it is completed and ingested.
+  //       The question is (99)^4 = (100-1)^4; the expansion gives 96,059,601,
+  //       independently confirmed as 99^2 = 9801, 9801^2 = 96,059,601.
+  //       Refs across the block keep the book's numbering 1:1, so there is no gap.
+  //
+  //    Figures: exactly ONE in the whole chapter, and no exercise or Miscellaneous
+  //    question cites a figure — verified across every exercise page. No
+  //    figure-attach.
+  "binomial-theorem-11": {
+    id: "binomial-theorem-11",
+    chapterName: "Binomial Theorem",
     subjectName: "Mathematics",
-    sourceFile: "StateBoard_11_Maths__Methods_of_Induction_and_Binomial_Theorem.pdf",
+    sourceFile: "StateBoard_11_Maths__Binomial_Theorem.pdf",
     pdf: p2("Ch_04_Method_of_induction_Binomial_Theorem.pdf"),
+    pages: range(5, 17), // §4.2 onward — the induction half (p-00..p-04) is out of scope
     answersPdf: BOOK2,
     answerPages: range(212, 214),
-    note: "Maharashtra State Board (Class 11) — Methods of Induction and Binomial Theorem (Balbharati textbook, Part 2)",
+    note: "Maharashtra State Board (Class 11) — Binomial Theorem (Balbharati textbook, Part 2, chapter 4 §4.2-§4.5)",
     subtopics: [
-      "Principle of Mathematical Induction",
+      // "Principle of Mathematical Induction" deliberately ABSENT — see the note above.
       "Binomial Theorem for a Positive Integral Index",
       "General Term in the Expansion",
       "Binomial Theorem for a Negative or Fractional Index",
@@ -825,6 +977,80 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── THE LAST CHAPTER OF THE BOOK, and the leanest on exercises: 17pp carrying
+  //    only TWO numbered exercises (9.1, 9.2) plus Miscellaneous. Almost half the
+  //    chapter is worked theory.
+  //
+  //    1. THE §2b TRAP IS AT ITS SHARPEST HERE — `Solution :` markers sit on
+  //       p-01, p-02, p-03 and p-05, all BEFORE and BETWEEN the boxed SOLVED
+  //       EXAMPLES banners on p-04 and p-07. Those are §9.1.4's first-principle
+  //       derivations of the standard functions, embedded in the theory narrative.
+  //       15 markers against 3 banners: a banner scan sees a fifth of the chapter.
+  //       Theory-embedded blocks take sub-section-scoped refs (`9.1.4 SolvedEx.n`).
+  //    2. MISCELLANEOUS-9 SPLITS AS `I)` / `II)` — WITHOUT PARENTHESES, unlike
+  //       every other chapter's `(I)` / `(II)`. A `\(([IVX]+)\)` scan finds
+  //       nothing and reads the block as unsplit. Part I is 8 MCQs
+  //       ("Select the appropriate option"), part II is free-response
+  //       (differentiability at a point, find p and q, ...). The banner itself is
+  //       printed `MISCELLANEOUS  EXERCISE-9` with a DOUBLE space and no spaces
+  //       around the hyphen — match loosely.
+  //    3. THE §9.2 SEQUENCE IS CONTIGUOUS: §9.2 -> 9.2.1 -> 9.2.2 -> Corollary ->
+  //       9.2.3 -> Corollary -> 9.2.4 -> [SOLVED EXAMPLES] -> 9.2.5 -> 9.2.6 ->
+  //       9.2.7. *(An earlier note here claimed "§9.2.1 is never printed"; that
+  //       was a PROBE ARTIFACT, corrected 2026-08-16 after a transcription agent
+  //       read the page. The book prints `9.2.1. Theorem 1. Derivative of Sum of
+  //       functions` on p-09 with a DOT after the number, and the section-scan
+  //       regex required whitespace immediately after the digits, so it dropped
+  //       the heading silently. Match `N.M.K\.?\s+` when scanning this book.)*
+  //    3b. THE `Ex.: Let f(x) = |x| be defined on R` PASSAGE SPANNING p-06 -> p-07
+  //       IS DELIBERATELY NOT INGESTED, and the gap is correct. Both bands
+  //       reported it as belonging to the other (it starts bottom-right of p-06
+  //       and finishes top-left of p-07), which is the only reason it surfaced —
+  //       the "report on territory you do not own" rule doing its job. Adjudicated
+  //       by reading the page: it is introduced by "Note that a continuous
+  //       function need not be differentiable. This can be proved by an example."
+  //       so it is the COUNTER-EXAMPLE the §9.1.5 theorem narrative requires, not
+  //       a question posed to a student. Same call as the shipped Continuity
+  //       chapter, whose Illustrations 1-6 were likewise left out as worked theory
+  //       passages that pose no question. Do not "restore" it as a missing row.
+  //       Likewise skipped: the p-04 "Try the following" box (five determinate
+  //       prove-questions with NO printed solutions, no question numbers, and no
+  //       coverage in the end-of-book key).
+  //    4. **EXERCISE 9.2 IS PRINTED IN FIVE ROMAN PARTS (I)-(V), EACH RESTARTING
+  //       ITS NUMBERING AT (1)** — the README rule-2c FIFTH failure mode, live.
+  //       A page scan reports "max Q = 6", which is part (I)'s last item and is
+  //       neither the total NOR a floor on it. The printed key settles the shape:
+  //       (I) 1-6 · (II) 1-6 · (III) 1-6 · (IV) 1-6 · (V) 1-2 = **26 questions**,
+  //       against the 6 a flat read suggests. Refs mirror the book's part labels:
+  //       `Ex 9.2 I Q<n>` … `Ex 9.2 V Q<n>`, and `sections.ts` needs ONE BLOCK PER
+  //       PART, not one for the exercise.
+  //
+  //    KEY FLOORS (from the printed answers, idx 220-221):
+  //       Ex 9.1 -> Q9 (flat, not parted) · Ex 9.2 -> parted, 26 as above ·
+  //       Misc I -> **8** MCQs, key `C D C B B D A C` (eight, not the usual ten) ·
+  //       Misc II -> Q10.
+  //
+  //    5. TWO BLOCKS ON p-13/p-14 ARE DELIBERATELY NOT INGESTED — both gaps are
+  //       correct, and both were surfaced by a transcription agent flagging rather
+  //       than guessing.
+  //       (a) **Exercise 9.2 has a SIXTH part, `(VI) Fill in the blanks. (Activity
+  //           Problems)`**, running from the foot of p-13 to the top of p-14. The
+  //           whole part is skipped under the Activity rule, and the printed key
+  //           corroborates it by stopping at part (V) — which is what makes the
+  //           26-question shape right. Its item 4) is arguably a genuine question
+  //           ("Differentiate tan x and sec x w.r.t. x using the formulae for u/v
+  //           and 1/v"), but ingesting it ALONE would emit `Ex 9.2 VI Q4` with no
+  //           Q1-Q3 above it, which reads in /board as a transcription gap rather
+  //           than a deliberate scope call. The part stays whole and stays out.
+  //       (b) The **`Brief idea of L' Hospital Rule`** subsection on p-14 carries
+  //           two fully worked examples (`Ex. 1`, `Ex. 2`). Out for the same reason
+  //           as the |x| passage in 3b: it is an unnumbered theory heading, so no
+  //           safe `<N.M> SolvedEx.<n>` prefix exists, and neither example carries
+  //           a `Solution :` marker — a marker-scan band plan never counts them.
+  //       Net: this chapter emits NO SolvedEx rows from p-13 onward.
+  //
+  //    Figures: ZERO in the entire chapter — the only chapter in the book with
+  //    none. No figure-attach, and nothing to crop.
   "differentiation-11": {
     id: "differentiation-11",
     chapterName: "Differentiation",

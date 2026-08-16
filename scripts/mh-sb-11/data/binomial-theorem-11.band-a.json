@@ -1,0 +1,231 @@
+[
+  {
+    "ref": "4.2 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "stem": "Expand \\((x^2 + 3y)^5\\)",
+    "solution": "Here \\(a = x^2\\), \\(b = 3y\\) and \\(n = 5\\) using binomial theorem,\n\\((x^2+3y)^5 = {}^{5}C_{0}(x^2)^5 (3y)^0 + {}^{5}C_{1}(x^2)^4 (3y)^1 + {}^{5}C_{2}(x^2)^3 (3y)^2 + {}^{5}C_{3}(x^2)^2 (3y)^3 + {}^{5}C_{4}(x^2)^1 (3y)^4 + {}^{5}C_{5}(x^2)^0 (3y)^5\\)\nNow \\({}^{5}C_{0} = {}^{5}C_{5} = 1\\), \\({}^{5}C_{1} = {}^{5}C_{4} = 5\\),\n\\({}^{5}C_{2} = {}^{5}C_{3} = \\frac{5 \\cdot 4}{2 \\cdot 1} = 10\\)\n\\(\\therefore (x^2+3y)^5 = 1(x^{10})(1) + 5(x^8)(3y) + 10(x^6)(9y^2) + 10(x^4)(27y^3) + 5(x^2)(81y^4) + 1(1)(243y^5)\\)\n\\(\\therefore (x^2+3y)^5 = x^{10} + 15x^8y + 90x^6y^2 + 270x^4y^3 + 405x^2y^4 + 243y^5\\)"
+  },
+  {
+    "ref": "4.2 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "stem": "Expand \\(\\left(2x - \\frac{y}{2}\\right)^5\\)",
+    "solution": "Here \\(a = 2x\\), \\(b = \\frac{y}{2}\\) and \\(n = 5\\)\nUsing binomial theorem,\n\\(\\left(2x - \\frac{y}{2}\\right)^5 = {}^{5}C_{0}(2x)^5\\left(\\frac{y}{2}\\right)^0 - {}^{5}C_{1}(2x)^4\\left(\\frac{y}{2}\\right)^1 + {}^{5}C_{2}(2x)^3\\left(\\frac{y}{2}\\right)^2 - {}^{5}C_{3}(2x)^2\\left(\\frac{y}{2}\\right)^3 + {}^{5}C_{4}(2x)^1\\left(\\frac{y}{2}\\right)^4 - {}^{5}C_{5}(2x)^0\\left(\\frac{y}{2}\\right)^5\\)\nNow \\({}^{5}C_{0} = {}^{5}C_{5} = 1\\), \\({}^{5}C_{1} = {}^{5}C_{4} = 5\\),\n\\({}^{5}C_{2} = {}^{5}C_{3} = \\frac{5 \\cdot 4}{2 \\cdot 1} = 10\\)\n\\(\\therefore \\left(2x - \\frac{y}{2}\\right)^5 = 1(32x^5)(1) - 5(16x^4)\\left(\\frac{y}{2}\\right) + 10(8x^3)\\left(\\frac{y^2}{4}\\right) - 10(4x^2)\\left(\\frac{y^3}{8}\\right) + 5(2x)\\left(\\frac{y^4}{16}\\right) - 1(1)\\left(\\frac{y^5}{32}\\right)\\)\n\\(\\therefore \\left(2x - \\frac{y}{2}\\right)^5 = 32x^5 - 40x^4y + 20x^3y^2 - 5x^2y^3 + \\frac{5}{8}xy^4 - \\frac{y^5}{32}\\)"
+  },
+  {
+    "ref": "4.2 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "stem": "Expand \\(\\left(\\sqrt{5} + \\sqrt{3}\\right)^4\\)",
+    "solution": "[Textbook misprint in the book's printed solution: the substitution line sets the second term as \\(4\\left(5\\sqrt{5}\\right)\\left(3\\sqrt{3}\\right) = 60\\sqrt{15}\\). The correct term is \\({}^{4}C_{1}\\left(\\sqrt{5}\\right)^{3}\\left(\\sqrt{3}\\right)^{1} = 4 \\times 5\\sqrt{5} \\times \\sqrt{3} = 20\\sqrt{15}\\) — the factor should be \\(\\sqrt{3}\\), not \\(3\\sqrt{3}\\). It does not propagate: the book's very next line records that term correctly as \\(20\\sqrt{15}\\) and the printed final answer \\(124 + 32\\sqrt{15}\\) is right. Note the FOURTH term's \\(3\\sqrt{3}\\) is correct, since \\(\\left(\\sqrt{3}\\right)^{3} = 3\\sqrt{3}\\); only the second term is wrong.]\n\nHere \\(a = \\sqrt{5}\\), \\(b = \\sqrt{3}\\) and \\(n = 4\\)\nUsing binomial theorem,\n\\(\\left(\\sqrt{5} + \\sqrt{3}\\right)^4 = {}^{4}C_{0}\\left(\\sqrt{5}\\right)^4\\left(\\sqrt{3}\\right)^0 + {}^{4}C_{1}\\left(\\sqrt{5}\\right)^3\\left(\\sqrt{3}\\right)^1 + {}^{4}C_{2}\\left(\\sqrt{5}\\right)^2\\left(\\sqrt{3}\\right)^2 + {}^{4}C_{3}\\left(\\sqrt{5}\\right)^1\\left(\\sqrt{3}\\right)^3 + {}^{4}C_{4}\\left(\\sqrt{5}\\right)^0\\left(\\sqrt{3}\\right)^4\\)\nNow \\({}^{4}C_{0} = {}^{4}C_{4} = 1\\), \\({}^{4}C_{1} = {}^{4}C_{3} = 4\\), \\({}^{4}C_{2} = \\frac{4 \\cdot 3}{2 \\cdot 1} = 6\\),\n\\(\\therefore \\left(\\sqrt{5} + \\sqrt{3}\\right)^4 = 1(25)(1) + 4\\left(5\\sqrt{5}\\right)\\left(3\\sqrt{3}\\right) + 6(5)(3) + 4\\left(\\sqrt{5}\\right)\\left(3\\sqrt{3}\\right) + 1(1)(9)\\)\n\\(\\therefore \\left(\\sqrt{5} + \\sqrt{3}\\right)^4 = 25 + \\left(20\\sqrt{15}\\right) + 90 + \\left(12\\sqrt{15}\\right) + 9\\)\n\\(\\therefore \\left(\\sqrt{5} + \\sqrt{3}\\right)^4 = 124 + \\left(32\\sqrt{15}\\right)\\)",
+    "_note": "INTERNAL INCONSISTENCY IN THE PRINTED SOLUTION (transcribed as printed, NOT repaired). The second term of the substitution line is printed as \\(4(5\\sqrt{5})(3\\sqrt{3})\\), which evaluates to \\(60\\sqrt{15}\\). The correct second term is \\({}^{4}C_{1}(\\sqrt{5})^3(\\sqrt{3})^1 = 4(5\\sqrt{5})(\\sqrt{3}) = 20\\sqrt{15}\\), i.e. the printed factor should be \\((\\sqrt{3})\\), not \\((3\\sqrt{3})\\). The book's VERY NEXT line records that term as \\(20\\sqrt{15}\\), so the working contradicts itself one line later. The printed final answer \\(124 + 32\\sqrt{15}\\) is CORRECT (verified: \\(25 + 20\\sqrt{15} + 90 + 12\\sqrt{15} + 9 = 124 + 32\\sqrt{15}\\)). The misprint is confined to the one intermediate factor. NOTE the fourth term's \\((3\\sqrt{3})\\) is correct, since \\((\\sqrt{3})^3 = 3\\sqrt{3}\\) -- only the SECOND term is wrong. Also: the book prints the coefficient as \\(\\frac{4.3}{2.1}\\), using a period as its multiplication dot; transcribed as \\(\\frac{4 \\cdot 3}{2 \\cdot 1}\\) so it does not read as the decimals 4.3/2.1."
+  },
+  {
+    "ref": "4.2 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "HARD",
+    "stem": "Evaluate \\(\\left(\\sqrt{2}+1\\right)^5 - \\left(\\sqrt{2}-1\\right)^5\\)",
+    "solution": "\\(\\left(\\sqrt{2}+1\\right)^5 = {}^{5}C_{0}\\left(\\sqrt{2}\\right)^5 + {}^{5}C_{1}\\left(\\sqrt{2}\\right)^4 + {}^{5}C_{2}\\left(\\sqrt{2}\\right)^3 + {}^{5}C_{3}\\left(\\sqrt{2}\\right)^2 + {}^{5}C_{4}\\left(\\sqrt{2}\\right)^1 + {}^{5}C_{5}\\left(\\sqrt{2}\\right)^0\\)\nNow \\({}^{5}C_{0} = {}^{5}C_{5} = 1\\), \\({}^{5}C_{4} = {}^{5}C_{1} = 5\\), \\({}^{5}C_{2} = {}^{5}C_{3} = \\frac{5 \\cdot 4}{2 \\cdot 1} = 10\\)\n\\(\\therefore \\left(\\sqrt{2}+1\\right)^5 = 1\\left(4\\sqrt{2}\\right) + 5(4) + 10\\left(2\\sqrt{2}\\right) + 10(2) + 5\\left(\\sqrt{2}\\right) + 1\\)\n\\(\\therefore \\left(\\sqrt{2}+1\\right)^5 = \\left(4\\sqrt{2}\\right) + 20 + \\left(20\\sqrt{2}\\right) + 20 + \\left(5\\sqrt{2}\\right) + 1\\)   ... (i)\nSimilarly,\n\\(\\left(\\sqrt{2}-1\\right)^5 = \\left(4\\sqrt{2}\\right) - 20 + \\left(20\\sqrt{2}\\right) - 20 + \\left(5\\sqrt{2}\\right) - 1\\)   ... (ii)\nSubtracting (ii) from (i) we get,\n\\(\\left(\\sqrt{2}+1\\right)^5 - \\left(\\sqrt{2}-1\\right)^5\\)\n\\(= \\left(4\\sqrt{2} + 20 + 20\\sqrt{2} + 20 + 5\\sqrt{2} + 1\\right) - \\left(4\\sqrt{2} - 20 + 20\\sqrt{2} - 20 + 5\\sqrt{2} - 1\\right)\\)\n\\(= 2(20 + 20 + 1)\\)\n\\(= 82\\)\n\\(\\therefore \\left(\\sqrt{2}+1\\right)^5 - \\left(\\sqrt{2}-1\\right)^5 = 82\\)"
+  },
+  {
+    "ref": "4.2 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "stem": "Using binomial theorem, find the value of \\((99)^4\\).",
+    "solution": "[Textbook activity scaffold, COMPLETED rather than preserved — recorded here as a completion, not a defect. The book prints this as Ex. 5 (Activity) and its printed solution is a fill-in-the-blank scaffold in which the base, every power of \\(10\\), each term AND the final answer are empty boxes. The derivation above fills those boxes so the model answer is a whole worked solution rather than a hole. Values verified independently: \\(99^{2} = 9801\\) and \\(9801^{2} = 96059601\\).]\n\nWe have \\((99)^4 = (100 - 1)^4\\)\n\n\\(\\therefore (99)^4 = {}^{4}C_{0}(100)^4 - {}^{4}C_{1}(100)^3 + {}^{4}C_{2}(100)^2 - {}^{4}C_{3}(100)^1 + {}^{4}C_{4}(100)^0\\)\n\nNow \\({}^{4}C_{0} = {}^{4}C_{4} = 1\\), \\({}^{4}C_{1} = {}^{4}C_{3} = 4\\), \\({}^{4}C_{2} = \\frac{4 \\cdot 3}{2 \\cdot 1} = 6\\)\n\n\\(\\therefore (99)^4 = 1(10)^8 - 4(10)^6 + 6(10)^4 - 4(10)^2 + 1(1)\\)\n\n\\(= 100000000 - 4000000 + 60000 - 400 + 1\\)\n\n\\(\\therefore (99)^4 = 96059601\\)",
+    "_note": "The book prints this as 'Ex. 5 (Activity)' and its solution is a fill-in-the-blank scaffold: the base (100), every power of 10, each term and the FINAL ANSWER are all printed as empty boxes. The derivation above completes those boxes rather than reproducing them empty, so the model answer is a whole worked solution. Values verified independently: 99^2 = 9801 and 9801^2 = 96059601. The book writes 4C2 as '4.3/2.1' using a period for the multiplication dot; rendered here as an explicit \\cdot, since the literal glyphs would read as the decimals 4.3/2.1 and state something false."
+  },
+  {
+    "ref": "4.2 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "stem": "Find the value of \\((2.02)^5\\) correct upto 4 decimal places.",
+    "solution": "\\((2.02)^5 = [2+0.02]^5\\)\n\\(= {}^{5}C_{0}(2)^5(0.02)^0 + {}^{5}C_{1}(2)^4(0.02)^1 + {}^{5}C_{2}(2)^3(0.02)^2 + {}^{5}C_{3}(2)^2(0.02)^3 + {}^{5}C_{4}(2)^1(0.02)^4 + {}^{5}C_{5}(2)^0(0.02)^5\\)\nNow \\({}^{5}C_{0} = {}^{5}C_{5} = 1\\), \\({}^{5}C_{1} = {}^{5}C_{4} = 5\\), \\({}^{5}C_{2} = {}^{5}C_{3} = 10\\)\n\\(\\therefore (2.02)^5 = 1(32)(1) + 5(16)(0.02) + 10(8)(0.0004) + 10(4)(0.000008) + 5(2)(0.00000016) + 1(0.0000000032)\\)\nIgnore last two terms for four decimal places\n\\(\\therefore (2.02)^5 = 32 + 1.60 + 0.0320 + 0.0003\\)\n\\(\\therefore (2.02)^5 = 33.6323\\)"
+  },
+  {
+    "ref": "4.2 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "HARD",
+    "stem": "Without expanding, find the value of\n\\((2x-1)^5 + 5(2x-1)^4(1-x) + 10(2x-1)^3(1-x)^2 + 10(2x-1)^2(1-x)^3 + 5(2x-1)(1-x)^4 + (1-x)^5\\)",
+    "solution": "We notice that 1, 5, 10, 10, 5, 1 are the values of \\({}^{5}C_{0}\\), \\({}^{5}C_{1}\\), \\({}^{5}C_{2}\\), \\({}^{5}C_{3}\\), \\({}^{5}C_{4}\\) and \\({}^{5}C_{5}\\) respectively.\nHence, given expression can be written as\n\\({}^{5}C_{0}(2x-1)^5 + {}^{5}C_{1}(2x-1)^4(1-x) + {}^{5}C_{2}(2x-1)^3(1-x)^2 + {}^{5}C_{3}(2x-1)^2(1-x)^3 + {}^{5}C_{4}(2x-1)(1-x)^4 + {}^{5}C_{5}(1-x)^5\\)\n\\(= [(2x-1) + (1-x)]^5\\)\n\\(= (2x - 1 + 1 - x)^5\\)\n\\(= x^5\\)\n\\(\\therefore (2x-1)^5 + 5(2x-1)^4(1-x) + 10(2x-1)^3(1-x)^2 + 10(2x-1)^2(1-x)^3 + 5(2x-1)(1-x)^4 + (1-x)^5 = x^5\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "context": "Expand.",
+    "setLabel": "Ex 4.2 Q1",
+    "stem": "\\(\\left(\\sqrt{3} + \\sqrt{2}\\right)^4\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "context": "Expand.",
+    "setLabel": "Ex 4.2 Q1",
+    "stem": "\\(\\left(\\sqrt{5} - \\sqrt{2}\\right)^5\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "context": "Expand.",
+    "setLabel": "Ex 4.2 Q2",
+    "stem": "\\((2x^2 + 3)^4\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "context": "Expand.",
+    "setLabel": "Ex 4.2 Q2",
+    "stem": "\\(\\left(2x - \\frac{1}{x}\\right)^6\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "HARD",
+    "context": "Find the value of",
+    "setLabel": "Ex 4.2 Q3",
+    "stem": "\\(\\left(\\sqrt{3}+1\\right)^4 - \\left(\\sqrt{3}-1\\right)^4\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "HARD",
+    "context": "Find the value of",
+    "setLabel": "Ex 4.2 Q3",
+    "stem": "\\(\\left(2+\\sqrt{5}\\right)^5 + \\left(2-\\sqrt{5}\\right)^5\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "HARD",
+    "context": "Prove that",
+    "setLabel": "Ex 4.2 Q4",
+    "stem": "\\(\\left(\\sqrt{3}+\\sqrt{2}\\right)^6 + \\left(\\sqrt{3}-\\sqrt{2}\\right)^6 = 970\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "HARD",
+    "context": "Prove that",
+    "setLabel": "Ex 4.2 Q4",
+    "stem": "\\(\\left(\\sqrt{5}+1\\right)^5 - \\left(\\sqrt{5}-1\\right)^5 = 352\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "context": "Using binomial theorem, find the value of",
+    "setLabel": "Ex 4.2 Q5",
+    "stem": "\\((102)^4\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "context": "Using binomial theorem, find the value of",
+    "setLabel": "Ex 4.2 Q5",
+    "stem": "\\((1.1)^5\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "context": "Using binomial theorem, find the value of",
+    "setLabel": "Ex 4.2 Q6",
+    "stem": "\\((9.9)^3\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "context": "Using binomial theorem, find the value of",
+    "setLabel": "Ex 4.2 Q6",
+    "stem": "\\((0.9)^4\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "HARD",
+    "context": "Without expanding, find the value of",
+    "setLabel": "Ex 4.2 Q7",
+    "stem": "\\((x+1)^4 - 4(x+1)^3(x-1) + 6(x+1)^2(x-1)^2 - 4(x+1)(x-1)^3 + (x-1)^4\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "HARD",
+    "context": "Without expanding, find the value of",
+    "setLabel": "Ex 4.2 Q7",
+    "stem": "\\((2x-1)^4 + 4(2x-1)^3(3-2x) + 6(2x-1)^2(3-2x)^2 + 4(2x-1)^1(3-2x)^3 + (3-2x)^4\\)"
+  },
+  {
+    "ref": "Ex 4.2 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "stem": "Find the value of \\((1.02)^6\\), correct upto four places of decimals."
+  },
+  {
+    "ref": "Ex 4.2 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "stem": "Find the value of \\((1.01)^5\\), correct upto three places of decimals."
+  },
+  {
+    "ref": "Ex 4.2 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Positive Integral Index",
+    "difficulty": "MODERATE",
+    "stem": "Find the value of \\((0.9)^6\\), correct upto four places of decimals."
+  }
+]

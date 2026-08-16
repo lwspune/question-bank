@@ -1,0 +1,520 @@
+[
+  {
+    "ref": "4.3 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "stem": "Find the fifth term in the expansion of \\(\\left(2x^{2}+\\frac{3}{2x}\\right)^{8}\\).",
+    "_note": "BOOK DEFECT — DUPLICATE SECTION NUMBER (structural, not a question defect; recorded here because this block is the one affected). On printed p.77 the book prints TWO consecutive sections both numbered 4.3: '4.3 General term in expansion of (a+b)^n' and then '4.3 Middle term (s) in the expansion of (a+b)^n:'. Verified at high zoom — the second genuinely reads 4.3, not 4.4. The second should evidently have been 4.4, which would have shifted every later section by one (the book's 4.4 'Binomial Theorem for Negative Index or Fraction' and 4.5 'Binomial Coefficients'). The two headings are also typeset differently: the first puts its number in the standard left-hand number column, the second runs it inline and ends with a colon. THIS BLOCK SITS UNDER THE SECOND 4.3 (Middle terms) and is the only solved block between either 4.3 heading and EXERCISE 4.3 — the first 4.3 (General term) is theory only, with no worked examples and no exercise of its own.",
+    "solution": "[Textbook numbering defect, chapter-level, attached here: the book prints TWO consecutive sections both numbered 4.3 — first 4.3 General term in expansion of \\((a+b)^{n}\\), then 4.3 Middle term (s) in the expansion of \\((a+b)^{n}\\). The second is presumably meant to be 4.4, since the book's real 4.4 is Binomial Theorem for Negative Index or Fractional Index. The two are typeset differently: the first sets its number in the standard left-hand number column, as 4.4 and 4.5 do, while the second runs its number inline and ends with a colon. It causes no ambiguity in the bank, because the first 4.3 is theory only — it carries no worked example and no exercise.]\n\nHere \\(a = 2x^{2}\\), \\(b = \\frac{3}{2x}\\), \\(n = 8\\)\n\nFor \\(t_{5}\\), \\(r = 4\\)\n\nSince, \\(t_{r+1} = {}^{n}C_{r}\\,a^{n-r}\\,b^{r}\\),\n\n\\(t_{5} = {}^{8}C_{4}(2x^{2})^{8-4}\\left(\\frac{3}{2x}\\right)^{4}\\)\n\n\\(= \\frac{8 \\cdot 7 \\cdot 6 \\cdot 5}{4 \\cdot 3 \\cdot 2 \\cdot 1}\\,(2x^{2})^{4}\\left(\\frac{3}{2x}\\right)^{4}\\)\n\n\\(= 70(16x^{8})\\left(\\frac{81}{16x^{4}}\\right)\\)\n\n\\(= 5670x^{4}\\)\n\n\\(\\therefore\\) The fifth term in the expansion of \\(\\left(2x^{2}+\\frac{3}{2x}\\right)^{8}\\) is \\(5670x^{4}\\)."
+  },
+  {
+    "ref": "4.3 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "stem": "Find the middle term(s) in the expansion of \\(\\left(x^{2}+\\frac{2}{x}\\right)^{8}\\).",
+    "solution": "Here \\(a = x^{2}\\), \\(b = \\frac{2}{x}\\), \\(n = 8\\)\n\nNow \\(n\\) is even, hence \\(\\left(\\frac{n+2}{2}\\right) = \\left(\\frac{8+2}{2}\\right) = 5\\)\n\n\\(\\therefore\\) Fifth term is the only middle term.\n\nFor \\(t_{5}\\), \\(r = 4\\)\n\nWe have \\(t_{r+1} = {}^{n}C_{r}\\,a^{n-r}\\,b^{r}\\),\n\n\\(t_{5} = {}^{8}C_{4}(x^{2})^{8-4}\\left(\\frac{2}{x}\\right)^{4}\\)\n\n\\(= \\frac{8 \\cdot 7 \\cdot 6 \\cdot 5}{4 \\cdot 3 \\cdot 2 \\cdot 1}\\,(x^{2})^{4}\\left(\\frac{2}{x}\\right)^{4}\\)\n\n\\(= 70\\,(x^{8})\\,\\frac{16}{x^{4}}\\)\n\n\\(= 1120x^{4}\\)"
+  },
+  {
+    "ref": "4.3 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "HARD",
+    "stem": "Find the middle terms in the expansion of \\(\\left(2x-\\frac{1}{4x}\\right)^{9}\\).",
+    "solution": "[Textbook misprints in the book's printed solution — two in one chain. The \\(t_{5}\\) working prints \\((32x)^{5}\\) where \\((2x)^{5} = 32x^{5}\\) is meant, and then prints \\(126\\left(2x^{5}\\right)\\) where \\(126\\left(32x^{5}\\right)\\) is meant. As printed the chain yields \\(\\dfrac{63x}{64}\\), which does not reach the book's own stated \\(\\dfrac{63x}{4}\\); with \\(32x^{5}\\) it does. The final answer is correct — only the two intermediate lines are corrupt.]\n\nHere \\(a = 2x\\), \\(b = -\\frac{1}{4x}\\), \\(n = 9\\)\n\nNow \\(n\\) is odd \\(\\left(\\frac{n+1}{2}\\right) = 5\\), \\(\\left(\\frac{n+3}{2}\\right) = 6\\)\n\n\\(\\therefore\\) Fifth and sixth terms are the middle terms.\n\nWe have \\(t_{r+1} = {}^{n}C_{r}\\,a^{n-r}\\,b^{r}\\),\n\nFor \\(t_{5}\\), \\(r = 4\\)\n\n\\(\\therefore t_{5} = {}^{9}C_{4}(2x)^{9-4}\\left(-\\frac{1}{4x}\\right)^{4}\\)\n\n\\(= \\frac{9 \\cdot 8 \\cdot 7 \\cdot 6}{4 \\cdot 3 \\cdot 2 \\cdot 1}\\,(32x)^{5}\\left(-\\frac{1}{4x}\\right)^{4}\\)\n\n\\(= 126\\,(2x^{5})\\left(\\frac{1}{256x^{4}}\\right)\\)\n\n\\(= \\left(\\frac{63x}{4}\\right)\\)\n\nFor \\(t_{6}\\), \\(r = 5\\)\n\n\\(\\therefore t_{6} = {}^{9}C_{5}(2x)^{9-5}\\left(\\frac{-1}{4x}\\right)^{5}\\)\n\n\\(= \\frac{9 \\cdot 8 \\cdot 7 \\cdot 6}{4 \\cdot 3 \\cdot 2 \\cdot 1}\\,(2x)^{4}\\left(\\frac{-1}{4x}\\right)^{5}\\)\n\n\\(= 126\\,(16x^{4})\\left(\\frac{-1}{1024x^{5}}\\right)\\)\n\n\\(= -\\frac{63}{32x}\\)\n\n\\(\\therefore\\) The middle terms are \\(\\left(\\frac{63x}{4}\\right)\\) and \\(-\\frac{63}{32x}\\)",
+    "_note": "INTERNAL-CONSISTENCY DEFECT (transcribed as printed, NOT repaired). Two misprints in the printed \\(t_5\\) chain: (a) the book prints \\((32x)^5\\) where \\((2x)^5 = 32x^5\\) is meant; (b) the next line prints \\(126(2x^5)\\) where \\(126(32x^5)\\) is meant. As printed, \\(126 \\cdot 2x^5 \\div 256x^4 = 63x/64\\), which does NOT reach the printed \\(63x/4\\); with \\(32x^5\\) the chain gives \\(126 \\cdot 32/256 = 63/4\\). So the FINAL printed answer \\(63x/4\\) is correct and only the two intermediate lines are corrupt. Minor: the \\(t_6\\) line writes the four-factor product \\(9 \\cdot 8 \\cdot 7 \\cdot 6/4 \\cdot 3 \\cdot 2 \\cdot 1\\) (which is \\({}^{9}C_{4}\\)) for \\({}^{9}C_{5}\\); both equal 126, so the value is unaffected. The \\(t_6\\) answer \\(-63/32x\\) checks out."
+  },
+  {
+    "ref": "4.3 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "stem": "Find the coefficient of \\(x^{7}\\) in the expansion of \\(\\left(x^{2}+\\frac{1}{x}\\right)^{11}\\).",
+    "solution": "\\(a = x^{2}\\), \\(b = \\frac{1}{x}\\), \\(n = 11\\)\n\nWe have \\(t_{r+1} = {}^{n}C_{r}\\,a^{n-r}\\,b^{r}\\),\n\n\\(t_{r+1} = {}^{11}C_{r}(x^{2})^{11-r}\\left(\\frac{1}{x}\\right)^{r}\\)\n\n\\(= {}^{11}C_{r}\\,x^{22-2r}\\,x^{-r}\\)\n\n\\(= {}^{11}C_{r}\\,x^{22-3r}\\)\n\nTo get coefficient of \\(x^{7}\\), we must have\n\n\\(x^{22-3r} = x^{7}\\)\n\n\\(\\therefore 22-3r = 7\\)\n\n\\(\\therefore r = 5\\)\n\n\\(\\therefore {}^{11}C_{5} = \\frac{11 \\cdot 10 \\cdot 9 \\cdot 8 \\cdot 7}{5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1} = 462\\)\n\n\\(\\therefore\\) Coefficient of \\(x^{7}\\) is 462."
+  },
+  {
+    "ref": "4.3 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "HARD",
+    "stem": "Find the coefficient of \\(x^{-2}\\) in the expansion of \\(\\left(2x-\\frac{1}{\\sqrt{3}x^{2}}\\right)^{10}\\).",
+    "solution": "[Textbook misprint in the book's printed solution: the second working line prints \\({}^{10}C_{r}\\left(2x^2\\right)^{10-r}\\) where \\(a = 2x\\), so the factor should be \\(\\left(2x\\right)^{10-r}\\). It does not propagate — the next line correctly expands it as \\((2)^{10-r}x^{10-r}\\), and the final answer \\(\\dfrac{4480}{3}\\) is correct.]\n\nHere \\(a = 2x\\), \\(b = \\frac{-1}{\\sqrt{3}x^{2}}\\), \\(n = 10\\)\n\nWe have \\(t_{r+1} = {}^{n}C_{r}\\,a^{n-r}\\,b^{r}\\),\n\n\\(= {}^{10}C_{r}(2x^{2})^{10-r}\\left(\\frac{-1}{\\sqrt{3}x^{2}}\\right)^{r}\\)\n\n\\(= {}^{10}C_{r}(2)^{10-r}x^{10-r}\\left(\\frac{-1}{\\sqrt{3}}\\right)^{r}x^{-2r}\\)\n\n\\(= {}^{10}C_{r}(2)^{10-r}\\left(\\frac{-1}{\\sqrt{3}}\\right)^{r}x^{10-3r}\\)\n\nTo get coefficient of \\(x^{-2}\\), we must have\n\n\\(x^{10-3r} = x^{-2}\\)\n\n\\(\\therefore 10-3r = -2\\)\n\n\\(\\therefore -3r = -12\\)\n\n\\(\\therefore r = 4\\)\n\n\\(\\therefore\\) coefficient of \\(x^{-2}\\)\n\n\\(= {}^{10}C_{4}(2)^{10-4}\\left(\\frac{-1}{\\sqrt{3}}\\right)^{4} = \\frac{10 \\cdot 9 \\cdot 8 \\cdot 7}{4 \\cdot 3 \\cdot 2 \\cdot 1}(2)^{6}\\left(\\frac{-1}{\\sqrt{3}}\\right)^{4}\\)\n\n\\(= 210\\,(64)\\left(\\frac{1}{9}\\right)\\)\n\n\\(= \\frac{4480}{3}\\)\n\n\\(\\therefore\\) Coefficient of \\(x^{-2}\\) is \\(\\frac{4480}{3}\\)",
+    "_note": "MISPRINT (transcribed as printed, NOT repaired). The second working line prints \\({}^{10}C_{r}(2x^{2})^{10-r}\\), but \\(a = 2x\\), so it should read \\((2x)^{10-r}\\). The very next line correctly expands it as \\((2)^{10-r}x^{10-r}\\), so the misprint does not propagate and the printed final answer \\(4480/3\\) is correct (verified: \\(210 \\times 64 \\div 9 = 13440/9 = 4480/3\\))."
+  },
+  {
+    "ref": "4.3 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "HARD",
+    "stem": "Find the term independent of \\(x\\), in the expansion of \\(\\left(\\sqrt{x}-\\frac{2}{x^{2}}\\right)^{10}\\).",
+    "solution": "Here \\(a = \\sqrt{x}\\), \\(b = \\frac{-2}{x^{2}}\\), \\(n = 10\\)\n\nWe have \\(t_{r+1} = {}^{n}C_{r}\\,a^{n-r}\\,b^{r}\\)\n\n\\(= {}^{10}C_{r}\\left(\\sqrt{x}\\right)^{10-r}\\left(\\frac{-2}{x^{2}}\\right)^{r}\\)\n\n\\(= {}^{10}C_{r}\\,x^{\\left(\\frac{10-r}{2}\\right)}(-2)^{r}x^{-2r}\\)\n\n\\(= {}^{10}C_{r}(-2)^{r}\\,x^{\\frac{10-5r}{2}}\\)\n\nTo get the term independent of \\(x\\), we must have\n\n\\(x^{\\frac{10-5r}{2}} = x^{0}\\)\n\n\\(\\therefore \\frac{10-5r}{2} = 0\\)\n\n\\(\\therefore 10-5r = 0\\)\n\n\\(\\therefore r = 2\\)\n\n\\(\\therefore\\) the term independent of \\(x\\) is\n\n\\({}^{10}C_{2}(-2)^{2} = \\frac{10 \\cdot 9}{2 \\cdot 1}(-2)^{2} = 45(4) = 180\\)\n\n\\(\\therefore\\) the term independent of \\(x\\) is 180."
+  },
+  {
+    "ref": "Ex 4.3 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "In the following expansions, find the indicated term.",
+    "setLabel": "Ex 4.3 Q1",
+    "stem": "\\(\\left(2x^{2}+\\frac{3}{2x}\\right)^{8}\\), \\(3^{\\text{rd}}\\) term"
+  },
+  {
+    "ref": "Ex 4.3 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "In the following expansions, find the indicated term.",
+    "setLabel": "Ex 4.3 Q1",
+    "stem": "\\(\\left(x^{2}-\\frac{4}{x^{3}}\\right)^{11}\\), \\(5^{\\text{th}}\\) term"
+  },
+  {
+    "ref": "Ex 4.3 Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "In the following expansions, find the indicated term.",
+    "setLabel": "Ex 4.3 Q1",
+    "stem": "\\(\\left(\\frac{4x}{5}-\\frac{5}{2x}\\right)^{9}\\), \\(7^{\\text{th}}\\) term"
+  },
+  {
+    "ref": "Ex 4.3 Q1(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "In the following expansions, find the indicated term.",
+    "setLabel": "Ex 4.3 Q1",
+    "stem": "\\(\\left(\\frac{1}{3}+a^{2}\\right)^{12}\\), \\(9^{\\text{th}}\\) term"
+  },
+  {
+    "ref": "Ex 4.3 Q1(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "In the following expansions, find the indicated term.",
+    "setLabel": "Ex 4.3 Q1",
+    "stem": "\\(\\left(3a+\\frac{4}{a}\\right)^{13}\\), \\(10^{\\text{th}}\\) term"
+  },
+  {
+    "ref": "Ex 4.3 Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "In the following expansions, find the indicated coefficients.",
+    "setLabel": "Ex 4.3 Q2",
+    "stem": "\\(x^{3}\\) in \\(\\left(x^{2}+\\frac{3\\sqrt{2}}{x}\\right)^{9}\\)"
+  },
+  {
+    "ref": "Ex 4.3 Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "In the following expansions, find the indicated coefficients.",
+    "setLabel": "Ex 4.3 Q2",
+    "stem": "\\(x^{8}\\) in \\(\\left(2x^{5}-\\frac{5}{x^{3}}\\right)^{8}\\)"
+  },
+  {
+    "ref": "Ex 4.3 Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "In the following expansions, find the indicated coefficients.",
+    "setLabel": "Ex 4.3 Q2",
+    "stem": "\\(x^{9}\\) in \\(\\left(\\frac{1}{x}+x^{2}\\right)^{18}\\)"
+  },
+  {
+    "ref": "Ex 4.3 Q2(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "In the following expansions, find the indicated coefficients.",
+    "setLabel": "Ex 4.3 Q2",
+    "stem": "\\(x^{-3}\\) in \\(\\left(x-\\frac{1}{2x}\\right)^{5}\\)"
+  },
+  {
+    "ref": "Ex 4.3 Q2(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "In the following expansions, find the indicated coefficients.",
+    "setLabel": "Ex 4.3 Q2",
+    "stem": "\\(x^{-20}\\) in \\(\\left(x^{3}-\\frac{1}{2x^{2}}\\right)^{15}\\)"
+  },
+  {
+    "ref": "Ex 4.3 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the constant term (term independent of \\(x\\)) in the expansion of",
+    "setLabel": "Ex 4.3 Q3",
+    "stem": "\\(\\left(2x+\\frac{1}{3x^{2}}\\right)^{9}\\)"
+  },
+  {
+    "ref": "Ex 4.3 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the constant term (term independent of \\(x\\)) in the expansion of",
+    "setLabel": "Ex 4.3 Q3",
+    "stem": "\\(\\left(x-\\frac{2}{x^{2}}\\right)^{15}\\)"
+  },
+  {
+    "ref": "Ex 4.3 Q3(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the constant term (term independent of \\(x\\)) in the expansion of",
+    "setLabel": "Ex 4.3 Q3",
+    "stem": "\\(\\left(\\sqrt{x}-\\frac{3}{x^{2}}\\right)^{10}\\)"
+  },
+  {
+    "ref": "Ex 4.3 Q3(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the constant term (term independent of \\(x\\)) in the expansion of",
+    "setLabel": "Ex 4.3 Q3",
+    "stem": "\\(\\left(x^{2}-\\frac{1}{x}\\right)^{8}\\)"
+  },
+  {
+    "ref": "Ex 4.3 Q3(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the constant term (term independent of \\(x\\)) in the expansion of",
+    "setLabel": "Ex 4.3 Q3",
+    "stem": "\\(\\left(2x^{2}-\\frac{5}{x}\\right)^{9}\\)"
+  },
+  {
+    "ref": "Ex 4.3 Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the middle terms in the expansion of",
+    "setLabel": "Ex 4.3 Q4",
+    "stem": "\\(\\left(\\frac{x}{y}+\\frac{y}{x}\\right)^{12}\\)"
+  },
+  {
+    "ref": "Ex 4.3 Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the middle terms in the expansion of",
+    "setLabel": "Ex 4.3 Q4",
+    "stem": "\\(\\left(x^{2}+\\frac{1}{x}\\right)^{7}\\)"
+  },
+  {
+    "ref": "Ex 4.3 Q4(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the middle terms in the expansion of",
+    "setLabel": "Ex 4.3 Q4",
+    "stem": "\\(\\left(x^{2}-\\frac{2}{x}\\right)^{8}\\)"
+  },
+  {
+    "ref": "Ex 4.3 Q4(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the middle terms in the expansion of",
+    "setLabel": "Ex 4.3 Q4",
+    "stem": "\\(\\left(\\frac{x}{a}-\\frac{a}{x}\\right)^{10}\\)"
+  },
+  {
+    "ref": "Ex 4.3 Q4(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "context": "Find the middle terms in the expansion of",
+    "setLabel": "Ex 4.3 Q4",
+    "stem": "\\(\\left(x^{4}-\\frac{1}{x^{3}}\\right)^{11}\\)"
+  },
+  {
+    "ref": "Ex 4.3 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "HARD",
+    "stem": "In the expansion of \\((k+x)^{8}\\), the coefficient of \\(x^{5}\\) is 10 times the coefficient of \\(x^{6}\\). Find the value of \\(k\\)."
+  },
+  {
+    "ref": "Ex 4.3 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "HARD",
+    "stem": "Find the term containing \\(x^{6}\\) in the expansion of \\((2-x)(3x+1)^{9}\\)."
+  },
+  {
+    "ref": "Ex 4.3 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General Term in the Expansion",
+    "difficulty": "MODERATE",
+    "stem": "The coefficient of \\(x^{2}\\) in the expansion of \\((1+2x)^{m}\\) is 112. Find \\(m\\)."
+  },
+  {
+    "ref": "4.4 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "MODERATE",
+    "stem": "State first four terms in the expansion of \\(\\frac{1}{(a-b)^{4}}\\) where \\(|b| < |a|\\).",
+    "solution": "We have \\(\\frac{1}{(a-b)^{4}} = (a-b)^{-4}\\)\n\n\\(= \\left[a\\left(1-\\frac{b}{a}\\right)\\right]^{-4}\\)\n\n\\(= a^{-4}\\left[1+(-4)\\left(-\\frac{b}{a}\\right)+\\frac{(-4)(-5)}{2!}\\left(-\\frac{b}{a}\\right)^{2}+\\frac{(-4)(-5)(-6)}{3!}\\left(-\\frac{b}{a}\\right)^{3}+\\ldots\\right]\\)\n\n\\(= a^{-4}\\left[1+4\\frac{b}{a}+\\frac{20}{2}\\frac{b^{2}}{a^{2}}+\\frac{120}{6}\\frac{b^{3}}{a^{3}}+\\ldots\\right]\\)\n\n\\(= a^{-4}\\left[1+\\frac{4b}{a}+\\frac{10b^{2}}{a^{2}}+\\frac{20b^{3}}{a^{3}}+\\ldots\\right]\\)"
+  },
+  {
+    "ref": "4.4 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "EASY",
+    "stem": "State first four terms in the expansion of \\(\\frac{1}{(a+b)}\\), \\(|b| < |a|\\).",
+    "solution": "\\(= \\frac{1}{(a+b)} = (a+b)^{-1}\\)\n\n\\(= a^{-1}\\left(1+\\frac{b}{a}\\right)^{-1}\\)\n\n\\(= a^{-1}\\left[1+(-1)\\left(\\frac{b}{a}\\right)+\\frac{(-1)(-2)}{2!}\\left(\\frac{b}{a}\\right)^{2}+\\frac{(-1)(-2)(-3)}{3!}\\left(\\frac{b}{a}\\right)^{3}+\\ldots\\right]\\)\n\n\\(= a^{-1}\\left[1-\\frac{b}{a}+\\frac{b^{2}}{a^{2}}-\\frac{b^{3}}{a^{3}}+\\ldots\\right]\\)"
+  },
+  {
+    "ref": "4.4 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "HARD",
+    "stem": "State first four terms in the expansion of \\((2-3x)^{-1/2}\\) if \\(|x| < \\frac{2}{3}\\).",
+    "solution": "\\(|x| < \\frac{2}{3}\\)\n\n\\(\\therefore \\left|\\frac{3x}{2}\\right| < 1\\)\n\nWe have \\((2-3x)^{-1/2}\\)\n\n\\(= 2^{-1/2}\\left(1-\\frac{3x}{2}\\right)^{-\\frac{1}{2}}\\)\n\n\\(= 2^{-\\frac{1}{2}}\\left[1+\\left(-\\frac{1}{2}\\right)\\left(\\frac{-3x}{2}\\right)+\\frac{\\left(-\\frac{1}{2}\\right)\\left(-\\frac{1}{2}-1\\right)}{2!}\\left(\\frac{-3x}{2}\\right)^{2}+\\frac{\\left(-\\frac{1}{2}\\right)\\left(-\\frac{1}{2}-1\\right)\\left(-\\frac{1}{2}-2\\right)}{3!}\\left(\\frac{-3x}{2}\\right)^{3}+\\ldots\\right]\\)\n\n\\(= 2^{-\\frac{1}{2}}\\left[1+\\frac{3x}{4}+\\frac{\\left(-\\frac{1}{2}\\right)\\left(-\\frac{3}{2}\\right)}{2!}\\left(\\frac{9x^{2}}{4}\\right)+\\frac{\\left(-\\frac{1}{2}\\right)\\left(-\\frac{3}{2}\\right)\\left(-\\frac{5}{2}\\right)}{6}\\left(\\frac{-27x^{3}}{8}\\right)+\\ldots\\right]\\)\n\n\\(= 2^{-\\frac{1}{2}}\\left[1+\\frac{3x}{4}+\\frac{27x^{2}}{32}+\\frac{135x^{3}}{128}+\\ldots\\right]\\)"
+  },
+  {
+    "ref": "4.4 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "HARD",
+    "stem": "Find the value of \\(\\sqrt{30}\\) upto 4 decimal places.",
+    "solution": "[Textbook approximation shortfall, not an arithmetic slip: the working is internally consistent \\(\\left(5 \\times 1.0955 = 5.4775\\right)\\), but the question asks for \\(\\sqrt{30}\\) upto 4 decimal places and the true value is \\(5.4772\\). The four-term truncation the book uses is wrong in the 4th decimal, so it cannot deliver the accuracy the stem demands.]\n\n\\(\\sqrt{30} = (25+5)^{1/2}\\)\n\n\\(= (25)^{1/2}\\left(1+\\frac{5}{25}\\right)^{\\frac{1}{2}}\\)\n\n\\(= 5\\left(1+\\frac{1}{5}\\right)^{\\frac{1}{2}}\\)\n\n\\(= 5\\left[1+\\frac{1}{10}+\\frac{\\left(\\frac{1}{2}\\right)\\left(-\\frac{1}{2}\\right)}{2}\\left(\\frac{1}{25}\\right)+\\frac{\\left(\\frac{1}{2}\\right)\\left(-\\frac{1}{2}\\right)\\left(\\frac{-3}{2}\\right)}{6}\\left(\\frac{1}{125}\\right)+\\ldots\\right]\\)\n\n\\(= 5\\left[1+\\frac{1}{10}-\\frac{1}{200}+\\frac{1}{2000}-\\ldots\\right]\\)\n\n\\(= 5\\,[\\,1+0.1-0.005+0.0005\\,]\\) (upto 4 decimal places)\n\n\\(= 5[1.0955]\\)\n\n\\(= 5.4775\\)",
+    "_note": "Internally consistent (\\(5 \\times 1.0955 = 5.4775\\), and each of the four printed coefficients \\(1, \\tfrac{1}{10}, -\\tfrac{1}{200}, \\tfrac{1}{2000}\\) checks out). However the question asks for \\(\\sqrt{30}\\) 'upto 4 decimal places' and the true value is \\(5.4772\\) — the printed 5.4775 differs in the 4th decimal because the series is truncated after four terms. Not an arithmetic slip; recorded because a student comparing against a calculator will see a mismatch."
+  },
+  {
+    "ref": "Ex 4.4 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "EASY",
+    "context": "State, by writing first four terms, the expansion of the following, where \\(|x| < 1\\)",
+    "setLabel": "Ex 4.4 Q1",
+    "stem": "\\((1+x)^{-4}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "EASY",
+    "context": "State, by writing first four terms, the expansion of the following, where \\(|x| < 1\\)",
+    "setLabel": "Ex 4.4 Q1",
+    "stem": "\\((1-x)^{1/3}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "MODERATE",
+    "context": "State, by writing first four terms, the expansion of the following, where \\(|x| < 1\\)",
+    "setLabel": "Ex 4.4 Q1",
+    "stem": "\\((1-x^{2})^{-3}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q1(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "EASY",
+    "context": "State, by writing first four terms, the expansion of the following, where \\(|x| < 1\\)",
+    "setLabel": "Ex 4.4 Q1",
+    "stem": "\\((1+x)^{-1/5}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q1(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "MODERATE",
+    "context": "State, by writing first four terms, the expansion of the following, where \\(|x| < 1\\)",
+    "setLabel": "Ex 4.4 Q1",
+    "stem": "\\((1+x^{2})^{-1}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "MODERATE",
+    "context": "State, by writing first four terms, the expansion of the following, where \\(|b| < |a|\\)",
+    "setLabel": "Ex 4.4 Q2",
+    "stem": "\\((a-b)^{-3}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "MODERATE",
+    "context": "State, by writing first four terms, the expansion of the following, where \\(|b| < |a|\\)",
+    "setLabel": "Ex 4.4 Q2",
+    "stem": "\\((a+b)^{-4}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "MODERATE",
+    "context": "State, by writing first four terms, the expansion of the following, where \\(|b| < |a|\\)",
+    "setLabel": "Ex 4.4 Q2",
+    "stem": "\\((a+b)^{1/4}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q2(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "MODERATE",
+    "context": "State, by writing first four terms, the expansion of the following, where \\(|b| < |a|\\)",
+    "setLabel": "Ex 4.4 Q2",
+    "stem": "\\((a-b)^{-1/4}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q2(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "MODERATE",
+    "context": "State, by writing first four terms, the expansion of the following, where \\(|b| < |a|\\)",
+    "setLabel": "Ex 4.4 Q2",
+    "stem": "\\((a+b)^{-1/3}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "MODERATE",
+    "context": "Simplify first three terms in the expansion of the following",
+    "setLabel": "Ex 4.4 Q3",
+    "stem": "\\((1+2x)^{-4}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "MODERATE",
+    "context": "Simplify first three terms in the expansion of the following",
+    "setLabel": "Ex 4.4 Q3",
+    "stem": "\\((1+3x)^{-1/2}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q3(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "HARD",
+    "context": "Simplify first three terms in the expansion of the following",
+    "setLabel": "Ex 4.4 Q3",
+    "stem": "\\((2-3x)^{1/3}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q3(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "HARD",
+    "context": "Simplify first three terms in the expansion of the following",
+    "setLabel": "Ex 4.4 Q3",
+    "stem": "\\((5+4x)^{-1/2}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q3(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "HARD",
+    "context": "Simplify first three terms in the expansion of the following",
+    "setLabel": "Ex 4.4 Q3",
+    "stem": "\\((5-3x)^{-1/3}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "HARD",
+    "context": "Use binomial theorem to evaluate the following upto four places of decimals.",
+    "setLabel": "Ex 4.4 Q4",
+    "stem": "\\(\\sqrt{99}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "HARD",
+    "context": "Use binomial theorem to evaluate the following upto four places of decimals.",
+    "setLabel": "Ex 4.4 Q4",
+    "stem": "\\(\\sqrt[3]{126}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q4(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "HARD",
+    "context": "Use binomial theorem to evaluate the following upto four places of decimals.",
+    "setLabel": "Ex 4.4 Q4",
+    "stem": "\\(\\sqrt[4]{16.08}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q4(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "MODERATE",
+    "context": "Use binomial theorem to evaluate the following upto four places of decimals.",
+    "setLabel": "Ex 4.4 Q4",
+    "stem": "\\((1.02)^{-5}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q4(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Binomial Theorem for a Negative or Fractional Index",
+    "difficulty": "MODERATE",
+    "context": "Use binomial theorem to evaluate the following upto four places of decimals.",
+    "setLabel": "Ex 4.4 Q4",
+    "stem": "\\((0.98)^{-3}\\)"
+  }
+]
