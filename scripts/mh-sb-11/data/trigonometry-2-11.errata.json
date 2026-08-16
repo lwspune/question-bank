@@ -1,0 +1,74 @@
+[
+  {
+    "ref": "Ex 3.1 Q1(i)",
+    "bracket": "[Textbook answer-key error: the printed key gives \\(\\sin 15^\\circ = \\dfrac{\\sqrt{3}+1}{2\\sqrt{2}}\\), which evaluates to \\(0.9659\\) — that is \\(\\cos 15^\\circ\\). The correct value is \\(\\dfrac{\\sqrt{3}-1}{2\\sqrt{2}} = 0.2588\\). NOTE this is NOT a transposition of (i) and (ii): the key's entry for (ii) \\(\\cos 75^\\circ = \\dfrac{\\sqrt{3}-1}{2\\sqrt{2}}\\) is CORRECT, since \\(\\cos 75^\\circ = \\sin 15^\\circ\\). Both sub-items have the same correct value, so only (i) is wrong and (ii) must not be \"fixed\".]"
+  },
+  {
+    "ref": "Ex 3.1 Q2(ii)",
+    "bracket": "[Textbook misprint: the identity is printed \\(\\tan\\left(\\dfrac{\\pi}{4} + \\theta\\right) = \\dfrac{1 - \\tan\\theta}{1 + \\tan\\theta}\\) and is FALSE as printed — the right-hand side shown is \\(\\tan\\left(\\dfrac{\\pi}{4} - \\theta\\right)\\). The correct identity is \\(\\tan\\left(\\dfrac{\\pi}{4} + \\theta\\right) = \\dfrac{1 + \\tan\\theta}{1 - \\tan\\theta}\\), which is what is proved above. Checked numerically: at \\(\\theta = \\dfrac{\\pi}{12}\\) the true value is \\(\\tan 60^\\circ = 1.732\\) while the printed form gives \\(0.577 = \\tan 30^\\circ\\). Both forms coincidentally agree at \\(\\theta = 0\\), which is why the slip is easy to miss; sub-item (iii) prints the correct form.]"
+  },
+  {
+    "ref": "Ex 3.2 Q2(v)",
+    "bracket": "[Textbook misprint: the denominator's last factor is printed \\(\\operatorname{cosec}^2 - x\\) with no bracket. Read literally the identity fails at every sample angle; it holds as \\(\\operatorname{cosec}^2(-x)\\). Since cosecant is odd and the factor is SQUARED, \\(\\operatorname{cosec}^2(-x) = \\operatorname{cosec}^2 x\\) — so the intended factor is simply \\(\\operatorname{cosec}^2 x\\) and the stray minus sign is cosmetic, not a sign error in the identity.]"
+  },
+  {
+    "ref": "Ex 3.3 Q3(xviii)",
+    "bracket": "[Textbook misprint: printed as \\(4\\cos x\\cos\\left(x + \\dfrac{\\pi}{3}\\right) + \\cos^2\\left(\\pi - \\dfrac{\\pi}{3}\\right) = \\cos 3x\\), which is FALSE — the second term is a CONSTANT (\\(\\cos^2 120^\\circ = \\tfrac14\\)), and the statement fails at every one of 7 sample angles. Three corruptions at once: a \\(+\\) where a product belongs, \\(\\cos^2\\) for \\(\\cos\\), and \\(\\pi\\) for \\(x\\). The intended identity \\(4\\cos x\\cos\\left(x + \\dfrac{\\pi}{3}\\right)\\cos\\left(x - \\dfrac{\\pi}{3}\\right) = \\cos 3x\\) holds at all 7, and is what is proved above.]"
+  },
+  {
+    "ref": "Ex 3.3 Q3(vii)",
+    "bracket": "[Textbook misprint: the nested-radical identity is printed with NO domain restriction, but it holds only where \\(\\cos 4x \\ge 0\\), \\(\\cos 2x \\ge 0\\) AND \\(\\cos x \\ge 0\\) — all three are genuinely required (it passes at \\(x = 0.05, 0.17, 0.31, 0.36\\) and fails from \\(x = 0.47\\); at \\(x = 1.21\\), \\(\\cos 4x > 0\\) but \\(\\cos 2x < 0\\) and it still fails). The restriction is stated in the solution above.]"
+  },
+  {
+    "ref": "Misc II Q20",
+    "bracket": "[Textbook misprint: the conclusion is incomplete. From \\(\\sin A = \\cos B + \\cos C\\) the cancellation gives \\(\\cos\\dfrac{A}{2} = \\cos\\dfrac{B-C}{2}\\), hence \\(A = |B - C|\\), which admits TWO branches — \\(A = B - C\\) giving \\(\\angle B = \\dfrac{\\pi}{2}\\) (the printed answer) and \\(A = C - B\\) giving \\(\\angle C = \\dfrac{\\pi}{2}\\). The triangle \\(A = 30^\\circ, B = 60^\\circ, C = 90^\\circ\\) satisfies the hypothesis with \\(\\angle B\\) NOT a right angle. A scan over all triangles found no solutions outside these two families. The printed branch is proved above. The stem also omits the conditional 'if'.]"
+  },
+  {
+    "ref": "3.3.2 SolvedEx.5",
+    "bracket": "[Textbook misprint: the stem prints the right-hand side as \\(4\\cos^2 A\\cdot\\cos 4A\\), but the book's OWN printed solution closes with \\(4\\cos 2A\\cos 4A\\), and its derivation \\(\\dfrac{\\sin 8A}{\\sin 2A} = \\dfrac{2\\sin 4A\\cos 4A}{\\sin 2A}\\) forces that form. A superscript-for-argument misprint (\\(\\cos^2 A\\) for \\(\\cos 2A\\)).]"
+  },
+  {
+    "ref": "3.3.2 SolvedEx.9",
+    "bracket": "[Textbook misprint, two of them. The stem prints \\(\\tan x = \\dfrac{4}{3}\\) while the book's own solution substitutes \\(\\left(-\\dfrac{4}{3}\\right)^2\\); since \\(\\tan\\) is negative in the second quadrant, the printed hypothesis is self-inconsistent. Separately, the \\(\\cos\\dfrac{x}{2}\\) line prints \\(\\sqrt{\\dfrac{1-\\left(-\\tfrac35\\right)}{2}}\\) where \\(\\sqrt{\\dfrac{1+\\cos x}{2}}\\) requires \\(1 + \\left(-\\tfrac35\\right)\\); the following step is correct, so it is a one-line sign misprint.]"
+  },
+  {
+    "ref": "3.3.2 SolvedEx.10",
+    "bracket": "[Textbook misprint: the quadratic-formula line prints the numerator as \\(-2 + 2\\sqrt{2}\\) while the same line's result is \\(-1 \\pm \\sqrt{2}\\); it must be \\(-2 \\pm 2\\sqrt{2}\\). A \\(\\pm\\) set as \\(+\\). The final answer \\(\\sqrt{2} - 1\\) is correct.]"
+  },
+  {
+    "ref": "3.4.2 SolvedEx.3(i)",
+    "bracket": "[Textbook misprint: the stem prints \\(= \\cos 3x\\), but the book's OWN printed solution concludes \\(\\cot 3x\\). Verified numerically: as printed the statement fails at all 7 sample points, and as solved it holds at all 7. The stem is left as printed.]"
+  },
+  {
+    "ref": "3.4.2 SolvedEx.4(iii)",
+    "bracket": "[Textbook misprint: the printed solution's numerator argument reads \\(\\dfrac{12 - 4x}{2}\\) — the \\(x\\) dropped from 12 — while the denominator directly below correctly reads \\(\\dfrac{12x - 4x}{2}\\). Not answer-affecting.]"
+  },
+  {
+    "ref": "3.2 SolvedEx.2(ii)",
+    "bracket": "[Textbook misprint: the book spells cosec as 'cossec' in this working line, and drops the degree sign twice in the \\(\\tan(-690^\\circ)\\) block.]"
+  },
+  {
+    "ref": "3.2 SolvedEx.2(iv)",
+    "bracket": "[Textbook misprint: the printed working drops a minus — \\(-\\dfrac{\\cos\\theta}{\\sin\\theta} \\times \\dfrac{1}{\\cos\\theta} = \\dfrac{1}{\\sin\\theta} = -\\operatorname{cosec}\\theta\\). The middle expression should be \\(-\\dfrac{1}{\\sin\\theta}\\); the final answer is correct.]"
+  },
+  {
+    "ref": "3.2 SolvedEx.3(iv)",
+    "bracket": "[Textbook misprint: the printed working reduces to \\(\\cos^2\\dfrac{\\pi}{10}, \\cos^2\\left(\\dfrac{\\pi}{2}-\\dfrac{\\pi}{10}\\right), \\cos^2\\left(\\dfrac{\\pi}{2}+\\dfrac{\\pi}{10}\\right), \\cos^2\\left(\\pi-\\dfrac{\\pi}{10}\\right)\\), whose values are \\(\\cos^2, \\sin^2, \\sin^2, \\cos^2\\), but prints them as \\(\\cos^2, \\sin^2, \\cos^2, \\sin^2\\) — the third and fourth interchanged with respect to their own sources. The sum, and the result 2, are unaffected.]"
+  },
+  {
+    "ref": "3.5 SolvedEx.1(iii)",
+    "bracket": "[Textbook misprint: one line prints \\(= 1 - \\sin^2 C - \\cos(A+B) + \\cos(A-B)\\), with a \\(+\\) where a PRODUCT is required — as printed that line follows from neither the line above nor the line below, both of which need \\(\\cos(A+B)\\cdot\\cos(A-B)\\). The same solution also prints a lower-case \\(\\sin^2 c\\) mid-working.]"
+  },
+  {
+    "ref": "3.5 SolvedEx.1(iv)",
+    "bracket": "[Textbook misprint: the STATEMENT is printed \\(\\cot A\\cot B + \\cot B\\cot{} + \\cot C\\cot A = 1\\) — the second product's second factor is missing. The book's own closing line of this same solution prints the intended \\(\\cot A\\cot B + \\cot B\\cot C + \\cot C\\cot A = 1\\).]"
+  },
+  {
+    "ref": "3.5 SolvedEx.1(i)",
+    "bracket": "[Textbook misprint: an unclosed bracket — the working prints \\(= 2\\sin C\\left[\\cos(A-B) + \\cos(A+B)\\right.\\) with no closing bracket. Closed here as the mathematics requires; no step or value is changed.]"
+  },
+  {
+    "ref": "Misc I Q7",
+    "bracket": "[Textbook misprint: the third angle of the triangle is set with the curly-kappa glyph \\(\\varkappa\\) rather than \\(\\gamma\\), in the stem and in three of the four alternatives. Transcribed as printed.]"
+  }
+]

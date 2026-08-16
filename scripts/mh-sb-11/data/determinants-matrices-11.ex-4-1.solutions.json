@@ -1,0 +1,52 @@
+[
+  {
+    "id": "df7d78ee-21b9-4ad9-90e5-53b83df87192",
+    "ref": "Ex 4.1 Q1(i)",
+    "solution": "For a \\(2 \\times 2\\) determinant the value is (product of the leading diagonal) \\(-\\) (product of the other diagonal).\n\\(\\begin{vmatrix}2 & -4\\\\7 & -15\\end{vmatrix} = (2)(-15) - (-4)(7) = -30 + 28\\)\nThe value of the determinant is \\(-2\\)."
+  },
+  {
+    "id": "6918a323-b7b5-4a93-9fe5-a3838009a039",
+    "ref": "Ex 4.1 Q1(ii)",
+    "solution": "\\(\\begin{vmatrix}2i & 3\\\\4 & -i\\end{vmatrix} = (2i)(-i) - (3)(4) = -2i^2 - 12\\)\nSince \\(i^2 = -1\\), \\(-2i^2 = 2\\), so the value is \\(2 - 12\\).\nThe value of the determinant is \\(-10\\)."
+  },
+  {
+    "id": "933f1c53-eae1-43fe-885d-858bdc893dcb",
+    "ref": "Ex 4.1 Q1(iii)",
+    "solution": "Expand along the first row:\n\\(\\begin{vmatrix}3 & -4 & 5\\\\1 & 1 & -2\\\\2 & 3 & 1\\end{vmatrix} = 3\\begin{vmatrix}1 & -2\\\\3 & 1\\end{vmatrix} - (-4)\\begin{vmatrix}1 & -2\\\\2 & 1\\end{vmatrix} + 5\\begin{vmatrix}1 & 1\\\\2 & 3\\end{vmatrix}\\)\n\\(= 3(1 + 6) + 4(1 + 4) + 5(3 - 2) = 21 + 20 + 5\\)\nThe value of the determinant is \\(46\\)."
+  },
+  {
+    "id": "0f0c1fcf-ce10-4345-b0fd-3268d254bf00",
+    "ref": "Ex 4.1 Q1(iv)",
+    "solution": "Expand along the first row:\n\\(\\begin{vmatrix}a & h & g\\\\h & b & f\\\\g & f & c\\end{vmatrix} = a(bc - f^2) - h(hc - fg) + g(hf - bg)\\)\n\\(= abc - af^2 - ch^2 + fgh + fgh - bg^2\\)\nThe value of the determinant is \\(abc + 2fgh - af^2 - bg^2 - ch^2\\)."
+  },
+  {
+    "id": "15fed002-4246-4307-8491-20a6165382a1",
+    "ref": "Ex 4.1 Q2(i)",
+    "solution": "Expanding the determinant and equating to zero:\n\\((x^2 - x + 1)(x + 1) - (x + 1)(x + 1) = 0\\)\nTake \\((x + 1)\\) common:\n\\((x + 1)\\big[(x^2 - x + 1) - (x + 1)\\big] = 0\\), i.e. \\((x + 1)(x^2 - 2x) = 0\\)\n\\(\\therefore\\ x(x + 1)(x - 2) = 0\\)\nHence \\(x = 0\\), \\(x = -1\\) or \\(x = 2\\)."
+  },
+  {
+    "id": "4e2f94e8-f3f8-4b9f-9771-08424ae0edd4",
+    "ref": "Ex 4.1 Q2(ii)",
+    "solution": "Expand along the first row:\n\\(x\\begin{vmatrix}1 & -3\\\\-4 & 5\\end{vmatrix} - (-1)\\begin{vmatrix}2x & -3\\\\3 & 5\\end{vmatrix} + 2\\begin{vmatrix}2x & 1\\\\3 & -4\\end{vmatrix}\\)\n\\(= x(5 - 12) + 1(10x + 9) + 2(-8x - 3) = -7x + 10x + 9 - 16x - 6 = -13x + 3\\)\nGiven \\(-13x + 3 = 29\\), so \\(-13x = 26\\).\nHence \\(x = -2\\)."
+  },
+  {
+    "id": "e31df35a-d1ba-4b75-8ab2-8bb5c61017b8",
+    "ref": "Ex 4.1 Q3",
+    "solution": "Since \\(i^2 = -1\\), we get \\(i^3 = -i\\) and \\(3i^2 = -3\\), so the determinant is \\(\\begin{vmatrix}4i & -i & 2i\\\\1 & -3 & 4\\\\5 & -3 & i\\end{vmatrix}\\).\nExpand along the first row:\n\\(4i\\big[(-3)(i) - (4)(-3)\\big] - (-i)\\big[(1)(i) - (4)(5)\\big] + 2i\\big[(1)(-3) - (-3)(5)\\big]\\)\n\\(= 4i(-3i + 12) + i(i - 20) + 2i(12) = -12i^2 + 48i + i^2 - 20i + 24i = -11i^2 + 52i\\)\nWith \\(i^2 = -1\\) this is \\(11 + 52i\\). Comparing with \\(x + iy\\):\n\\(x = 11\\) and \\(y = 52\\)."
+  },
+  {
+    "id": "a1730e7a-9569-4d90-a0b4-420e3fd800c6",
+    "ref": "Ex 4.1 Q4",
+    "solution": "The minor \\(M_{ij}\\) is the determinant left after deleting the \\(i\\)th row and \\(j\\)th column, and the cofactor is \\(C_{ij} = (-1)^{i+j}M_{ij}\\).\nRow 1: \\(M_{11} = \\begin{vmatrix}2 & -1\\\\7 & 2\\end{vmatrix} = 4 + 7 = 11\\), \\(M_{12} = \\begin{vmatrix}1 & -1\\\\5 & 2\\end{vmatrix} = 2 + 5 = 7\\), \\(M_{13} = \\begin{vmatrix}1 & 2\\\\5 & 7\\end{vmatrix} = 7 - 10 = -3\\).\nRow 2: \\(M_{21} = \\begin{vmatrix}-1 & 3\\\\7 & 2\\end{vmatrix} = -2 - 21 = -23\\), \\(M_{22} = \\begin{vmatrix}2 & 3\\\\5 & 2\\end{vmatrix} = 4 - 15 = -11\\), \\(M_{23} = \\begin{vmatrix}2 & -1\\\\5 & 7\\end{vmatrix} = 14 + 5 = 19\\).\nRow 3: \\(M_{31} = \\begin{vmatrix}-1 & 3\\\\2 & -1\\end{vmatrix} = 1 - 6 = -5\\), \\(M_{32} = \\begin{vmatrix}2 & 3\\\\1 & -1\\end{vmatrix} = -2 - 3 = -5\\), \\(M_{33} = \\begin{vmatrix}2 & -1\\\\1 & 2\\end{vmatrix} = 4 + 1 = 5\\).\nApplying the sign pattern \\((-1)^{i+j}\\):\n\\(M_{11} = 11,\\ C_{11} = 11\\); \\(M_{12} = 7,\\ C_{12} = -7\\); \\(M_{13} = -3,\\ C_{13} = -3\\);\n\\(M_{21} = -23,\\ C_{21} = 23\\); \\(M_{22} = -11,\\ C_{22} = -11\\); \\(M_{23} = 19,\\ C_{23} = -19\\);\n\\(M_{31} = -5,\\ C_{31} = -5\\); \\(M_{32} = -5,\\ C_{32} = 5\\); \\(M_{33} = 5,\\ C_{33} = 5\\)."
+  },
+  {
+    "id": "6a11a697-4f62-48b0-aef2-0157dd2de166",
+    "ref": "Ex 4.1 Q5",
+    "solution": "Expand \\(A\\) along the first row:\n\\(A = 2(0 \\times (-7) - 4 \\times 5) - (-3)(6 \\times (-7) - 4 \\times 1) + 5(6 \\times 5 - 0 \\times 1)\\)\n\\(= 2(-20) + 3(-46) + 5(30) = -40 - 138 + 150 = -28\\)\nMinors of the second-row elements \\(a_{21} = 6,\\ a_{22} = 0,\\ a_{23} = 4\\):\n\\(M_{21} = \\begin{vmatrix}-3 & 5\\\\5 & -7\\end{vmatrix} = 21 - 25 = -4\\), \\(M_{22} = \\begin{vmatrix}2 & 5\\\\1 & -7\\end{vmatrix} = -14 - 5 = -19\\), \\(M_{23} = \\begin{vmatrix}2 & -3\\\\1 & 5\\end{vmatrix} = 10 + 3 = 13\\).\nCofactors \\(C_{ij} = (-1)^{i+j}M_{ij}\\): \\(C_{21} = 4\\), \\(C_{22} = -19\\), \\(C_{23} = -13\\).\na) \\(-a_{21}M_{21} + a_{22}M_{22} - a_{23}M_{23} = -6(-4) + 0(-19) - 4(13) = 24 + 0 - 52 = -28\\), which is the value of \\(A\\).\nb) \\(a_{21}C_{21} + a_{22}C_{22} + a_{23}C_{23} = 6(4) + 0(-19) + 4(-13) = 24 + 0 - 52 = -28\\), which is the value of \\(A\\).\nBoth relations are verified, and \\(A = -28\\)."
+  },
+  {
+    "id": "da625429-2284-45c4-a5aa-045dae135862",
+    "ref": "Ex 4.1 Q6",
+    "solution": "The third-column entries are \\(a_{13} = 2\\), \\(a_{23} = -4\\), \\(a_{33} = 0\\), with cofactors\n\\(C_{13} = +\\begin{vmatrix}-2 & 3\\\\-3 & 4\\end{vmatrix} = -8 + 9 = 1\\), \\(C_{23} = -\\begin{vmatrix}-1 & 1\\\\-3 & 4\\end{vmatrix} = -(-4 + 3) = 1\\), \\(C_{33} = +\\begin{vmatrix}-1 & 1\\\\-2 & 3\\end{vmatrix} = -3 + 2 = -1\\).\nExpanding along the third column:\n\\(a_{13}C_{13} + a_{23}C_{23} + a_{33}C_{33} = 2(1) + (-4)(1) + 0(-1) = 2 - 4\\)\nThe value of the determinant is \\(-2\\)."
+  }
+]

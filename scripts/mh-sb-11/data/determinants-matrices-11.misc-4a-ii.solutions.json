@@ -1,0 +1,163 @@
+[
+  {
+    "id": "e790d8f2-acc5-43c4-9da2-4d652ea66b46",
+    "ref": "Misc 4A II Q1(i)",
+    "solution": "Expand along the first row:\n\\(2\\begin{vmatrix} 2 & 1 \\\\ 0 & 2 \\end{vmatrix} - (-5)\\begin{vmatrix} 5 & 1 \\\\ 9 & 2 \\end{vmatrix} + 7\\begin{vmatrix} 5 & 2 \\\\ 9 & 0 \\end{vmatrix}\\)\n\\(= 2(4 - 0) + 5(10 - 9) + 7(0 - 18)\\)\n\\(= 8 + 5 - 126 = -113\\)\nThe value of the determinant is \\(-113\\)."
+  },
+  {
+    "id": "53a837ee-22a6-4302-b25f-e317252088c9",
+    "ref": "Misc 4A II Q1(ii)",
+    "solution": "Expand along the first row:\n\\(1\\begin{vmatrix} 2 & -4 \\\\ 7 & 2 \\end{vmatrix} - (-3)\\begin{vmatrix} 0 & -4 \\\\ 9 & 2 \\end{vmatrix} + 12\\begin{vmatrix} 0 & 2 \\\\ 9 & 7 \\end{vmatrix}\\)\n\\(= 1(4 + 28) + 3(0 + 36) + 12(0 - 18)\\)\n\\(= 32 + 108 - 216 = -76\\)\nThe value of the determinant is \\(-76\\)."
+  },
+  {
+    "id": "0c984826-bab9-4eb8-85e9-802e992d743f",
+    "ref": "Misc 4A II Q2",
+    "solution": "The second column entries are \\(a_{12} = -1\\), \\(a_{22} = 2\\), \\(a_{32} = 1\\). Their cofactors are\n\\(A_{12} = -\\begin{vmatrix} 3 & -2 \\\\ 0 & -2 \\end{vmatrix} = -(-6 - 0) = 6\\),\n\\(A_{22} = +\\begin{vmatrix} 1 & 2 \\\\ 0 & -2 \\end{vmatrix} = -2 - 0 = -2\\),\n\\(A_{32} = -\\begin{vmatrix} 1 & 2 \\\\ 3 & -2 \\end{vmatrix} = -(-2 - 6) = 8\\).\nExpanding along \\(C_2\\):\n\\(\\Delta = (-1)(6) + (2)(-2) + (1)(8) = -6 - 4 + 8 = -2\\)\nThe value of the determinant is \\(-2\\)."
+  },
+  {
+    "id": "bc17de18-985c-487a-86a4-4e2d9262d409",
+    "ref": "Misc 4A II Q3(i)",
+    "solution": "\\(R_2 = (400,\\ 600,\\ 1000) = 200(2,\\ 3,\\ 5)\\), so taking \\(200\\) common from \\(R_2\\):\n\\(\\begin{vmatrix} 2 & 3 & 5 \\\\ 400 & 600 & 1000 \\\\ 48 & 47 & 18 \\end{vmatrix} = 200\\begin{vmatrix} 2 & 3 & 5 \\\\ 2 & 3 & 5 \\\\ 48 & 47 & 18 \\end{vmatrix}\\)\nNow \\(R_1\\) and \\(R_2\\) are identical, and a determinant with two identical rows is zero.\nThe value of the determinant is \\(0\\)."
+  },
+  {
+    "id": "3c8b5c66-61bd-4242-a25d-f91d2944cceb",
+    "ref": "Misc 4A II Q3(ii)",
+    "solution": "Apply \\(C_2 \\to C_2 - C_1\\) and \\(C_3 \\to C_3 - C_1\\):\n\\(\\begin{vmatrix} 101 & 102 & 103 \\\\ 106 & 107 & 108 \\\\ 1 & 2 & 3 \\end{vmatrix} = \\begin{vmatrix} 101 & 1 & 2 \\\\ 106 & 1 & 2 \\\\ 1 & 1 & 2 \\end{vmatrix}\\)\nNow \\(C_3 = 2C_2\\), i.e. two columns are proportional, so the determinant is zero.\nThe value of the determinant is \\(0\\)."
+  },
+  {
+    "id": "388cf20c-10da-45e1-85e8-bade07fe489b",
+    "ref": "Misc 4A II Q4(i)",
+    "solution": "Delete the row and column of each element to get its minor \\(M_{ij}\\), and use \\(C_{ij} = (-1)^{i+j}M_{ij}\\).\n\\(M_{11} = \\begin{vmatrix} 1 & 3 \\\\ -4 & 2 \\end{vmatrix} = 2 + 12 = 14\\), \\(C_{11} = 14\\)\n\\(M_{12} = \\begin{vmatrix} -2 & 3 \\\\ 0 & 2 \\end{vmatrix} = -4 - 0 = -4\\), \\(C_{12} = 4\\)\n\\(M_{13} = \\begin{vmatrix} -2 & 1 \\\\ 0 & -4 \\end{vmatrix} = 8 - 0 = 8\\), \\(C_{13} = 8\\)\n\\(M_{21} = \\begin{vmatrix} 0 & 4 \\\\ -4 & 2 \\end{vmatrix} = 0 + 16 = 16\\), \\(C_{21} = -16\\)\n\\(M_{22} = \\begin{vmatrix} -1 & 4 \\\\ 0 & 2 \\end{vmatrix} = -2 - 0 = -2\\), \\(C_{22} = -2\\)\n\\(M_{23} = \\begin{vmatrix} -1 & 0 \\\\ 0 & -4 \\end{vmatrix} = 4 - 0 = 4\\), \\(C_{23} = -4\\)\n\\(M_{31} = \\begin{vmatrix} 0 & 4 \\\\ 1 & 3 \\end{vmatrix} = 0 - 4 = -4\\), \\(C_{31} = -4\\)\n\\(M_{32} = \\begin{vmatrix} -1 & 4 \\\\ -2 & 3 \\end{vmatrix} = -3 + 8 = 5\\), \\(C_{32} = -5\\)\n\\(M_{33} = \\begin{vmatrix} -1 & 0 \\\\ -2 & 1 \\end{vmatrix} = -1 - 0 = -1\\), \\(C_{33} = -1\\)"
+  },
+  {
+    "id": "2952d119-b5d4-4d74-a6a3-cc1c032d3b0b",
+    "ref": "Misc 4A II Q4(ii)",
+    "solution": "Delete the row and column of each element to get its minor \\(M_{ij}\\), and use \\(C_{ij} = (-1)^{i+j}M_{ij}\\).\n\\(M_{11} = \\begin{vmatrix} 0 & -2 \\\\ 0 & 3 \\end{vmatrix} = 0 - 0 = 0\\), \\(C_{11} = 0\\)\n\\(M_{12} = \\begin{vmatrix} 3 & -2 \\\\ 1 & 3 \\end{vmatrix} = 9 + 2 = 11\\), \\(C_{12} = -11\\)\n\\(M_{13} = \\begin{vmatrix} 3 & 0 \\\\ 1 & 0 \\end{vmatrix} = 0 - 0 = 0\\), \\(C_{13} = 0\\)\n\\(M_{21} = \\begin{vmatrix} -1 & 2 \\\\ 0 & 3 \\end{vmatrix} = -3 - 0 = -3\\), \\(C_{21} = 3\\)\n\\(M_{22} = \\begin{vmatrix} 1 & 2 \\\\ 1 & 3 \\end{vmatrix} = 3 - 2 = 1\\), \\(C_{22} = 1\\)\n\\(M_{23} = \\begin{vmatrix} 1 & -1 \\\\ 1 & 0 \\end{vmatrix} = 0 + 1 = 1\\), \\(C_{23} = -1\\)\n\\(M_{31} = \\begin{vmatrix} -1 & 2 \\\\ 0 & -2 \\end{vmatrix} = 2 - 0 = 2\\), \\(C_{31} = 2\\)\n\\(M_{32} = \\begin{vmatrix} 1 & 2 \\\\ 3 & -2 \\end{vmatrix} = -2 - 6 = -8\\), \\(C_{32} = 8\\)\n\\(M_{33} = \\begin{vmatrix} 1 & -1 \\\\ 3 & 0 \\end{vmatrix} = 0 + 3 = 3\\), \\(C_{33} = 3\\)"
+  },
+  {
+    "id": "97642778-c927-4732-b7ed-c6aefe26c125",
+    "ref": "Misc 4A II Q5(i)",
+    "solution": "Apply \\(R_2 \\to R_2 - R_1\\) and \\(R_3 \\to R_3 - R_1\\):\n\\(\\begin{vmatrix} 1 & 4 & 20 \\\\ 0 & -6 & -25 \\\\ 0 & 2x-4 & 5x^{2}-20 \\end{vmatrix} = 0\\)\nExpanding along \\(C_1\\):\n\\((-6)(5x^{2}-20) + 25(2x-4) = 0\\)\n\\(-30x^{2} + 120 + 50x - 100 = 0\\)\nDividing by \\(-10\\): \\(3x^{2} - 5x - 2 = 0\\), i.e. \\((3x+1)(x-2) = 0\\)\n\\(x = -\\frac{1}{3}\\) or \\(x = 2\\)"
+  },
+  {
+    "id": "f86014ce-90fe-46c7-95d4-33dab801e174",
+    "ref": "Misc 4A II Q5(ii)",
+    "solution": "Apply \\(R_1 \\to R_1 - R_3\\) and \\(R_2 \\to R_2 - R_3\\):\n\\(\\begin{vmatrix} 0 & 2x-1 & 4x-1 \\\\ 0 & 3 & 15 \\\\ 1 & 1 & 1 \\end{vmatrix} = 0\\)\nExpanding along \\(C_1\\):\n\\(1\\big[15(2x-1) - 3(4x-1)\\big] = 0\\)\n\\(30x - 15 - 12x + 3 = 0\\), i.e. \\(18x = 12\\)\n\\(x = \\frac{2}{3}\\)",
+    "_note": "Transcription flagged the (1,3) entry as printed '4x' with no exponent. Solved exactly as printed, and the book's own printed answer (2/3) is precisely what the printed form gives — so the un-squared entry is what the book intended and this is NOT a misprint. (With 4x^2 the rows would be the Vandermonde (1,2x,(2x)^2), (1,4,4^2), (1,1,1^2), giving x = 1/2 or 2, which does not match the printed key.)"
+  },
+  {
+    "id": "5170b59f-d30c-403e-afca-44c133bded93",
+    "ref": "Misc 4A II Q6",
+    "solution": "Apply \\(R_1 \\to R_1 + R_2\\):\n\\(\\begin{vmatrix} x+y & y+z & z+x \\\\ z & x & y \\\\ 1 & 1 & 1 \\end{vmatrix} = \\begin{vmatrix} x+y+z & x+y+z & x+y+z \\\\ z & x & y \\\\ 1 & 1 & 1 \\end{vmatrix}\\)\nTake \\((x+y+z)\\) common from \\(R_1\\):\n\\(= (x+y+z)\\begin{vmatrix} 1 & 1 & 1 \\\\ z & x & y \\\\ 1 & 1 & 1 \\end{vmatrix}\\)\nNow \\(R_1\\) and \\(R_3\\) are identical, so this determinant is \\(0\\).\nHence \\(\\begin{vmatrix} x+y & y+z & z+x \\\\ z & x & y \\\\ 1 & 1 & 1 \\end{vmatrix} = 0\\)."
+  },
+  {
+    "id": "c6ba2ef1-70f8-400f-a6b1-acdbffd0fc03",
+    "ref": "Misc 4A II Q7(i)",
+    "solution": "Let \\(\\Delta\\) be the given determinant (with \\(a, b, c \\ne 0\\)). Multiply \\(R_1, R_2, R_3\\) by \\(a, b, c\\) respectively and divide \\(\\Delta\\) by \\(abc\\) to compensate:\n\\(\\Delta = \\frac{1}{abc}\\begin{vmatrix} ab+ac & abc & ab^{2}c^{2} \\\\ bc+ab & abc & a^{2}bc^{2} \\\\ ca+bc & abc & a^{2}b^{2}c \\end{vmatrix}\\)\nTake \\(abc\\) common from \\(C_2\\) and \\(abc\\) common from \\(C_3\\):\n\\(\\Delta = \\frac{(abc)^{2}}{abc}\\begin{vmatrix} ab+ac & 1 & bc \\\\ bc+ab & 1 & ca \\\\ ca+bc & 1 & ab \\end{vmatrix} = abc\\begin{vmatrix} ab+ac & 1 & bc \\\\ bc+ab & 1 & ca \\\\ ca+bc & 1 & ab \\end{vmatrix}\\)\nApply \\(C_1 \\to C_1 + C_3\\); every entry of \\(C_1\\) becomes \\(ab+bc+ca\\), so \\(C_1 = (ab+bc+ca)C_2\\).\nTwo proportional columns make a determinant zero.\nHence \\(\\Delta = 0\\)."
+  },
+  {
+    "id": "97f1e13b-6bfc-4b30-a022-6d6c3896a2b5",
+    "ref": "Misc 4A II Q7(ii)",
+    "solution": "Start from the right-hand side (with \\(a, b, c \\ne 0\\)). Multiply \\(C_1, C_2, C_3\\) by \\(a, b, c\\) respectively and divide by \\(abc\\):\n\\(\\begin{vmatrix} x & y & z \\\\ a & b & c \\\\ bc & ca & ab \\end{vmatrix} = \\frac{1}{abc}\\begin{vmatrix} xa & yb & zc \\\\ a^{2} & b^{2} & c^{2} \\\\ abc & abc & abc \\end{vmatrix}\\)\nTake \\(abc\\) common from \\(R_3\\):\n\\(= \\frac{abc}{abc}\\begin{vmatrix} xa & yb & zc \\\\ a^{2} & b^{2} & c^{2} \\\\ 1 & 1 & 1 \\end{vmatrix} = \\begin{vmatrix} xa & yb & zc \\\\ a^{2} & b^{2} & c^{2} \\\\ 1 & 1 & 1 \\end{vmatrix}\\)\nwhich is the left-hand side.\nHence \\(\\begin{vmatrix} xa & yb & zc \\\\ a^{2} & b^{2} & c^{2} \\\\ 1 & 1 & 1 \\end{vmatrix} = \\begin{vmatrix} x & y & z \\\\ a & b & c \\\\ bc & ca & ab \\end{vmatrix}\\)."
+  },
+  {
+    "id": "290a1bbc-f617-4aa3-ab2a-12a01eb8d084",
+    "ref": "Misc 4A II Q7(iii)",
+    "solution": "The value of a determinant is unchanged when rows and columns are interchanged, so\n\\(\\begin{vmatrix} l & m & n \\\\ e & d & f \\\\ u & v & w \\end{vmatrix} = \\begin{vmatrix} l & e & u \\\\ m & d & v \\\\ n & f & w \\end{vmatrix}\\)\nIn the right-hand determinant apply \\(R_1 \\leftrightarrow R_3\\) and then \\(R_2 \\leftrightarrow R_3\\):\n\\(\\begin{vmatrix} l & e & u \\\\ m & d & v \\\\ n & f & w \\end{vmatrix} \\to \\begin{vmatrix} n & f & w \\\\ m & d & v \\\\ l & e & u \\end{vmatrix} \\to \\begin{vmatrix} n & f & w \\\\ l & e & u \\\\ m & d & v \\end{vmatrix}\\)\nEach interchange changes only the sign, and there are two of them, so the value is unchanged.\nHence \\(\\begin{vmatrix} l & m & n \\\\ e & d & f \\\\ u & v & w \\end{vmatrix} = \\begin{vmatrix} n & f & w \\\\ l & e & u \\\\ m & d & v \\end{vmatrix}\\)."
+  },
+  {
+    "id": "41fc9866-1837-4fb8-bcfa-fc3693564d3b",
+    "ref": "Misc 4A II Q7(iv)",
+    "solution": "Let \\(\\Delta = \\begin{vmatrix} 0 & a & b \\\\ -a & 0 & c \\\\ -b & -c & 0 \\end{vmatrix}\\). Interchanging rows and columns does not change a determinant, so\n\\(\\Delta = \\begin{vmatrix} 0 & -a & -b \\\\ a & 0 & -c \\\\ b & c & 0 \\end{vmatrix}\\)\nTaking \\(-1\\) common from each of the three rows of this determinant gives\n\\(\\Delta = (-1)^{3}\\begin{vmatrix} 0 & a & b \\\\ -a & 0 & c \\\\ -b & -c & 0 \\end{vmatrix} = -\\Delta\\)\nSo \\(2\\Delta = 0\\).\nHence \\(\\Delta = 0\\)."
+  },
+  {
+    "id": "bc5648a7-e6b3-46ca-9e10-eb5b0956b004",
+    "ref": "Misc 4A II Q8",
+    "solution": "Expanding the given determinant along \\(R_1\\):\n\\(a(bc - 1) - 1(c - 1) + 1(1 - b) = 0\\)\n\\(abc - a - c + 1 + 1 - b = 0\\), i.e. \\(abc - (a+b+c) + 2 = 0\\) ... (i)\nNow take the left side of what is to be proved (here \\(a, b, c \\ne 1\\)):\n\\(\\frac{1}{1-a} + \\frac{1}{1-b} + \\frac{1}{1-c} = \\frac{(1-b)(1-c) + (1-a)(1-c) + (1-a)(1-b)}{(1-a)(1-b)(1-c)}\\)\nNumerator \\(= 3 - 2(a+b+c) + (ab+bc+ca)\\)\nDenominator \\(= 1 - (a+b+c) + (ab+bc+ca) - abc\\)\nNumerator \\(-\\) Denominator \\(= 2 - (a+b+c) + abc = 0\\) by (i), so numerator \\(=\\) denominator.\nHence \\(\\frac{1}{1-a} + \\frac{1}{1-b} + \\frac{1}{1-c} = 1\\)."
+  },
+  {
+    "id": "dae0578a-c693-4dcf-8e2f-def85f523b1e",
+    "ref": "Misc 4A II Q9(i)",
+    "solution": "\\(D = \\begin{vmatrix} 2 & -1 & 1 \\\\ 1 & 2 & 3 \\\\ 3 & 1 & -4 \\end{vmatrix} = 2(-8-3) + 1(-4-9) + 1(1-6) = -40\\)\n\\(D_x = \\begin{vmatrix} 1 & -1 & 1 \\\\ 8 & 2 & 3 \\\\ 1 & 1 & -4 \\end{vmatrix} = -40\\), \\(D_y = \\begin{vmatrix} 2 & 1 & 1 \\\\ 1 & 8 & 3 \\\\ 3 & 1 & -4 \\end{vmatrix} = -80\\), \\(D_z = \\begin{vmatrix} 2 & -1 & 1 \\\\ 1 & 2 & 8 \\\\ 3 & 1 & 1 \\end{vmatrix} = -40\\)\nBy Cramer's Rule, \\(x = \\frac{D_x}{D} = \\frac{-40}{-40}\\), \\(y = \\frac{D_y}{D} = \\frac{-80}{-40}\\), \\(z = \\frac{D_z}{D} = \\frac{-40}{-40}\\).\n\\(x = 1,\\ y = 2,\\ z = 1\\)"
+  },
+  {
+    "id": "38001a29-d195-4eaa-9f98-37ec78fe6bf2",
+    "ref": "Misc 4A II Q9(ii)",
+    "solution": "Put \\(p = \\frac{1}{x}\\), \\(q = \\frac{1}{y}\\), \\(r = \\frac{1}{z}\\); the equations become \\(p + q = \\frac{3}{2}\\), \\(q + r = \\frac{5}{6}\\), \\(p + r = \\frac{4}{3}\\).\n\\(D = \\begin{vmatrix} 1 & 1 & 0 \\\\ 0 & 1 & 1 \\\\ 1 & 0 & 1 \\end{vmatrix} = 1(1-0) - 1(0-1) + 0 = 2\\)\n\\(D_p = \\begin{vmatrix} \\frac{3}{2} & 1 & 0 \\\\ \\frac{5}{6} & 1 & 1 \\\\ \\frac{4}{3} & 0 & 1 \\end{vmatrix} = 2\\), \\(D_q = \\begin{vmatrix} 1 & \\frac{3}{2} & 0 \\\\ 0 & \\frac{5}{6} & 1 \\\\ 1 & \\frac{4}{3} & 1 \\end{vmatrix} = 1\\), \\(D_r = \\begin{vmatrix} 1 & 1 & \\frac{3}{2} \\\\ 0 & 1 & \\frac{5}{6} \\\\ 1 & 0 & \\frac{4}{3} \\end{vmatrix} = \\frac{2}{3}\\)\nBy Cramer's Rule \\(p = \\frac{2}{2} = 1\\), \\(q = \\frac{1}{2}\\), \\(r = \\frac{2/3}{2} = \\frac{1}{3}\\), and \\(x = \\frac{1}{p}\\), \\(y = \\frac{1}{q}\\), \\(z = \\frac{1}{r}\\).\n\\(x = 1,\\ y = 2,\\ z = 3\\)"
+  },
+  {
+    "id": "848d73b6-692e-4779-b669-8f6dd6ef1b40",
+    "ref": "Misc 4A II Q9(iii)",
+    "solution": "\\(D = \\begin{vmatrix} 2 & 3 & 3 \\\\ 1 & -2 & 1 \\\\ 3 & -1 & -2 \\end{vmatrix} = 2(4+1) - 3(-2-3) + 3(-1+6) = 40\\)\n\\(D_x = \\begin{vmatrix} 5 & 3 & 3 \\\\ -4 & -2 & 1 \\\\ 3 & -1 & -2 \\end{vmatrix} = 40\\), \\(D_y = \\begin{vmatrix} 2 & 5 & 3 \\\\ 1 & -4 & 1 \\\\ 3 & 3 & -2 \\end{vmatrix} = 80\\), \\(D_z = \\begin{vmatrix} 2 & 3 & 5 \\\\ 1 & -2 & -4 \\\\ 3 & -1 & 3 \\end{vmatrix} = -40\\)\nBy Cramer's Rule, \\(x = \\frac{40}{40}\\), \\(y = \\frac{80}{40}\\), \\(z = \\frac{-40}{40}\\).\n\\(x = 1,\\ y = 2,\\ z = -1\\)"
+  },
+  {
+    "id": "15cc60f2-3ce4-4229-a38b-a52dbee0fc3e",
+    "ref": "Misc 4A II Q9(iv)",
+    "solution": "\\(D = \\begin{vmatrix} 1 & -1 & 2 \\\\ 3 & 4 & -5 \\\\ 2 & -1 & 3 \\end{vmatrix} = 1(12-5) + 1(9+10) + 2(-3-8) = 4\\)\n\\(D_x = \\begin{vmatrix} 7 & -1 & 2 \\\\ 5 & 4 & -5 \\\\ 12 & -1 & 3 \\end{vmatrix} = 18\\), \\(D_y = \\begin{vmatrix} 1 & 7 & 2 \\\\ 3 & 5 & -5 \\\\ 2 & 12 & 3 \\end{vmatrix} = -6\\), \\(D_z = \\begin{vmatrix} 1 & -1 & 7 \\\\ 3 & 4 & 5 \\\\ 2 & -1 & 12 \\end{vmatrix} = 2\\)\nBy Cramer's Rule, \\(x = \\frac{18}{4}\\), \\(y = \\frac{-6}{4}\\), \\(z = \\frac{2}{4}\\).\n\\(x = \\frac{9}{2},\\ y = -\\frac{3}{2},\\ z = \\frac{1}{2}\\)"
+  },
+  {
+    "id": "91ea5d8a-612c-4e1c-bbd1-8a1babff39d7",
+    "ref": "Misc 4A II Q10(i)",
+    "solution": "The three equations are consistent only if\n\\(\\begin{vmatrix} k+1 & k-1 & k-1 \\\\ k-1 & k+1 & k-1 \\\\ k-1 & k-1 & k+1 \\end{vmatrix} = 0\\)\nApply \\(C_1 \\to C_1 + C_2 + C_3\\); each entry of \\(C_1\\) becomes \\((k+1) + 2(k-1) = 3k-1\\), which comes out as a common factor:\n\\(= (3k-1)\\begin{vmatrix} 1 & k-1 & k-1 \\\\ 1 & k+1 & k-1 \\\\ 1 & k-1 & k+1 \\end{vmatrix}\\)\nApply \\(R_2 \\to R_2 - R_1\\) and \\(R_3 \\to R_3 - R_1\\):\n\\(= (3k-1)\\begin{vmatrix} 1 & k-1 & k-1 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 2 \\end{vmatrix} = 4(3k-1)\\)\nSo \\(4(3k-1) = 0\\).\n\\(k = \\frac{1}{3}\\)"
+  },
+  {
+    "id": "77ea0ead-24bc-4323-ba7d-bf3a3621aa89",
+    "ref": "Misc 4A II Q10(ii)",
+    "solution": "Write the equations as \\(3x + y - 2 = 0\\), \\(kx + 2y - 3 = 0\\), \\(2x - y - 3 = 0\\). They are consistent only if\n\\(\\begin{vmatrix} 3 & 1 & -2 \\\\ k & 2 & -3 \\\\ 2 & -1 & -3 \\end{vmatrix} = 0\\)\nExpanding along \\(R_1\\):\n\\(3(-6-3) - 1(-3k+6) - 2(-k-4) = 0\\)\n\\(-27 + 3k - 6 + 2k + 8 = 0\\), i.e. \\(5k - 25 = 0\\)\n\\(k = 5\\)"
+  },
+  {
+    "id": "eca63675-b814-4afa-a75e-2035285828cf",
+    "ref": "Misc 4A II Q10(iii)",
+    "solution": "Write the equations as \\((k-2)x + (k-1)y - 17 = 0\\), \\((k-1)x + (k-2)y - 18 = 0\\), \\(x + y - 5 = 0\\). They are consistent only if\n\\(\\begin{vmatrix} k-2 & k-1 & -17 \\\\ k-1 & k-2 & -18 \\\\ 1 & 1 & -5 \\end{vmatrix} = 0\\)\nApply \\(R_1 \\to R_1 - R_2\\):\n\\(\\begin{vmatrix} -1 & 1 & 1 \\\\ k-1 & k-2 & -18 \\\\ 1 & 1 & -5 \\end{vmatrix} = 0\\)\nExpanding along \\(R_1\\):\n\\(-1\\big[-5(k-2)+18\\big] - 1\\big[-5(k-1)+18\\big] + 1\\big[(k-1)-(k-2)\\big] = 0\\)\n\\((5k-28) + (5k-23) + 1 = 0\\), i.e. \\(10k - 50 = 0\\)\n\\(k = 5\\)"
+  },
+  {
+    "id": "0164675c-341f-4b61-9dec-0f08602cd50d",
+    "ref": "Misc 4A II Q11(i)",
+    "solution": "Let \\(D = \\begin{vmatrix} -1 & 2 & 1 \\\\ 2 & 4 & 1 \\\\ 0 & 0 & 1 \\end{vmatrix}\\). Expanding along \\(R_3\\):\n\\(D = 1\\big[(-1)(4) - (2)(2)\\big] = -4 - 4 = -8\\)\nArea \\(= \\frac{1}{2}|D| = \\frac{1}{2}(8)\\).\nThe area of \\(\\triangle ABC\\) is \\(4\\) square units."
+  },
+  {
+    "id": "8366f34e-4dfd-4b67-bdda-2d0be6d65fcf",
+    "ref": "Misc 4A II Q11(ii)",
+    "solution": "Let \\(D = \\begin{vmatrix} 3 & 6 & 1 \\\\ -1 & 3 & 1 \\\\ 2 & -1 & 1 \\end{vmatrix}\\). Expanding along \\(R_1\\):\n\\(D = 3(3+1) - 6(-1-2) + 1(1-6) = 12 + 18 - 5 = 25\\)\nArea \\(= \\frac{1}{2}|D| = \\frac{25}{2}\\).\nThe area of \\(\\triangle PQR\\) is \\(\\frac{25}{2}\\) square units."
+  },
+  {
+    "id": "a2c9549e-b49b-4ede-82fb-e1685ae84637",
+    "ref": "Misc 4A II Q11(iii)",
+    "solution": "Let \\(D = \\begin{vmatrix} 1 & 1 & 1 \\\\ -2 & 2 & 1 \\\\ 5 & 4 & 1 \\end{vmatrix}\\). Expanding along \\(R_1\\):\n\\(D = 1(2-4) - 1(-2-5) + 1(-8-10) = -2 + 7 - 18 = -13\\)\nArea \\(= \\frac{1}{2}|D| = \\frac{13}{2}\\).\nThe area of \\(\\triangle LMN\\) is \\(\\frac{13}{2}\\) square units."
+  },
+  {
+    "id": "e8d5f839-f200-40e4-927a-1c556523952a",
+    "ref": "Misc 4A II Q12(i)",
+    "solution": "Let \\(D = \\begin{vmatrix} k & 0 & 1 \\\\ 4 & 0 & 1 \\\\ 0 & 2 & 1 \\end{vmatrix}\\). Expanding along \\(C_2\\) (only \\(a_{32} = 2\\) is non-zero):\n\\(D = 2 \\times (-1)^{3+2}\\begin{vmatrix} k & 1 \\\\ 4 & 1 \\end{vmatrix} = -2(k-4) = 8 - 2k\\)\nArea \\(= \\frac{1}{2}|D| = 4\\) gives \\(|8-2k| = 8\\), so \\(8 - 2k = 8\\) or \\(8 - 2k = -8\\).\n\\(k = 0\\) or \\(k = 8\\)"
+  },
+  {
+    "id": "d1e4dabb-1e16-4751-a5e2-630af3a0044e",
+    "ref": "Misc 4A II Q12(ii)",
+    "solution": "Let \\(D = \\begin{vmatrix} 3 & -5 & 1 \\\\ -2 & k & 1 \\\\ 1 & 4 & 1 \\end{vmatrix}\\). Expanding along \\(R_1\\):\n\\(D = 3(k-4) + 5(-2-1) + 1(-8-k) = 3k - 12 - 15 - 8 - k = 2k - 35\\)\nArea \\(= \\frac{1}{2}|D| = \\frac{33}{2}\\) gives \\(|2k-35| = 33\\), so \\(2k - 35 = 33\\) or \\(2k - 35 = -33\\).\n\\(k = 34\\) or \\(k = 1\\)"
+  },
+  {
+    "id": "eebccaf7-198e-4415-a41a-34d239021587",
+    "ref": "Misc 4A II Q13",
+    "solution": "Taken in cyclic order the vertices are \\(A(0,-4)\\), \\(B(4,0)\\), \\(D(0,4)\\), \\(C(-4,0)\\), and the diagonal \\(AD\\) divides the quadrilateral into \\(\\triangle ABD\\) and \\(\\triangle ADC\\).\nFor \\(\\triangle ABD\\), expanding along \\(C_1\\) (only \\(a_{21} = 4\\) is non-zero):\n\\(\\begin{vmatrix} 0 & -4 & 1 \\\\ 4 & 0 & 1 \\\\ 0 & 4 & 1 \\end{vmatrix} = 4 \\times (-1)^{2+1}\\begin{vmatrix} -4 & 1 \\\\ 4 & 1 \\end{vmatrix} = -4(-4-4) = 32\\), so its area \\(= \\frac{1}{2}(32) = 16\\) square units.\nFor \\(\\triangle ADC\\), expanding along \\(C_1\\) (only \\(a_{31} = -4\\) is non-zero):\n\\(\\begin{vmatrix} 0 & -4 & 1 \\\\ 0 & 4 & 1 \\\\ -4 & 0 & 1 \\end{vmatrix} = (-4) \\times (-1)^{3+1}\\begin{vmatrix} -4 & 1 \\\\ 4 & 1 \\end{vmatrix} = (-4)(-8) = 32\\), so its area \\(= \\frac{1}{2}(32) = 16\\) square units.\nArea of the quadrilateral \\(= 16 + 16 = 32\\) square units."
+  },
+  {
+    "id": "528b14b0-77e9-4728-8582-6cabc4ca1fd1",
+    "ref": "Misc 4A II Q14",
+    "solution": "Let the three investments be \\(x\\), \\(y\\), \\(z\\) rupees at \\(6\\%\\), \\(7\\%\\) and \\(8\\%\\).\nTotal invested: \\(x + y + z = 5000\\).\nTotal income: \\(0.06x + 0.07y + 0.08z = 350\\), i.e. \\(6x + 7y + 8z = 35000\\).\nFirst two exceed the third by \\(70\\): \\(0.06x + 0.07y = 0.08z + 70\\), i.e. \\(6x + 7y - 8z = 7000\\).\n\\(D = \\begin{vmatrix} 1 & 1 & 1 \\\\ 6 & 7 & 8 \\\\ 6 & 7 & -8 \\end{vmatrix} = -112 + 96 + 0 = -16\\)\n\\(D_x = \\begin{vmatrix} 5000 & 1 & 1 \\\\ 35000 & 7 & 8 \\\\ 7000 & 7 & -8 \\end{vmatrix} = -28000\\), \\(D_y = \\begin{vmatrix} 1 & 5000 & 1 \\\\ 6 & 35000 & 8 \\\\ 6 & 7000 & -8 \\end{vmatrix} = -24000\\), \\(D_z = \\begin{vmatrix} 1 & 1 & 5000 \\\\ 6 & 7 & 35000 \\\\ 6 & 7 & 7000 \\end{vmatrix} = -28000\\)\nBy Cramer's Rule \\(x = \\frac{-28000}{-16} = 1750\\), \\(y = \\frac{-24000}{-16} = 1500\\), \\(z = \\frac{-28000}{-16} = 1750\\).\nThe investments are ₹1750 at \\(6\\%\\), ₹1500 at \\(7\\%\\) and ₹1750 at \\(8\\%\\)."
+  },
+  {
+    "id": "ac6d2f99-0267-427c-8f1c-20005756dbf3",
+    "ref": "Misc 4A II Q15",
+    "solution": "Write the lines as \\(x - y - 6 = 0\\), \\(4x - 3y - 20 = 0\\), \\(6x + 5y + 8 = 0\\). They are concurrent if\n\\(\\begin{vmatrix} 1 & -1 & -6 \\\\ 4 & -3 & -20 \\\\ 6 & 5 & 8 \\end{vmatrix} = 0\\)\nExpanding along \\(R_1\\):\n\\(1(-24+100) + 1(32+120) - 6(20+18) = 76 + 152 - 228 = 0\\)\nSo the three lines are concurrent.\nSolving \\(x - y = 6\\) and \\(4x - 3y = 20\\): \\(x = y + 6\\), so \\(4(y+6) - 3y = 20\\), giving \\(y = -4\\) and \\(x = 2\\); this satisfies the third line too, since \\(6(2) + 5(-4) + 8 = 0\\).\nThe point of concurrence is \\((2, -4)\\)."
+  },
+  {
+    "id": "afc553ad-1610-4fd0-b312-49056f67e74e",
+    "ref": "Misc 4A II Q16(a)",
+    "solution": "\\(\\begin{vmatrix} 2 & 5 & 1 \\\\ 5 & 7 & 1 \\\\ 8 & 9 & 1 \\end{vmatrix} = 2(7-9) - 5(5-8) + 1(45-56) = -4 + 15 - 11 = 0\\)\nSince the determinant is zero, the area of \\(\\triangle LMN\\) is zero.\nHence \\(L(2,5)\\), \\(M(5,7)\\), \\(N(8,9)\\) are collinear."
+  },
+  {
+    "id": "4f58c6fc-28da-4239-8642-2e143480e500",
+    "ref": "Misc 4A II Q16(b)",
+    "solution": "\\(\\begin{vmatrix} 5 & 1 & 1 \\\\ 1 & -1 & 1 \\\\ 11 & 4 & 1 \\end{vmatrix} = 5(-1-4) - 1(1-11) + 1(4+11) = -25 + 10 + 15 = 0\\)\nSince the determinant is zero, the area of \\(\\triangle PQR\\) is zero.\nHence \\(P(5,1)\\), \\(Q(1,-1)\\), \\(R(11,4)\\) are collinear."
+  }
+]

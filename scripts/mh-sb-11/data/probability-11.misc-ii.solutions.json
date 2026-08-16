@@ -1,0 +1,155 @@
+[
+  {
+    "id": "056c68cf-b082-4812-83db-12b9fffc415b",
+    "ref": "Misc II Q1(a)",
+    "solution": "'EQUATION' has 8 distinct letters, so \\(n(S) = 8! = 40320\\). The vowels E, U, A, I, O are 5 in number; taking them as a single block leaves \\(3 + 1 = 4\\) units, which arrange in \\(4!\\) ways, and the vowels arrange among themselves in \\(5!\\) ways. Favourable \\(= 4! \\times 5! = 24 \\times 120 = 2880\\). \\(\\therefore P = \\frac{2880}{40320} = \\frac{1}{14}\\)."
+  },
+  {
+    "id": "013150a9-3414-457e-8331-634aef976c54",
+    "ref": "Misc II Q1(b)",
+    "solution": "\\(n(S) = 8! = 40320\\). The first place can be filled by any of the 5 vowels E, U, A, I, O and the last place by any of the 3 consonants Q, T, N; the remaining 6 letters fill the 6 middle places in \\(6!\\) ways. Favourable \\(= 5 \\times 3 \\times 6! = 5 \\times 3 \\times 720 = 10800\\). \\(\\therefore P = \\frac{10800}{40320} = \\frac{15}{56}\\)."
+  },
+  {
+    "id": "6bb8a8ff-d8b2-499d-bbd3-53cf57f9c28a",
+    "ref": "Misc II Q2",
+    "solution": "Four numbers are chosen from \\(6 + 8 = 14\\), so \\(n(S) = {}^{14}C_4 = 1001\\). The product is positive exactly when an even number of the four chosen numbers is negative, i.e. 0, 2 or 4 negatives. Number of ways \\(= {}^{6}C_4 + {}^{8}C_2 \\times {}^{6}C_2 + {}^{8}C_4 = 15 + 28 \\times 15 + 70 = 15 + 420 + 70 = 505\\). \\(\\therefore P = \\frac{505}{1001}\\)."
+  },
+  {
+    "id": "a8811b50-60ed-48af-a17d-d45d2c73d1f6",
+    "ref": "Misc II Q3",
+    "solution": "Let A be the event that the number is even and B the event that the number is more than 3. Then \\(B = \\{4, 5, 6, 7, 8, 9, 10\\}\\), so \\(n(B) = 7\\), and \\(A \\cap B = \\{4, 6, 8, 10\\}\\), so \\(n(A \\cap B) = 4\\). By the definition of conditional probability, \\(P(A/B) = \\frac{n(A \\cap B)}{n(B)} = \\frac{4}{7}\\)."
+  },
+  {
+    "id": "08780cd2-0c31-4d8b-94ab-e48bf93b8bd0",
+    "ref": "Misc II Q4",
+    "solution": "Since A, B, C are independent, \\(P(A)\\,P(B) = \\frac{1}{2}\\), \\(P(B)\\,P(C) = \\frac{1}{3}\\) and \\(P(C)\\,P(A) = \\frac{1}{6}\\). Multiplying the three, \\([P(A)\\,P(B)\\,P(C)]^2 = \\frac{1}{2} \\times \\frac{1}{3} \\times \\frac{1}{6} = \\frac{1}{36}\\), so \\(P(A)\\,P(B)\\,P(C) = \\frac{1}{6}\\). Dividing this by each given product: \\(P(C) = \\frac{1/6}{1/2} = \\frac{1}{3}\\), \\(P(A) = \\frac{1/6}{1/3} = \\frac{1}{2}\\), \\(P(B) = \\frac{1/6}{1/6} = 1\\). All three given conditions are satisfied by these values, so B turns out to be a certain event. \\(\\therefore P(A) = \\frac{1}{2}\\), \\(P(B) = 1\\), \\(P(C) = \\frac{1}{3}\\).",
+    "_note": "The data force the degenerate value P(B) = 1 (B is a certain event). Solved as given; the book's printed key is 1/2, 1, 1/3, so it supports the degenerate reading — this is not a misprint."
+  },
+  {
+    "id": "01788c25-9a72-429e-8fe8-d324c181ceec",
+    "ref": "Misc II Q5",
+    "solution": "'REGULATIONS' has 11 distinct letters, so \\(n(S) = 11!\\). Exactly 4 letters lie between R and E when their positions differ by 5, i.e. the position pairs \\((1,6), (2,7), (3,8), (4,9), (5,10), (6,11)\\) — 6 pairs, each of which R and E can occupy in 2 ways, giving \\(6 \\times 2 = 12\\) choices. The remaining 9 letters arrange in \\(9!\\) ways. \\(\\therefore P = \\frac{12 \\times 9!}{11!} = \\frac{12}{11 \\times 10} = \\frac{6}{55}\\)."
+  },
+  {
+    "id": "7ddd4efe-ce83-484b-b220-e7d1db9d9d37",
+    "ref": "Misc II Q6(a)",
+    "solution": "'ARRANGEMENTS' has 12 letters in which A, R, N and E each occur twice, so \\(n(S) = \\frac{12!}{(2!)^4}\\). If the arrangement begins with EE, the remaining 10 letters A, A, R, R, N, N, G, M, T, S arrange in \\(\\frac{10!}{(2!)^3}\\) ways. \\(\\therefore P = \\frac{10!/(2!)^3}{12!/(2!)^4} = \\frac{10! \\times 2!}{12!} = \\frac{2}{12 \\times 11} = \\frac{1}{66}\\)."
+  },
+  {
+    "id": "70cbb5a0-18fc-451a-a0cc-2a19e55dc1bd",
+    "ref": "Misc II Q6(b)",
+    "solution": "\\(n(S) = \\frac{12!}{(2!)^4} = 29937600\\). The 8 consonants are R, R, N, N, G, M, T, S and the 4 vowels are A, A, E, E. Taking all consonants as one block gives \\(1 + 4 = 5\\) units, which arrange in \\(\\frac{5!}{2!\\,2!} = 30\\) ways (A and E repeat), and the consonants arrange inside the block in \\(\\frac{8!}{2!\\,2!} = 10080\\) ways. Favourable \\(= 30 \\times 10080 = 302400\\). \\(\\therefore P = \\frac{302400}{29937600} = \\frac{1}{99}\\)."
+  },
+  {
+    "id": "9dbde01a-0594-4f69-8c3c-b701551bd131",
+    "ref": "Misc II Q7",
+    "solution": "'ASSISTANT' has 9 letters: A twice, S thrice, T twice, I once, N once. 'STATISTICS' has 10 letters: S thrice, T thrice, I twice, A once, C once. The letters common to both words are A, S, I and T, and the two draws are independent, so \\(P = \\frac{2}{9} \\times \\frac{1}{10} + \\frac{3}{9} \\times \\frac{3}{10} + \\frac{1}{9} \\times \\frac{2}{10} + \\frac{2}{9} \\times \\frac{3}{10} = \\frac{2 + 9 + 2 + 6}{90} = \\frac{19}{90}\\)."
+  },
+  {
+    "id": "55c06cc9-a0b2-4930-bb54-0ba2b032ed9f",
+    "ref": "Misc II Q8",
+    "solution": "Since the probability of the face with \\(j\\) dots is proportional to \\(j\\), let \\(P(j) = kj\\) for \\(j = 1, 2, \\ldots, 6\\). As the total probability is 1, \\(k(1 + 2 + 3 + 4 + 5 + 6) = 21k = 1\\), so \\(k = \\frac{1}{21}\\). An odd number of dots means \\(j = 1, 3, 5\\), so \\(P = k(1 + 3 + 5) = \\frac{9}{21} = \\frac{3}{7}\\)."
+  },
+  {
+    "id": "72349ad0-35a2-4d4a-beae-d3b3a171e1e0",
+    "ref": "Misc II Q9",
+    "solution": "The urn has 5 red and 2 green balls, so the first ball is red with probability \\(\\frac{5}{7}\\) and green with probability \\(\\frac{2}{7}\\). If the first is red it is not replaced and a green is added, leaving 4 red and 3 green, so the second is red with probability \\(\\frac{4}{7}\\). If the first is green a red is added, leaving 6 red and 1 green, so the second is red with probability \\(\\frac{6}{7}\\). By the total probability rule, \\(P(\\text{second is red}) = \\frac{5}{7} \\times \\frac{4}{7} + \\frac{2}{7} \\times \\frac{6}{7} = \\frac{20}{49} + \\frac{12}{49} = \\frac{32}{49}\\)."
+  },
+  {
+    "id": "c15c0a02-95ad-4d40-a8d1-b4cb7f3bb52a",
+    "ref": "Misc II Q10",
+    "solution": "The odds against A solving the problem are 4 to 3, so A fails with probability \\(\\frac{4}{7}\\). The odds in favour of the second person solving it are 7 to 5, so that person fails with probability \\(\\frac{5}{12}\\). The two attempts are independent, so the problem is left unsolved with probability \\(\\frac{4}{7} \\times \\frac{5}{12} = \\frac{20}{84} = \\frac{5}{21}\\). \\(\\therefore P(\\text{problem is solved}) = 1 - \\frac{5}{21} = \\frac{16}{21}\\).",
+    "_note": "As printed, 'the odds in favor of solving the same problem are 7 to 5' names no second solver, so the stem gives two different odds for one event. Solved as two independent solvers (the book's parallel Ex 9.5 Q2 reads 'the odds in favor of Rafi solving the same problem'); the printed key 16/21 confirms this reading."
+  },
+  {
+    "id": "99f2dcd0-0d4d-4fbe-a543-31f647d18098",
+    "ref": "Misc II Q11(i)",
+    "solution": "\\(P\\left(\\frac{A'}{B}\\right) = 1 - P\\left(\\frac{A}{B}\\right) = 1 - \\frac{1}{5} = \\frac{4}{5}\\)."
+  },
+  {
+    "id": "f3e1f978-b4ed-4274-b89b-d68451ba490f",
+    "ref": "Misc II Q11(ii)",
+    "solution": "Since \\(P\\left(\\frac{A}{B}\\right) = P(A)\\), the events A and B are independent, and hence so are A' and B'. Also \\(P(B) = P\\left(\\frac{B}{A}\\right) = \\frac{1}{3}\\). \\(\\therefore P\\left(\\frac{B'}{A'}\\right) = P(B') = 1 - \\frac{1}{3} = \\frac{2}{3}\\)."
+  },
+  {
+    "id": "cd7ce5ea-6918-4216-af9c-df8880c590b9",
+    "ref": "Misc II Q12(a)",
+    "solution": "As A and B are independent, \\(P(A \\cap B) = P(A)\\,P(B)\\), so \\(P(A \\cup B) = P(A) + P(B) - P(A)\\,P(B) = \\frac{1}{4} + P(B) - \\frac{1}{4}P(B) = \\frac{1}{4} + \\frac{3}{4}P(B)\\). Equating this to the given \\(2P(B) - P(A) = 2P(B) - \\frac{1}{4}\\): \\(\\frac{1}{4} + \\frac{3}{4}P(B) = 2P(B) - \\frac{1}{4}\\), so \\(\\frac{1}{2} = \\frac{5}{4}P(B)\\). \\(\\therefore P(B) = \\frac{2}{5}\\)."
+  },
+  {
+    "id": "ae2ac008-9326-41e1-b854-da3f7b830539",
+    "ref": "Misc II Q12(b)",
+    "solution": "A and B are independent, so knowing that B has occurred does not change the chance of A. \\(\\therefore P(A/B) = P(A) = \\frac{1}{4}\\)."
+  },
+  {
+    "id": "952ffc5b-c8fb-4660-b044-3a138ff154d1",
+    "ref": "Misc II Q12(c)",
+    "solution": "A and B are independent, hence so are A and B'. \\(\\therefore P(B'/A) = P(B') = 1 - P(B) = 1 - \\frac{2}{5} = \\frac{3}{5}\\)."
+  },
+  {
+    "id": "0d98c602-974f-4e44-b1cb-a04f2fec995d",
+    "ref": "Misc II Q13",
+    "solution": "An ordinary year has \\(365 = 52 \\times 7 + 1\\) days, so it has 52 Wednesdays and one odd day; it has 53 Wednesdays only if that odd day is a Wednesday, with probability \\(\\frac{1}{7}\\). A leap year has \\(366 = 52 \\times 7 + 2\\) days, and one of the 7 equally likely pairs of consecutive odd days contains a Wednesday in 2 cases, so the probability is \\(\\frac{2}{7}\\). Since one year in four is a leap year, \\(P(\\text{leap}) = \\frac{1}{4}\\) and \\(P(\\text{ordinary}) = \\frac{3}{4}\\). \\(\\therefore P = \\frac{3}{4} \\times \\frac{1}{7} + \\frac{1}{4} \\times \\frac{2}{7} = \\frac{3}{28} + \\frac{2}{28} = \\frac{5}{28}\\)."
+  },
+  {
+    "id": "944ad031-a385-4311-aae1-7ec83da13e0b",
+    "ref": "Misc II Q14(a)",
+    "solution": "The three selections are mutually exclusive and exhaustive, so by the total probability rule \\(P(\\text{IT introduced}) = \\frac{2}{5} \\times \\frac{1}{2} + \\frac{2}{5} \\times \\frac{1}{3} + \\frac{1}{5} \\times \\frac{1}{4} = \\frac{1}{5} + \\frac{2}{15} + \\frac{1}{20} = \\frac{12 + 8 + 3}{60} = \\frac{23}{60}\\)."
+  },
+  {
+    "id": "8fb04481-70f9-4932-9a6e-fbea0c4d45f6",
+    "ref": "Misc II Q14(b)",
+    "solution": "By Bayes' theorem, \\(P\\left(\\frac{Q}{\\text{IT}}\\right) = \\frac{P(Q)\\,P(\\text{IT}/Q)}{P(\\text{IT})}\\). Here \\(P(Q)\\,P(\\text{IT}/Q) = \\frac{2}{5} \\times \\frac{1}{3} = \\frac{2}{15} = \\frac{8}{60}\\) and \\(P(\\text{IT}) = \\frac{23}{60}\\). \\(\\therefore P\\left(\\frac{Q}{\\text{IT}}\\right) = \\frac{8/60}{23/60} = \\frac{8}{23}\\)."
+  },
+  {
+    "id": "8f98f210-b0c6-41a3-9237-0d795e411939",
+    "ref": "Misc II Q15",
+    "solution": "There are \\(5 + 2 = 7\\) fuses, of which 2 are defective. The first test gives a defective fuse with probability \\(\\frac{2}{7}\\); after that 6 fuses remain of which 1 is defective, so the second test gives the other defective one with probability \\(\\frac{1}{6}\\). By the multiplication theorem, \\(P = \\frac{2}{7} \\times \\frac{1}{6} = \\frac{1}{21}\\)."
+  },
+  {
+    "id": "0bbdc5f7-5ae5-43c9-9646-70b2ebc12cdb",
+    "ref": "Misc II Q16",
+    "solution": "Since A and C are independent, \\(P(A \\cup C) = P(A) + P(C) - P(A)P(C) = \\frac{2}{3}\\) ... (1); similarly \\(P(B) + P(C) - P(B)P(C) = \\frac{3}{4}\\) ... (2). As A and B are disjoint, \\(P(A \\cap B) = 0\\) and \\(P(A \\cap B \\cap C) = 0\\), so \\(P(A \\cup B \\cup C) = P(A) + P(B) + P(C) - P(A)P(C) - P(B)P(C) = \\frac{11}{12}\\) ... (3). Adding (1) and (2) and subtracting (3) leaves \\(P(C) = \\frac{2}{3} + \\frac{3}{4} - \\frac{11}{12} = \\frac{17}{12} - \\frac{11}{12} = \\frac{1}{2}\\). Putting \\(P(C) = \\frac{1}{2}\\) in (1): \\(\\frac{1}{2}P(A) = \\frac{2}{3} - \\frac{1}{2} = \\frac{1}{6}\\), so \\(P(A) = \\frac{1}{3}\\); and in (2): \\(\\frac{1}{2}P(B) = \\frac{3}{4} - \\frac{1}{2} = \\frac{1}{4}\\), so \\(P(B) = \\frac{1}{2}\\). \\(\\therefore P(A) = \\frac{1}{3}\\), \\(P(B) = \\frac{1}{2}\\), \\(P(C) = \\frac{1}{2}\\)."
+  },
+  {
+    "id": "f75a4c03-f8b5-4f26-9929-0446e857a243",
+    "ref": "Misc II Q17",
+    "solution": "Boys and girls are in the ratio 3 : 2, so \\(P(B) = \\frac{3}{5}\\) and \\(P(G) = \\frac{2}{5}\\). Let S be the event that the chosen student is a good singer; then \\(P(S/G) = \\frac{3}{500}\\) and \\(P(S/B) = \\frac{2}{50} = \\frac{1}{25}\\). By Bayes' theorem, \\(P(G/S) = \\frac{\\frac{2}{5} \\times \\frac{3}{500}}{\\frac{2}{5} \\times \\frac{3}{500} + \\frac{3}{5} \\times \\frac{1}{25}} = \\frac{\\frac{6}{2500}}{\\frac{6}{2500} + \\frac{60}{2500}} = \\frac{6}{66} = \\frac{1}{11}\\)."
+  },
+  {
+    "id": "de7503c5-75bc-4d05-ae21-029e4fddccb3",
+    "ref": "Misc II Q18",
+    "solution": "In one throw the probability of getting a 3 is \\(\\frac{1}{6}\\) and of not getting a 3 is \\(\\frac{5}{6}\\). A begins, so A wins on the 1st, 3rd, 5th, ... throw: \\(P(A \\text{ wins}) = \\frac{1}{6} + \\left(\\frac{5}{6}\\right)^2 \\frac{1}{6} + \\left(\\frac{5}{6}\\right)^4 \\frac{1}{6} + \\cdots\\), a geometric series with first term \\(\\frac{1}{6}\\) and common ratio \\(\\frac{25}{36}\\). \\(\\therefore P(A \\text{ wins}) = \\frac{1/6}{1 - 25/36} = \\frac{1/6}{11/36} = \\frac{6}{11}\\) and \\(P(B \\text{ wins}) = 1 - \\frac{6}{11} = \\frac{5}{11}\\)."
+  },
+  {
+    "id": "d4fa78c2-6392-40bf-a2fa-ee4d9bdaf729",
+    "ref": "Misc II Q19",
+    "solution": "With a pair of fair dice \\(n(S) = 36\\). A sum of 5 arises in 4 ways \\((1,4), (2,3), (3,2), (4,1)\\) and a sum of 7 in 6 ways, so \\(P(5) = \\frac{4}{36}\\) and \\(P(7) = \\frac{6}{36}\\). Every roll that gives neither sum leaves the situation unchanged, so only the first roll giving a 5 or a 7 decides the issue. \\(\\therefore P(\\text{sum } 5 \\text{ before sum } 7) = \\frac{4/36}{4/36 + 6/36} = \\frac{4}{10} = \\frac{2}{5}\\)."
+  },
+  {
+    "id": "35ccd5b5-5aa2-41ae-86f3-647b97ade036",
+    "ref": "Misc II Q20",
+    "solution": "The inspection machine discards every obviously defective part, i.e. 8% of the production, so the parts that get shipped form \\(100\\% - 8\\% = 92\\%\\) of the output, consisting of the 90% good and the 2% slightly defective parts. Hence for a shipped part, \\(P(\\text{good}) = \\frac{90}{92} = \\frac{45}{46}\\) and \\(P(\\text{slightly defective}) = \\frac{2}{92} = \\frac{1}{46}\\). \\(\\therefore\\) the shipped parts are good with probability \\(\\frac{90}{92} = \\frac{45}{46}\\)."
+  },
+  {
+    "id": "0b65cfcd-ae37-4f48-a7c6-f58e8e174ec3",
+    "ref": "Misc II Q21",
+    "solution": "The other coin is also gold only if box I was chosen, so the required probability is \\(P(\\text{I}/G)\\) where G is the event that the coin drawn is gold. Each box is equally likely, and \\(P(G/\\text{I}) = 1\\), \\(P(G/\\text{II}) = 0\\), \\(P(G/\\text{III}) = \\frac{1}{2}\\), so \\(P(G) = \\frac{1}{3}(1) + \\frac{1}{3}(0) + \\frac{1}{3}\\left(\\frac{1}{2}\\right) = \\frac{1}{2}\\). By Bayes' theorem, \\(P(\\text{I}/G) = \\frac{\\frac{1}{3} \\times 1}{\\frac{1}{2}} = \\frac{2}{3}\\)."
+  },
+  {
+    "id": "364b5f95-8120-407f-b711-5d1bfabf2c09",
+    "ref": "Misc II Q22",
+    "solution": "Let D be the event that the bulb drawn is defective. Then \\(P(A) = \\frac{25}{100}\\), \\(P(B) = \\frac{35}{100}\\), \\(P(C) = \\frac{40}{100}\\) and \\(P(D/A) = \\frac{5}{100}\\), \\(P(D/B) = \\frac{4}{100}\\), \\(P(D/C) = \\frac{2}{100}\\). By the total probability rule, \\(P(D) = \\frac{25 \\times 5 + 35 \\times 4 + 40 \\times 2}{10000} = \\frac{125 + 140 + 80}{10000} = \\frac{345}{10000}\\). By Bayes' theorem, \\(P(B/D) = \\frac{140/10000}{345/10000} = \\frac{140}{345} = \\frac{28}{69}\\)."
+  },
+  {
+    "id": "9b2c63da-816c-4a63-9184-3240f16acea8",
+    "ref": "Misc II Q23(a)",
+    "solution": "With B for a boy and G for a girl, \\(S = \\{BB, BG, GB, GG\\}\\), each outcome having probability \\(\\frac{1}{4}\\). Let E be the event that the child chosen at random is a girl. Then \\(P(E) = \\frac{1}{4}(0) + \\frac{1}{4}\\left(\\frac{1}{2}\\right) + \\frac{1}{4}\\left(\\frac{1}{2}\\right) + \\frac{1}{4}(1) = \\frac{1}{2}\\). If both children are girls the chosen child is certainly a girl, so \\(P(GG \\cap E) = \\frac{1}{4}\\). \\(\\therefore P(GG/E) = \\frac{1/4}{1/2} = \\frac{1}{2}\\)."
+  },
+  {
+    "id": "8c249de5-f72c-471f-aa41-e1c232932d78",
+    "ref": "Misc II Q23(b)",
+    "solution": "Let F be the event that at least one child is a girl. From \\(S = \\{BB, BG, GB, GG\\}\\) we get \\(F = \\{BG, GB, GG\\}\\), so \\(P(F) = \\frac{3}{4}\\), while both children are girls in only one outcome, so \\(P(GG \\cap F) = P(GG) = \\frac{1}{4}\\). \\(\\therefore P(GG/F) = \\frac{1/4}{3/4} = \\frac{1}{3}\\).",
+    "_note": "The printed key gives a single value for Q23, namely 1/2, which is the answer to part (a) (a particular child chosen at random is a girl). Part (b) conditions on the different event 'at least one is a girl' and correctly gives 1/3; the key simply does not list it."
+  }
+]

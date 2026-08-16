@@ -1,0 +1,164 @@
+[
+  {
+    "id": "0bdd4dd2-bd54-428e-891c-1c4b523e20fd",
+    "ref": "Misc 4B II Q1(i)",
+    "solution": "Diagonal matrices add and subtract entry by entry along the diagonal, so work with the three diagonal entries separately.\n\\(B + C - A = \\text{diag}\\,[\\,4 + (-3) - 2,\\ \\ -6 + 4 - (-3),\\ \\ -3 + 1 - (-5)\\,]\\)\n\\(= \\text{diag}\\,[-1\\ \\ 1\\ \\ 3]\\)\nHence \\(B + C - A = \\begin{bmatrix} -1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 3 \\end{bmatrix} = \\text{diag}\\,[-1\\ \\ 1\\ \\ 3]\\)"
+  },
+  {
+    "id": "d3f88bb7-2f6d-4715-8ac4-141cc3881c8f",
+    "ref": "Misc 4B II Q1(ii)",
+    "solution": "Scalar multiples of a diagonal matrix are again diagonal, so combine the corresponding diagonal entries.\n\\(2A + B - 5C = \\text{diag}\\,[\\,2(2) + 4 - 5(-3),\\ \\ 2(-3) + (-6) - 5(4),\\ \\ 2(-5) + (-3) - 5(1)\\,]\\)\n\\(= \\text{diag}\\,[\\,4 + 4 + 15,\\ \\ -6 - 6 - 20,\\ \\ -10 - 3 - 5\\,]\\)\nHence \\(2A + B - 5C = \\text{diag}\\,[23\\ \\ -32\\ \\ -18]\\)"
+  },
+  {
+    "id": "b8b0a26a-4c5e-4210-b3fc-81cd2714152a",
+    "ref": "Misc 4B II Q2(i)",
+    "solution": "Replace \\(\\alpha\\) by \\(-\\alpha\\) throughout and use \\(\\cos(-\\alpha) = \\cos\\alpha\\), \\(\\sin(-\\alpha) = -\\sin\\alpha\\).\nThe entry \\(-\\sin\\alpha\\) becomes \\(-\\sin(-\\alpha) = \\sin\\alpha\\) and the entry \\(\\sin\\alpha\\) becomes \\(-\\sin\\alpha\\), while the cosines are unchanged.\n\\(f(-\\alpha) = \\begin{bmatrix} \\cos\\alpha & \\sin\\alpha & 0 \\\\ -\\sin\\alpha & \\cos\\alpha & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "131e08ba-c033-4cbe-8aca-9a57a871bec9",
+    "ref": "Misc 4B II Q2(ii)",
+    "solution": "Add \\(f(-\\alpha)\\) from part (i) to \\(f(\\alpha)\\) entry by entry; the two sine terms in each off-diagonal position are negatives of each other and cancel.\n\\(f(-\\alpha) + f(\\alpha) = \\begin{bmatrix} \\cos\\alpha + \\cos\\alpha & \\sin\\alpha - \\sin\\alpha & 0 \\\\ -\\sin\\alpha + \\sin\\alpha & \\cos\\alpha + \\cos\\alpha & 0 \\\\ 0 & 0 & 1 + 1 \\end{bmatrix}\\)\nHence \\(f(-\\alpha) + f(\\alpha) = \\begin{bmatrix} 2\\cos\\alpha & 0 & 0 \\\\ 0 & 2\\cos\\alpha & 0 \\\\ 0 & 0 & 2 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "2b9c0c42-f216-4e65-978f-6df9ddd8cc00",
+    "ref": "Misc 4B II Q3(i)",
+    "solution": "Write \\(M = \\begin{bmatrix} 1 & -1 \\\\ 0 & 1 \\end{bmatrix}\\), so the two equations are \\(2A - B = M\\) ... (1) and \\(A + 3B = M\\) ... (2).\nTo eliminate \\(A\\), form \\(2 \\times (2) - (1)\\):\n\\((2A + 6B) - (2A - B) = 2M - M\\), that is \\(7B = M\\), so \\(B = \\dfrac{1}{7}M = \\begin{bmatrix} \\dfrac{1}{7} & -\\dfrac{1}{7} \\\\ 0 & \\dfrac{1}{7} \\end{bmatrix}\\).\nSubstituting in (2): \\(A = M - 3B = M - \\dfrac{3}{7}M = \\dfrac{4}{7}M\\).\nHence \\(A = \\dfrac{1}{7}\\begin{bmatrix} 4 & -4 \\\\ 0 & 4 \\end{bmatrix}\\) and \\(B = \\dfrac{1}{7}\\begin{bmatrix} 1 & -1 \\\\ 0 & 1 \\end{bmatrix}\\)",
+    "_note": "Transcription flagged that the SAME matrix [[1,-1],[0,1]] is printed as the right-hand side of both equations (unlike sub-item (ii), which uses two distinct right-hand sides), raising a copy-paste suspicion. The book's own printed key resolves it: it gives A = (1/7)[[4,-4],[0,4]] and B = [[1/7,-1/7],[0,1/7]], which is exactly what two IDENTICAL right-hand sides produce. So the stem is as the book intends and the fractional sevenths are the book's own answer -- not a transcription defect. No change made."
+  },
+  {
+    "id": "68fbb663-7e34-446f-ab0f-4b49952a5055",
+    "ref": "Misc 4B II Q3(ii)",
+    "solution": "Write \\(P = \\begin{bmatrix} -1 & 2 & 1 \\\\ 1 & 0 & 5 \\end{bmatrix}\\) and \\(Q = \\begin{bmatrix} 0 & 0 & 1 \\\\ -1 & 0 & 0 \\end{bmatrix}\\), so \\(3A - B = P\\) ... (1) and \\(A + 5B = Q\\) ... (2).\nTo eliminate \\(B\\), form \\(5 \\times (1) + (2)\\): \\(15A - 5B + A + 5B = 5P + Q\\), that is \\(16A = 5P + Q\\).\n\\(5P + Q = \\begin{bmatrix} -5 & 10 & 5 \\\\ 5 & 0 & 25 \\end{bmatrix} + \\begin{bmatrix} 0 & 0 & 1 \\\\ -1 & 0 & 0 \\end{bmatrix} = \\begin{bmatrix} -5 & 10 & 6 \\\\ 4 & 0 & 25 \\end{bmatrix}\\), so \\(A = \\dfrac{1}{16}\\begin{bmatrix} -5 & 10 & 6 \\\\ 4 & 0 & 25 \\end{bmatrix}\\).\nFrom (2), \\(5B = Q - A = \\dfrac{1}{16}\\begin{bmatrix} 5 & -10 & 10 \\\\ -20 & 0 & -25 \\end{bmatrix}\\).\nHence \\(A = \\dfrac{1}{16}\\begin{bmatrix} -5 & 10 & 6 \\\\ 4 & 0 & 25 \\end{bmatrix}\\) and \\(B = \\dfrac{1}{16}\\begin{bmatrix} 1 & -2 & 2 \\\\ -4 & 0 & -5 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "3a20186b-aca4-44bd-bccb-5ab02fec3e63",
+    "ref": "Misc 4B II Q4(i)",
+    "solution": "\\(B^{T} = \\begin{bmatrix} -3 & 2 \\\\ 4 & -1 \\\\ 1 & -3 \\end{bmatrix}\\), so \\(A + B^{T} = \\begin{bmatrix} -1 & -1 \\\\ 7 & -3 \\\\ 0 & 1 \\end{bmatrix}\\) and therefore\n\\((A + B^{T})^{T} = \\begin{bmatrix} -1 & 7 & 0 \\\\ -1 & -3 & 1 \\end{bmatrix}\\).\nOn the other side, \\(A^{T} = \\begin{bmatrix} 2 & 3 & -1 \\\\ -3 & -2 & 4 \\end{bmatrix}\\), so\n\\(A^{T} + 2B = \\begin{bmatrix} 2 - 6 & 3 + 8 & -1 + 2 \\\\ -3 + 4 & -2 - 2 & 4 - 6 \\end{bmatrix} = \\begin{bmatrix} -4 & 11 & 1 \\\\ 1 & -4 & -2 \\end{bmatrix}\\), which is NOT equal to \\((A + B^{T})^{T}\\).\nThe identity that does hold is \\((A + B^{T})^{T} = A^{T} + (B^{T})^{T} = A^{T} + B\\), and indeed\n\\(A^{T} + B = \\begin{bmatrix} 2 - 3 & 3 + 4 & -1 + 1 \\\\ -3 + 2 & -2 - 1 & 4 - 3 \\end{bmatrix} = \\begin{bmatrix} -1 & 7 & 0 \\\\ -1 & -3 & 1 \\end{bmatrix} = (A + B^{T})^{T}\\).\nHence the printed statement \\((A + B^{T})^{T} = A^{T} + 2B\\) is false; the correct result is \\((A + B^{T})^{T} = A^{T} + B = \\begin{bmatrix} -1 & 7 & 0 \\\\ -1 & -3 & 1 \\end{bmatrix}\\)",
+    "_note": "Textbook misprint in the stem: it prints (A + B^T)^T = A^T + 2B. By the transpose rules (X + Y)^T = X^T + Y^T and (B^T)^T = B, the correct identity is A^T + B, and that is what the arithmetic gives. The coefficient 2 is likely carried over from sub-item (ii), where the 5 in 3A - 5B^T legitimately reappears in 3A^T - 5B. The matrix orders are consistent either way (both sides 2x3), so only the arithmetic exposes it. The book prints no key for this row (it omits verify questions), so there is no key to contradict. Solution verifies the CORRECT identity and states plainly that the printed one fails."
+  },
+  {
+    "id": "e35404cc-f09a-4f35-807b-b7353e3dfb77",
+    "ref": "Misc 4B II Q4(ii)",
+    "solution": "\\(3A = \\begin{bmatrix} 6 & -9 \\\\ 9 & -6 \\\\ -3 & 12 \\end{bmatrix}\\) and \\(5B^{T} = \\begin{bmatrix} -15 & 10 \\\\ 20 & -5 \\\\ 5 & -15 \\end{bmatrix}\\), so \\(3A - 5B^{T} = \\begin{bmatrix} 21 & -19 \\\\ -11 & -1 \\\\ -8 & 27 \\end{bmatrix}\\).\nTaking the transpose, L.H.S. \\(= (3A - 5B^{T})^{T} = \\begin{bmatrix} 21 & -11 & -8 \\\\ -19 & -1 & 27 \\end{bmatrix}\\).\nFor the R.H.S., \\(3A^{T} = \\begin{bmatrix} 6 & 9 & -3 \\\\ -9 & -6 & 12 \\end{bmatrix}\\) and \\(5B = \\begin{bmatrix} -15 & 20 & 5 \\\\ 10 & -5 & -15 \\end{bmatrix}\\), so\n\\(3A^{T} - 5B = \\begin{bmatrix} 21 & -11 & -8 \\\\ -19 & -1 & 27 \\end{bmatrix}\\).\nBoth sides are the same \\(2 \\times 3\\) matrix, hence \\((3A - 5B^{T})^{T} = 3A^{T} - 5B\\) is verified."
+  },
+  {
+    "id": "d7b4174d-f0b1-432d-98b7-63bfb50b36f5",
+    "ref": "Misc 4B II Q5",
+    "solution": "\\(A^{T} = \\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\), so the off-diagonal sine terms cancel on addition:\n\\(A + A^{T} = \\begin{bmatrix} 2\\cos\\alpha & 0 \\\\ 0 & 2\\cos\\alpha \\end{bmatrix}\\).\nEquating this to \\(I = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\\) gives \\(2\\cos\\alpha = 1\\), that is \\(\\cos\\alpha = \\dfrac{1}{2}\\).\nHence \\(\\alpha = 60^\\circ = \\dfrac{\\pi}{3}\\)"
+  },
+  {
+    "id": "4237715a-5575-4edc-9140-fca7735ba0a9",
+    "ref": "Misc 4B II Q6",
+    "solution": "\\(A\\) is \\(3 \\times 2\\) and \\(B\\) is \\(2 \\times 3\\), so \\(AB\\) is a \\(3 \\times 3\\) matrix.\n\\(AB = \\begin{bmatrix} 1 & 2 \\\\ 3 & 2 \\\\ -1 & 0 \\end{bmatrix}\\begin{bmatrix} 1 & 3 & 2 \\\\ 4 & -1 & -3 \\end{bmatrix} = \\begin{bmatrix} 9 & 1 & -4 \\\\ 11 & 7 & 0 \\\\ -1 & -3 & -2 \\end{bmatrix}\\)\nExpanding along the first row,\n\\(|AB| = 9(7 \\times (-2) - 0 \\times (-3)) - 1(11 \\times (-2) - 0 \\times (-1)) + (-4)(11 \\times (-3) - 7 \\times (-1))\\)\n\\(= 9(-14) - 1(-22) - 4(-26) = -126 + 22 + 104 = 0\\)\nSince \\(|AB| = 0\\), \\(AB\\) is a singular matrix."
+  },
+  {
+    "id": "ab6eaa40-08c1-4e17-a800-99927b793ff5",
+    "ref": "Misc 4B II Q7",
+    "solution": "\\(AB = \\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\\\ 1 & 2 & 3 \\end{bmatrix}\\begin{bmatrix} 1 & -1 & 1 \\\\ -3 & 2 & -1 \\\\ -2 & 1 & 0 \\end{bmatrix} = \\begin{bmatrix} -11 & 6 & -1 \\\\ -22 & 12 & -2 \\\\ -11 & 6 & -1 \\end{bmatrix}\\)\nHere the third row is identical to the first row, so \\(|AB| = 0\\).\n\\(BA = \\begin{bmatrix} 1 & -1 & 1 \\\\ -3 & 2 & -1 \\\\ -2 & 1 & 0 \\end{bmatrix}\\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\\\ 1 & 2 & 3 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & 0 \\end{bmatrix}\\)\n(for example the first row gives \\(1 - 2 + 1 = 0\\), \\(2 - 4 + 2 = 0\\), \\(3 - 6 + 3 = 0\\)), so \\(|BA| = 0\\) as well.\nSince \\(|AB| = 0\\) and \\(|BA| = 0\\), both \\(AB\\) and \\(BA\\) are singular matrices."
+  },
+  {
+    "id": "680c348e-b37e-4a3f-b765-19b0cd173036",
+    "ref": "Misc 4B II Q8",
+    "solution": "Multiply \\(B\\) by \\(A\\), row of \\(B\\) into column of \\(A\\):\nFirst row: \\(2(1) + 2(2) + (-4)(0) = 6\\), \\(2(-1) + 2(3) + (-4)(1) = 0\\), \\(2(0) + 2(4) + (-4)(2) = 0\\).\nSecond row: \\(-4(1) + 2(2) + (-4)(0) = 0\\), \\(-4(-1) + 2(3) + (-4)(1) = 6\\), \\(-4(0) + 2(4) + (-4)(2) = 0\\).\nThird row: \\(2(1) + (-1)(2) + 5(0) = 0\\), \\(2(-1) + (-1)(3) + 5(1) = 0\\), \\(2(0) + (-1)(4) + 5(2) = 6\\).\nHence \\(BA = \\begin{bmatrix} 6 & 0 & 0 \\\\ 0 & 6 & 0 \\\\ 0 & 0 & 6 \\end{bmatrix} = 6\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} = 6I\\)"
+  },
+  {
+    "id": "e431e1bb-93df-4476-a6f9-6dec76c71630",
+    "ref": "Misc 4B II Q9",
+    "solution": "\\(AB = \\begin{bmatrix} 2 & 1 \\\\ 0 & 3 \\end{bmatrix}\\begin{bmatrix} 1 & 2 \\\\ 3 & -2 \\end{bmatrix} = \\begin{bmatrix} 2 + 3 & 4 - 2 \\\\ 0 + 9 & 0 - 6 \\end{bmatrix} = \\begin{bmatrix} 5 & 2 \\\\ 9 & -6 \\end{bmatrix}\\)\nSo \\(|AB| = 5(-6) - 2(9) = -30 - 18 = -48\\).\nAlso \\(|A| = \\begin{vmatrix} 2 & 1 \\\\ 0 & 3 \\end{vmatrix} = 6 - 0 = 6\\) and \\(|B| = \\begin{vmatrix} 1 & 2 \\\\ 3 & -2 \\end{vmatrix} = -2 - 6 = -8\\), so \\(|A||B| = 6 \\times (-8) = -48\\).\nHence \\(|AB| = |A||B| = -48\\), which verifies the result."
+  },
+  {
+    "id": "aa1d23c1-3575-4ddb-b3ec-c1e2890d6821",
+    "ref": "Misc 4B II Q10",
+    "solution": "\\(A_{\\alpha} \\cdot A_{\\beta} = \\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\begin{bmatrix} \\cos\\beta & \\sin\\beta \\\\ -\\sin\\beta & \\cos\\beta \\end{bmatrix}\\)\n\\(= \\begin{bmatrix} \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta & \\cos\\alpha\\sin\\beta + \\sin\\alpha\\cos\\beta \\\\ -\\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta & -\\sin\\alpha\\sin\\beta + \\cos\\alpha\\cos\\beta \\end{bmatrix}\\)\nUsing the compound-angle formulae \\(\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta\\) and \\(\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta\\),\n\\(A_{\\alpha} \\cdot A_{\\beta} = \\begin{bmatrix} \\cos(\\alpha + \\beta) & \\sin(\\alpha + \\beta) \\\\ -\\sin(\\alpha + \\beta) & \\cos(\\alpha + \\beta) \\end{bmatrix} = A_{\\alpha + \\beta}\\)"
+  },
+  {
+    "id": "01233212-2fee-4b9f-88bc-03d5b146c035",
+    "ref": "Misc 4B II Q11",
+    "solution": "Since \\(\\omega\\) is a complex cube root of unity, \\(\\omega^{3} = 1\\) and \\(1 + \\omega + \\omega^{2} = 0\\), so \\(\\omega^{2} + \\omega = -1\\), \\(1 + \\omega^{2} = -\\omega\\), \\(1 + \\omega = -\\omega^{2}\\) and \\(\\omega^{4} = \\omega\\).\n\\(AB = \\begin{bmatrix} \\omega^{2} + \\omega & 1 + \\omega^{2} \\\\ \\omega^{4} + 1 & \\omega^{2} + \\omega \\end{bmatrix} = \\begin{bmatrix} -1 & -\\omega \\\\ -\\omega^{2} & -1 \\end{bmatrix}\\)\n\\(BA = \\begin{bmatrix} \\omega^{2} + \\omega^{2} & \\omega^{3} + 1 \\\\ 1 + \\omega^{3} & \\omega + \\omega \\end{bmatrix} = \\begin{bmatrix} 2\\omega^{2} & 2 \\\\ 2 & 2\\omega \\end{bmatrix}\\)\n\\(A - 2B = \\begin{bmatrix} 1 - 2\\omega^{2} & \\omega - 2 \\\\ \\omega^{2} - 2 & 1 - 2\\omega \\end{bmatrix}\\)\nAdding the three matrices entry by entry:\n\\((1,1): -1 + 2\\omega^{2} + 1 - 2\\omega^{2} = 0\\); \\((1,2): -\\omega + 2 + \\omega - 2 = 0\\); \\((2,1): -\\omega^{2} + 2 + \\omega^{2} - 2 = 0\\); \\((2,2): -1 + 2\\omega + 1 - 2\\omega = 0\\).\nHence \\(AB + BA + A - 2B = \\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}\\), a null matrix."
+  },
+  {
+    "id": "6d485888-ccb4-49c4-ad96-8e12d6192026",
+    "ref": "Misc 4B II Q12",
+    "solution": "Multiply \\(A\\) by itself, row into column:\nFirst row: \\(2(2) + (-2)(-1) + (-4)(1) = 2\\), \\(2(-2) + (-2)(3) + (-4)(-2) = -2\\), \\(2(-4) + (-2)(4) + (-4)(-3) = -4\\).\nSecond row: \\(-1(2) + 3(-1) + 4(1) = -1\\), \\(-1(-2) + 3(3) + 4(-2) = 3\\), \\(-1(-4) + 3(4) + 4(-3) = 4\\).\nThird row: \\(1(2) + (-2)(-1) + (-3)(1) = 1\\), \\(1(-2) + (-2)(3) + (-3)(-2) = -2\\), \\(1(-4) + (-2)(4) + (-3)(-3) = -3\\).\nHence \\(A^{2} = \\begin{bmatrix} 2 & -2 & -4 \\\\ -1 & 3 & 4 \\\\ 1 & -2 & -3 \\end{bmatrix} = A\\) (so \\(A\\) is idempotent)."
+  },
+  {
+    "id": "2cf456b0-4446-4138-8b12-2fdfdd9e48d2",
+    "ref": "Misc 4B II Q13",
+    "solution": "Multiply \\(A\\) by itself, row into column:\nFirst row: \\(4(4) + (-1)(3) + (-4)(3) = 1\\), \\(4(-1) + (-1)(0) + (-4)(-1) = 0\\), \\(4(-4) + (-1)(-4) + (-4)(-3) = 0\\).\nSecond row: \\(3(4) + 0(3) + (-4)(3) = 0\\), \\(3(-1) + 0(0) + (-4)(-1) = 1\\), \\(3(-4) + 0(-4) + (-4)(-3) = 0\\).\nThird row: \\(3(4) + (-1)(3) + (-3)(3) = 0\\), \\(3(-1) + (-1)(0) + (-3)(-1) = 0\\), \\(3(-4) + (-1)(-4) + (-3)(-3) = 1\\).\nHence \\(A^{2} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} = I\\) (so \\(A\\) is involutory)."
+  },
+  {
+    "id": "7969ab6c-2259-46c8-929a-b3e2c86bb497",
+    "ref": "Misc 4B II Q14",
+    "solution": "\\(A^{2} = \\begin{bmatrix} 3 & -5 \\\\ -4 & 2 \\end{bmatrix}\\begin{bmatrix} 3 & -5 \\\\ -4 & 2 \\end{bmatrix} = \\begin{bmatrix} 9 + 20 & -15 - 10 \\\\ -12 - 8 & 20 + 4 \\end{bmatrix} = \\begin{bmatrix} 29 & -25 \\\\ -20 & 24 \\end{bmatrix}\\)\nAlso \\(5A = \\begin{bmatrix} 15 & -25 \\\\ -20 & 10 \\end{bmatrix}\\) and \\(14I = \\begin{bmatrix} 14 & 0 \\\\ 0 & 14 \\end{bmatrix}\\).\n\\(A^{2} - 5A - 14I = \\begin{bmatrix} 29 - 15 - 14 & -25 + 25 - 0 \\\\ -20 + 20 - 0 & 24 - 10 - 14 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}\\)\nHence \\(A^{2} - 5A - 14I = 0\\)."
+  },
+  {
+    "id": "c986153c-b1a4-4b18-a4fe-2133847479f9",
+    "ref": "Misc 4B II Q15",
+    "solution": "\\(A^{2} = \\begin{bmatrix} 2 & -1 \\\\ -1 & 2 \\end{bmatrix}\\begin{bmatrix} 2 & -1 \\\\ -1 & 2 \\end{bmatrix} = \\begin{bmatrix} 4 + 1 & -2 - 2 \\\\ -2 - 2 & 1 + 4 \\end{bmatrix} = \\begin{bmatrix} 5 & -4 \\\\ -4 & 5 \\end{bmatrix}\\)\nAlso \\(4A = \\begin{bmatrix} 8 & -4 \\\\ -4 & 8 \\end{bmatrix}\\) and \\(3I = \\begin{bmatrix} 3 & 0 \\\\ 0 & 3 \\end{bmatrix}\\).\n\\(A^{2} - 4A + 3I = \\begin{bmatrix} 5 - 8 + 3 & -4 + 4 + 0 \\\\ -4 + 4 + 0 & 5 - 8 + 3 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}\\)\nHence \\(A^{2} - 4A + 3I = 0\\)."
+  },
+  {
+    "id": "afe69a2d-04e7-45d6-8216-f886743fb709",
+    "ref": "Misc 4B II Q16",
+    "solution": "Expanding, \\((A + B)(A - B) = A^{2} - AB + BA - B^{2}\\). So the given condition holds if and only if \\(-AB + BA = 0\\), that is \\(AB = BA\\).\n\\(AB = \\begin{bmatrix} -3 & 2 \\\\ 2 & -4 \\end{bmatrix}\\begin{bmatrix} 1 & x \\\\ y & 0 \\end{bmatrix} = \\begin{bmatrix} -3 + 2y & -3x \\\\ 2 - 4y & 2x \\end{bmatrix}\\)\n\\(BA = \\begin{bmatrix} 1 & x \\\\ y & 0 \\end{bmatrix}\\begin{bmatrix} -3 & 2 \\\\ 2 & -4 \\end{bmatrix} = \\begin{bmatrix} -3 + 2x & 2 - 4x \\\\ -3y & 2y \\end{bmatrix}\\)\nEquating corresponding entries: from \\((1,2)\\), \\(-3x = 2 - 4x\\), so \\(x = 2\\); from \\((2,1)\\), \\(2 - 4y = -3y\\), so \\(y = 2\\). These also satisfy the remaining two entries, since \\(-3 + 2y = -3 + 2x\\) and \\(2x = 2y\\).\nHence \\(x = 2\\) and \\(y = 2\\)"
+  },
+  {
+    "id": "53175728-4f29-4e2d-a268-5ea2c553d0ef",
+    "ref": "Misc 4B II Q17",
+    "solution": "\\(A + B = \\begin{bmatrix} 0 & 0 \\\\ 2 & 0 \\end{bmatrix}\\) and \\(A - B = \\begin{bmatrix} 0 & 2 \\\\ 0 & 0 \\end{bmatrix}\\), so\n\\((A + B)(A - B) = \\begin{bmatrix} 0 & 0 \\\\ 2 & 0 \\end{bmatrix}\\begin{bmatrix} 0 & 2 \\\\ 0 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 \\\\ 0 & 4 \\end{bmatrix}\\).\nOn the other side, \\(A^{2} = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}\\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\\) and \\(B^{2} = \\begin{bmatrix} 0 & -1 \\\\ 1 & 0 \\end{bmatrix}\\begin{bmatrix} 0 & -1 \\\\ 1 & 0 \\end{bmatrix} = \\begin{bmatrix} -1 & 0 \\\\ 0 & -1 \\end{bmatrix}\\), so\n\\(A^{2} - B^{2} = \\begin{bmatrix} 2 & 0 \\\\ 0 & 2 \\end{bmatrix}\\).\nSince \\(\\begin{bmatrix} 0 & 0 \\\\ 0 & 4 \\end{bmatrix} \\ne \\begin{bmatrix} 2 & 0 \\\\ 0 & 2 \\end{bmatrix}\\), we get \\((A + B)(A - B) \\ne A^{2} - B^{2}\\). (The reason is that \\(AB \\ne BA\\) here, so the cross terms do not cancel.)"
+  },
+  {
+    "id": "02af8323-a7c9-40c8-9d7d-d26869faacb4",
+    "ref": "Misc 4B II Q18",
+    "solution": "First find \\(A^{2}\\):\n\\(A^{2} = \\begin{bmatrix} 2 & -1 \\\\ 3 & -2 \\end{bmatrix}\\begin{bmatrix} 2 & -1 \\\\ 3 & -2 \\end{bmatrix} = \\begin{bmatrix} 4 - 3 & -2 + 2 \\\\ 6 - 6 & -3 + 4 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = I\\)\nTherefore \\(A^{3} = A^{2} \\cdot A = I \\cdot A = A\\).\nHence \\(A^{3} = \\begin{bmatrix} 2 & -1 \\\\ 3 & -2 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "47675bc7-6091-41d8-93a1-5642b45db7e4",
+    "ref": "Misc 4B II Q19(i)",
+    "solution": "First simplify the bracket:\n\\(2\\begin{bmatrix} 4 & 5 \\\\ 3 & 6 \\\\ 2 & -1 \\end{bmatrix} + 3\\begin{bmatrix} 4 & 3 \\\\ 1 & 4 \\\\ 0 & -1 \\end{bmatrix} = \\begin{bmatrix} 8 & 10 \\\\ 6 & 12 \\\\ 4 & -2 \\end{bmatrix} + \\begin{bmatrix} 12 & 9 \\\\ 3 & 12 \\\\ 0 & -3 \\end{bmatrix} = \\begin{bmatrix} 20 & 19 \\\\ 9 & 24 \\\\ 4 & -5 \\end{bmatrix}\\)\nNow multiply by the row matrix:\n\\(\\begin{bmatrix} 0 & -1 & 4 \\end{bmatrix}\\begin{bmatrix} 20 & 19 \\\\ 9 & 24 \\\\ 4 & -5 \\end{bmatrix} = \\begin{bmatrix} 0 - 9 + 16 & 0 - 24 - 20 \\end{bmatrix} = \\begin{bmatrix} 7 & -44 \\end{bmatrix}\\)\nComparing with \\(\\begin{bmatrix} x & y \\end{bmatrix}\\), we get \\(x = 7\\), \\(y = -44\\)"
+  },
+  {
+    "id": "a35ab5f3-2a79-414b-931b-f3fa53819834",
+    "ref": "Misc 4B II Q19(ii)",
+    "solution": "First simplify the bracket:\n\\(-1\\begin{bmatrix} 1 & 2 & 1 \\\\ 2 & 0 & 3 \\end{bmatrix} + 3\\begin{bmatrix} 2 & -3 & 7 \\\\ 1 & -1 & 3 \\end{bmatrix} = \\begin{bmatrix} -1 & -2 & -1 \\\\ -2 & 0 & -3 \\end{bmatrix} + \\begin{bmatrix} 6 & -9 & 21 \\\\ 3 & -3 & 9 \\end{bmatrix} = \\begin{bmatrix} 5 & -11 & 20 \\\\ 1 & -3 & 6 \\end{bmatrix}\\)\nNow multiply by the column matrix:\n\\(\\begin{bmatrix} 5 & -11 & 20 \\\\ 1 & -3 & 6 \\end{bmatrix}\\begin{bmatrix} 5 \\\\ 0 \\\\ -1 \\end{bmatrix} = \\begin{bmatrix} 25 + 0 - 20 \\\\ 5 + 0 - 6 \\end{bmatrix} = \\begin{bmatrix} 5 \\\\ -1 \\end{bmatrix}\\)\nComparing with \\(\\begin{bmatrix} x \\\\ y \\end{bmatrix}\\), we get \\(x = 5\\), \\(y = -1\\)"
+  },
+  {
+    "id": "4d048f2c-4878-4c71-af91-cbd8b1e1c365",
+    "ref": "Misc 4B II Q20(i)",
+    "solution": "First simplify the bracket:\n\\(5\\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\\\ 1 & 1 \\end{bmatrix} - 3\\begin{bmatrix} 2 & 1 \\\\ 3 & -2 \\\\ 1 & 3 \\end{bmatrix} = \\begin{bmatrix} 0 & 5 \\\\ 5 & 0 \\\\ 5 & 5 \\end{bmatrix} - \\begin{bmatrix} 6 & 3 \\\\ 9 & -6 \\\\ 3 & 9 \\end{bmatrix} = \\begin{bmatrix} -6 & 2 \\\\ -4 & 6 \\\\ 2 & -4 \\end{bmatrix}\\)\nNow multiply by the column matrix:\n\\(\\begin{bmatrix} -6 & 2 \\\\ -4 & 6 \\\\ 2 & -4 \\end{bmatrix}\\begin{bmatrix} 2 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} -12 + 2 \\\\ -8 + 6 \\\\ 4 - 4 \\end{bmatrix} = \\begin{bmatrix} -10 \\\\ -2 \\\\ 0 \\end{bmatrix}\\)\nEquating with \\(\\begin{bmatrix} x - 1 \\\\ y + 1 \\\\ 2z \\end{bmatrix}\\): \\(x - 1 = -10\\), \\(y + 1 = -2\\), \\(2z = 0\\).\nHence \\(x = -9\\), \\(y = -3\\), \\(z = 0\\)"
+  },
+  {
+    "id": "695b2bc0-3960-4592-8103-76ce9e6481ee",
+    "ref": "Misc 4B II Q20(ii)",
+    "solution": "First simplify the bracket:\n\\(\\begin{bmatrix} 1 & 3 & 2 \\\\ 2 & 0 & 1 \\\\ 3 & 1 & 2 \\end{bmatrix} + 2\\begin{bmatrix} 3 & 0 & 2 \\\\ 1 & 4 & 5 \\\\ 2 & 1 & 0 \\end{bmatrix} = \\begin{bmatrix} 1 + 6 & 3 + 0 & 2 + 4 \\\\ 2 + 2 & 0 + 8 & 1 + 10 \\\\ 3 + 4 & 1 + 2 & 2 + 0 \\end{bmatrix} = \\begin{bmatrix} 7 & 3 & 6 \\\\ 4 & 8 & 11 \\\\ 7 & 3 & 2 \\end{bmatrix}\\)\nNow multiply by the column matrix:\n\\(\\begin{bmatrix} 7 & 3 & 6 \\\\ 4 & 8 & 11 \\\\ 7 & 3 & 2 \\end{bmatrix}\\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix} = \\begin{bmatrix} 7 + 6 + 18 \\\\ 4 + 16 + 33 \\\\ 7 + 6 + 6 \\end{bmatrix} = \\begin{bmatrix} 31 \\\\ 53 \\\\ 19 \\end{bmatrix}\\)\nComparing with \\(\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\), we get \\(x = 31\\), \\(y = 53\\), \\(z = 19\\)"
+  },
+  {
+    "id": "0acf0a9e-b588-4391-a082-5aaf2c768121",
+    "ref": "Misc 4B II Q21",
+    "solution": "\\(B^{T} = \\begin{bmatrix} 1 & 3 \\\\ 0 & -1 \\\\ -2 & 4 \\end{bmatrix}\\), and \\(A\\) is \\(2 \\times 3\\), so \\(AB^{T}\\) is \\(2 \\times 2\\):\n\\(AB^{T} = \\begin{bmatrix} 2 + 0 + 6 & 6 - 1 - 12 \\\\ 0 + 0 - 12 & 0 - 2 + 24 \\end{bmatrix} = \\begin{bmatrix} 8 & -7 \\\\ -12 & 22 \\end{bmatrix}\\)\n\\(A^{T} = \\begin{bmatrix} 2 & 0 \\\\ 1 & 2 \\\\ -3 & 6 \\end{bmatrix}\\) is \\(3 \\times 2\\) and \\(B\\) is \\(2 \\times 3\\), so \\(A^{T}B\\) is \\(3 \\times 3\\):\n\\(A^{T}B = \\begin{bmatrix} 2 + 0 & 0 + 0 & -4 + 0 \\\\ 1 + 6 & 0 - 2 & -2 + 8 \\\\ -3 + 18 & 0 - 6 & 6 + 24 \\end{bmatrix} = \\begin{bmatrix} 2 & 0 & -4 \\\\ 7 & -2 & 6 \\\\ 15 & -6 & 30 \\end{bmatrix}\\)\nHence \\(AB^{T} = \\begin{bmatrix} 8 & -7 \\\\ -12 & 22 \\end{bmatrix}\\) and \\(A^{T}B = \\begin{bmatrix} 2 & 0 & -4 \\\\ 7 & -2 & 6 \\\\ 15 & -6 & 30 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "b6c65bca-a859-4d7f-82cb-75178c62572a",
+    "ref": "Misc 4B II Q22",
+    "solution": "\\(AB = \\begin{bmatrix} 2 & -4 \\\\ 3 & -2 \\\\ 0 & 1 \\end{bmatrix}\\begin{bmatrix} 1 & -1 & 2 \\\\ -2 & 1 & 0 \\end{bmatrix} = \\begin{bmatrix} 2 + 8 & -2 - 4 & 4 + 0 \\\\ 3 + 4 & -3 - 2 & 6 + 0 \\\\ 0 - 2 & 0 + 1 & 0 + 0 \\end{bmatrix} = \\begin{bmatrix} 10 & -6 & 4 \\\\ 7 & -5 & 6 \\\\ -2 & 1 & 0 \\end{bmatrix}\\)\nSo L.H.S. \\(= (AB)^{T} = \\begin{bmatrix} 10 & 7 & -2 \\\\ -6 & -5 & 1 \\\\ 4 & 6 & 0 \\end{bmatrix}\\).\nFor the R.H.S., \\(B^{T} = \\begin{bmatrix} 1 & -2 \\\\ -1 & 1 \\\\ 2 & 0 \\end{bmatrix}\\) and \\(A^{T} = \\begin{bmatrix} 2 & 3 & 0 \\\\ -4 & -2 & 1 \\end{bmatrix}\\), so\n\\(B^{T}A^{T} = \\begin{bmatrix} 2 + 8 & 3 + 4 & 0 - 2 \\\\ -2 - 4 & -3 - 2 & 0 + 1 \\\\ 4 + 0 & 6 + 0 & 0 + 0 \\end{bmatrix} = \\begin{bmatrix} 10 & 7 & -2 \\\\ -6 & -5 & 1 \\\\ 4 & 6 & 0 \\end{bmatrix}\\)\nBoth sides are the same \\(3 \\times 3\\) matrix, hence \\((AB)^{T} = B^{T}A^{T}\\)."
+  },
+  {
+    "id": "660f9cc9-f8c9-40d8-94c7-7835c0c78cff",
+    "ref": "Misc 4B II Q23",
+    "solution": "Use induction on \\(n\\).\nFor \\(n = 1\\), the claimed matrix is \\(\\begin{bmatrix} 1 + 2 & -4 \\\\ 1 & 1 - 2 \\end{bmatrix} = \\begin{bmatrix} 3 & -4 \\\\ 1 & -1 \\end{bmatrix} = A\\), so the result holds.\nAssume it holds for \\(n = k\\), that is \\(A^{k} = \\begin{bmatrix} 1 + 2k & -4k \\\\ k & 1 - 2k \\end{bmatrix}\\). Then\n\\(A^{k+1} = A^{k} \\cdot A = \\begin{bmatrix} 1 + 2k & -4k \\\\ k & 1 - 2k \\end{bmatrix}\\begin{bmatrix} 3 & -4 \\\\ 1 & -1 \\end{bmatrix} = \\begin{bmatrix} 3 + 6k - 4k & -4 - 8k + 4k \\\\ 3k + 1 - 2k & -4k - 1 + 2k \\end{bmatrix}\\)\n\\(= \\begin{bmatrix} 3 + 2k & -4 - 4k \\\\ k + 1 & -1 - 2k \\end{bmatrix} = \\begin{bmatrix} 1 + 2(k+1) & -4(k+1) \\\\ k + 1 & 1 - 2(k+1) \\end{bmatrix}\\),\nwhich is the claimed form for \\(n = k + 1\\).\nHence by the principle of mathematical induction, \\(A^{n} = \\begin{bmatrix} 1 + 2n & -4n \\\\ n & 1 - 2n \\end{bmatrix}\\) for all \\(n \\in N\\)."
+  },
+  {
+    "id": "c9dc0f23-4c6d-42f5-84f1-ddcf7eb2cdf8",
+    "ref": "Misc 4B II Q24",
+    "solution": "Use induction on \\(n\\).\nFor \\(n = 1\\), the claimed matrix is \\(\\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix} = A\\), so the result holds.\nAssume it holds for \\(n = k\\), that is \\(A^{k} = \\begin{bmatrix} \\cos k\\theta & \\sin k\\theta \\\\ -\\sin k\\theta & \\cos k\\theta \\end{bmatrix}\\). Then\n\\(A^{k+1} = A^{k} \\cdot A = \\begin{bmatrix} \\cos k\\theta\\cos\\theta - \\sin k\\theta\\sin\\theta & \\cos k\\theta\\sin\\theta + \\sin k\\theta\\cos\\theta \\\\ -\\sin k\\theta\\cos\\theta - \\cos k\\theta\\sin\\theta & -\\sin k\\theta\\sin\\theta + \\cos k\\theta\\cos\\theta \\end{bmatrix}\\)\nUsing \\(\\cos(k\\theta + \\theta) = \\cos k\\theta\\cos\\theta - \\sin k\\theta\\sin\\theta\\) and \\(\\sin(k\\theta + \\theta) = \\sin k\\theta\\cos\\theta + \\cos k\\theta\\sin\\theta\\),\n\\(A^{k+1} = \\begin{bmatrix} \\cos(k+1)\\theta & \\sin(k+1)\\theta \\\\ -\\sin(k+1)\\theta & \\cos(k+1)\\theta \\end{bmatrix}\\), which is the claimed form for \\(n = k + 1\\).\nHence by the principle of mathematical induction, \\(A^{n} = \\begin{bmatrix} \\cos n\\theta & \\sin n\\theta \\\\ -\\sin n\\theta & \\cos n\\theta \\end{bmatrix}\\) for all \\(n \\in N\\)."
+  },
+  {
+    "id": "8262d290-50f2-47ba-84d9-37503965248a",
+    "ref": "Misc 4B II Q25(i)",
+    "solution": "Write the two months' sales as matrices with rows Shantaram, Kantaram and columns rice, wheat, groundnut. The total for the two months is their sum.\n\\(\\begin{bmatrix} 15000 & 13000 & 12000 \\\\ 18000 & 15000 & 8000 \\end{bmatrix} + \\begin{bmatrix} 18000 & 15000 & 12000 \\\\ 21000 & 16500 & 16000 \\end{bmatrix} = \\begin{bmatrix} 33000 & 28000 & 24000 \\\\ 39000 & 31500 & 24000 \\end{bmatrix}\\)\nSo the total sale for the two months is:\n\n| Total sale (Rs.) | Rice | Wheat | Groundnut |\n|---|---|---|---|\n| Shantaram | 33000 | 28000 | 24000 |\n| Kantaram | 39000 | 31500 | 24000 |\n\nHence Shantaram: rice Rs. 33000, wheat Rs. 28000, groundnut Rs. 24000; Kantaram: rice Rs. 39000, wheat Rs. 31500, groundnut Rs. 24000."
+  },
+  {
+    "id": "878275bd-3c46-4d82-abb7-c52292618887",
+    "ref": "Misc 4B II Q25(ii)",
+    "solution": "The increase from April to May is the May matrix minus the April matrix (rows Shantaram, Kantaram; columns rice, wheat, groundnut).\n\\(\\begin{bmatrix} 18000 & 15000 & 12000 \\\\ 21000 & 16500 & 16000 \\end{bmatrix} - \\begin{bmatrix} 15000 & 13000 & 12000 \\\\ 18000 & 15000 & 8000 \\end{bmatrix} = \\begin{bmatrix} 3000 & 2000 & 0 \\\\ 3000 & 1500 & 8000 \\end{bmatrix}\\)\nSo the increase in sale is:\n\n| Increase (Rs.) | Rice | Wheat | Groundnut |\n|---|---|---|---|\n| Shantaram | 3000 | 2000 | 0 |\n| Kantaram | 3000 | 1500 | 8000 |\n\nHence Shantaram: rice Rs. 3000, wheat Rs. 2000, groundnut Rs. 0 (no increase); Kantaram: rice Rs. 3000, wheat Rs. 1500, groundnut Rs. 8000."
+  }
+]

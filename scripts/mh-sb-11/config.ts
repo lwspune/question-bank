@@ -140,6 +140,41 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── INGESTED 2026-08-16 (166 q). 24pp, 40 `Solution :` markers — the DENSEST
+  //    chapter of this book, and the one whose defects are hardest to see, because a
+  //    corrupted trigonometric identity still LOOKS like an identity.
+  //
+  //    1. STRUCTURE: every solved block spills onto the page carrying the NEXT
+  //       exercise banner (p-04, p-07, p-16, p-19), and on p-04 the banner sits in the
+  //       RIGHT column BESIDE the last solved example rather than below it. Cut
+  //       ownership at the banner, column-wise, at all five boundaries.
+  //    2. Two SolvedEx prefixes name a sub-section narrower than the block's content
+  //       (`3.3.2` covers double AND triple angles; `3.4.2` covers factorization AND
+  //       defactorization). That follows the "name it for the sub-section it FOLLOWS"
+  //       rule; both were checked for a second block and there is none.
+  //    3. The book misspells its own §3.2 heading "allied ANGELS".
+  //
+  //    THE METHOD THAT FOUND THE DEFECTS, and it should be standard for any identity
+  //    chapter: verify every printed identity NUMERICALLY at several angles before
+  //    proving it — and NOT at convenient angles. Three printed identities are FALSE
+  //    as printed, and one of them (Ex 3.1 Q2(ii)) agrees with the correct form at
+  //    theta = 0, so a spot-check at zero passes it. Ex 3.3 Q3(xviii) fails 0 of 7
+  //    sample points while its intended form passes 7 of 7 — that contrast is what
+  //    turns "this looks wrong" into evidence.
+  //
+  //    1 answer-key error: Ex 3.1 Q1(i) keys sin 15 as (sqrt3+1)/(2sqrt2) = 0.9659,
+  //    which is cos 15; correct is 0.2588. NOT a transposition with (ii) — cos 75
+  //    equals sin 15, so (ii)'s key is correct and must not be "fixed". Plus three
+  //    false identities (Ex 3.1 Q2(ii), Ex 3.3 Q3(xviii), 3.4.2 SolvedEx.3(i) whose
+  //    stem contradicts its own printed solution), an undomained nested radical
+  //    (Ex 3.3 Q3(vii)), and Misc II Q20 whose conclusion is INCOMPLETE — the
+  //    hypothesis admits angle C = pi/2 as well as the printed angle B = pi/2
+  //    (counterexample 30-60-90). All 18 in data/trigonometry-2-11.errata.json.
+  //
+  //    The Miscellaneous MCQ block is CLEAN: the book's printed key, the transcriber's
+  //    derivation and an independent blind pass all agree 10/10. Note Misc I Q4's four
+  //    options are two +/- PAIRS (A = -C, B = -D) — paired but never equal, the shape
+  //    most likely to be misread as a twin.
   "trigonometry-2-11": {
     id: "trigonometry-2-11",
     chapterName: "Trigonometry - II",
@@ -159,6 +194,32 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── INGESTED 2026-08-16 (264 q). The LARGEST chapter in the book at 44pp, and
+  //    structurally the odd one out — read these three facts before touching it.
+  //
+  //    1. TWO Miscellaneous blocks. The chapter is really two half-chapters:
+  //       Determinants (p-00..p-18, closed by `MISCELLANEOUS EXERCISE - 4 (A)` on
+  //       p-16) and Matrices (p-19..p-43, closed by `- 4 (B)` on p-40). BOTH split
+  //       into a part (I) MCQ block and a part (II) free-response block, so the
+  //       pipeline's default `Misc I `/`Misc II ` refs would collide — this chapter
+  //       uses `Misc 4A I `/`Misc 4A II `/`Misc 4B I `/`Misc 4B II `. See sections.ts.
+  //
+  //    2. THE PRINTED KEY IS PARTIAL BY DESIGN. It omits every proof / "show that" /
+  //       "verify" question (e.g. Exercise 4.2 keys only Q.1, Q.5, Q.6 of its seven).
+  //       A MISSING ENTRY IS NOT A DEFECT — do not read the gaps as findings, and do
+  //       not doubt an authored solution because the book gives it no answer.
+  //
+  //    3. Book defects found, all in data/determinants-matrices-11.errata.json (24):
+  //       THREE answer-key errors — Misc 4A I Q5 (key B; the value is option C, and
+  //       A/B/D are mutually equal so a key of B makes A and D equally correct),
+  //       Misc 4A I Q6 (key C is indistinguishable from B and D; the stem's "at least
+  //       one solution" is true for all four options), and Ex 4.7 Q1(ii) (a dropped
+  //       minus in the key). Plus Exercise 4.2 printing no Q.4 at all.
+  //       Counter-lesson worth keeping: THREE separate "this looks wrong" suspicions
+  //       raised at transcription (Misc 4A II Q5(ii)'s un-squared `4x`, Misc 4B II
+  //       Q3(i)'s duplicated RHS, Ex 4.5 Q9's non-integral answers) were all resolved
+  //       as THE BOOK BEING RIGHT once its own key was consulted. The "out of
+  //       character" heuristic went 0 for 3 here — consult the key before concluding.
   "determinants-matrices-11": {
     id: "determinants-matrices-11",
     chapterName: "Determinants and Matrices",
@@ -244,6 +305,36 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── INGESTED 2026-08-16 (69 q). The SMALLEST chapter of the book at 14pp, and the
+  //    cleanest source so far — ONE answer-key error against 69 questions.
+  //
+  //    Facts a later session should not have to re-derive:
+  //    1. The chapter has 14 `Solution :` markers but only TWELVE real solved
+  //       examples. The other two (p-09, p-10) are FILL-IN-THE-BLANK scaffolds inside
+  //       an unnumbered Activity section (`S.D. = √‾‾‾ =` with an empty radicand,
+  //       tables with 3 of 7 cells filled). Their answers ARE the blanks, and they
+  //       carry no question number — so the shipped "ingest a numbered question
+  //       merely tagged (Activity)" precedent does NOT apply. Ingesting one would put
+  //       a half-written derivation into the bank as a model solution.
+  //    2. The §8.2.3 solved block is SIX examples, not five: Ex.6 sits entirely on
+  //       p-05 ABOVE the EXERCISE 8.2 banner. A band cut at the p-04/p-05 page edge
+  //       strands it. §8.2.2 has no solved block of its own.
+  //    3. CONVENTIONS THAT DECIDE ANSWERS: population divisor (n, not n-1) — verified
+  //       against the book's own Ex 8.2 Q2 key, which only works with n. Range for
+  //       grouped data is the difference of the EXTREME CLASS BOUNDARIES (Ex 8.1 Q5's
+  //       key of 10 confirms it; the midpoint convention would give 8). Inclusive
+  //       class intervals (14-18, 19-23) must be converted to continuous boundaries:
+  //       midpoints are unchanged but the width becomes a true h=5, not the 4 the
+  //       printed limits suggest — using 4 gives 26.4 instead of 41.25.
+  //
+  //    1 answer-key error: Misc II Q20 keys the yield C.V. as 5.91 where it is 6.011
+  //    (no rounding path reaches 5.91; a digit slip from 6.01). Plus Ex 8.2 Q3/Q4,
+  //    where the printed variance is off in the second decimal purely from
+  //    mid-calculation rounding, and Misc I Q2, which asks for a standard deviation
+  //    whose value (√5 ≈ 2.24) matches NO printed alternative — the key of 5 is the
+  //    VARIANCE, so the defect is in the stem/options and the key is the setter's
+  //    intent. The book's printed key was confirmed to agree with BOTH independent
+  //    MCQ derivations on all 10, so the MCQ block itself has no key error.
   "dispersion-11": {
     id: "dispersion-11",
     chapterName: "Measures of Dispersion",
@@ -262,6 +353,41 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── INGESTED 2026-08-16 (191 q). Structurally the EASY shape — ONE terminal
+  //    Miscellaneous block, so the default `Misc I `/`Misc II ` refs apply. What
+  //    makes it fiddly is density: NINE solved blocks in 23pp, several sharing a
+  //    section, so nearly every SolvedEx prefix is sub-section-scoped (see
+  //    sections.ts for the block-to-page map).
+  //
+  //    Facts a later session should not have to re-derive:
+  //    1. §9.1.5 EXISTS. A section-heading regex will miss it because the book
+  //       misspells its own heading "Elementary Properties of Probabilty". The
+  //       second §9.1 solved block sits under it, not under §9.1.4.
+  //    2. p-09 carries TWO boxed solved blocks, one per COLUMN, split by the
+  //       §9.3.2 heading — a page-level scan sees one.
+  //    3. The §9.3.4 block does NOT end on p-11: it runs through p-12's whole left
+  //       column and into the top of its right column, ending only at the
+  //       EXERCISE 9.3 banner. Ownership must be cut at that banner, never at a
+  //       page edge, or two solved examples strand silently.
+  //    4. The printed key is PARTIAL BY DESIGN (skips proofs / "write the sample
+  //       space"). A missing entry is NOT a defect.
+  //
+  //    3 answer-key errors, all source-verified (data/probability-11.errata.json):
+  //      Ex 9.3 Q1  key gives the JOINT 2/7 where the stem asks a CONDITIONAL (2/3)
+  //                 — stem checked word-for-word against the printed page
+  //      Ex 9.4 Q4  key 4/5; correct 2/5. The prior 1/2 was dropped from the
+  //                 numerator but kept in the denominator. Impossible on sight:
+  //                 P(A/E1) < P(A/E2) forces the posterior BELOW the prior of 1/2
+  //      Ex 9.5 Q1(i) key repeats (ii)'s 3/5; odds IN FAVOUR 4:3 give 4/7
+  //    Against those, FOUR "this looks wrong" suspicions resolved as the BOOK BEING
+  //    RIGHT once its key was consulted (Misc II Q4's degenerate P(B)=1, Misc II
+  //    Q10's dropped name, Ex 9.1 Q16's 16th-person reading, an unreduced 12/51).
+  //
+  //    Word-export trap found here and worth knowing bank-wide: the docx OMML
+  //    converter CANNOT render a superscript applied to a parenthesised group
+  //    containing \cup or \cap — `(A \cup B)'` and `(A \cup B)^{c}` both fail,
+  //    while `A'` and `(A + B)'` are fine. Use `\overline{A \cup B}` for the
+  //    complement of a group. Measured against the exporter's own findOmmlFailures.
   "probability-11": {
     id: "probability-11",
     chapterName: "Probability",

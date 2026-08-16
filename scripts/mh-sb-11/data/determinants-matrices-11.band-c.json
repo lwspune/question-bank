@@ -1,0 +1,596 @@
+[
+  {
+    "ref": "Misc 4A I Q1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Properties of Determinants",
+    "difficulty": "HARD",
+    "stem": "The determinant \\(D = \\begin{vmatrix} a & b & a+b \\\\ b & c & b+c \\\\ a+b & b+c & 0 \\end{vmatrix} = 0\\) if",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(a, b, c\\) are in A.P."
+      },
+      {
+        "label": "B",
+        "text": "\\(a, b, c\\) are in G.P."
+      },
+      {
+        "label": "C",
+        "text": "\\(a, b, c\\) are in H.P."
+      },
+      {
+        "label": "D",
+        "text": "\\(\\alpha\\) is root of \\(ax^2 + 2bx + c = 0\\)"
+      }
+    ],
+    "answer": "B",
+    "_note": "Derivation: \\(C_3 \\to C_3 - C_1 - C_2\\) makes the first two entries of \\(C_3\\) zero and the third \\(-(a+2b+c)\\), giving \\(D = -(a+2b+c)(ac-b^2)\\). So \\(D=0 \\iff b^2=ac\\) (a,b,c in G.P.) OR \\(a+2b+c=0\\). BOOK DEFECT: the symbol \\(\\alpha\\) in option D never appears in the printed stem. The classic source question prints the third column as \\(a\\alpha+b,\\ b\\alpha+c,\\ 0\\), for which option D reads 'alpha is a root of ax^2+2bx+c=0'; this book has printed \\(a+b,\\ b+c\\) (i.e. alpha silently set to 1), so option D is not a well-formed condition as printed. Answer B is the option derivable from the printed determinant.",
+    "solution": "[Textbook misprint: one alternative speaks of \\(\\alpha\\) being a root of \\(ax^2 + 2bx + c = 0\\), but \\(\\alpha\\) appears nowhere in the printed stem. The determinant factors as \\(-(ac - b^2)(a + 2b + c)\\), so it vanishes either when \\(ac = b^2\\) — that is, when \\(a, b, c\\) are in G.P., the keyed alternative — or when \\(a + 2b + c = 0\\); the \\(\\alpha\\) alternative is the garbled remnant of that second branch. As printed, only the G.P. condition is well formed. (Worded without option letters on purpose: naming a letter inside a caveat makes the standing key-audit probe read it as the concluded answer.)]\n\n"
+  },
+  {
+    "ref": "Misc 4A I Q2",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Properties of Determinants",
+    "difficulty": "HARD",
+    "stem": "If \\(\\begin{vmatrix} x^{k} & x^{k+2} & x^{k+3} \\\\ y^{k} & y^{k+2} & y^{k+3} \\\\ z^{k} & z^{k+2} & z^{k+3} \\end{vmatrix} = (x-y)(y-z)(z-x)\\left(\\frac{1}{x}+\\frac{1}{y}+\\frac{1}{z}\\right)\\) then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(k = -3\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(k = -1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(k = 1\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(k = 3\\)"
+      }
+    ],
+    "answer": "B",
+    "_note": "Derivation: taking \\(x^k, y^k, z^k\\) out of the rows gives \\((xyz)^k\\begin{vmatrix}1 & x^2 & x^3\\\\ 1 & y^2 & y^3\\\\ 1 & z^2 & z^3\\end{vmatrix} = (xyz)^k (x-y)(y-z)(z-x)(xy+yz+zx)\\). The RHS is \\((x-y)(y-z)(z-x)\\dfrac{xy+yz+zx}{xyz}\\), so \\((xyz)^k = (xyz)^{-1}\\), i.e. \\(k=-1\\)."
+  },
+  {
+    "ref": "Misc 4A I Q3",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Value of a Determinant",
+    "difficulty": "HARD",
+    "stem": "Let \\(D = \\begin{vmatrix} \\sin\\theta\\cdot\\cos\\phi & \\sin\\theta\\cdot\\sin\\phi & \\cos\\theta \\\\ \\cos\\theta\\cdot\\cos\\phi & \\cos\\theta\\cdot\\sin\\phi & -\\sin\\theta \\\\ -\\sin\\theta\\cdot\\sin\\phi & \\sin\\theta\\cdot\\cos\\phi & 0 \\end{vmatrix}\\) then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(D\\) is independent of \\(\\theta\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(D\\) is independent of \\(\\phi\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(D\\) is a constant"
+      },
+      {
+        "label": "D",
+        "text": "\\(D\\) depends on \\(\\theta\\) and \\(\\phi\\)"
+      }
+    ],
+    "answer": "B",
+    "_note": "Derivation: expanding gives \\(D = \\sin^3\\theta\\cos^2\\phi + \\sin^3\\theta\\sin^2\\phi + \\sin\\theta\\cos^2\\theta = \\sin\\theta(\\sin^2\\theta+\\cos^2\\theta) = \\sin\\theta\\). So \\(D\\) depends on \\(\\theta\\) only and is independent of \\(\\phi\\); it is not a constant."
+  },
+  {
+    "ref": "Misc 4A I Q4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Cramer's Rule and Consistency of Equations",
+    "difficulty": "HARD",
+    "stem": "The value of \\(a\\) for which system of equation \\(a^3x + (a+1)^3y + (a+2)^3z = 0\\), \\(ax + (a+1)y + (a+2)z = 0\\) and \\(x + y + z = 0\\) has non zero Soln. is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(-1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(1\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2\\)"
+      }
+    ],
+    "answer": "B",
+    "_note": "Derivation: a homogeneous system has a non-zero solution iff its coefficient determinant vanishes. With \\(p=a,\\ q=a+1,\\ r=a+2\\), \\(\\begin{vmatrix}p^3 & q^3 & r^3\\\\ p & q & r\\\\ 1 & 1 & 1\\end{vmatrix} = (p-r)(p+q+r) = (-2)\\cdot 3(a+1) = -6(a+1)\\), which is zero only for \\(a=-1\\)."
+  },
+  {
+    "ref": "Misc 4A I Q5",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Properties of Determinants",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\begin{vmatrix} b+c & c+a & a+b \\\\ q+r & r+p & p+q \\\\ y+z & z+x & x+y \\end{vmatrix} = \\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2\\begin{vmatrix} c & b & a \\\\ r & q & p \\\\ z & y & x \\end{vmatrix}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2\\begin{vmatrix} b & a & c \\\\ q & p & r \\\\ y & x & z \\end{vmatrix}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2\\begin{vmatrix} a & b & c \\\\ p & q & r \\\\ x & y & z \\end{vmatrix}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2\\begin{vmatrix} a & c & b \\\\ p & r & q \\\\ x & z & y \\end{vmatrix}\\)"
+      }
+    ],
+    "answer": "C",
+    "_note": "Derivation: the given matrix is \\(A\\cdot T\\) where \\(A = \\begin{pmatrix}a&b&c\\\\p&q&r\\\\x&y&z\\end{pmatrix}\\) and \\(T = \\begin{pmatrix}0&1&1\\\\1&0&1\\\\1&1&0\\end{pmatrix}\\), \\(\\det T = 2\\); hence the value is \\(2\\det A\\). Options A, B and D are each \\(\\det A\\) with one pair of columns interchanged, so each equals \\(-2\\det A\\).",
+    "solution": "[Textbook answer-key error: the printed key gives option B. The given determinant equals \\(2\\begin{vmatrix} a & b & c \\\\ p & q & r \\\\ x & y & z \\end{vmatrix}\\), which is option C. Options A, B and D are each that determinant with one pair of columns interchanged, so all three equal its negative and are therefore equal to ONE ANOTHER — a key of B would make A and D equally correct. The answer is C.]"
+  },
+  {
+    "ref": "Misc 4A I Q6",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Cramer's Rule and Consistency of Equations",
+    "difficulty": "MODERATE",
+    "stem": "The system \\(3x - y + 4z = 3\\), \\(x + 2y - 3z = -2\\) and \\(6x + 5y + \\lambda z = -3\\) has at least one Solution when",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\lambda = -5\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\lambda = 5\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\lambda = 3\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\lambda = -13\\)"
+      }
+    ],
+    "answer": "A",
+    "_note": "Derivation: the coefficient determinant is \\(7\\lambda + 35 = 7(\\lambda+5)\\), which vanishes only at \\(\\lambda = -5\\). At \\(\\lambda = -5\\) the third equation is \\(R_1 + 3R_2\\) on both sides (\\(3+3(-2) = -3\\)), so the system is still consistent and has infinitely many solutions. DEFECT (mild): strictly, for every \\(\\lambda \\ne -5\\) the determinant is non-zero and the system has a UNIQUE solution, so options B, C and D also give 'at least one solution'. The discriminating case the question intends is \\(\\lambda = -5\\), the value at which the determinant vanishes yet the system remains consistent.",
+    "solution": "[Textbook misprint and answer-key error: the coefficient determinant is \\(7(\\lambda + 5)\\), so at \\(\\lambda = 5, 3\\) and \\(-13\\) the system has a unique solution and hence 'at least one solution'. The printed wording is therefore satisfied by all four options and the printed key of C is not distinguishable from B or D. Only \\(\\lambda = -5\\) makes the solution non-unique — there the third equation is \\(R_1 + 3R_2\\) on both sides, giving infinitely many solutions — so the stem should read 'infinitely many solutions' and the answer is A.]"
+  },
+  {
+    "ref": "Misc 4A I Q7",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Value of a Determinant",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x = -9\\) is a root of \\(\\begin{vmatrix} x & 3 & 7 \\\\ 2 & x & 2 \\\\ 7 & 6 & x \\end{vmatrix} = 0\\) then other two roots are",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2,\\ -7\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(-2,\\ 7\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2,\\ 7\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-2,\\ -7\\)"
+      }
+    ],
+    "answer": "C",
+    "_note": "Derivation: expanding gives \\(x^3 - 67x + 126 = 0\\); dividing by \\((x+9)\\) leaves \\(x^2 - 9x + 14 = (x-2)(x-7)\\), so the other roots are 2 and 7."
+  },
+  {
+    "ref": "Misc 4A I Q8",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Value of a Determinant",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\begin{vmatrix} 6i & -3i & 1 \\\\ 4 & 3i & -1 \\\\ 20 & 3 & i \\end{vmatrix} = x + iy\\) then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(x = 3,\\ y = 1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(x = 1,\\ y = 3\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(x = 0,\\ y = 3\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(x = 0,\\ y = 0\\)"
+      }
+    ],
+    "answer": "D",
+    "_note": "Derivation: expanding along the first row, the first cofactor is \\(3i\\cdot i - (-1)\\cdot 3 = -3+3 = 0\\); the remaining terms give \\(3i(4i+20) + (12-60i) = (-12+60i) + (12-60i) = 0\\). Hence \\(x+iy = 0\\), so \\(x = 0\\) and \\(y = 0\\)."
+  },
+  {
+    "ref": "Misc 4A I Q9",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Area of a Triangle and Collinearity",
+    "difficulty": "EASY",
+    "stem": "If \\(A(0,0)\\), \\(B(1,3)\\) and \\(C(k,0)\\) are vertices of triangle ABC whose area is 3 sq.units then value of \\(k\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(-3\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(3\\) or \\(-3\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-2\\) or \\(+2\\)"
+      }
+    ],
+    "answer": "D",
+    "_note": "Derivation: area \\(= \\frac{1}{2}\\left|\\begin{vmatrix}0&0&1\\\\1&3&1\\\\k&0&1\\end{vmatrix}\\right| = \\frac{1}{2}|-3k| = \\frac{3}{2}|k|\\). Setting this equal to 3 gives \\(|k| = 2\\), i.e. \\(k = \\pm 2\\)."
+  },
+  {
+    "ref": "Misc 4A I Q10",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Value of a Determinant",
+    "difficulty": "EASY",
+    "stem": "Which of the following is correct",
+    "options": [
+      {
+        "label": "A",
+        "text": "Determinant is square matrix"
+      },
+      {
+        "label": "B",
+        "text": "Determinant is number associated to matrix"
+      },
+      {
+        "label": "C",
+        "text": "Determinant is number associated to square matrix"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "answer": "C",
+    "_note": "Derivation: a determinant is not itself a matrix (rules out A), and it is defined only for SQUARE matrices, not for an arbitrary matrix (rules out B). Hence C."
+  },
+  {
+    "ref": "Misc 4A II Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Value of a Determinant",
+    "difficulty": "EASY",
+    "context": "Evaluate.",
+    "setLabel": "Misc 4A II Q1",
+    "stem": "\\(\\begin{vmatrix} 2 & -5 & 7 \\\\ 5 & 2 & 1 \\\\ 9 & 0 & 2 \\end{vmatrix}\\)"
+  },
+  {
+    "ref": "Misc 4A II Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Value of a Determinant",
+    "difficulty": "EASY",
+    "context": "Evaluate.",
+    "setLabel": "Misc 4A II Q1",
+    "stem": "\\(\\begin{vmatrix} 1 & -3 & 12 \\\\ 0 & 2 & -4 \\\\ 9 & 7 & 2 \\end{vmatrix}\\)"
+  },
+  {
+    "ref": "Misc 4A II Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Value of a Determinant",
+    "difficulty": "EASY",
+    "stem": "Evaluate determinant along second column \\(\\begin{vmatrix} 1 & -1 & 2 \\\\ 3 & 2 & -2 \\\\ 0 & 1 & -2 \\end{vmatrix}\\)"
+  },
+  {
+    "ref": "Misc 4A II Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Determinants",
+    "difficulty": "MODERATE",
+    "context": "Evaluate by using properties.",
+    "setLabel": "Misc 4A II Q3",
+    "stem": "\\(\\begin{vmatrix} 2 & 3 & 5 \\\\ 400 & 600 & 1000 \\\\ 48 & 47 & 18 \\end{vmatrix}\\)",
+    "_note": "The instruction 'by using properties' is printed on the sub-item (ii) line only; it is taken here as governing the whole of Q.3, since sub-item (i) is also a properties question (its second row is 200 times its first)."
+  },
+  {
+    "ref": "Misc 4A II Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Determinants",
+    "difficulty": "MODERATE",
+    "context": "Evaluate by using properties.",
+    "setLabel": "Misc 4A II Q3",
+    "stem": "\\(\\begin{vmatrix} 101 & 102 & 103 \\\\ 106 & 107 & 108 \\\\ 1 & 2 & 3 \\end{vmatrix}\\)"
+  },
+  {
+    "ref": "Misc 4A II Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Minors and Cofactors",
+    "difficulty": "MODERATE",
+    "context": "Find minor and cofactor of elements of the determinant.",
+    "setLabel": "Misc 4A II Q4",
+    "stem": "\\(\\begin{vmatrix} -1 & 0 & 4 \\\\ -2 & 1 & 3 \\\\ 0 & -4 & 2 \\end{vmatrix}\\)"
+  },
+  {
+    "ref": "Misc 4A II Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Minors and Cofactors",
+    "difficulty": "MODERATE",
+    "context": "Find minor and cofactor of elements of the determinant.",
+    "setLabel": "Misc 4A II Q4",
+    "stem": "\\(\\begin{vmatrix} 1 & -1 & 2 \\\\ 3 & 0 & -2 \\\\ 1 & 0 & 3 \\end{vmatrix}\\)"
+  },
+  {
+    "ref": "Misc 4A II Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Value of a Determinant",
+    "difficulty": "MODERATE",
+    "context": "Find the value of \\(x\\) if",
+    "setLabel": "Misc 4A II Q5",
+    "stem": "\\(\\begin{vmatrix} 1 & 4 & 20 \\\\ 1 & -2 & -5 \\\\ 1 & 2x & 5x^{2} \\end{vmatrix} = 0\\)"
+  },
+  {
+    "ref": "Misc 4A II Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Value of a Determinant",
+    "difficulty": "MODERATE",
+    "context": "Find the value of \\(x\\) if",
+    "setLabel": "Misc 4A II Q5",
+    "stem": "\\(\\begin{vmatrix} 1 & 2x & 4x \\\\ 1 & 4 & 16 \\\\ 1 & 1 & 1 \\end{vmatrix} = 0\\)",
+    "_note": "SUSPECTED BOOK MISPRINT, transcribed as printed. The (1,3) entry is printed as \\(4x\\) with NO exponent (verified at 7x zoom on p-17 / printed p.76). As printed the determinant reduces to \\(18x - 12 = 0\\), i.e. \\(x = 2/3\\) — a single answer that does not match the shape of the surrounding sub-items. The intended entry is almost certainly \\(4x^2\\), which makes the rows \\((1, 2x, (2x)^2), (1, 4, 4^2), (1, 1, 1^2)\\) a Vandermonde determinant with roots \\(x = 2\\) and \\(x = 1/2\\), matching sub-item (i)'s two-root pattern."
+  },
+  {
+    "ref": "Misc 4A II Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Determinants",
+    "difficulty": "MODERATE",
+    "stem": "By using properties of determinant prove that \\(\\begin{vmatrix} x+y & y+z & z+x \\\\ z & x & y \\\\ 1 & 1 & 1 \\end{vmatrix} = 0\\)"
+  },
+  {
+    "ref": "Misc 4A II Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Determinants",
+    "difficulty": "HARD",
+    "context": "Without expanding determinant show that",
+    "setLabel": "Misc 4A II Q7",
+    "stem": "\\(\\begin{vmatrix} b+c & bc & b^{2}c^{2} \\\\ c+a & ca & c^{2}a^{2} \\\\ a+b & ab & a^{2}b^{2} \\end{vmatrix} = 0\\)"
+  },
+  {
+    "ref": "Misc 4A II Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Determinants",
+    "difficulty": "HARD",
+    "context": "Without expanding determinant show that",
+    "setLabel": "Misc 4A II Q7",
+    "stem": "\\(\\begin{vmatrix} xa & yb & zc \\\\ a^{2} & b^{2} & c^{2} \\\\ 1 & 1 & 1 \\end{vmatrix} = \\begin{vmatrix} x & y & z \\\\ a & b & c \\\\ bc & ca & ab \\end{vmatrix}\\)"
+  },
+  {
+    "ref": "Misc 4A II Q7(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Determinants",
+    "difficulty": "HARD",
+    "context": "Without expanding determinant show that",
+    "setLabel": "Misc 4A II Q7",
+    "stem": "\\(\\begin{vmatrix} l & m & n \\\\ e & d & f \\\\ u & v & w \\end{vmatrix} = \\begin{vmatrix} n & f & w \\\\ l & e & u \\\\ m & d & v \\end{vmatrix}\\)"
+  },
+  {
+    "ref": "Misc 4A II Q7(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Determinants",
+    "difficulty": "MODERATE",
+    "context": "Without expanding determinant show that",
+    "setLabel": "Misc 4A II Q7",
+    "stem": "\\(\\begin{vmatrix} 0 & a & b \\\\ -a & 0 & c \\\\ -b & -c & 0 \\end{vmatrix} = 0\\)"
+  },
+  {
+    "ref": "Misc 4A II Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Determinants",
+    "difficulty": "HARD",
+    "stem": "If \\(\\begin{vmatrix} a & 1 & 1 \\\\ 1 & b & 1 \\\\ 1 & 1 & c \\end{vmatrix} = 0\\) then show that \\(\\frac{1}{1-a} + \\frac{1}{1-b} + \\frac{1}{1-c} = 1\\)"
+  },
+  {
+    "ref": "Misc 4A II Q9(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cramer's Rule and Consistency of Equations",
+    "difficulty": "MODERATE",
+    "context": "Solve the following linear equations by Cramer's Rule.",
+    "setLabel": "Misc 4A II Q9",
+    "stem": "\\(2x - y + z = 1\\), \\(x + 2y + 3z = 8\\), \\(3x + y - 4z = 1\\)"
+  },
+  {
+    "ref": "Misc 4A II Q9(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cramer's Rule and Consistency of Equations",
+    "difficulty": "HARD",
+    "context": "Solve the following linear equations by Cramer's Rule.",
+    "setLabel": "Misc 4A II Q9",
+    "stem": "\\(\\frac{1}{x} + \\frac{1}{y} = \\frac{3}{2}\\), \\(\\frac{1}{y} + \\frac{1}{z} = \\frac{5}{6}\\), \\(\\frac{1}{z} + \\frac{1}{x} = \\frac{4}{3}\\)"
+  },
+  {
+    "ref": "Misc 4A II Q9(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cramer's Rule and Consistency of Equations",
+    "difficulty": "MODERATE",
+    "context": "Solve the following linear equations by Cramer's Rule.",
+    "setLabel": "Misc 4A II Q9",
+    "stem": "\\(2x + 3y + 3z = 5\\), \\(x - 2y + z = -4\\), \\(3x - y - 2z = 3\\)"
+  },
+  {
+    "ref": "Misc 4A II Q9(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cramer's Rule and Consistency of Equations",
+    "difficulty": "MODERATE",
+    "context": "Solve the following linear equations by Cramer's Rule.",
+    "setLabel": "Misc 4A II Q9",
+    "stem": "\\(x - y + 2z = 7\\), \\(3x + 4y - 5z = 5\\), \\(2x - y + 3z = 12\\)"
+  },
+  {
+    "ref": "Misc 4A II Q10(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cramer's Rule and Consistency of Equations",
+    "difficulty": "MODERATE",
+    "context": "Find the value of \\(k\\) if the following equations are consistent.",
+    "setLabel": "Misc 4A II Q10",
+    "stem": "\\((k+1)x + (k-1)y + (k-1) = 0\\), \\((k-1)x + (k+1)y + (k-1) = 0\\), \\((k-1)x + (k-1)y + (k+1) = 0\\)"
+  },
+  {
+    "ref": "Misc 4A II Q10(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cramer's Rule and Consistency of Equations",
+    "difficulty": "MODERATE",
+    "context": "Find the value of \\(k\\) if the following equations are consistent.",
+    "setLabel": "Misc 4A II Q10",
+    "stem": "\\(3x + y - 2 = 0\\), \\(kx + 2y - 3 = 0\\) and \\(2x - y = 3\\)",
+    "_note": "Printed without a separator between the first two equations ('3x+y-2=0 kx+2y-3=0 and 2x-y = 3'); commas supplied here for readability. Note also that the third equation is printed in the form '= 3' while the first two are in '= 0' form — transcribed as printed."
+  },
+  {
+    "ref": "Misc 4A II Q10(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cramer's Rule and Consistency of Equations",
+    "difficulty": "MODERATE",
+    "context": "Find the value of \\(k\\) if the following equations are consistent.",
+    "setLabel": "Misc 4A II Q10",
+    "stem": "\\((k-2)x + (k-1)y = 17\\), \\((k-1)x + (k-2)y = 18\\) and \\(x + y = 5\\)"
+  },
+  {
+    "ref": "Misc 4A II Q11(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle and Collinearity",
+    "difficulty": "EASY",
+    "context": "Find the area of triangle whose vertices are",
+    "setLabel": "Misc 4A II Q11",
+    "stem": "\\(A(-1, 2)\\), \\(B(2, 4)\\), \\(C(0, 0)\\)"
+  },
+  {
+    "ref": "Misc 4A II Q11(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle and Collinearity",
+    "difficulty": "EASY",
+    "context": "Find the area of triangle whose vertices are",
+    "setLabel": "Misc 4A II Q11",
+    "stem": "\\(P(3, 6)\\), \\(Q(-1, 3)\\), \\(R(2, -1)\\)"
+  },
+  {
+    "ref": "Misc 4A II Q11(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle and Collinearity",
+    "difficulty": "EASY",
+    "context": "Find the area of triangle whose vertices are",
+    "setLabel": "Misc 4A II Q11",
+    "stem": "\\(L(1, 1)\\), \\(M(-2, 2)\\), \\(N(5, 4)\\)"
+  },
+  {
+    "ref": "Misc 4A II Q12(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle and Collinearity",
+    "difficulty": "EASY",
+    "context": "Find the value of \\(k\\)",
+    "setLabel": "Misc 4A II Q12",
+    "stem": "If area of triangle is 4 square unit and vertices are \\(P(k, 0)\\), \\(Q(4, 0)\\), \\(R(0, 2)\\)"
+  },
+  {
+    "ref": "Misc 4A II Q12(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle and Collinearity",
+    "difficulty": "EASY",
+    "context": "Find the value of \\(k\\)",
+    "setLabel": "Misc 4A II Q12",
+    "stem": "If area of triangle is \\(\\frac{33}{2}\\) square unit and vertices are \\(L(3, -5)\\), \\(M(-2, k)\\), \\(N(1, 4)\\)"
+  },
+  {
+    "ref": "Misc 4A II Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle and Collinearity",
+    "difficulty": "MODERATE",
+    "stem": "Find the area of quadrilateral whose vertices are \\(A(0, -4)\\), \\(B(4, 0)\\), \\(C(-4, 0)\\), \\(D(0, 4)\\)"
+  },
+  {
+    "ref": "Misc 4A II Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cramer's Rule and Consistency of Equations",
+    "difficulty": "MODERATE",
+    "stem": "An amount of ₹ 5000 is put into three investments at the rate of interest of 6%, 7% and 8% per annum respectively. The total annual income is ₹ 350. If the combined income from the first two investments is ₹ 70 more than the income from the third. Find the amount of each investment."
+  },
+  {
+    "ref": "Misc 4A II Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Cramer's Rule and Consistency of Equations",
+    "difficulty": "MODERATE",
+    "stem": "Show that the lines \\(x - y = 6\\), \\(4x - 3y = 20\\) and \\(6x + 5y + 8 = 0\\) are concurrent. Also find the point of concurrence"
+  },
+  {
+    "ref": "Misc 4A II Q16(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle and Collinearity",
+    "difficulty": "EASY",
+    "context": "Show that the following points are collinear by determinant",
+    "setLabel": "Misc 4A II Q16",
+    "stem": "\\(L(2, 5)\\), \\(M(5, 7)\\), \\(N(8, 9)\\)"
+  },
+  {
+    "ref": "Misc 4A II Q16(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area of a Triangle and Collinearity",
+    "difficulty": "EASY",
+    "context": "Show that the following points are collinear by determinant",
+    "setLabel": "Misc 4A II Q16",
+    "stem": "\\(P(5, 1)\\), \\(Q(1, -1)\\), \\(R(11, 4)\\)"
+  }
+]

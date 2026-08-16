@@ -1,0 +1,372 @@
+[
+  {
+    "ref": "4.4 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "HARD",
+    "stem": "Show that the matrix \\(\\begin{bmatrix} x+y & y+z & z+x \\\\ 1 & 1 & 1 \\\\ z & x & y \\end{bmatrix}\\) is a singular matrix.",
+    "solution": "Let \\(A = \\begin{bmatrix} x+y & y+z & z+x \\\\ 1 & 1 & 1 \\\\ z & x & y \\end{bmatrix}\\)\n\n\\(\\therefore |A| = \\begin{vmatrix} x+y & y+z & z+x \\\\ 1 & 1 & 1 \\\\ z & x & y \\end{vmatrix}\\)\n\nNow \\(|A| = (x+y)(y-x) - (y+z)(y-z) + (z+x)(x-z)\\)\n\n\\(= y^2 - x^2 - y^2 + z^2 + x^2 - z^2\\)\n\n\\(= 0\\)\n\n\\(\\therefore\\) A is a singular matrix."
+  },
+  {
+    "ref": "4.4 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\begin{bmatrix} -1 & -5 \\\\ 2 & 0 \\\\ 3 & -4 \\end{bmatrix}_{3\\times 2}\\), find \\((A^{T})^{T}\\).",
+    "solution": "Let \\(A = \\begin{bmatrix} -1 & -5 \\\\ 2 & 0 \\\\ 3 & -4 \\end{bmatrix}_{3\\times 2}\\)\n\n\\(\\therefore A^{T} = \\begin{bmatrix} -1 & 2 & 3 \\\\ -5 & 0 & -4 \\end{bmatrix}_{2\\times 3}\\)\n\n\\(\\therefore (A^{T})^{T} = \\begin{bmatrix} -1 & -5 \\\\ 2 & 0 \\\\ 3 & -4 \\end{bmatrix}_{3\\times 2} = A\\)"
+  },
+  {
+    "ref": "4.4 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "EASY",
+    "stem": "Find \\(a\\), \\(b\\), \\(c\\) if the matrix \\(A = \\begin{bmatrix} 2 & a & 3 \\\\ -7 & 4 & 5 \\\\ c & b & 6 \\end{bmatrix}\\) is a symmetric matrix.",
+    "solution": "Given that \\(A = \\begin{bmatrix} 2 & a & 3 \\\\ -7 & 4 & 5 \\\\ c & b & 6 \\end{bmatrix}\\) is a symmetric matrix.\n\n\\(a_{ij} = a_{ji}\\) for all \\(i\\) and \\(j\\)\n\nAs \\(a_{12} = a_{21}\\)\n\n\\(\\therefore a = -7\\)\n\nAs \\(a_{32} = a_{23}\\)\n\n\\(\\therefore b = 5\\)\n\nAs \\(a_{31} = a_{13}\\)\n\n\\(\\therefore c = 3\\)"
+  },
+
+  {
+    "ref": "Ex 4.4 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Construct a matrix \\(A = [a_{ij}]_{3\\times 2}\\) whose elements \\(a_{ij}\\) are given by",
+    "setLabel": "Ex 4.4 Q1",
+    "stem": "\\(a_{ij} = \\frac{(i-j)^2}{5-i}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "EASY",
+    "context": "Construct a matrix \\(A = [a_{ij}]_{3\\times 2}\\) whose elements \\(a_{ij}\\) are given by",
+    "setLabel": "Ex 4.4 Q1",
+    "stem": "\\(a_{ij} = i - 3j\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Construct a matrix \\(A = [a_{ij}]_{3\\times 2}\\) whose elements \\(a_{ij}\\) are given by",
+    "setLabel": "Ex 4.4 Q1",
+    "stem": "\\(a_{ij} = \\frac{(i+j)^3}{5}\\)"
+  },
+
+  {
+    "ref": "Ex 4.4 Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "EASY",
+    "context": "Classify the following matrices as, a row, a column, a square, a diagonal, a scalar, a unit, an upper triangular, a lower triangular, a symmetric or a skew-symmetric matrix.",
+    "setLabel": "Ex 4.4 Q2",
+    "stem": "\\(\\begin{bmatrix} 3 & -2 & 4 \\\\ 0 & 0 & -5 \\\\ 0 & 0 & 0 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "EASY",
+    "context": "Classify the following matrices as, a row, a column, a square, a diagonal, a scalar, a unit, an upper triangular, a lower triangular, a symmetric or a skew-symmetric matrix.",
+    "setLabel": "Ex 4.4 Q2",
+    "stem": "\\(\\begin{bmatrix} 0 & 4 & 7 \\\\ -4 & 0 & -3 \\\\ -7 & 3 & 0 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "EASY",
+    "context": "Classify the following matrices as, a row, a column, a square, a diagonal, a scalar, a unit, an upper triangular, a lower triangular, a symmetric or a skew-symmetric matrix.",
+    "setLabel": "Ex 4.4 Q2",
+    "stem": "\\(\\begin{bmatrix} 5 \\\\ 4 \\\\ -3 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q2(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "EASY",
+    "context": "Classify the following matrices as, a row, a column, a square, a diagonal, a scalar, a unit, an upper triangular, a lower triangular, a symmetric or a skew-symmetric matrix.",
+    "setLabel": "Ex 4.4 Q2",
+    "stem": "\\(\\begin{bmatrix} 9 & \\sqrt{2} & -3 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q2(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "EASY",
+    "context": "Classify the following matrices as, a row, a column, a square, a diagonal, a scalar, a unit, an upper triangular, a lower triangular, a symmetric or a skew-symmetric matrix.",
+    "setLabel": "Ex 4.4 Q2",
+    "stem": "\\(\\begin{bmatrix} 6 & 0 \\\\ 0 & 6 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q2(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "EASY",
+    "context": "Classify the following matrices as, a row, a column, a square, a diagonal, a scalar, a unit, an upper triangular, a lower triangular, a symmetric or a skew-symmetric matrix.",
+    "setLabel": "Ex 4.4 Q2",
+    "stem": "\\(\\begin{bmatrix} 2 & 0 & 0 \\\\ 3 & -1 & 0 \\\\ -7 & 3 & 1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q2(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "EASY",
+    "context": "Classify the following matrices as, a row, a column, a square, a diagonal, a scalar, a unit, an upper triangular, a lower triangular, a symmetric or a skew-symmetric matrix.",
+    "setLabel": "Ex 4.4 Q2",
+    "stem": "\\(\\begin{bmatrix} 3 & 0 & 0 \\\\ 0 & 5 & 0 \\\\ 0 & 0 & \\frac{1}{3} \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q2(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "EASY",
+    "context": "Classify the following matrices as, a row, a column, a square, a diagonal, a scalar, a unit, an upper triangular, a lower triangular, a symmetric or a skew-symmetric matrix.",
+    "setLabel": "Ex 4.4 Q2",
+    "stem": "\\(\\begin{bmatrix} 10 & -15 & 27 \\\\ -15 & 0 & \\sqrt{34} \\\\ 27 & \\sqrt{34} & \\frac{5}{3} \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q2(ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "EASY",
+    "context": "Classify the following matrices as, a row, a column, a square, a diagonal, a scalar, a unit, an upper triangular, a lower triangular, a symmetric or a skew-symmetric matrix.",
+    "setLabel": "Ex 4.4 Q2",
+    "stem": "\\(\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q2(x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "EASY",
+    "context": "Classify the following matrices as, a row, a column, a square, a diagonal, a scalar, a unit, an upper triangular, a lower triangular, a symmetric or a skew-symmetric matrix.",
+    "setLabel": "Ex 4.4 Q2",
+    "stem": "\\(\\begin{bmatrix} 0 & 0 & 1 \\\\ 0 & 1 & 0 \\\\ 1 & 0 & 0 \\end{bmatrix}\\)"
+  },
+
+  {
+    "ref": "Ex 4.4 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "HARD",
+    "context": "Which of the following matrices are singular or non singular ?",
+    "setLabel": "Ex 4.4 Q3",
+    "stem": "\\(\\begin{bmatrix} a & b & c \\\\ p & q & r \\\\ 2a-p & 2b-q & 2c-r \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Which of the following matrices are singular or non singular ?",
+    "setLabel": "Ex 4.4 Q3",
+    "stem": "\\(\\begin{bmatrix} 5 & 0 & 5 \\\\ 1 & 99 & 100 \\\\ 6 & 99 & 105 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q3(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Which of the following matrices are singular or non singular ?",
+    "setLabel": "Ex 4.4 Q3",
+    "stem": "\\(\\begin{bmatrix} 3 & 5 & 7 \\\\ -2 & 1 & 4 \\\\ 3 & 2 & 5 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q3(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "EASY",
+    "context": "Which of the following matrices are singular or non singular ?",
+    "setLabel": "Ex 4.4 Q3",
+    "stem": "\\(\\begin{bmatrix} 7 & 5 \\\\ -4 & 7 \\end{bmatrix}\\)"
+  },
+
+  {
+    "ref": "Ex 4.4 Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "EASY",
+    "context": "Find \\(k\\) if the following matrices are singular",
+    "setLabel": "Ex 4.4 Q4",
+    "stem": "\\(\\begin{bmatrix} 7 & 3 \\\\ -2 & k \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Find \\(k\\) if the following matrices are singular",
+    "setLabel": "Ex 4.4 Q4",
+    "stem": "\\(\\begin{bmatrix} 4 & 3 & 1 \\\\ 7 & k & 1 \\\\ 10 & 9 & 1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q4(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Find \\(k\\) if the following matrices are singular",
+    "setLabel": "Ex 4.4 Q4",
+    "stem": "\\(\\begin{bmatrix} k-1 & 2 & 3 \\\\ 3 & 1 & 2 \\\\ 1 & -2 & 4 \\end{bmatrix}\\)"
+  },
+
+  {
+    "ref": "Ex 4.4 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\begin{bmatrix} 5 & 1 & -1 \\\\ 3 & 2 & 0 \\end{bmatrix}\\), find \\((A^{T})^{T}\\)."
+  },
+  {
+    "ref": "Ex 4.4 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\begin{bmatrix} 7 & 3 & 1 \\\\ -2 & -4 & 1 \\\\ 5 & 9 & 1 \\end{bmatrix}\\), find \\((A^{T})^{T}\\)."
+  },
+  {
+    "ref": "Ex 4.4 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "EASY",
+    "stem": "Find \\(a\\), \\(b\\), \\(c\\) if \\(\\begin{bmatrix} 1 & \\frac{3}{5} & a \\\\ b & -5 & -7 \\\\ -4 & c & 0 \\end{bmatrix}\\) is a symmetric matrix."
+  },
+  {
+    "ref": "Ex 4.4 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(x\\), \\(y\\), \\(z\\) if \\(\\begin{bmatrix} 0 & -5i & x \\\\ y & 0 & z \\\\ \\frac{3}{2} & -\\sqrt{2} & 0 \\end{bmatrix}\\) is a skew symmetric matrix."
+  },
+
+  {
+    "ref": "Ex 4.4 Q9(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "For each of the following matrices, using its transpose state whether it is a symmetric, a skew-symmetric or neither.",
+    "setLabel": "Ex 4.4 Q9",
+    "stem": "\\(\\begin{bmatrix} 1 & 2 & -5 \\\\ 2 & -3 & 4 \\\\ -5 & 4 & 9 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q9(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "For each of the following matrices, using its transpose state whether it is a symmetric, a skew-symmetric or neither.",
+    "setLabel": "Ex 4.4 Q9",
+    "stem": "\\(\\begin{bmatrix} 2 & 5 & 1 \\\\ -5 & 4 & 6 \\\\ -1 & -6 & 3 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q9(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "HARD",
+    "context": "For each of the following matrices, using its transpose state whether it is a symmetric, a skew-symmetric or neither.",
+    "setLabel": "Ex 4.4 Q9",
+    "stem": "\\(\\begin{bmatrix} 0 & 1+2i & i-2 \\\\ -1-2i & 0 & -7 \\\\ 2-i & 7 & 0 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.4 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Construct the matrix \\(A = [a_{ij}]_{3\\times 3}\\) where \\(a_{ij} = i-j\\). State whether A is symmetric or skew symmetric."
+  },
+
+  {
+    "ref": "4.5.3 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "EASY",
+    "stem": "\\(A = \\begin{bmatrix} 2 & 3 & 1 \\\\ -1 & -2 & 0 \\end{bmatrix}_{2\\times 3}\\) and \\(B = \\begin{bmatrix} -4 & 3 & 1 \\\\ 5 & 7 & -8 \\end{bmatrix}_{2\\times 3}\\). Find \\(A+B\\).",
+    "solution": "By definition of addition,\n\n\\(A+B = \\begin{bmatrix} 2+(-4) & 3+3 & 1+1 \\\\ -1+5 & -2+7 & 0+(-8) \\end{bmatrix}_{2\\times 3}\\)\n\n\\(= \\begin{bmatrix} -2 & 6 & 2 \\\\ 4 & 5 & -8 \\end{bmatrix}_{2\\times 3}\\)",
+    "_note": "Worked example embedded in the §4.5 theory narrative (sub-part (3) Addition of Two matrices, printed p.84) with its own 'Solution :' block — not inside a boxed SOLVED EXAMPLES block. Ref is sub-section-scoped to avoid colliding with the p.85 boxed block."
+  },
+  {
+    "ref": "4.5.3 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\begin{bmatrix} -1 & 4 \\\\ 3 & -2 \\\\ 0 & 5 \\end{bmatrix}_{3\\times 2}\\) and \\(B = \\begin{bmatrix} -1 & 5 \\\\ 2 & -6 \\\\ 4 & 9 \\end{bmatrix}_{3\\times 2}\\), find \\(A-B\\).",
+    "solution": "By definition of subtraction,\n\n\\(A-B = A+(-B) = \\begin{bmatrix} -1 & 4 \\\\ 3 & -2 \\\\ 0 & 5 \\end{bmatrix} + \\begin{bmatrix} 1 & -5 \\\\ -2 & 6 \\\\ -4 & -9 \\end{bmatrix}\\)\n\n\\(= \\begin{bmatrix} -1+1 & 4+(-5) \\\\ 3+(-2) & -2+6 \\\\ 0+(-4) & 5+(-9) \\end{bmatrix} = \\begin{bmatrix} 0 & -1 \\\\ 1 & 4 \\\\ -4 & -4 \\end{bmatrix}\\)",
+    "_note": "Worked example embedded in the §4.5 theory narrative (the Note on subtraction following sub-part (3), printed p.84) with its own 'Solution :' block — not inside a boxed SOLVED EXAMPLES block."
+  },
+
+  {
+    "ref": "4.5 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\begin{bmatrix} 5 & -3 \\\\ 1 & 0 \\\\ -4 & -2 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 2 & 7 \\\\ -3 & 1 \\\\ 2 & -2 \\end{bmatrix}\\), find \\(2A-3B\\).",
+    "solution": "Let \\(2A-3B\\)\n\n\\(= 2\\begin{bmatrix} 5 & -3 \\\\ 1 & 0 \\\\ -4 & -2 \\end{bmatrix} - 3\\begin{bmatrix} 2 & 7 \\\\ -3 & 1 \\\\ 2 & -2 \\end{bmatrix}\\)\n\n\\(= \\begin{bmatrix} 10 & -6 \\\\ 2 & 0 \\\\ -8 & -4 \\end{bmatrix} + \\begin{bmatrix} -6 & -21 \\\\ 9 & -3 \\\\ -6 & 6 \\end{bmatrix}\\)\n\n\\(= \\begin{bmatrix} 10-6 & -6-21 \\\\ 2+9 & 0-3 \\\\ -8-6 & -4+6 \\end{bmatrix} = \\begin{bmatrix} 4 & -27 \\\\ 11 & -3 \\\\ -14 & 2 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "4.5 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\operatorname{diag}(2, -5, 9)\\), \\(B = \\operatorname{diag}(-3, 7, -14)\\) and \\(C = \\operatorname{diag}(1, 0, 3)\\), find \\(B-A-C\\).",
+    "solution": "\\(B-A-C = B-(A+C)\\)\n\nNow, \\(A+C = \\operatorname{diag}(2, -5, 9) + \\operatorname{diag}(1, 0, 3) = \\operatorname{diag}(3, -5, 12)\\)\n\n\\(B-A-C = B-(A+C)\\)\n\n\\(= \\operatorname{diag}(-3, 7, -14) - \\operatorname{diag}(3, -5, 12)\\)\n\n\\(= \\operatorname{diag}(-6, 12, -26) = \\begin{bmatrix} -6 & 0 & 0 \\\\ 0 & 12 & 0 \\\\ 0 & 0 & -26 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "4.5 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} 2 & 3 & -1 \\\\ 4 & 7 & 5 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 3 & 2 \\\\ 4 & 6 & -1 \\end{bmatrix}\\) and \\(C = \\begin{bmatrix} 1 & -1 & 6 \\\\ 0 & 2 & -5 \\end{bmatrix}\\), find the matrix \\(X\\) such that \\(3A-2B+4X = 5C\\).",
+    "solution": "Since \\(3A-2B+4X = 5C\\)\n\n\\(\\therefore 4X = 5C-3A+2B\\)\n\n\\(\\therefore 4X = 5\\begin{bmatrix} 1 & -1 & 6 \\\\ 0 & 2 & -5 \\end{bmatrix} - 3\\begin{bmatrix} 2 & 3 & -1 \\\\ 4 & 7 & 5 \\end{bmatrix} + 2\\begin{bmatrix} 1 & 3 & 2 \\\\ 4 & 6 & -1 \\end{bmatrix}\\)\n\n\\(= \\begin{bmatrix} 5 & -5 & 30 \\\\ 0 & 10 & -25 \\end{bmatrix} + \\begin{bmatrix} -6 & -9 & 3 \\\\ -12 & -21 & -15 \\end{bmatrix} + \\begin{bmatrix} 2 & 6 & 4 \\\\ 8 & 12 & -2 \\end{bmatrix}\\)\n\n\\(= \\begin{bmatrix} 5-6+2 & -5-9+6 & 30+3+4 \\\\ 0-12+8 & 10-21+12 & -25-15-2 \\end{bmatrix}\\)\n\n\\(= \\begin{bmatrix} 1 & -8 & 37 \\\\ -4 & 1 & -42 \\end{bmatrix}\\)\n\n\\(\\therefore X = \\frac{1}{4}\\begin{bmatrix} 1 & -8 & 37 \\\\ -4 & 1 & -42 \\end{bmatrix} = \\begin{bmatrix} \\frac{1}{4} & -2 & \\frac{37}{4} \\\\ -1 & \\frac{1}{4} & -\\frac{21}{2} \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "4.5 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "EASY",
+    "stem": "If \\(\\begin{bmatrix} 2x+1 & -1 \\\\ 3 & 4y \\end{bmatrix} + \\begin{bmatrix} -1 & 6 \\\\ 3 & 0 \\end{bmatrix} = \\begin{bmatrix} 4 & 5 \\\\ 6 & 12 \\end{bmatrix}\\), find \\(x\\) and \\(y\\).",
+    "solution": "Given \\(\\begin{bmatrix} 2x+1 & -1 \\\\ 3 & 4y \\end{bmatrix} + \\begin{bmatrix} -1 & 6 \\\\ 3 & 0 \\end{bmatrix} = \\begin{bmatrix} 4 & 5 \\\\ 6 & 12 \\end{bmatrix}\\)\n\n\\(\\therefore \\begin{bmatrix} 2x & 5 \\\\ 6 & 4y \\end{bmatrix} = \\begin{bmatrix} 4 & 5 \\\\ 6 & 12 \\end{bmatrix}\\)\n\n\\(\\therefore\\) Using definition of equality of matrices, we have\n\n\\(2x = 4\\), \\(4y = 12\\)\n\n\\(\\therefore x = 2\\), \\(y = 3\\)"
+  },
+  {
+    "ref": "4.5 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "HARD",
+    "stem": "If \\(X+Y = \\begin{bmatrix} 2 & -1 \\\\ 1 & 3 \\\\ -3 & -2 \\end{bmatrix}\\) and \\(X-2Y = \\begin{bmatrix} -2 & 1 \\\\ 3 & -1 \\\\ 4 & -2 \\end{bmatrix}\\), then find \\(X\\), \\(Y\\).",
+    "solution": "Let \\(A = \\begin{bmatrix} 2 & -1 \\\\ 1 & 3 \\\\ -3 & -2 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} -2 & 1 \\\\ 3 & -1 \\\\ 4 & -2 \\end{bmatrix}\\)\n\nLet, \\(X+Y = A\\) …. (1), \\(X-2Y = B\\) ……(2), Solving (1) and (2) for \\(X\\) and \\(Y\\)\n\nBy (1) – (2), \\(3Y = A-B\\), \\(\\therefore Y = \\frac{1}{3}(A-B)\\)\n\n\\(\\therefore Y = \\frac{1}{3}\\left\\{ \\begin{bmatrix} 2 & -1 \\\\ 1 & 3 \\\\ -3 & -2 \\end{bmatrix} - \\begin{bmatrix} -2 & 1 \\\\ 3 & -1 \\\\ 4 & -2 \\end{bmatrix} \\right\\} = \\frac{1}{3}\\begin{bmatrix} 4 & -2 \\\\ -2 & 4 \\\\ -7 & 0 \\end{bmatrix}\\)\n\n\\(= \\begin{bmatrix} \\frac{4}{3} & -\\frac{2}{3} \\\\ -\\frac{2}{3} & \\frac{4}{3} \\\\ -\\frac{7}{3} & 0 \\end{bmatrix}\\)\n\nFrom (1) \\(X+Y = A\\), \\(\\therefore X = A-Y\\),\n\n\\(\\therefore X = \\begin{bmatrix} 2 & -1 \\\\ 1 & 3 \\\\ -3 & -2 \\end{bmatrix} - \\begin{bmatrix} \\frac{4}{3} & -\\frac{2}{3} \\\\ -\\frac{2}{3} & \\frac{4}{3} \\\\ -\\frac{7}{3} & 0 \\end{bmatrix}\\)\n\n\\(X = \\begin{bmatrix} 2-\\frac{4}{3} & -1+\\frac{2}{3} \\\\ 1+\\frac{2}{3} & 3-\\frac{4}{3} \\\\ -3+\\frac{7}{3} & -2+0 \\end{bmatrix} = \\begin{bmatrix} \\frac{2}{3} & -\\frac{1}{3} \\\\ \\frac{5}{3} & \\frac{5}{3} \\\\ -\\frac{2}{3} & -2 \\end{bmatrix}\\)"
+  }
+]

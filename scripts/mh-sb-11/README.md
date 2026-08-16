@@ -32,6 +32,11 @@ Render answer pages to **`out/_answers/<chapterId>/`** — a SIBLING of `out/<ch
 because `render.ts` does `rmSync(out/<chapterId>)` and would otherwise delete them (the same
 trap `dump-text.ts` hit in `mh-sb-9`).
 
+> ⚠️ **`render.ts` here has NO `--answers` flag** (the `mh-sb-9` one does). Until it is ported,
+> render the answer block with a one-off PyMuPDF call writing into `out/_answers/<chapterId>/`.
+> Do NOT re-run `render.ts <chapterId>` to get them: it rmSync's the chapter's page PNGs, which
+> destroys the images any in-flight transcription agents are reading.
+
 **2b. PLAN TRANSCRIPTION BANDS FROM A `Solution :` SCAN, NOT FROM SECTION BANNERS.**
 This is the single most expensive mistake made on this book so far — it stranded questions in
 two consecutive chapters. A banner scan (`SOLVED EXAMPLES` / `EXERCISE N.M` / `MISCELLANEOUS`)
@@ -78,6 +83,58 @@ spine number.
 splits one teaching unit across thin sub-sections. This follows the shipped `mh-ssc-10-text`
 decision. They are not invented, and they are already authored for all 18 chapters in
 `config.ts`.
+
+**5b. A chapter may print MORE THAN ONE Miscellaneous block, and the default refs collide.**
+Ch.4 Determinants and Matrices prints `MISCELLANEOUS EXERCISE - 4 (A)` mid-chapter (closing the
+Determinants half) and `- 4 (B)` at the end (closing Matrices), each split into part (I) MCQ and
+part (II) free-response — four blocks, where `Misc I `/`Misc II ` gives only two names. That
+chapter uses `Misc 4A I `/`Misc 4A II `/`Misc 4B I `/`Misc 4B II `. Decide this BEFORE dispatching
+transcription: refs route the `/board` structure, so discovering it afterwards means re-transcribing
+them. Check for a second `MISCELLANEOUS` banner in the exercise-banner scan (§2b).
+
+Related: where a section carries **two boxed solved blocks** the book restarts `Ex. 1)` in each, so
+a bare `<N.M> SolvedEx.<n>` namespace collides. If the section has numbered sub-sections use those
+(`4.3.1`/`4.3.2`/`4.3.3`); if it does not, suffix the second block (`4.5b`) — Ch.4 needed both.
+Do NOT solve the collision by numbering continuously across the blocks: `assignSections` routes by
+prefix, so the reader would then render a post-exercise solved block BEFORE the exercise it follows.
+
+**4b. For an IDENTITY chapter, verify every printed identity NUMERICALLY before proving it —
+and not at convenient angles.** A corrupted trigonometric identity still reads like an
+identity, so nothing but evaluation catches it. Ch.3 shipped with **three printed identities
+that are FALSE as printed**, and the sharpest of them (`Ex 3.1 Q2(ii)`) agrees with the correct
+form at `θ = 0` — a spot-check at zero passes it. Conversely `Ex 3.3 Q3(xviii)` fails 0 of 7
+sample points while its intended form passes 7 of 7; **that contrast is what turns "this looks
+wrong" into evidence**, and it is what the errata bracket should quote. Use several assorted
+angles (include a negative and an obtuse one); for triangle identities use two or three
+genuinely different triangles, never only the equilateral case, where many false identities
+coincidentally hold.
+
+**5a. ORDERING: `apply-errata.ts` must be the LAST write. Never run `apply-solutions.ts`
+after it.** `apply-errata` prepends the bracket to the live row and mirrors it into the
+SOURCE — but for an EXERCISE row it mirrors into the transcription *band* fragment, which
+`apply-solutions` does not read. So a later `apply-solutions --apply` rewrites that row's
+solution from `<id>.<group>.solutions.json` and **silently drops the bracket**. Solved
+examples are unaffected (their text lives in the band fragment).
+
+Bit us on Ch.9: an OMML fix after the errata pass required a re-run of `apply-solutions`,
+which destroyed **9 of 17** brackets. The DB count is the only place it shows —
+
+```sql
+select count(*) filter (where solution like '[Textbook%') from questions where source_file = '…';
+```
+
+— so check that against the entry count in `<id>.errata.json` before flipping PUBLIC.
+`apply-errata` is idempotent (it skips a solution already starting with `[`), so the repair
+is simply to re-run it.
+
+**5c. Run `npm run audit:omml -- <source_file>` before calling a chapter done.**
+It is scoped, cheap, and it checks the WORD EXPORT, which no other gate touches — an
+unconvertible math zone renders fine on the web (KaTeX) and degrades to raw LaTeX in a
+teacher's downloaded paper. Known failure found on Ch.9: the converter cannot render a
+**superscript applied to a parenthesised group containing `\cup` or `\cap`** — `(A \cup B)'`
+and `(A \cup B)^{c}` both fail, while `A'` and `(A + B)'` are fine. Write the complement of
+a group as `\overline{A \cup B}`. Probability and Sets chapters are where this bites; test a
+candidate through `findOmmlFailures` rather than guessing which form converts.
 
 **6. The step-6 answer-key cross-check gate IS feasible for every chapter** — both volumes
 carry a full ANSWERS section including MCQ key tables. Run it; it is mandatory. Read the

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "3886f116-e2a6-40de-aea0-37677b088cee",
+    "ref": "Misc I Q1",
+    "derived_answer": "D",
+    "why": "Seat 5 girls in 5! ways creating 6 gaps; place 2 boys in 6P2 = 30 ways => 120*30 = 3600 favourable of 7! = 5040, i.e. 3600/5040 = 5/7 (brute-force over all 5040 permutations confirms 5/7).",
+    "matches_current": true
+  },
+  {
+    "id": "88e7200a-1588-4c9f-9f46-af11b5b51632",
+    "ref": "Misc I Q2",
+    "derived_answer": "A",
+    "why": "Without replacement P(both black) = (5/8)*(4/7) = 20/56 = 5/14. OPTION-SET DEFECT: options B and C are both printed as 5/8, so one of the four alternatives is a duplicate.",
+    "matches_current": true
+  },
+  {
+    "id": "ee2cead3-71ce-446b-bdb4-56f8f15eba67",
+    "ref": "Misc I Q3",
+    "derived_answer": "A",
+    "why": "Product is odd only when both dice are odd: 3*3 = 9 of 36 outcomes, so P(even product) = 1 - 9/36 = 27/36 = 3/4 (enumerated all 36 outcomes).",
+    "matches_current": true
+  },
+  {
+    "id": "5374efad-56c1-4850-aafd-43c707d9a520",
+    "ref": "Misc I Q4",
+    "derived_answer": "D",
+    "why": "Black = 30 - 17 = 13, party wear = 4 + 5 = 9, black AND party wear = 5; P(black or party) = 13/30 + 9/30 - 5/30 = 17/30.",
+    "matches_current": true
+  },
+  {
+    "id": "c5e2ed4c-642a-4a9b-813e-eba36e40501c",
+    "ref": "Misc I Q5",
+    "derived_answer": "A",
+    "why": "AMBIGUOUS STEM - both readings are printed options. Reading 1 (as literally stated, no shelf-selection mechanism given, so every one of the 14 books is equally likely): 9 Physics of 14 = 9/14 = option A. Reading 2 (a shelf is chosen at random first, then a book): (1/2)(5/8) + (1/2)(4/6) = 31/48 = option B. I derive A because the stem never states that a shelf is selected at random, but Reading 2 is defensible since the 8-vs-6 split is otherwise irrelevant information; needs adjudication.",
+    "matches_current": false
+  },
+  {
+    "id": "5fb05fde-8704-444c-849b-1da9390e44f4",
+    "ref": "Misc I Q6",
+    "derived_answer": "C",
+    "why": "Independent selections: P(A and B) = (2/5)*(4/7) = 8/35.",
+    "matches_current": true
+  },
+  {
+    "id": "04218676-50b4-47b2-963b-804885b5dc8b",
+    "ref": "Misc I Q7",
+    "derived_answer": "D",
+    "why": "Bayes: P(knows | correct) = (2/3 * 1) / (2/3 * 1 + 1/3 * 1/4) = (2/3)/(3/4) = 8/9.",
+    "matches_current": true
+  },
+  {
+    "id": "8114b7ee-13f5-4099-9ef6-1f5d98bbc424",
+    "ref": "Misc I Q8",
+    "derived_answer": "D",
+    "why": "Bayes with equal prior 1/2 per bag: (1/2 * 5/11) / (1/2 * 3/7 + 1/2 * 5/11) = (5/11)/(68/77) = 35/68.",
+    "matches_current": true
+  },
+  {
+    "id": "ba3e6c96-48c8-44ed-b8ae-957aa174505c",
+    "ref": "Misc I Q9",
+    "derived_answer": "C",
+    "why": "Reading the mangled stem as 'a fair die is tossed twice': P = (3/6)*(4/6) = 1/3, so odds in favour = (1/3):(2/3) = 1:2. STEM DEFECT: the noun is missing ('A fair is tossed twice') and it then says 'on the second die', but the arithmetic is unaffected.",
+    "matches_current": true
+  },
+  {
+    "id": "12711ebe-3fbf-400f-938b-a62a0420e696",
+    "ref": "Misc I Q10",
+    "derived_answer": "B",
+    "why": "Odds against 5:3 => P(A) = 3/8; odds in favour 7:5 => P(B) = 7/12; independent, so P(at least one) = 1 - (5/8)(5/12) = 1 - 25/96 = 71/96.",
+    "matches_current": true
+  }
+]

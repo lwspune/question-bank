@@ -1,0 +1,94 @@
+[
+  {
+    "id": "2a95de9f-b234-4af6-b185-3d0dd8643dd5",
+    "ref": "Ex 9.2 Q1",
+    "solution": "The first die has 6 faces and the second has 5, so \\(n(S) = 6 \\times 5 = 30\\). Let A be the event that the sum is divisible by 2 and B the event that it is divisible by 3. The sum is even when both numbers are odd or both are even, so \\(n(A) = (3 \\times 3) + (3 \\times 2) = 15\\). The sum is divisible by 3 when it is 3, 6 or 9, giving \\(2 + 5 + 3 = 10\\) outcomes, so \\(n(B) = 10\\). A sum divisible by both 2 and 3 must be 6 (12 is impossible, since the largest sum is 11), so \\(n(A \\cap B) = 5\\). By the addition theorem, \\(P(A \\cup B) = \\frac{15}{30} + \\frac{10}{30} - \\frac{5}{30} = \\frac{20}{30} = \\frac{2}{3}\\)."
+  },
+  {
+    "id": "962997bb-3a37-4f08-861c-6ea3f6cbb926",
+    "ref": "Ex 9.2 Q2(i)",
+    "solution": "Let R be the event that the card is red and B that it is black. A pack has 26 red and 26 black cards, and no card is both, so R and B are mutually exclusive. \\(P(R \\cup B) = P(R) + P(B) = \\frac{26}{52} + \\frac{26}{52} = 1\\). (Every card is either red or black, so the event is certain.) The required probability is \\(1\\)."
+  },
+  {
+    "id": "0449c406-8c3f-46bc-b2ca-912a8f87c4a7",
+    "ref": "Ex 9.2 Q2(ii)",
+    "solution": "Let B be the event that the card is black and F that it is a face card. Then \\(n(B) = 26\\), \\(n(F) = 12\\), and the black face cards are the 6 face cards in spades and clubs, so \\(n(B \\cap F) = 6\\). By the addition theorem, \\(P(B \\cup F) = \\frac{26}{52} + \\frac{12}{52} - \\frac{6}{52} = \\frac{32}{52} = \\frac{8}{13}\\)."
+  },
+  {
+    "id": "e352f1f3-f712-4e25-ae64-d42922e864fb",
+    "ref": "Ex 9.2 Q3(i)",
+    "solution": "Let N be the event that she cracks the National Level exam and S the State Level exam, so \\(P(N) = 0.42\\), \\(P(S) = 0.54\\) and \\(P(N \\cap S) = 0.11\\). \"At least one\" is the event \\(N \\cup S\\). By the addition theorem, \\(P(N \\cup S) = 0.42 + 0.54 - 0.11 = 0.85\\)."
+  },
+  {
+    "id": "dacb2b8d-029e-4944-b302-fc28aac92c84",
+    "ref": "Ex 9.2 Q3(ii)",
+    "solution": "\"Only one\" means at least one but not both, so its probability is \\(P(N \\cup S) - P(N \\cap S)\\). Using \\(P(N \\cup S) = 0.42 + 0.54 - 0.11 = 0.85\\), the required probability is \\(0.85 - 0.11 = 0.74\\)."
+  },
+  {
+    "id": "6c336cb4-0361-4793-8c5b-3466744bacf7",
+    "ref": "Ex 9.2 Q3(iii)",
+    "solution": "\"She cracks none\" is the complement of \"at least one\", that is \\(\\overline{N \\cup S}\\). Since \\(P(N \\cup S) = 0.42 + 0.54 - 0.11 = 0.85\\), we get \\(P\\big(\\overline{N \\cup S}\\big) = 1 - 0.85 = 0.15\\)."
+  },
+  {
+    "id": "026ca70e-da64-447c-bed1-db19308bed38",
+    "ref": "Ex 9.2 Q4(a)",
+    "solution": "Here \\(n(S) = 75\\). Let A be the event that the number is a perfect square and B that it is divisible by 4. The perfect squares up to 75 are \\(1, 4, 9, 16, 25, 36, 49, 64\\), so \\(n(A) = 8\\). The multiples of 4 are \\(4, 8, \\ldots, 72\\), so \\(n(B) = 18\\). The numbers that are both are \\(4, 16, 36, 64\\), so \\(n(A \\cap B) = 4\\). By the addition theorem, \\(P(A \\cup B) = \\frac{8}{75} + \\frac{18}{75} - \\frac{4}{75} = \\frac{22}{75}\\)."
+  },
+  {
+    "id": "32a645c4-ffb3-4cfe-96b0-6962da11280f",
+    "ref": "Ex 9.2 Q4(b)",
+    "solution": "Let A be the event that the number is prime and B that it is greater than 40. There are 21 primes from 1 to 75, so \\(n(A) = 21\\). The numbers greater than 40 are \\(41, 42, \\ldots, 75\\), so \\(n(B) = 35\\). The primes greater than 40 are \\(41, 43, 47, 53, 59, 61, 67, 71, 73\\), so \\(n(A \\cap B) = 9\\). By the addition theorem, \\(P(A \\cup B) = \\frac{21}{75} + \\frac{35}{75} - \\frac{9}{75} = \\frac{47}{75}\\)."
+  },
+  {
+    "id": "530bd989-23f7-4b3f-b4a0-65c4b7550c87",
+    "ref": "Ex 9.2 Q5",
+    "solution": "Let F be the event that the student passes in French and S in Sociology, so \\(P(F) = 0.64\\), \\(P(S) = 0.45\\) and \\(P(F \\cap S) = 0.40\\). \"At least one of the two\" is \\(F \\cup S\\). By the addition theorem, \\(P(F \\cup S) = 0.64 + 0.45 - 0.40 = 0.69\\)."
+  },
+  {
+    "id": "e6cc9a87-a5b9-4414-bce2-df100657c6e7",
+    "ref": "Ex 9.2 Q6",
+    "solution": "For two dice \\(n(S) = 36\\). Let A be the event that the first die shows 3, so \\(n(A) = 6\\). Let B be the event that the sum is 6, that is \\(\\{(1,5), (2,4), (3,3), (4,2), (5,1)\\}\\), so \\(n(B) = 5\\). The only common outcome is \\((3,3)\\), so \\(n(A \\cap B) = 1\\). By the addition theorem, \\(P(A \\cup B) = \\frac{6}{36} + \\frac{5}{36} - \\frac{1}{36} = \\frac{10}{36} = \\frac{5}{18}\\)."
+  },
+  {
+    "id": "d313ac7f-5254-4f4d-a803-74a3eb1ee06c",
+    "ref": "Ex 9.2 Q7(a)",
+    "solution": "By the addition theorem, \\(P(A \\cap B) = P(A) + P(B) - P(A \\cup B)\\). Substituting, \\(P(A \\cap B) = \\frac{3}{8} + \\frac{1}{2} - \\frac{5}{8} = \\frac{3}{8} + \\frac{4}{8} - \\frac{5}{8} = \\frac{2}{8} = \\frac{1}{4}\\)."
+  },
+  {
+    "id": "063d057c-14b0-479d-bf36-e7b79d96f36b",
+    "ref": "Ex 9.2 Q7(b)",
+    "solution": "By De Morgan's law \\(A' \\cap B' = \\overline{A \\cup B}\\), so \\(P(A' \\cap B') = 1 - P(A \\cup B)\\). Substituting, \\(P(A' \\cap B') = 1 - \\frac{5}{8} = \\frac{3}{8}\\)."
+  },
+  {
+    "id": "7b054ad6-062c-4781-97b4-95e3ac99d2a5",
+    "ref": "Ex 9.2 Q7(c)",
+    "solution": "By De Morgan's law \\(A' \\cup B' = \\overline{A \\cap B}\\), so \\(P(A' \\cup B') = 1 - P(A \\cap B)\\). From part (a), \\(P(A \\cap B) = \\frac{3}{8} + \\frac{1}{2} - \\frac{5}{8} = \\frac{1}{4}\\). Hence \\(P(A' \\cup B') = 1 - \\frac{1}{4} = \\frac{3}{4}\\)."
+  },
+  {
+    "id": "1a787018-52ce-42e4-8ae6-e0d263ae1451",
+    "ref": "Ex 9.2 Q8",
+    "solution": "Since \\(P(B') = \\frac{1}{3}\\), we get \\(P(B) = 1 - \\frac{1}{3} = \\frac{2}{3}\\). By the addition theorem, \\(P(A) = P(A \\cup B) + P(A \\cap B) - P(B)\\). Substituting, \\(P(A) = \\frac{5}{6} + \\frac{1}{3} - \\frac{2}{3} = \\frac{5}{6} - \\frac{1}{3} = \\frac{5}{6} - \\frac{2}{6} = \\frac{3}{6} = \\frac{1}{2}\\)."
+  },
+  {
+    "id": "a4f34edd-bca5-49c2-9fa3-17733f6d04e9",
+    "ref": "Ex 9.2 Q9",
+    "solution": "The bag holds \\(5 + 4 + m = m + 9\\) balls, and two are chosen, so \\(n(S) = \\binom{m+9}{2}\\). Both balls green can happen in \\(\\binom{m}{2}\\) ways. Given \\(\\frac{\\binom{m}{2}}{\\binom{m+9}{2}} = \\frac{1}{7}\\), that is \\(\\frac{m(m-1)}{(m+9)(m+8)} = \\frac{1}{7}\\). Cross-multiplying, \\(7m^2 - 7m = m^2 + 17m + 72\\), so \\(6m^2 - 24m - 72 = 0\\), that is \\(m^2 - 4m - 12 = 0\\) and \\((m - 6)(m + 2) = 0\\). As \\(m\\) is a number of balls it cannot be negative, so \\(m = 6\\)."
+  },
+  {
+    "id": "4e60aad7-a057-4bdb-8dee-1a2d6990ed77",
+    "ref": "Ex 9.2 Q10(i)",
+    "solution": "The group has \\(4 + 4 + 3 = 11\\) persons and 4 are chosen, so \\(n(S) = \\binom{11}{4} = 330\\). If no child is selected, all 4 must come from the \\(4 + 4 = 8\\) adults, which can be done in \\(\\binom{8}{4} = 70\\) ways. Hence the probability is \\(\\frac{70}{330} = \\frac{7}{33}\\).",
+    "_note": "The stem's context is printed as \"Form a group of 4 men...\" in the textbook; this is a misprint for \"From a group of 4 men...\". Solved as intended. Answer matches the book's key 7/33."
+  },
+  {
+    "id": "af27ade0-0ca0-443e-981c-cfa2cb8b7853",
+    "ref": "Ex 9.2 Q10(ii)",
+    "solution": "Here \\(n(S) = \\binom{11}{4} = 330\\). For exactly 2 men, choose 2 of the 4 men and the remaining 2 persons from the \\(4 + 3 = 7\\) non-men, which can be done in \\(\\binom{4}{2} \\times \\binom{7}{2} = 6 \\times 21 = 126\\) ways. Hence the probability is \\(\\frac{126}{330} = \\frac{21}{55}\\).",
+    "_note": "Shares the context misprint noted on Q10(i): \"Form a group\" should read \"From a group\". Answer matches the book's key 21/55."
+  },
+  {
+    "id": "7a1b6178-05a1-4954-8a3d-c427fc35d96a",
+    "ref": "Ex 9.2 Q11",
+    "solution": "Here \\(n(S) = 50\\). Let A, B, C be the events that the number is divisible by 2, by 3 and by 10 respectively. Every multiple of 10 is also a multiple of 2, so \\(C \\subset A\\) and \\(A \\cup B \\cup C = A \\cup B\\). Now \\(n(A) = 25\\), \\(n(B) = 16\\), and the numbers divisible by both 2 and 3 are the multiples of 6, so \\(n(A \\cap B) = 8\\). By the addition theorem, \\(P(A \\cup B) = \\frac{25}{50} + \\frac{16}{50} - \\frac{8}{50} = \\frac{33}{50}\\)."
+  }
+]

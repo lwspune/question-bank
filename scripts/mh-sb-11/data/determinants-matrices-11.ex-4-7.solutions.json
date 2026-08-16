@@ -1,0 +1,105 @@
+[
+  {
+    "id": "8b0f99cf-a6b5-46e6-80e3-593426ef0797",
+    "ref": "Ex 4.7 Q1(i)",
+    "solution": "The transpose is obtained by writing the rows of \\(A\\) as columns. The first row \\((1, 3)\\) becomes the first column and the second row \\((-4, 5)\\) becomes the second column.\n\n\\(A^{T} = \\begin{bmatrix} 1 & -4 \\\\ 3 & 5 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "92560036-2cec-4b30-ae61-066f29d73827",
+    "ref": "Ex 4.7 Q1(ii)",
+    "solution": "\\(A\\) is of order \\(2 \\times 3\\), so \\(A^{T}\\) is of order \\(3 \\times 2\\). Write the rows \\((2, -6, 1)\\) and \\((-4, 0, 5)\\) of \\(A\\) as the two columns of \\(A^{T}\\).\n\n\\(A^{T} = \\begin{bmatrix} 2 & -4 \\\\ -6 & 0 \\\\ 1 & 5 \\end{bmatrix}\\)",
+    "_note": "Book's printed answer for Q1(ii) gives the \\((2,1)\\) entry as \\(6\\); it must be \\(-6\\), since the \\((1,2)\\) entry of \\(A\\) is \\(-6\\). A dropped minus sign in the answer key (the neighbouring \\(-4\\) prints its minus normally on the same page). Our answer is correct."
+  },
+  {
+    "id": "71206de8-d0a2-4198-8ecd-672ac04e2819",
+    "ref": "Ex 4.7 Q2",
+    "solution": "Let \\(A = \\left[ a_{ij} \\right]_{3 \\times 3}\\) with \\(a_{ij} = 2(i - j)\\). Then \\(a_{11} = a_{22} = a_{33} = 0\\), \\(a_{12} = 2(1-2) = -2\\), \\(a_{13} = 2(1-3) = -4\\), \\(a_{21} = 2\\), \\(a_{23} = -2\\), \\(a_{31} = 4\\), \\(a_{32} = 2\\).\n\n\\(A = \\begin{bmatrix} 0 & -2 & -4 \\\\ 2 & 0 & -2 \\\\ 4 & 2 & 0 \\end{bmatrix}\\), so \\(A^{T} = \\begin{bmatrix} 0 & 2 & 4 \\\\ -2 & 0 & 2 \\\\ -4 & -2 & 0 \\end{bmatrix}\\)\n\nHere \\(a_{ji} = 2(j - i) = -a_{ij}\\), that is \\(A^{T} = -A\\), so \\(A\\) is skew symmetric. Also \\(\\left( A^{T} \\right)^{T} = A = -A^{T}\\), so \\(A^{T}\\) is skew symmetric as well.\n\nBoth \\(A\\) and \\(A^{T}\\) are skew symmetric matrices."
+  },
+  {
+    "id": "a4d2ba09-3c53-4ed2-b5f9-131999ba20f2",
+    "ref": "Ex 4.7 Q3",
+    "solution": "\\(2A = \\begin{bmatrix} 10 & -6 \\\\ 8 & -6 \\\\ -4 & 2 \\end{bmatrix}\\), so \\((2A)^{T} = \\begin{bmatrix} 10 & 8 & -4 \\\\ -6 & -6 & 2 \\end{bmatrix}\\).\n\nAlso \\(A^{T} = \\begin{bmatrix} 5 & 4 & -2 \\\\ -3 & -3 & 1 \\end{bmatrix}\\), so \\(2A^{T} = \\begin{bmatrix} 10 & 8 & -4 \\\\ -6 & -6 & 2 \\end{bmatrix}\\).\n\nThe two matrices have the same order and equal corresponding entries.\n\n\\(\\therefore (2A)^{T} = 2A^{T}\\)"
+  },
+  {
+    "id": "5ade10ad-1ea0-4896-87f1-70f023ef9e2a",
+    "ref": "Ex 4.7 Q4",
+    "solution": "\\(3A = \\begin{bmatrix} 3 & 6 & -15 \\\\ 6 & -9 & 12 \\\\ -15 & 12 & 27 \\end{bmatrix}\\), so \\((3A)^{T} = \\begin{bmatrix} 3 & 6 & -15 \\\\ 6 & -9 & 12 \\\\ -15 & 12 & 27 \\end{bmatrix}\\).\n\nAlso \\(A^{T} = \\begin{bmatrix} 1 & 2 & -5 \\\\ 2 & -3 & 4 \\\\ -5 & 4 & 9 \\end{bmatrix}\\) (here \\(A\\) happens to be symmetric), so \\(3A^{T} = \\begin{bmatrix} 3 & 6 & -15 \\\\ 6 & -9 & 12 \\\\ -15 & 12 & 27 \\end{bmatrix}\\).\n\nCorresponding entries are equal.\n\n\\(\\therefore (3A)^{T} = 3A^{T}\\)"
+  },
+  {
+    "id": "6e3aaf21-2c53-41a2-bbcc-c32ac6d1d874",
+    "ref": "Ex 4.7 Q5",
+    "solution": "Writing the rows of \\(A\\) as columns,\n\n\\(A^{T} = \\begin{bmatrix} 0 & -1-2i & 2-i \\\\ 1+2i & 0 & 7 \\\\ i-2 & -7 & 0 \\end{bmatrix}\\)\n\nMultiplying every entry of \\(A\\) by \\(-1\\),\n\n\\(-A = \\begin{bmatrix} 0 & -(1+2i) & -(i-2) \\\\ 1+2i & 0 & 7 \\\\ -(2-i) & -7 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & -1-2i & 2-i \\\\ 1+2i & 0 & 7 \\\\ i-2 & -7 & 0 \\end{bmatrix}\\)\n\nsince \\(-(i-2) = 2-i\\) and \\(-(2-i) = i-2\\). All corresponding entries agree.\n\n\\(\\therefore A^{T} = -A\\), i.e. \\(A\\) is skew symmetric."
+  },
+  {
+    "id": "879f9406-54b7-4142-9b05-5e1733522d36",
+    "ref": "Ex 4.7 Q6(i)",
+    "solution": "\\(A + B = \\begin{bmatrix} 4 & -2 \\\\ 9 & -5 \\\\ -9 & 4 \\end{bmatrix}\\), so \\((A + B)^{T} = \\begin{bmatrix} 4 & 9 & -9 \\\\ -2 & -5 & 4 \\end{bmatrix}\\).\n\nAlso \\(A^{T} = \\begin{bmatrix} 2 & 5 & -6 \\\\ -3 & -4 & 1 \\end{bmatrix}\\) and \\(B^{T} = \\begin{bmatrix} 2 & 4 & -3 \\\\ 1 & -1 & 3 \\end{bmatrix}\\), so\n\n\\(A^{T} + B^{T} = \\begin{bmatrix} 4 & 9 & -9 \\\\ -2 & -5 & 4 \\end{bmatrix}\\)\n\n\\(\\therefore (A + B)^{T} = A^{T} + B^{T}\\)",
+    "_note": "The stem as printed reads \\((A + B) = A^{T} + B^{T}\\), with no transpose on the left-hand side; as printed the two sides are of orders \\(3 \\times 2\\) and \\(2 \\times 3\\), so the statement is meaningless. Solved as the intended \\((A + B)^{T} = A^{T} + B^{T}\\), which is also the form of sub-item (ii)."
+  },
+  {
+    "id": "aded1fca-cb68-46d2-8271-92e19d3fabf8",
+    "ref": "Ex 4.7 Q6(ii)",
+    "solution": "\\(A - C = \\begin{bmatrix} 1 & -5 \\\\ 6 & -8 \\\\ -4 & -2 \\end{bmatrix}\\), so \\((A - C)^{T} = \\begin{bmatrix} 1 & 6 & -4 \\\\ -5 & -8 & -2 \\end{bmatrix}\\).\n\nAlso \\(A^{T} = \\begin{bmatrix} 2 & 5 & -6 \\\\ -3 & -4 & 1 \\end{bmatrix}\\) and \\(C^{T} = \\begin{bmatrix} 1 & -1 & -2 \\\\ 2 & 4 & 3 \\end{bmatrix}\\), so\n\n\\(A^{T} - C^{T} = \\begin{bmatrix} 1 & 6 & -4 \\\\ -5 & -8 & -2 \\end{bmatrix}\\)\n\n\\(\\therefore (A - C)^{T} = A^{T} - C^{T}\\)"
+  },
+  {
+    "id": "b103bbb3-1f71-4cc4-b91e-1c37091b2a45",
+    "ref": "Ex 4.7 Q7",
+    "solution": "From \\(3A - 2B + C = I\\) we get \\(C = I - 3A + 2B\\).\n\n\\(3A = \\begin{bmatrix} 15 & 12 \\\\ -6 & 9 \\end{bmatrix}\\), \\(2B = \\begin{bmatrix} -2 & 6 \\\\ 8 & -2 \\end{bmatrix}\\)\n\n\\(C = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} - \\begin{bmatrix} 15 & 12 \\\\ -6 & 9 \\end{bmatrix} + \\begin{bmatrix} -2 & 6 \\\\ 8 & -2 \\end{bmatrix} = \\begin{bmatrix} -16 & -6 \\\\ 14 & -10 \\end{bmatrix}\\)\n\n\\(C^{T} = \\begin{bmatrix} -16 & 14 \\\\ -6 & -10 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "bcf6ef0f-44f5-46e7-bca4-9d94ca4e174a",
+    "ref": "Ex 4.7 Q8(i)",
+    "solution": "\\(A^{T} = \\begin{bmatrix} 7 & 0 \\\\ 3 & 4 \\\\ 0 & -2 \\end{bmatrix}\\), \\(B^{T} = \\begin{bmatrix} 0 & 2 \\\\ -2 & 1 \\\\ 3 & -4 \\end{bmatrix}\\), so \\(4B^{T} = \\begin{bmatrix} 0 & 8 \\\\ -8 & 4 \\\\ 12 & -16 \\end{bmatrix}\\).\n\nAdding corresponding entries,\n\n\\(A^{T} + 4B^{T} = \\begin{bmatrix} 7 & 8 \\\\ -5 & 8 \\\\ 12 & -18 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "7a146bf0-02a6-4908-be62-23bc42bb563a",
+    "ref": "Ex 4.7 Q8(ii)",
+    "solution": "\\(5A^{T} - 5B^{T} = 5\\left( A^{T} - B^{T} \\right)\\), and\n\n\\(A^{T} - B^{T} = \\begin{bmatrix} 7 & 0 \\\\ 3 & 4 \\\\ 0 & -2 \\end{bmatrix} - \\begin{bmatrix} 0 & 2 \\\\ -2 & 1 \\\\ 3 & -4 \\end{bmatrix} = \\begin{bmatrix} 7 & -2 \\\\ 5 & 3 \\\\ -3 & 2 \\end{bmatrix}\\)\n\n\\(5A^{T} - 5B^{T} = \\begin{bmatrix} 35 & -10 \\\\ 25 & 15 \\\\ -15 & 10 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "868e54d7-7d16-4429-b42b-0975a98b181a",
+    "ref": "Ex 4.7 Q9",
+    "solution": "\\(2B = \\begin{bmatrix} 4 & 2 & -8 \\\\ 6 & 10 & -4 \\end{bmatrix}\\) and \\(3C = \\begin{bmatrix} 0 & 6 & 9 \\\\ -3 & -3 & 0 \\end{bmatrix}\\), so\n\n\\(A + 2B + 3C = \\begin{bmatrix} 5 & 8 & 2 \\\\ 6 & 8 & -2 \\end{bmatrix}\\), giving \\((A + 2B + 3C)^{T} = \\begin{bmatrix} 5 & 6 \\\\ 8 & 8 \\\\ 2 & -2 \\end{bmatrix}\\).\n\nFor the right-hand side, \\(A^{T} = \\begin{bmatrix} 1 & 3 \\\\ 0 & 1 \\\\ 1 & 2 \\end{bmatrix}\\), \\(2B^{T} = \\begin{bmatrix} 4 & 6 \\\\ 2 & 10 \\\\ -8 & -4 \\end{bmatrix}\\), \\(3C^{T} = \\begin{bmatrix} 0 & -3 \\\\ 6 & -3 \\\\ 9 & 0 \\end{bmatrix}\\), so\n\n\\(A^{T} + 2B^{T} + 3C^{T} = \\begin{bmatrix} 5 & 6 \\\\ 8 & 8 \\\\ 2 & -2 \\end{bmatrix}\\)\n\nBoth sides are equal.\n\n\\(\\therefore (A + 2B + 3C)^{T} = A^{T} + 2B^{T} + 3C^{T}\\)",
+    "_note": "The stem as printed reads \\((A + 2B + 2C)^{T} = A^{T} + 2B^{T} + 3C^{T}\\) - the coefficient of \\(C\\) disagrees across the equals sign (2 on the left, 3 on the right), so the statement as printed is false. Verified in the intended form \\((A + 2B + 3C)^{T} = A^{T} + 2B^{T} + 3C^{T}\\) (the printed \\(2C\\) on the left looks like a repeat of the \\(2\\) in \\(2B\\)). The underlying property \\((kA + lB + mC)^{T} = kA^{T} + lB^{T} + mC^{T}\\) holds for any scalars, so the verification works equally with 2 on both sides."
+  },
+  {
+    "id": "df169a74-5c27-405c-8aac-2c36fa25bbf6",
+    "ref": "Ex 4.7 Q10",
+    "solution": "\\(B^{T} = \\begin{bmatrix} 2 & -3 & -1 \\\\ 1 & 2 & 3 \\end{bmatrix}\\), so\n\n\\(A + B^{T} = \\begin{bmatrix} -1 & 2 & 1 \\\\ -3 & 2 & -3 \\end{bmatrix} + \\begin{bmatrix} 2 & -3 & -1 \\\\ 1 & 2 & 3 \\end{bmatrix} = \\begin{bmatrix} 1 & -1 & 0 \\\\ -2 & 4 & 0 \\end{bmatrix}\\)\n\n\\(\\left( A + B^{T} \\right)^{T} = \\begin{bmatrix} 1 & -2 \\\\ -1 & 4 \\\\ 0 & 0 \\end{bmatrix}\\)\n\nAlso \\(A^{T} = \\begin{bmatrix} -1 & -3 \\\\ 2 & 2 \\\\ 1 & -3 \\end{bmatrix}\\), so \\(A^{T} + B = \\begin{bmatrix} -1 & -3 \\\\ 2 & 2 \\\\ 1 & -3 \\end{bmatrix} + \\begin{bmatrix} 2 & 1 \\\\ -3 & 2 \\\\ -1 & 3 \\end{bmatrix} = \\begin{bmatrix} 1 & -2 \\\\ -1 & 4 \\\\ 0 & 0 \\end{bmatrix}\\).\n\n\\(\\therefore \\left( A + B^{T} \\right)^{T} = A^{T} + B\\)"
+  },
+  {
+    "id": "85d8ee24-87b0-410a-8eb9-79e1c941d7ea",
+    "ref": "Ex 4.7 Q11(i)",
+    "solution": "\\(A^{T} = \\begin{bmatrix} 1 & 3 & -2 \\\\ 2 & 2 & -3 \\\\ 4 & 1 & 2 \\end{bmatrix}\\)\n\n\\(A + A^{T} = \\begin{bmatrix} 2 & 5 & 2 \\\\ 5 & 4 & -2 \\\\ 2 & -2 & 4 \\end{bmatrix}\\). Interchanging its rows and columns reproduces the same matrix, so \\(\\left( A + A^{T} \\right)^{T} = A + A^{T}\\) and \\(A + A^{T}\\) is symmetric.\n\n\\(A - A^{T} = \\begin{bmatrix} 0 & -1 & 6 \\\\ 1 & 0 & 4 \\\\ -6 & -4 & 0 \\end{bmatrix}\\). Its transpose is \\(\\begin{bmatrix} 0 & 1 & -6 \\\\ -1 & 0 & -4 \\\\ 6 & 4 & 0 \\end{bmatrix} = -\\left( A - A^{T} \\right)\\), so \\(A - A^{T}\\) is skew symmetric.\n\nHence \\(A + A^{T}\\) is symmetric and \\(A - A^{T}\\) is skew symmetric."
+  },
+  {
+    "id": "ba07f942-c2df-4d1b-92a4-32768f552606",
+    "ref": "Ex 4.7 Q11(ii)",
+    "solution": "\\(A^{T} = \\begin{bmatrix} 5 & 3 & 4 \\\\ 2 & -7 & -5 \\\\ -4 & 2 & -3 \\end{bmatrix}\\)\n\n\\(A + A^{T} = \\begin{bmatrix} 10 & 5 & 0 \\\\ 5 & -14 & -3 \\\\ 0 & -3 & -6 \\end{bmatrix}\\). Interchanging its rows and columns reproduces the same matrix, so \\(\\left( A + A^{T} \\right)^{T} = A + A^{T}\\) and \\(A + A^{T}\\) is symmetric.\n\n\\(A - A^{T} = \\begin{bmatrix} 0 & -1 & -8 \\\\ 1 & 0 & 7 \\\\ 8 & -7 & 0 \\end{bmatrix}\\). Its transpose is \\(\\begin{bmatrix} 0 & 1 & 8 \\\\ -1 & 0 & -7 \\\\ -8 & 7 & 0 \\end{bmatrix} = -\\left( A - A^{T} \\right)\\), so \\(A - A^{T}\\) is skew symmetric.\n\nHence \\(A + A^{T}\\) is symmetric and \\(A - A^{T}\\) is skew symmetric."
+  },
+  {
+    "id": "c02f5b91-5b4f-41e0-a25e-47017060ecc3",
+    "ref": "Ex 4.7 Q12(i)",
+    "solution": "Let \\(A = \\begin{bmatrix} 4 & -2 \\\\ 3 & -5 \\end{bmatrix}\\). Then \\(A = \\frac{1}{2}\\left( A + A^{T} \\right) + \\frac{1}{2}\\left( A - A^{T} \\right)\\), where the first bracket is symmetric and the second skew symmetric.\n\n\\(A^{T} = \\begin{bmatrix} 4 & 3 \\\\ -2 & -5 \\end{bmatrix}\\), so \\(A + A^{T} = \\begin{bmatrix} 8 & 1 \\\\ 1 & -10 \\end{bmatrix}\\) and \\(A - A^{T} = \\begin{bmatrix} 0 & -5 \\\\ 5 & 0 \\end{bmatrix}\\).\n\n\\(\\begin{bmatrix} 4 & -2 \\\\ 3 & -5 \\end{bmatrix} = \\begin{bmatrix} 4 & \\frac{1}{2} \\\\ \\frac{1}{2} & -5 \\end{bmatrix} + \\begin{bmatrix} 0 & -\\frac{5}{2} \\\\ \\frac{5}{2} & 0 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "38e3d6ee-b8f8-4256-8106-cc2e43fd2e00",
+    "ref": "Ex 4.7 Q12(ii)",
+    "solution": "Let \\(A = \\begin{bmatrix} 3 & 3 & -1 \\\\ -2 & -2 & 1 \\\\ -4 & -5 & 2 \\end{bmatrix}\\). Then \\(A = \\frac{1}{2}\\left( A + A^{T} \\right) + \\frac{1}{2}\\left( A - A^{T} \\right)\\), where the first bracket is symmetric and the second skew symmetric.\n\n\\(A^{T} = \\begin{bmatrix} 3 & -2 & -4 \\\\ 3 & -2 & -5 \\\\ -1 & 1 & 2 \\end{bmatrix}\\), so \\(A + A^{T} = \\begin{bmatrix} 6 & 1 & -5 \\\\ 1 & -4 & -4 \\\\ -5 & -4 & 4 \\end{bmatrix}\\) and \\(A - A^{T} = \\begin{bmatrix} 0 & 5 & 3 \\\\ -5 & 0 & 6 \\\\ -3 & -6 & 0 \\end{bmatrix}\\).\n\n\\(\\begin{bmatrix} 3 & 3 & -1 \\\\ -2 & -2 & 1 \\\\ -4 & -5 & 2 \\end{bmatrix} = \\frac{1}{2}\\begin{bmatrix} 6 & 1 & -5 \\\\ 1 & -4 & -4 \\\\ -5 & -4 & 4 \\end{bmatrix} + \\frac{1}{2}\\begin{bmatrix} 0 & 5 & 3 \\\\ -5 & 0 & 6 \\\\ -3 & -6 & 0 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "d034ea67-58c4-46fc-b08c-cf98fa274fbd",
+    "ref": "Ex 4.7 Q13(i)",
+    "solution": "\\(A\\) is \\(3 \\times 2\\) and \\(B\\) is \\(2 \\times 3\\), so \\(AB\\) is \\(3 \\times 3\\).\n\n\\(AB = \\begin{bmatrix} 2 & -1 \\\\ 3 & -2 \\\\ 4 & 1 \\end{bmatrix}\\begin{bmatrix} 0 & 3 & -4 \\\\ 2 & -1 & 1 \\end{bmatrix} = \\begin{bmatrix} -2 & 7 & -9 \\\\ -4 & 11 & -14 \\\\ 2 & 11 & -15 \\end{bmatrix}\\)\n\n\\((AB)^{T} = \\begin{bmatrix} -2 & -4 & 2 \\\\ 7 & 11 & 11 \\\\ -9 & -14 & -15 \\end{bmatrix}\\)\n\nAlso \\(B^{T} = \\begin{bmatrix} 0 & 2 \\\\ 3 & -1 \\\\ -4 & 1 \\end{bmatrix}\\) and \\(A^{T} = \\begin{bmatrix} 2 & 3 & 4 \\\\ -1 & -2 & 1 \\end{bmatrix}\\), so\n\n\\(B^{T}A^{T} = \\begin{bmatrix} -2 & -4 & 2 \\\\ 7 & 11 & 11 \\\\ -9 & -14 & -15 \\end{bmatrix}\\)\n\n\\(\\therefore (AB)^{T} = B^{T}A^{T}\\)"
+  },
+  {
+    "id": "4f707d78-e5dc-45ba-85dd-bddaa63bb6b5",
+    "ref": "Ex 4.7 Q13(ii)",
+    "solution": "\\(B\\) is \\(2 \\times 3\\) and \\(A\\) is \\(3 \\times 2\\), so \\(BA\\) is \\(2 \\times 2\\).\n\n\\(BA = \\begin{bmatrix} 0 & 3 & -4 \\\\ 2 & -1 & 1 \\end{bmatrix}\\begin{bmatrix} 2 & -1 \\\\ 3 & -2 \\\\ 4 & 1 \\end{bmatrix} = \\begin{bmatrix} -7 & -10 \\\\ 5 & 1 \\end{bmatrix}\\)\n\n\\((BA)^{T} = \\begin{bmatrix} -7 & 5 \\\\ -10 & 1 \\end{bmatrix}\\)\n\nAlso \\(A^{T} = \\begin{bmatrix} 2 & 3 & 4 \\\\ -1 & -2 & 1 \\end{bmatrix}\\) and \\(B^{T} = \\begin{bmatrix} 0 & 2 \\\\ 3 & -1 \\\\ -4 & 1 \\end{bmatrix}\\), so\n\n\\(A^{T}B^{T} = \\begin{bmatrix} -7 & 5 \\\\ -10 & 1 \\end{bmatrix}\\)\n\n\\(\\therefore (BA)^{T} = A^{T}B^{T}\\)"
+  },
+  {
+    "id": "471d30cc-4f3f-4239-aa37-1384c10652cd",
+    "ref": "Ex 4.7 Q14",
+    "solution": "\\(A^{T} = \\begin{bmatrix} \\cos\\alpha & -\\sin\\alpha \\\\ \\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\)\n\n\\(A^{T}A = \\begin{bmatrix} \\cos\\alpha & -\\sin\\alpha \\\\ \\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix} = \\begin{bmatrix} \\cos^{2}\\alpha + \\sin^{2}\\alpha & \\cos\\alpha\\sin\\alpha - \\sin\\alpha\\cos\\alpha \\\\ \\sin\\alpha\\cos\\alpha - \\cos\\alpha\\sin\\alpha & \\sin^{2}\\alpha + \\cos^{2}\\alpha \\end{bmatrix}\\)\n\nUsing \\(\\sin^{2}\\alpha + \\cos^{2}\\alpha = 1\\), the diagonal entries are \\(1\\) and the off-diagonal entries are \\(0\\).\n\n\\(A^{T}A = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = I\\)"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "dd2a28a0-a1e5-4f7a-b0c6-43a2344cdf3a",
+    "ref": "Ex 4.4 Q1(i)",
+    "solution": "Here \\(A\\) is of order \\(3\\times 2\\), so \\(i = 1, 2, 3\\) and \\(j = 1, 2\\), with \\(a_{ij} = \\frac{(i-j)^2}{5-i}\\).\n\nRow 1: \\(a_{11} = \\frac{(1-1)^2}{5-1} = \\frac{0}{4} = 0\\), \\(a_{12} = \\frac{(1-2)^2}{4} = \\frac{1}{4}\\).\n\nRow 2: \\(a_{21} = \\frac{(2-1)^2}{5-2} = \\frac{1}{3}\\), \\(a_{22} = \\frac{(2-2)^2}{3} = 0\\).\n\nRow 3: \\(a_{31} = \\frac{(3-1)^2}{5-3} = \\frac{4}{2} = 2\\), \\(a_{32} = \\frac{(3-2)^2}{2} = \\frac{1}{2}\\).\n\n\\(\\therefore A = \\begin{bmatrix} 0 & \\frac{1}{4} \\\\ \\frac{1}{3} & 0 \\\\ 2 & \\frac{1}{2} \\end{bmatrix}\\)"
+  },
+  {
+    "id": "1d1fa4f0-ec46-49c2-90b1-dbf3660e8ffd",
+    "ref": "Ex 4.4 Q1(ii)",
+    "solution": "Here \\(i = 1, 2, 3\\) and \\(j = 1, 2\\), with \\(a_{ij} = i - 3j\\).\n\nRow 1: \\(a_{11} = 1 - 3 = -2\\), \\(a_{12} = 1 - 6 = -5\\).\n\nRow 2: \\(a_{21} = 2 - 3 = -1\\), \\(a_{22} = 2 - 6 = -4\\).\n\nRow 3: \\(a_{31} = 3 - 3 = 0\\), \\(a_{32} = 3 - 6 = -3\\).\n\n\\(\\therefore A = \\begin{bmatrix} -2 & -5 \\\\ -1 & -4 \\\\ 0 & -3 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "76f00977-abca-4242-97af-468d504d085b",
+    "ref": "Ex 4.4 Q1(iii)",
+    "solution": "Here \\(i = 1, 2, 3\\) and \\(j = 1, 2\\), with \\(a_{ij} = \\frac{(i+j)^3}{5}\\).\n\nRow 1: \\(a_{11} = \\frac{2^3}{5} = \\frac{8}{5}\\), \\(a_{12} = \\frac{3^3}{5} = \\frac{27}{5}\\).\n\nRow 2: \\(a_{21} = \\frac{3^3}{5} = \\frac{27}{5}\\), \\(a_{22} = \\frac{4^3}{5} = \\frac{64}{5}\\).\n\nRow 3: \\(a_{31} = \\frac{4^3}{5} = \\frac{64}{5}\\), \\(a_{32} = \\frac{5^3}{5} = \\frac{125}{5}\\).\n\n\\(\\therefore A = \\frac{1}{5}\\begin{bmatrix} 8 & 27 \\\\ 27 & 64 \\\\ 64 & 125 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "99130ca9-b765-4345-b076-4c90d4f5cc61",
+    "ref": "Ex 4.4 Q2(i)",
+    "solution": "The matrix has \\(3\\) rows and \\(3\\) columns, so it is a square matrix of order \\(3\\). Every element below the main diagonal is zero, since \\(a_{21} = a_{31} = a_{32} = 0\\), while some element above the diagonal is non-zero.\n\n\\(\\therefore\\) it is an upper triangular matrix."
+  },
+  {
+    "id": "015ce8f5-797c-4776-aa53-ea76a41e51fc",
+    "ref": "Ex 4.4 Q2(ii)",
+    "solution": "Let \\(A = \\begin{bmatrix} 0 & 4 & 7 \\\\ -4 & 0 & -3 \\\\ -7 & 3 & 0 \\end{bmatrix}\\). Then \\(A^{T} = \\begin{bmatrix} 0 & -4 & -7 \\\\ 4 & 0 & 3 \\\\ 7 & -3 & 0 \\end{bmatrix} = -A\\), and every diagonal entry is \\(0\\).\n\n\\(\\therefore\\) it is a skew-symmetric matrix."
+  },
+  {
+    "id": "27b1d04c-86f4-4d11-a6bc-fe89ef65bdbc",
+    "ref": "Ex 4.4 Q2(iii)",
+    "solution": "The matrix has order \\(3\\times 1\\), that is it has only one column.\n\n\\(\\therefore\\) it is a column matrix."
+  },
+  {
+    "id": "49065f74-84a6-4f07-8536-eb075ab9c4cc",
+    "ref": "Ex 4.4 Q2(iv)",
+    "solution": "The matrix has order \\(1\\times 3\\), that is it has only one row.\n\n\\(\\therefore\\) it is a row matrix."
+  },
+  {
+    "id": "198540c4-f089-4693-9620-1f3cc68d0fa0",
+    "ref": "Ex 4.4 Q2(v)",
+    "solution": "It is a square matrix of order \\(2\\) in which every non-diagonal element is zero, so it is diagonal; moreover both diagonal entries are equal to \\(6\\), so the matrix is \\(6\\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\\).\n\n\\(\\therefore\\) it is a scalar matrix."
+  },
+  {
+    "id": "519a89df-52b1-4365-90aa-849af8a67e2e",
+    "ref": "Ex 4.4 Q2(vi)",
+    "solution": "It is a square matrix of order \\(3\\) and every element above the main diagonal is zero, since \\(a_{12} = a_{13} = a_{23} = 0\\), while some element below the diagonal is non-zero.\n\n\\(\\therefore\\) it is a lower triangular matrix."
+  },
+  {
+    "id": "ece111b5-8603-4995-b09a-5ee2b76e091e",
+    "ref": "Ex 4.4 Q2(vii)",
+    "solution": "It is a square matrix of order \\(3\\) in which every non-diagonal element is zero, and the diagonal entries \\(3\\), \\(5\\), \\(\\frac{1}{3}\\) are not all equal.\n\n\\(\\therefore\\) it is a diagonal matrix."
+  },
+  {
+    "id": "4c6f9dda-f6c7-4f6d-82b2-aed65caaf5da",
+    "ref": "Ex 4.4 Q2(viii)",
+    "solution": "Let \\(A = \\begin{bmatrix} 10 & -15 & 27 \\\\ -15 & 0 & \\sqrt{34} \\\\ 27 & \\sqrt{34} & \\frac{5}{3} \\end{bmatrix}\\). Interchanging rows and columns leaves it unchanged, since \\(a_{12} = a_{21} = -15\\), \\(a_{13} = a_{31} = 27\\) and \\(a_{23} = a_{32} = \\sqrt{34}\\), so \\(A^{T} = A\\).\n\n\\(\\therefore\\) it is a symmetric matrix."
+  },
+  {
+    "id": "11e9526d-1828-4033-9ac8-779531602bbe",
+    "ref": "Ex 4.4 Q2(ix)",
+    "solution": "It is a square matrix of order \\(3\\) with every non-diagonal element zero and every diagonal element equal to \\(1\\).\n\n\\(\\therefore\\) it is a unit (identity) matrix."
+  },
+  {
+    "id": "085dc3d9-ddd1-4ce1-88e0-98de1ca54b30",
+    "ref": "Ex 4.4 Q2(x)",
+    "solution": "Let \\(A = \\begin{bmatrix} 0 & 0 & 1 \\\\ 0 & 1 & 0 \\\\ 1 & 0 & 0 \\end{bmatrix}\\). Here \\(a_{12} = a_{21} = 0\\), \\(a_{13} = a_{31} = 1\\) and \\(a_{23} = a_{32} = 0\\), so \\(A^{T} = A\\). (It is not diagonal, since \\(a_{13} = 1 \\ne 0\\).)\n\n\\(\\therefore\\) it is a symmetric matrix."
+  },
+  {
+    "id": "b620e378-5565-4c7c-a8db-02c2d432ec29",
+    "ref": "Ex 4.4 Q3(i)",
+    "solution": "Let \\(A\\) be the given matrix. Its third row is exactly twice the first row minus the second row, that is \\(R_3 = 2R_1 - R_2\\). Applying \\(R_3 \\to R_3 - 2R_1 + R_2\\),\n\n\\(|A| = \\begin{vmatrix} a & b & c \\\\ p & q & r \\\\ 0 & 0 & 0 \\end{vmatrix} = 0\\), since a row is entirely zero.\n\n\\(\\therefore |A| = 0\\), so the matrix is singular."
+  },
+  {
+    "id": "7a93be92-6262-4a5a-b372-98a68cfa77e9",
+    "ref": "Ex 4.4 Q3(ii)",
+    "solution": "Let \\(A = \\begin{bmatrix} 5 & 0 & 5 \\\\ 1 & 99 & 100 \\\\ 6 & 99 & 105 \\end{bmatrix}\\). Here \\(R_3 = R_1 + R_2\\), since \\(5+1 = 6\\), \\(0+99 = 99\\) and \\(5+100 = 105\\). Applying \\(R_3 \\to R_3 - R_1 - R_2\\) makes the third row entirely zero.\n\n\\(\\therefore |A| = 0\\), so the matrix is singular."
+  },
+  {
+    "id": "8c8d65bc-345e-4d24-a2e5-dc8636dc7122",
+    "ref": "Ex 4.4 Q3(iii)",
+    "solution": "Expanding along the first row,\n\n\\(|A| = 3(1\\times 5 - 4\\times 2) - 5\\big((-2)\\times 5 - 4\\times 3\\big) + 7\\big((-2)\\times 2 - 1\\times 3\\big)\\)\n\n\\(= 3(-3) - 5(-22) + 7(-7) = -9 + 110 - 49 = 52\\).\n\n\\(\\therefore |A| = 52 \\ne 0\\), so the matrix is non-singular."
+  },
+  {
+    "id": "0149986e-41f4-4699-b6fa-106150aa2bb6",
+    "ref": "Ex 4.4 Q3(iv)",
+    "solution": "\\(|A| = \\begin{vmatrix} 7 & 5 \\\\ -4 & 7 \\end{vmatrix} = 7\\times 7 - 5\\times(-4) = 49 + 20 = 69\\).\n\n\\(\\therefore |A| = 69 \\ne 0\\), so the matrix is non-singular."
+  },
+  {
+    "id": "ceb04ece-7a85-4d4a-938a-ab205e2b1e2c",
+    "ref": "Ex 4.4 Q4(i)",
+    "solution": "A matrix is singular when its determinant is zero, so\n\n\\(\\begin{vmatrix} 7 & 3 \\\\ -2 & k \\end{vmatrix} = 0\\)\n\n\\(7k - 3(-2) = 0\\), that is \\(7k + 6 = 0\\).\n\n\\(\\therefore k = -\\frac{6}{7}\\)"
+  },
+  {
+    "id": "8877f7de-c2e8-4a74-9cd6-c4fd10497082",
+    "ref": "Ex 4.4 Q4(ii)",
+    "solution": "For a singular matrix the determinant is zero. Expanding along the first row,\n\n\\(4(k\\times 1 - 1\\times 9) - 3(7\\times 1 - 1\\times 10) + 1(7\\times 9 - k\\times 10) = 0\\)\n\n\\(4(k - 9) - 3(-3) + (63 - 10k) = 0\\)\n\n\\(4k - 36 + 9 + 63 - 10k = 0\\), that is \\(-6k + 36 = 0\\).\n\n\\(\\therefore k = 6\\)"
+  },
+  {
+    "id": "6772f7ee-b15a-4fe8-8e57-4e80dd7a37c8",
+    "ref": "Ex 4.4 Q4(iii)",
+    "solution": "For a singular matrix the determinant is zero. Expanding along the first row,\n\n\\((k-1)\\big(1\\times 4 - 2\\times(-2)\\big) - 2(3\\times 4 - 2\\times 1) + 3\\big(3\\times(-2) - 1\\times 1\\big) = 0\\)\n\n\\((k-1)(8) - 2(10) + 3(-7) = 0\\)\n\n\\(8k - 8 - 20 - 21 = 0\\), that is \\(8k = 49\\).\n\n\\(\\therefore k = \\frac{49}{8}\\)"
+  },
+  {
+    "id": "45e58d34-aa53-401e-aaaa-52c0941d14ff",
+    "ref": "Ex 4.4 Q5",
+    "solution": "\\(A^{T} = \\begin{bmatrix} 5 & 3 \\\\ 1 & 2 \\\\ -1 & 0 \\end{bmatrix}\\) (order \\(3\\times 2\\)).\n\nTaking the transpose once more interchanges rows and columns again, so\n\n\\((A^{T})^{T} = \\begin{bmatrix} 5 & 1 & -1 \\\\ 3 & 2 & 0 \\end{bmatrix} = A\\)\n\nThis illustrates the property \\((A^{T})^{T} = A\\)."
+  },
+  {
+    "id": "dbd3b95f-9872-4f03-83cd-8f2eaa976ec1",
+    "ref": "Ex 4.4 Q6",
+    "solution": "\\(A^{T} = \\begin{bmatrix} 7 & -2 & 5 \\\\ 3 & -4 & 9 \\\\ 1 & 1 & 1 \\end{bmatrix}\\).\n\nTaking the transpose of this again interchanges rows and columns once more, so\n\n\\((A^{T})^{T} = \\begin{bmatrix} 7 & 3 & 1 \\\\ -2 & -4 & 1 \\\\ 5 & 9 & 1 \\end{bmatrix} = A\\)\n\nThis illustrates the property \\((A^{T})^{T} = A\\)."
+  },
+  {
+    "id": "151d53cd-e3fa-49e1-9602-dcea819ae1b6",
+    "ref": "Ex 4.4 Q7",
+    "solution": "A matrix is symmetric when \\(a_{ij} = a_{ji}\\) for all \\(i, j\\). Comparing the pairs of entries placed symmetrically about the main diagonal,\n\n\\(a_{13} = a_{31}\\) gives \\(a = -4\\);\n\n\\(a_{21} = a_{12}\\) gives \\(b = \\frac{3}{5}\\);\n\n\\(a_{32} = a_{23}\\) gives \\(c = -7\\).\n\n\\(\\therefore a = -4\\), \\(b = \\frac{3}{5}\\), \\(c = -7\\)"
+  },
+  {
+    "id": "02b4eb5c-f0ba-43cf-995a-c61ba9c36233",
+    "ref": "Ex 4.4 Q8",
+    "solution": "A matrix is skew-symmetric when \\(a_{ij} = -a_{ji}\\) for all \\(i, j\\) (its diagonal entries are then \\(0\\), as given here). Comparing the entries placed symmetrically about the main diagonal,\n\n\\(a_{13} = -a_{31}\\) gives \\(x = -\\frac{3}{2}\\);\n\n\\(a_{21} = -a_{12}\\) gives \\(y = -(-5i) = 5i\\);\n\n\\(a_{23} = -a_{32}\\) gives \\(z = -(-\\sqrt{2}) = \\sqrt{2}\\).\n\n\\(\\therefore x = -\\frac{3}{2}\\), \\(y = 5i\\), \\(z = \\sqrt{2}\\)"
+  },
+  {
+    "id": "f976310e-ff0a-4564-ba23-ea56d282d4f3",
+    "ref": "Ex 4.4 Q9(i)",
+    "solution": "Let \\(A = \\begin{bmatrix} 1 & 2 & -5 \\\\ 2 & -3 & 4 \\\\ -5 & 4 & 9 \\end{bmatrix}\\). Interchanging its rows and columns,\n\n\\(A^{T} = \\begin{bmatrix} 1 & 2 & -5 \\\\ 2 & -3 & 4 \\\\ -5 & 4 & 9 \\end{bmatrix} = A\\).\n\nSince \\(A^{T} = A\\), the matrix is symmetric."
+  },
+  {
+    "id": "0b957f82-0682-4b15-8a6e-244e8643a020",
+    "ref": "Ex 4.4 Q9(ii)",
+    "solution": "Let \\(A = \\begin{bmatrix} 2 & 5 & 1 \\\\ -5 & 4 & 6 \\\\ -1 & -6 & 3 \\end{bmatrix}\\). Interchanging its rows and columns,\n\n\\(A^{T} = \\begin{bmatrix} 2 & -5 & -1 \\\\ 5 & 4 & -6 \\\\ 1 & 6 & 3 \\end{bmatrix}\\).\n\nHere \\(A^{T} \\ne A\\), since \\(a_{12} = 5\\) but the corresponding entry of \\(A^{T}\\) is \\(-5\\); and \\(A^{T} \\ne -A\\), since the diagonal entry \\(2\\) of \\(A^{T}\\) is not \\(-2\\) (a skew-symmetric matrix must have all diagonal entries zero).\n\n\\(\\therefore\\) the matrix is neither symmetric nor skew-symmetric."
+  },
+  {
+    "id": "590e885b-11c2-4513-93bd-e9f020626008",
+    "ref": "Ex 4.4 Q9(iii)",
+    "solution": "Let \\(A = \\begin{bmatrix} 0 & 1+2i & i-2 \\\\ -1-2i & 0 & -7 \\\\ 2-i & 7 & 0 \\end{bmatrix}\\). Interchanging its rows and columns,\n\n\\(A^{T} = \\begin{bmatrix} 0 & -1-2i & 2-i \\\\ 1+2i & 0 & 7 \\\\ i-2 & -7 & 0 \\end{bmatrix}\\).\n\nAlso \\(-A = \\begin{bmatrix} 0 & -1-2i & 2-i \\\\ 1+2i & 0 & 7 \\\\ i-2 & -7 & 0 \\end{bmatrix}\\), because \\(-(i-2) = 2-i\\) and \\(-(2-i) = i-2\\).\n\nSince \\(A^{T} = -A\\), the matrix is skew-symmetric."
+  },
+  {
+    "id": "30b048a3-91e5-4740-b41f-333424354b9c",
+    "ref": "Ex 4.4 Q10",
+    "solution": "Here \\(i, j = 1, 2, 3\\) and \\(a_{ij} = i - j\\), so every diagonal entry \\(a_{ii} = 0\\), and\n\n\\(A = \\begin{bmatrix} 0 & -1 & -2 \\\\ 1 & 0 & -1 \\\\ 2 & 1 & 0 \\end{bmatrix}\\).\n\nThen \\(A^{T} = \\begin{bmatrix} 0 & 1 & 2 \\\\ -1 & 0 & 1 \\\\ -2 & -1 & 0 \\end{bmatrix} = -A\\); this also follows from \\(a_{ji} = j - i = -(i-j) = -a_{ij}\\).\n\n\\(\\therefore A = \\begin{bmatrix} 0 & -1 & -2 \\\\ 1 & 0 & -1 \\\\ 2 & 1 & 0 \\end{bmatrix}\\) and A is a skew-symmetric matrix."
+  }
+]

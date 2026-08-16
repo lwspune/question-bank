@@ -1,0 +1,46 @@
+[
+  {
+    "id": "66d649d3-b633-442a-b5aa-e85881abe0c6",
+    "ref": "Ex 8.2 Q1",
+    "solution": "Here \\(n = 18\\).\n\n\\(\\Sigma x_i = 7+11+2+4+9+6+3+7+11+2+5+8+3+6+8+8+2+6 = 108\\), so \\(\\bar{x} = \\dfrac{108}{18} = 6\\).\n\n\\(\\Sigma x_i^2 = 49+121+4+16+81+36+9+49+121+4+25+64+9+36+64+64+4+36 = 792\\).\n\nUsing \\(\\sigma^2 = \\dfrac{\\Sigma x_i^2}{n} - (\\bar{x})^2 = \\dfrac{792}{18} - 6^2 = 44 - 36 = 8\\).\n\n\\(\\sigma = \\sqrt{8} = 2\\sqrt{2} \\approx 2.83\\).\n\nVariance \\(= 8\\); S.D. \\(\\approx 2.83\\)",
+    "_note": "Book prints sigma = 2.82. sqrt(8) = 2.8284..., which rounds to 2.83; the book truncated at two decimals. Variance 8 agrees exactly."
+  },
+  {
+    "id": "69030f8b-c130-46df-9fc7-756a2183fcc8",
+    "ref": "Ex 8.2 Q2",
+    "solution": "Here \\(n = 7\\) and \\(\\Sigma x_i = 65+77+81+98+100+80+129 = 630\\), so \\(\\bar{x} = \\dfrac{630}{7} = 90\\).\n\nDeviations \\(x_i - \\bar{x}\\): \\(-25,\\ -13,\\ -9,\\ 8,\\ 10,\\ -10,\\ 39\\).\n\n\\(\\Sigma (x_i - \\bar{x})^2 = 625+169+81+64+100+100+1521 = 2660\\).\n\n\\(\\sigma^2 = \\dfrac{2660}{7} = 380\\) and \\(\\sigma = \\sqrt{380} \\approx 19.49\\).\n\nVariance \\(= 380\\); S.D. \\(\\approx 19.49\\)"
+  },
+  {
+    "id": "660193ee-6248-42c6-93b9-1d34b453319e",
+    "ref": "Ex 8.2 Q3",
+    "solution": "| \\(x_i\\) | 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 | 18 | 20 | Total |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| \\(f_i\\) | 8 | 10 | 10 | 7 | 6 | 4 | 3 | 4 | 2 | 6 | 60 |\n| \\(f_ix_i\\) | 16 | 40 | 60 | 56 | 60 | 48 | 42 | 64 | 36 | 120 | 542 |\n| \\(f_ix_i^2\\) | 32 | 160 | 360 | 448 | 600 | 576 | 588 | 1024 | 648 | 2400 | 6836 |\n\nSo \\(N = \\Sigma f_i = 60\\) and \\(\\bar{x} = \\dfrac{\\Sigma f_ix_i}{N} = \\dfrac{542}{60} = 9.0333\\).\n\n\\(\\sigma^2 = \\dfrac{\\Sigma f_ix_i^2}{N} - (\\bar{x})^2 = \\dfrac{6836}{60} - \\left(\\dfrac{542}{60}\\right)^2 = 113.9333 - 81.6011 = 32.3322\\).\n\n\\(\\sigma = \\sqrt{32.3322} \\approx 5.69\\).\n\nVariance \\(\\approx 32.33\\); S.D. \\(\\approx 5.69\\)",
+    "_note": "DISAGREEMENT (minor, book side). Book prints variance = 32.39. Exact value is 6836/60 - (542/60)^2 = 29099/900 = 32.3322. The book's 32.39 comes from squaring the mean AFTER rounding it to 9.03: 113.93 - 9.03^2 = 113.93 - 81.5409 = 32.389. The S.D. is unaffected to two decimals (sqrt(32.3322) = 5.6861, sqrt(32.389) = 5.6912, both 5.69), which is why the printed sigma still matches."
+  },
+  {
+    "id": "7a5b060e-6b3d-4511-8187-085bb5d42b0a",
+    "ref": "Ex 8.2 Q4",
+    "solution": "Take the change of origin \\(u_i = x_i - 34\\) (here \\(h = 1\\)).\n\n| \\(x_i\\) | 31 | 32 | 33 | 34 | 35 | 36 | 37 | Total |\n|---|---|---|---|---|---|---|---|---|\n| \\(f_i\\) | 15 | 12 | 10 | 8 | 9 | 10 | 6 | 70 |\n| \\(u_i\\) | \\(-3\\) | \\(-2\\) | \\(-1\\) | 0 | 1 | 2 | 3 | — |\n| \\(f_iu_i\\) | \\(-45\\) | \\(-24\\) | \\(-10\\) | 0 | 9 | 20 | 18 | \\(-32\\) |\n| \\(f_iu_i^2\\) | 135 | 48 | 10 | 0 | 9 | 40 | 54 | 296 |\n\n\\(N = 70\\), so \\(\\bar{x} = 34 + \\dfrac{-32}{70} = 34 - 0.4571 = 33.5429\\).\n\nSince a shift of origin does not change the spread,\n\\(\\sigma^2 = \\dfrac{\\Sigma f_iu_i^2}{N} - \\left(\\dfrac{\\Sigma f_iu_i}{N}\\right)^2 = \\dfrac{296}{70} - \\left(\\dfrac{-32}{70}\\right)^2 = 4.2286 - 0.2090 = 4.0196\\).\n\n\\(\\sigma = \\sqrt{4.0196} \\approx 2.005\\).\n\nVariance \\(\\approx 4.02\\); S.D. \\(\\approx 2.005\\)",
+    "_note": "DISAGREEMENT (minor, book side). Book prints variance = 4.026, sigma = 2.006. Exact value is 296/70 - (32/70)^2 = 19696/4900 = 4.01959, giving sigma = 2.00489. The book's 4.026 comes from rounding -32/70 = -0.4571 down to -0.45 before squaring: 4.2286 - 0.2025 = 4.0261."
+  },
+  {
+    "id": "f986a2db-265a-49fc-aa5f-de638a4eee8e",
+    "ref": "Ex 8.2 Q5",
+    "solution": "| Age \\(x_i\\) | 16 | 17 | 18 | 19 | 20 | 21 | Total |\n|---|---|---|---|---|---|---|---|\n| \\(f_i\\) | 20 | 7 | 11 | 17 | 30 | 15 | 100 |\n| \\(f_ix_i\\) | 320 | 119 | 198 | 323 | 600 | 315 | 1875 |\n| \\(f_ix_i^2\\) | 5120 | 2023 | 3564 | 6137 | 12000 | 6615 | 35459 |\n\n\\(N = 100\\) and \\(\\bar{x} = \\dfrac{1875}{100} = 18.75\\) years.\n\n\\(\\sigma^2 = \\dfrac{\\Sigma f_ix_i^2}{N} - (\\bar{x})^2 = \\dfrac{35459}{100} - (18.75)^2 = 354.59 - 351.5625 = 3.0275\\).\n\n\\(\\sigma = \\sqrt{3.0275} \\approx 1.74\\).\n\nVariance \\(= 3.0275\\); S.D. \\(\\approx 1.74\\) years"
+  },
+  {
+    "id": "04ea68da-d58f-43a5-ac0b-ceb48c477be3",
+    "ref": "Ex 8.2 Q6",
+    "solution": "Take class midpoints \\(x_i\\), assumed mean \\(A = 55\\), class width \\(h = 10\\) and \\(u_i = \\dfrac{x_i - 55}{10}\\).\n\n| Class | \\(x_i\\) | \\(f_i\\) | \\(u_i\\) | \\(f_iu_i\\) | \\(f_iu_i^2\\) |\n|---|---|---|---|---|---|\n| 10-20 | 15 | 7 | \\(-4\\) | \\(-28\\) | 112 |\n| 20-30 | 25 | 14 | \\(-3\\) | \\(-42\\) | 126 |\n| 30-40 | 35 | 6 | \\(-2\\) | \\(-12\\) | 24 |\n| 40-50 | 45 | 13 | \\(-1\\) | \\(-13\\) | 13 |\n| 50-60 | 55 | 9 | 0 | 0 | 0 |\n| 60-70 | 65 | 15 | 1 | 15 | 15 |\n| 70-80 | 75 | 11 | 2 | 22 | 44 |\n| 80-90 | 85 | 10 | 3 | 30 | 90 |\n| 90-100 | 95 | 15 | 4 | 60 | 240 |\n| Total | — | 100 | — | 32 | 664 |\n\n\\(\\bar{x} = A + h\\cdot\\dfrac{\\Sigma f_iu_i}{N} = 55 + 10 \\times \\dfrac{32}{100} = 55 + 3.2 = 58.2\\).\n\n\\(\\sigma^2 = h^2\\left[\\dfrac{\\Sigma f_iu_i^2}{N} - \\left(\\dfrac{\\Sigma f_iu_i}{N}\\right)^2\\right] = 100\\left[\\dfrac{664}{100} - (0.32)^2\\right] = 100(6.64 - 0.1024) = 653.76\\).\n\n\\(\\sigma = \\sqrt{653.76} \\approx 25.57\\).\n\nMean \\(= 58.2\\); Variance \\(= 653.76\\); S.D. \\(\\approx 25.57\\)",
+    "_note": "Book prints sigma = 25.56. sqrt(653.76) = 25.5687..., which rounds to 25.57; the book truncated at two decimals. Mean 58.2 and variance 653.76 agree exactly."
+  },
+  {
+    "id": "8d32d8fe-3a9b-4c2e-93eb-cd3cccb85a6b",
+    "ref": "Ex 8.2 Q7",
+    "solution": "The classes are given in inclusive (discontinuous) form, so first convert them to continuous boundaries by subtracting \\(0.5\\) from each lower limit and adding \\(0.5\\) to each upper limit. Take \\(A = 31\\), \\(h = 5\\) and \\(u_i = \\dfrac{x_i - 31}{5}\\).\n\n| Given class | Boundaries | \\(x_i\\) | \\(f_i\\) | \\(u_i\\) | \\(f_iu_i\\) | \\(f_iu_i^2\\) |\n|---|---|---|---|---|---|---|\n| 14-18 | 13.5-18.5 | 16 | 5 | \\(-3\\) | \\(-15\\) | 45 |\n| 19-23 | 18.5-23.5 | 21 | 18 | \\(-2\\) | \\(-36\\) | 72 |\n| 24-28 | 23.5-28.5 | 26 | 44 | \\(-1\\) | \\(-44\\) | 44 |\n| 29-33 | 28.5-33.5 | 31 | 70 | 0 | 0 | 0 |\n| 34-38 | 33.5-38.5 | 36 | 36 | 1 | 36 | 36 |\n| 39-43 | 38.5-43.5 | 41 | 22 | 2 | 44 | 88 |\n| 44-48 | 43.5-48.5 | 46 | 5 | 3 | 15 | 45 |\n| Total | — | — | 200 | — | 0 | 330 |\n\n(The correction leaves each midpoint unchanged but makes the width a true \\(h = 5\\).)\n\n\\(N = 200\\), \\(\\Sigma f_iu_i = 0\\), so \\(\\bar{x} = 31 + 5 \\times \\dfrac{0}{200} = 31\\) cm.\n\n\\(\\sigma^2 = h^2\\left[\\dfrac{\\Sigma f_iu_i^2}{N} - \\left(\\dfrac{\\Sigma f_iu_i}{N}\\right)^2\\right] = 25\\left[\\dfrac{330}{200} - 0\\right] = 25 \\times 1.65 = 41.25\\).\n\n\\(\\sigma = \\sqrt{41.25} \\approx 6.42\\).\n\nVariance \\(= 41.25\\); S.D. \\(\\approx 6.42\\) cm"
+  },
+  {
+    "id": "dd862926-5412-415d-8edb-bd50305ad508",
+    "ref": "Ex 8.2 Q8",
+    "solution": "Let the other two observations be \\(x\\) and \\(y\\), with \\(n = 5\\), \\(\\bar{x} = 4.8\\).\n\nFrom the mean: \\(\\Sigma x_i = 5 \\times 4.8 = 24\\), and \\(1+3+8 = 12\\), so \\(x + y = 24 - 12 = 12\\).\n\nFrom the variance: \\(\\dfrac{\\Sigma x_i^2}{5} - (4.8)^2 = 6.56 \\Rightarrow \\dfrac{\\Sigma x_i^2}{5} = 6.56 + 23.04 = 29.6\\), so \\(\\Sigma x_i^2 = 148\\).\nSince \\(1^2+3^2+8^2 = 74\\), we get \\(x^2 + y^2 = 148 - 74 = 74\\).\n\nThen \\(2xy = (x+y)^2 - (x^2+y^2) = 144 - 74 = 70\\), so \\(xy = 35\\).\n\nHence \\(x\\) and \\(y\\) are the roots of \\(t^2 - 12t + 35 = 0\\), i.e. \\((t-5)(t-7) = 0\\).\n\nThe other two observations are \\(5\\) and \\(7\\)"
+  }
+]

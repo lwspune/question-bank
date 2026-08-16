@@ -1,0 +1,160 @@
+[
+  {
+    "id": "d6a0a5bb-043c-4c42-9b56-5a7908470ca5",
+    "ref": "Ex 9.3 Q1",
+    "solution": "Let \\(R_1\\) be the event 'the first marble is red' and \\(B_2\\) the event 'the second marble is blue'. Once a red marble has been drawn and not replaced, 6 marbles remain in the bag: 2 red and 4 blue. So \\(P(B_2/R_1)=\\frac{4}{6}=\\frac{2}{3}\\). \\(P(\\text{second is blue}/\\text{first is red})=\\frac{2}{3}\\)",
+    "_note": "Book key gives 2/7, which is P(first red AND second blue). The stem as printed says 'If the first marble drawn is red', i.e. it conditions on that event, so the answer to the question asked is P(blue second / red first) = 4/6 = 2/3. Flagged as a book-key/stem mismatch; solution gives 2/3 and explains 2/7 in a bracket."
+  },
+  {
+    "id": "c8cce738-e6ea-4c00-a2d1-cf1d650044e9",
+    "ref": "Ex 9.3 Q2",
+    "solution": "There are \\(5+7=12\\) pencils, 7 of them yellow. Let \\(Y_1,Y_2\\) be the events that the first and the second pencil drawn is yellow. By the multiplication theorem, \\(P(Y_1\\cap Y_2)=P(Y_1)\\,P(Y_2/Y_1)=\\frac{7}{12}\\times\\frac{6}{11}=\\frac{42}{132}\\). \\(P(\\text{both yellow})=\\frac{7}{22}\\)"
+  },
+  {
+    "id": "4bb4983a-cd18-4db4-a537-bd15465b4d02",
+    "ref": "Ex 9.3 Q3",
+    "solution": "Let \\(R\\) be 'the vehicle is red' and \\(T\\) 'the vehicle is a truck'. Out of 40 vehicles, \\(n(R)=18\\) and \\(n(R\\cap T)=2\\). \\(P(T/R)=\\frac{P(T\\cap R)}{P(R)}=\\frac{2/40}{18/40}=\\frac{2}{18}\\). \\(P(\\text{truck}/\\text{red})=\\frac{1}{9}\\)"
+  },
+  {
+    "id": "dc1a06ea-107b-4281-8022-dcf41819fd8e",
+    "ref": "Ex 9.3 Q4(i)",
+    "solution": "Let \\(D_1,D_2\\) be the events that the first and the second card is a diamond. The pack has 13 diamonds among 52 cards, and the first card is kept aside, so 51 cards with 12 diamonds remain. \\(P(D_1\\cap D_2)=P(D_1)\\,P(D_2/D_1)=\\frac{13}{52}\\times\\frac{12}{51}=\\frac{1}{4}\\times\\frac{4}{17}\\). \\(P(\\text{both diamonds})=\\frac{1}{17}\\)"
+  },
+  {
+    "id": "4727dd90-6372-4db2-883d-409a52e2c8ce",
+    "ref": "Ex 9.3 Q4(ii)",
+    "solution": "The first card is replaced, so the second draw is again from a full pack of 52 cards with 13 diamonds; \\(D_1\\) and \\(D_2\\) are independent. \\(P(D_1\\cap D_2)=P(D_1)\\,P(D_2)=\\frac{13}{52}\\times\\frac{13}{52}=\\frac{1}{4}\\times\\frac{1}{4}\\). \\(P(\\text{both diamonds})=\\frac{1}{16}\\)"
+  },
+  {
+    "id": "27d95e89-3818-4875-9ccf-fe8484bb6664",
+    "ref": "Ex 9.3 Q5(a)",
+    "solution": "\\(P(A)=\\frac{3}{4},\\ P(B)=\\frac{1}{2},\\ P(C)=\\frac{5}{8}\\), so \\(P(A')=\\frac{1}{4},\\ P(B')=\\frac{1}{2},\\ P(C')=\\frac{3}{8}\\), and A, B, C are independent. 'Exactly one hits' is the union of the three mutually exclusive events \\(A\\cap B'\\cap C'\\), \\(A'\\cap B\\cap C'\\), \\(A'\\cap B'\\cap C\\): \\(\\frac{3}{4}\\times\\frac{1}{2}\\times\\frac{3}{8}+\\frac{1}{4}\\times\\frac{1}{2}\\times\\frac{3}{8}+\\frac{1}{4}\\times\\frac{1}{2}\\times\\frac{5}{8}=\\frac{9}{64}+\\frac{3}{64}+\\frac{5}{64}\\). \\(P(\\text{hit exactly by one of them})=\\frac{17}{64}\\)"
+  },
+  {
+    "id": "02f16c50-5aff-48e8-9964-ce928f12f0d8",
+    "ref": "Ex 9.3 Q5(b)",
+    "solution": "The target is not hit only when all three miss, and the three attempts are independent, so \\(P(A'\\cap B'\\cap C')=P(A')\\,P(B')\\,P(C')=\\frac{1}{4}\\times\\frac{1}{2}\\times\\frac{3}{8}\\). \\(P(\\text{not hit by any one of them})=\\frac{3}{64}\\)"
+  },
+  {
+    "id": "a1550a90-9aaa-4dc9-96b0-898e0987ff08",
+    "ref": "Ex 9.3 Q5(c)",
+    "solution": "The target is hit when at least one of them hits, which is the complement of 'none of them hits'. Using \\(P(A'\\cap B'\\cap C')=\\frac{3}{64}\\) from part (b), \\(P(\\text{target is hit})=1-\\frac{3}{64}=\\frac{61}{64}\\)"
+  },
+  {
+    "id": "89a679f0-3fd2-430d-b841-a42030f791b6",
+    "ref": "Ex 9.3 Q5(d)",
+    "solution": "'Exactly two hit' is the union of the mutually exclusive events \\(A\\cap B\\cap C'\\), \\(A\\cap B'\\cap C\\), \\(A'\\cap B\\cap C\\): \\(\\frac{3}{4}\\times\\frac{1}{2}\\times\\frac{3}{8}+\\frac{3}{4}\\times\\frac{1}{2}\\times\\frac{5}{8}+\\frac{1}{4}\\times\\frac{1}{2}\\times\\frac{5}{8}=\\frac{9}{64}+\\frac{15}{64}+\\frac{5}{64}\\). \\(P(\\text{hit exactly by two of them})=\\frac{29}{64}\\)"
+  },
+  {
+    "id": "f7a03ae6-3ef8-49cf-ad29-7d160c8db1e9",
+    "ref": "Ex 9.3 Q6(i)",
+    "solution": "Let \\(X,Y\\) be the events that student X, student Y solves the problem; they work independently. \\(P(X)=\\frac{2}{5}\\Rightarrow P(X')=\\frac{3}{5}\\) and \\(P(Y)=\\frac{1}{4}\\Rightarrow P(Y')=\\frac{3}{4}\\). The problem is not solved when neither solves it: \\(P(X'\\cap Y')=P(X')\\,P(Y')=\\frac{3}{5}\\times\\frac{3}{4}\\). \\(P(\\text{the problem is not solved})=\\frac{9}{20}\\)"
+  },
+  {
+    "id": "6b57127d-a9f5-409e-bcef-251c9bfd065d",
+    "ref": "Ex 9.3 Q6(ii)",
+    "solution": "The problem is solved when at least one of them solves it, the complement of part (i). \\(P(\\text{the problem is solved})=1-\\frac{9}{20}=\\frac{11}{20}\\)"
+  },
+  {
+    "id": "f09ea0bd-7ec8-4236-950e-23d91e1a64b3",
+    "ref": "Ex 9.3 Q6(iii)",
+    "solution": "'Solved by exactly one' means X solves it and Y does not, or Y solves it and X does not; these are mutually exclusive and X, Y are independent: \\(P(X\\cap Y')+P(X'\\cap Y)=\\frac{2}{5}\\times\\frac{3}{4}+\\frac{3}{5}\\times\\frac{1}{4}=\\frac{6}{20}+\\frac{3}{20}\\). \\(P(\\text{solved exactly by one of them})=\\frac{9}{20}\\)"
+  },
+  {
+    "id": "f5fe3bdf-85f4-4c89-bc2e-46e09ce49227",
+    "ref": "Ex 9.3 Q7",
+    "solution": "Let \\(A\\) be 'A speaks the truth' and \\(B\\) 'B speaks the truth', which are independent. \\(P(A)=\\frac{80}{100}=\\frac{4}{5}\\), \\(P(A')=\\frac{1}{5}\\), \\(P(B)=\\frac{60}{100}=\\frac{3}{5}\\), \\(P(B')=\\frac{2}{5}\\). They contradict each other when exactly one of them speaks the truth: \\(P(A\\cap B')+P(A'\\cap B)=\\frac{4}{5}\\times\\frac{2}{5}+\\frac{1}{5}\\times\\frac{3}{5}=\\frac{8}{25}+\\frac{3}{25}\\). \\(P(\\text{they contradict each other})=\\frac{11}{25}=0.44\\)"
+  },
+  {
+    "id": "755f13dc-2bd5-4047-abc8-603e2f2e124a",
+    "ref": "Ex 9.3 Q8(a)",
+    "solution": "Let \\(S\\) be 'the person was satisfied' and \\(T\\) 'the person had Throat surgery'. From the table \\(n(T)=95\\) and \\(n(S\\cap T)=70\\), out of 200 patients. \\(P(S/T)=\\frac{P(S\\cap T)}{P(T)}=\\frac{70/200}{95/200}=\\frac{70}{95}\\). \\(P(\\text{satisfied}/\\text{Throat surgery})=\\frac{14}{19}\\approx 0.737\\)",
+    "_note": "Minor book misprint: the key prints '14/19 (0.733)'. The fraction 14/19 is correct but its decimal value is 0.7368..., i.e. 0.737 to 3 d.p., not 0.733. Answer unaffected."
+  },
+  {
+    "id": "1b91013c-65b1-44c4-813c-651fa4f59d63",
+    "ref": "Ex 9.3 Q8(b)",
+    "solution": "Let \\(U\\) be 'the person was unsatisfied' and \\(E\\) 'the person had Eye surgery'. From the table \\(n(E)=105\\) and \\(n(U\\cap E)=15\\). \\(P(U/E)=\\frac{P(U\\cap E)}{P(E)}=\\frac{15/200}{105/200}=\\frac{15}{105}\\). \\(P(\\text{unsatisfied}/\\text{Eye surgery})=\\frac{1}{7}\\approx 0.143\\)"
+  },
+  {
+    "id": "f3c9f600-4a80-4969-bdae-10c4c156b5a8",
+    "ref": "Ex 9.3 Q8(c)",
+    "solution": "Let \\(T\\) be 'the person had Throat surgery' and \\(U\\) 'the person was unsatisfied'. From the table \\(n(U)=40\\) and \\(n(T\\cap U)=25\\). \\(P(T/U)=\\frac{P(T\\cap U)}{P(U)}=\\frac{25/200}{40/200}=\\frac{25}{40}\\). \\(P(\\text{Throat surgery}/\\text{unsatisfied})=\\frac{5}{8}=0.625\\)"
+  },
+  {
+    "id": "d594e9d5-0379-44f3-9743-1eaf023c8c03",
+    "ref": "Ex 9.3 Q9",
+    "solution": "Two dice give \\(n(S)=36\\) equally likely outcomes. \\(A\\) has the 6 outcomes with 6 on the first die, so \\(P(A)=\\frac{6}{36}=\\frac{1}{6}\\); \\(B\\) has the 6 outcomes with 2 on the second die, so \\(P(B)=\\frac{6}{36}=\\frac{1}{6}\\). \\(A\\cap B\\) is the single outcome \\((6,2)\\), so \\(P(A\\cap B)=\\frac{1}{36}\\). Test for independence: is \\(P(A\\cap B)=P(A)\\,P(B)\\)? Here \\(P(A)\\,P(B)=\\frac{1}{6}\\times\\frac{1}{6}=\\frac{1}{36}=P(A\\cap B)\\). Yes, A and B are independent."
+  },
+  {
+    "id": "c71f6f86-e502-4a8f-8fb4-654026619ce2",
+    "ref": "Ex 9.3 Q10(a)",
+    "solution": "Let \\(M\\) be 'the man is alive 25 years hence' and \\(W\\) 'his wife is alive 25 years hence'; these are independent, with \\(P(M)=\\frac{5}{12}\\) and \\(P(W)=\\frac{3}{8}\\). \\(P(M\\cap W)=P(M)\\,P(W)=\\frac{5}{12}\\times\\frac{3}{8}=\\frac{15}{96}\\). \\(P(\\text{the couple will be alive})=\\frac{5}{32}\\)"
+  },
+  {
+    "id": "74c56903-3126-42a8-9253-6ce49699b137",
+    "ref": "Ex 9.3 Q10(b)",
+    "solution": "\\(P(M')=1-\\frac{5}{12}=\\frac{7}{12}\\) and \\(P(W')=1-\\frac{3}{8}=\\frac{5}{8}\\). Exactly one alive means \\(M\\cap W'\\) or \\(M'\\cap W\\), which are mutually exclusive: \\(\\frac{5}{12}\\times\\frac{5}{8}+\\frac{7}{12}\\times\\frac{3}{8}=\\frac{25}{96}+\\frac{21}{96}=\\frac{46}{96}\\). \\(P(\\text{exactly one of them will be alive})=\\frac{23}{48}\\)"
+  },
+  {
+    "id": "92ab0f6c-3630-4e33-9e8c-ac5dc76c47f5",
+    "ref": "Ex 9.3 Q10(c)",
+    "solution": "None alive means both fail to survive, and the two events are independent: \\(P(M'\\cap W')=P(M')\\,P(W')=\\frac{7}{12}\\times\\frac{5}{8}\\). \\(P(\\text{none of them will be alive})=\\frac{35}{96}\\)"
+  },
+  {
+    "id": "c4f01290-ca43-4d12-a126-d0d85f0e012c",
+    "ref": "Ex 9.3 Q10(d)",
+    "solution": "'At least one alive' is the complement of 'none alive', and \\(P(M'\\cap W')=\\frac{35}{96}\\) from part (c). \\(P(\\text{at least one of them will be alive})=1-\\frac{35}{96}=\\frac{61}{96}\\)"
+  },
+  {
+    "id": "e5d125e2-61b4-4609-af34-8ea3dbc1e1c8",
+    "ref": "Ex 9.3 Q11(a)",
+    "solution": "The box has \\(10+15=25\\) balls and the draws are without replacement, so after a red ball is drawn 24 balls remain, 15 of them green. Let \\(R_1\\) be 'first is red' and \\(G_2\\) 'second is green'. \\(P(R_1\\cap G_2)=P(R_1)\\,P(G_2/R_1)=\\frac{10}{25}\\times\\frac{15}{24}=\\frac{2}{5}\\times\\frac{5}{8}\\). \\(P(\\text{first red and second green})=\\frac{1}{4}\\)"
+  },
+  {
+    "id": "18b9ed30-c778-4d03-8e19-f51a63faac9e",
+    "ref": "Ex 9.3 Q11(b)",
+    "solution": "'One red and the other green' happens in two mutually exclusive ways, red then green or green then red: \\(\\frac{10}{25}\\times\\frac{15}{24}+\\frac{15}{25}\\times\\frac{10}{24}=\\frac{1}{4}+\\frac{1}{4}\\). \\(P(\\text{one red and the other green})=\\frac{1}{2}\\)"
+  },
+  {
+    "id": "5f3b83d5-c508-4975-868b-5b7ec669f1e2",
+    "ref": "Ex 9.3 Q12(a)",
+    "solution": "The first bag has 8 balls (3 yellow, 5 brown) and the second has 10 balls (4 yellow, 6 brown); the two draws are independent. Same colour means both yellow or both brown: \\(\\frac{3}{8}\\times\\frac{4}{10}+\\frac{5}{8}\\times\\frac{6}{10}=\\frac{12}{80}+\\frac{30}{80}=\\frac{42}{80}\\). \\(P(\\text{both balls of the same colour})=\\frac{21}{40}\\)"
+  },
+  {
+    "id": "19ece0b0-f0da-47bc-8c64-4f20a2361751",
+    "ref": "Ex 9.3 Q12(b)",
+    "solution": "'Different colours' is the complement of 'same colour', and \\(P(\\text{same colour})=\\frac{21}{40}\\) from part (a). \\(P(\\text{the balls are of different colour})=1-\\frac{21}{40}=\\frac{19}{40}\\)"
+  },
+  {
+    "id": "d8fb07ee-c6a7-407a-98eb-44d25fbae4fa",
+    "ref": "Ex 9.3 Q13",
+    "solution": "The urn has \\(4+5+6=15\\) balls, of which 11 are not black. It is easier to use the complement: for no black ball, \\(\\frac{11}{15}\\times\\frac{10}{14}=\\frac{110}{210}=\\frac{11}{21}\\). \\(P(\\text{at least one is black})=1-\\frac{11}{21}=\\frac{10}{21}\\)"
+  },
+  {
+    "id": "51677fdf-57d3-4809-86f6-aae7bcb74013",
+    "ref": "Ex 9.3 Q14",
+    "solution": "Three coins give 8 equally likely outcomes. Let \\(A\\) be 'three heads' \\(=\\{\\text{HHH}\\}\\) and \\(B\\) 'at least two heads' \\(=\\{\\text{HHH, HHT, HTH, THH}\\}\\). Since \\(A\\subset B\\), \\(A\\cap B=A\\), so \\(P(A\\cap B)=\\frac{1}{8}\\) and \\(P(B)=\\frac{4}{8}\\). \\(P(A/B)=\\frac{P(A\\cap B)}{P(B)}=\\frac{1/8}{4/8}=\\frac{1}{4}\\)"
+  },
+  {
+    "id": "37a9e13d-5174-4c5a-878c-4a6860f616e8",
+    "ref": "Ex 9.3 Q15",
+    "solution": "A pack has 12 face cards (jack, queen, king of each suit) among 52 cards, and the first card is not replaced. Let \\(F_1,F_2\\) be 'first card is a face card' and 'second card is a face card'. \\(P(F_1\\cap F_2)=P(F_1)\\,P(F_2/F_1)=\\frac{12}{52}\\times\\frac{11}{51}=\\frac{3}{13}\\times\\frac{11}{51}\\). \\(P(\\text{both are face cards})=\\frac{11}{221}\\)"
+  },
+  {
+    "id": "3e6e7601-760d-457c-b921-965c432d04d0",
+    "ref": "Ex 9.3 Q16",
+    "solution": "Each bag is equally likely to be chosen, so \\(P(\\text{bag A})=P(\\text{bag B})=\\frac{1}{2}\\). If bag A (3 red, 2 white) is chosen, the ball goes into bag B, which then holds 8 balls, and the second draw is from bag B: both red gives \\(\\frac{3}{5}\\times\\frac{3}{8}=\\frac{9}{40}\\) and both white gives \\(\\frac{2}{5}\\times\\frac{6}{8}=\\frac{12}{40}\\), a total of \\(\\frac{21}{40}\\). If bag B (2 red, 5 white) is chosen, the ball goes into bag A, which then holds 6 balls, and the second draw is from bag A: both red gives \\(\\frac{2}{7}\\times\\frac{4}{6}=\\frac{4}{21}\\) and both white gives \\(\\frac{5}{7}\\times\\frac{3}{6}=\\frac{5}{14}\\), a total of \\(\\frac{4}{21}+\\frac{5}{14}=\\frac{23}{42}\\). Hence \\(P=\\frac{1}{2}\\times\\frac{21}{40}+\\frac{1}{2}\\times\\frac{23}{42}=\\frac{21}{80}+\\frac{23}{84}=\\frac{441}{1680}+\\frac{460}{1680}\\). \\(P(\\text{both balls drawn are of the same colour})=\\frac{901}{1680}\\)"
+  },
+  {
+    "id": "ee48c6e0-a4ed-4d1a-b7a5-04e688b07c21",
+    "ref": "Ex 9.3 Q17",
+    "solution": "The bag has \\(3+5=8\\) balls, 5 of them white. Let \\(W_1\\) be 'the first ball is white' and \\(W_2\\) 'the second ball is white'; so \\(P(W_1)=\\frac{5}{8}\\). The first ball is not replaced, so 7 balls remain of which 4 are white, giving \\(P(W_2/W_1)=\\frac{4}{7}\\). By the multiplication theorem, \\(P(W_1\\cap W_2)=P(W_1)\\,P(W_2/W_1)=\\frac{5}{8}\\times\\frac{4}{7}=\\frac{20}{56}\\). \\(P(\\text{both balls are white})=\\frac{5}{14}\\)",
+    "_note": "Numbered exercise question tagged (Activity); the printed key omits entry 17, as expected for an Activity. Answer authored in full: 5/14."
+  },
+  {
+    "id": "6ec8ddb1-c8c3-47c2-ba44-8acd7abad6a3",
+    "ref": "Ex 9.3 Q18",
+    "solution": "Taking the children in order of birth, the sample space is \\(S=\\{\\text{BB},\\ \\text{BG},\\ \\text{GB},\\ \\text{GG}\\}\\), four equally likely outcomes. Let \\(A\\) be 'both children are girls' \\(=\\{\\text{GG}\\}\\) and \\(B\\) 'at least one is a girl' \\(=\\{\\text{BG},\\ \\text{GB},\\ \\text{GG}\\}\\). Then \\(A\\cap B=\\{\\text{GG}\\}\\), so \\(P(A\\cap B)=\\frac{1}{4}\\) and \\(P(B)=\\frac{3}{4}\\). \\(P(A/B)=\\frac{P(A\\cap B)}{P(B)}=\\frac{1/4}{3/4}=\\frac{1}{3}\\)"
+  }
+]

@@ -1,0 +1,1015 @@
+[
+  {
+    "ref": "Ex 4.6 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "EASY",
+    "context": "Evaluate.",
+    "setLabel": "Ex 4.6 Q1",
+    "stem": "\\(\\begin{bmatrix} 3 \\\\ 2 \\\\ 1 \\end{bmatrix}\\begin{bmatrix} 2 & -4 & 3 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.6 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "EASY",
+    "context": "Evaluate.",
+    "setLabel": "Ex 4.6 Q1",
+    "stem": "\\(\\begin{bmatrix} 2 & -1 & 3 \\end{bmatrix}\\begin{bmatrix} 4 \\\\ 3 \\\\ 1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.6 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & -3 \\\\ 4 & 2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 4 & 1 \\\\ 3 & -2 \\end{bmatrix}\\) show that \\(AB \\ne BA\\)."
+  },
+  {
+    "ref": "Ex 4.6 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} -1 & 1 & 1 \\\\ 2 & 3 & 0 \\\\ 1 & -3 & 1 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 2 & 1 & 4 \\\\ 3 & 0 & 2 \\\\ 1 & 2 & 1 \\end{bmatrix}\\). State whether \\(AB = BA\\)? Justify your answer."
+  },
+  {
+    "ref": "Ex 4.6 Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "context": "Show that \\(AB = BA\\) where,",
+    "setLabel": "Ex 4.6 Q4",
+    "stem": "\\(A = \\begin{bmatrix} -2 & 3 & -1 \\\\ -1 & 2 & -1 \\\\ -6 & 9 & -4 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 3 & -1 \\\\ 2 & 2 & -1 \\\\ 3 & 0 & -1 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.6 Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "context": "Show that \\(AB = BA\\) where,",
+    "setLabel": "Ex 4.6 Q4",
+    "stem": "\\(A = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{bmatrix}\\), \\(B = \\begin{bmatrix} \\cos\\phi & -\\sin\\phi \\\\ \\sin\\phi & \\cos\\phi \\end{bmatrix}\\)",
+    "_note": "PRINTED DEFECT (transcribed as printed, verified at 3x zoom on p-35). A is printed with BOTH sine entries positive, i.e. a symmetric matrix, while B is printed correctly as a rotation matrix with -sin(phi) in the top right. As printed the claim is FALSE: with A=[[c,s],[s,c]] and B=[[C,-S],[S,C]], AB has (1,1) entry cC+sS whereas BA has (1,1) entry cC-sS, so AB != BA unless sin(theta)sin(phi)=0. The intended A is almost certainly [[cos(theta), -sin(theta)],[sin(theta), cos(theta)]], for which AB=BA=rotation by theta+phi. Note the SAME book prints the correct rotation form in Ex 4.6 Q23 and Ex 4.7 Q14, which supports the missing-minus-sign reading.",
+    "solution": "[Textbook misprint: \\(A\\) is printed with both sine entries positive, and as printed \\(AB \\ne BA\\), so the statement is false. The intended matrix is the rotation form \\(\\begin{bmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{bmatrix}\\), which this same book prints correctly at Ex 4.6 Q.23 and Ex 4.7 Q.14.]"
+  },
+  {
+    "ref": "Ex 4.6 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\begin{bmatrix} 4 & 8 \\\\ -2 & -4 \\end{bmatrix}\\), prove that \\(A^{2} = 0\\)."
+  },
+  {
+    "ref": "Ex 4.6 Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "context": "Verify \\(A(BC) = (AB)C\\) in each of the following cases.",
+    "setLabel": "Ex 4.6 Q6",
+    "stem": "\\(A = \\begin{bmatrix} 1 & 0 & 1 \\\\ 2 & 3 & 0 \\\\ 0 & 4 & 5 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 2 & -2 \\\\ -1 & 1 \\\\ 0 & 3 \\end{bmatrix}\\) and \\(C = \\begin{bmatrix} 3 & 2 & -1 \\\\ 2 & 0 & -2 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.6 Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "context": "Verify \\(A(BC) = (AB)C\\) in each of the following cases.",
+    "setLabel": "Ex 4.6 Q6",
+    "stem": "\\(A = \\begin{bmatrix} 2 & 4 & 3 \\\\ -1 & 3 & 2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 2 & -2 \\\\ 3 & 3 \\\\ -1 & 1 \\end{bmatrix}\\) and \\(C = \\begin{bmatrix} 3 & 1 \\\\ 1 & 3 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.6 Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "context": "Verify that \\(A(B+C) = AB + BC\\) in each of the following matrices",
+    "setLabel": "Ex 4.6 Q7",
+    "stem": "\\(A = \\begin{bmatrix} 4 & -2 \\\\ 2 & 3 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} -1 & 1 \\\\ 3 & -2 \\end{bmatrix}\\) and \\(C = \\begin{bmatrix} 4 & 1 \\\\ 2 & -1 \\end{bmatrix}\\)",
+    "_note": "PRINTED DEFECT in the shared instruction (transcribed as printed, verified at 3x zoom on p-35): the book prints 'A(B+C)=AB+BC'. The distributive law is A(B+C)=AB+AC; 'BC' should read 'AC'. As printed the identity is false for these matrices.",
+    "solution": "[Textbook misprint: the shared instruction prints \\(A(B + C) = AB + BC\\). Distributivity gives \\(AB + AC\\), and that is the form verified here.]"
+  },
+  {
+    "ref": "Ex 4.6 Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "context": "Verify that \\(A(B+C) = AB + BC\\) in each of the following matrices",
+    "setLabel": "Ex 4.6 Q7",
+    "stem": "\\(A = \\begin{bmatrix} 1 & -1 & 3 \\\\ 2 & 3 & 2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 0 \\\\ -2 & 3 \\\\ 4 & 3 \\end{bmatrix}\\) and \\(C = \\begin{bmatrix} 1 & 2 \\\\ -2 & 0 \\\\ 4 & -3 \\end{bmatrix}\\)",
+    "_note": "PRINTED DEFECT in the shared instruction: the book prints 'A(B+C)=AB+BC'; the distributive law is A(B+C)=AB+AC. Here BC is not even conformable (B and C are both 3x2), so as printed the right-hand side is undefined.",
+    "solution": "[Textbook misprint: the shared instruction prints \\(A(B + C) = AB + BC\\). Here \\(B\\) and \\(C\\) are both \\(3 \\times 2\\), so the printed \\(BC\\) does not exist at all. Distributivity gives \\(AB + AC\\), and that is the form verified here.]"
+  },
+  {
+    "ref": "Ex 4.6 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & -2 \\\\ 5 & 6 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 3 & -1 \\\\ 3 & 7 \\end{bmatrix}\\), find \\(AB - 2I\\), where \\(I\\) is unit matrix of order 2."
+  },
+  {
+    "ref": "Ex 4.6 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 4 & 3 & 2 \\\\ -1 & 2 & 0 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 2 \\\\ -1 & 0 \\\\ 1 & -2 \\end{bmatrix}\\) show that matrix \\(AB\\) is non singular."
+  },
+  {
+    "ref": "Ex 4.6 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 2 & 0 \\\\ 5 & 4 & 2 \\\\ 0 & 7 & -3 \\end{bmatrix}\\), find the product \\((A+I)(A-I)\\)."
+  },
+  {
+    "ref": "Ex 4.6 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "EASY",
+    "stem": "\\(A = \\begin{bmatrix} \\alpha & 0 \\\\ 1 & 1 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 0 \\\\ 2 & 1 \\end{bmatrix}\\) find \\(\\alpha\\), if \\(A^{2} = B\\).",
+    "_note": "GLYPH DEFECT (verified at 3x zoom on p-35): inside the matrix the book prints the 'proportional to' sign (an infinity-like glyph) where the running text of the same question says 'find alpha'. Transcribed as alpha, which is plainly what is meant. The question is well posed: A^2 = [[alpha^2, 0],[alpha+1, 1]] = B gives alpha = 1."
+  },
+  {
+    "ref": "Ex 4.6 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 2 & 2 \\\\ 2 & 1 & 2 \\\\ 2 & 2 & 1 \\end{bmatrix}\\), show that \\(A^{2} - 4A\\) is a scalar matrix."
+  },
+  {
+    "ref": "Ex 4.6 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 0 \\\\ -1 & 7 \\end{bmatrix}\\), find \\(k\\) so that \\(A^{2} - 8A - kI = O\\), where \\(I\\) is a unit matrix and \\(O\\) is a null matrix of order 2."
+  },
+  {
+    "ref": "Ex 4.6 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 8 & 4 \\\\ 10 & 5 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 5 & -4 \\\\ 10 & -8 \\end{bmatrix}\\) show that \\((A + B)^{2} = A^{2} + AB + B^{2}\\)."
+  },
+  {
+    "ref": "Ex 4.6 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 3 & 1 \\\\ -1 & 2 \\end{bmatrix}\\), prove that \\(A^{2} - 5A + 7I = 0\\), where \\(I\\) is unit matrix of order 2."
+  },
+  {
+    "ref": "Ex 4.6 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 3 & 4 \\\\ -4 & 3 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 2 & 1 \\\\ -1 & 2 \\end{bmatrix}\\), show that \\((A+B)(A-B) = A^{2} - B^{2}\\)."
+  },
+  {
+    "ref": "Ex 4.6 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 2 \\\\ -1 & -2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 2 & a \\\\ -1 & b \\end{bmatrix}\\) and if \\((A + B)^{2} = A^{2} + B^{2}\\), find values of \\(a\\) and \\(b\\)."
+  },
+  {
+    "ref": "Ex 4.6 Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "Find matrix \\(X\\) such that \\(AX = B\\), where \\(A = \\begin{bmatrix} 1 & -2 \\\\ -2 & 1 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} -3 \\\\ -1 \\end{bmatrix}\\)."
+  },
+  {
+    "ref": "Ex 4.6 Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(k\\), if \\(A = \\begin{bmatrix} 3 & -2 \\\\ 4 & -2 \\end{bmatrix}\\) and if \\(A^{2} = kA - 2I\\)."
+  },
+  {
+    "ref": "Ex 4.6 Q20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(x\\), if \\(\\begin{bmatrix} 1 & x & 1 \\end{bmatrix}\\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 3 & 2 & 5 \\end{bmatrix}\\begin{bmatrix} 1 \\\\ -2 \\\\ 3 \\end{bmatrix} = 0\\)."
+  },
+  {
+    "ref": "Ex 4.6 Q21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(x\\) and \\(y\\), if \\(\\left\\{ 4\\begin{bmatrix} 2 & -1 & 3 \\\\ 1 & 0 & 2 \\end{bmatrix} - \\begin{bmatrix} 3 & -3 & 4 \\\\ 2 & 1 & 1 \\end{bmatrix} \\right\\}\\begin{bmatrix} 2 \\\\ -1 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} x \\\\ y \\end{bmatrix}\\)."
+  },
+  {
+    "ref": "Ex 4.6 Q22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(x, y, z\\) if \\(\\left\\{ 3\\begin{bmatrix} 2 & 0 \\\\ 0 & 2 \\\\ 2 & 2 \\end{bmatrix} - 4\\begin{bmatrix} 1 & 1 \\\\ -1 & 2 \\\\ 3 & 1 \\end{bmatrix} \\right\\}\\begin{bmatrix} 1 \\\\ 2 \\end{bmatrix} = \\begin{bmatrix} x-3 \\\\ y-1 \\\\ 2z \\end{bmatrix}\\)."
+  },
+  {
+    "ref": "Ex 4.6 Q23",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\), show that \\(A^{2} = \\begin{bmatrix} \\cos 2\\alpha & \\sin 2\\alpha \\\\ -\\sin 2\\alpha & \\cos 2\\alpha \\end{bmatrix}\\)."
+  },
+  {
+    "ref": "Ex 4.6 Q24",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 5 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 0 & 4 \\\\ 2 & -1 \\end{bmatrix}\\), show that \\(AB \\ne BA\\), but \\(|AB| = |A| \\cdot |B|\\)."
+  },
+  {
+    "ref": "Ex 4.6 Q25",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "Jay and Ram are two friends in a class. Jay wanted to buy 4 pens and 8 notebooks, Ram wanted to buy 5 pens and 12 notebooks. Both of them went to a shop. The price of a pen and a notebook which they have selected was Rs.6 and Rs.10. Using Matrix multiplication, find the amount required from each one of them.",
+    "solution": "[Textbook misprint: the book's answer section labels this question Q.24 while the exercise prints it as Q.25. The values given in the key are correct.]"
+  },
+  {
+    "ref": "Ex 4.7 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "EASY",
+    "context": "Find \\(A^{T}\\), if",
+    "setLabel": "Ex 4.7 Q1",
+    "stem": "\\(A = \\begin{bmatrix} 1 & 3 \\\\ -4 & 5 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.7 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "EASY",
+    "context": "Find \\(A^{T}\\), if",
+    "setLabel": "Ex 4.7 Q1",
+    "stem": "\\(A = \\begin{bmatrix} 2 & -6 & 1 \\\\ -4 & 0 & 5 \\end{bmatrix}\\)",
+    "solution": "[Textbook answer-key error: the printed key gives the \\((2,1)\\) entry of \\(A^{T}\\) as \\(6\\). Since \\(a_{12} = -6\\) in the given \\(A\\), that entry is \\(-6\\) — a dropped minus sign in the key. The rest of the printed answer is correct.]"
+  },
+  {
+    "ref": "Ex 4.7 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\left[ a_{ij} \\right]_{3 \\times 3}\\) where \\(a_{ij} = 2(i - j)\\). Find \\(A\\) and \\(A^{T}\\). State whether \\(A\\) and \\(A^{T}\\) are symmetric or skew symmetric matrices?"
+  },
+  {
+    "ref": "Ex 4.7 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\begin{bmatrix} 5 & -3 \\\\ 4 & -3 \\\\ -2 & 1 \\end{bmatrix}\\), prove that \\((2A)^{T} = 2A^{T}\\)."
+  },
+  {
+    "ref": "Ex 4.7 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 2 & -5 \\\\ 2 & -3 & 4 \\\\ -5 & 4 & 9 \\end{bmatrix}\\), prove that \\((3A)^{T} = 3A^{T}\\)."
+  },
+  {
+    "ref": "Ex 4.7 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 0 & 1+2i & i-2 \\\\ -1-2i & 0 & -7 \\\\ 2-i & 7 & 0 \\end{bmatrix}\\) where \\(i = \\sqrt{-1}\\), prove that \\(A^{T} = -A\\)."
+  },
+  {
+    "ref": "Ex 4.7 Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\begin{bmatrix} 2 & -3 \\\\ 5 & -4 \\\\ -6 & 1 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 2 & 1 \\\\ 4 & -1 \\\\ -3 & 3 \\end{bmatrix}\\) and \\(C = \\begin{bmatrix} 1 & 2 \\\\ -1 & 4 \\\\ -2 & 3 \\end{bmatrix}\\) then show that",
+    "setLabel": "Ex 4.7 Q6",
+    "stem": "\\((A + B) = A^{T} + B^{T}\\)",
+    "_note": "PRINTED DEFECT (transcribed as printed, verified at 3x zoom on p-38): the left-hand side is printed as '(A + B)' with NO transpose superscript, while the companion sub-item (ii) correctly prints '(A - C)^T'. As printed the two sides are not even the same order: A + B is 3x2 and A^T + B^T is 2x3. The intended statement is (A + B)^T = A^T + B^T.",
+    "solution": "[Textbook misprint: printed as \\((A + B) = A^{T} + B^{T}\\), with no transpose on the left-hand side; as printed the two sides are \\(3 \\times 2\\) and \\(2 \\times 3\\) and cannot be compared. The intended statement is \\((A + B)^{T} = A^{T} + B^{T}\\), which is the form the book prints correctly in sub-item (ii).]"
+  },
+  {
+    "ref": "Ex 4.7 Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\begin{bmatrix} 2 & -3 \\\\ 5 & -4 \\\\ -6 & 1 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 2 & 1 \\\\ 4 & -1 \\\\ -3 & 3 \\end{bmatrix}\\) and \\(C = \\begin{bmatrix} 1 & 2 \\\\ -1 & 4 \\\\ -2 & 3 \\end{bmatrix}\\) then show that",
+    "setLabel": "Ex 4.7 Q6",
+    "stem": "\\((A - C)^{T} = A^{T} - C^{T}\\)"
+  },
+  {
+    "ref": "Ex 4.7 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 5 & 4 \\\\ -2 & 3 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} -1 & 3 \\\\ 4 & -1 \\end{bmatrix}\\), then find \\(C^{T}\\), such that \\(3A - 2B + C = I\\), where \\(I\\) is the unit matrix of order 2."
+  },
+  {
+    "ref": "Ex 4.7 Q8(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\begin{bmatrix} 7 & 3 & 0 \\\\ 0 & 4 & -2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 0 & -2 & 3 \\\\ 2 & 1 & -4 \\end{bmatrix}\\) then find",
+    "setLabel": "Ex 4.7 Q8",
+    "stem": "\\(A^{T} + 4B^{T}\\)"
+  },
+  {
+    "ref": "Ex 4.7 Q8(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\begin{bmatrix} 7 & 3 & 0 \\\\ 0 & 4 & -2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 0 & -2 & 3 \\\\ 2 & 1 & -4 \\end{bmatrix}\\) then find",
+    "setLabel": "Ex 4.7 Q8",
+    "stem": "\\(5A^{T} - 5B^{T}\\)"
+  },
+  {
+    "ref": "Ex 4.7 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 0 & 1 \\\\ 3 & 1 & 2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 2 & 1 & -4 \\\\ 3 & 5 & -2 \\end{bmatrix}\\) and \\(C = \\begin{bmatrix} 0 & 2 & 3 \\\\ -1 & -1 & 0 \\end{bmatrix}\\), verify that \\((A + 2B + 2C)^{T} = A^{T} + 2B^{T} + 3C^{T}\\).",
+    "_note": "PRINTED DEFECT (transcribed as printed, verified at 3x zoom on p-39): the coefficient of C disagrees between the two sides - the left-hand side has 2C but the right-hand side has 3C^T. As printed the identity is false. One of the two coefficients is a misprint; the two natural repairs are (A + 2B + 3C)^T = A^T + 2B^T + 3C^T or (A + 2B + 2C)^T = A^T + 2B^T + 2C^T.",
+    "solution": "[Textbook misprint: printed as \\((A + 2B + 2C)^{T} = A^{T} + 2B^{T} + 3C^{T}\\) — the coefficient of \\(C\\) disagrees across the equals sign. Verified here as \\((A + 2B + 3C)^{T} = A^{T} + 2B^{T} + 3C^{T}\\). Repairing the left side rather than the right is a judgement call: the printed \\(2C\\) sitting beside \\(2B\\) reads as a repeated coefficient. The property holds for any scalars, so the verification stands under either repair.]"
+  },
+  {
+    "ref": "Ex 4.7 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} -1 & 2 & 1 \\\\ -3 & 2 & -3 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 2 & 1 \\\\ -3 & 2 \\\\ -1 & 3 \\end{bmatrix}\\), prove that \\((A + B^{T})^{T} = A^{T} + B\\)."
+  },
+  {
+    "ref": "Ex 4.7 Q11(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "Prove that \\(A + A^{T}\\) is a symmetric and \\(A - A^{T}\\) is a skew symmetric matrix, where",
+    "setLabel": "Ex 4.7 Q11",
+    "stem": "\\(A = \\begin{bmatrix} 1 & 2 & 4 \\\\ 3 & 2 & 1 \\\\ -2 & -3 & 2 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.7 Q11(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "Prove that \\(A + A^{T}\\) is a symmetric and \\(A - A^{T}\\) is a skew symmetric matrix, where",
+    "setLabel": "Ex 4.7 Q11",
+    "stem": "\\(A = \\begin{bmatrix} 5 & 2 & -4 \\\\ 3 & -7 & 2 \\\\ 4 & -5 & -3 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.7 Q12(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "Express the following matrices as the sum of a symmetric and a skew symmetric matrix.",
+    "setLabel": "Ex 4.7 Q12",
+    "stem": "\\(\\begin{bmatrix} 4 & -2 \\\\ 3 & -5 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.7 Q12(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "Express the following matrices as the sum of a symmetric and a skew symmetric matrix.",
+    "setLabel": "Ex 4.7 Q12",
+    "stem": "\\(\\begin{bmatrix} 3 & 3 & -1 \\\\ -2 & -2 & 1 \\\\ -4 & -5 & 2 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Ex 4.7 Q13(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\begin{bmatrix} 2 & -1 \\\\ 3 & -2 \\\\ 4 & 1 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 0 & 3 & -4 \\\\ 2 & -1 & 1 \\end{bmatrix}\\), verify that",
+    "setLabel": "Ex 4.7 Q13",
+    "stem": "\\((AB)^{T} = B^{T}A^{T}\\)"
+  },
+  {
+    "ref": "Ex 4.7 Q13(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\begin{bmatrix} 2 & -1 \\\\ 3 & -2 \\\\ 4 & 1 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 0 & 3 & -4 \\\\ 2 & -1 & 1 \\end{bmatrix}\\), verify that",
+    "setLabel": "Ex 4.7 Q13",
+    "stem": "\\((BA)^{T} = A^{T}B^{T}\\)"
+  },
+  {
+    "ref": "Ex 4.7 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\), show that \\(A^{T}A = I\\), where \\(I\\) is the unit matrix of order 2."
+  },
+  {
+    "ref": "Misc 4B I Q1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "Given \\(A = \\begin{bmatrix} 1 & 3 \\\\ 2 & 2 \\end{bmatrix}\\), \\(I = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\\) if \\(A - \\lambda I\\) is a singular matrix then ..........",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\lambda = 0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\lambda^{2} - 3\\lambda - 4 = 0\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\lambda^{2} + 3\\lambda - 4 = 0\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\lambda^{2} - 3\\lambda - 6 = 0\\)"
+      }
+    ],
+    "answer": "B",
+    "_derivation": "A - (lambda)I = [[1-L, 3],[2, 2-L]]. Singular means determinant zero: (1-L)(2-L) - 3*2 = 2 - 3L + L^2 - 6 = L^2 - 3L - 4 = 0."
+  },
+  {
+    "ref": "Misc 4B I Q2",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "HARD",
+    "stem": "Consider the matrices \\(A = \\begin{bmatrix} 4 & 6 & -1 \\\\ 3 & 0 & 2 \\\\ 1 & -2 & 5 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 2 & 4 \\\\ 0 & 1 \\\\ -1 & 2 \\end{bmatrix}\\), \\(C = \\begin{bmatrix} 3 \\\\ 1 \\\\ 2 \\end{bmatrix}\\) out of the given matrix product ...........\n\ni) \\((AB)^{T}C\\)\n\nii) \\(C^{T}C(AB)^{T}\\)\n\niii) \\(C^{T}AB\\)\n\niv) \\(A^{T}ABB^{T}C\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "Exactly one is defined"
+      },
+      {
+        "label": "B",
+        "text": "Exactly two are defined"
+      },
+      {
+        "label": "C",
+        "text": "Exactly three are defined"
+      },
+      {
+        "label": "D",
+        "text": "all four are defined"
+      }
+    ],
+    "answer": "C",
+    "_derivation": "Orders: A is 3x3, B is 3x2, C is 3x1. (i) AB is 3x2 so (AB)^T is 2x3; (2x3)(3x1) = 2x1, DEFINED. (ii) C^T C is (1x3)(3x1) = 1x1; then (1x1)(2x3) needs 1 = 2, NOT defined. (iii) C^T A B = (1x3)(3x3)(3x2) = 1x2, DEFINED. (iv) A^T A B B^T C = (3x3)(3x3)(3x2)(2x3)(3x1) = 3x1, DEFINED. Exactly three."
+  },
+  {
+    "ref": "Misc 4B I Q3",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "EASY",
+    "stem": "If \\(A\\) and \\(B\\) are square matrices of equal order, then which one is correct among the following?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(A + B = B + A\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(A + B = A - B\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(A - B = B - A\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(AB = BA\\)"
+      }
+    ],
+    "answer": "A",
+    "_derivation": "Matrix addition is commutative (it is entrywise addition of real numbers), so A + B = B + A always holds. B and C fail whenever B is not the zero matrix; D fails in general since matrix multiplication is not commutative."
+  },
+  {
+    "ref": "Misc 4B I Q4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 2 & 2 \\\\ 2 & 1 & -2 \\\\ a & 2 & b \\end{bmatrix}\\) is a matrix satisfying the equation \\(AA^{T} = 9I\\), where \\(I\\) is the identity matrix of order 3, then the ordered pair \\((a, b)\\) is equal to .......",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\((2, -1)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\((-2, 1)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\((2, 1)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\((-2, -1)\\)"
+      }
+    ],
+    "answer": "D",
+    "_derivation": "AA^T = 9I means the rows are mutually orthogonal with squared length 9. Rows 1 and 2 already satisfy this (1+4+4 = 9, 4+1+4 = 9, dot product 2+2-4 = 0). For row 3 = (a,2,b): dot with row 1 gives a + 4 + 2b = 0, dot with row 2 gives 2a + 2 - 2b = 0 i.e. a - b = -1. Solving a = b - 1 with a + 2b = -4 gives 3b = -3, b = -1, a = -2. Check the length: 4 + 4 + 1 = 9. So (a,b) = (-2,-1)."
+  },
+  {
+    "ref": "Misc 4B I Q5",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} \\alpha & 2 \\\\ 2 & \\alpha \\end{bmatrix}\\) and \\(|A^{3}| = 125\\), then \\(\\alpha = \\) .......",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\pm 3\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\pm 2\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\pm 5\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(0\\)"
+      }
+    ],
+    "answer": "A",
+    "_derivation": "|A| = alpha^2 - 4 and |A^3| = |A|^3, so (alpha^2 - 4)^3 = 125, giving alpha^2 - 4 = 5, alpha^2 = 9, alpha = +/-3."
+  },
+  {
+    "ref": "Misc 4B I Q6",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "EASY",
+    "stem": "If \\(\\begin{bmatrix} 5 & 7 \\\\ x & 1 \\\\ 2 & 6 \\end{bmatrix} - \\begin{bmatrix} 1 & 2 \\\\ -3 & 5 \\\\ 2 & y \\end{bmatrix} = \\begin{bmatrix} 4 & 5 \\\\ 4 & -4 \\\\ 0 & 4 \\end{bmatrix}\\) then ......",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(x = 1, y = -2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(x = -1, y = 2\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(x = 1, y = 2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(x = -1, y = -2\\)"
+      }
+    ],
+    "answer": "C",
+    "_derivation": "Entrywise subtraction: x - (-3) = 4 gives x = 1, and 6 - y = 4 gives y = 2. All the remaining entries check out (5-1=4, 7-2=5, 1-5=-4, 2-2=0)."
+  },
+  {
+    "ref": "Misc 4B I Q7",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "EASY",
+    "stem": "If \\(A + B = \\begin{bmatrix} 7 & 4 \\\\ 8 & 9 \\end{bmatrix}\\) and \\(A - B = \\begin{bmatrix} 1 & 2 \\\\ 0 & 3 \\end{bmatrix}\\) then the value of \\(A\\) is .......",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\begin{bmatrix} 3 & 1 \\\\ 4 & 3 \\end{bmatrix}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\begin{bmatrix} 4 & 3 \\\\ 4 & 6 \\end{bmatrix}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\begin{bmatrix} 6 & 2 \\\\ 8 & 6 \\end{bmatrix}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\begin{bmatrix} 7 & 6 \\\\ 8 & 12 \\end{bmatrix}\\)"
+      }
+    ],
+    "answer": "B",
+    "_derivation": "Adding the two equations gives 2A = [[8,6],[8,12]], so A = [[4,3],[4,6]]."
+  },
+  {
+    "ref": "Misc 4B I Q8",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\begin{bmatrix} x & 3x - y \\\\ zx + z & 3y - w \\end{bmatrix} = \\begin{bmatrix} 3 & 2 \\\\ 4 & 7 \\end{bmatrix}\\) then ..........",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(x = 3, y = 7, z = 1, w = 14\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(x = 3, y = -5, z = -1, w = -4\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(x = 3, y = 6, z = 2, w = 7\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(x = -3, y = -7, z = -1, w = -14\\)"
+      }
+    ],
+    "answer": "A",
+    "_note": "PRINTED DEFECT (verified at 2x zoom on p-41): the book labels ALL FOUR alternatives 'a)' rather than a) b) c) d). They have been re-lettered A-D here in the printed top-to-bottom order, so the derived answer A is the FIRST printed alternative.",
+    "_derivation": "Equating entries: x = 3; 3x - y = 2 gives 9 - y = 2 so y = 7; zx + z = z(x+1) = 4z = 4 so z = 1; 3y - w = 7 gives 21 - w = 7 so w = 14. This is the first printed alternative."
+  },
+  {
+    "ref": "Misc 4B I Q9",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "EASY",
+    "stem": "For suitable matrices \\(A, B\\), the false statement is .......",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\((AB)^{T} = A^{T}B^{T}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\((A^{T})^{T} = A\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\((A - B)^{T} = A^{T} - B^{T}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\((A + B)^{T} = A^{T} + B^{T}\\)"
+      }
+    ],
+    "answer": "A",
+    "_derivation": "The reversal law for the transpose of a product is (AB)^T = B^T A^T, not A^T B^T; indeed A^T B^T is generally not even conformable. B, C and D are all standard true properties of the transpose."
+  },
+  {
+    "ref": "Misc 4B I Q10",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} -2 & 1 \\\\ 0 & 3 \\end{bmatrix}\\) and \\(f(x) = 2x^{2} - 3x\\), then \\(f(A) = \\) .........",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\begin{bmatrix} 14 & 1 \\\\ 0 & -9 \\end{bmatrix}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\begin{bmatrix} -14 & 1 \\\\ 0 & 9 \\end{bmatrix}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\begin{bmatrix} 14 & -1 \\\\ 0 & 9 \\end{bmatrix}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\begin{bmatrix} -14 & -1 \\\\ 0 & -9 \\end{bmatrix}\\)"
+      }
+    ],
+    "answer": "C",
+    "_derivation": "A^2 = [[-2,1],[0,3]][[-2,1],[0,3]] = [[4,1],[0,9]]. So 2A^2 = [[8,2],[0,18]] and 3A = [[-6,3],[0,9]], giving f(A) = 2A^2 - 3A = [[14,-1],[0,9]]."
+  },
+  {
+    "ref": "Misc 4B II Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\text{diag}\\,[2\\ \\ -3\\ \\ -5]\\), \\(B = \\text{diag}\\,[4\\ \\ -6\\ \\ -3]\\) and \\(C = \\text{diag}\\,[-3\\ \\ 4\\ \\ 1]\\) then find",
+    "setLabel": "Misc 4B II Q1",
+    "stem": "\\(B + C - A\\)"
+  },
+  {
+    "ref": "Misc 4B II Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\text{diag}\\,[2\\ \\ -3\\ \\ -5]\\), \\(B = \\text{diag}\\,[4\\ \\ -6\\ \\ -3]\\) and \\(C = \\text{diag}\\,[-3\\ \\ 4\\ \\ 1]\\) then find",
+    "setLabel": "Misc 4B II Q1",
+    "stem": "\\(2A + B - 5C\\)"
+  },
+  {
+    "ref": "Misc 4B II Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "MODERATE",
+    "context": "If \\(f(\\alpha) = A = \\begin{bmatrix} \\cos\\alpha & -\\sin\\alpha & 0 \\\\ \\sin\\alpha & \\cos\\alpha & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\), find",
+    "setLabel": "Misc 4B II Q2",
+    "stem": "\\(f(-\\alpha)\\)"
+  },
+  {
+    "ref": "Misc 4B II Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "MODERATE",
+    "context": "If \\(f(\\alpha) = A = \\begin{bmatrix} \\cos\\alpha & -\\sin\\alpha & 0 \\\\ \\sin\\alpha & \\cos\\alpha & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\), find",
+    "setLabel": "Misc 4B II Q2",
+    "stem": "\\(f(-\\alpha) + f(\\alpha)\\)"
+  },
+  {
+    "ref": "Misc 4B II Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Find matrices \\(A\\) and \\(B\\), where",
+    "setLabel": "Misc 4B II Q3",
+    "stem": "\\(2A - B = \\begin{bmatrix} 1 & -1 \\\\ 0 & 1 \\end{bmatrix}\\) and \\(A + 3B = \\begin{bmatrix} 1 & -1 \\\\ 0 & 1 \\end{bmatrix}\\)",
+    "_note": "SUSPECTED PRINTED DEFECT (transcribed as printed, verified at 3x zoom on p-42): the SAME matrix [[1,-1],[0,1]] is printed on the right of BOTH equations. The system is still solvable - writing M for that matrix, 3(2A-B) + (A+3B) gives 7A = 4M so A = (4/7)M and B = (1/7)M - but the fractional sevenths are out of character for this exercise set, and the companion sub-item (ii) uses two clearly different right-hand sides. One of the two matrices is very likely a copy-paste slip in typesetting."
+  },
+  {
+    "ref": "Misc 4B II Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Find matrices \\(A\\) and \\(B\\), where",
+    "setLabel": "Misc 4B II Q3",
+    "stem": "\\(3A - B = \\begin{bmatrix} -1 & 2 & 1 \\\\ 1 & 0 & 5 \\end{bmatrix}\\) and \\(A + 5B = \\begin{bmatrix} 0 & 0 & 1 \\\\ -1 & 0 & 0 \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Misc 4B II Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\begin{bmatrix} 2 & -3 \\\\ 3 & -2 \\\\ -1 & 4 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} -3 & 4 & 1 \\\\ 2 & -1 & -3 \\end{bmatrix}\\), verify",
+    "setLabel": "Misc 4B II Q4",
+    "stem": "\\((A + B^{T})^{T} = A^{T} + 2B\\)",
+    "_note": "PRINTED DEFECT (transcribed as printed, verified at 3x zoom on p-42): the right-hand side is printed with a coefficient 2 on B. Since (A + B^T)^T = A^T + (B^T)^T = A^T + B, the correct statement carries no coefficient. The orders are consistent either way (both sides 2x3), so nothing but the arithmetic exposes it; the companion sub-item (ii), (3A - 5B^T)^T = 3A^T - 5B, is correct as printed and shows the intended pattern.",
+    "solution": "[Textbook misprint: printed as \\((A + B^{T})^{T} = A^{T} + 2B\\). The correct identity is \\((A + B^{T})^{T} = A^{T} + B\\); the printed form fails numerically for the given matrices. The stray factor appears to be carried over from sub-item (ii), where a coefficient legitimately recurs on both sides.]"
+  },
+  {
+    "ref": "Misc 4B II Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\begin{bmatrix} 2 & -3 \\\\ 3 & -2 \\\\ -1 & 4 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} -3 & 4 & 1 \\\\ 2 & -1 & -3 \\end{bmatrix}\\), verify",
+    "setLabel": "Misc 4B II Q4",
+    "stem": "\\((3A - 5B^{T})^{T} = 3A^{T} - 5B\\)"
+  },
+  {
+    "ref": "Misc 4B II Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} \\cos\\alpha & -\\sin\\alpha \\\\ \\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\) and \\(A + A^{T} = I\\), where \\(I\\) is unit matrix \\(2 \\times 2\\), then find the value of \\(\\alpha\\)."
+  },
+  {
+    "ref": "Misc 4B II Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 2 \\\\ -1 & 0 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 1 & 3 & 2 \\\\ 4 & -1 & -3 \\end{bmatrix}\\), show that \\(AB\\) is singular."
+  },
+  {
+    "ref": "Misc 4B II Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\\\ 1 & 2 & 3 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & -1 & 1 \\\\ -3 & 2 & -1 \\\\ -2 & 1 & 0 \\end{bmatrix}\\), show that \\(AB\\) and \\(BA\\) are both singular matrices."
+  },
+  {
+    "ref": "Misc 4B II Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & -1 & 0 \\\\ 2 & 3 & 4 \\\\ 0 & 1 & 2 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 2 & 2 & -4 \\\\ -4 & 2 & -4 \\\\ 2 & -1 & 5 \\end{bmatrix}\\), show that \\(BA = 6I\\)."
+  },
+  {
+    "ref": "Misc 4B II Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\begin{bmatrix} 2 & 1 \\\\ 0 & 3 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 2 \\\\ 3 & -2 \\end{bmatrix}\\), verify that \\(|AB| = |A||B|\\)."
+  },
+  {
+    "ref": "Misc 4B II Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A_{\\alpha} = \\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\), show that \\(A_{\\alpha} \\cdot A_{\\beta} = A_{\\alpha + \\beta}\\)."
+  },
+  {
+    "ref": "Misc 4B II Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} 1 & \\omega \\\\ \\omega^{2} & 1 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} \\omega^{2} & 1 \\\\ 1 & \\omega \\end{bmatrix}\\), where \\(\\omega\\) is a complex cube root of unity, then show that \\(AB + BA + A - 2B\\) is a null matrix."
+  },
+  {
+    "ref": "Misc 4B II Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 2 & -2 & -4 \\\\ -1 & 3 & 4 \\\\ 1 & -2 & -3 \\end{bmatrix}\\) show that \\(A^{2} = A\\)."
+  },
+  {
+    "ref": "Misc 4B II Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 4 & -1 & -4 \\\\ 3 & 0 & -4 \\\\ 3 & -1 & -3 \\end{bmatrix}\\), show that \\(A^{2} = I\\)."
+  },
+  {
+    "ref": "Misc 4B II Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 3 & -5 \\\\ -4 & 2 \\end{bmatrix}\\), show that \\(A^{2} - 5A - 14I = 0\\)."
+  },
+  {
+    "ref": "Misc 4B II Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 2 & -1 \\\\ -1 & 2 \\end{bmatrix}\\), show that \\(A^{2} - 4A + 3I = 0\\)."
+  },
+  {
+    "ref": "Misc 4B II Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} -3 & 2 \\\\ 2 & -4 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & x \\\\ y & 0 \\end{bmatrix}\\), and \\((A + B)(A - B) = A^{2} - B^{2}\\), find \\(x\\) and \\(y\\)."
+  },
+  {
+    "ref": "Misc 4B II Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 0 & -1 \\\\ 1 & 0 \\end{bmatrix}\\) show that \\((A + B)(A - B) \\ne A^{2} - B^{2}\\)."
+  },
+  {
+    "ref": "Misc 4B II Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "EASY",
+    "stem": "If \\(A = \\begin{bmatrix} 2 & -1 \\\\ 3 & -2 \\end{bmatrix}\\), find \\(A^{3}\\)."
+  },
+  {
+    "ref": "Misc 4B II Q19(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "context": "Find \\(x, y\\) if,",
+    "setLabel": "Misc 4B II Q19",
+    "stem": "\\(\\begin{bmatrix} 0 & -1 & 4 \\end{bmatrix}\\left\\{ 2\\begin{bmatrix} 4 & 5 \\\\ 3 & 6 \\\\ 2 & -1 \\end{bmatrix} + 3\\begin{bmatrix} 4 & 3 \\\\ 1 & 4 \\\\ 0 & -1 \\end{bmatrix} \\right\\} = \\begin{bmatrix} x & y \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Misc 4B II Q19(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "context": "Find \\(x, y\\) if,",
+    "setLabel": "Misc 4B II Q19",
+    "stem": "\\(\\left\\{ -1\\begin{bmatrix} 1 & 2 & 1 \\\\ 2 & 0 & 3 \\end{bmatrix} + 3\\begin{bmatrix} 2 & -3 & 7 \\\\ 1 & -1 & 3 \\end{bmatrix} \\right\\}\\begin{bmatrix} 5 \\\\ 0 \\\\ -1 \\end{bmatrix} = \\begin{bmatrix} x \\\\ y \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Misc 4B II Q20(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "context": "Find \\(x, y, z\\) if",
+    "setLabel": "Misc 4B II Q20",
+    "stem": "\\(\\left\\{ 5\\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\\\ 1 & 1 \\end{bmatrix} - 3\\begin{bmatrix} 2 & 1 \\\\ 3 & -2 \\\\ 1 & 3 \\end{bmatrix} \\right\\}\\begin{bmatrix} 2 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} x-1 \\\\ y+1 \\\\ 2z \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Misc 4B II Q20(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "MODERATE",
+    "context": "Find \\(x, y, z\\) if",
+    "setLabel": "Misc 4B II Q20",
+    "stem": "\\(\\left\\{ \\begin{bmatrix} 1 & 3 & 2 \\\\ 2 & 0 & 1 \\\\ 3 & 1 & 2 \\end{bmatrix} + 2\\begin{bmatrix} 3 & 0 & 2 \\\\ 1 & 4 & 5 \\\\ 2 & 1 & 0 \\end{bmatrix} \\right\\}\\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix} = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\)"
+  },
+  {
+    "ref": "Misc 4B II Q21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 2 & 1 & -3 \\\\ 0 & 2 & 6 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 0 & -2 \\\\ 3 & -1 & 4 \\end{bmatrix}\\), find \\(AB^{T}\\) and \\(A^{T}B\\)."
+  },
+  {
+    "ref": "Misc 4B II Q22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of the Transpose of a Matrix",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A = \\begin{bmatrix} 2 & -4 \\\\ 3 & -2 \\\\ 0 & 1 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & -1 & 2 \\\\ -2 & 1 & 0 \\end{bmatrix}\\), show that \\((AB)^{T} = B^{T}A^{T}\\)."
+  },
+  {
+    "ref": "Misc 4B II Q23",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} 3 & -4 \\\\ 1 & -1 \\end{bmatrix}\\), prove that \\(A^{n} = \\begin{bmatrix} 1 + 2n & -4n \\\\ n & 1 - 2n \\end{bmatrix}\\), for all \\(n \\in N\\)."
+  },
+  {
+    "ref": "Misc 4B II Q24",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Matrix Multiplication",
+    "difficulty": "HARD",
+    "stem": "If \\(A = \\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ -\\sin\\theta & \\cos\\theta \\end{bmatrix}\\), prove that \\(A^{n} = \\begin{bmatrix} \\cos n\\theta & \\sin n\\theta \\\\ -\\sin n\\theta & \\cos n\\theta \\end{bmatrix}\\), for all \\(n \\in N\\)."
+  },
+  {
+    "ref": "Misc 4B II Q25(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Two farmers Shantaram and Kantaram cultivate three crops rice, wheat and groundnut. The sale (In Rupees) of these crops by both the farmers for the month of April and may 2008 is given below,\n\nApril sale (In Rs.)\n\n| | Rice | Wheat | Groundnut |\n|---|---|---|---|\n| Shantaram | 15000 | 13000 | 12000 |\n| Kantaram | 18000 | 15000 | 8000 |\n\nMay sale (In Rs.)\n\n| | Rice | Wheat | Groundnut |\n|---|---|---|---|\n| Shantaram | 18000 | 15000 | 12000 |\n| Kantaram | 21000 | 16500 | 16000 |\n\nFind",
+    "setLabel": "Misc 4B II Q25",
+    "stem": "The total sale in rupees for two months of each farmer for each crop."
+  },
+  {
+    "ref": "Misc 4B II Q25(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Algebra of Matrices",
+    "difficulty": "MODERATE",
+    "context": "Two farmers Shantaram and Kantaram cultivate three crops rice, wheat and groundnut. The sale (In Rupees) of these crops by both the farmers for the month of April and may 2008 is given below,\n\nApril sale (In Rs.)\n\n| | Rice | Wheat | Groundnut |\n|---|---|---|---|\n| Shantaram | 15000 | 13000 | 12000 |\n| Kantaram | 18000 | 15000 | 8000 |\n\nMay sale (In Rs.)\n\n| | Rice | Wheat | Groundnut |\n|---|---|---|---|\n| Shantaram | 18000 | 15000 | 12000 |\n| Kantaram | 21000 | 16500 | 16000 |\n\nFind",
+    "setLabel": "Misc 4B II Q25",
+    "stem": "the increase in sale from April to May for every crop of each farmer."
+  }
+]

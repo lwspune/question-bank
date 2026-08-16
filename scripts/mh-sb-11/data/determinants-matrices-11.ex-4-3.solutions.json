@@ -1,0 +1,93 @@
+[
+  {
+    "id": "68914102-e6be-4923-8fa0-7e5444dfa75d",
+    "ref": "Ex 4.3 Q1(i)",
+    "solution": "\\(D = \\begin{vmatrix} 1 & 1 & 1 \\\\ 1 & -1 & 1 \\\\ 1 & 2 & -1 \\end{vmatrix} = 1(1-2) - 1(-1-1) + 1(2+1) = -1 + 2 + 3 = 4 \\ne 0\\), so Cramer's Rule applies.\n\n\\(D_x = \\begin{vmatrix} 6 & 1 & 1 \\\\ 2 & -1 & 1 \\\\ 2 & 2 & -1 \\end{vmatrix} = 6(1-2) - 1(-2-2) + 1(4+2) = -6 + 4 + 6 = 4\\)\n\n\\(D_y = \\begin{vmatrix} 1 & 6 & 1 \\\\ 1 & 2 & 1 \\\\ 1 & 2 & -1 \\end{vmatrix} = 1(-2-2) - 6(-1-1) + 1(2-2) = -4 + 12 + 0 = 8\\)\n\n\\(D_z = \\begin{vmatrix} 1 & 1 & 6 \\\\ 1 & -1 & 2 \\\\ 1 & 2 & 2 \\end{vmatrix} = 1(-2-4) - 1(2-2) + 6(2+1) = -6 - 0 + 18 = 12\\)\n\n\\(x = \\dfrac{D_x}{D} = \\dfrac{4}{4} = 1,\\quad y = \\dfrac{D_y}{D} = \\dfrac{8}{4} = 2,\\quad z = \\dfrac{D_z}{D} = \\dfrac{12}{4} = 3\\)\n\n\\(\\therefore x = 1,\\ y = 2,\\ z = 3\\)"
+  },
+  {
+    "id": "39e69787-72d7-4b5e-aa74-67b3b08b8115",
+    "ref": "Ex 4.3 Q1(ii)",
+    "solution": "\\(D = \\begin{vmatrix} 1 & 1 & -2 \\\\ 2 & 1 & -3 \\\\ 4 & 6 & 1 \\end{vmatrix} = 1(1+18) - 1(2+12) - 2(12-4) = 19 - 14 - 16 = -11 \\ne 0\\), so Cramer's Rule applies.\n\n\\(D_x = \\begin{vmatrix} -10 & 1 & -2 \\\\ -19 & 1 & -3 \\\\ 2 & 6 & 1 \\end{vmatrix} = -10(1+18) - 1(-19+6) - 2(-114-2) = -190 + 13 + 232 = 55\\)\n\n\\(D_y = \\begin{vmatrix} 1 & -10 & -2 \\\\ 2 & -19 & -3 \\\\ 4 & 2 & 1 \\end{vmatrix} = 1(-19+6) + 10(2+12) - 2(4+76) = -13 + 140 - 160 = -33\\)\n\n\\(D_z = \\begin{vmatrix} 1 & 1 & -10 \\\\ 2 & 1 & -19 \\\\ 4 & 6 & 2 \\end{vmatrix} = 1(2+114) - 1(4+76) - 10(12-4) = 116 - 80 - 80 = -44\\)\n\n\\(x = \\dfrac{55}{-11} = -5,\\quad y = \\dfrac{-33}{-11} = 3,\\quad z = \\dfrac{-44}{-11} = 4\\)\n\n\\(\\therefore x = -5,\\ y = 3,\\ z = 4\\)"
+  },
+  {
+    "id": "2d29c1f8-a847-48a4-b5b2-4c1b71e9a8b2",
+    "ref": "Ex 4.3 Q1(iii)",
+    "solution": "Write the system with all three variables: \\(x + 0y + z = 1,\\; 0x + y + z = 1,\\; x + y + 0z = 4\\).\n\n\\(D = \\begin{vmatrix} 1 & 0 & 1 \\\\ 0 & 1 & 1 \\\\ 1 & 1 & 0 \\end{vmatrix} = 1(0-1) - 0(0-1) + 1(0-1) = -1 - 0 - 1 = -2 \\ne 0\\)\n\n\\(D_x = \\begin{vmatrix} 1 & 0 & 1 \\\\ 1 & 1 & 1 \\\\ 4 & 1 & 0 \\end{vmatrix} = 1(0-1) - 0(0-4) + 1(1-4) = -1 - 0 - 3 = -4\\)\n\n\\(D_y = \\begin{vmatrix} 1 & 1 & 1 \\\\ 0 & 1 & 1 \\\\ 1 & 4 & 0 \\end{vmatrix} = 1(0-4) - 1(0-1) + 1(0-1) = -4 + 1 - 1 = -4\\)\n\n\\(D_z = \\begin{vmatrix} 1 & 0 & 1 \\\\ 0 & 1 & 1 \\\\ 1 & 1 & 4 \\end{vmatrix} = 1(4-1) - 0(0-1) + 1(0-1) = 3 - 0 - 1 = 2\\)\n\n\\(x = \\dfrac{-4}{-2} = 2,\\quad y = \\dfrac{-4}{-2} = 2,\\quad z = \\dfrac{2}{-2} = -1\\)\n\n\\(\\therefore x = 2,\\ y = 2,\\ z = -1\\)"
+  },
+  {
+    "id": "c55fd383-d4db-4d7e-88c6-e711d559c792",
+    "ref": "Ex 4.3 Q1(iv)",
+    "solution": "Put \\(p = \\dfrac{1}{x},\\ q = \\dfrac{1}{y},\\ r = \\dfrac{1}{z}\\). The system becomes linear in \\(p, q, r\\):\n\n\\(-2p - q - 3r = 3,\\quad 2p - 3q + r = -13,\\quad 2p + 0q - 3r = -11\\)\n\n\\(D = \\begin{vmatrix} -2 & -1 & -3 \\\\ 2 & -3 & 1 \\\\ 2 & 0 & -3 \\end{vmatrix} = -2(9-0) + 1(-6-2) - 3(0+6) = -18 - 8 - 18 = -44 \\ne 0\\)\n\n\\(D_p = \\begin{vmatrix} 3 & -1 & -3 \\\\ -13 & -3 & 1 \\\\ -11 & 0 & -3 \\end{vmatrix} = 3(9-0) + 1(39+11) - 3(0-33) = 27 + 50 + 99 = 176\\)\n\n\\(D_q = \\begin{vmatrix} -2 & 3 & -3 \\\\ 2 & -13 & 1 \\\\ 2 & -11 & -3 \\end{vmatrix} = -2(39+11) - 3(-6-2) - 3(-22+26) = -100 + 24 - 12 = -88\\)\n\n\\(D_r = \\begin{vmatrix} -2 & -1 & 3 \\\\ 2 & -3 & -13 \\\\ 2 & 0 & -11 \\end{vmatrix} = -2(33-0) + 1(-22+26) + 3(0+6) = -66 + 4 + 18 = -44\\)\n\n\\(p = \\dfrac{176}{-44} = -4,\\quad q = \\dfrac{-88}{-44} = 2,\\quad r = \\dfrac{-44}{-44} = 1\\)\n\nHence \\(x = \\dfrac{1}{p} = -\\dfrac{1}{4},\\quad y = \\dfrac{1}{q} = \\dfrac{1}{2},\\quad z = \\dfrac{1}{r} = 1\\)\n\n\\(\\therefore x = -\\dfrac{1}{4},\\ y = \\dfrac{1}{2},\\ z = 1\\)"
+  },
+  {
+    "id": "81bedef8-0676-486b-a772-50a5bb8ccb0b",
+    "ref": "Ex 4.3 Q2",
+    "solution": "Let the three numbers be \\(x, y, z\\). The three conditions give\n\n\\(x + y + z = 15,\\quad x - y + z = 5,\\quad 2x + y - z = 4\\)\n\n\\(D = \\begin{vmatrix} 1 & 1 & 1 \\\\ 1 & -1 & 1 \\\\ 2 & 1 & -1 \\end{vmatrix} = 1(1-1) - 1(-1-2) + 1(1+2) = 0 + 3 + 3 = 6 \\ne 0\\)\n\n\\(D_x = \\begin{vmatrix} 15 & 1 & 1 \\\\ 5 & -1 & 1 \\\\ 4 & 1 & -1 \\end{vmatrix} = 15(1-1) - 1(-5-4) + 1(5+4) = 0 + 9 + 9 = 18\\)\n\n\\(D_y = \\begin{vmatrix} 1 & 15 & 1 \\\\ 1 & 5 & 1 \\\\ 2 & 4 & -1 \\end{vmatrix} = 1(-5-4) - 15(-1-2) + 1(4-10) = -9 + 45 - 6 = 30\\)\n\n\\(D_z = \\begin{vmatrix} 1 & 1 & 15 \\\\ 1 & -1 & 5 \\\\ 2 & 1 & 4 \\end{vmatrix} = 1(-4-5) - 1(4-10) + 15(1+2) = -9 + 6 + 45 = 42\\)\n\n\\(x = \\dfrac{18}{6} = 3,\\quad y = \\dfrac{30}{6} = 5,\\quad z = \\dfrac{42}{6} = 7\\)\n\n\\(\\therefore\\) the three numbers are \\(3,\\ 5,\\ 7\\)."
+  },
+  {
+    "id": "bf16f762-1a21-42b6-8960-8979a900cc98",
+    "ref": "Ex 4.3 Q3(i)",
+    "solution": "Three equations \\(a_ix + b_iy + c_i = 0\\) are consistent if \\(\\begin{vmatrix} a_1 & b_1 & c_1 \\\\ a_2 & b_2 & c_2 \\\\ a_3 & b_3 & c_3 \\end{vmatrix} = 0\\).\n\n\\(\\begin{vmatrix} 2 & -1 & 3 \\\\ 3 & 1 & -2 \\\\ 11 & 2 & -3 \\end{vmatrix} = 2(-3+4) + 1(-9+22) + 3(6-11) = 2 + 13 - 15 = 0\\)\n\nSince the determinant is \\(0\\), the equations are consistent.\n\n\\(\\therefore\\) the equations are consistent."
+  },
+  {
+    "id": "6e0d8f71-f3d3-4d37-bd2c-aed55de0cf53",
+    "ref": "Ex 4.3 Q3(ii)",
+    "solution": "Write every equation in the form \\(ax + by + c = 0\\): \\(2x + 3y - 4 = 0,\\; x + 2y - 3 = 0,\\; 3x + 4y + 5 = 0\\).\n\nThe equations are consistent only if \\(\\begin{vmatrix} a_1 & b_1 & c_1 \\\\ a_2 & b_2 & c_2 \\\\ a_3 & b_3 & c_3 \\end{vmatrix} = 0\\).\n\n\\(\\begin{vmatrix} 2 & 3 & -4 \\\\ 1 & 2 & -3 \\\\ 3 & 4 & 5 \\end{vmatrix} = 2(10+12) - 3(5+9) - 4(4-6) = 44 - 42 + 8 = 10\\)\n\nSince the determinant is \\(10 \\ne 0\\), the equations are not consistent.\n\n\\(\\therefore\\) the equations are not consistent.",
+    "_note": "Stem as printed: the middle equation is given as \\(x + 2y = 3\\) while its neighbours are in \\(\\dots = 0\\) form. Solved exactly as printed (i.e. \\(x + 2y - 3 = 0\\)); the solution opens by putting all three into the common form so the determinant test is well defined. Answer agrees with the book (Not Consistent)."
+  },
+  {
+    "id": "4169b1b9-2164-44d7-97cc-541be50ea27e",
+    "ref": "Ex 4.3 Q3(iii)",
+    "solution": "\\(\\begin{vmatrix} 1 & 2 & -3 \\\\ 7 & 4 & -11 \\\\ 2 & 4 & -6 \\end{vmatrix} = 1(-24+44) - 2(-42+22) - 3(28-8) = 20 + 40 - 60 = 0\\)\n\n(Indeed \\(R_3 = 2R_1\\), so the determinant vanishes.)\n\nSince the determinant is \\(0\\), the equations are consistent.\n\n\\(\\therefore\\) the equations are consistent."
+  },
+  {
+    "id": "0a9ba4cb-031b-4707-8174-3633816e6c9b",
+    "ref": "Ex 4.3 Q4(i)",
+    "solution": "The equations are consistent, so \\(\\begin{vmatrix} 2 & 3 & -2 \\\\ 2 & 4 & -k \\\\ 1 & -2 & 3k \\end{vmatrix} = 0\\).\n\nExpanding along the first row:\n\n\\(2(12k - 2k) - 3(6k + k) - 2(-4 - 4) = 0\\)\n\n\\(20k - 21k + 16 = 0\\)\n\n\\(-k + 16 = 0\\)\n\n\\(\\therefore k = 16\\)"
+  },
+  {
+    "id": "177e8785-7024-428a-9fab-90077f80495e",
+    "ref": "Ex 4.3 Q4(ii)",
+    "solution": "Writing \\(x + y = 0\\) as \\(x + y + 0 = 0\\), consistency requires \\(\\begin{vmatrix} k & 3 & 1 \\\\ 1 & 2 & 1 \\\\ 1 & 1 & 0 \\end{vmatrix} = 0\\).\n\nExpanding along the first row:\n\n\\(k(0 - 1) - 3(0 - 1) + 1(1 - 2) = 0\\)\n\n\\(-k + 3 - 1 = 0\\)\n\n\\(-k + 2 = 0\\)\n\n\\(\\therefore k = 2\\)"
+  },
+  {
+    "id": "ebea5a4f-3928-4346-ac55-42dbd7ee6335",
+    "ref": "Ex 4.3 Q5(i)",
+    "solution": "Area \\(= \\dfrac{1}{2}\\left| \\begin{vmatrix} x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\\\ x_3 & y_3 & 1 \\end{vmatrix} \\right|\\) with A\\((5, 8)\\), B\\((5, 0)\\), C\\((1, 0)\\):\n\n\\(\\begin{vmatrix} 5 & 8 & 1 \\\\ 5 & 0 & 1 \\\\ 1 & 0 & 1 \\end{vmatrix} = 5(0-0) - 8(5-1) + 1(0-0) = -32\\)\n\nArea \\(= \\dfrac{1}{2}\\left|-32\\right| = 16\\)\n\n\\(\\therefore\\) the area of the triangle is \\(16\\) sq. unit."
+  },
+  {
+    "id": "cd36a398-9fab-4d42-b5ef-7f8de08c305e",
+    "ref": "Ex 4.3 Q5(ii)",
+    "solution": "With P\\(\\left(\\dfrac{3}{2}, 1\\right)\\), Q\\((4, 2)\\), R\\(\\left(4, -\\dfrac{1}{2}\\right)\\):\n\n\\(\\begin{vmatrix} \\dfrac{3}{2} & 1 & 1 \\\\ 4 & 2 & 1 \\\\ 4 & -\\dfrac{1}{2} & 1 \\end{vmatrix} = \\dfrac{3}{2}\\left(2 + \\dfrac{1}{2}\\right) - 1(4 - 4) + 1(-2 - 8) = \\dfrac{3}{2}\\cdot\\dfrac{5}{2} - 0 - 10 = \\dfrac{15}{4} - 10 = -\\dfrac{25}{4}\\)\n\nArea \\(= \\dfrac{1}{2}\\left|-\\dfrac{25}{4}\\right| = \\dfrac{25}{8}\\)\n\n\\(\\therefore\\) the area of the triangle is \\(\\dfrac{25}{8}\\) sq. unit."
+  },
+  {
+    "id": "3654a08c-5a42-45b1-9737-244fa314ecc8",
+    "ref": "Ex 4.3 Q5(iii)",
+    "solution": "With M\\((0, 5)\\), N\\((-2, 3)\\), T\\((1, -4)\\):\n\n\\(\\begin{vmatrix} 0 & 5 & 1 \\\\ -2 & 3 & 1 \\\\ 1 & -4 & 1 \\end{vmatrix} = 0(3+4) - 5(-2-1) + 1(8-3) = 0 + 15 + 5 = 20\\)\n\nArea \\(= \\dfrac{1}{2}\\left|20\\right| = 10\\)\n\n\\(\\therefore\\) the area of the triangle is \\(10\\) sq. unit."
+  },
+  {
+    "id": "3b070769-3e9b-45ec-b2fb-e6aa04c50af4",
+    "ref": "Ex 4.3 Q6",
+    "solution": "Join the diagonal AC, so that quadrilateral ABCD splits into \\(\\triangle\\)ABC and \\(\\triangle\\)ACD.\n\nFor \\(\\triangle\\)ABC with A\\((-3, 1)\\), B\\((-2, -2)\\), C\\((3, -1)\\):\n\n\\(\\begin{vmatrix} -3 & 1 & 1 \\\\ -2 & -2 & 1 \\\\ 3 & -1 & 1 \\end{vmatrix} = -3(-2+1) - 1(-2-3) + 1(2+6) = 3 + 5 + 8 = 16\\), so area \\(= \\dfrac{1}{2}(16) = 8\\).\n\nFor \\(\\triangle\\)ACD with A\\((-3, 1)\\), C\\((3, -1)\\), D\\((1, 4)\\):\n\n\\(\\begin{vmatrix} -3 & 1 & 1 \\\\ 3 & -1 & 1 \\\\ 1 & 4 & 1 \\end{vmatrix} = -3(-1-4) - 1(3-1) + 1(12+1) = 15 - 2 + 13 = 26\\), so area \\(= \\dfrac{1}{2}(26) = 13\\).\n\nArea of quadrilateral ABCD \\(= 8 + 13 = 21\\)\n\n\\(\\therefore\\) the area of the quadrilateral is \\(21\\) sq. unit."
+  },
+  {
+    "id": "e0ce2b81-ccbe-419c-9ebe-17a4f3994ccf",
+    "ref": "Ex 4.3 Q7",
+    "solution": "With P\\((k, 0)\\), Q\\((2, 2)\\), R\\((4, 3)\\):\n\n\\(\\begin{vmatrix} k & 0 & 1 \\\\ 2 & 2 & 1 \\\\ 4 & 3 & 1 \\end{vmatrix} = k(2-3) - 0(2-4) + 1(6-8) = -k - 2\\)\n\nArea \\(= \\dfrac{1}{2}\\left|-k-2\\right| = \\dfrac{3}{2}\\), so \\(\\left|k+2\\right| = 3\\).\n\nHence \\(k + 2 = 3\\) or \\(k + 2 = -3\\).\n\n\\(\\therefore k = 1\\) or \\(k = -5\\)"
+  },
+  {
+    "id": "44e4c968-2a7e-4a6c-a88a-57535433bb92",
+    "ref": "Ex 4.3 Q8(i)",
+    "solution": "The points are collinear if \\(\\begin{vmatrix} x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\\\ x_3 & y_3 & 1 \\end{vmatrix} = 0\\).\n\nWith A\\((3, -1)\\), B\\((0, -3)\\), C\\((12, 5)\\):\n\n\\(\\begin{vmatrix} 3 & -1 & 1 \\\\ 0 & -3 & 1 \\\\ 12 & 5 & 1 \\end{vmatrix} = 3(-3-5) + 1(0-12) + 1(0+36) = -24 - 12 + 36 = 0\\)\n\nThe determinant is \\(0\\), so the triangle ABC has zero area.\n\n\\(\\therefore\\) the points A, B, C are collinear."
+  },
+  {
+    "id": "11a07962-c785-4756-8c9f-dcf69d452e2d",
+    "ref": "Ex 4.3 Q8(ii)",
+    "solution": "With P\\((3, -5)\\), Q\\((6, 1)\\), R\\((4, 2)\\):\n\n\\(\\begin{vmatrix} 3 & -5 & 1 \\\\ 6 & 1 & 1 \\\\ 4 & 2 & 1 \\end{vmatrix} = 3(1-2) + 5(6-4) + 1(12-4) = -3 + 10 + 8 = 15\\)\n\nThe determinant is \\(15 \\ne 0\\), so the three points form a triangle of area \\(\\dfrac{15}{2}\\) sq. unit.\n\n\\(\\therefore\\) the points P, Q, R are not collinear."
+  },
+  {
+    "id": "9ff63ad9-e22f-48e5-962a-c50b3f5752e4",
+    "ref": "Ex 4.3 Q8(iii)",
+    "solution": "With L\\(\\left(0, \\dfrac{1}{2}\\right)\\), M\\((2, -1)\\), N\\(\\left(-4, \\dfrac{7}{2}\\right)\\):\n\n\\(\\begin{vmatrix} 0 & \\dfrac{1}{2} & 1 \\\\ 2 & -1 & 1 \\\\ -4 & \\dfrac{7}{2} & 1 \\end{vmatrix} = 0\\left(-1 - \\dfrac{7}{2}\\right) - \\dfrac{1}{2}(2 + 4) + 1(7 - 4) = 0 - 3 + 3 = 0\\)\n\nThe determinant is \\(0\\), so the triangle LMN has zero area.\n\n\\(\\therefore\\) the points L, M, N are collinear."
+  }
+]

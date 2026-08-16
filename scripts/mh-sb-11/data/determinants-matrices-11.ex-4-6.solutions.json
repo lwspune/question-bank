@@ -1,0 +1,151 @@
+[
+  {
+    "id": "4f59c20c-3a13-4353-beca-5ecb8c8688a5",
+    "ref": "Ex 4.6 Q1(i)",
+    "solution": "The first matrix is of order \\(3 \\times 1\\) and the second of order \\(1 \\times 3\\), so the product is of order \\(3 \\times 3\\). Each entry is (row entry) \\(\\times\\) (column entry).\nRow 1 uses \\(3\\): \\(3(2),\\ 3(-4),\\ 3(3) = 6,\\ -12,\\ 9\\).\nRow 2 uses \\(2\\): \\(4,\\ -8,\\ 6\\). Row 3 uses \\(1\\): \\(2,\\ -4,\\ 3\\).\n\\(\\therefore \\begin{bmatrix} 3 \\\\ 2 \\\\ 1 \\end{bmatrix}\\begin{bmatrix} 2 & -4 & 3 \\end{bmatrix} = \\begin{bmatrix} 6 & -12 & 9 \\\\ 4 & -8 & 6 \\\\ 2 & -4 & 3 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "c8f55d8c-ede1-4556-9d9e-dc7414f673c8",
+    "ref": "Ex 4.6 Q1(ii)",
+    "solution": "Here a \\(1 \\times 3\\) matrix multiplies a \\(3 \\times 1\\) matrix, so the product is \\(1 \\times 1\\).\nThe single entry is \\(2(4) + (-1)(3) + 3(1) = 8 - 3 + 3 = 8\\).\n\\(\\therefore \\begin{bmatrix} 2 & -1 & 3 \\end{bmatrix}\\begin{bmatrix} 4 \\\\ 3 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} 8 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "0cd6c3d7-f35f-46ff-98fd-9b91db24dc19",
+    "ref": "Ex 4.6 Q2",
+    "solution": "\\(AB = \\begin{bmatrix} 1 & -3 \\\\ 4 & 2 \\end{bmatrix}\\begin{bmatrix} 4 & 1 \\\\ 3 & -2 \\end{bmatrix} = \\begin{bmatrix} 4 - 9 & 1 + 6 \\\\ 16 + 6 & 4 - 4 \\end{bmatrix} = \\begin{bmatrix} -5 & 7 \\\\ 22 & 0 \\end{bmatrix}\\)\n\\(BA = \\begin{bmatrix} 4 & 1 \\\\ 3 & -2 \\end{bmatrix}\\begin{bmatrix} 1 & -3 \\\\ 4 & 2 \\end{bmatrix} = \\begin{bmatrix} 4 + 4 & -12 + 2 \\\\ 3 - 8 & -9 - 4 \\end{bmatrix} = \\begin{bmatrix} 8 & -10 \\\\ -5 & -13 \\end{bmatrix}\\)\nThe corresponding entries differ (for instance \\((1,1)\\): \\(-5 \\ne 8\\)).\n\\(\\therefore AB \\ne BA\\)"
+  },
+  {
+    "id": "31e93ae8-dc19-45af-b409-2e3d60bf86be",
+    "ref": "Ex 4.6 Q3",
+    "solution": "\\(AB = \\begin{bmatrix} -1 & 1 & 1 \\\\ 2 & 3 & 0 \\\\ 1 & -3 & 1 \\end{bmatrix}\\begin{bmatrix} 2 & 1 & 4 \\\\ 3 & 0 & 2 \\\\ 1 & 2 & 1 \\end{bmatrix} = \\begin{bmatrix} 2 & 1 & -1 \\\\ 13 & 2 & 14 \\\\ -6 & 3 & -1 \\end{bmatrix}\\)\n(e.g. entry \\((1,1) = -1(2) + 1(3) + 1(1) = 2\\).)\n\\(BA = \\begin{bmatrix} 2 & 1 & 4 \\\\ 3 & 0 & 2 \\\\ 1 & 2 & 1 \\end{bmatrix}\\begin{bmatrix} -1 & 1 & 1 \\\\ 2 & 3 & 0 \\\\ 1 & -3 & 1 \\end{bmatrix} = \\begin{bmatrix} 4 & -7 & 6 \\\\ -1 & -3 & 5 \\\\ 4 & 4 & 2 \\end{bmatrix}\\)\nThe two products are not equal (entry \\((1,1)\\): \\(2 \\ne 4\\)); matrix multiplication is not commutative in general.\n\\(\\therefore AB \\ne BA\\)"
+  },
+  {
+    "id": "b951db38-de39-44be-9d4f-e4cff8f7874f",
+    "ref": "Ex 4.6 Q4(i)",
+    "solution": "\\(AB = \\begin{bmatrix} -2 & 3 & -1 \\\\ -1 & 2 & -1 \\\\ -6 & 9 & -4 \\end{bmatrix}\\begin{bmatrix} 1 & 3 & -1 \\\\ 2 & 2 & -1 \\\\ 3 & 0 & -1 \\end{bmatrix}\\). Entry \\((1,1) = -2(1) + 3(2) + (-1)(3) = 1\\), \\((1,2) = -6 + 6 + 0 = 0\\), \\((1,3) = 2 - 3 + 1 = 0\\); continuing likewise,\n\\(AB = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} = I\\).\n\\(BA = \\begin{bmatrix} 1 & 3 & -1 \\\\ 2 & 2 & -1 \\\\ 3 & 0 & -1 \\end{bmatrix}\\begin{bmatrix} -2 & 3 & -1 \\\\ -1 & 2 & -1 \\\\ -6 & 9 & -4 \\end{bmatrix}\\); entry \\((1,1) = -2 - 3 + 6 = 1\\), \\((1,2) = 3 + 6 - 9 = 0\\), \\((1,3) = -1 - 3 + 4 = 0\\); continuing likewise, \\(BA = I\\).\n\\(\\therefore AB = BA = I\\)"
+  },
+  {
+    "id": "85808d08-4746-4817-8ab5-c5919fae4d88",
+    "ref": "Ex 4.6 Q4(ii)",
+    "solution": "Take the rotation matrices \\(A = \\begin{bmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{bmatrix}\\), \\(B = \\begin{bmatrix} \\cos\\phi & -\\sin\\phi \\\\ \\sin\\phi & \\cos\\phi \\end{bmatrix}\\).\n\\(AB = \\begin{bmatrix} \\cos\\theta\\cos\\phi - \\sin\\theta\\sin\\phi & -\\cos\\theta\\sin\\phi - \\sin\\theta\\cos\\phi \\\\ \\sin\\theta\\cos\\phi + \\cos\\theta\\sin\\phi & -\\sin\\theta\\sin\\phi + \\cos\\theta\\cos\\phi \\end{bmatrix} = \\begin{bmatrix} \\cos(\\theta+\\phi) & -\\sin(\\theta+\\phi) \\\\ \\sin(\\theta+\\phi) & \\cos(\\theta+\\phi) \\end{bmatrix}\\)\nInterchanging \\(\\theta\\) and \\(\\phi\\) gives \\(BA = \\begin{bmatrix} \\cos(\\phi+\\theta) & -\\sin(\\phi+\\theta) \\\\ \\sin(\\phi+\\theta) & \\cos(\\phi+\\theta) \\end{bmatrix}\\), and \\(\\theta + \\phi = \\phi + \\theta\\).\n\\(\\therefore AB = BA = \\begin{bmatrix} \\cos(\\theta+\\phi) & -\\sin(\\theta+\\phi) \\\\ \\sin(\\theta+\\phi) & \\cos(\\theta+\\phi) \\end{bmatrix}\\)",
+    "_note": "The printed A carries BOTH sines positive, \\(\\begin{bmatrix} \\cos\\theta & \\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{bmatrix}\\), while B correctly carries \\(-\\sin\\phi\\). With A as printed the claim is FALSE: e.g. the \\((1,2)\\) entry of AB is \\(-\\cos\\theta\\sin\\phi + \\sin\\theta\\cos\\phi = \\sin(\\theta-\\phi)\\) whereas that of BA is \\(\\cos\\phi\\sin\\theta - \\sin\\phi\\cos\\theta\\)... in fact the \\((1,1)\\) entries already differ: \\(\\cos\\theta\\cos\\phi + \\sin\\theta\\sin\\phi\\) vs \\(\\cos\\phi\\cos\\theta - \\sin\\phi\\sin\\theta\\). Solved for the intended rotation form \\(A = \\begin{bmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{bmatrix}\\), which is the form the same book prints in Q.23 and in Ex 4.7 Q.14. The book prints no key for this item."
+  },
+  {
+    "id": "91a737a1-881b-4b99-9692-c93c18fe6b66",
+    "ref": "Ex 4.6 Q5",
+    "solution": "\\(A^{2} = \\begin{bmatrix} 4 & 8 \\\\ -2 & -4 \\end{bmatrix}\\begin{bmatrix} 4 & 8 \\\\ -2 & -4 \\end{bmatrix}\\)\n\\(= \\begin{bmatrix} 16 - 16 & 32 - 32 \\\\ -8 + 8 & -16 + 16 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}\\)\n\\(\\therefore A^{2} = O\\), the null matrix of order 2."
+  },
+  {
+    "id": "5364c15d-bd70-4527-92ab-4810e90b361f",
+    "ref": "Ex 4.6 Q6(i)",
+    "solution": "\\(AB = \\begin{bmatrix} 1 & 0 & 1 \\\\ 2 & 3 & 0 \\\\ 0 & 4 & 5 \\end{bmatrix}\\begin{bmatrix} 2 & -2 \\\\ -1 & 1 \\\\ 0 & 3 \\end{bmatrix} = \\begin{bmatrix} 2 & 1 \\\\ 1 & -1 \\\\ -4 & 19 \\end{bmatrix}\\), so\n\\((AB)C = \\begin{bmatrix} 2 & 1 \\\\ 1 & -1 \\\\ -4 & 19 \\end{bmatrix}\\begin{bmatrix} 3 & 2 & -1 \\\\ 2 & 0 & -2 \\end{bmatrix} = \\begin{bmatrix} 8 & 4 & -4 \\\\ 1 & 2 & 1 \\\\ 26 & -8 & -34 \\end{bmatrix}\\).\n\\(BC = \\begin{bmatrix} 2 & -2 \\\\ -1 & 1 \\\\ 0 & 3 \\end{bmatrix}\\begin{bmatrix} 3 & 2 & -1 \\\\ 2 & 0 & -2 \\end{bmatrix} = \\begin{bmatrix} 2 & 4 & 2 \\\\ -1 & -2 & -1 \\\\ 6 & 0 & -6 \\end{bmatrix}\\), so\n\\(A(BC) = \\begin{bmatrix} 1 & 0 & 1 \\\\ 2 & 3 & 0 \\\\ 0 & 4 & 5 \\end{bmatrix}\\begin{bmatrix} 2 & 4 & 2 \\\\ -1 & -2 & -1 \\\\ 6 & 0 & -6 \\end{bmatrix} = \\begin{bmatrix} 8 & 4 & -4 \\\\ 1 & 2 & 1 \\\\ 26 & -8 & -34 \\end{bmatrix}\\).\n\\(\\therefore A(BC) = (AB)C = \\begin{bmatrix} 8 & 4 & -4 \\\\ 1 & 2 & 1 \\\\ 26 & -8 & -34 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "f196a244-baed-441a-b312-33e0033cb439",
+    "ref": "Ex 4.6 Q6(ii)",
+    "solution": "\\(AB = \\begin{bmatrix} 2 & 4 & 3 \\\\ -1 & 3 & 2 \\end{bmatrix}\\begin{bmatrix} 2 & -2 \\\\ 3 & 3 \\\\ -1 & 1 \\end{bmatrix} = \\begin{bmatrix} 13 & 11 \\\\ 5 & 13 \\end{bmatrix}\\), so\n\\((AB)C = \\begin{bmatrix} 13 & 11 \\\\ 5 & 13 \\end{bmatrix}\\begin{bmatrix} 3 & 1 \\\\ 1 & 3 \\end{bmatrix} = \\begin{bmatrix} 50 & 46 \\\\ 28 & 44 \\end{bmatrix}\\).\n\\(BC = \\begin{bmatrix} 2 & -2 \\\\ 3 & 3 \\\\ -1 & 1 \\end{bmatrix}\\begin{bmatrix} 3 & 1 \\\\ 1 & 3 \\end{bmatrix} = \\begin{bmatrix} 4 & -4 \\\\ 12 & 12 \\\\ -2 & 2 \\end{bmatrix}\\), so\n\\(A(BC) = \\begin{bmatrix} 2 & 4 & 3 \\\\ -1 & 3 & 2 \\end{bmatrix}\\begin{bmatrix} 4 & -4 \\\\ 12 & 12 \\\\ -2 & 2 \\end{bmatrix} = \\begin{bmatrix} 50 & 46 \\\\ 28 & 44 \\end{bmatrix}\\).\n\\(\\therefore A(BC) = (AB)C = \\begin{bmatrix} 50 & 46 \\\\ 28 & 44 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "de11a3d6-e49f-4d37-b28e-fced5f33516d",
+    "ref": "Ex 4.6 Q7(i)",
+    "solution": "\\(B + C = \\begin{bmatrix} -1 & 1 \\\\ 3 & -2 \\end{bmatrix} + \\begin{bmatrix} 4 & 1 \\\\ 2 & -1 \\end{bmatrix} = \\begin{bmatrix} 3 & 2 \\\\ 5 & -3 \\end{bmatrix}\\), so\n\\(A(B+C) = \\begin{bmatrix} 4 & -2 \\\\ 2 & 3 \\end{bmatrix}\\begin{bmatrix} 3 & 2 \\\\ 5 & -3 \\end{bmatrix} = \\begin{bmatrix} 12 - 10 & 8 + 6 \\\\ 6 + 15 & 4 - 9 \\end{bmatrix} = \\begin{bmatrix} 2 & 14 \\\\ 21 & -5 \\end{bmatrix}\\).\n\\(AB = \\begin{bmatrix} -10 & 8 \\\\ 7 & -4 \\end{bmatrix}\\) and \\(AC = \\begin{bmatrix} 12 & 6 \\\\ 14 & -1 \\end{bmatrix}\\), so \\(AB + AC = \\begin{bmatrix} 2 & 14 \\\\ 21 & -5 \\end{bmatrix}\\).\n\\(\\therefore A(B+C) = AB + AC = \\begin{bmatrix} 2 & 14 \\\\ 21 & -5 \\end{bmatrix}\\)",
+    "_note": "The shared instruction prints \\(A(B+C) = AB + BC\\); the distributive law is \\(A(B+C) = AB + AC\\). Verified for the correct statement. As printed the claim is false here: \\(BC = \\begin{bmatrix} -2 & -2 \\\\ 8 & 5 \\end{bmatrix}\\), so \\(AB + BC = \\begin{bmatrix} -12 & 6 \\\\ 15 & 1 \\end{bmatrix} \\ne A(B+C)\\). The book prints no key for this item."
+  },
+  {
+    "id": "720a6fb4-a61b-4196-853d-5c8aaf350ad8",
+    "ref": "Ex 4.6 Q7(ii)",
+    "solution": "\\(B + C = \\begin{bmatrix} 1 & 0 \\\\ -2 & 3 \\\\ 4 & 3 \\end{bmatrix} + \\begin{bmatrix} 1 & 2 \\\\ -2 & 0 \\\\ 4 & -3 \\end{bmatrix} = \\begin{bmatrix} 2 & 2 \\\\ -4 & 3 \\\\ 8 & 0 \\end{bmatrix}\\), so\n\\(A(B+C) = \\begin{bmatrix} 1 & -1 & 3 \\\\ 2 & 3 & 2 \\end{bmatrix}\\begin{bmatrix} 2 & 2 \\\\ -4 & 3 \\\\ 8 & 0 \\end{bmatrix} = \\begin{bmatrix} 2 + 4 + 24 & 2 - 3 + 0 \\\\ 4 - 12 + 16 & 4 + 9 + 0 \\end{bmatrix} = \\begin{bmatrix} 30 & -1 \\\\ 8 & 13 \\end{bmatrix}\\).\n\\(AB = \\begin{bmatrix} 15 & 6 \\\\ 4 & 15 \\end{bmatrix}\\) and \\(AC = \\begin{bmatrix} 15 & -7 \\\\ 4 & -2 \\end{bmatrix}\\), so \\(AB + AC = \\begin{bmatrix} 30 & -1 \\\\ 8 & 13 \\end{bmatrix}\\).\n\\(\\therefore A(B+C) = AB + AC = \\begin{bmatrix} 30 & -1 \\\\ 8 & 13 \\end{bmatrix}\\)",
+    "_note": "The shared instruction prints \\(A(B+C) = AB + BC\\); the distributive law is \\(A(B+C) = AB + AC\\). Here the printed right-hand side is not merely wrong but undefined: B and C are both \\(3 \\times 2\\), so the product BC does not exist. Verified for the correct statement. The book prints no key for this item."
+  },
+  {
+    "id": "cc8d3aab-a9d6-4b90-ab0a-7faf49abdd7f",
+    "ref": "Ex 4.6 Q8",
+    "solution": "\\(AB = \\begin{bmatrix} 1 & -2 \\\\ 5 & 6 \\end{bmatrix}\\begin{bmatrix} 3 & -1 \\\\ 3 & 7 \\end{bmatrix} = \\begin{bmatrix} 3 - 6 & -1 - 14 \\\\ 15 + 18 & -5 + 42 \\end{bmatrix} = \\begin{bmatrix} -3 & -15 \\\\ 33 & 37 \\end{bmatrix}\\)\n\\(2I = \\begin{bmatrix} 2 & 0 \\\\ 0 & 2 \\end{bmatrix}\\)\n\\(\\therefore AB - 2I = \\begin{bmatrix} -3 - 2 & -15 - 0 \\\\ 33 - 0 & 37 - 2 \\end{bmatrix} = \\begin{bmatrix} -5 & -15 \\\\ 33 & 35 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "48932872-a488-44bc-9fc8-461cb084c54c",
+    "ref": "Ex 4.6 Q9",
+    "solution": "A is \\(2 \\times 3\\) and B is \\(3 \\times 2\\), so AB is a square matrix of order 2.\n\\(AB = \\begin{bmatrix} 4 & 3 & 2 \\\\ -1 & 2 & 0 \\end{bmatrix}\\begin{bmatrix} 1 & 2 \\\\ -1 & 0 \\\\ 1 & -2 \\end{bmatrix} = \\begin{bmatrix} 4 - 3 + 2 & 8 + 0 - 4 \\\\ -1 - 2 + 0 & -2 + 0 - 0 \\end{bmatrix} = \\begin{bmatrix} 3 & 4 \\\\ -3 & -2 \\end{bmatrix}\\)\n\\(|AB| = 3(-2) - 4(-3) = -6 + 12 = 6 \\ne 0\\).\n\\(\\therefore\\) AB is a non-singular matrix."
+  },
+  {
+    "id": "8fe105e3-9185-42d9-aeba-63e05d58e85b",
+    "ref": "Ex 4.6 Q10",
+    "solution": "Since \\(AI = IA = A\\), \\((A+I)(A-I) = A^{2} - AI + IA - I^{2} = A^{2} - I\\).\n\\(A^{2} = \\begin{bmatrix} 1 & 2 & 0 \\\\ 5 & 4 & 2 \\\\ 0 & 7 & -3 \\end{bmatrix}\\begin{bmatrix} 1 & 2 & 0 \\\\ 5 & 4 & 2 \\\\ 0 & 7 & -3 \\end{bmatrix} = \\begin{bmatrix} 11 & 10 & 4 \\\\ 25 & 40 & 2 \\\\ 35 & 7 & 23 \\end{bmatrix}\\)\n(e.g. entry \\((2,2) = 5(2) + 4(4) + 2(7) = 40\\).)\n\\(\\therefore (A+I)(A-I) = A^{2} - I = \\begin{bmatrix} 10 & 10 & 4 \\\\ 25 & 39 & 2 \\\\ 35 & 7 & 22 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "d9e42eb4-0e12-4269-8c44-cfdde7485646",
+    "ref": "Ex 4.6 Q11",
+    "solution": "\\(A^{2} = \\begin{bmatrix} \\alpha & 0 \\\\ 1 & 1 \\end{bmatrix}\\begin{bmatrix} \\alpha & 0 \\\\ 1 & 1 \\end{bmatrix} = \\begin{bmatrix} \\alpha^{2} & 0 \\\\ \\alpha + 1 & 1 \\end{bmatrix}\\)\nEquating with \\(B = \\begin{bmatrix} 1 & 0 \\\\ 2 & 1 \\end{bmatrix}\\): \\(\\alpha^{2} = 1\\) and \\(\\alpha + 1 = 2\\).\nThe second gives \\(\\alpha = 1\\), which also satisfies \\(\\alpha^{2} = 1\\) (the other root \\(\\alpha = -1\\) fails it).\n\\(\\therefore \\alpha = 1\\)"
+  },
+  {
+    "id": "7f8757e5-e8a8-41b3-8f84-e2faf2fe739e",
+    "ref": "Ex 4.6 Q12",
+    "solution": "\\(A^{2} = \\begin{bmatrix} 1 & 2 & 2 \\\\ 2 & 1 & 2 \\\\ 2 & 2 & 1 \\end{bmatrix}\\begin{bmatrix} 1 & 2 & 2 \\\\ 2 & 1 & 2 \\\\ 2 & 2 & 1 \\end{bmatrix} = \\begin{bmatrix} 9 & 8 & 8 \\\\ 8 & 9 & 8 \\\\ 8 & 8 & 9 \\end{bmatrix}\\)\n(e.g. entry \\((1,1) = 1 + 4 + 4 = 9\\), entry \\((1,2) = 2 + 2 + 4 = 8\\).)\n\\(4A = \\begin{bmatrix} 4 & 8 & 8 \\\\ 8 & 4 & 8 \\\\ 8 & 8 & 4 \\end{bmatrix}\\), so \\(A^{2} - 4A = \\begin{bmatrix} 5 & 0 & 0 \\\\ 0 & 5 & 0 \\\\ 0 & 0 & 5 \\end{bmatrix} = 5I\\).\nEvery off-diagonal entry is 0 and all diagonal entries are equal.\n\\(\\therefore A^{2} - 4A\\) is a scalar matrix, namely \\(5I\\)."
+  },
+  {
+    "id": "049dedc3-25aa-439d-8787-d61af2276d27",
+    "ref": "Ex 4.6 Q13",
+    "solution": "\\(A^{2} = \\begin{bmatrix} 1 & 0 \\\\ -1 & 7 \\end{bmatrix}\\begin{bmatrix} 1 & 0 \\\\ -1 & 7 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ -1 - 7 & 49 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ -8 & 49 \\end{bmatrix}\\)\n\\(A^{2} - 8A = \\begin{bmatrix} 1 & 0 \\\\ -8 & 49 \\end{bmatrix} - \\begin{bmatrix} 8 & 0 \\\\ -8 & 56 \\end{bmatrix} = \\begin{bmatrix} -7 & 0 \\\\ 0 & -7 \\end{bmatrix}\\)\nSo \\(A^{2} - 8A - kI = O\\) gives \\(\\begin{bmatrix} -7 - k & 0 \\\\ 0 & -7 - k \\end{bmatrix} = \\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}\\).\n\\(\\therefore k = -7\\)"
+  },
+  {
+    "id": "9c2b751d-ce0c-4356-b520-0bad14178806",
+    "ref": "Ex 4.6 Q14",
+    "solution": "\\(A + B = \\begin{bmatrix} 13 & 0 \\\\ 20 & -3 \\end{bmatrix}\\), so \\((A+B)^{2} = \\begin{bmatrix} 13 & 0 \\\\ 20 & -3 \\end{bmatrix}\\begin{bmatrix} 13 & 0 \\\\ 20 & -3 \\end{bmatrix} = \\begin{bmatrix} 169 & 0 \\\\ 200 & 9 \\end{bmatrix}\\).\nNext \\(A^{2} = \\begin{bmatrix} 104 & 52 \\\\ 130 & 65 \\end{bmatrix}\\), \\(AB = \\begin{bmatrix} 80 & -64 \\\\ 100 & -80 \\end{bmatrix}\\), \\(B^{2} = \\begin{bmatrix} -15 & 12 \\\\ -30 & 24 \\end{bmatrix}\\).\nAdding, \\(A^{2} + AB + B^{2} = \\begin{bmatrix} 104 + 80 - 15 & 52 - 64 + 12 \\\\ 130 + 100 - 30 & 65 - 80 + 24 \\end{bmatrix} = \\begin{bmatrix} 169 & 0 \\\\ 200 & 9 \\end{bmatrix}\\).\n(The identity holds here because \\(BA = \\begin{bmatrix} 40 - 40 & 20 - 20 \\\\ 80 - 80 & 40 - 40 \\end{bmatrix} = O\\), and \\((A+B)^{2} = A^{2} + AB + BA + B^{2}\\).)\n\\(\\therefore (A+B)^{2} = A^{2} + AB + B^{2} = \\begin{bmatrix} 169 & 0 \\\\ 200 & 9 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "bfd87118-f232-458c-bc46-2510c216a8e0",
+    "ref": "Ex 4.6 Q15",
+    "solution": "\\(A^{2} = \\begin{bmatrix} 3 & 1 \\\\ -1 & 2 \\end{bmatrix}\\begin{bmatrix} 3 & 1 \\\\ -1 & 2 \\end{bmatrix} = \\begin{bmatrix} 9 - 1 & 3 + 2 \\\\ -3 - 2 & -1 + 4 \\end{bmatrix} = \\begin{bmatrix} 8 & 5 \\\\ -5 & 3 \\end{bmatrix}\\)\n\\(5A = \\begin{bmatrix} 15 & 5 \\\\ -5 & 10 \\end{bmatrix}\\), \\(7I = \\begin{bmatrix} 7 & 0 \\\\ 0 & 7 \\end{bmatrix}\\)\n\\(A^{2} - 5A + 7I = \\begin{bmatrix} 8 - 15 + 7 & 5 - 5 + 0 \\\\ -5 + 5 + 0 & 3 - 10 + 7 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}\\)\n\\(\\therefore A^{2} - 5A + 7I = O\\)"
+  },
+  {
+    "id": "1aa7eae5-8302-4ed5-a286-a6dad0239dc6",
+    "ref": "Ex 4.6 Q16",
+    "solution": "\\(A + B = \\begin{bmatrix} 5 & 5 \\\\ -5 & 5 \\end{bmatrix}\\), \\(A - B = \\begin{bmatrix} 1 & 3 \\\\ -3 & 1 \\end{bmatrix}\\), so\n\\((A+B)(A-B) = \\begin{bmatrix} 5 - 15 & 15 + 5 \\\\ -5 - 15 & -15 + 5 \\end{bmatrix} = \\begin{bmatrix} -10 & 20 \\\\ -20 & -10 \\end{bmatrix}\\).\n\\(A^{2} = \\begin{bmatrix} -7 & 24 \\\\ -24 & -7 \\end{bmatrix}\\) and \\(B^{2} = \\begin{bmatrix} 3 & 4 \\\\ -4 & 3 \\end{bmatrix}\\), so \\(A^{2} - B^{2} = \\begin{bmatrix} -10 & 20 \\\\ -20 & -10 \\end{bmatrix}\\).\n(This works because these particular matrices commute: \\(AB = BA = \\begin{bmatrix} 2 & 11 \\\\ -11 & 2 \\end{bmatrix}\\).)\n\\(\\therefore (A+B)(A-B) = A^{2} - B^{2} = \\begin{bmatrix} -10 & 20 \\\\ -20 & -10 \\end{bmatrix}\\)"
+  },
+  {
+    "id": "8630b679-f229-4e09-8fae-2f6dadb48945",
+    "ref": "Ex 4.6 Q17",
+    "solution": "\\((A+B)^{2} = A^{2} + AB + BA + B^{2}\\), so the given condition reduces to \\(AB + BA = O\\).\n\\(AB = \\begin{bmatrix} 1 & 2 \\\\ -1 & -2 \\end{bmatrix}\\begin{bmatrix} 2 & a \\\\ -1 & b \\end{bmatrix} = \\begin{bmatrix} 0 & a + 2b \\\\ 0 & -(a + 2b) \\end{bmatrix}\\)\n\\(BA = \\begin{bmatrix} 2 & a \\\\ -1 & b \\end{bmatrix}\\begin{bmatrix} 1 & 2 \\\\ -1 & -2 \\end{bmatrix} = \\begin{bmatrix} 2 - a & 4 - 2a \\\\ -1 - b & -2 - 2b \\end{bmatrix}\\)\nEquating \\(AB + BA\\) to the null matrix: \\(2 - a = 0\\) and \\(-1 - b = 0\\), giving \\(a = 2\\), \\(b = -1\\); these also satisfy the remaining two entries, since \\(a + 2b = 0\\).\n\\(\\therefore a = 2,\\ b = -1\\)"
+  },
+  {
+    "id": "13cc3d2d-949b-4e36-b130-f356bc9c648b",
+    "ref": "Ex 4.6 Q18",
+    "solution": "A is \\(2 \\times 2\\) and B is \\(2 \\times 1\\), so X is \\(2 \\times 1\\); let \\(X = \\begin{bmatrix} x \\\\ y \\end{bmatrix}\\).\n\\(AX = \\begin{bmatrix} 1 & -2 \\\\ -2 & 1 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} x - 2y \\\\ -2x + y \\end{bmatrix} = \\begin{bmatrix} -3 \\\\ -1 \\end{bmatrix}\\)\nSo \\(x - 2y = -3\\) and \\(-2x + y = -1\\). Multiplying the first by 2 and adding: \\(-3y = -7\\), so \\(y = \\frac{7}{3}\\), and then \\(x = 2\\left(\\frac{7}{3}\\right) - 3 = \\frac{5}{3}\\).\n\\(\\therefore X = \\begin{bmatrix} \\frac{5}{3} \\\\ \\frac{7}{3} \\end{bmatrix}\\)"
+  },
+  {
+    "id": "d9070993-8273-4de5-b524-813201ee46c0",
+    "ref": "Ex 4.6 Q19",
+    "solution": "\\(A^{2} = \\begin{bmatrix} 3 & -2 \\\\ 4 & -2 \\end{bmatrix}\\begin{bmatrix} 3 & -2 \\\\ 4 & -2 \\end{bmatrix} = \\begin{bmatrix} 9 - 8 & -6 + 4 \\\\ 12 - 8 & -8 + 4 \\end{bmatrix} = \\begin{bmatrix} 1 & -2 \\\\ 4 & -4 \\end{bmatrix}\\)\n\\(kA - 2I = \\begin{bmatrix} 3k - 2 & -2k \\\\ 4k & -2k - 2 \\end{bmatrix}\\)\nEquating corresponding entries: \\(3k - 2 = 1\\) gives \\(k = 1\\), and \\(k = 1\\) also satisfies \\(-2k = -2\\), \\(4k = 4\\), \\(-2k - 2 = -4\\).\n\\(\\therefore k = 1\\)"
+  },
+  {
+    "id": "446dea47-46cd-4afa-9265-c97abfe600cb",
+    "ref": "Ex 4.6 Q20",
+    "solution": "First multiply the left two matrices:\n\\(\\begin{bmatrix} 1 & x & 1 \\end{bmatrix}\\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 3 & 2 & 5 \\end{bmatrix} = \\begin{bmatrix} 4 + 4x & 4 + 5x & 8 + 6x \\end{bmatrix}\\)\nNow multiply by the column matrix:\n\\((4 + 4x)(1) + (4 + 5x)(-2) + (8 + 6x)(3) = 4 + 4x - 8 - 10x + 24 + 18x = 20 + 12x\\)\nSetting this equal to 0: \\(12x = -20\\).\n\\(\\therefore x = -\\frac{5}{3}\\)"
+  },
+  {
+    "id": "36960244-d39c-4f1e-a2bd-b7ad9fa93173",
+    "ref": "Ex 4.6 Q21",
+    "solution": "\\(4\\begin{bmatrix} 2 & -1 & 3 \\\\ 1 & 0 & 2 \\end{bmatrix} - \\begin{bmatrix} 3 & -3 & 4 \\\\ 2 & 1 & 1 \\end{bmatrix} = \\begin{bmatrix} 8 - 3 & -4 + 3 & 12 - 4 \\\\ 4 - 2 & 0 - 1 & 8 - 1 \\end{bmatrix} = \\begin{bmatrix} 5 & -1 & 8 \\\\ 2 & -1 & 7 \\end{bmatrix}\\)\n\\(\\begin{bmatrix} 5 & -1 & 8 \\\\ 2 & -1 & 7 \\end{bmatrix}\\begin{bmatrix} 2 \\\\ -1 \\\\ 1 \\end{bmatrix} = \\begin{bmatrix} 10 + 1 + 8 \\\\ 4 + 1 + 7 \\end{bmatrix} = \\begin{bmatrix} 19 \\\\ 12 \\end{bmatrix}\\)\nEquating with \\(\\begin{bmatrix} x \\\\ y \\end{bmatrix}\\):\n\\(\\therefore x = 19,\\ y = 12\\)"
+  },
+  {
+    "id": "dc81ac5a-0bce-4a73-b9ee-711e76a5f991",
+    "ref": "Ex 4.6 Q22",
+    "solution": "\\(3\\begin{bmatrix} 2 & 0 \\\\ 0 & 2 \\\\ 2 & 2 \\end{bmatrix} - 4\\begin{bmatrix} 1 & 1 \\\\ -1 & 2 \\\\ 3 & 1 \\end{bmatrix} = \\begin{bmatrix} 6 - 4 & 0 - 4 \\\\ 0 + 4 & 6 - 8 \\\\ 6 - 12 & 6 - 4 \\end{bmatrix} = \\begin{bmatrix} 2 & -4 \\\\ 4 & -2 \\\\ -6 & 2 \\end{bmatrix}\\)\n\\(\\begin{bmatrix} 2 & -4 \\\\ 4 & -2 \\\\ -6 & 2 \\end{bmatrix}\\begin{bmatrix} 1 \\\\ 2 \\end{bmatrix} = \\begin{bmatrix} 2 - 8 \\\\ 4 - 4 \\\\ -6 + 4 \\end{bmatrix} = \\begin{bmatrix} -6 \\\\ 0 \\\\ -2 \\end{bmatrix}\\)\nEquating with \\(\\begin{bmatrix} x - 3 \\\\ y - 1 \\\\ 2z \\end{bmatrix}\\): \\(x - 3 = -6\\), \\(y - 1 = 0\\), \\(2z = -2\\).\n\\(\\therefore x = -3,\\ y = 1,\\ z = -1\\)"
+  },
+  {
+    "id": "d5b05141-6e6c-4d4b-a194-0d843f92a716",
+    "ref": "Ex 4.6 Q23",
+    "solution": "\\(A^{2} = \\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\begin{bmatrix} \\cos\\alpha & \\sin\\alpha \\\\ -\\sin\\alpha & \\cos\\alpha \\end{bmatrix}\\)\n\\(= \\begin{bmatrix} \\cos^{2}\\alpha - \\sin^{2}\\alpha & \\cos\\alpha\\sin\\alpha + \\sin\\alpha\\cos\\alpha \\\\ -\\sin\\alpha\\cos\\alpha - \\cos\\alpha\\sin\\alpha & -\\sin^{2}\\alpha + \\cos^{2}\\alpha \\end{bmatrix}\\)\nUsing \\(\\cos^{2}\\alpha - \\sin^{2}\\alpha = \\cos 2\\alpha\\) and \\(2\\sin\\alpha\\cos\\alpha = \\sin 2\\alpha\\):\n\\(\\therefore A^{2} = \\begin{bmatrix} \\cos 2\\alpha & \\sin 2\\alpha \\\\ -\\sin 2\\alpha & \\cos 2\\alpha \\end{bmatrix}\\)"
+  },
+  {
+    "id": "25c67b3a-935a-49eb-9e16-bf05406a2128",
+    "ref": "Ex 4.6 Q24",
+    "solution": "\\(AB = \\begin{bmatrix} 1 & 2 \\\\ 3 & 5 \\end{bmatrix}\\begin{bmatrix} 0 & 4 \\\\ 2 & -1 \\end{bmatrix} = \\begin{bmatrix} 4 & 2 \\\\ 10 & 7 \\end{bmatrix}\\), \\(BA = \\begin{bmatrix} 0 & 4 \\\\ 2 & -1 \\end{bmatrix}\\begin{bmatrix} 1 & 2 \\\\ 3 & 5 \\end{bmatrix} = \\begin{bmatrix} 12 & 20 \\\\ -1 & -1 \\end{bmatrix}\\).\nThe corresponding entries differ, so \\(AB \\ne BA\\).\nNow \\(|AB| = 4(7) - 2(10) = 8\\), while \\(|A| = 5 - 6 = -1\\) and \\(|B| = 0 - 8 = -8\\), so \\(|A| \\cdot |B| = (-1)(-8) = 8\\).\n\\(\\therefore AB \\ne BA\\), but \\(|AB| = |A| \\cdot |B| = 8\\)"
+  },
+  {
+    "id": "a80f031d-bd26-4f71-b142-f354cff8d37b",
+    "ref": "Ex 4.6 Q25",
+    "solution": "Write the quantities as a \\(2 \\times 2\\) matrix (rows: Jay, Ram; columns: pens, notebooks) and the prices as a column matrix.\n\\(\\begin{bmatrix} 4 & 8 \\\\ 5 & 12 \\end{bmatrix}\\begin{bmatrix} 6 \\\\ 10 \\end{bmatrix} = \\begin{bmatrix} 24 + 80 \\\\ 30 + 120 \\end{bmatrix} = \\begin{bmatrix} 104 \\\\ 150 \\end{bmatrix}\\)\n\\(\\therefore\\) Jay requires Rs. 104 and Ram requires Rs. 150.",
+    "_note": "The printed answer key labels this item Q.24 (\"Jay Rs.104 and Ram Rs.150\"), while the exercise numbers it Q.25 — the key's own numbering slips by one at the end of this exercise. Values match exactly; the earlier keyed items (Q.20, Q.21, Q.22) all align with our numbering, so only the key's last label is off."
+  }
+]
