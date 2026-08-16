@@ -1,0 +1,32 @@
+[
+  {
+    "ref": "6.1 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find the domain and range of \\(f(x) = \\sqrt{9 - x^2}\\).",
+    "solution": "\\(f(x) = \\sqrt{9 - x^2}\\) is defined for \\(9 - x^2 \\ge 0\\), i.e. \\(x^2 - 9 \\le 0\\) i.e. \\((x - 3)(x + 3) \\le 0\\)\n\nTherefore \\([-3, 3]\\) is domain of \\(f(x)\\). (Verify !)\n\nTo find range, let \\(\\sqrt{9 - x^2} = y\\)\n\nSince square root is always positive, so \\(y \\ge 0\\)   ...(I)\n\nAlso, on squaring we get \\(9 - x^2 = y^2\\)\n\nSince, \\(-3 \\le x \\le 3\\)\n\ni.e. \\(0 \\le x^2 \\le 9\\)\n\ni.e. \\(0 \\ge -x^2 \\ge -9\\)\n\ni.e. \\(9 \\ge 9 - x^2 \\ge 9 - 9\\)\n\ni.e. \\(9 \\ge 9 - x^2 \\ge 0\\)\n\ni.e. \\(3 \\ge \\sqrt{9 - x^2} \\ge 0\\)\n\n\\(\\therefore 3 \\ge y \\ge 0\\)   ...(II)\n\nFrom (I) and (II), \\(y \\in [0, 3]\\) is range of \\(f(x)\\).",
+    "_note": "Printed on p-07 (book p.113). The solution marker is the abbreviation 'Soln. :', not 'Solution :'. The solution STRADDLES the column break: it begins in the left column and its last five lines (from 'i.e. 9 >= 9 - x^2 >= 0' through 'From (I) and (II)...') are at the TOP of the right column of the same page. Book wording 'Since square root is always positive' is loose (non-negative is meant, and the book's own next line writes y >= 0); transcribed as printed."
+  },
+  {
+    "ref": "6.1 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find the domain of \\(f(x) = \\sqrt{x^3 - 8}\\).",
+    "solution": "\\(f(x)\\) is defined for \\(x^3 - 8 \\ge 0\\)\n\ni.e. \\(x^3 - 2^3 \\ge 0\\), \\((x - 2)(x^2 + 2x + 4) \\ge 0\\)\n\nIn \\(x^2 + 2x + 4\\), \\(a = 1 > 0\\) and \\(D = b^2 - 4ac = 2^2 - 4 \\times 1 \\times 4 = -12 < 0\\)\n\nTherefore, \\(x^2 + 2x + 4\\) is a positive quadratic.\n\ni.e. \\(x^2 + 2x + 4 > 0\\) for all \\(x\\)\n\nTherefore \\(x - 2 \\ge 0\\), \\(x \\ge 2\\) is the domain.\n\ni.e. Domain is \\(x \\in [2, \\infty)\\).",
+    "_note": "Printed on p-07 (book p.113), right column. Solution marker is 'Soln. :', not 'Solution :'. The stem is printed as 'Find the domain f (x) = ...' — the preposition 'of' is missing in the book; supplied here as it is unambiguous."
+  },
+  {
+    "ref": "6.1 SolvedEx.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "HARD",
+    "stem": "Find domain and range of the function \\(f(x) = \\frac{6 - 4x^2}{4x + 5}\\).",
+    "solution": "\\(f(x)\\) is defined for all \\(x \\in R\\) except when denominator is 0.\n\nSince, \\(4x + 5 = 0 \\Rightarrow x = -\\frac{5}{4}\\).\n\nSo Domain of \\(f(x)\\) is \\(R - \\left\\{-\\frac{5}{4}\\right\\}\\).\n\nTo find the range, let \\(y = \\frac{6 - 4x^2}{4x + 5}\\)\n\ni.e. \\(y(4x + 5) = 6 - 4x^2\\)\n\ni.e. \\(4x^2 + (4y)x + 5y - 6 = 0\\).\n\nThis is a quadratic equation in \\(x\\) with \\(y\\) as constant.\n\nSince \\(x \\in R - \\left\\{-\\frac{5}{4}\\right\\}\\), i.e. \\(x\\) is real, we get Solution if, \\(D = b^2 - 4ac \\ge 0\\)\n\ni.e. \\((4y)^2 - 4(4)(5y - 6) \\ge 0\\)\n\n\\(16y^2 - 16(5y - 6) \\ge 0\\)\n\n\\(y^2 - 5y + 6 \\ge 0\\)\n\n\\((y - 2)(y - 3) \\ge 0\\)\n\nTherefore \\(y \\le 2\\) or \\(y \\ge 3\\) (Verify!)\n\nRange of \\(f(x)\\) is \\((-\\infty, 2] \\cup [3, \\infty)\\).",
+    "_note": "Printed on p-08 (book p.114). MID-COLUMN / COLUMN-WISE BOUNDARY: the stem 'Ex. 8 :' is the LAST item in the left column and its entire printed solution sits in the RIGHT column of the same page. This example uses the full marker 'Solution :', unlike Ex. 6 and Ex. 7 on p-07 which use 'Soln. :'. Printed prose carries three spelling/grammar slips, corrected here: 'exccept' -> 'except', 'denominators is 0' -> 'denominator is 0'; the phrase 'we get Solution if, D = b^2 - 4ac >= 0' is printed exactly so (awkward but mathematically intended as 'the equation has a real solution if D >= 0') and is kept verbatim. Mathematics verified independently: D = 16(y^2 - 5y + 6) >= 0 gives y <= 2 or y >= 3, and x = -5/4 is never a root of 4x^2 + 4yx + 5y - 6 = 0 (it evaluates to 1/4), so the excluded point costs the range nothing — the printed range is correct."
+  }
+]

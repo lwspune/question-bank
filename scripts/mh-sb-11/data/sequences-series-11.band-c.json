@@ -1,0 +1,273 @@
+[
+  {
+    "ref": "2.4a SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "EASY",
+    "stem": "\\(1 + \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\frac{1}{16} + \\ldots\\)",
+    "solution": "here \\(a = 1\\), \\(r = \\frac{1}{2}\\), i.e. \\(|r| < 1\\)\n\n\\(\\therefore\\) Sum to infinity is given by\n\n\\(\\frac{a}{1-r} = \\frac{1}{1-\\left(\\frac{1}{2}\\right)} = \\frac{1}{\\left(\\frac{1}{2}\\right)} = 2\\)\n\n**Visual proof :** This can be visualised taking a rectangle of \\(2\\times 1\\) containing smaller rectangles of area \\(1, \\frac{1}{2}, \\frac{1}{4}, \\ldots\\) square units (Fig. 2.1). These rectangles are seen to be completely in the big rectangle and slowly fills up the big rectangle of area two square units.\n\nThat is \\(1 + \\frac{1}{2} + \\frac{1}{4} + \\ldots = 2\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. 2.1 (p-09, right column): a 2x1 rectangle tiled by nested rectangles of area 1, 1/2, 1/4, 1/8, 1/16 - the 'visual proof' that the series sums to 2. The figure belongs to the SOLUTION, not the stem; the question is answerable without it.",
+    "_note": "THEORY-EMBEDDED example inside the body of section 2.4, printed BEFORE the boxed SOLVED EXAMPLES banner on the same page. Given a separate ref prefix ('2.4 Theory SolvedEx.') because the bare '2.4 SolvedEx.<n>' namespace belongs to the banner block. DEFECT: the book prints no instruction verb - the stem as printed is just the series, with no 'find the sum'. The implied task (performed by the printed solution) is 'find the sum to infinity'. Transcribed exactly as printed rather than repaired."
+  },
+  {
+    "ref": "2.4 SolvedEx.1(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "EASY",
+    "context": "Determine whether the sum of all the terms in the series is finite. In case it is finite find it.",
+    "setLabel": "2.4 SolvedEx.1",
+    "stem": "\\(\\frac{1}{3}, \\frac{1}{3^{2}}, \\frac{1}{3^{3}}, \\ldots\\)",
+    "solution": "Here \\(a = \\frac{1}{3}\\), \\(|r| = \\left|\\frac{1}{3}\\right| = \\frac{1}{3} < 1\\)\n\n\\(\\therefore\\) Sum to infinite terms is finite.\n\n\\(S = \\frac{a}{1-r} = \\frac{\\left(\\frac{1}{3}\\right)}{1-\\left(\\frac{1}{3}\\right)} = \\frac{\\left(\\frac{1}{3}\\right)}{\\left(\\frac{2}{3}\\right)} = \\frac{1}{2}\\)"
+  },
+  {
+    "ref": "2.4 SolvedEx.1(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "MODERATE",
+    "context": "Determine whether the sum of all the terms in the series is finite. In case it is finite find it.",
+    "setLabel": "2.4 SolvedEx.1",
+    "stem": "\\(\\frac{3}{5}, \\frac{-9}{25}, \\frac{27}{125}, \\frac{-81}{625}, \\ldots\\)",
+    "solution": "Here \\(a = \\frac{3}{5}\\), \\(r = -\\frac{3}{5}\\), \\(|r| = \\left|\\frac{-3}{5}\\right| = \\frac{3}{5} < 1\\)\n\n\\(\\therefore\\) Sum to infinite terms is finite.\n\n\\(S = \\frac{a}{1-r} = \\frac{\\left(\\frac{3}{5}\\right)}{1-\\left(-\\frac{3}{5}\\right)} = \\frac{\\left(\\frac{3}{5}\\right)}{\\left(\\frac{8}{5}\\right)} = \\frac{3}{8}\\)"
+  },
+  {
+    "ref": "2.4 SolvedEx.1(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "EASY",
+    "context": "Determine whether the sum of all the terms in the series is finite. In case it is finite find it.",
+    "setLabel": "2.4 SolvedEx.1",
+    "stem": "\\(1, -3, 9, -27, 81, \\ldots\\)",
+    "solution": "Here \\(a = 1\\), \\(r = -3\\), \\(|r| = |-3| = 3 \\nless 1\\)\n\n\\(\\therefore\\) sum to infinity does not exist."
+  },
+  {
+    "ref": "2.4.1 SolvedEx.1(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Recurring Decimals as Rational Numbers",
+    "difficulty": "MODERATE",
+    "context": "Express the following recurring decimals as rational numbers, using the sum to infinite terms of a G.P.",
+    "setLabel": "2.4.1 SolvedEx.1",
+    "stem": "\\(0.66666\\ldots\\)",
+    "solution": "\\(0.66666\\ldots = 0.6 + 0.06 + 0.006 + \\ldots\\)\n\nthe terms are in G.P. with \\(a = 0.6\\), \\(|r| = |0.1| < 1\\)\n\n\\(\\therefore\\) Sum to infinite terms is finite and is\n\n\\(\\frac{a}{1-r} = \\frac{0.6}{1-0.1} = \\frac{0.6}{0.9} = \\frac{6}{9} = \\frac{2}{3}\\)",
+    "_note": "THEORY-EMBEDDED worked set inside section 2.4.1 (not inside a SOLVED EXAMPLES banner), labelled in the book as 'Ex i) / ii) / iii)' - one 'Ex' carrying three sub-items, hence one setLabel with three sub-item refs. The book prints NO instruction line for this set; the `context` above is taken from the section heading '2.4.1 Expressing recurring decimals as rational numbers' plus its lead-in sentence ('This can also be checked using G.P.'), not from a printed instruction."
+  },
+  {
+    "ref": "2.4.1 SolvedEx.1(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Recurring Decimals as Rational Numbers",
+    "difficulty": "MODERATE",
+    "context": "Express the following recurring decimals as rational numbers, using the sum to infinite terms of a G.P.",
+    "setLabel": "2.4.1 SolvedEx.1",
+    "stem": "\\(0.\\overline{46}\\)",
+    "solution": "\\(0.\\overline{46} = 0.46 + 0.0046 + 0.000046 + \\ldots\\)\n\nthe terms are in G.P. with \\(a = 0.46\\), \\(|r| = |0.01| < 1\\).\n\n\\(\\therefore\\) Sum to infinite terms is finite and is\n\n\\(\\frac{a}{1-r} = \\frac{0.46}{1-(0.01)} = \\frac{0.46}{0.99} = \\frac{46}{99}\\)"
+  },
+  {
+    "ref": "2.4.1 SolvedEx.1(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Recurring Decimals as Rational Numbers",
+    "difficulty": "MODERATE",
+    "context": "Express the following recurring decimals as rational numbers, using the sum to infinite terms of a G.P.",
+    "setLabel": "2.4.1 SolvedEx.1",
+    "stem": "\\(2.\\overline{5}\\)",
+    "solution": "[Textbook misprint (label only, value correct): the sub-item is \\(2.\\overline{5}\\) and the whole derivation is for \\(2.\\overline{5}\\), but the final line of the printed solution reads \\(2.\\overline{7} = 2 + \\dfrac{5}{9} = \\dfrac{23}{9}\\). The value is right — \\(\\dfrac{23}{9} = 2.5555\\ldots\\) — only the recurring digit in the label is wrong.]\n\n\\(2.\\overline{5} = 2 + 0.5 + 0.05 + 0.005 + 0.0005 + \\ldots\\)\n\nAfter the first term, the terms are in G.P. with \\(a = 0.5\\), \\(|r| = |0.1| < 1\\)\n\n\\(\\therefore\\) Sum to infinite terms is finite and is\n\n\\(\\frac{a}{1-r} = \\frac{0.5}{1-0.1} = \\frac{0.5}{0.9} = \\frac{5}{9}\\)\n\n\\(2.\\overline{7} = 2 + \\frac{5}{9} = \\frac{23}{9}\\)",
+    "_note": "BOOK MISPRINT, transcribed as printed. The sub-item is \\(2.\\overline{5}\\) and the whole derivation is for \\(2.\\overline{5}\\), but the final line of the printed solution reads \\(2.\\overline{7} = 2 + \\frac{5}{9} = \\frac{23}{9}\\). The VALUE is correct - \\(\\frac{23}{9} = 2.5555\\ldots = 2.\\overline{5}\\) - so only the recurring-decimal label on that last line is wrong (a 7 printed where a 5 belongs). Verified on p-10 right column at 3x zoom."
+  },
+  {
+    "ref": "Ex 2.3 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "EASY",
+    "context": "Determine whether the sum to infinity of the following G.P.s exist, if exists find them",
+    "setLabel": "Ex 2.3 Q1",
+    "stem": "\\(\\frac{1}{2}, \\frac{1}{4}, \\frac{1}{8}, \\frac{1}{16}, \\ldots\\)"
+  },
+  {
+    "ref": "Ex 2.3 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "EASY",
+    "context": "Determine whether the sum to infinity of the following G.P.s exist, if exists find them",
+    "setLabel": "Ex 2.3 Q1",
+    "stem": "\\(2, \\frac{4}{3}, \\frac{8}{9}, \\frac{16}{27}, \\ldots\\)"
+  },
+  {
+    "ref": "Ex 2.3 Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "MODERATE",
+    "context": "Determine whether the sum to infinity of the following G.P.s exist, if exists find them",
+    "setLabel": "Ex 2.3 Q1",
+    "stem": "\\(-3, 1, \\frac{-1}{3}, \\frac{1}{9}, \\ldots\\)"
+  },
+  {
+    "ref": "Ex 2.3 Q1(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "MODERATE",
+    "context": "Determine whether the sum to infinity of the following G.P.s exist, if exists find them",
+    "setLabel": "Ex 2.3 Q1",
+    "stem": "\\(\\frac{1}{5}, \\frac{-2}{5}, \\frac{4}{5}, \\frac{-8}{5}, \\frac{16}{5}, \\ldots\\)"
+  },
+  {
+    "ref": "Ex 2.3 Q1(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "EASY",
+    "context": "Determine whether the sum to infinity of the following G.P.s exist, if exists find them",
+    "setLabel": "Ex 2.3 Q1",
+    "stem": "\\(9, 8.1, 7.29, \\ldots\\)"
+  },
+  {
+    "ref": "Ex 2.3 Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Recurring Decimals as Rational Numbers",
+    "difficulty": "EASY",
+    "context": "Express the following recurring decimals as a rational number.",
+    "setLabel": "Ex 2.3 Q2",
+    "stem": "\\(0.\\overline{7}\\)"
+  },
+  {
+    "ref": "Ex 2.3 Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Recurring Decimals as Rational Numbers",
+    "difficulty": "MODERATE",
+    "context": "Express the following recurring decimals as a rational number.",
+    "setLabel": "Ex 2.3 Q2",
+    "stem": "\\(2.\\overline{4}\\)"
+  },
+  {
+    "ref": "Ex 2.3 Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Recurring Decimals as Rational Numbers",
+    "difficulty": "MODERATE",
+    "context": "Express the following recurring decimals as a rational number.",
+    "setLabel": "Ex 2.3 Q2",
+    "stem": "\\(2.3\\overline{5}\\)",
+    "_note": "The overbar is over the digit 5 ONLY (verified at 3x zoom), i.e. the number is \\(2.3555\\ldots\\), not \\(2.\\overline{35}\\)."
+  },
+  {
+    "ref": "Ex 2.3 Q2(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Recurring Decimals as Rational Numbers",
+    "difficulty": "MODERATE",
+    "context": "Express the following recurring decimals as a rational number.",
+    "setLabel": "Ex 2.3 Q2",
+    "stem": "\\(51.0\\overline{2}\\)",
+    "_note": "The overbar is over the digit 2 ONLY (verified at 3x zoom), i.e. the number is \\(51.0222\\ldots\\), not \\(51.\\overline{02}\\)."
+  },
+  {
+    "ref": "Ex 2.3 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "EASY",
+    "stem": "If the common ratio of a G.P. is \\(\\frac{2}{3}\\) and sum to infinity is 12. Find the first term."
+  },
+  {
+    "ref": "Ex 2.3 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "MODERATE",
+    "stem": "If the first term of the G.P. is 16 and its sum to infinity is \\(\\frac{96}{17}\\) find the common ratio.",
+    "_note": "SUSPECTED BOOK DEFECT - transcribed exactly as printed (denominator 17 confirmed at 3x zoom). As printed the data are inconsistent: \\(\\frac{a}{1-r} = \\frac{96}{17}\\) with \\(a = 16\\) gives \\(1-r = \\frac{16\\times 17}{96} = \\frac{17}{6}\\), so \\(r = -\\frac{11}{6}\\) and \\(|r| = \\frac{11}{6} > 1\\) - a G.P. for which the sum to infinity does not exist, contradicting the question's own premise. A denominator of 7 would be consistent: \\(\\frac{96}{7}\\) gives \\(r = -\\frac{1}{6}\\). CORROBORATION: the book's own printed ANSWERS section reportedly keys Exercise 2.3 questions 1, 2, 3, 6, 7, 8 and leaves Q4 UNKEYED - consistent with the key-setter being unable to produce an answer for it. Note Q5 is also unkeyed yet is perfectly well-posed (it yields \\(a = \\frac{15}{4}\\), \\(r = \\frac{1}{4}\\)), so 'unkeyed' alone is not proof of a defect; the arithmetic above is. Left as printed for the answer-key cross-check pass to adjudicate.",
+    "solution": "[Textbook misprint: as printed the data are self-contradictory. With \\(a = 16\\) and sum to infinity \\(\\dfrac{96}{17}\\), we get \\(1 - r = \\dfrac{16 \\times 17}{96} = \\dfrac{17}{6}\\), so \\(r = -\\dfrac{11}{6}\\) and \\(|r| > 1\\) — a G.P. whose sum to infinity does not exist, contradicting the question's own premise. With \\(\\dfrac{96}{7}\\) the arithmetic closes cleanly at \\(r = -\\dfrac{1}{6}\\), so the denominator is a misprint. Note the printed key repeats \\(-\\dfrac{11}{6}\\), i.e. it is consistent with the defective stem rather than correct.]"
+  },
+  {
+    "ref": "Ex 2.3 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "HARD",
+    "stem": "The sum of an infinite G.P. is 5 and the sum of the squares of these terms is 15 find the G.P."
+  },
+  {
+    "ref": "Ex 2.3 Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "EASY",
+    "context": "Find",
+    "setLabel": "Ex 2.3 Q6",
+    "stem": "\\(\\sum_{r=1}^{\\infty} 4(0.5)^{r}\\)"
+  },
+  {
+    "ref": "Ex 2.3 Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "MODERATE",
+    "context": "Find",
+    "setLabel": "Ex 2.3 Q6",
+    "stem": "\\(\\sum_{r=1}^{\\infty}\\left(-\\frac{1}{3}\\right)^{r}\\)"
+  },
+  {
+    "ref": "Ex 2.3 Q6(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "MODERATE",
+    "context": "Find",
+    "setLabel": "Ex 2.3 Q6",
+    "stem": "\\(\\sum_{r=0}^{\\infty}(-8)\\left(-\\frac{1}{2}\\right)^{r}\\)",
+    "_note": "The lower limit is \\(r = 0\\) here, unlike sub-items (i), (ii) and (iv) which start at 1 - verified at 3x zoom. That changes the first term, so the distinction is answer-affecting and must not be normalised away.",
+    "solution": "[Textbook inconsistency: this sub-item's summation is printed with lower limit \\(r = 0\\) (verified at high zoom), unlike its siblings (i), (ii) and (iv) which all start at \\(r = 1\\). The book's printed key, however, gives the sum FROM \\(r = 1\\), so the key and the stem disagree by exactly the \\(r = 0\\) term. The answer above follows the stem as printed; a reader working from the key should add back that term.]"
+  },
+  {
+    "ref": "Ex 2.3 Q6(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "EASY",
+    "context": "Find",
+    "setLabel": "Ex 2.3 Q6",
+    "stem": "\\(\\sum_{n=1}^{\\infty} 0.4^{n}\\)",
+    "_note": "The summation index is \\(n\\) here, not \\(r\\) as in the other three sub-items - transcribed as printed."
+  },
+  {
+    "ref": "Ex 2.3 Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "HARD",
+    "context": "The mid points of the sides of a square of side 1 are joined to form a new square. This procedure is repeated indefinitely. Find the sum of",
+    "setLabel": "Ex 2.3 Q7",
+    "stem": "the areas of all the squares"
+  },
+  {
+    "ref": "Ex 2.3 Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "HARD",
+    "context": "The mid points of the sides of a square of side 1 are joined to form a new square. This procedure is repeated indefinitely. Find the sum of",
+    "setLabel": "Ex 2.3 Q7",
+    "stem": "the perimeters of all the square",
+    "_note": "'all the square' is the book's own wording (singular), transcribed as printed."
+  },
+  {
+    "ref": "Ex 2.3 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Sum of Infinite Terms of a G.P.",
+    "difficulty": "HARD",
+    "stem": "A ball is dropped from a height of 10m. It bounces to a height of 6m, then 3.6m and so on. Find the total distance travelled by the ball.",
+    "solution": "[Textbook answer-key error: the printed key gives \\(25\\) m. The ball falls \\(10\\) m and thereafter each rebound height is travelled TWICE — once up and once down — so the total distance is \\(10 + 2\\left(\\dfrac{6}{1 - 0.6}\\right) = 10 + 30 = 40\\) m, confirmed by direct simulation. The key's \\(25 = 10 + \\dfrac{6}{1 - 0.6}\\) counts each rebound only once, i.e. the ball rises but never comes back down.]"
+  }
+]

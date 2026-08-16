@@ -309,7 +309,16 @@ class Canvas:
     def point(self, p):
         x, y = self.px(p["x"], p["y"])
         r = 4 * SS
-        self.d.ellipse([x - r, y - r, x + r, y + r], fill=(20, 20, 20))
+        # `open: true` draws a HOLLOW marker (white fill, dark outline). Needed for the
+        # step / greatest-integer / fractional-part / piecewise graphs in Functions,
+        # where the open-vs-closed endpoint IS the mathematical content: y = [x] on
+        # [1,2) is closed at x=1 and open at x=2, and drawing both filled asserts the
+        # function takes two values there. Default is unchanged and byte-identical.
+        if p.get("open"):
+            self.d.ellipse([x - r, y - r, x + r, y + r],
+                           fill=(255, 255, 255), outline=(20, 20, 20), width=max(1, SS))
+        else:
+            self.d.ellipse([x - r, y - r, x + r, y + r], fill=(20, 20, 20))
         if p.get("label"):
             dx = p.get("dx", 8) * SS; dy = p.get("dy", -18) * SS
             self.d.text((x + dx, y + dy), p["label"], font=self.f, fill=(20, 20, 20))
@@ -615,11 +624,47 @@ def build_app_derivatives_specs():
 
 
 # chapterId -> spec builder. Add an entry when a new chapter authors diagrams.
+def build_functions_specs():
+    """Ch.6 Functions — the two Miscellaneous questions whose ANSWER is a graph.
+
+    Only two rows in the whole chapter ask the student to DRAW: Misc II Q16
+    (f(x) = x + 5) and Q17 (f(x) = x^3 + 1). Every other figure in the chapter is
+    either theory illustration (no row) or an arrow diagram that is an INPUT to
+    its question, and those are cropped from the page by attach-images.ts rather
+    than rendered here.
+
+    Note the `open` marker added to Canvas.point for this chapter turned out NOT
+    to be needed: both graphs are continuous, so no endpoint is excluded. It stays
+    because the step / greatest-integer / fractional-part graphs elsewhere in this
+    book will need it, and it is a proven no-op for existing specs — but it is
+    honestly unused as of this chapter.
+    """
+    specs = []
+    # Q16 — y = x + 5 as a LINE (x - y + 5 = 0), so the renderer clips it to the
+    # viewport rather than stopping at an arbitrary domain endpoint.
+    specs.append(dict(
+        ref="Misc II Q16", xr=(-8, 4), yr=(-2, 8),
+        caption="f(x) = x + 5 : straight line, slope 1, y-intercept 5, x-intercept -5",
+        lines=[ln(1, -1, 5, "y = x + 5")],
+        points=[dict(x=0, y=5, label="(0, 5)", dx=8, dy=-20),
+                dict(x=-5, y=0, label="(-5, 0)", dx=-64, dy=4)]))
+    # Q17 — y = x^3 + 1 as a CURVE. Domain chosen so both the x-intercept and the
+    # point of inflection sit comfortably inside the viewport.
+    specs.append(dict(
+        ref="Misc II Q17", xr=(-2.4, 2.4), yr=(-6, 8),
+        caption="f(x) = x" + chr(0xB3) + " + 1 : cubic, inflection at (0, 1), x-intercept -1, increasing throughout",
+        curves=[dict(expr="x**3 + 1", dom=[-2.0, 1.9], label="y = x" + chr(0xB3) + " + 1")],
+        points=[dict(x=-1, y=0, label="(-1, 0)", dx=-62, dy=4),
+                dict(x=0, y=1, label="(0, 1)", dx=8, dy=-20)]))
+    return specs
+
+
 SPEC_BUILDERS = {
     "pair-lines-12": build_pair_lines_specs,
     "linear-prog-12": build_linear_prog_specs,
     "app-def-integration-12": build_app_integration_specs,
     "app-derivatives-12": build_app_derivatives_specs,
+    "functions-11": build_functions_specs,
 }
 
 

@@ -1,0 +1,374 @@
+[
+  {
+    "ref": "2.3.1a SolvedEx.1(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "context": "Find \\(n^{\\text{th}}\\) term of the following G.P.",
+    "setLabel": "2.3.1a SolvedEx.1",
+    "stem": "\\(3,\\ -6,\\ 12,\\ -24,\\ \\ldots\\)",
+    "solution": "Here \\(a = 3\\), \\(r = -2\\)\n\nSince \\(t_n = ar^{n-1} = 3(-2)^{n-1}\\)",
+    "_note": "Theory-embedded worked example under 2.3.1, printed BEFORE the boxed SOLVED EXAMPLES banner and carrying a printed worked answer but no 'Solution :' label. Scoped to 2.3.1a so it cannot collide with the boxed 2.3.1 block, following the shipped 9.1.1a / 4.5b device; sections.ts orders 2.3.1a before 2.3.1, which is the physical reading order."
+  },
+  {
+    "ref": "2.3.1a SolvedEx.1(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "context": "Find \\(n^{\\text{th}}\\) term of the following G.P.",
+    "setLabel": "2.3.1a SolvedEx.1",
+    "stem": "\\(5,\\ 1,\\ \\frac{1}{5},\\ \\frac{1}{25},\\ \\ldots\\)",
+    "solution": "Here \\(a = 5\\), \\(r = \\frac{1}{5}\\)\n\nSince \\(t_n = ar^{n-1} = 5\\left(\\frac{1}{5}\\right)^{n-1} = \\left(\\frac{1}{5}\\right)^{n-2}\\)",
+    "_note": "Theory-embedded worked example under 2.3.1, printed BEFORE the boxed SOLVED EXAMPLES banner and carrying a printed worked answer but no 'Solution :' label. Scoped to 2.3.1a so it cannot collide with the boxed 2.3.1 block, following the shipped 9.1.1a / 4.5b device; sections.ts orders 2.3.1a before 2.3.1, which is the physical reading order."
+  },
+  {
+    "ref": "2.3.1 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "MODERATE",
+    "stem": "Verify whether \\(1,\\ \\frac{-3}{2},\\ \\frac{9}{4},\\ \\frac{-27}{4},\\ \\ldots\\) is a G.P., if it is a G.P. Find its ninth term.",
+    "solution": "[Textbook misprint: the sequence's fourth term is printed \\(\\dfrac{-27}{4}\\). With \\(a = 1\\) and \\(r = -\\dfrac{3}{2}\\) the fourth term is \\(\\dfrac{-27}{8}\\), so AS PRINTED the given sequence is not a G.P. at all and the question contradicts the answer its own solution reaches. The book's working only ever uses the first three terms, which is why it never trips over the error.]\n\nHere \\(t_1 = 1\\), \\(t_2 = \\frac{-3}{2}\\), \\(t_3 = \\frac{9}{4}\\),\n\nConsider \\(\\frac{t_2}{t_1} = \\frac{\\frac{-3}{2}}{1} = \\frac{-3}{2}\\)\n\nand \\(\\frac{t_3}{t_2} = \\left(\\frac{9}{4}\\right)\\left(-\\frac{2}{3}\\right) = \\frac{-3}{2}\\)\n\nHere the ratio of any two consecutive terms is constant hence the given sequence is a G.P.\n\nNow \\(t_9 = ar^{9-1} = ar^8 = 1\\left(\\frac{-3}{2}\\right)^8\\)",
+    "_note": "TWO printed defects, both transcribed as printed. (1) STEM: the fourth term is printed \\(\\frac{-27}{4}\\); with \\(a=1\\) and \\(r=\\frac{-3}{2}\\) the fourth term is \\(\\frac{-27}{8}\\), so as printed the given sequence is NOT a G.P. and the question contradicts its own answer. Verified at 3x zoom on p-01 — the denominator really is 4. (2) SOLUTION: the book stops at \\(1\\left(\\frac{-3}{2}\\right)^8\\) and never evaluates it (the value is \\(\\frac{6561}{256}\\))."
+  },
+  {
+    "ref": "2.3.1 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "MODERATE",
+    "stem": "Which term of the sequence \\(\\sqrt{3},\\ 3,\\ 3\\sqrt{3},\\ \\ldots\\) is 243?",
+    "solution": "Here \\(a = \\sqrt{3}\\), \\(r = \\sqrt{3}\\), \\(t_n = 243\\)\n\nand \\(t_n = ar^{n-1}\\)\n\n\\(\\therefore ar^{n-1} = 243\\)\n\n\\(\\sqrt{3}\\cdot(\\sqrt{3})^{n-1} = 243 = 3^5\\)\n\n\\(\\therefore (\\sqrt{3})^n = 3^{\\frac{n}{2}} = 3^5\\)\n\n\\(\\therefore \\frac{n}{2} = 5\\)\n\n\\(\\therefore n = 10\\)\n\n\\(\\therefore\\) Tenth term of the G.P. is 243."
+  },
+  {
+    "ref": "2.3.1 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "stem": "For a G.P. If \\(a = 3\\) and \\(t_7 = 192\\) find \\(r\\) and \\(t_{11}\\).",
+    "solution": "Given \\(a = 3\\), \\(t_7 = ar^{6} = 192\\)\n\n\\(\\therefore 3(r)^{6} = 192\\), \\(r^{6} = \\frac{192}{3} = 64\\)\n\n\\(\\therefore r^{6} = 2^{6}\\),\n\n\\(\\therefore r = 2\\).\n\nalso \\(t_{11} = ar^{10} = 3(2)^{10} = 3072\\).",
+    "_note": "FILL-IN-THE-BLANK Activity scaffold: in print, EIGHT values inside this solution are empty boxes (□) for the student to fill — the 3 in 'a = □', the 6 in 'ar^□', the 3 and 6 in '□(r)^□', the 6 in 'r^□ = 192/3', both 6s in 'r^□ = 2^□', the 10 in 'ar^□', the 10 in '3(2)^□', and the final answer '= □'. Blanks COMPLETED here (following the shipped Class-12 Ch.3 Indefinite Integration precedent) so the stored solution is a whole worked derivation rather than a hole. All filled values re-derived independently: 3r^6 = 192 gives r^6 = 64 = 2^6 so r = 2, and t_11 = 3 x 2^10 = 3072."
+  },
+  {
+    "ref": "2.3.1 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "MODERATE",
+    "stem": "In a G.P., if the third term is \\(\\frac{1}{5}\\) and sixth term is \\(\\frac{1}{625}\\), find its \\(n^{\\text{th}}\\) term.",
+    "solution": "Here \\(t_3 = \\frac{1}{5}\\), \\(t_6 = \\frac{1}{625}\\)\n\n\\(t_3 = ar^2 = \\frac{1}{5}\\)  …(1),\n\n\\(t_6 = ar^5 = \\frac{1}{625}\\)  …(2)\n\nDivide equation (2) by equation (1), we get\n\n\\(\\frac{ar^5}{ar^2} = \\frac{(1/625)}{(1/5)}\\)\n\n\\(r^3 = \\frac{1}{125} = \\frac{1}{5^3}\\)\n\n\\(\\therefore r = \\frac{1}{5}\\).\n\nSubstitute in equation (2), we get\n\n\\(a\\left(\\frac{1}{5}\\right)^2 = \\frac{1}{5}\\)\n\n\\(\\therefore a = 5\\).\n\n\\(t_n = ar^{n-1} = 5\\left(\\frac{1}{5}\\right)^{n-1} = 5\\times(5)^{1-n} = (5)^{2-n}\\).",
+    "_note": "Printed slip in the book's own solution, transcribed as printed: it says 'Substitute in equation (2)' but the line that follows, \\(a\\left(\\frac{1}{5}\\right)^2 = \\frac{1}{5}\\), is equation (1), not (2). The value \\(a = 5\\) that it reaches is correct."
+  },
+  {
+    "ref": "2.3.1 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "MODERATE",
+    "stem": "If for a sequence \\(\\{t_n\\}\\), \\(t_n = \\frac{5^{n-2}}{4^{n-3}}\\) show that the sequence is a G.P. Find its first term and the common ratio.",
+    "solution": "[Textbook misprint (typesetting only): the \"Consider\" line prints the numerator as \\(t_n + 1\\), with the \\(+1\\) set at baseline, where \\(t_{n+1}\\) is meant — the line two above prints \\(t_{n+1}\\) correctly, and the working that follows is that of \\(\\dfrac{t_{n+1}}{t_n}\\).]\n\n\\(t_n = \\frac{5^{n-2}}{4^{n-3}}\\)\n\n\\(\\therefore t_{n+1} = \\frac{5^{n-1}}{4^{n-2}}\\)\n\nConsider \\(\\frac{t_{n+1}}{t_n} = \\frac{\\frac{5^{n-1}}{4^{n-2}}}{\\frac{5^{n-2}}{4^{n-3}}} = \\frac{5^{n-1}}{4^{n-2}} \\times \\frac{4^{n-3}}{5^{n-2}}\\)\n\n\\(\\frac{5^{n-1-n+2}}{4^{n-2-n+3}} = \\frac{5}{4}\\) = constant, \\(\\forall\\ n \\in N\\).\n\nThe given sequence is a G.P. with \\(r = \\frac{5}{4}\\).\n\nand \\(t_1 = \\frac{16}{5}\\).",
+    "_note": "Subscript misprint in the book's solution: the 'Consider' line prints the numerator as \\(t_n + 1\\) (the +1 set at baseline) where \\(t_{n+1}\\) is meant — the line two above it correctly prints \\(t_{n+1}\\), and the working that follows is that of \\(t_{n+1}/t_n\\). Transcribed as \\(t_{n+1}\\)."
+  },
+  {
+    "ref": "2.3.1 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "MODERATE",
+    "stem": "Find three numbers in G.P. such that their sum is 42 and their product is 1728.",
+    "solution": "Let the three numbers in G.P. be \\(\\frac{a}{r}\\), \\(a\\), \\(ar\\).\n\nAs their product is 1728\n\n\\(\\frac{a}{r}\\cdot a\\cdot ar = 1728\\)\n\n\\(\\therefore a^3 = 1728 = (12)^3\\)\n\n\\(\\therefore a = 12\\).\n\nAccording to first condition, their sum is 42\n\n\\(\\therefore \\frac{a}{r} + a + ar = 42\\)\n\n\\(\\therefore \\frac{12}{r} + 12 + 12r = 42\\)\n\n\\(\\therefore \\frac{12}{r} + 12r = 30\\)\n\nMultiply by \\(r\\)\n\n\\(\\therefore 12 + 12r^2 = 30r\\)\n\n\\(\\therefore 12r^2 - 30r + 12 = 0\\)\n\nDividing by 6, we get\n\n\\(\\therefore 2r^2 - 5r + 2 = 0\\)\n\n\\(\\therefore (2r-1)(r-2) = 0\\)\n\n\\(\\therefore 2r = 1\\) or \\(r = 2\\)\n\n\\(\\therefore r = \\frac{1}{2}\\), \\(r = 2\\)\n\nIf \\(a = 12\\), \\(r = \\frac{1}{2}\\) then the required numbers are 24, 12, 6.\n\nIf \\(a = 12\\), \\(r = 2\\) then the required numbers are 6, 12, 24.\n\n\\(\\therefore\\) 24, 12, 6 or 6, 12, 24 are the three required numbers in G.P."
+  },
+  {
+    "ref": "2.3.1 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "HARD",
+    "stem": "Find four numbers in G. P. such that their product is 64 and sum of the second and third number is 6.",
+    "solution": "Let the four numbers be \\(\\frac{a}{r^3}\\), \\(\\frac{a}{r}\\), \\(ar\\), \\(ar^3\\) (common ratio is \\(r^2\\))\n\nAccording to the first condition\n\n\\(\\frac{a}{r^3} \\times \\frac{a}{r} \\times ar \\times ar^3 = 64\\)\n\n\\(\\therefore a^4 = 64\\)\n\n\\(\\therefore a = (2^6)^{1/4} = 2^{3/2}\\)\n\n\\(\\therefore a = 2\\sqrt{2}\\).\n\nNow using second condition \\(\\frac{a}{r} + ar = 6\\)\n\n\\(\\frac{2\\sqrt{2}}{r} + 2\\sqrt{2}r = 6\\).\n\nMultiplying by \\(r\\),\n\n\\(2\\sqrt{2} + 2\\sqrt{2}\\,r^2 = 6r\\)\n\nDividing by 2\n\n\\(\\sqrt{2} + \\sqrt{2}\\,r^2 = 3r\\)\n\n\\(\\sqrt{2}\\,r^2 - 3r + \\sqrt{2} = 0\\),\n\n\\(\\sqrt{2}\\,r^2 - 2r - r + \\sqrt{2} = 0\\),\n\n\\(\\sqrt{2}\\,r(r - \\sqrt{2}) - 1(r - \\sqrt{2}) = 0\\).\n\n\\((r - \\sqrt{2})(\\sqrt{2}\\,r - 1) = 0\\).\n\n\\(r = \\sqrt{2}\\) or \\(r = \\frac{1}{\\sqrt{2}}\\).\n\nIf \\(a = 2\\sqrt{2}\\), \\(r = \\sqrt{2}\\) then 1, 2, 4, 8 are the four required numbers in G.P.\n\nIf \\(a = 2\\sqrt{2}\\), \\(r = \\frac{1}{\\sqrt{2}}\\) then 8, 4, 2, 1 are the four required numbers in G.P."
+  },
+  {
+    "ref": "2.3.1 SolvedEx.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "HARD",
+    "stem": "If p, q, r, s are in G.P. then show that \\((q-r)^2 + (r-p)^2 + (s-q)^2 = (p-s)^2\\)",
+    "solution": "Since, p, q, r, s are in G.P. \\(\\frac{q}{p} = \\frac{r}{q} = \\frac{s}{r}\\)\n\n\\(\\therefore q^2 = pr\\), \\(r^2 = qs\\), \\(qr = ps\\)\n\nconsider L.H.S. \\(= (q-r)^2 + (r-p)^2 + (s-q)^2\\)\n\n\\(= q^2 - 2qr + r^2 + r^2 - 2rp + p^2 + s^2 - 2sq + q^2\\)\n\n\\(= pr - 2qr + qs + qs - 2rp + p^2 + s^2 - 2sq + pr\\)\n\n\\(= -2qr + p^2 + s^2 = -2ps + p^2 + s^2\\)  (\\(\\because qr = ps\\))\n\n\\(= (p-s)^2 =\\) R.H.S."
+  },
+  {
+    "ref": "2.3.1 SolvedEx.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "MODERATE",
+    "stem": "Shraddha deposited Rs. 8000 in a bank which pays annual interest rate of 8%. She kept it with the bank for 10 years with compound interest. Find the total amount she will receive after 10 years. [given \\((1.08)^{10} = 2.1575\\)]",
+    "solution": "The Amount deposited in a bank is Rs 8000 with 8% compound interest.\n\nEach year, the ratio of the amount to the principal to that year is constant \\(= \\frac{108}{100}\\)\n\nHence we get a G.P. of successive amounts.\n\nWe consider the amount at the end of each year for Rs 100, the amount is 108.\n\nThe ratio of \\(\\frac{\\text{amount}}{\\text{principal}} = \\frac{108}{100}\\).\n\nFor \\(P = 8000\\),\n\nthe amount after 1 year is\n\n\\(8000 + 8000 \\times \\frac{8}{100} = 8000\\left(1 + \\frac{8}{100}\\right) = 8000 \\times \\frac{108}{100}\\)\n\nthe amount after 2 years is \\(8000 \\times \\frac{108}{100} \\times \\frac{108}{100} = 8000 \\times \\left(\\frac{108}{100}\\right)^2\\)\n\nthe amount after 3 years is \\(8000 \\times \\frac{108}{100} \\times \\frac{108}{100} \\times \\frac{108}{100} = 8000 \\times \\left(\\frac{108}{100}\\right)^3\\).\n\nTherefore after 10 years the amount is\n\n\\(= 8000\\left(\\frac{108}{100}\\right)^{10} = 8000(1.08)^{10} = 8000 \\times 2.1575 = 17260\\).\n\nThus Shraddha will get Rs 17260 after 10 years.\n\nThe formula to find amount by compound interest is\n\n\\(A = P\\left(1 + \\frac{R}{100}\\right)^{N}\\)\n\n\\(\\therefore \\frac{A}{P} = \\left(1 + \\frac{R}{100}\\right)^{N}\\)\n\nNote that, \\(\\left(1 + \\frac{R}{100}\\right)^{N}\\) is a G.P."
+  },
+  {
+    "ref": "Ex 2.1 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "context": "Check whether the following sequences are G.P. If so, write \\(t_n\\).",
+    "setLabel": "Ex 2.1 Q1",
+    "stem": "\\(2,\\ 6,\\ 18,\\ 54,\\ \\ldots\\)"
+  },
+  {
+    "ref": "Ex 2.1 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "context": "Check whether the following sequences are G.P. If so, write \\(t_n\\).",
+    "setLabel": "Ex 2.1 Q1",
+    "stem": "\\(1,\\ -5,\\ 25,\\ -125\\ \\ldots\\)"
+  },
+  {
+    "ref": "Ex 2.1 Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "MODERATE",
+    "context": "Check whether the following sequences are G.P. If so, write \\(t_n\\).",
+    "setLabel": "Ex 2.1 Q1",
+    "stem": "\\(\\sqrt{5},\\ \\frac{1}{\\sqrt{5}},\\ \\frac{1}{5\\sqrt{5}},\\ \\frac{1}{25\\sqrt{5}},\\ \\ldots\\)"
+  },
+  {
+    "ref": "Ex 2.1 Q1(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "context": "Check whether the following sequences are G.P. If so, write \\(t_n\\).",
+    "setLabel": "Ex 2.1 Q1",
+    "stem": "\\(3,\\ 4,\\ 5,\\ 6,\\ \\ldots\\)"
+  },
+  {
+    "ref": "Ex 2.1 Q1(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "context": "Check whether the following sequences are G.P. If so, write \\(t_n\\).",
+    "setLabel": "Ex 2.1 Q1",
+    "stem": "\\(7,\\ 14,\\ 21,\\ 28,\\ \\ldots\\)"
+  },
+  {
+    "ref": "Ex 2.1 Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "context": "For the G.P.",
+    "setLabel": "Ex 2.1 Q2",
+    "stem": "If \\(r = \\frac{1}{3}\\), \\(a = 9\\) find \\(t_7\\)"
+  },
+  {
+    "ref": "Ex 2.1 Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "context": "For the G.P.",
+    "setLabel": "Ex 2.1 Q2",
+    "stem": "If \\(a = \\frac{7}{243}\\), \\(r = 3\\) find \\(t_6\\)."
+  },
+  {
+    "ref": "Ex 2.1 Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "context": "For the G.P.",
+    "setLabel": "Ex 2.1 Q2",
+    "stem": "If \\(r = -3\\) and \\(t_6 = 1701\\), find \\(a\\)."
+  },
+  {
+    "ref": "Ex 2.1 Q2(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "context": "For the G.P.",
+    "setLabel": "Ex 2.1 Q2",
+    "stem": "If \\(a = \\frac{2}{3}\\), \\(t_6 = 162\\), find \\(r\\)."
+  },
+  {
+    "ref": "Ex 2.1 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "stem": "Which term of the G.P. \\(5,\\ 25,\\ 125,\\ 625,\\ \\ldots\\) is \\(5^{10}\\)?"
+  },
+  {
+    "ref": "Ex 2.1 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "MODERATE",
+    "stem": "For what values of \\(x\\), the terms \\(\\frac{4}{3},\\ x,\\ \\frac{4}{27}\\) are in G.P?"
+  },
+  {
+    "ref": "Ex 2.1 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "MODERATE",
+    "stem": "If for a sequence, \\(t_n = \\frac{5^{n-3}}{2^{n-3}}\\), show that the sequence is a G.P. Find its first term and the common ratio."
+  },
+  {
+    "ref": "Ex 2.1 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "HARD",
+    "stem": "Find three numbers in G.P. such that their sum is 21 and sum of their squares is 189."
+  },
+  {
+    "ref": "Ex 2.1 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "HARD",
+    "stem": "Find four numbers in G.P. such that sum of the middle two numbers is \\(\\frac{10}{3}\\) and their product is 1."
+  },
+  {
+    "ref": "Ex 2.1 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "HARD",
+    "stem": "Find five numbers in G. P. such that their product is 1024 and fifth term is square of the third term."
+  },
+  {
+    "ref": "Ex 2.1 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "MODERATE",
+    "stem": "The fifth term of a G.P. is \\(x\\), eighth term of a G.P. is \\(y\\) and eleventh term of a G.P. is \\(z\\) verify whether \\(y^2 = xz\\)."
+  },
+  {
+    "ref": "Ex 2.1 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "MODERATE",
+    "stem": "If \\(p, q, r, s\\) are in G.P. show that \\(p+q\\), \\(q+r\\), \\(r+s\\) are also in G.P."
+  },
+  {
+    "ref": "Ex 2.1 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "stem": "The number of bacteria in a culture doubles every hour. If there were 50 bacteria originally in the culture, how many bacteria will be there at the end of \\(5^{\\text{th}}\\) hour ?",
+    "solution": "[Textbook answer-key error: the printed key gives \\(800\\), which is \\(50 \\times 2^4\\) — the count at the end of the FOURTH hour. Starting from \\(50\\) and doubling each hour gives \\(100, 200, 400, 800, 1600\\), so at the end of the fifth hour there are \\(1600\\) bacteria. What settles it is the book contradicting itself inside this same exercise: Q12 gives the \\(n\\)th bounce as \\(80\\left(\\dfrac{3}{4}\\right)^n\\) and Q14 the population after \\(n\\) years as \\(200(1.1)^n\\), both putting the exponent equal to the number of periods ELAPSED. Applying that rule here gives \\(50 \\times 2^5 = 1600\\).]"
+  },
+  {
+    "ref": "Ex 2.1 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "MODERATE",
+    "stem": "A ball is dropped from a height of 80 ft. The ball is such that it rebounds \\(\\left(\\frac{3}{4}\\right)^{\\text{th}}\\) of the height it has fallen. How high does the ball rebound on \\(6^{\\text{th}}\\) bounce? How high does the ball rebound on \\(n^{\\text{th}}\\) bounce?",
+    "_note": "Two printed oddities. (1) The book prints 'a height 0f 80 ft.' — a zero for the letter o; transcribed as 'of'. (2) The book writes the rebound fraction with an ordinal superscript, \\(\\left(\\frac{3}{4}\\right)^{\\text{th}}\\), where it plainly means three-fourths of the height fallen; transcribed as printed rather than silently normalised to \\(\\frac{3}{4}\\). The printed answer key confirms the reading: '80(3/4)^6 ft, 80(3/4)^n ft'."
+  },
+  {
+    "ref": "Ex 2.1 Q13(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "MODERATE",
+    "context": "The numbers \\(3\\), \\(x\\) and \\(x + 6\\) are in G.P. Find",
+    "setLabel": "Ex 2.1 Q13",
+    "stem": "\\(x\\)"
+  },
+  {
+    "ref": "Ex 2.1 Q13(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "context": "The numbers \\(3\\), \\(x\\) and \\(x + 6\\) are in G.P. Find",
+    "setLabel": "Ex 2.1 Q13",
+    "stem": "\\(20^{\\text{th}}\\) term"
+  },
+  {
+    "ref": "Ex 2.1 Q13(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "context": "The numbers \\(3\\), \\(x\\) and \\(x + 6\\) are in G.P. Find",
+    "setLabel": "Ex 2.1 Q13",
+    "stem": "\\(n^{\\text{th}}\\) term."
+  },
+  {
+    "ref": "Ex 2.1 Q14(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "context": "Mosquitoes are growing at a rate of 10% a year. If there were 200 mosquitoes in the beginning. Write down the number of mosquitoes after",
+    "setLabel": "Ex 2.1 Q14",
+    "stem": "3 years",
+    "_note": "The book prints 'begining' for 'beginning' in the shared instruction; transcribed with the correct spelling. Same treatment as the '0f' typo in Q12."
+  },
+  {
+    "ref": "Ex 2.1 Q14(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "context": "Mosquitoes are growing at a rate of 10% a year. If there were 200 mosquitoes in the beginning. Write down the number of mosquitoes after",
+    "setLabel": "Ex 2.1 Q14",
+    "stem": "10 years"
+  },
+  {
+    "ref": "Ex 2.1 Q14(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "context": "Mosquitoes are growing at a rate of 10% a year. If there were 200 mosquitoes in the beginning. Write down the number of mosquitoes after",
+    "setLabel": "Ex 2.1 Q14",
+    "stem": "\\(n\\) years."
+  },
+  {
+    "ref": "Ex 2.1 Q15(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "MODERATE",
+    "context": "The numbers \\(x - 6\\), \\(2x\\) and \\(x^2\\) are in G.P. Find",
+    "setLabel": "Ex 2.1 Q15",
+    "stem": "\\(x\\)"
+  },
+  {
+    "ref": "Ex 2.1 Q15(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "context": "The numbers \\(x - 6\\), \\(2x\\) and \\(x^2\\) are in G.P. Find",
+    "setLabel": "Ex 2.1 Q15",
+    "stem": "\\(1^{\\text{st}}\\) term"
+  },
+  {
+    "ref": "Ex 2.1 Q15(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Geometric Progression — General Term and Sum",
+    "difficulty": "EASY",
+    "context": "The numbers \\(x - 6\\), \\(2x\\) and \\(x^2\\) are in G.P. Find",
+    "setLabel": "Ex 2.1 Q15",
+    "stem": "\\(n^{\\text{th}}\\) term."
+  }
+]

@@ -1,0 +1,96 @@
+[
+  {
+    "ref": "6.1 SolvedEx.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "EASY",
+    "stem": "Solve \\(5^{2x+7} = 125\\).",
+    "solution": "As \\(5^{2x+7} = 125\\)\ni.e. \\(5^{2x+7} = 5^{3}\\), \\(\\therefore 2x + 7 = 3\\)\nand \\(x = \\frac{3-7}{2} = \\frac{-4}{2} = -2\\)"
+  },
+  {
+    "ref": "6.1 SolvedEx.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "HARD",
+    "stem": "Find the domain of \\(f(x) = \\sqrt{6 - 2^{x} - 2^{3-x}}\\).",
+    "solution": "Since \\(\\sqrt{x}\\) is defined for \\(x \\ge 0\\)\n\\(f(x)\\) is defined for \\(6 - 2^{x} - 2^{3-x} \\ge 0\\)\ni.e. \\(6 - 2^{x} - \\frac{2^{3}}{2^{x}} \\ge 0\\)\ni.e. \\(6 \\cdot 2^{x} - (2^{x})^{2} - 8 \\ge 0\\)\ni.e. \\((2^{x})^{2} - 6 \\cdot 2^{x} + 8 \\le 0\\)\ni.e. \\((2^{x} - 4)(2^{x} - 2) \\le 0\\)\n\\(2^{x} \\ge 2\\) and \\(2^{x} \\le 4\\) (Verify !)\n\\(2^{x} \\ge 2^{1}\\) and \\(2^{x} \\le 2^{2}\\)\n\\(x \\ge 1\\) and \\(x \\le 2\\) or \\(1 \\le x \\le 2\\)\nDomain is \\([1,2]\\)",
+    "_note": "The last line of the printed solution reads 'Doamin is [1,2]' - a misprint of 'Domain'; transcribed as 'Domain'. The solution STRADDLES a mid-column boundary: it begins at the foot of the left column of printed p.115 (image p-09) and continues at the top of the right column of the same page."
+  },
+  {
+    "ref": "6.1 SolvedEx.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "EASY",
+    "stem": "Write \\(\\log 72\\) in terms of \\(\\log 2\\) and \\(\\log 3\\).",
+    "solution": "\\(\\log 72 = \\log(2^{3} \\cdot 3^{2})\\)\n\\(= \\log 2^{3} + \\log 3^{2}\\) (\\(\\because\\) Power rule)\n\\(= 3\\log 2 + 2\\log 3\\) (\\(\\because\\) Power rule)",
+    "_note": "Book defect (label only, answer unaffected): the FIRST step splits a product into a sum, i.e. it is the Product rule, but the book annotates it '(because Power rule)'. Only the second annotation is correct. Transcribed as printed."
+  },
+  {
+    "ref": "6.1 SolvedEx.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "EASY",
+    "stem": "Evaluate \\(\\ln e^{9} - \\ln e^{4}\\).",
+    "solution": "\\(\\ln e^{9} - \\ln e^{4} = \\log_{e} e^{9} - \\log_{e} e^{4}\\)\n\\(= 9\\log_{e} e - 4\\log_{e} e\\)\n\\(= 9(1) - 4(1)\\qquad (\\therefore \\ln e = 1)\\)\n\\(= 5\\)"
+  },
+  {
+    "ref": "6.1 SolvedEx.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Expand \\(\\log\\left[\\frac{x^{3}(x+3)}{2(x-4)^{2}}\\right]\\).",
+    "solution": "[Textbook error, answer-affecting: at the \"Using Power rule\" step the book turns \\(\\left[\\log 2 + \\log (x-4)^{2}\\right]\\) into \\(\\left[\\log 2 - 2\\log (x-4)\\right]\\) — the inner sign flips from \\(+\\) to \\(-\\) for no reason — and carries the error into its final line. The correct expansion is \\(3\\log x + \\log(x+3) - \\log 2 - 2\\log(x-4)\\).]\n\nUsing Quotient rule\n\\(= \\log[x^{3}(x+3)] - \\log[2(x-4)^{2}]\\)\nUsing Product rule\n\\(= [\\log x^{3} + \\log (x+3)] - [\\log 2 + \\log (x-4)^{2}]\\)\nUsing Power rule\n\\(= [3\\log x + \\log (x+3)] - [\\log 2 - 2\\log (x-4)]\\)\n\\(= 3\\log x + \\log (x+3) - \\log 2 + 2\\log (x-4)\\)",
+    "_note": "ANSWER-AFFECTING book defect, transcribed as printed. At the 'Using Power rule' step the book turns \\([\\log 2 + \\log (x-4)^{2}]\\) into \\([\\log 2 - 2\\log (x-4)]\\) - the inner sign flips from + to - for no reason - and the error is then carried into the final line. The correct expansion is \\(3\\log x + \\log(x+3) - \\log 2 - 2\\log(x-4)\\); the book's printed final answer has \\(+2\\log(x-4)\\). Verified at 1.6x zoom on the page image."
+  },
+  {
+    "ref": "6.1 SolvedEx.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Combine \\(3\\ln (p + 1) - \\frac{1}{2}\\ln r + 5\\ln(2q + 3)\\) into single logarithm.",
+    "solution": "Using Power rule,\n\\(= \\ln (p + 1)^{3} - \\ln r^{\\frac{1}{2}} + \\ln(2q + 3)^{5}\\)\nUsing Quotient rule\n\\(= \\ln \\frac{(p+1)^{3}}{\\sqrt{r}} + \\ln(2q + 3)^{5}\\)\nUsing Product rule\n\\(= \\ln\\left[\\frac{(p+1)^{3}}{\\sqrt{r}}(2q + 3)^{5}\\right]\\)"
+  },
+  {
+    "ref": "6.1 SolvedEx.15",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "EASY",
+    "stem": "Find the domain of \\(\\ln(x - 5)\\).",
+    "solution": "As \\(\\ln(x - 5)\\) is defined for \\((x - 5) > 0\\)\nthat is \\(x > 5\\) so domain is \\((5, \\infty)\\)."
+  },
+  {
+    "ref": "6.1 SolvedEx.16",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate \\(\\frac{\\log_{4} 81}{\\log_{4} 9}\\).",
+    "solution": "By Change of base law, as the base is same (that is 4)\n\\(\\frac{\\log_{4} 81}{\\log_{4} 9} = \\log_{9} 81 = 2\\)"
+  },
+  {
+    "ref": "6.1 SolvedEx.17",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "MODERATE",
+    "stem": "Prove that, \\(2\\log_{b} a^{4} \\cdot \\log_{c} b^{3} \\cdot \\log_{a} c^{5} = 120\\).",
+    "solution": "L.H.S. \\(= 2\\log_{b} a^{4} \\cdot \\log_{c} b^{3} \\cdot \\log_{a} c^{5}\\)\n\\(= 4 \\times 2\\log_{b} a \\times 3\\log_{c} b \\times 5\\log_{a} c\\)\nUsing change of base law,\n\\(= 4 \\times 2\\,\\frac{\\log a}{\\log b} \\times 3\\,\\frac{\\log b}{\\log c} \\times 5\\,\\frac{\\log c}{\\log a}\\)\n\\(= 120\\)"
+  },
+  {
+    "ref": "6.1 SolvedEx.18",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Some Basic Functions",
+    "difficulty": "HARD",
+    "stem": "Find the domain of \\(f(x) = \\log_{x+5}(x^{2} - 4)\\).",
+    "solution": "Since \\(\\log_{a} x\\) is defined for \\(a, x > 0\\) and \\(a \\ne 1\\), \\(f(x)\\) is defined for \\((x^{2} - 4) > 0\\), \\(x + 5 > 0\\), \\(x + 5 \\ne 1\\).\ni.e. \\((x - 2)(x + 2) > 0\\), \\(x > -5\\), \\(x \\ne -4\\)\ni.e. \\(x < -2\\) or \\(x > 2\\) and \\(x > -5\\) and \\(x \\ne -4\\)\n[The book then resolves these three conditions on a number line (Fig. 6.31); reading the shaded intersection off that figure, the domain is \\((-5,-4) \\cup (-4,-2) \\cup (2,\\infty)\\).]",
+    "_note": "The solution STRADDLES a mid-column boundary: the printed working ends at the foot of the left column of printed p.117 (image p-11) and its conclusion is carried ONLY by Fig. 6.31 at the top of the right column - the book prints no closing 'Domain is ...' sentence anywhere. The bracketed final line above is our reading of that figure, flagged as such rather than presented as printed text. A cross-check pass may wish to attach Fig. 6.31 as a solution image."
+  }
+]

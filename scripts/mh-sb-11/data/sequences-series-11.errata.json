@@ -1,0 +1,50 @@
+[
+  {
+    "ref": "Ex 2.6 Q2",
+    "bracket": "[Textbook answer-key error: the printed key gives \\(\\dfrac{n}{2}\\left(2n^2 + 2n + 1\\right)\\). That is wrong at EVERY \\(n\\). The correct closed form is \\(\\dfrac{n}{2}\\left(2n^2 + n + 1\\right)\\). Checked against the series summed term by term: at \\(n = 1\\) the true sum is \\(2\\) while the printed form gives \\(\\dfrac{5}{2}\\), which is not even an integer; \\(n = 2\\) true \\(11\\) vs \\(13\\); \\(n = 3\\) true \\(33\\) vs \\(\\dfrac{75}{2}\\); \\(n = 4\\) true \\(74\\) vs \\(82\\). The printed form passes 0 of 5 test values; the corrected form passes 5 of 5.]"
+  },
+  {
+    "ref": "Ex 2.6 Q8",
+    "bracket": "[Textbook answer-key error: the printed key is exactly the closed form of \\(\\sum r(2r+1)(2r+3)\\) — the book used first factor \\(r\\) where the question prints \\(2r - 1\\). It AGREES with the true sum at \\(n = 1\\) (both \\(15\\)) and diverges from \\(n = 2\\) onward: true \\(120\\) vs \\(85\\), \\(n = 3\\) true \\(435\\) vs \\(274\\), \\(n = 4\\) true \\(1128\\) vs \\(670\\). A spot-check at the first term would certify the wrong answer, which is why several values must be tested. The printed form passes 1 of 5; the corrected form passes 5 of 5.]"
+  },
+  {
+    "ref": "Ex 2.3 Q8",
+    "bracket": "[Textbook answer-key error: the printed key gives \\(25\\) m. The ball falls \\(10\\) m and thereafter each rebound height is travelled TWICE — once up and once down — so the total distance is \\(10 + 2\\left(\\dfrac{6}{1 - 0.6}\\right) = 10 + 30 = 40\\) m, confirmed by direct simulation. The key's \\(25 = 10 + \\dfrac{6}{1 - 0.6}\\) counts each rebound only once, i.e. the ball rises but never comes back down.]"
+  },
+  {
+    "ref": "Ex 2.1 Q11",
+    "bracket": "[Textbook answer-key error: the printed key gives \\(800\\), which is \\(50 \\times 2^4\\) — the count at the end of the FOURTH hour. Starting from \\(50\\) and doubling each hour gives \\(100, 200, 400, 800, 1600\\), so at the end of the fifth hour there are \\(1600\\) bacteria. What settles it is the book contradicting itself inside this same exercise: Q12 gives the \\(n\\)th bounce as \\(80\\left(\\dfrac{3}{4}\\right)^n\\) and Q14 the population after \\(n\\) years as \\(200(1.1)^n\\), both putting the exponent equal to the number of periods ELAPSED. Applying that rule here gives \\(50 \\times 2^5 = 1600\\).]"
+  },
+  {
+    "ref": "Ex 2.3 Q4",
+    "bracket": "[Textbook misprint: as printed the data are self-contradictory. With \\(a = 16\\) and sum to infinity \\(\\dfrac{96}{17}\\), we get \\(1 - r = \\dfrac{16 \\times 17}{96} = \\dfrac{17}{6}\\), so \\(r = -\\dfrac{11}{6}\\) and \\(|r| > 1\\) — a G.P. whose sum to infinity does not exist, contradicting the question's own premise. With \\(\\dfrac{96}{7}\\) the arithmetic closes cleanly at \\(r = -\\dfrac{1}{6}\\), so the denominator is a misprint. Note the printed key repeats \\(-\\dfrac{11}{6}\\), i.e. it is consistent with the defective stem rather than correct.]"
+  },
+  {
+    "ref": "Ex 2.3 Q6(iii)",
+    "bracket": "[Textbook inconsistency: this sub-item's summation is printed with lower limit \\(r = 0\\) (verified at high zoom), unlike its siblings (i), (ii) and (iv) which all start at \\(r = 1\\). The book's printed key, however, gives the sum FROM \\(r = 1\\), so the key and the stem disagree by exactly the \\(r = 0\\) term. The answer above follows the stem as printed; a reader working from the key should add back that term.]"
+  },
+  {
+    "ref": "2.3.1 SolvedEx.1",
+    "bracket": "[Textbook misprint: the sequence's fourth term is printed \\(\\dfrac{-27}{4}\\). With \\(a = 1\\) and \\(r = -\\dfrac{3}{2}\\) the fourth term is \\(\\dfrac{-27}{8}\\), so AS PRINTED the given sequence is not a G.P. at all and the question contradicts the answer its own solution reaches. The book's working only ever uses the first three terms, which is why it never trips over the error.]"
+  },
+  {
+    "ref": "2.4.1 SolvedEx.1(iii)",
+    "bracket": "[Textbook misprint (label only, value correct): the sub-item is \\(2.\\overline{5}\\) and the whole derivation is for \\(2.\\overline{5}\\), but the final line of the printed solution reads \\(2.\\overline{7} = 2 + \\dfrac{5}{9} = \\dfrac{23}{9}\\). The value is right — \\(\\dfrac{23}{9} = 2.5555\\ldots\\) — only the recurring digit in the label is wrong.]"
+  },
+  {
+    "ref": "Ex 2.2 Q13",
+    "bracket": "[Textbook numbering error in the answer key: Exercise 2.2 has THIRTEEN questions, but the printed key numbers its final entry \"15)\". Key entries 1-8, 11 and 12 line up with the questions of those numbers, and the entry printed \"15) 10 years\" is the answer to this question, Q13. Entries 9 and 10 are absent because those two are \"verify\" proofs, which this key never answers. There are no questions 14 or 15.]"
+  },
+  {
+    "ref": "2.3.1 SolvedEx.5",
+    "bracket": "[Textbook misprint (typesetting only): the \"Consider\" line prints the numerator as \\(t_n + 1\\), with the \\(+1\\) set at baseline, where \\(t_{n+1}\\) is meant — the line two above prints \\(t_{n+1}\\) correctly, and the working that follows is that of \\(\\dfrac{t_{n+1}}{t_n}\\).]"
+  },
+  {
+    "ref": "Ex 2.4 Q8",
+    "bracket": "[Textbook duplication: this question is word for word the chapter's own solved example under \"2.6.3 Harmonic Mean\", which is printed with a full worked solution two pages earlier. The duplication is the book's; both give the same answer.]"
+  },
+  {
+    "ref": "Misc II Q3",
+    "bracket": "[Textbook incompleteness: solving gives \\(r^6 = \\left(\\dfrac{3}{4}\\right)^6\\), and because the index is EVEN this admits \\(r = \\pm\\dfrac{3}{4}\\). The printed key gives only the positive branch. Both are stated above. Contrast Misc II Q22, where \\(r^3 = \\dfrac{1}{27}\\) has an odd index and the real cube root is genuinely unique, so no branch is lost there.]"
+  }
+]

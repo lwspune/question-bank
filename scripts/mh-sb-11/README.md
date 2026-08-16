@@ -37,6 +37,17 @@ trap `dump-text.ts` hit in `mh-sb-9`).
 > Do NOT re-run `render.ts <chapterId>` to get them: it rmSync's the chapter's page PNGs, which
 > destroys the images any in-flight transcription agents are reading.
 
+**2a. RUN `render_solution_diagrams.py` FROM THE REPO ROOT, not from this directory.**
+It writes its manifest paths with `os.path.relpath(p, os.getcwd())`, so running it from
+`scripts/mh-sb-11/` emits `out/<chapter>-diagrams/…` where `attach-solution-image.ts` — which
+resolves against the repo root — needs `scripts/mh-sb-11/out/…`. The failure is loud (`PNG not
+found`) rather than silent, but it costs a re-render:
+
+```
+python scripts/mh-sb-11/render_solution_diagrams.py <chapterId>   # from the repo root
+npx tsx scripts/mh-sb-11/attach-solution-image.ts <chapterId> --apply
+```
+
 **2b. PLAN TRANSCRIPTION BANDS FROM A `Solution :` SCAN, NOT FROM SECTION BANNERS.**
 This is the single most expensive mistake made on this book so far — it stranded questions in
 two consecutive chapters. A banner scan (`SOLVED EXAMPLES` / `EXERCISE N.M` / `MISCELLANEOUS`)
@@ -52,9 +63,23 @@ for each page: len(re.findall(r'Solution\s*:', text)),
                re.findall(r'EXERCISE\s*[:\-]?\s*(\d+\.\d+)', text)
 ```
 
-then reconcile: every page carrying a `Solution :` must fall inside some band. (The regex
-under-counts — it misses solutions typeset without a colon — so treat a page with `Ex.` markers
-and zero `Solution :` as suspect rather than empty.) Two further rules earned the same way:
+then reconcile: every page carrying a `Solution :` must fall inside some band.
+
+**Match `Sol(?:utio)?n\.?\s*:` , not `Solution\s*:`.** Measured on Ch.6 Functions 2026-08-16: the
+book abbreviates **`Soln. :`** on some pages and writes `Solution :` on others, MIXING BOTH ON
+ADJACENT PAGES (Ex. 6 and Ex. 7 on p-07 use `Soln. :`; Ex. 8 on p-08 uses `Solution :`). A
+`Solution`-only scan reported 28 markers against 34 printed `Ex. n` headings and made two genuine
+worked examples look unsolved. Ch.1 has also been seen misspelling it `Sloution :`.
+
+Worse, **some solutions carry no word at all.** In the same chapter, Ex. 5 and Ex. 6 of run 2 mark
+their solution with a bare **arrow glyph** (`→`) — no "Solution", no "Soln.", nothing a text scan
+can key on. So THREE distinct marker forms appear in one 27-page chapter.
+
+The count is therefore a **LOWER bound in every case**: the pass condition is
+`transcribed >= scanned`, and a page carrying `Ex.` markers with zero solution markers is SUSPECT,
+never empty. Do not build a band plan that assumes the two numbers should match — plan from the
+`Ex. <n>` HEADINGS (which are reliable) and use the solution markers only to sanity-check. Two
+further rules earned the same way:
 
 - **Cut bands at BLOCK boundaries, never page boundaries.** A solved run or an exercise must sit
   wholly inside one band. Where two blocks share a page, name the split point explicitly in both
@@ -64,7 +89,32 @@ and zero `Solution :` as suspect rather than empty.) Two further rules earned th
   instead of silently ignoring it. This instruction is doing more work than the boundaries.
 - **Theory-embedded examples need sub-section-scoped refs** (`5.1.3 SolvedEx.1`, `5.2.5
   SolvedEx.1`), because the bare `<N.M> SolvedEx.<n>` namespace belongs to the boxed block and
-  the book reuses its `Ex.` numbers across both.
+  the book reuses its `Ex.` numbers across both. When a theory-embedded example sits in the SAME
+  sub-section as a boxed block and PRECEDES it, suffix the sub-section (`2.3.1a SolvedEx.1`,
+  `2.4a`, and the shipped `9.1.1a` / `4.5b`) and order the `a` block FIRST in `sections.ts`.
+
+**2c. DERIVE EACH EXERCISE'S QUESTION COUNT FROM THE PRINTED ANSWER KEY BEFORE DISPATCHING.**
+This is the cheapest check on the whole pipeline and it catches the failure in 2b directly.
+Render the chapter's ANSWERS block first (step 2 above), then read off the HIGHEST question
+number the key gives for each `EXERCISE N.M` and for the Miscellaneous block, and put that number
+in the band prompt as a FLOOR the agent must reconcile against.
+
+Why a floor and not a total: the key omits every proof / "show that" / "verify" question, so the
+real count is `>=` the key's max, never `<`. An agent finding FEWER questions than the key's
+highest number has certainly hit a boundary too early — which is exactly what happened on
+2026-08-16, where a band plan built from a page-position scan under-counted **four** exercises:
+Ex 5.1 (7 vs a true 10), Ex 5.3 (9 vs 15), Ex 2.1 (12 vs 15) and Ex 2.3 (4 vs 8). Every one of
+them spilled onto the next page, above the following section's heading, and every one was
+recovered only after the key exposed the gap. One agent had actively *confirmed* its short count
+by cropping the foot of its last page — evidence about a page, which cannot testify about a block
+that crosses it.
+
+Corollary, and it cuts the other way: tell the agent to report an honest shortfall rather than
+force a match. A key numbered HIGHER than the questions that exist is a real book defect —
+Sequences' Exercise 2.2 has 13 questions and its key numbers the last answer `15)`.
+
+A ~30-line probe over the answers block gives every block's max in one pass; do it once per
+chapter, not once per band.
 
 **3. Book layout is the Class-12 shape, not the Class-9 shape.** Interleaved `SOLVED EXAMPLES`
 blocks, numbered `EXERCISE N.M` blocks, then `MISCELLANEOUS EXERCISE - N` split into part

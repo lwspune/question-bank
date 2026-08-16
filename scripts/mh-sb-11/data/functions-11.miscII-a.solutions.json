@@ -1,0 +1,161 @@
+[
+  {
+    "id": "93795f09-17df-423b-88d8-9c8106dea334",
+    "ref": "Misc II Q1(i)",
+    "solution": "The first elements 2, 4, 6, 8, 10, 12, 14 are all different, so each of them occurs in exactly one ordered pair and therefore has a unique image. Hence the relation is a function.\nCollecting the first elements gives the domain and the second elements give the range.\nIt is a function; Domain \\(= \\{2, 4, 6, 8, 10, 12, 14\\}\\), Range \\(= \\{1, 2, 3, 4, 5, 6, 7\\}\\)."
+  },
+  {
+    "id": "5a248fa9-f9b8-4449-ab5a-887a75383652",
+    "ref": "Misc II Q1(ii)",
+    "solution": "The element 1 occurs as the first element of two pairs, \\((1, 1)\\) and \\((1, -1)\\), so 1 has two different images. The same happens for 4, for 9 and for 16.\nA function must assign exactly one image to each element of its domain, so this condition fails.\nHence the relation is not a function."
+  },
+  {
+    "id": "27e992c7-c029-4473-a065-b0f4ef5569f7",
+    "ref": "Misc II Q1(iii)",
+    "solution": "The set is printed as \\(\\{2, 1), (3, 1), (5, 2)\\}\\); the opening bracket of the first ordered pair has been dropped, and the intended relation is \\(\\{(2, 1), (3, 1), (5, 2)\\}\\).\nThe first elements 2, 3 and 5 are all different, so each has a unique image and the relation is a function. Two different elements are allowed to share the same image, so \\((2, 1)\\) and \\((3, 1)\\) cause no problem.\nIt is a function; Domain \\(= \\{2, 3, 5\\}\\), Range \\(= \\{1, 2\\}\\).",
+    "_note": "The stem faithfully reproduces a printed misprint: '{2, 1), (3, 1), (5, 2)}' is missing the opening parenthesis of the first ordered pair. The book's own key ('Function; {2,3,5}; {1,2}') confirms the intended set is {(2,1),(3,1),(5,2)}."
+  },
+  {
+    "id": "71c8dcfc-0200-4cac-b114-ee94dc71cc59",
+    "ref": "Misc II Q2(i)",
+    "solution": "Take \\(x_1 = 1\\) and \\(x_2 = -1\\). These are different elements of \\(\\mathrm{R}\\), but\n\\(f(1) = 1^2 + 5 = 6\\) and \\(f(-1) = (-1)^2 + 5 = 6\\).\nSo two distinct elements have the same image. Hence \\(f\\) is not one-one."
+  },
+  {
+    "id": "cc69df43-13e3-4264-90f8-d0a84659d446",
+    "ref": "Misc II Q2(ii)",
+    "solution": "Let \\(x_1, x_2 \\in \\mathrm{R} - \\{3\\}\\) with \\(f(x_1) = f(x_2)\\). Then\n\\(\\frac{5x_1 + 7}{x_1 - 3} = \\frac{5x_2 + 7}{x_2 - 3}\\).\nCross-multiplying, \\((5x_1 + 7)(x_2 - 3) = (5x_2 + 7)(x_1 - 3)\\), i.e.\n\\(5x_1x_2 - 15x_1 + 7x_2 - 21 = 5x_1x_2 - 15x_2 + 7x_1 - 21\\).\nCancelling \\(5x_1x_2\\) and \\(-21\\) gives \\(-15x_1 + 7x_2 = -15x_2 + 7x_1\\), so \\(22x_2 = 22x_1\\) and therefore \\(x_1 = x_2\\).\nHence \\(f\\) is one-one."
+  },
+  {
+    "id": "f4eb1605-1fa5-452f-aab1-09557f8e85e8",
+    "ref": "Misc II Q3(i)",
+    "solution": "Let \\(y \\in \\mathrm{Z}\\) be any element of the codomain and suppose \\(y = f(x) = 6x - 7\\). Then \\(x = \\frac{y + 7}{6}\\).\nFor this to be a pre-image we need \\(x \\in \\mathrm{Z}\\). Take \\(y = 0\\): then \\(x = \\frac{7}{6}\\), which is not an integer, so \\(0\\) has no pre-image in \\(\\mathrm{Z}\\).\nHence \\(f\\) is not onto."
+  },
+  {
+    "id": "a9fc06d1-5a62-4016-a43b-f6d4384f1a9c",
+    "ref": "Misc II Q3(ii)",
+    "solution": "For every \\(x \\in \\mathrm{R}\\) we have \\(x^2 \\ge 0\\), so \\(f(x) = x^2 + 3 \\ge 3\\).\nThus the range of \\(f\\) is \\([3, \\infty)\\), which is only a part of the codomain \\(\\mathrm{R}\\). For instance \\(y = -1\\) would need \\(x^2 = -4\\), which no real \\(x\\) satisfies, so \\(-1\\) has no pre-image.\nHence \\(f\\) is not onto."
+  },
+  {
+    "id": "3edefc4b-b4d3-4f7e-9763-8b49045a3309",
+    "ref": "Misc II Q4",
+    "solution": "One-one: let \\(f(x_1) = f(x_2)\\). Then \\(5x_1^3 - 8 = 5x_2^3 - 8\\), so \\(x_1^3 = x_2^3\\). A real number has exactly one real cube root, so \\(x_1 = x_2\\). Hence \\(f\\) is one-one.\nOnto: let \\(y \\in \\mathrm{R}\\) and put \\(y = 5x^3 - 8\\). Then \\(x^3 = \\frac{y + 8}{5}\\), so \\(x = \\left(\\frac{y + 8}{5}\\right)^{\\frac{1}{3}}\\), which is a real number, and \\(f(x) = y\\). So every element of the codomain has a pre-image and \\(f\\) is onto.\nSince \\(f\\) is one-one and onto it is invertible, and replacing \\(y\\) by \\(x\\) in the expression above gives\n\\(f^{-1}(x) = \\left(\\frac{x + 8}{5}\\right)^{\\frac{1}{3}}\\)."
+  },
+  {
+    "id": "63683f42-461f-4086-b8d0-6a4f6fd54493",
+    "ref": "Misc II Q5",
+    "solution": "One-one: let \\(f(x_1) = f(x_2)\\). Then \\(\\frac{3x_1}{5} + 2 = \\frac{3x_2}{5} + 2\\), so \\(\\frac{3x_1}{5} = \\frac{3x_2}{5}\\) and hence \\(x_1 = x_2\\). So \\(f\\) is one-one.\nOnto: let \\(y \\in \\mathrm{R}\\) and put \\(y = \\frac{3x}{5} + 2\\). Then \\(\\frac{3x}{5} = y - 2\\), so \\(x = \\frac{5(y - 2)}{3}\\), which is a real number, and \\(f(x) = y\\). So \\(f\\) is onto.\nSince \\(f\\) is one-one and onto it is invertible, and replacing \\(y\\) by \\(x\\) gives\n\\(f^{-1}(x) = \\frac{5(x - 2)}{3}\\)."
+  },
+  {
+    "id": "6654d801-acca-42c0-a5dd-51495667555c",
+    "ref": "Misc II Q6",
+    "solution": "The function is defined only for \\(-4 \\le x < 0\\), so a value exists exactly when the number lies in that interval.\n\\(-1\\) lies in \\([-4, 0)\\), so \\(f(-1) = 4(-1) + 5 = -4 + 5 = 1\\).\n\\(-2\\) lies in \\([-4, 0)\\), so \\(f(-2) = 4(-2) + 5 = -8 + 5 = -3\\).\n\\(0\\) does not lie in \\([-4, 0)\\), because the interval excludes \\(0\\), so \\(f(0)\\) is not defined.\n\\(f(-1) = 1\\), \\(f(-2) = -3\\), and \\(f(0)\\) does not exist."
+  },
+  {
+    "id": "cb9df33a-21a6-4680-b186-af3a7daf90bf",
+    "ref": "Misc II Q7(i)",
+    "solution": "\\(f(x) = 3\\) gives \\(5 - x = 3\\), so \\(x = 5 - 3 = 2\\).\nSince \\(2\\) satisfies \\(0 \\le x \\le 4\\), it lies in the domain and is an acceptable answer.\n\\(x = 2\\)"
+  },
+  {
+    "id": "e4a667e1-aca1-4766-b895-d24ad06bbd7c",
+    "ref": "Misc II Q7(ii)",
+    "solution": "\\(f(x) = 5\\) gives \\(5 - x = 5\\), so \\(x = 0\\).\nSince \\(0\\) satisfies \\(0 \\le x \\le 4\\), it lies in the domain and is an acceptable answer.\n\\(x = 0\\)"
+  },
+  {
+    "id": "66f03ef6-021a-47d3-95a8-b0dcad52329f",
+    "ref": "Misc II Q8",
+    "solution": "Replace \\(x\\) by \\(x - 1\\) in the given rule:\n\\(f(x - 1) = 3(x - 1)^4 - 5(x - 1)^2 + 7\\).\nNow \\((x - 1)^2 = x^2 - 2x + 1\\) and \\((x - 1)^4 = x^4 - 4x^3 + 6x^2 - 4x + 1\\), so\n\\(f(x - 1) = 3(x^4 - 4x^3 + 6x^2 - 4x + 1) - 5(x^2 - 2x + 1) + 7\\)\n\\(= 3x^4 - 12x^3 + 18x^2 - 12x + 3 - 5x^2 + 10x - 5 + 7\\)\n\\(= 3x^4 - 12x^3 + 13x^2 - 2x + 5\\).\n\\(f(x - 1) = 3x^4 - 12x^3 + 13x^2 - 2x + 5\\)"
+  },
+  {
+    "id": "9b671d82-dfca-433f-9fbc-38b6c8128da0",
+    "ref": "Misc II Q9",
+    "solution": "Putting \\(x = 1\\) in \\(f(x) = 3x + a\\) gives \\(f(1) = 3 + a\\).\nSince \\(f(1) = 7\\), we get \\(3 + a = 7\\), so \\(a = 4\\).\nHence \\(f(x) = 3x + 4\\), and \\(f(4) = 3(4) + 4 = 12 + 4 = 16\\).\n\\(a = 4\\), \\(f(4) = 16\\)"
+  },
+  {
+    "id": "f53d9d19-3d50-4ca5-ad48-af145b63acd6",
+    "ref": "Misc II Q10",
+    "solution": "\\(f(1) = a(1)^2 + b(1) + 2 = a + b + 2\\), and \\(f(1) = 3\\), so \\(a + b = 1\\) ... (1)\n\\(f(4) = a(4)^2 + b(4) + 2 = 16a + 4b + 2\\), and \\(f(4) = 42\\), so \\(16a + 4b = 40\\), i.e. \\(4a + b = 10\\) ... (2)\nSubtracting (1) from (2): \\(3a = 9\\), so \\(a = 3\\).\nSubstituting in (1): \\(3 + b = 1\\), so \\(b = -2\\).\n\\(a = 3\\), \\(b = -2\\)"
+  },
+  {
+    "id": "977a7563-d226-4836-8dad-86e17e3d49d2",
+    "ref": "Misc II Q11(i)",
+    "solution": "Range of \\(f = \\{3, 4, 5, 6\\}\\), which is exactly the domain of \\(g\\), so \\(g \\circ f\\) exists.\n\\((g \\circ f)(1) = g(f(1)) = g(3) = 6\\)\n\\((g \\circ f)(2) = g(f(2)) = g(4) = 8\\)\n\\((g \\circ f)(3) = g(f(3)) = g(5) = 10\\)\n\\((g \\circ f)(4) = g(f(4)) = g(6) = 12\\)\nThe other order is not available: range of \\(g = \\{6, 8, 10, 12\\}\\), and \\(f\\) is not defined at any of these numbers, so \\(f \\circ g\\) does not exist.\n\\(g \\circ f = \\{(1, 6), (2, 8), (3, 10), (4, 12)\\}\\)"
+  },
+  {
+    "id": "0e66f23d-efc8-48f3-8271-7e334b754632",
+    "ref": "Misc II Q11(ii)",
+    "solution": "Range of \\(f = \\{1, 4, 3\\}\\), which is exactly the domain of \\(g\\), so \\(g \\circ f\\) exists.\n\\((g \\circ f)(1) = g(f(1)) = g(1) = 1\\)\n\\((g \\circ f)(2) = g(f(2)) = g(4) = 64\\)\n\\((g \\circ f)(3) = g(f(3)) = g(4) = 64\\)\n\\((g \\circ f)(4) = g(f(4)) = g(3) = 27\\)\nThe other order is not available: range of \\(g = \\{1, 27, 64\\}\\), and \\(f\\) is not defined at 27 or at 64, so \\(f \\circ g\\) does not exist.\n\\(g \\circ f = \\{(1, 1), (2, 64), (3, 64), (4, 27)\\}\\)"
+  },
+  {
+    "id": "2de56ae1-68db-49ff-853d-a8163ab6c225",
+    "ref": "Misc II Q12(i)",
+    "solution": "\\((f \\circ g)(x) = f(g(x)) = f(x - 8) = (x - 8)^2 + 5 = x^2 - 16x + 64 + 5 = x^2 - 16x + 69\\)\n\\((g \\circ f)(x) = g(f(x)) = g(x^2 + 5) = (x^2 + 5) - 8 = x^2 - 3\\)\n\\(f \\circ g = x^2 - 16x + 69\\), \\(g \\circ f = x^2 - 3\\)"
+  },
+  {
+    "id": "066176fb-1441-4d02-bebc-c85f786d35ac",
+    "ref": "Misc II Q12(ii)",
+    "solution": "\\((f \\circ g)(x) = f(g(x)) = f(x^2) = 3x^2 - 2\\)\n\\((g \\circ f)(x) = g(f(x)) = g(3x - 2) = (3x - 2)^2 = 9x^2 - 12x + 4\\)\n\\(f \\circ g = 3x^2 - 2\\), \\(g \\circ f = 9x^2 - 12x + 4\\)",
+    "_note": "The printed key labels the second answer 'gog = 9x^2 - 12x + 4'. The VALUE is correct but the label is a misprint: 9x^2 - 12x + 4 = (3x-2)^2 = g(f(x)) = gof. The genuine gog would be g(g(x)) = (x^2)^2 = x^4, and the question asks for fog and gof, not gog."
+  },
+  {
+    "id": "257d4f27-6774-410e-91c1-31577e32a9bf",
+    "ref": "Misc II Q12(iii)",
+    "solution": "\\(g(x) = \\sqrt{x}\\) is defined for \\(x \\ge 0\\), so \\(f \\circ g\\) is taken on \\(x \\ge 0\\).\n\\((f \\circ g)(x) = f(g(x)) = f(\\sqrt{x}) = 256(\\sqrt{x})^4 = 256x^2\\)\n\\((g \\circ f)(x) = g(f(x)) = g(256x^4) = \\sqrt{256x^4} = 16x^2\\), since \\(16x^2 \\ge 0\\).\n\\(f \\circ g = 256x^2\\), \\(g \\circ f = 16x^2\\)"
+  },
+  {
+    "id": "461d7e62-21eb-4dc1-a95d-9d7b7eb621b8",
+    "ref": "Misc II Q13",
+    "solution": "\\((f \\circ f)(x) = f(f(x)) = \\frac{2f(x) - 1}{5f(x) - 2}\\), where \\(f(x) = \\frac{2x - 1}{5x - 2}\\).\nNumerator: \\(2 \\cdot \\frac{2x - 1}{5x - 2} - 1 = \\frac{(4x - 2) - (5x - 2)}{5x - 2} = \\frac{-x}{5x - 2}\\)\nDenominator: \\(5 \\cdot \\frac{2x - 1}{5x - 2} - 2 = \\frac{(10x - 5) - 2(5x - 2)}{5x - 2} = \\frac{10x - 5 - 10x + 4}{5x - 2} = \\frac{-1}{5x - 2}\\)\nTherefore \\((f \\circ f)(x) = \\frac{-x/(5x - 2)}{-1/(5x - 2)} = \\frac{-x}{-1} = x\\).\nHence \\((f \\circ f)(x) = x\\).",
+    "_note": "The stem's restriction is printed as x != 5/2, but the denominator 5x - 2 vanishes at x = 2/5, not at 5/2. The digits appear transposed in the book; the correct restriction is x != 2/5. The identity (fof)(x) = x holds for every x in the domain either way, so the final answer is unaffected."
+  },
+  {
+    "id": "24884a9b-50ed-482a-bb31-fd8bbbf7cff4",
+    "ref": "Misc II Q14",
+    "solution": "\\((f \\circ g)(x) = f(g(x)) = \\frac{g(x) + 3}{4g(x) - 5}\\), where \\(g(x) = \\frac{3 + 5x}{4x - 1}\\).\nNumerator: \\(\\frac{3 + 5x}{4x - 1} + 3 = \\frac{(3 + 5x) + 3(4x - 1)}{4x - 1} = \\frac{3 + 5x + 12x - 3}{4x - 1} = \\frac{17x}{4x - 1}\\)\nDenominator: \\(4 \\cdot \\frac{3 + 5x}{4x - 1} - 5 = \\frac{(12 + 20x) - 5(4x - 1)}{4x - 1} = \\frac{12 + 20x - 20x + 5}{4x - 1} = \\frac{17}{4x - 1}\\)\nTherefore \\((f \\circ g)(x) = \\frac{17x/(4x - 1)}{17/(4x - 1)} = \\frac{17x}{17} = x\\).\nHence \\((f \\circ g)(x) = x\\)."
+  },
+  {
+    "id": "387d26d9-b106-4f31-8637-19d78fb8d215",
+    "ref": "Misc II Q15",
+    "solution": "For \\(x \\ne 2\\), \\(f(x) = \\frac{x^2 - 4}{x - 2} = \\frac{(x - 2)(x + 2)}{x - 2} = x + 2\\), so \\(f\\) and \\(g\\) have the same rule.\nBut two functions are equal only when they have the same domain as well as the same rule. Here domain of \\(f\\) is \\(\\mathrm{R} - \\{2\\}\\) while domain of \\(g\\) is \\(\\mathrm{R}\\).\nIn particular \\(g(2) = 2 + 2 = 4\\) exists, while \\(f(2)\\) is not defined.\nHence \\(f \\ne g\\).",
+    "_note": "The stem reads 'Ex whether f = g or not'; the book's word is 'Examine'. Solved as 'Examine whether f = g'."
+  },
+  {
+    "id": "4817512e-86a5-4d83-94ff-420bffd6dddc",
+    "ref": "Misc II Q16",
+    "solution": "\\(f(x) = x + 5\\) is a polynomial of degree 1, so its graph is a straight line.\nComparing \\(y = x + 5\\) with \\(y = mx + c\\): slope \\(m = 1\\) and \\(y\\)-intercept \\(c = 5\\), so the line meets the \\(Y\\)-axis at \\((0, 5)\\).\nPutting \\(y = 0\\) gives \\(x = -5\\), so it meets the \\(X\\)-axis at \\((-5, 0)\\).\nA short table of values, \\((-5, 0)\\), \\((-2, 3)\\), \\((0, 5)\\), \\((1, 6)\\), \\((2, 7)\\), confirms these points are collinear.\nBecause the slope is \\(1\\), the line rises from left to right and makes an angle of \\(45^\\circ\\) with the positive \\(X\\)-axis. Domain and range are both \\(\\mathrm{R}\\), so the line is drawn extending indefinitely in both directions.\nThe graph is the straight line of slope \\(1\\) through \\((-5, 0)\\) and \\((0, 5)\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "Straight line y = x + 5 on the XY-plane: slope 1, y-intercept (0, 5), x-intercept (-5, 0); plot through (-5,0), (0,5), (2,7) and extend both ways with arrowheads."
+  },
+  {
+    "id": "c7f2d47c-9142-4dcb-bdfa-d2623abf3dc0",
+    "ref": "Misc II Q17",
+    "solution": "\\(f(x) = x^3 + 1\\) is the standard cubic \\(y = x^3\\) raised by \\(1\\) unit.\nPutting \\(x = 0\\) gives the \\(Y\\)-intercept \\((0, 1)\\). Putting \\(y = 0\\) gives \\(x^3 = -1\\), so \\(x = -1\\) and the only \\(X\\)-intercept is \\((-1, 0)\\).\nA table of values gives \\((-2, -7)\\), \\((-1, 0)\\), \\((0, 1)\\), \\((1, 2)\\), \\((2, 9)\\).\nSince \\(x^3\\) increases whenever \\(x\\) increases, the curve rises throughout and never turns back; it is concave downward for \\(x < 0\\) and concave upward for \\(x > 0\\), so \\((0, 1)\\) is its point of inflection, where the curve momentarily flattens. Domain and range are both \\(\\mathrm{R}\\).\nThe graph is a cubic curve rising from the third quadrant through \\((-1, 0)\\), flattening at the point of inflection \\((0, 1)\\), and rising into the first quadrant."
+    ,
+    "diagramWouldHelp": true,
+    "diagramNote": "Cubic curve y = x^3 + 1 on the XY-plane: increasing everywhere, x-intercept (-1, 0), y-intercept and point of inflection (0, 1); plot through (-2,-7), (-1,0), (0,1), (1,2), (2,9)."
+  },
+  {
+    "id": "fe17210d-3a05-4900-924a-66a463f57c37",
+    "ref": "Misc II Q18",
+    "solution": "LHS \\(= \\log(1 + 2 + 3) = \\log 6\\).\nRHS \\(= \\log 1 + \\log 2 + \\log 3 = \\log(1 \\times 2 \\times 3)\\), using \\(\\log m + \\log n = \\log(mn)\\), which gives \\(\\log 6\\).\nThe two sides agree because \\(1, 2, 3\\) is the special triple for which the sum and the product are equal, \\(1 + 2 + 3 = 1 \\times 2 \\times 3 = 6\\). No property of the base was used anywhere, so the result holds for any base.\nHence \\(\\log(1 + 2 + 3) = \\log 1 + \\log 2 + \\log 3\\)."
+  },
+  {
+    "id": "153909ac-67bf-4530-babd-1be28e40c1e0",
+    "ref": "Misc II Q19",
+    "solution": "First bring the coefficient inside the logarithm: \\(3\\log_3 2 = \\log_3 2^3 = \\log_3 8\\).\nSo \\(x = 3^{\\log_3 8}\\), and by \\(a^{\\log_a m} = m\\) this equals \\(8\\).\n\\(x = 8\\)"
+  },
+  {
+    "id": "89fb394f-9ecc-43fa-b9df-976e6f6b4a66",
+    "ref": "Misc II Q20",
+    "solution": "Use \\(\\log m + \\log n = \\log(mn)\\):\nLHS \\(= \\log\\left|\\left(\\sqrt{x^2 + 1} + x\\right)\\left(\\sqrt{x^2 + 1} - x\\right)\\right|\\)\nThe product is of the form \\((a + b)(a - b) = a^2 - b^2\\), so it equals \\(\\left(\\sqrt{x^2 + 1}\\right)^2 - x^2 = (x^2 + 1) - x^2 = 1\\).\nTherefore LHS \\(= \\log|1| = \\log 1 = 0\\).\nHence \\(\\log\\left|\\sqrt{x^2 + 1} + x\\right| + \\log\\left|\\sqrt{x^2 + 1} - x\\right| = 0\\)."
+  },
+  {
+    "id": "1da325c8-c7be-45e0-b9a2-459420e3ccf5",
+    "ref": "Misc II Q21",
+    "solution": "Use \\(\\log m + \\log n = \\log(mn)\\):\nLHS \\(= \\log\\left(\\frac{a^2}{bc} \\times \\frac{b^2}{ca} \\times \\frac{c^2}{ab}\\right) = \\log\\left(\\frac{a^2b^2c^2}{(bc)(ca)(ab)}\\right)\\)\nThe denominator is \\((bc)(ca)(ab) = a^2b^2c^2\\), so the fraction equals \\(1\\).\nTherefore LHS \\(= \\log 1 = 0\\).\nHence \\(\\log\\frac{a^2}{bc} + \\log\\frac{b^2}{ca} + \\log\\frac{c^2}{ab} = 0\\)."
+  },
+  {
+    "id": "e6122895-d4aa-4bb9-88cb-5c8849265f8c",
+    "ref": "Misc II Q22",
+    "solution": "First simplify the inner logarithm: \\(\\log x^4 = 4\\log x\\).\nSo the expression \\(= \\log(4\\log x) - \\log(\\log x)\\).\nUsing \\(\\log m - \\log n = \\log\\frac{m}{n}\\), this is \\(\\log\\left(\\frac{4\\log x}{\\log x}\\right) = \\log 4\\).\n\\(\\log(\\log x^4) - \\log(\\log x) = \\log 4\\)"
+  }
+]
