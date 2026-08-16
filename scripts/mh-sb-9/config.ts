@@ -523,6 +523,80 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Ch.6 Circle (Part 2, Geometry). Pages 76-87 (1-based) → 0-based 85-96.
+  //    Boundary VERIFIED, and the derived one was WRONG AT BOTH ENDS: the
+  //    practice-set positions suggested 86-97, but 85 carries the "6 Circle"
+  //    banner and 97 already opens "7 Co-ordinate Geometry". Second chapter in a
+  //    row where inferring the opener from the first practice set was off by one.
+  //    Structure: properties of a chord with three theorems (pp77-79) · Practice
+  //    set 6.1 (p79) · arcs and the incircle/circumcircle theory (pp80-82) ·
+  //    Practice set 6.2 (p82) · constructions (pp83-86) · Practice set 6.3 AND
+  //    Problem set 6 (pp86-87).
+  //    Answers: 0-based 135-136.
+  //
+  //    ⚠ THE KEY IS THE SPARSEST IN THE VOLUME, and that is structural rather
+  //    than an omission: most of this chapter is THEOREMS and CONSTRUCTIONS, and
+  //    the book keys neither. Transcribed in full:
+  //      PS 6.1  1. 20 cm · 2. 5 cm · 3. 32 units · 4. 9 units
+  //      PS 6.2  1. 12 cm · 2. 24 cm
+  //      PS 6.3  (NOTHING - it is entirely "construct the incircle and
+  //              circumcircle of ...", whose answer is the drawing)
+  //      Prob 6  1. (i) A (ii) C (iii) A (iv) B (v) D (vi) C (vii) **D or B**
+  //              2. 2:1 · 4. 24 units
+  //    ⚠ NOTE Problem set 6 Q1(vii): the printed key itself reads "D or B" - the
+  //      BOOK acknowledges two acceptable options. Do not "resolve" that to a
+  //      single letter; blind-re-derive it and, if both genuinely fit, preserve
+  //      the ambiguity with an errata bracket rather than picking one.
+  //
+  //    ⚠ Vision-only (Part-2 operator-glyph substitution) and heavily
+  //    figure-bearing, like Ch.2 - the chord/arc exercises reference numbered
+  //    figures carrying the given lengths.
+  //
+  //    🚧 NOT COMMITTED YET. Exercise pages are 0-based 88 (PS 6.1), 91 (PS 6.2)
+  //    and 95-96 (PS 6.3 + Problem set 6); solved examples sit on 87, 88 and 90.
+  //    Established so far:
+  //      · PS 6.1 (printed p79) = 6 questions - Q1-Q4 numeric chord/radius work
+  //        (ALL FOUR printed answers re-derived and AGREE) + Q5 (Fig 6.9, show
+  //        AP = BQ) + Q6 (prove two bisected chords are parallel). Only Q5 needs
+  //        a crop.
+  //      · PS 6.3 (p86) = 5 questions, EVERY ONE a ruler-and-compass construction
+  //        ("construct the incircle / circumcircle of ..."). No printed answers,
+  //        and none possible - the answer is the drawing. **Whatever is decided
+  //        for Ch.4's construction diagrams applies here too**; until then this
+  //        set is the chapter's blocker.
+  //      · Problem set 6 Q1 (p86) = SEVEN MCQs. All 7 blind-re-derived: six match
+  //        the printed key exactly (A C A B D C) and the seventh is a defect -
+  //        see below. Q2 onward are on 0-based 96 and NOT yet read.
+  //
+  //    ⚠ A BOOK ANSWER-KEY DEFECT, and it is the interesting kind - the key is
+  //      too GENEROUS rather than wrong. Problem set 6 Q1(vii) asks for the
+  //      distance between two parallel chords of lengths 6 cm and 8 cm in a
+  //      circle of radius 5 cm that are **on opposite sides of the centre**, and
+  //      the printed key reads "D or B". The two chords are at distances
+  //      sqrt(25-9) = 4 and sqrt(25-16) = 3 from the centre. On OPPOSITE sides
+  //      the distance is 4 + 3 = 7 cm (option D); on the SAME side it would be
+  //      4 - 3 = 1 cm (option B). The stem says opposite sides, so **D is the
+  //      only correct answer** and B answers a question the stem excludes. Key D
+  //      and carry an errata bracket rather than reproducing the hedge.
+  "circle-9": {
+    id: "circle-9",
+    chapterName: "Circle",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_09_Maths__Circle.pdf",
+    pdf: PART2,
+    pages: range(85, 96),
+    answersPdf: PART2,
+    answerPages: range(135, 136),
+    note: "Maharashtra State Board (Class 9) — Circle (Balbharati textbook, Part 2 Geometry)",
+    // 🚧 PROVISIONAL — replace with the chapter's own "Let's study" list once the
+    // opener page (0-based 85) is read.
+    subtopics: [
+      "Properties of Chord",
+      "Arcs of a Circle",
+      "Incircle and Circumcircle",
+    ],
+  },
+
   // ── Ch.9 Surface Area and Volume (Part 2, Geometry). Pages 114-123 (1-based)
   //    → 0-based 123-132, the LAST chapter of the volume. Opener VERIFIED: 0-based
   //    123 carries the "9 Surface Area and Volume" banner and 133 begins the
