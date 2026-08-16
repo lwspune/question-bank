@@ -24,14 +24,17 @@ function main() {
   if (explicit.length) {
     files = explicit.map((s) => `${id}.${s}.json`);
   } else {
+    // Auto-discovery is an ALLOW-by-exclusion glob, so every non-fragment artifact
+    // this pipeline writes into data/ must be excluded BY NAME. Dropping only
+    // `.solutions.json` is not enough: `.tosolve.json`, `.review.json`,
+    // `.mcq-verify.json` and `.crosscheck.json` are all `<id>.*.json` too, and each
+    // is shaped just enough like a fragment to be merged in as questions. The same
+    // hole in the mh-sb-11 pipeline ingested a `.mcq-verify.json` as "10 questions"
+    // and was stopped only by a coincidental duplicate ref. Anything REGENERATED
+    // rather than authored belongs on this list.
+    const SCRATCH = /\.(solutions|tosolve|review|mcq-verify|mcq-blind|crosscheck|errata)\.json$/;
     files = readdirSync(DATA)
-      .filter(
-        (f) =>
-          f.startsWith(`${id}.`) &&
-          f.endsWith(".json") &&
-          f !== outName &&
-          !f.endsWith(".solutions.json") // solution files are {id,ref,solution}, applied by apply-solutions.ts — not question fragments
-      )
+      .filter((f) => f.startsWith(`${id}.`) && f.endsWith(".json") && f !== outName && !SCRATCH.test(f))
       .sort();
   }
 

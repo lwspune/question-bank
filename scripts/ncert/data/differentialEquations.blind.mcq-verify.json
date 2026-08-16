@@ -1,0 +1,86 @@
+[
+  {
+    "id": "e618c7e7-3049-479e-b685-6faf1966f998",
+    "ref": "Ex 9.1 Q11",
+    "derived_answer": "D",
+    "solution": "Degree is defined only when the equation is a polynomial in its derivatives. Here the term \\(\\sin\\left(\\frac{dy}{dx}\\right)\\) is a transcendental function of \\(\\frac{dy}{dx}\\), so the equation cannot be written as a polynomial in \\(\\frac{dy}{dx}\\) and \\(\\frac{d^{2}y}{dx^{2}}\\). The presence of \\(\\left(\\frac{d^{2}y}{dx^{2}}\\right)^{3}\\) tempts one to read the exponent 3 as the degree, but that exponent is irrelevant once the polynomial condition fails. Hence the degree is not defined.",
+    "matches_current": true
+  },
+  {
+    "id": "d2fecc11-cafc-4f4a-abb8-162b051c1f7a",
+    "ref": "Ex 9.1 Q12",
+    "derived_answer": "A",
+    "solution": "The order of a differential equation is the order of the highest derivative appearing in it. In \\(2x^{2}\\frac{d^{2}y}{dx^{2}} - 3\\frac{dy}{dx} + y = 0\\) the derivatives present are \\(\\frac{d^{2}y}{dx^{2}}\\) and \\(\\frac{dy}{dx}\\); the highest is the second derivative. The variable coefficient \\(2x^{2}\\) does not affect the order. Hence the order is 2.",
+    "matches_current": true
+  },
+  {
+    "id": "18f8a583-680b-4f89-a4d4-21061e08d09a",
+    "ref": "Ex 9.2 Q11",
+    "derived_answer": "D",
+    "solution": "The general solution of a differential equation contains as many independent arbitrary constants as the order of the equation, because each successive integration introduces one constant. Integrating a fourth order equation four times introduces four independent constants. For example, \\(\\frac{d^{4}y}{dx^{4}} = 0\\) integrates to \\(y = \\mathrm{C}_1x^{3} + \\mathrm{C}_2x^{2} + \\mathrm{C}_3x + \\mathrm{C}_4\\), which carries exactly four constants. Hence the number of arbitrary constants is 4.",
+    "matches_current": true
+  },
+  {
+    "id": "5790df34-6a07-46e8-a58c-356dd92d8542",
+    "ref": "Ex 9.2 Q12",
+    "derived_answer": "D",
+    "solution": "A particular solution is obtained from the general solution by assigning definite values to every arbitrary constant, using the given initial or boundary conditions. Once those values are fixed, no arbitrary constant survives. This is independent of the order of the equation, so the third order plays no part: a third order general solution has three constants, and all three are determined in a particular solution. Hence the number of arbitrary constants is 0.",
+    "matches_current": true
+  },
+  {
+    "id": "e1f0b680-f136-4cd1-831d-c025d696ce9e",
+    "ref": "Ex 9.3 Q23",
+    "derived_answer": "A",
+    "solution": "Write \\(\\frac{dy}{dx} = e^{x+y} = e^{x}\\,e^{y}\\), which separates as \\(e^{-y}\\,dy = e^{x}\\,dx\\). Integrating both sides, \\(-e^{-y} = e^{x} + c\\), that is \\(e^{x} + e^{-y} = \\mathrm{C}\\). Verified by differentiating \\(e^{x} + e^{-y} = \\mathrm{C}\\): \\(e^{x} - e^{-y}\\frac{dy}{dx} = 0\\), so \\(\\frac{dy}{dx} = e^{x}e^{y} = e^{x+y}\\), which is the original equation. Hence the general solution is \\(e^{x} + e^{-y} = \\mathrm{C}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "92862af3-459b-4ecc-822a-b771313ea3bf",
+    "ref": "Ex 9.4 Q16",
+    "derived_answer": "C",
+    "solution": "The right side is a function of the ratio \\(\\frac{x}{y}\\) and the derivative taken is \\(\\frac{dx}{dy}\\), so \\(x\\) is the dependent variable and \\(y\\) the independent one. The substitution must replace the ratio by a single new variable while keeping \\(y\\) independent, so put \\(x = vy\\), giving \\(\\frac{dx}{dy} = v + y\\frac{dv}{dy}\\) and reducing the equation to \\(v + y\\frac{dv}{dy} = h(v)\\), which is variables separable. The mirror substitution \\(y = vx\\) is the one used for the form \\(\\frac{dy}{dx} = g\\left(\\frac{y}{x}\\right)\\) and would leave this equation mixed. Hence the substitution is \\(x = vy\\).",
+    "matches_current": true
+  },
+  {
+    "id": "cee7e513-4512-4792-a515-cc44677eab71",
+    "ref": "Ex 9.4 Q17",
+    "derived_answer": "D",
+    "solution": "A differential equation \\(\\mathrm{M}\\,dx + \\mathrm{N}\\,dy = 0\\) is homogeneous when \\(\\mathrm{M}\\) and \\(\\mathrm{N}\\) are homogeneous functions of the same degree. Testing each: \\((4x + 6y + 5)\\) and \\((3y + 2x + 4)\\) contain the constants 5 and 4, so neither is homogeneous at all. In \\((xy)\\,dx - (x^{3} + y^{3})\\,dy = 0\\), \\(xy\\) has degree 2 while \\(x^{3} + y^{3}\\) has degree 3. In \\((x^{3} + 2y^{2})\\,dx + 2xy\\,dy = 0\\), the coefficient \\(x^{3} + 2y^{2}\\) mixes degrees 3 and 2 and so is not homogeneous. In \\(y^{2}\\,dx + (x^{2} - xy - y^{2})\\,dy = 0\\), both \\(y^{2}\\) and \\(x^{2} - xy - y^{2}\\) are homogeneous of degree 2, since replacing \\((x, y)\\) by \\((\\lambda x, \\lambda y)\\) multiplies each by \\(\\lambda^{2}\\). Hence the homogeneous equation is \\(y^{2}\\,dx + (x^{2} - xy - y^{2})\\,dy = 0\\).",
+    "matches_current": true
+  },
+  {
+    "id": "bb0bae5e-43b5-458e-92eb-018e2e02d820",
+    "ref": "Ex 9.5 Q18",
+    "derived_answer": "C",
+    "solution": "Divide \\(x\\frac{dy}{dx} - y = 2x^{2}\\) by \\(x\\) to reach the standard linear form \\(\\frac{dy}{dx} - \\frac{1}{x}y = 2x\\), so \\(\\mathrm{P} = -\\frac{1}{x}\\). Then the integrating factor is \\(e^{\\int \\mathrm{P}\\,dx} = e^{-\\int \\frac{1}{x}dx} = e^{-\\log x} = \\frac{1}{x}\\). Verified: multiplying the standard form by \\(\\frac{1}{x}\\) gives \\(\\frac{1}{x}\\frac{dy}{dx} - \\frac{1}{x^{2}}y = 2\\), whose left side is exactly \\(\\frac{d}{dx}\\left(\\frac{y}{x}\\right)\\). Hence the integrating factor is \\(\\frac{1}{x}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "9be60ad9-605d-4b5f-8d18-663eafd9c423",
+    "ref": "Ex 9.5 Q19",
+    "derived_answer": "D",
+    "solution": "Divide \\((1 - y^{2})\\frac{dx}{dy} + yx = ay\\) by \\((1 - y^{2})\\), which is positive for \\(-1 < y < 1\\), to get \\(\\frac{dx}{dy} + \\frac{y}{1 - y^{2}}x = \\frac{ay}{1 - y^{2}}\\). This is linear in \\(x\\) with \\(\\mathrm{P}_1 = \\frac{y}{1 - y^{2}}\\). Now \\(\\int \\frac{y}{1 - y^{2}}dy = -\\frac{1}{2}\\log(1 - y^{2})\\), so the integrating factor is \\(e^{-\\frac{1}{2}\\log(1 - y^{2})} = (1 - y^{2})^{-1/2} = \\frac{1}{\\sqrt{1 - y^{2}}}\\). The forms carrying \\(y^{2} - 1\\) are inadmissible here because \\(y^{2} - 1 < 0\\) on the stated interval. Hence the integrating factor is \\(\\frac{1}{\\sqrt{1 - y^{2}}}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "22212640-8609-4c5a-9f24-7df348c429ae",
+    "ref": "Misc Q13",
+    "derived_answer": "C",
+    "solution": "Since \\(\\frac{y\\,dx - x\\,dy}{y} = 0\\) with \\(y \\neq 0\\), the numerator must vanish: \\(y\\,dx - x\\,dy = 0\\), that is \\(y\\,dx = x\\,dy\\). Separating, \\(\\frac{dx}{x} = \\frac{dy}{y}\\), so \\(\\log|x| = \\log|y| + \\log k\\), giving \\(y = \\mathrm{C}x\\). Verified by substitution: for \\(y = \\mathrm{C}x\\) we have \\(dy = \\mathrm{C}\\,dx\\), so \\(y\\,dx - x\\,dy = \\mathrm{C}x\\,dx - x\\mathrm{C}\\,dx = 0\\), satisfying the equation. Hence the general solution is \\(y = \\mathrm{C}x\\).",
+    "matches_current": true
+  },
+  {
+    "id": "0f4cf938-9bd0-42af-9973-1c4e26c6a13f",
+    "ref": "Misc Q14",
+    "derived_answer": "C",
+    "solution": "In \\(\\frac{dx}{dy} + \\mathrm{P}_1x = \\mathrm{Q}_1\\) the dependent variable is \\(x\\) and the independent variable is \\(y\\), so every integration is with respect to \\(y\\) and the integrating factor is \\(e^{\\int \\mathrm{P}_1\\,dy}\\). Multiplying through by it makes the left side \\(\\frac{d}{dy}\\left(x\\,e^{\\int \\mathrm{P}_1\\,dy}\\right)\\), and integrating with respect to \\(y\\) gives \\(x\\,e^{\\int \\mathrm{P}_1\\,dy} = \\int\\left(\\mathrm{Q}_1e^{\\int \\mathrm{P}_1\\,dy}\\right)dy + \\mathrm{C}\\). Forms that place \\(y\\) outside the exponential, or that integrate with respect to \\(x\\), belong to the mirror equation \\(\\frac{dy}{dx} + \\mathrm{P}y = \\mathrm{Q}\\). Hence the general solution is \\(x\\,e^{\\int \\mathrm{P}_1\\,dy} = \\int\\left(\\mathrm{Q}_1e^{\\int \\mathrm{P}_1\\,dy}\\right)dy + \\mathrm{C}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "ea206f90-c89c-43c4-a703-d9bf613fe4f8",
+    "ref": "Misc Q15",
+    "derived_answer": "C",
+    "solution": "From \\(e^{x}\\,dy + (y\\,e^{x} + 2x)\\,dx = 0\\), divide by \\(e^{x}\\,dx\\) to obtain \\(\\frac{dy}{dx} + y = -2x\\,e^{-x}\\), a linear equation with \\(\\mathrm{P} = 1\\) and integrating factor \\(e^{\\int 1\\,dx} = e^{x}\\). Multiplying, \\(e^{x}\\frac{dy}{dx} + y\\,e^{x} = -2x\\), whose left side is \\(\\frac{d}{dx}\\left(y\\,e^{x}\\right)\\). Integrating, \\(y\\,e^{x} = -x^{2} + \\mathrm{C}\\), that is \\(y\\,e^{x} + x^{2} = \\mathrm{C}\\). Verified by differentiating \\(y\\,e^{x} + x^{2} = \\mathrm{C}\\): \\(e^{x}\\frac{dy}{dx} + y\\,e^{x} + 2x = 0\\), which on multiplying by \\(dx\\) reproduces the given equation exactly. Hence the general solution is \\(y\\,e^{x} + x^{2} = \\mathrm{C}\\).",
+    "matches_current": true
+  }
+]

@@ -16,6 +16,86 @@
 import type { SectionSpec } from "./lib";
 
 export const SECTIONS: Record<string, SectionSpec[]> = {
+  // ── Ch.1 Relations and Functions (12th, Part 1). Only TWO numbered exercises:
+  //    the rationalised 2025-26 edition gives §1.4 (Composition of Functions and
+  //    Invertible Function) NO exercise of its own — verified on the page, its
+  //    Example 17 solution is followed immediately by the Miscellaneous Examples
+  //    heading. Its worked Examples 15-17 therefore have no exercise to band to
+  //    and are ref'd `Misc Eg.15/16/17`, i.e. they sit in the Miscellaneous
+  //    solved block below alongside the book's own Miscellaneous Examples 18-26.
+  //    That is the one place this outline is not literally the book's layout, and
+  //    it is recorded here rather than hidden: /board shows all twelve together.
+  //    Solved examples reconcile exactly with the book's printed numbering —
+  //    Eg 1-6 → Exercise 1.1, Eg 7-14 → Exercise 1.2, Eg 15-26 → Miscellaneous.
+  relationsFunctions: [
+    { group: "1.2 Types of Relations", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.1 Eg"] },
+    { group: "1.2 Types of Relations", label: "Exercise 1.1", kind: "exercise", refPrefixes: ["Ex 1.1 Q"] },
+    { group: "1.3 Types of Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.2 Eg"] },
+    { group: "1.3 Types of Functions", label: "Exercise 1.2", kind: "exercise", refPrefixes: ["Ex 1.2 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 1", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 1", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // ── Ch.9 Differential Equations (12th, Part 2). Five numbered exercises, each
+  //    preceded by its section's worked examples, then a terminal Miscellaneous
+  //    block. NOTE the SECTION and EXERCISE numbers are OUT OF STEP in this
+  //    edition — §9.3 is followed by *Exercise 9.2*, and §9.4.1/9.4.2/9.4.3 by
+  //    Exercises 9.3/9.4/9.5. Refs band by EXERCISE (the convention), so a worked
+  //    example printed under §9.3 refs as `9.2 Eg.N`. That looks like an
+  //    off-by-one to anyone checking refs against printed section headings; it is
+  //    not. Group titles below use the SECTION heading the book actually prints.
+  //    The rationalised edition has dropped "Formation of a differential equation
+  //    whose general solution is given" — §9.4 is methods-only.
+  differentialEquations: [
+    { group: "9.2 Basic Concepts — Order and Degree", label: "Solved Examples", kind: "solved_example", refPrefixes: ["9.1 Eg"] },
+    { group: "9.2 Basic Concepts — Order and Degree", label: "Exercise 9.1", kind: "exercise", refPrefixes: ["Ex 9.1 Q"] },
+    { group: "9.3 General and Particular Solutions of a Differential Equation", label: "Solved Examples", kind: "solved_example", refPrefixes: ["9.2 Eg"] },
+    { group: "9.3 General and Particular Solutions of a Differential Equation", label: "Exercise 9.2", kind: "exercise", refPrefixes: ["Ex 9.2 Q"] },
+    { group: "9.4.1 Differential Equations with Variables Separable", label: "Solved Examples", kind: "solved_example", refPrefixes: ["9.3 Eg"] },
+    { group: "9.4.1 Differential Equations with Variables Separable", label: "Exercise 9.3", kind: "exercise", refPrefixes: ["Ex 9.3 Q"] },
+    { group: "9.4.2 Homogeneous Differential Equations", label: "Solved Examples", kind: "solved_example", refPrefixes: ["9.4 Eg"] },
+    { group: "9.4.2 Homogeneous Differential Equations", label: "Exercise 9.4", kind: "exercise", refPrefixes: ["Ex 9.4 Q"] },
+    { group: "9.4.3 Linear Differential Equations", label: "Solved Examples", kind: "solved_example", refPrefixes: ["9.5 Eg"] },
+    { group: "9.4.3 Linear Differential Equations", label: "Exercise 9.5", kind: "exercise", refPrefixes: ["Ex 9.5 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 9", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 9", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // ── Ch.13 Probability (12th, Part 2). Three numbered exercises + a terminal
+  //    Miscellaneous block. The rationalised 2025-26 edition ENDS at Bayes'
+  //    theorem (§13.5) — random variables, probability distributions, mean and
+  //    variance, and the binomial distribution are all gone, so there is no §13.6
+  //    and no Exercise 13.4. Exercise 13.2 is preceded by the worked examples of
+  //    BOTH §13.3 (multiplication theorem) and §13.4 (independent events), which
+  //    is why those two sections share one group here.
+  probability: [
+    { group: "13.2 Conditional Probability", label: "Solved Examples", kind: "solved_example", refPrefixes: ["13.1 Eg"] },
+    { group: "13.2 Conditional Probability", label: "Exercise 13.1", kind: "exercise", refPrefixes: ["Ex 13.1 Q"] },
+    { group: "13.3 Multiplication Theorem on Probability and 13.4 Independent Events", label: "Solved Examples", kind: "solved_example", refPrefixes: ["13.2 Eg"] },
+    { group: "13.3 Multiplication Theorem on Probability and 13.4 Independent Events", label: "Exercise 13.2", kind: "exercise", refPrefixes: ["Ex 13.2 Q"] },
+    { group: "13.5 Bayes' Theorem", label: "Solved Examples", kind: "solved_example", refPrefixes: ["13.3 Eg"] },
+    { group: "13.5 Bayes' Theorem", label: "Exercise 13.3", kind: "exercise", refPrefixes: ["Ex 13.3 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 13", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 13", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // ── Ch.11 Three Dimensional Geometry (12th, Part 2). Only TWO numbered
+  //    exercises: the rationalised 2025-26 edition ends at §11.5, so the plane is
+  //    absent entirely. Reading order verified against the rendered pages by two
+  //    independent transcription agents, who BOTH corrected the same thing —
+  //    Examples 4 and 5 sit ABOVE the Exercise 11.1 box (they are §11.2 content:
+  //    direction cosines of the axes, collinearity via direction ratios), so all
+  //    of Eg 1-5 band to Exercise 11.1 and only Eg 6-10 band to Exercise 11.2.
+  //    There is NO Miscellaneous Examples block — Ex 11.2 Q15 is followed
+  //    immediately by the Miscellaneous Exercise heading, so no `Misc Eg` spec.
+  threeDGeometry: [
+    { group: "11.2 Direction Cosines and Direction Ratios of a Line", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.1 Eg"] },
+    { group: "11.2 Direction Cosines and Direction Ratios of a Line", label: "Exercise 11.1", kind: "exercise", refPrefixes: ["Ex 11.1 Q"] },
+    { group: "11.3 Equation of a Line in Space, 11.4 Angle between Two Lines and 11.5 Shortest Distance", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.2 Eg"] },
+    { group: "11.3 Equation of a Line in Space, 11.4 Angle between Two Lines and 11.5 Shortest Distance", label: "Exercise 11.2", kind: "exercise", refPrefixes: ["Ex 11.2 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 11", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
   // ── Ch.7 Integrals (12th, Part 2) — 10 numbered exercises (7.1–7.10), each
   //    preceded by its section's worked examples, then a terminal Miscellaneous
   //    Exercise (solved examples + subjective + MCQ tail). Section→page map lives

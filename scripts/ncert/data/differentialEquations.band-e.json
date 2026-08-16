@@ -1,0 +1,214 @@
+[
+  {
+    "ref": "9.5 Eg.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation \\(\\frac{dy}{dx} - y = \\cos x\\).",
+    "solution": "Given differential equation is of the form \\(\\frac{dy}{dx} + \\mathrm{P}y = \\mathrm{Q}\\), where \\(\\mathrm{P} = -1\\) and \\(\\mathrm{Q} = \\cos x\\).\n\nTherefore \\(\\mathrm{I.F.} = e^{\\int -1\\,dx} = e^{-x}\\).\n\nMultiplying both sides of the equation by I.F, we get\n\n\\(e^{-x}\\frac{dy}{dx} - e^{-x}y = e^{-x}\\cos x\\)\n\nor \\(\\frac{dy}{dx}\\left(y e^{-x}\\right) = e^{-x}\\cos x\\)\n\nOn integrating both sides with respect to \\(x\\), we get\n\n\\(y e^{-x} = \\int e^{-x}\\cos x\\,dx + \\mathrm{C}\\)  ... (1)\n\nLet \\(\\mathrm{I} = \\int e^{-x}\\cos x\\,dx\\)\n\n\\(= \\cos x\\left(\\frac{e^{-x}}{-1}\\right) - \\int (-\\sin x)(-e^{-x})\\,dx\\)\n\n\\(= -\\cos x\\, e^{-x} - \\int \\sin x\\, e^{-x}\\,dx\\)\n\n\\(= -\\cos x\\, e^{-x} - \\left[\\sin x(-e^{-x}) - \\int \\cos x\\,(-e^{-x})\\,dx\\right]\\)\n\n\\(= -\\cos x\\, e^{-x} + \\sin x\\, e^{-x} - \\int \\cos x\\, e^{-x}\\,dx\\)\n\nor \\(\\mathrm{I} = -e^{-x}\\cos x + \\sin x\\, e^{-x} - \\mathrm{I}\\)\n\nor \\(2\\mathrm{I} = (\\sin x - \\cos x)e^{-x}\\)\n\nor \\(\\mathrm{I} = \\frac{(\\sin x - \\cos x)e^{-x}}{2}\\)\n\nSubstituting the value of I in equation (1), we get\n\n\\(y e^{-x} = \\left(\\frac{\\sin x - \\cos x}{2}\\right)e^{-x} + \\mathrm{C}\\)\n\nor \\(y = \\left(\\frac{\\sin x - \\cos x}{2}\\right) + \\mathrm{C}e^{x}\\)\n\nwhich is the general solution of the given differential equation.",
+    "_note": "Book misprint preserved: the fourth line of the printed solution writes \\(\\frac{dy}{dx}\\left(y e^{-x}\\right)\\) where it should be \\(\\frac{d}{dx}\\left(y e^{-x}\\right)\\). Transcribed as printed; the following step (integrating both sides) is consistent with \\(\\frac{d}{dx}\\)."
+  },
+  {
+    "ref": "9.5 Eg.15",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation \\(x\\frac{dy}{dx} + 2y = x^2\\) \\((x \\neq 0)\\).",
+    "solution": "The given differential equation is\n\n\\(x\\frac{dy}{dx} + 2y = x^2\\)  ... (1)\n\nDividing both sides of equation (1) by \\(x\\), we get\n\n\\(\\frac{dy}{dx} + \\frac{2}{x}y = x\\)\n\nwhich is a linear differential equation of the type \\(\\frac{dy}{dx} + \\mathrm{P}y = \\mathrm{Q}\\), where \\(\\mathrm{P} = \\frac{2}{x}\\) and \\(\\mathrm{Q} = x\\).\n\nSo \\(\\mathrm{I.F} = e^{\\int \\frac{2}{x}dx} = e^{2\\log x} = e^{\\log x^2} = x^2\\) [as \\(e^{\\log f(x)} = f(x)\\)]\n\nTherefore, solution of the given equation is given by\n\n\\(y \\cdot x^2 = \\int (x)(x^2)\\,dx + \\mathrm{C} = \\int x^3\\,dx + \\mathrm{C}\\)\n\nor \\(y = \\frac{x^2}{4} + \\mathrm{C}x^{-2}\\)\n\nwhich is the general solution of the given differential equation."
+  },
+  {
+    "ref": "9.5 Eg.16",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation \\(y\\,dx - (x + 2y^2)\\,dy = 0\\).",
+    "solution": "The given differential equation can be written as\n\n\\(\\frac{dx}{dy} - \\frac{x}{y} = 2y\\)\n\nThis is a linear differential equation of the type \\(\\frac{dx}{dy} + \\mathrm{P}_1 x = \\mathrm{Q}_1\\), where \\(\\mathrm{P}_1 = -\\frac{1}{y}\\) and \\(\\mathrm{Q}_1 = 2y\\).\n\nTherefore \\(\\mathrm{I.F} = e^{\\int -\\frac{1}{y}dy} = e^{-\\log y} = e^{\\log (y)^{-1}} = \\frac{1}{y}\\)\n\nHence, the solution of the given differential equation is\n\n\\(x\\frac{1}{y} = \\int (2y)\\left(\\frac{1}{y}\\right)dy + \\mathrm{C}\\)\n\nor \\(\\frac{x}{y} = \\int (2\\,dy) + \\mathrm{C}\\)\n\nor \\(\\frac{x}{y} = 2y + \\mathrm{C}\\)\n\nor \\(x = 2y^2 + \\mathrm{C}y\\)\n\nwhich is a general solution of the given differential equation."
+  },
+  {
+    "ref": "9.5 Eg.17",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "HARD",
+    "stem": "Find the particular solution of the differential equation \\(\\frac{dy}{dx} + y\\cot x = 2x + x^2\\cot x\\) \\((x \\neq 0)\\), given that \\(y = 0\\) when \\(x = \\frac{\\pi}{2}\\).",
+    "solution": "The given equation is a linear differential equation of the type \\(\\frac{dy}{dx} + \\mathrm{P}y = \\mathrm{Q}\\), where \\(\\mathrm{P} = \\cot x\\) and \\(\\mathrm{Q} = 2x + x^2\\cot x\\). Therefore\n\n\\(\\mathrm{I.F} = e^{\\int \\cot x\\,dx} = e^{\\log \\sin x} = \\sin x\\)\n\nHence, the solution of the differential equation is given by\n\n\\(y \\cdot \\sin x = \\int (2x + x^2\\cot x)\\sin x\\,dx + \\mathrm{C}\\)\n\nor \\(y\\sin x = \\int 2x\\sin x\\,dx + \\int x^2\\cos x\\,dx + \\mathrm{C}\\)\n\nor \\(y\\sin x = \\sin x\\left(\\frac{2x^2}{2}\\right) - \\int \\cos x\\left(\\frac{2x^2}{2}\\right)dx + \\int x^2\\cos x\\,dx + \\mathrm{C}\\)\n\nor \\(y\\sin x = x^2\\sin x - \\int x^2\\cos x\\,dx + \\int x^2\\cos x\\,dx + \\mathrm{C}\\)\n\nor \\(y\\sin x = x^2\\sin x + \\mathrm{C}\\)  ... (1)\n\nSubstituting \\(y = 0\\) and \\(x = \\frac{\\pi}{2}\\) in equation (1), we get\n\n\\(0 = \\left(\\frac{\\pi}{2}\\right)^2\\sin\\left(\\frac{\\pi}{2}\\right) + \\mathrm{C}\\)\n\nor \\(\\mathrm{C} = \\frac{-\\pi^2}{4}\\)\n\nSubstituting the value of C in equation (1), we get\n\n\\(y\\sin x = x^2\\sin x - \\frac{\\pi^2}{4}\\)\n\nor \\(y = x^2 - \\frac{\\pi^2}{4\\sin x}\\) \\((\\sin x \\neq 0)\\)\n\nwhich is the particular solution of the given differential equation."
+  },
+  {
+    "ref": "9.5 Eg.18",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Find the equation of a curve passing through the point \\((0, 1)\\). If the slope of the tangent to the curve at any point \\((x, y)\\) is equal to the sum of the \\(x\\) coordinate (abscissa) and the product of the \\(x\\) coordinate and \\(y\\) coordinate (ordinate) of that point.",
+    "solution": "We know that the slope of the tangent to the curve is \\(\\frac{dy}{dx}\\).\n\nTherefore, \\(\\frac{dy}{dx} = x + xy\\)\n\nor \\(\\frac{dy}{dx} - xy = x\\)  ... (1)\n\nThis is a linear differential equation of the type \\(\\frac{dy}{dx} + \\mathrm{P}y = \\mathrm{Q}\\), where \\(\\mathrm{P} = -x\\) and \\(\\mathrm{Q} = x\\).\n\nTherefore, \\(\\mathrm{I.F} = e^{\\int -x\\,dx} = e^{\\frac{-x^2}{2}}\\)\n\nHence, the solution of equation is given by\n\n\\(y \\cdot e^{\\frac{-x^2}{2}} = \\int (x)\\left(e^{\\frac{-x^2}{2}}\\right)dx + \\mathrm{C}\\)  ... (2)\n\nLet \\(\\mathrm{I} = \\int (x)\\,e^{\\frac{-x^2}{2}}\\,dx\\).\n\nLet \\(\\frac{-x^2}{2} = t\\), then \\(-x\\,dx = dt\\) or \\(x\\,dx = -dt\\).\n\nTherefore, \\(\\mathrm{I} = -\\int e^{t}\\,dt = -e^{t} = -e^{\\frac{-x^2}{2}}\\)\n\nSubstituting the value of I in equation (2), we get\n\n\\(y\\,e^{\\frac{-x^2}{2}} = -e^{\\frac{-x^2}{2}} + \\mathrm{C}\\)\n\nor \\(y = -1 + \\mathrm{C}\\,e^{\\frac{x^2}{2}}\\)  ... (3)\n\nNow (3) represents the equation of family of curves. But we are interested in finding a particular member of the family passing through \\((0, 1)\\). Substituting \\(x = 0\\) and \\(y = 1\\) in equation (3) we get\n\n\\(1 = -1 + \\mathrm{C}\\cdot e^{0}\\) or \\(\\mathrm{C} = 2\\)\n\nSubstituting the value of C in equation (3), we get\n\n\\(y = -1 + 2\\,e^{\\frac{x^2}{2}}\\)\n\nwhich is the equation of the required curve."
+  },
+  {
+    "ref": "Ex 9.5 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation \\(\\frac{dy}{dx} + 2y = \\sin x\\)."
+  },
+  {
+    "ref": "Ex 9.5 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "EASY",
+    "stem": "Find the general solution of the differential equation \\(\\frac{dy}{dx} + 3y = e^{-2x}\\)."
+  },
+  {
+    "ref": "Ex 9.5 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "EASY",
+    "stem": "Find the general solution of the differential equation \\(\\frac{dy}{dx} + \\frac{y}{x} = x^2\\)."
+  },
+  {
+    "ref": "Ex 9.5 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation \\(\\frac{dy}{dx} + (\\sec x)\\,y = \\tan x\\) \\(\\left(0 \\le x < \\frac{\\pi}{2}\\right)\\)."
+  },
+  {
+    "ref": "Ex 9.5 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "HARD",
+    "stem": "Find the general solution of the differential equation \\(\\cos^2 x\\,\\frac{dy}{dx} + y = \\tan x\\) \\(\\left(0 \\le x < \\frac{\\pi}{2}\\right)\\)."
+  },
+  {
+    "ref": "Ex 9.5 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation \\(x\\frac{dy}{dx} + 2y = x^2\\log x\\)."
+  },
+  {
+    "ref": "Ex 9.5 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation \\(x\\log x\\,\\frac{dy}{dx} + y = \\frac{2}{x}\\log x\\)."
+  },
+  {
+    "ref": "Ex 9.5 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation \\((1 + x^2)\\,dy + 2xy\\,dx = \\cot x\\,dx\\) \\((x \\neq 0)\\)."
+  },
+  {
+    "ref": "Ex 9.5 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "HARD",
+    "stem": "Find the general solution of the differential equation \\(x\\frac{dy}{dx} + y - x + xy\\cot x = 0\\) \\((x \\neq 0)\\)."
+  },
+  {
+    "ref": "Ex 9.5 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation \\((x + y)\\frac{dy}{dx} = 1\\)."
+  },
+  {
+    "ref": "Ex 9.5 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation \\(y\\,dx + (x - y^2)\\,dy = 0\\)."
+  },
+  {
+    "ref": "Ex 9.5 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation \\((x + 3y^2)\\frac{dy}{dx} = y\\) \\((y > 0)\\)."
+  },
+  {
+    "ref": "Ex 9.5 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Find a particular solution of the differential equation \\(\\frac{dy}{dx} + 2y\\tan x = \\sin x\\) satisfying the given condition: \\(y = 0\\) when \\(x = \\frac{\\pi}{3}\\)."
+  },
+  {
+    "ref": "Ex 9.5 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Find a particular solution of the differential equation \\((1 + x^2)\\frac{dy}{dx} + 2xy = \\frac{1}{1 + x^2}\\) satisfying the given condition: \\(y = 0\\) when \\(x = 1\\)."
+  },
+  {
+    "ref": "Ex 9.5 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "HARD",
+    "stem": "Find a particular solution of the differential equation \\(\\frac{dy}{dx} - 3y\\cot x = \\sin 2x\\) satisfying the given condition: \\(y = 2\\) when \\(x = \\frac{\\pi}{2}\\)."
+  },
+  {
+    "ref": "Ex 9.5 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "Find the equation of a curve passing through the origin given that the slope of the tangent to the curve at any point \\((x, y)\\) is equal to the sum of the coordinates of the point."
+  },
+  {
+    "ref": "Ex 9.5 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "HARD",
+    "stem": "Find the equation of a curve passing through the point \\((0, 2)\\) given that the sum of the coordinates of any point on the curve exceeds the magnitude of the slope of the tangent to the curve at that point by 5."
+  },
+  {
+    "ref": "Ex 9.5 Q18",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "EASY",
+    "stem": "The Integrating Factor of the differential equation \\(x\\frac{dy}{dx} - y = 2x^2\\) is",
+    "options": [
+      {"label": "A", "text": "\\(e^{-x}\\)"},
+      {"label": "B", "text": "\\(e^{-y}\\)"},
+      {"label": "C", "text": "\\(\\frac{1}{x}\\)"},
+      {"label": "D", "text": "\\(x\\)"}
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Ex 9.5 Q19",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "The Integrating Factor of the differential equation \\((1 - y^2)\\frac{dx}{dy} + yx = ay\\) \\((-1 < y < 1)\\) is",
+    "options": [
+      {"label": "A", "text": "\\(\\frac{1}{y^2 - 1}\\)"},
+      {"label": "B", "text": "\\(\\frac{1}{\\sqrt{y^2 - 1}}\\)"},
+      {"label": "C", "text": "\\(\\frac{1}{1 - y^2}\\)"},
+      {"label": "D", "text": "\\(\\frac{1}{\\sqrt{1 - y^2}}\\)"}
+    ],
+    "answer": "D"
+  }
+]

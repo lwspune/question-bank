@@ -1,0 +1,233 @@
+[
+  {
+    "ref": "Misc Eg.19",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "General and Particular Solutions",
+    "difficulty": "HARD",
+    "stem": "Verify that the function \\(y = c_1 e^{ax} \\cos bx + c_2 e^{ax} \\sin bx\\), where \\(c_1, c_2\\) are arbitrary constants is a solution of the differential equation \\(\\frac{d^2y}{dx^2} - 2a\\frac{dy}{dx} + (a^2 + b^2)y = 0\\).",
+    "solution": "The given function is\n\n\\(y = e^{ax}[c_1 \\cos bx + c_2 \\sin bx]\\)  ... (1)\n\nDifferentiating both sides of equation (1) with respect to \\(x\\), we get\n\n\\(\\frac{dy}{dx} = e^{ax}\\left[-bc_1 \\sin bx + bc_2 \\cos bx\\right] + \\left[c_1 \\cos bx + c_2 \\sin bx\\right]e^{ax} \\cdot a\\)\n\nor \\(\\frac{dy}{dx} = e^{ax}[(bc_2 + ac_1)\\cos bx + (ac_2 - bc_1)\\sin bx]\\)  ... (2)\n\nDifferentiating both sides of equation (2) with respect to \\(x\\), we get\n\n\\(\\frac{d^2y}{dx^2} = e^{ax}[(bc_2 + ac_1)(-b\\sin bx) + (ac_2 - bc_1)(b\\cos bx)] + [(bc_2 + ac_1)\\cos bx + (ac_2 - bc_1)\\sin bx]e^{ax}\\cdot a\\)\n\n\\(= e^{ax}[(a^2c_2 - 2abc_1 - b^2c_2)\\sin bx + (a^2c_1 + 2abc_2 - b^2c_1)\\cos bx]\\)\n\nSubstituting the values of \\(\\frac{d^2y}{dx^2}\\), \\(\\frac{dy}{dx}\\) and \\(y\\) in the given differential equation, we get\n\nL.H.S. \\(= e^{ax}[(a^2c_2 - 2abc_1 - b^2c_2)\\sin bx + (a^2c_1 + 2abc_2 - b^2c_1)\\cos bx]\\)\n\n\\(\\qquad - 2ae^{ax}[(bc_2 + ac_1)\\cos bx + (ac_2 - bc_1)\\sin bx]\\)\n\n\\(\\qquad + (a^2 + b^2)e^{ax}[c_1 \\cos bx + c_2 \\sin bx]\\)\n\n\\(= e^{ax}\\left[\\left(a^2c_2 - 2abc_1 - b^2c_2 - 2a^2c_2 + 2abc_1 + a^2c_2 + b^2c_2\\right)\\sin bx + \\left(a^2c_1 + 2abc_2 - b^2c_1 - 2abc_2 - 2a^2c_1 + a^2c_1 + b^2c_1\\right)\\cos bx\\right]\\)\n\n\\(= e^{ax}[0 \\times \\sin bx + 0 \\cos bx] = e^{ax} \\times 0 = 0 = \\) R.H.S.\n\nHence, the given function is a solution of the given differential equation."
+  },
+  {
+    "ref": "Misc Eg.20",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find the particular solution of the differential equation \\(\\log\\left(\\frac{dy}{dx}\\right) = 3x + 4y\\) given that \\(y = 0\\) when \\(x = 0\\).",
+    "solution": "The given differential equation can be written as\n\n\\(\\frac{dy}{dx} = e^{(3x + 4y)}\\)\n\nor \\(\\frac{dy}{dx} = e^{3x} \\cdot e^{4y}\\)  ... (1)\n\nSeparating the variables, we get\n\n\\(\\frac{dy}{e^{4y}} = e^{3x}\\,dx\\)\n\nTherefore \\(\\int e^{-4y}\\,dy = \\int e^{3x}\\,dx\\)\n\nor \\(\\frac{e^{-4y}}{-4} = \\frac{e^{3x}}{3} + \\mathrm{C}\\)\n\nor \\(4e^{3x} + 3e^{-4y} + 12\\,\\mathrm{C} = 0\\)  ... (2)\n\nSubstituting \\(x = 0\\) and \\(y = 0\\) in (2), we get\n\n\\(4 + 3 + 12\\,\\mathrm{C} = 0\\) or \\(\\mathrm{C} = \\frac{-7}{12}\\)\n\nSubstituting the value of \\(\\mathrm{C}\\) in equation (2), we get\n\n\\(4e^{3x} + 3e^{-4y} - 7 = 0\\),\n\nwhich is a particular solution of the given differential equation."
+  },
+  {
+    "ref": "Misc Eg.21",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Homogeneous Differential Equations",
+    "difficulty": "HARD",
+    "stem": "Solve the differential equation \\((x\\,dy - y\\,dx)\\,y\\sin\\left(\\frac{y}{x}\\right) = (y\\,dx + x\\,dy)\\,x\\cos\\left(\\frac{y}{x}\\right)\\).",
+    "solution": "The given differential equation can be written as\n\n\\(\\left[xy\\sin\\left(\\frac{y}{x}\\right) - x^2\\cos\\left(\\frac{y}{x}\\right)\\right]dy = \\left[xy\\cos\\left(\\frac{y}{x}\\right) + y^2\\sin\\left(\\frac{y}{x}\\right)\\right]dx\\)\n\nor \\(\\frac{dy}{dx} = \\frac{xy\\cos\\left(\\frac{y}{x}\\right) + y^2\\sin\\left(\\frac{y}{x}\\right)}{xy\\sin\\left(\\frac{y}{x}\\right) - x^2\\cos\\left(\\frac{y}{x}\\right)}\\)\n\nDividing numerator and denominator on RHS by \\(x^2\\), we get\n\n\\(\\frac{dy}{dx} = \\frac{\\frac{y}{x}\\cos\\left(\\frac{y}{x}\\right) + \\left(\\frac{y^2}{x^2}\\right)\\sin\\left(\\frac{y}{x}\\right)}{\\frac{y}{x}\\sin\\left(\\frac{y}{x}\\right) - \\cos\\left(\\frac{y}{x}\\right)}\\)  ... (1)\n\nClearly, equation (1) is a homogeneous differential equation of the form \\(\\frac{dy}{dx} = g\\left(\\frac{y}{x}\\right)\\). To solve it, we make the substitution\n\n\\(y = vx\\)  ... (2)\n\nor \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\)\n\nor \\(v + x\\frac{dv}{dx} = \\frac{v\\cos v + v^2\\sin v}{v\\sin v - \\cos v}\\)  (using (1) and (2))\n\nor \\(x\\frac{dv}{dx} = \\frac{2v\\cos v}{v\\sin v - \\cos v}\\)\n\nor \\(\\left(\\frac{v\\sin v - \\cos v}{v\\cos v}\\right)dv = \\frac{2\\,dx}{x}\\)\n\nTherefore \\(\\int\\left(\\frac{v\\sin v - \\cos v}{v\\cos v}\\right)dv = 2\\int\\frac{1}{x}\\,dx\\)\n\nor \\(\\int \\tan v\\,dv - \\int\\frac{1}{v}\\,dv = 2\\int\\frac{1}{x}\\,dx\\)\n\nor \\(\\log|\\sec v| - \\log|v| = 2\\log|x| + \\log|\\mathrm{C}_1|\\)\n\nor \\(\\log\\left|\\frac{\\sec v}{v\\,x^2}\\right| = \\log|\\mathrm{C}_1|\\)\n\nor \\(\\frac{\\sec v}{v\\,x^2} = \\pm\\,\\mathrm{C}_1\\)  ... (3)\n\nReplacing \\(v\\) by \\(\\frac{y}{x}\\) in equation (3), we get\n\n\\(\\frac{\\sec\\left(\\frac{y}{x}\\right)}{\\left(\\frac{y}{x}\\right)(x^2)} = \\mathrm{C}\\) where, \\(\\mathrm{C} = \\pm\\,\\mathrm{C}_1\\)\n\nor \\(\\sec\\left(\\frac{y}{x}\\right) = \\mathrm{C}\\,xy\\)\n\nwhich is the general solution of the given differential equation."
+  },
+  {
+    "ref": "Misc Eg.22",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "HARD",
+    "stem": "Solve the differential equation \\((\\tan^{-1}y - x)\\,dy = (1 + y^2)\\,dx\\).",
+    "solution": "The given differential equation can be written as\n\n\\(\\frac{dx}{dy} + \\frac{x}{1 + y^2} = \\frac{\\tan^{-1}y}{1 + y^2}\\)  ... (1)\n\nNow (1) is a linear differential equation of the form \\(\\frac{dx}{dy} + \\mathrm{P}_1 x = \\mathrm{Q}_1\\),\n\nwhere, \\(\\mathrm{P}_1 = \\frac{1}{1 + y^2}\\) and \\(\\mathrm{Q}_1 = \\frac{\\tan^{-1}y}{1 + y^2}\\).\n\nTherefore, \\(\\mathrm{I.F} = e^{\\int\\frac{1}{1 + y^2}dy} = e^{\\tan^{-1}y}\\)\n\nThus, the solution of the given differential equation is\n\n\\(x\\,e^{\\tan^{-1}y} = \\int\\left(\\frac{\\tan^{-1}y}{1 + y^2}\\right)e^{\\tan^{-1}y}\\,dy + \\mathrm{C}\\)  ... (2)\n\nLet \\(\\mathrm{I} = \\int\\left(\\frac{\\tan^{-1}y}{1 + y^2}\\right)e^{\\tan^{-1}y}\\,dy\\)\n\nSubstituting \\(\\tan^{-1}y = t\\) so that \\(\\left(\\frac{1}{1 + y^2}\\right)dy = dt\\), we get\n\n\\(\\mathrm{I} = \\int t\\,e^t\\,dt = t\\,e^t - \\int 1 \\cdot e^t\\,dt = t\\,e^t - e^t = e^t(t - 1)\\)\n\nor \\(\\mathrm{I} = e^{\\tan^{-1}y}(\\tan^{-1}y - 1)\\)\n\nSubstituting the value of \\(\\mathrm{I}\\) in equation (2), we get\n\n\\(x \\cdot e^{\\tan^{-1}y} = e^{\\tan^{-1}y}(\\tan^{-1}y - 1) + \\mathrm{C}\\)\n\nor \\(x = (\\tan^{-1}y - 1) + \\mathrm{C}\\,e^{-\\tan^{-1}y}\\)\n\nwhich is the general solution of the given differential equation."
+  },
+  {
+    "ref": "Misc Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Degree of a Differential Equation",
+    "difficulty": "EASY",
+    "context": "For each of the differential equations given below, indicate its order and degree (if defined).",
+    "setLabel": "Misc Q1",
+    "stem": "\\(\\frac{d^2y}{dx^2} + 5x\\left(\\frac{dy}{dx}\\right)^2 - 6y = \\log x\\)"
+  },
+  {
+    "ref": "Misc Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Degree of a Differential Equation",
+    "difficulty": "EASY",
+    "context": "For each of the differential equations given below, indicate its order and degree (if defined).",
+    "setLabel": "Misc Q1",
+    "stem": "\\(\\left(\\frac{dy}{dx}\\right)^3 - 4\\left(\\frac{dy}{dx}\\right)^2 + 7y = \\sin x\\)"
+  },
+  {
+    "ref": "Misc Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Order and Degree of a Differential Equation",
+    "difficulty": "EASY",
+    "context": "For each of the differential equations given below, indicate its order and degree (if defined).",
+    "setLabel": "Misc Q1",
+    "stem": "\\(\\frac{d^4y}{dx^4} - \\sin\\left(\\frac{d^3y}{dx^3}\\right) = 0\\)"
+  },
+  {
+    "ref": "Misc Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General and Particular Solutions",
+    "difficulty": "MODERATE",
+    "context": "For each of the exercises given below, verify that the given function (implicit or explicit) is a solution of the corresponding differential equation.",
+    "setLabel": "Misc Q2",
+    "stem": "\\(xy = a\\,e^{x} + b\\,e^{-x} + x^2\\)  :  \\(x\\frac{d^2y}{dx^2} + 2\\frac{dy}{dx} - xy + x^2 - 2 = 0\\)"
+  },
+  {
+    "ref": "Misc Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General and Particular Solutions",
+    "difficulty": "MODERATE",
+    "context": "For each of the exercises given below, verify that the given function (implicit or explicit) is a solution of the corresponding differential equation.",
+    "setLabel": "Misc Q2",
+    "stem": "\\(y = e^{x}(a\\cos x + b\\sin x)\\)  :  \\(\\frac{d^2y}{dx^2} - 2\\frac{dy}{dx} + 2y = 0\\)"
+  },
+  {
+    "ref": "Misc Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General and Particular Solutions",
+    "difficulty": "MODERATE",
+    "context": "For each of the exercises given below, verify that the given function (implicit or explicit) is a solution of the corresponding differential equation.",
+    "setLabel": "Misc Q2",
+    "stem": "\\(y = x\\sin 3x\\)  :  \\(\\frac{d^2y}{dx^2} + 9y - 6\\cos 3x = 0\\)"
+  },
+  {
+    "ref": "Misc Q2(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "General and Particular Solutions",
+    "difficulty": "MODERATE",
+    "context": "For each of the exercises given below, verify that the given function (implicit or explicit) is a solution of the corresponding differential equation.",
+    "setLabel": "Misc Q2",
+    "stem": "\\(x^2 = 2y^2\\log y\\)  :  \\((x^2 + y^2)\\frac{dy}{dx} - xy = 0\\)"
+  },
+  {
+    "ref": "Misc Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Homogeneous Differential Equations",
+    "difficulty": "HARD",
+    "stem": "Prove that \\(x^2 - y^2 = c\\,(x^2 + y^2)^2\\) is the general solution of differential equation \\((x^3 - 3x\\,y^2)\\,dx = (y^3 - 3x^2y)\\,dy\\), where \\(c\\) is a parameter."
+  },
+  {
+    "ref": "Misc Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find the general solution of the differential equation \\(\\frac{dy}{dx} + \\sqrt{\\frac{1 - y^2}{1 - x^2}} = 0\\)."
+  },
+  {
+    "ref": "Misc Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "HARD",
+    "stem": "Show that the general solution of the differential equation \\(\\frac{dy}{dx} + \\frac{y^2 + y + 1}{x^2 + x + 1} = 0\\) is given by \\((x + y + 1) = \\mathrm{A}\\,(1 - x - y - 2xy)\\), where \\(\\mathrm{A}\\) is parameter."
+  },
+  {
+    "ref": "Misc Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find the equation of the curve passing through the point \\(\\left(0, \\frac{\\pi}{4}\\right)\\) whose differential equation is \\(\\sin x \\cos y\\,dx + \\cos x \\sin y\\,dy = 0\\)."
+  },
+  {
+    "ref": "Misc Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find the particular solution of the differential equation \\((1 + e^{2x})\\,dy + (1 + y^2)\\,e^{x}\\,dx = 0\\), given that \\(y = 1\\) when \\(x = 0\\)."
+  },
+  {
+    "ref": "Misc Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Homogeneous Differential Equations",
+    "difficulty": "HARD",
+    "stem": "Solve the differential equation \\(y\\,e^{\\frac{x}{y}}\\,dx = \\left(x\\,e^{\\frac{x}{y}} + y^2\\right)dy\\;(y \\ne 0)\\)."
+  },
+  {
+    "ref": "Misc Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find a particular solution of the differential equation \\((x - y)\\,(dx + dy) = dx - dy\\), given that \\(y = -1\\), when \\(x = 0\\). (Hint: put \\(x - y = t\\))"
+  },
+  {
+    "ref": "Misc Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "HARD",
+    "stem": "Solve the differential equation \\(\\left[\\frac{e^{-2\\sqrt{x}}}{\\sqrt{x}} - \\frac{y}{\\sqrt{x}}\\right]\\frac{dx}{dy} = 1\\;(x \\ne 0)\\)."
+  },
+  {
+    "ref": "Misc Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "HARD",
+    "stem": "Find a particular solution of the differential equation \\(\\frac{dy}{dx} + y\\cot x = 4x\\operatorname{cosec} x\\;(x \\ne 0)\\), given that \\(y = 0\\) when \\(x = \\frac{\\pi}{2}\\)."
+  },
+  {
+    "ref": "Misc Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variables Separable",
+    "difficulty": "MODERATE",
+    "stem": "Find a particular solution of the differential equation \\((x + 1)\\frac{dy}{dx} = 2e^{-y} - 1\\), given that \\(y = 0\\) when \\(x = 0\\)."
+  },
+  {
+    "ref": "Misc Q13",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Variables Separable",
+    "difficulty": "EASY",
+    "stem": "The general solution of the differential equation \\(\\frac{y\\,dx - x\\,dy}{y} = 0\\) is",
+    "options": [
+      { "label": "A", "text": "\\(xy = \\mathrm{C}\\)" },
+      { "label": "B", "text": "\\(x = \\mathrm{C}y^2\\)" },
+      { "label": "C", "text": "\\(y = \\mathrm{C}x\\)" },
+      { "label": "D", "text": "\\(y = \\mathrm{C}x^2\\)" }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc Q14",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "EASY",
+    "stem": "The general solution of a differential equation of the type \\(\\frac{dx}{dy} + \\mathrm{P}_1 x = \\mathrm{Q}_1\\) is",
+    "options": [
+      { "label": "A", "text": "\\(y\\,e^{\\int \\mathrm{P}_1\\,dy} = \\int\\left(\\mathrm{Q}_1 e^{\\int \\mathrm{P}_1\\,dy}\\right)dy + \\mathrm{C}\\)" },
+      { "label": "B", "text": "\\(y \\cdot e^{\\int \\mathrm{P}_1\\,dx} = \\int\\left(\\mathrm{Q}_1 e^{\\int \\mathrm{P}_1\\,dx}\\right)dx + \\mathrm{C}\\)" },
+      { "label": "C", "text": "\\(x\\,e^{\\int \\mathrm{P}_1\\,dy} = \\int\\left(\\mathrm{Q}_1 e^{\\int \\mathrm{P}_1\\,dy}\\right)dy + \\mathrm{C}\\)" },
+      { "label": "D", "text": "\\(x\\,e^{\\int \\mathrm{P}_1\\,dx} = \\int\\left(\\mathrm{Q}_1 e^{\\int \\mathrm{P}_1\\,dx}\\right)dx + \\mathrm{C}\\)" }
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc Q15",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Linear Differential Equations",
+    "difficulty": "MODERATE",
+    "stem": "The general solution of the differential equation \\(e^{x}\\,dy + (y\\,e^{x} + 2x)\\,dx = 0\\) is",
+    "options": [
+      { "label": "A", "text": "\\(x\\,e^{y} + x^2 = \\mathrm{C}\\)" },
+      { "label": "B", "text": "\\(x\\,e^{y} + y^2 = \\mathrm{C}\\)" },
+      { "label": "C", "text": "\\(y\\,e^{x} + x^2 = \\mathrm{C}\\)" },
+      { "label": "D", "text": "\\(y\\,e^{y} + x^2 = \\mathrm{C}\\)" }
+    ],
+    "answer": "C"
+  }
+]

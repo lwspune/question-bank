@@ -1,0 +1,373 @@
+[
+  {
+    "ref": "Ex 1.1 Q1(i)",
+    "book_key": "Neither reflexive nor symmetric nor transitive.",
+    "our_answer": "Neither reflexive, nor symmetric, nor transitive.",
+    "verdict": "AGREE",
+    "note": "R = {(1,3),(2,6),(3,9),(4,12)} in A={1..14}. (1,1) absent; (1,3) in R but (3,1) not; (1,3),(3,9) in R but (1,9) not. Confirmed."
+  },
+  {
+    "ref": "Ex 1.1 Q1(ii)",
+    "book_key": "Neither reflexive nor symmetric but transitive.",
+    "our_answer": "Transitive but neither reflexive nor symmetric.",
+    "verdict": "AGREE",
+    "note": "R = {(1,6),(2,7),(3,8)}. First entries {1,2,3}, second entries {6,7,8} are disjoint, so no chain (x,y),(y,z) exists and transitivity holds VACUOUSLY. This is the structural twin of Q1(v)(d) and our solution handles it correctly."
+  },
+  {
+    "ref": "Ex 1.1 Q1(iii)",
+    "book_key": "Reflexive and transitive but not symmetric.",
+    "our_answer": "Reflexive and transitive but not symmetric.",
+    "verdict": "AGREE",
+    "note": "Divisibility on {1..6}: x|x reflexive; (1,2) in R, (2,1) not; divisibility is transitive. Confirmed."
+  },
+  {
+    "ref": "Ex 1.1 Q1(iv)",
+    "book_key": "Reflexive, symmetric and transitive.",
+    "our_answer": "Reflexive, symmetric and transitive.",
+    "verdict": "AGREE",
+    "note": "x - y is always an integer for x,y in Z, so R = Z x Z, the universal relation. Confirmed."
+  },
+  {
+    "ref": "Ex 1.1 Q1(v)(a)",
+    "book_key": "Reflexive, symmetric and transitive.",
+    "our_answer": "Reflexive, symmetric and transitive.",
+    "verdict": "AGREE",
+    "note": "\"Work at the same place\" is an equality-of-workplace relation, hence an equivalence relation. Confirmed."
+  },
+  {
+    "ref": "Ex 1.1 Q1(v)(b)",
+    "book_key": "Reflexive, symmetric and transitive.",
+    "our_answer": "Reflexive, symmetric and transitive.",
+    "verdict": "AGREE",
+    "note": "\"Live in the same locality\" is an equality-of-locality relation, hence an equivalence relation. Confirmed."
+  },
+  {
+    "ref": "Ex 1.1 Q1(v)(c)",
+    "book_key": "Neither reflexive nor symmetric nor transitive.",
+    "our_answer": "Neither reflexive, nor symmetric, nor transitive.",
+    "verdict": "AGREE",
+    "note": "\"Exactly 7 cm taller\": height difference 0 for (x,x); reversal gives shorter not taller; two 7 cm steps give 14 cm. A genuine chain DOES exist here, unlike (d), so transitivity genuinely fails. Confirmed."
+  },
+  {
+    "ref": "Ex 1.1 Q1(v)(d)",
+    "book_key": "Neither reflexive nor symmetric but transitive.",
+    "our_answer": "R is transitive but neither reflexive nor symmetric.",
+    "verdict": "AGREE",
+    "note": "INDEPENDENTLY RE-DERIVED. (x,y) in R forces x female and y male. A chain (x,y),(y,z) would force y both male (husband of x) and female (wife of z) — impossible. So NO chain of two pairs exists in R, the implication defining transitivity is never tested, and transitivity holds VACUOUSLY: R IS transitive. Not reflexive (x is not the wife of x); not symmetric ((y,x) would need y female). The printed key agrees. The correction from the earlier self-contradictory text ('no chain can exist, therefore not transitive' — which cited the exact ground for vacuous truth as grounds for its failure) is CONFIRMED CORRECT. TWO SOURCE-HYGIENE ITEMS, neither a mathematical defect: (1) the review dump scripts/ncert/data/relationsFunctions.review.json is STALE for this row — it still carries the pre-correction text ending 'Hence R is neither reflexive, nor symmetric, nor transitive.' The corrected text is present in relationsFunctions.all.solutions.json AND in the live DB row cc1387c1-0768-42f9-8963-54541b17e4f6, which is what matters for PUBLIC; re-dump the review file so the two cannot be confused later. (2) the `_note` attached to this row in relationsFunctions.all.solutions.json is FACTUALLY WRONG about the key: it states \"the NCERT key records R as 'not transitive'\" and that the solution \"follows the book's verdict\". The printed key reads '(d) Neither reflexive nor symmetric but transitive.' — i.e. the key says TRANSITIVE. That note should be deleted or rewritten; left as is it would mislead a future reader into 'restoring' the wrong answer."
+  },
+  {
+    "ref": "Ex 1.1 Q1(v)(e)",
+    "book_key": "Neither reflexive nor symmetric nor transitive.",
+    "our_answer": "Neither reflexive, nor symmetric, nor transitive.",
+    "verdict": "AGREE",
+    "note": "\"Father of\": a chain x-father-of-y, y-father-of-z DOES exist (grandfather case) and (x,z) is not in R, so transitivity genuinely fails. Contrast with (d), where no chain exists at all. Confirmed."
+  },
+  {
+    "ref": "Ex 1.1 Q2",
+    "book_key": "(not printed)",
+    "our_answer": "Neither reflexive, nor symmetric, nor transitive.",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Show that\" question; the key prints no entry for Ex 1.1 Q2. Our counterexamples were still sanity-checked: a=1/2 fails a<=a^2; (1,4) in R, (4,1) not; (3,2),(2,3/2) in R but (3,3/2) not."
+  },
+  {
+    "ref": "Ex 1.1 Q3",
+    "book_key": "Neither reflexive nor symmetric nor transitive.",
+    "our_answer": "Neither reflexive, nor symmetric, nor transitive.",
+    "verdict": "AGREE",
+    "note": "R = {(1,2),(2,3),(3,4),(4,5),(5,6)}. Confirmed."
+  },
+  {
+    "ref": "Ex 1.1 Q4",
+    "book_key": "(not printed)",
+    "our_answer": "Reflexive and transitive but not symmetric.",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Show that\" question; no key entry. Our answer restates the question's own claim and is correct for a<=b on R."
+  },
+  {
+    "ref": "Ex 1.1 Q5",
+    "book_key": "Neither reflexive nor symmetric nor transitive.",
+    "our_answer": "Neither reflexive, nor symmetric, nor transitive.",
+    "verdict": "AGREE",
+    "note": "a<=b^3. Re-checked the transitivity counterexample numerically: 3 <= (3/2)^3 = 3.375 true; 1.5 <= (6/5)^3 = 1.728 true; 3 <= 1.728 false. Valid. Confirmed."
+  },
+  {
+    "ref": "Ex 1.1 Q6",
+    "book_key": "(not printed)",
+    "our_answer": "Symmetric but neither reflexive nor transitive.",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Show that\" question; no key entry. Correct for R = {(1,2),(2,1)} on {1,2,3}."
+  },
+  {
+    "ref": "Ex 1.1 Q7",
+    "book_key": "(not printed)",
+    "our_answer": "R is an equivalence relation.",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Show that\" question; no key entry. Same-number-of-pages is an equality-induced relation, hence an equivalence relation."
+  },
+  {
+    "ref": "Ex 1.1 Q8",
+    "book_key": "(not printed)",
+    "our_answer": "Equivalence relation; {1,3,5} mutually related, {2,4} mutually related, no cross relation.",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Show that\" question; no key entry. |a-b| even is same-parity, so the classes are the odds and the evens of A. Correct."
+  },
+  {
+    "ref": "Ex 1.1 Q9(i)",
+    "book_key": "{1, 5, 9}",
+    "our_answer": "{1, 5, 9}",
+    "verdict": "AGREE",
+    "note": "A = {0..12}; |a-1| a multiple of 4 gives a in {1,5,9} (13 and -3 fall outside A). Confirmed."
+  },
+  {
+    "ref": "Ex 1.1 Q9(ii)",
+    "book_key": "{1}",
+    "our_answer": "{1}",
+    "verdict": "AGREE",
+    "note": "R is equality, so the class of 1 is {1}. Confirmed."
+  },
+  {
+    "ref": "Ex 1.1 Q10(i)",
+    "book_key": "(not printed)",
+    "our_answer": "R = {(1,2),(2,1)} on {1,2,3}",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Give an example\" question — the key prints nothing because many answers are valid. Verified: not reflexive ((1,1) absent), symmetric, not transitive ((1,2),(2,1) but (1,1) absent)."
+  },
+  {
+    "ref": "Ex 1.1 Q10(ii)",
+    "book_key": "(not printed)",
+    "our_answer": "R = {(a,b) : a < b} on R",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "Example question, no key entry. Strict order is transitive, irreflexive and asymmetric. Valid."
+  },
+  {
+    "ref": "Ex 1.1 Q10(iii)",
+    "book_key": "(not printed)",
+    "our_answer": "R = {(1,1),(2,2),(3,3),(1,2),(2,1),(2,3),(3,2)} on {1,2,3}",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "Example question, no key entry. Verified reflexive and symmetric; (1,2),(2,3) in R but (1,3) not, so not transitive. Valid."
+  },
+  {
+    "ref": "Ex 1.1 Q10(iv)",
+    "book_key": "(not printed)",
+    "our_answer": "R = {(a,b) : a <= b} on R",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "Example question, no key entry. Valid."
+  },
+  {
+    "ref": "Ex 1.1 Q10(v)",
+    "book_key": "(not printed)",
+    "our_answer": "R = {(1,1),(2,2),(1,2),(2,1)} on {1,2,3}",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "Example question, no key entry. Verified symmetric and transitive (R is all of {1,2}x{1,2}); not reflexive because (3,3) is absent. Valid."
+  },
+  {
+    "ref": "Ex 1.1 Q11",
+    "book_key": "(not printed)",
+    "our_answer": "Equivalence relation; the class of P is the circle x^2 + y^2 = r^2 with r = d(P).",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Show that\" question; no key entry. Correct: R is equality of distance from the origin."
+  },
+  {
+    "ref": "Ex 1.1 Q12",
+    "book_key": "T_1 is related to T_3.",
+    "our_answer": "T_1 and T_3 are related; T_2 is related to neither.",
+    "verdict": "AGREE",
+    "note": "6/3 = 8/4 = 10/5 = 2, so T_1 ~ T_3. Sides 5,12,13 are not proportional to 3,4,5 nor to 6,8,10. Confirmed."
+  },
+  {
+    "ref": "Ex 1.1 Q13",
+    "book_key": "The set of all triangles",
+    "our_answer": "The set of all triangles in A",
+    "verdict": "AGREE",
+    "note": "T has 3 sides, so its class is the polygons with 3 sides. Confirmed."
+  },
+  {
+    "ref": "Ex 1.1 Q14",
+    "book_key": "The set of all lines y = 2x + c, c in R",
+    "our_answer": "{y = 2x + c : c in R}",
+    "verdict": "AGREE",
+    "note": "Parallel classes are the lines of slope 2. Identical set, different notation only. Confirmed."
+  },
+  {
+    "ref": "Ex 1.1 Q15",
+    "book_key": "B",
+    "our_answer": "B — \"R is reflexive and transitive but not symmetric.\"",
+    "verdict": "AGREE",
+    "note": "MCQ option TEXT read and re-derived, not just the letter. A = {1,2,3,4}, R = {(1,2),(2,2),(1,1),(4,4),(1,3),(3,3),(3,2)}. All four diagonal pairs present => reflexive. (1,2) in R, (2,1) not => not symmetric. Every chain closes: (1,2)(2,2)->(1,2); (1,3)(3,3)->(1,3); (1,3)(3,2)->(1,2); (3,2)(2,2)->(3,2); (1,1)(1,2)->(1,2); (1,1)(1,3)->(1,3) — all present => transitive. Option B carries exactly this. Confirmed."
+  },
+  {
+    "ref": "Ex 1.1 Q16",
+    "book_key": "C",
+    "our_answer": "C — \"(6, 8) in R\"",
+    "verdict": "AGREE",
+    "note": "MCQ option TEXT read. R = {(a,b) : a = b-2, b > 6}. (2,4): b=4 not > 6. (3,8): b-2 = 6 != 3. (6,8): b=8>6 and b-2=6=a — holds. (8,7): b-2 = 5 != 8. Option C is the one that holds. Confirmed."
+  },
+  {
+    "ref": "Ex 1.2 Q1",
+    "book_key": "No",
+    "our_answer": "No — with domain N, g is one-one but NOT onto, so the result does not carry over.",
+    "verdict": "AGREE",
+    "note": "The key's 'No' answers the second half of the question ('Is the result true if the domain is replaced by N?'). 2 in R* has preimage 1/2, not a natural number. Confirmed."
+  },
+  {
+    "ref": "Ex 1.2 Q2(i)",
+    "book_key": "Injective but not surjective",
+    "our_answer": "Injective but not surjective",
+    "verdict": "AGREE",
+    "note": "f: N -> N, x^2. x^2 = y^2 with x,y in N gives x = y; 2 has no natural square root. Confirmed."
+  },
+  {
+    "ref": "Ex 1.2 Q2(ii)",
+    "book_key": "Neither injective nor surjective",
+    "our_answer": "Neither injective nor surjective",
+    "verdict": "AGREE",
+    "note": "f: Z -> Z, x^2. f(-1) = f(1) = 1; -1 has no preimage. Confirmed."
+  },
+  {
+    "ref": "Ex 1.2 Q2(iii)",
+    "book_key": "Neither injective nor surjective",
+    "our_answer": "Neither injective nor surjective",
+    "verdict": "AGREE",
+    "note": "f: R -> R, x^2. Same counterexamples. Confirmed."
+  },
+  {
+    "ref": "Ex 1.2 Q2(iv)",
+    "book_key": "Injective but not surjective",
+    "our_answer": "Injective but not surjective",
+    "verdict": "AGREE",
+    "note": "f: N -> N, x^3. Strictly increasing => injective; 2 is not a perfect cube. Confirmed."
+  },
+  {
+    "ref": "Ex 1.2 Q2(v)",
+    "book_key": "Injective but not surjective",
+    "our_answer": "Injective but not surjective",
+    "verdict": "AGREE",
+    "note": "f: Z -> Z, x^3. x^3 - y^3 = (x-y)(x^2+xy+y^2) and the quadratic factor = (x + y/2)^2 + 3y^2/4 > 0 unless x = y = 0, so injective; 2 has no integer cube root. Confirmed."
+  },
+  {
+    "ref": "Ex 1.2 Q3",
+    "book_key": "(not printed)",
+    "our_answer": "Neither one-one nor onto.",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Prove that\" question; no key entry. Greatest-integer: [1.2] = [1.5] = 1; range is Z, so 0.5 has no preimage. Correct."
+  },
+  {
+    "ref": "Ex 1.2 Q4",
+    "book_key": "(not printed)",
+    "our_answer": "Neither one-one nor onto.",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Show that\" question; no key entry. |-1| = |1| = 1; range [0, inf) so -1 has no preimage. Correct."
+  },
+  {
+    "ref": "Ex 1.2 Q5",
+    "book_key": "(not printed)",
+    "our_answer": "Neither one-one nor onto.",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Show that\" question; no key entry. This is the row carrying the DELIBERATE [Textbook misprint: ...] bracket (the book prints the x<0 branch as 1 where the signum function requires -1) — flagged here as expected and NOT as a disagreement. Our counterexamples are chosen to survive both readings: f(1) = f(2) = 1 uses only the x>0 branch, and 2 is outside {-1,0,1} either way. Correct."
+  },
+  {
+    "ref": "Ex 1.2 Q6",
+    "book_key": "(not printed)",
+    "our_answer": "f is one-one.",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Show that\" question; no key entry. Images 4, 5, 6 are distinct. Correct."
+  },
+  {
+    "ref": "Ex 1.2 Q7(i)",
+    "book_key": "One-one and onto",
+    "our_answer": "One-one and onto, i.e. bijective.",
+    "verdict": "AGREE",
+    "note": "f(x) = 3 - 4x on R; inverse x = (3-y)/4 exists for every real y. Confirmed."
+  },
+  {
+    "ref": "Ex 1.2 Q7(ii)",
+    "book_key": "Neither one-one nor onto.",
+    "our_answer": "Neither one-one nor onto, so not bijective.",
+    "verdict": "AGREE",
+    "note": "f(x) = 1 + x^2 on R; f(-1) = f(1) = 2 and the range is [1, inf) so 0 has no preimage. Confirmed."
+  },
+  {
+    "ref": "Ex 1.2 Q8",
+    "book_key": "(not printed)",
+    "our_answer": "f is bijective.",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Show that\" question; no key entry. The swap map on A x B is its own two-sided inverse. Correct."
+  },
+  {
+    "ref": "Ex 1.2 Q9",
+    "book_key": "No",
+    "our_answer": "No — f is onto but not one-one, hence not bijective.",
+    "verdict": "AGREE",
+    "note": "f(1) = (1+1)/2 = 1 and f(2) = 2/2 = 1, so not one-one; f(2y) = y for every y in N, so onto. The key's 'No' answers 'is f bijective?'. Confirmed."
+  },
+  {
+    "ref": "Ex 1.2 Q10",
+    "book_key": "Yes",
+    "our_answer": "Yes — f is both one-one and onto.",
+    "verdict": "AGREE",
+    "note": "f(x) = (x-2)/(x-3) from R\\{3} to R\\{1}. Inverse x = (3y-2)/(y-1), defined for y != 1, and never equal to 3 (it would force -2 = -3). Confirmed."
+  },
+  {
+    "ref": "Ex 1.2 Q11",
+    "book_key": "D",
+    "our_answer": "D — \"f is neither one-one nor onto.\"",
+    "verdict": "AGREE",
+    "note": "MCQ option TEXT read. f(x) = x^4 on R: f(1) = f(-1) = 1 so many-one; x^4 >= 0 so -1 has no preimage. Option D carries exactly this. Confirmed."
+  },
+  {
+    "ref": "Ex 1.2 Q12",
+    "book_key": "A",
+    "our_answer": "A — \"f is one-one onto\"",
+    "verdict": "AGREE",
+    "note": "MCQ option TEXT read. f(x) = 3x on R: 3x1 = 3x2 => x1 = x2, and x = y/3 is a preimage for every real y. Option A carries exactly this. Confirmed."
+  },
+  {
+    "ref": "Misc Q1",
+    "book_key": "(not printed)",
+    "our_answer": "f is one-one and onto.",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Show that\" question; the Miscellaneous key begins at Q3. Spot-checked the onto construction: for y in (-1,1), x = y/(1-|y|) gives 1 + |x| = 1/(1-|y|) and f(x) = y. Correct."
+  },
+  {
+    "ref": "Misc Q2",
+    "book_key": "(not printed)",
+    "our_answer": "f is injective.",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Show that\" question; no key entry. x^3 = y^3 => (x-y)((x+y/2)^2 + 3y^2/4) = 0 => x = y. Correct."
+  },
+  {
+    "ref": "Misc Q3",
+    "book_key": "No",
+    "our_answer": "No — R is reflexive and transitive but not symmetric, hence not an equivalence relation.",
+    "verdict": "AGREE",
+    "note": "Subset inclusion on P(X) with X non-empty: phi is a subset of X but not conversely. Confirmed."
+  },
+  {
+    "ref": "Misc Q4",
+    "book_key": "n!",
+    "our_answer": "n!",
+    "verdict": "AGREE",
+    "note": "On a finite set an onto self-map is a bijection, so the count is the number of permutations, n!. Confirmed."
+  },
+  {
+    "ref": "Misc Q5",
+    "book_key": "Yes",
+    "our_answer": "Yes — f and g are equal.",
+    "verdict": "AGREE",
+    "note": "Re-evaluated all four points independently. f: (-1,0,1,2) -> (2,0,0,2). g(x) = 2|x - 1/2| - 1: g(-1) = 2(3/2)-1 = 2, g(0) = 2(1/2)-1 = 0, g(1) = 2(1/2)-1 = 0, g(2) = 2(3/2)-1 = 2. Identical on all of A. Confirmed."
+  },
+  {
+    "ref": "Misc Q6",
+    "book_key": "A",
+    "our_answer": "A — \"1\"",
+    "verdict": "AGREE",
+    "note": "MCQ option TEXT read (A is the numeral 1). Reflexivity forces (1,1),(2,2),(3,3); symmetry with the given (1,2),(1,3) forces (2,1),(3,1) — seven pairs fixed. Only (2,3),(3,2) remain free and symmetry couples them. Taking both gives A x A, which is transitive and so rejected; taking neither leaves (2,1),(1,3) in R with (2,3) absent, so not transitive and accepted. Exactly one relation. Confirmed."
+  },
+  {
+    "ref": "Misc Q7",
+    "book_key": "B",
+    "our_answer": "B — \"2\"",
+    "verdict": "AGREE",
+    "note": "MCQ option TEXT read (B is the numeral 2). Equivalence relations on {1,2,3} correspond to its 5 partitions; those putting 1 and 2 in one block are {1,2}{3} and {1,2,3}, giving 2. Confirmed."
+  }
+]

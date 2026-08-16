@@ -1,0 +1,192 @@
+[
+  {
+    "id": "c1fd4c0b-97b1-41b8-8219-3197ba603586",
+    "ref": "Ex 13.1 Q1",
+    "solution": "By definition \\(P(E|F) = \\frac{P(E \\cap F)}{P(F)}\\) and \\(P(F|E) = \\frac{P(E \\cap F)}{P(E)}\\). Here \\(P(E \\cap F) = 0.2\\), \\(P(F) = 0.3\\), \\(P(E) = 0.6\\). So \\(P(E|F) = \\frac{0.2}{0.3} = \\frac{2}{3}\\) and \\(P(F|E) = \\frac{0.2}{0.6} = \\frac{1}{3}\\). Hence \\(P(E|F) = \\frac{2}{3}\\) and \\(P(F|E) = \\frac{1}{3}\\)."
+  },
+  {
+    "id": "6cacf988-3ed9-4fb7-a7a0-336fd459e8ba",
+    "ref": "Ex 13.1 Q2",
+    "solution": "Using \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)}\\) with \\(P(A \\cap B) = 0.32\\) and \\(P(B) = 0.5\\), \\(P(A|B) = \\frac{0.32}{0.5} = 0.64\\). Hence \\(P(A|B) = 0.64 = \\frac{16}{25}\\)."
+  },
+  {
+    "id": "091d50b8-f4d9-448c-96cb-7890add2960b",
+    "ref": "Ex 13.1 Q3(i)",
+    "solution": "From \\(P(B|A) = \\frac{P(A \\cap B)}{P(A)}\\) we get \\(P(A \\cap B) = P(B|A)\\,P(A)\\). Substituting \\(P(B|A) = 0.4\\) and \\(P(A) = 0.8\\), \\(P(A \\cap B) = 0.4 \\times 0.8 = 0.32\\). Hence \\(P(A \\cap B) = 0.32\\)."
+  },
+  {
+    "id": "0f4b395b-7788-41f8-8d00-7899de506404",
+    "ref": "Ex 13.1 Q3(ii)",
+    "solution": "First \\(P(A \\cap B) = P(B|A)\\,P(A) = 0.4 \\times 0.8 = 0.32\\). Then \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{0.32}{0.5} = 0.64\\). Hence \\(P(A|B) = 0.64\\)."
+  },
+  {
+    "id": "918cdca6-0249-4a85-b9d5-7b05a0640199",
+    "ref": "Ex 13.1 Q3(iii)",
+    "solution": "Here \\(P(A \\cap B) = P(B|A)\\,P(A) = 0.4 \\times 0.8 = 0.32\\). By the addition theorem \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0.8 + 0.5 - 0.32 = 0.98\\). Hence \\(P(A \\cup B) = 0.98\\)."
+  },
+  {
+    "id": "737033d8-1e26-45e3-9e17-c4a9a0c18b46",
+    "ref": "Ex 13.1 Q4",
+    "solution": "From \\(2P(A) = P(B) = \\frac{5}{13}\\) we get \\(P(B) = \\frac{5}{13}\\) and \\(P(A) = \\frac{5}{26}\\). Since \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)}\\), \\(P(A \\cap B) = \\frac{2}{5} \\times \\frac{5}{13} = \\frac{2}{13}\\). Then \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = \\frac{5}{26} + \\frac{10}{26} - \\frac{4}{26} = \\frac{11}{26}\\). Hence \\(P(A \\cup B) = \\frac{11}{26}\\)."
+  },
+  {
+    "id": "43a16105-2a43-4d42-a341-548eab90aecf",
+    "ref": "Ex 13.1 Q5(i)",
+    "solution": "By the addition theorem \\(P(A \\cap B) = P(A) + P(B) - P(A \\cup B) = \\frac{6}{11} + \\frac{5}{11} - \\frac{7}{11} = \\frac{4}{11}\\). Hence \\(P(A \\cap B) = \\frac{4}{11}\\)."
+  },
+  {
+    "id": "cef9a289-28bf-4e92-b089-6d76ed5162ee",
+    "ref": "Ex 13.1 Q5(ii)",
+    "solution": "First \\(P(A \\cap B) = P(A) + P(B) - P(A \\cup B) = \\frac{6}{11} + \\frac{5}{11} - \\frac{7}{11} = \\frac{4}{11}\\). Then \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{4/11}{5/11} = \\frac{4}{5}\\). Hence \\(P(A|B) = \\frac{4}{5}\\)."
+  },
+  {
+    "id": "dbc58b82-386d-408c-8d9c-9a4e05e0a1fe",
+    "ref": "Ex 13.1 Q5(iii)",
+    "solution": "As above \\(P(A \\cap B) = \\frac{6}{11} + \\frac{5}{11} - \\frac{7}{11} = \\frac{4}{11}\\). Then \\(P(B|A) = \\frac{P(A \\cap B)}{P(A)} = \\frac{4/11}{6/11} = \\frac{2}{3}\\). Hence \\(P(B|A) = \\frac{2}{3}\\)."
+  },
+  {
+    "id": "48ee6aa8-240f-4268-8c95-ebbfaa73a037",
+    "ref": "Ex 13.1 Q6(i)",
+    "solution": "The sample space for three tosses has \\(8\\) equally likely outcomes: \\(HHH, HHT, HTH, HTT, THH, THT, TTH, TTT\\). Here \\(F = \\{HHH, HHT\\}\\), so \\(P(F) = \\frac{2}{8}\\). The event \\(E \\cap F\\) means heads on the first two tosses and a head on the third, i.e. \\(\\{HHH\\}\\), so \\(P(E \\cap F) = \\frac{1}{8}\\). Therefore \\(P(E|F) = \\frac{1/8}{2/8} = \\frac{1}{2}\\). Hence \\(P(E|F) = \\frac{1}{2}\\)."
+  },
+  {
+    "id": "a968376e-f4a4-452d-a487-cea5c7f17db5",
+    "ref": "Ex 13.1 Q6(ii)",
+    "solution": "Out of the \\(8\\) equally likely outcomes, \\(E\\) (at least two heads) \\(= \\{HHH, HHT, HTH, THH\\}\\) and \\(F\\) (at most two heads) is everything except \\(HHH\\), so \\(F\\) has \\(7\\) outcomes and \\(P(F) = \\frac{7}{8}\\). Then \\(E \\cap F = \\{HHT, HTH, THH\\}\\), giving \\(P(E \\cap F) = \\frac{3}{8}\\). Therefore \\(P(E|F) = \\frac{3/8}{7/8} = \\frac{3}{7}\\). Hence \\(P(E|F) = \\frac{3}{7}\\)."
+  },
+  {
+    "id": "6f4c5164-c4b7-459f-8b08-0dc596230307",
+    "ref": "Ex 13.1 Q6(iii)",
+    "solution": "Of the \\(8\\) equally likely outcomes, \\(E\\) (at most two tails) excludes only \\(TTT\\), so \\(E\\) has \\(7\\) outcomes; \\(F\\) (at least one tail) excludes only \\(HHH\\), so \\(P(F) = \\frac{7}{8}\\). An outcome lies in \\(E \\cap F\\) when it has one or two tails, i.e. \\(\\{HHT, HTH, THH, HTT, THT, TTH\\}\\), so \\(P(E \\cap F) = \\frac{6}{8}\\). Therefore \\(P(E|F) = \\frac{6/8}{7/8} = \\frac{6}{7}\\). Hence \\(P(E|F) = \\frac{6}{7}\\)."
+  },
+  {
+    "id": "1071d940-6f85-41bd-9106-46b207975520",
+    "ref": "Ex 13.1 Q7(i)",
+    "solution": "The sample space is \\(\\{HH, HT, TH, TT\\}\\), each outcome with probability \\(\\frac{1}{4}\\). The event \\(E\\), a tail on one coin, is \\(\\{HT, TH\\}\\) and the event \\(F\\), one coin shows a head, is also \\(\\{HT, TH\\}\\). So \\(P(F) = \\frac{2}{4}\\) and \\(P(E \\cap F) = \\frac{2}{4}\\), giving \\(P(E|F) = \\frac{2/4}{2/4} = 1\\). Hence \\(P(E|F) = 1\\)."
+  },
+  {
+    "id": "e274a254-57b5-4716-aaa7-435faabfb68c",
+    "ref": "Ex 13.1 Q7(ii)",
+    "solution": "With sample space \\(\\{HH, HT, TH, TT\\}\\), the event \\(E\\) (no tail) is \\(\\{HH\\}\\) and \\(F\\) (no head) is \\(\\{TT\\}\\), so \\(P(F) = \\frac{1}{4}\\). These are disjoint, so \\(E \\cap F = \\phi\\) and \\(P(E \\cap F) = 0\\). Therefore \\(P(E|F) = \\frac{0}{1/4} = 0\\). Hence \\(P(E|F) = 0\\)."
+  },
+  {
+    "id": "116be78b-ac37-4b3f-9e73-ee2783530ba9",
+    "ref": "Ex 13.1 Q8",
+    "solution": "Three throws of a die give \\(6^3 = 216\\) equally likely outcomes. The event \\(F\\), a \\(6\\) then a \\(5\\) on the first two throws, is \\(\\{(6,5,x) : x = 1,2,\\dots,6\\}\\), so \\(P(F) = \\frac{6}{216}\\). The event \\(E \\cap F\\) is the single outcome \\((6,5,4)\\), so \\(P(E \\cap F) = \\frac{1}{216}\\). Therefore \\(P(E|F) = \\frac{1/216}{6/216} = \\frac{1}{6}\\). Hence \\(P(E|F) = \\frac{1}{6}\\)."
+  },
+  {
+    "id": "f35a3b94-6678-4fa0-8882-8a9fee5277d0",
+    "ref": "Ex 13.1 Q9",
+    "solution": "Writing \\(M\\), \\(F\\), \\(S\\) for mother, father and son, the sample space of line-ups has \\(3! = 6\\) equally likely arrangements. The event \\(F\\), father in the middle, is \\(\\{MFS, SFM\\}\\), so \\(P(F) = \\frac{2}{6}\\). In both of these the son stands at an end, so \\(E \\cap F = \\{MFS, SFM\\}\\) and \\(P(E \\cap F) = \\frac{2}{6}\\). Therefore \\(P(E|F) = \\frac{2/6}{2/6} = 1\\). Hence \\(P(E|F) = 1\\)."
+  },
+  {
+    "id": "f9d2a0ad-1051-428a-b840-82bc82516671",
+    "ref": "Ex 13.1 Q10(a)",
+    "solution": "Rolling two distinguishable dice gives \\(36\\) equally likely ordered pairs (black, red). The conditioning event \\(F\\), black die shows \\(5\\), is \\(\\{(5,1),(5,2),(5,3),(5,4),(5,5),(5,6)\\}\\), so \\(P(F) = \\frac{6}{36}\\). Among these the sum exceeds \\(9\\) only for \\((5,5)\\) and \\((5,6)\\), so \\(P(E \\cap F) = \\frac{2}{36}\\). Therefore the required probability is \\(\\frac{2/36}{6/36} = \\frac{1}{3}\\). Hence the conditional probability is \\(\\frac{1}{3}\\)."
+  },
+  {
+    "id": "babe9955-01c3-4f9e-a599-3ee5815134fe",
+    "ref": "Ex 13.1 Q10(b)",
+    "solution": "Of the \\(36\\) equally likely ordered pairs (black, red), the conditioning event \\(F\\), red die less than \\(4\\), has red \\(\\in \\{1,2,3\\}\\) and black anything, so it contains \\(3 \\times 6 = 18\\) outcomes and \\(P(F) = \\frac{18}{36}\\). A sum of \\(8\\) with red \\(\\in \\{1,2,3\\}\\) needs black \\(= 8 - \\text{red}\\), which is \\(7\\) (impossible), \\(6\\), \\(5\\); so \\(E \\cap F = \\{(6,2),(5,3)\\}\\) and \\(P(E \\cap F) = \\frac{2}{36}\\). Therefore the required probability is \\(\\frac{2/36}{18/36} = \\frac{1}{9}\\). Hence the conditional probability is \\(\\frac{1}{9}\\)."
+  },
+  {
+    "id": "dc1a3aac-c63b-45dc-bf4e-4720c5344586",
+    "ref": "Ex 13.1 Q11(i)",
+    "solution": "The sample space is \\(\\{1,2,3,4,5,6\\}\\) with each outcome of probability \\(\\frac{1}{6}\\), so \\(P(E) = \\frac{3}{6}\\), \\(P(F) = \\frac{2}{6}\\) and \\(E \\cap F = \\{3\\}\\) gives \\(P(E \\cap F) = \\frac{1}{6}\\). Then \\(P(E|F) = \\frac{1/6}{2/6} = \\frac{1}{2}\\) and \\(P(F|E) = \\frac{1/6}{3/6} = \\frac{1}{3}\\). Hence \\(P(E|F) = \\frac{1}{2}\\) and \\(P(F|E) = \\frac{1}{3}\\)."
+  },
+  {
+    "id": "969b578e-c47b-4e09-82c4-882843a1f029",
+    "ref": "Ex 13.1 Q11(ii)",
+    "solution": "Here \\(P(E) = \\frac{3}{6}\\) and \\(P(G) = \\frac{4}{6}\\), while \\(E \\cap G = \\{3,5\\}\\) gives \\(P(E \\cap G) = \\frac{2}{6}\\). Then \\(P(E|G) = \\frac{2/6}{4/6} = \\frac{1}{2}\\) and \\(P(G|E) = \\frac{2/6}{3/6} = \\frac{2}{3}\\). Hence \\(P(E|G) = \\frac{1}{2}\\) and \\(P(G|E) = \\frac{2}{3}\\)."
+  },
+  {
+    "id": "44bd8887-937e-4bc8-8ad0-dc5bbfdca18f",
+    "ref": "Ex 13.1 Q11(iii)",
+    "solution": "Here \\(E \\cup F = \\{1,2,3,5\\}\\), so \\((E \\cup F) \\cap G = \\{2,3,5\\}\\) and \\(P((E \\cup F) \\cap G) = \\frac{3}{6}\\); also \\(E \\cap F = \\{3\\}\\), so \\((E \\cap F) \\cap G = \\{3\\}\\) and \\(P((E \\cap F) \\cap G) = \\frac{1}{6}\\). With \\(P(G) = \\frac{4}{6}\\), \\(P((E \\cup F)|G) = \\frac{3/6}{4/6} = \\frac{3}{4}\\) and \\(P((E \\cap F)|G) = \\frac{1/6}{4/6} = \\frac{1}{4}\\). Hence \\(P((E \\cup F)|G) = \\frac{3}{4}\\) and \\(P((E \\cap F)|G) = \\frac{1}{4}\\)."
+  },
+  {
+    "id": "627c536d-1554-45af-9612-516622cd708e",
+    "ref": "Ex 13.1 Q12",
+    "solution": "Writing each outcome as (elder, younger), the sample space is \\(\\{(b,b),(b,g),(g,b),(g,g)\\}\\), all equally likely. (i) The event that the youngest is a girl is \\(\\{(b,g),(g,g)\\}\\), of probability \\(\\frac{2}{4}\\), and both girls is \\(\\{(g,g)\\}\\), of probability \\(\\frac{1}{4}\\); so the conditional probability is \\(\\frac{1/4}{2/4} = \\frac{1}{2}\\). (ii) The event that at least one is a girl is \\(\\{(b,g),(g,b),(g,g)\\}\\), of probability \\(\\frac{3}{4}\\); so the conditional probability is \\(\\frac{1/4}{3/4} = \\frac{1}{3}\\). Hence the answers are \\(\\frac{1}{2}\\) and \\(\\frac{1}{3}\\)."
+  },
+  {
+    "id": "b23e88e5-b412-4c24-af89-12559b7a6b9b",
+    "ref": "Ex 13.1 Q13",
+    "solution": "The bank holds \\(300 + 200 + 500 + 400 = 1400\\) questions. Let \\(E\\) be 'easy' and \\(M\\) be 'multiple choice'. The multiple choice questions number \\(500 + 400 = 900\\), so \\(P(M) = \\frac{900}{1400}\\), and the easy multiple choice questions number \\(500\\), so \\(P(E \\cap M) = \\frac{500}{1400}\\). Then \\(P(E|M) = \\frac{500/1400}{900/1400} = \\frac{5}{9}\\). Hence the required probability is \\(\\frac{5}{9}\\)."
+  },
+  {
+    "id": "b856cc2e-7dfd-4fe9-a7e5-3f5c3f0c6380",
+    "ref": "Ex 13.1 Q14",
+    "solution": "Throwing two dice gives \\(36\\) equally likely ordered pairs. The conditioning event \\(F\\), the two numbers are different, excludes the \\(6\\) doublets, so it has \\(30\\) outcomes and \\(P(F) = \\frac{30}{36}\\). The pairs with sum \\(4\\) are \\((1,3), (2,2), (3,1)\\), of which only \\((1,3)\\) and \\((3,1)\\) have different numbers, so \\(P(E \\cap F) = \\frac{2}{36}\\). Then \\(P(E|F) = \\frac{2/36}{30/36} = \\frac{1}{15}\\). Hence the required probability is \\(\\frac{1}{15}\\)."
+  },
+  {
+    "id": "0027d961-5767-4370-b490-faee87b8a6d0",
+    "ref": "Ex 13.1 Q15",
+    "solution": "The first throw gives a multiple of \\(3\\) only for \\(3\\) or \\(6\\), in which case the die is thrown again; otherwise a coin is tossed. So the sample space is \\(\\{(3,1),\\dots,(3,6),(6,1),\\dots,(6,6)\\}\\) each of probability \\(\\frac{1}{6}\\cdot\\frac{1}{6} = \\frac{1}{36}\\), together with \\(\\{(1,H),(1,T),(2,H),(2,T),(4,H),(4,T),(5,H),(5,T)\\}\\) each of probability \\(\\frac{1}{6}\\cdot\\frac{1}{2} = \\frac{1}{12}\\). Let \\(E\\) be 'the coin shows a tail' and \\(F\\) be 'at least one die shows a \\(3\\)'. Then \\(F = \\{(3,1),(3,2),(3,3),(3,4),(3,5),(3,6),(6,3)\\}\\), so \\(P(F) = \\frac{7}{36}\\). Every outcome of \\(F\\) involves two throws of the die and no coin toss, while every outcome of \\(E\\) involves a coin toss, so \\(E \\cap F = \\phi\\) and \\(P(E \\cap F) = 0\\). Therefore \\(P(E|F) = \\frac{0}{7/36} = 0\\). Hence the required probability is \\(0\\)."
+  },
+  {
+    "id": "9c824139-d76c-4a9b-9ad5-64a96955bdd7",
+    "ref": "Ex 13.2 Q2",
+    "solution": "Let \\(A\\) be 'the first card is black' and \\(B\\) be 'the second card is black'. The pack has \\(26\\) black cards out of \\(52\\), so \\(P(A) = \\frac{26}{52} = \\frac{1}{2}\\). Since the first card is not replaced, \\(25\\) black cards remain among \\(51\\), so \\(P(B|A) = \\frac{25}{51}\\). By the multiplication theorem \\(P(A \\cap B) = P(A)\\,P(B|A) = \\frac{1}{2} \\times \\frac{25}{51} = \\frac{25}{102}\\). Hence the probability that both cards are black is \\(\\frac{25}{102}\\)."
+  },
+  {
+    "id": "0e45b74c-840c-40f8-b788-b70ef5e2bf0b",
+    "ref": "Ex 13.2 Q3",
+    "solution": "The box is approved exactly when all three oranges drawn (without replacement) are good. Of \\(15\\) oranges \\(12\\) are good, so by the multiplication theorem the probability is \\(\\frac{12}{15} \\times \\frac{11}{14} \\times \\frac{10}{13} = \\frac{1320}{2730} = \\frac{44}{91}\\). Hence the probability that the box is approved for sale is \\(\\frac{44}{91}\\)."
+  },
+  {
+    "id": "8ed06324-9569-4c12-aa2e-b7e1d294c976",
+    "ref": "Ex 13.2 Q16(a)",
+    "solution": "Let \\(H\\) be 'reads Hindi' and \\(E\\) be 'reads English', so \\(P(H) = 0.6\\), \\(P(E) = 0.4\\) and \\(P(H \\cap E) = 0.2\\). Then \\(P(H \\cup E) = 0.6 + 0.4 - 0.2 = 0.8\\), and reading neither is the complement of this: \\(1 - 0.8 = 0.2\\). Hence the required probability is \\(0.2 = \\frac{1}{5}\\)."
+  },
+  {
+    "id": "14d4d0d4-eefc-43c3-a3d4-dda2f236628d",
+    "ref": "Ex 13.2 Q16(b)",
+    "solution": "With \\(H\\) 'reads Hindi' and \\(E\\) 'reads English', \\(P(H) = 0.6\\) and \\(P(H \\cap E) = 0.2\\). The required probability is \\(P(E|H) = \\frac{P(H \\cap E)}{P(H)} = \\frac{0.2}{0.6} = \\frac{1}{3}\\). Hence the required probability is \\(\\frac{1}{3}\\)."
+  },
+  {
+    "id": "a311fc48-ea7b-4677-b12c-ec6003f3b3f7",
+    "ref": "Ex 13.2 Q16(c)",
+    "solution": "With \\(H\\) 'reads Hindi' and \\(E\\) 'reads English', \\(P(E) = 0.4\\) and \\(P(H \\cap E) = 0.2\\). The required probability is \\(P(H|E) = \\frac{P(H \\cap E)}{P(E)} = \\frac{0.2}{0.4} = \\frac{1}{2}\\). Hence the required probability is \\(\\frac{1}{2}\\)."
+  },
+  {
+    "id": "72c11384-a899-4860-bdbd-e21e27da9934",
+    "ref": "Ex 13.3 Q1",
+    "solution": "Let \\(R_1\\) and \\(B_1\\) be the events that the first ball drawn is red and black; each has probability \\(\\frac{5}{10} = \\frac{1}{2}\\). The ball is returned and \\(2\\) more of its colour are added, so before the second draw the urn holds \\(12\\) balls: \\(7\\) red and \\(5\\) black if the first was red, and \\(5\\) red and \\(7\\) black if the first was black. Thus \\(P(R_2|R_1) = \\frac{7}{12}\\) and \\(P(R_2|B_1) = \\frac{5}{12}\\). By the theorem of total probability, \\(P(R_2) = \\frac{1}{2}\\cdot\\frac{7}{12} + \\frac{1}{2}\\cdot\\frac{5}{12} = \\frac{7}{24} + \\frac{5}{24} = \\frac{12}{24} = \\frac{1}{2}\\). Hence the probability that the second ball is red is \\(\\frac{1}{2}\\)."
+  },
+  {
+    "id": "bb8f6a40-c2f1-4f1a-9682-2495846cb757",
+    "ref": "Misc Q1(i)",
+    "solution": "If \\(A\\) is a subset of \\(B\\) then every outcome of \\(A\\) lies in \\(B\\), so \\(A \\cap B = A\\) and \\(P(A \\cap B) = P(A)\\). Therefore \\(P(B|A) = \\frac{P(A \\cap B)}{P(A)} = \\frac{P(A)}{P(A)} = 1\\), which is defined since \\(P(A) \\neq 0\\). Hence \\(P(B|A) = 1\\)."
+  },
+  {
+    "id": "6fe97d46-81f7-47d4-942d-40830925cc59",
+    "ref": "Misc Q1(ii)",
+    "solution": "If \\(A \\cap B = \\phi\\) then \\(P(A \\cap B) = 0\\). Therefore \\(P(B|A) = \\frac{P(A \\cap B)}{P(A)} = \\frac{0}{P(A)} = 0\\), which is defined since \\(P(A) \\neq 0\\). Hence \\(P(B|A) = 0\\)."
+  },
+  {
+    "id": "4f0dd77d-047e-487e-8109-f85ece8ca4b7",
+    "ref": "Misc Q2(i)",
+    "solution": "Writing each outcome as (elder, younger) with \\(m\\) for male and \\(f\\) for female, the sample space is \\(\\{(m,m),(m,f),(f,m),(f,f)\\}\\), all equally likely. The conditioning event 'at least one male' is \\(\\{(m,m),(m,f),(f,m)\\}\\), of probability \\(\\frac{3}{4}\\), and 'both male' is \\(\\{(m,m)\\}\\), of probability \\(\\frac{1}{4}\\). The required conditional probability is \\(\\frac{1/4}{3/4} = \\frac{1}{3}\\). Hence the answer is \\(\\frac{1}{3}\\)."
+  },
+  {
+    "id": "ea24f96f-5f10-484a-ac75-30060a28a0ad",
+    "ref": "Misc Q2(ii)",
+    "solution": "With outcomes written as (elder, younger), the sample space is \\(\\{(m,m),(m,f),(f,m),(f,f)\\}\\). The conditioning event 'the elder child is female' is \\(\\{(f,m),(f,f)\\}\\), of probability \\(\\frac{2}{4}\\), and 'both female' is \\(\\{(f,f)\\}\\), of probability \\(\\frac{1}{4}\\). The required conditional probability is \\(\\frac{1/4}{2/4} = \\frac{1}{2}\\). Hence the answer is \\(\\frac{1}{2}\\)."
+  },
+  {
+    "id": "1be87438-55ab-4a08-a8fb-41d5f4f9ca32",
+    "ref": "Misc Q5",
+    "solution": "A leap year has \\(366\\) days, that is \\(52\\) complete weeks and \\(2\\) extra days. The \\(52\\) weeks already supply \\(52\\) Tuesdays, so a \\(53\\)rd Tuesday occurs exactly when one of the two extra days is a Tuesday. The two extra days are consecutive, and the equally likely possibilities are \\(\\{\\)Sun, Mon\\(\\}\\), \\(\\{\\)Mon, Tue\\(\\}\\), \\(\\{\\)Tue, Wed\\(\\}\\), \\(\\{\\)Wed, Thu\\(\\}\\), \\(\\{\\)Thu, Fri\\(\\}\\), \\(\\{\\)Fri, Sat\\(\\}\\), \\(\\{\\)Sat, Sun\\(\\}\\), so the sample space has \\(7\\) outcomes. Exactly \\(2\\) of them contain a Tuesday. Hence the required probability is \\(\\frac{2}{7}\\)."
+  },
+  {
+    "id": "5e85fe07-d770-4221-9d72-90182b8c46d5",
+    "ref": "Misc Q9(i)",
+    "solution": "Let \\(A\\) and \\(B\\) be the events that subsystem A fails and subsystem B fails. 'B fails alone' means B fails and A does not, so \\(P(B) = P(B \\text{ alone}) + P(A \\cap B) = 0.15 + 0.15 = 0.30\\). Therefore \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{0.15}{0.30} = 0.5\\). Hence \\(P(A \\text{ fails} \\mid B \\text{ has failed}) = 0.5\\)."
+  },
+  {
+    "id": "a5906db7-684c-4d31-b705-54289525703f",
+    "ref": "Misc Q9(ii)",
+    "solution": "'A fails alone' means A fails while B does not, so its probability is \\(P(A) - P(A \\cap B)\\). Substituting \\(P(A) = 0.2\\) and \\(P(A \\cap B) = 0.15\\) gives \\(0.2 - 0.15 = 0.05\\). Hence \\(P(A \\text{ fails alone}) = 0.05\\)."
+  }
+]

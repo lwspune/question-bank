@@ -1,0 +1,142 @@
+[
+  {
+    "id": "ac0974ca-f5be-4cd0-98b5-defab0a643b8",
+    "ref": "Ex 9.3 Q1",
+    "solution": "Using the half-angle forms, \\(\\frac{1 - \\cos x}{1 + \\cos x} = \\frac{2\\sin^{2}\\frac{x}{2}}{2\\cos^{2}\\frac{x}{2}} = \\tan^{2}\\frac{x}{2} = \\sec^{2}\\frac{x}{2} - 1\\). The variables are already separated, so integrating both sides, \\(\\int dy = \\int\\left(\\sec^{2}\\frac{x}{2} - 1\\right)dx\\), which gives \\(y = 2\\tan\\frac{x}{2} - x + C\\). Check by differentiating back: \\(\\frac{dy}{dx} = \\sec^{2}\\frac{x}{2} - 1 = \\tan^{2}\\frac{x}{2} = \\frac{1-\\cos x}{1+\\cos x}\\), as required. The general solution is \\(y = 2\\tan\\frac{x}{2} - x + C\\)."
+  },
+  {
+    "id": "771afc27-6f5a-47a7-a14e-aaca70f6f49f",
+    "ref": "Ex 9.3 Q2",
+    "solution": "Separating the variables, \\(\\frac{dy}{\\sqrt{4 - y^{2}}} = dx\\). Integrating both sides, \\(\\sin^{-1}\\frac{y}{2} = x + C\\), so \\(\\frac{y}{2} = \\sin(x + C)\\). Check by differentiating back: if \\(y = 2\\sin(x+C)\\) then \\(\\frac{dy}{dx} = 2\\cos(x+C)\\) and \\(\\sqrt{4 - y^{2}} = 2|\\cos(x+C)|\\), which agree on the branch where \\(\\cos(x+C) > 0\\). The general solution is \\(y = 2\\sin(x + C)\\)."
+  },
+  {
+    "id": "b0fe6f41-4874-4820-952c-dad5fb1d5a72",
+    "ref": "Ex 9.3 Q3",
+    "solution": "Write the equation as \\(\\frac{dy}{dx} = 1 - y\\) and separate: \\(\\frac{dy}{1 - y} = dx\\). Integrating, \\(-\\log|1 - y| = x + k\\), so \\(\\log|1 - y| = -x - k\\) and hence \\(1 - y = Ae^{-x}\\), where \\(A = \\pm e^{-k}\\). Therefore \\(y = 1 - Ae^{-x}\\). Check by differentiating back: \\(\\frac{dy}{dx} = Ae^{-x} = 1 - y\\), so \\(\\frac{dy}{dx} + y = 1\\), as required. Writing \\(C = -A\\), the general solution is \\(y = 1 + Ce^{-x}\\)."
+  },
+  {
+    "id": "ebfabc8e-9245-4eba-8ca7-f7c1ea9bb088",
+    "ref": "Ex 9.3 Q4",
+    "solution": "Divide throughout by \\(\\tan x\\,\\tan y\\) to separate the variables: \\(\\frac{\\sec^{2}x}{\\tan x}\\,dx + \\frac{\\sec^{2}y}{\\tan y}\\,dy = 0\\). Each integrand is of the form \\(\\frac{f'}{f}\\), so integrating gives \\(\\log|\\tan x| + \\log|\\tan y| = \\log C\\), that is \\(\\log|\\tan x\\,\\tan y| = \\log C\\). Check by differentiating \\(\\tan x\\,\\tan y = C\\) implicitly: \\(\\sec^{2}x\\,\\tan y + \\tan x\\,\\sec^{2}y\\,\\frac{dy}{dx} = 0\\), which is exactly the given equation. The general solution is \\(\\tan x\\,\\tan y = C\\)."
+  },
+  {
+    "id": "53c6376a-d663-4070-9885-63a49283f9a2",
+    "ref": "Ex 9.3 Q5",
+    "solution": "Rearranging, \\(\\frac{dy}{dx} = \\frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}\\). The numerator is the derivative of the denominator, so the integral is a logarithm: \\(y = \\int\\frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}\\,dx = \\log\\left(e^{x} + e^{-x}\\right) + C\\) (the argument is always positive, so no modulus is needed). Check by differentiating back: \\(\\frac{dy}{dx} = \\frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}\\), as required. The general solution is \\(y = \\log\\left(e^{x} + e^{-x}\\right) + C\\)."
+  },
+  {
+    "id": "f520b1bd-dddf-4241-933b-bceaf2aebc77",
+    "ref": "Ex 9.3 Q6",
+    "solution": "Separating the variables, \\(\\frac{dy}{1 + y^{2}} = (1 + x^{2})\\,dx\\). Integrating both sides, \\(\\tan^{-1}y = x + \\frac{x^{3}}{3} + C\\). Check by differentiating back: \\(\\frac{1}{1+y^{2}}\\frac{dy}{dx} = 1 + x^{2}\\), so \\(\\frac{dy}{dx} = (1+x^{2})(1+y^{2})\\), as required. The general solution is \\(\\tan^{-1}y = x + \\frac{x^{3}}{3} + C\\)."
+  },
+  {
+    "id": "1c6596be-788c-40c3-b35c-6869bcb61f64",
+    "ref": "Ex 9.3 Q7",
+    "solution": "Separating the variables, \\(\\frac{dy}{y\\log y} = \\frac{dx}{x}\\). On the left put \\(t = \\log y\\), so \\(dt = \\frac{dy}{y}\\) and the integral becomes \\(\\int\\frac{dt}{t} = \\log|t|\\). Hence \\(\\log|\\log y| = \\log|x| + \\log C\\), giving \\(\\log y = Cx\\), i.e. \\(y = e^{Cx}\\). Check by differentiating back: with \\(y = e^{Cx}\\), \\(\\frac{dy}{dx} = Cy\\), so \\(y\\log y\\,dx - x\\,dy = y(Cx) - x(Cy) = 0\\), as required. The general solution is \\(\\log y = Cx\\)."
+  },
+  {
+    "id": "43be496f-ba2a-4677-a699-46b7e9713d36",
+    "ref": "Ex 9.3 Q8",
+    "solution": "Separating the variables, \\(\\frac{dy}{y^{5}} = -\\frac{dx}{x^{5}}\\). Integrating, \\(-\\frac{1}{4y^{4}} = \\frac{1}{4x^{4}} + k\\); multiplying by \\(-4\\) and absorbing the constant, \\(\\frac{1}{x^{4}} + \\frac{1}{y^{4}} = C\\). Check by differentiating \\(x^{-4} + y^{-4} = C\\) implicitly: \\(-4x^{-5} - 4y^{-5}\\frac{dy}{dx} = 0\\), so \\(\\frac{dy}{dx} = -\\frac{y^{5}}{x^{5}}\\), i.e. \\(x^{5}\\frac{dy}{dx} = -y^{5}\\), as required. The general solution is \\(x^{-4} + y^{-4} = C\\)."
+  },
+  {
+    "id": "1a9c11a1-fae3-4d4d-afa6-4970712afb03",
+    "ref": "Ex 9.3 Q9",
+    "solution": "The variables are already separated, so \\(y = \\int\\sin^{-1}x\\,dx\\). Integrate by parts taking \\(\\sin^{-1}x\\) as the first function: \\(y = x\\sin^{-1}x - \\int\\frac{x}{\\sqrt{1-x^{2}}}\\,dx = x\\sin^{-1}x + \\sqrt{1 - x^{2}} + C\\). Check by differentiating back: \\(\\frac{dy}{dx} = \\sin^{-1}x + \\frac{x}{\\sqrt{1-x^{2}}} - \\frac{x}{\\sqrt{1-x^{2}}} = \\sin^{-1}x\\), as required. The general solution is \\(y = x\\sin^{-1}x + \\sqrt{1 - x^{2}} + C\\)."
+  },
+  {
+    "id": "8b518715-a72e-42e7-aacf-8dbf1c23ca22",
+    "ref": "Ex 9.3 Q10",
+    "solution": "Separating the variables, \\(\\frac{\\sec^{2}y}{\\tan y}\\,dy = -\\frac{e^{x}}{1 - e^{x}}\\,dx\\). On the right put \\(u = 1 - e^{x}\\), so \\(du = -e^{x}dx\\) and the integrand becomes \\(\\frac{du}{u}\\). Integrating both sides, \\(\\log|\\tan y| = \\log|1 - e^{x}| + \\log C\\), so \\(\\tan y = C\\left(1 - e^{x}\\right)\\). Check by differentiating implicitly: \\(\\sec^{2}y\\,\\frac{dy}{dx} = -Ce^{x}\\), hence \\(e^{x}\\tan y + (1-e^{x})\\sec^{2}y\\,\\frac{dy}{dx} = e^{x}C(1-e^{x}) - (1-e^{x})Ce^{x} = 0\\), as required. The general solution is \\(\\tan y = C\\left(1 - e^{x}\\right)\\)."
+  },
+  {
+    "id": "8cb57fc8-cb2d-481b-bcc8-f73032d1f632",
+    "ref": "Ex 9.3 Q11",
+    "solution": "Factorise the coefficient: \\(x^{3} + x^{2} + x + 1 = (x + 1)(x^{2} + 1)\\), so \\(dy = \\frac{2x^{2} + x}{(x+1)(x^{2}+1)}\\,dx\\). Resolving into partial fractions, \\(\\frac{2x^{2}+x}{(x+1)(x^{2}+1)} = \\frac{1/2}{x+1} + \\frac{\\frac{3}{2}x - \\frac{1}{2}}{x^{2}+1}\\). Integrating, \\(y = \\frac{1}{2}\\log|x+1| + \\frac{3}{4}\\log(x^{2}+1) - \\frac{1}{2}\\tan^{-1}x + K\\). Applying \\(y = 1\\) when \\(x = 0\\) gives \\(1 = 0 + 0 - 0 + K\\), so \\(K = 1\\). Differentiating the result back reproduces \\(\\frac{2x^{2}+x}{(x+1)(x^{2}+1)}\\), confirming it. The particular solution is \\(y = \\frac{1}{2}\\log|x+1| + \\frac{3}{4}\\log\\left(x^{2}+1\\right) - \\frac{1}{2}\\tan^{-1}x + 1\\)."
+  },
+  {
+    "id": "c572b37d-80c0-4602-a4a4-f8078b018c17",
+    "ref": "Ex 9.3 Q12",
+    "solution": "Separating, \\(dy = \\frac{dx}{x(x-1)(x+1)}\\). By partial fractions \\(\\frac{1}{x(x-1)(x+1)} = -\\frac{1}{x} + \\frac{1}{2(x-1)} + \\frac{1}{2(x+1)}\\), so integrating gives \\(y = -\\log|x| + \\frac{1}{2}\\log|x-1| + \\frac{1}{2}\\log|x+1| + K = \\frac{1}{2}\\log\\left|x^{2}-1\\right| - \\log|x| + K\\). Applying \\(y = 0\\) when \\(x = 2\\): \\(0 = \\frac{1}{2}\\log 3 - \\log 2 + K\\), so \\(K = \\log 2 - \\frac{1}{2}\\log 3\\). Combining the logarithms and checking by differentiation (which returns \\(\\frac{1}{x(x^{2}-1)}\\)), the particular solution is \\(y = \\frac{1}{2}\\log\\left|\\frac{4\\left(x^{2}-1\\right)}{3x^{2}}\\right|\\)."
+  },
+  {
+    "id": "b2977615-68cb-4c46-9e78-2ef62b957afa",
+    "ref": "Ex 9.3 Q13",
+    "solution": "[Textbook answer-key error: the printed key gives \\(\\cos\\left(\\frac{y-2}{x}\\right) = a\\), which requires \\(y = 2\\) when \\(x = 0\\). The question states \\(y = 1\\) when \\(x = 0\\), so the constant is \\(1\\) and the correct answer is \\(\\cos\\left(\\frac{y-1}{x}\\right) = a\\).] Taking the inverse cosine of both sides (which requires \\(|a| \\le 1\\)), \\(\\frac{dy}{dx} = \\cos^{-1}a\\), a constant. Integrating, \\(y = x\\cos^{-1}a + C\\). Applying \\(y = 1\\) when \\(x = 0\\) gives \\(1 = 0 + C\\), so \\(C = 1\\). Check by differentiating back: \\(\\frac{dy}{dx} = \\cos^{-1}a\\), so \\(\\cos\\left(\\frac{dy}{dx}\\right) = a\\), as required. The particular solution is \\(y = x\\cos^{-1}a + 1\\), equivalently \\(\\cos\\left(\\frac{y-1}{x}\\right) = a\\)."
+  },
+  {
+    "id": "3e06c713-ee62-4003-95ba-c855cc692242",
+    "ref": "Ex 9.3 Q14",
+    "solution": "Separating the variables, \\(\\frac{dy}{y} = \\tan x\\,dx\\). Integrating, \\(\\log|y| = \\log|\\sec x| + \\log A\\), so \\(y = A\\sec x\\). Applying \\(y = 1\\) when \\(x = 0\\) gives \\(1 = A\\sec 0 = A\\), so \\(A = 1\\). Check by differentiating back: \\(y = \\sec x\\) gives \\(\\frac{dy}{dx} = \\sec x\\tan x = y\\tan x\\), as required. The particular solution is \\(y = \\sec x\\)."
+  },
+  {
+    "id": "4d813391-8186-4207-96fa-9b4b130a6987",
+    "ref": "Ex 9.3 Q15",
+    "solution": "Integrating \\(\\frac{dy}{dx} = e^{x}\\sin x\\) by parts twice gives \\(\\int e^{x}\\sin x\\,dx = \\frac{e^{x}}{2}\\left(\\sin x - \\cos x\\right)\\), so \\(y = \\frac{e^{x}}{2}\\left(\\sin x - \\cos x\\right) + C\\). The curve passes through \\((0, 0)\\), so \\(0 = \\frac{1}{2}(0 - 1) + C\\), giving \\(C = \\frac{1}{2}\\). Check by differentiating back: \\(\\frac{dy}{dx} = \\frac{e^{x}}{2}(\\sin x - \\cos x) + \\frac{e^{x}}{2}(\\cos x + \\sin x) = e^{x}\\sin x\\), as required. The equation of the curve is \\(2y - 1 = e^{x}\\left(\\sin x - \\cos x\\right)\\)."
+  },
+  {
+    "id": "f3af3f8c-3be4-4fa0-a52b-9e2385228bea",
+    "ref": "Ex 9.3 Q16",
+    "solution": "Separating the variables, \\(\\frac{y}{y+2}\\,dy = \\frac{x+2}{x}\\,dx\\), that is \\(\\left(1 - \\frac{2}{y+2}\\right)dy = \\left(1 + \\frac{2}{x}\\right)dx\\). Integrating, \\(y - 2\\log|y+2| = x + 2\\log|x| + C\\). The curve passes through \\((1, -1)\\), so \\(-1 - 2\\log 1 = 1 + 2\\log 1 + C\\), giving \\(C = -2\\). Rearranging the logarithms, \\(y - x + 2 = 2\\log|x| + 2\\log|y+2|\\). The solution curve is \\(y - x + 2 = 2\\log|x(y+2)|\\)."
+  },
+  {
+    "id": "f4e47ee0-bc66-4311-89ec-29bb92d8c9fc",
+    "ref": "Ex 9.3 Q17",
+    "solution": "The stated condition says the slope \\(\\frac{dy}{dx}\\) times \\(y\\) equals \\(x\\), so the differential equation is \\(y\\frac{dy}{dx} = x\\). Separating, \\(y\\,dy = x\\,dx\\), and integrating gives \\(\\frac{y^{2}}{2} = \\frac{x^{2}}{2} + k\\), i.e. \\(y^{2} - x^{2} = C\\). The curve passes through \\((0, -2)\\), so \\(4 - 0 = C\\), giving \\(C = 4\\). Check by differentiating \\(y^{2} - x^{2} = 4\\): \\(2y\\frac{dy}{dx} - 2x = 0\\), so \\(y\\frac{dy}{dx} = x\\), as required. The equation of the curve is \\(y^{2} - x^{2} = 4\\)."
+  },
+  {
+    "id": "3bd275c3-9198-4f34-bf13-1ea090f0ecf5",
+    "ref": "Ex 9.3 Q18",
+    "solution": "The slope of the segment joining \\((x, y)\\) to \\((-4, -3)\\) is \\(\\frac{y+3}{x+4}\\), so the stated condition gives \\(\\frac{dy}{dx} = \\frac{2(y+3)}{x+4}\\). Separating, \\(\\frac{dy}{y+3} = \\frac{2\\,dx}{x+4}\\), and integrating, \\(\\log|y+3| = 2\\log|x+4| + \\log C\\), so \\(y + 3 = C(x+4)^{2}\\). The curve passes through \\((-2, 1)\\), so \\(4 = C(2)^{2} = 4C\\), giving \\(C = 1\\). Check by differentiating back: \\(\\frac{dy}{dx} = 2(x+4) = \\frac{2(y+3)}{x+4}\\), as required. The equation of the curve is \\(y + 3 = (x+4)^{2}\\)."
+  },
+  {
+    "id": "9cae2d93-af97-4681-a948-834ba76e7760",
+    "ref": "Ex 9.3 Q19",
+    "solution": "For a sphere \\(V = \\frac{4}{3}\\pi r^{3}\\), and the volume changes at a constant rate, so \\(\\frac{dV}{dt} = k\\). Integrating, \\(\\frac{4}{3}\\pi r^{3} = kt + C\\). At \\(t = 0\\), \\(r = 3\\), so \\(C = \\frac{4}{3}\\pi(27) = 36\\pi\\). At \\(t = 3\\), \\(r = 6\\), so \\(\\frac{4}{3}\\pi(216) = 288\\pi = 3k + 36\\pi\\), giving \\(k = 84\\pi\\). Hence \\(\\frac{4}{3}\\pi r^{3} = 84\\pi t + 36\\pi\\), so \\(r^{3} = 63t + 27\\). The radius after \\(t\\) seconds is \\(r = \\left(63t + 27\\right)^{1/3}\\)."
+  },
+  {
+    "id": "289ab1e5-bfcf-4653-9f8a-3e953bfa3aec",
+    "ref": "Ex 9.3 Q20",
+    "solution": "Let \\(P\\) be the principal after \\(t\\) years. Continuous growth at \\(r\\%\\) per year means \\(\\frac{dP}{dt} = \\frac{r}{100}P\\). Separating, \\(\\frac{dP}{P} = \\frac{r}{100}dt\\), so \\(\\log P = \\frac{rt}{100} + k\\) and \\(P = P_{0}e^{rt/100}\\) with \\(P_{0} = 100\\). The sum doubles in 10 years, so \\(200 = 100\\,e^{10r/100}\\), giving \\(e^{r/10} = 2\\) and hence \\(\\frac{r}{10} = \\log_{e}2 = 0.6931\\). Therefore \\(r = 6.931\\), i.e. the rate is \\(r = 6.93\\%\\) per year (approximately)."
+  },
+  {
+    "id": "503ae4ab-ea5b-4b83-9ed4-2408d3fafd8e",
+    "ref": "Ex 9.3 Q21",
+    "solution": "With continuous growth, \\(\\frac{dP}{dt} = \\frac{5}{100}P = \\frac{P}{20}\\). Separating, \\(\\frac{dP}{P} = \\frac{dt}{20}\\), so \\(\\log P = \\frac{t}{20} + k\\) and \\(P = P_{0}e^{t/20}\\) with \\(P_{0} = 1000\\). After \\(t = 10\\) years, \\(P = 1000\\,e^{10/20} = 1000\\,e^{0.5} = 1000(1.648)\\). The amount after 10 years is Rs \\(1648\\)."
+  },
+  {
+    "id": "bba668ac-a409-491a-9f86-48b66f925212",
+    "ref": "Ex 9.3 Q22",
+    "solution": "Let \\(N\\) be the count after \\(t\\) hours. Growth proportional to the number present gives \\(\\frac{dN}{dt} = kN\\); separating and integrating, \\(\\log N = kt + c\\), so \\(N = N_{0}e^{kt}\\) with \\(N_{0} = 100000\\). A \\(10\\%\\) increase in 2 hours gives \\(110000 = 100000\\,e^{2k}\\), so \\(e^{2k} = \\frac{11}{10}\\) and \\(k = \\frac{1}{2}\\log\\frac{11}{10}\\). For the count to reach \\(200000\\) we need \\(e^{kt} = 2\\), i.e. \\(t = \\frac{\\log 2}{k}\\). Substituting \\(k\\), the required time is \\(t = \\frac{2\\log 2}{\\log\\frac{11}{10}}\\) hours, which is about \\(14.55\\) hours."
+  },
+  {
+    "id": "9c197025-b6c8-4d83-87e0-8e8cb7afb6ae",
+    "ref": "Misc Q4",
+    "solution": "Rearranging, \\(\\frac{dy}{dx} = -\\sqrt{\\frac{1-y^{2}}{1-x^{2}}}\\), so separating the variables gives \\(\\frac{dy}{\\sqrt{1-y^{2}}} = -\\frac{dx}{\\sqrt{1-x^{2}}}\\). Integrating both sides, \\(\\sin^{-1}y = -\\sin^{-1}x + C\\). Check by differentiating back: \\(\\frac{1}{\\sqrt{1-y^{2}}}\\frac{dy}{dx} + \\frac{1}{\\sqrt{1-x^{2}}} = 0\\), which rearranges to the given equation. The general solution is \\(\\sin^{-1}x + \\sin^{-1}y = C\\)."
+  },
+  {
+    "id": "a91f2a95-4986-49f2-b4f2-a0e09f77d7df",
+    "ref": "Misc Q5",
+    "solution": "Separating the variables, \\(\\frac{dy}{y^{2}+y+1} + \\frac{dx}{x^{2}+x+1} = 0\\). Completing the square, \\(t^{2}+t+1 = \\left(t+\\frac{1}{2}\\right)^{2} + \\frac{3}{4}\\), so \\(\\int\\frac{dt}{t^{2}+t+1} = \\frac{2}{\\sqrt{3}}\\tan^{-1}\\frac{2t+1}{\\sqrt{3}}\\). Integrating therefore gives \\(\\frac{2}{\\sqrt{3}}\\left[\\tan^{-1}\\frac{2y+1}{\\sqrt{3}} + \\tan^{-1}\\frac{2x+1}{\\sqrt{3}}\\right] = \\text{constant}\\), so \\(\\tan^{-1}\\frac{2x+1}{\\sqrt{3}} + \\tan^{-1}\\frac{2y+1}{\\sqrt{3}} = B\\). Taking the tangent of both sides and using \\(\\tan(P+Q) = \\frac{\\tan P + \\tan Q}{1 - \\tan P\\tan Q}\\), \\(\\frac{\\frac{2x+1}{\\sqrt{3}} + \\frac{2y+1}{\\sqrt{3}}}{1 - \\frac{(2x+1)(2y+1)}{3}} = \\tan B\\). The numerator is \\(\\frac{2(x+y+1)}{\\sqrt{3}}\\) and the denominator is \\(\\frac{3 - (4xy+2x+2y+1)}{3} = \\frac{2(1 - x - y - 2xy)}{3}\\), so the left side equals \\(\\frac{\\sqrt{3}\\,(x+y+1)}{1 - x - y - 2xy}\\). Hence \\(\\frac{\\sqrt{3}\\,(x+y+1)}{1-x-y-2xy} = \\tan B\\). Writing \\(\\mathrm{A} = \\frac{\\tan B}{\\sqrt{3}}\\), this is exactly the required general solution \\((x + y + 1) = \\mathrm{A}\\,(1 - x - y - 2xy)\\)."
+  },
+  {
+    "id": "11c82ce2-92dd-4f8e-9c5d-e3920eac3835",
+    "ref": "Misc Q6",
+    "solution": "Dividing throughout by \\(\\cos x\\cos y\\) separates the variables: \\(\\tan x\\,dx + \\tan y\\,dy = 0\\). Integrating, \\(\\log|\\sec x| + \\log|\\sec y| = \\log C\\), so \\(\\sec x\\,\\sec y = C\\). The curve passes through \\(\\left(0, \\frac{\\pi}{4}\\right)\\), so \\(C = \\sec 0\\,\\sec\\frac{\\pi}{4} = 1 \\cdot \\sqrt{2} = \\sqrt{2}\\). Check by differentiating \\(\\sec x\\sec y = \\sqrt{2}\\) implicitly: \\(\\sec x\\tan x\\sec y + \\sec x\\sec y\\tan y\\,\\frac{dy}{dx} = 0\\), i.e. \\(\\tan x + \\tan y\\,\\frac{dy}{dx} = 0\\), which is the given equation. The equation of the curve is \\(\\sec x\\,\\sec y = \\sqrt{2}\\), that is \\(\\cos x\\,\\cos y = \\frac{1}{\\sqrt{2}}\\)."
+  },
+  {
+    "id": "f629c245-533a-4e1e-8093-8cbc90057ee6",
+    "ref": "Misc Q7",
+    "solution": "Separating the variables, \\(\\frac{dy}{1+y^{2}} = -\\frac{e^{x}}{1+e^{2x}}\\,dx\\). On the right put \\(t = e^{x}\\), so \\(dt = e^{x}dx\\) and the integral becomes \\(-\\int\\frac{dt}{1+t^{2}} = -\\tan^{-1}t\\). Integrating both sides, \\(\\tan^{-1}y = -\\tan^{-1}\\left(e^{x}\\right) + C\\), i.e. \\(\\tan^{-1}y + \\tan^{-1}\\left(e^{x}\\right) = C\\). Applying \\(y = 1\\) when \\(x = 0\\) gives \\(C = \\frac{\\pi}{4} + \\frac{\\pi}{4} = \\frac{\\pi}{2}\\). Differentiating the result back reproduces the given equation. The particular solution is \\(\\tan^{-1}y + \\tan^{-1}\\left(e^{x}\\right) = \\frac{\\pi}{2}\\)."
+  },
+  {
+    "id": "c664078d-6268-469e-9c6b-d5ba85084302",
+    "ref": "Misc Q9",
+    "solution": "Put \\(t = x - y\\), so that \\(dy = dx - dt\\), hence \\(dx + dy = 2\\,dx - dt\\) and \\(dx - dy = dt\\). The equation becomes \\(t\\,(2\\,dx - dt) = dt\\), i.e. \\(2t\\,dx = (1 + t)\\,dt\\). Separating, \\(2\\,dx = \\left(\\frac{1}{t} + 1\\right)dt\\), and integrating gives \\(2x = \\log|t| + t + C\\). Restoring \\(t = x - y\\), \\(2x = \\log|x-y| + (x - y) + C\\), so \\(x + y = \\log|x-y| + C\\). Applying \\(y = -1\\) when \\(x = 0\\): \\(-1 = \\log 1 + C\\), so \\(C = -1\\). The particular solution is \\(\\log|x - y| = x + y + 1\\)."
+  },
+  {
+    "id": "7a1f49e9-2f1c-4930-94be-8eaf7b970f56",
+    "ref": "Misc Q12",
+    "solution": "Separating the variables, \\(\\frac{dy}{2e^{-y} - 1} = \\frac{dx}{x+1}\\); multiplying the left side above and below by \\(e^{y}\\) gives \\(\\frac{e^{y}\\,dy}{2 - e^{y}} = \\frac{dx}{x+1}\\). Put \\(u = 2 - e^{y}\\), so \\(du = -e^{y}dy\\) and the left integral is \\(-\\int\\frac{du}{u} = -\\log|u|\\). Hence \\(-\\log\\left|2 - e^{y}\\right| = \\log|x+1| + k\\), which rearranges to \\(\\left(2 - e^{y}\\right)(x + 1) = \\mathrm{A}\\). Applying \\(y = 0\\) when \\(x = 0\\) gives \\((2-1)(1) = 1 = \\mathrm{A}\\). So \\(2 - e^{y} = \\frac{1}{x+1}\\), giving \\(e^{y} = \\frac{2x+1}{x+1}\\). Differentiating this back returns \\((x+1)\\frac{dy}{dx} = 2e^{-y} - 1\\), confirming it. The particular solution is \\(y = \\log\\left|\\frac{2x+1}{x+1}\\right|\\)."
+  }
+]
