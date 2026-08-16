@@ -1,0 +1,158 @@
+[
+  {
+    "id": "3220a974-977a-4117-9197-a832a610f588",
+    "ref": "Misc II Q1",
+    "solution": "\\(\\cot 50^\\circ = \\tan(90^\\circ - 50^\\circ) = \\tan 40^\\circ\\), so L.H.S. \\(= \\tan 20^\\circ\\,\\tan 40^\\circ\\,\\tan 80^\\circ\\).\n\nFirst a general result. With \\(t = \\tan\\theta\\),\n\\(\\tan(60^\\circ-\\theta)\\,\\tan(60^\\circ+\\theta) = \\dfrac{\\sqrt{3}-t}{1+\\sqrt{3}\\,t}\\times\\dfrac{\\sqrt{3}+t}{1-\\sqrt{3}\\,t} = \\dfrac{3-t^{2}}{1-3t^{2}}\\),\nso \\(\\tan\\theta\\,\\tan(60^\\circ-\\theta)\\,\\tan(60^\\circ+\\theta) = \\dfrac{3t-t^{3}}{1-3t^{2}} = \\tan 3\\theta\\).\n\nPutting \\(\\theta = 20^\\circ\\) (so \\(60^\\circ-\\theta = 40^\\circ\\), \\(60^\\circ+\\theta = 80^\\circ\\)):\n\\(\\tan 20^\\circ\\,\\tan 40^\\circ\\,\\tan 80^\\circ = \\tan 60^\\circ = \\sqrt{3}\\).\n\n\\(\\therefore \\tan 20^\\circ\\,\\tan 80^\\circ\\,\\cot 50^\\circ = \\sqrt{3} = \\) R.H.S."
+  },
+  {
+    "id": "323642e3-3f50-403a-9b99-5855b40c5c1b",
+    "ref": "Misc II Q2",
+    "solution": "\\(\\sin\\alpha\\,\\sin\\beta - \\cos\\alpha\\,\\cos\\beta + 1 = 0\\)\n\n\\(\\therefore -(\\cos\\alpha\\,\\cos\\beta - \\sin\\alpha\\,\\sin\\beta) + 1 = 0\\), i.e. \\(-\\cos(\\alpha+\\beta) + 1 = 0\\).\n\n\\(\\therefore \\cos(\\alpha+\\beta) = 1\\), so \\(\\alpha + \\beta = 2n\\pi\\), \\(n \\in \\mathbb{Z}\\), i.e. \\(\\beta = 2n\\pi - \\alpha\\).\n\n\\(\\therefore \\tan\\beta = \\tan(2n\\pi - \\alpha) = -\\tan\\alpha\\).\n\n\\(\\therefore \\cot\\alpha\\,\\tan\\beta = \\cot\\alpha\\,(-\\tan\\alpha) = -\\tan\\alpha\\,\\cot\\alpha = -1 = \\) R.H.S."
+  },
+  {
+    "id": "5d586854-09b0-4314-8459-5f24fe508e9a",
+    "ref": "Misc II Q3",
+    "solution": "Let \\(\\theta = \\dfrac{2\\pi}{15}\\). The four angles are \\(\\theta,\\ 2\\theta,\\ 4\\theta,\\ 8\\theta\\).\n\nMultiply and divide by \\(2\\sin\\theta\\) and use \\(2\\sin\\phi\\cos\\phi = \\sin 2\\phi\\) repeatedly:\n\\(\\cos\\theta\\,\\cos 2\\theta\\,\\cos 4\\theta\\,\\cos 8\\theta = \\dfrac{2\\sin\\theta\\cos\\theta\\cdot\\cos 2\\theta\\cos 4\\theta\\cos 8\\theta}{2\\sin\\theta} = \\dfrac{\\sin 16\\theta}{16\\sin\\theta}\\).\n\nHere \\(16\\theta = \\dfrac{32\\pi}{15} = 2\\pi + \\dfrac{2\\pi}{15}\\), so \\(\\sin 16\\theta = \\sin\\dfrac{2\\pi}{15} = \\sin\\theta\\).\n\n\\(\\therefore \\cos\\dfrac{2\\pi}{15}\\,\\cos\\dfrac{4\\pi}{15}\\,\\cos\\dfrac{8\\pi}{15}\\,\\cos\\dfrac{16\\pi}{15} = \\dfrac{\\sin\\theta}{16\\sin\\theta} = \\dfrac{1}{16} = \\) R.H.S."
+  },
+  {
+    "id": "fe6aa093-baec-4ddb-8e76-7b7795bfabb0",
+    "ref": "Misc II Q4",
+    "solution": "\\(\\cos\\dfrac{5\\pi}{8} = \\cos\\left(\\pi - \\dfrac{3\\pi}{8}\\right) = -\\cos\\dfrac{3\\pi}{8}\\) and \\(\\cos\\dfrac{7\\pi}{8} = \\cos\\left(\\pi - \\dfrac{\\pi}{8}\\right) = -\\cos\\dfrac{\\pi}{8}\\).\n\n\\(\\therefore\\) L.H.S. \\(= \\left(1+\\cos\\dfrac{\\pi}{8}\\right)\\left(1-\\cos\\dfrac{\\pi}{8}\\right)\\left(1+\\cos\\dfrac{3\\pi}{8}\\right)\\left(1-\\cos\\dfrac{3\\pi}{8}\\right) = \\sin^{2}\\dfrac{\\pi}{8}\\,\\sin^{2}\\dfrac{3\\pi}{8}\\).\n\nSince \\(\\sin\\dfrac{3\\pi}{8} = \\sin\\left(\\dfrac{\\pi}{2} - \\dfrac{\\pi}{8}\\right) = \\cos\\dfrac{\\pi}{8}\\),\nL.H.S. \\(= \\left(\\sin\\dfrac{\\pi}{8}\\cos\\dfrac{\\pi}{8}\\right)^{2} = \\left(\\dfrac{1}{2}\\sin\\dfrac{\\pi}{4}\\right)^{2} = \\left(\\dfrac{1}{2\\sqrt{2}}\\right)^{2}\\).\n\n\\(\\therefore\\) L.H.S. \\(= \\dfrac{1}{8} = \\) R.H.S."
+  },
+  {
+    "id": "3f2f6618-8733-49da-8822-444ed4a5227c",
+    "ref": "Misc II Q5",
+    "solution": "Pair the terms as \\((\\cos 12^\\circ + \\cos 132^\\circ) + (\\cos 84^\\circ + \\cos 156^\\circ)\\) and use \\(\\cos C + \\cos D = 2\\cos\\dfrac{C+D}{2}\\cos\\dfrac{C-D}{2}\\):\n\n\\(\\cos 12^\\circ + \\cos 132^\\circ = 2\\cos 72^\\circ\\,\\cos 60^\\circ = 2\\cos 72^\\circ\\times\\dfrac{1}{2} = \\cos 72^\\circ\\),\n\\(\\cos 84^\\circ + \\cos 156^\\circ = 2\\cos 120^\\circ\\,\\cos 36^\\circ = 2\\left(-\\dfrac{1}{2}\\right)\\cos 36^\\circ = -\\cos 36^\\circ\\).\n\n\\(\\therefore\\) L.H.S. \\(= \\cos 72^\\circ - \\cos 36^\\circ = \\sin 18^\\circ - \\cos 36^\\circ\\).\n\nUsing \\(\\sin 18^\\circ = \\dfrac{\\sqrt{5}-1}{4}\\) and \\(\\cos 36^\\circ = \\dfrac{\\sqrt{5}+1}{4}\\),\nL.H.S. \\(= \\dfrac{\\sqrt{5}-1}{4} - \\dfrac{\\sqrt{5}+1}{4} = -\\dfrac{2}{4}\\).\n\n\\(\\therefore \\cos 12^\\circ + \\cos 84^\\circ + \\cos 156^\\circ + \\cos 132^\\circ = -\\dfrac{1}{2} = \\) R.H.S."
+  },
+  {
+    "id": "ad47ac07-1593-43c9-b083-2ddcb31ca101",
+    "ref": "Misc II Q6",
+    "solution": "Use \\(\\cos C + \\cos D = 2\\cos\\dfrac{C+D}{2}\\cos\\dfrac{C-D}{2}\\) with \\(C = \\dfrac{\\pi}{4}+x\\) and \\(D = \\dfrac{\\pi}{4}-x\\).\n\nHere \\(\\dfrac{C+D}{2} = \\dfrac{\\pi}{4}\\) and \\(\\dfrac{C-D}{2} = x\\).\n\n\\(\\therefore\\) L.H.S. \\(= 2\\cos\\dfrac{\\pi}{4}\\,\\cos x = 2\\times\\dfrac{1}{\\sqrt{2}}\\times\\cos x\\).\n\n\\(\\therefore \\cos\\left(\\dfrac{\\pi}{4}+x\\right) + \\cos\\left(\\dfrac{\\pi}{4}-x\\right) = \\sqrt{2}\\,\\cos x = \\) R.H.S."
+  },
+  {
+    "id": "d56cceed-4677-4cc1-8779-65df508a8d15",
+    "ref": "Misc II Q7",
+    "solution": "Numerator: group the outer terms first.\n\\((\\sin 5x + \\sin x) - 2\\sin 3x = 2\\sin 3x\\,\\cos 2x - 2\\sin 3x = 2\\sin 3x(\\cos 2x - 1)\\).\nSince \\(\\cos 2x - 1 = -2\\sin^{2}x\\), the numerator \\(= -4\\sin 3x\\,\\sin^{2}x\\).\n\nDenominator: \\(\\cos 5x - \\cos x = -2\\sin 3x\\,\\sin 2x = -2\\sin 3x\\,(2\\sin x\\cos x) = -4\\sin 3x\\,\\sin x\\,\\cos x\\).\n\n\\(\\therefore\\) L.H.S. \\(= \\dfrac{-4\\sin 3x\\,\\sin^{2}x}{-4\\sin 3x\\,\\sin x\\,\\cos x} = \\dfrac{\\sin x}{\\cos x}\\).\n\n\\(\\therefore \\dfrac{\\sin 5x - 2\\sin 3x + \\sin x}{\\cos 5x - \\cos x} = \\tan x = \\) R.H.S."
+  },
+  {
+    "id": "8b38463d-31cf-4b2d-a1e0-73bdfbce93c9",
+    "ref": "Misc II Q8",
+    "solution": "For any \\(A\\) and \\(B\\),\n\\(\\sin^{2}A - \\sin^{2}B = \\dfrac{1-\\cos 2A}{2} - \\dfrac{1-\\cos 2B}{2} = \\dfrac{\\cos 2B - \\cos 2A}{2} = \\dfrac{2\\sin(A+B)\\sin(A-B)}{2} = \\sin(A+B)\\,\\sin(A-B)\\).\n\nPut \\(A = 6x\\) and \\(B = 4x\\):\nL.H.S. \\(= \\sin(6x+4x)\\,\\sin(6x-4x) = \\sin 10x\\,\\sin 2x\\).\n\n\\(\\therefore \\sin^{2}6x - \\sin^{2}4x = \\sin 2x\\,\\sin 10x = \\) R.H.S."
+  },
+  {
+    "id": "5ed2b09b-3a77-47ec-8059-0e46eb3fdcad",
+    "ref": "Misc II Q9",
+    "solution": "\\(\\cos^{2}2x - \\cos^{2}6x = \\dfrac{1+\\cos 4x}{2} - \\dfrac{1+\\cos 12x}{2} = \\dfrac{\\cos 4x - \\cos 12x}{2}\\).\n\nNow \\(\\cos C - \\cos D = 2\\sin\\dfrac{C+D}{2}\\sin\\dfrac{D-C}{2}\\), so with \\(C = 4x\\), \\(D = 12x\\),\n\\(\\cos 4x - \\cos 12x = 2\\sin 8x\\,\\sin 4x\\).\n\n\\(\\therefore\\) L.H.S. \\(= \\dfrac{2\\sin 8x\\,\\sin 4x}{2}\\).\n\n\\(\\therefore \\cos^{2}2x - \\cos^{2}6x = \\sin 4x\\,\\sin 8x = \\) R.H.S."
+  },
+  {
+    "id": "0a5b761d-6bfe-4932-8395-c881b3a50624",
+    "ref": "Misc II Q10",
+    "solution": "Use \\(\\sin C + \\sin D = 2\\sin\\dfrac{C+D}{2}\\cos\\dfrac{C-D}{2}\\) and \\(\\sin C - \\sin D = 2\\cos\\dfrac{C+D}{2}\\sin\\dfrac{C-D}{2}\\):\n\\(\\sin 5x + \\sin 3x = 2\\sin 4x\\,\\cos x\\) and \\(\\sin 5x - \\sin 3x = 2\\cos 4x\\,\\sin x\\).\n\nL.H.S. \\(= \\cot 4x\\,(2\\sin 4x\\cos x) = \\dfrac{\\cos 4x}{\\sin 4x}\\times 2\\sin 4x\\,\\cos x = 2\\cos 4x\\,\\cos x\\).\n\nR.H.S. \\(= \\cot x\\,(2\\cos 4x\\sin x) = \\dfrac{\\cos x}{\\sin x}\\times 2\\cos 4x\\,\\sin x = 2\\cos 4x\\,\\cos x\\).\n\n\\(\\therefore \\cot 4x\\,(\\sin 5x + \\sin 3x) = \\cot x\\,(\\sin 5x - \\sin 3x)\\), i.e. L.H.S. \\(= \\) R.H.S."
+  },
+  {
+    "id": "cadf86c2-0446-4a4c-9ade-43879dfffa5d",
+    "ref": "Misc II Q11",
+    "solution": "Numerator: \\(\\cos 9x - \\cos 5x = -2\\sin\\dfrac{9x+5x}{2}\\,\\sin\\dfrac{9x-5x}{2} = -2\\sin 7x\\,\\sin 2x\\).\n\nDenominator: \\(\\sin 17x - \\sin 3x = 2\\cos\\dfrac{17x+3x}{2}\\,\\sin\\dfrac{17x-3x}{2} = 2\\cos 10x\\,\\sin 7x\\).\n\n\\(\\therefore\\) L.H.S. \\(= \\dfrac{-2\\sin 7x\\,\\sin 2x}{2\\cos 10x\\,\\sin 7x}\\).\n\n\\(\\therefore \\dfrac{\\cos 9x - \\cos 5x}{\\sin 17x - \\sin 3x} = -\\dfrac{\\sin 2x}{\\cos 10x} = \\) R.H.S."
+  },
+  {
+    "id": "eddb7a59-a2e1-4e1a-aba6-ee28d49ad98c",
+    "ref": "Misc II Q12",
+    "solution": "Given \\(\\sin 2A = \\lambda\\sin 2B\\), so \\(\\dfrac{\\sin 2A}{\\sin 2B} = \\lambda\\) (with \\(\\lambda \\ne 1\\), so that \\(\\lambda - 1 \\ne 0\\)).\n\nBy componendo and dividendo,\n\\(\\dfrac{\\sin 2A + \\sin 2B}{\\sin 2A - \\sin 2B} = \\dfrac{\\lambda + 1}{\\lambda - 1}\\).\n\nNow \\(\\sin 2A + \\sin 2B = 2\\sin(A+B)\\cos(A-B)\\) and \\(\\sin 2A - \\sin 2B = 2\\cos(A+B)\\sin(A-B)\\).\n\n\\(\\therefore \\dfrac{\\lambda+1}{\\lambda-1} = \\dfrac{2\\sin(A+B)\\cos(A-B)}{2\\cos(A+B)\\sin(A-B)} = \\dfrac{\\sin(A+B)}{\\cos(A+B)}\\times\\dfrac{\\cos(A-B)}{\\sin(A-B)} = \\dfrac{\\tan(A+B)}{\\tan(A-B)}\\).\n\n\\(\\therefore \\dfrac{\\tan (A + B)}{\\tan (A - B)} = \\dfrac{\\lambda + 1}{\\lambda - 1} = \\) R.H.S."
+  },
+  {
+    "id": "29356db7-1e4b-4543-9418-c124e2c48000",
+    "ref": "Misc II Q13",
+    "solution": "Start from the R.H.S. and put \\(t = \\tan A\\).\n\n\\(\\tan(60^\\circ+A)\\,\\tan(60^\\circ-A) = \\dfrac{\\sqrt{3}+t}{1-\\sqrt{3}\\,t}\\times\\dfrac{\\sqrt{3}-t}{1+\\sqrt{3}\\,t} = \\dfrac{3-t^{2}}{1-3t^{2}}\\).\n\nMultiplying numerator and denominator by \\(\\cos^{2}A\\) gives \\(\\dfrac{3\\cos^{2}A - \\sin^{2}A}{\\cos^{2}A - 3\\sin^{2}A}\\).\n\nUsing \\(\\cos^{2}A = \\dfrac{1+\\cos 2A}{2}\\) and \\(\\sin^{2}A = \\dfrac{1-\\cos 2A}{2}\\):\nnumerator \\(= \\dfrac{3+3\\cos 2A-1+\\cos 2A}{2} = \\dfrac{2+4\\cos 2A}{2} = 2\\cos 2A + 1\\),\ndenominator \\(= \\dfrac{1+\\cos 2A-3+3\\cos 2A}{2} = \\dfrac{4\\cos 2A-2}{2} = 2\\cos 2A - 1\\).\n\n\\(\\therefore \\dfrac{2\\cos 2A + 1}{2\\cos 2A - 1} = \\tan (60^\\circ + A)\\,\\tan (60^\\circ - A)\\), i.e. L.H.S. \\(= \\) R.H.S."
+  },
+  {
+    "id": "5593b4af-71ac-48dd-8d5f-42559a955a97",
+    "ref": "Misc II Q14",
+    "solution": "Let \\(T = \\tan 3A\\).\n\nTripling each of the angles \\(A,\\ 60^\\circ+A,\\ 120^\\circ+A\\) gives \\(3A,\\ 3A+180^\\circ,\\ 3A+360^\\circ\\), and since the period of the tangent is \\(180^\\circ\\), all three have the same tangent \\(T\\).\n\nSo each of \\(x = \\tan A,\\ \\tan(60^\\circ+A),\\ \\tan(120^\\circ+A)\\) satisfies \\(T = \\dfrac{3x-x^{3}}{1-3x^{2}}\\), i.e.\n\\(T(1-3x^{2}) = 3x - x^{3}\\), i.e. \\(x^{3} - 3T x^{2} - 3x + T = 0\\).\n\nThe three tangents are distinct, so they are precisely the three roots of this cubic, and the sum of the roots of \\(x^{3} - 3Tx^{2} - 3x + T = 0\\) is \\(3T\\).\n\n\\(\\therefore \\tan A + \\tan (60^\\circ + A) + \\tan (120^\\circ + A) = 3T = 3\\tan 3A = \\) R.H.S."
+  },
+  {
+    "id": "3e001419-3bdd-464c-b364-681e01617f1d",
+    "ref": "Misc II Q15",
+    "solution": "Let \\(t = \\tan 10^\\circ\\). Then \\(3\\times 10^\\circ = 30^\\circ\\), so\n\\(\\tan 30^\\circ = \\dfrac{3t - t^{3}}{1 - 3t^{2}} = \\dfrac{1}{\\sqrt{3}}\\).\n\n\\(\\therefore \\sqrt{3}\\,(3t - t^{3}) = 1 - 3t^{2}\\). Squaring both sides,\n\\(3(3t - t^{3})^{2} = (1 - 3t^{2})^{2}\\)\n\\(3(9t^{2} - 6t^{4} + t^{6}) = 1 - 6t^{2} + 9t^{4}\\)\n\\(27t^{2} - 18t^{4} + 3t^{6} = 1 - 6t^{2} + 9t^{4}\\)\n\\(3t^{6} - 27t^{4} + 33t^{2} - 1 = 0\\).\n\n\\(\\therefore 3\\tan^{6}10^\\circ - 27\\tan^{4}10^\\circ + 33\\tan^{2}10^\\circ = 1 = \\) R.H.S."
+  },
+  {
+    "id": "750dfeee-a629-4db1-9020-7120af39d2b7",
+    "ref": "Misc II Q16",
+    "solution": "For any \\(\\theta\\),\n\\(\\cot\\dfrac{\\theta}{2} - \\cot\\theta = \\dfrac{\\cos\\frac{\\theta}{2}}{\\sin\\frac{\\theta}{2}} - \\dfrac{\\cos\\theta}{\\sin\\theta} = \\dfrac{\\cos\\frac{\\theta}{2}\\sin\\theta - \\cos\\theta\\sin\\frac{\\theta}{2}}{\\sin\\frac{\\theta}{2}\\,\\sin\\theta} = \\dfrac{\\sin\\left(\\theta - \\frac{\\theta}{2}\\right)}{\\sin\\frac{\\theta}{2}\\,\\sin\\theta} = \\dfrac{1}{\\sin\\theta} = \\operatorname{cosec}\\theta\\).\n\nApplying this with \\(\\theta = 48^\\circ,\\ 96^\\circ,\\ 192^\\circ,\\ 384^\\circ\\), the sum telescopes:\nL.H.S. \\(= (\\cot 24^\\circ - \\cot 48^\\circ) + (\\cot 48^\\circ - \\cot 96^\\circ) + (\\cot 96^\\circ - \\cot 192^\\circ) + (\\cot 192^\\circ - \\cot 384^\\circ)\\)\n\\(= \\cot 24^\\circ - \\cot 384^\\circ\\).\n\nSince \\(384^\\circ = 360^\\circ + 24^\\circ\\), \\(\\cot 384^\\circ = \\cot 24^\\circ\\).\n\n\\(\\therefore \\operatorname{cosec} 48^\\circ + \\operatorname{cosec} 96^\\circ + \\operatorname{cosec} 192^\\circ + \\operatorname{cosec} 384^\\circ = \\cot 24^\\circ - \\cot 24^\\circ = 0 = \\) R.H.S."
+  },
+  {
+    "id": "37d69c70-2f77-41c7-b837-d1fa15d0211a",
+    "ref": "Misc II Q17",
+    "solution": "Let \\(p = \\sin x\\,\\cos x\\). Then\n\\((\\sin x - \\cos x)^{2} = 1 - 2p\\) and \\((\\sin x + \\cos x)^{2} = 1 + 2p\\),\nand \\(\\sin^{6}x + \\cos^{6}x = (\\sin^{2}x+\\cos^{2}x)^{3} - 3\\sin^{2}x\\cos^{2}x(\\sin^{2}x+\\cos^{2}x) = 1 - 3p^{2}\\).\n\n\\(\\therefore\\) L.H.S. \\(= 3(1-2p)^{2} + 6(1+2p) + 4(1-3p^{2})\\)\n\\(= 3(1 - 4p + 4p^{2}) + 6 + 12p + 4 - 12p^{2}\\)\n\\(= 3 - 12p + 12p^{2} + 6 + 12p + 4 - 12p^{2}\\).\n\nThe terms in \\(p\\) and \\(p^{2}\\) cancel, leaving \\(3 + 6 + 4\\).\n\n\\(\\therefore 3(\\sin x - \\cos x)^{4} + 6(\\sin x + \\cos x)^{2} + 4(\\sin^{6}x + \\cos^{6}x) = 13 = \\) R.H.S."
+  },
+  {
+    "id": "900c98db-71e8-4b32-a433-a2866de04c4e",
+    "ref": "Misc II Q18",
+    "solution": "For any \\(\\theta\\),\n\\(\\cot\\theta - \\tan\\theta = \\dfrac{\\cos^{2}\\theta - \\sin^{2}\\theta}{\\sin\\theta\\cos\\theta} = \\dfrac{\\cos 2\\theta}{\\frac{1}{2}\\sin 2\\theta} = 2\\cot 2\\theta\\),\nthat is, \\(2\\cot 2\\theta + \\tan\\theta = \\cot\\theta\\).\n\nNow collect the L.H.S. from the right-hand end, using this result three times:\n\\(8\\cot 8A + 4\\tan 4A = 4(2\\cot 8A + \\tan 4A) = 4\\cot 4A\\),\n\\(4\\cot 4A + 2\\tan 2A = 2(2\\cot 4A + \\tan 2A) = 2\\cot 2A\\),\n\\(2\\cot 2A + \\tan A = \\cot A\\).\n\n\\(\\therefore \\tan A + 2\\tan 2A + 4\\tan 4A + 8\\cot 8A = \\cot A = \\) R.H.S."
+  },
+  {
+    "id": "a7f3034a-efbf-435d-b09a-eec4d6b196e1",
+    "ref": "Misc II Q19",
+    "solution": "Given \\(A + B + C = \\dfrac{3\\pi}{2}\\), so \\(A + B = \\dfrac{3\\pi}{2} - C\\).\n\nHence \\(\\cos(A+B) = \\cos\\left(\\dfrac{3\\pi}{2} - C\\right) = -\\sin C\\), and equally \\(\\sin C = \\sin\\left(\\dfrac{3\\pi}{2} - (A+B)\\right) = -\\cos(A+B)\\).\n\nNow \\(\\cos 2A + \\cos 2B = 2\\cos(A+B)\\cos(A-B) = -2\\sin C\\,\\cos(A-B)\\), and \\(\\cos 2C = 1 - 2\\sin^{2}C\\).\n\n\\(\\therefore\\) L.H.S. \\(= 1 - 2\\sin^{2}C - 2\\sin C\\cos(A-B) = 1 - 2\\sin C\\,[\\,\\sin C + \\cos(A-B)\\,]\\).\n\nSince \\(\\sin C = -\\cos(A+B)\\),\n\\(\\sin C + \\cos(A-B) = \\cos(A-B) - \\cos(A+B) = 2\\sin A\\,\\sin B\\).\n\n\\(\\therefore\\) L.H.S. \\(= 1 - 2\\sin C\\,(2\\sin A\\sin B)\\).\n\n\\(\\therefore \\cos 2A + \\cos 2B + \\cos 2C = 1 - 4\\sin A\\,\\sin B\\,\\sin C = \\) R.H.S."
+  },
+  {
+    "id": "b4025e78-45f1-4b22-96fc-3640a297e135",
+    "ref": "Misc II Q20",
+    "solution": "In \\(\\Delta ABC\\), \\(A + B + C = \\pi\\), so \\(\\dfrac{B+C}{2} = \\dfrac{\\pi}{2} - \\dfrac{A}{2}\\) and therefore \\(\\cos\\dfrac{B+C}{2} = \\sin\\dfrac{A}{2}\\).\n\nThe given condition \\(\\sin A - \\cos B = \\cos C\\) means \\(\\sin A = \\cos B + \\cos C\\), i.e.\n\\(2\\sin\\dfrac{A}{2}\\cos\\dfrac{A}{2} = 2\\cos\\dfrac{B+C}{2}\\,\\cos\\dfrac{B-C}{2} = 2\\sin\\dfrac{A}{2}\\,\\cos\\dfrac{B-C}{2}\\).\n\nSince \\(0 < A < \\pi\\), \\(\\sin\\dfrac{A}{2} \\ne 0\\), so it may be cancelled:\n\\(\\cos\\dfrac{A}{2} = \\cos\\dfrac{B-C}{2}\\).\n\nBoth \\(\\dfrac{A}{2}\\) and \\(\\dfrac{|B-C|}{2}\\) lie in \\(\\left[0,\\ \\dfrac{\\pi}{2}\\right)\\), on which the cosine is one-to-one, so \\(A = |B - C|\\).\n\nTaking \\(A = B - C\\) (the case in which \\(B\\) is the larger of the two) gives \\(A + C = B\\), so\n\\(\\pi = A + B + C = B + B = 2B\\).\n\n\\(\\therefore \\angle B = \\dfrac{\\pi}{2}\\).",
+    "_note": "The stated conclusion is INCOMPLETE as printed. Cancelling gives cos(A/2) = cos((B-C)/2), hence A = |B - C|, which splits into TWO cases: A = B - C forces B = pi/2 (the required result), but A = C - B forces C = pi/2. The second branch is genuine, not an artifact: A = 30 deg, B = 60 deg, C = 90 deg satisfies sin A - cos B = 0.5 - 0.5 = 0 = cos C while B = 60 deg is NOT a right angle (verified to 30 significant digits; a grid scan over the whole triangle found no solutions other than these two families). So the correct conclusion is that the triangle is right-angled at B OR at C; the book takes only the branch A = B - C. The proof above follows the book's intended branch. Separately, the stem omits the conditional 'if' before 'sin A - cos B = cos C'."
+  },
+  {
+    "id": "f5dfa39b-3970-40bf-bc30-0d18a5e09683",
+    "ref": "Misc II Q21",
+    "solution": "Use \\(1 + \\tan^{2}x = \\sec^{2}x\\) and \\(1 + \\cot^{2}x = \\operatorname{cosec}^{2}x\\):\n\n\\(\\dfrac{\\tan^{3}x}{1+\\tan^{2}x} = \\dfrac{\\tan^{3}x}{\\sec^{2}x} = \\dfrac{\\sin^{3}x}{\\cos^{3}x}\\times\\cos^{2}x = \\dfrac{\\sin^{3}x}{\\cos x}\\),\n\\(\\dfrac{\\cot^{3}x}{1+\\cot^{2}x} = \\dfrac{\\cot^{3}x}{\\operatorname{cosec}^{2}x} = \\dfrac{\\cos^{3}x}{\\sin^{3}x}\\times\\sin^{2}x = \\dfrac{\\cos^{3}x}{\\sin x}\\).\n\n\\(\\therefore\\) L.H.S. \\(= \\dfrac{\\sin^{3}x}{\\cos x} + \\dfrac{\\cos^{3}x}{\\sin x} = \\dfrac{\\sin^{4}x + \\cos^{4}x}{\\sin x\\,\\cos x}\\).\n\nSince \\(\\sin^{4}x + \\cos^{4}x = (\\sin^{2}x+\\cos^{2}x)^{2} - 2\\sin^{2}x\\cos^{2}x = 1 - 2\\sin^{2}x\\cos^{2}x\\),\nL.H.S. \\(= \\dfrac{1 - 2\\sin^{2}x\\cos^{2}x}{\\sin x\\cos x} = \\dfrac{1}{\\sin x\\cos x} - 2\\sin x\\cos x\\).\n\n\\(\\therefore \\dfrac{\\tan^{3}x}{1+\\tan^{2}x} + \\dfrac{\\cot^{3}x}{1+\\cot^{2}x} = \\sec x\\,\\operatorname{cosec} x - 2\\sin x\\,\\cos x = \\) R.H.S."
+  },
+  {
+    "id": "caceb1d9-2cd8-4b0a-ad36-a82ae4906db5",
+    "ref": "Misc II Q22",
+    "solution": "First a general result. Using \\(\\sin(P+Q)\\sin(P-Q) = \\sin^{2}P - \\sin^{2}Q\\) with \\(P = 60^\\circ\\), \\(Q = \\theta\\):\n\\(\\sin(60^\\circ-\\theta)\\,\\sin(60^\\circ+\\theta) = \\sin^{2}60^\\circ - \\sin^{2}\\theta = \\dfrac{3}{4} - \\sin^{2}\\theta\\).\n\n\\(\\therefore \\sin\\theta\\,\\sin(60^\\circ-\\theta)\\,\\sin(60^\\circ+\\theta) = \\sin\\theta\\left(\\dfrac{3}{4} - \\sin^{2}\\theta\\right) = \\dfrac{3\\sin\\theta - 4\\sin^{3}\\theta}{4} = \\dfrac{\\sin 3\\theta}{4}\\).\n\nPutting \\(\\theta = 20^\\circ\\) (so \\(60^\\circ-\\theta = 40^\\circ\\), \\(60^\\circ+\\theta = 80^\\circ\\)):\n\\(\\sin 20^\\circ\\,\\sin 40^\\circ\\,\\sin 80^\\circ = \\dfrac{\\sin 60^\\circ}{4} = \\dfrac{1}{4}\\times\\dfrac{\\sqrt{3}}{2}\\).\n\n\\(\\therefore \\sin 20^\\circ\\,\\sin 40^\\circ\\,\\sin 80^\\circ = \\dfrac{\\sqrt{3}}{8} = \\) R.H.S."
+  },
+  {
+    "id": "95c4d9a8-9151-4a52-8feb-a7903476fe65",
+    "ref": "Misc II Q23",
+    "solution": "Let \\(\\theta = 18^\\circ\\). Then \\(5\\theta = 90^\\circ\\), so \\(2\\theta = 90^\\circ - 3\\theta\\) and hence\n\\(\\sin 2\\theta = \\sin(90^\\circ - 3\\theta) = \\cos 3\\theta\\).\n\n\\(\\therefore 2\\sin\\theta\\cos\\theta = 4\\cos^{3}\\theta - 3\\cos\\theta = \\cos\\theta\\,(4\\cos^{2}\\theta - 3)\\).\n\nSince \\(\\cos 18^\\circ \\ne 0\\), divide by \\(\\cos\\theta\\):\n\\(2\\sin\\theta = 4\\cos^{2}\\theta - 3 = 4(1-\\sin^{2}\\theta) - 3 = 1 - 4\\sin^{2}\\theta\\),\ni.e. \\(4\\sin^{2}\\theta + 2\\sin\\theta - 1 = 0\\).\n\n\\(\\therefore \\sin\\theta = \\dfrac{-2 \\pm \\sqrt{4 + 16}}{8} = \\dfrac{-2 \\pm 2\\sqrt{5}}{8} = \\dfrac{-1 \\pm \\sqrt{5}}{4}\\).\n\nAs \\(18^\\circ\\) is acute, \\(\\sin 18^\\circ > 0\\), so the root \\(\\dfrac{-1-\\sqrt{5}}{4}\\) is rejected.\n\n\\(\\therefore \\sin 18^\\circ = \\dfrac{\\sqrt{5} - 1}{4} = \\) R.H.S."
+  },
+  {
+    "id": "d4d541d9-e88e-4cc3-8ba8-7d9dd424faff",
+    "ref": "Misc II Q24",
+    "solution": "Take \\(36^\\circ = 2 \\times 18^\\circ\\) and use \\(\\cos 2\\theta = 1 - 2\\sin^{2}\\theta\\):\n\\(\\cos 36^\\circ = 1 - 2\\sin^{2}18^\\circ\\).\n\nNow \\(\\sin 18^\\circ = \\dfrac{\\sqrt{5}-1}{4}\\) (proved above), so\n\\(\\sin^{2}18^\\circ = \\dfrac{(\\sqrt{5}-1)^{2}}{16} = \\dfrac{5 - 2\\sqrt{5} + 1}{16} = \\dfrac{6 - 2\\sqrt{5}}{16}\\).\n\n\\(\\therefore \\cos 36^\\circ = 1 - 2\\times\\dfrac{6-2\\sqrt{5}}{16} = 1 - \\dfrac{6-2\\sqrt{5}}{8} = \\dfrac{8 - 6 + 2\\sqrt{5}}{8} = \\dfrac{2 + 2\\sqrt{5}}{8}\\).\n\n\\(\\therefore \\cos 36^\\circ = \\dfrac{\\sqrt{5} + 1}{4} = \\) R.H.S."
+  },
+  {
+    "id": "00ad4775-b558-41d6-bed6-8cde62215d9e",
+    "ref": "Misc II Q25",
+    "solution": "Use \\(\\sin^{2}36^\\circ = 1 - \\cos^{2}36^\\circ\\) with \\(\\cos 36^\\circ = \\dfrac{\\sqrt{5}+1}{4}\\) (proved above).\n\n\\(\\cos^{2}36^\\circ = \\dfrac{(\\sqrt{5}+1)^{2}}{16} = \\dfrac{5 + 2\\sqrt{5} + 1}{16} = \\dfrac{6 + 2\\sqrt{5}}{16}\\).\n\n\\(\\therefore \\sin^{2}36^\\circ = 1 - \\dfrac{6+2\\sqrt{5}}{16} = \\dfrac{16 - 6 - 2\\sqrt{5}}{16} = \\dfrac{10 - 2\\sqrt{5}}{16}\\).\n\nAs \\(36^\\circ\\) is acute, \\(\\sin 36^\\circ > 0\\), so the positive square root is taken.\n\n\\(\\therefore \\sin 36^\\circ = \\dfrac{\\sqrt{10 - 2\\sqrt{5}}}{4} = \\) R.H.S."
+  },
+  {
+    "id": "dad05eae-1ea7-4fe0-9630-d45d0113daf8",
+    "ref": "Misc II Q26",
+    "solution": "Here \\(\\dfrac{\\pi^{c}}{8}\\) means \\(\\dfrac{\\pi}{8}\\) radians, i.e. \\(22\\dfrac{1}{2}^\\circ\\). Put \\(\\theta = \\dfrac{\\pi}{8}\\), so that \\(2\\theta = \\dfrac{\\pi}{4}\\).\n\nFrom \\(\\cos 2\\theta = 1 - 2\\sin^{2}\\theta\\),\n\\(\\sin^{2}\\dfrac{\\pi}{8} = \\dfrac{1 - \\cos\\frac{\\pi}{4}}{2} = \\dfrac{1 - \\frac{1}{\\sqrt{2}}}{2} = \\dfrac{\\sqrt{2}-1}{2\\sqrt{2}} = \\dfrac{2-\\sqrt{2}}{4}\\).\n\n\\(\\dfrac{\\pi}{8}\\) lies in the first quadrant, so \\(\\sin\\dfrac{\\pi}{8} > 0\\) and the positive square root is taken.\n\n\\(\\therefore \\sin\\dfrac{\\pi}{8} = \\dfrac{\\sqrt{2-\\sqrt{2}}}{2} = \\dfrac{1}{2}\\sqrt{2 - \\sqrt{2}} = \\) R.H.S."
+  },
+  {
+    "id": "5a2f8298-d5ac-42ae-91cc-d9aa19227b8d",
+    "ref": "Misc II Q27",
+    "solution": "Let \\(t = \\tan\\dfrac{\\pi}{8}\\). Since \\(2\\times\\dfrac{\\pi}{8} = \\dfrac{\\pi}{4}\\), use \\(\\tan 2\\theta = \\dfrac{2\\tan\\theta}{1-\\tan^{2}\\theta}\\):\n\n\\(\\tan\\dfrac{\\pi}{4} = \\dfrac{2t}{1-t^{2}} = 1\\).\n\n\\(\\therefore 2t = 1 - t^{2}\\), i.e. \\(t^{2} + 2t - 1 = 0\\).\n\n\\(\\therefore t = \\dfrac{-2 \\pm \\sqrt{4+4}}{2} = \\dfrac{-2 \\pm 2\\sqrt{2}}{2} = -1 \\pm \\sqrt{2}\\).\n\n\\(\\dfrac{\\pi}{8}\\) lies in the first quadrant, so \\(t > 0\\) and the root \\(-1-\\sqrt{2}\\) is rejected.\n\n\\(\\therefore \\tan\\dfrac{\\pi}{8} = \\sqrt{2} - 1 = \\) R.H.S."
+  },
+  {
+    "id": "a6c01d6f-290e-4c18-bd54-98c60de317d2",
+    "ref": "Misc II Q28",
+    "solution": "Use \\(\\tan\\theta\\,\\tan(60^\\circ-\\theta)\\,\\tan(60^\\circ+\\theta) = \\tan 3\\theta\\) (proved in Q.1) twice.\n\nWith \\(\\theta = 6^\\circ\\): \\(\\tan 6^\\circ\\,\\tan 54^\\circ\\,\\tan 66^\\circ = \\tan 18^\\circ\\), so \\(\\tan 6^\\circ\\,\\tan 66^\\circ = \\dfrac{\\tan 18^\\circ}{\\tan 54^\\circ}\\).\n\nWith \\(\\theta = 18^\\circ\\): \\(\\tan 18^\\circ\\,\\tan 42^\\circ\\,\\tan 78^\\circ = \\tan 54^\\circ\\), so \\(\\tan 42^\\circ\\,\\tan 78^\\circ = \\dfrac{\\tan 54^\\circ}{\\tan 18^\\circ}\\).\n\nMultiplying the two results,\nL.H.S. \\(= \\dfrac{\\tan 18^\\circ}{\\tan 54^\\circ}\\times\\dfrac{\\tan 54^\\circ}{\\tan 18^\\circ}\\).\n\n\\(\\therefore \\tan 6^\\circ\\,\\tan 42^\\circ\\,\\tan 66^\\circ\\,\\tan 78^\\circ = 1 = \\) R.H.S."
+  },
+  {
+    "id": "b36403d6-9afa-416e-bf5c-53d76d4860dd",
+    "ref": "Misc II Q29",
+    "solution": "Pair the terms as \\((\\sin 47^\\circ - \\sin 11^\\circ) + (\\sin 61^\\circ - \\sin 25^\\circ)\\) and use \\(\\sin C - \\sin D = 2\\cos\\dfrac{C+D}{2}\\sin\\dfrac{C-D}{2}\\):\n\n\\(\\sin 47^\\circ - \\sin 11^\\circ = 2\\cos 29^\\circ\\,\\sin 18^\\circ\\),\n\\(\\sin 61^\\circ - \\sin 25^\\circ = 2\\cos 43^\\circ\\,\\sin 18^\\circ\\).\n\n\\(\\therefore\\) L.H.S. \\(= 2\\sin 18^\\circ\\,(\\cos 29^\\circ + \\cos 43^\\circ) = 2\\sin 18^\\circ\\times 2\\cos 36^\\circ\\cos 7^\\circ = 4\\sin 18^\\circ\\cos 36^\\circ\\cos 7^\\circ\\).\n\nNow \\(4\\sin 18^\\circ\\cos 36^\\circ = 4\\times\\dfrac{\\sqrt{5}-1}{4}\\times\\dfrac{\\sqrt{5}+1}{4} = \\dfrac{5-1}{4} = 1\\).\n\n\\(\\therefore \\sin 47^\\circ + \\sin 61^\\circ - \\sin 11^\\circ - \\sin 25^\\circ = \\cos 7^\\circ = \\) R.H.S."
+  },
+  {
+    "id": "5f194cfd-c628-4cf0-9517-88618b7f54e8",
+    "ref": "Misc II Q30",
+    "solution": "L.H.S. \\(= \\dfrac{\\sqrt{3}}{\\sin 20^\\circ} - \\dfrac{1}{\\cos 20^\\circ} = \\dfrac{\\sqrt{3}\\cos 20^\\circ - \\sin 20^\\circ}{\\sin 20^\\circ\\,\\cos 20^\\circ}\\).\n\nNumerator \\(= 2\\left(\\dfrac{\\sqrt{3}}{2}\\cos 20^\\circ - \\dfrac{1}{2}\\sin 20^\\circ\\right) = 2(\\sin 60^\\circ\\cos 20^\\circ - \\cos 60^\\circ\\sin 20^\\circ) = 2\\sin(60^\\circ - 20^\\circ) = 2\\sin 40^\\circ\\).\n\nDenominator \\(= \\dfrac{1}{2}\\,(2\\sin 20^\\circ\\cos 20^\\circ) = \\dfrac{1}{2}\\sin 40^\\circ\\).\n\n\\(\\therefore\\) L.H.S. \\(= \\dfrac{2\\sin 40^\\circ}{\\frac{1}{2}\\sin 40^\\circ}\\).\n\n\\(\\therefore \\sqrt{3}\\,\\operatorname{cosec} 20^\\circ - \\sec 20^\\circ = 4 = \\) R.H.S."
+  },
+  {
+    "id": "c4f369a2-e586-4f81-abce-d3622f292d34",
+    "ref": "Misc II Q31",
+    "solution": "In \\(\\Delta ABC\\), \\(A + B + C = \\pi\\). Given \\(\\angle C = \\dfrac{2\\pi}{3}\\), so \\(A + B = \\pi - \\dfrac{2\\pi}{3} = \\dfrac{\\pi}{3}\\), and hence \\(\\cos(A+B) = \\cos\\dfrac{\\pi}{3} = \\dfrac{1}{2}\\).\n\n\\(\\cos^{2}A + \\cos^{2}B = \\dfrac{1+\\cos 2A}{2} + \\dfrac{1+\\cos 2B}{2} = 1 + \\dfrac{\\cos 2A + \\cos 2B}{2} = 1 + \\cos(A+B)\\cos(A-B) = 1 + \\dfrac{1}{2}\\cos(A-B)\\).\n\n\\(\\cos A\\,\\cos B = \\dfrac{1}{2}\\,[\\cos(A-B) + \\cos(A+B)] = \\dfrac{1}{2}\\cos(A-B) + \\dfrac{1}{4}\\).\n\n\\(\\therefore\\) L.H.S. \\(= 1 + \\dfrac{1}{2}\\cos(A-B) - \\dfrac{1}{2}\\cos(A-B) - \\dfrac{1}{4} = 1 - \\dfrac{1}{4}\\).\n\n\\(\\therefore \\cos^{2}A + \\cos^{2}B - \\cos A\\,\\cos B = \\dfrac{3}{4} = \\) R.H.S."
+  }
+]

@@ -1,0 +1,118 @@
+[
+  {
+    "id": "bf3dc5b0-9028-433b-b549-2ac3f76f0f35",
+    "ref": "Misc II Q1",
+    "solution": "For raw data, Range \\(= x_{\\max} - x_{\\min}\\).\n\nHere the largest observation is \\(105\\) and the smallest is \\(57\\).\n\nRange \\(= 105 - 57 = 48\\)\n\nRange \\(= 48\\)",
+    "_note": "The book prints the data list ABOVE the instruction \"Find the range for the following data.\", so the instruction reads as if it belonged to Q2. Solved as the range question it is."
+  },
+  {
+    "id": "23c62fb9-91f8-4274-ad9e-368e0d6546f3",
+    "ref": "Misc II Q2",
+    "solution": "For raw data, Range \\(= x_{\\max} - x_{\\min}\\).\n\nHere the largest observation is \\(203\\) and the smallest is \\(114\\).\n\nRange \\(= 203 - 114 = 89\\)\n\nRange \\(= 89\\)",
+    "_note": "The book gives this question no instruction of its own -- it inherits \"Find the range for the following data.\", which is printed after Q1's data list. Solved as a range question."
+  },
+  {
+    "id": "45bfcbac-1879-47bc-ae6e-e1f1b07a72de",
+    "ref": "Misc II Q3",
+    "solution": "This is a discrete frequency distribution, so the range depends only on the VALUES taken, not on their frequencies.\n\nLargest wage \\(= 40\\), smallest wage \\(= 10\\) (both in '00 Rs.).\n\nRange \\(= 40 - 10 = 30\\)\n\nRange \\(= 30\\) (in '00 Rs.), i.e. Rs. \\(3000\\)"
+  },
+  {
+    "id": "2b58ffd9-0544-4f0d-ad31-7f9a266fb9bc",
+    "ref": "Misc II Q4",
+    "solution": "For a continuous (grouped) distribution,\n\nRange \\(=\\) upper limit of the highest class \\(-\\) lower limit of the lowest class.\n\nHighest class is \\(165\\)-\\(175\\) and lowest class is \\(115\\)-\\(125\\).\n\nRange \\(= 175 - 115 = 60\\)\n\nRange \\(= 60\\)"
+  },
+  {
+    "id": "873ce0af-7a5b-43c4-8428-9de5dbafab64",
+    "ref": "Misc II Q5",
+    "solution": "Here \\(n = 10\\).\n\n\\(\\Sigma x = 25+21+23+29+27+22+28+23+21+25 = 244\\), so \\(\\bar{x} = \\dfrac{244}{10} = 24.4\\)\n\n\\(\\Sigma x^2 = 625+441+529+841+729+484+784+529+441+625 = 6028\\)\n\nVariance \\(\\sigma^2 = \\dfrac{\\Sigma x^2}{n} - (\\bar{x})^2 = \\dfrac{6028}{10} - (24.4)^2 = 602.8 - 595.36 = 7.44\\)\n\n\\(\\sigma = \\sqrt{7.44} \\approx 2.73\\) (the book truncates this to \\(2.72\\)).\n\nVariance \\(= 7.44\\), S.D. \\(\\approx 2.73\\)"
+  },
+  {
+    "id": "cdbd981c-0b30-417a-a01b-b575a7a80df5",
+    "ref": "Misc II Q6",
+    "solution": "Here \\(n = 10\\) and \\(\\Sigma x = 1900\\), so \\(\\bar{x} = \\dfrac{1900}{10} = 190\\)\n\nDeviations \\(x - \\bar{x}\\): \\(-65, -60, -40, -25, 0, 5, 20, 40, 55, 70\\)\n\n\\(\\Sigma (x - \\bar{x})^2 = 4225+3600+1600+625+0+25+400+1600+3025+4900 = 20000\\)\n\nVariance \\(\\sigma^2 = \\dfrac{20000}{10} = 2000\\)\n\n\\(\\sigma = \\sqrt{2000} = 20\\sqrt{5} \\approx 44.72\\)\n\nVariance \\(= 2000\\), S.D. \\(\\approx 44.72\\)"
+  },
+  {
+    "id": "dfdc680a-9b01-473d-8da6-a5d3b3378377",
+    "ref": "Misc II Q7",
+    "solution": "| Goals \\(x\\) | 0 | 1 | 2 | 3 | 4 | 5 | Total |\n|---|---|---|---|---|---|---|---|\n| \\(f\\) | 5 | 20 | 25 | 15 | 20 | 5 | 90 |\n| \\(fx\\) | 0 | 20 | 50 | 45 | 80 | 25 | 220 |\n| \\(fx^2\\) | 0 | 20 | 100 | 135 | 320 | 125 | 700 |\n\n\\(N = \\Sigma f = 90\\), \\(\\Sigma fx = 220\\), \\(\\Sigma fx^2 = 700\\)\n\n\\(\\bar{x} = \\dfrac{220}{90} = \\dfrac{22}{9} \\approx 2.44\\)\n\n\\(\\sigma^2 = \\dfrac{\\Sigma fx^2}{N} - (\\bar{x})^2 = \\dfrac{700}{90} - \\left(\\dfrac{22}{9}\\right)^2 = 7.7778 - 5.9753 = 1.8025\\)\n\n\\(\\sigma = \\sqrt{1.8025} \\approx 1.34\\)\n\nS.D. \\(\\approx 1.34\\) goals",
+    "_note": "The stem says \"100 matches\" but the printed frequencies total 90 (5+20+25+15+20+5). Solved from the frequencies actually given, i.e. with N = 90. The book's printed answer 1.35 also uses N = 90 -- it arises from rounding the mean to 2.44 before squaring; carrying the mean unrounded gives 1.34."
+  },
+  {
+    "id": "da251be0-1382-4fb8-b7c0-6f71b3b155ef",
+    "ref": "Misc II Q8",
+    "solution": "| \\(x\\) | 62 | 30 | 64 | 47 | 63 | 46 | 35 | 28 | 60 | Total |\n|---|---|---|---|---|---|---|---|---|---|---|\n| \\(f\\) | 5 | 8 | 3 | 4 | 5 | 7 | 8 | 3 | 7 | 50 |\n| \\(fx\\) | 310 | 240 | 192 | 188 | 315 | 322 | 280 | 84 | 420 | 2351 |\n| \\(fx^2\\) | 19220 | 7200 | 12288 | 8836 | 19845 | 14812 | 9800 | 2352 | 25200 | 119553 |\n\n\\(N = 50\\), so \\(\\bar{x} = \\dfrac{2351}{50} = 47.02\\)\n\n\\(\\sigma^2 = \\dfrac{\\Sigma fx^2}{N} - (\\bar{x})^2 = \\dfrac{119553}{50} - (47.02)^2 = 2391.06 - 2210.8804 = 180.18\\)\n\n\\(\\sigma = \\sqrt{180.18} \\approx 13.42\\)\n\nVariance \\(\\approx 180.18\\), S.D. \\(\\approx 13.42\\)"
+  },
+  {
+    "id": "43ccf397-7b80-4d39-b134-cc38ecc2eb48",
+    "ref": "Misc II Q9",
+    "solution": "The classes are inclusive, so first make them continuous: \\(19.5\\)-\\(29.5\\), \\(29.5\\)-\\(39.5\\), ... , \\(79.5\\)-\\(89.5\\). (The class mid-points are unaffected by this correction.)\n\nTake \\(A = 54.5\\), \\(c = 10\\) and \\(u = \\dfrac{x - 54.5}{10}\\).\n\n| Class | Mid \\(x\\) | \\(f\\) | \\(u\\) | \\(fu\\) | \\(fu^2\\) |\n|---|---|---|---|---|---|\n| 19.5-29.5 | 24.5 | 65 | \\(-3\\) | \\(-195\\) | 585 |\n| 29.5-39.5 | 34.5 | 100 | \\(-2\\) | \\(-200\\) | 400 |\n| 39.5-49.5 | 44.5 | 55 | \\(-1\\) | \\(-55\\) | 55 |\n| 49.5-59.5 | 54.5 | 87 | 0 | 0 | 0 |\n| 59.5-69.5 | 64.5 | 42 | 1 | 42 | 42 |\n| 69.5-79.5 | 74.5 | 38 | 2 | 76 | 152 |\n| 79.5-89.5 | 84.5 | 13 | 3 | 39 | 117 |\n| Total |  | 400 |  | \\(-293\\) | 1351 |\n\n\\(\\sigma^2 = c^2\\left[\\dfrac{\\Sigma fu^2}{N} - \\left(\\dfrac{\\Sigma fu}{N}\\right)^2\\right] = 100\\left[\\dfrac{1351}{400} - \\left(\\dfrac{-293}{400}\\right)^2\\right] = 100\\,[3.3775 - 0.5366] = 284.09\\)\n\n\\(\\sigma = \\sqrt{284.09} \\approx 16.85\\)\n\nS.D. \\(\\approx 16.85\\) years"
+  },
+  {
+    "id": "1e67731b-f79a-43c2-a616-29bad57015b0",
+    "ref": "Misc II Q10",
+    "solution": "The classes are inclusive, so make them continuous: \\(39.5\\)-\\(49.5\\), \\(49.5\\)-\\(59.5\\), ... , \\(89.5\\)-\\(99.5\\). (The mid-points are unchanged by this correction.)\n\nTake \\(A = 74.5\\), \\(c = 10\\) and \\(u = \\dfrac{x - 74.5}{10}\\).\n\n| Class | Mid \\(x\\) | \\(f\\) | \\(u\\) | \\(fu\\) | \\(fu^2\\) |\n|---|---|---|---|---|---|\n| 39.5-49.5 | 44.5 | 4 | \\(-3\\) | \\(-12\\) | 36 |\n| 49.5-59.5 | 54.5 | 12 | \\(-2\\) | \\(-24\\) | 48 |\n| 59.5-69.5 | 64.5 | 25 | \\(-1\\) | \\(-25\\) | 25 |\n| 69.5-79.5 | 74.5 | 28 | 0 | 0 | 0 |\n| 79.5-89.5 | 84.5 | 26 | 1 | 26 | 26 |\n| 89.5-99.5 | 94.5 | 5 | 2 | 10 | 20 |\n| Total |  | 100 |  | \\(-25\\) | 155 |\n\n\\(\\bar{x} = A + c\\,\\dfrac{\\Sigma fu}{N} = 74.5 + 10\\left(\\dfrac{-25}{100}\\right) = 74.5 - 2.5 = 72\\)\n\n\\(\\sigma^2 = c^2\\left[\\dfrac{\\Sigma fu^2}{N} - \\left(\\dfrac{\\Sigma fu}{N}\\right)^2\\right] = 100\\,[1.55 - 0.0625] = 148.75\\)\n\n\\(\\sigma = \\sqrt{148.75} \\approx 12.20\\)\n\nA.M. \\(= 72\\), S.D. \\(\\approx 12.2\\)"
+  },
+  {
+    "id": "99b6ffd1-155d-41d6-91a9-3e6e356f0449",
+    "ref": "Misc II Q11",
+    "solution": "Here \\(n = 20\\), wrong \\(\\bar{x} = 20\\), wrong \\(\\sigma = 5\\).\n\nWrong \\(\\Sigma x = 20 \\times 20 = 400\\). Replacing the misread \\(30\\) by the true \\(13\\):\n\nCorrect \\(\\Sigma x = 400 - 30 + 13 = 383\\), so corrected \\(\\bar{x} = \\dfrac{383}{20} = 19.15\\)\n\nFrom \\(\\sigma^2 = \\dfrac{\\Sigma x^2}{n} - (\\bar{x})^2\\): \\(25 = \\dfrac{\\Sigma x^2}{20} - 400 \\Rightarrow \\Sigma x^2 = 20(425) = 8500\\)\n\nCorrect \\(\\Sigma x^2 = 8500 - 30^2 + 13^2 = 8500 - 900 + 169 = 7769\\)\n\nCorrected \\(\\sigma^2 = \\dfrac{7769}{20} - (19.15)^2 = 388.45 - 366.7225 = 21.7275\\)\n\n\\(\\sigma = \\sqrt{21.7275} \\approx 4.66\\)\n\nCorrected mean \\(= 19.15\\) cm, corrected S.D. \\(\\approx 4.66\\) cm"
+  },
+  {
+    "id": "a76722a1-1cee-494b-8878-7533e17f0f2f",
+    "ref": "Misc II Q12",
+    "solution": "For the first \\(50\\) observations: \\(\\Sigma x = 50 \\times 40 = 2000\\)\n\nand from \\(\\sigma^2 = \\dfrac{\\Sigma x^2}{n} - (\\bar{x})^2\\): \\(25 = \\dfrac{\\Sigma x^2}{50} - 1600 \\Rightarrow \\Sigma x^2 = 50(1625) = 81250\\)\n\nAdding \\(60\\) and \\(72\\):\n\nNew \\(\\Sigma x = 2000 + 60 + 72 = 2132\\), so new \\(\\bar{x} = \\dfrac{2132}{52} = 41\\)\n\nNew \\(\\Sigma x^2 = 81250 + 3600 + 5184 = 90034\\)\n\nNew \\(\\sigma^2 = \\dfrac{90034}{52} - 41^2 = 1731.42 - 1681 = 50.42\\)\n\n\\(\\sigma = \\sqrt{50.42} \\approx 7.1\\)\n\nMean \\(= 41\\), S.D. \\(\\approx 7.1\\)"
+  },
+  {
+    "id": "935c78bc-c964-4c0a-ba76-508c66243327",
+    "ref": "Misc II Q13",
+    "solution": "Let \\(n_1\\) be the number of boys and \\(n_2\\) the number of girls, so \\(n_1 + n_2 = 200\\).\n\nHere \\(\\bar{x}_1 = 70\\), \\(\\bar{x}_2 = 62\\), \\(\\bar{x} = 65\\), \\(\\sigma_1 = 8\\), \\(\\sigma_2 = 10\\).\n\nFrom \\(\\bar{x} = \\dfrac{n_1\\bar{x}_1 + n_2\\bar{x}_2}{n_1+n_2}\\):\n\n\\(70n_1 + 62(200 - n_1) = 65(200) \\Rightarrow 8n_1 = 13000 - 12400 = 600 \\Rightarrow n_1 = 75\\)\n\nSo there are \\(75\\) boys and \\(125\\) girls.\n\nDeviations of the group means: \\(d_1 = 70 - 65 = 5\\), \\(d_2 = 62 - 65 = -3\\).\n\n\\(\\sigma^2 = \\dfrac{n_1(\\sigma_1^2 + d_1^2) + n_2(\\sigma_2^2 + d_2^2)}{n_1 + n_2} = \\dfrac{75(64+25) + 125(100+9)}{200} = \\dfrac{6675 + 13625}{200} = 101.5\\)\n\n\\(\\sigma = \\sqrt{101.5} \\approx 10.07\\)\n\nNumber of boys \\(= 75\\), combined S.D. \\(\\approx 10.07\\) inches"
+  },
+  {
+    "id": "4025c2cb-1e56-42cb-a4e0-022d0431dd04",
+    "ref": "Misc II Q14",
+    "solution": "Here \\(n_1 = n_2 = 5\\).\n\n\\(\\bar{x} = \\dfrac{30}{5} = 6\\), \\(\\sigma_x^2 = \\dfrac{220}{5} - 6^2 = 44 - 36 = 8\\)\n\n\\(\\bar{y} = \\dfrac{40}{5} = 8\\), \\(\\sigma_y^2 = \\dfrac{340}{5} - 8^2 = 68 - 64 = 4\\)\n\nCombined mean \\(= \\dfrac{30 + 40}{10} = 7\\), so \\(d_1 = 6 - 7 = -1\\) and \\(d_2 = 8 - 7 = 1\\).\n\n\\(\\sigma^2 = \\dfrac{n_1(\\sigma_x^2 + d_1^2) + n_2(\\sigma_y^2 + d_2^2)}{n_1+n_2} = \\dfrac{5(8+1) + 5(4+1)}{10} = \\dfrac{45+25}{10} = 7\\)\n\n\\(\\sigma = \\sqrt{7} \\approx 2.65\\)\n\nCombined S.D. \\(= \\sqrt{7} \\approx 2.65\\)"
+  },
+  {
+    "id": "5b199445-25b9-4e40-8b19-16585a71f494",
+    "ref": "Misc II Q15",
+    "solution": "Here \\(n = 10\\) and \\(\\Sigma x = 23+27+25+28+21+14+16+12+18+16 = 200\\), so \\(\\bar{x} = 20\\)\n\nDeviations \\(x - 20\\): \\(3, 7, 5, 8, 1, -6, -4, -8, -2, -4\\)\n\n\\(\\Sigma (x-\\bar{x})^2 = 9+49+25+64+1+36+16+64+4+16 = 284\\)\n\n\\(\\sigma^2 = \\dfrac{284}{10} = 28.4\\), so \\(\\sigma = \\sqrt{28.4} \\approx 5.33\\)\n\nC.V. \\(= 100 \\times \\dfrac{\\sigma}{\\bar{x}} = 100 \\times \\dfrac{5.33}{20} \\approx 26.65\\)\n\nC.V. \\(\\approx 26.65\\)"
+  },
+  {
+    "id": "e92c9ea7-27aa-4342-aadc-f6a3d27a7937",
+    "ref": "Misc II Q16",
+    "solution": "For the boys: \\(\\bar{x}_B = 60\\), \\(\\sigma_B = \\sqrt{16} = 4\\)\n\nC.V.\\(_B = 100 \\times \\dfrac{4}{60} \\approx 6.67\\)\n\nFor the girls: \\(\\bar{x}_G = 47\\), \\(\\sigma_G = \\sqrt{9} = 3\\)\n\nC.V.\\(_G = 100 \\times \\dfrac{3}{47} \\approx 6.38\\)\n\nThe greater C.V. means the greater relative variability.\n\nC.V.\\(_B \\approx 6.67 >\\) C.V.\\(_G \\approx 6.38\\), so the weights of the boys are more variable."
+  },
+  {
+    "id": "e482c333-6c7a-4d9f-9280-573a711a8512",
+    "ref": "Misc II Q17",
+    "solution": "For Brand-I: \\(\\bar{x}_1 = 36\\), \\(\\sigma_1 = 8\\)\n\nC.V.\\(_{\\text{I}} = 100 \\times \\dfrac{8}{36} = \\dfrac{200}{9} \\approx 22.22\\)\n\nFor Brand-II: \\(\\bar{x}_2 = 48\\), \\(\\sigma_2 = 10\\)\n\nC.V.\\(_{\\text{II}} = 100 \\times \\dfrac{10}{48} = \\dfrac{125}{6} \\approx 20.83\\)\n\nInterpretation: Brand-I has the larger C.V., so the life of Brand-I watches varies more; Brand-II is the more consistent brand and also has the higher average life (\\(48\\) months against \\(36\\)).\n\nC.V.\\(_{\\text{I}} \\approx 22.22\\), C.V.\\(_{\\text{II}} \\approx 20.83\\); Brand-I is more variable.",
+    "_note": "The stem reads \"two bands of watches\" while the table itself is headed Brand-I / Brand-II -- a printed typo for \"brands\"."
+  },
+  {
+    "id": "5c1eb5f3-d50e-4080-ac6c-5d0c60e5a998",
+    "ref": "Misc II Q18",
+    "solution": "Take \\(A = 15.5\\), \\(c = 3\\) and \\(u = \\dfrac{x - 15.5}{3}\\).\n\n| Class | Mid \\(x\\) | \\(f\\) | \\(u\\) | \\(fu\\) | \\(fu^2\\) |\n|---|---|---|---|---|---|\n| 5-8 | 6.5 | 3 | \\(-3\\) | \\(-9\\) | 27 |\n| 8-11 | 9.5 | 14 | \\(-2\\) | \\(-28\\) | 56 |\n| 11-14 | 12.5 | 13 | \\(-1\\) | \\(-13\\) | 13 |\n| 14-17 | 15.5 | 16 | 0 | 0 | 0 |\n| 17-20 | 18.5 | 19 | 1 | 19 | 19 |\n| 20-23 | 21.5 | 24 | 2 | 48 | 96 |\n| 23-26 | 24.5 | 11 | 3 | 33 | 99 |\n| Total |  | 100 |  | 50 | 310 |\n\n\\(\\bar{x} = A + c\\,\\dfrac{\\Sigma fu}{N} = 15.5 + 3\\left(\\dfrac{50}{100}\\right) = 15.5 + 1.5 = 17\\)\n\n\\(\\sigma^2 = c^2\\left[\\dfrac{\\Sigma fu^2}{N} - \\left(\\dfrac{\\Sigma fu}{N}\\right)^2\\right] = 9\\,[3.1 - 0.25] = 25.65\\)\n\n\\(\\sigma = \\sqrt{25.65} \\approx 5.06\\)\n\nC.V. \\(= 100 \\times \\dfrac{5.06}{17} \\approx 29.76\\) (carrying \\(\\sigma\\) unrounded gives \\(29.79\\)).\n\nC.V. \\(\\approx 29.76\\)"
+  },
+  {
+    "id": "01eee5fc-c9f1-4fd4-807c-575c7833c15c",
+    "ref": "Misc II Q19",
+    "solution": "Take \\(A = 6500\\), \\(c = 1000\\) and \\(u = \\dfrac{x - 6500}{1000}\\).\n\n| Class | Mid \\(x\\) | \\(f\\) | \\(u\\) | \\(fu\\) | \\(fu^2\\) |\n|---|---|---|---|---|---|\n| 3000-4000 | 3500 | 24 | \\(-3\\) | \\(-72\\) | 216 |\n| 4000-5000 | 4500 | 13 | \\(-2\\) | \\(-26\\) | 52 |\n| 5000-6000 | 5500 | 15 | \\(-1\\) | \\(-15\\) | 15 |\n| 6000-7000 | 6500 | 28 | 0 | 0 | 0 |\n| 7000-8000 | 7500 | 12 | 1 | 12 | 12 |\n| 8000-9000 | 8500 | 8 | 2 | 16 | 32 |\n| 9000-10000 | 9500 | 10 | 3 | 30 | 90 |\n| Total |  | 110 |  | \\(-55\\) | 417 |\n\n\\(\\bar{x} = 6500 + 1000\\left(\\dfrac{-55}{110}\\right) = 6500 - 500 = 6000\\)\n\n\\(\\sigma^2 = c^2\\left[\\dfrac{\\Sigma fu^2}{N} - \\left(\\dfrac{\\Sigma fu}{N}\\right)^2\\right] = (1000)^2\\,[3.7909 - 0.25] = 3540909\\)\n\n\\(\\sigma = \\sqrt{3540909} \\approx 1881.73\\)\n\nC.V. \\(= 100 \\times \\dfrac{1881.73}{6000} \\approx 31.36\\) (the book prints \\(31.35\\)).\n\nC.V. \\(\\approx 31.36\\)"
+  },
+  {
+    "id": "574eb4e5-5ea5-44c2-b9cb-d5f05fa20710",
+    "ref": "Misc II Q20",
+    "solution": "Area (\\(n = 7\\)): \\(\\Sigma x = 973\\), so \\(\\bar{x} = \\dfrac{973}{7} = 139\\)\n\nDeviations \\(x - 139\\): \\(17, -4, -11, -22, 2, 15, 3\\), giving \\(\\Sigma(x-\\bar{x})^2 = 289+16+121+484+4+225+9 = 1148\\)\n\n\\(\\sigma_x^2 = \\dfrac{1148}{7} = 164\\), so \\(\\sigma_x = \\sqrt{164} \\approx 12.81\\)\n\nC.V.\\(_x = 100 \\times \\dfrac{12.81}{139} \\approx 9.21\\)\n\nYield (\\(n = 7\\)): \\(\\Sigma y = 481\\) and \\(\\Sigma y^2 = 33171\\), so \\(\\bar{y} = \\dfrac{481}{7} \\approx 68.71\\)\n\n\\(\\sigma_y^2 = \\dfrac{33171}{7} - \\left(\\dfrac{481}{7}\\right)^2 = \\dfrac{836}{49} \\approx 17.06\\), so \\(\\sigma_y = \\sqrt{17.06} \\approx 4.13\\)\n\nC.V.\\(_y = 100 \\times \\dfrac{4.13}{68.71} \\approx 6.01\\)\n\nC.V.\\(_x \\approx 9.21 >\\) C.V.\\(_y \\approx 6.01\\), so the variation is greater in the area of the field.",
+    "_note": "DISAGREE with the printed key on the yield C.V. The book gives (C.V.)_Y = 5.91; the correct value is 6.01. Check: Sigma y = 481 and Sigma y^2 = 33171 over n = 7, so mean = 481/7 = 68.7143 and variance = (7(33171) - 481^2)/49 = 836/49 = 17.0612, giving sigma = 4.1305 and C.V. = 100(4.1305)/68.7143 = 6.011. The book's area value 9.21 is correct, and the stated conclusion (variation greater in the area) is unchanged either way."
+  },
+  {
+    "id": "790e77db-6897-4c39-adac-cf1d944d3cc8",
+    "ref": "Misc II Q21",
+    "solution": "For each company take \\(A = 7.5\\), \\(c = 5\\) and \\(u = \\dfrac{x - 7.5}{5}\\).\n\n| Life | Mid \\(x\\) | \\(u\\) | \\(f_U\\) | \\(f_U u\\) | \\(f_U u^2\\) | \\(f_V\\) | \\(f_V u\\) | \\(f_V u^2\\) |\n|---|---|---|---|---|---|---|---|---|\n| 0-5 | 2.5 | \\(-1\\) | 5 | \\(-5\\) | 5 | 14 | \\(-14\\) | 14 |\n| 5-10 | 7.5 | 0 | 18 | 0 | 0 | 8 | 0 | 0 |\n| 10-15 | 12.5 | 1 | 17 | 17 | 17 | 18 | 18 | 18 |\n| Total |  |  | 40 | 12 | 22 | 40 | 4 | 32 |\n\nCompany U: \\(\\bar{x}_U = 7.5 + 5\\left(\\dfrac{12}{40}\\right) = 9\\); \\(\\sigma_U^2 = 25\\,[0.55 - 0.09] = 11.5\\), so \\(\\sigma_U = \\sqrt{11.5} \\approx 3.39\\)\n\nC.V.\\(_U = 100 \\times \\dfrac{3.39}{9} \\approx 37.67\\)\n\nCompany V: \\(\\bar{x}_V = 7.5 + 5\\left(\\dfrac{4}{40}\\right) = 8\\); \\(\\sigma_V^2 = 25\\,[0.8 - 0.01] = 19.75\\), so \\(\\sigma_V = \\sqrt{19.75} \\approx 4.44\\)\n\nC.V.\\(_V = 100 \\times \\dfrac{4.44}{8} \\approx 55.5\\)\n\nCompany U also has the higher average life (\\(9\\) years against \\(8\\)).\n\nC.V.\\(_U \\approx 37.67 <\\) C.V.\\(_V \\approx 55.5\\), so Company U shows greater consistency.",
+    "_note": "The printed table has a single \"No of Cars\" header merged across the Company U and Company V columns; GFM cannot merge cells, so the transcription splits it into two labelled columns. No data is affected."
+  },
+  {
+    "id": "7f5cd3f6-804d-425b-9118-95bf5e950481",
+    "ref": "Misc II Q22",
+    "solution": "For weights: \\(\\bar{x}_1 = 56.5\\), \\(\\sigma_1 = 8.76\\)\n\nC.V.\\(_1 = 100 \\times \\dfrac{8.76}{56.5} \\approx 15.50\\)\n\nFor heights: \\(\\bar{x}_2 = 61\\), \\(\\sigma_2 = 12.18\\)\n\nC.V.\\(_2 = 100 \\times \\dfrac{12.18}{61} \\approx 19.97\\) (the book truncates this to \\(19.96\\)).\n\nC.V.\\(_1 \\approx 15.50 <\\) C.V.\\(_2 \\approx 19.97\\), so the heights show more variability."
+  }
+]

@@ -1,0 +1,253 @@
+[
+  {
+    "id": "836e5ce9-ada0-4542-8698-3a497043ac95",
+    "ref": "Ex 9.1 Q1(i)",
+    "solution": "The two pens are drawn one after the other with replacement, so each outcome is an ordered pair of colours and \\(S=\\{RR,\\ RG,\\ RB,\\ RP,\\ GR,\\ GG,\\ GB,\\ GP,\\ BR,\\ BG,\\ BB,\\ BP,\\ PR,\\ PG,\\ PB,\\ PP\\}\\), with \\(n(S)=16\\). A occurs when Red appears in at least one of the two places. \\(A=\\{RR,\\ RG,\\ RB,\\ RP,\\ GR,\\ BR,\\ PR\\}\\), \\(n(A)=7\\).",
+    "_note": "The printed key lists A as {RR, GR, RB, RP, GR, BR, PR} - GR appears twice and RG is missing. The count (7) is right, so this is a typographical slip in the key; the correct set is given above."
+  },
+  {
+    "id": "df3067aa-6422-4152-b256-66473833e970",
+    "ref": "Ex 9.1 Q1(ii)",
+    "solution": "With \\(S=\\{RR,\\ RG,\\ RB,\\ RP,\\ GR,\\ GG,\\ GB,\\ GP,\\ BR,\\ BG,\\ BB,\\ BP,\\ PR,\\ PG,\\ PB,\\ PP\\}\\), \\(n(S)=16\\). B occurs when the two pens are NOT of the same colour, so B is S with the four like pairs \\(RR,\\ GG,\\ BB,\\ PP\\) removed. \\(B=\\{RG,\\ RB,\\ RP,\\ GR,\\ GB,\\ GP,\\ BR,\\ BG,\\ BP,\\ PR,\\ PG,\\ PB\\}\\), \\(n(B)=12\\)."
+  },
+  {
+    "id": "17405109-5b09-4a47-a976-d091a1f2e108",
+    "ref": "Ex 9.1 Q2(i)",
+    "solution": "A coin gives H or T and a die gives 1 to 6, so \\(S=\\{(H,1),\\ (H,2),\\ (H,3),\\ (H,4),\\ (H,5),\\ (H,6),\\ (T,1),\\ (T,2),\\ (T,3),\\ (T,4),\\ (T,5),\\ (T,6)\\}\\) and \\(n(S)=12\\). A needs a Tail together with an odd number \\((1,\\ 3,\\ 5)\\). \\(A=\\{(T,1),\\ (T,3),\\ (T,5)\\}\\), \\(n(A)=3\\)."
+  },
+  {
+    "id": "4347c947-4dca-49f4-abc1-d42c6c518bbf",
+    "ref": "Ex 9.1 Q2(ii)",
+    "solution": "With \\(S=\\{(H,1),\\ (H,2),\\ (H,3),\\ (H,4),\\ (H,5),\\ (H,6),\\ (T,1),\\ (T,2),\\ (T,3),\\ (T,4),\\ (T,5),\\ (T,6)\\}\\), \\(n(S)=12\\). The prime numbers on a die are \\(2,\\ 3,\\ 5\\), and the coin may show either face. \\(B=\\{(H,2),\\ (H,3),\\ (H,5),\\ (T,2),\\ (T,3),\\ (T,5)\\}\\), \\(n(B)=6\\)."
+  },
+  {
+    "id": "50fd5949-2612-4d24-8aa1-1bb879d5e41e",
+    "ref": "Ex 9.1 Q2(iii)",
+    "solution": "With \\(S=\\{(H,1),\\ (H,2),\\ (H,3),\\ (H,4),\\ (H,5),\\ (H,6),\\ (T,1),\\ (T,2),\\ (T,3),\\ (T,4),\\ (T,5),\\ (T,6)\\}\\), \\(n(S)=12\\). The perfect squares on a die are \\(1=1^2\\) and \\(4=2^2\\), and the coin must show a Head. \\(C=\\{(H,1),\\ (H,4)\\}\\), \\(n(C)=2\\)."
+  },
+  {
+    "id": "2e04b36b-bab6-48aa-8274-5a3656c879fe",
+    "ref": "Ex 9.1 Q3(i)",
+    "solution": "The urn holds \\(5+3=8\\) coins and 3 of them are drawn together, so order does not matter. \\(n(S)={}^{8}C_{3}=\\frac{8\\times 7\\times 6}{3\\times 2\\times 1}=56\\)."
+  },
+  {
+    "id": "b5b27a46-6226-475f-a328-82c740bf37fd",
+    "ref": "Ex 9.1 Q3(ii)",
+    "solution": "There are 5 distinct letters and 5 distinct envelopes, and no envelope is empty, so exactly one letter goes into each envelope. That is an arrangement of 5 letters in 5 places. \\(n(S)=5!=120\\)."
+  },
+  {
+    "id": "e9e26548-fc34-4900-a719-973e0b6d8221",
+    "ref": "Ex 9.1 Q3(iii)",
+    "solution": "The 6 books are all different and every arrangement of them on the shelf is one outcome. \\(n(S)=6!=720\\)."
+  },
+  {
+    "id": "42ea5e80-e167-4cda-b17b-4597a4253adc",
+    "ref": "Ex 9.1 Q3(iv)",
+    "solution": "3 tickets are drawn together from 20, so order does not matter. \\(n(S)={}^{20}C_{3}=\\frac{20\\times 19\\times 18}{3\\times 2\\times 1}=1140\\)."
+  },
+  {
+    "id": "2398bc9d-82b7-4d3f-9f17-8891f75dc1f0",
+    "ref": "Ex 9.1 Q4(i)",
+    "solution": "Each die shows one of 6 numbers, so \\(S=\\{(x,y):x,y\\in\\{1,2,3,4,5,6\\}\\}\\) and \\(n(S)=6\\times 6=36\\). A sum divisible by 3 is \\(3,\\ 6,\\ 9\\) or \\(12\\); a sum divisible by 4 is \\(4,\\ 8\\) or \\(12\\). \\(A=\\{(1,2),(2,1),(1,3),(2,2),(3,1),(1,5),(2,4),(3,3),(4,2),(5,1),(2,6),(3,5),(4,4),(5,3),(6,2),(3,6),(4,5),(5,4),(6,3),(6,6)\\}\\), \\(n(A)=20\\)."
+  },
+  {
+    "id": "3354ef1f-4f51-48db-bf86-4c73cd57a4b2",
+    "ref": "Ex 9.1 Q4(ii)",
+    "solution": "With \\(S=\\{(x,y):x,y\\in\\{1,2,3,4,5,6\\}\\}\\), \\(n(S)=36\\). B collects the pairs whose sum is 7. \\(B=\\{(1,6),\\ (2,5),\\ (3,4),\\ (4,3),\\ (5,2),\\ (6,1)\\}\\), \\(n(B)=6\\)."
+  },
+  {
+    "id": "2dae45e2-f844-4d29-8c87-63a98fe4878a",
+    "ref": "Ex 9.1 Q4(iii)",
+    "solution": "With \\(S=\\{(x,y):x,y\\in\\{1,2,3,4,5,6\\}\\}\\), \\(n(S)=36\\). C needs the first die to show \\(1,\\ 3\\) or \\(5\\), the second being anything. \\(C=\\{(1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(3,1),(3,2),(3,3),(3,4),(3,5),(3,6),(5,1),(5,2),(5,3),(5,4),(5,5),(5,6)\\}\\), \\(n(C)=3\\times 6=18\\)."
+  },
+  {
+    "id": "fb9224e4-ba80-40cc-957d-5d68dc3eb28f",
+    "ref": "Ex 9.1 Q4(iv)",
+    "solution": "With \\(S=\\{(x,y):x,y\\in\\{1,2,3,4,5,6\\}\\}\\), \\(n(S)=36\\). D needs the first die to show \\(2,\\ 4\\) or \\(6\\), the second being anything. \\(D=\\{(2,1),(2,2),(2,3),(2,4),(2,5),(2,6),(4,1),(4,2),(4,3),(4,4),(4,5),(4,6),(6,1),(6,2),(6,3),(6,4),(6,5),(6,6)\\}\\), \\(n(D)=3\\times 6=18\\)."
+  },
+  {
+    "id": "2e8b65a6-0b76-4f32-a814-be354c0168bf",
+    "ref": "Ex 9.1 Q4(v)",
+    "solution": "A is the event that the sum is divisible by 3 or 4 and B is the event that the sum is 7. Since 7 is divisible by neither 3 nor 4, no outcome lies in both, so \\(A\\cap B=\\varnothing\\) and A, B are mutually exclusive. But \\(n(A\\cup B)=20+6=26\\ne 36=n(S)\\), so \\(A\\cup B\\ne S\\). A and B are mutually exclusive but not exhaustive."
+  },
+  {
+    "id": "e10cd272-be76-44a9-8e85-44de3f9634c5",
+    "ref": "Ex 9.1 Q4(vi)",
+    "solution": "C is the event that the first die is odd and D that the first die is even. A number cannot be both odd and even, so \\(C\\cap D=\\varnothing\\) and C, D are mutually exclusive. Also \\(n(C\\cup D)=18+18=36=n(S)\\), so \\(C\\cup D=S\\). C and D are mutually exclusive as well as exhaustive."
+  },
+  {
+    "id": "7b8b32b7-0ee4-4e6e-b7ac-eee4ff0ab10f",
+    "ref": "Ex 9.1 Q5(i)",
+    "solution": "The first card is replaced before the second is drawn, so each of the two draws has all 4 cards available and an outcome is an ordered pair. \\(S=\\{(5,5),(5,6),(5,7),(5,8),(6,5),(6,6),(6,7),(6,8),(7,5),(7,6),(7,7),(7,8),(8,5),(8,6),(8,7),(8,8)\\}\\), \\(n(S)=4\\times 4=16\\)."
+  },
+  {
+    "id": "87ea2689-6ccb-47d6-8591-03002a6c3972",
+    "ref": "Ex 9.1 Q5(ii)",
+    "solution": "Now the first card is not replaced, so the second draw has only the 3 remaining cards; the pairs with a repeated card drop out. \\(S=\\{(5,6),(5,7),(5,8),(6,5),(6,7),(6,8),(7,5),(7,6),(7,8),(8,5),(8,6),(8,7)\\}\\), \\(n(S)=4\\times 3=12\\)."
+  },
+  {
+    "id": "d80d261e-c1aa-4373-b02f-3754523e5a46",
+    "ref": "Ex 9.1 Q6(i)",
+    "solution": "Throwing a die twice gives \\(n(S)=6\\times 6=36\\). Sum 5 occurs for \\(\\{(1,4),\\ (2,3),\\ (3,2),\\ (4,1)\\}\\), so \\(n(A)=4\\). \\(P(A)=\\frac{4}{36}=\\frac{1}{9}\\)."
+  },
+  {
+    "id": "92830a76-06e2-4d26-b393-81267d0ebf69",
+    "ref": "Ex 9.1 Q6(ii)",
+    "solution": "Here \\(n(S)=36\\). A sum of at least 8 means the sum is \\(8,9,10,11\\) or \\(12\\), and these occur in \\(5+4+3+2+1=15\\) ways. \\(P=\\frac{15}{36}=\\frac{5}{12}\\)."
+  },
+  {
+    "id": "de6c47dd-bd32-4e55-8ee6-a05f40ad40ef",
+    "ref": "Ex 9.1 Q6(iii)",
+    "solution": "Here \\(n(S)=36\\). The multiples of 2 on a die are \\(2,4,6\\) (3 ways) and the multiples of 3 are \\(3,6\\) (2 ways), so the favourable outcomes number \\(3\\times 2=6\\). \\(P=\\frac{6}{36}=\\frac{1}{6}\\)."
+  },
+  {
+    "id": "b41d93b0-c6bb-4194-8cb7-088ebca62fc1",
+    "ref": "Ex 9.1 Q6(iv)",
+    "solution": "Here \\(n(S)=36\\). A product of 12 arises from \\(\\{(2,6),\\ (6,2),\\ (3,4),\\ (4,3)\\}\\), so there are 4 favourable outcomes. \\(P=\\frac{4}{36}=\\frac{1}{9}\\)."
+  },
+  {
+    "id": "e71f0727-c740-47a7-8a3b-3e12629c06f5",
+    "ref": "Ex 9.1 Q7(i)",
+    "solution": "Two cards are drawn together, so \\(n(S)={}^{52}C_{2}=\\frac{52\\times 51}{2}=1326\\). A pack has 12 face cards and 4 aces, and one card is chosen from each group: \\({}^{12}C_{1}\\times {}^{4}C_{1}=12\\times 4=48\\). \\(P=\\frac{48}{1326}=\\frac{8}{221}\\)."
+  },
+  {
+    "id": "8d72fb5f-8554-412c-ae11-0ea10ae18074",
+    "ref": "Ex 9.1 Q7(ii)",
+    "solution": "Here \\(n(S)={}^{52}C_{2}=\\frac{52\\times 51}{2}=1326\\). There are 13 clubs and 13 diamonds, one card from each: \\({}^{13}C_{1}\\times {}^{13}C_{1}=169\\). \\(P=\\frac{169}{1326}=\\frac{13}{102}\\)."
+  },
+  {
+    "id": "571a2ea6-0bc5-47b7-b2a5-0f2a08468ff0",
+    "ref": "Ex 9.1 Q7(iii)",
+    "solution": "Here \\(n(S)={}^{52}C_{2}=\\frac{52\\times 51}{2}=1326\\). A suit can be chosen in 4 ways and 2 of its 13 cards in \\({}^{13}C_{2}=78\\) ways, giving \\(4\\times 78=312\\) favourable outcomes. \\(P=\\frac{312}{1326}=\\frac{12}{51}=\\frac{4}{17}\\)."
+  },
+  {
+    "id": "a7968db5-8969-4b82-8a84-03286ccc2f1a",
+    "ref": "Ex 9.1 Q7(iv)",
+    "solution": "Here \\(n(S)={}^{52}C_{2}=\\frac{52\\times 51}{2}=1326\\). A pack has 26 red cards, and 2 of them can be chosen in \\({}^{26}C_{2}=\\frac{26\\times 25}{2}=325\\) ways. \\(P=\\frac{325}{1326}=\\frac{25}{102}\\)."
+  },
+  {
+    "id": "04095be0-75bf-4b62-acf4-271d446b9755",
+    "ref": "Ex 9.1 Q7(v)",
+    "solution": "Here \\(n(S)={}^{52}C_{2}=\\frac{52\\times 51}{2}=1326\\). There are 13 heart cards and \\(52-13=39\\) non-heart cards, one from each: \\({}^{13}C_{1}\\times {}^{39}C_{1}=507\\). \\(P=\\frac{507}{1326}=\\frac{13}{34}\\)."
+  },
+  {
+    "id": "9de69012-9a08-4184-b532-bfc6705ff85c",
+    "ref": "Ex 9.1 Q8(i)",
+    "solution": "Three cards are drawn together, so \\(n(S)={}^{52}C_{3}=\\frac{52\\times 51\\times 50}{3\\times 2\\times 1}=22100\\). Two queens from 4 and one ace from 4: \\({}^{4}C_{2}\\times {}^{4}C_{1}=6\\times 4=24\\). \\(P=\\frac{24}{22100}=\\frac{6}{5525}\\)."
+  },
+  {
+    "id": "019a6736-29a8-46f7-bee9-5e3579de26b2",
+    "ref": "Ex 9.1 Q8(ii)",
+    "solution": "Here \\(n(S)={}^{52}C_{3}=\\frac{52\\times 51\\times 50}{3\\times 2\\times 1}=22100\\). It is easier to use the complement: no diamond means all 3 cards come from the 39 non-diamond cards, \\({}^{39}C_{3}=9139\\) ways. \\(P(\\text{at least one diamond})=1-\\frac{9139}{22100}=1-\\frac{703}{1700}=\\frac{997}{1700}\\)."
+  },
+  {
+    "id": "b0eea89c-dc9a-4e8e-8bc1-f48b620bb509",
+    "ref": "Ex 9.1 Q8(iii)",
+    "solution": "Here \\(n(S)={}^{52}C_{3}=\\frac{52\\times 51\\times 50}{3\\times 2\\times 1}=22100\\). A suit is chosen in 4 ways and 3 of its 13 cards in \\({}^{13}C_{3}=286\\) ways, giving \\(4\\times 286=1144\\) favourable outcomes. \\(P=\\frac{1144}{22100}=\\frac{22}{425}\\)."
+  },
+  {
+    "id": "d3823005-79f0-44cf-a254-51f650aa91a6",
+    "ref": "Ex 9.1 Q8(iv)",
+    "solution": "Here \\(n(S)={}^{52}C_{3}=\\frac{52\\times 51\\times 50}{3\\times 2\\times 1}=22100\\). One king, one queen and one jack can be chosen in \\({}^{4}C_{1}\\times {}^{4}C_{1}\\times {}^{4}C_{1}=64\\) ways. \\(P=\\frac{64}{22100}=\\frac{16}{5525}\\)."
+  },
+  {
+    "id": "09ba9794-1f95-4db8-9d8f-1ca4a585f7d1",
+    "ref": "Ex 9.1 Q9(i)",
+    "solution": "The bag holds \\(10+4+6=20\\) balls and one is drawn, so \\(n(S)=20\\). There are 10 red balls. \\(P(\\text{red})=\\frac{10}{20}=\\frac{1}{2}\\)."
+  },
+  {
+    "id": "2b4abd9c-65dc-40cb-914e-0e6861bea2c6",
+    "ref": "Ex 9.1 Q9(ii)",
+    "solution": "Here \\(n(S)=20\\). The blue and black balls together number \\(4+6=10\\). \\(P(\\text{blue or black})=\\frac{10}{20}=\\frac{1}{2}\\)."
+  },
+  {
+    "id": "14442061-8cd9-430b-8277-3888efd537af",
+    "ref": "Ex 9.1 Q9(iii)",
+    "solution": "Here \\(n(S)=20\\) and there are 6 black balls, so \\(P(\\text{black})=\\frac{6}{20}=\\frac{3}{10}\\). \\(P(\\text{not black})=1-\\frac{3}{10}=\\frac{7}{10}\\)."
+  },
+  {
+    "id": "b7dd44fd-1f05-46bf-b5dc-5eab17014732",
+    "ref": "Ex 9.1 Q10(i)",
+    "solution": "One ticket is drawn from 75, so \\(n(S)=75\\). The multiples of 6 up to 75 are \\(6,12,\\ldots,72\\), that is 12 numbers. \\(P=\\frac{12}{75}=\\frac{4}{25}\\)."
+  },
+  {
+    "id": "d68e7b65-8f68-41e8-87bc-ccba250dc6f8",
+    "ref": "Ex 9.1 Q10(ii)",
+    "solution": "Here \\(n(S)=75\\). The perfect squares up to 75 are \\(1,4,9,16,25,36,49,64\\), that is 8 numbers (the next one, \\(81\\), exceeds 75). \\(P=\\frac{8}{75}\\)."
+  },
+  {
+    "id": "60b17cfe-475b-4c32-8fed-dc9e988e09fe",
+    "ref": "Ex 9.1 Q10(iii)",
+    "solution": "Here \\(n(S)=75\\). The primes up to 75 are \\(2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73\\), that is 21 numbers. \\(P=\\frac{21}{75}=\\frac{7}{25}\\)."
+  },
+  {
+    "id": "a2dc8736-0178-42d9-816b-4a1a71758453",
+    "ref": "Ex 9.1 Q10(iv)",
+    "solution": "Here \\(n(S)=75\\). A number divisible by both 3 and 5 is divisible by 15, and the multiples of 15 up to 75 are \\(15,30,45,60,75\\), that is 5 numbers. \\(P=\\frac{5}{75}=\\frac{1}{15}\\)."
+  },
+  {
+    "id": "7497440b-4edc-4cbf-be3f-27b5868a5817",
+    "ref": "Ex 9.1 Q11",
+    "solution": "A leap year has 366 days, and \\(366=52\\times 7+2\\). So it surely contains 52 Sundays, and the question is whether one of the 2 remaining consecutive days is a Sunday. These two days form the sample space \\(S=\\{\\)Sun-Mon, Mon-Tue, Tue-Wed, Wed-Thu, Thu-Fri, Fri-Sat, Sat-Sun\\(\\}\\), \\(n(S)=7\\). A Sunday occurs in 2 of these pairs, so \\(n(A)=2\\). \\(P=\\frac{2}{7}\\)."
+  },
+  {
+    "id": "86f8c0d1-ff8c-4ddb-88de-dce51c16eb04",
+    "ref": "Ex 9.1 Q12(i)",
+    "solution": "The bag holds \\(5+4=9\\) balls. With replacement the bag is the same for both draws, so each draw gives a red ball with probability \\(\\frac{5}{9}\\) and the draws are independent. \\(P(\\text{both red})=\\frac{5}{9}\\times\\frac{5}{9}=\\frac{25}{81}\\)."
+  },
+  {
+    "id": "44ec10d3-4dfe-4c5a-9ced-8bd25fee064a",
+    "ref": "Ex 9.1 Q12(ii)",
+    "solution": "Without replacement the two balls are effectively drawn together, so \\(n(S)={}^{9}C_{2}=36\\). Both red can happen in \\({}^{5}C_{2}=10\\) ways. \\(P=\\frac{10}{36}=\\frac{5}{18}\\)."
+  },
+  {
+    "id": "96d687fa-e63a-4229-8c65-ef77fbd46da4",
+    "ref": "Ex 9.1 Q13(i)",
+    "solution": "3 bulbs are chosen from 10, so \\(n(S)={}^{10}C_{3}=120\\). The room stays dark only if none of the three bulbs glows, i.e. all 3 chosen bulbs are defective, which can happen in \\({}^{6}C_{3}=20\\) ways. \\(P(\\text{room is dark})=\\frac{20}{120}=\\frac{1}{6}\\)."
+  },
+  {
+    "id": "355d05de-8ac4-4af9-87d4-d22a05f6df06",
+    "ref": "Ex 9.1 Q13(ii)",
+    "solution": "The room is lit when at least one of the 3 selected bulbs is good, which is the complement of the room being dark. From part (i), \\(P(\\text{dark})=\\frac{1}{6}\\). \\(P(\\text{room is lit})=1-\\frac{1}{6}=\\frac{5}{6}\\)."
+  },
+  {
+    "id": "6c0e1dea-a984-49f9-8a49-6707d7c42b52",
+    "ref": "Ex 9.1 Q14(i)",
+    "solution": "MOTHER has 6 distinct letters, so \\(n(S)=6!=720\\). Treating the vowels O, E as a single unit gives 5 units to arrange in \\(5!\\) ways, and the two vowels can be interchanged within the unit in \\(2!\\) ways: \\(5!\\times 2!=240\\). \\(P=\\frac{240}{720}=\\frac{1}{3}\\)."
+  },
+  {
+    "id": "f9946378-4bda-4dc7-b476-0b91da528fda",
+    "ref": "Ex 9.1 Q14(ii)",
+    "solution": "With \\(n(S)=720\\) and \\(P(\\text{vowels together})=\\frac{1}{3}\\) from part (i), the required event is its complement. \\(P(\\text{vowels never together})=1-\\frac{1}{3}=\\frac{2}{3}\\)."
+  },
+  {
+    "id": "87646788-af4e-41d0-bea4-c608365277af",
+    "ref": "Ex 9.1 Q14(iii)",
+    "solution": "With \\(n(S)=6!=720\\), fix O in the first place and T in the last place. The remaining 4 letters M, H, E, R fill the 4 middle places in \\(4!=24\\) ways. \\(P=\\frac{24}{720}=\\frac{1}{30}\\)."
+  },
+  {
+    "id": "3a92a4d9-7681-4277-bdab-c07428cde8dc",
+    "ref": "Ex 9.1 Q14(iv)",
+    "solution": "With \\(n(S)=6!=720\\), the first place can be filled by a vowel (O or E) in 2 ways and the last place by a consonant (M, T, H, R) in 4 ways; the remaining 4 letters fill the middle places in \\(4!=24\\) ways. Favourable arrangements \\(=2\\times 4\\times 24=192\\). \\(P=\\frac{192}{720}=\\frac{4}{15}\\)."
+  },
+  {
+    "id": "634bd4fe-2f84-4efe-ab24-31e112235220",
+    "ref": "Ex 9.1 Q15",
+    "solution": "Each of the 4 letters can go into any one of the 4 boxes, so \\(n(S)=4^{4}=256\\). If every box is to contain exactly one letter, the 4 letters are matched one-to-one with the 4 boxes in \\(4!=24\\) ways. \\(P=\\frac{4!}{4^{4}}=\\frac{24}{256}=\\frac{3}{32}\\)."
+  },
+  {
+    "id": "3657282e-df07-4026-824e-37b7711c483e",
+    "ref": "Ex 9.1 Q16",
+    "solution": "The Vice Chancellor and the 15 professors, that is 16 persons, sit at a round table, so \\(n(S)=(16-1)!=15!\\). For the favourable case, seat the Vice Chancellor first; the two particular professors take the two seats beside him in \\(2!\\) ways and the remaining 13 professors fill the other 13 seats in \\(13!\\) ways. \\(P=\\frac{2!\\times 13!}{15!}=\\frac{2}{15\\times 14}=\\frac{1}{105}\\)."
+  },
+  {
+    "id": "3e226db1-7e88-4bd5-acc1-2511c639341e",
+    "ref": "Ex 9.1 Q17(i)",
+    "solution": "The bag holds \\(7+4=11\\) balls and 3 are drawn, so \\(n(S)={}^{11}C_{3}=165\\). All three black can happen in \\({}^{7}C_{3}=35\\) ways. \\(P=\\frac{35}{165}=\\frac{7}{33}\\)."
+  },
+  {
+    "id": "8bb6ad8d-770d-4259-941a-0a0d50268585",
+    "ref": "Ex 9.1 Q17(ii)",
+    "solution": "Here \\(n(S)={}^{11}C_{3}=165\\). One black from 7 and two red from 4: \\({}^{7}C_{1}\\times {}^{4}C_{2}=7\\times 6=42\\). \\(P=\\frac{42}{165}=\\frac{14}{55}\\)."
+  }
+]

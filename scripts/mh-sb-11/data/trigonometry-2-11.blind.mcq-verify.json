@@ -1,0 +1,72 @@
+[
+  {
+    "id": "c88fc46a-3584-446f-a109-80216ccd5f52",
+    "ref": "Misc I Q1",
+    "derived_answer": "B",
+    "why": "cos X cos Y + sin X sin Y = cos(Y-X) with Y-X = A, so the expression is cos A identically; verified to 1e-51 at (A,n) = (0.37,2), (1.1,3.5), (-0.8,0.25), (2.4,-1.3), (0.05,7) — e.g. stem = 0.932327345606 = cos(0.37). Options B and C are exact negatives of each other (C = -cos A), no true twins.",
+    "matches_current": true
+  },
+  {
+    "id": "3a9d0afb-4c6b-41b7-96c2-ad3b5dd48de0",
+    "ref": "Misc I Q2",
+    "derived_answer": "C",
+    "why": "y = (tanA-tanB)/(tanA tanB) = x/(tanA tanB) so tanA tanB = x/y; tan(A-B) = x/(1+x/y) = xy/(x+y), hence cot(A-B) = (x+y)/xy = 1/x + 1/y. Checked at (A,B) = (0.4,0.9), (1.2,0.3), (-0.5,0.7), (2.0,1.1), (0.25,-1.0): e.g. cot(A-B) = -1.83048772171 = option C exactly, D = 1.79225285236 (close-looking decoy but wrong). A and B are exact negatives; no twins.",
+    "matches_current": true
+  },
+  {
+    "id": "029831c6-a387-4000-b6e4-375b507295e5",
+    "ref": "Misc I Q3",
+    "derived_answer": "D",
+    "why": "Writing theta = (theta+alpha)-alpha and theta+2alpha = (theta+alpha)+alpha gives (1-n)sin(theta+a)cos a = (1+n)cos(theta+a)sin a, i.e. tan(theta+alpha) = ((1+n)/(1-n)) tan alpha. Verified by solving n from the constraint at (theta,alpha) = (0.3,0.4), (1.0,0.25), (-0.6,0.9), (0.15,1.2), (2.0,0.35): e.g. n = 0.331595339, tan(theta+alpha) = 0.842288380463 matches D only. No option pair equal.",
+    "matches_current": true
+  },
+  {
+    "id": "eb11b622-3fb0-4485-b0d8-bbe7920ec275",
+    "ref": "Misc I Q4",
+    "derived_answer": "C",
+    "why": "cos t/(1+sin t) = (c-s)(c+s)/(c+s)^2 = (1-tan(t/2))/(1+tan(t/2)) = tan(pi/4 - t/2). Agrees to 1e-51 at t = 0.3, 1.0, -0.7, 2.2, 0.05 (stem = 0.737415351928 at t=0.3). WARNING: A = -C exactly and B = -D exactly (two negative pairs), but no pair is equal in value, so no twin defect.",
+    "matches_current": true
+  },
+  {
+    "id": "e05f3db9-1aa2-44aa-8332-64ab754ea812",
+    "ref": "Misc I Q5",
+    "derived_answer": "C",
+    "why": "cos A cos(60-A) cos(60+A) = cos A (cos^2 60 - sin^2 A) = (4cos^3 A - 3cos A)/4 = (1/4)cos 3A. Agrees to 1e-51 at A = 0.3, 1.0, -0.7, 2.2, 0.05 (stem = 0.155402492068 at A=0.3, cos3A = 0.621609968). No option pair equal.",
+    "matches_current": true
+  },
+  {
+    "id": "49a5263d-c126-4778-b9a6-c83124838672",
+    "ref": "Misc I Q6",
+    "derived_answer": "B",
+    "why": "Product of sin((2k-1)pi/14), k=1..7, evaluated at 50 dps = 0.015625 exactly = 1/64 (matches the general result prod sin((2k-1)pi/2n) = 2^(1-n) with n=7); differs from A/C/D by 0.046875 / 0.0078125 / 0.01171875. No option pair equal.",
+    "matches_current": true
+  },
+  {
+    "id": "46655cd5-c3f9-44a0-adeb-5416ebe7800d",
+    "ref": "Misc I Q7",
+    "derived_answer": "C",
+    "why": "With gamma = pi - alpha - beta, sin^2 a + sin^2 b - sin^2 g = 2 sin a sin b cos g. Verified at (a,b) = (0.7,1.1), (0.3,2.0), (1.5,1.0), (0.2,0.25), (2.5,0.4): e.g. target 0.26088777901 = C, while B = 0.56914508 and D = 1.1182333. The (0.2,0.25) case is decisive — the target is NEGATIVE (-0.0885167938) and only C (obtuse gamma, cos g < 0) can go negative. No option pair equal.",
+    "matches_current": true
+  },
+  {
+    "id": "29666bef-ad92-46a5-a85c-f124af8a09db",
+    "ref": "Misc I Q8",
+    "derived_answer": "B",
+    "why": "Solving the pair numerically over a 15x15 grid of starting points in (0,pi/2)^2 yields exactly ONE solution: A = 0.3398369094541219, B = 0.6154797086703873 (both residuals 0.0), giving A + 2B = 1.570796326794896619231322 = pi/2 to 25 digits. Not pi, pi/4 or 2pi. No option pair equal.",
+    "matches_current": true
+  },
+  {
+    "id": "b8caa58d-7f8c-498d-b9ce-f0af6ce0ef49",
+    "ref": "Misc I Q9",
+    "derived_answer": "A",
+    "why": "Random scan of 10,162 valid triangles: all 2,574 acute triangles gave cotA cotB cotC in (3.47e-6, 0.192] i.e. strictly POSITIVE, all 7,588 obtuse gave strictly NEGATIVE (-75587.9 to -1.27e-5), and an exact right angle gives 0 (cot(pi/2)=0). So the product > 0 forces all three angles acute. D (isosceles right angled) is a right triangle, product 0, excluded. Options are text, no numeric twins.",
+    "matches_current": true
+  },
+  {
+    "id": "913be86b-76ae-41d6-9943-340eec82cef6",
+    "ref": "Misc I Q10",
+    "derived_answer": "A",
+    "why": "tan20 tan80 cot50 = 1.73205080756887729352744634151 at 50 dps = sqrt(3) (diff 2.1e-50); B = 0.5774, C = 3.4641, D = 0.2887 all far off. (Follows from tan20 tan80 = tan20 cot10 and the tan(3x) product identity tan A tan(60-A) tan(60+A) = tan 3A with A=20 giving tan60=sqrt(3), since tan80 = tan(60+20) and cot50 = tan40 = tan(60-20).) No option pair equal.",
+    "matches_current": true
+  }
+]

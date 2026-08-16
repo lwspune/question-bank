@@ -1,0 +1,52 @@
+[
+  {
+    "id": "a31eb57d-140b-4ed3-aec1-d9fc6648c1a5",
+    "ref": "Ex 4.2 Q1(i)",
+    "solution": "Apply \\(C_2 \\to C_2 + C_3\\). Every entry of the new \\(C_2\\) becomes \\(a+b+c\\):\n\\(\\begin{vmatrix}1 & a+b+c & b+c\\\\ 1 & a+b+c & c+a\\\\ 1 & a+b+c & a+b\\end{vmatrix}\\)\nTake the common factor \\(a+b+c\\) out of \\(C_2\\):\n\\(= (a+b+c)\\begin{vmatrix}1 & 1 & b+c\\\\ 1 & 1 & c+a\\\\ 1 & 1 & a+b\\end{vmatrix}\\)\nHere \\(C_1\\) and \\(C_2\\) are identical, and a determinant with two identical columns is zero.\nValue of the determinant \\(= 0\\)"
+  },
+  {
+    "id": "f7ae3943-5113-465a-9464-3d5f63391458",
+    "ref": "Ex 4.2 Q1(ii)",
+    "solution": "Every entry of \\(R_3\\) carries the factor \\(3x\\), since \\(6x = 3x(2)\\), \\(9x = 3x(3)\\), \\(12x = 3x(4)\\). Taking \\(3x\\) out of \\(R_3\\):\n\\(\\begin{vmatrix}2 & 3 & 4\\\\ 5 & 6 & 8\\\\ 6x & 9x & 12x\\end{vmatrix} = 3x\\begin{vmatrix}2 & 3 & 4\\\\ 5 & 6 & 8\\\\ 2 & 3 & 4\\end{vmatrix}\\)\nNow \\(R_1\\) and \\(R_3\\) are identical, so the determinant is zero.\nValue of the determinant \\(= 0\\)"
+  },
+  {
+    "id": "8e81e641-defc-4677-a3ed-3d651d146883",
+    "ref": "Ex 4.2 Q1(iii)",
+    "solution": "Observe that the third column is built from the first two: \\(65 = 2 + 9(7)\\), \\(75 = 3 + 9(8)\\), \\(86 = 5 + 9(9)\\), i.e. \\(C_3 = C_1 + 9C_2\\).\nApply \\(C_3 \\to C_3 - C_1 - 9C_2\\):\n\\(\\begin{vmatrix}2 & 7 & 65\\\\ 3 & 8 & 75\\\\ 5 & 9 & 86\\end{vmatrix} = \\begin{vmatrix}2 & 7 & 0\\\\ 3 & 8 & 0\\\\ 5 & 9 & 0\\end{vmatrix}\\)\nEvery entry of \\(C_3\\) is now zero, and a determinant with a zero column is zero.\nValue of the determinant \\(= 0\\)"
+  },
+  {
+    "id": "f5e56cab-4200-4a3e-9b71-4617b75687ae",
+    "ref": "Ex 4.2 Q2",
+    "solution": "Let \\(s = x+y+z\\) and let \\(L\\) be the determinant on the left.\nApply \\(R_1 \\to R_1 + R_2 + R_3\\). Each entry of the new \\(R_1\\) is \\((x+y)+(z+x)+(y+z) = 2s\\), so taking \\(2s\\) out of \\(R_1\\):\n\\(L = 2s\\begin{vmatrix}1 & 1 & 1\\\\ z+x & x+y & y+z\\\\ y+z & z+x & x+y\\end{vmatrix}\\)\nApply \\(R_2 \\to R_2 + R_3\\); the new \\(R_2\\) is \\((s+z,\\ s+x,\\ s+y)\\). Now apply \\(R_2 \\to R_2 - sR_1\\), which makes \\(R_2 = (z,\\ x,\\ y)\\). Finally apply \\(R_3 \\to R_3 - R_2\\), which makes \\(R_3 = (y+z-z,\\ z+x-x,\\ x+y-y) = (y,\\ z,\\ x)\\). Hence\n\\(L = 2s\\begin{vmatrix}1 & 1 & 1\\\\ z & x & y\\\\ y & z & x\\end{vmatrix}\\)\nNow treat the right-hand side. In \\(\\begin{vmatrix}x & y & z\\\\ z & x & y\\\\ y & z & x\\end{vmatrix}\\) apply \\(R_1 \\to R_1 + R_2 + R_3\\); each entry of the new \\(R_1\\) is \\(s\\), so taking \\(s\\) out of \\(R_1\\):\n\\(2\\begin{vmatrix}x & y & z\\\\ z & x & y\\\\ y & z & x\\end{vmatrix} = 2s\\begin{vmatrix}1 & 1 & 1\\\\ z & x & y\\\\ y & z & x\\end{vmatrix}\\)\nThe two sides have been reduced to the same expression.\n\\(\\therefore \\begin{vmatrix}x+y & y+z & z+x\\\\ z+x & x+y & y+z\\\\ y+z & z+x & x+y\\end{vmatrix} = 2\\begin{vmatrix}x & y & z\\\\ z & x & y\\\\ y & z & x\\end{vmatrix}\\)"
+  },
+  {
+    "id": "f62da3fe-fa12-4a43-8cfe-7c87bb9c8529",
+    "ref": "Ex 4.2 Q3(i)",
+    "solution": "Let \\(D = \\begin{vmatrix}a+b & a & b\\\\ a & a+c & c\\\\ b & c & b+c\\end{vmatrix}\\).\nApply \\(R_1 \\to R_1 - R_2 - R_3\\). The new \\(R_1\\) is \\(\\big((a+b)-a-b,\\ a-(a+c)-c,\\ b-c-(b+c)\\big) = (0,\\ -2c,\\ -2c)\\). Taking \\(-2c\\) out of \\(R_1\\):\n\\(D = -2c\\begin{vmatrix}0 & 1 & 1\\\\ a & a+c & c\\\\ b & c & b+c\\end{vmatrix}\\)\nApply \\(C_3 \\to C_3 - C_2\\):\n\\(D = -2c\\begin{vmatrix}0 & 1 & 0\\\\ a & a+c & -a\\\\ b & c & b\\end{vmatrix}\\)\nExpanding along \\(R_1\\), only the entry \\(1\\) survives:\n\\(D = -2c\\left[-1\\begin{vmatrix}a & -a\\\\ b & b\\end{vmatrix}\\right] = -2c\\big[-(ab + ab)\\big] = -2c(-2ab)\\)\n\\(\\therefore D = 4abc\\)"
+  },
+  {
+    "id": "c51c0fd3-277b-4838-bdb8-ff6dcb39a6c6",
+    "ref": "Ex 4.2 Q3(ii)",
+    "solution": "Here \\(x,\\ y,\\ z\\) are positive and none of them is \\(1\\). Write every logarithm in one common base using \\(\\log_p q = \\frac{\\log q}{\\log p}\\):\n\\(\\begin{vmatrix}1 & \\log_x y & \\log_x z\\\\ \\log_y x & 1 & \\log_y z\\\\ \\log_z x & \\log_z y & 1\\end{vmatrix} = \\begin{vmatrix}\\frac{\\log x}{\\log x} & \\frac{\\log y}{\\log x} & \\frac{\\log z}{\\log x}\\\\ \\frac{\\log x}{\\log y} & \\frac{\\log y}{\\log y} & \\frac{\\log z}{\\log y}\\\\ \\frac{\\log x}{\\log z} & \\frac{\\log y}{\\log z} & \\frac{\\log z}{\\log z}\\end{vmatrix}\\)\nTake \\(\\frac{1}{\\log x}\\) out of \\(R_1\\), \\(\\frac{1}{\\log y}\\) out of \\(R_2\\) and \\(\\frac{1}{\\log z}\\) out of \\(R_3\\):\n\\(= \\frac{1}{\\log x \\cdot \\log y \\cdot \\log z}\\begin{vmatrix}\\log x & \\log y & \\log z\\\\ \\log x & \\log y & \\log z\\\\ \\log x & \\log y & \\log z\\end{vmatrix}\\)\nAll three rows are identical, so this determinant is zero.\n\\(\\therefore \\begin{vmatrix}1 & \\log_x y & \\log_x z\\\\ \\log_y x & 1 & \\log_y z\\\\ \\log_z x & \\log_z y & 1\\end{vmatrix} = 0\\)"
+  },
+  {
+    "id": "831648af-8a02-47ec-8500-9f37fd491889",
+    "ref": "Ex 4.2 Q5(i)",
+    "solution": "Apply \\(R_1 \\to R_1 + R_2 + R_3\\). Each entry of the new \\(R_1\\) is \\((x+2)+(x+6)+(x-1) = 3x+7\\), so taking \\(3x+7\\) out of \\(R_1\\):\n\\((3x+7)\\begin{vmatrix}1 & 1 & 1\\\\ x+6 & x-1 & x+2\\\\ x-1 & x+2 & x+6\\end{vmatrix} = 0\\)\nApply \\(C_2 \\to C_2 - C_1\\) and \\(C_3 \\to C_3 - C_1\\):\n\\((3x+7)\\begin{vmatrix}1 & 0 & 0\\\\ x+6 & -7 & -4\\\\ x-1 & 3 & 7\\end{vmatrix} = 0\\)\nExpanding along \\(R_1\\): \\((3x+7)\\big[(-7)(7) - (-4)(3)\\big] = 0\\), i.e. \\(-37(3x+7) = 0\\).\nSince \\(-37 \\ne 0\\), we get \\(3x + 7 = 0\\).\n\\(x = -\\frac{7}{3}\\)"
+  },
+  {
+    "id": "e09c875c-1ece-4084-9579-722481dd49f5",
+    "ref": "Ex 4.2 Q5(ii)",
+    "solution": "Every entry below the main diagonal is \\(0\\), so the determinant is upper triangular and its value is the product of the diagonal entries:\n\\((x-1)(x-2)(x-3) = 0\\)\nHence \\(x - 1 = 0\\) or \\(x - 2 = 0\\) or \\(x - 3 = 0\\).\n\\(x = 1\\) or \\(x = 2\\) or \\(x = 3\\)"
+  },
+  {
+    "id": "774ef85d-916e-40a8-996d-e1e229b4c664",
+    "ref": "Ex 4.2 Q6",
+    "solution": "Apply \\(R_1 \\to R_1 + R_2 + R_3\\). Each entry of the new \\(R_1\\) is \\((4+x)+(4-x)+(4-x) = 12-x\\), so taking \\(12-x\\) out of \\(R_1\\):\n\\((12-x)\\begin{vmatrix}1 & 1 & 1\\\\ 4-x & 4+x & 4-x\\\\ 4-x & 4-x & 4+x\\end{vmatrix} = 0\\)\nApply \\(C_2 \\to C_2 - C_1\\) and \\(C_3 \\to C_3 - C_1\\):\n\\((12-x)\\begin{vmatrix}1 & 0 & 0\\\\ 4-x & 2x & 0\\\\ 4-x & 0 & 2x\\end{vmatrix} = 0\\)\nExpanding along \\(R_1\\): \\((12-x)(2x)(2x) = 0\\), i.e. \\(4x^2(12-x) = 0\\).\n\\(x = 0\\) or \\(x = 12\\)"
+  },
+  {
+    "id": "2114655a-ddcc-42d9-bd9c-ba95468864c3",
+    "ref": "Ex 4.2 Q7",
+    "solution": "Let \\(D = \\begin{vmatrix}1 & 2 & 1\\\\ 3 & 1 & 7\\\\ 3 & 2 & 6\\end{vmatrix}\\) (the determinant on the right) and let \\(G = \\begin{vmatrix}1 & 0 & 0\\\\ 3 & 1 & 7\\\\ 3 & 2 & 6\\end{vmatrix}\\). Use the fact that a determinant is unchanged when its rows and columns are interchanged, and that a determinant is a sum when one row is written as a sum.\nSecond determinant on the left: interchanging rows and columns,\n\\(\\begin{vmatrix}2 & 3 & 3\\\\ 2 & 1 & 2\\\\ 1 & 7 & 6\\end{vmatrix} = \\begin{vmatrix}2 & 2 & 1\\\\ 3 & 1 & 7\\\\ 3 & 2 & 6\\end{vmatrix}\\)\nIts first row is \\((2,\\ 2,\\ 1) = (1,\\ 2,\\ 1) + (1,\\ 0,\\ 0)\\), so splitting the first row gives \\(D + G\\).\nFirst determinant on the left: interchanging rows and columns,\n\\(\\begin{vmatrix}1 & 3 & 6\\\\ 6 & 1 & 4\\\\ 3 & 7 & 12\\end{vmatrix} = \\begin{vmatrix}1 & 6 & 3\\\\ 3 & 1 & 7\\\\ 6 & 4 & 12\\end{vmatrix}\\)\nHere \\(R_3 = 2(3,\\ 2,\\ 6)\\); taking \\(2\\) out of \\(R_3\\) gives \\(2\\begin{vmatrix}1 & 6 & 3\\\\ 3 & 1 & 7\\\\ 3 & 2 & 6\\end{vmatrix}\\). Its first row is \\((1,\\ 6,\\ 3) = 3(1,\\ 2,\\ 1) - 2(1,\\ 0,\\ 0)\\), so splitting the first row gives \\(2(3D - 2G) = 6D - 4G\\).\nAdding the two parts of the left-hand side,\n\\((6D - 4G) + 4(D + G) = 10D\\)\n\\(\\therefore \\begin{vmatrix}1 & 3 & 6\\\\ 6 & 1 & 4\\\\ 3 & 7 & 12\\end{vmatrix} + 4\\begin{vmatrix}2 & 3 & 3\\\\ 2 & 1 & 2\\\\ 1 & 7 & 6\\end{vmatrix} = 10\\begin{vmatrix}1 & 2 & 1\\\\ 3 & 1 & 7\\\\ 3 & 2 & 6\\end{vmatrix}\\)"
+  }
+]

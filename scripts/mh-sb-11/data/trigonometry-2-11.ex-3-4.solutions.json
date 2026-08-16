@@ -1,0 +1,52 @@
+[
+  {
+    "id": "709e92fa-c452-420e-b6fe-adb6e2ac9f11",
+    "ref": "Ex 3.4 Q1(i)",
+    "solution": "Use the defactorization formula \\(2\\sin A\\cos B = \\sin(A + B) + \\sin(A - B)\\), with \\(A = 4x\\), \\(B = 2x\\).\n\\(2\\sin 4x\\cos 2x = \\sin(4x + 2x) + \\sin(4x - 2x)\\)\n\\(= \\sin 6x + \\sin 2x\\)"
+  },
+  {
+    "id": "6c6f7042-316e-495f-bd3d-2a1abd126b03",
+    "ref": "Ex 3.4 Q1(ii)",
+    "solution": "Use the defactorization formula \\(2\\sin A\\cos B = \\sin(A + B) + \\sin(A - B)\\), with \\(A = \\dfrac{2\\pi}{3}\\), \\(B = \\dfrac{\\pi}{2}\\).\nHere \\(A + B = \\dfrac{2\\pi}{3} + \\dfrac{\\pi}{2} = \\dfrac{7\\pi}{6}\\) and \\(A - B = \\dfrac{2\\pi}{3} - \\dfrac{\\pi}{2} = \\dfrac{\\pi}{6}\\).\n\\(2\\sin\\dfrac{2\\pi}{3}\\cos\\dfrac{\\pi}{2} = \\sin\\dfrac{7\\pi}{6} + \\sin\\dfrac{\\pi}{6}\\)\nCheck: \\(\\cos\\dfrac{\\pi}{2} = 0\\) makes the left side \\(0\\), and \\(\\sin\\dfrac{7\\pi}{6} + \\sin\\dfrac{\\pi}{6} = -\\dfrac{1}{2} + \\dfrac{1}{2} = 0\\).\n\\(\\therefore\\ 2\\sin\\dfrac{2\\pi}{3}\\cos\\dfrac{\\pi}{2} = \\sin\\dfrac{7\\pi}{6} + \\sin\\dfrac{\\pi}{6}\\)"
+  },
+  {
+    "id": "e30495cd-a4c7-4609-ae8d-19134e12e560",
+    "ref": "Ex 3.4 Q1(iii)",
+    "solution": "Use the defactorization formula \\(2\\cos A\\cos B = \\cos(A + B) + \\cos(A - B)\\), with \\(A = 4\\theta\\), \\(B = 2\\theta\\).\n\\(2\\cos 4\\theta\\cos 2\\theta = \\cos(4\\theta + 2\\theta) + \\cos(4\\theta - 2\\theta)\\)\n\\(= \\cos 6\\theta + \\cos 2\\theta\\)"
+  },
+  {
+    "id": "b81fbfff-687b-435d-ba8f-95c0c2dc4d78",
+    "ref": "Ex 3.4 Q1(iv)",
+    "solution": "Use the defactorization formula \\(2\\cos A\\cos B = \\cos(A + B) + \\cos(A - B)\\), with \\(A = 35^\\circ\\), \\(B = 75^\\circ\\).\n\\(2\\cos 35^\\circ\\cos 75^\\circ = \\cos(35^\\circ + 75^\\circ) + \\cos(35^\\circ - 75^\\circ)\\)\n\\(= \\cos 110^\\circ + \\cos(-40^\\circ)\\)\nSince \\(\\cos(-\\theta) = \\cos\\theta\\),\n\\(= \\cos 110^\\circ + \\cos 40^\\circ\\)"
+  },
+  {
+    "id": "9b648eb9-5b4a-4f29-b1fc-eb3b64e136a4",
+    "ref": "Ex 3.4 Q2(i)",
+    "solution": "L.H.S. \\(= \\dfrac{\\sin 2x + \\sin 2y}{\\sin 2x - \\sin 2y}\\)\nApply the factorization formulae \\(\\sin C + \\sin D = 2\\sin\\dfrac{C+D}{2}\\cos\\dfrac{C-D}{2}\\) and \\(\\sin C - \\sin D = 2\\cos\\dfrac{C+D}{2}\\sin\\dfrac{C-D}{2}\\), with \\(C = 2x\\), \\(D = 2y\\):\n\\(= \\dfrac{2\\sin(x + y)\\cos(x - y)}{2\\cos(x + y)\\sin(x - y)}\\)\n\\(= \\dfrac{\\sin(x + y)}{\\cos(x + y)}\\times\\dfrac{\\cos(x - y)}{\\sin(x - y)}\\)\n\\(= \\tan(x + y)\\cot(x - y)\\)\n\\(= \\dfrac{\\tan(x + y)}{\\tan(x - y)} = \\) R.H.S."
+  },
+  {
+    "id": "8d11c245-53e4-4c29-93e2-e18d44da95d3",
+    "ref": "Ex 3.4 Q2(ii)",
+    "solution": "Group the two terms whose arguments differ by \\(4x\\).\nL.H.S. \\(= (\\sin 6x - \\sin 2x) + \\sin 4x\\)\nUsing \\(\\sin C - \\sin D = 2\\cos\\dfrac{C+D}{2}\\sin\\dfrac{C-D}{2}\\) and \\(\\sin 4x = 2\\sin 2x\\cos 2x\\),\n\\(= 2\\cos 4x\\sin 2x + 2\\sin 2x\\cos 2x\\)\n\\(= 2\\sin 2x\\,(\\cos 4x + \\cos 2x)\\)\nUsing \\(\\cos C + \\cos D = 2\\cos\\dfrac{C+D}{2}\\cos\\dfrac{C-D}{2}\\),\n\\(= 2\\sin 2x\\,(2\\cos 3x\\cos x)\\)\n\\(= 4\\cos x\\,\\sin 2x\\,\\cos 3x = \\) R.H.S."
+  },
+  {
+    "id": "cebe8ff8-fefd-4376-80d1-3daf95076afb",
+    "ref": "Ex 3.4 Q2(iii)",
+    "solution": "Numerator \\(= (\\sin x + \\sin 5x) - (\\sin 3x + \\sin 7x)\\)\n\\(= 2\\sin 3x\\cos 2x - 2\\sin 5x\\cos 2x\\)\n\\(= 2\\cos 2x\\,(\\sin 3x - \\sin 5x) = 2\\cos 2x\\,(-2\\cos 4x\\sin x) = -4\\sin x\\cos 2x\\cos 4x\\)\nDenominator \\(= (\\cos x - \\cos 3x) - (\\cos 5x - \\cos 7x)\\)\n\\(= 2\\sin 2x\\sin x - 2\\sin 6x\\sin x\\)\n\\(= 2\\sin x\\,(\\sin 2x - \\sin 6x) = 2\\sin x\\,(-2\\cos 4x\\sin 2x) = -4\\sin x\\sin 2x\\cos 4x\\)\n\\(\\therefore\\) L.H.S. \\(= \\dfrac{-4\\sin x\\cos 2x\\cos 4x}{-4\\sin x\\sin 2x\\cos 4x} = \\dfrac{\\cos 2x}{\\sin 2x}\\)\n\\(= \\cot 2x = \\) R.H.S."
+  },
+  {
+    "id": "4f4e8dfa-1e13-4bc5-96ef-f067f10728de",
+    "ref": "Ex 3.4 Q2(iv)",
+    "solution": "Multiply each side by \\(2\\) and use \\(2\\sin A\\cos B = \\sin(A + B) + \\sin(A - B)\\).\n\\(2\\times\\) L.H.S. \\(= 2\\sin 18^\\circ\\cos 39^\\circ + 2\\sin 6^\\circ\\cos 15^\\circ\\)\n\\(= [\\sin 57^\\circ + \\sin(-21^\\circ)] + [\\sin 21^\\circ + \\sin(-9^\\circ)]\\)\n\\(= \\sin 57^\\circ - \\sin 21^\\circ + \\sin 21^\\circ - \\sin 9^\\circ = \\sin 57^\\circ - \\sin 9^\\circ\\)\n\\(2\\times\\) R.H.S. \\(= 2\\sin 24^\\circ\\cos 33^\\circ = \\sin 57^\\circ + \\sin(-9^\\circ) = \\sin 57^\\circ - \\sin 9^\\circ\\)\nBoth sides reduce to the same expression, so dividing by \\(2\\),\n\\(\\sin 18^\\circ\\cos 39^\\circ + \\sin 6^\\circ\\cos 15^\\circ = \\sin 24^\\circ\\cos 33^\\circ = \\) R.H.S."
+  },
+  {
+    "id": "d793d5cb-e5d7-41ce-a30b-77670d9dc1db",
+    "ref": "Ex 3.4 Q2(v)",
+    "solution": "Since \\(\\cos 60^\\circ = \\dfrac{1}{2}\\),\nL.H.S. \\(= \\dfrac{1}{2}\\cos 20^\\circ\\,(\\cos 40^\\circ\\cos 80^\\circ)\\)\nBy \\(2\\cos A\\cos B = \\cos(A + B) + \\cos(A - B)\\):\n\\(2\\cos 40^\\circ\\cos 80^\\circ = \\cos 120^\\circ + \\cos 40^\\circ = \\cos 40^\\circ - \\dfrac{1}{2}\\)\n\\(2\\cos 20^\\circ\\cos 40^\\circ = \\cos 60^\\circ + \\cos 20^\\circ = \\dfrac{1}{2} + \\cos 20^\\circ\\)\nHence\nL.H.S. \\(= \\dfrac{1}{2}\\cos 20^\\circ\\cdot\\dfrac{1}{2}\\left(\\cos 40^\\circ - \\dfrac{1}{2}\\right) = \\dfrac{1}{4}\\left(\\cos 20^\\circ\\cos 40^\\circ - \\dfrac{1}{2}\\cos 20^\\circ\\right)\\)\n\\(= \\dfrac{1}{4}\\left[\\dfrac{1}{2}\\left(\\dfrac{1}{2} + \\cos 20^\\circ\\right) - \\dfrac{1}{2}\\cos 20^\\circ\\right]\\)\n\\(= \\dfrac{1}{4}\\left(\\dfrac{1}{4} + \\dfrac{1}{2}\\cos 20^\\circ - \\dfrac{1}{2}\\cos 20^\\circ\\right) = \\dfrac{1}{4}\\times\\dfrac{1}{4}\\)\n\\(= \\dfrac{1}{16} = \\) R.H.S."
+  },
+  {
+    "id": "ad1a5bd3-8e62-4ff0-a5de-282a40e565d8",
+    "ref": "Ex 3.4 Q2(vi)",
+    "solution": "L.H.S. \\(= \\sin 60^\\circ\\,\\sin 20^\\circ\\,(\\sin 40^\\circ\\sin 80^\\circ)\\)\nBy \\(2\\sin A\\sin B = \\cos(A - B) - \\cos(A + B)\\):\n\\(2\\sin 40^\\circ\\sin 80^\\circ = \\cos 40^\\circ - \\cos 120^\\circ = \\cos 40^\\circ + \\dfrac{1}{2}\\)\nBy \\(2\\sin A\\cos B = \\sin(A + B) + \\sin(A - B)\\):\n\\(2\\sin 20^\\circ\\cos 40^\\circ = \\sin 60^\\circ + \\sin(-20^\\circ) = \\sin 60^\\circ - \\sin 20^\\circ\\)\nHence\nL.H.S. \\(= \\sin 60^\\circ\\sin 20^\\circ\\cdot\\dfrac{1}{2}\\left(\\cos 40^\\circ + \\dfrac{1}{2}\\right) = \\dfrac{1}{2}\\sin 60^\\circ\\left(\\sin 20^\\circ\\cos 40^\\circ + \\dfrac{1}{2}\\sin 20^\\circ\\right)\\)\n\\(= \\dfrac{1}{2}\\sin 60^\\circ\\left[\\dfrac{1}{2}(\\sin 60^\\circ - \\sin 20^\\circ) + \\dfrac{1}{2}\\sin 20^\\circ\\right]\\)\n\\(= \\dfrac{1}{2}\\sin 60^\\circ\\times\\dfrac{1}{2}\\sin 60^\\circ = \\dfrac{1}{4}\\sin^{2}60^\\circ\\)\n\\(= \\dfrac{1}{4}\\left(\\dfrac{\\sqrt{3}}{2}\\right)^{2} = \\dfrac{1}{4}\\times\\dfrac{3}{4}\\)\n\\(= \\dfrac{3}{16} = \\) R.H.S."
+  }
+]

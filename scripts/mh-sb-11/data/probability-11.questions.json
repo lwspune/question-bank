@@ -1,0 +1,2035 @@
+[
+  {
+    "ref": "9.1.1a SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "EASY",
+    "stem": "Let \\(S\\) = Set of all positive integers not exceeding 50; Event \\(A\\) = Set of elements of \\(S\\) that are divisible by 6; and Event \\(B\\) = Set of elements of \\(S\\) that are divisible by 9. Find \\(A \\cup B\\).",
+    "solution": "\\(A = \\{6, 12, 18, 24, 30, 36, 42, 48\\}\\)\n\n\\(B = \\{9, 18, 27, 36, 45\\}\\)\n\n\\(\\therefore A \\cup B = \\{6, 9, 12, 18, 24, 27, 30, 36, 42, 45, 48\\}\\), which is the set of elements of \\(S\\) that are divisible by 6 or 9.",
+    "_note": "Worked example embedded in the 9.1.1 theory (Algebra of Events -> Union of Two Events) rather than in a boxed SOLVED EXAMPLES block; it carries the book's own printed 'Solution :'. Transcribed faithfully; the book prints a stray space in its union list ('45, 48')."
+  },
+  {
+    "ref": "9.1.1 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "EASY",
+    "stem": "Describe the sample space of the experiment when a coin and a die are thrown simultaneously.",
+    "solution": "Sample space \\(S = \\{(H,1), (H,2), (H,3), (H,4), (H,5), (H,6), (T,1), (T,2), (T,3), (T,4), (T,5), (T,6)\\}\\)"
+  },
+  {
+    "ref": "9.1.1 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "EASY",
+    "stem": "Sunita and Samrudhi who live in Mumbai wish to go on holiday to Delhi together. They can travel to Delhi from Mumbai either by car or by train or plane and on reaching Delhi they can go for city-tour either by bus or Taxi. Describe the sample space, showing all the combined outcomes of different ways they could complete city-tour from Mumbai.",
+    "solution": "Sample space\n\\(S = \\{(\\text{car, bus}), (\\text{car, taxi}), (\\text{train, bus}), (\\text{train, taxi}), (\\text{plane, bus}), (\\text{plane, taxi})\\}\\)"
+  },
+  {
+    "ref": "9.1.1 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "MODERATE",
+    "stem": "Three coins are tossed. Events \\(E_1\\), \\(E_2\\), \\(E_3\\) and \\(E_4\\) are defined as follows.\n\\(E_1\\) : Occurence of at least two heads.\n\\(E_2\\) : Occurence of at least two tails.\n\\(E_3\\) : Occurence of at most one head.\n\\(E_4\\) : Occurence of two heads.\nDescribe the sample space and events \\(E_1\\), \\(E_2\\), \\(E_3\\) and \\(E_4\\).\nFind \\(E_1 \\cup E_4\\), \\(E_3'\\). Also check whether\ni) \\(E_1\\) and \\(E_2\\) are mutually exclusive\nii) \\(E_2\\) and \\(E_3\\) are equal",
+    "solution": "[Textbook misprint: the printed solution gives \\(E_1 \\cup E_4 = \\{HTT, HTH, THH, HHH, HHT\\}\\), but HTT has only one head so it lies in neither \\(E_1\\) (at least 2 heads) nor \\(E_4\\) (exactly 2 heads); the union is \\(\\{HHH, HHT, HTH, THH\\}\\). The line printed \\(E_3 = \\{HHH, HHT, HTH, THH\\}\\) is really \\(E_3'\\) — contradicted by the book's own \\(E_3 = \\{HTT, THT, TTH, TTT\\}\\) two lines above.]\n\nSample space\n\\(S = \\{HHH, HHT, HTH, HTT, THH, THT, TTH, TTT\\}\\)\n\\(E_1 : \\{HHH, HHT, HTH, THH\\}\\)\n\\(E_2 : \\{HTT, THT, TTH, TTT\\}\\)\n\\(E_3 : \\{HTT, THT, TTH, TTT\\}\\)\n\\(E_4 : \\{HHT, HTH, THH,\\}\\)\n\\(E_1 \\cup E_4 = \\{HTT, HTH, THH, HHH, HHT\\}\\)\n\\(E_3 = \\{HHH, HHT, HTH, THH\\}\\)\ni) \\(E_1 \\cap E_2 = \\{\\ \\} = \\phi\\)\n\\(\\therefore E_1\\) and \\(E_2\\) are mutually exclusive.\nii) \\(E_2\\) and \\(E_3\\) are equal.",
+    "_note": "Transcribed exactly as printed on p-02 (printed p.195). THREE defects in the printed solution, all left uncorrected: (1) the book prints \\(E_1 \\cup E_4 = \\{HTT, HTH, THH, HHH, HHT\\}\\) — HTT has only ONE head so it is in neither \\(E_1\\) (at least two heads) nor \\(E_4\\) (two heads); the correct union is \\(\\{HHH, HHT, HTH, THH\\}\\). (2) The line printed as \\(E_3 = \\{HHH, HHT, HTH, THH\\}\\) is actually \\(E_3'\\) — that is the quantity the question asks for, and the book's own \\(E_3 : \\{HTT, THT, TTH, TTT\\}\\) two lines above contradicts it; the prime is missing. (3) \\(E_4 : \\{HHT, HTH, THH,\\}\\) carries a stray trailing comma inside the brace. Also note the stem spells 'Occurence' (book spelling, kept)."
+  },
+  {
+    "ref": "9.1.5 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "stem": "If \\(A \\cup B \\cup C = S\\) (the sample space) and A, B and C are mutually exclusive events, can the following represent probability assignment?\ni) \\(P(A) = 0.2\\), \\(P(B) = 0.7\\), \\(P(C) = 0.1\\)\nii) \\(P(A) = 0.4\\), \\(P(B) = 0.6\\), \\(P(C) = 0.2\\)",
+    "solution": "i) Since \\(P(S) = P(A \\cup B \\cup C)\\)\n\\(= P(A) + P(B) + P(C)\\) [Property 10]\n\\(= 0.2 + 0.7 + 0.1 = 1\\)\nand \\(0 \\le P(A), P(B), P(C) \\le 1\\)\n\\(\\therefore\\) The given values can represent the probability assignment.\nii) Since\n\\(P(S) = P(A \\cup B \\cup C)\\)\n\\(= P(A) + P(B) + P(C)\\) [Property 10]\n\\(= 0.4 + 0.6 + 0.2 = 1.2 > 1\\)\n\\(\\therefore P(A)\\), \\(P(B)\\) and \\(P(C)\\) cannot represent probability assignment."
+  },
+  {
+    "ref": "9.1.5 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "EASY",
+    "stem": "One card is drawn at random from a pack of 52 cards. What is the probability that it is a King or Queen?",
+    "solution": "Random Experiment = One card is drawn at random from a pack of 52 cards\n\\(\\therefore n(S) = {}^{52}C_1 = 52\\).\nLet event A: Card drawn is King\nand event B: Card drawn is Queen.\nSince pack of 52 cards contains, 4 king cards from which any one king card can be drawn in \\({}^{4}C_1 = 4\\) ways. \\(\\therefore n(A) = 4\\)\n\\(\\therefore P(A) = \\frac{n(A)}{n(S)} = \\frac{4}{52}\\)\nSimilarly, a pack of 52 cards contains, 4 queen cards from which any one queen card can be drawn in \\({}^{4}C_1 = 4\\) ways. \\(\\therefore n(B) = 4\\)\n\\(\\therefore P(B) = \\frac{n(B)}{n(S)} = \\frac{4}{52}\\)\nSince A and B are mutually exclusive events\n\\(\\therefore\\) required probability P(king or queen)\n\\(= P(A \\cup B) = P(A) + P(B) = \\frac{4}{52} + \\frac{4}{52} = \\frac{2}{13}\\)"
+  },
+  {
+    "ref": "9.1.5 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "HARD",
+    "stem": "Five employees in a company of 20 are graduates. If 3 are selected out of 20 at random. What is the probability that\ni) they are all graduates?\nii) there is at least one graduate among them?",
+    "solution": "Out of 20 employees, any 3 are to be selected in \\({}^{20}C_3\\) ways.\n\\(\\therefore n(S) = {}^{20}C_3\\) where S is the sample space.\nLet event A: All 3 selected employees are graduates.\nOut of 5 graduate any 3 can be selected in \\({}^{5}C_3\\) ways.\n\\(\\therefore\\) required probability \\(P(A) = \\frac{{}^{5}C_3}{{}^{20}C_3} = \\frac{10}{1140} = \\frac{1}{114}\\)\nLet event B: At least one graduate employee is selected.\n\\(\\therefore B'\\) is the event that no graduate employee is selected.\nSince out of 20 employee, 5 are graduates, therefore from the remaining 15 non-graduate any 3 non-graduates can be selected in \\({}^{15}C_3\\) ways.\n\\(\\therefore P(B') = \\frac{{}^{15}C_3}{{}^{20}C_3} = \\frac{455}{1140} = \\frac{91}{228}\\)\n\\(\\therefore\\) required probability\n\\(P(B) = 1 - P(B') = 1 - \\frac{91}{228} = \\frac{137}{228}\\)"
+  },
+  {
+    "ref": "9.1.5 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "stem": "The letters of the word STORY be arranged randomly. Find the probability that\na) T and Y are together.\nb) arrangment begins with T and end with Y.",
+    "solution": "[Textbook misprint: the printed solution ends \\(P(B) = \\dfrac{6}{120} = \\dfrac{1}{120}\\). The working is correct (3! = 6 favourable arrangements out of 120), but \\(\\dfrac{6}{120} = \\dfrac{1}{20}\\), not \\(\\dfrac{1}{120}\\).]\n\nThe word STORY consists of 5 different letters, which can be arranged among themselves in 5! ways.\n\\(\\therefore n(S) = 5! = 120\\)\na) Event A: T and Y are a together.\nLet us consider T and Y as a single letter say X. Therefore, now we have four different letters X, S, O and R which can be arranged among themselves in \\(4! = 24\\) different ways. After this is done, two letters T and Y can be arranged among themselves in \\(2! = 2\\) ways. Therefore, by fundamental principle, total number of arrangements in which T and Y are always together is \\(24 \\times 2 = 48\\).\n\\(\\therefore\\) required probability \\(P(A) = \\frac{48}{120} = \\frac{2}{5}\\)\nb) Event B: An arrangement begins with T and ends with Y.\nRemaining 3 letters in the middle can be arranged in \\(3! = 6\\) different ways.\n\\(\\therefore\\) required probability \\(P(B) = \\frac{6}{120} = \\frac{1}{120}\\)",
+    "_note": "PRINTED ANSWER-KEY DEFECT in part b), transcribed as printed (p-04, printed p.197): the book writes \\(P(B) = \\frac{6}{120} = \\frac{1}{120}\\). \\(\\frac{6}{120}\\) reduces to \\(\\frac{1}{20}\\), not \\(\\frac{1}{120}\\); the working (3! = 6 favourable out of n(S) = 120) is correct, only the reduced fraction is wrong. Also the stem spells 'arrangment' (book spelling, kept), and the solution's part a) reads 'T and Y are a together' (stray 'a', kept)."
+  },
+  {
+    "ref": "Ex 9.1 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "MODERATE",
+    "context": "There are four pens: Red, Green, Blue and Purple in a desk drawer of which two pens are selected at random one after the other with replacement. State the sample space and the following events.",
+    "setLabel": "Ex 9.1 Q1",
+    "stem": "A : Selecting at least one red pen.",
+    "solution": "[Textbook misprint: the printed key lists \\(A = \\{RR, GR, RB, RP, GR, BR, PR\\}\\) — GR appears twice and RG is missing. The cardinality of 7 is right and the intended set is unambiguous, so this is a typographical slip in the key rather than a mathematical error; the correct set is \\(\\{RR, RG, RB, RP, GR, BR, PR\\}\\).]"
+  },
+  {
+    "ref": "Ex 9.1 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "MODERATE",
+    "context": "There are four pens: Red, Green, Blue and Purple in a desk drawer of which two pens are selected at random one after the other with replacement. State the sample space and the following events.",
+    "setLabel": "Ex 9.1 Q1",
+    "stem": "B : Two pens of the same color are not selected."
+  },
+  {
+    "ref": "Ex 9.1 Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "EASY",
+    "context": "A coin and a die are tossed simultaneously. Enumerate the sample space and the following events.",
+    "setLabel": "Ex 9.1 Q2",
+    "stem": "A : Getting a Tail and an Odd number"
+  },
+  {
+    "ref": "Ex 9.1 Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "EASY",
+    "context": "A coin and a die are tossed simultaneously. Enumerate the sample space and the following events.",
+    "setLabel": "Ex 9.1 Q2",
+    "stem": "B : Getting a prime number"
+  },
+  {
+    "ref": "Ex 9.1 Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "EASY",
+    "context": "A coin and a die are tossed simultaneously. Enumerate the sample space and the following events.",
+    "setLabel": "Ex 9.1 Q2",
+    "stem": "C : Getting a head and a perfect square."
+  },
+  {
+    "ref": "Ex 9.1 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "EASY",
+    "context": "Find \\(n(S)\\) for each of the following random experiments.",
+    "setLabel": "Ex 9.1 Q3",
+    "stem": "From an urn containing 5 gold and 3 silver coins, 3 coins are drawn at random"
+  },
+  {
+    "ref": "Ex 9.1 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "EASY",
+    "context": "Find \\(n(S)\\) for each of the following random experiments.",
+    "setLabel": "Ex 9.1 Q3",
+    "stem": "5 letters are to be placed into 5 envelopes such that no envelop is empty.",
+    "_note": "PRINTED AS SHOWN: the book spells the second occurrence \"envelop\" (singular, missing the final 'e'). Transcribed faithfully."
+  },
+  {
+    "ref": "Ex 9.1 Q3(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "EASY",
+    "context": "Find \\(n(S)\\) for each of the following random experiments.",
+    "setLabel": "Ex 9.1 Q3",
+    "stem": "6 books of different subjects arranged on a shelf."
+  },
+  {
+    "ref": "Ex 9.1 Q3(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "EASY",
+    "context": "Find \\(n(S)\\) for each of the following random experiments.",
+    "setLabel": "Ex 9.1 Q3",
+    "stem": "3 tickets are drawn from a box containing 20 lottery tickets."
+  },
+  {
+    "ref": "Ex 9.1 Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "MODERATE",
+    "context": "Two fair dice are thrown. State the sample space and write the favorable outcomes for the following events.",
+    "setLabel": "Ex 9.1 Q4",
+    "stem": "A : Sum of numbers on two dice is divisible by 3 or 4."
+  },
+  {
+    "ref": "Ex 9.1 Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "EASY",
+    "context": "Two fair dice are thrown. State the sample space and write the favorable outcomes for the following events.",
+    "setLabel": "Ex 9.1 Q4",
+    "stem": "B : Sum of numbers on two dice is 7."
+  },
+  {
+    "ref": "Ex 9.1 Q4(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "EASY",
+    "context": "Two fair dice are thrown. State the sample space and write the favorable outcomes for the following events.",
+    "setLabel": "Ex 9.1 Q4",
+    "stem": "C : Odd number on the first die."
+  },
+  {
+    "ref": "Ex 9.1 Q4(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "EASY",
+    "context": "Two fair dice are thrown. State the sample space and write the favorable outcomes for the following events.",
+    "setLabel": "Ex 9.1 Q4",
+    "stem": "D : Even number on the first die."
+  },
+  {
+    "ref": "Ex 9.1 Q4(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "MODERATE",
+    "context": "Two fair dice are thrown. State the sample space and write the favorable outcomes for the following events.",
+    "setLabel": "Ex 9.1 Q4",
+    "stem": "Check whether events A and B are mutually exclusive and exhaustive."
+  },
+  {
+    "ref": "Ex 9.1 Q4(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "MODERATE",
+    "context": "Two fair dice are thrown. State the sample space and write the favorable outcomes for the following events.",
+    "setLabel": "Ex 9.1 Q4",
+    "stem": "Check whether events C and D are mutually exclusive and exhaustive."
+  },
+  {
+    "ref": "Ex 9.1 Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "EASY",
+    "context": "A bag contains four cards marked as 5, 6, 7 and 8. Find the sample space if two cards are drawn at random",
+    "setLabel": "Ex 9.1 Q5",
+    "stem": "with replacement"
+  },
+  {
+    "ref": "Ex 9.1 Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Basic Terminology and Sample Space",
+    "difficulty": "EASY",
+    "context": "A bag contains four cards marked as 5, 6, 7 and 8. Find the sample space if two cards are drawn at random",
+    "setLabel": "Ex 9.1 Q5",
+    "stem": "without replacement"
+  },
+  {
+    "ref": "Ex 9.1 Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "EASY",
+    "context": "A fair die is thrown two times. Find the probability that",
+    "setLabel": "Ex 9.1 Q6",
+    "stem": "sum of the numbers on them is 5"
+  },
+  {
+    "ref": "Ex 9.1 Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "A fair die is thrown two times. Find the probability that",
+    "setLabel": "Ex 9.1 Q6",
+    "stem": "sum of the numbers on them is at least 8"
+  },
+  {
+    "ref": "Ex 9.1 Q6(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "A fair die is thrown two times. Find the probability that",
+    "setLabel": "Ex 9.1 Q6",
+    "stem": "first throw gives a multiple of 2 and second throw gives a multiple of 3."
+  },
+  {
+    "ref": "Ex 9.1 Q6(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "EASY",
+    "context": "A fair die is thrown two times. Find the probability that",
+    "setLabel": "Ex 9.1 Q6",
+    "stem": "product of numbers on them is 12."
+  },
+  {
+    "ref": "Ex 9.1 Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "Two cards are drawn from a pack of 52 cards. Find the probability that",
+    "setLabel": "Ex 9.1 Q7",
+    "stem": "one is a face card and the other is an ace card"
+  },
+  {
+    "ref": "Ex 9.1 Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "Two cards are drawn from a pack of 52 cards. Find the probability that",
+    "setLabel": "Ex 9.1 Q7",
+    "stem": "one is club and the other is a diamond"
+  },
+  {
+    "ref": "Ex 9.1 Q7(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "Two cards are drawn from a pack of 52 cards. Find the probability that",
+    "setLabel": "Ex 9.1 Q7",
+    "stem": "both are from the same suit."
+  },
+  {
+    "ref": "Ex 9.1 Q7(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "EASY",
+    "context": "Two cards are drawn from a pack of 52 cards. Find the probability that",
+    "setLabel": "Ex 9.1 Q7",
+    "stem": "both are red cards"
+  },
+  {
+    "ref": "Ex 9.1 Q7(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "Two cards are drawn from a pack of 52 cards. Find the probability that",
+    "setLabel": "Ex 9.1 Q7",
+    "stem": "one is a heart card and the other is a non heart card"
+  },
+  {
+    "ref": "Ex 9.1 Q8(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "Three cards are drawn from a pack of 52 cards. Find the chance that",
+    "setLabel": "Ex 9.1 Q8",
+    "stem": "two are queen cards and one is an ace card"
+  },
+  {
+    "ref": "Ex 9.1 Q8(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "HARD",
+    "context": "Three cards are drawn from a pack of 52 cards. Find the chance that",
+    "setLabel": "Ex 9.1 Q8",
+    "stem": "at least one is a diamond card"
+  },
+  {
+    "ref": "Ex 9.1 Q8(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "Three cards are drawn from a pack of 52 cards. Find the chance that",
+    "setLabel": "Ex 9.1 Q8",
+    "stem": "all are from the same suit"
+  },
+  {
+    "ref": "Ex 9.1 Q8(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "Three cards are drawn from a pack of 52 cards. Find the chance that",
+    "setLabel": "Ex 9.1 Q8",
+    "stem": "they are a king, a queen and a jack"
+  },
+  {
+    "ref": "Ex 9.1 Q9(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "EASY",
+    "context": "From a bag containing 10 red, 4 blue and 6 black balls, a ball is drawn at random. Find the probability of drawing",
+    "setLabel": "Ex 9.1 Q9",
+    "stem": "a red ball."
+  },
+  {
+    "ref": "Ex 9.1 Q9(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "EASY",
+    "context": "From a bag containing 10 red, 4 blue and 6 black balls, a ball is drawn at random. Find the probability of drawing",
+    "setLabel": "Ex 9.1 Q9",
+    "stem": "a blue or black ball."
+  },
+  {
+    "ref": "Ex 9.1 Q9(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "EASY",
+    "context": "From a bag containing 10 red, 4 blue and 6 black balls, a ball is drawn at random. Find the probability of drawing",
+    "setLabel": "Ex 9.1 Q9",
+    "stem": "not a black ball."
+  },
+  {
+    "ref": "Ex 9.1 Q10(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "EASY",
+    "context": "A box contains 75 tickets numbered 1 to 75. A ticket is drawn at random from the box. Find the probability that,",
+    "setLabel": "Ex 9.1 Q10",
+    "stem": "Number on the ticket is divisible by 6"
+  },
+  {
+    "ref": "Ex 9.1 Q10(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "EASY",
+    "context": "A box contains 75 tickets numbered 1 to 75. A ticket is drawn at random from the box. Find the probability that,",
+    "setLabel": "Ex 9.1 Q10",
+    "stem": "Number on the ticket is a perfect square"
+  },
+  {
+    "ref": "Ex 9.1 Q10(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "A box contains 75 tickets numbered 1 to 75. A ticket is drawn at random from the box. Find the probability that,",
+    "setLabel": "Ex 9.1 Q10",
+    "stem": "Number on the ticket is prime"
+  },
+  {
+    "ref": "Ex 9.1 Q10(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "EASY",
+    "context": "A box contains 75 tickets numbered 1 to 75. A ticket is drawn at random from the box. Find the probability that,",
+    "setLabel": "Ex 9.1 Q10",
+    "stem": "Number on the ticket is divisible by 3 and 5"
+  },
+  {
+    "ref": "Ex 9.1 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "stem": "What is the chance that a leap year, selected at random, will contain 53 sundays?.",
+    "_note": "PRINTED AS SHOWN: the book writes \"sundays\" in lower case and closes the sentence with the doubled punctuation \"?.\". Transcribed faithfully."
+  },
+  {
+    "ref": "Ex 9.1 Q12(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "Find the probability of getting both red balls, when from a bag containing 5 red and 4 black balls, two balls are drawn,",
+    "setLabel": "Ex 9.1 Q12",
+    "stem": "with replacement"
+  },
+  {
+    "ref": "Ex 9.1 Q12(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "Find the probability of getting both red balls, when from a bag containing 5 red and 4 black balls, two balls are drawn,",
+    "setLabel": "Ex 9.1 Q12",
+    "stem": "without replacement"
+  },
+  {
+    "ref": "Ex 9.1 Q13(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "A room has three sockets for lamps. From a collection 10 bulbs of which 6 are defective. At night a person selects 3 bulbs, at random and puts them in sockets. What is the probability that",
+    "setLabel": "Ex 9.1 Q13",
+    "stem": "room is still dark",
+    "_note": "PRINTED AS SHOWN: the shared instruction reads \"From a collection 10 bulbs\" — the book omits \"of\" after \"collection\". Transcribed faithfully."
+  },
+  {
+    "ref": "Ex 9.1 Q13(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "A room has three sockets for lamps. From a collection 10 bulbs of which 6 are defective. At night a person selects 3 bulbs, at random and puts them in sockets. What is the probability that",
+    "setLabel": "Ex 9.1 Q13",
+    "stem": "the room is lit"
+  },
+  {
+    "ref": "Ex 9.1 Q14(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "Letters of the word MOTHER are arranged at random. Find the probability that in the arrangement",
+    "setLabel": "Ex 9.1 Q14",
+    "stem": "vowels are always together"
+  },
+  {
+    "ref": "Ex 9.1 Q14(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "Letters of the word MOTHER are arranged at random. Find the probability that in the arrangement",
+    "setLabel": "Ex 9.1 Q14",
+    "stem": "vowels are never together"
+  },
+  {
+    "ref": "Ex 9.1 Q14(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "Letters of the word MOTHER are arranged at random. Find the probability that in the arrangement",
+    "setLabel": "Ex 9.1 Q14",
+    "stem": "O is at the begining and end with T",
+    "_note": "PRINTED AS SHOWN: the book spells \"begining\" (one 'n'). Transcribed faithfully."
+  },
+  {
+    "ref": "Ex 9.1 Q14(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "Letters of the word MOTHER are arranged at random. Find the probability that in the arrangement",
+    "setLabel": "Ex 9.1 Q14",
+    "stem": "starting with a vowel and end with a consonant"
+  },
+  {
+    "ref": "Ex 9.1 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "stem": "4 letters are to be posted in 4 post boxes. If any number of letters can be posted in any of the 4 post boxes, what is the probability that each box contains only one letter?"
+  },
+  {
+    "ref": "Ex 9.1 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "HARD",
+    "stem": "15 professors have been invited for a round table conference by Vice chancellor of a university. What is the probability that two particular professors occupy the seats on either side of the Vice Chancellor during the conference."
+  },
+  {
+    "ref": "Ex 9.1 Q17(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "A bag contains 7 black and 4 red balls. If 3 balls are drawn at random find the probability that",
+    "setLabel": "Ex 9.1 Q17",
+    "stem": "all are black"
+  },
+  {
+    "ref": "Ex 9.1 Q17(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "A bag contains 7 black and 4 red balls. If 3 balls are drawn at random find the probability that",
+    "setLabel": "Ex 9.1 Q17",
+    "stem": "one is black and two are red"
+  },
+  {
+    "ref": "9.2 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Addition Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Two dice are thrown together. What is the probability that,\ni) Sum of the numbers is divisible by 3 or 4?\nii) Sum of the numbers is neither divisible by 3 nor 5?",
+    "solution": "[Textbook misprint: the book names the event \\(A\\) and then refers to it twice as \\(X\\) ('X and Y are mutually exclusive events' and \\(1 - P(X \\cup Y)\\)). The arithmetic that follows uses \\(A\\) and is correct.]\n\nLet S be the sample space\nLet \\(N_1 = N_2 = \\{1, 2, 3, 4, 5, 6\\}\\)\n\\(S = N_1 \\times N_2 = \\{(x, y) / x \\in N_1,\\ y \\in N_2\\}\\)\n\\(n(S) = 36\\)\ni) Let event A: Sum of the numbers is divisible by 3\n\\(\\therefore\\) possible sums are 3, 6, 9, 12.\n\\(\\therefore A = \\{(1, 2), (1, 5), (2, 1), (2, 4), (3, 3), (3, 6), (4, 2), (4, 5), (5, 1), (5, 4), (6, 3), (6, 6)\\}\\)\n\\(\\therefore n(A) = 12\\) \\(\\therefore P(A) = n(A) / n(S) = 12/36\\)\nLet event B: Sum of the numbers is divisible by 4.\n\\(\\therefore\\) possible sums are 4, 8, 12\n\\(\\therefore B = \\{(1, 3), (2, 2), (2, 6), (3, 1), (3, 5), (4, 4), (5, 3), (6, 2), (6, 6)\\}\\)\n\\(\\therefore n(B) = 9\\) \\(\\therefore P(B) = n(B) / n(S) = \\frac{9}{36}\\)\n\\(\\therefore\\) Event \\(A \\cap B\\): Sum of the numbers is divisible by 3 and 4 i.e. divisible by 12.\n\\(\\therefore\\) possible Sum is 12\n\\(\\therefore A \\cap B = \\{(6, 6)\\}\\)\n\\(\\therefore n(A \\cap B) = 1\\)\n\\(\\therefore P(A \\cap B) = n(A \\cap B)/n(S) = \\frac{1}{36}\\)\nP (Sum of the numbers is divisible by 3 or 4)\n\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)\n\\(= \\frac{12}{36} + \\frac{9}{36} - \\frac{1}{36} = \\frac{20}{36} = \\frac{5}{9}\\)\nii) Let event A: Sum of the numbers is divisible by 3\n\\(\\therefore P(A) = \\frac{12}{36}\\)\nLet event Y: Sum of the numbers is divisible by 5.\n\\(\\therefore\\) possible sums are 5, 10\n\\(\\therefore Y = \\{(1, 4), (2, 3), (3, 2), (4, 1), (4, 6), (5, 5), (6, 4)\\}\\)\n\\(\\therefore n(Y) = 7\\) \\(\\therefore P(Y) = \\frac{n(Y)}{n(S)} = \\frac{7}{36}\\)\n\\(\\therefore\\) Event \\(A \\cap Y\\): sum is divisible by 3 and 5\n\\(\\therefore A \\cap Y = \\phi\\)\n[X and Y are mutually exclusive events]\n\\(\\therefore P(A \\cap Y) = \\frac{n(A \\cap Y)}{n(S)} = 0\\)\n\\(\\therefore\\) required probability = P(Sum of the numbers is neither divisible by 3 nor 5)\n\\(P(A' \\cap Y') = P(\\overline{A \\cup Y})\\) [De'Morgan's law]\n\\(= 1 - P(X \\cup Y)\\) [Property 1]\n\\(= 1 - [P(A) + P(Y) - P(A \\cap Y)]\\)\n\\(= 1 - \\frac{19}{36} = \\frac{17}{36}\\)",
+    "_note": "PRINTED AS SHOWN (verified at 2x zoom): in part ii) the book names the first event A, then refers to it twice as X — the bracketed remark reads \"[X and Y are mutually exclusive events]\" and the next line reads \\(= 1 - P(X \\cup Y)\\). The intended symbol is A in both places; the arithmetic that follows (\\(\\frac{12}{36} + \\frac{7}{36} = \\frac{19}{36}\\)) uses A and is correct. Transcribed faithfully."
+  },
+  {
+    "ref": "9.2 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Addition Theorem",
+    "difficulty": "MODERATE",
+    "stem": "The probability that a student will solve problem A is \\(\\frac{2}{3}\\), and the probability that he will not solve problem B is \\(\\frac{5}{9}\\). If the probability that student solves at least one problem is \\(\\frac{4}{5}\\), what is the probability that he will solve both the problems?",
+    "solution": "Let event A: student solves problem A\n\\(\\therefore P(A) = \\frac{2}{3}\\)\nevent B: student solves problem B.\n\\(\\therefore\\) event B': student will not solve problem B.\n\\(\\therefore P(B') = \\frac{5}{9}\\)\n\\(\\therefore P(B) = 1 - P(B') = 1 - \\frac{5}{9} = \\frac{4}{9}\\)\nProbability that student solves at least one problem \\(= P(A \\cup B) = \\frac{4}{5}\\)\n\\(\\therefore P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)\n\\(\\therefore\\) required probability = P(he will solve both the problems)\n\\(= P(A \\cap B) = P(A) + P(B) - P(A \\cup B)\\)\n\\(= \\frac{2}{3} + \\frac{4}{9} - \\frac{4}{5} = \\frac{14}{45}\\)"
+  },
+  {
+    "ref": "Ex 9.2 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition Theorem",
+    "difficulty": "MODERATE",
+    "stem": "First 6 faced die which is numbered 1 through 6 is thrown then a 5 faced die which is numbered 1 through 5 is thrown. What is the probability that sum of the numbers on the upper faces of the dice is divisible by 2 or 3?"
+  },
+  {
+    "ref": "Ex 9.2 Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition Theorem",
+    "difficulty": "EASY",
+    "context": "A card is drawn from a pack of 52 cards. What is the probability that,",
+    "setLabel": "Ex 9.2 Q2",
+    "stem": "card is either red or black?"
+  },
+  {
+    "ref": "Ex 9.2 Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition Theorem",
+    "difficulty": "MODERATE",
+    "context": "A card is drawn from a pack of 52 cards. What is the probability that,",
+    "setLabel": "Ex 9.2 Q2",
+    "stem": "card is either black or a face card?"
+  },
+  {
+    "ref": "Ex 9.2 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition Theorem",
+    "difficulty": "MODERATE",
+    "context": "A girl is preparing for National Level Entrance exam and State Level Entrance exam for professional courses. The chances of her cracking National Level exam is 0.42 and that of State Level exam is 0.54. The probability that she clears both the exams is 0.11. Find the probability that",
+    "setLabel": "Ex 9.2 Q3",
+    "stem": "She cracks at least one of the two exams."
+  },
+  {
+    "ref": "Ex 9.2 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition Theorem",
+    "difficulty": "MODERATE",
+    "context": "A girl is preparing for National Level Entrance exam and State Level Entrance exam for professional courses. The chances of her cracking National Level exam is 0.42 and that of State Level exam is 0.54. The probability that she clears both the exams is 0.11. Find the probability that",
+    "setLabel": "Ex 9.2 Q3",
+    "stem": "She cracks only one of the two."
+  },
+  {
+    "ref": "Ex 9.2 Q3(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition Theorem",
+    "difficulty": "MODERATE",
+    "context": "A girl is preparing for National Level Entrance exam and State Level Entrance exam for professional courses. The chances of her cracking National Level exam is 0.42 and that of State Level exam is 0.54. The probability that she clears both the exams is 0.11. Find the probability that",
+    "setLabel": "Ex 9.2 Q3",
+    "stem": "She cracks none."
+  },
+  {
+    "ref": "Ex 9.2 Q4(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition Theorem",
+    "difficulty": "MODERATE",
+    "context": "A bag contains 75 tickets numbered from 1 to 75. One ticket is drawn at random. Find the probability that,",
+    "setLabel": "Ex 9.2 Q4",
+    "stem": "number on the ticket is a perfect square or divisible by 4",
+    "_note": "The book labels this sub-item a) (not the roman i) used elsewhere in this exercise); the ref keeps the book's printed label."
+  },
+  {
+    "ref": "Ex 9.2 Q4(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition Theorem",
+    "difficulty": "MODERATE",
+    "context": "A bag contains 75 tickets numbered from 1 to 75. One ticket is drawn at random. Find the probability that,",
+    "setLabel": "Ex 9.2 Q4",
+    "stem": "number on the ticket is a prime number or greater than 40"
+  },
+  {
+    "ref": "Ex 9.2 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition Theorem",
+    "difficulty": "EASY",
+    "stem": "The probability that a student will pass in French is 0.64, will pass in Sociology is 0.45 and will pass in both is 0.40. What is the probability that the student will pass in at least one of the two subjects?"
+  },
+  {
+    "ref": "Ex 9.2 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Two fair dice are thrown. Find the probability that number on the upper face of the first die is 3 or sum of the numbers on their upper faces is 6."
+  },
+  {
+    "ref": "Ex 9.2 Q7(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition Theorem",
+    "difficulty": "MODERATE",
+    "context": "For two events A and B of a sample space S, if \\(P(A) = \\frac{3}{8}\\), \\(P(B) = \\frac{1}{2}\\) and \\(P(A \\cup B) = \\frac{5}{8}\\). Find the value of the following.",
+    "setLabel": "Ex 9.2 Q7",
+    "stem": "\\(P(A \\cap B)\\)"
+  },
+  {
+    "ref": "Ex 9.2 Q7(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition Theorem",
+    "difficulty": "MODERATE",
+    "context": "For two events A and B of a sample space S, if \\(P(A) = \\frac{3}{8}\\), \\(P(B) = \\frac{1}{2}\\) and \\(P(A \\cup B) = \\frac{5}{8}\\). Find the value of the following.",
+    "setLabel": "Ex 9.2 Q7",
+    "stem": "\\(P(A' \\cap B')\\)"
+  },
+  {
+    "ref": "Ex 9.2 Q7(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition Theorem",
+    "difficulty": "MODERATE",
+    "context": "For two events A and B of a sample space S, if \\(P(A) = \\frac{3}{8}\\), \\(P(B) = \\frac{1}{2}\\) and \\(P(A \\cup B) = \\frac{5}{8}\\). Find the value of the following.",
+    "setLabel": "Ex 9.2 Q7",
+    "stem": "\\(P(A' \\cup B')\\)"
+  },
+  {
+    "ref": "Ex 9.2 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition Theorem",
+    "difficulty": "MODERATE",
+    "stem": "For two events A and B of a sample space S, if \\(P(A \\cup B) = \\frac{5}{6}\\), \\(P(A \\cap B) = \\frac{1}{3}\\) and \\(P(B') = \\frac{1}{3}\\), then find \\(P(A)\\)."
+  },
+  {
+    "ref": "Ex 9.2 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "HARD",
+    "stem": "A bag contains 5 red, 4 blue and an unknown number \\(m\\) of green balls. If the probability of getting both the balls green, when two balls are selected at random is \\(\\frac{1}{7}\\), find \\(m\\)."
+  },
+  {
+    "ref": "Ex 9.2 Q10(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "Form a group of 4 men, 4 women and 3 children, 4 persons are selected at random. Find the probability that,",
+    "setLabel": "Ex 9.2 Q10",
+    "stem": "no child is selected",
+    "_note": "The book prints 'Form a group of 4 men...'; from the sense of the question this is a misprint for 'From a group of 4 men...'. Transcribed as printed.",
+    "solution": "[Textbook misprint: the shared instruction reads 'Form a group of 4 men…' for 'From a group'. Solved as intended; the answers match the book.]"
+  },
+  {
+    "ref": "Ex 9.2 Q10(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "Form a group of 4 men, 4 women and 3 children, 4 persons are selected at random. Find the probability that,",
+    "setLabel": "Ex 9.2 Q10",
+    "stem": "exactly 2 men are selected",
+    "_note": "The book prints 'Form a group of 4 men...'; from the sense of the question this is a misprint for 'From a group of 4 men...'. Transcribed as printed."
+  },
+  {
+    "ref": "Ex 9.2 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A number is drawn at random from the numbers 1 to 50. Find the probability that it is divisible by 2 or 3 or 10."
+  },
+  {
+    "ref": "9.3.1 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "EASY",
+    "stem": "A card is drawn from a pack of 52 cards, given that it is a red card, what is the probability that it is a face card.",
+    "solution": "Let event A: Red card is drawn and event B: face card is drawn\n\nA card is drawn from a pack of 52 cards, therefore \\(n(S) = 52\\). But we are given that red card is drawn, therefore our sample space reduces to event A only, which contains \\(n(A) = 26\\) sample points. Event A is called reduced or truncated sample space. Out of 26 red cards, 6 cards are favourable for face cards.\n\n\\(\\therefore\\) P[card drawn is face card given that it is a red card] \\(= P[B/A] = 6/26 = 3/13\\)"
+  },
+  {
+    "ref": "9.3.1 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A pair of dice is thrown. If sum of the numbers is an odd number, what is the probability that sum is divisible by 3?",
+    "solution": "Let Event A: sum is an odd number.\n\nEvent B: Sum is divisible by 3.\n\nA pair of dice is thrown, therefore \\(n(S) = 36\\). But we are given that sum is odd, therefore our sample space reduces to event A only as follows:\n\n\\(A = \\{(1,2),\\ (1,4),\\ (1,6),\\ (2,1),\\ (2,3),\\ (2,5),\\ (3,2),\\ (3,4),\\ (3,6),\\ (4,1),\\ (4,3),\\ (4,5),\\ (5,2),\\ (5,4),\\ (5,6),\\ (6,1),\\ (6,3),\\ (6,5)\\}\\)\n\n\\(\\therefore n(A) = 18\\)\n\nOut of 18 sample points following 6 sample points are favourable for occurrence of event B\n\n\\(B = \\{(1, 2),\\ (2, 1),\\ (3, 6),\\ (4, 5),\\ (5, 4),\\ (6, 3)\\}\\)\n\n\\(\\therefore\\) P[sum is divisible by 3 given that sum is an odd number] \\(= P(B/A) = 6/18 = 1/3\\)"
+  },
+  {
+    "ref": "9.3.2 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "EASY",
+    "stem": "Find the probability that a single toss of a die will result in a number less than 4 if it is given that the toss resulted in an odd number.",
+    "solution": "Let event A: toss resulted in an odd number and\n\nEvent B: number is less than 4\n\n\\(\\therefore A = \\{1, 3, 5\\} \\quad \\therefore P(A) = 3/6 = \\frac{1}{2}\\)\n\n\\(B = \\{1, 2, 3\\} \\quad \\therefore A \\cap B = \\{1, 3\\}\\)\n\n\\(\\therefore P(A \\cap B) = \\frac{2}{6} = \\frac{1}{3}\\)\n\n\\(\\therefore\\) P(number is less than 4 given that it is odd)\n\n\\(= P(B/A) = P(A \\cap B)/P(A) = \\left(\\frac{1}{3}\\right) \\Big/ \\left(\\frac{1}{2}\\right) = \\frac{2}{3}\\)",
+    "_note": "This solved block sits AFTER the 9.3.2 heading in the reading order (heading at the top of the right column of p-09, block lower in the same column), hence the 9.3.2 prefix. The solution starts at the foot of p-09 and finishes at the top of the left column of p-10. Cosmetic misprint: the book prints 'less than4' with no space."
+  },
+  {
+    "ref": "9.3.2 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "stem": "If \\(P(A') = 0.7\\), \\(P(B) = 0.7\\), \\(P(B/A) = 0.5\\), find \\(P(A/B)\\) and \\(P(A \\cup B)\\).",
+    "solution": "[Textbook misprint: the printed solution opens 'Since \\(1 - P(A') = 0.7\\)', contradicting both the given \\(P(A') = 0.7\\) and its own next line \\(P(A) = 1 - P(A') = 1 - 0.7 = 0.3\\). The leading \\(1 -\\) is spurious; the rest is correct.]\n\nSince \\(1 - P(A') = 0.7\\)\n\n\\(P(A) = 1 - P(A') = 1 - 0.7 = 0.3\\)\n\nNow \\(P(B/A) = P(A \\cap B)/P(A)\\)\n\n\\(\\therefore 0.5 = P(A \\cap B)/0.3\\)\n\n\\(\\therefore P(A \\cap B) = 0.15\\)\n\nAgain \\(P(A/B) = P(A \\cap B)/P(B)\\)\n\n\\(= 0.15/0.7\\)\n\n\\(\\therefore P(A/B) = 3/14\\)\n\nFurther, by addition theorem\n\n\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)\n\n\\(= 0.3 + 0.7 - 0.15 = 0.85\\)",
+    "_note": "PRINTED DEFECT, transcribed as printed: the solution's first line reads 'Since 1 - P(A') = 0.7', which contradicts both the given (P(A') = 0.7) and the very next line (P(A) = 1 - P(A') = 1 - 0.7 = 0.3). The leading '1 -' is spurious; the rest of the solution is correct."
+  },
+  {
+    "ref": "9.3.3 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Two cards are drawn from a pack of 52 cards one after other without replacement. What is the probability that both cards are ace cards?",
+    "solution": "Let event A: first card drawn is an Ace card.\n\nLet event B: second card drawn is an Ace card.\n\n\\(\\therefore\\) required probability = P(both are Ace cards)\n\n\\(= P(A \\cap B) = P(A)P(B/A)\\)\n\nNow \\(P(A) = \\frac{4}{52} = \\frac{1}{13}\\)\n\nSince first ace card is not replaced in the pack, therefore now we have 51 cards containing 3 ace cards\n\n\\(\\therefore\\) Probability of getting second are card under the condition that first ace card is not replaced in the pack \\(= P(B/A) = \\frac{3}{51} = \\frac{1}{17}\\)\n\n\\(\\therefore P(\\text{both are ace cards}) = P(A \\cap B)\\)\n\n\\(= P(A)P(B/A) = \\frac{1}{13} \\times \\frac{1}{17} = \\frac{1}{221}\\)",
+    "_note": "Printed misprint transcribed as printed: 'Probability of getting second are card' — 'are' is a typo for 'ace'. The book also labels this one 'Soln.:' rather than the usual 'Solution :'."
+  },
+  {
+    "ref": "9.3.3 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "stem": "An urn contains 4 black and 6 white balls. Two balls are drawn one after the other without replacement, what is the probability that both balls are black?",
+    "solution": "Let event A: first ball drawn in black.\n\nEvent B: second ball drawn is black.\n\n\\(\\therefore\\) Required probability = P(both are black balls)\n\n\\(P(A \\cap B) = P(A)P(B/A)\\)\n\nNow \\(P(A) = \\frac{4}{10}\\)\n\nSince first black ball is not replaced in the urn, therefore now we have 9 balls containing 3 black balls.\n\n\\(\\therefore\\) Probability of getting second black ball under the condition that first black is not replaced in the pack \\(= P(B/A) = \\frac{3}{9}\\)\n\n\\(\\therefore P(\\text{both are black balls}) = P(A \\cap B)\\)\n\n\\(= P(A)P(B/A) = \\frac{4}{10} \\times \\frac{3}{9} = \\frac{2}{15}\\)",
+    "_note": "Two printed slips transcribed as printed: 'first ball drawn in black' ('in' for 'is'), and 'not replaced in the pack' where the container is an urn. The solution straddles the p-10/p-11 page break (stem and first lines at the foot of the right column of p-10, the rest at the top of the left column of p-11)."
+  },
+  {
+    "ref": "9.3.4 SolvedEx.1(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "Two cards are drawn at random one after the other. Given that first card drawn in non-face red card, what is the probability that second card is face card, if the cards are drawn",
+    "setLabel": "9.3.4 SolvedEx.1",
+    "stem": "without replacement?",
+    "solution": "Let event A: first card drawn is a non-face red card and event B: second card drawn is face card.\n\n\\(\\therefore P(A) = \\frac{20}{52} = \\frac{5}{13}\\) and \\(P(B) = \\frac{12}{52} = \\frac{3}{13}\\)\n\n\\(\\therefore\\) required probability = P(second card drawn is face card given that it is a red card)\n\nWithout replacement: Since first non-face red card is not replaced, therefore now we have 51 cards containing 12 face cards.\n\n\\(\\therefore P(B/A) = \\frac{12}{51} \\ne P(B)\\). In this case A and B are not independent.",
+    "_note": "Printed slip transcribed as printed: the stem reads 'first card drawn in non-face red card' ('in' for 'is'), and the solution's 'required probability' line says 'given that it is a red card' where the condition is a NON-FACE red card."
+  },
+  {
+    "ref": "9.3.4 SolvedEx.1(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "Two cards are drawn at random one after the other. Given that first card drawn in non-face red card, what is the probability that second card is face card, if the cards are drawn",
+    "setLabel": "9.3.4 SolvedEx.1",
+    "stem": "with replacement?",
+    "solution": "With replacement: Since first non-face red card is replaced, therefore now again we have 52 cards containing 12 face cards.\n\n\\(\\therefore P(B/A) = \\frac{12}{52} = \\frac{3}{13} = P(B)\\).\n\nIn this case A and B are independent.",
+    "_note": "The (ii) half of the printed solution runs from the foot of the right column of p-11 to the top of the left column of p-12."
+  },
+  {
+    "ref": "9.3.4 SolvedEx.2(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "If A and B are two independent events and \\(P(A) = \\frac{3}{5}\\), \\(P(B) = \\frac{2}{3}\\), find",
+    "setLabel": "9.3.4 SolvedEx.2",
+    "stem": "\\(P(A \\cap B)\\)",
+    "solution": "\\(P(A) = \\frac{3}{5} \\quad \\therefore P(A') = 1 - P(A) = \\frac{2}{5}\\)\n\n\\(P(B) = \\frac{2}{3} \\quad \\therefore P(B') = 1 - P(B) = \\frac{1}{3}\\)\n\n\\(P(A \\cap B) = P(A)P(B) = \\frac{2}{5}\\)"
+  },
+  {
+    "ref": "9.3.4 SolvedEx.2(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "If A and B are two independent events and \\(P(A) = \\frac{3}{5}\\), \\(P(B) = \\frac{2}{3}\\), find",
+    "setLabel": "9.3.4 SolvedEx.2",
+    "stem": "\\(P(A \\cap B')\\)",
+    "solution": "\\(P(A \\cap B') = P(A)P(B') = \\frac{1}{5}\\)"
+  },
+  {
+    "ref": "9.3.4 SolvedEx.2(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "If A and B are two independent events and \\(P(A) = \\frac{3}{5}\\), \\(P(B) = \\frac{2}{3}\\), find",
+    "setLabel": "9.3.4 SolvedEx.2",
+    "stem": "\\(P(A' \\cap B)\\)",
+    "solution": "\\(P(A' \\cap B) = P(A')P(B) = \\frac{4}{15}\\)"
+  },
+  {
+    "ref": "9.3.4 SolvedEx.2(iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "If A and B are two independent events and \\(P(A) = \\frac{3}{5}\\), \\(P(B) = \\frac{2}{3}\\), find",
+    "setLabel": "9.3.4 SolvedEx.2",
+    "stem": "\\(P(A' \\cap B')\\)",
+    "solution": "\\(P(A' \\cap B') = P(A')P(B') = \\frac{2}{15}\\)"
+  },
+  {
+    "ref": "9.3.4 SolvedEx.2(v)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "If A and B are two independent events and \\(P(A) = \\frac{3}{5}\\), \\(P(B) = \\frac{2}{3}\\), find",
+    "setLabel": "9.3.4 SolvedEx.2",
+    "stem": "\\(P(A \\cup B)\\)",
+    "solution": "\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = \\frac{13}{15}\\)"
+  },
+  {
+    "ref": "9.3.4 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "HARD",
+    "stem": "Three professors A, B and C appear in an interview for the post of Principal. Their chances of getting selected as a principal are \\(\\frac{2}{9}\\), \\(\\frac{4}{9}\\), \\(\\frac{1}{3}\\). The probabilities they introduce new course in the college are \\(\\frac{3}{10}\\), \\(\\frac{1}{2}\\), \\(\\frac{4}{5}\\) respectively. Find the probability that the new course is introduced.",
+    "solution": "Let A, B, C be the events that prof. A, B and C are selected as principal.\n\nGiven \\(P(A) = \\frac{2}{9}\\), \\(P(B) = \\frac{4}{9}\\), \\(P(C) = \\frac{1}{3} = \\frac{3}{9}\\)\n\nLet N be the event that New Course in introduced\n\n\\(P(N/A) = \\frac{3}{10}\\), \\(P(N/B) = \\frac{1}{2}\\), \\(P(N/C) = \\frac{4}{5}\\)\n\n\\(N = (A \\cap N) \\cup (B \\cap N) \\cup (C \\cap N)\\)\n\n\\(\\therefore P(N) = P(A \\cap N) + P(B \\cap N) + P(C \\cap N)\\)\n\n\\(= P(A) \\cdot P(N/A) + P(B) \\times P(N/B) + P(C) \\times P(N/C)\\)\n\n\\(= \\frac{2}{9} \\times \\frac{3}{10} + \\frac{4}{9} \\times \\frac{1}{2} + \\frac{3}{9} \\times \\frac{4}{5}\\)\n\n\\(= \\frac{1}{15} + \\frac{2}{9} + \\frac{4}{15} = \\frac{5}{9}\\)",
+    "_note": "FILL-IN-THE-BLANK worked example. The book's OWN printed solution leaves most of it as empty boxes: it prints only P(N/C) = 4/5 (inside a box) and leaves P(N/A), P(N/B), the two set members of N, and every term of the final arithmetic as blanks. The blanks have been COMPLETED here so the solution ships whole (the values come from the stem: P(N/A) = 3/10, P(N/B) = 1/2; the final value works out to 5/9). Also transcribed as printed: 'New Course in introduced' ('in' for 'is'). This example is a numbered solved Example (not an unnumbered 'Activity' box) with a determinate answer, so it is ingested. Its blanks run from the foot of the left column of p-12 into the top of the right column of p-12, ending immediately before the EXERCISE 9.3 banner."
+  },
+  {
+    "ref": "Ex 9.3 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "EASY",
+    "stem": "A bag contains 3 red marbles and 4 blue marbles. Two marbles are drawn at random without replacement. If the first marble drawn is red, what is the probability the second marble is blue?",
+    "solution": "[Textbook answer-key error: the printed key gives \\(\\dfrac{2}{7}\\), which is the JOINT probability \\(P(R_1 \\cap B_2) = \\dfrac{3}{7} \\times \\dfrac{4}{6} = \\dfrac{2}{7}\\) — the chance that the first marble is red AND the second is blue. The question as printed states that the first marble drawn IS red, so it asks for the conditional probability, and with 2 red and 4 blue left in the bag that is \\(\\dfrac{4}{6} = \\dfrac{2}{3}\\). The stem was checked word for word against the printed page; the key answers a question the stem does not ask.]"
+  },
+  {
+    "ref": "Ex 9.3 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "EASY",
+    "stem": "A box contains 5 green pencils and 7 yellow pencils. Two pencils are chosen at random from the box without replacement. What is the probability that both are yellow?"
+  },
+  {
+    "ref": "Ex 9.3 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "EASY",
+    "stem": "In a sample of 40 vehicles, 18 are red, 6 are trucks, of which 2 are red. Suppose that a randomly selected vehicle is red. What is the probability it is a truck?"
+  },
+  {
+    "ref": "Ex 9.3 Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "context": "From a pack of well-shuffled cards, two cards are drawn at random. Find the probability that both the cards are diamonds when",
+    "setLabel": "Ex 9.3 Q4",
+    "stem": "first card drawn is kept aside"
+  },
+  {
+    "ref": "Ex 9.3 Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "context": "From a pack of well-shuffled cards, two cards are drawn at random. Find the probability that both the cards are diamonds when",
+    "setLabel": "Ex 9.3 Q4",
+    "stem": "the first card drawn is replaced in the pack."
+  },
+  {
+    "ref": "Ex 9.3 Q5(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "HARD",
+    "context": "A, B, and C try to hit a target simultaneously but independently. Their respective probabilities of hitting the target are \\(\\frac{3}{4}\\), \\(\\frac{1}{2}\\) and \\(\\frac{5}{8}\\). Find the probability that the target",
+    "setLabel": "Ex 9.3 Q5",
+    "stem": "is hit exactly by one of them"
+  },
+  {
+    "ref": "Ex 9.3 Q5(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "A, B, and C try to hit a target simultaneously but independently. Their respective probabilities of hitting the target are \\(\\frac{3}{4}\\), \\(\\frac{1}{2}\\) and \\(\\frac{5}{8}\\). Find the probability that the target",
+    "setLabel": "Ex 9.3 Q5",
+    "stem": "is not hit by any one of them"
+  },
+  {
+    "ref": "Ex 9.3 Q5(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "A, B, and C try to hit a target simultaneously but independently. Their respective probabilities of hitting the target are \\(\\frac{3}{4}\\), \\(\\frac{1}{2}\\) and \\(\\frac{5}{8}\\). Find the probability that the target",
+    "setLabel": "Ex 9.3 Q5",
+    "stem": "is hit"
+  },
+  {
+    "ref": "Ex 9.3 Q5(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "HARD",
+    "context": "A, B, and C try to hit a target simultaneously but independently. Their respective probabilities of hitting the target are \\(\\frac{3}{4}\\), \\(\\frac{1}{2}\\) and \\(\\frac{5}{8}\\). Find the probability that the target",
+    "setLabel": "Ex 9.3 Q5",
+    "stem": "is exactly hit by two of them"
+  },
+  {
+    "ref": "Ex 9.3 Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "The probability that a student X solves a problem in dynamics is \\(\\frac{2}{5}\\) and the probability that student Y solves the same problem is \\(\\frac{1}{4}\\). What is the probability that",
+    "setLabel": "Ex 9.3 Q6",
+    "stem": "the problem is not solved"
+  },
+  {
+    "ref": "Ex 9.3 Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "The probability that a student X solves a problem in dynamics is \\(\\frac{2}{5}\\) and the probability that student Y solves the same problem is \\(\\frac{1}{4}\\). What is the probability that",
+    "setLabel": "Ex 9.3 Q6",
+    "stem": "the problem is solved"
+  },
+  {
+    "ref": "Ex 9.3 Q6(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "The probability that a student X solves a problem in dynamics is \\(\\frac{2}{5}\\) and the probability that student Y solves the same problem is \\(\\frac{1}{4}\\). What is the probability that",
+    "setLabel": "Ex 9.3 Q6",
+    "stem": "the problem is solved exactly by one of them"
+  },
+  {
+    "ref": "Ex 9.3 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "stem": "A speaks truth in 80% of the cases and B speaks truth in 60% of the cases. Find the probability that they contradict each other in narrating an incident."
+  },
+  {
+    "ref": "Ex 9.3 Q8(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "EASY",
+    "context": "Two hundred patients who had either Eye surgery or Throat surgery were asked whether they were satisfied or unsatisfied regarding the result of their surgery.\n\nThe following table summarizes their response.\n\n| Surgery | Satisfied | Unsatisfied | Total |\n|---|---|---|---|\n| Throat | 70 | 25 | 95 |\n| Eye | 90 | 15 | 105 |\n| Total | 160 | 40 | 200 |\n\nIf one person from the 200 patients is selected at random, determine the probability",
+    "setLabel": "Ex 9.3 Q8",
+    "stem": "that the person was satisfied given that the person had Throat surgery",
+    "_note": "The book prints \"The follwoing table summarizes their response.\" — misspelling of \"following\"; transcribed with the spelling corrected.",
+    "solution": "[Textbook misprint: the printed key gives \\(\\dfrac{14}{19}\\ (0.733)\\). The fraction is correct but \\(\\dfrac{14}{19} = 0.7368\\ldots\\), i.e. \\(0.737\\) to three decimal places, not \\(0.733\\). The decimal gloss only is wrong.]"
+  },
+  {
+    "ref": "Ex 9.3 Q8(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "EASY",
+    "context": "Two hundred patients who had either Eye surgery or Throat surgery were asked whether they were satisfied or unsatisfied regarding the result of their surgery.\n\nThe following table summarizes their response.\n\n| Surgery | Satisfied | Unsatisfied | Total |\n|---|---|---|---|\n| Throat | 70 | 25 | 95 |\n| Eye | 90 | 15 | 105 |\n| Total | 160 | 40 | 200 |\n\nIf one person from the 200 patients is selected at random, determine the probability",
+    "setLabel": "Ex 9.3 Q8",
+    "stem": "that person was unsatisfied given that the person had eye surgery"
+  },
+  {
+    "ref": "Ex 9.3 Q8(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "EASY",
+    "context": "Two hundred patients who had either Eye surgery or Throat surgery were asked whether they were satisfied or unsatisfied regarding the result of their surgery.\n\nThe following table summarizes their response.\n\n| Surgery | Satisfied | Unsatisfied | Total |\n|---|---|---|---|\n| Throat | 70 | 25 | 95 |\n| Eye | 90 | 15 | 105 |\n| Total | 160 | 40 | 200 |\n\nIf one person from the 200 patients is selected at random, determine the probability",
+    "setLabel": "Ex 9.3 Q8",
+    "stem": "the person had Throat surgery given that the person was unsatisfied"
+  },
+  {
+    "ref": "Ex 9.3 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "stem": "Two dice are thrown together. Let A be the event 'getting 6 on the first die' and B be the event 'getting 2 on the second die'. Are the events A and B independent?"
+  },
+  {
+    "ref": "Ex 9.3 Q10(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "The probability that a man who is 45 years old will be alive till he becomes 70 is \\(\\frac{5}{12}\\). The probability that his wife who is 40 years old will be alive till she becomes 65 is \\(\\frac{3}{8}\\). What is the probability that, 25 years hence,",
+    "setLabel": "Ex 9.3 Q10",
+    "stem": "the couple will be alive"
+  },
+  {
+    "ref": "Ex 9.3 Q10(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "The probability that a man who is 45 years old will be alive till he becomes 70 is \\(\\frac{5}{12}\\). The probability that his wife who is 40 years old will be alive till she becomes 65 is \\(\\frac{3}{8}\\). What is the probability that, 25 years hence,",
+    "setLabel": "Ex 9.3 Q10",
+    "stem": "exactly one of them will be alive"
+  },
+  {
+    "ref": "Ex 9.3 Q10(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "The probability that a man who is 45 years old will be alive till he becomes 70 is \\(\\frac{5}{12}\\). The probability that his wife who is 40 years old will be alive till she becomes 65 is \\(\\frac{3}{8}\\). What is the probability that, 25 years hence,",
+    "setLabel": "Ex 9.3 Q10",
+    "stem": "none of them will be alive"
+  },
+  {
+    "ref": "Ex 9.3 Q10(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "The probability that a man who is 45 years old will be alive till he becomes 70 is \\(\\frac{5}{12}\\). The probability that his wife who is 40 years old will be alive till she becomes 65 is \\(\\frac{3}{8}\\). What is the probability that, 25 years hence,",
+    "setLabel": "Ex 9.3 Q10",
+    "stem": "at least one of them will be alive"
+  },
+  {
+    "ref": "Ex 9.3 Q11(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "context": "A box contains 10 red balls and 15 green balls. Two balls are drawn in succession without replacement. What is the probability that,",
+    "setLabel": "Ex 9.3 Q11",
+    "stem": "the first is red and the second is green?"
+  },
+  {
+    "ref": "Ex 9.3 Q11(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "context": "A box contains 10 red balls and 15 green balls. Two balls are drawn in succession without replacement. What is the probability that,",
+    "setLabel": "Ex 9.3 Q11",
+    "stem": "one is red and the other is green?"
+  },
+  {
+    "ref": "Ex 9.3 Q12(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "A bag contains 3 yellow and 5 brown balls. Another bag contains 4 yellow and 6 brown balls. If one ball is drawn from each bag, what is the probability that,",
+    "setLabel": "Ex 9.3 Q12",
+    "stem": "both the balls are of the same color?"
+  },
+  {
+    "ref": "Ex 9.3 Q12(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "A bag contains 3 yellow and 5 brown balls. Another bag contains 4 yellow and 6 brown balls. If one ball is drawn from each bag, what is the probability that,",
+    "setLabel": "Ex 9.3 Q12",
+    "stem": "the balls are of different color?"
+  },
+  {
+    "ref": "Ex 9.3 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "stem": "An urn contains 4 black, 5 white and 6 red balls. Two balls are drawn one after the other without replacement. What is the probability that at least one of them is black?"
+  },
+  {
+    "ref": "Ex 9.3 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Three fair coins are tossed. What is the probability of getting three heads given that at least two coins show heads?"
+  },
+  {
+    "ref": "Ex 9.3 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "EASY",
+    "stem": "Two cards are drawn one after the other from a pack of 52 cards without replacement. What is the probability that both the cards drawn are face cards?"
+  },
+  {
+    "ref": "Ex 9.3 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "HARD",
+    "stem": "Bag A contains 3 red and 2 white balls and bag B contains 2 red and 5 white balls. A bag is selected at random, a ball is drawn and put into the other bag, and then a ball is drawn from that bag. Find the probability that both the balls drawn are of same color."
+  },
+  {
+    "ref": "Ex 9.3 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "EASY",
+    "stem": "(Activity) : A bag contains 3 red and 5 white balls. Two balls are drawn at random one after the other without replacement. Find the probability that both the balls are white.",
+    "_note": "Printed as question 17 of EXERCISE 9.3 (p-13, printed p.206) and tagged \"(Activity)\". It is a NUMBERED exercise question with a single determinate answer, NOT an open-ended Activity box, so it is ingested per the shipped Ex 5.2 Q9 precedent. The book follows it on p-14 (printed p.207) with a fill-in-the-blank solution scaffold (\"A : First ball drawn is white / B : second ball drawn in white. P(A) = [] / [] ... P(B/A) = [] / [] ... P(Both balls are white) = P(A\\u2229B) = P([]).P([]) = [] [] = []\") — empty boxes for the student, no printed answer. Scaffold NOT transcribed: exercise answers are authored later, not taken from the book."
+  },
+  {
+    "ref": "Ex 9.3 Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A family has two children. Find the probability that both the children are girls, given that at least one of them is a girl.",
+    "_note": "The book prints \"atleast\" as one word; transcribed as \"at least\"."
+  },
+  {
+    "ref": "9.4 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A bag contains 6 red, 5 blue balls and another bag contains 5 red and 8 blue balls. A ball is drawn from first bag and without noticing colour is put in the second bag. A ball is drawn from the second bag. Find the probability that ball drawn is blue in colour.",
+    "solution": "[Textbook misprint: the last line of the printed solution reads \\(\\left(\\dfrac{48}{154}\\right)\\left(\\dfrac{45}{154}\\right) = \\dfrac{93}{154}\\) — the \\(+\\) between the two fractions is missing, so as printed it reads as a product. The stated answer \\(\\dfrac{93}{154}\\) is correct and is their SUM.]\n\nLet event \\(E_1\\): Red ball is drawn from the first bag and event \\(E_2\\): Blue ball is drawn from the first bag.\n\n\\(\\therefore P(E_1) = \\frac{6}{11}\\) and \\(P(E_2) = \\frac{5}{11}\\) (Note that \\(E_1\\) and \\(E_2\\) are mutually exclusive and exhaustive events)\n\nLet event A: Blue ball is drawn from the second bag\n\n\\(\\therefore P(A/E_1) = P\\)(Blue ball is drawn from the second under the condition that red ball is transferred from first bag to second bag) \\(= \\frac{8}{14}\\)\n\nSimilarly, \\(P(A/E_2) = P\\)(Blue ball is drawn from the second under the condition that blue ball is transferred from first bag to second bag) \\(= \\frac{9}{14}\\)\n\n\\(\\therefore\\) required probability \\(= P\\)(Blue ball is drawn from the second bag)\n\n\\(\\therefore P(A) = P(A \\cap E_1) + P(A \\cap E_2)\\)\n\n\\(= P(E_1)P(A/E_1) + P(E_2)P(A/E_2)\\)\n\n\\(= \\left(\\frac{6}{11}\\right)\\left(\\frac{8}{14}\\right) + \\left(\\frac{5}{11}\\right)\\left(\\frac{9}{14}\\right)\\)\n\n\\(= \\left(\\frac{48}{154}\\right)\\left(\\frac{45}{154}\\right) = \\frac{93}{154}\\)",
+    "_note": "TWO printed defects on p-15 (printed p.208). (1) The stem prints \"6 red, 5blue balls\" with no space; transcribed as \"5 blue\". (2) BOOK MISPRINT in the last line of the printed solution: it reads \\(= \\left(\\frac{48}{154}\\right)\\left(\\frac{45}{154}\\right) = \\frac{93}{154}\\) — the PLUS sign between the two fractions is missing, so as printed it reads as a product. Verified at 3x zoom: the \"+\" is clearly present on the line above (\\(\\left(\\frac{6}{11}\\right)\\left(\\frac{8}{14}\\right) + \\left(\\frac{5}{11}\\right)\\left(\\frac{9}{14}\\right)\\)) and clearly ABSENT on this one. The final answer \\(\\frac{93}{154}\\) is correct and follows from \\(\\frac{48}{154} + \\frac{45}{154}\\). Transcribed exactly as printed; NOT silently repaired."
+  },
+  {
+    "ref": "9.4 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "The chances of X, Y, Z becoming managers of a certain company are 4:2:3. The probabilities that the bonus scheme will be introduced if X, Y, Z become managers are 0.3, 0.5 and 0.8 respectively. If the bonus scheme has been introduced, what is the probability that X is appointed as the manager?",
+    "solution": "Let \\(E_1\\): Person X becomes manager\n\n\\(E_2\\): Person Y becomes manager\n\nLet \\(E_3\\): Person Z becomes manager\n\n\\(\\therefore P(E_1) = \\frac{4}{9}\\); \\(P(E_2) = \\frac{2}{9}\\); \\(P(E_3) = \\frac{3}{9}\\)\n\n(Note that \\(E_1\\), \\(E_2\\) and \\(E_3\\) are mutually exclusive and exhaustive events)\n\nLet event A: Bonus is introduced.\n\n\\(\\therefore P(A/E_1) = P\\)(Bonus is introduced under the condition that person X becomes manager) \\(= 0.3\\)\n\n\\(P(A/E_2) = P\\)(Bonus is introduced under the condition that person Y becomes manager) \\(= 0.5\\)\n\nand \\(P(A/E_3) = P\\)(Bonus is introduced under the condition that person Z becomes manager) \\(= 0.8\\)\n\n\\(\\therefore P(A) = P(A \\cap E_1) + P(A \\cap E_2) + P(A \\cap E_3)\\)\n\n\\(= P(E_1)P(A/E_1) + P(E_2)P(A/E_2) + P(E_3)P(A/E_3)\\)\n\n\\(= \\left(\\frac{4}{9}\\right)(0.3) + \\left(\\frac{2}{9}\\right)(0.5) + \\left(\\frac{3}{9}\\right)(0.8)\\)\n\n\\(= \\frac{23}{45}\\)\n\n\\(\\therefore\\) required probability \\(= P\\)(Person X becomes manager under the condition that bonus scheme is introduced)\n\n\\(= P(E_1/A) = P(A \\cap E_1) / P(A)\\)\n\n\\(= \\frac{(2/15)}{(23/45)}\\)\n\n\\(= \\frac{6}{23}\\)",
+    "_note": "The book prints \"what is the probability that X is appointed as the manger?\" — misspelling of \"manager\"; transcribed with the spelling corrected. The printed solution jumps from \\(P(A) = \\frac{23}{45}\\) straight to \\(\\frac{(2/15)}{(23/45)}\\) without showing that \\(P(A \\cap E_1) = \\left(\\frac{4}{9}\\right)(0.3) = \\frac{2}{15}\\); the value is correct."
+  },
+  {
+    "ref": "9.4 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "The members of the consulting firm hire cars from three rental agencies, 60% from agency X, 30% from agency Y and 10% from agency Z. 9% of the cars from agency X need repairs, 20% of the cars from agency Y need repairs and 6% of the cars from agency Z need repairs. If a rental car delivered to the consulting firms needs repairs, what is the probability that it came from rental agency Y?",
+    "solution": "If A is the event that the car needs repairs and B, C, D are the events that the car comes from rental agencies X, Y or Z. We have \\(P(B) = 0.6\\), \\(P(C) = 0.3\\), \\(P(D) = 0.1\\), \\(P(A/B) = 0.09\\), \\(P(A/C) = 0.2\\) and \\(P(A/D) = 0.06\\)\n\n\\(P(A) = P(A \\cap B) + P(A \\cap C) + P(A \\cap D)\\)\n\n\\(= P(B).P(A/B) + P(C).P(A/C) + P(D).P(A/D)\\)\n\n\\(= 0.6 \\times 0.09 + 0.3 \\times 0.2 + 0.1 \\times 0.06\\)\n\n\\(= 0.054 + 0.06 + 0.006\\)\n\n\\(\\therefore P(A) = 0.12\\)\n\n\\(P(C/A) = \\frac{P(A \\cap C)}{P(A)} = \\frac{P(C).P(A/C)}{P(A)}\\)\n\n\\(= \\frac{0.3 \\times 0.2}{0.12} = \\frac{0.06}{0.12}\\)\n\n\\(= 0.5\\)",
+    "_note": "The stem begins on p-15 (printed p.208, bottom of right column) and continues onto p-16 (printed p.209, top of left column); the whole printed solution is on p-16, ending at \\(= 0.5\\) immediately before the EXERCISE 9.4 banner. Re-derived and correct as printed."
+  },
+  {
+    "ref": "Ex 9.4 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "stem": "There are three bags, each containing 100 marbles. Bag 1 has 75 red and 25 blue marbles. Bag 2 has 60 red and 40 blue marbles and Bag 3 has 45 red and 55 blue marbles. One of the bags is chosen at random and a marble is picked from the chosen bag. What is the probability that the chosen marble is red?"
+  },
+  {
+    "ref": "Ex 9.4 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A box contains 2 blue and 3 pink balls and another box contains 4 blue and 5 pink balls. One ball is drawn at random from one of the two boxes and it is found to be pink. Find the probability that it was drawn from (i) first box (ii) second box.",
+    "_note": "The book prints the two parts inline inside one sentence — '(i) first box (ii) second box' — not as separate labelled lines, so this is kept as ONE row rather than split into set-siblings. Contrast Ex 9.4 Q6 and Q9, which the book DOES lay out as separate labelled sub-item lines."
+  },
+  {
+    "ref": "Ex 9.4 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "stem": "There is a working women's hostel in a town, where 75% are from neighbouring town. The rest all are from the same town. 48% of women who hail from the same town are graduates and 83% of the women who have come from the neighboring town are also graduates. Find the probability that a woman selected at random is a graduate from the same town.",
+    "_note": "The book spells 'neighbouring' in the second sentence and 'neighboring' in the fourth; transcribed as printed."
+  },
+  {
+    "ref": "Ex 9.4 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "EASY",
+    "stem": "If \\(E_1\\) and \\(E_2\\) are equally likely, mutually exclusive and exhaustive events and \\(P(A/E_1) = 0.2\\), \\(P(A/E_2) = 0.3\\). Find \\(P(E_1/A)\\).",
+    "solution": "[Textbook answer-key error: the printed key gives \\(\\dfrac{4}{5}\\). With equal priors, \\(P(A) = \\tfrac12(0.2) + \\tfrac12(0.3) = 0.25\\) and \\(P(E_1/A) = \\dfrac{0.1}{0.25} = \\dfrac{2}{5}\\). The printed \\(\\dfrac{4}{5}\\) is \\(\\dfrac{0.2}{0.25}\\) — the prior \\(\\tfrac12\\) was dropped from the numerator while retained in the denominator. Two independent checks: the posteriors must sum to 1, and \\(\\dfrac{2}{5} + \\dfrac{3}{5} = 1\\) whereas \\(\\dfrac{4}{5}\\) does not; and since \\(P(A/E_1) < P(A/E_2)\\), observing \\(A\\) must pull \\(E_1\\) BELOW its prior of \\(\\tfrac12\\), so no answer above \\(\\tfrac12\\) is possible.]"
+  },
+  {
+    "ref": "Ex 9.4 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Jar I contains 5 white and 7 black balls. Jar II contains 3 white and 12 black balls. A fair coin is flipped; if it is Head, a ball is drawn from Jar I, and if it is Tail, a ball is drawn from Jar II. Suppose that this experiment is done and a white ball was drawn. What is the probability that this ball was in fact taken from Jar II?"
+  },
+  {
+    "ref": "Ex 9.4 Q6(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "context": "A diagnostic test has a probability 0.95 of giving a positive result when applied to a person suffering from a certain disease, and a probability 0.10 of giving a (false) positive result when applied to a non-sufferer. It is estimated that 0.5% of the population are sufferers. Suppose that the test is now administered to a person about whom we have no relevant information relating to the disease (apart from the fact that he/she comes from this population). Calculate the probability that:",
+    "setLabel": "Ex 9.4 Q6",
+    "stem": "given a positive result, the person is a sufferer."
+  },
+  {
+    "ref": "Ex 9.4 Q6(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "HARD",
+    "context": "A diagnostic test has a probability 0.95 of giving a positive result when applied to a person suffering from a certain disease, and a probability 0.10 of giving a (false) positive result when applied to a non-sufferer. It is estimated that 0.5% of the population are sufferers. Suppose that the test is now administered to a person about whom we have no relevant information relating to the disease (apart from the fact that he/she comes from this population). Calculate the probability that:",
+    "setLabel": "Ex 9.4 Q6",
+    "stem": "given a negative result, the person is a non-sufferer.",
+    "solution": "[Textbook misprint: the printed formula line shows the numerator as \\(p(T/S)P(S)\\) where it must be \\(P(T'/S')P(S') = 0.90 \\times 0.995 = 0.8955\\) — which is the value the book itself then substitutes. Its denominator \\(0.8958\\) is \\(1 - P(T) = 0.89575\\) rounded. The printed final value is correct.]"
+  },
+  {
+    "ref": "Ex 9.4 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A doctor is called to see a sick child. The doctor has prior information that 80% of the sick children in that area have the flu, while the other 20% are sick with measles. Assume that there is no other disease in that area. A well-known symptom of measles is rash. From the past records, it is known that, chances of having rashes given that sick child is suffering from measles is 0.95. However occasionally children with flu also develop rash, whose chance are 0.08. Upon examining the child, the doctor finds a rash. What is the probability that child is suffering from measles?"
+  },
+  {
+    "ref": "Ex 9.4 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "2% of the population have a certain blood disease of a serious form: 10% have it in a mild form; and 88% don't have it at all. A new blood test is developed; the probability of testing positive is \\(\\frac{9}{10}\\) if the subject has the serious form, \\(\\frac{6}{10}\\) if the subject has the mild form, and \\(\\frac{1}{10}\\) if the subject doesn't have the disease. A subject is tested positive. What is the probability that the subject has serious form of the disease?"
+  },
+  {
+    "ref": "Ex 9.4 Q9(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "context": "A box contains three coins: two fair coins and one fake two-headed coin is picked randomly from the box and tossed.",
+    "setLabel": "Ex 9.4 Q9",
+    "stem": "What is the probability that it lands head up?"
+  },
+  {
+    "ref": "Ex 9.4 Q9(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "context": "A box contains three coins: two fair coins and one fake two-headed coin is picked randomly from the box and tossed.",
+    "setLabel": "Ex 9.4 Q9",
+    "stem": "If happens to be head, what is the probability that it is the two-headed coin?",
+    "_note": "Printed as 'If happens to be head' — the book drops the subject pronoun ('If it happens to be head'). Transcribed as printed."
+  },
+  {
+    "ref": "Ex 9.4 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "There are three social media groups on a mobile: Group I, Group II and Group III. The probabilities that Group I, Group II and Group III sending the messages on sports are \\(\\frac{2}{5}\\), \\(\\frac{1}{2}\\), and \\(\\frac{2}{3}\\) respectively. The probability of opening the messages by Group I, Group II and Group III are \\(\\frac{1}{2}\\), \\(\\frac{1}{4}\\) and \\(\\frac{1}{4}\\) respectively. Randomly one of the messages is opened and found a message on sports. What is the probability that the message was from Group III."
+  },
+  {
+    "ref": "Ex 9.4 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "(Activity): Mr. X goes to office by Auto, Car and train. The probabilities him travelling by these modes are \\(\\frac{2}{7}\\), \\(\\frac{3}{7}\\), \\(\\frac{2}{7}\\) respectively. The chances of him being late to the office are \\(\\frac{1}{2}\\), \\(\\frac{1}{4}\\), \\(\\frac{1}{4}\\) respectively by Auto, Car and train. On one particular day he was late to the office. Find the probability that he travelled by car.",
+    "_note": "NOT skipped as an Activity box: it is a NUMBERED exercise question (Q11 of Exercise 9.4) merely tagged '(Activity)', with a fully determinate answer — the shipped precedent on this book (Ex 5.2 Q9). The book prints a fill-in-the-blank SOLUTION SKELETON beneath it (empty boxes). BLANKS COMPLETED AND VERIFIED: P(A) = 2/7, P(C) = 3/7, P(T) = 2/7; P(L/A) = 1/2, P(L/C) = 1/4, P(L/T) = 1/4; P(L) = (2/7)(1/2) + (3/7)(1/4) + (2/7)(1/4) = 4/28 + 3/28 + 2/28 = 9/28; P(C/L) = (3/7)(1/4) / (9/28) = (3/28)/(9/28) = 1/3. ANSWER = 1/3. PRINTED DEFECTS IN THE BOOK'S SOLUTION SKELETON (the question stem itself is clean): (1) the skeleton names the events A, C, T ('Let A, C and T be the events that Mr. X goes to office by Auto, Car and Train') but then writes 'P(B)' and 'P(L/B)' for the second and third events — B is never defined; the third 'Given that' box is labelled P(C) where it should be P(T). (2) The final step is printed 'P(L/C) = P(A∩C)/P(L) = P(C).P(L/C)/P(L)' — the quantity being found should be P(C/L), and the numerator should be P(C∩L), not P(A∩C). Two label errors on one line."
+  },
+  {
+    "ref": "9.5 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "EASY",
+    "stem": "A fair die is thrown. What are the odds in favour of getting a number which is a perfect square in uppermost face of die?",
+    "solution": "Random experiment: A fair die is thrown.\n\\(\\therefore\\) Sample space \\(S = \\{1, 2, 3, 4, 5, 6\\}\\)\n\\(\\therefore n(S) = 6\\)\nLet event A: die shows number which is a perfect square.\n\\(\\therefore A = \\{1, 4\\}\\) \\(\\therefore m = n(A) = 2\\)\n\\(\\therefore A' = \\{2, 3, 5, 6\\}\\) \\(\\therefore (n - m) = 4\\).\n\\(\\therefore P(A) = \\frac{m}{n} = \\frac{2}{6} = \\frac{1}{3}\\)\n\\(P(A') = \\frac{n-m}{n} = \\frac{4}{6} = \\frac{2}{3}\\)\n\\(\\therefore\\) Odds in favour of event \\(A = P(A) : P(A') = \\frac{1/3}{2/3} = \\frac{1}{2}\\)"
+  },
+  {
+    "ref": "9.5 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "HARD",
+    "stem": "The probability of one event A happening is the square of the probability of second event B, but the odds against the event A are the cube of the odds against the event B. Find the probability of each event.",
+    "solution": "Let \\(P(A) = p_1\\) and \\(P(B) = p_2\\).\n\\(\\therefore\\) probability on non-occurrence of the events A and B are \\((1-p_1)\\) and \\((1-p_2)\\) respectively. We are given that \\(p_1 = (p_2)^2\\) .... (I)\nOdds against the event \\(A = \\frac{1-p_1}{p_1}\\)\nOdds against the event \\(B = \\frac{1-p_2}{p_2}\\)\nSince odds against the event A are the cube of the odds against the event B.\n\\(\\frac{1-p_1}{p_1} = \\left(\\frac{1-p_2}{p_2}\\right)^3\\)\n\\(\\frac{1-p_2^2}{p_2^2} = \\frac{(1-p_2)^3}{p_2^3}\\) [By (I)]\n\\(\\frac{(1-p_2)(1+p_2)}{1} = \\frac{(1-p_2)^3}{p_2}\\)\n\\(\\therefore p_2(1+p_2) = 1-2p_2+p_2^2\\)\n\\(p_2 + p_2^2 = 1-2p_2+p_2^2\\)\n\\(3p_2 = 1\\)\n\\(\\therefore p_2 = \\frac{1}{3}\\)\n\\(p_1 = (p_2)^2 = \\left(\\frac{1}{3}\\right)^2 = \\frac{1}{9}\\)\n\\(\\therefore P(A) = \\frac{1}{9}\\) and \\(P(B) = \\frac{1}{3}\\)"
+  },
+  {
+    "ref": "Ex 9.5 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "EASY",
+    "context": "If odds in favour of X solving a problem are \\(4 : 3\\) and odds against Y solving the same problem are \\(2 : 3\\). Find probability of:",
+    "setLabel": "Ex 9.5 Q1",
+    "stem": "X solving the problem",
+    "solution": "[Textbook answer-key error: the printed key gives \\(\\dfrac{3}{5}\\) for BOTH sub-items. That is the correct answer to (ii) — Y's odds are given AGAINST, \\(2 : 3\\), so \\(P(Y) = \\dfrac{3}{5}\\) — copied up into (i). X's odds are given IN FAVOUR, \\(4 : 3\\), so \\(P(X) = \\dfrac{4}{4+3} = \\dfrac{4}{7}\\). No reading of 'odds in favour \\(4 : 3\\)' produces \\(\\dfrac{3}{5}\\).]"
+  },
+  {
+    "ref": "Ex 9.5 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "EASY",
+    "context": "If odds in favour of X solving a problem are \\(4 : 3\\) and odds against Y solving the same problem are \\(2 : 3\\). Find probability of:",
+    "setLabel": "Ex 9.5 Q1",
+    "stem": "Y solving the problem"
+  },
+  {
+    "ref": "Ex 9.5 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "MODERATE",
+    "stem": "The odds against John solving a problem are 4 to 3 and the odds in favor of Rafi solving the same problem are 7 to 5. What is the chance that the problem is solved when both them try it?",
+    "_note": "Printed 'when both them try it' (the book drops 'of'); and 'favor' here against 'favour' elsewhere in the same exercise. Transcribed as printed."
+  },
+  {
+    "ref": "Ex 9.5 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "MODERATE",
+    "context": "The odds against student X solving a statistics problem are \\(8 : 6\\) and odds in favour of student y solving the same problem are \\(14 : 16\\). Find is the chance that",
+    "setLabel": "Ex 9.5 Q3",
+    "stem": "the problem will be solved if they try it independently",
+    "_note": "Printed defects transcribed faithfully: the second student is printed as lowercase 'student y' while the first is uppercase 'student X'; and the instruction reads 'Find is the chance that' (a stray 'is').",
+    "solution": "[Textbook misprint: the instruction reads 'Find is the chance that' (stray 'is'), and the second student is printed as lowercase 'student y' against the uppercase 'student X'. The mathematics is unaffected.]"
+  },
+  {
+    "ref": "Ex 9.5 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "MODERATE",
+    "context": "The odds against student X solving a statistics problem are \\(8 : 6\\) and odds in favour of student y solving the same problem are \\(14 : 16\\). Find is the chance that",
+    "setLabel": "Ex 9.5 Q3",
+    "stem": "neither of them solves the problem"
+  },
+  {
+    "ref": "Ex 9.5 Q4(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "MODERATE",
+    "context": "The odds against a husband who is 60 years old, living till he is 85 are \\(7 : 5\\). The odds against his wife who is now 56, living till she is 81 are \\(5 : 3\\). Find the probability that",
+    "setLabel": "Ex 9.5 Q4",
+    "stem": "at least one of them will be alive 25 years hence"
+  },
+  {
+    "ref": "Ex 9.5 Q4(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "HARD",
+    "context": "The odds against a husband who is 60 years old, living till he is 85 are \\(7 : 5\\). The odds against his wife who is now 56, living till she is 81 are \\(5 : 3\\). Find the probability that",
+    "setLabel": "Ex 9.5 Q4",
+    "stem": "exactly one of them will be alive 25 years hence."
+  },
+  {
+    "ref": "Ex 9.5 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "MODERATE",
+    "stem": "There are three events A, B and C, one of which must, and only one can happen. The odds against the event A are \\(7 : 4\\) and odds against event B are \\(5 : 3\\). Find the odds against event C."
+  },
+  {
+    "ref": "Ex 9.5 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "EASY",
+    "stem": "In a single toss of a fair die, what are the odds against the event that number 3 or 4 turns up?"
+  },
+  {
+    "ref": "Ex 9.5 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "HARD",
+    "stem": "The odds in favour of A winning a game of chess against B are \\(3 : 2\\). If three games are to be played, what are the odds in favour of A's winning at least two games out of the three?"
+  },
+  {
+    "ref": "Misc I Q1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "Select the correct answer from the given four alternatives.",
+    "stem": "There are 5 girls and 2 boys, then the probability that no two boys are sitting together for a photograph is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{21}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{4}{7}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{2}{7}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{5}{7}\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc I Q2",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "EASY",
+    "context": "Select the correct answer from the given four alternatives.",
+    "stem": "In a jar there are 5 black marbles and 3 green marbles. Two marbles are picked randomly one after the other without replacement. What is the possibility that both the marbles are black?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{5}{14}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{5}{8}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{5}{8}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{5}{16}\\)"
+      }
+    ],
+    "answer": "A",
+    "_note": "PRINTED DEFECT: options B and C are IDENTICAL as printed (both \\(\\frac{5}{8}\\)) — verified at 2x zoom on p-20 (printed p.213). Transcribed as printed, not repaired. The duplicate does not affect the key: the correct value is \\(\\frac{5}{8}\\times\\frac{4}{7}=\\frac{5}{14}\\), which is option A, and the duplicated pair are both distractors.",
+    "solution": "[Textbook misprint: options B and C are printed identically as \\(\\dfrac{5}{8}\\), so the question offers only three distinct alternatives. This does not move the key — the correct value \\(\\dfrac{5}{14}\\) is option A and both members of the duplicated pair are distractors — but one alternative is a dead duplicate.]"
+  },
+  {
+    "ref": "Misc I Q3",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "EASY",
+    "context": "Select the correct answer from the given four alternatives.",
+    "stem": "Two dice are thrown simultaneously. Then the probability of getting two numbers whose product is even is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{3}{4}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{5}{7}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{2}\\)"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Misc I Q4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Addition Theorem",
+    "difficulty": "MODERATE",
+    "context": "Select the correct answer from the given four alternatives.",
+    "stem": "In a set of 30 shirts, 17 are white and rest are black. 4 white and 5 black shirts are tagged as 'PARTY WEAR'. If a shirt is chosen at random from this set, the possibility of choosing a black shirt or a 'PARTY WEAR' shirt is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{11}{15}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{13}{30}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{9}{13}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{17}{30}\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc I Q5",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "context": "Select the correct answer from the given four alternatives.",
+    "stem": "There are 2 shelves. One shelf has 5 Physics and 3 Biology books and the other has 4 Physics and 2 Biology books. The probability of drawing a Physics book is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{9}{14}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{31}{48}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{9}{38}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{2}\\)"
+      }
+    ],
+    "answer": "B",
+    "_note": "The stem does not state HOW the book is drawn, and the option list contains the answer to BOTH readings. Reading 1 (a shelf is chosen at random, then a book from it) gives \\(\\frac{1}{2}\\cdot\\frac{5}{8}+\\frac{1}{2}\\cdot\\frac{4}{6}=\\frac{31}{48}\\) = option B. Reading 2 (all 14 books pooled) gives \\(\\frac{9}{14}\\) = option A. Keyed B: 31/48 is the non-obvious computed value the question is built around (the total-probability form this section teaches), whereas 9/14 is the naive pooling distractor. Flagging because the ambiguity is genuine and A is defensible.",
+    "solution": "[Textbook misprint: the stem never states HOW the book is chosen. Read literally — every book on both shelves equally likely — the answer is \\(\\dfrac{9}{14}\\), which is also a printed option. The keyed answer \\(\\dfrac{31}{48}\\) requires the reading that a SHELF is chosen at random and then a book from it, which is what makes the 8-versus-6 split relevant. The key's reading is followed here; a student who answers \\(\\dfrac{9}{14}\\) has read the stem as printed.]"
+  },
+  {
+    "ref": "Misc I Q6",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Independent Events",
+    "difficulty": "EASY",
+    "context": "Select the correct answer from the given four alternatives.",
+    "stem": "Two friends A and B apply for a job in the same company. The chances of A getting selected is \\(\\frac{2}{5}\\) and that of B is \\(\\frac{4}{7}\\). The probability that both of them get selected is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{34}{35}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{35}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{8}{35}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{27}{35}\\)"
+      }
+    ],
+    "answer": "C",
+    "_note": "The book prints the two chances inline as '2/5' and '4/7' (not as stacked fractions); rendered here as \\frac for consistency."
+  },
+  {
+    "ref": "Misc I Q7",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "context": "Select the correct answer from the given four alternatives.",
+    "stem": "The probability that a student knows the correct answer to a multiple choice question is \\(\\frac{2}{3}\\). If the student does not know the answer, then the student guesses the answer. The probability of the guessed answer being correct is \\(\\frac{1}{4}\\). Given that the student has answered the question correctly, the probability that the student knows the correct answer is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{5}{6}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{6}{7}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{7}{8}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{8}{9}\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc I Q8",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "context": "Select the correct answer from the given four alternatives.",
+    "stem": "Bag I contains 3 red and 4 black balls while another Bag II contains 5 red and 6 black balls. One ball is drawn at random from one of the bags and it is found to be red. The probability that it was drawn from Bag II.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{33}{68}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{35}{69}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{34}{67}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{35}{68}\\)"
+      }
+    ],
+    "answer": "D",
+    "_note": "Printed as a statement ending in a full stop ('The probability that it was drawn from Bag II.') rather than as a question; transcribed as printed."
+  },
+  {
+    "ref": "Misc I Q9",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Odds",
+    "difficulty": "EASY",
+    "context": "Select the correct answer from the given four alternatives.",
+    "stem": "A fair is tossed twice. What are the odds in favour of getting 4, 5 or 6 on the first toss and 1, 2, 3 or 4 on the second die?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(1 : 3\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(3 : 1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(1 : 2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2 : 1\\)"
+      }
+    ],
+    "answer": "C",
+    "_note": "PRINTED DEFECT (typo, transcribed as printed): 'A fair is tossed twice' — the noun is missing; the reference to 'the second die' shows a fair DIE is intended. Derivation is unaffected: \\(P=\\frac{3}{6}\\cdot\\frac{4}{6}=\\frac{1}{3}\\), so odds in favour \\(=\\frac{1}{3}:\\frac{2}{3}=1:2\\).",
+    "solution": "[Textbook misprint: the stem reads 'A fair is tossed twice' — the noun is missing. Its own later reference to 'the second die' identifies a die, which is how it is solved here. The arithmetic is unaffected.]"
+  },
+  {
+    "ref": "Misc I Q10",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Odds",
+    "difficulty": "MODERATE",
+    "context": "Select the correct answer from the given four alternatives.",
+    "stem": "The odds against an event are 5:3 and the odds in favour of another independent event are 7:5. The probability that at least one of the two events will occur is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{52}{96}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{71}{96}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{69}{96}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{13}{96}\\)"
+      }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Misc II Q1(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "The letters of the word 'EQUATION' are arranged in a row. Find the probability that",
+    "setLabel": "Misc II Q1",
+    "stem": "All the vowels are together."
+  },
+  {
+    "ref": "Misc II Q1(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "The letters of the word 'EQUATION' are arranged in a row. Find the probability that",
+    "setLabel": "Misc II Q1",
+    "stem": "Arrangement starts wiht a vowel and ends wiith a consonant.",
+    "_note": "PRINTED DEFECT (typos, transcribed as printed): 'wiht' for 'with' and 'wiith' for 'with'."
+  },
+  {
+    "ref": "Misc II Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "HARD",
+    "stem": "There are 6 positive and 8 negative numbers. Four numbers are chosen at random, without replacement, and multiplied. Find the probability that the product is a positive numbers.",
+    "_note": "PRINTED DEFECT (grammar, transcribed as printed): 'a positive numbers' — number/plural disagreement."
+  },
+  {
+    "ref": "Misc II Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "EASY",
+    "stem": "Ten cards numbered 1 to 10 are placed in a box, mixed up thoroughly and then one card is drawn randomly. If it is known that the number on the drawn card is more than 3, what is the probability that it is and even number?",
+    "_note": "PRINTED DEFECT (typo, transcribed as printed): 'it is and even number' — 'and' for 'an'."
+  },
+  {
+    "ref": "Misc II Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "stem": "If \\(P(A \\cap B) = \\frac{1}{2}\\), \\(P(B \\cap C) = \\frac{1}{3}\\), \\(P(C \\cap A) = \\frac{1}{6}\\) then find \\(P(A)\\), \\(P(B)\\) and \\(P(C)\\), If A, B, C are independent events.",
+    "_note": "Not a transcription defect, but flagged for the solution author: the given data forces a degenerate answer. Independence gives \\((P(A)P(B)P(C))^2 = \\frac{1}{2}\\cdot\\frac{1}{3}\\cdot\\frac{1}{6} = \\frac{1}{36}\\), so \\(P(A)P(B)P(C) = \\frac{1}{6}\\) and hence \\(P(A) = \\frac{1}{2}\\), \\(P(B) = 1\\), \\(P(C) = \\frac{1}{3}\\). All three given conditions check out, but \\(P(B) = 1\\) means B is a certain event."
+  },
+  {
+    "ref": "Misc II Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "HARD",
+    "stem": "If the letters of the word 'REGULATIONS' be arranged at random, what is the probability that there will be exactly 4 letters between R and E?"
+  },
+  {
+    "ref": "Misc II Q6(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "context": "In how many ways can the letters of the word ARRANGEMENTS be arranged?",
+    "setLabel": "Misc II Q6",
+    "stem": "Find the chance that an arrangement chosen at random begins with the letters EE."
+  },
+  {
+    "ref": "Misc II Q6(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "HARD",
+    "context": "In how many ways can the letters of the word ARRANGEMENTS be arranged?",
+    "setLabel": "Misc II Q6",
+    "stem": "Find the probability that the consonants are together."
+  },
+  {
+    "ref": "Misc II Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "HARD",
+    "stem": "A letter is taken at random from the letters of the word 'ASSISTANT' and another letter is taken at random from the letters of the word 'STATISTICS'. Find probability that the selected letters are the same."
+  },
+  {
+    "ref": "Misc II Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "stem": "A die is loaded in such a way that the probability of the face with \\(j\\) dots turning up is proportional to \\(j\\) for \\(j = 1, 2, \\ldots 6\\). What is the probability, in one roll of the die, that an odd number of dots will turn up?"
+  },
+  {
+    "ref": "Misc II Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "stem": "An urn contains 5 red balls and 2 green balls. A ball is drawn. If it's green a red ball is added to the urn and if it's red a green ball is added to the urn. (The original ball is not returned to the urn). Then a second ball is drawn. What is the probability the second ball is red?"
+  },
+  {
+    "ref": "Misc II Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "MODERATE",
+    "stem": "The odds against A solving a certain problem are 4 to 3 and the odds in favor of solving the same problem are 7 to 5 find the probability that the problem will be solved.",
+    "_note": "PRINTED DEFECT (transcribed as printed): the second pair of odds names no solver — 'the odds in favor of solving the same problem are 7 to 5'. Compare the analogous Ex 9.5 Q2 on p-18 (printed p.211), which reads 'the odds in favor of Rafi solving the same problem are 7 to 5', so a second person's name has been dropped here. Without it the question reads as if it gives two different odds for the same event.",
+    "solution": "[Textbook misprint: the stem reads 'the odds in favour of solving the same problem are 7 to 5', naming no second solver, so as printed it gives two different odds for one event. The book's own parallel question (Exercise 9.5 Q.2) reads 'the odds in favour of Rafi solving the same problem', which identifies the dropped name. The printed key \\(\\dfrac{16}{21}\\) confirms the two-solver reading — the one-solver reading cannot produce it.]"
+  },
+  {
+    "ref": "Misc II Q11(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "context": "If \\(P(A) = P\\left(\\frac{A}{B}\\right) = \\frac{1}{5}\\), \\(P\\left(\\frac{B}{A}\\right) = \\frac{1}{3}\\) then find",
+    "setLabel": "Misc II Q11",
+    "stem": "\\(P\\left(\\frac{A'}{B}\\right)\\)"
+  },
+  {
+    "ref": "Misc II Q11(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "HARD",
+    "context": "If \\(P(A) = P\\left(\\frac{A}{B}\\right) = \\frac{1}{5}\\), \\(P\\left(\\frac{B}{A}\\right) = \\frac{1}{3}\\) then find",
+    "setLabel": "Misc II Q11",
+    "stem": "\\(P\\left(\\frac{B'}{A'}\\right)\\)"
+  },
+  {
+    "ref": "Misc II Q12(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "Let A and B be independent events with \\(P(A) = \\frac{1}{4}\\), and \\(P(A \\cup B) = 2P(B) - P(A)\\). Find",
+    "setLabel": "Misc II Q12",
+    "stem": "\\(P(B)\\)"
+  },
+  {
+    "ref": "Misc II Q12(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "Let A and B be independent events with \\(P(A) = \\frac{1}{4}\\), and \\(P(A \\cup B) = 2P(B) - P(A)\\). Find",
+    "setLabel": "Misc II Q12",
+    "stem": "\\(P(A/B)\\)"
+  },
+  {
+    "ref": "Misc II Q12(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "context": "Let A and B be independent events with \\(P(A) = \\frac{1}{4}\\), and \\(P(A \\cup B) = 2P(B) - P(A)\\). Find",
+    "setLabel": "Misc II Q12",
+    "stem": "\\(P(B'/A)\\)"
+  },
+  {
+    "ref": "Misc II Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of an Event and its Elementary Properties",
+    "difficulty": "MODERATE",
+    "stem": "Find the probability that a year selected will have 53 Wednesdays."
+  },
+  {
+    "ref": "Misc II Q14(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "context": "The chances of P, Q and R, getting selected as principal of a college are \\(\\frac{2}{5}, \\frac{2}{5}, \\frac{1}{5}\\) respectively. Their chances of introducing IT in the college are \\(\\frac{1}{2}, \\frac{1}{3}, \\frac{1}{4}\\) respectively. Find the probability that",
+    "setLabel": "Misc II Q14",
+    "stem": "IT is introduced in the college after one of them is selected as a principal ."
+  },
+  {
+    "ref": "Misc II Q14(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "context": "The chances of P, Q and R, getting selected as principal of a college are \\(\\frac{2}{5}, \\frac{2}{5}, \\frac{1}{5}\\) respectively. Their chances of introducing IT in the college are \\(\\frac{1}{2}, \\frac{1}{3}, \\frac{1}{4}\\) respectively. Find the probability that",
+    "setLabel": "Misc II Q14",
+    "stem": "IT is introduced by Q."
+  },
+  {
+    "ref": "Misc II Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Suppose that five good fuses and two defective ones have been mixed up. To find the defective fuses, we test them one-by-one, at random and without replacement. What is the probability that we are lucky and fine both of the defective fuses in the first two tests?",
+    "_note": "PRINTED DEFECT (typo, transcribed as printed): 'fine both of the defective fuses' — 'fine' for 'find'."
+  },
+  {
+    "ref": "Misc II Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "HARD",
+    "stem": "Fot three events A, B and C, we know that A and C are independent, B and C are independent, A and B are disjoint, \\(P(A \\cup C) = \\frac{2}{3}\\), \\(P(B \\cup C) = \\frac{3}{4}\\), \\(P(A \\cup B \\cup C) = \\frac{11}{12}\\). Find \\(P(A)\\), \\(P(B)\\) and \\(P(C)\\).",
+    "_note": "PRINTED DEFECT (typo, transcribed as printed): 'Fot three events' — 'Fot' for 'For'. The three probabilities are printed inline as 2/3, 3/4 and 11/12 (not stacked); rendered here as \\frac."
+  },
+  {
+    "ref": "Misc II Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "The ratio of Boys to Girls in a college is 3:2 and 3 girls out of 500 and 2 boys out of 50 of that college are good singers. A good singer is chosen what is the probability that the chosen singer is a girl?"
+  },
+  {
+    "ref": "Misc II Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "HARD",
+    "stem": "A and B throw a die alternatively till one of them gets a 3 and wins the game. Find the respective probabilities of winning. (Assuming A begins the game)."
+  },
+  {
+    "ref": "Misc II Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Independent Events",
+    "difficulty": "HARD",
+    "stem": "Consider independent trails consisting of rolling a pair of fair dice, over and over What is the probability that a sum of 5 appears before sum of 7?",
+    "_note": "PRINTED DEFECT (typos, transcribed as printed): 'independent trails' for 'trials', and a missing sentence break — 'over and over What is the probability'."
+  },
+  {
+    "ref": "Misc II Q20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A machine produces parts that are either good (90%), slightly defective (2%), or obviously defective (8%). Produced parts get passed through an automatic inspection machine, which is able to detect any part that is obviously defective and discard it. What is the quality of the parts that make it throught the inspection machine and get shipped?",
+    "_note": "PRINTED DEFECT (typo, transcribed as printed): 'make it throught the inspection machine' — 'throught' for 'through'."
+  },
+  {
+    "ref": "Misc II Q21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Given three identical boxes, I, II and III, each containing two coins. In box I, both coins are gold coins, in box II, both are silver coins and in the box III, there is one gold and one silver soin. A person chooses a box at random and takes out a coin. If the coin is of gold, what is the probability that the other coin in the box is also of gold?",
+    "_note": "PRINTED DEFECT (typo, transcribed as printed): 'one silver soin' — 'soin' for 'coin'."
+  },
+  {
+    "ref": "Misc II Q22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "In a factory which manufactures bulbs, machines A, B and C manufacture respectively 25%, 35% and 40% of the bulbs. Of their outputs, 5, 4 and 2 percent are respectively defective bulbs. A bulbs is drawn at random from the product and is found to be defective. What is the probability that it is manufactured by the machine B?",
+    "_note": "PRINTED DEFECT (grammar, transcribed as printed): 'A bulbs is drawn at random' — 'bulbs' for 'bulb'."
+  },
+  {
+    "ref": "Misc II Q23(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "EASY",
+    "context": "A family has two children. One of them is chosen at random and found that the child is a girl. Find the probability that",
+    "setLabel": "Misc II Q23",
+    "stem": "both the children are girls."
+  },
+  {
+    "ref": "Misc II Q23(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "context": "A family has two children. One of them is chosen at random and found that the child is a girl. Find the probability that",
+    "setLabel": "Misc II Q23",
+    "stem": "both the children are girls given that at least one of them is a girl."
+  }
+]

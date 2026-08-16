@@ -1,0 +1,70 @@
+[
+  {
+    "id": "a5b8e7f9-1f5e-49e6-be92-cdb365985bec",
+    "ref": "Ex 9.4 Q1",
+    "solution": "Let \\(B_1, B_2, B_3\\) be the events that Bag 1, Bag 2, Bag 3 is chosen and let \\(R\\) be the event that the marble drawn is red. One bag is chosen at random, so \\(P(B_1) = P(B_2) = P(B_3) = \\frac{1}{3}\\).\nEach bag holds 100 marbles, so \\(P(R/B_1) = \\frac{75}{100} = 0.75\\), \\(P(R/B_2) = \\frac{60}{100} = 0.60\\), \\(P(R/B_3) = \\frac{45}{100} = 0.45\\).\nBy the theorem of total probability,\n\\(P(R) = \\frac{1}{3}(0.75) + \\frac{1}{3}(0.60) + \\frac{1}{3}(0.45) = \\frac{1}{3}(1.80)\\).\n\\(\\therefore P(R) = 0.60 = \\frac{3}{5}\\)."
+  },
+  {
+    "id": "9618d085-c616-41bf-a87f-0786d2cba7cd",
+    "ref": "Ex 9.4 Q2",
+    "solution": "Let \\(B_1\\), \\(B_2\\) be the events that the first box, the second box is chosen and let \\(P\\) be the event that the ball drawn is pink. One of the two boxes is chosen at random, so \\(P(B_1) = P(B_2) = \\frac{1}{2}\\).\nFirst box: 2 blue + 3 pink \\(=\\) 5 balls, so \\(P(P/B_1) = \\frac{3}{5}\\). Second box: 4 blue + 5 pink \\(=\\) 9 balls, so \\(P(P/B_2) = \\frac{5}{9}\\).\nBy the theorem of total probability,\n\\(P(P) = \\frac{1}{2}\\times\\frac{3}{5} + \\frac{1}{2}\\times\\frac{5}{9} = \\frac{3}{10} + \\frac{5}{18} = \\frac{27 + 25}{90} = \\frac{52}{90} = \\frac{26}{45}\\).\nBy Bayes' theorem,\n(i) \\(P(B_1/P) = \\frac{\\frac{3}{10}}{\\frac{26}{45}} = \\frac{3}{10}\\times\\frac{45}{26} = \\frac{27}{52}\\)\n(ii) \\(P(B_2/P) = \\frac{\\frac{5}{18}}{\\frac{26}{45}} = \\frac{5}{18}\\times\\frac{45}{26} = \\frac{25}{52}\\)\n\\(\\therefore\\) the probabilities are (i) \\(\\frac{27}{52}\\)  (ii) \\(\\frac{25}{52}\\)."
+  },
+  {
+    "id": "bed9e27d-44f7-41d1-99e5-7f2d3680a989",
+    "ref": "Ex 9.4 Q3",
+    "solution": "Let \\(S\\) be the event that the woman is from the same town, \\(N\\) that she is from the neighbouring town, and \\(G\\) that she is a graduate.\n\\(P(N) = 0.75\\), so \\(P(S) = 1 - 0.75 = 0.25\\); and \\(P(G/S) = 0.48\\), \\(P(G/N) = 0.83\\).\nBy the theorem of total probability,\n\\(P(G) = P(S)P(G/S) + P(N)P(G/N) = 0.25(0.48) + 0.75(0.83) = 0.12 + 0.6225 = 0.7425\\).\nThe woman selected is a graduate, and we need the chance that she is from the same town, so by Bayes' theorem\n\\(P(S/G) = \\frac{P(S)P(G/S)}{P(G)} = \\frac{0.12}{0.7425} = \\frac{1200}{7425} = \\frac{16}{99}\\).\n\\(\\therefore P(S/G) = \\frac{16}{99} \\approx 0.1616\\).",
+    "_note": "Stem wording is ambiguous. Read literally, 'a woman selected at random is a graduate from the same town' is the JOINT probability \\(P(S \\cap G) = 0.25 \\times 0.48 = 0.12 = \\frac{3}{25}\\). The printed key is 16/99, which is the CONDITIONAL \\(P(S/G)\\) — i.e. the book means 'given that she is a graduate, find the probability she is from the same town'. Solved in the book's (Bayes) sense; the joint value 3/25 is noted here for the maintainer."
+  },
+  {
+    "id": "eb9bfb6c-4c0d-43be-9d3f-974a7f1596d7",
+    "ref": "Ex 9.4 Q4",
+    "solution": "\\(E_1\\) and \\(E_2\\) are mutually exclusive, exhaustive and equally likely, so \\(P(E_1) = P(E_2) = \\frac{1}{2}\\).\nBy the theorem of total probability,\n\\(P(A) = P(E_1)P(A/E_1) + P(E_2)P(A/E_2) = \\frac{1}{2}(0.2) + \\frac{1}{2}(0.3) = 0.1 + 0.15 = 0.25\\).\nBy Bayes' theorem,\n\\(P(E_1/A) = \\frac{P(E_1)P(A/E_1)}{P(A)} = \\frac{\\frac{1}{2}(0.2)}{0.25} = \\frac{0.1}{0.25} = 0.4\\).\n\\(\\therefore P(E_1/A) = \\frac{2}{5}\\).",
+    "_note": "DISAGREE WITH THE PRINTED KEY. The book prints 4/5; the correct answer is 2/5. The book's 4/5 is exactly \\(\\frac{0.2}{0.25}\\) — the prior \\(P(E_1) = \\frac{1}{2}\\) was dropped from the numerator while being kept in the denominator. Two independent checks: (1) with equal priors the posterior is proportional to the likelihoods, \\(0.2 : 0.3 = 2 : 3\\), giving \\(P(E_1/A) = \\frac{2}{5}\\) and \\(P(E_2/A) = \\frac{3}{5}\\), which correctly sum to 1 (the book's 4/5 would force \\(P(E_2/A) = 1/5\\), i.e. a posterior ratio of 4:1 in favour of the LESS likely explanation); (2) qualitatively, since \\(P(A/E_1) = 0.2 < P(A/E_2) = 0.3\\), observing A must make \\(E_1\\) LESS probable than its prior of \\(\\frac{1}{2}\\), so any answer exceeding \\(\\frac{1}{2}\\) is impossible."
+  },
+  {
+    "id": "1ae77965-2147-4481-b980-470fb81f458a",
+    "ref": "Ex 9.4 Q5",
+    "solution": "Let \\(H\\) be the event that the coin shows head (so the ball is drawn from Jar I) and \\(T\\) that it shows tail (Jar II), and let \\(W\\) be the event that the ball drawn is white. The coin is fair, so \\(P(H) = P(T) = \\frac{1}{2}\\).\nJar I: 5 white + 7 black \\(=\\) 12 balls, so \\(P(W/H) = \\frac{5}{12}\\). Jar II: 3 white + 12 black \\(=\\) 15 balls, so \\(P(W/T) = \\frac{3}{15} = \\frac{1}{5}\\).\nBy the theorem of total probability,\n\\(P(W) = \\frac{1}{2}\\times\\frac{5}{12} + \\frac{1}{2}\\times\\frac{1}{5} = \\frac{5}{24} + \\frac{1}{10} = \\frac{25 + 12}{120} = \\frac{37}{120}\\).\nBy Bayes' theorem, the probability that the white ball came from Jar II is\n\\(P(T/W) = \\frac{\\frac{1}{2}\\times\\frac{1}{5}}{\\frac{37}{120}} = \\frac{\\frac{1}{10}}{\\frac{37}{120}} = \\frac{12}{37}\\).\n\\(\\therefore P(T/W) = \\frac{12}{37}\\)."
+  },
+  {
+    "id": "dfc2f02f-4914-4cf6-8df6-b16f26d0e9ec",
+    "ref": "Ex 9.4 Q6(a)",
+    "solution": "Let \\(S\\) be the event that the person is a sufferer and \\(T\\) that the test gives a positive result.\n\\(P(S) = 0.5\\% = 0.005\\), so \\(P(S') = 0.995\\); and \\(P(T/S) = 0.95\\), \\(P(T/S') = 0.10\\).\nBy the theorem of total probability,\n\\(P(T) = P(S)P(T/S) + P(S')P(T/S') = 0.005(0.95) + 0.995(0.10) = 0.00475 + 0.0995 = 0.10425\\).\nBy Bayes' theorem,\n\\(P(S/T) = \\frac{P(S)P(T/S)}{P(T)} = \\frac{0.00475}{0.10425} = \\frac{475}{10425} = \\frac{19}{417}\\).\n\\(\\therefore P(S/T) = \\frac{19}{417} \\approx 0.0456\\)."
+  },
+  {
+    "id": "a7c18427-19a4-4737-8057-99d54632e32b",
+    "ref": "Ex 9.4 Q6(b)",
+    "solution": "With \\(S\\) and \\(T\\) as in part (a), \\(P(S) = 0.005\\), \\(P(S') = 0.995\\) and \\(P(T) = 0.10425\\) (total probability, from part (a)), so \\(P(T') = 1 - 0.10425 = 0.89575\\).\nA non-sufferer tests negative with probability \\(P(T'/S') = 1 - P(T/S') = 1 - 0.10 = 0.90\\), so\n\\(P(S' \\cap T') = P(S')P(T'/S') = 0.995(0.90) = 0.8955\\).\nBy Bayes' theorem,\n\\(P(S'/T') = \\frac{P(S')P(T'/S')}{P(T')} = \\frac{0.8955}{0.89575} = \\frac{89550}{89575} = \\frac{3582}{3583}\\).\n\\(\\therefore P(S'/T') = \\frac{3582}{3583} \\approx 0.9997\\).",
+    "_note": "The printed key's final value is right, but the formula line it prints is mis-typed: it shows \\(P(S'/T') = \\frac{p(T/S)P(S)}{1 - P(T)}\\), whereas the numerator must be \\(P(T'/S')P(S') = 0.90 \\times 0.995 = 0.8955\\) — which is exactly the number the book then substitutes. Its printed denominator 0.8958 is \\(1 - P(T) = 0.89575\\) rounded to four decimals; the exact value is used above."
+  },
+  {
+    "id": "2014f4c6-1129-46f9-99f6-741ffd72fdd2",
+    "ref": "Ex 9.4 Q7",
+    "solution": "Let \\(F\\) be the event that the sick child has flu, \\(M\\) that the child has measles, and \\(R\\) that the child has a rash. There is no other disease in the area, so \\(F\\) and \\(M\\) are mutually exclusive and exhaustive with \\(P(F) = 0.80\\), \\(P(M) = 0.20\\); and \\(P(R/M) = 0.95\\), \\(P(R/F) = 0.08\\).\nBy the theorem of total probability,\n\\(P(R) = P(M)P(R/M) + P(F)P(R/F) = 0.20(0.95) + 0.80(0.08) = 0.19 + 0.064 = 0.254\\).\nBy Bayes' theorem,\n\\(P(M/R) = \\frac{P(M)P(R/M)}{P(R)} = \\frac{0.19}{0.254} = \\frac{190}{254} = \\frac{95}{127}\\).\n\\(\\therefore P(M/R) = \\frac{95}{127} \\approx 0.748\\)."
+  },
+  {
+    "id": "02d93194-4104-4c6d-9aa4-495b5c9acddc",
+    "ref": "Ex 9.4 Q8",
+    "solution": "Let \\(A\\), \\(B\\), \\(C\\) be the events that the subject has the serious form, the mild form, no disease, and let \\(T\\) be the event that the subject tests positive.\n\\(P(A) = 0.02\\), \\(P(B) = 0.10\\), \\(P(C) = 0.88\\); \\(P(T/A) = \\frac{9}{10}\\), \\(P(T/B) = \\frac{6}{10}\\), \\(P(T/C) = \\frac{1}{10}\\).\nBy the theorem of total probability,\n\\(P(T) = 0.02(0.9) + 0.10(0.6) + 0.88(0.1) = 0.018 + 0.06 + 0.088 = 0.166\\).\nBy Bayes' theorem,\n\\(P(A/T) = \\frac{P(A)P(T/A)}{P(T)} = \\frac{0.018}{0.166} = \\frac{18}{166} = \\frac{9}{83}\\).\n\\(\\therefore P(A/T) = \\frac{9}{83} \\approx 0.108\\)."
+  },
+  {
+    "id": "a707ba1a-3057-4b86-a86a-60b84073ee74",
+    "ref": "Ex 9.4 Q9(a)",
+    "solution": "Let \\(F\\) be the event that one of the two fair coins is picked and \\(D\\) that the fake two-headed coin is picked, and let \\(H\\) be the event that the toss lands head up. A coin is picked at random from the three, so \\(P(F) = \\frac{2}{3}\\) and \\(P(D) = \\frac{1}{3}\\).\nA fair coin gives \\(P(H/F) = \\frac{1}{2}\\); the two-headed coin always shows a head, so \\(P(H/D) = 1\\).\nBy the theorem of total probability,\n\\(P(H) = \\frac{2}{3}\\times\\frac{1}{2} + \\frac{1}{3}\\times 1 = \\frac{1}{3} + \\frac{1}{3}\\).\n\\(\\therefore P(H) = \\frac{2}{3}\\)."
+  },
+  {
+    "id": "cbac407c-69a4-43d3-8d7b-65a8424502ac",
+    "ref": "Ex 9.4 Q9(b)",
+    "solution": "With \\(F\\), \\(D\\), \\(H\\) as in part (a), \\(P(D) = \\frac{1}{3}\\), \\(P(H/D) = 1\\) and \\(P(H) = \\frac{2}{3}\\) (total probability, from part (a)).\nBy Bayes' theorem,\n\\(P(D/H) = \\frac{P(D)P(H/D)}{P(H)} = \\frac{\\frac{1}{3}\\times 1}{\\frac{2}{3}} = \\frac{1}{3}\\times\\frac{3}{2}\\).\n\\(\\therefore P(D/H) = \\frac{1}{2}\\)."
+  },
+  {
+    "id": "11cbb162-477c-4b70-ad58-3b16133a851f",
+    "ref": "Ex 9.4 Q10",
+    "solution": "Let \\(G_1\\), \\(G_2\\), \\(G_3\\) be the events that the message opened is from Group I, Group II, Group III. The probabilities of opening the messages of the three groups are \\(P(G_1) = \\frac{1}{2}\\), \\(P(G_2) = \\frac{1}{4}\\), \\(P(G_3) = \\frac{1}{4}\\) (these add up to 1, so they form a partition).\nLet \\(S\\) be the event that the message is on sports; \\(P(S/G_1) = \\frac{2}{5}\\), \\(P(S/G_2) = \\frac{1}{2}\\), \\(P(S/G_3) = \\frac{2}{3}\\).\nBy the theorem of total probability,\n\\(P(S) = \\frac{1}{2}\\times\\frac{2}{5} + \\frac{1}{4}\\times\\frac{1}{2} + \\frac{1}{4}\\times\\frac{2}{3} = \\frac{1}{5} + \\frac{1}{8} + \\frac{1}{6} = \\frac{24 + 15 + 20}{120} = \\frac{59}{120}\\).\nBy Bayes' theorem,\n\\(P(G_3/S) = \\frac{\\frac{1}{4}\\times\\frac{2}{3}}{\\frac{59}{120}} = \\frac{\\frac{1}{6}}{\\frac{59}{120}} = \\frac{1}{6}\\times\\frac{120}{59} = \\frac{20}{59}\\).\n\\(\\therefore P(G_3/S) = \\frac{20}{59}\\)."
+  },
+  {
+    "id": "90bb601c-b99f-4264-8744-2e6dab343715",
+    "ref": "Ex 9.4 Q11",
+    "solution": "Let \\(A\\), \\(C\\), \\(T\\) be the events that Mr. X travels by auto, by car, by train. These are mutually exclusive and exhaustive, with \\(P(A) = \\frac{2}{7}\\), \\(P(C) = \\frac{3}{7}\\), \\(P(T) = \\frac{2}{7}\\).\nLet \\(L\\) be the event that he is late; \\(P(L/A) = \\frac{1}{2}\\), \\(P(L/C) = \\frac{1}{4}\\), \\(P(L/T) = \\frac{1}{4}\\).\nBy the theorem of total probability,\n\\(P(L) = \\frac{2}{7}\\times\\frac{1}{2} + \\frac{3}{7}\\times\\frac{1}{4} + \\frac{2}{7}\\times\\frac{1}{4} = \\frac{1}{7} + \\frac{3}{28} + \\frac{1}{14} = \\frac{4 + 3 + 2}{28} = \\frac{9}{28}\\).\nBy Bayes' theorem,\n\\(P(C/L) = \\frac{P(C)P(L/C)}{P(L)} = \\frac{\\frac{3}{28}}{\\frac{9}{28}} = \\frac{3}{9}\\).\n\\(\\therefore P(C/L) = \\frac{1}{3}\\)."
+  }
+]

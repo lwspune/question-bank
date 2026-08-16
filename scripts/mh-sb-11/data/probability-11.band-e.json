@@ -1,0 +1,234 @@
+[
+  {
+    "ref": "Ex 9.4 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "stem": "There are three bags, each containing 100 marbles. Bag 1 has 75 red and 25 blue marbles. Bag 2 has 60 red and 40 blue marbles and Bag 3 has 45 red and 55 blue marbles. One of the bags is chosen at random and a marble is picked from the chosen bag. What is the probability that the chosen marble is red?"
+  },
+  {
+    "ref": "Ex 9.4 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A box contains 2 blue and 3 pink balls and another box contains 4 blue and 5 pink balls. One ball is drawn at random from one of the two boxes and it is found to be pink. Find the probability that it was drawn from (i) first box (ii) second box.",
+    "_note": "The book prints the two parts inline inside one sentence — '(i) first box (ii) second box' — not as separate labelled lines, so this is kept as ONE row rather than split into set-siblings. Contrast Ex 9.4 Q6 and Q9, which the book DOES lay out as separate labelled sub-item lines."
+  },
+  {
+    "ref": "Ex 9.4 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Conditional Probability and the Multiplication Theorem",
+    "difficulty": "MODERATE",
+    "stem": "There is a working women's hostel in a town, where 75% are from neighbouring town. The rest all are from the same town. 48% of women who hail from the same town are graduates and 83% of the women who have come from the neighboring town are also graduates. Find the probability that a woman selected at random is a graduate from the same town.",
+    "_note": "The book spells 'neighbouring' in the second sentence and 'neighboring' in the fourth; transcribed as printed."
+  },
+  {
+    "ref": "Ex 9.4 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "EASY",
+    "stem": "If \\(E_1\\) and \\(E_2\\) are equally likely, mutually exclusive and exhaustive events and \\(P(A/E_1) = 0.2\\), \\(P(A/E_2) = 0.3\\). Find \\(P(E_1/A)\\).",
+    "solution": "[Textbook answer-key error: the printed key gives \\(\\dfrac{4}{5}\\). With equal priors, \\(P(A) = \\tfrac12(0.2) + \\tfrac12(0.3) = 0.25\\) and \\(P(E_1/A) = \\dfrac{0.1}{0.25} = \\dfrac{2}{5}\\). The printed \\(\\dfrac{4}{5}\\) is \\(\\dfrac{0.2}{0.25}\\) — the prior \\(\\tfrac12\\) was dropped from the numerator while retained in the denominator. Two independent checks: the posteriors must sum to 1, and \\(\\dfrac{2}{5} + \\dfrac{3}{5} = 1\\) whereas \\(\\dfrac{4}{5}\\) does not; and since \\(P(A/E_1) < P(A/E_2)\\), observing \\(A\\) must pull \\(E_1\\) BELOW its prior of \\(\\tfrac12\\), so no answer above \\(\\tfrac12\\) is possible.]"
+  },
+  {
+    "ref": "Ex 9.4 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Jar I contains 5 white and 7 black balls. Jar II contains 3 white and 12 black balls. A fair coin is flipped; if it is Head, a ball is drawn from Jar I, and if it is Tail, a ball is drawn from Jar II. Suppose that this experiment is done and a white ball was drawn. What is the probability that this ball was in fact taken from Jar II?"
+  },
+  {
+    "ref": "Ex 9.4 Q6(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "context": "A diagnostic test has a probability 0.95 of giving a positive result when applied to a person suffering from a certain disease, and a probability 0.10 of giving a (false) positive result when applied to a non-sufferer. It is estimated that 0.5% of the population are sufferers. Suppose that the test is now administered to a person about whom we have no relevant information relating to the disease (apart from the fact that he/she comes from this population). Calculate the probability that:",
+    "setLabel": "Ex 9.4 Q6",
+    "stem": "given a positive result, the person is a sufferer."
+  },
+  {
+    "ref": "Ex 9.4 Q6(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "HARD",
+    "context": "A diagnostic test has a probability 0.95 of giving a positive result when applied to a person suffering from a certain disease, and a probability 0.10 of giving a (false) positive result when applied to a non-sufferer. It is estimated that 0.5% of the population are sufferers. Suppose that the test is now administered to a person about whom we have no relevant information relating to the disease (apart from the fact that he/she comes from this population). Calculate the probability that:",
+    "setLabel": "Ex 9.4 Q6",
+    "stem": "given a negative result, the person is a non-sufferer.",
+    "solution": "[Textbook misprint: the printed formula line shows the numerator as \\(p(T/S)P(S)\\) where it must be \\(P(T'/S')P(S') = 0.90 \\times 0.995 = 0.8955\\) — which is the value the book itself then substitutes. Its denominator \\(0.8958\\) is \\(1 - P(T) = 0.89575\\) rounded. The printed final value is correct.]"
+  },
+  {
+    "ref": "Ex 9.4 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "A doctor is called to see a sick child. The doctor has prior information that 80% of the sick children in that area have the flu, while the other 20% are sick with measles. Assume that there is no other disease in that area. A well-known symptom of measles is rash. From the past records, it is known that, chances of having rashes given that sick child is suffering from measles is 0.95. However occasionally children with flu also develop rash, whose chance are 0.08. Upon examining the child, the doctor finds a rash. What is the probability that child is suffering from measles?"
+  },
+  {
+    "ref": "Ex 9.4 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "2% of the population have a certain blood disease of a serious form: 10% have it in a mild form; and 88% don't have it at all. A new blood test is developed; the probability of testing positive is \\(\\frac{9}{10}\\) if the subject has the serious form, \\(\\frac{6}{10}\\) if the subject has the mild form, and \\(\\frac{1}{10}\\) if the subject doesn't have the disease. A subject is tested positive. What is the probability that the subject has serious form of the disease?"
+  },
+  {
+    "ref": "Ex 9.4 Q9(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "context": "A box contains three coins: two fair coins and one fake two-headed coin is picked randomly from the box and tossed.",
+    "setLabel": "Ex 9.4 Q9",
+    "stem": "What is the probability that it lands head up?"
+  },
+  {
+    "ref": "Ex 9.4 Q9(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "context": "A box contains three coins: two fair coins and one fake two-headed coin is picked randomly from the box and tossed.",
+    "setLabel": "Ex 9.4 Q9",
+    "stem": "If happens to be head, what is the probability that it is the two-headed coin?",
+    "_note": "Printed as 'If happens to be head' — the book drops the subject pronoun ('If it happens to be head'). Transcribed as printed."
+  },
+  {
+    "ref": "Ex 9.4 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "There are three social media groups on a mobile: Group I, Group II and Group III. The probabilities that Group I, Group II and Group III sending the messages on sports are \\(\\frac{2}{5}\\), \\(\\frac{1}{2}\\), and \\(\\frac{2}{3}\\) respectively. The probability of opening the messages by Group I, Group II and Group III are \\(\\frac{1}{2}\\), \\(\\frac{1}{4}\\) and \\(\\frac{1}{4}\\) respectively. Randomly one of the messages is opened and found a message on sports. What is the probability that the message was from Group III."
+  },
+  {
+    "ref": "Ex 9.4 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "stem": "(Activity): Mr. X goes to office by Auto, Car and train. The probabilities him travelling by these modes are \\(\\frac{2}{7}\\), \\(\\frac{3}{7}\\), \\(\\frac{2}{7}\\) respectively. The chances of him being late to the office are \\(\\frac{1}{2}\\), \\(\\frac{1}{4}\\), \\(\\frac{1}{4}\\) respectively by Auto, Car and train. On one particular day he was late to the office. Find the probability that he travelled by car.",
+    "_note": "NOT skipped as an Activity box: it is a NUMBERED exercise question (Q11 of Exercise 9.4) merely tagged '(Activity)', with a fully determinate answer — the shipped precedent on this book (Ex 5.2 Q9). The book prints a fill-in-the-blank SOLUTION SKELETON beneath it (empty boxes). BLANKS COMPLETED AND VERIFIED: P(A) = 2/7, P(C) = 3/7, P(T) = 2/7; P(L/A) = 1/2, P(L/C) = 1/4, P(L/T) = 1/4; P(L) = (2/7)(1/2) + (3/7)(1/4) + (2/7)(1/4) = 4/28 + 3/28 + 2/28 = 9/28; P(C/L) = (3/7)(1/4) / (9/28) = (3/28)/(9/28) = 1/3. ANSWER = 1/3. PRINTED DEFECTS IN THE BOOK'S SOLUTION SKELETON (the question stem itself is clean): (1) the skeleton names the events A, C, T ('Let A, C and T be the events that Mr. X goes to office by Auto, Car and Train') but then writes 'P(B)' and 'P(L/B)' for the second and third events — B is never defined; the third 'Given that' box is labelled P(C) where it should be P(T). (2) The final step is printed 'P(L/C) = P(A∩C)/P(L) = P(C).P(L/C)/P(L)' — the quantity being found should be P(C/L), and the numerator should be P(C∩L), not P(A∩C). Two label errors on one line."
+  },
+  {
+    "ref": "9.5 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "EASY",
+    "stem": "A fair die is thrown. What are the odds in favour of getting a number which is a perfect square in uppermost face of die?",
+    "solution": "Random experiment: A fair die is thrown.\n\\(\\therefore\\) Sample space \\(S = \\{1, 2, 3, 4, 5, 6\\}\\)\n\\(\\therefore n(S) = 6\\)\nLet event A: die shows number which is a perfect square.\n\\(\\therefore A = \\{1, 4\\}\\) \\(\\therefore m = n(A) = 2\\)\n\\(\\therefore A' = \\{2, 3, 5, 6\\}\\) \\(\\therefore (n - m) = 4\\).\n\\(\\therefore P(A) = \\frac{m}{n} = \\frac{2}{6} = \\frac{1}{3}\\)\n\\(P(A') = \\frac{n-m}{n} = \\frac{4}{6} = \\frac{2}{3}\\)\n\\(\\therefore\\) Odds in favour of event \\(A = P(A) : P(A') = \\frac{1/3}{2/3} = \\frac{1}{2}\\)"
+  },
+  {
+    "ref": "9.5 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "HARD",
+    "stem": "The probability of one event A happening is the square of the probability of second event B, but the odds against the event A are the cube of the odds against the event B. Find the probability of each event.",
+    "solution": "Let \\(P(A) = p_1\\) and \\(P(B) = p_2\\).\n\\(\\therefore\\) probability on non-occurrence of the events A and B are \\((1-p_1)\\) and \\((1-p_2)\\) respectively. We are given that \\(p_1 = (p_2)^2\\) .... (I)\nOdds against the event \\(A = \\frac{1-p_1}{p_1}\\)\nOdds against the event \\(B = \\frac{1-p_2}{p_2}\\)\nSince odds against the event A are the cube of the odds against the event B.\n\\(\\frac{1-p_1}{p_1} = \\left(\\frac{1-p_2}{p_2}\\right)^3\\)\n\\(\\frac{1-p_2^2}{p_2^2} = \\frac{(1-p_2)^3}{p_2^3}\\) [By (I)]\n\\(\\frac{(1-p_2)(1+p_2)}{1} = \\frac{(1-p_2)^3}{p_2}\\)\n\\(\\therefore p_2(1+p_2) = 1-2p_2+p_2^2\\)\n\\(p_2 + p_2^2 = 1-2p_2+p_2^2\\)\n\\(3p_2 = 1\\)\n\\(\\therefore p_2 = \\frac{1}{3}\\)\n\\(p_1 = (p_2)^2 = \\left(\\frac{1}{3}\\right)^2 = \\frac{1}{9}\\)\n\\(\\therefore P(A) = \\frac{1}{9}\\) and \\(P(B) = \\frac{1}{3}\\)"
+  },
+  {
+    "ref": "Ex 9.5 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "EASY",
+    "context": "If odds in favour of X solving a problem are \\(4 : 3\\) and odds against Y solving the same problem are \\(2 : 3\\). Find probability of:",
+    "setLabel": "Ex 9.5 Q1",
+    "stem": "X solving the problem",
+    "solution": "[Textbook answer-key error: the printed key gives \\(\\dfrac{3}{5}\\) for BOTH sub-items. That is the correct answer to (ii) — Y's odds are given AGAINST, \\(2 : 3\\), so \\(P(Y) = \\dfrac{3}{5}\\) — copied up into (i). X's odds are given IN FAVOUR, \\(4 : 3\\), so \\(P(X) = \\dfrac{4}{4+3} = \\dfrac{4}{7}\\). No reading of 'odds in favour \\(4 : 3\\)' produces \\(\\dfrac{3}{5}\\).]"
+  },
+  {
+    "ref": "Ex 9.5 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "EASY",
+    "context": "If odds in favour of X solving a problem are \\(4 : 3\\) and odds against Y solving the same problem are \\(2 : 3\\). Find probability of:",
+    "setLabel": "Ex 9.5 Q1",
+    "stem": "Y solving the problem"
+  },
+  {
+    "ref": "Ex 9.5 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "MODERATE",
+    "stem": "The odds against John solving a problem are 4 to 3 and the odds in favor of Rafi solving the same problem are 7 to 5. What is the chance that the problem is solved when both them try it?",
+    "_note": "Printed 'when both them try it' (the book drops 'of'); and 'favor' here against 'favour' elsewhere in the same exercise. Transcribed as printed."
+  },
+  {
+    "ref": "Ex 9.5 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "MODERATE",
+    "context": "The odds against student X solving a statistics problem are \\(8 : 6\\) and odds in favour of student y solving the same problem are \\(14 : 16\\). Find is the chance that",
+    "setLabel": "Ex 9.5 Q3",
+    "stem": "the problem will be solved if they try it independently",
+    "_note": "Printed defects transcribed faithfully: the second student is printed as lowercase 'student y' while the first is uppercase 'student X'; and the instruction reads 'Find is the chance that' (a stray 'is').",
+    "solution": "[Textbook misprint: the instruction reads 'Find is the chance that' (stray 'is'), and the second student is printed as lowercase 'student y' against the uppercase 'student X'. The mathematics is unaffected.]"
+  },
+  {
+    "ref": "Ex 9.5 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "MODERATE",
+    "context": "The odds against student X solving a statistics problem are \\(8 : 6\\) and odds in favour of student y solving the same problem are \\(14 : 16\\). Find is the chance that",
+    "setLabel": "Ex 9.5 Q3",
+    "stem": "neither of them solves the problem"
+  },
+  {
+    "ref": "Ex 9.5 Q4(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "MODERATE",
+    "context": "The odds against a husband who is 60 years old, living till he is 85 are \\(7 : 5\\). The odds against his wife who is now 56, living till she is 81 are \\(5 : 3\\). Find the probability that",
+    "setLabel": "Ex 9.5 Q4",
+    "stem": "at least one of them will be alive 25 years hence"
+  },
+  {
+    "ref": "Ex 9.5 Q4(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "HARD",
+    "context": "The odds against a husband who is 60 years old, living till he is 85 are \\(7 : 5\\). The odds against his wife who is now 56, living till she is 81 are \\(5 : 3\\). Find the probability that",
+    "setLabel": "Ex 9.5 Q4",
+    "stem": "exactly one of them will be alive 25 years hence."
+  },
+  {
+    "ref": "Ex 9.5 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "MODERATE",
+    "stem": "There are three events A, B and C, one of which must, and only one can happen. The odds against the event A are \\(7 : 4\\) and odds against event B are \\(5 : 3\\). Find the odds against event C."
+  },
+  {
+    "ref": "Ex 9.5 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "EASY",
+    "stem": "In a single toss of a fair die, what are the odds against the event that number 3 or 4 turns up?"
+  },
+  {
+    "ref": "Ex 9.5 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Odds",
+    "difficulty": "HARD",
+    "stem": "The odds in favour of A winning a game of chess against B are \\(3 : 2\\). If three games are to be played, what are the odds in favour of A's winning at least two games out of the three?"
+  }
+]
