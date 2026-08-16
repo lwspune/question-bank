@@ -20,6 +20,14 @@ const DIFFICULTY_LABEL: Record<Difficulty, string> = {
   HARD: "Hard",
 };
 
+/** Matches the FilterBar's button labels — a chip that renamed the thing the
+ *  user clicked would read as a different filter. */
+const FORMAT_LABEL: Record<Exclude<Filters["format"], "all">, string> = {
+  mcq: "MCQ",
+  subjective: "Written",
+  numeric: "Numeric",
+};
+
 export function buildActiveChips(
   filters: Filters,
   labels: ChipLabels
@@ -101,6 +109,19 @@ export function buildActiveChips(
         pyqYears: filters.pyqYears.filter((x) => x !== y),
         page: 1,
       }),
+    });
+  }
+
+  // `kind` and `fit` deliberately have no chip — both are always-visible
+  // segmented controls whose current state is legible in the sidebar. Format
+  // gets one because it can hide ~90% of a board chapter, and because the
+  // control itself is conditional: an undo that lives only in a component that
+  // might not be rendered is not an undo.
+  if (filters.format !== "all") {
+    chips.push({
+      key: `format:${filters.format}`,
+      label: `Format: ${FORMAT_LABEL[filters.format]}`,
+      nextFilters: () => ({ ...filters, format: "all", page: 1 }),
     });
   }
 

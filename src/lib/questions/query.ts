@@ -186,6 +186,11 @@ export async function queryQuestions(
   // PYQ (default) / Practice / All — the question_kind axis (migration 0036).
   // 'all' applies no filter; otherwise narrow to the chosen corpus.
   if (filters.kind !== "all") q = q.eq("question_kind", filters.kind);
+  // MCQ / Subjective / Numeric — the question_format axis (migrations 0041 +
+  // 0061), orthogonal to question_kind. Measured with an exam in scope: 13 ms,
+  // `questions_public_kind_exam_created_idx` still supplies the ordering and
+  // this rides along as a cheap filter. No index was added for it.
+  if (filters.format !== "all") q = q.eq("question_format", filters.format);
   if (filters.pyqYears.length > 0) q = q.in("pyq_year", filters.pyqYears);
   if (filters.q.trim()) {
     q = q.textSearch("search_vector", filters.q.trim(), {

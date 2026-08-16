@@ -197,6 +197,40 @@ describe("buildActiveChips", () => {
     expect(next.page).toBe(1);
   });
 
+  it("emits a Format chip only when the format filter is active", () => {
+    expect(
+      buildActiveChips({ ...EMPTY_FILTERS, format: "all" }, labels)
+    ).toEqual([]);
+    expect(
+      buildActiveChips({ ...EMPTY_FILTERS, format: "mcq" }, labels).map(
+        (c) => c.label
+      )
+    ).toEqual(["Format: MCQ"]);
+    expect(
+      buildActiveChips({ ...EMPTY_FILTERS, format: "subjective" }, labels).map(
+        (c) => c.label
+      )
+    ).toEqual(["Format: Written"]);
+    expect(
+      buildActiveChips({ ...EMPTY_FILTERS, format: "numeric" }, labels).map(
+        (c) => c.label
+      )
+    ).toEqual(["Format: Numeric"]);
+  });
+
+  it("removing the Format chip restores 'all' and resets page", () => {
+    // The chip is the guaranteed undo: the sidebar control is conditional, and
+    // an undo living only in a component that may not render is not an undo.
+    const next = buildActiveChips(
+      { ...EMPTY_FILTERS, format: "subjective", page: 4 },
+      labels
+    )
+      .find((c) => c.label.startsWith("Format:"))!
+      .nextFilters();
+    expect(next.format).toBe("all");
+    expect(next.page).toBe(1);
+  });
+
   it("Principle chip uses slug when principleName returns the slug (unknown)", () => {
     const filters: Filters = {
       ...EMPTY_FILTERS,
