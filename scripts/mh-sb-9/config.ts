@@ -523,6 +523,66 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Ch.4 Constructions of Triangles (Part 2, Geometry). Pages 51-56 (1-based)
+  //    → 0-based 60-65, the SMALLEST chapter in the volume at 6 pages. Opener
+  //    VERIFIED: 60 carries the "4 Constructions of Triangles" banner and 66
+  //    opens "5 Quadrilaterals".
+  //
+  //    ⚠ THE BOOK PRINTS NO ANSWERS FOR THIS CHAPTER AT ALL - the Part-2 answers
+  //    section runs 1, 2, 3, 5, 6, 7, 8, 9 and skips 4. That is not an omission:
+  //    every answer here is a ruler-and-compass DRAWING. So the mandatory step-6
+  //    cross-check cannot run, exactly as for the Class-9 humanities book.
+  //
+  //    ⚠ EXTRACTION IS TEXT-FIRST HERE, unusually for Part 2. The exercises are
+  //    plain prose with no math beyond "6.4 cm" and a degree sign, so the text
+  //    layer reads them cleanly (only the angle glyph substitutes, as `Ð`).
+  //    Vision is needed only for the worked constructions' figures.
+  //
+  //    EXERCISE INVENTORY, read off the text layer - 14 constructions of THREE
+  //    types, and every one is the same three types repeated:
+  //      PS 4.1 (p53) 4 q - base, adjacent angle, and the SUM of the other two
+  //        sides. Q1 PQR (4.2, 40, 8.5) · Q2 XYZ (6, 50, 9) · Q3 ABC (6.2, 50,
+  //        9.8) · Q4 ABC (3.2, 45, perimeter 10).
+  //      PS 4.2 (p54) 3 q - base, adjacent angle, and the DIFFERENCE of the other
+  //        two sides. Q1 XYZ (7.4, 45, 2.7) · Q2 PQR (6.5, 40, 2.5) · Q3 ABC
+  //        (6, 100, 2.5).
+  //      PS 4.3 (p56) 3 q - two angles and the PERIMETER. Q1 PQR (70, 80, 9.5) ·
+  //        Q2 XYZ (58, 46, 10.5) · Q3 LMN (60, 80, 11).
+  //      Prob 4 (p56) 4 q - Q1 sum-type · Q2 perimeter-type · Q3 perimeter 14.4
+  //        with sides in the ratio 2:3:4 (a FOURTH shape - the only one that is
+  //        not one of the three taught types) · Q4 difference-type.
+  //
+  //    ✅ THE RENDERER EXISTS AND NO NEW CANVAS WAS NEEDED. A ruler-and-compass
+  //    figure is drawable with the physical-geometry primitives already in
+  //    render_solution_diagrams.py - finite `segments`, `conics` as compass ARCS
+  //    via t0/t1, labelled `points`, `equal_aspect` and `axes: false`.
+  //    `build_constructions_specs()` computes each figure from the question's own
+  //    data (`_construct_sum` / `_construct_diff`), so the drawing is TRUTHFUL,
+  //    not schematic: the apex really is on the ray at the given angle and really
+  //    is equidistant from D and C. The two compass arcs are drawn over the
+  //    angular window spanning their REAL intersections, so they visibly cross on
+  //    the perpendicular bisector - that crossing IS the construction step.
+  //    Still to add: the perimeter type (PS 4.3, Prob Q2) and the ratio type
+  //    (Prob Q3), then the 5 incircle/circumcircle constructions of Ch.6 PS 6.3.
+  "constructions-9": {
+    id: "constructions-9",
+    chapterName: "Constructions of Triangles",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_09_Maths__Constructions_of_Triangles.pdf",
+    pdf: PART2,
+    pages: range(60, 65),
+    // NO answersPdf ON PURPOSE - the book keys no question in this chapter.
+    // Do not "restore" one; see the note above.
+    note: "Maharashtra State Board (Class 9) — Constructions of Triangles (Balbharati textbook, Part 2 Geometry)",
+    // The book's own "Construction I / II / III" headings, which are exactly the
+    // three types the exercises drill.
+    subtopics: [
+      "Construction Given Base, Base Angle and Sum of Remaining Sides",
+      "Construction Given Base, Base Angle and Difference of Remaining Sides",
+      "Construction Given Two Angles and Perimeter",
+    ],
+  },
+
   // ── Ch.6 Circle (Part 2, Geometry). Pages 76-87 (1-based) → 0-based 85-96.
   //    Boundary VERIFIED, and the derived one was WRONG AT BOTH ENDS: the
   //    practice-set positions suggested 86-97, but 85 carries the "6 Circle"

@@ -759,6 +759,115 @@ def build_app_derivatives_specs():
     return specs
 
 
+def _construct_sum(base, ang_deg, total, names="ABC"):
+    """Construction I: base BC, angle B, and AB + AC given.
+    Returns the exact coordinates of every point the construction produces, so
+    the drawing is TRUTHFUL rather than schematic - A really is on ray BT and
+    really is equidistant from D and C, which is the whole point of the figure."""
+    import math as m
+    B = (0.0, 0.0); C = (base, 0.0)
+    t = m.radians(ang_deg); u = (m.cos(t), m.sin(t))
+    D = (total * u[0], total * u[1])
+    # A on ray BD with AD = AC  =>  solve |su - D| = |su - C|
+    uc = u[0] * C[0] + u[1] * C[1]
+    sA = (total * total - base * base) / (2.0 * (total - uc))
+    A = (sA * u[0], sA * u[1])
+    M = ((D[0] + C[0]) / 2.0, (D[1] + C[1]) / 2.0)
+    return {"B": B, "C": C, "D": D, "A": A, "M": M, "names": names}
+
+
+def _construct_diff(base, ang_deg, diff, names="ABC"):
+    """Construction II: base BC, angle B, and AB - AC given. D is taken on the
+    OPPOSITE ray, which is the only structural difference from Construction I."""
+    import math as m
+    B = (0.0, 0.0); C = (base, 0.0)
+    t = m.radians(ang_deg); u = (m.cos(t), m.sin(t))
+    D = (-diff * u[0], -diff * u[1])          # opposite ray BS
+    uc = u[0] * C[0] + u[1] * C[1]
+    # A on ray BT with AD = AC, A at parameter s > 0 along u
+    sA = (base * base - diff * diff) / (2.0 * (uc - diff))
+    A = (sA * u[0], sA * u[1])
+    M = ((D[0] + C[0]) / 2.0, (D[1] + C[1]) / 2.0)
+    return {"B": B, "C": C, "D": D, "A": A, "M": M, "names": names}
+
+
+def _construction_spec(ref, g, caption):
+    """Turn a computed construction into a Canvas spec. Uses only primitives the
+    physical-geometry mode already has - finite `segments`, `conics` as compass
+    ARCS via t0/t1, labelled `points`, `equal_aspect` and `axes: false` - so NO
+    new canvas is needed for a ruler-and-compass figure."""
+    import math as m
+    B, C, D, A, M = g["B"], g["C"], g["D"], g["A"], g["M"]
+    nA, nB, nC = g["names"][0], g["names"][1], g["names"][2]
+    seg = lambda p, q, **k: dict(x1=p[0], y1=p[1], x2=q[0], y2=q[1], **k)
+    # perpendicular bisector of DC, drawn as a finite dashed segment through M
+    dx, dy = C[0] - D[0], C[1] - D[1]
+    L = m.hypot(dx, dy) or 1.0
+    px_, py_ = -dy / L, dx / L
+    half = 0.78 * L
+    pb0 = (M[0] - px_ * half, M[1] - py_ * half)
+    pb1 = (M[0] + px_ * half, M[1] + py_ * half)
+    # The two compass arcs must visibly CROSS on the perpendicular bisector -
+    # that crossing is what the construction step means. So take r > L/2, compute
+    # where the two circles actually intersect, and draw each arc only over the
+    # angular window that spans those two points.
+    r_arc = 0.62 * L
+    h = m.sqrt(max(r_arc * r_arc - (L / 2.0) ** 2, 1e-9))
+    i1 = (M[0] + px_ * h, M[1] + py_ * h)
+    i2 = (M[0] - px_ * h, M[1] - py_ * h)
+    def _window(ctr):
+        a1 = m.degrees(m.atan2(i1[1] - ctr[1], i1[0] - ctr[0]))
+        a2 = m.degrees(m.atan2(i2[1] - ctr[1], i2[0] - ctr[0]))
+        lo, hi = min(a1, a2), max(a1, a2)
+        if hi - lo > 180:            # the window wraps through +/-180
+            lo, hi = hi, lo + 360
+        return lo - 14, hi + 14
+    wD = _window(D); wC = _window(C)
+    xs = [B[0], C[0], D[0], A[0], pb0[0], pb1[0]]
+    ys = [B[1], C[1], D[1], A[1], pb0[1], pb1[1]]
+    pad = 0.14 * max(max(xs) - min(xs), max(ys) - min(ys))
+    return {
+        "ref": ref, "caption": caption, "axes": False, "equal_aspect": True,
+        "xr": [min(xs) - pad, max(xs) + pad], "yr": [min(ys) - pad, max(ys) + pad],
+        "segments": [
+            seg(B, C, color=AXIS),                     # the base
+            seg(B, D, color=GRAY, dashed=True),        # the ray carrying D
+            seg(D, C, color=GRAY, dashed=True),        # seg DC
+            seg(pb0, pb1, color=RED, dashed=True),     # perpendicular bisector of DC
+            seg(B, A, color=AXIS), seg(A, C, color=AXIS),   # the triangle
+        ],
+        "conics": [  # the two compass arcs that locate the perpendicular bisector
+            {"cx": D[0], "cy": D[1], "r": r_arc, "t0": wD[0], "t1": wD[1], "color": GREEN},
+            {"cx": C[0], "cy": C[1], "r": r_arc, "t0": wC[0], "t1": wC[1], "color": GREEN},
+        ],
+        "points": [
+            {"x": B[0], "y": B[1], "label": nB, "dx": -16, "dy": 4},
+            {"x": C[0], "y": C[1], "label": nC, "dx": 8, "dy": 4},
+            {"x": A[0], "y": A[1], "label": nA, "dx": -6, "dy": -22},
+            {"x": D[0], "y": D[1], "label": "D", "dx": 9, "dy": -20},
+        ],
+    }
+
+
+def build_constructions_specs():
+    """Class-9 Ch.4 Constructions of Triangles. The book prints NO answers for
+    this chapter because every answer is a drawing, so these figures ARE the
+    answers."""
+    out = []
+    # Practice set 4.1 - base, adjacent angle, SUM of the other two sides
+    for ref, base, ang, tot, nm, cap in [
+        ("Ex 4.1 Q1", 4.2, 40, 8.5, "PQR", "QR = 4.2 cm, angle Q = 40, PQ + PR = 8.5 cm"),
+        ("Ex 4.1 Q2", 6.0, 50, 9.0, "XYZ", "YZ = 6 cm, angle Y = 50, XY + XZ = 9 cm"),
+    ]:
+        out.append(_construction_spec(ref, _construct_sum(base, ang, tot, nm), cap))
+    # Practice set 4.2 - base, adjacent angle, DIFFERENCE of the other two sides
+    for ref, base, ang, dif, nm, cap in [
+        ("Ex 4.2 Q1", 7.4, 45, 2.7, "XYZ", "YZ = 7.4 cm, angle Y = 45, XY - XZ = 2.7 cm"),
+    ]:
+        out.append(_construction_spec(ref, _construct_diff(base, ang, dif, nm), cap))
+    return out
+
+
 def build_statistics_specs():
     """Class-9 Ch.7 Practice set 7.1 — the two DRAW-the-diagram questions.
     The book prints no answers for 7.1 (its answers are drawings), so these are
@@ -820,6 +929,7 @@ def build_statistics_specs():
 # chapterId -> spec builder. Add an entry when a new chapter authors diagrams.
 SPEC_BUILDERS = {
     "statistics-9": build_statistics_specs,
+    "constructions-9": build_constructions_specs,
     "pair-lines-12": build_pair_lines_specs,
     "linear-prog-12": build_linear_prog_specs,
     "app-def-integration-12": build_app_integration_specs,
