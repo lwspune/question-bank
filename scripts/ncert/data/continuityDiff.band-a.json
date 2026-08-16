@@ -1,0 +1,509 @@
+[
+  {
+    "ref": "5.1 Eg.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Check the continuity of the function \\(f\\) given by \\(f(x) = 2x + 3\\) at \\(x = 1\\).",
+    "solution": "First note that the function is defined at the given point \\(x = 1\\) and its value is 5. Then find the limit of the function at \\(x = 1\\). Clearly\n\n\\(\\lim_{x \\to 1} f(x) = \\lim_{x \\to 1}(2x + 3) = 2(1) + 3 = 5\\)\n\nThus \\(\\lim_{x \\to 1} f(x) = 5 = f(1)\\).\n\nHence, \\(f\\) is continuous at \\(x = 1\\)."
+  },
+  {
+    "ref": "5.1 Eg.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Examine whether the function \\(f\\) given by \\(f(x) = x^2\\) is continuous at \\(x = 0\\).",
+    "solution": "First note that the function is defined at the given point \\(x = 0\\) and its value is 0. Then find the limit of the function at \\(x = 0\\). Clearly\n\n\\(\\lim_{x \\to 0} f(x) = \\lim_{x \\to 0} x^2 = 0^2 = 0\\)\n\nThus \\(\\lim_{x \\to 0} f(x) = 0 = f(0)\\).\n\nHence, \\(f\\) is continuous at \\(x = 0\\)."
+  },
+  {
+    "ref": "5.1 Eg.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Discuss the continuity of the function \\(f\\) given by \\(f(x) = |x|\\) at \\(x = 0\\).",
+    "solution": "By definition\n\n\\(f(x) = \\begin{cases} -x, & \\text{if } x < 0 \\\\ x, & \\text{if } x \\ge 0 \\end{cases}\\)\n\nClearly the function is defined at 0 and \\(f(0) = 0\\). Left hand limit of \\(f\\) at 0 is\n\n\\(\\lim_{x \\to 0^-} f(x) = \\lim_{x \\to 0^-} (-x) = 0\\)\n\nSimilarly, the right hand limit of \\(f\\) at 0 is\n\n\\(\\lim_{x \\to 0^+} f(x) = \\lim_{x \\to 0^+} x = 0\\)\n\nThus, the left hand limit, right hand limit and the value of the function coincide at \\(x = 0\\). Hence, \\(f\\) is continuous at \\(x = 0\\)."
+  },
+  {
+    "ref": "5.1 Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Show that the function \\(f\\) given by \\(f(x) = \\begin{cases} x^3 + 3, & \\text{if } x \\ne 0 \\\\ 1, & \\text{if } x = 0 \\end{cases}\\) is not continuous at \\(x = 0\\).",
+    "solution": "The function is defined at \\(x = 0\\) and its value at \\(x = 0\\) is 1. When \\(x \\ne 0\\), the function is given by a polynomial. Hence,\n\n\\(\\lim_{x \\to 0} f(x) = \\lim_{x \\to 0} (x^3 + 3) = 0^3 + 3 = 3\\)\n\nSince the limit of \\(f\\) at \\(x = 0\\) does not coincide with \\(f(0)\\), the function is not continuous at \\(x = 0\\). It may be noted that \\(x = 0\\) is the only point of discontinuity for this function."
+  },
+  {
+    "ref": "5.1 Eg.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Check the points where the constant function \\(f(x) = k\\) is continuous.",
+    "solution": "The function is defined at all real numbers and by definition, its value at any real number equals \\(k\\). Let \\(c\\) be any real number. Then\n\n\\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} k = k\\)\n\nSince \\(f(c) = k = \\lim_{x \\to c} f(x)\\) for any real number \\(c\\), the function \\(f\\) is continuous at every real number."
+  },
+  {
+    "ref": "5.1 Eg.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Prove that the identity function on real numbers given by \\(f(x) = x\\) is continuous at every real number.",
+    "solution": "The function is clearly defined at every point and \\(f(c) = c\\) for every real number \\(c\\). Also,\n\n\\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} x = c\\)\n\nThus \\(\\lim_{x \\to c} f(x) = c = f(c)\\) and hence the function is continuous at every real number."
+  },
+  {
+    "ref": "5.1 Eg.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Is the function defined by \\(f(x) = |x|\\), a continuous function?",
+    "solution": "We may rewrite \\(f\\) as\n\n\\(f(x) = \\begin{cases} -x, & \\text{if } x < 0 \\\\ x, & \\text{if } x \\ge 0 \\end{cases}\\)\n\nBy Example 3, we know that \\(f\\) is continuous at \\(x = 0\\).\n\nLet \\(c\\) be a real number such that \\(c < 0\\). Then \\(f(c) = -c\\). Also\n\n\\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} (-x) = -c\\)\n\nSince \\(\\lim_{x \\to c} f(x) = f(c)\\), \\(f\\) is continuous at all negative real numbers.\n\nNow, let \\(c\\) be a real number such that \\(c > 0\\). Then \\(f(c) = c\\). Also\n\n\\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} x = c\\)\n\nSince \\(\\lim_{x \\to c} f(x) = f(c)\\), \\(f\\) is continuous at all positive real numbers. Hence, \\(f\\) is continuous at all points."
+  },
+  {
+    "ref": "5.1 Eg.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Discuss the continuity of the function \\(f\\) given by \\(f(x) = x^3 + x^2 - 1\\).",
+    "solution": "Clearly \\(f\\) is defined at every real number \\(c\\) and its value at \\(c\\) is \\(c^3 + c^2 - 1\\). We also know that\n\n\\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} (x^3 + x^2 - 1) = c^3 + c^2 - 1\\)\n\nThus \\(\\lim_{x \\to c} f(x) = f(c)\\), and hence \\(f\\) is continuous at every real number. This means \\(f\\) is a continuous function."
+  },
+  {
+    "ref": "5.1 Eg.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Discuss the continuity of the function \\(f\\) defined by \\(f(x) = \\dfrac{1}{x}\\), \\(x \\ne 0\\).",
+    "solution": "Fix any non zero real number \\(c\\), we have\n\n\\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} \\dfrac{1}{x} = \\dfrac{1}{c}\\)\n\nAlso, since for \\(c \\ne 0\\), \\(f(c) = \\dfrac{1}{c}\\), we have \\(\\lim_{x \\to c} f(x) = f(c)\\) and hence, \\(f\\) is continuous at every point in the domain of \\(f\\). Thus \\(f\\) is a continuous function."
+  },
+  {
+    "ref": "5.1 Eg.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the function \\(f\\) defined by \\(f(x) = \\begin{cases} x + 2, & \\text{if } x \\le 1 \\\\ x - 2, & \\text{if } x > 1 \\end{cases}\\)",
+    "solution": "The function \\(f\\) is defined at all points of the real line.\n\nCase 1 If \\(c < 1\\), then \\(f(c) = c + 2\\). Therefore, \\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c}(x + 2) = c + 2\\). Thus, \\(f\\) is continuous at all real numbers less than 1.\n\nCase 2 If \\(c > 1\\), then \\(f(c) = c - 2\\). Therefore, \\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c}(x - 2) = c - 2 = f(c)\\). Thus, \\(f\\) is continuous at all points \\(x > 1\\).\n\nCase 3 If \\(c = 1\\), then the left hand limit of \\(f\\) at \\(x = 1\\) is\n\n\\(\\lim_{x \\to 1^-} f(x) = \\lim_{x \\to 1^-} (x + 2) = 1 + 2 = 3\\)\n\nThe right hand limit of \\(f\\) at \\(x = 1\\) is\n\n\\(\\lim_{x \\to 1^+} f(x) = \\lim_{x \\to 1^+} (x - 2) = 1 - 2 = -1\\)\n\nSince the left and right hand limits of \\(f\\) at \\(x = 1\\) do not coincide, \\(f\\) is not continuous at \\(x = 1\\). Hence \\(x = 1\\) is the only point of discontinuity of \\(f\\). The graph of the function is given in Fig 5.4."
+  },
+  {
+    "ref": "5.1 Eg.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find all the points of discontinuity of the function \\(f\\) defined by \\(f(x) = \\begin{cases} x + 2, & \\text{if } x < 1 \\\\ 0, & \\text{if } x = 1 \\\\ x - 2, & \\text{if } x > 1 \\end{cases}\\)",
+    "solution": "As in the previous example we find that \\(f\\) is continuous at all real numbers \\(x \\ne 1\\). The left hand limit of \\(f\\) at \\(x = 1\\) is\n\n\\(\\lim_{x \\to 1^-} f(x) = \\lim_{x \\to 1^-} (x + 2) = 1 + 2 = 3\\)\n\nThe right hand limit of \\(f\\) at \\(x = 1\\) is\n\n\\(\\lim_{x \\to 1^+} f(x) = \\lim_{x \\to 1^+} (x - 2) = 1 - 2 = -1\\)\n\nSince, the left and right hand limits of \\(f\\) at \\(x = 1\\) do not coincide, \\(f\\) is not continuous at \\(x = 1\\). Hence \\(x = 1\\) is the only point of discontinuity of \\(f\\). The graph of the function is given in the Fig 5.5."
+  },
+  {
+    "ref": "5.1 Eg.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the function defined by \\(f(x) = \\begin{cases} x + 2, & \\text{if } x < 0 \\\\ -x + 2, & \\text{if } x > 0 \\end{cases}\\)",
+    "solution": "Observe that the function is defined at all real numbers except at 0. Domain of definition of this function is \\(\\mathrm{D}_1 \\cup \\mathrm{D}_2\\) where \\(\\mathrm{D}_1 = \\{x \\in \\mathbf{R} : x < 0\\}\\) and \\(\\mathrm{D}_2 = \\{x \\in \\mathbf{R} : x > 0\\}\\).\n\nCase 1 If \\(c \\in \\mathrm{D}_1\\), then \\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} (x + 2) = c + 2 = f(c)\\) and hence \\(f\\) is continuous in \\(\\mathrm{D}_1\\).\n\nCase 2 If \\(c \\in \\mathrm{D}_2\\), then \\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} (-x + 2) = -c + 2 = f(c)\\) and hence \\(f\\) is continuous in \\(\\mathrm{D}_2\\).\n\nSince \\(f\\) is continuous at all points in the domain of \\(f\\), we deduce that \\(f\\) is continuous. Graph of this function is given in the Fig 5.6. Note that to graph this function we need to lift the pen from the plane of the paper, but we need to do that only for those points where the function is not defined."
+  },
+  {
+    "ref": "5.1 Eg.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the function \\(f\\) given by \\(f(x) = \\begin{cases} x, & \\text{if } x \\ge 0 \\\\ x^2, & \\text{if } x < 0 \\end{cases}\\)",
+    "solution": "Clearly the function is defined at every real number. Graph of the function is given in Fig 5.7. By inspection, it seems prudent to partition the domain of definition of \\(f\\) into three disjoint subsets of the real line.\n\nLet \\(\\mathrm{D}_1 = \\{x \\in \\mathbf{R} : x < 0\\}\\), \\(\\mathrm{D}_2 = \\{0\\}\\) and \\(\\mathrm{D}_3 = \\{x \\in \\mathbf{R} : x > 0\\}\\).\n\nCase 1 At any point in \\(\\mathrm{D}_1\\), we have \\(f(x) = x^2\\) and it is easy to see that it is continuous there (see Example 2).\n\nCase 2 At any point in \\(\\mathrm{D}_3\\), we have \\(f(x) = x\\) and it is easy to see that it is continuous there (see Example 6).\n\nCase 3 Now we analyse the function at \\(x = 0\\). The value of the function at 0 is \\(f(0) = 0\\). The left hand limit of \\(f\\) at 0 is\n\n\\(\\lim_{x \\to 0^-} f(x) = \\lim_{x \\to 0^-} x^2 = 0^2 = 0\\)\n\nThe right hand limit of \\(f\\) at 0 is\n\n\\(\\lim_{x \\to 0^+} f(x) = \\lim_{x \\to 0^+} x = 0\\)\n\nThus \\(\\lim_{x \\to 0} f(x) = 0 = f(0)\\) and hence \\(f\\) is continuous at 0. This means that \\(f\\) is continuous at every point in its domain and hence, \\(f\\) is a continuous function."
+  },
+  {
+    "ref": "5.1 Eg.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Show that every polynomial function is continuous.",
+    "solution": "Recall that a function \\(p\\) is a polynomial function if it is defined by \\(p(x) = a_0 + a_1 x + \\ldots + a_n x^n\\) for some natural number \\(n\\), \\(a_n \\ne 0\\) and \\(a_i \\in \\mathbf{R}\\). Clearly this function is defined for every real number. For a fixed real number \\(c\\), we have\n\n\\(\\lim_{x \\to c} p(x) = p(c)\\)\n\nBy definition, \\(p\\) is continuous at \\(c\\). Since \\(c\\) is any real number, \\(p\\) is continuous at every real number and hence \\(p\\) is a continuous function."
+  },
+  {
+    "ref": "5.1 Eg.15",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "HARD",
+    "stem": "Find all the points of discontinuity of the greatest integer function defined by \\(f(x) = [x]\\), where \\([x]\\) denotes the greatest integer less than or equal to \\(x\\).",
+    "solution": "First observe that \\(f\\) is defined for all real numbers. Graph of the function is given in Fig 5.8. From the graph it looks like that \\(f\\) is discontinuous at every integral point. Below we explore, if this is true.\n\nCase 1 Let \\(c\\) be a real number which is not equal to any integer. It is evident from the graph that for all real numbers close to \\(c\\) the value of the function is equal to \\([c]\\); i.e., \\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} [x] = [c]\\). Also \\(f(c) = [c]\\) and hence the function is continuous at all real numbers not equal to integers.\n\nCase 2 Let \\(c\\) be an integer. Then we can find a sufficiently small real number \\(r > 0\\) such that \\([c - r] = c - 1\\) whereas \\([c + r] = c\\).\n\nThis, in terms of limits mean that\n\n\\(\\lim_{x \\to c^-} f(x) = c - 1\\), \\(\\lim_{x \\to c^+} f(x) = c\\)\n\nSince these limits cannot be equal to each other for any \\(c\\), the function is discontinuous at every integral point."
+  },
+  {
+    "ref": "5.1 Eg.16",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Prove that every rational function is continuous.",
+    "solution": "Recall that every rational function \\(f\\) is given by\n\n\\(f(x) = \\dfrac{p(x)}{q(x)}\\), \\(q(x) \\ne 0\\)\n\nwhere \\(p\\) and \\(q\\) are polynomial functions. The domain of \\(f\\) is all real numbers except points at which \\(q\\) is zero. Since polynomial functions are continuous (Example 14), \\(f\\) is continuous by (4) of Theorem 1."
+  },
+  {
+    "ref": "5.1 Eg.17",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of sine function.",
+    "solution": "To see this we use the following facts\n\n\\(\\lim_{x \\to 0} \\sin x = 0\\)\n\nWe have not proved it, but is intuitively clear from the graph of \\(\\sin x\\) near 0.\n\nNow, observe that \\(f(x) = \\sin x\\) is defined for every real number. Let \\(c\\) be a real number. Put \\(x = c + h\\). If \\(x \\to c\\) we know that \\(h \\to 0\\). Therefore\n\n\\(\\lim_{x \\to c} f(x) = \\lim_{x \\to c} \\sin x\\)\n\n\\(= \\lim_{h \\to 0} \\sin(c + h)\\)\n\n\\(= \\lim_{h \\to 0} [\\sin c \\cos h + \\cos c \\sin h]\\)\n\n\\(= \\lim_{h \\to 0} [\\sin c \\cos h] + \\lim_{h \\to 0} [\\cos c \\sin h]\\)\n\n\\(= \\sin c + 0 = \\sin c = f(c)\\)\n\nThus \\(\\lim_{x \\to c} f(x) = f(c)\\) and hence \\(f\\) is a continuous function."
+  },
+  {
+    "ref": "5.1 Eg.18",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Prove that the function defined by \\(f(x) = \\tan x\\) is a continuous function.",
+    "solution": "The function \\(f(x) = \\tan x = \\dfrac{\\sin x}{\\cos x}\\). This is defined for all real numbers such that \\(\\cos x \\ne 0\\), i.e., \\(x \\ne (2n + 1)\\dfrac{\\pi}{2}\\). We have just proved that both sine and cosine functions are continuous. Thus \\(\\tan x\\) being a quotient of two continuous functions is continuous wherever it is defined."
+  },
+  {
+    "ref": "5.1 Eg.19",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Show that the function defined by \\(f(x) = \\sin(x^2)\\) is a continuous function.",
+    "solution": "Observe that the function is defined for every real number. The function \\(f\\) may be thought of as a composition \\(g \\circ h\\) of the two functions \\(g\\) and \\(h\\), where \\(g(x) = \\sin x\\) and \\(h(x) = x^2\\). Since both \\(g\\) and \\(h\\) are continuous functions, by Theorem 2, it can be deduced that \\(f\\) is a continuous function."
+  },
+  {
+    "ref": "5.1 Eg.20",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Show that the function \\(f\\) defined by \\(f(x) = |1 - x + |x||\\), where \\(x\\) is any real number, is a continuous function.",
+    "solution": "Define \\(g\\) by \\(g(x) = 1 - x + |x|\\) and \\(h\\) by \\(h(x) = |x|\\) for all real \\(x\\). Then\n\n\\((h \\circ g)(x) = h(g(x))\\)\n\n\\(= h(1 - x + |x|)\\)\n\n\\(= |1 - x + |x|| = f(x)\\)\n\nIn Example 7, we have seen that \\(h\\) is a continuous function. Hence \\(g\\) being a sum of a polynomial function and the modulus function is continuous. But then \\(f\\) being a composite of two continuous functions is continuous."
+  },
+
+  {
+    "ref": "Ex 5.1 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Prove that the function \\(f(x) = 5x - 3\\) is continuous at \\(x = 0\\), at \\(x = -3\\) and at \\(x = 5\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Examine the continuity of the function \\(f(x) = 2x^2 - 1\\) at \\(x = 3\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q3(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "context": "Examine the following functions for continuity.",
+    "setLabel": "Ex 5.1 Q3",
+    "stem": "\\(f(x) = x - 5\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q3(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "context": "Examine the following functions for continuity.",
+    "setLabel": "Ex 5.1 Q3",
+    "stem": "\\(f(x) = \\dfrac{1}{x - 5}\\), \\(x \\ne 5\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q3(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "context": "Examine the following functions for continuity.",
+    "setLabel": "Ex 5.1 Q3",
+    "stem": "\\(f(x) = \\dfrac{x^2 - 25}{x + 5}\\), \\(x \\ne -5\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q3(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "context": "Examine the following functions for continuity.",
+    "setLabel": "Ex 5.1 Q3",
+    "stem": "\\(f(x) = |x - 5|\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Prove that the function \\(f(x) = x^n\\) is continuous at \\(x = n\\), where \\(n\\) is a positive integer."
+  },
+  {
+    "ref": "Ex 5.1 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Is the function \\(f\\) defined by \\(f(x) = \\begin{cases} x, & \\text{if } x \\le 1 \\\\ 5, & \\text{if } x > 1 \\end{cases}\\) continuous at \\(x = 0\\)? At \\(x = 1\\)? At \\(x = 2\\)?"
+  },
+  {
+    "ref": "Ex 5.1 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Find all points of discontinuity of \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} 2x + 3, & \\text{if } x \\le 2 \\\\ 2x - 3, & \\text{if } x > 2 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find all points of discontinuity of \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} |x| + 3, & \\text{if } x \\le -3 \\\\ -2x, & \\text{if } -3 < x < 3 \\\\ 6x + 2, & \\text{if } x \\ge 3 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find all points of discontinuity of \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} \\dfrac{|x|}{x}, & \\text{if } x \\ne 0 \\\\ 0, & \\text{if } x = 0 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find all points of discontinuity of \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} \\dfrac{x}{|x|}, & \\text{if } x < 0 \\\\ -1, & \\text{if } x \\ge 0 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Find all points of discontinuity of \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} x + 1, & \\text{if } x \\ge 1 \\\\ x^2 + 1, & \\text{if } x < 1 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Find all points of discontinuity of \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} x^3 - 3, & \\text{if } x \\le 2 \\\\ x^2 + 1, & \\text{if } x > 2 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Find all points of discontinuity of \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} x^{10} - 1, & \\text{if } x \\le 1 \\\\ x^2, & \\text{if } x > 1 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Is the function defined by \\(f(x) = \\begin{cases} x + 5, & \\text{if } x \\le 1 \\\\ x - 5, & \\text{if } x > 1 \\end{cases}\\) a continuous function?"
+  },
+  {
+    "ref": "Ex 5.1 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the function \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} 3, & \\text{if } 0 \\le x \\le 1 \\\\ 4, & \\text{if } 1 < x < 3 \\\\ 5, & \\text{if } 3 \\le x \\le 10 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the function \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} 2x, & \\text{if } x < 0 \\\\ 0, & \\text{if } 0 \\le x \\le 1 \\\\ 4x, & \\text{if } x > 1 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the function \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} -2, & \\text{if } x \\le -1 \\\\ 2x, & \\text{if } -1 < x \\le 1 \\\\ 2, & \\text{if } x > 1 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find the relationship between \\(a\\) and \\(b\\) so that the function \\(f\\) defined by \\(f(x) = \\begin{cases} ax + 1, & \\text{if } x \\le 3 \\\\ bx + 3, & \\text{if } x > 3 \\end{cases}\\) is continuous at \\(x = 3\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "For what value of \\(\\lambda\\) is the function defined by \\(f(x) = \\begin{cases} \\lambda(x^2 - 2x), & \\text{if } x \\le 0 \\\\ 4x + 1, & \\text{if } x > 0 \\end{cases}\\) continuous at \\(x = 0\\)? What about continuity at \\(x = 1\\)?"
+  },
+  {
+    "ref": "Ex 5.1 Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Show that the function defined by \\(g(x) = x - [x]\\) is discontinuous at all integral points. Here \\([x]\\) denotes the greatest integer less than or equal to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.1 Q20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Is the function defined by \\(f(x) = x^2 - \\sin x + 5\\) continuous at \\(x = \\pi\\)?"
+  },
+  {
+    "ref": "Ex 5.1 Q21(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "context": "Discuss the continuity of the following functions:",
+    "setLabel": "Ex 5.1 Q21",
+    "stem": "\\(f(x) = \\sin x + \\cos x\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q21(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "context": "Discuss the continuity of the following functions:",
+    "setLabel": "Ex 5.1 Q21",
+    "stem": "\\(f(x) = \\sin x - \\cos x\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q21(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "context": "Discuss the continuity of the following functions:",
+    "setLabel": "Ex 5.1 Q21",
+    "stem": "\\(f(x) = \\sin x \\cdot \\cos x\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the cosine, cosecant, secant and cotangent functions."
+  },
+  {
+    "ref": "Ex 5.1 Q23",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find all points of discontinuity of \\(f\\), where \\(f(x) = \\begin{cases} \\dfrac{\\sin x}{x}, & \\text{if } x < 0 \\\\ x + 1, & \\text{if } x \\ge 0 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q24",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "HARD",
+    "stem": "Determine if \\(f\\) defined by \\(f(x) = \\begin{cases} x^2 \\sin \\dfrac{1}{x}, & \\text{if } x \\ne 0 \\\\ 0, & \\text{if } x = 0 \\end{cases}\\) is a continuous function?"
+  },
+  {
+    "ref": "Ex 5.1 Q25",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Examine the continuity of \\(f\\), where \\(f\\) is defined by \\(f(x) = \\begin{cases} \\sin x - \\cos x, & \\text{if } x \\ne 0 \\\\ -1, & \\text{if } x = 0 \\end{cases}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q26",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find the value of \\(k\\) so that the function \\(f\\) is continuous at the indicated point: \\(f(x) = \\begin{cases} \\dfrac{k \\cos x}{\\pi - 2x}, & \\text{if } x \\ne \\dfrac{\\pi}{2} \\\\ 3, & \\text{if } x = \\dfrac{\\pi}{2} \\end{cases}\\) at \\(x = \\dfrac{\\pi}{2}\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q27",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Find the value of \\(k\\) so that the function \\(f\\) is continuous at the indicated point: \\(f(x) = \\begin{cases} kx^2, & \\text{if } x \\le 2 \\\\ 3, & \\text{if } x > 2 \\end{cases}\\) at \\(x = 2\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q28",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find the value of \\(k\\) so that the function \\(f\\) is continuous at the indicated point: \\(f(x) = \\begin{cases} kx + 1, & \\text{if } x \\le \\pi \\\\ \\cos x, & \\text{if } x > \\pi \\end{cases}\\) at \\(x = \\pi\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q29",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Find the value of \\(k\\) so that the function \\(f\\) is continuous at the indicated point: \\(f(x) = \\begin{cases} kx + 1, & \\text{if } x \\le 5 \\\\ 3x - 5, & \\text{if } x > 5 \\end{cases}\\) at \\(x = 5\\)"
+  },
+  {
+    "ref": "Ex 5.1 Q30",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Find the values of \\(a\\) and \\(b\\) such that the function defined by \\(f(x) = \\begin{cases} 5, & \\text{if } x \\le 2 \\\\ ax + b, & \\text{if } 2 < x < 10 \\\\ 21, & \\text{if } x \\ge 10 \\end{cases}\\) is a continuous function."
+  },
+  {
+    "ref": "Ex 5.1 Q31",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "EASY",
+    "stem": "Show that the function defined by \\(f(x) = \\cos(x^2)\\) is a continuous function."
+  },
+  {
+    "ref": "Ex 5.1 Q32",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Show that the function defined by \\(f(x) = |\\cos x|\\) is a continuous function."
+  },
+  {
+    "ref": "Ex 5.1 Q33",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "MODERATE",
+    "stem": "Examine that \\(\\sin |x|\\) is a continuous function."
+  },
+  {
+    "ref": "Ex 5.1 Q34",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity",
+    "difficulty": "HARD",
+    "stem": "Find all the points of discontinuity of \\(f\\) defined by \\(f(x) = |x| - |x + 1|\\)."
+  }
+]

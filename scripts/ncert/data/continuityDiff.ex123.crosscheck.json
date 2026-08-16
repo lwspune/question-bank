@@ -1,0 +1,450 @@
+[
+  {
+    "ref": "Ex 5.1 Q1",
+    "book_key": "",
+    "our_answer": "f is continuous at x = 0, at x = -3 and at x = 5 (limit = value in each case)",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Prove that ...\" — the key prints nothing for Q1. Expected. Our proof is sound: f(x) = 5x - 3 is a polynomial, lim_{x->c} f(x) = 5c - 3 = f(c) at every c, and the three required values -3, -18, 22 are correct."
+  },
+  {
+    "ref": "Ex 5.1 Q2",
+    "book_key": "f is continuous at x = 3",
+    "our_answer": "f is continuous at x = 3",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q3(a)",
+    "book_key": "(a), (b), (c) and (d) are all continuous functions",
+    "our_answer": "f(x) = x - 5 is continuous on R",
+    "verdict": "AGREE",
+    "note": "One key entry covers Q3(a)-(d)."
+  },
+  {
+    "ref": "Ex 5.1 Q3(b)",
+    "book_key": "(a), (b), (c) and (d) are all continuous functions",
+    "our_answer": "continuous at every point of its domain R - {5}; x = 5 is not a point of discontinuity because f is undefined there",
+    "verdict": "AGREE",
+    "note": "The key's blanket \"continuous function\" means continuous throughout its domain — the same reading our answer spells out. x = 5 is not in the domain, so it is not a discontinuity."
+  },
+  {
+    "ref": "Ex 5.1 Q3(c)",
+    "book_key": "(a), (b), (c) and (d) are all continuous functions",
+    "our_answer": "continuous at every point of its domain R - {-5}; x = -5 is not in the domain",
+    "verdict": "AGREE",
+    "note": "For x != -5, f(x) = x - 5. Continuous throughout the domain."
+  },
+  {
+    "ref": "Ex 5.1 Q3(d)",
+    "book_key": "(a), (b), (c) and (d) are all continuous functions",
+    "our_answer": "f(x) = |x - 5| is continuous on R (both one-sided limits and the value are 0 at x = 5)",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q4",
+    "book_key": "",
+    "our_answer": "f(x) = x^n is continuous at x = n, since lim_{x->n} x^n = n^n = f(n)",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Prove that ...\" — no printed key. Expected. Derivation re-checked and correct."
+  },
+  {
+    "ref": "Ex 5.1 Q5",
+    "book_key": "f is continuous at x = 0 and x = 2; Not continuous at x = 1",
+    "our_answer": "continuous at x = 0 and x = 2; not continuous at x = 1 (left limit 1, right limit 5)",
+    "verdict": "AGREE",
+    "note": "Compound answer checked in all three parts."
+  },
+  {
+    "ref": "Ex 5.1 Q6",
+    "book_key": "Discontinuous at x = 2",
+    "our_answer": "x = 2 is the only point of discontinuity (left limit and value 7, right limit 1)",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q7",
+    "book_key": "Discontinuous at x = 3",
+    "our_answer": "x = 3 is the only point of discontinuity; f IS continuous at x = -3",
+    "verdict": "AGREE",
+    "note": "Both branch points checked. At x = -3 all three of left limit, value and right limit equal 6, so the key naming only x = 3 is right. At x = 3, left -6 vs value/right 20."
+  },
+  {
+    "ref": "Ex 5.1 Q8",
+    "book_key": "Discontinuous at x = 0",
+    "our_answer": "x = 0 is the only point of discontinuity (left limit -1, right limit 1)",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q9",
+    "book_key": "No point of discontinuity",
+    "our_answer": "f is the constant function -1; continuous on R, no point of discontinuity",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q10",
+    "book_key": "No point of discontinuity",
+    "our_answer": "continuous on R; at x = 1 both one-sided limits and the value are 2",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q11",
+    "book_key": "No point of discontinuity",
+    "our_answer": "continuous on R; at x = 2 both one-sided limits and the value are 5",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q12",
+    "book_key": "f is discontinuous at x = 1",
+    "our_answer": "x = 1 is the only point of discontinuity (left limit and value 0, right limit 1)",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q13",
+    "book_key": "f is not continuous at x = 1",
+    "our_answer": "not a continuous function; discontinuous exactly at x = 1 (left/value 6, right -4)",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q14",
+    "book_key": "f is not continuous at x = 1 and x = 3",
+    "our_answer": "continuous on [0, 10] except at x = 1 and x = 3",
+    "verdict": "AGREE",
+    "note": "Both discontinuity points checked: at x = 1 left/value 3 vs right 4; at x = 3 left 4 vs right/value 5."
+  },
+  {
+    "ref": "Ex 5.1 Q15",
+    "book_key": "x = 1 is the only point of discontinuity",
+    "our_answer": "continuous everywhere except x = 1; f IS continuous at x = 0",
+    "verdict": "AGREE",
+    "note": "Compound: the key's word \"only\" is what makes x = 0 part of the claim. At x = 0 left limit, value and right limit are all 0 — confirmed."
+  },
+  {
+    "ref": "Ex 5.1 Q16",
+    "book_key": "Continuous",
+    "our_answer": "continuous on R, no point of discontinuity (checked at x = -1 and x = 1)",
+    "verdict": "AGREE",
+    "note": "At x = -1 all three quantities are -2; at x = 1 all three are 2."
+  },
+  {
+    "ref": "Ex 5.1 Q17",
+    "book_key": "a = b + 2/3",
+    "our_answer": "3a + 1 = 3b + 3, i.e. a = b + 2/3",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q18",
+    "book_key": "For no value of lambda, f is continuous at x = 0 but f is continuous at x = 1 for any value of lambda.",
+    "our_answer": "There is no value of lambda making f continuous at x = 0; f is continuous at x = 1 for every lambda.",
+    "verdict": "AGREE",
+    "note": "FLAGGED ROW — adjudicated. The key states our conclusion almost verbatim, so the \"no value exists\" answer is correct and must NOT be replaced by a numeric lambda. Re-derived: for x <= 0, lambda(x^2 - 2x) -> 0 as x -> 0^- for every lambda (both terms vanish), and f(0) = 0; the right limit is lim (4x + 1) = 1. Left limit 0 != right limit 1 identically in lambda, so no lambda works. At x = 1 the point sits strictly inside the branch x > 0, so f(x) = 4x + 1 near 1 and lim = 5 = f(1) regardless of lambda."
+  },
+  {
+    "ref": "Ex 5.1 Q19",
+    "book_key": "",
+    "our_answer": "g(x) = x - [x] is discontinuous at every integer (left limit 1, right limit 0 = g(c))",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Show that ...\" — no printed key. Expected. Argument re-checked and correct."
+  },
+  {
+    "ref": "Ex 5.1 Q20",
+    "book_key": "f is continuous at x = pi",
+    "our_answer": "Yes — f is continuous at x = pi; limit = value = pi^2 + 5",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q21(a)",
+    "book_key": "(a), (b) and (c) are all continuous",
+    "our_answer": "sin x + cos x is continuous on R",
+    "verdict": "AGREE",
+    "note": "One key entry covers Q21(a)-(c)."
+  },
+  {
+    "ref": "Ex 5.1 Q21(b)",
+    "book_key": "(a), (b) and (c) are all continuous",
+    "our_answer": "sin x - cos x is continuous on R",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q21(c)",
+    "book_key": "(a), (b) and (c) are all continuous",
+    "our_answer": "sin x . cos x is continuous on R",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q22",
+    "book_key": "Cosine function is continuous for all x in R; cosecant is continuous except for x = n.pi, n in Z; secant is continuous except for x = (2n+1).pi/2, n in Z and cotangent function is continuous except for x = n.pi, n in Z",
+    "our_answer": "cos x continuous on R; cosec x continuous on R - {n.pi}; sec x continuous on R - {(2n+1).pi/2}; cot x continuous on R - {n.pi}",
+    "verdict": "AGREE",
+    "note": "Four-part compound answer; every part matched, including the exclusion sets."
+  },
+  {
+    "ref": "Ex 5.1 Q23",
+    "book_key": "There is no point of discontinuity.",
+    "our_answer": "continuous on R; at x = 0 left limit (sin x)/x -> 1, right limit and value 1",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q24",
+    "book_key": "Yes, f is continuous for all x in R",
+    "our_answer": "Yes — continuous on R; sandwich theorem gives lim_{x->0} x^2 sin(1/x) = 0 = f(0)",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q25",
+    "book_key": "f is continuous for all x in R",
+    "our_answer": "continuous on R; at x = 0 the limit is 0 - 1 = -1 = f(0)",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q26",
+    "book_key": "k = 6",
+    "our_answer": "k = 6",
+    "verdict": "AGREE",
+    "note": "Independently re-derived: substituting x = pi/2 + h gives (k/2)(sin h / h) -> k/2 = 3."
+  },
+  {
+    "ref": "Ex 5.1 Q27",
+    "book_key": "k = 3/4",
+    "our_answer": "k = 3/4",
+    "verdict": "AGREE",
+    "note": "4k = 3."
+  },
+  {
+    "ref": "Ex 5.1 Q28",
+    "book_key": "k = -2/pi",
+    "our_answer": "k = -2/pi",
+    "verdict": "AGREE",
+    "note": "k.pi + 1 = cos(pi) = -1."
+  },
+  {
+    "ref": "Ex 5.1 Q29",
+    "book_key": "k = 9/5",
+    "our_answer": "k = 9/5",
+    "verdict": "AGREE",
+    "note": "5k + 1 = 10."
+  },
+  {
+    "ref": "Ex 5.1 Q30",
+    "book_key": "a = 2, b = 1",
+    "our_answer": "a = 2, b = 1",
+    "verdict": "AGREE",
+    "note": "2a + b = 5 and 10a + b = 21; both values checked, not just a."
+  },
+  {
+    "ref": "Ex 5.1 Q31",
+    "book_key": "",
+    "our_answer": "cos(x^2) is continuous on R as a composite of continuous functions",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Show that ...\" — no printed key. Expected."
+  },
+  {
+    "ref": "Ex 5.1 Q32",
+    "book_key": "",
+    "our_answer": "|cos x| is continuous on R as a composite of continuous functions",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Show that ...\" — no printed key. Expected."
+  },
+  {
+    "ref": "Ex 5.1 Q33",
+    "book_key": "",
+    "our_answer": "sin|x| is continuous on R as a composite of continuous functions",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Examine that ...\" — no printed key (the key jumps 30 -> 34). Expected."
+  },
+  {
+    "ref": "Ex 5.1 Q34",
+    "book_key": "There is no point of discontinuity.",
+    "our_answer": "continuous on R; no point of discontinuity",
+    "verdict": "AGREE",
+    "note": "Our piecewise reduction re-checked: f = 1 on x <= -1, -2x - 1 on -1 < x < 0, -1 on x >= 0; both junctions agree (1 at x = -1, -1 at x = 0)."
+  },
+  {
+    "ref": "Ex 5.2 Q1",
+    "book_key": "2x cos(x^2 + 5)",
+    "our_answer": "2x cos(x^2 + 5)",
+    "verdict": "AGREE",
+    "note": "Numerically confirmed against the true derivative at 4 sample points."
+  },
+  {
+    "ref": "Ex 5.2 Q2",
+    "book_key": "- cos x sin(sin x)",
+    "our_answer": "- cos x sin(sin x)",
+    "verdict": "AGREE",
+    "note": "Numerically confirmed."
+  },
+  {
+    "ref": "Ex 5.2 Q3",
+    "book_key": "a cos(ax + b)",
+    "our_answer": "a cos(ax + b)",
+    "verdict": "AGREE",
+    "note": "Numerically confirmed."
+  },
+  {
+    "ref": "Ex 5.2 Q4",
+    "book_key": "sec(tan sqrt(x)) . tan(tan sqrt(x)) . sec^2 sqrt(x) / (2 sqrt(x))",
+    "our_answer": "sec(tan sqrt(x)) tan(tan sqrt(x)) sec^2 sqrt(x) / (2 sqrt(x))",
+    "verdict": "AGREE",
+    "note": "Numerically confirmed."
+  },
+  {
+    "ref": "Ex 5.2 Q5",
+    "book_key": "a cos(ax + b) sec(cx + d) + c sin(ax + b) tan(cx + d) sec(cx + d)",
+    "our_answer": "[a cos(ax+b) cos(cx+d) + c sin(ax+b) sin(cx+d)] / cos^2(cx+d)",
+    "verdict": "AGREE",
+    "note": "Different but equivalent form. Splitting our single fraction term by term: a cos(ax+b)cos(cx+d)/cos^2(cx+d) = a cos(ax+b) sec(cx+d), and c sin(ax+b)sin(cx+d)/cos^2(cx+d) = c sin(ax+b) tan(cx+d) sec(cx+d). Numerically confirmed identical to the true derivative at 4 points."
+  },
+  {
+    "ref": "Ex 5.2 Q6",
+    "book_key": "10x^4 sin x^5 cos x^5 cos x^3 - 3x^2 sin x^3 sin^2 x^5",
+    "our_answer": "10x^4 cos x^3 sin(x^5) cos(x^5) - 3x^2 sin x^3 sin^2(x^5)",
+    "verdict": "AGREE",
+    "note": "Same expression, factors reordered. Numerically confirmed."
+  },
+  {
+    "ref": "Ex 5.2 Q7",
+    "book_key": "-2 sqrt(2) x / (sin x^2 . sqrt(sin 2x^2))",
+    "our_answer": "-2x cosec^2(x^2) / sqrt(cot(x^2)), also given as -2 sqrt(2) x / (sin(x^2) sqrt(sin 2x^2))",
+    "verdict": "AGREE",
+    "note": "Our answer already prints the key's form as its alternate. Equivalence re-derived: -2x/(sin^2 u) . sqrt(sin u / cos u) = -2x / (sin^{3/2}u sqrt(cos u)), and -2sqrt(2)x/(sin u sqrt(2 sin u cos u)) reduces to the same. Numerically confirmed at 3 points where cot(x^2) > 0."
+  },
+  {
+    "ref": "Ex 5.2 Q8",
+    "book_key": "- sin sqrt(x) / (2 sqrt(x))",
+    "our_answer": "- sin sqrt(x) / (2 sqrt(x)), for x > 0",
+    "verdict": "AGREE",
+    "note": "Numerically confirmed."
+  },
+  {
+    "ref": "Ex 5.2 Q9",
+    "book_key": "",
+    "our_answer": "|x - 1| is not differentiable at x = 1: LHD = -1, RHD = +1",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Prove that ...\" — the key stops at Q8. Expected. One-sided derivatives re-checked and correct."
+  },
+  {
+    "ref": "Ex 5.2 Q10",
+    "book_key": "",
+    "our_answer": "[x] on 0 < x < 3 is not differentiable at x = 1 and x = 2 (the left-hand difference quotient -1/h diverges; f is discontinuous there)",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "\"Prove that ...\" — no printed key. Expected. Both points argued, and the discontinuity-implies-non-differentiability remark is a correct independent route."
+  },
+  {
+    "ref": "Ex 5.3 Q1",
+    "book_key": "(cos x - 2)/3",
+    "our_answer": "(cos x - 2)/3",
+    "verdict": "AGREE",
+    "note": "Independently re-derived with sympy."
+  },
+  {
+    "ref": "Ex 5.3 Q2",
+    "book_key": "2/(cos y - 3)",
+    "our_answer": "2/(cos y - 3)",
+    "verdict": "AGREE",
+    "note": "Independently re-derived with sympy."
+  },
+  {
+    "ref": "Ex 5.3 Q3",
+    "book_key": "- a/(2by + sin y)",
+    "our_answer": "- a/(2by + sin y)",
+    "verdict": "AGREE",
+    "note": "Independently re-derived with sympy."
+  },
+  {
+    "ref": "Ex 5.3 Q4",
+    "book_key": "(sec^2 x - y)/(x + 2y - 1)",
+    "our_answer": "(sec^2 x - y)/(x + 2y - 1)",
+    "verdict": "AGREE",
+    "note": "Independently re-derived with sympy."
+  },
+  {
+    "ref": "Ex 5.3 Q5",
+    "book_key": "-(2x + y)/(x + 2y)",
+    "our_answer": "-(2x + y)/(x + 2y)",
+    "verdict": "AGREE",
+    "note": "Independently re-derived with sympy."
+  },
+  {
+    "ref": "Ex 5.3 Q6",
+    "book_key": "-(3x^2 + 2xy + y^2)/(x^2 + 2xy + 3y^2)",
+    "our_answer": "-(3x^2 + 2xy + y^2)/(x^2 + 2xy + 3y^2)",
+    "verdict": "AGREE",
+    "note": "Independently re-derived with sympy. Note the two denominators/numerators are NOT the same polynomial (3y^2 vs y^2), so this is the easy one to wave through — checked term by term."
+  },
+  {
+    "ref": "Ex 5.3 Q7",
+    "book_key": "y sin xy / (sin 2y - x sin xy)",
+    "our_answer": "y sin(xy) / (sin 2y - x sin(xy))",
+    "verdict": "AGREE",
+    "note": "FLAGGED ROW — adjudicated. The Greek kappa in our stem where the book prints Roman k is immaterial to the answer: the right-hand side is an arbitrary constant and differentiates to 0, so it never appears in dy/dx. Key and our answer are identical, and the derivation was independently re-run with sympy. Cosmetic only — worth normalising the glyph to k for consistency with the printed book, but it changes nothing mathematically and is not a defect."
+  },
+  {
+    "ref": "Ex 5.3 Q8",
+    "book_key": "sin 2x / sin 2y",
+    "our_answer": "sin 2x / sin 2y, valid where sin 2y != 0",
+    "verdict": "AGREE",
+    "note": "Independently re-derived with sympy."
+  },
+  {
+    "ref": "Ex 5.3 Q9",
+    "book_key": "2/(1 + x^2)",
+    "our_answer": "2/(1 + x^2)",
+    "verdict": "AGREE",
+    "note": "FLAGGED ROW — adjudicated. Our answer and the key are the SAME expression, so this is an AGREE, not a disagreement. The flag is real but is about the book's STEM, not its key: Q9 prints no restriction on x while Q10-Q15 all carry one, and the identity sin^{-1}(2x/(1+x^2)) = 2 tan^{-1} x holds only on |x| <= 1. Verified numerically: at x = 1.5 the true derivative is -0.6154 and at x = 3 it is -0.2, i.e. -2/(1+x^2), the opposite sign to the printed answer. Held at AGREE rather than BOOK-KEY-WRONG because on the domain the question intends (the principal branch, which is also how NCERT works this type in its own solved examples) the key is correct and identical to ours. Recorded as a book stem incompleteness for the errata pass, not a key error."
+  },
+  {
+    "ref": "Ex 5.3 Q10",
+    "book_key": "3/(1 + x^2)",
+    "our_answer": "3/(1 + x^2)",
+    "verdict": "AGREE",
+    "note": "Numerically confirmed on -1/sqrt(3) < x < 1/sqrt(3)."
+  },
+  {
+    "ref": "Ex 5.3 Q11",
+    "book_key": "2/(1 + x^2)",
+    "our_answer": "2/(1 + x^2)",
+    "verdict": "AGREE",
+    "note": "Numerically confirmed on 0 < x < 1."
+  },
+  {
+    "ref": "Ex 5.3 Q12",
+    "book_key": "-2/(1 + x^2)",
+    "our_answer": "-2/(1 + x^2)",
+    "verdict": "AGREE",
+    "note": "Sign checked explicitly — Q11 and Q12 differ only in sign and are adjacent, the classic place to mis-read the key. Numerically confirmed on 0 < x < 1."
+  },
+  {
+    "ref": "Ex 5.3 Q13",
+    "book_key": "-2/(1 + x^2)",
+    "our_answer": "-2/(1 + x^2)",
+    "verdict": "AGREE",
+    "note": "Numerically confirmed on -1 < x < 1 (y = pi/2 - 2 tan^{-1} x; checked the value pi/2 at x = 0 as well as the derivative)."
+  },
+  {
+    "ref": "Ex 5.3 Q14",
+    "book_key": "2/sqrt(1 - x^2)",
+    "our_answer": "2/sqrt(1 - x^2)",
+    "verdict": "AGREE",
+    "note": "Numerically confirmed on -1/sqrt(2) < x < 1/sqrt(2)."
+  },
+  {
+    "ref": "Ex 5.3 Q15",
+    "book_key": "-2/sqrt(1 - x^2)",
+    "our_answer": "-2/sqrt(1 - x^2)",
+    "verdict": "AGREE",
+    "note": "Sign checked explicitly against Q14. Numerically confirmed on 0 < x < 1/sqrt(2), where 2 theta lies in (pi/2, pi), inside the principal branch of sec^{-1}."
+  }
+]

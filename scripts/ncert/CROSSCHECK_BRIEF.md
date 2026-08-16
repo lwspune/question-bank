@@ -43,6 +43,18 @@ OUR answers were independently authored. So both sides get checked.
    - **NO-KEY-ENTRY** — the key prints nothing for this question (proof/show-that). Expected.
    - **CANT-READ-KEY** — the entry is illegible in the image; flag for manual check.
 
+## Compare EVERY part of a compound answer
+
+Many answers here are not a single number. An optimisation answer is a value AND where it
+is attained (`Maximum Z = 16 at (0, 4)`); a monotonicity answer is a set of intervals; a
+continuity answer is a point AND a verdict. **A matching value with a wrong location is a
+disagreement, not an AGREE** — and it is the easiest one to wave through, because the
+number your eye lands on first is right.
+
+Equally, "the key says there is no maximum" or "no feasible region" is a real answer with a
+real claim behind it. If ours says otherwise, that is a genuine disagreement to adjudicate,
+not a formatting difference.
+
 ## Two traps that have produced wrong verdicts on this pipeline
 - **The option-ordering trap.** On Integrals Ex 7.9 Q9 a cross-check agent reported "our A is
   wrong, flip to D" — source-verification showed our A was RIGHT and the printed key was

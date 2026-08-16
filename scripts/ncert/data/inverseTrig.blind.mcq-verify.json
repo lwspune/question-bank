@@ -1,0 +1,51 @@
+[
+  {
+    "id": "0f4db2d0-91e9-477b-b10c-876e0ca86b1a",
+    "ref": "Ex 2.1 Q13",
+    "derived_answer": "B",
+    "solution": "\\(\\sin^{-1}\\) is the inverse of \\(\\sin\\) restricted to its principal branch \\(\\left[-\\tfrac{\\pi}{2}, \\tfrac{\\pi}{2}\\right]\\), on which \\(\\sin\\) is a bijection onto \\([-1, 1]\\). So \\(y = \\sin^{-1}x\\) always lies in that CLOSED interval, and both endpoints are attained: \\(x = -1\\) gives \\(y = -\\tfrac{\\pi}{2}\\) and \\(x = 1\\) gives \\(y = \\tfrac{\\pi}{2}\\) — which is why the OPEN interval \\(\\left(-\\tfrac{\\pi}{2}, \\tfrac{\\pi}{2}\\right)\\) is not the answer. The ranges \\([0, \\pi]\\) and \\((0, \\pi)\\) describe the \\(\\cos^{-1}\\) branch, not this one. Hence \\(-\\tfrac{\\pi}{2} \\le y \\le \\tfrac{\\pi}{2}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "75f316d1-388a-4d6c-abe8-6991206aacf7",
+    "ref": "Ex 2.1 Q14",
+    "derived_answer": "B",
+    "solution": "\\(\\tan^{-1}\\sqrt{3} = \\tfrac{\\pi}{3}\\), since \\(\\tfrac{\\pi}{3}\\) lies in the principal range \\(\\left(-\\tfrac{\\pi}{2}, \\tfrac{\\pi}{2}\\right)\\). For \\(\\sec^{-1}(-2)\\) the principal range is \\([0, \\pi]\\) with \\(\\tfrac{\\pi}{2}\\) removed, and \\(\\sec\\theta = -2\\) means \\(\\cos\\theta = -\\tfrac{1}{2}\\), so \\(\\theta = \\tfrac{2\\pi}{3}\\). Hence the value is \\(\\tfrac{\\pi}{3} - \\tfrac{2\\pi}{3} = -\\tfrac{\\pi}{3}\\), confirmed numerically: \\(\\arctan\\sqrt{3} - \\arccos(-0.5) = -1.0471975512\\).",
+    "matches_current": true
+  },
+  {
+    "id": "1c098ac4-8731-42a2-bdbc-bc5b5eb0ce2e",
+    "ref": "Ex 2.2 Q13",
+    "derived_answer": "B",
+    "solution": "\\(\\tfrac{7\\pi}{6}\\) lies outside the principal range \\([0, \\pi]\\) of \\(\\cos^{-1}\\), so it cannot be the value however tempting it looks. Now \\(\\cos\\tfrac{7\\pi}{6} = -\\tfrac{\\sqrt{3}}{2}\\), and the unique \\(\\theta \\in [0, \\pi]\\) with \\(\\cos\\theta = -\\tfrac{\\sqrt{3}}{2}\\) is \\(\\theta = \\tfrac{5\\pi}{6}\\). Verified numerically: \\(\\arccos\\left(\\cos\\tfrac{7\\pi}{6}\\right) = 2.6179938780 = \\tfrac{5\\pi}{6}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "e5d2f15b-1264-4192-8e69-502cbcd2100b",
+    "ref": "Ex 2.2 Q14",
+    "derived_answer": "D",
+    "solution": "\\(\\sin^{-1}\\left(-\\tfrac{1}{2}\\right) = -\\tfrac{\\pi}{6}\\), taking the principal branch \\(\\left[-\\tfrac{\\pi}{2}, \\tfrac{\\pi}{2}\\right]\\). The argument is therefore \\(\\tfrac{\\pi}{3} - \\left(-\\tfrac{\\pi}{6}\\right) = \\tfrac{\\pi}{3} + \\tfrac{\\pi}{6} = \\tfrac{\\pi}{2}\\), and \\(\\sin\\tfrac{\\pi}{2} = 1\\). Verified numerically: \\(\\sin\\left(\\tfrac{\\pi}{3} - \\arcsin(-0.5)\\right) = 1.0\\) exactly.",
+    "matches_current": true
+  },
+  {
+    "id": "171a76bf-c51d-46f8-bd5c-e9b95e9f9141",
+    "ref": "Ex 2.2 Q15",
+    "derived_answer": "B",
+    "solution": "\\(\\tan^{-1}\\sqrt{3} = \\tfrac{\\pi}{3}\\). The principal range of \\(\\cot^{-1}\\) is \\((0, \\pi)\\), so \\(\\cot^{-1}\\left(-\\sqrt{3}\\right)\\) is the \\(\\theta \\in (0, \\pi)\\) with \\(\\cot\\theta = -\\sqrt{3}\\), namely \\(\\theta = \\pi - \\tfrac{\\pi}{6} = \\tfrac{5\\pi}{6}\\) — NOT \\(-\\tfrac{\\pi}{6}\\), which lies outside the branch. Hence \\(\\tfrac{\\pi}{3} - \\tfrac{5\\pi}{6} = \\tfrac{2\\pi}{6} - \\tfrac{5\\pi}{6} = -\\tfrac{\\pi}{2}\\). Verified numerically: \\(\\cot^{-1}\\left(-\\sqrt{3}\\right) = 2.6179938780 = \\tfrac{5\\pi}{6}\\) and the difference is \\(-1.5707963268 = -\\tfrac{\\pi}{2}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "5eb2c1c0-566e-415d-87b8-38ec61808bbc",
+    "ref": "Misc Q13",
+    "derived_answer": "D",
+    "solution": "Put \\(\\theta = \\tan^{-1}x\\), so \\(\\tan\\theta = x\\) with \\(\\theta \\in \\left(-\\tfrac{\\pi}{2}, \\tfrac{\\pi}{2}\\right)\\), where \\(\\cos\\theta > 0\\). Then \\(\\sec^{2}\\theta = 1 + x^{2}\\) gives \\(\\cos\\theta = \\tfrac{1}{\\sqrt{1+x^{2}}}\\), so \\(\\sin\\theta = \\tan\\theta\\,\\cos\\theta = \\tfrac{x}{\\sqrt{1+x^{2}}}\\). The forms carrying \\(\\sqrt{1-x^{2}}\\) belong to \\(\\sin\\left(\\cos^{-1}x\\right)\\)-type identities, not this one. Verified numerically at \\(x = -0.9,\\ -0.3,\\ 0,\\ 0.4,\\ 0.87\\): \\(\\sin\\left(\\arctan x\\right)\\) matches \\(\\tfrac{x}{\\sqrt{1+x^{2}}}\\) to machine precision in every case.",
+    "matches_current": true
+  },
+  {
+    "id": "2b1ac656-926f-456e-bf31-7c0085145b23",
+    "ref": "Misc Q14",
+    "derived_answer": "C",
+    "solution": "Domain: \\(\\sin^{-1}(1-x)\\) needs \\(x \\in [0, 2]\\) and \\(\\sin^{-1}x\\) needs \\(x \\in [-1, 1]\\), so \\(x\\) lies in \\([0, 1]\\). Rewrite as \\(\\sin^{-1}(1-x) = \\tfrac{\\pi}{2} + 2\\sin^{-1}x\\) and take sine: \\(1 - x = \\sin\\left(\\tfrac{\\pi}{2} + 2\\sin^{-1}x\\right) = \\cos\\left(2\\sin^{-1}x\\right) = 1 - 2x^{2}\\), so \\(2x^{2} - x = 0\\) and the CANDIDATES are \\(x = 0\\) and \\(x = \\tfrac{1}{2}\\). Compounding can introduce extraneous roots, so both were tested in the ORIGINAL equation: at \\(x = \\tfrac{1}{2}\\), \\(\\sin^{-1}\\tfrac{1}{2} - 2\\sin^{-1}\\tfrac{1}{2} = \\tfrac{\\pi}{6} - \\tfrac{\\pi}{3} = -\\tfrac{\\pi}{6}\\), not \\(\\tfrac{\\pi}{2}\\) (residual \\(-2.0944\\)), so \\(x = \\tfrac{1}{2}\\) is extraneous; at \\(x = 0\\), \\(\\sin^{-1}(1) - 0 = \\tfrac{\\pi}{2}\\) exactly (residual \\(0.0\\)). A 2001-point scan of the residual over the whole domain \\([0, 1]\\) found no other sign change, so \\(x = 0\\) is the only solution — the un-filtered candidate pairs \\(\\left\\{0,\\ \\tfrac{1}{2}\\right\\}\\) and \\(\\left\\{1,\\ \\tfrac{1}{2}\\right\\}\\) are the traps for skipping the extraneous-root check.",
+    "matches_current": true
+  }
+]

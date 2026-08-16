@@ -1,0 +1,65 @@
+[
+  {
+    "id": "aa5933e1-905e-4d80-9581-ade0b6a4ec07",
+    "ref": "Ex 6.1 Q17",
+    "derived_answer": "B",
+    "solution": "The area of a circle is \\(A = \\pi r^{2}\\), so \\(\\tfrac{dA}{dr} = 2\\pi r\\). At \\(r = 6\\) this gives \\(\\tfrac{dA}{dr} = 12\\pi\\), i.e. \\(37.699\\) cm\\(^{2}\\) per cm.",
+    "matches_current": true
+  },
+  {
+    "id": "4bbce1c7-5f47-4d39-a740-4bc00285636c",
+    "ref": "Ex 6.1 Q18",
+    "derived_answer": "D",
+    "solution": "Marginal revenue is \\(\\tfrac{dR}{dx}\\). With \\(R(x) = 3x^{2} + 36x + 5\\) we get \\(R'(x) = 6x + 36\\), so \\(R'(15) = 90 + 36 = 126\\). The value \\(90\\) is the trap of stopping at the \\(6x\\) term and dropping the constant \\(36\\).",
+    "matches_current": true
+  },
+  {
+    "id": "919bbbcc-01b4-4a66-a51b-702e7f9c8dc5",
+    "ref": "Ex 6.2 Q12",
+    "derived_answer": "A",
+    "solution": "[Textbook note: NCERT's printed key for this question is a MULTI-SELECT — it names two options, not one, and both are genuinely decreasing on the stated interval. This bank stores exactly one correct option per MCQ, so only the first is marked; a student who chose the other is equally right.] DEFECT - MORE THAN ONE OPTION IS CORRECT. Take the sign of each derivative on \\(\\left(0, \\tfrac{\\pi}{2}\\right)\\). For \\(\\cos x\\), \\(\\tfrac{d}{dx}\\cos x = -\\sin x\\) and \\(\\sin x > 0\\) throughout the interval, so \\(\\cos x\\) is DECREASING. For \\(\\cos 2x\\), \\(\\tfrac{d}{dx}\\cos 2x = -2\\sin 2x\\), and \\(2x\\) runs over \\((0, \\pi)\\) where \\(\\sin\\) is strictly positive, so \\(\\cos 2x\\) is ALSO DECREASING on the whole interval. For \\(\\cos 3x\\), \\(\\tfrac{d}{dx}\\cos 3x = -3\\sin 3x\\) and \\(3x\\) runs over \\(\\left(0, \\tfrac{3\\pi}{2}\\right)\\), so \\(\\sin 3x\\) changes sign at \\(x = \\tfrac{\\pi}{3}\\): the derivative is negative on \\(\\left(0, \\tfrac{\\pi}{3}\\right)\\) and positive on \\(\\left(\\tfrac{\\pi}{3}, \\tfrac{\\pi}{2}\\right)\\), so \\(\\cos 3x\\) is not decreasing throughout. For \\(\\tan x\\), \\(\\tfrac{d}{dx}\\tan x = \\sec^{2}x > 0\\), so it is increasing. Verified by sampling 201 points across \\(\\left(0, \\tfrac{\\pi}{2}\\right)\\): the derivative of \\(\\cos x\\) has maximum \\(-0.001\\) (all negative), that of \\(\\cos 2x\\) maximum \\(-0.004\\) (all negative), that of \\(\\cos 3x\\) ranges from \\(-3.000\\) to \\(+3.000\\) (a sign change), and that of \\(\\tan x\\) has minimum \\(+1.000\\). So BOTH \\(\\cos x\\) and \\(\\cos 2x\\) are decreasing on the stated interval and both satisfy the stem, which is itself phrased in the plural ('which functions ARE decreasing'); a key naming only one of them is under-specified.",
+    "matches_current": true
+  },
+  {
+    "id": "0e8ed981-a407-4d9e-9d67-4551ec6e3cfa",
+    "ref": "Ex 6.2 Q13",
+    "derived_answer": "D",
+    "solution": "\\(f'(x) = 100x^{99} + \\cos x\\). On \\((0, 1)\\) both \\(x^{99} > 0\\) and \\(\\cos x > 0\\) (since \\(1 < \\tfrac{\\pi}{2}\\)), so \\(f' > 0\\) and \\(f\\) is increasing, not decreasing; the same argument covers \\(\\left(0, \\tfrac{\\pi}{2}\\right)\\). On \\(\\left(\\tfrac{\\pi}{2}, \\pi\\right)\\) the term \\(\\cos x\\) is negative but bounded below by \\(-1\\), while \\(100x^{99}\\) at \\(x = \\tfrac{\\pi}{2}\\) is already about \\(2.6 \\times 10^{21}\\), so \\(f' > 0\\) overwhelmingly. Verified by sampling 499 points in each interval: the minimum of \\(f'\\) is \\(0.6224\\) on \\((0, 1)\\), \\(0.6224\\) on \\(\\left(0, \\tfrac{\\pi}{2}\\right)\\) and \\(3.18 \\times 10^{21}\\) on \\(\\left(\\tfrac{\\pi}{2}, \\pi\\right)\\) - never negative anywhere. The function is increasing on all three intervals, so none of the listed intervals is a decreasing interval.",
+    "matches_current": true
+  },
+  {
+    "id": "409ef043-9f46-4dd2-a22e-c512dd317036",
+    "ref": "Ex 6.2 Q19",
+    "derived_answer": "D",
+    "solution": "\\(y = x^{2}e^{-x}\\) gives \\(y' = 2x e^{-x} - x^{2}e^{-x} = e^{-x}\\,x\\,(2 - x)\\). Since \\(e^{-x} > 0\\) always, the sign of \\(y'\\) is the sign of \\(x(2 - x)\\), which is positive exactly on \\(0 < x < 2\\). Verified by sampling: \\(y' = -301.28\\) at \\(x = -3\\), \\(-8.15\\) at \\(x = -1\\), \\(-0.232\\) at \\(x = -0.1\\), then \\(+0.455\\) at \\(x = 0.5\\), \\(+0.368\\) at \\(x = 1\\), \\(+0.028\\) at \\(x = 1.9\\), and back to \\(-0.026\\) at \\(x = 2.1\\) and \\(-0.101\\) at \\(x = 5\\). That rules out \\((-\\infty, \\infty)\\), \\((-2, 0)\\) and \\((2, \\infty)\\), leaving the interval \\((0, 2)\\).",
+    "matches_current": true
+  },
+  {
+    "id": "4431883b-b643-4ad5-9b0e-5085320c91fc",
+    "ref": "Ex 6.3 Q27",
+    "derived_answer": "A",
+    "solution": "Minimise the SQUARED distance to avoid the radical: with \\(x^{2} = 2y\\), \\(D^{2} = x^{2} + (y-5)^{2} = 2y + (y-5)^{2} = y^{2} - 8y + 25\\). Then \\(\\tfrac{d(D^{2})}{dy} = 2y - 8 = 0\\) gives \\(y = 4\\), and the second derivative \\(2 > 0\\) confirms a minimum; \\(x^{2} = 2(4) = 8\\) gives \\(x = \\pm 2\\sqrt{2}\\), so the nearest point is \\(\\left(2\\sqrt{2},\\ 4\\right)\\) with \\(D^{2} = 9\\). Verified by scanning 800,001 points along the parabola: minimum \\(D^{2} = 9.0000\\) at \\(x = -2.8284\\), \\(y = 4.0000\\), the symmetric partner of the offered point. Among the competitors \\((2, 2)\\) gives \\(D^{2} = 13\\) and \\((0, 0)\\) gives \\(25\\), while \\(\\left(2\\sqrt{2},\\ 0\\right)\\) is NOT EVEN ON THE CURVE, since \\(x = 2\\sqrt{2}\\) forces \\(y = 4\\), not \\(0\\).",
+    "matches_current": true
+  },
+  {
+    "id": "90edc320-963f-4a9e-be1f-dfcbf2aa7f7b",
+    "ref": "Ex 6.3 Q28",
+    "derived_answer": "D",
+    "solution": "[Textbook misprint: the instruction printed above Q.27 reads \"Choose the correct answer in Questions 27 and 29\" and omits Q.28 — but Q.28 is itself a four-alternative multiple-choice question, and NCERT's own answer key does print an entry for it. The instruction line is defective, not the question.] Let \\(f(x) = \\dfrac{1 - x + x^{2}}{1 + x + x^{2}}\\). The quotient rule gives numerator \\((2x - 1)(x^{2} + x + 1) - (x^{2} - x + 1)(2x + 1) = \\left(2x^{3} + x^{2} + x - 1\\right) - \\left(2x^{3} - x^{2} + x + 1\\right) = 2x^{2} - 2\\), so \\(f'(x) = \\dfrac{2\\left(x^{2} - 1\\right)}{\\left(1 + x + x^{2}\\right)^{2}}\\), which vanishes at \\(x = \\pm 1\\). Since \\(f(1) = \\tfrac{1}{3}\\), \\(f(-1) = 3\\) and \\(f \\to 1\\) as \\(x \\to \\pm\\infty\\), the global minimum is \\(\\tfrac{1}{3}\\) and the global maximum is \\(3\\) - so the value \\(3\\) is the maximum, which is the trap for a question asking for the minimum. Verified by scanning 4,000,001 points over \\([-1000, 1000]\\): minimum \\(0.33333333\\) at \\(x = 1\\), maximum \\(3.0\\) at \\(x = -1\\). Note the denominator \\(1 + x + x^{2}\\) has discriminant \\(-3 < 0\\), so it never vanishes and \\(f\\) is defined for all real \\(x\\).",
+    "matches_current": true
+  },
+  {
+    "id": "9e5b66d1-4075-467f-ba94-b782b1a7646d",
+    "ref": "Ex 6.3 Q29",
+    "derived_answer": "C",
+    "solution": "Let \\(g(x) = x(x - 1) + 1 = x^{2} - x + 1\\). Since \\(t^{1/3}\\) is strictly increasing, maximising \\(\\left[g(x)\\right]^{1/3}\\) is the same as maximising \\(g\\). Now \\(g'(x) = 2x - 1 = 0\\) at \\(x = \\tfrac{1}{2}\\), where \\(g = \\tfrac{3}{4}\\) - and since \\(g'' = 2 > 0\\) that interior critical point is a MINIMUM, not a maximum. The maximum on the closed interval \\([0, 1]\\) is therefore at an endpoint: \\(g(0) = g(1) = 1\\), giving \\(1^{1/3} = 1\\). Verified by scanning 100,001 points on \\([0, 1]\\): maximum value \\(1.0\\) at \\(x = 0\\). The values \\(\\left(\\tfrac{1}{3}\\right)^{1/3}\\) and \\(\\tfrac{1}{2}\\) are the traps for treating the interior critical point as the maximum.",
+    "matches_current": true
+  },
+  {
+    "id": "d76b12cc-dde0-405d-8079-836d2dc3526b",
+    "ref": "Misc Q16",
+    "derived_answer": "A",
+    "solution": "For a cylinder \\(V = \\pi r^{2}h\\), and here \\(r = 10\\) is fixed, so \\(V = 100\\pi h\\) and \\(\\tfrac{dV}{dt} = 100\\pi\\,\\tfrac{dh}{dt}\\). Given \\(\\tfrac{dV}{dt} = 314\\), we get \\(\\tfrac{dh}{dt} = \\dfrac{314}{100\\pi} = 0.99949\\) m/h, i.e. \\(1\\) m/h to the intended precision (the question's \\(314\\) is the usual stand-in for \\(100\\pi\\)). The value \\(0.1\\) m/h is the trap of using \\(100\\pi r\\) in place of \\(\\pi r^{2}\\), or slipping a factor of \\(10\\).",
+    "matches_current": true
+  }
+]

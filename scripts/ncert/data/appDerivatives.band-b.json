@@ -1,0 +1,284 @@
+[
+  {
+    "ref": "6.2 Eg.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "EASY",
+    "stem": "Show that the function given by \\(f(x) = 7x - 3\\) is increasing on \\(\\mathbf{R}\\).",
+    "solution": "Let \\(x_1\\) and \\(x_2\\) be any two numbers in \\(\\mathbf{R}\\). Then\n\\(x_1 < x_2 \\Rightarrow 7x_1 < 7x_2 \\Rightarrow 7x_1 - 3 < 7x_2 - 3 \\Rightarrow f(x_1) < f(x_2)\\)\nThus, by Definition 1, it follows that \\(f\\) is strictly increasing on \\(\\mathbf{R}\\).",
+    "_note": "The printed stem asks to show \\(f\\) is 'increasing' on R, while the printed solution concludes '\\(f\\) is strictly increasing on R'. Both transcribed verbatim; the conclusion is the stronger of the two and is correct."
+  },
+  {
+    "ref": "6.2 Eg.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Show that the function \\(f\\) given by\n\\(f(x) = x^3 - 3x^2 + 4x,\\ x \\in \\mathbf{R}\\)\nis increasing on \\(\\mathbf{R}\\).",
+    "solution": "Note that\n\\(f'(x) = 3x^2 - 6x + 4\\)\n\\(= 3(x^2 - 2x + 1) + 1\\)\n\\(= 3(x - 1)^2 + 1 > 0\\), in every interval of \\(\\mathbf{R}\\)\nTherefore, the function \\(f\\) is increasing on \\(\\mathbf{R}\\)."
+  },
+  {
+    "ref": "6.2 Eg.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "EASY",
+    "stem": "Prove that the function given by \\(f(x) = \\cos x\\) is\n(a) decreasing in \\((0, \\pi)\\)\n(b) increasing in \\((\\pi, 2\\pi)\\), and\n(c) neither increasing nor decreasing in \\((0, 2\\pi)\\).",
+    "solution": "Note that \\(f'(x) = -\\sin x\\).\n(a) Since for each \\(x \\in (0, \\pi)\\), \\(\\sin x > 0\\), we have \\(f'(x) < 0\\) and so \\(f\\) is decreasing in \\((0, \\pi)\\).\n(b) Since for each \\(x \\in (\\pi, 2\\pi)\\), \\(\\sin x < 0\\), we have \\(f'(x) > 0\\) and so \\(f\\) is increasing in \\((\\pi, 2\\pi)\\).\n(c) Clearly by (a) and (b) above, \\(f\\) is neither increasing nor decreasing in \\((0, 2\\pi)\\)."
+  },
+  {
+    "ref": "6.2 Eg.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "EASY",
+    "stem": "Find the intervals in which the function \\(f\\) given by \\(f(x) = x^2 - 4x + 6\\) is\n(a) increasing (b) decreasing",
+    "solution": "We have\n\\(f(x) = x^2 - 4x + 6\\)\nor \\(f'(x) = 2x - 4\\)\nTherefore, \\(f'(x) = 0\\) gives \\(x = 2\\). Now the point \\(x = 2\\) divides the real line into two disjoint intervals namely, \\((-\\infty, 2)\\) and \\((2, \\infty)\\) (Fig 6.3). In the interval \\((-\\infty, 2)\\), \\(f'(x) = 2x - 4 < 0\\).\nTherefore, \\(f\\) is decreasing in this interval. Also, in the interval \\((2, \\infty)\\), \\(f'(x) > 0\\) and so the function \\(f\\) is increasing in this interval."
+  },
+  {
+    "ref": "6.2 Eg.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find the intervals in which the function \\(f\\) given by \\(f(x) = 4x^3 - 6x^2 - 72x + 30\\) is (a) increasing (b) decreasing.",
+    "solution": "We have\n\\(f(x) = 4x^3 - 6x^2 - 72x + 30\\)\nor \\(f'(x) = 12x^2 - 12x - 72\\)\n\\(= 12(x^2 - x - 6)\\)\n\\(= 12(x - 3)(x + 2)\\)\nTherefore, \\(f'(x) = 0\\) gives \\(x = -2, 3\\). The points \\(x = -2\\) and \\(x = 3\\) divide the real line into three disjoint intervals, namely, \\((-\\infty, -2)\\), \\((-2, 3)\\) and \\((3, \\infty)\\) (Fig 6.4).\nIn the intervals \\((-\\infty, -2)\\) and \\((3, \\infty)\\), \\(f'(x)\\) is positive while in the interval \\((-2, 3)\\), \\(f'(x)\\) is negative. Consequently, the function \\(f\\) is increasing in the intervals \\((-\\infty, -2)\\) and \\((3, \\infty)\\) while the function is decreasing in the interval \\((-2, 3)\\). However, \\(f\\) is neither increasing nor decreasing in \\(\\mathbf{R}\\).\n\n| Interval | Sign of \\(f'(x)\\) | Nature of function \\(f\\) |\n|---|---|---|\n| \\((-\\infty, -2)\\) | \\((-)\\,(-) > 0\\) | \\(f\\) is increasing |\n| \\((-2, 3)\\) | \\((-)\\,(+) < 0\\) | \\(f\\) is decreasing |\n| \\((3, \\infty)\\) | \\((+)\\,(+) > 0\\) | \\(f\\) is increasing |"
+  },
+  {
+    "ref": "6.2 Eg.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find intervals in which the function given by \\(f(x) = \\sin 3x,\\ x \\in \\left[0, \\frac{\\pi}{2}\\right]\\) is (a) increasing (b) decreasing.",
+    "solution": "We have\n\\(f(x) = \\sin 3x\\)\nor \\(f'(x) = 3\\cos 3x\\)\nTherefore, \\(f'(x) = 0\\) gives \\(\\cos 3x = 0\\) which in turn gives \\(3x = \\frac{\\pi}{2}, \\frac{3\\pi}{2}\\) (as \\(x \\in \\left[0, \\frac{\\pi}{2}\\right]\\) implies \\(3x \\in \\left[0, \\frac{3\\pi}{2}\\right]\\)). So \\(x = \\frac{\\pi}{6}\\) and \\(\\frac{\\pi}{2}\\). The point \\(x = \\frac{\\pi}{6}\\) divides the interval \\(\\left[0, \\frac{\\pi}{2}\\right]\\) into two disjoint intervals \\(\\left[0, \\frac{\\pi}{6}\\right)\\) and \\(\\left(\\frac{\\pi}{6}, \\frac{\\pi}{2}\\right]\\) (Fig 6.5).\nNow, \\(f'(x) > 0\\) for all \\(x \\in \\left[0, \\frac{\\pi}{6}\\right)\\) as \\(0 \\le x < \\frac{\\pi}{6} \\Rightarrow 0 \\le 3x < \\frac{\\pi}{2}\\) and \\(f'(x) < 0\\) for all \\(x \\in \\left(\\frac{\\pi}{6}, \\frac{\\pi}{2}\\right)\\) as \\(\\frac{\\pi}{6} < x < \\frac{\\pi}{2} \\Rightarrow \\frac{\\pi}{2} < 3x < \\frac{3\\pi}{2}\\).\nTherefore, \\(f\\) is increasing in \\(\\left[0, \\frac{\\pi}{6}\\right)\\) and decreasing in \\(\\left(\\frac{\\pi}{6}, \\frac{\\pi}{2}\\right)\\).\nAlso, the given function is continuous at \\(x = 0\\) and \\(x = \\frac{\\pi}{6}\\). Therefore, by Theorem 1, \\(f\\) is increasing on \\(\\left[0, \\frac{\\pi}{6}\\right]\\) and decreasing on \\(\\left[\\frac{\\pi}{6}, \\frac{\\pi}{2}\\right]\\)."
+  },
+  {
+    "ref": "6.2 Eg.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find the intervals in which the function \\(f\\) given by\n\\(f(x) = \\sin x + \\cos x,\\ 0 \\le x \\le 2\\pi\\)\nis increasing or decreasing.",
+    "solution": "We have\n\\(f(x) = \\sin x + \\cos x\\),\nor \\(f'(x) = \\cos x - \\sin x\\)\nNow \\(f'(x) = 0\\) gives \\(\\sin x = \\cos x\\) which gives that \\(x = \\frac{\\pi}{4}, \\frac{5\\pi}{4}\\) as \\(0 \\le x \\le 2\\pi\\).\nThe points \\(x = \\frac{\\pi}{4}\\) and \\(x = \\frac{5\\pi}{4}\\) divide the interval \\([0, 2\\pi]\\) into three disjoint intervals, namely, \\(\\left[0, \\frac{\\pi}{4}\\right)\\), \\(\\left(\\frac{\\pi}{4}, \\frac{5\\pi}{4}\\right)\\) and \\(\\left(\\frac{5\\pi}{4}, 2\\pi\\right]\\) (Fig 6.6).\nNote that \\(f'(x) > 0\\) if \\(x \\in \\left[0, \\frac{\\pi}{4}\\right) \\cup \\left(\\frac{5\\pi}{4}, 2\\pi\\right]\\)\nor \\(f\\) is increasing in the intervals \\(\\left[0, \\frac{\\pi}{4}\\right)\\) and \\(\\left(\\frac{5\\pi}{4}, 2\\pi\\right]\\)\nAlso \\(f'(x) < 0\\) if \\(x \\in \\left(\\frac{\\pi}{4}, \\frac{5\\pi}{4}\\right)\\)\nor \\(f\\) is decreasing in \\(\\left(\\frac{\\pi}{4}, \\frac{5\\pi}{4}\\right)\\)\n\n| Interval | Sign of \\(f'(x)\\) | Nature of function |\n|---|---|---|\n| \\(\\left[0, \\frac{\\pi}{4}\\right)\\) | \\(> 0\\) | \\(f\\) is increasing |\n| \\(\\left(\\frac{\\pi}{4}, \\frac{5\\pi}{4}\\right)\\) | \\(< 0\\) | \\(f\\) is decreasing |\n| \\(\\left(\\frac{5\\pi}{4}, 2\\pi\\right]\\) | \\(> 0\\) | \\(f\\) is increasing |"
+  },
+
+  {
+    "ref": "Ex 6.2 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "EASY",
+    "stem": "Show that the function given by \\(f(x) = 3x + 17\\) is increasing on \\(\\mathbf{R}\\)."
+  },
+  {
+    "ref": "Ex 6.2 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "EASY",
+    "stem": "Show that the function given by \\(f(x) = e^{2x}\\) is increasing on \\(\\mathbf{R}\\)."
+  },
+  {
+    "ref": "Ex 6.2 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Show that the function given by \\(f(x) = \\sin x\\) is\n(a) increasing in \\(\\left(0, \\frac{\\pi}{2}\\right)\\)\n(b) decreasing in \\(\\left(\\frac{\\pi}{2}, \\pi\\right)\\)\n(c) neither increasing nor decreasing in \\((0, \\pi)\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "EASY",
+    "stem": "Find the intervals in which the function \\(f\\) given by \\(f(x) = 2x^2 - 3x\\) is\n(a) increasing (b) decreasing"
+  },
+  {
+    "ref": "Ex 6.2 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find the intervals in which the function \\(f\\) given by \\(f(x) = 2x^3 - 3x^2 - 36x + 7\\) is\n(a) increasing (b) decreasing"
+  },
+  {
+    "ref": "Ex 6.2 Q6(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "EASY",
+    "context": "Find the intervals in which the following functions are strictly increasing or decreasing:",
+    "setLabel": "Ex 6.2 Q6",
+    "stem": "\\(x^2 + 2x - 5\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q6(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "EASY",
+    "context": "Find the intervals in which the following functions are strictly increasing or decreasing:",
+    "setLabel": "Ex 6.2 Q6",
+    "stem": "\\(10 - 6x - 2x^2\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q6(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "context": "Find the intervals in which the following functions are strictly increasing or decreasing:",
+    "setLabel": "Ex 6.2 Q6",
+    "stem": "\\(-2x^3 - 9x^2 - 12x + 1\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q6(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "EASY",
+    "context": "Find the intervals in which the following functions are strictly increasing or decreasing:",
+    "setLabel": "Ex 6.2 Q6",
+    "stem": "\\(6 - 9x - x^2\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q6(e)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "HARD",
+    "context": "Find the intervals in which the following functions are strictly increasing or decreasing:",
+    "setLabel": "Ex 6.2 Q6",
+    "stem": "\\((x + 1)^3 (x - 3)^3\\)"
+  },
+  {
+    "ref": "Ex 6.2 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Show that \\(y = \\log(1 + x) - \\frac{2x}{2 + x},\\ x > -1\\), is an increasing function of \\(x\\) throughout its domain."
+  },
+  {
+    "ref": "Ex 6.2 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find the values of \\(x\\) for which \\(y = [x(x - 2)]^2\\) is an increasing function."
+  },
+  {
+    "ref": "Ex 6.2 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "HARD",
+    "stem": "Prove that \\(y = \\frac{4\\sin\\theta}{(2 + \\cos\\theta)} - \\theta\\) is an increasing function of \\(\\theta\\) in \\(\\left[0, \\frac{\\pi}{2}\\right]\\)."
+  },
+  {
+    "ref": "Ex 6.2 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "EASY",
+    "stem": "Prove that the logarithmic function is increasing on \\((0, \\infty)\\)."
+  },
+  {
+    "ref": "Ex 6.2 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Prove that the function \\(f\\) given by \\(f(x) = x^2 - x + 1\\) is neither strictly increasing nor decreasing on \\((-1, 1)\\)."
+  },
+  {
+    "ref": "Ex 6.2 Q12",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Which of the following functions are decreasing on \\(\\left(0, \\frac{\\pi}{2}\\right)\\)?",
+    "options": [
+      {"label": "A", "text": "\\(\\cos x\\)"},
+      {"label": "B", "text": "\\(\\cos 2x\\)"},
+      {"label": "C", "text": "\\(\\cos 3x\\)"},
+      {"label": "D", "text": "\\(\\tan x\\)"}
+    ],
+    "answer": "A",
+    "_note": "TWO defects on this row, both verified against the rendered page image. (1) PRINTED DELIMITERS MISSING: the reprint sets the interval as a bare '0, pi/2' with visible blank space where the enclosing parentheses belong — the delimiter glyphs around the stacked fraction failed to render. The same page renders '(0,1)' and '(-2, 0)' with parentheses intact, and Q9 on the previous page renders '[0, pi/2]' intact, so this is a localised glyph failure, not the book's notation. Transcribed here with the standard open interval \\(\\left(0, \\frac{\\pi}{2}\\right)\\), which is the only reading an interval option admits; flagged rather than silently corrected. The same failure hits Q13 options (B) and (C). (2) TWO CORRECT OPTIONS: both (A) and (B) are strictly decreasing on \\(\\left(0, \\frac{\\pi}{2}\\right)\\). For (A), \\(f'=-\\sin x<0\\) throughout; for (B), \\(f'=-2\\sin 2x\\) and \\(2x\\in(0,\\pi)\\) so \\(\\sin 2x>0\\) and \\(f'<0\\) throughout (verified numerically over 200,001 sample points: max derivative -0.000000, min -2.0). (C) fails because for \\(x\\in\\left(\\frac{\\pi}{3}, \\frac{\\pi}{2}\\right)\\), \\(3x\\in(\\pi, \\frac{3\\pi}{2})\\) gives \\(\\sin 3x<0\\) so \\(f'>0\\); (D) has \\(f'=\\sec^2 x>0\\), increasing. The stem's plural 'are decreasing' suggests the book intends a multi-select answer of (A) and (B). Only one letter can be stored, so (A) is recorded; the answer-key cross-check should confirm whether the printed key lists both."
+  },
+  {
+    "ref": "Ex 6.2 Q13",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "On which of the following intervals is the function \\(f\\) given by \\(f(x) = x^{100} + \\sin x - 1\\) decreasing?",
+    "options": [
+      {"label": "A", "text": "\\((0, 1)\\)"},
+      {"label": "B", "text": "\\(\\left(\\frac{\\pi}{2}, \\pi\\right)\\)"},
+      {"label": "C", "text": "\\(\\left(0, \\frac{\\pi}{2}\\right)\\)"},
+      {"label": "D", "text": "None of these"}
+    ],
+    "answer": "D",
+    "_note": "PRINTED DELIMITERS MISSING on options (B) and (C): the reprint sets them as bare 'pi/2, pi' and '0, pi/2' with blank space where the enclosing parentheses belong — the same localised glyph failure as Q12, and note that option (A) on the same line renders '(0,1)' with its parentheses intact. Transcribed with the standard open-interval parentheses restored; flagged rather than silently corrected. The answer is unaffected by the bracket type: \\(f'(x) = 100x^{99} + \\cos x > 0\\) on all three intervals (on \\((0,1)\\) and \\(\\left(0,\\frac{\\pi}{2}\\right)\\) both terms are positive; on \\(\\left(\\frac{\\pi}{2},\\pi\\right)\\) the term \\(100x^{99}\\) exceeds \\(2.6\\times10^{21}\\) while \\(\\cos x \\ge -1\\)), so \\(f\\) is increasing on each and the answer is (D)."
+  },
+  {
+    "ref": "Ex 6.2 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "For what values of \\(a\\) the function \\(f\\) given by \\(f(x) = x^2 + ax + 1\\) is increasing on \\([1, 2]\\)?"
+  },
+  {
+    "ref": "Ex 6.2 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "HARD",
+    "stem": "Let I be any interval disjoint from \\([-1, 1]\\). Prove that the function \\(f\\) given by \\(f(x) = x + \\frac{1}{x}\\) is increasing on I."
+  },
+  {
+    "ref": "Ex 6.2 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Prove that the function \\(f\\) given by \\(f(x) = \\log \\sin x\\) is increasing on \\(\\left(0, \\frac{\\pi}{2}\\right)\\) and decreasing on \\(\\left(\\frac{\\pi}{2}, \\pi\\right)\\)."
+  },
+  {
+    "ref": "Ex 6.2 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "Prove that the function \\(f\\) given by \\(f(x) = \\log |\\cos x|\\) is decreasing on \\(\\left(0, \\frac{\\pi}{2}\\right)\\) and increasing on \\(\\left(\\frac{3\\pi}{2}, 2\\pi\\right)\\)."
+  },
+  {
+    "ref": "Ex 6.2 Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "EASY",
+    "stem": "Prove that the function given by \\(f(x) = x^3 - 3x^2 + 3x - 100\\) is increasing in \\(\\mathbf{R}\\)."
+  },
+  {
+    "ref": "Ex 6.2 Q19",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Increasing and Decreasing Functions",
+    "difficulty": "MODERATE",
+    "stem": "The interval in which \\(y = x^2 e^{-x}\\) is increasing is",
+    "options": [
+      {"label": "A", "text": "\\((-\\infty, \\infty)\\)"},
+      {"label": "B", "text": "\\((-2, 0)\\)"},
+      {"label": "C", "text": "\\((2, \\infty)\\)"},
+      {"label": "D", "text": "\\((0, 2)\\)"}
+    ],
+    "answer": "D"
+  }
+]

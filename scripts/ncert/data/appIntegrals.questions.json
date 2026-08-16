@@ -1,0 +1,213 @@
+[
+  {
+    "ref": "8.1 Eg.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Area Under Simple Curves",
+    "difficulty": "MODERATE",
+    "stem": "Find the area enclosed by the circle \\(x^2 + y^2 = a^2\\).",
+    "_region": "the whole region enclosed by the circle \\(x^2+y^2=a^2\\) (centre at the origin, radius \\(a\\)); the book computes four times the first-quadrant part AOBA bounded by the circle, the x-axis and the ordinates \\(x=0\\) and \\(x=a\\)",
+    "solution": "From Fig 8.5, the whole area enclosed by the given circle \\(= 4\\) (area of the region AOBA bounded by the curve, the \\(x\\)-axis and the ordinates \\(x = 0\\) and \\(x = a\\)) [as the circle is symmetrical about both the \\(x\\)-axis and the \\(y\\)-axis]\n\n\\(= 4\\int_0^a y\\,dx\\)  (taking vertical strips)\n\n\\(= 4\\int_0^a \\sqrt{a^2 - x^2}\\,dx\\)\n\nSince \\(x^2 + y^2 = a^2\\) gives \\(y = \\pm\\sqrt{a^2 - x^2}\\). As the region AOBA lies in the first quadrant, \\(y\\) is taken as positive. Integrating, we get the whole area enclosed by the given circle\n\n\\(= 4\\left[\\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a}\\right]_0^a\\)\n\n\\(= 4\\left[\\left(\\frac{a}{2}\\times 0 + \\frac{a^2}{2}\\sin^{-1}1\\right) - 0\\right] = 4\\left(\\frac{a^2}{2}\\right)\\left(\\frac{\\pi}{2}\\right) = \\pi a^2\\)\n\nAlternatively, considering horizontal strips as shown in Fig 8.6, the whole area of the region enclosed by the circle\n\n\\(= 4\\int_0^a x\\,dy = 4\\int_0^a \\sqrt{a^2 - y^2}\\,dy\\)  (Why?)\n\n\\(= 4\\left[\\frac{y}{2}\\sqrt{a^2 - y^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{y}{a}\\right]_0^a\\)\n\n\\(= 4\\left[\\left(\\frac{a}{2}\\times 0 + \\frac{a^2}{2}\\sin^{-1}1\\right) - 0\\right] = 4\\cdot\\frac{a^2}{2}\\cdot\\frac{\\pi}{2} = \\pi a^2\\)"
+  },
+  {
+    "ref": "8.1 Eg.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Area Under Simple Curves",
+    "difficulty": "MODERATE",
+    "stem": "Find the area enclosed by the ellipse \\(\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1\\).",
+    "_region": "the whole region enclosed by the ellipse \\(\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1\\) (centre at the origin, semi-axes \\(a\\) along x and \\(b\\) along y); the book computes four times the first-quadrant part AOBA bounded by the ellipse, the x-axis and the ordinates \\(x=0\\) and \\(x=a\\)",
+    "solution": "From Fig 8.7, the area of the region ABA′B′A bounded by the ellipse \\(= 4\\times\\) (area of the region AOBA in the first quadrant bounded by the curve, the \\(x\\)-axis and the ordinates \\(x = 0,\\; x = a\\)) (as the ellipse is symmetrical about both the \\(x\\)-axis and the \\(y\\)-axis)\n\n\\(= 4\\int_0^a y\\,dx\\)  (taking vertical strips)\n\nNow \\(\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1\\) gives \\(y = \\pm\\frac{b}{a}\\sqrt{a^2 - x^2}\\), but as the region AOBA lies in the first quadrant, \\(y\\) is taken as positive. So, the required area is\n\n\\(= 4\\int_0^a \\frac{b}{a}\\sqrt{a^2 - x^2}\\,dx\\)\n\n\\(= \\frac{4b}{a}\\left[\\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a}\\right]_0^a\\)  (Why?)\n\n\\(= \\frac{4b}{a}\\left[\\left(\\frac{a}{2}\\times 0 + \\frac{a^2}{2}\\sin^{-1}1\\right) - 0\\right] = \\frac{4b}{a}\\cdot\\frac{a^2}{2}\\cdot\\frac{\\pi}{2} = \\pi ab\\)\n\nAlternatively, considering horizontal strips as shown in Fig 8.8, the area of the ellipse is\n\n\\(= 4\\int_0^b x\\,dy = 4\\frac{a}{b}\\int_0^b \\sqrt{b^2 - y^2}\\,dy\\)  (Why?)\n\n\\(= \\frac{4a}{b}\\left[\\frac{y}{2}\\sqrt{b^2 - y^2} + \\frac{b^2}{2}\\sin^{-1}\\frac{y}{b}\\right]_0^b\\)\n\n\\(= \\frac{4a}{b}\\left[\\left(\\frac{b}{2}\\times 0 + \\frac{b^2}{2}\\sin^{-1}1\\right) - 0\\right] = \\frac{4a}{b}\\cdot\\frac{b^2}{2}\\cdot\\frac{\\pi}{2} = \\pi ab\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area Under Simple Curves",
+    "difficulty": "EASY",
+    "stem": "Find the area of the region bounded by the ellipse \\(\\frac{x^2}{16} + \\frac{y^2}{9} = 1\\).",
+    "_region": "the whole region enclosed by the ellipse \\(\\frac{x^2}{16}+\\frac{y^2}{9}=1\\); centre at the origin, semi-major axis 4 along the x-axis, semi-minor axis 3 along the y-axis"
+  },
+  {
+    "ref": "Ex 8.1 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area Under Simple Curves",
+    "difficulty": "EASY",
+    "stem": "Find the area of the region bounded by the ellipse \\(\\frac{x^2}{4} + \\frac{y^2}{9} = 1\\).",
+    "_region": "the whole region enclosed by the ellipse \\(\\frac{x^2}{4}+\\frac{y^2}{9}=1\\); centre at the origin, semi-axis 2 along the x-axis and semi-axis 3 along the y-axis (major axis vertical)"
+  },
+  {
+    "ref": "Ex 8.1 Q3",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Area Bounded by a Curve and a Line",
+    "difficulty": "EASY",
+    "stem": "Area lying in the first quadrant and bounded by the circle \\(x^2 + y^2 = 4\\) and the lines \\(x = 0\\) and \\(x = 2\\) is",
+    "_region": "the first-quadrant region bounded by the circle \\(x^2+y^2=4\\) (radius 2, centre origin), the x-axis and the vertical lines \\(x=0\\) and \\(x=2\\) — i.e. the quarter disc in the first quadrant",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\pi\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\pi}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\pi}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\pi}{4}\\)"
+      }
+    ],
+    "answer": "A"
+  },
+  {
+    "ref": "Ex 8.1 Q4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Area Bounded by a Curve and a Line",
+    "difficulty": "MODERATE",
+    "stem": "Area of the region bounded by the curve \\(y^2 = 4x\\), the \\(y\\)-axis and the line \\(y = 3\\) is",
+    "_region": "the region bounded on the right by the parabola \\(y^2=4x\\) (opening rightward, vertex at the origin), on the left by the y-axis, and above by the horizontal line \\(y=3\\); horizontal strips from \\(y=0\\) to \\(y=3\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{9}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{9}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{9}{2}\\)"
+      }
+    ],
+    "answer": "B",
+    "_note": "Distractor (C) is printed as an unreduced fraction, \\(\\frac{9}{3}\\), where the book elsewhere prints whole numbers plainly (cf. option (A) \\(2\\)). Transcribed exactly as printed — not simplified to \\(3\\)."
+  },
+  {
+    "ref": "Misc Eg.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Area Bounded by a Curve and a Line",
+    "difficulty": "MODERATE",
+    "stem": "Find the area of the region bounded by the line \\(y = 3x + 2\\), the \\(x\\)-axis and the ordinates \\(x = -1\\) and \\(x = 1\\).",
+    "_region": "the region between the straight line \\(y=3x+2\\) and the x-axis, cut off by the ordinates \\(x=-1\\) and \\(x=1\\); the line crosses the x-axis at \\(x=-\\frac{2}{3}\\), so the region has a small triangular part BELOW the x-axis on \\(-1\\le x\\le -\\frac{2}{3}\\) and a larger triangular part ABOVE it on \\(-\\frac{2}{3}\\le x\\le 1\\)",
+    "solution": "As shown in the Fig 8.9, the line \\(y = 3x + 2\\) meets the \\(x\\)-axis at \\(x = \\frac{-2}{3}\\) and its graph lies below the \\(x\\)-axis for \\(x \\in \\left(-1, \\frac{-2}{3}\\right)\\) and above the \\(x\\)-axis for \\(x \\in \\left(\\frac{-2}{3}, 1\\right)\\).\n\nThe required area = Area of the region ACBA + Area of the region ADEA\n\n\\(= \\left|\\int_{-1}^{\\frac{-2}{3}} (3x + 2)\\,dx\\right| + \\int_{\\frac{-2}{3}}^{1} (3x + 2)\\,dx\\)\n\n\\(= \\left|\\left[\\frac{3x^2}{2} + 2x\\right]_{-1}^{\\frac{-2}{3}}\\right| + \\left[\\frac{3x^2}{2} + 2x\\right]_{\\frac{-2}{3}}^{1} = \\frac{1}{6} + \\frac{25}{6} = \\frac{13}{3}\\)"
+  },
+  {
+    "ref": "Misc Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Area Under Simple Curves",
+    "difficulty": "MODERATE",
+    "stem": "Find the area bounded by the curve \\(y = \\cos x\\) between \\(x = 0\\) and \\(x = 2\\pi\\).",
+    "_region": "the region between the curve \\(y=\\cos x\\) and the x-axis from \\(x=0\\) to \\(x=2\\pi\\); it falls into three parts — OABO above the axis on \\(\\left[0,\\frac{\\pi}{2}\\right]\\), BCDB below the axis on \\(\\left[\\frac{\\pi}{2},\\frac{3\\pi}{2}\\right]\\), and DEFD above the axis on \\(\\left[\\frac{3\\pi}{2},2\\pi\\right]\\)",
+    "solution": "From the Fig 8.10, the required area = area of the region OABO + area of the region BCDB + area of the region DEFD.\n\nThus, we have the required area\n\n\\(= \\int_0^{\\frac{\\pi}{2}} \\cos x\\,dx + \\left|\\int_{\\frac{\\pi}{2}}^{\\frac{3\\pi}{2}} \\cos x\\,dx\\right| + \\int_{\\frac{3\\pi}{2}}^{2\\pi} \\cos x\\,dx\\)\n\n\\(= \\left[\\sin x\\right]_0^{\\frac{\\pi}{2}} + \\left|\\left[\\sin x\\right]_{\\frac{\\pi}{2}}^{\\frac{3\\pi}{2}}\\right| + \\left[\\sin x\\right]_{\\frac{3\\pi}{2}}^{2\\pi}\\)\n\n\\(= 1 + 2 + 1 = 4\\)"
+  },
+  {
+    "ref": "Misc Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area Bounded by a Curve and a Line",
+    "difficulty": "EASY",
+    "context": "Find the area under the given curves and given lines:",
+    "setLabel": "Misc Q1",
+    "stem": "\\(y = x^2\\), \\(x = 1\\), \\(x = 2\\) and \\(x\\)-axis",
+    "_region": "the region under the parabola \\(y=x^2\\) above the x-axis, between the ordinates \\(x=1\\) and \\(x=2\\)"
+  },
+  {
+    "ref": "Misc Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area Bounded by a Curve and a Line",
+    "difficulty": "EASY",
+    "context": "Find the area under the given curves and given lines:",
+    "setLabel": "Misc Q1",
+    "stem": "\\(y = x^4\\), \\(x = 1\\), \\(x = 5\\) and \\(x\\)-axis",
+    "_region": "the region under the curve \\(y=x^4\\) above the x-axis, between the ordinates \\(x=1\\) and \\(x=5\\)"
+  },
+  {
+    "ref": "Misc Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area Under Simple Curves",
+    "difficulty": "MODERATE",
+    "stem": "Sketch the graph of \\(y = |x + 3|\\) and evaluate \\(\\int_{-6}^{0} |x + 3|\\,dx\\).",
+    "_region": "the region under the V-shaped graph \\(y=|x+3|\\) (vertex at \\((-3,0)\\), arms of slope \\(-1\\) and \\(+1\\)) and above the x-axis, between the ordinates \\(x=-6\\) and \\(x=0\\); two congruent triangles meeting at the vertex"
+  },
+  {
+    "ref": "Misc Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Area Under Simple Curves",
+    "difficulty": "MODERATE",
+    "stem": "Find the area bounded by the curve \\(y = \\sin x\\) between \\(x = 0\\) and \\(x = 2\\pi\\).",
+    "_region": "the region between the curve \\(y=\\sin x\\) and the x-axis from \\(x=0\\) to \\(x=2\\pi\\); the arch above the axis on \\([0,\\pi]\\) and the arch below the axis on \\([\\pi,2\\pi]\\)"
+  },
+  {
+    "ref": "Misc Q4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Area Under Simple Curves",
+    "difficulty": "MODERATE",
+    "stem": "Area bounded by the curve \\(y = x^3\\), the \\(x\\)-axis and the ordinates \\(x = -2\\) and \\(x = 1\\) is",
+    "_region": "the region between the cubic \\(y=x^3\\) and the x-axis, cut off by the ordinates \\(x=-2\\) and \\(x=1\\); the curve lies BELOW the axis on \\([-2,0]\\) and ABOVE it on \\([0,1]\\), so the two parts are measured separately",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(-9\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{-15}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{15}{4}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{17}{4}\\)"
+      }
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc Q5",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Area Under Simple Curves",
+    "difficulty": "MODERATE",
+    "stem": "The area bounded by the curve \\(y = x|x|\\), the \\(x\\)-axis and the ordinates \\(x = -1\\) and \\(x = 1\\) is given by\n\n[Hint : \\(y = x^2\\) if \\(x > 0\\) and \\(y = -x^2\\) if \\(x < 0\\)].",
+    "_region": "the region between the curve \\(y=x|x|\\) and the x-axis, cut off by the ordinates \\(x=-1\\) and \\(x=1\\); the curve is \\(y=-x^2\\) (below the axis) on \\([-1,0]\\) and \\(y=x^2\\) (above the axis) on \\([0,1]\\), so the two congruent parts are measured separately",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{2}{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{4}{3}\\)"
+      }
+    ],
+    "answer": "C"
+  }
+]

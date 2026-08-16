@@ -1,0 +1,229 @@
+[
+  {
+    "ref": "Misc Eg.26",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Components and Direction Cosines",
+    "difficulty": "MODERATE",
+    "stem": "Write all the unit vectors in XY-plane.",
+    "solution": "Let \\(\\vec{r} = x\\hat{i} + y\\hat{j}\\) be a unit vector in XY-plane (Fig 10.28). Then, from the figure, we have \\(x = \\cos\\theta\\) and \\(y = \\sin\\theta\\) (since \\(|\\vec{r}| = 1\\)). So, we may write the vector \\(\\vec{r}\\) as\n\n\\(\\vec{r}\\,(= \\overrightarrow{\\mathrm{OP}}) = \\cos\\theta\\,\\hat{i} + \\sin\\theta\\,\\hat{j}\\)  ... (1)\n\nClearly, \\(|\\vec{r}| = \\sqrt{\\cos^{2}\\theta + \\sin^{2}\\theta} = 1\\)\n\nAlso, as \\(\\theta\\) varies from \\(0\\) to \\(2\\pi\\), the point P (Fig 10.28) traces the circle \\(x^{2} + y^{2} = 1\\) counterclockwise, and this covers all possible directions. So, (1) gives every unit vector in the XY-plane."
+  },
+  {
+    "ref": "Misc Eg.27",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Scalar (Dot) Product and Projection",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\hat{i} + \\hat{j} + \\hat{k}\\), \\(2\\hat{i} + 5\\hat{j}\\), \\(3\\hat{i} + 2\\hat{j} - 3\\hat{k}\\) and \\(\\hat{i} - 6\\hat{j} - \\hat{k}\\) are the position vectors of points A, B, C and D respectively, then find the angle between \\(\\overrightarrow{\\mathrm{AB}}\\) and \\(\\overrightarrow{\\mathrm{CD}}\\). Deduce that \\(\\overrightarrow{\\mathrm{AB}}\\) and \\(\\overrightarrow{\\mathrm{CD}}\\) are collinear.",
+    "solution": "Note that if \\(\\theta\\) is the angle between AB and CD, then \\(\\theta\\) is also the angle between \\(\\overrightarrow{\\mathrm{AB}}\\) and \\(\\overrightarrow{\\mathrm{CD}}\\).\n\nNow \\(\\overrightarrow{\\mathrm{AB}}\\) = Position vector of B \\(-\\) Position vector of A\n\n\\(= (2\\hat{i} + 5\\hat{j}) - (\\hat{i} + \\hat{j} + \\hat{k}) = \\hat{i} + 4\\hat{j} - \\hat{k}\\)\n\nTherefore \\(|\\overrightarrow{\\mathrm{AB}}| = \\sqrt{(1)^{2} + (4)^{2} + (-1)^{2}} = 3\\sqrt{2}\\)\n\nSimilarly \\(\\overrightarrow{\\mathrm{CD}} = -2\\hat{i} - 8\\hat{j} + 2\\hat{k}\\) and \\(|\\overrightarrow{\\mathrm{CD}}| = 6\\sqrt{2}\\)\n\nThus \\(\\cos\\theta = \\dfrac{\\overrightarrow{\\mathrm{AB}}\\cdot\\overrightarrow{\\mathrm{CD}}}{|\\overrightarrow{\\mathrm{AB}}||\\overrightarrow{\\mathrm{CD}}|} = \\dfrac{1(-2) + 4(-8) + (-1)(2)}{(3\\sqrt{2})(6\\sqrt{2})} = \\dfrac{-36}{36} = -1\\)\n\nSince \\(0 \\le \\theta \\le \\pi\\), it follows that \\(\\theta = \\pi\\). This shows that \\(\\overrightarrow{\\mathrm{AB}}\\) and \\(\\overrightarrow{\\mathrm{CD}}\\) are collinear.\n\nAlternatively, \\(\\overrightarrow{\\mathrm{AB}} = -\\dfrac{1}{2}\\overrightarrow{\\mathrm{CD}}\\) which implies that \\(\\overrightarrow{\\mathrm{AB}}\\) and \\(\\overrightarrow{\\mathrm{CD}}\\) are collinear vectors."
+  },
+  {
+    "ref": "Misc Eg.28",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Scalar (Dot) Product and Projection",
+    "difficulty": "MODERATE",
+    "stem": "Let \\(\\vec{a}, \\vec{b}\\) and \\(\\vec{c}\\) be three vectors such that \\(|\\vec{a}| = 3\\), \\(|\\vec{b}| = 4\\), \\(|\\vec{c}| = 5\\) and each one of them being perpendicular to the sum of the other two, find \\(|\\vec{a} + \\vec{b} + \\vec{c}|\\).",
+    "solution": "Given \\(\\vec{a}\\cdot(\\vec{b} + \\vec{c}) = 0\\), \\(\\vec{b}\\cdot(\\vec{c} + \\vec{a}) = 0\\), \\(\\vec{c}\\cdot(\\vec{a} + \\vec{b}) = 0\\).\n\nNow \\(|\\vec{a} + \\vec{b} + \\vec{c}|^{2} = (\\vec{a} + \\vec{b} + \\vec{c})^{2} = (\\vec{a} + \\vec{b} + \\vec{c})\\cdot(\\vec{a} + \\vec{b} + \\vec{c})\\)\n\n\\(= \\vec{a}\\cdot\\vec{a} + \\vec{a}\\cdot(\\vec{b} + \\vec{c}) + \\vec{b}\\cdot\\vec{b} + \\vec{b}\\cdot(\\vec{a} + \\vec{c}) + \\vec{c}\\cdot(\\vec{a} + \\vec{b}) + \\vec{c}\\cdot\\vec{c}\\)\n\n\\(= |\\vec{a}|^{2} + |\\vec{b}|^{2} + |\\vec{c}|^{2}\\)\n\n\\(= 9 + 16 + 25 = 50\\)\n\nTherefore \\(|\\vec{a} + \\vec{b} + \\vec{c}| = \\sqrt{50} = 5\\sqrt{2}\\)"
+  },
+  {
+    "ref": "Misc Eg.29",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Scalar (Dot) Product and Projection",
+    "difficulty": "HARD",
+    "stem": "Three vectors \\(\\vec{a}, \\vec{b}\\) and \\(\\vec{c}\\) satisfy the condition \\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0}\\). Evaluate the quantity \\(\\mu = \\vec{a}\\cdot\\vec{b} + \\vec{b}\\cdot\\vec{c} + \\vec{c}\\cdot\\vec{a}\\), if \\(|\\vec{a}| = 3\\), \\(|\\vec{b}| = 4\\) and \\(|\\vec{c}| = 2\\).",
+    "solution": "Since \\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0}\\), we have\n\n\\(\\vec{a}\\cdot(\\vec{a} + \\vec{b} + \\vec{c}) = 0\\)\n\nor \\(\\vec{a}\\cdot\\vec{a} + \\vec{a}\\cdot\\vec{b} + \\vec{a}\\cdot\\vec{c} = 0\\)\n\nTherefore \\(\\vec{a}\\cdot\\vec{b} + \\vec{a}\\cdot\\vec{c} = -|\\vec{a}|^{2} = -9\\)  ... (1)\n\nAgain, \\(\\vec{b}\\cdot(\\vec{a} + \\vec{b} + \\vec{c}) = 0\\)\n\nor \\(\\vec{a}\\cdot\\vec{b} + \\vec{b}\\cdot\\vec{c} = -|\\vec{b}|^{2} = -16\\)  ... (2)\n\nSimilarly \\(\\vec{a}\\cdot\\vec{c} + \\vec{b}\\cdot\\vec{c} = -4\\)  ... (3)\n\nAdding (1), (2) and (3), we have\n\n\\(2(\\vec{a}\\cdot\\vec{b} + \\vec{b}\\cdot\\vec{c} + \\vec{a}\\cdot\\vec{c}) = -29\\)\n\nor \\(2\\mu = -29\\), i.e., \\(\\mu = \\dfrac{-29}{2}\\)",
+    "_note": "BOOK MISPRINT in the printed solution's first step: the book prints the line as \\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0} = 0\\), which is meaningless as an equation and does not yield the next line. The step that actually produces \\(\\vec{a}\\cdot\\vec{a} + \\vec{a}\\cdot\\vec{b} + \\vec{a}\\cdot\\vec{c} = 0\\) is dotting the given condition with \\(\\vec{a}\\), i.e. \\(\\vec{a}\\cdot(\\vec{a} + \\vec{b} + \\vec{c}) = 0\\) — exactly the form the book itself prints two lines later for \\(\\vec{b}\\). Transcribed here in the self-consistent form; the printed line is verified defective on the page image (p33). The final answer \\(\\mu = -29/2\\) is unaffected."
+  },
+  {
+    "ref": "Misc Eg.30",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Scalar (Dot) Product and Projection",
+    "difficulty": "HARD",
+    "stem": "If with reference to the right handed system of mutually perpendicular unit vectors \\(\\hat{i}, \\hat{j}\\) and \\(\\hat{k}\\), \\(\\vec{\\alpha} = 3\\hat{i} - \\hat{j}\\), \\(\\vec{\\beta} = 2\\hat{i} + \\hat{j} - 3\\hat{k}\\), then express \\(\\vec{\\beta}\\) in the form \\(\\vec{\\beta} = \\vec{\\beta_{1}} + \\vec{\\beta_{2}}\\), where \\(\\vec{\\beta_{1}}\\) is parallel to \\(\\vec{\\alpha}\\) and \\(\\vec{\\beta_{2}}\\) is perpendicular to \\(\\vec{\\alpha}\\).",
+    "solution": "Let \\(\\vec{\\beta_{1}} = \\lambda\\vec{\\alpha}\\), \\(\\lambda\\) is a scalar, i.e., \\(\\vec{\\beta_{1}} = 3\\lambda\\hat{i} - \\lambda\\hat{j}\\).\n\nNow \\(\\vec{\\beta_{2}} = \\vec{\\beta} - \\vec{\\beta_{1}} = (2 - 3\\lambda)\\hat{i} + (1 + \\lambda)\\hat{j} - 3\\hat{k}\\).\n\nNow, since \\(\\vec{\\beta_{2}}\\) is to be perpendicular to \\(\\vec{\\alpha}\\), we should have \\(\\vec{\\alpha}\\cdot\\vec{\\beta_{2}} = 0\\). i.e.,\n\n\\(3(2 - 3\\lambda) - (1 + \\lambda) = 0\\)\n\nor \\(\\lambda = \\dfrac{1}{2}\\)\n\nTherefore \\(\\vec{\\beta_{1}} = \\dfrac{3}{2}\\hat{i} - \\dfrac{1}{2}\\hat{j}\\) and \\(\\vec{\\beta_{2}} = \\dfrac{1}{2}\\hat{i} + \\dfrac{3}{2}\\hat{j} - 3\\hat{k}\\)"
+  },
+  {
+    "ref": "Misc Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Components and Direction Cosines",
+    "difficulty": "EASY",
+    "stem": "Write down a unit vector in XY-plane, making an angle of \\(30^{\\circ}\\) with the positive direction of \\(x\\)-axis."
+  },
+  {
+    "ref": "Misc Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Components and Direction Cosines",
+    "difficulty": "EASY",
+    "stem": "Find the scalar components and magnitude of the vector joining the points \\(\\mathrm{P}(x_{1}, y_{1}, z_{1})\\) and \\(\\mathrm{Q}(x_{2}, y_{2}, z_{2})\\)."
+  },
+  {
+    "ref": "Misc Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "A girl walks 4 km towards west, then she walks 3 km in a direction \\(30^{\\circ}\\) east of north and stops. Determine the girl's displacement from her initial point of departure."
+  },
+  {
+    "ref": "Misc Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a} = \\vec{b} + \\vec{c}\\), then is it true that \\(|\\vec{a}| = |\\vec{b}| + |\\vec{c}|\\)? Justify your answer."
+  },
+  {
+    "ref": "Misc Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Components and Direction Cosines",
+    "difficulty": "EASY",
+    "stem": "Find the value of \\(x\\) for which \\(x(\\hat{i} + \\hat{j} + \\hat{k})\\) is a unit vector."
+  },
+  {
+    "ref": "Misc Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "Find a vector of magnitude 5 units, and parallel to the resultant of the vectors \\(\\vec{a} = 2\\hat{i} + 3\\hat{j} - \\hat{k}\\) and \\(\\vec{b} = \\hat{i} - 2\\hat{j} + \\hat{k}\\)."
+  },
+  {
+    "ref": "Misc Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Addition of Vectors",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a} = \\hat{i} + \\hat{j} + \\hat{k}\\), \\(\\vec{b} = 2\\hat{i} - \\hat{j} + 3\\hat{k}\\) and \\(\\vec{c} = \\hat{i} - 2\\hat{j} + \\hat{k}\\), find a unit vector parallel to the vector \\(2\\vec{a} - \\vec{b} + 3\\vec{c}\\)."
+  },
+  {
+    "ref": "Misc Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "Show that the points \\(\\mathrm{A}(1, -2, -8)\\), \\(\\mathrm{B}(5, 0, -2)\\) and \\(\\mathrm{C}(11, 3, 7)\\) are collinear, and find the ratio in which B divides AC."
+  },
+  {
+    "ref": "Misc Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Section Formula",
+    "difficulty": "MODERATE",
+    "stem": "Find the position vector of a point R which divides the line joining two points P and Q whose position vectors are \\((2\\vec{a} + \\vec{b})\\) and \\((\\vec{a} - 3\\vec{b})\\) externally in the ratio \\(1 : 2\\). Also, show that P is the mid point of the line segment RQ."
+  },
+  {
+    "ref": "Misc Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vector (Cross) Product",
+    "difficulty": "MODERATE",
+    "stem": "The two adjacent sides of a parallelogram are \\(2\\hat{i} - 4\\hat{j} + 5\\hat{k}\\) and \\(\\hat{i} - 2\\hat{j} - 3\\hat{k}\\). Find the unit vector parallel to its diagonal. Also, find its area."
+  },
+  {
+    "ref": "Misc Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Components and Direction Cosines",
+    "difficulty": "MODERATE",
+    "stem": "Show that the direction cosines of a vector equally inclined to the axes OX, OY and OZ are \\(\\pm\\left(\\dfrac{1}{\\sqrt{3}}, \\dfrac{1}{\\sqrt{3}}, \\dfrac{1}{\\sqrt{3}}\\right)\\)."
+  },
+  {
+    "ref": "Misc Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Vector (Cross) Product",
+    "difficulty": "HARD",
+    "stem": "Let \\(\\vec{a} = \\hat{i} + 4\\hat{j} + 2\\hat{k}\\), \\(\\vec{b} = 3\\hat{i} - 2\\hat{j} + 7\\hat{k}\\) and \\(\\vec{c} = 2\\hat{i} - \\hat{j} + 4\\hat{k}\\). Find a vector \\(\\vec{d}\\) which is perpendicular to both \\(\\vec{a}\\) and \\(\\vec{b}\\), and \\(\\vec{c}\\cdot\\vec{d} = 15\\)."
+  },
+  {
+    "ref": "Misc Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar (Dot) Product and Projection",
+    "difficulty": "MODERATE",
+    "stem": "The scalar product of the vector \\(\\hat{i} + \\hat{j} + \\hat{k}\\) with a unit vector along the sum of vectors \\(2\\hat{i} + 4\\hat{j} - 5\\hat{k}\\) and \\(\\lambda\\hat{i} + 2\\hat{j} + 3\\hat{k}\\) is equal to one. Find the value of \\(\\lambda\\)."
+  },
+  {
+    "ref": "Misc Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar (Dot) Product and Projection",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\vec{a}, \\vec{b}, \\vec{c}\\) are mutually perpendicular vectors of equal magnitudes, show that the vector \\(\\vec{c}\\cdot\\vec{d} = 15\\) is equally inclined to \\(\\vec{a}, \\vec{b}\\) and \\(\\vec{c}\\).",
+    "_note": "BOOK DEFECT — the stem is transcribed exactly as printed and is UNANSWERABLE as it stands. The clause \\(\\vec{c}\\cdot\\vec{d} = 15\\) is a scalar equation, not a vector, so \"the vector \\(\\vec{c}\\cdot\\vec{d} = 15\\)\" is meaningless; \\(\\vec{d}\\) is never defined in this question. The clause is verbatim the closing condition of Misc Q12 on the same page — a copy-paste corruption. The intended question (the standard NCERT text) is: \"show that the vector \\(\\vec{a} + \\vec{b} + \\vec{c}\\) is equally inclined to \\(\\vec{a}, \\vec{b}\\) and \\(\\vec{c}\\)\", which is consistent with the given hypothesis and with the answer. Verified at 2.6x zoom on the page image (p34) — this is what is printed, not a rendering artefact. Needs an errata bracket at solution-authoring time."
+  },
+  {
+    "ref": "Misc Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Scalar (Dot) Product and Projection",
+    "difficulty": "MODERATE",
+    "stem": "Prove that \\((\\vec{a} + \\vec{b})\\cdot(\\vec{a} + \\vec{b}) = |\\vec{a}|^{2} + |\\vec{b}|^{2}\\), if and only if \\(\\vec{a}, \\vec{b}\\) are perpendicular, given \\(\\vec{a} \\ne \\vec{0}, \\vec{b} \\ne \\vec{0}\\)."
+  },
+  {
+    "ref": "Misc Q16",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Scalar (Dot) Product and Projection",
+    "difficulty": "EASY",
+    "stem": "If \\(\\theta\\) is the angle between two vectors \\(\\vec{a}\\) and \\(\\vec{b}\\), then \\(\\vec{a}\\cdot\\vec{b} \\ge 0\\) only when",
+    "options": [
+      {"label": "A", "text": "\\(0 < \\theta < \\dfrac{\\pi}{2}\\)"},
+      {"label": "B", "text": "\\(0 \\le \\theta \\le \\dfrac{\\pi}{2}\\)"},
+      {"label": "C", "text": "\\(0 < \\theta < \\pi\\)"},
+      {"label": "D", "text": "\\(0 \\le \\theta \\le \\pi\\)"}
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Misc Q17",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Scalar (Dot) Product and Projection",
+    "difficulty": "MODERATE",
+    "stem": "Let \\(\\vec{a}\\) and \\(\\vec{b}\\) be two unit vectors and \\(\\theta\\) is the angle between them. Then \\(\\vec{a} + \\vec{b}\\) is a unit vector if",
+    "options": [
+      {"label": "A", "text": "\\(\\theta = \\dfrac{\\pi}{4}\\)"},
+      {"label": "B", "text": "\\(\\theta = \\dfrac{\\pi}{3}\\)"},
+      {"label": "C", "text": "\\(\\theta = \\dfrac{\\pi}{2}\\)"},
+      {"label": "D", "text": "\\(\\theta = \\dfrac{2\\pi}{3}\\)"}
+    ],
+    "answer": "D"
+  },
+  {
+    "ref": "Misc Q18",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Vector (Cross) Product",
+    "difficulty": "EASY",
+    "stem": "The value of \\(\\hat{i}\\cdot(\\hat{j} \\times \\hat{k}) + \\hat{j}\\cdot(\\hat{i} \\times \\hat{k}) + \\hat{k}\\cdot(\\hat{i} \\times \\hat{j})\\) is",
+    "options": [
+      {"label": "A", "text": "\\(0\\)"},
+      {"label": "B", "text": "\\(-1\\)"},
+      {"label": "C", "text": "\\(1\\)"},
+      {"label": "D", "text": "\\(3\\)"}
+    ],
+    "answer": "C"
+  },
+  {
+    "ref": "Misc Q19",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Vector (Cross) Product",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\theta\\) is the angle between any two vectors \\(\\vec{a}\\) and \\(\\vec{b}\\), then \\(|\\vec{a}\\cdot\\vec{b}| = |\\vec{a} \\times \\vec{b}|\\) when \\(\\theta\\) is equal to",
+    "options": [
+      {"label": "A", "text": "\\(0\\)"},
+      {"label": "B", "text": "\\(\\dfrac{\\pi}{4}\\)"},
+      {"label": "C", "text": "\\(\\dfrac{\\pi}{2}\\)"},
+      {"label": "D", "text": "\\(\\pi\\)"}
+    ],
+    "answer": "B"
+  }
+]

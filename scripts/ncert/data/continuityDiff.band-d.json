@@ -1,0 +1,300 @@
+[
+  {
+    "ref": "5.6 Eg.31",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{dy}{dx}\\), if \\(x = a \\cos \\theta\\), \\(y = a \\sin \\theta\\).",
+    "solution": "Given that \\(x = a \\cos \\theta\\), \\(y = a \\sin \\theta\\).\n\nTherefore \\(\\frac{dx}{d\\theta} = -a \\sin \\theta\\), \\(\\frac{dy}{d\\theta} = a \\cos \\theta\\).\n\nHence \\(\\frac{dy}{dx} = \\frac{\\frac{dy}{d\\theta}}{\\frac{dx}{d\\theta}} = \\frac{a \\cos \\theta}{-a \\sin \\theta} = -\\cot \\theta\\)."
+  },
+  {
+    "ref": "5.6 Eg.32",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{dy}{dx}\\), if \\(x = at^2\\), \\(y = 2at\\).",
+    "solution": "Given that \\(x = at^2\\), \\(y = 2at\\).\n\nSo \\(\\frac{dx}{dt} = 2at\\) and \\(\\frac{dy}{dt} = 2a\\).\n\nTherefore \\(\\frac{dy}{dx} = \\frac{\\frac{dy}{dt}}{\\frac{dx}{dt}} = \\frac{2a}{2at} = \\frac{1}{t}\\)."
+  },
+  {
+    "ref": "5.6 Eg.33",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\), if \\(x = a(\\theta + \\sin \\theta)\\), \\(y = a(1 - \\cos \\theta)\\).",
+    "solution": "We have \\(\\frac{dx}{d\\theta} = a(1 + \\cos \\theta)\\), \\(\\frac{dy}{d\\theta} = a(\\sin \\theta)\\).\n\nTherefore \\(\\frac{dy}{dx} = \\frac{\\frac{dy}{d\\theta}}{\\frac{dx}{d\\theta}} = \\frac{a \\sin \\theta}{a(1 + \\cos \\theta)} = \\tan \\frac{\\theta}{2}\\).\n\nNote: It may be noted here that \\(\\frac{dy}{dx}\\) is expressed in terms of the parameter only without directly involving the main variables \\(x\\) and \\(y\\)."
+  },
+  {
+    "ref": "5.6 Eg.34",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\frac{dy}{dx}\\), if \\(x^{\\frac{2}{3}} + y^{\\frac{2}{3}} = a^{\\frac{2}{3}}\\).",
+    "solution": "Let \\(x = a \\cos^3 \\theta\\), \\(y = a \\sin^3 \\theta\\). Then\n\n\\(x^{\\frac{2}{3}} + y^{\\frac{2}{3}} = (a \\cos^3 \\theta)^{\\frac{2}{3}} + (a \\sin^3 \\theta)^{\\frac{2}{3}} = a^{\\frac{2}{3}}(\\cos^2 \\theta + \\sin^2 \\theta) = a^{\\frac{2}{3}}\\)\n\nHence, \\(x = a \\cos^3 \\theta\\), \\(y = a \\sin^3 \\theta\\) is a parametric equation of \\(x^{\\frac{2}{3}} + y^{\\frac{2}{3}} = a^{\\frac{2}{3}}\\).\n\nNow \\(\\frac{dx}{d\\theta} = -3a \\cos^2 \\theta \\sin \\theta\\) and \\(\\frac{dy}{d\\theta} = 3a \\sin^2 \\theta \\cos \\theta\\).\n\nTherefore \\(\\frac{dy}{dx} = \\frac{\\frac{dy}{d\\theta}}{\\frac{dx}{d\\theta}} = \\frac{3a \\sin^2 \\theta \\cos \\theta}{-3a \\cos^2 \\theta \\sin \\theta} = -\\tan \\theta = -\\sqrt[3]{\\frac{y}{x}}\\).",
+    "_note": "Book misprint in the printed solution: the identity line is set as \\(= a^{2/3}(\\cos^2\\theta + (\\sin^2\\theta) = a^{2/3}\\) with a stray extra opening parenthesis before \\(\\sin^2\\theta\\), leaving the bracket unbalanced. Transcribed here in the balanced form the book's own working requires; no step or answer is affected."
+  },
+  {
+    "ref": "Ex 5.6 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "EASY",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = 2at^2\\), \\(y = at^4\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "EASY",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = a \\cos \\theta\\), \\(y = b \\cos \\theta\\).",
+    "_note": "Transcribed exactly as printed: BOTH equations use cosine (\\(x = a\\cos\\theta\\), \\(y = b\\cos\\theta\\)) — verified on the rendered page AND independently in the PDF text layer, so this is what the book prints, not a transcription slip. Almost certainly a book misprint for \\(y = b\\sin\\theta\\) (the standard ellipse parametrisation, and the form every neighbouring question uses). As printed the question is still answerable but degenerate: \\(\\frac{dy}{dx} = \\frac{-b\\sin\\theta}{-a\\sin\\theta} = \\frac{b}{a}\\), a constant, because the two equations describe the straight segment \\(bx = ay\\). Flagging for the answer-key cross-check: compare against the printed key for Ex 5.6 Q2 before authoring the model answer."
+  },
+  {
+    "ref": "Ex 5.6 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "EASY",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = \\sin t\\), \\(y = \\cos 2t\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "EASY",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = 4t\\), \\(y = \\frac{4}{t}\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = \\cos \\theta - \\cos 2\\theta\\), \\(y = \\sin \\theta - \\sin 2\\theta\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = a(\\theta - \\sin \\theta)\\), \\(y = a(1 + \\cos \\theta)\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "HARD",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = \\frac{\\sin^3 t}{\\sqrt{\\cos 2t}}\\), \\(y = \\frac{\\cos^3 t}{\\sqrt{\\cos 2t}}\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "HARD",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = a\\left(\\cos t + \\log \\tan \\frac{t}{2}\\right)\\), \\(y = a \\sin t\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = a \\sec \\theta\\), \\(y = b \\tan \\theta\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "MODERATE",
+    "stem": "If \\(x\\) and \\(y\\) are connected parametrically by the equations given below, without eliminating the parameter, find \\(\\frac{dy}{dx}\\): \\(x = a(\\cos \\theta + \\theta \\sin \\theta)\\), \\(y = a(\\sin \\theta - \\theta \\cos \\theta)\\)."
+  },
+  {
+    "ref": "Ex 5.6 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "HARD",
+    "stem": "If \\(x = \\sqrt{a^{\\sin^{-1} t}}\\), \\(y = \\sqrt{a^{\\cos^{-1} t}}\\), show that \\(\\frac{dy}{dx} = -\\frac{y}{x}\\)."
+  },
+  {
+    "ref": "5.7 Eg.35",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{d^2y}{dx^2}\\), if \\(y = x^3 + \\tan x\\).",
+    "solution": "Given that \\(y = x^3 + \\tan x\\). Then\n\n\\(\\frac{dy}{dx} = 3x^2 + \\sec^2 x\\)\n\nTherefore \\(\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\left(3x^2 + \\sec^2 x\\right) = 6x + 2 \\sec x \\cdot \\sec x \\tan x = 6x + 2 \\sec^2 x \\tan x\\)."
+  },
+  {
+    "ref": "5.7 Eg.36",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "EASY",
+    "stem": "If \\(y = \\mathrm{A} \\sin x + \\mathrm{B} \\cos x\\), then prove that \\(\\frac{d^2y}{dx^2} + y = 0\\).",
+    "solution": "We have \\(\\frac{dy}{dx} = \\mathrm{A} \\cos x - \\mathrm{B} \\sin x\\)\n\nand \\(\\frac{d^2y}{dx^2} = \\frac{d}{dx}(\\mathrm{A} \\cos x - \\mathrm{B} \\sin x) = -\\mathrm{A} \\sin x - \\mathrm{B} \\cos x = -y\\)\n\nHence \\(\\frac{d^2y}{dx^2} + y = 0\\)."
+  },
+  {
+    "ref": "5.7 Eg.37",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "If \\(y = 3e^{2x} + 2e^{3x}\\), prove that \\(\\frac{d^2y}{dx^2} - 5\\frac{dy}{dx} + 6y = 0\\).",
+    "solution": "Given that \\(y = 3e^{2x} + 2e^{3x}\\). Then\n\n\\(\\frac{dy}{dx} = 6e^{2x} + 6e^{3x} = 6(e^{2x} + e^{3x})\\)\n\nTherefore \\(\\frac{d^2y}{dx^2} = 12e^{2x} + 18e^{3x} = 6(2e^{2x} + 3e^{3x})\\)\n\nHence \\(\\frac{d^2y}{dx^2} - 5\\frac{dy}{dx} + 6y = 6(2e^{2x} + 3e^{3x}) - 30(e^{2x} + e^{3x}) + 6(3e^{2x} + 2e^{3x}) = 0\\)."
+  },
+  {
+    "ref": "5.7 Eg.38",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "If \\(y = \\sin^{-1} x\\), show that \\((1 - x^2)\\frac{d^2y}{dx^2} - x\\frac{dy}{dx} = 0\\).",
+    "solution": "We have \\(y = \\sin^{-1} x\\). Then\n\n\\(\\frac{dy}{dx} = \\frac{1}{\\sqrt{(1 - x^2)}}\\)\n\nor \\(\\sqrt{(1 - x^2)}\\,\\frac{dy}{dx} = 1\\)\n\nSo \\(\\frac{d}{dx}\\left(\\sqrt{(1 - x^2)} \\cdot \\frac{dy}{dx}\\right) = 0\\)\n\nor \\(\\sqrt{(1 - x^2)} \\cdot \\frac{d^2y}{dx^2} + \\frac{dy}{dx} \\cdot \\frac{d}{dx}\\left(\\sqrt{(1 - x^2)}\\right) = 0\\)\n\nor \\(\\sqrt{(1 - x^2)} \\cdot \\frac{d^2y}{dx^2} - \\frac{dy}{dx} \\cdot \\frac{2x}{2\\sqrt{1 - x^2}} = 0\\)\n\nHence \\((1 - x^2)\\frac{d^2y}{dx^2} - x\\frac{dy}{dx} = 0\\)\n\nAlternatively, given that \\(y = \\sin^{-1} x\\), we have\n\n\\(y_1 = \\frac{1}{\\sqrt{1 - x^2}}\\), i.e., \\((1 - x^2)y_1^2 = 1\\)\n\nSo \\((1 - x^2) \\cdot 2y_1y_2 + y_1^2(0 - 2x) = 0\\)\n\nHence \\((1 - x^2)y_2 - xy_1 = 0\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "EASY",
+    "stem": "Find the second order derivative of the function \\(x^2 + 3x + 2\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "EASY",
+    "stem": "Find the second order derivative of the function \\(x^{20}\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "EASY",
+    "stem": "Find the second order derivative of the function \\(x \\cdot \\cos x\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "EASY",
+    "stem": "Find the second order derivative of the function \\(\\log x\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "Find the second order derivative of the function \\(x^3 \\log x\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "Find the second order derivative of the function \\(e^x \\sin 5x\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "Find the second order derivative of the function \\(e^{6x} \\cos 3x\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "Find the second order derivative of the function \\(\\tan^{-1} x\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "Find the second order derivative of the function \\(\\log(\\log x)\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "Find the second order derivative of the function \\(\\sin(\\log x)\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "EASY",
+    "stem": "If \\(y = 5 \\cos x - 3 \\sin x\\), prove that \\(\\frac{d^2y}{dx^2} + y = 0\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "If \\(y = \\cos^{-1} x\\), find \\(\\frac{d^2y}{dx^2}\\) in terms of \\(y\\) alone."
+  },
+  {
+    "ref": "Ex 5.7 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "If \\(y = 3 \\cos(\\log x) + 4 \\sin(\\log x)\\), show that \\(x^2 y_2 + x y_1 + y = 0\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "MODERATE",
+    "stem": "If \\(y = \\mathrm{A}e^{mx} + \\mathrm{B}e^{nx}\\), show that \\(\\frac{d^2y}{dx^2} - (m + n)\\frac{dy}{dx} + mny = 0\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "EASY",
+    "stem": "If \\(y = 500e^{7x} + 600e^{-7x}\\), show that \\(\\frac{d^2y}{dx^2} = 49y\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "If \\(e^y(x + 1) = 1\\), show that \\(\\frac{d^2y}{dx^2} = \\left(\\frac{dy}{dx}\\right)^2\\)."
+  },
+  {
+    "ref": "Ex 5.7 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "If \\(y = (\\tan^{-1} x)^2\\), show that \\((x^2 + 1)^2 y_2 + 2x(x^2 + 1)y_1 = 2\\)."
+  }
+]

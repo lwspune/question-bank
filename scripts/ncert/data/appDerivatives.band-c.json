@@ -1,0 +1,126 @@
+[
+  {
+    "ref": "6.3 Eg.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "EASY",
+    "stem": "Find the maximum and the minimum values, if any, of the function \\(f\\) given by \\(f(x) = x^2\\), \\(x \\in \\mathbf{R}\\).",
+    "solution": "From the graph of the given function (Fig 6.8), we have \\(f(x) = 0\\) if \\(x = 0\\). Also\n\\(f(x) \\ge 0\\), for all \\(x \\in \\mathbf{R}\\).\n\nTherefore, the minimum value of \\(f\\) is 0 and the point of minimum value of \\(f\\) is \\(x = 0\\). Further, it may be observed from the graph of the function that \\(f\\) has no maximum value and hence no point of maximum value of \\(f\\) in \\(\\mathbf{R}\\).\n\n**Note** If we restrict the domain of \\(f\\) to \\([-2, 1]\\) only, then \\(f\\) will have maximum value \\((-2)^2 = 4\\) at \\(x = -2\\)."
+  },
+  {
+    "ref": "6.3 Eg.15",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "EASY",
+    "stem": "Find the maximum and minimum values of \\(f\\), if any, of the function given by \\(f(x) = |x|\\), \\(x \\in \\mathbf{R}\\).",
+    "solution": "From the graph of the given function (Fig 6.9), note that\n\\(f(x) \\ge 0\\), for all \\(x \\in \\mathbf{R}\\) and \\(f(x) = 0\\) if \\(x = 0\\).\n\nTherefore, the function \\(f\\) has a minimum value 0 and the point of minimum value of \\(f\\) is \\(x = 0\\). Also, the graph clearly shows that \\(f\\) has no maximum value in \\(\\mathbf{R}\\) and hence no point of maximum value in \\(\\mathbf{R}\\).\n\n**Note**\n\n(i) If we restrict the domain of \\(f\\) to \\([-2, 1]\\) only, then \\(f\\) will have maximum value \\(|-2| = 2\\).\n\n(ii) One may note that the function \\(f\\) in Example 27 is not differentiable at \\(x = 0\\).",
+    "_note": "STALE CROSS-REFERENCE (book defect, transcribed faithfully): the Note item (ii) printed with this example says \"the function f in Example 27\", but the function f(x) = |x| under discussion is THIS example, Example 15. The rationalised 2025-26 edition renumbered the examples and left the old number in place (old 27 - 12 = new 15). Compare p13 (0-based), where the Remark correctly cites \"(Example 15)\" for the same |x| function."
+  },
+  {
+    "ref": "6.3 Eg.16",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "MODERATE",
+    "stem": "Find the maximum and the minimum values, if any, of the function given by \\(f(x) = x\\), \\(x \\in (0, 1)\\).",
+    "solution": "The given function is an increasing (strictly) function in the given interval \\((0, 1)\\). From the graph (Fig 6.10) of the function \\(f\\), it seems that, it should have the minimum value at a point closest to 0 on its right and the maximum value at a point closest to 1 on its left. Are such points available? Of course, not. It is not possible to locate such points. Infact, if a point \\(x_0\\) is closest to 0, then we find \\(\\frac{x_0}{2} < x_0\\) for all \\(x_0 \\in (0,1)\\). Also, if \\(x_1\\) is closest to 1, then \\(\\frac{x_1 + 1}{2} > x_1\\) for all \\(x_1 \\in (0,1)\\).\n\nTherefore, the given function has neither the maximum value nor the minimum value in the interval \\((0,1)\\).\n\n**Remark** The reader may observe that in Example 16, if we include the points 0 and 1 in the domain of \\(f\\), i.e., if we extend the domain of \\(f\\) to \\([0,1]\\), then the function \\(f\\) has minimum value 0 at \\(x = 0\\) and maximum value 1 at \\(x = 1\\). Infact, we have the following results (the proof of these results are beyond the scope of the present text):\n\n*Every monotonic function assumes its maximum/minimum value at the end points of the domain of definition of the function.*\n\nA more general result is\n\n*Every continuous function on a closed interval has a maximum and a minimum value.*"
+  },
+  {
+    "ref": "6.3 Eg.17",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "MODERATE",
+    "stem": "Find all points of local maxima and local minima of the function \\(f\\) given by \\(f(x) = x^3 - 3x + 3\\).",
+    "solution": "We have\n\\(f(x) = x^3 - 3x + 3\\)\n\nor \\(f'(x) = 3x^2 - 3 = 3(x - 1)(x + 1)\\)\n\nor \\(f'(x) = 0\\) at \\(x = 1\\) and \\(x = -1\\)\n\nThus, \\(x = \\pm 1\\) are the only critical points which could possibly be the points of local maxima and/or local minima of \\(f\\). Let us first examine the point \\(x = 1\\).\n\nNote that for values close to 1 and to the right of 1, \\(f'(x) > 0\\) and for values close to 1 and to the left of 1, \\(f'(x) < 0\\). Therefore, by first derivative test, \\(x = 1\\) is a point of local minima and local minimum value is \\(f(1) = 1\\). In the case of \\(x = -1\\), note that \\(f'(x) > 0\\), for values close to and to the left of \\(-1\\) and \\(f'(x) < 0\\), for values close to and to the right of \\(-1\\). Therefore, by first derivative test, \\(x = -1\\) is a point of local maxima and local maximum value is \\(f(-1) = 5\\).\n\n| Values of \\(x\\) | Sign of \\(f'(x) = 3(x - 1)(x + 1)\\) |\n|---|---|\n| Close to 1, to the right (say 1.1 etc.) | \\(> 0\\) |\n| Close to 1, to the left (say 0.9 etc.) | \\(< 0\\) |\n| Close to \\(-1\\), to the right (say \\(-0.9\\) etc.) | \\(< 0\\) |\n| Close to \\(-1\\), to the left (say \\(-1.1\\) etc.) | \\(> 0\\) |"
+  },
+  {
+    "ref": "6.3 Eg.18",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "MODERATE",
+    "stem": "Find all the points of local maxima and local minima of the function \\(f\\) given by \\(f(x) = 2x^3 - 6x^2 + 6x + 5\\).",
+    "solution": "We have\n\\(f(x) = 2x^3 - 6x^2 + 6x + 5\\)\n\nor \\(f'(x) = 6x^2 - 12x + 6 = 6(x - 1)^2\\)\n\nor \\(f'(x) = 0\\) at \\(x = 1\\)\n\nThus, \\(x = 1\\) is the only critical point of \\(f\\). We shall now examine this point for local maxima and/or local minima of \\(f\\). Observe that \\(f'(x) \\ge 0\\), for all \\(x \\in \\mathbf{R}\\) and in particular \\(f'(x) > 0\\), for values close to 1 and to the left and to the right of 1. Therefore, by first derivative test, the point \\(x = 1\\) is neither a point of local maxima nor a point of local minima. Hence \\(x = 1\\) is a point of inflexion.\n\n**Remark** One may note that since \\(f'(x)\\), in Example 30, never changes its sign on \\(\\mathbf{R}\\), graph of \\(f\\) has no turning points and hence no point of local maxima or local minima.",
+    "_note": "STALE CROSS-REFERENCE (book defect, transcribed faithfully): the Remark printed immediately after this example says \"since f'(x), in Example 30\", but the function whose derivative never changes sign is THIS example, Example 18. Same +12 renumbering offset as the Example 27 / 15 slip on p15 (0-based)."
+  },
+  {
+    "ref": "6.3 Eg.19",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "MODERATE",
+    "stem": "Find local minimum value of the function \\(f\\) given by \\(f(x) = 3 + |x|\\), \\(x \\in \\mathbf{R}\\).",
+    "solution": "Note that the given function is not differentiable at \\(x = 0\\). So, second derivative test fails. Let us try first derivative test. Note that 0 is a critical point of \\(f\\). Now to the left of 0, \\(f(x) = 3 - x\\) and so \\(f'(x) = -1 < 0\\). Also to the right of 0, \\(f(x) = 3 + x\\) and so \\(f'(x) = 1 > 0\\). Therefore, by first derivative test, \\(x = 0\\) is a point of local minima of \\(f\\) and local minimum value of \\(f\\) is \\(f(0) = 3\\)."
+  },
+  {
+    "ref": "6.3 Eg.20",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "MODERATE",
+    "stem": "Find local maximum and local minimum values of the function \\(f\\) given by \\(f(x) = 3x^4 + 4x^3 - 12x^2 + 12\\).",
+    "solution": "We have\n\\(f(x) = 3x^4 + 4x^3 - 12x^2 + 12\\)\n\nor \\(f'(x) = 12x^3 + 12x^2 - 24x = 12x(x - 1)(x + 2)\\)\n\nor \\(f'(x) = 0\\) at \\(x = 0\\), \\(x = 1\\) and \\(x = -2\\).\n\nNow \\(f''(x) = 36x^2 + 24x - 24 = 12(3x^2 + 2x - 2)\\)\n\nor \\(f''(0) = -24 < 0\\), \\(f''(1) = 36 > 0\\), \\(f''(-2) = 72 > 0\\).\n\nTherefore, by second derivative test, \\(x = 0\\) is a point of local maxima and local maximum value of \\(f\\) at \\(x = 0\\) is \\(f(0) = 12\\) while \\(x = 1\\) and \\(x = -2\\) are the points of local minima and local minimum values of \\(f\\) at \\(x = -1\\) and \\(-2\\) are \\(f(1) = 7\\) and \\(f(-2) = -20\\), respectively.",
+    "_note": "BOOK MISPRINT (transcribed faithfully): the closing sentence reads \"local minimum values of f at x = - 1 and - 2\", but the points of local minima established two clauses earlier in that same sentence are x = 1 and x = -2, and the values quoted are f(1) and f(-2). So \"x = - 1\" is a typo for \"x = 1\". The stated values f(1) = 7 and f(-2) = -20 are both correct."
+  },
+  {
+    "ref": "6.3 Eg.21",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "MODERATE",
+    "stem": "Find all the points of local maxima and local minima of the function \\(f\\) given by \\(f(x) = 2x^3 - 6x^2 + 6x + 5\\).",
+    "solution": "We have\n\\(f(x) = 2x^3 - 6x^2 + 6x + 5\\)\n\nor \\(f'(x) = 6x^2 - 12x + 6 = 6(x - 1)^2\\), \\(f''(x) = 12(x - 1)\\)\n\nNow \\(f'(x) = 0\\) gives \\(x = 1\\). Also \\(f''(1) = 0\\). Therefore, the second derivative test fails in this case. So, we shall go back to the first derivative test.\n\nWe have already seen (Example 18) that, using first derivative test, \\(x = 1\\) is neither a point of local maxima nor a point of local minima and so it is a point of inflexion.",
+    "context": "[NCERT poses this same function as Example 18 and again as Example 21. Example 18 settles it with the FIRST derivative test; this one is worked to show that the SECOND derivative test FAILS here (f''(1) = 0) and one must fall back to the first. Both are kept because the two teach different things.]",
+    "_note": "[Reviewer: stem is verbatim identical to Example 18, so the content_hash deduped it away on first commit and the second-derivative-test lesson was silently lost. A `context` is added — subjectiveContentHash is context-aware — rather than dropping the row or editing the stem, which must stay faithful to the page.]"
+  },
+  {
+    "ref": "6.3 Eg.22",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "MODERATE",
+    "stem": "Find two positive numbers whose sum is 15 and the sum of whose squares is minimum.",
+    "solution": "Let one of the numbers be \\(x\\). Then the other number is \\((15 - x)\\). Let \\(\\mathrm{S}(x)\\) denote the sum of the squares of these numbers. Then\n\n\\(\\mathrm{S}(x) = x^2 + (15 - x)^2 = 2x^2 - 30x + 225\\)\n\nor \\(\\mathrm{S}'(x) = 4x - 30\\), \\(\\mathrm{S}''(x) = 4\\)\n\nNow \\(\\mathrm{S}'(x) = 0\\) gives \\(x = \\frac{15}{2}\\). Also \\(\\mathrm{S}''\\left(\\frac{15}{2}\\right) = 4 > 0\\). Therefore, by second derivative test, \\(x = \\frac{15}{2}\\) is the point of local minima of \\(\\mathrm{S}\\). Hence the sum of squares of numbers is minimum when the numbers are \\(\\frac{15}{2}\\) and \\(15 - \\frac{15}{2} = \\frac{15}{2}\\).\n\n**Remark** Proceeding as in Example 34 one may prove that the two positive numbers, whose sum is \\(k\\) and the sum of whose squares is minimum, are \\(\\frac{k}{2}\\) and \\(\\frac{k}{2}\\).",
+    "_note": "STALE CROSS-REFERENCE (book defect, transcribed faithfully): the Remark printed immediately after this example says \"Proceeding as in Example 34\", but the argument it generalises is THIS example, Example 22. Same +12 renumbering offset as the Example 27 / 15 and Example 30 / 18 slips."
+  },
+  {
+    "ref": "6.3 Eg.23",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "HARD",
+    "stem": "Find the shortest distance of the point \\((0, c)\\) from the parabola \\(y = x^2\\), where \\(\\frac{1}{2} \\le c \\le 5\\).",
+    "solution": "Let \\((h, k)\\) be any point on the parabola \\(y = x^2\\). Let \\(\\mathrm{D}\\) be the required distance between \\((h, k)\\) and \\((0, c)\\). Then\n\n\\(\\mathrm{D} = \\sqrt{(h - 0)^2 + (k - c)^2} = \\sqrt{h^2 + (k - c)^2}\\)  ... (1)\n\nSince \\((h, k)\\) lies on the parabola \\(y = x^2\\), we have \\(k = h^2\\). So (1) gives\n\n\\(\\mathrm{D} \\equiv \\mathrm{D}(k) = \\sqrt{k + (k - c)^2}\\)\n\nor \\(\\mathrm{D}'(k) = \\frac{1 + 2(k - c)}{2\\sqrt{k + (k - c)^2}}\\)\n\nNow \\(\\mathrm{D}'(k) = 0\\) gives \\(k = \\frac{2c - 1}{2}\\)\n\nObserve that when \\(k < \\frac{2c - 1}{2}\\), then \\(2(k - c) + 1 < 0\\), i.e., \\(\\mathrm{D}'(k) < 0\\). Also when \\(k > \\frac{2c - 1}{2}\\), then \\(\\mathrm{D}'(k) > 0\\). So, by first derivative test, \\(\\mathrm{D}(k)\\) is minimum at \\(k = \\frac{2c - 1}{2}\\). Hence, the required shortest distance is given by\n\n\\(\\mathrm{D}\\left(\\frac{2c - 1}{2}\\right) = \\sqrt{\\frac{2c - 1}{2} + \\left(\\frac{2c - 1}{2} - c\\right)^2} = \\frac{\\sqrt{4c - 1}}{2}\\)\n\n**Note** The reader may note that in Example 35, we have used first derivative test instead of the second derivative test as the former is easy and short.",
+    "_note": "STALE CROSS-REFERENCE (book defect, transcribed faithfully): the Note printed immediately after this example says \"in Example 35, we have used first derivative test\", but the example that used the first derivative test is THIS one, Example 23. Same +12 renumbering offset as the Example 27 / 15, Example 30 / 18 and Example 34 / 22 slips."
+  },
+  {
+    "ref": "6.3 Eg.24",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "MODERATE",
+    "stem": "Let AP and BQ be two vertical poles at points A and B, respectively. If AP = 16 m, BQ = 22 m and AB = 20 m, then find the distance of a point R on AB from the point A such that \\(\\mathrm{RP}^2 + \\mathrm{RQ}^2\\) is minimum.",
+    "solution": "Let R be a point on AB such that \\(\\mathrm{AR} = x\\) m. Then \\(\\mathrm{RB} = (20 - x)\\) m (as AB = 20 m). From Fig 6.16, we have\n\n\\(\\mathrm{RP}^2 = \\mathrm{AR}^2 + \\mathrm{AP}^2\\)\n\nand \\(\\mathrm{RQ}^2 = \\mathrm{RB}^2 + \\mathrm{BQ}^2\\)\n\nTherefore \\(\\mathrm{RP}^2 + \\mathrm{RQ}^2 = \\mathrm{AR}^2 + \\mathrm{AP}^2 + \\mathrm{RB}^2 + \\mathrm{BQ}^2\\)\n\n\\(= x^2 + (16)^2 + (20 - x)^2 + (22)^2 = 2x^2 - 40x + 1140\\)\n\nLet \\(\\mathrm{S} \\equiv \\mathrm{S}(x) = \\mathrm{RP}^2 + \\mathrm{RQ}^2 = 2x^2 - 40x + 1140\\).\n\nTherefore \\(\\mathrm{S}'(x) = 4x - 40\\).\n\nNow \\(\\mathrm{S}'(x) = 0\\) gives \\(x = 10\\). Also \\(\\mathrm{S}''(x) = 4 > 0\\), for all \\(x\\) and so \\(\\mathrm{S}''(10) > 0\\). Therefore, by second derivative test, \\(x = 10\\) is the point of local minima of \\(\\mathrm{S}\\). Thus, the distance of R from A on AB is \\(\\mathrm{AR} = x = 10\\) m."
+  },
+  {
+    "ref": "6.3 Eg.25",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "HARD",
+    "stem": "If length of three sides of a trapezium other than base are equal to 10 cm, then find the area of the trapezium when it is maximum.",
+    "solution": "The required trapezium is as given in Fig 6.17. Draw perpendiculars DP and CQ on AB. Let \\(\\mathrm{AP} = x\\) cm. Note that \\(\\triangle \\mathrm{APD} \\sim \\triangle \\mathrm{BQC}\\). Therefore, \\(\\mathrm{QB} = x\\) cm. Also, by Pythagoras theorem, \\(\\mathrm{DP} = \\mathrm{QC} = \\sqrt{100 - x^2}\\). Let A be the area of the trapezium. Then\n\n\\(\\mathrm{A} \\equiv \\mathrm{A}(x) = \\frac{1}{2}(\\text{sum of parallel sides})(\\text{height})\\)\n\n\\(= \\frac{1}{2}(2x + 10 + 10)\\left(\\sqrt{100 - x^2}\\right) = (x + 10)\\left(\\sqrt{100 - x^2}\\right)\\)\n\nor \\(\\mathrm{A}'(x) = (x + 10)\\frac{(-2x)}{2\\sqrt{100 - x^2}} + \\left(\\sqrt{100 - x^2}\\right) = \\frac{-2x^2 - 10x + 100}{\\sqrt{100 - x^2}}\\)\n\nNow \\(\\mathrm{A}'(x) = 0\\) gives \\(2x^2 + 10x - 100 = 0\\), i.e., \\(x = 5\\) and \\(x = -10\\). Since \\(x\\) represents distance, it can not be negative.\n\nSo, \\(x = 5\\). Now\n\n\\(\\mathrm{A}''(x) = \\dfrac{\\sqrt{100 - x^2}(-4x - 10) - (-2x^2 - 10x + 100)\\dfrac{(-2x)}{2\\sqrt{100 - x^2}}}{100 - x^2} = \\dfrac{2x^3 - 300x - 1000}{(100 - x^2)^{\\frac{3}{2}}}\\) (on simplification)\n\nor \\(\\mathrm{A}''(5) = \\dfrac{2(5)^3 - 300(5) - 1000}{(100 - (5)^2)^{\\frac{3}{2}}} = \\dfrac{-2250}{75\\sqrt{75}} = \\dfrac{-30}{\\sqrt{75}} < 0\\)\n\nThus, area of trapezium is maximum at \\(x = 5\\) and the area is given by\n\n\\(\\mathrm{A}(5) = (5 + 10)\\sqrt{100 - (5)^2} = 15\\sqrt{75} = 75\\sqrt{3}\\) cm\\(^2\\)"
+  },
+  {
+    "ref": "6.3 Eg.26",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Maxima and Minima",
+    "difficulty": "HARD",
+    "stem": "Prove that the radius of the right circular cylinder of greatest curved surface area which can be inscribed in a given cone is half of that of the cone.",
+    "solution": "Let \\(\\mathrm{OC} = r\\) be the radius of the cone and \\(\\mathrm{OA} = h\\) be its height. Let a cylinder with radius \\(\\mathrm{OE} = x\\) inscribed in the given cone (Fig 6.18). The height QE of the cylinder is given by\n\n\\(\\frac{\\mathrm{QE}}{\\mathrm{OA}} = \\frac{\\mathrm{EC}}{\\mathrm{OC}}\\) (since \\(\\triangle \\mathrm{QEC} \\sim \\triangle \\mathrm{AOC}\\))\n\nor \\(\\frac{\\mathrm{QE}}{h} = \\frac{r - x}{r}\\)\n\nor \\(\\mathrm{QE} = \\frac{h(r - x)}{r}\\)\n\nLet S be the curved surface area of the given cylinder. Then\n\n\\(\\mathrm{S} \\equiv \\mathrm{S}(x) = \\frac{2\\pi x h(r - x)}{r} = \\frac{2\\pi h}{r}(rx - x^2)\\)\n\nor \\(\\mathrm{S}'(x) = \\frac{2\\pi h}{r}(r - 2x)\\), \\(\\mathrm{S}''(x) = \\frac{-4\\pi h}{r}\\)\n\nNow \\(\\mathrm{S}'(x) = 0\\) gives \\(x = \\frac{r}{2}\\). Since \\(\\mathrm{S}''(x) < 0\\) for all \\(x\\), \\(\\mathrm{S}''\\left(\\frac{r}{2}\\right) < 0\\). So \\(x = \\frac{r}{2}\\) is a point of maxima of S. Hence, the radius of the cylinder of greatest curved surface area which can be inscribed in a given cone is half of that of the cone."
+  }
+]

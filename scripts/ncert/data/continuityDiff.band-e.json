@@ -1,0 +1,263 @@
+[
+  {
+    "ref": "Misc Eg.39(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "context": "Differentiate w.r.t. \\(x\\), the following function:",
+    "setLabel": "Misc Eg.39",
+    "stem": "\\(\\sqrt{3x+2} + \\dfrac{1}{\\sqrt{2x^2+4}}\\)",
+    "solution": "Let \\(y = \\sqrt{3x+2} + \\dfrac{1}{\\sqrt{2x^2+4}} = (3x+2)^{\\frac{1}{2}} + (2x^2+4)^{-\\frac{1}{2}}\\).\n\nNote that this function is defined at all real numbers \\(x > -\\dfrac{2}{3}\\). Therefore\n\n\\(\\dfrac{dy}{dx} = \\dfrac{1}{2}(3x+2)^{\\frac{1}{2}-1}\\cdot\\dfrac{d}{dx}(3x+2) + \\left(-\\dfrac{1}{2}\\right)(2x^2+4)^{-\\frac{1}{2}-1}\\cdot\\dfrac{d}{dx}(2x^2+4)\\)\n\n\\(= \\dfrac{1}{2}(3x+2)^{-\\frac{1}{2}}\\cdot(3) - \\left(\\dfrac{1}{2}\\right)(2x^2+4)^{-\\frac{3}{2}}\\cdot 4x\\)\n\n\\(= \\dfrac{3}{2\\sqrt{3x+2}} - \\dfrac{2x}{\\left(2x^2+4\\right)^{\\frac{3}{2}}}\\)\n\nThis is defined for all real numbers \\(x > -\\dfrac{2}{3}\\)."
+  },
+  {
+    "ref": "Misc Eg.39(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+    "difficulty": "MODERATE",
+    "context": "Differentiate w.r.t. \\(x\\), the following function:",
+    "setLabel": "Misc Eg.39",
+    "stem": "\\(\\log_7(\\log x)\\)",
+    "solution": "Let \\(y = \\log_7(\\log x) = \\dfrac{\\log(\\log x)}{\\log 7}\\) (by change of base formula).\n\nThe function is defined for all real numbers \\(x > 1\\). Therefore\n\n\\(\\dfrac{dy}{dx} = \\dfrac{1}{\\log 7}\\dfrac{d}{dx}(\\log(\\log x))\\)\n\n\\(= \\dfrac{1}{\\log 7}\\cdot\\dfrac{1}{\\log x}\\cdot\\dfrac{d}{dx}(\\log x)\\)\n\n\\(= \\dfrac{1}{x\\log 7\\log x}\\)"
+  },
+  {
+    "ref": "Misc Eg.40(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "context": "Differentiate the following w.r.t. \\(x\\).",
+    "setLabel": "Misc Eg.40",
+    "stem": "\\(\\cos^{-1}(\\sin x)\\)",
+    "solution": "Let \\(f(x) = \\cos^{-1}(\\sin x)\\). Observe that this function is defined for all real numbers. We may rewrite this function as\n\n\\(f(x) = \\cos^{-1}(\\sin x)\\)\n\n\\(= \\cos^{-1}\\left[\\cos\\left(\\dfrac{\\pi}{2} - x\\right)\\right]\\)\n\n\\(= \\dfrac{\\pi}{2} - x\\)\n\nThus \\(f'(x) = -1\\)."
+  },
+  {
+    "ref": "Misc Eg.40(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "HARD",
+    "context": "Differentiate the following w.r.t. \\(x\\).",
+    "setLabel": "Misc Eg.40",
+    "stem": "\\(\\tan^{-1}\\left(\\dfrac{\\sin x}{1+\\cos x}\\right)\\)",
+    "solution": "Let \\(f(x) = \\tan^{-1}\\left(\\dfrac{\\sin x}{1+\\cos x}\\right)\\). Observe that this function is defined for all real numbers, where \\(\\cos x \\ne -1\\); i.e., at all odd multiplies of \\(\\pi\\). We may rewrite this function as\n\n\\(f(x) = \\tan^{-1}\\left(\\dfrac{\\sin x}{1+\\cos x}\\right)\\)\n\n\\(= \\tan^{-1}\\left[\\dfrac{2\\sin\\left(\\frac{x}{2}\\right)\\cos\\left(\\frac{x}{2}\\right)}{2\\cos^2\\frac{x}{2}}\\right]\\)\n\n\\(= \\tan^{-1}\\left[\\tan\\left(\\dfrac{x}{2}\\right)\\right] = \\dfrac{x}{2}\\)\n\nObserve that we could cancel \\(\\cos\\left(\\dfrac{x}{2}\\right)\\) in both numerator and denominator as it is not equal to zero. Thus \\(f'(x) = \\dfrac{1}{2}\\).",
+    "_note": "Book's printed solution says the function 'is defined for all real numbers, where cos x != -1; i.e., at all odd multiplies of pi'. Two defects preserved as printed: (a) 'multiplies' is a misprint for 'multiples'; (b) as worded it reads as though the function IS defined at the odd multiples of pi, whereas cos x = -1 exactly there, so those are precisely the points where it is NOT defined."
+  },
+  {
+    "ref": "Misc Eg.40(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "HARD",
+    "context": "Differentiate the following w.r.t. \\(x\\).",
+    "setLabel": "Misc Eg.40",
+    "stem": "\\(\\sin^{-1}\\left(\\dfrac{2^{x+1}}{1+4^x}\\right)\\)",
+    "solution": "Let \\(f(x) = \\sin^{-1}\\left(\\dfrac{2^{x+1}}{1+4^x}\\right)\\). To find the domain of this function we need to find all \\(x\\) such that \\(-1 \\le \\dfrac{2^{x+1}}{1+4^x} \\le 1\\). Since the quantity in the middle is always positive, we need to find all \\(x\\) such that \\(\\dfrac{2^{x+1}}{1+4^x} \\le 1\\), i.e., all \\(x\\) such that \\(2^{x+1} \\le 1+4^x\\). We may rewrite this as \\(2 \\le \\dfrac{1}{2^x} + 2^x\\) which is true for all \\(x\\). Hence the function is defined at every real number. By putting \\(2^x = \\tan\\theta\\), this function may be rewritten as\n\n\\(f(x) = \\sin^{-1}\\left[\\dfrac{2^{x+1}}{1+4^x}\\right]\\)\n\n\\(= \\sin^{-1}\\left[\\dfrac{2^x\\cdot 2}{1+\\left(2^x\\right)^2}\\right]\\)\n\n\\(= \\sin^{-1}\\left[\\dfrac{2\\tan\\theta}{1+\\tan^2\\theta}\\right]\\)\n\n\\(= \\sin^{-1}[\\sin 2\\theta] = 2\\theta = 2\\tan^{-1}(2^x)\\)\n\nThus \\(f'(x) = 2\\cdot\\dfrac{1}{1+\\left(2^x\\right)^2}\\cdot\\dfrac{d}{dx}(2^x)\\)\n\n\\(= \\dfrac{2}{1+4^x}\\cdot(2^x)\\log 2\\)\n\n\\(= \\dfrac{2^{x+1}\\log 2}{1+4^x}\\)"
+  },
+  {
+    "ref": "Misc Eg.41",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(f'(x)\\) if \\(f(x) = (\\sin x)^{\\sin x}\\) for all \\(0 < x < \\pi\\).",
+    "solution": "The function \\(y = (\\sin x)^{\\sin x}\\) is defined for all positive real numbers. Taking logarithms, we have\n\n\\(\\log y = \\log(\\sin x)^{\\sin x} = \\sin x\\log(\\sin x)\\)\n\nThen \\(\\dfrac{1}{y}\\dfrac{dy}{dx} = \\dfrac{d}{dx}(\\sin x\\log(\\sin x))\\)\n\n\\(= \\cos x\\log(\\sin x) + \\sin x\\cdot\\dfrac{1}{\\sin x}\\cdot\\dfrac{d}{dx}(\\sin x)\\)\n\n\\(= \\cos x\\log(\\sin x) + \\cos x\\)\n\n\\(= (1+\\log(\\sin x))\\cos x\\)\n\nThus \\(\\dfrac{dy}{dx} = y((1+\\log(\\sin x))\\cos x) = (1+\\log(\\sin x))(\\sin x)^{\\sin x}\\cos x\\)",
+    "_note": "Book oddity preserved: the stem restricts to \\(0 < x < \\pi\\), but the printed solution opens 'The function y = (sin x)^{sin x} is defined for all positive real numbers', which is not the same set."
+  },
+  {
+    "ref": "Misc Eg.42",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "HARD",
+    "stem": "For a positive constant \\(a\\) find \\(\\dfrac{dy}{dx}\\), where \\(y = a^{t+\\frac{1}{t}}\\), and \\(x = \\left(t+\\dfrac{1}{t}\\right)^a\\).",
+    "solution": "Observe that both \\(y\\) and \\(x\\) are defined for all real \\(t \\ne 0\\). Clearly\n\n\\(\\dfrac{dy}{dt} = \\dfrac{d}{dt}\\left(a^{t+\\frac{1}{t}}\\right) = a^{t+\\frac{1}{t}}\\dfrac{d}{dt}\\left(t+\\dfrac{1}{t}\\right)\\cdot\\log a\\)\n\n\\(= a^{t+\\frac{1}{t}}\\left(1-\\dfrac{1}{t^2}\\right)\\log a\\)\n\nSimilarly \\(\\dfrac{dx}{dt} = a\\left[t+\\dfrac{1}{t}\\right]^{a-1}\\cdot\\dfrac{d}{dt}\\left(t+\\dfrac{1}{t}\\right)\\)\n\n\\(= a\\left[t+\\dfrac{1}{t}\\right]^{a-1}\\cdot\\left(1-\\dfrac{1}{t^2}\\right)\\)\n\n\\(\\dfrac{dx}{dt} \\ne 0\\) only if \\(t \\ne \\pm 1\\). Thus for \\(t \\ne \\pm 1\\),\n\n\\(\\dfrac{dy}{dx} = \\dfrac{\\frac{dy}{dt}}{\\frac{dx}{dt}} = \\dfrac{a^{t+\\frac{1}{t}}\\left(1-\\frac{1}{t^2}\\right)\\log a}{a\\left[t+\\frac{1}{t}\\right]^{a-1}\\cdot\\left(1-\\frac{1}{t^2}\\right)}\\)\n\n\\(= \\dfrac{a^{t+\\frac{1}{t}}\\log a}{a\\left(t+\\frac{1}{t}\\right)^{a-1}}\\)"
+  },
+  {
+    "ref": "Misc Eg.43",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate \\(\\sin^2 x\\) w.r.t. \\(e^{\\cos x}\\).",
+    "solution": "Let \\(u(x) = \\sin^2 x\\) and \\(v(x) = e^{\\cos x}\\). We want to find \\(\\dfrac{du}{dv} = \\dfrac{du/dx}{dv/dx}\\). Clearly\n\n\\(\\dfrac{du}{dx} = 2\\sin x\\cos x\\) and \\(\\dfrac{dv}{dx} = e^{\\cos x}(-\\sin x) = -(\\sin x)e^{\\cos x}\\)\n\nThus \\(\\dfrac{du}{dv} = \\dfrac{2\\sin x\\cos x}{-\\sin x\\,e^{\\cos x}} = -\\dfrac{2\\cos x}{e^{\\cos x}}\\)"
+  },
+  {
+    "ref": "Misc Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "EASY",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\((3x^2 - 9x + 5)^9\\)."
+  },
+  {
+    "ref": "Misc Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "EASY",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\(\\sin^3 x + \\cos^6 x\\)."
+  },
+  {
+    "ref": "Misc Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\((5x)^{3\\cos 2x}\\)."
+  },
+  {
+    "ref": "Misc Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\(\\sin^{-1}(x\\sqrt{x})\\), \\(0 \\le x \\le 1\\)."
+  },
+  {
+    "ref": "Misc Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\(\\dfrac{\\cos^{-1}\\frac{x}{2}}{\\sqrt{2x+7}}\\), \\(-2 < x < 2\\)."
+  },
+  {
+    "ref": "Misc Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\(\\cot^{-1}\\left[\\dfrac{\\sqrt{1+\\sin x}+\\sqrt{1-\\sin x}}{\\sqrt{1+\\sin x}-\\sqrt{1-\\sin x}}\\right]\\), \\(0 < x < \\dfrac{\\pi}{2}\\)."
+  },
+  {
+    "ref": "Misc Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\((\\log x)^{\\log x}\\), \\(x > 1\\)."
+  },
+  {
+    "ref": "Misc Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "EASY",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\(\\cos(a\\cos x + b\\sin x)\\), for some constant \\(a\\) and \\(b\\)."
+  },
+  {
+    "ref": "Misc Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\((\\sin x - \\cos x)^{(\\sin x - \\cos x)}\\), \\(\\dfrac{\\pi}{4} < x < \\dfrac{3\\pi}{4}\\)."
+  },
+  {
+    "ref": "Misc Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\(x^x + x^a + a^x + a^a\\), for some fixed \\(a > 0\\) and \\(x > 0\\)."
+  },
+  {
+    "ref": "Misc Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Logarithmic Differentiation",
+    "difficulty": "HARD",
+    "stem": "Differentiate w.r.t. \\(x\\) the function \\(x^{x^2-3} + (x-3)^{x^2}\\), for \\(x > 3\\)."
+  },
+  {
+    "ref": "Misc Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Functions in Parametric Form",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\dfrac{dy}{dx}\\), if \\(y = 12(1-\\cos t)\\), \\(x = 10(t-\\sin t)\\), \\(-\\dfrac{\\pi}{2} < t < \\dfrac{\\pi}{2}\\)."
+  },
+  {
+    "ref": "Misc Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\dfrac{dy}{dx}\\), if \\(y = \\sin^{-1} x + \\sin^{-1}\\sqrt{1-x^2}\\), \\(0 < x < 1\\)."
+  },
+  {
+    "ref": "Misc Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "If \\(x\\sqrt{1+y} + y\\sqrt{1+x} = 0\\), for , \\(-1 < x < 1\\), prove that \\(\\dfrac{dy}{dx} = -\\dfrac{1}{(1+x)^2}\\).",
+    "_note": "Book prints a stray comma after 'for' ('for , - 1 < x < 1'). Transcribed as printed."
+  },
+  {
+    "ref": "Misc Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "If \\((x-a)^2 + (y-b)^2 = c^2\\), for some \\(c > 0\\), prove that \\(\\dfrac{\\left[1+\\left(\\frac{dy}{dx}\\right)^2\\right]^{\\frac{3}{2}}}{\\frac{d^2y}{dx^2}}\\) is a constant independent of \\(a\\) and \\(b\\)."
+  },
+  {
+    "ref": "Misc Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "If \\(\\cos y = x\\cos(a+y)\\), with \\(\\cos a \\ne \\pm 1\\), prove that \\(\\dfrac{dy}{dx} = \\dfrac{\\cos^2(a+y)}{\\sin a}\\)."
+  },
+  {
+    "ref": "Misc Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "If \\(x = a(\\cos t + t\\sin t)\\) and \\(y = a(\\sin t - t\\cos t)\\), find \\(\\dfrac{d^2y}{dx^2}\\)."
+  },
+  {
+    "ref": "Misc Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "If \\(f(x) = |x|^3\\), show that \\(f''(x)\\) exists for all real \\(x\\) and find it."
+  },
+  {
+    "ref": "Misc Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Using the fact that \\(\\sin(A+B) = \\sin A\\cos B + \\cos A\\sin B\\) and the differentiation, obtain the sum formula for cosines."
+  },
+  {
+    "ref": "Misc Q20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Does there exist a function which is continuous everywhere but not differentiable at exactly two points? Justify your answer."
+  },
+  {
+    "ref": "Misc Q21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "HARD",
+    "stem": "If \\(y = \\begin{vmatrix} f(x) & g(x) & h(x) \\\\ l & m & n \\\\ a & b & c \\end{vmatrix}\\), prove that \\(\\dfrac{dy}{dx} = \\begin{vmatrix} f'(x) & g'(x) & h'(x) \\\\ l & m & n \\\\ a & b & c \\end{vmatrix}\\)."
+  },
+  {
+    "ref": "Misc Q22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Second Order Derivatives",
+    "difficulty": "HARD",
+    "stem": "If \\(y = e^{a\\cos^{-1} x}\\), \\(-1 \\le x \\le 1\\), show that \\(\\left(1-x^2\\right)\\dfrac{d^2y}{dx^2} - x\\dfrac{dy}{dx} - a^2 y = 0\\)."
+  }
+]

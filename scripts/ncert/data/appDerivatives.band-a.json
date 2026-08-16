@@ -1,0 +1,228 @@
+[
+  {
+    "ref": "6.1 Eg.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "EASY",
+    "stem": "Find the rate of change of the area of a circle per second with respect to its radius \\(r\\) when \\(r = 5\\) cm.",
+    "solution": "The area A of a circle with radius \\(r\\) is given by \\(A = \\pi r^2\\). Therefore, the rate of change of the area A with respect to its radius \\(r\\) is given by\n\n\\(\\frac{dA}{dr} = \\frac{d}{dr}(\\pi r^2) = 2\\pi r\\)\n\nWhen \\(r = 5\\) cm, \\(\\frac{dA}{dr} = 10\\pi\\).\n\nThus, the area of the circle is changing at the rate of \\(10\\pi\\ \\text{cm}^2/\\text{s}\\)."
+  },
+  {
+    "ref": "6.1 Eg.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "MODERATE",
+    "stem": "The volume of a cube is increasing at a rate of 9 cubic centimetres per second. How fast is the surface area increasing when the length of an edge is 10 centimetres?",
+    "solution": "Let \\(x\\) be the length of a side, V be the volume and S be the surface area of the cube. Then, \\(V = x^3\\) and \\(S = 6x^2\\), where \\(x\\) is a function of time \\(t\\).\n\nNow \\(\\frac{dV}{dt} = 9\\ \\text{cm}^3/\\text{s}\\) (Given)\n\nTherefore \\(9 = \\frac{dV}{dt} = \\frac{d}{dt}(x^3) = \\frac{d}{dx}(x^3)\\cdot\\frac{dx}{dt}\\) (By Chain Rule)\n\n\\(= 3x^2\\cdot\\frac{dx}{dt}\\)\n\nor \\(\\frac{dx}{dt} = \\frac{3}{x^2}\\) ... (1)\n\nNow \\(\\frac{dS}{dt} = \\frac{d}{dt}(6x^2) = \\frac{d}{dx}(6x^2)\\cdot\\frac{dx}{dt}\\) (By Chain Rule)\n\n\\(= 12x\\cdot\\left(\\frac{3}{x^2}\\right) = \\frac{36}{x}\\) (Using (1))\n\nHence, when \\(x = 10\\) cm, \\(\\frac{dS}{dt} = 3.6\\ \\text{cm}^2/\\text{s}\\)."
+  },
+  {
+    "ref": "6.1 Eg.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "MODERATE",
+    "stem": "A stone is dropped into a quiet lake and waves move in circles at a speed of 4 cm per second. At the instant, when the radius of the circular wave is 10 cm, how fast is the enclosed area increasing?",
+    "solution": "The area A of a circle with radius \\(r\\) is given by \\(A = \\pi r^2\\). Therefore, the rate of change of area A with respect to time \\(t\\) is\n\n\\(\\frac{dA}{dt} = \\frac{d}{dt}(\\pi r^2) = \\frac{d}{dr}(\\pi r^2)\\cdot\\frac{dr}{dt} = 2\\pi r\\,\\frac{dr}{dt}\\) (By Chain Rule)\n\nIt is given that \\(\\frac{dr}{dt} = 4\\ \\text{cm}/\\text{s}\\).\n\nTherefore, when \\(r = 10\\) cm, \\(\\frac{dA}{dt} = 2\\pi(10)(4) = 80\\pi\\).\n\nThus, the enclosed area is increasing at the rate of \\(80\\pi\\ \\text{cm}^2/\\text{s}\\), when \\(r = 10\\) cm.\n\nNote: \\(\\frac{dy}{dx}\\) is positive if \\(y\\) increases as \\(x\\) increases and is negative if \\(y\\) decreases as \\(x\\) increases."
+  },
+  {
+    "ref": "6.1 Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "MODERATE",
+    "stem": "The length \\(x\\) of a rectangle is decreasing at the rate of 3 cm/minute and the width \\(y\\) is increasing at the rate of 2 cm/minute. When \\(x = 10\\) cm and \\(y = 6\\) cm, find the rates of change of (a) the perimeter and (b) the area of the rectangle.",
+    "solution": "Since the length \\(x\\) is decreasing and the width \\(y\\) is increasing with respect to time, we have\n\n\\(\\frac{dx}{dt} = -3\\ \\text{cm}/\\text{min}\\) and \\(\\frac{dy}{dt} = 2\\ \\text{cm}/\\text{min}\\)\n\n(a) The perimeter P of a rectangle is given by \\(P = 2(x + y)\\).\n\nTherefore \\(\\frac{dP}{dt} = 2\\left(\\frac{dx}{dt} + \\frac{dy}{dt}\\right) = 2(-3 + 2) = -2\\ \\text{cm}/\\text{min}\\)\n\n(b) The area A of the rectangle is given by \\(A = x\\cdot y\\).\n\nTherefore \\(\\frac{dA}{dt} = \\frac{dx}{dt}\\cdot y + x\\cdot\\frac{dy}{dt}\\)\n\n\\(= -3(6) + 10(2)\\) (as \\(x = 10\\) cm and \\(y = 6\\) cm)\n\n\\(= 2\\ \\text{cm}^2/\\text{min}\\)"
+  },
+  {
+    "ref": "6.1 Eg.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "EASY",
+    "stem": "The total cost \\(C(x)\\) in Rupees, associated with the production of \\(x\\) units of an item is given by\n\n\\(C(x) = 0.005x^3 - 0.02x^2 + 30x + 5000\\)\n\nFind the marginal cost when 3 units are produced, where by marginal cost we mean the instantaneous rate of change of total cost at any level of output.",
+    "solution": "Since marginal cost is the rate of change of total cost with respect to the output, we have\n\nMarginal cost (MC) \\(= \\frac{dC}{dx} = 0.005(3x^2) - 0.02(2x) + 30\\)\n\nWhen \\(x = 3\\), \\(\\text{MC} = 0.015(3^2) - 0.04(3) + 30\\)\n\n\\(= 0.135 - 0.12 + 30 = 30.015\\)\n\nHence, the required marginal cost is 30.02 rupees (nearly)."
+  },
+  {
+    "ref": "6.1 Eg.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "EASY",
+    "stem": "The total revenue in Rupees received from the sale of \\(x\\) units of a product is given by \\(R(x) = 3x^2 + 36x + 5\\). Find the marginal revenue, when \\(x = 5\\), where by marginal revenue we mean the rate of change of total revenue with respect to the number of items sold at an instant.",
+    "solution": "Since marginal revenue is the rate of change of total revenue with respect to the number of units sold, we have\n\nMarginal Revenue (MR) \\(= \\frac{dR}{dx} = 6x + 36\\)\n\nWhen \\(x = 5\\), \\(\\text{MR} = 6(5) + 36 = 66\\)\n\nHence, the required marginal revenue is 66 rupees."
+  },
+
+  {
+    "ref": "Ex 6.1 Q1(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "EASY",
+    "context": "Find the rate of change of the area of a circle with respect to its radius \\(r\\) when",
+    "setLabel": "Ex 6.1 Q1",
+    "stem": "\\(r = 3\\) cm"
+  },
+  {
+    "ref": "Ex 6.1 Q1(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "EASY",
+    "context": "Find the rate of change of the area of a circle with respect to its radius \\(r\\) when",
+    "setLabel": "Ex 6.1 Q1",
+    "stem": "\\(r = 4\\) cm"
+  },
+  {
+    "ref": "Ex 6.1 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "MODERATE",
+    "stem": "The volume of a cube is increasing at the rate of \\(8\\ \\text{cm}^3/\\text{s}\\). How fast is the surface area increasing when the length of an edge is 12 cm?"
+  },
+  {
+    "ref": "Ex 6.1 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "EASY",
+    "stem": "The radius of a circle is increasing uniformly at the rate of 3 cm/s. Find the rate at which the area of the circle is increasing when the radius is 10 cm."
+  },
+  {
+    "ref": "Ex 6.1 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "EASY",
+    "stem": "An edge of a variable cube is increasing at the rate of 3 cm/s. How fast is the volume of the cube increasing when the edge is 10 cm long?"
+  },
+  {
+    "ref": "Ex 6.1 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "EASY",
+    "stem": "A stone is dropped into a quiet lake and waves move in circles at the speed of 5 cm/s. At the instant when the radius of the circular wave is 8 cm, how fast is the enclosed area increasing?"
+  },
+  {
+    "ref": "Ex 6.1 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "EASY",
+    "stem": "The radius of a circle is increasing at the rate of 0.7 cm/s. What is the rate of increase of its circumference?"
+  },
+  {
+    "ref": "Ex 6.1 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "MODERATE",
+    "stem": "The length \\(x\\) of a rectangle is decreasing at the rate of 5 cm/minute and the width \\(y\\) is increasing at the rate of 4 cm/minute. When \\(x = 8\\) cm and \\(y = 6\\) cm, find the rates of change of (a) the perimeter, and (b) the area of the rectangle."
+  },
+  {
+    "ref": "Ex 6.1 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "MODERATE",
+    "stem": "A balloon, which always remains spherical on inflation, is being inflated by pumping in 900 cubic centimetres of gas per second. Find the rate at which the radius of the balloon increases when the radius is 15 cm."
+  },
+  {
+    "ref": "Ex 6.1 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "EASY",
+    "stem": "A balloon, which always remains spherical has a variable radius. Find the rate at which its volume is increasing with the radius when the later is 10 cm.",
+    "_note": "The book prints \"when the later is 10 cm\" — a printed typo for \"latter\". Transcribed verbatim."
+  },
+  {
+    "ref": "Ex 6.1 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "MODERATE",
+    "stem": "A ladder 5 m long is leaning against a wall. The bottom of the ladder is pulled along the ground, away from the wall, at the rate of 2 cm/s. How fast is its height on the wall decreasing when the foot of the ladder is 4 m away from the wall?"
+  },
+  {
+    "ref": "Ex 6.1 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "MODERATE",
+    "stem": "A particle moves along the curve \\(6y = x^3 + 2\\). Find the points on the curve at which the \\(y\\)-coordinate is changing 8 times as fast as the \\(x\\)-coordinate."
+  },
+  {
+    "ref": "Ex 6.1 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "EASY",
+    "stem": "The radius of an air bubble is increasing at the rate of \\(\\frac{1}{2}\\) cm/s. At what rate is the volume of the bubble increasing when the radius is 1 cm?"
+  },
+  {
+    "ref": "Ex 6.1 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "MODERATE",
+    "stem": "A balloon, which always remains spherical, has a variable diameter \\(\\frac{3}{2}(2x + 1)\\). Find the rate of change of its volume with respect to \\(x\\)."
+  },
+  {
+    "ref": "Ex 6.1 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "HARD",
+    "stem": "Sand is pouring from a pipe at the rate of \\(12\\ \\text{cm}^3/\\text{s}\\). The falling sand forms a cone on the ground in such a way that the height of the cone is always one-sixth of the radius of the base. How fast is the height of the sand cone increasing when the height is 4 cm?"
+  },
+  {
+    "ref": "Ex 6.1 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "EASY",
+    "stem": "The total cost \\(C(x)\\) in Rupees associated with the production of \\(x\\) units of an item is given by\n\n\\(C(x) = 0.007x^3 - 0.003x^2 + 15x + 4000\\)\n\nFind the marginal cost when 17 units are produced."
+  },
+  {
+    "ref": "Ex 6.1 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "EASY",
+    "stem": "The total revenue in Rupees received from the sale of \\(x\\) units of a product is given by\n\n\\(R(x) = 13x^2 + 26x + 15\\)\n\nFind the marginal revenue when \\(x = 7\\)."
+  },
+  {
+    "ref": "Ex 6.1 Q17",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "EASY",
+    "stem": "The rate of change of the area of a circle with respect to its radius \\(r\\) at \\(r = 6\\) cm is",
+    "options": [
+      { "label": "A", "text": "\\(10\\pi\\)" },
+      { "label": "B", "text": "\\(12\\pi\\)" },
+      { "label": "C", "text": "\\(8\\pi\\)" },
+      { "label": "D", "text": "\\(11\\pi\\)" }
+    ],
+    "answer": "B"
+  },
+  {
+    "ref": "Ex 6.1 Q18",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Rate of Change of Quantities",
+    "difficulty": "EASY",
+    "stem": "The total revenue in Rupees received from the sale of \\(x\\) units of a product is given by \\(R(x) = 3x^2 + 36x + 5\\). The marginal revenue, when \\(x = 15\\) is",
+    "options": [
+      { "label": "A", "text": "116" },
+      { "label": "B", "text": "96" },
+      { "label": "C", "text": "90" },
+      { "label": "D", "text": "126" }
+    ],
+    "answer": "D"
+  }
+]

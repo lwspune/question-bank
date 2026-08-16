@@ -1,0 +1,65 @@
+[
+  {
+    "id": "a2734bf7-e808-4d48-a252-7ebd7c58240d",
+    "ref": "Ex 10.2 Q18",
+    "derived_answer": "C",
+    "solution": "[Textbook misprint: options (B) and (C) are printed identically, so as printed all four alternatives are TRUE and none is uniquely 'not true'. The official NCERT key gives (C), and the intended option (C) is the one whose left side equals twice the third side rather than the zero vector — the only false statement of the four. The key's (C) is retained on that reading.] DEFECT - NO OPTION IS CORRECT AS PRINTED. The question asks which statement is NOT true, but all four printed statements hold for every triangle. \\(\\overrightarrow{AB} + \\overrightarrow{BC} + \\overrightarrow{CA} = \\vec{0}\\) is the closed-polygon law; \\(\\overrightarrow{AB} + \\overrightarrow{BC} - \\overrightarrow{AC} = \\vec{0}\\) is the triangle law rearranged, and it is printed TWICE, character for character, as two separate alternatives; and \\(\\overrightarrow{AB} - \\overrightarrow{CB} + \\overrightarrow{CA} = \\vec{0}\\) reduces to the closed-polygon law because \\(-\\overrightarrow{CB} = \\overrightarrow{BC}\\). Verified in the concrete triangle \\(A(0,0,0)\\), \\(B(3,1,0)\\), \\(C(1,4,0)\\): all four expressions evaluate to \\((0,0,0)\\). Since the duplicated statement cannot be the unique false one and the other two are provably true, no printed alternative is uniquely correct. The corruption is in the duplicated slot: the statement \\(\\overrightarrow{AB} + \\overrightarrow{BC} - \\overrightarrow{CA}\\), which evaluates to \\((2,8,0) = 2\\,\\overrightarrow{AC}\\) and is NOT the zero vector, is the only nearby statement that makes the question well posed, so that slot is recorded as the intended answer while what is printed there is a transcription of its neighbour.",
+    "matches_current": true
+  },
+  {
+    "id": "542ce05f-6ac3-4c3f-b567-ab71591d32ca",
+    "ref": "Ex 10.2 Q19",
+    "derived_answer": "C",
+    "solution": "[Textbook note: NCERT's printed key for this question names THREE options, not one. The option marked here is the only one that is false unconditionally, which is why it is stored as the single answer; but this bank holds exactly one correct option per MCQ and cannot express the key's full set. A student who chose either of the other two options the key names is not wrong.] For collinear \\(\\vec{a}\\) and \\(\\vec{b}\\) the respective components ARE proportional - that is the definition of collinearity in component form - so the statement that they are NOT proportional is false for every pair of collinear vectors, i.e. it is unconditionally incorrect. By contrast \\(\\vec{b} = \\lambda\\vec{a}\\) for some scalar \\(\\lambda\\) is the standard correct characterisation. Caveat worth recording: the remaining two alternatives are also not always true - \\(\\vec{a} = \\pm\\vec{b}\\) fails whenever the magnitudes differ, e.g. \\(\\vec{a} = \\hat{i}\\) and \\(\\vec{b} = 2\\hat{i}\\), while 'same direction but different magnitudes' fails when the vectors are anti-parallel or equal in magnitude. So under the loose reading 'which statement is not always true', three of the four qualify; the non-proportional-components statement is the one recorded, because it is the only alternative that is false in every case, which is the discriminator. The ambiguity is noted here rather than hidden.",
+    "matches_current": true
+  },
+  {
+    "id": "19035649-5795-4da3-bdbf-86c402781952",
+    "ref": "Ex 10.3 Q18",
+    "derived_answer": "D",
+    "solution": "\\(\\lambda\\vec{a}\\) is a unit vector exactly when \\(\\left|\\lambda\\vec{a}\\right| = |\\lambda|\\,\\left|\\vec{a}\\right| = |\\lambda|\\,a = 1\\), that is \\(a = \\tfrac{1}{|\\lambda|}\\). Pinning \\(\\lambda = 1\\) or \\(\\lambda = -1\\) forces \\(a = 1\\) as a side effect but is not the general condition, and \\(a = |\\lambda|\\) gives \\(|\\lambda|\\,a = a^{2} = 1\\) only in the special case \\(a = 1\\). Hence the condition is \\(a = \\tfrac{1}{|\\lambda|}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "5ceb16e4-65e0-41bc-bda9-e2d28edb142d",
+    "ref": "Ex 10.4 Q11",
+    "derived_answer": "B",
+    "solution": "\\(\\left|\\vec{a} \\times \\vec{b}\\right| = \\left|\\vec{a}\\right|\\left|\\vec{b}\\right|\\sin\\theta = 3 \\cdot \\tfrac{\\sqrt{2}}{3} \\cdot \\sin\\theta = \\sqrt{2}\\,\\sin\\theta\\). Setting this equal to \\(1\\) gives \\(\\sin\\theta = \\tfrac{1}{\\sqrt{2}}\\), so \\(\\theta = \\tfrac{\\pi}{4}\\), taking the acute value in \\([0, \\pi]\\) (\\(\\tfrac{3\\pi}{4}\\) also satisfies \\(\\sin\\theta = \\tfrac{1}{\\sqrt{2}}\\) but is not offered). Verified numerically: \\(\\sin\\theta = 0.70710678\\) and \\(\\theta = 0.78539816 = \\tfrac{\\pi}{4}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "c65cc7e8-3b9f-4863-9173-402f783b4d80",
+    "ref": "Ex 10.4 Q12",
+    "derived_answer": "C",
+    "solution": "The position vectors give \\(A\\left(-1, \\tfrac{1}{2}, 4\\right)\\), \\(B\\left(1, \\tfrac{1}{2}, 4\\right)\\), \\(C\\left(1, -\\tfrac{1}{2}, 4\\right)\\), \\(D\\left(-1, -\\tfrac{1}{2}, 4\\right)\\). Then \\(\\overrightarrow{AB} = (2, 0, 0)\\) and \\(\\overrightarrow{BC} = (0, -1, 0)\\), which are perpendicular (confirming the rectangle) with lengths \\(2\\) and \\(1\\). Area \\(= \\left|\\overrightarrow{AB} \\times \\overrightarrow{BC}\\right| = 2\\), verified numerically as a cross product of magnitude \\(2.0\\).",
+    "matches_current": true
+  },
+  {
+    "id": "25a86ec6-e7de-445c-9fd7-a08acc816a91",
+    "ref": "Misc Q16",
+    "derived_answer": "B",
+    "solution": "\\(\\vec a \\cdot \\vec b = |\\vec a||\\vec b|\\cos\\theta\\), and \\(|\\vec a||\\vec b| \\ge 0\\), so \\(\\vec a \\cdot \\vec b \\ge 0\\) exactly when \\(\\cos\\theta \\ge 0\\). Over the angle range \\([0, \\pi]\\) that is the CLOSED interval \\([0, \\tfrac{\\pi}{2}]\\). The endpoints must be included: \\(\\theta = 0\\) gives \\(\\vec a \\cdot \\vec b = |\\vec a||\\vec b| > 0\\) and \\(\\theta = \\tfrac{\\pi}{2}\\) gives \\(\\vec a \\cdot \\vec b = 0\\), and both satisfy \\(\\ge 0\\) — which is why the OPEN interval \\((0, \\tfrac{\\pi}{2})\\) is not the answer. The alternatives reaching past \\(\\tfrac{\\pi}{2}\\) admit obtuse angles, where \\(\\cos\\theta < 0\\).",
+    "matches_current": true
+  },
+  {
+    "id": "4afd1666-5445-45c7-a9e8-7b1f0292d799",
+    "ref": "Misc Q17",
+    "derived_answer": "D",
+    "solution": "For unit vectors, \\(\\left|\\vec{a} + \\vec{b}\\right|^{2} = \\left|\\vec{a}\\right|^{2} + \\left|\\vec{b}\\right|^{2} + 2\\,\\vec{a}\\cdot\\vec{b} = 1 + 1 + 2\\cos\\theta = 2 + 2\\cos\\theta\\). Setting \\(\\left|\\vec{a} + \\vec{b}\\right| = 1\\) gives \\(2 + 2\\cos\\theta = 1\\), so \\(\\cos\\theta = -\\tfrac{1}{2}\\) and \\(\\theta = \\tfrac{2\\pi}{3}\\). Verified numerically over all four offered angles: \\(\\left|\\vec{a} + \\vec{b}\\right| = 1.8478\\) at \\(\\tfrac{\\pi}{4}\\), \\(1.7321\\) at \\(\\tfrac{\\pi}{3}\\), \\(1.4142\\) at \\(\\tfrac{\\pi}{2}\\) and \\(1.0000\\) at \\(\\tfrac{2\\pi}{3}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "ae9a77de-f658-4936-a7d1-b2001f94fb33",
+    "ref": "Misc Q18",
+    "derived_answer": "C",
+    "solution": "\\(\\hat{i}\\cdot\\left(\\hat{j} \\times \\hat{k}\\right) = \\hat{i}\\cdot\\hat{i} = 1\\). The middle term is the trap: \\(\\hat{j} \\times \\hat{k}\\) and \\(\\hat{k} \\times \\hat{i}\\) follow the cyclic order but \\(\\hat{i} \\times \\hat{k}\\) does NOT, since \\(\\hat{i} \\times \\hat{k} = -\\hat{j}\\), so \\(\\hat{j}\\cdot\\left(\\hat{i} \\times \\hat{k}\\right) = \\hat{j}\\cdot\\left(-\\hat{j}\\right) = -1\\). For the third term \\(\\hat{i} \\times \\hat{j} = \\hat{k}\\), so \\(\\hat{k}\\cdot\\left(\\hat{i} \\times \\hat{j}\\right) = \\hat{k}\\cdot\\hat{k} = 1\\), and the sum is \\(1 + (-1) + 1 = 1\\), confirmed by direct component computation. The value \\(3\\) is what you get by wrongly taking all three triple products as cyclic.",
+    "matches_current": true
+  },
+  {
+    "id": "9e22b9e8-95ef-4748-a398-19e633a07d01",
+    "ref": "Misc Q19",
+    "derived_answer": "B",
+    "solution": "\\(\\left|\\vec{a}\\cdot\\vec{b}\\right| = \\left|\\vec{a}\\right|\\left|\\vec{b}\\right|\\left|\\cos\\theta\\right|\\) and \\(\\left|\\vec{a} \\times \\vec{b}\\right| = \\left|\\vec{a}\\right|\\left|\\vec{b}\\right|\\sin\\theta\\), since \\(\\sin\\theta \\ge 0\\) on \\([0, \\pi]\\). For nonzero vectors these are equal exactly when \\(\\left|\\cos\\theta\\right| = \\sin\\theta\\), i.e. \\(\\tan\\theta = \\pm 1\\), giving \\(\\theta = \\tfrac{\\pi}{4}\\) or \\(\\tfrac{3\\pi}{4}\\); only \\(\\tfrac{\\pi}{4}\\) is offered. Checked numerically against the other offered angles: at \\(\\theta = 0\\), \\(\\left|\\cos\\theta\\right| = 1\\) against \\(\\sin\\theta = 0\\); at \\(\\tfrac{\\pi}{2}\\), \\(0\\) against \\(1\\); at \\(\\pi\\), \\(1\\) against \\(0\\) - none equal, while at \\(\\tfrac{\\pi}{4}\\) both equal \\(0.70710678\\).",
+    "matches_current": true
+  }
+]

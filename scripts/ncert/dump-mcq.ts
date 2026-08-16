@@ -73,7 +73,12 @@ async function main() {
   console.log(
     `\nthe verifier must write data/${id}.blind.mcq-verify.json as:\n` +
       `  [{ "id": "<verbatim>", "ref": "<verbatim>", "derived_answer": "A|B|C|D", "solution": "<brief>" }]\n` +
-      `  ^ the field is derived_answer — NOT "answer".`
+      `  ^ the field is derived_answer — NOT "answer".\n` +
+      `\nGIVE THE AGENT scripts/ncert/MCQ_VERIFY_BRIEF.md. Its \`solution\` is written straight\n` +
+      `onto the question row and SHIPS TO STUDENTS, so it must use LaTeX \\(...\\) for all math\n` +
+      `and must NEVER name an option by letter (audit:keys reads a named letter as the\n` +
+      `concluded answer and fires SOLN≠KEY). A run briefed only on the schema produced 27 of\n` +
+      `29 solutions naming letters and 28 of 29 in plain text, and needed a rewrite pass.`
   );
 }
 

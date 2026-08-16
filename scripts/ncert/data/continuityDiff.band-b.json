@@ -1,0 +1,239 @@
+[
+  {
+    "ref": "5.2 Eg.21",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "EASY",
+    "stem": "Find the derivative of the function given by \\(f(x) = \\sin(x^2)\\).",
+    "solution": "Observe that the given function is a composite of two functions. Indeed, if \\(t = u(x) = x^2\\) and \\(v(t) = \\sin t\\), then\n\\(f(x) = (v \\circ u)(x) = v(u(x)) = v(x^2) = \\sin x^2\\)\nPut \\(t = u(x) = x^2\\). Observe that \\(\\frac{dv}{dt} = \\cos t\\) and \\(\\frac{dt}{dx} = 2x\\) exist. Hence, by chain rule\n\\(\\frac{df}{dx} = \\frac{dv}{dt} \\cdot \\frac{dt}{dx} = \\cos t \\cdot 2x\\)\nIt is normal practice to express the final result only in terms of \\(x\\). Thus\n\\(\\frac{df}{dx} = \\cos t \\cdot 2x = 2x \\cos x^2\\)"
+  },
+  {
+    "ref": "Ex 5.2 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "EASY",
+    "stem": "Differentiate the function \\(\\sin(x^2 + 5)\\) with respect to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "EASY",
+    "stem": "Differentiate the function \\(\\cos(\\sin x)\\) with respect to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "EASY",
+    "stem": "Differentiate the function \\(\\sin(ax + b)\\) with respect to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the function \\(\\sec(\\tan(\\sqrt{x}))\\) with respect to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the function \\(\\frac{\\sin(ax + b)}{\\cos(cx + d)}\\) with respect to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the function \\(\\cos x^3 \\cdot \\sin^2(x^5)\\) with respect to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Differentiate the function \\(2\\sqrt{\\cot(x^2)}\\) with respect to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "EASY",
+    "stem": "Differentiate the function \\(\\cos(\\sqrt{x})\\) with respect to \\(x\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Prove that the function \\(f\\) given by\n\\(f(x) = |x - 1|,\\ x \\in \\mathbf{R}\\)\nis not differentiable at \\(x = 1\\)."
+  },
+  {
+    "ref": "Ex 5.2 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Differentiability and the Chain Rule",
+    "difficulty": "MODERATE",
+    "stem": "Prove that the greatest integer function defined by\n\\(f(x) = [x],\\ 0 < x < 3\\)\nis not differentiable at \\(x = 1\\) and \\(x = 2\\)."
+  },
+  {
+    "ref": "5.3 Eg.22",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{dy}{dx}\\) if \\(x - y = \\pi\\).",
+    "solution": "One way is to solve for \\(y\\) and rewrite the above as\n\\(y = x - \\pi\\)\nBut then\n\\(\\frac{dy}{dx} = 1\\)\nAlternatively, directly differentiating the relationship w.r.t. \\(x\\), we have\n\\(\\frac{d}{dx}(x - y) = \\frac{d\\pi}{dx}\\)\nRecall that \\(\\frac{d\\pi}{dx}\\) means to differentiate the constant function taking value \\(\\pi\\) everywhere w.r.t. \\(x\\). Thus\n\\(\\frac{d}{dx}(x) - \\frac{d}{dx}(y) = 0\\)\nwhich implies that\n\\(\\frac{dy}{dx} = \\frac{dx}{dx} = 1\\)"
+  },
+  {
+    "ref": "5.3 Eg.23",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\), if \\(y + \\sin y = \\cos x\\).",
+    "solution": "We differentiate the relationship directly with respect to \\(x\\), i.e.,\n\\(\\frac{dy}{dx} + \\frac{d}{dx}(\\sin y) = \\frac{d}{dx}(\\cos x)\\)\nwhich implies using chain rule\n\\(\\frac{dy}{dx} + \\cos y \\cdot \\frac{dy}{dx} = -\\sin x\\)\nThis gives\n\\(\\frac{dy}{dx} = -\\frac{\\sin x}{1 + \\cos y}\\)\nwhere \\(y \\neq (2n + 1)\\pi\\)"
+  },
+  {
+    "ref": "5.3 Eg.24",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find the derivative of \\(f\\) given by \\(f(x) = \\sin^{-1} x\\) assuming it exists.",
+    "solution": "Let \\(y = \\sin^{-1} x\\). Then, \\(x = \\sin y\\).\nDifferentiating both sides w.r.t. \\(x\\), we get\n\\(1 = \\cos y \\, \\frac{dy}{dx}\\)\nwhich implies that\n\\(\\frac{dy}{dx} = \\frac{1}{\\cos y} = \\frac{1}{\\cos(\\sin^{-1} x)}\\)\nObserve that this is defined only for \\(\\cos y \\neq 0\\), i.e., \\(\\sin^{-1} x \\neq -\\frac{\\pi}{2}, \\frac{\\pi}{2}\\), i.e., \\(x \\neq -1, 1\\), i.e., \\(x \\in (-1, 1)\\).\nTo make this result a bit more attractive, we carry out the following manipulation. Recall that for \\(x \\in (-1, 1)\\), \\(\\sin(\\sin^{-1} x) = x\\) and hence\n\\(\\cos^2 y = 1 - (\\sin y)^2 = 1 - (\\sin(\\sin^{-1} x))^2 = 1 - x^2\\)\nAlso, since \\(y \\in \\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\), \\(\\cos y\\) is positive and hence \\(\\cos y = \\sqrt{1 - x^2}\\)\nThus, for \\(x \\in (-1, 1)\\),\n\\(\\frac{dy}{dx} = \\frac{1}{\\cos y} = \\frac{1}{\\sqrt{1 - x^2}}\\)"
+  },
+  {
+    "ref": "Ex 5.3 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(2x + 3y = \\sin x\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(2x + 3y = \\sin y\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(ax + by^2 = \\cos y\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(xy + y^2 = \\tan x + y\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(x^2 + xy + y^2 = 100\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(x^3 + x^2y + xy^2 + y^3 = 81\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(\\sin^2 y + \\cos xy = \\kappa\\).",
+    "_note": "The book prints a lowercase Greek kappa (\\kappa) as the constant on the right-hand side; transcribed faithfully. It is an arbitrary constant (earlier printings of this exercise set it as the Latin letter K), so its derivative is 0 either way and the answer is unaffected."
+  },
+  {
+    "ref": "Ex 5.3 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "EASY",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(\\sin^2 x + \\cos^2 y = 1\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(y = \\sin^{-1}\\left(\\frac{2x}{1 + x^2}\\right)\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(y = \\tan^{-1}\\left(\\frac{3x - x^3}{1 - 3x^2}\\right)\\), \\(-\\frac{1}{\\sqrt{3}} < x < \\frac{1}{\\sqrt{3}}\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(y = \\cos^{-1}\\left(\\frac{1 - x^2}{1 + x^2}\\right)\\), \\(0 < x < 1\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(y = \\sin^{-1}\\left(\\frac{1 - x^2}{1 + x^2}\\right)\\), \\(0 < x < 1\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(y = \\cos^{-1}\\left(\\frac{2x}{1 + x^2}\\right)\\), \\(-1 < x < 1\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(y = \\sin^{-1}\\left(2x\\sqrt{1 - x^2}\\right)\\), \\(-\\frac{1}{\\sqrt{2}} < x < \\frac{1}{\\sqrt{2}}\\)."
+  },
+  {
+    "ref": "Ex 5.3 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "Find \\(\\frac{dy}{dx}\\) in the following: \\(y = \\sec^{-1}\\left(\\frac{1}{2x^2 - 1}\\right)\\), \\(0 < x < \\frac{1}{\\sqrt{2}}\\)."
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "a1cb2714-b98c-49b2-8c8f-f64b7a97973c",
+    "ref": "Ex 8.1 Q1",
+    "solution": "The ellipse is symmetric about both axes, so the required area is \\(4\\) times the area in the first quadrant. Here \\(a = 4\\), \\(b = 3\\) and \\(y = \\frac{3}{4}\\sqrt{16 - x^2}\\) in the first quadrant. Hence Area \\(= 4\\int_{0}^{4} \\frac{3}{4}\\sqrt{16 - x^2}\\,dx = 3\\int_{0}^{4}\\sqrt{16 - x^2}\\,dx\\). Using \\(\\int\\sqrt{a^2 - x^2}\\,dx = \\frac{x}{2}\\sqrt{a^2-x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a}\\), Area \\(= 3\\left[\\frac{x}{2}\\sqrt{16-x^2} + 8\\sin^{-1}\\frac{x}{4}\\right]_{0}^{4} = 3\\left[0 + 8\\cdot\\frac{\\pi}{2}\\right] = 12\\pi\\). The required area is \\(12\\pi\\) square units."
+  },
+  {
+    "id": "6f0bae80-7fde-465f-85a4-7edb4e01a719",
+    "ref": "Ex 8.1 Q2",
+    "solution": "Here \\(a = 2\\) (along the \\(x\\)-axis) and \\(b = 3\\) (along the \\(y\\)-axis). By symmetry about both axes the area is \\(4\\) times the first-quadrant area, where \\(y = \\frac{3}{2}\\sqrt{4 - x^2}\\). So Area \\(= 4\\int_{0}^{2}\\frac{3}{2}\\sqrt{4-x^2}\\,dx = 6\\int_{0}^{2}\\sqrt{4-x^2}\\,dx = 6\\left[\\frac{x}{2}\\sqrt{4-x^2} + 2\\sin^{-1}\\frac{x}{2}\\right]_{0}^{2} = 6\\left[0 + 2\\cdot\\frac{\\pi}{2}\\right] = 6\\pi\\). The required area is \\(6\\pi\\) square units."
+  },
+  {
+    "id": "410334e9-5592-4a25-9a38-d2cd26cf7883",
+    "ref": "Misc Q1(i)",
+    "solution": "On \\([1, 2]\\) the curve \\(y = x^2\\) lies entirely above the \\(x\\)-axis, so the area is the plain definite integral. Area \\(= \\int_{1}^{2} x^2\\,dx = \\left[\\frac{x^3}{3}\\right]_{1}^{2} = \\frac{8}{3} - \\frac{1}{3} = \\frac{7}{3}\\). The required area is \\(\\frac{7}{3}\\) square units."
+  },
+  {
+    "id": "a8ac13c9-0db5-45a8-9926-247ae4aec0fe",
+    "ref": "Misc Q1(ii)",
+    "solution": "On \\([1, 5]\\) the curve \\(y = x^4\\) lies above the \\(x\\)-axis, so Area \\(= \\int_{1}^{5} x^4\\,dx = \\left[\\frac{x^5}{5}\\right]_{1}^{5} = \\frac{3125}{5} - \\frac{1}{5} = \\frac{3124}{5}\\). The required area is \\(\\frac{3124}{5} = 624.8\\) square units."
+  },
+  {
+    "id": "60c07521-1184-4005-b11f-70c17650e0d5",
+    "ref": "Misc Q2",
+    "solution": "The graph of \\(y = |x+3|\\) is the line \\(y = x+3\\) reflected in the \\(x\\)-axis wherever \\(x + 3 < 0\\): it is a V with vertex at \\((-3, 0)\\), falling from \\((-6, 3)\\) to \\((-3,0)\\) and rising to \\((0,3)\\). Split at \\(x = -3\\), where the expression inside the modulus changes sign. For \\(-6 \\le x \\le -3\\), \\(|x+3| = -(x+3)\\); for \\(-3 \\le x \\le 0\\), \\(|x+3| = x+3\\). So \\(\\int_{-6}^{0}|x+3|\\,dx = \\int_{-6}^{-3} -(x+3)\\,dx + \\int_{-3}^{0}(x+3)\\,dx = \\left[-\\frac{(x+3)^2}{2}\\right]_{-6}^{-3} + \\left[\\frac{(x+3)^2}{2}\\right]_{-3}^{0} = \\left(0 + \\frac{9}{2}\\right) + \\left(\\frac{9}{2} - 0\\right) = 9\\). Hence \\(\\int_{-6}^{0}|x+3|\\,dx = 9\\)."
+  },
+  {
+    "id": "d74df823-60a1-4543-94fc-aa3a3e9ac0ed",
+    "ref": "Misc Q3",
+    "solution": "The curve \\(y = \\sin x\\) is above the \\(x\\)-axis on \\([0, \\pi]\\) and below it on \\([\\pi, 2\\pi]\\), so the region splits at \\(x = \\pi\\) and each part contributes its absolute value. \\(\\int_{0}^{\\pi}\\sin x\\,dx = \\left[-\\cos x\\right]_{0}^{\\pi} = 1 + 1 = 2\\) and \\(\\int_{\\pi}^{2\\pi}\\sin x\\,dx = \\left[-\\cos x\\right]_{\\pi}^{2\\pi} = -1 - 1 = -2\\), whose magnitude is \\(2\\). Area \\(= 2 + |-2| = 4\\). Note the signed integral \\(\\int_{0}^{2\\pi}\\sin x\\,dx = 0\\) is not the area. The required area is \\(4\\) square units."
+  }
+]
