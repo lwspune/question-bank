@@ -1,0 +1,120 @@
+[
+  {
+    "ref": "9.1.4a SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "HARD",
+    "stem": "Find the derivative of \\(x^{n}\\) w. r. t. \\(x\\) for \\(n \\in N\\).",
+    "solution": "Let \\(f(x) = x^{n}\\)\n\\(f(x+h) = (x+h)^{n}\\)\nBy method of first principle,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{(x+h)^{n}-x^{n}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{x^{n} + {}^{n}C_{1}x^{n-1}h + {}^{n}C_{2}x^{n-2}h^{2} + \\ldots\\ldots + h^{n} - x^{n}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{{}^{n}C_{1}x^{n-1}h + {}^{n}C_{2}x^{n-2}h^{2} + {}^{n}C_{3}x^{n-3}h^{3} + \\ldots\\ldots + h^{n}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{h\\left({}^{n}C_{1}x^{n-1} + {}^{n}C_{2}x^{n-2}h + {}^{n}C_{3}x^{n-3}h^{2} + \\ldots\\ldots + h^{n-1}\\right)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(nx^{n-1} + {}^{n}C_{2}x^{n-2}h + {}^{n}C_{3}x^{n-3}h^{2} + \\ldots\\ldots + h^{n-1}\\right)\\)\n\\(= nx^{n-1} + 0 + 0 + \\ldots + 0\\)  (as \\(h \\to 0\\), \\(h \\ne 0\\))\n\\(\\therefore\\) if \\(f(x) = x^{n}\\), \\(f'(x) = nx^{n-1}\\)"
+  },
+  {
+    "ref": "9.1.4a SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find derivative of \\(\\sin x\\) w. r. t. \\(x\\).",
+    "solution": "[Textbook misprint in the book's printed solution: the final line's prime mark is doubled, printing \\(f''(x) = \\cos x\\). It must be \\(f'(x)\\) — every sibling example on the same spread prints a single prime, and the stated result is the FIRST derivative, matching the derivation directly above it.]\n\nLet \\(f(x) = \\sin x\\)\n\\(f(x+h) = \\sin(x+h)\\)\nBy method of first principle,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{\\sin(x+h)-\\sin x}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{2\\cos\\left(\\frac{2x+h}{2}\\right)\\cdot\\sin\\left(\\frac{h}{2}\\right)}{h}\\right)\\)\n\\(= 2\\lim_{h \\to 0}\\cos\\left(\\frac{2x+h}{2}\\right)\\lim_{h \\to 0}\\left(\\frac{\\sin\\left(\\frac{h}{2}\\right)}{\\frac{h}{2}}\\right)\\left(\\frac{1}{2}\\right)\\)\n\\(= 2\\lim_{h \\to 0}\\cos\\left(x+\\frac{h}{2}\\right)\\lim_{h \\to 0}\\left(\\frac{\\sin\\left(\\frac{h}{2}\\right)}{\\frac{h}{2}}\\right)\\left(\\frac{1}{2}\\right)\\)\n\\(= 2\\cos x\\cdot(1)\\left(\\frac{1}{2}\\right)\\) \\(\\ldots\\ldots\\) \\(\\left[\\because \\lim_{\\theta \\to 0}\\left(\\frac{\\sin p\\theta}{p\\theta}\\right) = 1\\right]\\)\n\\(\\therefore\\) if \\(f(x) = \\sin x\\), \\(f'(x) = \\cos x\\)",
+    "_note": "In the printed final line the prime mark on \\(f'(x)\\) appears DOUBLED (reads as \\(f''(x)\\)) — every sibling example on the same spread prints a single prime. Transcribed here as \\(f'(x)\\); a typesetting slip, not answer-affecting (the stated result \\(\\cos x\\) is the first derivative and matches the derivation above it)."
+  },
+  {
+    "ref": "9.1.4a SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find the derivative of \\(\\tan x\\) w. r. t. \\(x\\).",
+    "solution": "Let \\(f(x) = \\tan x\\)\n\\(f(x+h) = \\tan(x+h)\\)\nFrom the definition,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{\\tan(x+h)-\\tan x}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\frac{\\sin(x+h)}{\\cos(x+h)} - \\frac{\\sin x}{\\cos x}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\frac{\\sin(x+h)\\cdot\\cos x - \\cos(x+h)\\sin x}{\\cos(x+h)\\cdot\\cos x}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\sin h}{h\\cdot\\cos(x+h)\\cdot\\cos x}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\sin h}{h}\\right)\\cdot\\lim_{h \\to 0}\\left(\\frac{1}{\\cos(x+h)\\cdot\\cos x}\\right)\\)\n\\(= (1)\\cdot\\left(\\frac{1}{\\cos^{2}x}\\right)\\) \\(\\ldots\\ldots\\) \\(\\left[\\because \\lim_{\\theta \\to 0}\\left(\\frac{\\sin\\theta}{\\theta}\\right) = 1\\right]\\)\n\\(\\therefore\\) if \\(f(x) = \\tan x\\), \\(f'(x) = \\sec^{2}x\\)"
+  },
+  {
+    "ref": "9.1.4a SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "HARD",
+    "stem": "Find the derivative of \\(\\sec x\\) w. r. t. \\(x\\).",
+    "solution": "Let \\(f(x) = \\sec x\\)\n\\(f(x+h) = \\sec(x+h)\\)\nFrom the definition,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{\\sec(x+h)-\\sec x}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\frac{1}{\\cos(x+h)} - \\frac{1}{\\cos x}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\frac{\\cos x - \\cos(x+h)}{\\cos(x+h)\\cdot\\cos x}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{-2\\sin\\left(\\frac{2x+h}{2}\\right)\\cdot\\sin\\left(\\frac{-h}{2}\\right)}{h\\cdot\\cos(x+h)\\cdot\\cos x}\\right)\\)\n\\(= 2\\lim_{h \\to 0}\\left(\\frac{\\sin\\left(\\frac{2x+h}{2}\\right)}{\\cos(x+h)\\cdot\\cos x}\\right)\\lim_{h \\to 0}\\left(\\frac{\\sin\\left(\\frac{h}{2}\\right)}{\\frac{h}{2}}\\right)\\left(\\frac{1}{2}\\right)\\)\n\\(= \\frac{2\\sin x}{\\cos^{2}x}\\cdot(1)\\cdot\\left(\\frac{1}{2}\\right)\\) \\(\\ldots\\ldots\\) \\(\\left[\\because \\lim_{\\theta \\to 0}\\left(\\frac{\\sin p\\theta}{p\\theta}\\right) = 1\\right]\\)\n\\(\\therefore\\) if \\(f(x) = \\sec x\\), \\(f'(x) = \\sec x\\,\\tan x\\)"
+  },
+  {
+    "ref": "9.1.4a SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find the derivative of \\(\\log x\\) w. r. t. \\(x\\). \\((x > 0)\\)",
+    "solution": "Let \\(f(x) = \\log x\\)\n\\(f(x+h) = \\log(x+h)\\)\nFrom the definition,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{\\log(x+h)-\\log(x)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\log\\left(\\frac{x+h}{x}\\right)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\log\\left(1+\\frac{h}{x}\\right)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\log\\left(1+\\frac{h}{x}\\right)}{\\frac{h}{x}}\\right)\\times\\left(\\frac{1}{x}\\right)\\)\n\\(= 1\\cdot\\left(\\frac{1}{x}\\right)\\) \\(\\left[\\because \\lim_{x \\to 0}\\left(\\frac{\\log(1+x)}{x}\\right) = 1\\right]\\)\n\\(\\therefore\\) if \\(f(x) = \\log x\\), \\(f'(x) = \\frac{1}{x}\\)"
+  },
+  {
+    "ref": "9.1.4a SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivatives of Standard Functions",
+    "difficulty": "MODERATE",
+    "stem": "Find then derivative of \\(a^{x}\\) w. r. t. \\(x\\). \\((a > 0)\\)",
+    "solution": "[Textbook misprint in the stem: it prints Find THEN derivative of \\(a^{x}\\), where THE is meant.]\n\nLet \\(f(x) = a^{x}\\)\n\\(f(x+h) = a^{x+h}\\)\nFrom the definition,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{a^{(x+h)}-a^{x}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{a^{x}\\left(a^{h}-1\\right)}{h}\\right)\\)\n\\(= a^{x}\\lim_{h \\to 0}\\left(\\frac{a^{h}-1}{h}\\right)\\)\n\\(f'(x) = a^{x}\\log a\\) \\(\\ldots\\ldots\\) \\(\\left[\\because \\lim_{x \\to 0}\\left(\\frac{a^{x}-1}{x}\\right) = \\log a\\right]\\)\n\\(\\therefore\\) if \\(f(x) = a^{x}\\), \\(f'(x) = a^{x}\\cdot\\log a\\)",
+    "_note": "Stem transcribed as printed: the book prints \"Find then derivative of\" — \"then\" is a misprint for \"the\". Not answer-affecting."
+  },
+  {
+    "ref": "9.1.4 SolvedEx.1(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "MODERATE",
+    "context": "Find the derivatives of the following from the definition,",
+    "setLabel": "9.1.4 SolvedEx.1",
+    "stem": "\\(\\sqrt{x}\\)",
+    "solution": "Let \\(f(x) = \\sqrt{x}\\)\n\\(f(x+h) = \\sqrt{x+h}\\)\nFrom the definition,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{\\sqrt{x+h}-\\sqrt{x}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\sqrt{x+h}-\\sqrt{x}}{h}\\times\\frac{\\sqrt{x+h}+\\sqrt{x}}{\\sqrt{x+h}+\\sqrt{x}}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{x+h-x}{h\\left(\\sqrt{x+h}+\\sqrt{x}\\right)}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{h}{h\\left(\\sqrt{x+h}+\\sqrt{x}\\right)}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{1}{\\sqrt{x+h}+\\sqrt{x}}\\right)\\) \\(\\ldots\\)[As \\(h \\to 0\\), \\(h \\ne 0\\)]\n\\(= \\frac{1}{2\\sqrt{x}}\\)"
+  },
+  {
+    "ref": "9.1.4 SolvedEx.1(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "HARD",
+    "context": "Find the derivatives of the following from the definition,",
+    "setLabel": "9.1.4 SolvedEx.1",
+    "stem": "\\(\\cos(2x+3)\\)",
+    "solution": "Let \\(f(x) = \\cos(2x+3)\\)\n\\(f(x+h) = \\cos(2(x+h)+3) = \\cos((2x+3)+2h)\\)\nFrom the definition,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{\\cos[(2x+3)+2h]-\\cos(2x+3)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{-2\\sin\\left(\\frac{2(2x+3)+2h}{2}\\right)\\sin(h)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{-2\\sin(2x+3+h)\\sin(h)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left[-2\\sin(2x+3+h)\\right]\\lim_{h \\to 0}\\left(\\frac{\\sin h}{h}\\right)\\)\n\\(= \\left[-2\\sin(2x+3)\\right](1)\\) \\(\\ldots\\ldots\\) \\(\\left[\\because \\lim_{\\theta \\to 0}\\left(\\frac{\\sin\\theta}{\\theta}\\right) = 1\\right]\\)\n\\(= -2\\sin(2x+3)\\)"
+  },
+  {
+    "ref": "9.1.4 SolvedEx.1(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "MODERATE",
+    "context": "Find the derivatives of the following from the definition,",
+    "setLabel": "9.1.4 SolvedEx.1",
+    "stem": "\\(4^{x}\\)",
+    "solution": "Let \\(f(x) = 4^{x}\\)\n\\(f(x+h) = 4^{x+h}\\)\nFrom the definition\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{4^{x+h}-4^{x}}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{4^{x}\\left(4^{h}-1\\right)}{h}\\right)\\)\n\\(= 4^{x}\\lim_{h \\to 0}\\left(\\frac{4^{h}-1}{h}\\right)\\)\n\\(= 4^{x}\\log 4\\) \\(\\ldots\\ldots\\) \\(\\left[\\because \\lim_{x \\to 0}\\left(\\frac{a^{x}-1}{x}\\right) = \\log a\\right]\\)"
+  },
+  {
+    "ref": "9.1.4 SolvedEx.1(iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "HARD",
+    "context": "Find the derivatives of the following from the definition,",
+    "setLabel": "9.1.4 SolvedEx.1",
+    "stem": "\\(\\log(3x-2)\\)",
+    "solution": "Let \\(f(x) = \\log(3x-2)\\)\n\\(f(x+h) = \\log[3(x+h)-2] = \\log[(3x-2)+3h]\\)\nFrom the definition,\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{f(x+h)-f(x)}{h}\\right)\\)\n\\(f'(x) = \\lim_{h \\to 0}\\left(\\frac{\\log[(3x-2)+3h]-\\log(3x-2)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\log\\left(\\frac{(3x-2)+3h}{3x-2}\\right)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\log\\left(1+\\frac{3h}{3x-2}\\right)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{\\log\\left(1+\\frac{3h}{3x-2}\\right)}{\\frac{3h}{3x-2}}\\right)\\times\\left(\\frac{3}{3x-2}\\right)\\)\n\\(= (1)\\times\\left(\\frac{3}{3x-2}\\right)\\) \\(\\left[\\because \\lim_{x \\to 0}\\left(\\frac{\\log(1+px)}{px}\\right) = 1\\right]\\)\n\\(= \\frac{3}{3x-2}\\)"
+  },
+  {
+    "ref": "9.1.4 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "MODERATE",
+    "stem": "Find the derivative of \\(f(x) = \\sin x\\), at \\(x = \\pi\\)",
+    "solution": "\\(f(x) = \\sin x\\)\n\\(f(\\pi) = \\sin \\pi = 0\\)\n\\(f(\\pi+h) = \\sin(\\pi+h) = -\\sin h\\)\nFrom the definition,\n\\(f'(a) = \\lim_{h \\to 0}\\left(\\frac{f(a+h)-f(a)}{h}\\right)\\)\n\\(f'(\\pi) = \\lim_{h \\to 0}\\left(\\frac{f(\\pi+h)-f(\\pi)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{-\\sin h - 0}{h}\\right) = \\lim_{h \\to 0}\\left(-\\frac{\\sin h}{h}\\right)\\)\n\\(= -\\lim_{h \\to 0}\\left(\\frac{\\sin h}{h}\\right)\\)\n\\(= -1\\) \\(\\left[\\because \\lim_{\\theta \\to 0}\\left(\\frac{\\sin\\theta}{\\theta}\\right) = 1\\right]\\)"
+  },
+  {
+    "ref": "9.1.4 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Derivative by the Method of First Principle",
+    "difficulty": "EASY",
+    "stem": "Find the derivative of \\(x^{2}+x+2\\), at \\(x = -3\\)",
+    "solution": "Let \\(f(x) = x^{2}+x+2\\)\nFor \\(x = -3\\), \\(f(-3) = (-3)^{2}-3+2 = 9-3+2 = 8\\)\n\\(f(-3+h) = (-3+h)^{2}+(-3+h)+2 = h^{2}-6h+9-3+h+2 = h^{2}-5h+8\\)\nFrom the definition,\n\\(f'(a) = \\lim_{h \\to 0}\\left(\\frac{f(a+h)-f(a)}{h}\\right)\\)\n\\(f'(-3) = \\lim_{h \\to 0}\\left(\\frac{f(-3+h)-f(-3)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{h^{2}-5h+8-8}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{h^{2}-5h}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}\\left(\\frac{h(h-5)}{h}\\right)\\)\n\\(= \\lim_{h \\to 0}(h-5)\\) \\(\\ldots\\ldots\\)[\\(h \\to 0\\), \\(h \\ne 0\\)]\n\\(= -5\\)"
+  }
+]

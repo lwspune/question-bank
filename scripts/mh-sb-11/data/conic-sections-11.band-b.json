@@ -1,0 +1,290 @@
+[
+  {
+    "ref": "7.1.13 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Tangents to a Parabola",
+    "difficulty": "EASY",
+    "stem": "Find the equation of tangent to the parabola \\(y^2 = 9x\\) at \\((1, -3)\\).",
+    "solution": "[Textbook misprint in the book's own printed solution, self-refuted on its own line: the step beginning therefore Equation of tangent to the parabola restates the curve as \\(y^2 = 4x\\), where the question and every other line of the solution use \\(y^2 = 9x\\). The substitution actually performed on that same line is \\(2\\left(\\frac{9}{4}\\right)\\), i.e. \\(2a\\) with \\(a = \\frac{9}{4}\\), which is correct only for \\(y^2 = 9x\\); for \\(y^2 = 4x\\) it would be \\(2\\). FINAL ANSWER NOT AFFECTED: \\((1, -3)\\) lies on \\(y^2 = 9x\\) since \\((-3)^2 = 9(1)\\), and \\(yy_1 = 2a(x + x_1)\\) gives \\(-3y = \\frac{9}{2}(x + 1)\\), i.e. \\(3x + 2y + 3 = 0\\), the printed result.]\n\nEquation of the parabola is \\(y^2 = 9x\\);\ncomparing it with \\(y^2 = 4ax\\)\n\\(4a = 9 \\Rightarrow a = \\frac{9}{4}\\)\nTangent is drawn to the parabola at \\((1, -3) = (x_1, y_1)\\)\nEquation of tangent to the parabola \\(y^2 = 4ax\\) at \\((x_1, y_1)\\) is \\(yy_1 = 2a(x + x_1)\\)\n\\(\\therefore\\) Equation of tangent to the parabola \\(y^2 = 4x\\) at \\((1, -3)\\) is \\(y(-3) = 2\\left(\\frac{9}{4}\\right)(x + 1)\\)\ni.e. \\(-3y = \\left(\\frac{9}{2}\\right)(x + 1)\\)\ni.e. \\(-6y = 9x + 9\\)\ni.e. \\(3x + 2y + 3 = 0\\)",
+    "_note": "PRINTED MISPRINT IN THE BOOK'S OWN SOLUTION, transcribed as printed (not repaired). The line beginning \"\\(\\therefore\\) Equation of tangent to the parabola\" restates the parabola as \\(y^2 = 4x\\), but the question and every other line of the solution use \\(y^2 = 9x\\). The substitution actually performed on that same line is \\(2\\left(\\frac{9}{4}\\right)\\), i.e. \\(2a\\) with \\(a = \\frac{9}{4}\\), which is correct for \\(y^2 = 9x\\) and would be wrong for \\(y^2 = 4x\\) (where \\(2a = 2\\)) - so the misprint is self-refuted on its own line. FINAL ANSWER NOT AFFECTED: independently verified, \\((1,-3)\\) lies on \\(y^2 = 9x\\) since \\((-3)^2 = 9 = 9(1)\\), and \\(yy_1 = 2a(x+x_1)\\) gives \\(-3y = \\frac{9}{2}(x+1) \\Rightarrow 3x + 2y + 3 = 0\\), matching the printed result."
+  },
+  {
+    "ref": "7.1.13 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Tangents to a Parabola",
+    "difficulty": "MODERATE",
+    "stem": "Find the equation to tangent to the parabola \\(y^2 = 12x\\) from the point \\((2, 5)\\).",
+    "solution": "Equation of the parabola is \\(y^2 = 12x\\)\ncomparing it with \\(y^2 = 4ax \\Rightarrow 4a = 12\\)\n\\(\\therefore a = 3\\)\nTangents are drawn to the parabola from the point \\((2, 5)\\).\nWe know, equation of tangent to the parabola \\(y^2 = 4ax\\) having slopes \\(m\\) is \\(y = mx + \\frac{a}{m}\\).\n\\((5) = m(2) + \\frac{(3)}{m}\\)\n\\(5m = 2m^2 + 3\\)\n\\(2m^2 - 5m + 3 = 0\\)\n\\(2m^2 - 2m - 3m + 3 = 0\\)\n\\((2m - 3)(m - 1) = 0\\)\n\\(m = \\frac{3}{2}\\) or \\(m = 1\\)\nThese are the slopes of tangents.\nTherefore the equations of tangents by slope - point form are\n\\((y - 5) = \\frac{3}{2}(x - 2)\\) and \\((y - 5) = 1(x - 2)\\)\n\\(\\therefore 2y - 10 = 3x - 6\\) and \\(y - 5 = x - 2\\)\n\\(\\therefore 3x - 2y + 4 = 0\\) and \\(x - y + 3 = 0\\)",
+    "_note": "INTERNAL-CONSISTENCY CHECK PASSED. Every step follows: \\(5m = 2m^2 + 3 \\Rightarrow 2m^2 - 5m + 3 = 0\\), the split \\(-2m - 3m\\) factors as \\((2m-3)(m-1)\\), and both slope-point lines rearrange exactly to the printed final equations. The stray parentheses in \\((5) = m(2) + \\frac{(3)}{m}\\) are the book's typesetting of the substituted values, not a defect."
+  },
+  {
+    "ref": "7.1.13 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Tangents to a Parabola",
+    "difficulty": "MODERATE",
+    "stem": "Show that the tangents drawn from the point \\((-4, -9)\\) to the parabola \\(y^2 = 16x\\) are perpendicular to each other.",
+    "solution": "[Textbook misprint in the book's own printed solution, contradicted by its own next line: from \\(-9m = -4m^2 + 4\\) the quadratic is \\(4m^2 - 9m - 4 = 0\\), but the book prints \\(4m^2 - 9m + 4 = 0\\). Applied to the printed \\(+4\\), the book's own stated rule — product of the roots \\(= +\\frac{\\text{constant}}{\\text{coefficient of } m^2}\\) — would give \\(+\\frac{4}{4} = +1\\); the book immediately writes \\(m_1m_2 = -\\frac{4}{4} = -1\\), which follows only from the CORRECTED quadratic. FINAL ANSWER NOT AFFECTED — the tangents are perpendicular, confirmed independently: for \\(y^2 = 16x\\), \\(a = 4\\), so the directrix is \\(x = -4\\) and the point \\((-4, -9)\\) lies on it, which is exactly the result proved on the same page immediately above this example.]\n\nEquation of the parabola is \\(y^2 = 16x\\).\ncomparing it with \\(y^2 = 4ax \\Rightarrow 4a = 16\\)\n\\(\\therefore a = 4\\)\nTangents are drawn to the parabola from point \\((-4, -9)\\).\nEquation of tangent to the parabola \\(y^2 = 4ax\\) having slope \\(m\\) is \\(y = mx + \\frac{a}{m}\\)\n\\(\\therefore (-9) = m(-4) + \\frac{4}{m}\\)\n\\(\\therefore -9m = -4m^2 + 4\\)\n\\(\\therefore 4m^2 - 9m + 4 = 0\\)\n\\(m_1\\) and \\(m_2\\) be the slopes (roots)\n\\((m_1 . m_2) = +\\frac{\\text{constant}}{\\text{co-efficient of } m^2}\\)\n\\(m_1 . m_2 = -\\frac{4}{4}\\) \\(\\therefore m_1 . m_2 = -1\\)\nhence tangents are perpendicular to each other.",
+    "_note": "INTERNAL INCONSISTENCY IN THE BOOK'S OWN SOLUTION, transcribed as printed (not repaired). SIGN MISPRINT on the constant term: from \\(-9m = -4m^2 + 4\\), collecting all terms on the left gives \\(4m^2 - 9m - 4 = 0\\), NOT the printed \\(4m^2 - 9m + 4 = 0\\). The two lines that follow are inconsistent with the quadratic as printed and CORRECT for the quadratic as it should be: (a) the stated rule \\(m_1 m_2 = +\\frac{\\text{constant}}{\\text{coefficient of } m^2}\\) applied to the printed \\(+4\\) gives \\(+\\frac{4}{4} = +1\\), yet (b) the book immediately writes \\(m_1 m_2 = -\\frac{4}{4} = -1\\), which is what \\(4m^2 - 9m - 4 = 0\\) yields. So the printed quadratic contradicts the printed product of roots one line later. FINAL ANSWER NOT AFFECTED - the conclusion is correct and independently verified two ways: (1) with the corrected quadratic \\(4m^2 - 9m - 4 = 0\\), \\(m_1 m_2 = \\frac{-4}{4} = -1\\); (2) for \\(y^2 = 16x\\), \\(a = 4\\) so the directrix is \\(x = -4\\), and \\((-4,-9)\\) lies on it - exactly the theory proved on this same page immediately above the SOLVED EXAMPLES block, that the locus of points from which the tangents are perpendicular is the directrix."
+  },
+  {
+    "ref": "Ex 7.1 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Standard Equation and Tracing",
+    "difficulty": "MODERATE",
+    "context": "Find co-ordinate of focus, equation of directrix, length of latus rectum and the co-ordinate of end points of latus rectum of the parabola.",
+    "setLabel": "Ex 7.1 Q1",
+    "stem": "\\(5y^2 = 24x\\)"
+  },
+  {
+    "ref": "Ex 7.1 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Other Standard and Parametric Forms",
+    "difficulty": "EASY",
+    "context": "Find co-ordinate of focus, equation of directrix, length of latus rectum and the co-ordinate of end points of latus rectum of the parabola.",
+    "setLabel": "Ex 7.1 Q1",
+    "stem": "\\(y^2 = -20x\\)"
+  },
+  {
+    "ref": "Ex 7.1 Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Other Standard and Parametric Forms",
+    "difficulty": "MODERATE",
+    "context": "Find co-ordinate of focus, equation of directrix, length of latus rectum and the co-ordinate of end points of latus rectum of the parabola.",
+    "setLabel": "Ex 7.1 Q1",
+    "stem": "\\(3x^2 = 8y\\)"
+  },
+  {
+    "ref": "Ex 7.1 Q1(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Other Standard and Parametric Forms",
+    "difficulty": "EASY",
+    "context": "Find co-ordinate of focus, equation of directrix, length of latus rectum and the co-ordinate of end points of latus rectum of the parabola.",
+    "setLabel": "Ex 7.1 Q1",
+    "stem": "\\(x^2 = -8y\\)"
+  },
+  {
+    "ref": "Ex 7.1 Q1(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Other Standard and Parametric Forms",
+    "difficulty": "MODERATE",
+    "context": "Find co-ordinate of focus, equation of directrix, length of latus rectum and the co-ordinate of end points of latus rectum of the parabola.",
+    "setLabel": "Ex 7.1 Q1",
+    "stem": "\\(3y^2 = -16x\\)"
+  },
+  {
+    "ref": "Ex 7.1 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Other Standard and Parametric Forms",
+    "difficulty": "EASY",
+    "stem": "Find the equation of the parabola with vertex at the origin, axis along Y-axis and passing through the point \\((-10, -5)\\)."
+  },
+  {
+    "ref": "Ex 7.1 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Standard Equation and Tracing",
+    "difficulty": "EASY",
+    "stem": "Find the equation of the parabola with vertex at the origin, axis along X-axis and passing through the point \\((3, 4)\\)."
+  },
+  {
+    "ref": "Ex 7.1 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Other Standard and Parametric Forms",
+    "difficulty": "EASY",
+    "stem": "Find the equation of the parabola whose vertex is O \\((0, 0)\\) and focus at \\((-7, 0)\\)."
+  },
+  {
+    "ref": "Ex 7.1 Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Standard Equation and Tracing",
+    "difficulty": "EASY",
+    "context": "Find the equation of the parabola with vertex at the origin, axis along X-axis and passing through the point.",
+    "setLabel": "Ex 7.1 Q5",
+    "stem": "\\((1, -6)\\)"
+  },
+  {
+    "ref": "Ex 7.1 Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Standard Equation and Tracing",
+    "difficulty": "EASY",
+    "context": "Find the equation of the parabola with vertex at the origin, axis along X-axis and passing through the point.",
+    "setLabel": "Ex 7.1 Q5",
+    "stem": "\\((2, 3)\\)"
+  },
+  {
+    "ref": "Ex 7.1 Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Other Standard and Parametric Forms",
+    "difficulty": "MODERATE",
+    "context": "For the parabola \\(3y^2 = 16x\\), find the parameter of the point.",
+    "setLabel": "Ex 7.1 Q6",
+    "stem": "\\((3, -4)\\)",
+    "_note": "The book labels this sub-item a) (and the next b)), not i)/ii). Refs use (i)/(ii) to match the ref convention and the printed answer key, which lists this question's answers as 6) i, ii."
+  },
+  {
+    "ref": "Ex 7.1 Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Other Standard and Parametric Forms",
+    "difficulty": "MODERATE",
+    "context": "For the parabola \\(3y^2 = 16x\\), find the parameter of the point.",
+    "setLabel": "Ex 7.1 Q6",
+    "stem": "\\((27, -12)\\)",
+    "_note": "The book labels this sub-item b), not ii) - see the note on Ex 7.1 Q6(i)."
+  },
+  {
+    "ref": "Ex 7.1 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Standard Equation and Tracing",
+    "difficulty": "MODERATE",
+    "stem": "Find the focal distance of a point on the parabola \\(y^2 = 16x\\) whose ordinate is 2 times the abscissa."
+  },
+  {
+    "ref": "Ex 7.1 Q8(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Other Standard and Parametric Forms",
+    "difficulty": "MODERATE",
+    "context": "Find coordinate of the point on the parabola. Also find focal distance.",
+    "setLabel": "Ex 7.1 Q8",
+    "stem": "\\(y^2 = 12x\\) whose parameter is \\(\\frac{1}{3}\\)"
+  },
+  {
+    "ref": "Ex 7.1 Q8(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Other Standard and Parametric Forms",
+    "difficulty": "MODERATE",
+    "context": "Find coordinate of the point on the parabola. Also find focal distance.",
+    "setLabel": "Ex 7.1 Q8",
+    "stem": "\\(2y^2 = 7x\\) whose parameter is \\(-2\\)"
+  },
+  {
+    "ref": "Ex 7.1 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Standard Equation and Tracing",
+    "difficulty": "EASY",
+    "stem": "For the parabola \\(y^2 = 4x\\), find the coordinate of the point whose focal distance is 17."
+  },
+  {
+    "ref": "Ex 7.1 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Standard Equation and Tracing",
+    "difficulty": "MODERATE",
+    "stem": "Find length of latus rectum of the parabola \\(y^2 = 4ax\\) passing through the point \\((2, -6)\\).",
+    "_note": "The book prints the point as \"(2.–6)\" - a full stop where the comma between the coordinates belongs. Transcribed as \\((2, -6)\\) because a coordinate pair admits no other reading and reproducing the stop would look like a transcription error of ours; the values themselves are printed unambiguously. Purely typographic, no mathematical content changed."
+  },
+  {
+    "ref": "Ex 7.1 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Other Standard and Parametric Forms",
+    "difficulty": "MODERATE",
+    "stem": "Find the area of the triangle formed by the line joining the vertex of the parabola \\(x^2 = 12y\\) to the end points of latus rectum."
+  },
+  {
+    "ref": "Ex 7.1 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Standard Equation and Tracing",
+    "difficulty": "MODERATE",
+    "stem": "If a parabolic reflector is 20 cm in diameter and 5 cm deep, find its focus."
+  },
+  {
+    "ref": "Ex 7.1 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Other Standard and Parametric Forms",
+    "difficulty": "MODERATE",
+    "stem": "Find coordinate of focus, vertex and equation of directrix and the axis of the parabola \\(y = x^2 - 2x + 3\\)."
+  },
+  {
+    "ref": "Ex 7.1 Q14(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tangents to a Parabola",
+    "difficulty": "MODERATE",
+    "context": "Find the equation of tangent to the parabola.",
+    "setLabel": "Ex 7.1 Q14",
+    "stem": "\\(y^2 = 12x\\) from the point \\((2, 5)\\)",
+    "_note": "This sub-item is IDENTICAL to the book's own worked example 7.1.13 SolvedEx.2 on the facing page (same parabola \\(y^2 = 12x\\), same external point \\((2,5)\\)) - the book sets its solved example again as an exercise. Transcribed as printed; flagged so the later solution-authoring pass is aware the answer is already printed in full a page earlier (tangents \\(3x - 2y + 4 = 0\\) and \\(x - y + 3 = 0\\))."
+  },
+  {
+    "ref": "Ex 7.1 Q14(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tangents to a Parabola",
+    "difficulty": "MODERATE",
+    "context": "Find the equation of tangent to the parabola.",
+    "setLabel": "Ex 7.1 Q14",
+    "stem": "\\(y^2 = 36x\\) from the point \\((2, 9)\\)"
+  },
+  {
+    "ref": "Ex 7.1 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tangents to a Parabola",
+    "difficulty": "MODERATE",
+    "stem": "If the tangent drawn from the point \\((-6, 9)\\) to the parabola \\(y^2 = kx\\) are perpendicular to each other, find \\(k\\)."
+  },
+  {
+    "ref": "Ex 7.1 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tangents to a Parabola",
+    "difficulty": "HARD",
+    "stem": "Two tangents to the parabola \\(y^2 = 8x\\) meet the tangents at the vertex in the point P and Q. If PQ \\(= 4\\), prove that the equation of the locus of the point of intersection of two tangent is \\(y^2 = 8(x + 2)\\).",
+    "_note": "Printed wording is loose but the intent is unambiguous: \"meet the tangents at the vertex\" should read \"meet the tangent at the vertex\" (there is exactly one tangent at the vertex of a parabola, the Y-axis), and \"two tangent\" should read \"two tangents\". Transcribed as printed. This is one of the two questions the end-of-book ANSWERS section does not answer (it is a proof), so no key exists to cross-check against."
+  },
+  {
+    "ref": "Ex 7.1 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tangents to a Parabola",
+    "difficulty": "HARD",
+    "stem": "Find the equation of common tangent to the parabola \\(y^2 = 4x\\) and \\(x^2 = 32y\\)."
+  },
+  {
+    "ref": "Ex 7.1 Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tangents to a Parabola",
+    "difficulty": "HARD",
+    "stem": "Find the equation of the locus of a point, the tangents from which to the parabola \\(y^2 = 18x\\) are such that some of their slopes is \\(-3\\).",
+    "_note": "PRINTED WORD DEFECT, transcribed as printed (not repaired). The book prints \"some of their slopes is -3\"; \"some\" must be \"sum\" - as printed the condition is meaningless (\"some of their slopes is -3\" states nothing determinate about a pair of slopes, and the singular verb \"is\" already points at \"sum\"). Unlike a pure misspelling this substitutes one real English word for another and so changes the reading of the question, which is why it is left verbatim for the errata pass rather than silently corrected. With the intended reading (\\(m_1 + m_2 = -3\\)) the question is a standard locus problem and has a printed answer in the ANSWERS section."
+  },
+  {
+    "ref": "Ex 7.1 Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Standard Equation and Tracing",
+    "difficulty": "MODERATE",
+    "stem": "The tower of a bridge, hung in the form of a parabola have their tops 30 meters above the road way and are 200 meters apart. If the cable is 5 meters above the road way at the centre of the bridge, find the length of the vertical supporting cable from the centre.",
+    "_note": "POSSIBLY INCOMPLETE AS PRINTED. The question asks for \"the length of the vertical supporting cable from the centre\" but never states the horizontal distance from the centre at which that supporting cable stands, so as printed no single length is determined - the standard form of this problem specifies a distance (commonly 30 m) from the centre. Transcribed verbatim; the ANSWERS section does print a value for 19), so the printed key should identify the intended distance and settle this. Flagged for the cross-check pass."
+  },
+  {
+    "ref": "Ex 7.1 Q20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Parabola — Other Standard and Parametric Forms",
+    "difficulty": "MODERATE",
+    "stem": "A circle whose centre is \\((4, -1)\\) passes through the focus of the parabola \\(x^2 + 16y = 0\\). Show that the circle touches the directrix of the parabola.",
+    "_note": "The book prints \"diretrixs\" for \"directrix\". Normalised, because \"diretrixs\" is not a word in any reading and carries no alternative sense (contrast Ex 7.1 Q18, where the misprint is a real word that changes the meaning and is therefore left verbatim). No mathematical content changed. NOTE ALSO: this question is a \"Show that\" proof and, like Q16, is not answered in the end-of-book ANSWERS section - the printed key runs 1) to 19) and omits both 16) and 20). Its absence from the key is expected, not a missing entry."
+  }
+]

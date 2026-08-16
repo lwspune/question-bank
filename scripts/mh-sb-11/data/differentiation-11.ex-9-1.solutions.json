@@ -1,0 +1,112 @@
+[
+  {
+    "id": "4d1df552-306c-4754-bb94-79011a2de77f",
+    "ref": "Ex 9.1 Q1(a)",
+    "solution": "By the first principle, \\(f'(x)=\\lim_{h \\to 0}\\frac{f(x+h)-f(x)}{h}\\).\nHere \\(f(x+h)-f(x)=\\left[(x+h)^{2}+3(x+h)-1\\right]-\\left[x^{2}+3x-1\\right]=2xh+h^{2}+3h\\).\n\\(\\therefore f'(x)=\\lim_{h \\to 0}\\frac{h(2x+h+3)}{h}=\\lim_{h \\to 0}(2x+h+3)\\)\n\\(\\therefore f'(x)=2x+3\\)"
+  },
+  {
+    "id": "8c845a58-c5a0-47aa-8ef8-42150556ec6d",
+    "ref": "Ex 9.1 Q1(b)",
+    "solution": "By the first principle, \\(f'(x)=\\lim_{h \\to 0}\\frac{\\sin(3x+3h)-\\sin 3x}{h}\\).\nUsing \\(\\sin C-\\sin D=2\\cos\\frac{C+D}{2}\\sin\\frac{C-D}{2}\\), the numerator is \\(2\\cos\\left(3x+\\frac{3h}{2}\\right)\\sin\\frac{3h}{2}\\).\n\\(\\therefore f'(x)=\\lim_{h \\to 0}3\\cos\\left(3x+\\frac{3h}{2}\\right)\\cdot\\frac{\\sin(3h/2)}{3h/2}\\)\nAs \\(h \\to 0\\), \\(\\frac{\\sin(3h/2)}{3h/2} \\to 1\\).\n\\(\\therefore f'(x)=3\\cos 3x\\)"
+  },
+  {
+    "id": "af58567c-448c-48a7-8c19-532302c37b03",
+    "ref": "Ex 9.1 Q1(c)",
+    "solution": "By the first principle, \\(f'(x)=\\lim_{h \\to 0}\\frac{e^{2x+2h+1}-e^{2x+1}}{h}=\\lim_{h \\to 0}e^{2x+1}\\cdot\\frac{e^{2h}-1}{h}\\).\nWriting \\(\\frac{e^{2h}-1}{h}=2\\cdot\\frac{e^{2h}-1}{2h}\\) and using \\(\\lim_{t \\to 0}\\frac{e^{t}-1}{t}=1\\),\n\\(\\therefore f'(x)=2e^{2x+1}\\)"
+  },
+  {
+    "id": "c81abef4-d9b9-4e5e-b84e-cd4ad2a65c7c",
+    "ref": "Ex 9.1 Q1(d)",
+    "solution": "By the first principle, \\(f'(x)=\\lim_{h \\to 0}\\frac{3^{x+h}-3^{x}}{h}=3^{x}\\lim_{h \\to 0}\\frac{3^{h}-1}{h}\\).\nUsing the standard limit \\(\\lim_{h \\to 0}\\frac{a^{h}-1}{h}=\\log a\\) with \\(a=3\\),\n\\(\\therefore f'(x)=3^{x}\\log 3\\)"
+  },
+  {
+    "id": "9d583a04-75f5-48cc-8208-4fa15458cb36",
+    "ref": "Ex 9.1 Q1(e)",
+    "solution": "By the first principle, \\(f'(x)=\\lim_{h \\to 0}\\frac{\\log(2x+2h+5)-\\log(2x+5)}{h}=\\lim_{h \\to 0}\\frac{1}{h}\\log\\left(1+\\frac{2h}{2x+5}\\right)\\).\nPut \\(t=\\frac{2h}{2x+5}\\), so that \\(\\frac{1}{h}=\\frac{2}{(2x+5)\\,t}\\) and \\(t \\to 0\\) as \\(h \\to 0\\).\n\\(\\therefore f'(x)=\\frac{2}{2x+5}\\lim_{t \\to 0}\\frac{\\log(1+t)}{t}=\\frac{2}{2x+5}\\times 1\\)\n\\(\\therefore f'(x)=\\frac{2}{2x+5}\\)"
+  },
+  {
+    "id": "4d427c51-6646-4fba-9877-02595438b397",
+    "ref": "Ex 9.1 Q1(f)",
+    "solution": "By the first principle, \\(f'(x)=\\lim_{h \\to 0}\\frac{\\tan(2x+2h+3)-\\tan(2x+3)}{h}\\).\nUsing \\(\\tan A-\\tan B=\\frac{\\sin(A-B)}{\\cos A\\cos B}\\) with \\(A=2x+2h+3\\), \\(B=2x+3\\), so \\(A-B=2h\\), the numerator becomes \\(\\frac{\\sin 2h}{\\cos(2x+2h+3)\\cos(2x+3)}\\).\n\\(\\therefore f'(x)=\\lim_{h \\to 0}2\\cdot\\frac{\\sin 2h}{2h}\\cdot\\frac{1}{\\cos(2x+2h+3)\\cos(2x+3)}=\\frac{2}{\\cos^{2}(2x+3)}\\)\n\\(\\therefore f'(x)=2\\sec^{2}(2x+3)\\)"
+  },
+  {
+    "id": "794d1811-8f89-44e4-b4ca-2ed29f0d1c6e",
+    "ref": "Ex 9.1 Q1(g)",
+    "solution": "By the first principle, \\(f'(x)=\\lim_{h \\to 0}\\frac{\\sec(5x+5h-2)-\\sec(5x-2)}{h}=\\lim_{h \\to 0}\\frac{\\cos(5x-2)-\\cos(5x+5h-2)}{h\\,\\cos(5x+5h-2)\\cos(5x-2)}\\).\nUsing \\(\\cos D-\\cos C=2\\sin\\frac{C+D}{2}\\sin\\frac{C-D}{2}\\), the numerator is \\(2\\sin\\left(5x+\\frac{5h}{2}-2\\right)\\sin\\frac{5h}{2}\\).\n\\(\\therefore f'(x)=\\lim_{h \\to 0}5\\sin\\left(5x+\\frac{5h}{2}-2\\right)\\cdot\\frac{\\sin(5h/2)}{5h/2}\\cdot\\frac{1}{\\cos(5x+5h-2)\\cos(5x-2)}=\\frac{5\\sin(5x-2)}{\\cos^{2}(5x-2)}\\)\n\\(\\therefore f'(x)=5\\sec(5x-2)\\tan(5x-2)\\)"
+  },
+  {
+    "id": "e273a23c-0c2c-47bd-9eae-bf40140bdfef",
+    "ref": "Ex 9.1 Q1(h)",
+    "solution": "Here \\(f(x)=x\\sqrt{x}=x^{3/2}\\), so by the first principle \\(f'(x)=\\lim_{h \\to 0}\\frac{(x+h)^{3/2}-x^{3/2}}{h}\\).\nMultiplying and dividing by \\((x+h)^{3/2}+x^{3/2}\\),\n\\(f'(x)=\\lim_{h \\to 0}\\frac{(x+h)^{3}-x^{3}}{h\\left[(x+h)^{3/2}+x^{3/2}\\right]}=\\lim_{h \\to 0}\\frac{h\\left(3x^{2}+3xh+h^{2}\\right)}{h\\left[(x+h)^{3/2}+x^{3/2}\\right]}=\\frac{3x^{2}}{2x^{3/2}}\\)\n\\(\\therefore f'(x)=\\frac{3}{2}\\sqrt{x}=\\frac{3\\sqrt{x}}{2}\\)"
+  },
+  {
+    "id": "b34749a3-dee7-4004-a98e-155d7dd3ff5b",
+    "ref": "Ex 9.1 Q2(a)",
+    "solution": "Let \\(f(x)=\\sqrt{2x+5}\\), so \\(f(2)=\\sqrt{9}=3\\).\nBy the first principle, \\(f'(2)=\\lim_{h \\to 0}\\frac{\\sqrt{2(2+h)+5}-3}{h}=\\lim_{h \\to 0}\\frac{\\sqrt{9+2h}-3}{h}\\).\nRationalising the numerator, \\(f'(2)=\\lim_{h \\to 0}\\frac{(9+2h)-9}{h\\left(\\sqrt{9+2h}+3\\right)}=\\lim_{h \\to 0}\\frac{2}{\\sqrt{9+2h}+3}=\\frac{2}{6}\\)\n\\(\\therefore f'(2)=\\frac{1}{3}\\)"
+  },
+  {
+    "id": "be355a1e-5003-4ebc-98f6-2572749ab0e9",
+    "ref": "Ex 9.1 Q2(b)",
+    "solution": "Let \\(f(x)=\\tan x\\), so \\(f\\left(\\frac{\\pi}{4}\\right)=1\\).\nBy the first principle, \\(f'\\left(\\frac{\\pi}{4}\\right)=\\lim_{h \\to 0}\\frac{\\tan\\left(\\frac{\\pi}{4}+h\\right)-1}{h}\\).\nSince \\(\\tan\\left(\\frac{\\pi}{4}+h\\right)=\\frac{1+\\tan h}{1-\\tan h}\\), the numerator is \\(\\frac{1+\\tan h}{1-\\tan h}-1=\\frac{2\\tan h}{1-\\tan h}\\).\n\\(\\therefore f'\\left(\\frac{\\pi}{4}\\right)=\\lim_{h \\to 0}2\\cdot\\frac{\\tan h}{h}\\cdot\\frac{1}{1-\\tan h}=2\\times 1\\times 1\\)\n\\(\\therefore f'\\left(\\frac{\\pi}{4}\\right)=2\\)"
+  },
+  {
+    "id": "cfb409a5-97e6-4fcd-b12b-27f982e397a5",
+    "ref": "Ex 9.1 Q2(c)",
+    "solution": "Let \\(f(x)=2^{3x+1}\\), so \\(f(2)=2^{7}=128\\).\nBy the first principle, \\(f'(2)=\\lim_{h \\to 0}\\frac{2^{3(2+h)+1}-2^{7}}{h}=2^{7}\\lim_{h \\to 0}\\frac{2^{3h}-1}{h}=128\\times 3\\lim_{h \\to 0}\\frac{2^{3h}-1}{3h}\\).\nUsing \\(\\lim_{t \\to 0}\\frac{2^{t}-1}{t}=\\log 2\\),\n\\(\\therefore f'(2)=384\\log 2\\)"
+  },
+  {
+    "id": "0b10f9ee-8cb5-4dc1-b6a2-4a9d690c1d42",
+    "ref": "Ex 9.1 Q2(d)",
+    "solution": "Let \\(f(x)=\\log(2x+1)\\), so \\(f(2)=\\log 5\\).\nBy the first principle, \\(f'(2)=\\lim_{h \\to 0}\\frac{\\log(2(2+h)+1)-\\log 5}{h}=\\lim_{h \\to 0}\\frac{1}{h}\\log\\left(\\frac{5+2h}{5}\\right)=\\lim_{h \\to 0}\\frac{1}{h}\\log\\left(1+\\frac{2h}{5}\\right)\\).\n\\(=\\frac{2}{5}\\lim_{h \\to 0}\\frac{\\log\\left(1+\\frac{2h}{5}\\right)}{\\frac{2h}{5}}=\\frac{2}{5}\\times 1\\), using \\(\\lim_{t \\to 0}\\frac{\\log(1+t)}{t}=1\\).\n\\(\\therefore f'(2)=\\frac{2}{5}\\)"
+  },
+  {
+    "id": "11e71b63-0179-4de3-b261-12adc24f3204",
+    "ref": "Ex 9.1 Q2(e)",
+    "solution": "Let \\(f(x)=e^{3x-4}\\), so \\(f(2)=e^{2}\\).\nBy the first principle, \\(f'(2)=\\lim_{h \\to 0}\\frac{e^{3(2+h)-4}-e^{2}}{h}=e^{2}\\lim_{h \\to 0}\\frac{e^{3h}-1}{h}=3e^{2}\\lim_{h \\to 0}\\frac{e^{3h}-1}{3h}\\).\nUsing \\(\\lim_{t \\to 0}\\frac{e^{t}-1}{t}=1\\),\n\\(\\therefore f'(2)=3e^{2}\\)"
+  },
+  {
+    "id": "1a400b6e-7ca5-417a-b6f3-6716ffbeacf2",
+    "ref": "Ex 9.1 Q2(f)",
+    "solution": "Let \\(f(x)=\\cos x\\). By the first principle, \\(f'\\left(\\frac{5\\pi}{4}\\right)=\\lim_{h \\to 0}\\frac{\\cos\\left(\\frac{5\\pi}{4}+h\\right)-\\cos\\frac{5\\pi}{4}}{h}\\).\nUsing \\(\\cos C-\\cos D=-2\\sin\\frac{C+D}{2}\\sin\\frac{C-D}{2}\\), the numerator is \\(-2\\sin\\left(\\frac{5\\pi}{4}+\\frac{h}{2}\\right)\\sin\\frac{h}{2}\\).\n\\(\\therefore f'\\left(\\frac{5\\pi}{4}\\right)=-\\lim_{h \\to 0}\\sin\\left(\\frac{5\\pi}{4}+\\frac{h}{2}\\right)\\cdot\\frac{\\sin(h/2)}{h/2}=-\\sin\\frac{5\\pi}{4}=-\\left(-\\frac{1}{\\sqrt{2}}\\right)\\)\n\\(\\therefore f'\\left(\\frac{5\\pi}{4}\\right)=\\frac{1}{\\sqrt{2}}\\)"
+  },
+  {
+    "id": "d2abf628-7473-4b5e-8205-76e12fd8167a",
+    "ref": "Ex 9.1 Q3",
+    "solution": "Since \\(x=-3\\) falls in the branch \\(x \\ge -3\\), \\(f(-3)=2-3(-3)=11\\).\nLeft-hand derivative: for \\(h<0\\) we have \\(-3+h<-3\\), so \\(f(-3+h)=(-3+h)^{2}+2=11-6h+h^{2}\\).\n\\(Lf'(-3)=\\lim_{h \\to 0^{-}}\\frac{\\left(11-6h+h^{2}\\right)-11}{h}=\\lim_{h \\to 0^{-}}(-6+h)=-6\\)\nRight-hand derivative: for \\(h>0\\), \\(f(-3+h)=2-3(-3+h)=11-3h\\).\n\\(Rf'(-3)=\\lim_{h \\to 0^{+}}\\frac{(11-3h)-11}{h}=\\lim_{h \\to 0^{+}}(-3)=-3\\)\nSince \\(Lf'(-3)=-6 \\ne -3=Rf'(-3)\\), the two one-sided derivatives are unequal, so \\(f'(-3)\\) does not exist.\n\\(\\therefore f\\) is not differentiable at \\(x=-3\\). (It is continuous there, since both one-sided limits equal \\(11=f(-3)\\) \\(-\\) continuity does not imply differentiability.)"
+  },
+  {
+    "id": "4c36c1aa-54c0-491a-8c1a-518037d28923",
+    "ref": "Ex 9.1 Q4",
+    "solution": "Continuity: \\(\\lim_{x \\to 0}f(x)=\\lim_{x \\to 0}x^{2}=0\\) and \\(f(0)=0^{2}=0\\), so \\(\\lim_{x \\to 0}f(x)=f(0)\\).\n\\(\\therefore f\\) is continuous at \\(x=0\\).\nDifferentiability: \\(f'(0)=\\lim_{h \\to 0}\\frac{f(0+h)-f(0)}{h}=\\lim_{h \\to 0}\\frac{h^{2}-0}{h}=\\lim_{h \\to 0}h=0\\), which is finite, so the derivative exists.\n\\(\\therefore f(x)=x^{2}\\) is continuous and differentiable at \\(x=0\\), with \\(f'(0)=0\\)."
+  },
+  {
+    "id": "44d99081-489b-47d7-bbbb-a9cafb0f4699",
+    "ref": "Ex 9.1 Q5(i)",
+    "solution": "Here \\(f(0)=0\\cdot|0|=0\\).\nContinuity: \\(\\left|f(x)\\right|=\\left|x\\right|\\cdot\\left|x\\right|=x^{2} \\to 0\\) as \\(x \\to 0\\), so \\(\\lim_{x \\to 0}f(x)=0=f(0)\\), and \\(f\\) is continuous at \\(x=0\\).\nDifferentiability: \\(Lf'(0)=\\lim_{h \\to 0^{-}}\\frac{h|h|-0}{h}=\\lim_{h \\to 0^{-}}|h|=0\\) and \\(Rf'(0)=\\lim_{h \\to 0^{+}}\\frac{h|h|-0}{h}=\\lim_{h \\to 0^{+}}|h|=0\\).\nThe two one-sided derivatives agree, so \\(f'(0)=0\\) exists.\n\\(\\therefore f\\) is continuous and differentiable at \\(x=0\\)."
+  },
+  {
+    "id": "8e61151a-6298-4d20-98e4-260c5be483f1",
+    "ref": "Ex 9.1 Q5(ii)",
+    "solution": "At \\(x=-\\frac{3}{2}\\) we have \\(2x+3=0\\), so \\(f\\left(-\\frac{3}{2}\\right)=0\\).\nContinuity: \\(\\left|f(x)\\right|=\\left|2x+3\\right|\\cdot\\left|2x+3\\right|=(2x+3)^{2} \\to 0\\) as \\(x \\to -\\frac{3}{2}\\), so \\(\\lim_{x \\to -3/2}f(x)=0=f\\left(-\\frac{3}{2}\\right)\\) and \\(f\\) is continuous there.\nDifferentiability: for \\(h \\ne 0\\), \\(2\\left(-\\frac{3}{2}+h\\right)+3=2h\\), so \\(f\\left(-\\frac{3}{2}+h\\right)=2h\\left|2h\\right|=4h|h|\\).\n\\(Lf'\\left(-\\frac{3}{2}\\right)=\\lim_{h \\to 0^{-}}\\frac{4h|h|}{h}=\\lim_{h \\to 0^{-}}4|h|=0\\) and \\(Rf'\\left(-\\frac{3}{2}\\right)=\\lim_{h \\to 0^{+}}4|h|=0\\).\n\\(\\therefore f\\) is continuous and differentiable at \\(x=-\\frac{3}{2}\\), with \\(f'\\left(-\\frac{3}{2}\\right)=0\\)."
+  },
+  {
+    "id": "09a4830b-c62f-4c67-9103-eccde008d6fc",
+    "ref": "Ex 9.1 Q6",
+    "solution": "Here \\(f(2)=[2]=2\\).\nFor \\(x\\) just less than \\(2\\), i.e. \\(1 \\le x<2\\), \\([x]=1\\), so \\(\\lim_{x \\to 2^{-}}f(x)=1\\).\nFor \\(x\\) just greater than \\(2\\), i.e. \\(2<x<3\\), \\([x]=2\\), so \\(\\lim_{x \\to 2^{+}}f(x)=2\\).\nSince \\(\\lim_{x \\to 2^{-}}f(x)=1 \\ne 2=\\lim_{x \\to 2^{+}}f(x)\\), the limit does not exist and \\(f\\) has a jump discontinuity at \\(x=2\\).\nA function that is not continuous at a point cannot be differentiable there.\n\\(\\therefore f\\) is neither continuous nor differentiable at \\(x=2\\)."
+  },
+  {
+    "id": "f2c414fc-2459-4c07-a34d-66a94577b16e",
+    "ref": "Ex 9.1 Q7",
+    "solution": "Since \\(x=2\\) falls in the branch \\(x \\le 2\\), \\(f(2)=12-2^{2}=8\\).\nContinuity: \\(\\lim_{x \\to 2^{-}}f(x)=\\lim_{x \\to 2^{-}}\\left(12-x^{2}\\right)=8\\) and \\(\\lim_{x \\to 2^{+}}f(x)=\\lim_{x \\to 2^{+}}(3x+2)=8\\), both equal to \\(f(2)=8\\).\n\\(\\therefore f\\) is continuous at \\(x=2\\).\nDifferentiability: \\(Lf'(2)=\\lim_{h \\to 0^{-}}\\frac{\\left[12-(2+h)^{2}\\right]-8}{h}=\\lim_{h \\to 0^{-}}\\frac{-4h-h^{2}}{h}=\\lim_{h \\to 0^{-}}(-4-h)=-4\\)\n\\(Rf'(2)=\\lim_{h \\to 0^{+}}\\frac{\\left[3(2+h)+2\\right]-8}{h}=\\lim_{h \\to 0^{+}}\\frac{3h}{h}=3\\)\nSince \\(-4 \\ne 3\\), \\(f'(2)\\) does not exist.\n\\(\\therefore f\\) is continuous but not differentiable at \\(x=2\\)."
+  },
+  {
+    "id": "93507d72-4fe9-4a1f-a255-10e27d156662",
+    "ref": "Ex 9.1 Q8",
+    "solution": "Since \\(x=\\frac{\\pi}{2}\\) falls in the branch \\(x \\le \\frac{\\pi}{2}\\), \\(f\\left(\\frac{\\pi}{2}\\right)=\\sin\\frac{\\pi}{2}-\\cos\\frac{\\pi}{2}=1-0=1\\).\nContinuity: \\(\\lim_{x \\to \\pi/2^{-}}(\\sin x-\\cos x)=1\\) and \\(\\lim_{x \\to \\pi/2^{+}}(2x-\\pi+1)=\\pi-\\pi+1=1\\), both equal to \\(f\\left(\\frac{\\pi}{2}\\right)\\).\n\\(\\therefore f\\) is continuous at \\(x=\\frac{\\pi}{2}\\).\nDifferentiability: \\(Lf'\\left(\\frac{\\pi}{2}\\right)=\\lim_{h \\to 0^{-}}\\frac{\\left[\\sin\\left(\\frac{\\pi}{2}+h\\right)-\\cos\\left(\\frac{\\pi}{2}+h\\right)\\right]-1}{h}=\\lim_{h \\to 0^{-}}\\frac{\\cos h+\\sin h-1}{h}=\\lim_{h \\to 0^{-}}\\left[\\frac{\\cos h-1}{h}+\\frac{\\sin h}{h}\\right]=0+1=1\\)\n\\(Rf'\\left(\\frac{\\pi}{2}\\right)=\\lim_{h \\to 0^{+}}\\frac{\\left[2\\left(\\frac{\\pi}{2}+h\\right)-\\pi+1\\right]-1}{h}=\\lim_{h \\to 0^{+}}\\frac{2h}{h}=2\\)\nSince \\(1 \\ne 2\\), \\(f'\\left(\\frac{\\pi}{2}\\right)\\) does not exist.\n\\(\\therefore f\\) is continuous but not differentiable at \\(x=\\frac{\\pi}{2}\\)."
+  },
+  {
+    "id": "a7679719-658d-4a03-a1dd-879bcda3c9fe",
+    "ref": "Ex 9.1 Q9",
+    "solution": "Continuity: for \\(x \\ne 0\\), \\(\\left|\\cos\\frac{1}{x}\\right| \\le 1\\), so \\(0 \\le \\left|f(x)\\right| \\le x^{2}\\). As \\(x \\to 0\\), \\(x^{2} \\to 0\\), hence by the squeeze theorem \\(\\lim_{x \\to 0}f(x)=0=f(0)\\).\n\\(\\therefore f\\) is continuous at \\(x=0\\).\nDifferentiability: \\(f'(0)=\\lim_{h \\to 0}\\frac{f(0+h)-f(0)}{h}=\\lim_{h \\to 0}\\frac{h^{2}\\cos\\frac{1}{h}-0}{h}=\\lim_{h \\to 0}h\\cos\\frac{1}{h}\\).\nSince \\(0 \\le \\left|h\\cos\\frac{1}{h}\\right| \\le |h| \\to 0\\), this limit exists and equals \\(0\\).\n\\(\\therefore f\\) is continuous and differentiable at \\(x=0\\), with \\(f'(0)=0\\)."
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "ref": "6.3.4 SolvedEx.2",
+    "why": "The book prints the point of contact with denominator 3, but its own derivation two lines above gives x = -9/5. (-9/3, 12/5) = (-3, 2.4) does not lie on x^2 + y^2 = 9 (it gives 14.76), while (-9/5, 12/5) gives 81/25 + 144/25 = 9 exactly. This is the first of the three printed occurrences: the point-of-intersection line.",
+    "find": "\\(\\left(-\\frac{9}{3}, \\frac{12}{5}\\right)\\) is the only point of intersection",
+    "replace": "\\(\\left(-\\frac{9}{5}, \\frac{12}{5}\\right)\\) is the only point of intersection"
+  },
+  {
+    "ref": "6.3.4 SolvedEx.2",
+    "why": "Second of the three printed occurrences of the wrong point of contact: the touches-at line. Same defect, same correction (denominator 5, not 3).",
+    "find": "touches the circle at \\(\\left(-\\frac{9}{3}, \\frac{12}{5}\\right)\\)",
+    "replace": "touches the circle at \\(\\left(-\\frac{9}{5}, \\frac{12}{5}\\right)\\)"
+  },
+  {
+    "ref": "6.3.4 SolvedEx.2",
+    "why": "Third of the three printed occurrences of the wrong point of contact: the final point-of-contact line, which is the answer a student reads off. Same defect, same correction (denominator 5, not 3).",
+    "find": "point of contact \\(= \\left(-\\frac{9}{3}, \\frac{12}{5}\\right)\\)",
+    "replace": "point of contact \\(= \\left(-\\frac{9}{5}, \\frac{12}{5}\\right)\\)"
+  },
+  {
+    "ref": "6.3.4 SolvedEx.2",
+    "why": "The substitution line prints the constant 12 where the line directly above it reads y = (1/4)(3x + 15), so the constant must be 15. As printed the line asserts a false equality: (1/4)(3(-9/5) + 12) = 33/20, not the 12/5 the book itself writes as the result. The book's stated result 12/5 is correct and the final answer is unaffected, but a solved example must not ship a derivation step a student can follow to a wrong number, so the constant is corrected to 15.",
+    "find": "\\left(3\\left(-\\frac{9}{5}\\right) + 12\\right)",
+    "replace": "\\left(3\\left(-\\frac{9}{5}\\right) + 15\\right)"
+  }
+]
