@@ -1,0 +1,103 @@
+[
+  {
+    "id": "91e91ff6-7f57-46d4-a762-4b081fed9d99",
+    "ref": "Misc II Q1",
+    "solution": "The domain is \\([3,9]\\). Factorise the numerator: \\(x^2-3x-10=(x-5)(x+2)\\), so for every \\(x \\ne 5\\) in the domain \\(f(x)=x+2\\), which is a polynomial and hence continuous. In particular the two branches \\(3 \\le x \\le 6\\) and \\(6 < x \\le 9\\) carry the SAME expression, so the split at \\(x=6\\) causes no break: \\(\\lim_{x \\to 6}f(x)=8=f(6)\\).\nAt \\(x=5\\): \\(\\lim_{x \\to 5}f(x)=\\lim_{x \\to 5}(x+2)=7\\), but \\(f(5)=10\\). The limit exists and is finite, yet it differs from the value, so \\(f\\) has a removable discontinuity at \\(x=5\\).\n\\(\\therefore\\) \\(f\\) is continuous on its domain except at \\(x=5\\), where the discontinuity is removable."
+  },
+  {
+    "id": "7917839d-1374-4149-8f01-5d7772bdb9e1",
+    "ref": "Misc II Q2",
+    "solution": "Each branch is continuous on the interior of its own interval (polynomials, and rational functions whose denominators \\(1-x\\) and \\(x-5\\) do not vanish there — note \\(1-x \\ne 0\\) since \\(x>2\\)). So only the junctions \\(x=2,\\ x=4\\) and the special point \\(x=5\\) need checking.\nAt \\(x=2\\): \\(f(2)=2(4)-2(2)+5=9\\) and \\(\\lim_{x \\to 2^{+}}\\frac{1-3x-x^2}{1-x}=\\frac{1-6-4}{1-2}=\\frac{-9}{-1}=9\\). Continuous.\nAt \\(x=4\\): \\(\\lim_{x \\to 4^{-}}\\frac{1-3x-x^2}{1-x}=\\frac{1-12-16}{-3}=9\\) and \\(f(4)=\\frac{16-25}{4-5}=9\\). Continuous.\nAt \\(x=5\\): \\(\\frac{x^2-25}{x-5}=x+5\\) for \\(x \\ne 5\\), so \\(\\lim_{x \\to 5}f(x)=10\\), while \\(f(5)=7\\). The limit exists but is not equal to the value, so the discontinuity at \\(x=5\\) is removable.\n\\(\\therefore\\) \\(f\\) is continuous on its domain \\([0,7]\\) except at \\(x=5\\)."
+  },
+  {
+    "id": "d860f6bb-4869-4bd5-9f36-bb35415cc969",
+    "ref": "Misc II Q3",
+    "solution": "Use \\(\\cos C-\\cos D=2\\sin\\left(\\frac{C+D}{2}\\right)\\sin\\left(\\frac{D-C}{2}\\right)\\) and \\(1-\\cos x=2\\sin^2\\left(\\frac{x}{2}\\right)\\):\n\\(f(x)=\\frac{2\\sin\\left(\\frac{13x}{2}\\right)\\sin\\left(\\frac{5x}{2}\\right)}{2\\sin^2\\left(\\frac{x}{2}\\right)}\\).\nDivide numerator and denominator by \\(x^2\\) and use \\(\\lim_{t \\to 0}\\frac{\\sin t}{t}=1\\):\n\\(\\lim_{x \\to 0}f(x)=\\frac{\\left(\\frac{13}{2}\\right)\\left(\\frac{5}{2}\\right)}{\\left(\\frac{1}{2}\\right)^2}=\\frac{\\frac{65}{4}}{\\frac{1}{4}}=65\\).\nThe limit exists and equals \\(65\\), but \\(f(0)=\\frac{68}{15}\\ne 65\\). The value does not match the limit, so \\(f\\) is discontinuous at \\(x=0\\) (a removable discontinuity, removed by redefining \\(f(0)=65\\)).\n\\(\\therefore\\) \\(f\\) is discontinuous at \\(x=0\\)."
+  },
+  {
+    "id": "09684b84-c668-45f1-a14e-7be065418a57",
+    "ref": "Misc II Q4",
+    "solution": "First the value: at \\(x=1\\), \\(\\sin^2\\left(\\frac{\\pi}{2}\\right)=1\\) and \\(\\cos^2\\left(\\frac{\\pi}{2}\\right)=0\\), so \\(f(1)=\\frac{\\pi^2(1)}{3+0}=\\frac{\\pi^2}{3}\\).\nNow the limit. Put \\(t=1-x\\), so \\(t \\to 0\\) as \\(x \\to 1\\), and \\(\\sin \\pi x=\\sin(\\pi-\\pi t)=\\sin \\pi t\\). Hence\n\\(\\lim_{x \\to 1}\\frac{\\sin^2 \\pi x}{3(1-x)^2}=\\lim_{t \\to 0}\\frac{\\sin^2 \\pi t}{3t^2}=\\frac{\\pi^2}{3}\\lim_{t \\to 0}\\left(\\frac{\\sin \\pi t}{\\pi t}\\right)^2=\\frac{\\pi^2}{3}\\).\nThe limit exists and equals \\(f(1)\\).\n\\(\\therefore\\) \\(f\\) is continuous at \\(x=1\\)."
+  },
+  {
+    "id": "4eb0f9aa-734f-4d95-b5fc-f9d7652762b5",
+    "ref": "Misc II Q5",
+    "solution": "Factorise: \\(2x^2+x-1=(2x-1)(x+1)\\), so \\(f(x)=\\frac{|x+1|}{(2x-1)(x+1)}\\) for \\(x \\ne -1\\).\nFor \\(x>-1\\): \\(|x+1|=x+1\\), so \\(f(x)=\\frac{1}{2x-1}\\) and \\(\\lim_{x \\to -1^{+}}f(x)=\\frac{1}{-3}=-\\frac{1}{3}\\).\nFor \\(x<-1\\): \\(|x+1|=-(x+1)\\), so \\(f(x)=\\frac{-1}{2x-1}\\) and \\(\\lim_{x \\to -1^{-}}f(x)=\\frac{-1}{-3}=\\frac{1}{3}\\).\nThe one-sided limits are unequal, so \\(\\lim_{x \\to -1}f(x)\\) does not exist — the second condition for continuity fails.\n\\(\\therefore\\) \\(f\\) is discontinuous at \\(x=-1\\), and it is a jump (irremovable) discontinuity with jump \\(\\frac{1}{3}-\\left(-\\frac{1}{3}\\right)=\\frac{2}{3}\\)."
+  },
+  {
+    "id": "f53f8cef-adcb-4abb-baa2-bb13d2308f4b",
+    "ref": "Misc II Q6",
+    "solution": "\\(f(x)=[x+1]\\) is a step function; it can break only where \\(x+1\\) is an integer, i.e. where \\(x\\) is an integer. In \\([-2,2)\\) these are \\(x=-2,-1,0,1\\).\nAt an interior integer \\(x=c\\) (\\(c=-1,0,1\\)): \\(\\lim_{x \\to c^{-}}[x+1]=c\\) while \\(\\lim_{x \\to c^{+}}[x+1]=c+1=f(c)\\). The one-sided limits differ, so the limit does not exist and \\(f\\) is discontinuous there (a jump of \\(1\\)).\nAt \\(x=-2\\), the left endpoint, only right-continuity is required: \\(\\lim_{x \\to -2^{+}}[x+1]=-1=f(-2)\\), so \\(f\\) is continuous at \\(x=-2\\). On every interval between consecutive integers \\(f\\) is constant, hence continuous.\n\\(\\therefore\\) \\(f\\) is discontinuous at \\(x=-1,\\ 0,\\ 1\\) and continuous elsewhere on \\([-2,2)\\)."
+  },
+  {
+    "id": "f3a0e994-1b46-4096-8660-147bb713ef7a",
+    "ref": "Misc II Q7",
+    "solution": "\\(|x-3| \\ge 2\\) means \\(x-3 \\ge 2\\) or \\(x-3 \\le -2\\), i.e. \\(x \\ge 5\\) or \\(x \\le 1\\). So\n\\(f(x)=2x^2+x+1\\) on \\((-\\infty,1] \\cup [5,\\infty)\\) and \\(f(x)=x^2+3\\) on \\((1,5)\\). Both pieces are polynomials, so only \\(x=1\\) and \\(x=5\\) need checking.\nAt \\(x=1\\): \\(f(1)=2+1+1=4\\), \\(\\lim_{x \\to 1^{-}}(2x^2+x+1)=4\\), \\(\\lim_{x \\to 1^{+}}(x^2+3)=4\\). Continuous.\nAt \\(x=5\\): \\(\\lim_{x \\to 5^{-}}(x^2+3)=28\\), but \\(\\lim_{x \\to 5^{+}}(2x^2+x+1)=56=f(5)\\). The one-sided limits differ, so the limit does not exist.\n\\(\\therefore\\) \\(f\\) is continuous on \\(\\mathbb{R}\\) except at \\(x=5\\), where it has a jump discontinuity."
+  },
+  {
+    "id": "4fb4c72f-a58b-4085-98e6-5bf4c7f3b8da",
+    "ref": "Misc III Q1",
+    "solution": "The domain is \\([-5,-2) \\cup (-2,5]\\); note \\(x=-2\\) is excluded. Each branch is a polynomial, so the only possible break is at \\(x=-2\\).\n\\(\\lim_{x \\to -2^{-}}(x^2+x-3)=4-2-3=-1\\) and \\(\\lim_{x \\to -2^{+}}(x^2-5)=4-5=-1\\).\nThe two one-sided limits agree, so \\(\\lim_{x \\to -2}f(x)=-1\\) exists; the failure is only that \\(f(-2)\\) is not defined. Defining \\(f(-2)=-1\\) makes \\(f\\) continuous on \\([-5,5]\\).\n\\(\\therefore\\) \\(f\\) has a removable discontinuity at \\(x=-2\\)."
+  },
+  {
+    "id": "cc555efe-3a87-4ddb-b49e-35e0b0584b1d",
+    "ref": "Misc III Q2",
+    "solution": "Both branches are polynomials, so the only possible break is at \\(x=3\\).\n\\(\\lim_{x \\to 3^{-}}(x^2+5x+1)=9+15+1=25=f(3)\\).\n\\(\\lim_{x \\to 3^{+}}(x^3+x+5)=27+3+5=35\\).\nThe one-sided limits are unequal (both finite), so \\(\\lim_{x \\to 3}f(x)\\) does not exist and no redefinition of \\(f(3)\\) can repair it.\n\\(\\therefore\\) \\(f\\) has a jump discontinuity at \\(x=3\\), with jump \\(35-25=10\\)."
+  },
+  {
+    "id": "32c55764-2847-40b5-856b-59a0789281d3",
+    "ref": "Misc III Q3",
+    "solution": "On \\([0,3)\\) the denominator \\(x+1 \\ne 0\\), and on \\([3,6]\\) the denominator \\(x^2-5=0\\) only at \\(x=\\pm\\sqrt{5}\\approx \\pm 2.24\\), neither of which lies in \\([3,6]\\). So each branch is continuous on its own interval and only \\(x=3\\) needs checking.\n\\(\\lim_{x \\to 3^{-}}\\frac{x^2+x+1}{x+1}=\\frac{9+3+1}{4}=\\frac{13}{4}\\).\n\\(f(3)=\\lim_{x \\to 3^{+}}\\frac{3x+4}{x^2-5}=\\frac{9+4}{9-5}=\\frac{13}{4}\\).\nBoth one-sided limits equal the value \\(\\frac{13}{4}\\).\n\\(\\therefore\\) \\(f\\) is continuous on \\([0,6]\\); there is no discontinuity."
+  },
+  {
+    "id": "9a626126-2520-4968-b637-3ef767d45188",
+    "ref": "Misc IV Q1",
+    "solution": "Factorise both parts: \\(x^2-6x+8=(x-2)(x-4)\\) and \\(x^2-x-12=(x-4)(x+3)\\). So\n\\(f(x)=\\frac{(x+3)(x-2)(x-4)}{(x-4)(x+3)}=x-2\\) for all \\(x \\ne -3,\\ 4\\).\nAt \\(x=-3\\) and \\(x=4\\) the function is not defined (denominator zero), but the limits exist:\n\\(\\lim_{x \\to -3}f(x)=-3-2=-5\\) and \\(\\lim_{x \\to 4}f(x)=4-2=2\\).\nSince each limit exists finitely and only the value is missing, both discontinuities are removable. Redefining\n\\(f(x)=\\frac{(x+3)(x^2-6x+8)}{x^2-x-12}\\) for \\(x \\ne -3,4\\); \\(f(-3)=-5\\); \\(f(4)=2\\)\nmakes \\(f\\) continuous on \\(\\mathbb{R}\\).\n\\(\\therefore\\) \\(f\\) has removable discontinuities at \\(x=-3\\) and \\(x=4\\), removed by \\(f(-3)=-5\\) and \\(f(4)=2\\)."
+  },
+  {
+    "id": "109f1dbb-0742-45d2-8001-97ddb2c066b3",
+    "ref": "Misc IV Q2",
+    "solution": "Both branches are polynomials, so the only possible break is at \\(x=3\\).\n\\(\\lim_{x \\to 3^{-}}(x^2+2x+5)=9+6+5=20=f(3)\\).\n\\(\\lim_{x \\to 3^{+}}(x^3-2x^2-5)=27-18-5=4\\).\nThe one-sided limits are finite but unequal, so \\(\\lim_{x \\to 3}f(x)\\) does not exist. A discontinuity is removable only when the limit exists, so no choice of \\(f(3)\\) can repair this one.\n\\(\\therefore\\) \\(f\\) is discontinuous at \\(x=3\\); it is a jump discontinuity and is irremovable."
+  },
+  {
+    "id": "4db26cf0-73cb-44b6-a3aa-21fc8caa7681",
+    "ref": "Misc V Q1",
+    "solution": "At \\(x=2\\) the base is \\(\\frac{10-8}{8-6}=1\\) and the index \\(\\frac{3}{2x-4} \\to \\infty\\), so this is the \\(1^\\infty\\) form; use \\(\\lim (1+u)^{1/u}=e\\).\nWrite the base as \\(1+u\\), where \\(u=\\frac{5x-8}{8-3x}-1=\\frac{5x-8-8+3x}{8-3x}=\\frac{8(x-2)}{8-3x}\\).\nThen \\(f(x)=(1+u)^{\\frac{1}{u} \\cdot u \\cdot \\frac{3}{2x-4}}\\), and\n\\(u \\cdot \\frac{3}{2(x-2)}=\\frac{8(x-2)}{8-3x} \\cdot \\frac{3}{2(x-2)}=\\frac{12}{8-3x}\\).\nAs \\(x \\to 2\\), \\(u \\to 0\\) and \\(\\frac{12}{8-3x} \\to \\frac{12}{2}=6\\), so \\(\\lim_{x \\to 2}f(x)=e^{6}\\).\nFor continuity at \\(x=2\\) we need \\(k=\\lim_{x \\to 2}f(x)\\).\n\\(\\therefore\\) \\(k=e^{6}\\)."
+  },
+  {
+    "id": "f5696202-cb61-47cd-a033-10dcd3421ad3",
+    "ref": "Misc V Q2",
+    "solution": "Since \\(45^x=9^x \\cdot 5^x\\), the numerator factorises:\n\\(45^x-9^x-5^x+1=9^x \\cdot 5^x-9^x-5^x+1=(9^x-1)(5^x-1)\\).\nDivide numerator and denominator by \\(x^2\\) and use \\(\\lim_{x \\to 0}\\frac{a^x-1}{x}=\\log a\\):\n\\(\\lim_{x \\to 0}f(x)=\\frac{\\log 9 \\cdot \\log 5}{\\log k \\cdot \\log 3}=\\frac{2\\log 3 \\cdot \\log 5}{\\log k \\cdot \\log 3}=\\frac{2\\log 5}{\\log k}\\).\nContinuity at \\(x=0\\) requires this to equal \\(f(0)=\\frac{2}{3}\\):\n\\(\\frac{2\\log 5}{\\log k}=\\frac{2}{3} \\Rightarrow \\log k=3\\log 5=\\log 125\\).\n\\(\\therefore\\) \\(k=125\\)."
+  },
+  {
+    "id": "ca48ee96-6374-4cce-a5e6-22574341173c",
+    "ref": "Misc VI Q1",
+    "solution": "Continuity at \\(x=0\\) needs \\(\\lim_{x \\to 0^{-}}f(x)=f(0)=\\lim_{x \\to 0^{+}}f(x)\\).\nLeft limit: divide numerator and denominator by \\(x\\) and use \\(\\frac{\\tan x}{x} \\to 1\\), \\(\\frac{\\sin x}{x} \\to 1\\), \\(\\frac{a^x-1}{x} \\to \\log a\\):\n\\(\\lim_{x \\to 0^{-}}\\frac{4\\tan x+5\\sin x}{a^x-1}=\\frac{4+5}{\\log a}=\\frac{9}{\\log a}\\).\nRight limit: \\(\\frac{11x+7x\\cos x}{b^x-1}=\\frac{x(11+7\\cos x)}{b^x-1}\\), so\n\\(\\lim_{x \\to 0^{+}}f(x)=\\frac{11+7(1)}{\\log b}=\\frac{18}{\\log b}\\).\nEquate each to \\(f(0)=\\frac{9}{\\log 2}\\):\n\\(\\frac{9}{\\log a}=\\frac{9}{\\log 2} \\Rightarrow \\log a=\\log 2 \\Rightarrow a=2\\);\n\\(\\frac{18}{\\log b}=\\frac{9}{\\log 2} \\Rightarrow \\log b=2\\log 2=\\log 4 \\Rightarrow b=4\\).\n\\(\\therefore\\) \\(a=2\\) and \\(b=4\\)."
+  },
+  {
+    "id": "605444c1-4b4c-440e-98af-5c091e32bc2c",
+    "ref": "Misc VI Q2",
+    "solution": "\\(|2x-3| \\ge 2\\) gives \\(2x-3 \\ge 2\\) or \\(2x-3 \\le -2\\), i.e. \\(x \\ge \\frac{5}{2}\\) or \\(x \\le \\frac{1}{2}\\). So the junctions are \\(x=\\frac{1}{2}\\) and \\(x=\\frac{5}{2}\\), where the quadratic branch must match \\(3x+2\\).\nAt \\(x=\\frac{1}{2}\\): \\(\\frac{a}{4}+\\frac{b}{2}+1=\\frac{3}{2}+2=\\frac{7}{2}\\), so \\(a+2b=10\\).\nAt \\(x=\\frac{5}{2}\\): \\(\\frac{25a}{4}+\\frac{5b}{2}+1=\\frac{15}{2}+2=\\frac{19}{2}\\), so \\(25a+10b=34\\).\nFrom the first, \\(a=10-2b\\); substituting, \\(25(10-2b)+10b=34 \\Rightarrow 250-40b=34 \\Rightarrow b=\\frac{27}{5}\\), and then \\(a=10-\\frac{54}{5}=-\\frac{4}{5}\\).\n\\(\\therefore\\) \\(a=-\\frac{4}{5}\\) and \\(b=\\frac{27}{5}\\)."
+  },
+  {
+    "id": "67b1a433-c376-4d82-819e-bc75aa818040",
+    "ref": "Misc VII Q1",
+    "solution": "For continuity at \\(x=1\\) we need \\(f(1)=\\lim_{x \\to 1}f(x)\\).\nPut \\(t=1-x\\), so \\(t \\to 0\\), and \\(\\cos \\pi x=\\cos(\\pi-\\pi t)=-\\cos \\pi t\\). Hence\n\\(1+\\cos \\pi x=1-\\cos \\pi t=2\\sin^2\\left(\\frac{\\pi t}{2}\\right)\\), and\n\\(\\lim_{x \\to 1}\\frac{1+\\cos \\pi x}{\\pi(1-x)^2}=\\lim_{t \\to 0}\\frac{2\\sin^2\\left(\\frac{\\pi t}{2}\\right)}{\\pi t^2}=\\frac{2}{\\pi} \\cdot \\frac{\\pi^2}{4}\\lim_{t \\to 0}\\left(\\frac{\\sin\\frac{\\pi t}{2}}{\\frac{\\pi t}{2}}\\right)^2=\\frac{\\pi}{2}\\).\n\\(\\therefore\\) \\(f(1)=\\frac{\\pi}{2}\\)."
+  },
+  {
+    "id": "cab6ed38-eee3-41f2-ad44-338d06fe277b",
+    "ref": "Misc VII Q2",
+    "solution": "For continuity at \\(x=\\pi\\) we need \\(f(\\pi)=\\lim_{x \\to \\pi}f(x)\\).\nPut \\(t=x-\\pi\\), so \\(t \\to 0\\), and use \\(1-\\cos 7t=2\\sin^2\\left(\\frac{7t}{2}\\right)\\):\n\\(\\lim_{x \\to \\pi}\\frac{1-\\cos[7(x-\\pi)]}{5(x-\\pi)^2}=\\lim_{t \\to 0}\\frac{2\\sin^2\\left(\\frac{7t}{2}\\right)}{5t^2}=\\frac{2}{5} \\cdot \\frac{49}{4}\\lim_{t \\to 0}\\left(\\frac{\\sin\\frac{7t}{2}}{\\frac{7t}{2}}\\right)^2=\\frac{49}{10}\\).\n\\(\\therefore\\) \\(f(\\pi)=\\frac{49}{10}\\)."
+  },
+  {
+    "id": "f53927b9-5ab5-482e-9f00-626fa8c83d90",
+    "ref": "Misc VIII Q1",
+    "solution": "Let \\(f(x)=5^x-6x\\). The exponential \\(5^x\\) and the polynomial \\(6x\\) are continuous on \\(\\mathbb{R}\\), so \\(f\\) is continuous on \\([1,2]\\).\n\\(f(1)=5^1-6(1)=5-6=-1<0\\) and \\(f(2)=5^2-6(2)=25-12=13>0\\).\nSo \\(f(1)\\) and \\(f(2)\\) have opposite signs, i.e. \\(f(1)<0<f(2)\\). By the Intermediate Value Theorem \\(f\\) takes every value between \\(-1\\) and \\(13\\) on \\([1,2]\\), in particular the value \\(0\\); hence there exists \\(c \\in (1,2)\\) with \\(f(c)=0\\).\n\\(\\therefore\\) \\(5^x-6x=0\\) has a root in \\([1,2]\\)."
+  },
+  {
+    "id": "41fdfdfb-951b-4a18-ad7c-0614cfbeb1c5",
+    "ref": "Misc VIII Q2",
+    "solution": "Let \\(f(x)=x^3-5x^2+3x+6\\), a polynomial, hence continuous on \\([1,5]\\).\n\\(f(2)=8-20+6+6=0\\), so \\(x=2\\) is itself a root lying between \\(1\\) and \\(5\\).\nNext, \\(f(3)=27-45+9+6=-3<0\\) and \\(f(4)=64-80+12+6=2>0\\). Since \\(f\\) is continuous on \\([3,4]\\) and \\(f(3)<0<f(4)\\), the Intermediate Value Theorem gives a \\(c \\in (3,4)\\) with \\(f(c)=0\\).\nThe two roots \\(x=2\\) and \\(x=c \\in (3,4)\\) are distinct and both lie in \\((1,5)\\).\n\\(\\therefore\\) \\(x^3-5x^2+3x+6=0\\) has at least two real roots between \\(x=1\\) and \\(x=5\\).",
+    "_note": "Agrees with the printed key, which reads \"f(z) = 0; f(3)<0 and f(4)>0\". The \"f(z)\" is a misprint for f(2) — f(2) = 8 - 20 + 6 + 6 = 0 exactly, and no other letter makes the key coherent. Answer-key typo only; the mathematics is right."
+  }
+]

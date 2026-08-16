@@ -15,7 +15,7 @@
  * solution's LaTeX-delimiter balance first and refuses to apply on any imbalance.
  * After applying, run flip-public.ts (flips subjective + solution IS NOT NULL).
  */
-import { readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { findLatexImbalance } from "../practice/lib";
@@ -57,14 +57,56 @@ async function main() {
   for (const r of rows) {
     const imb = findLatexImbalance(r.solution);
     if (imb) bad.push(`${r.ref}: ${imb}`);
+    // Two authoring defects that this pipeline has actually shipped, both
+    // invisible to a LaTeX-balance check because they leave the delimiters
+    // intact:
+    //   - a CONTROL CHARACTER, the signature of authoring through a heredoc or
+    //     `python -c`: the shell eats one backslash and Python then string-
+    //     escapes what is left, so `\theta` arrives as TAB + "heta" and `\frac`
+    //     as FORMFEED + "rac". See [[heredoc-backslash-eating]].
+    //   - a DOUBLE-ESCAPED QUOTE: JSON escaping applied twice, so the decoded
+    //     string carries a literal backslash before the quote and the page
+    //     renders a stray backslash. Same bug the errata files kept hitting.
+    if (/[\f\t\b\v\0]/.test(r.solution)) bad.push(`${r.ref}: control character (heredoc corruption)`);
+    if (/\\"/.test(r.solution)) bad.push(`${r.ref}: double-escaped quote`);
   }
-  console.log(bad.length ? `\nLaTeX imbalances (${bad.length}):\n  ${bad.join("\n  ")}` : "\nLaTeX delimiters balanced.");
+  console.log(bad.length ? `\nText problems (${bad.length}):\n  ${bad.join("\n  ")}` : "\nLaTeX delimiters balanced; no control chars or double escapes.");
+
+  // REF -> ID PAIRING, checked against each group's own topaper input.
+  //
+  // Neither a count check nor an id-SET check can see this: an off-by-one that
+  // shifts ids across neighbouring rows is a PERMUTATION, so the set and the
+  // count both match perfectly while every solution is attached to the wrong
+  // question. That has happened twice on this book — once caught by hand, once
+  // nearly missed — so it is a gate here rather than a habit.
+  const mispaired: string[] = [];
+  for (const f of files) {
+    const input = join(DATA, f.replace(".solutions.json", ".topaper.json"));
+    if (!existsSync(input)) continue; // group dumped under a different name; skip rather than guess
+    const want = new Map<string, string>(
+      (JSON.parse(readFileSync(input, "utf8")) as SolutionRow[]).map((r) => [r.id, r.ref ?? ""])
+    );
+    for (const r of JSON.parse(readFileSync(join(DATA, f), "utf8")) as SolutionRow[]) {
+      if (!want.has(r.id)) mispaired.push(`${f}: ${r.ref} (${r.id}) is not in ${f.replace(".solutions.json", ".topaper.json")}`);
+      else if (r.ref && want.get(r.id) !== r.ref) {
+        mispaired.push(`${f}: id ${r.id} is "${want.get(r.id)}" in the input but "${r.ref}" here`);
+      }
+    }
+  }
+  console.log(
+    mispaired.length
+      ? `\nREF->ID MISPAIRINGS (${mispaired.length}):\n  ${mispaired.slice(0, 10).join("\n  ")}`
+      : "\nref->id pairing matches every topaper input."
+  );
 
   if (!apply) {
     console.log("\n[dry-run] pass --apply to write. Nothing updated.");
     return;
   }
-  if (bad.length) throw new Error("refusing to apply with LaTeX imbalances — fix the solutions first.");
+  if (bad.length) throw new Error("refusing to apply with text problems — fix the solutions first.");
+  if (mispaired.length) {
+    throw new Error("refusing to apply: a solution is attached to a different question than the input gave it.");
+  }
 
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },

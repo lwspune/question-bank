@@ -378,6 +378,127 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Miscellaneous Exercise 6", label: "(I) Select the correct answer", kind: "miscellaneous", refPrefixes: ["Misc I "] },
     { group: "Miscellaneous Exercise 6", label: "(II) Answer the following", kind: "miscellaneous", refPrefixes: ["Misc II "] },
   ],
+
+  // ── Ch.8 Continuity (Part 2) — verified against Ch_08_Continuity.pdf (19pp).
+  //    STRUCTURALLY THE SIMPLEST CHAPTER IN THE BOOK on the solved/exercise axis —
+  //    ONE solved block (Ex.1..Ex.12, continuously numbered, never restarting) and
+  //    ONE exercise — and the MOST COMPLICATED on the Miscellaneous axis: its
+  //    Miscellaneous prints EIGHT parts, (I)..(VIII), where every other chapter in
+  //    this book prints two. The book's own key keys all eight and its per-part
+  //    counts match the pages exactly, which is what confirms the structure.
+  //
+  //    No `a`-suffixed prefix is in use: the chapter's numbered "Illustrations" are
+  //    worked THEORY passages that pose no question and are deliberately not
+  //    ingested, so nothing precedes the banner block.
+  "continuity-11": [
+    { group: "8.1 Continuity of a Function", label: "Solved Examples", kind: "solved_example", refPrefixes: ["8.1 SolvedEx"] },
+    { group: "Exercise 8.1", label: "Exercise 8.1", kind: "exercise", refPrefixes: ["Ex 8.1 "] },
+    { group: "Miscellaneous Exercise 8", label: "(I) Select the correct answer", kind: "miscellaneous", refPrefixes: ["Misc I "] },
+    { group: "Miscellaneous Exercise 8", label: "(II) Discuss the continuity", kind: "miscellaneous", refPrefixes: ["Misc II "] },
+    { group: "Miscellaneous Exercise 8", label: "(III) Identify discontinuities", kind: "miscellaneous", refPrefixes: ["Misc III "] },
+    { group: "Miscellaneous Exercise 8", label: "(IV) Identify, classify and redefine", kind: "miscellaneous", refPrefixes: ["Misc IV "] },
+    { group: "Miscellaneous Exercise 8", label: "(V) Find k", kind: "miscellaneous", refPrefixes: ["Misc V "] },
+    { group: "Miscellaneous Exercise 8", label: "(VI) Find a and b", kind: "miscellaneous", refPrefixes: ["Misc VI "] },
+    { group: "Miscellaneous Exercise 8", label: "(VII) Find f(a)", kind: "miscellaneous", refPrefixes: ["Misc VII "] },
+    { group: "Miscellaneous Exercise 8", label: "(VIII) Intermediate Value Theorem", kind: "miscellaneous", refPrefixes: ["Misc VIII "] },
+  ],
+
+  // ── Ch.1 Complex Numbers (Part 2) — verified against Ch_01_Complex_Numbers.pdf (22pp).
+  //    MANY SMALL BLOCKS, each restarting at "Ex. 1", so nearly every one carries a
+  //    sub-section-scoped prefix. The seven in-line `1.2.x` blocks are worked
+  //    demonstrations embedded in the algebra theory and PRECEDE the boxed `1.2`
+  //    banner block, which is why they are listed first — that is reading order.
+  //    No collision results: "1.2.1 SolvedEx" does not start with "1.2 SolvedEx"
+  //    (the char after "1.2" is "." rather than " "), and assignSections resolves
+  //    longest-prefix-wins regardless.
+  "complex-numbers-11": [
+    { group: "1.2.1 Equality of Complex Numbers", label: "Worked Example", kind: "solved_example", refPrefixes: ["1.2.1 SolvedEx"] },
+    { group: "1.2.3 Addition", label: "Worked Examples", kind: "solved_example", refPrefixes: ["1.2.3 SolvedEx"] },
+    { group: "1.2.4 Scalar Multiplication", label: "Worked Examples", kind: "solved_example", refPrefixes: ["1.2.4 SolvedEx"] },
+    { group: "1.2.5 Subtraction", label: "Worked Examples", kind: "solved_example", refPrefixes: ["1.2.5 SolvedEx"] },
+    { group: "1.2.6 Multiplication", label: "Worked Examples", kind: "solved_example", refPrefixes: ["1.2.6 SolvedEx"] },
+    { group: "1.2.7 Powers of i", label: "Worked Examples", kind: "solved_example", refPrefixes: ["1.2.7 SolvedEx"] },
+    { group: "1.2.8 Division", label: "Worked Example", kind: "solved_example", refPrefixes: ["1.2.8 SolvedEx"] },
+    { group: "1.2 Algebra of Complex Numbers", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.2 SolvedEx"] },
+    { group: "Exercise 1.1", label: "Exercise 1.1", kind: "exercise", refPrefixes: ["Ex 1.1 "] },
+    { group: "1.3 Square Root of a Complex Number", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.3 SolvedEx"] },
+    { group: "1.4 Fundamental Theorem of Algebra", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.4 SolvedEx"] },
+    { group: "Exercise 1.2", label: "Exercise 1.2", kind: "exercise", refPrefixes: ["Ex 1.2 "] },
+    { group: "1.5.2 Modulus and Argument", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.5.2 SolvedEx"] },
+    { group: "1.5.5 Exponential Form", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.5.5 SolvedEx"] },
+    { group: "Exercise 1.3", label: "Exercise 1.3", kind: "exercise", refPrefixes: ["Ex 1.3 "] },
+    { group: "1.6 De Moivre's Theorem", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.6 SolvedEx"] },
+    { group: "1.8 Sets of Points in the Complex Plane", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.8 SolvedEx"] },
+    { group: "Exercise 1.4", label: "Exercise 1.4", kind: "exercise", refPrefixes: ["Ex 1.4 "] },
+    { group: "Miscellaneous Exercise 1", label: "(I) Select the correct answer", kind: "miscellaneous", refPrefixes: ["Misc I "] },
+    { group: "Miscellaneous Exercise 1", label: "(II) Answer the following", kind: "miscellaneous", refPrefixes: ["Misc II "] },
+  ],
+
+  // ── Ch.3 Permutations and Combination (Part 2) — verified against
+  //    Ch_03_Permutation_and_Combination.pdf (26pp). Nine solved blocks, each
+  //    restarting at "Ex. 1", so all are sub-section-scoped. The `3.2.1`/`3.2.2`
+  //    and `3.4` blocks are in-line worked demonstrations rather than banner blocks.
+  //
+  //    Note `3.5.2 SolvedEx` sits under the book's "Permutations when repetitions
+  //    are allowed" heading although none of its examples involves repetition — the
+  //    refs follow the book's physical placement, the subtopics follow the content.
+  //    That divergence is the book-structure vs conceptual axis working as designed.
+  "permutations-combinations-11": [
+    { group: "3.2.1 Addition Principle", label: "Worked Examples", kind: "solved_example", refPrefixes: ["3.2.1 SolvedEx"] },
+    { group: "3.2.2 Multiplication Principle", label: "Worked Examples", kind: "solved_example", refPrefixes: ["3.2.2 SolvedEx"] },
+    { group: "3.3 Invariance Principle", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.3 SolvedEx"] },
+    { group: "Exercise 3.1", label: "Exercise 3.1", kind: "exercise", refPrefixes: ["Ex 3.1 "] },
+    { group: "3.4 Factorial Notation", label: "Worked Examples", kind: "solved_example", refPrefixes: ["3.4 SolvedEx"] },
+    { group: "Exercise 3.2", label: "Exercise 3.2", kind: "exercise", refPrefixes: ["Ex 3.2 "] },
+    { group: "3.5.1 Permutations of Distinct Objects", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.5.1 SolvedEx"] },
+    { group: "3.5.2 Permutations with Repetition", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.5.2 SolvedEx"] },
+    { group: "Exercise 3.3", label: "Exercise 3.3", kind: "exercise", refPrefixes: ["Ex 3.3 "] },
+    { group: "3.5.3 Permutations with Identical Objects", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.5.3 SolvedEx"] },
+    { group: "Exercise 3.4", label: "Exercise 3.4", kind: "exercise", refPrefixes: ["Ex 3.4 "] },
+    { group: "3.5.4 Circular Permutations", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.5.4 SolvedEx"] },
+    { group: "Exercise 3.5", label: "Exercise 3.5", kind: "exercise", refPrefixes: ["Ex 3.5 "] },
+    { group: "3.6.1 Properties of Combinations", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.6.1 SolvedEx"] },
+    { group: "Exercise 3.6", label: "Exercise 3.6", kind: "exercise", refPrefixes: ["Ex 3.6 "] },
+    { group: "Miscellaneous Exercise 3", label: "(I) Select the correct answer", kind: "miscellaneous", refPrefixes: ["Misc I "] },
+    { group: "Miscellaneous Exercise 3", label: "(II) Answer the following", kind: "miscellaneous", refPrefixes: ["Misc II "] },
+  ],
+
+  // ── Ch.7 Limits (Part 2) — verified against Ch_07_Limits.pdf (27pp).
+  //    TEN solved blocks, each restarting at "Ex. 1"; `7.1.6 SolvedEx` is the one a
+  //    banner scan CANNOT see — an unnumbered `Example:` embedded in the theory with
+  //    its own printed Solution.
+  //
+  //    EVERY EXERCISE IN THIS CHAPTER IS SPLIT INTO ROMAN PARTS (`Q.I`, `Q.II`,
+  //    `Q.III`, and `Q.IV` in 7.1), each restarting its numbering at 1, so refs are
+  //    `Ex 7.1 I Q1` etc. Each exercise is ONE block here rather than one per part:
+  //    a book exercise is a contiguous unit and the section axis exists to keep it
+  //    whole. The `Ex 7.N ` prefix (TRAILING SPACE) matches every part of that
+  //    exercise and nothing else.
+  //
+  //    Numbering defect worth not re-deriving: the CHAPTER prints Exercises 7.1..7.7
+  //    contiguously; the ANSWERS SECTION labels the last one "7.8" and prints no 7.7.
+  //    They are the same block (both split 3/3/5). Refs follow the CHAPTER.
+  "limits-11": [
+    { group: "7.1.2 Definition of a Limit", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.1.2 SolvedEx"] },
+    { group: "7.1.6 Existence of a Limit", label: "Worked Example", kind: "solved_example", refPrefixes: ["7.1.6 SolvedEx"] },
+    { group: "7.1.7 Algebra of Limits", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.1.7 SolvedEx"] },
+    { group: "7.1.8 Limit Theorem", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.1.8 SolvedEx"] },
+    { group: "Exercise 7.1", label: "Exercise 7.1", kind: "exercise", refPrefixes: ["Ex 7.1 "] },
+    { group: "7.2 Method of Factorization", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.2 SolvedEx"] },
+    { group: "Exercise 7.2", label: "Exercise 7.2", kind: "exercise", refPrefixes: ["Ex 7.2 "] },
+    { group: "7.3 Method of Rationalization", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.3 SolvedEx"] },
+    { group: "Exercise 7.3", label: "Exercise 7.3", kind: "exercise", refPrefixes: ["Ex 7.3 "] },
+    { group: "7.4 Limits of Trigonometric Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.4 SolvedEx"] },
+    { group: "Exercise 7.4", label: "Exercise 7.4", kind: "exercise", refPrefixes: ["Ex 7.4 "] },
+    { group: "7.5 Substitution Method", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.5 SolvedEx"] },
+    { group: "Exercise 7.5", label: "Exercise 7.5", kind: "exercise", refPrefixes: ["Ex 7.5 "] },
+    { group: "7.6 Limits of Exponential and Logarithmic Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.6 SolvedEx"] },
+    { group: "Exercise 7.6", label: "Exercise 7.6", kind: "exercise", refPrefixes: ["Ex 7.6 "] },
+    { group: "7.7 Limits at Infinity", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.7 SolvedEx"] },
+    { group: "Exercise 7.7", label: "Exercise 7.7", kind: "exercise", refPrefixes: ["Ex 7.7 "] },
+    { group: "Miscellaneous Exercise 7", label: "(I) Select the correct answer", kind: "miscellaneous", refPrefixes: ["Misc I "] },
+    { group: "Miscellaneous Exercise 7", label: "(II) Answer the following", kind: "miscellaneous", refPrefixes: ["Misc II "] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

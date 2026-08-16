@@ -1,0 +1,327 @@
+[
+  {
+    "ref": "7.4 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "If \\(3x^2 + 2 \\le f(x) \\le 5x^2 - 6\\) for all \\(x \\in R\\), then find \\(\\lim_{x \\to -2} f(x)\\).",
+    "solution": "Let \\(g(x) = 3x^2 + 2\\) and \\(h(x) = 5x^2 - 6\\)\nSo, we have \\(g(x) \\le f(x) \\le h(x)\\)\nTaking as limit \\(x \\to -2\\) throughout we get\n\\(\\lim_{x \\to -2} g(x) \\le \\lim_{x \\to -2} f(x) \\le \\lim_{x \\to -2} h(x)\\)\n\\(\\lim_{x \\to -2}(3x^2 + 2) \\le \\lim_{x \\to -2} f(x) \\le \\lim_{x \\to -2}(5x^2 - 6)\\)\n\\(3(-2)^2 + 2 \\le \\lim_{x \\to -2} f(x) \\le 5(-2)^2 - 6\\)\n\\(14 \\le \\lim_{x \\to -2} f(x) \\le 14\\)\n\\(\\therefore\\ \\lim_{x \\to -2} f(x) = 14\\) ....... [By squeeze theorem]",
+    "_note": "Sits inside section 7.4 (Limit of a trigonometric function), where the book states the squeeze/sandwich theorem as the tool used to prove \\(\\lim_{\\theta\\to0}\\frac{\\sin\\theta}{\\theta}=1\\). The question itself is purely polynomial, so the subtopic is a section-placement call rather than a content match; no canonical subtopic covers the squeeze theorem."
+  },
+  {
+    "ref": "7.4 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate: \\(\\lim_{x \\to \\frac{\\pi}{4}}\\left(\\frac{\\cot x - 1}{\\operatorname{cosec}^2 x - 2}\\right)\\)",
+    "solution": "[Textbook misprint: the bracketed remark is printed with the arrow missing after the \\(x\\), reading \"As \\(x\\) \\(\\frac{\\pi}{4}\\)\". Restored above, the intent being unambiguous.]\n\n\\(\\lim_{x \\to \\frac{\\pi}{4}}\\left(\\frac{\\cot x - 1}{\\operatorname{cosec}^2 x - 2}\\right)\\)\n\\(= \\lim_{x \\to \\frac{\\pi}{4}}\\left(\\frac{\\cot x - 1}{\\cot^2 x + 1 - 2}\\right)\\)\n\\(= \\lim_{x \\to \\frac{\\pi}{4}}\\left(\\frac{\\cot x - 1}{\\cot^2 x - 1}\\right)\\)\n\\(= \\lim_{x \\to \\frac{\\pi}{4}}\\left(\\frac{\\cot x - 1}{(\\cot x + 1)(\\cot x - 1)}\\right)\\)\n\\(= \\lim_{x \\to \\frac{\\pi}{4}}\\left(\\frac{1}{\\cot x + 1}\\right)\\) .....[As \\(x \\to \\frac{\\pi}{4}\\), \\(\\cot x - 1 \\ne 0\\)]\n\\(= \\frac{1}{\\cot\\left(\\frac{\\pi}{4}\\right) + 1} = \\frac{1}{1 + 1}\\)\n\\(= \\frac{1}{2}\\)",
+    "_note": "The bracketed remark is printed as \"[As x  \\(\\frac{\\pi}{4}\\)  cot x \\(-\\) 1 \\(\\ne\\) 0]\" — the arrow after x is missing on the printed page. Transcribed here with the arrow restored, as the intent is unambiguous."
+  },
+  {
+    "ref": "7.4 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "Evaluate: \\(\\lim_{x \\to \\frac{3\\pi}{2}}\\left(\\frac{\\sqrt{3 - \\sin x} - 2}{\\cos^2 x}\\right)\\)",
+    "solution": "[Textbook misprint: the fourth line prints the denominator as \\(1 - \\sin^2 x\\left(\\sqrt{3 - \\sin x} + 2\\right)\\) with \\(1 - \\sin^2 x\\) unbracketed; the intended form, used on the very next line, is \\(\\left(1 - \\sin^2 x\\right)\\left(\\sqrt{3 - \\sin x} + 2\\right)\\).]\n\n\\(\\lim_{x \\to \\frac{3\\pi}{2}}\\left(\\frac{\\sqrt{3 - \\sin x} - 2}{\\cos^2 x}\\right)\\)\n\\(= \\lim_{x \\to \\frac{3\\pi}{2}}\\left(\\frac{\\sqrt{3 - \\sin x} - 2}{\\cos^2 x} \\times \\frac{\\sqrt{3 - \\sin x} + 2}{\\sqrt{3 - \\sin x} + 2}\\right)\\)\n\\(= \\lim_{x \\to \\frac{3\\pi}{2}}\\left(\\frac{3 - \\sin x - 4}{\\cos^2 x\\left(\\sqrt{3 - \\sin x} + 2\\right)}\\right)\\)\n\\(= \\lim_{x \\to \\frac{3\\pi}{2}}\\left(\\frac{-1 - \\sin x}{1 - \\sin^2 x\\left(\\sqrt{3 - \\sin x} + 2\\right)}\\right)\\)\n\\(= \\lim_{x \\to \\frac{3\\pi}{2}}\\left(\\frac{-(1 + \\sin x)}{(1 - \\sin x)(1 + \\sin x)\\left(\\sqrt{3 - \\sin x} + 2\\right)}\\right)\\)\n.....As \\(x \\to \\frac{3\\pi}{2}\\), \\(\\sin x \\to -1\\) and \\(1 + \\sin x \\ne 0\\)\n\\(= \\left(\\frac{-1}{\\left(1 - \\sin\\left(\\frac{3\\pi}{2}\\right)\\right)\\left(\\sqrt{3 - \\sin\\left(\\frac{3\\pi}{2}\\right)} + 2\\right)}\\right)\\)\n\\(= \\frac{-1}{(1 + 1)\\left(\\sqrt{3 + 1} + 2\\right)} = -\\frac{1}{8}\\)",
+    "_note": "In the fourth line the book prints the denominator as \\(1-\\sin^2 x\\left(\\sqrt{3-\\sin x}+2\\right)\\) with the \\(1-\\sin^2 x\\) not bracketed; the intended (and next-line) form is \\(\\left(1-\\sin^2 x\\right)\\left(\\sqrt{3-\\sin x}+2\\right)\\). Transcribed as printed."
+  },
+  {
+    "ref": "7.4 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "EASY",
+    "stem": "Evaluate: \\(\\lim_{\\theta \\to 0}\\left[\\frac{\\sin 7\\theta}{\\theta}\\right]\\)",
+    "solution": "\\(\\lim_{\\theta \\to 0}\\left[\\frac{\\sin 7\\theta}{\\theta}\\right]\\)\n\\(= \\lim_{\\theta \\to 0}\\left[\\frac{\\sin 7\\theta}{7\\theta}\\right] \\times 7\\)\n... as \\(\\theta \\to 0\\), \\(7\\theta \\to 0\\)\n\\(= 1 \\times 7\\)  \\(\\left[\\because \\lim_{\\theta \\to 0}\\frac{\\sin p\\theta}{p\\theta} = 1\\right]\\)\n\\(= 7\\)"
+  },
+  {
+    "ref": "7.4 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate: \\(\\lim_{x \\to 0}\\left[\\frac{\\sin 8x}{\\tan 4x}\\right]\\)",
+    "solution": "\\(\\lim_{x \\to 0}\\left[\\frac{\\sin 8x}{\\tan 4x}\\right]\\)\nDivide Numerator and Denominator by \\(x\\)\n\\(= \\lim_{x \\to 0}\\left[\\dfrac{\\dfrac{\\sin 8x}{x}}{\\dfrac{\\tan 4x}{x}}\\right]\\)\n\\(= \\dfrac{\\lim_{x \\to 0}\\left[\\dfrac{\\sin 8x}{x}\\right]}{\\lim_{x \\to 0}\\left[\\dfrac{\\tan 4x}{x}\\right]}\\)\n\\(= \\dfrac{\\lim_{x \\to 0}\\left[\\dfrac{\\sin 8x}{8x} \\times 8\\right]}{\\lim_{x \\to 0}\\left[\\dfrac{\\tan 4x}{4x} \\times 4\\right]}\\)\n\\(= \\frac{1 \\times 8}{1 \\times 4} = 2\\)  (... as \\(x \\to 0\\), \\(8x \\to 0\\), \\(4x \\to 0\\))\n.... \\(\\lim_{\\theta \\to 0}\\left(\\frac{\\sin p\\theta}{p\\theta}\\right) = 1\\), \\(\\lim_{\\theta \\to 0}\\left(\\frac{\\tan p\\theta}{p\\theta}\\right) = 1\\)"
+  },
+  {
+    "ref": "7.4 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "Evaluate: \\(\\lim_{x \\to 0}\\left[\\frac{2\\sin x - \\sin 2x}{x^3}\\right]\\)",
+    "solution": "\\(\\lim_{x \\to 0}\\left[\\frac{2\\sin x - \\sin 2x}{x^3}\\right]\\)\n\\(= \\lim_{x \\to 0}\\left[\\frac{2\\sin x - 2\\sin x \\cdot \\cos x}{x^3}\\right]\\)\n\\(= \\lim_{x \\to 0}\\left[\\frac{2\\sin x(1 - \\cos x)}{x \\cdot x^2}\\right]\\)\n\\(= \\lim_{x \\to 0}\\left[\\frac{2\\sin x}{x}\\right] \\times \\lim_{x \\to 0}\\left[\\frac{1 - \\cos x}{x^2}\\right]\\)\n\\(= 2 \\times \\lim_{x \\to 0}\\left[\\frac{\\sin x}{x}\\right] \\times \\lim_{x \\to 0}\\left[\\frac{1 - \\cos x}{x^2} \\times \\frac{1 + \\cos x}{1 + \\cos x}\\right]\\)\n\\(= 2 \\times 1 \\times \\lim_{x \\to 0}\\left[\\frac{1 - \\cos^2 x}{x^2} \\times \\frac{1}{1 + \\cos x}\\right]\\)\n\\(= 2 \\times \\lim_{x \\to 0}\\left[\\frac{\\sin^2 x}{x^2}\\right] \\times \\lim_{x \\to 0}\\left[\\frac{1}{1 + \\cos x}\\right]\\)\n\\(= 2 \\times \\lim_{x \\to 0}\\left[\\frac{\\sin x}{x}\\right]^2 \\times \\lim_{x \\to 0}\\left[\\frac{1}{1 + \\cos 0}\\right]\\)\n\\(= 2(1)^2 \\times \\left[\\frac{1}{1 + 1}\\right]\\)  \\(\\left[\\because \\lim_{\\theta \\to 0}\\frac{\\sin \\theta}{\\theta} = 1\\right]\\)\n\\(= 2 \\times 1 \\times \\frac{1}{2} = 1\\)"
+  },
+  {
+    "ref": "7.4 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "Evaluate: \\(\\lim_{x \\to 0}\\left[\\frac{\\sin x^2\\left(1 - \\cos x^2\\right)}{x^6}\\right]\\)",
+    "solution": "\\(\\lim_{x \\to 0}\\left[\\frac{\\sin x^2\\left(1 - \\cos x^2\\right)}{x^6}\\right]\\)\n\\(= \\lim_{x \\to 0}\\left[\\frac{\\sin x^2\\left(1 - \\cos x^2\\right)}{x^6} \\times \\frac{1 + \\cos x^2}{1 + \\cos x^2}\\right]\\)\n\\(= \\lim_{x \\to 0}\\left[\\frac{\\sin x^2\\left(1 - \\cos^2 x^2\\right)}{x^6} \\times \\frac{1}{1 + \\cos x^2}\\right]\\)\n\\(= \\lim_{x \\to 0}\\left[\\frac{\\sin x^2 \\cdot \\sin^2 x^2}{x^6} \\times \\frac{1}{1 + \\cos x^2}\\right]\\)\n\\(= \\lim_{x \\to 0}\\left[\\frac{\\sin^3 x^2}{\\left(x^2\\right)^3} \\times \\frac{1}{1 + \\cos x^2}\\right]\\)\n\\(= \\lim_{x^2 \\to 0}\\left[\\frac{\\sin x^2}{x^2}\\right]^3 \\times \\lim_{x \\to 0}\\left(\\frac{1}{1 + \\cos x^2}\\right)\\)\n.....[As \\(x \\to 0\\), \\(x^2 \\to 0\\)]\n\\(= (1)^3\\ \\frac{1}{1 + \\cos 0} = \\frac{1}{1 + 1} = \\frac{1}{2}\\)\n..... \\(\\left[\\lim_{\\theta \\to 0}\\left(\\frac{\\sin \\theta}{\\theta}\\right) = 1,\\ here\\ \\theta = x^2\\right]\\)"
+  },
+  {
+    "ref": "7.4 SolvedEx.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "HARD",
+    "stem": "Evaluate: \\(\\lim_{x \\to 0}\\left(\\frac{\\cos 5x^{\\circ} - \\cos 3x^{\\circ}}{x^2}\\right)\\)",
+    "solution": "\\(\\lim_{x \\to 0}\\left(\\frac{\\cos 5x^{\\circ} - \\cos 3x^{\\circ}}{x^2}\\right)\\)\n\\(= \\lim_{x \\to 0}\\left(\\frac{-2\\sin 4x^{\\circ}\\sin x^{\\circ}}{x^2}\\right)\\)\n\\(= -2\\lim_{x \\to 0}\\left(\\frac{\\sin 4x^{\\circ}}{x} \\times \\frac{\\sin x^{\\circ}}{x}\\right)\\)\n\\(= -2\\lim_{x \\to 0}\\left(\\frac{\\sin 4\\left(\\frac{\\pi x}{180}\\right)}{x} \\times \\frac{\\sin\\left(\\frac{\\pi x}{180}\\right)}{x}\\right)\\)\n\\(= -2\\lim_{x \\to 0}\\left(\\frac{\\sin\\left(\\frac{\\pi x}{45}\\right)}{x} \\times \\frac{\\sin\\left(\\frac{\\pi x}{180}\\right)}{x}\\right)\\)\n\\(= -2\\lim_{x \\to 0}\\left(\\frac{\\sin\\left(\\frac{\\pi x}{45}\\right)}{\\frac{\\pi x}{45}}\\right) \\times \\frac{\\pi}{45} \\times \\lim_{x \\to 0}\\left(\\frac{\\sin\\left(\\frac{\\pi x}{180}\\right)}{\\frac{\\pi x}{180}}\\right) \\times \\frac{\\pi}{180}\\)\n\\(= -2 \\times (1) \\times \\frac{\\pi}{45} \\times (1) \\times \\frac{\\pi}{180}\\) ...... \\(\\left[\\because \\lim_{\\theta \\to 0}\\left(\\frac{\\sin p\\theta}{p\\theta}\\right) = 1\\right]\\)\n\\(= -2 \\times 4 \\times \\frac{\\pi}{180} \\times \\frac{\\pi}{180} = -8\\left(\\frac{\\pi}{180}\\right)^2\\)"
+  },
+  {
+    "ref": "Ex 7.4 I Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "EASY",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.4 I",
+    "stem": "\\(\\lim_{\\theta \\to 0}\\left[\\frac{\\sin(m\\theta)}{\\tan(n\\theta)}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.4 I Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "EASY",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.4 I",
+    "stem": "\\(\\lim_{\\theta \\to 0}\\left[\\frac{1 - \\cos 2\\theta}{\\theta^2}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.4 I Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.4 I",
+    "stem": "\\(\\lim_{x \\to 0}\\left[\\frac{x \\cdot \\tan x}{1 - \\cos x}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.4 I Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.4 I",
+    "stem": "\\(\\lim_{x \\to 0}\\left(\\frac{\\sec x - 1}{x^2}\\right)\\)"
+  },
+  {
+    "ref": "Ex 7.4 II Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the Following limits :",
+    "setLabel": "Ex 7.4 II",
+    "stem": "\\(\\lim_{x \\to 0}\\left[\\frac{1 - \\cos(nx)}{1 - \\cos(mx)}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.4 II Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "HARD",
+    "context": "Evaluate the Following limits :",
+    "setLabel": "Ex 7.4 II",
+    "stem": "\\(\\lim_{x \\to \\frac{\\pi}{6}}\\left[\\frac{2 - \\operatorname{cosec} x}{\\cot^2 x - 3}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.4 II Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the Following limits :",
+    "setLabel": "Ex 7.4 II",
+    "stem": "\\(\\lim_{x \\to \\frac{\\pi}{4}}\\left[\\frac{\\cos x - \\sin x}{\\cos 2x}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.4 III Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "HARD",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.4 III",
+    "stem": "\\(\\lim_{x \\to 0}\\left[\\frac{\\cos(ax) - \\cos(bx)}{\\cos(cx) - 1}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.4 III Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "HARD",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.4 III",
+    "stem": "\\(\\lim_{x \\to \\pi}\\left[\\frac{\\sqrt{1 - \\cos x} - \\sqrt{2}}{\\sin^2 x}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.4 III Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "HARD",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.4 III",
+    "stem": "\\(\\lim_{x \\to \\frac{\\pi}{4}}\\left[\\frac{\\tan^2 x - \\cot^2 x}{\\sec x - \\operatorname{cosec} x}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.4 III Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Limits of Trigonometric Functions",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following limits :",
+    "setLabel": "Ex 7.4 III",
+    "stem": "\\(\\lim_{x \\to \\frac{\\pi}{6}}\\left[\\frac{2\\sin^2 x + \\sin x - 1}{2\\sin^2 x - 3\\sin x + 1}\\right]\\)"
+  },
+  {
+    "ref": "7.5 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Substitution Method",
+    "difficulty": "MODERATE",
+    "stem": "Evaluate: \\(\\lim_{x \\to \\frac{\\pi}{2}}\\left[\\frac{\\cos x}{x - \\frac{\\pi}{2}}\\right]\\)",
+    "solution": "Put \\(x - \\frac{\\pi}{2} = t\\)  \\(\\therefore x = \\frac{\\pi}{2} + t\\)\nAs \\(x \\to \\frac{\\pi}{2}\\); \\(t \\to 0\\).\n\\(\\lim_{x \\to \\frac{\\pi}{2}}\\left[\\frac{\\cos x}{x - \\frac{\\pi}{2}}\\right] = \\lim_{t \\to 0}\\left[\\frac{\\cos\\left(\\frac{\\pi}{2} + t\\right)}{t}\\right]\\)\n\\(= \\lim_{t \\to 0}\\left[\\frac{-\\sin t}{t}\\right]\\)\n\\(= -\\lim_{t \\to 0}\\left[\\frac{\\sin t}{t}\\right]\\)\n\\(= -1\\)  \\(\\left[\\because \\lim_{\\theta \\to 0}\\left(\\frac{\\sin \\theta}{\\theta}\\right) = 1\\right]\\)"
+  },
+  {
+    "ref": "7.5 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Substitution Method",
+    "difficulty": "HARD",
+    "stem": "Evaluate: \\(\\lim_{x \\to a}\\left[\\frac{\\cos x - \\cos a}{x - a}\\right]\\)",
+    "solution": "Put \\(x - a = t\\)  \\(\\therefore x = a + t\\);\nAs \\(x \\to a\\), \\(t \\to 0\\).\n\\(\\lim_{x \\to a}\\left[\\frac{\\cos x - \\cos a}{x - a}\\right] = \\lim_{t \\to 0}\\left[\\frac{\\cos(a + t) - \\cos a}{t}\\right]\\)\n\\(= \\lim_{t \\to 0}\\left[\\frac{-2\\sin\\left(\\frac{2a + t}{2}\\right) \\cdot \\sin\\frac{t}{2}}{t}\\right]\\)\n\\(= 2\\lim_{t \\to 0}\\left[-\\sin\\left(a + \\frac{t}{2}\\right) \\cdot \\frac{\\sin(t/2)}{t}\\right]\\)\n\\(= -2\\lim_{t \\to 0}\\left[\\sin\\left(a + \\frac{t}{2}\\right)\\right]\\lim_{t \\to 0}\\left[\\frac{\\sin(t/2)}{t/2}\\right]\\left(\\frac{1}{2}\\right)\\)\n\\(= -2\\sin(a + 0) \\cdot (1)\\ \\frac{1}{2}\\) .... \\(\\left[\\because \\lim_{\\theta \\to 0}\\left(\\frac{\\sin \\theta}{\\theta}\\right) = 1\\right]\\)\n\\(= -\\sin a\\)"
+  },
+  {
+    "ref": "7.5 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Substitution Method",
+    "difficulty": "HARD",
+    "stem": "Evaluate: \\(\\lim_{x \\to 1}\\left[\\frac{1 + \\cos \\pi x}{(1 - x)^2}\\right]\\)",
+    "solution": "[Textbook misprint: the second line of the chain carries the denominator \\((1-x)^2\\) where it should be \\(t^2\\) — the substitution has already been made on the line above and is used again on the line below.]\n\nPut \\(1 - x = t\\)  \\(\\therefore x = 1 - t\\);\nAs \\(x \\to 1\\), \\(t \\to 0\\).\n\\(\\lim_{x \\to 1}\\left[\\frac{1 + \\cos \\pi x}{(1 - x)^2}\\right] = \\lim_{t \\to 0}\\left[\\frac{1 + \\cos[\\pi(1 - t)]}{t^2}\\right]\\)\n\\(= \\lim_{t \\to 0}\\left[\\frac{1 + \\cos(\\pi - \\pi t)}{(1 - x)^2}\\right]\\)\n\\(= \\lim_{t \\to 0}\\left[\\frac{1 - \\cos \\pi t}{t^2}\\right]\\)\n\\(= \\lim_{t \\to 0}\\left[\\frac{2\\sin^2\\left(\\frac{\\pi t}{2}\\right)}{t^2}\\right]\\)\n\\(= 2\\lim_{t \\to 0}\\left[\\frac{\\sin\\left(\\frac{\\pi t}{2}\\right)}{t}\\right]^2\\)\n\\(= 2\\lim_{t \\to 0}\\left[\\frac{\\sin\\left(\\frac{\\pi t}{2}\\right)}{\\frac{\\pi t}{2}}\\right]^2\\left(\\frac{\\pi}{2}\\right)^2\\)\n\\(= 2(1)\\left(\\frac{\\pi^2}{4}\\right)\\) .... \\(\\left[\\because \\lim_{\\theta \\to 0}\\left(\\frac{\\sin P\\theta}{P\\theta}\\right) = 1\\right]\\)\n\\(= \\frac{\\pi^2}{2}\\)",
+    "_note": "Book misprint in the printed solution: the second line of the chain carries the denominator \\((1-x)^2\\), which should be \\(t^2\\) — the substitution has already been made on the line above and is used again on the line below. Transcribed as printed."
+  },
+  {
+    "ref": "7.5 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Substitution Method",
+    "difficulty": "HARD",
+    "stem": "Evaluate: \\(\\lim_{x \\to \\frac{\\pi}{3}}\\left[\\frac{\\sqrt{3} - \\tan x}{\\pi - 3x}\\right]\\)",
+    "solution": "[Textbook misprint: the first line of the chain prints \\(\\sqrt{3} - \\tan\\) in the numerator with the argument \\(x\\) dropped.]\n\nPut \\(\\frac{\\pi}{3} - x = t\\),  \\(\\therefore x = \\frac{\\pi}{3} - t\\),\nAs \\(x \\to \\frac{\\pi}{3}\\), \\(t \\to 0\\)\n\\(\\lim_{x \\to \\frac{\\pi}{3}}\\left(\\frac{\\sqrt{3} - \\tan x}{\\pi - 3x}\\right) = \\lim_{x \\to \\frac{\\pi}{3}}\\left(\\frac{\\sqrt{3} - \\tan}{3\\left(\\frac{\\pi}{3} - x\\right)}\\right)\\)\n\\(= \\frac{1}{3}\\lim_{t \\to 0}\\left(\\frac{\\sqrt{3} - \\tan\\left(\\frac{\\pi}{3} - t\\right)}{t}\\right)\\)\n\\(= \\frac{1}{3}\\lim_{t \\to 0}\\left(\\frac{\\sqrt{3} - \\frac{\\tan(\\pi/3) - \\tan t}{1 + \\tan(\\pi/3)\\tan t}}{t}\\right)\\)\n\\(= \\frac{1}{3}\\lim_{t \\to 0}\\left(\\frac{\\sqrt{3} - \\frac{\\sqrt{3} - \\tan t}{1 + \\sqrt{3}\\tan t}}{t}\\right)\\)\n\\(= \\frac{1}{3}\\lim_{t \\to 0}\\left(\\frac{\\frac{\\sqrt{3} + 3\\tan t - \\sqrt{3} + \\tan t}{1 + \\sqrt{3}\\tan t}}{t}\\right)\\)\n\\(= \\frac{1}{3}\\lim_{t \\to 0}\\left(\\frac{4\\tan t}{t(1 + \\sqrt{3}\\tan t)}\\right)\\)\n\\(= \\frac{4}{3}\\lim_{t \\to 0}\\left(\\frac{\\tan t}{t}\\right)\\lim_{t \\to 0}\\left(\\frac{1}{1 + \\sqrt{3}\\tan t}\\right)\\)\n\\(= \\frac{4}{3}(1) \\times \\frac{1}{\\left(1 + \\sqrt{3}\\tan 0\\right)}\\) ....... \\(\\left[\\because \\lim_{\\theta \\to 0}\\frac{\\tan \\theta}{\\theta} = 1\\right]\\)\n\\(= \\frac{4}{3}\\)",
+    "_note": "Book misprint in the printed solution: the first line of the chain prints \\(\\sqrt{3}-\\tan\\) in the numerator with the argument \\(x\\) dropped. Transcribed as printed."
+  },
+  {
+    "ref": "Ex 7.5 I Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Substitution Method",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following",
+    "setLabel": "Ex 7.5 I",
+    "stem": "\\(\\lim_{x \\to \\frac{\\pi}{2}}\\left[\\frac{\\operatorname{cosec} x - 1}{\\left(\\frac{\\pi}{2} - x\\right)^2}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.5 I Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Substitution Method",
+    "difficulty": "HARD",
+    "context": "Evaluate the following",
+    "setLabel": "Ex 7.5 I",
+    "stem": "\\(\\lim_{x \\to a}\\frac{\\sin x - \\sin a}{\\sqrt[5]{x} - \\sqrt[5]{a}}\\)"
+  },
+  {
+    "ref": "Ex 7.5 I Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Substitution Method",
+    "difficulty": "HARD",
+    "context": "Evaluate the following",
+    "setLabel": "Ex 7.5 I",
+    "stem": "\\(\\lim_{x \\to \\pi}\\left[\\frac{\\sqrt{5 + \\cos x} - 2}{(\\pi - x)^2}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.5 I Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Substitution Method",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following",
+    "setLabel": "Ex 7.5 I",
+    "stem": "\\(\\lim_{x \\to \\frac{\\pi}{6}}\\left[\\frac{\\cos x - \\sqrt{3}\\sin x}{\\pi - 6x}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.5 I Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Substitution Method",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following",
+    "setLabel": "Ex 7.5 I",
+    "stem": "\\(\\lim_{x \\to 1}\\left[\\frac{1 - x^2}{\\sin \\pi x}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.5 II Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Substitution Method",
+    "difficulty": "MODERATE",
+    "context": "Evaluate the following",
+    "setLabel": "Ex 7.5 II",
+    "stem": "\\(\\lim_{x \\to \\frac{\\pi}{6}}\\left[\\frac{2\\sin x - 1}{\\pi - 6x}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.5 II Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Substitution Method",
+    "difficulty": "HARD",
+    "context": "Evaluate the following",
+    "setLabel": "Ex 7.5 II",
+    "stem": "\\(\\lim_{x \\to \\frac{\\pi}{4}}\\left[\\frac{\\sqrt{2} - \\cos x - \\sin x}{(4x - \\pi)^2}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.5 II Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Substitution Method",
+    "difficulty": "HARD",
+    "context": "Evaluate the following",
+    "setLabel": "Ex 7.5 II",
+    "stem": "\\(\\lim_{x \\to \\frac{\\pi}{6}}\\left[\\frac{2 - \\sqrt{3}\\cos x - \\sin x}{(6x - \\pi)^2}\\right]\\)"
+  },
+  {
+    "ref": "Ex 7.5 II Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Substitution Method",
+    "difficulty": "HARD",
+    "context": "Evaluate the following",
+    "setLabel": "Ex 7.5 II",
+    "stem": "\\(\\lim_{x \\to a}\\left[\\frac{\\sin\\left(\\sqrt{x}\\right) - \\sin\\left(\\sqrt{a}\\right)}{x - a}\\right]\\)",
+    "_note": "Printed at the TOP of the LEFT column of p-18 (printed p.151), overleaf from the EXERCISE 7.5 banner. Belongs to EXERCISE 7.5 part II, not to section 7.6 which begins immediately below it on the same page."
+  },
+  {
+    "ref": "Ex 7.5 II Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Substitution Method",
+    "difficulty": "HARD",
+    "context": "Evaluate the following",
+    "setLabel": "Ex 7.5 II",
+    "stem": "\\(\\lim_{x \\to \\frac{\\pi}{2}}\\left[\\frac{\\cos 3x + 3\\cos x}{(2x - \\pi)^3}\\right]\\)",
+    "_note": "Printed at the TOP of the LEFT column of p-18 (printed p.151), overleaf from the EXERCISE 7.5 banner. Belongs to EXERCISE 7.5 part II; section 7.6 begins immediately below it on the same page."
+  }
+]

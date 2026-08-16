@@ -1,0 +1,82 @@
+[
+  {
+    "id": "6ef290a1-c779-4f4f-952d-b90b50f473db",
+    "ref": "Misc I Q1",
+    "derived_answer": "B",
+    "solution": "Every exponent is even, so write each power in terms of \\(i^{2}=-1\\).\n\\(i^{2n}=(i^{2})^{n}=(-1)^{n}\\), \\(i^{4n}=(i^{2})^{2n}=(-1)^{2n}\\), \\(i^{6n}=(i^{2})^{3n}=(-1)^{3n}\\).\nSince \\(n\\) is odd, \\(n\\) is odd, \\(2n\\) is even and \\(3n\\) is odd. Hence \\(i^{2n}=-1\\), \\(i^{4n}=1\\), \\(i^{6n}=-1\\).\nTherefore \\(1+i^{2n}+i^{4n}+i^{6n}=1+(-1)+1+(-1)=0\\).\nA quick check with \\(n=1\\): \\(1+i^{2}+i^{4}+i^{6}=1-1+1-1=0\\); with \\(n=3\\): \\(1+i^{6}+i^{12}+i^{18}=1-1+1-1=0\\). The answer is purely real, so options A and C are excluded immediately.",
+    "why": "For odd \\(n\\), \\(3n\\) is also odd, so the four terms are \\(1,-1,1,-1\\) and cancel in pairs.",
+    "matches_current": true
+  },
+  {
+    "id": "77439cca-7230-45d1-80c4-66f961025cb4",
+    "ref": "Misc I Q2",
+    "derived_answer": "D",
+    "solution": "Take the lowest power out of each row.\nNumerator \\(=i^{584}\\left(i^{8}+i^{6}+i^{4}+i^{2}+1\\right)=i^{584}(1-1+1-1+1)=i^{584}\\).\nDenominator \\(=i^{574}\\left(i^{8}+i^{6}+i^{4}+i^{2}+1\\right)=i^{574}(1-1+1-1+1)=i^{574}\\).\nThe bracket is \\(1 \\ne 0\\), so the quotient is legitimate and equals\n\\(\\frac{i^{584}}{i^{574}}=i^{584-574}=i^{10}=(i^{4})^{2}\\cdot i^{2}=1 \\times (-1)=-1\\).\nHence the value is \\(-1\\).",
+    "why": "Both rows share the same bracket \\(i^{8}+i^{6}+i^{4}+i^{2}+1=1\\), so the ratio collapses to \\(i^{10}=-1\\).",
+    "matches_current": true
+  },
+  {
+    "id": "e77fab70-11d8-49e5-9479-eef3d2de242a",
+    "ref": "Misc I Q3",
+    "derived_answer": "A",
+    "solution": "The rule \\(\\sqrt{a}\\sqrt{b}=\\sqrt{ab}\\) is valid only when \\(a\\) and \\(b\\) are not both negative, so each radical must first be written in the form \\(i\\sqrt{\\ }\\).\n\\(\\sqrt{-3}=\\sqrt{3}\\,i\\) and \\(\\sqrt{-6}=\\sqrt{6}\\,i\\).\nTherefore \\(\\sqrt{-3}\\ \\sqrt{-6}=\\left(\\sqrt{3}\\,i\\right)\\left(\\sqrt{6}\\,i\\right)=\\sqrt{18}\\,i^{2}=3\\sqrt{2}\\times(-1)=-3\\sqrt{2}\\).\nOption B, \\(3\\sqrt{2}\\), is exactly the trap: it is what one gets by writing \\(\\sqrt{(-3)(-6)}=\\sqrt{18}\\), which is the invalid step this question is testing. The product of two purely imaginary numbers is real, so options C and D are excluded on form alone.",
+    "why": "Converting to \\(i\\) before multiplying gives \\(i^{2}=-1\\), so the product is \\(-3\\sqrt{2}\\), not \\(+3\\sqrt{2}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "b95c2196-2fb1-44b7-857b-0e3be0d1a777",
+    "ref": "Misc I Q4",
+    "derived_answer": "C",
+    "solution": "For a complex cube root of unity, \\(w^{3}=1\\) and \\(1+w+w^{2}=0\\).\nSince \\(99=3 \\times 33\\), \\(w^{99}=(w^{3})^{33}=1\\). Then \\(w^{100}=w^{99}\\cdot w=w\\) and \\(w^{101}=w^{99}\\cdot w^{2}=w^{2}\\).\nHence \\(w^{99}+w^{100}+w^{101}=1+w+w^{2}=0\\).\nEquivalently, factor directly: \\(w^{99}\\left(1+w+w^{2}\\right)=1 \\times 0=0\\).",
+    "why": "\\(99\\) is a multiple of \\(3\\), so the three terms are exactly \\(1, w, w^{2}\\), whose sum is \\(0\\).",
+    "matches_current": true
+  },
+  {
+    "id": "9ef0f700-5ce8-44fc-a2aa-a46676558e61",
+    "ref": "Misc I Q5",
+    "derived_answer": "B",
+    "solution": "Here \\(z=r(\\cos\\theta+i\\sin\\theta)\\) and \\(\\bar{z}=r(\\cos\\theta-i\\sin\\theta)\\), with \\(z\\bar{z}=|z|^{2}=r^{2}\\).\nCombine over a common denominator:\n\\(\\frac{z}{\\bar{z}}+\\frac{\\bar{z}}{z}=\\frac{z^{2}+\\bar{z}^{2}}{z\\bar{z}}=\\frac{z^{2}+\\bar{z}^{2}}{r^{2}}\\).\nBy De Moivre's theorem, \\(z^{2}=r^{2}(\\cos 2\\theta+i\\sin 2\\theta)\\) and \\(\\bar{z}^{2}=r^{2}(\\cos 2\\theta-i\\sin 2\\theta)\\), so \\(z^{2}+\\bar{z}^{2}=2r^{2}\\cos 2\\theta\\).\nTherefore \\(\\frac{z}{\\bar{z}}+\\frac{\\bar{z}}{z}=\\frac{2r^{2}\\cos 2\\theta}{r^{2}}=2\\cos 2\\theta\\).\nNote the expression is of the form \\(u+\\frac{1}{u}\\) with \\(|u|=1\\), which is always real and free of \\(r\\).",
+    "why": "\\(z^{2}+\\bar{z}^{2}=2r^{2}\\cos 2\\theta\\) while \\(z\\bar{z}=r^{2}\\), so \\(r\\) cancels and leaves \\(2\\cos 2\\theta\\).",
+    "matches_current": true
+  },
+  {
+    "id": "59e59d8c-2321-4941-a4d7-0c77f106c854",
+    "ref": "Misc I Q6",
+    "derived_answer": "B",
+    "solution": "From \\(1+w+w^{2}=0\\) we get \\(1+w=-w^{2}\\).\nHence \\((1+w)^{7}=(-w^{2})^{7}=-w^{14}\\).\nSince \\(w^{3}=1\\) and \\(14=3 \\times 4+2\\), \\(w^{14}=w^{2}\\), so \\((1+w)^{7}=-w^{2}\\).\nUsing \\(-w^{2}=1+w\\) again, \\((1+w)^{7}=1+w\\).\nComparing with \\(A+Bw\\) gives \\(A=1\\) and \\(B=1\\).\nCheck numerically with \\(w=-\\frac{1}{2}+\\frac{\\sqrt{3}}{2}i\\): \\(1+w=\\frac{1}{2}+\\frac{\\sqrt{3}}{2}i\\), which has modulus \\(1\\) and argument \\(\\frac{\\pi}{3}\\); raising to the \\(7\\)th power gives argument \\(\\frac{7\\pi}{3}\\equiv\\frac{\\pi}{3}\\), i.e. the same number \\(1+w\\), confirming \\(A=B=1\\).",
+    "why": "\\(1+w=-w^{2}\\) turns the power into \\(-w^{14}=-w^{2}=1+w\\), so \\(A=B=1\\).",
+    "matches_current": true
+  },
+  {
+    "id": "780bebf2-8b6c-45d7-bc63-42d2553b2e08",
+    "ref": "Misc I Q7",
+    "derived_answer": "C",
+    "solution": "For \\(z=1+i\\sqrt{3}\\): \\(|z|=\\sqrt{1^{2}+(\\sqrt{3})^{2}}=\\sqrt{4}=2\\), and since the point \\((1,\\sqrt{3})\\) lies in the first quadrant with \\(\\tan\\alpha=\\sqrt{3}\\), \\(\\arg z=\\frac{\\pi}{3}\\).\nBy De Moivre's theorem, \\(z^{8}=2^{8}\\left(\\cos\\frac{8\\pi}{3}+i\\sin\\frac{8\\pi}{3}\\right)\\), so the modulus is \\(2^{8}=256\\).\nThe raw angle \\(\\frac{8\\pi}{3}\\) exceeds \\(2\\pi\\); reducing it, \\(\\frac{8\\pi}{3}-2\\pi=\\frac{8\\pi-6\\pi}{3}=\\frac{2\\pi}{3}\\), which lies in \\((-\\pi,\\pi]\\) and is therefore the principal argument.\nHence modulus \\(256\\) and argument \\(\\frac{2\\pi}{3}\\).\nTWIN: B=C as ANGLES. \\(\\frac{8\\pi}{3}\\) and \\(\\frac{2\\pi}{3}\\) differ by exactly \\(2\\pi\\), so both name the same direction and both options carry the correct modulus \\(256\\). The twin pair therefore CONTAINS the correct value, making the key ambiguous unless the principal-argument convention is applied. I pick C because \\(\\arg\\) denotes the principal argument, required to lie in \\((-\\pi,\\pi]\\); \\(\\frac{8\\pi}{3}\\) is the unreduced intermediate value from De Moivre and is not a principal argument.",
+    "why": "\\(2^{8}=256\\) and the De Moivre angle \\(\\frac{8\\pi}{3}\\) must be reduced by \\(2\\pi\\) to the principal argument \\(\\frac{2\\pi}{3}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "bdac850b-0a89-4699-be6f-90023864b2a9",
+    "ref": "Misc I Q8",
+    "derived_answer": "A",
+    "solution": "Let \\(z=r(\\cos\\theta+i\\sin\\theta)\\), so that \\(\\arg(z)=\\theta\\).\nThen \\(\\overline{z}=r(\\cos\\theta-i\\sin\\theta)=r\\left(\\cos(-\\theta)+i\\sin(-\\theta)\\right)\\), using \\(\\cos(-\\theta)=\\cos\\theta\\) and \\(\\sin(-\\theta)=-\\sin\\theta\\).\nThis is already in polar form with the same modulus \\(r\\), so \\(\\arg(\\overline{z})=-\\theta\\).\nGeometrically, conjugation reflects the point in the X-axis, which reverses the sign of the angle measured from the positive X-axis.\nOption C, \\(\\pi-\\theta\\), is the argument of \\(-\\overline{z}\\) (reflection in the Y-axis), and D, \\(\\pi+\\theta\\), is the argument of \\(-z\\).",
+    "why": "Conjugation reflects the point in the X-axis, so the argument changes sign.",
+    "matches_current": true
+  },
+  {
+    "id": "cb682aee-9361-454f-8258-4252ca959878",
+    "ref": "Misc I Q9",
+    "derived_answer": "D",
+    "solution": "Write \\(z=-1+\\sqrt{3}\\,i\\), so the point is \\((-1,\\sqrt{3})\\) with \\(x=-1<0\\) and \\(y=\\sqrt{3}>0\\); it lies in the SECOND quadrant.\nModulus: \\(r=\\sqrt{(-1)^{2}+(\\sqrt{3})^{2}}=\\sqrt{4}=2\\).\nReference angle: \\(\\tan\\alpha=\\left|\\frac{y}{x}\\right|=\\sqrt{3}\\), so \\(\\alpha=\\frac{\\pi}{3}\\).\nIn the second quadrant the argument is \\(\\theta=\\pi-\\alpha=\\pi-\\frac{\\pi}{3}=\\frac{2\\pi}{3}\\).\nVerification: \\(2\\left(\\cos\\frac{2\\pi}{3}+i\\sin\\frac{2\\pi}{3}\\right)=2\\left(-\\frac{1}{2}+\\frac{\\sqrt{3}}{2}i\\right)=-1+\\sqrt{3}\\,i\\), as required.\nOptions B and C give first- and fourth-quadrant angles, and A, \\(-\\frac{2\\pi}{3}\\), is the third-quadrant point \\(-1-\\sqrt{3}\\,i\\); all give the wrong sign on \\(x\\) or \\(y\\).",
+    "why": "The point \\((-1,\\sqrt{3})\\) is in the second quadrant, so \\(\\theta=\\pi-\\frac{\\pi}{3}=\\frac{2\\pi}{3}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "9a3eab34-c8dd-435d-9743-61107d2908ae",
+    "ref": "Misc I Q10",
+    "derived_answer": "C",
+    "solution": "Factor \\(z\\) out of the expression: \\(z-zi=z(1-i)\\).\nTaking modulus and using \\(|z_{1}z_{2}|=|z_{1}||z_{2}|\\),\n\\(|z-zi|=|z|\\,|1-i|=|z|\\sqrt{1^{2}+(-1)^{2}}=\\sqrt{2}\\,|z|\\).\nThe condition \\(|z-zi|=1\\) therefore gives \\(\\sqrt{2}\\,|z|=1\\), i.e. \\(|z|=\\frac{1}{\\sqrt{2}}\\).\nWith \\(z=x+iy\\) this is \\(\\sqrt{x^{2}+y^{2}}=\\frac{1}{\\sqrt{2}}\\), i.e. \\(x^{2}+y^{2}=\\frac{1}{2}\\), which is the equation of a circle centred at the origin with radius \\(\\frac{1}{\\sqrt{2}}\\).\nThis is not a line, so A and B are excluded, and it is certainly not a rectangle.",
+    "why": "\\(|z-zi|=|z||1-i|=\\sqrt{2}|z|\\), so the condition reduces to \\(x^{2}+y^{2}=\\frac{1}{2}\\), a circle.",
+    "matches_current": true
+  }
+]

@@ -1,0 +1,991 @@
+[
+  {
+    "ref": "8.1 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "EASY",
+    "stem": "Discuss the continuity of the function \\(f(x) = |x - 3|\\) at \\(x = 3\\).",
+    "solution": "By definition of a modulus function, the given function can be rewritten as\n\\(f(x) = -(x - 3)\\) if \\(x < 3\\)\n\\(f(x) = x - 3\\) if \\(x \\ge 3\\)\nNow, for \\(x = 3\\), \\(f(3) = 3 - 3 = 0\\).\n\\(\\lim_{x \\to 3^-} f(x) = -(3 - 3) = 0\\) and\n\\(\\lim_{x \\to 3^+} f(x) = 3 - 3 = 0\\)\nso, \\(\\lim_{x \\to 3^-} f(x) = \\lim_{x \\to 3^+} f(x) = 0 \\Rightarrow \\lim_{x \\to 3} f(x) = 0\\)\nand \\(\\lim_{x \\to 3} f(x) = f(3) = 0\\)\nTherefore the function \\(f(x)\\) is continuous at \\(x = 3\\)."
+  },
+  {
+    "ref": "8.1 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "MODERATE",
+    "stem": "Determine whether the function \\(f\\) is continuous on the set of real numbers where\n\\(f(x) = 3x + 1\\), for \\(x < 2\\)\n\\(= 7\\), for \\(2 \\le x < 4\\)\n\\(= x^2 - 8\\) for \\(x \\ge 4\\).\nIf it is discontinuous, state the type of discontinuity.",
+    "solution": "The function is defined in three parts, by polynomial functions, and all polynomial functions are continuous on their respective domains. Any discontinuity, if at all it exists, would be at the points where the definition changes. That is at \\(x = 2\\) and \\(x = 4\\).\nLet us check at \\(x = 2\\).\n\\(f(2) = 7\\) (Given)\n\\(\\lim_{x \\to 2^-} f(x) = \\lim_{x \\to 2^-} (3x + 1) = 3(2) + 1 = 7\\).\nand \\(\\lim_{x \\to 2^+} f(x) = 7\\),\nSo \\(\\lim_{x \\to 2^-} f(x) = \\lim_{x \\to 2^+} f(x) = 7 \\Rightarrow \\lim_{x \\to 2} f(x) = 7\\)\nAlso, \\(\\lim_{x \\to 2} f(x) = f(2) = 7\\)\n\\(\\therefore f(x)\\) is continuous at \\(x = 2\\).\nLet us check the continuity at \\(x = 4\\).\n\\(f(4) = (4^2 - 8) = 8\\)\n\\(\\lim_{x \\to 4^-} f(x) = \\lim_{x \\to 4} (7) = 7\\) and\n\\(\\lim_{x \\to 4^+} f(x) = \\lim_{x \\to 4} (x^2 - 8) = 4^2 - 8 = 8\\)\n\\(\\lim_{x \\to 4^-} f(x) \\ne \\lim_{x \\to 4^+} f(x)\\)\nso \\(\\lim_{x \\to 4} f(x)\\) does not exist.\nSince one of the three conditions does not hold at \\(x = 4\\), the function. Hence \\(f(x)\\) is discontinuous at \\(x = 4\\). Therefore the function \\(f(x)\\) is continuous on it's domain , except at \\(x = 4\\). There exists a jump discontinuity at \\(x = 4\\).\n\\(\\therefore f\\) is discontinuous at \\(x = 4\\).",
+    "_note": "Two misprints in the printed solution, transcribed as printed. (a) The sentence 'Since one of the three conditions does not hold at x = 4, the function.' breaks off unfinished. (b) 'continuous on it's domain , except at x = 4' has a blank gap before the comma where a symbol (presumably the domain R) has dropped out of the typesetting."
+  },
+  {
+    "ref": "8.1 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "MODERATE",
+    "stem": "Test whether the function \\(f(x)\\) is continuous at \\(x = -4\\), where\n\\(f(x) = \\frac{x^2 + 16x + 48}{x + 4}\\), for \\(x \\ne -4\\)\n\\(= 8\\), for \\(x = -4\\).",
+    "solution": "\\(f(-4) = 8\\) (defined)\n\\(\\lim_{x \\to -4} f(x) = \\lim_{x \\to -4} \\left( \\frac{x^2 + 16x + 48}{x + 4} \\right)\\)\n\\(= \\lim_{x \\to -4} \\left( \\frac{(x + 4)(x + 12)}{x + 4} \\right)\\)\n\\(= \\lim_{x \\to -4} (x + 12)\\) ....... \\([\\because x + 4 \\ne 0]\\)\n\\(= -4 + 12 = 8\\)\n\\(\\therefore \\lim_{x \\to -4} f(x) = f(-4) = 8\\)\n\\(\\therefore\\) by definition, the function \\(f(x)\\) is continuous at \\(x = -4\\)."
+  },
+  {
+    "ref": "8.1 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity Over an Interval",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of \\(f(x) = \\sqrt{9 - a^2}\\), on the interval \\([-3, 3]\\).",
+    "solution": "The domain of \\(f\\) is \\([-3, 3]\\).\n[Note, \\(f(x)\\) is defined if \\(9 - x^2 \\ge 0\\)]\nLet \\(x = a\\) be any point in the interval \\((-3, 3)\\) that is \\(a \\in (-3, 3)\\).\n\\(\\lim_{x \\to a} f(x) = \\lim_{x \\to a} \\sqrt{9 - x^2} = \\sqrt{9 - a^2} = f(a)\\)\n\\(\\therefore\\) for \\(a = 3\\), \\(f(3) = 0\\) and for \\(a = -3\\), \\(f(-3) = 0\\)\nNow, \\(\\lim_{x \\to 3^-} f(x) = f(3) = 0\\)\nand \\(\\lim_{x \\to -3^+} f(x) = f(-3) = 0\\)\nThus \\(f(x)\\) is continuous at every point on \\((-3, 3)\\) and also continuous to the right at \\(x = -3\\) and to the left at \\(x = 3\\).\nHence, \\(f(x)\\) is continuous on \\([-3, 3]\\).",
+    "_note": "The printed stem writes the radicand in \\(a\\) — \\(f(x) = \\sqrt{9 - a^2}\\) — while the function is a function of \\(x\\). Verified on the page image at high zoom: the superscripted letter really is 'a', not 'x'. The book's own bracketed note and the first line of its solution both use \\(9 - x^2\\), so the intended stem is \\(f(x) = \\sqrt{9 - x^2}\\). Transcribed as printed."
+  },
+  {
+    "ref": "8.1 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity from the Left and from the Right",
+    "difficulty": "MODERATE",
+    "stem": "Show that the function \\(f(x) = \\lfloor x \\rfloor\\) is not continuous at \\(x = 0, 1\\) in the interval \\([-1, 2)\\).",
+    "solution": "\\(f(x) = \\lfloor x \\rfloor\\) for \\(x \\in [-1, 3)\\)\nthat is \\(f(x) = -1\\) for \\(x \\in [-1, 0)\\)\n\\(f(x) = 0\\) for \\(x \\in [0, 1)\\)\n\\(f(x) = 1\\) for \\(x \\in [1, 2)\\)\nTest of continuity of \\(f\\) at \\(x = 0\\).\nFor \\(x = 0\\), \\(f(0) = 0\\)\n\\(\\lim_{x \\to 0^-} f(x) = \\lim_{x \\to 0^-} \\lfloor x \\rfloor = \\lim_{x \\to 0^-} (-1) = -1\\) and\n\\(\\lim_{x \\to 0^+} f(x) = \\lim_{x \\to 0^+} \\lfloor x \\rfloor = \\lim_{x \\to 0^+} (0) = 0\\)\n\\(\\lim_{x \\to 0^-} f(x) \\ne \\lim_{x \\to 0^+} f(x)\\)\nTherefore \\(f(x)\\) is discontinuous at \\(x = 0\\).\nTest of continuity of \\(f\\) at \\(x = 1\\).\nFor \\(x = 1\\), \\(f(1) = 1\\)\n\\(\\lim_{x \\to 1^-} f(x) = \\lim_{x \\to 1^-} \\lfloor x \\rfloor = \\lim_{x \\to 1^-} (0) = 0\\) and\n\\(\\lim_{x \\to 1^+} f(x) = \\lim_{x \\to 1^+} \\lfloor x \\rfloor = \\lim_{x \\to 1^+} (1) = 1\\)\n\\(\\lim_{x \\to 1^-} f(x) \\ne \\lim_{x \\to 1^+} f(x)\\)\nTherefore \\(f(x)\\) is discontinuous at \\(x = 1\\).\nHence the function \\(f(x) = \\lfloor x \\rfloor\\) is not continuous at \\(x = 0, 1\\) in the interval \\([-1, 2)\\).",
+    "_note": "Misprint in the printed solution, transcribed as printed: its opening line gives \\(x \\in [-1, 3)\\) where the stem, the three cases listed immediately below it, and the solution's own closing sentence all give \\([-1, 2)\\). Verified at high zoom — the digit is a 3."
+  },
+  {
+    "ref": "8.1 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "stem": "Discuss the continuity of the following function at \\(x = 0\\), where\n\\(f(x) = x^2 \\sin\\left(\\frac{1}{x}\\right)\\), for \\(x \\ne 0\\)\n\\(= 0\\), for \\(x = 0\\).",
+    "solution": "The function \\(f(x)\\) is defined for all \\(x \\in R\\).\nLet's check the continuity of \\(f(x)\\) at \\(x = 0\\).\nGiven, for \\(x = 0\\), \\(f(0) = 0\\).\nwe know that, \\(-1 \\le \\sin\\left(\\frac{1}{x}\\right) \\le 1\\) for any \\(x \\ne 0\\)\nMultiplying throughout by \\(x^2\\) we get\n\\(-x^2 \\le x^2 \\sin\\left(\\frac{1}{x}\\right) \\le x^2\\)\nTaking limit as \\(x \\to 0\\) throughout we get,\n\\(\\lim_{x \\to 0} (-x^2) \\le \\lim_{x \\to 0} \\left[ x^2 \\sin\\left(\\frac{1}{x}\\right) \\right] \\le \\lim_{x \\to 0} (x^2)\\)\n\\(0 \\le \\lim_{x \\to 0} \\left[ x^2 \\sin\\left(\\frac{1}{x}\\right) \\right] \\le 0\\)\n\\(\\therefore\\) by squeeze theorem we get,\n\\(\\lim_{x \\to 0} \\left[ x^2 \\sin\\left(\\frac{1}{x}\\right) \\right] = 0\\)\n\\(\\lim_{x \\to 0} f(x) = \\lim_{x \\to 0} \\left[ x^2 \\sin\\left(\\frac{1}{x}\\right) \\right] = 0\\)\n\\(\\lim_{x \\to 0} f(x) = f(0) = 0\\)\n\\(\\therefore f(x)\\) is continuous at \\(x = 0\\)."
+  },
+  {
+    "ref": "8.1 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "stem": "Find \\(k\\) if \\(f(x)\\) is continuous at \\(x = 0\\), where\n\\(f(x) = \\frac{x e^x + \\tan x}{\\sin 3x}\\), for \\(x \\ne 0\\)\n\\(= k\\), for \\(x = 0\\).",
+    "solution": "Given that \\(f(x)\\) is continuous at \\(x = 0\\),\n\\(\\therefore f(0) = \\lim_{x \\to 0} f(x)\\)\n\\(k = \\lim_{x \\to 0} \\left( \\frac{x e^x + \\tan x}{\\sin 3x} \\right)\\)\n\\(= \\lim_{x \\to 0} \\left( \\frac{e^x + \\frac{\\tan x}{x}}{\\frac{\\sin 3x}{x}} \\right)\\)\n\\(= \\frac{\\lim_{x \\to 0} (e^x) + \\lim_{x \\to 0} \\left( \\frac{\\tan x}{x} \\right)}{\\lim_{x \\to 0} \\left( \\frac{\\sin 3x}{3x} \\right) \\times 3}\\)\n\\(= \\frac{1 + 1}{1} \\times \\frac{1}{3} = \\frac{2}{3}\\) as \\(x \\to 0\\), \\(3x \\to 0\\)\n\\(\\left[ \\text{since } \\lim_{\\theta \\to 0} \\left( \\frac{\\sin \\theta}{\\theta} \\right) = 1 = \\lim_{\\theta \\to 0} \\left( \\frac{\\tan \\theta}{\\theta} \\right) \\right]\\)\n\\(\\therefore k = \\frac{2}{3}\\)"
+  },
+  {
+    "ref": "8.1 SolvedEx.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "stem": "If \\(f\\) is continuous at \\(x = 1\\), where\n\\(f(x) = \\frac{\\sin(\\pi x)}{x - 1} + a\\), for \\(x < 1\\)\n\\(= 2\\pi\\), for \\(x = 1\\)\n\\(= \\frac{1 + \\cos(\\pi x)}{\\pi(1 - x)^2} + b\\), for \\(x > 1\\),\nthen find the values of \\(a\\) and \\(b\\).",
+    "solution": "Given that \\(f(x)\\) is continuous at \\(x = 1\\)\n\\(\\therefore \\lim_{x \\to 1^-} f(x) = \\lim_{x \\to 1^+} f(x) = f(1)\\) ............ (1)\nNow, \\(\\lim_{x \\to 1^-} f(x) = f(1)\\)\n\\(\\lim_{x \\to 1^-} \\left( \\frac{\\sin(\\pi x)}{x - 1} + a \\right) = 2\\pi\\)\nPut \\(x - 1 = t\\), \\(x = 1 + t\\) as \\(x \\to 1\\), \\(t \\to 0\\)\n\\(\\lim_{t \\to 0} \\left( \\frac{\\sin \\pi(1 + t)}{t} + a \\right) = 2\\pi\\)\n\\(\\lim_{t \\to 0} \\left( \\frac{\\sin(\\pi + \\pi t)}{t} + a \\right) = 2\\pi\\)\n\\(\\lim_{t \\to 0} \\left( \\frac{-\\sin \\pi t}{t} + a \\right) = 2\\pi\\)\n\\(-\\lim_{t \\to 0} \\left( \\frac{\\sin \\pi t}{\\pi t} \\right) \\times \\pi + \\lim_{t \\to 0} (a) = 2\\pi\\)\n\\(-(1) \\pi + a = 2\\pi \\Rightarrow a = 3\\pi\\)\n\\(\\left[ \\lim_{\\theta \\to 0} \\left( \\frac{\\sin \\theta}{\\theta} \\right) = 1 \\right]\\)\nFrom (1), \\(\\lim_{x \\to 1^+} f(x) = f(1)\\)\n\\(\\lim_{x \\to 1^+} \\left( \\frac{1 + \\cos(\\pi x)}{\\pi(1 - x)^2} + b \\right) = 2\\pi\\)\nPut \\(1 - x = \\theta \\therefore x = 1 - \\theta\\), as \\(x \\to 1\\), \\(\\theta \\to 0\\)\n\\(\\therefore \\lim_{\\theta \\to 0} \\left( \\frac{1 + \\cos(\\pi(1 - \\theta))}{\\pi \\theta^2} + b \\right) = 2\\pi\\)\n\\(\\therefore \\lim_{\\theta \\to 0} \\left( \\frac{1 + \\cos(\\pi - \\pi\\theta)}{\\pi \\theta^2} + b \\right) = 2\\pi\\)\n\\(\\therefore \\lim_{\\theta \\to 0} \\left( \\frac{1 - \\cos \\pi\\theta}{\\pi \\theta^2} + b \\right) = 2\\pi\\)\n\\(\\therefore \\lim_{\\theta \\to 0} \\left( \\frac{2 \\sin^2\\left(\\frac{\\pi\\theta}{2}\\right)}{\\pi \\theta^2} + b \\right) = 2\\pi\\)\n\\(\\frac{2}{\\pi} \\lim_{\\theta \\to 0} \\left[ \\frac{\\sin\\left(\\frac{\\pi\\theta}{2}\\right)}{\\frac{\\pi\\theta}{2}} \\right]^2 \\left( \\frac{\\pi}{2} \\right)^2 + \\lim_{\\theta \\to 0} (b) = 2\\pi\\)\n\\(\\frac{2}{\\pi} (1) \\times \\frac{\\pi^2}{4} + b = 2\\pi\\) \\(\\left[ \\lim_{\\theta \\to 0} \\left( \\frac{\\sin \\theta}{\\theta} \\right) = 1 \\right]\\)\n\\(\\therefore \\frac{\\pi}{2} + b = 2\\pi \\therefore b = \\frac{3\\pi}{2}\\)\n\\(\\therefore a = 3\\pi\\), \\(b = \\frac{3\\pi}{2}\\)"
+  },
+  {
+    "ref": "8.1 SolvedEx.9(1)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "MODERATE",
+    "context": "Identify discontinuities for the following functions as either a jump or a removable discontinuity on R.",
+    "setLabel": "8.1 SolvedEx.9",
+    "stem": "\\(f(x) = \\frac{x^2 - 3x - 18}{x - 6}\\)",
+    "solution": "\\(f(x) = \\frac{x^2 - 3x - 18}{x - 6}\\)\nHere \\(f(x)\\) is a rational function, which is continuous for all real values of \\(x\\), except for \\(x = 6\\). Therefore \\(f(6)\\) is not defined.\nNow, \\(\\lim_{x \\to 6} f(x) = \\lim_{x \\to 6} \\left( \\frac{x^2 - 3x - 18}{x - 6} \\right)\\)\n\\(= \\lim_{x \\to 6} \\left( \\frac{(x - 6)(x + 3)}{x - 6} \\right)\\)\n\\(= \\lim_{x \\to 6} (x + 3)\\) \\([\\because (x - 6) \\ne 0]\\)\n\\(\\therefore \\lim_{x \\to 6} f(x) = 9\\)\nHere \\(f(6)\\) is not defined but \\(\\lim_{x \\to 6} f(x)\\) exists.\nHence \\(f(x)\\) has a removable discontinuity."
+  },
+  {
+    "ref": "8.1 SolvedEx.9(2)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "MODERATE",
+    "context": "Identify discontinuities for the following functions as either a jump or a removable discontinuity on R.",
+    "setLabel": "8.1 SolvedEx.9",
+    "stem": "\\(g(x) = 3x + 1\\), for \\(x < 3\\)\n\\(= 2 - 3x\\), for \\(x \\ge 3\\)",
+    "solution": "\\(g(x) = 3x + 1\\), for \\(x < 3\\)\n\\(= 2 - 3x\\), for \\(x \\ge 3\\)\nThis function is defined by different polynomials on two intervals. So they are continuous on the open intervals \\((-\\infty, 3)\\) and \\((3, \\infty)\\).\nWe examine continuity at \\(x = 3\\).\nFor \\(x = 3\\), \\(g(3) = 2 - 3(3) = -7\\)\n\\(\\lim_{x \\to 3^-} g(x) = \\lim_{x \\to 3^-} (3x + 1) = 10\\) and\n\\(\\lim_{x \\to 3^+} g(x) = \\lim_{x \\to 3^+} (2 - 3x) = -7\\)\n\\(\\lim_{x \\to 3^-} g(x) \\ne \\lim_{x \\to 3^+} g(x) \\therefore \\lim_{x \\to 3} g(x)\\) does not exist.\nHence \\(g\\) is not continuous at \\(x = 3\\).\nThe function \\(g(x)\\) has a jump discontinuity at \\(x = 3\\)."
+  },
+  {
+    "ref": "8.1 SolvedEx.9(3)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "MODERATE",
+    "context": "Identify discontinuities for the following functions as either a jump or a removable discontinuity on R.",
+    "setLabel": "8.1 SolvedEx.9",
+    "stem": "\\(h(x) = 13 - x^2\\), for \\(x < 5\\)\n\\(= 13 - 5x\\), for \\(x > 5\\)",
+    "solution": "\\(h(x) = 13 - x^2\\), for \\(x < 5\\),\n\\(= 13 - 5x\\), for \\(x > 5\\),\nbut \\(h(5)\\) is not defined.\n\\(h(x)\\) is continuous at any \\(x < 5\\) and \\(x > 5\\)\n\\(\\lim_{x \\to 5^-} h(x) = \\lim_{x \\to 5^-} (13 - x^2) = 13 - 25 = -12\\)\nand \\(\\lim_{x \\to 5^+} h(x) = \\lim_{x \\to 5^+} (13 - 5x) = 13 - 25 = -12\\)\nSo, \\(\\lim_{x \\to 5^-} h(x) = \\lim_{x \\to 5^+} h(x) \\therefore \\lim_{x \\to 5} h(x) = -12\\)\nBut for \\(x = 5\\), \\(f(x)\\) is not defined.\nSo the function \\(h(x)\\) has a removable discontinuity.",
+    "_note": "Misprint in the printed solution, transcribed as printed: the penultimate line reads 'But for x = 5, f(x) is not defined' where the function under discussion throughout this part is h(x). This part's solution straddles the page break — the stem and parts (1),(2) plus the opening of (3) are on p-08, and the tail transcribed here runs at the top of the left column of p-09."
+  },
+  {
+    "ref": "8.1 SolvedEx.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "HARD",
+    "stem": "Show that the function\n\\(f(x) = \\dfrac{5^{\\cos x} - e^{\\left(\\frac{\\pi}{2} - x\\right)}}{\\cot x}\\), for \\(x \\ne \\dfrac{\\pi}{2}\\)\n\\(= \\log 5 - e\\), for \\(x = \\dfrac{\\pi}{2}\\)\nhas a removable discontinuity at \\(x = \\dfrac{\\pi}{2}\\). Redefine the function so that it becomes continuous at \\(x = \\dfrac{\\pi}{2}\\).",
+    "solution": "\\(f(\\pi/2) = \\log 5 - e\\)\nNow, \\(\\lim_{x \\to \\frac{\\pi}{2}} f(x) = \\lim_{x \\to \\frac{\\pi}{2}} \\left( \\dfrac{5^{\\cos x} - e^{\\left(\\frac{\\pi}{2} - x\\right)}}{\\cot x} \\right)\\)\nLet \\(\\dfrac{\\pi}{2} - x = t\\), \\(x = \\dfrac{\\pi}{2} - t\\) as \\(x \\to \\dfrac{\\pi}{2}\\), \\(t \\to 0\\)\n\\(\\lim_{x \\to \\frac{\\pi}{2}} f(x) = \\lim_{t \\to 0} \\left( \\dfrac{5^{\\cos\\left(\\frac{\\pi}{2} - t\\right)} - e^{t}}{\\cot\\left(\\frac{\\pi}{2} - t\\right)} \\right)\\)\n\\(= \\lim_{t \\to 0} \\left( \\dfrac{5^{\\sin t} - e^{t}}{\\tan t} \\right)\\)\n\\(= \\lim_{t \\to 0} \\left( \\dfrac{5^{\\sin t} - 1 - e^{t} + 1}{\\tan t} \\right)\\)\n\\(= \\lim_{t \\to 0} \\left( \\dfrac{(5^{\\sin t} - 1) - (e^{t} - 1)}{\\tan t} \\right)\\)\n\\(= \\lim_{t \\to 0} \\left( \\dfrac{\\dfrac{5^{\\sin t} - 1}{t} - \\dfrac{e^{t} - 1}{t}}{\\dfrac{\\tan t}{t}} \\right)\\)   [As \\(t \\to 0\\), \\(t \\ne 0\\)]\n\\(= \\lim_{t \\to 0} \\left( \\dfrac{\\dfrac{\\sin t}{t} \\times \\dfrac{5^{\\sin t} - 1}{\\sin t} - \\dfrac{e^{t} - 1}{t}}{\\dfrac{\\tan t}{t}} \\right)\\)   [\\(\\sin t \\ne 0\\)]\n\\(= \\dfrac{(1).(\\log 5) - 1}{1}\\)\n\\(\\left[ \\lim_{\\theta \\to 0} \\left( \\dfrac{\\sin \\theta}{\\theta} \\right) = 1 = \\lim_{\\theta \\to 0} \\left( \\dfrac{\\tan \\theta}{\\theta} \\right),\\ \\lim_{x \\to 0} \\left( \\dfrac{e^{x} - 1}{x} \\right) = 1,\\ \\lim_{x \\to 0} \\left( \\dfrac{a^{x} - 1}{x} \\right) = \\log a \\right]\\)\n\\(\\lim_{x \\to \\frac{\\pi}{2}} f(x) = \\log 5 - 1\\)\n\\(f(\\pi/2)\\) is defined and \\(\\lim_{x \\to \\frac{\\pi}{2}} f(x)\\) exists\nBut \\(\\lim_{x \\to \\frac{\\pi}{2}} f(x) \\ne f\\left(\\dfrac{\\pi}{2}\\right)\\)\n\\(\\therefore\\) the function \\(f(x)\\) has removable discontinuity. This discontinuity can be removed by redefining \\(f(\\pi/2) = \\log 5 - 1\\).\nSo the function can be redefined as follows\n\\(f(x) = \\left( \\dfrac{5^{\\cos x} - e^{\\left(\\frac{\\pi}{2} - x\\right)}}{\\cot x} \\right)\\), for \\(x \\ne \\dfrac{\\pi}{2}\\)\n\\(= \\log 5 - 1\\), for \\(x = \\dfrac{\\pi}{2}\\)"
+  },
+  {
+    "ref": "8.1 SolvedEx.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "MODERATE",
+    "stem": "If \\(f(x) = \\left( \\dfrac{3x + 2}{2 - 5x} \\right)^{\\frac{1}{x}}\\), for \\(x \\ne 0\\), is continuous at \\(x = 0\\) then find \\(f(0)\\).",
+    "solution": "Given that \\(f(x)\\) is continuous at \\(x = 0\\)\n\\(\\therefore f(0) = \\lim_{x \\to 0} \\left( \\dfrac{3x + 2}{2 - 5x} \\right)^{\\frac{1}{x}}\\)\n\\(= \\lim_{x \\to 0} \\left( \\dfrac{2\\left(1 + \\dfrac{3x}{2}\\right)}{2\\left(1 - \\dfrac{5x}{2}\\right)} \\right)^{\\frac{1}{x}}\\)\n\\(= \\lim_{x \\to 0} \\left( \\dfrac{\\left(1 + \\dfrac{3x}{2}\\right)^{\\frac{1}{x}}}{\\left(1 - \\dfrac{5x}{2}\\right)^{\\frac{1}{x}}} \\right)\\)\n\\(= \\dfrac{\\left[ \\lim_{x \\to 0} \\left(1 + \\dfrac{3x}{2}\\right)^{\\frac{2}{3x}} \\right]^{\\frac{3}{2}}}{\\left[ \\lim_{x \\to 0} \\left(1 - \\dfrac{5x}{2}\\right)^{\\frac{-2}{5x}} \\right]^{\\frac{-5}{2}}}\\)\n\\(= \\dfrac{e^{\\frac{3}{2}}}{e^{\\frac{-5}{2}}}\\)   \\(\\left[ \\lim_{x \\to 0} (1 + kx)^{\\frac{1}{kx}} = e \\right]\\)\n\\(f(0) = e^{4}\\)"
+  },
+  {
+    "ref": "8.1 SolvedEx.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "stem": "If \\(f(x)\\) is defined on \\(R\\), discuss the continuity of \\(f\\) at \\(x = \\dfrac{\\pi}{2}\\), where\n\\(f(x) = \\dfrac{5^{\\cos x} + 5^{-\\cos x} - 2}{(3\\cot x).\\log\\left(\\dfrac{2 + \\pi - 2x}{2}\\right)}\\), for \\(x \\ne \\dfrac{\\pi}{2}\\)\n\\(= \\dfrac{2\\log 5}{3}\\), for \\(x = \\dfrac{\\pi}{2}\\).",
+    "solution": "Given that, for \\(x = \\dfrac{\\pi}{2}\\), \\(f\\left(\\dfrac{\\pi}{2}\\right) = \\dfrac{2\\log 5}{3}\\),\n\\(\\lim_{x \\to \\frac{\\pi}{2}} f(x) = \\lim_{x \\to \\frac{\\pi}{2}} \\left[ \\dfrac{5^{\\cos x} + 5^{-\\cos x} - 2}{3(\\cot x)\\log\\left(\\dfrac{2 + \\pi - 2x}{2}\\right)} \\right]\\)\n\\(= \\lim_{x \\to \\frac{\\pi}{2}} \\left[ \\dfrac{5^{\\cos x} + 5^{-\\cos x} - 2}{3(\\cot x)\\log\\left(1 + \\dfrac{\\pi - 2x}{2}\\right)} \\right]\\)\nLet \\(\\dfrac{\\pi - 2x}{2} = t \\Rightarrow x = \\dfrac{\\pi}{2} - t\\) as \\(x \\to \\dfrac{\\pi}{2}\\), \\(t \\to 0\\)\n\\(\\therefore \\lim_{x \\to \\frac{\\pi}{2}} f(x)\\)\n\\(= \\lim_{t \\to 0} \\left( \\dfrac{5^{\\cos\\left(\\frac{\\pi}{2} - t\\right)} + 5^{-\\cos\\left(\\frac{\\pi}{2} - t\\right)} - 2}{3\\cot\\left(\\dfrac{\\pi}{2} - t\\right).\\log(1 + t)} \\right)\\)\n\\(= \\lim_{t \\to 0} \\left( \\dfrac{5^{\\sin t} + 5^{-\\sin t} - 2}{3(\\tan t).\\log(1 + t)} \\right)\\)\n\\(= \\lim_{t \\to 0} \\left( \\dfrac{5^{\\sin t}\\left(5^{\\sin t} + 5^{-\\sin t} - 2\\right)}{3(\\tan t)\\log(1 + t).5^{\\sin t}} \\right)\\) .........[Multiply and divide by \\(5^{\\sin t}\\)]\n\\(= \\lim_{t \\to 0} \\left( \\dfrac{(5^{\\sin t})^{2} + 1 - 2 \\times 5^{\\sin t}}{3(\\tan t)\\log(1 + t)(5^{\\sin t})} \\right)\\)\n\\(= \\lim_{t \\to 0} \\left( \\dfrac{(5^{\\sin t} - 1)^{2}}{3(\\tan t).\\log(1 + t).(5^{\\sin t})} \\right)\\)\n\\(= \\lim_{t \\to 0} \\left[ \\dfrac{\\dfrac{(5^{\\sin t} - 1)^{2}}{\\sin^{2} t} \\times \\sin^{2} t}{3(\\tan t).\\log(1 + t).(5^{\\sin t})} \\right]\\)\n\\(t\\) is small but \\(t \\ne 0\\). Hence \\(\\sin t \\ne 0\\)\nSo we can multiply and divide the numerator by \\(\\sin^{2} t\\)\n\\(= \\lim_{t \\to 0} \\left( \\dfrac{\\left(\\dfrac{5^{\\sin t} - 1}{\\sin t}\\right)^{2} \\times \\left(\\dfrac{\\sin t}{t}\\right)^{2}}{3\\left(\\dfrac{\\tan t}{t}\\right).\\dfrac{\\log(1 + t)}{t}.5^{\\sin t}} \\right)\\)\n[Dividing Numerator and Denominator by \\(t^{2}\\) as \\(t \\ne 0\\)]\n\\(= \\dfrac{\\left[\\lim_{t \\to 0}\\left(\\dfrac{5^{\\sin t} - 1}{\\sin t}\\right)\\right]^{2} \\times \\lim_{t \\to 0}\\left(\\dfrac{\\sin t}{t}\\right)^{2}}{3\\lim_{t \\to 0}\\left(\\dfrac{\\tan t}{t}\\right).\\lim_{t \\to 0}\\left(\\dfrac{\\log(1 + t)}{t}\\right)} \\times \\lim_{t \\to 0}\\left(\\dfrac{1}{5^{\\sin t}}\\right)\\)\n\\(= \\dfrac{(\\log 5)^{2} \\times (1)}{3(1)(1)} \\times \\dfrac{1}{5^{0}}\\)\n\\(\\left[ \\lim_{\\theta \\to 0}\\left(\\dfrac{\\sin \\theta}{\\theta}\\right) = 1,\\ \\lim_{\\theta \\to 0}\\left(\\dfrac{\\tan \\theta}{\\theta}\\right) = 1,\\ \\lim_{x \\to 0}\\left(\\dfrac{\\log(1 + x)}{x}\\right) = 1,\\ \\lim_{x \\to 0}\\left(\\dfrac{a^{x} - 1}{x}\\right) = \\log a \\right]\\)\n\\(\\therefore \\lim_{x \\to \\frac{\\pi}{2}} f(x) = \\dfrac{(\\log 5)^{2}}{3}\\)\n\\(\\therefore \\lim_{x \\to \\frac{\\pi}{2}} f(x) \\ne f\\left(\\dfrac{\\pi}{2}\\right)\\)\n\\(\\therefore f(x)\\) is discontinuous at \\(x = \\dfrac{\\pi}{2}\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "EASY",
+    "context": "Examine the continuity of",
+    "setLabel": "Ex 8.1 Q1",
+    "stem": "\\(f(x) = x^{3} + 2x^{2} - x - 2\\) at \\(x = -2\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity from the Left and from the Right",
+    "difficulty": "EASY",
+    "context": "Examine the continuity of",
+    "setLabel": "Ex 8.1 Q1",
+    "stem": "\\(f(x) = \\sin x\\), for \\(x \\le \\dfrac{\\pi}{4}\\)\n\\(= \\cos x\\), for \\(x > \\dfrac{\\pi}{4}\\), at \\(x = \\dfrac{\\pi}{4}\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "EASY",
+    "context": "Examine the continuity of",
+    "setLabel": "Ex 8.1 Q1",
+    "stem": "\\(f(x) = \\dfrac{x^{2} - 9}{x - 3}\\), for \\(x \\ne 3\\)\n\\(= 8\\) for \\(x = 3\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity from the Left and from the Right",
+    "difficulty": "EASY",
+    "context": "Examine whether the function is continuous at the points indicated against them.",
+    "setLabel": "Ex 8.1 Q2",
+    "stem": "\\(f(x) = x^{3} - 2x + 1\\), if \\(x \\le 2\\)\n\\(= 3x - 2\\), if \\(x > 2\\), at \\(x = 2\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "MODERATE",
+    "context": "Examine whether the function is continuous at the points indicated against them.",
+    "setLabel": "Ex 8.1 Q2",
+    "stem": "\\(f(x) = \\dfrac{x^{2} + 18x - 19}{x - 1}\\), for \\(x \\ne 1\\)\n\\(= 20\\) for \\(x = 1\\), at \\(x = 1\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity from the Left and from the Right",
+    "difficulty": "MODERATE",
+    "context": "Examine whether the function is continuous at the points indicated against them.",
+    "setLabel": "Ex 8.1 Q2",
+    "stem": "\\(f(x) = \\dfrac{x}{\\tan 3x} + 2\\), for \\(x < 0\\)\n\\(= \\dfrac{7}{3}\\), for \\(x \\ge 0\\), at \\(x = 0\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity Over an Interval",
+    "difficulty": "MODERATE",
+    "stem": "Find all the points of discontinuities of \\(f(x) = \\lfloor x \\rfloor\\) on the interval \\((-3, 2)\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "EASY",
+    "stem": "Discuss the continuity of the function \\(f(x) = |2x + 3|\\), at \\(x = -3/2\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "context": "Test the continuity of the following functions at the points or interval indicated against them.",
+    "setLabel": "Ex 8.1 Q5",
+    "stem": "\\(f(x) = \\dfrac{\\sqrt{x - 1} - (x - 1)^{\\frac{1}{3}}}{x - 2}\\), for \\(x \\ne 2\\)\n\\(= \\dfrac{1}{5}\\), for \\(x = 2\\)\nat \\(x = 2\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "context": "Test the continuity of the following functions at the points or interval indicated against them.",
+    "setLabel": "Ex 8.1 Q5",
+    "stem": "\\(f(x) = \\dfrac{x^{3} - 8}{\\sqrt{x + 2} - \\sqrt{3x - 2}}\\) for \\(x \\ne 2\\)\n\\(= -24\\) for \\(x = 2\\), at \\(x = 2\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q5(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity from the Left and from the Right",
+    "difficulty": "EASY",
+    "context": "Test the continuity of the following functions at the points or interval indicated against them.",
+    "setLabel": "Ex 8.1 Q5",
+    "stem": "\\(f(x) = 4x + 1\\), for \\(x \\le \\dfrac{8}{3}\\)\n\\(= \\dfrac{59 - 9x}{3}\\), for \\(x > \\dfrac{8}{3}\\), at \\(x = \\dfrac{8}{3}\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q5(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "context": "Test the continuity of the following functions at the points or interval indicated against them.",
+    "setLabel": "Ex 8.1 Q5",
+    "stem": "\\(f(x) = \\dfrac{(27 - 2x)^{\\frac{1}{3}} - 3}{9 - 3(243 + 5x)^{\\frac{1}{5}}}\\), for \\(x \\ne 0\\)\n\\(= 2\\) for \\(x = 0\\), at \\(x = 0\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q5(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity from the Left and from the Right",
+    "difficulty": "MODERATE",
+    "context": "Test the continuity of the following functions at the points or interval indicated against them.",
+    "setLabel": "Ex 8.1 Q5",
+    "stem": "\\(f(x) = \\dfrac{x^{2} + 8x - 20}{2x^{2} - 9x + 10}\\) for \\(0 < x < 3\\); \\(x \\ne 2\\)\n\\(= 12\\), for \\(x = 2\\)\n\\(= \\dfrac{2 - 2x - x^{2}}{x - 4}\\) for \\(3 \\le x < 4\\)\nat \\(x = 2\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "EASY",
+    "context": "Identify discontinuities for the following functions as either a jump or a removable discontinuity.",
+    "setLabel": "Ex 8.1 Q6",
+    "stem": "\\(f(x) = \\dfrac{x^{2} - 10x + 21}{x - 7}\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "EASY",
+    "context": "Identify discontinuities for the following functions as either a jump or a removable discontinuity.",
+    "setLabel": "Ex 8.1 Q6",
+    "stem": "\\(f(x) = x^{2} + 3x - 2\\), for \\(x \\le 4\\)\n\\(= 5x + 3\\), for \\(x > 4\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q6(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "EASY",
+    "context": "Identify discontinuities for the following functions as either a jump or a removable discontinuity.",
+    "setLabel": "Ex 8.1 Q6",
+    "stem": "\\(f(x) = x^{2} - 3x - 2\\), for \\(x < -3\\)\n\\(= 3 + 8x\\), for \\(x > -3\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q6(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "EASY",
+    "context": "Identify discontinuities for the following functions as either a jump or a removable discontinuity.",
+    "setLabel": "Ex 8.1 Q6",
+    "stem": "\\(f(x) = 4 + \\sin x\\), for \\(x < \\pi\\)\n\\(= 3 - \\cos x\\) for \\(x > \\pi\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "MODERATE",
+    "context": "Show that following functions have continuous extension to the point where \\(f(x)\\) is not defined. Also find the extension.",
+    "setLabel": "Ex 8.1 Q7",
+    "stem": "\\(f(x) = \\dfrac{1 - \\cos 2x}{\\sin x}\\), for \\(x \\ne 0\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "MODERATE",
+    "context": "Show that following functions have continuous extension to the point where \\(f(x)\\) is not defined. Also find the extension.",
+    "setLabel": "Ex 8.1 Q7",
+    "stem": "\\(f(x) = \\dfrac{3\\sin^{2} x + 2\\cos x(1 - \\cos 2x)}{2\\left(1 - \\cos^{2} x\\right)}\\), for \\(x \\ne 0\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q7(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "MODERATE",
+    "context": "Show that following functions have continuous extension to the point where \\(f(x)\\) is not defined. Also find the extension.",
+    "setLabel": "Ex 8.1 Q7",
+    "stem": "\\(f(x) = \\dfrac{x^{2} - 1}{x^{3} + 1}\\) for \\(x \\ne -1\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q8(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "context": "Discuss the continuity of the following functions at the points indicated against them.",
+    "setLabel": "Ex 8.1 Q8",
+    "stem": "\\(f(x) = \\dfrac{\\sqrt{3} - \\tan x}{\\pi - 3x}\\), \\(x \\ne \\dfrac{\\pi}{3}\\)\n\\(= \\dfrac{3}{4}\\), for \\(x = \\dfrac{\\pi}{3}\\), at \\(x = \\dfrac{\\pi}{3}\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q8(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity from the Left and from the Right",
+    "difficulty": "HARD",
+    "context": "Discuss the continuity of the following functions at the points indicated against them.",
+    "setLabel": "Ex 8.1 Q8",
+    "stem": "\\(f(x) = \\dfrac{e^{1/x} - 1}{e^{1/x} + 1}\\), for \\(x \\ne 0\\)\n\\(= 1\\), for \\(x = 0\\), at \\(x = 0\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q8(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "context": "Discuss the continuity of the following functions at the points indicated against them.",
+    "setLabel": "Ex 8.1 Q8",
+    "stem": "\\(f(x) = \\dfrac{4^{x} - 2^{x + 1} + 1}{1 - \\cos 2x}\\), for \\(x \\ne 0\\)\n\\(= \\dfrac{(\\log 2)^{2}}{2}\\), for \\(x = 0\\), at \\(x = 0\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q9(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "HARD",
+    "context": "Which of the following functions has a removable discontinuity? If it has a removable discontinuity, redefine the function so that it becomes continuous.",
+    "setLabel": "Ex 8.1 Q9",
+    "stem": "\\(f(x) = \\dfrac{e^{5\\sin x} - e^{2x}}{5\\tan x - 3x}\\), for \\(x \\ne 0\\)\n\\(= 3/4\\), for \\(x = 0\\), at \\(x = 0\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q9(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity from the Left and from the Right",
+    "difficulty": "HARD",
+    "context": "Which of the following functions has a removable discontinuity? If it has a removable discontinuity, redefine the function so that it becomes continuous.",
+    "setLabel": "Ex 8.1 Q9",
+    "stem": "\\(f(x) = \\log_{(1 + 3x)}(1 + 5x)\\) for \\(x > 0\\)\n\\(= \\dfrac{32^{x} - 1}{8^{x} - 1}\\), for \\(x < 0\\), at \\(x = 0\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q9(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "MODERATE",
+    "context": "Which of the following functions has a removable discontinuity? If it has a removable discontinuity, redefine the function so that it becomes continuous.",
+    "setLabel": "Ex 8.1 Q9",
+    "stem": "\\(f(x) = \\left( \\dfrac{3 - 8x}{3 - 2x} \\right)^{\\frac{1}{x}}\\), for \\(x \\ne 0\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q9(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity from the Left and from the Right",
+    "difficulty": "EASY",
+    "context": "Which of the following functions has a removable discontinuity? If it has a removable discontinuity, redefine the function so that it becomes continuous.",
+    "setLabel": "Ex 8.1 Q9",
+    "stem": "\\(f(x) = 3x + 2\\), for \\(-4 \\le x \\le -2\\)\n\\(= 2x - 3\\), for \\(-2 < x \\le 6\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q9(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity from the Left and from the Right",
+    "difficulty": "HARD",
+    "context": "Which of the following functions has a removable discontinuity? If it has a removable discontinuity, redefine the function so that it becomes continuous.",
+    "setLabel": "Ex 8.1 Q9",
+    "stem": "\\(f(x) = \\dfrac{x^{3} - 8}{x^{2} - 4}\\), for \\(x > 2\\)\n\\(= 3\\), for \\(x = 2\\)\n\\(= \\dfrac{e^{3(x - 2)^{2}} - 1}{2(x - 2)^{2}}\\), for \\(x < 2\\)"
+  },
+  {
+    "ref": "Ex 8.1 Q10(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "setLabel": "Ex 8.1 Q10",
+    "stem": "If \\(f(x) = \\dfrac{\\sqrt{2 + \\sin x} - \\sqrt{3}}{\\cos^{2} x}\\), for \\(x \\ne \\dfrac{\\pi}{2}\\), is continuous at \\(x = \\dfrac{\\pi}{2}\\) then find \\(f\\left(\\dfrac{\\pi}{2}\\right)\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q10(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "setLabel": "Ex 8.1 Q10",
+    "stem": "If \\(f(x) = \\dfrac{\\cos^{2} x - \\sin^{2} x - 1}{\\sqrt{3x^{2} + 1} - 1}\\) for \\(x \\ne 0\\), is continuous at \\(x = 0\\) then find \\(f(0)\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q10(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "setLabel": "Ex 8.1 Q10",
+    "stem": "If \\(f(x) = \\dfrac{4^{x - \\pi} + 4^{\\pi - x} - 2}{(x - \\pi)^{2}}\\) for \\(x \\ne \\pi\\), is continuous at \\(x = \\pi\\), then find \\(f(\\pi)\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q11(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "setLabel": "Ex 8.1 Q11",
+    "stem": "If \\(f(x) = \\dfrac{24^{x} - 8^{x} - 3^{x} + 1}{12^{x} - 4^{x} - 3^{x} + 1}\\), for \\(x \\ne 0\\)\n\\(= k\\), for \\(x = 0\\)\nis continuous at \\(x = 0\\), find \\(k\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q11(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 8.1 Q11",
+    "stem": "If \\(f(x) = \\dfrac{5^{x} + 5^{-x} - 2}{x^{2}}\\), for \\(x \\ne 0\\)\n\\(= k\\) for \\(x = 0\\)\nis continuous at \\(x = 0\\), find \\(k\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q11(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity from the Left and from the Right",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 8.1 Q11",
+    "stem": "If \\(f(x) = \\dfrac{\\sin 2x}{5x} - a\\), for \\(x > 0\\)\n\\(= 4\\) for \\(x = 0\\)\n\\(= x^{2} + b - 3\\), for \\(x < 0\\)\nis continuous at \\(x = 0\\), find \\(a\\) and \\(b\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q11(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity Over an Interval",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 8.1 Q11",
+    "stem": "For what values of \\(a\\) and \\(b\\) is the function\n\\(f(x) = ax + 2b + 18\\), for \\(x \\le 0\\)\n\\(= x^{2} + 3a - b\\), for \\(0 < x \\le 2\\)\n\\(= 8x - 2\\), for \\(x > 2\\),\ncontinuous for every \\(x\\)?"
+  },
+  {
+    "ref": "Ex 8.1 Q11(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity Over an Interval",
+    "difficulty": "MODERATE",
+    "setLabel": "Ex 8.1 Q11",
+    "stem": "For what values of \\(a\\) and \\(b\\) is the function\n\\(f(x) = \\dfrac{x^{2} - 4}{x - 2}\\), for \\(x < 2\\)\n\\(= ax^{2} - bx + 3\\), for \\(2 \\le x < 3\\)\n\\(= 2x - a + b\\), for \\(x \\ge 3\\)\ncontinuous for every \\(x\\) on \\(R\\)?"
+  },
+  {
+    "ref": "Ex 8.1 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity Over an Interval",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of \\(f\\) on its domain, where\n\\(f(x) = |x + 1|\\), for \\(-3 \\le x \\le 2\\)\n\\(= |x - 5|\\), for \\(2 < x \\le 7\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "stem": "Discuss the continuity of \\(f(x)\\) at \\(x = \\dfrac{\\pi}{4}\\) where,\n\\(f(x) = \\dfrac{(\\sin x + \\cos x)^{3} - 2\\sqrt{2}}{\\sin 2x - 1}\\), for \\(x \\ne \\dfrac{\\pi}{4}\\)\n\\(= \\dfrac{3}{\\sqrt{2}}\\), for \\(x = \\dfrac{\\pi}{4}\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity Over an Interval",
+    "difficulty": "MODERATE",
+    "stem": "Determine the values of \\(p\\) and \\(q\\) such that the following function is continuous on the entire real number line.\n\\(f(x) = x + 1\\), for \\(1 < x < 3\\)\n\\(= x^{2} + px + q\\), for \\(|x - 2| \\ge 1\\)."
+  },
+  {
+    "ref": "Ex 8.1 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "The Intermediate Value Theorem",
+    "difficulty": "EASY",
+    "stem": "Show that there is a root for the equation \\(2x^{3} - x - 16 = 0\\) between 2 and 3."
+  },
+  {
+    "ref": "Ex 8.1 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "The Intermediate Value Theorem",
+    "difficulty": "EASY",
+    "stem": "Show that there is a root for the equation \\(x^{3} - 3x = 0\\) between 1 and 2."
+  },
+  {
+    "ref": "Ex 8.1 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "MODERATE",
+    "stem": "Activity : Let \\(f(x) = ax + b\\) (where \\(a\\) and \\(b\\) are unknown)\n\\(= x^{2} + 5\\) for \\(x \\in R\\)\nFind the values of \\(a\\) and \\(b\\), so that \\(f(x)\\) is continuous at \\(x = 1\\). (Fig. 8.11)\nFig. 8.11 shows the graph of \\(f(x) = x^{2} + 5\\) drawn only for \\(x \\ge 1\\), with a solid dot at \\((1, 6)\\) and a dashed vertical segment at \\(x = 1\\) running from the X-axis up to that dot; no branch is drawn for \\(x < 1\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. 8.11 — Y-axis marked 2, 4, 6, 8, 10, 12; X-axis marked -1, 0, 1, 2. The curve labelled f(x) = x^2 + 5 starts at the solid point (1, 6) and rises to about 12 near x = 2.5. A dashed vertical line at x = 1 joins the X-axis to (1, 6). Nothing is plotted to the left of x = 1.",
+    "_note": "PRINTED AS SHOWN - possible book defect, transcribed faithfully. The stem gives no interval for either branch: it reads 'f(x) = ax + b (where a and b are unknown)' and then '= x^2 + 5 for x in R', so as printed the two branches would both apply on all of R. Fig. 8.11 draws x^2 + 5 only for x >= 1 (solid dot at (1,6)), so the intended reading is f(x) = ax + b for x < 1 and f(x) = x^2 + 5 for x >= 1. Even under that reading, continuity at x = 1 yields only a + b = 6 - one equation in two unknowns - so 'find the values of a and b' has no unique answer. The book prints no answer for Q17."
+  },
+  {
+    "ref": "Ex 8.1 Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity Over an Interval",
+    "difficulty": "MODERATE",
+    "stem": "Activity : Suppose \\(f(x) = px + 3\\) for \\(a \\le x \\le b\\)\n\\(= 5x^{2} - q\\) for \\(b < x \\le c\\)\nFind the condition on \\(p\\), \\(q\\), so that \\(f(x)\\) is continuous on \\([a, c]\\), by filling in the boxes.\n\\(f(b) = \\square\\)\n\\(\\lim_{x \\to b^{+}} f(x) = \\square\\)\n\\(\\therefore pb + 3 = \\square - q\\)\n\\(\\therefore p = \\dfrac{\\square}{b}\\) is the required condition.",
+    "_note": "Tagged '[Activity]' in the book but it is a NUMBERED exercise question with a determinate answer (continuity at x = b forces pb + 3 = 5b^2 - q, i.e. p = (5b^2 - q - 3)/b), so it is ingested on the shipped Ex 5.2 Q9 precedent rather than skipped as an Activity box. The empty boxes the book prints are rendered as \\square. The book prints no answer for Q18."
+  },
+  {
+    "ref": "Misc I Q1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "stem": "\\(f(x)=\\frac{2^{\\cot x}-1}{\\pi-2x}\\), for \\(x \\ne \\frac{\\pi}{2}\\)\n\\(=\\log\\sqrt{2}\\), for \\(x=\\frac{\\pi}{2}\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(f\\) is continuous at \\(x=\\frac{\\pi}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(f\\) has a jump discontinuity at \\(x=\\frac{\\pi}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(f\\) has a removable discontinuity"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\lim\\limits_{x \\to \\frac{\\pi}{2}} f(x)=2\\log 3\\)"
+      }
+    ],
+    "answer": "A",
+    "_note": "Derived: put \\(x=\\frac{\\pi}{2}+h\\). \\(\\cot x=-\\tan h\\approx -h\\) and \\(\\pi-2x=-2h\\), so \\(2^{\\cot x}-1\\approx -h\\log 2\\) and the quotient tends to \\(\\frac{\\log 2}{2}=\\log\\sqrt{2}\\), which is exactly \\(f(\\pi/2)\\). Hence continuous. Numerical check at \\(h=0.01\\) gives 0.34539 vs \\(\\log\\sqrt{2}=0.34657\\). Matches printed key A."
+  },
+  {
+    "ref": "Misc I Q2",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "MODERATE",
+    "stem": "If \\(f(x)=\\frac{1-\\sqrt{2}\\sin x}{\\pi-4x}\\), for \\(x \\ne \\frac{\\pi}{4}\\) is continuous at \\(x=\\frac{\\pi}{4}\\), then \\(f\\left(\\frac{\\pi}{4}\\right)=\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{\\sqrt{2}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(-\\frac{1}{\\sqrt{2}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(-\\frac{1}{4}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{4}\\)"
+      }
+    ],
+    "answer": "D",
+    "_note": "Derived: \\(x=\\frac{\\pi}{4}+h\\) gives \\(\\sqrt{2}\\sin x=\\cos h+\\sin h\\), so numerator \\(\\approx -h\\) and denominator \\(=-4h\\); limit \\(=\\frac{1}{4}\\). Numerical check at \\(h=0.01\\) gives 0.24875. Matches printed key D."
+  },
+  {
+    "ref": "Misc I Q3",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "MODERATE",
+    "stem": "If \\(f(x)=\\frac{(\\sin 2x)\\tan 5x}{(e^{2x}-1)^2}\\), for \\(x \\ne 0\\) is continuous at \\(x=0\\), then \\(f(0)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{10}{e^2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{10}{e^4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{5}{4}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{5}{2}\\)"
+      }
+    ],
+    "answer": "D",
+    "_note": "Derived: \\(\\sin 2x\\approx 2x\\), \\(\\tan 5x\\approx 5x\\), \\((e^{2x}-1)^2\\approx 4x^2\\); limit \\(=\\frac{10}{4}=\\frac{5}{2}\\). Numerical check at \\(x=0.01\\) gives 2.4523. Matches printed key D."
+  },
+  {
+    "ref": "Misc I Q4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Continuity Over an Interval",
+    "difficulty": "MODERATE",
+    "stem": "\\(f(x)=\\frac{x^2-7x+10}{x^2+2x-8}\\), for \\(x \\in [-6,-3]\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(f\\) is discontinuous at \\(x=2\\)."
+      },
+      {
+        "label": "B",
+        "text": "\\(f\\) is discontinuous at \\(x=-4\\)."
+      },
+      {
+        "label": "C",
+        "text": "\\(f\\) is discontinuous at \\(x=0\\)."
+      },
+      {
+        "label": "D",
+        "text": "\\(f\\) is discontinuous at \\(x=2\\) and \\(x=-4\\)."
+      }
+    ],
+    "answer": "B",
+    "_note": "Derived: the denominator \\((x+4)(x-2)\\) vanishes at \\(x=-4\\) and \\(x=2\\), but only \\(x=-4\\) lies in the stated domain \\([-6,-3]\\); \\(x=2\\) and \\(x=0\\) are outside it. Matches printed key B."
+  },
+  {
+    "ref": "Misc I Q5",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Continuity from the Left and from the Right",
+    "difficulty": "MODERATE",
+    "stem": "If \\(f(x)=ax^2+bx+1\\), for \\(|x-1| \\ge 3\\) and \\(=4x+5\\), for \\(-2 < x < 4\\) is continuous everywhere then,",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(a=\\frac{1}{2},\\ b=3\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(a=-\\frac{1}{2},\\ b=-3\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(a=-\\frac{1}{2},\\ b=3\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(a=\\frac{1}{2},\\ b=-3\\)"
+      }
+    ],
+    "answer": "A",
+    "_note": "Derived: \\(|x-1|\\ge 3\\) means \\(x\\le -2\\) or \\(x\\ge 4\\). Matching at \\(x=-2\\): \\(4a-2b+1=-3\\Rightarrow 2a-b=-2\\); at \\(x=4\\): \\(16a+4b+1=21\\Rightarrow 4a+b=5\\). Adding, \\(6a=3\\), so \\(a=\\frac12,\\ b=3\\). Matches printed key A."
+  },
+  {
+    "ref": "Misc I Q6",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "MODERATE",
+    "stem": "\\(f(x)=\\frac{(16^x-1)(9^x-1)}{(27^x-1)(32^x-1)}\\), for \\(x \\ne 0\\)\n\\(=k\\), for \\(x=0\\)\nis continuous at \\(x=0\\), then '\\(k\\)' \\(=\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{8}{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{8}{15}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(-\\frac{8}{15}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{20}{3}\\)"
+      }
+    ],
+    "answer": "B",
+    "_note": "Derived: limit \\(=\\frac{\\log 16\\cdot\\log 9}{\\log 27\\cdot\\log 32}=\\frac{4\\log 2\\cdot 2\\log 3}{3\\log 3\\cdot 5\\log 2}=\\frac{8}{15}\\). Matches printed key B."
+  },
+  {
+    "ref": "Misc I Q7",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "stem": "\\(f(x)=\\frac{32^x-8^x-4^x+1}{4^x-2^{x+1}+1}\\), for \\(x \\ne 0\\)\n\\(=k\\), for \\(x=0\\),\nis continuous at \\(x=0\\), then value of '\\(k\\)' is",
+    "options": [
+      {
+        "label": "A",
+        "text": "6"
+      },
+      {
+        "label": "B",
+        "text": "4"
+      },
+      {
+        "label": "C",
+        "text": "\\((\\log 2)(\\log 4)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(3\\log 4\\)"
+      }
+    ],
+    "answer": "A",
+    "_note": "Derived: put \\(a=2^x\\). Numerator \\(=a^5-a^3-a^2+1=(a^2-1)(a^3-1)=(a-1)^2(a+1)(a^2+a+1)\\); denominator \\(=(a-1)^2\\). So \\(f=(a+1)(a^2+a+1)\\to 2\\cdot 3=6\\) as \\(a\\to 1\\). This is a purely algebraic cancellation, so no logarithms survive — the two log-bearing options are distractors. Numerical check at \\(x=0.01\\) gives 6.0624. Matches printed key A."
+  },
+  {
+    "ref": "Misc I Q8",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "MODERATE",
+    "stem": "If \\(f(x)=\\frac{12^x-4^x-3^x+1}{1-\\cos 2x}\\), for \\(x \\ne 0\\) is continuous at \\(x=0\\) then the value of \\(f(0)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\log 12}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\log 2 \\cdot \\log 3\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\log 2 \\cdot \\log 3}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these."
+      }
+    ],
+    "answer": "B",
+    "_note": "Derived: numerator \\(=(4^x-1)(3^x-1)\\approx x\\log 4\\cdot x\\log 3\\); denominator \\(=2\\sin^2 x\\approx 2x^2\\). Limit \\(=\\frac{\\log 4\\cdot\\log 3}{2}=\\frac{2\\log 2\\cdot\\log 3}{2}=\\log 2\\cdot\\log 3\\). Options B and C are NOT twins — the factor 2 from \\(\\log 4=2\\log 2\\) is exactly what distinguishes them. Matches printed key B."
+  },
+  {
+    "ref": "Misc I Q9",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "MODERATE",
+    "stem": "If \\(f(x)=\\left(\\frac{4+5x}{4-7x}\\right)^{\\frac{4}{x}}\\), for \\(x \\ne 0\\) and \\(f(0)=k\\), is continuous at \\(x=0\\), then \\(k\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(e^7\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(e^3\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(e^{12}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(e^{\\frac{3}{4}}\\)"
+      }
+    ],
+    "answer": "C",
+    "_note": "Derived: \\(\\log f=\\frac{4}{x}\\left[\\log\\left(1+\\frac{5x}{4}\\right)-\\log\\left(1-\\frac{7x}{4}\\right)\\right]\\approx\\frac{4}{x}\\cdot\\frac{12x}{4}=12\\), so \\(k=e^{12}\\). Numerical check at \\(x=0.001\\) gives exponent 12.0032. Matches printed key C."
+  },
+  {
+    "ref": "Misc I Q10",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Continuity Over an Interval",
+    "difficulty": "EASY",
+    "stem": "If \\(f(x)=\\lfloor x \\rfloor\\) for \\(x \\in (-1,2)\\) then \\(f\\) is discontinuous at",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(x=-1, 0, 1, 2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(x=-1, 0, 1\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(x=0, 1\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(x=2\\)"
+      }
+    ],
+    "answer": "C",
+    "_note": "Derived: the greatest-integer function jumps at every integer, but the interval \\((-1,2)\\) is OPEN, so \\(x=-1\\) and \\(x=2\\) are not in the domain; only \\(x=0\\) and \\(x=1\\) qualify. The book prints the floor-bracket glyph \\(\\lfloor x \\rfloor\\) here without defining it (it defines \\([*]\\) as the greatest integer function later, in part (II) Q6). Matches printed key C."
+  },
+  {
+    "ref": "Misc II Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity Over an Interval",
+    "difficulty": "HARD",
+    "stem": "Discuss the continuity of the following function at the point(s) or on the interval indicated against it.\n\\(f(x)=\\frac{x^2-3x-10}{x-5}\\), for \\(3 \\le x \\le 6,\\ x \\ne 5\\)\n\\(=10\\), for \\(x=5\\)\n\\(=\\frac{x^2-3x-10}{x-5}\\), for \\(6 < x \\le 9\\)",
+    "_note": "As printed, the first and third pieces are the SAME expression, so the split at \\(x=6\\) is vacuous and the function is effectively \\(\\frac{x^2-3x-10}{x-5}\\) on \\([3,9]\\setminus\\{5\\}\\) with \\(f(5)=10\\). Verified against the printed page at 4x zoom — both fractions read \\(x^2-3x-10\\) over \\(x-5\\). Not treated as a defect: the book's own key reads \"Continuous on its domain except at \\(x=5\\)\", which is consistent with exactly this reading (\\(\\lim_{x\\to 5}f(x)=7\\ne 10\\))."
+  },
+  {
+    "ref": "Misc II Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity Over an Interval",
+    "difficulty": "HARD",
+    "stem": "Discuss the continuity of the following function at the point(s) or on the interval indicated against it.\n\\(f(x)=2x^2-2x+5\\), for \\(0 \\le x \\le 2\\)\n\\(=\\frac{1-3x-x^2}{1-x}\\), for \\(2 < x < 4\\)\n\\(=\\frac{x^2-25}{x-5}\\), for \\(4 \\le x \\le 7\\) and \\(x \\ne 5\\)\n\\(=7\\) for \\(x=5\\)"
+  },
+  {
+    "ref": "Misc II Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the following function at the point(s) or on the interval indicated against it.\n\\(f(x)=\\frac{\\cos 4x-\\cos 9x}{1-\\cos x}\\), for \\(x \\ne 0\\)\n\\(f(0)=\\frac{68}{15}\\), at \\(x=0\\) on \\(-\\frac{\\pi}{2} \\le x \\le \\frac{\\pi}{2}\\)",
+    "_note": "The printed value \\(\\frac{68}{15}\\) looked suspicious (the limit is \\(\\lim\\frac{2\\sin\\frac{13x}{2}\\sin\\frac{5x}{2}}{2\\sin^2\\frac{x}{2}}=65\\)), so it was checked against the book's own key, which reads \"Discontinuous at \\(x=0\\)\". The mismatch is therefore INTENTIONAL — the question is designed to come out discontinuous — not a misprint. Transcribed as printed."
+  },
+  {
+    "ref": "Misc II Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the following function at the point(s) or on the interval indicated against it.\n\\(f(x)=\\frac{\\sin^2 \\pi x}{3(1-x)^2}\\), for \\(x \\ne 1\\)\n\\(=\\frac{\\pi^2 \\sin^2\\left(\\frac{\\pi x}{2}\\right)}{3+4\\cos^2\\left(\\frac{\\pi x}{2}\\right)}\\) for \\(x=1\\), at \\(x=1\\)."
+  },
+  {
+    "ref": "Misc II Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the following function at the point(s) or on the interval indicated against it.\n\\(f(x)=\\frac{|x+1|}{2x^2+x-1}\\), for \\(x \\ne -1\\)\n\\(=0\\) for \\(x=-1\\) at \\(x=-1\\)."
+  },
+  {
+    "ref": "Misc II Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity Over an Interval",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the following function at the point(s) or on the interval indicated against it.\n\\(f(x)=[x+1]\\) for \\(x \\in [-2,2)\\)\nWhere \\([*]\\) is greatest integer function.",
+    "_note": "Printed with square brackets \\([x+1]\\) here, unlike part (I) Q10, which uses the floor-corner glyph \\(\\lfloor x \\rfloor\\). Both transcribed as printed."
+  },
+  {
+    "ref": "Misc II Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity Over an Interval",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the following function at the point(s) or on the interval indicated against it.\n\\(f(x)=2x^2+x+1\\), for \\(|x-3| \\ge 2\\)\n\\(=x^2+3\\), for \\(1 < x < 5\\)"
+  },
+  {
+    "ref": "Misc III Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "MODERATE",
+    "stem": "Identify discontinuities if any for the following function as either a jump or a removable discontinuity on its respective domain.\n\\(f(x)=x^2+x-3\\), for \\(x \\in [-5,-2)\\)\n\\(=x^2-5\\), for \\(x \\in (-2,5]\\)",
+    "_note": "Note that \\(x=-2\\) is excluded from BOTH pieces as printed, so \\(f\\) is undefined there; that is what makes the discontinuity removable rather than a jump (both one-sided limits equal \\(-1\\))."
+  },
+  {
+    "ref": "Misc III Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "EASY",
+    "stem": "Identify discontinuities if any for the following function as either a jump or a removable discontinuity on its respective domain.\n\\(f(x)=x^2+5x+1\\), for \\(0 \\le x \\le 3\\)\n\\(=x^3+x+5\\), for \\(3 < x \\le 6\\)"
+  },
+  {
+    "ref": "Misc III Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "MODERATE",
+    "stem": "Identify discontinuities if any for the following function as either a jump or a removable discontinuity on its respective domain.\n\\(f(x)=\\frac{x^2+x+1}{x+1}\\), for \\(x \\in [0,3)\\)\n\\(=\\frac{3x+4}{x^2-5}\\), for \\(x \\in [3,6]\\)."
+  },
+  {
+    "ref": "Misc IV Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "MODERATE",
+    "stem": "Discuss the continuity of the following function at the point or on the interval indicated against it. If the function is discontinuous, identify the type of discontinuity and state whether the discontinuity is removable. If it has a removable discontinuity, redefine the function so that it becomes continuous.\n\\(f(x)=\\frac{(x+3)(x^2-6x+8)}{x^2-x-12}\\)",
+    "_note": "The book states no interval for this one; it is to be discussed over the natural domain of the expression."
+  },
+  {
+    "ref": "Misc IV Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Discontinuity",
+    "difficulty": "EASY",
+    "stem": "Discuss the continuity of the following function at the point or on the interval indicated against it. If the function is discontinuous, identify the type of discontinuity and state whether the discontinuity is removable. If it has a removable discontinuity, redefine the function so that it becomes continuous.\n\\(f(x)=x^2+2x+5\\), for \\(x \\le 3\\)\n\\(=x^3-2x^2-5\\), for \\(x > 3\\)"
+  },
+  {
+    "ref": "Misc V Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(k\\) if the following function is continuous at the point indicated against it.\n\\(f(x)=\\left(\\frac{5x-8}{8-3x}\\right)^{\\frac{3}{2x-4}}\\), for \\(x \\ne 2\\)\n\\(=k\\), for \\(x=2\\) at \\(x=2\\)."
+  },
+  {
+    "ref": "Misc V Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "HARD",
+    "stem": "Find \\(k\\) if the following function is continuous at the point indicated against it.\n\\(f(x)=\\frac{45^x-9^x-5^x+1}{(k^x-1)(3^x-1)}\\), for \\(x \\ne 0\\)\n\\(=\\frac{2}{3}\\), for \\(x=0\\), at \\(x=0\\)"
+  },
+  {
+    "ref": "Misc VI Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity from the Left and from the Right",
+    "difficulty": "HARD",
+    "stem": "Find \\(a\\) and \\(b\\) if the following function is continuous at the point or on the interval indicated against it.\n\\(f(x)=\\frac{4\\tan x+5\\sin x}{a^x-1}\\), for \\(x < 0\\)\n\\(=\\frac{9}{\\log 2}\\), for \\(x=0\\)\n\\(=\\frac{11x+7x\\cdot\\cos x}{b^x-1}\\), for \\(x > 0\\)."
+  },
+  {
+    "ref": "Misc VI Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity from the Left and from the Right",
+    "difficulty": "HARD",
+    "stem": "Find \\(a\\) and \\(b\\) if the following function is continuous at the point or on the interval indicated against it.\n\\(f(x)=ax^2+bx+1\\), for \\(|2x-3| \\ge 2\\)\n\\(=3x+2\\), for \\(\\frac{1}{2} < x < \\frac{5}{2}\\)."
+  },
+  {
+    "ref": "Misc VII Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(f(a)\\), if \\(f\\) is continuous at \\(x=a\\) where,\n\\(f(x)=\\frac{1+\\cos(\\pi x)}{\\pi(1-x)^2}\\), for \\(x \\ne 1\\) and at \\(a=1\\)."
+  },
+  {
+    "ref": "Misc VII Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Continuity of a Function at a Point",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(f(a)\\), if \\(f\\) is continuous at \\(x=a\\) where,\n\\(f(x)=\\frac{1-\\cos[7(x-\\pi)]}{5(x-\\pi)^2}\\), for \\(x \\ne \\pi\\) at \\(a=\\pi\\)."
+  },
+  {
+    "ref": "Misc VIII Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "The Intermediate Value Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Solve using intermediate value theorem.\nShow that \\(5^x-6x=0\\) has a root in \\([1,2]\\)."
+  },
+  {
+    "ref": "Misc VIII Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "The Intermediate Value Theorem",
+    "difficulty": "MODERATE",
+    "stem": "Solve using intermediate value theorem.\nShow that \\(x^3-5x^2+3x+6=0\\) has at least two real roots between \\(x=1\\) and \\(x=5\\)."
+  }
+]

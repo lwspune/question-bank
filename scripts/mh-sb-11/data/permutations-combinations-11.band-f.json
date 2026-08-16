@@ -1,0 +1,468 @@
+[
+  {
+    "ref": "Misc I Q1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "A college offers 5 courses in the morning and 3 in the evening. The number of ways a student can select exactly one course, either in the morning or in the evening.",
+    "options": [
+      {
+        "label": "A",
+        "text": "5"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "8"
+      },
+      {
+        "label": "D",
+        "text": "15"
+      }
+    ],
+    "answer": "C",
+    "_note": "Derived independently before consulting the printed key: 'either ... or' is the addition principle, so \\(5 + 3 = 8\\). Printed key: C. AGREE."
+  },
+  {
+    "ref": "Misc I Q2",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Fundamental Principles of Counting",
+    "difficulty": "EASY",
+    "stem": "A college has 7 courses in the morning and 3 in the evening. The possible number of choices with the student if he wants to study one course in the morning and one in the evening is-.",
+    "options": [
+      {
+        "label": "A",
+        "text": "21"
+      },
+      {
+        "label": "B",
+        "text": "4"
+      },
+      {
+        "label": "C",
+        "text": "42"
+      },
+      {
+        "label": "D",
+        "text": "10"
+      }
+    ],
+    "answer": "A",
+    "_note": "Derived independently before consulting the printed key: 'and' is the multiplication principle, so \\(7 \\times 3 = 21\\). Printed key: A. AGREE. Stem transcribed faithfully including the printed trailing 'is-.'"
+  },
+  {
+    "ref": "Misc I Q3",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "In how many ways can 8 Indians and, 4 American and 4 Englishmen can be seated in a row so that all person of the same nationality sit together?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(3!\\,8!\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(3!\\,4!\\,8!\\,4!\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(4!\\,4!\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(8!\\,4!\\,4!\\)"
+      }
+    ],
+    "answer": "B",
+    "_note": "Derived independently before consulting the printed key: three nationality blocks arrange in \\(3!\\) ways, and within the blocks \\(8!\\), \\(4!\\), \\(4!\\), giving \\(3!\\,8!\\,4!\\,4!\\) — option B (the printed order of the factorials differs but the product is the same). Printed key: B. AGREE. [Textbook] The stem carries a stray comma after '8 Indians and,' and prints 'American' / 'all person' in the singular; transcribed as printed."
+  },
+  {
+    "ref": "Misc I Q4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "In how many ways can 10 examination papers be arranged so that the best and the worst papers never come together?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(9 \\times 8!\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(8 \\times 8!\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(9 \\times 9!\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(8 \\times 9!\\)"
+      }
+    ],
+    "answer": "D",
+    "_note": "Derived independently before consulting the printed key: \\(10! - 2 \\times 9! = 9!(10 - 2) = 8 \\times 9!\\). Printed key: D. AGREE. Option A equals \\(9!\\) but no two options are equal in value."
+  },
+  {
+    "ref": "Misc I Q5",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "In how many ways 4 boys and 3 girls can be seated in a row so that they are alternate.",
+    "options": [
+      {
+        "label": "A",
+        "text": "12"
+      },
+      {
+        "label": "B",
+        "text": "288"
+      },
+      {
+        "label": "C",
+        "text": "144"
+      },
+      {
+        "label": "D",
+        "text": "256"
+      }
+    ],
+    "answer": "C",
+    "_note": "Derived independently before consulting the printed key: with 4 boys and 3 girls the only alternating pattern in 7 seats is BGBGBGB, so \\(4! \\times 3! = 24 \\times 6 = 144\\). Printed key: C. AGREE."
+  },
+  {
+    "ref": "Misc I Q6",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "stem": "Find the number of triangles which can be formed by joining the angular points of a polygon of 8 sides as vertices.",
+    "options": [
+      {
+        "label": "A",
+        "text": "16"
+      },
+      {
+        "label": "B",
+        "text": "56"
+      },
+      {
+        "label": "C",
+        "text": "24"
+      },
+      {
+        "label": "D",
+        "text": "8"
+      }
+    ],
+    "answer": "B",
+    "_note": "Derived independently before consulting the printed key: no three vertices of a convex polygon are collinear, so every 3-subset gives a triangle: \\({}^{8}C_{3} = 56\\). Printed key: B. AGREE."
+  },
+  {
+    "ref": "Misc I Q7",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "A question paper has two parts, A and B, each containing 10 questions. If a student has to choose 8 from part A and 5 from part B, In how many ways can he choose the questions?",
+    "options": [
+      {
+        "label": "A",
+        "text": "320"
+      },
+      {
+        "label": "B",
+        "text": "750"
+      },
+      {
+        "label": "C",
+        "text": "40"
+      },
+      {
+        "label": "D",
+        "text": "11340"
+      }
+    ],
+    "answer": "D",
+    "_note": "Derived independently before consulting the printed key: \\({}^{10}C_{8} \\times {}^{10}C_{5} = 45 \\times 252 = 11340\\). Printed key: D. AGREE. Stem transcribed faithfully including the printed mid-sentence capital in 'part B, In how many ways'."
+  },
+  {
+    "ref": "Misc I Q8",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Circular Permutations",
+    "difficulty": "HARD",
+    "stem": "There are 10 persons among whom two are brothers. The total number of ways in which these persons can be seated around a round table so that exactly one person sits between the brothers, is equal to:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2! \\times 7!\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2! \\times 8!\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(3! \\times 7!\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(3! \\times 8!\\)"
+      }
+    ],
+    "answer": "B",
+    "_note": "Derived independently before consulting the printed key: choose the person seated between the brothers in 8 ways, order the brothers in \\(2!\\) ways, then treat the 3-person block plus the remaining 7 as 8 units round a circle, \\((8-1)! = 7!\\). Total \\(8 \\times 2 \\times 7! = 16 \\times 7! = 2 \\times 8! = 2! \\times 8!\\). Cross-checked by probability: fixing one brother, the other has 9 seats of which 2 are one seat away, and \\(80640/9! = 2/9\\). Printed key: B. AGREE."
+  },
+  {
+    "ref": "Misc I Q9",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "MODERATE",
+    "stem": "The number of arrangements of the letters of the word BANANA in which two N's do not appear adjacently",
+    "options": [
+      {
+        "label": "A",
+        "text": "80"
+      },
+      {
+        "label": "B",
+        "text": "60"
+      },
+      {
+        "label": "C",
+        "text": "40"
+      },
+      {
+        "label": "D",
+        "text": "100"
+      }
+    ],
+    "answer": "C",
+    "_note": "Derived independently before consulting the printed key: BANANA has B, three A's and two N's, so total \\(6!/(3!\\,2!) = 60\\); treating NN as one unit gives \\(5!/3! = 20\\); hence \\(60 - 20 = 40\\). Printed key: C. AGREE. Note option B (60) is the total-arrangements distractor."
+  },
+  {
+    "ref": "Misc I Q10",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "The number of ways in which 5 male and 2 female members of a committee can be seated around a round table so that the two females are not seated together is",
+    "options": [
+      {
+        "label": "A",
+        "text": "840"
+      },
+      {
+        "label": "B",
+        "text": "600"
+      },
+      {
+        "label": "C",
+        "text": "720"
+      },
+      {
+        "label": "D",
+        "text": "480"
+      }
+    ],
+    "answer": "D",
+    "_note": "Derived independently before consulting the printed key: total circular arrangements \\((7-1)! = 720\\); the two females together give \\((6-1)! \\times 2! = 240\\); hence \\(720 - 240 = 480\\). Cross-checked by direct construction: seat the 5 males in \\(4! = 24\\) ways and place the females in 2 of the 5 gaps, \\({}^{5}P_{2} = 20\\), giving \\(24 \\times 20 = 480\\). Printed key: D. AGREE. Option C (720) is the total-arrangements distractor."
+  },
+  {
+    "ref": "Misc II Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "MODERATE",
+    "stem": "Find the value of \\(r\\) if \\({}^{56}P_{r+6} : {}^{54}P_{r+3} = 30800 : 1\\)",
+    "_note": "ANSWER-KEY DISAGREEMENT (flagged for the cross-check pass, not repaired here). \\({}^{56}P_{r+6} \\div {}^{54}P_{r+3} = \\frac{56!}{(50-r)!} \\times \\frac{(51-r)!}{54!} = 56 \\times 55 \\times (51-r) = 3080(51-r)\\). Setting \\(3080(51-r) = 30800\\) gives \\(51-r = 10\\), so \\(r = 41\\). The printed key gives 45, and \\(r = 45\\) yields \\(56 \\times 55 \\times 6 = 18480\\), not 30800. So either the key should read 41, or the stem's ratio should read 18480 : 1. Stem transcribed exactly as printed.",
+    "solution": "[Textbook answer-key error: the printed key gives \\(r = 45\\). The ratio \\({}^{56}P_{r+6} : {}^{54}P_{r+3}\\) reduces to \\(56 \\times 55 \\times (51-r) = 3080(51-r)\\), so setting it equal to \\(30800\\) gives \\(51 - r = 10\\) and \\(r = 41\\). Checked by direct computation: \\(r = 41\\) yields exactly \\(30800\\), while the key's \\(r = 45\\) yields \\(18480\\). Either the key should read 41, or the stem's ratio should read \\(18480 : 1\\).]"
+  },
+  {
+    "ref": "Misc II Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "stem": "How many words can be formed by writing letters in the word CROWN in different order?"
+  },
+  {
+    "ref": "Misc II Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "HARD",
+    "stem": "Find the number of words that can be formed by using all the letters in the word REMAIN If these words are written in dictionary order, what will be the \\(40^{\\text{th}}\\) word?",
+    "_note": "[Textbook] The book prints no full stop after 'REMAIN', so two sentences run together; transcribed as printed. Independently verified the printed key: \\(6! = 720\\) words, and walking the dictionary order (A: 120 words; AE: 24, AI: 24 covering 25-48; AIN covering 37-42; AINM covering 40-41; AINMRE is the 2nd of those) gives AINMRE as the 40th word, matching the key '720 ; AINMRE'."
+  },
+  {
+    "ref": "Misc II Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "stem": "Capital English alphabet has 11 symmetric letters that appear same when looked at in a mirror. These letters are A, H, I, M, O, T, U, V, W, X, and Y. How many symmentric three letter passwords can be formed using these letters?",
+    "_note": "[Textbook] The book prints 'symmentric' for 'symmetric'; transcribed as printed. The printed key 990 = \\({}^{11}P_{3}\\), i.e. the intended convention is that a letter may not be repeated within a password — the stem does not state this."
+  },
+  {
+    "ref": "Misc II Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Identical Objects",
+    "difficulty": "MODERATE",
+    "stem": "How many numbers formed using the digits 3,2,0,4,3,2,3 exceed one million?"
+  },
+  {
+    "ref": "Misc II Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "Ten students are to be selected for a project from a class of 30 stdudents. There are 4 students who want to be together either in the project or not in the project. Find the number of possible selections.",
+    "_note": "[Textbook] The book prints 'stdudents' for 'students'; transcribed as printed."
+  },
+  {
+    "ref": "Misc II Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "A student finds 7 books of his interest, but can borrow only three books. He wants to borrow Chemistry part II book only if Chemistry Part I can also be borrowed. Find the number of ways he can choose three books that he wants to borrow.",
+    "_note": "UNSTATED CONVENTION (flagged, not forced). Read strictly, 'II only if I' bars only the case II-without-I, giving \\({}^{7}C_{3} - {}^{5}C_{2} = 35 - 10 = 25\\). The printed key 15 corresponds to the stricter reading in which the two Chemistry parts are taken as a package — either both (\\({}^{5}C_{1} = 5\\)) or neither (\\({}^{5}C_{3} = 10\\)) — which additionally bars I-without-II. The stem does not say which is intended.",
+    "solution": "[Textbook ambiguity, not a straightforward error: the printed key of 15 requires reading \"Chemistry II only if Chemistry I\" as a PACKAGE — both papers or neither — which additionally bars taking Chemistry I without Chemistry II. Read strictly, the condition bars only II-without-I, giving \\(35 - 10 = 25\\). The stem states only the one-way condition. The answer above follows the strict reading and names the alternative.]"
+  },
+  {
+    "ref": "Misc II Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "stem": "30 objects are to be divided in three groups containing 7,10,13 objects. Find the number of distinct ways for doing so."
+  },
+  {
+    "ref": "Misc II Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "stem": "A student passes an examination if he secures a minimum in each of the 7 subjects. Find the number of ways a student can fail."
+  },
+  {
+    "ref": "Misc II Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "Nine friends decide to go for a picnic in two groups. One group decides to go by car and the other group decides to go by train. Find the number of different ways of doing so if there must be at least 3 friends in each group.",
+    "_note": "ANSWER-KEY QUERY (flagged for the cross-check pass). The two groups are distinguishable (car vs train), so the car group may hold 3, 4, 5 or 6 friends and the count is \\({}^{9}C_{3} + {}^{9}C_{4} + {}^{9}C_{5} + {}^{9}C_{6} = 84 + 126 + 126 + 84 = 420\\). The printed key stops at \\({}^{9}C_{3} + {}^{9}C_{4} + {}^{9}C_{5} = 336\\), which appears to drop the \\({}^{9}C_{6}\\) term.",
+    "solution": "[Textbook answer-key error: the printed key sums \\({}^9C_3 + {}^9C_4 + {}^9C_5 = 336\\). Because the car group and the train group are distinguishable, \\({}^9C_6\\) belongs in the sum as well, giving \\({}^9C_3 + {}^9C_4 + {}^9C_5 + {}^9C_6 = 420\\). The key appears to have dropped the final term.]"
+  },
+  {
+    "ref": "Misc II Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "EASY",
+    "stem": "A hall has 12 lamps and every lamp can be switched on independently. Find the number of ways of illuminating the hall."
+  },
+  {
+    "ref": "Misc II Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations with Repetition",
+    "difficulty": "MODERATE",
+    "stem": "How many quadratic equations can be formed using numbers from 0,2,4,5 as coefficients if a coefficient can be repeated in an equation."
+  },
+  {
+    "ref": "Misc II Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Permutations of Distinct Objects",
+    "difficulty": "EASY",
+    "stem": "How many six\\(-\\)digit telephone numbers can be formed if the first two digits are 45 and no digit can appear more than once?"
+  },
+  {
+    "ref": "Misc II Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "EASY",
+    "stem": "A question paper has 6 questions. How many ways does a student have to answer if he wants to solve at least one question?"
+  },
+  {
+    "ref": "Misc II Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "stem": "Find the number of ways of dividing 20 objects in three groups of sizes 8,7,and 5."
+  },
+  {
+    "ref": "Misc II Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "There are 4 doctors and 8 lawyers in a panel. Find the number of ways for selecting a team of 6 if at least one doctor must be in the team."
+  },
+  {
+    "ref": "Misc II Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "Four parallel lines intersect another set of five parallel lines. Find the number of distinct parallelograms formed."
+  },
+  {
+    "ref": "Misc II Q18(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "There are 12 distinct points A,B,C,.....,L, in order, on a circle. Lines are drawn passing through each pair of points",
+    "setLabel": "Misc II Q18",
+    "stem": "How many lines are there in total."
+  },
+  {
+    "ref": "Misc II Q18(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "There are 12 distinct points A,B,C,.....,L, in order, on a circle. Lines are drawn passing through each pair of points",
+    "setLabel": "Misc II Q18",
+    "stem": "How many lines pass through D."
+  },
+  {
+    "ref": "Misc II Q18(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "There are 12 distinct points A,B,C,.....,L, in order, on a circle. Lines are drawn passing through each pair of points",
+    "setLabel": "Misc II Q18",
+    "stem": "How many triangles are determined by lines."
+  },
+  {
+    "ref": "Misc II Q18(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "There are 12 distinct points A,B,C,.....,L, in order, on a circle. Lines are drawn passing through each pair of points",
+    "setLabel": "Misc II Q18",
+    "stem": "How many triangles have on vertex C.",
+    "_note": "[Textbook] The book prints 'have on vertex C' where 'have one vertex C' is intended; transcribed as printed. The printed key 55 = \\({}^{11}C_{2}\\) confirms the intended reading is 'exactly one vertex at C'."
+  }
+]

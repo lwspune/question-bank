@@ -1,0 +1,57 @@
+[
+  {
+    "id": "1ba37839-4173-4230-a110-ff9e1a028e97",
+    "ref": "Ex 7.7 I Q1",
+    "solution": "Divide numerator and denominator by \\(x^3\\), the highest power present.\n\\(\\lim_{x \\to \\infty}\\frac{a + \\frac{b}{x} + \\frac{c}{x^2} + \\frac{d}{x^3}}{e + \\frac{f}{x} + \\frac{g}{x^2} + \\frac{h}{x^3}}\\)\nAs \\(x \\to \\infty\\) every term with \\(x\\) in the denominator tends to \\(0\\).\n\\(\\therefore\\) the limit \\(= \\frac{a}{e}\\)"
+  },
+  {
+    "id": "e0b967cf-aee4-4c75-98e0-b18fa4a84067",
+    "ref": "Ex 7.7 I Q2",
+    "solution": "Expand the denominator: \\((x + 4)(x - 6)(x - 3) = x^3 - 5x^2 - 18x + 72\\). Divide numerator and denominator by \\(x^3\\).\n\\(\\lim_{x \\to \\infty}\\frac{1 + \\frac{3}{x^2} + \\frac{2}{x^3}}{1 - \\frac{5}{x} - \\frac{18}{x^2} + \\frac{72}{x^3}} = \\frac{1 + 0 + 0}{1 - 0 - 0 + 0}\\)\n\\(\\therefore\\) the limit \\(= 1\\)"
+  },
+  {
+    "id": "86d3c7c9-65bf-4137-bd29-441bb8133c8d",
+    "ref": "Ex 7.7 I Q3",
+    "solution": "Divide numerator and denominator by \\(x^2\\).\n\\(\\lim_{x \\to \\infty}\\frac{7 + \\frac{5}{x} - \\frac{3}{x^2}}{8 - \\frac{2}{x} + \\frac{7}{x^2}} = \\frac{7 + 0 - 0}{8 - 0 + 0}\\)\n\\(\\therefore\\) the limit \\(= \\frac{7}{8}\\)"
+  },
+  {
+    "id": "fa75d813-acb3-437d-88e8-f9bf39cc55a8",
+    "ref": "Ex 7.7 II Q1",
+    "solution": "For \\(x > 0\\), \\(\\sqrt{x^4 + x + 2} = x^2\\sqrt{1 + \\frac{1}{x^3} + \\frac{2}{x^4}}\\). Divide numerator and denominator by \\(x^2\\).\n\\(\\lim_{x \\to \\infty}\\frac{7 + \\frac{2}{x} - \\frac{3}{x^2}}{\\sqrt{1 + \\frac{1}{x^3} + \\frac{2}{x^4}}} = \\frac{7 + 0 - 0}{\\sqrt{1}}\\)\n\\(\\therefore\\) the limit \\(= 7\\)"
+  },
+  {
+    "id": "b2075252-d85b-4fb8-9839-5d465d23b140",
+    "ref": "Ex 7.7 II Q2",
+    "solution": "Rationalise by multiplying and dividing by \\(\\sqrt{x^2 + 4x + 16} + \\sqrt{x^2 + 16}\\).\n\\(\\lim_{x \\to \\infty}\\frac{\\left(x^2 + 4x + 16\\right) - \\left(x^2 + 16\\right)}{\\sqrt{x^2 + 4x + 16} + \\sqrt{x^2 + 16}} = \\lim_{x \\to \\infty}\\frac{4x}{\\sqrt{x^2 + 4x + 16} + \\sqrt{x^2 + 16}}\\)\nDivide numerator and denominator by \\(x\\):\n\\(= \\lim_{x \\to \\infty}\\frac{4}{\\sqrt{1 + \\frac{4}{x} + \\frac{16}{x^2}} + \\sqrt{1 + \\frac{16}{x^2}}} = \\frac{4}{1 + 1}\\)\n\\(\\therefore\\) the limit \\(= 2\\)"
+  },
+  {
+    "id": "8ec5070b-cbac-4ed5-882d-9c9d905512c6",
+    "ref": "Ex 7.7 II Q3",
+    "solution": "Rationalise by multiplying and dividing by \\(\\sqrt{x^4 + 4x^2} + x^2\\).\n\\(\\lim_{x \\to \\infty}\\frac{\\left(x^4 + 4x^2\\right) - x^4}{\\sqrt{x^4 + 4x^2} + x^2} = \\lim_{x \\to \\infty}\\frac{4x^2}{x^2\\left(\\sqrt{1 + \\frac{4}{x^2}} + 1\\right)} = \\frac{4}{1 + 1}\\)\n\\(\\therefore\\) the limit \\(= 2\\)"
+  },
+  {
+    "id": "d2c4ddc7-3530-40f2-8cb5-1f9e8c6fa876",
+    "ref": "Ex 7.7 III Q1",
+    "solution": "Divide numerator and denominator by \\(x^6\\), writing each bracket over \\(x^2\\).\n\\(\\lim_{x \\to \\infty}\\frac{\\left(3 + \\frac{4}{x^2}\\right)\\left(4 - \\frac{6}{x^2}\\right)\\left(5 + \\frac{2}{x^2}\\right)}{4 + \\frac{2}{x^2} - \\frac{1}{x^6}} = \\frac{3 \\times 4 \\times 5}{4} = \\frac{60}{4}\\)\n\\(\\therefore\\) the limit \\(= 15\\)"
+  },
+  {
+    "id": "24929dfc-5597-4658-8415-6abfef405e32",
+    "ref": "Ex 7.7 III Q2",
+    "solution": "Numerator and denominator are both of degree \\(3 + 4 = 7\\). Take \\(x\\) out of every bracket and divide by \\(x^7\\).\n\\(\\lim_{x \\to \\infty}\\frac{\\left(3 - \\frac{4}{x}\\right)^3\\left(4 + \\frac{3}{x}\\right)^4}{\\left(3 + \\frac{2}{x}\\right)^7} = \\frac{3^3 \\times 4^4}{3^7} = \\frac{27 \\times 256}{2187} = \\frac{256}{81}\\)\n\\(\\therefore\\) the limit \\(= \\frac{256}{81}\\)"
+  },
+  {
+    "id": "b2f3e0a9-5fd5-40e9-952f-44236078c8e0",
+    "ref": "Ex 7.7 III Q3",
+    "solution": "Rationalise \\(\\sqrt{x + 1} - \\sqrt{x}\\) by multiplying and dividing by \\(\\sqrt{x + 1} + \\sqrt{x}\\).\n\\(\\lim_{x \\to \\infty}\\sqrt{x}\\cdot\\frac{(x + 1) - x}{\\sqrt{x + 1} + \\sqrt{x}} = \\lim_{x \\to \\infty}\\frac{\\sqrt{x}}{\\sqrt{x + 1} + \\sqrt{x}} = \\lim_{x \\to \\infty}\\frac{1}{\\sqrt{1 + \\frac{1}{x}} + 1} = \\frac{1}{1 + 1}\\)\n\\(\\therefore\\) the limit \\(= \\frac{1}{2}\\)"
+  },
+  {
+    "id": "aa015fb8-5a3b-499f-9251-bab9e9706bb4",
+    "ref": "Ex 7.7 III Q4",
+    "solution": "Numerator and denominator are both of degree \\(20 + 30 = 50\\). Take \\(x\\) out of every bracket and divide by \\(x^{50}\\).\n\\(\\lim_{x \\to \\infty}\\frac{\\left(2 - \\frac{1}{x}\\right)^{20}\\left(3 - \\frac{1}{x}\\right)^{30}}{\\left(2 + \\frac{1}{x}\\right)^{50}} = \\frac{2^{20}\\cdot 3^{30}}{2^{50}} = \\frac{3^{30}}{2^{30}}\\)\n\\(\\therefore\\) the limit \\(= \\left(\\frac{3}{2}\\right)^{30}\\)"
+  },
+  {
+    "id": "704d5ec6-f214-497d-9060-fa1058f96d69",
+    "ref": "Ex 7.7 III Q5",
+    "solution": "Rationalise numerator and denominator separately.\nNumerator: \\(\\sqrt{x^2 + 5} - \\sqrt{x^2 - 3} = \\frac{8}{\\sqrt{x^2 + 5} + \\sqrt{x^2 - 3}}\\).\nDenominator: \\(\\sqrt{x^2 + 3} - \\sqrt{x^2 + 1} = \\frac{2}{\\sqrt{x^2 + 3} + \\sqrt{x^2 + 1}}\\).\nSo the expression \\(= \\frac{8}{2}\\cdot\\frac{\\sqrt{x^2 + 3} + \\sqrt{x^2 + 1}}{\\sqrt{x^2 + 5} + \\sqrt{x^2 - 3}}\\), and dividing each root by \\(x\\) the second factor \\(\\to \\frac{1 + 1}{1 + 1} = 1\\).\n\\(\\therefore\\) the limit \\(= 4\\)"
+  }
+]

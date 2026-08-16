@@ -1,0 +1,86 @@
+[
+  {
+    "ref": "Ex 7.2 III Q2",
+    "bracket": "[Textbook answer-key error: the printed key gives \\(-2\\). Combining the two fractions over \\(x(x-1)(x-2)\\) gives numerator \\((x-2)^2 - 1 = (x-1)(x-3)\\), so the expression is exactly \\(\\dfrac{x-3}{x(x-2)}\\), whose value at \\(x = 1\\) is \\(\\dfrac{-2}{-1} = +2\\). Confirmed numerically: at \\(x = 1.001\\) the original expression evaluates to \\(1.99900\\). The MAGNITUDE is right; the SIGN is wrong.]"
+  },
+  {
+    "ref": "7.1.7 SolvedEx.2",
+    "bracket": "[Textbook error, answer-affecting: the printed solution contradicts its own stem. With \\(y \\to 2\\) the first factor is \\(2^2 - 3 = 1\\), so the limit is \\(1 \\times 4 = 4\\); the book writes \\((2^2 - 3)(2 + 2) = (8 - 3)(4) = 20\\), evaluating \\(2^2\\) as \\(8\\). Either the stem should read \\(y^3 - 3\\) — which does give \\(20\\) — or the printed answer should be \\(4\\). The stem's exponent was checked at high zoom and is unambiguously \\(2\\), so the corrected value \\(4\\) is given above. The book also opens the second factor with a square bracket it never closes.]"
+  },
+  {
+    "ref": "7.1.7 SolvedEx.3",
+    "bracket": "[Textbook error, answer-affecting: the book's final step prints \\(\\dfrac{3-2}{3} = \\dfrac{1}{2}\\). Every line before it is correct — \\(\\sqrt{9} - \\sqrt{4} = 1\\) over \\(3\\) — so the value is \\(\\dfrac{1}{3}\\), not \\(\\dfrac{1}{2}\\). The corrected value is given above.]"
+  },
+  {
+    "ref": "Misc I Q4",
+    "bracket": "[Textbook misprint in the stem: the denominator's radical vinculum is set too wide, running over the whole of \\(3x - 11 - 2\\), so as printed the denominator reads \\(\\sqrt{3x-13}\\). That reading makes the question unanswerable — at \\(x = 5\\) the denominator is \\(\\sqrt{2} \\ne 0\\) while the numerator tends to \\(0\\), giving a limit of \\(0\\), which is none of the four options. The intended denominator is \\(\\sqrt{3x-11} - 2\\): the numerator's own vinculum in the same fraction correctly stops after the \\(4\\), leaving its \\(-3\\) outside, and the book sets a short denominator vinculum correctly elsewhere in this very exercise. Under the intended reading the \\(0/0\\) form rationalises to \\(\\dfrac{\\sqrt{3x-11}+2}{3\\left(\\sqrt{x+4}+3\\right)} \\to \\dfrac{4}{18} = \\dfrac{2}{9}\\), which is the printed key. The answer above follows the intended reading.]"
+  },
+  {
+    "ref": "Misc I Q8",
+    "bracket": "[Textbook defect in the OPTION SET, not in the key: options A and B are the SAME number written two ways, since \\(\\log 15 = \\log(3 \\times 5) = \\log 3 + \\log 5\\). Both are distractors, so the key is unaffected — factoring the numerator as \\(\\left(3^x - 1\\right)\\left(5^x - 1\\right)\\) gives \\(\\log 3 \\cdot \\log 5\\). Verified numerically: the quotient converges to \\(1.768148\\) from both sides, which is \\(\\log 3 \\cdot \\log 5\\).]"
+  },
+  {
+    "ref": "Misc I Q14",
+    "bracket": "[Textbook misprint in an option: option A is printed as \\(\\log 5 - 4\\), checked at high zoom, with no \\(\\log\\) before the \\(4\\). It is almost certainly meant to be \\(\\log 5 - \\log 4\\) — which would have made it an equal-value twin of option B and so a defect of a different kind. Either way the key is unaffected: the limit is \\(\\log 5 - \\log 4 = \\log\\frac{5}{4}\\).]"
+  },
+  {
+    "ref": "Misc II Q7",
+    "bracket": "[Textbook notation, ambiguous as set: the numerator is printed with the \\(2\\) as a superscript on the \\(x\\) of an italic \\(\\sec x\\), i.e. \\(\\sec\\left(x^2\\right) - 1\\), NOT \\(\\sec^2 x - 1\\). The book's own key settles it: \\(\\sec\\left(x^2\\right) - 1 \\sim \\frac{x^4}{2}\\) gives the printed \\(\\frac{1}{2}\\), whereas \\(\\sec^2 x - 1 = \\tan^2 x \\sim x^2\\) over \\(x^4\\) would diverge. Read the argument as \\(x^2\\).]"
+  },
+  {
+    "ref": "Ex 7.2 II Q3",
+    "bracket": "[Textbook oddity, checked and left as printed: the denominator reads \\(x^2 - 1\\), verified at high zoom. At \\(x = 2\\) that is \\(0/3\\), not a \\(0/0\\) form, so the question needs no factorization at all — out of character for an exercise whose whole subject is the method of factorization, and a misprint for \\(x^2 - 4\\) is plausible. No repair is made because the printed key \\((0)\\) does not discriminate: both readings give \\(0\\).]"
+  },
+  {
+    "ref": "7.1.2 SolvedEx.1",
+    "bracket": "[Textbook misprints (typography): the book sets the set-membership glyph \\(\\in\\) throughout this section where the epsilon of the \\(\\varepsilon\\)-\\(\\delta\\) definition is meant — it prints a genuine \\(\\varepsilon\\) later in this same block, confirming the intent — and writes \"If fact any \\(\\delta \\le \\varepsilon/3\\) will do\" for \"In fact\".]"
+  },
+  {
+    "ref": "7.1.2 SolvedEx.2",
+    "bracket": "[Textbook misprint: the closing note says we must find the \"lower bound\" of \\(|x + 3|\\). To bound the product \\(|x+3||x-3|\\) ABOVE the argument in fact uses an UPPER bound, \\(|x + 3| < 7\\), which is what the derivation itself does. Only the word is wrong.]"
+  },
+  {
+    "ref": "7.1.2 SolvedEx.3",
+    "bracket": "[Textbook inconsistencies (two, neither affecting the answer): the stem gives the domain as \\(2 < x < 4\\) while the next line of the solution restates it as \\(2 \\le x \\le 4\\); and with \\(\\delta = 0.3\\) the chain \"\\(2.7 + \\delta < 3\\)\" reads \\(3 < 3\\), false as a strict inequality. Any \\(\\delta < 0.3\\) repairs it, and the conclusion \\(\\lim = 2\\) is correct either way.]"
+  },
+  {
+    "ref": "7.1.8 SolvedEx.2",
+    "bracket": "[Textbook misprint: the compound-fraction step of the printed solution is labelled \\(\\lim_{x \\to 5}\\) where it must be \\(\\lim_{x \\to 2}\\) — every other line of the example, and its own bracketed remark, use \\(x \\to 2\\). The value \\(\\frac{28}{5}\\) is correct.]"
+  },
+  {
+    "ref": "7.1.8 SolvedEx.4",
+    "bracket": "[Textbook misprint: the step \\(\\lim\\left[\\dfrac{2\\left(t^3 - 3^3\\right)}{t - 3}\\right]\\) is labelled \\(x \\to 3\\) where it must be \\(t \\to 3\\); the expression contains no \\(x\\), and the line immediately below correctly reads \\(t \\to 3\\). The value \\(54\\) is correct.]"
+  },
+  {
+    "ref": "7.3 SolvedEx.1",
+    "bracket": "[Textbook misprint: the label is printed \"Soluton :\" for this example only.]"
+  },
+  {
+    "ref": "7.4 SolvedEx.2",
+    "bracket": "[Textbook misprint: the bracketed remark is printed with the arrow missing after the \\(x\\), reading \"As \\(x\\) \\(\\frac{\\pi}{4}\\)\". Restored above, the intent being unambiguous.]"
+  },
+  {
+    "ref": "7.4 SolvedEx.3",
+    "bracket": "[Textbook misprint: the fourth line prints the denominator as \\(1 - \\sin^2 x\\left(\\sqrt{3 - \\sin x} + 2\\right)\\) with \\(1 - \\sin^2 x\\) unbracketed; the intended form, used on the very next line, is \\(\\left(1 - \\sin^2 x\\right)\\left(\\sqrt{3 - \\sin x} + 2\\right)\\).]"
+  },
+  {
+    "ref": "7.5 SolvedEx.3",
+    "bracket": "[Textbook misprint: the second line of the chain carries the denominator \\((1-x)^2\\) where it should be \\(t^2\\) — the substitution has already been made on the line above and is used again on the line below.]"
+  },
+  {
+    "ref": "7.5 SolvedEx.4",
+    "bracket": "[Textbook misprint: the first line of the chain prints \\(\\sqrt{3} - \\tan\\) in the numerator with the argument \\(x\\) dropped.]"
+  },
+  {
+    "ref": "7.6 SolvedEx.2",
+    "bracket": "[Textbook misprint in a citation: the standard result is quoted as \\(\\lim_{x \\to a}\\left(\\frac{a^x - 1}{x}\\right) = \\log a\\), where the limit must be \\(x \\to 0\\). The same result is printed correctly with \\(x \\to 0\\) both in the preceding example and in the section's own statement of it.]"
+  },
+  {
+    "ref": "Ex 7.1 II Q1",
+    "bracket": "[Textbook misprint: the item is printed with a stray leading \\(=\\) before the limit sign, a typesetting artefact with nothing on its left to equate. Omitted above so the question is well-formed.]"
+  },
+  {
+    "ref": "Ex 7.3 II Q5",
+    "bracket": "[Textbook misprint: the item is printed as \"5. \\(=\\) lim ...\", a stray \\(=\\) standing between the item number and the limit with nothing on its left. Omitted above; the limit expression itself is exactly as printed.]"
+  }
+]

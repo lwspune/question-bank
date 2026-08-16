@@ -1,0 +1,102 @@
+[
+  {
+    "id": "60cba55e-7716-4e3c-b8c1-5b0fb4dc5111",
+    "ref": "Ex 7.1 I Q1",
+    "solution": "The expression is defined and continuous at \\(z = -3\\) (the radicand \\(z + 6 = 3 > 0\\) and \\(z \\ne 0\\)), so the limit is obtained by direct substitution. \\(\\dfrac{\\sqrt{-3 + 6}}{-3} = \\dfrac{\\sqrt{3}}{-3} = -\\dfrac{\\sqrt{3}}{3}\\). Hence the limit is \\(-\\dfrac{1}{\\sqrt{3}}\\)."
+  },
+  {
+    "id": "158eadd2-4203-41da-b7a4-ffcf2774aa03",
+    "ref": "Ex 7.1 I Q2",
+    "solution": "Since \\(243 = 3^5\\) and \\(27 = 3^3\\), with \\((-3)^5 = -243\\) and \\((-3)^3 = -27\\), the quotient is \\(\\dfrac{y^5 - (-3)^5}{y^3 - (-3)^3}\\), which is of the form \\(\\dfrac{0}{0}\\). Divide numerator and denominator by \\(y - (-3)\\) and use \\(\\lim_{y \\to a} \\dfrac{y^n - a^n}{y - a} = n a^{n-1}\\) with \\(a = -3\\). The limit \\(= \\dfrac{5(-3)^4}{3(-3)^2} = \\dfrac{5 \\times 81}{3 \\times 9} = \\dfrac{405}{27} = 15\\). Hence the limit is \\(15\\)."
+  },
+  {
+    "id": "d6f97821-5a2a-4352-a2ec-8629d7ebb408",
+    "ref": "Ex 7.1 I Q3",
+    "solution": "Combine the two fractions in the numerator: \\(\\dfrac{1}{z} + \\dfrac{1}{5} = \\dfrac{5 + z}{5z}\\). So the expression becomes \\(\\dfrac{z + 5}{5z(z + 5)} = \\dfrac{1}{5z}\\) for \\(z \\ne -5\\). Taking \\(z \\to -5\\) gives \\(\\dfrac{1}{5(-5)} = -\\dfrac{1}{25}\\). Hence the limit is \\(-\\dfrac{1}{25}\\)."
+  },
+  {
+    "id": "07e17db2-5702-408f-9947-020dbc29cd51",
+    "ref": "Ex 7.1 II Q1",
+    "solution": "The expression is continuous at \\(x = 3\\), so substitute directly. \\(\\dfrac{\\sqrt{2(3) + 6}}{3} = \\dfrac{\\sqrt{12}}{3} = \\dfrac{2\\sqrt{3}}{3}\\). Hence the limit is \\(\\dfrac{2\\sqrt{3}}{3}\\)."
+  },
+  {
+    "id": "b0fa739e-8d17-4102-9f97-94996ad12f92",
+    "ref": "Ex 7.1 II Q2",
+    "solution": "This is of the form \\(\\dfrac{0}{0}\\) and matches the standard limit \\(\\lim_{x \\to a} \\dfrac{x^n - a^n}{x - a} = n a^{n-1}\\) with \\(n = -3\\) and \\(a = 2\\). So the limit \\(= (-3)(2)^{-4} = -\\dfrac{3}{2^4} = -\\dfrac{3}{16}\\). Hence the limit is \\(-\\dfrac{3}{16}\\)."
+  },
+  {
+    "id": "d3c0f9e1-7884-4907-be64-ec40f3e18d91",
+    "ref": "Ex 7.1 II Q3",
+    "solution": "Since \\(125 = 5^3\\) and \\(3125 = 5^5\\), the quotient is \\(\\dfrac{x^3 - 5^3}{x^5 - 5^5}\\), of the form \\(\\dfrac{0}{0}\\). Divide both numerator and denominator by \\(x - 5\\) and apply \\(\\lim_{x \\to a} \\dfrac{x^n - a^n}{x - a} = n a^{n-1}\\) with \\(a = 5\\). The limit \\(= \\dfrac{3(5)^2}{5(5)^4} = \\dfrac{75}{3125} = \\dfrac{3}{125}\\). Hence the limit is \\(\\dfrac{3}{125}\\)."
+  },
+  {
+    "id": "15b750a6-32b5-46fd-8d76-cc9882a0cad3",
+    "ref": "Ex 7.1 II Q4",
+    "solution": "Using \\(\\lim_{x \\to a} \\dfrac{x^n - a^n}{x - a} = n a^{n-1}\\): the left side is \\(\\lim_{x \\to 1} \\dfrac{x^4 - 1^4}{x - 1} = 4(1)^3 = 4\\), and the right side is \\(\\lim_{x \\to a} \\dfrac{x^3 - a^3}{x - a} = 3a^2\\). Equating, \\(3a^2 = 4\\), so \\(a^2 = \\dfrac{4}{3}\\) and \\(a = \\pm \\dfrac{2}{\\sqrt{3}}\\). Hence \\(a = \\pm \\dfrac{2}{\\sqrt{3}}\\)."
+  },
+  {
+    "id": "c75009fc-4c17-42f4-b19b-d6078620a13e",
+    "ref": "Ex 7.1 III Q1",
+    "solution": "Write \\(n = 1 + 1 + \\ldots + 1\\) (\\(n\\) terms) and pair each power with a \\(1\\), so the expression becomes \\(\\dfrac{(x - 1) + (x^2 - 1) + \\ldots + (x^n - 1)}{x - 1} = \\sum_{r=1}^{n} \\dfrac{x^r - 1^r}{x - 1}\\). Taking \\(x \\to 1\\) and using \\(\\lim_{x \\to 1} \\dfrac{x^r - 1^r}{x - 1} = r(1)^{r-1} = r\\), the limit \\(= 1 + 2 + \\ldots + n = \\dfrac{n(n+1)}{2}\\). Hence the limit is \\(\\dfrac{n(n+1)}{2}\\)."
+  },
+  {
+    "id": "e8dfbaf7-5f3f-4bb0-8b29-5b8cce327ad1",
+    "ref": "Ex 7.1 III Q2",
+    "solution": "The numerator is a difference of squares: \\(\\left( x^{1/3} - 7^{1/3} \\right)\\left( x^{1/3} + 7^{1/3} \\right) = x^{2/3} - 7^{2/3}\\). So the limit is \\(\\lim_{x \\to 7} \\dfrac{x^{2/3} - 7^{2/3}}{x - 7} = \\dfrac{2}{3}(7)^{2/3 - 1} = \\dfrac{2}{3} \\times 7^{-1/3}\\). Hence the limit is \\(\\dfrac{2}{3\\sqrt[3]{7}}\\)."
+  },
+  {
+    "id": "da7a74e1-8053-419a-bb6e-78ea0a24f02b",
+    "ref": "Ex 7.1 III Q3",
+    "solution": "By \\(\\lim_{x \\to a} \\dfrac{x^k - a^k}{x - a} = k a^{k-1}\\) with \\(a = 5\\), the given condition is \\(k \\cdot 5^{k-1} = 500\\). Trying \\(k = 4\\): \\(4 \\times 5^3 = 4 \\times 125 = 500\\), which satisfies it. Since \\(k \\cdot 5^{k-1}\\) is strictly increasing for \\(k > 0\\) and is negative for \\(k < 0\\), no other value works. Hence \\(k = 4\\)."
+  },
+  {
+    "id": "075d4647-0b4c-4d77-953c-ea0e9577c39d",
+    "ref": "Ex 7.1 III Q4",
+    "solution": "Put \\(t = 1 - x\\); as \\(x \\to 0\\), \\(t \\to 1\\). The limit becomes \\(\\lim_{t \\to 1} \\dfrac{t^8 - 1}{t^2 - 1}\\), which is of the form \\(\\dfrac{0}{0}\\). Dividing numerator and denominator by \\(t - 1\\) and using \\(\\lim_{t \\to 1} \\dfrac{t^n - 1^n}{t - 1} = n\\), it equals \\(\\dfrac{8}{2} = 4\\). Hence the limit is \\(4\\)."
+  },
+  {
+    "id": "d8f55018-5349-4cd6-8110-27ca53b19dd7",
+    "ref": "Ex 7.1 III Q5",
+    "solution": "Subtract and add \\(1\\) in the numerator and split: \\(\\dfrac{(1 + x)^{1/3} - 1}{x} - \\dfrac{(1 + x)^{1/2} - 1}{x}\\). Using the standard limit \\(\\lim_{x \\to 0} \\dfrac{(1 + x)^n - 1}{x} = n\\), this tends to \\(\\dfrac{1}{3} - \\dfrac{1}{2} = \\dfrac{2 - 3}{6} = -\\dfrac{1}{6}\\). Hence the limit is \\(-\\dfrac{1}{6}\\)."
+  },
+  {
+    "id": "d1740c48-68d2-4bf6-94c5-7b1cc70e2fe3",
+    "ref": "Ex 7.1 III Q6",
+    "solution": "At \\(y = 1\\) both parts vanish, since \\(\\sqrt[3]{7 + 1} = 2\\). Put \\(u = 7 + y\\), so \\(u \\to 8\\) and \\(y - 1 = u - 8\\). The limit becomes \\(2 \\lim_{u \\to 8} \\dfrac{u - 8}{u^{1/3} - 8^{1/3}} = \\dfrac{2}{\\lim_{u \\to 8} \\frac{u^{1/3} - 8^{1/3}}{u - 8}} = \\dfrac{2}{\\frac{1}{3}(8)^{-2/3}} = \\dfrac{2}{\\frac{1}{3} \\times \\frac{1}{4}} = 2 \\times 12 = 24\\). Hence the limit is \\(24\\)."
+  },
+  {
+    "id": "bb07378d-b5ce-4521-9a98-b892becce9f8",
+    "ref": "Ex 7.1 III Q7",
+    "solution": "Put \\(u = z + 2\\) and \\(b = a + 2\\); as \\(z \\to a\\), \\(u \\to b\\) and \\(z - a = u - b\\). The limit becomes \\(\\lim_{u \\to b} \\dfrac{u^{3/2} - b^{3/2}}{u - b} = \\dfrac{3}{2} b^{1/2}\\). Substituting back \\(b = a + 2\\), the limit is \\(\\dfrac{3\\sqrt{a + 2}}{2}\\)."
+  },
+  {
+    "id": "b3357c6f-86ba-4f06-94a0-b109683d95a3",
+    "ref": "Ex 7.1 III Q8",
+    "solution": "Divide numerator and denominator by \\(x - 7\\): the limit is \\(\\dfrac{\\lim_{x \\to 7} \\frac{x^3 - 7^3}{x - 7}}{\\lim_{x \\to 7} \\frac{x^{1/2} - 7^{1/2}}{x - 7}}\\). The numerator limit is \\(3(7)^2 = 147\\) and the denominator limit is \\(\\dfrac{1}{2}(7)^{-1/2} = \\dfrac{1}{2\\sqrt{7}}\\). So the limit \\(= 147 \\times 2\\sqrt{7} = 294\\sqrt{7}\\). Hence the limit is \\(294\\sqrt{7}\\)."
+  },
+  {
+    "id": "6502852b-c2c5-4aa6-bffe-e1a1204784b1",
+    "ref": "Ex 7.1 III Q9",
+    "solution": "There are \\(n\\) powers, so write \\(n\\) as \\(n\\) ones and pair them off: the expression equals \\(\\sum_{r=1}^{n} \\dfrac{x^{2r-1} - 1}{x - 1}\\). As \\(x \\to 1\\), each term tends to \\(2r - 1\\), so the limit \\(= 1 + 3 + 5 + \\ldots + (2n - 1) = n^2\\). Hence the limit is \\(n^2\\)."
+  },
+  {
+    "id": "0868ec86-af2c-43af-a0eb-bc2690f20970",
+    "ref": "Ex 7.1 IV Q1",
+    "solution": "Here \\(f(x) = 2x + 3\\), \\(a = 2\\), \\(l = 7\\). Then \\(|f(x) - l| = |2x + 3 - 7| = |2x - 4| = 2|x - 2|\\). So \\(|f(x) - 7| < \\varepsilon\\) holds exactly when \\(2|x - 2| < \\varepsilon\\), that is when \\(|x - 2| < \\dfrac{\\varepsilon}{2}\\). Hence choosing \\(\\delta = \\dfrac{\\varepsilon}{2}\\) works: whenever \\(|x - 2| < \\delta\\) we get \\(|2x + 3 - 7| < \\varepsilon\\)."
+  },
+  {
+    "id": "29d57185-3efb-4979-90a8-e3c6ce6170d2",
+    "ref": "Ex 7.1 IV Q2",
+    "solution": "Here \\(f(x) = 3x + 2\\), \\(a = -3\\), \\(l = -7\\). Then \\(|f(x) - l| = |3x + 2 + 7| = |3x + 9| = 3|x + 3|\\). So \\(|f(x) + 7| < \\varepsilon\\) holds exactly when \\(3|x + 3| < \\varepsilon\\), that is when \\(|x + 3| < \\dfrac{\\varepsilon}{3}\\). Hence choosing \\(\\delta = \\dfrac{\\varepsilon}{3}\\) works: whenever \\(|x + 3| < \\delta\\) we get \\(|3x + 2 - (-7)| < \\varepsilon\\)."
+  },
+  {
+    "id": "c7ec2add-0afd-45ed-aad2-17031e4f6a16",
+    "ref": "Ex 7.1 IV Q3",
+    "solution": "Here \\(f(x) = x^2 - 1\\), \\(a = 2\\), \\(l = 3\\), and \\(|f(x) - l| = |x^2 - 4| = |x - 2| \\cdot |x + 2|\\). First restrict \\(|x - 2| < 1\\), which gives \\(1 < x < 3\\) and hence \\(|x + 2| < 5\\). Then \\(|x^2 - 4| < 5|x - 2|\\), which is less than \\(\\varepsilon\\) whenever \\(|x - 2| < \\dfrac{\\varepsilon}{5}\\). Hence \\(\\delta = \\min\\left\\{ 1, \\dfrac{\\varepsilon}{5} \\right\\}\\) works."
+  },
+  {
+    "id": "b81afe4b-19b9-4286-a0e1-c439b14f43d0",
+    "ref": "Ex 7.1 IV Q4",
+    "solution": "Here \\(f(x) = x^2 + x + 1\\), \\(a = 1\\), \\(l = 3\\), and \\(|f(x) - l| = |x^2 + x - 2| = |x - 1| \\cdot |x + 2|\\). First restrict \\(|x - 1| < 1\\), which gives \\(0 < x < 2\\) and hence \\(|x + 2| < 4\\). Then \\(|x^2 + x - 2| < 4|x - 1|\\), which is less than \\(\\varepsilon\\) whenever \\(|x - 1| < \\dfrac{\\varepsilon}{4}\\). Hence \\(\\delta = \\min\\left\\{ 1, \\dfrac{\\varepsilon}{4} \\right\\}\\) works."
+  }
+]

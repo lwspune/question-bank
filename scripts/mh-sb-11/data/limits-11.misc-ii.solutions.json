@@ -1,0 +1,122 @@
+[
+  {
+    "id": "a3a3b1b6-270b-499a-a7eb-86b28255eafe",
+    "ref": "Misc II Q1",
+    "solution": "Put \\(t = 1-x\\); as \\(x \\to 0\\), \\(t \\to 1\\). The limit becomes \\(\\lim_{t \\to 1}\\frac{t^{5}-1}{t^{3}-1}\\). Divide numerator and denominator by \\(t-1\\) and use \\(\\lim_{t \\to 1}\\frac{t^{n}-1}{t-1} = n\\): the value is \\(\\frac{5}{3}\\). Final answer: \\(\\frac{5}{3}\\)."
+  },
+  {
+    "id": "b77bdb31-388b-49fd-bdb3-8d55edf2e7f6",
+    "ref": "Misc II Q2",
+    "solution": "For \\(-1 \\le x < 0\\) we have \\([x] = -1\\), so the left-hand limit is \\(\\lim_{x \\to 0^{-}}[x] = -1\\). For \\(0 \\le x < 1\\) we have \\([x] = 0\\), so the right-hand limit is \\(\\lim_{x \\to 0^{+}}[x] = 0\\). Since \\(-1 \\ne 0\\), the two one-sided limits are unequal. Final answer: the limit does not exist."
+  },
+  {
+    "id": "8a683ea9-9fd8-4517-b21a-64a04e5ea198",
+    "ref": "Misc II Q3",
+    "solution": "\\(f(r+h)-f(r) = \\pi(r+h)^{2}-\\pi r^{2} = \\pi\\left(2rh+h^{2}\\right) = \\pi h(2r+h)\\). Hence \\(\\lim_{h \\to 0}\\frac{\\pi h(2r+h)}{h} = \\lim_{h \\to 0}\\pi(2r+h) = 2\\pi r\\). Final answer: \\(2\\pi r\\)."
+  },
+  {
+    "id": "5d1aad39-557b-48a9-a643-ebdabda5b318",
+    "ref": "Misc II Q4",
+    "solution": "For \\(x > 0\\), \\(|x| = x\\), so \\(\\frac{x}{|x|+x^{2}} = \\frac{x}{x(1+x)} = \\frac{1}{1+x}\\), and the right-hand limit is \\(\\lim_{x \\to 0^{+}}\\frac{1}{1+x} = 1\\). For \\(x < 0\\), \\(|x| = -x\\), so \\(\\frac{x}{-x+x^{2}} = \\frac{x}{x(x-1)} = \\frac{1}{x-1}\\), and the left-hand limit is \\(\\lim_{x \\to 0^{-}}\\frac{1}{x-1} = -1\\). Since \\(1 \\ne -1\\), the one-sided limits differ. Final answer: the limit does not exist."
+  },
+  {
+    "id": "392a6e08-3593-4f7c-86eb-6929324f4e25",
+    "ref": "Misc II Q5",
+    "solution": "For \\(x < 1\\), \\(f(x) = 7-4x\\), so LHL \\(= \\lim_{x \\to 1^{-}}(7-4x) = 7-4 = 3\\). For \\(x \\ge 1\\), \\(f(x) = x^{2}+2\\), so RHL \\(= \\lim_{x \\to 1^{+}}\\left(x^{2}+2\\right) = 1+2 = 3\\). The two one-sided limits are equal, so the limit exists. Final answer: \\(\\lim_{x \\to 1} f(x) = 3\\)."
+  },
+  {
+    "id": "e58d41ff-31b1-467c-a7aa-00eaa78302a3",
+    "ref": "Misc II Q6",
+    "solution": "At \\(x = 3\\) the two bounding functions agree: \\(\\lim_{x \\to 3} 7x = 21\\) and \\(\\lim_{x \\to 3}\\left(3x^{2}-6\\right) = 27-6 = 21\\). Since \\(7x \\le f(x) \\le 3x^{2}-6\\) for all \\(x\\), and both bounds tend to the same value \\(21\\), the squeeze (sandwich) theorem forces \\(f(x)\\) to the same value. Final answer: \\(\\lim_{x \\to 3} f(x) = 21\\)."
+  },
+  {
+    "id": "d60a35c7-8f2c-4e83-99a1-5882aba3b8bb",
+    "ref": "Misc II Q7",
+    "solution": "Here \\(\\sec x^{2}\\) means \\(\\sec\\left(x^{2}\\right)\\). Write \\(\\sec\\left(x^{2}\\right)-1 = \\frac{1-\\cos\\left(x^{2}\\right)}{\\cos\\left(x^{2}\\right)}\\), so the expression is \\(\\frac{1}{\\cos\\left(x^{2}\\right)}\\cdot\\frac{1-\\cos\\left(x^{2}\\right)}{x^{4}}\\). Using \\(1-\\cos\\theta = 2\\sin^{2}\\frac{\\theta}{2}\\) with \\(\\theta = x^{2}\\), \\(\\frac{1-\\cos\\left(x^{2}\\right)}{x^{4}} = \\frac{2\\sin^{2}\\left(\\frac{x^{2}}{2}\\right)}{x^{4}} = \\frac{1}{2}\\left[\\frac{\\sin\\left(\\frac{x^{2}}{2}\\right)}{\\frac{x^{2}}{2}}\\right]^{2} \\to \\frac{1}{2}\\), while \\(\\cos\\left(x^{2}\\right) \\to 1\\). Final answer: \\(\\frac{1}{2}\\)."
+  },
+  {
+    "id": "a36d47a1-01ed-4517-acb7-deb748fc85c8",
+    "ref": "Misc II Q8",
+    "solution": "Factorise the numerator: \\(e^{x}+e^{-x}-2 = e^{-x}\\left(e^{2x}-2e^{x}+1\\right) = e^{-x}\\left(e^{x}-1\\right)^{2}\\). So the expression equals \\(e^{-x}\\cdot\\left(\\frac{e^{x}-1}{x}\\right)^{2}\\cdot\\frac{x}{\\tan x}\\). As \\(x \\to 0\\), \\(e^{-x} \\to 1\\), \\(\\frac{e^{x}-1}{x} \\to 1\\) and \\(\\frac{x}{\\tan x} \\to 1\\). Final answer: \\(1\\)."
+  },
+  {
+    "id": "9c50946c-c2ec-4e6b-91a5-b914314fc7b0",
+    "ref": "Misc II Q9",
+    "solution": "Numerator: \\(x\\left(6^{x}-3^{x}\\right) = x\\cdot 3^{x}\\left(2^{x}-1\\right)\\). Denominator: \\(\\cos 6x - \\cos 4x = -2\\sin 5x \\sin x\\). Hence the expression is \\(-\\frac{3^{x}}{2}\\cdot\\frac{2^{x}-1}{x}\\cdot\\frac{x}{\\sin 5x}\\cdot\\frac{x}{\\sin x}\\). As \\(x \\to 0\\): \\(3^{x} \\to 1\\), \\(\\frac{2^{x}-1}{x} \\to \\log 2\\), \\(\\frac{x}{\\sin 5x} \\to \\frac{1}{5}\\) and \\(\\frac{x}{\\sin x} \\to 1\\). So the limit is \\(-\\frac{1}{2}\\cdot\\log 2\\cdot\\frac{1}{5}\\). Final answer: \\(-\\frac{1}{10}\\log 2\\)."
+  },
+  {
+    "id": "b10e55a1-2be1-40fe-8392-0c8be030688c",
+    "ref": "Misc II Q10",
+    "solution": "Factorise the numerator by grouping: \\(a^{3x}-a^{2x}-a^{x}+1 = a^{2x}\\left(a^{x}-1\\right)-\\left(a^{x}-1\\right) = \\left(a^{x}-1\\right)\\left(a^{2x}-1\\right)\\). So the expression is \\(2\\cdot\\frac{a^{x}-1}{x}\\cdot\\frac{a^{2x}-1}{2x}\\cdot\\frac{x}{\\tan x}\\). As \\(x \\to 0\\), \\(\\frac{a^{x}-1}{x} \\to \\log a\\), \\(\\frac{a^{2x}-1}{2x} \\to \\log a\\) and \\(\\frac{x}{\\tan x} \\to 1\\). Final answer: \\(2(\\log a)^{2}\\)."
+  },
+  {
+    "id": "7fccb3f3-14ed-4849-a1e3-9a253aa80e57",
+    "ref": "Misc II Q11",
+    "solution": "Use \\(\\sin x - \\sin a = 2\\cos\\left(\\frac{x+a}{2}\\right)\\sin\\left(\\frac{x-a}{2}\\right)\\). Then the expression is \\(\\cos\\left(\\frac{x+a}{2}\\right)\\cdot\\frac{\\sin\\left(\\frac{x-a}{2}\\right)}{\\frac{x-a}{2}}\\). As \\(x \\to a\\), \\(\\frac{x-a}{2} \\to 0\\) so the second factor \\(\\to 1\\), and \\(\\cos\\left(\\frac{x+a}{2}\\right) \\to \\cos a\\). Final answer: \\(\\cos a\\)."
+  },
+  {
+    "id": "9aed9ac1-69f8-4221-b36e-247357c80d4c",
+    "ref": "Misc II Q12",
+    "solution": "\\(\\log x - \\log 2 = \\log\\frac{x}{2}\\). Put \\(x = 2+h\\), so \\(h \\to 0\\) and \\(\\frac{x}{2} = 1+\\frac{h}{2}\\). The expression becomes \\(\\frac{\\log\\left(1+\\frac{h}{2}\\right)}{h} = \\frac{1}{2}\\cdot\\frac{\\log\\left(1+\\frac{h}{2}\\right)}{\\frac{h}{2}}\\). Using \\(\\lim_{t \\to 0}\\frac{\\log(1+t)}{t} = 1\\), this tends to \\(\\frac{1}{2}\\). Final answer: \\(\\frac{1}{2}\\)."
+  },
+  {
+    "id": "7487a1a4-70d9-48c0-a299-e489c9eaa3ed",
+    "ref": "Misc II Q13",
+    "solution": "\\(ab^{x}-a^{x}b = ab\\left(b^{x-1}-a^{x-1}\\right) = ab\\left[\\left(b^{x-1}-1\\right)-\\left(a^{x-1}-1\\right)\\right]\\). Put \\(t = x-1 \\to 0\\); then \\(x^{2}-1 = (x-1)(x+1) = t(x+1)\\) and the expression becomes \\(\\frac{ab}{x+1}\\left[\\frac{b^{t}-1}{t}-\\frac{a^{t}-1}{t}\\right]\\). As \\(x \\to 1\\) this tends to \\(\\frac{ab}{2}\\left(\\log b - \\log a\\right)\\). Final answer: \\(\\frac{ab}{2}\\log\\frac{b}{a}\\)."
+  },
+  {
+    "id": "4510a159-5738-4f11-bdef-1ad63d17f127",
+    "ref": "Misc II Q14",
+    "solution": "Rewrite the expression as \\(\\left(\\frac{5^{x}-1}{x}\\right)^{2}\\cdot\\frac{x}{2^{x}-1}\\cdot\\frac{x}{\\log(1+x)}\\). As \\(x \\to 0\\): \\(\\frac{5^{x}-1}{x} \\to \\log 5\\), \\(\\frac{2^{x}-1}{x} \\to \\log 2\\) and \\(\\frac{\\log(1+x)}{x} \\to 1\\). So the limit is \\(\\frac{(\\log 5)^{2}}{\\log 2}\\). Final answer: \\(\\frac{(\\log 5)^{2}}{\\log 2}\\)."
+  },
+  {
+    "id": "9425433e-1e5f-4cfc-ae84-593b7d1de071",
+    "ref": "Misc II Q15",
+    "solution": "Numerator and denominator are both of degree \\(2+3 = 5\\). Divide each bracket by the appropriate power of \\(x\\): the expression becomes \\(\\frac{\\left(2+\\frac{1}{x}\\right)^{2}\\left(7-\\frac{3}{x}\\right)^{3}}{\\left(5+\\frac{2}{x}\\right)^{5}}\\). As \\(x \\to \\infty\\), \\(\\frac{1}{x} \\to 0\\), giving \\(\\frac{(2)^{2}(7)^{3}}{(5)^{5}} = \\frac{4 \\times 343}{3125}\\). Final answer: \\(\\frac{1372}{3125}\\)."
+  },
+  {
+    "id": "2482b339-568e-4268-941f-f7b56ec0d61c",
+    "ref": "Misc II Q16",
+    "solution": "Write \\(x\\cos a - a\\cos x = \\cos a\\,(x-a) + a\\left(\\cos a - \\cos x\\right)\\). So the expression is \\(\\cos a + a\\cdot\\frac{\\cos a - \\cos x}{x-a}\\). Using \\(\\cos a - \\cos x = 2\\sin\\left(\\frac{x+a}{2}\\right)\\sin\\left(\\frac{x-a}{2}\\right)\\), the second term equals \\(a\\sin\\left(\\frac{x+a}{2}\\right)\\cdot\\frac{\\sin\\left(\\frac{x-a}{2}\\right)}{\\frac{x-a}{2}} \\to a\\sin a\\) as \\(x \\to a\\). Final answer: \\(a\\sin a + \\cos a\\)."
+  },
+  {
+    "id": "6a4d9e5a-8630-4020-86c8-633d478dcd40",
+    "ref": "Misc II Q17",
+    "solution": "Let \\(s = \\sin x + \\cos x\\), so \\(s^{2} = 1+2\\sin x\\cos x\\). Then \\((\\sin x - \\cos x)^{2} = 1-2\\sin x\\cos x = 2-s^{2}\\). Hence, for \\(x\\) near but not equal to \\(\\frac{\\pi}{4}\\) (so \\(s \\ne \\sqrt{2}\\)), the expression is \\(\\frac{2-s^{2}}{\\sqrt{2}-s} = \\frac{\\left(\\sqrt{2}-s\\right)\\left(\\sqrt{2}+s\\right)}{\\sqrt{2}-s} = \\sqrt{2}+s\\). As \\(x \\to \\frac{\\pi}{4}\\), \\(s \\to \\frac{1}{\\sqrt{2}}+\\frac{1}{\\sqrt{2}} = \\sqrt{2}\\). Final answer: \\(2\\sqrt{2}\\)."
+  },
+  {
+    "id": "71e61ef8-276f-49e7-a1e3-d6e4a4c9eb22",
+    "ref": "Misc II Q18",
+    "solution": "Put \\(t = x-1\\), so \\(t \\to 0\\) and \\(2^{x} = 2^{t+1} = 2\\cdot 2^{t}\\). The numerator becomes \\(2^{2t}-2\\cdot 2^{t}+1 = \\left(2^{t}-1\\right)^{2}\\), so the expression is \\(\\left(\\frac{2^{t}-1}{t}\\right)^{2}\\cdot\\left(\\frac{t}{\\sin t}\\right)^{2}\\). As \\(t \\to 0\\) these tend to \\((\\log 2)^{2}\\) and \\(1\\). Final answer: \\((\\log 2)^{2}\\)."
+  },
+  {
+    "id": "e2a4fa2b-9050-4816-b7ec-90b9b0795dcf",
+    "ref": "Misc II Q19",
+    "solution": "Put \\(t = x-1\\), so \\(t \\to 0\\), \\(4^{x-1} = 4^{t} = \\left(2^{t}\\right)^{2}\\) and \\(2^{x} = 2\\cdot 2^{t}\\). The numerator becomes \\(\\left(2^{t}\\right)^{2}-2\\cdot 2^{t}+1 = \\left(2^{t}-1\\right)^{2}\\), so the expression is \\(\\left(\\frac{2^{t}-1}{t}\\right)^{2} \\to (\\log 2)^{2}\\). Final answer: \\((\\log 2)^{2}\\)."
+  },
+  {
+    "id": "2229f7ac-dd67-4477-bd40-7b8828524a58",
+    "ref": "Misc II Q20",
+    "solution": "Put \\(x = 1+t\\), so \\(t \\to 0\\). Rationalise the numerator: \\(\\sqrt{1+t}-1 = \\frac{(1+t)-1}{\\sqrt{1+t}+1} = \\frac{t}{\\sqrt{1+t}+1}\\). The expression becomes \\(\\frac{1}{\\sqrt{1+t}+1}\\cdot\\frac{t}{\\log(1+t)}\\). As \\(t \\to 0\\) these tend to \\(\\frac{1}{2}\\) and \\(1\\). Final answer: \\(\\frac{1}{2}\\)."
+  },
+  {
+    "id": "7936b0c8-02ae-4577-aab9-3eca52db06ea",
+    "ref": "Misc II Q21",
+    "solution": "Since \\(1-\\cos x = 2\\sin^{2}\\frac{x}{2}\\), we get \\(\\sqrt{1-\\cos x} = \\sqrt{2}\\left|\\sin\\frac{x}{2}\\right|\\); the modulus is essential because a square root is non-negative. For \\(x \\to 0^{+}\\), \\(\\sin\\frac{x}{2} > 0\\), so the expression is \\(\\frac{\\sqrt{2}\\sin\\frac{x}{2}}{x} = \\frac{\\sqrt{2}}{2}\\cdot\\frac{\\sin\\frac{x}{2}}{\\frac{x}{2}} \\to \\frac{\\sqrt{2}}{2} = \\frac{1}{\\sqrt{2}}\\). For \\(x \\to 0^{-}\\), \\(\\sin\\frac{x}{2} < 0\\), so \\(\\left|\\sin\\frac{x}{2}\\right| = -\\sin\\frac{x}{2}\\) and the expression is \\(-\\frac{\\sqrt{2}}{2}\\cdot\\frac{\\sin\\frac{x}{2}}{\\frac{x}{2}} \\to -\\frac{1}{\\sqrt{2}}\\). The two one-sided limits are \\(\\frac{1}{\\sqrt{2}}\\) and \\(-\\frac{1}{\\sqrt{2}}\\), which are unequal. Final answer: the limit does not exist."
+  },
+  {
+    "id": "b2c616e7-ad67-4e90-925e-9643900fc352",
+    "ref": "Misc II Q22",
+    "solution": "The coefficients are the first \\(n\\) odd numbers, whose sum is \\(1+3+5+\\cdots+(2n-1) = n^{2}\\). So the numerator is \\(\\sum_{k=1}^{n}(2k-1)x^{k}-\\sum_{k=1}^{n}(2k-1) = \\sum_{k=1}^{n}(2k-1)\\left(x^{k}-1\\right)\\), and the expression equals \\(\\sum_{k=1}^{n}(2k-1)\\cdot\\frac{x^{k}-1}{x-1}\\). Using \\(\\lim_{x \\to 1}\\frac{x^{k}-1}{x-1} = k\\), the limit is \\(\\sum_{k=1}^{n}k(2k-1) = 2\\sum_{k=1}^{n}k^{2}-\\sum_{k=1}^{n}k = \\frac{2n(n+1)(2n+1)}{6}-\\frac{n(n+1)}{2} = \\frac{n(n+1)\\left[2(2n+1)-3\\right]}{6}\\). Final answer: \\(\\frac{n(n+1)(4n-1)}{6}\\)."
+  },
+  {
+    "id": "394c5295-be61-4d6d-9e9e-59bdb6669e8b",
+    "ref": "Misc II Q23",
+    "solution": "The bracket factorises as \\(\\left(1-\\cos\\frac{x^{2}}{2}\\right)\\left(1-\\cos\\frac{x^{4}}{4}\\right)\\), since \\((1-A)(1-B) = 1-A-B+AB\\). Split \\(x^{12} = x^{4}\\cdot x^{8}\\) and use \\(1-\\cos\\theta = 2\\sin^{2}\\frac{\\theta}{2}\\): \\(\\frac{1-\\cos\\frac{x^{2}}{2}}{x^{4}} = \\frac{2\\sin^{2}\\frac{x^{2}}{4}}{x^{4}} = \\frac{1}{8}\\left[\\frac{\\sin\\frac{x^{2}}{4}}{\\frac{x^{2}}{4}}\\right]^{2} \\to \\frac{1}{8}\\), and \\(\\frac{1-\\cos\\frac{x^{4}}{4}}{x^{8}} = \\frac{2\\sin^{2}\\frac{x^{4}}{8}}{x^{8}} = \\frac{1}{32}\\left[\\frac{\\sin\\frac{x^{4}}{8}}{\\frac{x^{4}}{8}}\\right]^{2} \\to \\frac{1}{32}\\). The limit is \\(\\frac{1}{8}\\times\\frac{1}{32}\\). Final answer: \\(\\frac{1}{256}\\)."
+  },
+  {
+    "id": "729be24b-97ef-4e03-b36e-73df2ecae1cc",
+    "ref": "Misc II Q24",
+    "solution": "Divide numerator and denominator of the base by \\(x^{2}\\): \\(\\frac{8+\\frac{5}{x}+\\frac{3}{x^{2}}}{2-\\frac{7}{x}-\\frac{5}{x^{2}}} \\to \\frac{8}{2} = 4\\). Divide the index throughout by \\(x\\): \\(\\frac{4+\\frac{3}{x}}{8-\\frac{1}{x}} \\to \\frac{4}{8} = \\frac{1}{2}\\). The base tends to a finite positive number other than \\(1\\), so the limit is \\(4^{\\frac{1}{2}} = \\sqrt{4}\\). Final answer: \\(2\\)."
+  }
+]

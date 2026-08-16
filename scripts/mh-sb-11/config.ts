@@ -446,6 +446,26 @@ export const CHAPTERS: Record<string, Chapter> = {
   },
 
   // ══ PART 2 (the book restarts at Ch.1 — see the numbering note above) ═════
+  // ── INGESTED 2026-08-16. The FIRST chapter of Part 2, and the one whose ANSWER
+  //    KEY uses a numbering format found nowhere else in the book: it numbers
+  //    questions **`Q.1`, `Q.2`, …** with the dot BEFORE the number, where every
+  //    other chapter uses `1)`. That broke the step-6 key-floor probe silently —
+  //    it reported ZERO keyed questions for all four exercises, which reads exactly
+  //    like "this chapter has no key". See README rule 2c for the three formats and
+  //    the regex that handles all of them.
+  //
+  //    MANY SMALL SOLVED BLOCKS, each restarting at `Ex. 1`, so nearly every one
+  //    needs a sub-section-scoped prefix: `1.2` (the p-04 banner block), `1.3`,
+  //    `1.4`, `1.5.2`, `1.5.5`, `1.6`, `1.8`, plus the in-line `1.2.x` items under
+  //    the algebra sub-sections. Do NOT merge them into one continuous run.
+  //
+  //    Exercise 1.2 SPILLS onto p-09 — the sixth exercise in this book found running
+  //    past the page its banner sits on, and the boundary is MID-LEFT-COLUMN: Ex 1.2
+  //    Q5(v) ends ~70% down p-09's left column and §1.5 opens immediately beneath it
+  //    in that same column. Nothing about the page geometry marks the transition.
+  //
+  //    Figures: 9, mostly Argand-diagram illustrations in the §1.5 theory. No page
+  //    carries both a figure and an exercise banner, so expect no figure-attach.
   "complex-numbers-11": {
     id: "complex-numbers-11",
     chapterName: "Complex Numbers",
@@ -713,8 +733,22 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
-  // NOTE the book prints Exercise 7.6 then 7.8 with NO 7.7 (visible in its own
-  // answers section) — a printed-book numbering gap, not a transcription miss.
+  // ── NUMBERING DEFECT, and this note previously had it BACKWARDS. Corrected
+  //    2026-08-16 against both the chapter and the answers section.
+  //
+  //    The CHAPTER is coherent: it prints EXERCISE 7.1 … 7.6 and then 7.7
+  //    (p-24, split into parts I and II), contiguous, with no 7.8 anywhere.
+  //    The ANSWERS SECTION is the defective one: it keys 7.1 … 7.6 and then
+  //    labels that final block "EXERCISE 7.8", skipping 7.7 entirely. The two
+  //    are the same block — the chapter's 7.7 part I has three questions and the
+  //    key's "7.8" part I has exactly three entries (a/e, 1, 7/8).
+  //
+  //    REFS FOLLOW THE CHAPTER: `Ex 7.7 Q<n>`. There is no Exercise 7.8 to look
+  //    for, and an agent told otherwise would hunt a block that does not exist.
+  //    Note this is the OPPOSITE polarity to Ch.6 Functions' Exercise 6.1, where
+  //    the page was self-inconsistent and the KEY was coherent — so neither
+  //    source outranks the other by default. Whichever one is internally
+  //    contiguous is the one to follow, and that has to be checked per chapter.
   "limits-11": {
     id: "limits-11",
     chapterName: "Limits",
@@ -736,6 +770,42 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── INGESTED 2026-08-16. STRUCTURALLY THE SIMPLEST CHAPTER IN THE BOOK: exactly
+  //    ONE solved block and ONE exercise block, against Straight Line's nine and
+  //    seven. The solved run is numbered continuously Ex.1..Ex.12 across p-04..p-11
+  //    and never restarts, so it takes a single `8.1 SolvedEx.` prefix.
+  //
+  //    NO theory-embedded solved example exists, so the `a`-suffix device used in
+  //    Sequences (2.3.1a, 2.4a) and Probability (9.1.1a) is NOT in play here. The
+  //    solution marker on p-02 was checked and is the continuation of a numbered
+  //    *Illustration* in the theory, not an `Ex. n`. This chapter's Illustrations
+  //    1-6 are deliberately not ingested — they are worked theory passages that
+  //    pose no question.
+  //
+  //    ALMOST EVERY PAGE BREAKS MID-COLUMN — repeatedly a stem sits at the foot of
+  //    the left column with its entire solution in the right. On p-05 the text
+  //    layer even returns "Ex. 3" before "Ex. 2", because the two headings sit at
+  //    nearly the same HEIGHT in opposite columns and a y-sorted extraction
+  //    interleaves them. Physical order is plain column order; verify from the image.
+  //
+  //    Figures: 11, all in the §8.1.x theory (discontinuity types). Only ONE page
+  //    carries both a figure and an exercise banner; check it, expect no crop.
+  //
+  //    ITS MISCELLANEOUS EXERCISE HAS **EIGHT** PRINTED PARTS, (I) … (VIII) — by far
+  //    the most in this book, where every other chapter splits Miscellaneous into
+  //    just (I) MCQ and (II) free-response. (I) is 10 MCQs; (II) discuss-continuity
+  //    7; (III) classify the discontinuity 3; (IV) classify + redefine 2; (V) find k
+  //    2; (VI) find a and b 2; (VII) find f(a) 2; (VIII) apply the IVT 2. The book's
+  //    own key keys ALL EIGHT and its per-part counts match exactly, which is what
+  //    confirms the structure rather than a reading of the page alone.
+  //    Refs therefore run `Misc I ` … `Misc VIII `, and sections.ts needs eight
+  //    miscellaneous blocks for this chapter, not two.
+  //
+  //    Exercise 8.1 runs to Q18 while its key stops at 14 — NOT a defect: Q15/Q16
+  //    are IVT existence proofs and Q17/Q18 are Activities, none of which this key
+  //    ever answers. Q17 IS defective on its own terms though: it gives no interval
+  //    for either branch, so as printed both apply on all of R, and even reading the
+  //    intended `x < 1` off Fig. 8.11 leaves one equation in two unknowns.
   "continuity-11": {
     id: "continuity-11",
     chapterName: "Continuity",

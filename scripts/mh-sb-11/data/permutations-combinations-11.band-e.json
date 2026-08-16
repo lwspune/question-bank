@@ -1,0 +1,569 @@
+[
+  {
+    "ref": "3.6.1 SolvedEx.1(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Find the value of",
+    "setLabel": "3.6.1 SolvedEx.1",
+    "stem": "\\({}^{7}C_{3}\\)",
+    "solution": "We know that \\({}^{n}C_{r} = \\frac{n!}{r!(n-r)!}\\)\n\n\\({}^{7}C_{3} = \\frac{7!}{3!(7-3)!} = \\frac{7!}{3!(4)!} = \\frac{7 \\times 6 \\times 5 \\times 4!}{3 \\times 2 \\times 1 \\times 4!} = \\frac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = 35\\)"
+  },
+  {
+    "ref": "3.6.1 SolvedEx.1(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Find the value of",
+    "setLabel": "3.6.1 SolvedEx.1",
+    "stem": "\\({}^{10}C_{7}\\)",
+    "solution": "\\({}^{10}C_{7} = \\frac{10!}{7!(10-7)!} = \\frac{10!}{7!(3)!} = \\frac{10 \\times 9 \\times 8}{3 \\times 2} = 120\\)"
+  },
+  {
+    "ref": "3.6.1 SolvedEx.1(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Find the value of",
+    "setLabel": "3.6.1 SolvedEx.1",
+    "stem": "\\({}^{52}C_{3}\\)",
+    "solution": "\\({}^{52}C_{3} = \\frac{52!}{3!(52-3)!} = \\frac{52!}{3!(49)!} = \\frac{52 \\times 51 \\times 50}{3 \\times 2 \\times 1} = 22100\\)"
+  },
+  {
+    "ref": "3.6.1 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "HARD",
+    "stem": "Find \\(n\\) and \\(r\\) if \\({}^{n}C_{r-1} : {}^{n}C_{r} : {}^{n}C_{r+1} = 14 : 8 : 3\\)",
+    "solution": "\\(\\frac{{}^{n}C_{r-1}}{{}^{n}C_{r}} = \\frac{14}{8} = \\frac{7}{4}\\) and \\(\\frac{{}^{n}C_{r}}{{}^{n}C_{r+1}} = \\frac{8}{3}\\)\n\n\\(\\therefore \\frac{r}{n-r+1} = \\frac{7}{4}\\) and \\(\\frac{r+1}{n-r} = \\frac{8}{3}\\)\n\n\\(\\therefore (n-r) = \\left(\\frac{4}{7}r\\right) - 1\\) and \\((n-r) = \\frac{3}{8}(r+1)\\)\n\n\\(\\therefore \\left(\\frac{4}{7}r\\right) - 1 = \\frac{3}{8}(r+1)\\)\n\nSolving this we get \\(r = 7\\) and \\(n = 10\\)"
+  },
+  {
+    "ref": "3.6.1 SolvedEx.3(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "There are \\(n\\) points in a plane. Find the number of straight lines and triangles that can be obtained by joining points on a plane if",
+    "setLabel": "3.6.1 SolvedEx.3",
+    "stem": "no three points are collinear",
+    "solution": "Straight line can be drawn by joining any two points and traingle can be drawn by joining any three non-collinear points.\n\nFrom \\(n\\)-points, any two points can be selected in \\({}^{n}C_{2}\\) ways.\n\n\\(\\therefore\\) Number of straight lines \\(= {}^{n}C_{2}\\)\n\nSince no three points are collinear, any three non-collinear points can be selected in \\({}^{n}C_{3}\\) ways.\n\n\\(\\therefore\\) Number of triangles \\(= {}^{n}C_{3}\\)",
+    "_note": "The book's printed solution spells 'traingle' for 'triangle'; transcribed as printed."
+  },
+  {
+    "ref": "3.6.1 SolvedEx.3(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "HARD",
+    "context": "There are \\(n\\) points in a plane. Find the number of straight lines and triangles that can be obtained by joining points on a plane if",
+    "setLabel": "3.6.1 SolvedEx.3",
+    "stem": "\\(p\\)-points are collinear \\((p \\ge 3)\\)",
+    "solution": "If \\(P\\) points are non-collinear then, we can obtain \\({}^{p}C_{2}\\) straight lines and \\({}^{p}C_{3}\\) triangles from those \\(p\\) points. But we are given that \\(p\\) points are collinear, therefore they form only one line and no triangle i.e. we have counted \\(({}^{p}C_{2} - 1)\\) extra lines and \\({}^{p}C_{3}\\) extra triangles.\n\n\\(\\therefore\\) If \\(p\\)-points \\((p \\ge 3)\\) are collinear, then number of straight lines \\(= {}^{n}C_{2} - ({}^{p}C_{2} - 1)\\) and number of triangles \\(= {}^{n}C_{3} - {}^{p}C_{3}\\)"
+  },
+  {
+    "ref": "3.6.1 SolvedEx.4(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Four cards are drawn from a pack of 52 playing cards. In how many different ways can this be done? How many selections will contain",
+    "setLabel": "3.6.1 SolvedEx.4",
+    "stem": "exactly one card of each suit?",
+    "solution": "A pack of 52 cards contains 4 different suits, viz. Club, Spade, Diamond and Heart. Each suit contains 13 cards. Club and Spade are black coloured cards. Diamond and Heart are red colour cards. i.e. pack of 52 cards contains 26 black and 26 red colour cards.\n\nFrom a pack of 52 cards, any 4 cards can be drawn in \\({}^{52}C_{4} = \\frac{52!}{4! \\times 48!}\\) ways.\n\n(i) Exactly one card of each suit.\n\nOne club card can be selected in \\({}^{13}C_{1} = 13\\) ways. One heart card can be selected in \\({}^{13}C_{1} = 13\\) ways. One spade card can be selected in \\({}^{13}C_{1} = 13\\) ways. One diamond card can be selected in \\({}^{13}C_{1} = 13\\) ways.\n\n\\(\\therefore\\) Using fundamental principle, exactly one card of each suit can be selected in \\(13 \\times 13 \\times 13 \\times 13 = (13)^{4}\\) ways.",
+    "_note": "The book prints one shared solution preamble for this example (the composition of the pack, and the total \\({}^{52}C_4\\) which answers the stem's 'In how many different ways can this be done?'). It is carried at the head of sub-item (i)'s solution, since (i) is the first sub-item; sub-items (ii)-(vi) each carry their own printed working."
+  },
+  {
+    "ref": "3.6.1 SolvedEx.4(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Four cards are drawn from a pack of 52 playing cards. In how many different ways can this be done? How many selections will contain",
+    "setLabel": "3.6.1 SolvedEx.4",
+    "stem": "all cards of the same suit?",
+    "solution": "From 4 suits, any one suit can be selected in \\({}^{4}C_{1} = 4\\) ways. After this is done, any four cards from selected suit can be drawn in \\({}^{13}C_{4} = 715\\) ways.\n\n\\(\\therefore\\) Using fundamental principle, all 4 cards of the same suit can be selected in \\(4 \\times 715 = 2860\\) ways."
+  },
+  {
+    "ref": "3.6.1 SolvedEx.4(iii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Four cards are drawn from a pack of 52 playing cards. In how many different ways can this be done? How many selections will contain",
+    "setLabel": "3.6.1 SolvedEx.4",
+    "stem": "all club cards?",
+    "solution": "From 13 club cards, any 4 club cards can be drawn in \\({}^{13}C_{4} = 715\\) ways."
+  },
+  {
+    "ref": "3.6.1 SolvedEx.4(iv)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Four cards are drawn from a pack of 52 playing cards. In how many different ways can this be done? How many selections will contain",
+    "setLabel": "3.6.1 SolvedEx.4",
+    "stem": "at least one club card?",
+    "solution": "From a pack of 52 cards, any 4 cards can be drawn in \\({}^{52}C_{4}\\) ways if there is no condition.\n\nFrom \\({}^{52}C_{4}\\) selections, remove those selections that do not contain any club card, so that in the remaining selection we have at least one club card.\n\nIf the selection does not contain any club card i.e. 4 cards are drawn from remaining 39 non-club cards, then this can be done in \\({}^{39}C_{4}\\) ways.\n\n\\(\\therefore\\) Number of selections which contain at least one club card \\(= {}^{52}C_{4} - {}^{39}C_{4}\\)."
+  },
+  {
+    "ref": "3.6.1 SolvedEx.4(v)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Four cards are drawn from a pack of 52 playing cards. In how many different ways can this be done? How many selections will contain",
+    "setLabel": "3.6.1 SolvedEx.4",
+    "stem": "three kings and one queen?",
+    "solution": "From 4 kings, any 3 king cards can be selected in \\({}^{4}C_{3} = 4\\) ways and from 4 queen cards 1 queen card can be selected in \\({}^{4}C_{1} = 4\\) ways.\n\n\\(\\therefore\\) Using fundamental principle, three king cards and one queen card can be selected in \\(4 \\times 4 = 16\\) ways."
+  },
+  {
+    "ref": "3.6.1 SolvedEx.4(vi)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Four cards are drawn from a pack of 52 playing cards. In how many different ways can this be done? How many selections will contain",
+    "setLabel": "3.6.1 SolvedEx.4",
+    "stem": "three black and one red cards?",
+    "solution": "From 26 black cards, any 3 black cards can be selected in \\({}^{26}C_{3}\\) ways and from 26 red cards, any one red card can be selected in \\({}^{26}C_{1}\\) ways.\n\nUsing fundamental principle, three black and one red card can be selected in \\({}^{26}C_{3} \\times {}^{26}C_{1}\\) ways."
+  },
+  {
+    "ref": "3.6.1 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "EASY",
+    "stem": "Find \\(n\\), if \\({}^{n}C_{8} = {}^{n}C_{6}\\)",
+    "solution": "If \\({}^{n}C_{x} = {}^{n}C_{y}\\), then either \\(x = y\\) or \\(x = n - y\\)\n\n\\(\\therefore 8 = n - 6\\) \\((\\because x \\ne y)\\)\n\n\\(\\therefore n = 14\\)"
+  },
+  {
+    "ref": "3.6.1 SolvedEx.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(r\\), if \\({}^{16}C_{4} + {}^{16}C_{5} + {}^{17}C_{6} + {}^{18}C_{7} = {}^{19}C_{r}\\)",
+    "solution": "\\(({}^{16}C_{4} + {}^{16}C_{5}) + {}^{17}C_{6} + {}^{18}C_{7} = {}^{19}C_{r}\\)\n\n\\(\\therefore ({}^{17}C_{5} + {}^{17}C_{6}) + {}^{18}C_{7} = {}^{19}C_{r}\\)\n\n\\(\\therefore ({}^{18}C_{6} + {}^{18}C_{7}) = {}^{19}C_{r}\\)\n\n\\(\\therefore {}^{19}C_{7} = {}^{19}C_{r}\\)\n\n\\(\\therefore r = 7\\) or \\(r = 19 - 7 = 12\\)"
+  },
+  {
+    "ref": "3.6.1 SolvedEx.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "stem": "Find the difference between the maximum values of \\({}^{8}C_{r}\\) and \\({}^{11}C_{r}\\)",
+    "solution": "Maximum value of \\({}^{8}C_{r}\\) occurs at \\(r = \\frac{8}{2} = 4\\)\n\n\\(\\therefore\\) maximum value of \\({}^{8}C_{r} = {}^{8}C_{4} = 70\\)\n\nMaximum value of \\({}^{11}C_{r}\\) occurs at \\(r = \\frac{10}{2} = 5\\) or at \\(\\frac{12}{2} = 6\\)\n\n\\(\\therefore\\) Maximum value of \\({}^{11}C_{r} = {}^{11}C_{5} = {}^{11}C_{6} = 462\\)\n\n\\(\\therefore\\) difference between the maximum values of \\({}^{8}C_{r}\\) and \\({}^{11}C_{r} = {}^{11}C_{5} - {}^{8}C_{4} = 462 - 70 = 392\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q1(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Find the value of",
+    "setLabel": "Ex 3.6 Q1",
+    "stem": "\\({}^{15}C_{4}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q1(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Find the value of",
+    "setLabel": "Ex 3.6 Q1",
+    "stem": "\\({}^{80}C_{2}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q1(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "EASY",
+    "context": "Find the value of",
+    "setLabel": "Ex 3.6 Q1",
+    "stem": "\\({}^{15}C_{4} + {}^{15}C_{5}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q1(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the value of",
+    "setLabel": "Ex 3.6 Q1",
+    "stem": "\\({}^{20}C_{16} - {}^{19}C_{16}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q2(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "EASY",
+    "context": "Find \\(n\\) if",
+    "setLabel": "Ex 3.6 Q2",
+    "stem": "\\({}^{6}P_{2} = n\\, {}^{6}C_{2}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q2(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "HARD",
+    "context": "Find \\(n\\) if",
+    "setLabel": "Ex 3.6 Q2",
+    "stem": "\\({}^{2n}C_{3} : {}^{n}C_{2} = 52 : 3\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q2(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\) if",
+    "setLabel": "Ex 3.6 Q2",
+    "stem": "\\({}^{n}C_{n-3} = 84\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "HARD",
+    "stem": "Find \\(r\\) if \\({}^{14}C_{2r} : {}^{10}C_{2r-4} = 143 : 10\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q4(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\) and \\(r\\) if.",
+    "setLabel": "Ex 3.6 Q4",
+    "stem": "\\({}^{n}P_{r} = 720\\) and \\({}^{n}C_{n-r} = 120\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q4(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "HARD",
+    "context": "Find \\(n\\) and \\(r\\) if.",
+    "setLabel": "Ex 3.6 Q4",
+    "stem": "\\({}^{n}C_{r-1} : {}^{n}C_{r} : {}^{n}C_{r+1} = 20 : 35 : 42\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "HARD",
+    "stem": "If \\({}^{n}P_{r} = 1814400\\) and \\({}^{n}C_{r} = 45\\), find \\({}^{n+4}C_{r+3}\\)",
+    "solution": "[Textbook answer-key incompleteness: the key prints only \\(r = 8\\), which is a correct INTERMEDIATE value — \\({}^nP_r / {}^nC_r = r! = 1814400/45 = 40320 = 8!\\) — but not the answer to the question, which asks for \\({}^{n+4}C_{r+3}\\). Completing it gives \\(n = 10\\), \\(r = 8\\) and hence \\({}^{14}C_{11} = 364\\). The question itself is sound; only the key stops short.]"
+  },
+  {
+    "ref": "Ex 3.6 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "HARD",
+    "stem": "If \\({}^{n}C_{r-1} = 6435\\), \\({}^{n}C_{r} = 5005\\), \\({}^{n}C_{r+1} = 3003\\), find \\({}^{r}C_{5}\\)."
+  },
+  {
+    "ref": "Ex 3.6 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "Find the number of ways of drawing 9 balls from a bag that has 6 red balls, 8 green balls, and 7 blue balls so that 3 balls of every colour are drawn."
+  },
+  {
+    "ref": "Ex 3.6 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "stem": "Find the number of ways of selecting a team of 3 boys and 2 girls from 6 boys and 4 girls."
+  },
+  {
+    "ref": "Ex 3.6 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "After a meeting, every participant shakes hands with every other participants. If the number of handshakes is 66, find the number of participants in the meeting."
+  },
+  {
+    "ref": "Ex 3.6 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "stem": "If 20 points are marked on a circle, how many chords can be drawn?"
+  },
+  {
+    "ref": "Ex 3.6 Q11(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the number of diagonals of an \\(n\\)-sided polygon. In particular, find the number of diagonals when.",
+    "setLabel": "Ex 3.6 Q11",
+    "stem": "\\(n = 10\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q11(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the number of diagonals of an \\(n\\)-sided polygon. In particular, find the number of diagonals when.",
+    "setLabel": "Ex 3.6 Q11",
+    "stem": "\\(n = 15\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q11(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the number of diagonals of an \\(n\\)-sided polygon. In particular, find the number of diagonals when.",
+    "setLabel": "Ex 3.6 Q11",
+    "stem": "\\(n = 12\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q11(d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the number of diagonals of an \\(n\\)-sided polygon. In particular, find the number of diagonals when.",
+    "setLabel": "Ex 3.6 Q11",
+    "stem": "\\(n = 8\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "There are 20 straight lines in a plane so that no two lines are parallel and no three lines are concurrent. Determine the number of points of intersection."
+  },
+  {
+    "ref": "Ex 3.6 Q13(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Ten points are plotted on a plane. Find the number of straight lines obtained by joining these points if",
+    "setLabel": "Ex 3.6 Q13",
+    "stem": "no three points are collinear."
+  },
+  {
+    "ref": "Ex 3.6 Q13(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Ten points are plotted on a plane. Find the number of straight lines obtained by joining these points if",
+    "setLabel": "Ex 3.6 Q13",
+    "stem": "four points are collinear."
+  },
+  {
+    "ref": "Ex 3.6 Q14(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "context": "Find the number of triangles formed by joining 12 points if",
+    "setLabel": "Ex 3.6 Q14",
+    "stem": "no three points are collinear"
+  },
+  {
+    "ref": "Ex 3.6 Q14(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the number of triangles formed by joining 12 points if",
+    "setLabel": "Ex 3.6 Q14",
+    "stem": "four points are collineas.",
+    "_note": "The book prints 'collineas.' for 'collinear.'; transcribed as printed."
+  },
+  {
+    "ref": "Ex 3.6 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "A word has 8 consonants and 3 vowels. How many distinct words can be formed if 4 consonants and 2 vowels are chosen?"
+  },
+  {
+    "ref": "Ex 3.6 Q16(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "EASY",
+    "context": "Find \\(n\\) if,",
+    "setLabel": "Ex 3.6 Q16",
+    "stem": "\\({}^{n}C_{8} = {}^{n}C_{12}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q16(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\) if,",
+    "setLabel": "Ex 3.6 Q16",
+    "stem": "\\({}^{23}C_{3n} = {}^{23}C_{2n+3}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q16(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "HARD",
+    "context": "Find \\(n\\) if,",
+    "setLabel": "Ex 3.6 Q16",
+    "stem": "\\({}^{21}C_{6n} = {}^{21}C_{(n^{2}+5)}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q16(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\) if,",
+    "setLabel": "Ex 3.6 Q16",
+    "stem": "\\({}^{2n}C_{r-1} = {}^{2n}C_{r+1}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q16(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find \\(n\\) if,",
+    "setLabel": "Ex 3.6 Q16",
+    "stem": "\\({}^{n}C_{n-2} = 15\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "EASY",
+    "stem": "Find \\(x\\) if \\({}^{n}P_{r} = x\\, {}^{n}C_{r}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "stem": "Find \\(r\\) if \\({}^{11}C_{4} + {}^{11}C_{5} + {}^{12}C_{6} + {}^{13}C_{7} = {}^{14}C_{r}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "Find the value of \\(\\sum_{r=1}^{4} {}^{(21-r)}C_{4}\\)"
+  },
+  {
+    "ref": "Ex 3.6 Q20(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the differences between the greatest values in the following:",
+    "setLabel": "Ex 3.6 Q20",
+    "stem": "\\({}^{14}C_{r}\\) and \\({}^{12}C_{r}\\),"
+  },
+  {
+    "ref": "Ex 3.6 Q20(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the differences between the greatest values in the following:",
+    "setLabel": "Ex 3.6 Q20",
+    "stem": "\\({}^{13}C_{r}\\) and \\({}^{8}C_{r}\\),"
+  },
+  {
+    "ref": "Ex 3.6 Q20(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Properties of Combinations",
+    "difficulty": "MODERATE",
+    "context": "Find the differences between the greatest values in the following:",
+    "setLabel": "Ex 3.6 Q20",
+    "stem": "\\({}^{15}C_{r}\\) and \\({}^{11}C_{r}\\),"
+  },
+  {
+    "ref": "Ex 3.6 Q21",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "stem": "In how many ways can a boy invite his 5 friends to a party so that at least three join the party?"
+  },
+  {
+    "ref": "Ex 3.6 Q22",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "HARD",
+    "stem": "A group consists of 9 men and 6 women. A team of 6 is to be selected. How many of possible selections will have at least 3 women?"
+  },
+  {
+    "ref": "Ex 3.6 Q23",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "HARD",
+    "stem": "A committee of 10 persons is to be formed from a group of 10 women and 8 men. How many possible committees will have at least 5 women? How many possible committees will have men in majority?"
+  },
+  {
+    "ref": "Ex 3.6 Q24",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "HARD",
+    "stem": "A question paper has two sections. section I has 5 questions and section II has 6 questions. A student must answer at least two question from each section among 6 questions he answers. How many different choices does the student have in choosing questions?"
+  },
+  {
+    "ref": "Ex 3.6 Q25",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "HARD",
+    "stem": "There are 3 wicketkeepers and 5 bowlers among 22 cricket players. A team of 11 players is to be selected so that there is exactly one wicketkeeper and at least 4 bowlers in the team. How many different teams can be formed?"
+  },
+  {
+    "ref": "Ex 3.6 Q26(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Five students are selected from 11. How many ways can these students be selected if.",
+    "setLabel": "Ex 3.6 Q26",
+    "stem": "two specified students are selected?"
+  },
+  {
+    "ref": "Ex 3.6 Q26(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Combinations",
+    "difficulty": "MODERATE",
+    "context": "Five students are selected from 11. How many ways can these students be selected if.",
+    "setLabel": "Ex 3.6 Q26",
+    "stem": "two specified students are not selected?"
+  }
+]

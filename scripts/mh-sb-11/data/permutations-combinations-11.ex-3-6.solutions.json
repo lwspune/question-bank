@@ -1,0 +1,222 @@
+[
+  {
+    "id": "cd47aeac-1333-48db-8988-b5f6959b99a7",
+    "ref": "Ex 3.6 Q1(a)",
+    "solution": "\\({}^{15}C_{4} = \\dfrac{15 \\times 14 \\times 13 \\times 12}{4 \\times 3 \\times 2 \\times 1} = \\dfrac{32760}{24} = 1365\\)."
+  },
+  {
+    "id": "2d0665e5-2ac0-4cb4-8623-5a5d296cd56d",
+    "ref": "Ex 3.6 Q1(b)",
+    "solution": "\\({}^{80}C_{2} = \\dfrac{80 \\times 79}{2 \\times 1} = \\dfrac{6320}{2} = 3160\\)."
+  },
+  {
+    "id": "a3f25ecc-be19-4da6-95fe-abe0e97ca5fa",
+    "ref": "Ex 3.6 Q1(c)",
+    "solution": "By the property \\({}^{n}C_{r-1} + {}^{n}C_{r} = {}^{n+1}C_{r}\\), taking \\(n = 15\\) and \\(r = 5\\), \\({}^{15}C_{4} + {}^{15}C_{5} = {}^{16}C_{5} = \\dfrac{16 \\times 15 \\times 14 \\times 13 \\times 12}{5 \\times 4 \\times 3 \\times 2 \\times 1} = \\dfrac{524160}{120} = 4368\\)."
+  },
+  {
+    "id": "64aa17b2-40aa-4c89-8cc1-8e9cfed7318b",
+    "ref": "Ex 3.6 Q1(d)",
+    "solution": "By the same property, \\({}^{19}C_{15} + {}^{19}C_{16} = {}^{20}C_{16}\\), so \\({}^{20}C_{16} - {}^{19}C_{16} = {}^{19}C_{15}\\). Since \\({}^{n}C_{r} = {}^{n}C_{n-r}\\), \\({}^{19}C_{15} = {}^{19}C_{4} = \\dfrac{19 \\times 18 \\times 17 \\times 16}{4 \\times 3 \\times 2 \\times 1} = \\dfrac{93024}{24} = 3876\\)."
+  },
+  {
+    "id": "8ccbc616-14e0-4b83-a74e-50da6186158b",
+    "ref": "Ex 3.6 Q2(a)",
+    "solution": "\\({}^{6}P_{2} = 6 \\times 5 = 30\\) and \\({}^{6}C_{2} = \\dfrac{6 \\times 5}{2 \\times 1} = 15\\). Substituting in \\({}^{6}P_{2} = n\\,{}^{6}C_{2}\\) gives \\(30 = 15n\\). Hence \\(n = 2\\). (This is the relation \\({}^{n}P_{r} = r!\\,{}^{n}C_{r}\\) with \\(r = 2\\), so \\(n = 2! = 2\\).)"
+  },
+  {
+    "id": "47044c23-a662-4e9d-b4c5-c0aff19a28c0",
+    "ref": "Ex 3.6 Q2(b)",
+    "solution": "\\({}^{2n}C_{3} = \\dfrac{2n(2n-1)(2n-2)}{6}\\) and \\({}^{n}C_{2} = \\dfrac{n(n-1)}{2}\\). Since \\(2n-2 = 2(n-1)\\), \\(\\dfrac{{}^{2n}C_{3}}{{}^{n}C_{2}} = \\dfrac{4n(2n-1)(n-1)}{6} \\times \\dfrac{2}{n(n-1)} = \\dfrac{4(2n-1)}{3}\\). Equating to \\(\\dfrac{52}{3}\\) gives \\(4(2n-1) = 52\\), so \\(2n - 1 = 13\\). Hence \\(n = 7\\)."
+  },
+  {
+    "id": "90dbc74f-84e4-46c6-86d1-324def7b063e",
+    "ref": "Ex 3.6 Q2(c)",
+    "solution": "Since \\({}^{n}C_{n-r} = {}^{n}C_{r}\\), the equation becomes \\({}^{n}C_{3} = 84\\), i.e. \\(\\dfrac{n(n-1)(n-2)}{6} = 84\\), so \\(n(n-1)(n-2) = 504\\). As \\(504 = 9 \\times 8 \\times 7\\), the three consecutive factors give \\(n = 9\\)."
+  },
+  {
+    "id": "0b1bfa33-8cdb-4f0d-9f7f-43cd79dc7868",
+    "ref": "Ex 3.6 Q3",
+    "solution": "Note that \\(14 - 2r = 10 - (2r-4)\\), so the two lower factorials match: \\(\\dfrac{{}^{14}C_{2r}}{{}^{10}C_{2r-4}} = \\dfrac{14!}{(2r)!\\,(14-2r)!} \\times \\dfrac{(2r-4)!\\,(14-2r)!}{10!} = \\dfrac{14 \\times 13 \\times 12 \\times 11}{2r(2r-1)(2r-2)(2r-3)} = \\dfrac{24024}{2r(2r-1)(2r-2)(2r-3)}\\). Equating to \\(\\dfrac{143}{10}\\) gives \\(2r(2r-1)(2r-2)(2r-3) = \\dfrac{24024 \\times 10}{143} = 1680 = 8 \\times 7 \\times 6 \\times 5\\), so \\(2r = 8\\). Hence \\(r = 4\\)."
+  },
+  {
+    "id": "0cf3470c-68b0-49dd-96ba-c394c88cd220",
+    "ref": "Ex 3.6 Q4(a)",
+    "solution": "Since \\({}^{n}C_{n-r} = {}^{n}C_{r}\\), we have \\({}^{n}C_{r} = 120\\). Using \\({}^{n}P_{r} = r!\\,{}^{n}C_{r}\\), \\(r! = \\dfrac{720}{120} = 6 = 3!\\), so \\(r = 3\\). Then \\({}^{n}P_{3} = n(n-1)(n-2) = 720 = 10 \\times 9 \\times 8\\), so \\(n = 10\\). Hence \\(n = 10\\), \\(r = 3\\)."
+  },
+  {
+    "id": "dba72fa4-6f32-4b3a-85d0-e4e5be226bfe",
+    "ref": "Ex 3.6 Q4(b)",
+    "solution": "Using \\(\\dfrac{{}^{n}C_{r-1}}{{}^{n}C_{r}} = \\dfrac{r}{n-r+1}\\): \\(\\dfrac{r}{n-r+1} = \\dfrac{20}{35} = \\dfrac{4}{7}\\), so \\(7r = 4n - 4r + 4\\), i.e. \\(11r = 4n + 4\\). Similarly \\(\\dfrac{{}^{n}C_{r}}{{}^{n}C_{r+1}} = \\dfrac{r+1}{n-r} = \\dfrac{35}{42} = \\dfrac{5}{6}\\), so \\(6r + 6 = 5n - 5r\\), i.e. \\(11r = 5n - 6\\). Equating, \\(4n + 4 = 5n - 6\\), so \\(n = 10\\), and then \\(11r = 44\\). Hence \\(n = 10\\), \\(r = 4\\)."
+  },
+  {
+    "id": "470d267e-a4fc-4ecc-881c-95855c1544d5",
+    "ref": "Ex 3.6 Q5",
+    "solution": "Since \\({}^{n}P_{r} = r!\\,{}^{n}C_{r}\\), \\(r! = \\dfrac{1814400}{45} = 40320 = 8!\\), so \\(r = 8\\). Then \\({}^{n}C_{8} = 45\\), and \\({}^{n}C_{8} = {}^{n}C_{n-8}\\); trying \\(n - 8 = 2\\) gives \\({}^{10}C_{2} = 45\\), so \\(n = 10\\) (check: \\({}^{10}P_{8} = \\tfrac{10!}{2!} = 1814400\\)). Therefore \\({}^{n+4}C_{r+3} = {}^{14}C_{11} = {}^{14}C_{3} = \\dfrac{14 \\times 13 \\times 12}{3 \\times 2 \\times 1} = 364\\)."
+  },
+  {
+    "id": "35453434-9e75-4c65-8f23-b8b4c22938db",
+    "ref": "Ex 3.6 Q6",
+    "solution": "Using \\(\\dfrac{{}^{n}C_{r-1}}{{}^{n}C_{r}} = \\dfrac{r}{n-r+1}\\): \\(\\dfrac{r}{n-r+1} = \\dfrac{6435}{5005} = \\dfrac{9}{7}\\), so \\(7r = 9n - 9r + 9\\), i.e. \\(16r = 9n + 9\\). Also \\(\\dfrac{{}^{n}C_{r}}{{}^{n}C_{r+1}} = \\dfrac{r+1}{n-r} = \\dfrac{5005}{3003} = \\dfrac{5}{3}\\), so \\(3r + 3 = 5n - 5r\\), i.e. \\(8r = 5n - 3\\), giving \\(16r = 10n - 6\\). Equating, \\(9n + 9 = 10n - 6\\), so \\(n = 15\\) and \\(16r = 144\\), i.e. \\(r = 9\\). Hence \\({}^{r}C_{5} = {}^{9}C_{5} = {}^{9}C_{4} = \\dfrac{9 \\times 8 \\times 7 \\times 6}{4 \\times 3 \\times 2 \\times 1} = 126\\)."
+  },
+  {
+    "id": "b1db2a94-e550-4d9c-a76d-785e5b1f2a9c",
+    "ref": "Ex 3.6 Q7",
+    "solution": "The balls are only selected, not arranged, so order does not matter and the three colours are chosen independently: \\(3\\) red from \\(6\\), \\(3\\) green from \\(8\\) and \\(3\\) blue from \\(7\\). Number of ways \\(= {}^{6}C_{3} \\times {}^{8}C_{3} \\times {}^{7}C_{3} = 20 \\times 56 \\times 35 = 39200\\)."
+  },
+  {
+    "id": "ce00462a-9695-462f-a5e9-669bf0df7d6b",
+    "ref": "Ex 3.6 Q8",
+    "solution": "A team is a selection, so order does not matter, and the boys and girls are chosen independently. Number of ways \\(= {}^{6}C_{3} \\times {}^{4}C_{2} = 20 \\times 6 = 120\\)."
+  },
+  {
+    "id": "6288108e-72f1-4dcf-a8e7-7e84aae50c20",
+    "ref": "Ex 3.6 Q9",
+    "solution": "A handshake is an unordered pair of participants, so with \\(n\\) participants the number of handshakes is \\({}^{n}C_{2} = \\dfrac{n(n-1)}{2}\\). Then \\(\\dfrac{n(n-1)}{2} = 66\\), so \\(n(n-1) = 132 = 12 \\times 11\\). Hence \\(n = 12\\) participants."
+  },
+  {
+    "id": "fdbb5739-e439-4461-bb7f-f23ade584994",
+    "ref": "Ex 3.6 Q10",
+    "solution": "A chord is determined by an unordered pair of the marked points, and no three points on a circle are collinear, so every pair gives a distinct chord. Number of chords \\(= {}^{20}C_{2} = \\dfrac{20 \\times 19}{2} = 190\\)."
+  },
+  {
+    "id": "e2359b97-cb38-499f-bbed-7ea34267d562",
+    "ref": "Ex 3.6 Q11(a)",
+    "solution": "Joining the \\(n\\) vertices in pairs gives \\({}^{n}C_{2}\\) segments, of which \\(n\\) are the sides of the polygon, so the number of diagonals is \\({}^{n}C_{2} - n = \\dfrac{n(n-1)}{2} - n = \\dfrac{n(n-3)}{2}\\). For \\(n = 10\\), number of diagonals \\(= \\dfrac{10 \\times 7}{2} = 35\\)."
+  },
+  {
+    "id": "97d6cb20-e3c6-47b5-83cd-69e3aa4b12a9",
+    "ref": "Ex 3.6 Q11(b)",
+    "solution": "The number of diagonals of an \\(n\\)-sided polygon is \\({}^{n}C_{2} - n = \\dfrac{n(n-3)}{2}\\), since \\(n\\) of the \\({}^{n}C_{2}\\) segments joining pairs of vertices are sides. For \\(n = 15\\), number of diagonals \\(= \\dfrac{15 \\times 12}{2} = 90\\)."
+  },
+  {
+    "id": "ac331396-ed78-4863-abe2-8f7919d02c97",
+    "ref": "Ex 3.6 Q11(c)",
+    "solution": "The number of diagonals of an \\(n\\)-sided polygon is \\({}^{n}C_{2} - n = \\dfrac{n(n-3)}{2}\\). For \\(n = 12\\), number of diagonals \\(= \\dfrac{12 \\times 9}{2} = 54\\)."
+  },
+  {
+    "id": "4160418f-c27e-44d7-876f-50c600c13172",
+    "ref": "Ex 3.6 Q11(d)",
+    "solution": "The number of diagonals of an \\(n\\)-sided polygon is \\({}^{n}C_{2} - n = \\dfrac{n(n-3)}{2}\\). For \\(n = 8\\), number of diagonals \\(= \\dfrac{8 \\times 5}{2} = 20\\)."
+  },
+  {
+    "id": "092ddf0e-9acb-439f-9b08-cc22a7051a93",
+    "ref": "Ex 3.6 Q12",
+    "solution": "No two lines are parallel, so every pair of lines meets, and no three are concurrent, so distinct pairs give distinct points. Each point of intersection therefore corresponds to exactly one unordered pair of lines. Number of points \\(= {}^{20}C_{2} = \\dfrac{20 \\times 19}{2} = 190\\)."
+  },
+  {
+    "id": "6c27eec5-30ad-426f-9138-e6347dc5edb1",
+    "ref": "Ex 3.6 Q13(a)",
+    "solution": "A line is fixed by an unordered pair of points, and with no three points collinear every pair gives a different line. Number of lines \\(= {}^{10}C_{2} = \\dfrac{10 \\times 9}{2} = 45\\)."
+  },
+  {
+    "id": "767ede82-5faa-489d-8fc4-a7f26dbfc21d",
+    "ref": "Ex 3.6 Q13(b)",
+    "solution": "If all \\(10\\) points were in general position the pairs would give \\({}^{10}C_{2} = 45\\) lines. The \\(4\\) collinear points give \\({}^{4}C_{2} = 6\\) pairs, but all of these determine the same single line, so those \\(6\\) must be replaced by \\(1\\). Number of lines \\(= 45 - 6 + 1 = 40\\)."
+  },
+  {
+    "id": "7b387685-613b-414d-97a1-3aa27623aeb2",
+    "ref": "Ex 3.6 Q14(a)",
+    "solution": "A triangle is an unordered choice of \\(3\\) points, and with no three collinear every such choice gives a genuine triangle. Number of triangles \\(= {}^{12}C_{3} = \\dfrac{12 \\times 11 \\times 10}{3 \\times 2 \\times 1} = 220\\)."
+  },
+  {
+    "id": "031edf0d-64e1-4107-937b-413fac5ae18d",
+    "ref": "Ex 3.6 Q14(b)",
+    "solution": "Choosing any \\(3\\) of the \\(12\\) points gives \\({}^{12}C_{3} = 220\\) selections, but a selection of \\(3\\) from the \\(4\\) collinear points forms no triangle. Such selections number \\({}^{4}C_{3} = 4\\). Number of triangles \\(= 220 - 4 = 216\\)."
+  },
+  {
+    "id": "e3d81c44-e509-416e-8b75-31b43bbb0dbd",
+    "ref": "Ex 3.6 Q15",
+    "solution": "First select the letters (order irrelevant): \\(4\\) consonants from \\(8\\) in \\({}^{8}C_{4} = 70\\) ways and \\(2\\) vowels from \\(3\\) in \\({}^{3}C_{2} = 3\\) ways. The \\(6\\) chosen letters are then arranged to form a word, in \\(6! = 720\\) ways. Number of words \\(= 70 \\times 3 \\times 720 = 151200\\)."
+  },
+  {
+    "id": "5272e04f-479d-41c0-ab06-42908cb237a6",
+    "ref": "Ex 3.6 Q16(i)",
+    "solution": "If \\({}^{n}C_{x} = {}^{n}C_{y}\\) then either \\(x = y\\) or \\(x + y = n\\). Here \\(8 \\ne 12\\), so \\(n = 8 + 12 = 20\\)."
+  },
+  {
+    "id": "44034c44-1bed-42eb-ae21-ce7205597f1d",
+    "ref": "Ex 3.6 Q16(ii)",
+    "solution": "Either \\(3n = 2n + 3\\), giving \\(n = 3\\); or \\(3n + (2n + 3) = 23\\), i.e. \\(5n = 20\\), giving \\(n = 4\\). Both keep the lower suffixes within \\(0\\) to \\(23\\) (for \\(n = 3\\) both are \\(9\\); for \\(n = 4\\) they are \\(12\\) and \\(11\\)). Hence \\(n = 3\\) or \\(n = 4\\)."
+  },
+  {
+    "id": "41b94f36-c253-4c9a-8ee3-2d5e4ea77765",
+    "ref": "Ex 3.6 Q16(iii)",
+    "solution": "Either \\(6n = n^{2} + 5\\), i.e. \\(n^{2} - 6n + 5 = 0\\), giving \\(n = 1\\) or \\(n = 5\\); or \\(6n + (n^{2} + 5) = 21\\), i.e. \\(n^{2} + 6n - 16 = 0\\), i.e. \\((n + 8)(n - 2) = 0\\), giving \\(n = 2\\) (as \\(n = -8\\) is rejected). The value \\(n = 5\\) must also be rejected, since it makes the suffix \\(6n = 30 > 21\\) and \\({}^{21}C_{30}\\) is not defined. Hence \\(n = 1\\) or \\(n = 2\\)."
+  },
+  {
+    "id": "7daa3122-7416-423f-9841-8a5f6bd7d251",
+    "ref": "Ex 3.6 Q16(iv)",
+    "solution": "Either \\(r - 1 = r + 1\\), which is impossible; or \\((r - 1) + (r + 1) = 2n\\), i.e. \\(2r = 2n\\). Hence \\(n = r\\)."
+  },
+  {
+    "id": "1bb2007b-afe7-4206-93dc-b58d9c397006",
+    "ref": "Ex 3.6 Q16(v)",
+    "solution": "Since \\({}^{n}C_{n-2} = {}^{n}C_{2}\\), we get \\(\\dfrac{n(n-1)}{2} = 15\\), so \\(n(n-1) = 30 = 6 \\times 5\\). Hence \\(n = 6\\)."
+  },
+  {
+    "id": "9976ee3d-0c21-44e0-b0ec-a0bbba4903ae",
+    "ref": "Ex 3.6 Q17",
+    "solution": "Selecting \\(r\\) objects from \\(n\\) and then arranging them accounts for every arrangement of \\(r\\) objects, so \\({}^{n}P_{r} = \\dfrac{n!}{(n-r)!} = \\dfrac{n!}{r!\\,(n-r)!} \\times r! = {}^{n}C_{r} \\times r!\\). Comparing with \\({}^{n}P_{r} = x\\,{}^{n}C_{r}\\) gives \\(x = r!\\)."
+  },
+  {
+    "id": "e31ebff2-934d-41de-b190-cad6ec073f86",
+    "ref": "Ex 3.6 Q18",
+    "solution": "Apply \\({}^{n}C_{r-1} + {}^{n}C_{r} = {}^{n+1}C_{r}\\) repeatedly: \\({}^{11}C_{4} + {}^{11}C_{5} = {}^{12}C_{5}\\); then \\({}^{12}C_{5} + {}^{12}C_{6} = {}^{13}C_{6}\\); then \\({}^{13}C_{6} + {}^{13}C_{7} = {}^{14}C_{7}\\). So \\({}^{14}C_{r} = {}^{14}C_{7}\\). Hence \\(r = 7\\)."
+  },
+  {
+    "id": "e4b3f586-406e-4739-820c-f3563aad07ba",
+    "ref": "Ex 3.6 Q19",
+    "solution": "Writing out the four terms, \\(\\sum_{r=1}^{4} {}^{(21-r)}C_{4} = {}^{20}C_{4} + {}^{19}C_{4} + {}^{18}C_{4} + {}^{17}C_{4} = 4845 + 3876 + 3060 + 2380 = 14161\\)."
+  },
+  {
+    "id": "088982e6-014e-4b1c-90c6-ce83462e948c",
+    "ref": "Ex 3.6 Q20(a)",
+    "solution": "\\({}^{n}C_{r}\\) is greatest at \\(r = \\dfrac{n}{2}\\) when \\(n\\) is even. So the greatest value of \\({}^{14}C_{r}\\) is \\({}^{14}C_{7} = 3432\\) and the greatest value of \\({}^{12}C_{r}\\) is \\({}^{12}C_{6} = 924\\). Difference \\(= 3432 - 924 = 2508\\)."
+  },
+  {
+    "id": "d6f06997-c7a4-4d78-bd4a-0d56f546841b",
+    "ref": "Ex 3.6 Q20(b)",
+    "solution": "For odd \\(n\\), \\({}^{n}C_{r}\\) is greatest at \\(r = \\dfrac{n-1}{2}\\) and \\(r = \\dfrac{n+1}{2}\\) (equal values); for even \\(n\\) it is greatest at \\(r = \\dfrac{n}{2}\\). So the greatest value of \\({}^{13}C_{r}\\) is \\({}^{13}C_{6} = {}^{13}C_{7} = 1716\\) and the greatest value of \\({}^{8}C_{r}\\) is \\({}^{8}C_{4} = 70\\). Difference \\(= 1716 - 70 = 1646\\)."
+  },
+  {
+    "id": "c84ff4b4-e17c-4a56-90d5-4ccb7b5cc018",
+    "ref": "Ex 3.6 Q20(c)",
+    "solution": "The greatest value of \\({}^{15}C_{r}\\) is \\({}^{15}C_{7} = {}^{15}C_{8} = 6435\\) (odd \\(n\\)) and the greatest value of \\({}^{11}C_{r}\\) is \\({}^{11}C_{5} = {}^{11}C_{6} = 462\\). Difference \\(= 6435 - 462 = 5973\\)."
+  },
+  {
+    "id": "144a4586-49fa-4301-bfc1-aa463b9750fe",
+    "ref": "Ex 3.6 Q21",
+    "solution": "The friends are only selected, so order does not matter, and \"at least three\" means \\(3\\), \\(4\\) or all \\(5\\) join. Number of ways \\(= {}^{5}C_{3} + {}^{5}C_{4} + {}^{5}C_{5} = 10 + 5 + 1 = 16\\)."
+  },
+  {
+    "id": "5349c6a6-7a60-4bb0-88d5-2c70bb655450",
+    "ref": "Ex 3.6 Q22",
+    "solution": "The team of \\(6\\) may contain \\(3\\), \\(4\\), \\(5\\) or \\(6\\) women, the rest being men: \\({}^{6}C_{3} \\times {}^{9}C_{3} + {}^{6}C_{4} \\times {}^{9}C_{2} + {}^{6}C_{5} \\times {}^{9}C_{1} + {}^{6}C_{6} \\times {}^{9}C_{0} = 20 \\times 84 + 15 \\times 36 + 6 \\times 9 + 1 \\times 1 = 1680 + 540 + 54 + 1 = 2275\\). Number of selections \\(= 2275\\)."
+  },
+  {
+    "id": "b64e9ef3-fccb-4865-b59a-894fe7da3616",
+    "ref": "Ex 3.6 Q23",
+    "solution": "For at least \\(5\\) women, the committee of \\(10\\) has \\(5, 6, 7, 8, 9\\) or \\(10\\) women, the rest men (never more than the \\(8\\) available): \\({}^{10}C_{5}{}^{8}C_{5} + {}^{10}C_{6}{}^{8}C_{4} + {}^{10}C_{7}{}^{8}C_{3} + {}^{10}C_{8}{}^{8}C_{2} + {}^{10}C_{9}{}^{8}C_{1} + {}^{10}C_{10}{}^{8}C_{0} = 252 \\times 56 + 210 \\times 70 + 120 \\times 56 + 45 \\times 28 + 10 \\times 8 + 1 = 14112 + 14700 + 6720 + 1260 + 80 + 1 = 36873\\). Men are in a majority when more than half of the \\(10\\) members are men, i.e. \\(6\\), \\(7\\) or \\(8\\) men: \\({}^{8}C_{6}{}^{10}C_{4} + {}^{8}C_{7}{}^{10}C_{3} + {}^{8}C_{8}{}^{10}C_{2} = 28 \\times 210 + 8 \\times 120 + 1 \\times 45 = 5880 + 960 + 45 = 6885\\). Answers: \\(36873\\) committees with at least \\(5\\) women and \\(6885\\) with men in majority."
+  },
+  {
+    "id": "a6f60d8c-9756-4d7e-84a5-ccd8601d0416",
+    "ref": "Ex 3.6 Q24",
+    "solution": "Let the student answer \\(a\\) questions from Section I and \\(6 - a\\) from Section II, with \\(a \\ge 2\\) and \\(6 - a \\ge 2\\), so \\(a = 2, 3\\) or \\(4\\). Number of choices \\(= {}^{5}C_{2} \\times {}^{6}C_{4} + {}^{5}C_{3} \\times {}^{6}C_{3} + {}^{5}C_{4} \\times {}^{6}C_{2} = 10 \\times 15 + 10 \\times 20 + 5 \\times 15 = 150 + 200 + 75 = 425\\)."
+  },
+  {
+    "id": "34464500-f9a7-4e95-909d-94320949bc4b",
+    "ref": "Ex 3.6 Q25",
+    "solution": "Besides the \\(3\\) wicketkeepers and \\(5\\) bowlers there are \\(22 - 3 - 5 = 14\\) other players. Exactly one wicketkeeper is chosen in \\({}^{3}C_{1} = 3\\) ways. The bowlers number \\(4\\) or \\(5\\), and the rest of the \\(11\\) come from the \\(14\\) others: with \\(4\\) bowlers, \\({}^{5}C_{4} \\times {}^{14}C_{6} = 5 \\times 3003 = 15015\\); with \\(5\\) bowlers, \\({}^{5}C_{5} \\times {}^{14}C_{5} = 1 \\times 2002 = 2002\\). Number of teams \\(= 3 \\times (15015 + 2002) = 3 \\times 17017 = 51051\\)."
+  },
+  {
+    "id": "e585e56e-17ce-4a6b-aa58-03ef942fa4fd",
+    "ref": "Ex 3.6 Q26(a)",
+    "solution": "The two specified students are forced into the group, so only the remaining \\(5 - 2 = 3\\) members are chosen, and they come from the other \\(11 - 2 = 9\\) students. Number of ways \\(= {}^{9}C_{3} = \\dfrac{9 \\times 8 \\times 7}{3 \\times 2 \\times 1} = 84\\)."
+  },
+  {
+    "id": "20d89e41-1b77-4e34-a38f-6cf8f16b1bec",
+    "ref": "Ex 3.6 Q26(b)",
+    "solution": "The two specified students are excluded, so all \\(5\\) must be chosen from the remaining \\(11 - 2 = 9\\) students. Number of ways \\(= {}^{9}C_{5} = {}^{9}C_{4} = \\dfrac{9 \\times 8 \\times 7 \\times 6}{4 \\times 3 \\times 2 \\times 1} = 126\\)."
+  }
+]

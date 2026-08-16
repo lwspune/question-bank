@@ -1,0 +1,122 @@
+[
+  {
+    "id": "eb876fd9-dfae-4cda-880f-ad68ad475a6f",
+    "ref": "Misc I Q1",
+    "derived_answer": "C",
+    "solution": "Both numerator and denominator vanish at \\(x = 2\\), so the factor \\((x-2)\\) is common. Factorise: \\(x^{4}-16 = (x^{2}-4)(x^{2}+4) = (x-2)(x+2)(x^{2}+4)\\) and \\(x^{2}-5x+6 = (x-2)(x-3)\\). Cancelling \\((x-2)\\), \\(\\lim_{x \\to 2}\\frac{(x+2)(x^{2}+4)}{x-3} = \\frac{(2+2)(4+4)}{2-3} = \\frac{4 \\times 8}{-1} = -32\\).",
+    "why": "The surviving denominator \\(x-3\\) evaluates to \\(-1\\) at \\(x=2\\), so the sign is negative.",
+    "matches_current": true
+  },
+  {
+    "id": "5d618f7f-e6d2-42fc-bd39-345070857c06",
+    "ref": "Misc I Q2",
+    "derived_answer": "B",
+    "solution": "At \\(x = -2\\): \\((-2)^{7}+128 = -128+128 = 0\\) and \\((-2)^{3}+8 = -8+8 = 0\\), so this is the \\(\\frac{0}{0}\\) form. Write both as differences of like powers about \\(a = -2\\): \\(x^{7}+128 = x^{7}-(-2)^{7}\\) and \\(x^{3}+8 = x^{3}-(-2)^{3}\\). Divide numerator and denominator by \\((x-a)\\) and use \\(\\lim_{x \\to a}\\frac{x^{n}-a^{n}}{x-a} = n\\,a^{n-1}\\): the limit is \\(\\frac{7(-2)^{6}}{3(-2)^{2}} = \\frac{7 \\times 64}{3 \\times 4} = \\frac{448}{12} = \\frac{112}{3}\\).",
+    "why": "\\(\\frac{7a^{6}}{3a^{2}} = \\frac{7}{3}a^{4} = \\frac{7}{3}\\times 16 = \\frac{112}{3}\\) with \\(a=-2\\); the even powers make the result positive.",
+    "matches_current": true
+  },
+  {
+    "id": "086f2d05-015c-4a93-a9ac-560e1d0bf486",
+    "ref": "Misc I Q3",
+    "derived_answer": "A",
+    "solution": "Each term blows up separately at \\(x = 3\\), so combine first. \\(x^{2}-11x+24 = (x-3)(x-8)\\) and \\(x^{2}-x-6 = (x-3)(x+2)\\). Hence the sum is \\(\\frac{1}{x-3}\\left[\\frac{1}{x-8}+\\frac{1}{x+2}\\right] = \\frac{1}{x-3}\\cdot\\frac{(x+2)+(x-8)}{(x-8)(x+2)} = \\frac{1}{x-3}\\cdot\\frac{2x-6}{(x-8)(x+2)} = \\frac{2(x-3)}{(x-3)(x-8)(x+2)} = \\frac{2}{(x-8)(x+2)}\\). At \\(x = 3\\) this is \\(\\frac{2}{(-5)(5)} = -\\frac{2}{25}\\).",
+    "why": "The bracket \\(\\frac{1}{x-8}+\\frac{1}{x+2}\\) itself contributes a factor \\(2(x-3)\\), which cancels the singular \\(\\frac{1}{x-3}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "4aaa8f24-0e29-46b4-8dcb-97c5ff4b9fa7",
+    "ref": "Misc I Q4",
+    "derived_answer": "D",
+    "solution": "As printed, the denominator's radical covers the whole of \\(3x-11-2\\), i.e. \\(\\sqrt{3x-13}\\). Read that way the denominator tends to \\(\\sqrt{15-13} = \\sqrt{2} \\neq 0\\) while the numerator tends to \\(\\sqrt{9}-3 = 0\\), so the limit would be \\(\\frac{0}{\\sqrt{2}} = 0\\) and NO option is correct. The reading that makes the question a genuine \\(\\frac{0}{0}\\) limit and matches an option is \\(\\sqrt{3x-11}-2\\), the \\(-2\\) sitting outside the radical. On that reading, rationalise both parts: \\(\\sqrt{x+4}-3 = \\frac{(x+4)-9}{\\sqrt{x+4}+3} = \\frac{x-5}{\\sqrt{x+4}+3}\\) and \\(\\sqrt{3x-11}-2 = \\frac{(3x-11)-4}{\\sqrt{3x-11}+2} = \\frac{3(x-5)}{\\sqrt{3x-11}+2}\\). The factor \\((x-5)\\) cancels, leaving \\(\\lim_{x \\to 5}\\frac{\\sqrt{3x-11}+2}{3\\left(\\sqrt{x+4}+3\\right)} = \\frac{2+2}{3(3+3)} = \\frac{4}{18} = \\frac{2}{9}\\).",
+    "why": "Stem misprint: the radical over-covers. With \\(\\sqrt{3x-13}\\) the limit is \\(0\\) and no option works; with \\(\\sqrt{3x-11}-2\\) it is \\(\\frac{2}{9}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "acd33e4a-a49c-4eb5-b1c4-7fd0fc72793e",
+    "ref": "Misc I Q5",
+    "derived_answer": "C",
+    "solution": "At \\(x = \\frac{\\pi}{3}\\), \\(\\tan x = \\sqrt{3}\\) so \\(\\tan^{2}x - 3 = 0\\), and \\(\\sec x = 2\\) so \\(\\sec^{3}x - 8 = 0\\): the \\(\\frac{0}{0}\\) form. Put everything in terms of \\(u = \\sec x\\), using \\(\\tan^{2}x = \\sec^{2}x - 1 = u^{2}-1\\). The quotient becomes \\(\\frac{(u^{2}-1)-3}{u^{3}-8} = \\frac{u^{2}-4}{u^{3}-8} = \\frac{(u-2)(u+2)}{(u-2)(u^{2}+2u+4)} = \\frac{u+2}{u^{2}+2u+4}\\). As \\(x \\to \\frac{\\pi}{3}\\), \\(u \\to 2\\), giving \\(\\frac{2+2}{4+4+4} = \\frac{4}{12} = \\frac{1}{3}\\).",
+    "why": "The identity \\(\\tan^{2}x = \\sec^{2}x-1\\) turns the whole expression into a single-variable \\(\\frac{u^{2}-4}{u^{3}-8}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "5642a2c7-a35e-4aab-90df-8151a03c3012",
+    "ref": "Misc I Q6",
+    "derived_answer": "C",
+    "solution": "Both numerator and denominator tend to \\(0\\). Divide each by \\(x\\): the numerator becomes \\(5\\cdot\\frac{\\sin x}{x} - \\cos x \\to 5(1) - 1 = 4\\), and the denominator becomes \\(2\\cdot\\frac{\\tan x}{x} - 3x \\to 2(1) - 0 = 2\\). Hence the limit is \\(\\frac{4}{2} = 2\\).",
+    "why": "Dividing through by \\(x\\) reduces everything to the standard limits \\(\\frac{\\sin x}{x} \\to 1\\) and \\(\\frac{\\tan x}{x} \\to 1\\).",
+    "matches_current": true
+  },
+  {
+    "id": "9da6cc2e-37d7-4805-aa0f-0e5d054e76c3",
+    "ref": "Misc I Q7",
+    "derived_answer": "C",
+    "solution": "Substitute \\(x = \\frac{\\pi}{2} + h\\) so that \\(h \\to 0\\). Then \\(\\cos x = \\cos\\left(\\frac{\\pi}{2}+h\\right) = -\\sin h\\) and \\(\\cos 3x = \\cos\\left(\\frac{3\\pi}{2}+3h\\right) = \\sin 3h\\). The numerator is \\(3(-\\sin h) + \\sin 3h = -3\\sin h + \\left(3\\sin h - 4\\sin^{3}h\\right) = -4\\sin^{3}h\\), using \\(\\sin 3h = 3\\sin h - 4\\sin^{3}h\\). The denominator is \\((2x-\\pi)^{3} = (2h)^{3} = 8h^{3}\\). Hence the limit is \\(\\lim_{h \\to 0} \\frac{-4\\sin^{3}h}{8h^{3}} = -\\frac{4}{8}\\left(\\lim_{h \\to 0}\\frac{\\sin h}{h}\\right)^{3} = -\\frac{1}{2}\\).",
+    "why": "The triple-angle expansion cancels the \\(3\\sin h\\) terms exactly, leaving \\(-4\\sin^{3}h\\) over \\(8h^{3}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "89ac7a24-61ff-4ab4-9118-4e8a6fec99e9",
+    "ref": "Misc I Q8",
+    "derived_answer": "C",
+    "solution": "Factor the numerator by grouping, using \\(15^{x} = 3^{x}5^{x}\\): \\(15^{x}-3^{x}-5^{x}+1 = 3^{x}5^{x}-3^{x}-5^{x}+1 = 3^{x}(5^{x}-1) - (5^{x}-1) = (3^{x}-1)(5^{x}-1)\\). Therefore the expression equals \\(\\frac{(3^{x}-1)}{x}\\cdot\\frac{(5^{x}-1)}{x}\\cdot\\frac{x^{2}}{\\sin^{2}x}\\). Using \\(\\lim_{x \\to 0}\\frac{a^{x}-1}{x} = \\log a\\) and \\(\\lim_{x \\to 0}\\frac{x}{\\sin x} = 1\\), the limit is \\(\\log 3 \\cdot \\log 5\\). TWIN: A=B, since \\(\\log 15 = \\log(3 \\times 5) = \\log 3 + \\log 5\\), so options A and B are the SAME number written two ways. Both are distractors here (the correct value is the PRODUCT \\(\\log 3 \\cdot \\log 5\\), not the sum), so the key is unaffected by the duplication.",
+    "why": "The numerator factors as \\((3^{x}-1)(5^{x}-1)\\), giving a product of logarithms, not a sum.",
+    "matches_current": true
+  },
+  {
+    "id": "7b0c2f3a-fa14-4f35-adf2-1ab2229f4aba",
+    "ref": "Misc I Q9",
+    "derived_answer": "A",
+    "solution": "This is the \\(1^{\\infty}\\) form. Write the base as \\(1\\) plus a small quantity: \\(\\frac{3+5x}{3-4x} = 1 + \\frac{(3+5x)-(3-4x)}{3-4x} = 1 + \\frac{9x}{3-4x}\\). Using \\(\\lim (1+f)^{g} = e^{\\lim fg}\\) when \\(f \\to 0\\) and \\(fg\\) has a finite limit, the exponent is \\(\\lim_{x \\to 0} \\frac{1}{x}\\cdot\\frac{9x}{3-4x} = \\lim_{x \\to 0}\\frac{9}{3-4x} = \\frac{9}{3} = 3\\). Hence the limit is \\(e^{3}\\).",
+    "why": "The base exceeds \\(1\\) by \\(\\frac{9x}{3-4x}\\), so the exponent limit is \\(\\frac{9}{3} = 3\\).",
+    "matches_current": true
+  },
+  {
+    "id": "dc039957-7447-4860-916e-e7eece06a198",
+    "ref": "Misc I Q10",
+    "derived_answer": "D",
+    "solution": "Combine the logarithms: \\(\\log(5+x)-\\log(5-x) = \\log\\frac{5+x}{5-x} = \\log\\left(1+\\frac{x}{5}\\right) - \\log\\left(1-\\frac{x}{5}\\right)\\). Divide by \\(x\\) and use \\(\\lim_{t \\to 0}\\frac{\\log(1+t)}{t} = 1\\): \\(\\frac{\\log\\left(1+\\frac{x}{5}\\right)}{x} \\to \\frac{1}{5}\\) and \\(\\frac{-\\log\\left(1-\\frac{x}{5}\\right)}{x} \\to \\frac{1}{5}\\), so the numerator over \\(x\\) tends to \\(\\frac{2}{5}\\). Since \\(\\frac{x}{\\sin x} \\to 1\\), the required limit is \\(\\frac{2}{5}\\).",
+    "why": "Both logarithms contribute \\(+\\frac{1}{5}\\) because the second carries a minus sign inside AND outside.",
+    "matches_current": true
+  },
+  {
+    "id": "22049289-dfa0-47e0-a498-e8e6d8be5b82",
+    "ref": "Misc I Q11",
+    "derived_answer": "B",
+    "solution": "Put \\(t = \\frac{\\pi}{2}-x\\), so \\(t \\to 0\\) and \\(\\cos x = \\cos\\left(\\frac{\\pi}{2}-t\\right) = \\sin t\\). The expression becomes \\(\\frac{3^{\\sin t}-1}{t} = \\frac{3^{\\sin t}-1}{\\sin t}\\cdot\\frac{\\sin t}{t}\\). As \\(t \\to 0\\), \\(\\sin t \\to 0\\), so the first factor tends to \\(\\log 3\\) by \\(\\lim_{u \\to 0}\\frac{a^{u}-1}{u} = \\log a\\), and the second tends to \\(1\\). Hence the limit is \\(\\log 3\\).",
+    "why": "The substitution \\(t = \\frac{\\pi}{2}-x\\) turns \\(\\cos x\\) into \\(\\sin t\\), matching the standard exponential limit.",
+    "matches_current": true
+  },
+  {
+    "id": "e6faf128-9a6b-4292-93c9-f4356a73cadf",
+    "ref": "Misc I Q12",
+    "derived_answer": "D",
+    "solution": "Rewrite so that every factor is a standard limit: \\(\\frac{x\\log(1+3x)}{\\left(e^{3x}-1\\right)^{2}} = \\frac{\\log(1+3x)}{3x}\\cdot\\left(\\frac{3x}{e^{3x}-1}\\right)^{2}\\cdot\\frac{x \\cdot 3x}{(3x)^{2}}\\). The first factor tends to \\(1\\), the squared factor tends to \\(1\\), and the last is the constant \\(\\frac{3x^{2}}{9x^{2}} = \\frac{1}{3}\\). Hence the limit is \\(\\frac{1}{3}\\). (Degree check: the numerator behaves like \\(x \\cdot 3x = 3x^{2}\\) and the denominator like \\((3x)^{2} = 9x^{2}\\).)",
+    "why": "Numerator \\(\\sim 3x^{2}\\), denominator \\(\\sim 9x^{2}\\), so the limit is \\(\\frac{3}{9} = \\frac{1}{3}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "c14ee4e2-812b-4d82-95f2-2b8ccf0e5a14",
+    "ref": "Misc I Q13",
+    "derived_answer": "C",
+    "solution": "Replace each factor by its standard limit. Numerator: \\(\\left(3^{\\sin x}-1\\right)^{3} = \\left(\\frac{3^{\\sin x}-1}{\\sin x}\\right)^{3}\\left(\\frac{\\sin x}{x}\\right)^{3}x^{3}\\), which behaves like \\((\\log 3)^{3}x^{3}\\). Denominator: \\(3^{x}-1\\) behaves like \\((\\log 3)x\\), \\(\\tan x\\) like \\(x\\), and \\(\\log(1+x)\\) like \\(x\\), so the product behaves like \\((\\log 3)x^{3}\\). The limit is therefore \\(\\frac{(\\log 3)^{3}}{\\log 3} = (\\log 3)^{2}\\). Note the \\(x^{3}\\) cancels exactly, confirming the expression is genuinely of \\(\\frac{0}{0}\\) type with a finite non-zero value.",
+    "why": "Three factors of \\(\\log 3\\) upstairs against one downstairs leaves \\((\\log 3)^{2}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "b7e4fb0f-f7df-47d7-8e3f-e3aa59d1ef80",
+    "ref": "Misc I Q14",
+    "derived_answer": "B",
+    "solution": "Put \\(t = x-3\\), so \\(t \\to 0\\) and the expression becomes \\(\\frac{5^{t}-4^{t}}{\\sin t}\\). Insert and remove \\(1\\) in the numerator: \\(5^{t}-4^{t} = \\left(5^{t}-1\\right)-\\left(4^{t}-1\\right)\\). Dividing through by \\(t\\), \\(\\frac{5^{t}-1}{t} \\to \\log 5\\) and \\(\\frac{4^{t}-1}{t} \\to \\log 4\\), while \\(\\frac{t}{\\sin t} \\to 1\\). Hence the limit is \\(\\log 5 - \\log 4 = \\log\\frac{5}{4}\\).",
+    "why": "\\(\\log 5 - \\log 4\\) is a DIFFERENCE of logs, so it collapses to \\(\\log\\frac{5}{4}\\), not to \\(\\frac{\\log 5}{\\log 4}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "7ec501d6-c06a-4b8c-a2c3-09fb90dde2c5",
+    "ref": "Misc I Q15",
+    "derived_answer": "B",
+    "solution": "The numerator has degree \\(7+3 = 10\\) and the denominator degree \\(10\\), so the limit is the ratio of the leading coefficients. Divide numerator and denominator by \\(x^{10}\\): \\(\\frac{\\left(2+\\frac{3}{x}\\right)^{7}\\left(1-\\frac{5}{x}\\right)^{3}}{\\left(2-\\frac{5}{x}\\right)^{10}}\\). As \\(x \\to \\infty\\) each \\(\\frac{1}{x}\\) term vanishes, leaving \\(\\frac{2^{7}\\cdot 1^{3}}{2^{10}} = \\frac{128}{1024} = \\frac{1}{8}\\).",
+    "why": "Equal degrees, so only the leading coefficients survive: \\(\\frac{2^{7}}{2^{10}} = 2^{-3} = \\frac{1}{8}\\).",
+    "matches_current": true
+  }
+]

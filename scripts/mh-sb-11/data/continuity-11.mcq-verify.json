@@ -1,0 +1,82 @@
+[
+  {
+    "id": "b61d9497-568c-4722-a1d6-e4d0ccf68128",
+    "ref": "Misc I Q1",
+    "derived_answer": "A",
+    "solution": "Put \\(x=\\frac{\\pi}{2}+h\\), so that \\(h \\to 0\\) as \\(x \\to \\frac{\\pi}{2}\\). Then \\(\\cot x=\\cot\\left(\\frac{\\pi}{2}+h\\right)=-\\tan h\\) and \\(\\pi-2x=\\pi-2\\left(\\frac{\\pi}{2}+h\\right)=-2h\\). Hence\n\\(\\lim\\limits_{x \\to \\frac{\\pi}{2}} f(x)=\\lim\\limits_{h \\to 0}\\frac{2^{-\\tan h}-1}{-2h}=\\lim\\limits_{h \\to 0}\\left[\\frac{2^{-\\tan h}-1}{-\\tan h}\\cdot\\frac{-\\tan h}{-2h}\\right]\\).\nUsing \\(\\lim\\limits_{u \\to 0}\\frac{2^{u}-1}{u}=\\log 2\\) (with \\(u=-\\tan h \\to 0\\)) and \\(\\lim\\limits_{h \\to 0}\\frac{\\tan h}{h}=1\\), this equals \\(\\log 2 \\times \\frac{1}{2}=\\frac{1}{2}\\log 2=\\log 2^{1/2}=\\log\\sqrt{2}\\).\nSince \\(f\\left(\\frac{\\pi}{2}\\right)=\\log\\sqrt{2}\\) is exactly this limit, \\(f\\) is continuous at \\(x=\\frac{\\pi}{2}\\). Option D is wrong because the limit is \\(\\log\\sqrt{2}\\), not \\(2\\log 3\\); B and C are ruled out since the limit exists and equals the assigned value.",
+    "why": "The limit works out to \\(\\frac{1}{2}\\log 2=\\log\\sqrt{2}\\), which is precisely the value assigned at \\(x=\\frac{\\pi}{2}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "22b743b2-fc33-48ad-8130-f096006ed3e7",
+    "ref": "Misc I Q2",
+    "derived_answer": "D",
+    "solution": "For continuity, \\(f\\left(\\frac{\\pi}{4}\\right)=\\lim\\limits_{x \\to \\frac{\\pi}{4}} f(x)\\). Put \\(x=\\frac{\\pi}{4}+h\\), so \\(h \\to 0\\).\nThen \\(\\sin x=\\sin\\left(\\frac{\\pi}{4}+h\\right)=\\frac{1}{\\sqrt{2}}(\\cos h+\\sin h)\\), so \\(\\sqrt{2}\\sin x=\\cos h+\\sin h\\) and the numerator becomes \\(1-\\cos h-\\sin h\\). The denominator is \\(\\pi-4\\left(\\frac{\\pi}{4}+h\\right)=-4h\\).\nHence \\(\\lim\\limits_{h \\to 0}\\frac{(1-\\cos h)-\\sin h}{-4h}=\\lim\\limits_{h \\to 0}\\left[\\frac{1-\\cos h}{-4h}-\\frac{\\sin h}{-4h}\\right]\\).\nSince \\(\\lim\\limits_{h \\to 0}\\frac{1-\\cos h}{h}=0\\) and \\(\\lim\\limits_{h \\to 0}\\frac{\\sin h}{h}=1\\), the value is \\(0+\\frac{1}{4}=\\frac{1}{4}\\).\nTherefore \\(f\\left(\\frac{\\pi}{4}\\right)=\\frac{1}{4}\\).",
+    "why": "After the substitution \\(x=\\frac{\\pi}{4}+h\\) the numerator behaves like \\(-h\\) against a denominator \\(-4h\\), giving \\(\\frac{1}{4}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "58df5fb7-9166-4573-9f7d-b1326b1f2e62",
+    "ref": "Misc I Q3",
+    "derived_answer": "D",
+    "solution": "Write the quotient so that each factor is a standard limit:\n\\(\\frac{(\\sin 2x)\\tan 5x}{(e^{2x}-1)^2}=\\frac{\\sin 2x}{2x}\\cdot\\frac{\\tan 5x}{5x}\\cdot\\left(\\frac{2x}{e^{2x}-1}\\right)^{2}\\cdot\\frac{(2x)(5x)}{(2x)^{2}}\\).\nAs \\(x \\to 0\\), \\(\\frac{\\sin 2x}{2x} \\to 1\\), \\(\\frac{\\tan 5x}{5x} \\to 1\\) and \\(\\frac{e^{2x}-1}{2x} \\to 1\\), while the algebraic factor is \\(\\frac{10x^{2}}{4x^{2}}=\\frac{10}{4}=\\frac{5}{2}\\).\nHence \\(\\lim\\limits_{x \\to 0} f(x)=\\frac{5}{2}\\), so \\(f(0)=\\frac{5}{2}\\).\nNote that \\(e\\) does not survive in the answer at all: \\(e^{2x}-1\\) behaves like \\(2x\\), so options A and B are ruled out on principle.",
+    "why": "Replacing each factor by its linear order gives \\(\\frac{(2x)(5x)}{(2x)^2}=\\frac{5}{2}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "0bd27430-9b61-4424-91b7-bf6128a98edb",
+    "ref": "Misc I Q4",
+    "derived_answer": "B",
+    "solution": "Factorise the denominator: \\(x^{2}+2x-8=(x+4)(x-2)\\), which vanishes at \\(x=-4\\) and \\(x=2\\). The numerator \\(x^{2}-7x+10=(x-2)(x-5)\\) also vanishes at \\(x=2\\), but that is irrelevant here because the domain is restricted.\nThe function is defined only on \\([-6,-3]\\). Of the two zeros of the denominator, \\(x=2 \\notin [-6,-3]\\) while \\(x=-4 \\in [-6,-3]\\).\nSo within the given domain the only point of discontinuity is \\(x=-4\\).\nOption A and D name \\(x=2\\), which lies outside the interval, and C names \\(x=0\\), where the denominator is \\(-8 \\ne 0\\).",
+    "why": "Of the denominator's two zeros \\(-4\\) and \\(2\\), only \\(-4\\) lies in the stated domain \\([-6,-3]\\).",
+    "matches_current": true
+  },
+  {
+    "id": "c0e5bb33-a46d-4a04-83b6-3a6cf47d695a",
+    "ref": "Misc I Q5",
+    "derived_answer": "A",
+    "solution": "First read the domains. \\(|x-1| \\ge 3\\) means \\(x-1 \\ge 3\\) or \\(x-1 \\le -3\\), i.e. \\(x \\ge 4\\) or \\(x \\le -2\\); the linear piece \\(4x+5\\) holds on \\(-2<x<4\\). So the two junction points are \\(x=-2\\) and \\(x=4\\).\nContinuity at \\(x=-2\\): \\(a(-2)^{2}+b(-2)+1=4(-2)+5\\), i.e. \\(4a-2b+1=-3\\), so \\(4a-2b=-4\\), i.e. \\(2a-b=-2\\).\nContinuity at \\(x=4\\): \\(4(4)+5=a(4)^{2}+b(4)+1\\), i.e. \\(21=16a+4b+1\\), so \\(16a+4b=20\\), i.e. \\(4a+b=5\\).\nAdding \\(2a-b=-2\\) and \\(4a+b=5\\) gives \\(6a=3\\), so \\(a=\\frac{1}{2}\\), and then \\(b=5-4a=5-2=3\\).\nCheck: \\(2\\left(\\frac{1}{2}\\right)-3=-2\\) and \\(4\\left(\\frac{1}{2}\\right)+3=5\\), both satisfied.",
+    "why": "Matching the pieces at both junctions \\(x=-2\\) and \\(x=4\\) gives \\(2a-b=-2\\) and \\(4a+b=5\\), so \\(a=\\frac{1}{2},\\ b=3\\).",
+    "matches_current": true
+  },
+  {
+    "id": "38539fec-9a61-4341-9411-e31efeaa28b5",
+    "ref": "Misc I Q6",
+    "derived_answer": "B",
+    "solution": "Divide numerator and denominator by \\(x^{2}\\) and use \\(\\lim\\limits_{x \\to 0}\\frac{a^{x}-1}{x}=\\log a\\):\n\\(k=\\lim\\limits_{x \\to 0}\\frac{\\left(\\frac{16^{x}-1}{x}\\right)\\left(\\frac{9^{x}-1}{x}\\right)}{\\left(\\frac{27^{x}-1}{x}\\right)\\left(\\frac{32^{x}-1}{x}\\right)}=\\frac{(\\log 16)(\\log 9)}{(\\log 27)(\\log 32)}\\).\nNow \\(\\log 16=4\\log 2\\), \\(\\log 9=2\\log 3\\), \\(\\log 27=3\\log 3\\), \\(\\log 32=5\\log 2\\), so\n\\(k=\\frac{(4\\log 2)(2\\log 3)}{(3\\log 3)(5\\log 2)}=\\frac{8\\log 2\\log 3}{15\\log 3\\log 2}=\\frac{8}{15}\\).\nEvery factor here is positive, so the negative alternative \\(-\\frac{8}{15}\\) is excluded on sign alone.",
+    "why": "Reducing every logarithm to \\(\\log 2\\) and \\(\\log 3\\) makes them cancel, leaving \\(\\frac{4\\times 2}{3\\times 5}=\\frac{8}{15}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "9721587d-48bb-4ae6-b63d-41956e111274",
+    "ref": "Misc I Q7",
+    "derived_answer": "A",
+    "solution": "Factorise both parts. Since \\(32^{x}=(8\\times 4)^{x}=8^{x}\\cdot 4^{x}\\),\n\\(32^{x}-8^{x}-4^{x}+1=8^{x}4^{x}-8^{x}-4^{x}+1=(8^{x}-1)(4^{x}-1)\\).\nAlso \\(4^{x}-2^{x+1}+1=(2^{x})^{2}-2\\cdot 2^{x}+1=(2^{x}-1)^{2}\\).\nHence\n\\(k=\\lim\\limits_{x \\to 0}\\frac{(8^{x}-1)(4^{x}-1)}{(2^{x}-1)^{2}}=\\lim\\limits_{x \\to 0}\\frac{\\frac{8^{x}-1}{x}\\cdot\\frac{4^{x}-1}{x}}{\\left(\\frac{2^{x}-1}{x}\\right)^{2}}=\\frac{(\\log 8)(\\log 4)}{(\\log 2)^{2}}=\\frac{(3\\log 2)(2\\log 2)}{(\\log 2)^{2}}=6\\).\nThe logarithms cancel completely, so the answer is a pure number and options C and D are excluded.",
+    "why": "The expression factorises as \\(\\frac{(8^{x}-1)(4^{x}-1)}{(2^{x}-1)^{2}}\\), giving \\(\\frac{3\\log 2 \\times 2\\log 2}{(\\log 2)^{2}}=6\\).",
+    "matches_current": true
+  },
+  {
+    "id": "8e3e362e-b12e-418f-a330-89992f7b6ba3",
+    "ref": "Misc I Q8",
+    "derived_answer": "B",
+    "solution": "Since \\(12^{x}=4^{x}\\cdot 3^{x}\\), the numerator factorises:\n\\(12^{x}-4^{x}-3^{x}+1=4^{x}3^{x}-4^{x}-3^{x}+1=(4^{x}-1)(3^{x}-1)\\).\nThe denominator is \\(1-\\cos 2x=2\\sin^{2}x\\).\nTherefore\n\\(f(0)=\\lim\\limits_{x \\to 0}\\frac{(4^{x}-1)(3^{x}-1)}{2\\sin^{2}x}=\\lim\\limits_{x \\to 0}\\frac{\\frac{4^{x}-1}{x}\\cdot\\frac{3^{x}-1}{x}}{2\\left(\\frac{\\sin x}{x}\\right)^{2}}=\\frac{(\\log 4)(\\log 3)}{2}=\\frac{(2\\log 2)(\\log 3)}{2}=\\log 2 \\cdot \\log 3\\).\nOption C, \\(\\frac{\\log 2 \\cdot \\log 3}{2}\\), is what one gets by forgetting that \\(\\log 4=2\\log 2\\); the factor \\(2\\) cancels the \\(2\\) from \\(1-\\cos 2x=2\\sin^{2}x\\).",
+    "why": "\\(\\log 4=2\\log 2\\) cancels the \\(2\\) coming from \\(1-\\cos 2x=2\\sin^{2}x\\), leaving \\(\\log 2 \\cdot \\log 3\\).",
+    "matches_current": true
+  },
+  {
+    "id": "0ef35bb2-e5fb-48e8-aaa4-5b6f8b992e65",
+    "ref": "Misc I Q9",
+    "derived_answer": "C",
+    "solution": "Take logarithms: \\(\\log f(x)=\\frac{4}{x}\\left[\\log(4+5x)-\\log(4-7x)\\right]=\\frac{4}{x}\\left[\\log\\left(1+\\frac{5x}{4}\\right)-\\log\\left(1-\\frac{7x}{4}\\right)\\right]\\).\nUsing \\(\\lim\\limits_{u \\to 0}\\frac{\\log(1+u)}{u}=1\\),\n\\(\\lim\\limits_{x \\to 0}\\frac{\\log\\left(1+\\frac{5x}{4}\\right)}{x}=\\frac{5}{4}\\) and \\(\\lim\\limits_{x \\to 0}\\frac{\\log\\left(1-\\frac{7x}{4}\\right)}{x}=-\\frac{7}{4}\\).\nHence \\(\\lim\\limits_{x \\to 0}\\log f(x)=4\\left[\\frac{5}{4}+\\frac{7}{4}\\right]=4 \\times 3=12\\), so \\(k=e^{12}\\).\nNote the base is \\(\\frac{4+5x}{4-7x} \\to 1\\) and the index \\(\\frac{4}{x} \\to \\infty\\), so this is genuinely the \\(1^{\\infty}\\) form and the exponential answer is expected.",
+    "why": "\\(\\log k = \\frac{4}{x}\\log\\frac{4+5x}{4-7x} \\to 4\\left(\\frac{5}{4}+\\frac{7}{4}\\right)=12\\).",
+    "matches_current": true
+  },
+  {
+    "id": "3faff7f5-e783-42f1-b818-0c9d9c2b6b4c",
+    "ref": "Misc I Q10",
+    "derived_answer": "C",
+    "solution": "The greatest integer function \\(\\lfloor x \\rfloor\\) is a step function which is continuous at every non-integer point and discontinuous at every integer, because there the left-hand and right-hand limits differ by \\(1\\).\nThe domain here is the open interval \\((-1,2)\\). The integers lying strictly inside it are \\(0\\) and \\(1\\); the endpoints \\(-1\\) and \\(2\\) are not in the domain, so continuity is not even defined there.\nCheck at \\(x=0\\): \\(\\lim\\limits_{x \\to 0^{-}}\\lfloor x \\rfloor=-1\\) while \\(\\lim\\limits_{x \\to 0^{+}}\\lfloor x \\rfloor=0\\), so \\(f\\) is discontinuous.\nCheck at \\(x=1\\): \\(\\lim\\limits_{x \\to 1^{-}}\\lfloor x \\rfloor=0\\) while \\(\\lim\\limits_{x \\to 1^{+}}\\lfloor x \\rfloor=1\\), again discontinuous.\nSo \\(f\\) is discontinuous exactly at \\(x=0\\) and \\(x=1\\).",
+    "why": "Only the integers strictly inside the open interval \\((-1,2)\\) count, and those are \\(0\\) and \\(1\\).",
+    "matches_current": true
+  }
+]

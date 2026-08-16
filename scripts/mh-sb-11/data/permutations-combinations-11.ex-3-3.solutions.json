@@ -1,0 +1,173 @@
+[
+  {
+    "id": "a4e58c9c-18dd-4096-90df-bcf9ca177618",
+    "ref": "Ex 3.3 Q1",
+    "solution": "Both sides count ordered selections of distinct objects without repetition, so \\({}^{n}P_{r} = \\frac{n!}{(n-r)!}\\).\n\\(\\frac{{}^{n}P_{6}}{{}^{n}P_{3}} = \\frac{n!/(n-6)!}{n!/(n-3)!} = \\frac{(n-3)!}{(n-6)!} = (n-3)(n-4)(n-5)\\).\nSo \\((n-3)(n-4)(n-5) = 120 = 6 \\times 5 \\times 4\\), and three consecutive decreasing factors force \\(n-3 = 6\\).\n\\(n = 9\\)"
+  },
+  {
+    "id": "d0d7b659-f9f0-4418-8ca2-157e439d5810",
+    "ref": "Ex 3.3 Q2",
+    "solution": "\\({}^{k}P_{2} = k(k-1)\\), an ordered choice of 2 distinct objects from \\(k\\).\n\\((m+n)(m+n-1) = 56 = 8 \\times 7\\), so \\(m+n = 8\\).\n\\((m-n)(m-n-1) = 12 = 4 \\times 3\\), so \\(m-n = 4\\).\nAdding, \\(2m = 12\\), and subtracting, \\(2n = 4\\).\n\\(m = 6,\\ n = 2\\)"
+  },
+  {
+    "id": "81ebf8b1-d65d-4790-a520-bf63278bdc43",
+    "ref": "Ex 3.3 Q3",
+    "solution": "\\({}^{12}P_{r-2} = \\frac{12!}{(14-r)!}\\) and \\({}^{11}P_{r-1} = \\frac{11!}{(12-r)!}\\).\n\\(\\frac{{}^{12}P_{r-2}}{{}^{11}P_{r-1}} = \\frac{12!}{(14-r)!} \\times \\frac{(12-r)!}{11!} = \\frac{12}{(14-r)(13-r)} = \\frac{3}{14}\\).\nSo \\((14-r)(13-r) = \\frac{12 \\times 14}{3} = 56 = 8 \\times 7\\), giving \\(14-r = 8\\).\n\\(r = 6\\)"
+  },
+  {
+    "id": "08153322-2249-460b-b4a8-03a5bfd0ff7b",
+    "ref": "Ex 3.3 Q4",
+    "solution": "Start from the right-hand side, using \\({}^{(n+1)}P_{r} = \\frac{(n+1)!}{(n+1-r)!}\\).\nRHS \\(= (n-r+1) \\times \\frac{(n+1)!}{(n+1-r)!}\\).\nSince \\((n+1-r)! = (n+1-r)(n-r)!\\) and \\(n+1-r = n-r+1\\), the factor \\((n-r+1)\\) cancels:\nRHS \\(= \\frac{(n+1)!}{(n-r)!} = (n+1) \\times \\frac{n!}{(n-r)!} = (n+1)\\left({}^{n}P_{r}\\right) = \\) LHS.\nHence \\((n+1)\\left({}^{n}P_{r}\\right) = (n-r+1)\\left[{}^{(n+1)}P_{r}\\right]\\)."
+  },
+  {
+    "id": "a7a1eb5c-2621-4419-9205-bc3048b93f56",
+    "ref": "Ex 3.3 Q5(a)",
+    "solution": "MADHURI has 7 letters, all different: M, A, D, H, U, R, I.\nA 4-letter word is an ordered arrangement, and repetition is allowed, so each of the 4 places can be filled independently in 7 ways.\nNumber of words \\(= 7^{4} = 2401\\).\n\\(2401\\)"
+  },
+  {
+    "id": "0a14627d-fb35-40c1-943c-8146364e214d",
+    "ref": "Ex 3.3 Q5(b)",
+    "solution": "The 7 letters of MADHURI are all different, and now no letter may repeat, so we make an ordered selection of 4 from 7.\nNumber of words \\(= {}^{7}P_{4} = 7 \\times 6 \\times 5 \\times 4 = 840\\).\n\\(840\\)"
+  },
+  {
+    "id": "0e1044eb-2848-4727-b60b-8b70c58c7cef",
+    "ref": "Ex 3.3 Q6(a)",
+    "solution": "ALGORITHM has 9 different letters: vowels A, O, I (3) and consonants L, G, R, T, H, M (6).\nTreat the 3 vowels as one block, so 6 consonants and 1 block, that is 7 units, are arranged in \\(7! = 5040\\) ways.\nThe 3 vowels inside the block are themselves arranged in \\(3! = 6\\) ways.\nNumber of arrangements \\(= 5040 \\times 6 = 30240\\).\n\\(30240\\)"
+  },
+  {
+    "id": "2eb83a19-835c-4e4a-b5c1-7fdf65bd3fd5",
+    "ref": "Ex 3.3 Q6(b)",
+    "solution": "First arrange the 6 distinct consonants of ALGORITHM in \\(6! = 720\\) ways.\nThis creates 7 gaps (5 between them and 2 at the ends); to keep no two vowels adjacent, the 3 distinct vowels must occupy 3 different gaps, which is an ordered choice: \\({}^{7}P_{3} = 7 \\times 6 \\times 5 = 210\\) ways.\nNumber of arrangements \\(= 720 \\times 210 = 151200\\).\n\\(151200\\)"
+  },
+  {
+    "id": "4b8585da-bed8-4288-b698-ed627d54943f",
+    "ref": "Ex 3.3 Q6(c)",
+    "solution": "There are 9 places, of which the even places are the 2nd, 4th, 6th and 8th, only 4 in number, while ALGORITHM has 6 consonants. So the condition means every even place is filled by a consonant, the vowels being confined to the odd places.\nChoose and arrange 4 of the 6 distinct consonants in the 4 even places: \\({}^{6}P_{4} = 6 \\times 5 \\times 4 \\times 3 = 360\\) ways.\nThe remaining 5 letters (2 consonants and 3 vowels), all distinct, fill the 5 odd places in \\(5! = 120\\) ways.\nNumber of arrangements \\(= 360 \\times 120 = 43200\\).\n\\(43200\\)"
+  },
+  {
+    "id": "8fddb9a3-aba9-485e-b3cf-47864344311c",
+    "ref": "Ex 3.3 Q6(d)",
+    "solution": "In ALGORITHM the first place is fixed as O and the last as T, so those two letters can be placed in only 1 way.\nThe remaining 7 letters are all different and fill the 7 middle places in \\(7! = 5040\\) ways.\n\\(5040\\)"
+  },
+  {
+    "id": "4feafa31-e568-43bc-b295-88741d4f7084",
+    "ref": "Ex 3.3 Q7",
+    "solution": "First row: the principal occupies the fixed middle seat, and the 6 distinct teachers fill the remaining 6 seats in \\(6!\\) ways.\nSecond row: arrange the 12 distinct boys first, in \\(12!\\) ways. They create 13 gaps (11 between them and 2 at the ends), and to keep no two girls together the 6 distinct girls must occupy 6 different gaps, an ordered choice: \\({}^{13}P_{6} = \\frac{13!}{7!}\\).\nTotal \\(= 6! \\times 12! \\times \\frac{13!}{7!}\\), and since \\(\\frac{6!}{7!} = \\frac{1}{7}\\) this simplifies.\nNumber of arrangements \\(= \\frac{12! \\times 13!}{7}\\)"
+  },
+  {
+    "id": "421b1e0f-4055-4b2b-b2fe-960d4895eb8a",
+    "ref": "Ex 3.3 Q8(a)",
+    "solution": "HISTORY has 7 different letters.\nTie Y and T into one block, so 5 other letters and 1 block, that is 6 units, are arranged in \\(6! = 720\\) ways.\nWithin the block Y and T can stand in either order, \\(2! = 2\\) ways.\nNumber of arrangements \\(= 720 \\times 2 = 1440\\).\n\\(1440\\)"
+  },
+  {
+    "id": "4b64dc67-4991-41fc-9d9f-6f7f48b1a0b4",
+    "ref": "Ex 3.3 Q8(b)",
+    "solution": "Here Y must immediately follow T, so the pair is the fixed block TY (unlike part (a), the order inside the block is not free).\nThe block together with the other 5 distinct letters gives 6 units, arranged in \\(6! = 720\\) ways.\n\\(720\\)"
+  },
+  {
+    "id": "86b0da66-f816-4c64-8842-6e0ed885c035",
+    "ref": "Ex 3.3 Q8(c)",
+    "solution": "All 7 letters of HISTORY are different and every one is used, so this is a plain arrangement of 7 distinct objects.\nNumber of arrangements \\(= 7! = 5040\\).\n\\(5040\\)"
+  },
+  {
+    "id": "04cf0700-3f87-4def-bf6f-646994ab12ac",
+    "ref": "Ex 3.3 Q8(d)",
+    "solution": "The vowels of HISTORY are I and O. They must take the first and the last place, in \\(2! = 2\\) ways.\nThe remaining 5 distinct letters fill the 5 middle places in \\(5! = 120\\) ways.\nNumber of arrangements \\(= 2 \\times 120 = 240\\).\n\\(240\\)"
+  },
+  {
+    "id": "97b0f839-d2eb-477a-b526-d67676c96d93",
+    "ref": "Ex 3.3 Q8(e)",
+    "solution": "The last two places are fixed as S and T in that order, so they contribute 1 way.\nThe remaining 5 distinct letters fill the first 5 places in \\(5! = 120\\) ways.\n\\(120\\)"
+  },
+  {
+    "id": "18b92118-c705-4902-9dec-2559aca3e1b5",
+    "ref": "Ex 3.3 Q8(f)",
+    "solution": "S is fixed in the first place and T in the last place, in 1 way.\nThe remaining 5 distinct letters fill the 5 middle places in \\(5! = 120\\) ways.\n\\(120\\)"
+  },
+  {
+    "id": "b6df6abb-46a2-485a-ab57-37e5fa748341",
+    "ref": "Ex 3.3 Q9",
+    "solution": "SOLAPUR has 7 different letters: 4 consonants S, L, P, R and 3 vowels O, A, U.\nWith 4 consonants and 3 vowels in 7 places, the only alternating pattern is C V C V C V C, so the consonants take the odd places and the vowels the even places; there is just 1 such pattern.\nConsonants arrange in \\(4! = 24\\) ways and vowels in \\(3! = 6\\) ways.\nNumber of arrangements \\(= 24 \\times 6 = 144\\).\n\\(144\\)"
+  },
+  {
+    "id": "f84a2085-eee4-4e21-bda2-1c2d05f1bb11",
+    "ref": "Ex 3.3 Q10(a)",
+    "solution": "There are 6 available digits 1, 2, 4, 5, 6, 8 and none is 0, so every arrangement is a genuine 4-digit number.\nRepetition is allowed, so each of the 4 places is filled independently in 6 ways.\nNumber of numbers \\(= 6^{4} = 1296\\).\n\\(1296\\)"
+  },
+  {
+    "id": "8a6e7139-6634-4af0-b1fd-79a134cf879f",
+    "ref": "Ex 3.3 Q10(b)",
+    "solution": "The 6 digits are distinct and none is 0, and now no digit may repeat, so we make an ordered selection of 4 from 6.\nNumber of numbers \\(= {}^{6}P_{4} = 6 \\times 5 \\times 4 \\times 3 = 360\\).\n\\(360\\)"
+  },
+  {
+    "id": "a658fd89-c31b-4d2f-bc4c-d7928174e0d3",
+    "ref": "Ex 3.3 Q11",
+    "solution": "A number between 100 and 1000 has exactly 3 digits, and repetition is not allowed.\nThe hundreds place cannot be 0, so it can be filled by any of 1, 2, 3, 4, 5, that is 5 ways.\nThe remaining two places are filled by an ordered choice of 2 from the 5 digits left (0 now being allowed): \\({}^{5}P_{2} = 5 \\times 4 = 20\\) ways.\nNumber of numbers \\(= 5 \\times 20 = 100\\).\n\\(100\\)"
+  },
+  {
+    "id": "5fa529fa-7f30-4b42-b216-a6c22822953b",
+    "ref": "Ex 3.3 Q12(a)",
+    "solution": "The 6 digits 3, 4, 5, 6, 7, 8 are distinct and all are used, so there are \\(6! = 720\\) such 6-digit numbers in all.\nA number is divisible by 5 only if its units digit is 5 (there is no 0 available), which fixes 1 digit.\nThe other 5 distinct digits fill the remaining 5 places in \\(5! = 120\\) ways.\n\\(120\\)"
+  },
+  {
+    "id": "23b9193a-adf3-4f0b-bee0-8b37cf56f418",
+    "ref": "Ex 3.3 Q12(b)",
+    "solution": "The total number of 6-digit numbers formed from 3, 4, 5, 6, 7, 8 without repetition is \\(6! = 720\\), and 120 of them are divisible by 5 (those ending in 5).\nNumbers not divisible by 5 \\(= 720 - 120 = 600\\).\n\\(600\\)"
+  },
+  {
+    "id": "cff68de8-8580-4d27-9056-6b7669f41674",
+    "ref": "Ex 3.3 Q13",
+    "solution": "The two letters are different and their order matters: \\({}^{26}P_{2} = 26 \\times 25 = 650\\) ways.\nThe two digits are distinct and non-zero, so chosen in order from 1 to 9: \\({}^{9}P_{2} = 9 \\times 8 = 72\\) ways.\nTotal code words \\(= 650 \\times 72 = 46800\\).\nFor a code word ending in an even digit, the last digit is one of 2, 4, 6, 8, that is 4 ways, and the other digit is any of the 8 remaining non-zero digits, so the digit pair can be formed in \\(4 \\times 8 = 32\\) ways, giving \\(650 \\times 32 = 20800\\).\n\\(46800\\) code words in all, of which \\(20800\\) end with an even digit."
+  },
+  {
+    "id": "f3e939bc-8c79-4322-9a82-a01017a3b290",
+    "ref": "Ex 3.3 Q14",
+    "solution": "The 5 letters are distinct and each one is posted independently; a box may receive any number of letters, so choices repeat freely.\nEach letter can go into any of the 3 boxes, so there are 3 ways per letter.\nNumber of ways \\(= 3^{5} = 243\\).\n\\(243\\)"
+  },
+  {
+    "id": "a2d8677e-ac2b-478c-b145-db828c0ed88d",
+    "ref": "Ex 3.3 Q15(a)",
+    "solution": "We arrange 4 of 11 distinct objects in a row, and the specified object must be one of the 4.\nIt can occupy any one of the 4 places, in 4 ways.\nThe other 3 places are filled by an ordered choice of 3 from the remaining 10 objects: \\({}^{10}P_{3} = 10 \\times 9 \\times 8 = 720\\) ways.\nNumber of arrangements \\(= 4 \\times 720 = 2880\\).\n\\(2880\\)"
+  },
+  {
+    "id": "3231021c-2b98-4382-9090-9e1b89c0939f",
+    "ref": "Ex 3.3 Q15(b)",
+    "solution": "If the specified object never occurs, all 4 places must be filled from the other 10 distinct objects, in order and without repetition.\nNumber of arrangements \\(= {}^{10}P_{4} = 10 \\times 9 \\times 8 \\times 7 = 5040\\).\n\\(5040\\)"
+  },
+  {
+    "id": "e495c933-b479-4efe-ab3d-e63a008e228d",
+    "ref": "Ex 3.3 Q16(i)",
+    "solution": "The 5 books are all different and every one is placed, so this is an arrangement of 5 distinct objects in a row.\nNumber of ways \\(= 5! = 120\\).\n\\(120\\)"
+  },
+  {
+    "id": "aad3582a-6568-4985-a579-4c9a6a7a4846",
+    "ref": "Ex 3.3 Q16(ii)",
+    "solution": "Tie the 2 specified books into one block, so the block together with the other 3 books gives 4 units, arranged in \\(4! = 24\\) ways.\nThe 2 books inside the block can be interchanged in \\(2! = 2\\) ways.\nNumber of ways \\(= 24 \\times 2 = 48\\).\n\\(48\\)"
+  },
+  {
+    "id": "70ec05b9-42cb-4e21-9aea-b5bd1840a97d",
+    "ref": "Ex 3.3 Q16(iii)",
+    "solution": "Total arrangements of the 5 distinct books \\(= 5! = 120\\), and those in which the 2 specified books are together \\(= 4! \\times 2! = 48\\).\nNumber with the 2 books never together \\(= 120 - 48 = 72\\).\n\\(72\\)"
+  },
+  {
+    "id": "3dd988f8-830d-4aef-95ac-16b6092389b9",
+    "ref": "Ex 3.3 Q17(i)",
+    "solution": "The 3 boys and 3 girls are 6 distinct persons seated in a row with no condition.\nNumber of ways \\(= 6! = 720\\).\n\\(720\\)"
+  },
+  {
+    "id": "1c5d8ce1-4ed3-4918-bb81-b0af04dbfc5e",
+    "ref": "Ex 3.3 Q17(ii)",
+    "solution": "The two end seats must be taken by 2 of the 3 distinct girls, and the two ends are different seats, so this is an ordered choice: \\({}^{3}P_{2} = 3 \\times 2 = 6\\) ways.\nThe remaining 4 persons (3 boys and 1 girl) fill the 4 middle seats in \\(4! = 24\\) ways.\nNumber of ways \\(= 6 \\times 24 = 144\\).\n\\(144\\)"
+  },
+  {
+    "id": "22475f84-a30c-4f68-835c-577dd190f7fd",
+    "ref": "Ex 3.3 Q17(iii)",
+    "solution": "With 3 boys and 3 girls in 6 seats, alternate seating admits only two patterns, B G B G B G and G B G B G B.\nIn each pattern the 3 distinct boys are arranged among their 3 seats in \\(3! = 6\\) ways and the 3 distinct girls among theirs in \\(3! = 6\\) ways.\nNumber of ways \\(= 2 \\times 3! \\times 3! = 2 \\times 6 \\times 6 = 72\\).\n\\(72\\)",
+    "_note": "The book's key gives 288 for this sub-item, which is 4 times the correct value. With equal numbers of boys and girls only two alternating patterns exist (BGBGBG and GBGBGB), so the count is \\(2 \\times 3! \\times 3! = 72\\); an exhaustive check of all 720 seatings confirms exactly 72 are alternating. The other three sub-items of Q17 (720, 144, 144) all reconcile with the key exactly, which marks (iii) as an isolated slip."
+  },
+  {
+    "id": "9110ee55-7de8-4c7b-a433-b53cb58447c8",
+    "ref": "Ex 3.3 Q17(iv)",
+    "solution": "Tie the 3 boys into one block, so the block together with the 3 girls gives 4 units, arranged in \\(4! = 24\\) ways.\nThe 3 distinct boys inside the block are arranged in \\(3! = 6\\) ways.\nNumber of ways \\(= 24 \\times 6 = 144\\).\n\\(144\\)"
+  }
+]

@@ -1,0 +1,220 @@
+[
+  {
+    "ref": "3.5.4 SolvedEx.1(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "context": "In how many ways can 8 students be arranged at a round table so that 2 particular students are together, if",
+    "setLabel": "3.5.4 SolvedEx.1",
+    "stem": "students are arranged with respect to each other? (That is the seats are not numbered.)",
+    "solution": "Considering those 2 particular students as one student, we have 7 students.\n\nIn circular arrangement 7 students can be arranged at a round table, in \\(6!\\) ways and 2 students can be arranged among themselves in \\(^{2}p_{2} = 2!\\) ways. Hence, the required number of ways in which two particular students come together \\(= 6! \\times 2! = 1440\\)."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.1(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "context": "In how many ways can 8 students be arranged at a round table so that 2 particular students are together, if",
+    "setLabel": "3.5.4 SolvedEx.1",
+    "stem": "students are arranged with respect to the table? (That is the seats are numbered serially)",
+    "solution": "Considering those 2 particular students as one student, we have 7 students.\n\nHere the arrangement is like an arrangement in a row.\n\nSo 7 students can be arranged in \\(7!\\) ways and 2 students can be arranged amongst themselves in \\(^{2}p_{2} = 2!\\) ways. Hence, the required number of ways in which two particular students come together \\(= 7! \\times 2! = 10080\\)."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "In how many ways 6 men and 3 women can be seated at a round table so that every man has woman by his side.",
+    "solution": "3 women have \\((3 - 1)! = 2\\) ways of circular seatings.\n\nIn each seating a women has one place on each side for a man. Thus there are 6 different places for 6 men which can be filled in \\(6!\\) ways.\n\nHence, the total number of required arrangements \\(= 6! \\times 2 = 720 \\times 2 = 1440\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. 3.6 — a round table with 9 seats shown as the repeating block M, W, M around the circle: each of the 3 women sits between two men, giving 3 women-seats separating 6 men-seats.",
+    "_note": "Printed stem reads \"every man has woman by his side\" (missing the article \"a\") — transcribed as printed."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "Find the number of ways in which 12 different flowers can be arranged in a garland so that 4 particular flowers are always together",
+    "solution": "Considering 4 particular flowers as a single flower, we have 9 flowers which can be arranged to form a garland in \\(8!\\) ways. But 4 particular flowers can be arranged in \\(4!\\) ways. Hence, the required number of ways \\(= \\frac{1}{2}(8! \\times 4!) = 483840\\)."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "How many necklaces of 12 bead each, can be made from 18 beads of different colours?",
+    "solution": "Here, clockwise and anticlockwise arrangements are same. Hence, total number of circular permutations \\(= \\frac{^{18}P_{12}}{2 \\times 12} = \\frac{^{18}P_{12}}{24}\\)."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "HARD",
+    "stem": "Three boys and three girls are to be seated around a table in a circle. Among them, the boy X does not want any girl as neighbour and girl Y does not want any boy as neighbour. How many such distinct arrangements are possible?",
+    "solution": "The arrangement is as shown in the figure (fig. 3.7). The boy X will have \\(B_2\\) and \\(B_3\\) as neighbours. The girl Y will have \\(G_2\\), \\(G_3\\) as neighbours. The two boys \\(B_2\\), \\(B_3\\) can be arranged in two ways. The two girls \\(G_2\\), \\(G_3\\) can be arranged in two ways.\n\nHence, the total number of arrangements \\(= 2 \\times 2 = 4\\).",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. 3.7 — six seats round a circle. The boy X (marked \\(B_1\\)) sits at the top with \\(B_3\\) on his left and \\(B_2\\) on his right; the girl Y (marked \\(G_1\\)) sits at the bottom with \\(G_3\\) on one side and \\(G_2\\) on the other. So the three boys occupy one half of the circle and the three girls the other half, with X and Y in the middle of their own blocks."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.6(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "EASY",
+    "context": "In how many different arrangements can 6 gentlemen and 6 ladies sit around a table if",
+    "setLabel": "3.5.4 SolvedEx.6",
+    "stem": "there is no restriction.",
+    "solution": "There is no restriction.\n\nHere, the total number \\(= 6 + 6 = 12\\).\n\n12 persons can be arranged in circular permutation in \\((12 - 1)! = 11!\\) ways."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.6(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "context": "In how many different arrangements can 6 gentlemen and 6 ladies sit around a table if",
+    "setLabel": "3.5.4 SolvedEx.6",
+    "stem": "no two ladies sit side by side?",
+    "solution": "No two ladies sit side by side.\n\nWhen 6 gentlemen are arranged around a table, there are 6 positions, each being between two gentlemen, for 6 ladies when no two ladies sit side by side. Now, the number of ways in which 6 gentlemen can be seated around a table \\(= (6 - 1)! = 5!\\)\n\nNow, corresponding to each seating arrangement for the gentlemen, the 6 ladies can be seated in \\(6!\\) ways.\n\nThus, the required number of arrangements \\(= (5!)\\,(6!) = 86400\\)."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.7(i)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "HARD",
+    "context": "In how many different ways can 4 married couples occupy seats around a circular table if",
+    "setLabel": "3.5.4 SolvedEx.7",
+    "stem": "Spouses sit opposite to each other?",
+    "solution": "Spouses sit opposite to each other. Since there is no fixed starting point let one woman occupy one seat. Let, \\(W_1 H_1\\), \\(W_2 H_2\\), \\(W_3 H_3\\) and \\(W_4 H_4\\) be the four couples. Since there is no fixed starting point of the circle, Let \\(W_1\\) occupy one seat then \\(H_1\\) has to sit exactly opposite. There are 3 seats on either side of \\(W_1\\). Then \\(W_2\\) can occupy any of the 6 seats which confirms the seat of her husband \\(H_2\\). Now there are 4 seats left. \\(W_3\\) can occupy anyone of them so that her husband's seat is fixed. Now \\(W_4\\) has 2 choices, fixing the seat of her husband. In all there are \\(6 \\times 4 \\times 2 = 48\\) ways.",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. 3.8 — a circular table with 8 seats marked round the circle, \\(H_1\\) at the top and \\(W_1\\) directly opposite at the bottom, with the remaining 6 seats shown as small circles (3 on each side)."
+  },
+  {
+    "ref": "3.5.4 SolvedEx.7(ii)",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "context": "In how many different ways can 4 married couples occupy seats around a circular table if",
+    "setLabel": "3.5.4 SolvedEx.7",
+    "stem": "Men and women alternate?",
+    "solution": "Let 4 women sit on alternate seats around a table starting at any place. This is done in \\(3!\\) ways. It leaves 4 alternate seats empty. They are fixd by 4 men in \\(4!\\) ways. Hence, the total number of ways is \\(4! \\times 3! = 144\\).",
+    "_note": "Printed solution spells \"fixd\" for \"fixed\" — transcribed as printed."
+  },
+  {
+    "ref": "Ex 3.5 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "EASY",
+    "stem": "In how many different ways can 8 friends sit around a table?"
+  },
+  {
+    "ref": "Ex 3.5 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "A party has 20 participants. Find the number of distinct ways for the host to sit with them around a circular table. How many of these ways have two specified persons on either side of the host?"
+  },
+  {
+    "ref": "Ex 3.5 Q3(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "context": "Delegates from 24 countries participate in a round table discussion. Find the number of seating arrangements where two specified delegates are.",
+    "setLabel": "Ex 3.5 Q3",
+    "stem": "always together,",
+    "solution": "[Textbook answer-key error: the printed key gives \\(2 \\times 23!\\), which is IMPOSSIBLE on its face — the total number of round-table arrangements of 24 delegates is \\(23!\\), so no sub-count can exceed it. Binding the two specified delegates into one unit leaves 23 units, giving \\(22! \\times 2! = 2 \\times 22!\\). The book's OWN part (b) confirms it: \\(23! - 2 \\times 22! = 22!(23-2) = 21 \\times 22!\\), which is exactly what the key prints for (b), and which follows only from \\(2 \\times 22!\\) here.]"
+  },
+  {
+    "ref": "Ex 3.5 Q3(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "context": "Delegates from 24 countries participate in a round table discussion. Find the number of seating arrangements where two specified delegates are.",
+    "setLabel": "Ex 3.5 Q3",
+    "stem": "never together."
+  },
+  {
+    "ref": "Ex 3.5 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "Find the number of ways for 15 people to sit around the table so that no two arrangements have the same neighbours."
+  },
+  {
+    "ref": "Ex 3.5 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "A committee of 10 members sits around a table. Find the number of arrangements that have the president and the vice president together."
+  },
+  {
+    "ref": "Ex 3.5 Q6(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "context": "Five men, two women, and a child sit around a table. Find the number of arrangements where the child is seated",
+    "setLabel": "Ex 3.5 Q6",
+    "stem": "between the two women."
+  },
+  {
+    "ref": "Ex 3.5 Q6(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "context": "Five men, two women, and a child sit around a table. Find the number of arrangements where the child is seated",
+    "setLabel": "Ex 3.5 Q6",
+    "stem": "between two men."
+  },
+  {
+    "ref": "Ex 3.5 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "Eight men and six women sit around a table. How many of sitting arrangements will have no two women together?",
+    "_note": "Printed stem reads \"How many of sitting arrangements will have\" — transcribed as printed."
+  },
+  {
+    "ref": "Ex 3.5 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "HARD",
+    "stem": "Find the number of seating arrangements for 3 men and 3 women to sit around a table so that exactly two women are together",
+    "_note": "Printed stem carries no terminal punctuation — transcribed as printed.",
+    "solution": "[Textbook answer-key error: the printed key gives \\(144\\), which EXCEEDS the total number of round-table arrangements of the six people, \\(5! = 120\\). Exhaustive enumeration (rotations identified, reflections distinct) splits those 120 as: no two women adjacent 12, exactly two adjacent 72, all three adjacent 36. The answer is \\(72\\). The key's 144 is what you get by summing \\(\\binom{3}{2} = 3\\) choices of adjacent pair times \\(4! \\times 2! = 48\\), which double-counts every all-three-together arrangement, since a run of three women contains two adjacent pairs: \\(72 + 2 \\times 36 = 144\\).]"
+  },
+  {
+    "ref": "Ex 3.5 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "Four objects in a set of ten objects are alike. Find the number of ways of arranging them in a circular order."
+  },
+  {
+    "ref": "Ex 3.5 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Circular Permutations",
+    "difficulty": "MODERATE",
+    "stem": "Fifteen persons sit around a table. Find the number of arrangements that have two specified persons not sitting side by side."
+  }
+]
