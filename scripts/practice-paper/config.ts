@@ -55,6 +55,16 @@ export type PaperRec = {
   /** Set grouping label (e.g. "RC1"). Questions sharing a setLabel form one passage
    *  set (set_id), co-located in the paper + Excel. Scoped per upload_job. */
   setLabel?: string;
+  /** Notes subtopic/concept slugs for the tagged Excel's SubtopicSlug/ConceptSlug
+   *  columns (nda-tracker builds slug-precise /go remediation links from them).
+   *  Only meaningful when a record MIRRORS an existing bank row that already carries
+   *  a `question_concept_tags` row — i.e. an all-duplicate paper built from the bank.
+   *  NEVER author these by hand for net-new practice questions: concept tags are a
+   *  PYQ-only axis (see CLAUDE.md "Design axes"), and inventing one here would put a
+   *  slug in the sheet that no question_concept_tags row backs. Absent => "" columns,
+   *  which is what every hand-transcribed paper emits. */
+  subtopicSlug?: string;
+  conceptSlug?: string;
 };
 
 export type PaperSpec = {
@@ -83,6 +93,247 @@ export type PaperSpec = {
 };
 
 export const PAPERS: Record<string, PaperSpec> = {
+  // LWS "NDA GAT MOCK" reprint of the REAL **NDA 2024 (II) Paper II — General Ability
+  // Test** (150 q: Part A English Q1-50, Part B general ability Q51-150). Source PDF
+  // `NDA_2_2024_GAT_Q67_Q72_CORRECTED.pdf` — a born-digital reprint whose filename
+  // records that the five picture-option items around Q67-Q72 were corrected.
+  //
+  // **ALL 150 QUESTIONS ARE `status:"dup"` AND THIS PAPER IS `bankAdd:false`.** This is
+  // not a hand transcription at all: the whole sitting is ALREADY in the bank as PUBLIC
+  // NDA PYQs, and the mock `nda-2024-sep-gat` holds them as an ordered 150-question
+  // snapshot. So the records were MIRRORED from those bank rows (stem, printed option
+  // order, official key, stored solution, subject/chapter/subtopic, difficulty, passage
+  // context, concept-tag slugs) rather than re-derived — per the lws-test-ingest
+  // "all/mostly duplicate" branch, which exists precisely to stop a second, divergent
+  // copy of an existing paper being authored. Committing them would duplicate ~150 PYQs
+  // as practice rows, so `bankAdd:false`: `build-tags` emits the OMR sheet,
+  // `commit-paper` refuses. If a /dashboard/papers copy is ever wanted, build it from
+  // the EXISTING PYQ ids — do not flip this flag.
+  //
+  // Order + option-order VERIFIED against the printed PDF's text layer, not assumed:
+  // all 150 stems matched position-for-position (Q17's "We saw" scores 0 only because
+  // it has no word over 3 letters), and every printed option block that the text layer
+  // exposes — 146 of 150 — matched the bank's A/B/C/D order. The 4 unchecked (Q67, Q69,
+  // Q70, Q71) are exactly the items whose printed OPTIONS ARE PICTURES, so there is no
+  // option text to compare; the bank rows already carry word-descriptions of each figure
+  // in the stem and label the options "Option (a)".."Option (d)" / "Graph (a)"..,
+  // which is the only representable form in a text-only OMR sheet. Q149's options differ
+  // only as "Yudh Abhyas" vs "YudhAbhyas" (spacing, same option, same position).
+  //
+  // Subject split (from the bank's own filing): English 50 · Physics 25 · Geography 20 ·
+  // Chemistry 15 · History 12 · Biology 10 · Current Affairs 10 · Polity 6 · Economics 2.
+  // 70 of the 150 carry `question_concept_tags`, mirrored into subtopicSlug/conceptSlug
+  // so nda-tracker can build slug-precise /go remediation links; the other 80 emit "".
+  "nda-2024-ii-gat": {
+    slug: "nda-2024-ii-gat",
+    title: "NDA GAT Mock — NDA 2024 (II) Paper II (General Ability Test)",
+    recordsFile: "nda-2024-ii-gat.records.json",
+    outName: "NDA_2024_II_GAT_Tags",
+    sourceFile: "NDA_2_2024_GAT_Q67_Q72_CORRECTED.pdf",
+    subjects: {
+      "Biology": {
+        "Biodiversity and Classification": [
+          "Animal Kingdom Classification",
+        ],
+        "Cell Biology": [
+          "Cell Organelles and Functions",
+          "Cellular Respiration and ATP",
+        ],
+        "Human Physiology": [
+          "Connective and Epithelial Tissues",
+          "Excretory and Reproductive Anatomy",
+          "Nutrition, Vitamins and Minerals",
+        ],
+        "Plant Biology": [
+          "Vegetative Propagation",
+        ],
+      },
+      "Chemistry": {
+        "Atomic Structure and Periodic Classification": [
+          "Atomic Number, Mass Number and Subatomic Particles",
+          "Electron Configuration and Valence Shells",
+          "Periodic Trends, Valency and Atomicity",
+        ],
+        "Carbon and Its Compounds": [
+          "Allotropes of Carbon",
+        ],
+        "Chemical Bonding": [
+          "Valency, Oxidation States and Molecular Formula",
+        ],
+        "Chemical Reactions": [
+          "Physical vs Chemical Changes",
+          "Redox: Oxidation, Reduction and Reducing Agents",
+          "Thermal and Photochemical Decomposition",
+        ],
+        "Hydrogen and Water": [
+          "Properties and Anomalous Behaviour of Water",
+        ],
+        "Industrial and Applied Chemistry": [
+          "Fertilizers",
+          "Paints and Coatings",
+        ],
+        "Matter and Its States": [
+          "Separation Techniques",
+          "States of Matter, Phase Changes and Diffusion",
+        ],
+        "Mole Concept and Stoichiometry": [
+          "Mole Concept, Avogadro's Law and Molar Calculations",
+        ],
+      },
+      "Current Affairs": {
+        "Awards, Honours, Books and Culture": [
+          "UNESCO Recognitions and Cultural Heritage",
+        ],
+        "Defence and Military Exercises": [
+          "Military Exercises — Bilateral and Multilateral",
+        ],
+        "Government Schemes, Policy and Governance": [
+          "Health, Education and Welfare Schemes",
+        ],
+        "International Affairs and Relations": [
+          "India's Foreign Policy and Bilateral Relations",
+          "International Organizations and Multilateral Bodies",
+          "International Summits, Initiatives and Forums",
+        ],
+        "National Events, Persons and India General Knowledge": [
+          "National Days, Festivals and Observances",
+        ],
+      },
+      "Economics": {
+        "Indian Economy": [
+          "Five Year Plans and Indian Planning",
+        ],
+      },
+      "English": {
+        "Cloze Test": [
+          "Word Selection in Passage",
+        ],
+        "Grammar": [
+          "Parts of Speech",
+          "Sentence Completion",
+        ],
+        "Idioms and Phrases": [
+          "Idiom Meaning",
+        ],
+        "Reading Comprehension": [
+          "Literal Comprehension",
+        ],
+        "Sentence Rearrangement": [
+          "Sentence Part Rearrangement (PQRS)",
+        ],
+        "Vocabulary": [
+          "Antonyms",
+          "Synonyms",
+        ],
+      },
+      "Geography": {
+        "Climatology, Atmosphere and Weather": [
+          "Atmospheric Pressure and Winds",
+          "Cyclones, Fronts and Local Winds",
+        ],
+        "Earth in Space, Maps and Coordinates": [
+          "Earth's Shape, Rotation and Motion",
+        ],
+        "Earth's Structure, Landforms and Geological Time": [
+          "Landforms and Mass Movements",
+          "Rocks, Minerals and Geological Time",
+          "Weathering and Denudation",
+        ],
+        "Indian Geography — Economy, Resources and Transport": [
+          "Agriculture, Crops, Soils and Land Use",
+          "Energy and Industries — Power, Petroleum, Iron and Steel",
+        ],
+        "Indian Geography — Physical Features": [
+          "Indian Rivers, Lakes and Water Bodies",
+          "Indian Soils and Climate-Agriculture",
+          "Indian States and Islands",
+          "Mountains, Plateaus and Plains of India",
+        ],
+        "Oceanography": [
+          "Ocean Currents",
+        ],
+        "World and Human Geography": [
+          "World — Rivers, Canals and Water Bodies",
+        ],
+      },
+      "History": {
+        "Ancient India": [
+          "Mahajanapadas, Magadha and Mauryan Empire",
+        ],
+        "Medieval India": [
+          "Medieval Travellers, Trade and Crops",
+          "Vijayanagara Empire",
+        ],
+        "Modern India": [
+          "British Administration, Acts and Legislation",
+          "British Economic Policy and Industrial India",
+          "Freedom Movement — INC, Gandhi and Independence",
+          "Post-Independence India",
+        ],
+        "World History": [
+          "Industrial Revolution",
+        ],
+      },
+      "Physics": {
+        "Electricity and Magnetism": [
+          "Cells, EMF and Kirchhoff's Laws",
+          "Combination of Resistors",
+          "Electric Current and Ohm's Law",
+          "Electrical Power, Energy and Heating",
+          "Electrostatics",
+        ],
+        "Fluid Mechanics and Properties of Matter": [
+          "Buoyancy, Density and Flotation",
+        ],
+        "Gravitation": [
+          "Gravitational Field and Potential",
+          "Newton's Law of Gravitation",
+        ],
+        "Heat and Thermodynamics": [
+          "Heat, Calorimetry and Specific Heat",
+          "Phase Change and Boiling",
+        ],
+        "Kinematics and Motion": [
+          "Equations of Motion and Graphs",
+          "Vectors and Position",
+        ],
+        "Laws of Motion and Forces": [
+          "Newton's Laws of Motion",
+          "Types of Forces",
+        ],
+        "Light and Optics": [
+          "Human Eye and Optical Instruments",
+          "Lenses and Lens Formula",
+          "Reflection and Mirrors",
+        ],
+        "Work, Energy and Power": [
+          "Energy and Conservation",
+          "Simple Machines",
+          "Work-Energy Theorem and Power",
+        ],
+      },
+      "Polity": {
+        "Fundamental Rights, DPSP and Local Governance": [
+          "Fundamental Rights, DPSP and Duties",
+        ],
+        "Government Structure — Parliament, Judiciary and Constitutional Bodies": [
+          "Constitutional Bodies and Offices",
+          "Parliament — Composition, Procedures and Powers",
+        ],
+        "Indian Constitution — Making, Foundation and Amendments": [
+          "Features, Parts and Schedules of Constitution",
+        ],
+        "World Polity, Democracy and International Relations": [
+          "India's Foreign Policy — Panchsheel",
+        ],
+      },
+    },
+    pyqNote: "NDA 2024 (II) Paper II (GAT) — printed as an LWS GAT Mock. Bank-mirrored: every question already exists as an NDA PYQ.",
+    examName: "NDA",
+    section: { key: "nda-2024-ii-gat", label: "NDA 2024 (II) — GAT" },
+    bankAdd: false, // Excel-only: all 150 are existing PUBLIC PYQs, never re-commit as practice.
+  },
+
   // LWS "NDA GAT MOCK G1 LWS FINAL" — 150-q NDA GAT MOCK in two printed parts: Part A is
   // English (Q1–50: antonyms Q1–10, PQRS ordering Q11–20, synonyms Q21–30, prepositions
   // Q31–40, spotting errors Q41–50) and Part B is general ability (Q51–150). Part B is

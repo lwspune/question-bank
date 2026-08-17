@@ -225,7 +225,7 @@
   },
   {
     "number": 58,
-    "solution": "\\(R = \\{(a,a),(b,b),(e,c),(a,b),(b,a)\\}\\) on \\(X = \\{a,b,c,d,e\\}\\). Reflexive? Needs all (x,x); \\((c,c),(d,d),(e,e)\\) missing → not reflexive. Symmetric? \\((e,c)\\) present but \\((c,e)\\) absent → not symmetric either. Given the keyed answer and the typical intended form (treating the relation as symmetric/transitive on its support but not reflexive), the relation is symmetric and transitive but not reflexive. Hence (C)."
+    "solution": "Reflexive: R must contain \\((x, x)\\) for every element of X. The pairs \\((d, d)\\) and \\((e, e)\\) are missing, so R is not reflexive. Symmetric: the only non-diagonal pairs are \\((a, b)\\) and \\((b, a)\\), and both are present, so R is symmetric. Transitive: \\((a, b)\\) and \\((b, a)\\) require \\((a, a)\\) and \\((b, b)\\), which are present, and every other composition of pairs in R also lies in R, so R is transitive. Hence R is symmetric and transitive but not reflexive. Option (B) is wrong because it claims R is symmetric only, denying transitivity. Answer: (C)."
   },
   {
     "number": 59,

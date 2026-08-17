@@ -272,7 +272,33 @@ const UNIT_SCIENCE_25: WrittenSlot[] = [
   },
 ];
 
+// Maharashtra Class 11 Mathematics is a SINGLE subject — the Algebra/Geometry
+// split is an SSC (Class 10) thing and does not exist here. The Balbharati book
+// ships as Part 1 + Part 2, but both are "Mathematics" in the bank taxonomy.
+const MH_11_MATHS_SUBJECTS = ["Mathematics"];
+
 export const WRITTEN_BLUEPRINTS: readonly WrittenBlueprint[] = [
+  // --- Maharashtra State Board Class 11 · Mathematics -----------------------
+  {
+    // Class 11 is NOT a board year, so unlike the SSC patterns below this one
+    // mirrors no official board paper — there isn't one to mirror. It reuses the
+    // Class-10 unit-test SHAPE (5 x 1 + 3 x 2 + 3 x 3 + 1 x 5 = 25) because that
+    // is the format the school already sets and marks, which is the point: a
+    // Std-11 unit test should feel continuous with the Std-9/10 ones the same
+    // students have just come from. Recorded here so the choice is visible as a
+    // HOUSE convention rather than mistaken for a board pattern.
+    id: "mh-sb-11-maths-unit-25",
+    board: "Maharashtra State Board",
+    std: 11,
+    subjects: MH_11_MATHS_SUBJECTS,
+    variant: "unit",
+    label: "Unit Test — 25 marks",
+    durationMins: 60,
+    maxMarks: 25,
+    instructions: MATHS_INSTRUCTIONS,
+    slots: UNIT_MATHS_25,
+  },
+
   // --- Maharashtra SSC Class 10 · Mathematics -------------------------------
   {
     id: "mh-ssc-10-maths-unit-25",

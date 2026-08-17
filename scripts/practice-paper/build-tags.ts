@@ -34,7 +34,18 @@ function main() {
     throw new Error(`refusing to build: ${latexErrors.length} LaTeX imbalance(s).`);
   }
 
-  const tagRows = buildTagRows(recs.map((r) => recToQuestionRow(spec, r)));
+  // Concept tags flow through ONLY when a record carries them (an all-duplicate paper
+  // mirrored from bank rows that already have question_concept_tags). Hand-transcribed
+  // papers carry none, so the map is empty and the two slug columns emit "" as before.
+  const rows = recs.map((r) => recToQuestionRow(spec, r));
+  const conceptTags = new Map(
+    recs.flatMap((r, i) =>
+      r.subtopicSlug && r.conceptSlug
+        ? [[rows[i].id, { subtopicSlug: r.subtopicSlug, conceptSlug: r.conceptSlug }] as const]
+        : [],
+    ),
+  );
+  const tagRows = buildTagRows(rows, conceptTags);
   for (const tr of tagRows) {
     if (!["A", "B", "C", "D"].includes(tr.answer)) throw new Error(`Q${tr.q}: no answer letter`);
   }
