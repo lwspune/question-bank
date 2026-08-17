@@ -1,0 +1,162 @@
+[
+  {
+    "id": "17d4b063-78f9-4424-acdd-483b4168fc19",
+    "ref": "Ex 7.1 Q21",
+    "derived_answer": "C",
+    "solution": "Rewrite the integrand with fractional powers as \\(x^{1/2} + x^{-1/2}\\) and apply the power rule \\(\\int x^n\\,dx = \\tfrac{x^{n+1}}{n+1}\\) to each term. This gives \\(\\tfrac{x^{3/2}}{3/2} + \\tfrac{x^{1/2}}{1/2} = \\tfrac{2}{3}x^{3/2} + 2x^{1/2} + C\\). Differentiating this back returns \\(\\tfrac{2}{3}\\cdot\\tfrac{3}{2}x^{1/2} + 2\\cdot\\tfrac{1}{2}x^{-1/2} = \\sqrt{x} + \\tfrac{1}{\\sqrt{x}}\\), which confirms the result.",
+    "matches_current": true
+  },
+  {
+    "id": "b56df082-5291-4651-bbd2-5059ae20dd8f",
+    "ref": "Ex 7.1 Q22",
+    "derived_answer": "A",
+    "solution": "Integrate the given derivative term by term: \\(\\int 4x^3\\,dx = x^4\\) and \\(\\int -3x^{-4}\\,dx = \\tfrac{-3x^{-3}}{-3} = \\tfrac{1}{x^3}\\), so \\(f(x) = x^4 + \\tfrac{1}{x^3} + C\\). The condition \\(f(2) = 0\\) gives \\(16 + \\tfrac{1}{8} + C = 0\\), hence \\(C = -\\tfrac{129}{8}\\). Therefore \\(f(x) = x^4 + \\tfrac{1}{x^3} - \\tfrac{129}{8}\\); the alternative form \\(x^3 + \\tfrac{1}{x^4}\\) can be rejected at once, since differentiating it gives \\(3x^2 - \\tfrac{4}{x^5}\\) rather than \\(4x^3 - \\tfrac{3}{x^4}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "3f7d30c9-659f-4e82-bbc5-b09be018f0a0",
+    "ref": "Ex 7.10 Q20",
+    "derived_answer": "C",
+    "solution": "Use the symmetry property \\(\\int_{-a}^{a} f(x)\\,dx = 0\\) for an odd function and \\(\\int_{-a}^{a} f(x)\\,dx = 2\\int_0^a f(x)\\,dx\\) for an even one. Here \\(x^3\\), \\(x\\cos x\\) and \\(\\tan^5 x\\) are all odd, so each contributes \\(0\\) over the symmetric interval \\(\\left[-\\tfrac{\\pi}{2}, \\tfrac{\\pi}{2}\\right]\\), leaving only the even term \\(1\\). Hence the value is \\(\\int_{-\\pi/2}^{\\pi/2} 1\\,dx = \\pi\\). A quick check of the oddness: adding the integrand at \\(x\\) and at \\(-x\\) cancels the first three terms exactly and leaves \\(2\\), whose integral over \\(\\left[0, \\tfrac{\\pi}{2}\\right]\\) is again \\(\\pi\\).",
+    "matches_current": true
+  },
+  {
+    "id": "73bc6771-5e49-4cc0-9c6b-d5edf34219b3",
+    "ref": "Ex 7.10 Q21",
+    "derived_answer": "C",
+    "solution": "Apply the property \\(\\int_0^{a} f(x)\\,dx = \\int_0^{a} f(a-x)\\,dx\\) with \\(a = \\tfrac{\\pi}{2}\\). Since \\(\\sin\\left(\\tfrac{\\pi}{2}-x\\right) = \\cos x\\) and \\(\\cos\\left(\\tfrac{\\pi}{2}-x\\right) = \\sin x\\), the substitution turns the integrand into \\(\\log\\left(\\frac{4+3\\cos x}{4+3\\sin x}\\right)\\), which is the negative of the original because \\(\\log\\tfrac{1}{t} = -\\log t\\). So \\(I = -I\\), giving \\(2I = 0\\) and hence \\(I = 0\\).",
+    "matches_current": true
+  },
+  {
+    "id": "570533c9-bafd-46bd-8432-ed270d700a51",
+    "ref": "Ex 7.2 Q38",
+    "derived_answer": "D",
+    "solution": "Observe that the numerator is exactly the derivative of the denominator: \\(\\frac{d}{dx}\\left(x^{10} + 10^x\\right) = 10x^9 + 10^x\\log_e 10\\). With the substitution \\(t = x^{10} + 10^x\\) the integral becomes \\(\\int\\frac{dt}{t} = \\log|t| + C\\). Restoring \\(t\\) gives \\(\\log\\left(x^{10} + 10^x\\right) + C\\). Any integral of the form \\(\\int\\frac{f'(x)}{f(x)}dx\\) produces a logarithm, so a bare polynomial or exponential answer cannot be right here.",
+    "matches_current": true
+  },
+  {
+    "id": "8d4ff54b-d396-4446-9c20-5fabf209b8f1",
+    "ref": "Ex 7.2 Q39",
+    "derived_answer": "B",
+    "solution": "Replace the \\(1\\) in the numerator by \\(\\sin^2 x + \\cos^2 x\\), so the integrand splits as \\(\\frac{\\sin^2 x}{\\sin^2 x\\cos^2 x} + \\frac{\\cos^2 x}{\\sin^2 x\\cos^2 x} = \\sec^2 x + \\csc^2 x\\). Integrating term by term gives \\(\\tan x - \\cot x + C\\), because \\(\\int\\csc^2 x\\,dx = -\\cot x\\). The minus sign is the whole point: differentiating \\(\\tan x + \\cot x\\) would give \\(\\sec^2 x - \\csc^2 x\\), which is not the integrand.",
+    "matches_current": true
+  },
+  {
+    "id": "7513128f-068a-420d-9e49-6a58d40447dd",
+    "ref": "Ex 7.3 Q23",
+    "derived_answer": "A",
+    "solution": "Split the fraction into two terms: \\(\\frac{\\sin^2 x}{\\sin^2 x\\cos^2 x} - \\frac{\\cos^2 x}{\\sin^2 x\\cos^2 x} = \\sec^2 x - \\csc^2 x\\). Integrating gives \\(\\tan x - (-\\cot x) = \\tan x + \\cot x + C\\), since \\(\\int\\csc^2 x\\,dx = -\\cot x\\). It is that internal minus sign which turns the subtraction in the integrand into a sum in the answer.",
+    "matches_current": true
+  },
+  {
+    "id": "e77fb82c-a419-4c96-9a35-2860ae48aa95",
+    "ref": "Ex 7.3 Q24",
+    "derived_answer": "B",
+    "solution": "The factor \\(e^x(1+x)\\) is precisely \\(\\frac{d}{dx}\\left(xe^x\\right)\\), which signals the substitution \\(t = xe^x\\). The integral then becomes \\(\\int\\sec^2 t\\,dt = \\tan t + C\\). Restoring \\(t\\) gives \\(\\tan\\left(xe^x\\right) + C\\). The argument must remain the whole product \\(xe^x\\), since an answer in \\(\\tan(e^x)\\) or \\(\\cot(e^x)\\) alone does not differentiate back to the integrand.",
+    "matches_current": true
+  },
+  {
+    "id": "1276e809-f9d9-49b9-9561-c97b3122bda2",
+    "ref": "Ex 7.4 Q24",
+    "derived_answer": "B",
+    "solution": "Complete the square in the denominator: \\(x^2 + 2x + 2 = (x+1)^2 + 1\\). With \\(t = x+1\\), so that \\(dt = dx\\), the integral becomes \\(\\int\\frac{dt}{t^2+1} = \\tan^{-1}t + C\\). Restoring \\(t\\) gives \\(\\tan^{-1}(x+1) + C\\); no extra algebraic factor of \\(x\\) or \\((x+1)\\) appears, since the substitution is a pure shift.",
+    "matches_current": true
+  },
+  {
+    "id": "10bf5122-3375-4423-b817-79a0d5314e85",
+    "ref": "Ex 7.4 Q25",
+    "derived_answer": "B",
+    "solution": "Complete the square under the root: \\(9x - 4x^2 = 4\\left[\\left(\\tfrac{9}{8}\\right)^2 - \\left(x - \\tfrac{9}{8}\\right)^2\\right]\\), so \\(\\sqrt{9x-4x^2} = 2\\sqrt{\\left(\\tfrac{9}{8}\\right)^2 - \\left(x-\\tfrac{9}{8}\\right)^2}\\). The integral becomes \\(\\tfrac{1}{2}\\int\\frac{dt}{\\sqrt{a^2-t^2}}\\) with \\(t = x - \\tfrac{9}{8}\\) and \\(a = \\tfrac{9}{8}\\), which is \\(\\tfrac{1}{2}\\sin^{-1}\\left(\\frac{x-9/8}{9/8}\\right) + C = \\tfrac{1}{2}\\sin^{-1}\\left(\\frac{8x-9}{9}\\right) + C\\). Differentiating this returns \\(\\frac{1}{\\sqrt{9x-4x^2}}\\), whereas the near-identical form with \\(\\frac{9x-8}{9}\\) inside the inverse sine does not.",
+    "matches_current": true
+  },
+  {
+    "id": "d33ae7b8-6534-4548-85f3-b3e410dca78c",
+    "ref": "Ex 7.5 Q22",
+    "derived_answer": "B",
+    "solution": "Resolve into partial fractions by writing \\(x = A(x-2) + B(x-1)\\); putting \\(x = 1\\) gives \\(A = -1\\) and putting \\(x = 2\\) gives \\(B = 2\\), so \\(\\frac{x}{(x-1)(x-2)} = \\frac{-1}{x-1} + \\frac{2}{x-2}\\). Integrating gives \\(-\\log|x-1| + 2\\log|x-2| + C\\), which combines into \\(\\log\\left|\\frac{(x-2)^2}{x-1}\\right| + C\\). The squared factor must be \\(x-2\\), since that is the term carrying the coefficient \\(2\\).",
+    "matches_current": true
+  },
+  {
+    "id": "d25da03b-0d71-4559-b117-ab9cc20be88e",
+    "ref": "Ex 7.5 Q23",
+    "derived_answer": "A",
+    "solution": "Split the integrand as \\(\\frac{1}{x(x^2+1)} = \\frac{1}{x} - \\frac{x}{x^2+1}\\), which is verified by recombining the right side over the common denominator \\(x(x^2+1)\\). Integrating gives \\(\\log|x| - \\tfrac{1}{2}\\log(x^2+1) + C\\), where the second term uses \\(\\int\\frac{x\\,dx}{x^2+1} = \\tfrac{1}{2}\\log(x^2+1)\\). The minus sign between the two logarithms is essential, because the sum form differentiates to \\(\\frac{1}{x} + \\frac{x}{x^2+1}\\), a different function.",
+    "matches_current": true
+  },
+  {
+    "id": "a39fb495-e6f9-4b38-bbba-af0e2bc16a85",
+    "ref": "Ex 7.6 Q23",
+    "derived_answer": "A",
+    "solution": "Substitute \\(t = x^3\\), so that \\(dt = 3x^2\\,dx\\) and hence \\(x^2\\,dx = \\tfrac{1}{3}\\,dt\\). The integral becomes \\(\\tfrac{1}{3}\\int e^t\\,dt = \\tfrac{1}{3}e^t + C\\). Restoring \\(t\\) gives \\(\\tfrac{1}{3}e^{x^3} + C\\); the coefficient is \\(\\tfrac{1}{3}\\) because the derivative of the exponent \\(x^3\\) supplies a factor of \\(3\\).",
+    "matches_current": true
+  },
+  {
+    "id": "baead4b8-79d3-41d0-9b89-d79095be1b11",
+    "ref": "Ex 7.6 Q24",
+    "derived_answer": "B",
+    "solution": "This matches the standard pattern \\(\\int e^x\\left[f(x) + f'(x)\\right]dx = e^x f(x) + C\\). Expanding the bracket gives \\(\\sec x(1+\\tan x) = \\sec x + \\sec x\\tan x\\), and since \\(\\frac{d}{dx}\\sec x = \\sec x\\tan x\\), the choice \\(f(x) = \\sec x\\) fits exactly. Hence the integral is \\(e^x\\sec x + C\\).",
+    "matches_current": true
+  },
+  {
+    "id": "398a5157-a6f2-4399-9af8-5581d4a831cb",
+    "ref": "Ex 7.7 Q10",
+    "derived_answer": "A",
+    "solution": "Use the standard result \\(\\int\\sqrt{a^2+x^2}\\,dx = \\tfrac{x}{2}\\sqrt{a^2+x^2} + \\tfrac{a^2}{2}\\log\\left|x+\\sqrt{a^2+x^2}\\right| + C\\), here with \\(a = 1\\). This gives \\(\\tfrac{x}{2}\\sqrt{1+x^2} + \\tfrac{1}{2}\\log\\left|x+\\sqrt{1+x^2}\\right| + C\\). The tempting guess \\(\\tfrac{2}{3}(1+x^2)^{3/2}\\) fails because \\(\\frac{d}{dx}(1+x^2)^{3/2} = 3x\\sqrt{1+x^2}\\) carries an extra factor of \\(x\\) that the integrand does not have.",
+    "matches_current": true
+  },
+  {
+    "id": "27b18103-ba50-42ac-b8e9-f8ab69e2ce48",
+    "ref": "Ex 7.7 Q11",
+    "derived_answer": "D",
+    "solution": "Complete the square: \\(x^2 - 8x + 7 = (x-4)^2 - 9\\), so apply \\(\\int\\sqrt{t^2-a^2}\\,dt = \\tfrac{t}{2}\\sqrt{t^2-a^2} - \\tfrac{a^2}{2}\\log\\left|t+\\sqrt{t^2-a^2}\\right| + C\\) with \\(t = x-4\\) and \\(a = 3\\). This gives \\(\\tfrac{1}{2}(x-4)\\sqrt{x^2-8x+7} - \\tfrac{9}{2}\\log\\left|x-4+\\sqrt{x^2-8x+7}\\right| + C\\). The logarithm's coefficient is \\(-\\tfrac{a^2}{2} = -\\tfrac{9}{2}\\), so neither \\(+9\\) nor \\(-3\\sqrt{2}\\) will differentiate back to \\(\\sqrt{x^2-8x+7}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "fb10edf7-027a-4c76-89fb-bb83f06d01f8",
+    "ref": "Ex 7.8 Q21",
+    "derived_answer": "D",
+    "solution": "Since \\(\\int\\frac{dx}{1+x^2} = \\tan^{-1}x\\), the value is \\(\\left[\\tan^{-1}x\\right]_{1}^{\\sqrt{3}} = \\tan^{-1}\\sqrt{3} - \\tan^{-1}1\\). That is \\(\\tfrac{\\pi}{3} - \\tfrac{\\pi}{4} = \\tfrac{\\pi}{12}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "246d1dbc-e8f8-4f48-a1b5-2433d814f577",
+    "ref": "Ex 7.8 Q22",
+    "derived_answer": "C",
+    "solution": "Write \\(4 + 9x^2 = 9\\left(x^2 + \\tfrac{4}{9}\\right)\\), so the integral is \\(\\tfrac{1}{9}\\int_{0}^{2/3}\\frac{dx}{x^2 + \\left(\\tfrac{2}{3}\\right)^2}\\). Using \\(\\int\\frac{dx}{x^2+a^2} = \\tfrac{1}{a}\\tan^{-1}\\tfrac{x}{a}\\) with \\(a = \\tfrac{2}{3}\\) gives \\(\\tfrac{1}{9}\\cdot\\tfrac{3}{2}\\left[\\tan^{-1}\\tfrac{3x}{2}\\right]_{0}^{2/3} = \\tfrac{1}{6}\\left(\\tan^{-1}1 - \\tan^{-1}0\\right)\\). This evaluates to \\(\\tfrac{1}{6}\\cdot\\tfrac{\\pi}{4} = \\tfrac{\\pi}{24}\\).",
+    "matches_current": true
+  },
+  {
+    "id": "f9ffc6a6-4af7-4a53-aacf-fa6f2dd80421",
+    "ref": "Ex 7.9 Q9",
+    "derived_answer": "A",
+    "matches_current": true
+  },
+  {
+    "id": "c1fb9347-5b22-4f14-872d-388261de2f52",
+    "ref": "Ex 7.9 Q10",
+    "derived_answer": "B",
+    "solution": "By the Fundamental Theorem of Calculus, if \\(f(x) = \\int_{0}^{x} g(t)\\,dt\\) then \\(f'(x) = g(x)\\), the integrand evaluated at the upper limit. Here \\(g(t) = t\\sin t\\), so \\(f'(x) = x\\sin x\\). There is no need to evaluate the integral at all, but doing so confirms it: \\(f(x) = \\sin x - x\\cos x\\), whose derivative is \\(\\cos x - \\cos x + x\\sin x = x\\sin x\\).",
+    "matches_current": true
+  },
+  {
+    "id": "cd2fe8f9-315e-4974-adae-cf800a7a1185",
+    "ref": "Misc Q38",
+    "derived_answer": "A",
+    "solution": "Multiply numerator and denominator by \\(e^x\\) to clear the negative exponent, giving \\(\\int\\frac{e^x\\,dx}{e^{2x}+1}\\). With \\(t = e^x\\), so \\(dt = e^x\\,dx\\), this becomes \\(\\int\\frac{dt}{1+t^2} = \\tan^{-1}t + C\\). Restoring \\(t\\) gives \\(\\tan^{-1}\\left(e^x\\right) + C\\). A logarithmic answer would require the numerator to be the derivative of the denominator, which it is not here.",
+    "matches_current": true
+  },
+  {
+    "id": "d443d196-071b-486f-a0ce-bb369a24f7f1",
+    "ref": "Misc Q39",
+    "derived_answer": "B",
+    "solution": "Write \\(\\cos 2x = \\cos^2 x - \\sin^2 x = (\\cos x - \\sin x)(\\cos x + \\sin x)\\), so one factor cancels against the square in the denominator and leaves \\(\\int\\frac{\\cos x - \\sin x}{\\sin x + \\cos x}\\,dx\\). The numerator is now exactly the derivative of the denominator, so with \\(t = \\sin x + \\cos x\\) the integral is \\(\\int\\frac{dt}{t} = \\log|t| + C\\). Hence the value is \\(\\log|\\sin x + \\cos x| + C\\); the companion form in \\(\\sin x - \\cos x\\) differentiates to a different expression.",
+    "matches_current": true
+  },
+  {
+    "id": "99480dac-b6b9-4346-a773-71f9baadf1ca",
+    "ref": "Misc Q40",
+    "derived_answer": "D",
+    "solution": "Apply the property \\(\\int_{a}^{b} f(x)\\,dx = \\int_{a}^{b} f(a+b-x)\\,dx\\) to \\(I = \\int_{a}^{b} x\\,f(x)\\,dx\\), which gives \\(I = \\int_{a}^{b} (a+b-x)\\,f(a+b-x)\\,dx\\). The hypothesis \\(f(a+b-x) = f(x)\\) turns this into \\(I = (a+b)\\int_{a}^{b} f(x)\\,dx - I\\). Solving, \\(2I = (a+b)\\int_{a}^{b} f(x)\\,dx\\), so \\(I = \\frac{a+b}{2}\\int_{a}^{b} f(x)\\,dx\\).",
+    "matches_current": true
+  }
+]
