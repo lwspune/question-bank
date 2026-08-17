@@ -264,6 +264,19 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "4.6 Applications of Determinants and Matrices", label: "Exercise 4.5", kind: "exercise", refPrefixes: ["Ex 4.5 Q"] },
     { group: "Miscellaneous Exercise on Chapter 4", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
   ],
+
+  // ── Ch.7 Binomial Theorem (CLASS 11). The book's thinnest chapter: the
+  //    rationalised edition cuts it to §7.1-§7.2.2, leaving ONE numbered
+  //    exercise plus a terminal Miscellaneous block. All four worked Examples
+  //    (1-4) sit in the run-up to Exercise 7.1, so they band to it; there is no
+  //    Miscellaneous Example, hence no "Misc Eg" block.
+  //    Verified against the pages: Eg.3 spans p5→p6, Eg.4 precedes the exercise
+  //    on p6, and Exercise 7.1 itself runs p6→p7 (Q1-Q3 on p6, Q4-Q14 overleaf).
+  c11BinomialTheorem: [
+    { group: "7.2 Binomial Theorem for Positive Integral Indices", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.1 Eg"] },
+    { group: "7.2 Binomial Theorem for Positive Integral Indices", label: "Exercise 7.1", kind: "exercise", refPrefixes: ["Ex 7.1 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 7", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

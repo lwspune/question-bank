@@ -1,0 +1,142 @@
+[
+  {
+    "ref": "Ex 7.1 Q1",
+    "book_key": "1 - 10x + 40x^2 - 80x^3 + 80x^4 - 32x^5",
+    "our_answer": "1 - 10x + 40x^2 - 80x^3 + 80x^4 - 32x^5",
+    "verdict": "AGREE",
+    "note": "Independently re-expanded (1-2x)^5 with sympy; residual 0 against both key and ours."
+  },
+  {
+    "ref": "Ex 7.1 Q2",
+    "book_key": "32/x^5 - 40/x^3 + 20/x - 5x + (5/8)x^3 - x^5/32",
+    "our_answer": "32/x^5 - 40/x^3 + 20/x - 5x + 5x^3/8 - x^5/32",
+    "verdict": "AGREE",
+    "note": "Term-for-term identical; sympy residual 0 against (2/x - x/2)^5."
+  },
+  {
+    "ref": "Ex 7.1 Q3",
+    "book_key": "64x^6 - 576x^5 + 2160x^4 - 4320x^3 + 4860x^2 - 2916x + 729",
+    "our_answer": "64x^6 - 576x^5 + 2160x^4 - 4320x^3 + 4860x^2 - 2916x + 729",
+    "verdict": "AGREE",
+    "note": "sympy residual 0 against (2x-3)^6."
+  },
+  {
+    "ref": "Ex 7.1 Q4",
+    "book_key": "x^5/243 + 5x^3/81 + (10/27)x + 10/(9x) + 5/(3x^3) + 1/x^5",
+    "our_answer": "x^5/243 + 5x^3/81 + 10x/27 + 10/(9x) + 5/(3x^3) + 1/x^5",
+    "verdict": "AGREE",
+    "note": "sympy residual 0 against (x/3 + 1/x)^5."
+  },
+  {
+    "ref": "Ex 7.1 Q5",
+    "book_key": "x^6 + 6x^4 + 15x^2 + 20 + 15/x^2 + 6/x^4 + 1/x^6",
+    "our_answer": "x^6 + 6x^4 + 15x^2 + 20 + 15/x^2 + 6/x^4 + 1/x^6",
+    "verdict": "AGREE",
+    "note": "sympy residual 0 against (x + 1/x)^6."
+  },
+  {
+    "ref": "Ex 7.1 Q6",
+    "book_key": "884736",
+    "our_answer": "884736",
+    "verdict": "AGREE",
+    "note": "96^3 computed exactly = 884736."
+  },
+  {
+    "ref": "Ex 7.1 Q7",
+    "book_key": "11040808032",
+    "our_answer": "11040808032",
+    "verdict": "AGREE",
+    "note": "102^5 computed exactly = 11040808032."
+  },
+  {
+    "ref": "Ex 7.1 Q8",
+    "book_key": "104060401",
+    "our_answer": "104060401",
+    "verdict": "AGREE",
+    "note": "101^4 computed exactly = 104060401."
+  },
+  {
+    "ref": "Ex 7.1 Q9",
+    "book_key": "9509900499",
+    "our_answer": "9509900499",
+    "verdict": "AGREE",
+    "note": "99^5 computed exactly = 9509900499."
+  },
+  {
+    "ref": "Ex 7.1 Q10",
+    "book_key": "(1.1)^10000 > 1000",
+    "our_answer": "(1.1)^10000 > 1000, so (1.1)^10000 is the larger number",
+    "verdict": "AGREE",
+    "note": "Exact rational comparison (11/10)^10000 > 1000 confirmed True; our two-term lower bound 1001 is a valid proof."
+  },
+  {
+    "ref": "Ex 7.1 Q11",
+    "book_key": "8(a^3 b + a b^3);  40 sqrt(6)",
+    "our_answer": "8ab(a^2 + b^2) = 8a^3 b + 8ab^3;  40 sqrt(6)",
+    "verdict": "AGREE",
+    "note": "Compound answer, BOTH parts checked. 8ab(a^2+b^2) is the key's 8(a^3 b + ab^3) factored; sympy residual 0 against (a+b)^4-(a-b)^4. Value part: exact expansion of (sqrt3+sqrt2)^4-(sqrt3-sqrt2)^4 = 40*sqrt(6)."
+  },
+  {
+    "ref": "Ex 7.1 Q12",
+    "book_key": "2(x^6 + 15x^4 + 15x^2 + 1),  198",
+    "our_answer": "2(x^6 + 15x^4 + 15x^2 + 1);  198",
+    "verdict": "AGREE",
+    "note": "Compound answer, BOTH parts checked. Identity residual 0; exact value of (sqrt2+1)^6+(sqrt2-1)^6 = 198."
+  },
+  {
+    "ref": "Ex 7.1 Q13",
+    "book_key": "(no entry)",
+    "our_answer": "Proof: 9^(n+1) - 8n - 9 = 64 * sum_{k>=2} C(n+1,k) 8^(k-2)",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "'Show that ... is divisible by 64' — a proof, and this key never prints an answer for a proof. Ex 7.1's printed key runs 1-12 only. Not a defect. Our proof spot-checked numerically: (9^(n+1)-8n-9) mod 64 = 0 for n = 1..6."
+  },
+  {
+    "ref": "Ex 7.1 Q14",
+    "book_key": "(no entry)",
+    "our_answer": "Proof: put x = 3 in (1+x)^n = sum C(n,r) x^r, giving 4^n",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "'Prove that ...' — a proof; no key entry, as expected. Identity spot-checked: sum_{r=0}^{n} 3^r C(n,r) - 4^n = 0 for n = 1..6."
+  },
+  {
+    "ref": "Misc Q1",
+    "book_key": "(no entry)",
+    "our_answer": "Proof: a^n - b^n = (a-b) * sum_{k>=1} C(n,k) (a-b)^(k-1) b^(n-k)",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "'Prove that a - b is a factor of a^n - b^n' — a proof. The Miscellaneous key starts at 2, deliberately skipping Q1. Not a defect."
+  },
+  {
+    "ref": "Misc Q2",
+    "book_key": "396 sqrt(6)",
+    "our_answer": "396 sqrt(6)",
+    "verdict": "AGREE",
+    "note": "Exact expansion of (sqrt3+sqrt2)^6 - (sqrt3-sqrt2)^6 = 396*sqrt(6)."
+  },
+  {
+    "ref": "Misc Q3",
+    "book_key": "2a^8 + 12a^6 - 10a^4 - 4a^2 + 2",
+    "our_answer": "2(a^8 + 6a^6 - 5a^4 - 2a^2 + 1) = 2a^8 + 12a^6 - 10a^4 - 4a^2 + 2",
+    "verdict": "AGREE",
+    "note": "The key prints the EXPANDED form (not the factored form anticipated); ours ends on the same expanded form, so there is not even a formatting difference. sympy residual 0 against (a^2+sqrt(a^2-1))^4 + (a^2-sqrt(a^2-1))^4, and the factored form is separately confirmed equal."
+  },
+  {
+    "ref": "Misc Q4",
+    "book_key": "0.9510",
+    "our_answer": "0.951",
+    "verdict": "AGREE",
+    "note": "Same number, trailing zero only. Three-term approximation 1 - 5(0.01) + 10(0.01)^2 = 951/1000 exactly. (The exact value 0.99^5 = 0.9509900499, so the key's fourth decimal is a trailing zero of the approximation, not a rounding of the exact value — but the question asks for the three-term approximation, which is 0.951.)"
+  },
+  {
+    "ref": "Misc Q5",
+    "book_key": "16/x + 8/x^2 - 32/x^3 + 16/x^4 - 4x + x^2/2 + x^3/2 + x^4/16 - 5",
+    "our_answer": "x^4/16 + x^3/2 + x^2/2 - 4x - 5 + 16/x + 8/x^2 - 32/x^3 + 16/x^4",
+    "verdict": "AGREE",
+    "note": "Identical nine-term set, printed in a different order (the key lists negative powers first). sympy residual 0 against (1 + x/2 - 2/x)^4."
+  },
+  {
+    "ref": "Misc Q6",
+    "book_key": "27x^6 - 54a x^5 + 117a^2 x^4 - 116a^3 x^3 + 117a^4 x^2 - 54a^5 x + 27a^6",
+    "our_answer": "27x^6 - 54a x^5 + 117a^2 x^4 - 116a^3 x^3 + 117a^4 x^2 - 54a^5 x + 27a^6",
+    "verdict": "AGREE",
+    "note": "sympy residual 0 against (3x^2 - 2ax + 3a^2)^3. Note the -116a^3 x^3 coefficient (a common slip point: -8 from q^3 plus -108 from 6pqr) is correct in both."
+  }
+]

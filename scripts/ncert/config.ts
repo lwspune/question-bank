@@ -581,6 +581,15 @@ export const CHAPTERS: Record<string, Chapter> = {
   //    the Class-12 evidence it is the stronger one anyway: its 29/29 blind MCQ
   //    pass found nothing, while the key diff found all 4 genuine key errors.
   //
+  //    COROLLARY, so nobody chases it: `npm run audit:keys -- <source>` ALWAYS
+  //    reports "0 scanned / NOTHING SCANNED" for a Class-11 chapter, and that
+  //    alarm is FALSE here. The probe filters to `question_format is null OR =
+  //    'mcq'` and every row in this book is `subjective`, so there is genuinely
+  //    nothing in its scope. Its message ("no practice question has a
+  //    source_file containing …") is inaccurate in this case — the rows exist,
+  //    they are simply not MCQs. Verified on Binomial Theorem: 24 rows present,
+  //    0 in the probe's scope.
+  //
   // 2. THE ANSWER KEY IS COMPLETE. kemh1an.pdf (22pp) has a section for every
   //    exercise of all 14 chapters INCLUDING every one of the 14 Miscellaneous
   //    blocks — zero gaps. So the step-6 cross-check gate runs on everything.
