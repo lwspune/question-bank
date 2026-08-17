@@ -239,9 +239,12 @@ describe("getActiveTab", () => {
 // The `exams` table CONFLATES board and class into one row (mh-ssc-10 IS
 // "Maharashtra State Board" x 10), so the registry is the only place the two
 // can be separated. These tests pin the derivation, and — just as important —
-// pin the HONEST GAPS: CBSE 9/10/11 resolve to null because there is no corpus,
+// pin the HONEST GAPS: CBSE 9/10 resolve to null because there is no corpus,
 // so the picker can never offer a paper the bank cannot fill. Maharashtra Std 11
-// WAS such a gap until the mh-sb-11 Class-11 Maths corpus landed (2026-08-10).
+// WAS such a gap until the mh-sb-11 Class-11 Maths corpus landed (2026-08-10);
+// CBSE Std 11 was the last remaining one until the NCERT Class-11 Maths corpus
+// landed (2026-08-17). Both boards now carry 11 — so a `null` here means only
+// CBSE 9/10, and if either of those ever ships, this block must move again.
 // ---------------------------------------------------------------------------
 
 describe("BOARDS", () => {
@@ -255,8 +258,8 @@ describe("stdsForBoard", () => {
     expect(stdsForBoard("Maharashtra State Board")).toEqual([9, 10, 11, 12]);
   });
 
-  it("returns only Class 12 for CBSE", () => {
-    expect(stdsForBoard("CBSE")).toEqual([12]);
+  it("returns CBSE's stds ascending — 11 present since the NCERT Class-11 corpus landed", () => {
+    expect(stdsForBoard("CBSE")).toEqual([11, 12]);
   });
 
   it("returns [] for an unknown or empty board", () => {
@@ -275,12 +278,9 @@ describe("getExamForBoardStd", () => {
     expect(getExamForBoardStd("Maharashtra State Board", 12)?.slug).toBe("mh-hsc-12");
   });
 
-  it("resolves CBSE Class 12", () => {
+  it("resolves each CBSE board+std pair to its exam", () => {
+    expect(getExamForBoardStd("CBSE", 11)?.slug).toBe("cbse-11");
     expect(getExamForBoardStd("CBSE", 12)?.slug).toBe("cbse-12");
-  });
-
-  it("returns null for CBSE Std 11 — no Class 11 corpus on that board", () => {
-    expect(getExamForBoardStd("CBSE", 11)).toBeNull();
   });
 
   it("returns null for CBSE classes that have no corpus yet", () => {

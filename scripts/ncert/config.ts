@@ -27,7 +27,33 @@ import { join } from "node:path";
 // LWS Pune org + admin (same identities as the practice / stateboard pipelines).
 export { ORG_ID, CREATED_BY } from "../practice/config";
 // CBSE Class 12 exam (seeded 2026-07-11); Mathematics subject seeded alongside.
-export const EXAM_ID = "9b11f033-14c3-4312-8f03-eca3c3d2c87c";
+export const EXAM_ID_CBSE_12 = "9b11f033-14c3-4312-8f03-eca3c3d2c87c";
+// CBSE Class 11 exam (seeded 2026-08-17); its own Mathematics subject alongside.
+// A SEPARATE exam, not a fold into Class 12: Class 11 is not a board year, so it
+// can never carry PYQs and the textbook corpus IS its whole bank (the mh-sb-11
+// shape). See src/lib/exam/examContext.ts.
+export const EXAM_ID_CBSE_11 = "383dd115-0583-40ac-9c07-81a5fdd8aa30";
+
+/**
+ * Every exam this pipeline writes to, newest class first. Used by the
+ * cross-chapter aggregates (errata.ts) that have no single chapter in scope.
+ *
+ * A chapter NAME does not identify a class — Relations and Functions,
+ * Probability and Three Dimensional Geometry each exist in both — so anything
+ * grouping across classes must carry the exam id, never the chapter name.
+ */
+export const NCERT_EXAMS = [
+  { examId: "383dd115-0583-40ac-9c07-81a5fdd8aa30", label: "CBSE Class 11" },
+  { examId: "9b11f033-14c3-4312-8f03-eca3c3d2c87c", label: "CBSE Class 12" },
+] as const;
+
+// NOTE — there is deliberately NO module-level `EXAM_ID` any more. It was one
+// const for Class 12, imported by ~10 scripts as `.eq("exam_id", EXAM_ID)`.
+// Adding a second class to this pipeline made that a cross-exam-write hazard:
+// one missed call site silently scopes a Class-11 write to the Class-12 exam,
+// and no gate would see it. Removing the export instead of defaulting it makes
+// the TYPECHECKER enumerate every call site — the same technique the syllabus
+// loaders used when `subject` became required. Read the id off the chapter.
 
 export const SOURCE_ROOT = "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Subjects\\NCERT\\Books";
 export const OUT = join(__dirname, "out"); // gitignored: rendered PNGs
@@ -35,6 +61,14 @@ export const DATA = join(__dirname, "data"); // committed: transcription (source
 
 export type Chapter = {
   id: string; // slug → data/<id>.* + source_file
+  /**
+   * Which CBSE exam this chapter belongs to. REQUIRED — never defaulted, so a
+   * new chapter cannot silently inherit the wrong class's exam (see the note on
+   * EXAM_ID_CBSE_12 above). Class-11 chapter ids carry a `c11` prefix because
+   * Relations and Functions, Probability and Three Dimensional Geometry all
+   * exist in BOTH classes and share this pipeline's flat data/ directory.
+   */
+  examId: string;
   chapterName: string; // DB chapter (auto-created on commit)
   subjectName: string; // DB subject (must exist — "Mathematics")
   sourceFile: string; // questions.source_file + upload_jobs.filename (dedup/rollback key)
@@ -48,6 +82,9 @@ export type Chapter = {
 };
 
 const cls12Maths = (p: string) => join(SOURCE_ROOT, "12th", "Maths", p);
+// Class 11 ships as 14 pre-split chapter PDFs in ONE folder (no Part 1/Part 2
+// split), with the end-of-book answers in kemh1an.pdf alongside them.
+const cls11Maths = (p: string) => join(SOURCE_ROOT, "11th", "Maths", p);
 
 export const CHAPTERS: Record<string, Chapter> = {
   // ── Validation chapter — Ch.7 Integrals (12th, Part 2). 67pp, ~300 questions.
@@ -62,6 +99,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   integrals: {
     id: "integrals",
     chapterName: "Integrals",
+    examId: EXAM_ID_CBSE_12,
     subjectName: "Mathematics",
     sourceFile: "NCERT_12_Maths__Integrals.pdf",
     pdf: cls12Maths("Part 2/01. Integrals.pdf"),
@@ -94,6 +132,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   matrices: {
     id: "matrices",
     chapterName: "Matrices",
+    examId: EXAM_ID_CBSE_12,
     subjectName: "Mathematics",
     sourceFile: "NCERT_12_Maths__Matrices.pdf",
     pdf: cls12Maths("Part 1/03. Matrices.pdf"),
@@ -125,6 +164,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   determinants: {
     id: "determinants",
     chapterName: "Determinants",
+    examId: EXAM_ID_CBSE_12,
     subjectName: "Mathematics",
     sourceFile: "NCERT_12_Maths__Determinants.pdf",
     pdf: cls12Maths("Part 1/04. Determinants.pdf"),
@@ -154,6 +194,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   relationsFunctions: {
     id: "relationsFunctions",
     chapterName: "Relations and Functions",
+    examId: EXAM_ID_CBSE_12,
     subjectName: "Mathematics",
     sourceFile: "NCERT_12_Maths__RelationsAndFunctions.pdf",
     pdf: cls12Maths("Part 1/01. RELATIONS AND FUNCTIONS.pdf"),
@@ -186,6 +227,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   differentialEquations: {
     id: "differentialEquations",
     chapterName: "Differential Equations",
+    examId: EXAM_ID_CBSE_12,
     subjectName: "Mathematics",
     sourceFile: "NCERT_12_Maths__DifferentialEquations.pdf",
     pdf: cls12Maths("Part 2/03. Differential Equations.pdf"),
@@ -231,6 +273,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   threeDGeometry: {
     id: "threeDGeometry",
     chapterName: "Three Dimensional Geometry",
+    examId: EXAM_ID_CBSE_12,
     subjectName: "Mathematics",
     sourceFile: "NCERT_12_Maths__ThreeDimensionalGeometry.pdf",
     pdf: cls12Maths("Part 2/05. 3D Vectors.pdf"),
@@ -261,6 +304,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   probability: {
     id: "probability",
     chapterName: "Probability",
+    examId: EXAM_ID_CBSE_12,
     subjectName: "Mathematics",
     sourceFile: "NCERT_12_Maths__Probability.pdf",
     pdf: cls12Maths("Part 2/07. Probability.pdf"),
@@ -296,6 +340,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   inverseTrig: {
     id: "inverseTrig",
     chapterName: "Inverse Trigonometric Functions",
+    examId: EXAM_ID_CBSE_12,
     subjectName: "Mathematics",
     sourceFile: "NCERT_12_Maths__InverseTrigonometricFunctions.pdf",
     pdf: cls12Maths("Part 1/02. Inverse Trigonometry.pdf"),
@@ -344,6 +389,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   continuityDiff: {
     id: "continuityDiff",
     chapterName: "Continuity and Differentiability",
+    examId: EXAM_ID_CBSE_12,
     subjectName: "Mathematics",
     sourceFile: "NCERT_12_Maths__ContinuityAndDifferentiability.pdf",
     pdf: cls12Maths("Part 1/05. Continuity and Differentiability.pdf"),
@@ -383,6 +429,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   appDerivatives: {
     id: "appDerivatives",
     chapterName: "Application of Derivatives",
+    examId: EXAM_ID_CBSE_12,
     subjectName: "Mathematics",
     sourceFile: "NCERT_12_Maths__ApplicationOfDerivatives.pdf",
     pdf: cls12Maths("Part 1/06. Applications_of_Derivatives.pdf"),
@@ -414,6 +461,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   appIntegrals: {
     id: "appIntegrals",
     chapterName: "Application of Integrals",
+    examId: EXAM_ID_CBSE_12,
     subjectName: "Mathematics",
     sourceFile: "NCERT_12_Maths__ApplicationOfIntegrals.pdf",
     pdf: cls12Maths("Part 2/02. Applications of Integrals.pdf"),
@@ -461,6 +509,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   vectorAlgebra: {
     id: "vectorAlgebra",
     chapterName: "Vector Algebra",
+    examId: EXAM_ID_CBSE_12,
     subjectName: "Mathematics",
     sourceFile: "NCERT_12_Maths__VectorAlgebra.pdf",
     pdf: cls12Maths("Part 2/04. Vectors.pdf"),
@@ -497,6 +546,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   linearProgramming: {
     id: "linearProgramming",
     chapterName: "Linear Programming",
+    examId: EXAM_ID_CBSE_12,
     subjectName: "Mathematics",
     sourceFile: "NCERT_12_Maths__LinearProgramming.pdf",
     pdf: cls12Maths("Part 2/06. Linear Programming.pdf"),
@@ -514,6 +564,167 @@ export const CHAPTERS: Record<string, Chapter> = {
     // Keeping the second subtopic would have shipped a filter that always
     // returns nothing.
     subtopics: ["Graphical Solution and the Feasible Region"],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // NCERT CLASS 11 (exam `cbse-11`). Same publisher, same structure, same
+  // answer-key format as Class 12 — hence the same pipeline rather than a fork.
+  //
+  // THREE measured facts that differ from Class 12 and shape every chapter here
+  // (probed over all 14 chapter PDFs, 313pp, 2026-08-17):
+  //
+  // 1. THE BOOK CONTAINS ZERO MCQs. No "Choose the correct answer" instruction
+  //    anywhere, and no four-option run in any chapter, against 29 in Class 12.
+  //    So `dump-mcq`/`mark-mcq-verify` have nothing to do here and the blind
+  //    MCQ re-derivation that anchors the other pipelines is UNAVAILABLE. The
+  //    compensating control is that the answer key is complete (below) — and on
+  //    the Class-12 evidence it is the stronger one anyway: its 29/29 blind MCQ
+  //    pass found nothing, while the key diff found all 4 genuine key errors.
+  //
+  // 2. THE ANSWER KEY IS COMPLETE. kemh1an.pdf (22pp) has a section for every
+  //    exercise of all 14 chapters INCLUDING every one of the 14 Miscellaneous
+  //    blocks — zero gaps. So the step-6 cross-check gate runs on everything.
+  //    `answerPages` below were read at each chapter's LAST answer, not its
+  //    first, and carry a spill page (the Class-12 Differential Equations trap,
+  //    where 12 rows sat on a page the chapter's own heading never reached).
+  //
+  // 3. THE TEXT LAYER IS ARITHMETICALLY LOSSY, worse than Class 12's. `√`
+  //    occurs ZERO times across all 14 chapters — including Complex Numbers and
+  //    Conic Sections — because radicals are drawn, not set: on a Conic Sections
+  //    page √((x−a)²+y²) extracts as `2 2 ( ) x – a y +`, the radical gone and
+  //    the terms reordered. Fractions interleave and the minus sign is an
+  //    en-dash. VISION ONLY, which is already this pipeline's mode.
+  //
+  // A transcription-brief note earned by the probe: the book prints `Example10`
+  // and `8.4.2` WITHOUT a following space in places, so any agent-side regex
+  // keyed on `Example\s+\d+` silently misses rows (it made Examples 10 and 12 of
+  // ch.8 look absent until the spacing was checked — the mh-sb-11 §9.2.1
+  // trailing-dot artefact in a new costume). Bands are cut at BLOCK boundaries.
+  c11ComplexNumbers: {
+    id: "c11ComplexNumbers",
+    examId: EXAM_ID_CBSE_11,
+    // The book's printed chapter name, kept verbatim per the follow-the-book
+    // rule — but note it PROMISES CONTENT IT NO LONGER TEACHES. The rationalised
+    // edition's sections run 4.1–4.5 (Introduction · Complex Numbers · Algebra ·
+    // Modulus and Conjugate · Argand Plane) and there is NO quadratic-equations
+    // section at all. The bank carries Quadratic Equations as a separate
+    // 187-PYQ chapter with no NCERT home — the same shape as Class 12's dropped
+    // tangents-and-normals. Do NOT "fix" the name to match the content.
+    chapterName: "Complex Numbers and Quadratic Equations",
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_11_Maths__ComplexNumbers.pdf",
+    pdf: cls11Maths("04. Complex Numbers.pdf"),
+    answersPdf: cls11Maths("kemh1an.pdf"),
+    // Ch-4 key: 4.1 opens on p5 (below Misc-3), Misc-4 on p6; ch5's 5.1 heading
+    // is also on p6, which is what bounds the block.
+    answerPages: [5, 6],
+    note: "NCERT (CBSE Class 11) — Complex Numbers and Quadratic Equations (Chapter 4, NCERT Mathematics)",
+    // Page map (0-based): §4.1–4.2 p0 · §4.3–4.3.2 p1 · §4.3.3–4.3.4 p2 ·
+    // §4.3.5–4.3.6 p3 · §4.3.7 + Eg.2 p4 · §4.4 + Eg.3–4 p5 · EXERCISE 4.1 +
+    // Eg.5–6 p6 · §4.5 Argand p7–p8 · Miscellaneous + Eg.7–8 p9–p10 ·
+    // Summary p11. NO figure is cited by any ingested row — Fig 4.1 is the
+    // Argand-plane teaching diagram and the exercise items beside it are algebra.
+    subtopics: [
+      "Complex Numbers and the Imaginary Unit",
+      "Algebra of Complex Numbers",
+      "Modulus and Conjugate",
+      "Argand Plane and Polar Representation",
+    ],
+  },
+
+  c11BinomialTheorem: {
+    id: "c11BinomialTheorem",
+    examId: EXAM_ID_CBSE_11,
+    chapterName: "Binomial Theorem",
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_11_Maths__BinomialTheorem.pdf",
+    pdf: cls11Maths("07. Binomial Theorem.pdf"),
+    answersPdf: cls11Maths("kemh1an.pdf"),
+    // Ch-7 key: 7.1 AND Misc-7 both on p8; ch8's 8.1 heading opens p9, so a
+    // Misc-7 tail would sit above it — p9 is the spill margin, not a second block.
+    answerPages: [8, 9],
+    note: "NCERT (CBSE Class 11) — Binomial Theorem (Chapter 7, NCERT Mathematics)",
+    // The THINNEST chapter in the book: 9pp, ~18 keyed questions, and the
+    // rationalised edition has cut it to §7.1–§7.2.2 — no general term, no
+    // middle term, no Pascal-triangle extensions. Page map: §7.1–7.2 p0 ·
+    // Pascal's triangle figures p1–p2 (teaching only) · §7.2.1 p3 · §7.2.2 p4 ·
+    // Eg.1–3 p5 · EXERCISE 7.1 + Eg.4 p6 · Miscellaneous + Summary p7.
+    subtopics: [
+      "Binomial Theorem for Positive Integral Indices",
+      "Special Cases and Applications",
+    ],
+  },
+
+  c11SequencesSeries: {
+    id: "c11SequencesSeries",
+    examId: EXAM_ID_CBSE_11,
+    chapterName: "Sequences and Series",
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_11_Maths__SequencesSeries.pdf",
+    pdf: cls11Maths("08. Sequence And Series.pdf"),
+    answersPdf: cls11Maths("kemh1an.pdf"),
+    // Ch-8 key: 8.1 + 8.2 on p9, Misc-8 on p10 (ch9's 9.1 is also on p10).
+    answerPages: [9, 10],
+    note: "NCERT (CBSE Class 11) — Sequences and Series (Chapter 8, NCERT Mathematics)",
+    // ANOTHER rationalisation gap worth knowing before authoring: there is NO
+    // ARITHMETIC PROGRESSION section. The chapter runs §8.1 Introduction ·
+    // §8.2 Sequences · §8.3 Series · §8.4 G.P. (+8.4.1–8.4.3) · §8.5 A.M.–G.M.,
+    // so A.P., H.P. and the special sums are simply absent — consistent with the
+    // syllabus map's finding for this book. Do not author an A.P. subtopic.
+    // ZERO figure references in the entire chapter. Page map: §8.1–8.2 p0 ·
+    // §8.3 + Eg.1 p2 · EXERCISE 8.1 + Eg.2–3 p3 · §8.4 p4 · §8.4.1/8.4.2 + Eg.4
+    // p5 · Eg.5–8 p6 · Eg.9–10 p7 · §8.4.3 + Eg.11 p8 · §8.5 + Eg.12–13 p9 ·
+    // EXERCISE 8.2 p10–p11 · Miscellaneous + Eg.14 p12–p13 · Summary p14.
+    // The Miscellaneous heading prints "Miscellaneous Exercise On Chapter 8"
+    // with a capital "On" — the only one in the book that does.
+    subtopics: [
+      "Sequences and Series",
+      "Geometric Progression",
+      "Geometric Mean and the A.M.–G.M. Relationship",
+    ],
+  },
+
+  c11ConicSections: {
+    id: "c11ConicSections",
+    examId: EXAM_ID_CBSE_11,
+    chapterName: "Conic Sections",
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_11_Maths__ConicSections.pdf",
+    pdf: cls11Maths("10. Conic Section.pdf"),
+    answersPdf: cls11Maths("kemh1an.pdf"),
+    // Ch-10 key spans FOUR pages — 10.1+10.2 p12 · 10.3 p13 · 10.4 p14 ·
+    // Misc-10 p15 (ch11's 11.1 is also on p15, which bounds it).
+    answerPages: [12, 13, 14, 15],
+    note: "NCERT (CBSE Class 11) — Conic Sections (Chapter 10, NCERT Mathematics)",
+    // The heaviest chapter of the pilot (32pp) and the one that retires the
+    // FIGURE lane. Its whole-chapter figure count is 66, which is misleading:
+    // scoped to rows we actually ingest it is THREE — Fig 10.31/10.32/10.33,
+    // cited by Miscellaneous Examples 17/18/19 ("the focus of a parabolic mirror
+    // as shown in Fig 10.31"), which ship as `solved` rows. NOT ONE exercise
+    // question cites a figure, and the Miscellaneous Exercise cites none at all;
+    // every other mention is teaching prose or a floating caption. Figures are
+    // vector DRAWINGS over a full-page background raster, so they must be
+    // snap-cropped from a render, never extracted as images.
+    //
+    // A BOOK DEFECT to preserve, not smooth: the chapter cites `Fig 11.15` and
+    // `Fig 11.31` — stale pre-rationalisation numbering from when Conic Sections
+    // was chapter 11. Verified: ch.11 (3D Geometry) contains only figures
+    // 11.1–11.4, so those point at nothing, and one paragraph cites the same
+    // figure both ways ("Fig 11.15 (b)" then "Fig10.15").
+    //
+    // Page map: §10.1–10.2 p0 · §10.2.1 p1 · §10.2.2 p2 · §10.3 Circle p3 ·
+    // Eg.1–3 p4 · EXERCISE 10.1 + Eg.4 p5 · §10.4 Parabola p6–p8 · §10.4.2 +
+    // Eg.5 p9 · EXERCISE 10.2 + Eg.6–8 p10 · §10.5 Ellipse p11–p15 · §10.5.4 +
+    // Eg.9 p16 · Eg.10–13 p17–p18 · EXERCISE 10.3 + §10.6 Hyperbola p19 ·
+    // §10.6.1–10.6.2 p20–p23 · §10.6.3 + Eg.14 p24 · Eg.15–16 p25 ·
+    // EXERCISE 10.4 + Eg.17–18 p26 · Eg.19 p27 · Miscellaneous p28 · Summary p29.
+    subtopics: [
+      "Sections of a Cone",
+      "Circle",
+      "Parabola",
+      "Ellipse",
+      "Hyperbola",
+    ],
   },
 };
 

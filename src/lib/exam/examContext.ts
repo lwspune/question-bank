@@ -19,6 +19,7 @@ export type ExamSlug =
   | "foundation-course"
   | "neet"
   | "mh-hsc-12"
+  | "cbse-11"
   | "cbse-12"
   | "mh-sb-9"
   | "mh-sb-11"
@@ -166,6 +167,24 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     std: 12,
   },
   {
+    slug: "cbse-11",
+    displayName: "CBSE Class 11",
+    examName: "CBSE Class 11", // must match the `exams` DB row exactly
+    guidesPath: null, // no /guide subtree yet — falls back to the index
+    notesPath: "/notes/cbse-11", // exam hub: "coming soon" until notes ship
+    practiceOnly: true, // NCERT textbook corpus; Class 11 is not a board year, so this exam can NEVER carry PYQs (the mh-sb-11 shape, unlike cbse-12 where CBSE PYQs are a later phase)
+    boardExam: true, // NCERT textbook content → gets the /board reader + the "Board" nav tab
+    board: "CBSE",
+    std: 11,
+    // NO mixedFormats — and unlike the other board corpora that is a PERMANENT
+    // property, not a "not yet". Measured over all 14 chapter PDFs: the NCERT
+    // Class 11 Maths book contains ZERO MCQs (no "Choose the correct answer"
+    // instruction anywhere, no four-option run in any chapter), where Class 12
+    // has 29. So its corpus is 100% subjective — single-format — and the
+    // /browse Format control would be a no-op. tests/format-mix-registry.test.ts
+    // re-measures this against the live bank in both directions.
+  },
+  {
     slug: "cbse-12",
     displayName: "CBSE Class 12",
     examName: "CBSE Class 12", // must match the `exams` DB row exactly
@@ -295,8 +314,8 @@ export const BOARDS: readonly Board[] = Array.from(
 /**
  * The classes a board actually has content for, ascending. Deliberately derived
  * from the registry rather than hard-coded 9..12, so the Std dropdown can only
- * ever offer a class the bank can fill — Maharashtra returns [9, 10, 12] because
- * there is no Class 11 corpus, and offering 11 would produce an empty paper.
+ * ever offer a class the bank can fill — CBSE returns [11, 12] because there is
+ * no CBSE 9/10 corpus, and offering either would produce an empty paper.
  */
 export function stdsForBoard(board: string | null | undefined): Std[] {
   if (!board) return [];
@@ -307,7 +326,7 @@ export function stdsForBoard(board: string | null | undefined): Std[] {
 
 /**
  * Resolve a (board, std) pair to its exam — the inverse of the conflation in the
- * `exams` table. Null when the pair has no corpus (Class 11 anywhere, CBSE 9/10).
+ * `exams` table. Null when the pair has no corpus (today: CBSE 9/10 only).
  */
 export function getExamForBoardStd(
   board: string | null | undefined,
