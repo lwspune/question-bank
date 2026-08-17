@@ -644,11 +644,33 @@ export const CHAPTERS: Record<string, Chapter> = {
     // Misc-7 tail would sit above it — p9 is the spill margin, not a second block.
     answerPages: [8, 9],
     note: "NCERT (CBSE Class 11) — Binomial Theorem (Chapter 7, NCERT Mathematics)",
-    // The THINNEST chapter in the book: 9pp, ~18 keyed questions, and the
-    // rationalised edition has cut it to §7.1–§7.2.2 — no general term, no
-    // middle term, no Pascal-triangle extensions. Page map: §7.1–7.2 p0 ·
-    // Pascal's triangle figures p1–p2 (teaching only) · §7.2.1 p3 · §7.2.2 p4 ·
-    // Eg.1–3 p5 · EXERCISE 7.1 + Eg.4 p6 · Miscellaneous + Summary p7.
+    // The THINNEST chapter in the book: 9pp, 24 rows (4 solved + 20 exercise),
+    // and the rationalised edition has cut it to §7.1–§7.2.2 — no general term,
+    // no middle term, no Pascal-triangle extensions.
+    //
+    // Page map, CORRECTED against the pages during transcription (the version
+    // derived from where each EXERCISE header appears was wrong about EXTENT):
+    //   §7.1–7.2 p0 · Pascal's-triangle figs p1–p2 (teaching only) · §7.2.1 p3 ·
+    //   §7.2.2 + Observations p4 (§7.2.2 finishes on p5) · Eg.1–2 p5 ·
+    //   **Eg.3 spans p5→p6** · Eg.4 THEN **EXERCISE 7.1 Q1–Q3** p6 ·
+    //   **EXERCISE 7.1 Q4–Q14** + Miscellaneous + Summary p7 · Historical Note p8.
+    //
+    // EXERCISE 7.1 SPANS p6 AND p7: p6 carries only Q1–Q3 and ELEVEN of its 14
+    // questions are overleaf. A band cut at that page boundary would have
+    // dropped them silently — the reason bands are cut at BLOCK boundaries and
+    // every agent is told to report on territory it does not own.
+    //
+    // Ex 7.1 has 14 questions and the printed key covers Q1–Q12; Q13 and Q14
+    // are proofs ("Show that…", "Prove that…"), which is the class this key
+    // skips. Miscellaneous has 6, of which Q1 is a proof and the key covers
+    // Q2–Q6. A missing key entry here is NOT a defect.
+    //
+    // Publisher-report item with no question to hang a bracket on: the p8
+    // Historical Note says Pascal's triangle "was constructed by ... Blaise
+    // Pascal (1623-1662) in 1665" — three years after the death date printed in
+    // the same sentence; the book's own next paragraph gives 1665 as the
+    // POSTHUMOUS publication year of the Traité. It also prints "Michael
+    // Stipel" for Stifel. Prose only; touches no row.
     subtopics: [
       "Binomial Theorem for Positive Integral Indices",
       "Special Cases and Applications",
