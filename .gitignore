@@ -52,18 +52,22 @@ scripts/mh-ssc-10-text/data/*.topaper.json
 scripts/mh-ssc-10-text/data/*.review.json
 scripts/mh-ssc-10-text/data/*.mcq-blind.json
 
-# Generated paper outputs — regenerable build artifacts, not tracked
-generated-papers/*.xlsx
-generated-papers/*.docx
-generated-papers/*.pdf
-generated-papers/*.md
-generated-papers/*.html
+# Generated paper outputs — regenerable build artifacts, not tracked.
+# The WHOLE directory, not a per-extension list: it had grown 108 files of which
+# only 6 extensions were covered, so ~44 scratch artifacts (.json corpora, .txt
+# probe dumps, .log gate output, throwaway .py/.ts one-offs) were staged by a
+# plain `git add -A`. This is a build-output dir — `scripts/lib/needsBuild.ts`
+# already lists it among the paths a change to which cannot affect a build.
+generated-papers/
 
 # Teaching-plan rendered outputs — regenerable from the JSON via build-docx.py
 teaching-plan/*.docx
 teaching-plan/*.pdf
 __pycache__/
-generated-papers/*.tex
+
+# Local gate/push transcripts (`npm run gate … | tee push.log`) — machine-local noise
+push.log
+*.gate.log
 
 # Supabase CLI project-ref cache (created by `supabase postgres-config` etc.)
 supabase/.temp/
