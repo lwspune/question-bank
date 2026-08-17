@@ -272,6 +272,54 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
   //    Miscellaneous Example, hence no "Misc Eg" block.
   //    Verified against the pages: Eg.3 spans p5→p6, Eg.4 precedes the exercise
   //    on p6, and Exercise 7.1 itself runs p6→p7 (Q1-Q3 on p6, Q4-Q14 overleaf).
+  // ── Ch.4 Complex Numbers and Quadratic Equations (CLASS 11). ONE numbered
+  //    exercise plus a terminal Miscellaneous block — there is no Exercise 4.2,
+  //    confirmed by reading p07→p09 continuously: §4.5 Argand Plane has no
+  //    exercise at all. Examples 1–8 span §4.3–§4.4 and all precede Exercise 4.1,
+  //    so they band to it; Examples 7–8 sit in the Miscellaneous run-up.
+  c11ComplexNumbers: [
+    { group: "4.2-4.4 Complex Numbers, Algebra, Modulus and Conjugate", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.1 Eg"] },
+    { group: "4.2-4.4 Complex Numbers, Algebra, Modulus and Conjugate", label: "Exercise 4.1", kind: "exercise", refPrefixes: ["Ex 4.1 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 4", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 4", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // ── Ch.8 Sequences and Series (CLASS 11). TWO numbered exercises + a terminal
+  //    Miscellaneous block. NOTE the book prints its heading as "Miscellaneous
+  //    Exercise **On** Chapter 8" with a capital O — the only chapter in the
+  //    book that does — and the group title below follows the page.
+  //    There is NO Arithmetic Progression section: §8.3 Series is followed
+  //    directly by §8.4 Geometric Progression.
+  c11SequencesSeries: [
+    { group: "8.2-8.3 Sequences and Series", label: "Solved Examples", kind: "solved_example", refPrefixes: ["8.1 Eg"] },
+    { group: "8.2-8.3 Sequences and Series", label: "Exercise 8.1", kind: "exercise", refPrefixes: ["Ex 8.1 Q"] },
+    { group: "8.4 Geometric Progression", label: "Solved Examples", kind: "solved_example", refPrefixes: ["8.2 Eg"] },
+    { group: "8.4 Geometric Progression", label: "Exercise 8.2", kind: "exercise", refPrefixes: ["Ex 8.2 Q"] },
+    { group: "Miscellaneous Exercise On Chapter 8", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise On Chapter 8", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // ── Ch.10 Conic Sections (CLASS 11). FOUR numbered exercises, one per conic,
+  //    plus the book's own centred "Miscellaneous Examples" block (Examples
+  //    17–19) and then the Miscellaneous Exercise. §10.1/§10.2 (sections of a
+  //    cone, degenerate conics) carry NO Example and NO exercise — pure teaching
+  //    prose — so they get no block here, which is also why the chapter has no
+  //    `Sections of a Cone` subtopic.
+  //    Prefix safety: this chapter has no §10.10, so "10.1 Eg" cannot collide
+  //    with a "10.10 Eg", and "Ex 10.1 Q" cannot collide with "Ex 10.10 Q".
+  c11ConicSections: [
+    { group: "10.3 Circle", label: "Solved Examples", kind: "solved_example", refPrefixes: ["10.1 Eg"] },
+    { group: "10.3 Circle", label: "Exercise 10.1", kind: "exercise", refPrefixes: ["Ex 10.1 Q"] },
+    { group: "10.4 Parabola", label: "Solved Examples", kind: "solved_example", refPrefixes: ["10.2 Eg"] },
+    { group: "10.4 Parabola", label: "Exercise 10.2", kind: "exercise", refPrefixes: ["Ex 10.2 Q"] },
+    { group: "10.5 Ellipse", label: "Solved Examples", kind: "solved_example", refPrefixes: ["10.3 Eg"] },
+    { group: "10.5 Ellipse", label: "Exercise 10.3", kind: "exercise", refPrefixes: ["Ex 10.3 Q"] },
+    { group: "10.6 Hyperbola", label: "Solved Examples", kind: "solved_example", refPrefixes: ["10.4 Eg"] },
+    { group: "10.6 Hyperbola", label: "Exercise 10.4", kind: "exercise", refPrefixes: ["Ex 10.4 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 10", label: "Miscellaneous Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 10", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
   c11BinomialTheorem: [
     { group: "7.2 Binomial Theorem for Positive Integral Indices", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.1 Eg"] },
     { group: "7.2 Binomial Theorem for Positive Integral Indices", label: "Exercise 7.1", kind: "exercise", refPrefixes: ["Ex 7.1 Q"] },
