@@ -44,7 +44,9 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-08-17
 
-### ARCHITECTURE.md's `scripts/` tree is missing 15 of the pipelines it is supposed to map
+### ARCHITECTURE.md's `scripts/` tree is missing 15 of the pipelines it is supposed to map — **MAHARASHTRA GROUP DONE 2026-08-17, 10 remain**
+
+> **Progress 2026-08-17:** `ncert/` plus the whole Maharashtra family are now documented — `mh-sb-9/`, `mh-sb-11/`, `mh-ssc-10/`, `mh-ssc-10-text/`, `mh-hsc-12-pyq/`. **Remaining 10:** `neet/`, `worksheets/`, `pariksha/`, `syllabus/`, `grounding/`, `mocks/`, `dbhealth/`, `backup/`, `quiz/`, `testdb/`. Suggested next grouping — **ops** (`dbhealth`, `backup`, `testdb`, `mocks`; all small, 4 of 4 have READMEs) then **ingestion+tooling** (`neet`, `worksheets`, `pariksha`, `grounding`, `quiz`, and `syllabus` last — at 40 scripts it is the one that may want sub-bullets rather than a single paragraph). The five entries just written are the template: purpose · what the pure core is and whether it is shared · the step scripts in runbook order · the one gotcha that earned a comment · the `[[memory-link]]`.
 
 CLAUDE.md's file-layout section says outright: *"Append a new file/component/route there, not here."* So `ARCHITECTURE.md` is the authoritative map. Its `scripts/` tree documents `jee/`, `reviews/`, `relevance/`, `practice/`, `cds/`, `foundation/`, `practice-paper/`, `stateboard/` and the loose top-level scripts in careful detail — and **omits 15 directories entirely**: `ncert/` (added this run), `mh-sb-9/`, `mh-sb-11/`, `mh-ssc-10/`, `mh-ssc-10-text/`, `mh-hsc-12-pyq/`, `neet/`, `worksheets/`, `pariksha/`, `syllabus/`, `grounding/`, `mocks/`, `dbhealth/`, `backup/`, `quiz/`, `testdb/`.
 
@@ -54,7 +56,7 @@ Between them those cover the bank's two largest exams (Worksheets 7,376 q; JEE i
 
 **How to apply:** one dense paragraph each, in the existing style (purpose · the pure core · the step scripts in runbook order · the gotcha that earned a comment · the `[[memory-link]]`). Cheapest source for each is its own memory file plus its `README.md` where one exists. Do it in two or three sittings rather than one — and consider whether `scripts/` has outgrown a single tree and wants a short index with per-pipeline subsections.
 
-### The `/board` reader has never been click-verified for the 6 new NCERT chapters (29 diagrams, 4 figures)
+### ~~The `/board` reader has never been click-verified for the 6 new NCERT chapters (29 diagrams, 4 figures)~~ — **DONE 2026-08-17** (user-verified in browser)
 
 Every headless gate passes — `board:lint` green over 8,175 rows, all 537 rows carrying `section_seq`, `audit:text`/`audit:omml` clean — but `/board` reveals a model answer **on click**, so nothing yet run proves the answer body lays out. This batch is the first on this pipeline to ship `solution_image` diagrams (29) and `image_url` figures (4), both of which render only inside that reveal.
 
