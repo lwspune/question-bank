@@ -42,7 +42,25 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
-## 2026-08-16
+## 2026-08-17
+
+### ARCHITECTURE.md's `scripts/` tree is missing 15 of the pipelines it is supposed to map
+
+CLAUDE.md's file-layout section says outright: *"Append a new file/component/route there, not here."* So `ARCHITECTURE.md` is the authoritative map. Its `scripts/` tree documents `jee/`, `reviews/`, `relevance/`, `practice/`, `cds/`, `foundation/`, `practice-paper/`, `stateboard/` and the loose top-level scripts in careful detail — and **omits 15 directories entirely**: `ncert/` (added this run), `mh-sb-9/`, `mh-sb-11/`, `mh-ssc-10/`, `mh-ssc-10-text/`, `mh-hsc-12-pyq/`, `neet/`, `worksheets/`, `pariksha/`, `syllabus/`, `grounding/`, `mocks/`, `dbhealth/`, `backup/`, `quiz/`, `testdb/`.
+
+Between them those cover the bank's two largest exams (Worksheets 7,376 q; JEE is documented but NEET 1,536 q is not), the entire syllabus-map feature, the DB-health tracker, the backup runbook and the Quiz Factory. Several ARE described in CLAUDE.md prose or in a memory, so the information is not lost — but the file that claims to be the map is ~60% complete on that section, which quietly undermines the "append there, not here" rule and pushes detail back into CLAUDE.md.
+
+**Why:** a new session reading ARCHITECTURE.md to orient itself will conclude those pipelines don't exist, or will re-derive their shape from source. It also means the one habit CLAUDE.md relies on to stay lean isn't actually being followed.
+
+**How to apply:** one dense paragraph each, in the existing style (purpose · the pure core · the step scripts in runbook order · the gotcha that earned a comment · the `[[memory-link]]`). Cheapest source for each is its own memory file plus its `README.md` where one exists. Do it in two or three sittings rather than one — and consider whether `scripts/` has outgrown a single tree and wants a short index with per-pipeline subsections.
+
+### The `/board` reader has never been click-verified for the 6 new NCERT chapters (29 diagrams, 4 figures)
+
+Every headless gate passes — `board:lint` green over 8,175 rows, all 537 rows carrying `section_seq`, `audit:text`/`audit:omml` clean — but `/board` reveals a model answer **on click**, so nothing yet run proves the answer body lays out. This batch is the first on this pipeline to ship `solution_image` diagrams (29) and `image_url` figures (4), both of which render only inside that reveal.
+
+**Why:** this is the documented blind spot for click-gated UI — the build proves it compiles, never that it lays out ([[probe-must-reach-the-code]]). A malformed diagram URL, an oversized PNG or a KaTeX break inside a revealed solution would be invisible to every check that has run.
+
+**How to apply:** open `/board/cbse-12/mathematics/<chapter>` for **Application of Integrals** and **Linear Programming** (the two diagram chapters) and **Vector Algebra** (the figure chapter), expand a section, and click through several answers — confirm the diagram renders at a sensible size, the figure appears above the right question, and the LaTeX is typeset rather than raw. Ten minutes; the three chapters cover all four new render paths.
 
 ### Measure whether any SHIPPED chapter has already lost errata brackets — the 5a defect is not new, only newly understood
 
@@ -210,6 +228,8 @@ Nine scripts across five pipelines now emit review provenance as they run (2026-
 **Why:** NCERT is an active pipeline (3 chapters shipped, more Class-12 Maths planned). Every chapter ingested from here will produce exactly the adjudications the table wants and drop them on the floor, so the gap this session closed re-opens quietly for one exam. It is also the pipeline whose artifacts were richest in the backfill (271 of 566 ref-based rows), which is the evidence that its passes are worth recording.
 
 **How to apply:** either port the sibling `apply-errata.ts` + `mark-mcq-verify.ts` into `scripts/ncert/` (they are near-identical across the other four pipelines — see the `emit.ts` call sites), or, if NCERT's errata genuinely flow through a different step, call `recordErrataReviews` / `recordMcqVerifyReviews` from whatever that step is. Either way the run label should follow `liveRunLabel("ncert", chapterId, kind)` so live rows stay distinguishable from the `backfill:ncert:*` ones already present.
+
+> **NARROWED 2026-08-17 — half done, and the remaining half is one call.** `scripts/ncert/mark-mcq-verify.ts` was ported WITH `recordMcqVerifyReviews` and is now live (52 rows recorded across the final-six batch + the Integrals backfill). **`scripts/ncert/apply-errata.ts` was written this session and does NOT emit** — every sibling (`mh-sb-9`, `mh-sb-11`, `mh-ssc-10-text`, …) calls `recordErrataReviews` from its `apply-errata.ts` and the NCERT copy is the lone exception, so **11 errata adjudications from this batch went unrecorded**. Deliberately not wired during a docs pass, since it writes rows. Fix = import `recordErrataReviews` from `src/lib/reviews/emit`, collect the `ErratumApplied[]` the loop already builds, and call it after the writes — copy `scripts/mh-sb-9/apply-errata.ts` verbatim.
 
 ### Roll `reviews:paper` across the live papers, and click the triage dropdown once
 
@@ -1081,13 +1101,11 @@ The spine defines 8 learning-anchored kinds but only 5 are wired: `mock_submitte
 
 **How to apply:** extract the IO scripts into a shared `scripts/textbook/` that takes the exam config as a parameter (each exam dir keeps only `config.ts` + `sections.ts` + a tiny entry that passes its config in). This is a rework of shipped State Board code → needs the 360 + explicit-permission gate per [[learning-propagation-protocol]]. Defer until the 3rd exam actually forces it — don't pre-abstract.
 
-### Ch.8 Applications of Integrals will exercise the figure/snapCrop path (natural next chapter)
+### ~~Ch.8 Applications of Integrals will exercise the figure/snapCrop path (natural next chapter)~~ — **DONE 2026-08-17**
 
-NCERT Ch.7 Integrals needed **zero** per-question figures (its diagrams are expository). **Ch.8 Applications of Integrals is figure-dense** (area-under-curve / area-between-curves sketches, many per-question), so it's the first NCERT chapter that will exercise `scripts/ncert/` figure attachment — either snapCrop of the book figures OR authored `solution_image` area diagrams (the `render_solution_diagrams.py` curve mode, reused from State Board's Application-of-Definite-Integration chapter).
+Shipped in the final-six batch (`c2b9c5f`), and **both** paths were exercised, not just one: `snap-crop.ts` + `attach-images.ts` ran for the first time on this pipeline (4 crops on Vector Algebra, snapCrop 4/4 ok), and Application of Integrals got **14 authored `solution_image` area diagrams** via a ported `render_solution_diagrams.py` — plus 15 more for Linear Programming. Every montage was eyeballed by the maintainer, not taken from an agent's self-verify.
 
-**Why:** it's the obvious continuation of the 12th-Maths ingest and de-risks the one pipeline path Integrals didn't touch.
-
-**How to apply:** add `app-integrals` to `scripts/ncert/config.ts`, follow the same runbook; for the figures, decide per-question snapCrop-book-figure vs authored-area-diagram (montage-verify every crop yourself per [[figure-snapcrop-verify]] — never trust an agent's self-verify).
+Two corrections to this entry's premise, worth keeping: the chapter is **not** figure-dense in the way assumed — a scan restricted to text *between an EXERCISE header and the next structural heading* finds **zero** per-question figure refs in Ch.8 (its `Fig` refs are all expository), and the whole remaining book had exactly one load-bearing per-question figure. The area diagrams are authored, not cropped. See [[metric-scope-matches-decision]].
 
 ---
 
