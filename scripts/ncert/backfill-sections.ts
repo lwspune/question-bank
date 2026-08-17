@@ -17,7 +17,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { assignSections, type SBQuestion } from "./lib";
 import { sectionsFor } from "./sections";
-import { ORG_ID, EXAM_ID, requireChapter, questionsJsonPath } from "./config";
+import { ORG_ID, requireChapter, questionsJsonPath } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -92,7 +92,7 @@ async function main() {
         section_seq: a.sectionSeq,
       })
       .eq("org_id", ORG_ID)
-      .eq("exam_id", EXAM_ID)
+      .eq("exam_id", ch.examId)
       .eq("source_file", ch.sourceFile)
       .eq("question_number", a.ref)
       .select("id");

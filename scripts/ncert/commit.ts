@@ -20,7 +20,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { buildRecords, latexImbalances, type SBQuestion } from "./lib";
-import { ORG_ID, EXAM_ID, CREATED_BY, requireChapter, questionsJsonPath } from "./config";
+import { ORG_ID, CREATED_BY, requireChapter, questionsJsonPath } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -83,7 +83,7 @@ async function main() {
   console.log(`\nupload job: ${jobId}`);
 
   const result = await commitStaged(client, {
-    orgId: ORG_ID, examId: EXAM_ID, filename: ch.sourceFile, createdBy: CREATED_BY,
+    orgId: ORG_ID, examId: ch.examId, filename: ch.sourceFile, createdBy: CREATED_BY,
     rows, uploadJobId: jobId, pyqYear: null, pyqNote: ch.note,
   });
   console.log(`commit: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
@@ -92,13 +92,13 @@ async function main() {
   const { error: uErr, count } = await client
     .from("questions")
     .update({ visibility: "PRIVATE", question_kind: "practice" }, { count: "exact" })
-    .eq("exam_id", EXAM_ID).eq("source_file", ch.sourceFile);
+    .eq("exam_id", ch.examId).eq("source_file", ch.sourceFile);
   if (uErr) throw new Error(`kind/visibility update failed: ${uErr.message}`);
   console.log(`set ${count} rows to PRIVATE + question_kind='practice'.`);
 
   const { count: linked } = await client
     .from("questions").select("id", { count: "exact", head: true })
-    .eq("exam_id", EXAM_ID).eq("source_file", ch.sourceFile);
+    .eq("exam_id", ch.examId).eq("source_file", ch.sourceFile);
   await client.from("upload_jobs")
     .update({ status: "COMPLETED", total_rows: linked ?? 0, inserted: result.inserted, skipped: result.skipped, finished_at: new Date().toISOString() })
     .eq("id", jobId);

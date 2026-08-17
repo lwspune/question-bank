@@ -19,7 +19,7 @@
  */
 import { createClient } from "@supabase/supabase-js";
 import { join } from "node:path";
-import { EXAM_ID, CHAPTERS, requireChapter } from "./config";
+import { CHAPTERS, requireChapter } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -31,7 +31,7 @@ async function orderOne(db: any, id: string, apply: boolean) {
   const { data: subject, error: sErr } = await db
     .from("subjects")
     .select("id")
-    .eq("exam_id", EXAM_ID)
+    .eq("exam_id", ch.examId)
     .eq("name", ch.subjectName)
     .maybeSingle();
   if (sErr) throw sErr;

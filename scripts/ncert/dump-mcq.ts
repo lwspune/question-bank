@@ -18,7 +18,7 @@
 import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { EXAM_ID, requireChapter, DATA } from "./config";
+import { requireChapter, DATA } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -37,7 +37,7 @@ async function main() {
   const { data, error } = await db
     .from("questions")
     .select("id, question_number, source_row, text, context, options(label, text)")
-    .eq("exam_id", EXAM_ID)
+    .eq("exam_id", chapter.examId)
     .eq("source_file", chapter.sourceFile)
     .eq("question_format", "mcq")
     .order("source_row");

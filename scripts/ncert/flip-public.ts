@@ -13,7 +13,7 @@
  */
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { EXAM_ID, requireChapter } from "./config";
+import { requireChapter } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -34,7 +34,7 @@ async function main() {
   const { count: solvedCount } = await client
     .from("questions")
     .select("id", { count: "exact", head: true })
-    .eq("exam_id", EXAM_ID)
+    .eq("exam_id", ch.examId)
     .eq("source_file", ch.sourceFile)
     .eq("question_format", "subjective")
     .not("solution", "is", null);
@@ -49,7 +49,7 @@ async function main() {
   const { error, count } = await client
     .from("questions")
     .update({ visibility: "PUBLIC" }, { count: "exact" })
-    .eq("exam_id", EXAM_ID)
+    .eq("exam_id", ch.examId)
     .eq("source_file", ch.sourceFile)
     .eq("question_format", "subjective")
     .not("solution", "is", null);
@@ -61,7 +61,7 @@ async function main() {
     const { data: mcqIds, error: mErr } = await client
       .from("questions")
       .select("id, options!inner(is_correct)")
-      .eq("exam_id", EXAM_ID)
+      .eq("exam_id", ch.examId)
       .eq("source_file", ch.sourceFile)
       .eq("question_format", "mcq")
       .eq("options.is_correct", true);
