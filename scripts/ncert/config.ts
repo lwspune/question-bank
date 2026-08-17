@@ -628,16 +628,41 @@ export const CHAPTERS: Record<string, Chapter> = {
     // is also on p6, which is what bounds the block.
     answerPages: [5, 6],
     note: "NCERT (CBSE Class 11) — Complex Numbers and Quadratic Equations (Chapter 4, NCERT Mathematics)",
-    // Page map (0-based): §4.1–4.2 p0 · §4.3–4.3.2 p1 · §4.3.3–4.3.4 p2 ·
-    // §4.3.5–4.3.6 p3 · §4.3.7 + Eg.2 p4 · §4.4 + Eg.3–4 p5 · EXERCISE 4.1 +
-    // Eg.5–6 p6 · §4.5 Argand p7–p8 · Miscellaneous + Eg.7–8 p9–p10 ·
-    // Summary p11. NO figure is cited by any ingested row — Fig 4.1 is the
-    // Argand-plane teaching diagram and the exercise items beside it are algebra.
+    // Page map (0-based), CORRECTED against the pages during transcription:
+    //   §4.1–4.2 p0 · **Eg.1** + §4.3–4.3.2 p1 · §4.3.3–4.3.4 p2 ·
+    //   §4.3.5–4.3.6 p3 · §4.3.7 + Eg.2 p4 · §4.4 + Eg.3–4 p5 ·
+    //   Eg.5–6 + **EXERCISE 4.1 Q1–Q3** p6 · **EXERCISE 4.1 Q4–Q14** then §4.5
+    //   Argand p7 · §4.5 cont. p8 · Miscellaneous + Eg.7–8 p9–p10 ·
+    //   Summary + Historical Note p11–p12.
+    //
+    // EXERCISE 4.1 SPANS p6 AND p7 — p6 carries only Q1–Q3 and ELEVEN of its 14
+    // questions are overleaf. Fifth confirmed mid-block page break in this pilot.
+    // §4.5 then OPENS on p7 below Q14, so p7 is shared.
+    //
+    // NO figure is cited by any ingested row — Figs 4.1–4.3 are Argand-plane
+    // teaching illustrations and every question is algebraic.
+    //
+    // Stale intro, same shape as Class-12 Ch.6 and worse than "no quadratics":
+    // §4.1 still states "the main objective is to solve the equation
+    // ax² + bx + c = 0, where D = b² − 4ac < 0" — content the rationalised
+    // chapter never delivers. (The p0 QR code reads 11076CH05: this was
+    // Chapter 5 before rationalisation.)
+    // NO `Argand Plane and Polar Representation` subtopic, and that is a finding
+    // rather than an omission — the Class-12 Linear Programming precedent. It was
+    // planned off the §4.5 heading and dropped once the chapter was read, for two
+    // independent structural reasons: (a) NO exercise follows §4.5 (the chapter
+    // has exactly two question blocks, EXERCISE 4.1 and the Miscellaneous — there
+    // is no Exercise 4.2), and (b) the rationalised edition teaches no polar
+    // representation AT ALL — no argument, no r(cos θ + i sin θ), no
+    // modulus–argument form. §4.5 covers only the Argand plane, |z| as a distance
+    // and the conjugate as a mirror image. **The section TITLE is stale relative
+    // to its own content.** Not one question in the chapter concerns the Argand
+    // plane, so keeping the subtopic would ship a filter that always returns
+    // nothing, and forcing a row into it would be a fabrication.
     subtopics: [
       "Complex Numbers and the Imaginary Unit",
       "Algebra of Complex Numbers",
       "Modulus and Conjugate",
-      "Argand Plane and Polar Representation",
     ],
   },
 
@@ -702,12 +727,42 @@ export const CHAPTERS: Record<string, Chapter> = {
     // §8.2 Sequences · §8.3 Series · §8.4 G.P. (+8.4.1–8.4.3) · §8.5 A.M.–G.M.,
     // so A.P., H.P. and the special sums are simply absent — consistent with the
     // syllabus map's finding for this book. Do not author an A.P. subtopic.
-    // ZERO figure references in the entire chapter. Page map: §8.1–8.2 p0 ·
-    // §8.3 + Eg.1 p2 · EXERCISE 8.1 + Eg.2–3 p3 · §8.4 p4 · §8.4.1/8.4.2 + Eg.4
-    // p5 · Eg.5–8 p6 · Eg.9–10 p7 · §8.4.3 + Eg.11 p8 · §8.5 + Eg.12–13 p9 ·
-    // EXERCISE 8.2 p10–p11 · Miscellaneous + Eg.14 p12–p13 · Summary p14.
+    // ZERO figure references in the entire chapter.
+    //
+    // Page map, CORRECTED against the pages during transcription:
+    //   §8.1–8.2 p0 · §8.3 + Eg.1 p2 · **EXERCISE 8.1 Q1–Q10** + Eg.2–3 p3 ·
+    //   **EXERCISE 8.1 Q11–Q14** then §8.4 p4 · §8.4.1/8.4.2 + Eg.4 p5 ·
+    //   Eg.5–8 p6 · Eg.9–10 p7 · Eg.11 then §8.4.3 p8 · Eg.12 then §8.5 + Eg.13
+    //   p9 · **EXERCISE 8.2 Q1–Q15** p10 · **Q16–Q30** p11 · **Q31–Q32** then
+    //   Miscellaneous + Eg.14 p12–p13 · Summary p14.
+    //
+    // BOTH exercises break mid-block: Ex 8.1's last 4 questions sit above the
+    // §8.4 heading, and Ex 8.2 spans THREE pages with Q31–Q32 above the
+    // Miscellaneous heading. Counts verified against the printed key:
+    // Ex 8.1 = 14 · Ex 8.2 = 32 · Miscellaneous = 18.
+    //
     // The Miscellaneous heading prints "Miscellaneous Exercise On Chapter 8"
-    // with a capital "On" — the only one in the book that does.
+    // with a capital "On" — the only one in the book that does. §8.4.2 prints
+    // with a trailing dot ("8.4.2.") where §8.4.1 does not.
+    //
+    // TWO findings for whoever authors solutions here:
+    //  · **Misc Q13/Q14/Q16/Q18 are A.P. problems in a chapter with no A.P.
+    //    section** (instalment interest, simple interest, a 150→146→142 workforce).
+    //    The A.P. sum formula must be imported from outside the chapter. The
+    //    printed key DOES answer all four, so they ship — but say plainly in the
+    //    solution that the tool comes from elsewhere. Exactly the Class-12 Ch.13
+    //    situation, where the chapter no longer teaches the binomial distribution
+    //    yet its Misc Q4 still requires it.
+    //  · **§8.4.2 has a PRINTING HOLE.** It derives (1−r)Sₙ = a(1−rⁿ) and then
+    //    prints "This gives ⟨blank⟩ or Sₙ = a(rⁿ−1)/(r−1)" — the form
+    //    Sₙ = a(1−rⁿ)/(1−r) is absent from the page. Not deliberate: the
+    //    chapter's own Summary prints both forms and Examples 7 and 8 both USE
+    //    the missing one, so a student meets it first inside a worked example
+    //    with no derivation behind it. Teaching prose, so no row carries it.
+    //
+    // §8.1 Introduction is also stale — it still promises arithmetic mean and
+    // the sums of consecutive naturals/squares/cubes, none of which survived
+    // rationalisation; the Historical Note still credits Aryabhatta for them.
     subtopics: [
       "Sequences and Series",
       "Geometric Progression",
@@ -727,30 +782,71 @@ export const CHAPTERS: Record<string, Chapter> = {
     // Misc-10 p15 (ch11's 11.1 is also on p15, which bounds it).
     answerPages: [12, 13, 14, 15],
     note: "NCERT (CBSE Class 11) — Conic Sections (Chapter 10, NCERT Mathematics)",
-    // The heaviest chapter of the pilot (32pp) and the one that retires the
-    // FIGURE lane. Its whole-chapter figure count is 66, which is misleading:
-    // scoped to rows we actually ingest it is THREE — Fig 10.31/10.32/10.33,
-    // cited by Miscellaneous Examples 17/18/19 ("the focus of a parabolic mirror
-    // as shown in Fig 10.31"), which ship as `solved` rows. NOT ONE exercise
-    // question cites a figure, and the Miscellaneous Exercise cites none at all;
-    // every other mention is teaching prose or a floating caption. Figures are
-    // vector DRAWINGS over a full-page background raster, so they must be
-    // snap-cropped from a render, never extracted as images.
+    // The heaviest chapter of the pilot (32pp), transcribed in FOUR bands, and
+    // the one that retires the FIGURE lane. Its whole-chapter figure count is 66,
+    // which is misleading: scoped to rows we ingest AND to stems, it is exactly
+    // ONE — Fig 10.31, cited twice in the stem of Miscellaneous Example 17 ("the
+    // focus of a parabolic mirror as shown in Fig 10.31 … find the distance AB").
+    // Figs 10.32/10.33 were attached on a first pass and then DROPPED: band D
+    // checked the pages and both are cited only INSIDE the book's printed
+    // solution, which the row carries in full, so there is no dangling reference
+    // for a reader to resolve and the brief's own rule applies. NOT ONE exercise
+    // question cites a figure and the Miscellaneous Exercise cites none at all.
+    // Figures are vector DRAWINGS over a full-page background raster → they must
+    // be snap-cropped from a render, never extracted as images.
     //
-    // A BOOK DEFECT to preserve, not smooth: the chapter cites `Fig 11.15` and
-    // `Fig 11.31` — stale pre-rationalisation numbering from when Conic Sections
-    // was chapter 11. Verified: ch.11 (3D Geometry) contains only figures
-    // 11.1–11.4, so those point at nothing, and one paragraph cites the same
-    // figure both ways ("Fig 11.15 (b)" then "Fig10.15").
+    // BOOK DEFECTS to preserve, not smooth — stale pre-rationalisation numbering
+    // from when Conic Sections was chapter 11 (ch.11 is now 3D Geometry and has
+    // only figures 11.1–11.4, so these point at nothing):
+    //   · p8 prints `Fig 11.15 (b)/(c)/(d)` for the parabola orientations while
+    //     **p6 prints `Fig 10.15` for the same figure** — the book contradicts
+    //     itself two pages apart.
+    //   · p23 prints `Fig 11.31 (b)`, and it does NOT mean Fig 10.31: it means
+    //     **Fig 10.29(b)**, the hyperbola whose equation that sentence derives.
+    //     (Do not "correct" it to 10.31 — that was a wrong inference, caught by
+    //     reading the page.)
+    //   · §10.1 Introduction opens "In the preceding **Chapter 10**, we have
+    //     studied … the equations of a line" — this chapter IS Chapter 10 and
+    //     Straight Lines is Chapter 9.
+    //   · p22 prints `PF₂ = a − (a/c)x` where the coefficient should be `c/a`;
+    //     p23 uses `c/a` in the same identity one page later.
+    // All are in teaching prose, so no row carries a bracket for them — they are
+    // publisher-report items only.
     //
-    // Page map: §10.1–10.2 p0 · §10.2.1 p1 · §10.2.2 p2 · §10.3 Circle p3 ·
-    // Eg.1–3 p4 · EXERCISE 10.1 + Eg.4 p5 · §10.4 Parabola p6–p8 · §10.4.2 +
-    // Eg.5 p9 · EXERCISE 10.2 + Eg.6–8 p10 · §10.5 Ellipse p11–p15 · §10.5.4 +
-    // Eg.9 p16 · Eg.10–13 p17–p18 · EXERCISE 10.3 + §10.6 Hyperbola p19 ·
-    // §10.6.1–10.6.2 p20–p23 · §10.6.3 + Eg.14 p24 · Eg.15–16 p25 ·
-    // EXERCISE 10.4 + Eg.17–18 p26 · Eg.19 p27 · Miscellaneous p28 · Summary p29.
+    // Page map, CORRECTED against the pages during transcription:
+    //   §10.1–10.2 p0 · §10.2.1 p1 · §10.2.2 p2 · §10.3 Circle p3 · Eg.1–3 p4 ·
+    //   Eg.4 + EXERCISE 10.1 (Q1–Q15, no spill) p5 · §10.4 Parabola p6–p8 ·
+    //   §10.4.2 + Eg.5 p9 · Eg.6–8 + **EXERCISE 10.2 Q1–Q6** p10 ·
+    //   **EXERCISE 10.2 Q7–Q12** then §10.5 Ellipse p11 · §10.5 cont. p12–p15 ·
+    //   §10.5.4 + Eg.9 p16 · Eg.10–13 p17–p18 ·
+    //   EXERCISE 10.3 (Q1–Q20) then §10.6 Hyperbola p19 · §10.6.1–10.6.2 p20–p23 ·
+    //   §10.6.3 + Eg.14 p24 · Eg.15–16 p25 · EXERCISE 10.4 (Q1–Q15) then the
+    //   "Miscellaneous Examples" heading + Eg.17 p26 · Eg.18–19 p27 ·
+    //   Miscellaneous Exercise (Q1–Q8) p28 · Summary p29.
+    //
+    // EXERCISE 10.2 SPANS p10 AND p11 — half its questions are overleaf, above
+    // where §10.5 begins. Found independently by TWO bands (the one that owned
+    // the block and the one that merely observed it), which is what proves the
+    // handoff worked: 60 rows across bands a–c with zero duplicate refs.
+    //
+    // Question counts, verified against the printed key: Ex 10.1 = 15 ·
+    // Ex 10.2 = 12 · Ex 10.3 = 20 · Ex 10.4 = 15 · **Miscellaneous = 8**.
+    // The Miscellaneous figure was briefly recorded as 9 and that was MY probe
+    // artifact, not the book: a `^\d{1,2}\s*\.` scan of the key counted the "9"
+    // out of the answer "9.11 m" (and a "2" out of "2.23 m"). The printed key
+    // ends at item 8 and the next heading is EXERCISE 11.1. Count key labels as
+    // digit + "." + WHITESPACE, or decimals in the answers inflate the total.
+    //
+    // Examples 17–19 sit under the book's own centred "Miscellaneous Examples"
+    // heading AFTER Exercise 10.4, so they take `Misc Eg.N` refs, not `10.4 Eg.N`.
+    // NO `Sections of a Cone` subtopic — same call as Complex Numbers above, and
+    // confirmed independently by all four transcription bands. §10.1, §10.2,
+    // §10.2.1 and §10.2.2 (the cone/nappe/generator definitions, the four
+    // β-vs-α cases and the three degenerate cases) are PURE TEACHING PROSE: the
+    // chapter's first worked Example already sits inside §10.3 Circle, and no
+    // exercise or Miscellaneous question is about conic classification. The
+    // subtopic would render an always-empty filter.
     subtopics: [
-      "Sections of a Cone",
       "Circle",
       "Parabola",
       "Ellipse",
