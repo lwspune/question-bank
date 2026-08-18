@@ -1,0 +1,298 @@
+[
+  {
+    "id": "77493286-fdec-4133-a38b-78e118ea0658",
+    "ref": "Ex 12.1 Q1",
+    "solution": "\\(x+3\\) is a polynomial, so its limit is its value at the point: \\(\\lim_{x \\to 3}(x+3) = 3+3\\). Hence the limit is \\(6\\).",
+    "_note": "The stem prints the limit without brackets, so as typeset the +3 sits outside the limit. Solved on the intended reading \\(\\lim_{x \\to 3}(x+3)\\). The literal reading \\(\\left(\\lim_{x \\to 3}x\\right)+3\\) also gives 6, so the ambiguity does not affect the answer."
+  },
+  {
+    "id": "eb88303b-fe9d-4726-84b3-30e7b5553ef1",
+    "ref": "Ex 12.1 Q2",
+    "solution": "\\(x-\\frac{22}{7}\\) is a polynomial in \\(x\\), so the limit is obtained by direct substitution. Hence \\(\\lim_{x \\to \\pi}\\left(x-\\frac{22}{7}\\right) = \\pi-\\frac{22}{7}\\)."
+  },
+  {
+    "id": "d743c3be-6ed7-4501-87de-7a802192445a",
+    "ref": "Ex 12.1 Q3",
+    "solution": "\\(\\pi r^2\\) is a polynomial in \\(r\\), with \\(\\pi\\) a constant, so substitute \\(r=1\\): \\(\\lim_{r \\to 1}\\pi r^2 = \\pi(1)^2\\). Hence the limit is \\(\\pi\\)."
+  },
+  {
+    "id": "05ef1c89-afde-477d-a22f-6ca300eaaeef",
+    "ref": "Ex 12.1 Q4",
+    "solution": "The denominator tends to \\(4-2 = 2 \\neq 0\\), so the limit of the quotient is the quotient of the limits: \\(\\lim_{x \\to 4}\\frac{4x+3}{x-2} = \\frac{4(4)+3}{4-2} = \\frac{19}{2}\\). Hence the limit is \\(\\frac{19}{2}\\)."
+  },
+  {
+    "id": "25ee16c5-341d-48bc-916a-cbfa6780769d",
+    "ref": "Ex 12.1 Q5",
+    "solution": "At \\(x=-1\\) the denominator is \\(-1-1 = -2 \\neq 0\\), so substitute directly. The numerator is \\((-1)^{10}+(-1)^{5}+1 = 1-1+1 = 1\\). Hence \\(\\lim_{x \\to -1}\\frac{x^{10}+x^{5}+1}{x-1} = \\frac{1}{-2} = -\\frac{1}{2}\\)."
+  },
+  {
+    "id": "1f8238ba-1e2a-4330-aca5-2f9732130b54",
+    "ref": "Ex 12.1 Q6",
+    "solution": "The expression is of the form \\(\\frac{0}{0}\\). Expand by the binomial theorem: \\((x+1)^5 = 1+5x+10x^2+10x^3+5x^4+x^5\\), so \\((x+1)^5-1 = x\\left(5+10x+10x^2+5x^3+x^4\\right)\\). Cancelling \\(x\\), which is legitimate since \\(x \\neq 0\\) in the limiting process, gives \\(\\lim_{x \\to 0}\\left(5+10x+10x^2+5x^3+x^4\\right)\\). Hence the limit is \\(5\\)."
+  },
+  {
+    "id": "9e06bfd0-21c2-48c2-9ff2-df3231a02654",
+    "ref": "Ex 12.1 Q7",
+    "solution": "Both numerator and denominator vanish at \\(x=2\\), so \\((x-2)\\) is a common factor. Factorising, \\(3x^2-x-10 = (x-2)(3x+5)\\) and \\(x^2-4 = (x-2)(x+2)\\). For \\(x \\neq 2\\), \\(\\frac{3x^2-x-10}{x^2-4} = \\frac{3x+5}{x+2}\\), whose limit is \\(\\frac{3(2)+5}{2+2}\\). Hence the limit is \\(\\frac{11}{4}\\)."
+  },
+  {
+    "id": "39ae495c-aeec-49e3-91f2-065bcd9e2c48",
+    "ref": "Ex 12.1 Q8",
+    "solution": "Both numerator and denominator vanish at \\(x=3\\). Factorising, \\(x^4-81 = \\left(x^2-9\\right)\\left(x^2+9\\right) = (x-3)(x+3)\\left(x^2+9\\right)\\) and \\(2x^2-5x-3 = (x-3)(2x+1)\\). For \\(x \\neq 3\\), \\(\\frac{x^4-81}{2x^2-5x-3} = \\frac{(x+3)\\left(x^2+9\\right)}{2x+1}\\), whose limit is \\(\\frac{(3+3)(9+9)}{2(3)+1} = \\frac{108}{7}\\). Hence the limit is \\(\\frac{108}{7}\\)."
+  },
+  {
+    "id": "72c79cff-7c5a-4ef0-8441-e0ac6ed09c89",
+    "ref": "Ex 12.1 Q9",
+    "solution": "The denominator tends to \\(c(0)+1 = 1 \\neq 0\\), so the quotient rule for limits applies and we may substitute directly: \\(\\lim_{x \\to 0}\\frac{ax+b}{cx+1} = \\frac{a(0)+b}{c(0)+1}\\). Hence the limit is \\(b\\)."
+  },
+  {
+    "id": "76732552-db8d-4753-8589-b46cc0bd02b9",
+    "ref": "Ex 12.1 Q10",
+    "solution": "The expression is of the form \\(\\frac{0}{0}\\). Put \\(z = t^{6}\\), so that \\(t \\to 1\\) as \\(z \\to 1\\), and \\(z^{\\frac{1}{3}} = t^{2}\\), \\(z^{\\frac{1}{6}} = t\\). Then for \\(t \\neq 1\\), \\(\\frac{z^{\\frac{1}{3}}-1}{z^{\\frac{1}{6}}-1} = \\frac{t^{2}-1}{t-1} = t+1\\), whose limit as \\(t \\to 1\\) is \\(1+1\\). Hence the limit is \\(2\\)."
+  },
+  {
+    "id": "fa012214-4a5f-45ee-a1fa-88f7bc385a34",
+    "ref": "Ex 12.1 Q11",
+    "solution": "The denominator tends to \\(c+b+a\\), which is non-zero by the hypothesis \\(a+b+c \\neq 0\\), so we may substitute \\(x=1\\): \\(\\lim_{x \\to 1}\\frac{ax^2+bx+c}{cx^2+bx+a} = \\frac{a+b+c}{c+b+a}\\). Hence the limit is \\(1\\)."
+  },
+  {
+    "id": "64f5806e-77c7-4344-a59f-bb087fce9ea9",
+    "ref": "Ex 12.1 Q12",
+    "solution": "The expression is of the form \\(\\frac{0}{0}\\). Combine the numerator: \\(\\frac{1}{x}+\\frac{1}{2} = \\frac{2+x}{2x}\\). Hence for \\(x \\neq -2\\), \\(\\dfrac{\\frac{1}{x}+\\frac{1}{2}}{x+2} = \\frac{x+2}{2x(x+2)} = \\frac{1}{2x}\\), whose limit as \\(x \\to -2\\) is \\(\\frac{1}{-4}\\). Hence the limit is \\(-\\frac{1}{4}\\)."
+  },
+  {
+    "id": "821198ad-1f64-4c82-b65c-a6d96708f258",
+    "ref": "Ex 12.1 Q13",
+    "solution": "For \\(a \\neq 0\\), write \\(\\frac{\\sin ax}{bx} = \\frac{a}{b}\\cdot\\frac{\\sin ax}{ax}\\). As \\(x \\to 0\\) we have \\(ax \\to 0\\), so \\(\\frac{\\sin ax}{ax} \\to 1\\) by the standard limit \\(\\lim_{y \\to 0}\\frac{\\sin y}{y} = 1\\). If \\(a = 0\\) the expression is identically \\(0\\), which agrees with the same formula. Hence the limit is \\(\\frac{a}{b}\\)."
+  },
+  {
+    "id": "706b41a3-4bd7-48fb-9da2-ba7c7f5b8342",
+    "ref": "Ex 12.1 Q14",
+    "solution": "Divide numerator and denominator by \\(x\\) and rearrange: \\(\\frac{\\sin ax}{\\sin bx} = \\frac{a}{b}\\cdot\\dfrac{\\dfrac{\\sin ax}{ax}}{\\dfrac{\\sin bx}{bx}}\\). As \\(x \\to 0\\) both \\(ax \\to 0\\) and \\(bx \\to 0\\), so each quotient tends to \\(1\\); the denominator's limit \\(1\\) is non-zero, so the algebra of limits applies. Hence the limit is \\(\\frac{a}{b}\\)."
+  },
+  {
+    "id": "08ea8b9b-661a-44ac-a24e-2f963ec4a1c6",
+    "ref": "Ex 12.1 Q15",
+    "solution": "Put \\(y = \\pi-x\\), so \\(y \\to 0\\) as \\(x \\to \\pi\\). Then \\(\\frac{\\sin(\\pi-x)}{\\pi(\\pi-x)} = \\frac{1}{\\pi}\\cdot\\frac{\\sin y}{y}\\), and \\(\\frac{\\sin y}{y} \\to 1\\). Hence the limit is \\(\\frac{1}{\\pi}\\)."
+  },
+  {
+    "id": "10cba339-1f4e-45b2-8dae-4b4e11b4b8d1",
+    "ref": "Ex 12.1 Q16",
+    "solution": "There is no indeterminacy here: as \\(x \\to 0\\) the numerator tends to \\(\\cos 0 = 1\\) and the denominator to \\(\\pi-0 = \\pi \\neq 0\\), so the quotient rule for limits applies. Hence \\(\\lim_{x \\to 0}\\frac{\\cos x}{\\pi-x} = \\frac{1}{\\pi}\\)."
+  },
+  {
+    "id": "ab15e38e-5d2d-4492-b4f8-fe4c2484d048",
+    "ref": "Ex 12.1 Q17",
+    "solution": "Use \\(\\cos 2x-1 = -2\\sin^2 x\\) and \\(\\cos x-1 = -2\\sin^2\\frac{x}{2}\\). Then for \\(x\\) near \\(0\\) with \\(x \\neq 0\\), \\(\\frac{\\cos 2x-1}{\\cos x-1} = \\frac{\\sin^2 x}{\\sin^2\\frac{x}{2}} = \\left(\\frac{\\sin x}{x}\\right)^2\\left(\\frac{\\frac{x}{2}}{\\sin\\frac{x}{2}}\\right)^2\\cdot\\frac{x^2}{\\left(\\frac{x}{2}\\right)^2}\\). As \\(x \\to 0\\) the first two factors each tend to \\(1\\), and the third is the constant \\(4\\). Hence the limit is \\(4\\)."
+  },
+  {
+    "id": "6029a3a2-af20-4cd3-9b8b-68bf3f482bfa",
+    "ref": "Ex 12.1 Q18",
+    "solution": "Factor \\(x\\) out of the numerator: \\(\\frac{ax+x\\cos x}{b\\sin x} = \\frac{x(a+\\cos x)}{b\\sin x} = \\frac{a+\\cos x}{b}\\cdot\\frac{x}{\\sin x}\\). As \\(x \\to 0\\), \\(\\cos x \\to 1\\) and \\(\\frac{x}{\\sin x} \\to 1\\). Hence the limit is \\(\\frac{a+1}{b}\\)."
+  },
+  {
+    "id": "2953fa59-5014-49fc-8fc2-28c930cc9e2c",
+    "ref": "Ex 12.1 Q19",
+    "solution": "\\(\\sec x = \\frac{1}{\\cos x}\\) is defined near \\(x=0\\) and tends to \\(\\frac{1}{\\cos 0} = 1\\). By the product rule for limits, \\(\\lim_{x \\to 0}x\\sec x = \\left(\\lim_{x \\to 0}x\\right)\\left(\\lim_{x \\to 0}\\sec x\\right) = 0 \\times 1\\). Hence the limit is \\(0\\)."
+  },
+  {
+    "id": "00f382c3-9bd1-4989-938f-32607eeb3d05",
+    "ref": "Ex 12.1 Q20",
+    "solution": "Divide numerator and denominator by \\(x\\): \\(\\frac{\\sin ax+bx}{ax+\\sin bx} = \\dfrac{a\\,\\dfrac{\\sin ax}{ax}+b}{a+b\\,\\dfrac{\\sin bx}{bx}}\\). As \\(x \\to 0\\) each sine quotient tends to \\(1\\), so numerator and denominator both tend to \\(a+b\\), which is non-zero by hypothesis. Hence the limit is \\(1\\)."
+  },
+  {
+    "id": "8704a829-d586-4629-82c5-da0b7600ae0d",
+    "ref": "Ex 12.1 Q21",
+    "solution": "Combine over a common denominator: \\(\\operatorname{cosec} x-\\cot x = \\frac{1}{\\sin x}-\\frac{\\cos x}{\\sin x} = \\frac{1-\\cos x}{\\sin x}\\). Using \\(1-\\cos x = 2\\sin^2\\frac{x}{2}\\) and \\(\\sin x = 2\\sin\\frac{x}{2}\\cos\\frac{x}{2}\\), this equals \\(\\frac{2\\sin^2\\frac{x}{2}}{2\\sin\\frac{x}{2}\\cos\\frac{x}{2}} = \\tan\\frac{x}{2}\\) for \\(x\\) near \\(0\\) with \\(x \\neq 0\\). Hence the limit is \\(\\tan 0 = 0\\)."
+  },
+  {
+    "id": "9d798853-9d73-4506-9e91-0ab5b5c8e1dd",
+    "ref": "Ex 12.1 Q22",
+    "solution": "Put \\(y = x-\\frac{\\pi}{2}\\), so \\(y \\to 0\\). Then \\(2x = 2y+\\pi\\), and since \\(\\tan(\\theta+\\pi) = \\tan\\theta\\) we get \\(\\tan 2x = \\tan 2y\\). The expression becomes \\(\\frac{\\tan 2y}{y} = 2\\cdot\\frac{\\sin 2y}{2y}\\cdot\\frac{1}{\\cos 2y}\\). As \\(y \\to 0\\), \\(\\frac{\\sin 2y}{2y} \\to 1\\) and \\(\\cos 2y \\to 1\\). Hence the limit is \\(2\\)."
+  },
+  {
+    "id": "1e89dd46-21d7-449c-841b-e65d89fad408",
+    "ref": "Ex 12.1 Q23",
+    "solution": "At \\(x=0\\) the definition changes, so take one-sided limits separately. From the left, \\(\\lim_{x \\to 0^{-}}f(x) = \\lim_{x \\to 0^{-}}(2x+3) = 3\\); from the right, \\(\\lim_{x \\to 0^{+}}f(x) = \\lim_{x \\to 0^{+}}3(x+1) = 3\\). The two agree, so the limit exists and \\(\\lim_{x \\to 0}f(x) = 3\\). At \\(x=1\\) only the branch \\(3(x+1)\\) applies throughout a neighbourhood, so \\(\\lim_{x \\to 1}f(x) = 3(1+1) = 6\\). Hence \\(\\lim_{x \\to 0}f(x) = 3\\) and \\(\\lim_{x \\to 1}f(x) = 6\\)."
+  },
+  {
+    "id": "e87b91bf-86ab-42c0-bacb-08ba64a99213",
+    "ref": "Ex 12.1 Q24",
+    "solution": "Take the one-sided limits at \\(x=1\\) separately. From the left, \\(\\lim_{x \\to 1^{-}}f(x) = \\lim_{x \\to 1^{-}}\\left(x^2-1\\right) = 1-1 = 0\\). From the right, \\(\\lim_{x \\to 1^{+}}f(x) = \\lim_{x \\to 1^{+}}\\left(-x^2-1\\right) = -1-1 = -2\\). Since \\(0 \\neq -2\\), the left-hand and right-hand limits are unequal. Hence \\(\\lim_{x \\to 1}f(x)\\) does not exist."
+  },
+  {
+    "id": "42a85da1-96c5-4de9-9bce-2586af7f417b",
+    "ref": "Ex 12.1 Q25",
+    "solution": "For \\(x<0\\), \\(|x| = -x\\), so \\(f(x) = \\frac{-x}{x} = -1\\) and \\(\\lim_{x \\to 0^{-}}f(x) = -1\\). For \\(x>0\\), \\(|x| = x\\), so \\(f(x) = \\frac{x}{x} = 1\\) and \\(\\lim_{x \\to 0^{+}}f(x) = 1\\). Since \\(-1 \\neq 1\\), the left-hand and right-hand limits are unequal (the value \\(f(0)=0\\) is irrelevant to the limit). Hence \\(\\lim_{x \\to 0}f(x)\\) does not exist."
+  },
+  {
+    "id": "269b3597-4c4a-4c87-9e67-026a09855f0a",
+    "ref": "Ex 12.1 Q26",
+    "solution": "For \\(x<0\\), \\(|x| = -x\\), so \\(f(x) = \\frac{x}{-x} = -1\\) and \\(\\lim_{x \\to 0^{-}}f(x) = -1\\). For \\(x>0\\), \\(|x| = x\\), so \\(f(x) = \\frac{x}{x} = 1\\) and \\(\\lim_{x \\to 0^{+}}f(x) = 1\\). The left-hand and right-hand limits are unequal. Hence \\(\\lim_{x \\to 0}f(x)\\) does not exist."
+  },
+  {
+    "id": "9ca6aa0e-1239-4340-8754-f1946d8c917f",
+    "ref": "Ex 12.1 Q27",
+    "solution": "For every \\(x\\) in a neighbourhood of \\(5\\) we have \\(x>0\\), so \\(|x| = x\\) and \\(f(x) = x-5\\) there. Both one-sided limits therefore equal \\(5-5\\). Hence \\(\\lim_{x \\to 5}f(x) = 0\\)."
+  },
+  {
+    "id": "709df69d-67c1-4064-9586-d2367828ba2b",
+    "ref": "Ex 12.1 Q28",
+    "solution": "Here \\(f(1) = 4\\). The one-sided limits are \\(\\lim_{x \\to 1^{-}}f(x) = \\lim_{x \\to 1^{-}}(a+bx) = a+b\\) and \\(\\lim_{x \\to 1^{+}}f(x) = \\lim_{x \\to 1^{+}}(b-ax) = b-a\\). The condition \\(\\lim_{x \\to 1}f(x) = f(1)\\) requires both one-sided limits to equal \\(4\\), that is \\(a+b = 4\\) and \\(b-a = 4\\). Subtracting gives \\(2a = 0\\), so \\(a = 0\\), and then \\(b = 4\\). Hence \\(a = 0\\) and \\(b = 4\\)."
+  },
+  {
+    "id": "d3e32922-520c-474a-b4f0-674191017a4c",
+    "ref": "Ex 12.1 Q29",
+    "solution": "\\(f\\) is a polynomial, so each limit is obtained by direct substitution. At \\(x = a_1\\) the first factor vanishes, so \\(\\lim_{x \\to a_1}f(x) = f(a_1) = (a_1-a_1)(a_1-a_2)\\ldots(a_1-a_n) = 0\\). For \\(a\\) different from every \\(a_i\\), \\(\\lim_{x \\to a}f(x) = f(a) = (a-a_1)(a-a_2)\\ldots(a-a_n)\\), a product of non-zero factors and therefore non-zero. Hence \\(\\lim_{x \\to a_1}f(x) = 0\\) and \\(\\lim_{x \\to a}f(x) = (a-a_1)(a-a_2)\\ldots(a-a_n)\\)."
+  },
+  {
+    "id": "d27fe64b-2432-489f-82ea-530ebc5e73d6",
+    "ref": "Ex 12.1 Q30",
+    "solution": "For \\(x<0\\), \\(|x| = -x\\) gives \\(f(x) = 1-x\\); for \\(x>0\\), \\(|x| = x\\) gives \\(f(x) = x-1\\). If \\(a<0\\), only the branch \\(1-x\\) occurs throughout a neighbourhood of \\(a\\), so \\(\\lim_{x \\to a}f(x) = 1-a\\) exists. If \\(a>0\\), only the branch \\(x-1\\) occurs near \\(a\\), so \\(\\lim_{x \\to a}f(x) = a-1\\) exists. At \\(a=0\\) the one-sided limits are \\(\\lim_{x \\to 0^{-}}f(x) = 1\\) and \\(\\lim_{x \\to 0^{+}}f(x) = -1\\), which are unequal, so the limit fails to exist there. Hence \\(\\lim_{x \\to a}f(x)\\) exists for every \\(a \\neq 0\\), and for no other value."
+  },
+  {
+    "id": "a56de4fe-4cd2-4998-b095-ebd487cbf04e",
+    "ref": "Ex 12.1 Q31",
+    "solution": "For \\(x\\) near \\(1\\) with \\(x \\neq \\pm 1\\), write \\(f(x)-2 = \\frac{f(x)-2}{x^2-1}\\cdot\\left(x^2-1\\right)\\). Both factors have limits as \\(x \\to 1\\), namely \\(\\pi\\) and \\(1^2-1 = 0\\), so by the product rule for limits \\(\\lim_{x \\to 1}\\left(f(x)-2\\right) = \\pi \\times 0 = 0\\). Adding the constant \\(2\\) back, \\(\\lim_{x \\to 1}f(x) = 2\\)."
+  },
+  {
+    "id": "23bf98b2-24f5-462a-adc2-345d88da853b",
+    "ref": "Ex 12.1 Q32",
+    "solution": "At \\(x=0\\): \\(\\lim_{x \\to 0^{-}}f(x) = \\lim_{x \\to 0^{-}}\\left(mx^2+n\\right) = n\\) and \\(\\lim_{x \\to 0^{+}}f(x) = \\lim_{x \\to 0^{+}}(nx+m) = m\\). These agree, so \\(\\lim_{x \\to 0}f(x)\\) exists, precisely when \\(m = n\\). At \\(x=1\\): \\(\\lim_{x \\to 1^{-}}f(x) = \\lim_{x \\to 1^{-}}(nx+m) = n+m\\) and \\(\\lim_{x \\to 1^{+}}f(x) = \\lim_{x \\to 1^{+}}\\left(nx^3+m\\right) = n+m\\); these agree for every \\(m\\) and \\(n\\), so \\(\\lim_{x \\to 1}f(x)\\) exists for all integers \\(m\\) and \\(n\\). Hence \\(\\lim_{x \\to 1}f(x)\\) exists for every pair of integers, while both limits exist together exactly when \\(m = n\\), with \\(m\\) any integer."
+  },
+  {
+    "id": "cf4807d7-d690-4b67-896e-fb70e8803a22",
+    "ref": "Ex 12.2 Q1",
+    "solution": "Let \\(f(x) = x^2-2\\). By the definition of the derivative, \\(f'(10) = \\lim_{h \\to 0}\\frac{f(10+h)-f(10)}{h}\\). Now \\(f(10+h)-f(10) = \\left((10+h)^2-2\\right)-\\left(10^2-2\\right) = 20h+h^2\\), so the difference quotient is \\(\\frac{20h+h^2}{h} = 20+h\\). Letting \\(h \\to 0\\), \\(f'(10) = 20\\)."
+  },
+  {
+    "id": "835d44b4-46c5-4257-9567-03f3849ac814",
+    "ref": "Ex 12.2 Q2",
+    "solution": "Let \\(f(x) = x\\). Then \\(f'(1) = \\lim_{h \\to 0}\\frac{(1+h)-1}{h} = \\lim_{h \\to 0}\\frac{h}{h} = \\lim_{h \\to 0}1\\). Hence the derivative at \\(x=1\\) is \\(1\\)."
+  },
+  {
+    "id": "759552fc-3979-4c3a-b486-ba22f7bb64a8",
+    "ref": "Ex 12.2 Q3",
+    "solution": "Let \\(f(x) = 99x\\). Then \\(f'(100) = \\lim_{h \\to 0}\\frac{99(100+h)-99(100)}{h} = \\lim_{h \\to 0}\\frac{99h}{h} = \\lim_{h \\to 0}99\\). Hence the derivative at \\(x=100\\) is \\(99\\)."
+  },
+  {
+    "id": "c1c177ae-59c5-4975-b55b-9ca6b8e4f2d5",
+    "ref": "Ex 12.2 Q4(i)",
+    "solution": "Let \\(f(x) = x^3-27\\). Then \\(f(x+h)-f(x) = (x+h)^3-x^3 = 3x^2h+3xh^2+h^3\\), so the difference quotient is \\(\\frac{f(x+h)-f(x)}{h} = 3x^2+3xh+h^2\\). Letting \\(h \\to 0\\), \\(f'(x) = 3x^2\\)."
+  },
+  {
+    "id": "7e96b116-699a-407f-9ae2-203d24863646",
+    "ref": "Ex 12.2 Q4(ii)",
+    "solution": "Let \\(f(x) = (x-1)(x-2) = x^2-3x+2\\). Then \\(f(x+h)-f(x) = \\left((x+h)^2-3(x+h)+2\\right)-\\left(x^2-3x+2\\right) = 2xh+h^2-3h\\), so the difference quotient is \\(\\frac{f(x+h)-f(x)}{h} = 2x+h-3\\). Letting \\(h \\to 0\\), \\(f'(x) = 2x-3\\)."
+  },
+  {
+    "id": "e99a8bd8-3931-4e07-b516-81892e1cdb70",
+    "ref": "Ex 12.2 Q4(iii)",
+    "solution": "Let \\(f(x) = \\frac{1}{x^2}\\), for \\(x \\neq 0\\). Then \\(f(x+h)-f(x) = \\frac{1}{(x+h)^2}-\\frac{1}{x^2} = \\frac{x^2-(x+h)^2}{x^2(x+h)^2} = \\frac{-h(2x+h)}{x^2(x+h)^2}\\), so the difference quotient is \\(\\frac{f(x+h)-f(x)}{h} = \\frac{-(2x+h)}{x^2(x+h)^2}\\). Letting \\(h \\to 0\\), \\(f'(x) = \\frac{-2x}{x^4} = -\\frac{2}{x^3}\\)."
+  },
+  {
+    "id": "23494683-1b1c-4880-ae3e-c9e222dd929f",
+    "ref": "Ex 12.2 Q4(iv)",
+    "solution": "Let \\(f(x) = \\frac{x+1}{x-1}\\), for \\(x \\neq 1\\). Then \\(f(x+h)-f(x) = \\frac{x+h+1}{x+h-1}-\\frac{x+1}{x-1} = \\frac{(x+h+1)(x-1)-(x+1)(x+h-1)}{(x+h-1)(x-1)}\\). The numerator is \\(\\left(x^2+hx-h-1\\right)-\\left(x^2+hx+h-1\\right) = -2h\\), so the difference quotient is \\(\\frac{f(x+h)-f(x)}{h} = \\frac{-2}{(x+h-1)(x-1)}\\). Letting \\(h \\to 0\\), \\(f'(x) = -\\frac{2}{(x-1)^2}\\)."
+  },
+  {
+    "id": "2d55de26-2394-457a-830d-5b0ed686ab13",
+    "ref": "Ex 12.2 Q5",
+    "solution": "Differentiate term by term, using \\(\\frac{d}{dx}\\left(\\frac{x^{k}}{k}\\right) = x^{k-1}\\) for \\(k = 1, 2, \\ldots, 100\\), while the constant \\(1\\) contributes \\(0\\). This gives \\(f'(x) = x^{99}+x^{98}+\\ldots+x^2+x+1\\), a sum of \\(100\\) terms. Putting \\(x=1\\), every term equals \\(1\\), so \\(f'(1) = 100\\). Putting \\(x=0\\), every term with a positive power vanishes and only the constant term survives, so \\(f'(0) = 1\\). Therefore \\(f'(1) = 100 = 100 \\times 1 = 100f'(0)\\), which is the required result."
+  },
+  {
+    "id": "7c1d6ae1-f26b-4f6a-b759-da56ef97fbab",
+    "ref": "Ex 12.2 Q6",
+    "solution": "The function is \\(\\sum_{k=0}^{n}a^{k}x^{n-k}\\), a polynomial in \\(x\\) whose coefficients \\(a^{k}\\) are constants. Differentiating term by term with \\(\\frac{d}{dx}x^{m} = mx^{m-1}\\) gives \\(\\frac{d}{dx}\\left(a^{k}x^{n-k}\\right) = (n-k)a^{k}x^{n-k-1}\\), while the last term \\(a^{n}\\) is constant and contributes \\(0\\). Hence the derivative is \\(nx^{n-1}+(n-1)ax^{n-2}+(n-2)a^{2}x^{n-3}+\\ldots+2a^{n-2}x+a^{n-1}\\)."
+  },
+  {
+    "id": "394caa82-e191-47d0-9a3f-4ac3b051b412",
+    "ref": "Ex 12.2 Q7(i)",
+    "solution": "Apply the product rule with \\(u = x-a\\) and \\(v = x-b\\), so \\(u' = 1\\) and \\(v' = 1\\): \\(\\frac{d}{dx}\\left[(x-a)(x-b)\\right] = 1 \\cdot (x-b)+(x-a) \\cdot 1\\). Hence the derivative is \\(2x-a-b\\)."
+  },
+  {
+    "id": "29485e4d-f48c-45b1-aa76-bf6af434e0c7",
+    "ref": "Ex 12.2 Q7(ii)",
+    "solution": "Expand first, so that only the power rule is needed: \\(\\left(ax^2+b\\right)^2 = a^2x^4+2abx^2+b^2\\). Differentiating term by term gives \\(4a^2x^3+4abx\\). Hence the derivative is \\(4a^2x^3+4abx = 4ax\\left(ax^2+b\\right)\\)."
+  },
+  {
+    "id": "16fd7595-dbfb-4e0e-89a1-44f8d28c3a26",
+    "ref": "Ex 12.2 Q7(iii)",
+    "solution": "Apply the quotient rule with \\(u = x-a\\) and \\(v = x-b\\), so \\(u' = 1\\) and \\(v' = 1\\): \\(\\frac{d}{dx}\\left[\\frac{x-a}{x-b}\\right] = \\frac{1 \\cdot (x-b)-(x-a) \\cdot 1}{(x-b)^2} = \\frac{-b+a}{(x-b)^2}\\). Hence the derivative is \\(\\frac{a-b}{(x-b)^2}\\)."
+  },
+  {
+    "id": "fb97c4d6-3dfd-4a93-9532-3ecc917cf390",
+    "ref": "Ex 12.2 Q8",
+    "solution": "Apply the quotient rule with \\(u = x^{n}-a^{n}\\) and \\(v = x-a\\), so \\(u' = nx^{n-1}\\) and \\(v' = 1\\): \\(\\frac{d}{dx}\\left[\\frac{x^{n}-a^{n}}{x-a}\\right] = \\frac{nx^{n-1}(x-a)-\\left(x^{n}-a^{n}\\right)}{(x-a)^2}\\). Expanding the numerator, \\(nx^{n}-nax^{n-1}-x^{n}+a^{n} = (n-1)x^{n}-nax^{n-1}+a^{n}\\). Hence the derivative is \\(\\frac{(n-1)x^{n}-nax^{n-1}+a^{n}}{(x-a)^2}\\)."
+  },
+  {
+    "id": "5c57a600-10a1-4ffb-8eab-cf0cc5785b56",
+    "ref": "Ex 12.2 Q9(i)",
+    "solution": "Differentiate term by term: the derivative of \\(2x\\) is \\(2\\), and the derivative of the constant \\(-\\frac{3}{4}\\) is \\(0\\). Hence the derivative is \\(2\\)."
+  },
+  {
+    "id": "139f3269-4389-4041-8dd2-be96a3d7ad6c",
+    "ref": "Ex 12.2 Q9(ii)",
+    "solution": "Apply the product rule with \\(u = 5x^3+3x-1\\) and \\(v = x-1\\), so \\(u' = 15x^2+3\\) and \\(v' = 1\\): the derivative is \\(\\left(15x^2+3\\right)(x-1)+\\left(5x^3+3x-1\\right)\\). Expanding, \\(\\left(15x^3-15x^2+3x-3\\right)+\\left(5x^3+3x-1\\right)\\). Hence the derivative is \\(20x^3-15x^2+6x-4\\)."
+  },
+  {
+    "id": "07198bb8-6e1f-46f5-977a-5c657bac9745",
+    "ref": "Ex 12.2 Q9(iii)",
+    "solution": "Expand first: \\(x^{-3}(5+3x) = 5x^{-3}+3x^{-2}\\). Differentiating term by term with \\(\\frac{d}{dx}x^{m} = mx^{m-1}\\) gives \\(5(-3)x^{-4}+3(-2)x^{-3}\\). Hence the derivative is \\(-15x^{-4}-6x^{-3} = -\\frac{3(5+2x)}{x^4}\\)."
+  },
+  {
+    "id": "ad9e84e4-f82b-4ccb-8bd6-74bbd68372f2",
+    "ref": "Ex 12.2 Q9(iv)",
+    "solution": "Expand first: \\(x^{5}\\left(3-6x^{-9}\\right) = 3x^{5}-6x^{-4}\\). Differentiating term by term gives \\(15x^{4}-6(-4)x^{-5}\\). Hence the derivative is \\(15x^{4}+24x^{-5} = 15x^{4}+\\frac{24}{x^{5}}\\)."
+  },
+  {
+    "id": "0e8784aa-91c9-43fa-8ad2-9b8e341e2e57",
+    "ref": "Ex 12.2 Q9(v)",
+    "solution": "Expand first: \\(x^{-4}\\left(3-4x^{-5}\\right) = 3x^{-4}-4x^{-9}\\). Differentiating term by term gives \\(3(-4)x^{-5}-4(-9)x^{-10}\\). Hence the derivative is \\(-12x^{-5}+36x^{-10} = -\\frac{12}{x^{5}}+\\frac{36}{x^{10}}\\)."
+  },
+  {
+    "id": "412ea9e0-351f-4bc2-82c9-232a7a184efd",
+    "ref": "Ex 12.2 Q9(vi)",
+    "solution": "Differentiate the two pieces separately by the quotient rule. First, \\(\\frac{d}{dx}\\left[\\frac{2}{x+1}\\right] = \\frac{0 \\cdot (x+1)-2 \\cdot 1}{(x+1)^2} = \\frac{-2}{(x+1)^2}\\). Second, \\(\\frac{d}{dx}\\left[\\frac{x^2}{3x-1}\\right] = \\frac{2x(3x-1)-x^2 \\cdot 3}{(3x-1)^2} = \\frac{3x^2-2x}{(3x-1)^2}\\). Subtracting the second from the first, the derivative is \\(-\\frac{2}{(x+1)^2}-\\frac{3x^2-2x}{(3x-1)^2}\\)."
+  },
+  {
+    "id": "a9ac6801-3666-46c0-a61e-7ef846b9f1df",
+    "ref": "Ex 12.2 Q10",
+    "solution": "Let \\(f(x) = \\cos x\\). By the definition, \\(f'(x) = \\lim_{h \\to 0}\\frac{\\cos(x+h)-\\cos x}{h}\\). Using \\(\\cos C-\\cos D = -2\\sin\\frac{C+D}{2}\\sin\\frac{C-D}{2}\\) with \\(C = x+h\\) and \\(D = x\\), we get \\(\\cos(x+h)-\\cos x = -2\\sin\\left(x+\\frac{h}{2}\\right)\\sin\\frac{h}{2}\\). Hence the difference quotient is \\(-\\sin\\left(x+\\frac{h}{2}\\right) \\cdot \\dfrac{\\sin\\frac{h}{2}}{\\frac{h}{2}}\\). As \\(h \\to 0\\) the second factor tends to \\(1\\) and the first tends to \\(-\\sin x\\). Hence \\(f'(x) = -\\sin x\\)."
+  },
+  {
+    "id": "f60ac6d0-5a1a-487d-9bd4-69a629309d6e",
+    "ref": "Ex 12.2 Q11(i)",
+    "solution": "Apply the product rule with \\(u = \\sin x\\) and \\(v = \\cos x\\): \\(\\frac{d}{dx}(\\sin x\\cos x) = \\cos x \\cdot \\cos x+\\sin x \\cdot (-\\sin x) = \\cos^2 x-\\sin^2 x\\). Hence the derivative is \\(\\cos^2 x-\\sin^2 x = \\cos 2x\\)."
+  },
+  {
+    "id": "688a87a0-2b2f-4fbe-9c14-4e6c5a558e9d",
+    "ref": "Ex 12.2 Q11(ii)",
+    "solution": "Write \\(\\sec x = \\frac{1}{\\cos x}\\) and apply the quotient rule: \\(\\frac{d}{dx}\\left[\\frac{1}{\\cos x}\\right] = \\frac{0 \\cdot \\cos x-1 \\cdot (-\\sin x)}{\\cos^2 x} = \\frac{\\sin x}{\\cos^2 x} = \\frac{1}{\\cos x} \\cdot \\frac{\\sin x}{\\cos x}\\). Hence the derivative is \\(\\sec x\\tan x\\)."
+  },
+  {
+    "id": "d5d3b72a-4542-4b43-8d93-2694becc02d4",
+    "ref": "Ex 12.2 Q11(iii)",
+    "solution": "Differentiate term by term, using \\(\\frac{d}{dx}\\sec x = \\sec x\\tan x\\) (obtained from the quotient rule on \\(\\frac{1}{\\cos x}\\)) and \\(\\frac{d}{dx}\\cos x = -\\sin x\\). Hence the derivative is \\(5\\sec x\\tan x-4\\sin x\\)."
+  },
+  {
+    "id": "5cc5dcf1-8c7f-4a61-897e-89bf19da2515",
+    "ref": "Ex 12.2 Q11(iv)",
+    "solution": "Write \\(\\operatorname{cosec} x = \\frac{1}{\\sin x}\\) and apply the quotient rule: \\(\\frac{d}{dx}\\left[\\frac{1}{\\sin x}\\right] = \\frac{0 \\cdot \\sin x-1 \\cdot \\cos x}{\\sin^2 x} = -\\frac{\\cos x}{\\sin^2 x} = -\\frac{1}{\\sin x} \\cdot \\frac{\\cos x}{\\sin x}\\). Hence the derivative is \\(-\\operatorname{cosec} x\\cot x\\)."
+  },
+  {
+    "id": "5015550e-397d-4ee7-9bfc-6f85f8538a76",
+    "ref": "Ex 12.2 Q11(v)",
+    "solution": "First, by the quotient rule, \\(\\frac{d}{dx}\\cot x = \\frac{d}{dx}\\left[\\frac{\\cos x}{\\sin x}\\right] = \\frac{-\\sin x \\cdot \\sin x-\\cos x \\cdot \\cos x}{\\sin^2 x} = -\\frac{1}{\\sin^2 x} = -\\operatorname{cosec}^2 x\\), and similarly \\(\\frac{d}{dx}\\operatorname{cosec} x = -\\operatorname{cosec} x\\cot x\\). Differentiating term by term, the derivative is \\(-3\\operatorname{cosec}^2 x-5\\operatorname{cosec} x\\cot x\\)."
+  },
+  {
+    "id": "501fa7cc-48ca-449b-9253-d5940d8a19e8",
+    "ref": "Ex 12.2 Q11(vi)",
+    "solution": "Differentiate term by term, using \\(\\frac{d}{dx}\\sin x = \\cos x\\), \\(\\frac{d}{dx}\\cos x = -\\sin x\\), and the fact that the constant \\(7\\) contributes \\(0\\). Hence the derivative is \\(5\\cos x+6\\sin x\\)."
+  },
+  {
+    "id": "22619cbe-3dc9-4ac9-b61d-cea7291b1298",
+    "ref": "Ex 12.2 Q11(vii)",
+    "solution": "By the quotient rule, \\(\\frac{d}{dx}\\tan x = \\frac{d}{dx}\\left[\\frac{\\sin x}{\\cos x}\\right] = \\frac{\\cos x \\cdot \\cos x+\\sin x \\cdot \\sin x}{\\cos^2 x} = \\frac{1}{\\cos^2 x} = \\sec^2 x\\), and \\(\\frac{d}{dx}\\sec x = \\sec x\\tan x\\). Differentiating term by term, the derivative is \\(2\\sec^2 x-7\\sec x\\tan x\\)."
+  }
+]

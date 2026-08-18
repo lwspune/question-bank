@@ -1,0 +1,310 @@
+[
+  {
+    "ref": "Ex 5.1 Q1(i)",
+    "book_key": "{1, 2, 3, 4}",
+    "our_answer": "{1, 2, 3, 4}",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q1(ii)",
+    "book_key": "{... -3, -2, -1, 0, 1, 2, 3, 4}",
+    "our_answer": "{..., -3, -2, -1, 0, 1, 2, 3, 4}",
+    "verdict": "AGREE",
+    "note": "24x < 100 gives x < 25/6 exactly (verified with Fraction, not float); the integers satisfying it are all n <= 4."
+  },
+  {
+    "ref": "Ex 5.1 Q2(i)",
+    "book_key": "No Solution",
+    "our_answer": "empty set (no natural number satisfies)",
+    "verdict": "AGREE",
+    "note": "Same claim in different words. -12x > 30 gives x < -5/2, and every natural number is positive; checked n = 1..199, none satisfies. The empty solution set is the correct answer, not a defect."
+  },
+  {
+    "ref": "Ex 5.1 Q2(ii)",
+    "book_key": "{... -4, -3}",
+    "our_answer": "{..., -6, -5, -4, -3}",
+    "verdict": "AGREE",
+    "note": "Same set, written with two more leading terms. x < -5/2 exactly, so the integers are all n <= -3."
+  },
+  {
+    "ref": "Ex 5.1 Q3(i)",
+    "book_key": "{... -2, -1, 0, 1}",
+    "our_answer": "{..., -2, -1, 0, 1}",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q3(ii)",
+    "book_key": "(-inf, 2)",
+    "our_answer": "(-\\infty, 2)",
+    "verdict": "AGREE",
+    "note": "Boundary tested exactly: x = 2 gives 7 < 7, false, so 2 is correctly excluded."
+  },
+  {
+    "ref": "Ex 5.1 Q4(i)",
+    "book_key": "{-1, 0, 1, 2, 3, ...}",
+    "our_answer": "{-1, 0, 1, 2, 3, ...}",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q4(ii)",
+    "book_key": "(-2, inf)",
+    "our_answer": "(-2, \\infty)",
+    "verdict": "AGREE",
+    "note": "x = -2 gives 2 > 2, false, so the endpoint is correctly open."
+  },
+  {
+    "ref": "Ex 5.1 Q5",
+    "book_key": "(-4, inf)",
+    "our_answer": "(-4, \\infty)",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q6",
+    "book_key": "(-inf, -3)",
+    "our_answer": "(-\\infty, -3)",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q7",
+    "book_key": "(-inf, -3]",
+    "our_answer": "(-\\infty, -3]",
+    "verdict": "AGREE",
+    "note": "x = -3 gives -12 <= -12, true, so the closed endpoint is right."
+  },
+  {
+    "ref": "Ex 5.1 Q8",
+    "book_key": "(-inf, 4]",
+    "our_answer": "(-\\infty, 4]",
+    "verdict": "AGREE",
+    "note": "x = 4 gives -6 >= -6, true; closed endpoint confirmed."
+  },
+  {
+    "ref": "Ex 5.1 Q9",
+    "book_key": "(-inf, 6)",
+    "our_answer": "(-\\infty, 6)",
+    "verdict": "AGREE",
+    "note": "11x/6 < 11 exactly; x = 6 gives 11 < 11, false, so open."
+  },
+  {
+    "ref": "Ex 5.1 Q10",
+    "book_key": "(-inf, -6)",
+    "our_answer": "(-\\infty, -6)",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q11",
+    "book_key": "(-inf, 2]",
+    "our_answer": "(-\\infty, 2]",
+    "verdict": "AGREE",
+    "note": "x = 2 gives 0 <= 0, true; closed endpoint confirmed with exact rationals."
+  },
+  {
+    "ref": "Ex 5.1 Q12",
+    "book_key": "(-inf, 120]",
+    "our_answer": "(-\\infty, 120]",
+    "verdict": "AGREE",
+    "note": "x = 120 gives 38 >= 38 exactly; closed endpoint confirmed."
+  },
+  {
+    "ref": "Ex 5.1 Q13",
+    "book_key": "(4, inf)",
+    "our_answer": "(4, \\infty)",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q14",
+    "book_key": "(-inf, 2]",
+    "our_answer": "(-\\infty, 2]",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 5.1 Q15",
+    "book_key": "(4, inf)",
+    "our_answer": "(4, \\infty)",
+    "verdict": "AGREE",
+    "note": "Tested exactly with Fraction. At x = 4 both sides equal 1, so the strict inequality fails and the endpoint is correctly open. (A float check here is the kind that reports a spurious 1e-16 residual; the rational test gives exact equality.)"
+  },
+  {
+    "ref": "Ex 5.1 Q16",
+    "book_key": "(-inf, 2]",
+    "our_answer": "(-\\infty, 2]",
+    "verdict": "AGREE",
+    "note": "At x = 2 both sides equal 1 exactly, so the non-strict inequality holds and the endpoint is correctly closed."
+  },
+  {
+    "ref": "Ex 5.1 Q17",
+    "book_key": "(-inf, 3), with number line (open circle at 3, shaded left)",
+    "our_answer": "(-\\infty, 3), hollow circle at 3, darkened to the left",
+    "verdict": "AGREE",
+    "note": "Both the interval and the graph description match the printed number line."
+  },
+  {
+    "ref": "Ex 5.1 Q18",
+    "book_key": "[-1, inf), with number line (filled dot at -1, shaded right)",
+    "our_answer": "[-1, \\infty), solid dot at -1, darkened to the right",
+    "verdict": "AGREE",
+    "note": "The printed number line shows a FILLED dot at -1, matching our closed endpoint."
+  },
+  {
+    "ref": "Ex 5.1 Q19",
+    "book_key": "(-1, inf), with number line (open circle at -1, shaded right)",
+    "our_answer": "(-1, \\infty), hollow circle at -1, darkened to the right",
+    "verdict": "AGREE",
+    "note": "The printed number line shows a HOLLOW circle at -1, matching our open endpoint."
+  },
+  {
+    "ref": "Ex 5.1 Q20",
+    "book_key": "[-2/7, inf), with number line (filled dot, shaded right)",
+    "our_answer": "\\left[-\\frac{2}{7}, \\infty\\right)",
+    "verdict": "AGREE",
+    "note": "The text layer garbles this entry; read off the rendered page image, the printed bracket is a LEFT SQUARE bracket and the number line carries a filled dot, so the key is [-2/7, inf) and matches ours. Verified exactly: at x = -2/7 both sides equal -1/7, so the non-strict inequality holds."
+  },
+  {
+    "ref": "Ex 5.1 Q21",
+    "book_key": "35",
+    "our_answer": "35 marks minimum",
+    "verdict": "AGREE",
+    "note": "(70+75+35)/3 = 60 exactly, which satisfies 'at least 60'; 34 gives 179/3 < 60."
+  },
+  {
+    "ref": "Ex 5.1 Q22",
+    "book_key": "82",
+    "our_answer": "82 marks minimum",
+    "verdict": "AGREE",
+    "note": "368 + 82 = 450 = 5 x 90 exactly; 81 gives 449 < 450."
+  },
+  {
+    "ref": "Ex 5.1 Q23",
+    "book_key": "(5,7), (7,9)",
+    "our_answer": "(5, 7) and (7, 9)",
+    "verdict": "AGREE",
+    "note": "Enumerated all odd x: only x = 5 and x = 7 satisfy both x+2 < 10 and 2x+2 > 11."
+  },
+  {
+    "ref": "Ex 5.1 Q24",
+    "book_key": "(6,8), (8,10), (10,12)",
+    "our_answer": "(6, 8), (8, 10) and (10, 12)",
+    "verdict": "AGREE",
+    "note": "Enumerated all even x: only 6, 8, 10 satisfy both x > 5 and 2x+2 < 23."
+  },
+  {
+    "ref": "Ex 5.1 Q25",
+    "book_key": "9 cm",
+    "our_answer": "9 cm",
+    "verdict": "AGREE",
+    "note": "7x - 2 >= 61 gives x >= 9 exactly; x = 9 gives perimeter exactly 61."
+  },
+  {
+    "ref": "Ex 5.1 Q26",
+    "book_key": "Greater than or equal to 8cm but less than or equal to 22cm",
+    "our_answer": "8 \\le x \\le 22 (8 cm to 22 cm inclusive)",
+    "verdict": "AGREE",
+    "note": "Both endpoints verified exactly: x = 8 gives 2x = 16 = (x+3)+5 (binding), x = 22 gives total exactly 91. Separately: the printed Hint reads 'x, (x + 3) and 2x are the lengths of the second and third piece, respectively' -- it lists THREE expressions while naming TWO pieces. Confirmed against the source page (05. Linear Inequalities.pdf, page idx 7) that this is the BOOK's own prose, faithfully transcribed, not our error. The two inequalities the Hint then states are correct and the answer is unaffected, so this is a book prose defect only, not a key or answer disagreement."
+  },
+  {
+    "ref": "Misc Q1",
+    "book_key": "[2, 3]",
+    "our_answer": "[2, 3]",
+    "verdict": "AGREE",
+    "note": "Both endpoints attain the bounds exactly (3x-4 = 2 and 5)."
+  },
+  {
+    "ref": "Misc Q2",
+    "book_key": "(0, 1]",
+    "our_answer": "(0, 1]",
+    "verdict": "AGREE",
+    "note": "Asymmetric brackets verified exactly: x = 1 gives 6, admissible; x = 0 gives 12, which fails the strict upper bound < 12. The reversal on dividing by -6 is handled correctly on both sides."
+  },
+  {
+    "ref": "Misc Q3",
+    "book_key": "[-4, 2]",
+    "our_answer": "[-4, 2]",
+    "verdict": "AGREE",
+    "note": "x = 2 gives -3, x = -4 gives 18; both attained exactly, so both endpoints closed."
+  },
+  {
+    "ref": "Misc Q4",
+    "book_key": "(-23, 2]",
+    "our_answer": "(-23, 2]",
+    "verdict": "AGREE",
+    "note": "x = -23 gives exactly -15, excluded by the strict lower bound; x = 2 gives 0, included."
+  },
+  {
+    "ref": "Misc Q5",
+    "book_key": "(-80/3, -10/3]",
+    "our_answer": "\\left(-\\frac{80}{3}, -\\frac{10}{3}\\right]",
+    "verdict": "AGREE",
+    "note": "Both thirds handled as exact Fractions. x = -80/3 gives exactly -12 (excluded), x = -10/3 gives exactly 2 (included). The double negative 4 - 3x/(-5) = 4 + 3x/5 is handled correctly."
+  },
+  {
+    "ref": "Misc Q6",
+    "book_key": "[1, 11/3]",
+    "our_answer": "\\left[1, \\frac{11}{3}\\right]",
+    "verdict": "AGREE",
+    "note": "x = 11/3 gives exactly 11; a float test here rounds and can read as excluded, the exact test confirms it is attained."
+  },
+  {
+    "ref": "Misc Q7",
+    "book_key": "(-5, 5), with number line",
+    "our_answer": "(-5, 5)",
+    "verdict": "AGREE",
+    "note": "Both endpoints fail their strict inequality exactly; the printed number line shows hollow circles at both, matching."
+  },
+  {
+    "ref": "Misc Q8",
+    "book_key": "(-1, 7), with number line",
+    "our_answer": "(-1, 7)",
+    "verdict": "AGREE",
+    "note": "Printed number line shows hollow circles at -1 and 7, matching our open endpoints."
+  },
+  {
+    "ref": "Misc Q9",
+    "book_key": "(5, inf), with number line",
+    "our_answer": "(5, \\infty)",
+    "verdict": "AGREE",
+    "note": "The binding constraint is x > 5; x > -5 is implied. Printed number line shows a hollow circle at 5."
+  },
+  {
+    "ref": "Misc Q10",
+    "book_key": "[-7, 11], with number line",
+    "our_answer": "[-7, 11]",
+    "verdict": "AGREE",
+    "note": "Both endpoints attained exactly (x = 11 gives 0 <= 0; x = -7 gives 5 <= 5); printed number line shows filled dots at both."
+  },
+  {
+    "ref": "Misc Q11",
+    "book_key": "Between 20 deg C and 25 deg C",
+    "our_answer": "20 < C < 25",
+    "verdict": "AGREE",
+    "note": "No ambiguity after all: the key's own wording is 'Between 20 and 25', which is the strict reading, exactly matching our 20 < C < 25 taken from the stem's 'between 68 F and 77 F'. C = 20 gives F = 68 and C = 25 gives F = 77, neither strictly between the limits, so the open interval is right on both sides."
+  },
+  {
+    "ref": "Misc Q12",
+    "book_key": "More than 320 litres but less than 1280 litres",
+    "our_answer": "320 < x < 1280",
+    "verdict": "AGREE",
+    "note": "Exact percentages, no floats: x = 320 gives 57.6/960 = exactly 6% and x = 1280 gives 76.8/1920 = exactly 4%, so both endpoints are correctly excluded. (This is precisely the case where a float ratio computes as 0.06000000000000001 and reads as still qualifying.)"
+  },
+  {
+    "ref": "Misc Q13",
+    "book_key": "More than 562.5 litres but less than 900 litres",
+    "our_answer": "562.5 < x < 900",
+    "verdict": "AGREE",
+    "note": "Exact rationals: acid stays 2025/4 litres; x = 1125/2 gives exactly 30% and x = 900 gives exactly 25%, both excluded."
+  },
+  {
+    "ref": "Misc Q14",
+    "book_key": "9.6 <= MA <= 16.8",
+    "our_answer": "9.6 \\le MA \\le 16.8",
+    "verdict": "AGREE",
+    "note": "MA = 48/5 gives IQ exactly 80 and MA = 84/5 gives IQ exactly 140; both endpoints included, matching the non-strict key."
+  }
+]
