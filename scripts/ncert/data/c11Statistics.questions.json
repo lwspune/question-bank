@@ -1,0 +1,389 @@
+[
+  {
+    "ref": "13.1 Eg.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Ungrouped Data",
+    "difficulty": "EASY",
+    "stem": "Find the mean deviation about the mean for the following data:\n\n6, 7, 10, 12, 13, 4, 8, 12",
+    "solution": "We proceed step-wise and get the following:\n\n**Step 1** Mean of the given data is\n\n\\(\\bar{x} = \\frac{6+7+10+12+13+4+8+12}{8} = \\frac{72}{8} = 9\\)\n\n**Step 2** The deviations of the respective observations from the mean \\(\\bar{x}\\), i.e., \\(x_i - \\bar{x}\\), are\n\n\\(6-9,\\ 7-9,\\ 10-9,\\ 12-9,\\ 13-9,\\ 4-9,\\ 8-9,\\ 12-9\\),\n\nor \\(-3,\\ -2,\\ 1,\\ 3,\\ 4,\\ -5,\\ -1,\\ 3\\)\n\n**Step 3** The absolute values of the deviations, i.e., \\(\\lvert x_i - \\bar{x}\\rvert\\), are\n\n3, 2, 1, 3, 4, 5, 1, 3\n\n**Step 4** The required mean deviation about the mean is\n\n\\(\\text{M.D.}(\\bar{x}) = \\dfrac{\\sum_{i=1}^{8}\\lvert x_i - \\bar{x}\\rvert}{8} = \\dfrac{3+2+1+3+4+5+1+3}{8} = \\dfrac{22}{8} = 2.75\\)"
+  },
+  {
+    "ref": "13.1 Eg.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Ungrouped Data",
+    "difficulty": "EASY",
+    "stem": "Find the mean deviation about the mean for the following data :\n\n12, 3, 18, 17, 4, 9, 17, 19, 20, 15, 8, 17, 2, 3, 16, 11, 3, 1, 0, 5",
+    "solution": "We have to first find the mean \\(\\bar{x}\\) of the given data\n\n\\(\\bar{x} = \\frac{1}{20}\\sum_{i=1}^{20} x_i = \\frac{200}{20} = 10\\)\n\nThe respective absolute values of the deviations from mean, i.e., \\(\\lvert x_i - \\bar{x}\\rvert\\), are\n\n2, 7, 8, 7, 6, 1, 7, 9, 10, 5, 2, 7, 8, 7, 6, 1, 7, 9, 10, 5\n\nTherefore \\(\\sum_{i=1}^{20}\\lvert x_i - \\bar{x}\\rvert = 124\\)\n\nand \\(\\text{M.D.}(\\bar{x}) = \\frac{124}{20} = 6.2\\)"
+  },
+  {
+    "ref": "13.1 Eg.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Ungrouped Data",
+    "difficulty": "EASY",
+    "stem": "Find the mean deviation about the median for the following data:\n\n3, 9, 5, 3, 12, 10, 18, 4, 7, 19, 21.",
+    "solution": "Here the number of observations is 11 which is odd. Arranging the data into ascending order, we have\n\n3, 3, 4, 5, 7, 9, 10, 12, 18, 19, 21\n\nNow Median \\(= \\left(\\frac{11+1}{2}\\right)^{\\text{th}}\\) or \\(6^{\\text{th}}\\) observation \\(= 9\\)\n\nThe absolute values of the respective deviations from the median, i.e., \\(\\lvert x_i - \\text{M}\\rvert\\), are\n\n6, 6, 5, 4, 2, 0, 1, 3, 9, 10, 12\n\nTherefore \\(\\sum_{i=1}^{11}\\lvert x_i - \\text{M}\\rvert = 58\\)\n\nand \\(\\text{M.D.}(\\text{M}) = \\frac{1}{11}\\sum_{i=1}^{11}\\lvert x_i - \\text{M}\\rvert = \\frac{1}{11}\\times 58 = 5.27\\)"
+  },
+  {
+    "ref": "13.1 Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "Find mean deviation about the mean for the following data :\n\n| \\(x_i\\) | 2 | 5 | 6 | 8 | 10 | 12 |\n|---|---|---|---|---|---|---|\n| \\(f_i\\) | 2 | 8 | 10 | 7 | 8 | 5 |",
+    "solution": "Let us make a Table 13.1 of the given data and append other columns after calculations.\n\n**Table 13.1**\n\n| \\(x_i\\) | \\(f_i\\) | \\(f_i x_i\\) | \\(\\lvert x_i - \\bar{x}\\rvert\\) | \\(f_i\\lvert x_i - \\bar{x}\\rvert\\) |\n|---|---|---|---|---|\n| 2 | 2 | 4 | 5.5 | 11 |\n| 5 | 8 | 40 | 2.5 | 20 |\n| 6 | 10 | 60 | 1.5 | 15 |\n| 8 | 7 | 56 | 0.5 | 3.5 |\n| 10 | 8 | 80 | 2.5 | 20 |\n| 12 | 5 | 60 | 4.5 | 22.5 |\n|  | 40 | 300 |  | 92 |\n\nHere \\(\\text{N} = \\sum_{i=1}^{6} f_i = 40\\), \\(\\sum_{i=1}^{6} f_i x_i = 300\\), \\(\\sum_{i=1}^{6} f_i\\lvert x_i - \\bar{x}\\rvert = 92\\)\n\nTherefore \\(\\bar{x} = \\frac{1}{\\text{N}}\\sum_{i=1}^{6} f_i x_i = \\frac{1}{40}\\times 300 = 7.5\\)\n\nand \\(\\text{M.D.}(\\bar{x}) = \\frac{1}{\\text{N}}\\sum_{i=1}^{6} f_i\\lvert x_i - \\bar{x}\\rvert = \\frac{1}{40}\\times 92 = 2.3\\)"
+  },
+  {
+    "ref": "13.1 Eg.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean deviation about the median for the following data:\n\n| \\(x_i\\) | 3 | 6 | 9 | 12 | 13 | 15 | 21 | 22 |\n|---|---|---|---|---|---|---|---|---|\n| \\(f_i\\) | 3 | 4 | 5 | 2 | 4 | 5 | 4 | 3 |",
+    "solution": "The given observations are already in ascending order. Adding a row corresponding to cumulative frequencies to the given data, we get (Table 13.2).\n\n**Table 13.2**\n\n| \\(x_i\\) | 3 | 6 | 9 | 12 | 13 | 15 | 21 | 22 |\n|---|---|---|---|---|---|---|---|---|\n| \\(f_i\\) | 3 | 4 | 5 | 2 | 4 | 5 | 4 | 3 |\n| c.f. | 3 | 7 | 12 | 14 | 18 | 23 | 27 | 30 |\n\nNow, N = 30 which is even.\n\nMedian is the mean of the \\(15^{\\text{th}}\\) and \\(16^{\\text{th}}\\) observations. Both of these observations lie in the cumulative frequency 18, for which the corresponding observation is 13.\n\nTherefore, Median \\(\\text{M} = \\dfrac{15^{\\text{th}}\\ \\text{observation} + 16^{\\text{th}}\\ \\text{observation}}{2} = \\dfrac{13+13}{2} = 13\\)\n\nNow, absolute values of the deviations from median, i.e., \\(\\lvert x_i - \\text{M}\\rvert\\), are shown in Table 13.3.\n\n**Table 13.3**\n\n| \\(\\lvert x_i - \\text{M}\\rvert\\) | 10 | 7 | 4 | 1 | 0 | 2 | 8 | 9 |\n|---|---|---|---|---|---|---|---|---|\n| \\(f_i\\) | 3 | 4 | 5 | 2 | 4 | 5 | 4 | 3 |\n| \\(f_i\\lvert x_i - \\text{M}\\rvert\\) | 30 | 28 | 20 | 2 | 0 | 10 | 32 | 27 |\n\nWe have \\(\\sum_{i=1}^{8} f_i = 30\\) and \\(\\sum_{i=1}^{8} f_i\\lvert x_i - \\text{M}\\rvert = 149\\)\n\nTherefore \\(\\text{M.D.}(\\text{M}) = \\frac{1}{\\text{N}}\\sum_{i=1}^{8} f_i\\lvert x_i - \\text{M}\\rvert = \\frac{1}{30}\\times 149 = 4.97\\)"
+  },
+  {
+    "ref": "13.1 Eg.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean deviation about the mean for the following data.\n\n| Marks obtained | 10-20 | 20-30 | 30-40 | 40-50 | 50-60 | 60-70 | 70-80 |\n|---|---|---|---|---|---|---|---|\n| Number of students | 2 | 3 | 8 | 14 | 8 | 3 | 2 |",
+    "solution": "We make the following Table 13.4 from the given data :\n\n**Table 13.4**\n\n| Marks obtained | Number of students \\(f_i\\) | Mid-points \\(x_i\\) | \\(f_i x_i\\) | \\(\\lvert x_i - \\bar{x}\\rvert\\) | \\(f_i\\lvert x_i - \\bar{x}\\rvert\\) |\n|---|---|---|---|---|---|\n| 10-20 | 2 | 15 | 30 | 30 | 60 |\n| 20-30 | 3 | 25 | 75 | 20 | 60 |\n| 30-40 | 8 | 35 | 280 | 10 | 80 |\n| 40-50 | 14 | 45 | 630 | 0 | 0 |\n| 50-60 | 8 | 55 | 440 | 10 | 80 |\n| 60-70 | 3 | 65 | 195 | 20 | 60 |\n| 70-80 | 2 | 75 | 150 | 30 | 60 |\n|  | 40 |  | 1800 |  | 400 |\n\nHere \\(\\text{N} = \\sum_{i=1}^{7} f_i = 40\\), \\(\\sum_{i=1}^{7} f_i x_i = 1800\\), \\(\\sum_{i=1}^{7} f_i\\lvert x_i - \\bar{x}\\rvert = 400\\)\n\nTherefore \\(\\bar{x} = \\frac{1}{\\text{N}}\\sum_{i=1}^{7} f_i x_i = \\frac{1800}{40} = 45\\)\n\nand \\(\\text{M.D.}(\\bar{x}) = \\frac{1}{\\text{N}}\\sum_{i=1}^{7} f_i\\lvert x_i - \\bar{x}\\rvert = \\frac{1}{40}\\times 400 = 10\\)"
+  },
+  {
+    "ref": "13.1 Eg.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "Calculate the mean deviation about median for the following data :\n\n| Class | 0-10 | 10-20 | 20-30 | 30-40 | 40-50 | 50-60 |\n|---|---|---|---|---|---|---|\n| Frequency | 6 | 7 | 15 | 16 | 4 | 2 |",
+    "solution": "Form the following Table 13.6 from the given data :\n\n**Table 13.6**\n\n| Class | Frequency \\(f_i\\) | Cumulative frequency (c.f.) | Mid-points \\(x_i\\) | \\(\\lvert x_i - \\text{Med.}\\rvert\\) | \\(f_i\\lvert x_i - \\text{Med.}\\rvert\\) |\n|---|---|---|---|---|---|\n| 0-10 | 6 | 6 | 5 | 23 | 138 |\n| 10-20 | 7 | 13 | 15 | 13 | 91 |\n| 20-30 | 15 | 28 | 25 | 3 | 45 |\n| 30-40 | 16 | 44 | 35 | 7 | 112 |\n| 40-50 | 4 | 48 | 45 | 17 | 68 |\n| 50-60 | 2 | 50 | 55 | 27 | 54 |\n|  | 50 |  |  |  | 508 |\n\nThe class interval containing \\(\\left(\\frac{\\text{N}}{2}\\right)^{\\text{th}}\\) or \\(25^{\\text{th}}\\) item is 20-30. Therefore, 20-30 is the median class. We know that\n\nMedian \\(= l + \\dfrac{\\frac{\\text{N}}{2} - \\text{C}}{f}\\times h\\)\n\nHere \\(l = 20\\), \\(\\text{C} = 13\\), \\(f = 15\\), \\(h = 10\\) and \\(\\text{N} = 50\\)\n\nTherefore, Median \\(= 20 + \\frac{25-13}{15}\\times 10 = 20 + 8 = 28\\)\n\nThus, Mean deviation about median is given by\n\n\\(\\text{M.D.}(\\text{M}) = \\frac{1}{\\text{N}}\\sum_{i=1}^{6} f_i\\lvert x_i - \\text{M}\\rvert = \\frac{1}{50}\\times 508 = 10.16\\)",
+    "_note": "STRADDLES THE BAND BOUNDARY: the stem and Table 13.6 are printed on p-12 (my band); the median computation and the final answer M.D.(M) = 10.16 continue at the top of p-13 (band B's page), immediately above the EXERCISE 13.1 heading. Transcribed whole here per block ownership. Band B must NOT re-emit it."
+  },
+  {
+    "ref": "Ex 13.1 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Ungrouped Data",
+    "difficulty": "EASY",
+    "stem": "Find the mean deviation about the mean for the data: 4, 7, 8, 9, 10, 12, 13, 17"
+  },
+  {
+    "ref": "Ex 13.1 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Ungrouped Data",
+    "difficulty": "EASY",
+    "stem": "Find the mean deviation about the mean for the data: 38, 70, 48, 40, 42, 55, 63, 46, 54, 44"
+  },
+  {
+    "ref": "Ex 13.1 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Ungrouped Data",
+    "difficulty": "EASY",
+    "stem": "Find the mean deviation about the median for the data: 13, 17, 16, 14, 11, 13, 10, 16, 11, 18, 12, 17"
+  },
+  {
+    "ref": "Ex 13.1 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Ungrouped Data",
+    "difficulty": "EASY",
+    "stem": "Find the mean deviation about the median for the data: 36, 72, 46, 42, 60, 45, 53, 46, 51, 49"
+  },
+  {
+    "ref": "Ex 13.1 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean deviation about the mean for the following data:\n\n| \\(x_i\\) | 5 | 10 | 15 | 20 | 25 |\n|---|---|---|---|---|---|\n| \\(f_i\\) | 7 | 4 | 6 | 3 | 5 |"
+  },
+  {
+    "ref": "Ex 13.1 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean deviation about the mean for the following data:\n\n| \\(x_i\\) | 10 | 30 | 50 | 70 | 90 |\n|---|---|---|---|---|---|\n| \\(f_i\\) | 4 | 24 | 28 | 16 | 8 |"
+  },
+  {
+    "ref": "Ex 13.1 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean deviation about the median for the following data:\n\n| \\(x_i\\) | 5 | 7 | 9 | 10 | 12 | 15 |\n|---|---|---|---|---|---|---|\n| \\(f_i\\) | 8 | 6 | 2 | 2 | 2 | 6 |"
+  },
+  {
+    "ref": "Ex 13.1 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean deviation about the median for the following data:\n\n| \\(x_i\\) | 15 | 21 | 27 | 30 | 35 |\n|---|---|---|---|---|---|\n| \\(f_i\\) | 3 | 5 | 6 | 7 | 8 |"
+  },
+  {
+    "ref": "Ex 13.1 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean deviation about the mean for the following data:\n\n| Income per day in ₹ | 0-100 | 100-200 | 200-300 | 300-400 | 400-500 | 500-600 | 600-700 | 700-800 |\n|---|---|---|---|---|---|---|---|---|\n| Number of persons | 4 | 8 | 9 | 10 | 7 | 5 | 4 | 3 |"
+  },
+  {
+    "ref": "Ex 13.1 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean deviation about the mean for the following data:\n\n| Height in cms | 95-105 | 105-115 | 115-125 | 125-135 | 135-145 | 145-155 |\n|---|---|---|---|---|---|---|\n| Number of boys | 9 | 13 | 26 | 30 | 12 | 10 |"
+  },
+  {
+    "ref": "Ex 13.1 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean deviation about median for the following data :\n\n| Marks | 0-10 | 10-20 | 20-30 | 30-40 | 40-50 | 50-60 |\n|---|---|---|---|---|---|---|\n| Number of Girls | 6 | 8 | 14 | 16 | 4 | 2 |"
+  },
+  {
+    "ref": "Ex 13.1 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "Calculate the mean deviation about median age for the age distribution of 100 persons given below:\n\n| Age (in years) | 16-20 | 21-25 | 26-30 | 31-35 | 36-40 | 41-45 | 46-50 | 51-55 |\n|---|---|---|---|---|---|---|---|---|\n| Number | 5 | 6 | 12 | 14 | 26 | 12 | 16 | 9 |\n\n[Hint Convert the given data into continuous frequency distribution by subtracting 0.5 from the lower limit and adding 0.5 to the upper limit of each class interval]"
+  },
+  {
+    "ref": "13.2 Eg.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "MODERATE",
+    "stem": "Find the variance of the following data:\n\n6, 8, 10, 12, 14, 16, 18, 20, 22, 24",
+    "solution": "From the given data we can form the following Table 13.7. The mean is calculated by step-deviation method taking 14 as assumed mean. The number of observations is \\(n = 10\\).\n\n**Table 13.7**\n\n| \\(x_i\\) | \\(d_i = \\dfrac{x_i - 14}{2}\\) | Deviations from mean \\((x_i - \\bar{x})\\) | \\((x_i - \\bar{x})^2\\) |\n|---|---|---|---|\n| 6 | \\(-4\\) | \\(-9\\) | 81 |\n| 8 | \\(-3\\) | \\(-7\\) | 49 |\n| 10 | \\(-2\\) | \\(-5\\) | 25 |\n| 12 | \\(-1\\) | \\(-3\\) | 9 |\n| 14 | 0 | \\(-1\\) | 1 |\n| 16 | 1 | 1 | 1 |\n| 18 | 2 | 3 | 9 |\n| 20 | 3 | 5 | 25 |\n| 22 | 4 | 7 | 49 |\n| 24 | 5 | 9 | 81 |\n| | 5 | | 330 |\n\nTherefore, Mean \\(\\bar{x} = \\text{assumed mean} + \\dfrac{\\sum_{i=1}^{n} d_i}{n} \\times h = 14 + \\dfrac{5}{10} \\times 2 = 15\\)\n\nand Variance \\((\\sigma^2) = \\dfrac{1}{n} \\sum_{i=1}^{10} (x_i - \\bar{x})^2 = \\dfrac{1}{10} \\times 330 = 33\\)\n\nThus, Standard deviation \\((\\sigma) = \\sqrt{33} = 5.74\\)",
+    "_note": "In the rendered page the fourth column of Table 13.7 is headed \\((x_i - \\bar{x})\\) with no visible exponent, but every entry in it is a square (81, 49, 25, ...) and the totalled 330 is used as \\(\\sum (x_i-\\bar{x})^2\\). Transcribed as \\((x_i - \\bar{x})^2\\); the printed superscript appears to have dropped in the typesetting."
+  },
+  {
+    "ref": "13.2 Eg.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "MODERATE",
+    "stem": "Find the variance and standard deviation for the following data:\n\n| \\(x_i\\) | 4 | 8 | 11 | 17 | 20 | 24 | 32 |\n|---|---|---|---|---|---|---|---|\n| \\(f_i\\) | 3 | 5 | 9 | 5 | 4 | 3 | 1 |",
+    "solution": "Presenting the data in tabular form (Table 13.8), we get\n\n**Table 13.8**\n\n| \\(x_i\\) | \\(f_i\\) | \\(f_i x_i\\) | \\(x_i - \\bar{x}\\) | \\((x_i - \\bar{x})^2\\) | \\(f_i (x_i - \\bar{x})^2\\) |\n|---|---|---|---|---|---|\n| 4 | 3 | 12 | \\(-10\\) | 100 | 300 |\n| 8 | 5 | 40 | \\(-6\\) | 36 | 180 |\n| 11 | 9 | 99 | \\(-3\\) | 9 | 81 |\n| 17 | 5 | 85 | 3 | 9 | 45 |\n| 20 | 4 | 80 | 6 | 36 | 144 |\n| 24 | 3 | 72 | 10 | 100 | 300 |\n| 32 | 1 | 32 | 18 | 324 | 324 |\n| | 30 | 420 | | | 1374 |\n\n\\(\\mathrm{N} = 30\\), \\(\\sum_{i=1}^{7} f_i x_i = 420\\), \\(\\sum_{i=1}^{7} f_i (x_i - \\bar{x})^2 = 1374\\)\n\nTherefore, \\(\\bar{x} = \\dfrac{\\sum_{i=1}^{7} f_i x_i}{\\mathrm{N}} = \\dfrac{1}{30} \\times 420 = 14\\)\n\nHence, variance \\((\\sigma^2) = \\dfrac{1}{\\mathrm{N}} \\sum_{i=1}^{7} f_i (x_i - \\bar{x})^2 = \\dfrac{1}{30} \\times 1374 = 45.8\\)\n\nand Standard deviation \\((\\sigma) = \\sqrt{45.8} = 6.77\\)"
+  },
+  {
+    "ref": "13.2 Eg.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "MODERATE",
+    "stem": "Calculate the mean, variance and standard deviation for the following distribution :\n\n| Class | 30-40 | 40-50 | 50-60 | 60-70 | 70-80 | 80-90 | 90-100 |\n|---|---|---|---|---|---|---|---|\n| Frequency | 3 | 7 | 12 | 15 | 8 | 3 | 2 |",
+    "solution": "From the given data, we construct the following Table 13.9.\n\n**Table 13.9**\n\n| Class | Frequency \\((f_i)\\) | Mid-point \\((x_i)\\) | \\(f_i x_i\\) | \\((x_i - \\bar{x})^2\\) | \\(f_i (x_i - \\bar{x})^2\\) |\n|---|---|---|---|---|---|\n| 30-40 | 3 | 35 | 105 | 729 | 2187 |\n| 40-50 | 7 | 45 | 315 | 289 | 2023 |\n| 50-60 | 12 | 55 | 660 | 49 | 588 |\n| 60-70 | 15 | 65 | 975 | 9 | 135 |\n| 70-80 | 8 | 75 | 600 | 169 | 1352 |\n| 80-90 | 3 | 85 | 255 | 529 | 1587 |\n| 90-100 | 2 | 95 | 190 | 1089 | 2178 |\n| | 50 | | 3100 | | 10050 |\n\nThus, Mean \\(\\bar{x} = \\dfrac{1}{\\mathrm{N}} \\sum_{i=1}^{7} f_i x_i = \\dfrac{3100}{50} = 62\\)\n\nVariance \\((\\sigma^2) = \\dfrac{1}{\\mathrm{N}} \\sum_{i=1}^{7} f_i (x_i - \\bar{x})^2 = \\dfrac{1}{50} \\times 10050 = 201\\)\n\nand Standard deviation \\((\\sigma) = \\sqrt{201} = 14.18\\)"
+  },
+  {
+    "ref": "13.2 Eg.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "MODERATE",
+    "stem": "Find the standard deviation for the following data :\n\n| \\(x_i\\) | 3 | 8 | 13 | 18 | 23 |\n|---|---|---|---|---|---|\n| \\(f_i\\) | 7 | 10 | 15 | 10 | 6 |",
+    "solution": "Let us form the following Table 13.10:\n\n**Table 13.10**\n\n| \\(x_i\\) | \\(f_i\\) | \\(f_i x_i\\) | \\(x_i^2\\) | \\(f_i x_i^2\\) |\n|---|---|---|---|---|\n| 3 | 7 | 21 | 9 | 63 |\n| 8 | 10 | 80 | 64 | 640 |\n| 13 | 15 | 195 | 169 | 2535 |\n| 18 | 10 | 180 | 324 | 3240 |\n| 23 | 6 | 138 | 529 | 3174 |\n| | 48 | 614 | | 9652 |\n\nNow, by formula (3), we have\n\n\\(\\sigma = \\dfrac{1}{\\mathrm{N}} \\sqrt{\\mathrm{N} \\sum f_i x_i^2 - \\left( \\sum f_i x_i \\right)^2}\\)\n\n\\(= \\dfrac{1}{48} \\sqrt{48 \\times 9652 - (614)^2}\\)\n\n\\(= \\dfrac{1}{48} \\sqrt{463296 - 376996}\\)\n\n\\(= \\dfrac{1}{48} \\times 293.77 = 6.12\\)\n\nTherefore, Standard deviation \\((\\sigma) = 6.12\\)"
+  },
+  {
+    "ref": "13.2 Eg.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Shortcut Method for Variance and Standard Deviation",
+    "difficulty": "MODERATE",
+    "stem": "Calculate mean, variance and standard deviation for the following distribution.\n\n| Classes | 30-40 | 40-50 | 50-60 | 60-70 | 70-80 | 80-90 | 90-100 |\n|---|---|---|---|---|---|---|---|\n| Frequency | 3 | 7 | 12 | 15 | 8 | 3 | 2 |",
+    "solution": "Let the assumed mean \\(\\mathrm{A} = 65\\). Here \\(h = 10\\).\n\nWe obtain the following Table 13.11 from the given data :\n\n**Table 13.11**\n\n| Class | Frequency \\(f_i\\) | Mid-point \\(x_i\\) | \\(y_i = \\dfrac{x_i - 65}{10}\\) | \\(y_i^2\\) | \\(f_i y_i\\) | \\(f_i y_i^2\\) |\n|---|---|---|---|---|---|---|\n| 30-40 | 3 | 35 | \\(-3\\) | 9 | \\(-9\\) | 27 |\n| 40-50 | 7 | 45 | \\(-2\\) | 4 | \\(-14\\) | 28 |\n| 50-60 | 12 | 55 | \\(-1\\) | 1 | \\(-12\\) | 12 |\n| 60-70 | 15 | 65 | 0 | 0 | 0 | 0 |\n| 70-80 | 8 | 75 | 1 | 1 | 8 | 8 |\n| 80-90 | 3 | 85 | 2 | 4 | 6 | 12 |\n| 90-100 | 2 | 95 | 3 | 9 | 6 | 18 |\n| | \\(\\mathrm{N} = 50\\) | | | | \\(-15\\) | 105 |\n\nTherefore, \\(\\bar{x} = \\mathrm{A} + \\dfrac{\\sum f_i y_i}{50} \\times h = 65 - \\dfrac{15}{50} \\times 10 = 62\\)\n\nVariance \\(\\sigma^2 = \\dfrac{h^2}{\\mathrm{N}^2} \\left[ \\mathrm{N} \\sum f_i y_i^2 - \\left( \\sum f_i y_i \\right)^2 \\right]\\)\n\n\\(= \\dfrac{(10)^2}{(50)^2} \\left[ 50 \\times 105 - (-15)^2 \\right]\\)\n\n\\(= \\dfrac{1}{25} [5250 - 225] = 201\\)\n\nand standard deviation \\((\\sigma) = \\sqrt{201} = 14.18\\)",
+    "_note": "The book prints the heading as \"Examples 12\" (plural) where every other worked item in the chapter reads \"Example N\" — transcribed here as the book's Example 12. Also, in Table 13.11 the last class is printed as \"9 0-100\" with a stray space inside the number; transcribed as 90-100. This example is the SAME distribution as Example 10, deliberately re-solved by the short-cut method (the book says so: \"Let us solve Example 11 by the short-cut method and using formula (5)\" — that cross-reference names Example 11, but the distribution actually re-solved is Example 10's, so the printed cross-reference is stale)."
+  },
+  {
+    "ref": "Ex 13.2 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "EASY",
+    "stem": "Find the mean and variance for the data:\n\n6, 7, 10, 12, 13, 4, 8, 12",
+    "_note": "Q1-Q5 sit under one printed lead-in: \"Find the mean and variance for each of the data in Exercies 1 to 5.\" The book misprints \"Exercies\" for \"Exercises\". The lead-in spans five NUMBERED questions, so it is not a set; it has been folded into each of Q1-Q5."
+  },
+  {
+    "ref": "Ex 13.2 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean and variance for the data:\n\nFirst \\(n\\) natural numbers"
+  },
+  {
+    "ref": "Ex 13.2 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "EASY",
+    "stem": "Find the mean and variance for the data:\n\nFirst 10 multiples of 3"
+  },
+  {
+    "ref": "Ex 13.2 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean and variance for the following data:\n\n| \\(x_i\\) | 6 | 10 | 14 | 18 | 24 | 28 | 30 |\n|---|---|---|---|---|---|---|---|\n| \\(f_i\\) | 2 | 4 | 7 | 12 | 8 | 4 | 3 |"
+  },
+  {
+    "ref": "Ex 13.2 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean and variance for the following data:\n\n| \\(x_i\\) | 92 | 93 | 97 | 98 | 102 | 104 | 109 |\n|---|---|---|---|---|---|---|---|\n| \\(f_i\\) | 3 | 2 | 3 | 2 | 6 | 3 | 3 |"
+  },
+  {
+    "ref": "Ex 13.2 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Shortcut Method for Variance and Standard Deviation",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean and standard deviation using short-cut method.\n\n| \\(x_i\\) | 60 | 61 | 62 | 63 | 64 | 65 | 66 | 67 | 68 |\n|---|---|---|---|---|---|---|---|---|---|\n| \\(f_i\\) | 2 | 1 | 12 | 29 | 25 | 12 | 10 | 4 | 5 |"
+  },
+  {
+    "ref": "Ex 13.2 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean and variance for the following frequency distribution:\n\n| Classes | 0-30 | 30-60 | 60-90 | 90-120 | 120-150 | 150-180 | 180-210 |\n|---|---|---|---|---|---|---|---|\n| Frequencies | 2 | 3 | 5 | 10 | 3 | 5 | 2 |",
+    "_note": "Q7 and Q8 sit under one printed lead-in: \"Find the mean and variance for the following frequency distributions in Exercises 7 and 8.\" That lead-in spans two NUMBERED questions, so it is not a set; it has been folded into both stems."
+  },
+  {
+    "ref": "Ex 13.2 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean and variance for the following frequency distribution:\n\n| Classes | 0-10 | 10-20 | 20-30 | 30-40 | 40-50 |\n|---|---|---|---|---|---|\n| Frequencies | 5 | 8 | 15 | 16 | 6 |"
+  },
+  {
+    "ref": "Ex 13.2 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Shortcut Method for Variance and Standard Deviation",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean, variance and standard deviation using short-cut method\n\n| Height in cms | 70-75 | 75-80 | 80-85 | 85-90 | 90-95 | 95-100 | 100-105 | 105-110 | 110-115 |\n|---|---|---|---|---|---|---|---|---|---|\n| No. of children | 3 | 4 | 7 | 7 | 15 | 9 | 6 | 6 | 3 |"
+  },
+  {
+    "ref": "Ex 13.2 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "MODERATE",
+    "stem": "The diameters of circles (in mm) drawn in a design are given below:\n\n| Diameters | 33-36 | 37-40 | 41-44 | 45-48 | 49-52 |\n|---|---|---|---|---|---|\n| No. of circles | 15 | 17 | 21 | 22 | 25 |\n\nCalculate the standard deviation and mean diameter of the circles.\n\n[ Hint First make the data continuous by making the classes as 32.5-36.5, 36.5-40.5, 40.5-44.5, 44.5 - 48.5, 48.5 - 52.5 and then proceed.]"
+  },
+  {
+    "ref": "Misc Eg.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "MODERATE",
+    "stem": "The variance of 20 observations is 5. If each observation is multiplied by 2, find the new variance of the resulting observations.",
+    "solution": "Let the observations be \\(x_1, x_2, \\ldots, x_{20}\\) and \\(\\bar{x}\\) be their mean. Given that variance \\(= 5\\) and \\(n = 20\\). We know that\n\nVariance \\(\\left(\\sigma^2\\right) = \\frac{1}{n}\\sum_{i=1}^{20}(x_i - \\bar{x})^2\\), i.e., \\(5 = \\frac{1}{20}\\sum_{i=1}^{20}(x_i - \\bar{x})^2\\)\n\nor \\(\\sum_{i=1}^{20}(x_i - \\bar{x})^2 = 100\\) ... (1)\n\nIf each observation is multiplied by 2, and the new resulting observations are \\(y_i\\), then\n\n\\(y_i = 2x_i\\) i.e., \\(x_i = \\frac{1}{2}y_i\\)\n\nTherefore \\(\\bar{y} = \\frac{1}{n}\\sum_{i=1}^{20} y_i = \\frac{1}{20}\\sum_{i=1}^{20} 2x_i = 2 \\cdot \\frac{1}{20}\\sum_{i=1}^{20} x_i\\)\n\ni.e. \\(\\bar{y} = 2\\bar{x}\\) or \\(\\bar{x} = \\frac{1}{2}\\bar{y}\\)\n\nSubstituting the values of \\(x_i\\) and \\(\\bar{x}\\) in (1), we get\n\n\\(\\sum_{i=1}^{20}\\left(\\frac{1}{2}y_i - \\frac{1}{2}\\bar{y}\\right)^2 = 100\\), i.e., \\(\\sum_{i=1}^{20}(y_i - \\bar{y})^2 = 400\\)\n\nThus the variance of new observations \\(= \\frac{1}{20} \\times 400 = 20 = 2^2 \\times 5\\)\n\nNote The reader may note that if each observation is multiplied by a constant \\(k\\), the variance of the resulting observations becomes \\(k^2\\) times the original variance."
+  },
+  {
+    "ref": "Misc Eg.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "HARD",
+    "stem": "The mean of 5 observations is 4.4 and their variance is 8.24. If three of the observations are 1, 2 and 6, find the other two observations.",
+    "solution": "Let the other two observations be \\(x\\) and \\(y\\).\n\nTherefore, the series is 1, 2, 6, \\(x\\), \\(y\\).\n\nNow Mean \\(\\bar{x} = 4.4 = \\frac{1 + 2 + 6 + x + y}{5}\\)\n\nor \\(22 = 9 + x + y\\)\n\nTherefore \\(x + y = 13\\) ... (1)\n\nAlso variance \\(= 8.24 = \\frac{1}{n}\\sum_{i=1}^{5}(x_i - \\bar{x})^2\\)\n\ni.e. \\(8.24 = \\frac{1}{5}\\left[(3.4)^2 + (2.4)^2 + (1.6)^2 + x^2 + y^2 - 2 \\times 4.4(x + y) + 2 \\times (4.4)^2\\right]\\)\n\nor \\(41.20 = 11.56 + 5.76 + 2.56 + x^2 + y^2 - 8.8 \\times 13 + 38.72\\)\n\nTherefore \\(x^2 + y^2 = 97\\) ... (2)\n\nBut from (1), we have \\(x^2 + y^2 + 2xy = 169\\) ... (3)\n\nFrom (2) and (3), we have \\(2xy = 72\\) ... (4)\n\nSubtracting (4) from (2), we get \\(x^2 + y^2 - 2xy = 97 - 72\\) i.e. \\((x - y)^2 = 25\\)\n\nor \\(x - y = \\pm 5\\) ... (5)\n\nSo, from (1) and (5), we get\n\n\\(x = 9\\), \\(y = 4\\) when \\(x - y = 5\\)\n\nor \\(x = 4\\), \\(y = 9\\) when \\(x - y = -5\\)\n\nThus, the remaining observations are 4 and 9.",
+    "_note": "The book prints the heading as \"Example14\", with no space between the word and the number."
+  },
+  {
+    "ref": "Misc Eg.15",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "MODERATE",
+    "stem": "If each of the observation \\(x_1, x_2, \\ldots, x_n\\) is increased by \\(a\\), where \\(a\\) is a negative or positive number, show that the variance remains unchanged.",
+    "solution": "Let \\(\\bar{x}\\) be the mean of \\(x_1, x_2, \\ldots, x_n\\). Then the variance is given by\n\n\\(\\sigma_1^2 = \\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2\\)\n\nIf \\(a\\) is added to each observation, the new observations will be\n\n\\(y_i = x_i + a\\) ... (1)\n\nLet the mean of the new observations be \\(\\bar{y}\\). Then\n\n\\(\\bar{y} = \\frac{1}{n}\\sum_{i=1}^{n} y_i = \\frac{1}{n}\\sum_{i=1}^{n}(x_i + a)\\)\n\n\\(= \\frac{1}{n}\\left[\\sum_{i=1}^{n} x_i + \\sum_{i=1}^{n} a\\right] = \\frac{1}{n}\\sum_{i=1}^{n} x_i + \\frac{na}{n} = \\bar{x} + a\\)\n\ni.e. \\(\\bar{y} = \\bar{x} + a\\) ... (2)\n\nThus, the variance of the new observations\n\n\\(\\sigma_2^2 = \\frac{1}{n}\\sum_{i=1}^{n}(y_i - \\bar{y})^2 = \\frac{1}{n}\\sum_{i=1}^{n}(x_i + a - \\bar{x} - a)^2\\) [Using (1) and (2)]\n\n\\(= \\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^2 = \\sigma_1^2\\)\n\nThus, the variance of the new observations is same as that of the original observations.\n\nNote We may note that adding (or subtracting) a positive number to (or from) each observation of a group does not affect the variance."
+  },
+  {
+    "ref": "Misc Eg.16",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "HARD",
+    "stem": "The mean and standard deviation of 100 observations were calculated as 40 and 5.1, respectively by a student who took by mistake 50 instead of 40 for one observation. What are the correct mean and standard deviation?",
+    "solution": "Given that number of observations \\((n) = 100\\)\n\nIncorrect mean \\((\\bar{x}) = 40\\),\n\nIncorrect standard deviation \\((\\sigma) = 5.1\\)\n\nWe know that \\(\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i\\)\n\ni.e. \\(40 = \\frac{1}{100}\\sum_{i=1}^{100} x_i\\) or \\(\\sum_{i=1}^{100} x_i = 4000\\)\n\ni.e. Incorrect sum of observations \\(= 4000\\)\n\nThus the correct sum of observations \\(=\\) Incorrect sum \\(- 50 + 40 = 4000 - 50 + 40 = 3990\\)\n\nHence Correct mean \\(= \\frac{\\text{correct sum}}{100} = \\frac{3990}{100} = 39.9\\)\n\nAlso Standard deviation \\(\\sigma = \\sqrt{\\frac{1}{n}\\sum_{i=1}^{n} x_i^2 - \\frac{1}{n^2}\\left(\\sum_{i=1}^{n} x_i\\right)^2} = \\sqrt{\\frac{1}{n}\\sum_{i=1}^{n} x_i^2 - (\\bar{x})^2}\\)\n\ni.e. \\(5.1 = \\sqrt{\\frac{1}{100} \\times \\text{Incorrect}\\sum_{i=1}^{n} x_i^2 - (40)^2}\\)\n\nor \\(26.01 = \\frac{1}{100} \\times \\text{Incorrect}\\sum_{i=1}^{n} x_i^2 - 1600\\)\n\nTherefore Incorrect \\(\\sum_{i=1}^{n} x_i^2 = 100(26.01 + 1600) = 162601\\)\n\nNow Correct \\(\\sum_{i=1}^{n} x_i^2 = \\text{Incorrect}\\sum_{i=1}^{n} x_i^2 - (50)^2 + (40)^2 = 162601 - 2500 + 1600 = 161701\\)\n\nTherefore Correct standard deviation\n\n\\(= \\sqrt{\\frac{\\text{Correct}\\sum x_i^2}{n} - (\\text{Correct mean})^2}\\)\n\n\\(= \\sqrt{\\frac{161701}{100} - (39.9)^2}\\)\n\n\\(= \\sqrt{1617.01 - 1592.01} = \\sqrt{25} = 5\\)"
+  },
+  {
+    "ref": "Misc Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "HARD",
+    "stem": "The mean and variance of eight observations are 9 and 9.25, respectively. If six of the observations are 6, 7, 10, 12, 12 and 13, find the remaining two observations."
+  },
+  {
+    "ref": "Misc Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "HARD",
+    "stem": "The mean and variance of 7 observations are 8 and 16, respectively. If five of the observations are 2, 4, 10, 12, 14. Find the remaining two observations.",
+    "_note": "Transcribed as printed: the book ends the list with a full stop mid-sentence (\"...are 2, 4, 10, 12, 14. Find the remaining two observations.\") where a comma is intended. Not corrected."
+  },
+  {
+    "ref": "Misc Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "EASY",
+    "stem": "The mean and standard deviation of six observations are 8 and 4, respectively. If each observation is multiplied by 3, find the new mean and new standard deviation of the resulting observations."
+  },
+  {
+    "ref": "Misc Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "MODERATE",
+    "stem": "Given that \\(\\bar{x}\\) is the mean and \\(\\sigma^2\\) is the variance of \\(n\\) observations \\(x_1, x_2, \\ldots, x_n\\). Prove that the mean and variance of the observations \\(ax_1, ax_2, ax_3, \\ldots, ax_n\\) are \\(a\\bar{x}\\) and \\(a^2\\sigma^2\\), respectively, \\((a \\neq 0)\\)."
+  },
+  {
+    "ref": "Misc Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "HARD",
+    "context": "The mean and standard deviation of 20 observations are found to be 10 and 2, respectively. On rechecking, it was found that an observation 8 was incorrect. Calculate the correct mean and standard deviation in each of the following cases:",
+    "setLabel": "Misc Q5",
+    "stem": "If wrong item is omitted."
+  },
+  {
+    "ref": "Misc Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "HARD",
+    "context": "The mean and standard deviation of 20 observations are found to be 10 and 2, respectively. On rechecking, it was found that an observation 8 was incorrect. Calculate the correct mean and standard deviation in each of the following cases:",
+    "setLabel": "Misc Q5",
+    "stem": "If it is replaced by 12."
+  },
+  {
+    "ref": "Misc Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Variance and Standard Deviation",
+    "difficulty": "HARD",
+    "stem": "The mean and standard deviation of a group of 100 observations were found to be 20 and 3, respectively. Later on it was found that three observations were incorrect, which were recorded as 21, 21 and 18. Find the mean and standard deviation if the incorrect observations are omitted."
+  }
+]

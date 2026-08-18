@@ -1,0 +1,365 @@
+[
+  {
+    "ref": "14.1 Eg.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "EASY",
+    "stem": "Consider the experiment of rolling a die. Let \\(A\\) be the event 'getting a prime number', \\(B\\) be the event 'getting an odd number'. Write the sets representing the events (i) \\(A\\) or \\(B\\) (ii) \\(A\\) and \\(B\\) (iii) \\(A\\) but not \\(B\\) (iv) 'not \\(A\\)'.",
+    "solution": "Here \\(S = \\{1, 2, 3, 4, 5, 6\\}\\), \\(A = \\{2, 3, 5\\}\\) and \\(B = \\{1, 3, 5\\}\\).\n\nObviously\n\n(i) '\\(A\\) or \\(B\\)' \\(= A \\cup B = \\{1, 2, 3, 5\\}\\)\n\n(ii) '\\(A\\) and \\(B\\)' \\(= A \\cap B = \\{3, 5\\}\\)\n\n(iii) '\\(A\\) but not \\(B\\)' \\(= A - B = \\{2\\}\\)\n\n(iv) 'not \\(A\\)' \\(= A' = \\{1, 4, 6\\}\\)"
+  },
+  {
+    "ref": "14.1 Eg.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "stem": "Two dice are thrown and the sum of the numbers which come up on the dice is noted. Let us consider the following events associated with this experiment\n\n\\(A\\): 'the sum is even'.\n\n\\(B\\): 'the sum is a multiple of 3'.\n\n\\(C\\): 'the sum is less than 4'.\n\n\\(D\\): 'the sum is greater than 11'.\n\nWhich pairs of these events are mutually exclusive?",
+    "solution": "There are 36 elements in the sample space \\(S = \\{(x, y) : x, y = 1, 2, 3, 4, 5, 6\\}\\). Then\n\n\\(A = \\{(1,1), (1,3), (1,5), (2,2), (2,4), (2,6), (3,1), (3,3), (3,5), (4,2), (4,4), (4,6), (5,1), (5,3), (5,5), (6,2), (6,4), (6,6)\\}\\)\n\n\\(B = \\{(1,2), (2,1), (1,5), (5,1), (3,3), (2,4), (4,2), (3,6), (6,3), (4,5), (5,4), (6,6)\\}\\)\n\n\\(C = \\{(1,1), (2,1), (1,2)\\}\\) and \\(D = \\{(6,6)\\}\\)\n\nWe find that\n\n\\(A \\cap B = \\{(1,5), (2,4), (3,3), (4,2), (5,1), (6,6)\\} \\ne \\emptyset\\)\n\nTherefore, \\(A\\) and \\(B\\) are not mutually exclusive events.\n\nSimilarly \\(A \\cap C \\ne \\emptyset\\), \\(A \\cap D \\ne \\emptyset\\), \\(B \\cap C \\ne \\emptyset\\) and \\(B \\cap D \\ne \\emptyset\\).\n\nThus, the pairs of events, \\((A, C)\\), \\((A, D)\\), \\((B, C)\\), \\((B, D)\\) are not mutually exclusive events.\n\nAlso \\(C \\cap D = \\emptyset\\) and so \\(C\\) and \\(D\\) are mutually exclusive events."
+  },
+  {
+    "ref": "14.1 Eg.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "stem": "A coin is tossed three times, consider the following events.\n\n\\(A\\): 'No head appears', \\(B\\): 'Exactly one head appears' and \\(C\\): 'Atleast two heads appear'.\n\nDo they form a set of mutually exclusive and exhaustive events?",
+    "solution": "The sample space of the experiment is\n\n\\(S = \\{HHH, HHT, HTH, THH, HTT, THT, TTH, TTT\\}\\)\n\nand \\(A = \\{TTT\\}\\), \\(B = \\{HTT, THT, TTH\\}\\), \\(C = \\{HHT, HTH, THH, HHH\\}\\)\n\nNow\n\n\\(A \\cup B \\cup C = \\{TTT, HTT, THT, TTH, HHT, HTH, THH, HHH\\} = S\\)\n\nTherefore, \\(A\\), \\(B\\) and \\(C\\) are exhaustive events.\n\nAlso, \\(A \\cap B = \\emptyset\\), \\(A \\cap C = \\emptyset\\) and \\(B \\cap C = \\emptyset\\)\n\nTherefore, the events are pair-wise disjoint, i.e., they are mutually exclusive.\n\nHence, \\(A\\), \\(B\\) and \\(C\\) form a set of mutually exclusive and exhaustive events."
+  },
+  {
+    "ref": "Ex 14.1 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "EASY",
+    "stem": "A die is rolled. Let \\(E\\) be the event \"die shows 4\" and \\(F\\) be the event \"die shows even number\". Are \\(E\\) and \\(F\\) mutually exclusive?"
+  },
+  {
+    "ref": "Ex 14.1 Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Random Experiments, Sample Space and Events",
+    "difficulty": "EASY",
+    "context": "A die is thrown. Describe the following events. Also find \\(A \\cup B\\), \\(A \\cap B\\), \\(B \\cup C\\), \\(E \\cap F\\), \\(D \\cap E\\), \\(A - C\\), \\(D - E\\), \\(E \\cap F'\\), \\(F'\\).",
+    "setLabel": "Ex 14.1 Q2",
+    "stem": "\\(A\\): a number less than 7",
+    "_note": "The book prints the six sub-items (i)-(vi) and then a single trailing instruction 'Also find A u B, A n B, B u C, E n F, D n E, A - C, D - E, E n F', F''. That trailing instruction refers to events defined across several different sub-items, so it cannot live inside any one of them; it has been folded into the shared context. The book prints no sub-item label for it."
+  },
+  {
+    "ref": "Ex 14.1 Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Random Experiments, Sample Space and Events",
+    "difficulty": "EASY",
+    "context": "A die is thrown. Describe the following events. Also find \\(A \\cup B\\), \\(A \\cap B\\), \\(B \\cup C\\), \\(E \\cap F\\), \\(D \\cap E\\), \\(A - C\\), \\(D - E\\), \\(E \\cap F'\\), \\(F'\\).",
+    "setLabel": "Ex 14.1 Q2",
+    "stem": "\\(B\\): a number greater than 7"
+  },
+  {
+    "ref": "Ex 14.1 Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Random Experiments, Sample Space and Events",
+    "difficulty": "EASY",
+    "context": "A die is thrown. Describe the following events. Also find \\(A \\cup B\\), \\(A \\cap B\\), \\(B \\cup C\\), \\(E \\cap F\\), \\(D \\cap E\\), \\(A - C\\), \\(D - E\\), \\(E \\cap F'\\), \\(F'\\).",
+    "setLabel": "Ex 14.1 Q2",
+    "stem": "\\(C\\): a multiple of 3"
+  },
+  {
+    "ref": "Ex 14.1 Q2(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Random Experiments, Sample Space and Events",
+    "difficulty": "EASY",
+    "context": "A die is thrown. Describe the following events. Also find \\(A \\cup B\\), \\(A \\cap B\\), \\(B \\cup C\\), \\(E \\cap F\\), \\(D \\cap E\\), \\(A - C\\), \\(D - E\\), \\(E \\cap F'\\), \\(F'\\).",
+    "setLabel": "Ex 14.1 Q2",
+    "stem": "\\(D\\): a number less than 4"
+  },
+  {
+    "ref": "Ex 14.1 Q2(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Random Experiments, Sample Space and Events",
+    "difficulty": "EASY",
+    "context": "A die is thrown. Describe the following events. Also find \\(A \\cup B\\), \\(A \\cap B\\), \\(B \\cup C\\), \\(E \\cap F\\), \\(D \\cap E\\), \\(A - C\\), \\(D - E\\), \\(E \\cap F'\\), \\(F'\\).",
+    "setLabel": "Ex 14.1 Q2",
+    "stem": "\\(E\\): an even number greater than 4"
+  },
+  {
+    "ref": "Ex 14.1 Q2(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Random Experiments, Sample Space and Events",
+    "difficulty": "EASY",
+    "context": "A die is thrown. Describe the following events. Also find \\(A \\cup B\\), \\(A \\cap B\\), \\(B \\cup C\\), \\(E \\cap F\\), \\(D \\cap E\\), \\(A - C\\), \\(D - E\\), \\(E \\cap F'\\), \\(F'\\).",
+    "setLabel": "Ex 14.1 Q2",
+    "stem": "\\(F\\): a number not less than 3"
+  },
+  {
+    "ref": "Ex 14.1 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "stem": "An experiment involves rolling a pair of dice and recording the numbers that come up. Describe the following events:\n\n\\(A\\): the sum is greater than 8, \\(B\\): 2 occurs on either die\n\n\\(C\\): the sum is at least 7 and a multiple of 3.\n\nWhich pairs of these events are mutually exclusive?"
+  },
+  {
+    "ref": "Ex 14.1 Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Three coins are tossed once. Let \\(A\\) denote the event 'three heads show\", \\(B\\) denote the event \"two heads and one tail show\", \\(C\\) denote the event\" three tails show and \\(D\\) denote the event 'a head shows on the first coin\". Which events are",
+    "setLabel": "Ex 14.1 Q4",
+    "stem": "mutually exclusive?",
+    "_note": "Transcribed exactly as printed. The book's quotation marks in this question are broken: event A opens with a single quote and closes with a double quote ('three heads show\"), event C's description ('three tails show') is never closed before 'and D denote the event', and event D again opens single and closes double. The intended reading is A: three heads show, B: two heads and one tail show, C: three tails show, D: a head shows on the first coin."
+  },
+  {
+    "ref": "Ex 14.1 Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "EASY",
+    "context": "Three coins are tossed once. Let \\(A\\) denote the event 'three heads show\", \\(B\\) denote the event \"two heads and one tail show\", \\(C\\) denote the event\" three tails show and \\(D\\) denote the event 'a head shows on the first coin\". Which events are",
+    "setLabel": "Ex 14.1 Q4",
+    "stem": "simple?"
+  },
+  {
+    "ref": "Ex 14.1 Q4(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "EASY",
+    "context": "Three coins are tossed once. Let \\(A\\) denote the event 'three heads show\", \\(B\\) denote the event \"two heads and one tail show\", \\(C\\) denote the event\" three tails show and \\(D\\) denote the event 'a head shows on the first coin\". Which events are",
+    "setLabel": "Ex 14.1 Q4",
+    "stem": "Compound?"
+  },
+  {
+    "ref": "Ex 14.1 Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Three coins are tossed. Describe",
+    "setLabel": "Ex 14.1 Q5",
+    "stem": "Two events which are mutually exclusive."
+  },
+  {
+    "ref": "Ex 14.1 Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Three coins are tossed. Describe",
+    "setLabel": "Ex 14.1 Q5",
+    "stem": "Three events which are mutually exclusive and exhaustive."
+  },
+  {
+    "ref": "Ex 14.1 Q5(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Three coins are tossed. Describe",
+    "setLabel": "Ex 14.1 Q5",
+    "stem": "Two events, which are not mutually exclusive."
+  },
+  {
+    "ref": "Ex 14.1 Q5(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Three coins are tossed. Describe",
+    "setLabel": "Ex 14.1 Q5",
+    "stem": "Two events which are mutually exclusive but not exhaustive."
+  },
+  {
+    "ref": "Ex 14.1 Q5(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Three coins are tossed. Describe",
+    "setLabel": "Ex 14.1 Q5",
+    "stem": "Three events which are mutually exclusive but not exhaustive."
+  },
+  {
+    "ref": "Ex 14.1 Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Two dice are thrown. The events \\(A\\), \\(B\\) and \\(C\\) are as follows:\n\n\\(A\\): getting an even number on the first die.\n\n\\(B\\): getting an odd number on the first die.\n\n\\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).\n\nDescribe the events",
+    "setLabel": "Ex 14.1 Q6",
+    "stem": "\\(A'\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Two dice are thrown. The events \\(A\\), \\(B\\) and \\(C\\) are as follows:\n\n\\(A\\): getting an even number on the first die.\n\n\\(B\\): getting an odd number on the first die.\n\n\\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).\n\nDescribe the events",
+    "setLabel": "Ex 14.1 Q6",
+    "stem": "not \\(B\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q6(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Two dice are thrown. The events \\(A\\), \\(B\\) and \\(C\\) are as follows:\n\n\\(A\\): getting an even number on the first die.\n\n\\(B\\): getting an odd number on the first die.\n\n\\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).\n\nDescribe the events",
+    "setLabel": "Ex 14.1 Q6",
+    "stem": "\\(A\\) or \\(B\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q6(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Two dice are thrown. The events \\(A\\), \\(B\\) and \\(C\\) are as follows:\n\n\\(A\\): getting an even number on the first die.\n\n\\(B\\): getting an odd number on the first die.\n\n\\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).\n\nDescribe the events",
+    "setLabel": "Ex 14.1 Q6",
+    "stem": "\\(A\\) and \\(B\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q6(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Two dice are thrown. The events \\(A\\), \\(B\\) and \\(C\\) are as follows:\n\n\\(A\\): getting an even number on the first die.\n\n\\(B\\): getting an odd number on the first die.\n\n\\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).\n\nDescribe the events",
+    "setLabel": "Ex 14.1 Q6",
+    "stem": "\\(A\\) but not \\(C\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q6(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Two dice are thrown. The events \\(A\\), \\(B\\) and \\(C\\) are as follows:\n\n\\(A\\): getting an even number on the first die.\n\n\\(B\\): getting an odd number on the first die.\n\n\\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).\n\nDescribe the events",
+    "setLabel": "Ex 14.1 Q6",
+    "stem": "\\(B\\) or \\(C\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q6(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Two dice are thrown. The events \\(A\\), \\(B\\) and \\(C\\) are as follows:\n\n\\(A\\): getting an even number on the first die.\n\n\\(B\\): getting an odd number on the first die.\n\n\\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).\n\nDescribe the events",
+    "setLabel": "Ex 14.1 Q6",
+    "stem": "\\(B\\) and \\(C\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q6(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "HARD",
+    "context": "Two dice are thrown. The events \\(A\\), \\(B\\) and \\(C\\) are as follows:\n\n\\(A\\): getting an even number on the first die.\n\n\\(B\\): getting an odd number on the first die.\n\n\\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).\n\nDescribe the events",
+    "setLabel": "Ex 14.1 Q6",
+    "stem": "\\(A \\cap B' \\cap C'\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Refer to question 6 above, state true or false: (give reason for your answer). [Question 6 sets up: two dice are thrown, with \\(A\\): getting an even number on the first die; \\(B\\): getting an odd number on the first die; \\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).]",
+    "setLabel": "Ex 14.1 Q7",
+    "stem": "\\(A\\) and \\(B\\) are mutually exclusive",
+    "_note": "The book states only 'Refer to question 6 above'. The event definitions from Question 6 have been restated in square brackets in the shared context so the row is answerable on its own; the bracketed text is not printed here in the book."
+  },
+  {
+    "ref": "Ex 14.1 Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Refer to question 6 above, state true or false: (give reason for your answer). [Question 6 sets up: two dice are thrown, with \\(A\\): getting an even number on the first die; \\(B\\): getting an odd number on the first die; \\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).]",
+    "setLabel": "Ex 14.1 Q7",
+    "stem": "\\(A\\) and \\(B\\) are mutually exclusive and exhaustive"
+  },
+  {
+    "ref": "Ex 14.1 Q7(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Refer to question 6 above, state true or false: (give reason for your answer). [Question 6 sets up: two dice are thrown, with \\(A\\): getting an even number on the first die; \\(B\\): getting an odd number on the first die; \\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).]",
+    "setLabel": "Ex 14.1 Q7",
+    "stem": "\\(A = B'\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q7(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Refer to question 6 above, state true or false: (give reason for your answer). [Question 6 sets up: two dice are thrown, with \\(A\\): getting an even number on the first die; \\(B\\): getting an odd number on the first die; \\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).]",
+    "setLabel": "Ex 14.1 Q7",
+    "stem": "\\(A\\) and \\(C\\) are mutually exclusive"
+  },
+  {
+    "ref": "Ex 14.1 Q7(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Refer to question 6 above, state true or false: (give reason for your answer). [Question 6 sets up: two dice are thrown, with \\(A\\): getting an even number on the first die; \\(B\\): getting an odd number on the first die; \\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).]",
+    "setLabel": "Ex 14.1 Q7",
+    "stem": "\\(A\\) and \\(B'\\) are mutually exclusive."
+  },
+  {
+    "ref": "Ex 14.1 Q7(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "HARD",
+    "context": "Refer to question 6 above, state true or false: (give reason for your answer). [Question 6 sets up: two dice are thrown, with \\(A\\): getting an even number on the first die; \\(B\\): getting an odd number on the first die; \\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).]",
+    "setLabel": "Ex 14.1 Q7",
+    "stem": "\\(A'\\), \\(B'\\), \\(C\\) are mutually exclusive and exhaustive."
+  },
+  {
+    "ref": "14.2 Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "MODERATE",
+    "stem": "Let a sample space be \\(S = \\{\\omega_1, \\omega_2, ..., \\omega_6\\}\\). Which of the following assignments of probabilities to each outcome are valid?\n\n| Outcomes | \\(\\omega_1\\) | \\(\\omega_2\\) | \\(\\omega_3\\) | \\(\\omega_4\\) | \\(\\omega_5\\) | \\(\\omega_6\\) |\n|---|---|---|---|---|---|---|\n| (a) | \\(\\frac{1}{6}\\) | \\(\\frac{1}{6}\\) | \\(\\frac{1}{6}\\) | \\(\\frac{1}{6}\\) | \\(\\frac{1}{6}\\) | \\(\\frac{1}{6}\\) |\n| (b) | \\(1\\) | \\(0\\) | \\(0\\) | \\(0\\) | \\(0\\) | \\(0\\) |\n| (c) | \\(\\frac{1}{8}\\) | \\(\\frac{2}{3}\\) | \\(\\frac{1}{3}\\) | \\(\\frac{1}{3}\\) | \\(-\\frac{1}{4}\\) | \\(-\\frac{1}{3}\\) |\n| (d) | \\(\\frac{1}{12}\\) | \\(\\frac{1}{12}\\) | \\(\\frac{1}{6}\\) | \\(\\frac{1}{6}\\) | \\(\\frac{1}{6}\\) | \\(\\frac{3}{2}\\) |\n| (e) | \\(0.1\\) | \\(0.2\\) | \\(0.3\\) | \\(0.4\\) | \\(0.5\\) | \\(0.6\\) |",
+    "solution": "(a) Condition (i): Each of the number \\(p(\\omega_i)\\) is positive and less than one.\n\nCondition (ii): Sum of probabilities \\(= \\frac{1}{6} + \\frac{1}{6} + \\frac{1}{6} + \\frac{1}{6} + \\frac{1}{6} + \\frac{1}{6} = 1\\)\n\nTherefore, the assignment is valid.\n\n(b) Condition (i): Each of the number \\(p(\\omega_i)\\) is either 0 or 1.\n\nCondition (ii) Sum of the probabilities \\(= 1 + 0 + 0 + 0 + 0 + 0 = 1\\)\n\nTherefore, the assignment is valid.\n\n(c) Condition (i) Two of the probabilities \\(p(\\omega_5)\\) and \\(p(\\omega_6)\\) are negative, the assignment is not valid.\n\n(d) Since \\(p(\\omega_6) = \\frac{3}{2} > 1\\), the assignment is not valid.\n\n(e) Since, sum of probabilities \\(= 0.1 + 0.2 + 0.3 + 0.4 + 0.5 + 0.6 = 2.1\\), the assignment is not valid.",
+    "_note": "The five candidate assignments are labelled (a)-(e) and are the parts of one worked Example, NOT four MCQ alternatives."
+  },
+  {
+    "ref": "14.2 Eg.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "MODERATE",
+    "stem": "One card is drawn from a well shuffled deck of 52 cards. If each outcome is equally likely, calculate the probability that the card will be\n\n(i) a diamond (ii) not an ace (iii) a black card (i.e., a club or, a spade) (iv) not a diamond (v) not a black card.",
+    "solution": "When a card is drawn from a well shuffled deck of 52 cards, the number of possible outcomes is 52.\n\n(i) Let \\(A\\) be the event 'the card drawn is a diamond'. Clearly the number of elements in set \\(A\\) is 13.\n\nTherefore, \\(P(A) = \\frac{13}{52} = \\frac{1}{4}\\)\n\ni.e. probability of a diamond card \\(= \\frac{1}{4}\\)\n\n(ii) We assume that the event 'Card drawn is an ace' is \\(B\\).\n\nTherefore 'Card drawn is not an ace' should be \\(B'\\).\n\nWe know that \\(P(B') = 1 - P(B) = 1 - \\frac{4}{52} = 1 - \\frac{1}{13} = \\frac{12}{13}\\)\n\n(iii) Let \\(C\\) denote the event 'card drawn is black card'.\n\nTherefore, number of elements in the set \\(C = 26\\)\n\ni.e. \\(P(C) = \\frac{26}{52} = \\frac{1}{2}\\)\n\nThus, probability of a black card \\(= \\frac{1}{2}\\).\n\n(iv) We assumed in (i) above that \\(A\\) is the event 'card drawn is a diamond', so the event 'card drawn is not a diamond' may be denoted as \\(A'\\) or 'not \\(A\\)'.\n\nNow \\(P(\\text{not } A) = 1 - P(A) = 1 - \\frac{1}{4} = \\frac{3}{4}\\)\n\n(v) The event 'card drawn is not a black card' may be denoted as \\(C'\\) or 'not \\(C\\)'.\n\nWe know that \\(P(\\text{not } C) = 1 - P(C) = 1 - \\frac{1}{2} = \\frac{1}{2}\\)\n\nTherefore, probability of not a black card \\(= \\frac{1}{2}\\)"
+  },
+  {
+    "ref": "14.2 Eg.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "EASY",
+    "stem": "A bag contains 9 discs of which 4 are red, 3 are blue and 2 are yellow. The discs are similar in shape and size. A disc is drawn at random from the bag. Calculate the probability that it will be (i) red, (ii) yellow, (iii) blue, (iv) not blue, (v) either red or blue.",
+    "solution": "There are 9 discs in all so the total number of possible outcomes is 9.\n\nLet the events \\(A\\), \\(B\\), \\(C\\) be defined as\n\n\\(A\\): 'the disc drawn is red'\n\n\\(B\\): 'the disc drawn is yellow'\n\n\\(C\\): 'the disc drawn is blue'.\n\n(i) The number of red discs \\(= 4\\), i.e., \\(n(A) = 4\\)\n\nHence \\(P(A) = \\frac{4}{9}\\)\n\n(ii) The number of yellow discs \\(= 2\\), i.e., \\(n(B) = 2\\)\n\nTherefore, \\(P(B) = \\frac{2}{9}\\)\n\n(iii) The number of blue discs \\(= 3\\), i.e., \\(n(C) = 3\\)\n\nTherefore, \\(P(C) = \\frac{3}{9} = \\frac{1}{3}\\)\n\n(iv) Clearly the event 'not blue' is 'not \\(C\\)'. We know that \\(P(\\text{not } C) = 1 - P(C)\\)\n\nTherefore \\(P(\\text{not } C) = 1 - \\frac{1}{3} = \\frac{2}{3}\\)\n\n(v) The event 'either red or blue' may be described by the set '\\(A\\) or \\(C\\)'\n\nSince, \\(A\\) and \\(C\\) are mutually exclusive events, we have\n\n\\(P(A \\text{ or } C) = P(A \\cup C) = P(A) + P(C) = \\frac{4}{9} + \\frac{1}{3} = \\frac{7}{9}\\)"
+  },
+  {
+    "ref": "14.2 Eg.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "HARD",
+    "stem": "Two students Anil and Ashima appeared in an examination. The probability that Anil will qualify the examination is 0.05 and that Ashima will qualify the examination is 0.10. The probability that both will qualify the examination is 0.02. Find the probability that\n\n(a) Both Anil and Ashima will not qualify the examination.\n\n(b) Atleast one of them will not qualify the examination and\n\n(c) Only one of them will qualify the examination.",
+    "solution": "Let \\(E\\) and \\(F\\) denote the events that Anil and Ashima will qualify the examination, respectively. Given that\n\n\\(P(E) = 0.05\\), \\(P(F) = 0.10\\) and \\(P(E \\cap F) = 0.02\\).\n\nThen\n\n(a) The event 'both Anil and Ashima will not qualify the examination' may be expressed as \\(E' \\cap F'\\).\n\nSince, \\(E'\\) is 'not \\(E\\)', i.e., Anil will not qualify the examination and \\(F'\\) is 'not \\(F\\)', i.e., Ashima will not qualify the examination.\n\nAlso \\(E' \\cap F' = (E \\cup F)'\\) (by Demorgan's Law)\n\nNow \\(P(E \\cup F) = P(E) + P(F) - P(E \\cap F)\\)\n\nor \\(P(E \\cup F) = 0.05 + 0.10 - 0.02 = 0.13\\)\n\nTherefore \\(P(E' \\cap F') = P(E \\cup F)' = 1 - P(E \\cup F) = 1 - 0.13 = 0.87\\)\n\n(b) \\(P(\\text{atleast one of them will not qualify}) = 1 - P(\\text{both of them will qualify}) = 1 - 0.02 = 0.98\\)\n\n(c) The event only one of them will qualify the examination is same as the event either (Anil will qualify, and Ashima will not qualify) or (Anil will not qualify and Ashima will qualify) i.e., \\(E \\cap F'\\) or \\(E' \\cap F\\), where \\(E \\cap F'\\) and \\(E' \\cap F\\) are mutually exclusive.\n\nTherefore, \\(P(\\text{only one of them will qualify}) = P(E \\cap F' \\text{ or } E' \\cap F)\\)\n\n\\(= P(E \\cap F') + P(E' \\cap F) = P(E) - P(E \\cap F) + P(F) - P(E \\cap F)\\)\n\n\\(= 0.05 - 0.02 + 0.10 - 0.02 = 0.11\\)"
+  }
+]
