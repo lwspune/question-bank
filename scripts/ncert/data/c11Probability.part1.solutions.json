@@ -1,0 +1,155 @@
+[
+  {
+    "id": "f25586c5-4d08-4e35-bc88-06cf53ba8cf2",
+    "ref": "Ex 14.1 Q1",
+    "solution": "The sample space is \\(S=\\{1,2,3,4,5,6\\}\\). The event \"die shows 4\" is \\(E=\\{4\\}\\) and the event \"die shows an even number\" is \\(F=\\{2,4,6\\}\\). Two events are mutually exclusive only when they cannot occur together, that is when their intersection is empty. Here \\(E\\cap F=\\{4\\}\\), which is not empty (in fact \\(E\\subset F\\)), so the outcome 4 makes both events happen at once. Hence \\(E\\) and \\(F\\) are not mutually exclusive."
+  },
+  {
+    "id": "63a607fa-ed9a-4c45-89dd-31c08c487315",
+    "ref": "Ex 14.1 Q2(i)",
+    "solution": "A die has faces numbered 1 to 6, so the sample space is \\(S=\\{1,2,3,4,5,6\\}\\). Every one of these numbers is less than 7, so no outcome is excluded by the condition. Hence \\(A=\\{1,2,3,4,5,6\\}=S\\), which is the sure event."
+  },
+  {
+    "id": "5e61285a-b70d-4390-923a-abb958c6ef2a",
+    "ref": "Ex 14.1 Q2(ii)",
+    "solution": "The sample space is \\(S=\\{1,2,3,4,5,6\\}\\). No face of the die carries a number greater than 7, so not a single outcome of \\(S\\) satisfies the condition. Hence \\(B=\\emptyset\\), which is the impossible event."
+  },
+  {
+    "id": "6de37d13-07fc-40cd-9ea5-b6e16fb1b897",
+    "ref": "Ex 14.1 Q2(iii)",
+    "solution": "The sample space is \\(S=\\{1,2,3,4,5,6\\}\\). The multiples of 3 lying in \\(S\\) are 3 and 6 (9 and beyond are not faces of a die). Hence \\(C=\\{3,6\\}\\)."
+  },
+  {
+    "id": "9cc7d153-66a1-4d8f-89f1-f6bc042402fa",
+    "ref": "Ex 14.1 Q2(iv)",
+    "solution": "The sample space is \\(S=\\{1,2,3,4,5,6\\}\\). The outcomes of \\(S\\) that are less than 4 are 1, 2 and 3. Hence \\(D=\\{1,2,3\\}\\)."
+  },
+  {
+    "id": "c0ad3eac-39cf-4b8b-b037-44ea905f0a6a",
+    "ref": "Ex 14.1 Q2(v)",
+    "solution": "The even numbers in \\(S=\\{1,2,3,4,5,6\\}\\) are 2, 4 and 6, and of these only 6 is greater than 4. Hence \\(E=\\{6\\}\\), a simple event."
+  },
+  {
+    "id": "eec2e3fe-a68b-4246-a849-7aff2f1ee677",
+    "ref": "Ex 14.1 Q2(vi)",
+    "solution": "\"Not less than 3\" means \"greater than or equal to 3\", i.e. \\(\\ge 3\\). Hence \\(F=\\{3,4,5,6\\}\\), and its complement in \\(S=\\{1,2,3,4,5,6\\}\\) is \\(F'=S\\setminus F=\\{1,2\\}\\). With all six events now described, namely \\(A=\\{1,2,3,4,5,6\\}\\), \\(B=\\emptyset\\), \\(C=\\{3,6\\}\\), \\(D=\\{1,2,3\\}\\), \\(E=\\{6\\}\\), \\(F=\\{3,4,5,6\\}\\), the combinations asked for are obtained by taking unions, intersections and differences of these sets: \\(A\\cup B=\\{1,2,3,4,5,6\\}\\), \\(A\\cap B=\\emptyset\\), \\(B\\cup C=\\{3,6\\}\\), \\(E\\cap F=\\{6\\}\\), \\(D\\cap E=\\emptyset\\), \\(A-C=\\{1,2,4,5\\}\\), \\(D-E=\\{1,2,3\\}\\), \\(E\\cap F'=\\emptyset\\), \\(F'=\\{1,2\\}\\)."
+  },
+  {
+    "id": "59c6c473-ad16-4165-aa5f-2e00db18e4c6",
+    "ref": "Ex 14.1 Q3",
+    "solution": "Rolling a pair of dice and recording both numbers gives the sample space \\(S=\\{(x,y):x,y\\in\\{1,2,3,4,5,6\\}\\}\\), which has 36 ordered pairs. A sum greater than 8 means a sum of 9, 10, 11 or 12, so \\(A=\\{(3,6),(4,5),(5,4),(6,3),(4,6),(5,5),(6,4),(5,6),(6,5),(6,6)\\}\\). A 2 on either die gives \\(B=\\{(2,1),(2,2),(2,3),(2,4),(2,5),(2,6),(1,2),(3,2),(4,2),(5,2),(6,2)\\}\\). A sum that is at least 7 and a multiple of 3 must be 9 or 12, so \\(C=\\{(3,6),(4,5),(5,4),(6,3),(6,6)\\}\\). Comparing the sets: every pair in \\(A\\) has both entries at least 3, so \\(A\\cap B=\\emptyset\\); no pair of \\(C\\) contains a 2, so \\(B\\cap C=\\emptyset\\); but each sum in \\(C\\) is 9 or 12, which exceeds 8, so \\(C\\subset A\\) and \\(A\\cap C=C\\neq\\emptyset\\). Hence the mutually exclusive pairs are \\(A\\) and \\(B\\), and \\(B\\) and \\(C\\); the pair \\(A\\) and \\(C\\) is not mutually exclusive."
+  },
+  {
+    "id": "25a0c26e-9361-4bb4-ab3e-37ca87ca85c6",
+    "ref": "Ex 14.1 Q4(i)",
+    "solution": "Tossing three coins once gives \\(S=\\{HHH,HHT,HTH,THH,HTT,THT,TTH,TTT\\}\\), eight outcomes. Writing the four events as subsets of \\(S\\): \\(A=\\{HHH\\}\\), \\(B=\\{HHT,HTH,THH\\}\\), \\(C=\\{TTT\\}\\) and \\(D=\\{HHH,HHT,HTH,HTT\\}\\). Two events are mutually exclusive when their intersection is empty, so test all six pairs: \\(A\\cap B=\\emptyset\\), \\(A\\cap C=\\emptyset\\), \\(B\\cap C=\\emptyset\\), \\(C\\cap D=\\emptyset\\), while \\(A\\cap D=\\{HHH\\}\\neq\\emptyset\\) and \\(B\\cap D=\\{HHT,HTH\\}\\neq\\emptyset\\). Hence the mutually exclusive pairs are \\(A\\) and \\(B\\), \\(A\\) and \\(C\\), \\(B\\) and \\(C\\), and \\(C\\) and \\(D\\).",
+    "_note": "The transcribed context has broken quotation marks (event A opens with a single quote and closes with a double, and the description of C is never closed). The four event descriptions are nevertheless unambiguous and are read as: A = three heads, B = two heads and one tail, C = three tails, D = a head on the first coin."
+  },
+  {
+    "id": "f099a995-43fc-4f28-ad98-123285f0e201",
+    "ref": "Ex 14.1 Q4(ii)",
+    "solution": "With \\(S=\\{HHH,HHT,HTH,THH,HTT,THT,TTH,TTT\\}\\), the events are \\(A=\\{HHH\\}\\), \\(B=\\{HHT,HTH,THH\\}\\), \\(C=\\{TTT\\}\\) and \\(D=\\{HHH,HHT,HTH,HTT\\}\\). An event is simple when it contains exactly one sample point. Counting the elements gives 1, 3, 1 and 4 respectively, so only \\(A\\) and \\(C\\) are singletons. Hence the simple events are \\(A\\) and \\(C\\).",
+    "_note": "The transcribed context has broken quotation marks (event A opens with a single quote and closes with a double, and the description of C is never closed); the four descriptions are still unambiguous."
+  },
+  {
+    "id": "cb0c200b-2bc5-41d7-a365-91b51494410f",
+    "ref": "Ex 14.1 Q4(iii)",
+    "solution": "With \\(S=\\{HHH,HHT,HTH,THH,HTT,THT,TTH,TTT\\}\\), the events are \\(A=\\{HHH\\}\\), \\(B=\\{HHT,HTH,THH\\}\\), \\(C=\\{TTT\\}\\) and \\(D=\\{HHH,HHT,HTH,HTT\\}\\). An event is compound when it contains more than one sample point. Here \\(B\\) has three elements and \\(D\\) has four, whereas \\(A\\) and \\(C\\) have only one each. Hence the compound events are \\(B\\) and \\(D\\).",
+    "_note": "The transcribed context has broken quotation marks (event A opens with a single quote and closes with a double, and the description of C is never closed); the four descriptions are still unambiguous."
+  },
+  {
+    "id": "af4b9be4-e0b9-4df2-826b-343beda95315",
+    "ref": "Ex 14.1 Q5(i)",
+    "solution": "Three coins tossed give \\(S=\\{HHH,HHT,HTH,THH,HTT,THT,TTH,TTT\\}\\). Take \\(A\\): getting at least two heads, and \\(B\\): getting at least two tails. As subsets, \\(A=\\{HHH,HHT,HTH,THH\\}\\) and \\(B=\\{HTT,THT,TTH,TTT\\}\\). With only three coins an outcome cannot carry two heads and two tails at the same time, and indeed no element of \\(A\\) appears in \\(B\\), so \\(A\\cap B=\\emptyset\\). Hence \\(A\\) and \\(B\\) are two mutually exclusive events."
+  },
+  {
+    "id": "3caf7085-d111-4d31-a0f9-b956c0dadf2b",
+    "ref": "Ex 14.1 Q5(ii)",
+    "solution": "Three coins tossed give \\(S=\\{HHH,HHT,HTH,THH,HTT,THT,TTH,TTT\\}\\). Take \\(A\\): getting no head, \\(B\\): getting exactly one head, and \\(C\\): getting at least two heads. As subsets, \\(A=\\{TTT\\}\\), \\(B=\\{HTT,THT,TTH\\}\\) and \\(C=\\{HHH,HHT,HTH,THH\\}\\). Checking the actual sets, \\(A\\cap B=\\emptyset\\), \\(B\\cap C=\\emptyset\\) and \\(A\\cap C=\\emptyset\\), so they are pairwise disjoint; and \\(A\\cup B\\cup C=\\{TTT,HTT,THT,TTH,HHH,HHT,HTH,THH\\}=S\\), all eight outcomes. Hence \\(A\\), \\(B\\) and \\(C\\) are three mutually exclusive and exhaustive events."
+  },
+  {
+    "id": "1f5c03bf-1d65-47eb-ab8d-55f1c6cdeccb",
+    "ref": "Ex 14.1 Q5(iii)",
+    "solution": "Three coins tossed give \\(S=\\{HHH,HHT,HTH,THH,HTT,THT,TTH,TTT\\}\\). Take \\(A\\): getting three heads, and \\(B\\): getting at least two heads. As subsets, \\(A=\\{HHH\\}\\) and \\(B=\\{HHH,HHT,HTH,THH\\}\\). Their intersection \\(A\\cap B=\\{HHH\\}\\) is not empty (the outcome \\(HHH\\) makes both occur), so the two events can happen together. Hence \\(A\\) and \\(B\\) are two events which are not mutually exclusive."
+  },
+  {
+    "id": "25a925f0-c8f1-456f-a415-9287306aabbf",
+    "ref": "Ex 14.1 Q5(iv)",
+    "solution": "Three coins tossed give \\(S=\\{HHH,HHT,HTH,THH,HTT,THT,TTH,TTT\\}\\). Take \\(A\\): getting exactly one head, and \\(B\\): getting exactly one tail. As subsets, \\(A=\\{HTT,THT,TTH\\}\\) and \\(B=\\{HHT,HTH,THH\\}\\). No outcome lies in both, so \\(A\\cap B=\\emptyset\\) and the events are mutually exclusive. But \\(A\\cup B=\\{HTT,THT,TTH,HHT,HTH,THH\\}\\) has only six of the eight outcomes: \\(HHH\\) and \\(TTT\\) are left out, so \\(A\\cup B\\neq S\\). Hence \\(A\\) and \\(B\\) are mutually exclusive but not exhaustive."
+  },
+  {
+    "id": "676a0ec5-e796-4c4d-ac4c-1c141bd01775",
+    "ref": "Ex 14.1 Q5(v)",
+    "solution": "Three coins tossed give \\(S=\\{HHH,HHT,HTH,THH,HTT,THT,TTH,TTT\\}\\). Take \\(A\\): getting exactly one head, \\(B\\): getting exactly two heads, and \\(C\\): getting exactly three heads. As subsets, \\(A=\\{HTT,THT,TTH\\}\\), \\(B=\\{HHT,HTH,THH\\}\\) and \\(C=\\{HHH\\}\\). The three sets record different head counts, so no outcome is shared: \\(A\\cap B=\\emptyset\\), \\(B\\cap C=\\emptyset\\), \\(A\\cap C=\\emptyset\\), and they are mutually exclusive. Their union \\(A\\cup B\\cup C=\\{HTT,THT,TTH,HHT,HTH,THH,HHH\\}\\) has seven outcomes and omits \\(TTT\\), so it is not \\(S\\). Hence \\(A\\), \\(B\\) and \\(C\\) are mutually exclusive but not exhaustive."
+  },
+  {
+    "id": "c7303388-fe2d-402c-9f9b-aedaaaa961f1",
+    "ref": "Ex 14.1 Q6(i)",
+    "solution": "Two dice give \\(S=\\{(x,y):x,y\\in\\{1,2,3,4,5,6\\}\\}\\), 36 ordered pairs. Here \\(A\\) is the event that the first die shows an even number, so \\(A=\\{(2,1),(2,2),(2,3),(2,4),(2,5),(2,6),(4,1),(4,2),(4,3),(4,4),(4,5),(4,6),(6,1),(6,2),(6,3),(6,4),(6,5),(6,6)\\}\\), 18 outcomes. Its complement consists of the remaining outcomes, i.e. those in which the first die does not show an even number, and hence shows an odd number. Therefore \\(A'=\\{(1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(3,1),(3,2),(3,3),(3,4),(3,5),(3,6),(5,1),(5,2),(5,3),(5,4),(5,5),(5,6)\\}\\), which is exactly the event \\(B\\) of getting an odd number on the first die."
+  },
+  {
+    "id": "8b50476f-8c63-4ef7-a99c-d263e793879e",
+    "ref": "Ex 14.1 Q6(ii)",
+    "solution": "Two dice give \\(S=\\{(x,y):x,y\\in\\{1,2,3,4,5,6\\}\\}\\), 36 ordered pairs. Here \\(B\\) is the event that the first die shows an odd number, so \\(B=\\{(1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(3,1),(3,2),(3,3),(3,4),(3,5),(3,6),(5,1),(5,2),(5,3),(5,4),(5,5),(5,6)\\}\\). \"Not \\(B\\)\" is the complement \\(B'=S\\setminus B\\), which contains the outcomes in which the first die does not show an odd number, i.e. shows an even number. Therefore \\(B'=\\{(2,1),(2,2),(2,3),(2,4),(2,5),(2,6),(4,1),(4,2),(4,3),(4,4),(4,5),(4,6),(6,1),(6,2),(6,3),(6,4),(6,5),(6,6)\\}\\), which is exactly the event \\(A\\)."
+  },
+  {
+    "id": "31b8bd3a-a105-44d2-8c29-9bac156172f8",
+    "ref": "Ex 14.1 Q6(iii)",
+    "solution": "\\(A\\) collects the outcomes with an even number on the first die and \\(B\\) those with an odd number on the first die, and each has 18 elements. The event \"\\(A\\) or \\(B\\)\" is the union \\(A\\cup B\\). Since the first die must show either an even or an odd number, every ordered pair of the sample space lies in one of the two sets, and the sets share nothing. Hence \\(A\\cup B=\\{(x,y):x,y\\in\\{1,2,3,4,5,6\\}\\}=S\\), all 36 outcomes: it is the sure event, that the first die shows some number 1 to 6."
+  },
+  {
+    "id": "9266c9ac-0ac3-4168-a0f3-05952777dea0",
+    "ref": "Ex 14.1 Q6(iv)",
+    "solution": "The event \"\\(A\\) and \\(B\\)\" is the intersection \\(A\\cap B\\), the set of outcomes in which the first die shows an even number and, at the same time, an odd number. No number is both even and odd, so no ordered pair of \\(S\\) qualifies: the first entry would have to lie in \\(\\{2,4,6\\}\\) and in \\(\\{1,3,5\\}\\) simultaneously. Hence \\(A\\cap B=\\emptyset\\), the impossible event."
+  },
+  {
+    "id": "a16bbf66-2811-495c-bcc3-e834c74bda28",
+    "ref": "Ex 14.1 Q6(v)",
+    "solution": "\"\\(A\\) but not \\(C\\)\" is the difference \\(A-C=A\\cap C'\\). Here \\(A\\) is the 18-outcome event with an even first die, and \\(C=\\{(1,1),(1,2),(1,3),(1,4),(2,1),(2,2),(2,3),(3,1),(3,2),(4,1)\\}\\) is the event that the sum is at most 5. The elements of \\(C\\) having an even first entry are \\((2,1),(2,2),(2,3)\\) and \\((4,1)\\), so exactly these four must be removed from \\(A\\). Hence \\(A-C=\\{(2,4),(2,5),(2,6),(4,2),(4,3),(4,4),(4,5),(4,6),(6,1),(6,2),(6,3),(6,4),(6,5),(6,6)\\}\\), which has \\(18-4=14\\) outcomes: an even number on the first die together with a sum greater than 5."
+  },
+  {
+    "id": "95563530-458d-4836-91c4-66e7f358dbbc",
+    "ref": "Ex 14.1 Q6(vi)",
+    "solution": "\"\\(B\\) or \\(C\\)\" is the union \\(B\\cup C\\). Here \\(B=\\{(1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(3,1),(3,2),(3,3),(3,4),(3,5),(3,6),(5,1),(5,2),(5,3),(5,4),(5,5),(5,6)\\}\\) and \\(C=\\{(1,1),(1,2),(1,3),(1,4),(2,1),(2,2),(2,3),(3,1),(3,2),(4,1)\\}\\). Six elements of \\(C\\), namely \\((1,1),(1,2),(1,3),(1,4),(3,1),(3,2)\\), already lie in \\(B\\); the four new ones are \\((2,1),(2,2),(2,3),(4,1)\\). Hence \\(B\\cup C=\\{(1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(3,1),(3,2),(3,3),(3,4),(3,5),(3,6),(5,1),(5,2),(5,3),(5,4),(5,5),(5,6),(2,1),(2,2),(2,3),(4,1)\\}\\), which has \\(18+4=22\\) outcomes: an odd number on the first die, or a sum of at most 5."
+  },
+  {
+    "id": "85058203-220e-42e8-a3ed-ee0fea2db4b7",
+    "ref": "Ex 14.1 Q6(vii)",
+    "solution": "\"\\(B\\) and \\(C\\)\" is the intersection \\(B\\cap C\\), the outcomes with an odd number on the first die and a sum at most 5. Taking \\(C=\\{(1,1),(1,2),(1,3),(1,4),(2,1),(2,2),(2,3),(3,1),(3,2),(4,1)\\}\\) and keeping only those whose first entry is odd, the pairs beginning with 2 or 4 drop out. Hence \\(B\\cap C=\\{(1,1),(1,2),(1,3),(1,4),(3,1),(3,2)\\}\\), six outcomes."
+  },
+  {
+    "id": "69729cdd-7835-433b-8413-60c5d86f7cec",
+    "ref": "Ex 14.1 Q6(viii)",
+    "solution": "Since the first die shows either an even or an odd number, \\(B'=A\\), so \\(A\\cap B'\\cap C'=A\\cap A\\cap C'=A\\cap C'=A-C\\). Now \\(A\\) is the 18-outcome event with an even first die, and the elements of \\(C\\) (sum at most 5) with an even first entry are \\((2,1),(2,2),(2,3)\\) and \\((4,1)\\), which are the only ones to be removed. Hence \\(A\\cap B'\\cap C'=\\{(2,4),(2,5),(2,6),(4,2),(4,3),(4,4),(4,5),(4,6),(6,1),(6,2),(6,3),(6,4),(6,5),(6,6)\\}\\), 14 outcomes: an even number on the first die together with a sum greater than 5."
+  },
+  {
+    "id": "b59c7ce3-3690-485a-8e9c-027e45a1f05a",
+    "ref": "Ex 14.1 Q7(i)",
+    "solution": "\\(A\\) is the set of outcomes whose first entry lies in \\(\\{2,4,6\\}\\) and \\(B\\) the set of those whose first entry lies in \\(\\{1,3,5\\}\\). Since \\(\\{2,4,6\\}\\cap\\{1,3,5\\}=\\emptyset\\), no ordered pair can belong to both sets, so \\(A\\cap B=\\emptyset\\). Hence the statement is true: \\(A\\) and \\(B\\) are mutually exclusive."
+  },
+  {
+    "id": "42e6d388-491a-4b0a-b8ff-013a317fad37",
+    "ref": "Ex 14.1 Q7(ii)",
+    "solution": "As sets, \\(A\\) contains the 18 pairs whose first entry is 2, 4 or 6 and \\(B\\) the 18 pairs whose first entry is 1, 3 or 5. They are disjoint, so \\(A\\cap B=\\emptyset\\); and since the first die must show one of 1 to 6, each of the 36 pairs of \\(S\\) falls into one of them, giving \\(A\\cup B=S\\) (the counts also agree, \\(18+18=36\\)). Hence the statement is true: \\(A\\) and \\(B\\) are mutually exclusive and exhaustive."
+  },
+  {
+    "id": "f4f2e10f-f0c6-4464-872a-a5db6f30013d",
+    "ref": "Ex 14.1 Q7(iii)",
+    "solution": "\\(B'=S\\setminus B\\) consists of the outcomes in which the first die does not show an odd number. As the first entry must be one of 1 to 6, not being odd means being even, so \\(B'\\) is exactly the set of pairs whose first entry lies in \\(\\{2,4,6\\}\\), i.e. \\(B'=\\{(2,1),(2,2),(2,3),(2,4),(2,5),(2,6),(4,1),(4,2),(4,3),(4,4),(4,5),(4,6),(6,1),(6,2),(6,3),(6,4),(6,5),(6,6)\\}=A\\). Hence the statement is true: \\(A=B'\\)."
+  },
+  {
+    "id": "22376bec-83d1-4e74-804d-107f4fe52b8a",
+    "ref": "Ex 14.1 Q7(iv)",
+    "solution": "Here \\(A\\) is the set of pairs with an even first entry and \\(C=\\{(1,1),(1,2),(1,3),(1,4),(2,1),(2,2),(2,3),(3,1),(3,2),(4,1)\\}\\) is the event that the sum is at most 5. Intersecting them, the pairs of \\(C\\) with an even first entry are \\((2,1),(2,2),(2,3)\\) and \\((4,1)\\), so \\(A\\cap C=\\{(2,1),(2,2),(2,3),(4,1)\\}\\neq\\emptyset\\). For example \\((2,1)\\) has an even first die and sum 3, so both events occur together. Hence the statement is false: \\(A\\) and \\(C\\) are not mutually exclusive."
+  },
+  {
+    "id": "14541f03-e49d-49f4-ae6d-09aefb035f73",
+    "ref": "Ex 14.1 Q7(v)",
+    "solution": "Since the first die shows an even number exactly when it does not show an odd number, \\(B'=A\\). Therefore \\(A\\cap B'=A\\cap A=A\\), which contains all 18 pairs whose first entry is 2, 4 or 6 and is certainly not empty. Hence the statement is false: \\(A\\) and \\(B'\\) are not mutually exclusive; they are in fact the same event."
+  },
+  {
+    "id": "ee81a567-32a4-42db-a6e7-f9d482d45fdd",
+    "ref": "Ex 14.1 Q7(vi)",
+    "solution": "Since the first die is even exactly when it is not odd, \\(A'=B\\) and \\(B'=A\\), so the three events in question are \\(B\\), \\(A\\) and \\(C\\). Testing the pairs: \\(A'\\cap B'=B\\cap A=\\emptyset\\), but \\(A'\\cap C=B\\cap C=\\{(1,1),(1,2),(1,3),(1,4),(3,1),(3,2)\\}\\neq\\emptyset\\) and \\(B'\\cap C=A\\cap C=\\{(2,1),(2,2),(2,3),(4,1)\\}\\neq\\emptyset\\), so the three events are not pairwise disjoint. (They are exhaustive, since \\(A'\\cup B'=B\\cup A=S\\), but that is not enough.) Hence the statement is false: \\(A'\\), \\(B'\\) and \\(C\\) are exhaustive but not mutually exclusive."
+  }
+]

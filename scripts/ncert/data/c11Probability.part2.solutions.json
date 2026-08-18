@@ -1,0 +1,228 @@
+[
+  {
+    "id": "32740329-b20e-46d6-9cf5-0f2211e5f42a",
+    "ref": "Ex 14.2 Q1",
+    "solution": "An assignment of probabilities to the outcomes of a sample space is valid only if it satisfies both axioms: every number assigned must satisfy \\(0 \\le p_i \\le 1\\), and the seven numbers must add up to \\(1\\). Test each row. For (a) the sum is \\(0.1+0.01+0.05+0.03+0.01+0.2+0.6 = 1\\) and every entry lies in \\([0,1]\\), so it is valid. For (b) the sum is \\(7 \\times \\frac{1}{7} = 1\\) with every entry in \\([0,1]\\), so it is valid. For (c) the entries are non-negative but their sum is \\(0.1+0.2+0.3+0.4+0.5+0.6+0.7 = 2.8 \\neq 1\\), so the second axiom fails. For (d) the sum is indeed \\(1\\), but two entries, \\(-0.1\\) and \\(-0.2\\), are negative, so the first axiom fails. For (e) the sum is \\(\\frac{1+2+3+4+5+6+15}{14} = \\frac{36}{14} = \\frac{18}{7} \\neq 1\\), and the last entry \\(\\frac{15}{14} > 1\\), so both axioms fail. Hence the assignments that cannot be valid are (c) (its entries total \\(2.8\\)), (d) (it contains negative probabilities) and (e) (its entries total \\(\\frac{18}{7}\\) and one exceeds \\(1\\))."
+  },
+  {
+    "id": "e8b70341-2f5c-4c28-83e4-46409263f4c3",
+    "ref": "Ex 14.2 Q2",
+    "solution": "Tossing a coin twice gives the sample space \\(S = \\{HH,\\ HT,\\ TH,\\ TT\\}\\), so \\(n(S) = 4\\) and the four outcomes are equally likely. Let \\(E\\) be the event that at least one tail occurs, i.e. one or two tails. Then \\(E = \\{HT,\\ TH,\\ TT\\}\\), so \\(n(E) = 3\\). Hence \\(P(E) = \\frac{3}{4}\\)."
+  },
+  {
+    "id": "05e9de7d-58aa-4758-8299-7b0fb0967953",
+    "ref": "Ex 14.2 Q3(i)",
+    "solution": "The die gives the sample space \\(S = \\{1,2,3,4,5,6\\}\\), so \\(n(S) = 6\\) with all outcomes equally likely. The primes among these are \\(2, 3\\) and \\(5\\), so the event is \\(\\{2,3,5\\}\\) with \\(3\\) favourable outcomes. Hence the probability is \\(\\frac{3}{6} = \\frac{1}{2}\\)."
+  },
+  {
+    "id": "54d569eb-7205-487a-a969-563f332624bf",
+    "ref": "Ex 14.2 Q3(ii)",
+    "solution": "Here \\(S = \\{1,2,3,4,5,6\\}\\), so \\(n(S) = 6\\). The numbers greater than or equal to \\(3\\) are \\(3, 4, 5, 6\\), giving the event \\(\\{3,4,5,6\\}\\) with \\(4\\) favourable outcomes. Hence the probability is \\(\\frac{4}{6} = \\frac{2}{3}\\)."
+  },
+  {
+    "id": "30aa597a-3d8b-4a7e-b674-2b991236091d",
+    "ref": "Ex 14.2 Q3(iii)",
+    "solution": "Here \\(S = \\{1,2,3,4,5,6\\}\\), so \\(n(S) = 6\\). The only face that is less than or equal to \\(1\\) is \\(1\\) itself, so the event is \\(\\{1\\}\\) with \\(1\\) favourable outcome. Hence the probability is \\(\\frac{1}{6}\\)."
+  },
+  {
+    "id": "2dee5a34-1f48-47cf-af1f-9963f7bfd915",
+    "ref": "Ex 14.2 Q3(iv)",
+    "solution": "Here \\(S = \\{1,2,3,4,5,6\\}\\), so \\(n(S) = 6\\). No face of a die carries a number more than \\(6\\), so the event is the empty set \\(\\varnothing\\) and has \\(0\\) favourable outcomes. This is an impossible event, and hence the probability is \\(\\frac{0}{6} = 0\\)."
+  },
+  {
+    "id": "7f9aa845-b5e8-4a18-955a-c96209ae26a1",
+    "ref": "Ex 14.2 Q3(v)",
+    "solution": "Here \\(S = \\{1,2,3,4,5,6\\}\\), so \\(n(S) = 6\\). The numbers less than \\(6\\) are \\(1, 2, 3, 4, 5\\), giving the event \\(\\{1,2,3,4,5\\}\\) with \\(5\\) favourable outcomes. Hence the probability is \\(\\frac{5}{6}\\)."
+  },
+  {
+    "id": "6faea0e1-55f8-48d8-8669-ba74ff517cf5",
+    "ref": "Ex 14.2 Q4(a)",
+    "solution": "Selecting one card from a pack of \\(52\\) cards means the outcome can be any one of the \\(52\\) cards, and each card is a distinct sample point. Hence the number of points in the sample space is \\(52\\)."
+  },
+  {
+    "id": "c57037e9-3a4b-48c3-8960-3f6af1c38d77",
+    "ref": "Ex 14.2 Q4(b)",
+    "solution": "The sample space has \\(n(S) = 52\\) equally likely outcomes. A pack contains exactly one ace of spades, so the event has \\(1\\) favourable outcome. Hence the probability that the card is an ace of spades is \\(\\frac{1}{52}\\)."
+  },
+  {
+    "id": "84028329-124b-44b7-bd30-4df9b4aa4348",
+    "ref": "Ex 14.2 Q4(c)",
+    "solution": "The sample space has \\(n(S) = 52\\) equally likely outcomes. (i) There are four aces in the pack, one in each suit, so the number of favourable outcomes is \\(4\\) and the probability is \\(\\frac{4}{52} = \\frac{1}{13}\\). (ii) The black cards are the \\(13\\) spades together with the \\(13\\) clubs, so the number of favourable outcomes is \\(26\\) and the probability is \\(\\frac{26}{52} = \\frac{1}{2}\\). Hence the probability of an ace is \\(\\frac{1}{13}\\) and the probability of a black card is \\(\\frac{1}{2}\\)."
+  },
+  {
+    "id": "2d6815eb-0285-4330-84a5-407b372b9057",
+    "ref": "Ex 14.2 Q5(i)",
+    "solution": "The coin shows \\(1\\) or \\(6\\) and the die shows one of \\(1,2,3,4,5,6\\), so the sample space is \\(S = \\{(1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(6,1),(6,2),(6,3),(6,4),(6,5),(6,6)\\}\\) with \\(n(S) = 2 \\times 6 = 12\\) equally likely outcomes. A sum of \\(3\\) needs the coin to show \\(1\\) and the die to show \\(2\\), since a coin value of \\(6\\) already exceeds \\(3\\). So the event is \\(\\{(1,2)\\}\\), with \\(1\\) favourable outcome. Hence the probability is \\(\\frac{1}{12}\\)."
+  },
+  {
+    "id": "d3b4847c-c209-4357-8881-50620546432b",
+    "ref": "Ex 14.2 Q5(ii)",
+    "solution": "As above, \\(n(S) = 2 \\times 6 = 12\\) equally likely outcomes. A sum of \\(12\\) is impossible with the coin showing \\(1\\), because the die can add at most \\(6\\), giving \\(7\\). With the coin showing \\(6\\) the die must show \\(6\\). So the event is \\(\\{(6,6)\\}\\), with \\(1\\) favourable outcome. Hence the probability is \\(\\frac{1}{12}\\)."
+  },
+  {
+    "id": "ef594282-f6b0-4a8b-81de-98b2748c651a",
+    "ref": "Ex 14.2 Q6",
+    "solution": "The council has \\(4\\) men and \\(6\\) women, so one member can be chosen in \\(4 + 6 = 10\\) ways and \\(n(S) = 10\\), each member being equally likely. The event that a woman is selected has \\(6\\) favourable outcomes. Hence the probability is \\(\\frac{6}{10} = \\frac{3}{5}\\)."
+  },
+  {
+    "id": "563cc1dd-b445-4e64-b60b-df7dbbfbc03e",
+    "ref": "Ex 14.2 Q7",
+    "solution": "Four tosses of a coin give \\(n(S) = 2^4 = 16\\) equally likely outcomes. Suppose an outcome has \\(h\\) heads; then it has \\(4-h\\) tails, and the amount held is \\(h(1) - 1.5(4-h) = 2.5h - 6\\) rupees. Since \\(h\\) can be \\(0,1,2,3,4\\), and \\(2.5h-6\\) is strictly increasing in \\(h\\), exactly \\(5\\) different amounts are possible. The number of outcomes with \\(h\\) heads is \\({}^{4}C_h\\), so the probability of each amount is \\(\\frac{{}^{4}C_h}{16}\\).\n\n| Heads \\(h\\) | Amount in Rs | Favourable outcomes \\({}^{4}C_h\\) | Probability |\n|---|---|---|---|\n| 4 | \\(+4.00\\) | 1 | \\(\\frac{1}{16}\\) |\n| 3 | \\(+1.50\\) | 4 | \\(\\frac{4}{16} = \\frac{1}{4}\\) |\n| 2 | \\(-1.00\\) | 6 | \\(\\frac{6}{16} = \\frac{3}{8}\\) |\n| 1 | \\(-3.50\\) | 4 | \\(\\frac{4}{16} = \\frac{1}{4}\\) |\n| 0 | \\(-6.00\\) | 1 | \\(\\frac{1}{16}\\) |\n\nThe five probabilities add to \\(\\frac{1+4+6+4+1}{16} = 1\\), as they must. Hence \\(5\\) different amounts are possible: a gain of Rs \\(4\\) with probability \\(\\frac{1}{16}\\), a gain of Rs \\(1.50\\) with probability \\(\\frac{1}{4}\\), a loss of Rs \\(1\\) with probability \\(\\frac{3}{8}\\), a loss of Rs \\(3.50\\) with probability \\(\\frac{1}{4}\\), and a loss of Rs \\(6\\) with probability \\(\\frac{1}{16}\\)."
+  },
+  {
+    "id": "030e5a11-1b3d-4261-8e1f-15f4f6bfca83",
+    "ref": "Ex 14.2 Q8(i)",
+    "solution": "Tossing three coins gives \\(S = \\{HHH,\\ HHT,\\ HTH,\\ THH,\\ HTT,\\ THT,\\ TTH,\\ TTT\\}\\), so \\(n(S) = 2^3 = 8\\) equally likely outcomes. The event of getting \\(3\\) heads is \\(\\{HHH\\}\\), with \\(1\\) favourable outcome. Hence the probability is \\(\\frac{1}{8}\\)."
+  },
+  {
+    "id": "e6fa6efc-0e7c-46ff-9776-0cdebf204dbf",
+    "ref": "Ex 14.2 Q8(ii)",
+    "solution": "Here \\(n(S) = 8\\). Getting \\(2\\) heads means exactly two heads and one tail, so the event is \\(\\{HHT,\\ HTH,\\ THH\\}\\), with \\(3\\) favourable outcomes. Hence the probability is \\(\\frac{3}{8}\\)."
+  },
+  {
+    "id": "08bc8315-a326-4a07-aff1-83565c036e88",
+    "ref": "Ex 14.2 Q8(iii)",
+    "solution": "Here \\(n(S) = 8\\). At least \\(2\\) heads means two heads or three heads, so the event is \\(\\{HHT,\\ HTH,\\ THH,\\ HHH\\}\\), with \\(4\\) favourable outcomes. Hence the probability is \\(\\frac{4}{8} = \\frac{1}{2}\\)."
+  },
+  {
+    "id": "3e982ab7-d47a-459f-a568-f3d8efb463d9",
+    "ref": "Ex 14.2 Q8(iv)",
+    "solution": "Here \\(n(S) = 8\\). At most \\(2\\) heads means \\(0\\), \\(1\\) or \\(2\\) heads, which is every outcome except \\(HHH\\). So the event has \\(8 - 1 = 7\\) favourable outcomes. Hence the probability is \\(\\frac{7}{8}\\)."
+  },
+  {
+    "id": "1a899ce4-67d2-4c1e-9acb-ca71dd07dd9a",
+    "ref": "Ex 14.2 Q8(v)",
+    "solution": "Here \\(n(S) = 8\\). No head means all three coins show tails, so the event is \\(\\{TTT\\}\\), with \\(1\\) favourable outcome. Hence the probability is \\(\\frac{1}{8}\\)."
+  },
+  {
+    "id": "138919db-8502-4cb3-a257-7870be547d32",
+    "ref": "Ex 14.2 Q8(vi)",
+    "solution": "Here \\(n(S) = 8\\). The event of getting \\(3\\) tails is \\(\\{TTT\\}\\), with \\(1\\) favourable outcome. Hence the probability is \\(\\frac{1}{8}\\)."
+  },
+  {
+    "id": "3a3b72e5-8555-4cb3-8055-48099364f568",
+    "ref": "Ex 14.2 Q8(vii)",
+    "solution": "Here \\(n(S) = 8\\). Exactly two tails means two tails and one head, so the event is \\(\\{HTT,\\ THT,\\ TTH\\}\\), with \\(3\\) favourable outcomes. Hence the probability is \\(\\frac{3}{8}\\)."
+  },
+  {
+    "id": "2d837c0c-690c-4455-8b76-f1c3c4d5094a",
+    "ref": "Ex 14.2 Q8(viii)",
+    "solution": "Here \\(n(S) = 8\\). No tail means all three coins show heads, so the event is \\(\\{HHH\\}\\), with \\(1\\) favourable outcome. Hence the probability is \\(\\frac{1}{8}\\)."
+  },
+  {
+    "id": "7aaf6a05-8fed-4a26-830e-3deeb9481f02",
+    "ref": "Ex 14.2 Q8(ix)",
+    "solution": "Here \\(n(S) = 8\\). At most two tails means \\(0\\), \\(1\\) or \\(2\\) tails, which is every outcome except \\(TTT\\). So the event has \\(8 - 1 = 7\\) favourable outcomes. Hence the probability is \\(\\frac{7}{8}\\)."
+  },
+  {
+    "id": "a64c1f77-57c7-4a77-ad4e-511009b0a23e",
+    "ref": "Ex 14.2 Q9",
+    "solution": "Let \\(A\\) be the event whose probability is given, so \\(P(A) = \\frac{2}{11}\\). The event not \\(A\\) is the complement \\(A'\\), and \\(A\\) together with \\(A'\\) is exhaustive and mutually exclusive, so \\(P(A) + P(A') = 1\\), that is \\(P(A') = 1 - P(A)\\). Substituting, \\(P(A') = 1 - \\frac{2}{11} = \\frac{11-2}{11}\\). Hence \\(P(\\text{not } A) = \\frac{9}{11}\\).",
+    "_note": "The stem gives a probability of 2/11 for an unnamed event and then asks for the probability of the event 'not A' — the letter A is never attached to anything in the stem. Solved on the only sensible reading, that the event whose probability is 2/11 is A, so the answer is its complement."
+  },
+  {
+    "id": "b56d8b90-1b41-4813-8613-10dbb39d88c3",
+    "ref": "Ex 14.2 Q10(i)",
+    "solution": "The word ASSASSINATION has the letters A, S, S, A, S, S, I, N, A, T, I, O, N, that is \\(13\\) letters in all, made up of \\(3\\) A, \\(4\\) S, \\(2\\) I, \\(2\\) N, \\(1\\) T and \\(1\\) O. Choosing one letter at random gives \\(n(S) = 13\\) equally likely outcomes. The vowels are the \\(3\\) A, the \\(2\\) I and the \\(1\\) O, so the number of favourable outcomes is \\(3 + 2 + 1 = 6\\). Hence the probability that the letter is a vowel is \\(\\frac{6}{13}\\)."
+  },
+  {
+    "id": "db6254cc-ee53-4cd6-b2c7-42444b1beff3",
+    "ref": "Ex 14.2 Q10(ii)",
+    "solution": "As above, \\(n(S) = 13\\) and \\(6\\) of the letters are vowels. The consonants are therefore the \\(4\\) S, the \\(2\\) N and the \\(1\\) T, a total of \\(13 - 6 = 7\\) favourable outcomes. Hence the probability that the letter is a consonant is \\(\\frac{7}{13}\\). As a check, \\(\\frac{6}{13} + \\frac{7}{13} = 1\\), since being a vowel and being a consonant are complementary here."
+  },
+  {
+    "id": "5ef03407-ee14-47f8-a369-d27acc9346c6",
+    "ref": "Ex 14.2 Q11",
+    "solution": "Since the order of the numbers does not matter, choosing six different numbers from \\(1\\) to \\(20\\) is a selection, and the number of possible selections is \\(n(S) = {}^{20}C_{6} = \\frac{20 \\times 19 \\times 18 \\times 17 \\times 16 \\times 15}{6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1} = 38760\\). All these selections are equally likely, and exactly one of them matches the six numbers fixed by the committee, so there is \\(1\\) favourable outcome. Hence the probability of winning the prize is \\(\\frac{1}{38760}\\)."
+  },
+  {
+    "id": "e04cfe23-4daf-4e10-b695-ce5c78d43674",
+    "ref": "Ex 14.2 Q12(i)",
+    "solution": "Since \\(A \\cap B\\) is a subset of \\(A\\), any consistent assignment must satisfy \\(P(A \\cap B) \\le P(A)\\). Here \\(P(A \\cap B) = 0.6\\) while \\(P(A) = 0.5\\), so \\(0.6 > 0.5\\) and this inequality fails. Hence the given probabilities are not consistently defined."
+  },
+  {
+    "id": "2e611530-7dfb-4227-82c9-097cb8a06312",
+    "ref": "Ex 14.2 Q12(ii)",
+    "solution": "Use \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\) to recover the intersection: \\(0.8 = 0.5 + 0.4 - P(A \\cap B)\\), so \\(P(A \\cap B) = 0.9 - 0.8 = 0.1\\). This value is non-negative and satisfies \\(P(A \\cap B) = 0.1 \\le 0.4 = \\min\\{P(A), P(B)\\}\\), while \\(P(A \\cup B) = 0.8 \\le 1\\) and is at least each of \\(P(A)\\) and \\(P(B)\\). Every requirement holds. Hence the given probabilities are consistently defined."
+  },
+  {
+    "id": "77d233f9-fdb1-429d-9308-5d22902fc6e1",
+    "ref": "Ex 14.2 Q13",
+    "solution": "Each row is filled using the addition rule \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).\n\nFor (i), \\(P(A \\cup B) = \\frac{1}{3} + \\frac{1}{5} - \\frac{1}{15} = \\frac{5 + 3 - 1}{15} = \\frac{7}{15}\\).\n\nFor (ii), \\(0.6 = 0.35 + P(B) - 0.25\\), so \\(P(B) = 0.6 - 0.10 = 0.5\\).\n\nFor (iii), \\(0.7 = 0.5 + 0.35 - P(A \\cap B)\\), so \\(P(A \\cap B) = 0.85 - 0.7 = 0.15\\).\n\nThe completed table is\n\n| | \\(P(A)\\) | \\(P(B)\\) | \\(P(A \\cap B)\\) | \\(P(A \\cup B)\\) |\n|---|---|---|---|---|\n| (i) | \\(\\frac{1}{3}\\) | \\(\\frac{1}{5}\\) | \\(\\frac{1}{15}\\) | \\(\\frac{7}{15}\\) |\n| (ii) | 0.35 | 0.5 | 0.25 | 0.6 |\n| (iii) | 0.5 | 0.35 | 0.15 | 0.7 |"
+  },
+  {
+    "id": "48b9e821-62e7-4aee-a37b-3b6e23b876f1",
+    "ref": "Ex 14.2 Q14",
+    "solution": "When \\(A\\) and \\(B\\) are mutually exclusive they cannot occur together, so \\(A \\cap B = \\varnothing\\) and \\(P(A \\cap B) = 0\\). The addition rule then reduces to \\(P(A \\text{ or } B) = P(A \\cup B) = P(A) + P(B)\\). Substituting, \\(P(A \\cup B) = \\frac{3}{5} + \\frac{1}{5} = \\frac{4}{5}\\). Hence \\(P(A \\text{ or } B) = \\frac{4}{5}\\)."
+  },
+  {
+    "id": "7ffb3f6b-365d-4a39-9706-d83dc8f5f6d8",
+    "ref": "Ex 14.2 Q15(i)",
+    "solution": "Here \\(P(E \\text{ and } F) = P(E \\cap F) = \\frac{1}{8}\\). By the addition rule, \\(P(E \\text{ or } F) = P(E \\cup F) = P(E) + P(F) - P(E \\cap F) = \\frac{1}{4} + \\frac{1}{2} - \\frac{1}{8}\\). Taking a common denominator of \\(8\\), this is \\(\\frac{2 + 4 - 1}{8}\\). Hence \\(P(E \\text{ or } F) = \\frac{5}{8}\\)."
+  },
+  {
+    "id": "2a030a63-abd7-46fe-b266-eb81dfd803b4",
+    "ref": "Ex 14.2 Q15(ii)",
+    "solution": "The event not \\(E\\) and not \\(F\\) is \\(E' \\cap F'\\), which by De Morgan's law equals \\((E \\cup F)'\\). Hence \\(P(E' \\cap F') = 1 - P(E \\cup F)\\). From part (i), \\(P(E \\cup F) = \\frac{5}{8}\\), so \\(P(E' \\cap F') = 1 - \\frac{5}{8}\\). Hence \\(P(\\text{not } E \\text{ and not } F) = \\frac{3}{8}\\)."
+  },
+  {
+    "id": "c1594e7c-ea1d-4bb9-a17f-6790c0c8976b",
+    "ref": "Ex 14.2 Q16",
+    "solution": "The event not \\(E\\) or not \\(F\\) is \\(E' \\cup F'\\), which by De Morgan's law equals \\((E \\cap F)'\\). Hence \\(P(E' \\cup F') = 1 - P(E \\cap F)\\), so \\(0.25 = 1 - P(E \\cap F)\\) and therefore \\(P(E \\cap F) = 0.75\\). Two events are mutually exclusive precisely when \\(P(E \\cap F) = 0\\), but here \\(P(E \\cap F) = 0.75 \\neq 0\\). Hence \\(E\\) and \\(F\\) are not mutually exclusive."
+  },
+  {
+    "id": "c862d9f6-1c74-47a6-83f1-ff636b021df1",
+    "ref": "Ex 14.2 Q17(i)",
+    "solution": "The events \\(A\\) and not \\(A\\) are complementary, so \\(P(\\text{not } A) = P(A') = 1 - P(A)\\). Substituting \\(P(A) = 0.42\\) gives \\(1 - 0.42\\). Hence \\(P(\\text{not } A) = 0.58\\)."
+  },
+  {
+    "id": "3b951b76-d202-46d8-8f14-6d72f0627cb1",
+    "ref": "Ex 14.2 Q17(ii)",
+    "solution": "Similarly \\(P(\\text{not } B) = P(B') = 1 - P(B)\\). Substituting \\(P(B) = 0.48\\) gives \\(1 - 0.48\\). Hence \\(P(\\text{not } B) = 0.52\\)."
+  },
+  {
+    "id": "c9b4b94b-1715-41b9-9447-bf40ef2d3089",
+    "ref": "Ex 14.2 Q17(iii)",
+    "solution": "Here \\(P(A \\text{ and } B) = P(A \\cap B) = 0.16\\). By the addition rule, \\(P(A \\text{ or } B) = P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0.42 + 0.48 - 0.16 = 0.90 - 0.16\\). Hence \\(P(A \\text{ or } B) = 0.74\\)."
+  },
+  {
+    "id": "611ba64b-69e0-4e90-91e9-7aade5fc271e",
+    "ref": "Ex 14.2 Q18",
+    "solution": "Let \\(M\\) be the event that the chosen student studies Mathematics and \\(B\\) that the student studies Biology. The percentages give \\(P(M) = 0.40\\), \\(P(B) = 0.30\\) and \\(P(M \\cap B) = 0.10\\). The student studies Mathematics or Biology is the event \\(M \\cup B\\), so by the addition rule \\(P(M \\cup B) = P(M) + P(B) - P(M \\cap B) = 0.40 + 0.30 - 0.10\\). Hence the required probability is \\(0.6\\)."
+  },
+  {
+    "id": "39934312-a1f0-4267-9729-e5329fafa5e7",
+    "ref": "Ex 14.2 Q19",
+    "solution": "Let \\(A\\) be the event of passing the first examination and \\(B\\) that of passing the second, so \\(P(A) = 0.8\\) and \\(P(B) = 0.7\\). Passing at least one of them is the event \\(A \\cup B\\), so \\(P(A \\cup B) = 0.95\\). By the addition rule, \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\), so \\(0.95 = 0.8 + 0.7 - P(A \\cap B)\\), giving \\(P(A \\cap B) = 1.5 - 0.95\\). Hence the probability of passing both is \\(0.55\\)."
+  },
+  {
+    "id": "16865cab-55ae-4644-9c9b-e964b0b596e4",
+    "ref": "Ex 14.2 Q20",
+    "solution": "Let \\(E\\) be the event of passing English and \\(H\\) that of passing Hindi. Then \\(P(E \\cap H) = 0.5\\), \\(P(E) = 0.75\\), and passing neither is \\(E' \\cap H' = (E \\cup H)'\\), so \\(P((E \\cup H)') = 0.1\\) and therefore \\(P(E \\cup H) = 1 - 0.1 = 0.9\\). By the addition rule, \\(0.9 = 0.75 + P(H) - 0.5\\), so \\(P(H) = 0.9 - 0.25\\). Hence the probability of passing the Hindi examination is \\(0.65\\)."
+  },
+  {
+    "id": "8ceefc02-f524-4894-bed4-db44c1a48162",
+    "ref": "Ex 14.2 Q21(i)",
+    "solution": "Let \\(A\\) be the event that the student opted for NCC and \\(B\\) that the student opted for NSS. With \\(60\\) students in all, \\(n(S) = 60\\) and \\(P(A) = \\frac{30}{60}\\), \\(P(B) = \\frac{32}{60}\\), \\(P(A \\cap B) = \\frac{24}{60}\\). By the addition rule, \\(P(A \\cup B) = \\frac{30}{60} + \\frac{32}{60} - \\frac{24}{60} = \\frac{38}{60}\\), which counts the \\(30 + 32 - 24 = 38\\) students in at least one of the two. Hence the probability that the student opted for NCC or NSS is \\(\\frac{38}{60} = \\frac{19}{30}\\)."
+  },
+  {
+    "id": "3dd26b95-5ee8-433c-b780-ea9d0f55e8e8",
+    "ref": "Ex 14.2 Q21(ii)",
+    "solution": "The student opted for neither is the event \\(A' \\cap B' = (A \\cup B)'\\), so \\(P(A' \\cap B') = 1 - P(A \\cup B)\\). From part (i), \\(P(A \\cup B) = \\frac{19}{30}\\), so \\(P(A' \\cap B') = 1 - \\frac{19}{30}\\). Equivalently, \\(60 - 38 = 22\\) students opted for neither, giving \\(\\frac{22}{60}\\). Hence the required probability is \\(\\frac{11}{30}\\)."
+  },
+  {
+    "id": "4d87d19a-8b0e-47d0-b43b-a40bb868cbaa",
+    "ref": "Ex 14.2 Q21(iii)",
+    "solution": "The student opted for NSS but not NCC is the event \\(B \\cap A'\\), and since \\(B\\) splits into the disjoint parts \\(B \\cap A\\) and \\(B \\cap A'\\), we get \\(P(B \\cap A') = P(B) - P(A \\cap B) = \\frac{32}{60} - \\frac{24}{60} = \\frac{8}{60}\\). In counting terms, \\(32 - 24 = 8\\) students took NSS only. Hence the required probability is \\(\\frac{8}{60} = \\frac{2}{15}\\)."
+  },
+  {
+    "id": "c8c3809a-f93f-481d-9063-b9a921594e53",
+    "ref": "Misc Q1(i)",
+    "solution": "The box holds \\(10 + 20 + 30 = 60\\) marbles, and \\(5\\) are drawn together, so the number of equally likely selections is \\(n(S) = {}^{60}C_{5} = 5461512\\). All five being blue means all five come from the \\(20\\) blue marbles, which can happen in \\({}^{20}C_{5} = 15504\\) ways. Hence the probability is \\(\\frac{{}^{20}C_{5}}{{}^{60}C_{5}} = \\frac{15504}{5461512} = \\frac{34}{11977}\\)."
+  },
+  {
+    "id": "97b72385-2329-464c-8c5d-58e811ce8c98",
+    "ref": "Misc Q1(ii),",
+    "solution": "PLACEHOLDER"
+  }
+]

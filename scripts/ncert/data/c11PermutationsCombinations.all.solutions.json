@@ -1,0 +1,267 @@
+[
+  {
+    "id": "8e987e27-4a7d-41c5-a420-9510dc4545ff",
+    "ref": "Ex 6.1 Q1(i)",
+    "solution": "A 3-digit number needs the hundreds, tens and units places filled. Repetition is allowed, so each place can independently take any one of the 5 digits. By the fundamental principle of counting the number of such numbers is \\(5 \\times 5 \\times 5 = 125\\). Hence 125 three-digit numbers can be formed."
+  },
+  {
+    "id": "ea3dbc0d-9f8c-4092-a0eb-126db36dba39",
+    "ref": "Ex 6.1 Q1(ii)",
+    "solution": "Now no digit may repeat, so the choices shrink at each step: the hundreds place can be filled in 5 ways, the tens place in 4 ways (one digit is already used) and the units place in 3 ways. By the fundamental principle of counting the number of such numbers is \\(5 \\times 4 \\times 3 = 60\\), which is \\({}^{5}P_{3}\\). Hence 60 three-digit numbers can be formed."
+  },
+  {
+    "id": "edd2c85c-ebf2-40fc-818c-a0dae6cdeb48",
+    "ref": "Ex 6.1 Q2",
+    "solution": "The number is even exactly when its units digit is even, so the units place must be filled by 2, 4 or 6, giving 3 choices. Repetition is allowed, so the hundreds and the tens places can each be filled by any of the 6 digits. By the fundamental principle of counting the number of 3-digit even numbers is \\(6 \\times 6 \\times 3 = 108\\). Hence 108 such numbers can be formed."
+  },
+  {
+    "id": "e47f5a1e-2859-4e21-8497-16cbc39ee74a",
+    "ref": "Ex 6.1 Q3",
+    "solution": "A code is an ordered arrangement of 4 letters chosen from the 10 letters \\(a, b, \\ldots, j\\), with no repetition. The four places can be filled in \\(10, 9, 8, 7\\) ways respectively, so the number of codes is \\({}^{10}P_{4} = 10 \\times 9 \\times 8 \\times 7 = 5040\\). Hence 5040 codes can be formed."
+  },
+  {
+    "id": "3f9689fc-8ad9-4335-ad4e-afe8d4e48cb1",
+    "ref": "Ex 6.1 Q4",
+    "solution": "The first two places are fixed as 6 and 7, so only the last three places are free. Since no digit may repeat, 6 and 7 are already used and the remaining three places must be filled from the other 8 digits. The number of ways is \\({}^{8}P_{3} = 8 \\times 7 \\times 6 = 336\\). Hence 336 such telephone numbers can be constructed."
+  },
+  {
+    "id": "4d7ae46f-a3c4-4c84-a302-a5a2a0c33c0a",
+    "ref": "Ex 6.1 Q5",
+    "solution": "Each toss can result in a head or a tail, that is 2 outcomes, and the outcomes of the three tosses are recorded in order. By the fundamental principle of counting the total number of outcomes is \\(2 \\times 2 \\times 2 = 2^{3} = 8\\). Hence there are 8 possible outcomes."
+  },
+  {
+    "id": "00dffab9-1490-405e-a95b-0b72c229af60",
+    "ref": "Ex 6.1 Q6",
+    "solution": "A signal uses two of the five flags placed one below the other, so it is an ordered pair of two different flags. The upper place can be filled in 5 ways and the lower place in 4 ways, since the flags are of different colours and one is already used. The number of signals is \\({}^{5}P_{2} = 5 \\times 4 = 20\\). Hence 20 different signals can be generated."
+  },
+  {
+    "id": "141da0b2-33c1-4c70-bd07-6c90c4bfb679",
+    "ref": "Ex 6.2 Q1(i)",
+    "solution": "By definition \\(8! = 8 \\times 7 \\times 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1\\). Multiplying step by step, \\(8 \\times 7 = 56\\), \\(56 \\times 6 = 336\\), \\(336 \\times 5 = 1680\\), \\(1680 \\times 4 = 6720\\), \\(6720 \\times 3 = 20160\\), \\(20160 \\times 2 = 40320\\). Hence \\(8! = 40320\\)."
+  },
+  {
+    "id": "46366ba8-efea-46fc-928e-2a3b59358aa6",
+    "ref": "Ex 6.2 Q1(ii)",
+    "solution": "Here \\(4! = 4 \\times 3 \\times 2 \\times 1 = 24\\) and \\(3! = 3 \\times 2 \\times 1 = 6\\). Therefore \\(4! - 3! = 24 - 6 = 18\\)."
+  },
+  {
+    "id": "9ad9364f-3067-480a-b48f-286c7d9332cc",
+    "ref": "Ex 6.2 Q2",
+    "solution": "Evaluate the two sides separately. On the left, \\(3! + 4! = 6 + 24 = 30\\). On the right, \\(7! = 5040\\). Since \\(30 \\ne 5040\\), the two sides are not equal. Hence no, \\(3! + 4! \\ne 7!\\)."
+  },
+  {
+    "id": "7712f143-1b19-4ace-ac0e-3abaa2c8b09e",
+    "ref": "Ex 6.2 Q3",
+    "solution": "Write \\(8! = 8 \\times 7 \\times 6!\\) so that the \\(6!\\) cancels: \\(\\frac{8!}{6! \\times 2!} = \\frac{8 \\times 7 \\times 6!}{6! \\times 2} = \\frac{56}{2} = 28\\). Hence the value is 28."
+  },
+  {
+    "id": "af023f1c-a73b-4782-98c1-5b0727d3a463",
+    "ref": "Ex 6.2 Q4",
+    "solution": "Multiply both sides of \\(\\frac{1}{6!} + \\frac{1}{7!} = \\frac{x}{8!}\\) by \\(8!\\), which gives \\(x = \\frac{8!}{6!} + \\frac{8!}{7!}\\). Now \\(\\frac{8!}{6!} = 8 \\times 7 = 56\\) and \\(\\frac{8!}{7!} = 8\\). Hence \\(x = 56 + 8 = 64\\)."
+  },
+  {
+    "id": "80a35ca2-017c-44a0-8637-180d1be925d5",
+    "ref": "Ex 6.2 Q5(i)",
+    "solution": "Substituting \\(n = 6\\) and \\(r = 2\\), \\(\\frac{n!}{(n-r)!} = \\frac{6!}{4!} = 6 \\times 5 = 30\\). Hence the value is 30."
+  },
+  {
+    "id": "def7e364-6897-4746-9c7a-3773ac29ee6d",
+    "ref": "Ex 6.2 Q5(ii)",
+    "solution": "Substituting \\(n = 9\\) and \\(r = 5\\), \\(\\frac{n!}{(n-r)!} = \\frac{9!}{4!} = 9 \\times 8 \\times 7 \\times 6 \\times 5\\). Multiplying, \\(9 \\times 8 = 72\\), \\(72 \\times 7 = 504\\), \\(504 \\times 6 = 3024\\), \\(3024 \\times 5 = 15120\\). Hence the value is 15120."
+  },
+  {
+    "id": "ec33a23d-666b-4ee2-810f-1298d960fd05",
+    "ref": "Ex 6.3 Q1",
+    "solution": "The digits 1 to 9 are nine in number and none of them is 0, so every arrangement of three of them is a valid 3-digit number. Since no digit is repeated, the count is the number of permutations of 9 digits taken 3 at a time, \\({}^{9}P_{3} = 9 \\times 8 \\times 7 = 504\\). Hence 504 such numbers can be formed."
+  },
+  {
+    "id": "b3e84e32-1960-4668-903d-e7d3e126e888",
+    "ref": "Ex 6.3 Q2",
+    "solution": "The available digits are \\(0, 1, \\ldots, 9\\), and a 4-digit number cannot begin with 0. So the thousands place can be filled in 9 ways. After that, 9 digits remain (including 0) for the other three places, which can be filled without repetition in \\({}^{9}P_{3} = 9 \\times 8 \\times 7 = 504\\) ways. By the fundamental principle of counting the total is \\(9 \\times 504 = 4536\\). Hence there are 4536 such numbers."
+  },
+  {
+    "id": "64379412-083a-44da-9a0c-2c63831b625b",
+    "ref": "Ex 6.3 Q3",
+    "solution": "For the number to be even the units digit must be one of 2, 4, 6, so the units place can be filled in 3 ways. No digit repeats, so the hundreds and tens places are filled from the remaining 5 digits in \\({}^{5}P_{2} = 5 \\times 4 = 20\\) ways. The total is \\(3 \\times 20 = 60\\). Hence 60 such numbers can be made."
+  },
+  {
+    "id": "26d56a22-8132-42cf-94ff-b5adf651ed56",
+    "ref": "Ex 6.3 Q4",
+    "solution": "Choosing and arranging 4 of the 5 digits without repetition gives \\({}^{5}P_{4} = 5 \\times 4 \\times 3 \\times 2 = 120\\) numbers. For an even number the units digit must be 2 or 4, which can be done in 2 ways, and the remaining three places are filled from the other 4 digits in \\({}^{4}P_{3} = 4 \\times 3 \\times 2 = 24\\) ways, giving \\(2 \\times 24 = 48\\). Hence 120 numbers can be formed, of which 48 are even."
+  },
+  {
+    "id": "051feec2-2977-481f-b08c-2acb6804ac69",
+    "ref": "Ex 6.3 Q5",
+    "solution": "The two posts are different and no person can hold both, so this is an ordered selection of 2 persons out of 8. The chairman can be chosen in 8 ways and then the vice chairman in 7 ways, that is \\({}^{8}P_{2} = 8 \\times 7 = 56\\). Hence there are 56 ways."
+  },
+  {
+    "id": "9bb715b2-7cab-42ff-8b29-5e7acd9754c9",
+    "ref": "Ex 6.3 Q6",
+    "solution": "Here \\({}^{n-1}P_{3} = \\frac{(n-1)!}{(n-4)!}\\) and \\({}^{n}P_{4} = \\frac{n!}{(n-4)!}\\), so the two share the same denominator and the ratio simplifies to \\(\\frac{(n-1)!}{n!} = \\frac{1}{n}\\). The given condition is therefore \\(\\frac{1}{n} = \\frac{1}{9}\\), so \\(n = 9\\). This is admissible since \\({}^{n}P_{4}\\) requires \\(n \\ge 4\\). Hence \\(n = 9\\)."
+  },
+  {
+    "id": "0468b5bf-61d9-459b-9dba-439f5cc475d4",
+    "ref": "Ex 6.3 Q7(i)",
+    "solution": "Write both sides in factorial form: \\(\\frac{5!}{(5-r)!} = 2 \\cdot \\frac{6!}{(6-(r-1))!} = 2 \\cdot \\frac{6!}{(7-r)!}\\). Cross-multiplying, \\(\\frac{(7-r)!}{(5-r)!} = \\frac{2 \\times 720}{120} = 12\\), that is \\((7-r)(6-r) = 12\\). Putting \\(m = 6-r\\) gives \\(m^{2} + m - 12 = 0\\), so \\(m = 3\\) or \\(m = -4\\), i.e. \\(r = 3\\) or \\(r = 10\\). Since \\({}^{5}P_{r}\\) is defined only for \\(r \\le 5\\), the root \\(r = 10\\) is rejected. Checking, \\({}^{5}P_{3} = 60\\) and \\(2\\,{}^{6}P_{2} = 2 \\times 30 = 60\\). Hence \\(r = 3\\)."
+  },
+  {
+    "id": "6db46f54-4f4b-4ed5-a9d3-c2216fa100fc",
+    "ref": "Ex 6.3 Q7(ii)",
+    "solution": "In factorial form the condition is \\(\\frac{5!}{(5-r)!} = \\frac{6!}{(7-r)!}\\), so \\(\\frac{(7-r)!}{(5-r)!} = \\frac{720}{120} = 6\\), that is \\((7-r)(6-r) = 6\\). Putting \\(m = 6-r\\) gives \\(m^{2} + m - 6 = 0\\), so \\(m = 2\\) or \\(m = -3\\), i.e. \\(r = 4\\) or \\(r = 9\\). Since \\({}^{5}P_{r}\\) requires \\(r \\le 5\\), the root \\(r = 9\\) is rejected. Checking, \\({}^{5}P_{4} = 120\\) and \\({}^{6}P_{3} = 120\\). Hence \\(r = 4\\)."
+  },
+  {
+    "id": "fe6a3226-c9a5-43cf-90c3-8b92e3cf8e3d",
+    "ref": "Ex 6.3 Q8",
+    "solution": "The word EQUATION has 8 letters and all of them are different, so the words are simply the arrangements of 8 distinct letters taken all at a time. Their number is \\(8! = 40320\\). Hence 40320 words can be formed."
+  },
+  {
+    "id": "6cf8692f-ad31-4795-919a-293dc4f547ad",
+    "ref": "Ex 6.3 Q9(i)",
+    "solution": "MONDAY has 6 different letters and a word here is an ordered arrangement of 4 of them with no repetition. The number of such words is \\({}^{6}P_{4} = 6 \\times 5 \\times 4 \\times 3 = 360\\). Hence 360 words can be made."
+  },
+  {
+    "id": "dd16be9d-526a-46f9-8fe1-320792a810d1",
+    "ref": "Ex 6.3 Q9(ii)",
+    "solution": "Using all 6 different letters at a time, the number of words is the number of arrangements of 6 distinct letters, \\({}^{6}P_{6} = 6! = 720\\). Hence 720 words can be made."
+  },
+  {
+    "id": "46021e91-880b-4c84-b276-e2309e140a62",
+    "ref": "Ex 6.3 Q9(iii)",
+    "solution": "The vowels in MONDAY are O and A, so the first place can be filled in 2 ways. The remaining 5 distinct letters then fill the remaining 5 places in \\(5! = 120\\) ways. By the fundamental principle of counting the number of words is \\(2 \\times 120 = 240\\). Hence 240 words can be made."
+  },
+  {
+    "id": "8fc00694-1112-437d-a79b-ede18c1ad1f7",
+    "ref": "Ex 6.3 Q10",
+    "solution": "MISSISSIPPI has 11 letters with M once, I four times, S four times and P twice. The total number of distinct permutations is \\(\\frac{11!}{4!\\,4!\\,2!} = \\frac{39916800}{24 \\times 24 \\times 2} = 34650\\). To count those in which the four I's do come together, treat the four I's as a single block; then there are \\(1 + 1 + 4 + 2 = 8\\) objects, namely the block, M, four S's and two P's, giving \\(\\frac{8!}{4!\\,2!} = \\frac{40320}{48} = 840\\) arrangements (the I's inside the block are identical, so they contribute nothing further). Subtracting, the number in which the four I's do not come together is \\(34650 - 840 = 33810\\)."
+  },
+  {
+    "id": "76184153-14c9-44c6-895c-989791139500",
+    "ref": "Ex 6.3 Q11(i)",
+    "solution": "PERMUTATIONS has 12 letters, of which T occurs twice and every other letter occurs once. Fixing P in the first place and S in the last place leaves the remaining 10 letters, still containing two T's, to be arranged in the 10 middle places. The number of such arrangements is \\(\\frac{10!}{2!} = \\frac{3628800}{2} = 1814400\\). Hence there are 1814400 such words."
+  },
+  {
+    "id": "6ea780f5-7449-476a-ac1a-f0ee7c4926fe",
+    "ref": "Ex 6.3 Q11(ii)",
+    "solution": "The vowels of PERMUTATIONS are E, U, A, I, O, five in number and all different; the remaining 7 letters P, R, M, T, T, N, S are the consonants, with T repeated. Treating the block of vowels as one object, there are \\(1 + 7 = 8\\) objects with T occurring twice, which can be arranged in \\(\\frac{8!}{2!} = 20160\\) ways. The 5 vowels inside the block can be arranged among themselves in \\(5! = 120\\) ways. Hence the number of arrangements is \\(20160 \\times 120 = 2419200\\)."
+  },
+  {
+    "id": "7ef18764-cdc2-4d79-9fe1-c5ce8fab3275",
+    "ref": "Ex 6.3 Q11(iii)",
+    "solution": "If exactly 4 letters lie between P and S, their positions differ by 5. Among the places \\(1, 2, \\ldots, 12\\) the pairs at distance 5 are \\((1,6), (2,7), (3,8), (4,9), (5,10), (6,11), (7,12)\\), that is 7 pairs, and P and S can be placed in either order in each pair, giving \\(7 \\times 2 = 14\\) choices. The remaining 10 letters, which still contain two T's, fill the other 10 places in \\(\\frac{10!}{2!} = 1814400\\) ways. Hence the number of arrangements is \\(14 \\times 1814400 = 25401600\\)."
+  },
+  {
+    "id": "af99b288-4f1f-4689-ab4f-471608634dfb",
+    "ref": "Ex 6.4 Q1",
+    "solution": "If \\({}^{n}C_{a} = {}^{n}C_{b}\\) then either \\(a = b\\) or \\(a + b = n\\). Here \\(a = 8\\) and \\(b = 2\\) are unequal, so \\(n = 8 + 2 = 10\\). Therefore \\({}^{n}C_{2} = {}^{10}C_{2} = \\frac{10 \\times 9}{2} = 45\\)."
+  },
+  {
+    "id": "294da4d3-7b07-4da2-81f7-cb9202255a2d",
+    "ref": "Ex 6.4 Q2(i)",
+    "solution": "Writing both terms out, \\({}^{2n}C_{3} = \\frac{2n(2n-1)(2n-2)}{6}\\) and \\({}^{n}C_{3} = \\frac{n(n-1)(n-2)}{6}\\). Their ratio, using \\(2n-2 = 2(n-1)\\), simplifies to \\(\\frac{4(2n-1)}{n-2}\\). Setting this equal to 12 gives \\(4(2n-1) = 12(n-2)\\), i.e. \\(8n - 4 = 12n - 24\\), so \\(4n = 20\\) and \\(n = 5\\). This satisfies \\(n \\ge 3\\), as \\({}^{n}C_{3}\\) requires. Checking, \\({}^{10}C_{3} = 120\\) and \\({}^{5}C_{3} = 10\\), whose ratio is \\(12 : 1\\). Hence \\(n = 5\\)."
+  },
+  {
+    "id": "59d60eca-ad8d-473f-b650-c82bf42d3771",
+    "ref": "Ex 6.4 Q2(ii)",
+    "solution": "As before the ratio \\({}^{2n}C_{3} : {}^{n}C_{3}\\) simplifies to \\(\\frac{4(2n-1)}{n-2}\\). Setting this equal to 11 gives \\(4(2n-1) = 11(n-2)\\), i.e. \\(8n - 4 = 11n - 22\\), so \\(3n = 18\\) and \\(n = 6\\). This satisfies \\(n \\ge 3\\). Checking, \\({}^{12}C_{3} = 220\\) and \\({}^{6}C_{3} = 20\\), whose ratio is \\(11 : 1\\). Hence \\(n = 6\\)."
+  },
+  {
+    "id": "0f17e01f-1a6b-419f-bb9b-a3dc95cdc17c",
+    "ref": "Ex 6.4 Q3",
+    "solution": "A chord is determined by its two end points, and the order of the two points does not matter, so the number of chords is the number of ways of choosing 2 points out of 21. This is \\({}^{21}C_{2} = \\frac{21 \\times 20}{2} = 210\\). Hence 210 chords can be drawn."
+  },
+  {
+    "id": "95029c4f-fe4a-472f-972c-a0070e75b06a",
+    "ref": "Ex 6.4 Q4",
+    "solution": "A team is an unordered selection, so the 3 boys can be chosen from 5 in \\({}^{5}C_{3} = 10\\) ways and the 3 girls from 4 in \\({}^{4}C_{3} = 4\\) ways. The two choices are independent, so the number of teams is \\(10 \\times 4 = 40\\). Hence there are 40 ways."
+  },
+  {
+    "id": "dd312722-5702-4bd5-ae97-3b94bf70dc37",
+    "ref": "Ex 6.4 Q5",
+    "solution": "Each selection takes 3 red from 6, 3 white from 5 and 3 blue from 5, and the order of selection is immaterial. The number of ways is \\({}^{6}C_{3} \\times {}^{5}C_{3} \\times {}^{5}C_{3} = 20 \\times 10 \\times 10 = 2000\\). Hence there are 2000 ways."
+  },
+  {
+    "id": "277f3219-324f-47ee-8471-45e4d8a0648b",
+    "ref": "Ex 6.4 Q6",
+    "solution": "A deck has 4 aces and 48 non-ace cards. Exactly one ace means choosing 1 ace from 4 and the other 4 cards from the 48 non-aces. The number of combinations is \\({}^{4}C_{1} \\times {}^{48}C_{4} = 4 \\times \\frac{48 \\times 47 \\times 46 \\times 45}{24} = 4 \\times 194580 = 778320\\). Hence there are 778320 such combinations."
+  },
+  {
+    "id": "4a4168e6-24d3-475c-94e7-900f9134b3f8",
+    "ref": "Ex 6.4 Q7",
+    "solution": "Of the 17 players, 5 are bowlers and the other 12 are not. The team must contain exactly 4 bowlers, chosen in \\({}^{5}C_{4} = 5\\) ways, and the remaining \\(11 - 4 = 7\\) players chosen from the 12 non-bowlers in \\({}^{12}C_{7} = 792\\) ways. The number of teams is \\(5 \\times 792 = 3960\\). Hence there are 3960 ways."
+  },
+  {
+    "id": "1536a95e-3b3e-48b7-b5ac-a9dca1c36a28",
+    "ref": "Ex 6.4 Q8",
+    "solution": "The 2 black balls are chosen from 5 in \\({}^{5}C_{2} = 10\\) ways and the 3 red balls from 6 in \\({}^{6}C_{3} = 20\\) ways, the order being immaterial. The number of selections is \\(10 \\times 20 = 200\\). Hence there are 200 ways."
+  },
+  {
+    "id": "744ce4e7-1eef-428f-a151-f2410d5801b1",
+    "ref": "Ex 6.4 Q9",
+    "solution": "Two of the 5 courses are already fixed, being compulsory, so the student has only to choose the remaining \\(5 - 2 = 3\\) courses from the other \\(9 - 2 = 7\\) courses. The number of ways is \\({}^{7}C_{3} = \\frac{7 \\times 6 \\times 5}{6} = 35\\). Hence a programme can be chosen in 35 ways."
+  },
+  {
+    "id": "19a552ba-8026-4403-92ef-694038ed2ae3",
+    "ref": "Misc Q1",
+    "solution": "DAUGHTER has 8 different letters, of which A, U, E are the 3 vowels and D, G, H, T, R are the 5 consonants. Choose 2 vowels in \\({}^{3}C_{2} = 3\\) ways and 3 consonants in \\({}^{5}C_{3} = 10\\) ways; the 5 chosen letters are all different and can then be arranged into a word in \\(5! = 120\\) ways. The number of words is \\(3 \\times 10 \\times 120 = 3600\\). Hence 3600 words can be formed."
+  },
+  {
+    "id": "7db27720-8421-42ab-bb07-504c42f67d1f",
+    "ref": "Misc Q2",
+    "solution": "EQUATION has 8 different letters, of which E, U, A, I, O are the 5 vowels and Q, T, N are the 3 consonants. The vowels must stay together and the consonants must stay together, so we have just 2 blocks, which can be placed in \\(2! = 2\\) orders. Within the blocks the vowels can be arranged in \\(5! = 120\\) ways and the consonants in \\(3! = 6\\) ways. The number of words is \\(2 \\times 120 \\times 6 = 1440\\). Hence 1440 words can be formed."
+  },
+  {
+    "id": "c18cd503-150d-4964-8d74-28701aa79a09",
+    "ref": "Misc Q3(i)",
+    "solution": "Exactly 3 girls means the committee has 3 of the 4 girls and \\(7 - 3 = 4\\) of the 9 boys. The number of committees is \\({}^{4}C_{3} \\times {}^{9}C_{4} = 4 \\times 126 = 504\\). Hence there are 504 ways."
+  },
+  {
+    "id": "f77c7c0a-d6c6-415a-b9bd-5a31d4cacd67",
+    "ref": "Misc Q3(ii)",
+    "solution": "Since there are only 4 girls, at least 3 girls means either exactly 3 girls or exactly 4 girls. With 3 girls and 4 boys the count is \\({}^{4}C_{3} \\times {}^{9}C_{4} = 4 \\times 126 = 504\\); with 4 girls and 3 boys it is \\({}^{4}C_{4} \\times {}^{9}C_{3} = 1 \\times 84 = 84\\). These cases are mutually exclusive, so the total is \\(504 + 84 = 588\\). Hence there are 588 ways."
+  },
+  {
+    "id": "946a7177-fa4b-4f62-bfd8-b800cf8ff9cf",
+    "ref": "Misc Q3(iii)",
+    "solution": "At most 3 girls means 0, 1, 2 or 3 girls, which is every committee except those with all 4 girls. The total number of committees of 7 from the 13 persons is \\({}^{13}C_{7} = 1716\\), and the number with 4 girls and 3 boys is \\({}^{4}C_{4} \\times {}^{9}C_{3} = 84\\). Subtracting, the required number is \\(1716 - 84 = 1632\\). Hence there are 1632 ways."
+  },
+  {
+    "id": "fb7b7b29-6b57-4db9-bbbe-50a66fdb0ea7",
+    "ref": "Misc Q4",
+    "solution": "EXAMINATION has 11 letters, in which A, I and N each occur twice and E, X, M, T, O each occur once. In dictionary order the letters rank as \\(A < E < I < M < N < O < T < X\\), so the only letters that come before E are the A's. Hence the words listed before the first word beginning with E are exactly those beginning with A. Fixing one A in the first place leaves 10 letters, still containing two I's and two N's, to be arranged in \\(\\frac{10!}{2!\\,2!} = \\frac{3628800}{4} = 907200\\) ways. Hence there are 907200 words before the first word starting with E."
+  },
+  {
+    "id": "129d9ce9-4eb7-4680-afdd-a6d1bc17d3d1",
+    "ref": "Misc Q5",
+    "solution": "A number is divisible by 10 exactly when its units digit is 0, so the units place is forced to be 0, which can be done in 1 way. The remaining 5 digits 1, 3, 5, 7, 9 then fill the other 5 places without repetition in \\(5! = 120\\) ways, and since 0 is used at the end no arrangement begins with 0. Hence 120 such 6-digit numbers can be formed."
+  },
+  {
+    "id": "ea0085fc-8631-4da9-b3a4-7a42ff44f84f",
+    "ref": "Misc Q6",
+    "solution": "Choose the 2 different vowels from 5 in \\({}^{5}C_{2} = 10\\) ways and the 2 different consonants from 21 in \\({}^{21}C_{2} = 210\\) ways. The 4 chosen letters are all different and form a word in \\(4! = 24\\) ways. The number of words is \\(10 \\times 210 \\times 24 = 50400\\). Hence 50400 words can be formed."
+  },
+  {
+    "id": "3cc77cd3-584c-4347-a48d-38e8121f5421",
+    "ref": "Misc Q7",
+    "solution": "Let the student attempt \\(a\\) questions from Part I (which has 5) and \\(8-a\\) from Part II (which has 7), with \\(a \\ge 3\\) and \\(8-a \\ge 3\\). Then \\(3 \\le a \\le 5\\), giving the three cases \\((3,5)\\), \\((4,4)\\), \\((5,3)\\). Their counts are \\({}^{5}C_{3} \\times {}^{7}C_{5} = 10 \\times 21 = 210\\), \\({}^{5}C_{4} \\times {}^{7}C_{4} = 5 \\times 35 = 175\\) and \\({}^{5}C_{5} \\times {}^{7}C_{3} = 1 \\times 35 = 35\\). These cases are mutually exclusive, so the total is \\(210 + 175 + 35 = 420\\). Hence the student can select the questions in 420 ways."
+  },
+  {
+    "id": "da04fe26-2194-4aaa-81ae-39a48f00229e",
+    "ref": "Misc Q8",
+    "solution": "A deck has 4 kings and 48 other cards. Exactly one king means choosing 1 king from 4 and the remaining 4 cards from the 48 non-kings. The number of combinations is \\({}^{4}C_{1} \\times {}^{48}C_{4} = 4 \\times \\frac{48 \\times 47 \\times 46 \\times 45}{24} = 4 \\times 194580 = 778320\\). Hence there are 778320 such combinations."
+  },
+  {
+    "id": "91df420b-1936-4911-ba46-03322317bfed",
+    "ref": "Misc Q9",
+    "solution": "There are \\(5 + 4 = 9\\) places in the row, and the even places are the 2nd, 4th, 6th and 8th, exactly 4 of them. The 4 women occupy these 4 places in \\(4! = 24\\) ways, and the 5 men occupy the remaining 5 odd places in \\(5! = 120\\) ways. By the fundamental principle of counting the number of arrangements is \\(24 \\times 120 = 2880\\). Hence 2880 such arrangements are possible."
+  },
+  {
+    "id": "f956464e-2515-47ff-a994-ecca445df65b",
+    "ref": "Misc Q10",
+    "solution": "The 3 students who decide together give two mutually exclusive cases. If all 3 join, the remaining \\(10 - 3 = 7\\) members are chosen from the other \\(25 - 3 = 22\\) students in \\({}^{22}C_{7} = 170544\\) ways. If none of them joins, all 10 members are chosen from those 22 students in \\({}^{22}C_{10} = 646646\\) ways. Adding, the number of ways is \\(170544 + 646646 = 817190\\). Hence the party can be chosen in 817190 ways."
+  },
+  {
+    "id": "70db41f6-3fbf-4ef6-b70c-0751bf3c298c",
+    "ref": "Misc Q11",
+    "solution": "ASSASSINATION has 13 letters, in which A occurs 3 times, S occurs 4 times, I occurs twice, N occurs twice, and T and O occur once each. Since all four S's must be together, treat them as a single block; the S's inside it are identical, so the block can be formed in only one way. There are then \\(1 + 9 = 10\\) objects to arrange, namely the block together with A, A, A, I, I, N, N, T, O. The number of arrangements is \\(\\frac{10!}{3!\\,2!\\,2!} = \\frac{3628800}{24} = 151200\\). Hence there are 151200 such arrangements."
+  }
+]

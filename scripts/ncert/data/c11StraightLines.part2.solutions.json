@@ -1,0 +1,133 @@
+[
+  {
+    "id": "b22d6878-6b21-4517-9de1-5496b44bdf68",
+    "ref": "Misc Q1(a)",
+    "solution": "A line is parallel to the \\(x\\)-axis exactly when the coefficient of \\(x\\) vanishes while the coefficient of \\(y\\) does not. So \\(k - 3 = 0\\), giving \\(k = 3\\). Then the coefficient of \\(y\\) is \\(-(4 - 3^2) = 5 \\ne 0\\) and the constant is \\(9 - 21 + 6 = -6\\), so the equation becomes \\(5y - 6 = 0\\), i.e. \\(y = \\frac{6}{5}\\), which is indeed horizontal. Hence \\(k = 3\\)."
+  },
+  {
+    "id": "ee886a60-fbea-4ff5-a134-1f109336cf47",
+    "ref": "Misc Q1(b)",
+    "solution": "A line is parallel to the \\(y\\)-axis exactly when the coefficient of \\(y\\) vanishes while the coefficient of \\(x\\) does not. So \\(4 - k^2 = 0\\), giving \\(k = 2\\) or \\(k = -2\\); in both cases \\(k - 3 \\ne 0\\). For \\(k = 2\\) the equation is \\(-x - 4 = 0\\), i.e. \\(x = -4\\); for \\(k = -2\\) it is \\(-5x + 24 = 0\\), i.e. \\(x = \\frac{24}{5}\\). Both are vertical lines. Hence \\(k = \\pm 2\\)."
+  },
+  {
+    "id": "bbe89f51-5466-4210-9773-faae8e43fba3",
+    "ref": "Misc Q1(c)",
+    "solution": "The line passes through the origin exactly when the constant term is zero: \\(k^2 - 7k + 6 = 0\\), i.e. \\((k - 1)(k - 6) = 0\\), so \\(k = 1\\) or \\(k = 6\\). For \\(k = 1\\) the equation is \\(-2x - 3y = 0\\), i.e. \\(2x + 3y = 0\\); for \\(k = 6\\) it is \\(3x + 32y = 0\\). Both are genuine lines through the origin. Hence \\(k = 1\\) or \\(k = 6\\)."
+  },
+  {
+    "id": "c7c9932f-a86c-4c98-b8df-0dfeffd75872",
+    "ref": "Misc Q2",
+    "solution": "Let the intercepts on the axes be \\(a\\) and \\(b\\), so \\(a + b = 1\\) and \\(ab = -6\\). Then \\(a\\) and \\(b\\) are the roots of \\(t^2 - t - 6 = 0\\), i.e. \\((t - 3)(t + 2) = 0\\), so the pair is \\(3\\) and \\(-2\\). Using \\(\\frac{x}{a} + \\frac{y}{b} = 1\\): with \\(a = 3,\\ b = -2\\) we get \\(\\frac{x}{3} - \\frac{y}{2} = 1\\), i.e. \\(2x - 3y = 6\\); with \\(a = -2,\\ b = 3\\) we get \\(-\\frac{x}{2} + \\frac{y}{3} = 1\\), i.e. \\(3x - 2y = -6\\). Hence the required lines are \\(2x - 3y - 6 = 0\\) and \\(3x - 2y + 6 = 0\\)."
+  },
+  {
+    "id": "0a509db8-c747-4c90-918f-7e1272a7293b",
+    "ref": "Misc Q3",
+    "solution": "Clearing fractions, the line is \\(4x + 3y - 12 = 0\\). A point on the \\(y\\)-axis is \\((0, k)\\), and its distance from the line is \\(\\frac{\\lvert 4(0) + 3k - 12\\rvert}{\\sqrt{4^2 + 3^2}} = \\frac{\\lvert 3k - 12\\rvert}{5}\\). Setting this equal to \\(4\\) gives \\(\\lvert 3k - 12\\rvert = 20\\), so \\(3k = 32\\) or \\(3k = -8\\). Hence the points are \\(\\left(0,\\ \\frac{32}{3}\\right)\\) and \\(\\left(0,\\ -\\frac{8}{3}\\right)\\)."
+  },
+  {
+    "id": "7430c461-dc11-4fb2-aff6-95529eff3b48",
+    "ref": "Misc Q4",
+    "solution": "The slope of the line through the two points is \\(\\frac{\\sin\\phi - \\sin\\theta}{\\cos\\phi - \\cos\\theta} = \\frac{2\\cos\\frac{\\theta+\\phi}{2}\\sin\\frac{\\phi-\\theta}{2}}{-2\\sin\\frac{\\theta+\\phi}{2}\\sin\\frac{\\phi-\\theta}{2}} = -\\cot\\frac{\\theta+\\phi}{2}\\). Using the point \\((\\cos\\theta,\\ \\sin\\theta)\\), the equation becomes \\(x\\cos\\frac{\\theta+\\phi}{2} + y\\sin\\frac{\\theta+\\phi}{2} = \\cos\\theta\\cos\\frac{\\theta+\\phi}{2} + \\sin\\theta\\sin\\frac{\\theta+\\phi}{2} = \\cos\\left(\\theta - \\frac{\\theta+\\phi}{2}\\right) = \\cos\\frac{\\theta-\\phi}{2}\\). The coefficients of \\(x\\) and \\(y\\) already satisfy \\(\\cos^2 + \\sin^2 = 1\\), so this is the normal form and the perpendicular distance from the origin is \\(\\left\\lvert\\cos\\frac{\\theta-\\phi}{2}\\right\\rvert\\).",
+    "_note": "Distance is non-negative, so the modulus is kept; in magnitude the answer is cos((theta - phi)/2). Verified numerically against the direct two-point line for three (theta, phi) pairs."
+  },
+  {
+    "id": "1c66f584-bdf2-4610-be47-d613d1160c21",
+    "ref": "Misc Q5",
+    "solution": "From \\(3x + y = 0\\) we get \\(y = -3x\\). Substituting in \\(x - 7y + 5 = 0\\) gives \\(x + 21x + 5 = 0\\), so \\(22x = -5\\), i.e. \\(x = -\\frac{5}{22}\\) and \\(y = \\frac{15}{22}\\). A line parallel to the \\(y\\)-axis has the form \\(x = c\\), so it must be \\(x = -\\frac{5}{22}\\), i.e. \\(22x + 5 = 0\\)."
+  },
+  {
+    "id": "60dc5588-03fb-42b0-8b05-c9f602297e2f",
+    "ref": "Misc Q6",
+    "solution": "The line \\(\\frac{x}{4} + \\frac{y}{6} = 1\\) has \\(y\\)-intercept \\(6\\), so it meets the \\(y\\)-axis at \\((0, 6)\\). Written as \\(3x + 2y = 12\\), its slope is \\(-\\frac{3}{2}\\), so a perpendicular line has slope \\(\\frac{2}{3}\\). Through \\((0, 6)\\): \\(y - 6 = \\frac{2}{3}(x - 0)\\), i.e. \\(3y - 18 = 2x\\). Hence the required line is \\(2x - 3y + 18 = 0\\)."
+  },
+  {
+    "id": "7a43c750-43eb-4828-9402-72133f2b4244",
+    "ref": "Misc Q7",
+    "solution": "The lines are \\(y = x\\), \\(y = -x\\) and \\(x = k\\). The first two meet at \\((0, 0)\\); \\(y = x\\) meets \\(x = k\\) at \\((k, k)\\); and \\(y = -x\\) meets \\(x = k\\) at \\((k, -k)\\). Taking the side on \\(x = k\\) as base, its length is \\(\\lvert k - (-k)\\rvert = 2\\lvert k\\rvert\\), and the corresponding height is the distance of \\((0,0)\\) from \\(x = k\\), namely \\(\\lvert k\\rvert\\). Hence the area is \\(\\frac{1}{2}\\cdot 2\\lvert k\\rvert\\cdot\\lvert k\\rvert = k^2\\) square units."
+  },
+  {
+    "id": "4ee194cc-2df0-4857-95ef-228ed542a94e",
+    "ref": "Misc Q8",
+    "solution": "Find where the two lines free of \\(p\\) meet: adding \\(3x + y = 2\\) and \\(2x - y = 3\\) gives \\(5x = 5\\), so \\(x = 1\\) and \\(y = 2 - 3 = -1\\). For the three lines to be concurrent, \\((1, -1)\\) must lie on \\(px + 2y - 3 = 0\\), so \\(p + 2(-1) - 3 = 0\\), i.e. \\(p - 5 = 0\\). Hence \\(p = 5\\)."
+  },
+  {
+    "id": "46c2b8ce-7343-4412-80d3-f6cc382168b1",
+    "ref": "Misc Q9",
+    "solution": "Let the three lines be concurrent at \\((h, k)\\). Then \\(k = m_ih + c_i\\), so \\(c_i = k - m_ih\\) for \\(i = 1, 2, 3\\). Hence \\(c_2 - c_3 = (m_3 - m_2)h\\), \\(c_3 - c_1 = (m_1 - m_3)h\\) and \\(c_1 - c_2 = (m_2 - m_1)h\\). Substituting, \\(m_1(c_2 - c_3) + m_2(c_3 - c_1) + m_3(c_1 - c_2) = h\\left[m_1(m_3 - m_2) + m_2(m_1 - m_3) + m_3(m_2 - m_1)\\right] = h\\left[(m_1m_3 - m_1m_2) + (m_1m_2 - m_2m_3) + (m_2m_3 - m_1m_3)\\right] = h\\cdot 0 = 0\\). Hence \\(m_1(c_2 - c_3) + m_2(c_3 - c_1) + m_3(c_1 - c_2) = 0\\)."
+  },
+  {
+    "id": "eb23b276-c6b5-4a37-938c-7fcb51865621",
+    "ref": "Misc Q10",
+    "solution": "The line \\(x - 2y = 3\\) has slope \\(\\frac{1}{2}\\). If the required slope is \\(m\\), then \\(\\tan 45^\\circ = 1 = \\left\\lvert\\frac{m - \\frac{1}{2}}{1 + \\frac{m}{2}}\\right\\rvert = \\left\\lvert\\frac{2m - 1}{2 + m}\\right\\rvert\\). Taking \\(2m - 1 = 2 + m\\) gives \\(m = 3\\); taking \\(2m - 1 = -(2 + m)\\) gives \\(3m = -1\\), i.e. \\(m = -\\frac{1}{3}\\). Through \\((3, 2)\\) these give \\(y - 2 = 3(x - 3)\\) and \\(y - 2 = -\\frac{1}{3}(x - 3)\\). Hence the two lines are \\(3x - y - 7 = 0\\) and \\(x + 3y - 9 = 0\\).",
+    "_note": "Two valid answers; both branches of the modulus give a genuine 45-degree line, and both are given."
+  },
+  {
+    "id": "043676f1-9aa4-485b-b639-1c5e25d505b2",
+    "ref": "Misc Q11",
+    "solution": "Solve \\(4x + 7y = 3\\) and \\(2x - 3y = -1\\). Doubling the second gives \\(4x - 6y = -2\\); subtracting from the first gives \\(13y = 5\\), so \\(y = \\frac{5}{13}\\) and then \\(2x = -1 + \\frac{15}{13} = \\frac{2}{13}\\), i.e. \\(x = \\frac{1}{13}\\). A line with equal non-zero intercepts \\(a\\) is \\(\\frac{x}{a} + \\frac{y}{a} = 1\\), i.e. \\(x + y = a\\). Putting \\(\\left(\\frac{1}{13},\\ \\frac{5}{13}\\right)\\) gives \\(a = \\frac{6}{13}\\). Hence the line is \\(x + y = \\frac{6}{13}\\), i.e. \\(13x + 13y - 6 = 0\\).",
+    "_note": "The intercept form needs a non-zero intercept. If one also admits the degenerate reading in which both intercepts are zero, the line through the origin and the point of intersection, y = 5x, would qualify; the intended answer is 13x + 13y - 6 = 0."
+  },
+  {
+    "id": "c08b948b-63b8-43ec-8a67-658636f726e5",
+    "ref": "Misc Q12",
+    "solution": "Let the line through the origin be \\(y = Mx\\), so that \\(\\frac{y}{x} = M\\). The angle \\(\\theta\\) between it and \\(y = mx + c\\) satisfies \\(\\tan\\theta = \\left\\lvert\\frac{m - M}{1 + mM}\\right\\rvert\\), i.e. \\(m - M = \\pm\\tan\\theta\\,(1 + mM)\\). With the upper sign, \\(m - M = \\tan\\theta + mM\\tan\\theta\\), so \\(m - \\tan\\theta = M(1 + m\\tan\\theta)\\), giving \\(M = \\frac{m - \\tan\\theta}{1 + m\\tan\\theta}\\). With the lower sign, \\(m - M = -\\tan\\theta - mM\\tan\\theta\\), so \\(m + \\tan\\theta = M(1 - m\\tan\\theta)\\), giving \\(M = \\frac{m + \\tan\\theta}{1 - m\\tan\\theta}\\). Combining the two cases, \\(\\frac{y}{x} = \\frac{m \\pm \\tan\\theta}{1 \\mp m\\tan\\theta}\\), as required."
+  },
+  {
+    "id": "e6b982eb-f2b9-498e-b520-4def88780672",
+    "ref": "Misc Q13",
+    "solution": "Let the line \\(x + y = 4\\) divide the join of \\((-1, 1)\\) and \\((5, 7)\\) in the ratio \\(k : 1\\). By the section formula the point of division is \\(\\left(\\frac{5k - 1}{k + 1},\\ \\frac{7k + 1}{k + 1}\\right)\\). It lies on the line, so \\(\\frac{(5k - 1) + (7k + 1)}{k + 1} = 4\\), i.e. \\(12k = 4k + 4\\), giving \\(k = \\frac{1}{2}\\). The point of division is then \\((1, 3)\\), which indeed satisfies \\(x + y = 4\\). Hence the ratio is \\(1 : 2\\)."
+  },
+  {
+    "id": "86d91ae5-8b3e-426c-b369-6b1583f9d73c",
+    "ref": "Misc Q14",
+    "solution": "The point \\((1, 2)\\) lies on \\(2x - y = 0\\), so the required distance is measured from \\((1,2)\\) to where this line cuts \\(4x + 7y + 5 = 0\\). Putting \\(y = 2x\\) gives \\(4x + 14x + 5 = 0\\), so \\(x = -\\frac{5}{18}\\) and \\(y = -\\frac{5}{9}\\). Then the distance is \\(\\sqrt{\\left(1 + \\frac{5}{18}\\right)^2 + \\left(2 + \\frac{5}{9}\\right)^2} = \\sqrt{\\left(\\frac{23}{18}\\right)^2 + \\left(\\frac{46}{18}\\right)^2} = \\frac{23}{18}\\sqrt{1 + 4} = \\frac{23\\sqrt{5}}{18}\\) units."
+  },
+  {
+    "id": "d6087ceb-00e0-40b1-90a3-fbca8d6a30c1",
+    "ref": "Misc Q15",
+    "solution": "Let the line through \\((-1, 2)\\) make an angle \\(\\alpha\\) with the \\(x\\)-axis, and write it parametrically as \\(x = -1 + r\\cos\\alpha\\), \\(y = 2 + r\\sin\\alpha\\), with \\(r = 3\\) at the point of intersection. Substituting in \\(x + y = 4\\) gives \\((-1 + 3\\cos\\alpha) + (2 + 3\\sin\\alpha) = 4\\), so \\(\\cos\\alpha + \\sin\\alpha = 1\\), i.e. \\(\\sqrt{2}\\sin\\left(\\alpha + 45^\\circ\\right) = 1\\), giving \\(\\alpha + 45^\\circ = 45^\\circ\\) or \\(135^\\circ\\), i.e. \\(\\alpha = 0^\\circ\\) or \\(\\alpha = 90^\\circ\\). Checking directly: a point of \\(x + y = 4\\) is \\((t,\\ 4 - t)\\), and \\((t + 1)^2 + (2 - t)^2 = 9\\) reduces to \\(t^2 - t - 2 = 0\\), so \\(t = 2\\) or \\(t = -1\\), giving the meeting points \\((2, 2)\\) and \\((-1, 5)\\), each exactly \\(3\\) units from \\((-1, 2)\\). Hence the line must be drawn at \\(0^\\circ\\) to the \\(x\\)-axis (the line \\(y = 2\\)) or at \\(90^\\circ\\) to it (the line \\(x = -1\\)).",
+    "_note": "Two valid directions; both are given. Both meeting points were checked to lie on x + y = 4 and to be exactly 3 units from (-1, 2)."
+  },
+  {
+    "id": "b3b8b611-f77d-462c-a49c-4d0284847575",
+    "ref": "Misc Q16",
+    "solution": "The legs are parallel to the axes, so one leg is vertical and the other horizontal, and the right-angled vertex takes its \\(x\\)-coordinate from one end of the hypotenuse and its \\(y\\)-coordinate from the other. Taking the vertex \\((1, 1)\\), the vertical leg through \\((1, 3)\\) is \\(x = 1\\) and the horizontal leg through \\((-4, 1)\\) is \\(y = 1\\); the two legs are then \\((1,1)\\) to \\((1,3)\\) and \\((1,1)\\) to \\((-4,1)\\), which are indeed perpendicular. Taking instead the vertex \\((-4, 3)\\), the vertical leg through \\((-4, 1)\\) is \\(x = -4\\) and the horizontal leg through \\((1, 3)\\) is \\(y = 3\\). Hence the legs are \\(x = 1\\) and \\(y = 1\\), or else \\(x = -4\\) and \\(y = 3\\).",
+    "_note": "Two valid configurations; both are given. Perpendicularity at each candidate vertex was verified by a zero dot product."
+  },
+  {
+    "id": "1548de8c-82fc-4b1e-ac60-929b84a3aeee",
+    "ref": "Misc Q17",
+    "solution": "Let the image be \\((h, k)\\). The mid-point \\(\\left(\\frac{3+h}{2},\\ \\frac{8+k}{2}\\right)\\) lies on \\(x + 3y = 7\\), so \\(3 + h + 24 + 3k = 14\\), giving \\(h + 3k = -13\\). Also the segment joining \\((3, 8)\\) to \\((h, k)\\) is perpendicular to the line, whose slope is \\(-\\frac{1}{3}\\), so \\(\\frac{k - 8}{h - 3} = 3\\), i.e. \\(k = 3h - 1\\). Substituting, \\(h + 3(3h - 1) = -13\\), so \\(10h = -10\\), giving \\(h = -1\\) and \\(k = -4\\). Hence the image is \\((-1, -4)\\)."
+  },
+  {
+    "id": "6ccc7cce-8583-4d75-89f9-1d15eb1c0f99",
+    "ref": "Misc Q18",
+    "solution": "The three slopes are \\(3\\), \\(\\frac{1}{2}\\) and \\(m\\). Equal inclination means \\(\\left\\lvert\\frac{3 - m}{1 + 3m}\\right\\rvert = \\left\\lvert\\frac{\\frac{1}{2} - m}{1 + \\frac{m}{2}}\\right\\rvert = \\left\\lvert\\frac{1 - 2m}{2 + m}\\right\\rvert\\). Taking \\((3 - m)(2 + m) = (1 - 2m)(1 + 3m)\\) gives \\(6 + m - m^2 = 1 + m - 6m^2\\), i.e. \\(5m^2 = -5\\), which has no real root. Taking \\((3 - m)(2 + m) = -(1 - 2m)(1 + 3m)\\) gives \\(6 + m - m^2 = -1 - m + 6m^2\\), i.e. \\(7m^2 - 2m - 7 = 0\\), so \\(m = \\frac{2 \\pm \\sqrt{4 + 196}}{14} = \\frac{2 \\pm 10\\sqrt{2}}{14}\\). Hence \\(m = \\frac{1 \\pm 5\\sqrt{2}}{7}\\).",
+    "_note": "Both roots are genuine and were checked numerically: each makes the tangent of the angle with slope 3 equal to that with slope 1/2."
+  },
+  {
+    "id": "39f5c6b7-9384-4a87-b7d3-dd066b1aad8b",
+    "ref": "Misc Q19",
+    "solution": "The condition on P \\((x, y)\\) is \\(\\frac{\\lvert x + y - 5\\rvert}{\\sqrt{1^2 + 1^2}} + \\frac{\\lvert 3x - 2y + 7\\rvert}{\\sqrt{3^2 + 2^2}} = 10\\), i.e. \\(\\frac{\\lvert x + y - 5\\rvert}{\\sqrt{2}} + \\frac{\\lvert 3x - 2y + 7\\rvert}{\\sqrt{13}} = 10\\). In any region where the two expressions keep fixed signs, the moduli may be dropped with suitable signs, and multiplying through by \\(\\sqrt{26}\\) gives \\(\\pm\\sqrt{13}\\,(x + y - 5) \\pm \\sqrt{2}\\,(3x - 2y + 7) = 10\\sqrt{26}\\), i.e. \\(Ax + By + C = 0\\) with \\(A = \\pm\\sqrt{13} \\pm 3\\sqrt{2}\\) and \\(B = \\pm\\sqrt{13} \\mp 2\\sqrt{2}\\). Since \\(13 \\ne 18\\) and \\(13 \\ne 8\\), neither \\(\\sqrt{13} = 3\\sqrt{2}\\) nor \\(\\sqrt{13} = 2\\sqrt{2}\\), so \\(A\\) and \\(B\\) are never zero. Each such equation is therefore a first-degree equation in \\(x\\) and \\(y\\), i.e. a straight line. Hence P must move on a line."
+  },
+  {
+    "id": "3c94ff6f-5957-4b71-b5cf-550798ba8049",
+    "ref": "Misc Q20",
+    "solution": "Multiplying \\(3x + 2y + 6 = 0\\) by \\(3\\) puts both lines on the same normal: \\(9x + 6y - 7 = 0\\) and \\(9x + 6y + 18 = 0\\). A line equidistant from them is parallel to both, say \\(9x + 6y + k = 0\\). Equating distances, \\(\\frac{\\lvert k + 7\\rvert}{\\sqrt{117}} = \\frac{\\lvert k - 18\\rvert}{\\sqrt{117}}\\), so \\(k + 7 = -(k - 18)\\), giving \\(2k = 11\\), i.e. \\(k = \\frac{11}{2}\\). Hence the line is \\(9x + 6y + \\frac{11}{2} = 0\\), i.e. \\(18x + 12y + 11 = 0\\)."
+  },
+  {
+    "id": "fb87e14d-89f0-4696-97a3-661842790f1f",
+    "ref": "Misc Q21",
+    "solution": "Reflection in the \\(x\\)-axis carries \\((1, 2)\\) to \\((1, -2)\\), and the reflected ray produced backwards passes through this image. So A is the point where the line joining \\((1, -2)\\) and \\((5, 3)\\) meets the \\(x\\)-axis. That line has slope \\(\\frac{3 - (-2)}{5 - 1} = \\frac{5}{4}\\), so \\(y + 2 = \\frac{5}{4}(x - 1)\\); putting \\(y = 0\\) gives \\(x - 1 = \\frac{8}{5}\\), i.e. \\(x = \\frac{13}{5}\\). Checking, the incident ray from \\((1,2)\\) to this point has slope \\(-\\frac{5}{4}\\) and the reflected ray to \\((5,3)\\) has slope \\(\\frac{5}{4}\\), as reflection in the \\(x\\)-axis requires. Hence A is \\(\\left(\\frac{13}{5},\\ 0\\right)\\)."
+  },
+  {
+    "id": "eed2d4fd-5d1a-4076-9fa6-64706a8b0c11",
+    "ref": "Misc Q22",
+    "solution": "Write the line as \\(\\frac{\\cos\\theta}{a}x + \\frac{\\sin\\theta}{b}y - 1 = 0\\) and put \\(c = \\sqrt{a^2 - b^2}\\). Its normalising denominator is \\(D = \\sqrt{\\frac{\\cos^2\\theta}{a^2} + \\frac{\\sin^2\\theta}{b^2}}\\), so \\(D^2 = \\frac{b^2\\cos^2\\theta + a^2\\sin^2\\theta}{a^2b^2}\\). The two perpendicular lengths are \\(p_1 = \\frac{1}{D}\\left\\lvert\\frac{c\\cos\\theta}{a} - 1\\right\\rvert\\) and \\(p_2 = \\frac{1}{D}\\left\\lvert\\frac{c\\cos\\theta}{a} + 1\\right\\rvert\\), so \\(p_1p_2 = \\frac{1}{D^2}\\left\\lvert 1 - \\frac{c^2\\cos^2\\theta}{a^2}\\right\\rvert = \\frac{a^2 - (a^2 - b^2)\\cos^2\\theta}{a^2}\\cdot\\frac{a^2b^2}{b^2\\cos^2\\theta + a^2\\sin^2\\theta}\\). Now \\(a^2 - (a^2 - b^2)\\cos^2\\theta = a^2(1 - \\cos^2\\theta) + b^2\\cos^2\\theta = a^2\\sin^2\\theta + b^2\\cos^2\\theta\\), which cancels with the denominator. Hence \\(p_1p_2 = b^2\\)."
+  },
+  {
+    "id": "0bbb99de-b5ed-4a09-9607-5e37cfc10ffc",
+    "ref": "Misc Q23",
+    "solution": "First find the junction. From \\(2x - 3y + 4 = 0\\) and \\(3x + 4y - 5 = 0\\): multiplying by \\(4\\) and \\(3\\) gives \\(8x - 12y = -16\\) and \\(9x + 12y = 15\\), which add to \\(17x = -1\\), so \\(x = -\\frac{1}{17}\\) and then \\(y = \\frac{22}{17}\\). To reach \\(6x - 7y + 8 = 0\\) in the least time he must take the shortest path, i.e. the perpendicular to it. That line has slope \\(\\frac{6}{7}\\), so the required slope is \\(-\\frac{7}{6}\\). Hence \\(y - \\frac{22}{17} = -\\frac{7}{6}\\left(x + \\frac{1}{17}\\right)\\); multiplying through by \\(102\\) gives \\(102y - 132 = -119x - 7\\). The required path is \\(119x + 102y - 125 = 0\\)."
+  }
+]
