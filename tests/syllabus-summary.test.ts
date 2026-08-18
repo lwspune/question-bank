@@ -8,6 +8,11 @@ import {
   rollUpChapterStatus,
   sectionGroupKey,
   coverCellState,
+  EXAM_COLUMNS,
+  SPINE,
+  SYLLABUS_EXAMS,
+  statusCellText,
+  statusCellTitle,
   tallyByExam,
 } from "../src/lib/syllabus/summary";
 
@@ -50,7 +55,47 @@ describe("rollUpChapterStatus", () => {
   it("does NOT summarise from the assessed subset alone", () => {
     // Half-reviewed must not read as a clean 'full' — that would overstate
     // the review and hide the unassessed remainder.
-    expect(rollUpChapterStatus(["full", "full", null])).toBe("mixed");
+    expect(rollUpChapterStatus(["full", "full", null])).toBe("partly-assessed");
+  });
+
+  it("separates a half-reviewed chapter from a genuine disagreement", () => {
+    // THE BUG THIS PINS. Both cases used to return "mixed", whose label reads
+    // "concepts in this chapter differ — open the chapter". Measured against the
+    // live bank on 2026-08-18 that claim was false for every cell carrying it in
+    // two of the three subjects: 239 Physics and 259 Maths cells said "Mixed"
+    // and the count of genuine disagreements was 0 and 0. Chemistry hid the
+    // defect for a year by being 100% assessed.
+    expect(rollUpChapterStatus(["partial", "partial", null])).toBe("partly-assessed");
+    expect(rollUpChapterStatus(["full", "not"])).toBe("mixed");
+  });
+
+  it("lets absence of review outrank a disagreement", () => {
+    // Both statements are true here — the ruled concepts DO disagree, and the
+    // chapter is also unfinished. "partly-assessed" is the weaker claim and so
+    // the honest one, and it costs the reader nothing: both labels send them
+    // into the chapter detail for the same reason.
+    expect(rollUpChapterStatus(["full", "not", null])).toBe("partly-assessed");
+  });
+});
+
+describe("EXAM_COLUMNS", () => {
+  it("drops the book's self-column and keeps every real exam", () => {
+    // The matrix rows ARE State Board sections, so a "MH State Board" column is
+    // the book ruled against itself. Measured 2026-08-18 it carried no
+    // information in any subject: 863 rows of `full` in Chemistry, all sharing
+    // one note ("Baseline: this concept is a printed section of the ...
+    // textbook"), and no rows at all in Physics or Maths, whose derived spines
+    // were never given a self-column. A column that is constant within every
+    // subject it appears in is a column of noise.
+    expect(EXAM_COLUMNS).not.toContain(SPINE.stateBoard);
+    expect(EXAM_COLUMNS).toEqual(["NDA", "MHT-CET", "JEE Mains", "CBSE Class 12"]);
+  });
+
+  it("is a strict subset of the exams the data layer still computes", () => {
+    // Narrowing is a RENDER decision. The loaders keep tallying every exam, so
+    // the 863 Chemistry rows stay queryable and this is reversible by one line.
+    for (const e of EXAM_COLUMNS) expect(SYLLABUS_EXAMS).toContain(e);
+    expect(EXAM_COLUMNS.length).toBe(SYLLABUS_EXAMS.length - 1);
   });
 });
 
@@ -153,5 +198,48 @@ describe("coverCellState", () => {
   it("treats unassessed as distinct from every assessed state", () => {
     const assessed = [cover("full", 1), cover("not"), cover("full")].map(coverCellState);
     expect(assessed).not.toContain("unassessed");
+  });
+});
+
+describe("statusCellText / statusCellTitle", () => {
+  // Extracted from the /dashboard/syllabus page so the Word export and the page
+  // cannot drift: a doc that renders "Part" where the page renders "Mixed" is a
+  // disagreement no reader can detect.
+  it("renders each ruled status with its short label", () => {
+    expect(statusCellText("full")).toBe("Yes");
+    expect(statusCellText("partial")).toBe("Part");
+    expect(statusCellText("not")).toBe("—");
+  });
+
+  it("distinguishes disagreement from absence of review", () => {
+    // The load-bearing pair: "Mixed" is a finding (concepts within the chapter
+    // disagree), "?" is the absence of one. Collapsing them would let an
+    // unreviewed chapter borrow the wording of a reviewed one.
+    expect(statusCellText("mixed")).toBe("Mixed");
+    expect(statusCellText(null)).toBe("?");
+    expect(statusCellTitle("mixed")).not.toBe(statusCellTitle(null));
+  });
+
+  it("renders a half-reviewed chapter as a blank, not as a finding", () => {
+    // Same GLYPH as an untouched cell, deliberately: both mean "no verdict you
+    // can rely on", and the page's own rule is that colour must never be the
+    // only carrier of a distinction — so a third symbol here would need a third
+    // legend entry to earn its place. The difference lives in the title and the
+    // screen-reader text, which is where a reader goes to resolve a "?".
+    expect(statusCellText("partly-assessed")).toBe("?");
+    expect(statusCellTitle("partly-assessed")).not.toBe(statusCellTitle(null));
+    expect(statusCellTitle("partly-assessed")).not.toBe(statusCellTitle("mixed"));
+  });
+
+  it("gives every state a non-empty long title", () => {
+    for (const s of ["full", "partial", "not", "mixed", "partly-assessed", null] as const) {
+      expect(statusCellTitle(s).length).toBeGreaterThan(0);
+    }
+  });
+
+  it("never renders an empty cell", () => {
+    for (const s of ["full", "partial", "not", "mixed", "partly-assessed", null] as const) {
+      expect(statusCellText(s).trim()).not.toBe("");
+    }
   });
 });

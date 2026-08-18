@@ -20,11 +20,16 @@ export type SyllabusExam = (typeof SYLLABUS_EXAMS)[number];
 export type ConceptStatus = "full" | "partial" | "not";
 
 /**
- * `null`    — no ruling for this exam yet (NOT the same as out-of-syllabus).
- * `"mixed"` — concepts within one chapter disagree, so the chapter cannot be
- *             summarised by a single status and the detail view must be opened.
+ * `null`               — no ruling for ANY concept here (NOT the same as
+ *                        out-of-syllabus).
+ * `"mixed"`            — every concept is ruled and they DISAGREE, so the
+ *                        chapter cannot be summarised and the detail view must
+ *                        be opened. A finding.
+ * `"partly-assessed"`  — some concepts are ruled and some are not. The absence
+ *                        of a finding, and it must never borrow `"mixed"`'s
+ *                        wording: see {@link rollUpChapterStatus}.
  */
-export type ChapterStatus = ConceptStatus | "mixed" | null;
+export type ChapterStatus = ConceptStatus | "mixed" | "partly-assessed" | null;
 
 export const STATUS_LABEL: Record<ConceptStatus, string> = {
   full: "In syllabus",
@@ -67,12 +72,35 @@ export function coverCellState(
   return cover.status === "not" ? "not-covered" : "diffuse";
 }
 
+/**
+ * One cell's verdict for a whole chapter (or section group), from its concepts.
+ *
+ * THE DISTINCTION THIS FUNCTION EXISTS TO KEEP: a chapter whose concepts
+ * DISAGREE and a chapter nobody has finished reviewing are different facts, and
+ * for a year this returned `"mixed"` for both. The comment below already said
+ * "makes the chapter unassessed" while the code returned a finding — the intent
+ * was right and the return value was wrong.
+ *
+ * It went unnoticed because Chemistry, the subject it was written against, is
+ * 100% assessed and so can only ever reach the genuine branch. Measured on the
+ * live bank 2026-08-18, the moment two derived subjects arrived: 239 Physics and
+ * 259 Maths cells rendered "Mixed" — captioned "concepts in this chapter differ
+ * — open the chapter" — and the number of them that were genuine disagreements
+ * was ZERO. A reader who followed that instruction found blanks.
+ *
+ * Same failure as an unreviewed pair defaulting to `full` in the data, and as
+ * `coverCellState`'s "no single section" — the absence of a review must never
+ * borrow the vocabulary of one.
+ */
 export function rollUpChapterStatus(statuses: (ConceptStatus | null)[]): ChapterStatus {
   if (statuses.length === 0) return null;
   const present = statuses.filter((s): s is ConceptStatus => s !== null);
-  // Any unassessed concept makes the chapter unassessed: reporting a status
-  // derived from only the assessed subset would overstate what was reviewed.
-  if (present.length !== statuses.length) return present.length === 0 ? null : "mixed";
+  if (present.length === 0) return null;
+  // Checked BEFORE the disagreement test, so absence outranks it. Where both are
+  // true — some concepts ruled, those that are ruled disagree — "partly-assessed"
+  // is the weaker of the two claims and so the honest one, and it costs the
+  // reader nothing: both labels send them into the same detail view.
+  if (present.length !== statuses.length) return "partly-assessed";
   const first = present[0];
   return present.every((s) => s === first) ? first : "mixed";
 }
@@ -138,6 +166,31 @@ export const BOOK_OF_EXAM: Record<string, string> = {
   "MH State Board": SPINE.stateBoard,
   "CBSE Class 12": SPINE.ncert,
 };
+
+/**
+ * The exam columns the State Board matrix actually RENDERS, which is not all of
+ * `SYLLABUS_EXAMS`.
+ *
+ * "MH State Board" is dropped because those rows ARE State Board sections, so
+ * the column is the book ruled against itself. Measured 2026-08-18 it carried no
+ * information in any subject: 863 rows of `full` in Chemistry, every one sharing
+ * a single note — "Baseline: this concept is a printed section of the MH State
+ * Board Std XI/XII Chemistry textbook" — and no rows at all in Physics or Maths,
+ * because `derive-board-status.ts` only iterates exam spines plus NCERT and so
+ * never wrote a self-column. It therefore rendered as a wall of green in one
+ * subject and a wall of "?" in the other two. A column that is constant within
+ * every subject it appears in is a column of noise.
+ *
+ * This is a RENDER decision, not a data one: the loaders still tally every exam
+ * and the Chemistry rows stay queryable, so it is reversible by one line. What
+ * it does NOT preclude is giving the column a real meaning later — "is this
+ * section examinable in the HSC board paper?" is a genuine question, now
+ * evidenceable from the mh-hsc-12 board PYQ corpus, and is a different column
+ * from this one.
+ */
+export const EXAM_COLUMNS = SYLLABUS_EXAMS.filter(
+  (e): e is Exclude<SyllabusExam, "MH State Board"> => e !== "MH State Board",
+);
 
 /** The suffix that marks a `source` as an exam's bank taxonomy rather than a book. */
 const EXAM_SPINE_SUFFIX = " bank taxonomy";
@@ -353,4 +406,35 @@ export function buildAlignmentRows(
       a.anchor.chapterNo - b.anchor.chapterNo ||
       a.anchor.sectionNo.localeCompare(b.anchor.sectionNo, undefined, { numeric: true }),
   );
+}
+
+/**
+ * The short text in one matrix cell, and its long form for a tooltip / screen
+ * reader. Lives here rather than in the page because the Word export renders
+ * the SAME matrix: two hand-written labellers would drift, and a doc showing
+ * "Part" where the page shows "Mixed" is a disagreement no reader can detect.
+ *
+ * "Mixed" and "?" must stay distinct — the first is a finding (the chapter's
+ * concepts disagree), the second is the absence of one. See {@link coverCellState}
+ * for the same rule one layer out.
+ */
+export function statusCellText(status: ChapterStatus): string {
+  // Both unreviewed states render the SAME glyph on purpose. They are one thing
+  // to a reader scanning the grid — "no verdict you can rely on" — and the page's
+  // own rule is that colour may never be the sole carrier of a distinction, so a
+  // third symbol would owe the legend a third entry to earn its place. What
+  // separates them is the title and the screen-reader text, which is exactly
+  // where a reader goes to resolve a "?".
+  if (status === null || status === "partly-assessed") return "?";
+  if (status === "mixed") return "Mixed";
+  return STATUS_SHORT[status];
+}
+
+export function statusCellTitle(status: ChapterStatus): string {
+  if (status === null) return "Not yet assessed";
+  if (status === "partly-assessed") {
+    return "Partly assessed — some sections here have no ruling yet";
+  }
+  if (status === "mixed") return "Concepts in this chapter differ — open the chapter";
+  return STATUS_LABEL[status];
 }

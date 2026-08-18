@@ -24,9 +24,11 @@ import AlignmentTable from "../AlignmentTable";
 import CollapsibleSection from "../CollapsibleSection";
 import MappingTable from "../MappingTable";
 import {
-  SYLLABUS_EXAMS,
+  EXAM_COLUMNS,
   STATUS_LABEL,
   STATUS_SHORT,
+  statusCellText as cellText,
+  statusCellTitle as cellTitle,
   chapterKey,
   parseChapterKey,
   type ChapterStatus,
@@ -47,6 +49,12 @@ const CELL: Record<Exclude<ChapterStatus, null> | "none", string> = {
   partial: "bg-amber-50 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200",
   not: "bg-muted text-muted-foreground",
   mixed: "bg-sky-50 text-sky-900 dark:bg-sky-950/50 dark:text-sky-200",
+  // Identical to `none`, and that is the point: a partly-assessed chapter is an
+  // absence of review, not a finding, so it must not wear the "mixed" colour it
+  // used to. Giving it a colour of its own would ALSO be wrong — it renders the
+  // same "?" glyph, so the colour would be the sole carrier of the difference,
+  // which this table's own rule forbids. The distinction lives in the title.
+  "partly-assessed": "bg-background text-muted-foreground",
   none: "bg-background text-muted-foreground",
 };
 
@@ -92,17 +100,6 @@ const EXAM_TABLES: { spine: string; short: string; note: React.ReactNode }[] = [
   },
 ];
 
-function cellText(status: ChapterStatus): string {
-  if (status === null) return "?";
-  if (status === "mixed") return "Mixed";
-  return STATUS_SHORT[status];
-}
-
-function cellTitle(status: ChapterStatus): string {
-  if (status === null) return "Not yet assessed";
-  if (status === "mixed") return "Concepts in this chapter differ — open the chapter";
-  return STATUS_LABEL[status];
-}
 
 export default async function SyllabusMapPage({
   params,
@@ -443,7 +440,7 @@ export default async function SyllabusMapPage({
                     <th scope="col" className="p-3 text-left font-medium w-14">Ref</th>
                     <th scope="col" className="p-3 text-left font-medium">Chapter / section</th>
                     <th scope="col" className="p-3 text-right font-medium w-16">Concepts</th>
-                    {SYLLABUS_EXAMS.map((exam) => (
+                    {EXAM_COLUMNS.map((exam) => (
                       <th key={exam} scope="col" className="p-3 text-center font-medium">
                         {exam.replace("MH State Board", "State Board").replace(" Class 12", "")}
                       </th>
@@ -471,7 +468,7 @@ export default async function SyllabusMapPage({
                         <td className="p-3 text-right tabular-nums text-muted-foreground">
                           {row.conceptCount}
                         </td>
-                        {SYLLABUS_EXAMS.map((exam) => {
+                        {EXAM_COLUMNS.map((exam) => {
                           const s = row.status[exam];
                           return (
                             <td key={exam} className="p-1.5 text-center">
@@ -508,7 +505,7 @@ export default async function SyllabusMapPage({
                         <td className="p-3 text-right tabular-nums text-muted-foreground">
                           {sec.conceptCount}
                         </td>
-                        {SYLLABUS_EXAMS.map((exam) => {
+                        {EXAM_COLUMNS.map((exam) => {
                           const s = sec.status[exam];
                           return (
                             <td key={exam} className="p-1.5 text-center">
@@ -550,7 +547,7 @@ export default async function SyllabusMapPage({
                   <tr>
                     <th scope="col" className="p-3 text-left font-medium w-20">Section</th>
                     <th scope="col" className="p-3 text-left font-medium">Concept</th>
-                    {SYLLABUS_EXAMS.map((exam) => (
+                    {EXAM_COLUMNS.map((exam) => (
                       <th key={exam} scope="col" className="p-3 text-center font-medium">
                         {exam.replace("MH State Board", "State Board").replace(" Class 12", "")}
                       </th>
@@ -566,7 +563,7 @@ export default async function SyllabusMapPage({
                       <th scope="row" className="p-3 text-left font-normal font-serif">
                         {c.concept}
                       </th>
-                      {SYLLABUS_EXAMS.map((exam) => {
+                      {EXAM_COLUMNS.map((exam) => {
                         const s: ConceptStatus | null = c.status[exam];
                         return (
                           <td key={exam} className="p-1.5 text-center">
@@ -592,7 +589,7 @@ export default async function SyllabusMapPage({
 
             {/* why: the ruling notes carry the evidence behind each status */}
             <div className="mt-3 space-y-2">
-              {SYLLABUS_EXAMS.map((exam) => {
+              {EXAM_COLUMNS.map((exam) => {
                 const note = detail.concepts.find((c) => c.notes[exam])?.notes[exam];
                 if (!note) return null;
                 return (
