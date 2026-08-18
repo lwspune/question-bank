@@ -873,6 +873,18 @@ export const CHAPTERS: Record<string, Chapter> = {
     note: "NCERT (CBSE Class 11) — Sets (Chapter 1, NCERT Mathematics)",
     // 23pp, FIVE exercises. Ex 1.1 p3 · 1.2 p7 · 1.3 p11 · 1.4 p16 · 1.5 p19 ·
     // Misc Examples p19 · Misc Exercise p20 · Summary p21.
+    //
+    // RATIONALISATION GAP, verified two ways so nobody reads it as a
+    // transcription miss: the chapter has **no §1.11 "Practical Problems on
+    // Union and Intersection" and no Exercise 1.6**. Its sections stop at §1.10
+    // Complement of a Set (confirmed against the NCERT XI spine in
+    // `syllabus_concepts`), and the transcribed Example numbering runs 1-25
+    // contiguously with no hole. So the classic n(A∪B) counting word problems —
+    // how many people read which newspaper, drink which beverage — are simply
+    // GONE from this book. The bank's syllabus map already records `n(A∪B)` as
+    // NCERT-absent from the other direction; this is the same finding met head-on.
+    // Do not brief a solution agent to expect them (I did, and it correctly told
+    // me they do not exist).
     subtopics: [
       "Sets and their Representations",
       "Types of Sets and Subsets",
