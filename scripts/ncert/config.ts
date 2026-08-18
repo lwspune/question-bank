@@ -853,6 +853,237 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Hyperbola",
     ],
   },
+
+  // ── The remaining 10 Class-11 chapters (2026-08-18). Answer-key ranges below
+  //    were read at each block's LAST entry with a spill page, per the rule the
+  //    pilot earned; page maps come from a structural probe and are CORRECTED by
+  //    transcription, since a map derived from where a heading first appears is
+  //    reliably wrong about EXTENT (five mid-block page breaks in the pilot).
+  //    Every one of these chapters has a "Miscellaneous Examples" block, so
+  //    `Misc Eg.N` refs apply throughout.
+  c11Sets: {
+    id: "c11Sets",
+    examId: EXAM_ID_CBSE_11,
+    chapterName: "Sets",
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_11_Maths__Sets.pdf",
+    pdf: cls11Maths("01. Sets.pdf"),
+    answersPdf: cls11Maths("kemh1an.pdf"),
+    answerPages: [0, 1, 2, 3],
+    note: "NCERT (CBSE Class 11) — Sets (Chapter 1, NCERT Mathematics)",
+    // 23pp, FIVE exercises. Ex 1.1 p3 · 1.2 p7 · 1.3 p11 · 1.4 p16 · 1.5 p19 ·
+    // Misc Examples p19 · Misc Exercise p20 · Summary p21.
+    subtopics: [
+      "Sets and their Representations",
+      "Types of Sets and Subsets",
+      "Venn Diagrams and Operations on Sets",
+      "Complement of a Set",
+    ],
+  },
+
+  c11RelationsFunctions: {
+    id: "c11RelationsFunctions",
+    examId: EXAM_ID_CBSE_11,
+    chapterName: "Relations and Functions",
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_11_Maths__RelationsFunctions.pdf",
+    pdf: cls11Maths("02. Relations and Functions_NCERT.pdf"),
+    answersPdf: cls11Maths("kemh1an.pdf"),
+    answerPages: [2, 3, 4, 5],
+    note: "NCERT (CBSE Class 11) — Relations and Functions (Chapter 2, NCERT Mathematics)",
+    // 19pp. Ex 2.1 p3 · 2.2 p5 · 2.3 p14 · Misc Examples p14 · Misc Exercise p16.
+    // NOTE the DB chapter name collides with CBSE Class 12's — different exams,
+    // so different chapter rows; the `c11` id prefix keeps the data/ files apart.
+    subtopics: [
+      "Cartesian Products of Sets",
+      "Relations",
+      "Functions and their Graphs",
+      "Algebra of Real Functions",
+    ],
+  },
+
+  c11TrigonometricFunctions: {
+    id: "c11TrigonometricFunctions",
+    examId: EXAM_ID_CBSE_11,
+    chapterName: "Trigonometric Functions",
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_11_Maths__TrigonometricFunctions.pdf",
+    pdf: cls11Maths("03. Trigometric Functions.pdf"),
+    answersPdf: cls11Maths("kemh1an.pdf"),
+    answerPages: [4, 5, 6],
+    note: "NCERT (CBSE Class 11) — Trigonometric Functions (Chapter 3, NCERT Mathematics)",
+    // 33pp. Ex 3.1 p5 · 3.2 p14 · 3.3 p24 · Misc Examples p25 · Misc Exercise p28.
+    // Rationalised: the spine ends at §3.4 (sum/difference) — there is NO
+    // trigonometric-EQUATIONS section, so do not author a subtopic for one.
+    subtopics: [
+      "Angles and their Measurement",
+      "Trigonometric Functions and their Signs",
+      "Domain and Range of Trigonometric Functions",
+      "Trigonometric Functions of Sum and Difference of Two Angles",
+    ],
+  },
+
+  c11LinearInequalities: {
+    id: "c11LinearInequalities",
+    examId: EXAM_ID_CBSE_11,
+    chapterName: "Linear Inequalities",
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_11_Maths__LinearInequalities.pdf",
+    pdf: cls11Maths("05. Linear Inequalities.pdf"),
+    answersPdf: cls11Maths("kemh1an.pdf"),
+    answerPages: [6, 7, 8],
+    note: "NCERT (CBSE Class 11) — Linear Inequalities (Chapter 5, NCERT Mathematics)",
+    // 11pp, the second-thinnest chapter. ONE exercise: Ex 5.1 p6 · Misc Examples
+    // p7 · Misc Exercise p9. Rationalised: only ONE-variable inequalities survive
+    // — the two-variable/graphical half is gone (it is Class 12's Linear
+    // Programming), which is why the bank's Linear Programming has no Class-11 home.
+    subtopics: [
+      "Inequalities",
+      "Algebraic Solutions of Linear Inequalities in One Variable",
+    ],
+  },
+
+  c11PermutationsCombinations: {
+    id: "c11PermutationsCombinations",
+    examId: EXAM_ID_CBSE_11,
+    chapterName: "Permutations and Combinations",
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_11_Maths__PermutationsCombinations.pdf",
+    pdf: cls11Maths("06. PNC.pdf"),
+    answersPdf: cls11Maths("kemh1an.pdf"),
+    answerPages: [7, 8, 9],
+    note: "NCERT (CBSE Class 11) — Permutations and Combinations (Chapter 6, NCERT Mathematics)",
+    // 26pp, FOUR exercises. Ex 6.1 p4 · 6.2 p6 · 6.3 p14 · 6.4 p19 ·
+    // Misc Examples p19 · Misc Exercise p22 · Summary p23.
+    subtopics: [
+      "Fundamental Principle of Counting",
+      "Permutations",
+      "Permutations when Objects are Not Distinct",
+      "Combinations",
+    ],
+  },
+
+  c11StraightLines: {
+    id: "c11StraightLines",
+    examId: EXAM_ID_CBSE_11,
+    chapterName: "Straight Lines",
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_11_Maths__StraightLines.pdf",
+    pdf: cls11Maths("09. Striaght Lines.pdf"),
+    answersPdf: cls11Maths("kemh1an.pdf"),
+    answerPages: [10, 11, 12],
+    note: "NCERT (CBSE Class 11) — Straight Lines (Chapter 9, NCERT Mathematics)",
+    // 25pp. Ex 9.1 p7 · 9.2 p12 · 9.3 p16 · Misc Examples p17 · Misc Exercise p21.
+    // The source FILENAME misspells the chapter ("Striaght"); `chapterName` above
+    // is the book's correct printed title and is what reaches the DB.
+    subtopics: [
+      "Slope of a Line",
+      "Angle Between Lines, Parallelism and Perpendicularity",
+      "Various Forms of the Equation of a Line",
+      "Distance of a Point From a Line",
+    ],
+  },
+
+  c11ThreeDGeometry: {
+    id: "c11ThreeDGeometry",
+    examId: EXAM_ID_CBSE_11,
+    // The book's printed title, which differs from Class 12's "Three Dimensional
+    // Geometry" — do NOT normalise them together; they are different chapters in
+    // different exams and the rationalised Class-11 chapter stops at the distance
+    // formula (no direction cosines, no lines, no planes).
+    chapterName: "Introduction to Three Dimensional Geometry",
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_11_Maths__ThreeDGeometry.pdf",
+    pdf: cls11Maths("11. 3D Geom.pdf"),
+    answersPdf: cls11Maths("kemh1an.pdf"),
+    answerPages: [15, 16],
+    note: "NCERT (CBSE Class 11) — Introduction to Three Dimensional Geometry (Chapter 11, NCERT Mathematics)",
+    // 9pp — the THINNEST chapter in the book, tied with Binomial Theorem.
+    // Ex 11.1 p3 · Ex 11.2 p5 · Misc Examples p5 · Misc Exercise + Summary p7.
+    subtopics: [
+      "Coordinate Axes and Planes in Space",
+      "Coordinates of a Point in Space",
+      "Distance Between Two Points",
+    ],
+  },
+
+  c11LimitsDerivatives: {
+    id: "c11LimitsDerivatives",
+    examId: EXAM_ID_CBSE_11,
+    chapterName: "Limits and Derivatives",
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_11_Maths__LimitsDerivatives.pdf",
+    pdf: cls11Maths("12. Limits and Derivatives.pdf"),
+    answersPdf: cls11Maths("kemh1an.pdf"),
+    answerPages: [16, 17, 18],
+    note: "NCERT (CBSE Class 11) — Limits and Derivatives (Chapter 12, NCERT Mathematics)",
+    // 40pp — the LARGEST chapter in the book, and unusually shaped: its FIRST
+    // exercise does not appear until p20, so pages 0-19 are teaching prose plus
+    // ~17 worked Examples. Ex 12.1 p20 · Ex 12.2 p31 · Misc Examples p32 ·
+    // Misc Exercise p36 · Summary p37.
+    // The structural probe also reported a "Summary" match on p4; treat that as a
+    // probe artifact until a transcriber confirms it from the page — a real
+    // Summary 4 pages into a 40-page chapter would be extraordinary.
+    subtopics: [
+      "Intuitive Idea of Derivatives",
+      "Limits and the Algebra of Limits",
+      "Limits of Polynomials and Rational Functions",
+      "Limits of Trigonometric Functions",
+      "Derivatives from First Principles",
+      "Algebra of Derivatives and Standard Formulas",
+    ],
+  },
+
+  c11Statistics: {
+    id: "c11Statistics",
+    examId: EXAM_ID_CBSE_11,
+    chapterName: "Statistics",
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_11_Maths__Statistics.pdf",
+    pdf: cls11Maths("13. Statistics.pdf"),
+    answersPdf: cls11Maths("kemh1an.pdf"),
+    answerPages: [18, 19, 20],
+    note: "NCERT (CBSE Class 11) — Statistics (Chapter 13, NCERT Mathematics)",
+    // 32pp, only TWO exercises but a long theory run — Ex 13.1 does not appear
+    // until p13. Ex 13.1 p13 · Ex 13.2 p24 · Misc Examples p25 ·
+    // Misc Exercise + Summary p29.
+    // DATA-TABLE HEAVY: expect GFM pipe-tables in stems (frequency distributions,
+    // class intervals). A table needs a `|---|` separator row or it ships as prose.
+    subtopics: [
+      "Measures of Dispersion and Range",
+      "Mean Deviation for Ungrouped Data",
+      "Mean Deviation for Grouped Data",
+      "Variance and Standard Deviation",
+      "Shortcut Method for Variance and Standard Deviation",
+    ],
+  },
+
+  c11Probability: {
+    id: "c11Probability",
+    examId: EXAM_ID_CBSE_11,
+    chapterName: "Probability",
+    subjectName: "Mathematics",
+    sourceFile: "NCERT_11_Maths__Probability.pdf",
+    pdf: cls11Maths("14. Probability.pdf"),
+    answersPdf: cls11Maths("kemh1an.pdf"),
+    answerPages: [19, 20, 21],
+    note: "NCERT (CBSE Class 11) — Probability (Chapter 14, NCERT Mathematics)",
+    // 25pp. Ex 14.1 p5 · Ex 14.2 p16 · Misc Examples p19 · Misc Exercise p21 ·
+    // Summary p23. The DB chapter name collides with CBSE Class 12's — different
+    // exams, different chapter rows; the `c11` id prefix keeps data/ files apart.
+    // RATIONALISED SHAPE: the spine opens at §14.1 "Event", NOT at an
+    // Introduction — random experiments and sample space are assumed from
+    // Class 10, so this chapter is events + the axiomatic approach only.
+    // PROBE TRAP for anyone counting MCQs here: `P(A)` contains the literal
+    // "(A)", so an option-detector fires on nearly every line of this chapter.
+    // There are still no MCQs — key on a four-option RUN, never a single label.
+    subtopics: [
+      "Random Experiments, Sample Space and Events",
+      "Types of Events and the Algebra of Events",
+      "Axiomatic Approach to Probability",
+      "Probability of 'A or B' and 'not A'",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
