@@ -8,6 +8,9 @@ import {
   type ConceptRow,
   handoutCellText,
   handoutVocabulary,
+  directChildrenOf,
+  deriveSectionStatuses,
+  type SectionEvidence,
 } from "../scripts/syllabus/lib";
 
 const ok: ConceptRow = {
@@ -156,5 +159,131 @@ describe("handoutVocabulary", () => {
 
   it("treats an empty subject as derived rather than claiming adjudication", () => {
     expect(handoutVocabulary([])).toBe("derived");
+  });
+});
+
+describe("directChildrenOf", () => {
+  it("claims only the level immediately below", () => {
+    const kids = directChildrenOf(["1.2", "1.2.1", "1.2.2", "1.2.1.1", "1.3"]);
+    expect(kids.get("1.2")).toEqual(["1.2.1", "1.2.2"]);
+    expect(kids.get("1.2.1")).toEqual(["1.2.1.1"]);
+    expect(kids.get("1.3") ?? []).toEqual([]);
+  });
+
+  it("treats a lettered print-alias as a SIBLING, not a child", () => {
+    // The Maths spine carries "2.1.3b" and "3.3.5b" — aliases minted where the
+    // book printed one section number twice. "2.1.3b" is another child of 2.1,
+    // NOT a child of 2.1.3, and reading it as a child would make 2.1.3 look like
+    // a parent whose subtree was never fully cited.
+    const kids = directChildrenOf(["2.1", "2.1.3", "2.1.3b"]);
+    expect(kids.get("2.1")).toEqual(["2.1.3", "2.1.3b"]);
+    expect(kids.get("2.1.3") ?? []).toEqual([]);
+  });
+
+  it("keys on the class too, so Std XI 1.1 is not the parent of Std XII 1.1.1", () => {
+    // No separator argument needed: the class prefix is part of the ref, so
+    // "12|1.1.1" simply does not start with "11|1.1.".
+    const kids = directChildrenOf(["11|1.1", "12|1.1.1"]);
+    expect(kids.get("11|1.1") ?? []).toEqual([]);
+  });
+});
+
+describe("deriveSectionStatuses", () => {
+  const ev = (o: Partial<SectionEvidence> = {}): SectionEvidence => ({
+    exactLive: [],
+    rolledUpLive: [],
+    old: [],
+    ...o,
+  });
+
+  it("rules an exactly-cited LEAF fully required", () => {
+    // The change this function exists for. A leaf is the finest grain this map
+    // has, so "the exam requires part of it" is not a statement the map can
+    // make; at this resolution an exact citation means the section is required.
+    const out = deriveSectionStatuses(
+      new Map([["1.9", ev({ exactLive: ["Errors in Measurement"] })]]),
+      directChildrenOf(["1.9"]),
+    );
+    expect(out.get("1.9")).toBe("full");
+  });
+
+  it("keeps a cited PARENT partial while any child is uncited", () => {
+    // Citing 1.3 says the exam asks something under Measurement of Length. It
+    // does not say it asks for Measurement of Distance to Stars, and on the live
+    // Physics spine it demonstrably does not.
+    const out = deriveSectionStatuses(
+      new Map([
+        ["1.3", ev({ exactLive: ["Measuring Instruments"] })],
+        ["1.3.1", ev({ exactLive: ["Measuring Instruments"] })],
+      ]),
+      directChildrenOf(["1.3", "1.3.1", "1.3.2"]),
+    );
+    expect(out.get("1.3")).toBe("partial");
+    expect(out.get("1.3.1")).toBe("full");
+    expect(out.get("1.3.2")).toBeUndefined();
+  });
+
+  it("promotes a parent once EVERY child is fully required", () => {
+    // Otherwise the parent sits `partial` above children that are all `full`,
+    // which the chapter roll-up then reports as a genuine disagreement — a
+    // finding manufactured by the derivation rather than found in the data.
+    const out = deriveSectionStatuses(
+      new Map([
+        ["1.6", ev({ exactLive: ["Dimensional Analysis"] })],
+        ["1.6.1", ev({ exactLive: ["Dimensional Analysis"] })],
+        ["1.6.2", ev({ exactLive: ["Dimensional Analysis"] })],
+      ]),
+      directChildrenOf(["1.6", "1.6.1", "1.6.2"]),
+    );
+    expect(out.get("1.6")).toBe("full");
+  });
+
+  it("promotes bottom-up through more than one level", () => {
+    const refs = ["1.2", "1.2.1", "1.2.1.1"];
+    const out = deriveSectionStatuses(
+      new Map(refs.map((r) => [r, ev({ exactLive: ["x"] })])),
+      directChildrenOf(refs),
+    );
+    expect(out.get("1.2")).toBe("full");
+  });
+
+  it("leaves a roll-up-only ancestor partial", () => {
+    // 1.8 got its row because a subtopic cited 1.8.2. That is evidence about
+    // 1.8.2, and only evidence that SOMETHING under 1.8 is asked.
+    const out = deriveSectionStatuses(
+      new Map([
+        ["1.8", ev({ rolledUpLive: ["Errors in Measurement"] })],
+        ["1.8.2", ev({ exactLive: ["Errors in Measurement"] })],
+      ]),
+      directChildrenOf(["1.8", "1.8.1", "1.8.2"]),
+    );
+    expect(out.get("1.8")).toBe("partial");
+  });
+
+  it("still reports old-syllabus-only citations as not required", () => {
+    const out = deriveSectionStatuses(
+      new Map([["7.1", ev({ old: ["Communication Systems"] })]]),
+      directChildrenOf(["7.1"]),
+    );
+    expect(out.get("7.1")).toBe("not");
+  });
+
+  it("writes NO row for a section nothing cites", () => {
+    // The rule the whole map rests on: absence of a row is "nobody looked",
+    // and inventing a `not` here would assert a review that never happened.
+    const out = deriveSectionStatuses(new Map(), directChildrenOf(["4.4"]));
+    expect(out.size).toBe(0);
+  });
+
+  it("never promotes a parent on the strength of a `not` child", () => {
+    const out = deriveSectionStatuses(
+      new Map([
+        ["2.1", ev({ rolledUpLive: ["x"] })],
+        ["2.1.1", ev({ exactLive: ["x"] })],
+        ["2.1.2", ev({ old: ["dropped"] })],
+      ]),
+      directChildrenOf(["2.1", "2.1.1", "2.1.2"]),
+    );
+    expect(out.get("2.1")).toBe("partial");
   });
 });
