@@ -26,7 +26,7 @@ import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import { createClient } from "@supabase/supabase-js";
 import { uploadImage, MAX_SIZE_BYTES } from "../../src/lib/storage/images";
-import { ORG_ID, EXAM_ID, OUT, DATA, requireChapter } from "./config";
+import { ORG_ID, OUT, DATA, requireChapter } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -140,7 +140,7 @@ async function main() {
     const { data: q, error } = await client
       .from("questions")
       .select("id, image_url")
-      .eq("exam_id", EXAM_ID)
+      .eq("exam_id", ch.examId)
       .eq("source_file", ch.sourceFile)
       .eq("question_number", ref)
       .maybeSingle();

@@ -1,0 +1,66 @@
+[
+  {
+    "ref": "13.1 Eg.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Ungrouped Data",
+    "difficulty": "EASY",
+    "stem": "Find the mean deviation about the mean for the following data:\n\n6, 7, 10, 12, 13, 4, 8, 12",
+    "solution": "We proceed step-wise and get the following:\n\n**Step 1** Mean of the given data is\n\n\\(\\bar{x} = \\frac{6+7+10+12+13+4+8+12}{8} = \\frac{72}{8} = 9\\)\n\n**Step 2** The deviations of the respective observations from the mean \\(\\bar{x}\\), i.e., \\(x_i - \\bar{x}\\), are\n\n\\(6-9,\\ 7-9,\\ 10-9,\\ 12-9,\\ 13-9,\\ 4-9,\\ 8-9,\\ 12-9\\),\n\nor \\(-3,\\ -2,\\ 1,\\ 3,\\ 4,\\ -5,\\ -1,\\ 3\\)\n\n**Step 3** The absolute values of the deviations, i.e., \\(\\lvert x_i - \\bar{x}\\rvert\\), are\n\n3, 2, 1, 3, 4, 5, 1, 3\n\n**Step 4** The required mean deviation about the mean is\n\n\\(\\text{M.D.}(\\bar{x}) = \\dfrac{\\sum_{i=1}^{8}\\lvert x_i - \\bar{x}\\rvert}{8} = \\dfrac{3+2+1+3+4+5+1+3}{8} = \\dfrac{22}{8} = 2.75\\)"
+  },
+  {
+    "ref": "13.1 Eg.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Ungrouped Data",
+    "difficulty": "EASY",
+    "stem": "Find the mean deviation about the mean for the following data :\n\n12, 3, 18, 17, 4, 9, 17, 19, 20, 15, 8, 17, 2, 3, 16, 11, 3, 1, 0, 5",
+    "solution": "We have to first find the mean \\(\\bar{x}\\) of the given data\n\n\\(\\bar{x} = \\frac{1}{20}\\sum_{i=1}^{20} x_i = \\frac{200}{20} = 10\\)\n\nThe respective absolute values of the deviations from mean, i.e., \\(\\lvert x_i - \\bar{x}\\rvert\\), are\n\n2, 7, 8, 7, 6, 1, 7, 9, 10, 5, 2, 7, 8, 7, 6, 1, 7, 9, 10, 5\n\nTherefore \\(\\sum_{i=1}^{20}\\lvert x_i - \\bar{x}\\rvert = 124\\)\n\nand \\(\\text{M.D.}(\\bar{x}) = \\frac{124}{20} = 6.2\\)"
+  },
+  {
+    "ref": "13.1 Eg.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Ungrouped Data",
+    "difficulty": "EASY",
+    "stem": "Find the mean deviation about the median for the following data:\n\n3, 9, 5, 3, 12, 10, 18, 4, 7, 19, 21.",
+    "solution": "Here the number of observations is 11 which is odd. Arranging the data into ascending order, we have\n\n3, 3, 4, 5, 7, 9, 10, 12, 18, 19, 21\n\nNow Median \\(= \\left(\\frac{11+1}{2}\\right)^{\\text{th}}\\) or \\(6^{\\text{th}}\\) observation \\(= 9\\)\n\nThe absolute values of the respective deviations from the median, i.e., \\(\\lvert x_i - \\text{M}\\rvert\\), are\n\n6, 6, 5, 4, 2, 0, 1, 3, 9, 10, 12\n\nTherefore \\(\\sum_{i=1}^{11}\\lvert x_i - \\text{M}\\rvert = 58\\)\n\nand \\(\\text{M.D.}(\\text{M}) = \\frac{1}{11}\\sum_{i=1}^{11}\\lvert x_i - \\text{M}\\rvert = \\frac{1}{11}\\times 58 = 5.27\\)"
+  },
+  {
+    "ref": "13.1 Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "Find mean deviation about the mean for the following data :\n\n| \\(x_i\\) | 2 | 5 | 6 | 8 | 10 | 12 |\n|---|---|---|---|---|---|---|\n| \\(f_i\\) | 2 | 8 | 10 | 7 | 8 | 5 |",
+    "solution": "Let us make a Table 13.1 of the given data and append other columns after calculations.\n\n**Table 13.1**\n\n| \\(x_i\\) | \\(f_i\\) | \\(f_i x_i\\) | \\(\\lvert x_i - \\bar{x}\\rvert\\) | \\(f_i\\lvert x_i - \\bar{x}\\rvert\\) |\n|---|---|---|---|---|\n| 2 | 2 | 4 | 5.5 | 11 |\n| 5 | 8 | 40 | 2.5 | 20 |\n| 6 | 10 | 60 | 1.5 | 15 |\n| 8 | 7 | 56 | 0.5 | 3.5 |\n| 10 | 8 | 80 | 2.5 | 20 |\n| 12 | 5 | 60 | 4.5 | 22.5 |\n|  | 40 | 300 |  | 92 |\n\nHere \\(\\text{N} = \\sum_{i=1}^{6} f_i = 40\\), \\(\\sum_{i=1}^{6} f_i x_i = 300\\), \\(\\sum_{i=1}^{6} f_i\\lvert x_i - \\bar{x}\\rvert = 92\\)\n\nTherefore \\(\\bar{x} = \\frac{1}{\\text{N}}\\sum_{i=1}^{6} f_i x_i = \\frac{1}{40}\\times 300 = 7.5\\)\n\nand \\(\\text{M.D.}(\\bar{x}) = \\frac{1}{\\text{N}}\\sum_{i=1}^{6} f_i\\lvert x_i - \\bar{x}\\rvert = \\frac{1}{40}\\times 92 = 2.3\\)"
+  },
+  {
+    "ref": "13.1 Eg.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean deviation about the median for the following data:\n\n| \\(x_i\\) | 3 | 6 | 9 | 12 | 13 | 15 | 21 | 22 |\n|---|---|---|---|---|---|---|---|---|\n| \\(f_i\\) | 3 | 4 | 5 | 2 | 4 | 5 | 4 | 3 |",
+    "solution": "The given observations are already in ascending order. Adding a row corresponding to cumulative frequencies to the given data, we get (Table 13.2).\n\n**Table 13.2**\n\n| \\(x_i\\) | 3 | 6 | 9 | 12 | 13 | 15 | 21 | 22 |\n|---|---|---|---|---|---|---|---|---|\n| \\(f_i\\) | 3 | 4 | 5 | 2 | 4 | 5 | 4 | 3 |\n| c.f. | 3 | 7 | 12 | 14 | 18 | 23 | 27 | 30 |\n\nNow, N = 30 which is even.\n\nMedian is the mean of the \\(15^{\\text{th}}\\) and \\(16^{\\text{th}}\\) observations. Both of these observations lie in the cumulative frequency 18, for which the corresponding observation is 13.\n\nTherefore, Median \\(\\text{M} = \\dfrac{15^{\\text{th}}\\ \\text{observation} + 16^{\\text{th}}\\ \\text{observation}}{2} = \\dfrac{13+13}{2} = 13\\)\n\nNow, absolute values of the deviations from median, i.e., \\(\\lvert x_i - \\text{M}\\rvert\\), are shown in Table 13.3.\n\n**Table 13.3**\n\n| \\(\\lvert x_i - \\text{M}\\rvert\\) | 10 | 7 | 4 | 1 | 0 | 2 | 8 | 9 |\n|---|---|---|---|---|---|---|---|---|\n| \\(f_i\\) | 3 | 4 | 5 | 2 | 4 | 5 | 4 | 3 |\n| \\(f_i\\lvert x_i - \\text{M}\\rvert\\) | 30 | 28 | 20 | 2 | 0 | 10 | 32 | 27 |\n\nWe have \\(\\sum_{i=1}^{8} f_i = 30\\) and \\(\\sum_{i=1}^{8} f_i\\lvert x_i - \\text{M}\\rvert = 149\\)\n\nTherefore \\(\\text{M.D.}(\\text{M}) = \\frac{1}{\\text{N}}\\sum_{i=1}^{8} f_i\\lvert x_i - \\text{M}\\rvert = \\frac{1}{30}\\times 149 = 4.97\\)"
+  },
+  {
+    "ref": "13.1 Eg.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "Find the mean deviation about the mean for the following data.\n\n| Marks obtained | 10-20 | 20-30 | 30-40 | 40-50 | 50-60 | 60-70 | 70-80 |\n|---|---|---|---|---|---|---|---|\n| Number of students | 2 | 3 | 8 | 14 | 8 | 3 | 2 |",
+    "solution": "We make the following Table 13.4 from the given data :\n\n**Table 13.4**\n\n| Marks obtained | Number of students \\(f_i\\) | Mid-points \\(x_i\\) | \\(f_i x_i\\) | \\(\\lvert x_i - \\bar{x}\\rvert\\) | \\(f_i\\lvert x_i - \\bar{x}\\rvert\\) |\n|---|---|---|---|---|---|\n| 10-20 | 2 | 15 | 30 | 30 | 60 |\n| 20-30 | 3 | 25 | 75 | 20 | 60 |\n| 30-40 | 8 | 35 | 280 | 10 | 80 |\n| 40-50 | 14 | 45 | 630 | 0 | 0 |\n| 50-60 | 8 | 55 | 440 | 10 | 80 |\n| 60-70 | 3 | 65 | 195 | 20 | 60 |\n| 70-80 | 2 | 75 | 150 | 30 | 60 |\n|  | 40 |  | 1800 |  | 400 |\n\nHere \\(\\text{N} = \\sum_{i=1}^{7} f_i = 40\\), \\(\\sum_{i=1}^{7} f_i x_i = 1800\\), \\(\\sum_{i=1}^{7} f_i\\lvert x_i - \\bar{x}\\rvert = 400\\)\n\nTherefore \\(\\bar{x} = \\frac{1}{\\text{N}}\\sum_{i=1}^{7} f_i x_i = \\frac{1800}{40} = 45\\)\n\nand \\(\\text{M.D.}(\\bar{x}) = \\frac{1}{\\text{N}}\\sum_{i=1}^{7} f_i\\lvert x_i - \\bar{x}\\rvert = \\frac{1}{40}\\times 400 = 10\\)"
+  },
+  {
+    "ref": "13.1 Eg.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mean Deviation for Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "Calculate the mean deviation about median for the following data :\n\n| Class | 0-10 | 10-20 | 20-30 | 30-40 | 40-50 | 50-60 |\n|---|---|---|---|---|---|---|\n| Frequency | 6 | 7 | 15 | 16 | 4 | 2 |",
+    "solution": "Form the following Table 13.6 from the given data :\n\n**Table 13.6**\n\n| Class | Frequency \\(f_i\\) | Cumulative frequency (c.f.) | Mid-points \\(x_i\\) | \\(\\lvert x_i - \\text{Med.}\\rvert\\) | \\(f_i\\lvert x_i - \\text{Med.}\\rvert\\) |\n|---|---|---|---|---|---|\n| 0-10 | 6 | 6 | 5 | 23 | 138 |\n| 10-20 | 7 | 13 | 15 | 13 | 91 |\n| 20-30 | 15 | 28 | 25 | 3 | 45 |\n| 30-40 | 16 | 44 | 35 | 7 | 112 |\n| 40-50 | 4 | 48 | 45 | 17 | 68 |\n| 50-60 | 2 | 50 | 55 | 27 | 54 |\n|  | 50 |  |  |  | 508 |\n\nThe class interval containing \\(\\left(\\frac{\\text{N}}{2}\\right)^{\\text{th}}\\) or \\(25^{\\text{th}}\\) item is 20-30. Therefore, 20-30 is the median class. We know that\n\nMedian \\(= l + \\dfrac{\\frac{\\text{N}}{2} - \\text{C}}{f}\\times h\\)\n\nHere \\(l = 20\\), \\(\\text{C} = 13\\), \\(f = 15\\), \\(h = 10\\) and \\(\\text{N} = 50\\)\n\nTherefore, Median \\(= 20 + \\frac{25-13}{15}\\times 10 = 20 + 8 = 28\\)\n\nThus, Mean deviation about median is given by\n\n\\(\\text{M.D.}(\\text{M}) = \\frac{1}{\\text{N}}\\sum_{i=1}^{6} f_i\\lvert x_i - \\text{M}\\rvert = \\frac{1}{50}\\times 508 = 10.16\\)",
+    "_note": "STRADDLES THE BAND BOUNDARY: the stem and Table 13.6 are printed on p-12 (my band); the median computation and the final answer M.D.(M) = 10.16 continue at the top of p-13 (band B's page), immediately above the EXERCISE 13.1 heading. Transcribed whole here per block ownership. Band B must NOT re-emit it."
+  }
+]

@@ -1,0 +1,1012 @@
+[
+  {
+    "ref": "14.1 Eg.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "EASY",
+    "stem": "Consider the experiment of rolling a die. Let \\(A\\) be the event 'getting a prime number', \\(B\\) be the event 'getting an odd number'. Write the sets representing the events (i) \\(A\\) or \\(B\\) (ii) \\(A\\) and \\(B\\) (iii) \\(A\\) but not \\(B\\) (iv) 'not \\(A\\)'.",
+    "solution": "Here \\(S = \\{1, 2, 3, 4, 5, 6\\}\\), \\(A = \\{2, 3, 5\\}\\) and \\(B = \\{1, 3, 5\\}\\).\n\nObviously\n\n(i) '\\(A\\) or \\(B\\)' \\(= A \\cup B = \\{1, 2, 3, 5\\}\\)\n\n(ii) '\\(A\\) and \\(B\\)' \\(= A \\cap B = \\{3, 5\\}\\)\n\n(iii) '\\(A\\) but not \\(B\\)' \\(= A - B = \\{2\\}\\)\n\n(iv) 'not \\(A\\)' \\(= A' = \\{1, 4, 6\\}\\)"
+  },
+  {
+    "ref": "14.1 Eg.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "stem": "Two dice are thrown and the sum of the numbers which come up on the dice is noted. Let us consider the following events associated with this experiment\n\n\\(A\\): 'the sum is even'.\n\n\\(B\\): 'the sum is a multiple of 3'.\n\n\\(C\\): 'the sum is less than 4'.\n\n\\(D\\): 'the sum is greater than 11'.\n\nWhich pairs of these events are mutually exclusive?",
+    "solution": "There are 36 elements in the sample space \\(S = \\{(x, y) : x, y = 1, 2, 3, 4, 5, 6\\}\\). Then\n\n\\(A = \\{(1,1), (1,3), (1,5), (2,2), (2,4), (2,6), (3,1), (3,3), (3,5), (4,2), (4,4), (4,6), (5,1), (5,3), (5,5), (6,2), (6,4), (6,6)\\}\\)\n\n\\(B = \\{(1,2), (2,1), (1,5), (5,1), (3,3), (2,4), (4,2), (3,6), (6,3), (4,5), (5,4), (6,6)\\}\\)\n\n\\(C = \\{(1,1), (2,1), (1,2)\\}\\) and \\(D = \\{(6,6)\\}\\)\n\nWe find that\n\n\\(A \\cap B = \\{(1,5), (2,4), (3,3), (4,2), (5,1), (6,6)\\} \\ne \\emptyset\\)\n\nTherefore, \\(A\\) and \\(B\\) are not mutually exclusive events.\n\nSimilarly \\(A \\cap C \\ne \\emptyset\\), \\(A \\cap D \\ne \\emptyset\\), \\(B \\cap C \\ne \\emptyset\\) and \\(B \\cap D \\ne \\emptyset\\).\n\nThus, the pairs of events, \\((A, C)\\), \\((A, D)\\), \\((B, C)\\), \\((B, D)\\) are not mutually exclusive events.\n\nAlso \\(C \\cap D = \\emptyset\\) and so \\(C\\) and \\(D\\) are mutually exclusive events."
+  },
+  {
+    "ref": "14.1 Eg.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "stem": "A coin is tossed three times, consider the following events.\n\n\\(A\\): 'No head appears', \\(B\\): 'Exactly one head appears' and \\(C\\): 'Atleast two heads appear'.\n\nDo they form a set of mutually exclusive and exhaustive events?",
+    "solution": "The sample space of the experiment is\n\n\\(S = \\{HHH, HHT, HTH, THH, HTT, THT, TTH, TTT\\}\\)\n\nand \\(A = \\{TTT\\}\\), \\(B = \\{HTT, THT, TTH\\}\\), \\(C = \\{HHT, HTH, THH, HHH\\}\\)\n\nNow\n\n\\(A \\cup B \\cup C = \\{TTT, HTT, THT, TTH, HHT, HTH, THH, HHH\\} = S\\)\n\nTherefore, \\(A\\), \\(B\\) and \\(C\\) are exhaustive events.\n\nAlso, \\(A \\cap B = \\emptyset\\), \\(A \\cap C = \\emptyset\\) and \\(B \\cap C = \\emptyset\\)\n\nTherefore, the events are pair-wise disjoint, i.e., they are mutually exclusive.\n\nHence, \\(A\\), \\(B\\) and \\(C\\) form a set of mutually exclusive and exhaustive events."
+  },
+  {
+    "ref": "Ex 14.1 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "EASY",
+    "stem": "A die is rolled. Let \\(E\\) be the event \"die shows 4\" and \\(F\\) be the event \"die shows even number\". Are \\(E\\) and \\(F\\) mutually exclusive?"
+  },
+  {
+    "ref": "Ex 14.1 Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Random Experiments, Sample Space and Events",
+    "difficulty": "EASY",
+    "context": "A die is thrown. Describe the following events. Also find \\(A \\cup B\\), \\(A \\cap B\\), \\(B \\cup C\\), \\(E \\cap F\\), \\(D \\cap E\\), \\(A - C\\), \\(D - E\\), \\(E \\cap F'\\), \\(F'\\).",
+    "setLabel": "Ex 14.1 Q2",
+    "stem": "\\(A\\): a number less than 7",
+    "_note": "The book prints the six sub-items (i)-(vi) and then a single trailing instruction 'Also find A u B, A n B, B u C, E n F, D n E, A - C, D - E, E n F', F''. That trailing instruction refers to events defined across several different sub-items, so it cannot live inside any one of them; it has been folded into the shared context. The book prints no sub-item label for it."
+  },
+  {
+    "ref": "Ex 14.1 Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Random Experiments, Sample Space and Events",
+    "difficulty": "EASY",
+    "context": "A die is thrown. Describe the following events. Also find \\(A \\cup B\\), \\(A \\cap B\\), \\(B \\cup C\\), \\(E \\cap F\\), \\(D \\cap E\\), \\(A - C\\), \\(D - E\\), \\(E \\cap F'\\), \\(F'\\).",
+    "setLabel": "Ex 14.1 Q2",
+    "stem": "\\(B\\): a number greater than 7"
+  },
+  {
+    "ref": "Ex 14.1 Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Random Experiments, Sample Space and Events",
+    "difficulty": "EASY",
+    "context": "A die is thrown. Describe the following events. Also find \\(A \\cup B\\), \\(A \\cap B\\), \\(B \\cup C\\), \\(E \\cap F\\), \\(D \\cap E\\), \\(A - C\\), \\(D - E\\), \\(E \\cap F'\\), \\(F'\\).",
+    "setLabel": "Ex 14.1 Q2",
+    "stem": "\\(C\\): a multiple of 3"
+  },
+  {
+    "ref": "Ex 14.1 Q2(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Random Experiments, Sample Space and Events",
+    "difficulty": "EASY",
+    "context": "A die is thrown. Describe the following events. Also find \\(A \\cup B\\), \\(A \\cap B\\), \\(B \\cup C\\), \\(E \\cap F\\), \\(D \\cap E\\), \\(A - C\\), \\(D - E\\), \\(E \\cap F'\\), \\(F'\\).",
+    "setLabel": "Ex 14.1 Q2",
+    "stem": "\\(D\\): a number less than 4"
+  },
+  {
+    "ref": "Ex 14.1 Q2(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Random Experiments, Sample Space and Events",
+    "difficulty": "EASY",
+    "context": "A die is thrown. Describe the following events. Also find \\(A \\cup B\\), \\(A \\cap B\\), \\(B \\cup C\\), \\(E \\cap F\\), \\(D \\cap E\\), \\(A - C\\), \\(D - E\\), \\(E \\cap F'\\), \\(F'\\).",
+    "setLabel": "Ex 14.1 Q2",
+    "stem": "\\(E\\): an even number greater than 4"
+  },
+  {
+    "ref": "Ex 14.1 Q2(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Random Experiments, Sample Space and Events",
+    "difficulty": "EASY",
+    "context": "A die is thrown. Describe the following events. Also find \\(A \\cup B\\), \\(A \\cap B\\), \\(B \\cup C\\), \\(E \\cap F\\), \\(D \\cap E\\), \\(A - C\\), \\(D - E\\), \\(E \\cap F'\\), \\(F'\\).",
+    "setLabel": "Ex 14.1 Q2",
+    "stem": "\\(F\\): a number not less than 3"
+  },
+  {
+    "ref": "Ex 14.1 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "stem": "An experiment involves rolling a pair of dice and recording the numbers that come up. Describe the following events:\n\n\\(A\\): the sum is greater than 8, \\(B\\): 2 occurs on either die\n\n\\(C\\): the sum is at least 7 and a multiple of 3.\n\nWhich pairs of these events are mutually exclusive?"
+  },
+  {
+    "ref": "Ex 14.1 Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Three coins are tossed once. Let \\(A\\) denote the event 'three heads show\", \\(B\\) denote the event \"two heads and one tail show\", \\(C\\) denote the event\" three tails show and \\(D\\) denote the event 'a head shows on the first coin\". Which events are",
+    "setLabel": "Ex 14.1 Q4",
+    "stem": "mutually exclusive?",
+    "_note": "Transcribed exactly as printed. The book's quotation marks in this question are broken: event A opens with a single quote and closes with a double quote ('three heads show\"), event C's description ('three tails show') is never closed before 'and D denote the event', and event D again opens single and closes double. The intended reading is A: three heads show, B: two heads and one tail show, C: three tails show, D: a head shows on the first coin."
+  },
+  {
+    "ref": "Ex 14.1 Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "EASY",
+    "context": "Three coins are tossed once. Let \\(A\\) denote the event 'three heads show\", \\(B\\) denote the event \"two heads and one tail show\", \\(C\\) denote the event\" three tails show and \\(D\\) denote the event 'a head shows on the first coin\". Which events are",
+    "setLabel": "Ex 14.1 Q4",
+    "stem": "simple?"
+  },
+  {
+    "ref": "Ex 14.1 Q4(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "EASY",
+    "context": "Three coins are tossed once. Let \\(A\\) denote the event 'three heads show\", \\(B\\) denote the event \"two heads and one tail show\", \\(C\\) denote the event\" three tails show and \\(D\\) denote the event 'a head shows on the first coin\". Which events are",
+    "setLabel": "Ex 14.1 Q4",
+    "stem": "Compound?"
+  },
+  {
+    "ref": "Ex 14.1 Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Three coins are tossed. Describe",
+    "setLabel": "Ex 14.1 Q5",
+    "stem": "Two events which are mutually exclusive."
+  },
+  {
+    "ref": "Ex 14.1 Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Three coins are tossed. Describe",
+    "setLabel": "Ex 14.1 Q5",
+    "stem": "Three events which are mutually exclusive and exhaustive."
+  },
+  {
+    "ref": "Ex 14.1 Q5(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Three coins are tossed. Describe",
+    "setLabel": "Ex 14.1 Q5",
+    "stem": "Two events, which are not mutually exclusive."
+  },
+  {
+    "ref": "Ex 14.1 Q5(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Three coins are tossed. Describe",
+    "setLabel": "Ex 14.1 Q5",
+    "stem": "Two events which are mutually exclusive but not exhaustive."
+  },
+  {
+    "ref": "Ex 14.1 Q5(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Three coins are tossed. Describe",
+    "setLabel": "Ex 14.1 Q5",
+    "stem": "Three events which are mutually exclusive but not exhaustive."
+  },
+  {
+    "ref": "Ex 14.1 Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Two dice are thrown. The events \\(A\\), \\(B\\) and \\(C\\) are as follows:\n\n\\(A\\): getting an even number on the first die.\n\n\\(B\\): getting an odd number on the first die.\n\n\\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).\n\nDescribe the events",
+    "setLabel": "Ex 14.1 Q6",
+    "stem": "\\(A'\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Two dice are thrown. The events \\(A\\), \\(B\\) and \\(C\\) are as follows:\n\n\\(A\\): getting an even number on the first die.\n\n\\(B\\): getting an odd number on the first die.\n\n\\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).\n\nDescribe the events",
+    "setLabel": "Ex 14.1 Q6",
+    "stem": "not \\(B\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q6(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Two dice are thrown. The events \\(A\\), \\(B\\) and \\(C\\) are as follows:\n\n\\(A\\): getting an even number on the first die.\n\n\\(B\\): getting an odd number on the first die.\n\n\\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).\n\nDescribe the events",
+    "setLabel": "Ex 14.1 Q6",
+    "stem": "\\(A\\) or \\(B\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q6(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Two dice are thrown. The events \\(A\\), \\(B\\) and \\(C\\) are as follows:\n\n\\(A\\): getting an even number on the first die.\n\n\\(B\\): getting an odd number on the first die.\n\n\\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).\n\nDescribe the events",
+    "setLabel": "Ex 14.1 Q6",
+    "stem": "\\(A\\) and \\(B\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q6(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Two dice are thrown. The events \\(A\\), \\(B\\) and \\(C\\) are as follows:\n\n\\(A\\): getting an even number on the first die.\n\n\\(B\\): getting an odd number on the first die.\n\n\\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).\n\nDescribe the events",
+    "setLabel": "Ex 14.1 Q6",
+    "stem": "\\(A\\) but not \\(C\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q6(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Two dice are thrown. The events \\(A\\), \\(B\\) and \\(C\\) are as follows:\n\n\\(A\\): getting an even number on the first die.\n\n\\(B\\): getting an odd number on the first die.\n\n\\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).\n\nDescribe the events",
+    "setLabel": "Ex 14.1 Q6",
+    "stem": "\\(B\\) or \\(C\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q6(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Two dice are thrown. The events \\(A\\), \\(B\\) and \\(C\\) are as follows:\n\n\\(A\\): getting an even number on the first die.\n\n\\(B\\): getting an odd number on the first die.\n\n\\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).\n\nDescribe the events",
+    "setLabel": "Ex 14.1 Q6",
+    "stem": "\\(B\\) and \\(C\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q6(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "HARD",
+    "context": "Two dice are thrown. The events \\(A\\), \\(B\\) and \\(C\\) are as follows:\n\n\\(A\\): getting an even number on the first die.\n\n\\(B\\): getting an odd number on the first die.\n\n\\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).\n\nDescribe the events",
+    "setLabel": "Ex 14.1 Q6",
+    "stem": "\\(A \\cap B' \\cap C'\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Refer to question 6 above, state true or false: (give reason for your answer). [Question 6 sets up: two dice are thrown, with \\(A\\): getting an even number on the first die; \\(B\\): getting an odd number on the first die; \\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).]",
+    "setLabel": "Ex 14.1 Q7",
+    "stem": "\\(A\\) and \\(B\\) are mutually exclusive",
+    "_note": "The book states only 'Refer to question 6 above'. The event definitions from Question 6 have been restated in square brackets in the shared context so the row is answerable on its own; the bracketed text is not printed here in the book."
+  },
+  {
+    "ref": "Ex 14.1 Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Refer to question 6 above, state true or false: (give reason for your answer). [Question 6 sets up: two dice are thrown, with \\(A\\): getting an even number on the first die; \\(B\\): getting an odd number on the first die; \\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).]",
+    "setLabel": "Ex 14.1 Q7",
+    "stem": "\\(A\\) and \\(B\\) are mutually exclusive and exhaustive"
+  },
+  {
+    "ref": "Ex 14.1 Q7(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Refer to question 6 above, state true or false: (give reason for your answer). [Question 6 sets up: two dice are thrown, with \\(A\\): getting an even number on the first die; \\(B\\): getting an odd number on the first die; \\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).]",
+    "setLabel": "Ex 14.1 Q7",
+    "stem": "\\(A = B'\\)"
+  },
+  {
+    "ref": "Ex 14.1 Q7(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Refer to question 6 above, state true or false: (give reason for your answer). [Question 6 sets up: two dice are thrown, with \\(A\\): getting an even number on the first die; \\(B\\): getting an odd number on the first die; \\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).]",
+    "setLabel": "Ex 14.1 Q7",
+    "stem": "\\(A\\) and \\(C\\) are mutually exclusive"
+  },
+  {
+    "ref": "Ex 14.1 Q7(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "MODERATE",
+    "context": "Refer to question 6 above, state true or false: (give reason for your answer). [Question 6 sets up: two dice are thrown, with \\(A\\): getting an even number on the first die; \\(B\\): getting an odd number on the first die; \\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).]",
+    "setLabel": "Ex 14.1 Q7",
+    "stem": "\\(A\\) and \\(B'\\) are mutually exclusive."
+  },
+  {
+    "ref": "Ex 14.1 Q7(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Events and the Algebra of Events",
+    "difficulty": "HARD",
+    "context": "Refer to question 6 above, state true or false: (give reason for your answer). [Question 6 sets up: two dice are thrown, with \\(A\\): getting an even number on the first die; \\(B\\): getting an odd number on the first die; \\(C\\): getting the sum of the numbers on the dice \\(\\le 5\\).]",
+    "setLabel": "Ex 14.1 Q7",
+    "stem": "\\(A'\\), \\(B'\\), \\(C\\) are mutually exclusive and exhaustive."
+  },
+  {
+    "ref": "14.2 Eg.4",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "MODERATE",
+    "stem": "Let a sample space be \\(S = \\{\\omega_1, \\omega_2, ..., \\omega_6\\}\\). Which of the following assignments of probabilities to each outcome are valid?\n\n| Outcomes | \\(\\omega_1\\) | \\(\\omega_2\\) | \\(\\omega_3\\) | \\(\\omega_4\\) | \\(\\omega_5\\) | \\(\\omega_6\\) |\n|---|---|---|---|---|---|---|\n| (a) | \\(\\frac{1}{6}\\) | \\(\\frac{1}{6}\\) | \\(\\frac{1}{6}\\) | \\(\\frac{1}{6}\\) | \\(\\frac{1}{6}\\) | \\(\\frac{1}{6}\\) |\n| (b) | \\(1\\) | \\(0\\) | \\(0\\) | \\(0\\) | \\(0\\) | \\(0\\) |\n| (c) | \\(\\frac{1}{8}\\) | \\(\\frac{2}{3}\\) | \\(\\frac{1}{3}\\) | \\(\\frac{1}{3}\\) | \\(-\\frac{1}{4}\\) | \\(-\\frac{1}{3}\\) |\n| (d) | \\(\\frac{1}{12}\\) | \\(\\frac{1}{12}\\) | \\(\\frac{1}{6}\\) | \\(\\frac{1}{6}\\) | \\(\\frac{1}{6}\\) | \\(\\frac{3}{2}\\) |\n| (e) | \\(0.1\\) | \\(0.2\\) | \\(0.3\\) | \\(0.4\\) | \\(0.5\\) | \\(0.6\\) |",
+    "solution": "(a) Condition (i): Each of the number \\(p(\\omega_i)\\) is positive and less than one.\n\nCondition (ii): Sum of probabilities \\(= \\frac{1}{6} + \\frac{1}{6} + \\frac{1}{6} + \\frac{1}{6} + \\frac{1}{6} + \\frac{1}{6} = 1\\)\n\nTherefore, the assignment is valid.\n\n(b) Condition (i): Each of the number \\(p(\\omega_i)\\) is either 0 or 1.\n\nCondition (ii) Sum of the probabilities \\(= 1 + 0 + 0 + 0 + 0 + 0 = 1\\)\n\nTherefore, the assignment is valid.\n\n(c) Condition (i) Two of the probabilities \\(p(\\omega_5)\\) and \\(p(\\omega_6)\\) are negative, the assignment is not valid.\n\n(d) Since \\(p(\\omega_6) = \\frac{3}{2} > 1\\), the assignment is not valid.\n\n(e) Since, sum of probabilities \\(= 0.1 + 0.2 + 0.3 + 0.4 + 0.5 + 0.6 = 2.1\\), the assignment is not valid.",
+    "_note": "The five candidate assignments are labelled (a)-(e) and are the parts of one worked Example, NOT four MCQ alternatives."
+  },
+  {
+    "ref": "14.2 Eg.5",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "MODERATE",
+    "stem": "One card is drawn from a well shuffled deck of 52 cards. If each outcome is equally likely, calculate the probability that the card will be\n\n(i) a diamond (ii) not an ace (iii) a black card (i.e., a club or, a spade) (iv) not a diamond (v) not a black card.",
+    "solution": "When a card is drawn from a well shuffled deck of 52 cards, the number of possible outcomes is 52.\n\n(i) Let \\(A\\) be the event 'the card drawn is a diamond'. Clearly the number of elements in set \\(A\\) is 13.\n\nTherefore, \\(P(A) = \\frac{13}{52} = \\frac{1}{4}\\)\n\ni.e. probability of a diamond card \\(= \\frac{1}{4}\\)\n\n(ii) We assume that the event 'Card drawn is an ace' is \\(B\\).\n\nTherefore 'Card drawn is not an ace' should be \\(B'\\).\n\nWe know that \\(P(B') = 1 - P(B) = 1 - \\frac{4}{52} = 1 - \\frac{1}{13} = \\frac{12}{13}\\)\n\n(iii) Let \\(C\\) denote the event 'card drawn is black card'.\n\nTherefore, number of elements in the set \\(C = 26\\)\n\ni.e. \\(P(C) = \\frac{26}{52} = \\frac{1}{2}\\)\n\nThus, probability of a black card \\(= \\frac{1}{2}\\).\n\n(iv) We assumed in (i) above that \\(A\\) is the event 'card drawn is a diamond', so the event 'card drawn is not a diamond' may be denoted as \\(A'\\) or 'not \\(A\\)'.\n\nNow \\(P(\\text{not } A) = 1 - P(A) = 1 - \\frac{1}{4} = \\frac{3}{4}\\)\n\n(v) The event 'card drawn is not a black card' may be denoted as \\(C'\\) or 'not \\(C\\)'.\n\nWe know that \\(P(\\text{not } C) = 1 - P(C) = 1 - \\frac{1}{2} = \\frac{1}{2}\\)\n\nTherefore, probability of not a black card \\(= \\frac{1}{2}\\)"
+  },
+  {
+    "ref": "14.2 Eg.6",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "EASY",
+    "stem": "A bag contains 9 discs of which 4 are red, 3 are blue and 2 are yellow. The discs are similar in shape and size. A disc is drawn at random from the bag. Calculate the probability that it will be (i) red, (ii) yellow, (iii) blue, (iv) not blue, (v) either red or blue.",
+    "solution": "There are 9 discs in all so the total number of possible outcomes is 9.\n\nLet the events \\(A\\), \\(B\\), \\(C\\) be defined as\n\n\\(A\\): 'the disc drawn is red'\n\n\\(B\\): 'the disc drawn is yellow'\n\n\\(C\\): 'the disc drawn is blue'.\n\n(i) The number of red discs \\(= 4\\), i.e., \\(n(A) = 4\\)\n\nHence \\(P(A) = \\frac{4}{9}\\)\n\n(ii) The number of yellow discs \\(= 2\\), i.e., \\(n(B) = 2\\)\n\nTherefore, \\(P(B) = \\frac{2}{9}\\)\n\n(iii) The number of blue discs \\(= 3\\), i.e., \\(n(C) = 3\\)\n\nTherefore, \\(P(C) = \\frac{3}{9} = \\frac{1}{3}\\)\n\n(iv) Clearly the event 'not blue' is 'not \\(C\\)'. We know that \\(P(\\text{not } C) = 1 - P(C)\\)\n\nTherefore \\(P(\\text{not } C) = 1 - \\frac{1}{3} = \\frac{2}{3}\\)\n\n(v) The event 'either red or blue' may be described by the set '\\(A\\) or \\(C\\)'\n\nSince, \\(A\\) and \\(C\\) are mutually exclusive events, we have\n\n\\(P(A \\text{ or } C) = P(A \\cup C) = P(A) + P(C) = \\frac{4}{9} + \\frac{1}{3} = \\frac{7}{9}\\)"
+  },
+  {
+    "ref": "14.2 Eg.7",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "HARD",
+    "stem": "Two students Anil and Ashima appeared in an examination. The probability that Anil will qualify the examination is 0.05 and that Ashima will qualify the examination is 0.10. The probability that both will qualify the examination is 0.02. Find the probability that\n\n(a) Both Anil and Ashima will not qualify the examination.\n\n(b) Atleast one of them will not qualify the examination and\n\n(c) Only one of them will qualify the examination.",
+    "solution": "Let \\(E\\) and \\(F\\) denote the events that Anil and Ashima will qualify the examination, respectively. Given that\n\n\\(P(E) = 0.05\\), \\(P(F) = 0.10\\) and \\(P(E \\cap F) = 0.02\\).\n\nThen\n\n(a) The event 'both Anil and Ashima will not qualify the examination' may be expressed as \\(E' \\cap F'\\).\n\nSince, \\(E'\\) is 'not \\(E\\)', i.e., Anil will not qualify the examination and \\(F'\\) is 'not \\(F\\)', i.e., Ashima will not qualify the examination.\n\nAlso \\(E' \\cap F' = \\overline{E \\cup F}\\) (by Demorgan's Law)\n\nNow \\(P(E \\cup F) = P(E) + P(F) - P(E \\cap F)\\)\n\nor \\(P(E \\cup F) = 0.05 + 0.10 - 0.02 = 0.13\\)\n\nTherefore \\(P(E' \\cap F') = P\\overline{E \\cup F} = 1 - P(E \\cup F) = 1 - 0.13 = 0.87\\)\n\n(b) \\(P(\\text{atleast one of them will not qualify}) = 1 - P(\\text{both of them will qualify}) = 1 - 0.02 = 0.98\\)\n\n(c) The event only one of them will qualify the examination is same as the event either (Anil will qualify, and Ashima will not qualify) or (Anil will not qualify and Ashima will qualify) i.e., \\(E \\cap F'\\) or \\(E' \\cap F\\), where \\(E \\cap F'\\) and \\(E' \\cap F\\) are mutually exclusive.\n\nTherefore, \\(P(\\text{only one of them will qualify}) = P(E \\cap F' \\text{ or } E' \\cap F)\\)\n\n\\(= P(E \\cap F') + P(E' \\cap F) = P(E) - P(E \\cap F) + P(F) - P(E \\cap F)\\)\n\n\\(= 0.05 - 0.02 + 0.10 - 0.02 = 0.11\\)"
+  },
+  {
+    "ref": "14.2 Eg.8",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "MODERATE",
+    "stem": "A committee of two persons is selected from two men and two women. What is the probability that the committee will have (a) no man? (b) one man? (c) two men?",
+    "solution": "The total number of persons \\(= 2 + 2 = 4\\). Out of these four person, two can be selected in \\({}^{4}C_{2}\\) ways.\n\n(a) No men in the committee of two means there will be two women in the committee. Out of two women, two can be selected in \\({}^{2}C_{2} = 1\\) way.\n\nTherefore \\(P(\\text{no man}) = \\dfrac{{}^{2}C_{2}}{{}^{4}C_{2}} = \\dfrac{1 \\times 2 \\times 1}{4 \\times 3} = \\dfrac{1}{6}\\)\n\n(b) One man in the committee means that there is one woman. One man out of 2 can be selected in \\({}^{2}C_{1}\\) ways and one woman out of 2 can be selected in \\({}^{2}C_{1}\\) ways. Together they can be selected in \\({}^{2}C_{1} \\times {}^{2}C_{1}\\) ways.\n\nTherefore \\(P(\\text{One man}) = \\dfrac{{}^{2}C_{1} \\times {}^{2}C_{1}}{{}^{4}C_{2}} = \\dfrac{2 \\times 2}{2 \\times 3} = \\dfrac{2}{3}\\)\n\n(c) Two men can be selected in \\({}^{2}C_{2}\\) way.\n\nHence \\(P(\\text{Two men}) = \\dfrac{{}^{2}C_{2}}{{}^{4}C_{2}} = \\dfrac{1}{{}^{4}C_{2}} = \\dfrac{1}{6}\\)"
+  },
+  {
+    "ref": "Ex 14.2 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "MODERATE",
+    "stem": "Which of the following can not be valid assignment of probabilities for outcomes of sample Space \\(S = \\{\\omega_{1}, \\omega_{2}, \\omega_{3}, \\omega_{4}, \\omega_{5}, \\omega_{6}, \\omega_{7}\\}\\)\n\n| Assignment | \\(\\omega_{1}\\) | \\(\\omega_{2}\\) | \\(\\omega_{3}\\) | \\(\\omega_{4}\\) | \\(\\omega_{5}\\) | \\(\\omega_{6}\\) | \\(\\omega_{7}\\) |\n|---|---|---|---|---|---|---|---|\n| (a) | 0.1 | 0.01 | 0.05 | 0.03 | 0.01 | 0.2 | 0.6 |\n| (b) | \\(\\dfrac{1}{7}\\) | \\(\\dfrac{1}{7}\\) | \\(\\dfrac{1}{7}\\) | \\(\\dfrac{1}{7}\\) | \\(\\dfrac{1}{7}\\) | \\(\\dfrac{1}{7}\\) | \\(\\dfrac{1}{7}\\) |\n| (c) | 0.1 | 0.2 | 0.3 | 0.4 | 0.5 | 0.6 | 0.7 |\n| (d) | \\(-0.1\\) | 0.2 | 0.3 | 0.4 | \\(-0.2\\) | 0.1 | 0.3 |\n| (e) | \\(\\dfrac{1}{14}\\) | \\(\\dfrac{2}{14}\\) | \\(\\dfrac{3}{14}\\) | \\(\\dfrac{4}{14}\\) | \\(\\dfrac{5}{14}\\) | \\(\\dfrac{6}{14}\\) | \\(\\dfrac{15}{14}\\) |",
+    "_note": "The question's lead-in sits at the foot of p-16 and the assignment table is printed at the top of p-17. Kept as ONE row: the book asks a single 'which of the following can not be valid' over the whole table, so splitting (a)-(e) would change the question."
+  },
+  {
+    "ref": "Ex 14.2 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "stem": "A coin is tossed twice, what is the probability that atleast one tail occurs?"
+  },
+  {
+    "ref": "Ex 14.2 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "context": "A die is thrown, find the probability of following events:",
+    "setLabel": "Ex 14.2 Q3",
+    "stem": "A prime number will appear,"
+  },
+  {
+    "ref": "Ex 14.2 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "context": "A die is thrown, find the probability of following events:",
+    "setLabel": "Ex 14.2 Q3",
+    "stem": "A number greater than or equal to 3 will appear,"
+  },
+  {
+    "ref": "Ex 14.2 Q3(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "context": "A die is thrown, find the probability of following events:",
+    "setLabel": "Ex 14.2 Q3",
+    "stem": "A number less than or equal to one will appear,"
+  },
+  {
+    "ref": "Ex 14.2 Q3(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "context": "A die is thrown, find the probability of following events:",
+    "setLabel": "Ex 14.2 Q3",
+    "stem": "A number more than 6 will appear,"
+  },
+  {
+    "ref": "Ex 14.2 Q3(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "context": "A die is thrown, find the probability of following events:",
+    "setLabel": "Ex 14.2 Q3",
+    "stem": "A number less than 6 will appear."
+  },
+  {
+    "ref": "Ex 14.2 Q4(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "context": "A card is selected from a pack of 52 cards.",
+    "setLabel": "Ex 14.2 Q4",
+    "stem": "How many points are there in the sample space?"
+  },
+  {
+    "ref": "Ex 14.2 Q4(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "context": "A card is selected from a pack of 52 cards.",
+    "setLabel": "Ex 14.2 Q4",
+    "stem": "Calculate the probability that the card is an ace of spades."
+  },
+  {
+    "ref": "Ex 14.2 Q4(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "context": "A card is selected from a pack of 52 cards.",
+    "setLabel": "Ex 14.2 Q4",
+    "stem": "Calculate the probability that the card is (i) an ace (ii) black card."
+  },
+  {
+    "ref": "Ex 14.2 Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "MODERATE",
+    "context": "A fair coin with 1 marked on one face and 6 on the other and a fair die are both tossed. find the probability that the sum of numbers that turn up is",
+    "setLabel": "Ex 14.2 Q5",
+    "stem": "3"
+  },
+  {
+    "ref": "Ex 14.2 Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "MODERATE",
+    "context": "A fair coin with 1 marked on one face and 6 on the other and a fair die are both tossed. find the probability that the sum of numbers that turn up is",
+    "setLabel": "Ex 14.2 Q5",
+    "stem": "12"
+  },
+  {
+    "ref": "Ex 14.2 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "stem": "There are four men and six women on the city council. If one council member is selected for a committee at random, how likely is it that it is a woman?"
+  },
+  {
+    "ref": "Ex 14.2 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "HARD",
+    "stem": "A fair coin is tossed four times, and a person win Re 1 for each head and lose Rs 1.50 for each tail that turns up.\nFrom the sample space calculate how many different amounts of money you can have after four tosses and the probability of having each of these amounts."
+  },
+  {
+    "ref": "Ex 14.2 Q8(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "context": "Three coins are tossed once. Find the probability of getting",
+    "setLabel": "Ex 14.2 Q8",
+    "stem": "3 heads"
+  },
+  {
+    "ref": "Ex 14.2 Q8(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "context": "Three coins are tossed once. Find the probability of getting",
+    "setLabel": "Ex 14.2 Q8",
+    "stem": "2 heads"
+  },
+  {
+    "ref": "Ex 14.2 Q8(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "context": "Three coins are tossed once. Find the probability of getting",
+    "setLabel": "Ex 14.2 Q8",
+    "stem": "atleast 2 heads"
+  },
+  {
+    "ref": "Ex 14.2 Q8(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "context": "Three coins are tossed once. Find the probability of getting",
+    "setLabel": "Ex 14.2 Q8",
+    "stem": "atmost 2 heads"
+  },
+  {
+    "ref": "Ex 14.2 Q8(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "context": "Three coins are tossed once. Find the probability of getting",
+    "setLabel": "Ex 14.2 Q8",
+    "stem": "no head"
+  },
+  {
+    "ref": "Ex 14.2 Q8(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "context": "Three coins are tossed once. Find the probability of getting",
+    "setLabel": "Ex 14.2 Q8",
+    "stem": "3 tails"
+  },
+  {
+    "ref": "Ex 14.2 Q8(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "context": "Three coins are tossed once. Find the probability of getting",
+    "setLabel": "Ex 14.2 Q8",
+    "stem": "exactly two tails"
+  },
+  {
+    "ref": "Ex 14.2 Q8(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "context": "Three coins are tossed once. Find the probability of getting",
+    "setLabel": "Ex 14.2 Q8",
+    "stem": "no tail"
+  },
+  {
+    "ref": "Ex 14.2 Q8(ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "EASY",
+    "context": "Three coins are tossed once. Find the probability of getting",
+    "setLabel": "Ex 14.2 Q8",
+    "stem": "atmost two tails"
+  },
+  {
+    "ref": "Ex 14.2 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "EASY",
+    "stem": "If \\(\\dfrac{2}{11}\\) is the probability of an event, what is the probability of the event 'not A'.",
+    "_note": "As printed the book never names the event: it says 'the probability of an event' and then asks for 'not A'. The event is evidently intended to be A. Transcribed exactly as printed."
+  },
+  {
+    "ref": "Ex 14.2 Q10(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "MODERATE",
+    "context": "A letter is chosen at random from the word 'ASSASSINATION'. Find the probability that letter is",
+    "setLabel": "Ex 14.2 Q10",
+    "stem": "a vowel"
+  },
+  {
+    "ref": "Ex 14.2 Q10(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "MODERATE",
+    "context": "A letter is chosen at random from the word 'ASSASSINATION'. Find the probability that letter is",
+    "setLabel": "Ex 14.2 Q10",
+    "stem": "a consonant"
+  },
+  {
+    "ref": "Ex 14.2 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "MODERATE",
+    "stem": "In a lottery, a person choses six different natural numbers at random from 1 to 20, and if these six numbers match with the six numbers already fixed by the lottery committee, he wins the prize. What is the probability of winning the prize in the game? [Hint order of the numbers is not important.]"
+  },
+  {
+    "ref": "Ex 14.2 Q12(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "MODERATE",
+    "context": "Check whether the following probabilities \\(P(A)\\) and \\(P(B)\\) are consistently defined",
+    "setLabel": "Ex 14.2 Q12",
+    "stem": "\\(P(A) = 0.5\\), \\(P(B) = 0.7\\), \\(P(A \\cap B) = 0.6\\)"
+  },
+  {
+    "ref": "Ex 14.2 Q12(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "MODERATE",
+    "context": "Check whether the following probabilities \\(P(A)\\) and \\(P(B)\\) are consistently defined",
+    "setLabel": "Ex 14.2 Q12",
+    "stem": "\\(P(A) = 0.5\\), \\(P(B) = 0.4\\), \\(P(A \\cup B) = 0.8\\)"
+  },
+  {
+    "ref": "Ex 14.2 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "MODERATE",
+    "stem": "Fill in the blanks in following table:\n\n| | \\(P(A)\\) | \\(P(B)\\) | \\(P(A \\cap B)\\) | \\(P(A \\cup B)\\) |\n|---|---|---|---|---|\n| (i) | \\(\\dfrac{1}{3}\\) | \\(\\dfrac{1}{5}\\) | \\(\\dfrac{1}{15}\\) | ... |\n| (ii) | 0.35 | ... | 0.25 | 0.6 |\n| (iii) | 0.5 | 0.35 | ... | 0.7 |",
+    "_note": "Kept as ONE row so the printed table survives as a table; the three blanks are the sub-items (i)-(iii) of a single numbered question."
+  },
+  {
+    "ref": "Ex 14.2 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "EASY",
+    "stem": "Given \\(P(A) = \\dfrac{3}{5}\\) and \\(P(B) = \\dfrac{1}{5}\\). Find \\(P(A \\text{ or } B)\\), if A and B are mutually exclusive events."
+  },
+  {
+    "ref": "Ex 14.2 Q15(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "EASY",
+    "context": "If E and F are events such that \\(P(E) = \\dfrac{1}{4}\\), \\(P(F) = \\dfrac{1}{2}\\) and \\(P(E \\text{ and } F) = \\dfrac{1}{8}\\), find",
+    "setLabel": "Ex 14.2 Q15",
+    "stem": "\\(P(E \\text{ or } F)\\)"
+  },
+  {
+    "ref": "Ex 14.2 Q15(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "MODERATE",
+    "context": "If E and F are events such that \\(P(E) = \\dfrac{1}{4}\\), \\(P(F) = \\dfrac{1}{2}\\) and \\(P(E \\text{ and } F) = \\dfrac{1}{8}\\), find",
+    "setLabel": "Ex 14.2 Q15",
+    "stem": "\\(P(\\text{not } E \\text{ and not } F)\\)."
+  },
+  {
+    "ref": "Ex 14.2 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "MODERATE",
+    "stem": "Events E and F are such that \\(P(\\text{not } E \\text{ or not } F) = 0.25\\), State whether E and F are mutually exclusive."
+  },
+  {
+    "ref": "Ex 14.2 Q17(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "EASY",
+    "context": "A and B are events such that \\(P(A) = 0.42\\), \\(P(B) = 0.48\\) and \\(P(A \\text{ and } B) = 0.16\\). Determine",
+    "setLabel": "Ex 14.2 Q17",
+    "stem": "\\(P(\\text{not } A)\\)"
+  },
+  {
+    "ref": "Ex 14.2 Q17(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "EASY",
+    "context": "A and B are events such that \\(P(A) = 0.42\\), \\(P(B) = 0.48\\) and \\(P(A \\text{ and } B) = 0.16\\). Determine",
+    "setLabel": "Ex 14.2 Q17",
+    "stem": "\\(P(\\text{not } B)\\)"
+  },
+  {
+    "ref": "Ex 14.2 Q17(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "EASY",
+    "context": "A and B are events such that \\(P(A) = 0.42\\), \\(P(B) = 0.48\\) and \\(P(A \\text{ and } B) = 0.16\\). Determine",
+    "setLabel": "Ex 14.2 Q17",
+    "stem": "\\(P(A \\text{ or } B)\\)"
+  },
+  {
+    "ref": "Ex 14.2 Q18",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "MODERATE",
+    "stem": "In Class XI of a school 40% of the students study Mathematics and 30% study Biology. 10% of the class study both Mathematics and Biology. If a student is selected at random from the class, find the probability that he will be studying Mathematics or Biology."
+  },
+  {
+    "ref": "Ex 14.2 Q19",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "MODERATE",
+    "stem": "In an entrance test that is graded on the basis of two examinations, the probability of a randomly chosen student passing the first examination is 0.8 and the probability of passing the second examination is 0.7. The probability of passing atleast one of them is 0.95. What is the probability of passing both?"
+  },
+  {
+    "ref": "Ex 14.2 Q20",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "MODERATE",
+    "stem": "The probability that a student will pass the final examination in both English and Hindi is 0.5 and the probability of passing neither is 0.1. If the probability of passing the English examination is 0.75, what is the probability of passing the Hindi examination?"
+  },
+  {
+    "ref": "Ex 14.2 Q21(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "EASY",
+    "context": "In a class of 60 students, 30 opted for NCC, 32 opted for NSS and 24 opted for both NCC and NSS. If one of these students is selected at random, find the probability that",
+    "setLabel": "Ex 14.2 Q21",
+    "stem": "The student opted for NCC or NSS."
+  },
+  {
+    "ref": "Ex 14.2 Q21(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "MODERATE",
+    "context": "In a class of 60 students, 30 opted for NCC, 32 opted for NSS and 24 opted for both NCC and NSS. If one of these students is selected at random, find the probability that",
+    "setLabel": "Ex 14.2 Q21",
+    "stem": "The student has opted neither NCC nor NSS."
+  },
+  {
+    "ref": "Ex 14.2 Q21(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "MODERATE",
+    "context": "In a class of 60 students, 30 opted for NCC, 32 opted for NSS and 24 opted for both NCC and NSS. If one of these students is selected at random, find the probability that",
+    "setLabel": "Ex 14.2 Q21",
+    "stem": "The student has opted NSS but not NCC."
+  },
+  {
+    "ref": "Misc Eg.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "MODERATE",
+    "stem": "On her vacations Veena visits four cities (A, B, C and D) in a random order. What is the probability that she visits\n(i) A before B?\n(ii) A before B and B before C?\n(iii) A first and B last?\n(iv) A either first or second?\n(v) A just before B?",
+    "solution": "The number of arrangements (orders) in which Veena can visit four cities A, B, C, or D is \\(4!\\) i.e., 24. Therefore, \\(n(S) = 24\\).\n\nSince the number of elements in the sample space of the experiment is 24 all of these outcomes are considered to be equally likely. A sample space for the experiment is\n\n\\(S = \\{\\)ABCD, ABDC, ACBD, ACDB, ADBC, ADCB, BACD, BADC, BDAC, BDCA, BCAD, BCDA, CABD, CADB, CBDA, CBAD, CDAB, CDBA, DABC, DACB, DBCA, DBAC, DCAB, DCBA\\(\\}\\)\n\n(i) Let the event 'she visits A before B' be denoted by E\n\nTherefore, \\(E = \\{\\)ABCD, CABD, DABC, ABDC, CADB, DACB, ACBD, ACDB, ADBC, CDAB, DCAB, ADCB\\(\\}\\)\n\nThus \\(P(E) = \\dfrac{n(E)}{n(S)} = \\dfrac{12}{24} = \\dfrac{1}{2}\\)\n\n(ii) Let the event 'Veena visits A before B and B before C' be denoted by F.\n\nHere \\(F = \\{\\)ABCD, DABC, ABDC, ADBC\\(\\}\\)\n\nTherefore, \\(P(F) = \\dfrac{n(F)}{n(S)} = \\dfrac{4}{24} = \\dfrac{1}{6}\\)\n\nStudents are advised to find the probability in case of (iii), (iv) and (v).",
+    "_note": "The book's printed solution answers only parts (i) and (ii); it closes with 'Students are advised to find the probability in case of (iii), (iv) and (v).' Parts (iii)-(v) are left unsolved in the book. Transcribed as printed."
+  },
+  {
+    "ref": "Misc Eg.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "HARD",
+    "stem": "Find the probability that when a hand of 7 cards is drawn from a well shuffled deck of 52 cards, it contains (i) all Kings (ii) 3 Kings (iii) atleast 3 Kings.",
+    "solution": "Total number of possible hands \\(= {}^{52}C_{7}\\)\n\n(i) Number of hands with 4 Kings \\(= {}^{4}C_{4} \\times {}^{48}C_{3}\\) (other 3 cards must be chosen from the rest 48 cards)\n\nHence \\(P(\\text{a hand will have 4 Kings}) = \\dfrac{{}^{4}C_{4} \\times {}^{48}C_{3}}{{}^{52}C_{7}} = \\dfrac{1}{7735}\\)\n\n(ii) Number of hands with 3 Kings and 4 non-King cards \\(= {}^{4}C_{3} \\times {}^{48}C_{4}\\)\n\nTherefore \\(P(3 \\text{ Kings}) = \\dfrac{{}^{4}C_{3} \\times {}^{48}C_{4}}{{}^{52}C_{7}} = \\dfrac{9}{1547}\\)\n\n(iii) \\(P(\\text{atleast 3 King}) = P(3 \\text{ Kings or } 4 \\text{ Kings})\\)\n\n\\(= P(3 \\text{ Kings}) + P(4 \\text{ Kings})\\)\n\n\\(= \\dfrac{9}{1547} + \\dfrac{1}{7735} = \\dfrac{46}{7735}\\)"
+  },
+  {
+    "ref": "Misc Eg.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "HARD",
+    "stem": "If A, B, C are three events associated with a random experiment, prove that\n\\(P(A \\cup B \\cup C) = P(A) + P(B) + P(C) - P(A \\cap B) - P(A \\cap C) - P(B \\cap C) + P(A \\cap B \\cap C)\\)",
+    "solution": "Consider \\(E = B \\cup C\\) so that\n\n\\(P(A \\cup B \\cup C) = P(A \\cup E)\\)\n\n\\(= P(A) + P(E) - P(A \\cap E)\\)  ... (1)\n\nNow \\(P(E) = P(B \\cup C)\\)\n\n\\(= P(B) + P(C) - P(B \\cap C)\\)  ... (2)\n\nAlso \\(A \\cap E = A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)\\) [using distribution property of intersection of sets over the union]. Thus\n\n\\(P(A \\cap E) = P(A \\cap B) + P(A \\cap C) - P[(A \\cap B) \\cap (A \\cap C)]\\)\n\n\\(= P(A \\cap B) + P(A \\cap C) - P[A \\cap B \\cap C]\\)  ... (3)\n\nUsing (2) and (3) in (1), we get\n\n\\(P[A \\cup B \\cup C] = P(A) + P(B) + P(C) - P(B \\cap C) - P(A \\cap B) - P(A \\cap C) + P(A \\cap B \\cap C)\\)"
+  },
+  {
+    "ref": "Misc Eg.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "MODERATE",
+    "stem": "In a relay race there are five teams A, B, C, D and E.\n(a) What is the probability that A, B and C finish first, second and third, respectively.\n(b) What is the probability that A, B and C are first three to finish (in any order) (Assume that all finishing orders are equally likely)",
+    "solution": "If we consider the sample space consisting of all finishing orders in the first three places, we will have \\({}^{5}P_{3}\\), i.e., \\(\\dfrac{5!}{(5-3)!} = 5 \\times 4 \\times 3 = 60\\) sample points, each with a probability of \\(\\dfrac{1}{60}\\).\n\n(a) A, B and C finish first, second and third, respectively. There is only one finishing order for this, i.e., ABC.\n\nThus \\(P(\\text{A, B and C finish first, second and third respectively}) = \\dfrac{1}{60}\\).\n\n(b) A, B and C are the first three finishers. There will be \\(3!\\) arrangements for A, B and C. Therefore, the sample points corresponding to this event will be \\(3!\\) in number.\n\nSo \\(P(\\text{A, B and C are first three to finish}) = \\dfrac{3!}{60} = \\dfrac{6}{60} = \\dfrac{1}{10}\\)"
+  },
+  {
+    "ref": "Misc Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "MODERATE",
+    "context": "A box contains 10 red marbles, 20 blue marbles and 30 green marbles. 5 marbles are drawn from the box, what is the probability that",
+    "setLabel": "Misc Q1",
+    "stem": "all will be blue?"
+  },
+  {
+    "ref": "Misc Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "HARD",
+    "context": "A box contains 10 red marbles, 20 blue marbles and 30 green marbles. 5 marbles are drawn from the box, what is the probability that",
+    "setLabel": "Misc Q1",
+    "stem": "atleast one will be green?"
+  },
+  {
+    "ref": "Misc Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "MODERATE",
+    "stem": "4 cards are drawn from a well-shuffled deck of 52 cards. What is the probability of obtaining 3 diamonds and one spade?"
+  },
+  {
+    "ref": "Misc Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "EASY",
+    "context": "A die has two faces each with number '1', three faces each with number '2' and one face with number '3'. If die is rolled once, determine",
+    "setLabel": "Misc Q3",
+    "stem": "\\(P(2)\\)"
+  },
+  {
+    "ref": "Misc Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "EASY",
+    "context": "A die has two faces each with number '1', three faces each with number '2' and one face with number '3'. If die is rolled once, determine",
+    "setLabel": "Misc Q3",
+    "stem": "\\(P(1 \\text{ or } 3)\\)"
+  },
+  {
+    "ref": "Misc Q3(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "EASY",
+    "context": "A die has two faces each with number '1', three faces each with number '2' and one face with number '3'. If die is rolled once, determine",
+    "setLabel": "Misc Q3",
+    "stem": "\\(P(\\text{not } 3)\\)"
+  },
+  {
+    "ref": "Misc Q4(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "MODERATE",
+    "context": "In a certain lottery 10,000 tickets are sold and ten equal prizes are awarded. What is the probability of not getting a prize if you buy",
+    "setLabel": "Misc Q4",
+    "stem": "one ticket"
+  },
+  {
+    "ref": "Misc Q4(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "MODERATE",
+    "context": "In a certain lottery 10,000 tickets are sold and ten equal prizes are awarded. What is the probability of not getting a prize if you buy",
+    "setLabel": "Misc Q4",
+    "stem": "two tickets"
+  },
+  {
+    "ref": "Misc Q4(c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "MODERATE",
+    "context": "In a certain lottery 10,000 tickets are sold and ten equal prizes are awarded. What is the probability of not getting a prize if you buy",
+    "setLabel": "Misc Q4",
+    "stem": "10 tickets."
+  },
+  {
+    "ref": "Misc Q5(a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "HARD",
+    "context": "Out of 100 students, two sections of 40 and 60 are formed. If you and your friend are among the 100 students, what is the probability that",
+    "setLabel": "Misc Q5",
+    "stem": "you both enter the same section?"
+  },
+  {
+    "ref": "Misc Q5(b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "HARD",
+    "context": "Out of 100 students, two sections of 40 and 60 are formed. If you and your friend are among the 100 students, what is the probability that",
+    "setLabel": "Misc Q5",
+    "stem": "you both enter the different sections?"
+  },
+  {
+    "ref": "Misc Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "HARD",
+    "stem": "Three letters are dictated to three persons and an envelope is addressed to each of them, the letters are inserted into the envelopes at random so that each envelope contains exactly one letter. Find the probability that at least one letter is in its proper envelope."
+  },
+  {
+    "ref": "Misc Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "EASY",
+    "context": "A and B are two events such that \\(P(A) = 0.54\\), \\(P(B) = 0.69\\) and \\(P(A \\cap B) = 0.35\\). Find",
+    "setLabel": "Misc Q7",
+    "stem": "\\(P(A \\cup B)\\)"
+  },
+  {
+    "ref": "Misc Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "MODERATE",
+    "context": "A and B are two events such that \\(P(A) = 0.54\\), \\(P(B) = 0.69\\) and \\(P(A \\cap B) = 0.35\\). Find",
+    "setLabel": "Misc Q7",
+    "stem": "\\(P(A' \\cap B')\\)"
+  },
+  {
+    "ref": "Misc Q7(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "MODERATE",
+    "context": "A and B are two events such that \\(P(A) = 0.54\\), \\(P(B) = 0.69\\) and \\(P(A \\cap B) = 0.35\\). Find",
+    "setLabel": "Misc Q7",
+    "stem": "\\(P(A \\cap B')\\)"
+  },
+  {
+    "ref": "Misc Q7(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "MODERATE",
+    "context": "A and B are two events such that \\(P(A) = 0.54\\), \\(P(B) = 0.69\\) and \\(P(A \\cap B) = 0.35\\). Find",
+    "setLabel": "Misc Q7",
+    "stem": "\\(P(B \\cap A')\\)"
+  },
+  {
+    "ref": "Misc Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Probability of 'A or B' and 'not A'",
+    "difficulty": "MODERATE",
+    "stem": "From the employees of a company, 5 persons are selected to represent them in the managing committee of the company. Particulars of five persons are as follows:\n\n| S. No. | Name | Sex | Age in years |\n|---|---|---|---|\n| 1. | Harish | M | 30 |\n| 2. | Rohan | M | 33 |\n| 3. | Sheetal | F | 46 |\n| 4. | Alis | F | 28 |\n| 5. | Salim | M | 41 |\n\nA person is selected at random from this group to act as a spokesperson. What is the probability that the spokesperson will be either male or over 35 years?"
+  },
+  {
+    "ref": "Misc Q9(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "HARD",
+    "context": "If 4-digit numbers greater than 5,000 are randomly formed from the digits 0, 1, 3, 5, and 7, what is the probability of forming a number divisible by 5 when,",
+    "setLabel": "Misc Q9",
+    "stem": "the digits are repeated?"
+  },
+  {
+    "ref": "Misc Q9(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "HARD",
+    "context": "If 4-digit numbers greater than 5,000 are randomly formed from the digits 0, 1, 3, 5, and 7, what is the probability of forming a number divisible by 5 when,",
+    "setLabel": "Misc Q9",
+    "stem": "the repetition of digits is not allowed?"
+  },
+  {
+    "ref": "Misc Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Axiomatic Approach to Probability",
+    "difficulty": "MODERATE",
+    "stem": "The number lock of a suitcase has 4 wheels, each labelled with ten digits i.e., from 0 to 9. The lock opens with a sequence of four digits with no repeats. What is the probability of a person getting the right sequence to open the suitcase?"
+  }
+]

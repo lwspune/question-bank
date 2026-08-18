@@ -1,0 +1,1608 @@
+[
+  {
+    "ref": "1.3 Eg.9",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "stem": "Consider the sets\n\\(\\phi\\), \\(A = \\{ 1, 3 \\}\\), \\(B = \\{1, 5, 9\\}\\), \\(C = \\{1, 3, 5, 7, 9\\}\\).\nInsert the symbol \\(\\subset\\) or \\(\\not\\subset\\) between each of the following pair of sets:\n(i) \\(\\phi \\ldots B\\)  (ii) \\(A \\ldots B\\)  (iii) \\(A \\ldots C\\)  (iv) \\(B \\ldots C\\)",
+    "solution": "(i) \\(\\phi \\subset B\\) as \\(\\phi\\) is a subset of every set.\n(ii) \\(A \\not\\subset B\\) as \\(3 \\in A\\) and \\(3 \\notin B\\)\n(iii) \\(A \\subset C\\) as \\(1, 3 \\in A\\) also belongs to \\(C\\)\n(iv) \\(B \\subset C\\) as each element of \\(B\\) is also an element of \\(C\\)."
+  },
+  {
+    "ref": "1.3 Eg.10",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "stem": "Let \\(A = \\{ a, e, i, o, u\\}\\) and \\(B = \\{ a, b, c, d\\}\\). Is \\(A\\) a subset of \\(B\\) ? No. (Why?). Is \\(B\\) a subset of \\(A\\)? No. (Why?)",
+    "_note": "NO PRINTED SOLUTION BLOCK. The book gives this Example no \"Solution\" heading at all — the verdicts (\"No\") are embedded in the stem as rhetorical questions and the reasons are left to the reader as \"(Why?)\". The `solution` field is deliberately omitted rather than invented; the outstanding question is the two \"Why?\" justifications."
+  },
+  {
+    "ref": "1.3 Eg.11",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "MODERATE",
+    "stem": "Let \\(A\\), \\(B\\) and \\(C\\) be three sets. If \\(A \\in B\\) and \\(B \\subset C\\), is it true that \\(A \\subset C\\)?. If not, give an example.",
+    "solution": "No. Let \\(A = \\{1\\}\\), \\(B = \\{\\{1\\}, 2\\}\\) and \\(C = \\{\\{1\\}, 2, 3\\}\\). Here \\(A \\in B\\) as \\(A = \\{1\\}\\) and \\(B \\subset C\\). But \\(A \\not\\subset C\\) as \\(1 \\in A\\) and \\(1 \\notin C\\).\nNote that an element of a set can never be a subset of itself.",
+    "_note": "The book prints the stem's question mark before the full stop — \"is it true that A \\(\\subset\\) C?.\" — transcribed as printed. The closing line \"Note that an element of a set can never be a subset of itself.\" is INCLUDED IN THE SOLUTION: it is set flush to the solution block's left margin with no paragraph indent, immediately after the last solution line, and the next indented paragraph is the \\(\\S\\)1.6.1 heading. It reads as the solution's closing remark rather than as fresh chapter prose."
+  },
+  {
+    "ref": "1.4 Eg.12",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "stem": "Let \\(A = \\{ 2, 4, 6, 8\\}\\) and \\(B = \\{ 6, 8, 10, 12\\}\\). Find \\(A \\cup B\\).",
+    "solution": "We have \\(A \\cup B = \\{ 2, 4, 6, 8, 10, 12\\}\\).\nNote that the common elements 6 and 8 have been taken only once while writing \\(A \\cup B\\)."
+  },
+  {
+    "ref": "1.4 Eg.13",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "stem": "Let \\(A = \\{ a, e, i, o, u \\}\\) and \\(B = \\{ a, i, u \\}\\). Show that \\(A \\cup B = A\\).",
+    "solution": "We have, \\(A \\cup B = \\{ a, e, i, o, u \\} = A\\).\nThis example illustrates that union of sets \\(A\\) and its subset \\(B\\) is the set \\(A\\) itself, i.e., if \\(B \\subset A\\), then \\(A \\cup B = A\\)."
+  },
+  {
+    "ref": "1.4 Eg.14",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "stem": "Let \\(X = \\{\\text{Ram, Geeta, Akbar}\\}\\) be the set of students of Class XI, who are in school hockey team. Let \\(Y = \\{\\text{Geeta, David, Ashok}\\}\\) be the set of students from Class XI who are in the school football team. Find \\(X \\cup Y\\) and interpret the set.",
+    "solution": "We have, \\(X \\cup Y = \\{\\text{Ram, Geeta, Akbar, David, Ashok}\\}\\). This is the set of students from Class XI who are in the hockey team or the football team or both."
+  },
+  {
+    "ref": "1.4 Eg.15",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "stem": "Consider the sets \\(A\\) and \\(B\\) of Example 12. Find \\(A \\cap B\\).",
+    "solution": "We see that 6, 8 are the only elements which are common to both \\(A\\) and \\(B\\). Hence \\(A \\cap B = \\{ 6, 8 \\}\\).",
+    "_note": "The stem is a cross-reference: the sets are those of Example 12, namely \\(A = \\{2, 4, 6, 8\\}\\) and \\(B = \\{6, 8, 10, 12\\}\\). Transcribed as printed."
+  },
+  {
+    "ref": "1.4 Eg.16",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "stem": "Consider the sets \\(X\\) and \\(Y\\) of Example 14. Find \\(X \\cap Y\\).",
+    "solution": "We see that element 'Geeta' is the only element common to both. Hence, \\(X \\cap Y = \\{\\text{Geeta}\\}\\).",
+    "_note": "The stem is a cross-reference: the sets are those of Example 14, namely \\(X = \\{\\text{Ram, Geeta, Akbar}\\}\\) and \\(Y = \\{\\text{Geeta, David, Ashok}\\}\\). Transcribed as printed."
+  },
+  {
+    "ref": "1.4 Eg.17",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "stem": "Let \\(A = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}\\) and \\(B = \\{ 2, 3, 5, 7 \\}\\). Find \\(A \\cap B\\) and hence show that \\(A \\cap B = B\\).",
+    "solution": "We have \\(A \\cap B = \\{ 2, 3, 5, 7 \\} = B\\). We note that \\(B \\subset A\\) and that \\(A \\cap B = B\\)."
+  },
+  {
+    "ref": "1.4 Eg.18",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "stem": "Let \\(A = \\{ 1, 2, 3, 4, 5, 6\\}\\), \\(B = \\{ 2, 4, 6, 8 \\}\\). Find \\(A - B\\) and \\(B - A\\).",
+    "solution": "We have, \\(A - B = \\{ 1, 3, 5 \\}\\), since the elements 1, 3, 5 belong to \\(A\\) but not to \\(B\\) and \\(B - A = \\{ 8 \\}\\), since the element 8 belongs to \\(B\\) and not to \\(A\\).\nWe note that \\(A - B \\neq B - A\\)."
+  },
+  {
+    "ref": "1.4 Eg.19",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "stem": "Let \\(V = \\{ a, e, i, o, u \\}\\) and \\(B = \\{ a, i, k, u\\}\\). Find \\(V - B\\) and \\(B - V\\).",
+    "solution": "We have, \\(V - B = \\{ e, o \\}\\), since the elements \\(e, o\\) belong to \\(V\\) but not to \\(B\\) and \\(B - V = \\{ k \\}\\), since the element \\(k\\) belongs to \\(B\\) but not to \\(V\\).\nWe note that \\(V - B \\neq B - V\\). Using the set-builder notation, we can rewrite the definition of difference as \\(A - B = \\{ x : x \\in A \\text{ and } x \\notin B \\}\\)."
+  },
+  {
+    "ref": "1.5 Eg.20",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "EASY",
+    "stem": "Let \\(U = \\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}\\) and \\(A = \\{1, 3, 5, 7, 9\\}\\). Find \\(A'\\).",
+    "solution": "We note that 2, 4, 6, 8, 10 are the only elements of \\(U\\) which do not belong to \\(A\\). Hence \\(A' = \\{ 2, 4, 6, 8, 10 \\}\\)."
+  },
+  {
+    "ref": "1.5 Eg.21",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "EASY",
+    "stem": "Let \\(U\\) be universal set of all the students of Class XI of a coeducational school and \\(A\\) be the set of all girls in Class XI. Find \\(A'\\).",
+    "solution": "Since \\(A\\) is the set of all girls, \\(A'\\) is clearly the set of all boys in the class."
+  },
+  {
+    "ref": "1.5 Eg.22",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "stem": "Let \\(U = \\{1, 2, 3, 4, 5, 6\\}\\), \\(A = \\{2, 3\\}\\) and \\(B = \\{3, 4, 5\\}\\). Find \\(A'\\), \\(B'\\), \\(A' \\cap B'\\), \\(A \\cup B\\) and hence show that \\(\\overline{A \\cup B} = A' \\cap B'\\).",
+    "solution": "Clearly \\(A' = \\{1, 4, 5, 6\\}\\), \\(B' = \\{ 1, 2, 6 \\}\\). Hence \\(A' \\cap B' = \\{ 1, 6 \\}\\).\nAlso \\(A \\cup B = \\{ 2, 3, 4, 5 \\}\\), so that \\(\\overline{A \\cup B} = \\{ 1, 6 \\}\\).\nTherefore \\(\\overline{A \\cup B} = \\{ 1, 6 \\} = A' \\cap B'\\)."
+  },
+  {
+    "ref": "Misc Eg.23",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "stem": "Show that the set of letters needed to spell \" CATARACT \" and the set of letters needed to spell \" TRACT\" are equal.",
+    "solution": "Let \\(X\\) be the set of letters in \"CATARACT\". Then \\(X = \\{ C, A, T, R \\}\\).\nLet \\(Y\\) be the set of letters in \" TRACT\". Then \\(Y = \\{ T, R, A, C, T \\} = \\{ T, R, A, C \\}\\).\nSince every element in \\(X\\) is in \\(Y\\) and every element in \\(Y\\) is in \\(X\\). It follows that \\(X = Y\\)."
+  },
+  {
+    "ref": "Misc Eg.24",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "stem": "List all the subsets of the set \\(\\{ -1, 0, 1 \\}\\).",
+    "solution": "Let \\(A = \\{ -1, 0, 1 \\}\\). The subset of \\(A\\) having no element is the empty set \\(\\phi\\). The subsets of \\(A\\) having one element are \\(\\{ -1 \\}\\), \\(\\{ 0 \\}\\), \\(\\{ 1 \\}\\). The subsets of \\(A\\) having two elements are \\(\\{-1, 0\\}\\), \\(\\{-1, 1\\}\\), \\(\\{0, 1\\}\\). The subset of \\(A\\) having three elements of \\(A\\) is \\(A\\) itself. So, all the subsets of \\(A\\) are \\(\\phi\\), \\(\\{-1\\}\\), \\(\\{0\\}\\), \\(\\{1\\}\\), \\(\\{-1, 0\\}\\), \\(\\{-1, 1\\}\\), \\(\\{0, 1\\}\\) and \\(\\{-1, 0, 1\\}\\)."
+  },
+  {
+    "ref": "Misc Eg.25",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "MODERATE",
+    "stem": "Show that \\(A \\cup B = A \\cap B\\) implies \\(A = B\\).",
+    "solution": "Let \\(a \\in A\\). Then \\(a \\in A \\cup B\\). Since \\(A \\cup B = A \\cap B\\), \\(a \\in A \\cap B\\). So \\(a \\in B\\). Therefore, \\(A \\subset B\\).\nSimilarly, if \\(b \\in B\\), then \\(b \\in A \\cup B\\). Since \\(A \\cup B = A \\cap B\\), \\(b \\in A \\cap B\\). So, \\(b \\in A\\). Therefore, \\(B \\subset A\\).\nThus, \\(A = B\\)."
+  },
+  {
+    "ref": "Ex 1.3 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Make correct statements by filling in the symbols \\(\\subset\\) or \\(\\not\\subset\\) in the blank spaces :",
+    "setLabel": "Ex 1.3 Q1",
+    "stem": "\\(\\{ 2, 3, 4 \\} \\ldots \\{ 1, 2, 3, 4, 5 \\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Make correct statements by filling in the symbols \\(\\subset\\) or \\(\\not\\subset\\) in the blank spaces :",
+    "setLabel": "Ex 1.3 Q1",
+    "stem": "\\(\\{ a, b, c \\} \\ldots \\{ b, c, d \\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Make correct statements by filling in the symbols \\(\\subset\\) or \\(\\not\\subset\\) in the blank spaces :",
+    "setLabel": "Ex 1.3 Q1",
+    "stem": "\\(\\{ x : x \\text{ is a student of Class XI of your school} \\} \\ldots \\{ x : x \\text{ student of your school} \\}\\)",
+    "_note": "The book prints the second set as \"{x : x student of your school}\", omitting the verb \"is\". Transcribed as printed."
+  },
+  {
+    "ref": "Ex 1.3 Q1(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Make correct statements by filling in the symbols \\(\\subset\\) or \\(\\not\\subset\\) in the blank spaces :",
+    "setLabel": "Ex 1.3 Q1",
+    "stem": "\\(\\{ x : x \\text{ is a circle in the plane} \\} \\ldots \\{ x : x \\text{ is a circle in the same plane with radius 1 unit} \\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q1(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Make correct statements by filling in the symbols \\(\\subset\\) or \\(\\not\\subset\\) in the blank spaces :",
+    "setLabel": "Ex 1.3 Q1",
+    "stem": "\\(\\{ x : x \\text{ is a triangle in a plane} \\} \\ldots \\{ x : x \\text{ is a rectangle in the plane} \\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q1(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Make correct statements by filling in the symbols \\(\\subset\\) or \\(\\not\\subset\\) in the blank spaces :",
+    "setLabel": "Ex 1.3 Q1",
+    "stem": "\\(\\{ x : x \\text{ is an equilateral triangle in a plane} \\} \\ldots \\{ x : x \\text{ is a triangle in the same plane} \\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q1(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Make correct statements by filling in the symbols \\(\\subset\\) or \\(\\not\\subset\\) in the blank spaces :",
+    "setLabel": "Ex 1.3 Q1",
+    "stem": "\\(\\{ x : x \\text{ is an even natural number} \\} \\ldots \\{ x : x \\text{ is an integer} \\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Examine whether the following statements are true or false:",
+    "setLabel": "Ex 1.3 Q2",
+    "stem": "\\(\\{ a, b \\} \\not\\subset \\{ b, c, a \\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Examine whether the following statements are true or false:",
+    "setLabel": "Ex 1.3 Q2",
+    "stem": "\\(\\{ a, e \\} \\subset \\{ x : x \\text{ is a vowel in the English alphabet} \\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Examine whether the following statements are true or false:",
+    "setLabel": "Ex 1.3 Q2",
+    "stem": "\\(\\{ 1, 2, 3 \\} \\subset \\{ 1, 3, 5 \\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q2(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Examine whether the following statements are true or false:",
+    "setLabel": "Ex 1.3 Q2",
+    "stem": "\\(\\{ a \\} \\subset \\{ a, b, c \\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q2(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Examine whether the following statements are true or false:",
+    "setLabel": "Ex 1.3 Q2",
+    "stem": "\\(\\{ a \\} \\in \\{ a, b, c \\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q2(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "MODERATE",
+    "context": "Examine whether the following statements are true or false:",
+    "setLabel": "Ex 1.3 Q2",
+    "stem": "\\(\\{ x : x \\text{ is an even natural number less than } 6 \\} \\subset \\{ x : x \\text{ is a natural number which divides } 36 \\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "MODERATE",
+    "context": "Let \\(A = \\{ 1, 2, \\{ 3, 4 \\}, 5 \\}\\). Which of the following statements are incorrect and why?",
+    "setLabel": "Ex 1.3 Q3",
+    "stem": "\\(\\{3, 4\\} \\subset A\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "MODERATE",
+    "context": "Let \\(A = \\{ 1, 2, \\{ 3, 4 \\}, 5 \\}\\). Which of the following statements are incorrect and why?",
+    "setLabel": "Ex 1.3 Q3",
+    "stem": "\\(\\{3, 4\\} \\in A\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q3(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "MODERATE",
+    "context": "Let \\(A = \\{ 1, 2, \\{ 3, 4 \\}, 5 \\}\\). Which of the following statements are incorrect and why?",
+    "setLabel": "Ex 1.3 Q3",
+    "stem": "\\(\\{\\{3, 4\\}\\} \\subset A\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q3(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Let \\(A = \\{ 1, 2, \\{ 3, 4 \\}, 5 \\}\\). Which of the following statements are incorrect and why?",
+    "setLabel": "Ex 1.3 Q3",
+    "stem": "\\(1 \\in A\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q3(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Let \\(A = \\{ 1, 2, \\{ 3, 4 \\}, 5 \\}\\). Which of the following statements are incorrect and why?",
+    "setLabel": "Ex 1.3 Q3",
+    "stem": "\\(1 \\subset A\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q3(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Let \\(A = \\{ 1, 2, \\{ 3, 4 \\}, 5 \\}\\). Which of the following statements are incorrect and why?",
+    "setLabel": "Ex 1.3 Q3",
+    "stem": "\\(\\{1, 2, 5\\} \\subset A\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q3(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Let \\(A = \\{ 1, 2, \\{ 3, 4 \\}, 5 \\}\\). Which of the following statements are incorrect and why?",
+    "setLabel": "Ex 1.3 Q3",
+    "stem": "\\(\\{1, 2, 5\\} \\in A\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q3(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Let \\(A = \\{ 1, 2, \\{ 3, 4 \\}, 5 \\}\\). Which of the following statements are incorrect and why?",
+    "setLabel": "Ex 1.3 Q3",
+    "stem": "\\(\\{1, 2, 3\\} \\subset A\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q3(ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "MODERATE",
+    "context": "Let \\(A = \\{ 1, 2, \\{ 3, 4 \\}, 5 \\}\\). Which of the following statements are incorrect and why?",
+    "setLabel": "Ex 1.3 Q3",
+    "stem": "\\(\\phi \\in A\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q3(x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "MODERATE",
+    "context": "Let \\(A = \\{ 1, 2, \\{ 3, 4 \\}, 5 \\}\\). Which of the following statements are incorrect and why?",
+    "setLabel": "Ex 1.3 Q3",
+    "stem": "\\(\\phi \\subset A\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q3(xi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "MODERATE",
+    "context": "Let \\(A = \\{ 1, 2, \\{ 3, 4 \\}, 5 \\}\\). Which of the following statements are incorrect and why?",
+    "setLabel": "Ex 1.3 Q3",
+    "stem": "\\(\\{\\phi\\} \\subset A\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Write down all the subsets of the following sets",
+    "setLabel": "Ex 1.3 Q4",
+    "stem": "\\(\\{a\\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Write down all the subsets of the following sets",
+    "setLabel": "Ex 1.3 Q4",
+    "stem": "\\(\\{a, b\\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q4(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Write down all the subsets of the following sets",
+    "setLabel": "Ex 1.3 Q4",
+    "stem": "\\(\\{1, 2, 3\\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q4(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Write down all the subsets of the following sets",
+    "setLabel": "Ex 1.3 Q4",
+    "stem": "\\(\\phi\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Write the following as intervals :",
+    "setLabel": "Ex 1.3 Q5",
+    "stem": "\\(\\{ x : x \\in \\mathbf{R}, -4 < x \\le 6 \\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Write the following as intervals :",
+    "setLabel": "Ex 1.3 Q5",
+    "stem": "\\(\\{ x : x \\in \\mathbf{R}, -12 < x < -10 \\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q5(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Write the following as intervals :",
+    "setLabel": "Ex 1.3 Q5",
+    "stem": "\\(\\{ x : x \\in \\mathbf{R}, 0 \\le x < 7 \\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q5(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Write the following as intervals :",
+    "setLabel": "Ex 1.3 Q5",
+    "stem": "\\(\\{ x : x \\in \\mathbf{R}, 3 \\le x \\le 4 \\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Write the following intervals in set-builder form :",
+    "setLabel": "Ex 1.3 Q6",
+    "stem": "\\((-3, 0)\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Write the following intervals in set-builder form :",
+    "setLabel": "Ex 1.3 Q6",
+    "stem": "\\([6, 12]\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q6(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Write the following intervals in set-builder form :",
+    "setLabel": "Ex 1.3 Q6",
+    "stem": "\\((6, 12]\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q6(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Write the following intervals in set-builder form :",
+    "setLabel": "Ex 1.3 Q6",
+    "stem": "\\([-23, 5)\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "What universal set(s) would you propose for each of the following :",
+    "setLabel": "Ex 1.3 Q7",
+    "stem": "The set of right triangles."
+  },
+  {
+    "ref": "Ex 1.3 Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "What universal set(s) would you propose for each of the following :",
+    "setLabel": "Ex 1.3 Q7",
+    "stem": "The set of isosceles triangles."
+  },
+  {
+    "ref": "Ex 1.3 Q8(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Given the sets \\(A = \\{1, 3, 5\\}\\), \\(B = \\{2, 4, 6\\}\\) and \\(C = \\{0, 2, 4, 6, 8\\}\\), which of the following may be considered as universal set (s) for all the three sets \\(A\\), \\(B\\) and \\(C\\)",
+    "setLabel": "Ex 1.3 Q8",
+    "stem": "\\(\\{0, 1, 2, 3, 4, 5, 6\\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q8(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Given the sets \\(A = \\{1, 3, 5\\}\\), \\(B = \\{2, 4, 6\\}\\) and \\(C = \\{0, 2, 4, 6, 8\\}\\), which of the following may be considered as universal set (s) for all the three sets \\(A\\), \\(B\\) and \\(C\\)",
+    "setLabel": "Ex 1.3 Q8",
+    "stem": "\\(\\phi\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q8(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Given the sets \\(A = \\{1, 3, 5\\}\\), \\(B = \\{2, 4, 6\\}\\) and \\(C = \\{0, 2, 4, 6, 8\\}\\), which of the following may be considered as universal set (s) for all the three sets \\(A\\), \\(B\\) and \\(C\\)",
+    "setLabel": "Ex 1.3 Q8",
+    "stem": "\\(\\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10\\}\\)"
+  },
+  {
+    "ref": "Ex 1.3 Q8(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "EASY",
+    "context": "Given the sets \\(A = \\{1, 3, 5\\}\\), \\(B = \\{2, 4, 6\\}\\) and \\(C = \\{0, 2, 4, 6, 8\\}\\), which of the following may be considered as universal set (s) for all the three sets \\(A\\), \\(B\\) and \\(C\\)",
+    "setLabel": "Ex 1.3 Q8",
+    "stem": "\\(\\{1, 2, 3, 4, 5, 6, 7, 8\\}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "Find the union of each of the following pairs of sets :",
+    "setLabel": "Ex 1.4 Q1",
+    "stem": "\\(X = \\{1, 3, 5\\}\\), \\(Y = \\{1, 2, 3\\}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "Find the union of each of the following pairs of sets :",
+    "setLabel": "Ex 1.4 Q1",
+    "stem": "\\(A = [ a, e, i, o, u\\}\\), \\(B = \\{a, b, c\\}\\)",
+    "_note": "PRINTED TYPO preserved: the book opens the set \\(A\\) with a square bracket and closes it with a brace, \"A = [ a, e, i, o, u}\". It is plainly intended to be \\(A = \\{a, e, i, o, u\\}\\)."
+  },
+  {
+    "ref": "Ex 1.4 Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "Find the union of each of the following pairs of sets :",
+    "setLabel": "Ex 1.4 Q1",
+    "stem": "\\(A = \\{x : x \\text{ is a natural number and multiple of } 3\\}\\), \\(B = \\{x : x \\text{ is a natural number less than } 6\\}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q1(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "Find the union of each of the following pairs of sets :",
+    "setLabel": "Ex 1.4 Q1",
+    "stem": "\\(A = \\{x : x \\text{ is a natural number and } 1 < x \\le 6 \\}\\), \\(B = \\{x : x \\text{ is a natural number and } 6 < x < 10 \\}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q1(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "Find the union of each of the following pairs of sets :",
+    "setLabel": "Ex 1.4 Q1",
+    "stem": "\\(A = \\{1, 2, 3\\}\\), \\(B = \\phi\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "stem": "Let \\(A = \\{ a, b \\}\\), \\(B = \\{a, b, c\\}\\). Is \\(A \\subset B\\) ? What is \\(A \\cup B\\) ?"
+  },
+  {
+    "ref": "Ex 1.4 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "stem": "If \\(A\\) and \\(B\\) are two sets such that \\(A \\subset B\\), then what is \\(A \\cup B\\) ?"
+  },
+  {
+    "ref": "Ex 1.4 Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{5, 6, 7, 8\\}\\) and \\(D = \\{ 7, 8, 9, 10 \\}\\); find",
+    "setLabel": "Ex 1.4 Q4",
+    "stem": "\\(A \\cup B\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{5, 6, 7, 8\\}\\) and \\(D = \\{ 7, 8, 9, 10 \\}\\); find",
+    "setLabel": "Ex 1.4 Q4",
+    "stem": "\\(A \\cup C\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q4(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{5, 6, 7, 8\\}\\) and \\(D = \\{ 7, 8, 9, 10 \\}\\); find",
+    "setLabel": "Ex 1.4 Q4",
+    "stem": "\\(B \\cup C\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q4(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{5, 6, 7, 8\\}\\) and \\(D = \\{ 7, 8, 9, 10 \\}\\); find",
+    "setLabel": "Ex 1.4 Q4",
+    "stem": "\\(B \\cup D\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q4(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{5, 6, 7, 8\\}\\) and \\(D = \\{ 7, 8, 9, 10 \\}\\); find",
+    "setLabel": "Ex 1.4 Q4",
+    "stem": "\\(A \\cup B \\cup C\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q4(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{5, 6, 7, 8\\}\\) and \\(D = \\{ 7, 8, 9, 10 \\}\\); find",
+    "setLabel": "Ex 1.4 Q4",
+    "stem": "\\(A \\cup B \\cup D\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q4(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{1, 2, 3, 4\\}\\), \\(B = \\{3, 4, 5, 6\\}\\), \\(C = \\{5, 6, 7, 8\\}\\) and \\(D = \\{ 7, 8, 9, 10 \\}\\); find",
+    "setLabel": "Ex 1.4 Q4",
+    "stem": "\\(B \\cup C \\cup D\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "stem": "Find the intersection of each pair of sets of question 1 above.",
+    "_note": "Cross-reference: the five pairs are those of Ex 1.4 Q1 — (i) \\(X = \\{1, 3, 5\\}\\), \\(Y = \\{1, 2, 3\\}\\); (ii) \\(A = \\{a, e, i, o, u\\}\\), \\(B = \\{a, b, c\\}\\); (iii) \\(A = \\{x : x \\text{ is a natural number and multiple of } 3\\}\\), \\(B = \\{x : x \\text{ is a natural number less than } 6\\}\\); (iv) \\(A = \\{x : x \\text{ is a natural number and } 1 < x \\le 6\\}\\), \\(B = \\{x : x \\text{ is a natural number and } 6 < x < 10\\}\\); (v) \\(A = \\{1, 2, 3\\}\\), \\(B = \\phi\\). Transcribed as printed."
+  },
+  {
+    "ref": "Ex 1.4 Q6(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{ 3, 5, 7, 9, 11 \\}\\), \\(B = \\{7, 9, 11, 13\\}\\), \\(C = \\{11, 13, 15\\}\\) and \\(D = \\{15, 17\\}\\); find",
+    "setLabel": "Ex 1.4 Q6",
+    "stem": "\\(A \\cap B\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q6(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{ 3, 5, 7, 9, 11 \\}\\), \\(B = \\{7, 9, 11, 13\\}\\), \\(C = \\{11, 13, 15\\}\\) and \\(D = \\{15, 17\\}\\); find",
+    "setLabel": "Ex 1.4 Q6",
+    "stem": "\\(B \\cap C\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q6(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{ 3, 5, 7, 9, 11 \\}\\), \\(B = \\{7, 9, 11, 13\\}\\), \\(C = \\{11, 13, 15\\}\\) and \\(D = \\{15, 17\\}\\); find",
+    "setLabel": "Ex 1.4 Q6",
+    "stem": "\\(A \\cap C \\cap D\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q6(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{ 3, 5, 7, 9, 11 \\}\\), \\(B = \\{7, 9, 11, 13\\}\\), \\(C = \\{11, 13, 15\\}\\) and \\(D = \\{15, 17\\}\\); find",
+    "setLabel": "Ex 1.4 Q6",
+    "stem": "\\(A \\cap C\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q6(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{ 3, 5, 7, 9, 11 \\}\\), \\(B = \\{7, 9, 11, 13\\}\\), \\(C = \\{11, 13, 15\\}\\) and \\(D = \\{15, 17\\}\\); find",
+    "setLabel": "Ex 1.4 Q6",
+    "stem": "\\(B \\cap D\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q6(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{ 3, 5, 7, 9, 11 \\}\\), \\(B = \\{7, 9, 11, 13\\}\\), \\(C = \\{11, 13, 15\\}\\) and \\(D = \\{15, 17\\}\\); find",
+    "setLabel": "Ex 1.4 Q6",
+    "stem": "\\(A \\cap (B \\cup C)\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q6(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{ 3, 5, 7, 9, 11 \\}\\), \\(B = \\{7, 9, 11, 13\\}\\), \\(C = \\{11, 13, 15\\}\\) and \\(D = \\{15, 17\\}\\); find",
+    "setLabel": "Ex 1.4 Q6",
+    "stem": "\\(A \\cap D\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q6(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{ 3, 5, 7, 9, 11 \\}\\), \\(B = \\{7, 9, 11, 13\\}\\), \\(C = \\{11, 13, 15\\}\\) and \\(D = \\{15, 17\\}\\); find",
+    "setLabel": "Ex 1.4 Q6",
+    "stem": "\\(A \\cap (B \\cup D)\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q6(ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{ 3, 5, 7, 9, 11 \\}\\), \\(B = \\{7, 9, 11, 13\\}\\), \\(C = \\{11, 13, 15\\}\\) and \\(D = \\{15, 17\\}\\); find",
+    "setLabel": "Ex 1.4 Q6",
+    "stem": "\\((A \\cap B) \\cap (B \\cup C)\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q6(x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{ 3, 5, 7, 9, 11 \\}\\), \\(B = \\{7, 9, 11, 13\\}\\), \\(C = \\{11, 13, 15\\}\\) and \\(D = \\{15, 17\\}\\); find",
+    "setLabel": "Ex 1.4 Q6",
+    "stem": "\\((A \\cup D) \\cap (B \\cup C)\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{x : x \\text{ is a natural number}\\}\\), \\(B = \\{x : x \\text{ is an even natural number}\\}\\), \\(C = \\{x : x \\text{ is an odd natural number}\\}\\) and \\(D = \\{x : x \\text{ is a prime number}\\}\\), find",
+    "setLabel": "Ex 1.4 Q7",
+    "stem": "\\(A \\cap B\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{x : x \\text{ is a natural number}\\}\\), \\(B = \\{x : x \\text{ is an even natural number}\\}\\), \\(C = \\{x : x \\text{ is an odd natural number}\\}\\) and \\(D = \\{x : x \\text{ is a prime number}\\}\\), find",
+    "setLabel": "Ex 1.4 Q7",
+    "stem": "\\(A \\cap C\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q7(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{x : x \\text{ is a natural number}\\}\\), \\(B = \\{x : x \\text{ is an even natural number}\\}\\), \\(C = \\{x : x \\text{ is an odd natural number}\\}\\) and \\(D = \\{x : x \\text{ is a prime number}\\}\\), find",
+    "setLabel": "Ex 1.4 Q7",
+    "stem": "\\(A \\cap D\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q7(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{x : x \\text{ is a natural number}\\}\\), \\(B = \\{x : x \\text{ is an even natural number}\\}\\), \\(C = \\{x : x \\text{ is an odd natural number}\\}\\) and \\(D = \\{x : x \\text{ is a prime number}\\}\\), find",
+    "setLabel": "Ex 1.4 Q7",
+    "stem": "\\(B \\cap C\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q7(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{x : x \\text{ is a natural number}\\}\\), \\(B = \\{x : x \\text{ is an even natural number}\\}\\), \\(C = \\{x : x \\text{ is an odd natural number}\\}\\) and \\(D = \\{x : x \\text{ is a prime number}\\}\\), find",
+    "setLabel": "Ex 1.4 Q7",
+    "stem": "\\(B \\cap D\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q7(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "If \\(A = \\{x : x \\text{ is a natural number}\\}\\), \\(B = \\{x : x \\text{ is an even natural number}\\}\\), \\(C = \\{x : x \\text{ is an odd natural number}\\}\\) and \\(D = \\{x : x \\text{ is a prime number}\\}\\), find",
+    "setLabel": "Ex 1.4 Q7",
+    "stem": "\\(C \\cap D\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q8(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "Which of the following pairs of sets are disjoint",
+    "setLabel": "Ex 1.4 Q8",
+    "stem": "\\(\\{1, 2, 3, 4\\}\\) and \\(\\{x : x \\text{ is a natural number and } 4 \\le x \\le 6 \\}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q8(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "Which of the following pairs of sets are disjoint",
+    "setLabel": "Ex 1.4 Q8",
+    "stem": "\\(\\{ a, e, i, o, u \\}\\) and \\(\\{ c, d, e, f \\}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q8(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "Which of the following pairs of sets are disjoint",
+    "setLabel": "Ex 1.4 Q8",
+    "stem": "\\(\\{x : x \\text{ is an even integer} \\}\\) and \\(\\{x : x \\text{ is an odd integer}\\}\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q9(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{3, 6, 9, 12, 15, 18, 21\\}\\), \\(B = \\{ 4, 8, 12, 16, 20 \\}\\), \\(C = \\{ 2, 4, 6, 8, 10, 12, 14, 16 \\}\\), \\(D = \\{5, 10, 15, 20 \\}\\); find",
+    "setLabel": "Ex 1.4 Q9",
+    "stem": "\\(A - B\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q9(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{3, 6, 9, 12, 15, 18, 21\\}\\), \\(B = \\{ 4, 8, 12, 16, 20 \\}\\), \\(C = \\{ 2, 4, 6, 8, 10, 12, 14, 16 \\}\\), \\(D = \\{5, 10, 15, 20 \\}\\); find",
+    "setLabel": "Ex 1.4 Q9",
+    "stem": "\\(A - C\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q9(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{3, 6, 9, 12, 15, 18, 21\\}\\), \\(B = \\{ 4, 8, 12, 16, 20 \\}\\), \\(C = \\{ 2, 4, 6, 8, 10, 12, 14, 16 \\}\\), \\(D = \\{5, 10, 15, 20 \\}\\); find",
+    "setLabel": "Ex 1.4 Q9",
+    "stem": "\\(A - D\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q9(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{3, 6, 9, 12, 15, 18, 21\\}\\), \\(B = \\{ 4, 8, 12, 16, 20 \\}\\), \\(C = \\{ 2, 4, 6, 8, 10, 12, 14, 16 \\}\\), \\(D = \\{5, 10, 15, 20 \\}\\); find",
+    "setLabel": "Ex 1.4 Q9",
+    "stem": "\\(B - A\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q9(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{3, 6, 9, 12, 15, 18, 21\\}\\), \\(B = \\{ 4, 8, 12, 16, 20 \\}\\), \\(C = \\{ 2, 4, 6, 8, 10, 12, 14, 16 \\}\\), \\(D = \\{5, 10, 15, 20 \\}\\); find",
+    "setLabel": "Ex 1.4 Q9",
+    "stem": "\\(C - A\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q9(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{3, 6, 9, 12, 15, 18, 21\\}\\), \\(B = \\{ 4, 8, 12, 16, 20 \\}\\), \\(C = \\{ 2, 4, 6, 8, 10, 12, 14, 16 \\}\\), \\(D = \\{5, 10, 15, 20 \\}\\); find",
+    "setLabel": "Ex 1.4 Q9",
+    "stem": "\\(D - A\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q9(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{3, 6, 9, 12, 15, 18, 21\\}\\), \\(B = \\{ 4, 8, 12, 16, 20 \\}\\), \\(C = \\{ 2, 4, 6, 8, 10, 12, 14, 16 \\}\\), \\(D = \\{5, 10, 15, 20 \\}\\); find",
+    "setLabel": "Ex 1.4 Q9",
+    "stem": "\\(B - C\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q9(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{3, 6, 9, 12, 15, 18, 21\\}\\), \\(B = \\{ 4, 8, 12, 16, 20 \\}\\), \\(C = \\{ 2, 4, 6, 8, 10, 12, 14, 16 \\}\\), \\(D = \\{5, 10, 15, 20 \\}\\); find",
+    "setLabel": "Ex 1.4 Q9",
+    "stem": "\\(B - D\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q9(ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{3, 6, 9, 12, 15, 18, 21\\}\\), \\(B = \\{ 4, 8, 12, 16, 20 \\}\\), \\(C = \\{ 2, 4, 6, 8, 10, 12, 14, 16 \\}\\), \\(D = \\{5, 10, 15, 20 \\}\\); find",
+    "setLabel": "Ex 1.4 Q9",
+    "stem": "\\(C - B\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q9(x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{3, 6, 9, 12, 15, 18, 21\\}\\), \\(B = \\{ 4, 8, 12, 16, 20 \\}\\), \\(C = \\{ 2, 4, 6, 8, 10, 12, 14, 16 \\}\\), \\(D = \\{5, 10, 15, 20 \\}\\); find",
+    "setLabel": "Ex 1.4 Q9",
+    "stem": "\\(D - B\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q9(xi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{3, 6, 9, 12, 15, 18, 21\\}\\), \\(B = \\{ 4, 8, 12, 16, 20 \\}\\), \\(C = \\{ 2, 4, 6, 8, 10, 12, 14, 16 \\}\\), \\(D = \\{5, 10, 15, 20 \\}\\); find",
+    "setLabel": "Ex 1.4 Q9",
+    "stem": "\\(C - D\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q9(xii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(A = \\{3, 6, 9, 12, 15, 18, 21\\}\\), \\(B = \\{ 4, 8, 12, 16, 20 \\}\\), \\(C = \\{ 2, 4, 6, 8, 10, 12, 14, 16 \\}\\), \\(D = \\{5, 10, 15, 20 \\}\\); find",
+    "setLabel": "Ex 1.4 Q9",
+    "stem": "\\(D - C\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q10(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(X = \\{ a, b, c, d \\}\\) and \\(Y = \\{ f, b, d, g\\}\\), find",
+    "setLabel": "Ex 1.4 Q10",
+    "stem": "\\(X - Y\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q10(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(X = \\{ a, b, c, d \\}\\) and \\(Y = \\{ f, b, d, g\\}\\), find",
+    "setLabel": "Ex 1.4 Q10",
+    "stem": "\\(Y - X\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q10(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "If \\(X = \\{ a, b, c, d \\}\\) and \\(Y = \\{ f, b, d, g\\}\\), find",
+    "setLabel": "Ex 1.4 Q10",
+    "stem": "\\(X \\cap Y\\)"
+  },
+  {
+    "ref": "Ex 1.4 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "MODERATE",
+    "stem": "If \\(\\mathbf{R}\\) is the set of real numbers and \\(\\mathbf{Q}\\) is the set of rational numbers, then what is \\(\\mathbf{R} - \\mathbf{Q}\\)?"
+  },
+  {
+    "ref": "Ex 1.4 Q12(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "State whether each of the following statement is true or false. Justify your answer.",
+    "setLabel": "Ex 1.4 Q12",
+    "stem": "\\(\\{ 2, 3, 4, 5 \\}\\) and \\(\\{ 3, 6\\}\\) are disjoint sets."
+  },
+  {
+    "ref": "Ex 1.4 Q12(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "State whether each of the following statement is true or false. Justify your answer.",
+    "setLabel": "Ex 1.4 Q12",
+    "stem": "\\(\\{ a, e, i, o, u \\}\\) and \\(\\{ a, b, c, d \\}\\) are disjoint sets."
+  },
+  {
+    "ref": "Ex 1.4 Q12(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "State whether each of the following statement is true or false. Justify your answer.",
+    "setLabel": "Ex 1.4 Q12",
+    "stem": "\\(\\{ 2, 6, 10, 14 \\}\\) and \\(\\{ 3, 7, 11, 15\\}\\) are disjoint sets."
+  },
+  {
+    "ref": "Ex 1.4 Q12(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "EASY",
+    "context": "State whether each of the following statement is true or false. Justify your answer.",
+    "setLabel": "Ex 1.4 Q12",
+    "stem": "\\(\\{ 2, 6, 10 \\}\\) and \\(\\{ 3, 7, 11\\}\\) are disjoint sets."
+  },
+  {
+    "ref": "Ex 1.5 Q1(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "EASY",
+    "context": "Let \\(U = \\{ 1, 2, 3, 4, 5, 6, 7, 8, 9 \\}\\), \\(A = \\{ 1, 2, 3, 4\\}\\), \\(B = \\{ 2, 4, 6, 8 \\}\\) and \\(C = \\{ 3, 4, 5, 6 \\}\\). Find",
+    "setLabel": "Ex 1.5 Q1",
+    "stem": "\\(A'\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q1(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "EASY",
+    "context": "Let \\(U = \\{ 1, 2, 3, 4, 5, 6, 7, 8, 9 \\}\\), \\(A = \\{ 1, 2, 3, 4\\}\\), \\(B = \\{ 2, 4, 6, 8 \\}\\) and \\(C = \\{ 3, 4, 5, 6 \\}\\). Find",
+    "setLabel": "Ex 1.5 Q1",
+    "stem": "\\(B'\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q1(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "Let \\(U = \\{ 1, 2, 3, 4, 5, 6, 7, 8, 9 \\}\\), \\(A = \\{ 1, 2, 3, 4\\}\\), \\(B = \\{ 2, 4, 6, 8 \\}\\) and \\(C = \\{ 3, 4, 5, 6 \\}\\). Find",
+    "setLabel": "Ex 1.5 Q1",
+    "stem": "\\(\\overline{A \\cup C}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q1(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "Let \\(U = \\{ 1, 2, 3, 4, 5, 6, 7, 8, 9 \\}\\), \\(A = \\{ 1, 2, 3, 4\\}\\), \\(B = \\{ 2, 4, 6, 8 \\}\\) and \\(C = \\{ 3, 4, 5, 6 \\}\\). Find",
+    "setLabel": "Ex 1.5 Q1",
+    "stem": "\\(\\overline{A \\cup B}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q1(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "EASY",
+    "context": "Let \\(U = \\{ 1, 2, 3, 4, 5, 6, 7, 8, 9 \\}\\), \\(A = \\{ 1, 2, 3, 4\\}\\), \\(B = \\{ 2, 4, 6, 8 \\}\\) and \\(C = \\{ 3, 4, 5, 6 \\}\\). Find",
+    "setLabel": "Ex 1.5 Q1",
+    "stem": "\\((A')'\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q1(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "Let \\(U = \\{ 1, 2, 3, 4, 5, 6, 7, 8, 9 \\}\\), \\(A = \\{ 1, 2, 3, 4\\}\\), \\(B = \\{ 2, 4, 6, 8 \\}\\) and \\(C = \\{ 3, 4, 5, 6 \\}\\). Find",
+    "setLabel": "Ex 1.5 Q1",
+    "stem": "\\((B - C)'\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "EASY",
+    "context": "If \\(U = \\{ a, b, c, d, e, f, g, h\\}\\), find the complements of the following sets :",
+    "setLabel": "Ex 1.5 Q2",
+    "stem": "\\(A = \\{a, b, c\\}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "EASY",
+    "context": "If \\(U = \\{ a, b, c, d, e, f, g, h\\}\\), find the complements of the following sets :",
+    "setLabel": "Ex 1.5 Q2",
+    "stem": "\\(B = \\{d, e, f, g\\}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "EASY",
+    "context": "If \\(U = \\{ a, b, c, d, e, f, g, h\\}\\), find the complements of the following sets :",
+    "setLabel": "Ex 1.5 Q2",
+    "stem": "\\(C = \\{a, c, e, g\\}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q2(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "EASY",
+    "context": "If \\(U = \\{ a, b, c, d, e, f, g, h\\}\\), find the complements of the following sets :",
+    "setLabel": "Ex 1.5 Q2",
+    "stem": "\\(D = \\{ f, g, h, a\\}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q3(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "EASY",
+    "context": "Taking the set of natural numbers as the universal set, write down the complements of the following sets:",
+    "setLabel": "Ex 1.5 Q3",
+    "stem": "\\(\\{x : x \\text{ is an even natural number}\\}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q3(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "EASY",
+    "context": "Taking the set of natural numbers as the universal set, write down the complements of the following sets:",
+    "setLabel": "Ex 1.5 Q3",
+    "stem": "\\(\\{ x : x \\text{ is an odd natural number} \\}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q3(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "Taking the set of natural numbers as the universal set, write down the complements of the following sets:",
+    "setLabel": "Ex 1.5 Q3",
+    "stem": "\\(\\{x : x \\text{ is a positive multiple of } 3\\}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q3(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "Taking the set of natural numbers as the universal set, write down the complements of the following sets:",
+    "setLabel": "Ex 1.5 Q3",
+    "stem": "\\(\\{ x : x \\text{ is a prime number} \\}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q3(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "Taking the set of natural numbers as the universal set, write down the complements of the following sets:",
+    "setLabel": "Ex 1.5 Q3",
+    "stem": "\\(\\{x : x \\text{ is a natural number divisible by } 3 \\text{ and } 5\\}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q3(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "Taking the set of natural numbers as the universal set, write down the complements of the following sets:",
+    "setLabel": "Ex 1.5 Q3",
+    "stem": "\\(\\{ x : x \\text{ is a perfect square} \\}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q3(vii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "Taking the set of natural numbers as the universal set, write down the complements of the following sets:",
+    "setLabel": "Ex 1.5 Q3",
+    "stem": "\\(\\{ x : x \\text{ is a perfect cube}\\}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q3(viii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "Taking the set of natural numbers as the universal set, write down the complements of the following sets:",
+    "setLabel": "Ex 1.5 Q3",
+    "stem": "\\(\\{ x : x + 5 = 8 \\}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q3(ix)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "Taking the set of natural numbers as the universal set, write down the complements of the following sets:",
+    "setLabel": "Ex 1.5 Q3",
+    "stem": "\\(\\{ x : 2x + 5 = 9\\}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q3(x)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "Taking the set of natural numbers as the universal set, write down the complements of the following sets:",
+    "setLabel": "Ex 1.5 Q3",
+    "stem": "\\(\\{ x : x \\ge 7 \\}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q3(xi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "Taking the set of natural numbers as the universal set, write down the complements of the following sets:",
+    "setLabel": "Ex 1.5 Q3",
+    "stem": "\\(\\{ x : x \\in \\mathbf{N} \\text{ and } 2x + 1 > 10 \\}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "If \\(U = \\{1, 2, 3, 4, 5, 6, 7, 8, 9 \\}\\), \\(A = \\{2, 4, 6, 8\\}\\) and \\(B = \\{ 2, 3, 5, 7\\}\\). Verify that",
+    "setLabel": "Ex 1.5 Q4",
+    "stem": "\\(\\overline{A \\cup B} = A' \\cap B'\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "If \\(U = \\{1, 2, 3, 4, 5, 6, 7, 8, 9 \\}\\), \\(A = \\{2, 4, 6, 8\\}\\) and \\(B = \\{ 2, 3, 5, 7\\}\\). Verify that",
+    "setLabel": "Ex 1.5 Q4",
+    "stem": "\\(\\overline{A \\cap B} = A' \\cup B'\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q5(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "Draw appropriate Venn diagram for each of the following :",
+    "setLabel": "Ex 1.5 Q5",
+    "stem": "\\(\\overline{A \\cup B}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q5(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "Draw appropriate Venn diagram for each of the following :",
+    "setLabel": "Ex 1.5 Q5",
+    "stem": "\\(A' \\cap B'\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q5(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "Draw appropriate Venn diagram for each of the following :",
+    "setLabel": "Ex 1.5 Q5",
+    "stem": "\\(\\overline{A \\cap B}\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q5(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "context": "Draw appropriate Venn diagram for each of the following :",
+    "setLabel": "Ex 1.5 Q5",
+    "stem": "\\(A' \\cup B'\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "MODERATE",
+    "stem": "Let \\(U\\) be the set of all triangles in a plane. If \\(A\\) is the set of all triangles with at least one angle different from \\(60^\\circ\\), what is \\(A'\\)?"
+  },
+  {
+    "ref": "Ex 1.5 Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "EASY",
+    "context": "Fill in the blanks to make each of the following a true statement :",
+    "setLabel": "Ex 1.5 Q7",
+    "stem": "\\(A \\cup A' = \\ldots\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "EASY",
+    "context": "Fill in the blanks to make each of the following a true statement :",
+    "setLabel": "Ex 1.5 Q7",
+    "stem": "\\(\\phi' \\cap A = \\ldots\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q7(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "EASY",
+    "context": "Fill in the blanks to make each of the following a true statement :",
+    "setLabel": "Ex 1.5 Q7",
+    "stem": "\\(A \\cap A' = \\ldots\\)"
+  },
+  {
+    "ref": "Ex 1.5 Q7(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Complement of a Set",
+    "difficulty": "EASY",
+    "context": "Fill in the blanks to make each of the following a true statement :",
+    "setLabel": "Ex 1.5 Q7",
+    "stem": "\\(U' \\cap A = \\ldots\\)"
+  },
+  {
+    "ref": "Misc Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "MODERATE",
+    "stem": "Decide, among the following sets, which sets are subsets of one and another:\n\\(A = \\{ x : x \\in \\mathbf{R} \\text{ and } x \\text{ satisfy } x^{2} - 8x + 12 = 0 \\}\\),\n\\(B = \\{ 2, 4, 6 \\}\\), \\(C = \\{ 2, 4, 6, 8, \\ldots \\}\\), \\(D = \\{ 6 \\}\\)."
+  },
+  {
+    "ref": "Misc Q2(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "MODERATE",
+    "context": "In each of the following, determine whether the statement is true or false. If it is true, prove it. If it is false, give an example.",
+    "setLabel": "Misc Q2",
+    "stem": "If \\(x \\in A\\) and \\(A \\in B\\), then \\(x \\in B\\)"
+  },
+  {
+    "ref": "Misc Q2(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "MODERATE",
+    "context": "In each of the following, determine whether the statement is true or false. If it is true, prove it. If it is false, give an example.",
+    "setLabel": "Misc Q2",
+    "stem": "If \\(A \\subset B\\) and \\(B \\in C\\), then \\(A \\in C\\)"
+  },
+  {
+    "ref": "Misc Q2(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "MODERATE",
+    "context": "In each of the following, determine whether the statement is true or false. If it is true, prove it. If it is false, give an example.",
+    "setLabel": "Misc Q2",
+    "stem": "If \\(A \\subset B\\) and \\(B \\subset C\\), then \\(A \\subset C\\)"
+  },
+  {
+    "ref": "Misc Q2(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "MODERATE",
+    "context": "In each of the following, determine whether the statement is true or false. If it is true, prove it. If it is false, give an example.",
+    "setLabel": "Misc Q2",
+    "stem": "If \\(A \\not\\subset B\\) and \\(B \\not\\subset C\\), then \\(A \\not\\subset C\\)"
+  },
+  {
+    "ref": "Misc Q2(v)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "MODERATE",
+    "context": "In each of the following, determine whether the statement is true or false. If it is true, prove it. If it is false, give an example.",
+    "setLabel": "Misc Q2",
+    "stem": "If \\(x \\in A\\) and \\(A \\not\\subset B\\), then \\(x \\in B\\)"
+  },
+  {
+    "ref": "Misc Q2(vi)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Types of Sets and Subsets",
+    "difficulty": "MODERATE",
+    "context": "In each of the following, determine whether the statement is true or false. If it is true, prove it. If it is false, give an example.",
+    "setLabel": "Misc Q2",
+    "stem": "If \\(A \\subset B\\) and \\(x \\notin B\\), then \\(x \\notin A\\)"
+  },
+  {
+    "ref": "Misc Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "HARD",
+    "stem": "Let \\(A\\), \\(B\\), and \\(C\\) be the sets such that \\(A \\cup B = A \\cup C\\) and \\(A \\cap B = A \\cap C\\). Show that \\(B = C\\)."
+  },
+  {
+    "ref": "Misc Q4(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "HARD",
+    "context": "Show that the following four conditions are equivalent :",
+    "setLabel": "Misc Q4",
+    "stem": "\\(A \\subset B\\)",
+    "_note": "The book prints \"(i) A \\(\\subset\\) B(ii) A - B = \\(\\phi\\)\" with no space between item (i) and the label (ii)."
+  },
+  {
+    "ref": "Misc Q4(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "HARD",
+    "context": "Show that the following four conditions are equivalent :",
+    "setLabel": "Misc Q4",
+    "stem": "\\(A - B = \\phi\\)"
+  },
+  {
+    "ref": "Misc Q4(iii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "HARD",
+    "context": "Show that the following four conditions are equivalent :",
+    "setLabel": "Misc Q4",
+    "stem": "\\(A \\cup B = B\\)"
+  },
+  {
+    "ref": "Misc Q4(iv)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "HARD",
+    "context": "Show that the following four conditions are equivalent :",
+    "setLabel": "Misc Q4",
+    "stem": "\\(A \\cap B = A\\)"
+  },
+  {
+    "ref": "Misc Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "MODERATE",
+    "stem": "Show that if \\(A \\subset B\\), then \\(C - B \\subset C - A\\)."
+  },
+  {
+    "ref": "Misc Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "MODERATE",
+    "stem": "Show that for any sets \\(A\\) and \\(B\\),\n\\(A = (A \\cap B) \\cup (A - B)\\) and \\(A \\cup (B - A) = (A \\cup B)\\)."
+  },
+  {
+    "ref": "Misc Q7(i)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "Using properties of sets, show that",
+    "setLabel": "Misc Q7",
+    "stem": "\\(A \\cup (A \\cap B) = A\\)"
+  },
+  {
+    "ref": "Misc Q7(ii)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "MODERATE",
+    "context": "Using properties of sets, show that",
+    "setLabel": "Misc Q7",
+    "stem": "\\(A \\cap (A \\cup B) = A\\)."
+  },
+  {
+    "ref": "Misc Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "MODERATE",
+    "stem": "Show that \\(A \\cap B = A \\cap C\\) need not imply \\(B = C\\)."
+  },
+  {
+    "ref": "Misc Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "HARD",
+    "stem": "Let \\(A\\) and \\(B\\) be sets. If \\(A \\cap X = B \\cap X = \\phi\\) and \\(A \\cup X = B \\cup X\\) for some set \\(X\\), show that \\(A = B\\).\n(Hints \\(A = A \\cap (A \\cup X)\\), \\(B = B \\cap (B \\cup X)\\) and use Distributive law)"
+  },
+  {
+    "ref": "Misc Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Venn Diagrams and Operations on Sets",
+    "difficulty": "HARD",
+    "stem": "Find sets \\(A\\), \\(B\\) and \\(C\\) such that \\(A \\cap B\\), \\(B \\cap C\\) and \\(A \\cap C\\) are non-empty sets and \\(A \\cap B \\cap C = \\phi\\)."
+  }
+]

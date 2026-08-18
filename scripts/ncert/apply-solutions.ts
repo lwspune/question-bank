@@ -20,7 +20,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { findLatexImbalance } from "../practice/lib";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
-import { DATA, EXAM_ID, requireChapter } from "./config";
+import { DATA, requireChapter } from "./config";
 
 type SolutionRow = { id: string; ref: string; solution: string };
 
@@ -31,7 +31,7 @@ function loadEnv() {
 async function main() {
   const id = process.argv[2];
   const apply = process.argv.includes("--apply");
-  requireChapter(id);
+  const ch = requireChapter(id);
   loadEnv();
 
   const files = readdirSync(DATA).filter(
@@ -130,7 +130,7 @@ async function main() {
       .from("questions")
       .update({ solution }, { count: "exact" })
       .eq("id", r.id)
-      .eq("exam_id", EXAM_ID)
+      .eq("exam_id", ch.examId)
       .eq("question_format", "subjective");
     if (error) throw new Error(`update ${r.ref}: ${error.message}`);
     if (count === 1) updated++;
@@ -155,7 +155,7 @@ async function main() {
       const { error, count } = await client
         .from("questions")
         .update({ solution: normalizeNewlines(m.solution) }, { count: "exact" })
-        .eq("id", m.id).eq("exam_id", EXAM_ID).eq("question_format", "mcq");
+        .eq("id", m.id).eq("exam_id", ch.examId).eq("question_format", "mcq");
       if (error) throw new Error(`mcq update ${m.ref}: ${error.message}`);
       if (count === 1) mcqUpdated++;
     }

@@ -19,7 +19,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { join, isAbsolute } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { uploadImage } from "../../src/lib/storage/images";
-import { ORG_ID, EXAM_ID, DATA, requireChapter } from "./config";
+import { ORG_ID, DATA, requireChapter } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -68,7 +68,7 @@ async function main() {
     const { data: q, error } = await client
       .from("questions")
       .select("id, solution_image_url")
-      .eq("exam_id", EXAM_ID)
+      .eq("exam_id", ch.examId)
       .eq("source_file", ch.sourceFile)
       .eq("question_number", m.ref)
       .maybeSingle();

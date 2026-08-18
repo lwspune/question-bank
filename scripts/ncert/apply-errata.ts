@@ -37,7 +37,7 @@
 import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { DATA, EXAM_ID, requireChapter } from "./config";
+import { DATA, requireChapter } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -128,7 +128,7 @@ async function main() {
     const { data: row, error } = await db
       .from("questions")
       .select("id, solution")
-      .eq("exam_id", EXAM_ID)
+      .eq("exam_id", ch.examId)
       .eq("source_file", ch.sourceFile)
       .eq("question_number", e.ref)
       .maybeSingle();
@@ -158,7 +158,7 @@ async function main() {
   const { data: stored } = await db
     .from("questions")
     .select("question_number")
-    .eq("exam_id", EXAM_ID)
+    .eq("exam_id", ch.examId)
     .eq("source_file", ch.sourceFile)
     .like("solution", "[Textbook%");
   // A chapter's brackets come from TWO sources, so the count check is one-sided.

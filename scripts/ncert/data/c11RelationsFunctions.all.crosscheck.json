@@ -1,0 +1,380 @@
+[
+  {
+    "ref": "Ex 2.1 Q1",
+    "book_key": "x = 2 and y = 1",
+    "our_answer": "x = 2 and y = 1",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 2.1 Q2",
+    "book_key": "The number of elements in A x B is 9.",
+    "our_answer": "n(A x B) = 3 x 3 = 9",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 2.1 Q3",
+    "book_key": "G x H = {(7,5),(7,4),(7,2),(8,5),(8,4),(8,2)}; H x G = {(5,7),(5,8),(4,7),(4,8),(2,7),(2,8)}",
+    "our_answer": "G x H = {(7,5),(7,4),(7,2),(8,5),(8,4),(8,2)}; H x G = {(5,7),(5,8),(4,7),(4,8),(2,7),(2,8)}",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 2.1 Q4(i)",
+    "book_key": "False. P x Q = {(m,n),(m,m),(n,n),(n,m)}",
+    "our_answer": "False. Corrected: P x Q = {(m,m),(m,n),(n,m),(n,n)}",
+    "verdict": "AGREE",
+    "note": "Identical four-element set, listed in a different order; a set is unordered so this is a presentation difference only. Independently re-derived: P = Q = {m,n} as sets, so P x Q has 2 x 2 = 4 pairs."
+  },
+  {
+    "ref": "Ex 2.1 Q4(ii)",
+    "book_key": "True",
+    "our_answer": "True",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 2.1 Q4(iii)",
+    "book_key": "True",
+    "our_answer": "True",
+    "verdict": "AGREE",
+    "note": "Flagged by the solution author as a judgement call because its neighbour (i) in the same true/false block is False. The printed key confirms TRUE. Re-derived: B cap phi = phi, and A x phi = phi, so both sides are the empty set."
+  },
+  {
+    "ref": "Ex 2.1 Q5",
+    "book_key": "A x A x A = {(-1,-1,-1),(-1,-1,1),(-1,1,-1),(-1,1,1),(1,-1,-1),(1,-1,1),(1,1,-1),(1,1,1)}",
+    "our_answer": "A x A x A = {(-1,-1,-1),(-1,-1,1),(-1,1,-1),(-1,1,1),(1,-1,-1),(1,-1,1),(1,1,-1),(1,1,1)}",
+    "verdict": "AGREE",
+    "note": "The key additionally prints A x A as scaffolding; the question asks only for A x A x A, and all 8 triples match exactly."
+  },
+  {
+    "ref": "Ex 2.1 Q6",
+    "book_key": "A = {a, b}, B = {x, y}",
+    "our_answer": "A = {a, b} and B = {x, y}",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 2.1 Q7(i)",
+    "book_key": "(no entry — key runs 6 then 8)",
+    "our_answer": "Both sides equal phi, verifying A x (B cap C) = (A x B) cap (A x C)",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "A 'Verify that' question with no final answer to print; the key skips Q7 entirely. Independently confirmed by enumeration: B cap C = phi so LHS = phi, and A x B / A x C have disjoint second entries so RHS = phi."
+  },
+  {
+    "ref": "Ex 2.1 Q7(ii)",
+    "book_key": "(no entry — key runs 6 then 8)",
+    "our_answer": "A x C = {(1,5),(1,6),(2,5),(2,6)} is a subset of B x D",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "Same 'Verify that' block as Q7(i). Independently confirmed by enumeration: every one of the four pairs of A x C lies in B x D."
+  },
+  {
+    "ref": "Ex 2.1 Q8",
+    "book_key": "A x B = {(1,3),(1,4),(2,3),(2,4)}; A x B will have 2^4 = 16 subsets.",
+    "our_answer": "A x B = {(1,3),(1,4),(2,3),(2,4)}; 2^4 = 16 subsets, all 16 listed",
+    "verdict": "AGREE",
+    "note": "Our answer also lists the 16 subsets (the question asks for them); the key prints only the count. Subset list checked by size: 1 + 4 + 6 + 4 + 1 = 16."
+  },
+  {
+    "ref": "Ex 2.1 Q9",
+    "book_key": "A = {x, y, z} and B = {1, 2}",
+    "our_answer": "A = {x, y, z} and B = {1, 2}",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 2.1 Q10",
+    "book_key": "A = {-1, 0, 1}; remaining elements of A x A are (-1,-1),(-1,1),(0,-1),(0,0),(1,-1),(1,0),(1,1)",
+    "our_answer": "A = {-1, 0, 1}; remaining elements are (-1,-1),(-1,1),(0,-1),(0,0),(1,-1),(1,0),(1,1)",
+    "verdict": "AGREE",
+    "note": "Re-derived by enumeration: the 9 pairs from {-1,0,1} less the two named leave exactly these seven."
+  },
+  {
+    "ref": "Ex 2.2 Q1",
+    "book_key": "R = {(1,3),(2,6),(3,9),(4,12)}; Domain = {1,2,3,4}; Range = {3,6,9,12}; Co domain = {1,2,...,14}",
+    "our_answer": "R = {(1,3),(2,6),(3,9),(4,12)}; domain {1,2,3,4}; codomain {1,...,14}; range {3,6,9,12}",
+    "verdict": "AGREE",
+    "note": "All three of domain, codomain and range compared separately; all match."
+  },
+  {
+    "ref": "Ex 2.2 Q2",
+    "book_key": "R = {(1,6),(2,7),(3,8)}; Domain = {1,2,3}; Range = {6,7,8}",
+    "our_answer": "R = {(1,6),(2,7),(3,8)}; domain {1,2,3}; range {6,7,8}",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 2.2 Q3",
+    "book_key": "R = {(1,4),(1,6),(2,9),(3,4),(3,6),(5,4),(5,6)}",
+    "our_answer": "R = {(1,4),(1,6),(2,9),(3,4),(3,6),(5,4),(5,6)}",
+    "verdict": "AGREE",
+    "note": "Re-derived by testing all 12 pairs of A x B for odd difference; the same seven survive."
+  },
+  {
+    "ref": "Ex 2.2 Q4",
+    "book_key": "(i) R = {(x,y) : y = x - 2 for x = 5, 6, 7}   (ii) R = {(5,3),(6,4),(7,5)}. Domain of R = {5,6,7}, Range of R = {3,4,5}",
+    "our_answer": "Method only: roster form is one ordered pair per arrow of Fig 2.7; set-builder is {(x,y) : y = x - k, x in P, y in Q} for the one fixed k every arrow obeys; P = {5,6,7} and Q = {3,4,5}, so the domain is a subset of {5,6,7} and the range a subset of {3,4,5}. The individual arrows must be read from Fig 2.7.",
+    "verdict": "CANT-CHECK",
+    "note": "OUT OF SCOPE FOR THIS GATE — NOT a wrong answer. The relation exists only as the printed arrow diagram Fig 2.7; the stem states no pairs, and the solution author could not see the figure and said so explicitly, deliberately writing the method plus what the stem fixes. Nothing was asserted that the key contradicts: the author's structural template y = x - k with P = {5,6,7}, Q = {3,4,5} is exactly the key's rule with k = 2, and the key's domain {5,6,7} and range {3,4,5} are consistent with the subset bounds stated. FOR THE HUMAN WITH THE FIGURE, the printed key gives verbatim: (i) R = {(x,y) : y = x - 2 for x = 5, 6, 7}; (ii) R = {(5,3),(6,4),(7,5)}, Domain of R = {5,6,7}, Range of R = {3,4,5}. Note the key's domain is the WHOLE of P and its range the WHOLE of Q, i.e. all three arrows are present."
+  },
+  {
+    "ref": "Ex 2.2 Q5(i)",
+    "book_key": "R = {(1,1),(1,2),(1,3),(1,4),(1,6),(2,4),(2,6),(2,2),(4,4),(6,6),(3,3),(3,6)}",
+    "our_answer": "R = {(1,1),(1,2),(1,3),(1,4),(1,6),(2,2),(2,4),(2,6),(3,3),(3,6),(4,4),(6,6)}",
+    "verdict": "AGREE",
+    "note": "Identical 12-element set; the key prints them in a scrambled order. Re-derived by testing divisibility over all 25 pairs of A x A."
+  },
+  {
+    "ref": "Ex 2.2 Q5(ii)",
+    "book_key": "Domain of R = {1, 2, 3, 4, 6}",
+    "our_answer": "Domain of R = {1, 2, 3, 4, 6}, i.e. the whole of A",
+    "verdict": "AGREE",
+    "note": "Flagged by the solution author as looking degenerate because the domain comes out as all of A. The printed key confirms it. Reason: a divides a for every a, so (a,a) is in R for each a in A."
+  },
+  {
+    "ref": "Ex 2.2 Q5(iii)",
+    "book_key": "Range of R = {1, 2, 3, 4, 6}",
+    "our_answer": "Range of R = {1, 2, 3, 4, 6}, i.e. the whole of A",
+    "verdict": "AGREE",
+    "note": "Same flagged judgement call; the printed key confirms it. Reason: 1 divides every element of A, so every element of A occurs as a second entry."
+  },
+  {
+    "ref": "Ex 2.2 Q6",
+    "book_key": "Domain of R = {0,1,2,3,4,5}; Range of R = {5,6,7,8,9,10}",
+    "our_answer": "domain = {0,1,2,3,4,5} and range = {5,6,7,8,9,10}",
+    "verdict": "AGREE",
+    "note": "The printed key has a stray trailing comma inside the domain braces ('{0, 1, 2, 3, 4, 5,}') — a typesetting slip, not a mathematical difference."
+  },
+  {
+    "ref": "Ex 2.2 Q7",
+    "book_key": "R = {(2,8),(3,27),(5,125),(7,343)}",
+    "our_answer": "R = {(2,8),(3,27),(5,125),(7,343)}",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 2.2 Q8",
+    "book_key": "No. of relations from A into B = 2^6",
+    "our_answer": "2^6 = 64",
+    "verdict": "AGREE",
+    "note": "Our answer evaluates the power the key leaves unevaluated; same value."
+  },
+  {
+    "ref": "Ex 2.2 Q9",
+    "book_key": "Domain of R = Z; Range of R = Z",
+    "our_answer": "domain of R is Z and range of R is Z",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 2.3 Q1(i)",
+    "book_key": "yes, Domain = {2,5,8,11,14,17}, Range = {1}",
+    "our_answer": "It is a function; domain {2,5,8,11,14,17}, range {1}",
+    "verdict": "AGREE",
+    "note": "Verdict, domain and range all compared separately."
+  },
+  {
+    "ref": "Ex 2.3 Q1(ii)",
+    "book_key": "yes, Domain = {2,4,6,8,10,12,14}, Range = {1,2,3,4,5,6,7}",
+    "our_answer": "It is a function; domain {2,4,6,8,10,12,14}, range {1,2,3,4,5,6,7}",
+    "verdict": "AGREE",
+    "note": "The printed key opens the domain with a round bracket ('(2, 4, 6, ... 14}') where a brace belongs — a typesetting slip in the key, nothing mathematical."
+  },
+  {
+    "ref": "Ex 2.3 Q1(iii)",
+    "book_key": "No.",
+    "our_answer": "Not a function (the input 1 has two images, 3 and 5)",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 2.3 Q2(i)",
+    "book_key": "Domain = R, Range = (-inf, 0]",
+    "our_answer": "domain R, range (-inf, 0]",
+    "verdict": "AGREE",
+    "note": "Domain and range compared separately; sympy function_range over R returns Interval(-oo, 0), i.e. closed at 0, matching both."
+  },
+  {
+    "ref": "Ex 2.3 Q2(ii)",
+    "book_key": "Domain of function = {x : -3 <= x <= 3}; Range of function = {x : 0 <= x <= 3}",
+    "our_answer": "domain [-3, 3], range [0, 3]",
+    "verdict": "AGREE",
+    "note": "Set-builder versus interval notation for the same two closed intervals. Independently re-derived: solveset(9 - x^2 >= 0) = Interval(-3,3) and function_range over that interval = Interval(0,3)."
+  },
+  {
+    "ref": "Ex 2.3 Q3(i)",
+    "book_key": "f(0) = -5",
+    "our_answer": "f(0) = -5",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 2.3 Q3(ii)",
+    "book_key": "f(7) = 9",
+    "our_answer": "f(7) = 9",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 2.3 Q3(iii)",
+    "book_key": "f(-3) = -11",
+    "our_answer": "f(-3) = -11",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 2.3 Q4(i)",
+    "book_key": "t(0) = 32",
+    "our_answer": "t(0) = 32",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 2.3 Q4(ii)",
+    "book_key": "t(28) = 412/5",
+    "our_answer": "t(28) = 82.4, that is 412/5",
+    "verdict": "AGREE",
+    "note": "Our answer gives both the decimal and the exact fraction the key prints; 412/5 = 82.4 exactly."
+  },
+  {
+    "ref": "Ex 2.3 Q4(iii)",
+    "book_key": "t(-10) = 14",
+    "our_answer": "t(-10) = 14",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 2.3 Q4(iv)",
+    "book_key": "100",
+    "our_answer": "C = 100",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 2.3 Q5(i)",
+    "book_key": "Range = (-inf, 2)",
+    "our_answer": "range = (-inf, 2)",
+    "verdict": "AGREE",
+    "note": "Open at 2 on both sides; the value 2 needs x = 0, which the domain x > 0 excludes."
+  },
+  {
+    "ref": "Ex 2.3 Q5(ii)",
+    "book_key": "Range = [2, inf)",
+    "our_answer": "range = [2, inf)",
+    "verdict": "AGREE",
+    "note": "Closed at 2 on both sides; attained at x = 0."
+  },
+  {
+    "ref": "Ex 2.3 Q5(iii)",
+    "book_key": "Range = R",
+    "our_answer": "range = R",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Misc Q1",
+    "book_key": "(no entry — the Ch-2 Miscellaneous key opens at 2)",
+    "our_answer": "f is a function (the branches agree at the overlap x = 3, both giving 9); g is not (at x = 2 the branches give 4 and 6)",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "A 'Show that' question with no final answer to print. Independently confirmed: 3^2 = 9 = 3 x 3 at the f-overlap, while 2^2 = 4 differs from 3 x 2 = 6 at the g-overlap."
+  },
+  {
+    "ref": "Misc Q2",
+    "book_key": "2.1",
+    "our_answer": "2.1, that is 21/10",
+    "verdict": "AGREE",
+    "note": "Exact rational re-derivation gives 21/10."
+  },
+  {
+    "ref": "Misc Q3",
+    "book_key": "Domain of function is set of real numbers except 6 and 2.",
+    "our_answer": "R - {2, 6}",
+    "verdict": "AGREE",
+    "note": "Prose versus set-difference notation for the same set. Roots of x^2 - 8x + 12 re-derived as 2 and 6."
+  },
+  {
+    "ref": "Misc Q4",
+    "book_key": "Domain = [1, inf), Range = [0, inf)",
+    "our_answer": "domain [1, inf), range [0, inf)",
+    "verdict": "AGREE",
+    "note": "Domain and range compared separately; both match."
+  },
+  {
+    "ref": "Misc Q5",
+    "book_key": "Domain = R, Range = non-negative real numbers",
+    "our_answer": "domain R, range [0, inf)",
+    "verdict": "AGREE",
+    "note": "'non-negative real numbers' is [0, inf); prose versus interval notation for the same set."
+  },
+  {
+    "ref": "Misc Q6",
+    "book_key": "Range = [0, 1)",
+    "our_answer": "range = [0, 1)",
+    "verdict": "AGREE",
+    "note": "Half-open at 1 on both sides. sympy function_range returns Interval.Ropen(0,1). A numeric scan appears to reach 1.0 at x = 1e9, but that is double-precision rounding, not attainment: f(x) = 1 - 1/(1+x^2) < 1 strictly for every real x."
+  },
+  {
+    "ref": "Misc Q7",
+    "book_key": "(f+g)x = 3x - 2; (f-g)x = -x + 4; (f/g)x = (x+1)/(2x-3), x != 3/2",
+    "our_answer": "(f+g)(x) = 3x - 2; (f-g)(x) = 4 - x; (f/g)(x) = (x+1)/(2x-3) for x != 3/2",
+    "verdict": "AGREE",
+    "note": "All three components compared separately, including the excluded point x = 3/2. '-x + 4' and '4 - x' are the same expression."
+  },
+  {
+    "ref": "Misc Q8",
+    "book_key": "a = 2, b = -1",
+    "our_answer": "a = 2 and b = -1",
+    "verdict": "AGREE",
+    "note": "Both constants compared; solving the two-point system independently returns {a: 2, b: -1}."
+  },
+  {
+    "ref": "Misc Q9(i)",
+    "book_key": "No",
+    "our_answer": "Not true (fails for every natural number other than 1; e.g. (2,2) is not in R)",
+    "verdict": "AGREE",
+    "note": "a = a^2 has solutions 0 and 1, so among natural numbers only a = 1 works."
+  },
+  {
+    "ref": "Misc Q9(ii)",
+    "book_key": "No",
+    "our_answer": "Not true (counter-example (4,2) in R but (2,4) not in R)",
+    "verdict": "AGREE",
+    "note": "Counter-example verified: 4 = 2^2 is true, 2 = 4^2 is false."
+  },
+  {
+    "ref": "Misc Q9(iii)",
+    "book_key": "No",
+    "our_answer": "Not true (counter-example a = 16, b = 4, c = 2)",
+    "verdict": "AGREE",
+    "note": "Counter-example verified: 16 = 4^2 true, 4 = 2^2 true, 16 = 2^2 false."
+  },
+  {
+    "ref": "Misc Q10(i)",
+    "book_key": "Yes",
+    "our_answer": "True — f is a subset of A x B",
+    "verdict": "AGREE",
+    "note": "All five pairs verified to have first entry in A and second in B."
+  },
+  {
+    "ref": "Misc Q10(ii)",
+    "book_key": "No",
+    "our_answer": "Not true — 2 has two images, 9 and 11",
+    "verdict": "AGREE",
+    "note": "2 is the only repeated first entry, confirmed by enumeration."
+  },
+  {
+    "ref": "Misc Q11",
+    "book_key": "No",
+    "our_answer": "No, f is not a function (6 = 1 x 6 gives (6,7) and 6 = 2 x 3 gives (6,5))",
+    "verdict": "AGREE",
+    "note": "Counter-example verified: the input 6 carries the two distinct images 7 and 5."
+  },
+  {
+    "ref": "Misc Q12",
+    "book_key": "Range of f = {3, 5, 11, 13}",
+    "our_answer": "range of f = {3, 5, 11, 13}",
+    "verdict": "AGREE",
+    "note": "Re-derived by factorising each of 9, 10, 11, 12, 13 and taking the largest prime factor."
+  }
+]

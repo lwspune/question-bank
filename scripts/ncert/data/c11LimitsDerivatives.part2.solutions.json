@@ -1,0 +1,171 @@
+[
+  {
+    "id": "6c0ad955-2b4c-4dab-9b0a-07b9af1e5397",
+    "ref": "Misc Q1(i)",
+    "solution": "Let \\(f(x) = -x\\). By first principle, \\(f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}\\). Here \\(f(x+h) - f(x) = -(x+h) - (-x) = -h\\). Hence \\(f'(x) = \\lim_{h \\to 0} \\frac{-h}{h} = \\lim_{h \\to 0} (-1)\\). The derivative is \\(-1\\)."
+  },
+  {
+    "id": "36b6f7bb-0e17-4c44-9e77-c51e1f82de8f",
+    "ref": "Misc Q1(ii)",
+    "solution": "For \\(x \\neq 0\\), \\((-x)^{-1} = -\\frac{1}{x}\\). Let \\(f(x) = -\\frac{1}{x}\\). Then \\(f(x+h) - f(x) = -\\frac{1}{x+h} + \\frac{1}{x} = \\frac{-x + (x+h)}{x(x+h)} = \\frac{h}{x(x+h)}\\). Dividing by \\(h\\), \\(\\frac{f(x+h) - f(x)}{h} = \\frac{1}{x(x+h)}\\). Letting \\(h \\to 0\\), \\(f'(x) = \\frac{1}{x \\cdot x}\\). The derivative is \\(\\frac{1}{x^2}\\)."
+  },
+  {
+    "id": "3afc775e-0b5f-4a8a-9dce-8f822e3214bb",
+    "ref": "Misc Q1(iii)",
+    "solution": "Let \\(f(x) = \\sin(x+1)\\). Then \\(f(x+h) - f(x) = \\sin(x+h+1) - \\sin(x+1)\\). Using \\(\\sin A - \\sin B = 2\\cos\\frac{A+B}{2}\\sin\\frac{A-B}{2}\\) with \\(A = x+h+1\\) and \\(B = x+1\\), this equals \\(2\\cos\\left(x + 1 + \\frac{h}{2}\\right)\\sin\\frac{h}{2}\\). Hence \\(\\frac{f(x+h) - f(x)}{h} = \\cos\\left(x + 1 + \\frac{h}{2}\\right)\\cdot\\frac{\\sin\\frac{h}{2}}{\\frac{h}{2}}\\). As \\(h \\to 0\\) the second factor tends to \\(1\\), so \\(f'(x) = \\cos(x+1)\\). The derivative is \\(\\cos(x+1)\\)."
+  },
+  {
+    "id": "1d96035c-390a-4648-8059-3aa764a9dfcf",
+    "ref": "Misc Q1(iv)",
+    "solution": "Let \\(f(x) = \\cos\\left(x - \\frac{\\pi}{8}\\right)\\). Then \\(f(x+h) - f(x) = \\cos\\left(x + h - \\frac{\\pi}{8}\\right) - \\cos\\left(x - \\frac{\\pi}{8}\\right)\\). Using \\(\\cos A - \\cos B = -2\\sin\\frac{A+B}{2}\\sin\\frac{A-B}{2}\\), this equals \\(-2\\sin\\left(x - \\frac{\\pi}{8} + \\frac{h}{2}\\right)\\sin\\frac{h}{2}\\). Hence \\(\\frac{f(x+h) - f(x)}{h} = -\\sin\\left(x - \\frac{\\pi}{8} + \\frac{h}{2}\\right)\\cdot\\frac{\\sin\\frac{h}{2}}{\\frac{h}{2}}\\), and letting \\(h \\to 0\\) the last factor tends to \\(1\\). The derivative is \\(-\\sin\\left(x - \\frac{\\pi}{8}\\right)\\)."
+  },
+  {
+    "id": "3043adfe-5b7f-4e07-9335-4b2e20206862",
+    "ref": "Misc Q2",
+    "solution": "Since \\(a\\) is a fixed constant, \\(\\frac{d}{dx}(x + a) = \\frac{d}{dx}(x) + \\frac{d}{dx}(a) = 1 + 0\\). The derivative is \\(1\\)."
+  },
+  {
+    "id": "64f6d7f9-2eb5-4b81-9d69-641be6fd6a37",
+    "ref": "Misc Q3",
+    "solution": "Expand first: \\((px+q)\\left(\\frac{r}{x} + s\\right) = pr + psx + \\frac{qr}{x} + qs = psx + qr\\,x^{-1} + (pr + qs)\\). Differentiating term by term, using \\(\\frac{d}{dx}(x^{-1}) = -x^{-2}\\) and that \\(pr + qs\\) is a constant, the derivative is \\(ps - \\frac{qr}{x^2}\\)."
+  },
+  {
+    "id": "bc6dccd5-e679-49b8-b1e0-8c9457f27271",
+    "ref": "Misc Q4",
+    "solution": "Take \\(u = ax + b\\) and \\(v = (cx+d)^2 = c^2x^2 + 2cdx + d^2\\), so \\(u' = a\\) and \\(v' = 2c^2x + 2cd = 2c(cx+d)\\). By the product rule, \\(\\frac{d}{dx}\\left[(ax+b)(cx+d)^2\\right] = a(cx+d)^2 + 2c(ax+b)(cx+d)\\). Expanding, this is \\(3ac^2x^2 + 2c(2ad + bc)x + ad^2 + 2bcd\\). The derivative is \\(a(cx+d)^2 + 2c(ax+b)(cx+d)\\)."
+  },
+  {
+    "id": "5b077f8d-5468-48ec-975e-56e87bd6550f",
+    "ref": "Misc Q5",
+    "solution": "By the quotient rule with \\(u = ax + b\\), \\(v = cx + d\\), \\(u' = a\\), \\(v' = c\\): \\(\\frac{d}{dx}\\left(\\frac{ax+b}{cx+d}\\right) = \\frac{a(cx+d) - c(ax+b)}{(cx+d)^2} = \\frac{acx + ad - acx - bc}{(cx+d)^2}\\). The derivative is \\(\\frac{ad - bc}{(cx+d)^2}\\)."
+  },
+  {
+    "id": "76162ad1-5e47-478c-93bf-a9d3becfbecf",
+    "ref": "Misc Q6",
+    "solution": "For \\(x \\neq 0\\), multiply numerator and denominator by \\(x\\): \\(\\frac{1 + \\frac{1}{x}}{1 - \\frac{1}{x}} = \\frac{x+1}{x-1}\\). By the quotient rule, \\(\\frac{d}{dx}\\left(\\frac{x+1}{x-1}\\right) = \\frac{1\\cdot(x-1) - (x+1)\\cdot 1}{(x-1)^2} = \\frac{x - 1 - x - 1}{(x-1)^2}\\). The derivative is \\(\\frac{-2}{(x-1)^2}\\), valid for \\(x \\neq 0\\) and \\(x \\neq 1\\)."
+  },
+  {
+    "id": "0c07c218-ffcc-4c47-9a2a-fb1247b3f1ff",
+    "ref": "Misc Q7",
+    "solution": "Apply the quotient rule with numerator \\(u = 1\\) (so \\(u' = 0\\)) and denominator \\(v = ax^2 + bx + c\\) (so \\(v' = 2ax + b\\)): \\(\\frac{d}{dx}\\left(\\frac{1}{ax^2+bx+c}\\right) = \\frac{0\\cdot(ax^2+bx+c) - 1\\cdot(2ax+b)}{(ax^2+bx+c)^2}\\). The derivative is \\(\\frac{-(2ax+b)}{(ax^2+bx+c)^2}\\)."
+  },
+  {
+    "id": "1e46b769-dd19-46ab-88d1-0202f98e6778",
+    "ref": "Misc Q8",
+    "solution": "By the quotient rule with \\(u = ax + b\\), \\(u' = a\\), \\(v = px^2 + qx + r\\), \\(v' = 2px + q\\), the derivative is \\(\\frac{a(px^2+qx+r) - (ax+b)(2px+q)}{(px^2+qx+r)^2}\\). The numerator is \\(apx^2 + aqx + ar - \\left(2apx^2 + aqx + 2bpx + bq\\right) = -apx^2 - 2bpx + ar - bq\\). The derivative is \\(\\frac{-apx^2 - 2bpx + (ar - bq)}{(px^2+qx+r)^2}\\)."
+  },
+  {
+    "id": "f8c07f3f-13ab-4b94-bc8d-b6212d36174a",
+    "ref": "Misc Q9",
+    "solution": "By the quotient rule with \\(u = px^2 + qx + r\\), \\(u' = 2px + q\\), \\(v = ax + b\\), \\(v' = a\\), the derivative is \\(\\frac{(2px+q)(ax+b) - a(px^2+qx+r)}{(ax+b)^2}\\). The numerator is \\(2apx^2 + 2bpx + aqx + bq - apx^2 - aqx - ar = apx^2 + 2bpx + bq - ar\\). The derivative is \\(\\frac{apx^2 + 2bpx + (bq - ar)}{(ax+b)^2}\\)."
+  },
+  {
+    "id": "16f3f0cd-0722-40a4-8487-f662b24757b5",
+    "ref": "Misc Q10",
+    "solution": "Write the function as \\(a\\,x^{-4} - b\\,x^{-2} + \\cos x\\). Using \\(\\frac{d}{dx}(x^n) = nx^{n-1}\\) and \\(\\frac{d}{dx}(\\cos x) = -\\sin x\\), the derivative is \\(-4a\\,x^{-5} + 2b\\,x^{-3} - \\sin x\\), that is \\(-\\frac{4a}{x^5} + \\frac{2b}{x^3} - \\sin x\\)."
+  },
+  {
+    "id": "556e2545-5f5a-41bf-8dd0-0e0fd0f16fa0",
+    "ref": "Misc Q11",
+    "solution": "Write \\(4\\sqrt{x} - 2 = 4x^{\\frac{1}{2}} - 2\\). Using \\(\\frac{d}{dx}(x^n) = nx^{n-1}\\), the derivative is \\(4 \\cdot \\frac{1}{2}x^{-\\frac{1}{2}} - 0 = 2x^{-\\frac{1}{2}}\\). The derivative is \\(\\frac{2}{\\sqrt{x}}\\), for \\(x > 0\\)."
+  },
+  {
+    "id": "f84fd618-a658-4935-bb9e-e4501c972a8c",
+    "ref": "Misc Q12",
+    "solution": "The chain rule would be the natural tool here, but it is not developed in this chapter, so the result is established by induction using the product rule. Claim: \\(\\frac{d}{dx}(ax+b)^n = na(ax+b)^{n-1}\\). For \\(n = 1\\), \\(\\frac{d}{dx}(ax+b) = a = 1 \\cdot a (ax+b)^0\\), so the claim holds. Assume it holds for \\(n = k\\). Writing \\((ax+b)^{k+1} = (ax+b)^k (ax+b)\\) and applying the product rule, \\(\\frac{d}{dx}(ax+b)^{k+1} = ka(ax+b)^{k-1}(ax+b) + (ax+b)^k \\cdot a = ka(ax+b)^k + a(ax+b)^k = (k+1)a(ax+b)^k\\), which is the claim for \\(k+1\\). So it holds for every positive integer \\(n\\). For a negative integer \\(n = -m\\) with \\(m > 0\\), write \\((ax+b)^{-m} = \\frac{1}{(ax+b)^m}\\); the quotient rule gives \\(\\frac{0 - ma(ax+b)^{m-1}}{(ax+b)^{2m}} = -ma(ax+b)^{-m-1}\\), the same formula. Hence for every integer \\(n\\) the derivative is \\(na(ax+b)^{n-1}\\).",
+    "_note": "The natural tool is the chain rule, which this chapter never develops; solved by induction + product rule (and the quotient rule for negative n), as the stem says n is an integer."
+  },
+  {
+    "id": "4456200c-5001-43e5-830e-fc0f76888e20",
+    "ref": "Misc Q13",
+    "solution": "The chain rule would be the natural tool here, but it is not developed in this chapter, so we use the product rule together with \\(\\frac{d}{dx}(ax+b)^n = na(ax+b)^{n-1}\\), which follows by induction from the product rule (and by the quotient rule when the index is negative). Take \\(u = (ax+b)^n\\) and \\(v = (cx+d)^m\\), so \\(u' = na(ax+b)^{n-1}\\) and \\(v' = mc(cx+d)^{m-1}\\). Then \\(\\frac{d}{dx}\\left[(ax+b)^n(cx+d)^m\\right] = na(ax+b)^{n-1}(cx+d)^m + mc(ax+b)^n(cx+d)^{m-1}\\). Taking out the common factor \\((ax+b)^{n-1}(cx+d)^{m-1}\\), the derivative is \\((ax+b)^{n-1}(cx+d)^{m-1}\\left[na(cx+d) + mc(ax+b)\\right]\\).",
+    "_note": "Chain rule flagged as out of scope; built on the induction result of the preceding question plus the product rule."
+  },
+  {
+    "id": "74f298a2-24b6-43cb-b7c6-71dbddcf7c7d",
+    "ref": "Misc Q14",
+    "solution": "Since \\(a\\) is a constant, expand using the addition formula: \\(\\sin(x+a) = \\sin x \\cos a + \\cos x \\sin a\\). Here \\(\\cos a\\) and \\(\\sin a\\) are constants, so differentiating, \\(\\frac{d}{dx}\\sin(x+a) = \\cos a \\cos x - \\sin a \\sin x = \\cos(x+a)\\). The derivative is \\(\\cos(x+a)\\)."
+  },
+  {
+    "id": "c921b15e-1871-42cb-b60d-b58cd7fccc75",
+    "ref": "Misc Q15",
+    "solution": "The quotient rule applied to \\(\\frac{1}{\\sin x}\\) and \\(\\frac{\\cos x}{\\sin x}\\) gives the standard results \\(\\frac{d}{dx}\\operatorname{cosec} x = -\\operatorname{cosec} x \\cot x\\) and \\(\\frac{d}{dx}\\cot x = -\\operatorname{cosec}^2 x\\). Now apply the product rule to \\(\\operatorname{cosec} x \\cot x\\): \\(\\frac{d}{dx}(\\operatorname{cosec} x \\cot x) = (-\\operatorname{cosec} x \\cot x)\\cot x + \\operatorname{cosec} x\\left(-\\operatorname{cosec}^2 x\\right) = -\\operatorname{cosec} x \\cot^2 x - \\operatorname{cosec}^3 x\\). The derivative is \\(-\\operatorname{cosec} x\\left(\\cot^2 x + \\operatorname{cosec}^2 x\\right)\\)."
+  },
+  {
+    "id": "791c9f0a-eb1b-42c9-ac1f-967d425441a1",
+    "ref": "Misc Q16",
+    "solution": "By the quotient rule with \\(u = \\cos x\\), \\(u' = -\\sin x\\), \\(v = 1 + \\sin x\\), \\(v' = \\cos x\\): the derivative is \\(\\frac{-\\sin x(1+\\sin x) - \\cos x \\cdot \\cos x}{(1+\\sin x)^2} = \\frac{-\\sin x - \\sin^2 x - \\cos^2 x}{(1+\\sin x)^2}\\). Since \\(\\sin^2 x + \\cos^2 x = 1\\), the numerator is \\(-(1 + \\sin x)\\), and one factor of \\(1 + \\sin x\\) cancels. The derivative is \\(\\frac{-1}{1 + \\sin x}\\)."
+  },
+  {
+    "id": "96ed07bb-2f19-4f5c-bd21-7c39a39aa17c",
+    "ref": "Misc Q17",
+    "solution": "By the quotient rule with \\(u = \\sin x + \\cos x\\), \\(u' = \\cos x - \\sin x\\), \\(v = \\sin x - \\cos x\\), \\(v' = \\cos x + \\sin x\\), the numerator is \\((\\cos x - \\sin x)(\\sin x - \\cos x) - (\\sin x + \\cos x)(\\cos x + \\sin x) = -(\\sin x - \\cos x)^2 - (\\sin x + \\cos x)^2\\). Expanding, \\((\\sin x - \\cos x)^2 + (\\sin x + \\cos x)^2 = 2\\sin^2 x + 2\\cos^2 x = 2\\), so the numerator is \\(-2\\). The derivative is \\(\\frac{-2}{(\\sin x - \\cos x)^2}\\)."
+  },
+  {
+    "id": "dfe1388a-e8ea-44ea-a53b-abc384afafe3",
+    "ref": "Misc Q18",
+    "solution": "Use the quotient rule with \\(u = \\sec x - 1\\), \\(v = \\sec x + 1\\), and \\(u' = v' = \\sec x \\tan x\\). The numerator is \\(\\sec x \\tan x(\\sec x + 1) - (\\sec x - 1)\\sec x \\tan x = \\sec x \\tan x\\left[(\\sec x + 1) - (\\sec x - 1)\\right] = 2\\sec x \\tan x\\). The derivative is \\(\\frac{2\\sec x \\tan x}{(\\sec x + 1)^2}\\), which on writing \\(\\sec x = \\frac{1}{\\cos x}\\) is the same as \\(\\frac{2\\sin x}{(1 + \\cos x)^2}\\)."
+  },
+  {
+    "id": "6bc8c3a7-75d5-466f-a594-64324f5f17ce",
+    "ref": "Misc Q19",
+    "solution": "The chain rule would be the natural tool here, but it is not developed in this chapter, so the result is established by induction using the product rule. Claim: \\(\\frac{d}{dx}\\sin^n x = n\\sin^{n-1}x\\cos x\\). For \\(n = 1\\), \\(\\frac{d}{dx}\\sin x = \\cos x\\), which agrees. Assume it holds for \\(n = k\\). Writing \\(\\sin^{k+1}x = \\sin^k x \\cdot \\sin x\\) and applying the product rule, \\(\\frac{d}{dx}\\sin^{k+1}x = k\\sin^{k-1}x\\cos x \\cdot \\sin x + \\sin^k x \\cdot \\cos x = k\\sin^k x\\cos x + \\sin^k x\\cos x = (k+1)\\sin^k x\\cos x\\), which is the claim for \\(k+1\\). For a negative integer \\(n = -m\\) with \\(m > 0\\), the quotient rule on \\(\\frac{1}{\\sin^m x}\\) gives \\(\\frac{0 - m\\sin^{m-1}x\\cos x}{\\sin^{2m}x} = -m\\sin^{-m-1}x\\cos x\\), the same formula. Hence for every integer \\(n\\) the derivative is \\(n\\sin^{n-1}x\\cos x\\).",
+    "_note": "Chain rule flagged as out of scope; proved by induction + product rule, with the quotient rule covering negative n since the stem says n is an integer."
+  },
+  {
+    "id": "aa9221d3-d592-4a0a-9bd9-27254eee2b71",
+    "ref": "Misc Q20",
+    "solution": "By the quotient rule with \\(u = a + b\\sin x\\), \\(u' = b\\cos x\\), \\(v = c + d\\cos x\\), \\(v' = -d\\sin x\\), the numerator is \\(b\\cos x(c + d\\cos x) + (a + b\\sin x)d\\sin x = bc\\cos x + bd\\cos^2 x + ad\\sin x + bd\\sin^2 x\\). Since \\(\\cos^2 x + \\sin^2 x = 1\\), this is \\(bc\\cos x + ad\\sin x + bd\\). The derivative is \\(\\frac{bc\\cos x + ad\\sin x + bd}{(c + d\\cos x)^2}\\)."
+  },
+  {
+    "id": "8722c9ac-6470-4a54-8ce0-98214e7bb75d",
+    "ref": "Misc Q21",
+    "solution": "Since \\(\\sin(x+a) = \\sin x\\cos a + \\cos x\\sin a\\) with \\(a\\) constant, \\(\\frac{d}{dx}\\sin(x+a) = \\cos(x+a)\\). Now apply the quotient rule with \\(u = \\sin(x+a)\\) and \\(v = \\cos x\\): the numerator is \\(\\cos(x+a)\\cos x + \\sin(x+a)\\sin x\\), which by the cosine subtraction formula equals \\(\\cos\\left[(x+a) - x\\right] = \\cos a\\). The derivative is \\(\\frac{\\cos a}{\\cos^2 x}\\)."
+  },
+  {
+    "id": "61529a22-a697-4f98-a74b-d1ea88eb871d",
+    "ref": "Misc Q22",
+    "solution": "By the product rule with \\(u = x^4\\), \\(u' = 4x^3\\), \\(v = 5\\sin x - 3\\cos x\\), \\(v' = 5\\cos x + 3\\sin x\\): the derivative is \\(4x^3(5\\sin x - 3\\cos x) + x^4(5\\cos x + 3\\sin x)\\). Collecting terms, this equals \\(x^3\\left[(3x + 20)\\sin x + (5x - 12)\\cos x\\right]\\)."
+  },
+  {
+    "id": "e945a588-93cd-4b2a-b88b-440c50ea5d0c",
+    "ref": "Misc Q23",
+    "solution": "By the product rule with \\(u = x^2 + 1\\), \\(u' = 2x\\), \\(v = \\cos x\\), \\(v' = -\\sin x\\): the derivative is \\(2x\\cos x + (x^2+1)(-\\sin x)\\), that is \\(2x\\cos x - (x^2 + 1)\\sin x\\)."
+  },
+  {
+    "id": "08ff5ad9-3fe2-41de-b651-06ea8d6a6559",
+    "ref": "Misc Q24",
+    "solution": "By the product rule with \\(u = ax^2 + \\sin x\\), \\(u' = 2ax + \\cos x\\), \\(v = p + q\\cos x\\), \\(v' = -q\\sin x\\): the derivative is \\((2ax + \\cos x)(p + q\\cos x) - q\\sin x\\left(ax^2 + \\sin x\\right)\\). Expanding and using \\(\\cos^2 x - \\sin^2 x = \\cos 2x\\), this is \\(2apx + 2aqx\\cos x + p\\cos x + q\\cos 2x - aqx^2\\sin x\\)."
+  },
+  {
+    "id": "5c8e7d72-28cc-495b-bf58-97f36ec09777",
+    "ref": "Misc Q25",
+    "solution": "By the product rule with \\(u = x + \\cos x\\), \\(u' = 1 - \\sin x\\), \\(v = x - \\tan x\\), \\(v' = 1 - \\sec^2 x\\): the derivative is \\((1 - \\sin x)(x - \\tan x) + (x + \\cos x)\\left(1 - \\sec^2 x\\right)\\). Since \\(1 - \\sec^2 x = -\\tan^2 x\\), the derivative is \\((1 - \\sin x)(x - \\tan x) - (x + \\cos x)\\tan^2 x\\)."
+  },
+  {
+    "id": "0d9bcc17-7ee0-4ec7-b8bf-a6f5a0e20230",
+    "ref": "Misc Q26",
+    "solution": "By the quotient rule with \\(u = 4x + 5\\sin x\\), \\(u' = 4 + 5\\cos x\\), \\(v = 3x + 7\\cos x\\), \\(v' = 3 - 7\\sin x\\), the numerator is \\((4 + 5\\cos x)(3x + 7\\cos x) - (4x + 5\\sin x)(3 - 7\\sin x)\\). Expanding, this is \\(12x + 28\\cos x + 15x\\cos x + 35\\cos^2 x - 12x + 28x\\sin x - 15\\sin x + 35\\sin^2 x\\), and \\(35(\\cos^2 x + \\sin^2 x) = 35\\). The derivative is \\(\\frac{35 + 15x\\cos x + 28x\\sin x + 28\\cos x - 15\\sin x}{(3x + 7\\cos x)^2}\\)."
+  },
+  {
+    "id": "1e9d62b1-6ddf-4fa3-8926-1ad97398869a",
+    "ref": "Misc Q27",
+    "solution": "Here \\(\\cos\\frac{\\pi}{4} = \\frac{1}{\\sqrt{2}}\\) is a constant, so the function is \\(\\cos\\frac{\\pi}{4} \\cdot \\frac{x^2}{\\sin x}\\). By the quotient rule, \\(\\frac{d}{dx}\\left(\\frac{x^2}{\\sin x}\\right) = \\frac{2x\\sin x - x^2\\cos x}{\\sin^2 x}\\). Multiplying by the constant, the derivative is \\(\\frac{\\cos\\frac{\\pi}{4}\\left(2x\\sin x - x^2\\cos x\\right)}{\\sin^2 x}\\), that is \\(\\frac{x(2\\sin x - x\\cos x)}{\\sqrt{2}\\,\\sin^2 x}\\)."
+  },
+  {
+    "id": "8291f5f1-f863-43d7-8f99-cfd6ac37dc52",
+    "ref": "Misc Q28",
+    "solution": "By the quotient rule with \\(u = x\\), \\(u' = 1\\), \\(v = 1 + \\tan x\\), \\(v' = \\sec^2 x\\): the derivative is \\(\\frac{1\\cdot(1 + \\tan x) - x\\sec^2 x}{(1 + \\tan x)^2}\\), that is \\(\\frac{1 + \\tan x - x\\sec^2 x}{(1 + \\tan x)^2}\\)."
+  },
+  {
+    "id": "cd30d5ef-f5cb-493b-91d4-3dcfcaf5120a",
+    "ref": "Misc Q29",
+    "solution": "By the product rule with \\(u = x + \\sec x\\), \\(u' = 1 + \\sec x\\tan x\\), \\(v = x - \\tan x\\), \\(v' = 1 - \\sec^2 x\\): the derivative is \\((1 + \\sec x\\tan x)(x - \\tan x) + (x + \\sec x)\\left(1 - \\sec^2 x\\right)\\). Since \\(1 - \\sec^2 x = -\\tan^2 x\\), the derivative is \\((1 + \\sec x\\tan x)(x - \\tan x) - (x + \\sec x)\\tan^2 x\\)."
+  },
+  {
+    "id": "1f61712f-15b4-4cbd-a233-1a0932943c6f",
+    "ref": "Misc Q30",
+    "solution": "The chain rule would be the natural tool for differentiating \\(\\sin^n x\\), but it is not developed in this chapter; instead, induction with the product rule (and the quotient rule for a negative index) gives \\(\\frac{d}{dx}\\sin^n x = n\\sin^{n-1}x\\cos x\\) for every integer \\(n\\). Now apply the quotient rule to \\(\\frac{x}{\\sin^n x}\\) with \\(u = x\\), \\(u' = 1\\), \\(v = \\sin^n x\\), \\(v' = n\\sin^{n-1}x\\cos x\\): the derivative is \\(\\frac{\\sin^n x - x \\cdot n\\sin^{n-1}x\\cos x}{\\sin^{2n} x}\\). Taking \\(\\sin^{n-1}x\\) out of the numerator and cancelling, the derivative is \\(\\frac{\\sin x - nx\\cos x}{\\sin^{n+1} x}\\).",
+    "_note": "Chain rule flagged as out of scope; the sin^n x derivative it relies on is the induction result, not the chain rule."
+  }
+]

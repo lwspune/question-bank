@@ -1,0 +1,102 @@
+[
+  {
+    "id": "a371ddbb-1d45-4ca9-8835-a24af8bd1a01",
+    "ref": "Ex 7.1 Q1",
+    "solution": "By the binomial theorem, \\((1-2x)^5 = \\sum_{k=0}^{5}{}^{5}C_k\\,(1)^{5-k}(-2x)^k\\). The successive terms are \\(1\\), \\({}^{5}C_1(-2x) = -10x\\), \\({}^{5}C_2(-2x)^2 = 10\\cdot 4x^2 = 40x^2\\), \\({}^{5}C_3(-2x)^3 = 10\\cdot(-8x^3) = -80x^3\\), \\({}^{5}C_4(-2x)^4 = 5\\cdot 16x^4 = 80x^4\\) and \\((-2x)^5 = -32x^5\\). Hence \\((1-2x)^5 = 1 - 10x + 40x^2 - 80x^3 + 80x^4 - 32x^5\\)."
+  },
+  {
+    "id": "8f6c17fd-c899-4968-9469-d5d8e5bf06c6",
+    "ref": "Ex 7.1 Q2",
+    "solution": "Take \\(a = \\frac{2}{x}\\) and \\(b = \\frac{x}{2}\\), so the expression is \\((a-b)^5 = \\sum_{k=0}^{5}{}^{5}C_k\\,a^{5-k}(-b)^k\\). Term by term: \\(a^5 = \\frac{32}{x^5}\\); \\(-5a^4b = -5\\cdot\\frac{16}{x^4}\\cdot\\frac{x}{2} = -\\frac{40}{x^3}\\); \\(10a^3b^2 = 10\\cdot\\frac{8}{x^3}\\cdot\\frac{x^2}{4} = \\frac{20}{x}\\); \\(-10a^2b^3 = -10\\cdot\\frac{4}{x^2}\\cdot\\frac{x^3}{8} = -5x\\); \\(5ab^4 = 5\\cdot\\frac{2}{x}\\cdot\\frac{x^4}{16} = \\frac{5x^3}{8}\\); \\(-b^5 = -\\frac{x^5}{32}\\). Hence \\(\\left(\\frac{2}{x}-\\frac{x}{2}\\right)^5 = \\frac{32}{x^5} - \\frac{40}{x^3} + \\frac{20}{x} - 5x + \\frac{5x^3}{8} - \\frac{x^5}{32}\\)."
+  },
+  {
+    "id": "1106ea85-5048-47f9-8c11-a746cc0a6aab",
+    "ref": "Ex 7.1 Q3",
+    "solution": "By the binomial theorem, \\((2x-3)^6 = \\sum_{k=0}^{6}{}^{6}C_k\\,(2x)^{6-k}(-3)^k\\). The terms are \\((2x)^6 = 64x^6\\); \\(6(2x)^5(-3) = -576x^5\\); \\(15(2x)^4(9) = 2160x^4\\); \\(20(2x)^3(-27) = -4320x^3\\); \\(15(2x)^2(81) = 4860x^2\\); \\(6(2x)(-243) = -2916x\\); \\((-3)^6 = 729\\). Hence \\((2x-3)^6 = 64x^6 - 576x^5 + 2160x^4 - 4320x^3 + 4860x^2 - 2916x + 729\\)."
+  },
+  {
+    "id": "aa6fad48-5489-44e8-bca9-bd9d8e69aa38",
+    "ref": "Ex 7.1 Q4",
+    "solution": "With \\(a = \\frac{x}{3}\\) and \\(b = \\frac{1}{x}\\), \\((a+b)^5 = \\sum_{k=0}^{5}{}^{5}C_k\\,a^{5-k}b^{k}\\). The terms are \\(\\frac{x^5}{243}\\); \\(5\\cdot\\frac{x^4}{81}\\cdot\\frac{1}{x} = \\frac{5x^3}{81}\\); \\(10\\cdot\\frac{x^3}{27}\\cdot\\frac{1}{x^2} = \\frac{10x}{27}\\); \\(10\\cdot\\frac{x^2}{9}\\cdot\\frac{1}{x^3} = \\frac{10}{9x}\\); \\(5\\cdot\\frac{x}{3}\\cdot\\frac{1}{x^4} = \\frac{5}{3x^3}\\); \\(\\frac{1}{x^5}\\). Hence \\(\\left(\\frac{x}{3}+\\frac{1}{x}\\right)^5 = \\frac{x^5}{243} + \\frac{5x^3}{81} + \\frac{10x}{27} + \\frac{10}{9x} + \\frac{5}{3x^3} + \\frac{1}{x^5}\\)."
+  },
+  {
+    "id": "8496a878-d1b4-4ae6-9ff0-023cb98375a1",
+    "ref": "Ex 7.1 Q5",
+    "solution": "By the binomial theorem, \\(\\left(x+\\frac{1}{x}\\right)^6 = \\sum_{k=0}^{6}{}^{6}C_k\\,x^{6-k}\\left(\\frac{1}{x}\\right)^{k} = \\sum_{k=0}^{6}{}^{6}C_k\\,x^{6-2k}\\). With \\({}^{6}C_k = 1,6,15,20,15,6,1\\) the terms are \\(x^6,\\;6x^4,\\;15x^2,\\;20,\\;\\frac{15}{x^2},\\;\\frac{6}{x^4},\\;\\frac{1}{x^6}\\). Hence \\(\\left(x+\\frac{1}{x}\\right)^6 = x^6 + 6x^4 + 15x^2 + 20 + \\frac{15}{x^2} + \\frac{6}{x^4} + \\frac{1}{x^6}\\)."
+  },
+  {
+    "id": "97a826aa-d4f4-4d8e-ba60-2413459c6527",
+    "ref": "Ex 7.1 Q6",
+    "solution": "Write \\(96 = 100 - 4\\) so that the binomial theorem applies with easy powers. Then \\((100-4)^3 = 100^3 - 3(100)^2(4) + 3(100)(4)^2 - 4^3 = 1000000 - 120000 + 4800 - 64\\). Adding, \\(1000000 - 120000 = 880000\\), \\(880000 + 4800 = 884800\\), \\(884800 - 64 = 884736\\). Hence \\((96)^3 = 884736\\)."
+  },
+  {
+    "id": "25324654-0a76-416f-9271-1061a0211900",
+    "ref": "Ex 7.1 Q7",
+    "solution": "Write \\(102 = 100 + 2\\). Then \\((100+2)^5 = 100^5 + 5(100)^4(2) + 10(100)^3(2)^2 + 10(100)^2(2)^3 + 5(100)(2)^4 + 2^5\\), that is \\(10000000000 + 1000000000 + 40000000 + 800000 + 8000 + 32\\). Summing the terms gives \\(11040808032\\). Hence \\((102)^5 = 11040808032\\)."
+  },
+  {
+    "id": "85e9eed7-5c05-4d50-bcf9-9dd81e2559fd",
+    "ref": "Ex 7.1 Q8",
+    "solution": "Write \\(101 = 100 + 1\\). Then \\((100+1)^4 = 100^4 + 4(100)^3 + 6(100)^2 + 4(100) + 1 = 100000000 + 4000000 + 60000 + 400 + 1\\). Summing gives \\(104060401\\). Hence \\((101)^4 = 104060401\\)."
+  },
+  {
+    "id": "28d09eac-94fe-4926-96f5-74daa48cd950",
+    "ref": "Ex 7.1 Q9",
+    "solution": "Write \\(99 = 100 - 1\\). Then \\((100-1)^5 = 100^5 - 5(100)^4 + 10(100)^3 - 10(100)^2 + 5(100) - 1 = 10000000000 - 500000000 + 10000000 - 100000 + 500 - 1\\). Combining, \\(10000000000 - 500000000 = 9500000000\\), then \\(+10000000 = 9510000000\\), \\(-100000 = 9509900000\\), \\(+500 - 1 = 9509900499\\). Hence \\((99)^5 = 9509900499\\)."
+  },
+  {
+    "id": "ea62872e-cedc-4000-8bee-ba8b79339e49",
+    "ref": "Ex 7.1 Q10",
+    "solution": "Write \\(1.1 = 1 + 0.1\\) and expand by the binomial theorem: \\((1.1)^{10000} = (1+0.1)^{10000} = 1 + {}^{10000}C_1(0.1) + {}^{10000}C_2(0.1)^2 + \\cdots\\). Every term is positive, so retaining only the first two terms gives the lower bound \\((1.1)^{10000} > 1 + 10000(0.1) = 1 + 1000 = 1001\\). Since \\(1001 > 1000\\), it follows that \\((1.1)^{10000} > 1000\\), so \\((1.1)^{10000}\\) is the larger number."
+  },
+  {
+    "id": "2e234ce1-29e5-491e-b1a2-ef8d4ad51506",
+    "ref": "Ex 7.1 Q11",
+    "solution": "Expanding both, \\((a+b)^4 = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4\\) and \\((a-b)^4 = a^4 - 4a^3b + 6a^2b^2 - 4ab^3 + b^4\\). Subtracting, the even-power terms cancel and the odd-power terms double: \\((a+b)^4 - (a-b)^4 = 8a^3b + 8ab^3 = 8ab(a^2+b^2)\\). Now put \\(a = \\sqrt{3}\\), \\(b = \\sqrt{2}\\), so \\(ab = \\sqrt{6}\\) and \\(a^2 + b^2 = 3 + 2 = 5\\). Therefore \\(\\left(\\sqrt{3}+\\sqrt{2}\\right)^4 - \\left(\\sqrt{3}-\\sqrt{2}\\right)^4 = 8\\sqrt{6}\\cdot 5 = 40\\sqrt{6}\\)."
+  },
+  {
+    "id": "467ab838-3b0c-4adb-acae-ba7cf65228d5",
+    "ref": "Ex 7.1 Q12",
+    "solution": "Expanding, \\((x+1)^6 = x^6 + 6x^5 + 15x^4 + 20x^3 + 15x^2 + 6x + 1\\) and \\((x-1)^6\\) is the same with the odd-power terms negated. Adding, the odd-power terms cancel and the even-power terms double: \\((x+1)^6 + (x-1)^6 = 2\\left(x^6 + 15x^4 + 15x^2 + 1\\right)\\). Now put \\(x = \\sqrt{2}\\), so \\(x^2 = 2\\), \\(x^4 = 4\\), \\(x^6 = 8\\), giving \\(2(8 + 60 + 30 + 1) = 2(99) = 198\\). Hence \\(\\left(\\sqrt{2}+1\\right)^6 + \\left(\\sqrt{2}-1\\right)^6 = 198\\)."
+  },
+  {
+    "id": "c1254a32-85a9-456d-8913-4ba91dabba33",
+    "ref": "Ex 7.1 Q13",
+    "solution": "Write \\(9 = 1 + 8\\) and expand by the binomial theorem: \\(9^{n+1} = (1+8)^{n+1} = \\sum_{k=0}^{n+1}{}^{n+1}C_k\\,8^{k}\\). Separating the first two terms, \\(9^{n+1} = 1 + {}^{n+1}C_1(8) + \\sum_{k=2}^{n+1}{}^{n+1}C_k\\,8^{k} = 1 + 8(n+1) + \\sum_{k=2}^{n+1}{}^{n+1}C_k\\,8^{k}\\), that is \\(9^{n+1} = 9 + 8n + \\sum_{k=2}^{n+1}{}^{n+1}C_k\\,8^{k}\\). Therefore \\(9^{n+1} - 8n - 9 = \\sum_{k=2}^{n+1}{}^{n+1}C_k\\,8^{k}\\). Every term of this sum has \\(k \\ge 2\\), so it carries a factor \\(8^2 = 64\\); taking it out, \\(9^{n+1} - 8n - 9 = 64\\left(\\sum_{k=2}^{n+1}{}^{n+1}C_k\\,8^{k-2}\\right)\\), and the bracket is an integer. Hence \\(9^{n+1} - 8n - 9\\) is divisible by \\(64\\) for every positive integer \\(n\\)."
+  },
+  {
+    "id": "dbfe810c-4399-49cb-a3e5-dbcc0bb67989",
+    "ref": "Ex 7.1 Q14",
+    "solution": "By the binomial theorem, for any \\(x\\), \\((1+x)^{n} = \\sum_{r=0}^{n}{}^{n}C_r\\,1^{\\,n-r}x^{r} = \\sum_{r=0}^{n}{}^{n}C_r\\,x^{r}\\). Putting \\(x = 3\\) in this identity gives \\((1+3)^{n} = \\sum_{r=0}^{n}{}^{n}C_r\\,3^{r}\\). Since \\(1 + 3 = 4\\), it follows that \\(\\sum_{r=0}^{n}3^{r}\\,{}^{n}C_r = 4^{n}\\), which is the required result."
+  },
+  {
+    "id": "a4fd6cea-b1e4-4515-8df8-f1135d1bac69",
+    "ref": "Misc Q1",
+    "solution": "Following the hint, write \\(a = (a-b) + b\\) and expand by the binomial theorem: \\(a^{n} = \\left[(a-b)+b\\right]^{n} = \\sum_{k=0}^{n}{}^{n}C_k\\,(a-b)^{k}b^{\\,n-k}\\). The term with \\(k = 0\\) is \\(b^{n}\\), and every term with \\(k \\ge 1\\) carries a factor \\((a-b)\\). Hence \\(a^{n} = b^{n} + (a-b)\\sum_{k=1}^{n}{}^{n}C_k\\,(a-b)^{k-1}b^{\\,n-k}\\), so that \\(a^{n} - b^{n} = (a-b)\\,k\\) where \\(k = \\sum_{k=1}^{n}{}^{n}C_k\\,(a-b)^{k-1}b^{\\,n-k}\\). Since \\(a\\) and \\(b\\) are integers, each \\({}^{n}C_k\\), \\((a-b)^{k-1}\\) and \\(b^{\\,n-k}\\) is an integer, so \\(k\\) is an integer. Therefore \\(a - b\\) is a factor of \\(a^{n} - b^{n}\\) for every positive integer \\(n\\)."
+  },
+  {
+    "id": "107bf1e2-832c-4f42-b21e-644783c2e384",
+    "ref": "Misc Q2",
+    "solution": "For any \\(x, y\\), subtracting the expansions of \\((x+y)^6\\) and \\((x-y)^6\\) cancels the even-power terms and doubles the odd-power ones: \\((x+y)^6 - (x-y)^6 = 2\\left(6x^5y + 20x^3y^3 + 6xy^5\\right) = 12x^5y + 40x^3y^3 + 12xy^5\\). Put \\(x = \\sqrt{3}\\) and \\(y = \\sqrt{2}\\), so \\(x^5 = 9\\sqrt{3}\\), \\(x^3 = 3\\sqrt{3}\\), \\(y^3 = 2\\sqrt{2}\\), \\(y^5 = 4\\sqrt{2}\\). Then the three terms are \\(12(9\\sqrt{3})(\\sqrt{2}) = 108\\sqrt{6}\\), \\(40(3\\sqrt{3})(2\\sqrt{2}) = 240\\sqrt{6}\\) and \\(12(\\sqrt{3})(4\\sqrt{2}) = 48\\sqrt{6}\\). Adding, \\(\\left(\\sqrt{3}+\\sqrt{2}\\right)^6 - \\left(\\sqrt{3}-\\sqrt{2}\\right)^6 = (108+240+48)\\sqrt{6} = 396\\sqrt{6}\\)."
+  },
+  {
+    "id": "bfec674b-7c0e-4a86-a109-195bd360874b",
+    "ref": "Misc Q3",
+    "solution": "For any \\(x, y\\), adding the expansions of \\((x+y)^4\\) and \\((x-y)^4\\) cancels the odd-power terms and doubles the even-power ones: \\((x+y)^4 + (x-y)^4 = 2\\left(x^4 + 6x^2y^2 + y^4\\right)\\). Put \\(x = a^2\\) and \\(y = \\sqrt{a^2-1}\\), so \\(y^2 = a^2 - 1\\) and \\(y^4 = (a^2-1)^2\\). Then the value is \\(2\\left[a^8 + 6a^4(a^2-1) + (a^2-1)^2\\right] = 2\\left[a^8 + 6a^6 - 6a^4 + a^4 - 2a^2 + 1\\right]\\). Collecting like terms, this is \\(2\\left(a^8 + 6a^6 - 5a^4 - 2a^2 + 1\\right) = 2a^8 + 12a^6 - 10a^4 - 4a^2 + 2\\)."
+  },
+  {
+    "id": "43af96fb-33d0-4403-ae36-35b6f507c5cf",
+    "ref": "Misc Q4",
+    "solution": "Write \\(0.99 = 1 - 0.01\\) and expand: \\((1-0.01)^5 = 1 - {}^{5}C_1(0.01) + {}^{5}C_2(0.01)^2 - \\cdots\\). Keeping only the first three terms, \\((0.99)^5 \\approx 1 - 5(0.01) + 10(0.0001) = 1 - 0.05 + 0.001\\). Hence \\((0.99)^5 \\approx 0.951\\)."
+  },
+  {
+    "id": "0f9d5648-c06b-4e6b-a0e7-07617ac21656",
+    "ref": "Misc Q5",
+    "solution": "Group the last two terms and put \\(t = \\frac{x}{2} - \\frac{2}{x}\\), so the expression is \\((1+t)^4 = 1 + 4t + 6t^2 + 4t^3 + t^4\\). Expanding the powers of \\(t\\) by the binomial theorem: \\(t^2 = \\frac{x^2}{4} - 2 + \\frac{4}{x^2}\\), \\(t^3 = \\frac{x^3}{8} - \\frac{3x}{2} + \\frac{6}{x} - \\frac{8}{x^3}\\) and \\(t^4 = \\frac{x^4}{16} - x^2 + 6 - \\frac{16}{x^2} + \\frac{16}{x^4}\\). Substituting, \\(4t = 2x - \\frac{8}{x}\\), \\(6t^2 = \\frac{3x^2}{2} - 12 + \\frac{24}{x^2}\\), \\(4t^3 = \\frac{x^3}{2} - 6x + \\frac{24}{x} - \\frac{32}{x^3}\\). Adding all five parts and collecting like powers of \\(x\\) gives \\(\\left(1+\\frac{x}{2}-\\frac{2}{x}\\right)^4 = \\frac{x^4}{16} + \\frac{x^3}{2} + \\frac{x^2}{2} - 4x - 5 + \\frac{16}{x} + \\frac{8}{x^2} - \\frac{32}{x^3} + \\frac{16}{x^4}\\)."
+  },
+  {
+    "id": "c669ff32-cfd3-410c-b77b-d886a9b1c56d",
+    "ref": "Misc Q6",
+    "solution": "Put \\(p = 3x^2\\), \\(q = -2ax\\), \\(r = 3a^2\\) and use \\((p+q+r)^3 = p^3+q^3+r^3+3\\left(p^2q+p^2r+q^2p+q^2r+r^2p+r^2q\\right)+6pqr\\). The cubes give \\(27x^6\\), \\(-8a^3x^3\\) and \\(27a^6\\). The mixed terms give \\(3p^2q = -54ax^5\\), \\(3p^2r = 81a^2x^4\\), \\(3q^2p = 36a^2x^4\\), \\(3q^2r = 36a^4x^2\\), \\(3r^2p = 81a^4x^2\\), \\(3r^2q = -54a^5x\\), and \\(6pqr = 6(3x^2)(-2ax)(3a^2) = -108a^3x^3\\). Collecting like powers of \\(x\\): the \\(x^4\\) terms give \\(117a^2x^4\\), the \\(x^3\\) terms give \\(-8a^3x^3 - 108a^3x^3 = -116a^3x^3\\) and the \\(x^2\\) terms give \\(117a^4x^2\\). Hence \\(\\left(3x^2-2ax+3a^2\\right)^3 = 27x^6 - 54ax^5 + 117a^2x^4 - 116a^3x^3 + 117a^4x^2 - 54a^5x + 27a^6\\)."
+  }
+]

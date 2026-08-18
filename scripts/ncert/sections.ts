@@ -264,6 +264,190 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "4.6 Applications of Determinants and Matrices", label: "Exercise 4.5", kind: "exercise", refPrefixes: ["Ex 4.5 Q"] },
     { group: "Miscellaneous Exercise on Chapter 4", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
   ],
+
+  // ── Ch.7 Binomial Theorem (CLASS 11). The book's thinnest chapter: the
+  //    rationalised edition cuts it to §7.1-§7.2.2, leaving ONE numbered
+  //    exercise plus a terminal Miscellaneous block. All four worked Examples
+  //    (1-4) sit in the run-up to Exercise 7.1, so they band to it; there is no
+  //    Miscellaneous Example, hence no "Misc Eg" block.
+  //    Verified against the pages: Eg.3 spans p5→p6, Eg.4 precedes the exercise
+  //    on p6, and Exercise 7.1 itself runs p6→p7 (Q1-Q3 on p6, Q4-Q14 overleaf).
+  // ══════════════════════════════════════════════════════════════════════════
+  // The remaining 10 CLASS 11 chapters. Every one has the same shape — one
+  // Solved Examples + Exercise pair per numbered exercise, then the book's own
+  // centred "Miscellaneous Examples" block and the Miscellaneous Exercise.
+  // Group titles are the book's printed section headings; an Example block is
+  // named for the exercise it PRECEDES, which is what the ref convention encodes.
+  // Prefix safety: no chapter here reaches a tenth exercise, so "Ex 1.1 Q"
+  // cannot collide with an "Ex 1.10 Q" and "1.1 Eg" cannot collide with "1.10 Eg".
+  c11Sets: [
+    { group: "1.2 Sets and their Representations", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.1 Eg"] },
+    { group: "1.2 Sets and their Representations", label: "Exercise 1.1", kind: "exercise", refPrefixes: ["Ex 1.1 Q"] },
+    { group: "1.3-1.5 The Empty, Finite and Equal Sets", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.2 Eg"] },
+    { group: "1.3-1.5 The Empty, Finite and Equal Sets", label: "Exercise 1.2", kind: "exercise", refPrefixes: ["Ex 1.2 Q"] },
+    { group: "1.6 Subsets", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.3 Eg"] },
+    { group: "1.6 Subsets", label: "Exercise 1.3", kind: "exercise", refPrefixes: ["Ex 1.3 Q"] },
+    { group: "1.9 Operations on Sets", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.4 Eg"] },
+    { group: "1.9 Operations on Sets", label: "Exercise 1.4", kind: "exercise", refPrefixes: ["Ex 1.4 Q"] },
+    { group: "1.10 Complement of a Set", label: "Solved Examples", kind: "solved_example", refPrefixes: ["1.5 Eg"] },
+    { group: "1.10 Complement of a Set", label: "Exercise 1.5", kind: "exercise", refPrefixes: ["Ex 1.5 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 1", label: "Miscellaneous Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 1", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  c11RelationsFunctions: [
+    { group: "2.2 Cartesian Products of Sets", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.1 Eg"] },
+    { group: "2.2 Cartesian Products of Sets", label: "Exercise 2.1", kind: "exercise", refPrefixes: ["Ex 2.1 Q"] },
+    { group: "2.3 Relations", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.2 Eg"] },
+    { group: "2.3 Relations", label: "Exercise 2.2", kind: "exercise", refPrefixes: ["Ex 2.2 Q"] },
+    { group: "2.4 Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["2.3 Eg"] },
+    { group: "2.4 Functions", label: "Exercise 2.3", kind: "exercise", refPrefixes: ["Ex 2.3 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 2", label: "Miscellaneous Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 2", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // §3.4 is the chapter's LAST numbered section — there is no trigonometric-
+  // equations block, so Exercise 3.3 closes the chapter's teaching run.
+  c11TrigonometricFunctions: [
+    { group: "3.2 Angles and their Measurement", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.1 Eg"] },
+    { group: "3.2 Angles and their Measurement", label: "Exercise 3.1", kind: "exercise", refPrefixes: ["Ex 3.1 Q"] },
+    { group: "3.3 Trigonometric Functions", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.2 Eg"] },
+    { group: "3.3 Trigonometric Functions", label: "Exercise 3.2", kind: "exercise", refPrefixes: ["Ex 3.2 Q"] },
+    { group: "3.4 Trigonometric Functions of Sum and Difference of Two Angles", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.3 Eg"] },
+    { group: "3.4 Trigonometric Functions of Sum and Difference of Two Angles", label: "Exercise 3.3", kind: "exercise", refPrefixes: ["Ex 3.3 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 3", label: "Miscellaneous Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 3", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // ONE numbered exercise: the rationalised edition keeps only the one-variable
+  // half of the chapter, so there is no two-variable/half-plane block.
+  c11LinearInequalities: [
+    { group: "5.3 Algebraic Solutions of Linear Inequalities in One Variable", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.1 Eg"] },
+    { group: "5.3 Algebraic Solutions of Linear Inequalities in One Variable", label: "Exercise 5.1", kind: "exercise", refPrefixes: ["Ex 5.1 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 5", label: "Miscellaneous Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 5", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  c11PermutationsCombinations: [
+    { group: "6.2 Fundamental Principle of Counting", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.1 Eg"] },
+    { group: "6.2 Fundamental Principle of Counting", label: "Exercise 6.1", kind: "exercise", refPrefixes: ["Ex 6.1 Q"] },
+    { group: "6.3 Permutations", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.2 Eg"] },
+    { group: "6.3 Permutations", label: "Exercise 6.2", kind: "exercise", refPrefixes: ["Ex 6.2 Q"] },
+    { group: "6.3.4 Permutations when Objects are Not Distinct", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.3 Eg"] },
+    { group: "6.3.4 Permutations when Objects are Not Distinct", label: "Exercise 6.3", kind: "exercise", refPrefixes: ["Ex 6.3 Q"] },
+    { group: "6.4 Combinations", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.4 Eg"] },
+    { group: "6.4 Combinations", label: "Exercise 6.4", kind: "exercise", refPrefixes: ["Ex 6.4 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 6", label: "Miscellaneous Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 6", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  c11StraightLines: [
+    { group: "9.2 Slope of a Line", label: "Solved Examples", kind: "solved_example", refPrefixes: ["9.1 Eg"] },
+    { group: "9.2 Slope of a Line", label: "Exercise 9.1", kind: "exercise", refPrefixes: ["Ex 9.1 Q"] },
+    { group: "9.3 Various Forms of the Equation of a Line", label: "Solved Examples", kind: "solved_example", refPrefixes: ["9.2 Eg"] },
+    { group: "9.3 Various Forms of the Equation of a Line", label: "Exercise 9.2", kind: "exercise", refPrefixes: ["Ex 9.2 Q"] },
+    { group: "9.4 Distance of a Point From a Line", label: "Solved Examples", kind: "solved_example", refPrefixes: ["9.3 Eg"] },
+    { group: "9.4 Distance of a Point From a Line", label: "Exercise 9.3", kind: "exercise", refPrefixes: ["Ex 9.3 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 9", label: "Miscellaneous Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 9", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // The chapter stops at the distance formula — no section formula, no direction
+  // cosines, no lines or planes. Those are Class 12's separate 3-D chapter.
+  c11ThreeDGeometry: [
+    { group: "11.2-11.3 Coordinate Axes, Planes and Points in Space", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.1 Eg"] },
+    { group: "11.2-11.3 Coordinate Axes, Planes and Points in Space", label: "Exercise 11.1", kind: "exercise", refPrefixes: ["Ex 11.1 Q"] },
+    { group: "11.4 Distance between Two Points", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.2 Eg"] },
+    { group: "11.4 Distance between Two Points", label: "Exercise 11.2", kind: "exercise", refPrefixes: ["Ex 11.2 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 11", label: "Miscellaneous Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 11", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // The book's largest chapter. Note its first exercise does not appear until
+  // p20 — the long opening run is teaching prose plus a SEPARATE numbering
+  // stream, "Illustration 1..10", which is deliberately not ingested.
+  c11LimitsDerivatives: [
+    { group: "12.3-12.4 Limits", label: "Solved Examples", kind: "solved_example", refPrefixes: ["12.1 Eg"] },
+    { group: "12.3-12.4 Limits", label: "Exercise 12.1", kind: "exercise", refPrefixes: ["Ex 12.1 Q"] },
+    { group: "12.5 Derivatives", label: "Solved Examples", kind: "solved_example", refPrefixes: ["12.2 Eg"] },
+    { group: "12.5 Derivatives", label: "Exercise 12.2", kind: "exercise", refPrefixes: ["Ex 12.2 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 12", label: "Miscellaneous Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 12", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  c11Statistics: [
+    { group: "13.4 Mean Deviation", label: "Solved Examples", kind: "solved_example", refPrefixes: ["13.1 Eg"] },
+    { group: "13.4 Mean Deviation", label: "Exercise 13.1", kind: "exercise", refPrefixes: ["Ex 13.1 Q"] },
+    { group: "13.5 Variance and Standard Deviation", label: "Solved Examples", kind: "solved_example", refPrefixes: ["13.2 Eg"] },
+    { group: "13.5 Variance and Standard Deviation", label: "Exercise 13.2", kind: "exercise", refPrefixes: ["Ex 13.2 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 13", label: "Miscellaneous Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 13", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // The spine opens at §14.1 "Event" — there is no Introduction section, since
+  // random experiments and sample space are assumed from Class 10.
+  c11Probability: [
+    { group: "14.1 Event", label: "Solved Examples", kind: "solved_example", refPrefixes: ["14.1 Eg"] },
+    { group: "14.1 Event", label: "Exercise 14.1", kind: "exercise", refPrefixes: ["Ex 14.1 Q"] },
+    { group: "14.2 Axiomatic Approach to Probability", label: "Solved Examples", kind: "solved_example", refPrefixes: ["14.2 Eg"] },
+    { group: "14.2 Axiomatic Approach to Probability", label: "Exercise 14.2", kind: "exercise", refPrefixes: ["Ex 14.2 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 14", label: "Miscellaneous Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 14", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // ── Ch.4 Complex Numbers and Quadratic Equations (CLASS 11). ONE numbered
+  //    exercise plus a terminal Miscellaneous block — there is no Exercise 4.2,
+  //    confirmed by reading p07→p09 continuously: §4.5 Argand Plane has no
+  //    exercise at all. Examples 1–8 span §4.3–§4.4 and all precede Exercise 4.1,
+  //    so they band to it; Examples 7–8 sit in the Miscellaneous run-up.
+  c11ComplexNumbers: [
+    { group: "4.2-4.4 Complex Numbers, Algebra, Modulus and Conjugate", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.1 Eg"] },
+    { group: "4.2-4.4 Complex Numbers, Algebra, Modulus and Conjugate", label: "Exercise 4.1", kind: "exercise", refPrefixes: ["Ex 4.1 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 4", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 4", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // ── Ch.8 Sequences and Series (CLASS 11). TWO numbered exercises + a terminal
+  //    Miscellaneous block. NOTE the book prints its heading as "Miscellaneous
+  //    Exercise **On** Chapter 8" with a capital O — the only chapter in the
+  //    book that does — and the group title below follows the page.
+  //    There is NO Arithmetic Progression section: §8.3 Series is followed
+  //    directly by §8.4 Geometric Progression.
+  c11SequencesSeries: [
+    { group: "8.2-8.3 Sequences and Series", label: "Solved Examples", kind: "solved_example", refPrefixes: ["8.1 Eg"] },
+    { group: "8.2-8.3 Sequences and Series", label: "Exercise 8.1", kind: "exercise", refPrefixes: ["Ex 8.1 Q"] },
+    { group: "8.4 Geometric Progression", label: "Solved Examples", kind: "solved_example", refPrefixes: ["8.2 Eg"] },
+    { group: "8.4 Geometric Progression", label: "Exercise 8.2", kind: "exercise", refPrefixes: ["Ex 8.2 Q"] },
+    { group: "Miscellaneous Exercise On Chapter 8", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise On Chapter 8", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  // ── Ch.10 Conic Sections (CLASS 11). FOUR numbered exercises, one per conic,
+  //    plus the book's own centred "Miscellaneous Examples" block (Examples
+  //    17–19) and then the Miscellaneous Exercise. §10.1/§10.2 (sections of a
+  //    cone, degenerate conics) carry NO Example and NO exercise — pure teaching
+  //    prose — so they get no block here, which is also why the chapter has no
+  //    `Sections of a Cone` subtopic.
+  //    Prefix safety: this chapter has no §10.10, so "10.1 Eg" cannot collide
+  //    with a "10.10 Eg", and "Ex 10.1 Q" cannot collide with "Ex 10.10 Q".
+  c11ConicSections: [
+    { group: "10.3 Circle", label: "Solved Examples", kind: "solved_example", refPrefixes: ["10.1 Eg"] },
+    { group: "10.3 Circle", label: "Exercise 10.1", kind: "exercise", refPrefixes: ["Ex 10.1 Q"] },
+    { group: "10.4 Parabola", label: "Solved Examples", kind: "solved_example", refPrefixes: ["10.2 Eg"] },
+    { group: "10.4 Parabola", label: "Exercise 10.2", kind: "exercise", refPrefixes: ["Ex 10.2 Q"] },
+    { group: "10.5 Ellipse", label: "Solved Examples", kind: "solved_example", refPrefixes: ["10.3 Eg"] },
+    { group: "10.5 Ellipse", label: "Exercise 10.3", kind: "exercise", refPrefixes: ["Ex 10.3 Q"] },
+    { group: "10.6 Hyperbola", label: "Solved Examples", kind: "solved_example", refPrefixes: ["10.4 Eg"] },
+    { group: "10.6 Hyperbola", label: "Exercise 10.4", kind: "exercise", refPrefixes: ["Ex 10.4 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 10", label: "Miscellaneous Examples", kind: "solved_example", refPrefixes: ["Misc Eg"] },
+    { group: "Miscellaneous Exercise on Chapter 10", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
+
+  c11BinomialTheorem: [
+    { group: "7.2 Binomial Theorem for Positive Integral Indices", label: "Solved Examples", kind: "solved_example", refPrefixes: ["7.1 Eg"] },
+    { group: "7.2 Binomial Theorem for Positive Integral Indices", label: "Exercise 7.1", kind: "exercise", refPrefixes: ["Ex 7.1 Q"] },
+    { group: "Miscellaneous Exercise on Chapter 7", label: "Miscellaneous Exercise", kind: "miscellaneous", refPrefixes: ["Misc Q"] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

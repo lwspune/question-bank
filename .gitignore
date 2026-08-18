@@ -86,3 +86,11 @@ scripts/syllabus/data/.spine-snapshot-*.json
 # scripts/reviews: regenerable working dumps (redump-papers.ts). Evidence lives
 # in data/blind/<run>/ and data/findings/<run>/, which ARE committed.
 scripts/reviews/data/audit-run/
+
+# Agent scratch/probe files written inside the ingestion script dirs during a
+# parallel transcription run. These are throwaway verifiers an agent writes,
+# runs and deletes — but a `git add -A scripts/<pipeline>` mid-run can sweep one
+# into a commit before its author removes it (happened 2026-08-18).
+scripts/*/_tmp_*
+scripts/*/_validate*
+scripts/*/data/_*
