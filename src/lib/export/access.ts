@@ -8,6 +8,8 @@
  *                    (preview, timed mocks, notes) instead, so download is scoped
  *                    to provisioned teachers. Was "any signed-in account".
  *   - tags (.xlsx nda-tracker sheet) → org staff only (unchanged).
+ *   - ppt (.pptx classroom slide deck) → org staff only. A projected question
+ *     deck is a teaching artifact, so it sits in the same tier as the paper.
  *   - anon         → nothing. Browsing + preview stay free.
  *
  * A signed-in student (no org membership) is NOT staff, so they're denied 403 —
@@ -17,7 +19,7 @@
  * Denials carry the HTTP status the route should return (401 = not signed in,
  * 403 = signed in but not staff) plus a user-facing message.
  */
-export type ExportKind = "paper" | "key" | "tags";
+export type ExportKind = "paper" | "key" | "tags" | "ppt";
 
 export type ExportAccess =
   | { allowed: true }

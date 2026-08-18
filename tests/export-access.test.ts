@@ -23,7 +23,7 @@ const anon = { isSignedIn: false, isStaff: false };
 const student = { isSignedIn: true, isStaff: false };
 const staff = { isSignedIn: true, isStaff: true };
 
-const KINDS: ExportKind[] = ["paper", "key", "tags"];
+const KINDS: ExportKind[] = ["paper", "key", "tags", "ppt"];
 
 describe("resolveExportAccess", () => {
   for (const kind of KINDS) {

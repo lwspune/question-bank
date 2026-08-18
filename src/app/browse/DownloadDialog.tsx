@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Download, FileText, GraduationCap, Key, Table } from "lucide-react";
+import {
+  Download,
+  FileText,
+  GraduationCap,
+  Key,
+  Presentation,
+  Table,
+} from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -23,13 +30,14 @@ import { resolveExportAccess } from "@/lib/export/access";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 
 type Mode = "filters" | "cart";
-type Kind = "paper" | "key" | "tags";
+type Kind = "paper" | "key" | "tags" | "ppt";
 
 // Per-kind download metadata: filename prefix, extension, success-toast label.
 const KIND_META: Record<Kind, { prefix: string; ext: string; label: string }> = {
   paper: { prefix: "QP", ext: "docx", label: "Question Paper" },
   key: { prefix: "Answers", ext: "docx", label: "Answer Key" },
   tags: { prefix: "Tags", ext: "xlsx", label: "Tagged sheet" },
+  ppt: { prefix: "Slides", ext: "pptx", label: "Slides" },
 };
 
 export default function DownloadDialog({
@@ -169,9 +177,10 @@ export default function DownloadDialog({
             {canDownload ? (
               <>
                 Word files — Question Paper and Answer Key (0.5″ margins, 2
-                columns, Cambria 10pt)
+                columns, Cambria 10pt) — plus a PowerPoint deck (.pptx), one
+                question per slide for projecting in class
                 {canTags
-                  ? " — plus a tagged sheet (.xlsx) for nda-tracker, numbered to match the paper."
+                  ? ", and a tagged sheet (.xlsx) for nda-tracker, numbered to match the paper."
                   : "."}
               </>
             ) : (
@@ -315,6 +324,15 @@ export default function DownloadDialog({
                   {busyKind === "tags" ? "Generating…" : "Tagged sheet"}
                 </Button>
               )}
+              <Button
+                variant="outline"
+                onClick={() => onDownload("ppt")}
+                disabled={busy || overCap || activeCount === 0}
+                className="w-full sm:w-auto"
+              >
+                <Presentation className="h-4 w-4" aria-hidden />
+                {busyKind === "ppt" ? "Generating…" : "Slides"}
+              </Button>
               <Button
                 variant="outline"
                 onClick={() => onDownload("key")}

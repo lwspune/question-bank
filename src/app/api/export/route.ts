@@ -15,6 +15,8 @@ import {
   buildQuestionPaper,
   buildAnswerKey,
 } from "@/lib/export/docxBuilder";
+import { buildQuestionSlides } from "@/lib/export/pptxBuilder";
+import { PPTX_CONTENT_TYPE } from "@/lib/export/pptxParts";
 import { buildTagRows, tagRowsToAoa } from "@/lib/export/tagsSheet";
 import { getResourceTagsForQuestions } from "@/lib/links/getResourceTagsForQuestions";
 import { downloadImage } from "@/lib/storage/images";
@@ -115,10 +117,11 @@ export async function POST(request: NextRequest) {
     if (
       body.kind !== "paper" &&
       body.kind !== "key" &&
-      body.kind !== "tags"
+      body.kind !== "tags" &&
+      body.kind !== "ppt"
     ) {
       return NextResponse.json(
-        { error: "kind must be 'paper', 'key' or 'tags'" },
+        { error: "kind must be 'paper', 'key', 'tags' or 'ppt'" },
         { status: 400 }
       );
     }
@@ -245,6 +248,27 @@ export async function POST(request: NextRequest) {
           "Content-Type": XLSX_CONTENT_TYPE,
           "Content-Disposition": `attachment; filename="Tags_${safeName}.xlsx"`,
           "Content-Length": String(xlsxBuf.length),
+        },
+      });
+    }
+
+    // Classroom slide deck: one question per slide. Shares the question
+    // images with the paper path, so the same best-effort fetch applies.
+    if (kind === "ppt") {
+      const imageBytes = await fetchImageBytes(questions);
+      const pptxBuf = await buildQuestionSlides({
+        title,
+        questions,
+        imageBytes,
+        groupBySubtopic,
+        includeSourceTag,
+      });
+      return new NextResponse(pptxBuf as unknown as ArrayBuffer, {
+        status: 200,
+        headers: {
+          "Content-Type": PPTX_CONTENT_TYPE,
+          "Content-Disposition": `attachment; filename="Slides_${safeName}.pptx"`,
+          "Content-Length": String(pptxBuf.length),
         },
       });
     }
