@@ -1,0 +1,10 @@
+[
+  {
+    "ref": "Misc Q8",
+    "bracket": "[Textbook answer-key error: NCERT's printed key gives sin(x/2), cos(x/2), tan(x/2) as 2/√5, 1/√5, 1/2. The first two are correct; the tangent is not — it should be 2. The key refutes itself, since its own first two values divide to give (2/√5)÷(1/√5) = 2, not 1/2, and sin/cos IS tan. It also fails the forward check: 2t/(1−t²) must return the given tan x = −4/3, which t = 2 does and t = 1/2 does not (it gives +4/3, the wrong sign for an angle in the second quadrant). The correct value is derived below.]"
+  },
+  {
+    "ref": "3.3 Eg.17",
+    "bracket": "[Textbook misprint: the book prints a stray \"=\" immediately after \"Prove that\", so the stem reads \"Prove that = (fraction) = tan x\" (printed p.66). Only the leading sign is spurious — the identity itself is correct and the book's own solution proves it. Transcribed as printed rather than silently repaired, which is why the standing text audit flags this row: its DROPPED_SYMBOL rule fires on a math zone opening with a bare \"=\", and here the cause is the printed page rather than anything lost in extraction.]"
+  }
+]

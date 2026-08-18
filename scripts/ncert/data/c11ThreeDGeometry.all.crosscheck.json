@@ -1,0 +1,142 @@
+[
+  {
+    "ref": "Ex 11.1 Q1",
+    "book_key": "y and z - coordinates are zero",
+    "our_answer": "y-coordinate is 0 and z-coordinate is 0",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 11.1 Q2",
+    "book_key": "y - coordinate is zero",
+    "our_answer": "y-coordinate is 0",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 11.1 Q3",
+    "book_key": "I, IV, VIII, V, VI, II, III, VII",
+    "our_answer": "I, IV, VIII, V, VI, II, III, VII",
+    "verdict": "AGREE",
+    "note": "All eight re-derived independently from the sign pattern of each point; the sequence matches the key exactly, in order. This is a compound answer where a single transposed entry would be easy to wave through, so each was checked individually."
+  },
+  {
+    "ref": "Ex 11.1 Q4(i)",
+    "book_key": "XY - plane",
+    "our_answer": "the XY-plane",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 11.1 Q4(ii)",
+    "book_key": "(x, y, 0)",
+    "our_answer": "(x, y, 0)",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 11.1 Q4(iii)",
+    "book_key": "Eight",
+    "our_answer": "eight",
+    "verdict": "AGREE",
+    "note": ""
+  },
+  {
+    "ref": "Ex 11.2 Q1(i)",
+    "book_key": "2\\sqrt{5}",
+    "our_answer": "\\sqrt{20} = 2\\sqrt{5}",
+    "verdict": "AGREE",
+    "note": "Compared as SQUARES to avoid any surd-form false alarm: our d^2 = 20 and the key's (2\\sqrt5)^2 = 20."
+  },
+  {
+    "ref": "Ex 11.2 Q1(ii)",
+    "book_key": "\\sqrt{43}",
+    "our_answer": "\\sqrt{43}",
+    "verdict": "AGREE",
+    "note": "d^2 = 25 + 9 + 9 = 43."
+  },
+  {
+    "ref": "Ex 11.2 Q1(iii)",
+    "book_key": "2\\sqrt{26}",
+    "our_answer": "\\sqrt{104} = 2\\sqrt{26}",
+    "verdict": "AGREE",
+    "note": "d^2 = 4 + 36 + 64 = 104 = 4 x 26. Different surd form, same value."
+  },
+  {
+    "ref": "Ex 11.2 Q1(iv)",
+    "book_key": "2\\sqrt{5}",
+    "our_answer": "\\sqrt{20} = 2\\sqrt{5}",
+    "verdict": "AGREE",
+    "note": "d^2 = 16 + 4 + 0 = 20."
+  },
+  {
+    "ref": "Ex 11.2 Q2",
+    "book_key": "(no entry)",
+    "our_answer": "AB + BC = \\sqrt{14} + 2\\sqrt{14} = 3\\sqrt{14} = AC, so the points are collinear",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "The key prints nothing between Ex 11.2 entries 1 and 4 -- this is a 'Show that' question with no final value to print, exactly the class the key routinely skips. Not a defect. Our claim was verified independently anyway: d^2 values 14, 56, 126 give \\sqrt{14} + \\sqrt{56} = \\sqrt{126} as an exact symbolic identity."
+  },
+  {
+    "ref": "Ex 11.2 Q3(i)",
+    "book_key": "(no entry)",
+    "our_answer": "AB = BC = 3\\sqrt{2}, CA = 6, so the triangle is isosceles",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "'Verify the following' question -- no printed answer, as expected. Verified independently: d^2 = 18, 18, 36, so AB = BC exactly and CA differs; the triangle inequality also holds (6\\sqrt2 > 6), so it is a genuine triangle."
+  },
+  {
+    "ref": "Ex 11.2 Q3(ii)",
+    "book_key": "(no entry)",
+    "our_answer": "AB^2 + BC^2 = 18 + 18 = 36 = CA^2, so right angled at B",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "'Verify' question, no key entry expected. Verified independently with integer arithmetic: 18 + 18 = 36 exactly."
+  },
+  {
+    "ref": "Ex 11.2 Q3(iii)",
+    "book_key": "(no entry)",
+    "our_answer": "AB = CD = 6 and BC = DA = \\sqrt{43}, with B - A = C - D = (2, -4, 4), so ABCD is a parallelogram",
+    "verdict": "NO-KEY-ENTRY",
+    "note": "'Verify' question, no key entry expected. Verified independently: the displacement vectors B-A and C-D are identical as integer triples, which settles parallelism as well as equality -- equal opposite sides alone would still permit a skew quadrilateral, and our solution makes exactly that point."
+  },
+  {
+    "ref": "Ex 11.2 Q4",
+    "book_key": "x - 2z = 0",
+    "our_answer": "x - 2z = 0",
+    "verdict": "AGREE",
+    "note": "Re-derived symbolically: expanding PA^2 - PB^2 gives 4x - 8z, i.e. exactly 4(x - 2z), so the locus is x - 2z = 0."
+  },
+  {
+    "ref": "Ex 11.2 Q5",
+    "book_key": "9x^2 + 25y^2 + 25z^2 - 225 = 0",
+    "our_answer": "9x^2 + 25y^2 + 25z^2 = 225",
+    "verdict": "AGREE",
+    "note": "Identical equation, one side transposed. Verified by construction rather than by re-running the algebra: four exact rational points ON the key surface -- (3, 12/5, 0), (4, 9/5, 0), (0, 0, 3), (-3, 0, 12/5) -- each give PA + PB = 10 exactly, and two off-surface points do not."
+  },
+  {
+    "ref": "Misc Q1",
+    "book_key": "(1, -2, 8)",
+    "our_answer": "D(1, -2, 8)",
+    "verdict": "AGREE",
+    "note": "Re-derived by D = A - B + C on integer coordinates. Our solution's opening sentence flags that the midpoint / diagonals-bisect property is taken from coordinate geometry because this rationalised chapter no longer teaches it -- that is a deliberate scope statement, not an error, and the key confirms the resulting value."
+  },
+  {
+    "ref": "Misc Q2",
+    "book_key": "7, \\sqrt{34}, 7",
+    "our_answer": "7, \\sqrt{34}, 7",
+    "verdict": "AGREE",
+    "note": "Compared as squares: our medians give 49, 34, 49 in the same order as the key. Two things settled here. (1) The key's text layer garbles this entry; read off the rendered page image it plainly prints '7, \\sqrt{34}, 7'. (2) The stem's third vertex is printed with NO letter label -- confirmed against the source page (11. 3D Geom.pdf, page idx 7): the book prints 'A (0, 0, 6), B (0,4, 0) and (6, 0, 0)'. We read it as C(6,0,0), and the key's three values match that reading exactly, so the key independently corroborates it. Book prose defect only; answer unaffected."
+  },
+  {
+    "ref": "Misc Q3",
+    "book_key": "a = -2, b = -16/3, c = 2",
+    "our_answer": "a = -2, b = -\\frac{16}{3}, c = 2",
+    "verdict": "AGREE",
+    "note": "All three re-derived by solving the centroid equations symbolically; b is an exact rational -16/3, matching the printed fraction."
+  },
+  {
+    "ref": "Misc Q4",
+    "book_key": "x^2 + y^2 + z^2 - 2x - 7y + 2z = (k^2 - 109)/2",
+    "our_answer": "2(x^2 + y^2 + z^2) - 4x - 14y + 4z = k^2 - 109",
+    "verdict": "AGREE",
+    "note": "Ours is exactly twice the key; the difference (ours/2 - key) simplifies to 0 symbolically. Equivalent form of the same locus, not a disagreement."
+  }
+]

@@ -125,8 +125,8 @@
     "format": "subjective",
     "subtopic": "Complement of a Set",
     "difficulty": "MODERATE",
-    "stem": "Let \\(U = \\{1, 2, 3, 4, 5, 6\\}\\), \\(A = \\{2, 3\\}\\) and \\(B = \\{3, 4, 5\\}\\). Find \\(A'\\), \\(B'\\), \\(A' \\cap B'\\), \\(A \\cup B\\) and hence show that \\((A \\cup B)' = A' \\cap B'\\).",
-    "solution": "Clearly \\(A' = \\{1, 4, 5, 6\\}\\), \\(B' = \\{ 1, 2, 6 \\}\\). Hence \\(A' \\cap B' = \\{ 1, 6 \\}\\).\nAlso \\(A \\cup B = \\{ 2, 3, 4, 5 \\}\\), so that \\((A \\cup B)' = \\{ 1, 6 \\}\\).\nTherefore \\((A \\cup B)' = \\{ 1, 6 \\} = A' \\cap B'\\)."
+    "stem": "Let \\(U = \\{1, 2, 3, 4, 5, 6\\}\\), \\(A = \\{2, 3\\}\\) and \\(B = \\{3, 4, 5\\}\\). Find \\(A'\\), \\(B'\\), \\(A' \\cap B'\\), \\(A \\cup B\\) and hence show that \\(\\overline{A \\cup B} = A' \\cap B'\\).",
+    "solution": "Clearly \\(A' = \\{1, 4, 5, 6\\}\\), \\(B' = \\{ 1, 2, 6 \\}\\). Hence \\(A' \\cap B' = \\{ 1, 6 \\}\\).\nAlso \\(A \\cup B = \\{ 2, 3, 4, 5 \\}\\), so that \\(\\overline{A \\cup B} = \\{ 1, 6 \\}\\).\nTherefore \\(\\overline{A \\cup B} = \\{ 1, 6 \\} = A' \\cap B'\\)."
   },
   {
     "ref": "Misc Eg.23",
@@ -155,7 +155,6 @@
     "stem": "Show that \\(A \\cup B = A \\cap B\\) implies \\(A = B\\).",
     "solution": "Let \\(a \\in A\\). Then \\(a \\in A \\cup B\\). Since \\(A \\cup B = A \\cap B\\), \\(a \\in A \\cap B\\). So \\(a \\in B\\). Therefore, \\(A \\subset B\\).\nSimilarly, if \\(b \\in B\\), then \\(b \\in A \\cup B\\). Since \\(A \\cup B = A \\cap B\\), \\(b \\in A \\cap B\\). So, \\(b \\in A\\). Therefore, \\(B \\subset A\\).\nThus, \\(A = B\\)."
   },
-
   {
     "ref": "Ex 1.3 Q1(i)",
     "bucket": "exercise-subjective",
@@ -227,7 +226,6 @@
     "setLabel": "Ex 1.3 Q1",
     "stem": "\\(\\{ x : x \\text{ is an even natural number} \\} \\ldots \\{ x : x \\text{ is an integer} \\}\\)"
   },
-
   {
     "ref": "Ex 1.3 Q2(i)",
     "bucket": "exercise-subjective",
@@ -288,7 +286,6 @@
     "setLabel": "Ex 1.3 Q2",
     "stem": "\\(\\{ x : x \\text{ is an even natural number less than } 6 \\} \\subset \\{ x : x \\text{ is a natural number which divides } 36 \\}\\)"
   },
-
   {
     "ref": "Ex 1.3 Q3(i)",
     "bucket": "exercise-subjective",
@@ -399,7 +396,6 @@
     "setLabel": "Ex 1.3 Q3",
     "stem": "\\(\\{\\phi\\} \\subset A\\)"
   },
-
   {
     "ref": "Ex 1.3 Q4(i)",
     "bucket": "exercise-subjective",
@@ -440,7 +436,6 @@
     "setLabel": "Ex 1.3 Q4",
     "stem": "\\(\\phi\\)"
   },
-
   {
     "ref": "Ex 1.3 Q5(i)",
     "bucket": "exercise-subjective",
@@ -481,7 +476,6 @@
     "setLabel": "Ex 1.3 Q5",
     "stem": "\\(\\{ x : x \\in \\mathbf{R}, 3 \\le x \\le 4 \\}\\)"
   },
-
   {
     "ref": "Ex 1.3 Q6(i)",
     "bucket": "exercise-subjective",
@@ -522,7 +516,6 @@
     "setLabel": "Ex 1.3 Q6",
     "stem": "\\([-23, 5)\\)"
   },
-
   {
     "ref": "Ex 1.3 Q7(i)",
     "bucket": "exercise-subjective",
@@ -543,7 +536,6 @@
     "setLabel": "Ex 1.3 Q7",
     "stem": "The set of isosceles triangles."
   },
-
   {
     "ref": "Ex 1.3 Q8(i)",
     "bucket": "exercise-subjective",
@@ -584,7 +576,6 @@
     "setLabel": "Ex 1.3 Q8",
     "stem": "\\(\\{1, 2, 3, 4, 5, 6, 7, 8\\}\\)"
   },
-
   {
     "ref": "Ex 1.4 Q1(i)",
     "bucket": "exercise-subjective",
@@ -1119,7 +1110,6 @@
     "setLabel": "Ex 1.4 Q12",
     "stem": "\\(\\{ 2, 6, 10 \\}\\) and \\(\\{ 3, 7, 11\\}\\) are disjoint sets."
   },
-
   {
     "ref": "Ex 1.5 Q1(i)",
     "bucket": "exercise-subjective",
@@ -1148,7 +1138,7 @@
     "difficulty": "MODERATE",
     "context": "Let \\(U = \\{ 1, 2, 3, 4, 5, 6, 7, 8, 9 \\}\\), \\(A = \\{ 1, 2, 3, 4\\}\\), \\(B = \\{ 2, 4, 6, 8 \\}\\) and \\(C = \\{ 3, 4, 5, 6 \\}\\). Find",
     "setLabel": "Ex 1.5 Q1",
-    "stem": "\\((A \\cup C)'\\)"
+    "stem": "\\(\\overline{A \\cup C}\\)"
   },
   {
     "ref": "Ex 1.5 Q1(iv)",
@@ -1158,7 +1148,7 @@
     "difficulty": "MODERATE",
     "context": "Let \\(U = \\{ 1, 2, 3, 4, 5, 6, 7, 8, 9 \\}\\), \\(A = \\{ 1, 2, 3, 4\\}\\), \\(B = \\{ 2, 4, 6, 8 \\}\\) and \\(C = \\{ 3, 4, 5, 6 \\}\\). Find",
     "setLabel": "Ex 1.5 Q1",
-    "stem": "\\((A \\cup B)'\\)"
+    "stem": "\\(\\overline{A \\cup B}\\)"
   },
   {
     "ref": "Ex 1.5 Q1(v)",
@@ -1338,7 +1328,7 @@
     "difficulty": "MODERATE",
     "context": "If \\(U = \\{1, 2, 3, 4, 5, 6, 7, 8, 9 \\}\\), \\(A = \\{2, 4, 6, 8\\}\\) and \\(B = \\{ 2, 3, 5, 7\\}\\). Verify that",
     "setLabel": "Ex 1.5 Q4",
-    "stem": "\\((A \\cup B)' = A' \\cap B'\\)"
+    "stem": "\\(\\overline{A \\cup B} = A' \\cap B'\\)"
   },
   {
     "ref": "Ex 1.5 Q4(ii)",
@@ -1348,7 +1338,7 @@
     "difficulty": "MODERATE",
     "context": "If \\(U = \\{1, 2, 3, 4, 5, 6, 7, 8, 9 \\}\\), \\(A = \\{2, 4, 6, 8\\}\\) and \\(B = \\{ 2, 3, 5, 7\\}\\). Verify that",
     "setLabel": "Ex 1.5 Q4",
-    "stem": "\\((A \\cap B)' = A' \\cup B'\\)"
+    "stem": "\\(\\overline{A \\cap B} = A' \\cup B'\\)"
   },
   {
     "ref": "Ex 1.5 Q5(i)",
@@ -1358,7 +1348,7 @@
     "difficulty": "MODERATE",
     "context": "Draw appropriate Venn diagram for each of the following :",
     "setLabel": "Ex 1.5 Q5",
-    "stem": "\\((A \\cup B)'\\)"
+    "stem": "\\(\\overline{A \\cup B}\\)"
   },
   {
     "ref": "Ex 1.5 Q5(ii)",
@@ -1378,7 +1368,7 @@
     "difficulty": "MODERATE",
     "context": "Draw appropriate Venn diagram for each of the following :",
     "setLabel": "Ex 1.5 Q5",
-    "stem": "\\((A \\cap B)'\\)"
+    "stem": "\\(\\overline{A \\cap B}\\)"
   },
   {
     "ref": "Ex 1.5 Q5(iv)",
@@ -1438,7 +1428,6 @@
     "setLabel": "Ex 1.5 Q7",
     "stem": "\\(U' \\cap A = \\ldots\\)"
   },
-
   {
     "ref": "Misc Q1",
     "bucket": "exercise-subjective",
