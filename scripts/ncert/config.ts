@@ -1021,9 +1021,28 @@ export const CHAPTERS: Record<string, Chapter> = {
     // exercise does not appear until p20, so pages 0-19 are teaching prose plus
     // ~17 worked Examples. Ex 12.1 p20 · Ex 12.2 p31 · Misc Examples p32 ·
     // Misc Exercise p36 · Summary p37.
-    // The structural probe also reported a "Summary" match on p4; treat that as a
-    // probe artifact until a transcriber confirms it from the page — a real
-    // Summary 4 pages into a 40-page chapter would be extraordinary.
+    // CORRECTED BY TRANSCRIPTION — two facts I inferred wrongly when briefing:
+    //
+    // (a) **The p-04 "Summary" is REAL, not a probe artifact.** It is a genuine
+    //     blue-shaded box mid-chapter recapping left-hand limit / right-hand
+    //     limit / their coincidence. So THIS CHAPTER HAS TWO Summaries — the
+    //     mid-chapter recap on p-04 and the real end-of-chapter one in band C.
+    //     Any probe keying on the word "Summary" fires twice here.
+    //
+    // (b) **Pages p-00 to p-12 contain NO numbered Example at all.** They carry a
+    //     SEPARATE numbering stream — "Illustration 1" … "Illustration 10" — and
+    //     the first `Example` appears on p-13. So the Example run in the first
+    //     band is 1-4, not the "roughly 1-17" a page count suggests; Examples
+    //     5-18 are band B's and 19+ are the Miscellaneous block.
+    //
+    // THE ILLUSTRATIONS ARE DELIBERATELY NOT INGESTED. They are worked
+    // "find this limit" items with complete workings, so the call is genuinely
+    // close — but the book itself keeps them in a stream separate from
+    // `Example N`, they are convergence TABLES demonstrating that a value tends
+    // to a limit rather than problems a student can practise, and `/board` has
+    // no block kind for them (its outline is Solved Examples / Exercise /
+    // Miscellaneous). Reversible: if they are ever wanted, the natural ref is
+    // `12.1 Ill.N` and they are all `Limits and the Algebra of Limits`.
     subtopics: [
       "Intuitive Idea of Derivatives",
       "Limits and the Algebra of Limits",
@@ -1049,6 +1068,19 @@ export const CHAPTERS: Record<string, Chapter> = {
     // Misc Exercise + Summary p29.
     // DATA-TABLE HEAVY: expect GFM pipe-tables in stems (frequency distributions,
     // class intervals). A table needs a `|---|` separator row or it ships as prose.
+    // Transcription convention earned here: absolute-value bars are written
+    // `\lvert…\rvert`, NEVER a raw `|` — a raw pipe inside a math zone in a table
+    // cell would break the table, and this chapter's column headers are literally
+    // `f_i|x_i − x̄|`.
+    //
+    // NOT INGESTED, deliberately: the fully worked step-deviation demonstration on
+    // p-10/p-11 (Table 13.5, assumed mean a=45, h=10). It has a complete table and
+    // a stated answer, but the book prints it with NO Example number, so there is
+    // no honest ref under the `<c>.<k> Eg.N` convention — `Eg.6b` would fabricate
+    // provenance. It is a separate method section, not an alternative solution to
+    // Example 6, so folding it into that row would be wrong too. Same call as the
+    // Limits chapter's ten `Illustration N` items: where the book withholds a
+    // number, we do not invent one.
     subtopics: [
       "Measures of Dispersion and Range",
       "Mean Deviation for Ungrouped Data",
