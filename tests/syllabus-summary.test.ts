@@ -8,6 +8,8 @@ import {
   rollUpChapterStatus,
   sectionGroupKey,
   coverCellState,
+  statusCellText,
+  statusCellTitle,
   tallyByExam,
 } from "../src/lib/syllabus/summary";
 
@@ -50,7 +52,26 @@ describe("rollUpChapterStatus", () => {
   it("does NOT summarise from the assessed subset alone", () => {
     // Half-reviewed must not read as a clean 'full' — that would overstate
     // the review and hide the unassessed remainder.
-    expect(rollUpChapterStatus(["full", "full", null])).toBe("mixed");
+    expect(rollUpChapterStatus(["full", "full", null])).toBe("partly-assessed");
+  });
+
+  it("separates a half-reviewed chapter from a genuine disagreement", () => {
+    // THE BUG THIS PINS. Both cases used to return "mixed", whose label reads
+    // "concepts in this chapter differ — open the chapter". Measured against the
+    // live bank on 2026-08-18 that claim was false for every cell carrying it in
+    // two of the three subjects: 239 Physics and 259 Maths cells said "Mixed"
+    // and the count of genuine disagreements was 0 and 0. Chemistry hid the
+    // defect for a year by being 100% assessed.
+    expect(rollUpChapterStatus(["partial", "partial", null])).toBe("partly-assessed");
+    expect(rollUpChapterStatus(["full", "not"])).toBe("mixed");
+  });
+
+  it("lets absence of review outrank a disagreement", () => {
+    // Both statements are true here — the ruled concepts DO disagree, and the
+    // chapter is also unfinished. "partly-assessed" is the weaker claim and so
+    // the honest one, and it costs the reader nothing: both labels send them
+    // into the chapter detail for the same reason.
+    expect(rollUpChapterStatus(["full", "not", null])).toBe("partly-assessed");
   });
 });
 
@@ -153,5 +174,48 @@ describe("coverCellState", () => {
   it("treats unassessed as distinct from every assessed state", () => {
     const assessed = [cover("full", 1), cover("not"), cover("full")].map(coverCellState);
     expect(assessed).not.toContain("unassessed");
+  });
+});
+
+describe("statusCellText / statusCellTitle", () => {
+  // Extracted from the /dashboard/syllabus page so the Word export and the page
+  // cannot drift: a doc that renders "Part" where the page renders "Mixed" is a
+  // disagreement no reader can detect.
+  it("renders each ruled status with its short label", () => {
+    expect(statusCellText("full")).toBe("Yes");
+    expect(statusCellText("partial")).toBe("Part");
+    expect(statusCellText("not")).toBe("—");
+  });
+
+  it("distinguishes disagreement from absence of review", () => {
+    // The load-bearing pair: "Mixed" is a finding (concepts within the chapter
+    // disagree), "?" is the absence of one. Collapsing them would let an
+    // unreviewed chapter borrow the wording of a reviewed one.
+    expect(statusCellText("mixed")).toBe("Mixed");
+    expect(statusCellText(null)).toBe("?");
+    expect(statusCellTitle("mixed")).not.toBe(statusCellTitle(null));
+  });
+
+  it("renders a half-reviewed chapter as a blank, not as a finding", () => {
+    // Same GLYPH as an untouched cell, deliberately: both mean "no verdict you
+    // can rely on", and the page's own rule is that colour must never be the
+    // only carrier of a distinction — so a third symbol here would need a third
+    // legend entry to earn its place. The difference lives in the title and the
+    // screen-reader text, which is where a reader goes to resolve a "?".
+    expect(statusCellText("partly-assessed")).toBe("?");
+    expect(statusCellTitle("partly-assessed")).not.toBe(statusCellTitle(null));
+    expect(statusCellTitle("partly-assessed")).not.toBe(statusCellTitle("mixed"));
+  });
+
+  it("gives every state a non-empty long title", () => {
+    for (const s of ["full", "partial", "not", "mixed", "partly-assessed", null] as const) {
+      expect(statusCellTitle(s).length).toBeGreaterThan(0);
+    }
+  });
+
+  it("never renders an empty cell", () => {
+    for (const s of ["full", "partial", "not", "mixed", "partly-assessed", null] as const) {
+      expect(statusCellText(s).trim()).not.toBe("");
+    }
   });
 });

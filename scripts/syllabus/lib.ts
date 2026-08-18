@@ -13,7 +13,11 @@
  * what the seed will write, and a script that accepts an exam the page cannot
  * render (or rejects one it can) is a silently invisible ruling.
  */
-import { SYLLABUS_EXAMS, type SyllabusExam } from "../../src/lib/syllabus/summary";
+import {
+  SYLLABUS_EXAMS,
+  type SyllabusExam,
+  type ChapterStatus,
+} from "../../src/lib/syllabus/summary";
 export { SYLLABUS_EXAMS, type SyllabusExam };
 
 /**
@@ -95,4 +99,70 @@ export function findDuplicateKeys(rows: ConceptRow[]): string[] {
     seen.add(key);
   }
   return [...dupes];
+}
+
+/**
+ * How a subject's rulings were produced, which decides what "partial" means on
+ * the handout.
+ *
+ * `adjudicated` - somebody read both books and ruled each concept. "partial" is
+ *   a verdict: the section is PARTLY in the syllabus.
+ * `derived`     - `derive-board-status.ts` inferred coverage from the exam
+ *   banks. It writes `partial` and NEVER `full`, by design, "because a pointer
+ *   proves the exam asks something in this section, not that all of it is
+ *   required". That caveat describes the DERIVATION's confidence, not the
+ *   syllabus, so printing "Part" for it on a teacher's sheet would report a
+ *   property of our tooling as a property of the syllabus.
+ */
+export type HandoutVocabulary = "adjudicated" | "derived";
+
+/**
+ * Which vocabulary a subject gets, decided from its own data rather than a
+ * hardcoded list of subject names - so the label corrects itself the day someone
+ * authors real rulings, instead of going quietly stale.
+ *
+ * A subject with no `full` ruling anywhere cannot have been adjudicated, because
+ * an adjudicator would have found something fully covered. NOTE THE CLIFF this
+ * implies: the first genuine `full` ruling committed for Physics or Mathematics
+ * flips every one of its "Yes" cells back to "Part" in one step. That is the
+ * correct behaviour - "partial" becomes meaningful the moment it is authored
+ * rather than inferred - but it is abrupt, so the exporter prints which
+ * vocabulary each file used.
+ */
+export function handoutVocabulary(
+  statuses: ChapterStatus[],
+): HandoutVocabulary {
+  return statuses.some((s) => s === "full") ? "adjudicated" : "derived";
+}
+
+/**
+ * The Word handout's cell vocabulary: "Yes", "Part", or nothing.
+ *
+ * Deliberately NARROWER than the page's `statusCellText`, which distinguishes
+ * five states. The handout carries no legend, so a reader has no way to learn a
+ * third symbol - and an unexplained "Mixed" or "?" on a printed sheet is worse
+ * than a blank.
+ *
+ * The cost is real and must be reported by the caller rather than hidden: "not
+ * in syllabus" (a checked verdict) and "not yet assessed" (nobody looked) both
+ * render blank, and those are the two states this project is otherwise careful
+ * never to conflate. They are separable per FILE rather than per cell - the
+ * adjudicated subject has no unassessed cells and the derived subjects have
+ * almost no negative verdicts - which is why the exporter prints the split for
+ * each subject it writes.
+ */
+export function handoutCellText(
+  status: ChapterStatus,
+  vocabulary: HandoutVocabulary = "adjudicated",
+): string {
+  if (status === "full") return "Yes";
+  if (status !== "partial" && status !== "mixed" && status !== "partly-assessed") return "";
+  // "mixed" (the ruled concepts disagree) and "partly-assessed" (some are not
+  // ruled at all) are one cell here. The PAGE separates them and this sheet
+  // deliberately cannot: there is no third word available and no legend to
+  // explain one. Under an adjudicated vocabulary both read Part; rounding either
+  // up to "Yes" would overstate coverage on the sheet a teacher plans from.
+  // Under a derived one there is no partial verdict to overstate - only "the
+  // exam points here" or "nothing points here".
+  return vocabulary === "derived" ? "Yes" : "Part";
 }
