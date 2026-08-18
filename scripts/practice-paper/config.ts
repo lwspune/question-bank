@@ -93,6 +93,80 @@ export type PaperSpec = {
 };
 
 export const PAPERS: Record<string, PaperSpec> = {
+  // LWS "Chemistry Mock CM1" — a 50-q NDA Chemistry mock spanning the Class 9/10 NCERT
+  // chemistry spine: Acids/Bases/Salts (Q1-20), Carbon and its Compounds (Q21-36, with
+  // hardness of water + mass-per-cent folded in) and Metals/Non-metals + general
+  // chemistry (Q37-50). Born-digital PDF with a clean text layer, so every stem and all
+  // four options came straight from `page.get_text()` — NO vision pass. The two
+  // exceptions are Q9 (a two-column match list + a 4x4 code table, re-authored as a GFM
+  // pipe-table) and Q36 (options are a rendered IMAGE), both transcribed off the page.
+  //
+  // Multi-chapter mode: the paper is ONE printed test but the bank rows file to nine
+  // different NDA Chemistry chapters, so each record carries its own `chapter`.
+  //
+  // **A PRINTED ANSWER KEY EXISTS** (`Chem Mock CM1 Answer Key.pdf`, all 50) — unusual
+  // for an LWS paper. It was NOT trusted: every answer was independently BLIND re-derived
+  // (stems + options only, key withheld) and the two diffed. 45/50 agree. Of the 5
+  // divergences, FOUR are provable key errors and are FLIPPED here, with the printed
+  // letter recorded in the record's `reviewNote`:
+  //   Q9  (a -> C) the printed pairing makes Mohr's salt = CaOCl2, chemically impossible
+  //   Q14 (c -> B) a nettle sting is an ACID; the printed option says "neutralises the
+  //                base with another base", which is not neutralisation
+  //   Q19 (d -> C) NCERT: washing soda is used to manufacture BORAX; bleaching powder is
+  //                made from chlorine + dry slaked lime and uses no washing soda
+  //   Q44 (c -> D) duralumin contains ~4% copper, so it is not the copper-free alloy;
+  //                solder (Pb + Sn) is
+  // The FIFTH, Q50 (cinnabar), is genuinely contestable — strictly the reduction step is
+  // "heating alone", but "roasting" is defensible as the single process applied to the
+  // ore — so the PRINTED KEY IS RETAINED and the ambiguity is recorded in `reviewNote`
+  // rather than flipped on our own derivation.
+  // Two further printed defects are PRESERVED as printed and noted, not silently fixed:
+  // Q2's stem says "water" where it means "lime water", and Q47's option (d) prints the
+  // non-existent formula "LiO" for lithium oxide (a distractor; the key is unaffected).
+  "chem-mock-cm1": {
+    slug: "chem-mock-cm1",
+    title: "LWS Chemistry Mock CM1",
+    recordsFile: "chem-mock-cm1.records.json",
+    outName: "Tags_LWS_Chemistry_Mock_CM1",
+    sourceFile: "NDA_Chemistry_Practice__LWS_Chemistry_Mock_CM1.pdf",
+    subjectName: "Chemistry",
+    chapters: {
+      "Acids, Bases and Salts": [
+        "Acid-Base Theory: Concepts, Oxides and Electrolytes",
+        "Common Acids: Names, Formulas and Uses",
+        "Salts and Common Compounds",
+        "Water of Crystallization",
+        "pH Scale and Common Substances",
+      ],
+      "Atomic Structure and Periodic Classification": [
+        "Atomic Number, Mass Number and Subatomic Particles",
+        "Periodic Trends, Valency and Atomicity",
+      ],
+      "Carbon and Its Compounds": [
+        "Catenation, Tetra-valency and Isomerism",
+        "Functional Groups and Common Organic Compounds",
+        "Hydrocarbons and Organic Classification",
+      ],
+      "Chemical Bonding": ["Ionic and Covalent Bonding"],
+      "Chemistry in Everyday Life": ["Common Chemicals and Their Uses"],
+      "Hydrogen and Water": ["Hardness and Purity of Water"],
+      "Matter and Its States": ["Compounds, Mixtures and Solutions"],
+      "Metals and Non-Metals": [
+        "Alloys and Their Composition",
+        "Corrosion and Its Prevention",
+        "Extraction of Metals and Ores",
+        "Reactivity Series and Reactions with Water",
+      ],
+      "Mole Concept and Stoichiometry": [
+        "Mole Concept, Avogadro's Law and Molar Calculations",
+      ],
+    },
+    pyqNote: "NDA Chemistry practice — LWS Chemistry Mock CM1",
+    examName: "NDA",
+    section: { key: "chemistry-mock-cm1", label: "Chemistry Mock CM1" },
+    bankAdd: false, // Excel-only for now: emit the OMR tagged sheet, no bank commit / no paper
+  },
+
   // LWS "NDA GAT MOCK" reprint of the REAL **NDA 2024 (II) Paper II — General Ability
   // Test** (150 q: Part A English Q1-50, Part B general ability Q51-150). Source PDF
   // `NDA_2_2024_GAT_Q67_Q72_CORRECTED.pdf` — a born-digital reprint whose filename
