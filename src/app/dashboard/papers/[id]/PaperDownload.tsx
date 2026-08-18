@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Download, FileText, Key, Loader2, Table } from "lucide-react";
+import { Download, FileText, Key, Loader2, Presentation, Table } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,12 +14,13 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-type Kind = "paper" | "key" | "tags";
+type Kind = "paper" | "key" | "tags" | "ppt";
 
 const KIND_META: Record<Kind, { prefix: string; ext: string; label: string }> = {
   paper: { prefix: "QP", ext: "docx", label: "Question Paper" },
   key: { prefix: "Answers", ext: "docx", label: "Answer Key" },
   tags: { prefix: "Tags", ext: "xlsx", label: "Tagged sheet" },
+  ppt: { prefix: "Slides", ext: "pptx", label: "Slides" },
 };
 
 /**
@@ -123,6 +124,10 @@ export default function PaperDownload({
           <Button variant="outline" onClick={() => onDownload("tags")} disabled={busy || overCap || count === 0}>
             {busyKind === "tags" ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : <Table className="h-4 w-4" aria-hidden />}
             Tagged sheet
+          </Button>
+          <Button variant="outline" onClick={() => onDownload("ppt")} disabled={busy || overCap || count === 0}>
+            {busyKind === "ppt" ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : <Presentation className="h-4 w-4" aria-hidden />}
+            Slides
           </Button>
           <Button variant="outline" onClick={() => onDownload("key")} disabled={busy || overCap || count === 0}>
             {busyKind === "key" ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : <Key className="h-4 w-4" aria-hidden />}

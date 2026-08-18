@@ -101,6 +101,20 @@ describe.skipIf(!HAS_ENV)("/api/export kind validation", () => {
       expect(body.error).not.toMatch(/^kind/i);
     }
   });
+
+  it("accepts kind=ppt and proceeds past kind validation", async () => {
+    // The .pptx classroom deck is a fourth kind on the same route; it must
+    // reach the auth gate rather than be rejected as an unknown kind.
+    const { POST } = await import("@/app/api/export/route");
+    const res = await POST(
+      makeReq({ kind: "ppt", filters: VALID_FILTERS, options: OPTIONS })
+    );
+    expect([400, 401, 500]).toContain(res.status);
+    if (res.status === 400) {
+      const body = await res.json();
+      expect(body.error).not.toMatch(/^kind/i);
+    }
+  });
 });
 
 /**
