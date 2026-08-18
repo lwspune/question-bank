@@ -24,7 +24,7 @@ import AlignmentTable from "../AlignmentTable";
 import CollapsibleSection from "../CollapsibleSection";
 import MappingTable from "../MappingTable";
 import {
-  SYLLABUS_EXAMS,
+  EXAM_COLUMNS,
   STATUS_LABEL,
   STATUS_SHORT,
   statusCellText as cellText,
@@ -440,7 +440,7 @@ export default async function SyllabusMapPage({
                     <th scope="col" className="p-3 text-left font-medium w-14">Ref</th>
                     <th scope="col" className="p-3 text-left font-medium">Chapter / section</th>
                     <th scope="col" className="p-3 text-right font-medium w-16">Concepts</th>
-                    {SYLLABUS_EXAMS.map((exam) => (
+                    {EXAM_COLUMNS.map((exam) => (
                       <th key={exam} scope="col" className="p-3 text-center font-medium">
                         {exam.replace("MH State Board", "State Board").replace(" Class 12", "")}
                       </th>
@@ -468,7 +468,7 @@ export default async function SyllabusMapPage({
                         <td className="p-3 text-right tabular-nums text-muted-foreground">
                           {row.conceptCount}
                         </td>
-                        {SYLLABUS_EXAMS.map((exam) => {
+                        {EXAM_COLUMNS.map((exam) => {
                           const s = row.status[exam];
                           return (
                             <td key={exam} className="p-1.5 text-center">
@@ -505,7 +505,7 @@ export default async function SyllabusMapPage({
                         <td className="p-3 text-right tabular-nums text-muted-foreground">
                           {sec.conceptCount}
                         </td>
-                        {SYLLABUS_EXAMS.map((exam) => {
+                        {EXAM_COLUMNS.map((exam) => {
                           const s = sec.status[exam];
                           return (
                             <td key={exam} className="p-1.5 text-center">
@@ -547,7 +547,7 @@ export default async function SyllabusMapPage({
                   <tr>
                     <th scope="col" className="p-3 text-left font-medium w-20">Section</th>
                     <th scope="col" className="p-3 text-left font-medium">Concept</th>
-                    {SYLLABUS_EXAMS.map((exam) => (
+                    {EXAM_COLUMNS.map((exam) => (
                       <th key={exam} scope="col" className="p-3 text-center font-medium">
                         {exam.replace("MH State Board", "State Board").replace(" Class 12", "")}
                       </th>
@@ -563,7 +563,7 @@ export default async function SyllabusMapPage({
                       <th scope="row" className="p-3 text-left font-normal font-serif">
                         {c.concept}
                       </th>
-                      {SYLLABUS_EXAMS.map((exam) => {
+                      {EXAM_COLUMNS.map((exam) => {
                         const s: ConceptStatus | null = c.status[exam];
                         return (
                           <td key={exam} className="p-1.5 text-center">
@@ -589,7 +589,7 @@ export default async function SyllabusMapPage({
 
             {/* why: the ruling notes carry the evidence behind each status */}
             <div className="mt-3 space-y-2">
-              {SYLLABUS_EXAMS.map((exam) => {
+              {EXAM_COLUMNS.map((exam) => {
                 const note = detail.concepts.find((c) => c.notes[exam])?.notes[exam];
                 if (!note) return null;
                 return (

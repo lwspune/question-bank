@@ -8,6 +8,9 @@ import {
   rollUpChapterStatus,
   sectionGroupKey,
   coverCellState,
+  EXAM_COLUMNS,
+  SPINE,
+  SYLLABUS_EXAMS,
   statusCellText,
   statusCellTitle,
   tallyByExam,
@@ -72,6 +75,27 @@ describe("rollUpChapterStatus", () => {
     // the honest one, and it costs the reader nothing: both labels send them
     // into the chapter detail for the same reason.
     expect(rollUpChapterStatus(["full", "not", null])).toBe("partly-assessed");
+  });
+});
+
+describe("EXAM_COLUMNS", () => {
+  it("drops the book's self-column and keeps every real exam", () => {
+    // The matrix rows ARE State Board sections, so a "MH State Board" column is
+    // the book ruled against itself. Measured 2026-08-18 it carried no
+    // information in any subject: 863 rows of `full` in Chemistry, all sharing
+    // one note ("Baseline: this concept is a printed section of the ...
+    // textbook"), and no rows at all in Physics or Maths, whose derived spines
+    // were never given a self-column. A column that is constant within every
+    // subject it appears in is a column of noise.
+    expect(EXAM_COLUMNS).not.toContain(SPINE.stateBoard);
+    expect(EXAM_COLUMNS).toEqual(["NDA", "MHT-CET", "JEE Mains", "CBSE Class 12"]);
+  });
+
+  it("is a strict subset of the exams the data layer still computes", () => {
+    // Narrowing is a RENDER decision. The loaders keep tallying every exam, so
+    // the 863 Chemistry rows stay queryable and this is reversible by one line.
+    for (const e of EXAM_COLUMNS) expect(SYLLABUS_EXAMS).toContain(e);
+    expect(EXAM_COLUMNS.length).toBe(SYLLABUS_EXAMS.length - 1);
   });
 });
 

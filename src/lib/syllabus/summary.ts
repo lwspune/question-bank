@@ -167,6 +167,31 @@ export const BOOK_OF_EXAM: Record<string, string> = {
   "CBSE Class 12": SPINE.ncert,
 };
 
+/**
+ * The exam columns the State Board matrix actually RENDERS, which is not all of
+ * `SYLLABUS_EXAMS`.
+ *
+ * "MH State Board" is dropped because those rows ARE State Board sections, so
+ * the column is the book ruled against itself. Measured 2026-08-18 it carried no
+ * information in any subject: 863 rows of `full` in Chemistry, every one sharing
+ * a single note — "Baseline: this concept is a printed section of the MH State
+ * Board Std XI/XII Chemistry textbook" — and no rows at all in Physics or Maths,
+ * because `derive-board-status.ts` only iterates exam spines plus NCERT and so
+ * never wrote a self-column. It therefore rendered as a wall of green in one
+ * subject and a wall of "?" in the other two. A column that is constant within
+ * every subject it appears in is a column of noise.
+ *
+ * This is a RENDER decision, not a data one: the loaders still tally every exam
+ * and the Chemistry rows stay queryable, so it is reversible by one line. What
+ * it does NOT preclude is giving the column a real meaning later — "is this
+ * section examinable in the HSC board paper?" is a genuine question, now
+ * evidenceable from the mh-hsc-12 board PYQ corpus, and is a different column
+ * from this one.
+ */
+export const EXAM_COLUMNS = SYLLABUS_EXAMS.filter(
+  (e): e is Exclude<SyllabusExam, "MH State Board"> => e !== "MH State Board",
+);
+
 /** The suffix that marks a `source` as an exam's bank taxonomy rather than a book. */
 const EXAM_SPINE_SUFFIX = " bank taxonomy";
 

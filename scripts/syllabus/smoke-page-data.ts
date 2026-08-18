@@ -17,7 +17,7 @@ import {
   loadExamSpineSummaries,
   loadAlignmentRows,
 } from "../../src/lib/syllabus/query";
-import { SPINE, examOfSpine, SYLLABUS_EXAMS } from "../../src/lib/syllabus/summary";
+import { SPINE, examOfSpine, SYLLABUS_EXAMS, EXAM_COLUMNS } from "../../src/lib/syllabus/summary";
 import { requireSubjectArg } from "./subject-arg";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -149,10 +149,16 @@ async function main() {
   // which a page is showing is to count the rows behind it.
   console.log(`\nchapter matrix tallies — a blank cell renders the same whether the pair was`);
   console.log(`assessed-as-absent or never assessed, so the counts are the only way to tell:`);
+  // Every exam is still TALLIED, but not every exam is still a COLUMN, so the
+  // ones that are not are marked. Printing a tally for a column the page does
+  // not draw would read as a claim about what a reader can see.
   for (const exam of SYLLABUS_EXAMS) {
     const t = matrix.tallies[exam];
+    const hidden = (EXAM_COLUMNS as readonly string[]).includes(exam)
+      ? ""
+      : "   <- data only, not a rendered column";
     console.log(
-      `  ${exam.padEnd(16)} full ${String(t.full).padStart(4)} · partial ${String(t.partial).padStart(4)} · not ${String(t.not).padStart(3)} · UNASSESSED ${String(t.unassessed).padStart(4)}`,
+      `  ${exam.padEnd(16)} full ${String(t.full).padStart(4)} · partial ${String(t.partial).padStart(4)} · not ${String(t.not).padStart(3)} · UNASSESSED ${String(t.unassessed).padStart(4)}${hidden}`,
     );
   }
 
