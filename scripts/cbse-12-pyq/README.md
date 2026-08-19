@@ -291,6 +291,32 @@ and their OR counts match their own printed instruction — 10, 10, 10, 9, 9.
 case-study headings, decimal style and instruction (viii) off the paper in hand,
 and report them, even when the previous four papers agreed.
 
+### 2022 Term-2 — measured off all five series openers before dispatch
+
+Verified against the printed covers and general instructions, not inferred:
+
+- **14 questions, 40 marks, 2 hours**, identical on all five series. `term2` in
+  `lib.ts` matches the printed structure exactly — Section A Q1-6 @2, Section B
+  Q7-10 @3, Section C Q11-14 @4, with **Q14 a case-based question of two 2-mark
+  subparts**. 12 + 12 + 16 = 40.
+- **No MCQs at all**, so `audit:keys` has nothing to scan and the blind
+  key-re-derivation that anchors the other years is unavailable here.
+- **The English pages are idx 2, 4 and 6 — only THREE of them.** The paper is
+  Hindi-block-then-English-block per chunk (idx 1 Hindi Q1-6, idx 2 English
+  Q1-6, idx 3 Hindi Q7-11, idx 4 English Q7-11, and so on), so the even-page rule
+  holds but the RANGE does not: do not carry "2 through 22" over from a full80
+  paper. The odd-page overflow seen in 2026 was NOT observed here — each language
+  block starts cleanly on its own page — but check rather than assume.
+- **Instruction (vi) reads "There is an internal choice in some questions" with
+  NO counts**, like 2026 series 65/1 and 65/2. The ORs can only be found by
+  reading, and the 40-mark sum is blind to a missed alternative for the same
+  reason it is at 80. Walk the marking scheme.
+- Printed page count varies by series (65/1 and 65/3 say 8, the rest 7), so it is
+  not a usable cross-check.
+- **Series 65/1 is re-typeset**: its sets match 0 of 13 blocks by byte-hash and 5
+  by dHash. Its siblings 65/2-65/5 match 7-11 by byte-hash and gain nothing from
+  the perceptual pass. Expect the skip list to be useless for 65/1 alone.
+
 ## CBSE-acknowledged defects — three categories, all PRESERVED
 
 CBSE's marking schemes admit their own defects in writing, and there are three
