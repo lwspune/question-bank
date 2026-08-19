@@ -126,70 +126,51 @@ series checked.
 > item the index misses is simply transcribed and caught by stage 2 — the safe
 > direction, and the reason it may run before transcription at all.
 
-#### 2026: the SAME symptom, two DIFFERENT causes — measured
+#### 2026: a low match count NEVER means "different questions"
 
-2026 shows a low exact-match count on three of its five series, and the section
-above would have you read that as re-typesetting. It is not, and the two cases
-need opposite responses:
+Three of 2026's five series show a low exact-match count. The obvious reading -
+that CBSE set different questions - is wrong on all three, and I shipped it before
+checking.
 
-| Series | blocks indexed | matched vs its own /1 | what is actually true |
-|---|---|---|---|
-| 65/1 | 48 | 28 | normal — sets are permutations, skip list usable |
-| 65/2 | 47 | 33 | normal |
-| 65/3 | 44 | 3 exact + 2 near | **the sets are DIFFERENT PAPERS** |
-| 65/5 | 50 | 4 exact + 4 near | **the sets are DIFFERENT PAPERS** |
-| 65/4 | **18** | 0 | **the index is BLIND** — see below |
-
-**65/3 and 65/5 were verified by rendering the two sets' first six question
-blocks side by side.** There is zero overlap: 65/3/1 opens with `A² = 4A + 3I`,
-order-of-a-matrix, skew-symmetric `AB' + BA'`, domain of `cos⁻¹(2x−5)`; 65/3/2
-opens with `d/dx(tan⁻¹ x)`, rate of change of a sphere's volume,
-`∫dx/√(e⁻²ˣ−1)`, `∫(1−|x|)dx`. A perceptual (dHash ≤ 8) all-pairs pass adds
-only 2 more matches, so this is **not** a re-encoding and **not** a re-typesetting
-— CBSE genuinely set different questions per set. Expect 2026 to yield far more
-unique rows than 2023–2025 did.
-
-**65/4 is the dangerous one, because "0 covered" there means "I could not look".**
-Its marking scheme prints each answer as TEXT (`1.  Ans. (D) …`) and pastes an
-image for only ~19 of its ~48 questions, so the index can see barely a third of
-the paper and then reports a confident-looking zero. `plan_paper.py` now trips a warning at **60% of the year's own expected block
-count** (full80 ≈ 48, term2 ≈ 14) — proven to fire on 2026 65/4/2 (18 blocks)
-and to stay silent on 2026 65/1/2 (48) and on 2022 65/1/2 and 65/3/3 (13 and
-14). The floor MUST be pattern-derived: a first version hardcoded 30 and fired
-on every one of the fifteen 2022 Term-2 papers while telling them "a full paper
-has ~48 questions", which for a 14-question paper is simply false. Total
-failure was already handled; this was the partial case, which is the one that
-renders as a finding.
-
-**How to tell them apart:** `plan_paper.py` now does it for you. It runs a second,
-PERCEPTUAL pass (dHash, Hamming <= 8) over every block the byte-hash called new,
-and reports the hits as `LIKELY DUPLICATE - VERIFY, DO NOT SKIP ON THIS ALONE`.
-The two numbers together are the diagnosis, and the four shapes are distinct:
-
-| shape | sha | dHash | meaning | what to do |
+| series | blocks | sha match | dHash adds | ACTUALLY shared (by content) |
 |---|---|---|---|---|
-| normal | high | ~0 | sets are permutations | use the skip list |
-| **re-typeset** | **0** | **several** | same questions, re-encoded | transcribe; expect heavy `content_hash` collapse |
-| **genuinely different** | low | low | CBSE set different questions | transcribe everything, expect few collapses |
-| **index blind** | 0 | low, few blocks | scheme does not paste question images | transcribe everything; the floor warning fires |
+| 65/1 | 48 | 28, 33 | 2, 1 | 41 of 55 |
+| 65/2 | 47 | 33, 33 | 0, 0 | 41 of 54 |
+| 65/3 | 44 | 3, 3 | 2, 2 | **30 of 54** |
+| 65/4 | **18** | 0, 0 | 4, 4 | 41 of 52 |
+| 65/5 | 50 | 4, 4 | 4, 4 | 41 of 52 |
 
-Measured across the two years that were planned after this landed:
+Every one is a reshuffle. 65/3 shares less than its siblings, and that is the only
+real difference; there is no 2026 series whose questions genuinely differ.
 
-| paper | sha | dHash | shape |
-|---|---|---|---|
-| 2022 65/1/2, 65/1/3 | 0 | 5, 2 | re-typeset |
-| 2022 65/2 … 65/5 (all 8) | 7–11 | 0 | normal |
-| 2026 65/1, 65/2 (all 4) | 28–33 | 0–2 | normal |
-| 2026 65/3/2, 65/3/3 | 3 | 2 | genuinely different |
-| 2026 65/5/2, 65/5/3 | 4 | 4 | genuinely different |
-| 2026 65/4/2, 65/4/3 | 0 | 4 | index blind (18 blocks) |
+> ### HOW I GOT THIS WRONG: a positional sample cannot detect a permutation
+>
+> I rendered the FIRST SIX question blocks of 65/3/1 and 65/3/2 side by side, saw
+> no overlap at all, and concluded the sets were different papers. I then wrote it
+> into this file, into a commit message, and into the dispatch for four agents.
+>
+> The sets are RESHUFFLED. Comparing block 1 against block 1 and block 2 against
+> block 2 can only find a match by coincidence - the agent that transcribed
+> 65/3/2 said so in as many words, and measured 30 shared rows where I had claimed
+> zero. The comparison felt decisive because I was looking at real pages; it was
+> decisive about nothing, because it tested the wrong pairs.
+>
+> Same shape as the id-permutation hazard the sibling pipelines guard against: a
+> check that passes a permutation perfectly is not a check. An all-pairs
+> comparison is the cheap fix, and it is what the dHash pass already does - it
+> simply is not sensitive enough (it recovered 2 of 30 here, 4 of 41 on 65/5).
+>
+> I made the same generalisation error twice more in one session: extending this
+> 65/3 reading to 65/5 without rendering it, and calling 2026's instruction (viii)
+> a year-level property from one paper. In this source almost nothing is
+> year-level. Measure the paper in hand.
 
-**2022 series 65/1 is the case that was previously invisible.** Byte-hashing
-matched 0 of its 13 blocks, which reads identically to "genuinely different" —
-but rendering the first four blocks of 65/1/1 and 65/1/2 side by side showed the
-same questions **shifted by two positions**, and the perceptual pass independently
-reported `Q1#1 ~ 65-1-1 Q3#1` and `Q5#1 ~ 65-1-1 Q1#1`, i.e. exactly that shift.
-Series 65/1 has now been caught re-typesetting itself in 2022 AND 2025.
+**How to tell them apart: you cannot, from the hashes.** `plan_paper.py` reports
+both counts and flags a partially-blind index, and that is the limit of what it
+knows. It distinguishes "the index can see this paper" from "the index cannot",
+which is worth having - but it can never tell you how much content is shared.
+Only reading the questions does that, which is why every follower agent is told
+to match against the opener's JSON and to report the overlap it found.
 
 A perceptual hit is never a skip. Two different questions set in one typeface at
 one width genuinely look alike, so only the byte-hash may say "already covered";
@@ -271,8 +252,10 @@ where that became unmistakable.
 Where counts are printed they matched what the agents found by reading, on every
 paper. Two typesetters are visible across the year — 65/1 and 65/2 print
 `SECTION – A` and "This section comprises **20** Multiple Choice Questions",
-65/3–65/5 print `SECTION A` — which is the same split that makes 65/3 and 65/5
-hash as different papers from their own siblings.
+65/3–65/5 print `SECTION A`. That split lines up with which series the byte-hash
+index can see: 65/1 and 65/2 match 28–33 blocks against their openers, 65/3 and
+65/5 only 3–4 — while all four in fact share 30–41 rows. The typesetting explains
+the index's blindness, not any difference in the questions.
 
 ### The check that does NOT work
 
