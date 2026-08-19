@@ -33,6 +33,28 @@ turns out to be English-only, say so.
 Never transcribe from a Hindi page. A translated stem can never dedup against the
 real English one, because `content_hash` is stem-derived.
 
+> ### "Even pages are English" is NECESSARY BUT NOT SUFFICIENT
+>
+> A page carries, ABOVE its own block, the **overflow of the previous page's
+> block** - which is in the OTHER language. So English text also sits at the TOP
+> of ODD pages, and the last page may be English-only.
+>
+> Measured on 2026 65/3/1: English content sat at the top of odd indices 7, 9,
+> 11, 13, 15, 17, 19 and 21, plus an English-only index 23. **Eight questions
+> lived partly there, several of them entirely** - Q27, Q34(b), Q36, Q37's
+> passage and the whole of Q38. Reading only the even pages would have dropped
+> them, and nothing would have said so: the question NUMBERING stays continuous
+> across the pages you did read, so there is no gap to notice.
+>
+> The reverse also bites. An odd page can open with a HINDI block whose content
+> is pure mathematical notation and therefore reads identically to English (2026
+> 65/3/1 idx 6 opens with the Hindi Q12 options). Do not take content from one.
+>
+> **So: read the top of every odd page and the last page.** Report which of them
+> carried English, or that none did - a checked "none" is a measurement, an
+> assumed one is not. And do not trust a paper's own cover: 65/3/1 announces 23
+> pages and its last folio reads 24.
+
 ---
 
 ## 3. Transcribe AS PRINTED
@@ -84,9 +106,30 @@ study in two parts.
 
 Three structural things that are easy to miss:
 
-- **Internal choice.** Nine questions offer an `OR` alternative. **Ingest BOTH.**
+- **Internal choice.** Some questions offer an `OR` alternative. **Ingest BOTH.**
   Refs are `Q23a` / `Q23b`, questionNumber `"23 (a)"` / `"23 (b)"`, and the
   alternative carries `"_alternativeTo": "Q23a"`.
+
+  **How many there are is a per-PAPER fact, and instruction (viii) is the only
+  authority.** Measured: 2024 series 65/4 prints ten, 2025 prints nine, 2026
+  series 65/1 and 65/2 print NO COUNTS AT ALL (`"in few questions in all the
+  Sections except Section - A"`) while 65/3, 65/4 and 65/5 of that same year do
+  print them, and 65/3 says three in Section E where 65/4 and 65/5 say two.
+  Never carry a count over from another paper.
+
+  > ### The marks sum does NOT prove you found them all
+  >
+  > Primary-branch marks summing to 80 is a genuine check and it has a blind
+  > spot that matters: **an OR-alternative is not a primary branch, so missing
+  > one loses a row without moving the total by a single mark.** The sum catches
+  > a dropped or mis-banded QUESTION; it is structurally blind to a dropped
+  > ALTERNATIVE. (Found by the agent transcribing 2026 65/1/1, against an earlier
+  > version of this brief that offered the sum as the check.)
+  >
+  > When instruction (viii) prints counts, they are the check. When it does not,
+  > **walk the marking scheme question by question** and confirm which questions
+  > carry an alternative and which do not - the scheme reprints both branches.
+  > Report both the count you found and how you established it.
 - **Assertion–Reason (Q19–20)** share ONE printed instruction block defining
   their four options. Put that block in `context` on **both** rows and repeat the
   same four options on each.

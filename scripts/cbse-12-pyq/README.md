@@ -245,26 +245,51 @@ Supporting tools:
 
 ---
 
-## Per-year variation — measured, and none of it is inferable
+## Per-year variation — measured, and almost none of it is per-YEAR
 
 The five years share the `full80` section structure but differ in ways that must
-be read off each paper rather than assumed:
+be read off each paper. The heading is deliberate: nearly every property that
+looks like a year-level fact turned out to be a **series**-level one, and 2026 is
+where that became unmistakable.
 
 | | 2022 | 2023 | 2024 | 2025 | 2026 |
 |---|---|---|---|---|---|
 | Pattern | **term2** (14 q / 40 marks, NO MCQs) | full80 | full80 | full80 | full80 |
-| Option labels | — | **lowercase** `(a)–(d)` | uppercase | uppercase | ? |
-| Case-study headings | — | printed (some sets use ROMAN `Case Study-I`) | varies by series | varies by series | ? |
-| Decimal points | — | raised in QP, ordinary in MS | ordinary | varies by series | ? |
-| Instruction (viii) | — | explicit counts | explicit counts, and **65/4 gives TEN pairs, not nine** | explicit counts | **NO COUNTS** — "in few questions in all the Sections except Section – A" |
+| Option labels | — | lowercase, **except 65/2 which is uppercase** | uppercase | uppercase | uppercase (65/1, 65/2, 65/4 confirmed) |
+| Case-study headings | — | printed (some sets ROMAN, `Case Study-I`) | varies by series | varies by series | **65/4 prints `Case Study – N`; 65/1 and 65/2 print NONE** |
+| Decimal points | — | raised in QP, ordinary in MS | ordinary | varies by series; 65/5 QP and MS disagree | 65/4 raised; **65/1 and 65/2 print no decimal at all** |
+| Instruction (viii) | — | explicit counts | explicit counts; **65/4 gives TEN pairs** | explicit counts (nine) | **65/1, 65/2 give NO counts; 65/3, 65/4, 65/5 do** |
 
-Two consequences worth stating plainly:
+### Instruction (viii) in 2026 — read off all five openers
 
-- **The nine-internal-choices figure in the brief is a 2025 observation, not a
-  rule.** 2024's 65/4 series prints 2/3/**3**/2 = ten. Read instruction (viii) on
-  the paper in hand.
-- **2026 prints no counts at all**, so the ORs can only be found by reading, and
-  the check that nothing was missed is that primary-branch marks sum to 80.
+| series | wording | internal choices |
+|---|---|---|
+| 65/1, 65/2 | "an internal choice has been provided **in few questions in all the Sections except Section – A**" | none stated; **10** found by reading |
+| 65/3 | 2 in B, 3 in C, 2 in D, **3 in E** | 10 |
+| 65/4, 65/5 | 2 in B, 3 in C, 2 in D, **2 in E** | 9 |
+
+Where counts are printed they matched what the agents found by reading, on every
+paper. Two typesetters are visible across the year — 65/1 and 65/2 print
+`SECTION – A` and "This section comprises **20** Multiple Choice Questions",
+65/3–65/5 print `SECTION A` — which is the same split that makes 65/3 and 65/5
+hash as different papers from their own siblings.
+
+### The check that does NOT work
+
+Primary-branch marks summing to 80 is real and it is **blind to a missed
+OR-alternative**, because an alternative is not a primary branch: dropping one
+loses a row without moving the total by a mark. It catches a dropped or
+mis-banded QUESTION and nothing else. Where instruction (viii) prints counts they
+are the check; where it does not, walk the marking scheme question by question —
+it reprints both branches. (This was found by the agent on 2026 65/1/1, against an
+earlier brief that offered the sum as *the* check.)
+
+All five 2026 openers reconcile to exactly 80 (A 20 · B 10 · C 18 · D 20 · E 12)
+and their OR counts match their own printed instruction — 10, 10, 10, 9, 9.
+
+**Practical rule: inherit nothing across papers.** Read option-label case,
+case-study headings, decimal style and instruction (viii) off the paper in hand,
+and report them, even when the previous four papers agreed.
 
 ## CBSE-acknowledged defects — three categories, all PRESERVED
 
