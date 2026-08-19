@@ -17,6 +17,8 @@ import { buildConceptWeightTable } from "@/lib/notes/conceptWeight";
 import { loadSubtopicPyqCounts } from "@/lib/notes/subtopicCounts";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import ChapterRevisionSheet from "./ChapterRevisionSheet";
+import NotesHandoutLink from "./NotesHandoutLink";
+import { printHandoutHref } from "@/lib/notes/printDoc";
 import ConceptWeightTable from "./ConceptWeightTable";
 
 /**
@@ -150,6 +152,19 @@ export default async function NotesChapterLanding({ chapter }: Props) {
         title={meta.title}
         subtitle={meta.intro}
       />
+
+      {/* Printable handout — the whole chapter as one A4 PDF for teachers to
+          hand out. Client-gated on sign-in so this landing stays ISR-static. */}
+      <div className="mb-6">
+        <NotesHandoutLink
+          href={printHandoutHref(chapter.subjectRoute, chapter.chapterSlug)}
+          chapterName={meta.chapterName}
+        />
+        <p className="mt-1.5 text-xs text-muted-foreground">
+          Every subtopic, worked example, formula and trap in one printable
+          document — answers shown, ready to share.
+        </p>
+      </div>
 
       <div className="mb-8 flex flex-wrap items-center gap-2 text-xs">
         <Link
