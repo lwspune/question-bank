@@ -135,8 +135,10 @@ Three structural things that are easy to miss:
   Refs are `Q23a` / `Q23b`, questionNumber `"23 (a)"` / `"23 (b)"`, and the
   alternative carries `"_alternativeTo": "Q23a"`.
 
-  **How many there are is a per-PAPER fact, and instruction (viii) is the only
-  authority.** Measured: 2024 series 65/4 prints ten, 2025 prints nine, 2026
+  **How many there are is a per-PAPER fact, and the paper's own internal-choice
+  instruction is the only authority. Its NUMBER differs by year: it is (viii) on
+  a `full80` paper and (vi) on a 2022 `term2` paper**, which prints only seven
+  instructions in total. Find the line by its wording, not its number. Measured: 2024 series 65/4 prints ten, 2025 prints nine, 2026
   series 65/1 and 65/2 print NO COUNTS AT ALL (`"in few questions in all the
   Sections except Section - A"`) while 65/3, 65/4 and 65/5 of that same year do
   print them, and 65/3 says three in Section E where 65/4 and 65/5 say two.
@@ -151,7 +153,7 @@ Three structural things that are easy to miss:
   > ALTERNATIVE. (Found by the agent transcribing 2026 65/1/1, against an earlier
   > version of this brief that offered the sum as the check.)
   >
-  > When instruction (viii) prints counts, they are the check. When it does not,
+  > When that instruction prints counts, they are the check. When it does not,
   > **walk the marking scheme question by question** and confirm which questions
   > carry an alternative and which do not - the scheme reprints both branches.
   > Report both the count you found and how you established it.
@@ -219,6 +221,12 @@ Sets are reshuffled AND renumbered in both directions, case studies included.
 ---
 
 ## 7. Answers
+
+> **This whole section is INAPPLICABLE to 2022 Term-2.** That paper has no MCQs
+> at all (see §5), so there is no key to read, nothing to blind-re-derive, and
+> every row is `subjective` with no `answer` field. `audit:keys` likewise has
+> nothing to scan there. Skip to §8.
+
 
 **Section A (MCQ) answers come from the official marking scheme, verbatim.** Do
 not derive them. The scheme pairs 1:1 with this exact paper code; find each `Ans`

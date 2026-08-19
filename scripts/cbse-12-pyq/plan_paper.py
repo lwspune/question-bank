@@ -230,6 +230,19 @@ def main():
     print(f"{year} {code} - {len(rows)} question blocks in its marking scheme")
     print(f"  already covered by [{', '.join(against) or 'nothing'}] : {len(covered)}")
     print(f"  NEW, needs transcription                              : {len(new)}")
+    print()
+    print("  !! READ THIS BEFORE USING THE LISTS BELOW - both numbers and every")
+    print("     per-question label have been MEASURED WRONG on every paper checked.")
+    print("     Judge shared-vs-new by CONTENT against the reference paper's JSON.")
+    print("     2026: ten followers each shared exactly 41 rows while this index")
+    print("           predicted 0, 3, 4, 28 and 33 for those same papers.")
+    print("     2022: three agents each found EVERY attribution naming the wrong")
+    print("           reference question, and the counts understated the real")
+    print("           overlap badly (8 vs 15, 9 vs 14, 0 vs 14).")
+    print("     A block can hold a whole OR pair or a multi-part question, so it")
+    print("     does not map 1:1 onto a question number. Transcribing a true")
+    print("     duplicate is free - content_hash collapses it at commit - while")
+    print("     trusting a wrong SKIP silently loses a question.")
 
     # PARTIAL BLINDNESS is the dangerous middle case, and it is REAL: 2026 series
     # 65/4 prints its answers as TEXT and pastes an image for only ~19 of its ~48
