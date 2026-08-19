@@ -1,0 +1,165 @@
+{
+  "paper": "65/5/2",
+  "year": 2025,
+  "pattern": "full80",
+  "_transcription": "ENGLISH PAGES: even 0-based indices 2,4,6,8,10,12,14,16,18,20,22 (11 pages). The alternating hypothesis HELD exactly — idx 0 is the cover, idx 1 the Hindi General Instructions, and every odd index thereafter is the Hindi mirror of the even index that follows it. Structure verified against the printed General Instructions on idx 2: 38 questions / 80 marks / five sections, internal choice in 2 (Section B: Q23, Q25), 3 (Section C: Q27, Q29, Q31), 2 (Section D: Q34, Q35) and 2 (Section E: Q37(iii), Q38(iii)) questions. Section-A answers are transcribed VERBATIM from the official marking scheme (ms/p02-p06); each agreed with my own derivation, so there is no key disagreement to record. DUPLICATE HANDLING — READ THIS: plan.txt's SKIP list (21 blocks) was verified correct, but its TRANSCRIBE list also contains 13 blocks that ARE content duplicates of 65/5/1, which stage-1 SHA-256 dedup missed (CBSE re-typeset several blocks between the two sets, so byte-identical image matching fails even though the question is word-for-word the same). Every question of 65/5/2 was matched by CONTENT against the committed data/2025-65-5-1.questions.json, not by number. Result: only 11 of the paper's 38 questions are genuinely new. The 13 plan-TRANSCRIBE blocks NOT written here, each with the 65/5/1 row it duplicates (stem AND options compared): Q15 = 65/5/1 Q17 (position vector, tip (2,-3), A(-4,5)); Q16 = 65/5/1 Q18 (|a|,|b| with (a-b).(a+b)=512); Q17 = 65/5/1 Q16 (LPP feasible region, Z=3x+2y); Q24 = 65/5/1 Q25 (two lanterns trisecting AB); Q29(a) = 65/5/1 Q27a and Q29(b) = 65/5/1 Q27b; Q30 = 65/5/1 Q29 (LPP Z=5x+10y); Q31(a) = 65/5/1 Q30a and Q31(b) = 65/5/1 Q30b; Q35(a) = 65/5/1 Q34a and Q35(b) = 65/5/1 Q34b; Q36(i)/(ii) = 65/5/1 Q38i/Q38ii (gardener seeds); Q37(i)-(iii)(b) = 65/5/1 Q36i-Q36iiib (carpenter box). Also duplicated but correctly on the SKIP list already: Q1,Q2,Q4,Q5,Q6,Q7,Q9,Q10,Q13,Q18,Q19,Q20,Q23(a),Q23(b),Q25(a),Q25(b),Q27(a),Q27(b),Q34(a),Q34(b),Q38(i)-(iii)(b). If a reviewer prefers the plan's letter over content matching, the 13 blocks above are the exact set to re-transcribe — none was dropped silently. NOTE ON Q38: paper Q38 (30 students / bijective / y=3x / y=x^3) duplicates 65/5/1 Q37i-Q37iiib and is likewise not written here. FIGURES: only Q17 (LPP graph) and Q19 (LPP feasible-region graph) depend on a printed figure, and both are duplicates already covered by 65/5/1. Q36's three vegetable photographs are DECORATIVE — every number the sub-parts need is in the passage text (that case study is a duplicate anyway).",
+  "questions": [
+    {
+      "ref": "Q3",
+      "questionNumber": "3",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Multiplication of Matrices",
+      "difficulty": "EASY",
+      "stem": "If A and B are two square matrices of the same order, then \\((A + B)(A - B)\\) is equal to :",
+      "options": [
+        { "label": "A", "text": "\\(A^2 - AB + BA - B^2\\)" },
+        { "label": "B", "text": "\\(A^2 + AB - BA - B^2\\)" },
+        { "label": "C", "text": "\\(A^2 - AB - BA - B^2\\)" },
+        { "label": "D", "text": "\\(A^2 - B^2 + AB + BA\\)" }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q8",
+      "questionNumber": "8",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Symmetric and Skew-Symmetric Matrices",
+      "difficulty": "EASY",
+      "stem": "If a matrix A is both symmetric and skew-symmetric, then A is a :",
+      "options": [
+        { "label": "A", "text": "diagonal matrix" },
+        { "label": "B", "text": "zero matrix" },
+        { "label": "C", "text": "non-singular matrix" },
+        { "label": "D", "text": "scalar matrix" }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q11",
+      "questionNumber": "11",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Integration using Trigonometric Identities",
+      "difficulty": "MODERATE",
+      "stem": "\\(\\displaystyle\\int \\dfrac{\\cos 2x}{\\sin^2 x \\cos^2 x}\\ dx\\) is equal to :",
+      "options": [
+        { "label": "A", "text": "\\(\\cot x + \\tan x + C\\)" },
+        { "label": "B", "text": "\\(-(\\cot x + \\tan x) + C\\)" },
+        { "label": "C", "text": "\\(-\\cot x + \\tan x + C\\)" },
+        { "label": "D", "text": "\\(\\cot x - \\tan x + C\\)" }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q12",
+      "questionNumber": "12",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Definite Integrals and the Fundamental Theorem",
+      "difficulty": "MODERATE",
+      "stem": "If \\(\\displaystyle\\int_{0}^{a} \\dfrac{1}{1 + 4x^2}\\ dx = \\dfrac{\\pi}{8}\\), then the value of 'a' is :",
+      "options": [
+        { "label": "A", "text": "\\(\\dfrac{1}{4}\\)" },
+        { "label": "B", "text": "\\(\\dfrac{1}{2}\\)" },
+        { "label": "C", "text": "\\(\\dfrac{1}{8}\\)" },
+        { "label": "D", "text": "4" }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q14",
+      "questionNumber": "14",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Differential Equations",
+      "subtopic": "Linear Differential Equations",
+      "difficulty": "MODERATE",
+      "stem": "The integrating factor of the differential equation \\(\\dfrac{dx}{dy} = \\dfrac{x \\log x}{\\dfrac{2}{x} \\log x - y}\\) is :",
+      "options": [
+        { "label": "A", "text": "\\(\\dfrac{1}{8x}\\)" },
+        { "label": "B", "text": "\\(e\\)" },
+        { "label": "C", "text": "\\(e^{\\log x}\\)" },
+        { "label": "D", "text": "\\(\\log x\\)" }
+      ],
+      "answer": "D",
+      "_flag": "READING CONFIRMED, NOT A DEFECT — the denominator is printed as a STACKED fraction 2/x multiplying log x, i.e. \\(\\frac{2}{x}\\log x - y\\), NOT \\(2\\log x - y\\). Verified at 4x zoom on page idx 6 and again on the marking scheme (ms/p05). Recorded because the 2/x is small and easy to read away, and doing so would change the question. As printed it is NCERT Ex 9.6's equation \\(x\\log x\\,\\frac{dy}{dx} + y = \\frac{2}{x}\\log x\\) written in dx/dy form, and it yields the official key (D) log x."
+    },
+    {
+      "ref": "Q21",
+      "questionNumber": "21",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Domains, Ranges and Principal Value Branches",
+      "difficulty": "MODERATE",
+      "stem": "Find the domain of \\(\\sec^{-1}(2x + 1)\\)."
+    },
+    {
+      "ref": "Q22",
+      "questionNumber": "22",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Rate of Change of Quantities",
+      "difficulty": "MODERATE",
+      "stem": "The radius of a cylinder is decreasing at a rate of 2 cm/s and the altitude is increasing at the rate of 3 cm/s. Find the rate of change of volume of this cylinder when its radius is 4 cm and altitude is 6 cm."
+    },
+    {
+      "ref": "Q26",
+      "questionNumber": "26",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Increasing and Decreasing Functions",
+      "difficulty": "MODERATE",
+      "stem": "Show that \\(f(x) = \\tan^{-1}(\\sin x + \\cos x)\\) is an increasing function in \\(\\left[0, \\dfrac{\\pi}{4}\\right]\\)."
+    },
+    {
+      "ref": "Q28",
+      "questionNumber": "28",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Differential Equations",
+      "subtopic": "Homogeneous Differential Equations",
+      "difficulty": "HARD",
+      "stem": "Find the particular solution of the differential equation \\(\\dfrac{dy}{dx} - \\dfrac{y}{x} + \\operatorname{cosec}\\left(\\dfrac{y}{x}\\right) = 0\\); given that \\(y = 0\\), when \\(x = 1\\)."
+    },
+    {
+      "ref": "Q32",
+      "questionNumber": "32",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Under Simple Curves",
+      "difficulty": "HARD",
+      "stem": "Draw a rough sketch of the curve \\(y = \\sqrt{x}\\). Using integration, find the area of the region bounded by the curve \\(y = \\sqrt{x}\\), \\(x = 4\\) and x-axis, in the first quadrant."
+    },
+    {
+      "ref": "Q33",
+      "questionNumber": "33",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Solving System of Linear Equations",
+      "difficulty": "HARD",
+      "stem": "An amount of ₹ 10,000 is put into three investments at the rate of 10%, 12% and 15% per annum. The combined annual income of all three investments is ₹ 1,310, however the combined annual income of the first and the second investments is ₹ 190 short of the income from the third. Use matrix method and find the investment amount in each at the beginning of the year."
+    }
+  ]
+}

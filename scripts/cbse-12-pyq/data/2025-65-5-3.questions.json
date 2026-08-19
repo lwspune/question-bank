@@ -1,0 +1,465 @@
+{
+  "paper": "65/5/3",
+  "year": 2025,
+  "pattern": "full80",
+  "_transcription": "ENGLISH half only. The alternating-page hypothesis HELD: 23 pages, index 0 the cover, index 1 the Hindi general instructions, English on the EVEN 0-based indices 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22 (printed pages 3,5,7,9,11,13,15,17,19,21,23). Every odd index 3..21 is the Hindi facing page. Stems transcribed AS PRINTED. All 6 Section-A answers are CBSE's own, read verbatim off the marking scheme for this exact code (65/5/3, ms indices 2,3,4,5); the marking scheme's question numbering agrees 1:1 with the paper's, verified on Q1-Q16. SKIPPING: plan.txt's 25 skip blocks were checked against the ACTUAL stems in data/2025-65-5-1.questions.json before being dropped, and every one matched verbatim, including the four the index attributes only to 65/5/2 (this paper's Q15, Q17, Q18, Q23 are also 65/5/1's Q16, Q18, Q17, Q25). NOTE FOR THE NEXT AGENT — plan.txt is keyed on MARKING-SCHEME ANSWER blocks and is noisy in BOTH directions at question granularity: this paper's Q2 is byte-identical to 65/5/1's Q6 yet the index calls it NEW (the ~87% coverage gap), while Q27/Q30/Q34/Q35/Q36/Q37 carry TRANSCRIBE blocks yet their stems are verbatim 65/5/1's Q30/Q27/Q34/Q35/Q37/Q38 (the answer WORKING is retypeset between sets even when the question is not). Those six were transcribed anyway per brief section 6 (over-transcribing costs nothing; wrongly skipping loses a question silently), as were Q29 and Q31, which the index does not mention at all. Only questions whose stems I could verify verbatim AND which plan.txt lists as skip-only were dropped. DEDUP WARNING: the two case studies here are printed 'Case Study - 1' and 'Case Study - 2' but are the same case studies 65/5/1 prints as 'Case Study - 2' and 'Case Study - 3'. Following the sibling's convention that heading sits inside `context`, so these 6 rows will NOT dedup against 65/5/1 even though the questions are identical - a decision for the commit step, not something to fix by editing the printed heading. No question in this transcribed set depends on a printed figure; the only two graphs in the paper (Q15 LPP feasible region, Q19 Assertion-Reason) are both on skipped duplicate questions.",
+  "questions": [
+    {
+      "ref": "Q2",
+      "questionNumber": "2",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Determinant and its Properties",
+      "difficulty": "EASY",
+      "stem": "If \\(A = [a_{ij}]\\) is a \\(3 \\times 3\\) diagonal matrix such that \\(a_{11} = 1\\), \\(a_{22} = 5\\) and \\(a_{33} = -2\\), then \\(|A|\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-10\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(10\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(1\\)"
+        }
+      ],
+      "answer": "B",
+      "_flag": "plan.txt lists this as NEW, but the stem and all four options are byte-identical to 65/5/1 Q6 (verified against data/2025-65-5-1.questions.json). Transcribed anyway; expect it to dedup."
+    },
+    {
+      "ref": "Q3",
+      "questionNumber": "3",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Determinant and its Properties",
+      "difficulty": "EASY",
+      "stem": "If \\(A = kB\\), where A and B are two square matrices of order n and k is a scalar, then :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(|A| = k|B|\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(|A| = k^n|B|\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(|A| = k + |B|\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(|A| = |B|^k\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q8",
+      "questionNumber": "8",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Transpose of a Matrix",
+      "difficulty": "EASY",
+      "stem": "Let A and B be two matrices of suitable orders. Then, which of the following is **not** correct ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((A')' = A\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\((kA)' = kA'\\), k is a scalar"
+        },
+        {
+          "label": "C",
+          "text": "\\((A' + B')' = A + B\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\((AB)' = A'B'\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q11",
+      "questionNumber": "11",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Integration using Trigonometric Identities",
+      "difficulty": "MODERATE",
+      "stem": "\\(\\displaystyle\\int \\dfrac{\\cos 2x - \\cos 2\\theta}{\\cos x - \\cos \\theta}\\ dx\\) is equal to :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2(\\sin x + x \\cos \\theta) + C\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(2(\\sin x - x \\cos \\theta) + C\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(2(\\sin x + \\sin \\theta) + C\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(2(\\sin x - x \\sin \\theta) + C\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q12",
+      "questionNumber": "12",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Definite Integrals by Substitution",
+      "difficulty": "EASY",
+      "stem": "\\(\\displaystyle\\int_{0}^{1} \\dfrac{2x}{5x^2 + 1}\\ dx\\) is equal to :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{1}{5}\\log 6\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{1}{5}\\log 5\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{1}{2}\\log 6\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{1}{2}\\log 5\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q14",
+      "questionNumber": "14",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Differential Equations",
+      "subtopic": "Linear Differential Equations",
+      "difficulty": "MODERATE",
+      "stem": "The integrating factor of the differential equation\n\n\\(\\dfrac{dx}{dy} = \\dfrac{-(1 + \\sin x)}{x + y \\cos x}\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\log \\cos x\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(1 + \\sin x\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(e^{(1 + \\sin x)}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(e^{\\log \\cos x}\\)"
+        }
+      ],
+      "answer": "B",
+      "_flag": "AS PRINTED the equation is given as dx/dy, so the derivative and the variable it is taken with respect to are the reverse of the usual layout for this standard item; the four options are all functions of x. Read as a linear equation in y (dy/dx + (cos x/(1 + sin x))y = -x/(1 + sin x)) it gives IF = 1 + sin x, which is CBSE's official key (B), so no correction is implied - recorded only because a reader may take the printed dx/dy for a misprint."
+    },
+    {
+      "ref": "Q21",
+      "questionNumber": "21",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Domains, Ranges and Principal Value Branches",
+      "difficulty": "EASY",
+      "stem": "Find the domain of \\(\\sin^{-1}(x^2 - 3)\\)."
+    },
+    {
+      "ref": "Q22",
+      "questionNumber": "22",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Rate of Change of Quantities",
+      "difficulty": "MODERATE",
+      "stem": "Let the volume of a metallic hollow sphere be constant. If the inner radius increases at the rate of 2 cm/s, find the rate of increase of the outer radius when the radii are 2 cm and 4 cm respectively."
+    },
+    {
+      "ref": "Q23",
+      "questionNumber": "23",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Section Formula",
+      "difficulty": "MODERATE",
+      "stem": "A man needs to hang two lanterns on a straight wire whose end points have coordinates \\(A(4, 1, -2)\\) and \\(B(6, 2, -3)\\). Find the coordinates of the points where he hangs the lanterns such that these points trisect the wire AB.",
+      "_flag": "Verbatim 65/5/1 Q25; transcribed because plan.txt carries a TRANSCRIBE block for it (Q23#2). Expect it to dedup. Filed on Vector Algebra / Section Formula per the brief's decided convention."
+    },
+    {
+      "ref": "Q26",
+      "questionNumber": "26",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Increasing and Decreasing Functions",
+      "difficulty": "MODERATE",
+      "stem": "Find the interval/intervals in which the function \\(f(x) = \\sin 3x - \\cos 3x\\), \\(0 < x < \\dfrac{\\pi}{2}\\) is strictly increasing."
+    },
+    {
+      "ref": "Q28",
+      "questionNumber": "28",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Differential Equations",
+      "subtopic": "Homogeneous Differential Equations",
+      "difficulty": "MODERATE",
+      "stem": "Solve the differential equation\n\n\\(x \\cos\\left(\\dfrac{y}{x}\\right) \\dfrac{dy}{dx} = y \\cos\\left(\\dfrac{y}{x}\\right) + x\\)."
+    },
+    {
+      "ref": "Q29a",
+      "questionNumber": "29 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "difficulty": "MODERATE",
+      "stem": "The probability that a student buys a colouring book is \\(0{\\cdot}7\\) and that she buys a box of colours is \\(0{\\cdot}2\\). The probability that she buys a colouring book, given that she buys a box of colours, is \\(0{\\cdot}3\\). Find the probability that the student :\n\n(i) Buys both the colouring book and the box of colours.\n\n(ii) Buys a box of colours given that she buys the colouring book.",
+      "_flag": "plan.txt does not mention Q29 at all, in either list. Stem is verbatim 65/5/1 Q31a; transcribed per brief section 6 rather than dropped on an unlisted question. Expect it to dedup."
+    },
+    {
+      "ref": "Q29b",
+      "questionNumber": "29 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Random Variables and Probability Distributions",
+      "difficulty": "MODERATE",
+      "_alternativeTo": "Q29a",
+      "stem": "A person has a fruit box that contains 6 apples and 4 oranges. He picks out a fruit three times, one after the other, after replacing the previous one in the box. Find :\n\n(i) The probability distribution of the number of oranges he draws.\n\n(ii) The expectation of the random variable (number of oranges).",
+      "_flag": "Re-filed onto 'Random Variables and Probability Distributions' (subtopic added 2026-08-18). Rationalised NCERT Ch.13 does not teach this, so the textbook ingest created no such subtopic; CBSE examined it 2022-2025 (measurably not in 2026), so the board-PYQ layer adds it. PYQ-only by construction."
+    },
+    {
+      "ref": "Q30a",
+      "questionNumber": "30 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integration by Partial Fractions",
+      "difficulty": "MODERATE",
+      "stem": "Find :\n\n\\(\\displaystyle\\int \\dfrac{2x}{(x^2 + 3)(x^2 - 5)}\\ dx\\)",
+      "_flag": "plan.txt carries a TRANSCRIBE block (Q30#1) but this stem is verbatim 65/5/1 Q27a. Transcribed anyway; expect it to dedup."
+    },
+    {
+      "ref": "Q30b",
+      "questionNumber": "30 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Properties of Definite Integrals",
+      "difficulty": "MODERATE",
+      "_alternativeTo": "Q30a",
+      "stem": "Evaluate :\n\n\\(\\displaystyle\\int_{1}^{4} \\left(|x - 2| + |x - 4|\\right)\\ dx\\)"
+    },
+    {
+      "ref": "Q31",
+      "questionNumber": "31",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "MODERATE",
+      "stem": "In the Linear Programming Problem (LPP), find the point/points giving maximum value for \\(Z = 5x + 10y\\)\n\nsubject to constraints\n\n\\(x + 2y \\le 120\\)\n\n\\(x + y \\ge 60\\)\n\n\\(x - 2y \\ge 0\\)\n\n\\(x,\\ y \\ge 0\\)",
+      "_flag": "plan.txt does not mention Q31 at all. Stem is verbatim 65/5/1 Q29; transcribed rather than dropped on an unlisted question. No graph is printed with this question - the constraints are given in full and the candidate draws the region."
+    },
+    {
+      "ref": "Q32",
+      "questionNumber": "32",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Under Simple Curves",
+      "difficulty": "HARD",
+      "stem": "In a rough sketch, mark the region bounded by \\(y = 1 + |x + 1|\\), \\(x = -2\\), \\(x = 2\\) and \\(y = 0\\). Using integration, find the area of the marked region."
+    },
+    {
+      "ref": "Q33",
+      "questionNumber": "33",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Solving System of Linear Equations",
+      "difficulty": "HARD",
+      "stem": "Three students run on a racing track such that their speeds add up to 6 km/h. However, double the speed of the third runner added to the speed of the first results in 7 km/h. If thrice the speed of the first runner is added to the original speeds of the other two, the result is 12 km/h. Using matrix method, find the original speed of each runner."
+    },
+    {
+      "ref": "Q34a",
+      "questionNumber": "34 (a)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Logarithmic Differentiation",
+      "difficulty": "HARD",
+      "stem": "For a positive constant 'a', differentiate \\(a^{t + \\frac{1}{t}}\\) with respect to \\(\\left(t + \\dfrac{1}{t}\\right)^a\\), where t is a non-zero real number.",
+      "_flag": "plan.txt carries a TRANSCRIBE block (Q34#1) but this stem is verbatim 65/5/1 Q34a. Transcribed anyway; expect it to dedup."
+    },
+    {
+      "ref": "Q34b",
+      "questionNumber": "34 (b)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Logarithmic Differentiation",
+      "difficulty": "HARD",
+      "_alternativeTo": "Q34a",
+      "stem": "Find \\(\\dfrac{dy}{dx}\\) if \\(y^x + x^y + x^x = a^b\\), where a and b are constants."
+    },
+    {
+      "ref": "Q35a",
+      "questionNumber": "35 (a)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Equation of a Line in Space",
+      "difficulty": "HARD",
+      "stem": "Find the foot of the perpendicular drawn from the point \\((1, 1, 4)\\) on the line \\(\\dfrac{x+2}{5} = \\dfrac{y+1}{2} = \\dfrac{-z+4}{-3}\\).",
+      "_flag": "plan.txt lists Q35#1 and Q35#2 as duplicates and Q35#3 as new, but the printed question has only the two alternatives (a) and (b) and both are verbatim 65/5/1 Q35a and Q35b. There is no third part on the page (index 18). Both transcribed; expect both to dedup."
+    },
+    {
+      "ref": "Q35b",
+      "questionNumber": "35 (b)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Equation of a Line in Space",
+      "difficulty": "HARD",
+      "_alternativeTo": "Q35a",
+      "stem": "Find the point on the line \\(\\dfrac{x-1}{3} = \\dfrac{y+1}{2} = \\dfrac{z-4}{3}\\) at a distance of \\(2\\sqrt{2}\\) units from the point \\((-1, -1, 2)\\)."
+    },
+    {
+      "ref": "Q36i",
+      "questionNumber": "36 (i)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "One-One and Onto Functions",
+      "difficulty": "EASY",
+      "setId": "2025-65-5-3-CS1",
+      "context": "Let A be the set of 30 students of class XII in a school. Let \\(f : A \\to N\\), N is a set of natural numbers such that function \\(f(x) = \\) Roll Number of student x.\n\nOn the basis of the given information, answer the following :",
+      "stem": "Is f a bijective function ?",
+      "_flag": "This whole case study is verbatim 65/5/1 Q37, but 65/5/1 prints it as 'Case Study - 2' and this set prints it as 'Case Study - 1'. Since the heading sits inside `context` (the sibling's convention) and the hash is context-aware, these four rows will NOT dedup against 65/5/1.",
+      "_caseStudyLabel": "Case Study - 1"
+    },
+    {
+      "ref": "Q36ii",
+      "questionNumber": "36 (ii)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "One-One and Onto Functions",
+      "difficulty": "EASY",
+      "setId": "2025-65-5-3-CS1",
+      "context": "Let A be the set of 30 students of class XII in a school. Let \\(f : A \\to N\\), N is a set of natural numbers such that function \\(f(x) = \\) Roll Number of student x.\n\nOn the basis of the given information, answer the following :",
+      "stem": "Give reasons to support your answer to (i).",
+      "_caseStudyLabel": "Case Study - 1"
+    },
+    {
+      "ref": "Q36iiia",
+      "questionNumber": "36 (iii) (a)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "Types of Relations",
+      "difficulty": "MODERATE",
+      "setId": "2025-65-5-3-CS1",
+      "context": "Let A be the set of 30 students of class XII in a school. Let \\(f : A \\to N\\), N is a set of natural numbers such that function \\(f(x) = \\) Roll Number of student x.\n\nOn the basis of the given information, answer the following :",
+      "stem": "Let R be a relation defined by the teacher to plan the seating arrangement of students in pairs, where\n\n\\(R = \\{(x, y) : x,\\ y\\) are Roll Numbers of students such that \\(y = 3x\\}\\).\n\nList the elements of R. Is the relation R reflexive, symmetric and transitive ? Justify your answer.",
+      "_caseStudyLabel": "Case Study - 1"
+    },
+    {
+      "ref": "Q36iiib",
+      "questionNumber": "36 (iii) (b)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "Types of Relations",
+      "difficulty": "MODERATE",
+      "setId": "2025-65-5-3-CS1",
+      "_alternativeTo": "Q36iiia",
+      "context": "Let A be the set of 30 students of class XII in a school. Let \\(f : A \\to N\\), N is a set of natural numbers such that function \\(f(x) = \\) Roll Number of student x.\n\nOn the basis of the given information, answer the following :",
+      "stem": "Let R be a relation defined by\n\n\\(R = \\{(x, y) : x,\\ y\\) are Roll Numbers of students such that \\(y = x^3\\}\\).\n\nList the elements of R. Is R a function ? Justify your answer.",
+      "_caseStudyLabel": "Case Study - 1"
+    },
+    {
+      "ref": "Q37i",
+      "questionNumber": "37 (i)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Theorem of Total Probability",
+      "difficulty": "MODERATE",
+      "setId": "2025-65-5-3-CS2",
+      "context": "A gardener wanted to plant vegetables in his garden. Hence he bought 10 seeds of brinjal plant, 12 seeds of cabbage plant and 8 seeds of radish plant. The shopkeeper assured him of germination probabilities of brinjal, cabbage and radish to be 25%, 35% and 40% respectively. But before he could plant the seeds, they got mixed up in the bag and he had to sow them randomly.\n\nBased upon the above information, answer the following questions :",
+      "stem": "Calculate the probability of a randomly chosen seed to germinate.",
+      "_figure": "DECORATIVE - three captioned photographs (Radish, Cabbage, Brinjal) sit between the passage and the questions on page index 20. Opened and checked: they carry no data, every seed count and germination percentage is in the stem text. Not attached, following the pilot's Q38 precedent.",
+      "_flag": "Verbatim 65/5/1 Q38, but printed there as 'Case Study - 3' and here as 'Case Study - 2'; because the heading is inside `context` these two rows will NOT dedup against 65/5/1.",
+      "_caseStudyLabel": "Case Study - 2"
+    },
+    {
+      "ref": "Q37ii",
+      "questionNumber": "37 (ii)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Bayes' Theorem",
+      "difficulty": "MODERATE",
+      "setId": "2025-65-5-3-CS2",
+      "context": "A gardener wanted to plant vegetables in his garden. Hence he bought 10 seeds of brinjal plant, 12 seeds of cabbage plant and 8 seeds of radish plant. The shopkeeper assured him of germination probabilities of brinjal, cabbage and radish to be 25%, 35% and 40% respectively. But before he could plant the seeds, they got mixed up in the bag and he had to sow them randomly.\n\nBased upon the above information, answer the following questions :",
+      "stem": "What is the probability that it is a cabbage seed, given that the chosen seed germinates ?",
+      "_caseStudyLabel": "Case Study - 2"
+    }
+  ]
+}

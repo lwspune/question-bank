@@ -1,0 +1,1009 @@
+{
+  "paper": "65/6/2",
+  "year": 2025,
+  "pattern": "full80",
+  "_transcription": "ENGLISH half only. The paper is bilingual with Hindi and English on ALTERNATING pages, HINDI FIRST in each pair (page idx 3 is the Hindi of page idx 4). English pages are the EVEN 0-based indices 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22 — idx 0 is the cover, idx 1 the Hindi General Instructions; the pilot hypothesis HELD exactly. 23 pages, 38 questions, 52 rows (9 internal-choice alternatives + case-study sub-parts), matching the printed instruction (choice in 2 questions of Section B, 3 of C, 2 of D, 2 of E). SKIP LIST: plan.txt's numbering does NOT line up with this paper's printed question numbers (it calls Q4 a match for 65/6/1 Q6, whereas 65/6/2 Q4 is word-for-word 65/6/1 Q1), so it was used only as a hint and EVERY question was matched on CONTENT against the committed data/2025-65-6-1.questions.json. Nothing was skipped: all 38 questions are transcribed, and the 41 rows whose printed English is identical to 65/6/1 carry that file's stem and option text BYTE-FOR-BYTE (copied, not retyped) so content_hash dedups them exactly at commit. 11 questions are genuinely new to this set: Q2, Q3, Q9, Q12, Q18, Q23, Q25, Q26, Q31, Q33, Q35. Stems are AS PRINTED, never the 'intended' reading. All Section-A answers are CBSE's own, read off the marking scheme for this exact code (65/6/2, ms page idx 2-6), never derived. ⚠ Q15 carries NO answer: CBSE's own scheme prints '1 mark for any attempt as correct answer is not given in any option' instead of a letter, so it is marked _noCorrectOption rather than shipped with an invented key — the same defect CBSE certified for the identical question printed as Q16 of set 65/6/1.",
+  "questions": [
+    {
+      "ref": "Q1",
+      "questionNumber": "1",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Symmetric and Skew-Symmetric Matrices",
+      "difficulty": "EASY",
+      "stem": "Sum of two skew-symmetric matrices of same order is always a/an :",
+      "options": [
+        {
+          "label": "A",
+          "text": "skew-symmetric matrix"
+        },
+        {
+          "label": "B",
+          "text": "symmetric matrix"
+        },
+        {
+          "label": "C",
+          "text": "null matrix"
+        },
+        {
+          "label": "D",
+          "text": "identity matrix"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q2",
+      "questionNumber": "2",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Symmetric and Skew-Symmetric Matrices",
+      "difficulty": "EASY",
+      "stem": "If \\(A = \\begin{bmatrix} 0 & -3 & 8 \\\\ 3 & 0 & 5 \\\\ -8 & -5 & 0 \\end{bmatrix}\\), then A is a :",
+      "options": [
+        {
+          "label": "A",
+          "text": "null matrix"
+        },
+        {
+          "label": "B",
+          "text": "symmetric matrix"
+        },
+        {
+          "label": "C",
+          "text": "skew-symmetric matrix"
+        },
+        {
+          "label": "D",
+          "text": "diagonal matrix"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q3",
+      "questionNumber": "3",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Domains, Ranges and Principal Value Branches",
+      "difficulty": "MODERATE",
+      "stem": "The graph shown below depicts :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(y = \\cot x\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(y = \\cot^{-1} x\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(y = \\tan x\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(y = \\tan^{-1} x\\)"
+        }
+      ],
+      "answer": "B",
+      "_figure": "REQUIRED — the stem names no curve at all, so the question IS the printed graph. It shows several branches of the inverse-cotangent relation with horizontal dashed asymptotes at \\(y = -\\pi\\), \\(y = \\pi\\) and \\(y = 2\\pi\\), the axis marked at \\(\\pm\\pi/2\\) and \\(3\\pi/2\\), and the principal branch falling from near \\(\\pi\\) through \\((0,\\ \\pi/2)\\) towards \\(0\\). Page idx 4."
+    },
+    {
+      "ref": "Q4",
+      "questionNumber": "4",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Multiplication of Matrices",
+      "difficulty": "EASY",
+      "stem": "Let both \\(AB'\\) and \\(B'A\\) be defined for matrices A and B. If order of A is \\(n \\times m\\), then the order of B is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(n \\times n\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(n \\times m\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(m \\times m\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(m \\times n\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q5",
+      "questionNumber": "5",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Continuity",
+      "difficulty": "MODERATE",
+      "stem": "If \\(f(x) = \\begin{cases} \\dfrac{\\log(1 + ax) + \\log(1 - bx)}{x}, & \\text{for } x \\ne 0 \\\\ k, & \\text{for } x = 0 \\end{cases}\\) is continuous at \\(x = 0\\), then the value of k is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(a\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(a + b\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(a - b\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(b\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q6",
+      "questionNumber": "6",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Second Order Derivatives",
+      "difficulty": "MODERATE",
+      "stem": "If \\(y = a\\cos(\\log x) + b\\sin(\\log x)\\), then \\(x^2 y_2 + x y_1\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\cot(\\log x)\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(y\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(-y\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\tan(\\log x)\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q7",
+      "questionNumber": "7",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Evaluating Inverse Trigonometric Expressions",
+      "difficulty": "MODERATE",
+      "stem": "\\(\\left[ \\sec^{-1}(-\\sqrt{2}) - \\tan^{-1}\\left(\\dfrac{1}{\\sqrt{3}}\\right) \\right]\\) is equal to :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{11\\pi}{12}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{5\\pi}{12}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(-\\dfrac{5\\pi}{12}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{7\\pi}{12}\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q8",
+      "questionNumber": "8",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+      "difficulty": "MODERATE",
+      "stem": "If \\(\\tan^{-1}(x^2 - y^2) = a\\), where 'a' is a constant, then \\(\\dfrac{dy}{dx}\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{x}{y}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-\\dfrac{x}{y}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{a}{x}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{a}{y}\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q9",
+      "questionNumber": "9",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "difficulty": "MODERATE",
+      "stem": "Let \\(f(x) = x^2\\), \\(x \\in R\\). Then, which of the following statements is **incorrect** ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Minimum value of f does not exist."
+        },
+        {
+          "label": "B",
+          "text": "There is no point of maximum value of f in R."
+        },
+        {
+          "label": "C",
+          "text": "f is continuous at \\(x = 0\\)."
+        },
+        {
+          "label": "D",
+          "text": "f is differentiable at \\(x = 0\\)."
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q10",
+      "questionNumber": "10",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Integrals of Special Forms",
+      "difficulty": "MODERATE",
+      "stem": "\\(\\displaystyle\\int \\dfrac{x + 5}{(x + 6)^2}\\, e^x\\, dx\\) is equal to :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\log(x + 6) + C\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(e^x + C\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{e^x}{x + 6} + C\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{-1}{(x + 6)^2} + C\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q11",
+      "questionNumber": "11",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Integration as the Inverse of Differentiation",
+      "difficulty": "MODERATE",
+      "stem": "Let \\(f'(x) = 3(x^2 + 2x) - \\dfrac{4}{x^3} + 5\\), \\(f(1) = 0\\). Then, f(x) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(x^3 + 3x^2 + \\dfrac{2}{x^2} + 5x + 11\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(x^3 + 3x^2 + \\dfrac{2}{x^2} + 5x - 11\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(x^3 + 3x^2 - \\dfrac{2}{x^2} + 5x - 11\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(x^3 - 3x^2 - \\dfrac{2}{x^2} + 5x - 11\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q12",
+      "questionNumber": "12",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Differential Equations",
+      "subtopic": "Order and Degree of a Differential Equation",
+      "difficulty": "EASY",
+      "stem": "The order and degree of the differential equation\n\n\\(\\dfrac{d^2y}{dx^2} + 4\\left(\\dfrac{dy}{dx}\\right) = x \\log\\left(\\dfrac{d^2y}{dx^2}\\right)\\)\n\nare respectively :",
+      "options": [
+        {
+          "label": "A",
+          "text": "0, 3"
+        },
+        {
+          "label": "B",
+          "text": "2, 1"
+        },
+        {
+          "label": "C",
+          "text": "2, not defined"
+        },
+        {
+          "label": "D",
+          "text": "1, not defined"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q13",
+      "questionNumber": "13",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "MODERATE",
+      "stem": "For a Linear Programming Problem (LPP), the given objective function is \\(Z = x + 2y\\). The feasible region PQRS determined by the set of constraints is shown as a shaded region in the graph.\n\n(Note : The figure is not to scale)\n\n\\(P \\equiv \\left(\\dfrac{3}{13},\\ \\dfrac{24}{13}\\right)\\), \\(Q \\equiv \\left(\\dfrac{3}{2},\\ \\dfrac{15}{4}\\right)\\), \\(R \\equiv \\left(\\dfrac{7}{2},\\ \\dfrac{3}{4}\\right)\\), \\(S \\equiv \\left(\\dfrac{18}{7},\\ \\dfrac{2}{7}\\right)\\)\n\nWhich of the following statements is correct ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Z is minimum at \\(S\\left(\\dfrac{18}{7},\\ \\dfrac{2}{7}\\right)\\)"
+        },
+        {
+          "label": "B",
+          "text": "Z is maximum at \\(R\\left(\\dfrac{7}{2},\\ \\dfrac{3}{4}\\right)\\)"
+        },
+        {
+          "label": "C",
+          "text": "(Value of Z at P) > (Value of Z at Q)"
+        },
+        {
+          "label": "D",
+          "text": "(Value of Z at Q) < (Value of Z at R)"
+        }
+      ],
+      "answer": "A",
+      "_figure": "DECORATIVE — a shaded quadrilateral PQRS is drawn, but the paper prints all four vertices as text directly beneath it and the options quote the same coordinates, so every number needed is in the stem. Opened before deciding. Page idx 8."
+    },
+    {
+      "ref": "Q14",
+      "questionNumber": "14",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Under Simple Curves",
+      "difficulty": "EASY",
+      "stem": "The area of the region bounded by the curve \\(y^2 = x\\) between \\(x = 0\\) and \\(x = 1\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{3}{2}\\) sq units"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{2}{3}\\) sq units"
+        },
+        {
+          "label": "C",
+          "text": "3 sq units"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{4}{3}\\) sq units"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q15",
+      "questionNumber": "15",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Addition of Vectors",
+      "difficulty": "MODERATE",
+      "stem": "Let \\(|\\vec{a}| = 5\\) and \\(-2 \\le \\lambda \\le 1\\). Then, the range of \\(|\\lambda \\vec{a}|\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\([5, 10]\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\([-2, 5]\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\([-2, 1]\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\([-10, 5]\\)"
+        }
+      ],
+      "_noCorrectOption": true,
+      "_flag": "NO CORRECT OPTION — this paper's OWN marking scheme prints, verbatim, in place of an answer letter: '1 mark for any attempt as correct answer is not given in any option' (ms page idx 5). \\(|\\lambda \\vec{a}| = 5|\\lambda|\\) with \\(|\\lambda| \\in [0, 2]\\) gives \\([0, 10]\\), which no printed option offers; option (D) \\([-10, 5]\\) is what dropping the modulus gives, i.e. the trap. Preserved as printed with NO option marked correct, per the preserve-the-paper-defect convention. The identical question and the identical CBSE ruling appear as Q16 of set 65/6/1."
+    },
+    {
+      "ref": "Q16",
+      "questionNumber": "16",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Differential Equations",
+      "subtopic": "Variables Separable",
+      "difficulty": "MODERATE",
+      "stem": "The solution for the differential equation \\(\\log\\left(\\dfrac{dy}{dx}\\right) = 3x + 4y\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(3e^{4y} + 4e^{-3x} + C = 0\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(e^{3x + 4y} + C = 0\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(3e^{-3y} + 4e^{4x} + 12C = 0\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(3e^{-4y} + 4e^{3x} + 12C = 0\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q17",
+      "questionNumber": "17",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "MODERATE",
+      "stem": "In a Linear Programming Problem (LPP), the objective function \\(Z = 2x + 5y\\) is to be maximised under the following constraints :\n\n\\(x + y \\le 4\\), \\(3x + 3y \\ge 18\\), \\(x,\\ y \\ge 0\\)\n\nStudy the graph and select the correct option.\n\n(Note : The figure is not to scale)\n\nThe solution of the given LPP :",
+      "options": [
+        {
+          "label": "A",
+          "text": "lies in the shaded unbounded region."
+        },
+        {
+          "label": "B",
+          "text": "lies in \\(\\triangle\\) AOB."
+        },
+        {
+          "label": "C",
+          "text": "does not exist."
+        },
+        {
+          "label": "D",
+          "text": "lies in the combined region of \\(\\triangle\\) AOB and unbounded shaded region."
+        }
+      ],
+      "answer": "C",
+      "_figure": "REQUIRED — options (B) and (D) name '\\(\\triangle\\) AOB' and 'the unbounded shaded region', and the points A, O, B and the two shaded bands exist ONLY in the printed graph. (The constraints are self-contradictory, so the answer is derivable without it — but the option TEXT is not readable without it.) Page idx 10."
+    },
+    {
+      "ref": "Q18",
+      "questionNumber": "18",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Probability",
+      "subtopic": "Independent Events",
+      "difficulty": "MODERATE",
+      "stem": "Chances that three persons A, B, and C go to the market are 30%, 60% and 50% respectively. The probability that at least one will go to the market is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{14}{10}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{43}{50}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{9}{100}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{7}{50}\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q19",
+      "questionNumber": "19",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Vector (Cross) Product",
+      "difficulty": "MODERATE",
+      "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "**Assertion (A) :** If \\(|\\vec{a} \\times \\vec{b}|^2 + |\\vec{a} \\cdot \\vec{b}|^2 = 256\\) and \\(|\\vec{b}| = 8\\), then \\(|\\vec{a}| = 2\\).\n\n**Reason (R) :** \\(\\sin^2\\theta + \\cos^2\\theta = 1\\) and \\(|\\vec{a} \\times \\vec{b}| = |\\vec{a}|\\,|\\vec{b}|\\sin\\theta\\) and \\(\\vec{a} \\cdot \\vec{b} = |\\vec{a}|\\,|\\vec{b}|\\cos\\theta\\).",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q20",
+      "questionNumber": "20",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Relations and Functions",
+      "subtopic": "Composition and Invertible Functions",
+      "difficulty": "MODERATE",
+      "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "**Assertion (A) :** Let \\(f(x) = e^x\\) and \\(g(x) = \\log x\\). Then \\((f + g)\\,x = e^x + \\log x\\) where domain of \\((f + g)\\) is R.\n\n**Reason (R) :** \\(\\text{Dom}(f + g) = \\text{Dom}(f) \\cap \\text{Dom}(g)\\).",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "D",
+      "_flag": "SUBTOPIC-FIT: this is the ALGEBRA OF FUNCTIONS (domain of a sum), which rationalised NCERT Ch.1 does not teach — the chapter covers types of relations, one-one/onto, composition and invertibility only, and sum-of-functions is Class 11 material. Filed on 'Composition and Invertible Functions' as the least-bad home, being the only subtopic about combining two functions. Not the random-variable taxonomy gap; a separate, smaller one."
+    },
+    {
+      "ref": "Q21a",
+      "questionNumber": "21 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Differentiability and the Chain Rule",
+      "difficulty": "MODERATE",
+      "stem": "Differentiate \\(\\sqrt{e^{\\sqrt{2x}}}\\) with respect to \\(e^{\\sqrt{2x}}\\) for \\(x > 0\\)."
+    },
+    {
+      "ref": "Q21b",
+      "questionNumber": "21 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Logarithmic Differentiation",
+      "difficulty": "MODERATE",
+      "stem": "If \\((x)^y = (y)^x\\), then find \\(\\dfrac{dy}{dx}\\).",
+      "_alternativeTo": "Q21a"
+    },
+    {
+      "ref": "Q22a",
+      "questionNumber": "22 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Section Formula",
+      "difficulty": "MODERATE",
+      "stem": "If \\(\\vec{a}\\) and \\(\\vec{b}\\) are position vectors of point A and point B respectively, find the position vector of point C on BA produced such that \\(BC = 3BA\\)."
+    },
+    {
+      "ref": "Q22b",
+      "questionNumber": "22 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Components and Direction Cosines",
+      "difficulty": "EASY",
+      "stem": "Vector \\(\\vec{r}\\) is inclined at equal angles to the three axes x, y and z. If magnitude of \\(\\vec{r}\\) is \\(5\\sqrt{3}\\) units, then find \\(\\vec{r}\\).",
+      "_alternativeTo": "Q22a"
+    },
+    {
+      "ref": "Q23",
+      "questionNumber": "23",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Increasing and Decreasing Functions",
+      "difficulty": "MODERATE",
+      "stem": "Determine those values of x for which \\(f(x) = \\dfrac{2}{x} - 5\\), \\(x \\ne 0\\) is increasing or decreasing."
+    },
+    {
+      "ref": "Q24",
+      "questionNumber": "24",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Domains, Ranges and Principal Value Branches",
+      "difficulty": "MODERATE",
+      "stem": "Find the domain of \\(f(x) = \\sin^{-1}(-x^2)\\)."
+    },
+    {
+      "ref": "Q25",
+      "questionNumber": "25",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Angle Between Two Lines",
+      "difficulty": "MODERATE",
+      "stem": "Find the value of \\(\\lambda\\) if the following lines are perpendicular to each other :\n\n\\(l_1 : \\dfrac{1 - x}{-3} = \\dfrac{3y - 2}{2\\lambda} = \\dfrac{z - 3}{3}\\)\n\n\\(l_2 : \\dfrac{x - 1}{3\\lambda} = \\dfrac{1 - y}{1} = \\dfrac{2z - 5}{3}\\)"
+    },
+    {
+      "ref": "Q26",
+      "questionNumber": "26",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Matrices",
+      "subtopic": "Multiplication of Matrices",
+      "difficulty": "MODERATE",
+      "stem": "If \\(A = \\begin{bmatrix} 1 & -1 & 0 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 2 & 0 & 1 \\\\ -1 & 3 & 4 \\\\ 0 & 5 & 1 \\end{bmatrix}\\) and \\(C = \\begin{bmatrix} 2 \\\\ 3 \\\\ 4 \\end{bmatrix}\\), are three matrices, then find ABC."
+    },
+    {
+      "ref": "Q27",
+      "questionNumber": "27",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "MODERATE",
+      "stem": "Consider the Linear Programming Problem, where the objective function \\(Z = (x + 4y)\\) needs to be minimized subject to constraints\n\n\\(2x + y \\ge 1000\\)\n\n\\(x + 2y \\ge 800\\)\n\n\\(x,\\ y \\ge 0\\).\n\nDraw a neat graph of the feasible region and find the minimum value of Z."
+    },
+    {
+      "ref": "Q28a",
+      "questionNumber": "28 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Equation of a Line in Space",
+      "difficulty": "MODERATE",
+      "stem": "Find the distance of the point \\(P(2,\\ 4,\\ -1)\\) from the line \\(\\dfrac{x + 5}{1} = \\dfrac{y + 3}{4} = \\dfrac{z - 6}{-9}\\).",
+      "_flag": "SUBTOPIC-FIT: distance of a POINT from a line is not a named section of rationalised NCERT Ch.11 (which runs direction cosines → equation of a line → angle between two lines → shortest distance between two lines). Filed on 'Equation of a Line in Space', since the method is to take a general point of the line and impose perpendicularity. Not a taxonomy gap — no new subtopic is being asked for."
+    },
+    {
+      "ref": "Q28b",
+      "questionNumber": "28 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Equation of a Line in Space",
+      "difficulty": "MODERATE",
+      "stem": "Let the position vectors of the points A, B and C be \\(3\\hat{i} - \\hat{j} - 2\\hat{k}\\), \\(\\hat{i} + 2\\hat{j} - \\hat{k}\\) and \\(\\hat{i} + 5\\hat{j} + 3\\hat{k}\\) respectively. Find the vector and cartesian equations of the line passing through A and parallel to line BC.",
+      "_alternativeTo": "Q28a"
+    },
+    {
+      "ref": "Q29a",
+      "questionNumber": "29 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+      "difficulty": "MODERATE",
+      "stem": "Differentiate \\(y = \\sin^{-1}(3x - 4x^3)\\) w.r.t. x, if \\(x \\in \\left[-\\dfrac{1}{2},\\ \\dfrac{1}{2}\\right]\\)."
+    },
+    {
+      "ref": "Q29b",
+      "questionNumber": "29 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+      "difficulty": "MODERATE",
+      "stem": "Differentiate \\(y = \\cos^{-1}\\left(\\dfrac{1 - x^2}{1 + x^2}\\right)\\) with respect to x, when \\(x \\in (0, 1)\\).",
+      "_alternativeTo": "Q29a"
+    },
+    {
+      "ref": "Q30a",
+      "questionNumber": "30 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "Types of Relations",
+      "difficulty": "HARD",
+      "stem": "A student wants to pair up natural numbers in such a way that they satisfy the equation \\(2x + y = 41\\), \\(x,\\ y \\in N\\). Find the domain and range of the relation. Check if the relation thus formed is reflexive, symmetric and transitive. Hence, state whether it is an equivalence relation or not."
+    },
+    {
+      "ref": "Q30b",
+      "questionNumber": "30 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "One-One and Onto Functions",
+      "difficulty": "HARD",
+      "stem": "Show that the function \\(f : N \\to N\\), where N is a set of natural numbers, given by \\(f(n) = \\begin{cases} n - 1, & \\text{if } n \\text{ is even} \\\\ n + 1, & \\text{if } n \\text{ is odd} \\end{cases}\\) is a bijection.",
+      "_alternativeTo": "Q30a"
+    },
+    {
+      "ref": "Q31",
+      "questionNumber": "31",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Random Variables and Probability Distributions",
+      "difficulty": "MODERATE",
+      "stem": "A coin is biased so that the head is 3 times as likely to occur as tail. If the coin is tossed three times, find the probability distribution of number of tails. Hence, find the mean of the distribution."
+    },
+    {
+      "ref": "Q32a",
+      "questionNumber": "32 (a)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Differential Equations",
+      "subtopic": "Homogeneous Differential Equations",
+      "difficulty": "HARD",
+      "stem": "Solve the differential equation : \\(x^2 y\\, dx - (x^3 + y^3)\\, dy = 0\\)."
+    },
+    {
+      "ref": "Q32b",
+      "questionNumber": "32 (b)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Differential Equations",
+      "subtopic": "Linear Differential Equations",
+      "difficulty": "HARD",
+      "stem": "Solve the differential equation \\((1 + x^2)\\dfrac{dy}{dx} + 2xy - 4x^2 = 0\\) subject to initial condition \\(y(0) = 0\\).",
+      "_alternativeTo": "Q32a"
+    },
+    {
+      "ref": "Q33",
+      "questionNumber": "33",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Under Simple Curves",
+      "difficulty": "HARD",
+      "stem": "Use integration to find the area of the region enclosed by curve \\(y = -x^2\\) and the straight lines \\(x = -3\\), \\(x = 2\\) and \\(y = 0\\). Sketch a rough figure to illustrate the bounded region."
+    },
+    {
+      "ref": "Q34a",
+      "questionNumber": "34 (a)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integration by Partial Fractions",
+      "difficulty": "HARD",
+      "stem": "Find :\n\n\\(\\displaystyle\\int \\dfrac{x^2 + 1}{(x - 1)^2 (x + 3)}\\, dx\\)"
+    },
+    {
+      "ref": "Q34b",
+      "questionNumber": "34 (b)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Properties of Definite Integrals",
+      "difficulty": "HARD",
+      "stem": "Evaluate :\n\n\\(\\displaystyle\\int_{0}^{\\pi/2} \\dfrac{x}{\\sin x + \\cos x}\\, dx\\)",
+      "_alternativeTo": "Q34a"
+    },
+    {
+      "ref": "Q35",
+      "questionNumber": "35",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Equation of a Line in Space",
+      "difficulty": "HARD",
+      "stem": "Find the foot of the perpendicular drawn from point \\((2, -1, 5)\\) to the line \\(\\dfrac{x - 11}{10} = \\dfrac{y + 2}{-4} = \\dfrac{z + 8}{-11}\\). Also, find the length of the perpendicular.",
+      "_flag": "SUBTOPIC-FIT: foot of the perpendicular from a POINT to a line is not a named section of rationalised NCERT Ch.11 (direction cosines → equation of a line → angle between two lines → shortest distance between two lines). Filed on 'Equation of a Line in Space', since the method is to take a general point of the line and impose perpendicularity — the same call already made for Q30 (a) of set 65/6/1. Not a taxonomy gap; no new subtopic asked for."
+    },
+    {
+      "ref": "Q36i",
+      "questionNumber": "36 (i)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Theorem of Total Probability",
+      "difficulty": "MODERATE",
+      "context": "A shop selling electronic items sells smartphones of only three reputed companies A, B and C because chances of their manufacturing a defective smartphone are only 5%, 4% and 2% respectively. In his inventory he has 25% smartphones from company A, 35% smartphones from company B and 40% smartphones from company C.\n\nA person buys a smartphone from this shop.",
+      "stem": "Find the probability that it was defective.",
+      "setId": "2025-65-6-2-CS1",
+      "_caseStudyLabel": "Case Study – 1"
+    },
+    {
+      "ref": "Q36ii",
+      "questionNumber": "36 (ii)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Bayes' Theorem",
+      "difficulty": "MODERATE",
+      "context": "A shop selling electronic items sells smartphones of only three reputed companies A, B and C because chances of their manufacturing a defective smartphone are only 5%, 4% and 2% respectively. In his inventory he has 25% smartphones from company A, 35% smartphones from company B and 40% smartphones from company C.\n\nA person buys a smartphone from this shop.",
+      "stem": "What is the probability that this defective smartphone was manufactured by company B ?",
+      "setId": "2025-65-6-2-CS1",
+      "_caseStudyLabel": "Case Study – 1"
+    },
+    {
+      "ref": "Q37i",
+      "questionNumber": "37 (i)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Solving System of Linear Equations",
+      "difficulty": "EASY",
+      "context": "Three students, Neha, Rani and Sam go to a market to purchase stationery items. Neha buys 4 pens, 3 notepads and 2 erasers and pays ₹ 60. Rani buys 2 pens, 4 notepads and 6 erasers for ₹ 90. Sam pays ₹ 70 for 6 pens, 2 notepads and 3 erasers.\n\nBased upon the above information, answer the following questions :",
+      "stem": "Form the equations required to solve the problem of finding the price of each item, and express it in the matrix form \\(AX = B\\).",
+      "setId": "2025-65-6-2-CS2",
+      "_caseStudyLabel": "Case Study – 2"
+    },
+    {
+      "ref": "Q37ii",
+      "questionNumber": "37 (ii)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Adjoint and Inverse of a Matrix",
+      "difficulty": "EASY",
+      "context": "Three students, Neha, Rani and Sam go to a market to purchase stationery items. Neha buys 4 pens, 3 notepads and 2 erasers and pays ₹ 60. Rani buys 2 pens, 4 notepads and 6 erasers for ₹ 90. Sam pays ₹ 70 for 6 pens, 2 notepads and 3 erasers.\n\nBased upon the above information, answer the following questions :",
+      "stem": "Find \\(|A|\\) and confirm if it is possible to find \\(A^{-1}\\).",
+      "setId": "2025-65-6-2-CS2",
+      "_caseStudyLabel": "Case Study – 2"
+    },
+    {
+      "ref": "Q37iiia",
+      "questionNumber": "37 (iii) (a)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Adjoint and Inverse of a Matrix",
+      "difficulty": "MODERATE",
+      "context": "Three students, Neha, Rani and Sam go to a market to purchase stationery items. Neha buys 4 pens, 3 notepads and 2 erasers and pays ₹ 60. Rani buys 2 pens, 4 notepads and 6 erasers for ₹ 90. Sam pays ₹ 70 for 6 pens, 2 notepads and 3 erasers.\n\nBased upon the above information, answer the following questions :",
+      "stem": "Find \\(A^{-1}\\), if possible, and write the formula to find X.",
+      "setId": "2025-65-6-2-CS2",
+      "_caseStudyLabel": "Case Study – 2"
+    },
+    {
+      "ref": "Q37iiib",
+      "questionNumber": "37 (iii) (b)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Matrices",
+      "subtopic": "Multiplication of Matrices",
+      "difficulty": "MODERATE",
+      "context": "Three students, Neha, Rani and Sam go to a market to purchase stationery items. Neha buys 4 pens, 3 notepads and 2 erasers and pays ₹ 60. Rani buys 2 pens, 4 notepads and 6 erasers for ₹ 90. Sam pays ₹ 70 for 6 pens, 2 notepads and 3 erasers.\n\nBased upon the above information, answer the following questions :",
+      "stem": "Find \\(A^2 - 8I\\), where I is an identity matrix.",
+      "setId": "2025-65-6-2-CS2",
+      "_caseStudyLabel": "Case Study – 2",
+      "_alternativeTo": "Q37iiia"
+    },
+    {
+      "ref": "Q38i",
+      "questionNumber": "38 (i)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "difficulty": "MODERATE",
+      "context": "A ladder of fixed length ‘h’ is to be placed along the wall such that it is free to move along the height of the wall.\n\nBased upon the above information, answer the following questions :",
+      "stem": "Express the distance (y) between the wall and foot of the ladder in terms of ‘h’ and height (x) on the wall at a certain instant. Also, write an expression in terms of h and x for the area (A) of the right triangle, as seen from the side by an observer.",
+      "setId": "2025-65-6-2-CS3",
+      "_caseStudyLabel": "Case Study – 3",
+      "_figure": "DECORATIVE — a clip-art picture of a ladder leaning on a wall beside a tree. No length, angle or label is marked on it; every quantity ('h', x, y) is defined in the stem text. Opened before deciding. Page idx 22."
+    },
+    {
+      "ref": "Q38ii",
+      "questionNumber": "38 (ii)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "difficulty": "MODERATE",
+      "context": "A ladder of fixed length ‘h’ is to be placed along the wall such that it is free to move along the height of the wall.\n\nBased upon the above information, answer the following questions :",
+      "stem": "Find the derivative of the area (A) with respect to the height on the wall (x), and find its critical point.",
+      "setId": "2025-65-6-2-CS3",
+      "_caseStudyLabel": "Case Study – 3"
+    },
+    {
+      "ref": "Q38iiia",
+      "questionNumber": "38 (iii) (a)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "difficulty": "HARD",
+      "context": "A ladder of fixed length ‘h’ is to be placed along the wall such that it is free to move along the height of the wall.\n\nBased upon the above information, answer the following questions :",
+      "stem": "Show that the area (A) of the right triangle is maximum at the critical point.",
+      "setId": "2025-65-6-2-CS3",
+      "_caseStudyLabel": "Case Study – 3"
+    },
+    {
+      "ref": "Q38iiib",
+      "questionNumber": "38 (iii) (b)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Rate of Change of Quantities",
+      "difficulty": "MODERATE",
+      "context": "A ladder of fixed length ‘h’ is to be placed along the wall such that it is free to move along the height of the wall.\n\nBased upon the above information, answer the following questions :",
+      "stem": "If the foot of the ladder whose length is 5 m, is being pulled towards the wall such that the rate of decrease of distance (y) is 2 m/s, then at what rate is the height on the wall (x) increasing, when the foot of the ladder is 3 m away from the wall ?",
+      "setId": "2025-65-6-2-CS3",
+      "_caseStudyLabel": "Case Study – 3",
+      "_alternativeTo": "Q38iiia"
+    }
+  ]
+}

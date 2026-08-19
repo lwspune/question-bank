@@ -1,0 +1,1009 @@
+{
+  "paper": "65/5/3",
+  "year": 2023,
+  "pattern": "full80",
+  "_transcription": "ENGLISH PAGES = the EVEN 0-based indices 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22. The alternating hypothesis HELD exactly, and identically to 65/5/1: idx 0 is the cover (Series EF1GH/5, SET-3, Q.P. Code 65/5/3), idx 1 the Hindi General Instructions, idx 2 the English General Instructions, then Hindi on the ODD index and its English twin on the following EVEN index through idx 22; idx 23 carries only the QR code and the '65/5/3 265 C Page 24' footer. 2023 PRINTS ITS OPTION LABELS IN LOWERCASE '(a) (b) (c) (d)' throughout Section A including the shared Assertion-Reason choice block; every one is mapped (a)->A .. (d)->D, with no question numbering its options any other way. DECIMALS ARE ORDINARY IN THE PAPER: the paper's only decimal, Q8 option (b), prints 'x = 1.5' with a baseline full stop, while the marking scheme prints the same value raised as '1·5' — the paper wins (see the Q8 _flag). Headings are 'Case Study-I / -II / -III' (Roman numerals, hyphen with no spaces), kept out of context and recorded in _caseStudyLabel; sub-parts are labelled (I)/(II)/(III). SECTION E OF THIS SET IS IDENTICAL TO 65/5/1's — same three passages, same sub-parts, and even the same case-study NUMBERS, so no re-labelling was needed. All 20 Section-A keys come from the official marking scheme for THIS code (ms/p02.png-p06.png, 'MS_XII_Mathematics_041_65/5/3_2022-23'); every one of the 14 reused MCQs independently matched the key the reference file already carried. Unlike 65/5/1 this set has NO keyless question. 33 of the 52 rows are questions 65/5/1 also sets: each was read on the 65/5/3 page first, then its stem and options reused byte-for-byte from data/2023-65-5-1.questions.json so the rows dedup at commit instead of shipping a one-character drift. plan.txt's block->number attribution proved unreliable as the brief warns (e.g. it maps this paper's Q22 to 65/5/1's Q21, which is a completely different question), so every match was made on CONTENT. NO solutions written for subjective rows, per the brief.",
+  "questions": [
+    {
+      "ref": "Q1",
+      "questionNumber": "1",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Relations and Functions",
+      "subtopic": "Types of Relations",
+      "difficulty": "EASY",
+      "stem": "Let R be a relation in the set N given by\n\n\\(R = \\{(a, b) : a = b - 2, b > 6\\}\\).\n\nThen",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((8, 7) \\in R\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\((6, 8) \\in R\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\((3, 8) \\in R\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\((2, 4) \\in R\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q2",
+      "questionNumber": "2",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Transpose of a Matrix",
+      "difficulty": "EASY",
+      "stem": "If \\(A = \\begin{bmatrix} 5 & x \\\\ y & 0 \\end{bmatrix}\\) and \\(A = A^T\\), where \\(A^T\\) is the transpose of the matrix A, then",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(x = 0,\\ y = 5\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(x = y\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(x + y = 5\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(x = 5,\\ y = 0\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q3",
+      "questionNumber": "3",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Evaluating Inverse Trigonometric Expressions",
+      "difficulty": "EASY",
+      "stem": "\\(\\sin\\left[\\dfrac{\\pi}{3} + \\sin^{-1}\\left(\\dfrac{1}{2}\\right)\\right]\\) is equal to",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{1}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{1}{3}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{1}{4}\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q4",
+      "questionNumber": "4",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Adjoint and Inverse of a Matrix",
+      "difficulty": "MODERATE",
+      "stem": "If for a square matrix A, \\(A^2 - A + I = O\\), then \\(A^{-1}\\) equals",
+      "options": [
+        {
+          "label": "A",
+          "text": "A"
+        },
+        {
+          "label": "B",
+          "text": "\\(A + I\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(I - A\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(A - I\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q5",
+      "questionNumber": "5",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Determinant and its Properties",
+      "difficulty": "EASY",
+      "stem": "If \\(\\begin{vmatrix} \\alpha & 3 & 4 \\\\ 1 & 2 & 1 \\\\ 1 & 4 & 1 \\end{vmatrix} = 0\\), then the value of \\(\\alpha\\) is",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "2"
+        },
+        {
+          "label": "C",
+          "text": "3"
+        },
+        {
+          "label": "D",
+          "text": "4"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q6",
+      "questionNumber": "6",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Continuity",
+      "difficulty": "EASY",
+      "stem": "If \\(f(x) = |\\cos x|\\), then \\(f\\left(\\dfrac{3\\pi}{4}\\right)\\) is",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "\\(-1\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{-1}{\\sqrt{2}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{1}{\\sqrt{2}}\\)"
+        }
+      ],
+      "answer": "D",
+      "_flag": "AS PRINTED THERE IS NO PRIME: the paper asks for \\(f(3\\pi/4)\\), not \\(f'(3\\pi/4)\\) — verified on a 2.6x crop of page idx 6, and the Hindi twin (idx 5) prints it the same way, so this is not a rendering artefact of one column. The official marking scheme (ms/p03.png, Q6) reproduces the stem identically and keys (d) 1/\\(\\sqrt{2}\\), which is the value of BOTH readings (|cos 3\\(\\pi\\)/4| = 1/\\(\\sqrt{2}\\), and near 3\\(\\pi\\)/4 f(x) = -cos x so f'(x) = sin x = 1/\\(\\sqrt{2}\\)), so the key is not in doubt either way. Filed on Continuity and Differentiability / Continuity because |cos x| is that chapter's standard example and the question sits inside the paper's calculus block; as printed it demands no differentiation at all."
+    },
+    {
+      "ref": "Q7",
+      "questionNumber": "7",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Second Order Derivatives",
+      "difficulty": "EASY",
+      "stem": "If \\(x = A\\cos 4t + B\\sin 4t\\), then \\(\\dfrac{d^2x}{dt^2}\\) is equal to",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(x\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-x\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(16x\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-16x\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q8",
+      "questionNumber": "8",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Continuity",
+      "difficulty": "EASY",
+      "stem": "The function \\(f(x) = [x]\\), where \\([x]\\) denotes the greatest integer less than or equal to \\(x\\), is continuous at",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(x = 1\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(x = 1.5\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(x = -2\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(x = 4\\)"
+        }
+      ],
+      "answer": "B",
+      "_flag": "The paper prints option (b) as 'x = 1.5' with an ORDINARY baseline full stop (page idx 6), while the marking scheme's own Sol. line prints it raised, 'x = 1·5' (ms/p03.png). The two CBSE documents disagree; the paper wins, so '1.5' is transcribed. Identical divergence to the one recorded on 65/5/1."
+    },
+    {
+      "ref": "Q9",
+      "questionNumber": "9",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Increasing and Decreasing Functions",
+      "difficulty": "EASY",
+      "stem": "The function \\(f(x) = x^3 + 3x\\) is increasing in interval",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((-\\infty, 0)\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\((0, \\infty)\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\mathbb{R}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\((0, 1)\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q10",
+      "questionNumber": "10",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Definite Integrals and the Fundamental Theorem",
+      "difficulty": "MODERATE",
+      "stem": "\\(\\displaystyle\\int_{-1}^{1} \\dfrac{|x - 2|}{x - 2}\\,dx\\), \\(x \\ne 2\\) is equal to",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "\\(-1\\)"
+        },
+        {
+          "label": "C",
+          "text": "2"
+        },
+        {
+          "label": "D",
+          "text": "\\(-2\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q11",
+      "questionNumber": "11",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Integration using Trigonometric Identities",
+      "difficulty": "MODERATE",
+      "stem": "\\(\\displaystyle\\int \\dfrac{\\sec x}{\\sec x - \\tan x}\\,dx\\) equals",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\sec x - \\tan x + c\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\sec x + \\tan x + c\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\tan x - \\sec x + c\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-(\\sec x + \\tan x) + c\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q12",
+      "questionNumber": "12",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Differential Equations",
+      "subtopic": "Order and Degree of a Differential Equation",
+      "difficulty": "EASY",
+      "stem": "The order and the degree of the differential equation \\(\\left(1 + 3\\dfrac{dy}{dx}\\right)^2 = 4\\dfrac{d^3y}{dx^3}\\) respectively are :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(1, \\dfrac{2}{3}\\)"
+        },
+        {
+          "label": "B",
+          "text": "3, 1"
+        },
+        {
+          "label": "C",
+          "text": "3, 3"
+        },
+        {
+          "label": "D",
+          "text": "1, 2"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q13",
+      "questionNumber": "13",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "difficulty": "MODERATE",
+      "stem": "If \\(\\vec{a} \\cdot \\hat{i} = \\vec{a} \\cdot (\\hat{i} + \\hat{j}) = \\vec{a} \\cdot (\\hat{i} + \\hat{j} + \\hat{k}) = 1\\), then \\(\\vec{a}\\) is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\hat{k}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\hat{i}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\hat{j}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\hat{i} + \\hat{j} + \\hat{k}\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q14",
+      "questionNumber": "14",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Probability",
+      "subtopic": "Independent Events",
+      "difficulty": "MODERATE",
+      "stem": "Five fair coins are tossed simultaneously. The probability of the events that atleast one head comes up is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{27}{32}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{5}{32}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{31}{32}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{1}{32}\\)"
+        }
+      ],
+      "answer": "C",
+      "_flag": "The paper prints 'atleast' as one word and 'the probability of the events that' (plural 'events' for a single event); both transcribed as printed, verified on page idx 8. Neither affects the mathematics."
+    },
+    {
+      "ref": "Q15",
+      "questionNumber": "15",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "difficulty": "EASY",
+      "stem": "If for any two events A and B, \\(P(A) = \\dfrac{4}{5}\\) and \\(P(A \\cap B) = \\dfrac{7}{10}\\), then P(B/A) is equal to",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{1}{10}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{1}{8}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{7}{8}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{17}{20}\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q16",
+      "questionNumber": "16",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Angle Between Two Lines",
+      "difficulty": "MODERATE",
+      "stem": "The angle between the lines \\(2x = 3y = -z\\) and \\(6x = -y = -4z\\) is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0^{\\circ}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(30^{\\circ}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(45^{\\circ}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(90^{\\circ}\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q17",
+      "questionNumber": "17",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Direction Cosines and Direction Ratios",
+      "difficulty": "EASY",
+      "stem": "If a line makes angles of \\(90^{\\circ}\\), \\(135^{\\circ}\\) and \\(45^{\\circ}\\) with the \\(x\\), y and z axes respectively, then its direction cosines are",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0, -\\dfrac{1}{\\sqrt{2}}, \\dfrac{1}{\\sqrt{2}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-\\dfrac{1}{\\sqrt{2}}, 0, \\dfrac{1}{\\sqrt{2}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{1}{\\sqrt{2}}, 0, -\\dfrac{1}{\\sqrt{2}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(0, \\dfrac{1}{\\sqrt{2}}, \\dfrac{1}{\\sqrt{2}}\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q18",
+      "questionNumber": "18",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Components and Direction Cosines",
+      "difficulty": "EASY",
+      "stem": "The magnitude of the vector \\(6\\hat{i} - 2\\hat{j} + 3\\hat{k}\\) is",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "5"
+        },
+        {
+          "label": "C",
+          "text": "7"
+        },
+        {
+          "label": "D",
+          "text": "12"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q19",
+      "questionNumber": "19",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Properties of Definite Integrals",
+      "difficulty": "MODERATE",
+      "context": "In the following questions 19 and 20, a statement of Assertion (A) is followed by a statement of Reason (R). Choose the correct answer out of the following choices :",
+      "stem": "**Assertion (A) :** \\(\\displaystyle\\int_{2}^{8} \\dfrac{\\sqrt{10 - x}}{\\sqrt{x} + \\sqrt{10 - x}}\\,dx = 3\\)\n\n**Reason (R) :** \\(\\displaystyle\\int_{a}^{b} f(x)\\,dx = \\int_{a}^{b} f(a + b - x)\\,dx\\)",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both (A) and (R) are true and (R) is the correct explanation of (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both (A) and (R) are true, but (R) is not the correct explanation of (A)."
+        },
+        {
+          "label": "C",
+          "text": "(A) is true and (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "(A) is false, but (R) is true."
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q20",
+      "questionNumber": "20",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "difficulty": "MODERATE",
+      "context": "In the following questions 19 and 20, a statement of Assertion (A) is followed by a statement of Reason (R). Choose the correct answer out of the following choices :",
+      "stem": "**Assertion (A) :** Two coins are tossed simultaneously. The probability of getting two heads, if it is known that at least one head comes up, is \\(\\dfrac{1}{3}\\).\n\n**Reason (R) :** Let E and F be two events with a random experiment, then \\(P(F/E) = \\dfrac{P(E \\cap F)}{P(E)}\\).",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both (A) and (R) are true and (R) is the correct explanation of (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both (A) and (R) are true, but (R) is not the correct explanation of (A)."
+        },
+        {
+          "label": "C",
+          "text": "(A) is true and (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "(A) is false, but (R) is true."
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q21a",
+      "questionNumber": "21 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Continuity",
+      "difficulty": "MODERATE",
+      "stem": "Find the value of k for which the function f given as\n\n\\(f(x) = \\begin{cases} \\dfrac{1 - \\cos x}{2x^2}, & \\text{if } x \\ne 0 \\\\ k, & \\text{if } x = 0 \\end{cases}\\) is continuous at \\(x = 0\\)."
+    },
+    {
+      "ref": "Q21b",
+      "questionNumber": "21 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Derivatives of Functions in Parametric Form",
+      "difficulty": "MODERATE",
+      "stem": "If \\(x = a\\cos t\\) and \\(y = b\\sin t\\), then find \\(\\dfrac{d^2y}{dx^2}\\).",
+      "_alternativeTo": "Q21a"
+    },
+    {
+      "ref": "Q22",
+      "questionNumber": "22",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Evaluating Inverse Trigonometric Expressions",
+      "difficulty": "MODERATE",
+      "stem": "Find the value of \\(\\tan^{-1}\\left[2\\cos\\left(2\\sin^{-1}\\dfrac{1}{2}\\right)\\right] + \\tan^{-1} 1\\)."
+    },
+    {
+      "ref": "Q23",
+      "questionNumber": "23",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Equation of a Line in Space",
+      "difficulty": "MODERATE",
+      "stem": "Find the vector and the cartesian equations of a line that passes through the point A(1, 2, \\(-1\\)) and parallel to the line \\(5x - 25 = 14 - 7y = 35z\\)."
+    },
+    {
+      "ref": "Q24",
+      "questionNumber": "24",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Bounded by a Curve and a Line",
+      "difficulty": "MODERATE",
+      "stem": "Sketch the region bounded by the lines \\(2x + y = 8\\), \\(y = 2\\), \\(y = 4\\) and the y-axis. Hence, obtain its area using integration."
+    },
+    {
+      "ref": "Q25a",
+      "questionNumber": "25 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Vector (Cross) Product",
+      "difficulty": "MODERATE",
+      "stem": "If the vectors \\(\\vec{a}\\) and \\(\\vec{b}\\) are such that \\(|\\vec{a}| = 3\\), \\(|\\vec{b}| = \\dfrac{2}{3}\\) and \\(\\vec{a} \\times \\vec{b}\\) is a unit vector, then find the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\)."
+    },
+    {
+      "ref": "Q25b",
+      "questionNumber": "25 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Vector (Cross) Product",
+      "difficulty": "MODERATE",
+      "stem": "Find the area of a parallelogram whose adjacent sides are determined by the vectors \\(\\vec{a} = \\hat{i} - \\hat{j} + 3\\hat{k}\\) and \\(\\vec{b} = 2\\hat{i} - 7\\hat{j} + \\hat{k}\\).",
+      "_alternativeTo": "Q25a"
+    },
+    {
+      "ref": "Q26",
+      "questionNumber": "26",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Determinant and its Properties",
+      "difficulty": "MODERATE",
+      "stem": "Show that the determinant \\(\\begin{vmatrix} x & \\sin\\theta & \\cos\\theta \\\\ -\\sin\\theta & -x & 1 \\\\ \\cos\\theta & 1 & x \\end{vmatrix}\\) is independent of \\(\\theta\\)."
+    },
+    {
+      "ref": "Q27",
+      "questionNumber": "27",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Under Simple Curves",
+      "difficulty": "MODERATE",
+      "stem": "Using integration, find the area of the region bounded by \\(y = mx\\) (m > 0), \\(x = 1\\), \\(x = 2\\) and the \\(x\\)-axis."
+    },
+    {
+      "ref": "Q28a",
+      "questionNumber": "28 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Equation of a Line in Space",
+      "difficulty": "MODERATE",
+      "stem": "Find the coordinates of the foot of the perpendicular drawn from point (5, 7, 3) to the line \\(\\dfrac{x - 15}{3} = \\dfrac{y - 29}{8} = \\dfrac{z - 5}{-5}\\)."
+    },
+    {
+      "ref": "Q28b",
+      "questionNumber": "28 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Vector (Cross) Product",
+      "difficulty": "MODERATE",
+      "stem": "If \\(\\vec{a} = \\hat{i} + \\hat{j} + \\hat{k}\\) and \\(\\vec{b} = \\hat{i} + 2\\hat{j} + 3\\hat{k}\\) then find a unit vector perpendicular to both \\(\\vec{a} + \\vec{b}\\) and \\(\\vec{a} - \\vec{b}\\).",
+      "_alternativeTo": "Q28a"
+    },
+    {
+      "ref": "Q29",
+      "questionNumber": "29",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Shortest Distance Between Two Lines",
+      "difficulty": "MODERATE",
+      "stem": "Find the distance between the lines :\n\n\\(\\vec{r} = (\\hat{i} + 2\\hat{j} - 4\\hat{k}) + \\lambda(2\\hat{i} + 3\\hat{j} + 6\\hat{k})\\);\n\n\\(\\vec{r} = (3\\hat{i} + 3\\hat{j} - 5\\hat{k}) + \\mu(4\\hat{i} + 6\\hat{j} + 12\\hat{k})\\)"
+    },
+    {
+      "ref": "Q30a",
+      "questionNumber": "30 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+      "difficulty": "HARD",
+      "stem": "Differentiate \\(\\sec^{-1}\\left(\\dfrac{1}{\\sqrt{1 - x^2}}\\right)\\) w.r.t. \\(\\sin^{-1}(2x\\sqrt{1 - x^2})\\)."
+    },
+    {
+      "ref": "Q30b",
+      "questionNumber": "30 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Second Order Derivatives",
+      "difficulty": "HARD",
+      "stem": "If \\(y = \\tan x + \\sec x\\), then prove that \\(\\dfrac{d^2y}{dx^2} = \\dfrac{\\cos x}{(1 - \\sin x)^2}\\).",
+      "_alternativeTo": "Q30a"
+    },
+    {
+      "ref": "Q31a",
+      "questionNumber": "31 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Properties of Definite Integrals",
+      "difficulty": "HARD",
+      "stem": "Evaluate : \\(\\displaystyle\\int_{0}^{2\\pi} \\dfrac{1}{1 + e^{\\sin x}}\\,dx\\)"
+    },
+    {
+      "ref": "Q31b",
+      "questionNumber": "31 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integration by Partial Fractions",
+      "difficulty": "HARD",
+      "stem": "Find : \\(\\displaystyle\\int \\dfrac{x^4}{(x - 1)(x^2 + 1)}\\,dx\\)",
+      "_alternativeTo": "Q31a"
+    },
+    {
+      "ref": "Q32",
+      "questionNumber": "32",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "HARD",
+      "stem": "Solve the following Linear Programming Problem graphically :\n\nMinimise : \\(Z = 60x + 80y\\)\n\nsubject to constraints :\n\n\\(3x + 4y \\ge 8\\)\n\n\\(5x + 2y \\ge 11\\)\n\n\\(x, y \\ge 0\\)"
+    },
+    {
+      "ref": "Q33a",
+      "questionNumber": "33 (a)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Rate of Change of Quantities",
+      "difficulty": "HARD",
+      "stem": "The median of an equilateral triangle is increasing at the rate of \\(2\\sqrt{3}\\) cm/s. Find the rate at which its side is increasing."
+    },
+    {
+      "ref": "Q33b",
+      "questionNumber": "33 (b)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "difficulty": "HARD",
+      "stem": "Sum of two numbers is 5. If the sum of the cubes of these numbers is least, then find the sum of the squares of these numbers.",
+      "_alternativeTo": "Q33a"
+    },
+    {
+      "ref": "Q34",
+      "questionNumber": "34",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Definite Integrals by Substitution",
+      "difficulty": "HARD",
+      "stem": "Evaluate : \\(\\displaystyle\\int_{0}^{\\pi/2} \\sin 2x \\tan^{-1}(\\sin x)\\,dx\\)"
+    },
+    {
+      "ref": "Q35a",
+      "questionNumber": "35 (a)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Bayes' Theorem",
+      "difficulty": "HARD",
+      "stem": "In answering a question on a multiple choice test, a student either knows the answer or guesses. Let \\(\\dfrac{3}{5}\\) be the probability that he knows the answer and \\(\\dfrac{2}{5}\\) be the probability that he guesses. Assuming that a student who guesses at the answer will be correct with probability \\(\\dfrac{1}{3}\\). What is the probability that the student knows the answer, given that he answered it correctly ?"
+    },
+    {
+      "ref": "Q35b",
+      "questionNumber": "35 (b)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Random Variables and Probability Distributions",
+      "difficulty": "HARD",
+      "stem": "A box contains 10 tickets, 2 of which carry a prize of ₹ 8 each, 5 of which carry a prize of ₹ 4 each, and remaining 3 carry a prize of ₹ 2 each. If one ticket is drawn at random, find the mean value of the prize.",
+      "_alternativeTo": "Q35a"
+    },
+    {
+      "ref": "Q36i",
+      "questionNumber": "36 (i)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "Types of Relations",
+      "difficulty": "EASY",
+      "context": "An organization conducted bike race under two different categories – Boys and Girls. There were 28 participants in all. Among all of them, finally three from category 1 and two from category 2 were selected for the final race. Ravi forms two sets B and G with these participants for his college project.\n\nLet B = \\(\\{b_1, b_2, b_3\\}\\) and G = \\(\\{g_1, g_2\\}\\), where B represents the set of Boys selected and G the set of Girls selected for the final race.\n\nBased on the above information, answer the following questions :",
+      "stem": "How many relations are possible from B to G ?",
+      "_caseStudyLabel": "Case Study-I",
+      "setId": "2023-65-5-3-CS1",
+      "_figure": "DECORATIVE — the same stock photograph of two motorcyclists racing that 65/5/1 prints, here between the passage and the sub-parts on page idx 20. Opened before deciding: it carries no data, no labels and no numbers; every quantity the sub-parts need (the sets B and G and their elements) is stated in the passage text. Not attached."
+    },
+    {
+      "ref": "Q36ii",
+      "questionNumber": "36 (ii)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "One-One and Onto Functions",
+      "difficulty": "EASY",
+      "context": "An organization conducted bike race under two different categories – Boys and Girls. There were 28 participants in all. Among all of them, finally three from category 1 and two from category 2 were selected for the final race. Ravi forms two sets B and G with these participants for his college project.\n\nLet B = \\(\\{b_1, b_2, b_3\\}\\) and G = \\(\\{g_1, g_2\\}\\), where B represents the set of Boys selected and G the set of Girls selected for the final race.\n\nBased on the above information, answer the following questions :",
+      "stem": "Among all the possible relations from B to G, how many functions can be formed from B to G ?",
+      "_caseStudyLabel": "Case Study-I",
+      "setId": "2023-65-5-3-CS1",
+      "_figure": "DECORATIVE — the same stock photograph of two motorcyclists racing that 65/5/1 prints, here between the passage and the sub-parts on page idx 20. Opened before deciding: it carries no data, no labels and no numbers; every quantity the sub-parts need (the sets B and G and their elements) is stated in the passage text. Not attached."
+    },
+    {
+      "ref": "Q36iiia",
+      "questionNumber": "36 (iii) (a)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "Equivalence Relations and Classes",
+      "difficulty": "MODERATE",
+      "context": "An organization conducted bike race under two different categories – Boys and Girls. There were 28 participants in all. Among all of them, finally three from category 1 and two from category 2 were selected for the final race. Ravi forms two sets B and G with these participants for his college project.\n\nLet B = \\(\\{b_1, b_2, b_3\\}\\) and G = \\(\\{g_1, g_2\\}\\), where B represents the set of Boys selected and G the set of Girls selected for the final race.\n\nBased on the above information, answer the following questions :",
+      "stem": "Let \\(R : B \\to B\\) be defined by \\(R = \\{(x, y) : x \\text{ and } y \\text{ are students of the same sex}\\}\\). Check if R is an equivalence relation.",
+      "_caseStudyLabel": "Case Study-I",
+      "setId": "2023-65-5-3-CS1",
+      "_figure": "DECORATIVE — the same stock photograph of two motorcyclists racing that 65/5/1 prints, here between the passage and the sub-parts on page idx 20. Opened before deciding: it carries no data, no labels and no numbers; every quantity the sub-parts need (the sets B and G and their elements) is stated in the passage text. Not attached."
+    },
+    {
+      "ref": "Q36iiib",
+      "questionNumber": "36 (iii) (b)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "One-One and Onto Functions",
+      "difficulty": "MODERATE",
+      "context": "An organization conducted bike race under two different categories – Boys and Girls. There were 28 participants in all. Among all of them, finally three from category 1 and two from category 2 were selected for the final race. Ravi forms two sets B and G with these participants for his college project.\n\nLet B = \\(\\{b_1, b_2, b_3\\}\\) and G = \\(\\{g_1, g_2\\}\\), where B represents the set of Boys selected and G the set of Girls selected for the final race.\n\nBased on the above information, answer the following questions :",
+      "stem": "A function \\(f : B \\to G\\) be defined by \\(f = \\{(b_1, g_1), (b_2, g_2), (b_3, g_1)\\}\\).\n\nCheck if f is bijective. Justify your answer.",
+      "_caseStudyLabel": "Case Study-I",
+      "setId": "2023-65-5-3-CS1",
+      "_alternativeTo": "Q36iiia",
+      "_figure": "DECORATIVE — the same stock photograph of two motorcyclists racing that 65/5/1 prints, here between the passage and the sub-parts on page idx 20. Opened before deciding: it carries no data, no labels and no numbers; every quantity the sub-parts need (the sets B and G and their elements) is stated in the passage text. Not attached."
+    },
+    {
+      "ref": "Q37i",
+      "questionNumber": "37 (i)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Solving System of Linear Equations",
+      "difficulty": "EASY",
+      "context": "Gautam buys 5 pens, 3 bags and 1 instrument box and pays a sum of ₹ 160. From the same shop, Vikram buys 2 pens, 1 bag and 3 instrument boxes and pays a sum of ₹ 190. Also Ankur buys 1 pen, 2 bags and 4 instrument boxes and pays a sum of ₹ 250.\n\nBased on the above information, answer the following questions :",
+      "stem": "Convert the given above situation into a matrix equation of the form AX = B.",
+      "_caseStudyLabel": "Case Study-II",
+      "setId": "2023-65-5-3-CS2"
+    },
+    {
+      "ref": "Q37ii",
+      "questionNumber": "37 (ii)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Determinant and its Properties",
+      "difficulty": "EASY",
+      "context": "Gautam buys 5 pens, 3 bags and 1 instrument box and pays a sum of ₹ 160. From the same shop, Vikram buys 2 pens, 1 bag and 3 instrument boxes and pays a sum of ₹ 190. Also Ankur buys 1 pen, 2 bags and 4 instrument boxes and pays a sum of ₹ 250.\n\nBased on the above information, answer the following questions :",
+      "stem": "Find \\(|A|\\).",
+      "_caseStudyLabel": "Case Study-II",
+      "setId": "2023-65-5-3-CS2"
+    },
+    {
+      "ref": "Q37iiia",
+      "questionNumber": "37 (iii) (a)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Adjoint and Inverse of a Matrix",
+      "difficulty": "MODERATE",
+      "context": "Gautam buys 5 pens, 3 bags and 1 instrument box and pays a sum of ₹ 160. From the same shop, Vikram buys 2 pens, 1 bag and 3 instrument boxes and pays a sum of ₹ 190. Also Ankur buys 1 pen, 2 bags and 4 instrument boxes and pays a sum of ₹ 250.\n\nBased on the above information, answer the following questions :",
+      "stem": "Find \\(A^{-1}\\).",
+      "_caseStudyLabel": "Case Study-II",
+      "setId": "2023-65-5-3-CS2"
+    },
+    {
+      "ref": "Q37iiib",
+      "questionNumber": "37 (iii) (b)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Matrices",
+      "subtopic": "Multiplication of Matrices",
+      "difficulty": "MODERATE",
+      "context": "Gautam buys 5 pens, 3 bags and 1 instrument box and pays a sum of ₹ 160. From the same shop, Vikram buys 2 pens, 1 bag and 3 instrument boxes and pays a sum of ₹ 190. Also Ankur buys 1 pen, 2 bags and 4 instrument boxes and pays a sum of ₹ 250.\n\nBased on the above information, answer the following questions :",
+      "stem": "Determine \\(P = A^2 - 5A\\).",
+      "_caseStudyLabel": "Case Study-II",
+      "setId": "2023-65-5-3-CS2",
+      "_alternativeTo": "Q37iiia"
+    },
+    {
+      "ref": "Q38i",
+      "questionNumber": "38 (i)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Differential Equations",
+      "subtopic": "Homogeneous Differential Equations",
+      "difficulty": "MODERATE",
+      "context": "An equation involving derivatives of the dependent variable with respect to the independent variables is called a differential equation. A differential equation of the form \\(\\dfrac{dy}{dx} = F(x, y)\\) is said to be homogeneous if F(x, y) is a homogeneous function of degree zero, whereas a function F(x, y) is a homogenous function of degree n if \\(F(\\lambda x, \\lambda y) = \\lambda^n F(x, y)\\). To solve a homogeneous differential equation of the type \\(\\dfrac{dy}{dx} = F(x, y) = g\\left(\\dfrac{y}{x}\\right)\\), we make the substitution \\(y = vx\\) and then separate the variables.\n\nBased on the above, answer the following questions :",
+      "stem": "Show that \\((x^2 - y^2)\\,dx + 2xy\\,dy = 0\\) is a differential equation of the type \\(\\dfrac{dy}{dx} = g\\left(\\dfrac{y}{x}\\right)\\).",
+      "_caseStudyLabel": "Case Study-III",
+      "setId": "2023-65-5-3-CS3",
+      "_flag": "The passage prints 'homogenous' (missing the second 'e') the second time the word is used, having printed 'homogeneous' correctly twice; transcribed as printed, verified on page idx 22. This is the THIRD case study, which the printed Section E instruction says has only TWO sub-parts of 2 marks each — and it does, with no OR alternative, unlike Q36 and Q37."
+    },
+    {
+      "ref": "Q38ii",
+      "questionNumber": "38 (ii)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Differential Equations",
+      "subtopic": "Homogeneous Differential Equations",
+      "difficulty": "HARD",
+      "context": "An equation involving derivatives of the dependent variable with respect to the independent variables is called a differential equation. A differential equation of the form \\(\\dfrac{dy}{dx} = F(x, y)\\) is said to be homogeneous if F(x, y) is a homogeneous function of degree zero, whereas a function F(x, y) is a homogenous function of degree n if \\(F(\\lambda x, \\lambda y) = \\lambda^n F(x, y)\\). To solve a homogeneous differential equation of the type \\(\\dfrac{dy}{dx} = F(x, y) = g\\left(\\dfrac{y}{x}\\right)\\), we make the substitution \\(y = vx\\) and then separate the variables.\n\nBased on the above, answer the following questions :",
+      "stem": "Solve the above equation to find its general solution.",
+      "_caseStudyLabel": "Case Study-III",
+      "setId": "2023-65-5-3-CS3"
+    }
+  ]
+}
