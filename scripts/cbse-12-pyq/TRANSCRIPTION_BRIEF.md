@@ -73,6 +73,15 @@ real English one, because `content_hash` is stem-derived.
 > here. (Pointed out by the agent on 2022 65/5/1, after this section had told
 > several agents to walk every page without mentioning the tool that does it.)
 >
+> **But the contact sheet CAN lie, in exactly the way it is most useful.** On
+> 2022 65/5/3 the blank final page carries a faint MIRRORED ghost of the English
+> page before it - scanner show-through from the reverse of the sheet, legible
+> enough in the footer to read "...ortest distance between the given lines"
+> backwards. At thumbnail size that is indistinguishable from an English-only
+> last page, which is one of the three failure modes above. **Confirm any page
+> you are about to call English at full size**; use the sheet to decide where to
+> look, never to decide what is there.
+>
 > **The only safe procedure is to account for every page.** Walk all 24 indices,
 > decide what language each carries and which questions are on it, and check that
 > your question numbers run 1 to 38 unbroken with every sub-part present. Report
