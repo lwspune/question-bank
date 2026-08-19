@@ -3,7 +3,7 @@
  * across the 2017–2026 NDA Mathematics bank, the 4 biggest drifts, and a
  * "practice 2025+2026 first" recommendation.
  *
- * Counts: 11 TOP_11 principles come from `question_principle_tags`
+ * Counts: the TOP_PRINCIPLES entries come from `question_principle_tags`
  * (migration 0023) joined with `questions.pyq_year`. The 4 long-tail rows
  * (Conditional/Bayes, Determinants, Limit techniques, Extrema) come from
  * the named subtopic's year aggregation — they're single-chapter principles
@@ -143,7 +143,7 @@ export const DRIFT_CALLOUTS: DriftCallout[] = [
     icon: "up",
     title: "Modulus tripled in 2023 and stayed elevated",
     description:
-      "The single biggest principle drift in the 10-year window. 2018–22 averaged ~8 q/paper-set; 2023–25 averaged ~17. The 2023 paper-set alone had 20 modulus-tagged questions, up from 7 the year before. If you only practiced 2017–22 papers, you are undertrained on |x| and ⌊x⌋ questions.",
+      "The single biggest principle drift in the 10-year window, counting the whole non-smooth family — modulus, greatest-integer and piecewise together. 2017–22 averaged ~10 q/paper-set; 2023–26 averaged ~20. The 2023 paper-set alone carried 24, up from 7 the year before, and it has stayed elevated for four straight sittings. If you only practiced 2017–22 papers, you are undertrained on |x|, ⌊x⌋ and defined-by-cases questions.",
     drill: {
       chapter: "Limits & Continuity",
       subtopic: "One-Sided Limits, Greatest Integer, and Absolute Value Limits",

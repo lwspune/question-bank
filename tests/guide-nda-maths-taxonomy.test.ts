@@ -19,7 +19,7 @@
  */
 import { describe, it, expect, beforeAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { TOP_11, DOMAINS } from "@/app/guide/nda-maths/_data/principles";
+import { TOP_PRINCIPLES, DOMAINS } from "@/app/guide/nda-maths/_data/principles";
 import { COMPOUNDS } from "@/app/guide/nda-maths/_data/compounds";
 import { TIER_A, TIER_B, SKIP_LIST } from "@/app/guide/nda-maths/_data/strategy";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
@@ -93,12 +93,12 @@ function collectRefs(): TaxonomyRef[] {
 }
 
 describe("nda-maths drill targets — static structure", () => {
-  it("every TOP_11 principle has a slug and no static drill (DB-tag-backed)", () => {
-    for (const p of TOP_11) {
-      expect(p.slug, `TOP_11 principle "${p.name}" missing slug`).toBeTruthy();
+  it("every TOP_PRINCIPLES principle has a slug and no static drill (DB-tag-backed)", () => {
+    for (const p of TOP_PRINCIPLES) {
+      expect(p.slug, `TOP_PRINCIPLES principle "${p.name}" missing slug`).toBeTruthy();
       expect(
         p.drill,
-        `TOP_11 principle "${p.name}" should not carry a static drill`
+        `TOP_PRINCIPLES principle "${p.name}" should not carry a static drill`
       ).toBeUndefined();
     }
   });
@@ -106,7 +106,7 @@ describe("nda-maths drill targets — static structure", () => {
   it("every long-tail (no-slug) principle has a non-empty drill with a chapter", () => {
     for (const domain of DOMAINS) {
       for (const p of domain.principles) {
-        if (p.slug) continue; // TOP_11 entries are DB-backed
+        if (p.slug) continue; // TOP_PRINCIPLES entries are DB-backed
         expect(
           p.drill && p.drill.length > 0,
           `long-tail principle "${p.name}" (domain ${domain.id}) has no drill target`

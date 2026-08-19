@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export type RelatedItem = {
-  /** Optional because some catalogs (maths TOP_11) carry slug-less long-tail
+  /** Optional because some catalogs (maths TOP_PRINCIPLES) carry slug-less long-tail
    *  entries; only slugged entries are ever rendered (see the filter below). */
   slug?: string;
   name: string;
@@ -14,7 +14,7 @@ export type RelatedItem = {
 type Props = {
   /** Guide path segment, e.g. "nda-biology". */
   guidePath: string;
-  /** The full catalog the slugs index into (a guide's PLAYBOOKS or TOP_11). */
+  /** The full catalog the slugs index into (a guide's PLAYBOOKS or TOP_PRINCIPLES). */
   items: ReadonlyArray<RelatedItem>;
   /** Which catalog entries to show (editorial pick — must exist in items). */
   slugs: string[];

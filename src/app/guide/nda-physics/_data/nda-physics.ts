@@ -9,7 +9,7 @@
  *
  *   - No "principles" axis — best cross-chapter physics lever maxes at 12 q
  *     across 6 chapters (ratio-proportional reasoning, a question-style not
- *     a technique). NDA Maths' weakest TOP_11 principle has 29 q × 2 ch for
+ *     a technique). NDA Maths' weakest TOP_PRINCIPLES principle has 29 q × 2 ch for
  *     comparison. Fails Template A's "≥40 q × ≥4 ch" gate.
  *
  *   - %HARD is mid-spread (5 of 14 chapters > 15% HARD: E&M 21.5, Heat 20.5,

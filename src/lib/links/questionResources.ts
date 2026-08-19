@@ -135,8 +135,8 @@ function resolveGuide(
   if (input.examName !== "NDA") return null;
 
   // Mathematics (Template A) — no per-chapter playbook page. When the question
-  // carries a TOP_11 principle tag, link to that principle's deep-dive; first
-  // tag wins, non-TOP_11 slugs fall through to the overview.
+  // carries a TOP_PRINCIPLES principle tag, link to that principle's deep-dive; first
+  // tag wins, non-TOP_PRINCIPLES slugs fall through to the overview.
   if (input.subjectName === "Mathematics") {
     const principleHit = firstResolvedPrinciple(tags?.principleSlugs);
     if (principleHit) {

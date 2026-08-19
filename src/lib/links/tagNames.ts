@@ -5,18 +5,18 @@
  * than generic chapter chips.
  *
  * Pure maps built at module load:
- *   - principles: only the TOP_11 (slugged, DB-tagged) entries. Long-tail
+ *   - principles: only the TOP_PRINCIPLES (slugged, DB-tagged) entries. Long-tail
  *     DOMAINS principles have no slug + no detail page, so a backlink
  *     wouldn't have anywhere to land.
  *   - concepts: aggregated from every chapter registered in NOTES_CHAPTERS.
  *     Adding a new chapter to that registry automatically extends this map.
  */
 
-import { TOP_11 } from "@/app/guide/nda-maths/_data/principles";
+import { TOP_PRINCIPLES } from "@/app/guide/nda-maths/_data/principles";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 
 const PRINCIPLE_BY_SLUG: Map<string, string> = new Map();
-for (const p of TOP_11) {
+for (const p of TOP_PRINCIPLES) {
   if (p.slug) PRINCIPLE_BY_SLUG.set(p.slug, p.name);
 }
 
@@ -35,7 +35,7 @@ for (const chapter of NOTES_CHAPTERS) {
 
 /**
  * Display name for a principle slug, when it has a `/principles/[slug]`
- * detail page (i.e. it's a TOP_11 principle). Returns null otherwise.
+ * detail page (i.e. it's a TOP_PRINCIPLES principle). Returns null otherwise.
  */
 export function getPrincipleName(slug: string): string | null {
   if (!slug) return null;

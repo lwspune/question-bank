@@ -49,6 +49,18 @@ const nextConfig = {
         destination: "/dashboard/questions/:id/edit",
         permanent: true,
       },
+      {
+        // 2026-08-19: `differentiability-conditions` was folded away when the
+        // old "modulus" umbrella was split three ways. 23 of its 24 tagged
+        // questions were already tagged modulus, so it was a near-duplicate
+        // principle rather than its own lever; its questions were redistributed
+        // across modulus / greatest-integer / piecewise by content, and its
+        // LHD = RHD teaching content was merged into those pages. The URL was
+        // live, so it redirects rather than 404s.
+        source: "/guide/nda-maths/principles/differentiability-conditions",
+        destination: "/guide/nda-maths/principles/modulus-absolute-value",
+        permanent: true,
+      },
     ];
   },
 };

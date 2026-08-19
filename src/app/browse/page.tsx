@@ -54,7 +54,7 @@ import Hero from "./Hero";
 import ActiveFilterChips from "./ActiveFilterChips";
 import FitCoverageNote from "./FitCoverageNote";
 import { fitCoverage } from "@/lib/relevance/fit";
-import { TOP_11 } from "@/app/guide/nda-maths/_data/principles";
+import { TOP_PRINCIPLES } from "@/app/guide/nda-maths/_data/principles";
 
 export const metadata: Metadata = {
   title: "Browse questions",
@@ -311,7 +311,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
             chapters={chapterOpts}
             subtopics={subtopicOpts}
             principleNames={Object.fromEntries(
-              TOP_11.filter((p) => p.slug).map((p) => [p.slug as string, p.name])
+              TOP_PRINCIPLES.filter((p) => p.slug).map((p) => [p.slug as string, p.name])
             )}
             className="mb-4"
           />

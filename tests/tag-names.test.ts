@@ -5,7 +5,7 @@ import {
 } from "@/lib/links/tagNames";
 
 describe("getPrincipleName", () => {
-  it("returns a name for a known TOP_11 slug", () => {
+  it("returns a name for a known TOP_PRINCIPLES slug", () => {
     const name = getPrincipleName("am-gm-mean-inequalities");
     expect(name).not.toBeNull();
     expect(name!.length).toBeGreaterThan(0);
