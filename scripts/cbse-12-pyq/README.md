@@ -134,14 +134,21 @@ checking.
 
 | series | blocks | sha match | dHash adds | ACTUALLY shared (by content) |
 |---|---|---|---|---|
-| 65/1 | 48 | 28, 33 | 2, 1 | 41 of 55 |
-| 65/2 | 47 | 33, 33 | 0, 0 | 41 of 54 |
-| 65/3 | 44 | 3, 3 | 2, 2 | **30 of 54** |
-| 65/4 | **18** | 0, 0 | 4, 4 | 41 of 52 |
-| 65/5 | 50 | 4, 4 | 4, 4 | 41 of 52 |
+| 65/1 | 48 | 28, 33 | 2, 1 | **41** of 55 |
+| 65/2 | 47 | 33, 33 | 0, 0 | **41** of 54 |
+| 65/3 | 44 | 3, 3 | 2, 2 | **41** of 54 |
+| 65/4 | **18** | 0, 0 | 4, 4 | **41** of 52 |
+| 65/5 | 50 | 4, 4 | 4, 4 | **41** of 52 |
 
-Every one is a reshuffle. 65/3 shares less than its siblings, and that is the only
-real difference; there is no 2026 series whose questions genuinely differ.
+**All ten followers share EXACTLY 41 rows with their opener** - not approximately,
+exactly, in every one of the five series. Each set reuses 41 questions and swaps
+the remainder (11 to 14 rows, the spread being how many OR-branches that paper
+carries). Every 2026 series is a reshuffle; none contains genuinely different
+questions.
+
+Measured two ways that agree: an independent (stem, options, context) comparison
+over the JSON, and `commit.ts`'s own `content_hash` dedup, which skipped 41 on
+every follower. 124 genuinely new rows across the ten papers.
 
 > ### HOW I GOT THIS WRONG: a positional sample cannot detect a permutation
 >
@@ -159,6 +166,13 @@ real difference; there is no 2026 series whose questions genuinely differ.
 > check that passes a permutation perfectly is not a check. An all-pairs
 > comparison is the cheap fix, and it is what the dHash pass already does - it
 > simply is not sensitive enough (it recovered 2 of 30 here, 4 of 41 on 65/5).
+>
+> A postscript on trusting a reported COUNT over a reported LIST. The 65/3/2 agent
+> said "30 of 54 shared" and this file quoted it. The true figure is 41 - but the
+> agent's LIST of which rows were new was exactly right, all 13 refs matching an
+> independent recomputation. Its identification was perfect and only its
+> arithmetic was wrong. Check a summary number against the artifact it summarises;
+> here `commit.ts` skipping 41 is what exposed it.
 >
 > I made the same generalisation error twice more in one session: extending this
 > 65/3 reading to 65/5 without rendering it, and calling 2026's instruction (viii)

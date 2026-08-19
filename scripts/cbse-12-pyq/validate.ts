@@ -127,6 +127,25 @@ async function main() {
       else if (q.answer && !q.options?.some((o) => o.label === q.answer)) {
         note(q.ref, `answer "${q.answer}" names no option`);
       }
+      // DUPLICATE OPTIONS. `audit:keys` catches this for practice rows, but it
+      // scopes to question_kind='practice' and these are 'pyq', so it reports
+      // NOTHING SCANNED here (correctly - it refuses to call an empty scan
+      // clean). The JEE pyq variant is hardcoded to the JEE exam id. So this is
+      // the only place the check can live for this lane.
+      //
+      // Worth having even though all 63 papers scanned clean: the sibling
+      // pipelines' dominant defect is the TWIN - the correct answer printed
+      // twice, unreduced fraction beside reduced, surd beside its rationalised
+      // form - which makes a key look wrong when it is right, and the repair
+      // belongs to the option text rather than the key.
+      const seenOpt = new Map<string, string>();
+      for (const o of q.options ?? []) {
+        const norm = (o.text ?? "").replace(/\s+/g, " ").trim();
+        if (!norm) continue;
+        const prior = seenOpt.get(norm);
+        if (prior) note(q.ref, `options ${prior} and ${o.label} are identical: ${norm.slice(0, 60)}`);
+        else seenOpt.set(norm, o.label);
+      }
     } else if (q.options?.length) {
       note(q.ref, "subjective row carries options");
     }

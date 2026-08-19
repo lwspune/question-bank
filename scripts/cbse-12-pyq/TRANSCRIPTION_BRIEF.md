@@ -54,6 +54,23 @@ real English one, because `content_hash` is stem-derived.
 > carried English, or that none did - a checked "none" is a measurement, an
 > assumed one is not. And do not trust a paper's own cover: 65/3/1 announces 23
 > pages and its last folio reads 24.
+>
+> ### And the PARITY ITSELF CAN INVERT part-way through the paper
+>
+> The two languages do not need the same number of pages. On 2026 65/3/3 the
+> Hindi Q37 runs to two pages where the English fits one, so from index 20 the
+> alternation flips: **idx 20 and 22 are HINDI-ONLY and idx 21 and 23 are
+> ENGLISH-ONLY.** A reader following "even pages, plus the tops of odd pages"
+> would have dropped the whole of Q37 and Q38 - eight rows - and, once again,
+> the numbering across the pages they DID read stays continuous, so nothing
+> announces the loss.
+>
+> **The only safe procedure is to account for every page.** Walk all 24 indices,
+> decide what language each carries and which questions are on it, and check that
+> your question numbers run 1 to 38 unbroken with every sub-part present. Report
+> the page map you actually used. Treat "even pages are English" as a starting
+> hypothesis that has now failed in three distinct ways: overflow onto odd tops,
+> an English-only final page, and a mid-paper parity inversion.
 
 ---
 
@@ -314,6 +331,20 @@ whole point. The same caution applies to any probe you write about escaping:
 verify it fires on a known-bad string before believing a hit.
 
 ---
+
+### A hand-rolled escaping probe will lie to you
+
+Three agents this session wrote a `python -c` or `node -e` check for corrupted
+backslashes and each got a false result, because the shell ate a backslash before
+the language ever saw it. **Author any such probe as a FILE, and give it a
+self-test that proves it fires on a known-bad fixture** before you believe a clean
+run.
+
+Two specific false positives to expect, both legitimate LaTeX:
+`\\` as a row separator inside `bmatrix`, `cases` or `aligned`, and `\(` at the
+start of every math zone. A naive "double-escaped backslash" rule flags both. One
+agent reported 49 phantom hits, another 110 - in each case every "defect" was a
+correct math zone.
 
 ## Appendix — the ONLY permitted chapters and subtopics
 
