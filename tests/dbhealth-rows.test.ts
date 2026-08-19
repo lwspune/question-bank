@@ -34,6 +34,25 @@ describe("rowToSnapshot", () => {
     expect(typeof s.dbSizeBytes).toBe("number");
   });
 
+  /**
+   * The store-size columns arrived in migration 0080; every snapshot before it
+   * has neither. NULL must survive as null all the way to the report, because
+   * the rule that reads it is skipped on null and would otherwise see a
+   * perfectly healthy 0 bytes — a measurement nobody took, which is the one
+   * thing this tracker exists not to do.
+   */
+  it("preserves a missing store-size reading as null rather than zero", () => {
+    const s = rowToSnapshot(ROW); // ROW predates migration 0080
+    expect(s.statementsBytes).toBeNull();
+    expect(s.workMemBytes).toBeNull();
+  });
+
+  it("coerces the store-size reading when it is present", () => {
+    const s = rowToSnapshot({ ...ROW, statements_bytes: "1617920", work_mem_bytes: "2236416" });
+    expect(s.statementsBytes).toBe(1_617_920);
+    expect(s.workMemBytes).toBe(2_236_416);
+  });
+
   it("defaults the jsonb detail columns to empty arrays when absent", () => {
     const { tables, queries, ...withoutJson } = ROW;
     void tables;

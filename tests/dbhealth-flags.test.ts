@@ -45,6 +45,8 @@ const BASE: HealthDelta = {
   statementsTracked: 500,
   statementsMax: 5000,
   statementsEvictions: 0,
+  statementsBytes: 500_000,
+  workMemBytes: 2_236_416,
   queries: [],
   tables: [],
 };
@@ -390,21 +392,58 @@ describe("evaluateFlags — ordering and first run", () => {
  * under-counting with no way to tell.
  */
 describe("evaluateFlags — the pg_stat_statements store", () => {
+  /** work_mem on the live instance, 2026-08-19. */
+  const WORK_MEM = 2_236_416;
+  const store = (bytes: number) => d({ statementsBytes: bytes, workMemBytes: WORK_MEM });
+
   it("stays quiet when the store has plenty of room", () => {
-    expect(codes(d({ statementsTracked: 500, statementsMax: 5000 }))).not.toContain("statement-store-full");
+    expect(codes(store(0.2 * WORK_MEM))).not.toContain("statement-store-full");
   });
 
-  it("warns once the store is filling, naming the one-line fix", () => {
-    const flags = evaluateFlags(d({ statementsTracked: 4100, statementsMax: 5000 }));
+  it("warns once the store approaches work_mem, naming the one-line fix", () => {
+    const flags = evaluateFlags(store(0.65 * WORK_MEM));
     const f = flags.find((x) => x.code === "statement-store-full");
     expect(f).toBeDefined();
     expect(f!.level).toBe("warn");
-    expect(f!.message).toContain("pg_stat_statements_reset");
+    expect(f!.message).toContain("reset_statement_store");
   });
 
-  it("escalates to critical when it is nearly full", () => {
-    const flags = evaluateFlags(d({ statementsTracked: 4800, statementsMax: 5000 }));
-    expect(flags.find((x) => x.code === "statement-store-full")!.level).toBe("critical");
+  it("escalates to critical once it is at the cliff", () => {
+    expect(evaluateFlags(store(0.8 * WORK_MEM)).find((x) => x.code === "statement-store-full")!.level)
+      .toBe("critical");
+  });
+
+  /**
+   * THE REGRESSION THIS RULE WAS REWRITTEN FOR — 2026-08-19, real numbers.
+   *
+   * The database was writing ~2.7 GB/day of temp files. The store held 1,666 of
+   * 5,000 entries carrying 1,580 kB against 2,184 kB of work_mem. The OLD rule
+   * measured entries against `max` — 33% — and stayed silent, at roughly 2.4x
+   * the actual failure point. The new rule measures the quantity that overflows.
+   */
+  it("fires on the 2026-08-19 reading, where the entry-count rule stayed silent", () => {
+    const measured = d({
+      statementsTracked: 1666,
+      statementsMax: 5000,
+      statementsBytes: 1_617_920, // 1,580 kB
+      workMemBytes: 2_184 * 1024, // 2,184 kB
+    });
+    // The old proxy would have read a comfortable 33% full.
+    expect(measured.statementsTracked! / measured.statementsMax!).toBeLessThan(0.4);
+    // The quantity that actually spills was at 72%.
+    const f = evaluateFlags(measured).find((x) => x.code === "statement-store-full");
+    expect(f).toBeDefined();
+    expect(f!.level).toBe("critical");
+  });
+
+  /**
+   * The warning line must sit BELOW the measured onset, or it announces a fire
+   * that is already burning. Spilling had begun at 72% of work_mem, because
+   * pg_column_size sums datum sizes while the tuplestore representation is
+   * larger.
+   */
+  it("warns strictly before the level at which spilling was observed", () => {
+    expect(THRESHOLDS.storeBytesWarnFraction).toBeLessThan(0.72);
   });
 
   it("flags eviction separately — it means this tracker's own inputs are lossy", () => {
@@ -424,12 +463,25 @@ describe("evaluateFlags — the pg_stat_statements store", () => {
    * one thing this tracker must never do.
    */
   it("says nothing at all when the reading was never recorded", () => {
-    const c = codes(d({ statementsTracked: null, statementsMax: null, statementsEvictions: null }));
+    const c = codes(d({
+      statementsTracked: null, statementsMax: null, statementsEvictions: null,
+      statementsBytes: null, workMemBytes: null,
+    }));
     expect(c).not.toContain("statement-store-full");
     expect(c).not.toContain("statement-store-evicting");
   });
 
-  it("says nothing when the max is unknown, rather than dividing by zero", () => {
-    expect(codes(d({ statementsTracked: 4900, statementsMax: 0 }))).not.toContain("statement-store-full");
+  /**
+   * Snapshots between migrations 0071 and 0080 have an entry count but NO byte
+   * reading. That is precisely the case that must stay silent rather than fall
+   * back to the proxy this rule was rewritten to abandon.
+   */
+  it("stays silent on a 0071-era snapshot that has entries but no bytes", () => {
+    expect(codes(d({ statementsTracked: 4900, statementsMax: 5000, statementsBytes: null, workMemBytes: null })))
+      .not.toContain("statement-store-full");
+  });
+
+  it("says nothing when work_mem is unknown, rather than dividing by zero", () => {
+    expect(codes(d({ statementsBytes: 4_000_000, workMemBytes: 0 }))).not.toContain("statement-store-full");
   });
 });

@@ -43,4 +43,11 @@ jobs:
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-        run: npm run db:health
+        # --reset-if-needed clears pg_stat_statements AFTER the snapshot is
+        # stored, once the store approaches work_mem. Without it the store grows
+        # until Supabase's per-minute metrics scrape no longer fits in work_mem
+        # and every scrape spills to disk — 13 GB/day in Aug 2026, then again
+        # ten days after the first manual fix. The flag lives here rather than
+        # in the script's default so that running db:health by hand can never
+        # destroy the query history as a side effect of asking for a report.
+        run: npm run db:health -- --reset-if-needed
