@@ -602,12 +602,12 @@ export const DOMAINS: Domain[] = [
         summary: "f(x + 1) = ... or 4f(x) − f(1/x) = ... — solve for the unknown function.",
         drill: [{ chapter: "Functions", subtopic: "Functional Equations" }],
       },
-      {
-        name: "Greatest integer / floor function",
-        qCount: 7,
-        summary: "[x] behaviour at integers, in limits, in integrals. Edge-case heavy.",
-        drill: [{ chapter: "Functions", subtopic: "Greatest Integer Function" }],
-      },
+      // 2026-08-19: the long-tail "Greatest integer / floor function" (7 q,
+      // Functions-only, static drill) was REMOVED when greatest-integer became a
+      // slugged TOP_PRINCIPLES entry. The TOP entry strictly supersedes it — 29 q
+      // across 5 chapters, DB-tagged, with a detail page — and keeping both would
+      // render two near-identical cards in this domain AND double-count those 7
+      // questions in the domain total, which sums live TOP counts + static qCounts.
       {
         name: "Relations (reflexive, symmetric, transitive)",
         qCount: 19,
