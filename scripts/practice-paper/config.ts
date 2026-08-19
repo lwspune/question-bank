@@ -2836,6 +2836,71 @@ export const PAPERS: Record<string, PaperSpec> = {
     section: { key: "gat-mock-w07", label: "GAT Mock W07" },
     bankAdd: true,
   },
+
+  // LWS "Eng & Geo Final D Test" (19 Aug) — one printed 100-question test stapling
+  // together two half-papers: the running header of Q1-Q50 reads "English Mock Test - 15"
+  // and Q51-Q100 open under a "GEOGRAPHY PHYSICAL / Final Dance Test - 2" banner. Both
+  // halves are ingested as ONE paper because that is the test the students sat.
+  //
+  // Born-digital .docx with a clean text layer, so every stem and all four options came
+  // straight from a pandoc conversion — NO vision pass. Two transcription notes:
+  //   - The option markers are inconsistent BY DESIGN of the source: "(1)-(4)" in the
+  //     English half, and "(a)", "a)", "a." and even a bare "a" (Q87's code table) in the
+  //     Geography half. All are normalised to A-D in PRINTED order.
+  //   - The next section's HEADING bleeds into the last option of each section's last
+  //     question in a naive parse (Q10, Q20, Q30, Q35, Q40, Q45, Q50). Blocks are cut at
+  //     the heading; verified afterwards that no affected question keys D on the strength
+  //     of the bled text.
+  //
+  // **NO PRINTED ANSWER KEY EXISTS** — every answer here is DERIVED. The 12 duplicates
+  // were resolved against the matched bank row by OPTION TEXT, never by letter (Q22 and
+  // Q23 needed remapping; the printed option sets differ from the bank's). All 11
+  // transferable dup keys were then independently re-derived and agreed 11/11.
+  //
+  // Q31-Q35 share one comprehension passage (setLabel "RC1", carried on `context`).
+  "eng-geo-final-d-19aug": {
+    slug: "eng-geo-final-d-19aug",
+    title: "NDA GAT — LWS Eng & Geo Final D Test (19 Aug)",
+    recordsFile: "eng-geo-final-d-19aug.records.json",
+    outName: "Tags_NDA_Eng_Geo_Final_D_Test_19Aug",
+    sourceFile: "Eng_Geo_Final_D_Test_19_Aug.docx",
+    subjects: {
+      English: {
+        Grammar: ["Active and Passive Voice", "Direct and Indirect Speech"],
+        "Idioms and Phrases": ["Idiom Meaning"],
+        "Reading Comprehension": ["Inferential Comprehension", "Literal Comprehension"],
+        "Sentence Rearrangement": ["Paragraph Sequencing (S1–S6)"],
+        Vocabulary: ["Antonyms", "Word Definition"],
+      },
+      Geography: {
+        "Climatology, Atmosphere and Weather": [
+          "Atmospheric Layers, Composition and Aurora", "Climate Classification and Zones",
+        ],
+        "Earth in Space, Maps and Coordinates": [
+          "Earth's Shape, Rotation and Motion", "Planets and Solar System",
+        ],
+        "Earth's Structure, Landforms and Geological Time": [
+          "Earth's Interior, Crust and Plate Tectonics", "Earthquakes and Seismic Waves",
+          "Landforms and Mass Movements", "Rocks, Minerals and Geological Time", "Soils",
+          "Volcanoes and Igneous Activity", "Weathering and Denudation",
+        ],
+        "Indian Geography — Economy, Resources and Transport": [
+          "Energy and Industries — Power, Petroleum, Iron and Steel",
+          "Ports and Maritime Infrastructure",
+        ],
+        "Indian Geography — Physical Features": ["Indian Soils and Climate-Agriculture"],
+        Oceanography: ["Ocean Currents"],
+        "World and Human Geography": [
+          "World — Coordinates, Time and Place", "World — Rivers, Canals and Water Bodies",
+        ],
+      },
+    },
+    pyqNote: "NDA GAT practice — LWS Eng & Geo Final D Test, 19 Aug",
+    examName: "NDA",
+    section: { key: "eng-geo-final-d-19aug", label: "Eng & Geo Final D Test" },
+    bankAdd: true,
+    createPaper: true,
+  },
 };
 
 export function requirePaper(slug: string | undefined): PaperSpec {
