@@ -129,14 +129,14 @@ export const TOP_PRINCIPLES: Principle[] = [
   {
     slug: "greatest-integer-function",
     name: "Greatest integer / floor behaviour",
-    pctHard: 24,
+    pctHard: 38,
     summary:
       "[x] = n on [n, n+1), jumping by 1 at each integer — the discrete cousin of modulus. Every NDA trap lives at the integer boundary: one-sided limits, the derivative that is 0 on the interior and undefined at the ends, and integrals that split interval by interval. Spans Limits & Continuity, Definite Integration, Functions, Differentiation and Apps of Integration.",
   },
   {
     slug: "piecewise-defined-functions",
     name: "Piecewise definitions — continuity and differentiability at the join",
-    pctHard: 22,
+    pctHard: 9,
     summary:
       "A function given by cases, where everything happens at the join. Match one-sided limits to make it continuous; match one-sided derivatives to make it differentiable — that is how NDA hides a two-equation solve for a and b inside a continuity question. Concentrated in Limits & Continuity, with Differentiation, Functions and App of Derivatives.",
   },

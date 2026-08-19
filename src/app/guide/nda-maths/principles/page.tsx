@@ -37,16 +37,27 @@ async function loadPrincipleStats(
   const stats = new Map<string, PrincipleStats>();
   if (allIds.length === 0) return stats;
 
-  const { data, error } = await client
-    .from("questions")
-    .select("id, difficulty, chapter_id")
-    .in("id", allIds);
-  if (error) return stats;
-  const byId = new Map(
-    ((data ?? []) as { id: string; difficulty: string; chapter_id: string }[]).map(
-      (r) => [r.id, r] as const
-    )
-  );
+  // `.in()` puts every id in the URL, and PostgREST/undici reject a request line
+  // past ~16 KB. This union spans ALL principles, so it grows with every tag: at
+  // 440 ids (~17.2 KB) it worked, at 460 (~18.0 KB) it began failing with
+  // UND_ERR_HEADERS_OVERFLOW. Chunk at 200 — the same bound `src/lib/reviews/emit.ts`
+  // and `src/lib/mocks/query.ts` use — so the width can never depend on bank size.
+  const IN_CHUNK = 200;
+  const rows: { id: string; difficulty: string; chapter_id: string }[] = [];
+  for (let i = 0; i < allIds.length; i += IN_CHUNK) {
+    const { data, error } = await client
+      .from("questions")
+      .select("id, difficulty, chapter_id")
+      .in("id", allIds.slice(i, i + IN_CHUNK));
+    // Deliberately NOT swallowed. This page is statically prerendered, so an
+    // ignored error bakes "0 questions · 0 chapters" for every principle into the
+    // HTML and serves that until the next build — a page-wide factual lie that no
+    // gate catches. Failing the build is the honest outcome; `loadPrincipleQuestionIds`
+    // above already throws for the same reason.
+    if (error) throw new Error(`loadPrincipleStats: ${error.message}`);
+    rows.push(...((data ?? []) as typeof rows));
+  }
+  const byId = new Map(rows.map((r) => [r.id, r] as const));
 
   for (const [slug, ids] of taggedMap) {
     let hard = 0;
