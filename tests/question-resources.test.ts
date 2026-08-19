@@ -360,7 +360,7 @@ describe("getQuestionResources — NDA Polity (per-chapter playbook)", () => {
 });
 
 describe("getQuestionResources — principle-tag override (Tier 1.5)", () => {
-  it("replaces the generic NDA Maths chip with a principle-specific link when a TOP_11 slug is tagged", () => {
+  it("replaces the generic NDA Maths chip with a principle-specific link when a TOP_PRINCIPLES slug is tagged", () => {
     const res = call(
       {
         examName: "NDA",
@@ -401,7 +401,7 @@ describe("getQuestionResources — principle-tag override (Tier 1.5)", () => {
     );
   });
 
-  it("falls back to the generic NDA Maths chip when the principle slug isn't TOP_11", () => {
+  it("falls back to the generic NDA Maths chip when the principle slug isn't TOP_PRINCIPLES", () => {
     const res = call(
       {
         examName: "NDA",
@@ -432,7 +432,7 @@ describe("getQuestionResources — principle-tag override (Tier 1.5)", () => {
       }
     );
     // Subject isn't Mathematics — principle override should not fire even
-    // if a slug happens to be in TOP_11. The chapter playbook still wins.
+    // if a slug happens to be in TOP_PRINCIPLES. The chapter playbook still wins.
     expect(res.guide!.href).toBe("/guide/nda-physics/playbooks/sound");
   });
 });

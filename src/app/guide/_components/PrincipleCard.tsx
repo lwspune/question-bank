@@ -25,7 +25,7 @@ type Props = {
 
 /**
  * Card for the Principles page. Two flavours:
- *   - slug present (TOP_11): "Read deep dive →" link to the per-principle
+ *   - slug present (TOP_PRINCIPLES): "Read deep dive →" link to the per-principle
  *     detail page, plus a secondary BrowseLink using `?principle=<slug>`
  *     (live tagged set).
  *   - no slug (long-tail): single "Drill →" BrowseLink using the static

@@ -11,7 +11,7 @@
  *   - `qCount` + `pctHard`: ω + Vieta is DB-derived (intersection of
  *     `question_principle_tags` for both slugs); the other three remain
  *     editorial estimates of "questions where both principles are the
- *     lever in sequence" because only ω and Vieta are both TOP_11
+ *     lever in sequence" because only ω and Vieta are both TOP_PRINCIPLES
  *     (the others involve a long-tail principle without DB tagging).
  */
 

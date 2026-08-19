@@ -2,7 +2,7 @@
  * Content for /guide/nda-maths/principles. The principles tested in NDA
  * Mathematics, grouped by mathematical domain.
  *
- * `TOP_11`: the cross-chapter principles with deep-dive pages at
+ * `TOP_PRINCIPLES`: the cross-chapter principles with deep-dive pages at
  * /guide/nda-maths/principles/{slug}. Each has a `slug` and is backed by DB
  * tags in `question_principle_tags` (migration 0023). Live counts + drill
  * set come from the tag table at request time via
@@ -27,7 +27,7 @@ export type Principle = {
   /** Display name */
   name: string;
   /** Static question count — present only on long-tail (no-slug) principles.
-   *  For TOP_11 (slugged) principles the count comes from DB tags at request
+   *  For TOP_PRINCIPLES (slugged) principles the count comes from DB tags at request
    *  time and this field is omitted. */
   qCount?: number;
   /** Approximate % HARD among questions invoking this principle. Editorial. */
@@ -35,7 +35,7 @@ export type Principle = {
   /** One-sentence summary shown on the card. */
   summary: string;
   /** Static drill target for /browse CTA — present only on long-tail
-   *  principles. TOP_11 principles use `?principle=<slug>` instead. */
+   *  principles. TOP_PRINCIPLES principles use `?principle=<slug>` instead. */
   drill?: PrincipleDrill[];
   /** If present, principle has a detail page at /guide/nda-maths/principles/{slug}
    *  and is backed by DB tags in `question_principle_tags`. */
@@ -55,7 +55,7 @@ export type Domain = {
 /** Top cross-chapter / highest-leverage principles. Each has a detail page
  *  at /guide/nda-maths/principles/{slug} and is backed by `question_principle_tags`
  *  in the DB; live counts are loaded at request time, never hardcoded here. */
-export const TOP_11: Principle[] = [
+export const TOP_PRINCIPLES: Principle[] = [
   {
     slug: "am-gm-mean-inequalities",
     name: "AM-GM / mean inequalities (incl. x + 1/x ≥ 2)",
@@ -124,18 +124,25 @@ export const TOP_11: Principle[] = [
     name: "Modulus / absolute value behaviour",
     pctHard: 14,
     summary:
-      "Piecewise splitting at zero. The principle behind the 2023 modulus spike — broadest cross-chapter reach in the bank (10 chapters tagged), plus invocations across App of Derivatives, Apps of Integration, Functions, Linear Inequalities, Probability, Quad Eq and Sets & Relations.",
+      "Splitting |·| at its zero. The principle behind the 2023 modulus spike — the broadest cross-chapter reach in the bank at 11 chapters, from limits and derivatives through definite integrals, areas, equations and relations. Includes the disguised form, where √(f²) is really |f|.",
   },
   {
-    slug: "differentiability-conditions",
-    name: "Differentiability at a point",
-    pctHard: 17,
+    slug: "greatest-integer-function",
+    name: "Greatest integer / floor behaviour",
+    pctHard: 24,
     summary:
-      "Differentiability ⇒ continuity (not the converse). Modulus and greatest-integer are the standard counter-examples. Spans Limits & Continuity, Differentiation, and Functions.",
+      "[x] = n on [n, n+1), jumping by 1 at each integer — the discrete cousin of modulus. Every NDA trap lives at the integer boundary: one-sided limits, the derivative that is 0 on the interior and undefined at the ends, and integrals that split interval by interval. Spans Limits & Continuity, Definite Integration, Functions, Differentiation and Apps of Integration.",
+  },
+  {
+    slug: "piecewise-defined-functions",
+    name: "Piecewise definitions — continuity and differentiability at the join",
+    pctHard: 22,
+    summary:
+      "A function given by cases, where everything happens at the join. Match one-sided limits to make it continuous; match one-sided derivatives to make it differentiable — that is how NDA hides a two-equation solve for a and b inside a continuity question. Concentrated in Limits & Continuity, with Differentiation, Functions and App of Derivatives.",
   },
 ];
 
-/** All principles grouped by domain. TOP_11 entries appear in their domain
+/** All principles grouped by domain. TOP_PRINCIPLES entries appear in their domain
  *  AND have the slug set (the same Principle object is referenced).
  *  Long-tail (no-slug) principles below carry static qCount + drill since
  *  they have no DB tagging. */
@@ -145,9 +152,9 @@ export const DOMAINS: Domain[] = [
     label: "Algebra",
     blurb: "Polynomial identities, sequences, inequalities, logarithms.",
     principles: [
-      TOP_11.find((p) => p.slug === "vieta-symmetric-roots")!,
-      TOP_11.find((p) => p.slug === "am-gm-mean-inequalities")!,
-      TOP_11.find((p) => p.slug === "ap-three-term")!,
+      TOP_PRINCIPLES.find((p) => p.slug === "vieta-symmetric-roots")!,
+      TOP_PRINCIPLES.find((p) => p.slug === "am-gm-mean-inequalities")!,
+      TOP_PRINCIPLES.find((p) => p.slug === "ap-three-term")!,
       {
         name: "GP three-term: b² = ac",
         qCount: 19,
@@ -197,9 +204,9 @@ export const DOMAINS: Domain[] = [
     label: "Trigonometry",
     blurb: "Identities, equations, inverse trig, triangle theorems.",
     principles: [
-      TOP_11.find((p) => p.slug === "double-angle")!,
-      TOP_11.find((p) => p.slug === "compound-angle")!,
-      TOP_11.find((p) => p.slug === "sine-cosine-rules")!,
+      TOP_PRINCIPLES.find((p) => p.slug === "double-angle")!,
+      TOP_PRINCIPLES.find((p) => p.slug === "compound-angle")!,
+      TOP_PRINCIPLES.find((p) => p.slug === "sine-cosine-rules")!,
       {
         name: "Triangle identity A + B + C = π",
         qCount: 14,
@@ -237,7 +244,7 @@ export const DOMAINS: Domain[] = [
     label: "Complex Numbers",
     blurb: "Modulus, argument, roots of unity, De Moivre.",
     principles: [
-      TOP_11.find((p) => p.slug === "cube-roots-of-unity")!,
+      TOP_PRINCIPLES.find((p) => p.slug === "cube-roots-of-unity")!,
       {
         name: "Modulus / argument / conjugate",
         qCount: 39,
@@ -263,7 +270,7 @@ export const DOMAINS: Domain[] = [
     label: "Calculus",
     blurb: "Limits, differentiation, integration, ODEs. NDA's largest topic cluster.",
     principles: [
-      TOP_11.find((p) => p.slug === "differentiability-conditions")!,
+      TOP_PRINCIPLES.find((p) => p.slug === "piecewise-defined-functions")!,
       {
         name: "Standard limits + L'Hôpital",
         qCount: 31,
@@ -450,7 +457,7 @@ export const DOMAINS: Domain[] = [
     label: "Combinatorics",
     blurb: "Permutations, combinations, counting under constraints.",
     principles: [
-      TOP_11.find((p) => p.slug === "binomial-coefficient-identities")!,
+      TOP_PRINCIPLES.find((p) => p.slug === "binomial-coefficient-identities")!,
       {
         name: "Permutations n! / (n−r)! + arrangements with restrictions",
         qCount: 17,
@@ -482,7 +489,7 @@ export const DOMAINS: Domain[] = [
     label: "Probability",
     blurb: "Classical, conditional, independent events, binomial distribution.",
     principles: [
-      TOP_11.find((p) => p.slug === "inclusion-exclusion")!,
+      TOP_PRINCIPLES.find((p) => p.slug === "inclusion-exclusion")!,
       {
         name: "Conditional probability + Bayes' theorem",
         qCount: 29,
@@ -569,7 +576,8 @@ export const DOMAINS: Domain[] = [
     label: "Sets, Functions & Relations",
     blurb: "Set operations, function properties, modulus and floor.",
     principles: [
-      TOP_11.find((p) => p.slug === "modulus-absolute-value")!,
+      TOP_PRINCIPLES.find((p) => p.slug === "modulus-absolute-value")!,
+      TOP_PRINCIPLES.find((p) => p.slug === "greatest-integer-function")!,
       {
         name: "Set operations (union, intersection, complement, difference)",
         qCount: 23,

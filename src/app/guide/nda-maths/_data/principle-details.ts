@@ -19,7 +19,7 @@ export type PrincipleDetail = {
   exampleQuestionIds: string[];
   /** Common shapes/variants to recognise — bullet list. */
   variants: { name: string; description: string }[];
-  /** 3 cross-link slugs to related principles in the TOP_11. */
+  /** 3 cross-link slugs to related principles in the TOP_PRINCIPLES. */
   relatedSlugs: string[];
 };
 
@@ -291,11 +291,12 @@ export const PRINCIPLE_DETAILS: Record<string, PrincipleDetail> = {
   /* ────────────────────────────────────────────────────────────────────── */
   "modulus-absolute-value": {
     trigger:
-      "The expression contains |x|, [x], or a function defined piecewise at zero or an integer.",
+      "The expression contains |·| — or a square root of something squared, which is |·| in disguise.",
     story: [
-      "|x| splits at zero: equals x for x ≥ 0, equals −x for x < 0. That single piecewise split drives every modulus question in NDA. Left and right limits diverge at the split point; the function is continuous there but not differentiable.",
-      "The principle has been on a tear since 2023 — modulus jumped from 4 q/paper-set to 15. It now appears across 8 chapters: Limits, Continuity, Differentiation, Definite Integration, Apps of Integration, Differential Equations, Functions, and Sets. The technique is the same everywhere: split at the discontinuity, handle each piece separately, recombine.",
-      "The greatest-integer function [x] is the modulus's discrete cousin. It's also piecewise — constant on each [n, n+1) interval, jumping by 1 at each integer. Most NDA traps around [x] live at the integer boundaries (limits, derivatives, integrals).",
+      "|x| splits at zero: equals x for x ≥ 0, equals −x for x < 0. That single split drives every modulus question in NDA. Left and right limits diverge at the split point; the function is continuous there but not differentiable.",
+      "The principle has been on a tear since 2023 — modulus roughly doubled from about 7 questions per paper-set (2017–22) to about 14 (2023–26), and it has held there for four straight sittings. It now reaches 11 chapters, the widest spread of any principle in the bank: Limits & Continuity, Differentiation, Definite and Indefinite Integration, Apps of Integration, Functions, Quadratic Equations, Sets & Relations, Linear Inequalities, App of Derivatives and Probability. The technique is the same everywhere: split at the zero, handle each piece separately, recombine.",
+      "Differentiability is where it is tested hardest. f is differentiable at c only if the left and right derivatives both exist AND agree, and |x| is the canonical counter-example to 'continuous ⇒ differentiable' — at 0 the slopes are −1 and +1. Beware the trap in the other direction: x|x| contains a modulus and IS differentiable at 0, because both one-sided derivatives come out to 0.",
+      "Learn to spot the disguise. √(x²) is |x|, not x — so −x/√(x²) is really −x/|x|, a sign function. √(1 − sin 2x) is √((sin x − cos x)²) = |sin x − cos x|, and which branch you take depends entirely on the interval you are given: on (0, π/4) cosine wins, on (π/4, π/2) sine does. The bank sets that same expression twice, once to differentiate and once to integrate, with opposite sign resolutions.",
     ],
     exampleQuestionIds: [
       "59be1069-725d-4bd3-9cd3-35ed74a627a1", // lim |x-3|/(x-3) (EASY, Limits)
@@ -320,15 +321,20 @@ export const PRINCIPLE_DETAILS: Record<string, PrincipleDetail> = {
           "The graph has a corner. Left derivative = −1, right derivative = +1, so f' undefined at x = 0.",
       },
       {
-        name: "Greatest integer [x]",
+        name: "Hidden modulus: √(f²) = |f|",
         description:
-          "[x] = n for x ∈ [n, n+1). Discontinuous at integers, with jump size 1. {x} = x − [x] is the fractional part.",
+          "A square root of a perfect square is a modulus, never the bare expression. √(x²) = |x|; √(1 − sin 2x) = |sin x − cos x|. The given interval decides the sign.",
+      },
+      {
+        name: "The x|x| trap",
+        description:
+          "Contains a modulus yet IS differentiable at 0 — both one-sided derivatives are 0. Presence of |·| is not proof of a corner; always test both sides.",
       },
     ],
     relatedSlugs: [
-      "differentiability-conditions",
+      "greatest-integer-function",
+      "piecewise-defined-functions",
       "am-gm-mean-inequalities",
-      "ap-three-term",
     ],
   },
 
@@ -465,46 +471,100 @@ export const PRINCIPLE_DETAILS: Record<string, PrincipleDetail> = {
   },
 
   /* ────────────────────────────────────────────────────────────────────── */
-  "differentiability-conditions": {
+  "greatest-integer-function": {
     trigger:
-      "Asked whether a function (often piecewise, |x|, or [x]) is differentiable at a point.",
+      "The expression contains [x], ⌊x⌋, or the words 'greatest integer' / 'integral part'.",
     story: [
-      "f is differentiable at x = c iff the left and right derivatives exist AND are equal. The left derivative is lim h→0⁻ [f(c + h) − f(c)] / h, the right is lim h→0⁺ [f(c + h) − f(c)] / h.",
-      "|x| is the canonical counter-example to 'continuous ⇒ differentiable'. At x = 0, the left derivative is −1, the right derivative is +1. Continuous (left limit = right limit = f(0) = 0), but not differentiable (slopes differ).",
-      "[x] (greatest integer function) is worse: at every integer, [x] jumps by 1. The derivative is 0 on every open interval (n, n+1), but undefined at integers. NDA tests this in derivative-of-floor questions — the answer is almost always 0 on the interior, undefined at the endpoint.",
+      "[x] is the largest integer not exceeding x: [2.7] = 2, [3] = 3, and — the one students get wrong — [−2.7] = −3, not −2. It is constant on each interval [n, n+1) and jumps by exactly 1 at every integer. Think of it as the modulus's discrete cousin: also piecewise, but with jumps instead of a corner.",
+      "Everything NDA asks lives at the integer boundary. Approaching an integer from the left and the right gives values differing by 1, so the two-sided limit never exists there. The derivative is 0 on every open interval (n, n+1) — the function is flat — and undefined at the integers themselves. A derivative-of-floor question asked strictly between two integers is therefore almost always answered 0, and that is the whole question.",
+      "The fractional part {x} = x − [x] is the other half of the same identity, and it is periodic with period 1. That periodicity is what makes ∫ from n to n+1 of (x − [x]) dx the same for every n. For integrals of [x] or [x²] over a range, split the range at each integer where the floor value changes, evaluate a constant on each piece, and add — for [x²] the breakpoints are at √2, √3, 2 and so on, not at the integers.",
     ],
     exampleQuestionIds: [
-      "d41fa32c-cde9-4247-8f76-06da4cf721b0", // find a+b given f differentiable at x=1 — LHD=RHD parameter lever (HARD)
-      "6f6a1ee1-869e-4c41-b606-783a12efff57", // e^|x| — canonical |x| corner non-differentiability (EASY)
-      "9943643d-bcde-41fd-ba82-b6e87e5b2ba6", // d/dx of ⌊x+1⌋ at x=-3.5 — floor-interior derivative (EASY)
-      "49206ef2-3be1-4ed2-b160-982080dc5d99", // x|x| differentiable at 0? — the trap (contains |x| but IS differentiable) (MODERATE)
+      "9943643d-bcde-41fd-ba82-b6e87e5b2ba6", // d/dx of [x+1] on (-4,-3) — floor-interior derivative is 0 (EASY, Differentiation)
+      "30d02af7-d3fb-4c39-827a-fde62770d669", // ∫ₙ^{n+1}(x-[x])dx — fractional part, period 1 (EASY, Definite Integration)
+      "33c569a9-a9b1-4fbb-962d-74086fda3858", // ∫₀^√2 [x²]dx — breakpoint at 1, not at an integer of x (MODERATE, Definite Integration)
+      "df5bbe2a-50b6-4a4b-8192-5dae24d84715", // LHD of [x]sin(πx) at integer k (HARD, Limits & Continuity)
     ],
     variants: [
       {
-        name: "Left derivative = Right derivative",
+        name: "Negative arguments",
         description:
-          "Test both sides separately. If left and right slopes differ, f is not differentiable at the point.",
+          "[−2.7] = −3. The floor goes DOWN, away from zero, for negatives. The single most common slip.",
       },
       {
-        name: "Non-differentiability of |x| at 0",
+        name: "One-sided limits at an integer",
         description:
-          "Sharpest corner — slopes are −1 and +1. f(x) = |x − a| is non-differentiable at x = a.",
+          "lim x→n⁻ [x] = n − 1 and lim x→n⁺ [x] = n. They differ by 1, so the two-sided limit never exists at an integer.",
       },
       {
-        name: "[x] derivative on (n, n+1)",
+        name: "Derivative: 0 inside, undefined at the ends",
         description:
-          "Equals 0 on the open interval (constant in between). Undefined at integers (jump discontinuity).",
+          "Constant on (n, n+1) ⇒ derivative 0 there. At each integer there is a jump, so no derivative exists.",
       },
       {
-        name: "Composition: e^|x|, ln |x|, etc.",
+        name: "Fractional part {x} = x − [x]",
         description:
-          "Often differentiable everywhere EXCEPT at the modulus's split point. Chain rule confirms.",
+          "Periodic with period 1 and always in [0, 1). Turns an awkward floor integral into the same integral on every unit interval.",
+      },
+      {
+        name: "Splitting ∫[f(x)] dx",
+        description:
+          "Break the range wherever the floor value changes. For [x²] on [0, 2] the breakpoints are √2 and √3, not the integers.",
       },
     ],
     relatedSlugs: [
       "modulus-absolute-value",
+      "piecewise-defined-functions",
+      "inclusion-exclusion",
+    ],
+  },
+
+  /* ────────────────────────────────────────────────────────────────────── */
+  "piecewise-defined-functions": {
+    trigger:
+      "f is given by cases, and the question asks about continuity, a limit, or differentiability at a join.",
+    story: [
+      "A function defined by cases is easy everywhere except at the joins, and the joins are the only place NDA ever asks. Away from a breakpoint the function is just whichever ordinary expression applies, so all the work is at the boundary between two pieces.",
+      "Two tests, in strict order. For CONTINUITY at c you need the left limit, the right limit and f(c) itself to be one and the same number — and f(c) is the piece the definition assigns AT c, which is frequently a third, separate line of the definition. For DIFFERENTIABILITY at c you need continuity first, and then the left and right derivatives to agree as well. Differentiability implies continuity; continuity never implies differentiability.",
+      "This is how NDA hides simultaneous equations inside a limits question. 'Find a and b such that f is continuous' gives you one equation per join; 'such that f is differentiable' gives you two per join — one matching values, one matching slopes. A three-case definition with two unknowns is a two-equation solve wearing a disguise, and the printed answer is usually a + b rather than either separately.",
+    ],
+    exampleQuestionIds: [
+      "da8ba5f8-54e2-447a-9166-07263f585b8c", // k making (sin x)/x continuous at 0 (EASY, Limits & Continuity)
+      "1264ec7b-6334-4a87-8f08-1c5678a0c360", // find k for a two-case definition (EASY, Limits & Continuity)
+      "d4c835b2-072c-4451-9efa-0b6a5d7ee46d", // a+bx, 5, b-ax continuous at 1 — the middle case IS f(1) (MODERATE, Limits & Continuity)
+      "d41fa32c-cde9-4247-8f76-06da4cf721b0", // differentiable at x=1 ⇒ a+b — LHD=RHD parameter lever (HARD, Differentiation)
+    ],
+    variants: [
+      {
+        name: "Continuity at the join",
+        description:
+          "Left limit = right limit = f(c). Gives one equation per breakpoint. Missing that f(c) is its own case is the usual error.",
+      },
+      {
+        name: "Differentiability at the join",
+        description:
+          "Continuity first, then left derivative = right derivative. Two conditions, so two equations — enough to pin two unknowns.",
+      },
+      {
+        name: "Solving for parameters",
+        description:
+          "'Find a and b so that f is continuous/differentiable' is a simultaneous-equation problem. The answer asked for is often a + b.",
+      },
+      {
+        name: "Removable vs jump discontinuity",
+        description:
+          "If the one-sided limits agree but differ from f(c), redefining f(c) repairs it. If they disagree, nothing can.",
+      },
+      {
+        name: "Definitions given in prose",
+        description:
+          "Not every piecewise function is typeset with a brace — 'f(x) = ax/(x+1) + b, x < 1 and √(x−1), 1 ≤ x ≤ 2' is the same object.",
+      },
+    ],
+    relatedSlugs: [
+      "modulus-absolute-value",
+      "greatest-integer-function",
       "am-gm-mean-inequalities",
-      "compound-angle",
     ],
   },
 
