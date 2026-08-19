@@ -65,6 +65,14 @@ real English one, because `content_hash` is stem-derived.
 > the numbering across the pages they DID read stays continuous, so nothing
 > announces the loss.
 >
+> **Start with `out/<paperId>/contact.png`.** `prep.py` already renders an
+> index-labelled thumbnail sheet of the whole booklet, so one Read shows you
+> which pages are Hindi, which are English, where a block spills and whether the
+> last page is blank. It answers the parity question in a single look instead of
+> two dozen. Confirm anything load-bearing against the full-size page, but start
+> here. (Pointed out by the agent on 2022 65/5/1, after this section had told
+> several agents to walk every page without mentioning the tool that does it.)
+>
 > **The only safe procedure is to account for every page.** Walk all 24 indices,
 > decide what language each carries and which questions are on it, and check that
 > your question numbers run 1 to 38 unbroken with every sub-part present. Report
@@ -364,9 +372,29 @@ AUTO-CREATES a duplicate chapter that silently forks the corpus.
 | Matrices | Order and Types of Matrices · Equality of Matrices · Addition and Scalar Multiplication · Multiplication of Matrices · Transpose of a Matrix · Symmetric and Skew-Symmetric Matrices · Elementary Operations and Inverse of a Matrix |
 | Probability | Conditional Probability · Multiplication Theorem on Probability · Independent Events · Theorem of Total Probability · Bayes' Theorem · **Random Variables and Probability Distributions** |
 | Relations and Functions | Types of Relations · Equivalence Relations and Classes · One-One and Onto Functions · Composition and Invertible Functions |
-| Three Dimensional Geometry | Direction Cosines and Direction Ratios · Equation of a Line in Space · Angle Between Two Lines · Shortest Distance Between Two Lines |
+| Three Dimensional Geometry | Direction Cosines and Direction Ratios · Equation of a Line in Space · Angle Between Two Lines · Shortest Distance Between Two Lines · **The Plane** (2022 only — see below) |
 | Vector Algebra | Types of Vectors · Addition of Vectors · Components and Direction Cosines · Section Formula · Scalar (Dot) Product and Projection · Vector (Cross) Product |
 
 If a question genuinely fits none of these, file it on the closest and raise a
 `_flag` naming the mismatch. Do **not** invent a subtopic name — the axis is
 shared with the NCERT textbook corpus, and a new one is a taxonomy decision.
+
+### `The Plane` — added 2026-08-19, and why it exists
+
+The rest of this axis was defined by the NCERT **textbook** ingest, and the
+rationalised Class-12 Ch.11 **no longer teaches the plane at all**. The 2022
+Term-2 papers predate that syllabus change and examine it directly, so those
+questions had no correct home: two agents working on different papers
+independently hit it, both filed on the closest fit and both refused to invent a
+name, which is exactly the behaviour this section asks for.
+
+Scope was measured before adding it: across all 127 committed Three Dimensional
+Geometry PYQ rows from 2023-2026, **zero** stems mention a plane. CBSE stopped
+setting it after rationalisation, so this subtopic serves the 2022 corpus alone
+and no existing row moves.
+
+**Use it for any plane question** - equation of a plane, angle between planes,
+distance of a point from a plane, line-meets-plane, family of planes. If you are
+transcribing 2023-2026 and think you need it, stop and say so: on the evidence
+that would be the first such question in four years.
+
