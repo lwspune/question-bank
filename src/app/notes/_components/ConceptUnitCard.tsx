@@ -221,7 +221,7 @@ import OcnSpringNeapTides from "./visualizations/OcnSpringNeapTides";
 import OcnCoralReefTypes from "./visualizations/OcnCoralReefTypes";
 import type { VisualizationSlug } from "@/app/notes/_types";
 
-function renderVisualization(slug: VisualizationSlug) {
+export function renderVisualization(slug: VisualizationSlug) {
   switch (slug) {
     case "regression-line-fit":
       return <RegressionLineFit />;
