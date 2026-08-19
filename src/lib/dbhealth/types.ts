@@ -97,6 +97,24 @@ export type HealthSnapshot = {
    * have diffed, so the reports under-count and cannot say by how much.
    */
   statementsEvictions: number | null;
+  /**
+   * The store's size IN BYTES, and the work_mem it must fit inside.
+   *
+   * THE QUANTITY THAT ACTUALLY OVERFLOWS, and the reason migration 0080 exists.
+   * `statementsTracked` was used as a proxy for it and is a bad one: Supabase's
+   * exporter materialises whole ROWS, not query text, and the ratio between the
+   * two moves with the mix of long ad-hoc SQL and short PostgREST statements.
+   * On 2026-08-19 the store held 1,580 kB against 911 kB of text, and spilling
+   * had begun while the entry-count rule read a comfortable 33% full.
+   *
+   * work_mem is RECORDED rather than assumed because it is the denominator, it
+   * is settable per-role, and a hard-coded value goes silently wrong the day
+   * the instance is resized.
+   *
+   * null on snapshots predating migration 0080 — not recorded, not zero.
+   */
+  statementsBytes: number | null;
+  workMemBytes: number | null;
   tables: TableStat[];
   queries: QueryStat[];
 };
@@ -160,6 +178,9 @@ export type HealthDelta = {
   statementsTracked: number | null;
   statementsMax: number | null;
   statementsEvictions: number | null;
+  /** See HealthSnapshot — null means "not recorded", never "zero". */
+  statementsBytes: number | null;
+  workMemBytes: number | null;
 
   // Cumulative counters — null whenever they cannot be trusted.
   tempBytesDelta: number | null;

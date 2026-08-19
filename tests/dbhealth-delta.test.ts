@@ -28,6 +28,8 @@ const BASE: HealthSnapshot = {
   statementsTracked: 500,
   statementsMax: 5000,
   statementsEvictions: 0,
+  statementsBytes: 500_000,
+  workMemBytes: 2_236_416,
   tables: [],
   queries: [],
 };

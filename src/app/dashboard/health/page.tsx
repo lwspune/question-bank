@@ -136,6 +136,21 @@ export default async function DatabaseHealthPage() {
                   display={`${delta.cacheHitPct}%`}
                   note="higher is better"
                 />
+                {/*
+                  The gauge that predicts disk spill. Rendered only when both
+                  readings exist — snapshots before migration 0080 have neither,
+                  and a meter drawn from a missing value would show a reassuring
+                  empty bar for a measurement nobody took.
+                */}
+                {delta.statementsBytes !== null && delta.workMemBytes !== null && delta.workMemBytes > 0 && (
+                  <Meter
+                    label="Query store"
+                    value={delta.statementsBytes}
+                    max={delta.workMemBytes}
+                    display={bytes(delta.statementsBytes)}
+                    note={`of ${bytes(delta.workMemBytes)} work_mem — spills past it`}
+                  />
+                )}
               </div>
             </section>
 

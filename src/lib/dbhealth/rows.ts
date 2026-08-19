@@ -46,6 +46,8 @@ export function rowToSnapshot(r: Row): HealthSnapshot {
     statementsTracked: nOrNull(r.statements_tracked),
     statementsMax: nOrNull(r.statements_max),
     statementsEvictions: nOrNull(r.statements_evictions),
+    statementsBytes: nOrNull(r.statements_bytes),
+    workMemBytes: nOrNull(r.work_mem_bytes),
     tables: (r.tables ?? []) as HealthSnapshot["tables"],
     queries: (r.queries ?? []) as HealthSnapshot["queries"],
   };

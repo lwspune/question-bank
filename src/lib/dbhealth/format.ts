@@ -61,6 +61,20 @@ export function renderReport(delta: HealthDelta, flags: Flag[]): string {
       `  query store          ${num(delta.statementsTracked)} / ${num(delta.statementsMax)} entries${pct}${eviction}`
     );
   }
+  // The line that actually predicts disk spill. Printed SEPARATELY from the
+  // entry count above rather than replacing it, because they answer different
+  // questions: entries says how close the store is to evicting (which makes
+  // this tracker's own inputs lossy), bytes says how close it is to falling out
+  // of work_mem (which costs disk on every scrape, every minute). On
+  // 2026-08-19 the first read 33% while the second read 72%.
+  if (delta.statementsBytes === null || delta.workMemBytes === null) {
+    out.push("  store vs work_mem    not recorded (snapshot predates migration 0080)");
+  } else if (delta.workMemBytes > 0) {
+    const pct = (delta.statementsBytes / delta.workMemBytes) * 100;
+    out.push(
+      `  store vs work_mem    ${bytes(delta.statementsBytes)} of ${bytes(delta.workMemBytes)} work_mem (${pct.toFixed(0)}%)`
+    );
+  }
   out.push("");
 
   out.push("THIS WINDOW (cumulative counters)");

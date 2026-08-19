@@ -90,19 +90,36 @@ export const THRESHOLDS = {
   unattributedSpillFraction: 0.5,
 
   /**
-   * How full `pg_stat_statements` may get before it costs real disk IO.
+   * How close the `pg_stat_statements` store may come to work_mem.
    *
-   * Measured 2026-08-09, not guessed. Supabase's postgres_exporter reads the
-   * ENTIRE store every minute; at 4,868 of 5,000 entries (3.8 MB of query text
-   * against 2.1 MB of work_mem) that read spilled ~5.8 MB to disk twice a
-   * minute — 13 GB/day, and the single largest consumer of the disk-IO budget
-   * on a 164 MB database. Resetting the store halved it immediately.
+   * MEASURED TWICE, and rewritten after the second time. Supabase's
+   * postgres_exporter reads the ENTIRE store every minute. Once that read stops
+   * fitting in work_mem, every scrape spills to disk: 13 GB/day on 2026-08-09
+   * (4,868 entries), and 2.7 GB/day again on 2026-08-19 after the store refilled
+   * in TEN DAYS. Both times one call fixed it; both times a human had to notice.
    *
-   * 0.8 is where the text crosses work_mem on this instance with margin to act;
-   * 0.95 is where eviction starts and the tracker's own inputs go lossy.
+   * THE FRACTION IS OF work_mem, NOT OF `pg_stat_statements.max`. The previous
+   * rule used entries/max and warned at 80% — but on 2026-08-19 spilling began
+   * at 33% of max, so the rule sat at roughly 2.4x the failure point and stayed
+   * silent through the entire incident. Entry count is not a stable proxy for
+   * size: the exporter materialises whole rows, and the bytes-per-entry ratio
+   * moves with the mix of long ad-hoc SQL and short PostgREST statements.
+   *
+   * WHY 0.6 AND NOT 1.0. `pg_column_size` sums DATUM sizes; the tuplestore the
+   * exporter builds is larger (tuple headers, pointers), so the overflow
+   * happens well before this ratio reaches 1. Spilling was OBSERVED at 72% by
+   * this measure, and the true crossing is at or below that — it is bracketed
+   * between two snapshots, not pinned. So 0.6 warns with roughly a week of
+   * headroom at August's growth rate, and 0.70 means "at or past the lowest
+   * point spilling has ever been seen", i.e. you are almost certainly paying
+   * for it right now.
+   *
+   * THE TWO NUMBERS ARE CLOSE ON PURPOSE. This is a cliff, not a slope: below
+   * work_mem the read costs nothing at all, above it every scrape spills. A
+   * wide band would imply a gradual cost that does not exist.
    */
-  statementStoreWarnFraction: 0.8,
-  statementStoreCriticalFraction: 0.95,
+  storeBytesWarnFraction: 0.6,
+  storeBytesCriticalFraction: 0.70,
 } as const;
 
 export type FlagLevel = "critical" | "warn" | "info";
@@ -242,22 +259,30 @@ export function evaluateFlags(delta: HealthDelta): Flag[] {
     });
   }
 
-  // The pg_stat_statements store. Both rules are skipped entirely when the
-  // reading is null — a snapshot from before migration 0071 did not record it,
-  // and treating "not recorded" as 0 would report a measurement we never took.
-  const tracked = delta.statementsTracked;
-  const storeMax = delta.statementsMax;
-  if (tracked !== null && storeMax !== null && storeMax > 0) {
-    const fraction = tracked / storeMax;
-    if (fraction >= THRESHOLDS.statementStoreWarnFraction) {
+  // The pg_stat_statements store, measured in BYTES against work_mem — see
+  // THRESHOLDS.storeBytesWarnFraction for why not entries/max.
+  //
+  // Skipped entirely when either reading is null. A snapshot from before
+  // migration 0080 has no byte reading, and falling back to the entry count
+  // there would reinstate exactly the proxy this rule was rewritten to abandon.
+  // "Not recorded" is not "zero", and must never be reported as a measurement.
+  const storeBytes = delta.statementsBytes;
+  const workMem = delta.workMemBytes;
+  if (storeBytes !== null && workMem !== null && workMem > 0) {
+    const fraction = storeBytes / workMem;
+    if (fraction >= THRESHOLDS.storeBytesWarnFraction) {
+      const entries =
+        delta.statementsTracked !== null ? ` across ${delta.statementsTracked.toLocaleString("en-IN")} entries` : "";
       flags.push({
-        level: fraction >= THRESHOLDS.statementStoreCriticalFraction ? "critical" : "warn",
+        level: fraction >= THRESHOLDS.storeBytesCriticalFraction ? "critical" : "warn",
         code: "statement-store-full",
         message:
-          `pg_stat_statements holds ${tracked} of ${storeMax} entries (${(fraction * 100).toFixed(0)}%). ` +
-          `Supabase's postgres_exporter reads the whole store every minute, so its cost scales with this ` +
-          `number — at 97% full it was spilling ~13 GB/day to disk. Most of the store is one-off script ` +
-          `queries that will never run again. Clear it with: select pg_stat_statements_reset();`,
+          `pg_stat_statements holds ${(storeBytes / 1024).toFixed(0)} kB${entries}, which is ` +
+          `${(fraction * 100).toFixed(0)}% of work_mem (${(workMem / 1024).toFixed(0)} kB). ` +
+          `Supabase's postgres_exporter materialises the whole store every minute; once that stops ` +
+          `fitting in work_mem, every scrape spills to disk — this cost 13 GB/day in Aug 2026. ` +
+          `Over half the store is one-off script queries that will never run again. ` +
+          `Clear it with: select public.reset_statement_store();`,
       });
     }
   }

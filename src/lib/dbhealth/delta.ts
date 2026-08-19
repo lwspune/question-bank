@@ -58,6 +58,8 @@ export function computeDelta(prev: HealthSnapshot | null, curr: HealthSnapshot):
     statementsTracked: curr.statementsTracked,
     statementsMax: curr.statementsMax,
     statementsEvictions: curr.statementsEvictions,
+    statementsBytes: curr.statementsBytes,
+    workMemBytes: curr.workMemBytes,
     tables: curr.tables,
   };
 
