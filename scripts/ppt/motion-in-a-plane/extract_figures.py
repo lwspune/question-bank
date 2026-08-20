@@ -231,6 +231,48 @@ def compose(name, keys, cols, manifest):
     return out_name
 
 
+# Supabase rejects an object over 1 MB (MAX_SIZE_BYTES in src/lib/storage), and
+# it rejects it by THROWING — a near-full-page colour figure simply fails to
+# upload. Ported from scripts/mh-ssc-10/attach-images.ts, which met this on a
+# Geography panorama that rendered at 7.2 MB.
+#
+# Physics is line art and lands ~51 KB at 3x, so the first rung is 3x and
+# everything that already fits is byte-identical to before this existed. The
+# ladder is for CHEMISTRY: apparatus diagrams and colour structures are the ones
+# that will blow the cap, and a scan is already lossy, so JPEG (also an
+# ALLOWED_MIME) costs nothing real and keeps the figure legible.
+STORAGE_BUDGET = int(1024 * 1024 * 0.95)  # headroom under the hard cap
+PNG_SCALES = (3.0, 2.5, 2.0)
+JPEG_QUALITIES = (88, 80, 70, 60)
+
+
+def render_within_budget(page, box, stem: str):
+    """Render a clip small enough to upload. Returns (filename, note)."""
+    for scale in PNG_SCALES:
+        data = page.get_pixmap(matrix=fitz.Matrix(scale, scale), clip=box).tobytes("png")
+        if len(data) <= STORAGE_BUDGET:
+            name = f"{stem}.png"
+            (OUT / name).write_bytes(data)
+            note = "" if scale == PNG_SCALES[0] else f" [{scale}x to fit]"
+            return name, f"{len(data)//1024} KB{note}"
+
+    from PIL import Image  # only needed on the fallback path
+    import io as _io
+
+    pix = page.get_pixmap(matrix=fitz.Matrix(3.0, 3.0), clip=box)
+    img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+    for q in JPEG_QUALITIES:
+        buf = _io.BytesIO()
+        img.save(buf, "JPEG", quality=q, optimize=True)
+        # The last rung ships even if still over budget — better a loud upload
+        # failure naming the file than a silently dropped figure.
+        if buf.tell() <= STORAGE_BUDGET or q == JPEG_QUALITIES[-1]:
+            name = f"{stem}.jpg"
+            (OUT / name).write_bytes(buf.getvalue())
+            return name, f"{buf.tell()//1024} KB [jpeg q{q}]"
+    raise AssertionError("unreachable")
+
+
 def main() -> int:
     if not PDF.exists():
         print(f"source not found: {PDF}")
@@ -274,8 +316,7 @@ def main() -> int:
                     box.y1 + 0.5,
                 )
             box &= page.rect
-            name = f"fig{key.replace('.', '_')}.png"
-            page.get_pixmap(matrix=fitz.Matrix(ZOOM, ZOOM), clip=box).save(OUT / name)
+            name, note = render_within_budget(page, box, f"fig{key.replace('.', '_')}")
             manifest[key] = {
                 "file": name,
                 "page": pno,
@@ -283,7 +324,7 @@ def main() -> int:
                 "caption": text,
             }
             ceilings[col] = box.y1
-            print(f"  Fig {key:<6} p{pno:<3} {name}")
+            print(f"  Fig {key:<6} p{pno:<3} {name:<16} {note}")
 
     for name, keys, cols in COMPOSITES:
         made = compose(name, keys, cols, manifest)
