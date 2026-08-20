@@ -45,6 +45,8 @@ export const BLOCKING_TOOLS = {
   eigenvalues: "Eigenvalues / AX = λX",
   "nilpotent-3x3": "3×3 nilpotent shift with truncated binomial",
   "quadratic-form-test": "Quadratic-form test: XᵀAX = O ∀X ⇒ A skew",
+  "weighted-am-gm": "Weighted / n-variable AM-GM (split aᵖbᵠ… into n equal terms)",
+  "log-series": "Logarithmic series — log(1−x) = −(x + x²/2 + x³/3 + …)",
 } as const;
 
 export type BlockingTool = keyof typeof BLOCKING_TOOLS;
@@ -66,6 +68,7 @@ export function isBlockingTool(v: string): v is BlockingTool {
 export const REVIEWED_CHAPTERS: { id: string; name: string }[] = [
   { id: "9526b878-11cb-4014-a3a5-79ccc3d8d8e1", name: "Matrices" },
   { id: "84561864-98dd-4943-9949-3ab1fb3016ff", name: "Determinants" },
+  { id: "0043c08d-21ce-4c4a-96a5-add5d1924eca", name: "Sequences and Series" },
 ];
 
 export const REVIEWED_CHAPTER_IDS: ReadonlySet<string> = new Set(
