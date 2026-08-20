@@ -1,337 +1,339 @@
 {
- "_why": "Adjudicated content_hash collisions among FIGURE-DEPENDENT rows. image_url is not part of content_hash, so two questions differing ONLY by their printed figure hash identically and commitStaged's upsert would drop one silently. commit.ts refuses such a row until it appears here. 'same' = confirmed the same question, let it dedup. 'distinct' = genuinely different questions the hash cannot tell apart; the row is HELD OUT of the commit and needs the figure phase before it can be represented.",
- "_adjudicated": "2026-08-19",
- "collisions": [
-  {
-   "row": "2025-65-6-2:Q17",
-   "clashesWith": "cbse-12-pyq-2025-65-6-1 Q15",
-   "verdict": "same",
-   "evidence": "Both are the same LPP objective-function MCQ. Its sibling 65/6/3 Q14 shares a marking-scheme block SHA with 65/6/1 Q15, and all three sets print the identical feasible-region graph."
-  },
-  {
-   "row": "2025-65-6-3:Q14",
-   "clashesWith": "cbse-12-pyq-2025-65-6-1 Q15",
-   "verdict": "same",
-   "evidence": "Marking-scheme block SHA is shared with 65/6/1 Q15 — the publisher reused the identical typeset block, figure included."
-  },
-  {
-   "row": "2025-65-7-2:Q37i",
-   "clashesWith": "cbse-12-pyq-2025-65-7-1 Q36 (i)",
-   "verdict": "same",
-   "evidence": "Same 'Three friends A, B and C' case study, renumbered (65/7/2 CS2 = 65/7/1 CS1). Passage byte-identical; same vector diagram."
-  },
-  {
-   "row": "2025-65-7-3:Q38i",
-   "clashesWith": "cbse-12-pyq-2025-65-7-1 Q36 (i)",
-   "verdict": "same",
-   "evidence": "Verified visually 2026-08-18 by rendering both papers' Section-E pages: identical 'Three friends' passage and identical vector diagram (O, A, B, C with a, b, 5a-2b)."
-  },
-  {
-   "row": "2025-65-7-3:Q1",
-   "clashesWith": "cbse-12-pyq-2025-65-7-1 Q1",
-   "verdict": "distinct",
-   "evidence": "DIFFERENT QUESTIONS with a byte-identical hash — the case this guard exists for. Both stems read 'The given graph illustrates :' over the same four option TEXTS (the hash sorts options, so the different printed order does not separate them) and both key (A). But 65/7/1's graph is tan^-1 and 65/7/3's is sec^-1, so (A) denotes a different function in each. Committing both would drop one and leave the survivor's key attached to the wrong graph.",
-   "action": "HELD OUT of the commit. 65/7/1's row stands; 65/7/3's Q1 is absent from the bank. Revisit at the figure phase: once each row carries its own image_url the two can be told apart by a reader, but they will STILL collide on content_hash, so representing both needs a decision (distinct stems referencing their figures, or accepting one)."
-  },
-  {
-   "row": "2025-65-1-2:Q5",
-   "clashesWith": "cbse-12-pyq-2025-65-1-1 Q18",
-   "verdict": "same",
-   "evidence": "Verified visually 2026-08-18 by rendering both papers' pages side by side: identical stem graph and identical four option graphs in identical positions. The 'graph of a trigonometric function ... graph of its inverse' block is reused unchanged across all three 65/1 sets."
-  },
-  {
-   "row": "2025-65-1-3:Q14",
-   "clashesWith": "cbse-12-pyq-2025-65-1-1 Q18",
-   "verdict": "same",
-   "evidence": "Verified visually 2026-08-18 by rendering both papers' pages side by side: identical stem graph and identical four option graphs in identical positions. The 'graph of a trigonometric function ... graph of its inverse' block is reused unchanged across all three 65/1 sets."
-  },
-  {
-   "row": "2025-65-1-2:Q18",
-   "clashesWith": "cbse-12-pyq-2025-65-1-1 Q17",
-   "verdict": "same",
-   "evidence": "Same shaded-region MCQ, reused block; the agent confirmed it on its own page before reusing the reference LaTeX byte-for-byte."
-  },
-  {
-   "row": "2025-65-1-3:Q18",
-   "clashesWith": "cbse-12-pyq-2025-65-1-1 Q17",
-   "verdict": "same",
-   "evidence": "Same shaded-region MCQ, reused block; confirmed on-page by the transcribing agent."
-  },
-  {
-   "row": "2025-65-2-2:Q6",
-   "clashesWith": "cbse-12-pyq-2025-65-2-1 Q14",
-   "verdict": "same",
-   "evidence": "Verified visually 2026-08-18 by rendering both papers' pages side by side: identical Venn-diagram options in identical positions (A: A inside B, B: B inside A, C/D overlapping)."
-  },
-  {
-   "row": "2025-65-2-3:Q16",
-   "clashesWith": "cbse-12-pyq-2025-65-2-1 Q14",
-   "verdict": "same",
-   "evidence": "Verified visually 2026-08-18 by rendering both papers' pages side by side: identical Venn-diagram options in identical positions (A: A inside B, B: B inside A, C/D overlapping)."
-  },
-  {
-   "row": "2025-65-2-2:Q7",
-   "clashesWith": "cbse-12-pyq-2025-65-2-1 Q15",
-   "verdict": "same",
-   "evidence": "Verified visually 2026-08-18 alongside the Venn question on the same page: identical shaded-region figure and identical four integral options."
-  },
-  {
-   "row": "2025-65-2-3:Q9",
-   "clashesWith": "cbse-12-pyq-2025-65-2-1 Q15",
-   "verdict": "same",
-   "evidence": "Verified visually 2026-08-18 alongside the Venn question on the same page: identical shaded-region figure and identical four integral options."
-  },
-  {
-   "row": "2024-65-2-2:Q36i",
-   "clashesWith": "cbse-12-pyq-2024-65-2-1 Q37 (i)",
-   "verdict": "same",
-   "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
-  },
-  {
-   "row": "2024-65-2-2:Q36ii",
-   "clashesWith": "cbse-12-pyq-2024-65-2-1 Q37 (ii)",
-   "verdict": "same",
-   "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
-  },
-  {
-   "row": "2024-65-2-3:Q38i",
-   "clashesWith": "cbse-12-pyq-2024-65-2-1 Q37 (i)",
-   "verdict": "same",
-   "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
-  },
-  {
-   "row": "2024-65-2-3:Q38ii",
-   "clashesWith": "cbse-12-pyq-2024-65-2-1 Q37 (ii)",
-   "verdict": "same",
-   "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
-  },
-  {
-   "row": "2024-65-3-2:Q5",
-   "clashesWith": "cbse-12-pyq-2024-65-3-1 Q17",
-   "verdict": "same",
-   "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
-  },
-  {
-   "row": "2024-65-3-3:Q5",
-   "clashesWith": "cbse-12-pyq-2024-65-3-1 Q17",
-   "verdict": "same",
-   "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
-  },
-  {
-   "row": "2024-65-4-2:Q2",
-   "clashesWith": "cbse-12-pyq-2024-65-4-1 Q16",
-   "verdict": "same",
-   "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
-  },
-  {
-   "row": "2024-65-4-2:Q19",
-   "clashesWith": "cbse-12-pyq-2024-65-4-1 Q20",
-   "verdict": "same",
-   "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
-  },
-  {
-   "row": "2024-65-4-3:Q11",
-   "clashesWith": "cbse-12-pyq-2024-65-4-1 Q16",
-   "verdict": "same",
-   "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
-  },
-  {
-   "row": "2024-65-4-3:Q20",
-   "clashesWith": "cbse-12-pyq-2024-65-4-1 Q20",
-   "verdict": "same",
-   "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
-  },
-  {
-   "row": "2024-65-5-2:Q38i",
-   "clashesWith": "cbse-12-pyq-2024-65-5-1 Q37 (i)",
-   "verdict": "same",
-   "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
-  },
-  {
-   "row": "2024-65-5-2:Q38ii",
-   "clashesWith": "cbse-12-pyq-2024-65-5-1 Q37 (ii)",
-   "verdict": "same",
-   "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
-  },
-  {
-   "row": "2024-65-5-3:Q36i",
-   "clashesWith": "cbse-12-pyq-2024-65-5-1 Q37 (i)",
-   "verdict": "same",
-   "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
-  },
-  {
-   "row": "2024-65-5-3:Q36ii",
-   "clashesWith": "cbse-12-pyq-2024-65-5-1 Q37 (ii)",
-   "verdict": "same",
-   "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
-  },
-  {
-   "row": "2023-65-1-2:Q37i",
-   "clashesWith": "cbse-12-pyq-2023-65-1-1",
-   "verdict": "same",
-   "evidence": "Verified visually 2026-08-19 by rendering both papers' Section-E pages side by side: identical Yoga Venn diagram with identical values (0.32, 0.09, y, x, 0.21, 0.11) in identical positions. NOTE these sub-part stems are BARE ('Find the value of x.'), so identity rests on the shared context and its figure rather than on the stem — which is why this pair was checked visually rather than on field equality alone. Only the printed Case Study NUMBER differs (1 vs 2), and that lives in _caseStudyLabel, which is not hashed."
-  },
-  {
-   "row": "2023-65-1-2:Q37ii",
-   "clashesWith": "cbse-12-pyq-2023-65-1-1",
-   "verdict": "same",
-   "evidence": "Verified visually 2026-08-19 by rendering both papers' Section-E pages side by side: identical Yoga Venn diagram with identical values (0.32, 0.09, y, x, 0.21, 0.11) in identical positions. NOTE these sub-part stems are BARE ('Find the value of x.'), so identity rests on the shared context and its figure rather than on the stem — which is why this pair was checked visually rather than on field equality alone. Only the printed Case Study NUMBER differs (1 vs 2), and that lives in _caseStudyLabel, which is not hashed."
-  },
-  {
-   "row": "2023-65-1-2:Q37iiia",
-   "clashesWith": "cbse-12-pyq-2023-65-1-1",
-   "verdict": "same",
-   "evidence": "Verified visually 2026-08-19 by rendering both papers' Section-E pages side by side: identical Yoga Venn diagram with identical values (0.32, 0.09, y, x, 0.21, 0.11) in identical positions. NOTE these sub-part stems are BARE ('Find the value of x.'), so identity rests on the shared context and its figure rather than on the stem — which is why this pair was checked visually rather than on field equality alone. Only the printed Case Study NUMBER differs (1 vs 2), and that lives in _caseStudyLabel, which is not hashed."
-  },
-  {
-   "row": "2023-65-1-2:Q37iiib",
-   "clashesWith": "cbse-12-pyq-2023-65-1-1",
-   "verdict": "same",
-   "evidence": "Verified visually 2026-08-19 by rendering both papers' Section-E pages side by side: identical Yoga Venn diagram with identical values (0.32, 0.09, y, x, 0.21, 0.11) in identical positions. NOTE these sub-part stems are BARE ('Find the value of x.'), so identity rests on the shared context and its figure rather than on the stem — which is why this pair was checked visually rather than on field equality alone. Only the printed Case Study NUMBER differs (1 vs 2), and that lives in _caseStudyLabel, which is not hashed."
-  },
-  {
-   "row": "2023-65-1-3:Q37i",
-   "clashesWith": "cbse-12-pyq-2023-65-1-1",
-   "verdict": "same",
-   "evidence": "Verified visually 2026-08-19 by rendering both papers' Section-E pages side by side: identical Yoga Venn diagram with identical values (0.32, 0.09, y, x, 0.21, 0.11) in identical positions. NOTE these sub-part stems are BARE ('Find the value of x.'), so identity rests on the shared context and its figure rather than on the stem — which is why this pair was checked visually rather than on field equality alone. Only the printed Case Study NUMBER differs (1 vs 2), and that lives in _caseStudyLabel, which is not hashed."
-  },
-  {
-   "row": "2023-65-1-3:Q37ii",
-   "clashesWith": "cbse-12-pyq-2023-65-1-1",
-   "verdict": "same",
-   "evidence": "Verified visually 2026-08-19 by rendering both papers' Section-E pages side by side: identical Yoga Venn diagram with identical values (0.32, 0.09, y, x, 0.21, 0.11) in identical positions. NOTE these sub-part stems are BARE ('Find the value of x.'), so identity rests on the shared context and its figure rather than on the stem — which is why this pair was checked visually rather than on field equality alone. Only the printed Case Study NUMBER differs (1 vs 2), and that lives in _caseStudyLabel, which is not hashed."
-  },
-  {
-   "row": "2023-65-1-3:Q37iiia",
-   "clashesWith": "cbse-12-pyq-2023-65-1-1",
-   "verdict": "same",
-   "evidence": "Verified visually 2026-08-19 by rendering both papers' Section-E pages side by side: identical Yoga Venn diagram with identical values (0.32, 0.09, y, x, 0.21, 0.11) in identical positions. NOTE these sub-part stems are BARE ('Find the value of x.'), so identity rests on the shared context and its figure rather than on the stem — which is why this pair was checked visually rather than on field equality alone. Only the printed Case Study NUMBER differs (1 vs 2), and that lives in _caseStudyLabel, which is not hashed."
-  },
-  {
-   "row": "2023-65-1-3:Q37iiib",
-   "clashesWith": "cbse-12-pyq-2023-65-1-1",
-   "verdict": "same",
-   "evidence": "Verified visually 2026-08-19 by rendering both papers' Section-E pages side by side: identical Yoga Venn diagram with identical values (0.32, 0.09, y, x, 0.21, 0.11) in identical positions. NOTE these sub-part stems are BARE ('Find the value of x.'), so identity rests on the shared context and its figure rather than on the stem — which is why this pair was checked visually rather than on field equality alone. Only the printed Case Study NUMBER differs (1 vs 2), and that lives in _caseStudyLabel, which is not hashed."
-  },
-  {
-   "row": "2023-65-3-2:Q14",
-   "clashesWith": "cbse-12-pyq-2023-65-3-1",
-   "verdict": "same",
-   "evidence": "Field-diffed 2026-08-19: stem, options and context byte-identical, and the stem is self-identifying (it states the feasible region's own definition). Within-series reuse, renumbered."
-  },
-  {
-   "row": "2023-65-3-3:Q9",
-   "clashesWith": "cbse-12-pyq-2023-65-3-1",
-   "verdict": "same",
-   "evidence": "Field-diffed 2026-08-19: stem, options and context byte-identical, and the stem is self-identifying (it states the feasible region's own definition). Within-series reuse, renumbered."
-  },
-  {
-   "row": "2026-65-1-2:Q10",
-   "clashesWith": "cbse-12-pyq-2026-65-1-1 Q17",
-   "verdict": "same",
-   "evidence": "Same LPP MCQ, stem and all four options byte-identical, same key D. The two agents described the printed graph independently off different pages (idx 6 vs idx 10) and both give the SAME quadrilateral: corners (0,0), (0,2), (3,4), (7,0), with only (3,4) in text. Identical figure, so dedup loses nothing."
-  },
-  {
-   "row": "2026-65-1-3:Q3",
-   "clashesWith": "cbse-12-pyq-2026-65-1-1 Q17",
-   "verdict": "same",
-   "evidence": "Third printing of the same LPP MCQ across the 65/1 sets. Figure described independently off idx 4 as the same quadrilateral (0,0), (0,2), (3,4), (7,0); the 65/1/3 agent also confirms it is reproduced in that paper's own marking scheme at ms p03."
-  },
-  {
-   "row": "2026-65-2-2:Q36iiib",
-   "clashesWith": "cbse-12-pyq-2026-65-2-1 Q37iiib",
-   "verdict": "same",
-   "evidence": "The race-track case study reprinted under a different case-study number (this paper's CS1 is 65/2/1's CS2 - a live instance of why the printed heading is kept in _caseStudyLabel and out of context). Both agents read the diagram off their own page (idx 18 vs idx 20) and describe the same geometry: 4 then a further 3 m on the x axis and 3 on the y, giving an outer ellipse with semi-axes 7 and 6. Both marking schemes reach P(7,0), Q(0,6)."
-  },
-  {
-   "row": "2026-65-2-2:Q10",
-   "clashesWith": "cbse-12-pyq-2026-65-2-1 Q17",
-   "verdict": "same",
-   "evidence": "The 65/2 LPP MCQ, reprinted across all three sets. Adjudicated by RENDERING the three pages and comparing the printed graphs directly (65/2/1 idx 10, 65/2/2 idx 6, 65/2/3 idx 4): identical axes (x to 9, y to 5), identical pair of lines and identical hatched region, with identical option text and key C in all three. Note the figure descriptions alone could NOT settle this - unlike the 65/1 case they name no corner coordinates - so the pages were read."
-  },
-  {
-   "row": "2026-65-2-3:Q3",
-   "clashesWith": "cbse-12-pyq-2026-65-2-1 Q17",
-   "verdict": "same",
-   "evidence": "The 65/2 LPP MCQ, reprinted across all three sets. Adjudicated by RENDERING the three pages and comparing the printed graphs directly (65/2/1 idx 10, 65/2/2 idx 6, 65/2/3 idx 4): identical axes (x to 9, y to 5), identical pair of lines and identical hatched region, with identical option text and key C in all three. Note the figure descriptions alone could NOT settle this - unlike the 65/1 case they name no corner coordinates - so the pages were read."
-  },
-  {
-   "row": "2026-65-2-3:Q38iiib",
-   "clashesWith": "cbse-12-pyq-2026-65-2-1 Q37 (iii) (b)",
-   "verdict": "same",
-   "evidence": "The race-track case study again, under a third case-study number (65/2/1 prints it as CS2, 65/2/2 as CS1, 65/2/3 as CS3). Same passage, and both agents describe the same diagram geometry - 4 then a further 3 m on the x axis, 3 on the y - giving an outer ellipse with semi-axes 7 and 6, which both marking schemes resolve to P(7,0), Q(0,6)."
-  },
-  {
-   "row": "2026-65-3-2:Q5",
-   "clashesWith": "cbse-12-pyq-2026-65-3-1 Q12",
-   "verdict": "same",
-   "evidence": "The shaded-circle area MCQ, reprinted across all three 65/3 sets. Same stem, same four integral options, same key B, and all three figure descriptions give the same picture: circle x^2 + y^2 = 9 with the line y = 1 and the region above it shaded. Directly corroborated by a render of 65/3/1 and 65/3/2 - this question is visible in both, at Q12 and Q5. (It is also the question that exposed the positional-sampling error recorded in the README: comparing block 1 to block 1 could not see it, because the sets reshuffle.)"
-  },
-  {
-   "row": "2026-65-3-2:Q38i",
-   "clashesWith": "cbse-12-pyq-2026-65-3-1 Q36 (i)",
-   "verdict": "same",
-   "evidence": "The two-light-poles case study (22 m and 16 m poles across a 20 m road), reprinted in all three 65/3 sets with byte-identical context and the same pole/ladder schematic. It is printed as Case Study 1 in 65/3/1, Case Study 3 in 65/3/2 and Case Study 2 in 65/3/3 - which is exactly why the printed heading lives in _caseStudyLabel and never in context, since context is hashed and the heading would split one question into three."
-  },
-  {
-   "row": "2026-65-3-2:Q38ii",
-   "clashesWith": "cbse-12-pyq-2026-65-3-1 Q36 (ii)",
-   "verdict": "same",
-   "evidence": "The two-light-poles case study (22 m and 16 m poles across a 20 m road), reprinted in all three 65/3 sets with byte-identical context and the same pole/ladder schematic. It is printed as Case Study 1 in 65/3/1, Case Study 3 in 65/3/2 and Case Study 2 in 65/3/3 - which is exactly why the printed heading lives in _caseStudyLabel and never in context, since context is hashed and the heading would split one question into three."
-  },
-  {
-   "row": "2026-65-3-2:Q38iiia",
-   "clashesWith": "cbse-12-pyq-2026-65-3-1 Q36 (iii) (a)",
-   "verdict": "same",
-   "evidence": "The two-light-poles case study (22 m and 16 m poles across a 20 m road), reprinted in all three 65/3 sets with byte-identical context and the same pole/ladder schematic. It is printed as Case Study 1 in 65/3/1, Case Study 3 in 65/3/2 and Case Study 2 in 65/3/3 - which is exactly why the printed heading lives in _caseStudyLabel and never in context, since context is hashed and the heading would split one question into three."
-  },
-  {
-   "row": "2026-65-3-2:Q38iiib",
-   "clashesWith": "cbse-12-pyq-2026-65-3-1 Q36 (iii) (b)",
-   "verdict": "same",
-   "evidence": "The two-light-poles case study (22 m and 16 m poles across a 20 m road), reprinted in all three 65/3 sets with byte-identical context and the same pole/ladder schematic. It is printed as Case Study 1 in 65/3/1, Case Study 3 in 65/3/2 and Case Study 2 in 65/3/3 - which is exactly why the printed heading lives in _caseStudyLabel and never in context, since context is hashed and the heading would split one question into three."
-  },
-  {
-   "row": "2026-65-3-3:Q16",
-   "clashesWith": "cbse-12-pyq-2026-65-3-1 Q12",
-   "verdict": "same",
-   "evidence": "The shaded-circle area MCQ, reprinted across all three 65/3 sets. Same stem, same four integral options, same key B, and all three figure descriptions give the same picture: circle x^2 + y^2 = 9 with the line y = 1 and the region above it shaded. Directly corroborated by a render of 65/3/1 and 65/3/2 - this question is visible in both, at Q12 and Q5. (It is also the question that exposed the positional-sampling error recorded in the README: comparing block 1 to block 1 could not see it, because the sets reshuffle.)"
-  },
-  {
-   "row": "2026-65-3-3:Q37i",
-   "clashesWith": "cbse-12-pyq-2026-65-3-1 Q36 (i)",
-   "verdict": "same",
-   "evidence": "The two-light-poles case study (22 m and 16 m poles across a 20 m road), reprinted in all three 65/3 sets with byte-identical context and the same pole/ladder schematic. It is printed as Case Study 1 in 65/3/1, Case Study 3 in 65/3/2 and Case Study 2 in 65/3/3 - which is exactly why the printed heading lives in _caseStudyLabel and never in context, since context is hashed and the heading would split one question into three."
-  },
-  {
-   "row": "2026-65-3-3:Q37ii",
-   "clashesWith": "cbse-12-pyq-2026-65-3-1 Q36 (ii)",
-   "verdict": "same",
-   "evidence": "The two-light-poles case study (22 m and 16 m poles across a 20 m road), reprinted in all three 65/3 sets with byte-identical context and the same pole/ladder schematic. It is printed as Case Study 1 in 65/3/1, Case Study 3 in 65/3/2 and Case Study 2 in 65/3/3 - which is exactly why the printed heading lives in _caseStudyLabel and never in context, since context is hashed and the heading would split one question into three."
-  },
-  {
-   "row": "2026-65-3-3:Q37iiia",
-   "clashesWith": "cbse-12-pyq-2026-65-3-1 Q36 (iii) (a)",
-   "verdict": "same",
-   "evidence": "The two-light-poles case study (22 m and 16 m poles across a 20 m road), reprinted in all three 65/3 sets with byte-identical context and the same pole/ladder schematic. It is printed as Case Study 1 in 65/3/1, Case Study 3 in 65/3/2 and Case Study 2 in 65/3/3 - which is exactly why the printed heading lives in _caseStudyLabel and never in context, since context is hashed and the heading would split one question into three."
-  },
-  {
-   "row": "2026-65-3-3:Q37iiib",
-   "clashesWith": "cbse-12-pyq-2026-65-3-1 Q36 (iii) (b)",
-   "verdict": "same",
-   "evidence": "The two-light-poles case study (22 m and 16 m poles across a 20 m road), reprinted in all three 65/3 sets with byte-identical context and the same pole/ladder schematic. It is printed as Case Study 1 in 65/3/1, Case Study 3 in 65/3/2 and Case Study 2 in 65/3/3 - which is exactly why the printed heading lives in _caseStudyLabel and never in context, since context is hashed and the heading would split one question into three."
-  },
-  {
-   "row": "2026-65-4-2:Q14",
-   "clashesWith": "cbse-12-pyq-2026-65-4-1 Q15",
-   "verdict": "same",
-   "evidence": "The segment-AB LPP MCQ, reprinted across all three 65/4 sets. Adjudicated by RENDERING all three pages (each at idx 8) and comparing the graphs: identical feasible region ABCO with A(0,5), B(3,4), C(5,0), O(0,0) and the axis points (0,10) and (15,0), identical hatching, identical options, key C in all three. Consistent with the mathematics - AB has slope -1/3, so Z = px + qy is constant along it exactly when q = 3p, which is option C."
-  },
-  {
-   "row": "2026-65-4-3:Q13",
-   "clashesWith": "cbse-12-pyq-2026-65-4-1 Q15",
-   "verdict": "same",
-   "evidence": "The segment-AB LPP MCQ, reprinted across all three 65/4 sets. Adjudicated by RENDERING all three pages (each at idx 8) and comparing the graphs: identical feasible region ABCO with A(0,5), B(3,4), C(5,0), O(0,0) and the axis points (0,10) and (15,0), identical hatching, identical options, key C in all three. Consistent with the mathematics - AB has slope -1/3, so Z = px + qy is constant along it exactly when q = 3p, which is option C."
-  }
- ]
+  "_why": "Adjudicated content_hash collisions among FIGURE-DEPENDENT rows. image_url is not part of content_hash, so two questions differing ONLY by their printed figure hash identically and commitStaged's upsert would drop one silently. commit.ts refuses such a row until it appears here. 'same' = confirmed the same question, let it dedup. 'distinct' = genuinely different questions the hash cannot tell apart; the row is HELD OUT of the commit and needs the figure phase before it can be represented.",
+  "_adjudicated": "2026-08-19",
+  "collisions": [
+    {
+      "row": "2025-65-6-2:Q17",
+      "clashesWith": "cbse-12-pyq-2025-65-6-1 Q15",
+      "verdict": "same",
+      "evidence": "Both are the same LPP objective-function MCQ. Its sibling 65/6/3 Q14 shares a marking-scheme block SHA with 65/6/1 Q15, and all three sets print the identical feasible-region graph."
+    },
+    {
+      "row": "2025-65-6-3:Q14",
+      "clashesWith": "cbse-12-pyq-2025-65-6-1 Q15",
+      "verdict": "same",
+      "evidence": "Marking-scheme block SHA is shared with 65/6/1 Q15 — the publisher reused the identical typeset block, figure included."
+    },
+    {
+      "row": "2025-65-7-2:Q37i",
+      "clashesWith": "cbse-12-pyq-2025-65-7-1 Q36 (i)",
+      "verdict": "same",
+      "evidence": "Same 'Three friends A, B and C' case study, renumbered (65/7/2 CS2 = 65/7/1 CS1). Passage byte-identical; same vector diagram."
+    },
+    {
+      "row": "2025-65-7-3:Q38i",
+      "clashesWith": "cbse-12-pyq-2025-65-7-1 Q36 (i)",
+      "verdict": "same",
+      "evidence": "Verified visually 2026-08-18 by rendering both papers' Section-E pages: identical 'Three friends' passage and identical vector diagram (O, A, B, C with a, b, 5a-2b)."
+    },
+    {
+      "row": "2025-65-7-3:Q1",
+      "clashesWith": "cbse-12-pyq-2025-65-7-1 Q1",
+      "verdict": "distinct",
+      "evidence": "DIFFERENT QUESTIONS with a byte-identical hash — the case this guard exists for. Both stems read 'The given graph illustrates :' over the same four option TEXTS (the hash sorts options, so the different printed order does not separate them) and both key (A). But 65/7/1's graph is tan^-1 and 65/7/3's is sec^-1, so (A) denotes a different function in each. Committing both would drop one and leave the survivor's key attached to the wrong graph.",
+      "action": "HELD OUT of the commit. 65/7/1's row stands; 65/7/3's Q1 is absent from the bank. Revisit at the figure phase: once each row carries its own image_url the two can be told apart by a reader, but they will STILL collide on content_hash, so representing both needs a decision (distinct stems referencing their figures, or accepting one).",
+      "confirmedIndependently": "CONFIRMED 2026-08-21 by a second, unrelated method. The figure phase crops every member of a content_hash group and compares them perceptually; across all 41 groups the worst GENUINE reprint measures Hamming 8, and this pair measures 42. Nothing lands between. So the adjudication below - made by reading the two graphs - is corroborated by an image measurement that never read the stems.",
+      "resolution": "SETTLED: 65/7/3 Q1 stays out, and the survivor is now BETTER than it was. Representing both is not available without changing contentHash, which sorts option texts and keys on the answer LETTER, so the two are identical to it by construction (see the SUGGESTIONS.md backfill ledger - a bank-wide re-hash of ~38,000 MCQs is not a change to make for one question). Everything cheaper fails too: `context` does not feed the MCQ hash, `source_file` is not in the unique key, and editing the stem would make the transcription unfaithful. Meanwhile the surviving row - cbse-12-pyq-2025-65-7-1, key (A) y = tan^-1 x - now carries its own arctan graph, so the question that WAS unanswerable (a stem naming no function, with no figure) is answerable and self-consistent. Cost: one question of 1,766."
+    },
+    {
+      "row": "2025-65-1-2:Q5",
+      "clashesWith": "cbse-12-pyq-2025-65-1-1 Q18",
+      "verdict": "same",
+      "evidence": "Verified visually 2026-08-18 by rendering both papers' pages side by side: identical stem graph and identical four option graphs in identical positions. The 'graph of a trigonometric function ... graph of its inverse' block is reused unchanged across all three 65/1 sets."
+    },
+    {
+      "row": "2025-65-1-3:Q14",
+      "clashesWith": "cbse-12-pyq-2025-65-1-1 Q18",
+      "verdict": "same",
+      "evidence": "Verified visually 2026-08-18 by rendering both papers' pages side by side: identical stem graph and identical four option graphs in identical positions. The 'graph of a trigonometric function ... graph of its inverse' block is reused unchanged across all three 65/1 sets."
+    },
+    {
+      "row": "2025-65-1-2:Q18",
+      "clashesWith": "cbse-12-pyq-2025-65-1-1 Q17",
+      "verdict": "same",
+      "evidence": "Same shaded-region MCQ, reused block; the agent confirmed it on its own page before reusing the reference LaTeX byte-for-byte."
+    },
+    {
+      "row": "2025-65-1-3:Q18",
+      "clashesWith": "cbse-12-pyq-2025-65-1-1 Q17",
+      "verdict": "same",
+      "evidence": "Same shaded-region MCQ, reused block; confirmed on-page by the transcribing agent."
+    },
+    {
+      "row": "2025-65-2-2:Q6",
+      "clashesWith": "cbse-12-pyq-2025-65-2-1 Q14",
+      "verdict": "same",
+      "evidence": "Verified visually 2026-08-18 by rendering both papers' pages side by side: identical Venn-diagram options in identical positions (A: A inside B, B: B inside A, C/D overlapping)."
+    },
+    {
+      "row": "2025-65-2-3:Q16",
+      "clashesWith": "cbse-12-pyq-2025-65-2-1 Q14",
+      "verdict": "same",
+      "evidence": "Verified visually 2026-08-18 by rendering both papers' pages side by side: identical Venn-diagram options in identical positions (A: A inside B, B: B inside A, C/D overlapping)."
+    },
+    {
+      "row": "2025-65-2-2:Q7",
+      "clashesWith": "cbse-12-pyq-2025-65-2-1 Q15",
+      "verdict": "same",
+      "evidence": "Verified visually 2026-08-18 alongside the Venn question on the same page: identical shaded-region figure and identical four integral options."
+    },
+    {
+      "row": "2025-65-2-3:Q9",
+      "clashesWith": "cbse-12-pyq-2025-65-2-1 Q15",
+      "verdict": "same",
+      "evidence": "Verified visually 2026-08-18 alongside the Venn question on the same page: identical shaded-region figure and identical four integral options."
+    },
+    {
+      "row": "2024-65-2-2:Q36i",
+      "clashesWith": "cbse-12-pyq-2024-65-2-1 Q37 (i)",
+      "verdict": "same",
+      "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
+    },
+    {
+      "row": "2024-65-2-2:Q36ii",
+      "clashesWith": "cbse-12-pyq-2024-65-2-1 Q37 (ii)",
+      "verdict": "same",
+      "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
+    },
+    {
+      "row": "2024-65-2-3:Q38i",
+      "clashesWith": "cbse-12-pyq-2024-65-2-1 Q37 (i)",
+      "verdict": "same",
+      "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
+    },
+    {
+      "row": "2024-65-2-3:Q38ii",
+      "clashesWith": "cbse-12-pyq-2024-65-2-1 Q37 (ii)",
+      "verdict": "same",
+      "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
+    },
+    {
+      "row": "2024-65-3-2:Q5",
+      "clashesWith": "cbse-12-pyq-2024-65-3-1 Q17",
+      "verdict": "same",
+      "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
+    },
+    {
+      "row": "2024-65-3-3:Q5",
+      "clashesWith": "cbse-12-pyq-2024-65-3-1 Q17",
+      "verdict": "same",
+      "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
+    },
+    {
+      "row": "2024-65-4-2:Q2",
+      "clashesWith": "cbse-12-pyq-2024-65-4-1 Q16",
+      "verdict": "same",
+      "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
+    },
+    {
+      "row": "2024-65-4-2:Q19",
+      "clashesWith": "cbse-12-pyq-2024-65-4-1 Q20",
+      "verdict": "same",
+      "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
+    },
+    {
+      "row": "2024-65-4-3:Q11",
+      "clashesWith": "cbse-12-pyq-2024-65-4-1 Q16",
+      "verdict": "same",
+      "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
+    },
+    {
+      "row": "2024-65-4-3:Q20",
+      "clashesWith": "cbse-12-pyq-2024-65-4-1 Q20",
+      "verdict": "same",
+      "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
+    },
+    {
+      "row": "2024-65-5-2:Q38i",
+      "clashesWith": "cbse-12-pyq-2024-65-5-1 Q37 (i)",
+      "verdict": "same",
+      "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
+    },
+    {
+      "row": "2024-65-5-2:Q38ii",
+      "clashesWith": "cbse-12-pyq-2024-65-5-1 Q37 (ii)",
+      "verdict": "same",
+      "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
+    },
+    {
+      "row": "2024-65-5-3:Q36i",
+      "clashesWith": "cbse-12-pyq-2024-65-5-1 Q37 (i)",
+      "verdict": "same",
+      "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
+    },
+    {
+      "row": "2024-65-5-3:Q36ii",
+      "clashesWith": "cbse-12-pyq-2024-65-5-1 Q37 (ii)",
+      "verdict": "same",
+      "evidence": "Verified 2026-08-19 by field-diffing both transcriptions: stem, options AND context all byte-identical, and the stem is SELF-IDENTIFYING (it carries the objective function / constraints / expression), so stem-identity is sufficient evidence of the same question — unlike 2025 65/7 Q1, whose stem was only 'The given graph illustrates :' and whose figure therefore carried the entire identity. Within-series reuse, renumbered."
+    },
+    {
+      "row": "2023-65-1-2:Q37i",
+      "clashesWith": "cbse-12-pyq-2023-65-1-1",
+      "verdict": "same",
+      "evidence": "Verified visually 2026-08-19 by rendering both papers' Section-E pages side by side: identical Yoga Venn diagram with identical values (0.32, 0.09, y, x, 0.21, 0.11) in identical positions. NOTE these sub-part stems are BARE ('Find the value of x.'), so identity rests on the shared context and its figure rather than on the stem — which is why this pair was checked visually rather than on field equality alone. Only the printed Case Study NUMBER differs (1 vs 2), and that lives in _caseStudyLabel, which is not hashed."
+    },
+    {
+      "row": "2023-65-1-2:Q37ii",
+      "clashesWith": "cbse-12-pyq-2023-65-1-1",
+      "verdict": "same",
+      "evidence": "Verified visually 2026-08-19 by rendering both papers' Section-E pages side by side: identical Yoga Venn diagram with identical values (0.32, 0.09, y, x, 0.21, 0.11) in identical positions. NOTE these sub-part stems are BARE ('Find the value of x.'), so identity rests on the shared context and its figure rather than on the stem — which is why this pair was checked visually rather than on field equality alone. Only the printed Case Study NUMBER differs (1 vs 2), and that lives in _caseStudyLabel, which is not hashed."
+    },
+    {
+      "row": "2023-65-1-2:Q37iiia",
+      "clashesWith": "cbse-12-pyq-2023-65-1-1",
+      "verdict": "same",
+      "evidence": "Verified visually 2026-08-19 by rendering both papers' Section-E pages side by side: identical Yoga Venn diagram with identical values (0.32, 0.09, y, x, 0.21, 0.11) in identical positions. NOTE these sub-part stems are BARE ('Find the value of x.'), so identity rests on the shared context and its figure rather than on the stem — which is why this pair was checked visually rather than on field equality alone. Only the printed Case Study NUMBER differs (1 vs 2), and that lives in _caseStudyLabel, which is not hashed."
+    },
+    {
+      "row": "2023-65-1-2:Q37iiib",
+      "clashesWith": "cbse-12-pyq-2023-65-1-1",
+      "verdict": "same",
+      "evidence": "Verified visually 2026-08-19 by rendering both papers' Section-E pages side by side: identical Yoga Venn diagram with identical values (0.32, 0.09, y, x, 0.21, 0.11) in identical positions. NOTE these sub-part stems are BARE ('Find the value of x.'), so identity rests on the shared context and its figure rather than on the stem — which is why this pair was checked visually rather than on field equality alone. Only the printed Case Study NUMBER differs (1 vs 2), and that lives in _caseStudyLabel, which is not hashed."
+    },
+    {
+      "row": "2023-65-1-3:Q37i",
+      "clashesWith": "cbse-12-pyq-2023-65-1-1",
+      "verdict": "same",
+      "evidence": "Verified visually 2026-08-19 by rendering both papers' Section-E pages side by side: identical Yoga Venn diagram with identical values (0.32, 0.09, y, x, 0.21, 0.11) in identical positions. NOTE these sub-part stems are BARE ('Find the value of x.'), so identity rests on the shared context and its figure rather than on the stem — which is why this pair was checked visually rather than on field equality alone. Only the printed Case Study NUMBER differs (1 vs 2), and that lives in _caseStudyLabel, which is not hashed."
+    },
+    {
+      "row": "2023-65-1-3:Q37ii",
+      "clashesWith": "cbse-12-pyq-2023-65-1-1",
+      "verdict": "same",
+      "evidence": "Verified visually 2026-08-19 by rendering both papers' Section-E pages side by side: identical Yoga Venn diagram with identical values (0.32, 0.09, y, x, 0.21, 0.11) in identical positions. NOTE these sub-part stems are BARE ('Find the value of x.'), so identity rests on the shared context and its figure rather than on the stem — which is why this pair was checked visually rather than on field equality alone. Only the printed Case Study NUMBER differs (1 vs 2), and that lives in _caseStudyLabel, which is not hashed."
+    },
+    {
+      "row": "2023-65-1-3:Q37iiia",
+      "clashesWith": "cbse-12-pyq-2023-65-1-1",
+      "verdict": "same",
+      "evidence": "Verified visually 2026-08-19 by rendering both papers' Section-E pages side by side: identical Yoga Venn diagram with identical values (0.32, 0.09, y, x, 0.21, 0.11) in identical positions. NOTE these sub-part stems are BARE ('Find the value of x.'), so identity rests on the shared context and its figure rather than on the stem — which is why this pair was checked visually rather than on field equality alone. Only the printed Case Study NUMBER differs (1 vs 2), and that lives in _caseStudyLabel, which is not hashed."
+    },
+    {
+      "row": "2023-65-1-3:Q37iiib",
+      "clashesWith": "cbse-12-pyq-2023-65-1-1",
+      "verdict": "same",
+      "evidence": "Verified visually 2026-08-19 by rendering both papers' Section-E pages side by side: identical Yoga Venn diagram with identical values (0.32, 0.09, y, x, 0.21, 0.11) in identical positions. NOTE these sub-part stems are BARE ('Find the value of x.'), so identity rests on the shared context and its figure rather than on the stem — which is why this pair was checked visually rather than on field equality alone. Only the printed Case Study NUMBER differs (1 vs 2), and that lives in _caseStudyLabel, which is not hashed."
+    },
+    {
+      "row": "2023-65-3-2:Q14",
+      "clashesWith": "cbse-12-pyq-2023-65-3-1",
+      "verdict": "same",
+      "evidence": "Field-diffed 2026-08-19: stem, options and context byte-identical, and the stem is self-identifying (it states the feasible region's own definition). Within-series reuse, renumbered."
+    },
+    {
+      "row": "2023-65-3-3:Q9",
+      "clashesWith": "cbse-12-pyq-2023-65-3-1",
+      "verdict": "same",
+      "evidence": "Field-diffed 2026-08-19: stem, options and context byte-identical, and the stem is self-identifying (it states the feasible region's own definition). Within-series reuse, renumbered."
+    },
+    {
+      "row": "2026-65-1-2:Q10",
+      "clashesWith": "cbse-12-pyq-2026-65-1-1 Q17",
+      "verdict": "same",
+      "evidence": "Same LPP MCQ, stem and all four options byte-identical, same key D. The two agents described the printed graph independently off different pages (idx 6 vs idx 10) and both give the SAME quadrilateral: corners (0,0), (0,2), (3,4), (7,0), with only (3,4) in text. Identical figure, so dedup loses nothing."
+    },
+    {
+      "row": "2026-65-1-3:Q3",
+      "clashesWith": "cbse-12-pyq-2026-65-1-1 Q17",
+      "verdict": "same",
+      "evidence": "Third printing of the same LPP MCQ across the 65/1 sets. Figure described independently off idx 4 as the same quadrilateral (0,0), (0,2), (3,4), (7,0); the 65/1/3 agent also confirms it is reproduced in that paper's own marking scheme at ms p03."
+    },
+    {
+      "row": "2026-65-2-2:Q36iiib",
+      "clashesWith": "cbse-12-pyq-2026-65-2-1 Q37iiib",
+      "verdict": "same",
+      "evidence": "The race-track case study reprinted under a different case-study number (this paper's CS1 is 65/2/1's CS2 - a live instance of why the printed heading is kept in _caseStudyLabel and out of context). Both agents read the diagram off their own page (idx 18 vs idx 20) and describe the same geometry: 4 then a further 3 m on the x axis and 3 on the y, giving an outer ellipse with semi-axes 7 and 6. Both marking schemes reach P(7,0), Q(0,6)."
+    },
+    {
+      "row": "2026-65-2-2:Q10",
+      "clashesWith": "cbse-12-pyq-2026-65-2-1 Q17",
+      "verdict": "same",
+      "evidence": "The 65/2 LPP MCQ, reprinted across all three sets. Adjudicated by RENDERING the three pages and comparing the printed graphs directly (65/2/1 idx 10, 65/2/2 idx 6, 65/2/3 idx 4): identical axes (x to 9, y to 5), identical pair of lines and identical hatched region, with identical option text and key C in all three. Note the figure descriptions alone could NOT settle this - unlike the 65/1 case they name no corner coordinates - so the pages were read."
+    },
+    {
+      "row": "2026-65-2-3:Q3",
+      "clashesWith": "cbse-12-pyq-2026-65-2-1 Q17",
+      "verdict": "same",
+      "evidence": "The 65/2 LPP MCQ, reprinted across all three sets. Adjudicated by RENDERING the three pages and comparing the printed graphs directly (65/2/1 idx 10, 65/2/2 idx 6, 65/2/3 idx 4): identical axes (x to 9, y to 5), identical pair of lines and identical hatched region, with identical option text and key C in all three. Note the figure descriptions alone could NOT settle this - unlike the 65/1 case they name no corner coordinates - so the pages were read."
+    },
+    {
+      "row": "2026-65-2-3:Q38iiib",
+      "clashesWith": "cbse-12-pyq-2026-65-2-1 Q37 (iii) (b)",
+      "verdict": "same",
+      "evidence": "The race-track case study again, under a third case-study number (65/2/1 prints it as CS2, 65/2/2 as CS1, 65/2/3 as CS3). Same passage, and both agents describe the same diagram geometry - 4 then a further 3 m on the x axis, 3 on the y - giving an outer ellipse with semi-axes 7 and 6, which both marking schemes resolve to P(7,0), Q(0,6)."
+    },
+    {
+      "row": "2026-65-3-2:Q5",
+      "clashesWith": "cbse-12-pyq-2026-65-3-1 Q12",
+      "verdict": "same",
+      "evidence": "The shaded-circle area MCQ, reprinted across all three 65/3 sets. Same stem, same four integral options, same key B, and all three figure descriptions give the same picture: circle x^2 + y^2 = 9 with the line y = 1 and the region above it shaded. Directly corroborated by a render of 65/3/1 and 65/3/2 - this question is visible in both, at Q12 and Q5. (It is also the question that exposed the positional-sampling error recorded in the README: comparing block 1 to block 1 could not see it, because the sets reshuffle.)"
+    },
+    {
+      "row": "2026-65-3-2:Q38i",
+      "clashesWith": "cbse-12-pyq-2026-65-3-1 Q36 (i)",
+      "verdict": "same",
+      "evidence": "The two-light-poles case study (22 m and 16 m poles across a 20 m road), reprinted in all three 65/3 sets with byte-identical context and the same pole/ladder schematic. It is printed as Case Study 1 in 65/3/1, Case Study 3 in 65/3/2 and Case Study 2 in 65/3/3 - which is exactly why the printed heading lives in _caseStudyLabel and never in context, since context is hashed and the heading would split one question into three."
+    },
+    {
+      "row": "2026-65-3-2:Q38ii",
+      "clashesWith": "cbse-12-pyq-2026-65-3-1 Q36 (ii)",
+      "verdict": "same",
+      "evidence": "The two-light-poles case study (22 m and 16 m poles across a 20 m road), reprinted in all three 65/3 sets with byte-identical context and the same pole/ladder schematic. It is printed as Case Study 1 in 65/3/1, Case Study 3 in 65/3/2 and Case Study 2 in 65/3/3 - which is exactly why the printed heading lives in _caseStudyLabel and never in context, since context is hashed and the heading would split one question into three."
+    },
+    {
+      "row": "2026-65-3-2:Q38iiia",
+      "clashesWith": "cbse-12-pyq-2026-65-3-1 Q36 (iii) (a)",
+      "verdict": "same",
+      "evidence": "The two-light-poles case study (22 m and 16 m poles across a 20 m road), reprinted in all three 65/3 sets with byte-identical context and the same pole/ladder schematic. It is printed as Case Study 1 in 65/3/1, Case Study 3 in 65/3/2 and Case Study 2 in 65/3/3 - which is exactly why the printed heading lives in _caseStudyLabel and never in context, since context is hashed and the heading would split one question into three."
+    },
+    {
+      "row": "2026-65-3-2:Q38iiib",
+      "clashesWith": "cbse-12-pyq-2026-65-3-1 Q36 (iii) (b)",
+      "verdict": "same",
+      "evidence": "The two-light-poles case study (22 m and 16 m poles across a 20 m road), reprinted in all three 65/3 sets with byte-identical context and the same pole/ladder schematic. It is printed as Case Study 1 in 65/3/1, Case Study 3 in 65/3/2 and Case Study 2 in 65/3/3 - which is exactly why the printed heading lives in _caseStudyLabel and never in context, since context is hashed and the heading would split one question into three."
+    },
+    {
+      "row": "2026-65-3-3:Q16",
+      "clashesWith": "cbse-12-pyq-2026-65-3-1 Q12",
+      "verdict": "same",
+      "evidence": "The shaded-circle area MCQ, reprinted across all three 65/3 sets. Same stem, same four integral options, same key B, and all three figure descriptions give the same picture: circle x^2 + y^2 = 9 with the line y = 1 and the region above it shaded. Directly corroborated by a render of 65/3/1 and 65/3/2 - this question is visible in both, at Q12 and Q5. (It is also the question that exposed the positional-sampling error recorded in the README: comparing block 1 to block 1 could not see it, because the sets reshuffle.)"
+    },
+    {
+      "row": "2026-65-3-3:Q37i",
+      "clashesWith": "cbse-12-pyq-2026-65-3-1 Q36 (i)",
+      "verdict": "same",
+      "evidence": "The two-light-poles case study (22 m and 16 m poles across a 20 m road), reprinted in all three 65/3 sets with byte-identical context and the same pole/ladder schematic. It is printed as Case Study 1 in 65/3/1, Case Study 3 in 65/3/2 and Case Study 2 in 65/3/3 - which is exactly why the printed heading lives in _caseStudyLabel and never in context, since context is hashed and the heading would split one question into three."
+    },
+    {
+      "row": "2026-65-3-3:Q37ii",
+      "clashesWith": "cbse-12-pyq-2026-65-3-1 Q36 (ii)",
+      "verdict": "same",
+      "evidence": "The two-light-poles case study (22 m and 16 m poles across a 20 m road), reprinted in all three 65/3 sets with byte-identical context and the same pole/ladder schematic. It is printed as Case Study 1 in 65/3/1, Case Study 3 in 65/3/2 and Case Study 2 in 65/3/3 - which is exactly why the printed heading lives in _caseStudyLabel and never in context, since context is hashed and the heading would split one question into three."
+    },
+    {
+      "row": "2026-65-3-3:Q37iiia",
+      "clashesWith": "cbse-12-pyq-2026-65-3-1 Q36 (iii) (a)",
+      "verdict": "same",
+      "evidence": "The two-light-poles case study (22 m and 16 m poles across a 20 m road), reprinted in all three 65/3 sets with byte-identical context and the same pole/ladder schematic. It is printed as Case Study 1 in 65/3/1, Case Study 3 in 65/3/2 and Case Study 2 in 65/3/3 - which is exactly why the printed heading lives in _caseStudyLabel and never in context, since context is hashed and the heading would split one question into three."
+    },
+    {
+      "row": "2026-65-3-3:Q37iiib",
+      "clashesWith": "cbse-12-pyq-2026-65-3-1 Q36 (iii) (b)",
+      "verdict": "same",
+      "evidence": "The two-light-poles case study (22 m and 16 m poles across a 20 m road), reprinted in all three 65/3 sets with byte-identical context and the same pole/ladder schematic. It is printed as Case Study 1 in 65/3/1, Case Study 3 in 65/3/2 and Case Study 2 in 65/3/3 - which is exactly why the printed heading lives in _caseStudyLabel and never in context, since context is hashed and the heading would split one question into three."
+    },
+    {
+      "row": "2026-65-4-2:Q14",
+      "clashesWith": "cbse-12-pyq-2026-65-4-1 Q15",
+      "verdict": "same",
+      "evidence": "The segment-AB LPP MCQ, reprinted across all three 65/4 sets. Adjudicated by RENDERING all three pages (each at idx 8) and comparing the graphs: identical feasible region ABCO with A(0,5), B(3,4), C(5,0), O(0,0) and the axis points (0,10) and (15,0), identical hatching, identical options, key C in all three. Consistent with the mathematics - AB has slope -1/3, so Z = px + qy is constant along it exactly when q = 3p, which is option C."
+    },
+    {
+      "row": "2026-65-4-3:Q13",
+      "clashesWith": "cbse-12-pyq-2026-65-4-1 Q15",
+      "verdict": "same",
+      "evidence": "The segment-AB LPP MCQ, reprinted across all three 65/4 sets. Adjudicated by RENDERING all three pages (each at idx 8) and comparing the graphs: identical feasible region ABCO with A(0,5), B(3,4), C(5,0), O(0,0) and the axis points (0,10) and (15,0), identical hatching, identical options, key C in all three. Consistent with the mathematics - AB has slope -1/3, so Z = px + qy is constant along it exactly when q = 3p, which is option C."
+    }
+  ]
 }

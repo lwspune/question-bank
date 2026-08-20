@@ -330,39 +330,76 @@ never dropped.
 The third is the one to watch: CBSE did not notice it, so only re-derivation finds
 it. The first two announce themselves in the scheme and can be grepped for.
 
-## 2024 renders figures with BLACK BARS — the data is still there
+## 2024 figures are CORRUPT IN THE SOURCE — corrected 2026-08-21
 
-Two agents independently reported that 2024 question-paper figures render almost
-entirely black at 165 dpi. Diagnosed 2026-08-18: those pages composite the figure
-as **several wide image strips** (e.g. three at 2444x334), and PyMuPDF's page
-render mis-composites them, painting black between the bands.
+An earlier entry here blamed PyMuPDF ("mis-composites the strips, painting black
+between the bands") and told you to crop from `doc.extract_image(xref)` instead.
+**That diagnosis was wrong and the advice is a dead end.** Measured on
+`2024 65/2/1` p20: the extracted PNGs are corrupt too. Each strip decodes to
+content **repeated three times horizontally with the remainder black**, i.e. the
+declared width does not match the stored data. It is in the source bytes, so no
+renderer setting and no extraction route recovers it.
 
-**The figures are NOT lost.** Extracting the embedded images directly
-(`doc.extract_image(xref)`) yields legible strips — verified on `2024 65/2/1`
-p20, where the recovered strip confirmed the agent's reading of the LPP corner
-points exactly. Two practical consequences:
+What made the old reading plausible: a page's FIRST strip is usually fine
+(`cs=1`) and the later ones are not (`cs=3`), so extracting one strip and finding
+it legible "confirms" a theory that the rest of the figure disproves.
 
-- for TRANSCRIPTION, the marking scheme reproduces the same graphs cleanly and is
-  the easier read (agents found this themselves);
-- for the FIGURE PHASE, crop from the **extracted strips**, not from a page
-  render, on 2024 papers.
+Nor does a sibling paper rescue it — the corruption is uniform across a series
+(all three members of every affected group measure 0.39–0.55 black).
 
-## Open: questions whose OPTIONS are graphs
+**The 2024 MARKING SCHEMES reprint the same figures cleanly (0.00 black), and
+that is the source of record for them.** `extract_figures.py` supports it via a
+`source: "ms"` pick; see the figure phase below.
 
-`65/1/1 2025 Q18` prints its four options as **graphs with no text at all**. The
-bank's options are a text column — no image support — so the stored option texts
-are *descriptions read off the page*, not a transcription. Consequences, both
-recorded on the row itself:
+## The figure phase — done 2026-08-21
 
-- it cannot dedup against a sibling set, because another agent's description will
-  differ;
-- a student sees prose where the paper shows curves.
+**41 distinct figures attached** to 1,766 PYQ rows. Run:
 
-The row carries `_figure: REQUIRED`. The right fix is the CLAUDE.md fallback for
-content a text column cannot hold — attach the whole question, options included,
-as a question image — which needs the figure step (`snap-crop` → `attach-images`)
-that this pipeline has not run yet. Until then these rows are DEGRADED, not
-wrong. Grep `_figure.*REQUIRED` before flipping anything PUBLIC.
+```
+npx tsx scripts/cbse-12-pyq/figure-groups.ts --write   # the work list
+python  scripts/cbse-12-pyq/extract_figures.py --crop  # crops + collision check
+python  scripts/cbse-12-pyq/contact_figures.py         # THE VERIFY GATE
+npx tsx scripts/cbse-12-pyq/attach-images.ts --apply
+```
+
+Four things worth knowing before touching it again:
+
+**The unit of work is 41, not 96.** 96 transcribed rows carry `_figure: REQUIRED`,
+but the series reprint the same questions, so grouping by `content_hash` — with
+the real hash functions, never a re-implementation — collapses them.
+
+**Figures are SLICED into horizontal strips**, and the slicing differs per file:
+the same Venn diagram is 3 strips of 55pt in one paper and 7 of 24.5pt in
+another. So `extract_image` returns a fragment by construction. `regions.py`
+unions the strips and the RENDERED page is cropped over the union, which also
+picks up vector or text drawn on top. Its self-test exists because the first
+merge silently DELETED strips (`fitz.Rect`'s `|=` returns a new object, so the
+list element was never updated) — one figure read as three fragments and two
+pages read as "no figure at all", with nothing in the output saying so.
+
+**Collisions are decided by the IMAGES.** The `_figure` notes are prose written by
+different agents; normalising the parts allowed to vary still flags 19 of 41
+groups, nearly all innocent, so that check is only a hint. The real one crops
+every member and compares perceptually — byte comparison is useless because the
+same figure sits at a different y per series. Measured: worst genuine reprint 8,
+the one true collision 42, nothing between.
+
+**The page index in a `_figure` note is ADVISORY.** One is off by one and one by
+four, so pages are scanned independently. Anything the rules cannot settle — a
+page with no region, or with several — is REFUSED and adjudicated by hand in
+`data/figure-picks.json`, which records what was seen rather than a rule.
+
+### Questions whose OPTIONS are graphs — resolved
+
+`2025 65/1/x Q5/Q14/Q18` (a graph stem with four graph options) and
+`2025 65/2/x Q6/Q14/Q16` (four bare Venn diagrams) print options as pictures. The
+options column is text, so the stored option texts are *descriptions read off the
+page*. Both now carry a crop of the whole option block, so a reader sees the
+question as printed and the descriptions are a supplement rather than a
+substitute. Each is an adjudicated pick: for the Venn set the pick names
+**65/2/3 deliberately**, because on its two siblings the same four boxes share a
+page with the NEXT question's graph and a union there would splice two questions
+together.
 
 ## Known taxonomy gap — open
 
