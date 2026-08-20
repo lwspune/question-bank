@@ -95,7 +95,12 @@ scripts/*/_tmp_*
 scripts/*/_validate*
 scripts/*/data/_*
 
-# Figure-crop QA contact sheet: a montage built ad hoc to eyeball every crop
-# before shipping a deck. It is a verification artifact, not a build input —
-# the individual figure PNGs beside it ARE inputs and are committed.
-**/figures/_contact.png
+# Teaching-deck figures live in Supabase Storage, not git. One chapter is ~870 KB,
+# but Std XI PCM alone measures ~743 figures / ~37 MB (Physics 258 · Chemistry
+# 266 · Maths 219) and git keeps every blob forever, so committing them is a
+# permanent clone-size cost that grows with every chapter. `upload-figures.ts`
+# pushes them and writes `figures.json`, the filename -> storage path map, which
+# IS committed — as is each chapter's `manifest.json`, the page + bounding box
+# every crop came from, so a crop can be re-verified without the binaries.
+scripts/ppt/**/figures/*.png
+scripts/ppt/**/figures/*.jpg

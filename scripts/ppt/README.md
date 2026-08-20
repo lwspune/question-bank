@@ -41,9 +41,18 @@ renders as a real table.
 
 ## Building the Motion in a Plane decks
 
+Three steps, in order. Only the third is needed day to day — the first two are
+re-run when the figures change.
+
 ```sh
-npx tsx scripts/ppt/motion-in-a-plane/build.ts
+python scripts/ppt/motion-in-a-plane/extract_figures.py            # crop from the PDF
+npx tsx scripts/ppt/motion-in-a-plane/upload-figures.ts --apply    # push to Storage
+npx tsx scripts/ppt/motion-in-a-plane/build.ts                     # build the decks
 ```
+
+`upload-figures.ts` is a **dry run without `--apply`** and is idempotent — it
+hashes each file and re-uploads only what changed. It writes `figures.json`,
+the filename → storage path map, which IS committed. The PNGs are not.
 
 Writes four files into `generated-papers/` — three that match the syllabus
 tracker's teaching blocks, plus a combined file with dividers. Same authored
@@ -117,6 +126,37 @@ Four things that decided the crop boxes, none guessable:
 `OVERRIDES` states a box outright for the one figure the rules get wrong at both
 ends (3.6), rather than loosening two rules that are right for the other
 fourteen.
+
+### Where figures live, and why it is not git
+
+Measured across the State Board PCM books: **Std XI alone has ~743 figures**
+(Physics 258 · Chemistry 266 · Maths 219) at ~51 KB each — about **37 MB**, and
+roughly 75 MB with Std XII. Git keeps every blob forever, so committing them is
+a permanent clone-size cost that grows with every chapter. They go to Supabase
+Storage at deterministic paths (`<org>/decks/<chapter>/<file>`, upsert), and the
+repo keeps two small text files instead:
+
+- **`figures.json`** — filename → storage path + hash. What the build reads.
+- **`figures/manifest.json`** — page and bounding box each crop came from, so a
+  crop can be re-verified against the PDF without the binaries.
+
+`build.ts` reads **only** Storage. There is deliberately no local-file fallback:
+a fallback makes it ambiguous whether what you shipped is what is stored.
+
+### The size ladder — for Chemistry, not Physics
+
+Supabase rejects an object over 1 MB, and it does so by throwing. Physics is
+line art and lands ~51 KB at 3×, so it never comes near the cap. **Chemistry
+will** — apparatus diagrams and colour structures are the risk, and this repo
+has already hit it: a Class-9 Geography panorama rendered at **7.2 MB** and the
+upload simply failed.
+
+`render_within_budget` steps the render scale down (3× → 2.5× → 2×) and then
+falls back to JPEG at descending quality. 3× is the first rung deliberately, so
+**every figure that already fits is byte-identical to before the ladder existed**
+— verified 17/17 against the previously committed crops. Both lower branches were
+proven to fire by forcing an artificially small budget; a ladder that has never
+stepped down is not known to work.
 
 ## Verifying a deck
 

@@ -28,6 +28,7 @@ import { DECK_A, DECK_B, DECK_C, type AuthoredSlide } from "./content";
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
 const OUT_DIR = join(process.cwd(), "generated-papers");
+const FIGURE_MAP = join(__dirname, "figures.json");
 
 function client() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -125,23 +126,40 @@ async function main() {
   }
   if (paths.length) console.log(`embedded ${paths.length} anchor image(s)`);
 
-  // Chapter figures, cropped from the printed page by extract_figures.py. The
-  // slides CITE these by number ("Figure 3.5"), so a missing file would leave a
-  // dangling reference on screen — fatal, not skipped.
+  // Chapter figures, cropped by extract_figures.py and pushed to Supabase
+  // Storage by upload-figures.ts. They live in Storage rather than git because
+  // Std XI PCM alone is ~743 figures / ~37 MB and git keeps every blob forever;
+  // the repo carries only `figures.json`, the filename → path map.
+  //
+  // The slides CITE these by number ("Figure 3.5"), so a missing one leaves a
+  // dangling reference on screen — every failure here is FATAL, never skipped.
   const figures = [...DECK_A, ...DECK_B, ...DECK_C].flatMap((s) =>
     s.kind === "teaching" && s.image ? [s.image] : []
   );
-  for (const name of new Set(figures)) {
-    const file = join(__dirname, "figures", name);
-    if (!existsSync(file)) {
+  const wanted = new Set(figures);
+  if (wanted.size) {
+    if (!existsSync(FIGURE_MAP)) {
       throw new Error(
-        `figure not found: ${file}\n` +
-          `Run: python scripts/ppt/motion-in-a-plane/extract_figures.py`
+        `${FIGURE_MAP} not found.\n` +
+          `Run: python scripts/ppt/motion-in-a-plane/extract_figures.py\n` +
+          `then: npx tsx scripts/ppt/motion-in-a-plane/upload-figures.ts --apply`
       );
     }
-    imageBytes.set(name, readFileSync(file));
+    const map = JSON.parse(readFileSync(FIGURE_MAP, "utf8")) as {
+      files: Record<string, string>;
+    };
+    for (const name of wanted) {
+      const path = map.files[name];
+      if (!path) {
+        throw new Error(
+          `figure "${name}" is cited by a slide but absent from figures.json — ` +
+            `re-run upload-figures.ts --apply`
+        );
+      }
+      imageBytes.set(name, await downloadImage(supabase, path));
+    }
+    console.log(`embedded ${wanted.size} chapter figure(s) from Storage`);
   }
-  console.log(`embedded ${new Set(figures).size} chapter figure(s)`);
   const withoutSolution = rows.filter((r) => !r.solution);
   if (withoutSolution.length) {
     console.warn(
