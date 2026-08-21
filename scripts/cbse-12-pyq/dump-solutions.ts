@@ -33,7 +33,7 @@ type Q = {
   ref: string; questionNumber: string; section: string; marks: number;
   format: "mcq" | "subjective"; chapter: string; subtopic: string;
   stem: string; context?: string; options?: { label: string; text: string }[];
-  answer?: string; _figure?: string; _flag?: string;
+  answer?: string; _figure?: string; _flag?: string; _noCorrectOption?: boolean;
 };
 
 async function main() {
@@ -89,6 +89,12 @@ async function main() {
       stem: q.stem, ...(q.context ? { context: q.context } : {}),
       ...(q.options ? { options: q.options } : {}),
       ...(q.answer ? { answer: q.answer } : {}),
+      // Carry the keyless assertion through. Without it an MCQ with four options
+      // and no `answer` looks like a dump bug, and an agent may either invent a
+      // key or waste the run doubting the file. There are 5 such rows and CBSE
+      // itself acknowledges them ("Give 1 Mark to those who have attempted as
+      // the correct option is not given").
+      ...(q._noCorrectOption ? { noCorrectOption: true } : {}),
       ...(q._figure ? { figure: q._figure } : {}),
       solution: "",
     });

@@ -1,0 +1,974 @@
+{
+ "paper": "65/2/1",
+ "year": 2023,
+ "paperId": "2023-65-2-1",
+ "markingScheme": "out/2023-65-2-1/ms/p00.png … p17.png",
+ "rows": [
+  {
+   "hash": "df561400428ece5838012a1b27900235d436da13b5a3ed4176e58f0dcf342eac",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "If \\(A = \\begin{bmatrix} 0 & 1 \\\\ 0 & 0 \\end{bmatrix}\\), then \\(A^{2023}\\) is equal to",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\begin{bmatrix} 0 & 1 \\\\ 0 & 0 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\begin{bmatrix} 0 & 2023 \\\\ 0 & 0 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\begin{bmatrix} 2023 & 0 \\\\ 0 & 2023 \\end{bmatrix}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Square the matrix first: \\(A^{2} = \\begin{bmatrix} 0 & 1 \\\\ 0 & 0 \\end{bmatrix}\\begin{bmatrix} 0 & 1 \\\\ 0 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}\\), so \\(A\\) is nilpotent. Once a power of a matrix is the zero matrix, every higher power is zero too, because \\(A^{2023} = A^{2}\\,A^{2021} = O\\,A^{2021} = O\\). Hence \\(A^{2023}\\) is the zero matrix \\(\\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}\\)."
+  },
+  {
+   "hash": "a52f65b39233afca2a2c564bd5e32902b504f9ad6c47b1b8fabbe70de129e626",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Symmetric and Skew-Symmetric Matrices",
+   "stem": "If \\(\\begin{bmatrix} 2 & 0 \\\\ 5 & 4 \\end{bmatrix} = P + Q\\), where P is a symmetric and Q is a skew symmetric matrix, then Q is equal to",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\begin{bmatrix} 2 & 5/2 \\\\ 5/2 & 4 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\begin{bmatrix} 0 & -5/2 \\\\ 5/2 & 0 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\begin{bmatrix} 0 & 5/2 \\\\ -5/2 & 0 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\begin{bmatrix} 2 & -5/2 \\\\ 5/2 & 4 \\end{bmatrix}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Every square matrix splits uniquely as \\(A = P + Q\\) with \\(P = \\frac{1}{2}(A + A^{T})\\) symmetric and \\(Q = \\frac{1}{2}(A - A^{T})\\) skew symmetric. Here \\(A = \\begin{bmatrix} 2 & 0 \\\\ 5 & 4 \\end{bmatrix}\\) and \\(A^{T} = \\begin{bmatrix} 2 & 5 \\\\ 0 & 4 \\end{bmatrix}\\), so \\(A - A^{T} = \\begin{bmatrix} 0 & -5 \\\\ 5 & 0 \\end{bmatrix}\\) and \\(Q = \\frac{1}{2}\\begin{bmatrix} 0 & -5 \\\\ 5 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & -5/2 \\\\ 5/2 & 0 \\end{bmatrix}\\). This is the option \\(\\begin{bmatrix} 0 & -5/2 \\\\ 5/2 & 0 \\end{bmatrix}\\); note that a skew symmetric matrix must have zero diagonal, which already rules out two of the alternatives."
+  },
+  {
+   "hash": "0e49598ad85b824077d27feafe4078c65725c3bd44fe1e60b1c981021706d06b",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Determinant and its Properties",
+   "stem": "If \\(\\begin{bmatrix} 1 & 2 & 1 \\\\ 2 & 3 & 1 \\\\ 3 & a & 1 \\end{bmatrix}\\) is non-singular matrix and \\(a \\in A\\), then the set A is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\mathbb{R}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\{0\\}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\{4\\}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\mathbb{R} - \\{4\\}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "A matrix is non-singular exactly when its determinant is non-zero. Expanding along the first row, \\(\\begin{vmatrix} 1 & 2 & 1 \\\\ 2 & 3 & 1 \\\\ 3 & a & 1 \\end{vmatrix} = 1(3 - a) - 2(2 - 3) + 1(2a - 9) = 3 - a + 2 + 2a - 9 = a - 4\\). This is non-zero precisely when \\(a \\ne 4\\), so \\(a\\) may be any real number except 4, i.e. the set is \\(\\mathbb{R} - \\{4\\}\\)."
+  },
+  {
+   "hash": "6bd2e0ce766a165d30db635954b86ee68e3284e83687368687c7493eba151e28",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Determinant and its Properties",
+   "stem": "If \\(|A| = |kA|\\), where A is a square matrix of order 2, then sum of all possible values of k is",
+   "options": [
+    {
+     "label": "A",
+     "text": "1"
+    },
+    {
+     "label": "B",
+     "text": "\\(-1\\)"
+    },
+    {
+     "label": "C",
+     "text": "2"
+    },
+    {
+     "label": "D",
+     "text": "0"
+    }
+   ],
+   "answer": "D",
+   "solution": "For a square matrix of order \\(n\\), \\(|kA| = k^{n}|A|\\); with \\(n = 2\\) this is \\(|kA| = k^{2}|A|\\). The given condition becomes \\(|A| = k^{2}|A|\\), i.e. \\(|A|(1 - k^{2}) = 0\\). For the question to determine \\(k\\) at all we take \\(|A| \\ne 0\\), which gives \\(k^{2} = 1\\), so \\(k = 1\\) or \\(k = -1\\). The sum of all possible values is \\(1 + (-1) = 0\\)."
+  },
+  {
+   "hash": "ab0b80cae8ae3c2404433fb44027bf408363970a4fde1cf3c8ffcebb6c331ce1",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Integration as the Inverse of Differentiation",
+   "stem": "If \\(\\frac{d}{dx}[f(x)] = ax + b\\) and \\(f(0) = 0\\), then \\(f(x)\\) is equal to",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(a + b\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{ax^2}{2} + bx\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{ax^2}{2} + bx + c\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(b\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Integrating \\(\\frac{d}{dx}[f(x)] = ax + b\\) gives \\(f(x) = \\frac{ax^{2}}{2} + bx + c\\). The condition \\(f(0) = 0\\) forces \\(c = 0\\), so \\(f(x) = \\frac{ax^{2}}{2} + bx\\). The alternative \\(\\frac{ax^2}{2} + bx + c\\) is the general antiderivative and is the trap here: it ignores the initial condition that fixes \\(c\\)."
+  },
+  {
+   "hash": "d1e98693d35ef7f67cdecdf39ee727c7a06aec44707f1aaf26aff55ebc9aa845",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Order and Degree of a Differential Equation",
+   "stem": "Degree of the differential equation \\(\\sin x + \\cos\\left(\\frac{dy}{dx}\\right) = y^2\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "2"
+    },
+    {
+     "label": "B",
+     "text": "1"
+    },
+    {
+     "label": "C",
+     "text": "not defined"
+    },
+    {
+     "label": "D",
+     "text": "0"
+    }
+   ],
+   "answer": "C",
+   "solution": "Degree is defined only when the differential equation can be written as a polynomial in its derivatives. Here \\(\\frac{dy}{dx}\\) sits inside a cosine, as \\(\\cos\\left(\\frac{dy}{dx}\\right)\\), which is a transcendental function of the derivative and not a polynomial in it. So the degree is not defined. (The order is still 1, since the highest derivative present is the first.)"
+  },
+  {
+   "hash": "e3eaae2cdfc61ecfca57f38edd968341ddc1d4aac5a94d8a046cc394734ff759",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "The integrating factor of the differential equation \\((1 - y^2)\\frac{dx}{dy} + yx = ay\\), \\((-1 < y < 1)\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{1}{y^2 - 1}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{1}{\\sqrt{y^2 - 1}}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{1}{1 - y^2}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{1}{\\sqrt{1 - y^2}}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Here \\(x\\) is the dependent variable and \\(y\\) the independent one. Dividing throughout by \\(1 - y^{2}\\) puts the equation in the standard linear form \\(\\frac{dx}{dy} + \\frac{y}{1 - y^{2}}x = \\frac{ay}{1 - y^{2}}\\), so \\(P(y) = \\frac{y}{1 - y^{2}}\\). Then \\(\\int P\\,dy = \\int \\frac{y}{1 - y^{2}}\\,dy = -\\frac{1}{2}\\log(1 - y^{2})\\), where no modulus is needed because \\(1 - y^{2} > 0\\) on \\(-1 < y < 1\\). Hence the integrating factor is \\(e^{-\\frac{1}{2}\\log(1 - y^{2})} = (1 - y^{2})^{-1/2} = \\frac{1}{\\sqrt{1 - y^{2}}}\\)."
+  },
+  {
+   "hash": "68f35a9c80e6a39b118ac424a2e3bd9bdd95bb81a6cd39b89009b0d84da3e22a",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Components and Direction Cosines",
+   "stem": "Unit vector along \\(\\overrightarrow{PQ}\\), where coordinates of P and Q respectively are (2, 1, \\(-1\\)) and (4, 4, \\(-7\\)), is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2\\hat{i} + 3\\hat{j} - 6\\hat{k}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-2\\hat{i} - 3\\hat{j} + 6\\hat{k}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{-2\\hat{i}}{7} - \\frac{3\\hat{j}}{7} + \\frac{6\\hat{k}}{7}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{2\\hat{i}}{7} + \\frac{3\\hat{j}}{7} - \\frac{6\\hat{k}}{7}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Subtract the position vector of P from that of Q: \\(\\overrightarrow{PQ} = (4 - 2)\\hat{i} + (4 - 1)\\hat{j} + (-7 + 1)\\hat{k} = 2\\hat{i} + 3\\hat{j} - 6\\hat{k}\\). Its magnitude is \\(\\sqrt{2^{2} + 3^{2} + (-6)^{2}} = \\sqrt{49} = 7\\). Dividing the vector by its magnitude gives the unit vector \\(\\frac{2\\hat{i}}{7} + \\frac{3\\hat{j}}{7} - \\frac{6\\hat{k}}{7}\\). The direction runs from P to Q, which fixes the signs and rules out the reversed alternative."
+  },
+  {
+   "hash": "285f8ec19ad9fcc064252deeee12e66c736504384ddca5245aaf822a38662800",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Section Formula",
+   "stem": "Position vector of the mid-point of line segment AB is \\(3\\hat{i} + 2\\hat{j} - 3\\hat{k}\\). If position vector of the point A is \\(2\\hat{i} + 3\\hat{j} - 4\\hat{k}\\), then position vector of the point B is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{5\\hat{i}}{2} + \\frac{5\\hat{j}}{2} - \\frac{7\\hat{k}}{2}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(4\\hat{i} + \\hat{j} - 2\\hat{k}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(5\\hat{i} + 5\\hat{j} - 7\\hat{k}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{\\hat{i}}{2} - \\frac{\\hat{j}}{2} + \\frac{\\hat{k}}{2}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "If M is the mid-point of AB then \\(\\vec{m} = \\frac{\\vec{a} + \\vec{b}}{2}\\), so \\(\\vec{b} = 2\\vec{m} - \\vec{a}\\). Substituting, \\(\\vec{b} = 2(3\\hat{i} + 2\\hat{j} - 3\\hat{k}) - (2\\hat{i} + 3\\hat{j} - 4\\hat{k}) = (6 - 2)\\hat{i} + (4 - 3)\\hat{j} + (-6 + 4)\\hat{k} = 4\\hat{i} + \\hat{j} - 2\\hat{k}\\). As a check, the mid-point of \\(2\\hat{i} + 3\\hat{j} - 4\\hat{k}\\) and \\(4\\hat{i} + \\hat{j} - 2\\hat{k}\\) is indeed \\(3\\hat{i} + 2\\hat{j} - 3\\hat{k}\\)."
+  },
+  {
+   "hash": "1ca5c22281e7d4ed51bf7d5069c939c3f88fc2c3af304e4946f674df8316a525",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "Projection of vector \\(2\\hat{i} + 3\\hat{j}\\) on the vector \\(3\\hat{i} - 2\\hat{j}\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "0"
+    },
+    {
+     "label": "B",
+     "text": "12"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{12}{\\sqrt{13}}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{-12}{\\sqrt{13}}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "The projection of \\(\\vec{a}\\) on \\(\\vec{b}\\) is \\(\\frac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|}\\). Here \\(\\vec{a}\\cdot\\vec{b} = (2)(3) + (3)(-2) = 6 - 6 = 0\\), so the projection is \\(\\frac{0}{\\sqrt{13}} = 0\\). The two vectors are perpendicular, so neither has any component along the other and the projection is 0."
+  },
+  {
+   "hash": "c4302f1a3f913f024b83e394ffe153eda81bd90bd00170ce2ed2104e6145d286",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Equation of a line passing through point (1, 1, 1) and parallel to z-axis is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{x}{1} = \\frac{y}{1} = \\frac{z}{1}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{x - 1}{1} = \\frac{y - 1}{1} = \\frac{z - 1}{1}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{x}{0} = \\frac{y}{0} = \\frac{z - 1}{1}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{x - 1}{0} = \\frac{y - 1}{0} = \\frac{z - 1}{1}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "The z-axis has direction ratios \\(0, 0, 1\\), so any line parallel to it has the same direction ratios. A line through \\((x_{1}, y_{1}, z_{1})\\) with direction ratios \\(a, b, c\\) is \\(\\frac{x - x_{1}}{a} = \\frac{y - y_{1}}{b} = \\frac{z - z_{1}}{c}\\). Through \\((1, 1, 1)\\) this gives \\(\\frac{x - 1}{0} = \\frac{y - 1}{0} = \\frac{z - 1}{1}\\). The alternative \\(\\frac{x}{0} = \\frac{y}{0} = \\frac{z - 1}{1}\\) has the right direction but passes through \\((0, 0, 1)\\), not \\((1, 1, 1)\\)."
+  },
+  {
+   "hash": "d68a4f87ffb78840c6b3719eda2c1ca1fd90cd6bc772946af90ac2763f381d36",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "If the sum of numbers obtained on throwing a pair of dice is 9, then the probability that number obtained on one of the dice is 4, is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{1}{9}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{4}{9}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{1}{18}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{1}{2}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "The conditioning event is that the sum is 9, which restricts the sample space to \\(\\{(3,6), (4,5), (5,4), (6,3)\\}\\), four equally likely ordered outcomes. Of these, the ones in which a 4 appears on one of the dice are \\((4,5)\\) and \\((5,4)\\), i.e. 2 outcomes. So the required conditional probability is \\(\\frac{2}{4} = \\frac{1}{2}\\). (The value \\(\\frac{1}{18}\\) is the unconditional probability of the two favourable outcomes out of 36, which is not what is asked.)"
+  },
+  {
+   "hash": "7fac01e28ff587b2de7c82080c1b02de98cd02e8a4e89cccd151c9dcd3666674",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Integration using Trigonometric Identities",
+   "stem": "Anti-derivative of \\(\\frac{\\tan x - 1}{\\tan x + 1}\\) with respect to \\(x\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\sec^2\\left(\\frac{\\pi}{4} - x\\right) + c\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-\\sec^2\\left(\\frac{\\pi}{4} - x\\right) + c\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\log\\left|\\sec\\left(\\frac{\\pi}{4} - x\\right)\\right| + c\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-\\log\\left|\\sec\\left(\\frac{\\pi}{4} - x\\right)\\right| + c\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Recognise the compound-angle form. Since \\(\\tan\\left(\\frac{\\pi}{4} - x\\right) = \\frac{1 - \\tan x}{1 + \\tan x}\\), the integrand is \\(\\frac{\\tan x - 1}{\\tan x + 1} = -\\frac{1 - \\tan x}{1 + \\tan x} = -\\tan\\left(\\frac{\\pi}{4} - x\\right)\\). Substituting \\(u = \\frac{\\pi}{4} - x\\), so that \\(du = -dx\\), gives \\(\\int -\\tan\\left(\\frac{\\pi}{4} - x\\right)dx = \\int \\tan u\\,du = \\log|\\sec u| + c\\). Restoring \\(u\\), the anti-derivative is \\(\\log\\left|\\sec\\left(\\frac{\\pi}{4} - x\\right)\\right| + c\\). The two sign changes cancel, which is why the answer carries a plus rather than a minus."
+  },
+  {
+   "hash": "1bb219a55a4b8c37b898a914c296ff3db7d53f496b3216f456a87ff99e41e284",
+   "ref": "Q14",
+   "questionNumber": "14",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Area of a Triangle",
+   "stem": "If (a, b), (c, d) and (e, f) are the vertices of \\(\\Delta ABC\\) and \\(\\Delta\\) denotes the area of \\(\\Delta ABC\\), then \\(\\begin{vmatrix} a & c & e \\\\ b & d & f \\\\ 1 & 1 & 1 \\end{vmatrix}^2\\) is equal to",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2\\Delta^2\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(4\\Delta^2\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(2\\Delta\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(4\\Delta\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "The area of the triangle with those vertices is \\(\\Delta = \\frac{1}{2}\\left|\\begin{vmatrix} a & b & 1 \\\\ c & d & 1 \\\\ e & f & 1 \\end{vmatrix}\\right|\\). The determinant printed in the question is exactly the transpose of that one, and a determinant is unchanged by transposition, so its value is \\(\\pm 2\\Delta\\) (the sign depending on the order in which the vertices are listed). Squaring removes the sign, giving \\(\\begin{vmatrix} a & c & e \\\\ b & d & f \\\\ 1 & 1 & 1 \\end{vmatrix}^{2} = (2\\Delta)^{2} = 4\\Delta^{2}\\)."
+  },
+  {
+   "hash": "d3e23e7c3a22ed47e5f1478ac8bfa87679f6cdd2e6faf79e9dc39dc4bfb2737b",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "The function \\(f(x) = x|x|\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "continuous and differentiable at \\(x = 0\\)."
+    },
+    {
+     "label": "B",
+     "text": "continuous but not differentiable at \\(x = 0\\)."
+    },
+    {
+     "label": "C",
+     "text": "differentiable but not continuous at \\(x = 0\\)."
+    },
+    {
+     "label": "D",
+     "text": "neither differentiable nor continuous at \\(x = 0\\)."
+    }
+   ],
+   "answer": "A",
+   "solution": "Written branch-wise, \\(f(x) = x^{2}\\) for \\(x \\ge 0\\) and \\(f(x) = -x^{2}\\) for \\(x < 0\\). Both branches tend to 0 as \\(x \\to 0\\) and \\(f(0) = 0\\), so \\(f\\) is continuous at \\(x = 0\\). For differentiability, the left-hand derivative is \\(\\lim_{h \\to 0^{-}}\\frac{-h^{2} - 0}{h} = \\lim_{h \\to 0^{-}}(-h) = 0\\) and the right-hand derivative is \\(\\lim_{h \\to 0^{+}}\\frac{h^{2} - 0}{h} = \\lim_{h \\to 0^{+}}h = 0\\). They are equal, so \\(f\\) is continuous and differentiable at \\(x = 0\\). Multiplying by \\(x\\) is what smooths away the corner that \\(|x|\\) has on its own."
+  },
+  {
+   "hash": "51dc1da2ae1fc83bea19cfa3975402f876eebf8cfc0e54f53bbb08a3fcab744b",
+   "ref": "Q16",
+   "questionNumber": "16",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "If \\(\\tan\\left(\\frac{x + y}{x - y}\\right) = k\\), then \\(\\frac{dy}{dx}\\) is equal to",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{-y}{x}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{y}{x}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\sec^2\\left(\\frac{y}{x}\\right)\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-\\sec^2\\left(\\frac{y}{x}\\right)\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Because \\(k\\) is a constant, the whole expression \\(\\frac{x + y}{x - y}\\) is constant too. Differentiating \\(\\frac{x + y}{x - y} = \\text{constant}\\) by the quotient rule gives \\(\\frac{(1 + y')(x - y) - (x + y)(1 - y')}{(x - y)^{2}} = 0\\). Expanding the numerator, \\((x - y + xy' - yy') - (x + y - xy' - yy') = 2xy' - 2y\\). Setting this to zero gives \\(\\frac{dy}{dx} = \\frac{y}{x}\\). Equivalently, the constancy of \\(\\frac{x + y}{x - y}\\) forces \\(y\\) to be a constant multiple of \\(x\\), i.e. a straight line through the origin, whose slope is \\(\\frac{y}{x}\\)."
+  },
+  {
+   "hash": "f1f43a6b229c7979218aa69aac40dd77df59de3981d460b9c98a0ddce5105853",
+   "ref": "Q17",
+   "questionNumber": "17",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "The objective function \\(Z = ax + by\\) of an LPP has maximum value 42 at (4, 6) and minimum value 19 at (3, 2). Which of the following is true ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(a = 9, b = 1\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(a = 5, b = 2\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(a = 3, b = 5\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(a = 5, b = 3\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Substituting the two given corner points into \\(Z = ax + by\\) gives two simultaneous equations: \\(4a + 6b = 42\\) and \\(3a + 2b = 19\\). From the second, \\(2b = 19 - 3a\\), hence \\(6b = 57 - 9a\\). Putting this into the first, \\(4a + 57 - 9a = 42\\), so \\(-5a = -15\\) and \\(a = 3\\); then \\(b = \\frac{19 - 9}{2} = 5\\). Checking both conditions: \\(3(4) + 5(6) = 12 + 30 = 42\\) and \\(3(3) + 5(2) = 9 + 10 = 19\\). So \\(a = 3, b = 5\\)."
+  },
+  {
+   "hash": "7935c77b299e339dec552c57503441b75ad338d3eaac3f7ac9959d1a09d1d3cf",
+   "ref": "Q18",
+   "questionNumber": "18",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "The corner points of the feasible region of a linear programming problem are (0, 4), (8, 0) and \\(\\left(\\frac{20}{3}, \\frac{4}{3}\\right)\\). If \\(Z = 30x + 24y\\) is the objective function, then (maximum value of Z \\(-\\) minimum value of Z) is equal to",
+   "options": [
+    {
+     "label": "A",
+     "text": "40"
+    },
+    {
+     "label": "B",
+     "text": "96"
+    },
+    {
+     "label": "C",
+     "text": "120"
+    },
+    {
+     "label": "D",
+     "text": "136"
+    }
+   ],
+   "solution": "[CBSE marking scheme: this question has no correct option, and the official scheme says so — its answer row reads \"Give 1 Mark to those who have attempted as the correct option is not given\". The working below is the correct evaluation.] For a bounded feasible region the extreme values of a linear objective function occur at corner points, so evaluate \\(Z = 30x + 24y\\) at each of the three given points. At \\((0, 4)\\), \\(Z = 30(0) + 24(4) = 96\\). At \\((8, 0)\\), \\(Z = 30(8) + 24(0) = 240\\). At \\(\\left(\\frac{20}{3}, \\frac{4}{3}\\right)\\), \\(Z = 30 \\times \\frac{20}{3} + 24 \\times \\frac{4}{3} = 200 + 32 = 232\\). So the maximum value is 240 and the minimum value is 96, and (maximum value of Z \\(-\\) minimum value of Z) \\(= 240 - 96 = 144\\). None of the printed alternatives 40, 96, 120 and 136 equals 144. The closest, 136, is exactly \\(232 - 96\\), which is the difference obtained if the value at \\((8, 0)\\) is overlooked; but \\((8, 0)\\) is one of the three corner points the question itself lists, so 240 is genuinely the maximum and 144 is the correct answer."
+  },
+  {
+   "hash": "148cf348432e3009e9de785d33961409fbc4f7224fc6354a3864b7cc7e651e3b",
+   "ref": "Q19",
+   "questionNumber": "19",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "Assertion (A) : Maximum value of \\((\\cos^{-1} x)^2\\) is \\(\\pi^2\\).\n\nReason (R) : Range of the principal value branch of \\(\\cos^{-1} x\\) is \\(\\left[\\frac{-\\pi}{2}, \\frac{\\pi}{2}\\right]\\).",
+   "context": "In the following questions 19 & 20, a statement of Assertion (A) is followed by a statement of Reason (R).\nChoose the correct answer out of the following choices :",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both (A) and (R) are true and (R) is the correct explanation of (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both (A) and (R) are true, but (R) is not the correct explanation of (A)."
+    },
+    {
+     "label": "C",
+     "text": "(A) is true, but (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "(A) is false, but (R) is true."
+    }
+   ],
+   "answer": "C",
+   "solution": "Test the two statements separately. The principal value branch of \\(\\cos^{-1}\\) has range \\([0, \\pi]\\), not \\(\\left[\\frac{-\\pi}{2}, \\frac{\\pi}{2}\\right]\\) — that interval is the range of \\(\\sin^{-1}\\). So Reason (R) is false. Assertion (A) is nevertheless true: on \\([-1, 1]\\) the largest value of \\(\\cos^{-1}x\\) is \\(\\pi\\), attained at \\(x = -1\\), and since squaring is increasing on non-negative numbers the largest value of \\((\\cos^{-1}x)^{2}\\) is \\(\\pi^{2}\\). Hence (A) is true but (R) is false. Note that (R), had it been true, would have made (A) false, since the maximum would then have been \\(\\frac{\\pi^{2}}{4}\\)."
+  },
+  {
+   "hash": "3216f9f0e6513901dbae66b99a89f35deb0bcf236a3576102907013e4c618f3a",
+   "ref": "Q20",
+   "questionNumber": "20",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "Assertion (A) : If a line makes angles \\(\\alpha, \\beta, \\gamma\\) with positive direction of the coordinate axes, then \\(\\sin^2 \\alpha + \\sin^2 \\beta + \\sin^2 \\gamma = 2\\).\n\nReason (R) : The sum of squares of the direction cosines of a line is 1.",
+   "context": "In the following questions 19 & 20, a statement of Assertion (A) is followed by a statement of Reason (R).\nChoose the correct answer out of the following choices :",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both (A) and (R) are true and (R) is the correct explanation of (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both (A) and (R) are true, but (R) is not the correct explanation of (A)."
+    },
+    {
+     "label": "C",
+     "text": "(A) is true, but (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "(A) is false, but (R) is true."
+    }
+   ],
+   "answer": "A",
+   "solution": "The direction cosines of the line are \\(l = \\cos\\alpha\\), \\(m = \\cos\\beta\\), \\(n = \\cos\\gamma\\), and they satisfy \\(l^{2} + m^{2} + n^{2} = 1\\), i.e. \\(\\cos^{2}\\alpha + \\cos^{2}\\beta + \\cos^{2}\\gamma = 1\\). So Reason (R) is true. Now apply \\(\\sin^{2}\\theta = 1 - \\cos^{2}\\theta\\) to each angle: \\(\\sin^{2}\\alpha + \\sin^{2}\\beta + \\sin^{2}\\gamma = 3 - (\\cos^{2}\\alpha + \\cos^{2}\\beta + \\cos^{2}\\gamma) = 3 - 1 = 2\\). So Assertion (A) is true as well, and the single step that makes it work is precisely the identity stated in (R). Hence both are true and (R) is the correct explanation of (A)."
+  },
+  {
+   "hash": "00b6a3b6160fc5e4cc9665110b72c0f61faddca0a1763d48beef5ba631b186c0",
+   "ref": "Q21a",
+   "questionNumber": "21 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Evaluating Inverse Trigonometric Expressions",
+   "stem": "Evaluate \\(\\sin^{-1}\\left(\\sin \\frac{3\\pi}{4}\\right) + \\cos^{-1}(\\cos \\pi) + \\tan^{-1}(1)\\).",
+   "solution": "Each term must be brought into its own principal value branch before it can be simplified. For the first term, \\(\\frac{3\\pi}{4}\\) does not lie in \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\), so \\(\\sin^{-1}\\left(\\sin\\frac{3\\pi}{4}\\right)\\) is not \\(\\frac{3\\pi}{4}\\). Using \\(\\sin\\frac{3\\pi}{4} = \\sin\\left(\\pi - \\frac{\\pi}{4}\\right) = \\sin\\frac{\\pi}{4}\\), and \\(\\frac{\\pi}{4}\\) does lie in the branch, so \\(\\sin^{-1}\\left(\\sin\\frac{3\\pi}{4}\\right) = \\frac{\\pi}{4}\\). For the second, \\(\\pi\\) already lies in \\([0, \\pi]\\), the principal branch of \\(\\cos^{-1}\\), so \\(\\cos^{-1}(\\cos\\pi) = \\pi\\). For the third, \\(\\tan^{-1}(1) = \\frac{\\pi}{4}\\), since \\(\\frac{\\pi}{4} \\in \\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\). Adding the three, \\(\\frac{\\pi}{4} + \\pi + \\frac{\\pi}{4} = \\frac{\\pi}{2} + \\pi = \\frac{3\\pi}{2}\\)."
+  },
+  {
+   "hash": "d201d6baa6f2a4db12749eceabde671da82fa549dc18af5ffb325a487ac47a37",
+   "ref": "Q21b",
+   "questionNumber": "21 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "Draw the graph of \\(\\cos^{-1} x\\), where \\(x \\in [-1, 0]\\). Also, write its range.",
+   "solution": "On \\([-1, 0]\\) the function \\(y = \\cos^{-1}x\\) is continuous and strictly decreasing, so the curve falls steadily from left to right. Its two endpoints are \\(\\cos^{-1}(-1) = \\pi\\) at \\(x = -1\\) and \\(\\cos^{-1}(0) = \\frac{\\pi}{2}\\) at \\(x = 0\\), and it passes through the intermediate point \\(\\left(-\\frac{1}{2}, \\frac{2\\pi}{3}\\right)\\). So the required graph is the arc of the inverse-cosine curve joining \\((-1, \\pi)\\) down to \\(\\left(0, \\frac{\\pi}{2}\\right)\\), lying entirely in the second quadrant above the x-axis, with the tangent becoming vertical as \\(x\\) approaches \\(-1\\). Because the function is continuous and strictly decreasing, it takes every value between its two endpoint values exactly once, so the range is \\(\\left[\\frac{\\pi}{2}, \\pi\\right]\\)."
+  },
+  {
+   "hash": "72ef7a8175fda3768e7b72d360fe060cd14153965687a298b49822a3905acaa2",
+   "ref": "Q22",
+   "questionNumber": "22",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "A particle moves along the curve \\(3y = ax^3 + 1\\) such that at a point with \\(x\\)-coordinate 1, y-coordinate is changing twice as fast at \\(x\\)-coordinate. Find the value of a.",
+   "solution": "First read the rate condition. \"The y-coordinate is changing twice as fast as the x-coordinate\" means \\(\\frac{dy}{dt} = 2\\frac{dx}{dt}\\); dividing both sides by \\(\\frac{dx}{dt}\\) turns this into \\(\\frac{dy}{dx} = 2\\) at the point concerned. Now differentiate the curve \\(3y = ax^{3} + 1\\) with respect to \\(x\\): \\(3\\frac{dy}{dx} = 3ax^{2}\\), so \\(\\frac{dy}{dx} = ax^{2}\\). Evaluating at the given point, where \\(x = 1\\), gives \\(2 = a(1)^{2}\\). Hence \\(a = 2\\)."
+  },
+  {
+   "hash": "d85560c3b83b052e49633cd1f5929efcd2d073a85bbd603584bb6ae32b599237",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "If \\(\\vec{a}\\), \\(\\vec{b}\\), \\(\\vec{c}\\) are three non-zero unequal vectors such that \\(\\vec{a} \\cdot \\vec{b} = \\vec{a} \\cdot \\vec{c}\\), then find the angle between \\(\\vec{a}\\) and \\(\\vec{b} - \\vec{c}\\).",
+   "solution": "Bring everything to one side and use distributivity of the dot product: \\(\\vec{a}\\cdot\\vec{b} = \\vec{a}\\cdot\\vec{c}\\) gives \\(\\vec{a}\\cdot\\vec{b} - \\vec{a}\\cdot\\vec{c} = 0\\), that is \\(\\vec{a}\\cdot(\\vec{b} - \\vec{c}) = 0\\). A dot product vanishes only if one of the two vectors is the zero vector or the two are perpendicular. Here \\(\\vec{a} \\ne \\vec{0}\\) is given, and the vectors are stated to be unequal so \\(\\vec{b} \\ne \\vec{c}\\), which makes \\(\\vec{b} - \\vec{c} \\ne \\vec{0}\\). With both vectors non-zero, the only remaining possibility is perpendicularity. Hence the angle between \\(\\vec{a}\\) and \\(\\vec{b} - \\vec{c}\\) is \\(\\frac{\\pi}{2}\\), i.e. \\(90^{\\circ}\\)."
+  },
+  {
+   "hash": "7d80e94cd5abcabb47a2e90576f6896b65ee8df48cdccb0c22312e948aea40e9",
+   "ref": "Q24",
+   "questionNumber": "24",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the coordinates of points on line \\(\\frac{x}{1} = \\frac{y - 1}{2} = \\frac{z + 1}{2}\\) which are at a distance of \\(\\sqrt{11}\\) units from origin.",
+   "solution": "Put the line in parametric form. Setting \\(\\frac{x}{1} = \\frac{y - 1}{2} = \\frac{z + 1}{2} = k\\) gives \\(x = k\\), \\(y = 2k + 1\\) and \\(z = 2k - 1\\), so a general point on the line is \\(P(k, 2k + 1, 2k - 1)\\). The distance from the origin is \\(\\sqrt{11}\\), so \\(OP^{2} = 11\\): \\(k^{2} + (2k + 1)^{2} + (2k - 1)^{2} = 11\\). Expanding, \\(k^{2} + (4k^{2} + 4k + 1) + (4k^{2} - 4k + 1) = 11\\), and the terms in \\(k\\) cancel, leaving \\(9k^{2} + 2 = 11\\). Hence \\(k^{2} = 1\\) and \\(k = \\pm 1\\). Taking \\(k = 1\\) gives the point \\((1, 3, 1)\\) and \\(k = -1\\) gives \\((-1, -1, -3)\\). Both check out, since \\(1 + 9 + 1 = 11\\) and \\(1 + 1 + 9 = 11\\)."
+  },
+  {
+   "hash": "3415dce6fcac7080271bf1bf6ecc8ea0f1d39c22f8a7f50d71eaee7ffacb0749",
+   "ref": "Q25a",
+   "questionNumber": "25 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Second Order Derivatives",
+   "stem": "If \\(y = \\sqrt{ax + b}\\), prove that \\(y\\left(\\frac{d^2y}{dx^2}\\right) + \\left(\\frac{dy}{dx}\\right)^2 = 0\\).",
+   "solution": "Squaring first avoids differentiating a square root twice. From \\(y = \\sqrt{ax + b}\\) we get \\(y^{2} = ax + b\\). Differentiating both sides with respect to \\(x\\), and using the chain rule on the left, \\(2y\\frac{dy}{dx} = a\\). Differentiate once more; the left-hand side is a product of \\(2y\\) and \\(\\frac{dy}{dx}\\), so the product rule gives \\(2y\\frac{d^{2}y}{dx^{2}} + 2\\frac{dy}{dx}\\cdot\\frac{dy}{dx} = 0\\), the right-hand side being zero because \\(a\\) is a constant. That is, \\(2y\\frac{d^{2}y}{dx^{2}} + 2\\left(\\frac{dy}{dx}\\right)^{2} = 0\\). Dividing throughout by 2 gives \\(y\\frac{d^{2}y}{dx^{2}} + \\left(\\frac{dy}{dx}\\right)^{2} = 0\\), which is the required result."
+  },
+  {
+   "hash": "894c5110bcb316f676cf06542833d7165864b0a5707520479cd61241fb32d3ae",
+   "ref": "Q25b",
+   "questionNumber": "25 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "If \\(f(x) = \\begin{cases} ax + b & ; \\quad 0 < x \\le 1 \\\\ 2x^2 - x & ; \\quad 1 < x < 2 \\end{cases}\\) is a differentiable function in (0, 2), then find the values of a and b.",
+   "solution": "Each branch is a polynomial, so the only point in \\((0, 2)\\) where anything can go wrong is \\(x = 1\\), where the two branches meet. A differentiable function is in particular continuous, so impose continuity at \\(x = 1\\) first: \\(\\lim_{x \\to 1^{-}}(ax + b) = a + b\\) and \\(\\lim_{x \\to 1^{+}}(2x^{2} - x) = 2 - 1 = 1\\), which must agree, giving \\(a + b = 1\\). Now impose differentiability at \\(x = 1\\). The left-hand derivative is the derivative of \\(ax + b\\), namely \\(a\\); the right-hand derivative is the derivative of \\(2x^{2} - x\\), namely \\(4x - 1\\), evaluated at \\(x = 1\\), which is \\(3\\). Equating them gives \\(a = 3\\), and then \\(b = 1 - a = -2\\). So \\(a = 3\\) and \\(b = -2\\)."
+  },
+  {
+   "hash": "282589204216707fa36bb69177b00e878fef4622a19e359eda2123a1655f41ae",
+   "ref": "Q26a",
+   "questionNumber": "26 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "Evaluate \\(\\int\\limits_{0}^{\\pi/4} \\log (1 + \\tan x) \\, dx\\).",
+   "solution": "This is the standard king-property integral. Let \\(I = \\int_{0}^{\\pi/4}\\log(1 + \\tan x)\\,dx\\). Using \\(\\int_{0}^{p}f(x)\\,dx = \\int_{0}^{p}f(p - x)\\,dx\\) with \\(p = \\frac{\\pi}{4}\\), \\(I = \\int_{0}^{\\pi/4}\\log\\left(1 + \\tan\\left(\\frac{\\pi}{4} - x\\right)\\right)dx\\). Now simplify the new integrand: \\(1 + \\tan\\left(\\frac{\\pi}{4} - x\\right) = 1 + \\frac{1 - \\tan x}{1 + \\tan x} = \\frac{(1 + \\tan x) + (1 - \\tan x)}{1 + \\tan x} = \\frac{2}{1 + \\tan x}\\). Hence \\(I = \\int_{0}^{\\pi/4}\\log\\frac{2}{1 + \\tan x}\\,dx = \\int_{0}^{\\pi/4}\\log 2\\,dx - \\int_{0}^{\\pi/4}\\log(1 + \\tan x)\\,dx = \\frac{\\pi}{4}\\log 2 - I\\). Adding \\(I\\) to both sides, \\(2I = \\frac{\\pi}{4}\\log 2\\), so \\(I = \\frac{\\pi}{8}\\log 2\\)."
+  },
+  {
+   "hash": "20816ceeccf5de42e787ca1ee7861c3cfbd6187839edb71e41144e6e7632b05c",
+   "ref": "Q26b",
+   "questionNumber": "26 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Substitution",
+   "stem": "Find \\(\\int \\frac{dx}{\\sqrt{\\sin^3 x \\cos (x - \\alpha)}}\\).",
+   "solution": "The trick is to expand the cosine and then pull \\(\\sin^{4}x\\) out of the radical. Since \\(\\cos(x - \\alpha) = \\cos x\\cos\\alpha + \\sin x\\sin\\alpha\\), we have \\(\\sin^{3}x\\cos(x - \\alpha) = \\sin^{3}x(\\cos x\\cos\\alpha + \\sin x\\sin\\alpha) = \\sin^{4}x\\left(\\cot x\\cos\\alpha + \\sin\\alpha\\right)\\). Taking the square root, \\(\\sqrt{\\sin^{3}x\\cos(x - \\alpha)} = \\sin^{2}x\\sqrt{\\sin\\alpha + \\cos\\alpha\\cot x}\\), so the integral becomes \\(I = \\int\\frac{\\operatorname{cosec}^{2}x}{\\sqrt{\\sin\\alpha + \\cos\\alpha\\cot x}}\\,dx\\). Now substitute \\(t = \\sin\\alpha + \\cos\\alpha\\cot x\\), treating \\(\\alpha\\) as a constant; then \\(dt = -\\cos\\alpha\\operatorname{cosec}^{2}x\\,dx\\), i.e. \\(\\operatorname{cosec}^{2}x\\,dx = -\\frac{dt}{\\cos\\alpha}\\). Hence \\(I = -\\frac{1}{\\cos\\alpha}\\int t^{-1/2}\\,dt = -\\frac{2\\sqrt{t}}{\\cos\\alpha} + c\\), that is \\(I = -\\frac{2}{\\cos\\alpha}\\sqrt{\\sin\\alpha + \\cos\\alpha\\cot x} + c\\). Differentiating this answer reproduces the original integrand, which confirms it."
+  },
+  {
+   "hash": "c430d7d7ab9327ffc3505b9d9e963d974fe777cba7f70a4c506908e3eb5d142e",
+   "ref": "Q27",
+   "questionNumber": "27",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Parts",
+   "stem": "Find \\(\\int e^{\\cot^{-1} x}\\left(\\frac{1 - x + x^2}{1 + x^2}\\right) dx\\).",
+   "solution": "Substitute \\(t = \\cot^{-1}x\\), so that \\(x = \\cot t\\) and \\(\\frac{dx}{1 + x^{2}} = -dt\\). Writing the integrand as \\(e^{\\cot^{-1}x}\\,(1 - x + x^{2})\\cdot\\frac{dx}{1 + x^{2}}\\), the integral becomes \\(-\\int e^{t}\\left(1 - \\cot t + \\cot^{2}t\\right)dt\\). Now use \\(1 + \\cot^{2}t = \\operatorname{cosec}^{2}t\\), so the bracket is \\(\\operatorname{cosec}^{2}t - \\cot t\\) and the integral is \\(-\\int e^{t}\\left(\\operatorname{cosec}^{2}t - \\cot t\\right)dt = \\int e^{t}\\left(\\cot t - \\operatorname{cosec}^{2}t\\right)dt\\). This is exactly the pattern \\(\\int e^{t}\\{f(t) + f'(t)\\}\\,dt = e^{t}f(t) + c\\) with \\(f(t) = \\cot t\\), since \\(f'(t) = -\\operatorname{cosec}^{2}t\\). Hence the value is \\(e^{t}\\cot t + c\\), and restoring \\(t = \\cot^{-1}x\\) with \\(\\cot t = x\\) gives \\(x\\,e^{\\cot^{-1}x} + c\\)."
+  },
+  {
+   "hash": "478ee4b65ad31cfcfbbc84f0c0cd719c5ad274aaafaa2ab3a79ecf18b2b82c23",
+   "ref": "Q28",
+   "questionNumber": "28",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals by Substitution",
+   "stem": "Evaluate \\(\\int\\limits_{\\log \\sqrt{2}}^{\\log \\sqrt{3}} \\frac{1}{(e^x + e^{-x})(e^x - e^{-x})} \\, dx\\)",
+   "solution": "Multiply out the denominator: \\((e^{x} + e^{-x})(e^{x} - e^{-x}) = e^{2x} - e^{-2x}\\). Multiplying numerator and denominator by \\(e^{2x}\\) turns the integral into \\(I = \\int_{\\log\\sqrt{2}}^{\\log\\sqrt{3}}\\frac{e^{2x}}{(e^{2x})^{2} - 1}\\,dx\\), which is now set up for a substitution. Put \\(t = e^{2x}\\), so \\(dt = 2e^{2x}dx\\), i.e. \\(e^{2x}dx = \\frac{dt}{2}\\). The limits transform too: at \\(x = \\log\\sqrt{2}\\), \\(t = e^{2\\log\\sqrt{2}} = (\\sqrt{2})^{2} = 2\\), and at \\(x = \\log\\sqrt{3}\\), \\(t = 3\\). So \\(I = \\frac{1}{2}\\int_{2}^{3}\\frac{dt}{t^{2} - 1} = \\frac{1}{2}\\cdot\\frac{1}{2}\\left[\\log\\left|\\frac{t - 1}{t + 1}\\right|\\right]_{2}^{3} = \\frac{1}{4}\\left[\\log\\frac{2}{4} - \\log\\frac{1}{3}\\right]\\). Finally \\(\\log\\frac{1}{2} - \\log\\frac{1}{3} = \\log\\frac{3}{2}\\), so \\(I = \\frac{1}{4}\\log\\frac{3}{2}\\)."
+  },
+  {
+   "hash": "a3a827848829ecc83f961e092d566f2cbc51af4674fec8d3fac55421a074f48c",
+   "ref": "Q29a",
+   "questionNumber": "29 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Find the general solution of the differential equation :\n\\((xy - x^2) \\, dy = y^2 \\, dx\\).",
+   "solution": "Rearranged, the equation is \\(\\frac{dy}{dx} = \\frac{y^{2}}{xy - x^{2}}\\). Dividing numerator and denominator by \\(x^{2}\\) shows it is homogeneous of degree zero: \\(\\frac{dy}{dx} = \\frac{(y/x)^{2}}{(y/x) - 1}\\). Substitute \\(y = ux\\), so that \\(\\frac{dy}{dx} = u + x\\frac{du}{dx}\\), and the equation becomes \\(u + x\\frac{du}{dx} = \\frac{u^{2}}{u - 1}\\). Hence \\(x\\frac{du}{dx} = \\frac{u^{2}}{u - 1} - u = \\frac{u^{2} - u(u - 1)}{u - 1} = \\frac{u}{u - 1}\\). Separating the variables gives \\(\\frac{u - 1}{u}\\,du = \\frac{dx}{x}\\), i.e. \\(\\int\\left(1 - \\frac{1}{u}\\right)du = \\int\\frac{dx}{x}\\), which integrates to \\(u - \\log|u| = \\log|x| + c\\). Restoring \\(u = \\frac{y}{x}\\), the general solution is \\(\\frac{y}{x} - \\log\\left|\\frac{y}{x}\\right| = \\log|x| + c\\). Splitting the logarithm, \\(\\log\\left|\\frac{y}{x}\\right| = \\log|y| - \\log|x|\\), so the \\(\\log|x|\\) terms cancel and this tidies to \\(\\frac{y}{x} - \\log|y| = c\\)."
+  },
+  {
+   "hash": "f1decc13a94df6c8b02a83731d5480e9a92d80f81d9bacc097a49b1031ac81e1",
+   "ref": "Q29b",
+   "questionNumber": "29 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "Find the general solution of the differential equation :\n\\((x^2 + 1)\\frac{dy}{dx} + 2xy = \\sqrt{x^2 + 4}\\)",
+   "solution": "Divide throughout by \\(x^{2} + 1\\) to reach the standard linear form \\(\\frac{dy}{dx} + \\frac{2x}{1 + x^{2}}y = \\frac{\\sqrt{x^{2} + 4}}{1 + x^{2}}\\), so \\(P(x) = \\frac{2x}{1 + x^{2}}\\). The integrating factor is \\(e^{\\int\\frac{2x}{1 + x^{2}}dx} = e^{\\log(1 + x^{2})} = 1 + x^{2}\\), no modulus being needed since \\(1 + x^{2} > 0\\) always. The solution is then \\(y\\,(1 + x^{2}) = \\int\\frac{\\sqrt{x^{2} + 4}}{1 + x^{2}}\\cdot(1 + x^{2})\\,dx + c = \\int\\sqrt{x^{2} + 4}\\,dx + c\\), the factor \\(1 + x^{2}\\) cancelling neatly. Using the standard result \\(\\int\\sqrt{x^{2} + a^{2}}\\,dx = \\frac{x}{2}\\sqrt{x^{2} + a^{2}} + \\frac{a^{2}}{2}\\log\\left|x + \\sqrt{x^{2} + a^{2}}\\right|\\) with \\(a = 2\\), so that \\(\\frac{a^{2}}{2} = 2\\), the general solution is \\(y\\,(1 + x^{2}) = \\frac{x\\sqrt{x^{2} + 4}}{2} + 2\\log\\left|x + \\sqrt{x^{2} + 4}\\right| + c\\)."
+  },
+  {
+   "hash": "4876c87411bb5670cc80ec723da2ba101d800940ece65c2db575ec9fd4d79d0b",
+   "ref": "Q30a",
+   "questionNumber": "30 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "Two balls are drawn at random one by one with replacement from an urn containing equal number of red balls and green balls. Find the probability distribution of number of red balls. Also, find the mean of the random variable.",
+   "solution": "Since the urn contains equal numbers of red and green balls, a single draw gives a red ball with probability \\(\\frac{1}{2}\\), whatever the actual number of balls is. Drawing with replacement means the second draw has the same probability and is independent of the first. Let \\(X\\) be the number of red balls obtained in the two draws, so \\(X\\) takes the values 0, 1 and 2. Then \\(P(X = 0) = \\frac{1}{2}\\times\\frac{1}{2} = \\frac{1}{4}\\) (green, green); \\(P(X = 1) = 2\\times\\frac{1}{2}\\times\\frac{1}{2} = \\frac{1}{2}\\), the factor 2 counting the two orders red-then-green and green-then-red; and \\(P(X = 2) = \\frac{1}{2}\\times\\frac{1}{2} = \\frac{1}{4}\\) (red, red). These probabilities sum to \\(\\frac{1}{4} + \\frac{1}{2} + \\frac{1}{4} = 1\\), as a distribution must. The mean is \\(\\sum x_{i}p_{i} = 0\\times\\frac{1}{4} + 1\\times\\frac{1}{2} + 2\\times\\frac{1}{4} = 0 + \\frac{1}{2} + \\frac{1}{2} = 1\\). This agrees with the binomial mean \\(np = 2\\times\\frac{1}{2} = 1\\), since \\(X\\) here is binomial with \\(n = 2\\) and \\(p = \\frac{1}{2}\\)."
+  },
+  {
+   "hash": "ff0e46995d1b58643612349619ca1ccd3b3a1e53075326113649e521d9e75af9",
+   "ref": "Q30b",
+   "questionNumber": "30 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Independent Events",
+   "stem": "A and B throw a die alternately till one of them gets a '6' and wins the game. Find their respective probabilities of wining, if A starts the game first.",
+   "solution": "On any single throw, \\(P(\\text{six}) = \\frac{1}{6}\\) and \\(P(\\text{not a six}) = \\frac{5}{6}\\), and successive throws are independent. A starts, so A wins if he throws a six on his first turn, or on his second turn (which requires his own first throw and B's first throw to have failed), or on his third turn, and so on. Each extra round costs two failed throws, contributing a factor \\(\\left(\\frac{5}{6}\\right)^{2}\\). Hence \\(P(A\\text{ wins}) = \\frac{1}{6} + \\left(\\frac{5}{6}\\right)^{2}\\frac{1}{6} + \\left(\\frac{5}{6}\\right)^{4}\\frac{1}{6} + \\cdots\\), an infinite geometric series with first term \\(\\frac{1}{6}\\) and common ratio \\(\\left(\\frac{5}{6}\\right)^{2} = \\frac{25}{36}\\), which is less than 1 so the series converges. Its sum is \\(\\frac{1/6}{1 - \\frac{25}{36}} = \\frac{1/6}{11/36} = \\frac{36}{66} = \\frac{6}{11}\\). The game ends with certainty, since the probability that nobody ever throws a six is zero, so \\(P(B\\text{ wins}) = 1 - \\frac{6}{11} = \\frac{5}{11}\\). A's advantage in going first shows up as the larger share, \\(\\frac{6}{11}\\) against \\(\\frac{5}{11}\\)."
+  },
+  {
+   "hash": "ea18dc37b7afc38c7e30e155beaa7e5b296b87a4f8ff75bb01820379e19f68fd",
+   "ref": "Q31",
+   "questionNumber": "31",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following linear programming problem graphically :\nMinimize : \\(Z = 5x + 10y\\)\nsubject to constraints : \\(x + 2y \\le 120\\), \\(x + y \\ge 60\\), \\(x - 2y \\ge 0\\),\n\\(x \\ge 0\\), \\(y \\ge 0\\)",
+   "solution": "Draw the boundary lines \\(x + 2y = 120\\), \\(x + y = 60\\) and \\(x - 2y = 0\\) and shade the region satisfying all five constraints in the first quadrant. The feasible region is a bounded quadrilateral, and its corner points come from intersecting the boundaries in pairs. Solving \\(x + y = 60\\) with \\(x - 2y = 0\\) (so \\(x = 2y\\)) gives \\(3y = 60\\), i.e. \\(A(40, 20)\\). Solving \\(x + 2y = 120\\) with \\(x - 2y = 0\\) gives \\(4y = 120\\), i.e. \\(B(60, 30)\\). Solving \\(x + 2y = 120\\) with \\(y = 0\\) gives \\(C(120, 0)\\), and \\(x + y = 60\\) with \\(y = 0\\) gives \\(D(60, 0)\\). Each of these satisfies the remaining constraints, so all four are genuine corner points. Now evaluate \\(Z = 5x + 10y\\) at each: at \\(A(40, 20)\\), \\(Z = 200 + 200 = 400\\); at \\(B(60, 30)\\), \\(Z = 300 + 300 = 600\\); at \\(C(120, 0)\\), \\(Z = 600 + 0 = 600\\); at \\(D(60, 0)\\), \\(Z = 300 + 0 = 300\\). Because the feasible region is bounded, the minimum is certainly attained at a corner point. Hence the minimum value is \\(Z = 300\\), occurring at \\(x = 60\\), \\(y = 0\\)."
+  },
+  {
+   "hash": "f0c3968144db0ab177f2abcece7c5990758093920483df79ecd75390e05ca196",
+   "ref": "Q32a",
+   "questionNumber": "32 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Solving System of Linear Equations",
+   "stem": "If \\(A = \\begin{bmatrix} -3 & -2 & -4 \\\\ 2 & 1 & 2 \\\\ 2 & 1 & 3 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 1 & 2 & 0 \\\\ -2 & -1 & -2 \\\\ 0 & -1 & 1 \\end{bmatrix}\\), then find AB and use it to solve the following system of equations :\n\\(x - 2y = 3\\)\n\\(2x - y - z = 2\\)\n\\(-2y + z = 3\\)",
+   "solution": "First compute \\(AB\\), each entry being a row of \\(A\\) dotted with a column of \\(B\\). For instance the \\((1,1)\\) entry is \\((-3)(1) + (-2)(-2) + (-4)(0) = -3 + 4 + 0 = 1\\), the \\((1,2)\\) entry is \\((-3)(2) + (-2)(-1) + (-4)(-1) = -6 + 2 + 4 = 0\\), and the \\((2,2)\\) entry is \\((2)(2) + (1)(-1) + (2)(-1) = 4 - 1 - 2 = 1\\). Carrying this out for all nine entries gives \\(AB = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} = I\\), so \\(A\\) and \\(B\\) are inverses of each other and in particular \\(B^{-1} = A\\). Now look at the system. Its coefficient matrix is \\(\\begin{bmatrix} 1 & -2 & 0 \\\\ 2 & -1 & -1 \\\\ 0 & -2 & 1 \\end{bmatrix}\\), which is precisely \\(B^{T}\\). So the system is \\(B^{T}X = C\\), where \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\) and \\(C = \\begin{bmatrix} 3 \\\\ 2 \\\\ 3 \\end{bmatrix}\\). Using \\((B^{T})^{-1} = (B^{-1})^{T} = A^{T}\\), the solution is \\(X = A^{T}C\\). Since \\(A^{T} = \\begin{bmatrix} -3 & 2 & 2 \\\\ -2 & 1 & 1 \\\\ -4 & 2 & 3 \\end{bmatrix}\\), we get \\(X = \\begin{bmatrix} -3 & 2 & 2 \\\\ -2 & 1 & 1 \\\\ -4 & 2 & 3 \\end{bmatrix}\\begin{bmatrix} 3 \\\\ 2 \\\\ 3 \\end{bmatrix} = \\begin{bmatrix} -9 + 4 + 6 \\\\ -6 + 2 + 3 \\\\ -12 + 4 + 9 \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ -1 \\\\ 1 \\end{bmatrix}\\). Hence \\(x = 1\\), \\(y = -1\\), \\(z = 1\\). Substituting back confirms all three equations: \\(1 - 2(-1) = 3\\), \\(2(1) - (-1) - 1 = 2\\), and \\(-2(-1) + 1 = 3\\)."
+  },
+  {
+   "hash": "af60e812619627b791a7deefaba1217453708320f27ab152a4e271c9e3af4285",
+   "ref": "Q32b",
+   "questionNumber": "32 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "If \\(f(\\alpha) = \\begin{bmatrix} \\cos \\alpha & -\\sin \\alpha & 0 \\\\ \\sin \\alpha & \\cos \\alpha & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\), prove that \\(f(\\alpha) \\cdot f(-\\beta) = f(\\alpha - \\beta)\\)",
+   "solution": "First write down \\(f(-\\beta)\\) by replacing \\(\\alpha\\) with \\(-\\beta\\) and using \\(\\cos(-\\beta) = \\cos\\beta\\) and \\(\\sin(-\\beta) = -\\sin\\beta\\): \\(f(-\\beta) = \\begin{bmatrix} \\cos\\beta & \\sin\\beta & 0 \\\\ -\\sin\\beta & \\cos\\beta & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\). Multiplying, \\(f(\\alpha)\\cdot f(-\\beta) = \\begin{bmatrix} \\cos\\alpha & -\\sin\\alpha & 0 \\\\ \\sin\\alpha & \\cos\\alpha & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\begin{bmatrix} \\cos\\beta & \\sin\\beta & 0 \\\\ -\\sin\\beta & \\cos\\beta & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} = \\begin{bmatrix} \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta & \\cos\\alpha\\sin\\beta - \\sin\\alpha\\cos\\beta & 0 \\\\ \\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta & \\sin\\alpha\\sin\\beta + \\cos\\alpha\\cos\\beta & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\). The third row and third column come out as \\(0, 0, 1\\) because the only non-zero entry in that row and column of each factor is the 1 in the corner. The compound-angle formulas now identify every remaining entry: \\(\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta = \\cos(\\alpha - \\beta)\\), \\(\\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta = \\sin(\\alpha - \\beta)\\), and \\(\\cos\\alpha\\sin\\beta - \\sin\\alpha\\cos\\beta = -\\sin(\\alpha - \\beta)\\). Therefore \\(f(\\alpha)\\cdot f(-\\beta) = \\begin{bmatrix} \\cos(\\alpha - \\beta) & -\\sin(\\alpha - \\beta) & 0 \\\\ \\sin(\\alpha - \\beta) & \\cos(\\alpha - \\beta) & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} = f(\\alpha - \\beta)\\), which is what had to be proved. Geometrically this just says that rotating by \\(-\\beta\\) and then by \\(\\alpha\\) about the z-axis is a single rotation by \\(\\alpha - \\beta\\)."
+  },
+  {
+   "hash": "10053cbc0789f07c1aff318e71e06eff0d187722e466ad268db58164f1577557",
+   "ref": "Q33a",
+   "questionNumber": "33 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the equations of the diagonals of the parallelogram PQRS whose vertices are P(4, 2, \\(-6\\)), Q(5, \\(-3\\), 1), R(12, 4, 5) and S(11, 9, \\(-2\\)). Use these equations to find the point of intersection of diagonals.",
+   "solution": "In the parallelogram PQRS the vertices are taken in order, so the diagonals join opposite vertices: they are PR and QS. For PR the direction ratios are \\(R - P = (12 - 4,\\; 4 - 2,\\; 5 + 6) = (8, 2, 11)\\), so the diagonal PR is \\(\\frac{x - 4}{8} = \\frac{y - 2}{2} = \\frac{z + 6}{11}\\). For QS the direction ratios are \\(S - Q = (11 - 5,\\; 9 + 3,\\; -2 - 1) = (6, 12, -3)\\), so the diagonal QS is \\(\\frac{x - 5}{6} = \\frac{y + 3}{12} = \\frac{z - 1}{-3}\\). To find where they meet, take a general point on each: \\((8k + 4,\\; 2k + 2,\\; 11k - 6)\\) on PR and \\((6t + 5,\\; 12t - 3,\\; -3t + 1)\\) on QS. Equating the first two coordinates gives \\(8k + 4 = 6t + 5\\) and \\(2k + 2 = 12t - 3\\), that is \\(8k - 6t = 1\\) and \\(2k - 12t = -5\\). Multiplying the second equation by 4 gives \\(8k - 48t = -20\\); subtracting this from the first equation gives \\(42t = 21\\), so \\(t = \\frac{1}{2}\\), and then \\(8k = 1 + 3 = 4\\), so \\(k = \\frac{1}{2}\\). Substituting \\(k = \\frac{1}{2}\\) into PR gives the point \\(\\left(8,\\; 3,\\; -\\frac{1}{2}\\right)\\), and substituting \\(t = \\frac{1}{2}\\) into QS gives the same point; the third coordinates agree as well, confirming that the two lines really do intersect. So the diagonals meet at \\(\\left(8, 3, -\\frac{1}{2}\\right)\\), which is, as expected for a parallelogram, the common mid-point of both diagonals."
+  },
+  {
+   "hash": "68c5f01734e6fbbbe834a0067b295e424cc652639f1ec0a9c9d2a494f6ecb241",
+   "ref": "Q33b",
+   "questionNumber": "33 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "A line \\(l\\) passes through point (\\(-1\\), 3, \\(-2\\)) and is perpendicular to both the lines \\(\\frac{x}{1} = \\frac{y}{2} = \\frac{z}{3}\\) and \\(\\frac{x + 2}{-3} = \\frac{y - 1}{2} = \\frac{z + 1}{5}\\). Find the vector equation of the line \\(l\\). Hence, obtain its distance from origin.",
+   "solution": "A line perpendicular to two given lines has direction along the cross product of their direction vectors. The given directions are \\((1, 2, 3)\\) and \\((-3, 2, 5)\\), and their cross product is \\((2\\cdot 5 - 3\\cdot 2)\\hat{i} - (1\\cdot 5 - 3\\cdot(-3))\\hat{j} + (1\\cdot 2 - 2\\cdot(-3))\\hat{k} = 4\\hat{i} - 14\\hat{j} + 8\\hat{k}\\). Dividing by the common factor 2 gives the simpler direction \\(2\\hat{i} - 7\\hat{j} + 4\\hat{k}\\). Since \\(l\\) passes through \\((-1, 3, -2)\\), its vector equation is \\(\\vec{r} = -\\hat{i} + 3\\hat{j} - 2\\hat{k} + \\lambda\\left(2\\hat{i} - 7\\hat{j} + 4\\hat{k}\\right)\\), equivalently \\(\\frac{x + 1}{2} = \\frac{y - 3}{-7} = \\frac{z + 2}{4}\\) in Cartesian form. For the distance of this line from the origin use \\(d = \\frac{\\left|\\vec{a}\\times\\vec{b}\\right|}{\\left|\\vec{b}\\right|}\\), where \\(\\vec{a} = -\\hat{i} + 3\\hat{j} - 2\\hat{k}\\) is the position vector of a point on the line and \\(\\vec{b} = 2\\hat{i} - 7\\hat{j} + 4\\hat{k}\\) is its direction. Here \\(\\vec{a}\\times\\vec{b} = \\left(3\\cdot 4 - (-2)(-7)\\right)\\hat{i} - \\left((-1)\\cdot 4 - (-2)\\cdot 2\\right)\\hat{j} + \\left((-1)(-7) - 3\\cdot 2\\right)\\hat{k} = (12 - 14)\\hat{i} - (-4 + 4)\\hat{j} + (7 - 6)\\hat{k} = -2\\hat{i} + \\hat{k}\\). So \\(\\left|\\vec{a}\\times\\vec{b}\\right| = \\sqrt{4 + 0 + 1} = \\sqrt{5}\\) and \\(\\left|\\vec{b}\\right| = \\sqrt{4 + 49 + 16} = \\sqrt{69}\\). The required distance is therefore \\(\\frac{\\sqrt{5}}{\\sqrt{69}} = \\sqrt{\\frac{5}{69}}\\) units."
+  },
+  {
+   "hash": "a662649aa8ebb1a7b68e87dae31a1c84c24323826768a6ab958504a83783254d",
+   "ref": "Q34",
+   "questionNumber": "34",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "Using integration, find the area of region bounded by line \\(y = \\sqrt{3}x\\), the curve \\(y = \\sqrt{4 - x^2}\\) and y-axis in first quadrant.",
+   "solution": "The curve \\(y = \\sqrt{4 - x^{2}}\\) is the upper half of the circle \\(x^{2} + y^{2} = 4\\), of radius 2. Find where the line meets it: \\(\\sqrt{3}x = \\sqrt{4 - x^{2}}\\) gives \\(3x^{2} = 4 - x^{2}\\), so \\(4x^{2} = 4\\) and \\(x^{2} = 1\\); in the first quadrant \\(x = 1\\), and then \\(y = \\sqrt{3}\\), so the curves cross at \\(A(1, \\sqrt{3})\\). The region asked for is bounded on the left by the y-axis, above by the circular arc and below by the line, so for \\(0 \\le x \\le 1\\) the circle is the upper boundary and the line the lower one. Hence the area is \\(\\int_{0}^{1}\\sqrt{4 - x^{2}}\\,dx - \\int_{0}^{1}\\sqrt{3}\\,x\\,dx\\). Using \\(\\int\\sqrt{a^{2} - x^{2}}\\,dx = \\frac{x\\sqrt{a^{2} - x^{2}}}{2} + \\frac{a^{2}}{2}\\sin^{-1}\\frac{x}{a}\\) with \\(a = 2\\), the first integral is \\(\\left[\\frac{x\\sqrt{4 - x^{2}}}{2} + 2\\sin^{-1}\\frac{x}{2}\\right]_{0}^{1} = \\frac{\\sqrt{3}}{2} + 2\\sin^{-1}\\frac{1}{2} = \\frac{\\sqrt{3}}{2} + 2\\cdot\\frac{\\pi}{6}\\). The second integral is \\(\\left[\\frac{\\sqrt{3}}{2}x^{2}\\right]_{0}^{1} = \\frac{\\sqrt{3}}{2}\\). Subtracting, the two \\(\\frac{\\sqrt{3}}{2}\\) terms cancel exactly, leaving the area as \\(2\\times\\frac{\\pi}{6} = \\frac{\\pi}{3}\\) square units."
+  },
+  {
+   "hash": "dd23cfaf48ad9c71649e4dc515527754266881f979a5127f2995b620ac92838e",
+   "ref": "Q35",
+   "questionNumber": "35",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "A function \\(f : [-4, 4] \\to [0, 4]\\) is given by \\(f(x) = \\sqrt{16 - x^2}\\). Show that f is an onto function but not a one-one function. Further, find all possible values of 'a' for which \\(f(a) = \\sqrt{7}\\).",
+   "solution": "Onto: take any \\(y\\) in the codomain \\([0, 4]\\) and look for a pre-image. Solving \\(y = \\sqrt{16 - x^{2}}\\) and squaring gives \\(y^{2} = 16 - x^{2}\\), so \\(x^{2} = 16 - y^{2}\\) and \\(x = \\pm\\sqrt{16 - y^{2}}\\). For \\(0 \\le y \\le 4\\) the quantity \\(16 - y^{2}\\) lies between 0 and 16, so \\(x\\) is a real number with \\(|x| \\le 4\\), which means \\(x\\) belongs to the domain \\([-4, 4]\\). Since every element of the codomain has a pre-image in the domain, the range equals the codomain and \\(f\\) is onto. Not one-one: the square makes the function even, so \\(f(-x) = f(x)\\) for every \\(x\\). Concretely, \\(f(-1) = \\sqrt{16 - 1} = \\sqrt{15}\\) and \\(f(1) = \\sqrt{16 - 1} = \\sqrt{15}\\), so \\(f(-1) = f(1)\\) although \\(-1 \\ne 1\\), and both \\(-1\\) and \\(1\\) lie in \\([-4, 4]\\). Two distinct elements of the domain therefore share an image, so \\(f\\) is not one-one. Finally, \\(f(a) = \\sqrt{7}\\) means \\(\\sqrt{16 - a^{2}} = \\sqrt{7}\\); squaring gives \\(16 - a^{2} = 7\\), so \\(a^{2} = 9\\) and \\(a = \\pm 3\\). Both \\(3\\) and \\(-3\\) lie in the domain \\([-4, 4]\\), so both are admissible, and this pair of values is itself an illustration of \\(f\\) failing to be one-one."
+  },
+  {
+   "hash": "9738c53987198620a5bc5b00974a285d4a8c72cdce45d25a507a0803c480c5af",
+   "ref": "Q36i",
+   "questionNumber": "36 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "If the radius of cylinder is r cm and height is h cm, then write the volume V of cylinder in terms of radius r.",
+   "context": "Engine displacement is the measure of the cylinder volume swept by all the pistons of a piston engine. The piston moves inside the cylinder bore\n\nThe cylinder bore in the form of circular cylinder open at the top is to be made from a metal sheet of area \\(75\\pi\\) cm\\(^2\\).\n\nBased on the above information, answer the following questions :",
+   "figure": "DECORATIVE — page idx 18 prints a three-panel photograph strip (a four-cylinder engine cycle, a machined engine block, a labelled cylinder-head cross-section). It carries no measurement; the printed sheet area \\(75\\pi\\) cm^2 is the only datum any sub-part needs. Not attached.",
+   "solution": "The cylinder is open at the top, so the metal sheet has to cover only the circular base and the curved surface — there is no second circular end. That gives \\(\\pi r^{2} + 2\\pi rh = 75\\pi\\). Cancelling \\(\\pi\\) and solving for the height, \\(h = \\frac{75 - r^{2}}{2r}\\). Substituting into \\(V = \\pi r^{2}h\\) eliminates \\(h\\): \\(V = \\pi r^{2}\\cdot\\frac{75 - r^{2}}{2r} = \\frac{\\pi}{2}\\left(75r - r^{3}\\right)\\)."
+  },
+  {
+   "hash": "51912bb444a0dcf4ff2d3a0feb1f74d9f7179c7bbc5a01bc55f25000b1ac5df1",
+   "ref": "Q36ii",
+   "questionNumber": "36 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Find \\(\\frac{dV}{dr}\\).",
+   "context": "Engine displacement is the measure of the cylinder volume swept by all the pistons of a piston engine. The piston moves inside the cylinder bore\n\nThe cylinder bore in the form of circular cylinder open at the top is to be made from a metal sheet of area \\(75\\pi\\) cm\\(^2\\).\n\nBased on the above information, answer the following questions :",
+   "solution": "From part (i), \\(V = \\frac{\\pi}{2}\\left(75r - r^{3}\\right)\\), which is now a function of \\(r\\) alone. Differentiating term by term with respect to \\(r\\), and treating \\(\\frac{\\pi}{2}\\) as a constant, \\(\\frac{dV}{dr} = \\frac{\\pi}{2}\\left(75 - 3r^{2}\\right)\\)."
+  },
+  {
+   "hash": "a783fe67f5b2eff9a04ccac38105601db2e8a525c6d963740d5923ad65c3dc77",
+   "ref": "Q36iiia",
+   "questionNumber": "36 (iii)(a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Find the radius of cylinder when its volume is maximum.",
+   "context": "Engine displacement is the measure of the cylinder volume swept by all the pistons of a piston engine. The piston moves inside the cylinder bore\n\nThe cylinder bore in the form of circular cylinder open at the top is to be made from a metal sheet of area \\(75\\pi\\) cm\\(^2\\).\n\nBased on the above information, answer the following questions :",
+   "solution": "At a maximum the first derivative vanishes, so set \\(\\frac{dV}{dr} = \\frac{\\pi}{2}\\left(75 - 3r^{2}\\right) = 0\\). This gives \\(3r^{2} = 75\\), so \\(r^{2} = 25\\) and \\(r = \\pm 5\\); the negative value is rejected because a radius must be positive, leaving \\(r = 5\\). To confirm that this is a maximum rather than a minimum, differentiate again: \\(\\frac{d^{2}V}{dr^{2}} = \\frac{\\pi}{2}(-6r) = -3\\pi r\\), and at \\(r = 5\\) this equals \\(-15\\pi\\), which is negative. Since the second derivative is negative there, the volume is indeed maximum when the radius is 5 cm."
+  },
+  {
+   "hash": "414d61d59c1bdff54a934654c6e434e4fa48e432cbfd5945858c77aaccfb3577",
+   "ref": "Q36iiib",
+   "questionNumber": "36 (iii)(b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "For maximum volume, h > r. State true or false and justify.",
+   "context": "Engine displacement is the measure of the cylinder volume swept by all the pistons of a piston engine. The piston moves inside the cylinder bore\n\nThe cylinder bore in the form of circular cylinder open at the top is to be made from a metal sheet of area \\(75\\pi\\) cm\\(^2\\).\n\nBased on the above information, answer the following questions :",
+   "solution": "The statement is FALSE, and the justification is to find both dimensions at the maximum. Setting \\(\\frac{dV}{dr} = \\frac{\\pi}{2}\\left(75 - 3r^{2}\\right) = 0\\) gives \\(r^{2} = 25\\), so \\(r = 5\\) (taking the positive root, as a radius must be). This is a maximum because \\(\\frac{d^{2}V}{dr^{2}} = \\frac{\\pi}{2}(-6r) = -15\\pi < 0\\) at \\(r = 5\\). The corresponding height follows from \\(h = \\frac{75 - r^{2}}{2r} = \\frac{75 - 25}{2(5)} = \\frac{50}{10} = 5\\). So at maximum volume \\(h = 5\\) cm and \\(r = 5\\) cm, i.e. \\(h = r\\), not \\(h > r\\). The claim is therefore false."
+  },
+  {
+   "hash": "9a61759bd501252d1ce4548e626dfa7ceb22d73521afd5f68c2eb41f4a8f3017",
+   "ref": "Q37i",
+   "questionNumber": "37 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "Find \\(P(L/C)\\)",
+   "context": "Recent studies suggest that roughly 12% of the world population is left handed.\n\nDepending upon the parents, the chances of having a left handed child are as follows :\n\nA : When both father and mother are left handed :\nChances of left handed child is 24%.\n\nB : When father is right handed and mother is left handed :\nChances of left handed child is 22%.\n\nC : When father is left handed and mother is right handed :\nChances of left handed child is 17%.\n\nD : When both father and mother are right handed :\nChances of left handed child is 9%.\n\nAssuming that \\(P(A) = P(B) = P(C) = P(D) = \\frac{1}{4}\\) and L denotes the event that child is left handed.\n\nBased on the above information, answer the following questions :",
+   "figure": "DECORATIVE — page idx 20 prints an infographic ('ROUGHLY 12% OF THE WORLD IS LEFT HANDED') repeating the same four percentages 24 / 22 / 17 / 9 that the passage states in words. Not attached.",
+   "solution": "The notation \\(P(L/C)\\) asks for the probability that the child is left handed given that case C holds, i.e. given that the father is left handed and the mother is right handed. The passage states this chance directly as 17%. Hence \\(P(L/C) = \\frac{17}{100}\\)."
+  },
+  {
+   "hash": "268ffa6a0c7fa83f5a426e8e5d6959c7e08434018a4fbc2f32d7af7928104411",
+   "ref": "Q37ii",
+   "questionNumber": "37 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "Find \\(P(\\overline{L}/A)\\)",
+   "context": "Recent studies suggest that roughly 12% of the world population is left handed.\n\nDepending upon the parents, the chances of having a left handed child are as follows :\n\nA : When both father and mother are left handed :\nChances of left handed child is 24%.\n\nB : When father is right handed and mother is left handed :\nChances of left handed child is 22%.\n\nC : When father is left handed and mother is right handed :\nChances of left handed child is 17%.\n\nD : When both father and mother are right handed :\nChances of left handed child is 9%.\n\nAssuming that \\(P(A) = P(B) = P(C) = P(D) = \\frac{1}{4}\\) and L denotes the event that child is left handed.\n\nBased on the above information, answer the following questions :",
+   "solution": "Case A is that both parents are left handed, for which the passage gives a 24% chance of a left-handed child, i.e. \\(P(L/A) = \\frac{24}{100}\\). The event \\(\\overline{L}\\) is the complement of \\(L\\), and complements behave normally under a fixed conditioning event, so \\(P(\\overline{L}/A) = 1 - P(L/A)\\). Hence \\(P(\\overline{L}/A) = 1 - \\frac{24}{100} = \\frac{76}{100} = \\frac{19}{25}\\)."
+  },
+  {
+   "hash": "4028bcdcf666f69ec4f19ac18e3e0fd987fee78ff091fe095c8d1bb2acc9cf80",
+   "ref": "Q37iiia",
+   "questionNumber": "37 (iii)(a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Bayes' Theorem",
+   "stem": "Find \\(P(A/L)\\)",
+   "context": "Recent studies suggest that roughly 12% of the world population is left handed.\n\nDepending upon the parents, the chances of having a left handed child are as follows :\n\nA : When both father and mother are left handed :\nChances of left handed child is 24%.\n\nB : When father is right handed and mother is left handed :\nChances of left handed child is 22%.\n\nC : When father is left handed and mother is right handed :\nChances of left handed child is 17%.\n\nD : When both father and mother are right handed :\nChances of left handed child is 9%.\n\nAssuming that \\(P(A) = P(B) = P(C) = P(D) = \\frac{1}{4}\\) and L denotes the event that child is left handed.\n\nBased on the above information, answer the following questions :",
+   "solution": "The four cases A, B, C, D are mutually exclusive and exhaustive, each with probability \\(\\frac{1}{4}\\), so Bayes' theorem applies: \\(P(A/L) = \\frac{P(A)P(L/A)}{P(A)P(L/A) + P(B)P(L/B) + P(C)P(L/C) + P(D)P(L/D)}\\). Substituting the given figures, \\(P(A/L) = \\frac{\\frac{1}{4}\\times\\frac{24}{100}}{\\frac{1}{4}\\times\\frac{24}{100} + \\frac{1}{4}\\times\\frac{22}{100} + \\frac{1}{4}\\times\\frac{17}{100} + \\frac{1}{4}\\times\\frac{9}{100}}\\). The common factor \\(\\frac{1}{4}\\times\\frac{1}{100}\\) cancels from numerator and denominator, leaving \\(P(A/L) = \\frac{24}{24 + 22 + 17 + 9} = \\frac{24}{72} = \\frac{1}{3}\\). (The denominator here is \\(P(L) = \\frac{72}{400} = 0.18\\), the overall chance of a left-handed child under these assumptions.)"
+  },
+  {
+   "hash": "28d4e6028e259ce9aee7af6d41b78d95f655b443db47d7287b94e40a343c713d",
+   "ref": "Q37iiib",
+   "questionNumber": "37 (iii)(b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Theorem of Total Probability",
+   "stem": "Find the probability that a randomly selected child is left handed given that exactly one of the parents is left handed.",
+   "context": "Recent studies suggest that roughly 12% of the world population is left handed.\n\nDepending upon the parents, the chances of having a left handed child are as follows :\n\nA : When both father and mother are left handed :\nChances of left handed child is 24%.\n\nB : When father is right handed and mother is left handed :\nChances of left handed child is 22%.\n\nC : When father is left handed and mother is right handed :\nChances of left handed child is 17%.\n\nD : When both father and mother are right handed :\nChances of left handed child is 9%.\n\nAssuming that \\(P(A) = P(B) = P(C) = P(D) = \\frac{1}{4}\\) and L denotes the event that child is left handed.\n\nBased on the above information, answer the following questions :",
+   "solution": "[CBSE marking scheme: the printed solution simply adds the two conditional probabilities, giving \\(P(L/(B \\cup C)) = \\frac{22}{100} + \\frac{17}{100} = \\frac{39}{100}\\). That step is not valid — conditional probabilities taken with respect to two different conditioning events cannot be added — and the result it produces is impossible, because \\(P(L/(B \\cup C))\\) is a weighted average of \\(P(L/B) = 0.22\\) and \\(P(L/C) = 0.17\\) and so must lie between 0.17 and 0.22, whereas 0.39 exceeds both. The scheme's value is exactly twice the correct one, since it omits the division by \\(P(B \\cup C) = \\frac{1}{2}\\). The correct answer is \\(\\frac{39}{200}\\).] \"Exactly one of the parents is left handed\" describes two of the four cases: B, where the father is right handed and the mother left handed, and C, where the father is left handed and the mother right handed. So the conditioning event is \\(B \\cup C\\). These cases are mutually exclusive, so \\(P(B \\cup C) = P(B) + P(C) = \\frac{1}{4} + \\frac{1}{4} = \\frac{1}{2}\\). By the theorem of total probability applied to the two branches, \\(P(L \\cap (B \\cup C)) = P(B)P(L/B) + P(C)P(L/C) = \\frac{1}{4}\\times\\frac{22}{100} + \\frac{1}{4}\\times\\frac{17}{100} = \\frac{22 + 17}{400} = \\frac{39}{400}\\). Hence \\(P\\left(L/(B \\cup C)\\right) = \\frac{P(L \\cap (B \\cup C))}{P(B \\cup C)} = \\frac{39/400}{1/2} = \\frac{39}{200} = 0.195\\). As a check, because \\(P(B) = P(C)\\) the answer is just the ordinary average of the two rates, \\(\\frac{0.22 + 0.17}{2} = 0.195\\), which correctly lies between them."
+  },
+  {
+   "hash": "602b627fa10fdf636645f736f08c2dbb2b89448f9f17d93dc654549839a669d8",
+   "ref": "Q38i",
+   "questionNumber": "38 (i)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "Can the above function be used to estimate number of vehicles in the year 2000 ? Justify.",
+   "context": "The use of electric vehicles will curb air pollution in the long run.\n\nThe use of electric vehicles is increasing every year and estimated electric vehicles in use at any time t is given by the function V :\n\\(V(t) = \\frac{1}{5}t^3 - \\frac{5}{2}t^2 + 25t - 2\\)\nwhere t represents the time and t = 1, 2, 3.... corresponds to year 2001, 2002, 2003, ....... respectively.\n\nBased on the above information, answer the following questions :",
+   "figure": "DECORATIVE — page idx 22 prints a photograph of an electric vehicle being charged. It carries no datum; V(t) is given in the passage. Not attached.",
+   "solution": "No, it cannot. The model sets \\(t = 1\\) for the year 2001, \\(t = 2\\) for 2002 and so on, so the year 2000 corresponds to \\(t = 0\\). Evaluating the function there, \\(V(0) = \\frac{1}{5}(0)^{3} - \\frac{5}{2}(0)^{2} + 25(0) - 2 = -2\\). A number of vehicles in use cannot be negative, so the value the function returns for the year 2000 is meaningless. Hence \\(V(t)\\) cannot be used to estimate the number of vehicles in the year 2000; the model is only valid for \\(t = 1, 2, 3, \\ldots\\), the years from 2001 onwards for which it was defined."
+  },
+  {
+   "hash": "66628080556e5f3a10565ff9afd13dd2ea4a36691962986ad3c8dbc68803b03a",
+   "ref": "Q38ii",
+   "questionNumber": "38 (ii)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "Prove that the function V(t) is an increasing function.",
+   "context": "The use of electric vehicles will curb air pollution in the long run.\n\nThe use of electric vehicles is increasing every year and estimated electric vehicles in use at any time t is given by the function V :\n\\(V(t) = \\frac{1}{5}t^3 - \\frac{5}{2}t^2 + 25t - 2\\)\nwhere t represents the time and t = 1, 2, 3.... corresponds to year 2001, 2002, 2003, ....... respectively.\n\nBased on the above information, answer the following questions :",
+   "solution": "A function is increasing wherever its derivative is positive, so differentiate: \\(V'(t) = \\frac{3}{5}t^{2} - 5t + 25\\). This is a quadratic in \\(t\\), and completing the square shows it never vanishes. Taking out \\(\\frac{3}{5}\\), \\(V'(t) = \\frac{3}{5}\\left[t^{2} - \\frac{25}{3}t + \\frac{125}{3}\\right] = \\frac{3}{5}\\left[\\left(t - \\frac{25}{6}\\right)^{2} - \\frac{625}{36} + \\frac{125}{3}\\right] = \\frac{3}{5}\\left[\\left(t - \\frac{25}{6}\\right)^{2} + \\frac{875}{36}\\right]\\), since \\(-\\frac{625}{36} + \\frac{1500}{36} = \\frac{875}{36}\\). A square is never negative and \\(\\frac{875}{36} > 0\\), so the bracket is strictly positive for every \\(t\\), and hence \\(V'(t) > 0\\) throughout. Equivalently, the discriminant of \\(\\frac{3}{5}t^{2} - 5t + 25\\) is \\((-5)^{2} - 4\\times\\frac{3}{5}\\times 25 = 25 - 60 = -35 < 0\\), and the leading coefficient \\(\\frac{3}{5}\\) is positive, so the quadratic is always positive. Since \\(V'(t) > 0\\) for all \\(t\\), the function \\(V(t)\\) is an increasing function."
+  }
+ ]
+}
