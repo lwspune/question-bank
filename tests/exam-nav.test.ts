@@ -9,6 +9,12 @@
  * The exam-id map is passed IN rather than looked up, because it is public
  * taxonomy that is identical for every visitor — so the server can compute it
  * once, cache it, and embed it in a page that is shared by everyone.
+ *
+ * Since the header's exam pill was removed (2026-08-21) the cookie is written
+ * ONLY by /welcome and /account, both of which require signing in. So "no
+ * cookie" now means "nobody ever told us an exam" — which must resolve to the
+ * neutral indexes, NOT to a silent NDA default that would strand an anonymous
+ * JEE visitor in the NDA bank with no control to change it.
  */
 import { describe, it, expect } from "vitest";
 import { resolveExamNav, readExamSlugFromCookieString } from "@/lib/exam/examNav";
@@ -31,10 +37,8 @@ describe("resolveExamNav", () => {
     expect(resolveExamNav("nda", { nda: null }).bankHref).toBe("/browse");
   });
 
-  it("routes Guides and Notes to the exam subtree when one exists", () => {
-    const nav = resolveExamNav("nda", IDS);
-    expect(nav.guidesHref).toBe("/guide/nda");
-    expect(nav.notesHref).toBe("/notes/nda");
+  it("routes Guides to the exam subtree when one exists", () => {
+    expect(resolveExamNav("nda", IDS).guidesHref).toBe("/guide/nda");
   });
 
   it("falls back to the index for an exam with no guide subtree", () => {
@@ -46,21 +50,39 @@ describe("resolveExamNav", () => {
     expect(resolveExamNav("nda", IDS).boardHref).toBe("/board");
   });
 
-  it("shows Mocks only for exams that have published mocks", () => {
-    expect(resolveExamNav("nda", IDS).showMocks).toBe(true);
-    expect(resolveExamNav("mht-cet", IDS).showMocks).toBe(false);
+  // Notes is the one tab that is NEVER personalised, and that is deliberate:
+  // /notes/<slug> renders "teaching notes are coming soon" for the 10 of 13
+  // exams that have none, so pointing the tab there sends most visitors to a
+  // dead end. The /notes index lists the exams that actually have notes.
+  it("always sends Notes to the cross-exam index, even for an exam WITH notes", () => {
+    expect(resolveExamNav("nda", IDS).notesHref).toBe("/notes");
+    expect(resolveExamNav("cbse-12", IDS).notesHref).toBe("/notes");
+    expect(resolveExamNav(null, IDS).notesHref).toBe("/notes");
   });
 
-  it("falls back to the default exam for an unknown slug", () => {
+  describe("when no exam has been chosen (null)", () => {
+    // Every anonymous visitor is in this state, and they are most of the
+    // traffic. Nav must be neutral rather than quietly NDA.
+    it("routes every tab to its index", () => {
+      const nav = resolveExamNav(null, IDS);
+      expect(nav.bankHref).toBe("/browse");
+      expect(nav.guidesHref).toBe("/guide");
+      expect(nav.notesHref).toBe("/notes");
+      expect(nav.boardHref).toBe("/board");
+    });
+  });
+
+  it("treats an unknown slug as no choice at all", () => {
+    // A retired exam slug left in an old cookie must not resolve to NDA.
     const nav = resolveExamNav("not-an-exam", IDS);
-    expect(nav.slug).toBe("nda");
-    expect(nav.guidesHref).toBe("/guide/nda");
+    expect(nav.bankHref).toBe("/browse");
+    expect(nav.guidesHref).toBe("/guide");
   });
 });
 
 describe("readExamSlugFromCookieString", () => {
-  it("returns the default when there are no cookies", () => {
-    expect(readExamSlugFromCookieString("")).toBe("nda");
+  it("returns null when there are no cookies", () => {
+    expect(readExamSlugFromCookieString("")).toBeNull();
   });
 
   it("reads the slug out of a cookie string with neighbours", () => {
@@ -79,13 +101,15 @@ describe("readExamSlugFromCookieString", () => {
     expect(readExamSlugFromCookieString("qb_exam=mht%2Dcet")).toBe("mht-cet");
   });
 
-  it("falls back to the default for a junk or unknown value", () => {
-    expect(readExamSlugFromCookieString("qb_exam=deleted-exam")).toBe("nda");
-    expect(readExamSlugFromCookieString("qb_exam=")).toBe("nda");
+  it("returns null for a junk or unknown value", () => {
+    // A slug retired from the registry must read as "no choice", so the visitor
+    // gets neutral nav rather than someone else's exam.
+    expect(readExamSlugFromCookieString("qb_exam=deleted-exam")).toBeNull();
+    expect(readExamSlugFromCookieString("qb_exam=")).toBeNull();
   });
 
   it("does not match a cookie whose name merely ENDS with qb_exam", () => {
     // `xqb_exam` must not be mistaken for `qb_exam`.
-    expect(readExamSlugFromCookieString("xqb_exam=mht-cet")).toBe("nda");
+    expect(readExamSlugFromCookieString("xqb_exam=mht-cet")).toBeNull();
   });
 });
