@@ -32,7 +32,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Expand using the distributive law, but keep the order of every product, because matrix multiplication is not commutative:\n\n\\((A + B)(A - B) = A(A - B) + B(A - B) = A^2 - AB + BA - B^2\\).\n\nThe two middle terms are \\(-AB\\) and \\(+BA\\), and they cancel only when \\(AB = BA\\), which is not given. So the expansion is \\(A^2 - AB + BA - B^2\\), and the familiar scalar identity \\(A^2 - B^2\\) does not hold for matrices in general."
   },
   {
    "hash": "9cd2f8437e39339b6b134093d559ee70110c26c340aeae08ddcaaffb75555366",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Let \\(A' \\) denote the transpose of \\(A\\). Symmetric means \\(A' = A\\); skew-symmetric means \\(A' = -A\\). If both hold at once, then \\(A = A' = -A\\), so \\(2A = O\\) and hence \\(A = O\\). Therefore the only matrix that is both symmetric and skew-symmetric is the zero matrix. (Working entry by entry gives the same thing: \\(a_{ij} = a_{ji}\\) and \\(a_{ij} = -a_{ji}\\) force \\(2a_{ij} = 0\\), so every entry vanishes.)"
   },
   {
    "hash": "f672d1654af627368ce9a973bfbfdf46be25b6488e86e7ced2efe274e1fc4d33",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Write \\(\\cos 2x = \\cos^2 x - \\sin^2 x\\) and split the fraction:\n\n\\(\\frac{\\cos 2x}{\\sin^2 x \\cos^2 x} = \\frac{\\cos^2 x - \\sin^2 x}{\\sin^2 x \\cos^2 x} = \\frac{\\cos^2 x}{\\sin^2 x \\cos^2 x} - \\frac{\\sin^2 x}{\\sin^2 x \\cos^2 x} = \\frac{1}{\\sin^2 x} - \\frac{1}{\\cos^2 x} = \\operatorname{cosec}^2 x - \\sec^2 x\\).\n\nIntegrating term by term, and using \\(\\int \\operatorname{cosec}^2 x\\,dx = -\\cot x\\) and \\(\\int \\sec^2 x\\,dx = \\tan x\\):\n\n\\(\\int \\frac{\\cos 2x}{\\sin^2 x \\cos^2 x}\\,dx = -\\cot x - \\tan x + C = -(\\cot x + \\tan x) + C\\).\n\nSo the integral equals \\(-(\\cot x + \\tan x) + C\\); differentiating any of the other three forms gives \\(\\sec^2 x - \\operatorname{cosec}^2 x\\) or a mixed sign combination, none of which is the integrand."
   },
   {
    "hash": "b7e808f8dbdb8147f4d3efb7ddc85b7cd6605362f9a1f106fad5de9621e92fbb",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "First evaluate the integral. Using \\(\\int \\frac{dx}{1 + (kx)^2} = \\frac{1}{k}\\tan^{-1}(kx)\\) with \\(k = 2\\),\n\n\\(\\int\\limits_0^a \\frac{dx}{1 + 4x^2} = \\frac{1}{2}\\left[\\tan^{-1}(2x)\\right]_0^a = \\frac{1}{2}\\tan^{-1}(2a)\\).\n\nSetting this equal to \\(\\frac{\\pi}{8}\\) gives \\(\\tan^{-1}(2a) = \\frac{\\pi}{4}\\), so \\(2a = \\tan\\frac{\\pi}{4} = 1\\) and \\(a = \\frac{1}{2}\\).\n\nSo the value of \\('a'\\) is \\(\\frac{1}{2}\\). (Checking the other choices: \\(a = \\frac{1}{4}\\) gives \\(\\frac{1}{2}\\tan^{-1}\\frac{1}{2}\\), \\(a = \\frac{1}{8}\\) gives \\(\\frac{1}{2}\\tan^{-1}\\frac{1}{4}\\) and \\(a = 4\\) gives \\(\\frac{1}{2}\\tan^{-1} 8\\) — none of which is \\(\\frac{\\pi}{8}\\).)"
   },
   {
    "hash": "92372361894afc8f24d8eff1f8a1bd26f2e63a6c983e9441b879b415d6729d4c",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "The equation is given as \\(\\frac{dx}{dy}\\), so first turn it the right way up. Taking reciprocals,\n\n\\(\\frac{dy}{dx} = \\frac{\\frac{2}{x}\\log x - y}{x \\log x} = \\frac{2\\log x}{x^2 \\log x} - \\frac{y}{x\\log x} = \\frac{2}{x^2} - \\frac{y}{x \\log x}\\).\n\nRearranged into the standard linear form \\(\\frac{dy}{dx} + Py = Q\\),\n\n\\(\\frac{dy}{dx} + \\frac{y}{x \\log x} = \\frac{2}{x^2}\\), so \\(P = \\frac{1}{x \\log x}\\).\n\nFor the integrating factor, note \\(\\int \\frac{dx}{x \\log x} = \\log|\\log x|\\) (substitute \\(u = \\log x\\), \\(du = \\frac{dx}{x}\\)). Hence\n\n\\(\\text{I.F.} = e^{\\int P\\,dx} = e^{\\log|\\log x|} = \\log x\\).\n\nSo the integrating factor is \\(\\log x\\)."
   },
   {
    "hash": "20fef4b841baa365b07acf55ca2be063c1bf0cb8c1c063e78b5d01cb03f805cb",
@@ -163,7 +163,7 @@
    "chapter": "Inverse Trigonometric Functions",
    "subtopic": "Domains, Ranges and Principal Value Branches",
    "stem": "Find the domain of \\(\\sec^{-1}(2x + 1)\\).",
-   "solution": ""
+   "solution": "\\(\\sec^{-1} u\\) is defined only when \\(|u| \\ge 1\\), i.e. its domain is \\((-\\infty, -1] \\cup [1, \\infty)\\).\n\nSo we need \\(|2x + 1| \\ge 1\\), which splits into two cases:\n\n\\(2x + 1 \\le -1 \\Rightarrow 2x \\le -2 \\Rightarrow x \\le -1\\), or \\(2x + 1 \\ge 1 \\Rightarrow 2x \\ge 0 \\Rightarrow x \\ge 0\\).\n\nHence the domain is \\((-\\infty, -1] \\cup [0, \\infty)\\), i.e. all real \\(x\\) except those with \\(-1 < x < 0\\)."
   },
   {
    "hash": "40e379bd813217c69874507e8db3542cb9a99b3166afd64e818856893f054fd9",
@@ -174,7 +174,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Rate of Change of Quantities",
    "stem": "The radius of a cylinder is decreasing at a rate of 2 cm/s and the altitude is increasing at the rate of 3 cm/s. Find the rate of change of volume of this cylinder when its radius is 4 cm and altitude is 6 cm.",
-   "solution": ""
+   "solution": "Let \\(r\\), \\(h\\) and \\(V\\) be the radius, altitude and volume of the cylinder at time \\(t\\). We are given \\(\\frac{dr}{dt} = -2\\) cm/s (decreasing) and \\(\\frac{dh}{dt} = 3\\) cm/s (increasing), and we want \\(\\frac{dV}{dt}\\) when \\(r = 4\\) cm and \\(h = 6\\) cm.\n\nHere BOTH \\(r\\) and \\(h\\) vary, so differentiate \\(V = \\pi r^2 h\\) as a product:\n\n\\(\\frac{dV}{dt} = \\pi\\left(2r\\,\\frac{dr}{dt}\\,h + r^2\\,\\frac{dh}{dt}\\right)\\).\n\nSubstituting \\(r = 4\\), \\(h = 6\\), \\(\\frac{dr}{dt} = -2\\), \\(\\frac{dh}{dt} = 3\\):\n\n\\(\\frac{dV}{dt} = 2\\pi(4)(-2)(6) + \\pi(4)^2(3) = -96\\pi + 48\\pi = -48\\pi\\ \\text{cm}^3/\\text{s}\\).\n\nThe sign is negative, so the volume is decreasing at the rate of \\(48\\pi\\ \\text{cm}^3/\\text{s}\\) (about \\(150{\\cdot}8\\ \\text{cm}^3/\\text{s}\\))."
   },
   {
    "hash": "34c9cda7173549b81f68e250553025117d25e75a76798a1714dcc5858f233284",
@@ -185,7 +185,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Increasing and Decreasing Functions",
    "stem": "Show that \\(f(x) = \\tan^{-1}(\\sin x + \\cos x)\\) is an increasing function in \\(\\left[0, \\dfrac{\\pi}{4}\\right]\\).",
-   "solution": ""
+   "solution": "\\(f(x) = \\tan^{-1}(\\sin x + \\cos x)\\). Differentiating with the chain rule, and using \\(\\frac{d}{dx}\\tan^{-1}u = \\frac{1}{1 + u^2}\\cdot\\frac{du}{dx}\\) with \\(u = \\sin x + \\cos x\\):\n\n\\(f'(x) = \\frac{1}{1 + (\\sin x + \\cos x)^2}\\,(\\cos x - \\sin x)\\).\n\nThe denominator \\(1 + (\\sin x + \\cos x)^2\\) is at least \\(1\\), so it is positive for every \\(x\\); the sign of \\(f'\\) is therefore the sign of \\(\\cos x - \\sin x\\).\n\nOn \\(\\left[0, \\frac{\\pi}{4}\\right]\\) we have \\(0 \\le x \\le \\frac{\\pi}{4}\\), where \\(\\cos x \\ge \\sin x\\) (they are equal only at the right endpoint \\(x = \\frac{\\pi}{4}\\)). Hence \\(\\cos x - \\sin x \\ge 0\\) throughout, so\n\n\\(f'(x) \\ge 0\\) for all \\(x \\in \\left[0, \\frac{\\pi}{4}\\right]\\),\n\nand therefore \\(f\\) is an increasing function on \\(\\left[0, \\frac{\\pi}{4}\\right]\\)."
   },
   {
    "hash": "eb75168ecdf2cf7d6ddf10d0ab77790b3bd3cb520335bf66fb688226a16b30ee",
@@ -196,7 +196,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Homogeneous Differential Equations",
    "stem": "Find the particular solution of the differential equation \\(\\dfrac{dy}{dx} - \\dfrac{y}{x} + \\operatorname{cosec}\\left(\\dfrac{y}{x}\\right) = 0\\); given that \\(y = 0\\), when \\(x = 1\\).",
-   "solution": ""
+   "solution": "The equation \\(\\frac{dy}{dx} - \\frac{y}{x} + \\operatorname{cosec}\\left(\\frac{y}{x}\\right) = 0\\), i.e.\n\n\\(\\frac{dy}{dx} = \\frac{y}{x} - \\operatorname{cosec}\\left(\\frac{y}{x}\\right)\\),\n\nhas a right-hand side depending on \\(x\\) and \\(y\\) only through \\(\\frac{y}{x}\\), so it is homogeneous.\n\nPut \\(y = vx\\), so that \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\). Substituting,\n\n\\(v + x\\frac{dv}{dx} = v - \\operatorname{cosec} v \\Rightarrow x\\frac{dv}{dx} = -\\operatorname{cosec} v\\).\n\nSeparating the variables,\n\n\\(-\\sin v\\,dv = \\frac{dx}{x}\\).\n\nIntegrating both sides, \\(\\int(-\\sin v)\\,dv = \\int \\frac{dx}{x}\\) gives\n\n\\(\\cos v = \\log|x| + c\\), i.e. \\(\\cos\\left(\\frac{y}{x}\\right) = \\log|x| + c\\).\n\nApplying the initial condition \\(y = 0\\) when \\(x = 1\\): then \\(\\frac{y}{x} = 0\\), so \\(\\cos 0 = \\log 1 + c\\), i.e. \\(1 = 0 + c\\) and \\(c = 1\\).\n\nHence the particular solution is \\(\\cos\\left(\\frac{y}{x}\\right) = \\log|x| + 1\\)."
   },
   {
    "hash": "abcc8fb619805fe0fb1f0d32f6d0128a07fc209674143ae7b7bd3d2a5a06624a",
@@ -207,7 +207,7 @@
    "chapter": "Application of Integrals",
    "subtopic": "Area Under Simple Curves",
    "stem": "Draw a rough sketch of the curve \\(y = \\sqrt{x}\\). Using integration, find the area of the region bounded by the curve \\(y = \\sqrt{x}\\), \\(x = 4\\) and x-axis, in the first quadrant.",
-   "solution": ""
+   "solution": "Sketch: \\(y = \\sqrt{x}\\) is the upper half of the parabola \\(y^2 = x\\). It starts at the origin and rises steadily to the right, passing through \\((1, 1)\\) and \\((4, 2)\\); the line \\(x = 4\\) is a vertical line meeting the curve at \\((4, 2)\\). The region asked for lies in the first quadrant, bounded above by the curve, below by the x-axis, and on the right by \\(x = 4\\).\n\nA vertical strip at abscissa \\(x\\) runs from \\(y = 0\\) up to \\(y = \\sqrt{x}\\), and \\(x\\) runs from \\(0\\) to \\(4\\). Hence\n\n\\(\\text{Area} = \\int\\limits_0^4 \\sqrt{x}\\,dx = \\int\\limits_0^4 x^{1/2}\\,dx = \\left[\\frac{2}{3}x^{3/2}\\right]_0^4 = \\frac{2}{3}\\left(4^{3/2} - 0\\right) = \\frac{2}{3}\\times 8 = \\frac{16}{3}\\).\n\nSo the required area is \\(\\frac{16}{3}\\) square units."
   },
   {
    "hash": "f8c06f08b8e72f95799ae9cc7760fe58a9a06c50538567897bc80b7331844e91",
@@ -218,7 +218,7 @@
    "chapter": "Determinants",
    "subtopic": "Solving System of Linear Equations",
    "stem": "An amount of ₹ 10,000 is put into three investments at the rate of 10%, 12% and 15% per annum. The combined annual income of all three investments is ₹ 1,310, however the combined annual income of the first and the second investments is ₹ 190 short of the income from the third. Use matrix method and find the investment amount in each at the beginning of the year.",
-   "solution": ""
+   "solution": "Let \\(x\\), \\(y\\) and \\(z\\) (in ₹) be the amounts invested at \\(10\\%\\), \\(12\\%\\) and \\(15\\%\\) respectively.\n\nThe three pieces of information give:\n\n\\(x + y + z = 10000\\);\n\n\\(\\frac{10}{100}x + \\frac{12}{100}y + \\frac{15}{100}z = 1310\\), i.e. \\(10x + 12y + 15z = 131000\\);\n\nthe first two incomes fall \\(190\\) short of the third, i.e. \\(\\frac{15}{100}z - \\left(\\frac{10}{100}x + \\frac{12}{100}y\\right) = 190\\), i.e. \\(-10x - 12y + 15z = 19000\\).\n\nWrite this as \\(AX = B\\) with\n\n\\(A = \\begin{bmatrix} 1 & 1 & 1 \\\\ 10 & 12 & 15 \\\\ -10 & -12 & 15 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 10000 \\\\ 131000 \\\\ 19000 \\end{bmatrix}\\).\n\nExpanding along the first row, \\(|A| = 1(180 + 180) - 1(150 + 150) + 1(-120 + 120) = 360 - 300 + 0 = 60 \\ne 0\\), so \\(A^{-1}\\) exists and the solution is unique.\n\nComputing the cofactors and transposing,\n\n\\(\\operatorname{adj} A = \\begin{bmatrix} 360 & -27 & 3 \\\\ -300 & 25 & -5 \\\\ 0 & 2 & 2 \\end{bmatrix}\\), so \\(A^{-1} = \\frac{1}{60}\\begin{bmatrix} 360 & -27 & 3 \\\\ -300 & 25 & -5 \\\\ 0 & 2 & 2 \\end{bmatrix}\\).\n\nHence \\(X = A^{-1}B = \\frac{1}{60}\\begin{bmatrix} 360 & -27 & 3 \\\\ -300 & 25 & -5 \\\\ 0 & 2 & 2 \\end{bmatrix}\\begin{bmatrix} 10000 \\\\ 131000 \\\\ 19000 \\end{bmatrix} = \\begin{bmatrix} 2000 \\\\ 3000 \\\\ 5000 \\end{bmatrix}\\).\n\nSo the investments are ₹ 2,000 at \\(10\\%\\), ₹ 3,000 at \\(12\\%\\) and ₹ 5,000 at \\(15\\%\\).\n\nCheck: the total is ₹ 10,000; the annual incomes are \\(200 + 360 + 750 = 1310\\), i.e. ₹ 1,310; and \\(750 - (200 + 360) = 190\\), so the first two together fall ₹ 190 short of the third, as required."
   }
  ]
 }

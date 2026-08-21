@@ -543,7 +543,7 @@
     }
    ],
    "answer": "D",
-   "solution": "Use the definition of conditional probability together with De Morgan's law:\n\\(P(A'|B') = \\frac{P(A' \\cap B')}{P(B')}\\).\nNow \\(A' \\cap B' = (A \\cup B)'\\), so \\(P(A' \\cap B') = 1 - P(A \\cup B)\\).\nHence \\(P(A'|B') = \\frac{1 - P(A \\cup B)}{P(B')}\\), which is that option.\nThe near-miss option puts \\(A \\cap B\\) in the numerator; that would require \\(A' \\cap B'\\) to equal \\((A \\cap B)'\\), whereas De Morgan's law turns the intersection of the complements into the complement of the UNION."
+   "solution": "Use the definition of conditional probability together with De Morgan's law:\n\\(P(A'|B') = \\frac{P(A' \\cap B')}{P(B')}\\).\nNow \\(A' \\cap B' = \\overline{A \\cup B}\\), so \\(P(A' \\cap B') = 1 - P(A \\cup B)\\).\nHence \\(P(A'|B') = \\frac{1 - P(A \\cup B)}{P(B')}\\), which is that option.\nThe near-miss option puts \\(A \\cap B\\) in the numerator; that would require \\(A' \\cap B'\\) to equal \\(\\overline{A \\cap B}\\), whereas De Morgan's law turns the intersection of the complements into the complement of the UNION."
   },
   {
    "hash": "1718875801f45328342679943cd353ac921b98db1ee3db83fc482b126fff8e6d",

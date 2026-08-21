@@ -32,7 +32,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "If \\(A = kB\\) then every one of the \\(n\\) rows of \\(A\\) is \\(k\\) times the corresponding row of \\(B\\). A determinant is linear in each row separately, so taking the factor \\(k\\) out of the first row gives one \\(k\\), out of the second row another, and so on — \\(n\\) rows give \\(n\\) factors. Hence\n\n\\(|A| = |kB| = k^n|B|\\).\n\nSo the correct statement is \\(|A| = k^n|B|\\). The trap is \\(|A| = k|B|\\), which is the rule for multiplying a SINGLE row by \\(k\\), not the whole matrix; it is right only when \\(n = 1\\)."
   },
   {
    "hash": "139406bd110532bd84f9b9108a5f40db2b970a3e7c26540552696452e97dfd80",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Take the four statements in turn.\n\n\\((A')' = A\\) — correct: transposing twice restores the original matrix.\n\n\\((kA)' = kA'\\) — correct: a scalar multiplies every entry, and transposing only moves entries about.\n\n\\((A' + B')' = A + B\\) — correct: transpose distributes over addition, so \\((A' + B')' = (A')' + (B')' = A + B\\).\n\n\\((AB)' = A'B'\\) — NOT correct. The reversal law gives \\((AB)' = B'A'\\), with the ORDER REVERSED. (Indeed for \\(A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 0 & 1 \\\\ 1 & 5 \\end{bmatrix}\\), \\((AB)' = \\begin{bmatrix} 2 & 4 \\\\ 11 & 23 \\end{bmatrix}\\) while \\(A'B' = \\begin{bmatrix} 3 & 16 \\\\ 4 & 22 \\end{bmatrix}\\).) There is also an order reason: if \\(A\\) is \\(m \\times n\\) and \\(B\\) is \\(n \\times p\\), then \\(A'B'\\) is not even defined unless \\(m = p\\).\n\nSo the statement that is not correct is \\((AB)' = A'B'\\)."
   },
   {
    "hash": "0de50859c4a6b5fb0b8a59607f8925a0bb81339d374148a593b816ea4936b206",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Treat \\(\\theta\\) as a constant. Use \\(\\cos 2A = 2\\cos^2 A - 1\\) on both terms of the numerator:\n\n\\(\\cos 2x - \\cos 2\\theta = \\left(2\\cos^2 x - 1\\right) - \\left(2\\cos^2\\theta - 1\\right) = 2\\left(\\cos^2 x - \\cos^2\\theta\\right) = 2(\\cos x - \\cos\\theta)(\\cos x + \\cos\\theta)\\).\n\nThe factor \\((\\cos x - \\cos\\theta)\\) cancels with the denominator, leaving\n\n\\(\\int \\frac{\\cos 2x - \\cos 2\\theta}{\\cos x - \\cos\\theta}\\,dx = \\int 2\\left(\\cos x + \\cos\\theta\\right)dx = 2\\left(\\sin x + x\\cos\\theta\\right) + C\\),\n\nsince \\(\\cos\\theta\\) is a constant and therefore integrates to \\(x\\cos\\theta\\). So the value is \\(2(\\sin x + x\\cos\\theta) + C\\). (Differentiating the choice \\(2(\\sin x + \\sin\\theta)\\) gives only \\(2\\cos x\\) — the constant term contributes nothing — so it cannot be right.)"
   },
   {
    "hash": "f278f89a9121a2edcc84805765064a139d9005e3f78d6a244db91942d58a736a",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Put \\(t = 5x^2 + 1\\), so \\(dt = 10x\\,dx\\), i.e. \\(2x\\,dx = \\frac{dt}{5}\\). The limits change as \\(x = 0 \\Rightarrow t = 1\\) and \\(x = 1 \\Rightarrow t = 6\\). Hence\n\n\\(\\int\\limits_0^1 \\frac{2x}{5x^2 + 1}\\,dx = \\frac{1}{5}\\int\\limits_1^6 \\frac{dt}{t} = \\frac{1}{5}\\left[\\log|t|\\right]_1^6 = \\frac{1}{5}\\left(\\log 6 - \\log 1\\right) = \\frac{1}{5}\\log 6\\).\n\nSo the value of the integral is \\(\\frac{1}{5}\\log 6\\). (The \\(\\frac{1}{5}\\) comes from the substitution and the \\(6\\) from the upper limit \\(5(1)^2 + 1\\); mixing them up gives the three distractors.)"
   },
   {
    "hash": "2491a51fae1a8b8fa8ccd81d89c958c72d4e8d5c089487e5dcf3a0eb64d34973",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "The equation is written as \\(\\frac{dx}{dy}\\), so invert it first:\n\n\\(\\frac{dy}{dx} = \\frac{x + y\\cos x}{-(1 + \\sin x)} = -\\frac{x}{1 + \\sin x} - \\frac{y\\cos x}{1 + \\sin x}\\).\n\nBringing the \\(y\\) term across gives the standard linear form \\(\\frac{dy}{dx} + Py = Q\\):\n\n\\(\\frac{dy}{dx} + \\frac{\\cos x}{1 + \\sin x}\\,y = -\\frac{x}{1 + \\sin x}\\), so \\(P = \\frac{\\cos x}{1 + \\sin x}\\).\n\nSince \\(\\cos x\\) is exactly the derivative of \\(1 + \\sin x\\), \\(\\int P\\,dx = \\log|1 + \\sin x|\\), and therefore\n\n\\(\\text{I.F.} = e^{\\int P\\,dx} = e^{\\log|1 + \\sin x|} = 1 + \\sin x\\).\n\nSo the integrating factor is \\(1 + \\sin x\\). It does the job it is meant to do: multiplying through by it turns the left side into \\(\\frac{d}{dx}\\left[y(1 + \\sin x)\\right]\\) and the equation into \\(\\frac{d}{dx}\\left[y(1 + \\sin x)\\right] = -x\\)."
   },
   {
    "hash": "7ea431a8cad5f238853580961916b0269ebc59fc4f258bbe812168bedb2eb150",
@@ -163,7 +163,7 @@
    "chapter": "Inverse Trigonometric Functions",
    "subtopic": "Domains, Ranges and Principal Value Branches",
    "stem": "Find the domain of \\(\\sin^{-1}(x^2 - 3)\\).",
-   "solution": ""
+   "solution": "\\(\\sin^{-1} u\\) is defined only for \\(-1 \\le u \\le 1\\), so we need\n\n\\(-1 \\le x^2 - 3 \\le 1\\).\n\nAdding \\(3\\) throughout gives \\(2 \\le x^2 \\le 4\\), i.e. \\(\\sqrt{2} \\le |x| \\le 2\\).\n\nThat means either \\(\\sqrt{2} \\le x \\le 2\\) or \\(-2 \\le x \\le -\\sqrt{2}\\).\n\nHence the domain is \\(\\left[-2, -\\sqrt{2}\\right] \\cup \\left[\\sqrt{2}, 2\\right]\\). Both endpoints of each piece are included, since \\(x^2 = 2\\) gives \\(x^2 - 3 = -1\\) and \\(x^2 = 4\\) gives \\(x^2 - 3 = 1\\), and both are legal inputs to \\(\\sin^{-1}\\)."
   },
   {
    "hash": "f19f80c9d545569cb20ec72204b6c2228bcd442fb3f29fd0b365d15037316d82",
@@ -174,7 +174,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Rate of Change of Quantities",
    "stem": "Let the volume of a metallic hollow sphere be constant. If the inner radius increases at the rate of 2 cm/s, find the rate of increase of the outer radius when the radii are 2 cm and 4 cm respectively.",
-   "solution": ""
+   "solution": "Let \\(R\\) and \\(r\\) be the outer and inner radii at time \\(t\\). The metal in the shell has volume\n\n\\(V = \\frac{4}{3}\\pi\\left(R^3 - r^3\\right)\\),\n\nand we are told this is CONSTANT, so \\(\\frac{dV}{dt} = 0\\). We are given \\(\\frac{dr}{dt} = 2\\) cm/s and want \\(\\frac{dR}{dt}\\) when \\(R = 4\\) cm and \\(r = 2\\) cm.\n\nDifferentiating with respect to \\(t\\),\n\n\\(\\frac{dV}{dt} = \\frac{4}{3}\\pi\\left(3R^2\\,\\frac{dR}{dt} - 3r^2\\,\\frac{dr}{dt}\\right) = 0\\),\n\nso \\(R^2\\,\\frac{dR}{dt} = r^2\\,\\frac{dr}{dt}\\).\n\nSubstituting \\(R = 4\\), \\(r = 2\\) and \\(\\frac{dr}{dt} = 2\\):\n\n\\(16\\,\\frac{dR}{dt} = 4 \\times 2 = 8\\), hence \\(\\frac{dR}{dt} = \\frac{1}{2}\\ \\text{cm/s}\\).\n\nSo the outer radius is increasing at \\(\\frac{1}{2}\\) cm/s. (This is smaller than the inner rate, as it must be: the same amount of new inner volume is spread over a larger outer surface.)"
   },
   {
    "hash": "94db2402e6771b6f4c3d0e026bf40c1e629dead24b6336360b0fc9fecea4ad82",
@@ -185,7 +185,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Increasing and Decreasing Functions",
    "stem": "Find the interval/intervals in which the function \\(f(x) = \\sin 3x - \\cos 3x\\), \\(0 < x < \\dfrac{\\pi}{2}\\) is strictly increasing.",
-   "solution": ""
+   "solution": "\\(f(x) = \\sin 3x - \\cos 3x\\), so\n\n\\(f'(x) = 3\\cos 3x + 3\\sin 3x = 3\\left(\\sin 3x + \\cos 3x\\right)\\).\n\nFor the critical points put \\(f'(x) = 0\\): \\(\\sin 3x = -\\cos 3x\\), i.e. \\(\\tan 3x = -1\\). With \\(0 < x < \\frac{\\pi}{2}\\) we have \\(0 < 3x < \\frac{3\\pi}{2}\\), and the only solution of \\(\\tan 3x = -1\\) in that range is \\(3x = \\frac{3\\pi}{4}\\), i.e. \\(x = \\frac{\\pi}{4}\\).\n\nThis single point splits \\(\\left(0, \\frac{\\pi}{2}\\right)\\) into two pieces. It is convenient to write \\(f'(x) = 3\\sqrt{2}\\,\\sin\\left(3x + \\frac{\\pi}{4}\\right)\\).\n\nFor \\(x \\in \\left(0, \\frac{\\pi}{4}\\right)\\): \\(3x + \\frac{\\pi}{4} \\in \\left(\\frac{\\pi}{4}, \\pi\\right)\\), where the sine is positive, so \\(f'(x) > 0\\).\n\nFor \\(x \\in \\left(\\frac{\\pi}{4}, \\frac{\\pi}{2}\\right)\\): \\(3x + \\frac{\\pi}{4} \\in \\left(\\pi, \\frac{7\\pi}{4}\\right)\\), where the sine is negative, so \\(f'(x) < 0\\).\n\nHence \\(f\\) is strictly increasing on \\(\\left(0, \\frac{\\pi}{4}\\right)\\) — and only there — within the given interval."
   },
   {
    "hash": "4205627c957696668ea31b1852d763d3f094688561bb9e1771484800515620ec",
@@ -196,7 +196,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Homogeneous Differential Equations",
    "stem": "Solve the differential equation\n\n\\(x \\cos\\left(\\dfrac{y}{x}\\right) \\dfrac{dy}{dx} = y \\cos\\left(\\dfrac{y}{x}\\right) + x\\).",
-   "solution": ""
+   "solution": "Divide the whole equation by \\(x\\cos\\left(\\frac{y}{x}\\right)\\), which is legitimate wherever that factor is non-zero:\n\n\\(\\frac{dy}{dx} = \\frac{y\\cos\\left(\\frac{y}{x}\\right) + x}{x\\cos\\left(\\frac{y}{x}\\right)} = \\frac{y}{x} + \\sec\\left(\\frac{y}{x}\\right)\\).\n\nThe right-hand side depends on \\(x\\) and \\(y\\) only through \\(\\frac{y}{x}\\), so the equation is homogeneous. Put \\(y = vx\\), giving \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\):\n\n\\(v + x\\frac{dv}{dx} = v + \\sec v \\Rightarrow x\\frac{dv}{dx} = \\sec v\\).\n\nSeparating the variables,\n\n\\(\\cos v\\,dv = \\frac{dx}{x}\\).\n\nIntegrating both sides,\n\n\\(\\sin v = \\log|x| + c\\).\n\nFinally substitute back \\(v = \\frac{y}{x}\\):\n\n\\(\\sin\\left(\\frac{y}{x}\\right) = \\log|x| + c\\),\n\nwhich is the general solution (\\(c\\) an arbitrary constant)."
   },
   {
    "hash": "5a40780d2f2622f15756bb29a0796ac342306cd9bc9b36021e641219ea0d7dfc",
@@ -207,7 +207,7 @@
    "chapter": "Application of Integrals",
    "subtopic": "Area Under Simple Curves",
    "stem": "In a rough sketch, mark the region bounded by \\(y = 1 + |x + 1|\\), \\(x = -2\\), \\(x = 2\\) and \\(y = 0\\). Using integration, find the area of the marked region.",
-   "solution": ""
+   "solution": "First remove the modulus. Since \\(|x + 1| = x + 1\\) when \\(x \\ge -1\\) and \\(|x + 1| = -(x + 1)\\) when \\(x \\le -1\\),\n\n\\(y = 1 + |x + 1| = \\begin{cases} -x, & -2 \\le x \\le -1 \\\\ x + 2, & -1 \\le x \\le 2 \\end{cases}\\)\n\nSketch: the graph is a 'V' with its vertex at \\((-1, 1)\\). To the left it is the line \\(y = -x\\), falling from \\((-2, 2)\\) to \\((-1, 1)\\); to the right it is the line \\(y = x + 2\\), rising from \\((-1, 1)\\) to \\((2, 4)\\). The region to be marked is bounded above by this V, below by the x-axis \\(y = 0\\), and on the sides by the vertical lines \\(x = -2\\) and \\(x = 2\\). Note the whole V lies above the x-axis (its lowest point is \\(y = 1\\)), so the region is a single slab with no part below the axis.\n\nSince the upper boundary changes formula at \\(x = -1\\), split the integral there:\n\n\\(\\text{Area} = \\int\\limits_{-2}^{-1}(-x)\\,dx + \\int\\limits_{-1}^{2}(x + 2)\\,dx\\).\n\nFirst piece: \\(\\left[-\\frac{x^2}{2}\\right]_{-2}^{-1} = -\\frac{1}{2} - \\left(-\\frac{4}{2}\\right) = -\\frac{1}{2} + 2 = \\frac{3}{2}\\).\n\nSecond piece: \\(\\left[\\frac{x^2}{2} + 2x\\right]_{-1}^{2} = (2 + 4) - \\left(\\frac{1}{2} - 2\\right) = 6 + \\frac{3}{2} = \\frac{15}{2}\\).\n\nHence \\(\\text{Area} = \\frac{3}{2} + \\frac{15}{2} = \\frac{18}{2} = 9\\) square units."
   },
   {
    "hash": "122b8cba7cc764ddfd9357b03fd963f462b2d1446176111a85d6061e6c279ed2",
@@ -218,7 +218,7 @@
    "chapter": "Determinants",
    "subtopic": "Solving System of Linear Equations",
    "stem": "Three students run on a racing track such that their speeds add up to 6 km/h. However, double the speed of the third runner added to the speed of the first results in 7 km/h. If thrice the speed of the first runner is added to the original speeds of the other two, the result is 12 km/h. Using matrix method, find the original speed of each runner.",
-   "solution": ""
+   "solution": "Let the original speeds of the three runners be \\(x\\), \\(y\\) and \\(z\\) km/h.\n\nTranslating the three statements:\n\nthe speeds add up to \\(6\\): \\(x + y + z = 6\\);\n\ndouble the third added to the first gives \\(7\\): \\(x + 2z = 7\\);\n\nthrice the first added to the ORIGINAL speeds of the other two gives \\(12\\): \\(3x + y + z = 12\\).\n\nWrite this as \\(AX = B\\) with\n\n\\(A = \\begin{bmatrix} 1 & 1 & 1 \\\\ 1 & 0 & 2 \\\\ 3 & 1 & 1 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 6 \\\\ 7 \\\\ 12 \\end{bmatrix}\\).\n\nExpanding along the first row, \\(|A| = 1(0 - 2) - 1(1 - 6) + 1(1 - 0) = -2 + 5 + 1 = 4 \\ne 0\\), so \\(A^{-1}\\) exists and \\(X = A^{-1}B\\) is the unique solution.\n\nComputing the cofactors and transposing,\n\n\\(\\operatorname{adj} A = \\begin{bmatrix} -2 & 0 & 2 \\\\ 5 & -2 & -1 \\\\ 1 & 2 & -1 \\end{bmatrix}\\), so \\(A^{-1} = \\frac{1}{4}\\begin{bmatrix} -2 & 0 & 2 \\\\ 5 & -2 & -1 \\\\ 1 & 2 & -1 \\end{bmatrix}\\).\n\nHence\n\n\\(\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\frac{1}{4}\\begin{bmatrix} -2 & 0 & 2 \\\\ 5 & -2 & -1 \\\\ 1 & 2 & -1 \\end{bmatrix}\\begin{bmatrix} 6 \\\\ 7 \\\\ 12 \\end{bmatrix} = \\frac{1}{4}\\begin{bmatrix} 12 \\\\ 4 \\\\ 8 \\end{bmatrix} = \\begin{bmatrix} 3 \\\\ 1 \\\\ 2 \\end{bmatrix}\\).\n\nSo the original speeds are \\(3\\) km/h, \\(1\\) km/h and \\(2\\) km/h respectively.\n\nCheck: \\(3 + 1 + 2 = 6\\); \\(3 + 2(2) = 7\\); \\(3(3) + 1 + 2 = 12\\) — all three conditions hold."
   }
  ]
 }

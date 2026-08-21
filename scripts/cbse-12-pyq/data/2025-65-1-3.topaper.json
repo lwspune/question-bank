@@ -122,7 +122,7 @@
     }
    ],
    "answer": "A",
-   "solution": "Both events in the required conditional probability are complements, so use De Morgan first: \\(M' \\cap N' = (M \\cup N)'\\). Now \\(P(M \\cup N) = P(M) + P(N) - P(M \\cap N) = 0.6 + 0.2 - 0.5 = 0.3\\), so \\(P(M' \\cap N') = 1 - 0.3 = 0.7\\), and \\(P(N') = 1 - 0.2 = 0.8\\). Therefore \\(P(M'/N') = \\frac{P(M' \\cap N')}{P(N')} = \\frac{0.7}{0.8} = \\frac{7}{8}\\), which is option (A) \\(\\frac{7}{8}\\). A closing note for the careful reader: the data as printed cannot describe any real pair of events, because \\(P(M \\cap N) = 0.5\\) exceeds \\(P(N) = 0.2\\) and an intersection can never be more likely than either event containing it. The computation above is nevertheless the one the question intends, and it is what the official key records."
+   "solution": "Both events in the required conditional probability are complements, so use De Morgan first: \\(M' \\cap N' = \\overline{M \\cup N}\\). Now \\(P(M \\cup N) = P(M) + P(N) - P(M \\cap N) = 0.6 + 0.2 - 0.5 = 0.3\\), so \\(P(M' \\cap N') = 1 - 0.3 = 0.7\\), and \\(P(N') = 1 - 0.2 = 0.8\\). Therefore \\(P(M'/N') = \\frac{P(M' \\cap N')}{P(N')} = \\frac{0.7}{0.8} = \\frac{7}{8}\\), which is option (A) \\(\\frac{7}{8}\\). A closing note for the careful reader: the data as printed cannot describe any real pair of events, because \\(P(M \\cap N) = 0.5\\) exceeds \\(P(N) = 0.2\\) and an intersection can never be more likely than either event containing it. The computation above is nevertheless the one the question intends, and it is what the official key records."
   },
   {
    "hash": "22d2b6d09fa3f43723175567cb6cac610599c86d85c7f056b32997d8760d48a1",

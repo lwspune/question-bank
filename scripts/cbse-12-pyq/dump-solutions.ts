@@ -72,11 +72,11 @@ async function main() {
       : contentHash(q.stem, (q.options ?? []).map((o) => o.text), q.answer ?? ""),
   }));
 
-  const state = new Map<string, { id: string; solved: boolean; kind: string; stored: string | null }>();
+  const state = new Map<string, { id: string; solved: boolean; kind: string; stored: string | null; imageUrl: string | null }>();
   const hashes = withHash.map((w) => w.hash);
   for (let i = 0; i < hashes.length; i += 100) {
     const { data, error } = await client.from("questions")
-      .select("id, content_hash, solution, question_kind")
+      .select("id, content_hash, solution, question_kind, image_url")
       .eq("org_id", ORG_ID).eq("exam_id", EXAM_ID_CBSE_12)
       .in("content_hash", hashes.slice(i, i + 100));
     if (error) throw new Error(error.message);
@@ -84,6 +84,7 @@ async function main() {
       state.set(r.content_hash as string, {
         id: r.id as string, solved: r.solution != null, kind: r.question_kind as string,
         stored: (r.solution as string | null) ?? null,
+        imageUrl: (r.image_url as string | null) ?? null,
       });
     }
   }
@@ -110,7 +111,15 @@ async function main() {
       // itself acknowledges them ("Give 1 Mark to those who have attempted as
       // the correct option is not given").
       ...(q._noCorrectOption ? { noCorrectOption: true } : {}),
-      ...(q._figure ? { figure: q._figure } : {}),
+      // The transcription-time NOTE about a figure, and — separately — whether
+      // an image is actually attached NOW. These were once one field called
+      // `figure`, which reads like live state but is only a note: TWO agents
+      // read "REQUIRED — the question is nothing but the printed graph" and
+      // reported the attach step as still owed, when the figure phase had
+      // attached it months earlier. A field whose name implies a status must
+      // carry the status.
+      ...(q._figure ? { figureNote: q._figure } : {}),
+      ...(q._figure || s.imageUrl ? { imageAttached: !!s.imageUrl } : {}),
       // --full mirrors the DB so the committed file stays a truthful record of
       // the whole paper; --all deliberately blanks it, for re-authoring.
       solution: full ? (s.stored ?? "") : "",

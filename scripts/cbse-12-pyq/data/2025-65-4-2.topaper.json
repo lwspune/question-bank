@@ -32,7 +32,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "By convention \\(\\cos^{-1}\\) is the inverse of \\(\\cos\\) restricted to \\(\\left[0, \\pi\\right]\\). On that interval \\(\\cos x\\) decreases steadily from \\(\\cos 0 = 1\\) to \\(\\cos \\pi = -1\\), so it is one-one there and takes every value of the range \\([-1, 1]\\) exactly once — which is precisely what an inverse needs. Hence the principal branch is \\(\\left[0, \\pi\\right]\\). (The interval \\(\\left[\\frac{\\pi}{2}, \\frac{3\\pi}{2}\\right]\\) cannot be used at all, since \\(\\cos\\) returns to \\(0\\) at both ends and so is not one-one on it; \\(\\left[\\pi, 2\\pi\\right]\\) and \\(\\left[2\\pi, 3\\pi\\right]\\) are one-one but are not the branch the convention selects.)"
   },
   {
    "hash": "939fe9203b36b85deff425ca9a6c78e280fa6abc19176d451217abbc61b08b49",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Continuity at \\(x = \\frac{\\pi}{2}\\) requires \\(k = f\\left(\\frac{\\pi}{2}\\right) = \\lim_{x \\to \\pi/2} \\frac{1 - \\sin^3 x}{3\\cos^2 x}\\). Both parts vanish at \\(x = \\frac{\\pi}{2}\\), so factor first: \\(1 - \\sin^3 x = (1 - \\sin x)\\left(1 + \\sin x + \\sin^2 x\\right)\\) and \\(3\\cos^2 x = 3\\left(1 - \\sin^2 x\\right) = 3(1 - \\sin x)(1 + \\sin x)\\). For \\(x \\ne \\frac{\\pi}{2}\\) the factor \\((1 - \\sin x)\\) is non-zero and cancels, leaving \\(\\frac{1 + \\sin x + \\sin^2 x}{3(1 + \\sin x)}\\). As \\(x \\to \\frac{\\pi}{2}\\), \\(\\sin x \\to 1\\), so the limit is \\(\\frac{1 + 1 + 1}{3(1 + 1)} = \\frac{3}{6} = \\frac{1}{2}\\). Hence \\(k = \\frac{1}{2}\\)."
   },
   {
    "hash": "6337af88020e078fccd1ad84549ba140ff3556dd048ad015dab190bf7cb8178b",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Direction cosines of any line satisfy \\(l^2 + m^2 + n^2 = 1\\). Here \\(l = m = n = \\lambda\\), so \\(3\\lambda^2 = 1\\), giving \\(\\lambda^2 = \\frac{1}{3}\\) and \\(\\lambda = \\pm\\frac{1}{\\sqrt{3}}\\). Both signs are genuine, because a line has two opposite senses: \\(\\left(\\frac{1}{\\sqrt{3}}, \\frac{1}{\\sqrt{3}}, \\frac{1}{\\sqrt{3}}\\right)\\) and \\(\\left(-\\frac{1}{\\sqrt{3}}, -\\frac{1}{\\sqrt{3}}, -\\frac{1}{\\sqrt{3}}\\right)\\) are direction cosines of the same line. So \\(\\lambda = \\pm\\frac{1}{\\sqrt{3}}\\); the single-signed values \\(\\frac{1}{\\sqrt{3}}\\) and \\(-\\frac{1}{\\sqrt{3}}\\) are each only half the answer, and \\(1\\) is impossible since it would force \\(3\\lambda^2 = 3\\)."
   },
   {
    "hash": "5ec679421ea4c5b5ed0daf6f588c3e1a2627880916960b5a5e377df5864fdf3b",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Expand the determinant along the first column: \\(\\begin{vmatrix} -1 & 2 & 4 \\\\ 1 & x & 1 \\\\ 0 & 3 & 3x \\end{vmatrix} = -1\\left(3x^2 - 3\\right) - 1\\left(6x - 12\\right) + 0 = -3x^2 - 6x + 15\\). Setting this equal to \\(-57\\) gives \\(-3x^2 - 6x + 15 = -57\\), i.e. \\(-3x^2 - 6x + 72 = 0\\), i.e. \\(x^2 + 2x - 24 = 0\\). For a quadratic \\(x^2 + bx + c = 0\\) the product of the roots is \\(c\\), so the product of the possible values of \\(x\\) is \\(-24\\). (Explicitly the roots are \\(x = 4\\) and \\(x = -6\\), and \\(4 \\times (-6) = -24\\).)"
   },
   {
    "hash": "de9a1d0d6fd3045a0e340622af215c7c813f800381b8993e2725e3116b58025f",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "The integrand has the form \\(e^x\\left[f(x) + f'(x)\\right]\\) with \\(f(x) = \\cos x\\), because \\(f'(x) = -\\sin x\\). Since \\(\\frac{d}{dx}\\left(e^x f(x)\\right) = e^x\\left[f(x) + f'(x)\\right]\\), the standard result \\(\\int e^x\\left[f(x) + f'(x)\\right]dx = e^x f(x) + C\\) applies and gives \\(e^x \\cos x + C\\). Checking directly, \\(\\frac{d}{dx}\\left(e^x \\cos x\\right) = e^x \\cos x - e^x \\sin x = e^x(\\cos x - \\sin x)\\), which is the integrand. So the value of the integral is \\(e^x \\cos x + C\\)."
   },
   {
    "hash": "58e19afee270ff51f4ffa6e0c265622747f91f93d4b94fc8e6d99e37e956bff1",
@@ -182,7 +182,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Put the equation in the standard linear form \\(\\frac{dy}{dx} + Py = Q\\): here \\(\\frac{dy}{dx} + y\\tan x = \\sec x\\), so \\(P = \\tan x\\). The integrating factor is \\(e^{\\int P\\,dx} = e^{\\int \\tan x\\,dx} = e^{\\log|\\sec x|} = \\sec x\\). So the integrating factor is \\(\\sec x\\). (Note \\(\\log \\sec x\\) is the integral \\(\\int \\tan x\\,dx\\) itself, not the integrating factor, which is its exponential.)"
   },
   {
    "hash": "a995bf4c20008b93c1a912302e664a2f44e3c22d0b1472e74616de8814f987d1",
@@ -193,7 +193,7 @@
    "chapter": "Determinants",
    "subtopic": "Solving System of Linear Equations",
    "stem": "Using matrices and determinants, find the value(s) of k for which the pair of equations \\(5x - ky = 2\\); \\(7x - 5y = 3\\) has a unique solution.",
-   "solution": ""
+   "solution": "Write the pair as \\(AX = B\\), with \\(A = \\begin{bmatrix} 5 & -k \\\\ 7 & -5 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 2 \\\\ 3 \\end{bmatrix}\\). The system has a unique solution precisely when \\(A\\) is invertible, that is when \\(|A| \\ne 0\\).\n\nHere \\(|A| = \\begin{vmatrix} 5 & -k \\\\ 7 & -5 \\end{vmatrix} = 5(-5) - (-k)(7) = -25 + 7k\\).\n\nSo the condition is \\(-25 + 7k \\ne 0\\), i.e. \\(k \\ne \\frac{25}{7}\\). Hence the pair of equations has a unique solution for every \\(k \\in \\mathbb{R} - \\left\\{\\frac{25}{7}\\right\\}\\)."
   },
   {
    "hash": "a666bc3ec0a8bd90c8f5678bb66163206ebe2ddade6622a250f2c922893bd2eb",
@@ -204,7 +204,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Maxima and Minima",
    "stem": "Find the local maxima and local minima of the function \\(f(x) = \\frac{8}{3}x^3 - 12x^2 + 18x + 5\\).",
-   "solution": ""
+   "solution": "\\(f(x) = \\frac{8}{3}x^3 - 12x^2 + 18x + 5\\), so \\(f'(x) = 8x^2 - 24x + 18 = 2\\left(4x^2 - 12x + 9\\right) = 2(2x - 3)^2\\).\n\nFor critical points put \\(f'(x) = 0\\): \\(2(2x - 3)^2 = 0\\) gives the single value \\(x = \\frac{3}{2}\\).\n\nNow \\(2(2x - 3)^2 \\ge 0\\) for every real \\(x\\), so \\(f'(x)\\) is positive on both sides of \\(x = \\frac{3}{2}\\) and vanishes only at that one point — it does not change sign as \\(x\\) crosses \\(\\frac{3}{2}\\) from left to right. By the first derivative test, \\(f\\) has neither a local maximum nor a local minimum. (The function is in fact increasing on the whole of \\(\\mathbb{R}\\), with \\(x = \\frac{3}{2}\\) a stationary point of inflection.)"
   },
   {
    "hash": "2bc9158cedfef338d902731ae4ea3cbba8494b712be50baab7973913ed04d9e8",
@@ -215,7 +215,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration using Trigonometric Identities",
    "stem": "Find :\n\n\\(\\int \\frac{\\cos x\\, dx}{1 + \\cos x + \\sin x}\\)",
-   "solution": ""
+   "solution": "Let \\(I = \\int \\frac{\\cos x}{1 + \\cos x + \\sin x}\\,dx\\). Convert everything to half angles, using \\(\\cos x = \\cos^2\\frac{x}{2} - \\sin^2\\frac{x}{2}\\), \\(1 + \\cos x = 2\\cos^2\\frac{x}{2}\\) and \\(\\sin x = 2\\sin\\frac{x}{2}\\cos\\frac{x}{2}\\):\n\n\\(I = \\int \\frac{\\cos^2\\frac{x}{2} - \\sin^2\\frac{x}{2}}{2\\cos^2\\frac{x}{2} + 2\\sin\\frac{x}{2}\\cos\\frac{x}{2}}\\,dx\\).\n\nThe numerator factors as \\(\\left(\\cos\\frac{x}{2} - \\sin\\frac{x}{2}\\right)\\left(\\cos\\frac{x}{2} + \\sin\\frac{x}{2}\\right)\\) and the denominator as \\(2\\cos\\frac{x}{2}\\left(\\cos\\frac{x}{2} + \\sin\\frac{x}{2}\\right)\\). Cancelling the common factor,\n\n\\(I = \\int \\frac{\\cos\\frac{x}{2} - \\sin\\frac{x}{2}}{2\\cos\\frac{x}{2}}\\,dx = \\frac{1}{2}\\int\\left(1 - \\tan\\frac{x}{2}\\right)dx\\).\n\nSince \\(\\int \\tan\\frac{x}{2}\\,dx = -2\\log\\left|\\cos\\frac{x}{2}\\right|\\),\n\n\\(I = \\frac{1}{2}\\left[x + 2\\log\\left|\\cos\\frac{x}{2}\\right|\\right] + C\\)."
   },
   {
    "hash": "59468554c548682fbe532d0466d67da3b1331e06dbb41f8f6a8d4c0e8daab518",
@@ -226,7 +226,7 @@
    "chapter": "Probability",
    "subtopic": "Conditional Probability",
    "stem": "Consider the experiment of tossing a coin. If the coin shows head, toss it again; but if it shows a tail, then throw a die. Find the conditional probability of the event A : 'the die shows a number greater than 3' given that B : 'there is at least one tail'.",
-   "solution": ""
+   "solution": "Because the second stage depends on the first, list the sample space as \\(S = \\{HH,\\ HT,\\ T1,\\ T2,\\ T3,\\ T4,\\ T5,\\ T6\\}\\), where \\(Ti\\) means 'tail, then the die shows \\(i\\)'. The outcomes are not equally likely: \\(P(HH) = P(HT) = \\frac{1}{2}\\times\\frac{1}{2} = \\frac{1}{4}\\), while \\(P(Ti) = \\frac{1}{2}\\times\\frac{1}{6} = \\frac{1}{12}\\) for each \\(i = 1, 2, \\ldots, 6\\).\n\nHere \\(A = \\{T4, T5, T6\\}\\) and \\(B = \\{HT, T1, T2, T3, T4, T5, T6\\}\\), so \\(A \\cap B = \\{T4, T5, T6\\}\\).\n\n\\(P(A \\cap B) = 3 \\times \\frac{1}{12} = \\frac{3}{12} = \\frac{1}{4}\\) and \\(P(B) = \\frac{1}{4} + 6 \\times \\frac{1}{12} = \\frac{1}{4} + \\frac{1}{2} = \\frac{3}{4}\\).\n\nHence \\(P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{1/4}{3/4} = \\frac{1}{3}\\)."
   },
   {
    "hash": "619ca4204131d34f46f12b565509528bc110a45937bcec4a04f084f3b285e667",
@@ -237,7 +237,7 @@
    "chapter": "Probability",
    "subtopic": "Random Variables and Probability Distributions",
    "stem": "The probability distribution of a random variable X is given as :\n\n| X | 1 | 2 | 3 | \\(2\\lambda\\) | \\(3\\lambda\\) | \\(4\\lambda\\) |\n|---|---|---|---|---|---|---|\n| P(X) | \\(\\frac{11}{30}\\) | \\(\\frac{1}{15}\\) | \\(\\frac{1}{10}\\) | \\(\\frac{3}{10}\\) | \\(\\frac{1}{15}\\) | \\(\\frac{1}{10}\\) |\n\n(i) Calculate \\(\\lambda\\), if \\(E(X) = 3{\\cdot}2\\).\n\n(ii) Find \\(P(X > 1)\\).",
-   "solution": ""
+   "solution": "(i) \\(E(X) = \\sum x\\,P(x) = 1\\left(\\frac{11}{30}\\right) + 2\\left(\\frac{1}{15}\\right) + 3\\left(\\frac{1}{10}\\right) + 2\\lambda\\left(\\frac{3}{10}\\right) + 3\\lambda\\left(\\frac{1}{15}\\right) + 4\\lambda\\left(\\frac{1}{10}\\right)\\).\n\nTaking \\(30\\) as the common denominator, the constant part is \\(\\frac{11 + 4 + 9}{30} = \\frac{24}{30}\\) and the \\(\\lambda\\) part is \\(\\frac{18\\lambda + 6\\lambda + 12\\lambda}{30} = \\frac{36\\lambda}{30}\\), so \\(E(X) = \\frac{24 + 36\\lambda}{30}\\).\n\nGiven \\(E(X) = 3{\\cdot}2 = \\frac{96}{30}\\), we get \\(24 + 36\\lambda = 96\\), so \\(36\\lambda = 72\\) and \\(\\lambda = 2\\).\n\n(ii) With \\(\\lambda = 2\\) the values taken by \\(X\\) are \\(1, 2, 3, 4, 6, 8\\), so the event \\(X > 1\\) is everything except \\(X = 1\\). Hence \\(P(X > 1) = 1 - P(X = 1) = 1 - \\frac{11}{30} = \\frac{19}{30}\\).\n\n(As a check, the six given probabilities do add to \\(1\\): \\(\\frac{11}{30} + \\frac{2}{30} + \\frac{3}{30} + \\frac{9}{30} + \\frac{2}{30} + \\frac{3}{30} = 1\\).)"
   },
   {
    "hash": "16fe84dfd70131d6c0f999df63805420cb0df9bc90dfdc66004ed2bebee9532a",
@@ -248,7 +248,7 @@
    "chapter": "Linear Programming",
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "Solve the following Linear Programming Problem graphically :\n\nMinimise \\(Z = 3x + 5y\\)\n\nsubject to the constraints\n\n\\(x + 2y \\ge 10\\)\n\n\\(x + y \\ge 6\\)\n\n\\(3x + y \\ge 8\\)\n\n\\(x, y \\ge 0\\)",
-   "solution": ""
+   "solution": "Draw the three boundary lines \\(x + 2y = 10\\), \\(x + y = 6\\) and \\(3x + y = 8\\) in the first quadrant. Every constraint is of \\(\\ge\\) type, so the feasible region is the part of the first quadrant lying on the far side of all three lines from the origin; it is unbounded above and to the right.\n\nIts corner points are:\n\n\\(A(0, 8)\\), where \\(3x + y = 8\\) meets the y-axis;\n\n\\(B(1, 5)\\), where \\(3x + y = 8\\) meets \\(x + y = 6\\);\n\n\\(C(2, 4)\\), where \\(x + y = 6\\) meets \\(x + 2y = 10\\);\n\n\\(D(10, 0)\\), where \\(x + 2y = 10\\) meets the x-axis.\n\nEvaluating \\(Z = 3x + 5y\\) at each: \\(Z(A) = 40\\), \\(Z(B) = 3 + 25 = 28\\), \\(Z(C) = 6 + 20 = 26\\), \\(Z(D) = 30\\).\n\nThe smallest value is \\(26\\). Because the region is unbounded, this needs the usual confirmation: the open half-plane \\(3x + 5y < 26\\) has no point in common with the feasible region, so the minimum really is attained. Hence \\(Z\\) is minimum at \\((2, 4)\\), with \\(Z_{\\min} = 26\\)."
   },
   {
    "hash": "088d9d27ea8f1815ea86e0f4226aa9b655ac479335873a144a1b8a7b56891930",
@@ -259,7 +259,7 @@
    "chapter": "Integrals",
    "subtopic": "Definite Integrals by Substitution",
    "stem": "Evaluate :\n\n\\(\\int\\limits_0^{\\pi/4} \\frac{\\sin x \\cos x}{\\cos^4 x + \\sin^4 x}\\, dx\\)",
-   "solution": ""
+   "solution": "Let \\(I = \\int\\limits_0^{\\pi/4} \\frac{\\sin x \\cos x}{\\cos^4 x + \\sin^4 x}\\,dx\\).\n\nDivide numerator and denominator by \\(\\cos^4 x\\), which is non-zero throughout \\(\\left[0, \\frac{\\pi}{4}\\right]\\):\n\n\\(I = \\int\\limits_0^{\\pi/4} \\frac{\\tan x \\sec^2 x}{1 + \\tan^4 x}\\,dx\\).\n\nPut \\(t = \\tan^2 x\\), so that \\(dt = 2\\tan x \\sec^2 x\\,dx\\), i.e. \\(\\tan x \\sec^2 x\\,dx = \\frac{dt}{2}\\), and \\(1 + \\tan^4 x = 1 + t^2\\). The limits transform as \\(x = 0 \\Rightarrow t = 0\\) and \\(x = \\frac{\\pi}{4} \\Rightarrow t = 1\\). Hence\n\n\\(I = \\frac{1}{2}\\int\\limits_0^1 \\frac{dt}{1 + t^2} = \\frac{1}{2}\\left[\\tan^{-1} t\\right]_0^1 = \\frac{1}{2}\\left(\\frac{\\pi}{4} - 0\\right) = \\frac{\\pi}{8}\\)."
   },
   {
    "hash": "69ba1c4c5a366a540b35134bd0545dc54e5582380cf488a23237402c1d4275e3",
@@ -270,7 +270,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration by Parts",
    "stem": "Find :\n\n\\(\\int \\frac{\\sqrt{x^2 + 1}\\left[\\log(x^2 + 1) - 2\\log x\\right]}{x^2}\\, dx\\)",
-   "solution": ""
+   "solution": "[CBSE marking scheme: the official answer for this part reads, in full, 'Due to printing error, the given function is not integrable. So full marks may be given for every attempt.' All 5 marks were awarded to every candidate, so there is no expected solution to reproduce. What follows explains why the printed integrand cannot be done, and then works the question that was almost certainly intended.]\n\nWhy it does not close. Note first that \\(\\log(x^2 + 1) - 2\\log x = \\log\\frac{x^2 + 1}{x^2} = \\log\\left(1 + \\frac{1}{x^2}\\right)\\). Taking \\(x > 0\\) and substituting \\(u = \\frac{1}{x}\\), so that \\(\\frac{dx}{x^2} = -du\\) and \\(\\sqrt{x^2 + 1} = \\frac{\\sqrt{1 + u^2}}{u}\\), the integral becomes \\(-\\int \\frac{\\sqrt{1 + u^2}\\,\\log\\left(1 + u^2\\right)}{u}\\,du\\). Putting \\(s = \\sqrt{1 + u^2}\\) turns this into \\(-2\\int\\left(1 + \\frac{1}{s^2 - 1}\\right)\\log s\\,ds\\), and while \\(\\int \\log s\\,ds\\) is elementary, \\(\\int \\frac{\\log s}{s^2 - 1}\\,ds\\) is a dilogarithm and is not. So no amount of rearranging will produce an answer in the functions of the syllabus.\n\nThe intended question. What went to press wrongly is the power of \\(x\\): with \\(x^4\\) in the denominator the substitution closes at once. For \\(\\int \\frac{\\sqrt{x^2 + 1}\\left[\\log(x^2 + 1) - 2\\log x\\right]}{x^4}\\,dx\\), write \\(\\frac{\\sqrt{x^2 + 1}}{x^4} = \\frac{1}{x^3}\\sqrt{1 + \\frac{1}{x^2}}\\) and put \\(t = 1 + \\frac{1}{x^2}\\), so \\(dt = -\\frac{2}{x^3}\\,dx\\), i.e. \\(\\frac{dx}{x^3} = -\\frac{dt}{2}\\), while the bracket is exactly \\(\\log t\\). The integral becomes\n\n\\(-\\frac{1}{2}\\int \\sqrt{t}\\,\\log t\\,dt\\).\n\nIntegrating by parts with \\(\\log t\\) as the first function, \\(\\int t^{1/2}\\log t\\,dt = \\frac{2}{3}t^{3/2}\\log t - \\frac{2}{3}\\int t^{1/2}\\,dt = \\frac{2}{3}t^{3/2}\\log t - \\frac{4}{9}t^{3/2}\\), so\n\n\\(-\\frac{1}{2}\\int \\sqrt{t}\\,\\log t\\,dt = -\\frac{1}{3}t^{3/2}\\log t + \\frac{2}{9}t^{3/2} + C = \\left(\\frac{x^2 + 1}{x^2}\\right)^{3/2}\\left[\\frac{2}{9} - \\frac{1}{3}\\log\\frac{x^2 + 1}{x^2}\\right] + C\\).\n\n(That the intended denominator was \\(x^4\\) is an inference from the structure of the problem, not something CBSE states; the marking scheme records only that the function as printed is not integrable.)"
   }
  ]
 }
