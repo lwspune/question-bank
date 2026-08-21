@@ -230,11 +230,14 @@ never seen the file*, not because nothing changed. Some are tracked now, so the
 signal is real for those and absent for the rest. Do not use it as your proof;
 use the hash check below, which works either way.
 
-**Works: recompute the hash.** For a subjective row,
+**Works, with one hole: recompute the hash.** For a subjective row,
 `subjectiveContentHash(stem, context)` must still equal the row's stored `hash`;
-for an MCQ, `contentHash(stem, optionTexts, answer)`. If every row still matches,
-you have proved the stem, context, options and answer are untouched — which is
-the whole contract.
+for an MCQ, `contentHash(stem, optionTexts, answer)`.
+
+The hole, found by an agent's own mutation harness: **`contentHash` NORMALISES
+WHITESPACE**, so appending a trailing space to a stem leaves the hash identical.
+The hash proves the stem is the same *question*, not the same *bytes*. Pair it
+with the field diff below, which is what actually closes that gap.
 
 **Works: compare key SETS row by row** against the original file, to catch a
 scratch field you added while editing and meant to remove.
