@@ -223,7 +223,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Increasing and Decreasing Functions",
    "stem": "Show that the function f given by \\(f(x) = \\sin x + \\cos x\\), is strictly decreasing in the interval \\(\\left(\\dfrac{\\pi}{4}, \\dfrac{5\\pi}{4}\\right)\\).",
-   "solution": ""
+   "solution": "Differentiating, \\(f'(x) = \\cos x - \\sin x\\). The critical points come from \\(\\cos x = \\sin x\\), that is \\(\\tan x = 1\\), giving \\(x = \\dfrac{\\pi}{4}\\) and \\(x = \\dfrac{5\\pi}{4}\\) — precisely the two endpoints of the given interval, so \\(f'\\) keeps one sign strictly inside it. To identify that sign, write \\(f'(x) = \\cos x - \\sin x = \\sqrt{2}\\cos\\left(x + \\dfrac{\\pi}{4}\\right)\\). For \\(x \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{5\\pi}{4}\\right)\\) we have \\(x + \\dfrac{\\pi}{4} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right)\\), an interval on which the cosine is strictly negative. Hence \\(f'(x) < 0\\) throughout \\(\\left(\\dfrac{\\pi}{4}, \\dfrac{5\\pi}{4}\\right)\\), which shows that \\(f\\) is strictly decreasing there."
   },
   {
    "hash": "9a071c4f380aca3b4d50877ab60739047d18d4125aee6f07e423e0cc5d265aa7",
@@ -234,7 +234,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration by Partial Fractions",
    "stem": "Find : \\(\\displaystyle\\int \\dfrac{2x}{(x^{2} + 1)(x^{2} - 4)}\\,dx\\).",
-   "solution": ""
+   "solution": "The numerator \\(2x\\) is exactly the derivative of \\(x^2\\), so put \\(x^2 = t\\), giving \\(2x\\, dx = dt\\). The integral becomes \\(I = \\int \\dfrac{dt}{(t + 1)(t - 4)}\\), which splits by partial fractions: writing \\(\\dfrac{1}{(t + 1)(t - 4)} = \\dfrac{A}{t + 1} + \\dfrac{B}{t - 4}\\) and clearing denominators, \\(1 = A(t - 4) + B(t + 1)\\); putting \\(t = 4\\) gives \\(B = \\dfrac{1}{5}\\) and \\(t = -1\\) gives \\(A = -\\dfrac{1}{5}\\). Hence \\(I = \\dfrac{1}{5}\\int \\dfrac{dt}{t - 4} - \\dfrac{1}{5}\\int \\dfrac{dt}{t + 1} = \\dfrac{1}{5}\\log|t - 4| - \\dfrac{1}{5}\\log|t + 1| + c\\). Restoring \\(t = x^2\\), \\(I = \\dfrac{1}{5}\\log|x^2 - 4| - \\dfrac{1}{5}\\log|x^2 + 1| + c\\), which may also be written \\(\\dfrac{1}{5}\\log\\left|\\dfrac{x^2 - 4}{x^2 + 1}\\right| + c\\)."
   },
   {
    "hash": "b1afceffe876aa0906378c8ec9e7918ff9f082879c216f9c9cb0747ea7af910d",
@@ -245,7 +245,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Logarithmic Differentiation",
    "stem": "Find \\(\\dfrac{dy}{dx}\\), if \\(y = (\\cos x)^{x} + \\cos^{-1}\\sqrt{x}\\) is given.",
-   "solution": ""
+   "solution": "The two terms are of quite different types, so differentiate them separately and add. Write \\(y = u + v\\) with \\(u = (\\cos x)^x\\) and \\(v = \\cos^{-1}\\sqrt{x}\\).\nFor \\(u\\), the variable sits in both base and exponent, so take logarithms: \\(\\log u = x\\log(\\cos x)\\). Differentiating, \\(\\dfrac{1}{u}\\dfrac{du}{dx} = \\log(\\cos x) + x \\cdot \\dfrac{-\\sin x}{\\cos x} = \\log(\\cos x) - x\\tan x\\), so \\(\\dfrac{du}{dx} = (\\cos x)^x\\left(\\log(\\cos x) - x\\tan x\\right)\\).\nFor \\(v\\), use the chain rule with \\(\\dfrac{d}{dt}\\cos^{-1} t = \\dfrac{-1}{\\sqrt{1 - t^2}}\\) and \\(t = \\sqrt{x}\\): \\(\\dfrac{dv}{dx} = \\dfrac{-1}{\\sqrt{1 - x}} \\cdot \\dfrac{1}{2\\sqrt{x}} = \\dfrac{-1}{2\\sqrt{x - x^2}}\\), since \\(\\sqrt{x}\\sqrt{1 - x} = \\sqrt{x - x^2}\\).\nAdding, \\(\\dfrac{dy}{dx} = (\\cos x)^x\\left(\\log(\\cos x) - x\\tan x\\right) - \\dfrac{1}{2\\sqrt{x - x^2}}\\)."
   },
   {
    "hash": "8c781fc36c8937d638485772bed148a29d885908a7e6d8ff04a5d171a7943361",
@@ -256,7 +256,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration by Parts",
    "stem": "Find : \\(\\displaystyle\\int \\sec^{3}\\theta\\,d\\theta\\)",
-   "solution": ""
+   "solution": "This is the classic case where integration by parts returns the original integral, so it can be solved for. Split off one factor: \\(I = \\int \\sec^3\\theta\\, d\\theta = \\int \\sec\\theta \\cdot \\sec^2\\theta\\, d\\theta\\), and integrate by parts taking \\(\\sec\\theta\\) as the first function and \\(\\sec^2\\theta\\) as the second. Since \\(\\int \\sec^2\\theta\\, d\\theta = \\tan\\theta\\) and \\(\\dfrac{d}{d\\theta}(\\sec\\theta) = \\sec\\theta\\tan\\theta\\), we get \\(I = \\sec\\theta\\tan\\theta - \\int \\sec\\theta\\tan\\theta \\cdot \\tan\\theta\\, d\\theta = \\sec\\theta\\tan\\theta - \\int \\sec\\theta\\tan^2\\theta\\, d\\theta\\). Now replace \\(\\tan^2\\theta\\) by \\(\\sec^2\\theta - 1\\): \\(I = \\sec\\theta\\tan\\theta - \\int \\sec^3\\theta\\, d\\theta + \\int \\sec\\theta\\, d\\theta = \\sec\\theta\\tan\\theta - I + \\log|\\sec\\theta + \\tan\\theta|\\). The original integral has reappeared, so \\(2I = \\sec\\theta\\tan\\theta + \\log|\\sec\\theta + \\tan\\theta|\\) and therefore \\(I = \\dfrac{1}{2}\\left(\\sec\\theta\\tan\\theta + \\log|\\sec\\theta + \\tan\\theta|\\right) + c\\)."
   },
   {
    "hash": "a0d77754efb74df7535df9cdd7f2dbf27db717503c66fe14ac253beb27afc41b",
@@ -268,7 +268,7 @@
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "The corner points of the feasible region determined by the system of linear constraints are as shown in the following figure :\n\n(i) If \\(Z = 3x - 4y\\) be the objective function, then find the maximum value of Z.\n\n(ii) If \\(Z = px + qy\\) where p, q > 0 be the objective function. Find the condition on p and q so that maximum value of Z occurs at B(4, 10) and C(6, 8).",
    "figure": "REQUIRED - both parts are read off a printed shaded feasible region; the stem states no constraints and part (i) cannot be answered without the corner points. On the question paper (page idx 16) the graph renders as a black bar; read off the marking scheme's clearer reproduction (ms/p10.png): O(0, 0), A(0, 8), B(4, 10), C(6, 8), D(6, 5), E(4, 0).",
-   "solution": ""
+   "solution": "The figure gives the corner points of the feasible region directly: \\(O(0, 0)\\), \\(A(0, 8)\\), \\(B(4, 10)\\), \\(C(6, 8)\\), \\(D(6, 5)\\) and \\(E(4, 0)\\). The region is bounded, so an optimum is attained at a corner point and it is enough to evaluate the objective function at these six.\n(i) With \\(Z = 3x - 4y\\): at \\(O(0, 0)\\), \\(Z = 0\\); at \\(A(0, 8)\\), \\(Z = 0 - 32 = -32\\); at \\(B(4, 10)\\), \\(Z = 12 - 40 = -28\\); at \\(C(6, 8)\\), \\(Z = 18 - 32 = -14\\); at \\(D(6, 5)\\), \\(Z = 18 - 20 = -2\\); at \\(E(4, 0)\\), \\(Z = 12 - 0 = 12\\). The largest of these is \\(12\\), so the maximum value of \\(Z\\) is \\(12\\), attained at \\(E(4, 0)\\).\n(ii) With \\(Z = px + qy\\), the maximum occurs at two distinct corner points only when the objective function takes the same value at both, so we need \\(Z_B = Z_C\\), that is \\(4p + 10q = 6p + 8q\\). This simplifies to \\(2q = 2p\\), so the condition is \\(p = q\\). (This is genuinely sufficient here: with \\(p = q > 0\\) the six values become \\(0\\), \\(8q\\), \\(14q\\), \\(14q\\), \\(11q\\) and \\(4q\\), so the common value \\(14q\\) at \\(B\\) and \\(C\\) really is the maximum.)"
   },
   {
    "hash": "afffba64b0d594a4c569624cd14b67247ed28eb3dfb914a0ec50dac706a2d228",
@@ -279,7 +279,7 @@
    "chapter": "Determinants",
    "subtopic": "Solving System of Linear Equations",
    "stem": "Find \\(A^{-1}\\), if \\(A = \\begin{bmatrix} 1 & 2 & 1 \\\\ 2 & 3 & -1 \\\\ 1 & 0 & 1 \\end{bmatrix}\\). Hence, solve the following system of equations :\n\n\\(x + 2y + z = 5\\)\n\n\\(2x + 3y = 1\\)\n\n\\(x - y + z = 8\\)",
-   "solution": ""
+   "solution": "First invert \\(A\\). Expanding along the first row, \\(|A| = 1(3 \\cdot 1 - (-1) \\cdot 0) - 2(2 \\cdot 1 - (-1) \\cdot 1) + 1(2 \\cdot 0 - 3 \\cdot 1) = 3 - 6 - 3 = -6 \\neq 0\\), so \\(A^{-1}\\) exists. The cofactors are \\(3, -3, -3\\) in the first row, \\(-2, 0, 2\\) in the second and \\(-5, 3, -1\\) in the third, so transposing, \\(\\operatorname{adj} A = \\begin{bmatrix} 3 & -2 & -5 \\\\ -3 & 0 & 3 \\\\ -3 & 2 & -1 \\end{bmatrix}\\) and \\(A^{-1} = \\dfrac{\\operatorname{adj} A}{|A|} = \\dfrac{-1}{6}\\begin{bmatrix} 3 & -2 & -5 \\\\ -3 & 0 & 3 \\\\ -3 & 2 & -1 \\end{bmatrix}\\).\nNow look carefully at the system. Its coefficient matrix is \\(\\begin{bmatrix} 1 & 2 & 1 \\\\ 2 & 3 & 0 \\\\ 1 & -1 & 1 \\end{bmatrix}\\), which is not \\(A\\) but \\(A^{T}\\) — the rows here are the columns of \\(A\\). So the system is \\(A^{T}X = B\\) with \\(B = \\begin{bmatrix} 5 \\\\ 1 \\\\ 8 \\end{bmatrix}\\), and \\(X = (A^{T})^{-1}B = (A^{-1})^{T}B\\).\nTransposing, \\((A^{-1})^{T} = \\dfrac{-1}{6}\\begin{bmatrix} 3 & -3 & -3 \\\\ -2 & 0 & 2 \\\\ -5 & 3 & -1 \\end{bmatrix}\\), so \\(X = \\dfrac{-1}{6}\\begin{bmatrix} 3 & -3 & -3 \\\\ -2 & 0 & 2 \\\\ -5 & 3 & -1 \\end{bmatrix}\\begin{bmatrix} 5 \\\\ 1 \\\\ 8 \\end{bmatrix} = \\dfrac{-1}{6}\\begin{bmatrix} -12 \\\\ 6 \\\\ -30 \\end{bmatrix} = \\begin{bmatrix} 2 \\\\ -1 \\\\ 5 \\end{bmatrix}\\).\nHence \\(x = 2\\), \\(y = -1\\), \\(z = 5\\), which satisfies all three equations: \\(2 - 2 + 5 = 5\\), \\(4 - 3 = 1\\) and \\(2 + 1 + 5 = 8\\)."
   }
  ]
 }
