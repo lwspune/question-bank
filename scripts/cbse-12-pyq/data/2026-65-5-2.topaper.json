@@ -32,7 +32,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Transposing swaps the off-diagonal entries, so \\(A' = \\begin{bmatrix} \\sin\\theta & -\\cos\\theta \\\\ \\cos\\theta & \\sin\\theta \\end{bmatrix}\\). Adding the two matrices, the cosine terms cancel and \\(A + A' = \\begin{bmatrix} 2\\sin\\theta & 0 \\\\ 0 & 2\\sin\\theta \\end{bmatrix}\\). For this to equal \\(I\\) the diagonal entries must satisfy \\(2\\sin\\theta = 1\\), so \\(\\sin\\theta = \\dfrac{1}{2}\\) and \\(\\theta = \\dfrac{\\pi}{6}\\), which is option (B) \\(\\dfrac{\\pi}{6}\\)."
   },
   {
    "hash": "d80cb96418fe0db966cc04810409ca9e0dd182a1b5b13d25ea969c7d1944dd44",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "A matrix is symmetric exactly when it equals its own transpose, so compute \\((BAB')'\\). Applying the reversal rule \\((PQ)' = Q'P'\\) twice gives \\((BAB')' = (B')'A'B' = BA'B'\\). Since \\(A\\) is symmetric, \\(A' = A\\), and the expression collapses back to \\(BAB'\\). So \\(BAB'\\) is equal to its own transpose, which is option (C) Symmetric matrix."
   },
   {
    "hash": "0d95792f5d2f7b20ce18fda1e6f11e2b7b36836572f2da9bd81ca20c830d10aa",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Use the double-angle identities \\(1 - \\cos 2x = 2\\sin^2 x\\) and \\(1 + \\cos 2x = 2\\cos^2 x\\). The quotient is therefore \\(\\dfrac{2\\sin^2 x}{2\\cos^2 x} = \\tan^2 x\\), so the integrand is \\(\\sqrt{\\tan^2 x} = |\\tan x|\\). On an interval where \\(\\tan x\\) keeps a fixed sign this integrates as \\(\\int \\tan x\\,dx = \\log|\\sec x| + C\\), which is option (D) \\(\\log |\\sec x| + C\\). (The choice \\(\\log|\\sec^2 x| + C\\) is twice as large, since \\(\\log|\\sec^2 x| = 2\\log|\\sec x|\\).)"
   },
   {
    "hash": "eddf6ce2b4150202213337407d37ebed15d2a03c5a589bed39d029018d6ada74",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "On the interval \\([0, 1]\\) the denominator \\(3x - 4\\) runs from \\(-4\\) to \\(-1\\), so it never vanishes and the integral is proper. Since \\(\\int \\dfrac{dx}{3x - 4} = \\dfrac{1}{3}\\log|3x - 4|\\), the value is \\(\\dfrac{1}{3}\\Big[\\log|3x - 4|\\Big]_0^1 = \\dfrac{1}{3}\\big(\\log 1 - \\log 4\\big) = -\\dfrac{1}{3}\\log 4\\), which is option (B) \\(-\\dfrac{1}{3}\\log 4\\). (The absolute value inside the logarithm is what keeps the result real; the choice \\(\\log(-4)\\) is not defined.)"
   },
   {
    "hash": "49ce518fe4dd46e9cf1c90a9bbcaf8bb8ad8e7acbed1b7a02a8d0b959150157b",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "The highest order derivative appearing is \\(\\dfrac{d^3y}{dx^3}\\), so the order is 3. To read off the degree the equation must be written as a polynomial in the derivatives, which it becomes on rearranging: \\(\\left(\\dfrac{d^3y}{dx^3}\\right)^2 + \\dfrac{d^2y}{dx^2} - 1 = 0\\). The highest order derivative now occurs to the power 2, so the degree is 2, which is option (C) Order = 3, Degree = 2."
   },
   {
    "hash": "0387c3ce360a90b742b88dabff29ff9a248289442d0d6d8b23b0d7c0f7f0d968",
@@ -163,7 +163,7 @@
    "chapter": "Inverse Trigonometric Functions",
    "subtopic": "Evaluating Inverse Trigonometric Expressions",
    "stem": "Evaluate \\(\\sin\\left[\\cos^{-1}\\cos\\left(\\dfrac{7\\pi}{6}\\right)\\right]\\).",
-   "solution": ""
+   "solution": "Work from the inside out. First, \\(\\cos\\dfrac{7\\pi}{6} = -\\dfrac{\\sqrt{3}}{2}\\). The function \\(\\cos^{-1}\\) returns a value in its principal branch \\([0, \\pi]\\), and \\(\\dfrac{7\\pi}{6}\\) does not lie in that branch, so the two functions do not simply cancel. The angle in \\([0, \\pi]\\) whose cosine is \\(-\\dfrac{\\sqrt{3}}{2}\\) is \\(\\dfrac{5\\pi}{6}\\), so \\(\\cos^{-1}\\cos\\dfrac{7\\pi}{6} = \\dfrac{5\\pi}{6}\\). Therefore \\(\\sin\\left[\\cos^{-1}\\cos\\dfrac{7\\pi}{6}\\right] = \\sin\\dfrac{5\\pi}{6} = \\dfrac{1}{2}\\)."
   },
   {
    "hash": "720747352524f40005f390d386009785b83ed1e6ac5b2574f65ad695efd3ee6e",
@@ -174,7 +174,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Increasing and Decreasing Functions",
    "stem": "Determine the interval(s) in which \\(f(x) = 5x^{3/2} - 3x^{5/2}\\), \\(x > 0\\) is increasing.",
-   "solution": ""
+   "solution": "Differentiating term by term, \\(f'(x) = 5 \\cdot \\dfrac{3}{2}x^{1/2} - 3 \\cdot \\dfrac{5}{2}x^{3/2} = \\dfrac{15}{2}x^{1/2} - \\dfrac{15}{2}x^{3/2}\\). Taking out the common factor, \\(f'(x) = \\dfrac{15}{2}\\sqrt{x}\\,(1 - x)\\). For \\(x > 0\\) the factor \\(\\dfrac{15}{2}\\sqrt{x}\\) is strictly positive, so the sign of \\(f'(x)\\) is the sign of \\(1 - x\\): positive on \\(0 < x < 1\\) and negative for \\(x > 1\\). So \\(f\\) is increasing on \\((0, 1)\\). Because \\(f'\\) vanishes only at the isolated point \\(x = 1\\), the answer may equally be written \\((0, 1]\\); either form is accepted."
   },
   {
    "hash": "f21955610ecd7daa175de6ad44b66acaff9b5aea7edbb531f1462b53d1f40a30",
@@ -185,7 +185,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Rate of Change of Quantities",
    "stem": "A thin metallic wire in the shape of a circular ring has its enclosed area increasing at a uniform rate when heated. Show that the rate of change of circumference varies inversely as the radius.",
-   "solution": ""
+   "solution": "Let \\(r\\) be the radius of the ring at time \\(t\\), so its enclosed area is \\(A = \\pi r^2\\) and its circumference is \\(C = 2\\pi r\\). The area increases at a uniform rate, which means \\(\\dfrac{dA}{dt} = k\\) for some positive constant \\(k\\). Differentiating the area with respect to \\(t\\) gives \\(\\dfrac{dA}{dt} = 2\\pi r\\,\\dfrac{dr}{dt} = k\\), and therefore \\(\\dfrac{dr}{dt} = \\dfrac{k}{2\\pi r}\\). Now differentiate the circumference: \\(\\dfrac{dC}{dt} = 2\\pi\\,\\dfrac{dr}{dt} = 2\\pi \\cdot \\dfrac{k}{2\\pi r} = \\dfrac{k}{r}\\). Since \\(k\\) is a constant, \\(\\dfrac{dC}{dt}\\) is a fixed multiple of \\(\\dfrac{1}{r}\\), so the rate of change of the circumference varies inversely as the radius, as required."
   },
   {
    "hash": "9a7dec2e5abc7293f69516115b37113818f23d9f8cad68dfff7554b600d6ee6f",
@@ -196,7 +196,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Linear Differential Equations",
    "stem": "Solve the differential equation \\(y\\,dx + (x - y^3)\\,dy = 0\\).",
-   "solution": ""
+   "solution": "The equation is not linear in \\(y\\), but it becomes linear if \\(x\\) is treated as the dependent variable. Dividing \\(y\\,dx + (x - y^3)\\,dy = 0\\) through by \\(dy\\) gives \\(y\\dfrac{dx}{dy} + x - y^3 = 0\\), and dividing by \\(y\\) puts it in standard form: \\(\\dfrac{dx}{dy} + \\dfrac{1}{y}x = y^2\\). The integrating factor is \\(e^{\\int \\frac{1}{y}\\,dy} = e^{\\log y} = y\\), taking \\(y > 0\\). Multiplying through by \\(y\\) makes the left side an exact derivative, \\(\\dfrac{d}{dy}(xy) = y \\cdot y^2 = y^3\\). Integrating both sides, \\(xy = \\int y^3\\,dy = \\dfrac{y^4}{4} + C\\). So the general solution is \\(xy = \\dfrac{y^4}{4} + C\\), equivalently \\(x = \\dfrac{y^3}{4} + \\dfrac{C}{y}\\)."
   },
   {
    "hash": "06c3910491e5d749424760fa4520fbb0a3ffa8677ce88ddff6a2ed18ec5dc101",
@@ -207,7 +207,7 @@
    "chapter": "Determinants",
    "subtopic": "Solving System of Linear Equations",
    "stem": "Find cost (per kg) of each fertilizer A, B and C that the farmer needs to buy, such that 1 kg each of fertilizer A and C added to 2 kg of B costs him ₹ 400. Also, cost of each kg of fertilizer B and C added together is equal to cost of 1 kg of fertilizer A. However, cost of 3 kg of fertilizer B added to ₹ 200 is the same as cost of 1 kg of fertilizer A and C together. Use matrix method to find the solution.",
-   "solution": ""
+   "solution": "Let the cost of one kg of fertilizers A, B and C be ₹\\(x\\), ₹\\(y\\) and ₹\\(z\\) respectively. The three statements translate into \\(x + 2y + z = 400\\); \\(y + z = x\\), that is \\(-x + y + z = 0\\); and \\(3y + 200 = x + z\\), that is \\(x - 3y + z = 200\\). Writing the system as \\(AX = B\\) with \\(A = \\begin{bmatrix} 1 & 2 & 1 \\\\ -1 & 1 & 1 \\\\ 1 & -3 & 1 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 400 \\\\ 0 \\\\ 200 \\end{bmatrix}\\), expand the determinant along the first row: \\(|A| = 1(1 + 3) - 2(-1 - 1) + 1(3 - 1) = 4 + 4 + 2 = 10 \\ne 0\\), so \\(A^{-1}\\) exists and \\(X = A^{-1}B\\). Computing the cofactors gives \\(\\text{adj}\\,A = \\begin{bmatrix} 4 & -5 & 1 \\\\ 2 & 0 & -2 \\\\ 2 & 5 & 3 \\end{bmatrix}\\), so \\(A^{-1} = \\dfrac{1}{10}\\begin{bmatrix} 4 & -5 & 1 \\\\ 2 & 0 & -2 \\\\ 2 & 5 & 3 \\end{bmatrix}\\) and \\(X = \\dfrac{1}{10}\\begin{bmatrix} 4 & -5 & 1 \\\\ 2 & 0 & -2 \\\\ 2 & 5 & 3 \\end{bmatrix}\\begin{bmatrix} 400 \\\\ 0 \\\\ 200 \\end{bmatrix} = \\dfrac{1}{10}\\begin{bmatrix} 1800 \\\\ 400 \\\\ 1400 \\end{bmatrix} = \\begin{bmatrix} 180 \\\\ 40 \\\\ 140 \\end{bmatrix}\\). So one kg of fertilizer A costs ₹180, one kg of B costs ₹40 and one kg of C costs ₹140. Checking against the three conditions: \\(180 + 2(40) + 140 = 400\\), \\(40 + 140 = 180\\), and \\(3(40) + 200 = 320 = 180 + 140\\)."
   },
   {
    "hash": "8b55dd92c46f390b52c351b3715f4e694ac2b21121ea2ac0cc31dbdf06a98aee",
@@ -218,7 +218,7 @@
    "chapter": "Application of Integrals",
    "subtopic": "Area Under Simple Curves",
    "stem": "Sketch the curve described by \\(\\{(x,\\ y) : 9x^2 + 16y^2 = 144\\}\\) and find the area of the region enclosed by it, using integration.",
-   "solution": ""
+   "solution": "[CBSE marking scheme: the printed working opens with the required area as \\(4\\int_0^5 \\dfrac{3}{4}\\sqrt{16 - x^2}\\,dx\\), but the upper limit must be 4, not 5. The ellipse reaches only \\(x = 4\\), and at \\(x = 5\\) the expression \\(\\sqrt{16 - x^2}\\) is not even real. The slip is confined to that one line: the scheme's very next line evaluates the antiderivative between 0 and 4, and its answer \\(12\\pi\\) is correct.] Dividing throughout by 144 puts the curve in standard form, \\(\\dfrac{x^2}{16} + \\dfrac{y^2}{9} = 1\\). This is an ellipse centred at the origin with \\(a = 4\\) and \\(b = 3\\), cutting the axes at \\((\\pm 4, 0)\\) and \\((0, \\pm 3)\\). It is symmetric about both axes, so the region enclosed is four times the part lying in the first quadrant, where \\(y = \\dfrac{3}{4}\\sqrt{16 - x^2}\\) and \\(x\\) runs from 0 to 4. The area is therefore \\(4\\int_0^4 \\dfrac{3}{4}\\sqrt{16 - x^2}\\,dx = 3\\int_0^4 \\sqrt{16 - x^2}\\,dx\\). Using \\(\\int \\sqrt{a^2 - x^2}\\,dx = \\dfrac{x}{2}\\sqrt{a^2 - x^2} + \\dfrac{a^2}{2}\\sin^{-1}\\dfrac{x}{a}\\) with \\(a = 4\\), this equals \\(3\\left[\\dfrac{x}{2}\\sqrt{16 - x^2} + 8\\sin^{-1}\\dfrac{x}{4}\\right]_0^4 = 3\\left[\\left(0 + 8 \\cdot \\dfrac{\\pi}{2}\\right) - 0\\right] = 12\\pi\\) square units. This agrees with the standard result \\(\\pi ab = \\pi(4)(3) = 12\\pi\\)."
   }
  ]
 }

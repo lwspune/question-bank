@@ -32,7 +32,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "For any square matrix, \\((A + A')' = A' + (A')' = A' + A = A + A'\\), so \\(A + A'\\) is symmetric automatically and the stated hypothesis imposes no extra condition. Testing the difference the same way, \\((A - A')' = A' - (A')' = A' - A = -(A - A')\\), and a matrix equal to the negative of its own transpose is skew symmetric. This holds for every square matrix with real entries, which is option (B) \\((A - A')\\) is a skew symmetric matrix. (Nothing here forces the matrix itself to be symmetric or skew symmetric: \\(\\begin{bmatrix} 1 & 2 \\\\ 0 & 1 \\end{bmatrix}\\) is neither, yet the result still applies to it.)"
   },
   {
    "hash": "acd4b8e6825b8f9e88ab32b11bf8b7db67ad1b423f4c315821f5f02a7251d8e3",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "A diagonal matrix is one in which every entry off the main diagonal is zero; the diagonal entries themselves are unrestricted and may be zero or non-zero. The off-diagonal positions are exactly those with \\(i \\ne j\\), so the defining condition is \\(b_{ij} = 0\\) whenever \\(i \\ne j\\), which is option (D) \\(b_{ij} = 0\\), when \\(i \\ne j\\). (The condition \\(b_{ij} = 1\\) when \\(i = j\\) would force every diagonal entry to equal 1, describing the identity matrix, which is one special diagonal matrix rather than the definition of the class.)"
   },
   {
    "hash": "7c621ed76f468e53fec2f2fea06a383488ff6b10d80fe67a1fb364a6c547ace8",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Use the half-angle identities \\(1 + \\cos x = 2\\cos^2\\dfrac{x}{2}\\) and \\(1 - \\cos x = 2\\sin^2\\dfrac{x}{2}\\). The quotient is \\(\\dfrac{2\\cos^2\\frac{x}{2}}{2\\sin^2\\frac{x}{2}} = \\cot^2\\dfrac{x}{2}\\), so the integrand is \\(\\left|\\cot\\dfrac{x}{2}\\right|\\). On an interval where \\(\\cot\\dfrac{x}{2}\\) keeps a fixed sign this integrates to \\(2\\log\\left|\\sin\\dfrac{x}{2}\\right| + C\\), which is option (A) \\(2 \\log \\left|\\sin \\dfrac{x}{2}\\right| + C\\). Differentiating back confirms it: \\(\\dfrac{d}{dx}\\left(2\\log\\left|\\sin\\dfrac{x}{2}\\right|\\right) = 2 \\cdot \\dfrac{\\cos\\frac{x}{2}}{\\sin\\frac{x}{2}} \\cdot \\dfrac{1}{2} = \\cot\\dfrac{x}{2}\\)."
   },
   {
    "hash": "a3cb199949314e4c797e4162ab191e005af6781b14795e228dafa08c0726e189",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Integrate term by term: \\(\\int_0^1 (6x^2 - 4x + k)\\,dx = \\Big[2x^3 - 2x^2 + kx\\Big]_0^1 = (2 - 2 + k) - 0 = k\\). The two \\(x\\) terms cancel exactly over this interval, so the whole integral reduces to \\(k\\). Setting it equal to 0 gives \\(k = 0\\), which is option (B) 0."
   },
   {
    "hash": "0c158c6bc38a3bd7038cf19b71ea608f0ad60aecc1c37e23bafbf8ffc7096846",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "The highest order derivative appearing is \\(\\dfrac{d^2y}{dx^2}\\), so the order is 2. For the degree the equation must be written as a polynomial in the derivatives, which it becomes on rearranging: \\(\\left(\\dfrac{d^2y}{dx^2}\\right)^2 - \\lambda\\,\\dfrac{dy}{dx} - y = 0\\). The highest order derivative occurs here to the power 2, so the degree is 2, which is option (A) Order = 2, Degree = 2. (The parameter \\(\\lambda\\) is a constant coefficient and affects neither count.)"
   },
   {
    "hash": "3923e8e001ded898d3eb723f82fc0d93aeca6211344e3797a37f2cd280d0993c",
@@ -163,7 +163,7 @@
    "chapter": "Inverse Trigonometric Functions",
    "subtopic": "Evaluating Inverse Trigonometric Expressions",
    "stem": "Evaluate \\(\\tan\\left[\\cos^{-1}\\left(\\tan \\dfrac{3\\pi}{4}\\right)\\right]\\).",
-   "solution": ""
+   "solution": "Work from the inside out. First, \\(\\tan\\dfrac{3\\pi}{4} = \\tan\\left(\\pi - \\dfrac{\\pi}{4}\\right) = -\\tan\\dfrac{\\pi}{4} = -1\\), so the expression reduces to \\(\\tan\\left[\\cos^{-1}(-1)\\right]\\). The function \\(\\cos^{-1}\\) returns a value in its principal branch \\([0, \\pi]\\), and \\(\\cos\\pi = -1\\), so \\(\\cos^{-1}(-1) = \\pi\\). Therefore \\(\\tan\\left[\\cos^{-1}\\left(\\tan\\dfrac{3\\pi}{4}\\right)\\right] = \\tan\\pi = 0\\)."
   },
   {
    "hash": "0ef588356516eb48c35466f206d7e3bf9ea01d8ecf5afbc3ab519bc7dde35ded",
@@ -174,7 +174,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Increasing and Decreasing Functions",
    "stem": "Determine the interval(s) in which \\(f(x) = \\dfrac{x}{3} + \\dfrac{3}{x}\\), \\(x \\ne 0\\) is increasing.",
-   "solution": ""
+   "solution": "Differentiating, \\(f'(x) = \\dfrac{1}{3} - \\dfrac{3}{x^2}\\), which over a common denominator is \\(f'(x) = \\dfrac{x^2 - 9}{3x^2} = \\dfrac{(x - 3)(x + 3)}{3x^2}\\). For \\(x \\ne 0\\) the denominator \\(3x^2\\) is strictly positive, so the sign of \\(f'(x)\\) is the sign of \\((x - 3)(x + 3)\\): positive when \\(|x| > 3\\) and negative when \\(0 < |x| < 3\\). So \\(f'(x) = 0\\) at \\(x = -3\\) and \\(x = 3\\), and \\(f\\) is increasing on \\((-\\infty, -3)\\) and on \\((3, \\infty)\\). Because \\(f'\\) vanishes only at those two isolated points, the answer may equally be written \\((-\\infty, -3\\,] \\cup [\\,3, \\infty)\\); either form is accepted. Note that \\(x = 0\\) is outside the domain, so the two increasing intervals must be reported separately and cannot be merged."
   },
   {
    "hash": "71a76a63e31d898913945a9822ca5df620219ca782ad83a8a12c68f7caec8e7f",
@@ -185,7 +185,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Rate of Change of Quantities",
    "stem": "The volume of a wooden block in the shape of a cube increases at a constant rate as the air becomes moist during the rainy season. Show that the rate of change of its surface area varies inversely as the length of edge of the cube.",
-   "solution": ""
+   "solution": "Let \\(x\\) be the length of an edge of the cube at time \\(t\\), so its volume is \\(V = x^3\\) and its surface area is \\(S = 6x^2\\). The volume increases at a constant rate, which means \\(\\dfrac{dV}{dt} = k\\) for some positive constant \\(k\\). Differentiating the volume with respect to \\(t\\), \\(\\dfrac{dV}{dt} = 3x^2\\,\\dfrac{dx}{dt} = k\\), and therefore \\(\\dfrac{dx}{dt} = \\dfrac{k}{3x^2}\\). Now differentiate the surface area: \\(\\dfrac{dS}{dt} = 12x\\,\\dfrac{dx}{dt} = 12x \\cdot \\dfrac{k}{3x^2} = \\dfrac{4k}{x}\\). Since \\(k\\) is a constant, \\(\\dfrac{dS}{dt}\\) is a fixed multiple of \\(\\dfrac{1}{x}\\), so the rate of change of the surface area varies inversely as the length of the edge of the cube, as required."
   },
   {
    "hash": "275001d5c7f76330a0a51a2709c566d340de1076a5867a3b8dc7649be76afe72",
@@ -196,7 +196,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Linear Differential Equations",
    "stem": "Solve the differential equation \\((x - \\sin y)\\,dy + \\tan y\\,dx = 0\\).",
-   "solution": ""
+   "solution": "The equation is not linear in \\(y\\), but it becomes linear if \\(x\\) is treated as the dependent variable. From \\((x - \\sin y)\\,dy + \\tan y\\,dx = 0\\) we get \\(\\tan y\\,\\dfrac{dx}{dy} = \\sin y - x\\), and dividing by \\(\\tan y\\) puts it in standard form: \\(\\dfrac{dx}{dy} + \\dfrac{x}{\\tan y} = \\dfrac{\\sin y}{\\tan y} = \\cos y\\). The integrating factor is \\(e^{\\int \\cot y\\,dy} = e^{\\log \\sin y} = \\sin y\\), taking \\(\\sin y > 0\\). Multiplying through by \\(\\sin y\\) makes the left side an exact derivative, \\(\\dfrac{d}{dy}(x\\sin y) = \\cos y \\sin y\\). Integrating both sides, \\(x\\sin y = \\int \\sin y\\cos y\\,dy = \\dfrac{\\sin^2 y}{2} + C\\). So the general solution is \\(x\\sin y = \\dfrac{\\sin^2 y}{2} + C\\), equivalently \\(x = \\dfrac{\\sin y}{2} + \\dfrac{C}{\\sin y}\\)."
   },
   {
    "hash": "16f61f364fb37d01384afb1457e44add8948df3ac98ff00b4b322969b903dfc0",
@@ -207,7 +207,7 @@
    "chapter": "Determinants",
    "subtopic": "Solving System of Linear Equations",
    "stem": "Three students A, B and C go to a book-store to buy art books, story books and puzzle solving books. A buys one of each type of book for a total of ₹ 21. B buys 4 art books, 3 story books and 2 puzzle solving books for ₹ 60. C buys 6 art books, 2 story books and 3 puzzle solving books and pays ₹ 10 more than B. Use matrix method to find the cost of each type of book.",
-   "solution": ""
+   "solution": "Let the cost of one art book, one story book and one puzzle solving book be ₹\\(x\\), ₹\\(y\\) and ₹\\(z\\) respectively. A buys one of each for ₹21, giving \\(x + y + z = 21\\); B pays ₹60, giving \\(4x + 3y + 2z = 60\\); and C pays ₹10 more than B, that is ₹70, giving \\(6x + 2y + 3z = 70\\). Writing the system as \\(AX = B\\) with \\(A = \\begin{bmatrix} 1 & 1 & 1 \\\\ 4 & 3 & 2 \\\\ 6 & 2 & 3 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 21 \\\\ 60 \\\\ 70 \\end{bmatrix}\\), expand the determinant along the first row: \\(|A| = 1(9 - 4) - 1(12 - 12) + 1(8 - 18) = 5 - 0 - 10 = -5 \\ne 0\\), so \\(A^{-1}\\) exists and \\(X = A^{-1}B\\). Computing the cofactors gives \\(\\text{adj}\\,A = \\begin{bmatrix} 5 & -1 & -1 \\\\ 0 & -3 & 2 \\\\ -10 & 4 & -1 \\end{bmatrix}\\), so \\(A^{-1} = \\dfrac{1}{-5}\\begin{bmatrix} 5 & -1 & -1 \\\\ 0 & -3 & 2 \\\\ -10 & 4 & -1 \\end{bmatrix}\\) and \\(X = \\dfrac{1}{-5}\\begin{bmatrix} 5 & -1 & -1 \\\\ 0 & -3 & 2 \\\\ -10 & 4 & -1 \\end{bmatrix}\\begin{bmatrix} 21 \\\\ 60 \\\\ 70 \\end{bmatrix} = \\dfrac{1}{-5}\\begin{bmatrix} -25 \\\\ -40 \\\\ -40 \\end{bmatrix} = \\begin{bmatrix} 5 \\\\ 8 \\\\ 8 \\end{bmatrix}\\). So an art book costs ₹5, a story book ₹8 and a puzzle solving book ₹8. Checking all three conditions: \\(5 + 8 + 8 = 21\\), \\(4(5) + 3(8) + 2(8) = 60\\), and \\(6(5) + 2(8) + 3(8) = 70\\), which is ₹10 more than B pays."
   },
   {
    "hash": "7f9d6e919b1cab143b266b817e8db76171842831cded6bd6d34e3548ad345048",
@@ -218,7 +218,7 @@
    "chapter": "Application of Integrals",
    "subtopic": "Area Bounded by a Curve and a Line",
    "stem": "Sketch the graph defined by \\(\\left\\{(x,\\ y) : \\dfrac{x^2}{25} + \\dfrac{y^2}{25} = 1\\right\\}\\). Find the area of the region of minor segment cut off by the line \\(x = \\dfrac{5}{2}\\), using integration.",
-   "solution": ""
+   "solution": "Both denominators are 25, so \\(\\dfrac{x^2}{25} + \\dfrac{y^2}{25} = 1\\) reduces to \\(x^2 + y^2 = 25\\): despite being written in the standard form of an ellipse, the curve is a circle centred at the origin with radius 5. The vertical line \\(x = \\dfrac{5}{2}\\) meets it where \\(y^2 = 25 - \\dfrac{25}{4} = \\dfrac{75}{4}\\), that is at \\(\\left(\\dfrac{5}{2},\\ \\pm\\dfrac{5\\sqrt{3}}{2}\\right)\\), and the minor segment is the smaller piece cut off, lying to the right of the line between \\(x = \\dfrac{5}{2}\\) and \\(x = 5\\). That region is symmetric about the x-axis, so its area is twice the part above the axis, where \\(y = \\sqrt{25 - x^2}\\), giving area \\(= 2\\int_{5/2}^{5} \\sqrt{25 - x^2}\\,dx\\). Using \\(\\int \\sqrt{a^2 - x^2}\\,dx = \\dfrac{x}{2}\\sqrt{a^2 - x^2} + \\dfrac{a^2}{2}\\sin^{-1}\\dfrac{x}{a}\\) with \\(a = 5\\), this is \\(2\\left[\\dfrac{x}{2}\\sqrt{25 - x^2} + \\dfrac{25}{2}\\sin^{-1}\\dfrac{x}{5}\\right]_{5/2}^{5}\\). At \\(x = 5\\) the bracket equals \\(0 + \\dfrac{25}{2}\\cdot\\dfrac{\\pi}{2} = \\dfrac{25\\pi}{4}\\), and at \\(x = \\dfrac{5}{2}\\) it equals \\(\\dfrac{5}{4}\\cdot\\dfrac{5\\sqrt{3}}{2} + \\dfrac{25}{2}\\cdot\\dfrac{\\pi}{6} = \\dfrac{25\\sqrt{3}}{8} + \\dfrac{25\\pi}{12}\\). Subtracting and doubling, the area is \\(2\\left(\\dfrac{25\\pi}{4} - \\dfrac{25\\pi}{12} - \\dfrac{25\\sqrt{3}}{8}\\right) = \\dfrac{25\\pi}{3} - \\dfrac{25\\sqrt{3}}{4} = 25\\left(\\dfrac{\\pi}{3} - \\dfrac{\\sqrt{3}}{4}\\right)\\) square units, roughly 15.35. As a check, the chord subtends a central angle of \\(\\dfrac{2\\pi}{3}\\), and the standard segment formula \\(\\dfrac{r^2}{2}\\left(\\theta - \\sin\\theta\\right) = \\dfrac{25}{2}\\left(\\dfrac{2\\pi}{3} - \\dfrac{\\sqrt{3}}{2}\\right)\\) gives exactly the same value."
   }
  ]
 }

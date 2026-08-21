@@ -32,7 +32,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "The angle between two non-zero vectors is obtuse exactly when their dot product is negative, so compute it. \\(\\vec{a}\\cdot\\vec{b} = \\left(2x^2\\right)(7) + (4x)(-2) + (1)(x) = 14x^2 - 8x + x = 14x^2 - 7x = 7x(2x - 1)\\). This product is negative precisely when \\(x\\) and \\(2x - 1\\) have opposite signs, which happens for \\(0 < x < \\frac{1}{2}\\). Hence the set of values is the open interval \\(\\left(0, \\frac{1}{2}\\right)\\), which is option (C) \\(\\left(0, \\frac{1}{2}\\right)\\). The endpoints are excluded deliberately: at \\(x = 0\\) and at \\(x = \\frac{1}{2}\\) the dot product is zero, which is a right angle and not an obtuse one, so the closed interval would be wrong."
   },
   {
    "hash": "d3e2ea005dbfb6c74566264f1c3a78fd4701eedc564a29c14a7d517d1cc376dc",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "The trick is to write the numerator \\(1\\) as \\(\\sin^2 x + \\cos^2 x\\), which lets the fraction split. \\(\\frac{1}{\\sin^2 x\\cos^2 x} = \\frac{\\sin^2 x + \\cos^2 x}{\\sin^2 x\\cos^2 x} = \\frac{1}{\\cos^2 x} + \\frac{1}{\\sin^2 x} = \\sec^2 x + \\operatorname{cosec}^2 x\\). Integrating each piece, \\(\\int \\sec^2 x\\,dx = \\tan x\\) and \\(\\int \\operatorname{cosec}^2 x\\,dx = -\\cot x\\). Hence the integral is \\(\\tan x - \\cot x + C\\), which is option (C) \\(\\tan x - \\cot x + C\\)."
   },
   {
    "hash": "6b5e6c67a5a0bf03f62a27b2fd0e93c341d68f8693d66331a7d10b7c26ed76ec",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "A skew-symmetric matrix satisfies \\(P^T = -P\\). Taking determinants of both sides and using \\(\\det(P^T) = \\det(P)\\) together with \\(\\det(kP) = k^n\\det(P)\\) for order \\(n\\), we get \\(\\det(P) = \\det(-P) = (-1)^n\\det(P)\\). Here \\(n = 3\\), which is odd, so \\((-1)^n = -1\\) and the relation reads \\(\\det(P) = -\\det(P)\\), giving \\(2\\det(P) = 0\\) and hence \\(\\det(P) = 0\\). (This is the general fact that every skew-symmetric matrix of odd order is singular.) So \\(\\alpha = 0\\) and \\((2025)^{\\alpha} = (2025)^{0} = 1\\), which is option (B) \\(1\\)."
   },
   {
    "hash": "ba3dd989e093528c18a7ac6d208413881dc296220f30a592ea867a34a03f1c66",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Reduce the angle first. Since \\(\\frac{43\\pi}{5} = \\frac{40\\pi}{5} + \\frac{3\\pi}{5} = 8\\pi + \\frac{3\\pi}{5}\\) and cosine has period \\(2\\pi\\), \\(\\cos\\frac{43\\pi}{5} = \\cos\\frac{3\\pi}{5}\\). Now turn the cosine into a sine so the inverse sine can act: \\(\\cos\\theta = \\sin\\left(\\frac{\\pi}{2} - \\theta\\right)\\) gives \\(\\cos\\frac{3\\pi}{5} = \\sin\\left(\\frac{\\pi}{2} - \\frac{3\\pi}{5}\\right) = \\sin\\left(-\\frac{\\pi}{10}\\right)\\). Because \\(-\\frac{\\pi}{10}\\) already lies in the principal range \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\) of \\(\\sin^{-1}\\), no further adjustment is needed and \\(\\sin^{-1}\\left(\\cos\\frac{43\\pi}{5}\\right) = -\\frac{\\pi}{10}\\), which is option (B) \\(\\frac{-\\pi}{10}\\)."
   },
   {
    "hash": "bbf3742b28c4f3fb1fd41a288fa5be3970d535c6567d452d25032840cc866b24",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "The probabilities in any distribution must sum to \\(1\\), so \\(p + p + 0.3 + 2p = 1\\). That is \\(4p = 0.7\\), giving \\(p = 0.175 = \\frac{7}{40}\\). Each entry is then non-negative and at most \\(1\\), so this really is a valid distribution. The required value is option (A) \\(\\frac{7}{40}\\)."
   },
   {
    "hash": "8ae376c93037c2adaa40ff2750c7ab0714acb96e0bae53667055bb3ea2ecaea7",
@@ -182,7 +182,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "For a triangle \\(PQR\\), the vectors \\(\\overrightarrow{PQ}\\) and \\(\\overrightarrow{PR}\\) are two sides from the same vertex, and the magnitude of their cross product is twice the area. So the area is \\(\\frac{1}{2}\\left|\\overrightarrow{PQ} \\times \\overrightarrow{PR}\\right|\\). Here \\(\\left|4\\hat{i} + 8\\hat{j} - 8\\hat{k}\\right| = \\sqrt{4^2 + 8^2 + (-8)^2} = \\sqrt{16 + 64 + 64} = \\sqrt{144} = 12\\), so the area is \\(\\frac{1}{2} \\times 12 = 6\\) square units, which is option (C) 6 sq units."
   },
   {
    "hash": "8661146af4463b6ed0f4a03f7c7e0c3dcec66eb1b09f740cf6025cee09d06918",
@@ -193,7 +193,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "Evaluate : \\(\\displaystyle\\int_0^{\\pi} \\dfrac{\\sin 2px}{\\sin x}\\;dx\\), \\(p \\in N\\).",
-   "solution": ""
+   "solution": "Apply the property \\(\\int_{0}^{a} h(x)\\,dx = \\int_{0}^{a} h(a - x)\\,dx\\) with \\(a = \\pi\\). Writing \\(I\\) for the integral, \\(I = \\int_{0}^{\\pi} \\frac{\\sin\\left(2p(\\pi - x)\\right)}{\\sin(\\pi - x)}\\,dx\\). The denominator is unchanged, because \\(\\sin(\\pi - x) = \\sin x\\). For the numerator, expand \\(\\sin(2p\\pi - 2px) = \\sin 2p\\pi \\cos 2px - \\cos 2p\\pi \\sin 2px\\); since \\(p\\) is a natural number, \\(2p\\pi\\) is a whole multiple of \\(2\\pi\\), so \\(\\sin 2p\\pi = 0\\) and \\(\\cos 2p\\pi = 1\\), and the numerator collapses to \\(-\\sin 2px\\). Hence \\(I = -\\int_{0}^{\\pi}\\frac{\\sin 2px}{\\sin x}\\,dx = -I\\), so \\(2I = 0\\) and \\(I = 0\\), for every \\(p \\in N\\). (The case \\(p = 1\\) is an easy independent check: \\(\\frac{\\sin 2x}{\\sin x} = 2\\cos x\\), and \\(\\int_{0}^{\\pi} 2\\cos x\\,dx = 2\\left[\\sin x\\right]_{0}^{\\pi} = 0\\).)"
   },
   {
    "hash": "58c15feab08e95094f3e015ea18437334196144edf794baf423df1a65da11914",
@@ -204,7 +204,7 @@
    "chapter": "Vector Algebra",
    "subtopic": "Addition of Vectors",
    "stem": "Let \\(\\vec{p} = 2\\hat{i} - 3\\hat{j} - \\hat{k}\\), \\(\\vec{q} = -3\\hat{i} + 4\\hat{j} + \\hat{k}\\) and \\(\\vec{r} = \\hat{i} + \\hat{j} + 2\\hat{k}\\). Express \\(\\vec{r}\\) in the form of \\(\\vec{r} = \\lambda\\vec{p} + \\mu\\vec{q}\\) and hence find the values of \\(\\lambda\\) and \\(\\mu\\).",
-   "solution": ""
+   "solution": "Write \\(\\vec{r} = \\lambda\\vec{p} + \\mu\\vec{q}\\) and compare components, which gives three equations in the two unknowns: from \\(\\hat{i}\\), \\(2\\lambda - 3\\mu = 1\\); from \\(\\hat{j}\\), \\(-3\\lambda + 4\\mu = 1\\); from \\(\\hat{k}\\), \\(-\\lambda + \\mu = 2\\). The third is the simplest, so start there: \\(\\mu = \\lambda + 2\\). Substituting into the first, \\(2\\lambda - 3(\\lambda + 2) = 1\\), that is \\(-\\lambda - 6 = 1\\), so \\(\\lambda = -7\\) and then \\(\\mu = -5\\). The second equation is not needed to find the values but is exactly the consistency check: \\(-3(-7) + 4(-5) = 21 - 20 = 1\\), which holds, so \\(\\vec{r}\\) genuinely lies in the plane of \\(\\vec{p}\\) and \\(\\vec{q}\\). Hence \\(\\vec{r} = -7\\vec{p} - 5\\vec{q}\\), with \\(\\lambda = -7\\) and \\(\\mu = -5\\)."
   },
   {
    "hash": "b5985d2a8b5c59e979f01e5db7e7d486ead227526cfd9dbd8c9180aa4d2187f6",
@@ -215,7 +215,7 @@
    "chapter": "Relations and Functions",
    "subtopic": "One-One and Onto Functions",
    "stem": "Prove that \\(f : N \\rightarrow N\\) defined as \\(f(x) = ax + b\\) \\((a, b \\in N)\\) is one-one but not onto.",
-   "solution": ""
+   "solution": "There are two things to prove. One-one: suppose \\(x_1, x_2 \\in N\\) with \\(f(x_1) = f(x_2)\\). Then \\(ax_1 + b = ax_2 + b\\), so \\(ax_1 = ax_2\\), and since \\(a \\in N\\) is non-zero it may be cancelled, giving \\(x_1 = x_2\\). Hence \\(f\\) is one-one. Not onto: an element \\(y\\) of the codomain \\(N\\) is in the range only if \\(ax + b = y\\) has a solution \\(x = \\frac{y - b}{a}\\) that is itself a natural number, and a single explicit \\(y\\) is enough to show this fails. Take \\(y = b\\), which does belong to the codomain because \\(b \\in N\\). Then \\(ax + b = b\\) forces \\(ax = 0\\), and since \\(a \\neq 0\\) this gives \\(x = 0\\), which is not a natural number. So no element of the domain is mapped to \\(b\\), and \\(f\\) is not onto. (The same point can be made by size: \\(a \\ge 1\\) and \\(b \\ge 1\\), so \\(f(x) = ax + b \\ge a + b \\ge 2\\) for every \\(x \\in N\\), and therefore \\(y = 1\\) is never attained either.)"
   },
   {
    "hash": "78df47dbd9727026a8863ef2504b0874e4279d1b770b526f177fdaa1d938eac2",
@@ -227,7 +227,7 @@
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "The feasible region along with corner points for a linear programming problem are shown in the graph. Write all the constraints for the given linear programing problem.",
    "figure": "REQUIRED — the question asks for the constraints OF THE PRINTED GRAPH and the stem names not one number. The graph is printed ABOVE the stem text (the question number 28 stands alone beside the graph, with the words following it): a hatched feasible region in the first quadrant with corner points A(0, 30), B(15, 25), C(30, 10) and D(35, 0), a fifth labelled point E(0, 70) off the region, and three lines labelled eq1, eq2 and eq3. Without it the question is unanswerable. Page idx 14; reprinted in the marking scheme at ms/p12.",
-   "solution": ""
+   "solution": "Each slanting edge of the shaded region is the line through two consecutive corner points, so find the three lines and then convert each into an inequality by testing the origin. Through \\(A(0, 30)\\) and \\(B(15, 25)\\): the slope is \\(\\frac{25 - 30}{15 - 0} = -\\frac{1}{3}\\), so \\(y - 30 = -\\frac{1}{3}(x - 0)\\), which rearranges to \\(x + 3y = 90\\). Through \\(B(15, 25)\\) and \\(C(30, 10)\\): the slope is \\(\\frac{10 - 25}{30 - 15} = -1\\), so \\(y - 10 = -(x - 30)\\), that is \\(x + y = 40\\). Through \\(C(30, 10)\\) and \\(D(35, 0)\\): the slope is \\(\\frac{0 - 10}{35 - 30} = -2\\), so \\(y - 10 = -2(x - 30)\\), that is \\(2x + y = 70\\); the labelled point \\(E(0, 70)\\) lies on this same line, since \\(2(0) + 70 = 70\\), which is why the graph shows it reaching the \\(y\\)-axis there. The shaded region lies on the origin side of all three lines, and \\((0, 0)\\) satisfies \\(0 \\le 90\\), \\(0 \\le 40\\) and \\(0 \\le 70\\), so each line contributes a \\(\\le\\) constraint. The region also sits in the first quadrant, giving the non-negativity restrictions. Hence the constraints are \\(x + 3y \\le 90\\), \\(x + y \\le 40\\), \\(2x + y \\le 70\\), \\(x \\ge 0\\), \\(y \\ge 0\\). As a check, the four corner points of the region all satisfy every constraint, with \\(A\\) and \\(B\\) lying on \\(x + 3y = 90\\), \\(B\\) and \\(C\\) on \\(x + y = 40\\), and \\(C\\) and \\(D\\) on \\(2x + y = 70\\); the fifth labelled point \\(E(0, 70)\\) is outside the region, as it must be, since \\(0 + 3(70) = 210\\) exceeds \\(90\\)."
   },
   {
    "hash": "31ce235000071a8ba606a7656982f1f3219ebdbbef5c8ce67cf00a8cead7072a",
@@ -238,7 +238,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "f and g are continuous functions on interval [a, b]. Given that \\(f(a - x) = f(x)\\) and \\(g(x) + g(a - x) = a\\), show that \\(\\displaystyle\\int_0^{a} f(x)\\,g(x)\\,dx = \\dfrac{a}{2} \\displaystyle\\int_0^{a} f(x)\\,dx\\).",
-   "solution": ""
+   "solution": "Let \\(I = \\int_{0}^{a} f(x)g(x)\\,dx\\) and apply the property \\(\\int_{0}^{a} h(x)\\,dx = \\int_{0}^{a} h(a - x)\\,dx\\), which gives \\(I = \\int_{0}^{a} f(a - x)\\,g(a - x)\\,dx\\). The two hypotheses now do all the work: \\(f(a - x) = f(x)\\) leaves the first factor unchanged, while \\(g(x) + g(a - x) = a\\) rearranges to \\(g(a - x) = a - g(x)\\). Substituting both, \\(I = \\int_{0}^{a} f(x)\\left[a - g(x)\\right]dx = a\\int_{0}^{a} f(x)\\,dx - \\int_{0}^{a} f(x)g(x)\\,dx = a\\int_{0}^{a} f(x)\\,dx - I\\). Adding \\(I\\) to both sides gives \\(2I = a\\int_{0}^{a} f(x)\\,dx\\), so \\(I = \\frac{a}{2}\\int_{0}^{a} f(x)\\,dx\\), which is what was to be shown. (A note on the wording of the question rather than on the mathematics: it states that \\(f\\) and \\(g\\) are continuous on \\([a, b]\\), yet both hypotheses and the integral itself involve only values of \\(x\\) between \\(0\\) and \\(a\\). Continuity on \\([0, a]\\) is what the argument actually needs; the official marking scheme reprints the question with the same wording, so this is the question as set.)"
   },
   {
    "hash": "88cdab4005d7aef3e1e0d734afef99865171e9745149fa21ee93d2a2093e5467",
@@ -249,7 +249,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration by Partial Fractions",
    "stem": "Find : \\(\\displaystyle\\int \\dfrac{5x}{(x + 1)(x^2 + 9)}\\;dx\\).",
-   "solution": ""
+   "solution": "The denominator has one linear factor and one irreducible quadratic factor, so the partial-fraction form is \\(\\frac{5x}{(x + 1)(x^2 + 9)} = \\frac{A}{x + 1} + \\frac{Bx + C}{x^2 + 9}\\). Clearing denominators gives \\(5x = A\\left(x^2 + 9\\right) + (Bx + C)(x + 1)\\). Putting \\(x = -1\\) kills the second term and leaves \\(-5 = 10A\\), so \\(A = -\\frac{1}{2}\\). Comparing coefficients of \\(x^2\\) gives \\(0 = A + B\\), so \\(B = \\frac{1}{2}\\), and comparing constant terms gives \\(0 = 9A + C\\), so \\(C = \\frac{9}{2}\\). The coefficient of \\(x\\) then checks out, since \\(B + C = \\frac{1}{2} + \\frac{9}{2} = 5\\). Now split the integral into three standard pieces: \\(-\\frac{1}{2}\\int\\frac{dx}{x + 1} + \\frac{1}{4}\\int\\frac{2x}{x^2 + 9}\\,dx + \\frac{9}{2}\\int\\frac{dx}{x^2 + 9}\\), where the middle term has been arranged so that its numerator is the derivative of its denominator. These integrate to \\(-\\frac{1}{2}\\log|x + 1|\\), \\(\\frac{1}{4}\\log\\left(x^2 + 9\\right)\\) and \\(\\frac{9}{2}\\cdot\\frac{1}{3}\\tan^{-1}\\frac{x}{3} = \\frac{3}{2}\\tan^{-1}\\frac{x}{3}\\) respectively. Hence the integral is \\(-\\frac{1}{2}\\log|x + 1| + \\frac{1}{4}\\log\\left(x^2 + 9\\right) + \\frac{3}{2}\\tan^{-1}\\frac{x}{3} + C\\)."
   }
  ]
 }

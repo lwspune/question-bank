@@ -32,7 +32,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Both given vectors lie in the \\(xy\\)-plane, so anything perpendicular to both must point along \\(\\hat{k}\\); the cross product confirms it. \\(\\left(\\hat{i} - \\hat{j}\\right) \\times \\left(\\hat{i} + \\hat{j}\\right) = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & -1 & 0 \\\\ 1 & 1 & 0 \\end{vmatrix} = \\hat{i}(0 - 0) - \\hat{j}(0 - 0) + \\hat{k}\\bigl(1 - (-1)\\bigr) = 2\\hat{k}\\). Its magnitude is \\(2\\), so the required unit vector is \\(\\frac{2\\hat{k}}{2} = \\hat{k}\\), which is option (A) \\(\\hat{k}\\)."
   },
   {
    "hash": "e8d9cefa32f4f7b6dda398e9d6efd91b9698ed4d429598c5a7ccf0e1a2a182dd",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "The two integrals are linked by integration by parts. Take \\(e^x\\) as the first function and \\(\\frac{1}{(1 + x)^2}\\) as the second, whose integral is \\(-\\frac{1}{1 + x}\\): \\(\\int_{0}^{1} \\frac{e^x}{(1 + x)^2}\\,dx = \\left[-\\frac{e^x}{1 + x}\\right]_{0}^{1} + \\int_{0}^{1} \\frac{e^x}{1 + x}\\,dx\\). The bracket evaluates to \\(-\\frac{e}{2} - (-1) = 1 - \\frac{e}{2}\\), and the integral left over is exactly the given \\(\\alpha\\). Hence the value is \\(\\alpha + 1 - \\frac{e}{2}\\), which is option (B) \\(\\alpha + 1 - \\frac{e}{2}\\)."
   },
   {
    "hash": "e47f74ae7d70507b0241bf0e8172f619622df10ed44143c2c126287427e07dc7",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Two matrices are equal only if every corresponding entry matches, which gives four equations. The \\((2,1)\\) entries give \\(3x = x + 6\\), so \\(x = 3\\); the \\((2,2)\\) entries give \\(x + 3 = y\\), so \\(y = 6\\). The other two are then automatically satisfied and act as a check: the \\((1,1)\\) entries require \\(x + y = 9\\), and \\(3 + 6 = 9\\); the \\((1,2)\\) entries require \\(3y = 4x + y\\), that is \\(2y = 4x\\), and \\(12 = 12\\). Hence \\(x - y = 3 - 6 = -3\\), which is option (B) \\(-3\\)."
   },
   {
    "hash": "637b7d2f8937e4aae4acbd6a3ef4af2b87045f884c8473ab59547c39b71e59b0",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Both events in the required conditional probability are complements, so use De Morgan first: \\(M' \\cap N' = (M \\cup N)'\\). Now \\(P(M \\cup N) = P(M) + P(N) - P(M \\cap N) = 0.6 + 0.2 - 0.5 = 0.3\\), so \\(P(M' \\cap N') = 1 - 0.3 = 0.7\\), and \\(P(N') = 1 - 0.2 = 0.8\\). Therefore \\(P(M'/N') = \\frac{P(M' \\cap N')}{P(N')} = \\frac{0.7}{0.8} = \\frac{7}{8}\\), which is option (A) \\(\\frac{7}{8}\\). A closing note for the careful reader: the data as printed cannot describe any real pair of events, because \\(P(M \\cap N) = 0.5\\) exceeds \\(P(N) = 0.2\\) and an intersection can never be more likely than either event containing it. The computation above is nevertheless the one the question intends, and it is what the official key records."
   },
   {
    "hash": "22d2b6d09fa3f43723175567cb6cac610599c86d85c7f056b32997d8760d48a1",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Take the four statements against the standard result for \\(AX = B\\). When \\(|A| \\neq 0\\) the system is consistent with the unique solution \\(X = A^{-1}B\\); the first statement writes this as \\(X = BA^{-1}\\), which is not even a defined product for a column matrix \\(B\\), so it is wrong, and the statement that \\(|A| \\neq 0\\) makes the system inconsistent is wrong for the same reason. When \\(|A| = 0\\) the deciding quantity is \\((\\operatorname{adj} A)B\\): if it is a non-zero matrix the system is inconsistent, whereas if it is the zero matrix the system may have infinitely many solutions or none at all, and only further work decides which. So describing \\(|A| = 0\\) with \\((\\operatorname{adj} A)B = 0\\) as inconsistent is wrong, and the correct statement is option (D) May or may not be consistent if \\(|A| = 0\\) and \\((\\operatorname{adj} A)B = 0\\)."
   },
   {
    "hash": "5f367842a7ca5409e6555f2f0f74878eca11d433f55f980a8823476f6ad9fd50",
@@ -182,7 +182,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Order and degree can be read off only when the equation is a polynomial in the derivatives, and this one already is once the bracket is expanded, since the expansion produces only whole-number powers of \\(\\frac{dy}{dx}\\). The highest-order derivative present is \\(\\frac{d^2y}{dx^2}\\), so the order is \\(2\\). The degree is the power of that highest-order derivative, and it appears to the first power on the right; the fifth power on the left is carried by \\(\\frac{dy}{dx}\\), a lower-order derivative, which does not affect the degree. Hence the answer is option (C) order 2, degree 1."
   },
   {
    "hash": "05e45d3697f7d6cc8ff8186ddecbf66c1de14b3b9d14a3c5dd4caf81d62d18f3",
@@ -193,7 +193,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Increasing and Decreasing Functions",
    "stem": "Find the values of 'a' for which \\(f(x) = \\sqrt{3} \\sin x - \\cos x - 2ax + b\\) is decreasing on \\(\\mathbb{R}\\).",
-   "solution": ""
+   "solution": "Differentiating, \\(f'(x) = \\sqrt{3}\\cos x + \\sin x - 2a\\). The two trigonometric terms combine into a single sine: \\(\\sqrt{3}\\cos x + \\sin x = 2\\left(\\frac{\\sqrt{3}}{2}\\cos x + \\frac{1}{2}\\sin x\\right) = 2\\left(\\sin\\frac{\\pi}{3}\\cos x + \\cos\\frac{\\pi}{3}\\sin x\\right) = 2\\sin\\left(x + \\frac{\\pi}{3}\\right)\\). So \\(f'(x) = 2\\sin\\left(x + \\frac{\\pi}{3}\\right) - 2a\\), and \\(f\\) is decreasing on \\(\\mathbb{R}\\) exactly when \\(f'(x) \\le 0\\) for every real \\(x\\), that is \\(\\sin\\left(x + \\frac{\\pi}{3}\\right) \\le a\\) for every \\(x\\). As \\(x\\) ranges over \\(\\mathbb{R}\\) that sine takes every value up to \\(1\\), so the condition holds precisely when \\(a \\ge 1\\). Hence \\(a \\in [1, \\infty)\\). (The marking scheme records the answer as \\([1, \\infty)\\) or \\((1, \\infty)\\), accepting either from a candidate; the endpoint \\(a = 1\\) does qualify, since it gives \\(f'(x) \\le 0\\) everywhere with equality only at isolated points.)"
   },
   {
    "hash": "9244ec9e785ff280b1848eae40809d02f0a2d31353159f70af43415bfe2e8dee",
@@ -204,7 +204,7 @@
    "chapter": "Inverse Trigonometric Functions",
    "subtopic": "Properties of Inverse Trigonometric Functions",
    "stem": "Solve for \\(x\\),\n\\(2 \\tan^{-1} x + \\sin^{-1}\\left(\\frac{2x}{1 + x^2}\\right) = 4\\sqrt{3}\\)",
-   "solution": ""
+   "solution": "[CBSE marking scheme: the verdict is correct - the equation has no solution - but the closing line, \\(x = \\tan(\\sqrt{3})\\) which has no solution, contradicts itself: \\(\\tan(\\sqrt{3})\\) is a perfectly ordinary real number, about \\(-6.08\\). What actually fails is that \\(\\tan^{-1}x\\) can never equal \\(\\sqrt{3}\\). The scheme also applies the identity \\(\\sin^{-1}\\frac{2x}{1 + x^2} = 2\\tan^{-1}x\\) without noting that it holds only for \\(|x| \\le 1\\); the other branches are checked below and do not rescue the equation either.] For \\(|x| \\le 1\\) the identity \\(\\sin^{-1}\\frac{2x}{1 + x^2} = 2\\tan^{-1}x\\) applies, so the equation becomes \\(2\\tan^{-1}x + 2\\tan^{-1}x = 4\\sqrt{3}\\), that is \\(\\tan^{-1}x = \\sqrt{3} \\approx 1.732\\). But \\(\\tan^{-1}x\\) always lies in \\(\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\) and \\(\\frac{\\pi}{2} \\approx 1.571\\), which is smaller than \\(\\sqrt{3}\\), so no such \\(x\\) exists. The remaining branches fare no better: for \\(x > 1\\) the identity reads \\(\\sin^{-1}\\frac{2x}{1 + x^2} = \\pi - 2\\tan^{-1}x\\), so the left-hand side collapses to \\(2\\tan^{-1}x + \\pi - 2\\tan^{-1}x = \\pi\\), and for \\(x < -1\\) it collapses to \\(-\\pi\\). So on every branch the left-hand side is confined to \\([-\\pi, \\pi]\\), while the right-hand side is \\(4\\sqrt{3} \\approx 6.93\\). Hence the equation has no solution."
   },
   {
    "hash": "80eb0b95f303de02e74a35b36a22233a3654821e84ab43ec1eb928185aa6c426",
@@ -215,7 +215,7 @@
    "chapter": "Linear Programming",
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "Solve the following linear programming problem graphically :\nMaximize \\(Z = 8x + 9y\\)\nSubject to the constraints :\n\\(2x + 3y \\leq 6\\)\n\\(3x - 2y \\leq 6\\)\n\\(y \\leq 1\\)\n\\(x \\geq 0\\), \\(y \\geq 0\\)",
-   "solution": ""
+   "solution": "Draw the lines \\(2x + 3y = 6\\), \\(3x - 2y = 6\\) and \\(y = 1\\) together with the axes. The feasible region lies on or below \\(2x + 3y = 6\\), on or below \\(y = 1\\), on or below the line \\(3x - 2y = 6\\) in the sense \\(3x - 2y \\le 6\\), and in the first quadrant; since \\(2x + 3y \\le 6\\) with \\(x, y \\ge 0\\) already confines it to a triangle, the region is bounded, and it is a pentagon. Its corner points come from intersecting the boundaries in pairs: the origin \\((0, 0)\\); \\(x = 0\\) with \\(y = 1\\) gives \\((0, 1)\\); \\(y = 1\\) with \\(2x + 3y = 6\\) gives \\(2x = 3\\), so \\(\\left(\\frac{3}{2}, 1\\right)\\); \\(2x + 3y = 6\\) with \\(3x - 2y = 6\\) gives \\(13x = 30\\) and then \\(y = \\frac{6 - 2x}{3} = \\frac{6}{13}\\), so \\(\\left(\\frac{30}{13}, \\frac{6}{13}\\right)\\); and \\(3x - 2y = 6\\) with \\(y = 0\\) gives \\((2, 0)\\). Evaluating \\(Z = 8x + 9y\\) at each: \\(Z(0, 0) = 0\\), \\(Z(0, 1) = 9\\), \\(Z\\left(\\frac{3}{2}, 1\\right) = 12 + 9 = 21\\), \\(Z\\left(\\frac{30}{13}, \\frac{6}{13}\\right) = \\frac{240 + 54}{13} = \\frac{294}{13}\\) and \\(Z(2, 0) = 16\\). The largest of these is \\(\\frac{294}{13}\\), which is about \\(22.6\\), so the maximum value is \\(Z = \\frac{294}{13}\\), attained at \\(x = \\frac{30}{13}\\), \\(y = \\frac{6}{13}\\)."
   },
   {
    "hash": "178a6550d1b3dc7a86f329960a3d9896d1e90194c72fcfca00ce8ba5294a9c31",
@@ -226,7 +226,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration by Partial Fractions",
    "stem": "Find : \\(\\int \\frac{2x - 1}{(x - 1)(x + 2)(x - 3)}\\,dx\\)",
-   "solution": ""
+   "solution": "The denominator is already a product of distinct linear factors, so split into partial fractions: \\(\\frac{2x - 1}{(x - 1)(x + 2)(x - 3)} = \\frac{P}{x - 1} + \\frac{Q}{x + 2} + \\frac{R}{x - 3}\\). Clearing denominators and substituting each root in turn gives the coefficients at once. At \\(x = 1\\), \\(P = \\frac{2(1) - 1}{(1 + 2)(1 - 3)} = \\frac{1}{-6} = -\\frac{1}{6}\\); at \\(x = -2\\), \\(Q = \\frac{2(-2) - 1}{(-2 - 1)(-2 - 3)} = \\frac{-5}{15} = -\\frac{1}{3}\\); at \\(x = 3\\), \\(R = \\frac{2(3) - 1}{(3 - 1)(3 + 2)} = \\frac{5}{10} = \\frac{1}{2}\\). As a check, \\(P + Q + R = -\\frac{1}{6} - \\frac{1}{3} + \\frac{1}{2} = 0\\), which it must be because the numerator has degree \\(1\\) against a denominator of degree \\(3\\). Integrating term by term, the answer is \\(-\\frac{1}{6}\\log|x - 1| - \\frac{1}{3}\\log|x + 2| + \\frac{1}{2}\\log|x - 3| + C\\)."
   },
   {
    "hash": "17220de6f16d99d02216a0c6e2f914defebed3b0325019f04090fa8fb936a523",
@@ -237,7 +237,7 @@
    "chapter": "Integrals",
    "subtopic": "Definite Integrals and the Fundamental Theorem",
    "stem": "Evaluate : \\(\\int_{0}^{5} (|x - 1| + |x - 2| + |x - 5|)\\,dx\\)",
-   "solution": ""
+   "solution": "Each modulus changes sign at its own point, so deal with the three terms separately over \\([0, 5]\\). For \\(|x - 1|\\), the sign changes at \\(x = 1\\): \\(\\int_{0}^{1}(1 - x)\\,dx + \\int_{1}^{5}(x - 1)\\,dx = \\frac{1}{2} + \\frac{16}{2} = \\frac{17}{2}\\). For \\(|x - 2|\\), the sign changes at \\(x = 2\\): \\(\\int_{0}^{2}(2 - x)\\,dx + \\int_{2}^{5}(x - 2)\\,dx = 2 + \\frac{9}{2} = \\frac{13}{2}\\). For \\(|x - 5|\\) the breakpoint sits at the upper limit, so \\(x - 5 \\le 0\\) throughout and no splitting is needed: \\(\\int_{0}^{5}(5 - x)\\,dx = 25 - \\frac{25}{2} = \\frac{25}{2}\\). Adding the three, the integral equals \\(\\frac{17}{2} + \\frac{13}{2} + \\frac{25}{2} = \\frac{55}{2}\\)."
   },
   {
    "hash": "e04c8411274594b1067a9022ce2063efea7e9455a3e1cea08281a2201cf35357",
@@ -248,7 +248,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Rate of Change of Quantities",
    "stem": "A spherical medicine ball when dropped in water dissolves in such a way that the rate of decrease of volume at any instant is proportional to its surface area. Calculate the rate of decrease of its radius.",
-   "solution": ""
+   "solution": "Let the ball have radius \\(r\\) at time \\(t\\), so its volume is \\(V = \\frac{4}{3}\\pi r^3\\) and its surface area is \\(S = 4\\pi r^2\\). The stated law is that the volume decreases at a rate proportional to the surface area, so \\(\\frac{dV}{dt} = -kS = -k\\left(4\\pi r^2\\right)\\) for some constant \\(k > 0\\), the minus sign recording the decrease. Differentiating the volume formula with respect to \\(t\\) gives \\(\\frac{dV}{dt} = 4\\pi r^2\\frac{dr}{dt}\\). Equating the two expressions, \\(4\\pi r^2\\frac{dr}{dt} = -k\\left(4\\pi r^2\\right)\\), and since \\(r > 0\\) the factor \\(4\\pi r^2\\) cancels, leaving \\(\\frac{dr}{dt} = -k\\). So the radius decreases at the constant rate \\(k\\), independent of how large the ball currently is."
   },
   {
    "hash": "9ece37e9170c1e10313baa76b319424fce935cfabae65f579b42712aef3034da",
@@ -259,7 +259,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration by Parts",
    "stem": "Find : \\(\\int \\sin^{-1} \\sqrt{\\frac{x}{a + x}}\\,dx\\).",
-   "solution": ""
+   "solution": "The awkward part is the surd inside the inverse sine, and the substitution \\(x = a\\tan^2\\theta\\) removes it. Then \\(a + x = a\\sec^2\\theta\\), so \\(\\frac{x}{a + x} = \\frac{\\tan^2\\theta}{\\sec^2\\theta} = \\sin^2\\theta\\) and \\(\\sin^{-1}\\sqrt{\\frac{x}{a + x}} = \\sin^{-1}(\\sin\\theta) = \\theta\\); also \\(dx = 2a\\tan\\theta\\sec^2\\theta\\,d\\theta\\). The integral becomes \\(2a\\int \\theta\\,\\tan\\theta\\sec^2\\theta\\,d\\theta\\). Integrate by parts with \\(\\theta\\) as the first function and \\(\\tan\\theta\\sec^2\\theta\\) as the second, whose integral is \\(\\frac{\\tan^2\\theta}{2}\\): \\(2a\\left[\\theta\\cdot\\frac{\\tan^2\\theta}{2} - \\frac{1}{2}\\int \\tan^2\\theta\\,d\\theta\\right] = a\\left[\\theta\\tan^2\\theta - \\int\\left(\\sec^2\\theta - 1\\right)d\\theta\\right] = a\\left[\\theta\\tan^2\\theta - \\tan\\theta + \\theta\\right] + C\\). Since \\(\\theta\\tan^2\\theta + \\theta = \\theta\\sec^2\\theta\\), this is \\(a\\theta\\sec^2\\theta - a\\tan\\theta + C\\). Finally undo the substitution: \\(\\tan\\theta = \\sqrt{\\frac{x}{a}}\\), \\(\\sec^2\\theta = \\frac{a + x}{a}\\) and \\(\\theta = \\tan^{-1}\\sqrt{\\frac{x}{a}}\\), so \\(a\\theta\\sec^2\\theta = (a + x)\\tan^{-1}\\sqrt{\\frac{x}{a}}\\) and \\(a\\tan\\theta = a\\sqrt{\\frac{x}{a}} = \\sqrt{ax}\\). The integral is therefore \\((a + x)\\tan^{-1}\\sqrt{\\frac{x}{a}} - \\sqrt{ax} + C\\). Differentiating this back returns \\(\\tan^{-1}\\sqrt{\\frac{x}{a}}\\), which is the same angle as \\(\\sin^{-1}\\sqrt{\\frac{x}{a + x}}\\), so the result checks out."
   }
  ]
 }

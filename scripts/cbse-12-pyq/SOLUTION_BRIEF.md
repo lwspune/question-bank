@@ -232,6 +232,19 @@ same wave reported this, so it is systemic, not bad luck:
 Prefix every scratch file with your paper id (`_tmp_p2026_65_4_1_verify.ts`).
 And if a script you wrote behaves oddly, check it is still the script you wrote.
 
+### ⚠ A CONTROL CHARACTER IN JSON IS **ESCAPED** — scan BOTH layers
+
+An agent injected `chr(1)` into a solution to red-test its control-character
+check, and the check came back **clean**. Not a bug in the check's pattern: 
+`json.dumps` had written the byte as the six ASCII characters backslash-u-0-0-0-1, so **no
+raw control byte exists in the file** while the decoded string still carries one.
+A raw-byte scan of the file and a scan of the parsed strings are different tests,
+and the corruption can hide in either.
+
+So test both, and note the direction each is blind in: the byte scan misses an
+escaped control char; a regex over the JSON *text* misses nothing but will
+false-alarm on legitimate `\\n` inside a math zone. Neither alone is sufficient.
+
 ### ⚠ DO NOT COPY A REGEX CHARACTER CLASS OUT OF ANOTHER FILE
 
 Two leftover scratch probes in this directory were found to contain **literal
