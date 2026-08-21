@@ -215,6 +215,31 @@ Supporting tools:
 | `plan_paper.py` | per-paper skip list — turns the index into a work plan |
 | `lib.ts` | pure core: `parsePaperCode`, paper patterns, `sectionForQuestion` |
 
+Then the solution lane:
+
+```
+npx tsx scripts/cbse-12-pyq/dump-solutions.ts  2025-65-5-2
+[solution agent, against SOLUTION_BRIEF.md]     → fills data/2025-65-5-2.topaper.json
+npx tsx scripts/cbse-12-pyq/apply-solutions.ts 2025-65-5-2 --apply
+npx tsx scripts/cbse-12-pyq/audit-keys.ts      2025        # structural, zero-LLM
+npx tsx scripts/cbse-12-pyq/audit-omml.ts                  # Word-export gate
+```
+
+**RE-DUMPING A PAPER DROPS ITS ALREADY-APPLIED ROWS, and that is deliberate** —
+78 papers print 3,519 questions across only 1,766 distinct rows, so omitting a
+question solved from a sibling series is what keeps the job finite. The
+consequence is that a re-dumped `.topaper.json` is no longer a complete archive
+of that paper's solutions: for those rows the **DB is the live copy**, and git
+history holds the text as authored. `--all` re-emits every row, but always with
+an EMPTY `solution` — it is a fresh work file, not a restore. (`apply-solutions`
+skips blank rows, so re-running it can never blank a stored solution.)
+
+`audit-omml.ts` is local rather than the shared `npm run audit:omml` because that
+one filters with `ilike source_file` over a wide row shape ordered by id — no
+index applies, so Postgres sorts all ~49k rows to return this subset and dies on
+a statement timeout. Filtering on `exam_id` rides `questions_filter_idx`. It
+reuses `findOmmlFailures` verbatim, so it cannot disagree with the exporter.
+
 ---
 
 ## Hazards that have already bitten

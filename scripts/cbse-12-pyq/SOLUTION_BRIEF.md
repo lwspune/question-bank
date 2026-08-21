@@ -130,6 +130,31 @@ inconsistency, so a careful student who spots it is not left doubting themselves
 - **Prose, not a bare chain.** One sentence of orientation beats three lines of
   unexplained algebra.
 
+### Two phrasings that trip the key probe on a CORRECT solution
+
+`audit-keys` extracts the option letter a solution concludes with and compares it
+against the stored key. Two natural phrasings make it read a letter out of prose
+that asserts none, so a right answer is reported as SOLN≠KEY. Both have already
+fired on this corpus and both were correct maths. Avoid them:
+
+1. **Assertion-Reason questions.** CBSE labels the two statements `(A)` and `(R)`,
+   so "Hence (A) is true but (R) is false" ends in a token identical to option
+   letter A. Every paper carries two of these, so it recurs by construction.
+   Write **"So the Assertion is true while the Reason is false"** — name the
+   statements in words. (The probe already suppresses a *bare* trailing `(A)` in
+   an A-R solution, but not the `Hence (A)` form.)
+
+2. **"option a &lt;text&gt;".** Naming the option text is right, but when the text
+   begins with the article "a" the result is `option a right-angled triangle`,
+   and the extractor reads the article as letter A. Drop the word "option":
+   **"so the triangle is right-angled, matching the choice 'a right-angled
+   triangle'"**.
+
+This is not cosmetic. A false SOLN≠KEY costs a human the work of re-deriving a
+question that was never wrong, and — worse — it is indistinguishable from the
+real thing, so a corpus full of them trains the reader to skim past the genuine
+flag when it comes.
+
 ---
 
 ## 5. Maths goes in `\( … \)`
@@ -174,9 +199,12 @@ math zones first, which is why the applier uses it rather than a second regex.
 
 ## 6a. Two self-checks that work, and one that does not
 
-**Does not work: `git diff` on the topaper file.** It is UNTRACKED, so the diff is
-empty no matter what you changed. Two wave-1 agents were briefly reassured by a
-vacuously green diff.
+**Unreliable: `git diff` on the topaper file.** Whether it says anything depends
+on whether that paper has been committed before — the first papers were untracked
+and two wave-1 agents were reassured by a diff that was empty *because git had
+never seen the file*, not because nothing changed. Some are tracked now, so the
+signal is real for those and absent for the rest. Do not use it as your proof;
+use the hash check below, which works either way.
 
 **Works: recompute the hash.** For a subjective row,
 `subjectiveContentHash(stem, context)` must still equal the row's stored `hash`;
