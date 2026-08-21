@@ -150,6 +150,15 @@ fired on this corpus and both were correct maths. Avoid them:
    **"so the triangle is right-angled, matching the choice 'a right-angled
    triangle'"**.
 
+3. **A CLOSING PARENTHETICAL THAT DISMISSES A DISTRACTOR BY LETTER — the most
+   common of the three.** The probe takes the LAST letter a solution names, so
+   a perfectly correct `... which is option (C) 5.` followed by `(The value 30
+   in option (D) is f(-3), the maximum.)` reads as concluding **D**. Explaining
+   why a distractor is wrong is good teaching — keep it, and name the distractor
+   by its VALUE: **"(The value 30 is f(-3), the maximum on this interval, not
+   the minimum.)"** Same for "why log(-5) in option (C) is meaningless" →
+   "why the choice log(-5) is meaningless".
+
 This is not cosmetic. A false SOLN≠KEY costs a human the work of re-deriving a
 question that was never wrong, and — worse — it is indistinguishable from the
 real thing, so a corpus full of them trains the reader to skim past the genuine

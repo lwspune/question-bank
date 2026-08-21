@@ -56,6 +56,24 @@ const FIXES: Fix[] = [
     find: "so the triangle is right-angled — option a right-angled triangle.",
     replace: "so the triangle is right-angled, matching the choice “a right-angled triangle”.",
   },
+  // The recurring shape, and by far the most common: a CLOSING PARENTHETICAL
+  // that dismisses a distractor BY LETTER. The probe takes the LAST letter a
+  // solution names, so a correct conclusion followed by "(option (D) is ...)"
+  // reads as concluding D. Both keys below are correct; only the prose moves.
+  {
+    source: "cbse-12-pyq-2026-65-5-1",
+    qnum: "9",
+    why: "Closing note dismisses the distractor by letter. Key (C) correct: (x-2)^2 + 5 >= 5, attained at x = 2 which is in [-3, 2].",
+    find: "(The value 30 in option (D) is \\(f(-3)\\), the absolute maximum on this interval.)",
+    replace: "(The value 30 is \\(f(-3)\\), the absolute maximum on this interval, not the minimum.)",
+  },
+  {
+    source: "cbse-12-pyq-2026-65-5-1",
+    qnum: "11",
+    why: "Closing note names the meaningless distractor by letter. Key (A) correct: log 1 - log 5 = -log 5.",
+    find: "which is also why \\(\\log(-5)\\) in option (C) is meaningless.",
+    replace: "which is also why the choice \\(\\log(-5)\\) is meaningless.",
+  },
 ];
 
 async function main() {
@@ -67,15 +85,16 @@ async function main() {
     { auth: { persistSession: false } }
   );
 
-  const plan: { id: string; label: string; next: string; before: string | null; after: string | null }[] = [];
+  const plan: { id: string; label: string; next: string; key: string | null; before: string | null; after: string | null }[] = [];
   const bad: string[] = [];
+  const already: string[] = [];
 
   for (const f of FIXES) {
     const label = `${f.source} Q${f.qnum}`;
     if (f.find === f.replace) { bad.push(`${label}: find === replace — the needle was probably mangled`); continue; }
 
     const { data, error } = await client.from("questions")
-      .select("id, solution")
+      .select("id, solution, options(label, is_correct)")
       .eq("org_id", ORG_ID).eq("exam_id", EXAM_ID_CBSE_12).eq("question_kind", "pyq")
       .eq("source_file", f.source).eq("question_number", f.qnum);
     if (error) throw new Error(error.message);
@@ -84,20 +103,35 @@ async function main() {
     const cur = data[0].solution as string | null;
     if (!cur) { bad.push(`${label}: row carries no solution`); continue; }
     const hits = cur.split(f.find).length - 1;
-    if (hits !== 1) { bad.push(`${label}: needle matches ${hits} time(s), need exactly 1 — refusing`); continue; }
+    if (hits !== 1) {
+      // Already applied is NOT a failure — this script must be re-runnable, since
+      // each new audit round appends fixes to the list and re-runs the whole
+      // thing. Distinguish it from a genuinely unmatched needle (a mangled
+      // `find`, or a row whose text moved underneath us), which still refuses.
+      if (hits === 0 && cur.includes(f.replace)) { already.push(label); continue; }
+      bad.push(`${label}: needle matches ${hits} time(s), need exactly 1 — refusing`);
+      continue;
+    }
 
     const next = cur.split(f.find).join(f.replace);
+    const key = (data[0].options as { label: string; is_correct: boolean }[] | null ?? [])
+      .find((o) => o.is_correct)?.label ?? null;
     plan.push({
-      id: data[0].id as string, label, next,
+      id: data[0].id as string, label, next, key,
       before: concludedLetter(cur), after: concludedLetter(next),
     });
   }
 
   for (const p of plan) {
-    console.log(`${p.label}: concludedLetter ${p.before ?? "null"} -> ${p.after ?? "null"}`);
-    // The whole point is to stop the probe reading a letter out of correct prose.
-    if (p.after !== null) console.log(`  !! still resolves to a letter — the reword did not do its job`);
+    console.log(`${p.label}: concludedLetter ${p.before ?? "null"} -> ${p.after ?? "null"} (key ${p.key ?? "-"})`);
+    // The goal is not "names no letter" — it is "does not name a letter that
+    // DISAGREES with the key", which is exactly what audit-keys flags. A
+    // solution concluding its own correct letter is fine and is the house style.
+    if (p.after !== null && p.key !== null && p.after !== p.key) {
+      console.log(`  !! still resolves to ${p.after} against key ${p.key} — the reword did not do its job`);
+    }
   }
+  if (already.length) console.log(`\nalready applied (skipped): ${already.join(", ")}`);
   if (bad.length) {
     console.log(`\n${bad.length} refusal(s):`);
     for (const b of bad) console.log(`  ${b}`);

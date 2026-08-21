@@ -91,6 +91,18 @@ async function main() {
   if (!rows.length) {
     console.log(`\n⚠  NOTHING SCANNED — no pyq MCQ has a source_file containing "${filter}".`);
     console.log(`   This is NOT a clean result.`);
+    // ...EXCEPT for 2022, where it is the correct and permanent answer.
+    // Measured across the whole corpus: 2022 holds 140 pyq rows and ZERO MCQs,
+    // against 156-185 per year for 2023-2026. That is not a gap in our
+    // transcription — 2022 was the COVID-era Term-2 exam, a shorter paper with
+    // a different structure that set no objective section at all. So a 2022
+    // filter can only ever refuse, and refusing is right: this probe's whole
+    // job is to compare a solution's concluded letter against a stored key, and
+    // there are no keys here to compare against.
+    if (/^2022/.test(filter ?? "")) {
+      console.log(`   For 2022 specifically this is EXPECTED and permanent: the Term-2 paper`);
+      console.log(`   set no MCQs at all (140 pyq rows, 0 mcq). Nothing to scan, not a bug.`);
+    }
     process.exit(1);
   }
 
