@@ -10,9 +10,6 @@ type Props = {
   guidesHref: string;
   notesHref: string;
   boardHref: string;
-  /** Show the "Mocks" tab — only for exams that have published mock tests
-   *  (like Papers is member-gated), so other exams don't land on an empty list. */
-  showMocks?: boolean;
   /** Org members (ADMIN/TEACHER) get the Papers tab; everyone else doesn't —
    *  /dashboard/papers redirects non-members to /login, so showing it to anon
    *  or students would dead-end them. */
@@ -31,7 +28,6 @@ export default function PrimaryNav({
   guidesHref,
   notesHref,
   boardHref,
-  showMocks = false,
   showPapers = false,
 }: Props) {
   const pathname = usePathname() ?? "/";
@@ -41,10 +37,12 @@ export default function PrimaryNav({
     { id: "bank", label: "Bank", href: bankHref, Icon: Compass },
     { id: "guides", label: "Guides", href: guidesHref, Icon: BookOpen },
     { id: "notes", label: "Notes", href: notesHref, Icon: NotebookPen },
-    // Mocks — timed PYQ mock tests; gated to exams that have published mocks.
-    ...(showMocks
-      ? [{ id: "mock" as const, label: "Mocks", href: "/mock", Icon: Timer }]
-      : []),
+    // Mocks — always visible, like Board. It used to be gated on the active
+    // exam's `hasMocks`, which hid a working page for 11 of 13 exam states:
+    // /mock lists EVERY published mock (its own breadcrumb reads "All exams")
+    // and its left rail does the per-exam scoping, so an unscoped tab can't
+    // dead-end anyone. `hasMocks` still drives that rail — see mocksNav.ts.
+    { id: "mock", label: "Mocks", href: "/mock", Icon: Timer },
     // Board reader — always visible (like Notes); boardHref resolves per-exam:
     // /board (index) normally, /board/<slug> when a board exam is active.
     { id: "board", label: "Board", href: boardHref, Icon: Library },
@@ -74,9 +72,10 @@ export default function PrimaryNav({
             aria-current={isActive ? "page" : undefined}
             aria-label={label}
             className={
-              // Icon-only on phones (label hidden) so the tabs + exam pill +
-              // account fit at 360px; label returns from sm: up. (Papers only
-              // shows for org members, who skew desktop.)
+              // Icon-only on phones (label hidden) so the tabs + account fit
+              // at 360px; label returns from sm: up. Removing the exam pill
+              // freed ~70px, which is what affords Mocks being unconditional.
+              // (Papers only shows for org members, who skew desktop.)
               "group inline-flex items-center gap-1.5 rounded-md px-2.5 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:px-3 sm:py-1.5 " +
               (isActive
                 ? "bg-brand-accent/10 text-brand-accent"

@@ -38,7 +38,7 @@ export type Std = 9 | 10 | 11 | 12;
 export type ExamEntry = {
   /** URL-safe slug; the value stored in the `qb:exam` cookie. */
   slug: ExamSlug;
-  /** Short label shown in the picker pill. */
+  /** Short label for the exam, e.g. on the /browse landing cards. */
   displayName: string;
   /** Canonical name in the `exams` DB table — used to resolve the UUID. */
   examName: string;
