@@ -269,10 +269,33 @@ async function main() {
     throw new Error(`id lookup found ${ids.length} rows for ${rows.length} submitted — refusing to flip`);
   }
   if (ids.length < rows.length) {
+    // NAME them, don't just count them. A bare count is indistinguishable from a
+    // question that was never on the paper, and the interesting case is real:
+    // 2023 65/5/1 Q26 is word-for-word NCERT's own solved example 3.2 Eg.18, so
+    // the board question deduped into the PUBLIC textbook row. Not flipping that
+    // row is correct — flipping would withdraw a live textbook question and
+    // relabel it a PYQ — but you cannot audit the decision from a number.
+    const mine = new Set(ids);
+    const absorbed: string[] = [];
+    for (let i = 0; i < hashes.length; i += 100) {
+      const { data } = await client
+        .from("questions")
+        .select("id, content_hash, source_file, question_number, question_kind")
+        .eq("org_id", ORG_ID)
+        .eq("exam_id", EXAM_ID_CBSE_12)
+        .in("content_hash", hashes.slice(i, i + 100));
+      for (const d of data ?? []) {
+        if (mine.has(d.id as string)) continue;
+        const j = hashes.indexOf(d.content_hash as string);
+        const qn = j >= 0 ? rows[j].questionNumber : "?";
+        absorbed.push(`Q${qn} -> already in the bank as ${d.source_file} ${d.question_number} (${d.question_kind})`);
+      }
+    }
     console.log(
       `  ${rows.length - ids.length} row(s) deduped into an EXISTING question under a different ` +
-        `source_file — not flipped, and left exactly as they were.`
+        `source_file — not flipped, and left exactly as they were:`
     );
+    for (const a of absorbed) console.log(`    ${a}`);
   }
   for (let i = 0; i < ids.length; i += 100) {
     const { error: uErr } = await client
