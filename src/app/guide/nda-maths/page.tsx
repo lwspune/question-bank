@@ -11,6 +11,10 @@ import { CHAPTER_TABLE, OVERVIEW, ROUTES } from "./_data/nda-maths";
 import ChapterBreakdownTable from "./_components/ChapterBreakdownTable";
 import { getNotesChapterHref } from "@/lib/links/notesIndex";
 
+// This page IS the NDA Mathematics guide, so its notes lookups are fixed to
+// that (exam, subject) — chapter names alone repeat across exams.
+const NDA_MATHS_SCOPE = { examName: "NDA", subjectName: "Mathematics" } as const;
+
 /** Pages with full content as of this commit. Other section cards get a
  * "Coming soon" tag so readers know what to expect. */
 const LIVE_SLUGS = new Set([
@@ -52,7 +56,10 @@ export default function NdaMathsLanding() {
     0
   );
   const notesHrefs = Object.fromEntries(
-    CHAPTER_TABLE.map((row) => [row.chapter, getNotesChapterHref(row.chapter)])
+    CHAPTER_TABLE.map((row) => [
+      row.chapter,
+      getNotesChapterHref(NDA_MATHS_SCOPE, row.chapter),
+    ])
   );
 
   return (

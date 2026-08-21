@@ -11,8 +11,10 @@
  *   - NDA English (Template B): playbooks are per-subtopic. Match (chapter, subtopic).
  *   - NDA Physics/Chemistry/Biology/Geography: playbooks are per-chapter. Match chapter.
  *
- * Notes coverage today: NDA Maths Statistics + Vectors only. Other subjects
- * fall back to null. Add a new chapter by extending NDA_MATHS_NOTES_CHAPTERS.
+ * Notes coverage is whatever NOTES_CHAPTERS registers — all exams, all
+ * subjects (MHT-CET Maths + Chemistry, NDA Maths/Physics/Chemistry/Biology/
+ * Geography, JEE Mains Maths). Add a chapter there and its chip appears; there
+ * is no per-exam allow-list here to update. Guides are still NDA-only.
  */
 
 import { PLAYBOOKS as NDA_ENGLISH_PLAYBOOKS } from "@/app/guide/nda-english/_data/playbooks";
@@ -183,14 +185,28 @@ function resolveNotes(
   input: ResourceInput,
   tags?: ResourceTags
 ): ResourceLink | null {
-  if (input.examName !== "NDA") return null;
-  if (input.subjectName !== "Mathematics") return null;
+  // No exam/subject gate. Until 2026-08-21 this was hard-coded to NDA +
+  // Mathematics, a leftover from when those were the only notes that existed;
+  // it hid the chip for 3,788 questions across MHT-CET Maths + Chemistry, NDA
+  // Physics/Chemistry/Biology/Geography and JEE Mains Maths, all of which have
+  // shipped notes. Coverage is now decided by the registry alone: a chapter
+  // that has notes gets a chip, one that does not returns null.
   if (!input.subtopicName) return null;
 
-  const chapter = getNotesChapterEntry(input.chapterName);
+  const scope = {
+    examName: input.examName,
+    subjectName: input.subjectName,
+  };
+  const chapter = getNotesChapterEntry(scope, input.chapterName);
   if (!chapter) return null;
 
-  const entry = getSubtopicNotesEntry(input.subtopicName);
+  // Scoped by chapter too — a subtopic NAME repeats both across exams
+  // ("Integration by Parts") and across chapters of one subject ("Physical vs
+  // Chemical Changes"), so the bare name does not identify a note.
+  const entry = getSubtopicNotesEntry(
+    { ...scope, chapterName: input.chapterName },
+    input.subtopicName
+  );
   if (!entry) return null;
 
   // Tier 1.5 — concept-tag override: anchor-jump to the specific concept

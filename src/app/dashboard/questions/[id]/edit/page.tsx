@@ -159,12 +159,38 @@ export default async function EditQuestionPage({ params }: PageProps) {
   let notesEntry: NotesConceptsEntry | null = null;
   let initialConceptSlugs: string[] = [];
   if (question.subtopic_id) {
-    const { data: stRow } = await supabase
-      .from("subtopics")
-      .select("name")
-      .eq("id", question.subtopic_id)
-      .maybeSingle<{ name: string }>();
-    const entry = stRow ? getSubtopicNotesEntry(stRow.name) : null;
+    const [{ data: stRow }, { data: examRow }] = await Promise.all([
+      supabase
+        .from("subtopics")
+        .select("name")
+        .eq("id", question.subtopic_id)
+        .maybeSingle<{ name: string }>(),
+      supabase
+        .from("exams")
+        .select("name")
+        .eq("id", question.exam_id)
+        .maybeSingle<{ name: string }>(),
+    ]);
+    // A subtopic NAME does not identify a note — it repeats across exams
+    // ("Integration by Parts") and across chapters of one subject ("Physical
+    // vs Chemical Changes") — so the lookup is scoped by this question's own
+    // (exam, subject, chapter). Unscoped, the concept multi-select could offer
+    // another exam's concept list.
+    const subjectNode = tree.find((s) => s.id === question.subject_id);
+    const chapterName = subjectNode?.chapters.find(
+      (c) => c.id === question.chapter_id
+    )?.name;
+    const entry =
+      stRow && examRow && subjectNode && chapterName
+        ? getSubtopicNotesEntry(
+            {
+              examName: examRow.name,
+              subjectName: subjectNode.name,
+              chapterName,
+            },
+            stRow.name
+          )
+        : null;
     if (entry) {
       notesEntry = {
         subtopicName: stRow!.name,

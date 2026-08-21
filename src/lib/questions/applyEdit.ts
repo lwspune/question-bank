@@ -4,6 +4,15 @@ import { deleteImage } from "@/lib/storage/images";
 import { setTagsForQuestion } from "@/lib/tags/conceptTags";
 import { validateConceptTag } from "@/lib/notes/subtopicSlugRegistry";
 
+/** subtopics row joined up to its exam, for scoping concept-tag validation. */
+type SubtopicScopeRow = {
+  name: string;
+  chapters: {
+    name: string;
+    subjects: { name: string; exams: { name: string } | null } | null;
+  } | null;
+};
+
 export type ApplyEditResult =
   | { kind: "ok"; orphanedImagePaths: string[] }
   | { kind: "not_found" }
@@ -167,12 +176,19 @@ export async function applyEdit(
           reason: "cannot tag a question with no subtopic",
         };
       }
+      // Walk up to (exam, subject, chapter): a subtopic NAME alone does not
+      // identify a note — it repeats across exams and across chapters of one
+      // subject — so validating on the bare name could accept another exam's
+      // concept slugs. Embedded to-one relations come back as objects.
       const { data: subtopicRow } = await client
         .from("subtopics")
-        .select("name")
+        .select("name, chapters(name, subjects(name, exams(name)))")
         .eq("id", payload.subtopicId)
-        .maybeSingle<{ name: string }>();
-      if (!subtopicRow) {
+        .maybeSingle<SubtopicScopeRow>();
+      const chapterName = subtopicRow?.chapters?.name;
+      const subjectName = subtopicRow?.chapters?.subjects?.name;
+      const examName = subtopicRow?.chapters?.subjects?.exams?.name;
+      if (!subtopicRow || !chapterName || !subjectName || !examName) {
         return {
           kind: "invalid_concept_tag",
           reason: "subtopic for tagging could not be loaded",
@@ -180,6 +196,7 @@ export async function applyEdit(
       }
       for (const tag of payload.conceptTags) {
         const err = validateConceptTag(
+          { examName, subjectName, chapterName },
           subtopicRow.name,
           tag.subtopicSlug,
           tag.conceptSlug

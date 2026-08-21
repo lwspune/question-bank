@@ -1,14 +1,32 @@
 import { NOTES_CHAPTERS } from "./chapters";
 
 /**
- * Server-side authoritative map from canonical DB subtopic name → slug for
- * every chapter that has notes content. Auto-derived from `NOTES_CHAPTERS`
- * — adding a new chapter to the registry is enough; this module updates
- * automatically.
+ * Server-side authoritative map from a question's taxonomy position →
+ * (subtopic slug + concept list), for every chapter that has notes content.
+ * Auto-derived from `NOTES_CHAPTERS` — adding a chapter to that registry is
+ * enough; this module updates automatically.
  *
- * Used by the /questions/[id]/edit route and admin UI to validate concept
- * tags against the question's actual subtopic, and to find the concept list
- * to render in the tagging multi-select.
+ * Used by the /questions/[id]/edit route and admin UI to validate concept tags
+ * against the question's actual subtopic, by `applyEdit`, and by the /browse
+ * backlink chip.
+ *
+ * KEYED BY (exam, subject, chapter, subtopic) SINCE 2026-08-21. It was keyed
+ * on the bare subtopic NAME with silent last-wins, and that shipped a live
+ * 404: NDA Maths and MHT-CET Maths both have a subtopic named exactly
+ * "Integration by Parts", MHT-CET registers later, so an NDA question resolved
+ * to MHT-CET's `integration-by-parts` slug and the chip pointed at
+ * /notes/nda-maths/indefinite-integration/integration-by-parts — a route that
+ * does not exist (NDA's slug is `ii-by-parts`).
+ *
+ * CHAPTER is part of the key, not just (exam, subject): NDA Chemistry has a
+ * subtopic named "Physical vs Chemical Changes" in BOTH "Matter and Its
+ * States" and "Chemical Reactions". Without the chapter one of the two is
+ * permanently unreachable.
+ *
+ * Note this is a distinct axis from the documented "notes subtopic SLUGS are
+ * globally unique" rule — the slugs here genuinely are unique
+ * (`ii-by-parts` != `integration-by-parts`). It is the NAMES that repeat, and
+ * nothing guarded them.
  */
 export type ConceptOption = {
   slug: string;
@@ -21,12 +39,32 @@ export type SubtopicNotesEntry = {
   concepts: ConceptOption[];
 };
 
-/** Map keyed by exact DB subtopic name. */
+/** Identifies which chapter's subtopic is being asked for. */
+export type NotesChapterScope = {
+  /** Canonical DB exam name, e.g. "NDA". */
+  examName: string;
+  /** Canonical DB subject name, e.g. "Mathematics". */
+  subjectName: string;
+  /** Canonical DB chapter name, e.g. "Indefinite Integration". */
+  chapterName: string;
+};
+
+const subtopicKey = (
+  scope: NotesChapterScope,
+  subtopicName: string
+): string =>
+  `${scope.examName}::${scope.subjectName}::${scope.chapterName}::${subtopicName}`;
+
 const REGISTRY: Map<string, SubtopicNotesEntry> = new Map();
 
 for (const chapter of NOTES_CHAPTERS) {
+  const scope: NotesChapterScope = {
+    examName: chapter.examName,
+    subjectName: chapter.subjectName,
+    chapterName: chapter.chapter.chapterName,
+  };
   for (const [subtopicSlug, note] of Object.entries(chapter.notes)) {
-    REGISTRY.set(note.subtopicName, {
+    REGISTRY.set(subtopicKey(scope, note.subtopicName), {
       subtopicSlug,
       concepts: note.concepts.map((c) => ({ slug: c.slug, name: c.name })),
     });
@@ -34,13 +72,14 @@ for (const chapter of NOTES_CHAPTERS) {
 }
 
 /**
- * Look up the slug + concept list for a subtopic by its canonical DB name.
- * Returns null when the subtopic doesn't yet have notes content.
+ * Look up the slug + concept list for a subtopic, within the chapter that owns
+ * it. Returns null when that subtopic doesn't yet have notes content.
  */
 export function getSubtopicNotesEntry(
+  scope: NotesChapterScope,
   subtopicName: string
 ): SubtopicNotesEntry | null {
-  return REGISTRY.get(subtopicName) ?? null;
+  return REGISTRY.get(subtopicKey(scope, subtopicName)) ?? null;
 }
 
 /**
@@ -48,11 +87,12 @@ export function getSubtopicNotesEntry(
  * Returns null if valid, or an error reason string.
  */
 export function validateConceptTag(
+  scope: NotesChapterScope,
   subtopicName: string,
   subtopicSlug: string,
   conceptSlug: string
 ): string | null {
-  const entry = REGISTRY.get(subtopicName);
+  const entry = REGISTRY.get(subtopicKey(scope, subtopicName));
   if (!entry) {
     return `subtopic "${subtopicName}" has no notes content — concept tagging not yet enabled`;
   }

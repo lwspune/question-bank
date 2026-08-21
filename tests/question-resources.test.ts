@@ -15,7 +15,10 @@ function call(
 }
 
 describe("getQuestionResources — exam scoping", () => {
-  it("returns no resources for non-NDA exams (no MHT-CET guide yet)", () => {
+  it("returns no GUIDE for MHT-CET (no /guide/mht-cet subtree yet)", () => {
+    // Notes are no longer exam-gated (see the cross-exam block below), but the
+    // guide side still is — MHT-CET has no guide subtree. This chapter name is
+    // deliberately unregistered so the notes half stays null too.
     const res = call({
       examName: "MHT-CET",
       subjectName: "Maths",
@@ -535,5 +538,125 @@ describe("getQuestionResources — concept-tag override (Tier 1.5)", () => {
     expect(res.notes!.href).toContain(
       "/notes/nda-maths/vectors/dot-product-angle#"
     );
+  });
+});
+
+// ─── Cross-exam notes backlinks ───────────────────────────────────────────
+// Until 2026-08-21 resolveNotes was gated to NDA + Mathematics, a leftover
+// from when those were the only notes that existed. Every other shipped notes
+// subject (MHT-CET Maths/Chemistry, NDA Physics/Chemistry/Biology/Geography,
+// JEE Mains Maths) rendered no chip at all despite the notes being live.
+
+describe("getQuestionResources — notes are exam+subject scoped", () => {
+  it("REGRESSION: NDA keeps its OWN subtopic slug when another exam ships a same-named subtopic", () => {
+    // Both NDA Maths and MHT-CET Maths have a chapter "Indefinite Integration"
+    // with a subtopic named exactly "Integration by Parts". The name-keyed
+    // registry was last-wins, so NDA's chip pointed at MHT-CET's slug and
+    // produced /notes/nda-maths/indefinite-integration/integration-by-parts
+    // — a 404, since NDA's slug is `ii-by-parts`.
+    const res = call({
+      examName: "NDA",
+      subjectName: "Mathematics",
+      chapterName: "Indefinite Integration",
+      subtopicName: "Integration by Parts",
+    });
+    expect(res.notes).not.toBeNull();
+    expect(res.notes!.href).toBe(
+      "/notes/nda-maths/indefinite-integration/ii-by-parts"
+    );
+  });
+
+  it("resolves MHT-CET Maths to the MHT-CET notes page, not NDA's", () => {
+    const res = call({
+      examName: "MHT-CET",
+      subjectName: "Maths",
+      chapterName: "Indefinite Integration",
+      subtopicName: "Integration by Parts",
+    });
+    expect(res.notes).not.toBeNull();
+    expect(res.notes!.href).toBe(
+      "/notes/mht-cet-maths/indefinite-integration/integration-by-parts"
+    );
+  });
+
+  it("disambiguates a subtopic name that repeats across two chapters of ONE subject", () => {
+    // NDA Chemistry has "Physical vs Chemical Changes" in BOTH "Matter and Its
+    // States" (matt-changes) and "Chemical Reactions" (rxn-physical-chemical).
+    // Chapter must be part of the key or one of them is unreachable.
+    const matter = call({
+      examName: "NDA",
+      subjectName: "Chemistry",
+      chapterName: "Matter and Its States",
+      subtopicName: "Physical vs Chemical Changes",
+    });
+    const reactions = call({
+      examName: "NDA",
+      subjectName: "Chemistry",
+      chapterName: "Chemical Reactions",
+      subtopicName: "Physical vs Chemical Changes",
+    });
+    expect(matter.notes!.href).toBe(
+      "/notes/nda-chemistry/matter-states/matt-changes"
+    );
+    expect(reactions.notes!.href).toBe(
+      "/notes/nda-chemistry/chemical-reactions/rxn-physical-chemical"
+    );
+  });
+
+  it("resolves MHT-CET Chemistry notes", () => {
+    const res = call({
+      examName: "MHT-CET",
+      subjectName: "Chemistry",
+      chapterName: "Ionic Equilibria",
+      subtopicName: "Buffer Solutions and Henderson-Hasselbalch",
+    });
+    expect(res.notes!.href).toBe(
+      "/notes/mht-cet-chemistry/ionic-equilibria/cetie-buffers"
+    );
+  });
+
+  it("resolves NDA Geography notes (previously gated out by subject)", () => {
+    const res = call({
+      examName: "NDA",
+      subjectName: "Geography",
+      chapterName: "Oceanography",
+      subtopicName: "Ocean Currents",
+    });
+    expect(res.notes!.href).toBe(
+      "/notes/nda-geography/oceanography/ocn-currents"
+    );
+  });
+
+  it("resolves JEE Mains Maths notes (previously gated out by exam)", () => {
+    const res = call({
+      examName: "JEE Mains",
+      subjectName: "Maths",
+      chapterName: "Matrices",
+      subtopicName: "Adjoint, Inverse and Determinant Identities",
+    });
+    expect(res.notes!.href).toBe(
+      "/notes/jee-mains-maths/matrices/jee-adjoint-inverse"
+    );
+  });
+
+  it("returns no notes when the exam/subject pair has no shipped notes", () => {
+    // NDA English ships no notes; the chapter name must not leak across.
+    const res = call({
+      examName: "NDA",
+      subjectName: "English",
+      chapterName: "Vectors",
+      subtopicName: "Integration by Parts",
+    });
+    expect(res.notes).toBeNull();
+  });
+
+  it("returns no notes for an unregistered chapter of a notes-covered subject", () => {
+    const res = call({
+      examName: "MHT-CET",
+      subjectName: "Maths",
+      chapterName: "Trigonometry - I",
+      subtopicName: "Integration by Parts",
+    });
+    expect(res.notes).toBeNull();
   });
 });
