@@ -489,17 +489,36 @@ substitute. Each is an adjudicated pick: for the Venn set the pick names
 page with the NEXT question's graph and a union there would splice two questions
 together.
 
-## Known taxonomy gap — open
+## Taxonomy gap — RESOLVED 2026-08-18, verified 2026-08-21
 
 Rationalised NCERT Ch.13 **no longer teaches random variables, probability
-distributions or expectation**, so `cbse-12` Probability has no subtopic for
+distributions or expectation**, so the textbook ingest created no subtopic for
 them — while CBSE examined them every year **2022–2025** (and, measurably, **not
-in 2026**). Such rows are filed on `Probability / Independent Events` with a
-`_flag` reading `TAXONOMY GAP — random variables`.
+in 2026**). Such rows were parked on `Probability / Independent Events` behind a
+`TAXONOMY GAP` flag, deliberately unresolved until several papers' worth of
+frequency evidence existed rather than one.
 
-Deliberately NOT resolved yet: adding a subtopic to a shipped chapter needs a
-decision, and it is worth taking on frequency evidence from several papers rather
-than one. Grep the committed data for that flag before deciding.
+That evidence arrived with the full five-year ingest, and the subtopic
+**`Random Variables and Probability Distributions`** was added. Measured against
+the live bank:
+
+| Probability subtopic | pyq | practice |
+|---|---|---|
+| Conditional Probability | 54 | 48 |
+| Independent Events | 34 | 35 |
+| Bayes' Theorem | 31 | 24 |
+| **Random Variables and Probability Distributions** | **36** | **0** |
+| Theorem of Total Probability | 21 | 2 |
+| Multiplication Theorem on Probability | 3 | 4 |
+
+**The 36/0 split is the point.** Every other subtopic carries both kinds; this
+one is PYQ-ONLY BY CONSTRUCTION, because the board asks what the rationalised
+textbook stopped teaching. It is the sharpest single piece of evidence in this
+corpus for why the board-PYQ layer is worth having next to the textbook layer —
+a student working only from NCERT Ch.13 would never meet 36 examined questions.
+
+Also verified across all 1,766 pyq rows: **0 without a chapter, 0 without a
+subtopic**, so none is invisible to the `/browse` filters.
 
 A second suspected gap was **withdrawn**: 3-D trisection is not homeless, it
 belongs to `Vector Algebra / Section Formula`, which is where NCERT teaches it.
