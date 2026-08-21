@@ -1,0 +1,265 @@
+{
+ "paper": "65/2/2",
+ "year": 2023,
+ "paperId": "2023-65-2-2",
+ "markingScheme": "out/2023-65-2-2/ms/p00.png … p17.png",
+ "rows": [
+  {
+   "hash": "1b437c053f4381f23d904d50b266d28a382505c2f8291c8a9da7922f9d69c2c5",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Integration as the Inverse of Differentiation",
+   "stem": "If \\(\\frac{d}{dx} f(x) = 2x + \\frac{3}{x}\\) and \\(f(1) = 1\\), then \\(f(x)\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(x^2 + 3 \\log |x| + 1\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(x^2 + 3 \\log |x|\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(2 - \\frac{3}{x^2}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(x^2 + 3 \\log |x| - 4\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Integrating the given derivative, \\(f(x) = \\int\\left(2x + \\frac{3}{x}\\right)dx = x^2 + 3\\log|x| + C\\). The condition \\(f(1) = 1\\) fixes the constant: \\(f(1) = 1 + 3\\log 1 + C = 1 + C\\), so \\(1 + C = 1\\) and \\(C = 0\\). Hence \\(f(x) = x^2 + 3\\log|x|\\), which is the choice \\(x^2 + 3\\log|x|\\). The alternatives \\(x^2 + 3\\log|x| + 1\\) and \\(x^2 + 3\\log|x| - 4\\) are antiderivatives of the same function but fail the condition \\(f(1) = 1\\), while \\(2 - \\frac{3}{x^2}\\) is not an antiderivative at all."
+  },
+  {
+   "hash": "cf3b28b84f4b07225126a99a7485c7218ef91b7de1c6a0a882d9ad8d6fb92043",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Addition of Vectors",
+   "stem": "If in \\(\\Delta ABC\\), \\(\\overrightarrow{BA} = 2\\vec{a}\\) and \\(\\overrightarrow{BC} = 3\\vec{b}\\), then \\(\\overrightarrow{AC}\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2\\vec{a} + 3\\vec{b}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(2\\vec{a} - 3\\vec{b}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(3\\vec{b} - 2\\vec{a}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-2\\vec{a} - 3\\vec{b}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Travel from \\(A\\) to \\(C\\) through \\(B\\), so that \\(\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{BC}\\). Reversing the given side gives \\(\\overrightarrow{AB} = -\\overrightarrow{BA} = -2\\vec{a}\\), and \\(\\overrightarrow{BC} = 3\\vec{b}\\) is given directly. Hence \\(\\overrightarrow{AC} = -2\\vec{a} + 3\\vec{b} = 3\\vec{b} - 2\\vec{a}\\), which is the choice \\(3\\vec{b} - 2\\vec{a}\\)."
+  },
+  {
+   "hash": "f7389567e1133c9b637f9586cd8c5ffbb9a57b08034caaa482dcb69f33246cb1",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "If \\(|\\vec{a} \\times \\vec{b}| = \\sqrt{3}\\) and \\(\\vec{a} \\cdot \\vec{b} = -3\\), then angle between \\(\\vec{a}\\) and \\(\\vec{b}\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{2\\pi}{3}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{\\pi}{6}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{\\pi}{3}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{5\\pi}{6}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "The two products carry the same pair of magnitudes: \\(|\\vec{a} \\times \\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\theta = \\sqrt{3}\\) and \\(\\vec{a} \\cdot \\vec{b} = |\\vec{a}||\\vec{b}|\\cos\\theta = -3\\). Dividing the first by the second eliminates the magnitudes and leaves \\(\\tan\\theta = \\frac{\\sqrt{3}}{-3} = -\\frac{1}{\\sqrt{3}}\\). The angle between two vectors lies in \\([0, \\pi]\\), and there \\(\\tan\\theta\\) is negative only for an obtuse angle, so \\(\\theta = \\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6}\\), which is the choice \\(\\frac{5\\pi}{6}\\). This is consistent with the data: \\(\\cos\\theta < 0\\) is forced by \\(\\vec{a} \\cdot \\vec{b} = -3 < 0\\), which already rules out \\(\\frac{\\pi}{6}\\) and \\(\\frac{\\pi}{3}\\)."
+  },
+  {
+   "hash": "35319190404670279d0f1c5fcad53f83257ae98f52e1276883a5646af2552c1f",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Equation of line passing through origin and making 30\\(^\\circ\\), 60\\(^\\circ\\) and 90\\(^\\circ\\) with \\(x\\), y, z axes respectively is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{2x}{\\sqrt{3}} = \\frac{y}{2} = \\frac{z}{0}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{2x}{\\sqrt{3}} = \\frac{2y}{1} = \\frac{z}{0}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(2x = \\frac{2y}{\\sqrt{3}} = \\frac{z}{1}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{2x}{\\sqrt{3}} = \\frac{2y}{1} = \\frac{z}{1}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "The direction cosines of a line are the cosines of the angles it makes with the axes, so here \\(l = \\cos 30^\\circ = \\frac{\\sqrt{3}}{2}\\), \\(m = \\cos 60^\\circ = \\frac{1}{2}\\) and \\(n = \\cos 90^\\circ = 0\\). These are consistent, since \\(l^2 + m^2 + n^2 = \\frac{3}{4} + \\frac{1}{4} + 0 = 1\\). A line through the origin with direction cosines \\(l, m, n\\) has equation \\(\\frac{x}{l} = \\frac{y}{m} = \\frac{z}{n}\\), that is \\(\\frac{x}{\\sqrt{3}/2} = \\frac{y}{1/2} = \\frac{z}{0}\\), which clears to \\(\\frac{2x}{\\sqrt{3}} = \\frac{2y}{1} = \\frac{z}{0}\\) — the choice \\(\\frac{2x}{\\sqrt{3}} = \\frac{2y}{1} = \\frac{z}{0}\\). The zero denominator is the usual symbolic shorthand recording that the line makes a right angle with the \\(z\\)-axis and so lies in the plane \\(z = 0\\)."
+  },
+  {
+   "hash": "567123045415ca70aa06c4d706cef62922a19f58c19fd48153fee2db2e3c3a8b",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "If A and B are two events such that \\(P(A/B) = 2 \\times P(B/A)\\) and \\(P(A) + P(B) = \\frac{2}{3}\\), then \\(P(B)\\) is equal to",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{2}{9}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{7}{9}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{4}{9}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{5}{9}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Both conditional probabilities are built on the same numerator: \\(P(A/B) = \\frac{P(A \\cap B)}{P(B)}\\) and \\(P(B/A) = \\frac{P(A \\cap B)}{P(A)}\\). The given relation therefore reads \\(\\frac{P(A \\cap B)}{P(B)} = 2 \\cdot \\frac{P(A \\cap B)}{P(A)}\\). Cancelling \\(P(A \\cap B)\\), which must be non-zero for the relation to say anything, gives \\(\\frac{1}{P(B)} = \\frac{2}{P(A)}\\), i.e. \\(P(A) = 2P(B)\\). Substituting into \\(P(A) + P(B) = \\frac{2}{3}\\) gives \\(3P(B) = \\frac{2}{3}\\), so \\(P(B) = \\frac{2}{9}\\), which is the choice \\(\\frac{2}{9}\\)."
+  },
+  {
+   "hash": "8db9d80827e76977077d50250358b88f544aa9acf4a2ea4ff0f326764093ad79",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Order and Types of Matrices",
+   "stem": "If A is a \\(2 \\times 3\\) matrix such that \\(AB\\) and \\(AB'\\) both are defined, then order of the matrix B is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2 \\times 2\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(2 \\times 1\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(3 \\times 2\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(3 \\times 3\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Let \\(B\\) have order \\(m \\times n\\). For the product \\(AB\\) to be defined, the number of columns of \\(A\\) must equal the number of rows of \\(B\\), so \\(m = 3\\). For \\(AB'\\) to be defined, the transpose \\(B'\\) has order \\(n \\times m\\) and its row count must likewise equal \\(3\\), so \\(n = 3\\). Hence \\(B\\) has order \\(3 \\times 3\\), which is the choice \\(3 \\times 3\\). Note that both products then come out as \\(2 \\times 3\\) matrices, so nothing further is violated."
+  },
+  {
+   "hash": "56f44a7394896402c7ba69db433e7fc1706f856c86ad1381c5f2c30cf0fadfdc",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "If the equation of a line is \\(x = ay + b\\), \\(z = cy + d\\), then find the direction ratios of the line and a point on the line.",
+   "solution": "Each of the two given equations already expresses \\(y\\) in terms of one other coordinate: \\(x = ay + b\\) gives \\(y = \\frac{x - b}{a}\\), and \\(z = cy + d\\) gives \\(y = \\frac{z - d}{c}\\). Equating these to \\(y\\) itself puts the line into symmetric form, \\(\\frac{x - b}{a} = \\frac{y}{1} = \\frac{z - d}{c}\\). Reading off the denominators, the direction ratios of the line are \\(a, 1, c\\). For a point on the line, take \\(y = 0\\) in the two given equations, which gives \\(x = b\\) and \\(z = d\\); hence \\((b, 0, d)\\) lies on the line."
+  },
+  {
+   "hash": "a24b0b2183ff597e0a81c3a52936d9f7299783e293beab1ae7884f253c1b95d1",
+   "ref": "Q25",
+   "questionNumber": "25",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "If the circumference of circle is increasing at the constant rate, prove that rate of change of area of circle is directly proportional to its radius.",
+   "solution": "Let \\(r\\), \\(C\\) and \\(A\\) denote the radius, circumference and area of the circle at time \\(t\\). The hypothesis is that \\(\\frac{dC}{dt} = k\\) for some constant \\(k\\). Since \\(C = 2\\pi r\\), differentiating with respect to \\(t\\) gives \\(\\frac{dC}{dt} = 2\\pi\\frac{dr}{dt}\\), so \\(\\frac{dr}{dt} = \\frac{k}{2\\pi}\\). The area is \\(A = \\pi r^2\\), so by the chain rule \\(\\frac{dA}{dt} = 2\\pi r\\frac{dr}{dt} = 2\\pi r \\cdot \\frac{k}{2\\pi} = kr\\). Since \\(k\\) is a constant, \\(\\frac{dA}{dt}\\) is a constant multiple of \\(r\\); that is, the rate of change of the area of the circle is directly proportional to its radius, as required."
+  },
+  {
+   "hash": "9b8a485e7a697f9872c129f9fe6d6716d166c8930dda234b86cf69fb5684d74b",
+   "ref": "Q29",
+   "questionNumber": "29",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following linear programming problem graphically :\nMaximize : \\(Z = x + 2y\\)\nsubject to constraints : \\(x + 2y \\ge 100\\), \\(2x - y \\le 0\\), \\(2x + y \\le 200\\),\n\\(x \\ge 0\\), \\(y \\ge 0\\).",
+   "solution": "[CBSE marking scheme: the corner-point table correctly marks \\(Z = 400\\) at \\((0, 200)\\) as the maximum, but the concluding line below the table then reports it as Min(Z) = 400 at \\(x = 0\\), \\(y = 200\\). The value and the point are right and the question asks for a maximum; only the label is wrong, and it contradicts the scheme's own table.] Rewriting \\(2x - y \\le 0\\) as \\(y \\ge 2x\\), the feasible region is the set of points satisfying \\(y \\ge 2x\\), \\(x + 2y \\ge 100\\), \\(2x + y \\le 200\\) and \\(x, y \\ge 0\\). Its corners are located as follows. On the line \\(x = 0\\), the constraints \\(x + 2y \\ge 100\\) and \\(2x + y \\le 200\\) give \\(50 \\le y \\le 200\\), contributing \\(B(0, 50)\\) and \\(A(0, 200)\\). The lines \\(x + 2y = 100\\) and \\(y = 2x\\) meet where \\(x + 4x = 100\\), that is at \\(C(20, 40)\\). The lines \\(y = 2x\\) and \\(2x + y = 200\\) meet where \\(4x = 200\\), that is at \\(D(50, 100)\\). The remaining pair \\(x + 2y = 100\\) and \\(2x + y = 200\\) meet at \\((100, 0)\\), which fails \\(y \\ge 2x\\) and so is not a corner of this region. Evaluating \\(Z = x + 2y\\) at the four corners gives \\(Z(A) = 400\\), \\(Z(B) = 100\\), \\(Z(C) = 100\\) and \\(Z(D) = 250\\). The region is bounded, so the optimum is attained at a corner point, and the maximum value is \\(Z = 400\\), occurring at \\(x = 0\\), \\(y = 200\\)."
+  },
+  {
+   "hash": "8fe34f65a46d265c7a9257fd24da8cfc976b63b5a8f9a8414c56c43b30a5f6a3",
+   "ref": "Q30a",
+   "questionNumber": "30 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "Evaluate \\(\\int\\limits_{-1}^{1} |x^4 - x| \\, dx\\).",
+   "solution": "[CBSE marking scheme: two slips in the printed working, neither of which changes the answer. First, the antiderivative in the left bracket is printed \\(\\frac{x^5}{5} - \\frac{x^2}{3}\\) where \\(\\frac{x^5}{5} - \\frac{x^2}{2}\\) belongs; the right bracket on the same line has it correctly, and the printed value \\(\\frac{7}{10}\\) follows from the correct form (the printed one would give \\(\\frac{8}{15}\\)), so the slip does not propagate. Second, the working stops at \\(\\frac{7}{10} + \\frac{3}{10} = I\\) and never states the value, which is \\(1\\).] Factorising, \\(x^4 - x = x(x^3 - 1) = x(x - 1)(x^2 + x + 1)\\), and \\(x^2 + x + 1 > 0\\) for every real \\(x\\), so the sign of \\(x^4 - x\\) is the sign of \\(x(x - 1)\\). On \\([-1, 0]\\) both factors are non-positive, so \\(x^4 - x \\ge 0\\) and the modulus opens as \\(x^4 - x\\); on \\([0, 1]\\) the factors have opposite signs, so \\(x^4 - x \\le 0\\) and the modulus opens as \\(-(x^4 - x)\\). Splitting at \\(0\\), \\(I = \\int_{-1}^{0}(x^4 - x)\\,dx - \\int_{0}^{1}(x^4 - x)\\,dx\\). Using the antiderivative \\(\\frac{x^5}{5} - \\frac{x^2}{2}\\), the first piece is \\(\\left[\\frac{x^5}{5} - \\frac{x^2}{2}\\right]_{-1}^{0} = 0 - \\left(-\\frac{1}{5} - \\frac{1}{2}\\right) = \\frac{7}{10}\\), and the second is \\(\\left[\\frac{x^5}{5} - \\frac{x^2}{2}\\right]_{0}^{1} = \\frac{1}{5} - \\frac{1}{2} = -\\frac{3}{10}\\), which enters with a minus sign and so contributes \\(+\\frac{3}{10}\\). Hence \\(I = \\frac{7}{10} + \\frac{3}{10} = 1\\)."
+  },
+  {
+   "hash": "6201e0fdd49cd21be81a2ccdffcf49cf029bbcc18c2b320f77eb92815f8b7188",
+   "ref": "Q30b",
+   "questionNumber": "30 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Parts",
+   "stem": "Find \\(\\int \\frac{\\sin^{-1} x}{(1 - x^2)^{3/2}} \\, dx\\).",
+   "solution": "Put \\(\\sin^{-1}x = t\\), so that \\(x = \\sin t\\) with \\(t \\in \\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\), \\(dx = \\cos t\\,dt\\), and \\(\\sqrt{1 - x^2} = \\cos t\\) (positive on that interval). Then \\((1 - x^2)^{3/2} = \\cos^3 t\\), and the integral becomes \\(\\int \\frac{t}{\\cos^3 t}\\cos t\\,dt = \\int t\\sec^2 t\\,dt\\). Integrating by parts with \\(t\\) as the first function and \\(\\sec^2 t\\) as the second, \\(\\int t\\sec^2 t\\,dt = t\\tan t - \\int \\tan t\\,dt = t\\tan t + \\log|\\cos t| + c\\). Returning to \\(x\\) using \\(t = \\sin^{-1}x\\), \\(\\tan t = \\frac{x}{\\sqrt{1 - x^2}}\\) and \\(\\log|\\cos t| = \\log\\sqrt{1 - x^2} = \\frac{1}{2}\\log|1 - x^2|\\). Hence \\(\\int \\frac{\\sin^{-1}x}{(1 - x^2)^{3/2}}\\,dx = \\frac{x\\sin^{-1}x}{\\sqrt{1 - x^2}} + \\frac{1}{2}\\log|1 - x^2| + c\\)."
+  },
+  {
+   "hash": "cb200be5544f0d9d1206be703424a4a8806c1feb77f9eb92ba65d8b87016f0e7",
+   "ref": "Q31",
+   "questionNumber": "31",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integrals of Special Forms",
+   "stem": "Find \\(\\int e^x \\left(\\frac{1 - \\sin x}{1 - \\cos x}\\right) dx\\)",
+   "solution": "Rewrite both halves of the fraction in terms of the half angle: \\(1 - \\sin x = 1 - 2\\sin\\frac{x}{2}\\cos\\frac{x}{2}\\) and \\(1 - \\cos x = 2\\sin^2\\frac{x}{2}\\). The integrand becomes \\(e^x\\left(\\frac{1}{2\\sin^2\\frac{x}{2}} - \\frac{2\\sin\\frac{x}{2}\\cos\\frac{x}{2}}{2\\sin^2\\frac{x}{2}}\\right) = e^x\\left(\\frac{1}{2}\\operatorname{cosec}^2\\frac{x}{2} - \\cot\\frac{x}{2}\\right)\\). This is exactly of the form \\(e^x\\left(f(x) + f'(x)\\right)\\) with \\(f(x) = -\\cot\\frac{x}{2}\\), because \\(f'(x) = \\frac{1}{2}\\operatorname{cosec}^2\\frac{x}{2}\\). Applying the standard result \\(\\int e^x\\left(f(x) + f'(x)\\right)dx = e^x f(x) + c\\), the integral is \\(-e^x\\cot\\frac{x}{2} + c\\)."
+  },
+  {
+   "hash": "3867faf31ca48f181312bd656f6664ae89a19d1a83a4678f4f206da380c08c95",
+   "ref": "Q33",
+   "questionNumber": "33",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "Using Integration, find the area of triangle whose vertices are (\\(-1\\), 1), (0, 5) and (3, 2).",
+   "solution": "Label the vertices \\(A(-1, 1)\\), \\(B(0, 5)\\) and \\(C(3, 2)\\), and find the equations of the three sides. Side \\(AB\\) has slope \\(\\frac{5 - 1}{0 - (-1)} = 4\\), so \\(y = 4x + 5\\); side \\(BC\\) has slope \\(\\frac{2 - 5}{3 - 0} = -1\\), so \\(y = 5 - x\\); side \\(AC\\) has slope \\(\\frac{2 - 1}{3 - (-1)} = \\frac{1}{4}\\), so \\(y = \\frac{x + 5}{4}\\). Over the whole span \\(-1 \\le x \\le 3\\) the side \\(AC\\) is the lower boundary of the triangle, while the upper boundary is \\(AB\\) on \\([-1, 0]\\) and \\(BC\\) on \\([0, 3]\\). Hence the area is \\(\\int_{-1}^{0}(4x + 5)\\,dx + \\int_{0}^{3}(5 - x)\\,dx - \\frac{1}{4}\\int_{-1}^{3}(5 + x)\\,dx\\). Evaluating each piece, \\(\\left[\\frac{(4x + 5)^2}{8}\\right]_{-1}^{0} = \\frac{25 - 1}{8} = 3\\), \\(\\left[-\\frac{(5 - x)^2}{2}\\right]_{0}^{3} = -\\frac{4}{2} + \\frac{25}{2} = \\frac{21}{2}\\), and \\(\\left[\\frac{(5 + x)^2}{8}\\right]_{-1}^{3} = \\frac{64 - 16}{8} = 6\\). Therefore the area is \\(3 + \\frac{21}{2} - 6 = \\frac{15}{2}\\) square units. (As a check, the shoelace formula gives \\(\\frac{1}{2}\\left|(-1)(5 - 2) + 0(2 - 1) + 3(1 - 5)\\right| = \\frac{15}{2}\\).)"
+  }
+ ]
+}

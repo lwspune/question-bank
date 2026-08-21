@@ -1,0 +1,246 @@
+{
+ "paper": "65/1/2",
+ "year": 2024,
+ "paperId": "2024-65-1-2",
+ "markingScheme": "out/2024-65-1-2/ms/p00.png … p22.png",
+ "rows": [
+  {
+   "hash": "00a11e451b8993df0912dc36aabfcabcb20ca19fcac1001f8912f16711d7c732",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "The integrating factor of the differential equation \\(x \\frac{dy}{dx} - y = x^4 - 3x\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "x"
+    },
+    {
+     "label": "B",
+     "text": "\\(-x\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(x^{-1}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\log (x^{-1})\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "An integrating factor is read off the STANDARD linear form, so first divide throughout by \\(x\\): \\(\\frac{dy}{dx} - \\frac{1}{x} y = x^3 - 3\\). This is \\(\\frac{dy}{dx} + P(x) y = Q(x)\\) with \\(P(x) = -\\frac{1}{x}\\). Hence \\(\\text{I.F.} = e^{\\int P\\,dx} = e^{-\\int \\frac{1}{x} dx} = e^{-\\log x} = \\frac{1}{x}\\). So the integrating factor is \\(x^{-1}\\), matching the choice \\(x^{-1}\\). (Dividing by \\(x\\) is the step the other choices skip: reading \\(P\\) straight off the printed equation as \\(-1\\) would wrongly give \\(e^{-x}\\).)"
+  },
+  {
+   "hash": "49018e31db47d339bbb2bc614b5f9d14a6408b432eb82a243b04a6b2d0bbf83b",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Minors and Cofactors",
+   "stem": "If \\(a_{ij}\\) and \\(A_{ij}\\) represent the \\((ij)^{th}\\) element and its cofactor of \\(\\begin{bmatrix} 2 & -3 & 5 \\\\ 6 & 0 & 4 \\\\ 1 & 5 & -7 \\end{bmatrix}\\) respectively, then the value of \\(a_{11} A_{21} + a_{12} A_{22} + a_{13} A_{23}\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "0"
+    },
+    {
+     "label": "B",
+     "text": "\\(-28\\)"
+    },
+    {
+     "label": "C",
+     "text": "114"
+    },
+    {
+     "label": "D",
+     "text": "\\(-114\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "The sum pairs the elements of the FIRST row, \\(a_{11}, a_{12}, a_{13}\\), with the cofactors of the SECOND row, \\(A_{21}, A_{22}, A_{23}\\). Expanding a determinant along a row using the cofactors of a DIFFERENT row always gives zero, because the resulting expansion is that of a determinant whose first and second rows are identical. So the value is \\(0\\) without any computation. Verifying directly: \\(A_{21} = -\\begin{vmatrix} -3 & 5 \\\\ 5 & -7 \\end{vmatrix} = -(21 - 25) = 4\\), \\(A_{22} = \\begin{vmatrix} 2 & 5 \\\\ 1 & -7 \\end{vmatrix} = -14 - 5 = -19\\), \\(A_{23} = -\\begin{vmatrix} 2 & -3 \\\\ 1 & 5 \\end{vmatrix} = -(10 + 3) = -13\\), so \\(a_{11}A_{21} + a_{12}A_{22} + a_{13}A_{23} = 2(4) + (-3)(-19) + 5(-13) = 8 + 57 - 65 = 0\\), which is the choice \\(0\\)."
+  },
+  {
+   "hash": "45d621e893ec649d2b38fb9b1819ed6ca2ed6ea3e6eaaa3c84feff5cf5d29e3d",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Relations and Functions",
+   "subtopic": "Equivalence Relations and Classes",
+   "stem": "A relation R defined on set \\(A = \\{x : x \\in Z \\text{ and } 0 \\leq x \\leq 10\\}\\) as \\(R = \\{(x, y) : x = y\\}\\) is given to be an equivalence relation. The number of equivalence classes is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "1"
+    },
+    {
+     "label": "B",
+     "text": "2"
+    },
+    {
+     "label": "C",
+     "text": "10"
+    },
+    {
+     "label": "D",
+     "text": "11"
+    }
+   ],
+   "answer": "D",
+   "solution": "The set is \\(A = \\{0, 1, 2, \\ldots, 10\\}\\), which has \\(11\\) elements. The relation \\(R = \\{(x, y) : x = y\\}\\) is the identity relation, so an element is related to itself and to nothing else. The equivalence class of \\(a\\) is therefore \\([a] = \\{a\\}\\), a singleton, and distinct elements give distinct classes. Hence there are as many classes as elements, namely \\(11\\), which is the choice \\(11\\). (The count is \\(11\\) and not \\(10\\) because \\(0 \\le x \\le 10\\) includes both endpoints.)"
+  },
+  {
+   "hash": "c95985d956681e0a446ca7335d369f829b2e67960b13d686a04236be5511130e",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "The number of points, where \\(f(x) = [x]\\), \\(0 < x < 3\\) (\\([\\cdot]\\) denotes greatest integer function) is not differentiable is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "1"
+    },
+    {
+     "label": "B",
+     "text": "2"
+    },
+    {
+     "label": "C",
+     "text": "3"
+    },
+    {
+     "label": "D",
+     "text": "4"
+    }
+   ],
+   "answer": "B",
+   "solution": "The greatest-integer function \\(f(x) = [x]\\) is a step function: it is constant on each interval between consecutive integers, and it jumps by \\(1\\) at every integer. A function that is not even continuous at a point cannot be differentiable there, so \\(f\\) fails to be differentiable exactly at the integers lying INSIDE the given interval. On \\(0 < x < 3\\) the interior integers are \\(x = 1\\) and \\(x = 2\\); the endpoints \\(x = 0\\) and \\(x = 3\\) are excluded by the strict inequalities and so do not count. Everywhere else \\(f\\) is locally constant and hence differentiable with \\(f'(x) = 0\\). So there are \\(2\\) such points, which is the choice \\(2\\)."
+  },
+  {
+   "hash": "3219883b057c30e0f5796c418510b44e5c82930335e016b2cbe1490a99c6b8ea",
+   "ref": "Q18",
+   "questionNumber": "18",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals and the Fundamental Theorem",
+   "stem": "If \\(\\int_0^a \\frac{1}{4 + x^2} \\; dx = \\frac{\\pi}{6}\\), then the value of 'a' is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{\\sqrt{3}}{2}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(2\\sqrt{3}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\sqrt{3}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{1}{\\sqrt{3}}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Use \\(\\int \\frac{dx}{a^2 + x^2} = \\frac{1}{a}\\tan^{-1}\\frac{x}{a} + C\\) with \\(a = 2\\), since \\(4 + x^2 = 2^2 + x^2\\). Then \\(\\int_0^a \\frac{dx}{4 + x^2} = \\left[ \\frac{1}{2}\\tan^{-1}\\frac{x}{2} \\right]_0^a = \\frac{1}{2}\\tan^{-1}\\frac{a}{2}\\), because \\(\\tan^{-1} 0 = 0\\). Setting this equal to \\(\\frac{\\pi}{6}\\) gives \\(\\tan^{-1}\\frac{a}{2} = \\frac{\\pi}{3}\\), so \\(\\frac{a}{2} = \\tan\\frac{\\pi}{3} = \\sqrt{3}\\) and \\(a = 2\\sqrt{3}\\), which is the choice \\(2\\sqrt{3}\\)."
+  },
+  {
+   "hash": "d789b64a082186d21195057ebbb4876c0bd58356b4809e9bfaa87d7b5fb110d4",
+   "ref": "Q24a",
+   "questionNumber": "24 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "If \\(y = \\sqrt{\\cos x + y}\\), prove that \\(\\frac{dy}{dx} = \\frac{\\sin x}{1 - 2y}\\).",
+   "solution": "Clear the radical first, so that the relation can be differentiated implicitly. Squaring both sides, \\(y^2 = \\cos x + y\\). Now differentiate both sides with respect to \\(x\\), remembering that \\(y\\) is a function of \\(x\\): \\(2y\\,\\frac{dy}{dx} = -\\sin x + \\frac{dy}{dx}\\). Collecting the derivative terms on one side, \\((2y - 1)\\frac{dy}{dx} = -\\sin x\\), so \\(\\frac{dy}{dx} = \\frac{-\\sin x}{2y - 1}\\). Multiplying numerator and denominator by \\(-1\\) gives \\(\\frac{dy}{dx} = \\frac{\\sin x}{1 - 2y}\\), which is what was to be proved."
+  },
+  {
+   "hash": "0097f3b8c8eee1747577a086e425d139c317965d92cdb4e87b4495dc738233d6",
+   "ref": "Q24b",
+   "questionNumber": "24 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "Show that the function \\(f(x) = |x|^3\\) is differentiable at all points of its domain.",
+   "solution": "The domain is all of \\(\\mathbb{R}\\). Removing the modulus, \\(f(x) = x^3\\) for \\(x \\ge 0\\) and \\(f(x) = -x^3\\) for \\(x \\le 0\\), since \\(|x|^3 = (-x)^3 = -x^3\\) when \\(x\\) is negative. For \\(x \\ne 0\\) the function agrees with a polynomial on a whole neighbourhood of the point, and polynomials are differentiable, so the only point needing checking is \\(x = 0\\), where the two formulas meet. Note \\(f(0) = 0\\). Left-hand derivative: \\(\\lim_{h \\to 0} \\frac{f(0 - h) - f(0)}{-h} = \\lim_{h \\to 0} \\frac{h^3}{-h} = \\lim_{h \\to 0} (-h^2) = 0\\), using \\(f(-h) = -(-h)^3 = h^3\\). Right-hand derivative: \\(\\lim_{h \\to 0} \\frac{f(0 + h) - f(0)}{h} = \\lim_{h \\to 0} \\frac{h^3}{h} = \\lim_{h \\to 0} h^2 = 0\\). The two one-sided derivatives are equal, so \\(f'(0)\\) exists and equals \\(0\\). Hence \\(f\\) is differentiable at every point of its domain."
+  },
+  {
+   "hash": "2f884e9457fa2a289f9c38bbed8ceee50b810d51b7bc73fde0bab0cf5acd42f3",
+   "ref": "Q25",
+   "questionNumber": "25",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Absolute Maximum and Minimum on a Closed Interval",
+   "stem": "Find the absolute maximum and minimum values of the function \\(f(x) = 12x^{4/3} - 6x^{1/3}\\), \\(x \\in [0, 1]\\).",
+   "solution": "On a closed interval the absolute extrema occur either at a critical point or at an endpoint, so find the critical points and then compare values. Differentiating, \\(f'(x) = 12 \\cdot \\frac{4}{3} x^{1/3} - 6 \\cdot \\frac{1}{3} x^{-2/3} = 16 x^{1/3} - \\frac{2}{x^{2/3}}\\). Setting \\(f'(x) = 0\\) gives \\(16 x^{1/3} = \\frac{2}{x^{2/3}}\\); multiplying through by \\(x^{2/3}\\) and using \\(x^{1/3} \\cdot x^{2/3} = x\\) gives \\(16x = 2\\), so \\(x = \\frac{1}{8}\\), which lies in \\([0, 1]\\). Now tabulate the value of \\(f\\) at this critical point and at both endpoints. At \\(x = 0\\), \\(f(0) = 0\\). At \\(x = \\frac{1}{8}\\), \\(\\left(\\frac{1}{8}\\right)^{1/3} = \\frac{1}{2}\\) and \\(\\left(\\frac{1}{8}\\right)^{4/3} = \\frac{1}{16}\\), so \\(f\\left(\\frac{1}{8}\\right) = \\frac{12}{16} - \\frac{6}{2} = \\frac{3}{4} - 3 = -\\frac{9}{4}\\). At \\(x = 1\\), \\(f(1) = 12 - 6 = 6\\). Comparing \\(0\\), \\(-\\frac{9}{4}\\) and \\(6\\): the absolute maximum value is \\(6\\), attained at \\(x = 1\\), and the absolute minimum value is \\(-\\frac{9}{4}\\), attained at \\(x = \\frac{1}{8}\\)."
+  },
+  {
+   "hash": "84b334c869d5967b48be8b2cab0424314036ca1c055ebef51240e0921db63d2a",
+   "ref": "Q27",
+   "questionNumber": "27",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Find the general solution of the differential equation \\(\\frac{dy}{dx} = \\frac{x^2 + y^2}{2xy}\\).",
+   "solution": "Numerator and denominator are both homogeneous of degree \\(2\\), so the equation is homogeneous and the substitution \\(y = vx\\) will separate it. Then \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\), and the equation becomes \\(v + x\\frac{dv}{dx} = \\frac{x^2 + v^2 x^2}{2x \\cdot vx} = \\frac{1 + v^2}{2v}\\). Isolating the derivative, \\(x\\frac{dv}{dx} = \\frac{1 + v^2}{2v} - v = \\frac{1 + v^2 - 2v^2}{2v} = \\frac{1 - v^2}{2v}\\). Separating the variables, \\(\\int \\frac{1}{x}\\,dx = \\int \\frac{2v}{1 - v^2}\\,dv\\). For the right side put \\(u = 1 - v^2\\), so \\(du = -2v\\,dv\\) and the integral is \\(-\\log|1 - v^2|\\). Hence \\(\\log|x| = -\\log|1 - v^2| + \\log C\\), that is \\(\\log\\left| x(1 - v^2) \\right| = \\log C\\), so \\(x(1 - v^2) = C\\). Substituting back \\(v = \\frac{y}{x}\\) gives \\(x\\left(1 - \\frac{y^2}{x^2}\\right) = C\\), and multiplying by \\(x\\) yields the general solution \\(x^2 - y^2 = Cx\\)."
+  },
+  {
+   "hash": "8d4a01b5f3a062b6cd04720cbb64cba00b84bdd9ca312f17c7899fd950352a48",
+   "ref": "Q28",
+   "questionNumber": "28",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following linear programming problem graphically :\nMaximise \\(z = 5x + 4y\\)\nsubject to the constraints\n\\(x + 2y \\geq 4\\)\n\\(3x + y \\leq 6\\)\n\\(x + y \\leq 4\\)\n\\(x, y \\geq 0\\)",
+   "solution": "Draw the three boundary lines \\(x + 2y = 4\\), \\(3x + y = 6\\) and \\(x + y = 4\\) in the first quadrant. The region \\(x + 2y \\ge 4\\) lies on the far side of the first line from the origin, while \\(3x + y \\le 6\\) and \\(x + y \\le 4\\) both contain the origin, so the feasible region is the bounded quadrilateral cut out between them. Its corner points come from the four relevant pairs of boundaries. The \\(y\\)-axis meets \\(x + 2y = 4\\) at \\(A(0, 2)\\) and meets \\(x + y = 4\\) at \\(B(0, 4)\\). Solving \\(3x + y = 6\\) with \\(x + y = 4\\) by subtraction gives \\(2x = 2\\), so \\(x = 1\\) and \\(y = 3\\), giving \\(C(1, 3)\\). Solving \\(x + 2y = 4\\) with \\(3x + y = 6\\): substituting \\(y = 6 - 3x\\) gives \\(x + 12 - 6x = 4\\), so \\(x = \\frac{8}{5}\\) and \\(y = \\frac{6}{5}\\), giving \\(D\\left(\\frac{8}{5}, \\frac{6}{5}\\right)\\). Now evaluate \\(z = 5x + 4y\\) at each corner: at \\(A(0,2)\\), \\(z = 8\\); at \\(B(0,4)\\), \\(z = 16\\); at \\(C(1,3)\\), \\(z = 5 + 12 = 17\\); at \\(D\\left(\\frac{8}{5}, \\frac{6}{5}\\right)\\), \\(z = 8 + \\frac{24}{5} = \\frac{64}{5} = 12.8\\). Since the feasible region is bounded, the largest of these is the maximum. Hence the maximum value is \\(z = 17\\), attained at \\(x = 1\\), \\(y = 3\\)."
+  },
+  {
+   "hash": "2110bc571b386c6f2ce14fe68d9e494aefcef145b2c7271d32a79aacaa9dfa5d",
+   "ref": "Q32a",
+   "questionNumber": "32 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Parts",
+   "stem": "Evaluate :\n\\(\\int_0^{\\frac{\\pi}{2}} e^x \\left( \\frac{1 + \\sin x}{1 + \\cos x} \\right) dx\\)",
+   "solution": "The presence of \\(e^x\\) times a bracket suggests forcing the bracket into the form \\(f(x) + f'(x)\\), for which \\(\\int e^x [f(x) + f'(x)]\\,dx = e^x f(x) + C\\). Use the half-angle identities \\(1 + \\sin x = 1 + 2\\sin\\frac{x}{2}\\cos\\frac{x}{2}\\) and \\(1 + \\cos x = 2\\cos^2\\frac{x}{2}\\). Then \\(\\frac{1 + \\sin x}{1 + \\cos x} = \\frac{1}{2\\cos^2\\frac{x}{2}} + \\frac{2\\sin\\frac{x}{2}\\cos\\frac{x}{2}}{2\\cos^2\\frac{x}{2}} = \\frac{1}{2}\\sec^2\\frac{x}{2} + \\tan\\frac{x}{2}\\). Taking \\(f(x) = \\tan\\frac{x}{2}\\) gives \\(f'(x) = \\frac{1}{2}\\sec^2\\frac{x}{2}\\), so the integrand is exactly \\(e^x[f(x) + f'(x)]\\) and the integral is \\(\\left[ e^x \\tan\\frac{x}{2} \\right]_0^{\\pi/2}\\). At the upper limit \\(\\tan\\frac{\\pi}{4} = 1\\) and at the lower limit \\(\\tan 0 = 0\\), so the value is \\(e^{\\pi/2} \\cdot 1 - e^0 \\cdot 0 = e^{\\pi/2}\\)."
+  },
+  {
+   "hash": "6f287a3fc803f575d1d2b765b8909f3c9222bba97af842f245c4422303779708",
+   "ref": "Q32b",
+   "questionNumber": "32 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals by Substitution",
+   "stem": "Find :\n\\(\\int_{\\frac{\\pi}{6}}^{\\frac{\\pi}{3}} \\frac{\\sin x + \\cos x}{\\sqrt{\\sin 2x}} \\; dx\\)",
+   "solution": "The numerator \\(\\sin x + \\cos x\\) is the derivative of \\(\\sin x - \\cos x\\), which suggests the substitution \\(t = \\sin x - \\cos x\\). Then \\(dt = (\\cos x + \\sin x)\\,dx\\), and squaring gives \\(t^2 = \\sin^2 x - 2\\sin x \\cos x + \\cos^2 x = 1 - \\sin 2x\\), so \\(\\sin 2x = 1 - t^2\\). The limits transform too: at \\(x = \\frac{\\pi}{6}\\), \\(t = \\frac{1}{2} - \\frac{\\sqrt{3}}{2} = -\\frac{\\sqrt{3} - 1}{2}\\), and at \\(x = \\frac{\\pi}{3}\\), \\(t = \\frac{\\sqrt{3}}{2} - \\frac{1}{2} = \\frac{\\sqrt{3} - 1}{2}\\). The integral becomes \\(\\int_{-\\frac{\\sqrt{3}-1}{2}}^{\\frac{\\sqrt{3}-1}{2}} \\frac{dt}{\\sqrt{1 - t^2}} = \\left[ \\sin^{-1} t \\right]_{-\\frac{\\sqrt{3}-1}{2}}^{\\frac{\\sqrt{3}-1}{2}}\\). Since \\(\\sin^{-1}\\) is an odd function, this equals \\(\\sin^{-1}\\left(\\frac{\\sqrt{3}-1}{2}\\right) - \\left(-\\sin^{-1}\\left(\\frac{\\sqrt{3}-1}{2}\\right)\\right) = 2\\sin^{-1}\\left(\\frac{\\sqrt{3} - 1}{2}\\right)\\)."
+  },
+  {
+   "hash": "261f22cf2660809a175246650bbe299aa7cce0f628250624a5be70f6a905f758",
+   "ref": "Q34",
+   "questionNumber": "34",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Equations of sides of a parallelogram ABCD are as follows :\nAB : \\(\\frac{x + 1}{1} = \\frac{y - 2}{-2} = \\frac{z - 1}{2}\\)\nBC : \\(\\frac{x - 1}{3} = \\frac{y + 2}{-5} = \\frac{z - 5}{3}\\)\nCD : \\(\\frac{x - 4}{1} = \\frac{y + 7}{-2} = \\frac{z - 8}{2}\\)\nDA : \\(\\frac{x - 2}{3} = \\frac{y + 3}{-5} = \\frac{z - 4}{3}\\)\nFind the equation of diagonal BD.",
+   "solution": "The diagonal BD joins two vertices, and each vertex is where two given sides meet, so find B as the intersection of AB and BC, and D as the intersection of CD and DA. A general point of AB is \\((\\lambda - 1,\\; 2 - 2\\lambda,\\; 2\\lambda + 1)\\) and a general point of BC is \\((3\\mu + 1,\\; -5\\mu - 2,\\; 3\\mu + 5)\\). Equating coordinates gives \\(\\lambda - 1 = 3\\mu + 1\\), \\(2 - 2\\lambda = -5\\mu - 2\\) and \\(2\\lambda + 1 = 3\\mu + 5\\); solving the first two gives \\(\\lambda = 2\\), \\(\\mu = 0\\), and these satisfy the third as well, so the lines do meet. Hence \\(B(1, -2, 5)\\). Working the same way with CD, whose general point is \\((\\nu + 4,\\; -2\\nu - 7,\\; 2\\nu + 8)\\), and DA, whose general point is \\((3\\tau + 2,\\; -5\\tau - 3,\\; 3\\tau + 4)\\), the values \\(\\nu = -2\\), \\(\\tau = 0\\) satisfy all three coordinate equations, giving \\(D(2, -3, 4)\\). The direction ratios of BD are therefore \\(2 - 1,\\; -3 - (-2),\\; 4 - 5\\), that is \\(1, -1, -1\\). Using the point B, the diagonal BD is \\(\\frac{x - 1}{1} = \\frac{y + 2}{-1} = \\frac{z - 5}{-1}\\)."
+  }
+ ]
+}

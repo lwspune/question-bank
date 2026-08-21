@@ -1,0 +1,1008 @@
+{
+  "paper": "65/5/3",
+  "year": 2026,
+  "pattern": "full80",
+  "_transcription": "ENGLISH half only. 23 pages, 0-based indices 0-22. Index 0 is the cover, index 1 the Hindi General Instructions + Hindi Q1-Q2. The alternating hypothesis HELD and this paper is unusually clean about it: HINDI on every ODD index (1,3,5,7,9,11,13,15,17,19,21) and ENGLISH on every EVEN index (2,4,6,8,10,12,14,16,18,20,22), printed page number = index + 1. CRITICALLY, and UNLIKE 2026 65/3/1, there is NO cross-page overflow at all: each Hindi page and the English page that follows it carry exactly the same question range (p03/p04 = Q3-Q6, p05/p06 = Q7-Q12, p07/p08 = Q13-Q17, p09/p10 = Q18-Q21, p11/p12 = Q22-Q26, p13/p14 = Q27-Q30, p15/p16 = Q31-Q34, p17/p18 = Q35-Q36(i), p19/p20 = Q36(ii)-Q37, p21/p22 = Q38). I read the TOP of all eleven odd indices and the last page: NOT ONE odd page carried English - every one opens with the Hindi of the block its facing English page repeats - and the last page (idx 22) is English, as expected for the even-index pattern. So zero questions live only on an odd page here; that is a checked \"none\", not an assumed one. 52 rows: 20 MCQ (Q1-Q20, Section A) + 32 subjective, covering all 38 questions and both branches of all 9 internal choices.\n\nOVERLAP WITH 65/5/1 IS FAR LARGER THAN plan.txt CLAIMED. plan.txt reported 4 blocks covered and 41 to transcribe; matching on CONTENT rather than on block hashes, 41 of the 52 rows are the SAME QUESTION as one in 65/5/1, and only 11 are genuinely new. Every matched row was confirmed on MY page image first and then its stem/options/chapter/subtopic reused BYTE-FOR-BYTE from data/2026-65-5-1.questions.json, per the brief's recommended method, so they will dedup cleanly at commit. The sets are heavily RESHUFFLED and RENUMBERED in both directions - this paper's Q3=their Q5, Q5=their Q3, Q7=their Q17, Q9=their Q7, Q12=their Q16, Q14=their Q15, Q15=their Q12, Q17=their Q8, Q18=their Q9, Q22=their Q25, Q24=their Q22, Q25=their Q24, Q27=their Q31, Q29=their Q30, Q30=their Q27, Q31=their Q29 - AND the three case studies are renumbered: this paper's Case Study 1 (tumbler) is 65/5/1's Case Study 3, its Case Study 3 (Sustainability) is their Case Study 1, only Case Study 2 (vaccines) keeps its number. The printed heading is therefore kept out of `context` and recorded in `_caseStudyLabel`; each passage is byte-identical to 65/5/1's, verified against pages 18, 20 and 22.\n\nTHE 11 NEW QUESTIONS: Q1 (A + A' symmetric), Q2 (diagonal matrix definition), Q10 (integral of sqrt((1+cos x)/(1-cos x))), Q11 (definite integral = 0, find k), Q13 (order and degree), Q21 (tan[cos^-1(tan 3pi/4)]), Q23 (interval where x/3 + 3/x increases), Q26 (wooden cube, rate of change of surface area), Q28 ((x - sin y)dy + tan y dx = 0), Q32 (three students at a book-store, matrix method), Q34 (minor segment of x^2/25 + y^2/25 = 1 cut by x = 5/2).\n\nMEASURED FACTS FOR 65/5/3, all verified on this paper rather than carried over: (1) instruction (viii) DOES print the internal-choice counts - \"an internal choice has been provided in 2 questions in Section B, 3 questions in Section C, 2 questions in Section D and 2 questions in Section E\" - and the 9 OR-alternatives found (Q24, Q25 | Q27, Q29, Q30 | Q33, Q35 | Q37(iii), Q38(iii)) match those counts EXACTLY, section by section. Note Q31 carries NO alternative even though plan.txt lists a \"Q31#2\"; that entry is a second image block of the LPP, not an OR branch - confirmed on ms page idx 11-12, where Q31 is printed once with a single solution. Q36 likewise has no (iii) at all: its two sub-parts are 2 + 2 marks. Primary-branch marks total 80 (20x1 + 5x2 + 6x3 + 4x5 + 3x4). (2) MCQ option labels are printed UPPERCASE (A) (B) (C) (D) on the English pages, the Hindi pages and the marking scheme. (3) Section-E case studies DO print a heading, \"Case Study - 1/2/3\" with an EN DASH, on both the English and Hindi sides. (4) DECIMALS: the QUESTION PAPER contains no decimal point anywhere - every quantity is an integer, a fraction or a percentage - so the raised-dot convention could not be observed on it. The MARKING SCHEME does print decimals (Q37's vaccine working) and uses an ORDINARY full stop. The paper's own style is therefore UNOBSERVED, not \"ordinary full stop\"; the scheme is not evidence for it. (5) The 2026 text layer is glyph-encoded and unusable; everything here was read from the rendered images.\n\nANSWERS: all 20 Section-A answers are CBSE's own, read verbatim off the marking scheme for THIS paper code (ms pages idx 2-6): 1-B 2-D 3-A 4-D 5-D 6-C 7-C 8-D 9-B 10-A 11-B 12-D 13-A 14-B 15-B 16-A 17-A 18-C 19-A 20-A. All 20 also agree with an independent derivation. As a cross-check, the 15 MCQs shared with 65/5/1 have the same letter in both papers' independently-transcribed marking schemes (the option ORDER is identical too), 15 of 15. No solutions written for the subjective rows, per the brief.\n\nFLAGS. Five carried over from 65/5/1 because the same printed defect appears here, each re-confirmed on this paper's own pages: Q14 (missing comma in the corner-point list, reprinted identically in this paper's marking scheme so it is CBSE typesetting), Q8 (the probability data is mutually inconsistent - 3P(A) = P(B) = 3/5 gives P(A) = 1/5 while P(A|B) = 2/3 forces P(A and B) = 2/5 > P(A); CBSE's key D is kept), Q27a (\"and hence find :\" with no antecedent instruction), Q33a (the log's argument carries NO brackets on the page, and this paper's marking scheme, ms idx 13, prints BOTH readings and awards full marks for each - the \"Note: In case, student considers sqrt(x^2+1) - x as part of log\" branch is the one that reaches the required result), Q33b (\"Find the differential of\" where \"derivative\" is meant). One flag is new to this paper: Q34 gives the curve in ellipse form with BOTH denominators 25, i.e. the circle x^2 + y^2 = 25 - not a defect, since the marking scheme sketches a circle of radius 5 and reaches 25(pi/3 - sqrt(3)/4), but recorded so a later reader does not \"repair\" the second denominator.\n\nFIGURES: no question on this paper requires one. The only drawing is the labelled open cylinder captioned \"Tumbler\" above Q36 (page idx 18); it was opened before deciding and carries no measurement, while the stem itself defines V, h and r in words - so it is ILLUSTRATIVE and not attached (the same call 65/5/1 made for the identical figure, whose note is carried over on Q36i). Q31's LPP and Q34's circle are drawn by the CANDIDATE, not printed.",
+  "questions": [
+    {
+      "ref": "Q1",
+      "questionNumber": "1",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Symmetric and Skew-Symmetric Matrices",
+      "difficulty": "EASY",
+      "stem": "For any square matrix A with real entries, if \\(A + A'\\) is a symmetric matrix then :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((A - A')\\) cannot be a skew symmetric matrix"
+        },
+        {
+          "label": "B",
+          "text": "\\((A - A')\\) is a skew symmetric matrix"
+        },
+        {
+          "label": "C",
+          "text": "A is always a symmetric matrix"
+        },
+        {
+          "label": "D",
+          "text": "A is always a skew symmetric matrix"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q2",
+      "questionNumber": "2",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Order and Types of Matrices",
+      "difficulty": "EASY",
+      "stem": "A matrix \\(B = [b_{ij}]_{m \\times m}\\) is said to be a diagonal matrix, if :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(b_{ij} = 0\\), when \\(i = j\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(b_{ij} = 1\\), when \\(i = j\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(b_{ij} = 1\\), when \\(i \\ne j\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(b_{ij} = 0\\), when \\(i \\ne j\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q3",
+      "questionNumber": "3",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Adjoint and Inverse of a Matrix",
+      "difficulty": "EASY",
+      "stem": "If A is a non-singular matrix, then which of the following is **not** true ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "adj A is singular"
+        },
+        {
+          "label": "B",
+          "text": "\\((\\mathrm{adj}\\ A)^{-1} = (\\mathrm{adj}\\ A^{-1})\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(|A| \\ne 0\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(A^{-1}\\) exists"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q4",
+      "questionNumber": "4",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Continuity",
+      "difficulty": "EASY",
+      "stem": "If \\(f(x) = \\begin{cases} \\dfrac{x^2 - 4x - 5}{x + 1}, & x \\ne -1 \\\\[2mm] k, & x = -1 \\end{cases}\\) is continuous at \\(x = -1\\), then the value of k is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "Any real value"
+        },
+        {
+          "label": "B",
+          "text": "\\(6\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(-1\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-6\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q5",
+      "questionNumber": "5",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Domains, Ranges and Principal Value Branches",
+      "difficulty": "EASY",
+      "stem": "For the inverse trigonometric functions, which of the following Principal Value Branch is **not** correctly defined ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\tan^{-1} : R \\to \\left(-\\dfrac{\\pi}{2},\\ \\dfrac{\\pi}{2}\\right)\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\sec^{-1} : R - (-1,\\ 1) \\to [0,\\ \\pi] - \\left\\{\\dfrac{\\pi}{2}\\right\\}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\cot^{-1} : R \\to (0,\\ \\pi)\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\mathrm{cosec}^{-1} : R - (-1,\\ 1) \\to \\left[-\\dfrac{\\pi}{2},\\ \\dfrac{\\pi}{2}\\right]\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q6",
+      "questionNumber": "6",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Addition and Scalar Multiplication",
+      "difficulty": "EASY",
+      "stem": "Let \\(A = \\begin{bmatrix} 0 & -3 & 4 \\\\ 1 & 0 & 2 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} -3 & 0 & 1 \\\\ 2 & 4 & 0 \\end{bmatrix}\\). If \\(A + B + C = O\\), then matrix C is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\begin{bmatrix} -3 & -3 & 5 \\\\ 3 & 4 & 2 \\end{bmatrix}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\begin{bmatrix} 3 & 3 & 5 \\\\ -3 & -4 & -2 \\end{bmatrix}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\begin{bmatrix} 3 & 3 & -5 \\\\ -3 & -4 & -2 \\end{bmatrix}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\begin{bmatrix} -3 & -3 & -5 \\\\ 3 & 4 & 2 \\end{bmatrix}\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q7",
+      "questionNumber": "7",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "difficulty": "EASY",
+      "stem": "If vectors \\(\\vec{a} = 3\\hat{i} + 2\\hat{j} + \\lambda\\hat{k}\\) and \\(\\vec{b} = 2\\hat{i} - 4\\hat{j} + 5\\hat{k}\\), represent the two strips of the Red Cross sign placed outside a doctor's clinic, then the value of \\(\\lambda\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{5}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{2}{5}\\)"
+        },
+        {
+          "label": "D",
+          "text": "0"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q8",
+      "questionNumber": "8",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "difficulty": "MODERATE",
+      "_flag": "DATA INCONSISTENT AS PRINTED: \\(3P(A) = P(B) = 3/5\\) gives \\(P(A) = 1/5\\), while \\(P(A|B) = 2/3\\) forces \\(P(A \\cap B) = 2/5 > P(A)\\) — no such pair of events exists. CBSE's official key (D) 2/5 is what the mechanical computation \\(P(A)+P(B)-P(A \\cap B) = 1/5 + 3/5 - 2/5\\) yields, and is KEPT. Stem transcribed as printed.",
+      "stem": "If \\(3P(A) = P(B) = \\dfrac{3}{5}\\) and \\(P(A\\,|\\,B) = \\dfrac{2}{3}\\), then \\(P(A \\cup B)\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{3}{5}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{1}{5}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{2}{15}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{2}{5}\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q9",
+      "questionNumber": "9",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Area of a Triangle",
+      "difficulty": "EASY",
+      "stem": "If the area of \\(\\Delta\\) ABC with vertices A(3, 1), B(\\(-\\)2, 1) and C(0, k) is 5 sq. units, then values of k are :",
+      "options": [
+        {
+          "label": "A",
+          "text": "3, 1"
+        },
+        {
+          "label": "B",
+          "text": "\\(-1\\), 3"
+        },
+        {
+          "label": "C",
+          "text": "\\(-1\\), 2"
+        },
+        {
+          "label": "D",
+          "text": "0, 2"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q10",
+      "questionNumber": "10",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Integration using Trigonometric Identities",
+      "difficulty": "MODERATE",
+      "stem": "\\(\\displaystyle\\int \\sqrt{\\dfrac{1 + \\cos x}{1 - \\cos x}}\\,dx\\) is equal to :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2 \\log \\left|\\sin \\dfrac{x}{2}\\right| + C\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{1}{2} \\log |\\sin 2x| + C\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\log |1 - \\cos 2x| + C\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\log |1 + \\cos 2x| + C\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q11",
+      "questionNumber": "11",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Definite Integrals and the Fundamental Theorem",
+      "difficulty": "EASY",
+      "stem": "If \\(\\displaystyle\\int_{0}^{1} (6x^2 - 4x + k)\\,dx = 0\\), then the value of k is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "0"
+        },
+        {
+          "label": "C",
+          "text": "2"
+        },
+        {
+          "label": "D",
+          "text": "\\(-1\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q12",
+      "questionNumber": "12",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Components and Direction Cosines",
+      "difficulty": "EASY",
+      "stem": "If position vector \\(\\vec{p}\\) of a point (24, n) is such that \\(|\\vec{p}| = 25\\), then the value of n is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\pm 49\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\pm 5\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\pm 1\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\pm 7\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q13",
+      "questionNumber": "13",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Differential Equations",
+      "subtopic": "Order and Degree of a Differential Equation",
+      "difficulty": "EASY",
+      "stem": "The order and degree of differential equation \\(y = \\left(\\dfrac{d^2y}{dx^2}\\right)^2 - \\lambda\\,\\dfrac{dy}{dx}\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "Order = 2, Degree = 2"
+        },
+        {
+          "label": "B",
+          "text": "Order = 2, Degree = 3"
+        },
+        {
+          "label": "C",
+          "text": "Order = 1, Degree = 2"
+        },
+        {
+          "label": "D",
+          "text": "Order = 2, Degree = 4"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q14",
+      "questionNumber": "14",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "EASY",
+      "_flag": "AS PRINTED: the corner-point list has a MISSING COMMA — it reads \"(0, 0), (0, 40), (20, 40) (60, 20) and (60, 0)\" with no comma between (20, 40) and (60, 20). The marking scheme reprints the stem with the same missing comma, so it is CBSE's typesetting, not an extraction artefact. Transcribed as printed; it does not change the answer.",
+      "stem": "The corner points of the feasible region determined by the system of linear constraints are (0, 0), (0, 40), (20, 40) (60, 20) and (60, 0). If the objective function of an LPP is \\(Z = 4x + 3y\\), then the maximum value is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "200"
+        },
+        {
+          "label": "B",
+          "text": "300"
+        },
+        {
+          "label": "C",
+          "text": "240"
+        },
+        {
+          "label": "D",
+          "text": "120"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q15",
+      "questionNumber": "15",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Bounded by a Curve and a Line",
+      "difficulty": "MODERATE",
+      "stem": "An ant is observed crawling on a sheet of paper along a straight line given by equation \\(y = 2x - 4\\). Area of the surface covered by the ant bounded by y-axis, x-axis and \\(x = 1\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 sq. unit"
+        },
+        {
+          "label": "B",
+          "text": "3 sq. units"
+        },
+        {
+          "label": "C",
+          "text": "2 sq. units"
+        },
+        {
+          "label": "D",
+          "text": "4 sq. units"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q16",
+      "questionNumber": "16",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Differential Equations",
+      "subtopic": "Variables Separable",
+      "difficulty": "EASY",
+      "stem": "The general solution for the differential equation \\(\\dfrac{dy}{dx} = e^{3x - y}\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(3e^y = e^{3x} + C\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\log (3x - y) = C\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(e^{3x - y} = C\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-e^y + 3e^{3x} = C\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q17",
+      "questionNumber": "17",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+      "difficulty": "MODERATE",
+      "stem": "Derivative of \\(\\cos^{-1}\\left(\\dfrac{\\sin x + \\cos x}{\\sqrt{2}}\\right)\\), \\(-\\dfrac{\\pi}{4} < x < \\dfrac{\\pi}{4}\\) with respect to x is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(-1\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(1\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{\\pi}{4}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-\\dfrac{\\pi}{4}\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q18",
+      "questionNumber": "18",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Absolute Maximum and Minimum on a Closed Interval",
+      "difficulty": "EASY",
+      "stem": "Absolute minimum value of \\(f(x) = (x - 2)^2 + 5\\) in the interval \\([-3,\\ 2]\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(-3\\)"
+        },
+        {
+          "label": "B",
+          "text": "2"
+        },
+        {
+          "label": "C",
+          "text": "5"
+        },
+        {
+          "label": "D",
+          "text": "30"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q19",
+      "questionNumber": "19",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Relations and Functions",
+      "subtopic": "Equivalence Relations and Classes",
+      "difficulty": "EASY",
+      "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "**Assertion (A) :** A relation R on the set \\(\\{1,\\ 2,\\ 3\\}\\) defined as \\(R = \\{(1,\\ 1),\\ (1,\\ 2),\\ (2,\\ 1),\\ (2,\\ 2),\\ (3,\\ 3)\\}\\) is an equivalence relation.\n\n**Reason (R) :** A relation that is reflexive, symmetric and transitive is an equivalence relation.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q20",
+      "questionNumber": "20",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "MODERATE",
+      "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "**Assertion (A) :** Consider a Linear Programming Problem with minimise \\(Z = x + 2y\\) subject to constraints \\(2x + y \\ge 3\\), \\(x + 2y \\ge 6\\), \\(x,\\ y \\ge 0\\) which gives minimum Z at infinitely many points. The corner points of feasible region are (0, 3) and (6, 0).\n\n**Reason (R) :** If two corner points produce the same minimum value of the objective function, then every point on the line segment joining the points will give the same minimum value.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q21",
+      "questionNumber": "21",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Evaluating Inverse Trigonometric Expressions",
+      "difficulty": "MODERATE",
+      "stem": "Evaluate \\(\\tan\\left[\\cos^{-1}\\left(\\tan \\dfrac{3\\pi}{4}\\right)\\right]\\)."
+    },
+    {
+      "ref": "Q22",
+      "questionNumber": "22",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Angle Between Two Lines",
+      "difficulty": "MODERATE",
+      "stem": "Find the angle between the following pair of lines :\n\n\\(\\dfrac{x - 2}{3} = \\dfrac{y + 5}{2} = \\dfrac{1 - z}{-6}\\) and \\(\\dfrac{x - 7}{1} = \\dfrac{y}{2} = \\dfrac{6 - z}{-2}\\)"
+    },
+    {
+      "ref": "Q23",
+      "questionNumber": "23",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Increasing and Decreasing Functions",
+      "difficulty": "MODERATE",
+      "stem": "Determine the interval(s) in which \\(f(x) = \\dfrac{x}{3} + \\dfrac{3}{x}\\), \\(x \\ne 0\\) is increasing."
+    },
+    {
+      "ref": "Q24a",
+      "questionNumber": "24 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Logarithmic Differentiation",
+      "difficulty": "MODERATE",
+      "stem": "Differentiate \\(x^x\\) with respect to \\(x \\log x\\)."
+    },
+    {
+      "ref": "Q24b",
+      "questionNumber": "24 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Second Order Derivatives",
+      "difficulty": "MODERATE",
+      "_alternativeTo": "Q24a",
+      "stem": "If \\(y = P \\cos ux + Q \\sin ux\\), show that \\(\\dfrac{d^2y}{dx^2} + u^2 y = 0\\)."
+    },
+    {
+      "ref": "Q25a",
+      "questionNumber": "25 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "difficulty": "MODERATE",
+      "stem": "Three honey bees were found flying along the vectors \\(\\vec{a} = 2\\hat{i} - 3\\hat{j} + \\hat{k}\\), \\(\\vec{b} = 4\\hat{j} - 2\\hat{k}\\) and \\(\\vec{c} = 3\\hat{i} + 2\\hat{k}\\) respectively. Find the value of \\(\\lambda\\) such that the path for \\(\\vec{a} + \\lambda \\vec{b}\\) is perpendicular to \\(\\vec{c}\\)."
+    },
+    {
+      "ref": "Q25b",
+      "questionNumber": "25 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Vector (Cross) Product",
+      "difficulty": "MODERATE",
+      "_alternativeTo": "Q25a",
+      "stem": "If A, B and C be three non-collinear points such that \\(\\overrightarrow{AB} = \\hat{i} + 2\\hat{j} - \\hat{k}\\) and \\(\\overrightarrow{AC} = 2\\hat{i} - 3\\hat{j}\\), then find the area of \\(\\Delta\\) ABC."
+    },
+    {
+      "ref": "Q26",
+      "questionNumber": "26",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Rate of Change of Quantities",
+      "difficulty": "MODERATE",
+      "stem": "The volume of a wooden block in the shape of a cube increases at a constant rate as the air becomes moist during the rainy season. Show that the rate of change of its surface area varies inversely as the length of edge of the cube."
+    },
+    {
+      "ref": "Q27a",
+      "questionNumber": "27 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "difficulty": "MODERATE",
+      "_flag": "AS PRINTED: the stem reads \"Consider events : … and hence find :\" — the instruction that \"hence\" refers back to is missing, so the sentence is grammatically incomplete. The marking scheme reprints it identically, so it is CBSE's own printing. What the candidate has to do is unambiguous; transcribed as printed.",
+      "stem": "A die is rolled. Consider events :\n\n\\(A = \\{1,\\ 2,\\ 5\\}\\), \\(B = \\{3,\\ 5\\}\\), \\(C = \\{2,\\ 3,\\ 4,\\ 5\\}\\)\n\nand hence find :\n\n(i) \\(P(A\\,|\\,C)\\) and \\(P(C\\,|\\,A)\\)\n\n(ii) \\(P(A \\cap B\\,|\\,C)\\) and \\(P(A \\cup B\\,|\\,C)\\)"
+    },
+    {
+      "ref": "Q27b",
+      "questionNumber": "27 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Independent Events",
+      "difficulty": "MODERATE",
+      "_alternativeTo": "Q27a",
+      "stem": "A box contains 6 cards numbered 1 to 6. A student is asked to pick up two cards, one by one after replacement and note down the numbers on the cards. Let A be the event of getting sum of the numbers on two cards as 10, and B, the event of a number other than 4 on the first card selected.\n\nFind P(A and B) and find whether the events A and B are independent events or not."
+    },
+    {
+      "ref": "Q28",
+      "questionNumber": "28",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Differential Equations",
+      "subtopic": "Linear Differential Equations",
+      "difficulty": "MODERATE",
+      "stem": "Solve the differential equation \\((x - \\sin y)\\,dy + \\tan y\\,dx = 0\\)."
+    },
+    {
+      "ref": "Q29a",
+      "questionNumber": "29 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Addition of Vectors",
+      "difficulty": "MODERATE",
+      "stem": "Let three toys A, B and C be placed in the same straight line. If the position vectors of A, B and C are \\(55\\hat{i} - 2\\hat{j}\\), \\(5\\hat{i} + 8\\hat{j}\\) and \\(a\\hat{i} - 52\\hat{j}\\) respectively, find the value of ‘a’."
+    },
+    {
+      "ref": "Q29b",
+      "questionNumber": "29 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "difficulty": "HARD",
+      "_alternativeTo": "Q29a",
+      "stem": "If \\(\\vec{a}\\), \\(\\vec{b}\\) and \\(\\vec{c}\\) are unit vectors, then prove that\n\n\\(|\\vec{a} - \\vec{b}|^2 + |\\vec{b} - \\vec{c}|^2 + |\\vec{c} - \\vec{a}|^2 \\le 9\\)."
+    },
+    {
+      "ref": "Q30a",
+      "questionNumber": "30 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integration by Parts",
+      "difficulty": "HARD",
+      "stem": "Find :\n\n\\(\\displaystyle\\int \\dfrac{x - \\sin x}{1 - \\cos x}\\,dx\\)"
+    },
+    {
+      "ref": "Q30b",
+      "questionNumber": "30 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integrals of Some Particular Functions",
+      "difficulty": "MODERATE",
+      "_alternativeTo": "Q30a",
+      "stem": "Evaluate :\n\n\\(\\displaystyle\\int_{0}^{2} \\dfrac{1}{\\sqrt{x^2 + 2x + 3}}\\,dx\\)"
+    },
+    {
+      "ref": "Q31",
+      "questionNumber": "31",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "MODERATE",
+      "stem": "Solve the following Linear Programming Problem graphically :\n\nMaximize \\(Z = \\dfrac{2x}{5} + \\dfrac{3y}{10}\\)\n\nsubject to constraints\n\n\\(2x + y \\le 1000\\)\n\n\\(x + y \\le 800\\)\n\n\\(x,\\ y \\ge 0\\)."
+    },
+    {
+      "ref": "Q32",
+      "questionNumber": "32",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Solving System of Linear Equations",
+      "difficulty": "HARD",
+      "stem": "Three students A, B and C go to a book-store to buy art books, story books and puzzle solving books. A buys one of each type of book for a total of ₹ 21. B buys 4 art books, 3 story books and 2 puzzle solving books for ₹ 60. C buys 6 art books, 2 story books and 3 puzzle solving books and pays ₹ 10 more than B. Use matrix method to find the cost of each type of book."
+    },
+    {
+      "ref": "Q33a",
+      "questionNumber": "33 (a)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+      "difficulty": "HARD",
+      "_flag": "AMBIGUOUS AS PRINTED, AND CBSE KNOWS IT. The log's argument carries NO BRACKETS on the page — it is set as \"log  √(x²+1) – x\" with a gap where the opening bracket would be (checked at 2.6x zoom; the marking scheme reprints the stem identically). CBSE's own marking scheme (ms page idx 13) prints TWO solutions: the first differentiates it exactly as printed, i.e. \\(\\log\\sqrt{x^2+1} - x\\), and reaches \\((x^2+1)\\dfrac{dy}{dx} + xy = \\dfrac{x}{\\sqrt{x^2+1}} - \\sqrt{x^2+1}\\), which is NOT the result the question asks the candidate to show; it then adds \"Note: In case student considers \\(\\sqrt{x^2+1} - x\\) as part of log and writes following solution\" and gives the bracketed derivation, which does reach \\((x^2+1)\\dfrac{dy}{dx} + xy + 1 = 0\\). Both are awarded full marks. So the bracketed reading is the intended one (independently verified by differentiating both readings) and the missing brackets are a CBSE typesetting defect the board chose to absorb rather than correct. Stem transcribed AS PRINTED, unbracketed.",
+      "stem": "If \\(y\\sqrt{x^2 + 1} = \\log \\sqrt{x^2 + 1} - x\\), show that\n\n\\((x^2 + 1)\\,\\dfrac{dy}{dx} + xy + 1 = 0\\)."
+    },
+    {
+      "ref": "Q33b",
+      "questionNumber": "33 (b)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Logarithmic Differentiation",
+      "difficulty": "HARD",
+      "_alternativeTo": "Q33a",
+      "_flag": "AS PRINTED: the paper says \"Find the differential of … with respect to x\", where \"derivative\" is meant. The marking scheme's worked answer computes \\(dy/dx\\). Wording kept as printed.",
+      "stem": "Find the differential of \\(x^{\\cot x} + \\dfrac{2x^2 - 3}{2x^2 - x + 2}\\) with respect to x."
+    },
+    {
+      "ref": "Q34",
+      "questionNumber": "34",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Bounded by a Curve and a Line",
+      "difficulty": "HARD",
+      "_flag": "AS PRINTED: the curve is given in ELLIPSE form \\(\\dfrac{x^2}{25} + \\dfrac{y^2}{25} = 1\\) with BOTH denominators 25, i.e. it is the circle \\(x^2 + y^2 = 25\\). Not a defect — CBSE's own marking scheme (ms page idx 14) sketches a circle of radius 5 and integrates \\(2\\int_{5/2}^{5}\\sqrt{25 - x^2}\\,dx = 25\\left(\\dfrac{\\pi}{3} - \\dfrac{\\sqrt{3}}{4}\\right)\\). Transcribed as printed; recorded so nobody \"repairs\" the second denominator.",
+      "stem": "Sketch the graph defined by \\(\\left\\{(x,\\ y) : \\dfrac{x^2}{25} + \\dfrac{y^2}{25} = 1\\right\\}\\). Find the area of the region of minor segment cut off by the line \\(x = \\dfrac{5}{2}\\), using integration."
+    },
+    {
+      "ref": "Q35a",
+      "questionNumber": "35 (a)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Equation of a Line in Space",
+      "difficulty": "HARD",
+      "stem": "Find the foot of the perpendicular from the point (0, 2, 3) on the line \\(\\dfrac{-x - 3}{-5} = \\dfrac{1 - y}{-2} = \\dfrac{3z + 12}{9}\\) and hence find the length of the perpendicular."
+    },
+    {
+      "ref": "Q35b",
+      "questionNumber": "35 (b)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Shortest Distance Between Two Lines",
+      "difficulty": "HARD",
+      "_alternativeTo": "Q35a",
+      "stem": "Find the value of p if the shortest distance between the lines\n\n\\(\\vec{r} = (\\hat{i} + 2\\hat{j} + \\hat{k}) + \\lambda(\\hat{i} - \\hat{j} + \\hat{k})\\) and\n\n\\(\\vec{r} = (p\\hat{i} - \\hat{j} - \\hat{k}) + \\mu(2\\hat{i} + \\hat{j} + 2\\hat{k})\\)\n\nis \\(\\dfrac{3}{\\sqrt{2}}\\) units."
+    },
+    {
+      "ref": "Q36i",
+      "questionNumber": "36 (i)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "difficulty": "MODERATE",
+      "setId": "2026-65-5-3-CS1",
+      "_caseStudyLabel": "Case Study – 1",
+      "_figure": "ILLUSTRATIVE — page idx 22 prints a labelled line drawing of an open cylinder captioned 'Tumbler', marking h, r and the centre O. Opened before deciding: it carries no measurement, and the stem itself defines V, h and r in words, so neither sub-part depends on it. NOT attached.",
+      "context": "A company produces cylindrical tumblers, open from the top. Since they want uniformity in the product, they fix the surface area of the tumblers produced.\n\nBased on the above information, answer the following questions :\n\nIf for a tumbler, V is its volume, h the height and r the radius of the circular base, then :",
+      "stem": "Differentiate its volume with respect to radius of the base, where the surface area is constant."
+    },
+    {
+      "ref": "Q36ii",
+      "questionNumber": "36 (ii)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "difficulty": "HARD",
+      "setId": "2026-65-5-3-CS1",
+      "_caseStudyLabel": "Case Study – 1",
+      "context": "A company produces cylindrical tumblers, open from the top. Since they want uniformity in the product, they fix the surface area of the tumblers produced.\n\nBased on the above information, answer the following questions :\n\nIf for a tumbler, V is its volume, h the height and r the radius of the circular base, then :",
+      "stem": "If the company wants to maximize the volume of each tumbler, then establish a relation between its height and the radius of the base."
+    },
+    {
+      "ref": "Q37i",
+      "questionNumber": "37 (i)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "difficulty": "EASY",
+      "setId": "2026-65-5-3-CS2",
+      "_caseStudyLabel": "Case Study – 2",
+      "context": "There are three types of vaccines \\(A_1\\), \\(A_2\\), \\(A_3\\), available in the market to protect the population of the country from spread of certain infection. According to a survey conducted, it was found that 25% of the population was given Vaccine \\(A_1\\), 35% of the population was given Vaccine \\(A_2\\) and 40% of the population was given Vaccine \\(A_3\\). The survey also stated that the probabilities that Vaccines \\(A_1\\), \\(A_2\\) and \\(A_3\\) would protect against the infection were 60%, 55% and 50% respectively.\n\nBased on the above information, answer the following questions :\n\nFind the probability that :",
+      "stem": "The person taking vaccine \\(A_2\\) will get infected."
+    },
+    {
+      "ref": "Q37ii",
+      "questionNumber": "37 (ii)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Theorem of Total Probability",
+      "difficulty": "MODERATE",
+      "setId": "2026-65-5-3-CS2",
+      "_caseStudyLabel": "Case Study – 2",
+      "context": "There are three types of vaccines \\(A_1\\), \\(A_2\\), \\(A_3\\), available in the market to protect the population of the country from spread of certain infection. According to a survey conducted, it was found that 25% of the population was given Vaccine \\(A_1\\), 35% of the population was given Vaccine \\(A_2\\) and 40% of the population was given Vaccine \\(A_3\\). The survey also stated that the probabilities that Vaccines \\(A_1\\), \\(A_2\\) and \\(A_3\\) would protect against the infection were 60%, 55% and 50% respectively.\n\nBased on the above information, answer the following questions :\n\nFind the probability that :",
+      "stem": "If a person is chosen randomly, he/she will be protected from the infection."
+    },
+    {
+      "ref": "Q37iiia",
+      "questionNumber": "37 (iii) (a)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Bayes' Theorem",
+      "difficulty": "HARD",
+      "setId": "2026-65-5-3-CS2",
+      "_caseStudyLabel": "Case Study – 2",
+      "context": "There are three types of vaccines \\(A_1\\), \\(A_2\\), \\(A_3\\), available in the market to protect the population of the country from spread of certain infection. According to a survey conducted, it was found that 25% of the population was given Vaccine \\(A_1\\), 35% of the population was given Vaccine \\(A_2\\) and 40% of the population was given Vaccine \\(A_3\\). The survey also stated that the probabilities that Vaccines \\(A_1\\), \\(A_2\\) and \\(A_3\\) would protect against the infection were 60%, 55% and 50% respectively.\n\nBased on the above information, answer the following questions :\n\nFind the probability that :",
+      "stem": "The person was given Vaccine \\(A_1\\), given that the randomly chosen person is infected."
+    },
+    {
+      "ref": "Q37iiib",
+      "questionNumber": "37 (iii) (b)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Bayes' Theorem",
+      "difficulty": "HARD",
+      "setId": "2026-65-5-3-CS2",
+      "_alternativeTo": "Q37iiia",
+      "_caseStudyLabel": "Case Study – 2",
+      "context": "There are three types of vaccines \\(A_1\\), \\(A_2\\), \\(A_3\\), available in the market to protect the population of the country from spread of certain infection. According to a survey conducted, it was found that 25% of the population was given Vaccine \\(A_1\\), 35% of the population was given Vaccine \\(A_2\\) and 40% of the population was given Vaccine \\(A_3\\). The survey also stated that the probabilities that Vaccines \\(A_1\\), \\(A_2\\) and \\(A_3\\) would protect against the infection were 60%, 55% and 50% respectively.\n\nBased on the above information, answer the following questions :\n\nFind the probability that :",
+      "stem": "The person was given Vaccine \\(A_3\\), given that the randomly chosen person is not infected."
+    },
+    {
+      "ref": "Q38i",
+      "questionNumber": "38 (i)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "Types of Relations",
+      "difficulty": "EASY",
+      "setId": "2026-65-5-3-CS3",
+      "_caseStudyLabel": "Case Study – 3",
+      "context": "A school wants the students of class XII to do a project on ‘Sustainability’ keeping the world environment in mind. They select the student participants on the basis of an essay writing competition.\n\n7 students out of 80 are selected for the project and are categorized into two sets such that :\n\nGirl students belong to Set \\(A = \\{G_1,\\ G_2,\\ G_3,\\ G_4\\}\\),\n\nBoy students belong to Set \\(B = \\{B_1,\\ B_2,\\ B_3\\}\\).\n\nBased on the above information, answer the following questions :",
+      "stem": "How many relations are possible from Set A \\(\\to\\) Set B ?"
+    },
+    {
+      "ref": "Q38ii",
+      "questionNumber": "38 (ii)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "One-One and Onto Functions",
+      "difficulty": "MODERATE",
+      "setId": "2026-65-5-3-CS3",
+      "_caseStudyLabel": "Case Study – 3",
+      "context": "A school wants the students of class XII to do a project on ‘Sustainability’ keeping the world environment in mind. They select the student participants on the basis of an essay writing competition.\n\n7 students out of 80 are selected for the project and are categorized into two sets such that :\n\nGirl students belong to Set \\(A = \\{G_1,\\ G_2,\\ G_3,\\ G_4\\}\\),\n\nBoy students belong to Set \\(B = \\{B_1,\\ B_2,\\ B_3\\}\\).\n\nBased on the above information, answer the following questions :",
+      "stem": "Let R be a relation from A \\(\\to\\) B such that\n\n\\(R = \\{(G_1,\\ B_1),\\ (G_2,\\ B_2),\\ (G_3,\\ B_2),\\ (G_4,\\ B_3),\\ (G_1,\\ B_2)\\}\\).\n\nIs R an injective function ? Justify your answer."
+    },
+    {
+      "ref": "Q38iiia",
+      "questionNumber": "38 (iii) (a)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "Equivalence Relations and Classes",
+      "difficulty": "MODERATE",
+      "setId": "2026-65-5-3-CS3",
+      "_caseStudyLabel": "Case Study – 3",
+      "context": "A school wants the students of class XII to do a project on ‘Sustainability’ keeping the world environment in mind. They select the student participants on the basis of an essay writing competition.\n\n7 students out of 80 are selected for the project and are categorized into two sets such that :\n\nGirl students belong to Set \\(A = \\{G_1,\\ G_2,\\ G_3,\\ G_4\\}\\),\n\nBoy students belong to Set \\(B = \\{B_1,\\ B_2,\\ B_3\\}\\).\n\nBased on the above information, answer the following questions :",
+      "stem": "Let the relation R from A \\(\\to\\) A be such that\n\n\\(R = \\{(x,\\ y),\\ x,\\ y \\in A\\), x and y are students from the same colony in the city\\(\\}\\)\n\nVerify if R is an equivalence relation."
+    },
+    {
+      "ref": "Q38iiib",
+      "questionNumber": "38 (iii) (b)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "One-One and Onto Functions",
+      "difficulty": "MODERATE",
+      "setId": "2026-65-5-3-CS3",
+      "_alternativeTo": "Q38iiia",
+      "_caseStudyLabel": "Case Study – 3",
+      "context": "A school wants the students of class XII to do a project on ‘Sustainability’ keeping the world environment in mind. They select the student participants on the basis of an essay writing competition.\n\n7 students out of 80 are selected for the project and are categorized into two sets such that :\n\nGirl students belong to Set \\(A = \\{G_1,\\ G_2,\\ G_3,\\ G_4\\}\\),\n\nBoy students belong to Set \\(B = \\{B_1,\\ B_2,\\ B_3\\}\\).\n\nBased on the above information, answer the following questions :",
+      "stem": "Verify if any function \\(f : B \\to A\\) is bijective. Give reason to support your answer."
+    }
+  ]
+}

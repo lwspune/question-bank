@@ -1,0 +1,254 @@
+{
+ "paper": "65/2/3",
+ "year": 2025,
+ "paperId": "2025-65-2-3",
+ "markingScheme": "out/2025-65-2-3/ms/p00.png … p23.png",
+ "rows": [
+  {
+   "hash": "d1640f1b6f3ce2ccb4eebda203cfd2eb74afb5e03bf093a5407381ff659a393f",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "If \\(\\vec{p}\\) and \\(\\vec{q}\\) are unit vectors, then which of the following values of \\(\\vec{p} \\cdot \\vec{q}\\) is not possible ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{-1}{2}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{1}{\\sqrt{2}}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{\\sqrt{3}}{2}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\sqrt{3}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "For unit vectors, \\(\\vec{p}\\cdot\\vec{q} = \\left|\\vec{p}\\right|\\left|\\vec{q}\\right|\\cos\\theta = \\cos\\theta\\), where \\(\\theta\\) is the angle between them. A cosine can only take values in \\([-1, 1]\\), so the dot product of two unit vectors is confined to that interval, and every value inside it is attained for a suitable angle. Now \\(-\\frac{1}{2}\\), \\(\\frac{1}{\\sqrt{2}}\\) (about \\(0.707\\)) and \\(\\frac{\\sqrt{3}}{2}\\) (about \\(0.866\\)) all lie in \\([-1, 1]\\), whereas \\(\\sqrt{3}\\) is about \\(1.732\\) and exceeds \\(1\\). So the value that is not possible is option (D) \\(\\sqrt{3}\\)."
+  },
+  {
+   "hash": "bb52c74bebc34398f2c1a2df4b629858842914255e4c75f8ba76dce6acbab851",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals and the Fundamental Theorem",
+   "stem": "If \\(\\displaystyle\\int_0^{a} x\\,dx \\le \\dfrac{a}{2} + 6\\), then",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(-4 \\le a \\le 3\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(a \\ge 4,\\ a \\le -3\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(-3 \\le a \\le 4\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-3 \\le a \\le 0\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Evaluate the integral before touching the inequality: \\(\\int_{0}^{a} x\\,dx = \\left[\\frac{x^2}{2}\\right]_{0}^{a} = \\frac{a^2}{2}\\). The condition therefore reads \\(\\frac{a^2}{2} \\le \\frac{a}{2} + 6\\). Multiplying through by \\(2\\) gives \\(a^2 \\le a + 12\\), that is \\(a^2 - a - 12 \\le 0\\), which factorises as \\((a - 4)(a + 3) \\le 0\\). A product of two linear factors is non-positive exactly between (and at) its roots, so the solution is \\(-3 \\le a \\le 4\\), which is option (C) \\(-3 \\le a \\le 4\\)."
+  },
+  {
+   "hash": "bb72fcb7221c2bec8716fe99d9f7a0f4ea6db70ab484d1c72747f0fb553eef9a",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Symmetric and Skew-Symmetric Matrices",
+   "stem": "If A and B are square matrices of same order, then \\((AB^T - BA^T)\\) is a",
+   "options": [
+    {
+     "label": "A",
+     "text": "symmetric matrix"
+    },
+    {
+     "label": "B",
+     "text": "skew-symmetric matrix"
+    },
+    {
+     "label": "C",
+     "text": "null matrix"
+    },
+    {
+     "label": "D",
+     "text": "unit matrix"
+    }
+   ],
+   "answer": "B",
+   "solution": "Write \\(M = AB^T - BA^T\\) and take the transpose, using \\((X - Y)^T = X^T - Y^T\\), \\((XY)^T = Y^TX^T\\) and \\(\\left(X^T\\right)^T = X\\). Then \\(M^T = \\left(AB^T\\right)^T - \\left(BA^T\\right)^T = BA^T - AB^T = -\\left(AB^T - BA^T\\right) = -M\\). A matrix that equals the negative of its own transpose is by definition skew-symmetric, so \\(AB^T - BA^T\\) is option (B) skew-symmetric matrix. Note that it need not be the null matrix, since that would demand \\(AB^T = BA^T\\), which fails for general square matrices \\(A\\) and \\(B\\)."
+  },
+  {
+   "hash": "a2c8dda12e4e02c349fe40462b1abee19e8ac575ddff3832d7b29066ea29c75a",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Evaluating Inverse Trigonometric Expressions",
+   "stem": "The value of \\(\\cos\\left(\\dfrac{\\pi}{6} + \\cot^{-1}(-\\sqrt{3})\\right)\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(-1\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{-\\sqrt{3}}{2}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(0\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(1\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Deal with the inverse cotangent first. The principal range of \\(\\cot^{-1}\\) is \\((0, \\pi)\\), and \\(\\cot\\frac{5\\pi}{6} = -\\sqrt{3}\\) with \\(\\frac{5\\pi}{6}\\) inside that range, so \\(\\cot^{-1}\\left(-\\sqrt{3}\\right) = \\frac{5\\pi}{6}\\). (The same value follows from the identity \\(\\cot^{-1}(-x) = \\pi - \\cot^{-1}x\\), which gives \\(\\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6}\\); the common slip is to write \\(-\\frac{\\pi}{6}\\), which is outside the principal range.) The cosine is then taken at \\(\\frac{\\pi}{6} + \\frac{5\\pi}{6} = \\pi\\), and \\(\\cos\\pi = -1\\), which is option (A) \\(-1\\)."
+  },
+  {
+   "hash": "a0a766ef7c12ec4a851d9db4522dfe177be9810f9365c4e010c13c2daf354268",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "The probability distribution of a random variable X is given by :\n\n| X | \\(-4\\) | \\(-3\\) | \\(-2\\) | \\(-1\\) | \\(0\\) |\n|---|---|---|---|---|---|\n| P(X) | \\(0.1\\) | \\(0.2\\) | \\(0.3\\) | \\(0.2\\) | \\(0.2\\) |\n\nThen E(X) of distribution is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(-1.8\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-1\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(1\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(1.8\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "The mean of a discrete random variable is \\(E(X) = \\sum x\\,P(X = x)\\). First check the table is a genuine distribution: \\(0.1 + 0.2 + 0.3 + 0.2 + 0.2 = 1\\), and every entry is non-negative. Then \\(E(X) = (-4)(0.1) + (-3)(0.2) + (-2)(0.3) + (-1)(0.2) + (0)(0.2) = -0.4 - 0.6 - 0.6 - 0.2 + 0 = -1.8\\). Since every value \\(X\\) can take is negative or zero, a negative mean is exactly what should be expected. The answer is option (A) \\(-1.8\\)."
+  },
+  {
+   "hash": "ab3c4d0354c3bd5f3eb6e315a2441253fbbf2ad21d0eeb713bc6f6f065fd4abf",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "If projection of \\(\\vec{a} = \\alpha\\hat{i} + \\hat{j} + 4\\hat{k}\\) on \\(\\vec{b} = 2\\hat{i} + 6\\hat{j} + 3\\hat{k}\\) is 4 units, then \\(\\alpha\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(-13\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-5\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(13\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(5\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "The projection of \\(\\vec{a}\\) on \\(\\vec{b}\\) is the scalar \\(\\frac{\\vec{a}\\cdot\\vec{b}}{\\left|\\vec{b}\\right|}\\), so compute both parts. The dot product is \\(\\vec{a}\\cdot\\vec{b} = \\alpha(2) + 1(6) + 4(3) = 2\\alpha + 18\\), and the magnitude is \\(\\left|\\vec{b}\\right| = \\sqrt{2^2 + 6^2 + 3^2} = \\sqrt{4 + 36 + 9} = \\sqrt{49} = 7\\). Setting the projection equal to \\(4\\) gives \\(\\frac{2\\alpha + 18}{7} = 4\\), so \\(2\\alpha + 18 = 28\\), \\(2\\alpha = 10\\) and \\(\\alpha = 5\\), which is option (D) \\(5\\)."
+  },
+  {
+   "hash": "011901a6009ebd967340823638aea9080345bc325064d46f70cbb9c4ed28ea41",
+   "ref": "Q22",
+   "questionNumber": "22",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Parts",
+   "stem": "Find : \\(\\displaystyle\\int 2x^3\\,e^{x^2}\\,dx\\).",
+   "solution": "Rearrange the integrand so the substitution is visible: \\(2x^3e^{x^2} = x^2 \\cdot e^{x^2} \\cdot 2x\\). Now put \\(t = x^2\\), so that \\(dt = 2x\\,dx\\) and the integral becomes \\(\\int t\\,e^{t}\\,dt\\). This is a standard integration by parts with \\(t\\) as the first function and \\(e^t\\) as the second: \\(\\int t e^t\\,dt = te^t - \\int e^t\\,dt = te^t - e^t + C = e^t(t - 1) + C\\). Substituting \\(t = x^2\\) back, the integral is \\(e^{x^2}\\left(x^2 - 1\\right) + C\\)."
+  },
+  {
+   "hash": "13063176bb73af352e7ffdb207f33f5dafc0fad94c203e02cc5fad8ee913a7d3",
+   "ref": "Q24",
+   "questionNumber": "24",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "If \\(|\\vec{a}| = 2\\), \\(|\\vec{b}| = 3\\) and \\(\\vec{a} \\cdot \\vec{b} = 4\\), then evaluate \\(|\\vec{a} + 2\\vec{b}|\\).",
+   "solution": "Square the magnitude, using \\(\\left|\\vec{u}\\right|^2 = \\vec{u}\\cdot\\vec{u}\\) and expanding the dot product as if it were an ordinary product: \\(\\left|\\vec{a} + 2\\vec{b}\\right|^2 = \\left|\\vec{a}\\right|^2 + 4\\left(\\vec{a}\\cdot\\vec{b}\\right) + 4\\left|\\vec{b}\\right|^2\\). Substituting the given values, this is \\(2^2 + 4(4) + 4\\left(3^2\\right) = 4 + 16 + 36 = 56\\). Taking the positive square root, since a magnitude is never negative, \\(\\left|\\vec{a} + 2\\vec{b}\\right| = \\sqrt{56} = 2\\sqrt{14}\\), which is about \\(7.48\\)."
+  },
+  {
+   "hash": "ea086b6fbba6e2fa551035841030616c432b27ede2cab9c6b86d7649cf088777",
+   "ref": "Q27",
+   "questionNumber": "27",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Types of Relations",
+   "stem": "Let R be a relation on set of real numbers \\(\\mathbb{R}\\) defined as \\(\\{(x, y) : x - y + \\sqrt{3} \\text{ is an irrational number},\\ x, y \\in \\mathbb{R}\\}\\) Verify R for reflexivity, symmetry and transitivity.",
+   "solution": "Take the three properties in turn; for the two that fail, a single counterexample is enough. Reflexive: for any real \\(x\\), \\(x - x + \\sqrt{3} = \\sqrt{3}\\), which is irrational, so \\((x, x) \\in R\\) for every \\(x\\) and \\(R\\) is reflexive. Symmetric: take \\(x = \\sqrt{3}\\) and \\(y = 2\\). Then \\(x - y + \\sqrt{3} = 2\\sqrt{3} - 2 = 2\\left(\\sqrt{3} - 1\\right)\\), which is irrational, so \\(\\left(\\sqrt{3}, 2\\right) \\in R\\); but reversing the pair gives \\(2 - \\sqrt{3} + \\sqrt{3} = 2\\), which is rational, so \\(\\left(2, \\sqrt{3}\\right) \\notin R\\). Hence \\(R\\) is not symmetric. Transitive: take \\(x = -\\sqrt{3}\\), \\(y = \\sqrt{3}\\) and \\(z = 2\\). Then \\(x - y + \\sqrt{3} = -\\sqrt{3} - \\sqrt{3} + \\sqrt{3} = -\\sqrt{3}\\), irrational, so \\(\\left(-\\sqrt{3}, \\sqrt{3}\\right) \\in R\\), and \\(y - z + \\sqrt{3} = \\sqrt{3} - 2 + \\sqrt{3} = 2\\sqrt{3} - 2\\), irrational, so \\(\\left(\\sqrt{3}, 2\\right) \\in R\\). But \\(x - z + \\sqrt{3} = -\\sqrt{3} - 2 + \\sqrt{3} = -2\\), which is rational, so \\(\\left(-\\sqrt{3}, 2\\right) \\notin R\\). Hence \\(R\\) is not transitive. In summary, \\(R\\) is reflexive but neither symmetric nor transitive."
+  },
+  {
+   "hash": "886a7a9a51ec05e57a26e7736999e1626d806ff80572d908341fc6039165765e",
+   "ref": "Q28",
+   "questionNumber": "28",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following linear programming problem graphically :\nMinimise \\(Z = 2x + y\\)\nsubject to the constraints :\n\\(3x + y \\ge 9\\)\n\\(x + y \\ge 7\\)\n\\(x + 2y \\ge 8\\)\n\\(x, y \\ge 0\\)",
+   "solution": "Draw \\(3x + y = 9\\), \\(x + y = 7\\) and \\(x + 2y = 8\\) in the first quadrant. Every constraint is a \\(\\ge\\), so the feasible region lies on or above all three lines and is unbounded above and to the right; that unboundedness is why the corner-point values will need a further check at the end. The corners come from the boundaries. On the \\(y\\)-axis the binding requirement is \\(y \\ge 9\\) from \\(3x + y \\ge 9\\), giving \\(A(0, 9)\\). Solving \\(3x + y = 9\\) with \\(x + y = 7\\) gives \\(2x = 2\\), so \\(B(1, 6)\\). Solving \\(x + y = 7\\) with \\(x + 2y = 8\\) gives \\(y = 1\\) and then \\(x = 6\\), so \\(C(6, 1)\\). On the \\(x\\)-axis the binding requirement is \\(x \\ge 8\\) from \\(x + 2y \\ge 8\\), giving \\(D(8, 0)\\). The intersection of \\(3x + y = 9\\) with \\(x + 2y = 8\\) is \\((2, 3)\\), which fails \\(x + y \\ge 7\\) and is therefore not a corner of the region. Evaluating \\(Z = 2x + y\\): \\(Z(0, 9) = 9\\), \\(Z(1, 6) = 8\\), \\(Z(6, 1) = 13\\) and \\(Z(8, 0) = 16\\). The smallest corner value is \\(8\\), and for an unbounded region this must be confirmed by testing whether the open half-plane \\(2x + y < 8\\) meets the feasible region. It does not: combining \\(2x + y < 8\\) with \\(x + y \\ge 7\\) forces \\(x < 1\\), while combining it with \\(3x + y \\ge 9\\) forces \\(x > 1\\), which is a contradiction. Hence the minimum value is \\(Z = 8\\), attained at \\(x = 1\\), \\(y = 6\\)."
+  },
+  {
+   "hash": "b42cdbea2dfc79425541aa0227d255aebc41bd207796fdb925303b046b028130",
+   "ref": "Q31",
+   "questionNumber": "31",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals and the Fundamental Theorem",
+   "stem": "If \\(\\displaystyle\\int_a^{b} x^3\\,dx = 0\\) and \\(\\displaystyle\\int_a^{b} x^2\\,dx = \\dfrac{2}{3}\\), then find the values of a and b.",
+   "solution": "Evaluate both integrals in terms of \\(a\\) and \\(b\\). First, \\(\\int_{a}^{b} x^3\\,dx = \\left[\\frac{x^4}{4}\\right]_{a}^{b} = \\frac{b^4 - a^4}{4}\\), so the first condition gives \\(b^4 = a^4\\), and for real numbers that means \\(b = a\\) or \\(b = -a\\). The case \\(b = a\\) is impossible, because then every integral from \\(a\\) to \\(b\\) would be zero, contradicting \\(\\int_{a}^{b} x^2\\,dx = \\frac{2}{3}\\). So \\(a = -b\\). Second, \\(\\int_{a}^{b} x^2\\,dx = \\frac{b^3 - a^3}{3} = \\frac{2}{3}\\) gives \\(b^3 - a^3 = 2\\); substituting \\(a = -b\\) turns this into \\(b^3 + b^3 = 2\\), so \\(b^3 = 1\\) and hence \\(b = 1\\), the only real cube root of \\(1\\). Therefore \\(a = -1\\) and \\(b = 1\\). Both conditions check out: \\(\\int_{-1}^{1} x^3\\,dx = 0\\) since \\(x^3\\) is an odd function, and \\(\\int_{-1}^{1} x^2\\,dx = 2\\int_{0}^{1} x^2\\,dx = \\frac{2}{3}\\)."
+  },
+  {
+   "hash": "ccb28273265e802fd1f4f82ca2a01172a8436afd4b157ca6a919ecb45b8b049d",
+   "ref": "Q33",
+   "questionNumber": "33",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integrals of Special Forms",
+   "stem": "Find : \\(\\displaystyle\\int \\left(\\sqrt{\\tan x} + \\sqrt{\\cot x}\\right) dx\\).",
+   "solution": "Put the two surds over a common denominator: \\(\\sqrt{\\tan x} + \\sqrt{\\cot x} = \\sqrt{\\frac{\\sin x}{\\cos x}} + \\sqrt{\\frac{\\cos x}{\\sin x}} = \\frac{\\sin x + \\cos x}{\\sqrt{\\sin x\\cos x}}\\). Since \\(2\\sin x\\cos x = \\sin 2x\\), the denominator is \\(\\sqrt{\\frac{\\sin 2x}{2}}\\), so the integral is \\(I = \\sqrt{2}\\int \\frac{\\sin x + \\cos x}{\\sqrt{\\sin 2x}}\\,dx\\). The numerator is now exactly the derivative of \\(\\sin x - \\cos x\\), which points to the substitution \\(t = \\sin x - \\cos x\\), \\(dt = (\\cos x + \\sin x)\\,dx\\). Squaring the substitution converts the denominator too: \\(t^2 = \\sin^2 x - 2\\sin x\\cos x + \\cos^2 x = 1 - \\sin 2x\\), so \\(\\sin 2x = 1 - t^2\\). The integral becomes the standard form \\(\\sqrt{2}\\int\\frac{dt}{\\sqrt{1 - t^2}} = \\sqrt{2}\\,\\sin^{-1}t + C\\). Substituting back, \\(\\int\\left(\\sqrt{\\tan x} + \\sqrt{\\cot x}\\right)dx = \\sqrt{2}\\,\\sin^{-1}\\left(\\sin x - \\cos x\\right) + C\\)."
+  }
+ ]
+}

@@ -1,0 +1,561 @@
+{
+ "paper": "65/4/3",
+ "year": 2026,
+ "pattern": "full80",
+ "_transcription": "ENGLISH half only. 23 pages. The alternating hypothesis HELD: idx 0 is the cover, and thereafter the paper runs HINDI-FIRST in pairs, so ENGLISH is the EVEN 0-based indices 2..22 (idx 2 English general instructions + Q1; idx 4 Q2-6; idx 6 Q7-12; idx 8 Q13-16; idx 10 Q17-20; idx 12 Q21-25; idx 14 Q26-29; idx 16 Q30-33; idx 18 Q34-36; idx 20 Q37 + Q38 passage; idx 22 Q38 sub-parts). OVERFLOW TRAP CHECKED EXPLICITLY, RESULT NONE: all ELEVEN odd pages (1,3,5,7,9,11,13,15,17,19,21) were opened individually and every one begins directly with its OWN Hindi block - no English content sits at the top of any odd page on this paper, unlike 2026 65/3/1. Printed page numbers confirm the pairing (even idx carry odd printed numbers 1,3,5..23; odd idx carry even printed numbers 4,6,8..22). Question numbering across the English pages is continuous 1..38 with no gap. THREE MEASURED FACTS, all confirmed on this paper rather than carried over: (1) INSTRUCTION (viii) DOES PRINT INTERNAL-CHOICE COUNTS - 'an internal choice has been provided in 2 questions in Section B, 3 questions in Section C, 2 questions in Section D and 2 questions in Section E' = 9, and exactly 9 were found and both halves ingested: Q21, Q22 (B); Q26, Q30, Q31 (C); Q32, Q34 (D); Q36(iii), Q38(iii) (E). Q37 correctly carries NO choice (only (i) and (ii), 2+2). Verified a second way by walking the marking scheme, which reprints both branches. (2) MCQ option labels are printed UPPERCASE '(A) (B) (C) (D)' in both the question paper and the marking scheme. (3) The decimal point is the RAISED/CENTRED dot - Case Study 3 prints '0<raised dot>1 cm3/s' and Q6 option (A) prints '1<raised dot>1 m/h' - written as 0{\\cdot}1 and 1{\\cdot}1 per contract section 4. Section-E case studies DO print a heading, 'Case Study - 1/2/3' with an EN DASH; kept out of `context` and stored in `_caseStudyLabel` per contract section 5. All 20 Section-A answers are CBSE's own, read off the official marking scheme for this exact code (ms idx 2-7); several `Ans` rows are rendered as images (the Q2 matrix, the Q7/Q11 fractions, the Q14 surd) and were read off the rendered pages. My own independent derivation agreed with the official key on 19 of 20; the single disagreement is Q20, where the key is retained and the disagreement recorded in a `_flag`. NO USABLE SKIP LIST: plan.txt indexes only 16 of ~48 blocks because this scheme prints most answers as text, and it says so itself - the whole paper was transcribed. Marks reconcile to 80 on primary branches (A 20x1 + B 5x2 + C 6x3 + D 4x5 + E 3x4).",
+ "questions": [
+  {
+   "ref": "Q1", "questionNumber": "1", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Inverse Trigonometric Functions", "subtopic": "Domains, Ranges and Principal Value Branches",
+   "difficulty": "MODERATE",
+   "stem": "The following graph represents :",
+   "options": [
+    {"label": "A", "text": "\\(y = \\cos^{-1} x\\)"},
+    {"label": "B", "text": "\\(y = \\sec^{-1} x\\)"},
+    {"label": "C", "text": "\\(y = \\sin^{-1} x\\)"},
+    {"label": "D", "text": "\\(y = \\tan^{-1} x\\)"}
+   ],
+   "answer": "A",
+   "_figure": "REQUIRED - the stem is only 'The following graph represents :'; the curve IS the question. It is drawn on the closed domain [-1, 1] and labelled (-1, pi), (0, pi/2), (1, 0), decreasing throughout. Page idx 2. NOTE this is NOT the same graph as 65/4/1 Q1, which shows a two-branch curve with asymptote y = 0; the options differ too."
+  },
+  {
+   "ref": "Q2", "questionNumber": "2", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices", "subtopic": "Transpose of a Matrix",
+   "difficulty": "MODERATE",
+   "stem": "Let \\(A = [a_{ij}]\\) be a \\(2 \\times 2\\) matrix whose elements are given by \\(a_{ij} = \\dfrac{(i + 2j)^2}{3}\\). Then \\(A'\\) is given by :",
+   "options": [
+    {"label": "A", "text": "\\(\\begin{bmatrix} 12 & \\dfrac{25}{3} \\\\ \\dfrac{16}{3} & 3 \\end{bmatrix}\\)"},
+    {"label": "B", "text": "\\(\\begin{bmatrix} 12 & \\dfrac{16}{3} \\\\ \\dfrac{25}{3} & 3 \\end{bmatrix}\\)"},
+    {"label": "C", "text": "\\(\\begin{bmatrix} 3 & \\dfrac{25}{3} \\\\ \\dfrac{16}{3} & 12 \\end{bmatrix}\\)"},
+    {"label": "D", "text": "\\(\\begin{bmatrix} 3 & \\dfrac{16}{3} \\\\ \\dfrac{25}{3} & 12 \\end{bmatrix}\\)"}
+   ],
+   "answer": "D"
+  },
+  {
+   "ref": "Q3", "questionNumber": "3", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability", "subtopic": "Differentiability and the Chain Rule",
+   "difficulty": "MODERATE",
+   "stem": "The greatest integer function, \\(f(x) = [x]\\), \\(0 < x < 3\\) is **not** differentiable at how many points ?",
+   "options": [
+    {"label": "A", "text": "At only one point"},
+    {"label": "B", "text": "At only two points"},
+    {"label": "C", "text": "At no point"},
+    {"label": "D", "text": "At three points"}
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q4", "questionNumber": "4", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Integrals", "subtopic": "Area Under Simple Curves",
+   "difficulty": "EASY",
+   "stem": "The area of the region bounded by the curve \\(y = x\\) and x-axis, between \\(x = 0\\) and \\(x = 2\\) is :",
+   "options": [
+    {"label": "A", "text": "2 sq. units"},
+    {"label": "B", "text": "\\(\\dfrac{1}{2}\\) sq. unit"},
+    {"label": "C", "text": "1 sq. unit"},
+    {"label": "D", "text": "4 sq. units"}
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q5", "questionNumber": "5", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability", "subtopic": "Continuity",
+   "difficulty": "EASY",
+   "stem": "If \\(f(x) = \\begin{cases} \\dfrac{\\sin x}{x} + \\cos x, & x \\neq 0 \\\\ k, & x = 0 \\end{cases}\\) is continuous at \\(x = 0\\), then the value of k is :",
+   "options": [
+    {"label": "A", "text": "0"},
+    {"label": "B", "text": "\\(-2\\)"},
+    {"label": "C", "text": "\\(-1\\)"},
+    {"label": "D", "text": "2"}
+   ],
+   "answer": "D"
+  },
+  {
+   "ref": "Q6", "questionNumber": "6", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives", "subtopic": "Rate of Change of Quantities",
+   "difficulty": "MODERATE",
+   "stem": "A cylindrical tank is being filled with sand at a rate of 314 m\\(^3\\)/h. If the radius of the tank is 10 m, then the height of sand in the tank increases at the rate of :",
+   "options": [
+    {"label": "A", "text": "\\(1{\\cdot}1\\) m/h"},
+    {"label": "B", "text": "1 m/h"},
+    {"label": "C", "text": "\\(\\pi\\) m/h"},
+    {"label": "D", "text": "\\(\\dfrac{\\pi}{2}\\) m/h"}
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q7", "questionNumber": "7", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Inverse Trigonometric Functions", "subtopic": "Evaluating Inverse Trigonometric Expressions",
+   "difficulty": "MODERATE",
+   "stem": "The principal value of \\(\\sec^{-1}\\left(\\sqrt{2}\\right) + 2\\operatorname{cosec}^{-1}\\left(-\\sqrt{2}\\right)\\) is :",
+   "options": [
+    {"label": "A", "text": "\\(-\\dfrac{\\pi}{2}\\)"},
+    {"label": "B", "text": "\\(-\\dfrac{\\pi}{4}\\)"},
+    {"label": "C", "text": "\\(\\dfrac{\\pi}{4}\\)"},
+    {"label": "D", "text": "\\(\\dfrac{\\pi}{2}\\)"}
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q8", "questionNumber": "8", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants", "subtopic": "Area of a Triangle",
+   "difficulty": "EASY",
+   "stem": "If points (2, 3), (0, 4) and (p, 2) are collinear, then the value of p is :",
+   "options": [
+    {"label": "A", "text": "\\(\\dfrac{4}{7}\\)"},
+    {"label": "B", "text": "\\(-\\dfrac{3}{7}\\)"},
+    {"label": "C", "text": "4"},
+    {"label": "D", "text": "\\(-4\\)"}
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q9", "questionNumber": "9", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability", "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+   "difficulty": "EASY",
+   "stem": "Differential of \\(e^{e^x}\\) with respect to x is :",
+   "options": [
+    {"label": "A", "text": "\\(\\log x\\)"},
+    {"label": "B", "text": "\\(e^{e^x}\\)"},
+    {"label": "C", "text": "\\(e^x\\, e^{e^x}\\)"},
+    {"label": "D", "text": "\\(\\left(e^x\\right)^2\\)"}
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q10", "questionNumber": "10", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals", "subtopic": "Integrals of Some Particular Functions",
+   "difficulty": "EASY",
+   "stem": "\\(\\displaystyle\\int \\dfrac{dx}{\\sqrt{25 - 16x^2}}\\) is equal to :",
+   "options": [
+    {"label": "A", "text": "\\(\\dfrac{1}{5}\\sin^{-1} 4x + C\\)"},
+    {"label": "B", "text": "\\(\\dfrac{1}{25}\\sin^{-1} 16x + C\\)"},
+    {"label": "C", "text": "\\(\\dfrac{1}{4}\\sin^{-1}\\dfrac{4x}{5} + C\\)"},
+    {"label": "D", "text": "\\(\\dfrac{1}{16}\\sin^{-1}\\dfrac{4x}{5} + C\\)"}
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q11", "questionNumber": "11", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals", "subtopic": "Definite Integrals by Substitution",
+   "difficulty": "MODERATE",
+   "stem": "If \\(\\displaystyle\\int_0^1 \\dfrac{dx}{e^x + e^{-x}} = \\tan^{-1} e + k\\), then the value of k is :",
+   "options": [
+    {"label": "A", "text": "\\(e\\)"},
+    {"label": "B", "text": "\\(\\dfrac{\\pi}{4}\\)"},
+    {"label": "C", "text": "0"},
+    {"label": "D", "text": "\\(-\\dfrac{\\pi}{4}\\)"}
+   ],
+   "answer": "D"
+  },
+  {
+   "ref": "Q12", "questionNumber": "12", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations", "subtopic": "Order and Degree of a Differential Equation",
+   "difficulty": "EASY",
+   "stem": "The sum of the order and the degree of the differential equation \\(y = x\\dfrac{dy}{dx} + 3\\left[2 - \\left(\\dfrac{dy}{dx}\\right)^2\\right]\\) is :",
+   "options": [
+    {"label": "A", "text": "not defined"},
+    {"label": "B", "text": "3"},
+    {"label": "C", "text": "1"},
+    {"label": "D", "text": "2"}
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q13", "questionNumber": "13", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming", "subtopic": "Graphical Solution and the Feasible Region",
+   "difficulty": "MODERATE",
+   "stem": "In the graph, the feasible region representing the Linear Programming Problem for maximising objective function \\(Z = px + qy\\), \\(p, q > 0\\) is shaded. If all points on segment AB give max (Z), then which of the following is true ?",
+   "options": [
+    {"label": "A", "text": "\\(p = 2q\\)"},
+    {"label": "B", "text": "\\(p = 3q\\)"},
+    {"label": "C", "text": "\\(q = 3p\\)"},
+    {"label": "D", "text": "\\(q = 2p\\)"}
+   ],
+   "answer": "C",
+   "_figure": "REQUIRED - the stem names segment AB but prints no coordinates; the shaded feasible region ABCO with A(0, 5), B(3, 4), C(5, 0), O(0, 0) is only in the graph. Page idx 8."
+  },
+  {
+   "ref": "Q14", "questionNumber": "14", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra", "subtopic": "Vector (Cross) Product",
+   "difficulty": "MODERATE",
+   "stem": "Three points A(0, 1, 1), B(2, 0, \\(-1\\)) and C(1, 0, 3) form \\(\\Delta\\) ABC. The ar (\\(\\Delta\\) ABC) is :",
+   "options": [
+    {"label": "A", "text": "\\(\\dfrac{\\sqrt{53}}{2}\\) sq. units"},
+    {"label": "B", "text": "\\(\\sqrt{53}\\) sq. units"},
+    {"label": "C", "text": "\\(\\dfrac{\\sqrt{11}}{2}\\) sq. units"},
+    {"label": "D", "text": "\\(\\sqrt{11}\\) sq. units"}
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q15", "questionNumber": "15", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra", "subtopic": "Vector (Cross) Product",
+   "difficulty": "MODERATE",
+   "stem": "If \\((3\\hat{i} - 2\\hat{j} + 5\\hat{k}) \\times (4\\hat{i} + p\\hat{j} + q\\hat{k}) = \\vec{0}\\), then the values of p and q are :",
+   "options": [
+    {"label": "A", "text": "\\(p = -\\dfrac{2}{3}, q = \\dfrac{5}{3}\\)"},
+    {"label": "B", "text": "\\(p = -\\dfrac{8}{3}, q = \\dfrac{20}{3}\\)"},
+    {"label": "C", "text": "\\(p = \\dfrac{20}{3}, q = -\\dfrac{8}{3}\\)"},
+    {"label": "D", "text": "\\(p = 0, q = 0\\)"}
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q16", "questionNumber": "16", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations", "subtopic": "Linear Differential Equations",
+   "difficulty": "MODERATE",
+   "stem": "Which of the following is **not** a Linear Differential Equation ?",
+   "options": [
+    {"label": "A", "text": "\\(\\left(1 + x^2\\right) dy + 2xy\\, dx = \\cot x\\, dx\\)"},
+    {"label": "B", "text": "\\(y + \\dfrac{d}{dx}(xy) = x\\left(\\sin x + \\log x\\right)\\)"},
+    {"label": "C", "text": "\\(x\\left(1 + y^2\\right) dx - y\\left(1 + x^2\\right) dy = 0\\)"},
+    {"label": "D", "text": "\\(y\\, dx - \\left(x + 3y^2\\right) dy = 0\\)"}
+   ],
+   "answer": "C"
+  },
+  {
+   "ref": "Q17", "questionNumber": "17", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming", "subtopic": "Graphical Solution and the Feasible Region",
+   "difficulty": "MODERATE",
+   "stem": "The region represented by the system of inequations \\(3x + y \\geq 3\\), \\(2x - y \\geq -5\\), \\(x, y \\geq 0\\) is :",
+   "options": [
+    {"label": "A", "text": "unbounded in \\(1^{st}\\) quadrant"},
+    {"label": "B", "text": "bounded in \\(1^{st}\\) quadrant"},
+    {"label": "C", "text": "unbounded in \\(2^{nd}\\) quadrant"},
+    {"label": "D", "text": "bounded in \\(2^{nd}\\) quadrant"}
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q18", "questionNumber": "18", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability", "subtopic": "Independent Events",
+   "difficulty": "MODERATE",
+   "stem": "The probability that a particular item is available in three shops A, B and C is \\(\\dfrac{4}{5}\\), \\(\\dfrac{3}{4}\\) and \\(\\dfrac{2}{3}\\) respectively. If a person visits all the three shops to buy the item, then what is the probability that it will be available in at least one of the shops ?",
+   "options": [
+    {"label": "A", "text": "\\(\\dfrac{59}{60}\\)"},
+    {"label": "B", "text": "1"},
+    {"label": "C", "text": "\\(\\dfrac{1}{60}\\)"},
+    {"label": "D", "text": "\\(\\dfrac{9}{60}\\)"}
+   ],
+   "answer": "A"
+  },
+  {
+   "ref": "Q19", "questionNumber": "19", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices", "subtopic": "Multiplication of Matrices",
+   "difficulty": "MODERATE",
+   "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "stem": "**Assertion (A) :** If A and B are two square matrices such that AB and BA are defined, then it is not necessary that AB = BA.\n\n**Reason (R) :** Product of two diagonal matrices of same order is commutative.",
+   "options": [
+    {"label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."},
+    {"label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."},
+    {"label": "C", "text": "Assertion (A) is true, but Reason (R) is false."},
+    {"label": "D", "text": "Assertion (A) is false, but Reason (R) is true."}
+   ],
+   "answer": "B"
+  },
+  {
+   "ref": "Q20", "questionNumber": "20", "section": "A", "marks": 1,
+   "format": "mcq",
+   "chapter": "Relations and Functions", "subtopic": "One-One and Onto Functions",
+   "difficulty": "MODERATE",
+   "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "stem": "**Assertion (A) :** A function \\(f : N \\to N\\) given by \\(f(x) = x^3 + 2\\), \\(\\forall\\, x \\in N\\) is one-one but not onto.\n\n**Reason (R) :** Since \\(\\forall\\, y \\in N\\) (Codomain), there does not exist \\(x = (y - 2)^{1/3}\\) in N (Domain) such that \\(f(x) = x^3 + 2 = y\\).",
+   "options": [
+    {"label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."},
+    {"label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."},
+    {"label": "C", "text": "Assertion (A) is true, but Reason (R) is false."},
+    {"label": "D", "text": "Assertion (A) is false, but Reason (R) is true."}
+   ],
+   "answer": "A",
+   "_flag": "OFFICIAL KEY KEPT, MY DERIVATION DISAGREES. CBSE keys (A) - R true and the correct explanation (MS page idx 7). As PRINTED the Reason is universally quantified ('Since for ALL y in N (Codomain), there does not exist x = (y-2)^(1/3) in N'), and that is false: y = 3 gives x = 1 in N, and y = 10 gives x = 2. Only the existential reading ('there EXISTS y in N for which no such x exists') is true, and that is what makes f not onto. On the printed wording the answer would be (C). Key retained per contract section 7. INDEPENDENTLY REACHED - the 65/4/1 transcriber raised the same disagreement on the identical question."
+  },
+  {
+   "ref": "Q21a", "questionNumber": "21 (a)", "section": "B", "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability", "subtopic": "Continuity",
+   "difficulty": "MODERATE",
+   "stem": "Show that the function \\(f(x) = \\begin{cases} \\dfrac{\\cos x}{-x + \\dfrac{\\pi}{2}}, & x \\neq \\dfrac{\\pi}{2} \\\\[2ex] 1, & x = \\dfrac{\\pi}{2} \\end{cases}\\) is continuous at \\(x = \\dfrac{\\pi}{2}\\)."
+  },
+  {
+   "ref": "Q21b", "questionNumber": "21 (b)", "section": "B", "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability", "subtopic": "Differentiability and the Chain Rule",
+   "difficulty": "MODERATE",
+   "stem": "Find whether the function \\(f(x) = \\begin{cases} x - 1, & x < 2 \\\\ 2x - 3, & x \\geq 2 \\end{cases}\\) at \\(x = 2\\) is differentiable or not.",
+   "_alternativeTo": "Q21a"
+  },
+  {
+   "ref": "Q22a", "questionNumber": "22 (a)", "section": "B", "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra", "subtopic": "Vector (Cross) Product",
+   "difficulty": "MODERATE",
+   "stem": "Let two rods placed on the ground be represented by vectors \\(4\\hat{i} - \\hat{j} + 3\\hat{k}\\) and \\(-2\\hat{i} + \\hat{j} - 2\\hat{k}\\). Find a vector representing a flag-post of height 5 m that has to be erected perpendicular to both the rods."
+  },
+  {
+   "ref": "Q22b", "questionNumber": "22 (b)", "section": "B", "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra", "subtopic": "Components and Direction Cosines",
+   "difficulty": "MODERATE",
+   "stem": "A unit vector \\(\\vec{a}\\) is such that it makes an angle \\(\\dfrac{\\pi}{4}\\) with x-axis, \\(\\dfrac{\\pi}{3}\\) with y-axis and an acute angle \\(\\theta\\) with z-axis. Find \\(\\theta\\) and the components of \\(\\vec{a}\\).",
+   "_alternativeTo": "Q22a"
+  },
+  {
+   "ref": "Q23", "questionNumber": "23", "section": "B", "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives", "subtopic": "Increasing and Decreasing Functions",
+   "difficulty": "MODERATE",
+   "stem": "Find the interval(s) for which the function \\(f(x) = \\dfrac{x}{3} + \\dfrac{3}{x}\\), \\(x \\neq 0\\) is increasing."
+  },
+  {
+   "ref": "Q24", "questionNumber": "24", "section": "B", "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra", "subtopic": "Addition of Vectors",
+   "difficulty": "MODERATE",
+   "stem": "If in a parallelogram PQRS, \\(\\overrightarrow{PQ} = 2\\hat{i} + 3\\hat{j} + \\hat{k}\\) and \\(\\overrightarrow{QR} = \\hat{i} - 2\\hat{j} + \\hat{k}\\), then find the unit vectors parallel to the diagonals \\(\\overrightarrow{PR}\\) and \\(\\overrightarrow{SQ}\\)."
+  },
+  {
+   "ref": "Q25", "questionNumber": "25", "section": "B", "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions", "subtopic": "Evaluating Inverse Trigonometric Expressions",
+   "difficulty": "MODERATE",
+   "stem": "Evaluate :\n\n\\(\\tan^{-1}\\left(-\\dfrac{1}{\\sqrt{3}}\\right) + \\cot^{-1}\\left(\\dfrac{1}{\\sqrt{3}}\\right) + \\tan^{-1}\\left(\\sin\\left(-\\dfrac{\\pi}{2}\\right)\\right) + \\tan^{-1}\\left(\\tan\\dfrac{2\\pi}{3}\\right)\\)"
+  },
+  {
+   "ref": "Q26a", "questionNumber": "26 (a)", "section": "C", "marks": 3,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry", "subtopic": "Equation of a Line in Space",
+   "difficulty": "MODERATE",
+   "stem": "Find a point on the line \\(\\dfrac{x - 2}{3} = \\dfrac{1 - y}{2} = \\dfrac{z - 3}{2}\\) at a distance of \\(\\sqrt{2}\\) units from the point (1, 2, 3)."
+  },
+  {
+   "ref": "Q26b", "questionNumber": "26 (b)", "section": "C", "marks": 3,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry", "subtopic": "Shortest Distance Between Two Lines",
+   "difficulty": "MODERATE",
+   "stem": "Find the shortest distance between the lines\n\n\\(\\vec{r} = (4 + \\lambda)\\hat{i} + (2\\lambda - 1)\\hat{j} - 3\\lambda\\hat{k}\\)\n\n\\(\\vec{r} = (1 + 2\\mu)\\hat{i} + (2 - 5\\mu)\\hat{k} + (4\\mu - 1)\\hat{j}\\).",
+   "_alternativeTo": "Q26a",
+   "_flag": "AS PRINTED, two things. (1) The second line lists its terms in the order i, k, j - the k-component is printed before the j-component. Not reordered; it changes nothing mathematically. (2) THE MARKING SCHEME'S REPRINT OF THIS STEM IS DEFECTIVE: MS page idx 10 prints the k-component as (2 - mu), dropping the 5. The QUESTION PAPER (page idx 14) prints (2 - 5mu), and the MS's OWN solution needs it - it takes b2 = 2i + 4j - 5k, whose k-coefficient -5 can only come from (2 - 5mu). Transcribed from the question paper, which the MS's own working corroborates. INDEPENDENTLY CONFIRMED - the same MS defect was recorded on 65/4/1, which carries this identical question as its Q30(b), so CBSE re-typeset the same error into both sets' schemes."
+  },
+  {
+   "ref": "Q27", "questionNumber": "27", "section": "C", "marks": 3,
+   "format": "subjective",
+   "chapter": "Matrices", "subtopic": "Multiplication of Matrices",
+   "difficulty": "MODERATE",
+   "stem": "If \\(A = \\begin{bmatrix} 2 & 0 & 1 \\\\ 2 & 1 & 3 \\\\ 1 & -1 & 0 \\end{bmatrix}\\), then compute \\(A^2 - 5A + 4\\,I\\)."
+  },
+  {
+   "ref": "Q28", "questionNumber": "28", "section": "C", "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability", "subtopic": "Theorem of Total Probability",
+   "difficulty": "HARD",
+   "stem": "In a school, the probability of holding a debate competition is \\(\\dfrac{1}{3}\\) and that of a quiz competition is \\(\\dfrac{2}{3}\\). In the two participating teams, A has 4 girls and 6 boys and B has 7 girls and 3 boys. If a debate competition is held, the students are selected from team A and for the quiz competition they are selected from team B. If only two students are to be chosen from the teams, then find the probability that one will be a girl and the other a boy."
+  },
+  {
+   "ref": "Q29", "questionNumber": "29", "section": "C", "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming", "subtopic": "Graphical Solution and the Feasible Region",
+   "difficulty": "MODERATE",
+   "stem": "Solve the following Linear Programming Problem graphically :\n\nMaximize \\(Z = 20x + 10y\\)\n\nsubject to constraints\n\n\\(x + 2y \\leq 28\\)\n\n\\(3x + y \\leq 24\\)\n\n\\(x \\geq 2\\)\n\n\\(x, y \\geq 0\\)"
+  },
+  {
+   "ref": "Q30a", "questionNumber": "30 (a)", "section": "C", "marks": 3,
+   "format": "subjective",
+   "chapter": "Relations and Functions", "subtopic": "One-One and Onto Functions",
+   "difficulty": "MODERATE",
+   "stem": "Let \\(A = \\mathbb{R} - \\{3\\}\\) and \\(B = \\mathbb{R} - \\{1\\}\\). A function \\(f : A \\to B\\) is defined by \\(f(x) = \\left(\\dfrac{x - 2}{x - 3}\\right)\\). Find whether f is one-one and onto."
+  },
+  {
+   "ref": "Q30b", "questionNumber": "30 (b)", "section": "C", "marks": 3,
+   "format": "subjective",
+   "chapter": "Relations and Functions", "subtopic": "Equivalence Relations and Classes",
+   "difficulty": "MODERATE",
+   "stem": "Let n be a fixed positive integer. A relation R is defined in set \\(\\mathbb{Z}\\) such that \\(R = \\{(x, y) : (x - y)\\) is divisible by \\(n, \\; x, y \\in \\mathbb{Z}\\}\\). Determine if R is an equivalence relation.",
+   "_alternativeTo": "Q30a"
+  },
+  {
+   "ref": "Q31a", "questionNumber": "31 (a)", "section": "C", "marks": 3,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability", "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "difficulty": "MODERATE",
+   "stem": "If \\(xy = e^{x - y}\\), then find \\(\\dfrac{dy}{dx}\\)."
+  },
+  {
+   "ref": "Q31b", "questionNumber": "31 (b)", "section": "C", "marks": 3,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability", "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "difficulty": "HARD",
+   "stem": "Differentiate \\(\\tan^{-1}\\left(\\dfrac{\\sqrt{1 + x^2} - \\sqrt{1 - x^2}}{\\sqrt{1 + x^2} + \\sqrt{1 - x^2}}\\right)\\) with respect to \\(\\cos^{-1} x^2\\).",
+   "_alternativeTo": "Q31a"
+  },
+  {
+   "ref": "Q32a", "questionNumber": "32 (a)", "section": "D", "marks": 5,
+   "format": "subjective",
+   "chapter": "Integrals", "subtopic": "Integration by Partial Fractions",
+   "difficulty": "HARD",
+   "stem": "Find :\n\n\\(\\displaystyle\\int \\dfrac{x}{(x - 1)(x^2 + 4)}\\, dx\\)"
+  },
+  {
+   "ref": "Q32b", "questionNumber": "32 (b)", "section": "D", "marks": 5,
+   "format": "subjective",
+   "chapter": "Integrals", "subtopic": "Integration by Parts",
+   "difficulty": "HARD",
+   "stem": "Evaluate :\n\n\\(\\displaystyle\\int_0^1 \\dfrac{x \\tan^{-1} x}{\\left(1 + x^2\\right)^{3/2}}\\, dx\\)",
+   "_alternativeTo": "Q32a"
+  },
+  {
+   "ref": "Q33", "questionNumber": "33", "section": "D", "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Integrals", "subtopic": "Area Under Simple Curves",
+   "difficulty": "HARD",
+   "stem": "Using integration, find the area of the region bounded by \\(y = 5x + 4\\), \\(y = 0\\), \\(x = -1\\) and \\(x = 1\\)."
+  },
+  {
+   "ref": "Q34a", "questionNumber": "34 (a)", "section": "D", "marks": 5,
+   "format": "subjective",
+   "chapter": "Differential Equations", "subtopic": "Linear Differential Equations",
+   "difficulty": "HARD",
+   "stem": "Solve the differential equation \\(y e^y\\, dx = \\left(y^3 + 2x e^y\\right) dy\\), when \\(y(0) = 1\\)."
+  },
+  {
+   "ref": "Q34b", "questionNumber": "34 (b)", "section": "D", "marks": 5,
+   "format": "subjective",
+   "chapter": "Differential Equations", "subtopic": "Homogeneous Differential Equations",
+   "difficulty": "HARD",
+   "stem": "Find the general solution of the differential equation \\(\\left(x^3 - 3xy^2\\right) dx = \\left(y^3 - 3x^2 y\\right) dy\\).",
+   "_alternativeTo": "Q34a"
+  },
+  {
+   "ref": "Q35", "questionNumber": "35", "section": "D", "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry", "subtopic": "Equation of a Line in Space",
+   "difficulty": "HARD",
+   "stem": "Find the length of the perpendicular drawn from the point P(1, 2, 3) to the line \\(\\dfrac{x - 6}{3} = \\dfrac{y - 7}{2} = \\dfrac{z - 7}{-2}\\). Also, find the equation of the perpendicular line joining P and the foot of the perpendicular."
+  },
+  {
+   "ref": "Q36i", "questionNumber": "36 (i)", "section": "E", "marks": 1,
+   "format": "subjective",
+   "chapter": "Determinants", "subtopic": "Solving System of Linear Equations",
+   "difficulty": "EASY",
+   "setId": "2026-65-4-3-CS1",
+   "context": "A carpenter needs to design a wooden box in the shape of a cuboid such that the sum of its length and breadth is 3 cm more than its height. Twice of its length, thrice of its breadth and its height add up to 10 cm. Its breadth added to 7 times its height is 1 cm less than 3 times its length.\n\nOn the basis of the above information, answer the following questions :",
+   "stem": "Write the equations representing the various dimensions and express them as the matrix equation \\(AX = B\\).",
+   "_caseStudyLabel": "Case Study – 1"
+  },
+  {
+   "ref": "Q36ii", "questionNumber": "36 (ii)", "section": "E", "marks": 1,
+   "format": "subjective",
+   "chapter": "Determinants", "subtopic": "Adjoint and Inverse of a Matrix",
+   "difficulty": "EASY",
+   "setId": "2026-65-4-3-CS1",
+   "context": "A carpenter needs to design a wooden box in the shape of a cuboid such that the sum of its length and breadth is 3 cm more than its height. Twice of its length, thrice of its breadth and its height add up to 10 cm. Its breadth added to 7 times its height is 1 cm less than 3 times its length.\n\nOn the basis of the above information, answer the following questions :",
+   "stem": "Find if \\(A^{-1}\\) exists. Justify your answer.",
+   "_caseStudyLabel": "Case Study – 1"
+  },
+  {
+   "ref": "Q36iiia", "questionNumber": "36 (iii) (a)", "section": "E", "marks": 2,
+   "format": "subjective",
+   "chapter": "Determinants", "subtopic": "Adjoint and Inverse of a Matrix",
+   "difficulty": "MODERATE",
+   "setId": "2026-65-4-3-CS1",
+   "context": "A carpenter needs to design a wooden box in the shape of a cuboid such that the sum of its length and breadth is 3 cm more than its height. Twice of its length, thrice of its breadth and its height add up to 10 cm. Its breadth added to 7 times its height is 1 cm less than 3 times its length.\n\nOn the basis of the above information, answer the following questions :",
+   "stem": "Find \\(A^{-1}\\).",
+   "_caseStudyLabel": "Case Study – 1"
+  },
+  {
+   "ref": "Q36iiib", "questionNumber": "36 (iii) (b)", "section": "E", "marks": 2,
+   "format": "subjective",
+   "chapter": "Matrices", "subtopic": "Multiplication of Matrices",
+   "difficulty": "MODERATE",
+   "setId": "2026-65-4-3-CS1",
+   "context": "A carpenter needs to design a wooden box in the shape of a cuboid such that the sum of its length and breadth is 3 cm more than its height. Twice of its length, thrice of its breadth and its height add up to 10 cm. Its breadth added to 7 times its height is 1 cm less than 3 times its length.\n\nOn the basis of the above information, answer the following questions :",
+   "stem": "Find \\(A^2 + 7\\,I\\).",
+   "_caseStudyLabel": "Case Study – 1",
+   "_alternativeTo": "Q36iiia"
+  },
+  {
+   "ref": "Q37i", "questionNumber": "37 (i)", "section": "E", "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability", "subtopic": "Theorem of Total Probability",
+   "difficulty": "MODERATE",
+   "setId": "2026-65-4-3-CS2",
+   "context": "An NGO organises a charity event in which they decide to distribute woollen caps to protect children from winter. The caps to be distributed are in three separate boxes, Box I has 30 red caps, Box II has 20 red and 10 green caps, and Box III has 30 green caps. The probability that a Box i is selected and a cap picked out is \\(\\dfrac{i}{6}\\), where i = 1, 2, 3.\n\nBased on the above information, answer the following questions :\n\nA person selects a cap.",
+   "stem": "What is the probability that he selects a red cap ?",
+   "_caseStudyLabel": "Case Study – 2"
+  },
+  {
+   "ref": "Q37ii", "questionNumber": "37 (ii)", "section": "E", "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability", "subtopic": "Bayes' Theorem",
+   "difficulty": "MODERATE",
+   "setId": "2026-65-4-3-CS2",
+   "context": "An NGO organises a charity event in which they decide to distribute woollen caps to protect children from winter. The caps to be distributed are in three separate boxes, Box I has 30 red caps, Box II has 20 red and 10 green caps, and Box III has 30 green caps. The probability that a Box i is selected and a cap picked out is \\(\\dfrac{i}{6}\\), where i = 1, 2, 3.\n\nBased on the above information, answer the following questions :\n\nA person selects a cap.",
+   "stem": "If he selects a green cap, what is the probability that the cap has come from Box II ?",
+   "_caseStudyLabel": "Case Study – 2"
+  },
+  {
+   "ref": "Q38i", "questionNumber": "38 (i)", "section": "E", "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Derivatives", "subtopic": "Rate of Change of Quantities",
+   "difficulty": "EASY",
+   "setId": "2026-65-4-3-CS3",
+   "context": "At a birthday party, children are being served orange juice in conical cups, as shown in the figure.\n\nEach cup is 15 cm deep and has a radius 5 cm. The juice is being poured into this cup at a rate of \\(0{\\cdot}1\\) cm\\(^3\\)/s.\n\nOn the basis of the above information, answer the following questions :",
+   "stem": "Establish a relation between the height h of the juice in the cup and radius r of the surface of the juice in the cup, if the semi-vertical angle of the cone is \\(\\alpha\\).",
+   "_caseStudyLabel": "Case Study – 3",
+   "_figure": "DECORATIVE - the passage says 'as shown in the figure' and a labelled cone (R = 5 cm, H = 15 cm, r, h, l, alpha) is printed on page idx 20, but both dimensions are stated in the text and every other symbol is defined in the sub-parts. Opened and checked; a reference, not a dependency."
+  },
+  {
+   "ref": "Q38ii", "questionNumber": "38 (ii)", "section": "E", "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Derivatives", "subtopic": "Rate of Change of Quantities",
+   "difficulty": "MODERATE",
+   "setId": "2026-65-4-3-CS3",
+   "context": "At a birthday party, children are being served orange juice in conical cups, as shown in the figure.\n\nEach cup is 15 cm deep and has a radius 5 cm. The juice is being poured into this cup at a rate of \\(0{\\cdot}1\\) cm\\(^3\\)/s.\n\nOn the basis of the above information, answer the following questions :",
+   "stem": "At what rate is the juice level in the cup rising when the juice is 6 cm deep ?",
+   "_caseStudyLabel": "Case Study – 3",
+   "_figure": "DECORATIVE - the passage says 'as shown in the figure' and a labelled cone (R = 5 cm, H = 15 cm, r, h, l, alpha) is printed on page idx 20, but both dimensions are stated in the text and every other symbol is defined in the sub-parts. Opened and checked; a reference, not a dependency."
+  },
+  {
+   "ref": "Q38iiia", "questionNumber": "38 (iii) (a)", "section": "E", "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives", "subtopic": "Rate of Change of Quantities",
+   "difficulty": "HARD",
+   "setId": "2026-65-4-3-CS3",
+   "context": "At a birthday party, children are being served orange juice in conical cups, as shown in the figure.\n\nEach cup is 15 cm deep and has a radius 5 cm. The juice is being poured into this cup at a rate of \\(0{\\cdot}1\\) cm\\(^3\\)/s.\n\nOn the basis of the above information, answer the following questions :",
+   "stem": "When the juice is 6 cm deep, then find at what rate is the upper surface area of juice increasing ?",
+   "_caseStudyLabel": "Case Study – 3",
+   "_figure": "DECORATIVE - the passage says 'as shown in the figure' and a labelled cone (R = 5 cm, H = 15 cm, r, h, l, alpha) is printed on page idx 20, but both dimensions are stated in the text and every other symbol is defined in the sub-parts. Opened and checked; a reference, not a dependency."
+  },
+  {
+   "ref": "Q38iiib", "questionNumber": "38 (iii) (b)", "section": "E", "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives", "subtopic": "Rate of Change of Quantities",
+   "difficulty": "HARD",
+   "setId": "2026-65-4-3-CS3",
+   "context": "At a birthday party, children are being served orange juice in conical cups, as shown in the figure.\n\nEach cup is 15 cm deep and has a radius 5 cm. The juice is being poured into this cup at a rate of \\(0{\\cdot}1\\) cm\\(^3\\)/s.\n\nOn the basis of the above information, answer the following questions :",
+   "stem": "When the juice is 6 cm deep, then find the rate at which the wetted surface area of the cup is increasing.",
+   "_caseStudyLabel": "Case Study – 3",
+   "_figure": "DECORATIVE - the passage says 'as shown in the figure' and a labelled cone (R = 5 cm, H = 15 cm, r, h, l, alpha) is printed on page idx 20, but both dimensions are stated in the text and every other symbol is defined in the sub-parts. Opened and checked; a reference, not a dependency.",
+   "_alternativeTo": "Q38iiia"
+  }
+ ]
+}

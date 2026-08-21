@@ -1,0 +1,225 @@
+{
+ "paper": "65/4/3",
+ "year": 2026,
+ "paperId": "2026-65-4-3",
+ "markingScheme": "out/2026-65-4-3/ms/p00.png … p20.png",
+ "rows": [
+  {
+   "hash": "1fc47f02f559b621d4adf004d6082c61012a315c64dbf3ea4ade012f8d8aa682",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "The following graph represents :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(y = \\cos^{-1} x\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(y = \\sec^{-1} x\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(y = \\sin^{-1} x\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(y = \\tan^{-1} x\\)"
+    }
+   ],
+   "answer": "A",
+   "figure": "REQUIRED - the stem is only 'The following graph represents :'; the curve IS the question. It is drawn on the closed domain [-1, 1] and labelled (-1, pi), (0, pi/2), (1, 0), decreasing throughout. Page idx 2. NOTE this is NOT the same graph as 65/4/1 Q1, which shows a two-branch curve with asymptote y = 0; the options differ too.",
+   "solution": "Read off the three features the printed curve shows: it exists only for \\(-1 \\le x \\le 1\\), it decreases steadily from \\((-1, \\pi)\\) at the left-hand end to \\((1, 0)\\) at the right-hand end, and it passes through \\(\\left(0, \\dfrac{\\pi}{2}\\right)\\).\n\nTest each choice. The graph of \\(y = \\sin^{-1} x\\) has the same domain \\([-1, 1]\\) but INCREASES from \\(-\\dfrac{\\pi}{2}\\) to \\(\\dfrac{\\pi}{2}\\), so both its direction and its endpoint values are wrong. The graph of \\(y = \\tan^{-1} x\\) is defined for every real x, not just on \\([-1, 1]\\), and also increases. The graph of \\(y = \\sec^{-1} x\\) is defined only for \\(|x| \\ge 1\\), which is the exact complement of the interval drawn, so it cannot be a single arc joining \\(x = -1\\) to \\(x = 1\\). Only \\(y = \\cos^{-1} x\\) has domain \\([-1, 1]\\) and range \\([0, \\pi]\\), decreasing throughout with \\(\\cos^{-1}(-1) = \\pi\\), \\(\\cos^{-1} 0 = \\dfrac{\\pi}{2}\\) and \\(\\cos^{-1} 1 = 0\\) — the three marked points exactly. Hence the graph represents option (A) \\(y = \\cos^{-1} x\\)."
+  },
+  {
+   "hash": "4db2d2669438318b98317e15117b109b40d2dae85c94f9284924b21be890af21",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Transpose of a Matrix",
+   "stem": "Let \\(A = [a_{ij}]\\) be a \\(2 \\times 2\\) matrix whose elements are given by \\(a_{ij} = \\dfrac{(i + 2j)^2}{3}\\). Then \\(A'\\) is given by :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\begin{bmatrix} 12 & \\dfrac{25}{3} \\\\ \\dfrac{16}{3} & 3 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\begin{bmatrix} 12 & \\dfrac{16}{3} \\\\ \\dfrac{25}{3} & 3 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\begin{bmatrix} 3 & \\dfrac{25}{3} \\\\ \\dfrac{16}{3} & 12 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\begin{bmatrix} 3 & \\dfrac{16}{3} \\\\ \\dfrac{25}{3} & 12 \\end{bmatrix}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Build A entry by entry from \\(a_{ij} = \\dfrac{(i + 2j)^2}{3}\\). For \\(i = 1\\): \\(a_{11} = \\dfrac{(1 + 2)^2}{3} = \\dfrac{9}{3} = 3\\) and \\(a_{12} = \\dfrac{(1 + 4)^2}{3} = \\dfrac{25}{3}\\). For \\(i = 2\\): \\(a_{21} = \\dfrac{(2 + 2)^2}{3} = \\dfrac{16}{3}\\) and \\(a_{22} = \\dfrac{(2 + 4)^2}{3} = \\dfrac{36}{3} = 12\\).\n\nSo \\(A = \\begin{bmatrix} 3 & \\frac{25}{3} \\\\ \\frac{16}{3} & 12 \\end{bmatrix}\\), and the transpose interchanges rows and columns, moving \\(\\frac{25}{3}\\) to the lower left and \\(\\frac{16}{3}\\) to the upper right: \\(A' = \\begin{bmatrix} 3 & \\frac{16}{3} \\\\ \\frac{25}{3} & 12 \\end{bmatrix}\\). Note that A itself is one of the choices, so the transposition step must actually be carried out. Hence the answer is option (D) \\(\\begin{bmatrix} 3 & \\frac{16}{3} \\\\ \\frac{25}{3} & 12 \\end{bmatrix}\\)."
+  },
+  {
+   "hash": "a1950e816d3f14488c625ab2f8cbe5f5fad088d4c16896ed7fbf24a4489600c0",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "A cylindrical tank is being filled with sand at a rate of 314 m\\(^3\\)/h. If the radius of the tank is 10 m, then the height of sand in the tank increases at the rate of :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(1{\\cdot}1\\) m/h"
+    },
+    {
+     "label": "B",
+     "text": "1 m/h"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\pi\\) m/h"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{\\pi}{2}\\) m/h"
+    }
+   ],
+   "answer": "B",
+   "solution": "The sand fills the cylinder from the bottom up, so its volume is \\(V = \\pi r^2 h\\) with the radius \\(r = 10\\) m FIXED and only h changing. Differentiating with respect to time, \\(\\dfrac{dV}{dt} = \\pi r^2 \\dfrac{dh}{dt} = 100\\pi \\dfrac{dh}{dt}\\).\n\nWe are given \\(\\dfrac{dV}{dt} = 314\\) m\\(^3\\)/h, so \\(\\dfrac{dh}{dt} = \\dfrac{314}{100\\pi}\\). Taking \\(\\pi = 3{\\cdot}14\\), this is \\(\\dfrac{314}{314} = 1\\).\n\nHence the height of sand increases at 1 m/h, which is option (B) 1 m/h. (The figure 314 is chosen precisely so that \\(100\\pi\\) cancels it.)"
+  },
+  {
+   "hash": "d3ac968324ce2e7dad14e7c9072006a087d1ac710c7e6276ab02975739b7059c",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Order and Degree of a Differential Equation",
+   "stem": "The sum of the order and the degree of the differential equation \\(y = x\\dfrac{dy}{dx} + 3\\left[2 - \\left(\\dfrac{dy}{dx}\\right)^2\\right]\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "not defined"
+    },
+    {
+     "label": "B",
+     "text": "3"
+    },
+    {
+     "label": "C",
+     "text": "1"
+    },
+    {
+     "label": "D",
+     "text": "2"
+    }
+   ],
+   "answer": "B",
+   "solution": "Write \\(p = \\dfrac{dy}{dx}\\), so the equation is \\(y = xp + 3\\left(2 - p^2\\right)\\), that is \\(y = xp + 6 - 3p^2\\). It is already a polynomial in the derivative, and only the first derivative appears.\n\nThe ORDER is the order of the highest derivative present, so the order is 1. The DEGREE is the highest power of that derivative once the equation is polynomial in the derivatives; expanding the bracket leaves the term \\(-3p^2\\), so the degree is 2. (It would be a mistake to read the degree as 1 from the leading \\(xp\\) term — the whole equation must be scanned.)\n\nHence the sum is \\(1 + 2 = 3\\), which is option (B) \\(3\\)."
+  },
+  {
+   "hash": "51f1dba65b77637532f37d538548e131d187e92b756d9696354f0a639e7c2549",
+   "ref": "Q18",
+   "questionNumber": "18",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Independent Events",
+   "stem": "The probability that a particular item is available in three shops A, B and C is \\(\\dfrac{4}{5}\\), \\(\\dfrac{3}{4}\\) and \\(\\dfrac{2}{3}\\) respectively. If a person visits all the three shops to buy the item, then what is the probability that it will be available in at least one of the shops ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{59}{60}\\)"
+    },
+    {
+     "label": "B",
+     "text": "1"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{1}{60}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{9}{60}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Take availability at the three shops to be independent, as the chapter intends. The probabilities of availability are \\(\\dfrac{4}{5}\\), \\(\\dfrac{3}{4}\\) and \\(\\dfrac{2}{3}\\), so the probabilities of NON-availability are \\(\\dfrac{1}{5}\\), \\(\\dfrac{1}{4}\\) and \\(\\dfrac{1}{3}\\).\n\n\"Available in at least one shop\" is the complement of \"available in none of them\", which is the quicker route. The probability that the item is in none of the three shops is \\(\\dfrac{1}{5} \\times \\dfrac{1}{4} \\times \\dfrac{1}{3} = \\dfrac{1}{60}\\).\n\nHence the required probability is \\(1 - \\dfrac{1}{60} = \\dfrac{59}{60}\\), which is option (A) \\(\\dfrac{59}{60}\\). (The value \\(\\dfrac{1}{60}\\) offered as a distractor is the probability of the opposite event, that the person finds the item nowhere.)"
+  },
+  {
+   "hash": "23671024ba494f2e133c03ec3d63aac1d3fcb3612b662e2d3d4025421fdff06a",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "Find the interval(s) for which the function \\(f(x) = \\dfrac{x}{3} + \\dfrac{3}{x}\\), \\(x \\neq 0\\) is increasing.",
+   "solution": "Differentiate: with \\(f(x) = \\dfrac{x}{3} + \\dfrac{3}{x} = \\dfrac{x}{3} + 3x^{-1}\\),\n\\(f'(x) = \\dfrac{1}{3} - \\dfrac{3}{x^2} = \\dfrac{x^2 - 9}{3x^2}\\).\n\nThe denominator \\(3x^2\\) is positive for every \\(x \\ne 0\\), so the sign of \\(f'\\) is the sign of \\(x^2 - 9 = (x - 3)(x + 3)\\). This is positive exactly when \\(|x| > 3\\), that is when \\(x < -3\\) or \\(x > 3\\), and negative on \\((-3, 0)\\) and \\((0, 3)\\).\n\nHence f is increasing on \\((-\\infty, -3) \\cup (3, \\infty)\\). (The two stretches must be quoted as a union of separate intervals, not as one interval, because \\(x = 0\\) is not in the domain.)"
+  },
+  {
+   "hash": "771492b775040a2858517002a0ce45a2426ab0927ff2d9564dcdc5b16723cad4",
+   "ref": "Q24",
+   "questionNumber": "24",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Addition of Vectors",
+   "stem": "If in a parallelogram PQRS, \\(\\overrightarrow{PQ} = 2\\hat{i} + 3\\hat{j} + \\hat{k}\\) and \\(\\overrightarrow{QR} = \\hat{i} - 2\\hat{j} + \\hat{k}\\), then find the unit vectors parallel to the diagonals \\(\\overrightarrow{PR}\\) and \\(\\overrightarrow{SQ}\\).",
+   "solution": "In the parallelogram PQRS the vertices are taken in order, so the diagonals are PR and SQ, and \\(\\overrightarrow{PS} = \\overrightarrow{QR}\\) since PS and QR are the opposite sides.\n\nDiagonal PR. Going round the boundary, \\(\\overrightarrow{PR} = \\overrightarrow{PQ} + \\overrightarrow{QR} = \\left(2\\hat{i} + 3\\hat{j} + \\hat{k}\\right) + \\left(\\hat{i} - 2\\hat{j} + \\hat{k}\\right) = 3\\hat{i} + \\hat{j} + 2\\hat{k}\\). Its magnitude is \\(\\sqrt{9 + 1 + 4} = \\sqrt{14}\\), so the unit vector parallel to it is \\(\\dfrac{3}{\\sqrt{14}}\\hat{i} + \\dfrac{1}{\\sqrt{14}}\\hat{j} + \\dfrac{2}{\\sqrt{14}}\\hat{k}\\).\n\nDiagonal SQ. Here \\(\\overrightarrow{SQ} = \\overrightarrow{SP} + \\overrightarrow{PQ} = \\overrightarrow{PQ} - \\overrightarrow{PS} = \\overrightarrow{PQ} - \\overrightarrow{QR} = \\left(2\\hat{i} + 3\\hat{j} + \\hat{k}\\right) - \\left(\\hat{i} - 2\\hat{j} + \\hat{k}\\right) = \\hat{i} + 5\\hat{j}\\). Its magnitude is \\(\\sqrt{1 + 25} = \\sqrt{26}\\), so the unit vector parallel to it is \\(\\dfrac{1}{\\sqrt{26}}\\hat{i} + \\dfrac{5}{\\sqrt{26}}\\hat{j}\\).\n\n(Each answer may equally be quoted with the opposite sign, since a unit vector \"parallel to\" a diagonal may be taken either way along it.)"
+  },
+  {
+   "hash": "224767d263579cbc425dd04940d92134019e8e1bec311a56d9d7cf1c95a3c2f6",
+   "ref": "Q27",
+   "questionNumber": "27",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "If \\(A = \\begin{bmatrix} 2 & 0 & 1 \\\\ 2 & 1 & 3 \\\\ 1 & -1 & 0 \\end{bmatrix}\\), then compute \\(A^2 - 5A + 4\\,I\\).",
+   "solution": "First square A. Writing \\(A = \\begin{bmatrix} 2 & 0 & 1 \\\\ 2 & 1 & 3 \\\\ 1 & -1 & 0 \\end{bmatrix}\\), each entry of \\(A^2\\) is a row of A dotted with a column of A:\n\nrow 1 gives \\(4 + 0 + 1 = 5\\), \\(0 + 0 - 1 = -1\\), \\(2 + 0 + 0 = 2\\);\nrow 2 gives \\(4 + 2 + 3 = 9\\), \\(0 + 1 - 3 = -2\\), \\(2 + 3 + 0 = 5\\);\nrow 3 gives \\(2 - 2 + 0 = 0\\), \\(0 - 1 + 0 = -1\\), \\(1 - 3 + 0 = -2\\).\n\nSo \\(A^2 = \\begin{bmatrix} 5 & -1 & 2 \\\\ 9 & -2 & 5 \\\\ 0 & -1 & -2 \\end{bmatrix}\\).\n\nNext, \\(5A = \\begin{bmatrix} 10 & 0 & 5 \\\\ 10 & 5 & 15 \\\\ 5 & -5 & 0 \\end{bmatrix}\\) and \\(4I = \\begin{bmatrix} 4 & 0 & 0 \\\\ 0 & 4 & 0 \\\\ 0 & 0 & 4 \\end{bmatrix}\\).\n\nNow combine entry by entry, \\(A^2 - 5A + 4I\\):\nrow 1: \\(5 - 10 + 4 = -1\\), \\(-1 - 0 + 0 = -1\\), \\(2 - 5 + 0 = -3\\);\nrow 2: \\(9 - 10 + 0 = -1\\), \\(-2 - 5 + 4 = -3\\), \\(5 - 15 + 0 = -10\\);\nrow 3: \\(0 - 5 + 0 = -5\\), \\(-1 + 5 + 0 = 4\\), \\(-2 - 0 + 4 = 2\\).\n\nHence \\(A^2 - 5A + 4I = \\begin{bmatrix} -1 & -1 & -3 \\\\ -1 & -3 & -10 \\\\ -5 & 4 & 2 \\end{bmatrix}\\). (Unlike the familiar textbook examples, this does not come out as the null matrix, so there is nothing to check against — the arithmetic itself is the answer.)"
+  },
+  {
+   "hash": "f44e0c79e050a2b1f011c91010c73720446b9fc438d13e4d0d5abd90b3dae29e",
+   "ref": "Q29",
+   "questionNumber": "29",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following Linear Programming Problem graphically :\n\nMaximize \\(Z = 20x + 10y\\)\n\nsubject to constraints\n\n\\(x + 2y \\leq 28\\)\n\n\\(3x + y \\leq 24\\)\n\n\\(x \\geq 2\\)\n\n\\(x, y \\geq 0\\)",
+   "solution": "Draw the lines \\(x + 2y = 28\\), \\(3x + y = 24\\) and \\(x = 2\\) in the first quadrant. Testing the origin satisfies both slant inequalities, so the feasible region lies below \\(x + 2y = 28\\) and below \\(3x + y = 24\\); the constraint \\(x \\ge 2\\) then cuts off everything to the left of the vertical line \\(x = 2\\). The result is a bounded quadrilateral.\n\nIts corner points come from intersecting the boundary lines in pairs. The lines \\(x = 2\\) and \\(y = 0\\) meet at \\((2, 0)\\), which satisfies both slant constraints. The line \\(3x + y = 24\\) meets \\(y = 0\\) at \\((8, 0)\\), where \\(x + 2y = 8 \\le 28\\) and \\(x = 8 \\ge 2\\). The lines \\(3x + y = 24\\) and \\(x + 2y = 28\\) meet where \\(y = 24 - 3x\\) gives \\(x + 48 - 6x = 28\\), so \\(x = 4\\) and \\(y = 12\\), that is \\((4, 12)\\). Finally \\(x = 2\\) meets \\(x + 2y = 28\\) at \\(y = 13\\), that is \\((2, 13)\\), where \\(3x + y = 19 \\le 24\\). Note that \\(x + 2y = 28\\) meets \\(y = 0\\) at \\((28, 0)\\), which violates \\(3x + y \\le 24\\), so that point is not a corner.\n\nThe corner points are therefore \\((2, 0)\\), \\((8, 0)\\), \\((4, 12)\\) and \\((2, 13)\\).\n\nNow evaluate \\(Z = 20x + 10y\\) at each: at \\((2, 0)\\), \\(Z = 40\\); at \\((8, 0)\\), \\(Z = 160\\); at \\((4, 12)\\), \\(Z = 80 + 120 = 200\\); at \\((2, 13)\\), \\(Z = 40 + 130 = 170\\).\n\nThe feasible region is bounded, so Z attains its maximum at a corner point. Hence the maximum value of Z is 200, at \\(x = 4\\), \\(y = 12\\)."
+  },
+  {
+   "hash": "e3b520f98f5f57ea954ce418f51c25fd6af90c034f93814dfa867c23fe730751",
+   "ref": "Q33",
+   "questionNumber": "33",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Under Simple Curves",
+   "stem": "Using integration, find the area of the region bounded by \\(y = 5x + 4\\), \\(y = 0\\), \\(x = -1\\) and \\(x = 1\\).",
+   "solution": "The bounding curve \\(y = 5x + 4\\) is a straight line, and it crosses the x-axis where \\(5x + 4 = 0\\), that is at \\(x = -\\dfrac{4}{5}\\). That point lies inside the strip \\(-1 \\le x \\le 1\\), so the region splits in two: on \\(\\left[-1, -\\dfrac{4}{5}\\right]\\) the line is BELOW the x-axis (at \\(x = -1\\), \\(y = -1\\)) and on \\(\\left[-\\dfrac{4}{5}, 1\\right]\\) it is above it (at \\(x = 1\\), \\(y = 9\\)). The two pieces must be integrated separately, with the lower one taken positively.\n\nArea \\(= \\left|\\displaystyle\\int_{-1}^{-4/5} (5x + 4)\\,dx\\right| + \\int_{-4/5}^{1} (5x + 4)\\,dx = -\\displaystyle\\int_{-1}^{-4/5} (5x + 4)\\,dx + \\int_{-4/5}^{1} (5x + 4)\\,dx\\).\n\nAn antiderivative of \\(5x + 4\\) is \\(\\dfrac{(5x + 4)^2}{10}\\). For the first piece, \\(\\left[\\dfrac{(5x + 4)^2}{10}\\right]_{-1}^{-4/5} = \\dfrac{0}{10} - \\dfrac{(-1)^2}{10} = -\\dfrac{1}{10}\\), and the leading minus turns this into \\(\\dfrac{1}{10}\\). For the second piece, \\(\\left[\\dfrac{(5x + 4)^2}{10}\\right]_{-4/5}^{1} = \\dfrac{9^2}{10} - \\dfrac{0}{10} = \\dfrac{81}{10}\\).\n\nHence the required area is \\(\\dfrac{1}{10} + \\dfrac{81}{10} = \\dfrac{82}{10} = \\dfrac{41}{5}\\) square units.\n\nThe answer checks against elementary geometry, since both pieces are right-angled triangles: the left one has base \\(\\dfrac{1}{5}\\) and height 1, giving \\(\\dfrac{1}{2} \\times \\dfrac{1}{5} \\times 1 = \\dfrac{1}{10}\\), and the right one has base \\(\\dfrac{9}{5}\\) and height 9, giving \\(\\dfrac{1}{2} \\times \\dfrac{9}{5} \\times 9 = \\dfrac{81}{10}\\)."
+  },
+  {
+   "hash": "b1d08d49c85c5de6a7f1a64e9a707b359229cf3bf821e9a7897f09cf6c52ca17",
+   "ref": "Q35",
+   "questionNumber": "35",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the length of the perpendicular drawn from the point P(1, 2, 3) to the line \\(\\dfrac{x - 6}{3} = \\dfrac{y - 7}{2} = \\dfrac{z - 7}{-2}\\). Also, find the equation of the perpendicular line joining P and the foot of the perpendicular.",
+   "solution": "Put \\(\\dfrac{x - 6}{3} = \\dfrac{y - 7}{2} = \\dfrac{z - 7}{-2} = k\\), so a general point of the line is \\(Q(3k + 6,\\; 2k + 7,\\; -2k + 7)\\). The foot of the perpendicular from P is the particular Q for which \\(\\overrightarrow{PQ}\\) is perpendicular to the line.\n\nWith \\(P(1, 2, 3)\\), the direction ratios of PQ are \\(\\langle 3k + 6 - 1,\\; 2k + 7 - 2,\\; -2k + 7 - 3 \\rangle = \\langle 3k + 5,\\; 2k + 5,\\; -2k + 4 \\rangle\\), while the line itself has direction ratios \\(\\langle 3, 2, -2 \\rangle\\). Perpendicularity means their dot product vanishes:\n\\(3(3k + 5) + 2(2k + 5) - 2(-2k + 4) = 0\\), that is \\(9k + 15 + 4k + 10 + 4k - 8 = 0\\), so \\(17k + 17 = 0\\) and \\(k = -1\\).\n\nSubstituting \\(k = -1\\) gives the foot of the perpendicular \\(Q(3, 5, 9)\\).\n\nLength of the perpendicular. \\(\\overrightarrow{PQ} = \\langle 3 - 1,\\; 5 - 2,\\; 9 - 3 \\rangle = \\langle 2, 3, 6 \\rangle\\), so \\(PQ = \\sqrt{4 + 9 + 36} = \\sqrt{49} = 7\\) units.\n\nEquation of the perpendicular line PQ. It passes through \\(P(1, 2, 3)\\) with direction ratios \\(\\langle 2, 3, 6 \\rangle\\), so in cartesian form it is \\(\\dfrac{x - 1}{2} = \\dfrac{y - 2}{3} = \\dfrac{z - 3}{6}\\), and in vector form \\(\\vec{r} = \\left(\\hat{i} + 2\\hat{j} + 3\\hat{k}\\right) + \\lambda\\left(2\\hat{i} + 3\\hat{j} + 6\\hat{k}\\right)\\).\n\nAs a check, \\(\\langle 2, 3, 6 \\rangle \\cdot \\langle 3, 2, -2 \\rangle = 6 + 6 - 12 = 0\\), confirming that PQ really is perpendicular to the given line."
+  }
+ ]
+}

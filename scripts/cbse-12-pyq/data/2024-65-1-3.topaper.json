@@ -1,0 +1,246 @@
+{
+ "paper": "65/1/3",
+ "year": 2024,
+ "paperId": "2024-65-1-3",
+ "markingScheme": "out/2024-65-1-3/ms/p00.png … p19.png",
+ "rows": [
+  {
+   "hash": "9a2a428e6a698dce7415d80bfe4745bfd09cb6cb520f6dcfef619e0b3879b70d",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Functions in Parametric Form",
+   "stem": "If \\(x = at\\), \\(y = \\frac{a}{t}\\), then \\(\\frac{dy}{dx}\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(t^2\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-t^2\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{1}{t^2}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-\\frac{1}{t^2}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "The curve is given parametrically, so use \\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}\\). From \\(x = at\\), \\(\\frac{dx}{dt} = a\\). From \\(y = \\frac{a}{t} = a t^{-1}\\), \\(\\frac{dy}{dt} = -a t^{-2} = -\\frac{a}{t^2}\\). Dividing, \\(\\frac{dy}{dx} = \\frac{-a/t^2}{a} = -\\frac{1}{t^2}\\), so the derivative is \\(-\\frac{1}{t^2}\\), matching the choice \\(-\\frac{1}{t^2}\\). (The parameter \\(a\\) cancels, which is why no choice involves it.)"
+  },
+  {
+   "hash": "1d2c4b3b7c4bad41167d9d2e86af87cb7a4b6ede4f0a6bb022804027168ea6e4",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Variables Separable",
+   "stem": "The solution of the differential equation \\(\\frac{dy}{dx} = \\frac{1}{\\log y}\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\log y = x + c\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(y \\log y - y = x + c\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\log y - y = x + c\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(y \\log y + y = x + c\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "The variables separate at once: \\(\\frac{dy}{dx} = \\frac{1}{\\log y}\\) gives \\(\\log y \\; dy = dx\\). Integrating both sides, the right side is \\(x + c\\) and the left side needs integration by parts with \\(\\log y\\) as the first function and \\(1\\) as the second: \\(\\int \\log y \\; dy = y \\log y - \\int y \\cdot \\frac{1}{y}\\,dy = y \\log y - y\\). Hence the solution is \\(y \\log y - y = x + c\\), matching the choice \\(y \\log y - y = x + c\\). A quick check by differentiating: \\(\\frac{d}{dy}(y\\log y - y) = \\log y + 1 - 1 = \\log y\\), so \\(\\log y \\, \\frac{dy}{dx} = 1\\), which is the given equation."
+  },
+  {
+   "hash": "1aa7587ed5e3467cf44d7019e22fafde3c18ac93777e9b1d652ac5b7b3f8b062",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Transpose of a Matrix",
+   "stem": "If matrices A and B are of order \\(1 \\times 3\\) and \\(3 \\times 1\\) respectively, then the order of A'B' is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(1 \\times 1\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(3 \\times 1\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(1 \\times 3\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(3 \\times 3\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Transposing swaps the order, so from \\(A_{1 \\times 3}\\) we get \\(A'_{3 \\times 1}\\), and from \\(B_{3 \\times 1}\\) we get \\(B'_{1 \\times 3}\\). The product \\(A'B'\\) is then \\((3 \\times 1)(1 \\times 3)\\); the inner dimensions agree (both \\(1\\)), so the product exists and has the outer dimensions, namely \\(3 \\times 3\\). This is the choice \\(3 \\times 3\\). Note the order matters: \\(B'A'\\) would be \\((1 \\times 3)(3 \\times 1) = 1 \\times 1\\), which is why that value also appears among the choices."
+  },
+  {
+   "hash": "26dd7012ba265a96d8b5d4d2b870156e2d2338d5e3c0187df80198c783ca7a37",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Relations and Functions",
+   "subtopic": "Types of Relations",
+   "stem": "A relation R defined on a set of human beings as\nR = {(x, y) : x is 5 cm shorter than y}\nis :",
+   "options": [
+    {
+     "label": "A",
+     "text": "reflexive only"
+    },
+    {
+     "label": "B",
+     "text": "reflexive and transitive"
+    },
+    {
+     "label": "C",
+     "text": "symmetric and transitive"
+    },
+    {
+     "label": "D",
+     "text": "neither transitive, nor symmetric, nor reflexive"
+    }
+   ],
+   "answer": "D",
+   "solution": "Test the three properties in turn. Reflexive: this would need \\(x\\) to be 5 cm shorter than \\(x\\), which is false for every person, so \\(R\\) is not reflexive. Symmetric: if \\(x\\) is 5 cm shorter than \\(y\\), then \\(y\\) is 5 cm TALLER than \\(x\\), not shorter, so \\((y, x) \\notin R\\) and \\(R\\) is not symmetric. Transitive: if \\(x\\) is 5 cm shorter than \\(y\\) and \\(y\\) is 5 cm shorter than \\(z\\), then \\(x\\) is 10 cm shorter than \\(z\\), not 5 cm, so \\((x, z) \\notin R\\) and \\(R\\) is not transitive. All three fail, matching the choice 'neither transitive, nor symmetric, nor reflexive'."
+  },
+  {
+   "hash": "0015515fe12d511c0faac630df653248898b11d99d6773ad7da7d4f5d279c7fd",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "If f(x) is an odd function, then \\(\\int_{-\\frac{\\pi}{2}}^{\\frac{\\pi}{2}} f(x) \\cos^3 x \\; dx\\) equals :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2 \\int_0^{\\frac{\\pi}{2}} f(x) \\cos^3 x \\; dx\\)"
+    },
+    {
+     "label": "B",
+     "text": "0"
+    },
+    {
+     "label": "C",
+     "text": "\\(2 \\int_0^{\\frac{\\pi}{2}} f(x) \\; dx\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(2 \\int_0^{\\frac{\\pi}{2}} \\cos^3 x \\; dx\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "The interval \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\) is symmetric about the origin, so classify the integrand as odd or even. Write \\(g(x) = f(x)\\cos^3 x\\). Since \\(f\\) is odd, \\(f(-x) = -f(x)\\); since cosine is even, \\(\\cos(-x) = \\cos x\\) and hence \\(\\cos^3(-x) = \\cos^3 x\\). Therefore \\(g(-x) = -f(x)\\cos^3 x = -g(x)\\), so \\(g\\) is an ODD function. For an odd integrand, \\(\\int_{-a}^{a} g(x)\\,dx = 0\\), because the contributions from the two halves cancel. Hence the integral equals \\(0\\), which is the choice \\(0\\). (The doubling rule \\(\\int_{-a}^{a} = 2\\int_0^a\\) applies only to EVEN integrands, which is the trap in the other choices.)"
+  },
+  {
+   "hash": "f3cd0743322647e1b6f4546325c96fb42e2f741d6301492648201090ce66aca8",
+   "ref": "Q22a",
+   "questionNumber": "22 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "Check the differentiability of function \\(f(x) = [x]\\) at \\(x = -3\\), where \\([\\cdot]\\) denotes greatest integer function.",
+   "solution": "[CBSE marking scheme: after defining the left-hand derivative with \\(-h\\) in the denominator, the printed line evaluates it as \\(\\frac{-4 - (-3)}{h}\\), dropping that minus; the correct quotient is \\(\\frac{-1}{-h} = \\frac{1}{h}\\). Both diverge, so the verdict is unaffected.] Here \\(f(-3) = [-3] = -3\\). Take \\(h > 0\\) and compute the two one-sided derivatives. To the RIGHT of \\(-3\\), for small \\(h\\) the number \\(-3 + h\\) lies in \\([-3, -2)\\), so \\([-3 + h] = -3\\). Then the right-hand derivative is \\(\\lim_{h \\to 0} \\frac{f(-3 + h) - f(-3)}{h} = \\lim_{h \\to 0} \\frac{-3 - (-3)}{h} = \\lim_{h \\to 0} \\frac{0}{h} = 0\\). To the LEFT, for small \\(h\\) the number \\(-3 - h\\) lies in \\([-4, -3)\\), so \\([-3 - h] = -4\\). Then the left-hand derivative is \\(\\lim_{h \\to 0} \\frac{f(-3 - h) - f(-3)}{-h} = \\lim_{h \\to 0} \\frac{-4 - (-3)}{-h} = \\lim_{h \\to 0} \\frac{1}{h}\\), which is not finite, so the left-hand derivative does not exist. Since the left-hand derivative fails to exist while the right-hand derivative is \\(0\\), the two are not equal and \\(f(x) = [x]\\) is NOT differentiable at \\(x = -3\\). This is no surprise: the greatest-integer function jumps at every integer, and a function that is discontinuous at a point cannot be differentiable there."
+  },
+  {
+   "hash": "82463cc9e96c4fb89982c64530c4344d459c317f9bca4d4e3e2d0504284f5ef9",
+   "ref": "Q22b",
+   "questionNumber": "22 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "If \\(x^{1/3} + y^{1/3} = 1\\), find \\(\\frac{dy}{dx}\\) at the point \\(\\left( \\frac{1}{8}, \\frac{1}{8} \\right)\\).",
+   "solution": "The relation is implicit, so differentiate both sides with respect to \\(x\\), treating \\(y\\) as a function of \\(x\\): \\(\\frac{1}{3}x^{-2/3} + \\frac{1}{3}y^{-2/3}\\frac{dy}{dx} = 0\\). Solving for the derivative, \\(\\frac{dy}{dx} = -\\frac{x^{-2/3}}{y^{-2/3}}\\). Now substitute the given point. Since \\(\\left(\\frac{1}{8}\\right)^{1/3} = \\frac{1}{2}\\), we get \\(\\left(\\frac{1}{8}\\right)^{-2/3} = 8^{2/3} = 4\\), and the same value for \\(y\\). Hence \\(\\left.\\frac{dy}{dx}\\right|_{(1/8,\\,1/8)} = -\\frac{4}{4} = -1\\). (The point does lie on the curve: \\(\\frac{1}{2} + \\frac{1}{2} = 1\\). More generally \\(\\frac{dy}{dx} = -\\left(\\frac{y}{x}\\right)^{2/3}\\), which is \\(-1\\) wherever \\(x = y\\).)"
+  },
+  {
+   "hash": "60bee2198d508eaadd918616d65876a5769dbe39fea603d0b035a3b01d289ce5",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Find local maximum value and local minimum value (whichever exists) for the function \\(f(x) = 4x^2 + \\frac{1}{x}\\) \\((x \\neq 0)\\).",
+   "solution": "Differentiate: \\(f'(x) = 8x - \\frac{1}{x^2}\\). For critical points set \\(f'(x) = 0\\), so \\(8x = \\frac{1}{x^2}\\), giving \\(8x^3 = 1\\), that is \\(x^3 = \\frac{1}{8}\\) and hence \\(x = \\frac{1}{2}\\) (the only real root). Apply the second-derivative test: \\(f''(x) = 8 + \\frac{2}{x^3}\\), and at \\(x = \\frac{1}{2}\\) this is \\(8 + \\frac{2}{1/8} = 8 + 16 = 24 > 0\\), so \\(x = \\frac{1}{2}\\) is a point of local MINIMUM. The local minimum value is \\(f\\left(\\frac{1}{2}\\right) = 4 \\cdot \\frac{1}{4} + 2 = 1 + 2 = 3\\). There is no local maximum: \\(f'(x) = \\frac{8x^3 - 1}{x^2}\\) has \\(x^2 > 0\\) throughout the domain, so the sign of \\(f'\\) is the sign of \\(8x^3 - 1\\), which is negative for all \\(x < \\frac{1}{2}\\) (including every negative \\(x\\)) and positive for \\(x > \\frac{1}{2}\\). The function therefore only ever turns once. So the local minimum value is \\(3\\) and no local maximum value exists."
+  },
+  {
+   "hash": "c4b64164e83fbb0cf0ecbb6137f79bbb0be9292670da15d8c739b81285066764",
+   "ref": "Q26",
+   "questionNumber": "26",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following linear programming problem graphically :\nMinimise \\(z = 5x - 2y\\)\nsubject to the constraints\n\\(x + 2y \\leq 120\\)\n\\(x + y \\geq 60\\)\n\\(x - 2y \\geq 0\\)\n\\(x, y \\geq 0\\)",
+   "solution": "Draw the boundary lines \\(x + 2y = 120\\), \\(x + y = 60\\) and \\(x - 2y = 0\\) in the first quadrant. The region \\(x + 2y \\le 120\\) contains the origin, \\(x + y \\ge 60\\) excludes it, and \\(x - 2y \\ge 0\\) is the side of the line \\(x = 2y\\) on which \\(x\\) is the larger. Together these bound a quadrilateral whose corners come from the relevant pairs of boundaries. With \\(y = 0\\): \\(x + y = 60\\) gives \\(A(60, 0)\\) and \\(x + 2y = 120\\) gives \\(D(120, 0)\\). Solving \\(x + y = 60\\) with \\(x = 2y\\) gives \\(2y + y = 60\\), so \\(y = 20\\), \\(x = 40\\), that is \\(B(40, 20)\\). Solving \\(x + 2y = 120\\) with \\(x = 2y\\) gives \\(2y + 2y = 120\\), so \\(y = 30\\), \\(x = 60\\), that is \\(C(60, 30)\\). Now evaluate \\(z = 5x - 2y\\) at each corner: at \\(A(60, 0)\\), \\(z = 300\\); at \\(B(40, 20)\\), \\(z = 200 - 40 = 160\\); at \\(C(60, 30)\\), \\(z = 300 - 60 = 240\\); at \\(D(120, 0)\\), \\(z = 600\\). The feasible region is bounded, so the smallest of these is the minimum. Hence the minimum value is \\(z = 160\\), attained at \\(x = 40\\), \\(y = 20\\)."
+  },
+  {
+   "hash": "f66419d923a83b0d3ff7697dba8afce07c821235b97e5e6aa904ac3953bf84a5",
+   "ref": "Q31",
+   "questionNumber": "31",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "Solve the following differential equation :\n\\((\\tan^{-1} y - x) \\; dy = (1 + y^2) \\; dx\\)",
+   "solution": "The equation is not linear in \\(y\\), but it IS linear in \\(x\\), so treat \\(x\\) as the dependent variable and \\(y\\) as the independent one. Dividing by \\((1 + y^2)\\,dy\\) gives \\(\\frac{dx}{dy} = \\frac{\\tan^{-1} y - x}{1 + y^2}\\), which rearranges to the standard form \\(\\frac{dx}{dy} + \\frac{1}{1 + y^2}x = \\frac{\\tan^{-1} y}{1 + y^2}\\). The integrating factor is \\(\\text{I.F.} = e^{\\int \\frac{dy}{1 + y^2}} = e^{\\tan^{-1} y}\\). Multiplying through and integrating, \\(x\\,e^{\\tan^{-1} y} = \\int \\frac{\\tan^{-1} y}{1 + y^2} e^{\\tan^{-1} y}\\,dy\\). Substitute \\(t = \\tan^{-1} y\\), so \\(dt = \\frac{dy}{1 + y^2}\\) and the right side becomes \\(\\int t e^t \\, dt = t e^t - e^t + C\\) by parts. Restoring \\(t\\), \\(x\\,e^{\\tan^{-1} y} = (\\tan^{-1} y)\\,e^{\\tan^{-1} y} - e^{\\tan^{-1} y} + C\\). Dividing by \\(e^{\\tan^{-1} y}\\), the solution may also be written \\(x = \\tan^{-1} y - 1 + C e^{-\\tan^{-1} y}\\)."
+  },
+  {
+   "hash": "7654fd05b889f0aa864d418e087b893286e2d1481acc6a1b7e602e3447fa46a8",
+   "ref": "Q32",
+   "questionNumber": "32",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the equation of a line \\(l_2\\) which is the mirror image of the line \\(l_1\\) with respect to line \\(l : \\frac{x}{1} = \\frac{y - 1}{2} = \\frac{z - 2}{3}\\), given that line \\(l_1\\) passes through the point P(1, 6, 3) and parallel to line \\(l\\).",
+   "solution": "Because \\(l_1\\) is parallel to \\(l\\), its mirror image \\(l_2\\) is also parallel to \\(l\\); so the direction ratios of \\(l_2\\) are those of \\(l\\), namely \\(1, 2, 3\\), and all that is needed is one point on \\(l_2\\) — the image Q of the given point P(1, 6, 3) in the line \\(l\\). First find M, the foot of the perpendicular from P to \\(l\\). A general point of \\(l\\) is \\(M(\\lambda,\\; 2\\lambda + 1,\\; 3\\lambda + 2)\\), so the direction ratios of PM are \\(\\lambda - 1,\\; 2\\lambda - 5,\\; 3\\lambda - 1\\). Since PM is perpendicular to \\(l\\), the dot product with \\(1, 2, 3\\) vanishes: \\(1(\\lambda - 1) + 2(2\\lambda - 5) + 3(3\\lambda - 1) = 0\\), that is \\(14\\lambda - 14 = 0\\), so \\(\\lambda = 1\\) and \\(M(1, 3, 5)\\). Reflection makes M the MIDPOINT of PQ, so \\(Q = 2M - P = (2 - 1,\\; 6 - 6,\\; 10 - 3) = (1, 0, 7)\\). Hence \\(l_2\\) passes through \\((1, 0, 7)\\) with direction ratios \\(1, 2, 3\\), and its equation is \\(\\frac{x - 1}{1} = \\frac{y}{2} = \\frac{z - 7}{3}\\)."
+  },
+  {
+   "hash": "545d04076a093ac1ede77d416de2fd9074d9bbea2b799d8199748dcc36ef2072",
+   "ref": "Q34a",
+   "questionNumber": "34 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Substitution",
+   "stem": "Find :\n\\(\\int \\frac{(3 \\cos x - 2) \\sin x}{5 - \\sin^2 x - 4 \\cos x} \\; dx\\)",
+   "solution": "Everything can be written in terms of \\(\\cos x\\), and the leftover \\(\\sin x\\,dx\\) is exactly the differential, so put \\(\\cos x = t\\), giving \\(-\\sin x\\,dx = dt\\), i.e. \\(\\sin x\\,dx = -dt\\). The numerator becomes \\((3t - 2)(-dt) = (2 - 3t)\\,dt\\). For the denominator use \\(\\sin^2 x = 1 - t^2\\): \\(5 - (1 - t^2) - 4t = t^2 - 4t + 4 = (t - 2)^2\\), a perfect square. So the integral is \\(\\int \\frac{2 - 3t}{(t - 2)^2}\\,dt\\). Split the numerator about \\(t - 2\\): since \\(2 - 3t = -3(t - 2) - 4\\), the integrand is \\(\\frac{-3}{t - 2} - \\frac{4}{(t - 2)^2}\\). Integrating term by term, \\(-3\\log|t - 2| - 4 \\cdot \\left(\\frac{-1}{t - 2}\\right) + C = -3\\log|t - 2| + \\frac{4}{t - 2} + C\\). Substituting back \\(t = \\cos x\\) gives \\(-3\\log|\\cos x - 2| + \\frac{4}{\\cos x - 2} + C\\). (Since \\(\\cos x \\le 1 < 2\\), the modulus may equally be written as \\(2 - \\cos x\\). Differentiating the answer returns \\(\\frac{(3\\cos x - 2)\\sin x}{(\\cos x - 2)^2}\\), and \\((\\cos x - 2)^2\\) is the original denominator, which confirms it.)"
+  },
+  {
+   "hash": "828d31a100d909b0298ae8bc21d653c079dceae9bfacaaa5c9e66f8c55996242",
+   "ref": "Q34b",
+   "questionNumber": "34 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "Evaluate :\n\\(\\int_{-2}^{2} \\frac{x^3 + |x| + 1}{x^2 + 4|x| + 4} \\; dx\\)",
+   "solution": "The interval is symmetric about the origin, so split the numerator into an odd part and an even part and treat each with the symmetry rules. Write \\(I = \\int_{-2}^{2} \\frac{x^3}{x^2 + 4|x| + 4}\\,dx + \\int_{-2}^{2} \\frac{|x| + 1}{x^2 + 4|x| + 4}\\,dx = I_1 + I_2\\). The denominator is EVEN, since it depends only on \\(x^2\\) and \\(|x|\\). In \\(I_1\\) the numerator \\(x^3\\) is odd, so the whole integrand is odd and \\(I_1 = 0\\). In \\(I_2\\) the numerator \\(|x| + 1\\) is even, so the integrand is even and \\(I_2 = 2\\int_0^{2} \\frac{x + 1}{x^2 + 4x + 4}\\,dx\\), where on \\([0, 2]\\) we may replace \\(|x|\\) by \\(x\\). The denominator factors as \\((x + 2)^2\\), so put \\(t = x + 2\\), giving \\(dt = dx\\), \\(x + 1 = t - 1\\), and limits \\(t = 2\\) to \\(t = 4\\). Then \\(I_2 = 2\\int_2^{4} \\frac{t - 1}{t^2}\\,dt = 2\\int_2^{4}\\left(\\frac{1}{t} - \\frac{1}{t^2}\\right) dt = 2\\left[\\log|t| + \\frac{1}{t}\\right]_2^{4}\\). Evaluating, \\(2\\left[\\left(\\log 4 + \\frac{1}{4}\\right) - \\left(\\log 2 + \\frac{1}{2}\\right)\\right] = 2\\left[\\log 2 - \\frac{1}{4}\\right] = 2\\log 2 - \\frac{1}{2}\\), using \\(\\log 4 - \\log 2 = \\log 2\\). Hence \\(I = 0 + 2\\log 2 - \\frac{1}{2} = 2\\log 2 - \\frac{1}{2}\\)."
+  }
+ ]
+}

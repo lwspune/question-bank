@@ -1,0 +1,1038 @@
+{
+  "paper": "65/1/2",
+  "year": 2026,
+  "pattern": "full80",
+  "_transcription": "24-page bilingual booklet (23 printed pages + a blank tail). English pages are the EVEN 0-based indices 2,4,6,8,10,12,14,16,18,20,22 (idx 0 = cover/SET-2/QP code 65/1/2, idx 1 = Hindi general instructions, idx 23 = BLANK apart from the footer). The alternating hypothesis HELD. PAGE-OVERFLOW TRAP CHECKED AND ABSENT: all ten ODD pages (3,5,7,9,11,13,15,17,19,21) were opened and every one is PURE HINDI top to bottom - none carries an English block at its head, and idx 23 carries no content at all. This paper's pages pair 1:1 (Hindi at odd index N, its English twin at N+1, both covering the same question range), so a block that spills does so onto the next page of its OWN language: Q36 runs p18 -> p20 in English and p17 -> p19 in Hindi. Question numbering was then confirmed continuous Q1..Q38 with every question complete on the even pages alone (p02 Q1 | p04 Q2-6 | p06 Q7-10 | p08 Q11-16 | p10 Q17-20 | p12 Q21-25 | p14 Q26-29 | p16 Q30-34 | p18 Q35-Q36(ii)(a) | p20 Q36(ii)(b)-Q37 | p22 Q38). Nothing dropped. MEASURED FACTS FOR THIS PAPER: (1) printed MCQ option labels are UPPERCASE (A) (B) (C) (D), in both the question paper and the marking scheme - stored uppercase A-D; (2) Section-E case studies print NO heading/title line - Q36/Q37/Q38 are numbered only, with the passage starting immediately, so there is no _caseStudyLabel to record; (3) THERE IS NOT ONE DECIMAL NUMBER ANYWHERE IN THIS PAPER - no decimal appears in any stem, option, figure label or marking-scheme answer, so the raised-dot question is unanswerable from this paper (as it was from 65/1/1). Money is written with Indian comma grouping (3,00,000) and no paise; (4) general instruction (viii) prints NO internal-choice counts ('an internal choice has been provided in few questions in all the Sections except Section - A'), matching the recorded behaviour of series 65/1. INTERNAL CHOICE = ELEVEN OR-alternatives, and because instruction (viii) gives no count they were established by WALKING THE MARKING SCHEME QUESTION BY QUESTION (ms p08-p23), which reprints both branches under '(a)' / '(b)' with its own 'OR' rule between them. The scheme shows an alternative on Q23, Q24, Q25 (Section B), Q27, Q29, Q31 (Section C), Q34, Q35 (Section D) and on the case-study sub-parts 36(ii), 37(iii), 38(iii); and it shows NO alternative on Q21, Q22, Q26, Q28, Q30, Q32 and Q33. That walk was done because the marks sum cannot catch a MISSED alternative - a dropped OR-branch loses a row without changing the total. Primary-branch marks sum independently: 18x1 + 2x1 + 5x2 + 6x3 + 4x5 + 3x4 = 80. All 20 Section-A keys are taken VERBATIM from the official marking scheme (ms p02-p08, PAPER CODE 65/1/2, MS_XII_Mathematics_041_65/1/2_2025-26): D A C C A C A C C D B C A D B B D A D C. All 20 were also independently re-derived and all 20 agree, so there is no key disagreement to record. A second, free cross-check: the 14 Section-A questions this paper shares with 65/1/1 carry the same key in both marking schemes (e.g. this Q1 = 65/1/1 Q8 = D, this Q19 = 65/1/1 Q20 = D). SHARED WITH 65/1/1: 41 of the 55 rows are the same question, matched on CONTENT (read on this paper's own page, then reused byte-for-byte from data/2026-65-1-1.questions.json so they dedup at commit; verified programmatically - 41 rows hash-identical on stem+context+options); 14 rows are new to this set - MCQs Q5, Q9, Q12, Q13, Q17, Q18 and subjective Q21, Q25(a), Q25(b), Q27(a), Q27(b), Q30, Q32, Q33. The whole paper is transcribed either way so the sitting can be reconstructed. plan.txt WAS WRONG IN BOTH DIRECTIONS and was used only as a hint: it labelled Q5, Q9 and Q13 as byte-identical to 65/1/1 Q12, Q16 and Q2 when all three are DIFFERENT questions (Q5 is d/dx(sin y)=y^2 where 65/1/1 Q12 is d/dx(e^y)=0, with different options too; Q9 is the point (1,2,3) on x/0=y/1=z/0 where 65/1/1 Q16 is (2,5,7) on x/1=y/0=z/0; Q13 asks about a COLUMN-matrix where 65/1/1 Q2 asks about a ROW-matrix), and conversely it listed Q4, Q8, Q10 and Q16 as needing transcription when each is an exact duplicate. Every question was therefore compared by content against the reference file. PRINTING ODDITIES carried as printed and not repaired, all three confirmed against the marking scheme so they are CBSE's rather than extraction slips: Q8's stem has no main verb (ends '...then the value of |a.b|' with no trailing 'is'); Q37's passage punctuates its two curves inconsistently, 'C1 ; x^2 + y^2 = 64' with a semicolon against 'C2 : x^2 + y^2 = 4' with a colon; and Q37(ii) reads 'for both C1 an C2', 'an' for 'and'. Each is flagged on its row. Note the HINDI twin of the roundabout passage (idx 19) prints a colon for C1, so the semicolon is specific to the English setting.",
+  "questions": [
+    {
+      "ref": "Q1",
+      "questionNumber": "1",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Integration by Substitution",
+      "difficulty": "MODERATE",
+      "stem": "If \\(\\int \\frac{3ax}{b^2 + c^2x^2}\\,dx = A \\log \\left| b^2 + c^2x^2 \\right| + K\\), then the value of A is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(3a\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{3a}{2b^2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{3a}{b^2c^2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{3a}{2c^2}\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q2",
+      "questionNumber": "2",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Properties of Definite Integrals",
+      "difficulty": "MODERATE",
+      "stem": "The value of \\(\\int_{-1}^{1} \\frac{x^3}{x^2 + 2\\left| x \\right| + 1}\\,dx\\) is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\log 2\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(2 \\log 2\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{1}{2} \\log 2\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q3",
+      "questionNumber": "3",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Under Simple Curves",
+      "difficulty": "MODERATE",
+      "stem": "The area bounded by the curve \\(y = x\\left| x \\right|\\), \\(x\\)-axis and the ordinates \\(x = -1\\) and \\(x = 1\\) is given by",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{1}{3}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{2}{3}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{4}{3}\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q4",
+      "questionNumber": "4",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Differential Equations",
+      "subtopic": "Linear Differential Equations",
+      "difficulty": "EASY",
+      "stem": "The integrating factor of differential equation \\(R \\frac{dx}{dy} + Px = Q\\) where P, Q, R are functions of y is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(e^{\\int \\frac{P}{Q}\\,dy}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(e^{\\int P\\,dy}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(e^{\\int \\frac{P}{R}\\,dy}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(e^{\\int \\frac{P}{R}\\,dx}\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q5",
+      "questionNumber": "5",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Differential Equations",
+      "subtopic": "Order and Degree of a Differential Equation",
+      "difficulty": "EASY",
+      "stem": "The order and degree of the differential equation : \\(\\frac{d}{dx} (\\sin y) = y^2\\) respectively are",
+      "options": [
+        {
+          "label": "A",
+          "text": "1, 1"
+        },
+        {
+          "label": "B",
+          "text": "2, 1"
+        },
+        {
+          "label": "C",
+          "text": "2, 2"
+        },
+        {
+          "label": "D",
+          "text": "1, 2"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q6",
+      "questionNumber": "6",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "difficulty": "EASY",
+      "stem": "The value of p for which vectors \\(\\hat{i} + 2\\hat{j} + 3\\hat{k}\\) and \\(2\\hat{i} - p\\hat{j} + \\hat{k}\\) are perpendicular to each other is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(1\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{5}{2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-\\frac{5}{2}\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q7",
+      "questionNumber": "7",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Types of Vectors",
+      "difficulty": "MODERATE",
+      "stem": "The value of m for which the points with position vectors \\(-\\hat{i} - \\hat{j} + 2\\hat{k}\\), \\(2\\hat{i} + m\\hat{j} + 5\\hat{k}\\) and \\(3\\hat{i} + 11\\hat{j} + 6\\hat{k}\\) are collinear, is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(8\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-8\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(2\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{5}{2}\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q8",
+      "questionNumber": "8",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Vector (Cross) Product",
+      "difficulty": "MODERATE",
+      "stem": "If \\(\\left| \\vec{a} \\right| = 8\\), \\(\\left| \\vec{b} \\right| = 3\\) and \\(\\left| \\vec{a} \\times \\vec{b} \\right| = 12\\), then the value of \\(\\left| \\vec{a} \\cdot \\vec{b} \\right|\\)",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(6\\sqrt{3}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(8\\sqrt{3}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(12\\sqrt{3}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(3\\sqrt{12}\\)"
+        }
+      ],
+      "answer": "C",
+      "_flag": "PRINTING DEFECT (harmless), same as the one recorded on 65/1/1 Q15: the stem has no main verb - it ends '... then the value of |a.b|' with no trailing 'is'. Reproduced identically in this paper (page idx 6) and in its marking scheme (ms p04), so it is CBSE's, not an extraction slip. Not repaired."
+    },
+    {
+      "ref": "Q9",
+      "questionNumber": "9",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Equation of a Line in Space",
+      "difficulty": "EASY",
+      "stem": "The length of perpendicular drawn from the point (1, 2, 3) on line \\(\\frac{x}{0} = \\frac{y}{1} = \\frac{z}{0}\\) is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(6\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\sqrt{10}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\sqrt{14}\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q10",
+      "questionNumber": "10",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "MODERATE",
+      "stem": "The feasible region of a linear programming problem with objective function \\(Z = 5x + 7y\\) is shown below :\nThe maximum value of Z – minimum value of Z is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(8\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(29\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(35\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(43\\)"
+        }
+      ],
+      "answer": "D",
+      "_figure": "REQUIRED - the shaded feasible region is a quadrilateral with corners (0, 0), (0, 2), (3, 4) and (7, 0). Only (3, 4) is written as text; the other three corners are readable ONLY off the printed graph, so the stem cannot be answered without it. Page idx 6."
+    },
+    {
+      "ref": "Q11",
+      "questionNumber": "11",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "EASY",
+      "stem": "The degree of an objective function of a linear programming problem is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(1\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(2\\)"
+        },
+        {
+          "label": "D",
+          "text": "Any natural number"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q12",
+      "questionNumber": "12",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Domains, Ranges and Principal Value Branches",
+      "difficulty": "EASY",
+      "stem": "If \\(\\tan^{-1} x = 3y\\), then",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(-\\frac{\\pi}{2} < y < \\frac{\\pi}{2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-\\frac{3\\pi}{2} < y < \\frac{3\\pi}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(-\\frac{\\pi}{6} < y < \\frac{\\pi}{6}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-\\frac{\\pi}{6} \\leq y \\leq \\frac{\\pi}{6}\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q13",
+      "questionNumber": "13",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Order and Types of Matrices",
+      "difficulty": "EASY",
+      "stem": "Which of the following cannot be an order of a column-matrix ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(1 \\times 2\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(2 \\times 1\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(1 \\times 1\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(m \\times 1\\), where \\(m \\in N\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q14",
+      "questionNumber": "14",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Transpose of a Matrix",
+      "difficulty": "MODERATE",
+      "stem": "Which of the following properties is/are true for two matrices of suitable orders ?\n(i) \\((A + B)' = A' + B'\\)\n(ii) \\((A - B)' = B' - A'\\)\n(iii) \\((AB)' = A'B'\\)\n(iv) \\((kAB)' = kB'A'\\) (k is a scalar)",
+      "options": [
+        {
+          "label": "A",
+          "text": "(i) only"
+        },
+        {
+          "label": "B",
+          "text": "(i), (ii) and (iii)"
+        },
+        {
+          "label": "C",
+          "text": "(i) and (ii)"
+        },
+        {
+          "label": "D",
+          "text": "(i) and (iv)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q15",
+      "questionNumber": "15",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Determinant and its Properties",
+      "difficulty": "MODERATE",
+      "stem": "If \\(\\Delta_1 = \\begin{vmatrix} 1 & 0 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 3 \\end{vmatrix}\\) and \\(\\Delta_2 = \\begin{vmatrix} 0 & 2 & 0 \\\\ 1 & 0 & 0 \\\\ 0 & 0 & 6 \\end{vmatrix}\\), then",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\Delta_1 = 2\\Delta_2\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\Delta_2 = -2\\Delta_1\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\Delta_1 = \\Delta_2\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\Delta_2 = -\\Delta_1\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q16",
+      "questionNumber": "16",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Determinant and its Properties",
+      "difficulty": "EASY",
+      "stem": "One of the values of \\(x\\) for which \\(\\begin{vmatrix} \\cos x & \\sin x \\\\ -\\cos x & \\sin x \\end{vmatrix} = 1\\) is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{\\pi}{4}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{\\pi}{3}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{\\pi}{2}\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q17",
+      "questionNumber": "17",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Symmetric and Skew-Symmetric Matrices",
+      "difficulty": "EASY",
+      "stem": "If A and B are symmetric matrices of same order, then which of the following matrices is a skew-symmetric matrix ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(A^2 + B^2\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(A^2 - B^2\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(AB + BA\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(AB - BA\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q18",
+      "questionNumber": "18",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Absolute Maximum and Minimum on a Closed Interval",
+      "difficulty": "EASY",
+      "stem": "The absolute maximum value of \\(f(x) = x^2 + 1\\) in \\([-5, 2]\\) is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(26\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(1\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(5\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(2\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q19",
+      "questionNumber": "19",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Angle Between Two Lines",
+      "difficulty": "MODERATE",
+      "stem": "Assertion (A) : Lines given by \\(x = py + q\\), \\(z = ry + s\\) and \\(x = p'y + q'\\), \\(z = r'y + s'\\) are perpendicular to each other when \\(pp' + rr' = 1\\).\nReason (R) : Two lines \\(\\vec{r} = \\vec{a}_1 + \\lambda\\vec{b}_1\\) and \\(\\vec{r} = \\vec{a}_2 + \\mu\\vec{b}_2\\) are perpendicular to each other if \\(\\vec{b}_1 \\cdot \\vec{b}_2 = 0\\).",
+      "context": "Direction : Questions number 19 and 20 are Assertion and Reason based questions carrying 1 mark each. Two statements are given, one labelled Assertion (A) and other labelled Reason (R).\nSelect the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and the Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true and Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false and Reason (R) is true."
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q20",
+      "questionNumber": "20",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "difficulty": "MODERATE",
+      "stem": "Assertion (A) : In an experiment of throwing an unbiased die, the probability of getting a prime number given that number appearing on the die being odd is \\(\\frac{2}{3}\\).\nReason (R) : For any two events A and B, \\(P(A|B) = \\frac{P(A \\cup B)}{P(B)}\\)",
+      "context": "Direction : Questions number 19 and 20 are Assertion and Reason based questions carrying 1 mark each. Two statements are given, one labelled Assertion (A) and other labelled Reason (R).\nSelect the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and the Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true and Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false and Reason (R) is true."
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q21",
+      "questionNumber": "21",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "difficulty": "MODERATE",
+      "stem": "A vector \\(\\vec{a}\\) of magnitude 14 has direction ratios \\(<2, 3, -6>\\). Find the projection of the vector \\(\\vec{a}\\) on \\(\\hat{i}\\)."
+    },
+    {
+      "ref": "Q22",
+      "questionNumber": "22",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Addition of Vectors",
+      "difficulty": "MODERATE",
+      "stem": "Vectors \\(\\vec{a} = 3\\hat{i} - 2\\hat{j} + 2\\hat{k}\\) and \\(\\vec{b} = \\hat{i} + 2\\hat{k}\\) represent the two adjacent sides of a parallelogram. Find the vectors representing its diagonals and hence find their lengths."
+    },
+    {
+      "ref": "Q23a",
+      "questionNumber": "23 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Properties of Inverse Trigonometric Functions",
+      "difficulty": "MODERATE",
+      "stem": "Simplify : \\(\\tan^{-1} \\left( \\frac{\\cos 2x - \\sin 2x}{\\cos 2x + \\sin 2x} \\right)\\), \\(0 < x < \\frac{\\pi}{4}\\)."
+    },
+    {
+      "ref": "Q23b",
+      "questionNumber": "23 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Evaluating Inverse Trigonometric Expressions",
+      "difficulty": "MODERATE",
+      "stem": "Evaluate : \\(\\tan \\left( \\sin^{-1} 1 - \\cos^{-1} \\left( -\\frac{1}{2} \\right) \\right)\\)",
+      "_alternativeTo": "Q23a"
+    },
+    {
+      "ref": "Q24a",
+      "questionNumber": "24 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Continuity",
+      "difficulty": "MODERATE",
+      "stem": "Check whether function f(x) defined as \\(f(x) = \\begin{cases} \\frac{\\left| x - 3 \\right|}{2(x - 3)}, & x < 3 \\\\ \\frac{x - 6}{6}, & x \\geq 3 \\end{cases}\\) is continuous at \\(x = 3\\) or not ?"
+    },
+    {
+      "ref": "Q24b",
+      "questionNumber": "24 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+      "difficulty": "MODERATE",
+      "stem": "If \\(\\sqrt{3}(x^2 + y^2) = 4xy\\), then find \\(\\frac{dy}{dx}\\) at \\(\\left( \\frac{1}{2}, \\frac{\\sqrt{3}}{2} \\right)\\).",
+      "_alternativeTo": "Q24a"
+    },
+    {
+      "ref": "Q25a",
+      "questionNumber": "25 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Properties of Inverse Trigonometric Functions",
+      "difficulty": "MODERATE",
+      "stem": "Simplify : \\(\\cot^{-1} \\sqrt{\\frac{1 + \\cos 2x}{1 - \\cos 2x}}\\), \\(x \\in \\left( 0, \\frac{\\pi}{2} \\right)\\)."
+    },
+    {
+      "ref": "Q25b",
+      "questionNumber": "25 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Evaluating Inverse Trigonometric Expressions",
+      "difficulty": "MODERATE",
+      "stem": "Evaluate : \\(\\sin \\left( \\tan^{-1} \\left( -\\sqrt{3} \\right) - \\sec^{-1} 2 \\right)\\)",
+      "_alternativeTo": "Q25a"
+    },
+    {
+      "ref": "Q26",
+      "questionNumber": "26",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Properties of Definite Integrals",
+      "difficulty": "MODERATE",
+      "stem": "If \\(I_1 = \\int_{-\\pi/4}^{\\pi/4} \\frac{dx}{1 + \\cos 2x}\\) and \\(I_2 = \\int_{-1/2}^{1/2} \\left| x \\right| \\, dx\\), then show that \\(I_1 - 4I_2 = 0\\)."
+    },
+    {
+      "ref": "Q27a",
+      "questionNumber": "27 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Differential Equations",
+      "subtopic": "Homogeneous Differential Equations",
+      "difficulty": "MODERATE",
+      "stem": "Find the general solution of the differential equation :\n\\(y^2\\,dx + (x^2 - xy + y^2)\\,dy = 0\\)"
+    },
+    {
+      "ref": "Q27b",
+      "questionNumber": "27 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Differential Equations",
+      "subtopic": "Variables Separable",
+      "difficulty": "MODERATE",
+      "stem": "Find the particular solution of the differential equation \\(\\frac{dy}{dx} = y \\tan x\\), given that \\(y = 2\\) if \\(x = 0\\).",
+      "_alternativeTo": "Q27a"
+    },
+    {
+      "ref": "Q28",
+      "questionNumber": "28",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "MODERATE",
+      "stem": "Solve the following linear programming problem graphically :\nMinimize \\(Z = 13x - 15y\\)\nSubject to constraints\n\\(x + y \\leq 7\\),\n\\(2x - 3y + 6 \\geq 0\\),\n\\(x \\geq 0\\), \\(y \\geq 0\\)"
+    },
+    {
+      "ref": "Q29a",
+      "questionNumber": "29 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Theorem of Total Probability",
+      "difficulty": "MODERATE",
+      "stem": "Out of two bags, bag I contains 3 red and 4 white balls and bag II contains 8 red and 6 white balls. A die is thrown. If it shows a number less than 3 then a ball is drawn at random from bag I, otherwise a ball is drawn at random from bag II. Find the probability that the ball drawn from one of the bags is a red ball."
+    },
+    {
+      "ref": "Q29b",
+      "questionNumber": "29 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "difficulty": "MODERATE",
+      "stem": "The probability of simultaneous occurrence of atleast one of the two events X and Y is a. If the probability that exactly one of the events X, Y occurs is b, prove that \\(P(X') + P(Y') = 2 - 2a + b\\).",
+      "_alternativeTo": "Q29a",
+      "_flag": "WORDING DEFECT (CBSE's, transcribed as printed), same as recorded on 65/1/1 Q31(b): 'simultaneous occurrence of atleast one of the two events' is self-contradictory - 'simultaneous' means both, 'at least one' means the union. Printed identically here (page idx 14) and in the marking scheme, so it is CBSE's wording."
+    },
+    {
+      "ref": "Q30",
+      "questionNumber": "30",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integration by Parts",
+      "difficulty": "MODERATE",
+      "stem": "Evaluate : \\(\\int_{0}^{1} x \\sin^{-1} x \\, dx\\)"
+    },
+    {
+      "ref": "Q31a",
+      "questionNumber": "31 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integrals of Some Particular Functions",
+      "difficulty": "HARD",
+      "stem": "Find \\(\\int \\sqrt{\\frac{x + 2}{x - 2}} \\, dx\\)"
+    },
+    {
+      "ref": "Q31b",
+      "questionNumber": "31 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integration by Partial Fractions",
+      "difficulty": "MODERATE",
+      "stem": "Find : \\(\\int \\frac{x^2}{(x^2 + 9) \\, (x^2 + 16)} \\, dx\\)",
+      "_alternativeTo": "Q31a"
+    },
+    {
+      "ref": "Q32",
+      "questionNumber": "32",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Derivatives of Functions in Parametric Form",
+      "difficulty": "HARD",
+      "stem": "If \\(x = 3 \\sin t - \\sin 3t\\), \\(y = 3 \\cos t - \\cos 3t\\)\nfind \\(\\frac{dy}{dx}\\) and prove that \\(\\frac{d^2y}{dx^2} = \\frac{-\\operatorname{cosec}^3 2t \\cdot \\operatorname{cosec} t}{3}\\)"
+    },
+    {
+      "ref": "Q33",
+      "questionNumber": "33",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Equation of a Line in Space",
+      "difficulty": "HARD",
+      "stem": "Prove that the line through points A(0, -1, -1) and B(4, 5, 1) intersects the line through points C(3, 9, 4) and D(-4, 4, 4). Hence, write the equation of line passing through the point of intersection of lines AB and CD as well as origin."
+    },
+    {
+      "ref": "Q34a",
+      "questionNumber": "34 (a)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "Equivalence Relations and Classes",
+      "difficulty": "HARD",
+      "stem": "A relation R is defined on Z, the set of integers, as\n\\(R = \\{(x, y) : \\left| x - y \\right| \\text{ is divisible by a prime number 'p'}, x, y \\in Z\\}\\)\ncheck whether R is an equivalence relation or not."
+    },
+    {
+      "ref": "Q34b",
+      "questionNumber": "34 (b)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "One-One and Onto Functions",
+      "difficulty": "HARD",
+      "stem": "A function \\(f : R - \\left\\{ \\frac{3}{5} \\right\\} \\longrightarrow R - \\left\\{ \\frac{3}{5} \\right\\}\\) is defined as \\(f(x) = \\frac{3x + 2}{5x - 3}\\). Show that f is one-one and onto.",
+      "_alternativeTo": "Q34a"
+    },
+    {
+      "ref": "Q35a",
+      "questionNumber": "35 (a)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Solving System of Linear Equations",
+      "difficulty": "HARD",
+      "stem": "If \\(A = \\begin{bmatrix} 0 & 2 & 1 \\\\ -2 & -1 & -2 \\\\ 1 & -1 & 0 \\end{bmatrix}\\), find \\(A^{-1}\\) and use it to solve the following system of equations :\n\\(-2y + z = 7\\), \\(2x - y - z = 8\\), \\(x - 2y = 10\\)"
+    },
+    {
+      "ref": "Q35b",
+      "questionNumber": "35 (b)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Determinant and its Properties",
+      "difficulty": "HARD",
+      "stem": "If \\(\\begin{bmatrix} 3 & -1 & \\sin 3x \\\\ -7 & 4 & \\cos 2x \\\\ -11 & 7 & 2 \\end{bmatrix}\\) is a singular matrix, then find all values of \\(x\\) where \\(x \\in \\left[ 0, \\frac{\\pi}{2} \\right]\\).",
+      "_alternativeTo": "Q35a"
+    },
+    {
+      "ref": "Q36i",
+      "questionNumber": "36 (i)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "difficulty": "EASY",
+      "stem": "What are the possible amounts, the person can win ?",
+      "context": "In an online jackpot, there is one first prize of ₹ 3,00,000, two second prizes of ₹ 2,00,000 each and three third prizes of ₹ 50,000 each.\nA total of 1,00,000 jackpot tickets each costing ₹ 100 were sold there by raising a fund of ₹ 1,00,00,000.\nRohan bought one ticket.\nBased on given information, answer the following questions :",
+      "setId": "2026-65-1-2-CS1",
+      "_figure": "DECORATIVE - a stock 'Lucky Ticket' graphic showing a booth and a banner reading 'PRIZE  ₹ 200,000  ₹ 100,000  WIN'. It does NOT agree with the passage (whose prizes are ₹ 3,00,000 / ₹ 2,00,000 / ₹ 50,000 and which never mentions ₹ 1,00,000), which is itself worth knowing, but every number the questions need is in the text. Page idx 18."
+    },
+    {
+      "ref": "Q36iia",
+      "questionNumber": "36 (ii) (a)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "difficulty": "MODERATE",
+      "stem": "What is the probability that the person wins atleast ₹ 2,00,000 ?",
+      "context": "In an online jackpot, there is one first prize of ₹ 3,00,000, two second prizes of ₹ 2,00,000 each and three third prizes of ₹ 50,000 each.\nA total of 1,00,000 jackpot tickets each costing ₹ 100 were sold there by raising a fund of ₹ 1,00,00,000.\nRohan bought one ticket.\nBased on given information, answer the following questions :",
+      "setId": "2026-65-1-2-CS1"
+    },
+    {
+      "ref": "Q36iib",
+      "questionNumber": "36 (ii) (b)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "difficulty": "MODERATE",
+      "stem": "What is the probability that the person does not win any amount ?",
+      "context": "In an online jackpot, there is one first prize of ₹ 3,00,000, two second prizes of ₹ 2,00,000 each and three third prizes of ₹ 50,000 each.\nA total of 1,00,000 jackpot tickets each costing ₹ 100 were sold there by raising a fund of ₹ 1,00,00,000.\nRohan bought one ticket.\nBased on given information, answer the following questions :",
+      "setId": "2026-65-1-2-CS1",
+      "_alternativeTo": "Q36iia"
+    },
+    {
+      "ref": "Q36iii",
+      "questionNumber": "36 (iii)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Independent Events",
+      "difficulty": "MODERATE",
+      "stem": "In another jackpot, Rohan also bought a ticket having a prize money of ₹ 5,00,000. The chances of winning the jackpot are 1 in 1,00,000. Find the probability that on exactly one of tickets he wins the jackpot.",
+      "context": "In an online jackpot, there is one first prize of ₹ 3,00,000, two second prizes of ₹ 2,00,000 each and three third prizes of ₹ 50,000 each.\nA total of 1,00,000 jackpot tickets each costing ₹ 100 were sold there by raising a fund of ₹ 1,00,00,000.\nRohan bought one ticket.\nBased on given information, answer the following questions :",
+      "setId": "2026-65-1-2-CS1"
+    },
+    {
+      "ref": "Q37i",
+      "questionNumber": "37 (i)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Under Simple Curves",
+      "difficulty": "EASY",
+      "stem": "Represent the given equations \\(C_1\\) and \\(C_2\\) with the help of a diagram.",
+      "context": "Roundabouts are often made on busy roads to ease the traffic and avoid red lights.\nOne such round-about is made such that equation representing its boundary is given by \\(C_1\\) ; \\(x^2 + y^2 = 64\\).\nThere is a circular pond with a fountain in the middle of the roundabout whose equation is given by \\(C_2 : x^2 + y^2 = 4\\).\nBased on the given information, answer the following questions :",
+      "setId": "2026-65-1-2-CS2",
+      "_figure": "DECORATIVE - an aerial photograph of a landscaped roundabout with a central fountain. Both circles are given by their equations in the passage, so nothing is read off the photo. Page idx 20."
+    },
+    {
+      "ref": "Q37ii",
+      "questionNumber": "37 (ii)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Under Simple Curves",
+      "difficulty": "EASY",
+      "stem": "Express y as a function of \\(x\\), \\((y = f(x))\\), for both \\(C_1\\) an \\(C_2\\).",
+      "context": "Roundabouts are often made on busy roads to ease the traffic and avoid red lights.\nOne such round-about is made such that equation representing its boundary is given by \\(C_1\\) ; \\(x^2 + y^2 = 64\\).\nThere is a circular pond with a fountain in the middle of the roundabout whose equation is given by \\(C_2 : x^2 + y^2 = 4\\).\nBased on the given information, answer the following questions :",
+      "setId": "2026-65-1-2-CS2",
+      "_flag": "TYPO, transcribed as printed: the stem reads 'for both C1 an C2' - 'an' for 'and'. Printed identically here (page idx 20) and on 65/1/1, so it is CBSE's typesetting. Not repaired."
+    },
+    {
+      "ref": "Q37iiia",
+      "questionNumber": "37 (iii) (a)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Under Simple Curves",
+      "difficulty": "MODERATE",
+      "stem": "Using integration find the area of region covered by the roundabout.",
+      "context": "Roundabouts are often made on busy roads to ease the traffic and avoid red lights.\nOne such round-about is made such that equation representing its boundary is given by \\(C_1\\) ; \\(x^2 + y^2 = 64\\).\nThere is a circular pond with a fountain in the middle of the roundabout whose equation is given by \\(C_2 : x^2 + y^2 = 4\\).\nBased on the given information, answer the following questions :",
+      "setId": "2026-65-1-2-CS2"
+    },
+    {
+      "ref": "Q37iiib",
+      "questionNumber": "37 (iii) (b)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Under Simple Curves",
+      "difficulty": "MODERATE",
+      "stem": "Using integration, find the area of region covered by circular pond.",
+      "context": "Roundabouts are often made on busy roads to ease the traffic and avoid red lights.\nOne such round-about is made such that equation representing its boundary is given by \\(C_1\\) ; \\(x^2 + y^2 = 64\\).\nThere is a circular pond with a fountain in the middle of the roundabout whose equation is given by \\(C_2 : x^2 + y^2 = 4\\).\nBased on the given information, answer the following questions :",
+      "setId": "2026-65-1-2-CS2",
+      "_alternativeTo": "Q37iiia"
+    },
+    {
+      "ref": "Q38i",
+      "questionNumber": "38 (i)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "difficulty": "EASY",
+      "stem": "How many subscribers will discontinue after an increase of ₹ \\(x\\) in annual fee ?",
+      "context": "An online delivery company in a city has 5000 subscribers and collects annual subscription fees of ₹ 300 per subscriber for unlimited free deliveries.\nThe company wishes to increase the annual subscription fee. It is predicted that, for every increase of ₹ 1, ten subscribers will discontinue. Assume that the company increased the annual fee by ₹ \\(x\\).\nBased on the given information, answer the following questions :",
+      "setId": "2026-65-1-2-CS3",
+      "_figure": "DECORATIVE - a stock illustration of a delivery rider at a doorstep, beside an unscaled schematic line graph captioned 'No. of Subscribers' against 'Subscription Fee'. The graph carries no numbers or gridlines; every quantity the questions need (5000, ₹ 300, ₹ 1, ten) is stated in the passage. Page idx 22."
+    },
+    {
+      "ref": "Q38ii",
+      "questionNumber": "38 (ii)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "difficulty": "EASY",
+      "stem": "If \\(R(x)\\) denotes the total revenue collected after the increase of ₹ \\(x\\) in subscription fee, express \\(R(x)\\) as a function of \\(x\\).",
+      "context": "An online delivery company in a city has 5000 subscribers and collects annual subscription fees of ₹ 300 per subscriber for unlimited free deliveries.\nThe company wishes to increase the annual subscription fee. It is predicted that, for every increase of ₹ 1, ten subscribers will discontinue. Assume that the company increased the annual fee by ₹ \\(x\\).\nBased on the given information, answer the following questions :",
+      "setId": "2026-65-1-2-CS3"
+    },
+    {
+      "ref": "Q38iiia",
+      "questionNumber": "38 (iii) (a)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "difficulty": "MODERATE",
+      "stem": "Find the value of \\(x\\) for which \\(R(x)\\) is maximum.",
+      "context": "An online delivery company in a city has 5000 subscribers and collects annual subscription fees of ₹ 300 per subscriber for unlimited free deliveries.\nThe company wishes to increase the annual subscription fee. It is predicted that, for every increase of ₹ 1, ten subscribers will discontinue. Assume that the company increased the annual fee by ₹ \\(x\\).\nBased on the given information, answer the following questions :",
+      "setId": "2026-65-1-2-CS3"
+    },
+    {
+      "ref": "Q38iiib",
+      "questionNumber": "38 (iii) (b)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Increasing and Decreasing Functions",
+      "difficulty": "MODERATE",
+      "stem": "Find the sub-intervals of (0, 5000) in which \\(R(x)\\) is increasing and decreasing.",
+      "context": "An online delivery company in a city has 5000 subscribers and collects annual subscription fees of ₹ 300 per subscriber for unlimited free deliveries.\nThe company wishes to increase the annual subscription fee. It is predicted that, for every increase of ₹ 1, ten subscribers will discontinue. Assume that the company increased the annual fee by ₹ \\(x\\).\nBased on the given information, answer the following questions :",
+      "setId": "2026-65-1-2-CS3",
+      "_alternativeTo": "Q38iiia",
+      "_flag": "MODELLING LOOSENESS, NOT A MISPRINT - same as recorded on 65/1/1 Q36(iii)(b). The interval is printed '(0, 5000)', which is physically odd: the subscriber count 5000 - 10x reaches zero at x = 500, so '(0, 500)' would be the meaningful domain. Printed '(0, 5000)' here (page idx 22) and in the marking scheme, so it is CBSE's. Not repaired."
+    }
+  ]
+}

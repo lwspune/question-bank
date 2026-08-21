@@ -1,0 +1,225 @@
+{
+ "paper": "65/6/2",
+ "year": 2025,
+ "paperId": "2025-65-6-2",
+ "markingScheme": "out/2025-65-6-2/ms/p00.png … p16.png",
+ "rows": [
+  {
+   "hash": "75e863dd19aaee5cde5887f389eba4e1a83f01697367698020134d44129bdac1",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Symmetric and Skew-Symmetric Matrices",
+   "stem": "If \\(A = \\begin{bmatrix} 0 & -3 & 8 \\\\ 3 & 0 & 5 \\\\ -8 & -5 & 0 \\end{bmatrix}\\), then A is a :",
+   "options": [
+    {
+     "label": "A",
+     "text": "null matrix"
+    },
+    {
+     "label": "B",
+     "text": "symmetric matrix"
+    },
+    {
+     "label": "C",
+     "text": "skew-symmetric matrix"
+    },
+    {
+     "label": "D",
+     "text": "diagonal matrix"
+    }
+   ],
+   "answer": "C",
+   "solution": "Transposing swaps \\(a_{ij}\\) with \\(a_{ji}\\), so \\(A' = \\begin{bmatrix} 0 & 3 & -8 \\\\ -3 & 0 & -5 \\\\ 8 & 5 & 0 \\end{bmatrix}\\), which is exactly \\(-A\\). A matrix satisfying \\(A' = -A\\) is skew-symmetric, so A is a skew-symmetric matrix. The other three descriptions fail: it is not the null matrix, since it has non-zero entries; it is not symmetric, because \\(a_{12} = -3\\) while \\(a_{21} = 3\\); and it is not diagonal, because entries off the leading diagonal are non-zero. Note that the three diagonal entries are all \\(0\\), which is forced in any skew-symmetric matrix by \\(a_{ii} = -a_{ii}\\)."
+  },
+  {
+   "hash": "9e778c36684b6c4a7d7d2b04db45c4ffed566876aac6648445adb784905f51db",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "The graph shown below depicts :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(y = \\cot x\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(y = \\cot^{-1} x\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(y = \\tan x\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(y = \\tan^{-1} x\\)"
+    }
+   ],
+   "answer": "B",
+   "figure": "REQUIRED — the stem names no curve at all, so the question IS the printed graph. It shows several branches of the inverse-cotangent relation with horizontal dashed asymptotes at \\(y = -\\pi\\), \\(y = \\pi\\) and \\(y = 2\\pi\\), the axis marked at \\(\\pm\\pi/2\\) and \\(3\\pi/2\\), and the principal branch falling from near \\(\\pi\\) through \\((0,\\ \\pi/2)\\) towards \\(0\\). Page idx 4.",
+   "solution": "Read the shape of the graph rather than looking for a formula.\nEvery branch drawn is defined for all real \\(x\\), each branch is strictly decreasing, and all the asymptotes are HORIZONTAL lines — the x-axis together with the dashed lines \\(y = -\\pi\\), \\(y = \\pi\\) and \\(y = 2\\pi\\). There is no vertical asymptote anywhere.\nThat rules out \\(y = \\cot x\\) and \\(y = \\tan x\\) immediately: both are periodic in \\(x\\) and have vertical asymptotes (at \\(x = n\\pi\\) and \\(x = (2n+1)\\frac{\\pi}{2}\\) respectively), so their graphs would be cut by vertical lines, not levelled off by horizontal ones.\nBetween the two inverse functions, \\(y = \\tan^{-1} x\\) is INCREASING and confined between \\(y = -\\frac{\\pi}{2}\\) and \\(y = \\frac{\\pi}{2}\\), which does not match. The branch through the middle of the picture falls from near \\(y = \\pi\\) on the far left, passes through \\(\\left(0,\\ \\frac{\\pi}{2}\\right)\\), and tends to \\(0\\) on the far right — this is precisely the principal branch of \\(\\cot^{-1}\\), whose range is \\((0, \\pi)\\); the branches above and below it are the same curve shifted by multiples of \\(\\pi\\).\nHence the graph depicts \\(y = \\cot^{-1} x\\)."
+  },
+  {
+   "hash": "198666aa6ebab430a7e6f372bc4cb7882854c5793f91b35710a044b878b68d74",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Let \\(f(x) = x^2\\), \\(x \\in R\\). Then, which of the following statements is **incorrect** ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Minimum value of f does not exist."
+    },
+    {
+     "label": "B",
+     "text": "There is no point of maximum value of f in R."
+    },
+    {
+     "label": "C",
+     "text": "f is continuous at \\(x = 0\\)."
+    },
+    {
+     "label": "D",
+     "text": "f is differentiable at \\(x = 0\\)."
+    }
+   ],
+   "answer": "A",
+   "solution": "\\(f(x) = x^2\\) is a polynomial, so it is continuous and differentiable at every real number, in particular at \\(x = 0\\); both of those statements are therefore true. Since \\(x^2 \\to \\infty\\) as \\(|x| \\to \\infty\\), f is unbounded above and so attains no maximum anywhere on \\(R\\), making the statement about there being no point of maximum value true as well.\nBut \\(f(x) = x^2 \\ge 0\\) for every real \\(x\\), with equality at \\(x = 0\\). So the minimum value \\(0\\) both exists and is attained: \\(f'(x) = 2x\\) vanishes only at \\(x = 0\\), and \\(f''(0) = 2 > 0\\) confirms a minimum there.\nHence the statement that is incorrect is 'Minimum value of f does not exist.'"
+  },
+  {
+   "hash": "46ebf7a826d550fd0d7366a97e2cc1788c8bb530c6abbe26ce176a8ce23898fd",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Order and Degree of a Differential Equation",
+   "stem": "The order and degree of the differential equation\n\n\\(\\dfrac{d^2y}{dx^2} + 4\\left(\\dfrac{dy}{dx}\\right) = x \\log\\left(\\dfrac{d^2y}{dx^2}\\right)\\)\n\nare respectively :",
+   "options": [
+    {
+     "label": "A",
+     "text": "0, 3"
+    },
+    {
+     "label": "B",
+     "text": "2, 1"
+    },
+    {
+     "label": "C",
+     "text": "2, not defined"
+    },
+    {
+     "label": "D",
+     "text": "1, not defined"
+    }
+   ],
+   "answer": "C",
+   "solution": "The ORDER of a differential equation is the order of the highest derivative appearing in it. Here that is \\(\\frac{d^2y}{dx^2}\\), so the order is \\(2\\).\nThe DEGREE is the power of that highest derivative, but only once the equation has been written as a polynomial in the derivatives. In this equation \\(\\frac{d^2y}{dx^2}\\) also appears inside \\(\\log\\left(\\frac{d^2y}{dx^2}\\right)\\), a transcendental function of the derivative, and no algebraic rearrangement can free it. The equation can therefore never be expressed as a polynomial in its derivatives, so the degree is not defined.\nHence the order and degree are respectively '2, not defined'."
+  },
+  {
+   "hash": "ef148e7e530b1531535a5cf0922f8fc72ab1a322d347c1d8f9e6238fdf4106dd",
+   "ref": "Q18",
+   "questionNumber": "18",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Independent Events",
+   "stem": "Chances that three persons A, B, and C go to the market are 30%, 60% and 50% respectively. The probability that at least one will go to the market is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{14}{10}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{43}{50}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{9}{100}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{7}{50}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Treat the three visits as independent events. We are given \\(P(A) = 0\\cdot3\\), \\(P(B) = 0\\cdot6\\), \\(P(C) = 0\\cdot5\\), so the complements are \\(P(A') = 0\\cdot7\\), \\(P(B') = 0\\cdot4\\), \\(P(C') = 0\\cdot5\\).\n'At least one' is much easier through the complement — the single event that NOBODY goes:\n\\(P(\\text{none goes}) = P(A')P(B')P(C') = 0\\cdot7 \\times 0\\cdot4 \\times 0\\cdot5 = 0\\cdot14\\).\nHence\n\\(P(\\text{at least one goes}) = 1 - 0\\cdot14 = 0\\cdot86 = \\frac{86}{100} = \\frac{43}{50}\\),\nwhich is the choice \\(\\frac{43}{50}\\).\n(The value \\(\\frac{7}{50} = 0\\cdot14\\) is the probability that none of them goes, and \\(\\frac{14}{10} = 1\\cdot4\\) exceeds \\(1\\), so it could not be a probability at all.)"
+  },
+  {
+   "hash": "6fe33d607a30bb576b23b2e08c10adbd003a01edfe1a8ad53c30070c3b84b1e8",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "Determine those values of x for which \\(f(x) = \\dfrac{2}{x} - 5\\), \\(x \\ne 0\\) is increasing or decreasing.",
+   "solution": "Write \\(f(x) = \\frac{2}{x} - 5 = 2x^{-1} - 5\\), so that\n\\(f'(x) = -2x^{-2} = \\frac{-2}{x^2}\\).\nFor every \\(x\\) in the domain we have \\(x \\ne 0\\), hence \\(x^2 > 0\\) and\n\\(f'(x) = \\frac{-2}{x^2} < 0\\).\nThe derivative is therefore never zero and never positive: there is no interval anywhere on which f increases. So f is decreasing throughout its domain — strictly decreasing on \\((-\\infty, 0)\\) and strictly decreasing on \\((0, \\infty)\\), and it is increasing for no value of x.\n[Note: the marking scheme records this simply as 'f is decreasing in its domain', which is the expected answer. It is worth adding that the domain \\(R - \\{0\\}\\) is not a single interval, so the conclusion has to be read on each of the two intervals separately: for instance \\(f(-1) = -7\\) is less than \\(f(1) = -3\\) even though \\(-1 < 1\\).]"
+  },
+  {
+   "hash": "30af00c73852a3f2b842d6dfd5a1bb245dc5b764c69cd4b86768191ac768151f",
+   "ref": "Q25",
+   "questionNumber": "25",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Angle Between Two Lines",
+   "stem": "Find the value of \\(\\lambda\\) if the following lines are perpendicular to each other :\n\n\\(l_1 : \\dfrac{1 - x}{-3} = \\dfrac{3y - 2}{2\\lambda} = \\dfrac{z - 3}{3}\\)\n\n\\(l_2 : \\dfrac{x - 1}{3\\lambda} = \\dfrac{1 - y}{1} = \\dfrac{2z - 5}{3}\\)",
+   "solution": "Two lines are perpendicular exactly when the dot product of their direction ratios is zero, so first put each line into the standard symmetric form \\(\\frac{x - x_1}{a} = \\frac{y - y_1}{b} = \\frac{z - z_1}{c}\\), in which the numerator of each fraction must be the variable itself minus a constant, with coefficient \\(1\\).\nFor \\(l_1\\): \\(\\frac{1 - x}{-3} = \\frac{x - 1}{3}\\), and \\(\\frac{3y - 2}{2\\lambda} = \\frac{3\\left(y - \\frac{2}{3}\\right)}{2\\lambda} = \\frac{y - \\frac{2}{3}}{\\frac{2}{3}\\lambda}\\). So\n\\(l_1 : \\frac{x - 1}{3} = \\frac{y - \\frac{2}{3}}{\\frac{2}{3}\\lambda} = \\frac{z - 3}{3}\\), with direction ratios \\(\\left(3,\\ \\frac{2\\lambda}{3},\\ 3\\right)\\).\nFor \\(l_2\\): \\(\\frac{1 - y}{1} = \\frac{y - 1}{-1}\\), and \\(\\frac{2z - 5}{3} = \\frac{2\\left(z - \\frac{5}{2}\\right)}{3} = \\frac{z - \\frac{5}{2}}{\\frac{3}{2}}\\). So\n\\(l_2 : \\frac{x - 1}{3\\lambda} = \\frac{y - 1}{-1} = \\frac{z - \\frac{5}{2}}{\\frac{3}{2}}\\), with direction ratios \\(\\left(3\\lambda,\\ -1,\\ \\frac{3}{2}\\right)\\).\nSetting the dot product to zero,\n\\(3(3\\lambda) + \\frac{2\\lambda}{3}(-1) + 3 \\cdot \\frac{3}{2} = 0\\)\n\\(\\Rightarrow 9\\lambda - \\frac{2\\lambda}{3} + \\frac{9}{2} = 0 \\Rightarrow \\frac{25\\lambda}{3} = -\\frac{9}{2}\\)\n\\(\\Rightarrow \\lambda = -\\frac{27}{50}\\)."
+  },
+  {
+   "hash": "d586a5f4c547f3e9a1c22e33e015a4a3091806080fef763e327abaed3ef265f6",
+   "ref": "Q26",
+   "questionNumber": "26",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "If \\(A = \\begin{bmatrix} 1 & -1 & 0 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 2 & 0 & 1 \\\\ -1 & 3 & 4 \\\\ 0 & 5 & 1 \\end{bmatrix}\\) and \\(C = \\begin{bmatrix} 2 \\\\ 3 \\\\ 4 \\end{bmatrix}\\), are three matrices, then find ABC.",
+   "solution": "A is of order \\(1 \\times 3\\), B is \\(3 \\times 3\\) and C is \\(3 \\times 1\\), so the product ABC is defined and is a \\(1 \\times 1\\) matrix. Matrix multiplication is associative, so it is convenient to compute \\((AB)C\\), which keeps every intermediate step a single row.\nFirst,\n\\(AB = \\begin{bmatrix} 1 & -1 & 0 \\end{bmatrix}\\begin{bmatrix} 2 & 0 & 1 \\\\ -1 & 3 & 4 \\\\ 0 & 5 & 1 \\end{bmatrix} = \\begin{bmatrix} 2 + 1 + 0 & 0 - 3 + 0 & 1 - 4 + 0 \\end{bmatrix} = \\begin{bmatrix} 3 & -3 & -3 \\end{bmatrix}\\).\nThen\n\\((AB)C = \\begin{bmatrix} 3 & -3 & -3 \\end{bmatrix}\\begin{bmatrix} 2 \\\\ 3 \\\\ 4 \\end{bmatrix} = 3(2) + (-3)(3) + (-3)(4) = 6 - 9 - 12 = -15\\).\nHence \\(ABC = \\begin{bmatrix} -15 \\end{bmatrix}\\)."
+  },
+  {
+   "hash": "1afea64f7b1047134b766a7b52119f1d575c853dc09b2c024af70f18901f7ed4",
+   "ref": "Q31",
+   "questionNumber": "31",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "A coin is biased so that the head is 3 times as likely to occur as tail. If the coin is tossed three times, find the probability distribution of number of tails. Hence, find the mean of the distribution.",
+   "solution": "'The head is 3 times as likely to occur as tail' means \\(P(H) = 3P(T)\\). Since \\(P(H) + P(T) = 1\\), this gives \\(4P(T) = 1\\), so\n\\(P(T) = \\frac{1}{4}\\) and \\(P(H) = \\frac{3}{4}\\).\nLet X be the number of tails in three independent tosses, so X takes the values \\(0, 1, 2, 3\\) and\n\\(P(X = r) = {}^{3}C_{r}\\left(\\frac{1}{4}\\right)^{r}\\left(\\frac{3}{4}\\right)^{3 - r}\\).\nTherefore\n\\(P(X = 0) = \\left(\\frac{3}{4}\\right)^{3} = \\frac{27}{64}\\),\n\\(P(X = 1) = 3 \\cdot \\frac{1}{4} \\cdot \\frac{9}{16} = \\frac{27}{64}\\),\n\\(P(X = 2) = 3 \\cdot \\frac{1}{16} \\cdot \\frac{3}{4} = \\frac{9}{64}\\),\n\\(P(X = 3) = \\left(\\frac{1}{4}\\right)^{3} = \\frac{1}{64}\\).\nAs a check these add to \\(\\frac{27 + 27 + 9 + 1}{64} = \\frac{64}{64} = 1\\).\nThe mean is\n\\(\\text{Mean} = \\sum x\\,P(x) = 0 + \\frac{27}{64} + 2 \\cdot \\frac{9}{64} + 3 \\cdot \\frac{1}{64} = \\frac{0 + 27 + 18 + 3}{64} = \\frac{48}{64} = \\frac{3}{4}\\),\nwhich agrees with the binomial formula \\(np = 3 \\times \\frac{1}{4} = \\frac{3}{4}\\)."
+  },
+  {
+   "hash": "ad0e464072d9f61f9d220c04a5f541b9d0f6edd092e03f86acfa83fbc74c969c",
+   "ref": "Q33",
+   "questionNumber": "33",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Under Simple Curves",
+   "stem": "Use integration to find the area of the region enclosed by curve \\(y = -x^2\\) and the straight lines \\(x = -3\\), \\(x = 2\\) and \\(y = 0\\). Sketch a rough figure to illustrate the bounded region.",
+   "solution": "Sketch the region first. \\(y = -x^2\\) is a downward parabola with its vertex at the origin, so on \\(-3 \\le x \\le 2\\) the curve lies ON or BELOW the x-axis: it drops to \\(y = -9\\) at \\(x = -3\\), rises to \\(y = 0\\) at \\(x = 0\\), and falls again to \\(y = -4\\) at \\(x = 2\\). The region required is bounded above by the line \\(y = 0\\) (the x-axis), below by the curve, and at the sides by the vertical lines \\(x = -3\\) and \\(x = 2\\) — a region lying entirely below the x-axis, pinched to a point at the origin.\nBecause the curve lies below the axis the definite integral of \\(y\\) is negative, so the area is its modulus:\n\\(\\text{Area} = \\left|\\int_{-3}^{2} (-x^2)\\,dx\\right| = \\left|\\left[-\\frac{x^3}{3}\\right]_{-3}^{2}\\right| = \\left|-\\frac{1}{3}\\left(2^3 - (-3)^3\\right)\\right| = \\left|-\\frac{1}{3}\\left(8 + 27\\right)\\right| = \\frac{35}{3}\\).\nEquivalently, integrating the HEIGHT of the region, upper curve minus lower curve \\(= 0 - (-x^2) = x^2\\), gives the same value without any sign to chase:\n\\(\\int_{-3}^{2} x^2\\,dx = \\left[\\frac{x^3}{3}\\right]_{-3}^{2} = \\frac{8}{3} + \\frac{27}{3} = \\frac{35}{3}\\).\nSo the required area is \\(\\frac{35}{3}\\) square units."
+  },
+  {
+   "hash": "c483d42785a668ea65832d1fa47ebc44c8dda54922ec3bf0617ebc790c70c7ca",
+   "ref": "Q35",
+   "questionNumber": "35",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the foot of the perpendicular drawn from point \\((2, -1, 5)\\) to the line \\(\\dfrac{x - 11}{10} = \\dfrac{y + 2}{-4} = \\dfrac{z + 8}{-11}\\). Also, find the length of the perpendicular.",
+   "solution": "Write the line in parametric form. Putting\n\\(\\frac{x - 11}{10} = \\frac{y + 2}{-4} = \\frac{z + 8}{-11} = \\lambda\\),\nany point Q on the line is \\(Q = (10\\lambda + 11,\\ -4\\lambda - 2,\\ -11\\lambda - 8)\\), and the line has direction ratios \\((10, -4, -11)\\).\nLet \\(P = (2, -1, 5)\\) be the given point and let Q be the foot of the perpendicular from P. Then\n\\(\\overrightarrow{PQ}\\) has direction ratios \\((10\\lambda + 11 - 2,\\ -4\\lambda - 2 + 1,\\ -11\\lambda - 8 - 5) = (10\\lambda + 9,\\ -4\\lambda - 1,\\ -11\\lambda - 13)\\).\nSince PQ is perpendicular to the line, the dot product with \\((10, -4, -11)\\) is zero:\n\\(10(10\\lambda + 9) + (-4)(-4\\lambda - 1) + (-11)(-11\\lambda - 13) = 0\\)\n\\(\\Rightarrow 100\\lambda + 90 + 16\\lambda + 4 + 121\\lambda + 143 = 0\\)\n\\(\\Rightarrow 237\\lambda + 237 = 0 \\Rightarrow \\lambda = -1\\).\nSubstituting \\(\\lambda = -1\\), the foot of the perpendicular is\n\\(Q = (-10 + 11,\\ 4 - 2,\\ 11 - 8) = (1, 2, 3)\\).\nThe length of the perpendicular is the distance PQ:\n\\(PQ = \\sqrt{(1 - 2)^2 + (2 + 1)^2 + (3 - 5)^2} = \\sqrt{1 + 9 + 4} = \\sqrt{14}\\).\nSo the foot of the perpendicular is \\((1, 2, 3)\\) and the length of the perpendicular is \\(\\sqrt{14}\\) units."
+  }
+ ]
+}

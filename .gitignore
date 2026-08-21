@@ -94,3 +94,13 @@ scripts/reviews/data/audit-run/
 scripts/*/_tmp_*
 scripts/*/_validate*
 scripts/*/data/_*
+
+# Teaching-deck figures live in Supabase Storage, not git. One chapter is ~870 KB,
+# but Std XI PCM alone measures ~743 figures / ~37 MB (Physics 258 · Chemistry
+# 266 · Maths 219) and git keeps every blob forever, so committing them is a
+# permanent clone-size cost that grows with every chapter. `upload-figures.ts`
+# pushes them and writes `figures.json`, the filename -> storage path map, which
+# IS committed — as is each chapter's `manifest.json`, the page + bounding box
+# every crop came from, so a crop can be re-verified without the binaries.
+scripts/ppt/**/figures/*.png
+scripts/ppt/**/figures/*.jpg

@@ -1,0 +1,1007 @@
+{
+  "paper": "65/3/3",
+  "year": 2024,
+  "pattern": "full80",
+  "_transcription": "ENGLISH PAGES: even 0-based indices 2,4,6,8,10,12,14,16,18,20,22 (11 pages). The alternating hypothesis HELD exactly: idx 0 cover, idx 1 Hindi instructions, then Hindi/English alternate with English always even. 23 pages total. MARKING SCHEME: is specific to 65/3/3 (footer 'MS_XII_Mathematics_041_65/3/3_2023-24'), reprints each question, and its numbering matches the question paper 1:1 with NO reshuffle - so its 'Q1'/'Q2' labels (no trailing dot) were still safe here, though every match was made on CONTENT against the page. All 20 Section-A answers taken verbatim from its 'Ans' rows; all 20 independently re-derived and all 20 AGREE with the official key. RELATION TO 65/3/1: this set is largely the SAME typeset blocks RESHUFFLED and RENUMBERED. 41 of the 52 rows are 65/3/1 questions under different numbers and their stem/option LaTeX is reused byte-for-byte after confirming each on this paper's own page. The mapping is a pure permutation, e.g. this Q7=65/3/1 Q1, Q13=its Q7, Q20=its Q19, Q32=its Q35, and all three case studies rotate (this Q36=its Q38, this Q37=its Q36, this Q38=its Q37). GENUINELY NEW to this set (11 rows, measured by diffing normalised stems against 65/3/1): Q1 determinant, Q2 second derivative of arcsin, Q8 f(x)=x^3-1 on Z, Q11 rate of change of a sphere's surface area, Q19 Assertion-Reason on a.(-a), Q21 mutually perpendicular unit vectors, Q22 inverse-trig evaluation (NOT 65/3/1 Q21 - different expression entirely), Q26 LPP max z=x+y, Q30 integral of sqrt(x)/((x+1)(x-1)), Q33 onto-ness of (x-2)/(x-3), Q35 area under y=sqrt(4-x^2) over [-1,1]. PLAN.TXT: its block labels were NOT used for skipping - it is keyed on marking-scheme BLOCKS (Q25#1..Q25#11, Q33#1..Q33#8) rather than question numbers, so its counts do not map onto questions at all. Every question on the paper was transcribed; nothing was skipped. FIGURES: only Q5 (LPP feasible region) is a genuine dependency; it renders as a solid BLACK block in the question paper and must be cropped from the marking scheme (ms idx 3) where it is clean. The six Section-E illustrations are decorative. NO defects found: every stem is well-formed, every MCQ has exactly four distinct options, and our derivation agrees with the official key on all 20.",
+  "questions": [
+    {
+      "ref": "Q1",
+      "questionNumber": "1",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Determinant and its Properties",
+      "difficulty": "MODERATE",
+      "stem": "The value of \\(\\begin{vmatrix} 8 & 2 & 7 \\\\ 12 & 3 & 5 \\\\ 16 & 4 & 3 \\end{vmatrix}\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "2"
+        },
+        {
+          "label": "C",
+          "text": "7"
+        },
+        {
+          "label": "D",
+          "text": "\\(-2\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q2",
+      "questionNumber": "2",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Second Order Derivatives",
+      "difficulty": "MODERATE",
+      "stem": "If \\(y = \\sin^{-1} x\\), then \\(\\dfrac{d^2y}{dx^2}\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\sec y\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\sec y \\tan y\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\sec^2 y \\tan y\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\tan^2 y \\sec y\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q3",
+      "questionNumber": "3",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Addition of Vectors",
+      "difficulty": "MODERATE",
+      "stem": "If \\(|\\vec{a}| = 2\\) and \\(-3 \\le k \\le 2\\), then \\(|k\\vec{a}| \\in\\) :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\([-6, 4]\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\([0, 4]\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\([4, 6]\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\([0, 6]\\)"
+        }
+      ],
+      "answer": "D",
+      "_flag": "SUBTOPIC-FIT: this is multiplication of a vector by a scalar, which NCERT teaches inside 10.4 Addition of Vectors (10.4.1). Filed there; the axis has no scalar-multiplication subtopic."
+    },
+    {
+      "ref": "Q4",
+      "questionNumber": "4",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Direction Cosines and Direction Ratios",
+      "difficulty": "MODERATE",
+      "stem": "If a line makes an angle of \\(\\dfrac{\\pi}{4}\\) with the positive directions of both x-axis and z-axis, then the angle which it makes with the positive direction of y-axis is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{\\pi}{4}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{\\pi}{2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\pi\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q5",
+      "questionNumber": "5",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "MODERATE",
+      "stem": "Of the following, which group of constraints represents the feasible region given below ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(x + 2y \\le 76\\), \\(2x + y \\ge 104\\), \\(x, y \\ge 0\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(x + 2y \\le 76\\), \\(2x + y \\le 104\\), \\(x, y \\ge 0\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(x + 2y \\ge 76\\), \\(2x + y \\le 104\\), \\(x, y \\ge 0\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(x + 2y \\ge 76\\), \\(2x + y \\ge 104\\), \\(x, y \\ge 0\\)"
+        }
+      ],
+      "answer": "C",
+      "_figure": "REQUIRED — the stem names no constraints; the shaded feasible region bounded by the printed lines x + 2y = 76 and 2x + y = 104 IS the question. Page idx 4. NOTE: the question-paper render of the graph is BLACK/illegible; the SAME figure is clean in the marking scheme, ms page idx 3 — crop from there."
+    },
+    {
+      "ref": "Q6",
+      "questionNumber": "6",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Adjoint and Inverse of a Matrix",
+      "difficulty": "EASY",
+      "stem": "If \\(A = \\begin{bmatrix} 2 & 0 & 0 \\\\ 0 & 3 & 0 \\\\ 0 & 0 & 5 \\end{bmatrix}\\), then \\(A^{-1}\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\begin{bmatrix} \\dfrac{1}{2} & 0 & 0 \\\\ 0 & \\dfrac{1}{3} & 0 \\\\ 0 & 0 & \\dfrac{1}{5} \\end{bmatrix}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(30 \\begin{bmatrix} \\dfrac{1}{2} & 0 & 0 \\\\ 0 & \\dfrac{1}{3} & 0 \\\\ 0 & 0 & \\dfrac{1}{5} \\end{bmatrix}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{1}{30} \\begin{bmatrix} 2 & 0 & 0 \\\\ 0 & 3 & 0 \\\\ 0 & 0 & 5 \\end{bmatrix}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{1}{30} \\begin{bmatrix} \\dfrac{1}{2} & 0 & 0 \\\\ 0 & \\dfrac{1}{3} & 0 \\\\ 0 & 0 & \\dfrac{1}{5} \\end{bmatrix}\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q7",
+      "questionNumber": "7",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Order and Types of Matrices",
+      "difficulty": "EASY",
+      "stem": "If \\(A = [a_{ij}]\\) is an identity matrix, then which of the following is true ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(a_{ij} = \\begin{cases} 0, & \\text{if } i = j \\\\ 1, & \\text{if } i \\neq j \\end{cases}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(a_{ij} = 1, \\forall\\, i, j\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(a_{ij} = 0, \\forall\\, i, j\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(a_{ij} = \\begin{cases} 0, & \\text{if } i \\neq j \\\\ 1, & \\text{if } i = j \\end{cases}\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q8",
+      "questionNumber": "8",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Relations and Functions",
+      "subtopic": "One-One and Onto Functions",
+      "difficulty": "MODERATE",
+      "stem": "Let Z denote the set of integers, then function \\(f : Z \\to Z\\) defined as \\(f(x) = x^3 - 1\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "both one-one and onto"
+        },
+        {
+          "label": "B",
+          "text": "one-one but not onto"
+        },
+        {
+          "label": "C",
+          "text": "onto but not one-one"
+        },
+        {
+          "label": "D",
+          "text": "neither one-one nor onto"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q9",
+      "questionNumber": "9",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Adjoint and Inverse of a Matrix",
+      "difficulty": "MODERATE",
+      "stem": "Let \\(A = \\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}\\) be a square matrix such that adj A = A. Then, \\((a + b + c + d)\\) is equal to :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2a\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(2b\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(2c\\)"
+        },
+        {
+          "label": "D",
+          "text": "0"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q10",
+      "questionNumber": "10",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Continuity",
+      "difficulty": "MODERATE",
+      "stem": "A function \\(f(x) = \\left| 1 - x + |x| \\right|\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "discontinuous at \\(x = 1\\) only"
+        },
+        {
+          "label": "B",
+          "text": "discontinuous at \\(x = 0\\) only"
+        },
+        {
+          "label": "C",
+          "text": "discontinuous at \\(x = 0, 1\\)"
+        },
+        {
+          "label": "D",
+          "text": "continuous everywhere"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q11",
+      "questionNumber": "11",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Rate of Change of Quantities",
+      "difficulty": "EASY",
+      "stem": "The rate of change of surface area of a sphere with respect to its radius \\('r'\\), when \\(r = 4\\) cm, is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(64\\pi\\) cm\\(^2\\)/cm"
+        },
+        {
+          "label": "B",
+          "text": "\\(48\\pi\\) cm\\(^2\\)/cm"
+        },
+        {
+          "label": "C",
+          "text": "\\(32\\pi\\) cm\\(^2\\)/cm"
+        },
+        {
+          "label": "D",
+          "text": "\\(16\\pi\\) cm\\(^2\\)/cm"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q12",
+      "questionNumber": "12",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Properties of Definite Integrals",
+      "difficulty": "EASY",
+      "stem": "\\(\\int\\limits_{-a}^{a} f(x)\\, dx = 0\\), if :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(f(-x) = f(x)\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(f(-x) = -f(x)\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(f(a - x) = f(x)\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(f(a - x) = -f(x)\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q13",
+      "questionNumber": "13",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Differential Equations",
+      "subtopic": "Linear Differential Equations",
+      "difficulty": "EASY",
+      "stem": "\\(x \\log x \\dfrac{dy}{dx} + y = 2 \\log x\\) is an example of a :",
+      "options": [
+        {
+          "label": "A",
+          "text": "variable separable differential equation."
+        },
+        {
+          "label": "B",
+          "text": "homogeneous differential equation."
+        },
+        {
+          "label": "C",
+          "text": "first order linear differential equation."
+        },
+        {
+          "label": "D",
+          "text": "differential equation whose degree is not defined."
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q14",
+      "questionNumber": "14",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "difficulty": "EASY",
+      "stem": "If \\(\\vec{a} = 2\\hat{i} - \\hat{j} + \\hat{k}\\) and \\(\\vec{b} = \\hat{i} + \\hat{j} - \\hat{k}\\), then \\(\\vec{a}\\) and \\(\\vec{b}\\) are :",
+      "options": [
+        {
+          "label": "A",
+          "text": "collinear vectors which are not parallel"
+        },
+        {
+          "label": "B",
+          "text": "parallel vectors"
+        },
+        {
+          "label": "C",
+          "text": "perpendicular vectors"
+        },
+        {
+          "label": "D",
+          "text": "unit vectors"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q15",
+      "questionNumber": "15",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Direction Cosines and Direction Ratios",
+      "difficulty": "MODERATE",
+      "stem": "If \\(\\alpha\\), \\(\\beta\\) and \\(\\gamma\\) are the angles which a line makes with positive directions of x, y and z axes respectively, then which of the following is not true ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\cos^2 \\alpha + \\cos^2 \\beta + \\cos^2 \\gamma = 1\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\sin^2 \\alpha + \\sin^2 \\beta + \\sin^2 \\gamma = 2\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\cos 2\\alpha + \\cos 2\\beta + \\cos 2\\gamma = -1\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\cos \\alpha + \\cos \\beta + \\cos \\gamma = 1\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q16",
+      "questionNumber": "16",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "EASY",
+      "stem": "The restrictions imposed on decision variables involved in an objective function of a linear programming problem are called :",
+      "options": [
+        {
+          "label": "A",
+          "text": "feasible solutions"
+        },
+        {
+          "label": "B",
+          "text": "constraints"
+        },
+        {
+          "label": "C",
+          "text": "optimal solutions"
+        },
+        {
+          "label": "D",
+          "text": "infeasible solutions"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q17",
+      "questionNumber": "17",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "difficulty": "MODERATE",
+      "stem": "Let E and F be two events such that \\(P(E) = 0{\\cdot}1\\), \\(P(F) = 0{\\cdot}3\\), \\(P(E \\cup F) = 0{\\cdot}4\\), then \\(P(F\\,|\\,E)\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0{\\cdot}6\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(0{\\cdot}4\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(0{\\cdot}5\\)"
+        },
+        {
+          "label": "D",
+          "text": "0"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q18",
+      "questionNumber": "18",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Symmetric and Skew-Symmetric Matrices",
+      "difficulty": "MODERATE",
+      "stem": "If A and B are two skew symmetric matrices, then \\((AB + BA)\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "a skew symmetric matrix"
+        },
+        {
+          "label": "B",
+          "text": "a symmetric matrix"
+        },
+        {
+          "label": "C",
+          "text": "a null matrix"
+        },
+        {
+          "label": "D",
+          "text": "an identity matrix"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q19",
+      "questionNumber": "19",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "difficulty": "MODERATE",
+      "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : For any non-zero unit vector \\(\\vec{a}\\), \\(\\vec{a} \\cdot (-\\vec{a}) = (-\\vec{a}) \\cdot \\vec{a} = -1\\).\nReason (R) : Angle between \\(\\vec{a}\\) and \\((-\\vec{a})\\) is \\(\\dfrac{\\pi}{2}\\).",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q20",
+      "questionNumber": "20",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Order and Types of Matrices",
+      "difficulty": "EASY",
+      "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : Every scalar matrix is a diagonal matrix.\nReason (R) : In a diagonal matrix, all the diagonal elements are 0.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q21",
+      "questionNumber": "21",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "difficulty": "MODERATE",
+      "stem": "\\(\\vec{a}\\), \\(\\vec{b}\\) and \\(\\vec{c}\\) are three mutually perpendicular unit vectors. If \\(\\theta\\) is the angle between \\(\\vec{a}\\) and \\((2\\vec{a} + 3\\vec{b} + 6\\vec{c})\\), find the value of \\(\\cos \\theta\\)."
+    },
+    {
+      "ref": "Q22",
+      "questionNumber": "22",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Evaluating Inverse Trigonometric Expressions",
+      "difficulty": "MODERATE",
+      "stem": "Evaluate :\n\\(\\cot^2\\left\\{\\operatorname{cosec}^{-1} 3\\right\\} + \\sin^2\\left\\{\\cos^{-1}\\left(\\dfrac{1}{3}\\right)\\right\\}\\)"
+    },
+    {
+      "ref": "Q23a",
+      "questionNumber": "23 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+      "difficulty": "MODERATE",
+      "stem": "If \\(x = e^{x/y}\\), prove that \\(\\dfrac{dy}{dx} = \\dfrac{\\log x - 1}{(\\log x)^2}\\)"
+    },
+    {
+      "ref": "Q23b",
+      "questionNumber": "23 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Differentiability and the Chain Rule",
+      "difficulty": "MODERATE",
+      "_alternativeTo": "Q23a",
+      "stem": "Check the differentiability of \\(f(x) = \\begin{cases} x^2 + 1, & 0 \\le x < 1 \\\\ 3 - x, & 1 \\le x \\le 2 \\end{cases}\\) at \\(x = 1\\)."
+    },
+    {
+      "ref": "Q24a",
+      "questionNumber": "24 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integration using Trigonometric Identities",
+      "difficulty": "MODERATE",
+      "stem": "Evaluate :\n\\(\\int\\limits_{0}^{\\pi/2} \\sin 2x \\cos 3x\\, dx\\)"
+    },
+    {
+      "ref": "Q24b",
+      "questionNumber": "24 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integrals of Some Particular Functions",
+      "difficulty": "MODERATE",
+      "_alternativeTo": "Q24a",
+      "stem": "Given \\(\\dfrac{d}{dx} F(x) = \\dfrac{1}{\\sqrt{2x - x^2}}\\) and \\(F(1) = 0\\), find \\(F(x)\\)."
+    },
+    {
+      "ref": "Q25",
+      "questionNumber": "25",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Section Formula",
+      "difficulty": "MODERATE",
+      "stem": "Find the position vector of point C which divides the line segment joining points A and B having position vectors \\(\\hat{i} + 2\\hat{j} - \\hat{k}\\) and \\(-\\hat{i} + \\hat{j} + \\hat{k}\\) respectively in the ratio 4 : 1 externally. Further, find \\(|\\overrightarrow{AB}| : |\\overrightarrow{BC}|\\)."
+    },
+    {
+      "ref": "Q26",
+      "questionNumber": "26",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "MODERATE",
+      "stem": "Solve the following linear programming problem graphically :\nMaximize \\(z = x + y\\)\nsubject to constraints\n\\(2x + 5y \\le 100\\)\n\\(8x + 5y \\le 200\\)\n\\(x \\ge 0, y \\ge 0\\)."
+    },
+    {
+      "ref": "Q27",
+      "questionNumber": "27",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Bayes' Theorem",
+      "difficulty": "MODERATE",
+      "stem": "The chances of P, Q and R getting selected as CEO of a company are in the ratio 4 : 1 : 2 respectively. The probabilities for the company to increase its profits from the previous year under the new CEO, P, Q or R are \\(0{\\cdot}3\\), \\(0{\\cdot}8\\) and \\(0{\\cdot}5\\) respectively. If the company increased the profits from the previous year, find the probability that it is due to the appointment of R as CEO."
+    },
+    {
+      "ref": "Q28a",
+      "questionNumber": "28 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+      "difficulty": "HARD",
+      "stem": "If \\(x \\cos (p + y) + \\cos p \\sin (p + y) = 0\\), prove that \\(\\cos p \\dfrac{dy}{dx} = -\\cos^2 (p + y)\\), where p is a constant."
+    },
+    {
+      "ref": "Q28b",
+      "questionNumber": "28 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Continuity",
+      "difficulty": "MODERATE",
+      "_alternativeTo": "Q28a",
+      "stem": "Find the value of a and b so that function f defined as :\n\\(f(x) = \\begin{cases} \\dfrac{x - 2}{|x - 2|} + a, & \\text{if } x < 2 \\\\ a + b, & \\text{if } x = 2 \\\\ \\dfrac{x - 2}{|x - 2|} + b, & \\text{if } x > 2 \\end{cases}\\)\nis a continuous function."
+    },
+    {
+      "ref": "Q29a",
+      "questionNumber": "29 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Increasing and Decreasing Functions",
+      "difficulty": "MODERATE",
+      "stem": "Find the intervals in which the function \\(f(x) = \\dfrac{\\log x}{x}\\) is strictly increasing or strictly decreasing."
+    },
+    {
+      "ref": "Q29b",
+      "questionNumber": "29 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Absolute Maximum and Minimum on a Closed Interval",
+      "difficulty": "MODERATE",
+      "_alternativeTo": "Q29a",
+      "stem": "Find the absolute maximum and absolute minimum values of the function f given by \\(f(x) = \\dfrac{x}{2} + \\dfrac{2}{x}\\), on the interval \\([1, 2]\\)."
+    },
+    {
+      "ref": "Q30",
+      "questionNumber": "30",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integration by Partial Fractions",
+      "difficulty": "HARD",
+      "stem": "Find :\n\\(\\int \\dfrac{\\sqrt{x}}{(x + 1)(x - 1)}\\, dx\\)"
+    },
+    {
+      "ref": "Q31a",
+      "questionNumber": "31 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integration by Parts",
+      "difficulty": "HARD",
+      "stem": "Find :\n\\(\\int \\dfrac{2 + \\sin 2x}{1 + \\cos 2x}\\, e^x\\, dx\\)"
+    },
+    {
+      "ref": "Q31b",
+      "questionNumber": "31 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integration using Trigonometric Identities",
+      "difficulty": "HARD",
+      "_alternativeTo": "Q31a",
+      "stem": "Evaluate :\n\\(\\int\\limits_{0}^{\\pi/4} \\dfrac{1}{\\sin x + \\cos x}\\, dx\\)"
+    },
+    {
+      "ref": "Q32a",
+      "questionNumber": "32 (a)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Equation of a Line in Space",
+      "difficulty": "HARD",
+      "stem": "Find the equation of the line passing through the point of intersection of the lines \\(\\dfrac{x}{1} = \\dfrac{y - 1}{2} = \\dfrac{z - 2}{3}\\) and \\(\\dfrac{x - 1}{0} = \\dfrac{y}{-3} = \\dfrac{z - 7}{2}\\) and perpendicular to these given lines."
+    },
+    {
+      "ref": "Q32b",
+      "questionNumber": "32 (b)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Shortest Distance Between Two Lines",
+      "difficulty": "HARD",
+      "_alternativeTo": "Q32a",
+      "stem": "Two vertices of the parallelogram ABCD are given as \\(A(-1, 2, 1)\\) and \\(B(1, -2, 5)\\). If the equation of the line passing through C and D is \\(\\dfrac{x - 4}{1} = \\dfrac{y + 7}{-2} = \\dfrac{z - 8}{2}\\), then find the distance between sides AB and CD. Hence, find the area of parallelogram ABCD."
+    },
+    {
+      "ref": "Q33",
+      "questionNumber": "33",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "One-One and Onto Functions",
+      "difficulty": "HARD",
+      "stem": "Let \\(A = R - \\{3\\}\\) and \\(B = R - \\{a\\}\\). Find the value of 'a' such that the function \\(f : A \\to B\\) defined by \\(f(x) = \\dfrac{x - 2}{x - 3}\\) is onto. Also, check whether the given function is one-one or not."
+    },
+    {
+      "ref": "Q34a",
+      "questionNumber": "34 (a)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "difficulty": "HARD",
+      "stem": "It is given that function \\(f(x) = x^4 - 62x^2 + ax + 9\\) attains local maximum value at \\(x = 1\\). Find the value of 'a', hence obtain all other points where the given function \\(f(x)\\) attains local maximum or local minimum values."
+    },
+    {
+      "ref": "Q34b",
+      "questionNumber": "34 (b)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "difficulty": "HARD",
+      "_alternativeTo": "Q34a",
+      "stem": "The perimeter of a rectangular metallic sheet is 300 cm. It is rolled along one of its sides to form a cylinder. Find the dimensions of the rectangular sheet so that volume of cylinder so formed is maximum."
+    },
+    {
+      "ref": "Q35",
+      "questionNumber": "35",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Bounded by a Curve and a Line",
+      "difficulty": "HARD",
+      "stem": "Using integration, find the area of the region enclosed between the curve \\(y = \\sqrt{4 - x^2}\\) and the lines \\(x = -1\\), \\(x = 1\\) and the x-axis."
+    },
+    {
+      "ref": "Q36i",
+      "questionNumber": "36 (i)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Solving System of Linear Equations",
+      "difficulty": "EASY",
+      "setId": "2024-65-3-3-CS1",
+      "_caseStudyLabel": "Case Study – 1",
+      "context": "A scholarship is a sum of money provided to a student to help him or her pay for education. Some students are granted scholarships based on their academic achievements, while others are rewarded based on their financial needs.\n\nEvery year a school offers scholarships to girl children and meritorious achievers based on certain criteria. In the session 2022 – 23, the school offered monthly scholarship of ₹ 3,000 each to some girl students and ₹ 4,000 each to meritorious achievers in academics as well as sports.\n\nIn all, 50 students were given the scholarships and monthly expenditure incurred by the school on scholarships was ₹ 1,80,000.\n\nBased on the above information, answer the following questions :",
+      "stem": "Express the given information algebraically using matrices.",
+      "_figure": "DECORATIVE — a trophy/books illustration and a clip-art of a scholarship being handed over, page idx 18. All four figures the sub-parts need (3,000 · 4,000 · 50 · 1,80,000) are in the passage text."
+    },
+    {
+      "ref": "Q36ii",
+      "questionNumber": "36 (ii)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Solving System of Linear Equations",
+      "difficulty": "EASY",
+      "setId": "2024-65-3-3-CS1",
+      "_caseStudyLabel": "Case Study – 1",
+      "context": "A scholarship is a sum of money provided to a student to help him or her pay for education. Some students are granted scholarships based on their academic achievements, while others are rewarded based on their financial needs.\n\nEvery year a school offers scholarships to girl children and meritorious achievers based on certain criteria. In the session 2022 – 23, the school offered monthly scholarship of ₹ 3,000 each to some girl students and ₹ 4,000 each to meritorious achievers in academics as well as sports.\n\nIn all, 50 students were given the scholarships and monthly expenditure incurred by the school on scholarships was ₹ 1,80,000.\n\nBased on the above information, answer the following questions :",
+      "stem": "Check whether the system of matrix equations so obtained is consistent or not."
+    },
+    {
+      "ref": "Q36iiia",
+      "questionNumber": "36 (iii) (a)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Solving System of Linear Equations",
+      "difficulty": "MODERATE",
+      "setId": "2024-65-3-3-CS1",
+      "_caseStudyLabel": "Case Study – 1",
+      "context": "A scholarship is a sum of money provided to a student to help him or her pay for education. Some students are granted scholarships based on their academic achievements, while others are rewarded based on their financial needs.\n\nEvery year a school offers scholarships to girl children and meritorious achievers based on certain criteria. In the session 2022 – 23, the school offered monthly scholarship of ₹ 3,000 each to some girl students and ₹ 4,000 each to meritorious achievers in academics as well as sports.\n\nIn all, 50 students were given the scholarships and monthly expenditure incurred by the school on scholarships was ₹ 1,80,000.\n\nBased on the above information, answer the following questions :",
+      "stem": "Find the number of scholarships of each kind given by the school, using matrices."
+    },
+    {
+      "ref": "Q36iiib",
+      "questionNumber": "36 (iii) (b)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Solving System of Linear Equations",
+      "difficulty": "MODERATE",
+      "setId": "2024-65-3-3-CS1",
+      "_caseStudyLabel": "Case Study – 1",
+      "context": "A scholarship is a sum of money provided to a student to help him or her pay for education. Some students are granted scholarships based on their academic achievements, while others are rewarded based on their financial needs.\n\nEvery year a school offers scholarships to girl children and meritorious achievers based on certain criteria. In the session 2022 – 23, the school offered monthly scholarship of ₹ 3,000 each to some girl students and ₹ 4,000 each to meritorious achievers in academics as well as sports.\n\nIn all, 50 students were given the scholarships and monthly expenditure incurred by the school on scholarships was ₹ 1,80,000.\n\nBased on the above information, answer the following questions :",
+      "stem": "Had the amount of scholarship given to each girl child and meritorious student been interchanged, what would be the monthly expenditure incurred by the school ?",
+      "_alternativeTo": "Q36iiia"
+    },
+    {
+      "ref": "Q37i",
+      "questionNumber": "37 (i)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Random Variables and Probability Distributions",
+      "difficulty": "EASY",
+      "setId": "2024-65-3-3-CS2",
+      "_caseStudyLabel": "Case Study – 2",
+      "context": "Self-study helps students to build confidence in learning. It boosts the self-esteem of the learners. Recent surveys suggested that close to 50% learners were self-taught using internet resources and upskilled themselves.\n\nA student may spend 1 hour to 6 hours in a day in upskilling self. The probability distribution of the number of hours spent by a student is given below :\n\n\\(P(X = x) = \\begin{cases} kx^2, & \\text{for } x = 1, 2, 3 \\\\ 2kx, & \\text{for } x = 4, 5, 6 \\\\ 0, & \\text{otherwise} \\end{cases}\\)\n\nwhere x denotes the number of hours.\n\nBased on the above information, answer the following questions :",
+      "stem": "Express the probability distribution given above in the form of a probability distribution table.",
+      "_figure": "DECORATIVE — two captioned clip-art illustrations of a student studying (page idx 20). Every number the sub-parts need is in the passage text."
+    },
+    {
+      "ref": "Q37ii",
+      "questionNumber": "37 (ii)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Random Variables and Probability Distributions",
+      "difficulty": "EASY",
+      "setId": "2024-65-3-3-CS2",
+      "_caseStudyLabel": "Case Study – 2",
+      "context": "Self-study helps students to build confidence in learning. It boosts the self-esteem of the learners. Recent surveys suggested that close to 50% learners were self-taught using internet resources and upskilled themselves.\n\nA student may spend 1 hour to 6 hours in a day in upskilling self. The probability distribution of the number of hours spent by a student is given below :\n\n\\(P(X = x) = \\begin{cases} kx^2, & \\text{for } x = 1, 2, 3 \\\\ 2kx, & \\text{for } x = 4, 5, 6 \\\\ 0, & \\text{otherwise} \\end{cases}\\)\n\nwhere x denotes the number of hours.\n\nBased on the above information, answer the following questions :",
+      "stem": "Find the value of k."
+    },
+    {
+      "ref": "Q37iiia",
+      "questionNumber": "37 (iii) (a)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Random Variables and Probability Distributions",
+      "difficulty": "MODERATE",
+      "setId": "2024-65-3-3-CS2",
+      "_caseStudyLabel": "Case Study – 2",
+      "context": "Self-study helps students to build confidence in learning. It boosts the self-esteem of the learners. Recent surveys suggested that close to 50% learners were self-taught using internet resources and upskilled themselves.\n\nA student may spend 1 hour to 6 hours in a day in upskilling self. The probability distribution of the number of hours spent by a student is given below :\n\n\\(P(X = x) = \\begin{cases} kx^2, & \\text{for } x = 1, 2, 3 \\\\ 2kx, & \\text{for } x = 4, 5, 6 \\\\ 0, & \\text{otherwise} \\end{cases}\\)\n\nwhere x denotes the number of hours.\n\nBased on the above information, answer the following questions :",
+      "stem": "Find the mean number of hours spent by the student."
+    },
+    {
+      "ref": "Q37iiib",
+      "questionNumber": "37 (iii) (b)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Random Variables and Probability Distributions",
+      "difficulty": "MODERATE",
+      "setId": "2024-65-3-3-CS2",
+      "_caseStudyLabel": "Case Study – 2",
+      "context": "Self-study helps students to build confidence in learning. It boosts the self-esteem of the learners. Recent surveys suggested that close to 50% learners were self-taught using internet resources and upskilled themselves.\n\nA student may spend 1 hour to 6 hours in a day in upskilling self. The probability distribution of the number of hours spent by a student is given below :\n\n\\(P(X = x) = \\begin{cases} kx^2, & \\text{for } x = 1, 2, 3 \\\\ 2kx, & \\text{for } x = 4, 5, 6 \\\\ 0, & \\text{otherwise} \\end{cases}\\)\n\nwhere x denotes the number of hours.\n\nBased on the above information, answer the following questions :",
+      "stem": "Find \\(P(1 < X < 6)\\).",
+      "_alternativeTo": "Q37iiia"
+    },
+    {
+      "ref": "Q38i",
+      "questionNumber": "38 (i)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Differential Equations",
+      "subtopic": "Variables Separable",
+      "difficulty": "MODERATE",
+      "setId": "2024-65-3-3-CS3",
+      "_caseStudyLabel": "Case Study – 3",
+      "context": "A bacteria sample of certain number of bacteria is observed to grow exponentially in a given amount of time. Using exponential growth model, the rate of growth of this sample of bacteria is calculated.\n\nThe differential equation representing the growth of bacteria is given as :\n\n\\(\\dfrac{dP}{dt} = kP\\), where P is the population of bacteria at any time 't'.\n\nBased on the above information, answer the following questions :",
+      "stem": "Obtain the general solution of the given differential equation and express it as an exponential function of 't'.",
+      "_figure": "DECORATIVE — a bacterial growth curve (Lag/Log/Stationary/Dead) plus a photograph of two culture plates, page idx 22. Neither carries a number; the differential equation and both data points are in the text.",
+      "_flag": "STRUCTURE: this case study has only TWO sub-parts, (i) and (ii), each carrying 2 marks — no (iii) and no internal choice. Verified on the paper (idx 22) AND in the marking scheme. The printed instructions allow it: internal choice is given in only 2 of the 3 Section-E questions, and here Q36 and Q37 carry it."
+    },
+    {
+      "ref": "Q38ii",
+      "questionNumber": "38 (ii)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Differential Equations",
+      "subtopic": "General and Particular Solutions",
+      "difficulty": "MODERATE",
+      "setId": "2024-65-3-3-CS3",
+      "_caseStudyLabel": "Case Study – 3",
+      "context": "A bacteria sample of certain number of bacteria is observed to grow exponentially in a given amount of time. Using exponential growth model, the rate of growth of this sample of bacteria is calculated.\n\nThe differential equation representing the growth of bacteria is given as :\n\n\\(\\dfrac{dP}{dt} = kP\\), where P is the population of bacteria at any time 't'.\n\nBased on the above information, answer the following questions :",
+      "stem": "If population of bacteria is 1000 at \\(t = 0\\), and 2000 at \\(t = 1\\), find the value of k."
+    }
+  ]
+}

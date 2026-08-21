@@ -1,0 +1,276 @@
+{
+ "paper": "65/5/3",
+ "year": 2023,
+ "paperId": "2023-65-5-3",
+ "markingScheme": "out/2023-65-5-3/ms/p00.png … p24.png",
+ "rows": [
+  {
+   "hash": "15418354e06339e4de7037d29e1d3a04065891af1eebfe045995ceb83f0801ff",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Relations and Functions",
+   "subtopic": "Types of Relations",
+   "stem": "Let R be a relation in the set N given by\n\n\\(R = \\{(a, b) : a = b - 2, b > 6\\}\\).\n\nThen",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\((8, 7) \\in R\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\((6, 8) \\in R\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\((3, 8) \\in R\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\((2, 4) \\in R\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "A pair \\((a, b)\\) belongs to R only if BOTH conditions hold: \\(b > 6\\) and \\(a = b - 2\\). Test each choice. For \\((6, 8)\\): \\(b = 8 > 6\\) and \\(b - 2 = 6 = a\\), so both hold. For \\((8, 7)\\): \\(b = 7 > 6\\), but \\(b - 2 = 5 \\ne 8\\). For \\((3, 8)\\): \\(b = 8 > 6\\), but \\(b - 2 = 6 \\ne 3\\). For \\((2, 4)\\): \\(b = 4\\), which already fails \\(b > 6\\). Hence the only pair in R is \\((6, 8)\\)."
+  },
+  {
+   "hash": "27a16ba493f3b6554cbf5d4f56209cb4d868ecb9ae2bc4b7641a827183366eda",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Transpose of a Matrix",
+   "stem": "If \\(A = \\begin{bmatrix} 5 & x \\\\ y & 0 \\end{bmatrix}\\) and \\(A = A^T\\), where \\(A^T\\) is the transpose of the matrix A, then",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(x = 0,\\ y = 5\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(x = y\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(x + y = 5\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(x = 5,\\ y = 0\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Transposing swaps the off-diagonal entries: \\(A^T = \\begin{bmatrix} 5 & y \\\\ x & 0 \\end{bmatrix}\\). The condition \\(A = A^T\\) says A is symmetric, so compare entries position by position. The \\((1,1)\\) and \\((2,2)\\) entries agree automatically; the \\((1,2)\\) entries give \\(x = y\\) and the \\((2,1)\\) entries give \\(y = x\\), which is the same condition. So the only requirement is \\(x = y\\) — no particular numerical values are forced, which is why the choices fixing \\(x\\) and \\(y\\) separately, or fixing their sum, are not implied."
+  },
+  {
+   "hash": "fb3cd77a3fb2547225f45bfd3660893ef55e90bf3b539236309e892de28c9aa7",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Continuity",
+   "stem": "If \\(f(x) = |\\cos x|\\), then \\(f\\left(\\dfrac{3\\pi}{4}\\right)\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "1"
+    },
+    {
+     "label": "B",
+     "text": "\\(-1\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{-1}{\\sqrt{2}}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{1}{\\sqrt{2}}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "The angle \\(\\dfrac{3\\pi}{4}\\) lies in the second quadrant, where the cosine is negative: \\(\\cos\\dfrac{3\\pi}{4} = -\\cos\\dfrac{\\pi}{4} = -\\dfrac{1}{\\sqrt{2}}\\). Taking the modulus, \\(f\\left(\\dfrac{3\\pi}{4}\\right) = \\left|-\\dfrac{1}{\\sqrt{2}}\\right| = \\dfrac{1}{\\sqrt{2}}\\). A modulus can never be negative, so the two negative choices are ruled out on sight, and \\(1\\) is impossible because \\(|\\cos x| = 1\\) only at integer multiples of \\(\\pi\\). Hence the value is \\(\\dfrac{1}{\\sqrt{2}}\\)."
+  },
+  {
+   "hash": "73effb2b4ce1d461b3e5458bab312480775073464a6ae6fa42fe3f686c07741d",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "The function \\(f(x) = x^3 + 3x\\) is increasing in interval",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\((-\\infty, 0)\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\((0, \\infty)\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\mathbb{R}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\((0, 1)\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Differentiating, \\(f'(x) = 3x^2 + 3 = 3(x^2 + 1)\\). Since \\(x^2 \\ge 0\\) for every real \\(x\\), we get \\(f'(x) \\ge 3 > 0\\) at every point, so \\(f\\) is increasing on the whole real line. The other three choices are each only a part of the real line; \\(f\\) does increase on them too, but the complete interval of increase — and so the correct description — is R."
+  },
+  {
+   "hash": "8ea6a3cf5dee116374a0ec5ceec4d2fe2347a020ba30218a756430a6611dac12",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Order and Degree of a Differential Equation",
+   "stem": "The order and the degree of the differential equation \\(\\left(1 + 3\\dfrac{dy}{dx}\\right)^2 = 4\\dfrac{d^3y}{dx^3}\\) respectively are :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(1, \\dfrac{2}{3}\\)"
+    },
+    {
+     "label": "B",
+     "text": "3, 1"
+    },
+    {
+     "label": "C",
+     "text": "3, 3"
+    },
+    {
+     "label": "D",
+     "text": "1, 2"
+    }
+   ],
+   "answer": "B",
+   "solution": "The equation is already polynomial in the derivatives; expanding the left side gives \\(1 + 6\\dfrac{dy}{dx} + 9\\left(\\dfrac{dy}{dx}\\right)^2 = 4\\dfrac{d^3y}{dx^3}\\). The ORDER is the order of the highest derivative present, namely \\(\\dfrac{d^3y}{dx^3}\\), so the order is 3. The DEGREE is the power to which that highest derivative is raised once the equation is polynomial in derivatives; here \\(\\dfrac{d^3y}{dx^3}\\) occurs to the first power, so the degree is 1. The exponent 2 on the left belongs to \\(\\dfrac{dy}{dx}\\), not to the highest derivative, and so plays no part in the degree — which is the trap the choices are built around. Hence the order and degree are 3 and 1."
+  },
+  {
+   "hash": "32f10eb0285ecf0b6958f3d6a6f6c2c58547e18e69ddd62e4c65639e638dee99",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "If \\(\\vec{a} \\cdot \\hat{i} = \\vec{a} \\cdot (\\hat{i} + \\hat{j}) = \\vec{a} \\cdot (\\hat{i} + \\hat{j} + \\hat{k}) = 1\\), then \\(\\vec{a}\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\hat{k}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\hat{i}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\hat{j}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\hat{i} + \\hat{j} + \\hat{k}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Write \\(\\vec{a} = a_1\\hat{i} + a_2\\hat{j} + a_3\\hat{k}\\) and take the three dot products in turn. From \\(\\vec{a} \\cdot \\hat{i} = 1\\) we get \\(a_1 = 1\\). From \\(\\vec{a} \\cdot (\\hat{i} + \\hat{j}) = 1\\) we get \\(a_1 + a_2 = 1\\), so \\(a_2 = 0\\). From \\(\\vec{a} \\cdot (\\hat{i} + \\hat{j} + \\hat{k}) = 1\\) we get \\(a_1 + a_2 + a_3 = 1\\), so \\(a_3 = 0\\). Hence \\(\\vec{a} = \\hat{i}\\)."
+  },
+  {
+   "hash": "865c35f1b945963d31b2323257bd9afd5f2f60993781562b8e473839cb25a34d",
+   "ref": "Q21a",
+   "questionNumber": "21 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Continuity",
+   "stem": "Find the value of k for which the function f given as\n\n\\(f(x) = \\begin{cases} \\dfrac{1 - \\cos x}{2x^2}, & \\text{if } x \\ne 0 \\\\ k, & \\text{if } x = 0 \\end{cases}\\) is continuous at \\(x = 0\\).",
+   "solution": "Continuity at \\(x = 0\\) requires \\(\\lim_{x \\to 0} f(x) = f(0) = k\\), so the whole job is to evaluate the limit. Use \\(1 - \\cos x = 2\\sin^2\\dfrac{x}{2}\\). For \\(x \\ne 0\\), \\(f(x) = \\dfrac{1 - \\cos x}{2x^2} = \\dfrac{2\\sin^2\\dfrac{x}{2}}{2x^2} = \\dfrac{\\sin^2\\dfrac{x}{2}}{x^2}\\). Since \\(x = 2 \\cdot \\dfrac{x}{2}\\), we have \\(x^2 = 4\\left(\\dfrac{x}{2}\\right)^2\\), so \\(f(x) = \\dfrac{1}{4}\\left(\\dfrac{\\sin\\dfrac{x}{2}}{\\dfrac{x}{2}}\\right)^2\\). As \\(x \\to 0\\) the argument \\(\\dfrac{x}{2} \\to 0\\) as well, and \\(\\lim_{u \\to 0}\\dfrac{\\sin u}{u} = 1\\), so the bracket tends to 1 and \\(\\lim_{x \\to 0} f(x) = \\dfrac{1}{4}\\). Hence \\(k = \\dfrac{1}{4}\\)."
+  },
+  {
+   "hash": "f0979659c7176ea1f335c63f83421671d6e5dff6d938199cce02650c69d172da",
+   "ref": "Q21b",
+   "questionNumber": "21 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Functions in Parametric Form",
+   "stem": "If \\(x = a\\cos t\\) and \\(y = b\\sin t\\), then find \\(\\dfrac{d^2y}{dx^2}\\).",
+   "solution": "Differentiate each parametric equation with respect to the parameter: \\(\\dfrac{dx}{dt} = -a\\sin t\\) and \\(\\dfrac{dy}{dt} = b\\cos t\\). Hence \\(\\dfrac{dy}{dx} = \\dfrac{dy/dt}{dx/dt} = \\dfrac{b\\cos t}{-a\\sin t} = -\\dfrac{b}{a}\\cot t\\). For the second derivative the step that is easy to lose is that \\(\\dfrac{dy}{dx}\\) is still a function of \\(t\\), so it must be differentiated with respect to \\(t\\) and then multiplied by \\(\\dfrac{dt}{dx} = \\dfrac{1}{dx/dt}\\): \\(\\dfrac{d^2y}{dx^2} = \\dfrac{d}{dt}\\left(-\\dfrac{b}{a}\\cot t\\right) \\cdot \\dfrac{dt}{dx} = \\dfrac{b}{a}\\csc^2 t \\cdot \\dfrac{1}{-a\\sin t}\\). Therefore \\(\\dfrac{d^2y}{dx^2} = -\\dfrac{b}{a^2}\\cdot\\dfrac{1}{\\sin^3 t}\\), which may equally be written \\(-\\dfrac{b}{a^2}\\csc^3 t\\)."
+  },
+  {
+   "hash": "729b4209db1ff71c1f91619a98d11305b95f18b89971ff699d401013b5289622",
+   "ref": "Q22",
+   "questionNumber": "22",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Evaluating Inverse Trigonometric Expressions",
+   "stem": "Find the value of \\(\\tan^{-1}\\left[2\\cos\\left(2\\sin^{-1}\\dfrac{1}{2}\\right)\\right] + \\tan^{-1} 1\\).",
+   "solution": "Work outwards from the innermost function. Since \\(\\dfrac{1}{2}\\) lies in \\([-1, 1]\\) and the principal value is required, \\(\\sin^{-1}\\dfrac{1}{2} = \\dfrac{\\pi}{6}\\), so \\(2\\sin^{-1}\\dfrac{1}{2} = \\dfrac{\\pi}{3}\\). Then \\(\\cos\\dfrac{\\pi}{3} = \\dfrac{1}{2}\\), so the square bracket becomes \\(2 \\times \\dfrac{1}{2} = 1\\) and \\(\\tan^{-1}(1) = \\dfrac{\\pi}{4}\\). The second term is likewise \\(\\tan^{-1} 1 = \\dfrac{\\pi}{4}\\). Adding, the value is \\(\\dfrac{\\pi}{4} + \\dfrac{\\pi}{4} = \\dfrac{\\pi}{2}\\)."
+  },
+  {
+   "hash": "23c6e66ee2017f5f56531af51c47e6c23df6805f45c8fa4de50cbb37ea50a240",
+   "ref": "Q26",
+   "questionNumber": "26",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Determinant and its Properties",
+   "stem": "Show that the determinant \\(\\begin{vmatrix} x & \\sin\\theta & \\cos\\theta \\\\ -\\sin\\theta & -x & 1 \\\\ \\cos\\theta & 1 & x \\end{vmatrix}\\) is independent of \\(\\theta\\).",
+   "solution": "Call the determinant \\(\\Delta\\) and expand along the first row: \\(\\Delta = x\\left[(-x)(x) - (1)(1)\\right] - \\sin\\theta\\left[(-\\sin\\theta)(x) - (1)(\\cos\\theta)\\right] + \\cos\\theta\\left[(-\\sin\\theta)(1) - (-x)(\\cos\\theta)\\right]\\), that is \\(\\Delta = x(-x^2 - 1) - \\sin\\theta(-x\\sin\\theta - \\cos\\theta) + \\cos\\theta(-\\sin\\theta + x\\cos\\theta)\\). Multiplying out, \\(\\Delta = -x^3 - x + x\\sin^2\\theta + \\sin\\theta\\cos\\theta - \\cos\\theta\\sin\\theta + x\\cos^2\\theta\\). The two \\(\\sin\\theta\\cos\\theta\\) terms are equal and opposite, so they cancel; the two remaining \\(\\theta\\) terms combine as \\(x(\\sin^2\\theta + \\cos^2\\theta) = x\\). Hence \\(\\Delta = -x^3 - x + x = -x^3\\). The result contains no \\(\\theta\\) whatsoever, so the determinant is independent of \\(\\theta\\), as required."
+  },
+  {
+   "hash": "ef4e018c0987e32a760ca9f0fe0a74625a10e6fe5140c2edc4111aae2e01e284",
+   "ref": "Q27",
+   "questionNumber": "27",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Under Simple Curves",
+   "stem": "Using integration, find the area of the region bounded by \\(y = mx\\) (m > 0), \\(x = 1\\), \\(x = 2\\) and the \\(x\\)-axis.",
+   "solution": "Because \\(m > 0\\), the line \\(y = mx\\) lies above the x-axis throughout \\(x > 0\\), so on the strip \\(1 \\le x \\le 2\\) the region is the trapezium bounded below by the x-axis, above by \\(y = mx\\), and at the sides by the vertical lines \\(x = 1\\) and \\(x = 2\\). Its vertices are \\((1, 0)\\), \\((2, 0)\\), \\((2, 2m)\\) and \\((1, m)\\). Integrating with respect to \\(x\\), Area \\(= \\displaystyle\\int_{1}^{2} mx\\,dx = m\\left[\\dfrac{x^2}{2}\\right]_{1}^{2} = m\\left(\\dfrac{4}{2} - \\dfrac{1}{2}\\right) = \\dfrac{3m}{2}\\) square units. As a check, the trapezium has parallel sides of length \\(m\\) and \\(2m\\) a distance 1 apart, giving \\(\\dfrac{1}{2}(m + 2m)(1) = \\dfrac{3m}{2}\\), the same value."
+  },
+  {
+   "hash": "45f5eff65eb48f77422af0c41833a4bca0f5d62249208517bb8b28086fb388af",
+   "ref": "Q28a",
+   "questionNumber": "28 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the coordinates of the foot of the perpendicular drawn from point (5, 7, 3) to the line \\(\\dfrac{x - 15}{3} = \\dfrac{y - 29}{8} = \\dfrac{z - 5}{-5}\\).",
+   "solution": "Put each of the three equal ratios equal to \\(\\lambda\\). A general point of the line is then \\(M(3\\lambda + 15,\\ 8\\lambda + 29,\\ -5\\lambda + 5)\\), and the line's direction ratios are \\(3, 8, -5\\). With \\(P(5, 7, 3)\\), the direction ratios of \\(PM\\) are \\((3\\lambda + 15 - 5,\\ 8\\lambda + 29 - 7,\\ -5\\lambda + 5 - 3) = (3\\lambda + 10,\\ 8\\lambda + 22,\\ -5\\lambda + 2)\\). This general point is the FOOT of the perpendicular for the one value of \\(\\lambda\\) that makes \\(PM\\) perpendicular to the line, i.e. for which \\((3\\lambda + 10)(3) + (8\\lambda + 22)(8) + (-5\\lambda + 2)(-5) = 0\\). Expanding, \\(9\\lambda + 30 + 64\\lambda + 176 + 25\\lambda - 10 = 0\\), so \\(98\\lambda + 196 = 0\\) and \\(\\lambda = -2\\). Substituting back, \\(M = (-6 + 15,\\ -16 + 29,\\ 10 + 5) = (9, 13, 15)\\). Checking: \\(PM = (4, 6, 12)\\) and \\(4(3) + 6(8) + 12(-5) = 12 + 48 - 60 = 0\\), which confirms the perpendicularity. So the foot of the perpendicular is \\((9, 13, 15)\\)."
+  },
+  {
+   "hash": "9d41f4ecacf8734629bf3e2bc87b30004470967e09b3d59d2a10984536be98b4",
+   "ref": "Q28b",
+   "questionNumber": "28 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "If \\(\\vec{a} = \\hat{i} + \\hat{j} + \\hat{k}\\) and \\(\\vec{b} = \\hat{i} + 2\\hat{j} + 3\\hat{k}\\) then find a unit vector perpendicular to both \\(\\vec{a} + \\vec{b}\\) and \\(\\vec{a} - \\vec{b}\\).",
+   "solution": "First form the two vectors: \\(\\vec{a} + \\vec{b} = 2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\) and \\(\\vec{a} - \\vec{b} = -\\hat{j} - 2\\hat{k}\\). A vector perpendicular to both is their cross product, \\(\\vec{c} = (\\vec{a} + \\vec{b}) \\times (\\vec{a} - \\vec{b}) = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & 3 & 4 \\\\ 0 & -1 & -2 \\end{vmatrix}\\). Expanding, \\(\\vec{c} = \\hat{i}\\left[(3)(-2) - (4)(-1)\\right] - \\hat{j}\\left[(2)(-2) - (4)(0)\\right] + \\hat{k}\\left[(2)(-1) - (3)(0)\\right] = -2\\hat{i} + 4\\hat{j} - 2\\hat{k}\\). Its magnitude is \\(|\\vec{c}| = \\sqrt{4 + 16 + 4} = \\sqrt{24} = 2\\sqrt{6}\\), so the required unit vector is \\(\\dfrac{\\vec{c}}{|\\vec{c}|} = \\dfrac{-2\\hat{i} + 4\\hat{j} - 2\\hat{k}}{2\\sqrt{6}} = -\\dfrac{1}{\\sqrt{6}}\\hat{i} + \\dfrac{2}{\\sqrt{6}}\\hat{j} - \\dfrac{1}{\\sqrt{6}}\\hat{k}\\). Its negative, \\(\\dfrac{1}{\\sqrt{6}}\\left(\\hat{i} - 2\\hat{j} + \\hat{k}\\right)\\), is perpendicular to both as well and is equally acceptable. As a check, \\((\\vec{a} + \\vec{b}) \\times (\\vec{a} - \\vec{b}) = -2(\\vec{a} \\times \\vec{b})\\), and \\(\\vec{a} \\times \\vec{b} = \\hat{i} - 2\\hat{j} + \\hat{k}\\), which reproduces \\(\\vec{c}\\)."
+  },
+  {
+   "hash": "b500298cdfe631147ecfd3285105d54e0693163b35813d54fc834165ccfd38c8",
+   "ref": "Q32",
+   "questionNumber": "32",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following Linear Programming Problem graphically :\n\nMinimise : \\(Z = 60x + 80y\\)\n\nsubject to constraints :\n\n\\(3x + 4y \\ge 8\\)\n\n\\(5x + 2y \\ge 11\\)\n\n\\(x, y \\ge 0\\)",
+   "solution": "Draw the boundary lines \\(3x + 4y = 8\\) and \\(5x + 2y = 11\\) in the first quadrant. The origin satisfies neither inequality, so the feasible region is the part of the first quadrant lying away from the origin on both lines; it is UNBOUNDED. Its corner points are: \\(B\\left(0, \\dfrac{11}{2}\\right)\\), where \\(5x + 2y = 11\\) meets the y-axis; \\(C\\left(\\dfrac{8}{3}, 0\\right)\\), where \\(3x + 4y = 8\\) meets the x-axis; and the intersection of the two lines, found by substituting \\(y = \\dfrac{11 - 5x}{2}\\) into \\(3x + 4y = 8\\) to get \\(3x + 2(11 - 5x) = 8\\), i.e. \\(-7x = -14\\), so \\(x = 2\\) and \\(y = \\dfrac{1}{2}\\), giving \\(A\\left(2, \\dfrac{1}{2}\\right)\\). Note that \\((0, 2)\\) and \\(\\left(\\dfrac{11}{5}, 0\\right)\\) are NOT corners: each satisfies one constraint but violates the other. Evaluating \\(Z = 60x + 80y\\) at the corners: \\(Z_B = 0 + 440 = 440\\), \\(Z_A = 120 + 40 = 160\\), \\(Z_C = 160 + 0 = 160\\). The smallest corner value is 160, reached at both \\(A\\) and \\(C\\). Since the objective line \\(60x + 80y = 160\\) is \\(3x + 4y = 8\\) after dividing by 20 — one of the boundary lines itself — the value 160 is taken at every point of the segment \\(AC\\), not just at its ends. Because the region is unbounded, a smallest corner value is not automatically a minimum, so one further check is needed: \\(60x + 80y < 160\\) is the same as \\(3x + 4y < 8\\), and no feasible point can satisfy that, since every feasible point obeys \\(3x + 4y \\ge 8\\). The open half-plane therefore has no point in common with the feasible region, and the minimum genuinely exists. Hence the minimum value of Z is 160, attained at every point of the segment joining \\(A\\left(2, \\dfrac{1}{2}\\right)\\) and \\(C\\left(\\dfrac{8}{3}, 0\\right)\\). [Note: the marking scheme reaches the same answer but does not print this last open-half-plane check, which an unbounded feasible region requires; it is included above for completeness, not because the scheme's answer is wrong.]"
+  }
+ ]
+}

@@ -1,0 +1,265 @@
+{
+ "paper": "65/3/2",
+ "year": 2026,
+ "paperId": "2026-65-3-2",
+ "markingScheme": "out/2026-65-3-2/ms/p00.png … p19.png",
+ "rows": [
+  {
+   "hash": "331434bf0fd0ae81b09facfd709932d6e0b7d8fc0a8beddc75f6b75c6f50a548",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "If \\(\\tan^{-1} x = y\\), then \\(\\dfrac{dy}{dx}\\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\((\\sec^{-1} x)^2\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\sec^2 y\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{1}{\\sqrt{1 + x^2}}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\cos^2 y\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Differentiate the relation rather than the inverse function. From \\(\\tan^{-1} x = y\\) we get \\(x = \\tan y\\), so \\(\\dfrac{dx}{dy} = \\sec^2 y\\) and therefore \\(\\dfrac{dy}{dx} = \\dfrac{1}{\\sec^2 y} = \\cos^2 y\\). This is the familiar result in disguise: since \\(\\sec^2 y = 1 + \\tan^2 y = 1 + x^2\\), the derivative equals \\(\\dfrac{1}{1 + x^2}\\), and the option offering \\(\\dfrac{1}{\\sqrt{1 + x^2}}\\) carries a stray square root. Hence the derivative is \\(\\cos^2 y\\), which is option (D) \\(\\cos^2 y\\)."
+  },
+  {
+   "hash": "90a905ee25044aeb4771ea4b843b48c9c1dd74a00004ead3d1951cd8f718d16f",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Substitution",
+   "stem": "\\(\\int \\dfrac{dx}{\\sqrt{e^{-2x} - 1}}\\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\sin^{-1} e^{-x} + C\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\log |\\, e^{-x} + \\sqrt{e^{-2x} - 1} \\,| + C\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\sin^{-1} e^{x} + C\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\log |\\, e^{-x} - \\sqrt{e^{-2x} - 1} \\,| + C\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Clear the negative exponent by substituting \\(t = e^{x}\\), so that \\(dt = e^{x}\\,dx\\) and \\(dx = \\dfrac{dt}{t}\\). Since \\(e^{-2x} = \\dfrac{1}{t^2}\\), the radical becomes \\(\\sqrt{\\dfrac{1}{t^2} - 1} = \\dfrac{\\sqrt{1 - t^2}}{t}\\) for \\(t > 0\\) (the integrand is real only when \\(e^{-2x} > 1\\), that is \\(x < 0\\), which is exactly where \\(0 < t < 1\\)). The integral is therefore \\(\\displaystyle\\int \\dfrac{dt/t}{\\sqrt{1 - t^2}/t} = \\int \\dfrac{dt}{\\sqrt{1 - t^2}} = \\sin^{-1} t + C\\). Restoring \\(t = e^{x}\\), the value is \\(\\sin^{-1}\\left(e^{x}\\right) + C\\), which is option (C) \\(\\sin^{-1} e^{x} + C\\)."
+  },
+  {
+   "hash": "06422d517863acc01dce1f6bfeffbaf2e3666c543f59abc730237ef2da8c63d9",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "Direction ratios of lines \\(l_1\\) and \\(l_2\\) respectively are \\(<1, -2, 3>\\) and \\(<-2, p, -6>\\). The value of p for which \\(l_1 \\,\\|\\, l_2\\), is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(-4\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(4\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(-10\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(10\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Two lines are parallel exactly when their direction ratios are proportional, so \\(\\dfrac{-2}{1} = \\dfrac{p}{-2} = \\dfrac{-6}{3}\\). The first and third ratios agree, both equalling \\(-2\\), so the common factor of proportionality is \\(-2\\). From \\(\\dfrac{p}{-2} = -2\\) we get \\(p = 4\\). Checking, \\(\\langle -2, 4, -6 \\rangle = -2\\langle 1, -2, 3 \\rangle\\), so the lines are indeed parallel. Hence \\(p = 4\\), which is option (B) \\(4\\)."
+  },
+  {
+   "hash": "8058da251d6b4d2778cfcd822a44c612fe74946b5d65c1dbb267740e0848bad4",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "The domain of \\(\\sin^{-1} (1 - 2x)\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\([-1, 1]\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\([-1, 3]\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\([-2, 2]\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\([0, 1]\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "The inverse sine is defined only when its argument lies in \\([-1, 1]\\), so we need \\(-1 \\le 1 - 2x \\le 1\\). Subtracting 1 throughout gives \\(-2 \\le -2x \\le 0\\), and dividing by \\(-2\\) reverses both inequalities to give \\(0 \\le x \\le 1\\). Hence the domain is \\([0, 1]\\), which is option (D) \\([0, 1]\\)."
+  },
+  {
+   "hash": "450f37ad91d8d7f52d6220f277007f022c386a4a167e57d416029656acaa928b",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "If a matrix B is such that \\(B[1 \\;\\; 2 \\;\\; 3] = \\begin{bmatrix} 1 & 2 & 3 \\\\ 0 & 1 & 1 \\\\ 2 & 0 & 1 \\end{bmatrix}\\), then the order of matrix B is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(1 \\times 3\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(3 \\times 1\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(3 \\times 3\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(1 \\times 1\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Use the rule that the product of an \\(m \\times n\\) matrix with an \\(n \\times p\\) matrix is \\(m \\times p\\). Here the second factor \\([1 \\;\\; 2 \\;\\; 3]\\) is a row matrix of order \\(1 \\times 3\\) and the product is a \\(3 \\times 3\\) matrix. So if the matrix B has order \\(m \\times n\\), the product \\(B[1 \\;\\; 2 \\;\\; 3]\\) requires \\(n = 1\\) for the multiplication to be defined, and its order is then \\(m \\times 3\\). Matching this against \\(3 \\times 3\\) gives \\(m = 3\\). So the order of the matrix B is \\(3 \\times 1\\), which is option (B) \\(3 \\times 1\\)."
+  },
+  {
+   "hash": "d4142bca9316618a341de0e871341be51cd64b6537ec1d4b09968fb2ede8c14f",
+   "ref": "Q17",
+   "questionNumber": "17",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Adjoint and Inverse of a Matrix",
+   "stem": "If \\(A(\\text{adj } A) = \\begin{bmatrix} 2026 & 0 & 0 \\\\ 0 & 2026 & 0 \\\\ 0 & 0 & 2026 \\end{bmatrix}\\), then the value of \\(|\\text{adj } A|\\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2026\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\((2026)^{-1}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\((2026)^{-2}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\((2026)^2\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "For any square matrix A of order n, \\(A(\\text{adj } A) = |A| I\\). The given product is \\(2026\\) times the identity matrix of order 3, so \\(|A| = 2026\\). Now use \\(|\\text{adj } A| = |A|^{\\,n-1}\\); with \\(n = 3\\) this gives \\(|\\text{adj } A| = |A|^2 = (2026)^2\\). Hence the value is \\((2026)^2\\), which is option (D) \\((2026)^2\\)."
+  },
+  {
+   "hash": "cd6d3d5cbaae252901dc7ac5129c9e9dc92897a1bbe91800a325b59b37e7cdae",
+   "ref": "Q24",
+   "questionNumber": "24",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Functions in Parametric Form",
+   "stem": "If \\(x = e^{t + \\frac{1}{t}}\\) and \\(y = e^{t - \\frac{1}{t}}\\), then find \\(\\dfrac{dy}{dx}\\) at \\(t = -2\\).",
+   "solution": "Differentiate x and y separately with respect to the parameter t. From \\(x = e^{t + \\frac{1}{t}}\\), the chain rule gives \\(\\dfrac{dx}{dt} = \\left(1 - \\dfrac{1}{t^2}\\right)e^{t + \\frac{1}{t}}\\), and from \\(y = e^{t - \\frac{1}{t}}\\) it gives \\(\\dfrac{dy}{dt} = \\left(1 + \\dfrac{1}{t^2}\\right)e^{t - \\frac{1}{t}}\\). Dividing, \\(\\dfrac{dy}{dx} = \\dfrac{dy/dt}{dx/dt} = \\dfrac{1 + \\frac{1}{t^2}}{1 - \\frac{1}{t^2}} \\cdot \\dfrac{e^{t - \\frac{1}{t}}}{e^{t + \\frac{1}{t}}} = \\dfrac{t^2 + 1}{t^2 - 1}\\, e^{-\\frac{2}{t}}\\). At \\(t = -2\\) the first factor is \\(\\dfrac{4 + 1}{4 - 1} = \\dfrac{5}{3}\\) and the exponential is \\(e^{-2/(-2)} = e\\). Hence \\(\\left[\\dfrac{dy}{dx}\\right]_{t = -2} = \\dfrac{5e}{3}\\)."
+  },
+  {
+   "hash": "b31b01a1446e51f682e46de08dc44717d09eabd08c6995de38ad18469be84bbb",
+   "ref": "Q25",
+   "questionNumber": "25",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "Find the sub-interval of \\((0, \\infty)\\) in which \\(f(x) = x^2 e^{-x}\\) is increasing.",
+   "solution": "Differentiate using the product rule: \\(f(x) = x^2 e^{-x}\\) gives \\(f'(x) = 2x e^{-x} - x^2 e^{-x} = x(2 - x)e^{-x}\\). Setting \\(f'(x) = 0\\) gives \\(x = 0\\) or \\(x = 2\\). Since \\(e^{-x} > 0\\) for every x, the sign of \\(f'(x)\\) is the sign of \\(x(2 - x)\\); on \\((0, \\infty)\\) this is positive for \\(0 < x < 2\\) and negative for \\(x > 2\\). Hence f is increasing on \\((0, 2)\\). The interval \\((0, 2]\\) may equally be quoted, since \\(f'\\) vanishes only at the single endpoint \\(x = 2\\) and \"increasing\" is not required to be strict there."
+  },
+  {
+   "hash": "3dd614254245c0c6bb204f588f4645afa0f1b5e8677b23624f1e3d2e35f9659b",
+   "ref": "Q27a",
+   "questionNumber": "27 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Find the general solution of the differential equation \\((x^2 + y^2)\\, dy = xy\\, dx\\).",
+   "solution": "Write the equation as \\(\\dfrac{dy}{dx} = \\dfrac{xy}{x^2 + y^2}\\). The right side is unchanged when x and y are both scaled by the same factor, so the equation is homogeneous. Put \\(y = vx\\), so that \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\); the right side becomes \\(\\dfrac{x \\cdot vx}{x^2 + v^2x^2} = \\dfrac{v}{1 + v^2}\\). Hence \\(v + x\\dfrac{dv}{dx} = \\dfrac{v}{1 + v^2}\\), that is \\(x\\dfrac{dv}{dx} = \\dfrac{v - v\\left(1 + v^2\\right)}{1 + v^2} = -\\dfrac{v^3}{1 + v^2}\\).\n\nSeparating the variables, \\(\\displaystyle\\int \\dfrac{1 + v^2}{v^3}\\,dv = -\\int \\dfrac{dx}{x}\\), that is \\(\\displaystyle\\int\\left(v^{-3} + \\dfrac{1}{v}\\right)dv = -\\int \\dfrac{dx}{x}\\). Integrating gives \\(-\\dfrac{1}{2v^2} + \\log|v| = -\\log|x| + c\\).\n\nNow restore \\(v = \\dfrac{y}{x}\\): \\(\\log\\left|\\dfrac{y}{x}\\right| - \\dfrac{x^2}{2y^2} = -\\log|x| + c\\). Since \\(\\log\\left|\\dfrac{y}{x}\\right| = \\log|y| - \\log|x|\\), the two \\(\\log|x|\\) terms cancel and the general solution simplifies to \\(\\log|y| = \\dfrac{x^2}{2y^2} + c\\)."
+  },
+  {
+   "hash": "6186f71f59579ca177f2b9ff7d8ac836fd6575f4e5cd10b495b6f82420c35e64",
+   "ref": "Q27b",
+   "questionNumber": "27 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "Find the particular solution of the differential equation \\(\\dfrac{dy}{dx} - 3y \\cot x = \\sin 2x\\), given that \\(y = 2\\) when \\(x = \\dfrac{\\pi}{2}\\).",
+   "solution": "The equation \\(\\dfrac{dy}{dx} - 3y\\cot x = \\sin 2x\\) is linear in y with \\(P = -3\\cot x\\) and \\(Q = \\sin 2x\\). Its integrating factor is \\(e^{\\int P\\,dx} = e^{-3\\int \\cot x\\,dx} = e^{-3\\log|\\sin x|} = \\dfrac{1}{\\sin^3 x} = \\operatorname{cosec}^3 x\\).\n\nMultiplying through by the integrating factor, the general solution is \\(y \\operatorname{cosec}^3 x = \\displaystyle\\int \\dfrac{\\sin 2x}{\\sin^3 x}\\,dx\\). Writing \\(\\sin 2x = 2\\sin x\\cos x\\), the integrand becomes \\(\\dfrac{2\\sin x\\cos x}{\\sin^3 x} = \\dfrac{2\\cos x}{\\sin^2 x} = 2\\operatorname{cosec} x\\cot x\\), whose integral is \\(-2\\operatorname{cosec} x\\). Hence \\(y\\operatorname{cosec}^3 x = -2\\operatorname{cosec} x + c\\).\n\nApply the given condition \\(y = 2\\) when \\(x = \\dfrac{\\pi}{2}\\), where \\(\\operatorname{cosec} x = 1\\): this gives \\(2 = -2 + c\\), so \\(c = 4\\). The particular solution is therefore \\(y\\operatorname{cosec}^3 x = -2\\operatorname{cosec} x + 4\\), or equivalently, multiplying by \\(\\sin^3 x\\), \\(y = -2\\sin^2 x + 4\\sin^3 x\\).\n\nAs a check, differentiating this last form gives \\(\\dfrac{dy}{dx} = -4\\sin x\\cos x + 12\\sin^2 x\\cos x\\), and then \\(\\dfrac{dy}{dx} - 3y\\cot x = -4\\sin x\\cos x + 12\\sin^2 x\\cos x + 6\\sin x\\cos x - 12\\sin^2 x\\cos x = 2\\sin x\\cos x = \\sin 2x\\), as required."
+  },
+  {
+   "hash": "0fb29f1d42b37c756661726fce072258a5feeb9493951c3ad409468e9851c1ae",
+   "ref": "Q31",
+   "questionNumber": "31",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "Evaluate :\n\n\\(\\int_{-\\frac{\\pi}{2}}^{\\frac{\\pi}{2}} \\dfrac{\\cos^2 x}{2^x + 1}\\, dx\\)",
+   "solution": "Let \\(I = \\displaystyle\\int_{-\\pi/2}^{\\pi/2} \\dfrac{\\cos^2 x}{2^{x} + 1}\\,dx\\). Apply the property \\(\\displaystyle\\int_{a}^{b} f(x)\\,dx = \\int_{a}^{b} f(a + b - x)\\,dx\\) with \\(a + b = 0\\), which replaces x by \\(-x\\). Since \\(\\cos^2(-x) = \\cos^2 x\\) and \\(2^{-x} + 1 = \\dfrac{1 + 2^{x}}{2^{x}}\\), this gives \\(I = \\displaystyle\\int_{-\\pi/2}^{\\pi/2} \\dfrac{2^{x}\\cos^2 x}{2^{x} + 1}\\,dx\\).\n\nAdding the two expressions for I, the denominators combine and \\(2I = \\displaystyle\\int_{-\\pi/2}^{\\pi/2} \\dfrac{\\left(1 + 2^{x}\\right)\\cos^2 x}{2^{x} + 1}\\,dx = \\int_{-\\pi/2}^{\\pi/2}\\cos^2 x\\,dx\\). The integrand \\(\\cos^2 x\\) is even, so this equals \\(2\\displaystyle\\int_{0}^{\\pi/2}\\cos^2 x\\,dx\\), and hence \\(I = \\displaystyle\\int_{0}^{\\pi/2}\\cos^2 x\\,dx\\).\n\nFinally, applying \\(\\displaystyle\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a - x)\\,dx\\) with \\(a = \\dfrac{\\pi}{2}\\) turns cosine into sine, so \\(I = \\displaystyle\\int_{0}^{\\pi/2}\\sin^2 x\\,dx\\) as well. Adding these last two expressions, \\(2I = \\displaystyle\\int_{0}^{\\pi/2}\\left(\\cos^2 x + \\sin^2 x\\right)dx = \\int_{0}^{\\pi/2} 1\\,dx = \\dfrac{\\pi}{2}\\). Hence \\(I = \\dfrac{\\pi}{4}\\)."
+  },
+  {
+   "hash": "228c5786de65a6f1fe5d9e1275c715632fb156c73380c80fcaf8bd4246c8af18",
+   "ref": "Q34",
+   "questionNumber": "34",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "Show that \\(f : R_+ \\to [-5, \\infty)\\) given by \\(f(x) = 4x^2 + 4x - 5\\) is both one-one and onto where \\(R_+ = [0, \\infty)\\). Also, find \\(p \\in R_+\\) such that \\(f(p) = 3\\).",
+   "solution": "One-one. Take \\(x_1, x_2 \\in R_+\\) with \\(f(x_1) = f(x_2)\\), that is \\(4x_1^2 + 4x_1 - 5 = 4x_2^2 + 4x_2 - 5\\). Cancelling the \\(-5\\) and dividing by 4 gives \\(x_1^2 - x_2^2 + x_1 - x_2 = 0\\), which factorises as \\(\\left(x_1 - x_2\\right)\\left(x_1 + x_2 + 1\\right) = 0\\). Because \\(x_1, x_2 \\ge 0\\), the second factor satisfies \\(x_1 + x_2 + 1 \\ge 1 > 0\\) and cannot vanish. Hence \\(x_1 = x_2\\), so f is one-one.\n\nOnto. Let \\(y = 4x^2 + 4x - 5\\) for some \\(y \\in [-5, \\infty)\\) and solve for x. Rearranged, \\(4x^2 + 4x - (5 + y) = 0\\), so by the quadratic formula \\(x = \\dfrac{-4 \\pm \\sqrt{16 + 16(5 + y)}}{8} = \\dfrac{-1 \\pm \\sqrt{y + 6}}{2}\\). Since \\(y \\ge -5\\) we have \\(y + 6 \\ge 1\\), so the square root is real and at least 1; taking the sign that keeps x non-negative gives the pre-image \\(x = \\dfrac{\\sqrt{y + 6} - 1}{2}\\), which indeed satisfies \\(x \\ge 0\\) and so lies in \\(R_+\\). Conversely, for \\(x \\ge 0\\) we have \\(\\sqrt{y + 6} \\ge 1\\), that is \\(y \\ge -5\\), so the range is exactly \\([-5, \\infty)\\). Range equals codomain, so f is onto. (Completing the square shows the same thing: \\(f(x) = (2x + 1)^2 - 6\\), which increases from \\(f(0) = -5\\) without bound as x runs over \\([0, \\infty)\\).)\n\nBeing both one-one and onto, f is a bijection.\n\nValue of p. We need \\(f(p) = 3\\), that is \\(4p^2 + 4p - 5 = 3\\), so \\(4p^2 + 4p - 8 = 0\\) and \\(p^2 + p - 2 = 0\\). Factorising, \\((p + 2)(p - 1) = 0\\), giving \\(p = 1\\) or \\(p = -2\\). Since \\(p \\in R_+ = [0, \\infty)\\), the root \\(p = -2\\) is rejected and \\(p = 1\\)."
+  },
+  {
+   "hash": "522b1e816373056930409b2baf53e43dad0b8b2dd6cf4c4f6eba6eecf44418fb",
+   "ref": "Q35",
+   "questionNumber": "35",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following Linear Programming Problem graphically :\n\nMaximise \\(Z = 12x + 18y\\)\n\nsubject to the constraints\n\n\\(x + y \\le 1200\\)\n\n\\(x - 2y \\ge 0\\)\n\n\\(x + 3y \\ge 600\\)\n\n\\(x \\ge 0,\\ y \\ge 0\\)",
+   "solution": "[CBSE marking scheme: the corner-point table is headed \"Value of Z = 600x + 400y\", which is not this paper's objective function; \\(600x + 400y\\) is the objective of the linear programming question on the sibling paper 65/3/1. Every value tabulated is in fact computed from the objective printed in the question, \\(Z = 12x + 18y\\) — at \\((600, 0)\\) it gives 7200, not 360000 — so only the column heading is wrong and the answer \\(Z_{\\max} = 16800\\) at \\((800, 400)\\) stands.]\n\nDraw the lines \\(x + y = 1200\\), \\(x - 2y = 0\\) and \\(x + 3y = 600\\) in the first quadrant. The line \\(x - 2y = 0\\) passes through the origin with slope \\(\\dfrac{1}{2}\\), and testing the point \\((1, 0)\\) shows that \\(x - 2y \\ge 0\\) is the region on and below it. Testing the origin in the other two constraints shows that \\(x + y \\le 1200\\) holds there while \\(x + 3y \\ge 600\\) does not, so the feasible region lies below \\(x + y = 1200\\) and above \\(x + 3y = 600\\). Together these give a bounded quadrilateral region.\n\nIts corner points come from intersecting the boundary lines in pairs. The line \\(x + 3y = 600\\) meets \\(y = 0\\) at \\(A(600, 0)\\); the line \\(x + y = 1200\\) meets \\(y = 0\\) at \\(B(1200, 0)\\); the lines \\(x + y = 1200\\) and \\(x = 2y\\) meet where \\(2y + y = 1200\\), giving \\(y = 400\\) and \\(x = 800\\), that is \\(C(800, 400)\\); and the lines \\(x = 2y\\) and \\(x + 3y = 600\\) meet where \\(2y + 3y = 600\\), giving \\(y = 120\\) and \\(x = 240\\), that is \\(D(240, 120)\\). Each of these four points satisfies all of the constraints.\n\nNow evaluate \\(Z = 12x + 18y\\) at each corner point. At \\(A(600, 0)\\), \\(Z = 7200\\); at \\(B(1200, 0)\\), \\(Z = 14400\\); at \\(C(800, 400)\\), \\(Z = 9600 + 7200 = 16800\\); at \\(D(240, 120)\\), \\(Z = 2880 + 2160 = 5040\\).\n\nThe feasible region is bounded, so Z attains its maximum at a corner point. Hence \\(Z_{\\max} = 16800\\), attained at the point \\((800, 400)\\)."
+  }
+ ]
+}

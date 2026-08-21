@@ -1,0 +1,974 @@
+{
+ "paper": "65/1/1",
+ "year": 2025,
+ "paperId": "2025-65-1-1",
+ "markingScheme": "out/2025-65-1-1/ms/p00.png … p21.png",
+ "rows": [
+  {
+   "hash": "c3ced3d254c6ab8db16cfeeb7ccfefbd22f8d6d40bf763107a6a3832f49fdd99",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Adjoint and Inverse of a Matrix",
+   "stem": "If \\(A = \\begin{bmatrix} -1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\), then \\(A^{-1}\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\begin{bmatrix} -1 & 0 & 0 \\\\ 0 & -1 & 0 \\\\ 0 & 0 & -1 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & -1 & 0 \\\\ 0 & 0 & -1 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\begin{bmatrix} -1 & 0 & 0 \\\\ 0 & -1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\begin{bmatrix} -1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "\\(A\\) is a diagonal matrix, and the inverse of a diagonal matrix with no zero on its diagonal is simply the diagonal matrix of the reciprocals. The diagonal entries here are \\(-1, 1, 1\\), whose reciprocals are again \\(-1, 1, 1\\). So \\(A^{-1} = A\\) — equivalently, \\(A^2 = I\\), so \\(A\\) is its own inverse. Hence \\(A^{-1} = \\begin{bmatrix} -1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\), the option that repeats the given matrix."
+  },
+  {
+   "hash": "c43654fcd1f023fc734ab7ad56827dd7ecc08445c6667561e2cf98b4b554ea1c",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "If vector \\(\\vec{a} = 3\\hat{i} + 2\\hat{j} - \\hat{k}\\) and vector \\(\\vec{b} = \\hat{i} - \\hat{j} + \\hat{k}\\), then which of the following is correct ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\vec{a} \\parallel \\vec{b}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\vec{a} \\perp \\vec{b}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(|\\vec{b}| > |\\vec{a}|\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(|\\vec{a}| = |\\vec{b}|\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Test the dot product first: \\(\\vec{a} \\cdot \\vec{b} = 3(1) + 2(-1) + (-1)(1) = 3 - 2 - 1 = 0\\). A zero dot product between two non-zero vectors means the vectors are perpendicular, so \\(\\vec{a} \\perp \\vec{b}\\) is the correct statement. The other three fail: \\(|\\vec{a}| = \\sqrt{9 + 4 + 1} = \\sqrt{14}\\) and \\(|\\vec{b}| = \\sqrt{1 + 1 + 1} = \\sqrt{3}\\), so the magnitudes are neither equal nor is \\(|\\vec{b}|\\) the larger, and perpendicular non-zero vectors cannot be parallel."
+  },
+  {
+   "hash": "093bd997bcbe4dde61e78d0feded0ff2620b1ce276e2d99761604965efa188e6",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "\\(\\int_{-1}^{1} \\frac{|x|}{x}\\,dx\\), \\(x \\neq 0\\) is equal to",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(-1\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(0\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(1\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(2\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "The integrand is a step function: for \\(x > 0\\), \\(\\frac{|x|}{x} = \\frac{x}{x} = 1\\), and for \\(x < 0\\), \\(\\frac{|x|}{x} = \\frac{-x}{x} = -1\\). Splitting the integral at \\(0\\), \\(\\int_{-1}^{0}(-1)\\,dx + \\int_{0}^{1}(1)\\,dx = -1 + 1 = 0\\). (The same answer follows in one line from the fact that \\(\\frac{|x|}{x}\\) is an odd function integrated over the symmetric interval \\([-1, 1]\\).) So the value is \\(0\\)."
+  },
+  {
+   "hash": "2632d6703e470670d2e05eeebf2bf3fdfef4776366b34ce8dbb21860b1d5b43f",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Which of the following is \\(\\underline{\\text{not}}\\) a homogeneous function of \\(x\\) and \\(y\\) ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(y^2 - xy\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(x - 3y\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\sin^2 \\frac{y}{x} + \\frac{y}{x}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\tan x - \\sec y\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "A function \\(f(x, y)\\) is homogeneous of degree \\(n\\) when \\(f(tx, ty) = t^n f(x, y)\\). Checking each: \\(y^2 - xy\\) gives \\(t^2(y^2 - xy)\\), homogeneous of degree \\(2\\); \\(x - 3y\\) gives \\(t(x - 3y)\\), degree \\(1\\); and \\(\\sin^2\\frac{y}{x} + \\frac{y}{x}\\) depends only on the ratio \\(\\frac{y}{x}\\), which is unchanged by the substitution, so it is homogeneous of degree \\(0\\). But \\(\\tan x - \\sec y\\) becomes \\(\\tan(tx) - \\sec(ty)\\), which cannot be written as \\(t^n(\\tan x - \\sec y)\\) for any \\(n\\) — the arguments themselves are scaled rather than the whole function. So \\(\\tan x - \\sec y\\) is the one that is not homogeneous."
+  },
+  {
+   "hash": "20ed19473047436a0c63aa2a982781a9ce1225d7badcbf0e4b8fd2e354b15e88",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Continuity",
+   "stem": "If \\(f(x) = |x| + |x - 1|\\), then which of the following is correct ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(f(x)\\) is both continuous and differentiable, at \\(x = 0\\) and \\(x = 1\\)."
+    },
+    {
+     "label": "B",
+     "text": "\\(f(x)\\) is differentiable but not continuous, at \\(x = 0\\) and \\(x = 1\\)."
+    },
+    {
+     "label": "C",
+     "text": "\\(f(x)\\) is continuous but not differentiable, at \\(x = 0\\) and \\(x = 1\\)."
+    },
+    {
+     "label": "D",
+     "text": "\\(f(x)\\) is neither continuous nor differentiable, at \\(x = 0\\) and \\(x = 1\\)."
+    }
+   ],
+   "answer": "C",
+   "solution": "Both \\(|x|\\) and \\(|x - 1|\\) are continuous everywhere, and a sum of continuous functions is continuous, so \\(f\\) is continuous at \\(x = 0\\) and at \\(x = 1\\). Differentiability is where it fails. Near \\(x = 0\\) we have \\(|x - 1| = 1 - x\\), which is smooth, so \\(f(x) = |x| + 1 - x\\) inherits the corner of \\(|x|\\): the left-hand derivative is \\(-1 - 1 = -2\\) while the right-hand derivative is \\(1 - 1 = 0\\). Likewise near \\(x = 1\\), \\(|x| = x\\) is smooth and \\(f\\) inherits the corner of \\(|x - 1|\\), the one-sided derivatives being \\(0\\) and \\(2\\). So \\(f(x)\\) is continuous but not differentiable, at \\(x = 0\\) and \\(x = 1\\)."
+  },
+  {
+   "hash": "3bbd074f62f16c95355ae4ff4c28d57ad0cb248d3ce2c91bc787e77ecdfa55af",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Adjoint and Inverse of a Matrix",
+   "stem": "If A is a square matrix of order 2 such that det (A) = 4, then det (4 adj A) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "16"
+    },
+    {
+     "label": "B",
+     "text": "64"
+    },
+    {
+     "label": "C",
+     "text": "256"
+    },
+    {
+     "label": "D",
+     "text": "512"
+    }
+   ],
+   "answer": "B",
+   "solution": "Two standard results are needed, both for a matrix of order \\(n\\): \\(|\\operatorname{adj} A| = |A|^{n-1}\\) and \\(|kA| = k^n|A|\\). Here \\(n = 2\\), so \\(|\\operatorname{adj} A| = |A|^{2-1} = 4\\), and then \\(|4\\operatorname{adj} A| = 4^2\\,|\\operatorname{adj} A| = 16 \\times 4 = 64\\). So the value is \\(64\\). (Note the scalar is raised to the power \\(2\\), not \\(3\\) — that is what separates this from \\(256\\).)"
+  },
+  {
+   "hash": "3d5d73763470bb7815cfc7c284ebf726019b03d11fd992d83a4a990c9e8092d9",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Independent Events",
+   "stem": "If E and F are two independent events such that \\(P(E) = \\frac{2}{3}\\), \\(P(F) = \\frac{3}{7}\\), then \\(P(E/\\overline{F})\\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{1}{6}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{1}{2}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{2}{3}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{7}{9}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "If \\(E\\) and \\(F\\) are independent then so are \\(E\\) and \\(\\overline{F}\\), so conditioning on \\(\\overline{F}\\) tells us nothing about \\(E\\) and \\(P(E/\\overline{F}) = P(E) = \\frac{2}{3}\\). Working it out explicitly gives the same thing: \\(P(\\overline{F}) = 1 - \\frac{3}{7} = \\frac{4}{7}\\) and \\(P(E \\cap \\overline{F}) = P(E)P(\\overline{F}) = \\frac{2}{3} \\times \\frac{4}{7} = \\frac{8}{21}\\), so \\(P(E/\\overline{F}) = \\frac{8/21}{4/7} = \\frac{8}{21} \\times \\frac{7}{4} = \\frac{2}{3}\\). So the value is \\(\\frac{2}{3}\\)."
+  },
+  {
+   "hash": "367f550c48256cab41da29c273a657afe2403099fe9406a834aaf8f4deebd198",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Absolute Maximum and Minimum on a Closed Interval",
+   "stem": "The absolute maximum value of function \\(f(x) = x^3 - 3x + 2\\) in \\([0, 2]\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "0"
+    },
+    {
+     "label": "B",
+     "text": "2"
+    },
+    {
+     "label": "C",
+     "text": "4"
+    },
+    {
+     "label": "D",
+     "text": "5"
+    }
+   ],
+   "answer": "C",
+   "solution": "On a closed interval the absolute maximum is found by comparing the values at the critical points with those at the endpoints. Here \\(f'(x) = 3x^2 - 3 = 3(x - 1)(x + 1)\\), so \\(f'(x) = 0\\) at \\(x = \\pm 1\\), of which only \\(x = 1\\) lies in \\([0, 2]\\). Evaluating: \\(f(0) = 2\\), \\(f(1) = 1 - 3 + 2 = 0\\), and \\(f(2) = 8 - 6 + 2 = 4\\). The largest of these is \\(4\\), so the absolute maximum value is \\(4\\)."
+  },
+  {
+   "hash": "b5a7b0c5c91a165cbe3553d9431fd2d502ca4c6a7d16d702cc8e5a0a733fe3f9",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "Let \\(A = \\begin{bmatrix} 1 & -2 & -1 \\\\ 0 & 4 & -1 \\\\ -3 & 2 & 1 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} -2 \\\\ -5 \\\\ -7 \\end{bmatrix}\\), \\(C = [9\\ 8\\ 7]\\), which of the following is defined ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Only AB"
+    },
+    {
+     "label": "B",
+     "text": "Only AC"
+    },
+    {
+     "label": "C",
+     "text": "Only BA"
+    },
+    {
+     "label": "D",
+     "text": "All AB, AC and BA"
+    }
+   ],
+   "answer": "A",
+   "solution": "A product \\(PQ\\) is defined only when the number of columns of \\(P\\) equals the number of rows of \\(Q\\). The orders here are: \\(A\\) is \\(3 \\times 3\\), \\(B\\) is \\(3 \\times 1\\) (a column) and \\(C\\) is \\(1 \\times 3\\) (a row). So \\(AB\\) is \\((3 \\times 3)(3 \\times 1)\\) — the inner numbers agree, so it is defined and has order \\(3 \\times 1\\); \\(AC\\) is \\((3 \\times 3)(1 \\times 3)\\) — \\(3 \\neq 1\\), not defined; and \\(BA\\) is \\((3 \\times 1)(3 \\times 3)\\) — \\(1 \\neq 3\\), not defined. So only AB is defined."
+  },
+  {
+   "hash": "ad2a0247683eb13849076eeede8f8ae10f50a02c3d607024657d5bf084457683",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Substitution",
+   "stem": "If \\(\\int \\frac{2^{\\frac{1}{x}}}{x^2}\\,dx = k \\cdot 2^{\\frac{1}{x}} + C\\), then k is equal to",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{-1}{\\log 2}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-\\log 2\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(-1\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{1}{2}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Substitute \\(t = \\frac{1}{x}\\), so that \\(dt = -\\frac{1}{x^2}\\,dx\\), i.e. \\(\\frac{dx}{x^2} = -dt\\). The integral becomes \\(\\int \\frac{2^{1/x}}{x^2}\\,dx = -\\int 2^{t}\\,dt = -\\frac{2^{t}}{\\log 2} + C = \\frac{-1}{\\log 2} \\cdot 2^{1/x} + C\\). Comparing with the given form \\(k \\cdot 2^{1/x} + C\\), we read off \\(k = \\frac{-1}{\\log 2}\\). (A quick check by differentiating confirms it, since \\(\\frac{d}{dx}2^{1/x} = 2^{1/x}\\log 2 \\cdot \\left(-\\frac{1}{x^2}\\right)\\).)"
+  },
+  {
+   "hash": "a0de8f4480038238f9d7530bf8d9330a76eede073fb5a5d22a87d1ba5e488cd6",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "If \\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0}\\), \\(|\\vec{a}| = \\sqrt{37}\\), \\(|\\vec{b}| = 3\\) and \\(|\\vec{c}| = 4\\), then angle between \\(\\vec{b}\\) and \\(\\vec{c}\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{\\pi}{6}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{\\pi}{4}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{\\pi}{3}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{\\pi}{2}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Isolate the vector whose magnitude is known but which is not in the required angle: \\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0}\\) gives \\(\\vec{a} = -(\\vec{b} + \\vec{c})\\). Taking magnitudes and squaring, \\(|\\vec{a}|^2 = |\\vec{b}|^2 + |\\vec{c}|^2 + 2\\,\\vec{b} \\cdot \\vec{c}\\). Writing \\(\\theta\\) for the angle between \\(\\vec{b}\\) and \\(\\vec{c}\\) and substituting, \\(37 = 9 + 16 + 2(3)(4)\\cos\\theta\\), so \\(24\\cos\\theta = 12\\) and \\(\\cos\\theta = \\frac{1}{2}\\). Hence \\(\\theta = \\frac{\\pi}{3}\\)."
+  },
+  {
+   "hash": "baaa722183eaf55ac612e9a178ab7b085f8ce3f0a77905553fa5be97670f3a87",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "The integrating factor of differential equation \\((x + 2y^3)\\frac{dy}{dx} = 2y\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(e^{\\frac{y^2}{2}}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{1}{\\sqrt{y}}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{1}{y^2}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(e^{-\\frac{1}{y^2}}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "The equation is not linear in \\(y\\), but it is linear in \\(x\\) — so treat \\(x\\) as the dependent variable. Writing \\(\\frac{dx}{dy} = \\frac{x + 2y^3}{2y}\\) and rearranging gives \\(\\frac{dx}{dy} - \\frac{1}{2y}x = y^2\\), which is linear in \\(x\\) with \\(P(y) = -\\frac{1}{2y}\\). Hence the integrating factor is \\(e^{\\int P\\,dy} = e^{-\\frac{1}{2}\\int \\frac{dy}{y}} = e^{-\\frac{1}{2}\\log y} = y^{-1/2} = \\frac{1}{\\sqrt{y}}\\)."
+  },
+  {
+   "hash": "bd53954d4a7363a144b561757925c60a40777c06381e023b6a6946b443e51379",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Order and Types of Matrices",
+   "stem": "If \\(A = \\begin{bmatrix} 7 & 0 & x \\\\ 0 & 7 & 0 \\\\ 0 & 0 & y \\end{bmatrix}\\) is a scalar matrix, then \\(y^x\\) is equal to",
+   "options": [
+    {
+     "label": "A",
+     "text": "0"
+    },
+    {
+     "label": "B",
+     "text": "1"
+    },
+    {
+     "label": "C",
+     "text": "7"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\pm 7\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "A scalar matrix is a diagonal matrix whose diagonal entries are all equal. Two conditions follow. Every off-diagonal entry must be zero, which forces \\(x = 0\\); and all the diagonal entries must match, which with two of them equal to \\(7\\) forces \\(y = 7\\). Hence \\(y^x = 7^0 = 1\\)."
+  },
+  {
+   "hash": "a4745fadf28fb6760316dbb7559ee789d430900376aa6609bdcab42e65cabcf0",
+   "ref": "Q14",
+   "questionNumber": "14",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "The corner points of the feasible region in graphical representation of a L.P.P. are (2, 72), (15, 20) and (40, 15). If \\(Z = 18x + 9y\\) be the objective function, then",
+   "options": [
+    {
+     "label": "A",
+     "text": "Z is maximum at (2, 72), minimum at (15, 20)"
+    },
+    {
+     "label": "B",
+     "text": "Z is maximum at (15, 20) minimum at (40, 15)"
+    },
+    {
+     "label": "C",
+     "text": "Z is maximum at (40, 15), minimum at (15, 20)"
+    },
+    {
+     "label": "D",
+     "text": "Z is maximum at (40, 15), minimum at (2, 72)"
+    }
+   ],
+   "answer": "C",
+   "solution": "By the corner point theorem, evaluate \\(Z = 18x + 9y\\) at each corner and compare. At \\((2, 72)\\), \\(Z = 36 + 648 = 684\\); at \\((15, 20)\\), \\(Z = 270 + 180 = 450\\); at \\((40, 15)\\), \\(Z = 720 + 135 = 855\\). The largest value is \\(855\\) and the smallest is \\(450\\), so Z is maximum at (40, 15) and minimum at (15, 20)."
+  },
+  {
+   "hash": "e7af337af04d5f26b0d37ad07f8fe1f298ed07e9635251edb8ded5e8481b7aed",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Adjoint and Inverse of a Matrix",
+   "stem": "If A and B are invertible matrices, then which of the following is \\(\\underline{\\text{not}}\\) correct ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\((A + B)^{-1} = B^{-1} + A^{-1}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\((AB)^{-1} = B^{-1}A^{-1}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\operatorname{adj}(A) = |A|\\,A^{-1}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(|A|^{-1} = |A^{-1}|\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Three of the four are standard results. The reversal law \\((AB)^{-1} = B^{-1}A^{-1}\\) is correct; \\(\\operatorname{adj}(A) = |A|\\,A^{-1}\\) is just a rearrangement of \\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A\\); and \\(|A|^{-1} = |A^{-1}|\\) follows from \\(|A|\\,|A^{-1}| = |AA^{-1}| = |I| = 1\\). But inversion does not distribute over addition, so \\((A + B)^{-1} = B^{-1} + A^{-1}\\) is false in general — taking \\(A = B = I\\), the left side is \\((2I)^{-1} = \\frac{1}{2}I\\) while the right side is \\(2I\\). So the statement that is not correct is \\((A + B)^{-1} = B^{-1} + A^{-1}\\)."
+  },
+  {
+   "hash": "406da4f7b87d7bc2ccfbf5e7ac5d6f0c911e7b25ae0bcb84ac49da3787dda30b",
+   "ref": "Q16",
+   "questionNumber": "16",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "If the feasible region of a linear programming problem with objective function \\(Z = ax + by\\), is bounded, then which of the following is correct ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "It will only have a maximum value."
+    },
+    {
+     "label": "B",
+     "text": "It will only have a minimum value."
+    },
+    {
+     "label": "C",
+     "text": "It will have both maximum and minimum values."
+    },
+    {
+     "label": "D",
+     "text": "It will have neither maximum nor minimum value."
+    }
+   ],
+   "answer": "C",
+   "solution": "A bounded feasible region is a closed and bounded set, and the objective function \\(Z = ax + by\\) is continuous on it, so it must attain both a greatest and a least value — and by the corner point theorem each is attained at a corner point. So it will have both maximum and minimum values. It is only when the feasible region is unbounded that one of the two can fail to exist, and then the candidate value has to be tested against an open half-plane before it can be accepted."
+  },
+  {
+   "hash": "870cfe5d1d6fff4d98e3d745321e54281b0ab1c4bf736beb1c15aed32382b2de",
+   "ref": "Q17",
+   "questionNumber": "17",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Under Simple Curves",
+   "stem": "The area of the shaded region bounded by the curves \\(y^2 = x\\), \\(x = 4\\) and the \\(x\\)-axis is given by",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\int_{0}^{4} x\\,dx\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\int_{0}^{2} y^2\\,dy\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(2\\int_{0}^{4} \\sqrt{x}\\,dx\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\int_{0}^{4} \\sqrt{x}\\,dx\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "The printed graph shades only the part of the parabola \\(y^2 = x\\) lying ABOVE the \\(x\\)-axis, from \\(x = 0\\) across to the line \\(x = 4\\). On that upper branch \\(y = \\sqrt{x}\\), so a vertical strip at position \\(x\\) has height \\(\\sqrt{x}\\) and width \\(dx\\), and the area is \\(\\int_{0}^{4}\\sqrt{x}\\,dx\\). The tempting alternative \\(2\\int_{0}^{4}\\sqrt{x}\\,dx\\) is the area of BOTH branches together, i.e. the whole region between the parabola and the line — which is not what the figure shades."
+  },
+  {
+   "hash": "a785d7fad8031e605c63bb637151b15750d2302e7b1cc62079b1a4c6cfae30a1",
+   "ref": "Q18",
+   "questionNumber": "18",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "The graph of a trigonometric function is as shown. Which of the following will represent graph of its inverse ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "An increasing curve through the origin drawn over \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\) on the \\(x\\)-axis, with \\(y\\) running from \\(-1\\) to \\(1\\) and the curve steepening towards the ends."
+    },
+    {
+     "label": "B",
+     "text": "An increasing curve through the origin drawn over \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\) on the \\(x\\)-axis, with \\(y\\) running from \\(-1\\) to \\(1\\) and the curve flattening towards the ends."
+    },
+    {
+     "label": "C",
+     "text": "A decreasing curve from the marked endpoint \\((-1, \\pi)\\) to the marked endpoint \\((1, 0)\\), passing through \\(\\left(0, \\frac{\\pi}{2}\\right)\\)."
+    },
+    {
+     "label": "D",
+     "text": "A decreasing curve with a horizontal dashed asymptote at \\(y = \\pi\\) on the left and levelling off at \\(y = 0\\) on the right, passing through \\(\\left(0, \\frac{\\pi}{2}\\right)\\)."
+    }
+   ],
+   "answer": "C",
+   "solution": "First identify the printed curve. It peaks on the \\(y\\)-axis, crosses the \\(x\\)-axis at \\(-\\frac{\\pi}{2}\\) and \\(\\frac{\\pi}{2}\\), and reaches its minimum at \\(x = \\pi\\) — so it is \\(y = \\cos x\\). Its inverse is \\(y = \\cos^{-1}x\\), which has domain \\([-1, 1]\\) and principal value range \\([0, \\pi]\\), and whose graph is the reflection of \\(y = \\cos x\\) in the line \\(y = x\\). Reflecting the endpoints \\((0, 1)\\) and \\((\\pi, -1)\\) gives \\((1, 0)\\) and \\((-1, \\pi)\\), and the midpoint \\(\\left(\\frac{\\pi}{2}, 0\\right)\\) becomes \\(\\left(0, \\frac{\\pi}{2}\\right)\\). So the required graph is the decreasing curve running from the marked endpoint \\((-1, \\pi)\\) to the marked endpoint \\((1, 0)\\) through \\(\\left(0, \\frac{\\pi}{2}\\right)\\). The look-alike with a dashed asymptote at \\(y = \\pi\\) is the graph of \\(\\cot^{-1}x\\), which is defined for all real \\(x\\) and never actually reaches \\(\\pi\\); the two increasing curves are inverses of sine-type functions, not of cosine."
+  },
+  {
+   "hash": "2aa5d3169b530bb05fa1301281b8a5c70436daa50a73aa13ba36f99b5f340509",
+   "ref": "Q19",
+   "questionNumber": "19",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "Assertion (A) : Let Z be the set of integers. A function \\(f : Z \\to Z\\) defined as \\(f(x) = 3x - 5\\), \\(\\forall x \\in Z\\) is a bijective.\nReason (R) : A function is a bijective if it is both surjective and injective.",
+   "context": "Direction : Question numbers 19 and 20 are Assertion (A) and Reason (R) based questions carrying 1 mark each. Two statements are given, one labelled Assertion (A) and other labelled Reason (R). Select the correct answer from the options (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and the Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false, but Reason (R) is true."
+    }
+   ],
+   "answer": "D",
+   "solution": "The Reason is simply the definition of a bijection, so it is TRUE. Now test the Assertion. The map \\(f(x) = 3x - 5\\) on \\(Z\\) is injective, since \\(3x_1 - 5 = 3x_2 - 5\\) forces \\(x_1 = x_2\\). But it is not surjective ONTO \\(Z\\): solving \\(3x - 5 = y\\) gives \\(x = \\frac{y + 5}{3}\\), which is an integer only when \\(y + 5\\) is a multiple of \\(3\\). Taking \\(y = 0\\) needs \\(x = \\frac{5}{3} \\notin Z\\), so \\(0\\) has no pre-image and \\(f\\) is not onto. Hence \\(f\\) is not bijective and the Assertion is FALSE. So Assertion (A) is false, but Reason (R) is true."
+  },
+  {
+   "hash": "258c4e705bb60e3a72cdd2aa669cf0460b3324e075b418de738151a1e0a8904f",
+   "ref": "Q20",
+   "questionNumber": "20",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Continuity",
+   "stem": "Assertion (A) : \\(f(x) = \\begin{cases} 3x - 8, & x \\leq 5 \\\\ 2k, & x > 5 \\end{cases}\\) is continuous at \\(x = 5\\) for \\(k = \\frac{5}{2}\\).\nReason (R) : For a function f to be continuous at \\(x = a\\), \\(\\lim_{x \\to a^{-}} f(x) = \\lim_{x \\to a^{+}} f(x) = f(a)\\).",
+   "context": "Direction : Question numbers 19 and 20 are Assertion (A) and Reason (R) based questions carrying 1 mark each. Two statements are given, one labelled Assertion (A) and other labelled Reason (R). Select the correct answer from the options (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and the Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false, but Reason (R) is true."
+    }
+   ],
+   "answer": "D",
+   "solution": "The Reason is the standard definition of continuity at a point, so it is TRUE. Applying it to the Assertion: since \\(x = 5\\) falls in the first branch, \\(f(5) = 3(5) - 8 = 7\\), and \\(\\lim_{x \\to 5^{-}}f(x) = 7\\) as well. The right-hand limit is \\(\\lim_{x \\to 5^{+}}f(x) = 2k\\). Continuity at \\(x = 5\\) therefore requires \\(2k = 7\\), that is \\(k = \\frac{7}{2}\\) — not \\(\\frac{5}{2}\\), which would give a right-hand limit of \\(5 \\neq 7\\). So the Assertion is FALSE. Hence Assertion (A) is false, but Reason (R) is true."
+  },
+  {
+   "hash": "db6574600a2271cd34d90dbbb57256c0b2037f9832f1cb3b9ccd5ebc3c41b22f",
+   "ref": "Q21a",
+   "questionNumber": "21 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+   "stem": "Differentiate \\(2^{\\cos^2 x}\\) w.r.t \\(\\cos^2 x\\).",
+   "solution": "To differentiate one function with respect to another, differentiate each with respect to \\(x\\) and divide: \\(\\frac{du}{dv} = \\dfrac{du/dx}{dv/dx}\\).\nLet \\(u = 2^{\\cos^2 x}\\). Using \\(\\frac{d}{dx}a^{g(x)} = a^{g(x)}\\log a \\cdot g'(x)\\) with \\(g(x) = \\cos^2 x\\), we get \\(\\frac{du}{dx} = 2^{\\cos^2 x}\\,(-2\\cos x \\sin x)\\log 2\\).\nLet \\(v = \\cos^2 x\\). Then \\(\\frac{dv}{dx} = -2\\cos x \\sin x\\).\nDividing, the factor \\(-2\\cos x\\sin x\\) cancels and \\(\\frac{du}{dv} = \\frac{2^{\\cos^2 x}(-2\\cos x\\sin x)\\log 2}{-2\\cos x\\sin x} = 2^{\\cos^2 x}\\log 2\\).\n(This is just the derivative of \\(2^{v}\\) with respect to \\(v\\), as it should be.)"
+  },
+  {
+   "hash": "18448fc0a388a0c09fa4f950695fef0fce8ccfd003cc9ec1db2cae9d672da1dc",
+   "ref": "Q21b",
+   "questionNumber": "21 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "If \\(\\tan^{-1}(x^2 + y^2) = a^2\\), then find \\(\\frac{dy}{dx}\\).",
+   "solution": "Clear the inverse tangent first. Taking the tangent of both sides of \\(\\tan^{-1}(x^2 + y^2) = a^2\\) gives \\(x^2 + y^2 = \\tan a^2\\), and since \\(a\\) is a constant the whole right-hand side is a constant.\nDifferentiating both sides with respect to \\(x\\), and treating \\(y\\) as a function of \\(x\\),\n\\(2x + 2y\\frac{dy}{dx} = 0\\).\nHence \\(\\frac{dy}{dx} = -\\frac{x}{y}\\)."
+  },
+  {
+   "hash": "9d1ef8970d1216408029e87ff819ca2a69fc890c78e79424f749b20dfc64daef",
+   "ref": "Q22",
+   "questionNumber": "22",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Evaluating Inverse Trigonometric Expressions",
+   "stem": "Evaluate : \\(\\tan^{-1}\\left[2\\sin\\left(2\\cos^{-1}\\frac{\\sqrt{3}}{2}\\right)\\right]\\)",
+   "solution": "Work from the inside out, checking the principal value at each stage.\nSince \\(\\cos\\frac{\\pi}{6} = \\frac{\\sqrt{3}}{2}\\) and \\(\\frac{\\pi}{6}\\) lies in the principal range \\([0, \\pi]\\) of the inverse cosine, \\(\\cos^{-1}\\frac{\\sqrt{3}}{2} = \\frac{\\pi}{6}\\).\nSo \\(2\\cos^{-1}\\frac{\\sqrt{3}}{2} = \\frac{\\pi}{3}\\), and \\(\\sin\\frac{\\pi}{3} = \\frac{\\sqrt{3}}{2}\\). The bracket therefore becomes \\(2 \\times \\frac{\\sqrt{3}}{2} = \\sqrt{3}\\).\nFinally \\(\\tan^{-1}\\sqrt{3} = \\frac{\\pi}{3}\\), since \\(\\tan\\frac{\\pi}{3} = \\sqrt{3}\\) and \\(\\frac{\\pi}{3}\\) lies in the principal range \\(\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\).\nHence the value of the expression is \\(\\frac{\\pi}{3}\\)."
+  },
+  {
+   "hash": "68179861142aea8a648fc344be49bc2b90866a6a98f5c80b126341f454be18ad",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "The diagonals of a parallelogram are given by \\(\\vec{a} = 2\\hat{i} - \\hat{j} + \\hat{k}\\) and \\(\\vec{b} = \\hat{i} + 3\\hat{j} - \\hat{k}\\). Find the area of the parallelogram.",
+   "solution": "The vectors given are the DIAGONALS, not the adjacent sides, so the area is \\(\\frac{1}{2}\\left|\\vec{a} \\times \\vec{b}\\right|\\) — using \\(\\left|\\vec{a} \\times \\vec{b}\\right|\\) would be the formula for adjacent sides and would double the answer.\nFirst the cross product:\n\\(\\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & -1 & 1 \\\\ 1 & 3 & -1 \\end{vmatrix} = \\hat{i}\\big((-1)(-1) - (1)(3)\\big) - \\hat{j}\\big((2)(-1) - (1)(1)\\big) + \\hat{k}\\big((2)(3) - (-1)(1)\\big)\\)\n\\(= -2\\hat{i} + 3\\hat{j} + 7\\hat{k}\\).\nIts magnitude is \\(\\left|\\vec{a} \\times \\vec{b}\\right| = \\sqrt{(-2)^2 + 3^2 + 7^2} = \\sqrt{4 + 9 + 49} = \\sqrt{62}\\).\nHence the area of the parallelogram is \\(\\frac{\\sqrt{62}}{2}\\) square units."
+  },
+  {
+   "hash": "6ce1ba01214fe19be275ff0eb37ae20337fc47684136f3e6630c15a7f62ee1ca",
+   "ref": "Q24",
+   "questionNumber": "24",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "Find the intervals in which function \\(f(x) = 5x^{\\frac{3}{2}} - 3x^{\\frac{5}{2}}\\) is (i) increasing (ii) decreasing.",
+   "solution": "Because of the fractional powers, \\(f\\) is defined only for \\(x \\ge 0\\), so the whole discussion takes place on \\([0, \\infty)\\).\nDifferentiating, \\(f'(x) = 5 \\cdot \\frac{3}{2}x^{1/2} - 3 \\cdot \\frac{5}{2}x^{3/2} = \\frac{15}{2}x^{1/2} - \\frac{15}{2}x^{3/2} = \\frac{15}{2}\\sqrt{x}\\,(1 - x)\\).\nSetting \\(f'(x) = 0\\) gives \\(x = 0\\) and \\(x = 1\\). Since \\(\\sqrt{x} \\ge 0\\) throughout the domain, the SIGN of \\(f'\\) is decided entirely by the factor \\((1 - x)\\).\n(i) For \\(x \\in [0, 1]\\) we have \\(1 - x \\ge 0\\), so \\(f'(x) \\ge 0\\) and \\(f\\) is increasing on \\([0, 1]\\).\n(ii) For \\(x \\in [1, \\infty)\\) we have \\(1 - x \\le 0\\), so \\(f'(x) \\le 0\\) and \\(f\\) is decreasing on \\([1, \\infty)\\).\nSince \\(f'\\) vanishes only at the isolated endpoints, the open forms \\((0, 1)\\) and \\((1, \\infty)\\) — and the half-open forms — are equally acceptable."
+  },
+  {
+   "hash": "355733de892967914664f450095dd3f7d2291f028664ac1d0a6c4d18a028d40d",
+   "ref": "Q25a",
+   "questionNumber": "25 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "Two friends while flying kites from different locations, find the strings of their kites crossing each other. The strings can be represented by vectors \\(\\vec{a} = 3\\hat{i} + \\hat{j} + 2\\hat{k}\\) and \\(\\vec{b} = 2\\hat{i} - 2\\hat{j} + 4\\hat{k}\\). Determine the angle formed between the kite strings. Assume there is no slack in the strings.",
+   "solution": "Let \\(\\theta\\) be the angle between the two strings. Since the strings are taut they can be treated as the vectors themselves, so \\(\\cos\\theta = \\dfrac{\\vec{a} \\cdot \\vec{b}}{\\left|\\vec{a}\\right|\\left|\\vec{b}\\right|}\\).\nThe dot product is \\(\\vec{a} \\cdot \\vec{b} = 3(2) + 1(-2) + 2(4) = 6 - 2 + 8 = 12\\).\nThe magnitudes are \\(\\left|\\vec{a}\\right| = \\sqrt{9 + 1 + 4} = \\sqrt{14}\\) and \\(\\left|\\vec{b}\\right| = \\sqrt{4 + 4 + 16} = \\sqrt{24}\\).\nSo \\(\\cos\\theta = \\frac{12}{\\sqrt{14}\\,\\sqrt{24}} = \\frac{12}{\\sqrt{336}}\\), and since \\(\\sqrt{336} = \\sqrt{16 \\times 21} = 4\\sqrt{21}\\) this simplifies to \\(\\frac{12}{4\\sqrt{21}} = \\frac{3}{\\sqrt{21}}\\).\nHence the angle between the kite strings is \\(\\theta = \\cos^{-1}\\left(\\frac{3}{\\sqrt{21}}\\right)\\), equivalently \\(\\cos^{-1}\\left(\\frac{12}{\\sqrt{336}}\\right)\\), which is roughly \\(49^{\\circ}\\)."
+  },
+  {
+   "hash": "4df8005a295037f04d689af1b1678770763bc3dd4ab4cd9da328ed510528189f",
+   "ref": "Q25b",
+   "questionNumber": "25 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Types of Vectors",
+   "stem": "Find a vector of magnitude 21 units in the direction opposite to that of \\(\\overrightarrow{AB}\\) where A and B are the points A(2, 1, 3) and B(8, -1, 0) respectively.",
+   "solution": "First find \\(\\overrightarrow{AB}\\) by subtracting the position vector of \\(A\\) from that of \\(B\\):\n\\(\\overrightarrow{AB} = (8 - 2)\\hat{i} + (-1 - 1)\\hat{j} + (0 - 3)\\hat{k} = 6\\hat{i} - 2\\hat{j} - 3\\hat{k}\\).\nThe required direction is the OPPOSITE one, which is \\(\\overrightarrow{BA} = -6\\hat{i} + 2\\hat{j} + 3\\hat{k}\\).\nIts magnitude is \\(\\left|\\overrightarrow{BA}\\right| = \\sqrt{36 + 4 + 9} = \\sqrt{49} = 7\\), so the unit vector along it is \\(\\frac{-6\\hat{i} + 2\\hat{j} + 3\\hat{k}}{7}\\).\nMultiplying by the required magnitude \\(21\\):\n\\(21 \\times \\frac{-6\\hat{i} + 2\\hat{j} + 3\\hat{k}}{7} = 3\\left(-6\\hat{i} + 2\\hat{j} + 3\\hat{k}\\right) = -18\\hat{i} + 6\\hat{j} + 9\\hat{k}\\).\nSo the required vector is \\(-18\\hat{i} + 6\\hat{j} + 9\\hat{k}\\)."
+  },
+  {
+   "hash": "b8b0d35ecfd287adcc8bb786e42492478767af92a4a24142958e904b91466a40",
+   "ref": "Q26",
+   "questionNumber": "26",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "The side of an equilateral triangle is increasing at the rate of 3 cm/s. At what rate its area increasing when the side of the triangle is 15 cm ?",
+   "solution": "This is a related-rates problem: link the two quantities by a formula, then differentiate with respect to time.\nLet \\(a\\) be the side of the equilateral triangle at time \\(t\\). We are given \\(\\frac{da}{dt} = 3\\) cm/s and asked for \\(\\frac{dA}{dt}\\) when \\(a = 15\\) cm.\nThe area of an equilateral triangle of side \\(a\\) is \\(A = \\frac{\\sqrt{3}}{4}a^2\\).\nDifferentiating both sides with respect to \\(t\\) (chain rule on the right):\n\\(\\frac{dA}{dt} = \\frac{\\sqrt{3}}{4} \\cdot 2a \\cdot \\frac{da}{dt} = \\frac{\\sqrt{3}\\,a}{2} \\cdot \\frac{da}{dt}\\).\nSubstituting \\(a = 15\\) and \\(\\frac{da}{dt} = 3\\):\n\\(\\left.\\frac{dA}{dt}\\right|_{a = 15} = \\frac{\\sqrt{3} \\times 15}{2} \\times 3 = \\frac{45\\sqrt{3}}{2}\\).\nSo the area is increasing at the rate of \\(\\frac{45\\sqrt{3}}{2}\\,\\text{cm}^2/\\text{s}\\), which is about \\(38.97\\,\\text{cm}^2/\\text{s}\\)."
+  },
+  {
+   "hash": "cdb298f8f0d2fe27f34ea2d1f30be83e898859b57e2288cdc71bd332b39cf2f7",
+   "ref": "Q27",
+   "questionNumber": "27",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following linear programming problem graphically :\nMaximise \\(Z = x + 2y\\)\nSubject to the constraints :\n\\(x - y \\geq 0\\)\n\\(x - 2y \\geq -2\\)\n\\(x \\geq 0\\), \\(y \\geq 0\\)",
+   "solution": "Draw the boundary lines \\(x - y = 0\\) and \\(x - 2y = -2\\) in the first quadrant.\nThe constraint \\(x - y \\ge 0\\) means \\(y \\le x\\), the region on or BELOW the line \\(y = x\\); and \\(x - 2y \\ge -2\\) means \\(y \\le \\frac{x + 2}{2}\\), the region on or below that line. Testing a point such as \\((4, 1)\\) confirms both.\nThe two lines meet where \\(y = x\\) and \\(x - 2x = -2\\), giving \\(x = 2\\), so \\(A(2, 2)\\). Together with the origin, the feasible region is the wedge with vertices \\(O(0, 0)\\) and \\(A(2, 2)\\) opening indefinitely to the right.\nEvaluating the objective function at the corner points:\nat \\(O(0, 0)\\), \\(Z = 0 + 0 = 0\\); at \\(A(2, 2)\\), \\(Z = 2 + 4 = 6\\).\nThe largest corner value is \\(6\\) — but the feasible region is UNBOUNDED, so this is only a candidate and must be tested. Plot the open half-plane \\(x + 2y > 6\\): it does have points in common with the feasible region. For example \\((10, 0)\\) satisfies \\(x - y = 10 \\ge 0\\) and \\(x - 2y = 10 \\ge -2\\), and there \\(Z = 10 > 6\\).\nSince \\(Z\\) can be made larger than any corner value, \\(Z\\) has NO maximum value."
+  },
+  {
+   "hash": "f9487e4d6664c2edfb882223263d0499882f03958946688a39c9121dd2f20738",
+   "ref": "Q28a",
+   "questionNumber": "28 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration using Trigonometric Identities",
+   "stem": "Find : \\(\\int \\frac{x + \\sin x}{1 + \\cos x}\\,dx\\)",
+   "solution": "The half-angle identities turn the awkward denominator into something integrable: \\(1 + \\cos x = 2\\cos^2\\frac{x}{2}\\) and \\(\\sin x = 2\\sin\\frac{x}{2}\\cos\\frac{x}{2}\\). So\n\\(\\int\\frac{x + \\sin x}{1 + \\cos x}\\,dx = \\int\\frac{x + 2\\sin\\frac{x}{2}\\cos\\frac{x}{2}}{2\\cos^2\\frac{x}{2}}\\,dx = \\int x\\left(\\frac{1}{2}\\sec^2\\frac{x}{2}\\right)dx + \\int\\tan\\frac{x}{2}\\,dx\\).\nIntegrate the first piece by parts, taking \\(x\\) as the first function and \\(\\frac{1}{2}\\sec^2\\frac{x}{2}\\) as the second (whose integral is \\(\\tan\\frac{x}{2}\\)):\n\\(\\int x\\left(\\frac{1}{2}\\sec^2\\frac{x}{2}\\right)dx = x\\tan\\frac{x}{2} - \\int\\tan\\frac{x}{2}\\,dx\\).\nPutting this back, the two \\(\\int\\tan\\frac{x}{2}\\,dx\\) terms cancel exactly:\n\\(\\int\\frac{x + \\sin x}{1 + \\cos x}\\,dx = x\\tan\\frac{x}{2} - \\int\\tan\\frac{x}{2}\\,dx + \\int\\tan\\frac{x}{2}\\,dx = x\\tan\\frac{x}{2} + C\\).\nSo the integral is \\(x\\tan\\frac{x}{2} + C\\)."
+  },
+  {
+   "hash": "3b295b0ca695a778b77e6cdcc6767f57e1db746c788b37f42dddbf90529af15c",
+   "ref": "Q28b",
+   "questionNumber": "28 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals by Substitution",
+   "stem": "Evaluate : \\(\\int_{0}^{\\frac{\\pi}{4}} \\frac{dx}{\\cos^3 x \\sqrt{2 \\sin 2x}}\\)",
+   "solution": "First simplify the radical using \\(\\sin 2x = 2\\sin x\\cos x\\), so that \\(2\\sin 2x = 4\\sin x\\cos x\\) and\n\\(\\sqrt{2\\sin 2x} = 2\\sqrt{\\sin x\\cos x} = 2\\cos x\\sqrt{\\tan x}\\),\nwhere the last step uses \\(\\sin x\\cos x = \\cos^2 x\\tan x\\) and \\(\\cos x > 0\\) on \\(\\left(0, \\frac{\\pi}{4}\\right)\\). Hence\n\\(I = \\int_{0}^{\\pi/4}\\frac{dx}{\\cos^3 x\\,\\sqrt{2\\sin 2x}} = \\frac{1}{2}\\int_{0}^{\\pi/4}\\frac{dx}{\\cos^4 x\\,\\sqrt{\\tan x}}\\).\nNow write \\(\\frac{1}{\\cos^4 x} = \\sec^4 x = (1 + \\tan^2 x)\\sec^2 x\\), which sets up the substitution:\n\\(I = \\frac{1}{2}\\int_{0}^{\\pi/4}\\frac{(1 + \\tan^2 x)\\sec^2 x}{\\sqrt{\\tan x}}\\,dx\\).\nPut \\(\\tan x = t\\), so \\(\\sec^2 x\\,dx = dt\\); the limits \\(x = 0\\) and \\(x = \\frac{\\pi}{4}\\) become \\(t = 0\\) and \\(t = 1\\). Then\n\\(I = \\frac{1}{2}\\int_{0}^{1}\\frac{1 + t^2}{\\sqrt{t}}\\,dt = \\frac{1}{2}\\int_{0}^{1}\\left(t^{-1/2} + t^{3/2}\\right)dt = \\frac{1}{2}\\left[2\\sqrt{t} + \\frac{2}{5}t^{5/2}\\right]_{0}^{1}\\)\n\\(= \\frac{1}{2}\\left(2 + \\frac{2}{5}\\right) = \\frac{1}{2} \\times \\frac{12}{5} = \\frac{6}{5}\\).\nSo the value of the integral is \\(\\frac{6}{5}\\)."
+  },
+  {
+   "hash": "ba995c034f1d1785823ea872fa2d22193a91d491197d9ecb7371402a7361dccc",
+   "ref": "Q29a",
+   "questionNumber": "29 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Shortest Distance Between Two Lines",
+   "stem": "Verify that lines given by \\(\\vec{r} = (1 - \\lambda)\\hat{i} + (\\lambda - 2)\\hat{j} + (3 - 2\\lambda)\\hat{k}\\) and \\(\\vec{r} = (\\mu + 1)\\hat{i} + (2\\mu - 1)\\hat{j} - (2\\mu + 1)\\hat{k}\\) are skew lines. Hence, find shortest distance between the lines.",
+   "solution": "Two lines are skew when they are neither parallel nor intersecting, so both must be checked.\nFirst collect the parameters to rewrite each line in the form \\(\\vec{r} = \\vec{a} + t\\,\\vec{b}\\):\n\\(\\vec{r} = \\left(\\hat{i} - 2\\hat{j} + 3\\hat{k}\\right) + \\lambda\\left(-\\hat{i} + \\hat{j} - 2\\hat{k}\\right)\\) and \\(\\vec{r} = \\left(\\hat{i} - \\hat{j} - \\hat{k}\\right) + \\mu\\left(\\hat{i} + 2\\hat{j} - 2\\hat{k}\\right)\\).\nSo \\(\\vec{a_1} = \\hat{i} - 2\\hat{j} + 3\\hat{k}\\), \\(\\vec{b_1} = -\\hat{i} + \\hat{j} - 2\\hat{k}\\), \\(\\vec{a_2} = \\hat{i} - \\hat{j} - \\hat{k}\\), \\(\\vec{b_2} = \\hat{i} + 2\\hat{j} - 2\\hat{k}\\).\nNOT PARALLEL: the direction ratios \\(-1, 1, -2\\) and \\(1, 2, -2\\) are not proportional, since \\(\\frac{-1}{1} \\neq \\frac{1}{2}\\).\nNOT INTERSECTING: here \\(\\vec{a_2} - \\vec{a_1} = \\hat{j} - 4\\hat{k}\\), and\n\\(\\vec{b_1} \\times \\vec{b_2} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ -1 & 1 & -2 \\\\ 1 & 2 & -2 \\end{vmatrix} = \\hat{i}(-2 + 4) - \\hat{j}(2 + 2) + \\hat{k}(-2 - 1) = 2\\hat{i} - 4\\hat{j} - 3\\hat{k}\\).\nThe scalar triple product is \\(\\left(\\vec{a_2} - \\vec{a_1}\\right) \\cdot \\left(\\vec{b_1} \\times \\vec{b_2}\\right) = 0(2) + 1(-4) + (-4)(-3) = -4 + 12 = 8 \\neq 0\\), so the lines are not coplanar and therefore cannot intersect.\nBeing neither parallel nor intersecting, the lines are SKEW.\nThe shortest distance is then\n\\(d = \\frac{\\left|\\left(\\vec{a_2} - \\vec{a_1}\\right) \\cdot \\left(\\vec{b_1} \\times \\vec{b_2}\\right)\\right|}{\\left|\\vec{b_1} \\times \\vec{b_2}\\right|} = \\frac{8}{\\sqrt{4 + 16 + 9}} = \\frac{8}{\\sqrt{29}}\\) units."
+  },
+  {
+   "hash": "7799d81b92b15bb80ea3f36deda84bf03234aae1ca08caafe2f0b2d056bb1e5b",
+   "ref": "Q29b",
+   "questionNumber": "29 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Section Formula",
+   "stem": "During a cricket match, the position of the bowler, the wicket keeper and the leg slip fielder are in a line given by \\(\\vec{B} = 2\\hat{i} + 8\\hat{j}\\), \\(\\vec{W} = 6\\hat{i} + 12\\hat{j}\\) and \\(\\vec{F} = 12\\hat{i} + 18\\hat{j}\\) respectively. Calculate the ratio in which the wicketkeeper divides the line segment joining the bowler and the leg slip fielder.",
+   "solution": "Suppose the wicket keeper \\(W\\) divides the segment joining the bowler \\(B\\) and the leg slip fielder \\(F\\) internally in the ratio \\(k : 1\\). By the section formula,\n\\(\\vec{W} = \\frac{k\\vec{F} + 1 \\cdot \\vec{B}}{k + 1}\\).\nSubstituting the given position vectors,\n\\(6\\hat{i} + 12\\hat{j} = \\frac{k\\left(12\\hat{i} + 18\\hat{j}\\right) + \\left(2\\hat{i} + 8\\hat{j}\\right)}{k + 1} = \\left(\\frac{12k + 2}{k + 1}\\right)\\hat{i} + \\left(\\frac{18k + 8}{k + 1}\\right)\\hat{j}\\).\nComparing the \\(\\hat{i}\\) components: \\(6(k + 1) = 12k + 2\\), so \\(6k = 4\\) and \\(k = \\frac{2}{3}\\).\nComparing the \\(\\hat{j}\\) components as a check: \\(12(k + 1) = 18k + 8\\), so \\(6k = 4\\) and \\(k = \\frac{2}{3}\\) again — the two components agree, which confirms that the three positions really are collinear as the question states.\nHence \\(k : 1 = \\frac{2}{3} : 1\\), and the wicket keeper divides the segment joining the bowler and the leg slip fielder in the ratio \\(2 : 3\\)."
+  },
+  {
+   "hash": "b194089350c7593ccf9c161689c83d8108ee49b901cc2bb2babb6512d1beb4e6",
+   "ref": "Q30a",
+   "questionNumber": "30 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "The probability distribution for the number of students being absent in a class on a Saturday is as follows :\n\n| X | 0 | 2 | 4 | 5 |\n|---|---|---|---|---|\n| P(X) | p | 2p | 3p | p |\n\nWhere X is the number of students absent.\n(i) Calculate p.\n(ii) Calculate the mean of the number of absent students on Saturday.",
+   "solution": "(i) The probabilities in any probability distribution must add up to \\(1\\), so\n\\(\\sum P(X) = p + 2p + 3p + p = 1\\), that is \\(7p = 1\\), giving \\(p = \\frac{1}{7}\\).\n(Each of \\(p = \\frac{1}{7}\\), \\(2p = \\frac{2}{7}\\), \\(3p = \\frac{3}{7}\\) lies between \\(0\\) and \\(1\\), so this is a valid distribution.)\n(ii) The mean, or expected value, is \\(\\sum x\\,P(X = x)\\) taken over the four values of \\(X\\):\n\\(\\text{Mean} = 0(p) + 2(2p) + 4(3p) + 5(p) = 0 + 4p + 12p + 5p = 21p\\).\nSubstituting \\(p = \\frac{1}{7}\\),\n\\(\\text{Mean} = 21 \\times \\frac{1}{7} = 3\\).\nSo \\(p = \\frac{1}{7}\\) and the mean number of students absent on a Saturday is \\(3\\)."
+  },
+  {
+   "hash": "59c2f460d6628cc0e14fdd6b719c67294d83dbb5150d7b086fa62bff432d6e86",
+   "ref": "Q30b",
+   "questionNumber": "30 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Theorem of Total Probability",
+   "stem": "For the vacancy advertised in the newspaper, 3000 candidates submitted their applications. From the data it was revealed that two third of the total applicants were females and other were males. The selection for the job was done through a written test. The performance of the applicants indicates that the probability of a male getting a distinction in written test is 0.4 and that a female getting a distinction is 0.35. Find the probability that the candidate chosen at random will have a distinction in the written test.",
+   "solution": "The applicants split into two mutually exclusive and exhaustive groups, so this is a total-probability calculation.\nLet \\(E_1\\) be the event that the applicant chosen is MALE and \\(E_2\\) that the applicant is FEMALE, and let \\(A\\) be the event that the candidate gets a distinction in the written test.\nTwo thirds of the applicants are female and the rest are male, so\n\\(P(E_1) = \\frac{1}{3}\\), \\(P(E_2) = \\frac{2}{3}\\), and we are given \\(P(A|E_1) = 0.4\\), \\(P(A|E_2) = 0.35\\).\n(The total of \\(3000\\) applicants is not needed — only the proportions matter.)\nBy the theorem of total probability,\n\\(P(A) = P(E_1)\\,P(A|E_1) + P(E_2)\\,P(A|E_2) = \\frac{1}{3} \\times 0.4 + \\frac{2}{3} \\times 0.35 = \\frac{0.4 + 0.7}{3} = \\frac{1.1}{3} = \\frac{11}{30}\\).\nSo the probability that a randomly chosen candidate has a distinction in the written test is \\(\\frac{11}{30}\\), about \\(0.367\\)."
+  },
+  {
+   "hash": "3a6d48d6aa12d8e0385b54d10cac3d81c4f6548e7a99c053e04bcf98a30e2875",
+   "ref": "Q31",
+   "questionNumber": "31",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Under Simple Curves",
+   "stem": "Sketch the graph of \\(y = |x + 3|\\) and find the area of the region enclosed by the curve, \\(x\\)-axis, between \\(x = -6\\) and \\(x = 0\\), using integration.",
+   "solution": "SKETCH. The modulus splits into two straight lines: \\(y = -(x + 3)\\) for \\(x \\le -3\\) and \\(y = x + 3\\) for \\(x \\ge -3\\). So the graph is a V with its vertex ON the \\(x\\)-axis at \\((-3, 0)\\), rising to \\(y = 3\\) at both \\(x = -6\\) and \\(x = 0\\). The region enclosed with the \\(x\\)-axis between those two ordinates is therefore two congruent triangles meeting at the vertex.\nAREA. The graph lies above the \\(x\\)-axis throughout \\([-6, 0]\\) and is symmetric about the line \\(x = -3\\), so the two halves have equal area and\n\\(\\text{Area} = \\int_{-6}^{0}y\\,dx = 2\\int_{-3}^{0}(x + 3)\\,dx\\).\nEvaluating,\n\\(= 2\\left[\\frac{(x + 3)^2}{2}\\right]_{-3}^{0} = 2\\left(\\frac{9}{2} - 0\\right) = 9\\).\nSo the required area is \\(9\\) square units. (This agrees with the geometric picture: two triangles each of base \\(3\\) and height \\(3\\), giving \\(2 \\times \\frac{1}{2} \\times 3 \\times 3 = 9\\).)"
+  },
+  {
+   "hash": "0446908af71ee7d93ce591ca47655080586500c77ea77301ea81975d70abe44f",
+   "ref": "Q32a",
+   "questionNumber": "32 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "If \\(\\sqrt{1 - x^2} + \\sqrt{1 - y^2} = a(x - y)\\), then prove that \\(\\frac{dy}{dx} = \\sqrt{\\frac{1 - y^2}{1 - x^2}}\\).",
+   "solution": "The square roots make direct implicit differentiation messy, so substitute them away first.\nPut \\(x = \\sin A\\) and \\(y = \\sin B\\), so that \\(A = \\sin^{-1}x\\) and \\(B = \\sin^{-1}y\\). Then \\(\\sqrt{1 - x^2} = \\cos A\\) and \\(\\sqrt{1 - y^2} = \\cos B\\), and the given relation becomes\n\\(\\cos A + \\cos B = a\\left(\\sin A - \\sin B\\right)\\).\nApply the sum-to-product identities to both sides:\n\\(2\\cos\\left(\\frac{A + B}{2}\\right)\\cos\\left(\\frac{A - B}{2}\\right) = 2a\\cos\\left(\\frac{A + B}{2}\\right)\\sin\\left(\\frac{A - B}{2}\\right)\\).\nThe factor \\(2\\cos\\left(\\frac{A + B}{2}\\right)\\) is common to both sides, so cancelling it gives\n\\(\\frac{\\cos\\left(\\frac{A - B}{2}\\right)}{\\sin\\left(\\frac{A - B}{2}\\right)} = a\\), that is \\(\\cot\\left(\\frac{A - B}{2}\\right) = a\\).\nHence \\(\\frac{A - B}{2} = \\cot^{-1}a\\), so \\(A - B = 2\\cot^{-1}a\\), that is\n\\(\\sin^{-1}x - \\sin^{-1}y = 2\\cot^{-1}a\\).\nThe right-hand side is a constant, so differentiating both sides with respect to \\(x\\):\n\\(\\frac{1}{\\sqrt{1 - x^2}} - \\frac{1}{\\sqrt{1 - y^2}}\\cdot\\frac{dy}{dx} = 0\\).\nRearranging,\n\\(\\frac{dy}{dx} = \\frac{\\sqrt{1 - y^2}}{\\sqrt{1 - x^2}} = \\sqrt{\\frac{1 - y^2}{1 - x^2}}\\),\nwhich is what was to be proved."
+  },
+  {
+   "hash": "9c08368d04023f195a5dc0967298b139d77d38a6b3cd619bee44553e3ab021ce",
+   "ref": "Q32b",
+   "questionNumber": "32 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Functions in Parametric Form",
+   "stem": "If \\(x = a\\left(\\cos\\theta + \\log\\tan\\frac{\\theta}{2}\\right)\\) and \\(y = \\sin\\theta\\), then find \\(\\frac{d^2y}{dx^2}\\) at \\(\\theta = \\frac{\\pi}{4}\\).",
+   "solution": "Both \\(x\\) and \\(y\\) are given in terms of the parameter \\(\\theta\\), so differentiate each with respect to \\(\\theta\\) and combine.\nDIFFERENTIATE \\(x\\). By the chain rule,\n\\(\\frac{dx}{d\\theta} = a\\left(-\\sin\\theta + \\frac{1}{\\tan\\frac{\\theta}{2}} \\times \\sec^2\\frac{\\theta}{2} \\times \\frac{1}{2}\\right)\\).\nThe second term simplifies neatly: \\(\\frac{1}{2}\\cdot\\frac{\\cos\\frac{\\theta}{2}}{\\sin\\frac{\\theta}{2}}\\cdot\\frac{1}{\\cos^2\\frac{\\theta}{2}} = \\frac{1}{2\\sin\\frac{\\theta}{2}\\cos\\frac{\\theta}{2}} = \\frac{1}{\\sin\\theta}\\).\nSo \\(\\frac{dx}{d\\theta} = a\\left(-\\sin\\theta + \\frac{1}{\\sin\\theta}\\right) = a\\left(\\frac{1 - \\sin^2\\theta}{\\sin\\theta}\\right) = a\\,\\frac{\\cos^2\\theta}{\\sin\\theta} = a\\cot\\theta\\cos\\theta\\).\nDIFFERENTIATE \\(y\\). From \\(y = \\sin\\theta\\), \\(\\frac{dy}{d\\theta} = \\cos\\theta\\).\nFIRST DERIVATIVE.\n\\(\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta} = \\frac{\\cos\\theta}{a\\cot\\theta\\cos\\theta} = \\frac{1}{a\\cot\\theta} = \\frac{\\tan\\theta}{a}\\).\nSECOND DERIVATIVE. Differentiate this with respect to \\(x\\), remembering the extra chain-rule factor \\(\\frac{d\\theta}{dx}\\), where \\(\\frac{d\\theta}{dx} = \\frac{1}{dx/d\\theta} = \\frac{\\sin\\theta}{a\\cos^2\\theta} = \\frac{\\tan\\theta\\sec\\theta}{a}\\):\n\\(\\frac{d^2y}{dx^2} = \\frac{\\sec^2\\theta}{a} \\times \\frac{d\\theta}{dx} = \\frac{\\sec^2\\theta}{a} \\times \\frac{\\tan\\theta\\sec\\theta}{a} = \\frac{\\sec^3\\theta\\tan\\theta}{a^2}\\).\nEVALUATE. At \\(\\theta = \\frac{\\pi}{4}\\) we have \\(\\sec\\frac{\\pi}{4} = \\sqrt{2}\\) and \\(\\tan\\frac{\\pi}{4} = 1\\), so\n\\(\\left.\\frac{d^2y}{dx^2}\\right|_{\\theta = \\pi/4} = \\frac{\\left(\\sqrt{2}\\right)^3 \\times 1}{a^2} = \\frac{2\\sqrt{2}}{a^2}\\)."
+  },
+  {
+   "hash": "8ee7ab5beb5461d98c6dcb3c48871bf9ad99bcf956f7d00cdd2a4f907fc8d7c8",
+   "ref": "Q33",
+   "questionNumber": "33",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Absolute Maximum and Minimum on a Closed Interval",
+   "stem": "Find the absolute maximum and absolute minimum of function \\(f(x) = 2x^3 - 15x^2 + 36x + 1\\) on \\([1, 5]\\).",
+   "solution": "A polynomial is continuous on the closed interval \\([1, 5]\\), so by the extreme value theorem it attains both an absolute maximum and an absolute minimum there, and each occurs either at a critical point inside the interval or at an endpoint. The method is therefore to find the critical points and then simply compare values.\nCRITICAL POINTS.\n\\(f'(x) = 6x^2 - 30x + 36 = 6\\left(x^2 - 5x + 6\\right) = 6(x - 2)(x - 3)\\).\nSetting \\(f'(x) = 0\\) gives \\(x = 2\\) and \\(x = 3\\), and both lie in \\([1, 5]\\), so both must be tested.\nCOMPARE VALUES at the two critical points and the two endpoints:\n\\(f(1) = 2 - 15 + 36 + 1 = 24\\);\n\\(f(2) = 16 - 60 + 72 + 1 = 29\\);\n\\(f(3) = 54 - 135 + 108 + 1 = 28\\);\n\\(f(5) = 250 - 375 + 180 + 1 = 56\\).\nCONCLUSION. The greatest of these four values is \\(56\\) and the least is \\(24\\).\nSo the absolute maximum value is \\(56\\), attained at \\(x = 5\\), and the absolute minimum value is \\(24\\), attained at \\(x = 1\\) — note that both occur at endpoints, while the interior critical points give only the local maximum \\(29\\) and local minimum \\(28\\)."
+  },
+  {
+   "hash": "6634fb3f95a17e1824d4920dab636a125ef3fcc6983fcc8ed4f6a0a851bb614f",
+   "ref": "Q34a",
+   "questionNumber": "34 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the image A' of the point A(1, 6, 3) in the line \\(\\frac{x}{1} = \\frac{y - 1}{2} = \\frac{z - 2}{3}\\). Also, find the equation of the line joining A and A'.",
+   "solution": "The image of a point in a line is found in two stages: drop a perpendicular from the point to the line to get the foot \\(M\\), then use the fact that \\(M\\) is the mid-point of the segment joining the point to its image.\nFOOT OF THE PERPENDICULAR. Write the line as \\(\\frac{x}{1} = \\frac{y - 1}{2} = \\frac{z - 2}{3} = \\lambda\\), so a general point on it is\n\\(M(\\lambda,\\ 2\\lambda + 1,\\ 3\\lambda + 2)\\).\nThe direction ratios of \\(AM\\), with \\(A(1, 6, 3)\\), are\n\\(\\langle \\lambda - 1,\\ 2\\lambda + 1 - 6,\\ 3\\lambda + 2 - 3\\rangle = \\langle \\lambda - 1,\\ 2\\lambda - 5,\\ 3\\lambda - 1\\rangle\\).\nSince \\(AM\\) is perpendicular to the line, whose direction ratios are \\(\\langle 1, 2, 3\\rangle\\), the dot product vanishes:\n\\(1(\\lambda - 1) + 2(2\\lambda - 5) + 3(3\\lambda - 1) = 0\\)\n\\(\\Rightarrow \\lambda - 1 + 4\\lambda - 10 + 9\\lambda - 3 = 0 \\Rightarrow 14\\lambda - 14 = 0 \\Rightarrow \\lambda = 1\\).\nSo \\(M(1, 3, 5)\\) is the foot of the perpendicular from \\(A\\) to the line.\nIMAGE. Let the image be \\(A'(\\alpha, \\beta, \\gamma)\\). Since \\(M\\) is the mid-point of \\(AA'\\),\n\\(\\left(\\frac{1 + \\alpha}{2},\\ \\frac{6 + \\beta}{2},\\ \\frac{3 + \\gamma}{2}\\right) = (1, 3, 5)\\),\nwhich gives \\(\\alpha = 2 - 1 = 1\\), \\(\\beta = 6 - 6 = 0\\) and \\(\\gamma = 10 - 3 = 7\\).\nHence the image is \\(A'(1, 0, 7)\\).\nLINE THROUGH A AND A'. Its direction ratios are\n\\(\\langle 1 - 1,\\ 0 - 6,\\ 7 - 3\\rangle = \\langle 0, -6, 4\\rangle\\), which simplify to \\(\\langle 0, -3, 2\\rangle\\).\nTaking the point \\(A(1, 6, 3)\\), the equation of the line joining \\(A\\) and \\(A'\\) is\n\\(\\frac{x - 1}{0} = \\frac{y - 6}{-3} = \\frac{z - 3}{2}\\).\n(The zero denominator is the usual symbolic way of recording that the line lies in the plane \\(x = 1\\).)"
+  },
+  {
+   "hash": "5ee6bd870ca2070138450aa796d7e5bdafa684f8a3110f521d20560226835fb1",
+   "ref": "Q34b",
+   "questionNumber": "34 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find a point P on the line \\(\\frac{x + 5}{1} = \\frac{y + 3}{4} = \\frac{z - 6}{-9}\\) such that its distance from point Q(2, 4, -1) is 7 units. Also, find the equation of line joining P and Q.",
+   "solution": "Take a general point on the line in terms of a parameter, impose the distance condition, and solve for the parameter.\nGENERAL POINT. Write the line as \\(\\frac{x + 5}{1} = \\frac{y + 3}{4} = \\frac{z - 6}{-9} = \\lambda\\), so any point on it is\n\\(P(\\lambda - 5,\\ 4\\lambda - 3,\\ -9\\lambda + 6)\\), while \\(Q(2, 4, -1)\\).\nDISTANCE CONDITION. The components of \\(PQ\\) are\n\\(\\langle \\lambda - 5 - 2,\\ 4\\lambda - 3 - 4,\\ -9\\lambda + 6 + 1\\rangle = \\langle \\lambda - 7,\\ 4\\lambda - 7,\\ -9\\lambda + 7\\rangle\\),\nso \\(PQ = 7\\) gives\n\\(\\sqrt{(\\lambda - 7)^2 + (4\\lambda - 7)^2 + (-9\\lambda + 7)^2} = 7\\).\nSquaring and expanding,\n\\(\\left(\\lambda^2 - 14\\lambda + 49\\right) + \\left(16\\lambda^2 - 56\\lambda + 49\\right) + \\left(81\\lambda^2 - 126\\lambda + 49\\right) = 49\\)\n\\(\\Rightarrow 98\\lambda^2 - 196\\lambda + 147 = 49 \\Rightarrow 98\\lambda^2 - 196\\lambda + 98 = 0 \\Rightarrow 98\\left(\\lambda^2 - 2\\lambda + 1\\right) = 0\\).\nSo \\(98(\\lambda - 1)^2 = 0\\) and \\(\\lambda = 1\\). The root is repeated, so there is exactly ONE such point — geometrically, \\(7\\) units is precisely the perpendicular distance from \\(Q\\) to the line.\nTHE POINT. Substituting \\(\\lambda = 1\\), \\(P(1 - 5,\\ 4 - 3,\\ -9 + 6) = P(-4, 1, -3)\\).\nLINE THROUGH P AND Q. Its direction ratios are\n\\(\\langle 2 - (-4),\\ 4 - 1,\\ -1 - (-3)\\rangle = \\langle 6, 3, 2\\rangle\\).\nTaking the point \\(P(-4, 1, -3)\\), the equation of the line joining \\(P\\) and \\(Q\\) is\n\\(\\frac{x + 4}{6} = \\frac{y - 1}{3} = \\frac{z + 3}{2}\\),\nwhich may equally be written through \\(Q\\) as \\(\\frac{x - 2}{6} = \\frac{y - 4}{3} = \\frac{z + 1}{2}\\) — the same line."
+  },
+  {
+   "hash": "066bbec22a0a093c29175116094fe9068b6074ba2b0d96bedfefcd645d571202",
+   "ref": "Q35",
+   "questionNumber": "35",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Solving System of Linear Equations",
+   "stem": "A school wants to allocate students into three clubs : Sports, Music and Drama, under following conditions :\nThe number of students in Sports club should be equal to the sum of the number of students in Music and Drama club.\nThe number of students in Music club should be 20 more than half the number of students in Sports club.\nThe total number of students to be allocated in all three clubs are 180.\nFind the number of students allocated to different clubs, using matrix method.",
+   "solution": "FORM THE EQUATIONS. Let \\(x\\), \\(y\\) and \\(z\\) be the numbers of students allocated to the Sports, Music and Drama clubs respectively. The three conditions give\n\\(x = y + z\\), \\(y = \\frac{x}{2} + 20\\), \\(x + y + z = 180\\),\nwhich rearrange into standard form as\n\\(x - y - z = 0\\), \\(x - 2y = -40\\), \\(x + y + z = 180\\).\nMATRIX FORM. Writing the system as \\(AX = B\\),\n\\(A = \\begin{bmatrix} 1 & -1 & -1 \\\\ 1 & -2 & 0 \\\\ 1 & 1 & 1 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\), \\(B = \\begin{bmatrix} 0 \\\\ -40 \\\\ 180 \\end{bmatrix}\\).\nExpanding along the first row,\n\\(|A| = 1(-2 \\times 1 - 0 \\times 1) - (-1)(1 \\times 1 - 0 \\times 1) + (-1)(1 \\times 1 - (-2) \\times 1) = -2 + 1 - 3 = -4\\).\nSince \\(|A| = -4 \\neq 0\\), the matrix \\(A^{-1}\\) exists and the system has a unique solution.\nINVERSE. Computing the cofactors of \\(A\\) and transposing,\n\\(\\operatorname{adj}A = \\begin{bmatrix} -2 & 0 & -2 \\\\ -1 & 2 & -1 \\\\ 3 & -2 & -1 \\end{bmatrix}\\),\nso\n\\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A = \\frac{1}{-4}\\begin{bmatrix} -2 & 0 & -2 \\\\ -1 & 2 & -1 \\\\ 3 & -2 & -1 \\end{bmatrix} = \\frac{1}{4}\\begin{bmatrix} 2 & 0 & 2 \\\\ 1 & -2 & 1 \\\\ -3 & 2 & 1 \\end{bmatrix}\\).\nSOLVE.\n\\(X = A^{-1}B = \\frac{1}{4}\\begin{bmatrix} 2 & 0 & 2 \\\\ 1 & -2 & 1 \\\\ -3 & 2 & 1 \\end{bmatrix}\\begin{bmatrix} 0 \\\\ -40 \\\\ 180 \\end{bmatrix} = \\frac{1}{4}\\begin{bmatrix} 360 \\\\ 260 \\\\ 100 \\end{bmatrix} = \\begin{bmatrix} 90 \\\\ 65 \\\\ 25 \\end{bmatrix}\\).\nHence \\(x = 90\\), \\(y = 65\\) and \\(z = 25\\): the Sports club gets \\(90\\) students, the Music club \\(65\\) and the Drama club \\(25\\).\nCHECK: \\(90 = 65 + 25\\); \\(65 = \\frac{90}{2} + 20 = 45 + 20\\); and \\(90 + 65 + 25 = 180\\), so all three conditions hold."
+  },
+  {
+   "hash": "57f85a06b974ec852f20120eadbbf8fc65bbeab1cf6f2d944302dc8bfa683f3b",
+   "ref": "Q36i",
+   "questionNumber": "36 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Write the equation for the total boundary material used in the boundary and parallel to the partition in terms of \\(x\\) and y.",
+   "context": "A technical company is designing a rectangular solar panel installation on a roof using 300 metres of boundary material. The design includes a partition running parallel to one of the sides dividing the area (roof) into two sections.\nLet the length of the side perpendicular to the partition be \\(x\\) metres and with parallel to the partition be y metres.\nBased on this information, answer the following questions :",
+   "figure": "DECORATIVE — a photograph of a rooftop solar-panel array with a visible partition rail. Every quantity the question needs (300 metres, x, y) is stated in the passage text, so it is not attached. Page idx 18.",
+   "solution": "Count every length of material used. The side perpendicular to the partition has length \\(x\\) and the side parallel to it has length \\(y\\). The partition runs parallel to the two sides of length \\(y\\), so it stretches across the rectangle in the same direction and has length \\(y\\) too.\nThe material is used for the four sides of the rectangle — two of length \\(x\\) and two of length \\(y\\) — plus the single partition of length \\(y\\). With \\(300\\) metres available in total,\n\\(2x + 2y + y = 300\\), that is \\(2x + 3y = 300\\)."
+  },
+  {
+   "hash": "14b0caa966e32bff7a55c83ad3f4e9b9f180909f45ff90978a43f6eed81c9b46",
+   "ref": "Q36ii",
+   "questionNumber": "36 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Write the area of the solar panel as a function of \\(x\\).",
+   "context": "A technical company is designing a rectangular solar panel installation on a roof using 300 metres of boundary material. The design includes a partition running parallel to one of the sides dividing the area (roof) into two sections.\nLet the length of the side perpendicular to the partition be \\(x\\) metres and with parallel to the partition be y metres.\nBased on this information, answer the following questions :",
+   "solution": "The panel occupies the whole rectangle, so its area is \\(A = xy\\) — a function of two variables, which the constraint from part (i) reduces to one.\nFrom \\(2x + 3y = 300\\) we get \\(y = \\frac{300 - 2x}{3}\\). Substituting,\n\\(A(x) = x \\cdot \\frac{300 - 2x}{3} = \\frac{x}{3}\\left(300 - 2x\\right) = \\frac{1}{3}\\left(300x - 2x^2\\right)\\).\n(Since both \\(x\\) and \\(y\\) must be positive, this is valid for \\(0 < x < 150\\).)"
+  },
+  {
+   "hash": "d89b4db9bdd0b75cd3f33af054da7e68c601ed0bcaf1c0f00b159c840d8f91e2",
+   "ref": "Q36iiia",
+   "questionNumber": "36 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Find the critical points of the area function. Use second derivative test to determine critical points at the maximum area. Also, find the maximum area.",
+   "context": "A technical company is designing a rectangular solar panel installation on a roof using 300 metres of boundary material. The design includes a partition running parallel to one of the sides dividing the area (roof) into two sections.\nLet the length of the side perpendicular to the partition be \\(x\\) metres and with parallel to the partition be y metres.\nBased on this information, answer the following questions :",
+   "solution": "From part (ii), \\(A(x) = \\frac{1}{3}\\left(300x - 2x^2\\right)\\).\nCRITICAL POINTS. Differentiating,\n\\(\\frac{dA}{dx} = \\frac{1}{3}\\left(300 - 4x\\right)\\).\nSetting \\(\\frac{dA}{dx} = 0\\) gives \\(300 - 4x = 0\\), so \\(x = 75\\) — the only critical point.\nSECOND DERIVATIVE TEST. Differentiating again,\n\\(\\frac{d^2A}{dx^2} = -\\frac{4}{3} < 0\\),\nand since this is negative (at \\(x = 75\\), indeed everywhere), \\(A\\) has a MAXIMUM at \\(x = 75\\).\nMAXIMUM AREA.\n\\(A(75) = \\frac{75}{3}\\left(300 - 150\\right) = 25 \\times 150 = 3750\\).\nSo the maximum area is \\(3750\\) square metres. (The corresponding second dimension is \\(y = \\frac{300 - 150}{3} = 50\\) metres, and \\(2(75) + 3(50) = 300\\), so all the material is used.)"
+  },
+  {
+   "hash": "ee4de1de3f04c9d96dc662729c869235a545a3c61c130af90e14482e2a8c0ac4",
+   "ref": "Q36iiib",
+   "questionNumber": "36 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Using first derivative test, calculate the maximum area the company can enclose with the 300 metres of boundary material, considering the parallel partition.",
+   "context": "A technical company is designing a rectangular solar panel installation on a roof using 300 metres of boundary material. The design includes a partition running parallel to one of the sides dividing the area (roof) into two sections.\nLet the length of the side perpendicular to the partition be \\(x\\) metres and with parallel to the partition be y metres.\nBased on this information, answer the following questions :",
+   "solution": "From part (ii), \\(A(x) = \\frac{1}{3}\\left(300x - 2x^2\\right)\\), so\n\\(\\frac{dA}{dx} = \\frac{1}{3}\\left(300 - 4x\\right)\\), which vanishes at \\(x = 75\\).\nFIRST DERIVATIVE TEST. Examine the sign of \\(\\frac{dA}{dx}\\) on either side of \\(x = 75\\):\nfor \\(x < 75\\), \\(300 - 4x > 0\\), so \\(\\frac{dA}{dx} > 0\\) and \\(A\\) is increasing;\nfor \\(x > 75\\), \\(300 - 4x < 0\\), so \\(\\frac{dA}{dx} < 0\\) and \\(A\\) is decreasing.\nThe derivative changes sign from POSITIVE to NEGATIVE as \\(x\\) passes through \\(75\\) from left to right, so \\(x = 75\\) is a point of maximum.\nMAXIMUM AREA.\n\\(A(75) = \\frac{75}{3}\\left(300 - 150\\right) = 25 \\times 150 = 3750\\).\nSo the maximum area the company can enclose is \\(3750\\) square metres, achieved with \\(x = 75\\) metres and \\(y = 50\\) metres."
+  },
+  {
+   "hash": "071fc5ec18efd124b7b134abaaa7e5f30bf6cb198cef939a974962f5e7672fdd",
+   "ref": "Q37i",
+   "questionNumber": "37 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Types of Relations",
+   "stem": "Identify the relation which is reflexive, transitive but not symmetric.",
+   "context": "A class-room teacher is keen to assess the learning of her students the concept of \"relations\" taught to them. She writes the following five relations each defined on the set A = {1, 2, 3} :\n\\(R_1 = \\{(2, 3), (3, 2)\\}\\)\n\\(R_2 = \\{(1, 2), (1, 3), (3, 2)\\}\\)\n\\(R_3 = \\{(1, 2), (2, 1), (1, 1)\\}\\)\n\\(R_4 = \\{(1, 1), (1, 2), (3, 3), (2, 2)\\}\\)\n\\(R_5 = \\{(1, 1), (1, 2), (3, 3), (2, 2), (2, 1), (2, 3), (3, 2)\\}\\)\nThe students are asked to answer the following questions about the above relations :",
+   "solution": "The required relation is \\(R_4 = \\{(1, 1), (1, 2), (3, 3), (2, 2)\\}\\).\nREFLEXIVE: it contains \\((1, 1)\\), \\((2, 2)\\) and \\((3, 3)\\), i.e. \\((a, a)\\) for every \\(a \\in A\\).\nNOT SYMMETRIC: it contains \\((1, 2)\\) but not \\((2, 1)\\).\nTRANSITIVE: the only chains \\((a, b)\\) with \\((b, c)\\) available are \\((1, 1)\\) with \\((1, 2)\\), and \\((1, 2)\\) with \\((2, 2)\\); each requires \\((1, 2)\\), which is already present."
+  },
+  {
+   "hash": "00309e29a95cbdda1cbd4b04ea756b6804cc81b157e90d4eb2896ba5f0e8227e",
+   "ref": "Q37ii",
+   "questionNumber": "37 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Types of Relations",
+   "stem": "Identify the relation which is reflexive and symmetric but not transitive.",
+   "context": "A class-room teacher is keen to assess the learning of her students the concept of \"relations\" taught to them. She writes the following five relations each defined on the set A = {1, 2, 3} :\n\\(R_1 = \\{(2, 3), (3, 2)\\}\\)\n\\(R_2 = \\{(1, 2), (1, 3), (3, 2)\\}\\)\n\\(R_3 = \\{(1, 2), (2, 1), (1, 1)\\}\\)\n\\(R_4 = \\{(1, 1), (1, 2), (3, 3), (2, 2)\\}\\)\n\\(R_5 = \\{(1, 1), (1, 2), (3, 3), (2, 2), (2, 1), (2, 3), (3, 2)\\}\\)\nThe students are asked to answer the following questions about the above relations :",
+   "solution": "The required relation is \\(R_5 = \\{(1, 1), (1, 2), (3, 3), (2, 2), (2, 1), (2, 3), (3, 2)\\}\\).\nREFLEXIVE: it contains \\((1, 1)\\), \\((2, 2)\\) and \\((3, 3)\\).\nSYMMETRIC: every pair appears together with its reverse — \\((1, 2)\\) with \\((2, 1)\\), and \\((2, 3)\\) with \\((3, 2)\\), while the three diagonal pairs are their own reverses.\nNOT TRANSITIVE: \\((1, 2)\\) and \\((2, 3)\\) both belong to \\(R_5\\), but \\((1, 3)\\) does not."
+  },
+  {
+   "hash": "adb70c6a79bf8ff356fb86b973ed7ba2e8abe33637b50754e73c108634455db6",
+   "ref": "Q37iiia",
+   "questionNumber": "37 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Types of Relations",
+   "stem": "Identify the relations which are symmetric but neither reflexive nor transitive.",
+   "context": "A class-room teacher is keen to assess the learning of her students the concept of \"relations\" taught to them. She writes the following five relations each defined on the set A = {1, 2, 3} :\n\\(R_1 = \\{(2, 3), (3, 2)\\}\\)\n\\(R_2 = \\{(1, 2), (1, 3), (3, 2)\\}\\)\n\\(R_3 = \\{(1, 2), (2, 1), (1, 1)\\}\\)\n\\(R_4 = \\{(1, 1), (1, 2), (3, 3), (2, 2)\\}\\)\n\\(R_5 = \\{(1, 1), (1, 2), (3, 3), (2, 2), (2, 1), (2, 3), (3, 2)\\}\\)\nThe students are asked to answer the following questions about the above relations :",
+   "solution": "Two relations qualify: \\(R_1\\) and \\(R_3\\).\n\\(R_1 = \\{(2, 3), (3, 2)\\}\\). SYMMETRIC, since \\((2, 3)\\) appears with its reverse \\((3, 2)\\). NOT REFLEXIVE, since \\((1, 1)\\) — indeed none of the diagonal pairs — is present. NOT TRANSITIVE, since \\((2, 3)\\) with \\((3, 2)\\) would require \\((2, 2)\\), which is absent.\n\\(R_3 = \\{(1, 2), (2, 1), (1, 1)\\}\\). SYMMETRIC, since \\((1, 2)\\) and \\((2, 1)\\) appear together and \\((1, 1)\\) is its own reverse. NOT REFLEXIVE, since \\((2, 2)\\) and \\((3, 3)\\) are missing. NOT TRANSITIVE, since \\((2, 1)\\) with \\((1, 2)\\) would require \\((2, 2)\\), which is absent.\nThe other three fail the test: \\(R_2\\) is not symmetric (it has \\((1, 2)\\) without \\((2, 1)\\)), while \\(R_4\\) and \\(R_5\\) are both reflexive."
+  },
+  {
+   "hash": "a8e56bfbe9e0dfb2740f86d6e0cc14cbda9ad423140810452995e383f1e3db41",
+   "ref": "Q37iiib",
+   "questionNumber": "37 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Equivalence Relations and Classes",
+   "stem": "What pairs should be added to the relation \\(R_2\\) to make it an equivalence relation ?",
+   "context": "A class-room teacher is keen to assess the learning of her students the concept of \"relations\" taught to them. She writes the following five relations each defined on the set A = {1, 2, 3} :\n\\(R_1 = \\{(2, 3), (3, 2)\\}\\)\n\\(R_2 = \\{(1, 2), (1, 3), (3, 2)\\}\\)\n\\(R_3 = \\{(1, 2), (2, 1), (1, 1)\\}\\)\n\\(R_4 = \\{(1, 1), (1, 2), (3, 3), (2, 2)\\}\\)\n\\(R_5 = \\{(1, 1), (1, 2), (3, 3), (2, 2), (2, 1), (2, 3), (3, 2)\\}\\)\nThe students are asked to answer the following questions about the above relations :",
+   "solution": "An equivalence relation must be reflexive, symmetric AND transitive, so take the three requirements in turn for \\(R_2 = \\{(1, 2), (1, 3), (3, 2)\\}\\) on \\(A = \\{1, 2, 3\\}\\).\nREFLEXIVITY needs \\((a, a)\\) for every \\(a \\in A\\), and none of \\((1, 1)\\), \\((2, 2)\\), \\((3, 3)\\) is present — so all three must be added.\nSYMMETRY needs the reverse of every existing pair: \\((1, 2)\\) needs \\((2, 1)\\), \\((1, 3)\\) needs \\((3, 1)\\), and \\((3, 2)\\) needs \\((2, 3)\\) — three more.\nTRANSITIVITY then costs nothing extra. Adding those six pairs to the original three gives all nine ordered pairs of \\(A \\times A\\), and the universal relation \\(A \\times A\\) is automatically transitive.\nHence the pairs to be added are \\((1, 1)\\), \\((2, 2)\\), \\((3, 3)\\), \\((2, 1)\\), \\((3, 1)\\) and \\((2, 3)\\), and the enlarged relation is \\(A \\times A\\)."
+  },
+  {
+   "hash": "914f3db2d99901cbfa2aa55a5a093e54a1c4dbfee12829062ab89f951fb80156",
+   "ref": "Q38i",
+   "questionNumber": "38 (i)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Theorem of Total Probability",
+   "stem": "What is the probability that a customer after availing the loan will default on the loan repayment ?",
+   "context": "A bank offers loan to its customers on different types of interest namely, fixed rate, floating rate and variable rate. From the past data with the bank, it is known that a customer avails loan on fixed rate, floating rate or variable rate with probabilities 10%, 20% and 70% respectively. A customer after availing loan can pay the loan or default on loan repayment. The bank data suggests that the probability that a person defaults on loan after availing it at fixed rate, floating rate and variable rate is 5%, 3% and 1% respectively.\nBased on the above information, answer the following :",
+   "figure": "DECORATIVE — a stock illustration of descending coin stacks captioned \"% INTEREST RATES\". It carries no data; every probability the question needs is in the passage. Page idx 22.",
+   "solution": "The three types of loan are mutually exclusive and between them cover every customer, so this is a total-probability calculation.\nLet \\(E_1\\), \\(E_2\\) and \\(E_3\\) be the events that the customer avails the loan at a FIXED, FLOATING and VARIABLE rate respectively, and let \\(A\\) be the event that the customer defaults on repayment. From the passage,\n\\(P(E_1) = \\frac{1}{10}\\), \\(P(E_2) = \\frac{2}{10}\\), \\(P(E_3) = \\frac{7}{10}\\),\n\\(P(A|E_1) = \\frac{5}{100}\\), \\(P(A|E_2) = \\frac{3}{100}\\), \\(P(A|E_3) = \\frac{1}{100}\\).\nBy the theorem of total probability,\n\\(P(A) = P(E_1)P(A|E_1) + P(E_2)P(A|E_2) + P(E_3)P(A|E_3)\\)\n\\(= \\frac{1}{10} \\times \\frac{5}{100} + \\frac{2}{10} \\times \\frac{3}{100} + \\frac{7}{10} \\times \\frac{1}{100} = \\frac{5 + 6 + 7}{1000} = \\frac{18}{1000} = \\frac{9}{500}\\).\nSo the probability that a customer defaults on the loan repayment is \\(\\frac{9}{500}\\), that is \\(0.018\\)."
+  },
+  {
+   "hash": "9e7abaf95aec61433bf40bcc2fe107200fb935ce9dea3f39e4bdf26fbc00806a",
+   "ref": "Q38ii",
+   "questionNumber": "38 (ii)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Bayes' Theorem",
+   "stem": "A customer after availing the loan, defaults on loan repayment. What is the probability that he availed the loan at a variable rate of interest ?",
+   "context": "A bank offers loan to its customers on different types of interest namely, fixed rate, floating rate and variable rate. From the past data with the bank, it is known that a customer avails loan on fixed rate, floating rate or variable rate with probabilities 10%, 20% and 70% respectively. A customer after availing loan can pay the loan or default on loan repayment. The bank data suggests that the probability that a person defaults on loan after availing it at fixed rate, floating rate and variable rate is 5%, 3% and 1% respectively.\nBased on the above information, answer the following :",
+   "solution": "Here the default has already happened and we are asked to work BACKWARDS to the type of loan, so this is Bayes' theorem. Keeping the notation of part (i), we want \\(P(E_3|A)\\).\n\\(P(E_3|A) = \\dfrac{P(E_3)\\,P(A|E_3)}{P(E_1)P(A|E_1) + P(E_2)P(A|E_2) + P(E_3)P(A|E_3)}\\).\nThe numerator is \\(\\frac{7}{10} \\times \\frac{1}{100} = \\frac{7}{1000}\\), and the denominator is exactly the total probability \\(P(A) = \\frac{18}{1000}\\) already found in part (i). So\n\\(P(E_3|A) = \\dfrac{\\frac{7}{1000}}{\\frac{18}{1000}} = \\frac{7}{18}\\).\nSo the probability that a defaulting customer had availed the loan at a variable rate of interest is \\(\\frac{7}{18}\\). (Note this is well below the \\(\\frac{7}{10}\\) share of variable-rate customers, because the variable rate carries the lowest default probability.)"
+  }
+ ]
+}

@@ -1,0 +1,1007 @@
+{
+  "paper": "65/1/2",
+  "year": 2024,
+  "pattern": "full80",
+  "_transcription": "COMPLETE — all five sections, 52 rows / 38 printed question numbers. The paper is bilingual on alternating pages and the alternating hypothesis HELD: idx 0 cover (Series PQ1RS/1, Set - 2, Q.P. Code 65/1/2), idx 1 Hindi instructions, and every EVEN index 2..22 is English (its odd predecessor is the Hindi of the same block). Sections A-D come from idx 2, 4, 6, 8, 10, 12, 14, 16; Section E from idx 18 (Case Study - 1 / Q36 passage), idx 20 (Q36 sub-parts + Case Study - 2 / Q37) and idx 22 (Case Study - 3 / Q38). Option labels are printed (A) (B) (C) (D), upper case, and stored upper case. Decimal points are printed as a RAISED dot (0.6 in Q29) and written as 0{\\cdot}6. All 20 Section-A answers are the official marking scheme's, verbatim, from ms idx 2-6; every one of my own derivations agreed with it. THE SET IS A RESHUFFLE OF 65/1/1: 39 of these 52 rows are word-for-word the reference paper's, reshuffled AND renumbered in both directions, and their stem/context/option LaTeX is REUSED byte-for-byte after confirming each on MY page (brief section 6, recommended method) so they dedup at commit; 13 rows are genuinely new (Q2, Q6, Q13, Q15, Q18, Q24a, Q24b, Q25, Q27, Q28, Q32a, Q32b, Q34), and each of those was verified twice — once on the question page and once against its reprint in the marking scheme. THE NEAR-TRAP, and the reason content-matching is not optional: this paper's Q2 asks for the integrating factor of x dy/dx - y = x^4 - 3x with options x / -x / x^-1 / log(x^-1), while 65/1/1's Q8 is a DIFFERENT integrating-factor MCQ ((1 - x^2) dy/dx + xy = ax, options all fractions). They occupy matching slots in the reshuffle and share a topic; reusing the reference row would have shipped the wrong stem and the wrong four options. Case-study headings differ between the sets for the SAME passage — the turbulence passage is 'Case Study - 1' here and 'Case Study - 2' in 65/1/1, and the OSVD passage is 'Case Study - 3' here and 'Case Study - 1' there — so each label is recorded in _caseStudyLabel and kept OUT of context, exactly as brief section 5 requires. plan.txt listed 2 SKIPs (its Q33#1 and Q37#1); both were transcribed anyway by reusing the reference LaTeX, and its 34-item TRANSCRIBE list proved unreliable in both directions here (29 of the questions it asked for are in fact reference duplicates).",
+  "questions": [
+    {
+      "ref": "Q1",
+      "questionNumber": "1",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "difficulty": "MODERATE",
+      "stem": "Let \\(\\theta\\) be the angle between two unit vectors \\(\\hat{a}\\) and \\(\\hat{b}\\) such that \\(\\sin \\theta = \\frac{3}{5}\\). Then, \\(\\hat{a} \\cdot \\hat{b}\\) is equal to :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\pm \\frac{3}{5}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\pm \\frac{3}{4}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\pm \\frac{4}{5}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\pm \\frac{4}{3}\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q2",
+      "questionNumber": "2",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Differential Equations",
+      "subtopic": "Linear Differential Equations",
+      "difficulty": "MODERATE",
+      "stem": "The integrating factor of the differential equation \\(x \\frac{dy}{dx} - y = x^4 - 3x\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "x"
+        },
+        {
+          "label": "B",
+          "text": "\\(-x\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(x^{-1}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\log (x^{-1})\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q3",
+      "questionNumber": "3",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Direction Cosines and Direction Ratios",
+      "difficulty": "EASY",
+      "stem": "If the direction cosines of a line are \\(\\sqrt{3}\\,k\\), \\(\\sqrt{3}\\,k\\), \\(\\sqrt{3}\\,k\\), then the value of k is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\pm 1\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\pm \\sqrt{3}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\pm 3\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\pm \\frac{1}{3}\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q4",
+      "questionNumber": "4",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "EASY",
+      "stem": "A linear programming problem deals with the optimization of a/an :",
+      "options": [
+        {
+          "label": "A",
+          "text": "logarithmic function"
+        },
+        {
+          "label": "B",
+          "text": "linear function"
+        },
+        {
+          "label": "C",
+          "text": "quadratic function"
+        },
+        {
+          "label": "D",
+          "text": "exponential function"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q5",
+      "questionNumber": "5",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "difficulty": "MODERATE",
+      "stem": "If \\(P(A|B) = P(A'|B)\\), then which of the following statements is true ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(P(A) = P(A')\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(P(A) = 2\\,P(B)\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(P(A \\cap B) = \\frac{1}{2}\\,P(B)\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(P(A \\cap B) = 2\\,P(B)\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q6",
+      "questionNumber": "6",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Minors and Cofactors",
+      "difficulty": "MODERATE",
+      "stem": "If \\(a_{ij}\\) and \\(A_{ij}\\) represent the \\((ij)^{th}\\) element and its cofactor of \\(\\begin{bmatrix} 2 & -3 & 5 \\\\ 6 & 0 & 4 \\\\ 1 & 5 & -7 \\end{bmatrix}\\) respectively, then the value of \\(a_{11} A_{21} + a_{12} A_{22} + a_{13} A_{23}\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "\\(-28\\)"
+        },
+        {
+          "label": "C",
+          "text": "114"
+        },
+        {
+          "label": "D",
+          "text": "\\(-114\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q7",
+      "questionNumber": "7",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Differentiability and the Chain Rule",
+      "difficulty": "EASY",
+      "stem": "The derivative of \\(\\sin (x^2)\\) w.r.t. x, at \\(x = \\sqrt{\\pi}\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "\\(-1\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(-2 \\sqrt{\\pi}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(2 \\sqrt{\\pi}\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q8",
+      "questionNumber": "8",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Differential Equations",
+      "subtopic": "Order and Degree of a Differential Equation",
+      "difficulty": "EASY",
+      "stem": "The order and degree of the differential equation \\(\\left[ 1 + \\left( \\frac{dy}{dx} \\right)^2 \\right]^3 = \\frac{d^2y}{dx^2}\\) respectively are :",
+      "options": [
+        {
+          "label": "A",
+          "text": "1, 2"
+        },
+        {
+          "label": "B",
+          "text": "2, 3"
+        },
+        {
+          "label": "C",
+          "text": "2, 1"
+        },
+        {
+          "label": "D",
+          "text": "2, 6"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q9",
+      "questionNumber": "9",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Components and Direction Cosines",
+      "difficulty": "EASY",
+      "stem": "The vector with terminal point A (2, \\(-\\) 3, 5) and initial point B (3, \\(-\\) 4, 7) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\hat{i} - \\hat{j} + 2\\hat{k}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\hat{i} + \\hat{j} + 2\\hat{k}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(-\\hat{i} - \\hat{j} - 2\\hat{k}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-\\hat{i} + \\hat{j} - 2\\hat{k}\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q10",
+      "questionNumber": "10",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Direction Cosines and Direction Ratios",
+      "difficulty": "EASY",
+      "stem": "The distance of point P(a, b, c) from y-axis is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "b"
+        },
+        {
+          "label": "B",
+          "text": "\\(b^2\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\sqrt{a^2 + c^2}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(a^2 + c^2\\)"
+        }
+      ],
+      "answer": "C",
+      "_flag": "SUBTOPIC MISMATCH: the distance of a point from a coordinate axis is Class-11 three-dimensional coordinate geometry; NCERT Class-12 Ch.11 has no subtopic covering it. Filed on the chapter opener 'Direction Cosines and Direction Ratios' as the closest fit, per brief section 8. (Same call as 65/1/1 Q16, which is this same question.)"
+    },
+    {
+      "ref": "Q11",
+      "questionNumber": "11",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "EASY",
+      "stem": "The number of corner points of the feasible region determined by constraints \\(x \\geq 0\\), \\(y \\geq 0\\), \\(x + y \\geq 4\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "1"
+        },
+        {
+          "label": "C",
+          "text": "2"
+        },
+        {
+          "label": "D",
+          "text": "3"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q12",
+      "questionNumber": "12",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Multiplication of Matrices",
+      "difficulty": "MODERATE",
+      "stem": "If A and B are two non-zero square matrices of same order such that \\((A + B)^2 = A^2 + B^2\\), then :",
+      "options": [
+        {
+          "label": "A",
+          "text": "AB = O"
+        },
+        {
+          "label": "B",
+          "text": "\\(AB = -BA\\)"
+        },
+        {
+          "label": "C",
+          "text": "BA = O"
+        },
+        {
+          "label": "D",
+          "text": "AB = BA"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q13",
+      "questionNumber": "13",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Relations and Functions",
+      "subtopic": "Equivalence Relations and Classes",
+      "difficulty": "MODERATE",
+      "stem": "A relation R defined on set \\(A = \\{x : x \\in Z \\text{ and } 0 \\leq x \\leq 10\\}\\) as \\(R = \\{(x, y) : x = y\\}\\) is given to be an equivalence relation. The number of equivalence classes is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "2"
+        },
+        {
+          "label": "C",
+          "text": "10"
+        },
+        {
+          "label": "D",
+          "text": "11"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q14",
+      "questionNumber": "14",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Order and Types of Matrices",
+      "difficulty": "EASY",
+      "stem": "If a matrix has 36 elements, the number of possible orders it can have, is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "13"
+        },
+        {
+          "label": "B",
+          "text": "3"
+        },
+        {
+          "label": "C",
+          "text": "5"
+        },
+        {
+          "label": "D",
+          "text": "9"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q15",
+      "questionNumber": "15",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Differentiability and the Chain Rule",
+      "difficulty": "MODERATE",
+      "stem": "The number of points, where \\(f(x) = [x]\\), \\(0 < x < 3\\) (\\([\\cdot]\\) denotes greatest integer function) is not differentiable is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "2"
+        },
+        {
+          "label": "C",
+          "text": "3"
+        },
+        {
+          "label": "D",
+          "text": "4"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q16",
+      "questionNumber": "16",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Increasing and Decreasing Functions",
+      "difficulty": "EASY",
+      "stem": "Let f(x) be a continuous function on [a, b] and differentiable on (a, b). Then, this function f(x) is strictly increasing in (a, b) if",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(f'(x) < 0, \\forall x \\in (a, b)\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(f'(x) > 0, \\forall x \\in (a, b)\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(f'(x) = 0, \\forall x \\in (a, b)\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(f(x) > 0, \\forall x \\in (a, b)\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q17",
+      "questionNumber": "17",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Equality of Matrices",
+      "difficulty": "EASY",
+      "stem": "If \\(\\begin{bmatrix} x + y & 2 \\\\ 5 & xy \\end{bmatrix} = \\begin{bmatrix} 6 & 2 \\\\ 5 & 8 \\end{bmatrix}\\), then the value of \\(\\left( \\frac{24}{x} + \\frac{24}{y} \\right)\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "7"
+        },
+        {
+          "label": "B",
+          "text": "6"
+        },
+        {
+          "label": "C",
+          "text": "8"
+        },
+        {
+          "label": "D",
+          "text": "18"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q18",
+      "questionNumber": "18",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Definite Integrals and the Fundamental Theorem",
+      "difficulty": "MODERATE",
+      "stem": "If \\(\\int_0^a \\frac{1}{4 + x^2} \\; dx = \\frac{\\pi}{6}\\), then the value of 'a' is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{\\sqrt{3}}{2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(2\\sqrt{3}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\sqrt{3}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{1}{\\sqrt{3}}\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q19",
+      "questionNumber": "19",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Direction Cosines and Direction Ratios",
+      "difficulty": "MODERATE",
+      "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : A line in space cannot be drawn perpendicular to x, y and z axes simultaneously.\nReason (R) : For any line making angles, \\(\\alpha\\), \\(\\beta\\), \\(\\gamma\\) with the positive directions of x, y and z axes respectively, \\(\\cos^2 \\alpha + \\cos^2 \\beta + \\cos^2 \\gamma = 1\\).",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q20",
+      "questionNumber": "20",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Determinant and its Properties",
+      "difficulty": "MODERATE",
+      "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : For matrix \\(A = \\begin{bmatrix} 1 & \\cos \\theta & 1 \\\\ -\\cos \\theta & 1 & \\cos \\theta \\\\ -1 & -\\cos \\theta & 1 \\end{bmatrix}\\), where \\(\\theta \\in [0, 2\\pi]\\), \\(|A| \\in [2, 4]\\).\nReason (R) : \\(\\cos \\theta \\in [-1, 1]\\), \\(\\forall \\theta \\in [0, 2\\pi]\\).",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q21a",
+      "questionNumber": "21 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integration by Substitution",
+      "difficulty": "MODERATE",
+      "stem": "Find :\n\\(\\int x \\sqrt{1 + 2x} \\; dx\\)"
+    },
+    {
+      "ref": "Q21b",
+      "questionNumber": "21 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Definite Integrals by Substitution",
+      "difficulty": "MODERATE",
+      "stem": "Evaluate :\n\\(\\int_0^{\\frac{\\pi^2}{4}} \\frac{\\sin \\sqrt{x}}{\\sqrt{x}} \\; dx\\)",
+      "_alternativeTo": "Q21a"
+    },
+    {
+      "ref": "Q22",
+      "questionNumber": "22",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "difficulty": "MODERATE",
+      "stem": "If \\(\\vec{a}\\) and \\(\\vec{b}\\) are two non-zero vectors such that \\((\\vec{a} + \\vec{b}) \\perp \\vec{a}\\) and \\((2\\vec{a} + \\vec{b}) \\perp \\vec{b}\\), then prove that \\(|\\vec{b}| = \\sqrt{2} \\; |\\vec{a}|\\)."
+    },
+    {
+      "ref": "Q23",
+      "questionNumber": "23",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Vector (Cross) Product",
+      "difficulty": "MODERATE",
+      "stem": "In the given figure, ABCD is a parallelogram. If \\(\\overrightarrow{AB} = 2\\hat{i} - 4\\hat{j} + 5\\hat{k}\\) and \\(\\overrightarrow{DB} = 3\\hat{i} - 6\\hat{j} + 2\\hat{k}\\), then find \\(\\overrightarrow{AD}\\) and hence find the area of parallelogram ABCD.",
+      "_figure": "ILLUSTRATIVE - a plain parallelogram ABCD (A top-left, B top-right, D bottom-left, C bottom-right) with the diagonal DB drawn. It carries no measurements; the vertex order needed to compute AD is already fixed by the name 'parallelogram ABCD' in the stem, so the question is answerable without it. NOT attached. Page idx 12. NOTE: the rendered PNG of this figure is partially corrupt - the diagram appears triplicated across the top strip and the lower two-thirds of the figure box renders as a solid black block (the same corruption 65/1/1 recorded for this identical figure)."
+    },
+    {
+      "ref": "Q24a",
+      "questionNumber": "24 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+      "difficulty": "MODERATE",
+      "stem": "If \\(y = \\sqrt{\\cos x + y}\\), prove that \\(\\frac{dy}{dx} = \\frac{\\sin x}{1 - 2y}\\)."
+    },
+    {
+      "ref": "Q24b",
+      "questionNumber": "24 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Differentiability and the Chain Rule",
+      "difficulty": "MODERATE",
+      "stem": "Show that the function \\(f(x) = |x|^3\\) is differentiable at all points of its domain.",
+      "_alternativeTo": "Q24a"
+    },
+    {
+      "ref": "Q25",
+      "questionNumber": "25",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Absolute Maximum and Minimum on a Closed Interval",
+      "difficulty": "MODERATE",
+      "stem": "Find the absolute maximum and minimum values of the function \\(f(x) = 12x^{4/3} - 6x^{1/3}\\), \\(x \\in [0, 1]\\)."
+    },
+    {
+      "ref": "Q26a",
+      "questionNumber": "26 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integration by Partial Fractions",
+      "difficulty": "MODERATE",
+      "stem": "Find :\n\\(\\int \\frac{x^2}{(x^2 + 4)\\,(x^2 + 9)} \\; dx\\)"
+    },
+    {
+      "ref": "Q26b",
+      "questionNumber": "26 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Definite Integrals and the Fundamental Theorem",
+      "difficulty": "MODERATE",
+      "stem": "Evaluate :\n\\(\\int_1^3 \\left( |x - 1| + |x - 2| + |x - 3| \\right) dx\\)",
+      "_alternativeTo": "Q26a"
+    },
+    {
+      "ref": "Q27",
+      "questionNumber": "27",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Differential Equations",
+      "subtopic": "Homogeneous Differential Equations",
+      "difficulty": "MODERATE",
+      "stem": "Find the general solution of the differential equation \\(\\frac{dy}{dx} = \\frac{x^2 + y^2}{2xy}\\)."
+    },
+    {
+      "ref": "Q28",
+      "questionNumber": "28",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "MODERATE",
+      "stem": "Solve the following linear programming problem graphically :\nMaximise \\(z = 5x + 4y\\)\nsubject to the constraints\n\\(x + 2y \\geq 4\\)\n\\(3x + y \\leq 6\\)\n\\(x + y \\leq 4\\)\n\\(x, y \\geq 0\\)"
+    },
+    {
+      "ref": "Q29",
+      "questionNumber": "29",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Independent Events",
+      "difficulty": "MODERATE",
+      "stem": "E and F are two independent events such that \\(P(\\overline{E}) = 0{\\cdot}6\\) and \\(P(E \\cup F) = 0{\\cdot}6\\). Find P(F) and \\(P(\\overline{E} \\cup \\overline{F})\\)."
+    },
+    {
+      "ref": "Q30a",
+      "questionNumber": "30 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "Types of Relations",
+      "difficulty": "MODERATE",
+      "stem": "A relation R on set \\(A = \\{1, 2, 3, 4, 5\\}\\) is defined as \\(R = \\{(x, y) : |x^2 - y^2| < 8\\}\\). Check whether the relation R is reflexive, symmetric and transitive."
+    },
+    {
+      "ref": "Q30b",
+      "questionNumber": "30 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "One-One and Onto Functions",
+      "difficulty": "MODERATE",
+      "stem": "A function f is defined from \\(R \\to R\\) as \\(f(x) = ax + b\\), such that \\(f(1) = 1\\) and \\(f(2) = 3\\). Find function f(x). Hence, check whether function f(x) is one-one and onto or not.",
+      "_alternativeTo": "Q30a"
+    },
+    {
+      "ref": "Q31a",
+      "questionNumber": "31 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+      "difficulty": "HARD",
+      "stem": "If \\(\\sqrt{1 - x^2} + \\sqrt{1 - y^2} = a\\,(x - y)\\), prove that \\(\\frac{dy}{dx} = \\sqrt{\\frac{1 - y^2}{1 - x^2}}\\)."
+    },
+    {
+      "ref": "Q31b",
+      "questionNumber": "31 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Logarithmic Differentiation",
+      "difficulty": "MODERATE",
+      "stem": "If \\(y = (\\tan x)^x\\), then find \\(\\frac{dy}{dx}\\).",
+      "_alternativeTo": "Q31a"
+    },
+    {
+      "ref": "Q32a",
+      "questionNumber": "32 (a)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integration by Parts",
+      "difficulty": "HARD",
+      "stem": "Evaluate :\n\\(\\int_0^{\\frac{\\pi}{2}} e^x \\left( \\frac{1 + \\sin x}{1 + \\cos x} \\right) dx\\)"
+    },
+    {
+      "ref": "Q32b",
+      "questionNumber": "32 (b)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Definite Integrals by Substitution",
+      "difficulty": "HARD",
+      "stem": "Find :\n\\(\\int_{\\frac{\\pi}{6}}^{\\frac{\\pi}{3}} \\frac{\\sin x + \\cos x}{\\sqrt{\\sin 2x}} \\; dx\\)",
+      "_alternativeTo": "Q32a"
+    },
+    {
+      "ref": "Q33",
+      "questionNumber": "33",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Bounded by a Curve and a Line",
+      "difficulty": "HARD",
+      "stem": "Using integration, find the area of the ellipse \\(\\frac{x^2}{16} + \\frac{y^2}{4} = 1\\), included between the lines \\(x = -2\\) and \\(x = 2\\)."
+    },
+    {
+      "ref": "Q34",
+      "questionNumber": "34",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Equation of a Line in Space",
+      "difficulty": "HARD",
+      "stem": "Equations of sides of a parallelogram ABCD are as follows :\nAB : \\(\\frac{x + 1}{1} = \\frac{y - 2}{-2} = \\frac{z - 1}{2}\\)\nBC : \\(\\frac{x - 1}{3} = \\frac{y + 2}{-5} = \\frac{z - 5}{3}\\)\nCD : \\(\\frac{x - 4}{1} = \\frac{y + 7}{-2} = \\frac{z - 8}{2}\\)\nDA : \\(\\frac{x - 2}{3} = \\frac{y + 3}{-5} = \\frac{z - 4}{3}\\)\nFind the equation of diagonal BD."
+    },
+    {
+      "ref": "Q35a",
+      "questionNumber": "35 (a)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Solving System of Linear Equations",
+      "difficulty": "HARD",
+      "stem": "If \\(A = \\begin{bmatrix} 1 & -2 & 0 \\\\ 2 & -1 & -1 \\\\ 0 & -2 & 1 \\end{bmatrix}\\), find \\(A^{-1}\\) and use it to solve the following system of equations :\n\\(x - 2y = 10\\), \\(2x - y - z = 8\\), \\(-2y + z = 7\\)"
+    },
+    {
+      "ref": "Q35b",
+      "questionNumber": "35 (b)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Adjoint and Inverse of a Matrix",
+      "difficulty": "HARD",
+      "stem": "If \\(A = \\begin{bmatrix} -1 & a & 2 \\\\ 1 & 2 & x \\\\ 3 & 1 & 1 \\end{bmatrix}\\) and \\(A^{-1} = \\begin{bmatrix} 1 & -1 & 1 \\\\ -8 & 7 & -5 \\\\ b & y & 3 \\end{bmatrix}\\), find the value of \\((a + x) - (b + y)\\).",
+      "_alternativeTo": "Q35a"
+    },
+    {
+      "ref": "Q36i",
+      "questionNumber": "36 (i)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Theorem of Total Probability",
+      "difficulty": "MODERATE",
+      "setId": "2024-65-1-2-CS1",
+      "_figure": "DECORATIVE — a photograph captioned 'Turbulence intensity' showing three aeroplanes labelled Light (± 1 meter), Moderate (± 5 meters) and Severe (± 30 meters). The displacement figures play no part in any sub-part; the three probabilities are printed in the stem. NOT attached. Page idx 18.",
+      "context": "According to recent research, air turbulence has increased in various regions around the world due to climate change. Turbulence makes flights bumpy and often delays the flights.\n\nAssume that, an airplane observes severe turbulence, moderate turbulence or light turbulence with equal probabilities. Further, the chance of an airplane reaching late to the destination are 55%, 37% and 17% due to severe, moderate and light turbulence respectively.\n\nOn the basis of the above information, answer the following questions :",
+      "stem": "Find the probability that an airplane reached its destination late.",
+      "_caseStudyLabel": "Case Study – 1"
+    },
+    {
+      "ref": "Q36ii",
+      "questionNumber": "36 (ii)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Bayes' Theorem",
+      "difficulty": "MODERATE",
+      "setId": "2024-65-1-2-CS1",
+      "context": "According to recent research, air turbulence has increased in various regions around the world due to climate change. Turbulence makes flights bumpy and often delays the flights.\n\nAssume that, an airplane observes severe turbulence, moderate turbulence or light turbulence with equal probabilities. Further, the chance of an airplane reaching late to the destination are 55%, 37% and 17% due to severe, moderate and light turbulence respectively.\n\nOn the basis of the above information, answer the following questions :",
+      "stem": "If the airplane reached its destination late, find the probability that it was due to moderate turbulence.",
+      "_caseStudyLabel": "Case Study – 1",
+      "_flag": "STRUCTURE: this case study has only TWO sub-parts, (i) and (ii), printed at 2 marks each (summing to the parent's 4). There is no (iii) and no internal OR — verified against page idx 20 (the sub-parts continue overleaf from the passage on idx 18) and against the official marking scheme."
+    },
+    {
+      "ref": "Q37i",
+      "questionNumber": "37 (i)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Domains, Ranges and Principal Value Branches",
+      "difficulty": "EASY",
+      "setId": "2024-65-1-2-CS2",
+      "_figure": "ILLUSTRATIVE — the standard graph of \\(y = \\sin x\\) drawn over \\([-5\\pi/2, 5\\pi/2]\\) with the axes labelled X, X', Y, Y'. It illustrates the passage's claim that sine is neither one-one nor onto; no sub-part reads a value off it, and (iii)(a) asks the student to DRAW a different graph. NOT attached. Page idx 20.",
+      "context": "If a function \\(f : X \\to Y\\) defined as \\(f(x) = y\\) is one-one and onto, then we can define a unique function \\(g : Y \\to X\\) such that \\(g(y) = x\\), where \\(x \\in X\\) and \\(y = f(x)\\), \\(y \\in Y\\). Function g is called the inverse of function f.\n\nThe domain of sine function is R and function sine : \\(R \\to R\\) is neither one-one nor onto. The following graph shows the sine function.\n\nLet sine function be defined from set A to \\([-1, 1]\\) such that inverse of sine function exists, i.e., \\(\\sin^{-1} x\\) is defined from \\([-1, 1]\\) to A.\n\nOn the basis of the above information, answer the following questions :",
+      "stem": "If A is the interval other than principal value branch, give an example of one such interval.",
+      "_caseStudyLabel": "Case Study – 2"
+    },
+    {
+      "ref": "Q37ii",
+      "questionNumber": "37 (ii)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Evaluating Inverse Trigonometric Expressions",
+      "difficulty": "EASY",
+      "setId": "2024-65-1-2-CS2",
+      "context": "If a function \\(f : X \\to Y\\) defined as \\(f(x) = y\\) is one-one and onto, then we can define a unique function \\(g : Y \\to X\\) such that \\(g(y) = x\\), where \\(x \\in X\\) and \\(y = f(x)\\), \\(y \\in Y\\). Function g is called the inverse of function f.\n\nThe domain of sine function is R and function sine : \\(R \\to R\\) is neither one-one nor onto. The following graph shows the sine function.\n\nLet sine function be defined from set A to \\([-1, 1]\\) such that inverse of sine function exists, i.e., \\(\\sin^{-1} x\\) is defined from \\([-1, 1]\\) to A.\n\nOn the basis of the above information, answer the following questions :",
+      "stem": "If \\(\\sin^{-1} (x)\\) is defined from \\([-1, 1]\\) to its principal value branch, find the value of \\(\\sin^{-1} \\left( -\\dfrac{1}{2} \\right) - \\sin^{-1} (1)\\).",
+      "_caseStudyLabel": "Case Study – 2"
+    },
+    {
+      "ref": "Q37iiia",
+      "questionNumber": "37 (iii) (a)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Domains, Ranges and Principal Value Branches",
+      "difficulty": "MODERATE",
+      "setId": "2024-65-1-2-CS2",
+      "context": "If a function \\(f : X \\to Y\\) defined as \\(f(x) = y\\) is one-one and onto, then we can define a unique function \\(g : Y \\to X\\) such that \\(g(y) = x\\), where \\(x \\in X\\) and \\(y = f(x)\\), \\(y \\in Y\\). Function g is called the inverse of function f.\n\nThe domain of sine function is R and function sine : \\(R \\to R\\) is neither one-one nor onto. The following graph shows the sine function.\n\nLet sine function be defined from set A to \\([-1, 1]\\) such that inverse of sine function exists, i.e., \\(\\sin^{-1} x\\) is defined from \\([-1, 1]\\) to A.\n\nOn the basis of the above information, answer the following questions :",
+      "stem": "Draw the graph of \\(\\sin^{-1} x\\) from \\([-1, 1]\\) to its principal value branch.",
+      "_caseStudyLabel": "Case Study – 2"
+    },
+    {
+      "ref": "Q37iiib",
+      "questionNumber": "37 (iii) (b)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Domains, Ranges and Principal Value Branches",
+      "difficulty": "MODERATE",
+      "setId": "2024-65-1-2-CS2",
+      "_alternativeTo": "Q37iiia",
+      "context": "If a function \\(f : X \\to Y\\) defined as \\(f(x) = y\\) is one-one and onto, then we can define a unique function \\(g : Y \\to X\\) such that \\(g(y) = x\\), where \\(x \\in X\\) and \\(y = f(x)\\), \\(y \\in Y\\). Function g is called the inverse of function f.\n\nThe domain of sine function is R and function sine : \\(R \\to R\\) is neither one-one nor onto. The following graph shows the sine function.\n\nLet sine function be defined from set A to \\([-1, 1]\\) such that inverse of sine function exists, i.e., \\(\\sin^{-1} x\\) is defined from \\([-1, 1]\\) to A.\n\nOn the basis of the above information, answer the following questions :",
+      "stem": "Find the domain and range of \\(f(x) = 2 \\sin^{-1} (1 - x)\\).",
+      "_caseStudyLabel": "Case Study – 2"
+    },
+    {
+      "ref": "Q38i",
+      "questionNumber": "38 (i)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Rate of Change of Quantities",
+      "difficulty": "EASY",
+      "setId": "2024-65-1-2-CS3",
+      "_figure": "DECORATIVE — an infographic captioned AVERAGE SPEED DETECTION / RADAR SPEED DETECTION showing two camera poles, a car, a stopwatch pair and radar waves, plus the caption Speed = Distance / (Time B – Time A). Nothing is measured off it: the pole height (5 m), the car's speed (20 m/s) and every distance are printed in the stem. NOT attached. Page idx 22.",
+      "context": "The traffic police has installed Over Speed Violation Detection (OSVD) system at various locations in a city. These cameras can capture a speeding vehicle from a distance of 300 m and even function in the dark.\n\nA camera is installed on a pole at the height of 5 m. It detects a car travelling away from the pole at the speed of 20 m/s. At any point, x m away from the base of the pole, the angle of elevation of the speed camera from the car C is \\(\\theta\\).\n\nOn the basis of the above information, answer the following questions :",
+      "stem": "Express \\(\\theta\\) in terms of height of the camera installed on the pole and x.",
+      "_caseStudyLabel": "Case Study – 3"
+    },
+    {
+      "ref": "Q38ii",
+      "questionNumber": "38 (ii)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Rate of Change of Quantities",
+      "difficulty": "EASY",
+      "setId": "2024-65-1-2-CS3",
+      "context": "The traffic police has installed Over Speed Violation Detection (OSVD) system at various locations in a city. These cameras can capture a speeding vehicle from a distance of 300 m and even function in the dark.\n\nA camera is installed on a pole at the height of 5 m. It detects a car travelling away from the pole at the speed of 20 m/s. At any point, x m away from the base of the pole, the angle of elevation of the speed camera from the car C is \\(\\theta\\).\n\nOn the basis of the above information, answer the following questions :",
+      "stem": "Find \\(\\dfrac{d\\theta}{dx}\\).",
+      "_caseStudyLabel": "Case Study – 3"
+    },
+    {
+      "ref": "Q38iiia",
+      "questionNumber": "38 (iii) (a)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Rate of Change of Quantities",
+      "difficulty": "MODERATE",
+      "setId": "2024-65-1-2-CS3",
+      "context": "The traffic police has installed Over Speed Violation Detection (OSVD) system at various locations in a city. These cameras can capture a speeding vehicle from a distance of 300 m and even function in the dark.\n\nA camera is installed on a pole at the height of 5 m. It detects a car travelling away from the pole at the speed of 20 m/s. At any point, x m away from the base of the pole, the angle of elevation of the speed camera from the car C is \\(\\theta\\).\n\nOn the basis of the above information, answer the following questions :",
+      "stem": "Find the rate of change of angle of elevation with respect to time at an instant when the car is 50 m away from the pole.",
+      "_caseStudyLabel": "Case Study – 3"
+    },
+    {
+      "ref": "Q38iiib",
+      "questionNumber": "38 (iii) (b)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Rate of Change of Quantities",
+      "difficulty": "MODERATE",
+      "setId": "2024-65-1-2-CS3",
+      "_alternativeTo": "Q38iiia",
+      "context": "The traffic police has installed Over Speed Violation Detection (OSVD) system at various locations in a city. These cameras can capture a speeding vehicle from a distance of 300 m and even function in the dark.\n\nA camera is installed on a pole at the height of 5 m. It detects a car travelling away from the pole at the speed of 20 m/s. At any point, x m away from the base of the pole, the angle of elevation of the speed camera from the car C is \\(\\theta\\).\n\nOn the basis of the above information, answer the following questions :",
+      "stem": "If the rate of change of angle of elevation with respect to time of another car at a distance of 50 m from the base of the pole is \\(\\dfrac{3}{101}\\) rad/s, then find the speed of the car.",
+      "_caseStudyLabel": "Case Study – 3"
+    }
+  ]
+}

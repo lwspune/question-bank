@@ -188,11 +188,22 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "cbse-12",
     displayName: "CBSE Class 12",
     examName: "CBSE Class 12", // must match the `exams` DB row exactly
-    mixedFormats: true, // 480 subjective vs 41 MCQ
+    mixedFormats: true, // 756 MCQ vs 2,424 subjective (measured 2026-08-21)
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/cbse-12", // exam hub: "coming soon" until notes ship
-    practiceOnly: true, // NCERT textbook exercises/solved-examples corpus (CBSE PYQs later) → /browse defaults to Practice
-    boardExam: true, // NCERT is textbook content → gets the /board reader + the "Board" nav tab
+    // NOT practiceOnly since 2026-08-21: Class 12 IS a board year and the board
+    // PYQ corpus is in — 1,766 questions from all 78 papers of 2022-2026, beside
+    // the 1,414 NCERT textbook rows on the SAME chapters, separated by
+    // `question_kind`. The mh-ssc-10 / mh-hsc-12 shape.
+    //
+    // Dropping the flag is not cosmetic: `listChapterLandings` derives
+    // `kind = practiceOnly ? "practice" : "pyq"`, so it also switches all 13
+    // chapter landing pages from textbook questions to board PYQs. Measured
+    // before the change (scripts/cbse-12-pyq/flip-impact.ts): 12 chapters keep
+    // their page, Application of Integrals GAINS one (14 textbook rows, below
+    // the threshold, against 74 PYQs), and NONE loses one — so no indexed URL
+    // disappears.
+    boardExam: true, // textbook content → keeps the /board reader + "Board" nav tab
     board: "CBSE",
     std: 12,
   },

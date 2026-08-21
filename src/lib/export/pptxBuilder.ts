@@ -64,6 +64,26 @@ const BLACK = "000000";
 const WHITE = "FFFFFF";
 const GREY = "555555";
 
+/**
+ * Teaching-deck accents. DARK ONLY, on white — these decks are projected, and
+ * exported to PDF that may be printed in greyscale.
+ *
+ * Every value clears WCAG AA for body text on white by a wide margin (measured:
+ * indigo 11.4:1, red 8.3:1, emerald 7.7:1, grey 7.5:1, against a 4.5:1 floor).
+ * Colour is never the ONLY carrier of meaning — a title is also the first line
+ * and bold, a trap line is also worded as one, the key is also the word
+ * "Answer" — so nothing is lost in greyscale.
+ *
+ * Body text and ALL equations stay black: maths wants maximum legibility, and
+ * an accent there would compete with the notation rather than organise it.
+ *
+ * NOT used by the question-per-slide deck, which is a printed teacher artifact
+ * and stays black — asserted by a test.
+ */
+const INDIGO = "312E81";
+const WARN_RED = "991B1B";
+const KEY_GREEN = "065F46";
+
 /** Font ladder, in hundredths of a point (OOXML `sz` units). */
 const FONT_LADDER = [2400, 2000, 1800, 1600, 1400] as const;
 export const MAX_FONT = FONT_LADDER[0];
@@ -104,7 +124,7 @@ export type PptxInput = PptxOptions & {
 };
 
 export type SlideSpec =
-  | { kind: "section"; title: string }
+  | { kind: "section"; title: string; accent?: boolean }
   | {
       kind: "question";
       number: number;
@@ -112,7 +132,62 @@ export type SlideSpec =
       /** Shared/solo passage, repeated on this slide. Null when absent. */
       context: string | null;
       sourceTag: string | null;
+    }
+  | TeachingSlide
+  | {
+      /**
+       * The same question again, with the key and the worked solution. A PDF
+       * cannot click-to-reveal, so the reveal is a SECOND SLIDE rather than an
+       * animation — question, then question answered.
+       */
+      kind: "answer";
+      number: number;
+      question: QuestionRow;
+      context: string | null;
+      sourceTag: string | null;
     };
+
+/** One line of a teaching slide. Math travels as `\(…\)` and is converted. */
+export type TeachingLine = {
+  text: string;
+  /** Bulleted point. */
+  bullet?: boolean;
+  /** Display equation — centred, never bulleted. */
+  display?: boolean;
+  /** Aside/caption: muted grey italic, set smaller. */
+  note?: boolean;
+  /** Key result. */
+  strong?: boolean;
+  /** A trap or caution — set in dark red. */
+  warn?: boolean;
+};
+
+export type TeachingSlide = {
+  kind: "teaching";
+  title: string;
+  /** e.g. weightage, printed under the title. */
+  badge?: string;
+  lines: TeachingLine[];
+  /** "warn" sets the TITLE in dark red — for a slide that is all traps. */
+  tone?: "warn";
+  /** Storage path of a figure, laid out after the lines. */
+  image?: string;
+};
+
+/**
+ * What a deck is AUTHORED as. `practice` is the only entry that is not 1:1
+ * with a slide — `planDeck` expands it into the question/answer pair.
+ */
+export type DeckSlide =
+  | { kind: "section"; title: string }
+  | TeachingSlide
+  | { kind: "practice"; question: QuestionRow; number: number };
+
+export type TeachingDeckInput = {
+  title: string;
+  slides: DeckSlide[];
+  imageBytes?: Map<string, Buffer>;
+};
 
 const NO_SUBTOPIC_LABEL = "Other";
 
@@ -223,13 +298,89 @@ export function estimateLines(
   );
 }
 
+/**
+ * Lines a table occupies, counting cells that WRAP.
+ *
+ * The naive "one line per row" under-estimates the moment a cell is longer
+ * than its column, and the cost of under-estimating here is not whitespace —
+ * it is the next shape drawn on top of the table. Uses the pessimistic LAYOUT
+ * width for the same reason. Pure.
+ */
+export function estimateTableLines(table: TableBlock, sizeHundredths: number): number {
+  const columns = Math.max(1, table.headers.length);
+  // A column gets its share of the line, floored so a many-column table cannot
+  // drive the per-cell budget to zero.
+  const perColumn = Math.max(4, charsPerLine(sizeHundredths, "layout") / columns);
+  let lines = 0;
+  for (const row of [table.headers, ...table.rows]) {
+    // The row is as tall as its tallest cell, not the sum of them.
+    const tallest = row.reduce(
+      (n, cell) => Math.max(n, Math.ceil(cell.length / perColumn)),
+      1
+    );
+    lines += tallest;
+  }
+  return lines;
+}
+
+/**
+ * Per-row character lengths for the SIZING pass, scaled so a table row costs
+ * what it really costs.
+ *
+ * Sizing treats each entry as a full-width paragraph, but a cell only spans
+ * its own column — so a 31-character cell in a 4-column table wraps to two
+ * lines while sizing scored it as half of one. Multiplying by the column count
+ * makes `estimateLines` agree with `estimateTableLines`. Without this the font
+ * is chosen too large and the slide overflows its bottom edge. Pure.
+ */
+export function tableSizingLengths(table: TableBlock): number[] {
+  const columns = Math.max(1, table.headers.length);
+  return [table.headers, ...table.rows].map(
+    (row) => row.reduce((n, cell) => Math.max(n, cell.length), 1) * columns
+  );
+}
+
+/**
+ * The share of the body a table's CELL PADDING eats, over and above its text.
+ *
+ * `tableSizingLengths` accounts for the words; it cannot account for the gap
+ * above and below them in each cell, which is 0.6 of a line per row and on a
+ * five-row table is most of an inch. Sizing missed it entirely, so the font was
+ * chosen as if the table were only as tall as its text.
+ *
+ * Computed at MAX_FONT rather than at the candidate size, which over-reserves
+ * slightly for small fonts — the safe direction, and it keeps the estimate from
+ * depending on the size it is helping to choose.
+ */
+function tablePaddingFraction(table: TableBlock): number {
+  const rows = table.rows.length + 1;
+  const padPt = rows * 0.6 * (MAX_FONT / 100) * LINE_SPACING;
+  return padPt / BODY_HEIGHT_PT;
+}
+
+/** Height a table occupies, including per-row cell padding. */
+function tableHeightEmu(
+  table: TableBlock,
+  sizeHundredths: number,
+  lineHeightEmu: number
+): number {
+  const lines = estimateTableLines(table, sizeHundredths);
+  const rows = table.rows.length + 1;
+  // Reduces to the previous `rows * 1.6 * lineHeight` when no cell wraps.
+  return Math.round(lines * lineHeightEmu + rows * lineHeightEmu * 0.6);
+}
+
 function estimateHeightPt(load: SlideLoad, sizeHundredths: number): number {
   const lineHeight = (sizeHundredths / 100) * LINE_SPACING;
   // Math zones are counted once for the slide, so they are added after the
   // per-paragraph loop rather than inside estimateLines.
   let lines = load.mathZones * MATH_ZONE_EXTRA_LINES;
   for (const chars of load.paragraphs) {
-    lines += estimateLines(chars, 0, sizeHundredths);
+    // "layout", not "sizing": the font has to fit the height LAYOUT will
+    // actually give this text. Measuring with the optimistic width let a slide
+    // be sized as "just fits" and then laid out one line taller, so the text
+    // ran past the bottom edge and the next shape was drawn over it.
+    lines += estimateLines(chars, 0, sizeHundredths, "layout");
   }
   const textHeight =
     lines * lineHeight + load.paragraphs.length * SPACE_BEFORE_PT;
@@ -349,7 +500,7 @@ function countMathZones(text: string): number {
 // Slide blocks — a vertical stack of shapes
 // ————————————————————————————————————————————————————————————————
 
-type Block =
+export type Block =
   | { kind: "paras"; items: { text: string; opts: Omit<ParaOpts, "size">; scale?: number }[] }
   | { kind: "table"; table: TableBlock }
   | { kind: "image"; path: string };
@@ -426,6 +577,148 @@ function questionBlocks(spec: Extract<SlideSpec, { kind: "question" }>): Block[]
   }
 
   return coalesce(blocks);
+}
+
+/** Blocks for one line of a teaching slide. */
+function teachingLineBlocks(line: TeachingLine): Block[] {
+  const opts: Omit<ParaOpts, "size"> = {
+    ...(line.note ? { italic: true, color: GREY } : {}),
+    ...(line.strong ? { bold: true } : {}),
+    ...(line.warn ? { bold: true, color: WARN_RED } : {}),
+    ...(line.display ? { align: "ctr" as const } : {}),
+  };
+  // A bullet marker is a PREFIX, so it rides the same path as a question
+  // number — which also means a line that is nothing but a table keeps its
+  // table block instead of being flattened to prose.
+  const prefix = line.bullet && !line.display ? "• " : undefined;
+  const blocks = contentBlocks(line.text, opts, prefix);
+  if (!line.note) return blocks;
+  return blocks.map((b) =>
+    b.kind === "paras"
+      ? { ...b, items: b.items.map((i) => ({ ...i, scale: SECONDARY_SCALE })) }
+      : b
+  );
+}
+
+export function teachingBlocks(spec: TeachingSlide): Block[] {
+  const blocks: Block[] = [
+    {
+      kind: "paras",
+      items: [
+        {
+          text: spec.title,
+          opts: { bold: true, color: spec.tone === "warn" ? WARN_RED : INDIGO },
+        },
+      ],
+    },
+  ];
+  if (spec.badge) {
+    blocks.push({
+      kind: "paras",
+      items: [
+        { text: spec.badge, opts: { italic: true, color: GREY }, scale: SECONDARY_SCALE },
+      ],
+    });
+  }
+  for (const line of spec.lines) blocks.push(...teachingLineBlocks(line));
+  if (spec.image) blocks.push({ kind: "image", path: spec.image });
+  return coalesce(blocks);
+}
+
+/**
+ * The answer half of a practice pair: the question restated, then the key and
+ * the reasoning. The stem is repeated because the slide is read on its own.
+ */
+function answerBlocks(spec: Extract<SlideSpec, { kind: "answer" }>): Block[] {
+  const { question, number, context, sourceTag } = spec;
+  const blocks: Block[] = [];
+
+  if (context) {
+    blocks.push(
+      ...contentBlocks(context, { italic: true, color: GREY }).map((b) =>
+        b.kind === "paras"
+          ? { ...b, items: b.items.map((i) => ({ ...i, scale: SECONDARY_SCALE })) }
+          : b
+      )
+    );
+  }
+
+  blocks.push(...contentBlocks(question.text, {}, `Q${number}. `));
+  if (question.imageUrl) blocks.push({ kind: "image", path: question.imageUrl });
+
+  for (const option of question.options) {
+    blocks.push({
+      kind: "paras",
+      items: [
+        {
+          text: `(${option.label}) ${option.text}`,
+          opts: option.isCorrect ? { bold: true } : {},
+        },
+      ],
+    });
+  }
+
+  const correct = question.options.find((o) => o.isCorrect);
+  const key =
+    correct != null
+      ? `Answer: (${correct.label})`
+      : question.numericAnswer != null
+        ? `Answer: ${question.numericAnswer}`
+        : null;
+  if (key) {
+    blocks.push({
+      kind: "paras",
+      items: [{ text: key, opts: { bold: true, color: KEY_GREEN } }],
+    });
+  }
+
+  if (question.solution) {
+    blocks.push(...contentBlocks(question.solution, {}, "Solution. "));
+  }
+  if (question.solutionImageUrl) {
+    blocks.push({ kind: "image", path: question.solutionImageUrl });
+  }
+  if (sourceTag) {
+    blocks.push({
+      kind: "paras",
+      items: [{ text: sourceTag, opts: { italic: true, color: GREY }, scale: SECONDARY_SCALE }],
+    });
+  }
+
+  return coalesce(blocks);
+}
+
+/**
+ * Authored deck → slide list. Pure. The only expansion is `practice`, which
+ * becomes a question slide followed by its answer slide carrying the SAME
+ * number, so a reader of the PDF sees "Q3" then "Q3 answered".
+ */
+export function planDeck(slides: DeckSlide[]): SlideSpec[] {
+  const out: SlideSpec[] = [];
+  for (const slide of slides) {
+    if (slide.kind !== "practice") {
+      out.push(slide.kind === "section" ? { ...slide, accent: true } : slide);
+      continue;
+    }
+    const raw = slide.question.context?.trim();
+    const context = raw ? stripPassageCountPhrase(raw) : null;
+    const sourceTag = formatSourceTag(slide.question);
+    out.push({
+      kind: "question",
+      number: slide.number,
+      question: slide.question,
+      context,
+      sourceTag,
+    });
+    out.push({
+      kind: "answer",
+      number: slide.number,
+      question: slide.question,
+      context,
+      sourceTag,
+    });
+  }
+  return out;
 }
 
 // ————————————————————————————————————————————————————————————————
@@ -564,10 +857,15 @@ function sectionSlide(spec: Extract<SlideSpec, { kind: "section" }>): {
   images: SlideImage[];
 } {
   const ids: ShapeIds = { next: 2 };
-  const body = wrapParagraph(textRun(spec.title, MAX_FONT, { bold: true }), {
-    size: MAX_FONT,
-    align: "ctr",
-  });
+  const body = wrapParagraph(
+    // Accent only when a TEACHING deck asked for it. The question deck also
+    // emits section dividers (groupBySubtopic) and must stay black.
+    textRun(spec.title, MAX_FONT, {
+      bold: true,
+      ...(spec.accent ? { color: INDIGO } : {}),
+    }),
+    { size: MAX_FONT, align: "ctr" }
+  );
   const xml =
     slideOpen() +
     textShape(ids, body, {
@@ -612,17 +910,22 @@ function nonImageHeight(block: Block, size: number, lineHeightEmu: number): numb
     return Math.round(lines * lineHeightEmu + block.items.length * 7620);
   }
   if (block.kind === "table") {
-    return Math.round((block.table.rows.length + 1) * lineHeightEmu * 1.6);
+    return tableHeightEmu(block.table, size, lineHeightEmu);
   }
   return 0;
 }
 
-function questionSlide(
-  spec: Extract<SlideSpec, { kind: "question" }>,
+/**
+ * Lay a vertical stack of blocks onto one slide: size the text to fit, then
+ * emit the shapes top-down. Shared by every slide kind that has a body —
+ * question, answer and teaching all differ only in how their blocks are BUILT.
+ */
+function blocksSlide(
+  rawBlocks: Block[],
   imageBytes: Map<string, Buffer>,
   slideIndex: number
 ): { xml: string; images: SlideImage[] } {
-  const blocks = questionBlocks(spec).filter(
+  const blocks = rawBlocks.filter(
     // An image whose bytes never arrived is dropped rather than left as an
     // empty frame — the route fetches images best-effort.
     (b) => b.kind !== "image" || imageBytes.has(b.path)
@@ -639,10 +942,8 @@ function questionSlide(
         mathZones += countMathZones(item.text);
       }
     } else if (block.kind === "table") {
-      // A row behaves like a paragraph as long as its widest cell.
-      for (const row of [block.table.headers, ...block.table.rows]) {
-        paragraphLengths.push(Math.max(...row.map((c) => c.length), 1));
-      }
+      paragraphLengths.push(...tableSizingLengths(block.table));
+      imageFraction += tablePaddingFraction(block.table);
     } else {
       const measured = measureImage(imageBytes.get(block.path), BODY_WIDTH_EMU, BODY_HEIGHT_EMU);
       if (measured) imageFraction += measured.cy / BODY_HEIGHT_EMU;
@@ -708,8 +1009,7 @@ function questionSlide(
     }
 
     if (block.kind === "table") {
-      const rows = block.table.rows.length + 1;
-      const cy = Math.min(remaining, Math.round(rows * lineHeightEmu * 1.6));
+      const cy = Math.min(remaining, tableHeightEmu(block.table, size, lineHeightEmu));
       xml += tableShape(ids, block.table, size, {
         x: MARGIN_EMU,
         y,
@@ -751,22 +1051,34 @@ function detectImageExtension(bytes: Buffer): "png" | "jpg" {
   return "png";
 }
 
-/**
- * Build the .pptx. One slide per question; images are embedded per slide.
- */
-export async function buildQuestionSlides(input: PptxInput): Promise<Buffer> {
-  const imageBytes = input.imageBytes ?? new Map<string, Buffer>();
-  const plan = planSlides(input.questions, input);
+/** Render any slide spec. The only per-kind difference is the block builder. */
+function renderSlide(
+  spec: SlideSpec,
+  imageBytes: Map<string, Buffer>,
+  slideNumber: number
+): { xml: string; images: SlideImage[] } {
+  if (spec.kind === "section") return sectionSlide(spec);
+  const blocks =
+    spec.kind === "question"
+      ? questionBlocks(spec)
+      : spec.kind === "answer"
+        ? answerBlocks(spec)
+        : teachingBlocks(spec);
+  return blocksSlide(blocks, imageBytes, slideNumber);
+}
 
+/** Zip a planned slide list into a .pptx. Shared by both entry points. */
+async function packDeck(
+  title: string,
+  plan: SlideSpec[],
+  imageBytes: Map<string, Buffer>
+): Promise<Buffer> {
   const zip = new JSZip();
   const mediaExtensions: string[] = [];
 
   plan.forEach((spec, index) => {
     const slideNumber = index + 1;
-    const { xml, images } =
-      spec.kind === "section"
-        ? sectionSlide(spec)
-        : questionSlide(spec, imageBytes, slideNumber);
+    const { xml, images } = renderSlide(spec, imageBytes, slideNumber);
 
     zip.file(`ppt/slides/slide${slideNumber}.xml`, xml);
     zip.file(
@@ -783,7 +1095,7 @@ export async function buildQuestionSlides(input: PptxInput): Promise<Buffer> {
   const count = plan.length;
   zip.file("[Content_Types].xml", contentTypesXml(count, mediaExtensions));
   zip.file("_rels/.rels", ROOT_RELS_XML);
-  zip.file("docProps/core.xml", corePropsXml(escapeXml(input.title)));
+  zip.file("docProps/core.xml", corePropsXml(escapeXml(title)));
   zip.file("docProps/app.xml", appPropsXml(count));
   zip.file("ppt/presentation.xml", presentationXml(count));
   zip.file("ppt/_rels/presentation.xml.rels", presentationRelsXml(count));
@@ -797,4 +1109,27 @@ export async function buildQuestionSlides(input: PptxInput): Promise<Buffer> {
   zip.file("ppt/tableStyles.xml", TABLE_STYLES_XML);
 
   return (await zip.generateAsync({ type: "nodebuffer" })) as Buffer;
+}
+
+/**
+ * Build a TEACHING deck: concept/formula/derivation slides interleaved with
+ * question→answer practice pairs.
+ */
+export async function buildTeachingDeck(input: TeachingDeckInput): Promise<Buffer> {
+  return packDeck(
+    input.title,
+    planDeck(input.slides),
+    input.imageBytes ?? new Map<string, Buffer>()
+  );
+}
+
+/**
+ * Build the .pptx. One slide per question; images are embedded per slide.
+ */
+export async function buildQuestionSlides(input: PptxInput): Promise<Buffer> {
+  return packDeck(
+    input.title,
+    planSlides(input.questions, input),
+    input.imageBytes ?? new Map<string, Buffer>()
+  );
 }

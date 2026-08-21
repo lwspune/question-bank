@@ -1,0 +1,974 @@
+{
+ "paper": "65/4/3",
+ "year": 2025,
+ "paperId": "2025-65-4-3",
+ "markingScheme": "out/2025-65-4-3/ms/p00.png … p22.png",
+ "rows": [
+  {
+   "hash": "7683dd532408728b129ab689615d2f9f1884d7302bd2b6612a8a600e7df60956",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "Domain of \\(\\sin^{-1}(2x^2 - 3)\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\((-1, 0) \\cup (1, \\sqrt{2})\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\((-\\sqrt{2}, -1) \\cup (0, 1)\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\([-\\sqrt{2}, -1] \\cup [1, \\sqrt{2}]\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\((-\\sqrt{2}, -1) \\cup (1, \\sqrt{2})\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "\\(\\sin^{-1} u\\) is defined only for \\(-1 \\le u \\le 1\\), so we need \\(-1 \\le 2x^2 - 3 \\le 1\\). Adding \\(3\\) throughout gives \\(2 \\le 2x^2 \\le 4\\), and dividing by \\(2\\) gives \\(1 \\le x^2 \\le 2\\), i.e. \\(1 \\le |x| \\le \\sqrt{2}\\). That is \\(1 \\le x \\le \\sqrt{2}\\) or \\(-\\sqrt{2} \\le x \\le -1\\), so the domain is \\(\\left[-\\sqrt{2}, -1\\right] \\cup \\left[1, \\sqrt{2}\\right]\\). The endpoints belong to the domain, since \\(x = \\pm 1\\) gives \\(2x^2 - 3 = -1\\) and \\(x = \\pm\\sqrt{2}\\) gives \\(2x^2 - 3 = 1\\), both of which are legal inputs to \\(\\sin^{-1}\\) — which is why the open-interval versions of this set are wrong."
+  },
+  {
+   "hash": "d50287eacadb949ebab0be81ef164905b8557eee6b431c5ee8b1f5dcbefd9bf6",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Symmetric and Skew-Symmetric Matrices",
+   "stem": "The matrix \\(\\begin{bmatrix} 0 & 1 & -2 \\\\ -1 & 0 & -7 \\\\ 2 & 7 & 0 \\end{bmatrix}\\) is a :",
+   "options": [
+    {
+     "label": "A",
+     "text": "diagonal matrix"
+    },
+    {
+     "label": "B",
+     "text": "symmetric matrix"
+    },
+    {
+     "label": "C",
+     "text": "skew symmetric matrix"
+    },
+    {
+     "label": "D",
+     "text": "scalar matrix"
+    }
+   ],
+   "answer": "C",
+   "solution": "Transposing interchanges rows and columns, giving \\(A^{T} = \\begin{bmatrix} 0 & -1 & 2 \\\\ 1 & 0 & 7 \\\\ -2 & -7 & 0 \\end{bmatrix}\\), which is exactly \\(-A\\). Since \\(A^{T} = -A\\) (equivalently, the diagonal entries are all zero and each off-diagonal entry is the negative of its mirror image), the matrix is a skew symmetric matrix."
+  },
+  {
+   "hash": "1c0143a541b98c16228b4169541f677dc0c58a1c50fba1aecb1410852a61e1aa",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Continuity",
+   "stem": "If \\(f(x) = \\begin{cases} 3x - 2, & 0 < x \\le 1 \\\\ 2x^2 + ax, & 1 < x < 2 \\end{cases}\\) is continuous for \\(x \\in (0, 2)\\), then a is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(-4\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-\\frac{7}{2}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(-2\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-1\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Each piece is a polynomial and so is continuous on its own interval; the only place continuity can fail is the join \\(x = 1\\). There the left-hand limit and the value agree, \\(\\lim_{x \\to 1^-}(3x - 2) = 1 = f(1)\\), while the right-hand limit is \\(\\lim_{x \\to 1^+}(2x^2 + ax) = 2 + a\\). Continuity forces \\(2 + a = 1\\), so \\(a = -1\\)."
+  },
+  {
+   "hash": "57af6794d92a89e5b6665ed45c05b44e7c3eb05e0501ef20a855bd8e6f4e63fc",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+   "stem": "If \\(y = \\log_{2x}(\\sqrt{2x})\\), then \\(\\frac{dy}{dx}\\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "0"
+    },
+    {
+     "label": "B",
+     "text": "1"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{1}{x}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{1}{\\sqrt{2x}}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Convert the logarithm to a common base: \\(y = \\log_{2x}\\left(\\sqrt{2x}\\right) = \\frac{\\log\\left(\\sqrt{2x}\\right)}{\\log(2x)} = \\frac{\\frac{1}{2}\\log(2x)}{\\log(2x)} = \\frac{1}{2}\\), valid wherever the expression is defined (\\(2x > 0\\) and \\(2x \\ne 1\\)). So \\(y\\) is a constant function, and the derivative of a constant is zero: \\(\\frac{dy}{dx} = 0\\). (Nothing has to be differentiated at all here — recognising that the base and the argument are powers of the same quantity is the whole question.)"
+  },
+  {
+   "hash": "7559ecf358c8c42c220b74d9ed6f22c04a70ba30a25c093bb11fc6eae1ff1d45",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "If \\(f : N \\to W\\) is defined as\n\n\\(f(n) = \\begin{cases} \\frac{n}{2}, & \\text{if } n \\text{ is even} \\\\ 0, & \\text{if } n \\text{ is odd} \\end{cases}\\),\n\nthen f is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "injective only"
+    },
+    {
+     "label": "B",
+     "text": "surjective only"
+    },
+    {
+     "label": "C",
+     "text": "a bijection"
+    },
+    {
+     "label": "D",
+     "text": "neither surjective nor injective"
+    }
+   ],
+   "answer": "B",
+   "solution": "The function is not injective: \\(f(1) = 0\\) and \\(f(3) = 0\\) although \\(1 \\ne 3\\) — indeed every odd number is sent to \\(0\\). It is surjective onto \\(W = \\{0, 1, 2, \\ldots\\}\\): the value \\(0\\) is attained at \\(n = 1\\), and any \\(k \\ge 1\\) is attained at the even number \\(n = 2k\\), since \\(f(2k) = k\\). So f is surjective only."
+  },
+  {
+   "hash": "46ed37a3f3e1f13c568c4fe1522fd1fec3121f7a8f622260ebf5bd162acfff3f",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "The coordinates of the foot of the perpendicular drawn from the point A\\((-2, 3, 5)\\) on the y-axis is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\((0, 0, 5)\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\((0, 3, 0)\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\((-2, 0, 5)\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\((-2, 0, 0)\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Every point of the y-axis has the form \\((0, t, 0)\\). The foot of the perpendicular from \\(A(-2, 3, 5)\\) is the point of the y-axis for which \\(\\overrightarrow{AF}\\) is perpendicular to the y-axis direction \\(\\hat{j}\\). With \\(F(0, t, 0)\\), \\(\\overrightarrow{AF} = \\left(2,\\ t - 3,\\ -5\\right)\\), and \\(\\overrightarrow{AF} \\cdot \\hat{j} = t - 3 = 0\\) gives \\(t = 3\\). Hence the foot is \\((0, 3, 0)\\). Equivalently: dropping a perpendicular onto the y-axis simply keeps the y-coordinate and zeroes the other two."
+  },
+  {
+   "hash": "4931c608f733070da8f903c2a23bd7f128cbd60eee2c0b47162159e6b02a3e46",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Determinant and its Properties",
+   "stem": "If A and B are invertible matrices of order \\(3 \\times 3\\) such that det (A) = 4 and \\(\\det [(AB)^{-1}] = \\frac{1}{20}\\), then det (B) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{1}{20}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{1}{5}\\)"
+    },
+    {
+     "label": "C",
+     "text": "20"
+    },
+    {
+     "label": "D",
+     "text": "5"
+    }
+   ],
+   "answer": "D",
+   "solution": "For invertible matrices, \\(\\det\\left(M^{-1}\\right) = \\frac{1}{\\det M}\\) and \\(\\det(AB) = \\det(A)\\det(B)\\). So \\(\\det\\left[(AB)^{-1}\\right] = \\frac{1}{\\det(A)\\det(B)}\\). We are given this equals \\(\\frac{1}{20}\\), so \\(\\det(A)\\det(B) = 20\\). With \\(\\det(A) = 4\\), \\(4\\det(B) = 20\\), hence \\(\\det(B) = 5\\)."
+  },
+  {
+   "hash": "ffc992b55ff4ffb031341c68f70bae9ce7f6ff4b39b8e3f041720cc9b7846a83",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "For real x, let \\(f(x) = x^3 + 5x + 1\\). Then :",
+   "options": [
+    {
+     "label": "A",
+     "text": "f is one-one but not onto on R"
+    },
+    {
+     "label": "B",
+     "text": "f is onto on R but not one-one"
+    },
+    {
+     "label": "C",
+     "text": "f is one-one and onto on R"
+    },
+    {
+     "label": "D",
+     "text": "f is neither one-one nor onto on R"
+    }
+   ],
+   "answer": "C",
+   "solution": "Differentiate: \\(f'(x) = 3x^2 + 5 \\ge 5 > 0\\) for every real \\(x\\), so \\(f\\) is strictly increasing on \\(R\\) and hence one-one. For ontoness, \\(f\\) is a continuous odd-degree polynomial, so \\(f(x) \\to \\infty\\) as \\(x \\to \\infty\\) and \\(f(x) \\to -\\infty\\) as \\(x \\to -\\infty\\); by the intermediate value theorem every real number is attained, so the range is all of \\(R\\). Hence f is one-one and onto on R."
+  },
+  {
+   "hash": "8b53d9b0b17d9ac628c1b2d5e8671e958959b99ac874dc5e2932811dc6926dc3",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "The values of \\(\\lambda\\) so that \\(f(x) = \\sin x - \\cos x - \\lambda x + C\\) decreases for all real values of x are :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(1 < \\lambda < \\sqrt{2}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\lambda \\ge 1\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\lambda \\ge \\sqrt{2}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\lambda < 1\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Here \\(f'(x) = \\cos x + \\sin x - \\lambda\\), and \\(f\\) decreases for every real \\(x\\) exactly when \\(f'(x) \\le 0\\) for every real \\(x\\), i.e. when \\(\\lambda \\ge \\sin x + \\cos x\\) for all \\(x\\). Writing \\(\\sin x + \\cos x = \\sqrt{2}\\sin\\left(x + \\frac{\\pi}{4}\\right)\\), the largest value the right-hand side can take is \\(\\sqrt{2}\\). So the condition holds for all \\(x\\) precisely when \\(\\lambda \\ge \\sqrt{2}\\)."
+  },
+  {
+   "hash": "cd8e5d239f050cc041029c01216d5265673e132968e656d79bb1fc48e9239e0f",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "If A and B are square matrices of same order such that AB = A and BA = B, then \\(A^2 + B^2\\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "A + B"
+    },
+    {
+     "label": "B",
+     "text": "BA"
+    },
+    {
+     "label": "C",
+     "text": "2 (A + B)"
+    },
+    {
+     "label": "D",
+     "text": "2BA"
+    }
+   ],
+   "answer": "A",
+   "solution": "Use each given relation to collapse a square. Since \\(AB = A\\), \\(A^2 = A \\cdot A = (AB)A = A(BA) = AB = A\\), the middle step using associativity and then \\(BA = B\\). Symmetrically, since \\(BA = B\\), \\(B^2 = B \\cdot B = (BA)B = B(AB) = BA = B\\). So \\(A\\) and \\(B\\) are both idempotent, and therefore \\(A^2 + B^2 = A + B\\)."
+  },
+  {
+   "hash": "b587d162edf55eb4f7e4e4b98263765fd4f475373821e9bb702e46239b0211ee",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Under Simple Curves",
+   "stem": "The area of the region enclosed by the curve \\(y = \\sqrt{x}\\) and the lines \\(x = 0\\) and \\(x = 4\\) and x-axis is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{16}{9}\\) sq. units"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{32}{9}\\) sq. units"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{16}{3}\\) sq. units"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{32}{3}\\) sq. units"
+    }
+   ],
+   "answer": "C",
+   "solution": "On \\([0, 4]\\) the curve \\(y = \\sqrt{x}\\) lies above the x-axis, so the region is bounded below by \\(y = 0\\) and the area is \\(\\int_0^4 \\sqrt{x}\\,dx\\). Integrating, \\(\\int_0^4 x^{1/2}\\,dx = \\left[\\frac{2}{3}x^{3/2}\\right]_0^4 = \\frac{2}{3}\\left(4^{3/2}\\right) = \\frac{2}{3}(8) = \\frac{16}{3}\\). So the area is \\(\\frac{16}{3}\\) sq. units."
+  },
+  {
+   "hash": "84969bea4175363c115287be3925e7b0b4bf483102a7ba8e0c6ba2a6a0d084ad",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals by Substitution",
+   "stem": "The value of \\(\\int\\limits_0^1 \\frac{dx}{e^x + e^{-x}}\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(-\\frac{\\pi}{4}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{\\pi}{4}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\tan^{-1} e - \\frac{\\pi}{4}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\tan^{-1} e\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Clear the negative exponent by multiplying numerator and denominator by \\(e^{x}\\): the integral becomes \\(\\int_0^1 \\frac{e^{x}\\,dx}{e^{2x} + 1}\\). Substituting \\(t = e^{x}\\), so \\(dt = e^{x}dx\\), the limits \\(x = 0, 1\\) become \\(t = 1, e\\), giving \\(\\int_1^{e} \\frac{dt}{1 + t^2} = \\left[\\tan^{-1}t\\right]_1^{e} = \\tan^{-1}e - \\tan^{-1}1\\). Since \\(\\tan^{-1}1 = \\frac{\\pi}{4}\\), the value is \\(\\tan^{-1}e - \\frac{\\pi}{4}\\)."
+  },
+  {
+   "hash": "854a808bf2d217a2a4dfb3fa069265e0636cdd9cc768e51ab3f05943795ad492",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "The corner points of the feasible region of a Linear Programming Problem are (0, 2), (3, 0), (6, 0), (6, 8) and (0, 5). If Z = ax + by; (a, b > 0) be the objective function, and maximum value of Z is obtained at (0, 2) and (3, 0), then the relation between a and b is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "a = b"
+    },
+    {
+     "label": "B",
+     "text": "a = 3b"
+    },
+    {
+     "label": "C",
+     "text": "b = 6a"
+    },
+    {
+     "label": "D",
+     "text": "3a = 2b"
+    }
+   ],
+   "answer": "D",
+   "solution": "When a linear objective function attains its optimum at two different corner points, it takes the same value at both. Evaluating, \\(Z(0, 2) = a(0) + b(2) = 2b\\) and \\(Z(3, 0) = a(3) + b(0) = 3a\\). Setting these equal gives \\(3a = 2b\\), which is the required relation. [Note: the data as printed is not self-consistent. With \\(a, b > 0\\) the corner \\((6, 8)\\) gives \\(Z = 6a + 8b\\), which is strictly larger than both \\(2b\\) and \\(3a\\), so the maximum can never occur at \\((0, 2)\\) and \\((3, 0)\\); the figures fit a question about the minimum. The relation asked for comes from equal values at the two named corners either way, so the answer is unaffected.]"
+  },
+  {
+   "hash": "f6417b70ee27cd48040f202e9ded225df73d03b4598d43db360cc5112120c93e",
+   "ref": "Q14",
+   "questionNumber": "14",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Integration as the Inverse of Differentiation",
+   "stem": "If \\(\\int e^{-3\\log x}\\, dx = f(x) + C\\), then f(x) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(e^{-3\\log x}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(e^{\\log\\left(\\frac{1}{x^3}\\right)}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{-1}{2x^2}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{-1}{4x^4}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Simplify the exponential first: \\(e^{-3\\log x} = e^{\\log\\left(x^{-3}\\right)} = x^{-3}\\). Then \\(\\int e^{-3\\log x}\\,dx = \\int x^{-3}\\,dx = \\frac{x^{-2}}{-2} + C = \\frac{-1}{2x^2} + C\\). Comparing with \\(f(x) + C\\) gives \\(f(x) = \\frac{-1}{2x^2}\\). (The choices \\(e^{-3\\log x}\\) and \\(e^{\\log\\left(1/x^3\\right)}\\) are just the integrand \\(x^{-3}\\) rewritten, not its integral.)"
+  },
+  {
+   "hash": "6de675949fb5cc4632e28f09db21ded26a93253a77ca1187c1bbb2b131b2f7ce",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Continuity",
+   "stem": "The function f defined by\n\n\\(f(x) = \\begin{cases} x, & \\text{if } x \\le 1 \\\\ 5, & \\text{if } x > 1 \\end{cases}\\)\n\nis **not** continuous at :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(x = 0\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(x = 1\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(x = 2\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(x = 5\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "On \\((-\\infty, 1]\\) the function is the polynomial \\(x\\) and on \\((1, \\infty)\\) it is the constant \\(5\\); both are continuous throughout their own pieces, so the only point where continuity can break is the join. At \\(x = 1\\), \\(\\lim_{x \\to 1^-} f(x) = 1 = f(1)\\) but \\(\\lim_{x \\to 1^+} f(x) = 5\\), so the two one-sided limits disagree and f is not continuous at \\(x = 1\\). (At \\(x = 0\\) it is the polynomial, and at \\(x = 2\\) and \\(x = 5\\) it is the constant \\(5\\), so it is continuous at all three of those.)"
+  },
+  {
+   "hash": "02050f50326d7c7711b6f30fc396975a61bdc1dfe568f332d1b3cdf25e67c867",
+   "ref": "Q16",
+   "questionNumber": "16",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Variables Separable",
+   "stem": "The solution of the differential equation \\(\\frac{dy}{dx} = \\frac{-x}{y}\\) represents family of :",
+   "options": [
+    {
+     "label": "A",
+     "text": "parabolas"
+    },
+    {
+     "label": "B",
+     "text": "circles"
+    },
+    {
+     "label": "C",
+     "text": "ellipses"
+    },
+    {
+     "label": "D",
+     "text": "hyperbolas"
+    }
+   ],
+   "answer": "B",
+   "solution": "The equation \\(\\frac{dy}{dx} = \\frac{-x}{y}\\) separates: \\(y\\,dy = -x\\,dx\\). Integrating both sides, \\(\\frac{y^2}{2} = -\\frac{x^2}{2} + c_1\\), i.e. \\(x^2 + y^2 = c\\) where \\(c = 2c_1 > 0\\). For each positive \\(c\\) this is a circle centred at the origin of radius \\(\\sqrt{c}\\), so the solution represents a family of concentric circles."
+  },
+  {
+   "hash": "fee92ffc6039e35047318242a6cf8c538cb3f9dfca62ac0447a0c255649f27fe",
+   "ref": "Q17",
+   "questionNumber": "17",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Addition of Vectors",
+   "stem": "If the sides AB and AC of \\(\\Delta\\) ABC are represented by vectors \\(\\hat{j} + \\hat{k}\\) and \\(3\\hat{i} - \\hat{j} + 4\\hat{k}\\) respectively, then the length of the median through A on BC is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2\\sqrt{2}\\) units"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\sqrt{18}\\) units"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{\\sqrt{34}}{2}\\) units"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{\\sqrt{48}}{2}\\) units"
+    }
+   ],
+   "answer": "C",
+   "solution": "Let \\(D\\) be the mid-point of \\(BC\\), so \\(AD\\) is the median through \\(A\\). Using the mid-point property, \\(\\vec{AD} = \\frac{1}{2}\\left(\\vec{AB} + \\vec{AC}\\right) = \\frac{1}{2}\\left[(\\hat{j} + \\hat{k}) + (3\\hat{i} - \\hat{j} + 4\\hat{k})\\right] = \\frac{1}{2}\\left(3\\hat{i} + 5\\hat{k}\\right)\\). Its length is \\(\\frac{1}{2}\\sqrt{3^2 + 0^2 + 5^2} = \\frac{\\sqrt{34}}{2}\\) units."
+  },
+  {
+   "hash": "0f816e01babb96c1a93aa877ea542457e46c2fb328bd10c93911948beb677c96",
+   "ref": "Q18",
+   "questionNumber": "18",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "If \\(f(x) = 2x + \\cos x\\), then f(x) :",
+   "options": [
+    {
+     "label": "A",
+     "text": "has a maxima at \\(x = \\pi\\)"
+    },
+    {
+     "label": "B",
+     "text": "has a minima at \\(x = \\pi\\)"
+    },
+    {
+     "label": "C",
+     "text": "is an increasing function"
+    },
+    {
+     "label": "D",
+     "text": "is a decreasing function"
+    }
+   ],
+   "answer": "C",
+   "solution": "Differentiating, \\(f'(x) = 2 - \\sin x\\). Since \\(\\sin x \\le 1\\) for every real \\(x\\), we get \\(f'(x) \\ge 1 > 0\\) everywhere. So \\(f\\) is strictly increasing on the whole real line — and, \\(f'\\) never being zero, it has no maximum or minimum anywhere, in particular none at \\(x = \\pi\\), where \\(f'(\\pi) = 2 \\ne 0\\). Hence f(x) is an increasing function."
+  },
+  {
+   "hash": "e8a2b13065bdeeae23aa6a1d96c754986a18b59fe02713a84d18d3fe7e545dad",
+   "ref": "Q19",
+   "questionNumber": "19",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Independent Events",
+   "stem": "**Assertion (A) :** If A and B are two events such that \\(P(A \\cap B) = 0\\), then A and B are independent events.\n\n**Reason (R) :** Two events are independent if the occurrence of one does not effect the occurrence of the other.",
+   "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false, but Reason (R) is true."
+    }
+   ],
+   "answer": "D",
+   "solution": "The Reason is a correct statement — that one event's occurrence does not affect the other's is precisely what independence means, and formally \\(P(A \\cap B) = P(A)P(B)\\). The Assertion, though, is false: \\(P(A \\cap B) = 0\\) says \\(A\\) and \\(B\\) are mutually exclusive, which is a different property and in fact usually rules independence out. If they were independent we would need \\(P(A)P(B) = 0\\), forcing one of them to be impossible. A counter-example: rolling a die once with \\(A\\) the event of an even score and \\(B\\) of an odd score gives \\(P(A \\cap B) = 0\\) but \\(P(A)P(B) = \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4} \\ne 0\\), so they are not independent. Hence Assertion (A) is false, but Reason (R) is true."
+  },
+  {
+   "hash": "84eb414b1bb695584803efc2a5d9b1948e8898bc1427cd3b20c3d42f2164c655",
+   "ref": "Q20",
+   "questionNumber": "20",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "**Assertion (A) :** In a Linear Programming Problem, if the feasible region is empty, then the Linear Programming Problem has no solution.\n\n**Reason (R) :** A feasible region is defined as the region that satisfies all the constraints.",
+   "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false, but Reason (R) is true."
+    }
+   ],
+   "answer": "B",
+   "solution": "Both statements are true. The Reason states the standard definition: the feasible region is the set of points satisfying every constraint simultaneously. The Assertion is also true, because the optimal value of the objective function is sought only over feasible points, so if no point satisfies all the constraints there is nothing to optimise and the problem has no solution. But the Reason merely defines the term \"feasible region\"; it does not by itself explain why an empty one leaves the problem unsolvable — that extra step is the observation that the search is confined to feasible points. So both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+  },
+  {
+   "hash": "096c082f7c973fe4cc37110d22fdfc21fb2de62de9f2cb39541214bb9f43a196",
+   "ref": "Q21",
+   "questionNumber": "21",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "If \\(A = \\begin{bmatrix} 2 & -2 \\\\ -2 & 2 \\end{bmatrix}\\) and \\(A^2 = kA\\), then find the value of k.",
+   "solution": "First compute \\(A^2\\):\n\n\\(A^2 = \\begin{bmatrix} 2 & -2 \\\\ -2 & 2 \\end{bmatrix}\\begin{bmatrix} 2 & -2 \\\\ -2 & 2 \\end{bmatrix} = \\begin{bmatrix} 4 + 4 & -4 - 4 \\\\ -4 - 4 & 4 + 4 \\end{bmatrix} = \\begin{bmatrix} 8 & -8 \\\\ -8 & 8 \\end{bmatrix}\\).\n\nAlso \\(kA = \\begin{bmatrix} 2k & -2k \\\\ -2k & 2k \\end{bmatrix}\\).\n\nEquating \\(A^2 = kA\\) entry by entry gives \\(2k = 8\\) (and \\(-2k = -8\\)), so \\(k = 4\\). All four entries agree on the same value, so the equation is consistent and \\(k = 4\\)."
+  },
+  {
+   "hash": "898548fc91f1b8bed400d64d302597934906dff1a03293b4aa003da7bdcb2d6a",
+   "ref": "Q22a",
+   "questionNumber": "22 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Properties of Inverse Trigonometric Functions",
+   "stem": "Simplify \\(\\sin^{-1}\\left(\\frac{x}{\\sqrt{1 + x^2}}\\right)\\).",
+   "solution": "Substitute \\(x = \\tan\\theta\\), so that \\(\\theta = \\tan^{-1}x\\) and, as \\(x\\) runs over all the reals, \\(\\theta\\) runs over \\(\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\). On that interval \\(\\cos\\theta > 0\\), so \\(\\sqrt{1 + x^2} = \\sqrt{1 + \\tan^2\\theta} = \\sec\\theta\\) with the positive sign. The argument therefore simplifies to \\(\\frac{\\tan\\theta}{\\sec\\theta} = \\sin\\theta\\), and the expression becomes \\(\\sin^{-1}(\\sin\\theta)\\). Since \\(\\theta\\) already lies inside the principal branch \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\) of \\(\\sin^{-1}\\), this is simply \\(\\theta\\). Hence \\(\\sin^{-1}\\left(\\frac{x}{\\sqrt{1 + x^2}}\\right) = \\tan^{-1}x\\)."
+  },
+  {
+   "hash": "501ab23ac7f5453d84b5de8a9d5af6d06d381f0bbf960273113f460dd37eab71",
+   "ref": "Q22b",
+   "questionNumber": "22 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "Find domain of \\(\\sin^{-1}\\sqrt{x - 1}\\).",
+   "solution": "Two conditions must hold together. The square root requires \\(x - 1 \\ge 0\\), and \\(\\sin^{-1}\\) requires its argument to lie in \\([-1, 1]\\), i.e. \\(-1 \\le \\sqrt{x - 1} \\le 1\\). A square root is never negative, so the left-hand inequality is automatic and the binding condition is \\(\\sqrt{x - 1} \\le 1\\), which on squaring gives \\(x - 1 \\le 1\\). Combining, \\(0 \\le x - 1 \\le 1\\), that is \\(1 \\le x \\le 2\\). Hence the domain is \\([1, 2]\\)."
+  },
+  {
+   "hash": "bf879c8f82f16d0da74d3166ad6b1719ffaa1504768d0b83bea23d83a18cb608",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Under Simple Curves",
+   "stem": "Calculate the area of the region bounded by the curve \\(\\frac{x^2}{9} + \\frac{y^2}{4} = 1\\) and the x-axis using integration.",
+   "solution": "The curve is the ellipse \\(\\frac{x^2}{9} + \\frac{y^2}{4} = 1\\), with \\(a = 3\\) and \\(b = 2\\), meeting the x-axis at \\((-3, 0)\\) and \\((3, 0)\\). The x-axis divides it into two congruent halves, and the region bounded by the curve and the x-axis is the upper half, on which \\(y = \\frac{2}{3}\\sqrt{9 - x^2}\\). The region is symmetric about the y-axis, so\n\\(A = 2\\int_0^3 \\frac{2}{3}\\sqrt{9 - x^2}\\,dx = \\frac{4}{3}\\int_0^3 \\sqrt{9 - x^2}\\,dx\\).\nUsing \\(\\int\\sqrt{a^2 - x^2}\\,dx = \\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a}\\) with \\(a = 3\\),\n\\(A = \\frac{4}{3}\\left[\\frac{x}{2}\\sqrt{9 - x^2} + \\frac{9}{2}\\sin^{-1}\\frac{x}{3}\\right]_0^3 = \\frac{4}{3}\\left[\\left(0 + \\frac{9}{2}\\sin^{-1}1\\right) - 0\\right] = \\frac{4}{3}\\cdot\\frac{9}{2}\\cdot\\frac{\\pi}{2}\\).\nHence the area is \\(3\\pi\\) sq. units. (As a check, this is half the area \\(\\pi ab = 6\\pi\\) of the whole ellipse.)"
+  },
+  {
+   "hash": "1e37096b30cb0aa2b4b18759545f16949c8cd19500d81f47af22c2562ff17aff",
+   "ref": "Q24a",
+   "questionNumber": "24 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "Find the least value of 'a' so that \\(f(x) = 2x^2 - ax + 3\\) is an increasing function on \\([2, 4]\\).",
+   "solution": "Differentiating, \\(f'(x) = 4x - a\\). On the interval \\([2, 4]\\) we have \\(2 \\le x \\le 4\\), so \\(8 - a \\le 4x - a \\le 16 - a\\); that is, \\(f'\\) is smallest at the left endpoint, where it equals \\(8 - a\\). For \\(f\\) to be increasing on \\([2, 4]\\) we need \\(f'(x) \\ge 0\\) throughout, and since the smallest value controls this, the condition is \\(8 - a \\ge 0\\), i.e. \\(a \\le 8\\). The admissible values of \\(a\\) are therefore all of \\((-\\infty, 8]\\). This set is unbounded below, so it has no smallest member: the least value of 'a' does not exist. [Note: the set of admissible values does have a greatest member, \\(a = 8\\), so a question asking for the greatest value of 'a' would have the answer 8. As printed, though, the question asks for the least value, and for an increasing function no least value exists — which is what the marking scheme concludes.]"
+  },
+  {
+   "hash": "e32421fafc1491a60afa2d9c503a17da93cfddfe9fb408a559eefcbb96970470",
+   "ref": "Q24b",
+   "questionNumber": "24 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "If \\(f(x) = x + \\frac{1}{x}\\), \\(x \\ge 1\\), show that f is an increasing function.",
+   "solution": "Differentiating, \\(f'(x) = 1 - \\frac{1}{x^2} = \\frac{x^2 - 1}{x^2}\\). For \\(x \\ge 1\\) the denominator \\(x^2\\) is positive and the numerator satisfies \\(x^2 - 1 \\ge 0\\), since \\(x^2 \\ge 1\\). Hence \\(f'(x) \\ge 0\\) for every \\(x \\ge 1\\), with equality only at the single endpoint \\(x = 1\\). A function whose derivative is non-negative throughout an interval is increasing on it, so \\(f\\) is an increasing function on \\([1, \\infty)\\)."
+  },
+  {
+   "hash": "fc3bd1a7f261370cef996668995b99a8013fb62521da06b80b28e90ed58217fb",
+   "ref": "Q25",
+   "questionNumber": "25",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "A cylindrical water container has developed a leak at the bottom. The water is leaking at the rate of \\(5\\ \\text{cm}^3/\\text{s}\\) from the leak. If the radius of the container is 15 cm, find the rate at which the height of water is decreasing inside the container, when the height of water is 2 metres.",
+   "solution": "Let \\(V\\), \\(r\\) and \\(h\\) be the volume, radius and water height in the cylinder. Water is leaving, so \\(\\frac{dV}{dt} = -5\\ \\text{cm}^3/\\text{s}\\).\n\nThe radius is fixed at \\(r = 15\\) cm, so \\(V = \\pi r^2 h = \\pi (15)^2 h = 225\\pi h\\).\n\nDifferentiating with respect to \\(t\\), \\(\\frac{dV}{dt} = 225\\pi\\,\\frac{dh}{dt}\\), so \\(-5 = 225\\pi\\,\\frac{dh}{dt}\\) and\n\n\\(\\frac{dh}{dt} = -\\frac{5}{225\\pi} = -\\frac{1}{45\\pi}\\ \\text{cm/s}\\).\n\nSo the height is decreasing at the rate of \\(\\frac{1}{45\\pi}\\ \\text{cm/s}\\) (about \\(0{\\cdot}0071\\) cm/s). Note that the stated water height of 2 metres is not needed: for a cylinder the cross-section is constant, so \\(\\frac{dh}{dt}\\) does not depend on \\(h\\) at all — the answer is the same at every depth."
+  },
+  {
+   "hash": "540241433084db24ed25605249a3bf664fbb863f3191af8a9be59ffbc8cf7858",
+   "ref": "Q26",
+   "questionNumber": "26",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Substitution",
+   "stem": "Find :\n\n\\(\\int \\frac{\\sqrt{x}}{1 + \\sqrt{x^{3/2}}}\\, dx\\)",
+   "solution": "Let \\(I = \\int \\frac{\\sqrt{x}}{1 + \\sqrt{x^{3/2}}}\\,dx\\).\n\nPut \\(x^{3/2} = t\\), so \\(\\frac{3}{2}\\sqrt{x}\\,dx = dt\\), i.e. \\(\\sqrt{x}\\,dx = \\frac{2}{3}\\,dt\\). Then\n\n\\(I = \\frac{2}{3}\\int \\frac{dt}{1 + \\sqrt{t}}\\).\n\nNow put \\(\\sqrt{t} = z\\), so \\(t = z^2\\) and \\(dt = 2z\\,dz\\):\n\n\\(I = \\frac{2}{3}\\int \\frac{2z}{1 + z}\\,dz = \\frac{4}{3}\\int \\frac{z}{1 + z}\\,dz = \\frac{4}{3}\\int \\left(1 - \\frac{1}{1 + z}\\right)dz = \\frac{4}{3}\\left[z - \\log|1 + z|\\right] + C\\).\n\nSubstituting back \\(z = \\sqrt{t}\\) and \\(t = x^{3/2}\\),\n\n\\(I = \\frac{4}{3}\\left[\\sqrt{t} - \\log\\left|1 + \\sqrt{t}\\right|\\right] + C = \\frac{4}{3}\\left[\\sqrt{x^{3/2}} - \\log\\left|1 + \\sqrt{x^{3/2}}\\right|\\right] + C\\),\n\nwhich may also be written as \\(\\frac{4}{3}\\left[x^{3/4} - \\log\\left(1 + x^{3/4}\\right)\\right] + C\\) for \\(x > 0\\)."
+  },
+  {
+   "hash": "c19d5895e1d6f118c605cdcf684e6d9342d231ecbe8d3ed1ee273401e64714ca",
+   "ref": "Q27",
+   "questionNumber": "27",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the distance of the point \\((-1, -5, -10)\\) from the point of intersection of the lines \\(\\frac{x - 1}{2} = \\frac{y - 2}{3} = \\frac{z - 3}{4}\\) and \\(\\frac{x - 4}{5} = \\frac{y - 1}{2} = z\\).",
+   "solution": "Give each line its own parameter, since a shared one would wrongly force the two points to correspond. Putting \\(\\frac{x - 1}{2} = \\frac{y - 2}{3} = \\frac{z - 3}{4} = \\lambda\\), a general point of the first line is \\((2\\lambda + 1,\\; 3\\lambda + 2,\\; 4\\lambda + 3)\\); and writing the second line as \\(\\frac{x - 4}{5} = \\frac{y - 1}{2} = \\frac{z - 0}{1} = \\mu\\), a general point of it is \\((5\\mu + 4,\\; 2\\mu + 1,\\; \\mu)\\).\nFor the lines to meet, all three coordinates must agree. From the x- and y-coordinates, \\(2\\lambda + 1 = 5\\mu + 4\\) and \\(3\\lambda + 2 = 2\\mu + 1\\), i.e. \\(2\\lambda - 5\\mu = 3\\) and \\(3\\lambda - 2\\mu = -1\\). Solving this pair gives \\(\\lambda = \\mu = -1\\). These also satisfy the third equation \\(4\\lambda + 3 = \\mu\\), since \\(4(-1) + 3 = -1\\), so the lines really do intersect.\nSubstituting \\(\\lambda = -1\\) gives the point of intersection \\((-1, -1, -1)\\). The required distance is therefore\n\\(\\sqrt{(-1 + 1)^2 + (-1 + 5)^2 + (-1 + 10)^2} = \\sqrt{0 + 16 + 81} = \\sqrt{97}\\) units."
+  },
+  {
+   "hash": "3e41aa95f7b6559759b5ed10ae865895dc69a4f135eed50344307ad4dab7259d",
+   "ref": "Q28a",
+   "questionNumber": "28 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "If \\(f : R^+ \\to R\\) is defined as \\(f(x) = \\log_a x\\) \\((a > 0\\) and \\(a \\ne 1)\\), prove that f is a bijection.\n\n(\\(R^+\\) is a set of all positive real numbers.)",
+   "solution": "Take the two halves separately. For one-one: let \\(x_1, x_2 \\in R^{+}\\) with \\(f(x_1) = f(x_2)\\), so \\(\\log_a x_1 = \\log_a x_2\\). Raising \\(a\\) to the power of each side, and using \\(a^{\\log_a x} = x\\) (legitimate because \\(a > 0\\) and \\(a \\ne 1\\)), gives \\(x_1 = x_2\\). Hence \\(f\\) is one-one.\nFor onto: let \\(y\\) be any element of the codomain \\(R\\), and put \\(x = a^{y}\\). Since \\(a > 0\\), \\(a^{y} > 0\\), so \\(x\\) genuinely lies in the domain \\(R^{+}\\); and \\(f(x) = \\log_a\\left(a^{y}\\right) = y\\). So every real \\(y\\) has a pre-image in \\(R^{+}\\) and \\(f\\) is onto.\nBeing both one-one and onto, \\(f\\) is a bijection."
+  },
+  {
+   "hash": "4222dc8ba6eb53bfdd037533193234cfe520d6daf92d3c578ecd93b116d33991",
+   "ref": "Q28b",
+   "questionNumber": "28 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Types of Relations",
+   "stem": "Let \\(A = \\{1, 2, 3\\}\\) and \\(B = \\{4, 5, 6\\}\\). A relation R from A to B is defined as \\(R = \\{(x, y) : x + y = 6, x \\in A, y \\in B\\}\\).\n\n(i) Write all elements of R.\n\n(ii) Is R a function ? Justify.\n\n(iii) Determine domain and range of R.",
+   "solution": "(i) Test each \\(x \\in A\\) in turn against \\(x + y = 6\\), remembering that \\(y\\) must lie in \\(B = \\{4, 5, 6\\}\\). For \\(x = 1\\), \\(y = 5 \\in B\\); for \\(x = 2\\), \\(y = 4 \\in B\\); for \\(x = 3\\), \\(y = 3 \\notin B\\), so that pair is not admitted. Hence \\(R = \\{(1, 5), (2, 4)\\}\\).\n(ii) No, \\(R\\) is not a function. A function from \\(A\\) to \\(B\\) must assign an image to every element of \\(A\\), and \\(3 \\in A\\) has no image under \\(R\\).\n(iii) The domain is the set of first coordinates and the range the set of second coordinates, so domain of \\(R = \\{1, 2\\}\\) and range of \\(R = \\{4, 5\\}\\)."
+  },
+  {
+   "hash": "e3c5ad6a38bbb03bc7b265c70d6d77934b2e4717816dcde3a81f33469eb51c0b",
+   "ref": "Q29a",
+   "questionNumber": "29 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "The probability distribution of a random variable X is given by :\n\n| X | 0 | 1 | 2 | 3 |\n|---|---|---|---|---|\n| P(X) | p | \\(\\frac{p}{3}\\) | \\(\\frac{p}{6}\\) | \\(\\frac{p}{12}\\) |\n\n(i) Determine the value of p.\n\n(ii) Calculate \\(P(X \\ge 1)\\).\n\n(iii) Calculate expectation of X, i.e. E(X)",
+   "solution": "[CBSE marking scheme: part (ii) is printed as \\(P(X \\ge 1) = 1 - P(X = 1) = 1 - \\frac{p}{3} = 1 - \\frac{12}{19} = \\frac{7}{19}\\). Two labels there are wrong — it should be \\(1 - P(X = 0) = 1 - p\\) — and the printed expression \\(1 - \\frac{p}{3}\\) is in fact \\(1 - \\frac{4}{19} = \\frac{15}{19}\\), not \\(\\frac{7}{19}\\). The scheme's final answer \\(\\frac{7}{19}\\) is nevertheless correct, because the arithmetic it actually carried out was \\(1 - p\\). The correct route is written out below.]\n\n(i) The probabilities of a distribution must sum to \\(1\\):\n\n\\(p + \\frac{p}{3} + \\frac{p}{6} + \\frac{p}{12} = 1\\).\n\nTaking \\(12\\) as the common denominator, \\(\\frac{12p + 4p + 2p + p}{12} = \\frac{19p}{12} = 1\\), so \\(p = \\frac{12}{19}\\).\n\n(ii) The complement of \\(X \\ge 1\\) is \\(X = 0\\), whose probability is \\(p\\). Hence\n\n\\(P(X \\ge 1) = 1 - P(X = 0) = 1 - p = 1 - \\frac{12}{19} = \\frac{7}{19}\\).\n\n(iii) \\(E(X) = \\sum x\\,P(x) = 0(p) + 1\\left(\\frac{p}{3}\\right) + 2\\left(\\frac{p}{6}\\right) + 3\\left(\\frac{p}{12}\\right) = p\\left(\\frac{1}{3} + \\frac{1}{3} + \\frac{1}{4}\\right) = \\frac{11p}{12}\\).\n\nWith \\(p = \\frac{12}{19}\\), \\(E(X) = \\frac{11}{12} \\times \\frac{12}{19} = \\frac{11}{19}\\)."
+  },
+  {
+   "hash": "2f7a8e2831bc10707aa296e8b13f94da004cef95ba2f8406543f196cd995cbd0",
+   "ref": "Q29b",
+   "questionNumber": "29 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "In a city, a survey was conducted among residents about their preferred mode of commuting. It was found that 50% people preferred using public transport, 35% preferred using a bicycle and 20% use both public transport and a bicycle. If a person is selected at random, find the probability that :\n\n(i) The person uses only public transport.\n\n(ii) The person uses a bicycle, given that they also use the public transport.\n\n(iii) The person uses neither public transport nor a bicycle.",
+   "solution": "Let \\(T\\) be the event 'the person uses public transport' and \\(B\\) the event 'the person uses a bicycle'. The survey gives \\(P(T) = \\frac{50}{100}\\), \\(P(B) = \\frac{35}{100}\\) and \\(P(T \\cap B) = \\frac{20}{100}\\).\n\n(i) 'Only public transport' means \\(T\\) but not \\(B\\):\n\n\\(P(T \\text{ only}) = P(T) - P(T \\cap B) = \\frac{50}{100} - \\frac{20}{100} = \\frac{30}{100} = 0{\\cdot}3\\).\n\n(ii) By the definition of conditional probability,\n\n\\(P(B \\mid T) = \\frac{P(T \\cap B)}{P(T)} = \\frac{20/100}{50/100} = \\frac{20}{50} = \\frac{2}{5} = 0{\\cdot}4\\).\n\n(iii) 'Neither' is the complement of 'at least one', so use De Morgan's law and the addition rule:\n\n\\(P\\left(T' \\cap B'\\right) = 1 - P(T \\cup B) = 1 - \\left[P(T) + P(B) - P(T \\cap B)\\right] = 1 - \\left[\\frac{50}{100} + \\frac{35}{100} - \\frac{20}{100}\\right] = 1 - \\frac{65}{100} = \\frac{35}{100} = 0{\\cdot}35\\)."
+  },
+  {
+   "hash": "630203ebd2b20a47c663c2c08eaf5531bfa151bacca4a5842e8843eaf75e9adc",
+   "ref": "Q30a",
+   "questionNumber": "30 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Continuity",
+   "stem": "Find k so that\n\n\\(f(x) = \\begin{cases} \\frac{x^2 - 2x - 3}{x + 1}, & x \\ne -1 \\\\ k, & x = -1 \\end{cases}\\)\n\nis continuous at \\(x = -1\\).",
+   "solution": "For every \\(x \\ne -1\\) the numerator factorises as \\(x^2 - 2x - 3 = (x - 3)(x + 1)\\), so the offending factor cancels and\n\\(\\lim_{x \\to -1}\\frac{x^2 - 2x - 3}{x + 1} = \\lim_{x \\to -1}\\frac{(x - 3)(x + 1)}{x + 1} = \\lim_{x \\to -1}(x - 3) = -4\\).\nThe value of the function at the point is \\(f(-1) = k\\). Continuity at \\(x = -1\\) requires the limit and the value to agree, so \\(k = -4\\)."
+  },
+  {
+   "hash": "ca557484731970837d7faab45beaddc2f6a52f8666822df8869f73923e845b52",
+   "ref": "Q30b",
+   "questionNumber": "30 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "Check the differentiability of function \\(f(x) = x|x|\\) at \\(x = 0\\).",
+   "solution": "Removing the modulus, \\(f(x) = x|x| = \\begin{cases} -x^2, & x \\le 0 \\\\ x^2, & x > 0 \\end{cases}\\), and in particular \\(f(0) = 0\\). Test the two one-sided derivatives at the origin.\n\\(\\text{LHD} = \\lim_{h \\to 0}\\frac{f(0 - h) - f(0)}{-h} = \\lim_{h \\to 0}\\frac{-h^2 - 0}{-h} = \\lim_{h \\to 0} h = 0\\).\n\\(\\text{RHD} = \\lim_{h \\to 0}\\frac{f(0 + h) - f(0)}{h} = \\lim_{h \\to 0}\\frac{h^2 - 0}{h} = \\lim_{h \\to 0} h = 0\\).\nSince the left-hand and right-hand derivatives both exist and are equal, \\(f\\) is differentiable at \\(x = 0\\), with \\(f'(0) = 0\\)."
+  },
+  {
+   "hash": "76c929731609bfd7a316e4a46b2b721a553a933ffb8e40428538b7c491b75003",
+   "ref": "Q31",
+   "questionNumber": "31",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "For the given graph of a Linear Programming Problem, write all the constraints satisfying the given feasible region.",
+   "figureNote": "REQUIRED — the question is nothing but the printed graph: a shaded feasible region O(0, 0), A(0, 200), B(50, 250), C(150, 150), D(200, 0) with the bounding lines drawn, and the stem supplies no coordinates or equations at all. Page idx 14.",
+   "imageAttached": true,
+   "solution": "The shaded feasible region in the graph is the polygon with vertices \\(O(0, 0)\\), \\(A(0, 200)\\), \\(B(50, 250)\\), \\(C(150, 150)\\) and \\(D(200, 0)\\). Each of its slanted edges lies on a line, and the constraint is the half-plane on the side that contains the region (test with the origin, which lies in the region).\n\nEdge \\(AB\\), through \\((0, 200)\\) and \\((50, 250)\\): the slope is \\(\\frac{250 - 200}{50 - 0} = 1\\), so \\(y - 200 = 1(x - 0)\\), i.e. \\(-x + y = 200\\). At the origin \\(-0 + 0 = 0 \\le 200\\), so the constraint is \\(-x + y \\le 200\\).\n\nEdge \\(BC\\), through \\((50, 250)\\) and \\((150, 150)\\): the slope is \\(\\frac{150 - 250}{150 - 50} = -1\\), so \\(y - 250 = -(x - 50)\\), i.e. \\(x + y = 300\\). At the origin \\(0 \\le 300\\), so the constraint is \\(x + y \\le 300\\).\n\nEdge \\(CD\\), through \\((150, 150)\\) and \\((200, 0)\\): the slope is \\(\\frac{0 - 150}{200 - 150} = -3\\), so \\(y - 0 = -3(x - 200)\\), i.e. \\(3x + y = 600\\). At the origin \\(0 \\le 600\\), so the constraint is \\(3x + y \\le 600\\).\n\nThe remaining two edges are the axes themselves, \\(OA\\) along \\(x = 0\\) and \\(OD\\) along \\(y = 0\\), giving the non-negativity restrictions.\n\nHence the constraints are\n\n\\(-x + y \\le 200\\), \\(x + y \\le 300\\), \\(3x + y \\le 600\\), \\(x \\ge 0\\), \\(y \\ge 0\\)."
+  },
+  {
+   "hash": "da9be612889a5234577f3d170be3cd4bf9665508b64abbd7cd2a02dcbce05fc1",
+   "ref": "Q32",
+   "questionNumber": "32",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "The relation between the height of the plant (y cm) with respect to exposure to sunlight is governed by the equation \\(y = 4x - \\frac{1}{2}x^2\\), where x is the number of days exposed to sunlight.\n\n(i) Find the rate of growth of the plant with respect to sunlight.\n\n(ii) In how many days will the plant attain its maximum height ? What is the maximum height ?",
+   "solution": "(i) The rate of growth of the plant with respect to sunlight is the derivative of the height with respect to the number of days of exposure. From \\(y = 4x - \\frac{1}{2}x^2\\),\n\\(\\frac{dy}{dx} = 4 - x\\) cm per day of exposure.\n(ii) The height is greatest where this rate vanishes, so set \\(\\frac{dy}{dx} = 0\\), giving \\(4 - x = 0\\), i.e. \\(x = 4\\) days. To confirm it is a maximum and not a minimum, \\(\\frac{d^2y}{dx^2} = -1 < 0\\), so the stationary point is indeed a point of maximum.\nThe maximum height is the value of \\(y\\) there: \\(y(4) = 4(4) - \\frac{1}{2}(4)^2 = 16 - \\frac{1}{2}(16) = 16 - 8 = 8\\) cm.\nSo the plant attains its maximum height in 4 days, and that maximum height is 8 cm."
+  },
+  {
+   "hash": "5a100023a9828ae8783bccead0b8324467b2fe60c85319fa3faf3d210d8f23a7",
+   "ref": "Q33a",
+   "questionNumber": "33 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "Show that the area of a parallelogram whose diagonals are represented by \\(\\vec{a}\\) and \\(\\vec{b}\\) is given by \\(\\frac{1}{2}|\\vec{a} \\times \\vec{b}|\\). Also find the area of a parallelogram whose diagonals are \\(2\\hat{i} - \\hat{j} + \\hat{k}\\) and \\(\\hat{i} + 3\\hat{j} - \\hat{k}\\).",
+   "solution": "[CBSE marking scheme: its opening line names the diagonals as \\(\\overrightarrow{AB} = \\vec{a}\\) and \\(\\overrightarrow{BD} = \\vec{b}\\), but \\(AB\\) is a side of parallelogram \\(ABCD\\), not a diagonal — the diagonal drawn from \\(A\\) is \\(AC\\). The slip is one letter and the scheme contradicts it immediately, since its very next line uses \\(\\overrightarrow{AB}\\) as a side when it writes \\(\\overrightarrow{AB} = \\frac{1}{2}\\left(\\vec{a} - \\vec{b}\\right)\\), and its own figure marks \\(\\vec{a}\\) along \\(AC\\). Reading the first diagonal as \\(\\overrightarrow{AC} = \\vec{a}\\), everything that follows is correct.]\nLet \\(ABCD\\) be a parallelogram whose diagonals are \\(\\overrightarrow{AC} = \\vec{a}\\) and \\(\\overrightarrow{BD} = \\vec{b}\\). Because \\(\\overrightarrow{BC} = \\overrightarrow{AD}\\) in a parallelogram,\n\\(\\vec{a} = \\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AB} + \\overrightarrow{AD}\\), and \\(\\vec{b} = \\overrightarrow{BD} = \\overrightarrow{BA} + \\overrightarrow{AD} = \\overrightarrow{AD} - \\overrightarrow{AB}\\).\nAdding and subtracting these two gives the sides in terms of the diagonals:\n\\(\\overrightarrow{AD} = \\frac{1}{2}\\left(\\vec{a} + \\vec{b}\\right)\\) and \\(\\overrightarrow{AB} = \\frac{1}{2}\\left(\\vec{a} - \\vec{b}\\right)\\).\nThe area of a parallelogram is the magnitude of the cross product of two adjacent sides, so\n\\(\\text{Area} = \\left|\\overrightarrow{AB} \\times \\overrightarrow{AD}\\right| = \\left|\\frac{1}{2}\\left(\\vec{a} - \\vec{b}\\right) \\times \\frac{1}{2}\\left(\\vec{a} + \\vec{b}\\right)\\right| = \\frac{1}{4}\\left|\\vec{a} \\times \\vec{a} + \\vec{a} \\times \\vec{b} - \\vec{b} \\times \\vec{a} - \\vec{b} \\times \\vec{b}\\right|\\).\nNow \\(\\vec{a} \\times \\vec{a} = \\vec{b} \\times \\vec{b} = \\vec{0}\\), and \\(-\\vec{b} \\times \\vec{a} = \\vec{a} \\times \\vec{b}\\), so the bracket collapses to \\(2\\left(\\vec{a} \\times \\vec{b}\\right)\\) and\n\\(\\text{Area} = \\frac{1}{4}\\left|2\\left(\\vec{a} \\times \\vec{b}\\right)\\right| = \\frac{1}{2}\\left|\\vec{a} \\times \\vec{b}\\right|\\), as required.\nFor the numerical part, \\(\\vec{a} = 2\\hat{i} - \\hat{j} + \\hat{k}\\) and \\(\\vec{b} = \\hat{i} + 3\\hat{j} - \\hat{k}\\), so\n\\(\\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & -1 & 1 \\\\ 1 & 3 & -1 \\end{vmatrix} = \\hat{i}(1 - 3) - \\hat{j}(-2 - 1) + \\hat{k}(6 + 1) = -2\\hat{i} + 3\\hat{j} + 7\\hat{k}\\).\nIts magnitude is \\(\\left|\\vec{a} \\times \\vec{b}\\right| = \\sqrt{(-2)^2 + 3^2 + 7^2} = \\sqrt{4 + 9 + 49} = \\sqrt{62}\\), so the area of that parallelogram is \\(\\frac{1}{2}\\sqrt{62}\\) square units."
+  },
+  {
+   "hash": "c1e72c1d5f9e2ed6dbfef54f189c014aa28802167d9d95fd8a538fc4678c0187",
+   "ref": "Q33b",
+   "questionNumber": "33 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the equation of a line in vector and cartesian form which passes through the point \\((1, 2, -4)\\) and is perpendicular to the lines \\(\\frac{x - 8}{3} = \\frac{y + 19}{-16} = \\frac{z - 10}{7}\\), and \\(\\vec{r} = 15\\hat{i} + 29\\hat{j} + 5\\hat{k} + \\mu(3\\hat{i} + 8\\hat{j} - 5\\hat{k})\\).",
+   "solution": "A line perpendicular to two given lines has direction perpendicular to both of their directions, so take the cross product of the two direction vectors. Writing the first line in vector form, \\(\\vec{r} = \\left(8\\hat{i} - 19\\hat{j} + 10\\hat{k}\\right) + \\lambda\\left(3\\hat{i} - 16\\hat{j} + 7\\hat{k}\\right)\\), its direction is \\(\\vec{b_1} = 3\\hat{i} - 16\\hat{j} + 7\\hat{k}\\); the second line is already in vector form with direction \\(\\vec{b_2} = 3\\hat{i} + 8\\hat{j} - 5\\hat{k}\\). Then\n\\(\\vec{b_1} \\times \\vec{b_2} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 3 & -16 & 7 \\\\ 3 & 8 & -5 \\end{vmatrix} = \\hat{i}(80 - 56) - \\hat{j}(-15 - 21) + \\hat{k}(24 + 48) = 24\\hat{i} + 36\\hat{j} + 72\\hat{k}\\).\nOnly the direction matters, so divide out the common factor 12 to get the simpler \\(2\\hat{i} + 3\\hat{j} + 6\\hat{k}\\). The required line passes through \\((1, 2, -4)\\), whose position vector is \\(\\hat{i} + 2\\hat{j} - 4\\hat{k}\\), so in vector form\n\\(\\vec{r} = \\left(\\hat{i} + 2\\hat{j} - 4\\hat{k}\\right) + t\\left(2\\hat{i} + 3\\hat{j} + 6\\hat{k}\\right)\\),\nand in cartesian form\n\\(\\frac{x - 1}{2} = \\frac{y - 2}{3} = \\frac{z + 4}{6}\\).\n(Keeping the unreduced direction \\(24\\hat{i} + 36\\hat{j} + 72\\hat{k}\\) gives the same line, as \\(\\frac{x - 1}{24} = \\frac{y - 2}{36} = \\frac{z + 4}{72}\\).)"
+  },
+  {
+   "hash": "7aefd842edbabd76505bafa67272e536676e05a2256bdfc9a09ea5d3f7165e02",
+   "ref": "Q34a",
+   "questionNumber": "34 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals and the Fundamental Theorem",
+   "stem": "Evaluate :\n\n\\(\\int\\limits_0^{3/2} |x \\cos \\pi x|\\, dx\\)",
+   "solution": "Let \\(I = \\int\\limits_0^{3/2} \\left|x \\cos \\pi x\\right| dx\\).\n\nOn \\(\\left[0, \\frac{3}{2}\\right]\\) we have \\(x \\ge 0\\), so the sign of \\(x \\cos \\pi x\\) is the sign of \\(\\cos \\pi x\\). Now \\(\\cos \\pi x \\ge 0\\) for \\(0 \\le x \\le \\frac{1}{2}\\) and \\(\\cos \\pi x \\le 0\\) for \\(\\frac{1}{2} \\le x \\le \\frac{3}{2}\\). Splitting at \\(x = \\frac{1}{2}\\) and removing the modulus,\n\n\\(I = \\int\\limits_0^{1/2} x \\cos \\pi x\\,dx - \\int\\limits_{1/2}^{3/2} x \\cos \\pi x\\,dx\\).  ... (1)\n\nFor the antiderivative, integrate by parts with \\(x\\) as the first function:\n\n\\(\\int x \\cos \\pi x\\,dx = \\frac{x \\sin \\pi x}{\\pi} - \\int \\frac{\\sin \\pi x}{\\pi}\\,dx = \\frac{x \\sin \\pi x}{\\pi} + \\frac{\\cos \\pi x}{\\pi^2}\\).  ... (2)\n\nUsing (2) in (1):\n\n\\(I = \\left[\\frac{x \\sin \\pi x}{\\pi} + \\frac{\\cos \\pi x}{\\pi^2}\\right]_0^{1/2} - \\left[\\frac{x \\sin \\pi x}{\\pi} + \\frac{\\cos \\pi x}{\\pi^2}\\right]_{1/2}^{3/2}\\).\n\nThe first bracket is \\(\\left(\\frac{1}{2\\pi} + 0\\right) - \\left(0 + \\frac{1}{\\pi^2}\\right) = \\frac{1}{2\\pi} - \\frac{1}{\\pi^2}\\).\n\nThe second bracket is \\(\\left(-\\frac{3}{2\\pi} + 0\\right) - \\left(\\frac{1}{2\\pi} + 0\\right) = -\\frac{3}{2\\pi} - \\frac{1}{2\\pi} = -\\frac{2}{\\pi}\\).\n\nHence \\(I = \\left(\\frac{1}{2\\pi} - \\frac{1}{\\pi^2}\\right) - \\left(-\\frac{2}{\\pi}\\right) = \\frac{1}{2\\pi} + \\frac{4}{2\\pi} - \\frac{1}{\\pi^2} = \\frac{5}{2\\pi} - \\frac{1}{\\pi^2}\\).\n\nNumerically this is about \\(0{\\cdot}6945\\), which is positive as an integral of a modulus must be."
+  },
+  {
+   "hash": "1c055c2d5dcd306d593f893e5e7b4f85baa2889f82f74da36635d43abc3c06c1",
+   "ref": "Q34b",
+   "questionNumber": "34 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Partial Fractions",
+   "stem": "Find :\n\n\\(\\int \\frac{dx}{\\sin x + \\sin 2x}\\)",
+   "solution": "Let \\(I = \\int \\frac{dx}{\\sin x + \\sin 2x}\\).\n\nSince \\(\\sin 2x = 2\\sin x \\cos x\\), the denominator factors: \\(\\sin x + \\sin 2x = \\sin x\\left(1 + 2\\cos x\\right)\\), so\n\n\\(I = \\int \\frac{dx}{\\sin x\\left(1 + 2\\cos x\\right)}\\).\n\nTo set up the substitution \\(t = \\cos x\\), multiply numerator and denominator by \\(\\sin x\\):\n\n\\(I = \\int \\frac{\\sin x}{\\sin^2 x\\left(1 + 2\\cos x\\right)}\\,dx = \\int \\frac{\\sin x}{\\left(1 - \\cos x\\right)\\left(1 + \\cos x\\right)\\left(1 + 2\\cos x\\right)}\\,dx\\),\n\nusing \\(\\sin^2 x = 1 - \\cos^2 x\\).\n\nPut \\(\\cos x = t\\), so \\(-\\sin x\\,dx = dt\\), i.e. \\(\\sin x\\,dx = -dt\\):\n\n\\(I = -\\int \\frac{dt}{(1 - t)(1 + t)(1 + 2t)}\\).\n\nResolve into partial fractions. Writing \\(\\frac{1}{(1-t)(1+t)(1+2t)} = \\frac{A}{1-t} + \\frac{B}{1+t} + \\frac{D}{1+2t}\\) and substituting \\(t = 1\\), \\(t = -1\\) and \\(t = -\\frac{1}{2}\\) in turn gives \\(A = \\frac{1}{6}\\), \\(B = -\\frac{1}{2}\\) and \\(D = \\frac{4}{3}\\). Hence\n\n\\(I = -\\frac{1}{6}\\int \\frac{dt}{1 - t} + \\frac{1}{2}\\int \\frac{dt}{1 + t} - \\frac{4}{3}\\int \\frac{dt}{1 + 2t}\\).\n\nIntegrating each term (note \\(\\int \\frac{dt}{1-t} = -\\log|1-t|\\) and \\(\\int \\frac{dt}{1+2t} = \\frac{1}{2}\\log|1+2t|\\)):\n\n\\(I = \\frac{1}{6}\\log|1 - t| + \\frac{1}{2}\\log|1 + t| - \\frac{2}{3}\\log|1 + 2t| + C\\).\n\nSubstituting back \\(t = \\cos x\\),\n\n\\(I = \\frac{1}{6}\\log|1 - \\cos x| + \\frac{1}{2}\\log|1 + \\cos x| - \\frac{2}{3}\\log|1 + 2\\cos x| + C\\)."
+  },
+  {
+   "hash": "11c079e86e2e9da83f0eb58aebcd83c7d0172ca5ee38a1474e67d4323f67d562",
+   "ref": "Q35",
+   "questionNumber": "35",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Adjoint and Inverse of a Matrix",
+   "stem": "If A is a \\(3 \\times 3\\) invertible matrix, show that for any scalar \\(k \\ne 0\\), \\((kA)^{-1} = \\frac{1}{k}A^{-1}\\). Hence calculate \\((3A)^{-1}\\), where\n\n\\(A = \\begin{bmatrix} 2 & -1 & 1 \\\\ -1 & 2 & -1 \\\\ 1 & -1 & 2 \\end{bmatrix}\\).",
+   "solution": "First the general result. Since \\(A\\) is invertible and \\(k \\ne 0\\), the matrix \\(\\frac{1}{k}A^{-1}\\) makes sense, and\n\\((kA)\\left(\\frac{1}{k}A^{-1}\\right) = k\\cdot\\frac{1}{k}\\left(AA^{-1}\\right) = 1\\cdot I = I\\),\nand in the same way \\(\\left(\\frac{1}{k}A^{-1}\\right)(kA) = I\\). So \\(kA\\) and \\(\\frac{1}{k}A^{-1}\\) are inverses of each other, which is exactly the statement \\((kA)^{-1} = \\frac{1}{k}A^{-1}\\). Taking \\(k = 3\\) gives \\((3A)^{-1} = \\frac{1}{3}A^{-1}\\), so it remains to find \\(A^{-1}\\).\nExpanding along the first row, \\(|A| = 2(4 - 1) + 1(-2 + 1) + 1(1 - 2) = 6 - 1 - 1 = 4\\). Since \\(|A| = 4 \\ne 0\\), \\(A^{-1}\\) exists.\nThe cofactors are \\(A_{11} = 3,\\; A_{12} = 1,\\; A_{13} = -1,\\; A_{21} = 1,\\; A_{22} = 3,\\; A_{23} = 1,\\; A_{31} = -1,\\; A_{32} = 1,\\; A_{33} = 3\\), and the adjoint is the transpose of the cofactor matrix:\n\\(\\operatorname{adj}A = \\begin{bmatrix} 3 & 1 & -1 \\\\ 1 & 3 & 1 \\\\ -1 & 1 & 3 \\end{bmatrix}\\).\nHence \\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj}A = \\frac{1}{4}\\begin{bmatrix} 3 & 1 & -1 \\\\ 1 & 3 & 1 \\\\ -1 & 1 & 3 \\end{bmatrix}\\), and therefore\n\\((3A)^{-1} = \\frac{1}{3}A^{-1} = \\frac{1}{12}\\begin{bmatrix} 3 & 1 & -1 \\\\ 1 & 3 & 1 \\\\ -1 & 1 & 3 \\end{bmatrix}\\)."
+  },
+  {
+   "hash": "ecc6295a4839f6d87ca03bc12718d30896ba4b236613f4b5352c2ca58680de63",
+   "ref": "Q36i",
+   "questionNumber": "36 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Multiplication Theorem on Probability",
+   "stem": "What is the probability of a student not having misconception but still answers Bijoy in the test ?",
+   "context": "Some students are having a misconception while comparing decimals. For example, a student may mention that \\(78{\\cdot}56 > 78{\\cdot}9\\) as 7856 > 789. In order to assess this concept, a decimal comparison test was administered to the students of class VI through the following question :\n\nIn the recently held Sports Day in the school, 5 students participated in a javelin throw competition. The distances to which they have thrown the javelin are shown below in the table :\n\n| Name of student | Distance of javelin (in meters) |\n|---|---|\n| Ajay | \\(47{\\cdot}7\\) |\n| Bijoy | \\(47{\\cdot}07\\) |\n| Kartik | \\(43{\\cdot}09\\) |\n| Dinesh | \\(43{\\cdot}9\\) |\n| Devesh | \\(45{\\cdot}2\\) |\n\nThe students were asked to identify who has thrown the javelin the farthest.\n\nBased on the test attempted by the students, the teacher concludes that 40% of the students have the misconception in the concept of decimal comparison and the rest do not have the misconception. 80% of the students having misconception answered Bijoy as the correct answer in the paper. 90% of the students who are identified with not having misconception, did not answer Bijoy as their answer.\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "Let \\(E_1\\) be the event that a student has the misconception, \\(E_2\\) that the student does not, and \\(A\\) that the student answers Bijoy. The test group splits \\(P(E_1) = \\frac{40}{100}\\) and \\(P(E_2) = \\frac{60}{100}\\). Of the students without the misconception, 90% did not answer Bijoy, so the remaining 10% of them did. Hence\n\\(P(A \\mid E_2) = \\frac{10}{100} = \\frac{1}{10}\\).\n[Note: this is the reading the marking scheme takes — the chance that a student answers Bijoy given that the student has no misconception. Read instead as the joint probability of the two things happening together, the value would be \\(P(E_2 \\cap A) = \\frac{60}{100} \\times \\frac{10}{100} = \\frac{3}{50}\\); that quantity is the second term of part (ii) below.]"
+  },
+  {
+   "hash": "1101f0df49ec947aeab77ce66527e36cfd8c9381183f9024bf2120f4121a717c",
+   "ref": "Q36ii",
+   "questionNumber": "36 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Theorem of Total Probability",
+   "stem": "What is the probability that a randomly selected student answers Bijoy as his answer in the test ?",
+   "context": "Some students are having a misconception while comparing decimals. For example, a student may mention that \\(78{\\cdot}56 > 78{\\cdot}9\\) as 7856 > 789. In order to assess this concept, a decimal comparison test was administered to the students of class VI through the following question :\n\nIn the recently held Sports Day in the school, 5 students participated in a javelin throw competition. The distances to which they have thrown the javelin are shown below in the table :\n\n| Name of student | Distance of javelin (in meters) |\n|---|---|\n| Ajay | \\(47{\\cdot}7\\) |\n| Bijoy | \\(47{\\cdot}07\\) |\n| Kartik | \\(43{\\cdot}09\\) |\n| Dinesh | \\(43{\\cdot}9\\) |\n| Devesh | \\(45{\\cdot}2\\) |\n\nThe students were asked to identify who has thrown the javelin the farthest.\n\nBased on the test attempted by the students, the teacher concludes that 40% of the students have the misconception in the concept of decimal comparison and the rest do not have the misconception. 80% of the students having misconception answered Bijoy as the correct answer in the paper. 90% of the students who are identified with not having misconception, did not answer Bijoy as their answer.\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "A student can end up answering Bijoy by either of two mutually exclusive routes — having the misconception, or not having it — so use the theorem of total probability with \\(E_1\\) (has the misconception) and \\(E_2\\) (does not). Here \\(P(E_1) = \\frac{40}{100}\\), \\(P(E_2) = \\frac{60}{100}\\), \\(P(A \\mid E_1) = \\frac{80}{100}\\) and \\(P(A \\mid E_2) = \\frac{10}{100}\\). Then\n\\(P(A) = P(E_1)P(A \\mid E_1) + P(E_2)P(A \\mid E_2) = \\frac{40}{100} \\times \\frac{80}{100} + \\frac{60}{100} \\times \\frac{10}{100} = \\frac{32}{100} + \\frac{6}{100} = \\frac{38}{100}\\).\nSo the probability that a randomly selected student answers Bijoy is \\(\\frac{38}{100}\\), that is \\(\\frac{19}{50}\\)."
+  },
+  {
+   "hash": "808bf04479b0393d419242e3da662ddec7c121b7093d8bf63df0b15ec929aeec",
+   "ref": "Q36iiia",
+   "questionNumber": "36 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Bayes' Theorem",
+   "stem": "What is the probability that a student who answered as Bijoy is having misconception ?",
+   "context": "Some students are having a misconception while comparing decimals. For example, a student may mention that \\(78{\\cdot}56 > 78{\\cdot}9\\) as 7856 > 789. In order to assess this concept, a decimal comparison test was administered to the students of class VI through the following question :\n\nIn the recently held Sports Day in the school, 5 students participated in a javelin throw competition. The distances to which they have thrown the javelin are shown below in the table :\n\n| Name of student | Distance of javelin (in meters) |\n|---|---|\n| Ajay | \\(47{\\cdot}7\\) |\n| Bijoy | \\(47{\\cdot}07\\) |\n| Kartik | \\(43{\\cdot}09\\) |\n| Dinesh | \\(43{\\cdot}9\\) |\n| Devesh | \\(45{\\cdot}2\\) |\n\nThe students were asked to identify who has thrown the javelin the farthest.\n\nBased on the test attempted by the students, the teacher concludes that 40% of the students have the misconception in the concept of decimal comparison and the rest do not have the misconception. 80% of the students having misconception answered Bijoy as the correct answer in the paper. 90% of the students who are identified with not having misconception, did not answer Bijoy as their answer.\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "This asks for the probability of a cause given the effect, so it is Bayes' theorem with \\(E_1\\) (student has the misconception), \\(E_2\\) (student does not) and \\(A\\) (student answers Bijoy). From part (ii), \\(P(A) = \\frac{38}{100}\\). Then\n\\(P(E_1 \\mid A) = \\frac{P(E_1)P(A \\mid E_1)}{P(A)} = \\frac{\\frac{40}{100} \\times \\frac{80}{100}}{\\frac{38}{100}} = \\frac{\\frac{32}{100}}{\\frac{38}{100}} = \\frac{32}{38} = \\frac{16}{19}\\).\nSo the probability that a student who answered Bijoy is having the misconception is \\(\\frac{16}{19}\\)."
+  },
+  {
+   "hash": "97c0b0155dbea31f578e037b87e3605c693eaf1c56ce26ed305e3e7af88b861a",
+   "ref": "Q36iiib",
+   "questionNumber": "36 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Bayes' Theorem",
+   "stem": "What is the probability that a student who answered as Bijoy is amongst students who do not have the misconception ?",
+   "context": "Some students are having a misconception while comparing decimals. For example, a student may mention that \\(78{\\cdot}56 > 78{\\cdot}9\\) as 7856 > 789. In order to assess this concept, a decimal comparison test was administered to the students of class VI through the following question :\n\nIn the recently held Sports Day in the school, 5 students participated in a javelin throw competition. The distances to which they have thrown the javelin are shown below in the table :\n\n| Name of student | Distance of javelin (in meters) |\n|---|---|\n| Ajay | \\(47{\\cdot}7\\) |\n| Bijoy | \\(47{\\cdot}07\\) |\n| Kartik | \\(43{\\cdot}09\\) |\n| Dinesh | \\(43{\\cdot}9\\) |\n| Devesh | \\(45{\\cdot}2\\) |\n\nThe students were asked to identify who has thrown the javelin the farthest.\n\nBased on the test attempted by the students, the teacher concludes that 40% of the students have the misconception in the concept of decimal comparison and the rest do not have the misconception. 80% of the students having misconception answered Bijoy as the correct answer in the paper. 90% of the students who are identified with not having misconception, did not answer Bijoy as their answer.\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "Again this is Bayes' theorem, now with \\(E_2\\) (the student does not have the misconception) as the cause and \\(A\\) (the student answers Bijoy) as the observed effect. From part (ii), \\(P(A) = \\frac{38}{100}\\). Then\n\\(P(E_2 \\mid A) = \\frac{P(E_2)P(A \\mid E_2)}{P(A)} = \\frac{\\frac{60}{100} \\times \\frac{10}{100}}{\\frac{38}{100}} = \\frac{\\frac{6}{100}}{\\frac{38}{100}} = \\frac{6}{38} = \\frac{3}{19}\\).\nSo the probability that a student who answered Bijoy is amongst those who do not have the misconception is \\(\\frac{3}{19}\\). (As a check, this and the \\(\\frac{16}{19}\\) of the other alternative add to 1, as they must, since a student who answered Bijoy either has the misconception or does not.)"
+  },
+  {
+   "hash": "c8eb281e82d22316ce1a47b410e8d492989d2f922512c01bac0699473e2e8b13",
+   "ref": "Q37i",
+   "questionNumber": "37 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Angle Between Two Lines",
+   "stem": "Find whether the two metro tracks are parallel.",
+   "context": "An engineer is designing a new metro rail network in a city.\n\nInitially, two metro lines, Line A and Line B, each consisting of multiple stations are designed. The track for Line A is represented by \\(l_1 : \\frac{x - 2}{3} = \\frac{y + 1}{-2} = \\frac{z - 3}{4}\\), while the track for Line B is represented by \\(l_2 : \\frac{x - 1}{2} = \\frac{y - 3}{1} = \\frac{z + 2}{-3}\\).\n\nBased on the above information, answer the following questions :",
+   "solution": "Two lines are parallel exactly when their direction ratios are proportional. Reading the direction ratios off the symmetric equations, \\(l_1\\) has drs \\(\\langle 3, -2, 4\\rangle\\) and \\(l_2\\) has drs \\(\\langle 2, 1, -3\\rangle\\). Comparing them term by term, \\(\\frac{3}{2} \\ne \\frac{-2}{1}\\), so the ratios are not all equal. The direction ratios are therefore not proportional, and hence the two metro tracks \\(l_1\\) and \\(l_2\\) are not parallel."
+  },
+  {
+   "hash": "cd08378b2dbcac3a1602ddf669ed974c8b4ae121fd1a598b0ee469c43c5b88fb",
+   "ref": "Q37ii",
+   "questionNumber": "37 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Solar panels are to be installed on the rooftop of the metro stations. Determine the equation of the line representing the placement of solar panels on the rooftop of Line A's stations, given that panels are to be positioned parallel to Line A's track \\((l_1)\\) and pass through the point \\((1, -2, -3)\\).",
+   "context": "An engineer is designing a new metro rail network in a city.\n\nInitially, two metro lines, Line A and Line B, each consisting of multiple stations are designed. The track for Line A is represented by \\(l_1 : \\frac{x - 2}{3} = \\frac{y + 1}{-2} = \\frac{z - 3}{4}\\), while the track for Line B is represented by \\(l_2 : \\frac{x - 1}{2} = \\frac{y - 3}{1} = \\frac{z + 2}{-3}\\).\n\nBased on the above information, answer the following questions :",
+   "solution": "The panels run parallel to Line A's track, so the required line has the same direction as \\(l_1\\), namely \\(\\langle 3, -2, 4\\rangle\\), and it passes through the given point \\((1, -2, -3)\\). Using the point-and-direction form, the cartesian equation is\n\\(\\frac{x - 1}{3} = \\frac{y + 2}{-2} = \\frac{z + 3}{4}\\),\nor equivalently, in vector form,\n\\(\\vec{r} = \\left(\\hat{i} - 2\\hat{j} - 3\\hat{k}\\right) + \\lambda\\left(3\\hat{i} - 2\\hat{j} + 4\\hat{k}\\right)\\)."
+  },
+  {
+   "hash": "e781602ec9bc54c407c1ecbb26ad49b54302032d12122ed433a8659d666fee2d",
+   "ref": "Q37iiia",
+   "questionNumber": "37 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "To connect the stations, a pedestrian pathway perpendicular to the two metro lines is to be constructed which passes through point (3, 2, 1). Determine the equation of the pedestrian walkway.",
+   "context": "An engineer is designing a new metro rail network in a city.\n\nInitially, two metro lines, Line A and Line B, each consisting of multiple stations are designed. The track for Line A is represented by \\(l_1 : \\frac{x - 2}{3} = \\frac{y + 1}{-2} = \\frac{z - 3}{4}\\), while the track for Line B is represented by \\(l_2 : \\frac{x - 1}{2} = \\frac{y - 3}{1} = \\frac{z + 2}{-3}\\).\n\nBased on the above information, answer the following questions :",
+   "solution": "The walkway is perpendicular to both metro lines, so its direction is perpendicular to both direction vectors and can be taken as their cross product. With \\(\\vec{b_1} = 3\\hat{i} - 2\\hat{j} + 4\\hat{k}\\) for \\(l_1\\) and \\(\\vec{b_2} = 2\\hat{i} + \\hat{j} - 3\\hat{k}\\) for \\(l_2\\),\n\\(\\vec{b} = \\vec{b_1} \\times \\vec{b_2} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 3 & -2 & 4 \\\\ 2 & 1 & -3 \\end{vmatrix} = \\hat{i}(6 - 4) - \\hat{j}(-9 - 8) + \\hat{k}(3 + 4) = 2\\hat{i} + 17\\hat{j} + 7\\hat{k}\\).\nThe walkway passes through \\((3, 2, 1)\\), so its equation is\n\\(\\vec{r} = \\left(3\\hat{i} + 2\\hat{j} + \\hat{k}\\right) + \\lambda\\left(2\\hat{i} + 17\\hat{j} + 7\\hat{k}\\right)\\),\nor in cartesian form \\(\\frac{x - 3}{2} = \\frac{y - 2}{17} = \\frac{z - 1}{7}\\)."
+  },
+  {
+   "hash": "344858182c5999e16c5371b0b5f0fce9c9c5d120027a73c2709444ca56ad5e38",
+   "ref": "Q37iiib",
+   "questionNumber": "37 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Shortest Distance Between Two Lines",
+   "stem": "Find the shortest distance between Line A and Line B.",
+   "context": "An engineer is designing a new metro rail network in a city.\n\nInitially, two metro lines, Line A and Line B, each consisting of multiple stations are designed. The track for Line A is represented by \\(l_1 : \\frac{x - 2}{3} = \\frac{y + 1}{-2} = \\frac{z - 3}{4}\\), while the track for Line B is represented by \\(l_2 : \\frac{x - 1}{2} = \\frac{y - 3}{1} = \\frac{z + 2}{-3}\\).\n\nBased on the above information, answer the following questions :",
+   "solution": "Reading position and direction vectors off the two symmetric equations, \\(\\vec{a_1} = 2\\hat{i} - \\hat{j} + 3\\hat{k}\\) with \\(\\vec{b_1} = 3\\hat{i} - 2\\hat{j} + 4\\hat{k}\\), and \\(\\vec{a_2} = \\hat{i} + 3\\hat{j} - 2\\hat{k}\\) with \\(\\vec{b_2} = 2\\hat{i} + \\hat{j} - 3\\hat{k}\\). Part (i) showed the lines are not parallel, so use the skew-lines formula\n\\(d = \\left|\\frac{\\left(\\vec{a_2} - \\vec{a_1}\\right)\\cdot\\left(\\vec{b_1} \\times \\vec{b_2}\\right)}{\\left|\\vec{b_1} \\times \\vec{b_2}\\right|}\\right|\\).\nHere \\(\\vec{a_2} - \\vec{a_1} = -\\hat{i} + 4\\hat{j} - 5\\hat{k}\\), and\n\\(\\vec{b_1} \\times \\vec{b_2} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 3 & -2 & 4 \\\\ 2 & 1 & -3 \\end{vmatrix} = 2\\hat{i} + 17\\hat{j} + 7\\hat{k}\\), with \\(\\left|\\vec{b_1} \\times \\vec{b_2}\\right| = \\sqrt{4 + 289 + 49} = \\sqrt{342}\\).\nThe numerator is \\((-1)(2) + (4)(17) + (-5)(7) = -2 + 68 - 35 = 31\\). Hence the shortest distance between Line A and Line B is\n\\(d = \\frac{31}{\\sqrt{342}}\\) units."
+  },
+  {
+   "hash": "0c5c5f75d8969bf9ae0da87efff010d92640b264770a7940cead43fdf2fefe98",
+   "ref": "Q38i",
+   "questionNumber": "38 (i)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Variables Separable",
+   "stem": "Find the expression for temperature of processor, T(t) given that \\(T(0) = 85^\\circ\\text{C}\\).",
+   "context": "During a heavy gaming session, the temperature of a student's laptop processor increases significantly. After the session, the processor begins to cool down, and the rate of cooling is proportional to the difference between the processor's temperature and the room temperature \\((25^\\circ\\text{C})\\). Initially the processor's temperature is \\(85^\\circ\\text{C}\\). The rate of cooling is defined by the equation \\(\\frac{d}{dt}(T(t)) = -k(T(t) - 25)\\),\n\nwhere T(t) represents the temperature of the processor at time t (in minutes) and k is a constant.\n\nBased on the above information, answer the following questions :",
+   "solution": "The governing equation \\(\\frac{dT}{dt} = -k(T - 25)\\) has its variables already separable, so divide by \\(T - 25\\) and integrate:\n\\(\\frac{dT}{T - 25} = -k\\,dt \\implies \\int\\frac{dT}{T - 25} = -k\\int dt \\implies \\log|T - 25| = -kt + C\\).\nUse the initial condition to fix \\(C\\): at \\(t = 0\\) the temperature is \\(T = 85\\), so \\(\\log|85 - 25| = C\\), giving \\(C = \\log 60\\). Substituting back,\n\\(\\log|T - 25| = -kt + \\log 60 \\implies \\log\\left|\\frac{T - 25}{60}\\right| = -kt\\).\nThe processor is cooling from \\(85^\\circ\\)C towards the room temperature, so \\(T > 25\\) throughout and the modulus may be dropped. Taking exponentials,\n\\(\\frac{T - 25}{60} = e^{-kt} \\implies T - 25 = 60e^{-kt}\\).\nHence \\(T(t) = 25 + 60e^{-kt}\\), which correctly gives \\(T(0) = 25 + 60 = 85^\\circ\\)C."
+  },
+  {
+   "hash": "0bd90e84e170eeadeb18b592833f05576a0f03a7d7519340db5d0e17110256fa",
+   "ref": "Q38ii",
+   "questionNumber": "38 (ii)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Variables Separable",
+   "stem": "How long will it take for the processor's temperature to reach \\(40^\\circ\\text{C}\\) ? Given that \\(k = 0{\\cdot}03\\), \\(\\log_e 4 = 1{\\cdot}3863\\).",
+   "context": "During a heavy gaming session, the temperature of a student's laptop processor increases significantly. After the session, the processor begins to cool down, and the rate of cooling is proportional to the difference between the processor's temperature and the room temperature \\((25^\\circ\\text{C})\\). Initially the processor's temperature is \\(85^\\circ\\text{C}\\). The rate of cooling is defined by the equation \\(\\frac{d}{dt}(T(t)) = -k(T(t) - 25)\\),\n\nwhere T(t) represents the temperature of the processor at time t (in minutes) and k is a constant.\n\nBased on the above information, answer the following questions :",
+   "solution": "From part (i), \\(T(t) = 25 + 60e^{-kt}\\), and with \\(k = 0{\\cdot}03\\) this is \\(T - 25 = 60e^{-0{\\cdot}03t}\\). Let \\(t_1\\) be the time at which \\(T = 40\\). Then \\(40 - 25 = 15\\), so\n\\(\\frac{15}{60} = e^{-0{\\cdot}03t_1} \\implies e^{-0{\\cdot}03t_1} = \\frac{1}{4}\\).\nTaking natural logarithms of both sides, \\(-0{\\cdot}03\\,t_1 = \\log_e\\frac{1}{4} = -\\log_e 4\\), so\n\\(t_1 = \\frac{\\log_e 4}{0{\\cdot}03} = \\frac{1{\\cdot}3863}{0{\\cdot}03} = 46{\\cdot}21\\).\nSo the processor takes about \\(46{\\cdot}21\\) minutes to cool to \\(40^\\circ\\)C."
+  }
+ ]
+}

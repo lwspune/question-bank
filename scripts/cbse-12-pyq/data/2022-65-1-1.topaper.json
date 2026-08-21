@@ -1,0 +1,220 @@
+{
+ "paper": "65/1/1",
+ "year": 2022,
+ "paperId": "2022-65-1-1",
+ "markingScheme": "out/2022-65-1-1/ms/p00.png … p10.png",
+ "rows": [
+  {
+   "hash": "75f99b522bd47553c1c50df80a23057e1082bce266ebca0bf61a10b35402d269",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Order and Degree of a Differential Equation",
+   "stem": "Find the sum of the order and the degree of the differential equation : \\(\\left(x + \\frac{dy}{dx}\\right)^2 = \\left(\\frac{dy}{dx}\\right)^2 + 1\\)",
+   "solution": "Order and degree can only be read off once the equation is written as a polynomial in the derivatives, so expand the left side first. Since \\(\\left(x + \\frac{dy}{dx}\\right)^2 = x^2 + 2x\\frac{dy}{dx} + \\left(\\frac{dy}{dx}\\right)^2\\), the equation becomes \\(x^2 + 2x\\frac{dy}{dx} + \\left(\\frac{dy}{dx}\\right)^2 = \\left(\\frac{dy}{dx}\\right)^2 + 1\\). The squared-derivative term is common to both sides and cancels, leaving \\(x^2 + 2x\\frac{dy}{dx} = 1\\). The highest-order derivative present is \\(\\frac{dy}{dx}\\), so the order is 1, and in this form it occurs to the first power, so the degree is 1. Hence the sum of the order and the degree is \\(1 + 1 = 2\\)."
+  },
+  {
+   "hash": "0db08a8129c188c21a0aa1d255c142851ce0b0f39e980130d6022bde6a58dc67",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Addition of Vectors",
+   "stem": "In a parallelogram PQRS, \\(\\overrightarrow{PQ} = 3\\hat{i} - 2\\hat{j} + 2\\hat{k}\\) and \\(\\overrightarrow{PS} = -\\hat{i} - 2\\hat{k}\\). Find \\(|\\overrightarrow{PR}|\\) and \\(|\\overrightarrow{QS}|\\).",
+   "solution": "In parallelogram PQRS the sides PS and QR are opposite and equally directed, so \\(\\overrightarrow{QR} = \\overrightarrow{PS}\\). By the triangle law along P to Q to R, \\(\\overrightarrow{PR} = \\overrightarrow{PQ} + \\overrightarrow{QR} = \\overrightarrow{PQ} + \\overrightarrow{PS}\\), which gives \\(\\overrightarrow{PR} = (3\\hat{i} - 2\\hat{j} + 2\\hat{k}) + (-\\hat{i} - 2\\hat{k}) = 2\\hat{i} - 2\\hat{j}\\). Hence \\(|\\overrightarrow{PR}| = \\sqrt{2^2 + (-2)^2} = \\sqrt{8} = 2\\sqrt{2}\\). For the other diagonal, \\(\\overrightarrow{QS} = \\overrightarrow{QP} + \\overrightarrow{PS} = \\overrightarrow{PS} - \\overrightarrow{PQ} = (-\\hat{i} - 2\\hat{k}) - (3\\hat{i} - 2\\hat{j} + 2\\hat{k}) = -4\\hat{i} + 2\\hat{j} - 4\\hat{k}\\), so \\(|\\overrightarrow{QS}| = \\sqrt{16 + 4 + 16} = \\sqrt{36} = 6\\)."
+  },
+  {
+   "hash": "13149c1ecce6f84699ad86a95ae06bc56fec6a0d87fb958d6c088aaad704ef1e",
+   "ref": "Q3a",
+   "questionNumber": "3 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration using Trigonometric Identities",
+   "stem": "If \\(\\frac{d}{dx}[F(x)] = \\frac{\\sec^4 x}{\\operatorname{cosec}^4 x}\\) and \\(F\\left(\\frac{\\pi}{4}\\right) = \\frac{\\pi}{4}\\), then find \\(F(x)\\).",
+   "solution": "First simplify the derivative: \\(\\frac{\\sec^4 x}{\\operatorname{cosec}^4 x} = \\frac{1/\\cos^4 x}{1/\\sin^4 x} = \\frac{\\sin^4 x}{\\cos^4 x} = \\tan^4 x\\), so \\(F(x) = \\int \\tan^4 x\\,dx\\). Split off a \\(\\tan^2 x\\) and use \\(\\tan^2 x = \\sec^2 x - 1\\): \\(\\tan^4 x = \\tan^2 x(\\sec^2 x - 1) = \\tan^2 x\\sec^2 x - \\sec^2 x + 1\\). The first term integrates by the substitution \\(t = \\tan x\\) to \\(\\frac{\\tan^3 x}{3}\\), so \\(F(x) = \\frac{\\tan^3 x}{3} - \\tan x + x + C\\). Now impose the given condition. At \\(x = \\frac{\\pi}{4}\\), \\(\\tan x = 1\\), so \\(F\\left(\\frac{\\pi}{4}\\right) = \\frac{1}{3} - 1 + \\frac{\\pi}{4} + C\\), and setting this equal to \\(\\frac{\\pi}{4}\\) gives \\(C = 1 - \\frac{1}{3} = \\frac{2}{3}\\). Hence \\(F(x) = \\frac{\\tan^3 x}{3} - \\tan x + x + \\frac{2}{3}\\)."
+  },
+  {
+   "hash": "d5d8f3a107972d87b2df7aacd38fb8e293a75dd66676ea2f3c7a72273353c484",
+   "ref": "Q3b",
+   "questionNumber": "3 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Parts",
+   "stem": "Find : \\(\\int \\frac{\\log x - 3}{(\\log x)^4}\\,dx\\).",
+   "solution": "Substitute \\(x = e^t\\), so that \\(\\log x = t\\) and \\(dx = e^t\\,dt\\). The integral becomes \\(\\int \\frac{t - 3}{t^4}e^t\\,dt = \\int e^t\\left(\\frac{1}{t^3} - \\frac{3}{t^4}\\right)dt\\). This is exactly the standard form \\(\\int e^t\\left[f(t) + f'(t)\\right]dt = e^t f(t) + C\\), with \\(f(t) = \\frac{1}{t^3} = t^{-3}\\) and therefore \\(f'(t) = -3t^{-4} = -\\frac{3}{t^4}\\). Hence the integral is \\(\\frac{e^t}{t^3} + C\\). Restoring the original variable using \\(e^t = x\\) and \\(t = \\log x\\), the answer is \\(\\frac{x}{(\\log x)^3} + C\\)."
+  },
+  {
+   "hash": "7232e0eec69acaed683f7b131418a164ad019735491d73f13d0f24780bf8ceaa",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "Let A and B be two events such that \\(P(A) = \\frac{5}{8}\\), \\(P(B) = \\frac{1}{2}\\) and \\(P(A/B) = \\frac{3}{4}\\). Find the value of \\(P(B/A)\\).",
+   "solution": "Both conditional probabilities are built from the same intersection, so find it first. From \\(P(A/B) = \\frac{P(A \\cap B)}{P(B)}\\) we get \\(P(A \\cap B) = P(A/B)\\cdot P(B) = \\frac{3}{4}\\times\\frac{1}{2} = \\frac{3}{8}\\). Since \\(P(B \\cap A) = P(A \\cap B)\\), reversing the conditioning gives \\(P(B/A) = \\frac{P(A \\cap B)}{P(A)} = \\frac{3/8}{5/8} = \\frac{3}{5}\\)."
+  },
+  {
+   "hash": "710fee35cf2579ac259a351411c68b0ebb540f97874dba3e3bbe6cf9904db156",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "Two balls are drawn at random from a bag containing 2 red balls and 3 blue balls, without replacement. Let the variable X denotes the number of red balls. Find the probability distribution of X.",
+   "solution": "The bag holds 2 red and 3 blue balls, and two are drawn without replacement, so the number of red balls obtained can only be \\(X = 0, 1\\) or \\(2\\). Because the drawing is without replacement, the second draw is made from 4 remaining balls. For \\(X = 0\\) both balls must be blue, giving \\(P(X = 0) = \\frac{3}{5}\\times\\frac{2}{4} = \\frac{3}{10}\\). For \\(X = 1\\) one ball of each colour is drawn, and this can happen in two orders (red then blue, or blue then red), so \\(P(X = 1) = 2\\left(\\frac{2}{5}\\times\\frac{3}{4}\\right) = \\frac{6}{10}\\). For \\(X = 2\\) both balls must be red, giving \\(P(X = 2) = \\frac{2}{5}\\times\\frac{1}{4} = \\frac{1}{10}\\). The probability distribution of \\(X\\) is therefore \\(P(X = 0) = \\frac{3}{10}\\), \\(P(X = 1) = \\frac{6}{10}\\), \\(P(X = 2) = \\frac{1}{10}\\), and as a check these sum to \\(\\frac{3 + 6 + 1}{10} = 1\\)."
+  },
+  {
+   "hash": "0803fa8137bb3b24efb6184407eb253622b4d8f85a11eaa3b7a3a3df9ac72e54",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "The Plane",
+   "stem": "Find the values of \\(\\lambda\\), for which the distance of point \\((2, 1, \\lambda)\\) from plane \\(3x + 5y + 4z = 11\\) is \\(2\\sqrt{2}\\) units.",
+   "solution": "The distance of a point \\((x_1, y_1, z_1)\\) from the plane \\(ax + by + cz + d = 0\\) is \\(\\frac{|ax_1 + by_1 + cz_1 + d|}{\\sqrt{a^2 + b^2 + c^2}}\\). Writing the plane as \\(3x + 5y + 4z - 11 = 0\\) and substituting the point \\((2, 1, \\lambda)\\), the numerator is \\(|3(2) + 5(1) + 4\\lambda - 11| = |6 + 5 + 4\\lambda - 11| = |4\\lambda|\\) and the denominator is \\(\\sqrt{9 + 25 + 16} = \\sqrt{50} = 5\\sqrt{2}\\). Setting the distance equal to \\(2\\sqrt{2}\\) gives \\(\\frac{|4\\lambda|}{5\\sqrt{2}} = 2\\sqrt{2}\\), so \\(|4\\lambda| = 2\\sqrt{2}\\times 5\\sqrt{2} = 20\\). Hence \\(|\\lambda| = 5\\), and the required values are \\(\\lambda = 5\\) and \\(\\lambda = -5\\), that is \\(\\lambda = \\pm 5\\)."
+  },
+  {
+   "hash": "d64c1e93f694102b791635c33253a3a9cfc9de0db847506ad45dfeb514086eb8",
+   "ref": "Q7a",
+   "questionNumber": "7 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "If \\(\\vec{a}\\), \\(\\vec{b}\\), \\(\\vec{c}\\) and \\(\\vec{d}\\) are four non-zero vectors such that \\(\\vec{a} \\times \\vec{b} = \\vec{c} \\times \\vec{d}\\) and \\(\\vec{a} \\times \\vec{c} = 4\\vec{b} \\times \\vec{d}\\), then show that \\((\\vec{a} - 2\\vec{d})\\) is parallel to \\((2\\vec{b} - \\vec{c})\\) where \\(\\vec{a} \\neq 2\\vec{d}\\), \\(\\vec{c} \\neq 2\\vec{b}\\).",
+   "solution": "Two non-zero vectors are parallel precisely when their cross product is the zero vector, so it is enough to show that \\((\\vec{a} - 2\\vec{d}) \\times (2\\vec{b} - \\vec{c}) = \\vec{0}\\). Expanding by distributivity, \\((\\vec{a} - 2\\vec{d}) \\times (2\\vec{b} - \\vec{c}) = 2(\\vec{a} \\times \\vec{b}) - (\\vec{a} \\times \\vec{c}) - 4(\\vec{d} \\times \\vec{b}) + 2(\\vec{d} \\times \\vec{c})\\). Now bring in the two hypotheses, and use the anti-commutative law \\(\\vec{u} \\times \\vec{v} = -(\\vec{v} \\times \\vec{u})\\) to pair the terms off. Since \\(\\vec{a} \\times \\vec{b} = \\vec{c} \\times \\vec{d}\\), the first and last terms give \\(2(\\vec{c} \\times \\vec{d}) + 2(\\vec{d} \\times \\vec{c}) = 2(\\vec{c} \\times \\vec{d}) - 2(\\vec{c} \\times \\vec{d}) = \\vec{0}\\). Since \\(\\vec{a} \\times \\vec{c} = 4(\\vec{b} \\times \\vec{d})\\), the middle two terms give \\(-4(\\vec{b} \\times \\vec{d}) - 4(\\vec{d} \\times \\vec{b}) = -4(\\vec{b} \\times \\vec{d}) + 4(\\vec{b} \\times \\vec{d}) = \\vec{0}\\). Therefore \\((\\vec{a} - 2\\vec{d}) \\times (2\\vec{b} - \\vec{c}) = \\vec{0}\\). The conditions \\(\\vec{a} \\neq 2\\vec{d}\\) and \\(\\vec{c} \\neq 2\\vec{b}\\) guarantee that neither factor is itself the zero vector, so the vanishing cross product can only mean that \\((\\vec{a} - 2\\vec{d})\\) is parallel to \\((2\\vec{b} - \\vec{c})\\), as required."
+  },
+  {
+   "hash": "67534022f7202a619c54083a0c99911472738a6b6f369ae487a46a04d596fbfd",
+   "ref": "Q7b",
+   "questionNumber": "7 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "The two adjacent sides of a parallelogram are represented by \\(2\\hat{i} - 4\\hat{j} - 5\\hat{k}\\) and \\(2\\hat{i} + 2\\hat{j} + 3\\hat{k}\\). Find the unit vectors parallel to its diagonals. Using the diagonal vectors, find the area of the parallelogram also.",
+   "solution": "Let the parallelogram be ABCD with adjacent sides \\(\\overrightarrow{AB} = 2\\hat{i} - 4\\hat{j} - 5\\hat{k}\\) and \\(\\overrightarrow{BC} = \\overrightarrow{AD} = 2\\hat{i} + 2\\hat{j} + 3\\hat{k}\\). One diagonal is the sum of the adjacent sides and the other is their difference, so \\(\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{BC} = 4\\hat{i} - 2\\hat{j} - 2\\hat{k}\\) and \\(\\overrightarrow{BD} = \\overrightarrow{AD} - \\overrightarrow{AB} = 6\\hat{j} + 8\\hat{k}\\). Their lengths are \\(|\\overrightarrow{AC}| = \\sqrt{16 + 4 + 4} = \\sqrt{24} = 2\\sqrt{6}\\) and \\(|\\overrightarrow{BD}| = \\sqrt{36 + 64} = 10\\), so the unit vectors parallel to the diagonals are \\(\\frac{2}{\\sqrt{6}}\\hat{i} - \\frac{1}{\\sqrt{6}}\\hat{j} - \\frac{1}{\\sqrt{6}}\\hat{k}\\) and \\(\\frac{3}{5}\\hat{j} + \\frac{4}{5}\\hat{k}\\). The area of a parallelogram is half the magnitude of the cross product of its diagonals, so compute \\(\\overrightarrow{AC} \\times \\overrightarrow{BD} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 4 & -2 & -2 \\\\ 0 & 6 & 8 \\end{vmatrix} = \\hat{i}(-16 + 12) - \\hat{j}(32 - 0) + \\hat{k}(24 - 0) = -4\\hat{i} - 32\\hat{j} + 24\\hat{k}\\). Its magnitude is \\(\\sqrt{16 + 1024 + 576} = \\sqrt{1616} = 4\\sqrt{101}\\), so the area is \\(\\frac{1}{2}\\times 4\\sqrt{101} = 2\\sqrt{101}\\) square units."
+  },
+  {
+   "hash": "ef83597badd98c397cb413e28a4de3ffff75e10e11d8f3144aea906894520e59",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "The Plane",
+   "stem": "Find the vector equation of the plane passing through the intersection of the planes \\(\\vec{r} \\cdot (2\\hat{i} + 2\\hat{j} - 3\\hat{k}) = 7\\) and \\(\\vec{r} \\cdot (2\\hat{i} + 5\\hat{j} + 3\\hat{k}) = 9\\) and through the point \\((2, 1, 3)\\).",
+   "solution": "Every plane through the line of intersection of two given planes belongs to the family obtained by adding a multiple of one equation to the other, so write \\(\\vec{r} \\cdot (2\\hat{i} + 2\\hat{j} - 3\\hat{k}) - 7 + \\lambda\\left[\\vec{r} \\cdot (2\\hat{i} + 5\\hat{j} + 3\\hat{k}) - 9\\right] = 0\\). Collecting the components, this is \\(\\vec{r} \\cdot \\left[(2 + 2\\lambda)\\hat{i} + (2 + 5\\lambda)\\hat{j} + (-3 + 3\\lambda)\\hat{k}\\right] = 7 + 9\\lambda\\). The plane must contain \\((2, 1, 3)\\), so put \\(\\vec{r} = 2\\hat{i} + \\hat{j} + 3\\hat{k}\\): \\(2(2 + 2\\lambda) + 1(2 + 5\\lambda) + 3(-3 + 3\\lambda) = 7 + 9\\lambda\\), which simplifies to \\(18\\lambda - 3 = 9\\lambda + 7\\), so \\(9\\lambda = 10\\) and \\(\\lambda = \\frac{10}{9}\\). Substituting this value, the normal vector is \\(\\frac{38}{9}\\hat{i} + \\frac{68}{9}\\hat{j} + \\frac{3}{9}\\hat{k}\\) and the right-hand side is \\(7 + 10 = 17\\). Multiplying throughout by 9 clears the fractions and gives the required equation \\(\\vec{r} \\cdot (38\\hat{i} + 68\\hat{j} + 3\\hat{k}) = 153\\). As a check, the point \\((2, 1, 3)\\) gives \\(38(2) + 68(1) + 3(3) = 76 + 68 + 9 = 153\\)."
+  },
+  {
+   "hash": "f070173596a6eceaacf78f8f9aa84dd47970850988c63d5b38d4121cb89c16e5",
+   "ref": "Q9a",
+   "questionNumber": "9 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Substitution",
+   "stem": "Find : \\(\\int \\frac{dx}{\\sqrt{x} + \\sqrt[3]{x}}\\).",
+   "solution": "The two radicals have orders 2 and 3, so a substitution using their least common multiple clears both at once. Put \\(x = y^6\\), so that \\(dx = 6y^5\\,dy\\), \\(\\sqrt{x} = y^3\\) and \\(\\sqrt[3]{x} = y^2\\). The integral becomes \\(\\int \\frac{6y^5\\,dy}{y^3 + y^2} = \\int \\frac{6y^5\\,dy}{y^2(y + 1)} = 6\\int \\frac{y^3}{y + 1}\\,dy\\). Dividing out, \\(y^3 = (y + 1)(y^2 - y + 1) - 1\\), so \\(\\frac{y^3}{y + 1} = y^2 - y + 1 - \\frac{1}{y + 1}\\). Integrating term by term, \\(6\\int\\left[(y^2 - y + 1) - \\frac{1}{y + 1}\\right]dy = 6\\left[\\frac{y^3}{3} - \\frac{y^2}{2} + y - \\log(y + 1)\\right] + C = 2y^3 - 3y^2 + 6y - 6\\log(y + 1) + C\\). Finally restore \\(x\\) through \\(y = x^{1/6}\\), noting \\(y^3 = \\sqrt{x}\\) and \\(y^2 = \\sqrt[3]{x}\\), which gives \\(2\\sqrt{x} - 3\\sqrt[3]{x} + 6x^{1/6} - 6\\log\\left(x^{1/6} + 1\\right) + C\\)."
+  },
+  {
+   "hash": "9e36a4f5666c08a9a17278a78752a96fb66cca10e18d901b3c44772e45c9473d",
+   "ref": "Q9b",
+   "questionNumber": "9 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals by Substitution",
+   "stem": "Evaluate : \\(\\int_0^{\\pi/2} \\frac{\\cos x}{(1 + \\sin x)(4 + \\sin x)}\\,dx\\).",
+   "solution": "The numerator is exactly the derivative of \\(\\sin x\\), so substitute \\(t = \\sin x\\), giving \\(dt = \\cos x\\,dx\\). The limits transform as well: \\(x = 0\\) gives \\(t = 0\\) and \\(x = \\frac{\\pi}{2}\\) gives \\(t = 1\\). The integral becomes \\(\\int_0^1 \\frac{dt}{(1 + t)(4 + t)}\\). Resolve into partial fractions using \\(\\frac{1}{(1 + t)(4 + t)} = \\frac{1}{3}\\left(\\frac{1}{1 + t} - \\frac{1}{4 + t}\\right)\\), since the two denominators differ by 3. Then the integral equals \\(\\frac{1}{3}\\left[\\log(1 + t) - \\log(4 + t)\\right]_0^1 = \\frac{1}{3}\\left[(\\log 2 - \\log 5) - (\\log 1 - \\log 4)\\right]\\). As \\(\\log 1 = 0\\), this is \\(\\frac{1}{3}\\left[\\log 2 - \\log 5 + \\log 4\\right] = \\frac{1}{3}\\log\\frac{2 \\times 4}{5} = \\frac{1}{3}\\log\\frac{8}{5}\\)."
+  },
+  {
+   "hash": "d48df112a827958ecd74cce72e8a6f782877f48ca92e93c604c9d9ed806449d6",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Find the particular solution of the differential equation \\(x\\frac{dy}{dx} + x\\cos^2\\left(\\frac{y}{x}\\right) = y\\); given that when \\(x = 1\\), \\(y = \\frac{\\pi}{4}\\).",
+   "solution": "Divide throughout by \\(x\\) to isolate the derivative: \\(\\frac{dy}{dx} = \\frac{y}{x} - \\cos^2\\left(\\frac{y}{x}\\right)\\). The right-hand side depends on \\(x\\) and \\(y\\) only through the ratio \\(\\frac{y}{x}\\), so the equation is homogeneous and the substitution \\(y = vx\\) applies, with \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\). Substituting gives \\(v + x\\frac{dv}{dx} = v - \\cos^2 v\\), and the \\(v\\) terms cancel to leave \\(x\\frac{dv}{dx} = -\\cos^2 v\\). Separating the variables, \\(\\sec^2 v\\,dv = -\\frac{dx}{x}\\), and integrating both sides gives \\(\\tan v = -\\log|x| + c\\), that is \\(\\tan\\left(\\frac{y}{x}\\right) = -\\log|x| + c\\). Now apply the initial condition: at \\(x = 1\\), \\(y = \\frac{\\pi}{4}\\), so \\(\\frac{y}{x} = \\frac{\\pi}{4}\\), and since \\(\\tan\\frac{\\pi}{4} = 1\\) while \\(\\log 1 = 0\\), we get \\(c = 1\\). The particular solution is therefore \\(\\tan\\left(\\frac{y}{x}\\right) = -\\log|x| + 1\\), equivalently \\(\\tan\\left(\\frac{y}{x}\\right) + \\log|x| = 1\\)."
+  },
+  {
+   "hash": "0b47fad5949682073ca076d99de793e691612bc437687121dbcaa364096ec07f",
+   "ref": "Q11a",
+   "questionNumber": "11 (a)",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "Using integration, find the area of the region \\(\\{(x, y) : 4x^2 + 9y^2 \\leq 36, 2x + 3y \\geq 6\\}\\).",
+   "solution": "Dividing by 36, the first condition is \\(\\frac{x^2}{9} + \\frac{y^2}{4} \\le 1\\), the interior of an ellipse with semi-axes 3 along \\(x\\) and 2 along \\(y\\). Dividing the second by 6, it is \\(\\frac{x}{3} + \\frac{y}{2} \\ge 1\\), the side of the line away from the origin. That line meets the axes at \\((3, 0)\\) and \\((0, 2)\\), which are precisely the ends of the ellipse's axes, so the two curves intersect there and the region is the segment of the ellipse cut off in the first quadrant, with \\(x\\) running from 0 to 3. On the ellipse \\(y = \\frac{2}{3}\\sqrt{9 - x^2}\\) and on the line \\(y = \\frac{2}{3}(3 - x)\\), so the required area is \\(\\frac{2}{3}\\int_0^3 \\sqrt{9 - x^2}\\,dx - \\frac{2}{3}\\int_0^3 (3 - x)\\,dx\\). For the first integral, \\(\\int_0^3 \\sqrt{9 - x^2}\\,dx = \\left[\\frac{x}{2}\\sqrt{9 - x^2} + \\frac{9}{2}\\sin^{-1}\\frac{x}{3}\\right]_0^3 = 0 + \\frac{9}{2}\\cdot\\frac{\\pi}{2} = \\frac{9\\pi}{4}\\), the square-root term vanishing at both limits. For the second, \\(\\int_0^3 (3 - x)\\,dx = \\left[3x - \\frac{x^2}{2}\\right]_0^3 = 9 - \\frac{9}{2} = \\frac{9}{2}\\), which is just the area of the triangle under the line. Hence the area is \\(\\frac{2}{3}\\left(\\frac{9\\pi}{4} - \\frac{9}{2}\\right) = \\frac{3\\pi}{2} - 3\\) square units."
+  },
+  {
+   "hash": "c03f9af94c1c1158ff3c1a6627cc8725b7f9706d2556580f0bffd66d3bdb1957",
+   "ref": "Q11b",
+   "questionNumber": "11 (b)",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Under Simple Curves",
+   "stem": "Using integration, find the area of the region bounded by lines \\(x - y + 1 = 0\\), \\(x = -2\\), \\(x = 3\\) and \\(x\\)-axis.",
+   "solution": "The first line is \\(y = x + 1\\), which crosses the \\(x\\)-axis at \\(x = -1\\). That crossing lies inside the strip \\(-2 \\le x \\le 3\\), so the line is below the axis on \\([-2, -1]\\) and above it on \\([-1, 3]\\). Area is a positive quantity, so the two pieces must be computed separately and added in magnitude rather than integrated in one sweep, which would let them partly cancel. Thus the required area is \\(-\\int_{-2}^{-1}(x + 1)\\,dx + \\int_{-1}^{3}(x + 1)\\,dx\\). Using the antiderivative \\(\\frac{(x + 1)^2}{2}\\), the first piece is \\(-\\left[\\frac{(x + 1)^2}{2}\\right]_{-2}^{-1} = -\\left(0 - \\frac{1}{2}\\right) = \\frac{1}{2}\\) and the second is \\(\\left[\\frac{(x + 1)^2}{2}\\right]_{-1}^{3} = \\frac{16}{2} - 0 = 8\\). Hence the area is \\(\\frac{1}{2} + 8 = \\frac{17}{2}\\) square units. This agrees with a direct check by triangles: the pieces are right triangles of legs 1 and 1, and 4 and 4, with areas \\(\\frac{1}{2}\\) and 8."
+  },
+  {
+   "hash": "e8dc51c76731a58b0ecad2702f5457ca2cbb267cfe02a01fe816c0523a6bd787",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Bayes' Theorem",
+   "stem": "A card from a pack of 52 playing cards is lost. From the remaining cards, 2 cards are drawn at random without replacement, and are found to be both aces. Find the probability that lost card being an ace.",
+   "solution": "The two aces are observed after the loss, so this is a Bayes' theorem problem in which the observation revises our belief about the lost card. Let \\(E_1\\) be the event that the lost card is an ace and \\(E_2\\) that it is not, and let \\(A\\) be the event that the two cards drawn from the remaining 51 are both aces. Before the draw, \\(P(E_1) = \\frac{4}{52} = \\frac{1}{13}\\) and \\(P(E_2) = \\frac{48}{52} = \\frac{12}{13}\\). If the lost card was an ace, only 3 aces remain among the 51 cards, so \\(P(A/E_1) = \\frac{{}^{3}C_2}{{}^{51}C_2} = \\frac{3}{{}^{51}C_2}\\); if it was not, all 4 aces remain, so \\(P(A/E_2) = \\frac{{}^{4}C_2}{{}^{51}C_2} = \\frac{6}{{}^{51}C_2}\\). By Bayes' theorem, \\(P(E_1/A) = \\frac{P(E_1)P(A/E_1)}{P(E_1)P(A/E_1) + P(E_2)P(A/E_2)}\\). The common factors \\(\\frac{1}{13}\\) and \\(\\frac{1}{{}^{51}C_2}\\) cancel from every term, leaving \\(P(E_1/A) = \\frac{1 \\times 3}{1 \\times 3 + 12 \\times 6} = \\frac{3}{3 + 72} = \\frac{3}{75} = \\frac{1}{25}\\). So the probability that the lost card was an ace is \\(\\frac{1}{25}\\)."
+  },
+  {
+   "hash": "05726d5e790f07031124ad0f010d79ec3ae792dcebf7667f0ba40049fa28cf09",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "Evaluate : \\(\\int_0^{\\pi} \\frac{x}{1 + \\sin x}\\,dx\\).",
+   "solution": "Let \\(I = \\int_0^{\\pi}\\frac{x}{1 + \\sin x}\\,dx\\) and apply the property \\(\\int_0^a f(x)\\,dx = \\int_0^a f(a - x)\\,dx\\) with \\(a = \\pi\\). Since \\(\\sin(\\pi - x) = \\sin x\\), the denominator is unchanged and \\(I = \\int_0^{\\pi}\\frac{\\pi - x}{1 + \\sin x}\\,dx = \\pi\\int_0^{\\pi}\\frac{dx}{1 + \\sin x} - I\\). Hence \\(2I = \\pi\\int_0^{\\pi}\\frac{dx}{1 + \\sin x}\\), which has removed the awkward factor \\(x\\) altogether. To integrate what remains, write \\(\\sin x = \\cos\\left(\\frac{\\pi}{2} - x\\right)\\) and use \\(1 + \\cos\\theta = 2\\cos^2\\frac{\\theta}{2}\\), giving \\(1 + \\sin x = 2\\cos^2\\left(\\frac{\\pi}{4} - \\frac{x}{2}\\right)\\). Then \\(I = \\frac{\\pi}{2}\\int_0^{\\pi}\\frac{dx}{2\\cos^2\\left(\\frac{\\pi}{4} - \\frac{x}{2}\\right)} = \\frac{\\pi}{4}\\int_0^{\\pi}\\sec^2\\left(\\frac{\\pi}{4} - \\frac{x}{2}\\right)dx = \\frac{\\pi}{4}\\left[-2\\tan\\left(\\frac{\\pi}{4} - \\frac{x}{2}\\right)\\right]_0^{\\pi}\\), the factor \\(-2\\) coming from the inner derivative \\(-\\frac{1}{2}\\). At \\(x = \\pi\\) the bracket is \\(-2\\tan\\left(-\\frac{\\pi}{4}\\right) = 2\\) and at \\(x = 0\\) it is \\(-2\\tan\\frac{\\pi}{4} = -2\\), so \\(I = \\frac{\\pi}{4}\\left[2 - (-2)\\right] = \\frac{\\pi}{4}\\times 4 = \\pi\\)."
+  },
+  {
+   "hash": "b482e0c0dae6c09f1bd0c56b9b9308a3d8575ff31ffdc436a6e434ab025eb28c",
+   "ref": "Q14i",
+   "questionNumber": "14 (i)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Shortest Distance Between Two Lines",
+   "stem": "Are the lines \\(l_1\\) and \\(l_2\\) coplanar ? Justify your answer.",
+   "context": "Electrical transmission wires which are laid down in winters are stretched tightly to accommodate expansion in summers.\nTwo such wires lie along the following lines :\n\\(l_1 : \\frac{x + 1}{3} = \\frac{y - 3}{-2} = \\frac{z + 2}{-1}\\)\n\\(l_2 : \\frac{x}{-1} = \\frac{y - 7}{3} = \\frac{z + 7}{-2}\\)\nBased on the given information, answer the following questions :",
+   "figure": "DECORATIVE - a captioned photograph of an electrical transmission tower (labels: Grounded metal tower, Overhead ground wires, Nearest three phase conductors, Insulators). It carries no data; both line equations are printed in the text. Page idx 6.",
+   "solution": "Reading the two symmetric forms, \\(l_1\\) passes through \\(A(-1, 3, -2)\\) with direction ratios \\((3, -2, -1)\\), and \\(l_2\\) passes through \\(B(0, 7, -7)\\) with direction ratios \\((-1, 3, -2)\\). Two lines are coplanar exactly when the vector joining a point of one to a point of the other lies in the plane of the two directions, that is when the scalar triple product of those three vectors is zero. Here \\(\\overrightarrow{AB} = (0 - (-1),\\ 7 - 3,\\ -7 - (-2)) = (1, 4, -5)\\), so the test determinant is \\(\\begin{vmatrix} 1 & 4 & -5 \\\\ 3 & -2 & -1 \\\\ -1 & 3 & -2 \\end{vmatrix}\\). Expanding along the first row, this equals \\(1(4 + 3) - 4(-6 - 1) + (-5)(9 - 2) = 7 + 28 - 35 = 0\\). Since the determinant vanishes, the lines \\(l_1\\) and \\(l_2\\) are coplanar. Their direction ratios \\((3, -2, -1)\\) and \\((-1, 3, -2)\\) are not proportional, so the lines are not parallel, which means the two wires actually meet at a point."
+  },
+  {
+   "hash": "6f6b4b36e21d88ef0f586ea6afaddd82f0c66659d59b021fc840a81057127634",
+   "ref": "Q14ii",
+   "questionNumber": "14 (ii)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the point of intersection of the lines \\(l_1\\) and \\(l_2\\).",
+   "context": "Electrical transmission wires which are laid down in winters are stretched tightly to accommodate expansion in summers.\nTwo such wires lie along the following lines :\n\\(l_1 : \\frac{x + 1}{3} = \\frac{y - 3}{-2} = \\frac{z + 2}{-1}\\)\n\\(l_2 : \\frac{x}{-1} = \\frac{y - 7}{3} = \\frac{z + 7}{-2}\\)\nBased on the given information, answer the following questions :",
+   "solution": "Write a general point of \\(l_1\\) in parametric form. Setting each ratio of \\(l_1\\) equal to \\(\\lambda\\) gives the point \\((3\\lambda - 1,\\ -2\\lambda + 3,\\ -\\lambda - 2)\\). This point lies on \\(l_2\\) when its coordinates satisfy \\(\\frac{3\\lambda - 1}{-1} = \\frac{(-2\\lambda + 3) - 7}{3} = \\frac{(-\\lambda - 2) + 7}{-2}\\). Equating the first two ratios and cross-multiplying, \\(3(3\\lambda - 1) = -(-2\\lambda - 4)\\), that is \\(9\\lambda - 3 = 2\\lambda + 4\\), so \\(7\\lambda = 7\\) and \\(\\lambda = 1\\). This value must also satisfy the third ratio, and it does: at \\(\\lambda = 1\\) the first two ratios are \\(\\frac{2}{-1} = -2\\) and \\(\\frac{-6}{3} = -2\\), while the third is \\(\\frac{4}{-2} = -2\\), so all three agree and the lines genuinely meet. Substituting \\(\\lambda = 1\\) into the general point gives the point of intersection \\((2, 1, -3)\\)."
+  }
+ ]
+}

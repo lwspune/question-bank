@@ -1,0 +1,225 @@
+{
+ "paper": "65/3/3",
+ "year": 2024,
+ "paperId": "2024-65-3-3",
+ "markingScheme": "out/2024-65-3-3/ms/p00.png … p20.png",
+ "rows": [
+  {
+   "hash": "d2444d9a6d2a020c65da151fde3d217b147564190443949779932a0ce183e3b2",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Determinant and its Properties",
+   "stem": "The value of \\(\\begin{vmatrix} 8 & 2 & 7 \\\\ 12 & 3 & 5 \\\\ 16 & 4 & 3 \\end{vmatrix}\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "0"
+    },
+    {
+     "label": "B",
+     "text": "2"
+    },
+    {
+     "label": "C",
+     "text": "7"
+    },
+    {
+     "label": "D",
+     "text": "\\(-2\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Compare the first two columns: \\(C_1 = (8, 12, 16)\\) and \\(C_2 = (2, 3, 4)\\) satisfy \\(C_1 = 4C_2\\). Applying \\(C_1 \\to C_1 - 4C_2\\) turns the whole first column into zeros, and a determinant with a zero column is zero. (Equivalently, a determinant having two proportional columns vanishes.) So the value of the determinant is \\(0\\)."
+  },
+  {
+   "hash": "84a1c9a44736ef03fdd20b081481f3fe36f253e59558be3f6d27dc8720be297f",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Second Order Derivatives",
+   "stem": "If \\(y = \\sin^{-1} x\\), then \\(\\dfrac{d^2y}{dx^2}\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\sec y\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\sec y \\tan y\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\sec^2 y \\tan y\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\tan^2 y \\sec y\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "From \\(y = \\sin^{-1} x\\) we have \\(x = \\sin y\\), so \\(\\dfrac{dy}{dx} = \\dfrac{1}{\\sqrt{1 - x^2}} = \\dfrac{1}{\\cos y} = \\sec y\\). Differentiating a second time with respect to \\(x\\), and using the chain rule through \\(y\\), \\(\\dfrac{d^2y}{dx^2} = \\dfrac{d}{dy}(\\sec y) \\cdot \\dfrac{dy}{dx} = \\sec y \\tan y \\cdot \\sec y = \\sec^2 y \\tan y\\)."
+  },
+  {
+   "hash": "ab9678b8f1d66568f4bc3ba9e8881e498c61020505803d710d328479a96a7821",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "Let Z denote the set of integers, then function \\(f : Z \\to Z\\) defined as \\(f(x) = x^3 - 1\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "both one-one and onto"
+    },
+    {
+     "label": "B",
+     "text": "one-one but not onto"
+    },
+    {
+     "label": "C",
+     "text": "onto but not one-one"
+    },
+    {
+     "label": "D",
+     "text": "neither one-one nor onto"
+    }
+   ],
+   "answer": "B",
+   "solution": "One-one: cubing is strictly increasing on \\(Z\\), so \\(f(x_1) = f(x_2)\\) gives \\(x_1^3 = x_2^3\\) and hence \\(x_1 = x_2\\); the function is injective. Onto: solving \\(x^3 - 1 = y\\) gives \\(x = \\sqrt[3]{y + 1}\\), which is an integer only when \\(y + 1\\) is a perfect cube. Take \\(y = 1\\), which lies in the codomain \\(Z\\): then \\(x^3 = 2\\), and no integer cubes to \\(2\\), so \\(1\\) has no pre-image and \\(f\\) is not surjective. Hence \\(f\\) is one-one but not onto."
+  },
+  {
+   "hash": "c7266cace37ec9849465de3389b42fca4533132caa31e98984172f0c6e4d1d46",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "The rate of change of surface area of a sphere with respect to its radius \\('r'\\), when \\(r = 4\\) cm, is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(64\\pi\\) cm\\(^2\\)/cm"
+    },
+    {
+     "label": "B",
+     "text": "\\(48\\pi\\) cm\\(^2\\)/cm"
+    },
+    {
+     "label": "C",
+     "text": "\\(32\\pi\\) cm\\(^2\\)/cm"
+    },
+    {
+     "label": "D",
+     "text": "\\(16\\pi\\) cm\\(^2\\)/cm"
+    }
+   ],
+   "answer": "C",
+   "solution": "The surface area of a sphere of radius \\(r\\) is \\(S = 4\\pi r^2\\), so the rate of change of \\(S\\) with respect to \\(r\\) is \\(\\dfrac{dS}{dr} = 8\\pi r\\). At \\(r = 4\\) cm this equals \\(8\\pi \\times 4 = 32\\pi\\). The required rate is therefore \\(32\\pi\\) cm\\(^2\\)/cm. (The value \\(64\\pi\\) would be the surface area itself at \\(r = 4\\), not its rate of change.)"
+  },
+  {
+   "hash": "8e784e1595b10b1829d42d5dbc373a963bfff5c67c19cc5023ac336935fa17fa",
+   "ref": "Q19",
+   "questionNumber": "19",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "Assertion (A) : For any non-zero unit vector \\(\\vec{a}\\), \\(\\vec{a} \\cdot (-\\vec{a}) = (-\\vec{a}) \\cdot \\vec{a} = -1\\).\nReason (R) : Angle between \\(\\vec{a}\\) and \\((-\\vec{a})\\) is \\(\\dfrac{\\pi}{2}\\).",
+   "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false, but Reason (R) is true."
+    }
+   ],
+   "answer": "C",
+   "solution": "For a unit vector, \\(\\vec{a} \\cdot (-\\vec{a}) = -(\\vec{a} \\cdot \\vec{a}) = -|\\vec{a}|^2 = -1\\), and the scalar product is commutative, so \\((-\\vec{a}) \\cdot \\vec{a}\\) is the same \\(-1\\). The Assertion is therefore true. The Reason claims the angle between \\(\\vec{a}\\) and \\(-\\vec{a}\\) is \\(\\dfrac{\\pi}{2}\\), but \\(-\\vec{a}\\) points in exactly the opposite direction to \\(\\vec{a}\\), so that angle is \\(\\pi\\). The two statements are in fact inconsistent with each other: an angle of \\(\\dfrac{\\pi}{2}\\) would make the scalar product \\(0\\), whereas \\(\\cos\\pi = -1\\) is precisely what reproduces the Assertion. So the Assertion is true while the Reason is false."
+  },
+  {
+   "hash": "e7eec9bad026e41e42e22cf008b5017b0e9ebb0a48231f6d1a77692328bc3156",
+   "ref": "Q21",
+   "questionNumber": "21",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "\\(\\vec{a}\\), \\(\\vec{b}\\) and \\(\\vec{c}\\) are three mutually perpendicular unit vectors. If \\(\\theta\\) is the angle between \\(\\vec{a}\\) and \\((2\\vec{a} + 3\\vec{b} + 6\\vec{c})\\), find the value of \\(\\cos \\theta\\).",
+   "solution": "Because \\(\\vec{a}\\), \\(\\vec{b}\\), \\(\\vec{c}\\) are mutually perpendicular unit vectors, \\(|\\vec{a}| = |\\vec{b}| = |\\vec{c}| = 1\\) and \\(\\vec{a} \\cdot \\vec{b} = \\vec{b} \\cdot \\vec{c} = \\vec{c} \\cdot \\vec{a} = 0\\). Every cross term therefore drops out of the square of the magnitude: \\(|2\\vec{a} + 3\\vec{b} + 6\\vec{c}|^2 = 4|\\vec{a}|^2 + 9|\\vec{b}|^2 + 36|\\vec{c}|^2 = 4 + 9 + 36 = 49\\), so \\(|2\\vec{a} + 3\\vec{b} + 6\\vec{c}| = 7\\). Likewise \\(\\vec{a} \\cdot (2\\vec{a} + 3\\vec{b} + 6\\vec{c}) = 2|\\vec{a}|^2 = 2\\). Hence \\(\\cos\\theta = \\dfrac{\\vec{a} \\cdot (2\\vec{a} + 3\\vec{b} + 6\\vec{c})}{|\\vec{a}|\\,|2\\vec{a} + 3\\vec{b} + 6\\vec{c}|} = \\dfrac{2}{1 \\times 7} = \\dfrac{2}{7}\\)."
+  },
+  {
+   "hash": "9256ffa9d6b5bc3360f039cd925143bd1793dd6412afcaf976de95cd3119d6c0",
+   "ref": "Q22",
+   "questionNumber": "22",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Evaluating Inverse Trigonometric Expressions",
+   "stem": "Evaluate :\n\\(\\cot^2\\left\\{\\operatorname{cosec}^{-1} 3\\right\\} + \\sin^2\\left\\{\\cos^{-1}\\left(\\dfrac{1}{3}\\right)\\right\\}\\)",
+   "solution": "Turn each square into the function that its inverse undoes. Using \\(\\cot^2\\phi = \\operatorname{cosec}^2\\phi - 1\\) and \\(\\sin^2\\phi = 1 - \\cos^2\\phi\\), the expression equals \\(\\left[\\operatorname{cosec}^2\\left(\\operatorname{cosec}^{-1} 3\\right) - 1\\right] + \\left[1 - \\cos^2\\left(\\cos^{-1}\\dfrac{1}{3}\\right)\\right]\\). Now \\(\\operatorname{cosec}\\left(\\operatorname{cosec}^{-1} 3\\right) = 3\\) and \\(\\cos\\left(\\cos^{-1}\\dfrac{1}{3}\\right) = \\dfrac{1}{3}\\), so this is \\((9 - 1) + \\left(1 - \\dfrac{1}{9}\\right) = 8 + \\dfrac{8}{9} = \\dfrac{80}{9}\\)."
+  },
+  {
+   "hash": "1950a98b43a2b0dbd2e093777b9f0e8b61ac41e2a79a0509bbc13c7e8b908870",
+   "ref": "Q26",
+   "questionNumber": "26",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following linear programming problem graphically :\nMaximize \\(z = x + y\\)\nsubject to constraints\n\\(2x + 5y \\le 100\\)\n\\(8x + 5y \\le 200\\)\n\\(x \\ge 0, y \\ge 0\\).",
+   "solution": "[CBSE marking scheme: two labels in the printed solution are wrong, although its working and its final answer are right. The steeper line on the graph is labelled \\(8x + 5y = 100\\), but the line actually drawn passes through \\((25, 0)\\) and \\(\\left(\\dfrac{50}{3}, \\dfrac{40}{3}\\right)\\), so it is \\(8x + 5y = 200\\). And the corner-point table is headed as the value of \\(z = 4x + 3y\\), whereas the objective function in this question is \\(z = x + y\\); the four values tabulated, \\(0\\), \\(25\\), \\(30\\) and \\(20\\), are indeed \\(x + y\\) and not \\(4x + 3y\\).] Draw \\(2x + 5y = 100\\) and \\(8x + 5y = 200\\) in the first quadrant. The feasible region is the part of the first quadrant lying on or below both lines, and it is bounded. Its corner points are \\(O(0, 0)\\); the point where \\(8x + 5y = 200\\) meets the \\(x\\)-axis, \\(A(25, 0)\\); the point where \\(2x + 5y = 100\\) meets the \\(y\\)-axis, \\(C(0, 20)\\); and the intersection of the two lines, obtained by subtracting them to get \\(6x = 100\\), so \\(x = \\dfrac{50}{3}\\) and then \\(5y = 100 - \\dfrac{100}{3} = \\dfrac{200}{3}\\), giving \\(B\\left(\\dfrac{50}{3}, \\dfrac{40}{3}\\right)\\). Evaluating \\(z = x + y\\) at the corners: at \\(O(0, 0)\\), \\(z = 0\\); at \\(A(25, 0)\\), \\(z = 25\\); at \\(B\\left(\\dfrac{50}{3}, \\dfrac{40}{3}\\right)\\), \\(z = \\dfrac{50}{3} + \\dfrac{40}{3} = 30\\); at \\(C(0, 20)\\), \\(z = 20\\). The region is bounded, so the greatest of these is the maximum. Hence \\(z\\) is maximum and equal to \\(30\\) at \\(x = \\dfrac{50}{3}\\), \\(y = \\dfrac{40}{3}\\)."
+  },
+  {
+   "hash": "b6133febe12b4f404d11d5585684721acfd76508c3cc6641b22d64746509a35f",
+   "ref": "Q30",
+   "questionNumber": "30",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Partial Fractions",
+   "stem": "Find :\n\\(\\int \\dfrac{\\sqrt{x}}{(x + 1)(x - 1)}\\, dx\\)",
+   "solution": "The \\(\\sqrt{x}\\) invites the substitution \\(\\sqrt{x} = t\\), so \\(x = t^2\\) and \\(dx = 2t\\, dt\\). Then \\(I = \\int \\dfrac{t}{(t^2 + 1)(t^2 - 1)} \\cdot 2t\\, dt = \\int \\dfrac{2t^2}{(t^2 + 1)(t^2 - 1)}\\, dt\\). Write \\(z = t^2\\) to split into partial fractions: \\(\\dfrac{2z}{(z + 1)(z - 1)} = \\dfrac{1}{z + 1} + \\dfrac{1}{z - 1}\\), which checks out because the right-hand side has numerator \\((z - 1) + (z + 1) = 2z\\). Hence \\(I = \\int \\dfrac{dt}{t^2 + 1} + \\int \\dfrac{dt}{t^2 - 1} = \\tan^{-1} t + \\dfrac{1}{2}\\log\\left|\\dfrac{t - 1}{t + 1}\\right| + c\\). Restoring \\(t = \\sqrt{x}\\), the integral is \\(\\tan^{-1}\\sqrt{x} + \\dfrac{1}{2}\\log\\left|\\dfrac{\\sqrt{x} - 1}{\\sqrt{x} + 1}\\right| + c\\)."
+  },
+  {
+   "hash": "73dfb0e25c9e848c893687395e0add8f891b677e4d2f7a67f753371aea730ed5",
+   "ref": "Q33",
+   "questionNumber": "33",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "Let \\(A = R - \\{3\\}\\) and \\(B = R - \\{a\\}\\). Find the value of 'a' such that the function \\(f : A \\to B\\) defined by \\(f(x) = \\dfrac{x - 2}{x - 3}\\) is onto. Also, check whether the given function is one-one or not.",
+   "solution": "For \\(f\\) to be onto, its codomain \\(B\\) must be exactly its range. Put \\(y = f(x) = \\dfrac{x - 2}{x - 3}\\), so \\(x - 2 = xy - 3y\\), that is \\(x(1 - y) = 2 - 3y\\) and \\(x = \\dfrac{2 - 3y}{1 - y}\\). This produces a pre-image for every \\(y\\) except \\(y = 1\\), where the denominator vanishes; and the value it produces is never \\(3\\), since \\(\\dfrac{2 - 3y}{1 - y} = 3\\) would force \\(2 - 3y = 3 - 3y\\), i.e. \\(2 = 3\\). So every such pre-image genuinely lies in \\(A = R - \\{3\\}\\), and the range of \\(f\\) is \\(R - \\{1\\}\\). Matching this against \\(B = R - \\{a\\}\\) gives \\(a = 1\\).\nFor one-one, let \\(f(x_1) = f(x_2)\\) with \\(x_1, x_2 \\in A\\). Then \\(\\dfrac{x_1 - 2}{x_1 - 3} = \\dfrac{x_2 - 2}{x_2 - 3}\\), and cross-multiplying gives \\(x_1x_2 - 3x_1 - 2x_2 + 6 = x_1x_2 - 2x_1 - 3x_2 + 6\\). Cancelling \\(x_1x_2\\) and \\(6\\) leaves \\(-3x_1 - 2x_2 = -2x_1 - 3x_2\\), so \\(x_2 - x_1 = 0\\), that is \\(x_1 = x_2\\). Hence \\(f\\) is one-one."
+  },
+  {
+   "hash": "d3837895958228e1792be187bdb56866828235beba1811764887d3ed20ddbc6e",
+   "ref": "Q35",
+   "questionNumber": "35",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "Using integration, find the area of the region enclosed between the curve \\(y = \\sqrt{4 - x^2}\\) and the lines \\(x = -1\\), \\(x = 1\\) and the x-axis.",
+   "solution": "The curve \\(y = \\sqrt{4 - x^2}\\) is the upper half of the circle \\(x^2 + y^2 = 4\\), so throughout \\([-1, 1]\\) it lies above the \\(x\\)-axis. The region is thus bounded above by the semicircle, below by the \\(x\\)-axis and at the sides by \\(x = -1\\) and \\(x = 1\\). Its area is \\(\\int\\limits_{-1}^{1}\\sqrt{4 - x^2}\\, dx\\), and since the integrand is even this equals \\(2\\int\\limits_{0}^{1}\\sqrt{4 - x^2}\\, dx\\). Using the standard result \\(\\int \\sqrt{a^2 - x^2}\\, dx = \\dfrac{x}{2}\\sqrt{a^2 - x^2} + \\dfrac{a^2}{2}\\sin^{-1}\\dfrac{x}{a}\\) with \\(a = 2\\), the area is \\(2\\left[\\dfrac{x}{2}\\sqrt{4 - x^2} + 2\\sin^{-1}\\dfrac{x}{2}\\right]_{0}^{1} = 2\\left[\\dfrac{1}{2}\\sqrt{3} + 2 \\times \\dfrac{\\pi}{6}\\right] = \\sqrt{3} + \\dfrac{2\\pi}{3}\\) square units."
+  }
+ ]
+}

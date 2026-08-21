@@ -1,0 +1,221 @@
+{
+ "paper": "65/2/1",
+ "year": 2022,
+ "paperId": "2022-65-2-1",
+ "markingScheme": "out/2022-65-2-1/ms/p00.png … p10.png",
+ "rows": [
+  {
+   "hash": "947ff566e6338669b4bd2a59873b2d6108780acd7a9e1f9b66cc84b87bbf9bd9",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Order and Degree of a Differential Equation",
+   "stem": "Find the product of the order and the degree of the differential equation \\( \\left[ \\frac{d}{dx} (xy^2) \\right] \\cdot \\frac{dy}{dx} + y = 0 \\).",
+   "solution": "Neither the order nor the degree can be read off until the bracket is expanded, so do that first. By the product rule, \\( \\frac{d}{dx}(xy^2) = y^2 + 2xy\\frac{dy}{dx} \\), so the equation becomes \\( \\left( y^2 + 2xy\\frac{dy}{dx} \\right)\\frac{dy}{dx} + y = 0 \\), that is, \\( 2xy\\left(\\frac{dy}{dx}\\right)^2 + y^2\\frac{dy}{dx} + y = 0 \\). The highest derivative appearing is \\( \\frac{dy}{dx} \\), so the order is 1, and the equation is a polynomial in \\( \\frac{dy}{dx} \\) whose highest power is 2, so the degree is 2. Hence order \\( \\times \\) degree \\( = 1 \\times 2 = 2 \\)."
+  },
+  {
+   "hash": "cd82799a3a8efd31b52ab76a2da8ff3c669935e798b92ee4bba1ac65a2c0cf39",
+   "ref": "Q2a",
+   "questionNumber": "2 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration using Trigonometric Identities",
+   "stem": "Find : \\( \\int \\frac{\\sin 3x}{\\sin x} \\, dx \\)",
+   "solution": "The triple-angle identity is what clears the \\( \\sin x \\) from the denominator. Since \\( \\sin 3x = 3\\sin x - 4\\sin^3 x \\), we get \\( \\frac{\\sin 3x}{\\sin x} = 3 - 4\\sin^2 x \\). Now use \\( \\sin^2 x = \\frac{1 - \\cos 2x}{2} \\), so the integrand becomes \\( 3 - 4 \\cdot \\frac{1 - \\cos 2x}{2} = 3 - 2 + 2\\cos 2x = 1 + 2\\cos 2x \\). Therefore \\( \\int \\frac{\\sin 3x}{\\sin x}\\,dx = \\int (1 + 2\\cos 2x)\\,dx = x + \\sin 2x + C \\)."
+  },
+  {
+   "hash": "dce54dc2650c5c326fc67c678044fc71b934e85c2a9e63c4b8d1996b8a258c6a",
+   "ref": "Q2b",
+   "questionNumber": "2 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals by Substitution",
+   "stem": "Evaluate : \\( \\int_{0}^{\\frac{1}{2} \\log 3} \\frac{e^x}{e^{2x} + 1} \\, dx \\)",
+   "solution": "Put \\( t = e^x \\), so that \\( dt = e^x\\,dx \\) and \\( e^{2x} = t^2 \\). Because this is a definite integral the limits move with the substitution: \\( x = 0 \\) gives \\( t = 1 \\), and \\( x = \\frac{1}{2}\\log 3 \\) gives \\( t = e^{\\frac{1}{2}\\log 3} = 3^{1/2} = \\sqrt{3} \\). The integral becomes \\( \\int_{1}^{\\sqrt{3}} \\frac{dt}{t^2 + 1} = \\left[ \\tan^{-1} t \\right]_{1}^{\\sqrt{3}} = \\tan^{-1}\\sqrt{3} - \\tan^{-1} 1 = \\frac{\\pi}{3} - \\frac{\\pi}{4} = \\frac{\\pi}{12} \\)."
+  },
+  {
+   "hash": "ffe12f2b629c66ebfd4e2d666b8ef1c3d450a410bfd698462834cd4b34d71706",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "\\( \\vec{a} \\) and \\( \\vec{b} \\) are two unit vectors such that \\( |2\\vec{a} + 3\\vec{b}| = |3\\vec{a} - 2\\vec{b}| \\). Find the angle between \\( \\vec{a} \\) and \\( \\vec{b} \\).",
+   "solution": "Squaring both sides is safe here, since both are non-negative, and it turns the moduli into dot products. From \\( |2\\vec{a} + 3\\vec{b}|^2 = |3\\vec{a} - 2\\vec{b}|^2 \\) we get \\( 4|\\vec{a}|^2 + 12\\,\\vec{a}\\cdot\\vec{b} + 9|\\vec{b}|^2 = 9|\\vec{a}|^2 - 12\\,\\vec{a}\\cdot\\vec{b} + 4|\\vec{b}|^2 \\). Collecting terms gives \\( 24\\,\\vec{a}\\cdot\\vec{b} = 5|\\vec{a}|^2 - 5|\\vec{b}|^2 \\). Both vectors are unit vectors, so \\( |\\vec{a}| = |\\vec{b}| = 1 \\) and the right-hand side is \\( 5 - 5 = 0 \\). Hence \\( \\vec{a}\\cdot\\vec{b} = 0 \\), so \\( \\cos\\theta = 0 \\) and the angle between \\( \\vec{a} \\) and \\( \\vec{b} \\) is \\( \\frac{\\pi}{2} \\), that is, the vectors are perpendicular."
+  },
+  {
+   "hash": "5a4874b987eec460eaa1106c9820af35f962f22acbe51f0c720f6ba4f71cc963",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "A pair of dice is thrown. It is given that the sum of numbers appearing on both dice is an even number. Find the probability that the number appearing on at least one die is 3.",
+   "solution": "The phrase \"it is given that\" makes this a conditional probability. Let A be the event that at least one die shows 3, and B the event that the sum is even. A sum of two dice is even exactly when both numbers are odd or both are even, which gives \\( 3 \\times 3 + 3 \\times 3 = 18 \\) outcomes, so \\( P(B) = \\frac{18}{36} \\). For an outcome in \\( A \\cap B \\) one die must show 3, and since 3 is odd the other die must be odd as well, so \\( A \\cap B = \\{(3,1), (3,3), (3,5), (1,3), (5,3)\\} \\) and \\( P(A \\cap B) = \\frac{5}{36} \\). Therefore \\( P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{5/36}{18/36} = \\frac{5}{18} \\)."
+  },
+  {
+   "hash": "5361d7479ed517270eaf37e97c8c3fdce6e460bfb0fdb8fdfc1bd2fb5e9c5306",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Independent Events",
+   "stem": "Probabilities of A and B solving a specific problem are \\( \\frac{2}{3} \\) and \\( \\frac{3}{5} \\), respectively. If both of them try independently to solve the problem, then find the probability that the problem is solved.",
+   "solution": "The problem is solved if A solves it, or B does, or both, so it is quicker to work with the complement: the problem goes unsolved only when both fail. Here \\( P(\\bar{A}) = 1 - \\frac{2}{3} = \\frac{1}{3} \\) and \\( P(\\bar{B}) = 1 - \\frac{3}{5} = \\frac{2}{5} \\). The two attempts are independent, so the failures are independent too and \\( P(\\text{problem not solved}) = P(\\bar{A})\\,P(\\bar{B}) = \\frac{1}{3} \\times \\frac{2}{5} = \\frac{2}{15} \\). Hence \\( P(\\text{problem is solved}) = 1 - \\frac{2}{15} = \\frac{13}{15} \\)."
+  },
+  {
+   "hash": "22df6cf0ee355d85dfe6b9863dafbd4bde3343ae5540707c17f9c08810d6b2dd",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Write the cartesian equation of the line PQ passing through points \\( P(2, 2, 1) \\) and \\( Q(5, 1, -2) \\). Hence, find the y-coordinate of the point on the line PQ whose z-coordinate is \\( -2 \\).",
+   "solution": "The direction ratios of PQ are the differences of the coordinates, \\( 5 - 2,\\; 1 - 2,\\; -2 - 1 \\), that is, \\( 3,\\, -1,\\, -3 \\). Taking \\( P(2, 2, 1) \\) as the fixed point, the cartesian equation of the line is \\( \\frac{x - 2}{3} = \\frac{y - 2}{-1} = \\frac{z - 1}{-3} \\). For the second part, put \\( z = -2 \\). The third ratio is then \\( \\frac{-2 - 1}{-3} = \\frac{-3}{-3} = 1 \\), so the common value of all three ratios is 1. Hence \\( \\frac{y - 2}{-1} = 1 \\), giving \\( y - 2 = -1 \\), so the required y-coordinate is \\( y = 1 \\)."
+  },
+  {
+   "hash": "982f0537bbe9b61cc1761bd63bc3baa375195577b08acfb84b83b1e8aad38274",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "ABCD is a parallelogram such that \\( \\overrightarrow{AC} = \\hat{i} + \\hat{j} \\) and \\( \\overrightarrow{BD} = 2\\hat{i} + \\hat{j} + \\hat{k} \\). Find \\( \\overrightarrow{AB} \\) and \\( \\overrightarrow{AD} \\). Also, find the area of the parallelogram ABCD.",
+   "solution": "[CBSE marking scheme: the printed line sets the modulus \\( |\\overrightarrow{AC} \\times \\overrightarrow{BD}| \\) equal to the vector \\( \\hat{i} - \\hat{j} - \\hat{k} \\); the modulus bars are spurious there, since a magnitude is a number and cannot equal a vector. The cross product itself, and the value used in the next line, are correct.] Let \\( \\overrightarrow{AB} = \\vec{a} \\) and \\( \\overrightarrow{AD} = \\vec{b} \\). In a parallelogram ABCD we have \\( \\overrightarrow{BC} = \\overrightarrow{AD} \\), so the two diagonals are \\( \\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{BC} = \\vec{a} + \\vec{b} = \\hat{i} + \\hat{j} \\) and \\( \\overrightarrow{BD} = \\overrightarrow{BA} + \\overrightarrow{AD} = \\vec{b} - \\vec{a} = 2\\hat{i} + \\hat{j} + \\hat{k} \\). Adding the two gives \\( 2\\vec{b} = 3\\hat{i} + 2\\hat{j} + \\hat{k} \\), so \\( \\overrightarrow{AD} = \\frac{3}{2}\\hat{i} + \\hat{j} + \\frac{1}{2}\\hat{k} \\); subtracting the second from the first gives \\( 2\\vec{a} = -\\hat{i} - \\hat{k} \\), so \\( \\overrightarrow{AB} = -\\frac{1}{2}\\hat{i} - \\frac{1}{2}\\hat{k} \\). For the area, use the diagonal form \\( \\text{Area} = \\frac{1}{2}\\left| \\overrightarrow{AC} \\times \\overrightarrow{BD} \\right| \\). Here \\( \\overrightarrow{AC} \\times \\overrightarrow{BD} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & 1 & 0 \\\\ 2 & 1 & 1 \\end{vmatrix} = \\hat{i} - \\hat{j} - \\hat{k} \\), whose magnitude is \\( \\sqrt{1 + 1 + 1} = \\sqrt{3} \\). Hence the area of the parallelogram is \\( \\frac{\\sqrt{3}}{2} \\) square units, which agrees with the direct computation \\( \\left| \\vec{a} \\times \\vec{b} \\right| \\)."
+  },
+  {
+   "hash": "1d3824b5b3e18ef49608ca8d40371b8b6b3dbb0b98333bf2cd92abb123dcc7ad",
+   "ref": "Q8a",
+   "questionNumber": "8 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Parts",
+   "stem": "Evaluate : \\( \\int_{0}^{1} \\tan^{-1} x \\, dx \\)",
+   "solution": "There is only one factor, so integrate by parts against 1, taking \\( \\tan^{-1} x \\) as the first function and 1 as the second. Then \\( \\int \\tan^{-1} x\\,dx = x\\tan^{-1}x - \\int \\frac{1}{1 + x^2} \\cdot x\\,dx \\), and the remaining integral is \\( \\frac{1}{2}\\log(1 + x^2) \\) by the substitution \\( u = 1 + x^2 \\). So the antiderivative is \\( x\\tan^{-1}x - \\frac{1}{2}\\log(1 + x^2) \\). Applying the limits, \\( \\int_{0}^{1} \\tan^{-1} x\\,dx = \\left[ x\\tan^{-1}x - \\frac{1}{2}\\log(1 + x^2) \\right]_{0}^{1} = \\left( 1 \\cdot \\frac{\\pi}{4} - \\frac{1}{2}\\log 2 \\right) - (0 - 0) = \\frac{\\pi}{4} - \\frac{1}{2}\\log 2 \\)."
+  },
+  {
+   "hash": "859f46d802d9788bab33518095c0529fa50c82d66619f5c3d0e7ed3fa97d3788",
+   "ref": "Q8b",
+   "questionNumber": "8 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Partial Fractions",
+   "stem": "Find : \\( \\int \\frac{2x}{x^2 + 3x + 2} \\, dx \\)",
+   "solution": "The denominator factorises as \\( x^2 + 3x + 2 = (x + 1)(x + 2) \\), so split the integrand into partial fractions. Write \\( \\frac{2x}{(x + 1)(x + 2)} = \\frac{A}{x + 1} + \\frac{B}{x + 2} \\), which gives \\( 2x = A(x + 2) + B(x + 1) \\). Putting \\( x = -1 \\) gives \\( -2 = A \\), and putting \\( x = -2 \\) gives \\( -4 = -B \\), so \\( B = 4 \\). Hence \\( \\int \\frac{2x}{x^2 + 3x + 2}\\,dx = \\int \\left( \\frac{-2}{x + 1} + \\frac{4}{x + 2} \\right) dx = -2\\log|x + 1| + 4\\log|x + 2| + C \\)."
+  },
+  {
+   "hash": "9cc15e2f994dc9f24e87f9185d60c704fb278a6211e734443fda4e270ee3f4f8",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "Find the particular solution of the differential equation \\( (y + 3x^2) \\frac{dx}{dy} = x \\), given that \\( y = 1 \\), when \\( x = 1 \\).",
+   "solution": "[CBSE marking scheme: the printed integrating-factor line reads \\( e^{-\\log x} = -x^{-1} = \\frac{1}{x} \\), carrying a spurious minus in the middle term. Correctly \\( e^{-\\log x} = x^{-1} = \\frac{1}{x} \\), which is the value the scheme itself goes on to use, so only that one printed step is at fault and the final answer is unaffected.] The equation is linear once it is rearranged with x as the independent variable. From \\( (y + 3x^2)\\frac{dx}{dy} = x \\) we get \\( x\\frac{dy}{dx} = y + 3x^2 \\), that is, \\( \\frac{dy}{dx} - \\frac{1}{x}y = 3x \\), which is linear with \\( P = -\\frac{1}{x} \\) and \\( Q = 3x \\). The integrating factor is \\( e^{\\int -\\frac{1}{x}\\,dx} = e^{-\\log x} = \\frac{1}{x} \\). Multiplying through, \\( y \\cdot \\frac{1}{x} = \\int 3x \\cdot \\frac{1}{x}\\,dx + C = \\int 3\\,dx + C = 3x + C \\). Applying the condition \\( y = 1 \\) when \\( x = 1 \\) gives \\( 1 = 3 + C \\), so \\( C = -2 \\). The particular solution is \\( \\frac{y}{x} = 3x - 2 \\), that is, \\( y = 3x^2 - 2x \\). (Check: \\( \\frac{dy}{dx} - \\frac{y}{x} = (6x - 2) - (3x - 2) = 3x \\), and \\( x = 1 \\) does give \\( y = 1 \\).)"
+  },
+  {
+   "hash": "a1677e65ea8220805b6f14c77a7d70e1cb86340038d0dfd80c3e1c364c5ccc7f",
+   "ref": "Q10a",
+   "questionNumber": "10 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "The Plane",
+   "stem": "Find the equation of the plane passing through points \\( (2, 1, 0) \\), \\( (3, -2, -2) \\) and \\( (1, 1, -7) \\). Also, obtain its distance from the origin.",
+   "solution": "Take \\( A(2, 1, 0) \\) as the base point, so that \\( \\overrightarrow{AB} = (1, -3, -2) \\) and \\( \\overrightarrow{AC} = (-1, 0, -7) \\). A point \\( (x, y, z) \\) lies in the plane exactly when these three vectors are coplanar, so the plane is \\( \\begin{vmatrix} x - 2 & y - 1 & z \\\\ 1 & -3 & -2 \\\\ -1 & 0 & -7 \\end{vmatrix} = 0 \\). Expanding along the first row, \\( (x - 2)(21 - 0) - (y - 1)(-7 - 2) + z(0 - 3) = 0 \\), that is, \\( 21(x - 2) + 9(y - 1) - 3z = 0 \\). Dividing by 3, the equation of the plane is \\( 7x + 3y - z = 17 \\). All three given points satisfy it, since \\( 14 + 3 - 0 \\), \\( 21 - 6 + 2 \\) and \\( 7 + 3 + 7 \\) each equal 17. Its distance from the origin is \\( \\frac{|7(0) + 3(0) - (0) - 17|}{\\sqrt{7^2 + 3^2 + (-1)^2}} = \\frac{17}{\\sqrt{59}} \\) units."
+  },
+  {
+   "hash": "8031f57d4326a1a707e4c6299d8a710ec77f2a68e171d5c4971357e6c0e7010d",
+   "ref": "Q10b",
+   "questionNumber": "10 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Shortest Distance Between Two Lines",
+   "stem": "Find the distance between the lines \\( x = \\frac{y - 1}{2} = \\frac{z - 2}{3} \\) and \\( x + 1 = \\frac{y + 2}{2} = \\frac{z - 1}{3} \\).",
+   "solution": "Written in standard form the lines are \\( \\frac{x}{1} = \\frac{y - 1}{2} = \\frac{z - 2}{3} \\) and \\( \\frac{x + 1}{1} = \\frac{y + 2}{2} = \\frac{z - 1}{3} \\). Both have the same direction vector \\( \\vec{b} = \\hat{i} + 2\\hat{j} + 3\\hat{k} \\), so the lines are parallel, and the distance between them is the perpendicular distance from a point of one line to the other. Take \\( \\vec{a_1} = \\hat{j} + 2\\hat{k} \\) and \\( \\vec{a_2} = -\\hat{i} - 2\\hat{j} + \\hat{k} \\), so that \\( \\vec{a_2} - \\vec{a_1} = -\\hat{i} - 3\\hat{j} - \\hat{k} \\). Then \\( (\\vec{a_2} - \\vec{a_1}) \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ -1 & -3 & -1 \\\\ 1 & 2 & 3 \\end{vmatrix} = -7\\hat{i} + 2\\hat{j} + \\hat{k} \\). For parallel lines the distance is \\( \\frac{\\left| (\\vec{a_2} - \\vec{a_1}) \\times \\vec{b} \\right|}{\\left| \\vec{b} \\right|} = \\frac{\\sqrt{49 + 4 + 1}}{\\sqrt{1 + 4 + 9}} = \\frac{\\sqrt{54}}{\\sqrt{14}} = \\sqrt{\\frac{27}{7}} = \\frac{3\\sqrt{3}}{\\sqrt{7}} = \\frac{3\\sqrt{21}}{7} \\) units."
+  },
+  {
+   "hash": "8ef70321b0ca9bcff158ba8d098428f992244021d54cbce0cd697dc08c518ea1",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "The Plane",
+   "stem": "Find the distance of the point \\( (-1, -5, -10) \\) from the point of intersection of the line \\( \\frac{x - 2}{3} = \\frac{y + 1}{4} = \\frac{z - 2}{12} \\) and the plane \\( x - y + z = 5 \\).",
+   "solution": "Find the point of intersection first, by putting the line into parametric form. Setting \\( \\frac{x - 2}{3} = \\frac{y + 1}{4} = \\frac{z - 2}{12} = \\lambda \\), a general point of the line is \\( (3\\lambda + 2,\\; 4\\lambda - 1,\\; 12\\lambda + 2) \\). This point lies on the plane \\( x - y + z = 5 \\) when \\( (3\\lambda + 2) - (4\\lambda - 1) + (12\\lambda + 2) = 5 \\), which simplifies to \\( 11\\lambda + 5 = 5 \\), so \\( \\lambda = 0 \\) and the point of intersection is \\( (2, -1, 2) \\). The required distance is then the distance between \\( (-1, -5, -10) \\) and \\( (2, -1, 2) \\), namely \\( \\sqrt{(2 + 1)^2 + (-1 + 5)^2 + (2 + 10)^2} = \\sqrt{9 + 16 + 144} = \\sqrt{169} = 13 \\) units."
+  },
+  {
+   "hash": "d36a940c5af9d5a632a2756e788d4fa02d4e4d320cc8f5f0be7493cc6fdb57e5",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "Evaluate : \\( \\int_{0}^{1} x (1 - x)^n \\, dx \\)",
+   "solution": "Expanding \\( (1 - x)^n \\) by the binomial theorem would work but is laborious; the property \\( \\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a - x)\\,dx \\) trades the awkward \\( (1 - x)^n \\) for a plain power of x. With \\( a = 1 \\), replacing x by \\( 1 - x \\) gives \\( I = \\int_{0}^{1} x(1 - x)^n\\,dx = \\int_{0}^{1} (1 - x)\\left[ 1 - (1 - x) \\right]^n dx = \\int_{0}^{1} x^n (1 - x)\\,dx \\). Expanding, \\( I = \\int_{0}^{1} x^n\\,dx - \\int_{0}^{1} x^{n+1}\\,dx = \\left[ \\frac{x^{n+1}}{n+1} \\right]_{0}^{1} - \\left[ \\frac{x^{n+2}}{n+2} \\right]_{0}^{1} = \\frac{1}{n+1} - \\frac{1}{n+2} \\). Over a common denominator this is \\( I = \\frac{(n+2) - (n+1)}{(n+1)(n+2)} = \\frac{1}{(n+1)(n+2)} \\). (As a check, \\( n = 1 \\) gives \\( \\frac{1}{6} \\), which is indeed \\( \\int_{0}^{1} x(1 - x)\\,dx = \\frac{1}{2} - \\frac{1}{3} \\).)"
+  },
+  {
+   "hash": "6fd1424da6cbd4db94bbc814a2e3cfb08d5f26fd211137723c6548dbba5700c0",
+   "ref": "Q13a",
+   "questionNumber": "13 (a)",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "Using integration, find the area of the smaller region enclosed by the curve \\( 4x^2 + 4y^2 = 9 \\) and the line \\( 2x + 2y = 3 \\).",
+   "solution": "Divide each equation through first: the curve is the circle \\( x^2 + y^2 = \\frac{9}{4} \\), centred at the origin with radius \\( \\frac{3}{2} \\), and the line is \\( x + y = \\frac{3}{2} \\), which meets the axes at \\( \\left( \\frac{3}{2}, 0 \\right) \\) and \\( \\left( 0, \\frac{3}{2} \\right) \\). Both of those points lie on the circle, so they are the points of intersection, and the smaller region is the segment cut off in the first quadrant, that is, the quarter-disc minus the triangle beneath the chord. Its area is \\( \\int_{0}^{3/2} \\sqrt{\\frac{9}{4} - x^2}\\,dx - \\int_{0}^{3/2} \\left( \\frac{3}{2} - x \\right) dx \\). The first integral is \\( \\left[ \\frac{x}{2}\\sqrt{\\frac{9}{4} - x^2} + \\frac{9}{8}\\sin^{-1}\\frac{2x}{3} \\right]_{0}^{3/2} = 0 + \\frac{9}{8} \\cdot \\frac{\\pi}{2} = \\frac{9\\pi}{16} \\), which is the quarter-disc area \\( \\frac{1}{4}\\pi\\left(\\frac{3}{2}\\right)^2 \\), as expected. The second is the area of a right triangle with both legs \\( \\frac{3}{2} \\), namely \\( \\frac{1}{2} \\cdot \\frac{3}{2} \\cdot \\frac{3}{2} = \\frac{9}{8} \\). Hence the required area is \\( \\frac{9\\pi}{16} - \\frac{9}{8} \\) square units."
+  },
+  {
+   "hash": "1a2d306211b3198bbd7c9b5295d025577b54e595a7c18790d9dddaa994664d83",
+   "ref": "Q13b",
+   "questionNumber": "13 (b)",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "If the area of the region bounded by the curve \\( y^2 = 4ax \\) and the line \\( x = 4a \\) is \\( \\frac{256}{3} \\) sq. units, then using integration, find the value of a, where \\( a > 0 \\).",
+   "solution": "Since \\( a > 0 \\), the parabola \\( y^2 = 4ax \\) opens to the right and is symmetric about the x-axis, so the region it cuts off with the line \\( x = 4a \\) is twice the part above the axis: its area is \\( 2\\int_{0}^{4a} \\sqrt{4ax}\\,dx \\). Now \\( \\sqrt{4ax} = 2\\sqrt{a}\\,\\sqrt{x} \\), so the area is \\( 4\\sqrt{a}\\int_{0}^{4a} x^{1/2}\\,dx = 4\\sqrt{a}\\left[ \\frac{2}{3}x^{3/2} \\right]_{0}^{4a} = \\frac{8\\sqrt{a}}{3}(4a)^{3/2} \\). Since \\( (4a)^{3/2} = 8a^{3/2} \\), this is \\( \\frac{8\\sqrt{a}}{3} \\cdot 8a^{3/2} = \\frac{64a^2}{3} \\). Equating to the given area, \\( \\frac{64a^2}{3} = \\frac{256}{3} \\), so \\( a^2 = 4 \\). Both \\( a = 2 \\) and \\( a = -2 \\) satisfy this, but the condition \\( a > 0 \\) selects \\( a = 2 \\)."
+  },
+  {
+   "hash": "9c6ce85ad2e459b0f4fb3fc70fd08059ddd6755cb9a42d03c409c195b54e2713",
+   "ref": "Q14a",
+   "questionNumber": "14 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "If such a coin is tossed 2 times, then find the probability distribution of number of tails.",
+   "context": "At the start of a cricket match, a coin is tossed and the team winning the toss has the opportunity to choose to bat or bowl. Such a coin is unbiased with equal probabilities of getting head and tail.\n\nBased on the above information, answer the following questions :",
+   "figure": "DECORATIVE - a circular clip-art illustration of a cricket coin toss (a hand about to catch a spinning coin, stumps and a floodlight behind) sits between the passage and the two sub-parts. It carries no data; the only fact the sub-parts need, that the coin is unbiased, is stated in the passage text. Page idx 6. Not attached.",
+   "solution": "The coin is unbiased, so two tosses give the four equally likely outcomes HH, HT, TH and TT. Let X denote the number of tails, so X can take the values 0, 1 and 2. Exactly one outcome (HH) has no tail, two outcomes (HT and TH) have exactly one tail, and one outcome (TT) has two tails, so \\( P(X = 0) = \\frac{1}{4} \\), \\( P(X = 1) = \\frac{2}{4} = \\frac{1}{2} \\) and \\( P(X = 2) = \\frac{1}{4} \\). The probability distribution of X is therefore\n\n| X | 0 | 1 | 2 |\n|---|---|---|---|\n| P(X) | \\( \\frac{1}{4} \\) | \\( \\frac{1}{2} \\) | \\( \\frac{1}{4} \\) |\n\nand the three probabilities add to 1, as they must for a probability distribution."
+  },
+  {
+   "hash": "b1c239ded893d3346c377904e033372e5ffdf227f15ff8726618b666ee8d5207",
+   "ref": "Q14b",
+   "questionNumber": "14 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "Find the probability of getting at least one head in three tosses of such a coin.",
+   "context": "At the start of a cricket match, a coin is tossed and the team winning the toss has the opportunity to choose to bat or bowl. Such a coin is unbiased with equal probabilities of getting head and tail.\n\nBased on the above information, answer the following questions :",
+   "figure": "DECORATIVE - a circular clip-art illustration of a cricket coin toss (a hand about to catch a spinning coin, stumps and a floodlight behind) sits between the passage and the two sub-parts. It carries no data; the only fact the sub-parts need, that the coin is unbiased, is stated in the passage text. Page idx 6. Not attached.",
+   "solution": "\"At least one head\" covers seven separate cases, but its complement covers only one, so work with the complement. Three tosses of the coin give the eight equally likely outcomes \\( \\{HHH,\\, HHT,\\, HTH,\\, HTT,\\, THH,\\, THT,\\, TTH,\\, TTT\\} \\), and exactly one of these, TTT, contains no head at all, so \\( P(\\text{no head}) = \\frac{1}{8} \\). Hence \\( P(\\text{at least one head}) = 1 - P(\\text{no head}) = 1 - \\frac{1}{8} = \\frac{7}{8} \\)."
+  }
+ ]
+}

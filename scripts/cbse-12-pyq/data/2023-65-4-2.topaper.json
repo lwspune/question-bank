@@ -1,0 +1,254 @@
+{
+ "paper": "65/4/2",
+ "year": 2023,
+ "paperId": "2023-65-4-2",
+ "markingScheme": "out/2023-65-4-2/ms/p00.png … p25.png",
+ "rows": [
+  {
+   "hash": "ce3a24db9dcce22719ffbe8b2e511158e27382b61c0e74e6495adf0ba6c43a4a",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "If \\( \\begin{bmatrix} 1 & 1 & 1 \\\\ 0 & 1 & 1 \\\\ 0 & 0 & 1 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} 6 \\\\ 3 \\\\ 2 \\end{bmatrix} \\), then the value of \\( (2x + y - z) \\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "1"
+    },
+    {
+     "label": "B",
+     "text": "2"
+    },
+    {
+     "label": "C",
+     "text": "3"
+    },
+    {
+     "label": "D",
+     "text": "5"
+    }
+   ],
+   "answer": "D",
+   "solution": "The coefficient matrix is upper triangular, so read the product from the bottom row upwards. The third row gives \\( z = 2 \\); the second row gives \\( y + z = 3 \\), so \\( y = 1 \\); and the first row gives \\( x + y + z = 6 \\), so \\( x = 6 - 1 - 2 = 3 \\). Therefore \\( 2x + y - z = 6 + 1 - 2 = 5 \\), so the required value is 5."
+  },
+  {
+   "hash": "cf60571704d007d1a83726d4ff542692de731fbb32eb0ae30b9ecbc4858872ca",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Determinant and its Properties",
+   "stem": "The value of the determinant \\( \\begin{vmatrix} 2 & 7 & 1 \\\\ 1 & 1 & 1 \\\\ 10 & 8 & 1 \\end{vmatrix} \\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "47"
+    },
+    {
+     "label": "B",
+     "text": "\\( -79 \\)"
+    },
+    {
+     "label": "C",
+     "text": "49"
+    },
+    {
+     "label": "D",
+     "text": "\\( -51 \\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Expand along the first row: \\( \\begin{vmatrix} 2 & 7 & 1 \\\\ 1 & 1 & 1 \\\\ 10 & 8 & 1 \\end{vmatrix} = 2(1 \\times 1 - 1 \\times 8) - 7(1 \\times 1 - 1 \\times 10) + 1(1 \\times 8 - 1 \\times 10) \\). This is \\( 2(-7) - 7(-9) + (-2) = -14 + 63 - 2 \\), so the determinant equals 47."
+  },
+  {
+   "hash": "e6e06ecc424ef6ad0af5db7ef28a7d678e74474ec312f779cde71e8f9d3003c6",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "If \\( y = \\log (\\sin e^x) \\), then \\( \\dfrac{dy}{dx} \\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( \\cot e^x \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( \\operatorname{cosec} e^x \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( e^x \\cot e^x \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( e^x \\operatorname{cosec} e^x \\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Differentiate outwards, one layer at a time: the logarithm, then the sine, then the exponent. \\( \\dfrac{dy}{dx} = \\dfrac{1}{\\sin e^x} \\cdot \\cos e^x \\cdot \\dfrac{d}{dx}(e^x) = e^x \\cdot \\dfrac{\\cos e^x}{\\sin e^x} \\). So the derivative is \\( e^x \\cot e^x \\)."
+  },
+  {
+   "hash": "5f05fa465d6e16b3bac705056d367b8a254e80f6c1daa63a2e5239faa17f2b56",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals and the Fundamental Theorem",
+   "stem": "\\( \\displaystyle\\int_0^4 (e^{2x} + x)\\, dx \\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( \\dfrac{15 + e^8}{2} \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( \\dfrac{16 - e^8}{2} \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( \\dfrac{e^8 - 15}{2} \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( \\dfrac{-e^8 - 15}{2} \\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Integrate term by term: \\( \\displaystyle\\int_0^4 (e^{2x} + x)\\, dx = \\left[ \\dfrac{e^{2x}}{2} + \\dfrac{x^2}{2} \\right]_0^4 \\). At the upper limit this is \\( \\dfrac{e^8}{2} + 8 \\) and at the lower limit \\( \\dfrac{1}{2} + 0 \\), so the value is \\( \\dfrac{e^8}{2} + 8 - \\dfrac{1}{2} = \\dfrac{e^8}{2} + \\dfrac{15}{2} \\), that is \\( \\dfrac{15 + e^8}{2} \\)."
+  },
+  {
+   "hash": "81af28868a5637cc428c67934f7f716de8f84b8428619eecaa474d7bf0f657b2",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "General and Particular Solutions",
+   "stem": "The number of solutions of the differential equation \\( \\dfrac{dy}{dx} = \\dfrac{y + 1}{x - 1} \\), when \\( y(1) = 2 \\), is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "zero"
+    },
+    {
+     "label": "B",
+     "text": "one"
+    },
+    {
+     "label": "C",
+     "text": "two"
+    },
+    {
+     "label": "D",
+     "text": "infinite"
+    }
+   ],
+   "answer": "B",
+   "solution": "[CBSE marking scheme: the key marks 'one'. Separating the variables gives the family \\( y + 1 = C(x - 1) \\), every member of which passes through \\( (1, -1) \\), so no value of C can also carry it through \\( (1, 2) \\). Read the way the question is written -- as an initial value problem for a function \\( y(x) \\) -- the count is zero, not one. The key appears to apply the general rule that a first order equation plus one initial condition fixes one particular solution, without noticing that \\( x = 1 \\) is exactly where this equation is singular.] Away from \\( x = 1 \\) and \\( y = -1 \\) the equation separates as \\( \\dfrac{dy}{y + 1} = \\dfrac{dx}{x - 1} \\); integrating gives \\( \\log|y + 1| = \\log|x - 1| + \\log|C| \\), that is \\( y + 1 = C(x - 1) \\). Imposing \\( y(1) = 2 \\) requires \\( 3 = C \\times 0 = 0 \\), which is false for every C, and the constant solution \\( y = -1 \\) lost when we divided does not pass through \\( (1, 2) \\) either. The obstruction is visible in the equation itself: at \\( x = 1,\\ y = 2 \\) the right hand side reads \\( \\dfrac{3}{0} \\), so no derivative can be assigned there. Hence no differentiable function satisfies both the equation and \\( y(1) = 2 \\), and the number of solutions is zero. The only curve through \\( (1, 2) \\) satisfying the equation in its differential form \\( (x - 1)\\,dy = (y + 1)\\,dx \\) is the vertical line \\( x = 1 \\), which is not a function of x; counting that degenerate curve is the one reading under which the marked count of one arises."
+  },
+  {
+   "hash": "dc63d997515adc336ac8ba6021b8ccb5ea5877378652d0e8c4b72d7347d7186f",
+   "ref": "Q16",
+   "questionNumber": "16",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Multiplication Theorem on Probability",
+   "stem": "For two events A and B, if \\( P(A) = 0{\\cdot}4 \\), \\( P(B) = 0{\\cdot}8 \\) and \\( P(B/A) = 0{\\cdot}6 \\), then \\( P(A \\cup B) \\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( 0{\\cdot}24 \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( 0{\\cdot}3 \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( 0{\\cdot}48 \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( 0{\\cdot}96 \\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "The multiplication theorem turns the conditional probability into the joint one: \\( P(A \\cap B) = P(B/A)\\,P(A) = 0{\\cdot}6 \\times 0{\\cdot}4 = 0{\\cdot}24 \\). Then the addition theorem gives \\( P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0{\\cdot}4 + 0{\\cdot}8 - 0{\\cdot}24 \\), so \\( P(A \\cup B) = 0{\\cdot}96 \\)."
+  },
+  {
+   "hash": "fa3387a1286c199bc1dae15593a7c2b12a58de9c9f595c3de87c6b651f4656db",
+   "ref": "Q21",
+   "questionNumber": "21",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "Find the interval in which the function \\( f(x) = 2x^3 - 3x \\) is strictly increasing.",
+   "solution": "Here \\( f(x) = 2x^3 - 3x \\), so \\( f'(x) = 6x^2 - 3 = 3(2x^2 - 1) \\). Setting \\( f'(x) = 0 \\) gives \\( 2x^2 = 1 \\), that is \\( x = \\pm\\dfrac{1}{\\sqrt{2}} \\). Since \\( f'(x) = 3(2x^2 - 1) \\) is positive exactly when \\( x^2 > \\dfrac{1}{2} \\), the derivative is positive to the left of \\( -\\dfrac{1}{\\sqrt{2}} \\) and to the right of \\( \\dfrac{1}{\\sqrt{2}} \\), and negative between them. Hence f is strictly increasing on \\( \\left( -\\infty,\\ -\\dfrac{1}{\\sqrt{2}} \\right) \\) and on \\( \\left( \\dfrac{1}{\\sqrt{2}},\\ \\infty \\right) \\). These are two separate intervals -- the marking scheme joins them with a union sign, which is the usual shorthand, but f decreases between them, so it is not increasing across the union taken as a single interval."
+  },
+  {
+   "hash": "0561f039879b1566406042a0a341b98a84ef55bf3e34985d04701140428a2673",
+   "ref": "Q25",
+   "questionNumber": "25",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "If \\( \\vec{a} = 4\\hat{i} - \\hat{j} + \\hat{k} \\) and \\( \\vec{b} = 2\\hat{i} - 2\\hat{j} + \\hat{k} \\), then find a unit vector along the vector \\( \\vec{a} \\times \\vec{b} \\).",
+   "solution": "First form the cross product as a determinant: \\( \\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 4 & -1 & 1 \\\\ 2 & -2 & 1 \\end{vmatrix} = \\hat{i}(-1 + 2) - \\hat{j}(4 - 2) + \\hat{k}(-8 + 2) \\), that is \\( \\vec{a} \\times \\vec{b} = \\hat{i} - 2\\hat{j} - 6\\hat{k} \\). Its magnitude is \\( \\sqrt{1^2 + (-2)^2 + (-6)^2} = \\sqrt{1 + 4 + 36} = \\sqrt{41} \\). Dividing the vector by its magnitude, a unit vector along \\( \\vec{a} \\times \\vec{b} \\) is \\( \\dfrac{1}{\\sqrt{41}}\\left( \\hat{i} - 2\\hat{j} - 6\\hat{k} \\right) \\)."
+  },
+  {
+   "hash": "b7768c28f781ca3fd828532b52d22860e7a2b29c5dd0b0dd47f0c9686b1aeca5",
+   "ref": "Q26",
+   "questionNumber": "26",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integrals of Some Particular Functions",
+   "stem": "Find :\n\n\\( \\displaystyle\\int \\dfrac{x^2}{x^2 + 6x + 12}\\, dx \\)",
+   "solution": "Numerator and denominator have the same degree, so divide first: \\( \\dfrac{x^2}{x^2 + 6x + 12} = 1 - \\dfrac{6x + 12}{x^2 + 6x + 12} = 1 - \\dfrac{6(x + 2)}{x^2 + 6x + 12} \\). Hence \\( I = x - 6I_1 \\), where \\( I_1 = \\displaystyle\\int \\dfrac{x + 2}{x^2 + 6x + 12}\\, dx \\). Split the numerator of \\( I_1 \\) along the derivative of its denominator by writing \\( x + 2 = A(2x + 6) + B \\); comparing coefficients gives \\( 2A = 1 \\) and \\( 6A + B = 2 \\), so \\( A = \\dfrac{1}{2} \\) and \\( B = -1 \\). Then \\( I_1 = \\dfrac{1}{2}\\displaystyle\\int \\dfrac{2x + 6}{x^2 + 6x + 12}\\, dx - \\displaystyle\\int \\dfrac{dx}{x^2 + 6x + 12} \\). The first part integrates to \\( \\dfrac{1}{2}\\log|x^2 + 6x + 12| \\); for the second, complete the square as \\( x^2 + 6x + 12 = (x + 3)^2 + (\\sqrt{3})^2 \\), giving \\( \\dfrac{1}{\\sqrt{3}}\\tan^{-1}\\!\\left( \\dfrac{x + 3}{\\sqrt{3}} \\right) \\). So \\( I_1 = \\dfrac{1}{2}\\log|x^2 + 6x + 12| - \\dfrac{1}{\\sqrt{3}}\\tan^{-1}\\!\\left( \\dfrac{x + 3}{\\sqrt{3}} \\right) \\). Substituting back, and noting \\( \\dfrac{6}{\\sqrt{3}} = 2\\sqrt{3} \\), \\( I = x - 3\\log|x^2 + 6x + 12| + 2\\sqrt{3}\\,\\tan^{-1}\\!\\left( \\dfrac{x + 3}{\\sqrt{3}} \\right) + C \\)."
+  },
+  {
+   "hash": "18a574aa716bae2f45b3ef4de3dcdd305417dbdb0c766c162f9a6123c24c46a3",
+   "ref": "Q27",
+   "questionNumber": "27",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "Two fair dice are thrown simultaneously. If X denotes the number of sixes, find the mean of X.",
+   "solution": "Each die shows a six with probability \\( \\dfrac{1}{6} \\) and the two throws are independent, so X can take the values 0, 1 and 2. Here \\( P(X = 0) = \\dfrac{5}{6} \\times \\dfrac{5}{6} = \\dfrac{25}{36} \\); \\( P(X = 1) = 2 \\times \\dfrac{5}{6} \\times \\dfrac{1}{6} = \\dfrac{10}{36} \\), the factor 2 counting which of the two dice shows the six; and \\( P(X = 2) = \\dfrac{1}{6} \\times \\dfrac{1}{6} = \\dfrac{1}{36} \\). These sum to 1, as they must. The mean is \\( \\displaystyle\\sum x\\,P(X = x) = 0 \\times \\dfrac{25}{36} + 1 \\times \\dfrac{10}{36} + 2 \\times \\dfrac{1}{36} = \\dfrac{12}{36} = \\dfrac{1}{3} \\). As a check, X is binomial with \\( n = 2 \\) and \\( p = \\dfrac{1}{6} \\), whose mean is \\( np = \\dfrac{1}{3} \\)."
+  },
+  {
+   "hash": "98f53a77967325e9efc00339ca80cb147cd685d83aaa99eb68696f6bf1e9fccc",
+   "ref": "Q31",
+   "questionNumber": "31",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following linear programming problem graphically :\n\nMaximise \\( z = -3x - 5y \\)\n\nsubject to the constraints\n\n\\( -2x + y \\le 4 \\),\n\n\\( x + y \\ge 3 \\),\n\n\\( x - 2y \\le 2 \\),\n\n\\( x \\ge 0,\\ y \\ge 0 \\).",
+   "solution": "Draw the three boundary lines \\( -2x + y = 4 \\), \\( x + y = 3 \\) and \\( x - 2y = 2 \\), and keep the part of the first quadrant that lies on or below the first, on or above the second and on or above the third. The region so obtained is unbounded, and its corner points are \\( A(0, 4) \\), where \\( -2x + y = 4 \\) cuts the y-axis; \\( D(0, 3) \\), where \\( x + y = 3 \\) cuts the y-axis; and \\( G\\left( \\dfrac{8}{3},\\ \\dfrac{1}{3} \\right) \\), where \\( x + y = 3 \\) meets \\( x - 2y = 2 \\) (substituting \\( x = 3 - y \\) gives \\( 3 - 3y = 2 \\), so \\( y = \\dfrac{1}{3} \\) and \\( x = \\dfrac{8}{3} \\)). Evaluating \\( z = -3x - 5y \\) at the corners: \\( z(A) = -20 \\), \\( z(D) = -15 \\), and \\( z(G) = -8 - \\dfrac{5}{3} = -\\dfrac{29}{3} \\). The largest of these is \\( -\\dfrac{29}{3} \\). Because the feasible region is unbounded this value must still be tested, so consider the open half plane \\( -3x - 5y > -\\dfrac{29}{3} \\), that is \\( 3x + 5y < \\dfrac{29}{3} \\). At the three corners \\( 3x + 5y \\) equals 20, 15 and \\( \\dfrac{29}{3} \\), and along each unbounded edge it only grows -- on \\( x + y = 3 \\) it equals \\( 9 + 2y \\) and on \\( x - 2y = 2 \\) it equals \\( 6 + 11y \\), both increasing in y and both already \\( \\dfrac{29}{3} \\) at G. So that half plane has no point in common with the feasible region. Hence the maximum is \\( z = -\\dfrac{29}{3} \\), attained at \\( \\left( \\dfrac{8}{3},\\ \\dfrac{1}{3} \\right) \\)."
+  },
+  {
+   "hash": "452b193f405475d1957c1fb729f728ac17bcc559299e5474c69f40d07946f274",
+   "ref": "Q32",
+   "questionNumber": "32",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "Using integration, find the area of the region bounded by the circle \\( x^2 + y^2 = 16 \\), line \\( y = x \\) and y-axis, but lying in the 1st quadrant.",
+   "solution": "In the first quadrant the line \\( y = x \\) meets the circle where \\( x^2 + x^2 = 16 \\), that is at \\( (2\\sqrt{2},\\ 2\\sqrt{2}) \\). The region wanted is the circular sector-like piece caught between the y-axis on the left and the line \\( y = x \\) on the right, closed off above by the circle, so it is swept most easily by horizontal strips. For \\( 0 \\le y \\le 2\\sqrt{2} \\) a strip runs from the y-axis across to the line, where \\( x = y \\); for \\( 2\\sqrt{2} \\le y \\le 4 \\) it runs from the y-axis across to the circle, where \\( x = \\sqrt{16 - y^2} \\). Hence the area is \\( \\displaystyle\\int_0^{2\\sqrt{2}} y\\, dy + \\int_{2\\sqrt{2}}^{4} \\sqrt{16 - y^2}\\, dy \\). The first integral is \\( \\left[ \\dfrac{y^2}{2} \\right]_0^{2\\sqrt{2}} = \\dfrac{8}{2} = 4 \\). For the second, \\( \\displaystyle\\int \\sqrt{16 - y^2}\\, dy = \\dfrac{y}{2}\\sqrt{16 - y^2} + \\dfrac{16}{2}\\sin^{-1}\\!\\left( \\dfrac{y}{4} \\right) \\); at \\( y = 4 \\) this is \\( 0 + 8\\sin^{-1}(1) = 4\\pi \\), and at \\( y = 2\\sqrt{2} \\) it is \\( \\sqrt{2} \\times \\sqrt{8} + 8\\sin^{-1}\\!\\left( \\dfrac{1}{\\sqrt{2}} \\right) = 4 + 2\\pi \\). So the second integral equals \\( 4\\pi - (4 + 2\\pi) = 2\\pi - 4 \\). Adding the two parts, the required area is \\( 4 + 2\\pi - 4 = 2\\pi \\) square units."
+  }
+ ]
+}

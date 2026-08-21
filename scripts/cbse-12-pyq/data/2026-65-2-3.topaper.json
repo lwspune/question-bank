@@ -1,0 +1,266 @@
+{
+ "paper": "65/2/3",
+ "year": 2026,
+ "paperId": "2026-65-2-3",
+ "markingScheme": "out/2026-65-2-3/ms/p00.png … p23.png",
+ "rows": [
+  {
+   "hash": "4b0632b6af3ec08bfc0f822025f8d2473bade1ec54a7fd41b05c2d63d099bdff",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "Direction cosines of line \\(\\dfrac{1 - x}{0} = y = z\\) are",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(1, 1, 1\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(0, \\dfrac{-1}{\\sqrt{2}}, \\dfrac{-1}{\\sqrt{2}}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(1, 0, 0\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(0, -1, -1\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "A zero denominator in the symmetric form means the corresponding numerator is zero, so \\(1 - x = 0\\), that is \\(x = 1\\); the remaining part says \\(y = z\\). Writing the whole thing as a chain and multiplying every member by \\(-1\\) (which preserves the equalities) gives \\(\\frac{x - 1}{0} = \\frac{y - 0}{-1} = \\frac{z - 0}{-1}\\), so the direction ratios are \\(<0, -1, -1>\\). Their magnitude is \\(\\sqrt{0 + 1 + 1} = \\sqrt{2}\\), so dividing through gives the direction cosines \\(0, \\frac{-1}{\\sqrt{2}}, \\frac{-1}{\\sqrt{2}}\\). (A line has two sets of direction cosines, one for each sense along it — here the other set is \\(0, \\frac{1}{\\sqrt{2}}, \\frac{1}{\\sqrt{2}}\\), which is not among the choices. The triples \\(1, 1, 1\\) and \\(0, -1, -1\\) cannot be direction cosines at all, since the sum of the squares must be 1 and theirs are 3 and 2.)"
+  },
+  {
+   "hash": "35453d5e070f5ebe2f43881ae3104762e6390c42d97cf78a2c6eb90c7eec9691",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Relations and Functions",
+   "subtopic": "Types of Relations",
+   "stem": "A relation R on set A = \\(\\{1, 2, 3\\}\\) is defined as R = \\(\\{(1, 3), (3, 3), (1, 1), (2, 2), (3, 1)\\}\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "only reflexive and symmetric"
+    },
+    {
+     "label": "B",
+     "text": "reflexive only"
+    },
+    {
+     "label": "C",
+     "text": "only reflexive and transitive"
+    },
+    {
+     "label": "D",
+     "text": "reflexive, symmetric and transitive"
+    }
+   ],
+   "answer": "D",
+   "solution": "Test the three properties on \\(R = \\{(1, 3), (3, 3), (1, 1), (2, 2), (3, 1)\\}\\) over \\(A = \\{1, 2, 3\\}\\). Reflexive: \\((1,1)\\), \\((2,2)\\) and \\((3,3)\\) are all present, so R is reflexive. Symmetric: the only pair with distinct entries is \\((1,3)\\), and its reverse \\((3,1)\\) is present; the other three elements are their own reverses, so R is symmetric. Transitive: the chains to check are \\((1,3)\\) with \\((3,3)\\), needing \\((1,3)\\); \\((1,3)\\) with \\((3,1)\\), needing \\((1,1)\\); \\((3,1)\\) with \\((1,3)\\), needing \\((3,3)\\); and \\((3,1)\\) with \\((1,1)\\), needing \\((3,1)\\) — every one of these is in R, and the chains starting from \\((1,1)\\), \\((2,2)\\) or \\((3,3)\\) give back pairs already listed. So R is transitive as well, and hence R is reflexive, symmetric and transitive."
+  },
+  {
+   "hash": "5d367c2244072f9745fc4feea815dda956fb6a8364c6d6f3b9c68cc7005b9113",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Transpose of a Matrix",
+   "stem": "If \\(A = \\begin{bmatrix} \\tan x & \\cot x \\\\ -\\cot x & \\tan x \\end{bmatrix}\\) and \\(A + A' = 2I\\), then value of \\(x \\in \\left[0, \\dfrac{\\pi}{2}\\right]\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{\\pi}{3}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{\\pi}{4}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{\\pi}{2}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Write down the transpose and add. With \\(A = \\begin{bmatrix} \\tan x & \\cot x \\\\ -\\cot x & \\tan x \\end{bmatrix}\\), we have \\(A' = \\begin{bmatrix} \\tan x & -\\cot x \\\\ \\cot x & \\tan x \\end{bmatrix}\\), so the off-diagonal entries cancel and \\(A + A' = \\begin{bmatrix} 2\\tan x & 0 \\\\ 0 & 2\\tan x \\end{bmatrix} = 2\\tan x \\cdot I\\). Setting this equal to \\(2I\\) gives \\(\\tan x = 1\\). Within \\(\\left[0, \\frac{\\pi}{2}\\right]\\) — and excluding the endpoints, where \\(\\cot x\\) and \\(\\tan x\\) respectively are undefined so the matrix does not exist — the only solution is \\(x = \\frac{\\pi}{4}\\)."
+  },
+  {
+   "hash": "99f10aea33f404c9f49278fb2b380057f359c7685be3bfc22f0d53611f805756",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "If \\(x + y = xy\\), then \\(\\dfrac{dy}{dx}\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{y}{x - 1}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{1}{x - 1}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{y - 1}{x - 1}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{1 - y}{x - 1}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Differentiate \\(x + y = xy\\) with respect to \\(x\\), using the product rule on the right: \\(1 + \\frac{dy}{dx} = y + x\\frac{dy}{dx}\\). Collect the derivative terms on one side: \\(1 - y = x\\frac{dy}{dx} - \\frac{dy}{dx} = (x - 1)\\frac{dy}{dx}\\). Hence \\(\\frac{dy}{dx} = \\frac{1 - y}{x - 1}\\)."
+  },
+  {
+   "hash": "d70caa76e868908ac9a99827f561111859da431aa689902d7733929f548dc308",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Integration using Trigonometric Identities",
+   "stem": "\\(\\displaystyle\\int \\dfrac{dx}{\\sec x + \\tan x}\\) is equal to",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\log | \\sec x + \\tan x | + C\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\log | \\sec x - \\tan x | + C\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\log | 1 + \\cos x | + C\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\log | 1 + \\sin x | + C\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Rewrite the integrand in terms of sine and cosine: \\(\\sec x + \\tan x = \\frac{1}{\\cos x} + \\frac{\\sin x}{\\cos x} = \\frac{1 + \\sin x}{\\cos x}\\), so \\(\\frac{1}{\\sec x + \\tan x} = \\frac{\\cos x}{1 + \\sin x}\\). Now put \\(u = 1 + \\sin x\\), so \\(du = \\cos x\\,dx\\) and the integral becomes \\(\\int\\frac{du}{u} = \\log|u| + C\\). Hence \\(\\int\\frac{dx}{\\sec x + \\tan x} = \\log\\left|1 + \\sin x\\right| + C\\)."
+  },
+  {
+   "hash": "5d99af98aa6731dde3ef5883021df51dd670258ebabf041fe4a528b0780b47fa",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Variables Separable",
+   "stem": "The general solution of the differential equation : \\(x^2 dy + y^2 dx = 0\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(x^3 + y^3 = k\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{1}{y} - \\dfrac{1}{x} = k\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{1}{y} + \\dfrac{1}{x} = k\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\log y^2 + \\log x^2 = k\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "The variables separate: \\(x^2\\,dy = -y^2\\,dx\\), so \\(\\frac{dy}{y^2} = -\\frac{dx}{x^2}\\). Integrating both sides, \\(\\int y^{-2}\\,dy = -\\int x^{-2}\\,dx\\) gives \\(-\\frac{1}{y} = \\frac{1}{x} + c\\), that is \\(-\\frac{1}{y} - \\frac{1}{x} = c\\). Writing \\(k = -c\\), the general solution is \\(\\frac{1}{y} + \\frac{1}{x} = k\\)."
+  },
+  {
+   "hash": "2cf5c8b74c374fab167d7aff33a456ad0aea4d49a9bc6a63f9b8c1514f42d55e",
+   "ref": "Q21",
+   "questionNumber": "21",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the co-ordinates of the point on line \\(x = \\dfrac{y - 1}{2} = \\dfrac{z - 2}{3}\\) whose y co-ordinate is 3 times the \\(x\\) co-ordinate.",
+   "solution": "Set the chain equal to a parameter: \\(x = \\frac{y - 1}{2} = \\frac{z - 2}{3} = \\lambda\\). Then \\(x = \\lambda\\), \\(y = 2\\lambda + 1\\) and \\(z = 3\\lambda + 2\\), so a general point of the line is \\(\\left(\\lambda,\\; 2\\lambda + 1,\\; 3\\lambda + 2\\right)\\). The condition is that the y-coordinate is 3 times the x-coordinate, i.e. \\(2\\lambda + 1 = 3\\lambda\\), which gives \\(\\lambda = 1\\). Substituting back, the required point is \\((1, 3, 5)\\)."
+  },
+  {
+   "hash": "781b1ffb10eadfcf9fcca3e591439d27c4b8f8d17631b6ca6323d6727f5bdb8b",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Functions in Parametric Form",
+   "stem": "If \\(x = e^{\\sin^{-1} t}\\), \\(y = e^{\\cos^{-1} t}\\), find \\(\\dfrac{dy}{dx}\\) at \\(t = \\dfrac{1}{\\sqrt{2}}\\)",
+   "solution": "Differentiate each coordinate with respect to \\(t\\), using the chain rule and the derivatives of the inverse trigonometric functions: \\(\\frac{dx}{dt} = e^{\\sin^{-1} t} \\cdot \\frac{1}{\\sqrt{1 - t^2}}\\) and \\(\\frac{dy}{dt} = e^{\\cos^{-1} t} \\cdot \\frac{-1}{\\sqrt{1 - t^2}}\\). Dividing, the common factor \\(\\frac{1}{\\sqrt{1 - t^2}}\\) cancels and \\(\\frac{dy}{dx} = -\\frac{e^{\\cos^{-1} t}}{e^{\\sin^{-1} t}} = -e^{\\cos^{-1} t - \\sin^{-1} t}\\). At \\(t = \\frac{1}{\\sqrt{2}}\\) we have \\(\\sin^{-1} t = \\cos^{-1} t = \\frac{\\pi}{4}\\), so the exponent is 0 and \\(\\frac{dy}{dx} = -e^0 = -1\\). (Using \\(\\sin^{-1} t + \\cos^{-1} t = \\frac{\\pi}{2}\\) gives the same result more quickly, since then \\(\\frac{dy}{dx} = -e^{\\frac{\\pi}{2} - 2\\sin^{-1} t}\\).)"
+  },
+  {
+   "hash": "f2fa774f907f833d806eba93a926d0b74082631dcb054d28e43518d3213b3e5f",
+   "ref": "Q27",
+   "questionNumber": "27",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integrals of Some Particular Functions",
+   "stem": "Find : \\(\\displaystyle\\int \\dfrac{3x - 1}{\\sqrt{x^2 - 4x}}\\, dx\\)",
+   "solution": "Split the numerator into a multiple of the derivative of the quadratic plus a constant. Since \\(\\frac{d}{dx}\\left(x^2 - 4x\\right) = 2x - 4\\), write \\(3x - 1 = A(2x - 4) + B\\); comparing coefficients of \\(x\\) gives \\(2A = 3\\), so \\(A = \\frac{3}{2}\\), and then \\(-4A + B = -1\\) gives \\(B = 5\\). Hence \\(I = \\frac{3}{2}\\int\\frac{2x - 4}{\\sqrt{x^2 - 4x}}\\,dx + 5\\int\\frac{dx}{\\sqrt{x^2 - 4x}}\\). For the first integral put \\(u = x^2 - 4x\\), so \\(du = (2x - 4)dx\\) and it becomes \\(\\frac{3}{2} \\cdot 2\\sqrt{u} = 3\\sqrt{x^2 - 4x}\\). For the second, complete the square: \\(x^2 - 4x = (x - 2)^2 - 2^2\\), so \\(\\int\\frac{dx}{\\sqrt{(x - 2)^2 - 2^2}} = \\log\\left|(x - 2) + \\sqrt{x^2 - 4x}\\right|\\). Therefore \\(I = 3\\sqrt{x^2 - 4x} + 5\\log\\left|(x - 2) + \\sqrt{x^2 - 4x}\\right| + C\\)."
+  },
+  {
+   "hash": "3f25b35cb4a8ae98dad988446e1f5b72f20cbfc805614965d3f271aa3137eac8",
+   "ref": "Q31",
+   "questionNumber": "31",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following linear programming problem graphically :\n\nMaximize \\(Z = 4500x + 5000y\\)\n\nSubject to constraints\n\n\\(x + y \\leq 250\\)\n\n\\(25x + 40y \\leq 7000\\)\n\n\\(x \\geq 0\\), \\(y \\geq 0\\)",
+   "solution": "First find the corner points of the feasible region. The line \\(x + y = 250\\) meets the axes at \\((250, 0)\\) and \\((0, 250)\\); the line \\(25x + 40y = 7000\\) meets them at \\((280, 0)\\) and \\((0, 175)\\). Solving the two together: from the first, \\(x = 250 - y\\), and substituting into the second, \\(25(250 - y) + 40y = 7000\\), so \\(6250 + 15y = 7000\\), giving \\(y = 50\\) and \\(x = 200\\). With \\(x \\ge 0\\) and \\(y \\ge 0\\) the region is bounded, with corner points \\(O(0, 0)\\), \\(A(250, 0)\\), \\(B(200, 50)\\) and \\(C(0, 175)\\) — on the x-axis the binding constraint is \\(x + y \\le 250\\), giving 250 rather than 280, and on the y-axis it is \\(25x + 40y \\le 7000\\), giving 175 rather than 250. Evaluating \\(Z = 4500x + 5000y\\) at each corner: \\(Z(O) = 0\\), \\(Z(A) = 11{,}25{,}000\\), \\(Z(B) = 9{,}00{,}000 + 2{,}50{,}000 = 11{,}50{,}000\\), \\(Z(C) = 8{,}75{,}000\\). Hence the maximum value is \\(Z = 11{,}50{,}000\\), attained at \\(x = 200\\), \\(y = 50\\)."
+  },
+  {
+   "hash": "b1caee542281d1ae7d2172f269141d4f1691a34d5ccedda413b82a4dc3f1151b",
+   "ref": "Q32a",
+   "questionNumber": "32 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "Find the sub-interval of \\(\\left(0, \\dfrac{\\pi}{2}\\right)\\) in which \\(f(x) = \\log (\\sin x + \\cos x)\\) is increasing and decreasing.",
+   "solution": "On \\(\\left(0, \\frac{\\pi}{2}\\right)\\) both \\(\\sin x\\) and \\(\\cos x\\) are positive, so \\(\\sin x + \\cos x > 0\\) and the logarithm is defined throughout. Differentiating, \\(f'(x) = \\frac{\\cos x - \\sin x}{\\sin x + \\cos x}\\). Setting \\(f'(x) = 0\\) gives \\(\\cos x = \\sin x\\), i.e. \\(\\tan x = 1\\), whose only solution in \\(\\left(0, \\frac{\\pi}{2}\\right)\\) is \\(x = \\frac{\\pi}{4}\\). Since the denominator is positive on the whole interval, the sign of \\(f'\\) is that of \\(\\cos x - \\sin x = \\sqrt{2}\\cos\\left(x + \\frac{\\pi}{4}\\right)\\): for \\(x \\in \\left(0, \\frac{\\pi}{4}\\right)\\) the angle \\(x + \\frac{\\pi}{4}\\) lies in \\(\\left(\\frac{\\pi}{4}, \\frac{\\pi}{2}\\right)\\), where the cosine is positive, so \\(f'(x) > 0\\); for \\(x \\in \\left(\\frac{\\pi}{4}, \\frac{\\pi}{2}\\right)\\) it lies in \\(\\left(\\frac{\\pi}{2}, \\frac{3\\pi}{4}\\right)\\), where the cosine is negative, so \\(f'(x) < 0\\). Hence \\(f\\) is increasing on \\(\\left(0, \\frac{\\pi}{4}\\right)\\) and decreasing on \\(\\left(\\frac{\\pi}{4}, \\frac{\\pi}{2}\\right)\\). (Since \\(f'\\) vanishes only at the single point \\(x = \\frac{\\pi}{4}\\), the intervals may equally be quoted as \\(\\left(0, \\frac{\\pi}{4}\\right]\\) and \\(\\left[\\frac{\\pi}{4}, \\frac{\\pi}{2}\\right)\\).)"
+  },
+  {
+   "hash": "bead63b3a2be04efdf379d1fa36dcbbe2594553da5dd93502b4cda9a358be58c",
+   "ref": "Q32b",
+   "questionNumber": "32 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "A rectangle of perimeter 30 cm is revolved along one of its sides to sweep out a cylinder of maximum volume. Find the dimensions of the rectangle.",
+   "figure": "DECORATIVE - a plain line drawing of a rectangle beside a cylinder with a rotation arrow, printed below the stem. It is unlabelled and carries no measurement; the perimeter and the axis of revolution are both stated in the text. Page idx 16. Not attached.",
+   "solution": "Let the sides of the rectangle be \\(x\\) and \\(y\\). The perimeter is 30 cm, so \\(2(x + y) = 30\\), giving \\(y = 15 - x\\) with \\(0 < x < 15\\). Revolve the rectangle about the side of length \\(15 - x\\); that side becomes the axis, so the cylinder swept out has height \\(15 - x\\) and radius \\(x\\). Its volume is \\(V = \\pi x^2 (15 - x) = \\pi\\left(15x^2 - x^3\\right)\\). Then \\(\\frac{dV}{dx} = \\pi\\left(30x - 3x^2\\right) = 3\\pi x(10 - x)\\), which vanishes at \\(x = 0\\) and \\(x = 10\\); the value \\(x = 0\\) is rejected because it gives no cylinder at all, leaving \\(x = 10\\). Testing it, \\(\\frac{d^2V}{dx^2} = \\pi(30 - 6x)\\), and at \\(x = 10\\) this is \\(\\pi(30 - 60) = -30\\pi < 0\\), so the volume is indeed a maximum there. Hence \\(x = 10\\) and \\(15 - x = 5\\), so the dimensions of the rectangle are 10 cm and 5 cm. (Because \\(x\\) is free to take any value in \\((0, 15)\\), this single calculation already compares both ways of choosing the axis of revolution.)"
+  },
+  {
+   "hash": "f947375536d9f0f22ae68be30280fa5c1f992a5e33f14b159932c35cddc6d4e8",
+   "ref": "Q33",
+   "questionNumber": "33",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "Find the domain of \\(q(x) = \\cos^{-1} (4x^2 - 3)\\). Hence, find the value of \\(x\\) for which \\(q(x) = 0\\). Also, write the range of \\(3q(x) - \\pi\\).",
+   "solution": "Domain. The domain of \\(\\cos^{-1}\\) is \\([-1, 1]\\), so we need \\(-1 \\le 4x^2 - 3 \\le 1\\). Adding 3 throughout gives \\(2 \\le 4x^2 \\le 4\\), so \\(\\frac{1}{2} \\le x^2 \\le 1\\), that is \\(\\frac{1}{\\sqrt{2}} \\le |x| \\le 1\\). Hence the domain of \\(q\\) is \\(\\left[-1, -\\frac{1}{\\sqrt{2}}\\right] \\cup \\left[\\frac{1}{\\sqrt{2}}, 1\\right]\\) — note it is a union of two intervals, since \\(x = 0\\) is excluded.\nSolving \\(q(x) = 0\\). Here \\(\\cos^{-1}\\left(4x^2 - 3\\right) = 0\\), so \\(4x^2 - 3 = \\cos 0 = 1\\). Then \\(4x^2 = 4\\), so \\(x^2 = 1\\) and \\(x = \\pm 1\\); both values lie in the domain, so \\(x = 1\\) or \\(x = -1\\).\nRange of \\(3q(x) - \\pi\\). As \\(x\\) runs over the domain, \\(x^2\\) takes every value in \\(\\left[\\frac{1}{2}, 1\\right]\\), so \\(4x^2 - 3\\) takes every value in \\([-1, 1]\\) and \\(q(x)\\) takes every value in \\([0, \\pi]\\), the full principal value branch of \\(\\cos^{-1}\\). Multiplying by 3 gives \\(0 \\le 3q(x) \\le 3\\pi\\), and subtracting \\(\\pi\\) throughout gives \\(-\\pi \\le 3q(x) - \\pi \\le 2\\pi\\). Hence the required range is \\([-\\pi, 2\\pi]\\)."
+  }
+ ]
+}

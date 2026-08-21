@@ -1,0 +1,997 @@
+{
+  "paper": "65/5/2",
+  "year": 2024,
+  "pattern": "full80",
+  "_transcription": "COMPLETE — all five sections, 52 rows. Bilingual paper, 24 rendered pages: idx 0 cover, idx 1 Hindi instructions, idx 2 English instructions, then Hindi/English alternating with ENGLISH ON THE EVEN INDICES — 4, 6, 8, 10, 12, 14, 16, 18, 20, 22 (idx 23 is the blank back page). The alternating hypothesis held exactly. Sections came from idx 4 (Q1-6), 6 (Q7-11), 8 (Q12-16), 10 (Q17-19), 12 (Q20-25), 14 (Q26-30), 16 (Q31-34), 18 (Q35-36), 20 (Q37), 22 (Q38). THIS PAPER IS ALMOST ENTIRELY A RESHUFFLE OF 65/5/1: 42 of its 52 rows are the same printed blocks under different numbers, so their stems and options were reused BYTE-FOR-BYTE from data/2024-65-5-1.questions.json after confirming each on this paper's own page. Only 10 rows are genuinely new: MCQs 2, 5, 7, 11, 12, 13, 14 and subjective Q21, Q23, Q27, Q30, Q31, Q35 (14 new rows counting the split ones — see the report). plan.txt named only ONE skip (its Q34#1) and 28 TRANSCRIBE items; the number-based mapping was ignored entirely and every question matched on CONTENT instead, which is what surfaced the 42-row overlap. NOTES FOR THE NEXT AGENT: (1) decimal points are ORDINARY full stops (0.2, 0.8, 24 sq.cm.), NOT the raised dot the brief warns about. (2) MCQ option labels are printed UPPERCASE parenthesised, (A)/(B)/(C)/(D). (3) No 'Case Study - N' headings are printed; Section E questions are numbered 36/37/38 directly. (4) The case studies are the SAME THREE as 65/5/1 but renumbered: 65/5/1's Q36 rail-lines is this paper's Q37, its Q37 visiting-card is this paper's Q38, and its Q38 departmental-store is this paper's Q36. (5) Q37's internal choice is at PARENT level and the marking scheme repeats the same printing-error note 65/5/1 carries. (6) The marking scheme is MS_XII_Mathematics_041_65/5/2_2023-24 and pairs 1:1 with this paper; all 20 Section-A answers were read from it verbatim (ms idx 2-6) and all 20 agree with my own derivation.",
+  "questions": [
+    {
+      "ref": "Q1",
+      "questionNumber": "1",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Differentiability and the Chain Rule",
+      "difficulty": "MODERATE",
+      "stem": "Derivative of \\(e^{\\sin^2 x}\\) with respect to \\(\\cos x\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\sin x\\, e^{\\sin^2 x}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\cos x\\, e^{\\sin^2 x}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(-2 \\cos x\\, e^{\\sin^2 x}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-2 \\sin^2 x \\cos x\\, e^{\\sin^2 x}\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q2",
+      "questionNumber": "2",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Determinant and its Properties",
+      "difficulty": "EASY",
+      "stem": "If A is a square matrix of order 2 and \\(\\left|\\mathrm{A}\\right| = -2\\), then value of \\(\\left|5\\mathrm{A}'\\right|\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(-50\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-10\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(10\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(50\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q3",
+      "questionNumber": "3",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "difficulty": "EASY",
+      "stem": "The function \\(f(x) = \\dfrac{x}{2} + \\dfrac{2}{x}\\) has a local minima at \\(x\\) equal to :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(1\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(0\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-2\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q4",
+      "questionNumber": "4",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Rate of Change of Quantities",
+      "difficulty": "MODERATE",
+      "stem": "Given a curve \\(y = 7x - x^3\\) and \\(x\\) increases at the rate of 2 units per second. The rate at which the slope of the curve is changing, when \\(x = 5\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(-60\\) units/sec"
+        },
+        {
+          "label": "B",
+          "text": "\\(60\\) units/sec"
+        },
+        {
+          "label": "C",
+          "text": "\\(-70\\) units/sec"
+        },
+        {
+          "label": "D",
+          "text": "\\(-140\\) units/sec"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q5",
+      "questionNumber": "5",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Multiplication of Matrices",
+      "difficulty": "EASY",
+      "stem": "The product of matrix P and Q is equal to a diagonal matrix. If the order of matrix Q is \\(3 \\times 2\\), then order of matrix P is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2 \\times 2\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(3 \\times 3\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(2 \\times 3\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(3 \\times 2\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q6",
+      "questionNumber": "6",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Relations and Functions",
+      "subtopic": "One-One and Onto Functions",
+      "difficulty": "EASY",
+      "stem": "A function \\(f : \\mathbb{R} \\to \\mathbb{R}\\) defined as \\(f(x) = x^2 - 4x + 5\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "injective but not surjective."
+        },
+        {
+          "label": "B",
+          "text": "surjective but not injective."
+        },
+        {
+          "label": "C",
+          "text": "both injective and surjective."
+        },
+        {
+          "label": "D",
+          "text": "neither injective nor surjective."
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q7",
+      "questionNumber": "7",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+      "difficulty": "EASY",
+      "stem": "If \\(\\sin(xy) = 1\\), then \\(\\dfrac{dy}{dx}\\) is equal to :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{x}{y}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-\\dfrac{x}{y}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{y}{x}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-\\dfrac{y}{x}\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q8",
+      "questionNumber": "8",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Adjoint and Inverse of a Matrix",
+      "difficulty": "MODERATE",
+      "stem": "If inverse of matrix \\(\\begin{bmatrix} 7 & -3 & -3 \\\\ -1 & 1 & 0 \\\\ -1 & 0 & 1 \\end{bmatrix}\\) is the matrix \\(\\begin{bmatrix} 1 & 3 & 3 \\\\ 1 & \\lambda & 3 \\\\ 1 & 3 & 4 \\end{bmatrix}\\), then value of \\(\\lambda\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(-4\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(1\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(3\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(4\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q9",
+      "questionNumber": "9",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Multiplication of Matrices",
+      "difficulty": "MODERATE",
+      "stem": "Find the matrix \\(A^2\\), where \\(A = [a_{ij}]\\) is a \\(2 \\times 2\\) matrix whose elements are given by \\(a_{ij} = \\text{maximum } (i, j) - \\text{minimum } (i, j)\\) :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\begin{bmatrix} 1 & 1 \\\\ 1 & 1 \\end{bmatrix}\\)"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q10",
+      "questionNumber": "10",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Adjoint and Inverse of a Matrix",
+      "difficulty": "MODERATE",
+      "stem": "If A is a square matrix of order 3 such that the value of \\(\\left|\\mathrm{adj}{\\cdot}\\mathrm{A}\\right| = 8\\), then the value of \\(\\left|\\mathrm{A}^{\\mathrm{T}}\\right|\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\sqrt{2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-\\sqrt{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(8\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(2\\sqrt{2}\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q11",
+      "questionNumber": "11",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Definite Integrals by Substitution",
+      "difficulty": "MODERATE",
+      "stem": "The value of \\(\\displaystyle\\int_{\\pi/4}^{\\pi/2} \\cot\\theta \\; \\mathrm{cosec}^2\\theta \\; d\\theta\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{1}{2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-\\dfrac{1}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(0\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-\\dfrac{\\pi}{8}\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q12",
+      "questionNumber": "12",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Integrals of Some Particular Functions",
+      "difficulty": "MODERATE",
+      "stem": "The integral \\(\\displaystyle\\int \\dfrac{dx}{\\sqrt{9 - 4x^2}}\\) is equal to :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{1}{6} \\sin^{-1}\\left(\\dfrac{2x}{3}\\right) + c\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{1}{2} \\sin^{-1}\\left(\\dfrac{2x}{3}\\right) + c\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\sin^{-1}\\left(\\dfrac{2x}{3}\\right) + c\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{3}{2} \\sin^{-1}\\left(\\dfrac{2x}{3}\\right) + c\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q13",
+      "questionNumber": "13",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Bounded by a Curve and a Line",
+      "difficulty": "MODERATE",
+      "stem": "The area of the region bounded by the curve \\(y^2 = 4x\\) and \\(x = 1\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{4}{3}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{8}{3}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{64}{3}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{32}{3}\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q14",
+      "questionNumber": "14",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Differential Equations",
+      "subtopic": "Variables Separable",
+      "difficulty": "EASY",
+      "stem": "The general solution of the differential equation\n\n\\(\\dfrac{dy}{dx} = e^{x + y}\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(e^x + e^{-y} = c\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(e^{-x} + e^{-y} = c\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(e^{x + y} = c\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(2e^{x + y} = c\\)"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "ref": "Q15",
+      "questionNumber": "15",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Direction Cosines and Direction Ratios",
+      "difficulty": "MODERATE",
+      "stem": "The angle which the line \\(\\dfrac{x}{1} = \\dfrac{y}{-1} = \\dfrac{z}{0}\\) makes with the positive direction of Y-axis is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{5\\pi}{6}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{3\\pi}{4}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{5\\pi}{4}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{7\\pi}{4}\\)"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q16",
+      "questionNumber": "16",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Equation of a Line in Space",
+      "difficulty": "MODERATE",
+      "stem": "The Cartesian equation of the line passing through the point \\((1, -3, 2)\\) and parallel to the line :\n\n\\(\\vec{r} = (2 + \\lambda)\\hat{i} + \\lambda\\hat{j} + (2\\lambda - 1)\\hat{k}\\) is",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{x-1}{2} = \\dfrac{y+3}{0} = \\dfrac{z-2}{-1}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{x+1}{1} = \\dfrac{y-3}{1} = \\dfrac{z+2}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{x+1}{2} = \\dfrac{y-3}{0} = \\dfrac{z+2}{-1}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{x-1}{1} = \\dfrac{y+3}{1} = \\dfrac{z-2}{2}\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q17",
+      "questionNumber": "17",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "difficulty": "MODERATE",
+      "stem": "If A and B are events such that \\(P(A/B) = P(B/A) \\ne 0\\), then :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(A \\subset B\\), but \\(A \\ne B\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(A = B\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(A \\cap B = \\phi\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(P(A) = P(B)\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q18",
+      "questionNumber": "18",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Section Formula",
+      "difficulty": "MODERATE",
+      "stem": "The position vectors of points P and Q are \\(\\vec{p}\\) and \\(\\vec{q}\\) respectively. The point R divides line segment PQ in the ratio 3 : 1 and S is the mid-point of line segment PR. The position vector of S is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{\\vec{p} + 3\\vec{q}}{4}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{\\vec{p} + 3\\vec{q}}{8}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{5\\vec{p} + 3\\vec{q}}{4}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{5\\vec{p} + 3\\vec{q}}{8}\\)"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "ref": "Q19",
+      "questionNumber": "19",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Addition of Vectors",
+      "difficulty": "MODERATE",
+      "stem": "**Assertion (A) :** The vectors\n\n\\(\\vec{a} = 6\\hat{i} + 2\\hat{j} - 8\\hat{k}\\)\n\n\\(\\vec{b} = 10\\hat{i} - 2\\hat{j} - 6\\hat{k}\\)\n\n\\(\\vec{c} = 4\\hat{i} - 4\\hat{j} + 2\\hat{k}\\)\n\nrepresent the sides of a right angled triangle.\n\n**Reason (R) :** Three non-zero vectors of which none of two are collinear forms a triangle if their resultant is zero vector or sum of any two vectors is equal to the third.",
+      "context": "Direction : In questions numbers 19 and 20, two statements are given one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the following options :",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and the Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "ref": "Q20",
+      "questionNumber": "20",
+      "section": "A",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Domains, Ranges and Principal Value Branches",
+      "difficulty": "EASY",
+      "stem": "**Assertion (A) :** Domain of \\(y = \\cos^{-1}(x)\\) is \\([-1, 1]\\).\n\n**Reason (R) :** The range of the principal value branch of \\(y = \\cos^{-1}(x)\\) is \\(\\left[0, \\pi\\right] - \\left\\{\\dfrac{\\pi}{2}\\right\\}\\).",
+      "context": "Direction : In questions numbers 19 and 20, two statements are given one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the following options :",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and the Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is not the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "ref": "Q21",
+      "questionNumber": "21",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Evaluating Inverse Trigonometric Expressions",
+      "difficulty": "MODERATE",
+      "stem": "If a \\(= \\sin^{-1}\\left(\\dfrac{\\sqrt{2}}{2}\\right) + \\cos^{-1}\\left(-\\dfrac{1}{2}\\right)\\) and\n\nb \\(= \\tan^{-1}\\left(\\sqrt{3}\\right) - \\cot^{-1}\\left(-\\dfrac{1}{\\sqrt{3}}\\right)\\)\n\nthen find the value of a + b."
+    },
+    {
+      "ref": "Q22a",
+      "questionNumber": "22 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integration by Substitution",
+      "difficulty": "MODERATE",
+      "stem": "Find : \\(\\displaystyle\\int \\cos^3 x\\; \\mathrm{e}^{\\log \\sin x}\\, \\mathrm{d}x\\)"
+    },
+    {
+      "ref": "Q22b",
+      "questionNumber": "22 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integrals of Some Particular Functions",
+      "difficulty": "MODERATE",
+      "stem": "Find : \\(\\displaystyle\\int \\dfrac{1}{5 + 4x - x^2}\\, \\mathrm{d}x\\)",
+      "_alternativeTo": "Q22a"
+    },
+    {
+      "ref": "Q23",
+      "questionNumber": "23",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Rate of Change of Quantities",
+      "difficulty": "MODERATE",
+      "stem": "Sand is pouring from a pipe at the rate of 15 cm\\(^3\\)/minute. The falling sand forms a cone on the ground such that the height of the cone is always one-third of the radius of the base. How fast is the height of the sand cone increasing at the instant when the height is 4 cm ?"
+    },
+    {
+      "ref": "Q24",
+      "questionNumber": "24",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Equation of a Line in Space",
+      "difficulty": "MODERATE",
+      "stem": "Find the vector equation of the line passing through the point \\((2, 3, -5)\\) and making equal angles with the co-ordinate axes."
+    },
+    {
+      "ref": "Q25a",
+      "questionNumber": "25 (a)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Continuity",
+      "difficulty": "MODERATE",
+      "stem": "Verify whether the function f defined by\n\n\\(\\mathrm{f}(x) = \\begin{cases} x\\sin\\left(\\dfrac{1}{x}\\right), & x \\ne 0 \\\\ 0, & x = 0 \\end{cases}\\)\n\nis continuous at \\(x = 0\\) or not."
+    },
+    {
+      "ref": "Q25b",
+      "questionNumber": "25 (b)",
+      "section": "B",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Differentiability and the Chain Rule",
+      "difficulty": "MODERATE",
+      "stem": "Check for differentiability of the function f defined by \\(\\mathrm{f}(x) = |x - 5|\\), at the point \\(x = 5\\).",
+      "_alternativeTo": "Q25a"
+    },
+    {
+      "ref": "Q26a",
+      "questionNumber": "26 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Differential Equations",
+      "subtopic": "Linear Differential Equations",
+      "difficulty": "MODERATE",
+      "stem": "Find the particular solution of the differential equation\n\n\\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}x} - 2x\\mathrm{y} = 3x^2\\, \\mathrm{e}^{x^2}\\) ; \\(\\mathrm{y}(0) = 5\\)."
+    },
+    {
+      "ref": "Q26b",
+      "questionNumber": "26 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Differential Equations",
+      "subtopic": "Homogeneous Differential Equations",
+      "difficulty": "MODERATE",
+      "stem": "Solve the following differential equation :\n\n\\(x^2\\, \\mathrm{d}y + \\mathrm{y}(x + \\mathrm{y})\\, \\mathrm{d}x = 0\\)",
+      "_alternativeTo": "Q26a"
+    },
+    {
+      "ref": "Q27",
+      "questionNumber": "27",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Differentiability and the Chain Rule",
+      "difficulty": "MODERATE",
+      "stem": "Find the values of a and b so that the following function is differentiable for all values of \\(x\\) :\n\n\\(\\mathrm{f}(x) = \\begin{cases} \\mathrm{a}x + \\mathrm{b}, & x > -1 \\\\ \\mathrm{b}x^2 - 3, & x \\le -1 \\end{cases}\\)"
+    },
+    {
+      "ref": "Q28a",
+      "questionNumber": "28 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Logarithmic Differentiation",
+      "difficulty": "MODERATE",
+      "stem": "Find \\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}\\), if \\((\\cos x)^{\\mathrm{y}} = (\\cos \\mathrm{y})^{x}\\)."
+    },
+    {
+      "ref": "Q28b",
+      "questionNumber": "28 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+      "difficulty": "HARD",
+      "stem": "If \\(\\sqrt{1 - x^2} + \\sqrt{1 - \\mathrm{y}^2} = \\mathrm{a}(x - \\mathrm{y})\\), prove that \\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}x} = \\sqrt{\\dfrac{1 - \\mathrm{y}^2}{1 - x^2}}\\).",
+      "_alternativeTo": "Q28a"
+    },
+    {
+      "ref": "Q29a",
+      "questionNumber": "29 (a)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Properties of Definite Integrals",
+      "difficulty": "MODERATE",
+      "stem": "Evaluate : \\(\\displaystyle\\int_{0}^{\\pi} \\dfrac{\\mathrm{e}^{\\cos x}}{\\mathrm{e}^{\\cos x} + \\mathrm{e}^{-\\cos x}}\\, \\mathrm{d}x\\)"
+    },
+    {
+      "ref": "Q29b",
+      "questionNumber": "29 (b)",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integration by Partial Fractions",
+      "difficulty": "MODERATE",
+      "stem": "Find : \\(\\displaystyle\\int \\dfrac{2x + 1}{(x + 1)^2\\,(x - 1)}\\, \\mathrm{d}x\\)",
+      "_alternativeTo": "Q29a"
+    },
+    {
+      "ref": "Q30",
+      "questionNumber": "30",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Vector (Cross) Product",
+      "difficulty": "MODERATE",
+      "stem": "Given \\(\\vec{a} = 2\\hat{i} - \\hat{j} + \\hat{k}\\), \\(\\vec{b} = 3\\hat{i} - \\hat{k}\\) and \\(\\vec{c} = 2\\hat{i} + \\hat{j} - 2\\hat{k}\\). Find a vector \\(\\vec{d}\\) which is perpendicular to both \\(\\vec{a}\\) and \\(\\vec{b}\\) and \\(\\vec{c} \\cdot \\vec{d} = 3\\)."
+    },
+    {
+      "ref": "Q31",
+      "questionNumber": "31",
+      "section": "C",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Theorem of Total Probability",
+      "difficulty": "MODERATE",
+      "stem": "Bag I contains 3 red and 4 black balls, Bag II contains 5 red and 2 black balls. Two balls are transferred at random from Bag I to Bag II and then a ball is drawn at random from Bag II. Find the probability that the drawn ball is red in colour."
+    },
+    {
+      "ref": "Q32a",
+      "questionNumber": "32 (a)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Equation of a Line in Space",
+      "difficulty": "HARD",
+      "stem": "Find the co-ordinates of the foot of the perpendicular drawn from the point \\((2, 3, -8)\\) to the line \\(\\dfrac{4 - x}{2} = \\dfrac{\\mathrm{y}}{6} = \\dfrac{1 - \\mathrm{z}}{3}\\).\n\nAlso, find the perpendicular distance of the given point from the line."
+    },
+    {
+      "ref": "Q32b",
+      "questionNumber": "32 (b)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Shortest Distance Between Two Lines",
+      "difficulty": "HARD",
+      "stem": "Find the shortest distance between the lines \\(\\mathrm{L}_1\\) & \\(\\mathrm{L}_2\\) given below :\n\n\\(\\mathrm{L}_1\\) : The line passing through \\((2, -1, 1)\\) and parallel to \\(\\dfrac{x}{1} = \\dfrac{\\mathrm{y}}{1} = \\dfrac{\\mathrm{z}}{3}\\)\n\n\\(\\mathrm{L}_2 : \\vec{r} = \\hat{i} + (2\\mu + 1)\\hat{j} - (\\mu + 2)\\hat{k}\\).",
+      "_alternativeTo": "Q32a"
+    },
+    {
+      "ref": "Q33a",
+      "questionNumber": "33 (a)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Solving System of Linear Equations",
+      "difficulty": "HARD",
+      "stem": "If \\(\\mathrm{A} = \\begin{bmatrix} 1 & 2 & -3 \\\\ 2 & 0 & -3 \\\\ 1 & 2 & 0 \\end{bmatrix}\\), then find \\(\\mathrm{A}^{-1}\\) and hence solve the following system of equations :\n\n\\(x + 2\\mathrm{y} - 3\\mathrm{z} = 1\\)\n\n\\(2x - 3\\mathrm{z} = 2\\)\n\n\\(x + 2\\mathrm{y} = 3\\)"
+    },
+    {
+      "ref": "Q33b",
+      "questionNumber": "33 (b)",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Solving System of Linear Equations",
+      "difficulty": "HARD",
+      "stem": "Find the product of the matrices \\(\\begin{bmatrix} 1 & 2 & -3 \\\\ 2 & 3 & 2 \\\\ 3 & -3 & -4 \\end{bmatrix}\\) and \\(\\begin{bmatrix} -6 & 17 & 13 \\\\ 14 & 5 & -8 \\\\ -15 & 9 & -1 \\end{bmatrix}\\) and hence solve the system of linear equations :\n\n\\(x + 2\\mathrm{y} - 3\\mathrm{z} = -4\\)\n\n\\(2x + 3\\mathrm{y} + 2\\mathrm{z} = 2\\)\n\n\\(3x - 3\\mathrm{y} - 4\\mathrm{z} = 11\\)",
+      "_alternativeTo": "Q33a"
+    },
+    {
+      "ref": "Q34",
+      "questionNumber": "34",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Under Simple Curves",
+      "difficulty": "HARD",
+      "stem": "Find the area of the region bounded by the curve \\(4x^2 + \\mathrm{y}^2 = 36\\) using integration."
+    },
+    {
+      "ref": "Q35",
+      "questionNumber": "35",
+      "section": "D",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "difficulty": "HARD",
+      "stem": "Solve the following Linear Programming problem graphically :\n\nMaximise \\(\\mathrm{Z} = 300x + 600\\mathrm{y}\\)\n\nSubject to \\(x + 2\\mathrm{y} \\le 12\\)\n\n\\(2x + \\mathrm{y} \\le 12\\)\n\n\\(x + \\dfrac{5}{4}\\mathrm{y} \\ge 5\\)\n\n\\(x \\ge 0,\\ \\mathrm{y} \\ge 0\\)."
+    },
+    {
+      "ref": "Q36i",
+      "questionNumber": "36 (i)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "difficulty": "EASY",
+      "stem": "Let \\(\\mathrm{E}_1\\) and \\(\\mathrm{E}_2\\) respectively denote the event of customer paying or not paying the first month bill in time.\n\nFind \\(P(\\mathrm{E}_1)\\), \\(P(\\mathrm{E}_2)\\).",
+      "context": "A departmental store sends bills to charge its customers once a month. Past experience shows that 70% of its customers pay their first month bill in time. The store also found that the customer who pays the bill in time has the probability of 0.8 of paying in time next month and the customer who doesn't pay in time has the probability of 0.4 of paying in time the next month.\n\nBased on the above information, answer the following questions :",
+      "setId": "2024-65-5-2-CS1"
+    },
+    {
+      "ref": "Q36ii",
+      "questionNumber": "36 (ii)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "difficulty": "EASY",
+      "stem": "Let A denotes the event of customer paying second month's bill in time, then find \\(P(\\mathrm{A}|\\mathrm{E}_1)\\) and \\(P(\\mathrm{A}|\\mathrm{E}_2)\\).",
+      "context": "A departmental store sends bills to charge its customers once a month. Past experience shows that 70% of its customers pay their first month bill in time. The store also found that the customer who pays the bill in time has the probability of 0.8 of paying in time next month and the customer who doesn't pay in time has the probability of 0.4 of paying in time the next month.\n\nBased on the above information, answer the following questions :",
+      "setId": "2024-65-5-2-CS1"
+    },
+    {
+      "ref": "Q36iiia",
+      "questionNumber": "36 (iii) (a)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Theorem of Total Probability",
+      "difficulty": "MODERATE",
+      "stem": "Find the probability of customer paying second month's bill in time.",
+      "context": "A departmental store sends bills to charge its customers once a month. Past experience shows that 70% of its customers pay their first month bill in time. The store also found that the customer who pays the bill in time has the probability of 0.8 of paying in time next month and the customer who doesn't pay in time has the probability of 0.4 of paying in time the next month.\n\nBased on the above information, answer the following questions :",
+      "setId": "2024-65-5-2-CS1"
+    },
+    {
+      "ref": "Q36iiib",
+      "questionNumber": "36 (iii) (b)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Bayes' Theorem",
+      "difficulty": "MODERATE",
+      "stem": "Find the probability of customer paying first month's bill in time if it is found that customer has paid the second month's bill in time.",
+      "context": "A departmental store sends bills to charge its customers once a month. Past experience shows that 70% of its customers pay their first month bill in time. The store also found that the customer who pays the bill in time has the probability of 0.8 of paying in time next month and the customer who doesn't pay in time has the probability of 0.4 of paying in time the next month.\n\nBased on the above information, answer the following questions :",
+      "setId": "2024-65-5-2-CS1",
+      "_alternativeTo": "Q36iiia"
+    },
+    {
+      "ref": "Q37ai",
+      "questionNumber": "37 (a) (i)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "Types of Relations",
+      "difficulty": "EASY",
+      "stem": "Find whether the relation R is symmetric or not.",
+      "context": "Students of a school are taken to a railway museum to learn about railways heritage and its history.\n\nAn exhibit in the museum depicted many rail lines on the track near the railway station. Let L be the set of all rail lines on the railway track and R be the relation on L defined by\n\nR = \\(\\{(l_1, l_2) : l_1\\) is parallel to \\(l_2\\}\\)\n\nOn the basis of the above information, answer the following questions :",
+      "setId": "2024-65-5-2-CS2",
+      "_figure": "DECORATIVE — a photograph of rail lines near a station. Every term needed is defined in the passage text. Page idx 20.",
+      "_flag": "The official marking scheme for 65/5/2 carries the same note as 65/5/1: \"** Due to printing error Part (a) or Part(b), both parts be taken as independent questions of 4 marks each\" — CBSE itself acknowledges the OR between 37 (a) and 37 (b) was mis-set. Transcribed as printed, with (b) recorded as the alternative to (a)."
+    },
+    {
+      "ref": "Q37aii",
+      "questionNumber": "37 (a) (ii)",
+      "section": "E",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "Types of Relations",
+      "difficulty": "EASY",
+      "stem": "Find whether the relation R is transitive or not.",
+      "context": "Students of a school are taken to a railway museum to learn about railways heritage and its history.\n\nAn exhibit in the museum depicted many rail lines on the track near the railway station. Let L be the set of all rail lines on the railway track and R be the relation on L defined by\n\nR = \\(\\{(l_1, l_2) : l_1\\) is parallel to \\(l_2\\}\\)\n\nOn the basis of the above information, answer the following questions :",
+      "setId": "2024-65-5-2-CS2"
+    },
+    {
+      "ref": "Q37aiii",
+      "questionNumber": "37 (a) (iii)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "Equivalence Relations and Classes",
+      "difficulty": "MODERATE",
+      "stem": "If one of the rail lines on the railway track is represented by the equation \\(\\mathrm{y} = 3x + 2\\), then find the set of rail lines in R related to it.",
+      "context": "Students of a school are taken to a railway museum to learn about railways heritage and its history.\n\nAn exhibit in the museum depicted many rail lines on the track near the railway station. Let L be the set of all rail lines on the railway track and R be the relation on L defined by\n\nR = \\(\\{(l_1, l_2) : l_1\\) is parallel to \\(l_2\\}\\)\n\nOn the basis of the above information, answer the following questions :",
+      "setId": "2024-65-5-2-CS2"
+    },
+    {
+      "ref": "Q37b",
+      "questionNumber": "37 (b)",
+      "section": "E",
+      "marks": 4,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "Types of Relations",
+      "difficulty": "MODERATE",
+      "stem": "Let S be the relation defined by S = \\(\\{(l_1, l_2) : l_1\\) is perpendicular to \\(l_2\\}\\) check whether the relation S is symmetric and transitive.",
+      "context": "Students of a school are taken to a railway museum to learn about railways heritage and its history.\n\nAn exhibit in the museum depicted many rail lines on the track near the railway station. Let L be the set of all rail lines on the railway track and R be the relation on L defined by\n\nR = \\(\\{(l_1, l_2) : l_1\\) is parallel to \\(l_2\\}\\)\n\nOn the basis of the above information, answer the following questions :",
+      "setId": "2024-65-5-2-CS2",
+      "_flag": "The printed OR is at PARENT level here, not at sub-part (iii) as is usual — 37 (b) is a single 4-mark alternative to the whole of 37 (a). The marking scheme allots it 2 + 2 and adds that, due to a printing error, (a) and (b) are to be treated as independent 4-mark questions.",
+      "_alternativeTo": "Q37ai"
+    },
+    {
+      "ref": "Q38i",
+      "questionNumber": "38 (i)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "difficulty": "MODERATE",
+      "stem": "Write the expression for the area of the visiting card in terms of \\(x\\).",
+      "context": "A rectangular visiting card is to contain 24 sq.cm. of printed matter. The margins at the top and bottom of the card are to be 1 cm and the margins on the left and right are to be 1½ cm as shown below :\n\nOn the basis of the above information, answer the following questions :",
+      "setId": "2024-65-5-2-CS3",
+      "_figure": "REQUIRED — two diagrams of the card; the variables \\(x\\) and \\(y\\) (the dimensions of the printed matter) are LABELLED ONLY IN THE FIGURE and are never defined in the stem text, yet part (i) asks for the area \"in terms of \\(x\\)\". Page idx 22."
+    },
+    {
+      "ref": "Q38ii",
+      "questionNumber": "38 (ii)",
+      "section": "E",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "difficulty": "MODERATE",
+      "stem": "Obtain the dimensions of the card of minimum area.",
+      "context": "A rectangular visiting card is to contain 24 sq.cm. of printed matter. The margins at the top and bottom of the card are to be 1 cm and the margins on the left and right are to be 1½ cm as shown below :\n\nOn the basis of the above information, answer the following questions :",
+      "setId": "2024-65-5-2-CS3",
+      "_figure": "REQUIRED — same two diagrams as 38 (i); \\(x\\) and \\(y\\) are defined only there. Page idx 22.",
+      "_flag": "This case study has only TWO sub-parts, (i) and (ii), each of 2 marks (marking scheme: 2 and 1+½+½). There is no (iii) and no internal choice."
+    }
+  ]
+}

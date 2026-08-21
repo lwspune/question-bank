@@ -1,0 +1,63 @@
+{
+ "paper": "65/3/2",
+ "year": 2022,
+ "paperId": "2022-65-3-2",
+ "markingScheme": "out/2022-65-3-2/ms/p00.png … p10.png",
+ "rows": [
+  {
+   "hash": "84d21fe8361cb0e31733fd4f5018aedc757ce8be84fccb037e782622bb43299b",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Variables Separable",
+   "stem": "Find the general solution of the differential equation : \\(\\log \\left( \\dfrac{dy}{dx} \\right) = ax + by\\).",
+   "solution": "Exponentiating both sides turns this into a variables-separable equation: \\(\\frac{dy}{dx} = e^{ax + by} = e^{ax} \\cdot e^{by}\\). The right-hand side factors into a function of \\(x\\) times a function of \\(y\\), so the variables separate as \\(\\frac{dy}{e^{by}} = e^{ax}\\,dx\\), that is \\(e^{-by}\\,dy = e^{ax}\\,dx\\). Integrating both sides gives \\(\\frac{-e^{-by}}{b} = \\frac{e^{ax}}{a} + C\\), which is the required general solution."
+  },
+  {
+   "hash": "0e409857c18cfdd9c75f9080c2818589fd580c756b0d862fe25cd2c84cc15f13",
+   "ref": "Q7a",
+   "questionNumber": "7 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "If \\(\\vec{a}\\), \\(\\vec{b}\\), \\(\\vec{c}\\) are three vectors such that \\(\\vec{a} \\cdot \\vec{b} = \\vec{a} \\cdot \\vec{c}\\) and \\(\\vec{a} \\times \\vec{b} = \\vec{a} \\times \\vec{c}\\), \\(\\vec{a} \\neq 0\\), then show that \\(\\vec{b} = \\vec{c}\\).",
+   "solution": "Bring both conditions onto the single vector \\(\\vec{b} - \\vec{c}\\). From \\(\\vec{a} \\cdot \\vec{b} = \\vec{a} \\cdot \\vec{c}\\) we get \\(\\vec{a} \\cdot (\\vec{b} - \\vec{c}) = 0\\), and from \\(\\vec{a} \\times \\vec{b} = \\vec{a} \\times \\vec{c}\\) we get \\(\\vec{a} \\times (\\vec{b} - \\vec{c}) = \\vec{0}\\). Suppose, for contradiction, that \\(\\vec{b} \\neq \\vec{c}\\), so \\(\\vec{b} - \\vec{c}\\) is a non-zero vector. Since \\(\\vec{a} \\neq \\vec{0}\\) as well, the first equation forces \\(\\vec{a}\\) to be perpendicular to \\(\\vec{b} - \\vec{c}\\), while the second forces \\(\\vec{a}\\) to be parallel to it. A non-zero vector cannot be both: if \\(\\vec{a}\\) is parallel to \\(\\vec{b} - \\vec{c}\\) then \\(\\vec{a} = k(\\vec{b} - \\vec{c})\\) for some scalar \\(k \\neq 0\\), and then \\(\\vec{a} \\cdot (\\vec{b} - \\vec{c}) = k\\,|\\vec{b} - \\vec{c}|^2 \\neq 0\\), contradicting the first equation. So the supposition is untenable, \\(\\vec{b} - \\vec{c} = \\vec{0}\\), and therefore \\(\\vec{b} = \\vec{c}\\). Note that both hypotheses are needed: the dot condition alone leaves \\(\\vec{b}\\) and \\(\\vec{c}\\) free to differ by any vector perpendicular to \\(\\vec{a}\\), and the cross condition alone leaves them free to differ by any multiple of \\(\\vec{a}\\)."
+  },
+  {
+   "hash": "6237e258b75c0094f33ef790705c80fe774be6ad8c4eb9bee97460b2c40ddc59",
+   "ref": "Q7b",
+   "questionNumber": "7 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "If \\(|\\vec{a}| = 3\\), \\(|\\vec{b}| = 5\\), \\(|\\vec{c}| = 4\\) and \\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0}\\), then find the value of \\((\\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{c} + \\vec{c} \\cdot \\vec{a})\\).",
+   "solution": "[CBSE marking scheme: in the expansion line the third term is printed as \\(|\\vec{c}|\\) instead of \\(|\\vec{c}|^2\\), while the first two correctly carry their exponents. It is a typesetting slip confined to that one line — the scheme's very next line substitutes \\(16 = 4^2\\), so the method and the answer \\(-25\\) are unaffected. Had the unsquared \\(|\\vec{c}| = 4\\) genuinely been intended, the sum would come out as \\(-19\\).] Since \\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0}\\), the magnitude of that sum is zero, so \\(|\\vec{a} + \\vec{b} + \\vec{c}|^2 = 0\\). Expanding the square of the sum, \\(|\\vec{a}|^2 + |\\vec{b}|^2 + |\\vec{c}|^2 + 2(\\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{c} + \\vec{c} \\cdot \\vec{a}) = 0\\). Substituting the given magnitudes \\(|\\vec{a}| = 3\\), \\(|\\vec{b}| = 5\\) and \\(|\\vec{c}| = 4\\) gives \\(9 + 25 + 16 + 2(\\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{c} + \\vec{c} \\cdot \\vec{a}) = 0\\), that is \\(50 + 2(\\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{c} + \\vec{c} \\cdot \\vec{a}) = 0\\). Hence \\(\\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{c} + \\vec{c} \\cdot \\vec{a} = -25\\)."
+  },
+  {
+   "hash": "2b61e73c9678e305d80ad75f2a091768a42558c4fb3c0b7c548a0f2a05f134f0",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals and the Fundamental Theorem",
+   "stem": "Evaluate : \\(\\int_{-1}^{2} |x^3 - x| \\, dx\\)",
+   "solution": "The integrand carries a modulus, so the first job is to find where \\(x^3 - x\\) changes sign. Factorising, \\(x^3 - x = x(x - 1)(x + 1)\\), whose zeros are \\(-1\\), \\(0\\) and \\(1\\); two of these lie strictly inside the range of integration, so it splits into three pieces. Testing one point in each: \\(x^3 - x \\ge 0\\) on \\([-1, 0]\\), \\(x^3 - x \\le 0\\) on \\([0, 1]\\), and \\(x^3 - x \\ge 0\\) on \\([1, 2]\\). Resolving the modulus accordingly, \\(I = \\int_{-1}^{0}(x^3 - x)\\,dx + \\int_{0}^{1}(x - x^3)\\,dx + \\int_{1}^{2}(x^3 - x)\\,dx\\). Evaluating each piece: \\(\\left[\\frac{x^4}{4} - \\frac{x^2}{2}\\right]_{-1}^{0} = 0 - \\left(\\frac{1}{4} - \\frac{1}{2}\\right) = \\frac{1}{4}\\); \\(\\left[\\frac{x^2}{2} - \\frac{x^4}{4}\\right]_{0}^{1} = \\frac{1}{2} - \\frac{1}{4} = \\frac{1}{4}\\); and \\(\\left[\\frac{x^4}{4} - \\frac{x^2}{2}\\right]_{1}^{2} = (4 - 2) - \\left(\\frac{1}{4} - \\frac{1}{2}\\right) = 2 + \\frac{1}{4} = \\frac{9}{4}\\). Adding, \\(I = \\frac{1}{4} + \\frac{1}{4} + \\frac{9}{4} = \\frac{11}{4}\\)."
+  },
+  {
+   "hash": "2446f5cdd38bb7f64b83a7e4997daea022436aede89fc93679ac037d62eedb19",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "Using integration, find the area of the region bounded by the curves \\(x^2 + y^2 = 4\\), \\(x = \\sqrt{3}\\, y\\) and \\(x\\)-axis lying in the first quadrant.",
+   "solution": "Write the line as \\(y = \\frac{x}{\\sqrt{3}}\\). It meets the circle where \\(x^2 + \\frac{x^2}{3} = 4\\), that is \\(\\frac{4x^2}{3} = 4\\), so \\(x^2 = 3\\) and in the first quadrant \\(x = \\sqrt{3}\\), \\(y = 1\\). The circle itself meets the \\(x\\)-axis at \\(x = 2\\). So the region is capped by the line from \\(x = 0\\) to \\(x = \\sqrt{3}\\) and by the circle from \\(x = \\sqrt{3}\\) to \\(x = 2\\), and the area splits accordingly: \\(I = \\int_0^{\\sqrt{3}} \\frac{x}{\\sqrt{3}}\\,dx + \\int_{\\sqrt{3}}^{2} \\sqrt{4 - x^2}\\,dx\\). The first piece is \\(\\frac{1}{\\sqrt{3}}\\left[\\frac{x^2}{2}\\right]_0^{\\sqrt{3}} = \\frac{1}{\\sqrt{3}} \\cdot \\frac{3}{2} = \\frac{\\sqrt{3}}{2}\\). For the second, use \\(\\int \\sqrt{a^2 - x^2}\\,dx = \\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a}\\) with \\(a = 2\\): \\(\\left[\\frac{x}{2}\\sqrt{4 - x^2} + 2\\sin^{-1}\\frac{x}{2}\\right]_{\\sqrt{3}}^{2} = \\left(0 + 2 \\cdot \\frac{\\pi}{2}\\right) - \\left(\\frac{\\sqrt{3}}{2} + 2 \\cdot \\frac{\\pi}{3}\\right) = \\pi - \\frac{\\sqrt{3}}{2} - \\frac{2\\pi}{3}\\). Adding the two pieces, the \\(\\frac{\\sqrt{3}}{2}\\) terms cancel and \\(I = \\pi - \\frac{2\\pi}{3} = \\frac{\\pi}{3}\\) square units. As a check, the region is exactly the circular sector of radius \\(2\\) between the \\(x\\)-axis and the line, and the line makes an angle \\(\\tan^{-1}\\frac{1}{\\sqrt{3}} = \\frac{\\pi}{6}\\) with the axis, so its area is \\(\\frac{1}{2}(2)^2\\left(\\frac{\\pi}{6}\\right) = \\frac{\\pi}{3}\\)."
+  }
+ ]
+}

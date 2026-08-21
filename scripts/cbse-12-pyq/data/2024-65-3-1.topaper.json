@@ -1,0 +1,976 @@
+{
+ "paper": "65/3/1",
+ "year": 2024,
+ "paperId": "2024-65-3-1",
+ "markingScheme": "out/2024-65-3-1/ms/p00.png … p20.png",
+ "rows": [
+  {
+   "hash": "7b95a60198277395e65cfdf3b86a539f1c96dc52f746070b73b0616486d9d256",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Order and Types of Matrices",
+   "stem": "If \\(A = [a_{ij}]\\) is an identity matrix, then which of the following is true ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(a_{ij} = \\begin{cases} 0, & \\text{if } i = j \\\\ 1, & \\text{if } i \\neq j \\end{cases}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(a_{ij} = 1, \\forall\\, i, j\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(a_{ij} = 0, \\forall\\, i, j\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(a_{ij} = \\begin{cases} 0, & \\text{if } i \\neq j \\\\ 1, & \\text{if } i = j \\end{cases}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "An identity matrix is a square matrix whose main-diagonal entries are all \\(1\\) and whose every other entry is \\(0\\). Written entry by entry, that says \\(a_{ij} = 1\\) when \\(i = j\\) and \\(a_{ij} = 0\\) when \\(i \\neq j\\), which is the option reading \\(a_{ij} = 0\\) if \\(i \\neq j\\) and \\(a_{ij} = 1\\) if \\(i = j\\). The option with the two cases the other way round describes a matrix with zeros down the diagonal and ones off it, while the two constant options describe the all-ones matrix and the null matrix."
+  },
+  {
+   "hash": "638a6707b46e0fdd9bac1b82cd6f4e5f4a774769fc586f9d70a283cc6b5700e8",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "Let \\(R_+\\) denote the set of all non-negative real numbers. Then the function \\(f : R_+ \\to R_+\\) defined as \\(f(x) = x^2 + 1\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "one-one but not onto"
+    },
+    {
+     "label": "B",
+     "text": "onto but not one-one"
+    },
+    {
+     "label": "C",
+     "text": "both one-one and onto"
+    },
+    {
+     "label": "D",
+     "text": "neither one-one nor onto"
+    }
+   ],
+   "answer": "A",
+   "solution": "Both the domain and the codomain are \\(R_+ = [0, \\infty)\\). One-one: if \\(f(x_1) = f(x_2)\\) then \\(x_1^2 = x_2^2\\), and since \\(x_1, x_2 \\ge 0\\) this forces \\(x_1 = x_2\\). Onto: for \\(x \\ge 0\\) we have \\(x^2 + 1 \\ge 1\\), so the range is \\([1, \\infty)\\), a proper subset of the codomain \\([0, \\infty)\\); an element such as \\(0{\\cdot}5\\) has no pre-image. Hence \\(f\\) is one-one but not onto."
+  },
+  {
+   "hash": "2a4d95a5b954e1c584ca76f5a1fde692c6b337072fb332fa011e7812b1af9d75",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Adjoint and Inverse of a Matrix",
+   "stem": "Let \\(A = \\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}\\) be a square matrix such that adj A = A. Then, \\((a + b + c + d)\\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2a\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(2b\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(2c\\)"
+    },
+    {
+     "label": "D",
+     "text": "0"
+    }
+   ],
+   "answer": "A",
+   "solution": "For \\(A = \\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}\\) the adjoint is \\(\\begin{bmatrix} d & -b \\\\ -c & a \\end{bmatrix}\\). Equating it to \\(A\\) entry by entry gives \\(d = a\\), \\(-b = b\\) and \\(-c = c\\), so \\(b = 0\\), \\(c = 0\\) and \\(d = a\\). Therefore \\(a + b + c + d = a + 0 + 0 + a = 2a\\), which is the option \\(2a\\)."
+  },
+  {
+   "hash": "1fd8e1c2e60c508617495fddb8b5a8f1f527589c04f2ed1fe73e3eafdab9ab54",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Continuity",
+   "stem": "A function \\(f(x) = \\left| 1 - x + |x| \\right|\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "discontinuous at \\(x = 1\\) only"
+    },
+    {
+     "label": "B",
+     "text": "discontinuous at \\(x = 0\\) only"
+    },
+    {
+     "label": "C",
+     "text": "discontinuous at \\(x = 0, 1\\)"
+    },
+    {
+     "label": "D",
+     "text": "continuous everywhere"
+    }
+   ],
+   "answer": "D",
+   "solution": "Take the two cases separately. For \\(x \\ge 0\\), \\(|x| = x\\), so \\(1 - x + |x| = 1\\) and \\(f(x) = |1| = 1\\). For \\(x < 0\\), \\(|x| = -x\\), so \\(1 - x + |x| = 1 - 2x\\), which is greater than \\(1\\) and hence positive, giving \\(f(x) = 1 - 2x\\). Each piece is a polynomial and so is continuous on its own part of the line, and at the join \\(x = 0\\) the left-hand limit \\(1 - 2(0) = 1\\), the right-hand limit \\(1\\) and the value \\(f(0) = 1\\) all agree. There is no break anywhere, so \\(f\\) is continuous everywhere."
+  },
+  {
+   "hash": "084240b1a9e8a7b5d9a69110b32e553efa8d33d4df1180a4de9a2b6704082d10",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "If the sides of a square are decreasing at the rate of \\(1{\\cdot}5\\) cm/s, the rate of decrease of its perimeter is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(1{\\cdot}5\\) cm/s"
+    },
+    {
+     "label": "B",
+     "text": "6 cm/s"
+    },
+    {
+     "label": "C",
+     "text": "3 cm/s"
+    },
+    {
+     "label": "D",
+     "text": "\\(2{\\cdot}25\\) cm/s"
+    }
+   ],
+   "answer": "B",
+   "solution": "Let the side be \\(a\\) cm, so the perimeter is \\(P = 4a\\) and \\(\\frac{dP}{dt} = 4\\frac{da}{dt}\\). The side decreases at \\(1{\\cdot}5\\) cm/s, so the perimeter decreases at \\(4 \\times 1{\\cdot}5 = 6\\) cm/s, which is the option \\(6\\) cm/s. Note that the answer does not depend on the current size of the square, because the perimeter is a linear function of the side."
+  },
+  {
+   "hash": "86b3574881cacc5ecf21e184cd1cb0b98cd8a7da897388c8a5bb2f3f35078631",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "\\(\\int\\limits_{-a}^{a} f(x)\\, dx = 0\\), if :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(f(-x) = f(x)\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(f(-x) = -f(x)\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(f(a - x) = f(x)\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(f(a - x) = -f(x)\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Split the range at \\(0\\): \\(\\int_{-a}^{a} f(x)\\,dx = \\int_{-a}^{0} f(x)\\,dx + \\int_{0}^{a} f(x)\\,dx\\), and substitute \\(x \\to -x\\) in the first piece, which turns it into \\(\\int_{0}^{a} f(-x)\\,dx\\). If \\(f\\) is odd, so that \\(f(-x) = -f(x)\\), that piece is \\(-\\int_{0}^{a} f(x)\\,dx\\) and the two contributions cancel, giving \\(0\\). If instead \\(f(-x) = f(x)\\), the integral is \\(2\\int_{0}^{a} f(x)\\,dx\\), which need not vanish. So the condition that forces the integral to be zero is \\(f(-x) = -f(x)\\)."
+  },
+  {
+   "hash": "6eeb45a3de9108cbb9d5c140083f8606155eba37043157424d56abe8c2307266",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "\\(x \\log x \\dfrac{dy}{dx} + y = 2 \\log x\\) is an example of a :",
+   "options": [
+    {
+     "label": "A",
+     "text": "variable separable differential equation."
+    },
+    {
+     "label": "B",
+     "text": "homogeneous differential equation."
+    },
+    {
+     "label": "C",
+     "text": "first order linear differential equation."
+    },
+    {
+     "label": "D",
+     "text": "differential equation whose degree is not defined."
+    }
+   ],
+   "answer": "C",
+   "solution": "Divide throughout by \\(x \\log x\\): \\(\\frac{dy}{dx} + \\frac{1}{x \\log x}y = \\frac{2}{x}\\). This is exactly the shape \\(\\frac{dy}{dx} + P(x)y = Q(x)\\), with \\(P(x) = \\frac{1}{x \\log x}\\) and \\(Q(x) = \\frac{2}{x}\\): the highest derivative is of first order, and \\(y\\) and \\(\\frac{dy}{dx}\\) occur only to the first degree with no product between them. So it is a first order linear differential equation. It is not variable separable (the right side does not factor as a function of \\(x\\) times a function of \\(y\\)), not homogeneous, and its degree is defined and equal to \\(1\\)."
+  },
+  {
+   "hash": "7d77eb1ae33539c4ef958c689fb22214859240df0f6c701f4c2c23bede0a8ab1",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "If \\(\\vec{a} = 2\\hat{i} - \\hat{j} + \\hat{k}\\) and \\(\\vec{b} = \\hat{i} + \\hat{j} - \\hat{k}\\), then \\(\\vec{a}\\) and \\(\\vec{b}\\) are :",
+   "options": [
+    {
+     "label": "A",
+     "text": "collinear vectors which are not parallel"
+    },
+    {
+     "label": "B",
+     "text": "parallel vectors"
+    },
+    {
+     "label": "C",
+     "text": "perpendicular vectors"
+    },
+    {
+     "label": "D",
+     "text": "unit vectors"
+    }
+   ],
+   "answer": "C",
+   "solution": "Test the dot product: \\(\\vec{a} \\cdot \\vec{b} = (2)(1) + (-1)(1) + (1)(-1) = 2 - 1 - 1 = 0\\). Both vectors are non-zero, so a zero dot product means the angle between them is \\(\\frac{\\pi}{2}\\): they are perpendicular vectors. They are not parallel, since \\(\\frac{2}{1} \\neq \\frac{-1}{1}\\), and they are not unit vectors, since \\(|\\vec{a}| = \\sqrt{6}\\) and \\(|\\vec{b}| = \\sqrt{3}\\)."
+  },
+  {
+   "hash": "ae1afbede56d9456a1ec27eab1237f5234376e6b5c8d75e44f5e91dae35b54ba",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "If \\(\\alpha\\), \\(\\beta\\) and \\(\\gamma\\) are the angles which a line makes with positive directions of x, y and z axes respectively, then which of the following is not true ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\cos^2 \\alpha + \\cos^2 \\beta + \\cos^2 \\gamma = 1\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\sin^2 \\alpha + \\sin^2 \\beta + \\sin^2 \\gamma = 2\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\cos 2\\alpha + \\cos 2\\beta + \\cos 2\\gamma = -1\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\cos \\alpha + \\cos \\beta + \\cos \\gamma = 1\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "The direction cosines of a line always satisfy \\(\\cos^2 \\alpha + \\cos^2 \\beta + \\cos^2 \\gamma = 1\\), so that statement is true. Replacing each \\(\\cos^2\\) by \\(1 - \\sin^2\\) turns it into \\(3 - \\left(\\sin^2 \\alpha + \\sin^2 \\beta + \\sin^2 \\gamma\\right) = 1\\), i.e. \\(\\sin^2 \\alpha + \\sin^2 \\beta + \\sin^2 \\gamma = 2\\), also true. Using \\(\\cos 2\\theta = 2\\cos^2 \\theta - 1\\) on each term gives \\(\\cos 2\\alpha + \\cos 2\\beta + \\cos 2\\gamma = 2(1) - 3 = -1\\), true as well. There is no corresponding identity for the first powers: a line along the x-axis has \\(\\cos \\alpha + \\cos \\beta + \\cos \\gamma = 1 + 0 + 0 = 1\\), but a line equally inclined to all three axes has \\(3 \\times \\frac{1}{\\sqrt{3}} = \\sqrt{3}\\). So the statement that is not true is \\(\\cos \\alpha + \\cos \\beta + \\cos \\gamma = 1\\)."
+  },
+  {
+   "hash": "ca80079080fc00b666239f0663462f461c3e012e1b341f40ae3bab38f99a7af0",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "The restrictions imposed on decision variables involved in an objective function of a linear programming problem are called :",
+   "options": [
+    {
+     "label": "A",
+     "text": "feasible solutions"
+    },
+    {
+     "label": "B",
+     "text": "constraints"
+    },
+    {
+     "label": "C",
+     "text": "optimal solutions"
+    },
+    {
+     "label": "D",
+     "text": "infeasible solutions"
+    }
+   ],
+   "answer": "B",
+   "solution": "In a linear programming problem the linear inequalities that the decision variables are required to satisfy are called the constraints. The other three terms name different things: a feasible solution is a point satisfying all the constraints, an optimal solution is a feasible point at which the objective function attains its best value, and an infeasible solution is a point outside the feasible region. So the restrictions themselves are the constraints."
+  },
+  {
+   "hash": "5c98d11a97535e6b76c7f83aa430bc097c72e5ddc2388242d8fbd893581ef535",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "Let E and F be two events such that \\(P(E) = 0{\\cdot}1\\), \\(P(F) = 0{\\cdot}3\\), \\(P(E \\cup F) = 0{\\cdot}4\\), then \\(P(F\\,|\\,E)\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0{\\cdot}6\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(0{\\cdot}4\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(0{\\cdot}5\\)"
+    },
+    {
+     "label": "D",
+     "text": "0"
+    }
+   ],
+   "answer": "D",
+   "solution": "First recover \\(P(E \\cap F)\\) from the addition rule: \\(P(E \\cap F) = P(E) + P(F) - P(E \\cup F) = 0{\\cdot}1 + 0{\\cdot}3 - 0{\\cdot}4 = 0\\), so E and F are mutually exclusive. Then \\(P(F\\,|\\,E) = \\frac{P(E \\cap F)}{P(E)} = \\frac{0}{0{\\cdot}1} = 0\\), which is the option \\(0\\)."
+  },
+  {
+   "hash": "154006721777783d6fc74f6f056db971e7d3e14a13fb6aee2cdb9e2f861d2693",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Symmetric and Skew-Symmetric Matrices",
+   "stem": "If A and B are two skew symmetric matrices, then \\((AB + BA)\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "a skew symmetric matrix"
+    },
+    {
+     "label": "B",
+     "text": "a symmetric matrix"
+    },
+    {
+     "label": "C",
+     "text": "a null matrix"
+    },
+    {
+     "label": "D",
+     "text": "an identity matrix"
+    }
+   ],
+   "answer": "B",
+   "solution": "Skew symmetric means \\(A' = -A\\) and \\(B' = -B\\). Take the transpose of the sum, remembering that \\((PQ)' = Q'P'\\): \\((AB + BA)' = (AB)' + (BA)' = B'A' + A'B' = (-B)(-A) + (-A)(-B) = BA + AB\\), which is the same matrix as \\(AB + BA\\). A matrix equal to its own transpose is symmetric, so \\(AB + BA\\) is a symmetric matrix. It need not be null: taking \\(B = A\\) gives \\(2A^2\\), which is generally non-zero."
+  },
+  {
+   "hash": "91a536720358d18153e17570361904f676754f47803d5d31f4828edfb3f217d9",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Determinant and its Properties",
+   "stem": "If \\(\\begin{vmatrix} 1 & 3 & 1 \\\\ k & 0 & 1 \\\\ 0 & 0 & 1 \\end{vmatrix} = \\pm 6\\), then the value of k is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "2"
+    },
+    {
+     "label": "B",
+     "text": "\\(-2\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\pm 2\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\mp 2\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Expand along the third row, which is \\(0, 0, 1\\), so only one term survives: the determinant equals \\(1 \\times \\begin{vmatrix} 1 & 3 \\\\ k & 0 \\end{vmatrix} = 1(1 \\times 0 - 3 \\times k) = -3k\\). Setting \\(-3k = \\pm 6\\) gives \\(k = \\mp 2\\), with the signs pairing in the opposite order: the value \\(+6\\) comes from \\(k = -2\\), and \\(-6\\) from \\(k = 2\\). So the value of \\(k\\) is \\(\\mp 2\\). The option \\(\\pm 2\\) names the same two numbers but attaches the signs the wrong way round."
+  },
+  {
+   "hash": "de347b26c1e1104565956fae9b445fa3e4df8159b029272d0c39ddf8401c45f9",
+   "ref": "Q14",
+   "questionNumber": "14",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+   "stem": "The derivative of \\(2^x\\) w.r.t. \\(3^x\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\left(\\dfrac{3}{2}\\right)^x \\dfrac{\\log 2}{\\log 3}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\left(\\dfrac{2}{3}\\right)^x \\dfrac{\\log 3}{\\log 2}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\left(\\dfrac{2}{3}\\right)^x \\dfrac{\\log 2}{\\log 3}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\left(\\dfrac{3}{2}\\right)^x \\dfrac{\\log 3}{\\log 2}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Put \\(u = 2^x\\) and \\(v = 3^x\\); the derivative asked for is \\(\\frac{du}{dv}\\). Now \\(\\frac{du}{dx} = 2^x \\log 2\\) and \\(\\frac{dv}{dx} = 3^x \\log 3\\), so \\(\\frac{du}{dv} = \\frac{du/dx}{dv/dx} = \\frac{2^x \\log 2}{3^x \\log 3} = \\left(\\frac{2}{3}\\right)^x \\frac{\\log 2}{\\log 3}\\), which is that option."
+  },
+  {
+   "hash": "dc706c0e2e82b741114e00fa5dc85867c1e01350476bc008639712795405db26",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Addition of Vectors",
+   "stem": "If \\(|\\vec{a}| = 2\\) and \\(-3 \\le k \\le 2\\), then \\(|k\\vec{a}| \\in\\) :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\([-6, 4]\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\([0, 4]\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\([4, 6]\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\([0, 6]\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "A scalar multiple pulls out in absolute value: \\(|k\\vec{a}| = |k|\\,|\\vec{a}| = 2|k|\\). As \\(k\\) runs through \\([-3, 2]\\), \\(|k|\\) takes every value from \\(0\\) (at \\(k = 0\\)) up to \\(3\\) (at \\(k = -3\\)), so \\(|k| \\in [0, 3]\\) and hence \\(2|k| \\in [0, 6]\\). A magnitude is never negative, which rules out \\([-6, 4]\\), and the value \\(0\\) is attained, which rules out \\([4, 6]\\). So \\(|k\\vec{a}| \\in [0, 6]\\)."
+  },
+  {
+   "hash": "52e9f8fe69e41c373ce34d98f08f9d62648c585d01d54c9893d68ecbf9f13ef6",
+   "ref": "Q16",
+   "questionNumber": "16",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "If a line makes an angle of \\(\\dfrac{\\pi}{4}\\) with the positive directions of both x-axis and z-axis, then the angle which it makes with the positive direction of y-axis is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "0"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{\\pi}{4}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{\\pi}{2}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\pi\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Let the angles with the three axes be \\(\\alpha, \\beta, \\gamma\\), so that \\(\\cos^2 \\alpha + \\cos^2 \\beta + \\cos^2 \\gamma = 1\\). Here \\(\\alpha = \\gamma = \\frac{\\pi}{4}\\), so \\(\\cos^2 \\alpha = \\cos^2 \\gamma = \\frac{1}{2}\\) and the identity becomes \\(\\frac{1}{2} + \\cos^2 \\beta + \\frac{1}{2} = 1\\). Hence \\(\\cos^2 \\beta = 0\\), so \\(\\cos \\beta = 0\\) and \\(\\beta = \\frac{\\pi}{2}\\): the line is perpendicular to the y-axis."
+  },
+  {
+   "hash": "365ff3a7e8696f4eadbd74cbea9d0c20a4bd3a17c328cb45d1296df942d544dd",
+   "ref": "Q17",
+   "questionNumber": "17",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Of the following, which group of constraints represents the feasible region given below ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(x + 2y \\le 76\\), \\(2x + y \\ge 104\\), \\(x, y \\ge 0\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(x + 2y \\le 76\\), \\(2x + y \\le 104\\), \\(x, y \\ge 0\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(x + 2y \\ge 76\\), \\(2x + y \\le 104\\), \\(x, y \\ge 0\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(x + 2y \\ge 76\\), \\(2x + y \\ge 104\\), \\(x, y \\ge 0\\)"
+    }
+   ],
+   "answer": "C",
+   "figure": "REQUIRED — the stem names no constraints; the shaded feasible region bounded by the printed lines x + 2y = 76 and 2x + y = 104 IS the question. Page idx 8. NOTE: the question-paper render of the graph is BLACK/illegible; the SAME figure is clean in the marking scheme, ms page idx 5 — crop from there.",
+   "solution": "The two boundary lines drawn are \\(x + 2y = 76\\) and \\(2x + y = 104\\); solving them together gives \\(x = 44\\), \\(y = 16\\), which is the sharp corner of the shaded wedge on the right. The shading lies wholly in the first quadrant, so \\(x \\ge 0\\) and \\(y \\ge 0\\). It lies on the far side of \\(x + 2y = 76\\) from the origin, since the origin gives \\(0 + 0 = 0 < 76\\) and is not shaded, so that constraint is \\(x + 2y \\ge 76\\). It lies on the same side of \\(2x + y = 104\\) as the origin: the wedge meets the y-axis at \\((0, 38)\\), where \\(2(0) + 38 = 38 < 104\\), so that constraint is \\(2x + y \\le 104\\). The group of constraints is therefore \\(x + 2y \\ge 76\\), \\(2x + y \\le 104\\), \\(x, y \\ge 0\\)."
+  },
+  {
+   "hash": "e52581f3f5acf86d927d6b9368640aeb30f952e5049f5ca4f9bfd1c7e20d2f37",
+   "ref": "Q18",
+   "questionNumber": "18",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Adjoint and Inverse of a Matrix",
+   "stem": "If \\(A = \\begin{bmatrix} 2 & 0 & 0 \\\\ 0 & 3 & 0 \\\\ 0 & 0 & 5 \\end{bmatrix}\\), then \\(A^{-1}\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\begin{bmatrix} \\dfrac{1}{2} & 0 & 0 \\\\ 0 & \\dfrac{1}{3} & 0 \\\\ 0 & 0 & \\dfrac{1}{5} \\end{bmatrix}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(30 \\begin{bmatrix} \\dfrac{1}{2} & 0 & 0 \\\\ 0 & \\dfrac{1}{3} & 0 \\\\ 0 & 0 & \\dfrac{1}{5} \\end{bmatrix}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{1}{30} \\begin{bmatrix} 2 & 0 & 0 \\\\ 0 & 3 & 0 \\\\ 0 & 0 & 5 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{1}{30} \\begin{bmatrix} \\dfrac{1}{2} & 0 & 0 \\\\ 0 & \\dfrac{1}{3} & 0 \\\\ 0 & 0 & \\dfrac{1}{5} \\end{bmatrix}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "\\(A\\) is diagonal with non-zero diagonal entries, and the inverse of such a matrix is simply the diagonal matrix of the reciprocals. So \\(A^{-1} = \\begin{bmatrix} \\frac{1}{2} & 0 & 0 \\\\ 0 & \\frac{1}{3} & 0 \\\\ 0 & 0 & \\frac{1}{5} \\end{bmatrix}\\). The check is immediate: multiplying two diagonal matrices multiplies the diagonal entries in pairs, giving \\(2 \\times \\frac{1}{2} = 1\\), \\(3 \\times \\frac{1}{3} = 1\\) and \\(5 \\times \\frac{1}{5} = 1\\), i.e. the identity matrix. The options carrying an extra factor \\(30\\) or \\(\\frac{1}{30}\\) fail that check, and the remaining option is \\(\\frac{1}{30}A\\), not \\(A^{-1}\\)."
+  },
+  {
+   "hash": "5bf2ed925ddd506135b8459877b4736658bc86bd2554d9dc976dea87a7e23b82",
+   "ref": "Q19",
+   "questionNumber": "19",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Order and Types of Matrices",
+   "stem": "Assertion (A) : Every scalar matrix is a diagonal matrix.\nReason (R) : In a diagonal matrix, all the diagonal elements are 0.",
+   "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false, but Reason (R) is true."
+    }
+   ],
+   "answer": "C",
+   "solution": "A scalar matrix is a diagonal matrix all of whose diagonal entries are equal, that is, a matrix of the form \\(kI\\). It is in particular a diagonal matrix, so the Assertion is true. The Reason claims that in a diagonal matrix all the diagonal elements are \\(0\\); that is false. A diagonal matrix is one whose off-diagonal entries are \\(0\\), while its diagonal entries are unrestricted — the identity matrix, for instance, is diagonal with every diagonal entry \\(1\\). (A matrix with all diagonal entries \\(0\\) as well would be the null matrix.) So the Assertion is true but the Reason is false."
+  },
+  {
+   "hash": "a4e19802cc22de9fe0f20266c76d09c75a8e4ca2401731963cf58911e5fe8f45",
+   "ref": "Q20",
+   "questionNumber": "20",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "Assertion (A) : Projection of \\(\\vec{a}\\) on \\(\\vec{b}\\) is same as projection of \\(\\vec{b}\\) on \\(\\vec{a}\\).\nReason (R) : Angle between \\(\\vec{a}\\) and \\(\\vec{b}\\) is same as angle between \\(\\vec{b}\\) and \\(\\vec{a}\\) numerically.",
+   "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false, but Reason (R) is true."
+    }
+   ],
+   "answer": "D",
+   "solution": "The projection of \\(\\vec{a}\\) on \\(\\vec{b}\\) is \\(\\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{b}|}\\), whereas the projection of \\(\\vec{b}\\) on \\(\\vec{a}\\) is \\(\\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}|}\\). The numerators agree but the denominators are different magnitudes, so the two projections are equal only in the special case \\(|\\vec{a}| = |\\vec{b}|\\) (or when the dot product happens to be zero). In general, therefore, the Assertion is false. The Reason is true: since \\(\\vec{a} \\cdot \\vec{b} = \\vec{b} \\cdot \\vec{a}\\), the angle between two vectors does not depend on the order in which they are named. Hence the Assertion is false but the Reason is true."
+  },
+  {
+   "hash": "1c547cbdd4c07ad9d90a9f83b485da011ac0ec4161c6e3c6c05f05ecac16f53e",
+   "ref": "Q21",
+   "questionNumber": "21",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Evaluating Inverse Trigonometric Expressions",
+   "stem": "Evaluate :\n\\(\\sec^2\\left(\\tan^{-1}\\dfrac{1}{2}\\right) + \\operatorname{cosec}^2\\left(\\cot^{-1}\\dfrac{1}{3}\\right)\\)",
+   "solution": "Use the identities \\(\\sec^2 \\theta = 1 + \\tan^2 \\theta\\) and \\(\\operatorname{cosec}^2 \\theta = 1 + \\cot^2 \\theta\\); each turns the outer function into one the inverse function undoes directly, so no triangle is needed.\nFirst term: \\(\\sec^2\\left(\\tan^{-1}\\frac{1}{2}\\right) = 1 + \\tan^2\\left(\\tan^{-1}\\frac{1}{2}\\right) = 1 + \\left(\\frac{1}{2}\\right)^2 = \\frac{5}{4}\\).\nSecond term: \\(\\operatorname{cosec}^2\\left(\\cot^{-1}\\frac{1}{3}\\right) = 1 + \\cot^2\\left(\\cot^{-1}\\frac{1}{3}\\right) = 1 + \\left(\\frac{1}{3}\\right)^2 = \\frac{10}{9}\\).\nAdding, the value is \\(\\frac{5}{4} + \\frac{10}{9} = \\frac{45 + 40}{36} = \\frac{85}{36}\\)."
+  },
+  {
+   "hash": "2aab7eb0a3ee774647b17b3540f31cde2c319354c139c017840411cedc9809c5",
+   "ref": "Q22a",
+   "questionNumber": "22 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "If \\(x = e^{x/y}\\), prove that \\(\\dfrac{dy}{dx} = \\dfrac{\\log x - 1}{(\\log x)^2}\\)",
+   "solution": "Take logarithms of \\(x = e^{x/y}\\) to unwind the exponential: \\(\\log x = \\frac{x}{y}\\), and hence \\(y = \\frac{x}{\\log x}\\). The relation is now explicit, so no implicit differentiation is needed. Differentiating by the quotient rule, \\(\\frac{dy}{dx} = \\frac{(\\log x)(1) - x\\left(\\frac{1}{x}\\right)}{(\\log x)^2} = \\frac{\\log x - 1}{(\\log x)^2}\\), which is what was to be proved."
+  },
+  {
+   "hash": "95cb6e884e119438bf4c24c9bcd59584a6d022eed2e25392508682512beefcc0",
+   "ref": "Q22b",
+   "questionNumber": "22 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "Check the differentiability of \\(f(x) = \\begin{cases} x^2 + 1, & 0 \\le x < 1 \\\\ 3 - x, & 1 \\le x \\le 2 \\end{cases}\\) at \\(x = 1\\).",
+   "solution": "At the join the value comes from the second branch, which is the one defined at \\(x = 1\\): \\(f(1) = 3 - 1 = 2\\).\nLeft-hand derivative: \\(\\lim_{h \\to 0} \\frac{f(1 - h) - f(1)}{-h} = \\lim_{h \\to 0} \\frac{\\left[(1 - h)^2 + 1\\right] - 2}{-h} = \\lim_{h \\to 0} \\frac{h^2 - 2h}{-h} = \\lim_{h \\to 0} (2 - h) = 2\\).\nRight-hand derivative: \\(\\lim_{h \\to 0} \\frac{f(1 + h) - f(1)}{h} = \\lim_{h \\to 0} \\frac{\\left[3 - (1 + h)\\right] - 2}{h} = \\lim_{h \\to 0} \\frac{-h}{h} = -1\\).\nSince \\(2 \\neq -1\\), the two one-sided derivatives are unequal, so \\(f\\) is not differentiable at \\(x = 1\\). It is, however, continuous there: both one-sided limits of \\(f\\) equal \\(2 = f(1)\\), so the graph has a corner rather than a break."
+  },
+  {
+   "hash": "b76a31f7ed3d50f10a72e0a6a08c843e4ae9754ef5d8e9476b72a57152e8e72d",
+   "ref": "Q23a",
+   "questionNumber": "23 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration using Trigonometric Identities",
+   "stem": "Evaluate :\n\\(\\int\\limits_{0}^{\\pi/2} \\sin 2x \\cos 3x\\, dx\\)",
+   "solution": "Turn the product into a sum, using \\(2\\sin A \\cos B = \\sin(A + B) + \\sin(A - B)\\): \\(\\sin 2x \\cos 3x = \\frac{1}{2}\\left[\\sin 5x + \\sin(-x)\\right] = \\frac{1}{2}(\\sin 5x - \\sin x)\\). Hence \\(I = \\frac{1}{2}\\int_{0}^{\\pi/2}(\\sin 5x - \\sin x)\\,dx = \\frac{1}{2}\\left[-\\frac{\\cos 5x}{5} + \\cos x\\right]_{0}^{\\pi/2}\\). At \\(x = \\frac{\\pi}{2}\\) both \\(\\cos \\frac{5\\pi}{2}\\) and \\(\\cos \\frac{\\pi}{2}\\) are \\(0\\), so the bracket is \\(0\\); at \\(x = 0\\) it is \\(-\\frac{1}{5} + 1 = \\frac{4}{5}\\). Therefore \\(I = \\frac{1}{2}\\left(0 - \\frac{4}{5}\\right) = -\\frac{2}{5}\\). A negative value is expected here: over \\(\\left(0, \\frac{\\pi}{2}\\right)\\) the factor \\(\\cos 3x\\) is negative on the larger part of the range."
+  },
+  {
+   "hash": "24eb3b768bb8bc026db0d80381364cd10b01b23773b842c5aa4a5347a86e096f",
+   "ref": "Q23b",
+   "questionNumber": "23 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integrals of Some Particular Functions",
+   "stem": "Given \\(\\dfrac{d}{dx} F(x) = \\dfrac{1}{\\sqrt{2x - x^2}}\\) and \\(F(1) = 0\\), find \\(F(x)\\).",
+   "solution": "\\(F\\) is the antiderivative of the given expression, so integrate and then fix the constant. Complete the square under the radical: \\(2x - x^2 = 1 - \\left(x^2 - 2x + 1\\right) = 1 - (x - 1)^2\\). Hence \\(F(x) = \\int \\frac{dx}{\\sqrt{1 - (x - 1)^2}} = \\sin^{-1}(x - 1) + c\\), using \\(\\int \\frac{dt}{\\sqrt{1 - t^2}} = \\sin^{-1} t\\) with \\(t = x - 1\\). The condition \\(F(1) = 0\\) gives \\(\\sin^{-1}(0) + c = 0\\), so \\(c = 0\\). Therefore \\(F(x) = \\sin^{-1}(x - 1)\\)."
+  },
+  {
+   "hash": "0a1044a5b0ca439342cd87979f268fa8b0d73b8846a4cb0ad259b90711d13739",
+   "ref": "Q24",
+   "questionNumber": "24",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Section Formula",
+   "stem": "Find the position vector of point C which divides the line segment joining points A and B having position vectors \\(\\hat{i} + 2\\hat{j} - \\hat{k}\\) and \\(-\\hat{i} + \\hat{j} + \\hat{k}\\) respectively in the ratio 4 : 1 externally. Further, find \\(|\\overrightarrow{AB}| : |\\overrightarrow{BC}|\\).",
+   "solution": "Write \\(\\vec{a} = \\hat{i} + 2\\hat{j} - \\hat{k}\\) and \\(\\vec{b} = -\\hat{i} + \\hat{j} + \\hat{k}\\) for the position vectors of A and B. For division of AB in the ratio \\(m : n = 4 : 1\\) externally, the position vector of C is \\(\\frac{m\\vec{b} - n\\vec{a}}{m - n} = \\frac{4\\vec{b} - \\vec{a}}{3}\\). Now \\(4\\vec{b} - \\vec{a} = \\left(-4\\hat{i} + 4\\hat{j} + 4\\hat{k}\\right) - \\left(\\hat{i} + 2\\hat{j} - \\hat{k}\\right) = -5\\hat{i} + 2\\hat{j} + 5\\hat{k}\\), so C has position vector \\(\\frac{1}{3}\\left(-5\\hat{i} + 2\\hat{j} + 5\\hat{k}\\right)\\).\nFor the ratio of lengths, \\(\\overrightarrow{AB} = \\vec{b} - \\vec{a} = -2\\hat{i} - \\hat{j} + 2\\hat{k}\\), so \\(|\\overrightarrow{AB}| = \\sqrt{4 + 1 + 4} = 3\\). Also \\(\\overrightarrow{BC} = \\frac{1}{3}\\left(-5\\hat{i} + 2\\hat{j} + 5\\hat{k}\\right) - \\left(-\\hat{i} + \\hat{j} + \\hat{k}\\right) = -\\frac{1}{3}\\left(2\\hat{i} + \\hat{j} - 2\\hat{k}\\right)\\), so \\(|\\overrightarrow{BC}| = \\frac{1}{3}\\sqrt{4 + 1 + 4} = 1\\). Hence \\(|\\overrightarrow{AB}| : |\\overrightarrow{BC}| = 3 : 1\\)."
+  },
+  {
+   "hash": "07687649d28058085c082575af784ed019859a0f2eaaca1c18d273c6de1c957b",
+   "ref": "Q25",
+   "questionNumber": "25",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "Let \\(\\vec{a}\\) and \\(\\vec{b}\\) be two non-zero vectors.\nProve that \\(|\\vec{a} \\times \\vec{b}| \\le |\\vec{a}||\\vec{b}|\\).\nState the condition under which equality holds, i.e., \\(|\\vec{a} \\times \\vec{b}| = |\\vec{a}||\\vec{b}|\\).",
+   "solution": "Let \\(\\theta\\) be the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\), so that \\(0 \\le \\theta \\le \\pi\\) and, by the definition of the cross product, \\(|\\vec{a} \\times \\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\theta\\). On \\([0, \\pi]\\) the sine is non-negative and at most \\(1\\), so \\(0 \\le \\sin\\theta \\le 1\\). The vectors are non-zero, so \\(|\\vec{a}||\\vec{b}| > 0\\), and multiplying the inequality \\(\\sin\\theta \\le 1\\) by this positive number preserves it: \\(|\\vec{a}||\\vec{b}|\\sin\\theta \\le |\\vec{a}||\\vec{b}|\\), that is \\(|\\vec{a} \\times \\vec{b}| \\le |\\vec{a}||\\vec{b}|\\).\nEquality holds precisely when \\(\\sin\\theta = 1\\), i.e. when \\(\\theta = \\frac{\\pi}{2}\\). So \\(|\\vec{a} \\times \\vec{b}| = |\\vec{a}||\\vec{b}|\\) exactly when \\(\\vec{a}\\) and \\(\\vec{b}\\) are perpendicular to each other."
+  },
+  {
+   "hash": "5281a398e56cc51a1082620344daaebe66795043cf7442c1b950d4cef5bd7bdf",
+   "ref": "Q26a",
+   "questionNumber": "26 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "If \\(x \\cos (p + y) + \\cos p \\sin (p + y) = 0\\), prove that \\(\\cos p \\dfrac{dy}{dx} = -\\cos^2 (p + y)\\), where p is a constant.",
+   "solution": "Rather than differentiate implicitly, make \\(x\\) the subject. From \\(x \\cos(p + y) + \\cos p \\sin(p + y) = 0\\), \\(x = -\\frac{\\cos p \\sin(p + y)}{\\cos(p + y)} = -\\cos p \\tan(p + y)\\). Since \\(p\\) is a constant, \\(\\cos p\\) is a constant multiplier, so differentiating with respect to \\(y\\) gives \\(\\frac{dx}{dy} = -\\cos p \\sec^2(p + y)\\). Inverting, \\(\\frac{dy}{dx} = \\frac{-1}{\\cos p \\sec^2(p + y)} = \\frac{-\\cos^2(p + y)}{\\cos p}\\), because \\(\\frac{1}{\\sec^2(p + y)} = \\cos^2(p + y)\\). Multiplying both sides by \\(\\cos p\\) gives \\(\\cos p \\frac{dy}{dx} = -\\cos^2(p + y)\\), as required."
+  },
+  {
+   "hash": "cf69b605005416195544eb962032405fdd4a94cf9761ef13e2d669b326dd6825",
+   "ref": "Q26b",
+   "questionNumber": "26 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Continuity",
+   "stem": "Find the value of a and b so that function f defined as :\n\\(f(x) = \\begin{cases} \\dfrac{x - 2}{|x - 2|} + a, & \\text{if } x < 2 \\\\ a + b, & \\text{if } x = 2 \\\\ \\dfrac{x - 2}{|x - 2|} + b, & \\text{if } x > 2 \\end{cases}\\)\nis a continuous function.",
+   "solution": "Simplify each branch first, since \\(\\frac{x - 2}{|x - 2|}\\) is just a sign.\nFor \\(x < 2\\), \\(|x - 2| = -(x - 2)\\), so the quotient is \\(-1\\) and \\(f(x) = -1 + a\\). For \\(x > 2\\), \\(|x - 2| = x - 2\\), so the quotient is \\(1\\) and \\(f(x) = 1 + b\\). At the point itself, \\(f(2) = a + b\\). Each outer branch is constant, so \\(\\lim_{x \\to 2^-} f(x) = -1 + a\\) and \\(\\lim_{x \\to 2^+} f(x) = 1 + b\\).\nContinuity at \\(x = 2\\) requires the two one-sided limits and the value to agree: \\(-1 + a = 1 + b = a + b\\). From \\(-1 + a = a + b\\) we get \\(b = -1\\), and from \\(1 + b = a + b\\) we get \\(a = 1\\); these are consistent with the remaining equation \\(-1 + a = 1 + b\\), both sides being \\(0\\).\nHence \\(a = 1\\) and \\(b = -1\\). With these values \\(f\\) is identically \\(0\\) on both sides of \\(x = 2\\) and \\(f(2) = 0\\); away from \\(x = 2\\) the function is continuous whatever \\(a\\) and \\(b\\) are, so \\(f\\) is then continuous everywhere."
+  },
+  {
+   "hash": "f6800768e8a4504367c5f92d4e1190c12b7e4092b0bf4d020d9caa24532a27c2",
+   "ref": "Q27a",
+   "questionNumber": "27 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "Find the intervals in which the function \\(f(x) = \\dfrac{\\log x}{x}\\) is strictly increasing or strictly decreasing.",
+   "solution": "The function \\(f(x) = \\frac{\\log x}{x}\\) is defined only for \\(x > 0\\), so that is the domain in which the intervals must lie. By the quotient rule, \\(f'(x) = \\frac{x \\cdot \\frac{1}{x} - (\\log x)(1)}{x^2} = \\frac{1 - \\log x}{x^2}\\).\nSince \\(x^2 > 0\\) throughout the domain, the sign of \\(f'\\) is the sign of \\(1 - \\log x\\). Setting \\(f'(x) = 0\\) gives \\(\\log x = 1\\), i.e. \\(x = e\\), which splits the domain into two parts. For \\(0 < x < e\\) we have \\(\\log x < 1\\), so \\(f'(x) > 0\\); for \\(x > e\\) we have \\(\\log x > 1\\), so \\(f'(x) < 0\\).\nHence \\(f\\) is strictly increasing on \\((0, e)\\) and strictly decreasing on \\((e, \\infty)\\), with a maximum value \\(f(e) = \\frac{1}{e}\\) at the changeover."
+  },
+  {
+   "hash": "c43a9107a6c69df5c0ae391066f57cf88792eff637f0862f2c66c341a9a3f126",
+   "ref": "Q27b",
+   "questionNumber": "27 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Absolute Maximum and Minimum on a Closed Interval",
+   "stem": "Find the absolute maximum and absolute minimum values of the function f given by \\(f(x) = \\dfrac{x}{2} + \\dfrac{2}{x}\\), on the interval \\([1, 2]\\).",
+   "solution": "\\(f(x) = \\frac{x}{2} + \\frac{2}{x}\\) is continuous on the closed interval \\([1, 2]\\), so its absolute extrema occur either at a critical point of the interval or at an endpoint; it is enough to list the candidates and compare values.\nHere \\(f'(x) = \\frac{1}{2} - \\frac{2}{x^2}\\), and \\(f'(x) = 0\\) gives \\(x^2 = 4\\), so \\(x = 2\\); the other root \\(x = -2\\) lies outside \\([1, 2]\\). The candidate points are therefore \\(x = 1\\) and \\(x = 2\\), the second being both a critical point and an endpoint.\nEvaluating, \\(f(1) = \\frac{1}{2} + 2 = \\frac{5}{2}\\) and \\(f(2) = 1 + 1 = 2\\).\nComparing the two, the absolute maximum value is \\(\\frac{5}{2}\\), attained at \\(x = 1\\), and the absolute minimum value is \\(2\\), attained at \\(x = 2\\)."
+  },
+  {
+   "hash": "74796241ead4209fbf115a6f1a05b8049af05872d201102acfeaa511f9a73fd9",
+   "ref": "Q28",
+   "questionNumber": "28",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Partial Fractions",
+   "stem": "Find :\n\\(\\int \\dfrac{x^2 + 1}{(x^2 + 2)(x^2 + 4)}\\, dx\\)",
+   "solution": "The integrand contains only even powers of \\(x\\), so put \\(y = x^2\\) in the algebra and split the fraction: \\(\\frac{y + 1}{(y + 2)(y + 4)} = \\frac{A}{y + 2} + \\frac{B}{y + 4}\\), which gives \\(y + 1 = A(y + 4) + B(y + 2)\\). Putting \\(y = -2\\) gives \\(-1 = 2A\\), so \\(A = -\\frac{1}{2}\\); putting \\(y = -4\\) gives \\(-3 = -2B\\), so \\(B = \\frac{3}{2}\\).\nRestoring \\(y = x^2\\), \\(I = -\\frac{1}{2}\\int \\frac{dx}{x^2 + 2} + \\frac{3}{2}\\int \\frac{dx}{x^2 + 4}\\). Using \\(\\int \\frac{dx}{x^2 + a^2} = \\frac{1}{a}\\tan^{-1}\\frac{x}{a}\\), with \\(a = \\sqrt{2}\\) in the first integral and \\(a = 2\\) in the second, \\(I = -\\frac{1}{2} \\cdot \\frac{1}{\\sqrt{2}}\\tan^{-1}\\left(\\frac{x}{\\sqrt{2}}\\right) + \\frac{3}{2} \\cdot \\frac{1}{2}\\tan^{-1}\\left(\\frac{x}{2}\\right) + c\\), that is \\(I = -\\frac{1}{2\\sqrt{2}}\\tan^{-1}\\left(\\frac{x}{\\sqrt{2}}\\right) + \\frac{3}{4}\\tan^{-1}\\left(\\frac{x}{2}\\right) + c\\).\nAs a check, differentiating gives \\(-\\frac{1}{2(x^2 + 2)} + \\frac{3}{2(x^2 + 4)} = \\frac{-(x^2 + 4) + 3(x^2 + 2)}{2(x^2 + 2)(x^2 + 4)} = \\frac{2x^2 + 2}{2(x^2 + 2)(x^2 + 4)} = \\frac{x^2 + 1}{(x^2 + 2)(x^2 + 4)}\\), the original integrand."
+  },
+  {
+   "hash": "6311a7c2f388281663fa5a220c29a308c5e8b67cc93d68e446b1edf50526a477",
+   "ref": "Q29a",
+   "questionNumber": "29 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Parts",
+   "stem": "Find :\n\\(\\int \\dfrac{2 + \\sin 2x}{1 + \\cos 2x}\\, e^x\\, dx\\)",
+   "solution": "Rewrite the fraction with the double-angle formulas \\(\\sin 2x = 2\\sin x \\cos x\\) and \\(1 + \\cos 2x = 2\\cos^2 x\\): \\(\\frac{2 + \\sin 2x}{1 + \\cos 2x} = \\frac{2 + 2\\sin x \\cos x}{2\\cos^2 x} = \\frac{1}{\\cos^2 x} + \\frac{\\sin x}{\\cos x} = \\sec^2 x + \\tan x\\).\nSo \\(I = \\int e^x\\left(\\tan x + \\sec^2 x\\right)dx\\), which is exactly the standard form \\(\\int e^x\\left[f(x) + f'(x)\\right]dx = e^x f(x) + c\\) with \\(f(x) = \\tan x\\) and \\(f'(x) = \\sec^2 x\\).\nHence \\(I = e^x \\tan x + c\\)."
+  },
+  {
+   "hash": "f8ed3fe6dc427dd53cc2eb2540db70d0897f258f9e7133727225c261982d82aa",
+   "ref": "Q29b",
+   "questionNumber": "29 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration using Trigonometric Identities",
+   "stem": "Evaluate :\n\\(\\int\\limits_{0}^{\\pi/4} \\dfrac{1}{\\sin x + \\cos x}\\, dx\\)",
+   "solution": "Write the denominator as a single sine. Since \\(\\cos\\frac{\\pi}{4} = \\sin\\frac{\\pi}{4} = \\frac{1}{\\sqrt{2}}\\), \\(\\sin x + \\cos x = \\sqrt{2}\\left(\\sin x \\cos\\frac{\\pi}{4} + \\cos x \\sin\\frac{\\pi}{4}\\right) = \\sqrt{2}\\sin\\left(x + \\frac{\\pi}{4}\\right)\\).\nHence \\(I = \\frac{1}{\\sqrt{2}}\\int_{0}^{\\pi/4}\\operatorname{cosec}\\left(x + \\frac{\\pi}{4}\\right)dx = \\frac{1}{\\sqrt{2}}\\left[\\log\\left|\\operatorname{cosec}\\left(x + \\frac{\\pi}{4}\\right) - \\cot\\left(x + \\frac{\\pi}{4}\\right)\\right|\\right]_{0}^{\\pi/4}\\).\nAt the upper limit the argument is \\(\\frac{\\pi}{2}\\), where the cosecant is \\(1\\) and the cotangent is \\(0\\), so the term is \\(\\log 1 = 0\\). At the lower limit the argument is \\(\\frac{\\pi}{4}\\), where the cosecant is \\(\\sqrt{2}\\) and the cotangent is \\(1\\), so the term is \\(\\log\\left(\\sqrt{2} - 1\\right)\\).\nTherefore \\(I = -\\frac{1}{\\sqrt{2}}\\log\\left(\\sqrt{2} - 1\\right)\\). Rationalising inside the logarithm, \\(\\frac{1}{\\sqrt{2} - 1} = \\sqrt{2} + 1\\), so this is the same number written the other way: \\(I = \\frac{1}{\\sqrt{2}}\\log\\left(\\sqrt{2} + 1\\right) \\approx 0{\\cdot}623\\)."
+  },
+  {
+   "hash": "20b0441c61ce0e8e80951e4e5d86b088345969fb33e75c869809400d5a6d901a",
+   "ref": "Q30",
+   "questionNumber": "30",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following linear programming problem graphically :\nMaximise \\(z = 4x + 3y\\),\nsubject to the constraints\n\\(x + y \\le 800\\)\n\\(2x + y \\le 1000\\)\n\\(x \\le 400\\)\n\\(x, y \\ge 0\\).",
+   "solution": "Draw the lines \\(x + y = 800\\), \\(2x + y = 1000\\) and \\(x = 400\\), and shade the part of the first quadrant satisfying every inequality. The region is a bounded five-sided polygon.\nIts corner points are: \\(O(0, 0)\\); \\(A(400, 0)\\), where \\(x = 400\\) meets the x-axis; \\(B(400, 200)\\), where \\(x = 400\\) meets \\(2x + y = 1000\\); \\(C(200, 600)\\), where \\(x + y = 800\\) meets \\(2x + y = 1000\\) (subtracting the first equation from the second gives \\(x = 200\\), hence \\(y = 600\\)); and \\(D(0, 800)\\), where \\(x + y = 800\\) meets the y-axis.\nEvaluate \\(z = 4x + 3y\\) at each corner: \\(z(O) = 0\\), \\(z(A) = 1600 + 0 = 1600\\), \\(z(B) = 1600 + 600 = 2200\\), \\(z(C) = 800 + 1800 = 2600\\), \\(z(D) = 0 + 2400 = 2400\\).\nThe feasible region is bounded, so the corner-point method is conclusive and the largest of these values is the maximum. Hence \\(z\\) is maximum at \\(x = 200\\), \\(y = 600\\), the maximum value being \\(2600\\)."
+  },
+  {
+   "hash": "9c511dfe2fb0a9bf9a992a63149c4d9a9feb923e89bf21b503a1849606df9e5d",
+   "ref": "Q31",
+   "questionNumber": "31",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Bayes' Theorem",
+   "stem": "The chances of P, Q and R getting selected as CEO of a company are in the ratio 4 : 1 : 2 respectively. The probabilities for the company to increase its profits from the previous year under the new CEO, P, Q or R are \\(0{\\cdot}3\\), \\(0{\\cdot}8\\) and \\(0{\\cdot}5\\) respectively. If the company increased the profits from the previous year, find the probability that it is due to the appointment of R as CEO.",
+   "solution": "[CBSE marking scheme: its value-point line reads \\(P(E_1) = \\frac{4}{7}\\), \\(P(E_3) = \\frac{1}{7}\\), \\(P(E_1) = \\frac{2}{7}\\) — it names \\(P(E_1)\\) twice with two different values and never gives \\(P(E_2)\\) at all. The intended labelling, which the scheme's own Bayes computation on the very next line then uses, is \\(P(E_1) = \\frac{4}{7}\\), \\(P(E_2) = \\frac{1}{7}\\), \\(P(E_3) = \\frac{2}{7}\\). The method and the final answer \\(\\frac{1}{3}\\) are unaffected.]\nLet \\(E_1\\), \\(E_2\\) and \\(E_3\\) be the events that P, Q and R respectively is appointed CEO, and let A be the event that the company increases its profits over the previous year. The chances of appointment are in the ratio \\(4 : 1 : 2\\), and \\(4 + 1 + 2 = 7\\), so \\(P(E_1) = \\frac{4}{7}\\), \\(P(E_2) = \\frac{1}{7}\\) and \\(P(E_3) = \\frac{2}{7}\\), while the given conditional probabilities are \\(P(A\\,|\\,E_1) = 0{\\cdot}3\\), \\(P(A\\,|\\,E_2) = 0{\\cdot}8\\) and \\(P(A\\,|\\,E_3) = 0{\\cdot}5\\).\nThe question asks for \\(P(E_3\\,|\\,A)\\), so use Bayes' theorem: \\(P(E_3\\,|\\,A) = \\frac{P(E_3)P(A\\,|\\,E_3)}{P(E_1)P(A\\,|\\,E_1) + P(E_2)P(A\\,|\\,E_2) + P(E_3)P(A\\,|\\,E_3)}\\).\nThe numerator is \\(\\frac{2}{7} \\times 0{\\cdot}5 = \\frac{1}{7}\\). The denominator is \\(\\frac{1}{7}\\left(4 \\times 0{\\cdot}3 + 1 \\times 0{\\cdot}8 + 2 \\times 0{\\cdot}5\\right) = \\frac{1}{7}\\left(1{\\cdot}2 + 0{\\cdot}8 + 1\\right) = \\frac{3}{7}\\).\nHence \\(P(E_3\\,|\\,A) = \\frac{1/7}{3/7} = \\frac{1}{3}\\)."
+  },
+  {
+   "hash": "944c6b63d3e09fe6c6174f87f597913320a08cbdf040790e9852f7ec416cddfc",
+   "ref": "Q32",
+   "questionNumber": "32",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Equivalence Relations and Classes",
+   "stem": "A relation R on set \\(A = \\{-4, -3, -2, -1, 0, 1, 2, 3, 4\\}\\) be defined as \\(R = \\{(x, y) : x + y\\) is an integer divisible by \\(2\\}\\). Show that R is an equivalence relation. Also, write the equivalence class \\([2]\\).",
+   "solution": "Every element of \\(A\\) is an integer, so \\(x + y\\) is automatically an integer and the condition reduces to: \\(x + y\\) is divisible by \\(2\\). Equivalently, \\(x\\) and \\(y\\) have the same parity.\nReflexive: for every \\(x \\in A\\), \\(x + x = 2x\\) is divisible by \\(2\\), so \\((x, x) \\in R\\). Hence \\(R\\) is reflexive.\nSymmetric: let \\((x, y) \\in R\\), so \\(x + y\\) is divisible by \\(2\\). Addition is commutative, so \\(y + x\\) is the same number and is divisible by \\(2\\) as well, giving \\((y, x) \\in R\\). Hence \\(R\\) is symmetric.\nTransitive: let \\((x, y) \\in R\\) and \\((y, z) \\in R\\), so \\(x + y\\) and \\(y + z\\) are both divisible by \\(2\\). Then so is their sum, \\((x + y) + (y + z) = (x + z) + 2y\\). Since \\(2y\\) is divisible by \\(2\\), subtracting it leaves \\(x + z\\) divisible by \\(2\\), so \\((x, z) \\in R\\). Hence \\(R\\) is transitive.\nBeing reflexive, symmetric and transitive, \\(R\\) is an equivalence relation on \\(A\\).\nThe equivalence class \\([2]\\) consists of those \\(y \\in A\\) for which \\(2 + y\\) is divisible by \\(2\\), that is, those \\(y\\) that are even. Hence \\([2] = \\{-4, -2, 0, 2, 4\\}\\)."
+  },
+  {
+   "hash": "58b48bdf006bd40ec129e2fc43dcde1d40b43456e7823c8c15ef2743ac61d126",
+   "ref": "Q33a",
+   "questionNumber": "33 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "It is given that function \\(f(x) = x^4 - 62x^2 + ax + 9\\) attains local maximum value at \\(x = 1\\). Find the value of 'a', hence obtain all other points where the given function \\(f(x)\\) attains local maximum or local minimum values.",
+   "solution": "A local maximum at \\(x = 1\\) means \\(x = 1\\) is a stationary point, and that is what fixes \\(a\\).\nFrom \\(f(x) = x^4 - 62x^2 + ax + 9\\), \\(f'(x) = 4x^3 - 124x + a\\). Setting \\(f'(1) = 0\\) gives \\(4 - 124 + a = 0\\), so \\(a = 120\\).\nWith that value, \\(f'(x) = 4x^3 - 124x + 120 = 4\\left(x^3 - 31x + 30\\right)\\). Since \\(x = 1\\) is a root, divide it out: \\(x^3 - 31x + 30 = (x - 1)\\left(x^2 + x - 30\\right) = (x - 1)(x - 5)(x + 6)\\). So \\(f'(x) = 4(x - 1)(x - 5)(x + 6)\\), and the critical points are \\(x = -6\\), \\(x = 1\\) and \\(x = 5\\).\nApply the second derivative test with \\(f''(x) = 12x^2 - 124\\): \\(f''(-6) = 432 - 124 = 308 > 0\\), \\(f''(1) = 12 - 124 = -112 < 0\\), and \\(f''(5) = 300 - 124 = 176 > 0\\).\nHence \\(a = 120\\); \\(f\\) attains a local maximum at \\(x = 1\\), which confirms the information given, and local minimum values at \\(x = -6\\) and \\(x = 5\\)."
+  },
+  {
+   "hash": "e7c5fd07ddf4846b14e5e0af11b5d1c7c242cdf36ae1f65f994c8b3569358f55",
+   "ref": "Q33b",
+   "questionNumber": "33 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "The perimeter of a rectangular metallic sheet is 300 cm. It is rolled along one of its sides to form a cylinder. Find the dimensions of the rectangular sheet so that volume of cylinder so formed is maximum.",
+   "solution": "Let the side along which the sheet is rolled have length \\(x\\) cm. The perimeter is \\(300\\) cm, so the sum of two adjacent sides is \\(150\\) cm and the other side is \\((150 - x)\\) cm, with \\(0 < x < 150\\).\nRolling along the side of length \\(x\\) makes that side the circumference of the circular base, and the other side becomes the height. So \\(2\\pi r = x\\), giving \\(r = \\frac{x}{2\\pi}\\), and \\(h = 150 - x\\). The volume is therefore \\(V = \\pi r^2 h = \\pi \\cdot \\frac{x^2}{4\\pi^2}(150 - x) = \\frac{150x^2 - x^3}{4\\pi}\\), a function of the single variable \\(x\\).\nDifferentiating, \\(\\frac{dV}{dx} = \\frac{300x - 3x^2}{4\\pi} = \\frac{3x(100 - x)}{4\\pi}\\), which vanishes in \\((0, 150)\\) only at \\(x = 100\\). Also \\(\\frac{d^2V}{dx^2} = \\frac{300 - 6x}{4\\pi}\\), and at \\(x = 100\\) this equals \\(\\frac{300 - 600}{4\\pi} = -\\frac{75}{\\pi} < 0\\), so the volume is a maximum there.\nHence the rectangular sheet should measure \\(100\\) cm by \\(50\\) cm, the \\(100\\) cm side being the one that is rolled. (The cylinder then has \\(r = \\frac{50}{\\pi}\\) cm and \\(h = 50\\) cm.)"
+  },
+  {
+   "hash": "40005d71cb2d798bffe5ccfde9e3e47dddf752a79665e4d4e24a31c022b240a5",
+   "ref": "Q34",
+   "questionNumber": "34",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "Using integration, find the area of the region enclosed between the circle \\(x^2 + y^2 = 16\\) and the lines \\(x = -2\\) and \\(x = 2\\).",
+   "solution": "The circle \\(x^2 + y^2 = 16\\) is centred at the origin with radius \\(4\\), and \\(x = -2\\) and \\(x = 2\\) are two vertical chords, one on each side of the y-axis (both lie inside the circle, since \\(2 < 4\\)). The strip they cut off is symmetric about both axes, so its area is four times the part lying in the first quadrant, where \\(y = \\sqrt{16 - x^2}\\) and \\(x\\) runs from \\(0\\) to \\(2\\).\nHence the required area is \\(4\\int_{0}^{2}\\sqrt{16 - x^2}\\,dx\\). Using the standard result \\(\\int \\sqrt{a^2 - x^2}\\,dx = \\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a}\\) with \\(a = 4\\), this is \\(4\\left[\\frac{x}{2}\\sqrt{16 - x^2} + 8\\sin^{-1}\\frac{x}{4}\\right]_{0}^{2}\\).\nAt \\(x = 2\\) the bracket equals \\(1 \\times \\sqrt{12} + 8\\sin^{-1}\\frac{1}{2} = 2\\sqrt{3} + 8 \\times \\frac{\\pi}{6} = 2\\sqrt{3} + \\frac{4\\pi}{3}\\), and at \\(x = 0\\) it equals \\(0\\).\nTherefore the area is \\(4\\left(2\\sqrt{3} + \\frac{4\\pi}{3}\\right) = 8\\sqrt{3} + \\frac{16\\pi}{3}\\) square units, which is about \\(30{\\cdot}6\\) square units — a plausible fraction of the whole disc, whose area is \\(16\\pi \\approx 50{\\cdot}3\\)."
+  },
+  {
+   "hash": "9eb967280dbccfa41c30636b45d1e6e787f559665e316c075856ab78a87c0e30",
+   "ref": "Q35a",
+   "questionNumber": "35 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the equation of the line passing through the point of intersection of the lines \\(\\dfrac{x}{1} = \\dfrac{y - 1}{2} = \\dfrac{z - 2}{3}\\) and \\(\\dfrac{x - 1}{0} = \\dfrac{y}{-3} = \\dfrac{z - 7}{2}\\) and perpendicular to these given lines.",
+   "solution": "First find the point of intersection. Put \\(\\frac{x}{1} = \\frac{y - 1}{2} = \\frac{z - 2}{3} = \\lambda\\), so a general point of the first line is \\((\\lambda,\\ 2\\lambda + 1,\\ 3\\lambda + 2)\\); put \\(\\frac{x - 1}{0} = \\frac{y}{-3} = \\frac{z - 7}{2} = \\mu\\), so a general point of the second line is \\((1,\\ -3\\mu,\\ 2\\mu + 7)\\).\nEquating the coordinates: the first gives \\(\\lambda = 1\\); the second, \\(2\\lambda + 1 = -3\\mu\\), then gives \\(3 = -3\\mu\\), so \\(\\mu = -1\\). The third must be checked rather than assumed, and it holds: \\(3(1) + 2 = 5\\) and \\(2(-1) + 7 = 5\\). So the lines do meet, at the point \\((1, 3, 5)\\).\nNow let the required line have direction ratios \\(a\\), \\(b\\), \\(c\\). Being perpendicular to both given lines, it satisfies \\(a + 2b + 3c = 0\\) and \\(0a - 3b + 2c = 0\\). Solving these two together — equivalently, taking the cross product of the direction ratios \\(1, 2, 3\\) and \\(0, -3, 2\\) — gives \\(\\frac{a}{(2)(2) - (3)(-3)} = \\frac{b}{(3)(0) - (1)(2)} = \\frac{c}{(1)(-3) - (2)(0)}\\), that is \\(\\frac{a}{13} = \\frac{b}{-2} = \\frac{c}{-3}\\). (Check: \\(13 + 2(-2) + 3(-3) = 13 - 4 - 9 = 0\\) and \\(-3(-2) + 2(-3) = 6 - 6 = 0\\), so this direction really is perpendicular to both.)\nHence the required line, through \\((1, 3, 5)\\) with those direction ratios, is \\(\\frac{x - 1}{13} = \\frac{y - 3}{-2} = \\frac{z - 5}{-3}\\)."
+  },
+  {
+   "hash": "7bcea5d361c959ccab850d4b7c738852a7060302170b24c275fa65f9eaa9381e",
+   "ref": "Q35b",
+   "questionNumber": "35 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Shortest Distance Between Two Lines",
+   "stem": "Two vertices of the parallelogram ABCD are given as \\(A(-1, 2, 1)\\) and \\(B(1, -2, 5)\\). If the equation of the line passing through C and D is \\(\\dfrac{x - 4}{1} = \\dfrac{y + 7}{-2} = \\dfrac{z - 8}{2}\\), then find the distance between sides AB and CD. Hence, find the area of parallelogram ABCD.",
+   "solution": "In a parallelogram ABCD the side AB is parallel to the side DC, so AB lies on a line with the same direction ratios as the given line through C and D, namely \\(1, -2, 2\\). This is confirmed directly from the two given vertices: \\(\\overrightarrow{AB} = 2\\hat{i} - 4\\hat{j} + 4\\hat{k} = 2\\left(\\hat{i} - 2\\hat{j} + 2\\hat{k}\\right)\\). So AB is the line \\(\\frac{x + 1}{1} = \\frac{y - 2}{-2} = \\frac{z - 1}{2}\\), CD is \\(\\frac{x - 4}{1} = \\frac{y + 7}{-2} = \\frac{z - 8}{2}\\), and the distance between the sides is the distance between these two parallel lines.\nTake \\(\\vec{a}_1 = -\\hat{i} + 2\\hat{j} + \\hat{k}\\) (the point A), \\(\\vec{a}_2 = 4\\hat{i} - 7\\hat{j} + 8\\hat{k}\\) (a point on CD), and the common direction \\(\\vec{b} = \\hat{i} - 2\\hat{j} + 2\\hat{k}\\). Then \\(\\vec{a}_2 - \\vec{a}_1 = 5\\hat{i} - 9\\hat{j} + 7\\hat{k}\\), and \\(\\left(\\vec{a}_2 - \\vec{a}_1\\right) \\times \\vec{b} = \\left[(-9)(2) - (7)(-2)\\right]\\hat{i} - \\left[(5)(2) - (7)(1)\\right]\\hat{j} + \\left[(5)(-2) - (-9)(1)\\right]\\hat{k} = -4\\hat{i} - 3\\hat{j} - \\hat{k}\\).\nThe distance between two parallel lines is \\(d = \\frac{\\left|\\left(\\vec{a}_2 - \\vec{a}_1\\right) \\times \\vec{b}\\right|}{\\left|\\vec{b}\\right|} = \\frac{\\sqrt{16 + 9 + 1}}{\\sqrt{1 + 4 + 4}} = \\frac{\\sqrt{26}}{3}\\).\nFor the area, take AB as the base. Since CD equals AB in a parallelogram, the base is \\(\\left|\\overrightarrow{AB}\\right| = \\sqrt{2^2 + (-4)^2 + 4^2} = \\sqrt{36} = 6\\), and the height is the distance just found. Hence the area of parallelogram ABCD is \\(6 \\times \\frac{\\sqrt{26}}{3} = 2\\sqrt{26}\\) square units."
+  },
+  {
+   "hash": "d6f3aed6dcaf487d1991d09b276a30999f934e4e4cc1799330178c39f5a6f20f",
+   "ref": "Q36i",
+   "questionNumber": "36 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "Express the probability distribution given above in the form of a probability distribution table.",
+   "context": "Self-study helps students to build confidence in learning. It boosts the self-esteem of the learners. Recent surveys suggested that close to 50% learners were self-taught using internet resources and upskilled themselves.\n\nA student may spend 1 hour to 6 hours in a day in upskilling self. The probability distribution of the number of hours spent by a student is given below :\n\n\\(P(X = x) = \\begin{cases} kx^2, & \\text{for } x = 1, 2, 3 \\\\ 2kx, & \\text{for } x = 4, 5, 6 \\\\ 0, & \\text{otherwise} \\end{cases}\\)\n\nwhere x denotes the number of hours.\n\nBased on the above information, answer the following questions :",
+   "figure": "DECORATIVE — two captioned clip-art illustrations of a student studying (page idx 18). Every number the sub-parts need is in the passage text.",
+   "solution": "Substitute the six admissible values of \\(x\\) into the given rule. For \\(x = 1, 2, 3\\) the probability is \\(kx^2\\), giving \\(k\\), \\(4k\\) and \\(9k\\); for \\(x = 4, 5, 6\\) it is \\(2kx\\), giving \\(8k\\), \\(10k\\) and \\(12k\\). Every other value has probability \\(0\\) and need not be listed. The probability distribution table is therefore\n\n| \\(X\\) | 1 | 2 | 3 | 4 | 5 | 6 |\n|---|---|---|---|---|---|---|\n| \\(P(X)\\) | \\(k\\) | \\(4k\\) | \\(9k\\) | \\(8k\\) | \\(10k\\) | \\(12k\\) |"
+  },
+  {
+   "hash": "c9c5bcb17deb2386af2fb18a30fa910d77ea006506db5154f47bcb7143336bc6",
+   "ref": "Q36ii",
+   "questionNumber": "36 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "Find the value of k.",
+   "context": "Self-study helps students to build confidence in learning. It boosts the self-esteem of the learners. Recent surveys suggested that close to 50% learners were self-taught using internet resources and upskilled themselves.\n\nA student may spend 1 hour to 6 hours in a day in upskilling self. The probability distribution of the number of hours spent by a student is given below :\n\n\\(P(X = x) = \\begin{cases} kx^2, & \\text{for } x = 1, 2, 3 \\\\ 2kx, & \\text{for } x = 4, 5, 6 \\\\ 0, & \\text{otherwise} \\end{cases}\\)\n\nwhere x denotes the number of hours.\n\nBased on the above information, answer the following questions :",
+   "solution": "The probabilities in a distribution must add up to \\(1\\). Summing the six entries of the table, \\(k + 4k + 9k + 8k + 10k + 12k = 1\\), i.e. \\(44k = 1\\). Hence \\(k = \\frac{1}{44}\\). (This is positive, so every entry is a legitimate probability.)"
+  },
+  {
+   "hash": "dde349c8a00aded325f93e74915c79d5bda48d0d16205e8e0f9c06beb37cfe0f",
+   "ref": "Q36iiia",
+   "questionNumber": "36 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "Find the mean number of hours spent by the student.",
+   "context": "Self-study helps students to build confidence in learning. It boosts the self-esteem of the learners. Recent surveys suggested that close to 50% learners were self-taught using internet resources and upskilled themselves.\n\nA student may spend 1 hour to 6 hours in a day in upskilling self. The probability distribution of the number of hours spent by a student is given below :\n\n\\(P(X = x) = \\begin{cases} kx^2, & \\text{for } x = 1, 2, 3 \\\\ 2kx, & \\text{for } x = 4, 5, 6 \\\\ 0, & \\text{otherwise} \\end{cases}\\)\n\nwhere x denotes the number of hours.\n\nBased on the above information, answer the following questions :",
+   "solution": "The mean of a discrete random variable is \\(\\sum x_i p_i\\), summed over the six values in the table. So the mean \\(= 1(k) + 2(4k) + 3(9k) + 4(8k) + 5(10k) + 6(12k) = k + 8k + 27k + 32k + 50k + 72k = 190k\\). Substituting \\(k = \\frac{1}{44}\\) from part (ii), the mean number of hours is \\(\\frac{190}{44} = \\frac{95}{22}\\), which is about \\(4{\\cdot}32\\) hours. This lies between \\(1\\) and \\(6\\), as a mean of those values must."
+  },
+  {
+   "hash": "851590f1a40bc38b301c5e567f90600d06a0f0a1b97c734a77ff8704869b2bc7",
+   "ref": "Q36iiib",
+   "questionNumber": "36 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "Find \\(P(1 < X < 6)\\).",
+   "context": "Self-study helps students to build confidence in learning. It boosts the self-esteem of the learners. Recent surveys suggested that close to 50% learners were self-taught using internet resources and upskilled themselves.\n\nA student may spend 1 hour to 6 hours in a day in upskilling self. The probability distribution of the number of hours spent by a student is given below :\n\n\\(P(X = x) = \\begin{cases} kx^2, & \\text{for } x = 1, 2, 3 \\\\ 2kx, & \\text{for } x = 4, 5, 6 \\\\ 0, & \\text{otherwise} \\end{cases}\\)\n\nwhere x denotes the number of hours.\n\nBased on the above information, answer the following questions :",
+   "solution": "Both inequalities in \\(P(1 < X < 6)\\) are strict, so the values \\(X = 1\\) and \\(X = 6\\) are excluded and only \\(X = 2, 3, 4, 5\\) contribute. Reading those four entries off the table, \\(P(1 < X < 6) = 4k + 9k + 8k + 10k = 31k\\). Substituting \\(k = \\frac{1}{44}\\) from part (ii) gives \\(P(1 < X < 6) = \\frac{31}{44}\\). (The excluded values account for the remaining \\(k + 12k = 13k = \\frac{13}{44}\\), and \\(\\frac{31}{44} + \\frac{13}{44} = 1\\).)"
+  },
+  {
+   "hash": "fed5bf3322039762b05558d57bb456dc7e69b33d32501d28cc6d63078aec47a7",
+   "ref": "Q37i",
+   "questionNumber": "37 (i)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Variables Separable",
+   "stem": "Obtain the general solution of the given differential equation and express it as an exponential function of 't'.",
+   "context": "A bacteria sample of certain number of bacteria is observed to grow exponentially in a given amount of time. Using exponential growth model, the rate of growth of this sample of bacteria is calculated.\n\nThe differential equation representing the growth of bacteria is given as :\n\n\\(\\dfrac{dP}{dt} = kP\\), where P is the population of bacteria at any time 't'.\n\nBased on the above information, answer the following questions :",
+   "figure": "DECORATIVE — a bacterial growth curve (Lag/Log/Stationary/Dead) plus a photograph of two culture plates, page idx 20. Neither carries a number; the differential equation and both data points are in the text.",
+   "solution": "The equation \\(\\frac{dP}{dt} = kP\\) has its variables separable, since \\(P\\) can be gathered on one side and \\(t\\) on the other: \\(\\frac{dP}{P} = k\\,dt\\).\nIntegrating both sides, \\(\\int \\frac{dP}{P} = \\int k\\,dt\\), gives \\(\\log P = kt + C\\), where \\(C\\) is an arbitrary constant (the population is positive, so no modulus sign is needed).\nTaking exponentials expresses the general solution as an exponential function of \\(t\\): \\(P = e^{kt + C} = e^{C}e^{kt}\\), that is \\(P = P_0 e^{kt}\\), where \\(P_0 = e^{C}\\) is the population at \\(t = 0\\)."
+  },
+  {
+   "hash": "c7040d8a451dfd94bbb622301a71cdeacb7f7b20d11bc3abd1d841915d46dbfd",
+   "ref": "Q37ii",
+   "questionNumber": "37 (ii)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "General and Particular Solutions",
+   "stem": "If population of bacteria is 1000 at \\(t = 0\\), and 2000 at \\(t = 1\\), find the value of k.",
+   "context": "A bacteria sample of certain number of bacteria is observed to grow exponentially in a given amount of time. Using exponential growth model, the rate of growth of this sample of bacteria is calculated.\n\nThe differential equation representing the growth of bacteria is given as :\n\n\\(\\dfrac{dP}{dt} = kP\\), where P is the population of bacteria at any time 't'.\n\nBased on the above information, answer the following questions :",
+   "solution": "Use the general solution \\(\\log P = kt + C\\) from part (i), and put in the two data points.\nAt \\(t = 0\\), \\(P = 1000\\), so \\(\\log 1000 = k(0) + C\\), giving \\(C = \\log 1000\\).\nAt \\(t = 1\\), \\(P = 2000\\), so \\(\\log 2000 = k(1) + \\log 1000\\).\nHence \\(k = \\log 2000 - \\log 1000 = \\log \\frac{2000}{1000} = \\log 2\\), which is about \\(0{\\cdot}693\\).\n(The same follows from \\(P = P_0 e^{kt}\\): here \\(P_0 = 1000\\), so \\(2000 = 1000e^{k}\\) gives \\(e^{k} = 2\\) and \\(k = \\log 2\\). Note the growth constant does not depend on the initial population, only on the fact that the sample doubles in one unit of time.)"
+  },
+  {
+   "hash": "943145eaa8e6691d7502edd466ded50c17327d59f647c0b85afdb0e25b6c8f1d",
+   "ref": "Q38i",
+   "questionNumber": "38 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Solving System of Linear Equations",
+   "stem": "Express the given information algebraically using matrices.",
+   "context": "A scholarship is a sum of money provided to a student to help him or her pay for education. Some students are granted scholarships based on their academic achievements, while others are rewarded based on their financial needs.\n\nEvery year a school offers scholarships to girl children and meritorious achievers based on certain criteria. In the session 2022 – 23, the school offered monthly scholarship of ₹ 3,000 each to some girl students and ₹ 4,000 each to meritorious achievers in academics as well as sports.\n\nIn all, 50 students were given the scholarships and monthly expenditure incurred by the school on scholarships was ₹ 1,80,000.\n\nBased on the above information, answer the following questions :",
+   "figure": "DECORATIVE — a trophy/books illustration and a clip-art of a scholarship being handed over, page idx 22. All three figures the sub-parts need (3,000 · 4,000 · 50 · 1,80,000) are in the passage text.",
+   "solution": "Let \\(x\\) be the number of girl students given a scholarship and \\(y\\) the number of meritorious achievers given one.\nIn all, 50 students received scholarships, so \\(x + y = 50\\). The monthly outlay was 3,000 rupees each for the first group and 4,000 rupees each for the second, totalling 1,80,000 rupees, so \\(3000x + 4000y = 180000\\), which on dividing throughout by 1,000 becomes \\(3x + 4y = 180\\).\nWriting the two equations as a single matrix equation, \\(\\begin{bmatrix} 1 & 1 \\\\ 3 & 4 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} 50 \\\\ 180 \\end{bmatrix}\\)."
+  },
+  {
+   "hash": "fd86484d825a5798154342ef60a9340514f98d1c651eb9e4582459433e763b81",
+   "ref": "Q38ii",
+   "questionNumber": "38 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Solving System of Linear Equations",
+   "stem": "Check whether the system of matrix equations so obtained is consistent or not.",
+   "context": "A scholarship is a sum of money provided to a student to help him or her pay for education. Some students are granted scholarships based on their academic achievements, while others are rewarded based on their financial needs.\n\nEvery year a school offers scholarships to girl children and meritorious achievers based on certain criteria. In the session 2022 – 23, the school offered monthly scholarship of ₹ 3,000 each to some girl students and ₹ 4,000 each to meritorious achievers in academics as well as sports.\n\nIn all, 50 students were given the scholarships and monthly expenditure incurred by the school on scholarships was ₹ 1,80,000.\n\nBased on the above information, answer the following questions :",
+   "solution": "The system obtained in part (i) is \\(AX = B\\) with coefficient matrix \\(A = \\begin{bmatrix} 1 & 1 \\\\ 3 & 4 \\end{bmatrix}\\). Its determinant is \\(|A| = (1)(4) - (1)(3) = 4 - 3 = 1\\), which is not \\(0\\).\nSince \\(A\\) is non-singular, \\(A^{-1}\\) exists and the system has the unique solution \\(X = A^{-1}B\\). A system that has a solution is consistent, so the system of matrix equations is consistent (and in fact has exactly one solution)."
+  },
+  {
+   "hash": "67c91c8b40e358659a01e4a1fd06a353522b32d48656a1565f6781d1c93d10bb",
+   "ref": "Q38iiia",
+   "questionNumber": "38 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Solving System of Linear Equations",
+   "stem": "Find the number of scholarships of each kind given by the school, using matrices.",
+   "context": "A scholarship is a sum of money provided to a student to help him or her pay for education. Some students are granted scholarships based on their academic achievements, while others are rewarded based on their financial needs.\n\nEvery year a school offers scholarships to girl children and meritorious achievers based on certain criteria. In the session 2022 – 23, the school offered monthly scholarship of ₹ 3,000 each to some girl students and ₹ 4,000 each to meritorious achievers in academics as well as sports.\n\nIn all, 50 students were given the scholarships and monthly expenditure incurred by the school on scholarships was ₹ 1,80,000.\n\nBased on the above information, answer the following questions :",
+   "solution": "Write \\(A = \\begin{bmatrix} 1 & 1 \\\\ 3 & 4 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 50 \\\\ 180 \\end{bmatrix}\\), so that \\(AX = B\\) and hence \\(X = A^{-1}B\\).\nFrom part (ii), \\(|A| = 1\\). The adjoint of a \\(2 \\times 2\\) matrix is obtained by swapping the diagonal entries and changing the sign of the other two, so \\(\\text{adj}\\,A = \\begin{bmatrix} 4 & -1 \\\\ -3 & 1 \\end{bmatrix}\\) and \\(A^{-1} = \\frac{1}{|A|}\\text{adj}\\,A = \\begin{bmatrix} 4 & -1 \\\\ -3 & 1 \\end{bmatrix}\\).\nTherefore \\(X = \\begin{bmatrix} 4 & -1 \\\\ -3 & 1 \\end{bmatrix}\\begin{bmatrix} 50 \\\\ 180 \\end{bmatrix} = \\begin{bmatrix} 200 - 180 \\\\ -150 + 180 \\end{bmatrix} = \\begin{bmatrix} 20 \\\\ 30 \\end{bmatrix}\\), so \\(x = 20\\) and \\(y = 30\\).\nThe school gave 20 scholarships to girl students and 30 to meritorious achievers. (Check: \\(20 + 30 = 50\\), and \\(3000(20) + 4000(30) = 60000 + 120000 = 180000\\).)"
+  },
+  {
+   "hash": "14bf0b66292c071a4a57717276d9c653d06cdff402986e05468af3f62ad8be4e",
+   "ref": "Q38iiib",
+   "questionNumber": "38 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Solving System of Linear Equations",
+   "stem": "Had the amount of scholarship given to each girl child and meritorious student been interchanged, what would be the monthly expenditure incurred by the school ?",
+   "context": "A scholarship is a sum of money provided to a student to help him or her pay for education. Some students are granted scholarships based on their academic achievements, while others are rewarded based on their financial needs.\n\nEvery year a school offers scholarships to girl children and meritorious achievers based on certain criteria. In the session 2022 – 23, the school offered monthly scholarship of ₹ 3,000 each to some girl students and ₹ 4,000 each to meritorious achievers in academics as well as sports.\n\nIn all, 50 students were given the scholarships and monthly expenditure incurred by the school on scholarships was ₹ 1,80,000.\n\nBased on the above information, answer the following questions :",
+   "solution": "The numbers of the two kinds of scholarship do not change; only the amounts are swapped. Solving the system \\(x + y = 50\\), \\(3x + 4y = 180\\) gives \\(x = 20\\) girl students and \\(y = 30\\) meritorious achievers.\nIf the amounts were interchanged, each of the 20 girl students would receive 4,000 rupees and each of the 30 meritorious achievers 3,000 rupees. The monthly expenditure would then be \\(20 \\times 4000 + 30 \\times 3000 = 80000 + 90000 = 170000\\), that is 1,70,000 rupees.\nThat is 10,000 rupees less than the original 1,80,000, which is what one should expect: the larger amount has been moved from the larger group of 30 to the smaller group of 20, a change of \\(1000 \\times (20 - 30) = -10000\\) rupees."
+  }
+ ]
+}

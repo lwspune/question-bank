@@ -1,0 +1,225 @@
+{
+ "paper": "65/4/2",
+ "year": 2026,
+ "paperId": "2026-65-4-2",
+ "markingScheme": "out/2026-65-4-2/ms/p00.png … p20.png",
+ "rows": [
+  {
+   "hash": "2c6eae43d10a3c7ed54995df411098e43821057ceced00f10a9a780bac79b05b",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "The following graph represents :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(y = \\sec^{-1} x\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(y = \\cot^{-1} x\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(y = \\tan^{-1} x\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(y = \\operatorname{cosec}^{-1} x\\)"
+    }
+   ],
+   "answer": "B",
+   "figure": "REQUIRED - the stem is only 'The following graph represents :'; the curve (horizontal asymptotes y = pi as x -> -infinity and y = 0 as x -> +infinity, crossing the y-axis at (0, pi/2)) IS the question. Page idx 2.",
+   "solution": "Read the three features the printed curve shows: it is defined for every real x, it decreases steadily from the horizontal asymptote \\(y = \\pi\\) on the far left to the horizontal asymptote \\(y = 0\\) on the far right, and it cuts the y-axis at \\(\\left(0, \\dfrac{\\pi}{2}\\right)\\).\n\nTest each choice against those. The graph of \\(y = \\tan^{-1} x\\) is INCREASING, running from \\(-\\dfrac{\\pi}{2}\\) to \\(\\dfrac{\\pi}{2}\\), so it is ruled out both by the direction and by the asymptotes. The graphs of \\(y = \\sec^{-1} x\\) and \\(y = \\operatorname{cosec}^{-1} x\\) are not defined for \\(-1 < x < 1\\), so neither can be a single unbroken curve crossing the y-axis at all. Only \\(y = \\cot^{-1} x\\) has domain R with range \\((0, \\pi)\\); it decreases throughout, \\(\\cot^{-1} x \\to \\pi\\) as \\(x \\to -\\infty\\), \\(\\cot^{-1} x \\to 0\\) as \\(x \\to \\infty\\), and \\(\\cot^{-1} 0 = \\dfrac{\\pi}{2}\\), matching the marked point exactly. Hence the graph represents option (B) \\(y = \\cot^{-1} x\\)."
+  },
+  {
+   "hash": "c47b2d73af991b02142ab17be234151236a17d16c2db2ebb4c0ef8dc8d76d4e5",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Transpose of a Matrix",
+   "stem": "Let \\(A = [a_{ij}]\\) be a \\(2 \\times 2\\) matrix whose elements are given by \\(a_{ij} = \\dfrac{(2i - j)^2}{3}\\). Then \\(A'\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\begin{bmatrix} \\dfrac{1}{3} & 3 \\\\ 0 & \\dfrac{4}{3} \\end{bmatrix}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\begin{bmatrix} \\dfrac{1}{3} & 0 \\\\ 3 & \\dfrac{4}{3} \\end{bmatrix}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\begin{bmatrix} \\dfrac{4}{3} & 3 \\\\ 0 & \\dfrac{1}{3} \\end{bmatrix}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\begin{bmatrix} \\dfrac{4}{3} & 0 \\\\ 3 & \\dfrac{1}{3} \\end{bmatrix}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Build A entry by entry from \\(a_{ij} = \\dfrac{(2i - j)^2}{3}\\). For \\(i = 1\\): \\(a_{11} = \\dfrac{(2 - 1)^2}{3} = \\dfrac{1}{3}\\) and \\(a_{12} = \\dfrac{(2 - 2)^2}{3} = 0\\). For \\(i = 2\\): \\(a_{21} = \\dfrac{(4 - 1)^2}{3} = \\dfrac{9}{3} = 3\\) and \\(a_{22} = \\dfrac{(4 - 2)^2}{3} = \\dfrac{4}{3}\\).\n\nSo \\(A = \\begin{bmatrix} \\frac{1}{3} & 0 \\\\ 3 & \\frac{4}{3} \\end{bmatrix}\\), and the transpose interchanges rows and columns, giving \\(A' = \\begin{bmatrix} \\frac{1}{3} & 3 \\\\ 0 & \\frac{4}{3} \\end{bmatrix}\\). Note that A itself, not its transpose, is the choice with 0 in the top right — a common slip. Hence the answer is option (A) \\(\\begin{bmatrix} \\frac{1}{3} & 3 \\\\ 0 & \\frac{4}{3} \\end{bmatrix}\\)."
+  },
+  {
+   "hash": "8c695d189edb385f06fa6d5390ececc1893465cf15148d22d662266f5cd8c71a",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "If the distance travelled by a particle in t seconds is given by \\(S = 72t + 3t^2 - t^3\\), then time taken by the particle to come to rest is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "4 seconds"
+    },
+    {
+     "label": "B",
+     "text": "6 seconds"
+    },
+    {
+     "label": "C",
+     "text": "3 seconds"
+    },
+    {
+     "label": "D",
+     "text": "0 seconds"
+    }
+   ],
+   "answer": "B",
+   "solution": "The particle is at rest when its velocity is zero, and velocity is the derivative of distance with respect to time. From \\(S = 72t + 3t^2 - t^3\\), \\(v = \\dfrac{dS}{dt} = 72 + 6t - 3t^2\\).\n\nSetting \\(v = 0\\) gives \\(3t^2 - 6t - 72 = 0\\), that is \\(t^2 - 2t - 24 = 0\\), which factorises as \\((t - 6)(t + 4) = 0\\). The roots are \\(t = 6\\) and \\(t = -4\\), and a negative time is rejected. Hence the particle comes to rest after 6 seconds, which is option (B) 6 seconds."
+  },
+  {
+   "hash": "581df5e0b1d8e22f17eb4fe0eeb6de158c37171db5d291067841a60a002213c3",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Order and Degree of a Differential Equation",
+   "stem": "The sum of the order and the degree of the differential equation \\(4\\left[\\dfrac{d^2y}{dx^2}\\right]^2 + 3\\left[1 + \\left(\\dfrac{dy}{dx}\\right)^2 - y\\right] = 0\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "2"
+    },
+    {
+     "label": "B",
+     "text": "3"
+    },
+    {
+     "label": "C",
+     "text": "not defined"
+    },
+    {
+     "label": "D",
+     "text": "4"
+    }
+   ],
+   "answer": "D",
+   "solution": "The equation is \\(4\\left[\\dfrac{d^2y}{dx^2}\\right]^2 + 3\\left[1 + \\left(\\dfrac{dy}{dx}\\right)^2 - y\\right] = 0\\), which is already a polynomial in the derivatives.\n\nThe ORDER is the order of the highest derivative present, here \\(\\dfrac{d^2y}{dx^2}\\), so the order is 2. The DEGREE is the power to which that highest-order derivative is raised once the equation is polynomial in the derivatives; here \\(\\dfrac{d^2y}{dx^2}\\) appears squared, so the degree is 2. (The square on \\(\\dfrac{dy}{dx}\\) is irrelevant to the degree — only the highest-order derivative counts.)\n\nHence the sum is \\(2 + 2 = 4\\), which is option (D) \\(4\\)."
+  },
+  {
+   "hash": "751b52575f46db6a81c162a9acf215e9231363f9c75988fb89352114ac34dce5",
+   "ref": "Q18",
+   "questionNumber": "18",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Independent Events",
+   "stem": "The probability that it will rain tomorrow in cities A, B and C is 60%, 70% and 80% respectively. The probability that it will rain tomorrow in at least one of the cities is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{3}{250}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{244}{250}\\)"
+    },
+    {
+     "label": "C",
+     "text": "1"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{9}{10}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Take the three cities' weather to be independent, as the chapter intends. The probabilities of rain are \\(P(A) = \\dfrac{6}{10}\\), \\(P(B) = \\dfrac{7}{10}\\) and \\(P(C) = \\dfrac{8}{10}\\), so the probabilities of no rain are \\(\\dfrac{4}{10}\\), \\(\\dfrac{3}{10}\\) and \\(\\dfrac{2}{10}\\).\n\n\"At least one\" is the complement of \"none\", which is much the quicker route. The probability that it rains in none of the three cities is \\(\\dfrac{4}{10} \\times \\dfrac{3}{10} \\times \\dfrac{2}{10} = \\dfrac{24}{1000} = \\dfrac{6}{250}\\).\n\nHence the probability of rain in at least one city is \\(1 - \\dfrac{6}{250} = \\dfrac{244}{250}\\), which is option (B) \\(\\dfrac{244}{250}\\). (As a sanity check this is \\(0.976\\), which is properly less than 1 — the choice 1 would say rain somewhere is certain, which it is not.)"
+  },
+  {
+   "hash": "91f5877ee76686e8a09a1ceedc8c771c31082e5fcd538aa951bd6108d321d00f",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "Find the interval(s) in which the function \\(f(x) = \\dfrac{x}{\\log x}\\), where \\(x \\in (0, 1) \\cup (1, \\infty)\\), is increasing.",
+   "solution": "Differentiate by the quotient rule: with \\(f(x) = \\dfrac{x}{\\log x}\\),\n\\(f'(x) = \\dfrac{\\log x \\cdot 1 - x \\cdot \\frac{1}{x}}{(\\log x)^2} = \\dfrac{\\log x - 1}{(\\log x)^2}\\).\n\nThe denominator \\((\\log x)^2\\) is positive throughout the given domain \\((0, 1) \\cup (1, \\infty)\\), so the sign of \\(f'\\) is the sign of \\(\\log x - 1\\). This is positive exactly when \\(\\log x > 1\\), that is \\(x > e\\).\n\nHence f is increasing on \\((e, \\infty)\\), and nowhere else: on \\((0, 1)\\) the logarithm is negative and on \\((1, e)\\) it lies between 0 and 1, so \\(\\log x - 1 < 0\\) and f is decreasing on both of those stretches. The interval \\([e, \\infty)\\) may equally be quoted, since \\(f'\\) vanishes only at the single endpoint \\(x = e\\)."
+  },
+  {
+   "hash": "43d93ff27e427c3874baeba1e5bd9cf7c5308ad7f9a1742ab0fd35f436d842af",
+   "ref": "Q24",
+   "questionNumber": "24",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Addition of Vectors",
+   "stem": "If \\((2\\hat{i} + 3\\hat{j} + \\hat{k})\\) and \\((2\\hat{i} + \\hat{j} - \\hat{k})\\) represent the sides \\(\\overrightarrow{AB}\\) and \\(\\overrightarrow{AC}\\) respectively of \\(\\Delta\\) ABC, find the vector representing the median through A.",
+   "solution": "The median through A joins A to D, the mid-point of the opposite side BC. Taking A as the origin of position vectors, D is the mid-point of B and C, so \\(\\overrightarrow{AD} = \\dfrac{\\overrightarrow{AB} + \\overrightarrow{AC}}{2}\\).\n\nHere \\(\\overrightarrow{AB} + \\overrightarrow{AC} = \\left(2\\hat{i} + 3\\hat{j} + \\hat{k}\\right) + \\left(2\\hat{i} + \\hat{j} - \\hat{k}\\right) = 4\\hat{i} + 4\\hat{j} + 0\\hat{k}\\).\n\nHence \\(\\overrightarrow{AD} = \\dfrac{1}{2}\\left(4\\hat{i} + 4\\hat{j}\\right) = 2\\hat{i} + 2\\hat{j}\\), which is the vector representing the median through A. (Its length, if wanted, is \\(\\sqrt{4 + 4} = 2\\sqrt{2}\\).)"
+  },
+  {
+   "hash": "1389852d6788da7bf1dea6f58effe86eb80eb184782dd78026830fdb0ee767ae",
+   "ref": "Q27",
+   "questionNumber": "27",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "If \\(A = \\begin{bmatrix} 1 & 2 & 2 \\\\ 2 & 1 & 2 \\\\ 2 & 2 & 1 \\end{bmatrix}\\), then compute \\(A^2 - 4A - 5\\,I\\).",
+   "solution": "[CBSE marking scheme: in the printed subtraction the matrix \\(4A\\) is given a third row of \\(\\begin{bmatrix} 4 & 4 & 8 \\end{bmatrix}\\). That is \\(4\\) times \\(\\begin{bmatrix} 1 & 1 & 2 \\end{bmatrix}\\), whereas the third row of A is \\(\\begin{bmatrix} 2 & 2 & 1 \\end{bmatrix}\\) and so the third row of \\(4A\\) is \\(\\begin{bmatrix} 8 & 8 & 4 \\end{bmatrix}\\). Carried through as printed, the third row of the answer would be \\(\\begin{bmatrix} 4 & 4 & -4 \\end{bmatrix}\\) rather than zeros; the scheme's final null matrix is correct and only that one intermediate row is mistyped.]\n\nFirst square A:\n\\(A^2 = \\begin{bmatrix} 1 & 2 & 2 \\\\ 2 & 1 & 2 \\\\ 2 & 2 & 1 \\end{bmatrix}\\begin{bmatrix} 1 & 2 & 2 \\\\ 2 & 1 & 2 \\\\ 2 & 2 & 1 \\end{bmatrix}\\). Each diagonal entry is \\(1 + 4 + 4 = 9\\) and each off-diagonal entry is \\(2 + 2 + 4 = 8\\), so \\(A^2 = \\begin{bmatrix} 9 & 8 & 8 \\\\ 8 & 9 & 8 \\\\ 8 & 8 & 9 \\end{bmatrix}\\).\n\nNext, \\(4A = \\begin{bmatrix} 4 & 8 & 8 \\\\ 8 & 4 & 8 \\\\ 8 & 8 & 4 \\end{bmatrix}\\) and \\(5I = \\begin{bmatrix} 5 & 0 & 0 \\\\ 0 & 5 & 0 \\\\ 0 & 0 & 5 \\end{bmatrix}\\).\n\nSubtracting entry by entry, each diagonal entry gives \\(9 - 4 - 5 = 0\\) and each off-diagonal entry gives \\(8 - 8 - 0 = 0\\). Hence \\(A^2 - 4A - 5I = \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & 0 \\end{bmatrix}\\), the null matrix.\n\nIncidentally this says \\(A^2 = 4A + 5I\\), so multiplying by \\(A^{-1}\\) gives \\(A^{-1} = \\dfrac{1}{5}\\left(A - 4I\\right)\\)."
+  },
+  {
+   "hash": "7407fb6b9f42bee50976b7957f253f1e267a236f7d2c4792a96aa9a7f697defe",
+   "ref": "Q29",
+   "questionNumber": "29",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following Linear Programming Problem graphically :\n\nMinimize \\(Z = 20x + 10y\\)\n\nsubject to\n\n\\(x + 2y \\leq 40\\)\n\n\\(3x + y \\geq 30\\)\n\n\\(4x + 3y \\geq 60\\)\n\n\\(x, y \\geq 0\\)",
+   "solution": "Draw the lines \\(x + 2y = 40\\), \\(3x + y = 30\\) and \\(4x + 3y = 60\\) in the first quadrant. Testing the origin, it satisfies \\(x + 2y \\le 40\\) but fails both \\(3x + y \\ge 30\\) and \\(4x + 3y \\ge 60\\), so the feasible region lies below the first line and above the other two. It is a bounded quadrilateral.\n\nFind the corner points by intersecting the boundary lines in pairs and keeping only the feasible ones.\nOn \\(y = 0\\): \\(x + 2y = 40\\) gives \\((40, 0)\\), which satisfies both remaining constraints; \\(4x + 3y = 60\\) gives \\((15, 0)\\), which satisfies them too; but \\(3x + y = 30\\) gives \\((10, 0)\\), where \\(4x + 3y = 40 < 60\\), so that point is rejected.\nThe lines \\(3x + y = 30\\) and \\(4x + 3y = 60\\) meet where \\(y = 30 - 3x\\) gives \\(4x + 90 - 9x = 60\\), so \\(x = 6\\) and \\(y = 12\\), that is \\((6, 12)\\); there \\(x + 2y = 30 \\le 40\\), so it is feasible.\nThe lines \\(3x + y = 30\\) and \\(x + 2y = 40\\) meet where \\(x = 40 - 2y\\) gives \\(120 - 6y + y = 30\\), so \\(y = 18\\) and \\(x = 4\\), that is \\((4, 18)\\); there \\(4x + 3y = 70 \\ge 60\\), so it is feasible.\nOn the y-axis, \\((0, 20)\\) and \\((0, 30)\\) both fail a constraint, so the region does not touch the y-axis.\n\nThe corner points are therefore \\(A(40, 0)\\), \\(B(15, 0)\\), \\(C(6, 12)\\) and \\(D(4, 18)\\).\n\nNow evaluate \\(Z = 20x + 10y\\) at each: at \\(A(40, 0)\\), \\(Z = 800\\); at \\(B(15, 0)\\), \\(Z = 300\\); at \\(C(6, 12)\\), \\(Z = 120 + 120 = 240\\); at \\(D(4, 18)\\), \\(Z = 80 + 180 = 260\\).\n\nThe feasible region is bounded, so Z attains its minimum at a corner point. Hence the minimum value of Z is 240, at \\(x = 6\\), \\(y = 12\\)."
+  },
+  {
+   "hash": "c4fc35ba8dc864e9bffe288229281b7f162b00546db6df27f8ca87a0520380d4",
+   "ref": "Q33",
+   "questionNumber": "33",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Under Simple Curves",
+   "stem": "Using integration, find the area of the region bounded by the curve \\(y = x|x|\\), x-axis, \\(x = -2\\) and \\(x = 2\\).",
+   "solution": "[CBSE marking scheme: the two middle lines lose a sign. Having correctly written the area as \\(-\\displaystyle\\int_{-2}^{0} x|x|\\,dx + \\int_{0}^{2} x|x|\\,dx\\), the scheme substitutes \\(x|x| = -x^2\\) on \\([-2, 0]\\) but keeps the minus with the integrand instead of cancelling it, printing \\(\\displaystyle\\int_{-2}^{0}\\left(-x^2\\right)dx + \\int_{0}^{2}x^2\\,dx\\) and then \\(-\\left[\\frac{x^3}{3}\\right]_{-2}^{0} + \\left[\\frac{x^3}{3}\\right]_{0}^{2}\\). Evaluated literally that chain gives \\(-\\frac{8}{3} + \\frac{8}{3} = 0\\), not the \\(\\frac{8}{3} + \\frac{8}{3}\\) printed beside it. The stated answer \\(\\frac{16}{3}\\) is correct; it is the two intermediate lines that carry the stray minus.]\n\nFirst unfold the modulus. For \\(x \\ge 0\\), \\(|x| = x\\), so \\(y = x|x| = x^2\\); for \\(x < 0\\), \\(|x| = -x\\), so \\(y = -x^2\\). The curve is therefore the right half of the parabola \\(y = x^2\\) joined at the origin to the reflected left half \\(y = -x^2\\), rising through the first quadrant and dropping into the third. So on \\([-2, 0]\\) the curve lies BELOW the x-axis and on \\([0, 2]\\) it lies above it, and the two pieces must be integrated separately with the area of the lower piece taken positively.\n\nArea \\(= \\displaystyle\\int_{-2}^{0}\\left|x|x|\\right|dx + \\int_{0}^{2}\\left|x|x|\\right|dx = \\int_{-2}^{0} x^2\\,dx + \\int_{0}^{2} x^2\\,dx\\), since \\(\\left|-x^2\\right| = x^2\\).\n\nNow \\(\\displaystyle\\int_{-2}^{0} x^2\\,dx = \\left[\\dfrac{x^3}{3}\\right]_{-2}^{0} = 0 - \\left(-\\dfrac{8}{3}\\right) = \\dfrac{8}{3}\\) and \\(\\displaystyle\\int_{0}^{2} x^2\\,dx = \\left[\\dfrac{x^3}{3}\\right]_{0}^{2} = \\dfrac{8}{3}\\).\n\nHence the required area is \\(\\dfrac{8}{3} + \\dfrac{8}{3} = \\dfrac{16}{3}\\) square units.\n\nThe same answer follows in one line from symmetry: \\(y = x|x|\\) is an odd function, so the two pieces are congruent and the area is \\(2\\displaystyle\\int_{0}^{2} x^2\\,dx = 2 \\times \\dfrac{8}{3} = \\dfrac{16}{3}\\) square units — the alternative approach the scheme itself notes."
+  },
+  {
+   "hash": "085e4fecf324f309ac5ee674597b03c4652165dfcd57db45604a1706a1c8a110",
+   "ref": "Q35",
+   "questionNumber": "35",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the vector and cartesian equations of the line passing through the point of intersection of the lines \\(\\vec{r} = (\\hat{i} + \\hat{j} - \\hat{k}) + \\lambda(3\\hat{i} - \\hat{j})\\) and \\(\\vec{r} = (4\\hat{i} - \\hat{k}) + \\mu(2\\hat{i} + 3\\hat{k})\\) and parallel to the line \\(\\dfrac{x - 1}{-2} = \\dfrac{7 - y}{-3} = z\\).",
+   "solution": "Step 1 — find where the two lines meet. A general point on \\(\\vec{r} = \\left(\\hat{i} + \\hat{j} - \\hat{k}\\right) + \\lambda\\left(3\\hat{i} - \\hat{j}\\right)\\) is \\(P(3\\lambda + 1,\\; 1 - \\lambda,\\; -1)\\), and a general point on \\(\\vec{r} = \\left(4\\hat{i} - \\hat{k}\\right) + \\mu\\left(2\\hat{i} + 3\\hat{k}\\right)\\) is \\(Q(2\\mu + 4,\\; 0,\\; 3\\mu - 1)\\).\n\nEquating the y-coordinates gives \\(1 - \\lambda = 0\\), so \\(\\lambda = 1\\); equating the z-coordinates gives \\(3\\mu - 1 = -1\\), so \\(\\mu = 0\\). These must also be consistent with the x-coordinates, and they are: \\(3(1) + 1 = 4\\) and \\(2(0) + 4 = 4\\). So the lines do intersect, at the point \\((4, 0, -1)\\).\n\nStep 2 — find the required direction. The line \\(\\dfrac{x - 1}{-2} = \\dfrac{7 - y}{-3} = z\\) must first be put in standard symmetric form: \\(\\dfrac{7 - y}{-3} = \\dfrac{y - 7}{3}\\), so the line is \\(\\dfrac{x - 1}{-2} = \\dfrac{y - 7}{3} = \\dfrac{z - 0}{1}\\) and its direction ratios are \\(\\langle -2, 3, 1 \\rangle\\). A line parallel to it has the same direction ratios.\n\nStep 3 — write the required line through \\((4, 0, -1)\\) with direction ratios \\(\\langle -2, 3, 1 \\rangle\\).\n\nVector form: \\(\\vec{r} = \\left(4\\hat{i} - \\hat{k}\\right) + \\omega\\left(-2\\hat{i} + 3\\hat{j} + \\hat{k}\\right)\\), where \\(\\omega\\) is a scalar parameter.\n\nCartesian form: \\(\\dfrac{x - 4}{-2} = \\dfrac{y}{3} = \\dfrac{z + 1}{1}\\)."
+  }
+ ]
+}

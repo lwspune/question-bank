@@ -1,0 +1,65 @@
+{
+  "_why": "Adjudicated figure picks for questions the one-region rule cannot resolve. It is right for 39 of 41 groups, so it is NOT loosened; these two state a source outright, the way scripts/ppt/extract_figures.py handles the figure its rules get wrong at both ends. Each pick names WHICH paper and page to read, and how to combine that page's regions. Verified by rendering the page and looking at it - the note records what was seen.",
+  "_modes": "union = union every figure-sized region on that page (correct only where ONE question owns them all - never assume it; 2025-65-2-2 p6 carries TWO questions' figures and would merge them).  ms = read the figure from the MARKING SCHEME instead of the question paper, locating it by question number; 'band' then trims the result to a fractional y-range because the scheme rasterises the whole question block, text included. Every band below was set by rendering it and looking - the first attempt at a0d77754 clipped its own x-axis tick labels.",
+  "picks": {
+    "a785d7fad8031e605c63bb637151b15750d2302e7b1cc62079b1a4c6cfae30a1": {
+      "pid": "2025-65-1-2",
+      "page": 4,
+      "mode": "union",
+      "note": "Q5 'The graph of a trigonometric function is as shown. Which of the following will represent graph of its inverse?' - the STEM is a graph AND all four options are graphs, so the question is one visual block: stem 354x192, then option C 134x102 and option D 134x79 side by side (A and B fall inside the stem region's band). All three series print the identical layout, so any of them would do; 65-1-2 is named to keep the pick reproducible. Q5 owns every figure on this page, which is what makes union safe here."
+    },
+    "71db4a732d1d29a81431a89b0d723c3c44ef1cf5887115bd432a75c2b1e95137": {
+      "pid": "2025-65-2-3",
+      "page": 10,
+      "mode": "union",
+      "note": "Q16/Q6/Q14 'which of the following depicts the correct relation between set A and B?' - the four options are printed as bare Venn diagrams in a 2x2 grid of 56x56 boxes and nothing else. 65-2-3 is named DELIBERATELY: on 65-2-1 and 65-2-2 the same four boxes share their page with the area-under-a-curve graph of the NEXT question, so union there would splice two questions together. On 65-2-3 p10 the four boxes are the only regions, so union is exactly the option block. (The transcription also describes each option in words, so the row is answerable without the figure; the crop shows the question as actually printed.)"
+    },
+    "555f13c3d57a745a32eabb08f66f30fb8267c4531a45836e271124b9874dc4d5": {
+      "source": "ms",
+      "pid": "2024-65-2-1",
+      "q": "37",
+      "note": "Q37 diet LPP. The scheme reprints the whole case study; the band keeps Figure-1 (food pyramid) and Figure-2 (the shaded feasible region) with their captions and drops the prose.",
+      "band": [
+        0.165,
+        0.525
+      ]
+    },
+    "1b5d49f36386ae561a2e8f52cd75c608c96b002f5643e878a9f41b7e3681fb38": {
+      "source": "ms",
+      "pid": "2024-65-2-1",
+      "q": "37",
+      "note": "Sub-part (ii) of the same case study, so the same figure.",
+      "band": [
+        0.165,
+        0.525
+      ]
+    },
+    "3bbe6da3b3a2366783928349bdd0ea3b340605aca5928bfd374bb591308c0997": {
+      "source": "ms",
+      "pid": "2024-65-4-1",
+      "q": "16",
+      "note": "Q16 feasible region A(0,50) B(20,30) C(30,0). The scheme isolates this one as its own 92x88 image, so no band is needed."
+    },
+    "b6b41c4d1e57cf7d057bd8f6f4a46f6cabcc8f90ba73d7e56783b999535b4fb8": {
+      "source": "ms",
+      "pid": "2024-65-4-1",
+      "q": "20",
+      "note": "Q20 assertion-reason. Band drops the Assertion and Reason sentences, which are already stored as the stem, and keeps the graph with N(0,60), T(120,60), R, S, P, Q. Bottom is 0.845, not 0.795: with the band applied the crop is NOT padded back out, and at 0.795 the '(60, 0)' label under P was sliced in half.",
+      "band": [
+        0.245,
+        0.845
+      ]
+    },
+    "a0d77754efb74df7535df9cdd7f2dbf27db717503c66fe14ac253beb27afc41b": {
+      "source": "ms",
+      "pid": "2024-65-4-3",
+      "q": "30",
+      "note": "Q30 corner points A(0,8) B(4,10) C(6,8) D(6,5) E(4,0). The bottom of the band is 0.695 and not 0.635: at 0.635 the x-axis tick labels 2/4/6/8 were sliced off, which the contact sheet caught.",
+      "band": [
+        0.165,
+        0.695
+      ]
+    }
+  },
+  "_why_ms": "The 2024 QUESTION PAPERS store the lower slices of every figure as corrupt data: content repeated 3x horizontally with the remainder black. It is in the source bytes, not the renderer - the extracted PNG is corrupt too - and it is uniform across a series, so no sibling paper rescues it (all three members measure 0.39-0.55 black). The 2024 MARKING SCHEMES reprint the same figures cleanly (0.00 black), so they are the source of record for these."
+}

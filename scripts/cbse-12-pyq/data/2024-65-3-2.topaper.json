@@ -1,0 +1,224 @@
+{
+ "paper": "65/3/2",
+ "year": 2024,
+ "paperId": "2024-65-3-2",
+ "markingScheme": "out/2024-65-3-2/ms/p00.png … p20.png",
+ "rows": [
+  {
+   "hash": "064b6f76e035463f582d58d376bbb694215b57d6167b48690a7afdbc170ec23c",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Exponential and Logarithmic Functions",
+   "stem": "The derivative of \\(5^x\\) w.r.t. \\(e^x\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\left(\\dfrac{5}{e}\\right)^x \\dfrac{1}{\\log 5}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\left(\\dfrac{e}{5}\\right)^x \\dfrac{1}{\\log 5}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\left(\\dfrac{5}{e}\\right)^x \\log 5\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\left(\\dfrac{e}{5}\\right)^x \\log 5\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Put \\(u = 5^x\\) and \\(v = e^x\\), and use the chain rule in the form \\(\\dfrac{du}{dv} = \\dfrac{du/dx}{dv/dx}\\). Here \\(\\dfrac{du}{dx} = 5^x \\log 5\\) and \\(\\dfrac{dv}{dx} = e^x\\), so \\(\\dfrac{du}{dv} = \\dfrac{5^x \\log 5}{e^x} = \\left(\\dfrac{5}{e}\\right)^{x} \\log 5\\). The derivative of \\(5^x\\) with respect to \\(e^x\\) is therefore \\(\\left(\\dfrac{5}{e}\\right)^{x} \\log 5\\)."
+  },
+  {
+   "hash": "cc7af7d48e2e777c48399e1010999cd01f7685bdf6cfd06c17fce2de6b9abbba",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Symmetric and Skew-Symmetric Matrices",
+   "stem": "For any square matrix A, \\((A - A')\\) is always",
+   "options": [
+    {
+     "label": "A",
+     "text": "an identity matrix"
+    },
+    {
+     "label": "B",
+     "text": "a null matrix"
+    },
+    {
+     "label": "C",
+     "text": "a skew symmetric matrix"
+    },
+    {
+     "label": "D",
+     "text": "a symmetric matrix"
+    }
+   ],
+   "answer": "C",
+   "solution": "Let \\(M = A - A'\\). Taking the transpose, \\(M' = (A - A')' = A' - (A')' = A' - A = -M\\). A square matrix satisfying \\(M' = -M\\) is by definition skew symmetric, so \\(A - A'\\) is always a skew symmetric matrix. It need not be null or an identity matrix: for \\(A = \\begin{bmatrix} 0 & 1 \\\\ 0 & 0 \\end{bmatrix}\\) we get \\(A - A' = \\begin{bmatrix} 0 & 1 \\\\ -1 & 0 \\end{bmatrix}\\), which is skew symmetric and non-zero."
+  },
+  {
+   "hash": "e2cb96555c3e8007286fd41367409a87d362320d509852765d88a3f278b782e3",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "A function \\(f : R \\to A\\) defined as \\(f(x) = x^2 + 1\\) is onto, if A is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\((-\\infty, \\infty)\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\((1, \\infty)\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\([1, \\infty)\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\([-1, \\infty)\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "A function is onto exactly when its codomain equals its range, so \\(A\\) must be the range of \\(f\\). Since \\(x^2 \\ge 0\\) for every real \\(x\\), \\(f(x) = x^2 + 1 \\ge 1\\), and the value \\(1\\) is actually attained, at \\(x = 0\\). Conversely every \\(y \\ge 1\\) is attained, at \\(x = \\pm\\sqrt{y - 1}\\). Hence the range is \\([1, \\infty)\\), so \\(A = [1, \\infty)\\). The open interval \\((1, \\infty)\\) fails because it omits the attained value \\(1\\), while \\([-1, \\infty)\\) and \\((-\\infty, \\infty)\\) both contain values below \\(1\\) that \\(f\\) never takes."
+  },
+  {
+   "hash": "bda4c4aeb77cef318a140946b01f474f7c7ca2e6b371a89335ddd881642dbaa4",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "The point of inflexion of a function \\(f(x)\\) is the point where",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(f'(x) = 0\\) and \\(f'(x)\\) changes its sign from positive to negative from left to right of that point."
+    },
+    {
+     "label": "B",
+     "text": "\\(f'(x) = 0\\) and \\(f'(x)\\) changes its sign from negative to positive from left to right of that point."
+    },
+    {
+     "label": "C",
+     "text": "\\(f'(x) = 0\\) and \\(f'(x)\\) does not change its sign from left to right of that point."
+    },
+    {
+     "label": "D",
+     "text": "\\(f'(x) \\neq 0\\)."
+    }
+   ],
+   "answer": "C",
+   "solution": "This is the first derivative test as stated in the NCERT text. If \\(f'(c) = 0\\) but \\(f'\\) keeps the same sign on both sides of \\(c\\), then \\(c\\) is neither a point of local maximum nor a point of local minimum, and such a point is called a point of inflexion. A sign change from positive to negative gives a local maximum and a change from negative to positive gives a local minimum, so those two descriptions are of extrema rather than of inflexion, and \\(f'(x) \\neq 0\\) is not a defining condition at all. So the point of inflexion is the point where \\(f'(x) = 0\\) and \\(f'(x)\\) does not change its sign from left to right of that point. The standard illustration is \\(f(x) = x^3\\) at \\(x = 0\\), where \\(f'(x) = 3x^2\\) vanishes at \\(0\\) yet stays non-negative throughout."
+  },
+  {
+   "hash": "ee8b9a62a7a971617357e21e4d38ccb535f389516d5fbc5574b770809d59ed23",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "If \\(g(x)\\) is a continuous function satisfying \\(g(-x) = -g(x)\\), then \\(\\int\\limits_{0}^{2a} g(x)\\, dx\\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "0"
+    },
+    {
+     "label": "B",
+     "text": "\\(2 \\int\\limits_{0}^{a} g(x)\\, dx\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\int\\limits_{-a}^{a} g(x)\\, dx\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-\\int\\limits_{-2a}^{0} g(x)\\, dx\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "The condition \\(g(-x) = -g(x)\\) says \\(g\\) is an odd function. Substitute \\(x = -t\\) in \\(\\int\\limits_{-2a}^{0} g(x)\\, dx\\): the limits \\(x = -2a, 0\\) become \\(t = 2a, 0\\) and \\(dx = -dt\\), so \\(\\int\\limits_{-2a}^{0} g(x)\\, dx = \\int\\limits_{2a}^{0} g(-t)(-dt) = \\int\\limits_{0}^{2a} g(-t)\\, dt = -\\int\\limits_{0}^{2a} g(t)\\, dt\\). Rearranging, \\(\\int\\limits_{0}^{2a} g(x)\\, dx = -\\int\\limits_{-2a}^{0} g(x)\\, dx\\). The other three choices fail on the odd function \\(g(x) = x\\), for which \\(\\int\\limits_{0}^{2a} x\\, dx = 2a^2\\): the value \\(0\\) and \\(\\int\\limits_{-a}^{a} x\\, dx = 0\\) both vanish, and \\(2\\int\\limits_{0}^{a} x\\, dx = a^2\\)."
+  },
+  {
+   "hash": "6adddaaf60b23c99a521b6e075fb7b047e5c4fef3554e549f6665b808827989a",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "If \\(\\vec{a}\\), \\(\\vec{b}\\) and \\(\\vec{c}\\) are three unit vectors such that \\(\\vec{a} + \\vec{b} - \\vec{c} = \\vec{0}\\), find the angle between vectors \\(\\vec{a}\\) and \\(\\vec{c}\\).",
+   "solution": "All three are unit vectors, so \\(|\\vec{a}| = |\\vec{b}| = |\\vec{c}| = 1\\). Isolate \\(\\vec{b}\\): from \\(\\vec{a} + \\vec{b} - \\vec{c} = \\vec{0}\\) we get \\(\\vec{a} - \\vec{c} = -\\vec{b}\\). Dotting each side with itself, \\((\\vec{a} - \\vec{c}) \\cdot (\\vec{a} - \\vec{c}) = (-\\vec{b}) \\cdot (-\\vec{b})\\), that is \\(|\\vec{a}|^2 + |\\vec{c}|^2 - 2\\,\\vec{a} \\cdot \\vec{c} = |\\vec{b}|^2\\). Writing \\(\\vec{a} \\cdot \\vec{c} = |\\vec{a}||\\vec{c}|\\cos\\theta\\) gives \\(1 + 1 - 2(1)(1)\\cos\\theta = 1\\), so \\(2 - 2\\cos\\theta = 1\\) and \\(\\cos\\theta = \\dfrac{1}{2}\\). Hence the angle between \\(\\vec{a}\\) and \\(\\vec{c}\\) is \\(\\theta = \\dfrac{\\pi}{3}\\)."
+  },
+  {
+   "hash": "2aef3725b219bbc97b522f26a7a6a5a0dea3ea2c8feb00084b97054210f642c8",
+   "ref": "Q24",
+   "questionNumber": "24",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Evaluating Inverse Trigonometric Expressions",
+   "stem": "Find the value of \\(\\left[ \\sin^2 \\left\\{ \\cos^{-1}\\left(\\dfrac{3}{5}\\right) \\right\\} + \\tan^2 \\left\\{ \\sec^{-1}(3) \\right\\} \\right]\\).",
+   "solution": "Rewrite each square so that the inverse function cancels against its own function. Using \\(\\sin^2\\phi = 1 - \\cos^2\\phi\\) and \\(\\tan^2\\phi = \\sec^2\\phi - 1\\), the required value is \\(\\left[1 - \\cos^2\\left(\\cos^{-1}\\dfrac{3}{5}\\right)\\right] + \\left[\\sec^2\\left(\\sec^{-1} 3\\right) - 1\\right]\\). Now \\(\\cos\\left(\\cos^{-1}\\dfrac{3}{5}\\right) = \\dfrac{3}{5}\\) and \\(\\sec\\left(\\sec^{-1} 3\\right) = 3\\), so this is \\(\\left(1 - \\dfrac{9}{25}\\right) + (9 - 1) = \\dfrac{16}{25} + 8 = \\dfrac{216}{25}\\)."
+  },
+  {
+   "hash": "9f2f91d02e956d93e1c5934a15f2d60919dc1f34521dca9644b37cb8748be8cf",
+   "ref": "Q26",
+   "questionNumber": "26",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Substitution",
+   "stem": "Find :\n\\(\\int \\dfrac{x^{-1}}{(\\log x)^2 - 5 \\log x + 4}\\, dx\\)",
+   "solution": "Note that \\(x^{-1} = \\dfrac{1}{x}\\) is precisely the derivative of \\(\\log x\\), which invites the substitution \\(\\log x = t\\), so that \\(\\dfrac{1}{x}\\, dx = dt\\). The integral becomes \\(\\int \\dfrac{dt}{t^2 - 5t + 4}\\). Completing the square, \\(t^2 - 5t + 4 = \\left(t - \\dfrac{5}{2}\\right)^2 - \\left(\\dfrac{3}{2}\\right)^2\\), so with \\(\\int \\dfrac{du}{u^2 - a^2} = \\dfrac{1}{2a}\\log\\left|\\dfrac{u - a}{u + a}\\right| + C\\) and \\(a = \\dfrac{3}{2}\\) we get \\(\\dfrac{1}{3}\\log\\left|\\dfrac{t - \\frac{5}{2} - \\frac{3}{2}}{t - \\frac{5}{2} + \\frac{3}{2}}\\right| + C = \\dfrac{1}{3}\\log\\left|\\dfrac{t - 4}{t - 1}\\right| + C\\). Restoring \\(t = \\log x\\), the integral equals \\(\\dfrac{1}{3}\\log\\left|\\dfrac{\\log x - 4}{\\log x - 1}\\right| + C\\). (Partial fractions give the same thing, since \\(\\dfrac{1}{(t - 4)(t - 1)} = \\dfrac{1}{3}\\left[\\dfrac{1}{t - 4} - \\dfrac{1}{t - 1}\\right]\\).)"
+  },
+  {
+   "hash": "287583cbffc62cfc3a442b4452a382391579f9ebb65f5b20e1cc0fd61bdaed59",
+   "ref": "Q28",
+   "questionNumber": "28",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following linear programming problem graphically :\nMinimize \\(z = 600x + 400y\\),\nsubject to the constraints\n\\(x + y \\ge 8\\)\n\\(x + 2y \\le 16\\)\n\\(4x + y \\le 29\\)\n\\(x, y \\ge 0\\).",
+   "solution": "Draw the three lines \\(x + y = 8\\), \\(x + 2y = 16\\) and \\(4x + y = 29\\) in the first quadrant. The feasible region is the set of points on or above \\(x + y = 8\\) and on or below both \\(x + 2y = 16\\) and \\(4x + y = 29\\), with \\(x, y \\ge 0\\); it is a bounded triangle. Its corner points come from the pairwise intersections. Solving \\(x + y = 8\\) with \\(4x + y = 29\\) gives \\(3x = 21\\), so \\(x = 7\\), \\(y = 1\\), the point \\(A(7, 1)\\). Solving \\(x + 2y = 16\\) with \\(4x + y = 29\\) gives \\(y = 29 - 4x\\) and \\(x + 2(29 - 4x) = 16\\), so \\(x = 6\\), \\(y = 5\\), the point \\(B(6, 5)\\). On the \\(y\\)-axis both \\(x + y = 8\\) and \\(x + 2y = 16\\) pass through \\(C(0, 8)\\). Evaluating \\(z = 600x + 400y\\) at the corners: at \\(A(7, 1)\\), \\(z = 4200 + 400 = 4600\\); at \\(B(6, 5)\\), \\(z = 3600 + 2000 = 5600\\); at \\(C(0, 8)\\), \\(z = 0 + 3200 = 3200\\). The region is bounded, so the least of these values is the minimum. Hence \\(z\\) is minimum and equal to \\(3200\\) at \\(x = 0\\), \\(y = 8\\)."
+  },
+  {
+   "hash": "5b4de936aa821277c12d73c6ffc04261c50c872f8c2cfd4ae148eb9a184be2b5",
+   "ref": "Q33",
+   "questionNumber": "33",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "Find the area of the region bounded by the lines \\(x - 2y = 4\\), \\(x = -1\\), \\(x = 6\\) and x-axis, using integration.",
+   "solution": "Write the line as \\(y = \\dfrac{x - 4}{2}\\). It meets the \\(x\\)-axis at \\(x = 4\\), which lies between the bounding lines \\(x = -1\\) and \\(x = 6\\), so the region falls into two pieces: on \\([-1, 4]\\) the line is below the \\(x\\)-axis and on \\([4, 6]\\) it is above it. Areas add, so the negative piece is taken in modulus. Required area \\(= \\left|\\int\\limits_{-1}^{4} \\dfrac{x - 4}{2}\\, dx\\right| + \\int\\limits_{4}^{6} \\dfrac{x - 4}{2}\\, dx\\). Since \\(\\int \\dfrac{x - 4}{2}\\, dx = \\dfrac{(x - 4)^2}{4}\\), the first piece is \\(\\left|\\left[\\dfrac{(x - 4)^2}{4}\\right]_{-1}^{4}\\right| = \\left|0 - \\dfrac{25}{4}\\right| = \\dfrac{25}{4}\\) and the second is \\(\\left[\\dfrac{(x - 4)^2}{4}\\right]_{4}^{6} = \\dfrac{4}{4} - 0 = 1\\). Hence the required area is \\(\\dfrac{25}{4} + 1 = \\dfrac{29}{4}\\) square units."
+  },
+  {
+   "hash": "a98baa9b561a4072a4510f81edc8cf02098f51d72c4e9404e15dbe2fd45e348d",
+   "ref": "Q35",
+   "questionNumber": "35",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Equivalence Relations and Classes",
+   "stem": "A relation R on set \\(A = \\{x : -10 \\le x \\le 10, x \\in Z\\}\\) is defined as \\(R = \\{(x, y) : (x - y)\\) is divisible by \\(5\\}\\). Show that R is an equivalence relation. Also, write the equivalence class \\([5]\\).",
+   "solution": "[CBSE marking scheme: in the transitive step the printed solution adds \\(x - y = 5m\\) and \\(y - z = 5n\\) but records the sum as \\(5(m - n)\\); the sum is \\(5(m + n)\\). The conclusion is unaffected, since \\(x - z\\) is a multiple of \\(5\\) either way.] Here \\(A = \\{-10, -9, \\ldots, 9, 10\\}\\) and \\(R = \\{(x, y) : x - y \\text{ is divisible by } 5\\}\\).\nReflexive: for every \\(x \\in A\\), \\(x - x = 0 = 5 \\times 0\\), which is divisible by \\(5\\), so \\((x, x) \\in R\\) and \\(R\\) is reflexive.\nSymmetric: let \\((x, y) \\in R\\), so \\(x - y = 5m\\) for some integer \\(m\\). Then \\(y - x = 5(-m)\\) is also divisible by \\(5\\), so \\((y, x) \\in R\\) and \\(R\\) is symmetric.\nTransitive: let \\((x, y) \\in R\\) and \\((y, z) \\in R\\), so \\(x - y = 5m\\) and \\(y - z = 5n\\) for integers \\(m\\) and \\(n\\). Adding, \\(x - z = (x - y) + (y - z) = 5m + 5n = 5(m + n)\\), which is divisible by \\(5\\), so \\((x, z) \\in R\\) and \\(R\\) is transitive.\nBeing reflexive, symmetric and transitive, \\(R\\) is an equivalence relation on \\(A\\).\nFor the equivalence class of \\(5\\) we need those \\(x \\in A\\) for which \\(x - 5\\) is divisible by \\(5\\), that is, \\(x\\) is a multiple of \\(5\\). The multiples of \\(5\\) between \\(-10\\) and \\(10\\) inclusive give \\([5] = \\{-10, -5, 0, 5, 10\\}\\)."
+  }
+ ]
+}

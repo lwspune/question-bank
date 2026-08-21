@@ -1,0 +1,265 @@
+{
+ "paper": "65/3/3",
+ "year": 2026,
+ "paperId": "2026-65-3-3",
+ "markingScheme": "out/2026-65-3-3/ms/p00.png … p19.png",
+ "rows": [
+  {
+   "hash": "80621d933865bc16aef85a5e50af2c990ecaa1f68a360bb056ae83961c4ff718",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "Direction ratios of lines \\(l_1\\) and \\(l_2\\) respectively are \\(<1, 0, 0>\\) and \\(<0, -1, 0>\\). The direction ratios of the line perpendicular to both \\(l_1\\) and \\(l_2\\) are :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(<1, 1, 0>\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(<0, 0, -1>\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(<1, 1, 1>\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(<1, 0, -1>\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "A line perpendicular to two given lines has direction ratios given by the cross product of their direction ratios. Here \\(\\langle 1, 0, 0 \\rangle \\times \\langle 0, -1, 0 \\rangle = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & 0 & 0 \\\\ 0 & -1 & 0 \\end{vmatrix} = (0 \\cdot 0 - 0 \\cdot (-1))\\hat{i} - (1 \\cdot 0 - 0 \\cdot 0)\\hat{j} + (1 \\cdot (-1) - 0 \\cdot 0)\\hat{k} = -\\hat{k}\\). So the required direction ratios are \\(\\langle 0, 0, -1 \\rangle\\). This is geometrically obvious as well: the two given lines are along the x-axis and the y-axis, so a line perpendicular to both is along the z-axis. Checking the dot products, \\(\\langle 0, 0, -1 \\rangle \\cdot \\langle 1, 0, 0 \\rangle = 0\\) and \\(\\langle 0, 0, -1 \\rangle \\cdot \\langle 0, -1, 0 \\rangle = 0\\). Hence the answer is option (B) \\(\\langle 0, 0, -1 \\rangle\\)."
+  },
+  {
+   "hash": "37ce222d27f12381f3037f9a415d2ffc9161e1e5f3f1a92a85529d39cba2b94b",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "The domain of \\(\\cos^{-1} (4x + 1)\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\([-1, 1]\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\([-3, 5]\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\([-4, 4]\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\left[-\\dfrac{1}{2}, 0\\right]\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "The inverse cosine is defined only when its argument lies in \\([-1, 1]\\), so we need \\(-1 \\le 4x + 1 \\le 1\\). Subtracting 1 throughout gives \\(-2 \\le 4x \\le 0\\), and dividing by 4 gives \\(-\\dfrac{1}{2} \\le x \\le 0\\). Hence the domain is \\(\\left[-\\dfrac{1}{2}, 0\\right]\\), which is option (D) \\(\\left[-\\dfrac{1}{2}, 0\\right]\\)."
+  },
+  {
+   "hash": "8dd68632808d5b28bdc44802be7c8330c4a890cde9accd804dbc66c2068607ad",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "If a matrix X is such that \\(\\begin{bmatrix} 2 & 1 \\end{bmatrix} X = \\begin{bmatrix} 3 & 4 & 5 \\end{bmatrix}\\), then the order of matrix X is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(3 \\times 1\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(2 \\times 3\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(1 \\times 2\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(1 \\times 3\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Use the rule that an \\(m \\times n\\) matrix times an \\(n \\times p\\) matrix gives an \\(m \\times p\\) matrix. The left factor \\(\\begin{bmatrix} 2 & 1 \\end{bmatrix}\\) has order \\(1 \\times 2\\) and the product \\(\\begin{bmatrix} 3 & 4 & 5 \\end{bmatrix}\\) has order \\(1 \\times 3\\). If X has order \\(m \\times n\\), then for \\(\\begin{bmatrix} 2 & 1 \\end{bmatrix}X\\) to be defined we need \\(m = 2\\), and the product then has order \\(1 \\times n\\). Matching \\(1 \\times n\\) against \\(1 \\times 3\\) gives \\(n = 3\\). So the order of the matrix X is \\(2 \\times 3\\), which is option (B) \\(2 \\times 3\\)."
+  },
+  {
+   "hash": "a6c03fc6cd39a4b278700e71ca5fc57c2f65382bc311bb8af1a3094c2dbd2be4",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Adjoint and Inverse of a Matrix",
+   "stem": "If \\(A(\\text{adj } A) = \\begin{bmatrix} 3 & 0 & 0 \\\\ 0 & 3 & 0 \\\\ 0 & 0 & 3 \\end{bmatrix}\\), then the value of \\(|2A|\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(6\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(54\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(12\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(24\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "For a square matrix A of order n, \\(A(\\text{adj } A) = |A|I\\). The given product is 3 times the identity matrix of order 3, so \\(|A| = 3\\). Now use \\(|kA| = k^{n}|A|\\) for a matrix of order n; with \\(k = 2\\) and \\(n = 3\\) this gives \\(|2A| = 2^3 |A| = 8 \\times 3 = 24\\). (The common slip is to write \\(|2A| = 2|A| = 6\\), which ignores that all three rows are scaled.) Hence the value is 24, which is option (D) \\(24\\)."
+  },
+  {
+   "hash": "595c98f797e84e39ebc88c55b2619731fb8704a195b72a13e0efb1711ca92629",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "If \\(2 \\cos^{-1} x = y\\), then \\(\\dfrac{dy}{dx}\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(-2 \\sin^{-1} x\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-\\dfrac{1}{2} \\sin \\dfrac{y}{2}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{-1}{\\sqrt{1 - 2x^2}}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-2 \\operatorname{cosec} \\dfrac{y}{2}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Rewrite the relation so that x is the subject: \\(2\\cos^{-1} x = y\\) gives \\(\\cos^{-1} x = \\dfrac{y}{2}\\) and hence \\(x = \\cos\\dfrac{y}{2}\\). Differentiating with respect to y, \\(\\dfrac{dx}{dy} = -\\dfrac{1}{2}\\sin\\dfrac{y}{2}\\), so \\(\\dfrac{dy}{dx} = \\dfrac{1}{dx/dy} = \\dfrac{-2}{\\sin\\frac{y}{2}} = -2\\operatorname{cosec}\\dfrac{y}{2}\\). (The choice \\(-\\dfrac{1}{2}\\sin\\dfrac{y}{2}\\) is \\(\\dfrac{dx}{dy}\\), not \\(\\dfrac{dy}{dx}\\).) Hence the derivative is \\(-2\\operatorname{cosec}\\dfrac{y}{2}\\), which is option (D) \\(-2\\operatorname{cosec}\\dfrac{y}{2}\\)."
+  },
+  {
+   "hash": "df44626044ce775bd0868327227614adab2952d82f6cfeda022df86acf14cb7c",
+   "ref": "Q14",
+   "questionNumber": "14",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Integrals of Some Particular Functions",
+   "stem": "\\(\\int \\dfrac{\\cos x}{\\sqrt{\\sin^2 x + 1}}\\, dx\\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\tan^{-1} (\\sin x) + C\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\sin^{-1} (\\sin x) + C\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\log |\\sin x + \\sqrt{1 + \\sin^2 x}\\,| + C\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\log |\\sin x - \\sqrt{\\sin^2 x + 1}\\,| + C\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "The numerator is the derivative of \\(\\sin x\\), so substitute \\(t = \\sin x\\), giving \\(dt = \\cos x\\,dx\\) and \\(\\displaystyle\\int \\dfrac{dt}{\\sqrt{t^2 + 1}}\\). This is the standard form \\(\\displaystyle\\int \\dfrac{dt}{\\sqrt{t^2 + a^2}} = \\log\\left|t + \\sqrt{t^2 + a^2}\\right| + C\\) with \\(a = 1\\). Hence the integral is \\(\\log\\left|t + \\sqrt{t^2 + 1}\\right| + C\\), and restoring \\(t = \\sin x\\) gives \\(\\log\\left|\\sin x + \\sqrt{1 + \\sin^2 x}\\right| + C\\), which is option (C) \\(\\log\\left|\\sin x + \\sqrt{1 + \\sin^2 x}\\right| + C\\)."
+  },
+  {
+   "hash": "eee6f750a29fc417a928e4703725f78d62f5a58cb95876fadfa886c2ea6c13ea",
+   "ref": "Q22",
+   "questionNumber": "22",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Functions in Parametric Form",
+   "stem": "If \\(x = e^{\\sin^{-1} t}\\) and \\(y = e^{\\cos^{-1} t}\\), then find \\(\\dfrac{dy}{dx}\\) at \\(t = \\dfrac{1}{\\sqrt{2}}\\).",
+   "solution": "Differentiate x and y separately with respect to the parameter t. From \\(x = e^{\\sin^{-1} t}\\), \\(\\dfrac{dx}{dt} = \\dfrac{1}{\\sqrt{1 - t^2}}\\,e^{\\sin^{-1} t}\\), and from \\(y = e^{\\cos^{-1} t}\\), \\(\\dfrac{dy}{dt} = -\\dfrac{1}{\\sqrt{1 - t^2}}\\,e^{\\cos^{-1} t}\\). Dividing, the common factor \\(\\dfrac{1}{\\sqrt{1 - t^2}}\\) cancels and \\(\\dfrac{dy}{dx} = -\\dfrac{e^{\\cos^{-1} t}}{e^{\\sin^{-1} t}} = -e^{\\cos^{-1} t - \\sin^{-1} t}\\).\n\nAt \\(t = \\dfrac{1}{\\sqrt{2}}\\) both inverse functions equal \\(\\dfrac{\\pi}{4}\\), so the exponent is 0 and \\(\\left[\\dfrac{dy}{dx}\\right]_{t = 1/\\sqrt{2}} = -e^{0} = -1\\). (More generally \\(\\sin^{-1} t + \\cos^{-1} t = \\dfrac{\\pi}{2}\\), so \\(\\dfrac{dy}{dx} = -e^{\\frac{\\pi}{2} - 2\\sin^{-1} t}\\), which is \\(-1\\) exactly when \\(\\sin^{-1} t = \\dfrac{\\pi}{4}\\).)"
+  },
+  {
+   "hash": "113e6f2d46bea385de5c4ea46b04dfbe2a8d365fbc48760405568b27e3f333d4",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "Find the sub-interval of \\((0, \\infty)\\) in which \\(f(x) = x \\log x\\) is increasing.",
+   "solution": "The function \\(f(x) = x\\log x\\) is defined on \\((0, \\infty)\\). By the product rule, \\(f'(x) = 1 \\cdot \\log x + x \\cdot \\dfrac{1}{x} = 1 + \\log x\\). Setting \\(f'(x) = 0\\) gives \\(\\log x = -1\\), that is \\(x = \\dfrac{1}{e}\\). Since \\(\\log x\\) is increasing, \\(f'(x) = 1 + \\log x\\) is negative for \\(0 < x < \\dfrac{1}{e}\\) and positive for \\(x > \\dfrac{1}{e}\\). Hence f is increasing on \\(\\left(\\dfrac{1}{e}, \\infty\\right)\\). The interval \\(\\left[\\dfrac{1}{e}, \\infty\\right)\\) may equally be quoted, since \\(f'\\) vanishes only at the single endpoint \\(x = \\dfrac{1}{e}\\)."
+  },
+  {
+   "hash": "55c78fd6de432b197ecaa3edc4b905d49308a729eace236e874cd4fb4e467db8",
+   "ref": "Q28",
+   "questionNumber": "28",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "Evaluate :\n\n\\(\\int_{0}^{\\pi/2} \\dfrac{\\sin^2 x}{1 + \\sin 2x}\\, dx\\)",
+   "solution": "Let \\(I = \\displaystyle\\int_{0}^{\\pi/2} \\dfrac{\\sin^2 x}{1 + \\sin 2x}\\,dx\\). Apply the property \\(\\displaystyle\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a - x)\\,dx\\) with \\(a = \\dfrac{\\pi}{2}\\). This sends \\(\\sin^2 x\\) to \\(\\cos^2 x\\), while \\(\\sin 2\\left(\\dfrac{\\pi}{2} - x\\right) = \\sin(\\pi - 2x) = \\sin 2x\\) leaves the denominator unchanged, so \\(I = \\displaystyle\\int_{0}^{\\pi/2} \\dfrac{\\cos^2 x}{1 + \\sin 2x}\\,dx\\).\n\nAdding the two expressions for I, the numerators add to 1 and \\(2I = \\displaystyle\\int_{0}^{\\pi/2} \\dfrac{dx}{1 + \\sin 2x}\\). Rationalise the integrand by multiplying above and below by \\(1 - \\sin 2x\\): \\(\\dfrac{1}{1 + \\sin 2x} = \\dfrac{1 - \\sin 2x}{1 - \\sin^2 2x} = \\dfrac{1 - \\sin 2x}{\\cos^2 2x} = \\sec^2 2x - \\sec 2x\\tan 2x\\).\n\nAn antiderivative of this is \\(\\dfrac{\\tan 2x}{2} - \\dfrac{\\sec 2x}{2} = \\dfrac{\\sin 2x - 1}{2\\cos 2x}\\), and multiplying numerator and denominator by \\(1 + \\sin 2x\\) puts it in the equivalent form \\(\\dfrac{-\\cos 2x}{2\\left(1 + \\sin 2x\\right)}\\), which is the one to use: it is continuous on the whole of \\(\\left[0, \\dfrac{\\pi}{2}\\right]\\), whereas the first form is \\(\\dfrac{0}{0}\\) at \\(x = \\dfrac{\\pi}{4}\\).\n\nEvaluating, at \\(x = \\dfrac{\\pi}{2}\\) we get \\(\\dfrac{-\\cos \\pi}{2(1 + \\sin \\pi)} = \\dfrac{1}{2}\\), and at \\(x = 0\\) we get \\(\\dfrac{-1}{2}\\). Hence \\(2I = \\dfrac{1}{2} - \\left(-\\dfrac{1}{2}\\right) = 1\\), so \\(I = \\dfrac{1}{2}\\).\n\nA note on the middle step: the marking scheme writes this stage as the difference of two separate definite integrals, \\(\\displaystyle\\int_{0}^{\\pi/2}\\sec^2 2x\\,dx - \\int_{0}^{\\pi/2}\\sec 2x\\tan 2x\\,dx\\). Taken separately each of those diverges, because \\(\\cos 2x = 0\\) at the interior point \\(x = \\dfrac{\\pi}{4}\\); only their difference is finite. The original integrand is perfectly well behaved there, so nothing is wrong with the answer \\(\\dfrac{1}{2}\\) — but the two pieces must be recombined into the single continuous antiderivative above before the limits are put in."
+  },
+  {
+   "hash": "3aad3feb4a9bb8fb4072109894e7029cdc92b9cdf076ddcd307f496c919cf842",
+   "ref": "Q30a",
+   "questionNumber": "30 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Find the general solution of the differential equation \\((x^2 - y^2)\\, dx + 2xy\\, dy = 0\\).",
+   "solution": "Write the equation as \\(2xy\\,dy = -\\left(x^2 - y^2\\right)dx\\), that is \\(\\dfrac{dy}{dx} = \\dfrac{y^2 - x^2}{2xy}\\). The right side is unchanged when x and y are both scaled by the same factor, so the equation is homogeneous. Put \\(y = vx\\), so that \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\); the right side becomes \\(\\dfrac{v^2x^2 - x^2}{2x \\cdot vx} = \\dfrac{v^2 - 1}{2v}\\).\n\nHence \\(v + x\\dfrac{dv}{dx} = \\dfrac{v^2 - 1}{2v}\\), so \\(x\\dfrac{dv}{dx} = \\dfrac{v^2 - 1 - 2v^2}{2v} = -\\dfrac{1 + v^2}{2v}\\). Separating the variables, \\(\\displaystyle\\int \\dfrac{2v}{1 + v^2}\\,dv = -\\int \\dfrac{dx}{x}\\), which integrates to \\(\\log\\left|1 + v^2\\right| = -\\log|x| + \\log|c|\\), writing the constant of integration as \\(\\log|c|\\).\n\nTherefore \\(1 + v^2 = \\dfrac{c}{x}\\). Restoring \\(v = \\dfrac{y}{x}\\) gives \\(1 + \\dfrac{y^2}{x^2} = \\dfrac{c}{x}\\), and multiplying through by \\(x^2\\) gives the general solution \\(x^2 + y^2 = cx\\) — a family of circles through the origin with centres on the x-axis.\n\nAs a check, differentiating \\(x^2 + y^2 = cx\\) gives \\(2x + 2y\\dfrac{dy}{dx} = c = \\dfrac{x^2 + y^2}{x}\\), so \\(2x^2 + 2xy\\dfrac{dy}{dx} = x^2 + y^2\\) and \\(\\dfrac{dy}{dx} = \\dfrac{y^2 - x^2}{2xy}\\), as required."
+  },
+  {
+   "hash": "bf1602f49906480684ee88dde325ab93c26996eab83349e21b10318a0c04ac0a",
+   "ref": "Q30b",
+   "questionNumber": "30 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Variables Separable",
+   "stem": "Solve the differential equation \\(\\sin x \\cos y\\, dx + \\cos x \\sin y\\, dy = 0\\), given that \\(y = \\dfrac{\\pi}{4}\\) when \\(x = 0\\).",
+   "solution": "The equation \\(\\sin x\\cos y\\,dx + \\cos x\\sin y\\,dy = 0\\) separates at once. Dividing throughout by \\(\\cos x\\cos y\\) gives \\(\\tan x\\,dx + \\tan y\\,dy = 0\\), that is \\(\\displaystyle\\int \\tan y\\,dy = -\\int \\tan x\\,dx\\).\n\nSince \\(\\displaystyle\\int \\tan u\\,du = \\log|\\sec u|\\), this gives \\(\\log|\\sec y| = -\\log|\\sec x| + \\log|c|\\), so \\(\\log\\left|\\sec x\\sec y\\right| = \\log|c|\\) and hence \\(\\sec x\\sec y = c\\).\n\nApply the given condition \\(y = \\dfrac{\\pi}{4}\\) when \\(x = 0\\): here \\(\\sec 0 = 1\\) and \\(\\sec\\dfrac{\\pi}{4} = \\sqrt{2}\\), so \\(c = \\sqrt{2}\\). The particular solution is \\(\\sec x\\sec y = \\sqrt{2}\\), equivalently \\(\\cos x\\cos y = \\dfrac{1}{\\sqrt{2}}\\).\n\nAs a check, differentiating \\(\\cos x\\cos y = \\dfrac{1}{\\sqrt{2}}\\) gives \\(-\\sin x\\cos y\\,dx - \\cos x\\sin y\\,dy = 0\\), which is exactly the given equation."
+  },
+  {
+   "hash": "3349d647eda15074d63f244a72d729b2615e18d8e305e6f47d8248b30e9a280b",
+   "ref": "Q33",
+   "questionNumber": "33",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "Show that a function \\(f : R_+ \\to A \\subset N\\), defined as \\(f(x) = 4x^2 + 12x + 15\\) is one-one. Find set A so that f is onto where \\(R_+ = [0, \\infty)\\). Also, find if there exists \\(a \\in R_+\\) such that \\(f(a) = 7\\). Justify.",
+   "solution": "CBSE's marking scheme records that \"f defined in the question is not a function\", and directs that full marks be awarded to every candidate who attempted it. The reason is the codomain. The domain is stated as \\(R_+ = [0, \\infty)\\), so x ranges over all non-negative REAL numbers, but the codomain is a subset A of the natural numbers N. For a rule to define a function into A, every image must lie in A, and \\(4x^2 + 12x + 15\\) is not a natural number for most real x — at \\(x = 0.1\\), for instance, it equals \\(16.24\\). So no subset A of N can serve as a codomain here, and the map as printed is not a function into N at all. The three things the question asks for are worked out below, reading the codomain as the set of actual images rather than as a subset of N.\n\nOne-one. Take \\(x_1, x_2 \\in R_+\\) with \\(f(x_1) = f(x_2)\\), that is \\(4x_1^2 + 12x_1 + 15 = 4x_2^2 + 12x_2 + 15\\). Cancelling 15 and dividing by 4 gives \\(x_1^2 - x_2^2 + 3\\left(x_1 - x_2\\right) = 0\\), which factorises as \\(\\left(x_1 - x_2\\right)\\left(x_1 + x_2 + 3\\right) = 0\\). Since \\(x_1, x_2 \\ge 0\\), the second factor is at least 3 and cannot vanish, so \\(x_1 = x_2\\) and f is one-one.\n\nThe set of images. Completing the square, \\(f(x) = 4x^2 + 12x + 15 = (2x + 3)^2 + 6\\). As x runs over \\([0, \\infty)\\), \\(2x + 3\\) runs over \\([3, \\infty)\\), so \\((2x + 3)^2\\) runs over \\([9, \\infty)\\) and \\(f(x)\\) runs over \\([15, \\infty)\\). Solving \\(y = (2x + 3)^2 + 6\\) for x confirms it: \\(x = \\dfrac{\\sqrt{y - 6} - 3}{2}\\), which is real and non-negative exactly when \\(y \\ge 15\\). So f is onto if and only if the codomain is taken to be \\(A = [15, \\infty)\\) — and this is precisely where the question breaks down, because that interval is not a subset of N.\n\nIs there \\(a \\in R_+\\) with \\(f(a) = 7\\)? No. The smallest value f takes on \\(R_+\\) is \\(f(0) = 15\\), and \\(7 < 15\\). Solving directly says the same thing: \\(4a^2 + 12a + 15 = 7\\) gives \\(4a^2 + 12a + 8 = 0\\), that is \\(a^2 + 3a + 2 = 0\\) and \\((a + 1)(a + 2) = 0\\), whose roots \\(a = -1\\) and \\(a = -2\\) both lie outside \\(R_+\\). So no such a exists."
+  },
+  {
+   "hash": "90c148373f2aca6a68e040fb4c6be3943546dd771afe8db6ccf4fcb3d0910af3",
+   "ref": "Q34",
+   "questionNumber": "34",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following Linear Programming Problem graphically :\n\nMaximize \\(Z = 8x + 8y\\)\n\nsubject to the constraints\n\\(x - 20 \\le 0\\)\n\\(2x + 3y \\le 120\\)\n\\(2x + y \\le 60\\)\n\\(x \\ge 0,\\ y \\ge 0\\)",
+   "solution": "[CBSE marking scheme: the corner-point table is headed \"Value of Z = 600x + 400y\", which is not this paper's objective function; \\(600x + 400y\\) is the objective of the linear programming question on the sibling paper 65/3/1. Every value tabulated is in fact computed from the objective printed in the question, \\(Z = 8x + 8y\\) — at \\((20, 0)\\) it gives 160, not 12000 — so only the column heading is wrong and the answer \\(Z_{\\max} = 360\\) at \\((15, 30)\\) stands.]\n\nDraw the lines \\(x = 20\\), \\(2x + 3y = 120\\) and \\(2x + y = 60\\) in the first quadrant. Testing the origin satisfies all three inequalities, so the feasible region is the part of the first quadrant lying to the left of \\(x = 20\\) and below both slant lines. It is a bounded pentagon.\n\nIts corner points come from intersecting the boundary lines in pairs. The origin \\(O(0, 0)\\) is one. The line \\(x = 20\\) meets the x-axis at \\((20, 0)\\), which satisfies both slant constraints. The lines \\(x = 20\\) and \\(2x + y = 60\\) meet where \\(40 + y = 60\\), giving \\((20, 20)\\); there \\(2x + 3y = 40 + 60 = 100 \\le 120\\), so it is feasible. The lines \\(2x + y = 60\\) and \\(2x + 3y = 120\\) meet where subtracting gives \\(2y = 60\\), so \\(y = 30\\) and then \\(2x = 30\\), giving \\((15, 30)\\); there \\(x = 15 \\le 20\\), so it is feasible. Finally \\(2x + 3y = 120\\) meets the y-axis at \\((0, 40)\\), where \\(2x + y = 40 \\le 60\\). So the corners are \\((0, 0)\\), \\((20, 0)\\), \\((20, 20)\\), \\((15, 30)\\) and \\((0, 40)\\).\n\nNow evaluate \\(Z = 8x + 8y = 8(x + y)\\) at each. At \\((0, 0)\\), \\(Z = 0\\); at \\((20, 0)\\), \\(Z = 160\\); at \\((20, 20)\\), \\(Z = 320\\); at \\((15, 30)\\), \\(Z = 360\\); at \\((0, 40)\\), \\(Z = 320\\).\n\nThe feasible region is bounded, so Z attains its maximum at a corner point. Hence \\(Z_{\\max} = 360\\), attained at the point \\((15, 30)\\). (Since Z is a multiple of \\(x + y\\), this is just the feasible point that maximises \\(x + y\\), namely \\(15 + 30 = 45\\).)"
+  }
+ ]
+}

@@ -1,0 +1,979 @@
+{
+ "paper": "65/1/1",
+ "year": 2023,
+ "paperId": "2023-65-1-1",
+ "markingScheme": "out/2023-65-1-1/ms/p00.png … p16.png",
+ "rows": [
+  {
+   "hash": "3996dd6fc3b4dd787bf0a2ce1f951331099f84f44558e60f3b831de3afa0c118",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Elementary Operations and Inverse of a Matrix",
+   "stem": "If for a square matrix A, \\(A^2 - 3A + I = O\\) and \\(A^{-1} = xA + yI\\), then the value of x + y is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(-2\\)"
+    },
+    {
+     "label": "B",
+     "text": "2"
+    },
+    {
+     "label": "C",
+     "text": "3"
+    },
+    {
+     "label": "D",
+     "text": "\\(-3\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Multiplying \\(A^2 - 3A + I = O\\) throughout by \\(A^{-1}\\) gives \\(A - 3I + A^{-1} = O\\), so \\(A^{-1} = 3I - A\\). Comparing this with \\(A^{-1} = xA + yI\\) gives \\(x = -1\\) and \\(y = 3\\). Hence \\(x + y = -1 + 3 = 2\\), which is option 2."
+  },
+  {
+   "hash": "15f7af48ab36d09d701f320df71504c8c3f75ccd82248f8ebb0ef49725865976",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Determinant and its Properties",
+   "stem": "If \\(|A| = 2\\), where A is a \\(2 \\times 2\\) matrix, then \\(|4A^{-1}|\\) equals :",
+   "options": [
+    {
+     "label": "A",
+     "text": "4"
+    },
+    {
+     "label": "B",
+     "text": "2"
+    },
+    {
+     "label": "C",
+     "text": "8"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{1}{32}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "For a \\(2 \\times 2\\) matrix a scalar comes out of the determinant squared: \\(|kA| = k^2|A|\\). Also \\(|A^{-1}| = \\frac{1}{|A|} = \\frac{1}{2}\\). Therefore \\(|4A^{-1}| = 4^2 \\times \\frac{1}{2} = 16 \\times \\frac{1}{2} = 8\\), which is option 8."
+  },
+  {
+   "hash": "8aba49d877fc2bb5d51f9e12e615dcfd966af59691063d32992c86f795dfa2ba",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Adjoint and Inverse of a Matrix",
+   "stem": "Let A be a \\(3 \\times 3\\) matrix such that \\(|\\text{adj } A| = 64\\). Then \\(|A|\\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "8 only"
+    },
+    {
+     "label": "B",
+     "text": "\\(-8\\) only"
+    },
+    {
+     "label": "C",
+     "text": "64"
+    },
+    {
+     "label": "D",
+     "text": "8 or \\(-8\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "For an \\(n \\times n\\) matrix, \\(|\\text{adj } A| = |A|^{n-1}\\). Here \\(n = 3\\), so \\(|A|^2 = 64\\) and hence \\(|A| = \\pm 8\\). Nothing in the question rules out either sign, so both are admissible and the answer is option 8 or \\(-8\\)."
+  },
+  {
+   "hash": "4b29f7c850579f5bdf83273db2e82f582fbe3e4ad7322ffc8aa7bb9d7861c064",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Addition and Scalar Multiplication",
+   "stem": "If \\(A = \\begin{bmatrix} 3 & 4 \\\\ 5 & 2 \\end{bmatrix}\\) and 2A + B is a null matrix, then B is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\begin{bmatrix} 6 & 8 \\\\ 10 & 4 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\begin{bmatrix} -6 & -8 \\\\ -10 & -4 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\begin{bmatrix} 5 & 8 \\\\ 10 & 3 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\begin{bmatrix} -5 & -8 \\\\ -10 & -3 \\end{bmatrix}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "\\(2A + B\\) being a null matrix means \\(B = -2A\\). Hence \\(B = -2\\begin{bmatrix} 3 & 4 \\\\ 5 & 2 \\end{bmatrix} = \\begin{bmatrix} -6 & -8 \\\\ -10 & -4 \\end{bmatrix}\\), which is the option \\(\\begin{bmatrix} -6 & -8 \\\\ -10 & -4 \\end{bmatrix}\\)."
+  },
+  {
+   "hash": "2bf9786c8ac634819817b36ad1f1e13d99d66165569ac85109abf936fc2a616d",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Parts",
+   "stem": "If \\(\\frac{d}{dx}(f(x)) = \\log x\\), then f(x) equals :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(-\\frac{1}{x} + C\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(x(\\log x - 1) + C\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(x(\\log x + x) + C\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{1}{x} + C\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Here \\(f(x) = \\int \\log x \\, dx\\). Integrating by parts with \\(\\log x\\) as the first function and 1 as the second, \\(\\int \\log x \\cdot 1 \\, dx = x \\log x - \\int x \\cdot \\frac{1}{x}\\,dx = x\\log x - x + C\\). Hence \\(f(x) = x(\\log x - 1) + C\\), which is option \\(x(\\log x - 1) + C\\)."
+  },
+  {
+   "hash": "c6eeedaf152549bb0b413af27f59d45129a5b0b36a516e651f06148831939f56",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals and the Fundamental Theorem",
+   "stem": "\\(\\int\\limits_{0}^{\\frac{\\pi}{6}} \\sec^2\\left(x - \\frac{\\pi}{6}\\right) dx\\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{1}{\\sqrt{3}}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-\\frac{1}{\\sqrt{3}}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\sqrt{3}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-\\sqrt{3}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "An antiderivative of \\(\\sec^2\\left(x - \\frac{\\pi}{6}\\right)\\) is \\(\\tan\\left(x - \\frac{\\pi}{6}\\right)\\). Evaluating between the limits, \\(\\tan\\left(\\frac{\\pi}{6} - \\frac{\\pi}{6}\\right) - \\tan\\left(0 - \\frac{\\pi}{6}\\right) = \\tan 0 + \\tan\\frac{\\pi}{6} = 0 + \\frac{1}{\\sqrt{3}}\\). So the integral equals \\(\\frac{1}{\\sqrt{3}}\\), which is that option."
+  },
+  {
+   "hash": "343ac6815b3e3601cdfbbbefe4f115b9e5c10d68f7900412dc6e86b056796355",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Order and Degree of a Differential Equation",
+   "stem": "The sum of the order and the degree of the differential equation \\(\\frac{d^2y}{dx^2} + \\left(\\frac{dy}{dx}\\right)^3 = \\sin y\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "5"
+    },
+    {
+     "label": "B",
+     "text": "2"
+    },
+    {
+     "label": "C",
+     "text": "3"
+    },
+    {
+     "label": "D",
+     "text": "4"
+    }
+   ],
+   "answer": "C",
+   "solution": "The highest order derivative appearing is \\(\\frac{d^2y}{dx^2}\\), so the order is 2. The equation is a polynomial in the derivatives, and the power to which the highest order derivative is raised is 1, so the degree is 1. The term \\(\\sin y\\) involves \\(y\\) and not a derivative, so it does not affect the degree. The required sum is \\(2 + 1 = 3\\), which is option 3."
+  },
+  {
+   "hash": "635a22bc9603b3b06ed758ec3e47180a663626895b44275279cdb31bac9b137d",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "The value of p for which the vectors \\(2\\hat{i} + p\\hat{j} + \\hat{k}\\) and \\(-4\\hat{i} - 6\\hat{j} + 26\\hat{k}\\) are perpendicular to each other, is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "3"
+    },
+    {
+     "label": "B",
+     "text": "\\(-3\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(-\\frac{17}{3}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{17}{3}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Two vectors are perpendicular exactly when their scalar product vanishes. Here \\((2)(-4) + (p)(-6) + (1)(26) = 0\\), i.e. \\(-8 - 6p + 26 = 0\\), so \\(6p = 18\\) and \\(p = 3\\), which is option 3."
+  },
+  {
+   "hash": "388244e43e3b85493c59d65f3e899df590e9c4d893d11cfe77c5dc51253a4eb3",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "The value of \\((\\hat{i} \\times \\hat{j}) \\cdot \\hat{j} + (\\hat{j} \\times \\hat{i}) \\cdot \\hat{k}\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "2"
+    },
+    {
+     "label": "B",
+     "text": "0"
+    },
+    {
+     "label": "C",
+     "text": "1"
+    },
+    {
+     "label": "D",
+     "text": "\\(-1\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Using the standard cross products, \\(\\hat{i} \\times \\hat{j} = \\hat{k}\\) and \\(\\hat{j} \\times \\hat{i} = -\\hat{k}\\). Hence \\((\\hat{i} \\times \\hat{j}) \\cdot \\hat{j} = \\hat{k} \\cdot \\hat{j} = 0\\) because \\(\\hat{k}\\) and \\(\\hat{j}\\) are perpendicular, while \\((\\hat{j} \\times \\hat{i}) \\cdot \\hat{k} = -\\hat{k} \\cdot \\hat{k} = -1\\). The sum is \\(0 + (-1) = -1\\), which is option \\(-1\\)."
+  },
+  {
+   "hash": "3fa5b861a8477b529b28220b0e3be318f1b6acaf5f22ea62298b74c902172fef",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Addition of Vectors",
+   "stem": "If \\(\\vec{a} + \\vec{b} = \\hat{i}\\) and \\(\\vec{a} = 2\\hat{i} - 2\\hat{j} + 2\\hat{k}\\), then \\(|\\vec{b}|\\) equals :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\sqrt{14}\\)"
+    },
+    {
+     "label": "B",
+     "text": "3"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\sqrt{12}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\sqrt{17}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "From \\(\\vec{a} + \\vec{b} = \\hat{i}\\) we get \\(\\vec{b} = \\hat{i} - \\vec{a} = \\hat{i} - (2\\hat{i} - 2\\hat{j} + 2\\hat{k}) = -\\hat{i} + 2\\hat{j} - 2\\hat{k}\\). Hence \\(|\\vec{b}| = \\sqrt{(-1)^2 + 2^2 + (-2)^2} = \\sqrt{9} = 3\\), which is option 3."
+  },
+  {
+   "hash": "51829bc8d9c2eb694a4d2c590c1347466fa1f87da0884fa7ed6a0dc056bbfa0b",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "Direction cosines of the line \\(\\frac{x - 1}{2} = \\frac{1 - y}{3} = \\frac{2z - 1}{12}\\) are :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{2}{7}, \\frac{3}{7}, \\frac{6}{7}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{2}{\\sqrt{157}}, -\\frac{3}{\\sqrt{157}}, \\frac{12}{\\sqrt{157}}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{2}{7}, -\\frac{3}{7}, -\\frac{6}{7}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{2}{7}, -\\frac{3}{7}, \\frac{6}{7}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Put the line in standard symmetric form first. Since \\(\\frac{1 - y}{3} = \\frac{y - 1}{-3}\\) and \\(\\frac{2z - 1}{12} = \\frac{z - \\frac{1}{2}}{6}\\), the line is \\(\\frac{x - 1}{2} = \\frac{y - 1}{-3} = \\frac{z - \\frac{1}{2}}{6}\\). Its direction ratios are therefore \\(2, -3, 6\\), whose magnitude is \\(\\sqrt{4 + 9 + 36} = 7\\). Dividing by 7, the direction cosines are \\(\\frac{2}{7}, -\\frac{3}{7}, \\frac{6}{7}\\), which is that option."
+  },
+  {
+   "hash": "7063d51238b1f65da59d9694ef16acb87630a95479ee8cc41da013c34f7a6ebf",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "If \\(P\\left(\\frac{A}{B}\\right) = 0{\\cdot}3\\), \\(P(A) = 0{\\cdot}4\\) and \\(P(B) = 0{\\cdot}8\\), then \\(P\\left(\\frac{B}{A}\\right)\\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0{\\cdot}6\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(0{\\cdot}3\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(0{\\cdot}06\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(0{\\cdot}4\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "From the multiplication rule, \\(P(A \\cap B) = P\\left(\\frac{A}{B}\\right) \\cdot P(B) = 0{\\cdot}3 \\times 0{\\cdot}8 = 0{\\cdot}24\\). Hence \\(P\\left(\\frac{B}{A}\\right) = \\frac{P(A \\cap B)}{P(A)} = \\frac{0{\\cdot}24}{0{\\cdot}4} = 0{\\cdot}6\\), which is option \\(0{\\cdot}6\\)."
+  },
+  {
+   "hash": "14b7545d4371d4b589751eb08b0643ff39265a70798e747b2e550a00705afdae",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Continuity",
+   "stem": "The value of k for which \\(f(x) = \\begin{cases} 3x + 5, & x \\ge 2 \\\\ kx^2, & x < 2 \\end{cases}\\) is a continuous function, is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(-\\frac{11}{4}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{4}{11}\\)"
+    },
+    {
+     "label": "C",
+     "text": "11"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{11}{4}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Each piece is a polynomial, so continuity can only fail at the junction \\(x = 2\\). There \\(f(2) = 3(2) + 5 = 11\\), which is also the right-hand limit, while the left-hand limit is \\(\\lim_{x \\to 2^-} kx^2 = 4k\\). For continuity the two must agree, so \\(4k = 11\\) and \\(k = \\frac{11}{4}\\), which is option \\(\\frac{11}{4}\\)."
+  },
+  {
+   "hash": "3a17daf057f82e4985262acebb30567483fc6f744d9acceaa8619bbf5fdfa222",
+   "ref": "Q14",
+   "questionNumber": "14",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "If \\(A = \\begin{bmatrix} 0 & 1 \\\\ -1 & 0 \\end{bmatrix}\\) and \\((3I + 4A)(3I - 4A) = x^2 I\\), then the value(s) x is/are :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\pm \\sqrt{7}\\)"
+    },
+    {
+     "label": "B",
+     "text": "0"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\pm 5\\)"
+    },
+    {
+     "label": "D",
+     "text": "25"
+    }
+   ],
+   "answer": "C",
+   "solution": "Since \\(I\\) commutes with \\(A\\), the middle terms cancel: \\((3I + 4A)(3I - 4A) = 9I - 12A + 12A - 16A^2 = 9I - 16A^2\\). Now \\(A^2 = \\begin{bmatrix} 0 & 1 \\\\ -1 & 0 \\end{bmatrix}\\begin{bmatrix} 0 & 1 \\\\ -1 & 0 \\end{bmatrix} = \\begin{bmatrix} -1 & 0 \\\\ 0 & -1 \\end{bmatrix} = -I\\). Hence the product is \\(9I + 16I = 25I\\), so \\(x^2 I = 25 I\\), giving \\(x^2 = 25\\) and \\(x = \\pm 5\\), which is option \\(\\pm 5\\)."
+  },
+  {
+   "hash": "f3aedd8f6bb577f1a3dd41c1bef2573eb7fdd2633774f21adce27730ff0cd022",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Variables Separable",
+   "stem": "The general solution of the differential equation \\(x \\, dy - (1 + x^2) \\, dx = dx\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(y = 2x + \\frac{x^3}{3} + C\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(y = 2 \\log x + \\frac{x^3}{3} + C\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(y = \\frac{x^2}{2} + C\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(y = 2 \\log x + \\frac{x^2}{2} + C\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Collect the \\(dx\\) terms: \\(x\\,dy = (1 + x^2)dx + dx = (2 + x^2)dx\\), so \\(dy = \\left(\\frac{2}{x} + x\\right)dx\\). Integrating both sides, \\(y = 2\\log x + \\frac{x^2}{2} + C\\), which is option \\(y = 2 \\log x + \\frac{x^2}{2} + C\\)."
+  },
+  {
+   "hash": "d9cb62054cbe5f4c965e9f98a45887d1b3a7daff23050210ca3fe097a628ac06",
+   "ref": "Q16",
+   "questionNumber": "16",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "If \\(f(x) = a(x - \\cos x)\\) is strictly decreasing in \\(\\mathbb{R}\\), then 'a' belongs to",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\{0\\}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\((0, \\infty)\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\((-\\infty, 0)\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\((-\\infty, \\infty)\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Differentiating, \\(f'(x) = a(1 + \\sin x)\\). Since \\(1 + \\sin x \\ge 0\\) for every real \\(x\\), the sign of \\(f'\\) is the sign of \\(a\\). The factor \\(1 + \\sin x\\) vanishes only at the isolated points \\(x = \\frac{3\\pi}{2} + 2n\\pi\\), which does not spoil strict monotonicity. So \\(f\\) is strictly decreasing on \\(\\mathbb{R}\\) precisely when \\(a < 0\\); \\(a = 0\\) makes \\(f\\) constant and \\(a > 0\\) makes it increasing. Hence \\(a \\in (-\\infty, 0)\\), which is that option."
+  },
+  {
+   "hash": "5b44dc965353113d188344f93e2007f407f2bdd178dab2efedecbf85b127b650",
+   "ref": "Q17",
+   "questionNumber": "17",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "The corner points of the feasible region in the graphical representation of a linear programming problem are (2, 72), (15, 20) and (40, 15). If z = 18x + 9y be the objective function, then :",
+   "options": [
+    {
+     "label": "A",
+     "text": "z is maximum at (2, 72), minimum at (15, 20)"
+    },
+    {
+     "label": "B",
+     "text": "z is maximum at (15, 20), minimum at (40, 15)"
+    },
+    {
+     "label": "C",
+     "text": "z is maximum at (40, 15), minimum at (15, 20)"
+    },
+    {
+     "label": "D",
+     "text": "z is maximum at (40, 15), minimum at (2, 72)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Evaluate \\(z = 18x + 9y\\) at each corner point. At \\((2, 72)\\), \\(z = 36 + 648 = 684\\); at \\((15, 20)\\), \\(z = 270 + 180 = 450\\); at \\((40, 15)\\), \\(z = 720 + 135 = 855\\). The largest value is 855 and the smallest is 450, so \\(z\\) is maximum at \\((40, 15)\\) and minimum at \\((15, 20)\\), which is that option."
+  },
+  {
+   "hash": "4007bff9f96aaf96150a70736e8fa04a9bc67a2d62bec054ec1b24ae4b67a3a7",
+   "ref": "Q18",
+   "questionNumber": "18",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "The number of corner points of the feasible region determined by the constraints \\(x - y \\ge 0\\), \\(2y \\le x + 2\\), \\(x \\ge 0\\), \\(y \\ge 0\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "2"
+    },
+    {
+     "label": "B",
+     "text": "3"
+    },
+    {
+     "label": "C",
+     "text": "4"
+    },
+    {
+     "label": "D",
+     "text": "5"
+    }
+   ],
+   "answer": "A",
+   "solution": "The constraints say \\(y \\le x\\), \\(y \\le \\frac{x + 2}{2}\\), \\(x \\ge 0\\) and \\(y \\ge 0\\). The lines \\(y = x\\), \\(x = 0\\) and \\(y = 0\\) all meet at \\((0, 0)\\), which is feasible. The lines \\(y = x\\) and \\(2y = x + 2\\) meet where \\(2x = x + 2\\), that is at \\((2, 2)\\), and this satisfies every constraint. The line \\(2y = x + 2\\) meets \\(y = 0\\) at \\((-2, 0)\\) and meets \\(x = 0\\) at \\((0, 1)\\), and neither point is feasible. For \\(x > 2\\) the binding upper boundary is \\(2y = x + 2\\) and the region runs off to infinity, so no further corner arises. The feasible region therefore has just the 2 corner points \\((0, 0)\\) and \\((2, 2)\\), which is option 2."
+  },
+  {
+   "hash": "5a3f6ac082f9dd4728be1acb27c84e0d2ea19dc3b6f03010b9f8543fbe95fdc1",
+   "ref": "Q19",
+   "questionNumber": "19",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "Assertion (A) : The range of the function \\(f(x) = 2 \\sin^{-1} x + \\frac{3\\pi}{2}\\), where \\(x \\in [-1, 1]\\), is \\(\\left[\\frac{\\pi}{2}, \\frac{5\\pi}{2}\\right]\\).\n\nReason (R) : The range of the principal value branch of \\(\\sin^{-1}(x)\\) is \\([0, \\pi]\\).",
+   "context": "Questions number 19 and 20 are Assertion and Reason based questions carrying 1 mark each. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (a), (b), (c) and (d) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true and Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false and Reason (R) is true."
+    }
+   ],
+   "answer": "C",
+   "solution": "For \\(x \\in [-1, 1]\\), \\(\\sin^{-1}x\\) takes every value in \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\), so \\(2\\sin^{-1}x \\in [-\\pi, \\pi]\\) and \\(f(x) = 2\\sin^{-1}x + \\frac{3\\pi}{2}\\) ranges over \\(\\left[-\\pi + \\frac{3\\pi}{2}, \\ \\pi + \\frac{3\\pi}{2}\\right] = \\left[\\frac{\\pi}{2}, \\frac{5\\pi}{2}\\right]\\). The Assertion is therefore true. The Reason claims the principal value branch of \\(\\sin^{-1}\\) is \\([0, \\pi]\\), but that is the range of \\(\\cos^{-1}\\); the range of \\(\\sin^{-1}\\) is \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\), so the Reason is false. Hence the correct choice is that Assertion (A) is true and Reason (R) is false."
+  },
+  {
+   "hash": "be21a30c59aa30f0685ff2aa06d21d4a5044ea640b8afeb0b00bec0af7a2db7f",
+   "ref": "Q20",
+   "questionNumber": "20",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Assertion (A) : Equation of a line passing through the points (1, 2, 3) and \\((3, -1, 3)\\) is \\(\\frac{x - 3}{2} = \\frac{y + 1}{3} = \\frac{z - 3}{0}\\).\n\nReason (R) : Equation of a line passing through points \\((x_1, y_1, z_1)\\), \\((x_2, y_2, z_2)\\) is given by \\(\\frac{x - x_1}{x_2 - x_1} = \\frac{y - y_1}{y_2 - y_1} = \\frac{z - z_1}{z_2 - z_1}\\).",
+   "context": "Questions number 19 and 20 are Assertion and Reason based questions carrying 1 mark each. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (a), (b), (c) and (d) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true and Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false and Reason (R) is true."
+    }
+   ],
+   "answer": "D",
+   "solution": "The direction ratios of the line through \\((1, 2, 3)\\) and \\((3, -1, 3)\\) are \\(3 - 1 = 2\\), \\(-1 - 2 = -3\\) and \\(3 - 3 = 0\\). Taking \\((3, -1, 3)\\) as the fixed point, the equation is \\(\\frac{x - 3}{2} = \\frac{y + 1}{-3} = \\frac{z - 3}{0}\\). The Assertion prints \\(+3\\) as the second denominator instead of \\(-3\\), so the Assertion is false. The Reason merely states the standard two-point form of a line in space, which is correct, so the Reason is true. Hence the correct choice is that Assertion (A) is false and Reason (R) is true."
+  },
+  {
+   "hash": "2f3cbebf5a8dfb64fb78a3e758f3433565e7df6624a7dfb970e056b1737dce3f",
+   "ref": "Q21a",
+   "questionNumber": "21 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "A function \\(f : A \\to B\\) defined as \\(f(x) = 2x\\) is both one-one and onto. If \\(A = \\{1, 2, 3, 4\\}\\), then find the set B.",
+   "solution": "Because \\(f\\) is onto, every element of B is an image, and because \\(f\\) is one-one those images are distinct. So B is exactly the set of values \\(f\\) takes on A. Computing them, \\(f(1) = 2\\), \\(f(2) = 4\\), \\(f(3) = 6\\) and \\(f(4) = 8\\). Hence \\(B = \\{2, 4, 6, 8\\}\\)."
+  },
+  {
+   "hash": "c9c66d74110c47b2678eabf9a5087ab2fdd4e497663b4f48bb22e8e7f431c5e1",
+   "ref": "Q21b",
+   "questionNumber": "21 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Evaluating Inverse Trigonometric Expressions",
+   "stem": "Evaluate :\n\\(\\sin^{-1}\\left(\\sin \\frac{3\\pi}{4}\\right) + \\cos^{-1}\\left(\\cos \\frac{3\\pi}{4}\\right) + \\tan^{-1}(1)\\)",
+   "solution": "Take the three terms in turn.\nSince \\(\\frac{3\\pi}{4}\\) does not lie in the principal branch \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\) of \\(\\sin^{-1}\\), write \\(\\sin\\frac{3\\pi}{4} = \\sin\\left(\\pi - \\frac{3\\pi}{4}\\right) = \\sin\\frac{\\pi}{4}\\), so \\(\\sin^{-1}\\left(\\sin\\frac{3\\pi}{4}\\right) = \\frac{\\pi}{4}\\).\nSince \\(\\frac{3\\pi}{4}\\) does lie in \\([0, \\pi]\\), which is the principal branch of \\(\\cos^{-1}\\), \\(\\cos^{-1}\\left(\\cos\\frac{3\\pi}{4}\\right) = \\frac{3\\pi}{4}\\).\nFinally \\(\\tan^{-1}(1) = \\frac{\\pi}{4}\\).\nAdding, the required value is \\(\\frac{\\pi}{4} + \\frac{3\\pi}{4} + \\frac{\\pi}{4} = \\frac{5\\pi}{4}\\)."
+  },
+  {
+   "hash": "c5207b6441dae57c44355cd44c7096c2197676b2eed0ba8e51adbaf6d2ed7744",
+   "ref": "Q22",
+   "questionNumber": "22",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Types of Vectors",
+   "stem": "Find all the vectors of magnitude \\(3\\sqrt{3}\\) which are collinear to vector \\(\\hat{i} + \\hat{j} + \\hat{k}\\).",
+   "solution": "Since \\(|\\hat{i} + \\hat{j} + \\hat{k}| = \\sqrt{1 + 1 + 1} = \\sqrt{3}\\), the unit vector along it is \\(\\frac{1}{\\sqrt{3}}\\left(\\hat{i} + \\hat{j} + \\hat{k}\\right)\\). A vector collinear with it and of magnitude \\(3\\sqrt{3}\\) is \\(\\pm\\, 3\\sqrt{3} \\cdot \\frac{1}{\\sqrt{3}}\\left(\\hat{i} + \\hat{j} + \\hat{k}\\right) = \\pm\\, 3\\left(\\hat{i} + \\hat{j} + \\hat{k}\\right)\\). Collinear permits the opposite sense as well, so both signs are kept: the required vectors are \\(3\\hat{i} + 3\\hat{j} + 3\\hat{k}\\) and \\(-3\\hat{i} - 3\\hat{j} - 3\\hat{k}\\)."
+  },
+  {
+   "hash": "64568ff70b77d10aa40f67baaff1720292af5917c3ffc94aa6892d645568e7be",
+   "ref": "Q23a",
+   "questionNumber": "23 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Section Formula",
+   "stem": "Position vectors of the points A, B and C as shown in the figure below are \\(\\vec{a}\\), \\(\\vec{b}\\) and \\(\\vec{c}\\) respectively.\n\nIf \\(\\overrightarrow{AC} = \\frac{5}{4} \\overrightarrow{AB}\\), express \\(\\vec{c}\\) in terms of \\(\\vec{a}\\) and \\(\\vec{b}\\).",
+   "figure": "DECORATIVE — page idx 10 prints a plain number line with A, B, C marked collinear in that order, labelled A(a-vector), B(b-vector), C(c-vector). It carries no measurement; the printed relation AC = (5/4) AB determines c completely. Not attached.",
+   "solution": "In terms of position vectors, \\(\\overrightarrow{AC} = \\vec{c} - \\vec{a}\\) and \\(\\overrightarrow{AB} = \\vec{b} - \\vec{a}\\), so the given relation reads \\(\\vec{c} - \\vec{a} = \\frac{5}{4}\\left(\\vec{b} - \\vec{a}\\right)\\). Hence \\(\\vec{c} = \\vec{a} + \\frac{5}{4}\\vec{b} - \\frac{5}{4}\\vec{a} = \\frac{5}{4}\\vec{b} - \\frac{1}{4}\\vec{a}\\), that is \\(\\vec{c} = \\frac{5\\vec{b} - \\vec{a}}{4}\\). The factor \\(\\frac{5}{4} > 1\\) places C beyond B on the ray AB, exactly as the figure shows."
+  },
+  {
+   "hash": "a3991d2f956c4e7c5fed29bd98613f5db7bae66f3cad217d2aeec41e96abbfd5",
+   "ref": "Q23b",
+   "questionNumber": "23 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Angle Between Two Lines",
+   "stem": "Check whether the lines given by equations \\(x = 2\\lambda + 2\\), \\(y = 7\\lambda + 1\\), \\(z = -3\\lambda - 3\\) and \\(x = -\\mu - 2\\), \\(y = 2\\mu + 8\\), \\(z = 4\\mu + 5\\) are perpendicular to each other or not.",
+   "solution": "Reading the coefficients of the parameters straight off the equations, the first line has direction ratios \\(\\langle 2,\\ 7,\\ -3 \\rangle\\) and the second has \\(\\langle -1,\\ 2,\\ 4 \\rangle\\). Their scalar product is \\((2)(-1) + (7)(2) + (-3)(4) = -2 + 14 - 12 = 0\\). Since the scalar product of the direction ratios is zero, the two lines are perpendicular to each other."
+  },
+  {
+   "hash": "93f1748868b02338329a9a0918035fd04f54080bd89a50fd29e03d0e3b81d2c1",
+   "ref": "Q24",
+   "questionNumber": "24",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "If \\(y = \\left(x + \\sqrt{x^2 - 1}\\right)^2\\), then show that \\((x^2 - 1)\\left(\\frac{dy}{dx}\\right)^2 = 4y^2\\).",
+   "solution": "Differentiate by the chain rule: \\(\\frac{dy}{dx} = 2\\left(x + \\sqrt{x^2 - 1}\\right)\\left(1 + \\frac{x}{\\sqrt{x^2 - 1}}\\right)\\). Combining the second bracket over a common denominator, \\(1 + \\frac{x}{\\sqrt{x^2 - 1}} = \\frac{\\sqrt{x^2 - 1} + x}{\\sqrt{x^2 - 1}}\\), so \\(\\frac{dy}{dx} = \\frac{2\\left(x + \\sqrt{x^2 - 1}\\right)^2}{\\sqrt{x^2 - 1}} = \\frac{2y}{\\sqrt{x^2 - 1}}\\). Therefore \\(\\sqrt{x^2 - 1}\\,\\frac{dy}{dx} = 2y\\), and squaring both sides gives \\((x^2 - 1)\\left(\\frac{dy}{dx}\\right)^2 = 4y^2\\), which is what was to be shown."
+  },
+  {
+   "hash": "629d51ce54da52da69113f27046170d27133fe82d3ddd5b0510de2534b6739a2",
+   "ref": "Q25",
+   "questionNumber": "25",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "Show that the function \\(f(x) = \\frac{16 \\sin x}{4 + \\cos x} - x\\), is strictly decreasing in \\(\\left(\\frac{\\pi}{2}, \\pi\\right)\\).",
+   "solution": "By the quotient rule, \\(f'(x) = \\frac{16\\left[(4 + \\cos x)\\cos x + \\sin^2 x\\right]}{(4 + \\cos x)^2} - 1\\). Since \\(\\cos^2 x + \\sin^2 x = 1\\), the bracket simplifies to \\(4\\cos x + 1\\), so \\(f'(x) = \\frac{64\\cos x + 16 - (4 + \\cos x)^2}{(4 + \\cos x)^2} = \\frac{64\\cos x + 16 - 16 - 8\\cos x - \\cos^2 x}{(4 + \\cos x)^2} = \\frac{\\cos x\\,(56 - \\cos x)}{(4 + \\cos x)^2}\\). Now examine the sign on \\(\\left(\\frac{\\pi}{2}, \\pi\\right)\\): there \\(\\cos x < 0\\), while \\(56 - \\cos x > 0\\) because \\(|\\cos x| \\le 1\\), and \\((4 + \\cos x)^2 > 0\\) always. Hence \\(f'(x) < 0\\) throughout the interval, so \\(f\\) is strictly decreasing in \\(\\left(\\frac{\\pi}{2}, \\pi\\right)\\)."
+  },
+  {
+   "hash": "ddb09bdf64f3d9a5afaeef2f9009bf98b6fe9c222f9c4765238a50be1969dc99",
+   "ref": "Q26",
+   "questionNumber": "26",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "Evaluate :\n\\(\\int\\limits_{0}^{\\frac{\\pi}{2}} [\\log (\\sin x) - \\log (2 \\cos x)] \\, dx\\).",
+   "solution": "Combine the two logarithms first: \\(I = \\int\\limits_{0}^{\\pi/2}\\left[\\log(\\sin x) - \\log(2\\cos x)\\right]dx = \\int\\limits_{0}^{\\pi/2}\\log\\left(\\frac{\\tan x}{2}\\right)dx\\). Applying \\(\\int_0^a f(x)\\,dx = \\int_0^a f(a - x)\\,dx\\) with \\(a = \\frac{\\pi}{2}\\), and using \\(\\tan\\left(\\frac{\\pi}{2} - x\\right) = \\cot x\\), gives \\(I = \\int\\limits_{0}^{\\pi/2}\\log\\left(\\frac{\\cot x}{2}\\right)dx\\). Adding the two expressions for \\(I\\), \\(2I = \\int\\limits_{0}^{\\pi/2}\\log\\left(\\frac{\\tan x}{2} \\cdot \\frac{\\cot x}{2}\\right)dx = \\int\\limits_{0}^{\\pi/2}\\log\\frac{1}{4}\\,dx = \\frac{\\pi}{2}\\log\\frac{1}{4}\\). Hence \\(I = \\frac{\\pi}{4}\\log\\frac{1}{4}\\), which since \\(\\log\\frac{1}{4} = -2\\log 2\\) is the same as \\(I = -\\frac{\\pi}{2}\\log 2\\)."
+  },
+  {
+   "hash": "02f28222fd2bc543fd46f02404378031d3c8be98e0a3356432dd0c721c4b52fc",
+   "ref": "Q27",
+   "questionNumber": "27",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Partial Fractions",
+   "stem": "Find :\n\\(\\int \\frac{1}{\\sqrt{x}\\left(\\sqrt{x} + 1\\right)\\left(\\sqrt{x} + 2\\right)} \\, dx\\)",
+   "solution": "Substitute \\(\\sqrt{x} = t\\), so that \\(\\frac{1}{2\\sqrt{x}}dx = dt\\), i.e. \\(\\frac{dx}{\\sqrt{x}} = 2\\,dt\\). The integral becomes \\(I = 2\\int \\frac{dt}{(t + 1)(t + 2)}\\). By partial fractions, \\(\\frac{1}{(t + 1)(t + 2)} = \\frac{1}{t + 1} - \\frac{1}{t + 2}\\), so \\(I = 2\\int\\left(\\frac{1}{t + 1} - \\frac{1}{t + 2}\\right)dt = 2\\left[\\log|t + 1| - \\log|t + 2|\\right] + C\\). Restoring \\(t = \\sqrt{x}\\), \\(I = 2\\left[\\log\\left(\\sqrt{x} + 1\\right) - \\log\\left(\\sqrt{x} + 2\\right)\\right] + C = 2\\log\\left(\\frac{\\sqrt{x} + 1}{\\sqrt{x} + 2}\\right) + C\\)."
+  },
+  {
+   "hash": "466b290630a6829fa2fcb2d64b476c2e457eeb21715c34f7a7c3d74c04288b29",
+   "ref": "Q28a",
+   "questionNumber": "28 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "Find the particular solution of the differential equation \\(\\frac{dy}{dx} + \\sec^2 x \\cdot y = \\tan x \\cdot \\sec^2 x\\), given that y(0) = 0.",
+   "solution": "The equation is linear in \\(y\\), of the form \\(\\frac{dy}{dx} + Py = Q\\) with \\(P = \\sec^2 x\\) and \\(Q = \\tan x \\sec^2 x\\). The integrating factor is \\(e^{\\int \\sec^2 x\\,dx} = e^{\\tan x}\\), so the solution satisfies \\(y\\,e^{\\tan x} = \\int \\tan x\\,\\sec^2 x\\,e^{\\tan x}\\,dx + C\\). Put \\(t = \\tan x\\), so \\(dt = \\sec^2 x\\,dx\\); then \\(\\int t\\,e^{t}\\,dt = t e^{t} - \\int e^{t}\\,dt = e^{t}(t - 1)\\), which restores to \\(e^{\\tan x}(\\tan x - 1)\\). Hence \\(y\\,e^{\\tan x} = e^{\\tan x}(\\tan x - 1) + C\\). Applying \\(y(0) = 0\\), and noting \\(\\tan 0 = 0\\), gives \\(0 = 1 \\cdot (0 - 1) + C\\), so \\(C = 1\\). The particular solution is therefore \\(y\\,e^{\\tan x} = e^{\\tan x}(\\tan x - 1) + 1\\), that is \\(y = \\tan x - 1 + e^{-\\tan x}\\)."
+  },
+  {
+   "hash": "d491d4e801e492dd83fe8ead43fb75c64ac9f2452841b2439d82f78a0c544735",
+   "ref": "Q28b",
+   "questionNumber": "28 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Solve the differential equation given by\n\\(x \\, dy - y \\, dx - \\sqrt{x^2 + y^2} \\, dx = 0\\).",
+   "solution": "Rearranged, the equation is \\(\\frac{dy}{dx} = \\frac{y + \\sqrt{x^2 + y^2}}{x} = \\frac{y}{x} + \\sqrt{1 + \\left(\\frac{y}{x}\\right)^2}\\) for \\(x > 0\\), which is homogeneous of degree zero. Put \\(y = vx\\), so \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\). Substituting, \\(v + x\\frac{dv}{dx} = v + \\sqrt{1 + v^2}\\), so the \\(v\\) terms cancel and \\(\\frac{dv}{\\sqrt{1 + v^2}} = \\frac{dx}{x}\\). Integrating both sides, \\(\\log\\left|v + \\sqrt{1 + v^2}\\right| = \\log|x| + \\log C\\), hence \\(v + \\sqrt{1 + v^2} = Cx\\). Replacing \\(v = \\frac{y}{x}\\) gives \\(\\frac{y}{x} + \\frac{\\sqrt{x^2 + y^2}}{x} = Cx\\), and multiplying through by \\(x\\) gives the general solution \\(y + \\sqrt{x^2 + y^2} = Cx^2\\)."
+  },
+  {
+   "hash": "0df19232af1c76af4c6f73e3a7b679fc6d110b1b5b4fbaa1443bb1ddbbcef8a5",
+   "ref": "Q29",
+   "questionNumber": "29",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve graphically the following linear programming problem :\nMaximise z = 6x + 3y,\nsubject to the constraints\n\\(4x + y \\ge 80\\),\n\\(3x + 2y \\le 150\\),\n\\(x + 5y \\ge 115\\),\n\\(x \\ge 0, y \\ge 0\\).",
+   "solution": "Draw the lines \\(4x + y = 80\\), \\(3x + 2y = 150\\) and \\(x + 5y = 115\\) in the first quadrant. The feasible region is the set of points lying on or above \\(4x + y = 80\\), on or above \\(x + 5y = 115\\) and on or below \\(3x + 2y = 150\\); it is the bounded triangle formed by these three lines. Its corner points come from solving the lines in pairs. Solving \\(4x + y = 80\\) with \\(3x + 2y = 150\\) gives \\((2, 72)\\); solving \\(4x + y = 80\\) with \\(x + 5y = 115\\) gives \\((15, 20)\\); solving \\(3x + 2y = 150\\) with \\(x + 5y = 115\\) gives \\((40, 15)\\). Now evaluate \\(z = 6x + 3y\\) at each: at \\((2, 72)\\), \\(z = 12 + 216 = 228\\); at \\((15, 20)\\), \\(z = 90 + 60 = 150\\); at \\((40, 15)\\), \\(z = 240 + 45 = 285\\). Since the region is bounded, the corner point method applies, and the maximum value is \\(z = 285\\), attained at \\(x = 40\\), \\(y = 15\\)."
+  },
+  {
+   "hash": "a83a5e071004d54b4998a0875c2b7335f6c73a6546c97379f44328f2dae8ce7b",
+   "ref": "Q30a",
+   "questionNumber": "30 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "The probability distribution of a random variable X is given below :\n\n| X | 1 | 2 | 3 |\n|---|---|---|---|\n| P(X) | \\(\\frac{k}{2}\\) | \\(\\frac{k}{3}\\) | \\(\\frac{k}{6}\\) |\n\n(i) Find the value of k.\n(ii) Find \\(P(1 \\le X < 3)\\).\n(iii) Find E(X), the mean of X.",
+   "solution": "(i) The probabilities in a distribution must add to 1, so \\(\\frac{k}{2} + \\frac{k}{3} + \\frac{k}{6} = 1\\). Over the common denominator 6 this is \\(\\frac{3k + 2k + k}{6} = \\frac{6k}{6} = k\\), so \\(k = 1\\).\n(ii) The inequality \\(1 \\le X < 3\\) picks out \\(X = 1\\) and \\(X = 2\\) only, so \\(P(1 \\le X < 3) = \\frac{k}{2} + \\frac{k}{3} = \\frac{5k}{6} = \\frac{5}{6}\\).\n(iii) \\(E(X) = \\sum p_i x_i = 1 \\cdot \\frac{k}{2} + 2 \\cdot \\frac{k}{3} + 3 \\cdot \\frac{k}{6} = \\frac{k}{2} + \\frac{2k}{3} + \\frac{k}{2} = \\frac{5k}{3} = \\frac{5}{3}\\)."
+  },
+  {
+   "hash": "3f37e2ff2ef9fb7e0d98c30192cf07d90cd824c23c30401c54fa0dd49fb83621",
+   "ref": "Q30b",
+   "questionNumber": "30 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Independent Events",
+   "stem": "A and B are independent events such that \\(P(A \\cap \\overline{B}) = \\frac{1}{4}\\) and \\(P(\\overline{A} \\cap B) = \\frac{1}{6}\\). Find P(A) and P(B).",
+   "solution": "If A and B are independent then so are A and \\(\\overline{B}\\), and \\(\\overline{A}\\) and B. Writing \\(P(A) = x\\) and \\(P(B) = y\\), the two given conditions become \\(x(1 - y) = \\frac{1}{4}\\) and \\((1 - x)y = \\frac{1}{6}\\), that is \\(x - xy = \\frac{1}{4}\\) and \\(y - xy = \\frac{1}{6}\\). Subtracting the second from the first removes the \\(xy\\) term: \\(x - y = \\frac{1}{4} - \\frac{1}{6} = \\frac{1}{12}\\). Substituting \\(y = x - \\frac{1}{12}\\) into \\(x(1 - y) = \\frac{1}{4}\\) gives \\(x\\left(\\frac{13}{12} - x\\right) = \\frac{1}{4}\\), i.e. \\(12x^2 - 13x + 3 = 0\\), which factorises as \\((3x - 1)(4x - 3) = 0\\). Hence \\(x = \\frac{1}{3}\\) or \\(x = \\frac{3}{4}\\), and the corresponding \\(y = x - \\frac{1}{12}\\) is \\(\\frac{1}{4}\\) or \\(\\frac{2}{3}\\). So either \\(P(A) = \\frac{1}{3}\\) and \\(P(B) = \\frac{1}{4}\\), or \\(P(A) = \\frac{3}{4}\\) and \\(P(B) = \\frac{2}{3}\\); both pairs satisfy the two given conditions."
+  },
+  {
+   "hash": "26bf39a8acdaa795addae628a153af1c60098ca7e7446c9da6b53654fbd38d6b",
+   "ref": "Q31a",
+   "questionNumber": "31 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Parts",
+   "stem": "Evaluate :\n\\(\\int\\limits_{0}^{\\frac{\\pi}{2}} e^x \\sin x \\, dx\\)",
+   "solution": "First find the indefinite integral. Let \\(I = \\int e^{x}\\sin x\\,dx\\). Integrating by parts with \\(\\sin x\\) as the first function, \\(I = e^{x}\\sin x - \\int e^{x}\\cos x\\,dx\\), and integrating by parts a second time, \\(\\int e^{x}\\cos x\\,dx = e^{x}\\cos x + \\int e^{x}\\sin x\\,dx = e^{x}\\cos x + I\\). Substituting back, \\(I = e^{x}\\sin x - e^{x}\\cos x - I\\), so \\(2I = e^{x}(\\sin x - \\cos x)\\) and \\(I = \\frac{1}{2}e^{x}(\\sin x - \\cos x)\\). Now evaluate between the limits: at \\(x = \\frac{\\pi}{2}\\) the bracket is \\(1 - 0 = 1\\) and at \\(x = 0\\) it is \\(0 - 1 = -1\\), so \\(\\int\\limits_{0}^{\\pi/2} e^{x}\\sin x\\,dx = \\frac{1}{2}e^{\\pi/2} - \\frac{1}{2}(-1) = \\frac{1}{2}\\left(e^{\\pi/2} + 1\\right)\\)."
+  },
+  {
+   "hash": "cb53c85350320ba18f350fd9e223ca25aea04757a3a51db4ed9939cd3c7593b6",
+   "ref": "Q31b",
+   "questionNumber": "31 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration using Trigonometric Identities",
+   "stem": "Find :\n\\(\\int \\frac{1}{\\cos(x - a) \\, \\cos(x - b)} \\, dx\\)",
+   "solution": "The trick is to create the difference of the two angles in the numerator. Since \\((x - b) - (x - a) = a - b\\), we have \\(\\sin(a - b) = \\sin(x - b)\\cos(x - a) - \\cos(x - b)\\sin(x - a)\\). Multiplying and dividing the integrand by the constant \\(\\sin(a - b)\\), \\(I = \\frac{1}{\\sin(a - b)}\\int\\frac{\\sin(x - b)\\cos(x - a) - \\cos(x - b)\\sin(x - a)}{\\cos(x - a)\\cos(x - b)}\\,dx\\). Splitting the fraction, each term cancels one cosine and leaves \\(I = \\frac{1}{\\sin(a - b)}\\int\\left[\\tan(x - b) - \\tan(x - a)\\right]dx\\). Since \\(\\int \\tan u\\,du = \\log|\\sec u|\\), \\(I = \\frac{1}{\\sin(a - b)}\\left[\\log|\\sec(x - b)| - \\log|\\sec(x - a)|\\right] + C\\), which may equally be written \\(\\frac{1}{\\sin(a - b)}\\log\\left|\\frac{\\cos(x - a)}{\\cos(x - b)}\\right| + C\\)."
+  },
+  {
+   "hash": "eafc93036cc5761661861b9bae45aa426e4ee6f62a56e5ea94b117a62bb5caa9",
+   "ref": "Q32",
+   "questionNumber": "32",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Types of Relations",
+   "stem": "A relation R is defined on a set of real numbers \\(\\mathbb{R}\\) as\n\\(R = \\{(x, y) : x \\cdot y \\text{ is an irrational number}\\}\\).\nCheck whether R is reflexive, symmetric and transitive or not.",
+   "solution": "Test the three properties in turn.\nReflexive: take \\(x = 1\\). Then \\(x \\cdot x = 1 \\cdot 1 = 1\\), which is rational, so \\((1, 1) \\notin R\\). A single counter-example is enough, so R is not reflexive.\nSymmetric: let \\((x, y) \\in R\\), so \\(x \\cdot y\\) is irrational. Multiplication of real numbers is commutative, so \\(y \\cdot x = x \\cdot y\\) is the same number and is therefore also irrational, giving \\((y, x) \\in R\\). Hence R is symmetric.\nTransitive: \\(1 \\cdot \\sqrt{2} = \\sqrt{2}\\) is irrational, so \\(\\left(1, \\sqrt{2}\\right) \\in R\\); and \\(\\sqrt{2} \\cdot 2 = 2\\sqrt{2}\\) is irrational, so \\(\\left(\\sqrt{2}, 2\\right) \\in R\\). But \\(1 \\cdot 2 = 2\\) is rational, so \\((1, 2) \\notin R\\). Hence R is not transitive.\nR is therefore symmetric, but neither reflexive nor transitive."
+  },
+  {
+   "hash": "fbb44ea3fbe9d69a6201eded0bbf1a6833422af91ed9224b44279cbc8f5b340e",
+   "ref": "Q33a",
+   "questionNumber": "33 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Adjoint and Inverse of a Matrix",
+   "stem": "If \\(A = \\begin{bmatrix} 1 & 2 & -2 \\\\ -1 & 3 & 0 \\\\ 0 & -2 & 1 \\end{bmatrix}\\) and \\(B^{-1} = \\begin{bmatrix} 3 & -1 & 1 \\\\ -15 & 6 & -5 \\\\ 5 & -2 & 2 \\end{bmatrix}\\), find \\((AB)^{-1}\\).",
+   "solution": "Use the reversal law \\((AB)^{-1} = B^{-1}A^{-1}\\); since \\(B^{-1}\\) is given, only \\(A^{-1}\\) has to be found. Expanding along the first row, \\(|A| = 1\\left(3 \\times 1 - 0 \\times (-2)\\right) - 2\\left((-1) \\times 1 - 0 \\times 0\\right) + (-2)\\left((-1)(-2) - 3 \\times 0\\right) = 3 + 2 - 4 = 1\\), which is non-zero, so \\(A^{-1}\\) exists. The cofactors of A give \\(\\text{adj}(A) = \\begin{bmatrix} 3 & 2 & 6 \\\\ 1 & 1 & 2 \\\\ 2 & 2 & 5 \\end{bmatrix}\\), and because \\(|A| = 1\\) we get \\(A^{-1} = \\frac{1}{|A|}\\text{adj}(A) = \\begin{bmatrix} 3 & 2 & 6 \\\\ 1 & 1 & 2 \\\\ 2 & 2 & 5 \\end{bmatrix}\\). Therefore \\((AB)^{-1} = B^{-1}A^{-1} = \\begin{bmatrix} 3 & -1 & 1 \\\\ -15 & 6 & -5 \\\\ 5 & -2 & 2 \\end{bmatrix}\\begin{bmatrix} 3 & 2 & 6 \\\\ 1 & 1 & 2 \\\\ 2 & 2 & 5 \\end{bmatrix} = \\begin{bmatrix} 10 & 7 & 21 \\\\ -49 & -34 & -103 \\\\ 17 & 12 & 36 \\end{bmatrix}\\)."
+  },
+  {
+   "hash": "d747031c8cd7c8be3c95e8ac302394000a44e57a013936e135a77b82196b0868",
+   "ref": "Q33b",
+   "questionNumber": "33 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Solving System of Linear Equations",
+   "stem": "Solve the following system of equations by matrix method :\n\\(x + 2y + 3z = 6\\)\n\\(2x - y + z = 2\\)\n\\(3x + 2y - 2z = 3\\)",
+   "solution": "Write the system as \\(AX = B\\), where \\(A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & -1 & 1 \\\\ 3 & 2 & -2 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 6 \\\\ 2 \\\\ 3 \\end{bmatrix}\\). Expanding along the first row, \\(|A| = 1(2 - 2) - 2(-4 - 3) + 3(4 + 3) = 0 + 14 + 21 = 35\\), which is non-zero, so the system has the unique solution \\(X = A^{-1}B\\). The cofactors are \\(A_{11} = 0\\), \\(A_{12} = 7\\), \\(A_{13} = 7\\), \\(A_{21} = 10\\), \\(A_{22} = -11\\), \\(A_{23} = 4\\), \\(A_{31} = 5\\), \\(A_{32} = 5\\) and \\(A_{33} = -5\\). Transposing the cofactor matrix gives \\(A^{-1} = \\frac{1}{35}\\begin{bmatrix} 0 & 10 & 5 \\\\ 7 & -11 & 5 \\\\ 7 & 4 & -5 \\end{bmatrix}\\). Hence \\(X = \\frac{1}{35}\\begin{bmatrix} 0 & 10 & 5 \\\\ 7 & -11 & 5 \\\\ 7 & 4 & -5 \\end{bmatrix}\\begin{bmatrix} 6 \\\\ 2 \\\\ 3 \\end{bmatrix} = \\frac{1}{35}\\begin{bmatrix} 35 \\\\ 35 \\\\ 35 \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 1 \\\\ 1 \\end{bmatrix}\\), so \\(x = 1\\), \\(y = 1\\) and \\(z = 1\\). Checking in the original equations, \\(1 + 2 + 3 = 6\\), \\(2 - 1 + 1 = 2\\) and \\(3 + 2 - 2 = 3\\), so all three are satisfied."
+  },
+  {
+   "hash": "daf3db2a5458d45e300c899ea177363aa5ee2e7ffe52eacb0ee3bf997d4307bd",
+   "ref": "Q34a",
+   "questionNumber": "34 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Shortest Distance Between Two Lines",
+   "stem": "Find the vector and the Cartesian equations of a line passing through the point \\((1, 2, -4)\\) and parallel to the line joining the points \\(A(3, 3, -5)\\) and \\(B(1, 0, -11)\\). Hence, find the distance between the two lines.",
+   "solution": "The line joining \\(A(3, 3, -5)\\) and \\(B(1, 0, -11)\\) has \\(\\overrightarrow{AB} = -2\\hat{i} - 3\\hat{j} - 6\\hat{k}\\), which is parallel to \\(\\vec{b} = 2\\hat{i} + 3\\hat{j} + 6\\hat{k}\\). The required line passes through \\((1, 2, -4)\\), so its vector equation is \\(\\vec{r} = \\hat{i} + 2\\hat{j} - 4\\hat{k} + \\lambda\\left(2\\hat{i} + 3\\hat{j} + 6\\hat{k}\\right)\\) and its Cartesian equation is \\(\\frac{x - 1}{2} = \\frac{y - 2}{3} = \\frac{z + 4}{6}\\). The line AB itself is \\(\\vec{r} = 3\\hat{i} + 3\\hat{j} - 5\\hat{k} + \\mu\\left(2\\hat{i} + 3\\hat{j} + 6\\hat{k}\\right)\\). The two lines share the direction \\(\\vec{b}\\), so they are parallel and the distance between them is \\(d = \\frac{\\left|\\left(\\vec{a}_2 - \\vec{a}_1\\right) \\times \\vec{b}\\right|}{\\left|\\vec{b}\\right|}\\). Here \\(\\vec{a}_1 = \\hat{i} + 2\\hat{j} - 4\\hat{k}\\) and \\(\\vec{a}_2 = 3\\hat{i} + 3\\hat{j} - 5\\hat{k}\\), so \\(\\vec{a}_2 - \\vec{a}_1 = 2\\hat{i} + \\hat{j} - \\hat{k}\\). Then \\(\\left(\\vec{a}_2 - \\vec{a}_1\\right) \\times \\vec{b} = (1 \\cdot 6 - (-1) \\cdot 3)\\hat{i} - (2 \\cdot 6 - (-1) \\cdot 2)\\hat{j} + (2 \\cdot 3 - 1 \\cdot 2)\\hat{k} = 9\\hat{i} - 14\\hat{j} + 4\\hat{k}\\). Its magnitude is \\(\\sqrt{81 + 196 + 16} = \\sqrt{293}\\) and \\(\\left|\\vec{b}\\right| = \\sqrt{4 + 9 + 36} = 7\\), so \\(d = \\frac{\\sqrt{293}}{7}\\)."
+  },
+  {
+   "hash": "4810a0d6e8b00a3c11be26d993fb62e785d1e3ae3e1c8c146331d3972478a05b",
+   "ref": "Q34b",
+   "questionNumber": "34 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the equations of the line passing through the points A(1, 2, 3) and B(3, 5, 9). Hence, find the coordinates of the points on this line which are at a distance of 14 units from point B.",
+   "solution": "The direction ratios of AB are \\(3 - 1 = 2\\), \\(5 - 2 = 3\\) and \\(9 - 3 = 6\\), so the line through \\(A(1, 2, 3)\\) and \\(B(3, 5, 9)\\) is \\(\\frac{x - 1}{2} = \\frac{y - 2}{3} = \\frac{z - 3}{6}\\). A general point on it is \\(P(2\\lambda + 1,\\ 3\\lambda + 2,\\ 6\\lambda + 3)\\). Requiring \\(PB = 14\\) gives \\((2\\lambda + 1 - 3)^2 + (3\\lambda + 2 - 5)^2 + (6\\lambda + 3 - 9)^2 = 14^2\\), i.e. \\((2\\lambda - 2)^2 + (3\\lambda - 3)^2 + (6\\lambda - 6)^2 = 196\\). Every bracket carries a factor \\((\\lambda - 1)\\), so this is \\((4 + 9 + 36)(\\lambda - 1)^2 = 196\\), that is \\(49(\\lambda - 1)^2 = 196\\) and \\((\\lambda - 1)^2 = 4\\). Hence \\(\\lambda - 1 = \\pm 2\\), so \\(\\lambda = 3\\) or \\(\\lambda = -1\\). Substituting back, the required points are \\((7, 11, 21)\\) and \\((-1, -1, -3)\\)."
+  },
+  {
+   "hash": "87c425061715db69d443f1337b8dfa31d77bc1437bdd3520a97230e9b1cdd32a",
+   "ref": "Q35",
+   "questionNumber": "35",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "Find the area of the region bounded by the curves \\(x^2 = y\\), \\(y = x + 2\\) and x-axis, using integration.",
+   "solution": "First locate the three boundaries. The line \\(y = x + 2\\) meets the x-axis at \\((-2, 0)\\); the parabola \\(y = x^2\\) meets the x-axis at \\((0, 0)\\); and the line meets the parabola where \\(x^2 = x + 2\\), i.e. \\(x^2 - x - 2 = 0\\), giving \\(x = -1\\) and \\(x = 2\\). The region enclosed by all three curves is the one with vertices \\((-2, 0)\\), \\((-1, 1)\\) and \\((0, 0)\\): it is capped by the line for \\(-2 \\le x \\le -1\\), by the parabola for \\(-1 \\le x \\le 0\\), and bounded below by the x-axis. Splitting the integral at \\(x = -1\\), the area is \\(\\int\\limits_{-2}^{-1}(x + 2)\\,dx + \\int\\limits_{-1}^{0}x^2\\,dx = \\left[\\frac{(x + 2)^2}{2}\\right]_{-2}^{-1} + \\left[\\frac{x^3}{3}\\right]_{-1}^{0} = \\left(\\frac{1}{2} - 0\\right) + \\left(0 + \\frac{1}{3}\\right) = \\frac{1}{2} + \\frac{1}{3} = \\frac{5}{6}\\) square units."
+  },
+  {
+   "hash": "083feabe9d1cfab62629dc667981f4a4a91622c06019f58dda639e3d13a95283",
+   "ref": "Q36i",
+   "questionNumber": "36 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "Find the value of x.",
+   "context": "There are different types of Yoga which involve the usage of different poses of Yoga Asanas, Meditation and Pranayam as shown in the figure below :\n\nThe Venn diagram below represents the probabilities of three different types of Yoga, A, B and C performed by the people of a society. Further, it is given that probability of a member performing type C Yoga is \\(0{\\cdot}44\\).\n\nOn the basis of the above information, answer the following questions :",
+   "figure": "REQUIRED — the Venn diagram on page idx 20 carries every number the sub-parts use: A only 0.32, A-and-B 0.09, B only y, B-and-C x, C only 0.21, outside all three 0.11. No sub-part is answerable without it. Page idx 20.",
+   "solution": "In the diagram, A and C do not overlap, so region C is made up of just two parts: the piece it shares with B, of probability \\(x\\), and the piece belonging to C alone, of probability \\(0{\\cdot}21\\). Since a member performs type C Yoga with probability \\(0{\\cdot}44\\), \\(x + 0{\\cdot}21 = 0{\\cdot}44\\), so \\(x = 0{\\cdot}23\\)."
+  },
+  {
+   "hash": "9539e40dcf1669e945bc0d5814358cc56898e34ef5d3583297c35653f6e90623",
+   "ref": "Q36ii",
+   "questionNumber": "36 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "Find the value of y.",
+   "context": "There are different types of Yoga which involve the usage of different poses of Yoga Asanas, Meditation and Pranayam as shown in the figure below :\n\nThe Venn diagram below represents the probabilities of three different types of Yoga, A, B and C performed by the people of a society. Further, it is given that probability of a member performing type C Yoga is \\(0{\\cdot}44\\).\n\nOn the basis of the above information, answer the following questions :",
+   "figure": "REQUIRED — same Venn diagram as Q36i. Page idx 20.",
+   "solution": "The six disjoint regions of the diagram together make up the whole sample space, so their probabilities add to 1: \\(0{\\cdot}32 + 0{\\cdot}09 + y + x + 0{\\cdot}21 + 0{\\cdot}11 = 1\\). Using \\(x = 0{\\cdot}23\\) from part (i), the known terms add to \\(0{\\cdot}96\\), so \\(0{\\cdot}96 + y = 1\\) and \\(y = 0{\\cdot}04\\)."
+  },
+  {
+   "hash": "183946fde763801cceafab93acceed4d8af9cd0e281f21a84f61d6a35741d904",
+   "ref": "Q36iiia",
+   "questionNumber": "36 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "Find \\(P\\left(\\frac{C}{B}\\right)\\).",
+   "context": "There are different types of Yoga which involve the usage of different poses of Yoga Asanas, Meditation and Pranayam as shown in the figure below :\n\nThe Venn diagram below represents the probabilities of three different types of Yoga, A, B and C performed by the people of a society. Further, it is given that probability of a member performing type C Yoga is \\(0{\\cdot}44\\).\n\nOn the basis of the above information, answer the following questions :",
+   "figure": "REQUIRED — same Venn diagram as Q36i. Page idx 20.",
+   "solution": "Region B is made up of three disjoint pieces: the part shared with A (\\(0{\\cdot}09\\)), the part belonging to B alone (\\(y = 0{\\cdot}04\\)) and the part shared with C (\\(x = 0{\\cdot}23\\)). Hence \\(P(B) = 0{\\cdot}09 + 0{\\cdot}04 + 0{\\cdot}23 = 0{\\cdot}36\\), while the overlap of B and C is \\(P(C \\cap B) = x = 0{\\cdot}23\\). Therefore \\(P\\left(\\frac{C}{B}\\right) = \\frac{P(C \\cap B)}{P(B)} = \\frac{0{\\cdot}23}{0{\\cdot}36} = \\frac{23}{36}\\)."
+  },
+  {
+   "hash": "5640ede712a782ab3eb8b5cbb43ce3a183495be3cffe29e4eb57b03c99eda120",
+   "ref": "Q36iiib",
+   "questionNumber": "36 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "Find the probability that a randomly selected person of the society does Yoga of type A or B but not C.",
+   "context": "There are different types of Yoga which involve the usage of different poses of Yoga Asanas, Meditation and Pranayam as shown in the figure below :\n\nThe Venn diagram below represents the probabilities of three different types of Yoga, A, B and C performed by the people of a society. Further, it is given that probability of a member performing type C Yoga is \\(0{\\cdot}44\\).\n\nOn the basis of the above information, answer the following questions :",
+   "figure": "REQUIRED — same Venn diagram as Q36i. Page idx 20.",
+   "solution": "The event wanted is \\((A \\cup B) \\cap \\overline{C}\\). Reading the diagram, \\(A \\cup B\\) consists of four pieces: A alone (\\(0{\\cdot}32\\)), the part shared by A and B (\\(0{\\cdot}09\\)), B alone (\\(y = 0{\\cdot}04\\)) and the part shared by B and C (\\(x = 0{\\cdot}23\\)). Only the last of these lies inside C, so discarding it leaves \\(0{\\cdot}32 + 0{\\cdot}09 + 0{\\cdot}04 = 0{\\cdot}45\\). The required probability is \\(0{\\cdot}45\\)."
+  },
+  {
+   "hash": "9b96cfcb506a34b2a06ac8e223ebb0dcd3ec6ecfcd13453455414122fa1ab701",
+   "ref": "Q37i",
+   "questionNumber": "37 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "Find the volume of water in the tank in terms of its radius r.",
+   "context": "A tank, as shown in the figure below, formed using a combination of a cylinder and a cone, offers better drainage as compared to a flat bottomed tank.\n\nA tap is connected to such a tank whose conical part is full of water. Water is dripping out from a tap at the bottom at the uniform rate of \\(2 \\text{ cm}^3/\\text{s}\\). The semi-vertical angle of the conical tank is \\(45^\\circ\\).\n\nOn the basis of given information, answer the following questions :",
+   "figure": "DECORATIVE — page idx 20 prints a photograph of a cylinder-plus-cone tank on legs. It carries no dimensions and no labels; the drip rate and the semi-vertical angle are both stated in the passage text. Not attached.",
+   "solution": "The water occupies the conical part, so \\(V = \\frac{1}{3}\\pi r^2 h\\). The semi-vertical angle is the angle between the axis and the slant side, so \\(\\tan 45^\\circ = \\frac{r}{h}\\). Since \\(\\tan 45^\\circ = 1\\), this gives \\(h = r\\). Substituting, \\(V = \\frac{1}{3}\\pi r^2 \\cdot r = \\frac{1}{3}\\pi r^3\\)."
+  },
+  {
+   "hash": "f019a4a77debad70a502f11f431cd532a5431a851a5b37364d67aac93bf5a173",
+   "ref": "Q37ii",
+   "questionNumber": "37 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "Find rate of change of radius at an instant when \\(r = 2\\sqrt{2}\\) cm.",
+   "context": "A tank, as shown in the figure below, formed using a combination of a cylinder and a cone, offers better drainage as compared to a flat bottomed tank.\n\nA tap is connected to such a tank whose conical part is full of water. Water is dripping out from a tap at the bottom at the uniform rate of \\(2 \\text{ cm}^3/\\text{s}\\). The semi-vertical angle of the conical tank is \\(45^\\circ\\).\n\nOn the basis of given information, answer the following questions :",
+   "solution": "Differentiating \\(V = \\frac{1}{3}\\pi r^3\\) with respect to time, \\(\\frac{dV}{dt} = \\pi r^2 \\frac{dr}{dt}\\). Water is draining away, so the volume is decreasing and \\(\\frac{dV}{dt} = -2\\). At the instant when \\(r = 2\\sqrt{2}\\) we have \\(r^2 = 8\\), so \\(-2 = 8\\pi \\frac{dr}{dt}\\) and \\(\\frac{dr}{dt} = -\\frac{1}{4\\pi}\\). The radius is therefore changing at \\(-\\frac{1}{4\\pi}\\) cm/s, that is, decreasing at \\(\\frac{1}{4\\pi}\\) cm/s."
+  },
+  {
+   "hash": "abe7daea4c54520f69df53663025613efe9f32ad111a7844c762adbf9d4594fe",
+   "ref": "Q37iiia",
+   "questionNumber": "37 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "Find the rate at which the wet surface of the conical tank is decreasing at an instant when radius \\(r = 2\\sqrt{2}\\) cm.",
+   "context": "A tank, as shown in the figure below, formed using a combination of a cylinder and a cone, offers better drainage as compared to a flat bottomed tank.\n\nA tap is connected to such a tank whose conical part is full of water. Water is dripping out from a tap at the bottom at the uniform rate of \\(2 \\text{ cm}^3/\\text{s}\\). The semi-vertical angle of the conical tank is \\(45^\\circ\\).\n\nOn the basis of given information, answer the following questions :",
+   "solution": "The wet surface is the curved surface of the cone in contact with the water, \\(S = \\pi r l\\), where \\(l\\) is the slant height. Since \\(h = r\\), \\(l = \\sqrt{r^2 + h^2} = \\sqrt{2r^2} = \\sqrt{2}\\,r\\), so \\(S = \\pi r \\cdot \\sqrt{2}\\,r = \\sqrt{2}\\,\\pi r^2\\), a function of \\(r\\) alone. Differentiating with respect to time, \\(\\frac{dS}{dt} = 2\\sqrt{2}\\,\\pi r\\,\\frac{dr}{dt}\\). At \\(r = 2\\sqrt{2}\\), where \\(\\frac{dr}{dt} = -\\frac{1}{4\\pi}\\) from part (ii), \\(\\frac{dS}{dt} = 2\\sqrt{2}\\,\\pi\\left(2\\sqrt{2}\\right)\\left(-\\frac{1}{4\\pi}\\right) = 8\\pi \\times \\left(-\\frac{1}{4\\pi}\\right) = -2\\). So the wet surface is decreasing at the rate of \\(2\\) cm\\(^2\\)/s."
+  },
+  {
+   "hash": "24208f1295b4618d964d5244c945aa21cd58ddd8315b41ba0a55374c29e708c4",
+   "ref": "Q37iiib",
+   "questionNumber": "37 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "Find the rate of change of height 'h' at an instant when slant height is 4 cm.",
+   "context": "A tank, as shown in the figure below, formed using a combination of a cylinder and a cone, offers better drainage as compared to a flat bottomed tank.\n\nA tap is connected to such a tank whose conical part is full of water. Water is dripping out from a tap at the bottom at the uniform rate of \\(2 \\text{ cm}^3/\\text{s}\\). The semi-vertical angle of the conical tank is \\(45^\\circ\\).\n\nOn the basis of given information, answer the following questions :",
+   "solution": "With \\(h = r\\), the slant height satisfies \\(l^2 = h^2 + r^2 = 2r^2\\), so \\(l = \\sqrt{2}\\,r\\). When \\(l = 4\\), \\(r = \\frac{4}{\\sqrt{2}} = 2\\sqrt{2}\\) and hence \\(h = 2\\sqrt{2}\\) as well. Because \\(h = r\\) holds at every instant, differentiating gives \\(\\frac{dh}{dt} = \\frac{dr}{dt}\\), and from part (ii) that value at \\(r = 2\\sqrt{2}\\) is \\(-\\frac{1}{4\\pi}\\). So the height is changing at \\(-\\frac{1}{4\\pi}\\) cm/s, that is, decreasing at \\(\\frac{1}{4\\pi}\\) cm/s."
+  },
+  {
+   "hash": "fb488c00be576b54a6552b1258ef4fc01fe83bca996a3d55b4833dcbf2b0c1f7",
+   "ref": "Q38i",
+   "questionNumber": "38 (i)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Second Order Derivatives",
+   "stem": "Find the value of 'a'.",
+   "context": "The equation of the path traced by a roller-coaster is given by the polynomial \\(f(x) = a(x + 9)(x + 1)(x - 3)\\). If the roller-coaster crosses y-axis at a point \\((0, -1)\\), answer the following :",
+   "figure": "DECORATIVE — page idx 22 prints a photograph of a roller-coaster silhouette overlaid on a pair of axes, with no readable scale or gradations. Every number the sub-parts need (the polynomial and the point (0, -1)) is in the passage text. Not attached.",
+   "solution": "Crossing the y-axis at \\((0, -1)\\) means \\(f(0) = -1\\). Substituting \\(x = 0\\) into \\(f(x) = a(x + 9)(x + 1)(x - 3)\\) gives \\(f(0) = a(9)(1)(-3) = -27a\\). Equating, \\(-27a = -1\\), so \\(a = \\frac{1}{27}\\)."
+  },
+  {
+   "hash": "070d1c61ecaf06040de337c5255f912324fe38ad55057d239cb2ee4aa73b1deb",
+   "ref": "Q38ii",
+   "questionNumber": "38 (ii)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Second Order Derivatives",
+   "stem": "Find \\(f''(x)\\) at x = 1.",
+   "context": "The equation of the path traced by a roller-coaster is given by the polynomial \\(f(x) = a(x + 9)(x + 1)(x - 3)\\). If the roller-coaster crosses y-axis at a point \\((0, -1)\\), answer the following :",
+   "solution": "With \\(a = \\frac{1}{27}\\), expand the polynomial: \\((x + 9)(x + 1) = x^2 + 10x + 9\\), and multiplying by \\((x - 3)\\) gives \\(x^3 + 10x^2 + 9x - 3x^2 - 30x - 27 = x^3 + 7x^2 - 21x - 27\\). So \\(f(x) = \\frac{1}{27}\\left(x^3 + 7x^2 - 21x - 27\\right)\\). Differentiating, \\(f'(x) = \\frac{1}{27}\\left(3x^2 + 14x - 21\\right)\\) and \\(f''(x) = \\frac{1}{27}(6x + 14) = \\frac{6x + 14}{27}\\). At \\(x = 1\\), \\(f''(1) = \\frac{6 + 14}{27} = \\frac{20}{27}\\)."
+  }
+ ]
+}

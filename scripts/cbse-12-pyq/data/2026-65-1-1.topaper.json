@@ -1,0 +1,1001 @@
+{
+ "paper": "65/1/1",
+ "year": 2026,
+ "paperId": "2026-65-1-1",
+ "markingScheme": "out/2026-65-1-1/ms/p00.png … p23.png",
+ "rows": [
+  {
+   "hash": "bc86ee34c2b614776405ba1d1313c494557a638f1e9d9f1ba14209dd3764eb15",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "If \\(2 \\cos^{-1} x = y\\), then",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0 \\leq y \\leq \\pi\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-\\pi \\leq y \\leq \\pi\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(0 \\leq y \\leq 2\\pi\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-\\pi \\leq y \\leq 0\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "The principal value branch of \\(\\cos^{-1}\\) is \\([0, \\pi]\\), so whatever admissible value \\(x\\) takes, \\(\\cos^{-1} x\\) lies between \\(0\\) and \\(\\pi\\). Doubling that inequality gives \\(0 \\leq 2\\cos^{-1} x \\leq 2\\pi\\), that is \\(0 \\leq y \\leq 2\\pi\\)."
+  },
+  {
+   "hash": "ed4da62c80b65414939a52ac88d55dc054789607ddc0d4419254b71a6d5fd966",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Order and Types of Matrices",
+   "stem": "Which of the following cannot be the order of a row-matrix ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2 \\times 1\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(1 \\times 2\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(1 \\times 1\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(1 \\times n\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "A row matrix has exactly one row, so its order must be of the form \\(1 \\times n\\). The orders \\(1 \\times 2\\), \\(1 \\times 1\\) and \\(1 \\times n\\) each have a single row, but \\(2 \\times 1\\) has two rows and one column — that is a column matrix. So the order which cannot belong to a row matrix is \\(2 \\times 1\\)."
+  },
+  {
+   "hash": "0556c3b106df332dac60ee5b995411689053c4733de19e2851f1cd8c0c389e85",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Transpose of a Matrix",
+   "stem": "Which of the following properties is/are true for two matrices of suitable orders ?\n(i) \\((A + B)' = A' + B'\\)\n(ii) \\((A - B)' = B' - A'\\)\n(iii) \\((AB)' = A'B'\\)\n(iv) \\((kAB)' = kB'A'\\) (k is a scalar)",
+   "options": [
+    {
+     "label": "A",
+     "text": "(i) only"
+    },
+    {
+     "label": "B",
+     "text": "(i), (ii) and (iii)"
+    },
+    {
+     "label": "C",
+     "text": "(i) and (ii)"
+    },
+    {
+     "label": "D",
+     "text": "(i) and (iv)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Transposition distributes over addition and subtraction, but it REVERSES a product. So (i) \\((A + B)' = A' + B'\\) is true, and (iv) is true because \\((kAB)' = k(AB)' = kB'A'\\). Statement (ii) is false: \\((A - B)' = A' - B'\\), not \\(B' - A'\\). Statement (iii) is false by the same reversal law: \\((AB)' = B'A'\\), not \\(A'B'\\). Hence the properties that hold are (i) and (iv)."
+  },
+  {
+   "hash": "a3e8ccad5da581576ba41eb4b6d246efc180349da35785a4616b19a6c3d98c6c",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Determinant and its Properties",
+   "stem": "If \\(\\Delta_1 = \\begin{vmatrix} 1 & 0 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 3 \\end{vmatrix}\\) and \\(\\Delta_2 = \\begin{vmatrix} 0 & 2 & 0 \\\\ 1 & 0 & 0 \\\\ 0 & 0 & 6 \\end{vmatrix}\\), then",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\Delta_1 = 2\\Delta_2\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\Delta_2 = -2\\Delta_1\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\Delta_1 = \\Delta_2\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\Delta_2 = -\\Delta_1\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Both determinants can be read off almost by inspection. \\(\\Delta_1\\) is diagonal, so \\(\\Delta_1 = 1 \\times 2 \\times 3 = 6\\). In \\(\\Delta_2\\), interchanging the first two rows produces the diagonal determinant \\(\\begin{vmatrix} 1 & 0 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 6 \\end{vmatrix} = 12\\), and one row interchange reverses the sign, so \\(\\Delta_2 = -12\\). Therefore \\(\\Delta_2 = -2 \\times 6 = -2\\Delta_1\\)."
+  },
+  {
+   "hash": "7eee0fd6edd5f27448639f08c851bcd385d7bbb45239c3ca49377e1a963de549",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Determinant and its Properties",
+   "stem": "One of the values of \\(x\\) for which \\(\\begin{vmatrix} \\cos x & \\sin x \\\\ -\\cos x & \\sin x \\end{vmatrix} = 1\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{\\pi}{4}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{\\pi}{3}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{\\pi}{2}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Expanding the determinant, \\(\\begin{vmatrix} \\cos x & \\sin x \\\\ -\\cos x & \\sin x \\end{vmatrix} = \\sin x \\cos x - \\sin x \\times (-\\cos x) = 2 \\sin x \\cos x = \\sin 2x\\). Setting \\(\\sin 2x = 1\\) gives \\(2x = \\frac{\\pi}{2}\\), so \\(x = \\frac{\\pi}{4}\\). None of the other choices works, since \\(\\sin 2x\\) takes the values \\(0\\), \\(\\frac{\\sqrt{3}}{2}\\) and \\(0\\) at \\(x = 0\\), \\(x = \\frac{\\pi}{3}\\) and \\(x = \\frac{\\pi}{2}\\)."
+  },
+  {
+   "hash": "487499bbeef7df6285ac682fe185e272ad45688f8afb3c36b31f6a1e9e069790",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Symmetric and Skew-Symmetric Matrices",
+   "stem": "If A and B are skew symmetric matrices of same order, then which of the following matrices is also skew symmetric ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(AB\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(AB + BA\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\((A + B)^2\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(A - B\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Skew symmetry means \\(A' = -A\\) and \\(B' = -B\\). Then \\((A - B)' = A' - B' = -A + B = -(A - B)\\), so \\(A - B\\) is skew symmetric. None of the others need be: \\((AB)' = B'A' = (-B)(-A) = BA\\), which is not \\(-AB\\) in general; \\((AB + BA)' = B'A' + A'B' = BA + AB\\), so \\(AB + BA\\) is symmetric; and \\(A + B\\) is itself skew symmetric, and the square of a skew symmetric matrix is symmetric. Hence the skew symmetric one is \\(A - B\\)."
+  },
+  {
+   "hash": "e8d3f86e0847c1ce05ffae67a52a6db6fe1ca0089614176bf9f1e4b7451038e9",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Absolute Maximum and Minimum on a Closed Interval",
+   "stem": "The least value of \\(f(x) = x^3 - 12x\\), \\(x \\in [0, 3]\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(-16\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-9\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(0\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(16\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "\\(f\\) is continuous on the closed interval \\([0, 3]\\), so its least value is attained either at an interior critical point or at an endpoint. Here \\(f'(x) = 3x^2 - 12 = 3(x - 2)(x + 2)\\), and of the two roots only \\(x = 2\\) lies in \\([0, 3]\\). Comparing the three candidates, \\(f(0) = 0\\), \\(f(2) = 8 - 24 = -16\\) and \\(f(3) = 27 - 36 = -9\\). The least value is \\(-16\\)."
+  },
+  {
+   "hash": "e95ec6d44f0513b5e8697582109af7e892d3406fd90f9741b6d2783419e4d982",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Substitution",
+   "stem": "If \\(\\int \\frac{3ax}{b^2 + c^2x^2}\\,dx = A \\log \\left| b^2 + c^2x^2 \\right| + K\\), then the value of A is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(3a\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{3a}{2b^2}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{3a}{b^2c^2}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{3a}{2c^2}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "The numerator is a constant multiple of the derivative of the denominator, so substitute \\(t = b^2 + c^2x^2\\), which gives \\(dt = 2c^2x\\,dx\\). Then \\(\\int \\frac{3ax}{b^2 + c^2x^2}\\,dx = \\frac{3a}{2c^2}\\int \\frac{dt}{t} = \\frac{3a}{2c^2}\\log|t| + K = \\frac{3a}{2c^2}\\log\\left|b^2 + c^2x^2\\right| + K\\). Comparing with the given form, \\(A = \\frac{3a}{2c^2}\\)."
+  },
+  {
+   "hash": "22165f9c9857355605a0922773c231b8fde4a250696bec55857795119199a51e",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "The value of \\(\\int_{-1}^{1} \\frac{x^3}{x^2 + 2\\left| x \\right| + 1}\\,dx\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\log 2\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(2 \\log 2\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{1}{2} \\log 2\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Let \\(f(x) = \\frac{x^3}{x^2 + 2|x| + 1}\\). The denominator involves \\(x\\) only through \\(x^2\\) and \\(|x|\\), so it is unchanged when \\(x\\) is replaced by \\(-x\\), while the numerator changes sign. Hence \\(f(-x) = -f(x)\\): the integrand is an odd function, and the integral of an odd function over the symmetric interval \\([-1, 1]\\) is \\(0\\)."
+  },
+  {
+   "hash": "db32d1ebbad53ba7eddf62a7c4df1be125421329c4cdbd58e78487b537e067a9",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Under Simple Curves",
+   "stem": "The area bounded by the curve \\(y = x\\left| x \\right|\\), \\(x\\)-axis and the ordinates \\(x = -1\\) and \\(x = 1\\) is given by",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{1}{3}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{2}{3}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{4}{3}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Here \\(y = x|x|\\) means \\(y = x^2\\) for \\(x \\geq 0\\) and \\(y = -x^2\\) for \\(x < 0\\), so the curve lies below the \\(x\\)-axis on \\((-1, 0)\\) and above it on \\((0, 1)\\). Area is measured unsigned, so the two pieces ADD instead of cancelling: area \\(= \\int_{-1}^{0} x^2\\,dx + \\int_{0}^{1} x^2\\,dx = 2\\int_{0}^{1} x^2\\,dx = 2 \\times \\frac{1}{3} = \\frac{2}{3}\\). Note that the signed integral would come out \\(0\\), which is exactly the trap in this question."
+  },
+  {
+   "hash": "e280632e7871665ac2606ef4fb2c70db38f04df9529522db33cbe7c544417000",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "The integrating factor of differential equation \\(R \\frac{dx}{dy} + Px = Q\\) where P, Q, R are functions of y is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(e^{\\int \\frac{P}{Q}\\,dy}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(e^{\\int P\\,dy}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(e^{\\int \\frac{P}{R}\\,dy}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(e^{\\int \\frac{P}{R}\\,dx}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Divide throughout by \\(R\\) to reach the standard form: \\(\\frac{dx}{dy} + \\frac{P}{R}x = \\frac{Q}{R}\\). This is a linear differential equation in \\(x\\) with \\(y\\) as the independent variable, so its coefficient of \\(x\\) plays the role of \\(P_1\\) in \\(\\frac{dx}{dy} + P_1x = Q_1\\). The integrating factor is therefore \\(e^{\\int P_1\\,dy} = e^{\\int \\frac{P}{R}\\,dy}\\)."
+  },
+  {
+   "hash": "828a04e01fa272bff28fbd348906b60f64a74758ddff7c869757df0c13eb942a",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Order and Degree of a Differential Equation",
+   "stem": "The order and degree of the differential equation \\(\\frac{d}{dx}(e^y) = 0\\) respectively are",
+   "options": [
+    {
+     "label": "A",
+     "text": "0, 1"
+    },
+    {
+     "label": "B",
+     "text": "1, 1"
+    },
+    {
+     "label": "C",
+     "text": "2, 1"
+    },
+    {
+     "label": "D",
+     "text": "1, not defined"
+    }
+   ],
+   "answer": "B",
+   "solution": "Carry out the differentiation first: \\(\\frac{d}{dx}(e^y) = e^y\\frac{dy}{dx} = 0\\). The highest order derivative appearing is \\(\\frac{dy}{dx}\\), so the order is \\(1\\). The equation is a polynomial in that derivative and the derivative occurs to the first power, so the degree is \\(1\\). Order and degree are thus \\(1\\) and \\(1\\)."
+  },
+  {
+   "hash": "3bb70910d11ca83662dd41e06740ad93c5b177820219a8853ff9766f1da6bf13",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "The value of p for which vectors \\(\\hat{i} + 2\\hat{j} + 3\\hat{k}\\) and \\(2\\hat{i} - p\\hat{j} + \\hat{k}\\) are perpendicular to each other is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(1\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{5}{2}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-\\frac{5}{2}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Two vectors are perpendicular exactly when their scalar product is zero. Here \\((\\hat{i} + 2\\hat{j} + 3\\hat{k}) \\cdot (2\\hat{i} - p\\hat{j} + \\hat{k}) = 1 \\times 2 + 2 \\times (-p) + 3 \\times 1 = 5 - 2p\\). Setting \\(5 - 2p = 0\\) gives \\(p = \\frac{5}{2}\\)."
+  },
+  {
+   "hash": "4c3b7bc1285bc4ab69368e48a4458190d6a437a136c8b450daeafd382f07924d",
+   "ref": "Q14",
+   "questionNumber": "14",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Types of Vectors",
+   "stem": "The value of m for which the points with position vectors \\(-\\hat{i} - \\hat{j} + 2\\hat{k}\\), \\(2\\hat{i} + m\\hat{j} + 5\\hat{k}\\) and \\(3\\hat{i} + 11\\hat{j} + 6\\hat{k}\\) are collinear, is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(8\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-8\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(2\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{5}{2}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Call the points \\(A(-1, -1, 2)\\), \\(B(2, m, 5)\\) and \\(C(3, 11, 6)\\). Then \\(\\overrightarrow{AB} = 3\\hat{i} + (m + 1)\\hat{j} + 3\\hat{k}\\) and \\(\\overrightarrow{AC} = 4\\hat{i} + 12\\hat{j} + 4\\hat{k}\\). The three points are collinear when these are parallel, say \\(\\overrightarrow{AB} = \\lambda\\overrightarrow{AC}\\). Comparing \\(\\hat{i}\\) components gives \\(3 = 4\\lambda\\), so \\(\\lambda = \\frac{3}{4}\\), and the \\(\\hat{k}\\) components agree with that value. Comparing \\(\\hat{j}\\) components, \\(m + 1 = 12 \\times \\frac{3}{4} = 9\\), so \\(m = 8\\)."
+  },
+  {
+   "hash": "0ab428489effe35da46653d6abd48333c0632d0a0bbb9262cfff4e9ded6a0062",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "If \\(\\left| \\vec{a} \\right| = 8\\), \\(\\left| \\vec{b} \\right| = 3\\) and \\(\\left| \\vec{a} \\times \\vec{b} \\right| = 12\\), then the value of \\(\\left| \\vec{a} \\cdot \\vec{b} \\right|\\)",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(6\\sqrt{3}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(8\\sqrt{3}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(12\\sqrt{3}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(3\\sqrt{12}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "For any two vectors the dot and cross products satisfy \\(\\left|\\vec{a} \\cdot \\vec{b}\\right|^2 + \\left|\\vec{a} \\times \\vec{b}\\right|^2 = \\left|\\vec{a}\\right|^2\\left|\\vec{b}\\right|^2\\), because the two terms are \\(\\left|\\vec{a}\\right|^2\\left|\\vec{b}\\right|^2\\cos^2\\theta\\) and \\(\\left|\\vec{a}\\right|^2\\left|\\vec{b}\\right|^2\\sin^2\\theta\\). Here \\(\\left|\\vec{a}\\right|^2\\left|\\vec{b}\\right|^2 = 64 \\times 9 = 576\\) and \\(\\left|\\vec{a} \\times \\vec{b}\\right|^2 = 144\\), so \\(\\left|\\vec{a} \\cdot \\vec{b}\\right|^2 = 576 - 144 = 432 = 144 \\times 3\\). Hence \\(\\left|\\vec{a} \\cdot \\vec{b}\\right| = 12\\sqrt{3}\\)."
+  },
+  {
+   "hash": "140a2b0479f8685ecd440e4a0dbc5a3b777be019b77e45bb8ad0f4bccf48968c",
+   "ref": "Q16",
+   "questionNumber": "16",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "The length of perpendicular drawn from point (2, 5, 7) on line \\(\\frac{x}{1} = \\frac{y}{0} = \\frac{z}{0}\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(5\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\sqrt{74}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\sqrt{78}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "The line \\(\\frac{x}{1} = \\frac{y}{0} = \\frac{z}{0}\\) passes through the origin with direction ratios \\(1, 0, 0\\), so it is the \\(x\\)-axis itself. The foot of the perpendicular from \\((2, 5, 7)\\) to the \\(x\\)-axis is \\((2, 0, 0)\\), because only the \\(x\\)-coordinate is retained. The required length is therefore \\(\\sqrt{(2 - 2)^2 + 5^2 + 7^2} = \\sqrt{25 + 49} = \\sqrt{74}\\)."
+  },
+  {
+   "hash": "d12b7e655bba08abe88fd7be8e45e0eee232e8ef91526f97dfbe1ba30ed8b098",
+   "ref": "Q17",
+   "questionNumber": "17",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "The feasible region of a linear programming problem with objective function \\(Z = 5x + 7y\\) is shown below :\nThe maximum value of Z – minimum value of Z is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(8\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(29\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(35\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(43\\)"
+    }
+   ],
+   "answer": "D",
+   "figure": "REQUIRED – the shaded feasible region is a quadrilateral with corners (0, 0), (0, 2), (3, 4) and (7, 0). Only (3, 4) is written as text; the other three corners are readable ONLY off the printed graph, so the stem is unanswerable without it. Page idx 10 (and reproduced in the marking scheme, ms p07).",
+   "solution": "Read off the corner points of the shaded quadrilateral: \\((0, 0)\\), \\((0, 2)\\), \\((3, 4)\\) and \\((7, 0)\\). The region is bounded, so \\(Z = 5x + 7y\\) attains both its maximum and its minimum at corner points. Evaluating there: \\(Z(0, 0) = 0\\), \\(Z(0, 2) = 14\\), \\(Z(3, 4) = 15 + 28 = 43\\) and \\(Z(7, 0) = 35\\). The maximum is \\(43\\) and the minimum is \\(0\\), so the required difference is \\(43 - 0 = 43\\)."
+  },
+  {
+   "hash": "934acefe6c7ad05a90a2305d7669e4e1faad30c49bdf29a79fb0b05bac5d70b3",
+   "ref": "Q18",
+   "questionNumber": "18",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "The degree of an objective function of a linear programming problem is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(1\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(2\\)"
+    },
+    {
+     "label": "D",
+     "text": "Any natural number"
+    }
+   ],
+   "answer": "B",
+   "solution": "The objective function of a linear programming problem is by definition a LINEAR expression in the decision variables, of the form \\(Z = ax + by\\). A linear expression has degree \\(1\\)."
+  },
+  {
+   "hash": "fcc7e580b29c6bfb02bde8a3eda39d02d4ccbc7ef8f30774f0cfefd9694702ab",
+   "ref": "Q19",
+   "questionNumber": "19",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "Assertion (A) : In an experiment of throwing an unbiased die, the probability of getting a prime number given that number appearing on the die being odd is \\(\\frac{2}{3}\\).\nReason (R) : For any two events A and B, \\(P(A|B) = \\frac{P(A \\cup B)}{P(B)}\\)",
+   "context": "Direction : Questions number 19 and 20 are Assertion and Reason based questions carrying 1 mark each. Two statements are given, one labelled Assertion (A) and other labelled Reason (R).\nSelect the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and the Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true and Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false and Reason (R) is true."
+    }
+   ],
+   "answer": "C",
+   "solution": "Assertion: on a die the odd outcomes are \\(\\{1, 3, 5\\}\\) and the primes among them are \\(\\{3, 5\\}\\), so \\(P(\\text{prime} \\mid \\text{odd}) = \\frac{2/6}{3/6} = \\frac{2}{3}\\). The Assertion is TRUE. Reason: the definition of conditional probability carries the INTERSECTION in the numerator, \\(P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}\\), not the union. The stated form is false — for disjoint events \\(A\\) and \\(B\\) with \\(P(A) > 0\\) it would give \\(\\frac{P(A) + P(B)}{P(B)} > 1\\), which no probability can be. So the Assertion is true and the Reason is false."
+  },
+  {
+   "hash": "323862fffcce9927ce49e74f21b9c1514f0f24a348d7a75bfc73d9f4c938d073",
+   "ref": "Q20",
+   "questionNumber": "20",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Angle Between Two Lines",
+   "stem": "Assertion (A) : Lines given by \\(x = py + q\\), \\(z = ry + s\\) and \\(x = p'y + q'\\), \\(z = r'y + s'\\) are perpendicular to each other when \\(pp' + rr' = 1\\).\nReason (R) : Two lines \\(\\vec{r} = \\vec{a}_1 + \\lambda\\vec{b}_1\\) and \\(\\vec{r} = \\vec{a}_2 + \\mu\\vec{b}_2\\) are perpendicular to each other if \\(\\vec{b}_1 \\cdot \\vec{b}_2 = 0\\).",
+   "context": "Direction : Questions number 19 and 20 are Assertion and Reason based questions carrying 1 mark each. Two statements are given, one labelled Assertion (A) and other labelled Reason (R).\nSelect the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and the Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true and Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false and Reason (R) is true."
+    }
+   ],
+   "answer": "D",
+   "solution": "Reason: two lines are perpendicular exactly when their direction vectors have zero scalar product, \\(\\vec{b}_1 \\cdot \\vec{b}_2 = 0\\). That is the standard condition, so the Reason is TRUE. Assertion: taking \\(y\\) as the parameter, the first line is \\((x, y, z) = (py + q,\\; y,\\; ry + s)\\), with direction ratios \\(p, 1, r\\), and the second likewise has direction ratios \\(p', 1, r'\\). They are perpendicular when \\(pp' + 1 \\times 1 + rr' = 0\\), that is when \\(pp' + rr' = -1\\) — not \\(+1\\) as the Assertion claims. So the Assertion is false and the Reason is true."
+  },
+  {
+   "hash": "2e7f2e7b90cb7b112eddd441a0a30380bb1b6769d8f460bb8ab518a5d9384862",
+   "ref": "Q21a",
+   "questionNumber": "21 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Continuity",
+   "stem": "Check whether function f(x) defined as \\(f(x) = \\begin{cases} \\frac{\\left| x - 3 \\right|}{2(x - 3)}, & x < 3 \\\\ \\frac{x - 6}{6}, & x \\geq 3 \\end{cases}\\) is continuous at \\(x = 3\\) or not ?",
+   "solution": "The modulus is what has to be unpacked. For \\(x < 3\\) we have \\(x - 3 < 0\\), so \\(|x - 3| = -(x - 3)\\) and the first branch collapses to the constant \\(f(x) = \\frac{-(x - 3)}{2(x - 3)} = -\\frac{1}{2}\\). Hence LHL \\(= \\lim_{x \\to 3^-} f(x) = -\\frac{1}{2}\\). On the other side \\(f(x) = \\frac{x - 6}{6}\\), so RHL \\(= \\lim_{x \\to 3^+} \\frac{x - 6}{6} = \\frac{3 - 6}{6} = -\\frac{1}{2}\\), and the value at the point itself is \\(f(3) = \\frac{3 - 6}{6} = -\\frac{1}{2}\\). Since LHL \\(=\\) RHL \\(= f(3) = -\\frac{1}{2}\\), the function IS continuous at \\(x = 3\\)."
+  },
+  {
+   "hash": "8201653c69493ca292f969a34cf8a7210ee0393ca2f0c7eca39f76579081bc23",
+   "ref": "Q21b",
+   "questionNumber": "21 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "If \\(\\sqrt{3}(x^2 + y^2) = 4xy\\), then find \\(\\frac{dy}{dx}\\) at \\(\\left( \\frac{1}{2}, \\frac{\\sqrt{3}}{2} \\right)\\).",
+   "solution": "Differentiate both sides with respect to \\(x\\), remembering that \\(y\\) is a function of \\(x\\), so \\(4xy\\) needs the product rule: \\(\\sqrt{3}\\left(2x + 2y\\frac{dy}{dx}\\right) = 4\\left(x\\frac{dy}{dx} + y\\right)\\). Collect the \\(\\frac{dy}{dx}\\) terms: \\(\\left(2\\sqrt{3}y - 4x\\right)\\frac{dy}{dx} = 4y - 2\\sqrt{3}x\\), so \\(\\frac{dy}{dx} = \\frac{4y - 2\\sqrt{3}x}{2\\sqrt{3}y - 4x} = \\frac{2y - \\sqrt{3}x}{\\sqrt{3}y - 2x}\\). At \\(\\left(\\frac{1}{2}, \\frac{\\sqrt{3}}{2}\\right)\\) the numerator is \\(2 \\times \\frac{\\sqrt{3}}{2} - \\sqrt{3} \\times \\frac{1}{2} = \\frac{\\sqrt{3}}{2}\\) and the denominator is \\(\\sqrt{3} \\times \\frac{\\sqrt{3}}{2} - 2 \\times \\frac{1}{2} = \\frac{3}{2} - 1 = \\frac{1}{2}\\). Hence \\(\\left(\\frac{dy}{dx}\\right)_{\\left(\\frac{1}{2},\\, \\frac{\\sqrt{3}}{2}\\right)} = \\frac{\\sqrt{3}/2}{1/2} = \\sqrt{3}\\)."
+  },
+  {
+   "hash": "ea437b4dbf93d2217461493f8d6f4d85c4107e3356f3a7e78bb51d6c0e2cbe13",
+   "ref": "Q22",
+   "questionNumber": "22",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "A room freshner bottle in the shape of an inverted cone sprays the perfume at regular intervals such that volume of the perfume in the bottle decreases at the steady rate of 1 mm\\(^3\\)/min. Find the rate at which level of perfume is dropping at an instant when level of perfume in the bottle is 10 mm, if the semi-vertical angle of conical bottle is \\(\\frac{\\pi}{6}\\).",
+   "figure": "DECORATIVE – a line drawing of the spray bottle beside a sectioned cone annotated '30°' and '10 mm'. Both of those values are already stated in the stem (semi-vertical angle π/6 = 30°, level 10 mm), so the figure adds nothing the text lacks and is not attached. Page idx 12.",
+   "solution": "Let \\(v\\), \\(r\\) and \\(h\\) be the volume, surface radius and depth of the perfume at time \\(t\\). The perfume is being used up, so \\(\\frac{dv}{dt} = -1\\) mm\\(^3\\)/min. The semi-vertical angle fixes the shape of the cone: \\(\\frac{r}{h} = \\tan\\frac{\\pi}{6} = \\frac{1}{\\sqrt{3}}\\), so \\(r = \\frac{h}{\\sqrt{3}}\\) and the volume can be written in terms of the depth alone, \\(v = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi \\times \\frac{h^2}{3} \\times h = \\frac{\\pi h^3}{9}\\). Differentiating with respect to \\(t\\), \\(\\frac{dv}{dt} = \\frac{\\pi h^2}{3}\\frac{dh}{dt}\\), so \\(\\frac{dh}{dt} = \\frac{3}{\\pi h^2}\\frac{dv}{dt} = -\\frac{3}{\\pi h^2}\\). At \\(h = 10\\), \\(\\frac{dh}{dt} = -\\frac{3}{100\\pi}\\). The level of perfume is therefore dropping at the rate of \\(\\frac{3}{100\\pi}\\) mm/min."
+  },
+  {
+   "hash": "c478b94c819d30bd207c3f15bec22545be2ee509a5f9251777c6aa7cfd0de425",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Components and Direction Cosines",
+   "stem": "Find the vector of magnitude 14 in the direction of \\(\\overrightarrow{QP}\\), where P and Q are the points (1, 3, 2) and (-1, 0, 8) respectively.",
+   "solution": "The vector runs FROM \\(Q\\) TO \\(P\\), so \\(\\overrightarrow{QP} = \\left(1 - (-1)\\right)\\hat{i} + (3 - 0)\\hat{j} + (2 - 8)\\hat{k} = 2\\hat{i} + 3\\hat{j} - 6\\hat{k}\\). Its magnitude is \\(\\left|\\overrightarrow{QP}\\right| = \\sqrt{4 + 9 + 36} = \\sqrt{49} = 7\\), so the unit vector along it is \\(\\frac{2}{7}\\hat{i} + \\frac{3}{7}\\hat{j} - \\frac{6}{7}\\hat{k}\\). Scaling that unit vector to the required magnitude, the answer is \\(14 \\times \\left(\\frac{2}{7}\\hat{i} + \\frac{3}{7}\\hat{j} - \\frac{6}{7}\\hat{k}\\right) = 4\\hat{i} + 6\\hat{j} - 12\\hat{k}\\)."
+  },
+  {
+   "hash": "0d836bb93e74b4c0004409ae67b52640c370709575cad48ab80802c74d9abef5",
+   "ref": "Q24",
+   "questionNumber": "24",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Addition of Vectors",
+   "stem": "Vectors \\(\\vec{a} = 3\\hat{i} - 2\\hat{j} + 2\\hat{k}\\) and \\(\\vec{b} = \\hat{i} + 2\\hat{k}\\) represent the two adjacent sides of a parallelogram. Find the vectors representing its diagonals and hence find their lengths.",
+   "solution": "If two adjacent sides of a parallelogram are \\(\\vec{a}\\) and \\(\\vec{b}\\), its diagonals are \\(\\vec{a} + \\vec{b}\\) and \\(\\vec{a} - \\vec{b}\\). Here \\(\\vec{a} + \\vec{b} = (3 + 1)\\hat{i} + (-2 + 0)\\hat{j} + (2 + 2)\\hat{k} = 4\\hat{i} - 2\\hat{j} + 4\\hat{k}\\) and \\(\\vec{a} - \\vec{b} = (3 - 1)\\hat{i} + (-2 - 0)\\hat{j} + (2 - 2)\\hat{k} = 2\\hat{i} - 2\\hat{j}\\). Their lengths are \\(\\left|\\vec{a} + \\vec{b}\\right| = \\sqrt{16 + 4 + 16} = \\sqrt{36} = 6\\) and \\(\\left|\\vec{a} - \\vec{b}\\right| = \\sqrt{4 + 4} = \\sqrt{8} = 2\\sqrt{2}\\). Either diagonal may equally be written with the opposite sense — \\(-(4\\hat{i} - 2\\hat{j} + 4\\hat{k})\\) and \\(-(2\\hat{i} - 2\\hat{j})\\) — since a diagonal has no preferred direction; the lengths are unaffected."
+  },
+  {
+   "hash": "ce5e43d8b08b682f6fd594f2d2e8e85637fd84fd21bacaeeb5623868bfa3bb3b",
+   "ref": "Q25a",
+   "questionNumber": "25 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Properties of Inverse Trigonometric Functions",
+   "stem": "Simplify : \\(\\tan^{-1} \\left( \\frac{\\cos 2x - \\sin 2x}{\\cos 2x + \\sin 2x} \\right)\\), \\(0 < x < \\frac{\\pi}{4}\\).",
+   "solution": "Divide numerator and denominator by \\(\\cos 2x\\), which is legitimate because \\(0 < x < \\frac{\\pi}{4}\\) gives \\(0 < 2x < \\frac{\\pi}{2}\\), so \\(\\cos 2x > 0\\). The expression becomes \\(\\tan^{-1}\\left(\\frac{1 - \\tan 2x}{1 + \\tan 2x}\\right)\\), and the bracket is exactly the expansion of \\(\\tan\\left(\\frac{\\pi}{4} - 2x\\right)\\), since \\(\\tan\\frac{\\pi}{4} = 1\\). So the expression is \\(\\tan^{-1}\\left[\\tan\\left(\\frac{\\pi}{4} - 2x\\right)\\right]\\). On the given range \\(\\frac{\\pi}{4} - 2x\\) lies in \\(\\left(-\\frac{\\pi}{4}, \\frac{\\pi}{4}\\right)\\), which sits inside the principal branch \\(\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\) of \\(\\tan^{-1}\\), so the two operations cancel and the simplified value is \\(\\frac{\\pi}{4} - 2x\\)."
+  },
+  {
+   "hash": "b65f659d5e9baf891349da11fff60d3c786cdd8d1647ac600971ca298ee4ea7a",
+   "ref": "Q25b",
+   "questionNumber": "25 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Evaluating Inverse Trigonometric Expressions",
+   "stem": "Evaluate : \\(\\tan \\left( \\sin^{-1} 1 - \\cos^{-1} \\left( -\\frac{1}{2} \\right) \\right)\\)",
+   "solution": "Take the two inverse values separately, each from its own principal branch. \\(\\sin^{-1} 1 = \\frac{\\pi}{2}\\), since \\(\\frac{\\pi}{2} \\in \\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\). For the other, \\(\\cos^{-1}\\left(-\\frac{1}{2}\\right) = \\pi - \\cos^{-1}\\frac{1}{2} = \\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}\\), which lies in \\([0, \\pi]\\) as it must. Hence the expression is \\(\\tan\\left(\\frac{\\pi}{2} - \\frac{2\\pi}{3}\\right) = \\tan\\left(-\\frac{\\pi}{6}\\right) = -\\tan\\frac{\\pi}{6} = -\\frac{1}{\\sqrt{3}}\\)."
+  },
+  {
+   "hash": "592f0770480d626ff7ca04dc450955924e3065796fb8c27c1a4276e8da782c9a",
+   "ref": "Q26",
+   "questionNumber": "26",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Parts",
+   "stem": "Evaluate : \\(\\int_{0}^{1} x \\tan^{-1} x \\, dx\\).",
+   "solution": "Integrate by parts, taking \\(\\tan^{-1} x\\) as the first function so that differentiating it clears the inverse trigonometry: \\(\\int_{0}^{1} x\\tan^{-1}x\\,dx = \\left[\\tan^{-1}x \\times \\frac{x^2}{2}\\right]_{0}^{1} - \\int_{0}^{1} \\frac{1}{1 + x^2} \\times \\frac{x^2}{2}\\,dx\\). The boundary term is \\(\\frac{\\pi}{4} \\times \\frac{1}{2} = \\frac{\\pi}{8}\\). For the remaining integral write \\(\\frac{x^2}{1 + x^2} = \\frac{(1 + x^2) - 1}{1 + x^2} = 1 - \\frac{1}{1 + x^2}\\), so it becomes \\(\\frac{1}{2}\\int_{0}^{1}\\left(1 - \\frac{1}{1 + x^2}\\right)dx = \\frac{1}{2}\\left[x - \\tan^{-1}x\\right]_{0}^{1} = \\frac{1}{2}\\left(1 - \\frac{\\pi}{4}\\right)\\). Therefore the value is \\(\\frac{\\pi}{8} - \\frac{1}{2} + \\frac{\\pi}{8} = \\frac{\\pi}{4} - \\frac{1}{2}\\)."
+  },
+  {
+   "hash": "cdded11a57c06dcbf0010f8b3118e29cbbbc01ac288ab125cb44e895ea74b19b",
+   "ref": "Q27a",
+   "questionNumber": "27 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integrals of Some Particular Functions",
+   "stem": "Find \\(\\int \\sqrt{\\frac{x + 2}{x - 2}} \\, dx\\)",
+   "solution": "Rationalise the surd so that the integrand becomes an algebraic fraction over a familiar radical: \\(I = \\int \\sqrt{\\frac{x + 2}{x - 2}}\\,dx = \\int \\sqrt{\\frac{x + 2}{x - 2} \\times \\frac{x + 2}{x + 2}}\\,dx = \\int \\frac{x + 2}{\\sqrt{x^2 - 4}}\\,dx\\). Split it into the piece that is a derivative-over-root and the piece that is a standard form: \\(I = \\frac{1}{2}\\int \\frac{2x}{\\sqrt{x^2 - 4}}\\,dx + 2\\int \\frac{1}{\\sqrt{x^2 - 4}}\\,dx\\). For the first, put \\(t = x^2 - 4\\) so that \\(2x\\,dx = dt\\), giving \\(\\frac{1}{2}\\int \\frac{dt}{\\sqrt{t}} = \\sqrt{t} = \\sqrt{x^2 - 4}\\). The second is the standard integral \\(2\\int \\frac{dx}{\\sqrt{x^2 - 2^2}} = 2\\log\\left|x + \\sqrt{x^2 - 4}\\right|\\). Hence \\(I = \\sqrt{x^2 - 4} + 2\\log\\left|x + \\sqrt{x^2 - 4}\\right| + C\\)."
+  },
+  {
+   "hash": "f44778452dcfcebd0be243cccbd31dae4799741c59dc39e62248a4fdbb61dc3a",
+   "ref": "Q27b",
+   "questionNumber": "27 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Partial Fractions",
+   "stem": "Find : \\(\\int \\frac{x^2}{(x^2 + 9) \\, (x^2 + 16)} \\, dx\\)",
+   "solution": "The integrand is even in \\(x\\) and contains only \\(x^2\\), so substitute \\(x^2 = t\\) purely to run the partial fractions: \\(\\frac{x^2}{(x^2 + 9)(x^2 + 16)} = \\frac{t}{(t + 9)(t + 16)} = \\frac{A}{t + 9} + \\frac{B}{t + 16}\\). Clearing denominators gives \\(t = A(t + 16) + B(t + 9)\\); putting \\(t = -9\\) gives \\(-9 = 7A\\), so \\(A = -\\frac{9}{7}\\), and putting \\(t = -16\\) gives \\(-16 = -7B\\), so \\(B = \\frac{16}{7}\\). Restoring \\(t = x^2\\), the integral is \\(-\\frac{9}{7}\\int \\frac{dx}{x^2 + 9} + \\frac{16}{7}\\int \\frac{dx}{x^2 + 16} = -\\frac{9}{7} \\times \\frac{1}{3}\\tan^{-1}\\frac{x}{3} + \\frac{16}{7} \\times \\frac{1}{4}\\tan^{-1}\\frac{x}{4}\\). That is \\(-\\frac{3}{7}\\tan^{-1}\\left(\\frac{x}{3}\\right) + \\frac{4}{7}\\tan^{-1}\\left(\\frac{x}{4}\\right) + C\\)."
+  },
+  {
+   "hash": "04997b77b79efeb8e3a0a1454775dbf606ac5d6bf90056b637fde4ba67929de1",
+   "ref": "Q28",
+   "questionNumber": "28",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "If \\(I_1 = \\int_{-\\pi/4}^{\\pi/4} \\frac{dx}{1 + \\cos 2x}\\) and \\(I_2 = \\int_{-1/2}^{1/2} \\left| x \\right| \\, dx\\), then show that \\(I_1 - 4I_2 = 0\\).",
+   "solution": "Evaluate the two integrals separately. For \\(I_1\\), the identity \\(1 + \\cos 2x = 2\\cos^2 x\\) turns the integrand into \\(\\frac{1}{2}\\sec^2 x\\), which is an EVEN function, so the symmetric limits may be folded: \\(I_1 = 2\\int_{0}^{\\pi/4} \\frac{dx}{2\\cos^2 x} = \\int_{0}^{\\pi/4} \\sec^2 x\\,dx = \\left[\\tan x\\right]_{0}^{\\pi/4} = 1 - 0 = 1\\). For \\(I_2\\), \\(|x|\\) is also even, so \\(I_2 = 2\\int_{0}^{1/2} |x|\\,dx = 2\\int_{0}^{1/2} x\\,dx = \\left[x^2\\right]_{0}^{1/2} = \\frac{1}{4}\\). Therefore \\(I_1 - 4I_2 = 1 - 4 \\times \\frac{1}{4} = 1 - 1 = 0\\), as required."
+  },
+  {
+   "hash": "f991ddcce3b69c129cf01060b2941c367939644a8162ddfda7bb06a46d01f665",
+   "ref": "Q29a",
+   "questionNumber": "29 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Find the general solution of the following differential equation :\n\\(x^2 \\frac{dy}{dx} = x^2 + xy + y^2\\)",
+   "solution": "Dividing throughout by \\(x^2\\) shows the equation is homogeneous, since every term depends on \\(x\\) and \\(y\\) only through the ratio \\(\\frac{y}{x}\\): \\(\\frac{dy}{dx} = 1 + \\frac{y}{x} + \\left(\\frac{y}{x}\\right)^2\\). Put \\(y = vx\\), so that \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\). The equation becomes \\(v + x\\frac{dv}{dx} = 1 + v + v^2\\), that is \\(x\\frac{dv}{dx} = 1 + v^2\\), in which the variables separate: \\(\\frac{dv}{1 + v^2} = \\frac{dx}{x}\\). Integrating both sides, \\(\\tan^{-1} v = \\log|x| + C\\). Restoring \\(v = \\frac{y}{x}\\), the general solution is \\(\\tan^{-1}\\left(\\frac{y}{x}\\right) = \\log|x| + C\\)."
+  },
+  {
+   "hash": "5c31f7205d0e7f2a1238445dc005364b77b1e87b119ea94518210ab71e06c6d1",
+   "ref": "Q29b",
+   "questionNumber": "29 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Variables Separable",
+   "stem": "Find the particular solution of the differential equation \\(xy \\frac{dy}{dx} = (x + 2) \\, (y + 2)\\), given that \\(y(1) = -1\\).",
+   "solution": "The variables separate directly: \\(\\frac{y}{y + 2}\\,dy = \\frac{x + 2}{x}\\,dx\\). Neither side can be integrated as it stands, so split off the constant part of each fraction: \\(\\frac{y}{y + 2} = 1 - \\frac{2}{y + 2}\\) and \\(\\frac{x + 2}{x} = 1 + \\frac{2}{x}\\). Integrating, \\(\\int\\left(1 - \\frac{2}{y + 2}\\right)dy = \\int\\left(1 + \\frac{2}{x}\\right)dx\\) gives \\(y - 2\\log|y + 2| = x + 2\\log|x| + C\\). Now impose \\(y(1) = -1\\). At \\(x = 1\\), \\(y = -1\\) both logarithms vanish, since \\(|y + 2| = 1\\) and \\(|x| = 1\\), leaving \\(-1 = 1 + C\\), so \\(C = -2\\). The particular solution is therefore \\(y - 2\\log|y + 2| = x + 2\\log|x| - 2\\), which may equally be written as \\(y = x + 2\\log\\left|x(y + 2)\\right| - 2\\)."
+  },
+  {
+   "hash": "9480ba9e3e91956fb4e6579e10ec5285b6b828d2a3a3c02c375d42d375e2b631",
+   "ref": "Q30",
+   "questionNumber": "30",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following linear programming problem graphically :\nMinimize \\(Z = 13x - 15y\\)\nSubject to constraints\n\\(x + y \\leq 7\\),\n\\(2x - 3y + 6 \\geq 0\\),\n\\(x \\geq 0\\), \\(y \\geq 0\\)",
+   "solution": "Draw the two boundary lines. \\(x + y = 7\\) joins \\((7, 0)\\) and \\((0, 7)\\); \\(2x - 3y + 6 = 0\\) joins \\((-3, 0)\\) and \\((0, 2)\\). With \\(x \\geq 0\\) and \\(y \\geq 0\\), the constraints \\(x + y \\leq 7\\) and \\(2x - 3y + 6 \\geq 0\\) (that is, \\(y \\leq \\frac{2x + 6}{3}\\)) cut out a BOUNDED quadrilateral in the first quadrant. Its corner points are \\((0, 0)\\), \\((7, 0)\\), \\((0, 2)\\), and the meeting point of the two lines: substituting \\(x = 7 - y\\) into \\(2x - 3y + 6 = 0\\) gives \\(14 - 2y - 3y + 6 = 0\\), so \\(y = 4\\) and \\(x = 3\\), giving \\((3, 4)\\). Since the feasible region is bounded, the optimum occurs at a corner. Evaluating \\(Z = 13x - 15y\\): at \\((0, 0)\\), \\(Z = 0\\); at \\((7, 0)\\), \\(Z = 91\\); at \\((3, 4)\\), \\(Z = 39 - 60 = -21\\); at \\((0, 2)\\), \\(Z = 0 - 30 = -30\\). The minimum value of \\(Z\\) is \\(-30\\), attained at \\(x = 0\\), \\(y = 2\\)."
+  },
+  {
+   "hash": "df82df40e1cd2f6b3495764f04a4e3bd5ef1c70648bf4cc730a08a1a9d38e605",
+   "ref": "Q31a",
+   "questionNumber": "31 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Theorem of Total Probability",
+   "stem": "Out of two bags, bag I contains 3 red and 4 white balls and bag II contains 8 red and 6 white balls. A die is thrown. If it shows a number less than 3 then a ball is drawn at random from bag I, otherwise a ball is drawn at random from bag II. Find the probability that the ball drawn from one of the bags is a red ball.",
+   "solution": "Which bag is used is decided by the die, so this is a total-probability calculation over two exclusive, exhaustive cases. Let \\(E_1\\) be the event that the die shows a number less than \\(3\\) (that is, \\(1\\) or \\(2\\)) and \\(E_2\\) that it shows \\(3\\) or more; let \\(A\\) be the event that the ball drawn is red. Then \\(P(E_1) = \\frac{2}{6}\\) and \\(P(E_2) = \\frac{4}{6}\\). Bag I holds \\(3\\) red out of \\(7\\) balls, so \\(P(A \\mid E_1) = \\frac{3}{7}\\); bag II holds \\(8\\) red out of \\(14\\), so \\(P(A \\mid E_2) = \\frac{8}{14}\\). By the theorem of total probability, \\(P(A) = P(E_1)P(A \\mid E_1) + P(E_2)P(A \\mid E_2) = \\frac{2}{6} \\times \\frac{3}{7} + \\frac{4}{6} \\times \\frac{8}{14} = \\frac{1}{7} + \\frac{8}{21} = \\frac{3}{21} + \\frac{8}{21} = \\frac{11}{21}\\)."
+  },
+  {
+   "hash": "c508c38184242773830ca82774b0e930874a13994a5a3ab28b740ca1083c8f3e",
+   "ref": "Q31b",
+   "questionNumber": "31 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "The probability of simultaneous occurrence of atleast one of the two events X and Y is a. If the probability that exactly one of the events X, Y occurs is b, prove that \\(P(X') + P(Y') = 2 - 2a + b\\).",
+   "solution": "Translate the two given statements into set language. \"At least one of \\(X\\) and \\(Y\\) occurs\" is the event \\(X \\cup Y\\), so \\(P(X \\cup Y) = a\\). \"Exactly one of \\(X\\), \\(Y\\) occurs\" is the union with the overlap removed, so \\(P(X \\cup Y) - P(X \\cap Y) = b\\), which gives \\(P(X \\cap Y) = a - b\\). Now work on the required sum, using the complement rule on each term: \\(P(X') + P(Y') = \\left[1 - P(X)\\right] + \\left[1 - P(Y)\\right] = 2 - \\left[P(X) + P(Y)\\right]\\). The addition theorem \\(P(X \\cup Y) = P(X) + P(Y) - P(X \\cap Y)\\) rearranges to \\(P(X) + P(Y) = P(X \\cup Y) + P(X \\cap Y)\\), so \\(P(X') + P(Y') = 2 - \\left[P(X \\cup Y) + P(X \\cap Y)\\right] = 2 - \\left[a + (a - b)\\right] = 2 - 2a + b\\), which is what was to be proved."
+  },
+  {
+   "hash": "4a7d04ffec56625c90a717c4c23a7f65275301f5645402f56a775db99ecd22e5",
+   "ref": "Q32a",
+   "questionNumber": "32 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Equivalence Relations and Classes",
+   "stem": "A relation R is defined on Z, the set of integers, as\n\\(R = \\{(x, y) : \\left| x - y \\right| \\text{ is divisible by a prime number 'p'}, x, y \\in Z\\}\\)\ncheck whether R is an equivalence relation or not.",
+   "solution": "Test the three properties in turn. REFLEXIVE: for any \\(x \\in Z\\), \\(|x - x| = 0\\), and \\(0\\) is divisible by the prime \\(p\\) because \\(0 = p \\times 0\\). So \\((x, x) \\in R\\) for every \\(x\\), and \\(R\\) is reflexive. SYMMETRIC: suppose \\((x, y) \\in R\\), so \\(p\\) divides \\(|x - y|\\). Since \\(|x - y| = |y - x|\\), the same prime divides \\(|y - x|\\), hence \\((y, x) \\in R\\) and \\(R\\) is symmetric. TRANSITIVE: suppose \\((x, y) \\in R\\) and \\((y, z) \\in R\\), so \\(p\\) divides \\(|x - y|\\) and \\(p\\) divides \\(|y - z|\\). A number and its modulus have the same divisors, so \\(p\\) divides \\(x - y\\) and \\(p\\) divides \\(y - z\\); therefore \\(p\\) divides their sum, \\((x - y) + (y - z) = x - z\\), and hence divides \\(|x - z|\\). So \\((x, z) \\in R\\) and \\(R\\) is transitive. Being reflexive, symmetric and transitive, \\(R\\) IS an equivalence relation on \\(Z\\)."
+  },
+  {
+   "hash": "565dac1d33e28f89ccf6d6ffa34a5e097dffde5da2c03c180af6741776442752",
+   "ref": "Q32b",
+   "questionNumber": "32 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "A function \\(f : R - \\left\\{ \\frac{3}{5} \\right\\} \\longrightarrow R - \\left\\{ \\frac{3}{5} \\right\\}\\) is defined as \\(f(x) = \\frac{3x + 2}{5x - 3}\\). Show that f is one-one and onto.",
+   "solution": "ONE-ONE: let \\(x_1, x_2 \\in R - \\left\\{\\frac{3}{5}\\right\\}\\) with \\(f(x_1) = f(x_2)\\), that is \\(\\frac{3x_1 + 2}{5x_1 - 3} = \\frac{3x_2 + 2}{5x_2 - 3}\\). Cross-multiplying, \\((3x_1 + 2)(5x_2 - 3) = (3x_2 + 2)(5x_1 - 3)\\), which expands to \\(15x_1x_2 - 9x_1 + 10x_2 - 6 = 15x_1x_2 + 10x_1 - 9x_2 - 6\\). The \\(15x_1x_2\\) and \\(-6\\) cancel, leaving \\(-9x_1 + 10x_2 = 10x_1 - 9x_2\\), that is \\(19x_2 = 19x_1\\), so \\(x_1 = x_2\\). Hence \\(f\\) is one-one. ONTO: let \\(y \\in R - \\left\\{\\frac{3}{5}\\right\\}\\) be any element of the codomain and solve \\(f(x) = y\\). From \\(\\frac{3x + 2}{5x - 3} = y\\) we get \\(5xy - 3y = 3x + 2\\), so \\(x(5y - 3) = 3y + 2\\) and \\(x = \\frac{3y + 2}{5y - 3}\\), which is well defined because \\(y \\neq \\frac{3}{5}\\). This \\(x\\) does lie in the DOMAIN: if \\(\\frac{3y + 2}{5y - 3}\\) were equal to \\(\\frac{3}{5}\\) then \\(15y + 10 = 15y - 9\\), i.e. \\(10 = -9\\), which is impossible. Substituting back, \\(3x + 2 = \\frac{19y}{5y - 3}\\) and \\(5x - 3 = \\frac{19}{5y - 3}\\), so \\(f(x) = y\\). Every element of the codomain therefore has a pre-image, and \\(f\\) is onto. (Incidentally the pre-image formula is the original rule again, so \\(f\\) is its own inverse.)"
+  },
+  {
+   "hash": "c0ef7a829da6c80560817839283efd33ba617e9bd90c770b7d6563d14b6d6f24",
+   "ref": "Q33a",
+   "questionNumber": "33 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Solving System of Linear Equations",
+   "stem": "If \\(A = \\begin{bmatrix} 0 & 2 & 1 \\\\ -2 & -1 & -2 \\\\ 1 & -1 & 0 \\end{bmatrix}\\), find \\(A^{-1}\\) and use it to solve the following system of equations :\n\\(-2y + z = 7\\), \\(2x - y - z = 8\\), \\(x - 2y = 10\\)",
+   "solution": "First invert \\(A\\). Expanding along the first row, \\(|A| = 0 \\times \\begin{vmatrix} -1 & -2 \\\\ -1 & 0 \\end{vmatrix} - 2 \\times \\begin{vmatrix} -2 & -2 \\\\ 1 & 0 \\end{vmatrix} + 1 \\times \\begin{vmatrix} -2 & -1 \\\\ 1 & -1 \\end{vmatrix} = 0 - 2(2) + 1(3) = -1 \\neq 0\\), so \\(A^{-1}\\) exists. The cofactors are \\(A_{11} = -2\\), \\(A_{12} = -2\\), \\(A_{13} = 3\\), \\(A_{21} = -1\\), \\(A_{22} = -1\\), \\(A_{23} = 2\\), \\(A_{31} = -3\\), \\(A_{32} = -2\\), \\(A_{33} = 4\\); transposing the cofactor matrix, \\(\\text{adj}\\,A = \\begin{bmatrix} -2 & -1 & -3 \\\\ -2 & -1 & -2 \\\\ 3 & 2 & 4 \\end{bmatrix}\\). Hence \\(A^{-1} = \\frac{1}{|A|}\\text{adj}\\,A = \\frac{1}{-1}\\begin{bmatrix} -2 & -1 & -3 \\\\ -2 & -1 & -2 \\\\ 3 & 2 & 4 \\end{bmatrix} = \\begin{bmatrix} 2 & 1 & 3 \\\\ 2 & 1 & 2 \\\\ -3 & -2 & -4 \\end{bmatrix}\\). Now look at the system. Its coefficient matrix is \\(\\begin{bmatrix} 0 & -2 & 1 \\\\ 2 & -1 & -1 \\\\ 1 & -2 & 0 \\end{bmatrix}\\), which is exactly \\(A^{T}\\), not \\(A\\) — so the system reads \\(A^{T}X = B\\) with \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 7 \\\\ 8 \\\\ 10 \\end{bmatrix}\\). Using \\(\\left(A^{T}\\right)^{-1} = \\left(A^{-1}\\right)^{T}\\), we get \\(X = \\left(A^{-1}\\right)^{T}B = \\begin{bmatrix} 2 & 2 & -3 \\\\ 1 & 1 & -2 \\\\ 3 & 2 & -4 \\end{bmatrix}\\begin{bmatrix} 7 \\\\ 8 \\\\ 10 \\end{bmatrix} = \\begin{bmatrix} 14 + 16 - 30 \\\\ 7 + 8 - 20 \\\\ 21 + 16 - 40 \\end{bmatrix} = \\begin{bmatrix} 0 \\\\ -5 \\\\ -3 \\end{bmatrix}\\). Hence \\(x = 0\\), \\(y = -5\\), \\(z = -3\\). Checking in the original equations: \\(-2(-5) + (-3) = 7\\), \\(2(0) - (-5) - (-3) = 8\\) and \\(0 - 2(-5) = 10\\), all correct."
+  },
+  {
+   "hash": "ee4119ea89e10d59719ec00f287d419616b95bf38db2d55a9a4b55f6d7fb0e85",
+   "ref": "Q33b",
+   "questionNumber": "33 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Determinant and its Properties",
+   "stem": "If \\(\\begin{bmatrix} 3 & -1 & \\sin 3x \\\\ -7 & 4 & \\cos 2x \\\\ -11 & 7 & 2 \\end{bmatrix}\\) is a singular matrix, then find all values of \\(x\\) where \\(x \\in \\left[ 0, \\frac{\\pi}{2} \\right]\\).",
+   "solution": "A matrix is singular when its determinant vanishes, so set \\(\\begin{vmatrix} 3 & -1 & \\sin 3x \\\\ -7 & 4 & \\cos 2x \\\\ -11 & 7 & 2 \\end{vmatrix} = 0\\). Expanding along the third column, the cofactors are \\(\\begin{vmatrix} -7 & 4 \\\\ -11 & 7 \\end{vmatrix} = -49 + 44 = -5\\), then \\(-\\begin{vmatrix} 3 & -1 \\\\ -11 & 7 \\end{vmatrix} = -(21 - 11) = -10\\), then \\(\\begin{vmatrix} 3 & -1 \\\\ -7 & 4 \\end{vmatrix} = 12 - 7 = 5\\). So the determinant is \\(-5\\sin 3x - 10\\cos 2x + 10 = 0\\), and dividing by \\(-5\\) gives \\(\\sin 3x + 2\\cos 2x = 2\\). Now expand both multiple angles in terms of \\(\\sin x\\), using \\(\\sin 3x = 3\\sin x - 4\\sin^3 x\\) and \\(\\cos 2x = 1 - 2\\sin^2 x\\): \\(3\\sin x - 4\\sin^3 x + 2 - 4\\sin^2 x = 2\\), which reduces to \\(4\\sin^3 x + 4\\sin^2 x - 3\\sin x = 0\\). Factorising, \\(\\sin x\\left(4\\sin^2 x + 4\\sin x - 3\\right) = 0\\), that is \\(\\sin x(2\\sin x - 1)(2\\sin x + 3) = 0\\). The last factor gives \\(\\sin x = -\\frac{3}{2}\\), which is impossible. The others give \\(\\sin x = 0\\) and \\(\\sin x = \\frac{1}{2}\\), whose only solutions in \\(\\left[0, \\frac{\\pi}{2}\\right]\\) are \\(x = 0\\) and \\(x = \\frac{\\pi}{6}\\). Both check out: at \\(x = 0\\), \\(\\sin 0 + 2\\cos 0 = 2\\); at \\(x = \\frac{\\pi}{6}\\), \\(\\sin\\frac{\\pi}{2} + 2\\cos\\frac{\\pi}{3} = 1 + 1 = 2\\)."
+  },
+  {
+   "hash": "4e69812190f341adeb1ff1657be58dcfda6dc9cf85d54014792b2eba3962315e",
+   "ref": "Q34",
+   "questionNumber": "34",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Second Order Derivatives",
+   "stem": "If \\(x = \\cos t\\), \\(y = \\cos mt\\), prove that \\((1 - x^2) \\frac{d^2y}{dx^2} - x \\frac{dy}{dx} + m^2 y = 0\\).",
+   "solution": "The curve is given parametrically, so build \\(\\frac{dy}{dx}\\) from the two \\(t\\)-derivatives: \\(\\frac{dx}{dt} = -\\sin t\\) and \\(\\frac{dy}{dt} = -m\\sin(mt)\\), whence \\(\\frac{dy}{dx} = \\frac{-m\\sin(mt)}{-\\sin t} = \\frac{m\\sin(mt)}{\\sin t}\\). Rather than differentiate that quotient, clear the denominator first and write it as \\(\\sin t\\,\\frac{dy}{dx} = m\\sin(mt)\\). Differentiating BOTH sides with respect to \\(x\\), and using the chain rule on the \\(t\\)-dependent factors, \\(\\sin t\\,\\frac{d^2y}{dx^2} + \\frac{dy}{dx}\\cos t \\times \\frac{dt}{dx} = m^2\\cos(mt) \\times \\frac{dt}{dx}\\). Here \\(\\frac{dt}{dx} = \\frac{1}{dx/dt} = -\\frac{1}{\\sin t}\\), so multiplying throughout by \\(\\sin t\\) makes the factor \\(\\sin t \\times \\frac{dt}{dx}\\) equal to \\(-1\\): \\(\\sin^2 t\\,\\frac{d^2y}{dx^2} - \\cos t\\,\\frac{dy}{dx} = -m^2\\cos(mt)\\). Finally substitute back the original parametrisation, \\(\\sin^2 t = 1 - \\cos^2 t = 1 - x^2\\), \\(\\cos t = x\\) and \\(\\cos(mt) = y\\), giving \\(\\left(1 - x^2\\right)\\frac{d^2y}{dx^2} - x\\,\\frac{dy}{dx} = -m^2y\\), that is \\(\\left(1 - x^2\\right)\\frac{d^2y}{dx^2} - x\\,\\frac{dy}{dx} + m^2y = 0\\), as required."
+  },
+  {
+   "hash": "8eb02092d2f1492f9436a3e819d66a99bb6d5d0181ed8dbb4a8621f1d3272723",
+   "ref": "Q35",
+   "questionNumber": "35",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Shortest Distance Between Two Lines",
+   "stem": "Check whether the lines given by \\(\\frac{x - 1}{2} = \\frac{y - 2}{3} = \\frac{z - 3}{4}\\) and \\(\\frac{x - 4}{5} = \\frac{y - 1}{2} = z\\) are parallel or not. If parallel, find the distance between them, otherwise find their point of intersection, if the lines are intersecting.",
+   "solution": "Read off a point and a direction for each line. The first passes through \\((1, 2, 3)\\) with direction ratios \\(2, 3, 4\\); the second, written as \\(\\frac{x - 4}{5} = \\frac{y - 1}{2} = \\frac{z - 0}{1}\\), passes through \\((4, 1, 0)\\) with direction ratios \\(5, 2, 1\\). Since \\(\\frac{2}{5} \\neq \\frac{3}{2}\\), the direction ratios are NOT proportional, so the lines are not parallel; the question therefore asks for a point of intersection. A general point on the first line is \\((2\\lambda + 1,\\; 3\\lambda + 2,\\; 4\\lambda + 3)\\) and a general point on the second is \\((5\\mu + 4,\\; 2\\mu + 1,\\; \\mu)\\). For the lines to meet, all three coordinates must agree for some \\(\\lambda\\) and \\(\\mu\\): \\(2\\lambda + 1 = 5\\mu + 4\\), \\(3\\lambda + 2 = 2\\mu + 1\\) and \\(4\\lambda + 3 = \\mu\\). Solving the first two, \\(2\\lambda - 5\\mu = 3\\) and \\(3\\lambda - 2\\mu = -1\\); multiplying the first by \\(2\\) and the second by \\(5\\) and subtracting gives \\(11\\lambda = -11\\), so \\(\\lambda = -1\\), and then \\(\\mu = -1\\). These values must still satisfy the THIRD equation, which is the real test of intersection in three dimensions: \\(4(-1) + 3 = -1 = \\mu\\), so it does hold and the lines DO intersect. Substituting \\(\\lambda = -1\\) into the first line gives the point of intersection \\((-1, -1, -1)\\), and \\(\\mu = -1\\) in the second line gives the same point, confirming it."
+  },
+  {
+   "hash": "64016aee61d7c56272c47ed60f3eb3a45b686cc1c07e60c75cd39a24cbfe8194",
+   "ref": "Q36i",
+   "questionNumber": "36 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "How many subscribers will discontinue after an increase of ₹ \\(x\\) in annual fee ?",
+   "context": "An online delivery company in a city has 5000 subscribers and collects annual subscription fees of ₹ 300 per subscriber for unlimited free deliveries.\nThe company wishes to increase the annual subscription fee. It is predicted that, for every increase of ₹ 1, ten subscribers will discontinue. Assume that the company increased the annual fee by ₹ \\(x\\).\nBased on the given information, answer the following questions :",
+   "figure": "DECORATIVE – a stock illustration of a delivery rider at a doorstep, beside an unscaled schematic line graph captioned 'No. of Subscribers' against 'Subscription Fee'. The graph carries no numbers or gridlines; every quantity the question needs (5000, ₹ 300, ₹ 1, ten subscribers, x) is stated in the passage, so it is not attached. Page idx 18.",
+   "solution": "Ten subscribers are lost for every ₹ 1 of increase, and the increase is ₹ \\(x\\). The loss is therefore proportional to \\(x\\): the number of subscribers who discontinue is \\(10x\\)."
+  },
+  {
+   "hash": "4584d8a890624b01dd5bbcad8350ac96146c731f892c1c546b14c45c15e7da68",
+   "ref": "Q36ii",
+   "questionNumber": "36 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "If \\(R(x)\\) denotes the total revenue collected after the increase of ₹ \\(x\\) in subscription fee, express \\(R(x)\\) as a function of \\(x\\).",
+   "context": "An online delivery company in a city has 5000 subscribers and collects annual subscription fees of ₹ 300 per subscriber for unlimited free deliveries.\nThe company wishes to increase the annual subscription fee. It is predicted that, for every increase of ₹ 1, ten subscribers will discontinue. Assume that the company increased the annual fee by ₹ \\(x\\).\nBased on the given information, answer the following questions :",
+   "solution": "After the rise, each remaining subscriber pays ₹ \\((300 + x)\\), and the number of subscribers has fallen from \\(5000\\) by the \\(10x\\) who discontinue, leaving \\((5000 - 10x)\\). Total revenue is the product of the two, so \\(R(x) = (5000 - 10x)(300 + x)\\). Expanded, \\(R(x) = 1500000 + 2000x - 10x^2\\)."
+  },
+  {
+   "hash": "6a8910a15374c58f20f7e39f0d4591ce980d788b3677d1e1ddf4b0758f3a34b5",
+   "ref": "Q36iiia",
+   "questionNumber": "36 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Find the value of \\(x\\) for which \\(R(x)\\) is maximum.",
+   "context": "An online delivery company in a city has 5000 subscribers and collects annual subscription fees of ₹ 300 per subscriber for unlimited free deliveries.\nThe company wishes to increase the annual subscription fee. It is predicted that, for every increase of ₹ 1, ten subscribers will discontinue. Assume that the company increased the annual fee by ₹ \\(x\\).\nBased on the given information, answer the following questions :",
+   "solution": "Expanding the revenue, \\(R(x) = (5000 - 10x)(300 + x) = 1500000 + 2000x - 10x^2\\), so \\(R'(x) = 2000 - 20x\\). Setting \\(R'(x) = 0\\) gives \\(20x = 2000\\), that is \\(x = 100\\). To confirm this is a maximum rather than a minimum, \\(R''(x) = -20\\), which is \\(< 0\\) everywhere and in particular at \\(x = 100\\). By the second derivative test \\(R(x)\\) is therefore MAXIMUM at \\(x = 100\\), i.e. for an increase of ₹ 100 in the annual fee."
+  },
+  {
+   "hash": "d908250354e90914f62a0375dc912a63d23aa37936458440898182c6724201b8",
+   "ref": "Q36iiib",
+   "questionNumber": "36 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "Find the sub-intervals of (0, 5000) in which \\(R(x)\\) is increasing and decreasing.",
+   "context": "An online delivery company in a city has 5000 subscribers and collects annual subscription fees of ₹ 300 per subscriber for unlimited free deliveries.\nThe company wishes to increase the annual subscription fee. It is predicted that, for every increase of ₹ 1, ten subscribers will discontinue. Assume that the company increased the annual fee by ₹ \\(x\\).\nBased on the given information, answer the following questions :",
+   "solution": "From \\(R(x) = 1500000 + 2000x - 10x^2\\) we get \\(R'(x) = 2000 - 20x = 20(100 - x)\\), which vanishes only at \\(x = 100\\). The sign of \\(R'\\) is decided by the factor \\((100 - x)\\): for \\(0 < x < 100\\) it is positive, so \\(R'(x) > 0\\) and \\(R(x)\\) is INCREASING on \\((0, 100)\\); for \\(100 < x < 5000\\) it is negative, so \\(R'(x) < 0\\) and \\(R(x)\\) is DECREASING on \\((100, 5000)\\). Since \\(R'\\) vanishes only at the single point \\(x = 100\\), the closed intervals \\((0, 100]\\) and \\([100, 5000)\\) may equally be quoted."
+  },
+  {
+   "hash": "4319b3ac0ca8e6796a2cde862250c0d2eb9df1f2d4278da5c2cf96b824a8709a",
+   "ref": "Q37i",
+   "questionNumber": "37 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "What are the possible amounts, the person can win ?",
+   "context": "In an online jackpot, there is one first prize of ₹ 3,00,000, two second prizes of ₹ 2,00,000 each and three third prizes of ₹ 50,000 each.\nA total of 1,00,000 jackpot tickets each costing ₹ 100 were sold there by raising a fund of ₹ 1,00,00,000.\nRohan bought one ticket.\nBased on given information, answer the following questions :",
+   "figure": "DECORATIVE – a stock 'Lucky Ticket' graphic showing a booth and a banner reading 'PRIZE ₹ 200,000  ₹ 100,000  WIN'. Note it does NOT agree with the passage (the passage's prizes are ₹ 3,00,000 / ₹ 2,00,000 / ₹ 50,000 and never mentions ₹ 1,00,000), which is a further reason it is clip-art rather than data. Not attached. Page idx 20.",
+   "solution": "The jackpot carries three grades of prize, so the amounts a ticket-holder can win are ₹ 3,00,000 (the single first prize), ₹ 2,00,000 (either of the two second prizes) and ₹ 50,000 (any of the three third prizes). Only \\(6\\) of the \\(1,00,000\\) tickets carry a prize at all, so much the likeliest outcome is winning nothing — that case is what part (ii) (b) measures."
+  },
+  {
+   "hash": "d003a74372ab1ce9efc2220b0fb47e8ea58bdf7d29d6a53516cea1eadf99b2bd",
+   "ref": "Q37iia",
+   "questionNumber": "37 (ii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "What is the probability that the person wins atleast ₹ 2,00,000 ?",
+   "context": "In an online jackpot, there is one first prize of ₹ 3,00,000, two second prizes of ₹ 2,00,000 each and three third prizes of ₹ 50,000 each.\nA total of 1,00,000 jackpot tickets each costing ₹ 100 were sold there by raising a fund of ₹ 1,00,00,000.\nRohan bought one ticket.\nBased on given information, answer the following questions :",
+   "solution": "Every one of the \\(1,00,000\\) tickets is equally likely, so the probability is just the count of favourable tickets over the total. Winning \"at least ₹ 2,00,000\" means winning either the first prize or a second prize, and there is \\(1\\) ticket of the former kind and \\(2\\) of the latter, giving \\(1 + 2 = 3\\) favourable tickets. Hence the required probability is \\(\\frac{3}{100000}\\)."
+  },
+  {
+   "hash": "428c0ed2dd5828fc70799332ced8d0fba077769887436c524e330d8e210ba9fc",
+   "ref": "Q37iib",
+   "questionNumber": "37 (ii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "What is the probability that the person does not win any amount ?",
+   "context": "In an online jackpot, there is one first prize of ₹ 3,00,000, two second prizes of ₹ 2,00,000 each and three third prizes of ₹ 50,000 each.\nA total of 1,00,000 jackpot tickets each costing ₹ 100 were sold there by raising a fund of ₹ 1,00,00,000.\nRohan bought one ticket.\nBased on given information, answer the following questions :",
+   "solution": "Count the prize-winning tickets first: \\(1\\) first prize, \\(2\\) second prizes and \\(3\\) third prizes make \\(1 + 2 + 3 = 6\\) winning tickets out of \\(1,00,000\\). Winning nothing is the complement of winning something, so the required probability is \\(1 - \\frac{6}{100000} = \\frac{99994}{100000} = \\frac{49997}{50000}\\)."
+  },
+  {
+   "hash": "bb59d7eddc29d78713a75806ae0035c686d1490d507d912ab71e2e5f582378a1",
+   "ref": "Q37iii",
+   "questionNumber": "37 (iii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Independent Events",
+   "stem": "In another jackpot, Rohan also bought a ticket having a prize money of ₹ 5,00,000. The chances of winning the jackpot are 1 in 1,00,000. Find the probability that on exactly one of tickets he wins the jackpot.",
+   "context": "In an online jackpot, there is one first prize of ₹ 3,00,000, two second prizes of ₹ 2,00,000 each and three third prizes of ₹ 50,000 each.\nA total of 1,00,000 jackpot tickets each costing ₹ 100 were sold there by raising a fund of ₹ 1,00,00,000.\nRohan bought one ticket.\nBased on given information, answer the following questions :",
+   "solution": "Rohan now holds two independent tickets. On the first jackpot he wins with probability \\(\\frac{6}{100000}\\) (any of the \\(6\\) prize-bearing tickets) and loses with probability \\(\\frac{99994}{100000}\\); on the second his chance of winning is \\(1\\) in \\(1,00,000\\), that is \\(\\frac{1}{100000}\\), so he loses with probability \\(\\frac{99999}{100000}\\). \"Exactly one\" splits into two mutually exclusive cases — wins the first and loses the second, OR loses the first and wins the second — so the probabilities multiply within each case and add across the two: \\(\\frac{6}{100000} \\times \\frac{99999}{100000} + \\frac{99994}{100000} \\times \\frac{1}{100000} = \\frac{599994 + 99994}{10^{10}} = \\frac{699988}{10^{10}}\\), which in lowest terms is \\(\\frac{174997}{2500000000}\\)."
+  },
+  {
+   "hash": "35c3bb67965f15b3901019a2add64ad958e3b76b302c8997aa184f5f91a15fbf",
+   "ref": "Q38i",
+   "questionNumber": "38 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Under Simple Curves",
+   "stem": "Represent the given equations \\(C_1\\) and \\(C_2\\) with the help of a diagram.",
+   "context": "Roundabouts are often made on busy roads to ease the traffic and avoid red lights.\nOne such round-about is made such that equation representing its boundary is given by \\(C_1\\) ; \\(x^2 + y^2 = 64\\).\nThere is a circular pond with a fountain in the middle of the roundabout whose equation is given by \\(C_2 : x^2 + y^2 = 4\\).\nBased on the given information, answer the following questions :",
+   "figure": "DECORATIVE – an aerial photograph of a landscaped roundabout with a central fountain. Both circles are given by their equations in the passage, so nothing is read off the photo. Page idx 22.",
+   "solution": "Both equations are circles centred at the ORIGIN, since each has the form \\(x^2 + y^2 = r^2\\) with no linear terms. \\(C_1: x^2 + y^2 = 64\\) has radius \\(\\sqrt{64} = 8\\), and \\(C_2: x^2 + y^2 = 4\\) has radius \\(\\sqrt{4} = 2\\). The diagram is therefore two CONCENTRIC circles about the origin: draw the larger circle \\(C_1\\) cutting the axes at \\((\\pm 8, 0)\\) and \\((0, \\pm 8)\\), and inside it the much smaller circle \\(C_2\\) cutting the axes at \\((\\pm 2, 0)\\) and \\((0, \\pm 2)\\). \\(C_1\\) is the boundary of the roundabout and \\(C_2\\), well inside it, is the edge of the circular pond."
+  },
+  {
+   "hash": "1124b2b8dd84ba4cd5ae9553bd7d78ea6a953bc00113c6d615aedfe4bc2dcf8c",
+   "ref": "Q38ii",
+   "questionNumber": "38 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Under Simple Curves",
+   "stem": "Express y as a function of \\(x\\), \\((y = f(x))\\), for both \\(C_1\\) an \\(C_2\\).",
+   "context": "Roundabouts are often made on busy roads to ease the traffic and avoid red lights.\nOne such round-about is made such that equation representing its boundary is given by \\(C_1\\) ; \\(x^2 + y^2 = 64\\).\nThere is a circular pond with a fountain in the middle of the roundabout whose equation is given by \\(C_2 : x^2 + y^2 = 4\\).\nBased on the given information, answer the following questions :",
+   "solution": "Solving each equation for \\(y\\) gives two branches, because a circle fails the vertical line test and so is not the graph of a single function. For \\(C_1\\), \\(y^2 = 64 - x^2\\), so \\(y = \\sqrt{64 - x^2}\\) (the upper semicircle) or \\(y = -\\sqrt{64 - x^2}\\) (the lower one), for \\(-8 \\leq x \\leq 8\\). For \\(C_2\\), \\(y^2 = 4 - x^2\\), so \\(y = \\sqrt{4 - x^2}\\) or \\(y = -\\sqrt{4 - x^2}\\), for \\(-2 \\leq x \\leq 2\\)."
+  },
+  {
+   "hash": "579c5e5658cda048c1e36393a7b15b034a275745786bd229d9ee9dc0525b9eff",
+   "ref": "Q38iiia",
+   "questionNumber": "38 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Under Simple Curves",
+   "stem": "Using integration find the area of region covered by the roundabout.",
+   "context": "Roundabouts are often made on busy roads to ease the traffic and avoid red lights.\nOne such round-about is made such that equation representing its boundary is given by \\(C_1\\) ; \\(x^2 + y^2 = 64\\).\nThere is a circular pond with a fountain in the middle of the roundabout whose equation is given by \\(C_2 : x^2 + y^2 = 4\\).\nBased on the given information, answer the following questions :",
+   "solution": "The roundabout is the region enclosed by \\(C_1: x^2 + y^2 = 64\\), a circle of radius \\(8\\) about the origin. It is symmetric about both axes, so it is enough to find the part lying in the first quadrant and multiply by \\(4\\), taking the upper branch \\(y = \\sqrt{64 - x^2}\\) from \\(x = 0\\) to \\(x = 8\\): required area \\(= 4\\int_{0}^{8} \\sqrt{64 - x^2}\\,dx\\). Using \\(\\int \\sqrt{a^2 - x^2}\\,dx = \\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a}\\) with \\(a = 8\\), the factor \\(4\\) distributes as \\(4 \\times \\frac{1}{2} = 2\\) and \\(4 \\times \\frac{64}{2} = 128 = 2 \\times 64\\), so the whole thing is \\(2\\left[x\\sqrt{64 - x^2} + 64\\sin^{-1}\\frac{x}{8}\\right]_{0}^{8}\\). At \\(x = 8\\) the surd term vanishes and \\(\\sin^{-1}1 = \\frac{\\pi}{2}\\), giving \\(2\\left[0 + 64 \\times \\frac{\\pi}{2}\\right] = 2 \\times 32\\pi = 64\\pi\\); at \\(x = 0\\) both terms are zero. The area covered by the roundabout is \\(64\\pi\\) square units, which agrees with \\(\\pi r^2 = \\pi \\times 8^2\\)."
+  },
+  {
+   "hash": "dde4aee7a43d6f6e47a738d4771c8464ad1d0ef4dbbaa44af4f40dedee02f4d0",
+   "ref": "Q38iiib",
+   "questionNumber": "38 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Under Simple Curves",
+   "stem": "Using integration, find the area of region covered by circular pond.",
+   "context": "Roundabouts are often made on busy roads to ease the traffic and avoid red lights.\nOne such round-about is made such that equation representing its boundary is given by \\(C_1\\) ; \\(x^2 + y^2 = 64\\).\nThere is a circular pond with a fountain in the middle of the roundabout whose equation is given by \\(C_2 : x^2 + y^2 = 4\\).\nBased on the given information, answer the following questions :",
+   "solution": "The pond is the region enclosed by \\(C_2: x^2 + y^2 = 4\\), a circle of radius \\(2\\) about the origin. As before use the symmetry about both axes and integrate the first-quadrant branch \\(y = \\sqrt{4 - x^2}\\) from \\(x = 0\\) to \\(x = 2\\): required area \\(= 4\\int_{0}^{2} \\sqrt{4 - x^2}\\,dx\\). With \\(\\int \\sqrt{a^2 - x^2}\\,dx = \\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a}\\) and \\(a = 2\\), the factor \\(4\\) gives \\(2\\left[x\\sqrt{4 - x^2} + 4\\sin^{-1}\\frac{x}{2}\\right]_{0}^{2}\\). At \\(x = 2\\) the surd term vanishes and \\(\\sin^{-1}1 = \\frac{\\pi}{2}\\), giving \\(2\\left[0 + 4 \\times \\frac{\\pi}{2}\\right] = 2 \\times 2\\pi = 4\\pi\\); at \\(x = 0\\) both terms are zero. The area covered by the circular pond is \\(4\\pi\\) square units, which agrees with \\(\\pi r^2 = \\pi \\times 2^2\\)."
+  }
+ ]
+}

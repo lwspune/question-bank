@@ -1,0 +1,220 @@
+{
+ "paper": "65/3/1",
+ "year": 2022,
+ "paperId": "2022-65-3-1",
+ "markingScheme": "out/2022-65-3-1/ms/p00.png … p10.png",
+ "rows": [
+  {
+   "hash": "40702b512a37b7a854035671a18dee1456e4825fdb1f0c2fd994d067f5465f03",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integrals of Some Particular Functions",
+   "stem": "Find : \\(\\int \\dfrac{dx}{x^2 - 6x + 13}\\)",
+   "solution": "The denominator has no real factors, so complete the square: \\(x^2 - 6x + 13 = (x - 3)^2 + 2^2\\). The integral becomes \\(\\int \\frac{dx}{(x - 3)^2 + 2^2}\\), which is the standard form \\(\\int \\frac{dt}{t^2 + a^2} = \\frac{1}{a}\\tan^{-1}\\frac{t}{a} + C\\) with \\(t = x - 3\\) and \\(a = 2\\). Hence \\(\\int \\frac{dx}{x^2 - 6x + 13} = \\frac{1}{2}\\tan^{-1}\\left(\\frac{x - 3}{2}\\right) + C\\). Differentiating back gives \\(\\frac{1}{2}\\cdot\\frac{1/2}{1 + (x - 3)^2/4} = \\frac{1}{(x - 3)^2 + 4} = \\frac{1}{x^2 - 6x + 13}\\), the integrand, so the answer is right."
+  },
+  {
+   "hash": "ff0b3f0f191a73bcc83ff086f3d0331776aac93efee16cf99c9b7aa08f47da1e",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Variables Separable",
+   "stem": "Find the general solution of the differential equation : \\(e^{dy/dx} = x^2\\).",
+   "solution": "Taking logarithms of both sides of \\(e^{dy/dx} = x^2\\) makes the derivative explicit: \\(\\frac{dy}{dx} = \\log x^2 = 2\\log x\\). The right side is a function of \\(x\\) alone, so the equation integrates directly: \\(\\int dy = 2\\int \\log x\\,dx\\). Integrate \\(\\log x\\) by parts, taking \\(\\log x\\) as the first function and 1 as the second: \\(\\int \\log x\\,dx = x\\log x - \\int x\\cdot\\frac{1}{x}\\,dx = x\\log x - x\\). Hence the general solution is \\(y = 2(x\\log x - x) + C\\). Checking, \\(\\frac{dy}{dx} = 2\\left(\\log x + 1 - 1\\right) = 2\\log x\\) and \\(e^{2\\log x} = x^2\\), as required."
+  },
+  {
+   "hash": "79e79e2e62e478b93a68f403c382a3cbef1c5bc44c3e63d04bcdf028951ed7a1",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "Write the projection of the vector \\((\\vec{b} + \\vec{c})\\) on the vector \\(\\vec{a}\\), where \\(\\vec{a} = 2\\hat{i} - 2\\hat{j} + \\hat{k}\\), \\(\\vec{b} = \\hat{i} + 2\\hat{j} - 2\\hat{k}\\) and \\(\\vec{c} = 2\\hat{i} - \\hat{j} + 4\\hat{k}\\).",
+   "solution": "First add the two vectors: \\(\\vec{b} + \\vec{c} = (\\hat{i} + 2\\hat{j} - 2\\hat{k}) + (2\\hat{i} - \\hat{j} + 4\\hat{k}) = 3\\hat{i} + \\hat{j} + 2\\hat{k}\\). The projection of a vector \\(\\vec{u}\\) on \\(\\vec{a}\\) is the scalar \\(\\frac{\\vec{u}\\cdot\\vec{a}}{|\\vec{a}|}\\). Here \\((3\\hat{i} + \\hat{j} + 2\\hat{k})\\cdot(2\\hat{i} - 2\\hat{j} + \\hat{k}) = 6 - 2 + 2 = 6\\), and \\(|\\vec{a}| = \\sqrt{2^2 + (-2)^2 + 1^2} = \\sqrt{9} = 3\\). So the required projection is \\(\\frac{6}{3} = 2\\)."
+  },
+  {
+   "hash": "3774f211b4e70e08d97a7f1daa56afdf7ca132fd95e6992e60eb6981335c009c",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "The Plane",
+   "stem": "If the distance of the point (1, 1, 1) from the plane \\(x - y + z + \\lambda = 0\\) is \\(\\dfrac{5}{\\sqrt{3}}\\), find the value(s) of \\(\\lambda\\).",
+   "solution": "The distance of \\((x_1, y_1, z_1)\\) from the plane \\(ax + by + cz + d = 0\\) is \\(\\frac{|ax_1 + by_1 + cz_1 + d|}{\\sqrt{a^2 + b^2 + c^2}}\\). For the point \\((1, 1, 1)\\) and the plane \\(x - y + z + \\lambda = 0\\) this is \\(\\frac{|1 - 1 + 1 + \\lambda|}{\\sqrt{1 + 1 + 1}} = \\frac{|1 + \\lambda|}{\\sqrt{3}}\\). Equating it to the given distance, \\(\\frac{|1 + \\lambda|}{\\sqrt{3}} = \\frac{5}{\\sqrt{3}}\\), so \\(|1 + \\lambda| = 5\\) and hence \\(1 + \\lambda = 5\\) or \\(1 + \\lambda = -5\\). The modulus is what produces two answers, which is why the question asks for the value(s): \\(\\lambda = 4\\) or \\(\\lambda = -6\\). Both are genuine, since a plane at a fixed distance from a point can lie on either side of it."
+  },
+  {
+   "hash": "9d0859663c94e1cfa915ea5ab2370c8b1d94ca82e5306432a93ea7b8b9cb3c69",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "Two cards are drawn successively with replacement from a well shuffled pack of 52 cards. Find the probability distribution of the number of spade cards.",
+   "solution": "Let \\(X\\) denote the number of spade cards drawn, so \\(X\\) takes the values 0, 1 and 2. Because the first card is replaced before the second is drawn, the two draws are independent and each has the same chance of giving a spade: \\(p = \\frac{13}{52} = \\frac{1}{4}\\), with \\(q = 1 - p = \\frac{3}{4}\\). Two non-spades give \\(P(X = 0) = \\frac{3}{4}\\times\\frac{3}{4} = \\frac{9}{16}\\). Exactly one spade can arise on either the first or the second draw, so that case is counted twice: \\(P(X = 1) = 2\\times\\frac{3}{4}\\times\\frac{1}{4} = \\frac{6}{16}\\). Two spades give \\(P(X = 2) = \\frac{1}{4}\\times\\frac{1}{4} = \\frac{1}{16}\\). The probability distribution is therefore\n\n| \\(X\\) | 0 | 1 | 2 |\n|---|---|---|---|\n| \\(P(X)\\) | \\(\\frac{9}{16}\\) | \\(\\frac{6}{16}\\) | \\(\\frac{1}{16}\\) |\n\nand as a check the three probabilities add to \\(\\frac{9 + 6 + 1}{16} = 1\\)."
+  },
+  {
+   "hash": "fb8a18914e556a17ecda288e84f1e4f212a8f88644a26f1d71219f8b2a17aaa4",
+   "ref": "Q6a",
+   "questionNumber": "6 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "A pair of dice is thrown and the sum of the numbers appearing on the dice is observed to be 7. Find the probability that the number 5 has appeared on atleast one die.",
+   "solution": "Let \\(A\\) be the event that the sum is 7 and \\(B\\) the event that 5 appears on at least one die. The sum is given as already observed, so what is wanted is the conditional probability \\(P(B \\mid A)\\), not \\(P(B)\\). The outcomes with sum 7 are \\((1,6), (2,5), (3,4), (4,3), (5,2), (6,1)\\), six of the 36 equally likely outcomes, so \\(P(A) = \\frac{6}{36}\\). Of those six, only \\((2,5)\\) and \\((5,2)\\) show a 5, so \\(A \\cap B = \\{(2,5), (5,2)\\}\\) and \\(P(A \\cap B) = \\frac{2}{36}\\). Hence \\(P(B \\mid A) = \\frac{P(A \\cap B)}{P(A)} = \\frac{2/36}{6/36} = \\frac{2}{6} = \\frac{1}{3}\\)."
+  },
+  {
+   "hash": "bd61552f26bb4c45378dbefd6ac11b36f419e4da4796ff5077c022887960c5ee",
+   "ref": "Q6b",
+   "questionNumber": "6 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Independent Events",
+   "stem": "The probability that A hits the target is \\(\\dfrac{1}{3}\\) and the probability that B hits it, is \\(\\dfrac{2}{5}\\). If both try to hit the target independently, find the probability that the target is hit.",
+   "solution": "Let \\(E_1\\) be the event that A hits and \\(E_2\\) that B hits, so \\(P(E_1) = \\frac{1}{3}\\) and \\(P(E_2) = \\frac{2}{5}\\). \"The target is hit\" means at least one of them hits, which covers three separate cases; its complement is the single event that both miss, so it is much shorter to work through the complement. Since the two shots are independent, so are the two misses, and \\(P(\\text{target is not hit}) = P(\\overline{E_1})\\,P(\\overline{E_2}) = \\left(1 - \\frac{1}{3}\\right)\\left(1 - \\frac{2}{5}\\right) = \\frac{2}{3}\\times\\frac{3}{5} = \\frac{6}{15} = \\frac{2}{5}\\). Therefore \\(P(\\text{target is hit}) = 1 - \\frac{2}{5} = \\frac{3}{5}\\)."
+  },
+  {
+   "hash": "ea7a3e7243df600acf880d9ba380ecac1cefde37feda3590cb8903c755a5d391",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "Evaluate : \\(\\int_{0}^{2\\pi} \\dfrac{dx}{1 + e^{\\sin x}}\\)",
+   "solution": "The integrand has no elementary antiderivative, so use the reflection property \\(\\int_0^a f(x)\\,dx = \\int_0^a f(a - x)\\,dx\\) rather than trying to integrate directly. Let \\(I = \\int_0^{2\\pi} \\frac{dx}{1 + e^{\\sin x}}\\). With \\(a = 2\\pi\\) and \\(\\sin(2\\pi - x) = -\\sin x\\), the property gives \\(I = \\int_0^{2\\pi} \\frac{dx}{1 + e^{-\\sin x}}\\). Multiplying numerator and denominator by \\(e^{\\sin x}\\) turns this into \\(I = \\int_0^{2\\pi} \\frac{e^{\\sin x}}{1 + e^{\\sin x}}\\,dx\\). Adding the two expressions for \\(I\\), the integrands combine to 1, because \\(\\frac{1}{1 + e^{\\sin x}} + \\frac{e^{\\sin x}}{1 + e^{\\sin x}} = \\frac{1 + e^{\\sin x}}{1 + e^{\\sin x}} = 1\\). So \\(2I = \\int_0^{2\\pi} 1\\,dx = 2\\pi\\), and therefore \\(I = \\pi\\)."
+  },
+  {
+   "hash": "18da649ae42bf9c2e4bef96333061e31f6d0a53b69a1edc275d223cad2b03060",
+   "ref": "Q8a",
+   "questionNumber": "8 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "Find the particular solution of the differential equation \\(x \\dfrac{dy}{dx} - y = x^2 \\cdot e^x\\), given \\(y(1) = 0\\).",
+   "solution": "Divide throughout by \\(x\\) to reach the standard linear form \\(\\frac{dy}{dx} + Py = Q\\): \\(\\frac{dy}{dx} - \\frac{y}{x} = \\frac{x^2 e^x}{x} = x e^x\\), so \\(P = -\\frac{1}{x}\\) and \\(Q = x e^x\\). The integrating factor is \\(\\text{I.F.} = e^{\\int -\\frac{1}{x}\\,dx} = e^{-\\log x} = e^{\\log x^{-1}} = \\frac{1}{x}\\). The solution is \\(y\\cdot\\text{I.F.} = \\int Q\\cdot\\text{I.F.}\\,dx\\), and here the integrating factor cancels the \\(x\\) in \\(Q\\), which is what makes the integral easy: \\(\\frac{y}{x} = \\int x e^x\\cdot\\frac{1}{x}\\,dx = \\int e^x\\,dx = e^x + C\\). Hence \\(y = x e^x + Cx\\). Applying \\(y(1) = 0\\) gives \\(0 = 1\\cdot e^1 + C\\cdot 1\\), so \\(C = -e\\), and the particular solution is \\(y = x e^x - ex\\)."
+  },
+  {
+   "hash": "e7be74a4453fb1e06e72c14d2c8ffdd4ab5b2ff5c889822bcb5b5d20e98e24a5",
+   "ref": "Q8b",
+   "questionNumber": "8 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Find the general solution of the differential equation \\(x \\dfrac{dy}{dx} = y(\\log y - \\log x + 1)\\).",
+   "solution": "Use \\(\\log y - \\log x = \\log\\frac{y}{x}\\) to write the equation as \\(\\frac{dy}{dx} = \\frac{y}{x}\\left[\\log\\frac{y}{x} + 1\\right]\\). Every occurrence of the variables is now through the ratio \\(\\frac{y}{x}\\), so the equation is homogeneous. Put \\(y = vx\\), so that \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\), and the equation becomes \\(v + x\\frac{dv}{dx} = v\\left[\\log v + 1\\right] = v\\log v + v\\). The \\(v\\) terms cancel, leaving \\(x\\frac{dv}{dx} = v\\log v\\), which separates as \\(\\int\\frac{dv}{v\\log v} = \\int\\frac{dx}{x}\\). The left side yields to \\(t = \\log v\\), \\(dt = \\frac{dv}{v}\\), giving \\(\\int\\frac{dt}{t} = \\log|\\log v|\\). Hence \\(\\log|\\log v| = \\log|x| + \\log C\\), so \\(\\log v = Cx\\). Restoring \\(v = \\frac{y}{x}\\), the general solution is \\(\\log\\left(\\frac{y}{x}\\right) = Cx\\), equivalently \\(y = x e^{Cx}\\)."
+  },
+  {
+   "hash": "5e94e8ad04ff83a118ace74df528c039482013e17224d88afeb1862229abd523",
+   "ref": "Q9a",
+   "questionNumber": "9 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "The two adjacent sides of a parallelogram are represented by vectors \\(2\\hat{i} - 4\\hat{j} + 5\\hat{k}\\) and \\(\\hat{i} - 2\\hat{j} - 3\\hat{k}\\). Find the unit vector parallel to one of its diagonals. Also, find the area of the parallelogram.",
+   "solution": "Call the adjacent sides \\(\\vec{a} = 2\\hat{i} - 4\\hat{j} + 5\\hat{k}\\) and \\(\\vec{b} = \\hat{i} - 2\\hat{j} - 3\\hat{k}\\). One diagonal of a parallelogram is the sum of its adjacent sides, so that diagonal is \\(\\vec{a} + \\vec{b} = 3\\hat{i} - 6\\hat{j} + 2\\hat{k}\\), of magnitude \\(\\sqrt{9 + 36 + 4} = \\sqrt{49} = 7\\). A unit vector parallel to it is therefore \\(\\frac{1}{7}\\left(3\\hat{i} - 6\\hat{j} + 2\\hat{k}\\right) = \\frac{3}{7}\\hat{i} - \\frac{6}{7}\\hat{j} + \\frac{2}{7}\\hat{k}\\). The area of the parallelogram is \\(|\\vec{a}\\times\\vec{b}|\\), and \\(\\vec{a}\\times\\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & -4 & 5 \\\\ 1 & -2 & -3 \\end{vmatrix} = \\hat{i}(12 + 10) - \\hat{j}(-6 - 5) + \\hat{k}(-4 + 4) = 22\\hat{i} + 11\\hat{j}\\). Hence the area is \\(\\sqrt{22^2 + 11^2} = \\sqrt{484 + 121} = \\sqrt{605} = 11\\sqrt{5}\\) square units. (The question asks for only one diagonal; the other is \\(\\vec{a} - \\vec{b} = \\hat{i} - 2\\hat{j} + 8\\hat{k}\\), whose unit vector would be \\(\\frac{1}{\\sqrt{69}}\\left(\\hat{i} - 2\\hat{j} + 8\\hat{k}\\right)\\).)"
+  },
+  {
+   "hash": "af533de73ff9373a6b4026888b7045c1c9d0c629ed0c3adbffb9001304878377",
+   "ref": "Q9b",
+   "questionNumber": "9 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "If \\(\\vec{a} = 2\\hat{i} + 2\\hat{j} + 3\\hat{k}\\), \\(\\vec{b} = -\\hat{i} + 2\\hat{j} + \\hat{k}\\) and \\(\\vec{c} = 3\\hat{i} + \\hat{j}\\) are such that the vector \\((\\vec{a} + \\lambda \\vec{b})\\) is perpendicular to vector \\(\\vec{c}\\), then find the value of \\(\\lambda\\).",
+   "solution": "First form the vector in question, collecting components: \\(\\vec{a} + \\lambda\\vec{b} = (2 - \\lambda)\\hat{i} + (2 + 2\\lambda)\\hat{j} + (3 + \\lambda)\\hat{k}\\). Two non-zero vectors are perpendicular exactly when their scalar product vanishes, so the condition is \\((\\vec{a} + \\lambda\\vec{b})\\cdot\\vec{c} = 0\\). Writing \\(\\vec{c} = 3\\hat{i} + \\hat{j} + 0\\hat{k}\\), this gives \\(3(2 - \\lambda) + 1(2 + 2\\lambda) + 0(3 + \\lambda) = 0\\); the \\(\\hat{k}\\) component drops out because \\(\\vec{c}\\) has none, so the awkward \\((3 + \\lambda)\\) term never matters. Expanding, \\(6 - 3\\lambda + 2 + 2\\lambda = 0\\), i.e. \\(8 - \\lambda = 0\\). Hence \\(\\lambda = 8\\)."
+  },
+  {
+   "hash": "2baabe244d4d7c312565e35b6271c10aa364931cd6165d6fc19d7738eb56edf8",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Shortest Distance Between Two Lines",
+   "stem": "Show that the lines : \\(\\dfrac{1 - x}{2} = \\dfrac{y - 3}{4} = \\dfrac{z}{-1}\\) and \\(\\dfrac{x - 4}{3} = \\dfrac{2y - 2}{-4} = z - 1\\) are coplanar.",
+   "solution": "Neither line is written in standard symmetric form, so fix that first — the coefficients must be read off \\(\\frac{x - x_1}{a} = \\frac{y - y_1}{b} = \\frac{z - z_1}{c}\\) with unit coefficients on \\(x\\), \\(y\\) and \\(z\\). For the first line, \\(\\frac{1 - x}{2} = \\frac{-(x - 1)}{2} = \\frac{x - 1}{-2}\\), so it is \\(\\frac{x - 1}{-2} = \\frac{y - 3}{4} = \\frac{z - 0}{-1}\\), passing through \\((1, 3, 0)\\) with direction \\((-2, 4, -1)\\). For the second, \\(\\frac{2y - 2}{-4} = \\frac{2(y - 1)}{-4} = \\frac{y - 1}{-2}\\), so it is \\(\\frac{x - 4}{3} = \\frac{y - 1}{-2} = \\frac{z - 1}{1}\\), passing through \\((4, 1, 1)\\) with direction \\((3, -2, 1)\\). Two lines are coplanar precisely when \\(\\begin{vmatrix} x_2 - x_1 & y_2 - y_1 & z_2 - z_1 \\\\ a_1 & b_1 & c_1 \\\\ a_2 & b_2 & c_2 \\end{vmatrix} = 0\\). Here the join of the two points is \\((4 - 1,\\; 1 - 3,\\; 1 - 0) = (3, -2, 1)\\), so the determinant is \\(\\begin{vmatrix} 3 & -2 & 1 \\\\ -2 & 4 & -1 \\\\ 3 & -2 & 1 \\end{vmatrix} = 3(4 - 2) + 2(-2 + 3) + 1(4 - 12) = 6 + 2 - 8 = 0\\). It vanishes for a visible reason: the first and third rows are identical, because the join of the two given points is itself the direction of the second line — that is, the point \\((1, 3, 0)\\) actually lies on the second line, so the two lines intersect. Since the determinant is zero, the lines are coplanar."
+  },
+  {
+   "hash": "3e93ad391956029cb5d431461b7d06d8f5a73545f6f4387496d5d8d8ee99246d",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "Find the area of the region bounded by curve \\(4x^2 = y\\) and the line \\(y = 8x + 12\\), using integration.",
+   "solution": "The curve \\(y = 4x^2\\) is an upward parabola with vertex at the origin, and the line \\(y = 8x + 12\\) cuts across it, so the region enclosed lies between the two intersection points. Solving \\(4x^2 = 8x + 12\\) gives \\(4x^2 - 8x - 12 = 0\\), i.e. \\(x^2 - 2x - 3 = 0\\), so \\((x - 3)(x + 1) = 0\\) and \\(x = -1\\) or \\(x = 3\\); the curves meet at \\((-1, 4)\\) and \\((3, 36)\\). Between these values the line lies above the parabola — testing \\(x = 0\\) gives 12 on the line against 0 on the parabola — so a vertical strip runs from \\(y = 4x^2\\) up to \\(y = 8x + 12\\), and the area is \\(\\int_{-1}^{3}\\left[(8x + 12) - 4x^2\\right]dx\\). Integrating, this is \\(\\left[4x^2 + 12x - \\frac{4}{3}x^3\\right]_{-1}^{3}\\). At \\(x = 3\\) the bracket is \\(36 + 36 - 36 = 36\\); at \\(x = -1\\) it is \\(4 - 12 + \\frac{4}{3} = -\\frac{20}{3}\\). Hence the area is \\(36 - \\left(-\\frac{20}{3}\\right) = 36 + \\frac{20}{3} = \\frac{128}{3}\\) square units."
+  },
+  {
+   "hash": "edfc39e4208e13025273fa1637b78767f516e2f39b988cba422b11f77bd3aabb",
+   "ref": "Q12a",
+   "questionNumber": "12 (a)",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Partial Fractions",
+   "stem": "Find : \\(\\int \\dfrac{x^2}{(x^2 + 1)(3x^2 + 4)} \\, dx\\)",
+   "solution": "Both factors of the denominator are irreducible quadratics in \\(x\\), but each is linear in \\(x^2\\). So put \\(x^2 = t\\) as a device for splitting the fraction only — the variable of integration is not being changed. Writing \\(\\frac{t}{(t + 1)(3t + 4)} = \\frac{A}{t + 1} + \\frac{B}{3t + 4}\\) gives \\(t = A(3t + 4) + B(t + 1)\\). Putting \\(t = -1\\) gives \\(-1 = A(1)\\), so \\(A = -1\\); putting \\(t = -\\frac{4}{3}\\) gives \\(-\\frac{4}{3} = B\\left(-\\frac{1}{3}\\right)\\), so \\(B = 4\\). Restoring \\(t = x^2\\), \\(\\int\\frac{x^2\\,dx}{(x^2 + 1)(3x^2 + 4)} = \\int\\frac{-1}{x^2 + 1}\\,dx + \\int\\frac{4}{3x^2 + 4}\\,dx\\). The first integral is \\(-\\tan^{-1}x\\). For the second, take the 3 out of the denominator: \\(\\int\\frac{4\\,dx}{3x^2 + 4} = \\frac{4}{3}\\int\\frac{dx}{x^2 + \\left(\\frac{2}{\\sqrt{3}}\\right)^2} = \\frac{4}{3}\\cdot\\frac{\\sqrt{3}}{2}\\tan^{-1}\\frac{\\sqrt{3}x}{2} = \\frac{2}{\\sqrt{3}}\\tan^{-1}\\frac{\\sqrt{3}x}{2}\\). Hence the required integral is \\(-\\tan^{-1}x + \\frac{2}{\\sqrt{3}}\\tan^{-1}\\left(\\frac{\\sqrt{3}x}{2}\\right) + C\\)."
+  },
+  {
+   "hash": "341110f575f783c12768c89f0e9b7cf61b6f671703e0a433a24b526286874dd5",
+   "ref": "Q12b",
+   "questionNumber": "12 (b)",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integrals of Special Forms",
+   "stem": "Evaluate : \\(\\int_{-2}^{1} \\sqrt{5 - 4x - x^2} \\, dx\\)",
+   "solution": "Complete the square under the root so the integrand takes a standard form: \\(5 - 4x - x^2 = 5 - (x^2 + 4x) = 5 + 4 - (x^2 + 4x + 4) = 9 - (x + 2)^2 = 3^2 - (x + 2)^2\\). The integral is therefore \\(\\int_{-2}^{1}\\sqrt{3^2 - (x + 2)^2}\\,dx\\). Using \\(\\int\\sqrt{a^2 - t^2}\\,dt = \\frac{t}{2}\\sqrt{a^2 - t^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{t}{a} + C\\) with \\(t = x + 2\\) and \\(a = 3\\), the antiderivative is \\(\\frac{x + 2}{2}\\sqrt{9 - (x + 2)^2} + \\frac{9}{2}\\sin^{-1}\\left(\\frac{x + 2}{3}\\right)\\). At the upper limit \\(x = 1\\) the root is \\(\\sqrt{9 - 9} = 0\\), so the first term vanishes and the second is \\(\\frac{9}{2}\\sin^{-1}(1) = \\frac{9}{2}\\cdot\\frac{\\pi}{2} = \\frac{9\\pi}{4}\\). At the lower limit \\(x = -2\\) both terms are zero, since \\(x + 2 = 0\\) and \\(\\sin^{-1}(0) = 0\\). Hence the value of the definite integral is \\(\\frac{9\\pi}{4} - 0 = \\frac{9\\pi}{4}\\). (The limits are well chosen: \\(x = 1\\) is exactly where \\(5 - 4x - x^2\\) vanishes, and \\(x = -2\\) is where the square is centred, which is why both endpoints evaluate so cleanly.)"
+  },
+  {
+   "hash": "d65868314cbdf3af50be9fca6e3b8bede16f42b8c3295a48c5dc09a4caf6e14f",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "The Plane",
+   "stem": "Find the distance of the point (1, -2, 9) from the point of intersection of the line \\(\\vec{r} = 4\\hat{i} + 2\\hat{j} + 7\\hat{k} + \\lambda(3\\hat{i} + 4\\hat{j} + 2\\hat{k})\\) and the plane \\(\\vec{r} \\cdot (\\hat{i} - \\hat{j} + \\hat{k}) = 10\\).",
+   "solution": "Find the point of intersection first, then apply the distance formula. A general point on the line \\(\\vec{r} = 4\\hat{i} + 2\\hat{j} + 7\\hat{k} + \\lambda(3\\hat{i} + 4\\hat{j} + 2\\hat{k})\\) is \\((4 + 3\\lambda,\\; 2 + 4\\lambda,\\; 7 + 2\\lambda)\\). The plane \\(\\vec{r}\\cdot(\\hat{i} - \\hat{j} + \\hat{k}) = 10\\) is the Cartesian plane \\(x - y + z = 10\\), so this point lies on it when \\((4 + 3\\lambda) - (2 + 4\\lambda) + (7 + 2\\lambda) = 10\\). The \\(\\lambda\\) terms give \\(3\\lambda - 4\\lambda + 2\\lambda = \\lambda\\) and the constants give \\(4 - 2 + 7 = 9\\), so \\(9 + \\lambda = 10\\) and \\(\\lambda = 1\\). Substituting back, the point of intersection is \\((7, 6, 9)\\). The distance of \\((1, -2, 9)\\) from it is \\(\\sqrt{(7 - 1)^2 + (6 - (-2))^2 + (9 - 9)^2} = \\sqrt{36 + 64 + 0} = \\sqrt{100} = 10\\) units."
+  },
+  {
+   "hash": "947f115e0a785f2891850ae5eabee401d2277754f2b775bdd7b87b0c2e76430c",
+   "ref": "Q14a",
+   "questionNumber": "14 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Theorem of Total Probability",
+   "stem": "Calculate the probability that a randomly chosen seed will germinate;",
+   "context": "A shopkeeper sells three types of flower seeds A1, A2, A3. They are sold in the form of a mixture, where the proportions of these seeds are 4 : 4 : 2, respectively. The germination rates of the three types of seeds are 45%, 60% and 35% respectively.\n\nBased on the above information :",
+   "figure": "DECORATIVE — a black-and-white photograph of three flowers sits between the passage and the sub-parts on page idx 6. Every number the question needs (the 4 : 4 : 2 proportions and the 45%, 60%, 35% germination rates) is in the passage text, so both sub-parts are fully answerable without it. Opened and checked; it carries no data. Not a dependency, not to be attached.",
+   "solution": "Let \\(E_1\\), \\(E_2\\), \\(E_3\\) be the events that the seed drawn is of type A1, A2, A3 respectively, and let \\(A\\) be the event that it germinates. The proportions \\(4 : 4 : 2\\) total 10, so \\(P(E_1) = \\frac{4}{10}\\), \\(P(E_2) = \\frac{4}{10}\\) and \\(P(E_3) = \\frac{2}{10}\\). The germination rates are conditional probabilities: \\(P(A \\mid E_1) = \\frac{45}{100}\\), \\(P(A \\mid E_2) = \\frac{60}{100}\\), \\(P(A \\mid E_3) = \\frac{35}{100}\\). The three types are mutually exclusive and exhaustive, so the theorem of total probability applies: \\(P(A) = P(E_1)P(A \\mid E_1) + P(E_2)P(A \\mid E_2) + P(E_3)P(A \\mid E_3) = \\frac{4}{10}\\times\\frac{45}{100} + \\frac{4}{10}\\times\\frac{60}{100} + \\frac{2}{10}\\times\\frac{35}{100} = \\frac{180 + 240 + 70}{1000} = \\frac{490}{1000} = \\frac{49}{100}\\). So a randomly chosen seed germinates with probability \\(0.49\\)."
+  },
+  {
+   "hash": "41fc4af1ee872fcf79a9eb2eba24250cc328d4000bfbf3ac91b7aab55e3e9347",
+   "ref": "Q14b",
+   "questionNumber": "14 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Bayes' Theorem",
+   "stem": "Calculate the probability that the seed is of type A2, given that a randomly chosen seed germinates.",
+   "context": "A shopkeeper sells three types of flower seeds A1, A2, A3. They are sold in the form of a mixture, where the proportions of these seeds are 4 : 4 : 2, respectively. The germination rates of the three types of seeds are 45%, 60% and 35% respectively.\n\nBased on the above information :",
+   "solution": "Here the effect is known (the seed germinated) and a cause is asked for, which is exactly the situation Bayes' theorem handles: \\(P(E_2 \\mid A) = \\frac{P(E_2)\\,P(A \\mid E_2)}{P(A)}\\), where \\(E_2\\) is the event that the seed is of type A2 and \\(A\\) that it germinates. With \\(P(E_2) = \\frac{4}{10}\\) from the \\(4 : 4 : 2\\) proportions and \\(P(A \\mid E_2) = \\frac{60}{100}\\) from the 60% germination rate, the numerator is \\(\\frac{4}{10}\\times\\frac{60}{100} = \\frac{240}{1000}\\). The denominator is the total probability of germination, \\(P(A) = \\frac{4}{10}\\times\\frac{45}{100} + \\frac{4}{10}\\times\\frac{60}{100} + \\frac{2}{10}\\times\\frac{35}{100} = \\frac{490}{1000}\\). Hence \\(P(E_2 \\mid A) = \\frac{240/1000}{490/1000} = \\frac{240}{490} = \\frac{24}{49}\\)."
+  }
+ ]
+}
