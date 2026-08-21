@@ -1,0 +1,976 @@
+{
+ "paper": "65/2/1",
+ "year": 2024,
+ "paperId": "2024-65-2-1",
+ "markingScheme": "out/2024-65-2-1/ms/p00.png … p19.png",
+ "rows": [
+  {
+   "hash": "a1d7dbcae10759ebdb25c96dcca9bcebda368580cb03904d83af330582f666d3",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Order and Types of Matrices",
+   "stem": "If the sum of all the elements of a \\(3 \\times 3\\) scalar matrix is 9, then the product of all its elements is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "0"
+    },
+    {
+     "label": "B",
+     "text": "9"
+    },
+    {
+     "label": "C",
+     "text": "27"
+    },
+    {
+     "label": "D",
+     "text": "729"
+    }
+   ],
+   "answer": "A",
+   "solution": "A \\(3 \\times 3\\) scalar matrix is \\(kI_3\\): three diagonal entries equal to \\(k\\) and six zero entries off the diagonal. The sum of all nine elements is therefore \\(3k\\), so \\(3k = 9\\) and \\(k = 3\\). The product of all nine elements has those six zeros among its factors, so the product is \\(3^3 \\times 0^6 = 0\\), which is option (A) 0."
+  },
+  {
+   "hash": "1c2e6c426f43e32f3df26db8b39f3f2ff3b09567820ddd4a638f41f984ed8200",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "Let \\(f : R_+ \\to [-5, \\infty)\\) be defined as \\(f(x) = 9x^2 + 6x - 5\\), where \\(R_+\\) is the set of all non-negative real numbers. Then, f is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "one-one"
+    },
+    {
+     "label": "B",
+     "text": "onto"
+    },
+    {
+     "label": "C",
+     "text": "bijective"
+    },
+    {
+     "label": "D",
+     "text": "neither one-one nor onto"
+    }
+   ],
+   "answer": "C",
+   "solution": "On \\(R_+ = [0, \\infty)\\) we have \\(f'(x) = 18x + 6 > 0\\), so f is strictly increasing there and hence one-one. (Equivalently \\(f(x) = (3x + 1)^2 - 6\\), and \\(3x + 1\\) is positive and increasing on \\(R_+\\).) For onto: f is continuous, \\(f(0) = -5\\) and \\(f(x) \\to \\infty\\) as \\(x \\to \\infty\\), so f takes every value between \\(-5\\) and \\(\\infty\\); its range is exactly \\([-5, \\infty)\\), which is the given codomain. Being both one-one and onto, f is bijective, which is option (C) bijective."
+  },
+  {
+   "hash": "fd47166dab21ac6bf03f0291d7fbe78a1f947bfd17ce730b4a1aadcdf8b4285b",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Determinant and its Properties",
+   "stem": "If \\(\\begin{vmatrix} -a & b & c \\\\ a & -b & c \\\\ a & b & -c \\end{vmatrix} = kabc\\), then the value of k is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "0"
+    },
+    {
+     "label": "B",
+     "text": "1"
+    },
+    {
+     "label": "C",
+     "text": "2"
+    },
+    {
+     "label": "D",
+     "text": "4"
+    }
+   ],
+   "answer": "D",
+   "solution": "Expanding along the first row, \\(\\begin{vmatrix} -a & b & c \\\\ a & -b & c \\\\ a & b & -c \\end{vmatrix} = -a(bc - bc) - b(-ac - ac) + c(ab + ab) = 0 + 2abc + 2abc = 4abc\\). Comparing this with \\(kabc\\) gives \\(k = 4\\), which is option (D) 4."
+  },
+  {
+   "hash": "70d55b722f013ffef9cdd80dcbbff68907c9c6f8fb6c3fd15c1881b9f0386c12",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Continuity",
+   "stem": "The number of points of discontinuity of \\(f(x) = \\begin{cases} |x| + 3, & \\text{if } x \\le -3 \\\\ -2x, & \\text{if } -3 < x < 3 \\\\ 6x + 2, & \\text{if } x \\ge 3 \\end{cases}\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "0"
+    },
+    {
+     "label": "B",
+     "text": "1"
+    },
+    {
+     "label": "C",
+     "text": "2"
+    },
+    {
+     "label": "D",
+     "text": "infinite"
+    }
+   ],
+   "answer": "B",
+   "solution": "Each branch is a polynomial on its own interval, so f can only fail to be continuous where the branches meet. At \\(x = -3\\): the value is \\(f(-3) = |-3| + 3 = 6\\) and the right-hand limit is \\(\\lim_{x \\to -3^+}(-2x) = 6\\), so f is continuous there. At \\(x = 3\\): the left-hand limit is \\(\\lim_{x \\to 3^-}(-2x) = -6\\) while \\(f(3) = 6(3) + 2 = 20\\), and these disagree, so f is discontinuous at \\(x = 3\\). That is exactly one point of discontinuity, which is option (B) 1."
+  },
+  {
+   "hash": "06352a819f80100bfcc82cdbc3400e985ea21e8ac6a207feb3e936eaf09662bb",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "The function \\(f(x) = x^3 - 3x^2 + 12x - 18\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "strictly decreasing on R"
+    },
+    {
+     "label": "B",
+     "text": "strictly increasing on R"
+    },
+    {
+     "label": "C",
+     "text": "neither strictly increasing nor strictly decreasing on R"
+    },
+    {
+     "label": "D",
+     "text": "strictly decreasing on \\((-\\infty, 0)\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "\\(f'(x) = 3x^2 - 6x + 12 = 3\\left(x^2 - 2x + 4\\right) = 3\\left((x - 1)^2 + 3\\right)\\). Since \\((x - 1)^2 \\ge 0\\), we get \\(f'(x) \\ge 9 > 0\\) for every real x. A function whose derivative is positive throughout R is strictly increasing on R, which is option (B) strictly increasing on R."
+  },
+  {
+   "hash": "13a2ee50ff1b53ad6bf0c33481809ffe9f961f7c6a424b4355087fcbbf24d288",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "\\(\\displaystyle\\int_0^{\\pi/2} \\dfrac{\\sin x - \\cos x}{1 + \\sin x \\cos x}\\, dx\\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\pi\\)"
+    },
+    {
+     "label": "B",
+     "text": "Zero (0)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\displaystyle\\int_0^{\\pi/2} \\dfrac{2 \\sin x}{1 + \\sin x \\cos x}\\, dx\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{\\pi^2}{4}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Let \\(I = \\int_0^{\\pi/2} \\frac{\\sin x - \\cos x}{1 + \\sin x \\cos x}\\,dx\\) and use \\(\\int_0^a f(x)\\,dx = \\int_0^a f(a - x)\\,dx\\) with \\(a = \\frac{\\pi}{2}\\). Because \\(\\sin\\left(\\frac{\\pi}{2} - x\\right) = \\cos x\\) and \\(\\cos\\left(\\frac{\\pi}{2} - x\\right) = \\sin x\\), the product \\(\\sin x \\cos x\\) in the denominator is unchanged, while the numerator becomes \\(\\cos x - \\sin x\\). Hence \\(I = -I\\), so \\(2I = 0\\) and \\(I = 0\\), which is option (B) Zero (0)."
+  },
+  {
+   "hash": "dc2df217008d6f1262f22bd7a3220d6b57e0a922616a6244fd011efeb047eb6c",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "The differential equation \\(\\dfrac{dy}{dx} = F(x, y)\\) will not be a homogeneous differential equation, if F(x, y) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\cos x - \\sin\\left(\\dfrac{y}{x}\\right)\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{y}{x}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{x^2 + y^2}{xy}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\cos^2\\left(\\dfrac{x}{y}\\right)\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "\\(\\frac{dy}{dx} = F(x, y)\\) is homogeneous exactly when F is homogeneous of degree zero, that is \\(F(\\lambda x, \\lambda y) = F(x, y)\\), which happens when F involves x and y only through the ratio \\(\\frac{y}{x}\\) or \\(\\frac{x}{y}\\). That is true of \\(\\frac{y}{x}\\), of \\(\\frac{x^2 + y^2}{xy} = \\frac{x}{y} + \\frac{y}{x}\\) and of \\(\\cos^2\\left(\\frac{x}{y}\\right)\\). It fails for \\(\\cos x - \\sin\\left(\\frac{y}{x}\\right)\\), because the stand-alone term \\(\\cos x\\) becomes \\(\\cos(\\lambda x)\\) under scaling. So the equation is not homogeneous when F is \\(\\cos x - \\sin\\left(\\frac{y}{x}\\right)\\), which is option (A)."
+  },
+  {
+   "hash": "01a7f93ff09370212f8c18257bb35950c16e90f86a76340bbad8f695a1ea55ad",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "For any two vectors \\(\\vec{a}\\) and \\(\\vec{b}\\), which of the following statements is always true ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\vec{a} \\cdot \\vec{b} \\ge |\\vec{a}| \\, |\\vec{b}|\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\vec{a} \\cdot \\vec{b} = |\\vec{a}| \\, |\\vec{b}|\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\vec{a} \\cdot \\vec{b} \\le |\\vec{a}| \\, |\\vec{b}|\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\vec{a} \\cdot \\vec{b} < |\\vec{a}| \\, |\\vec{b}|\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "By definition \\(\\vec{a} \\cdot \\vec{b} = |\\vec{a}|\\,|\\vec{b}|\\cos\\theta\\), where \\(\\theta\\) is the angle between the two vectors, and \\(\\cos\\theta \\le 1\\) always. Multiplying that inequality by the non-negative quantity \\(|\\vec{a}|\\,|\\vec{b}|\\) gives \\(\\vec{a} \\cdot \\vec{b} \\le |\\vec{a}|\\,|\\vec{b}|\\), which therefore holds for every pair of vectors; this is option (C) \\(\\vec{a} \\cdot \\vec{b} \\le |\\vec{a}|\\,|\\vec{b}|\\). The others can fail: equality needs \\(\\theta = 0\\), the strict inequality fails for parallel vectors, and the reversed inequality fails whenever \\(\\theta\\) is obtuse."
+  },
+  {
+   "hash": "421d14dc912ae74b616164db778bbed49e267fa3e30315ae06769e6b6478a047",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "The coordinates of the foot of the perpendicular drawn from the point (0, 1, 2) on the x-axis are given by :",
+   "options": [
+    {
+     "label": "A",
+     "text": "(1, 0, 0)"
+    },
+    {
+     "label": "B",
+     "text": "(2, 0, 0)"
+    },
+    {
+     "label": "C",
+     "text": "\\((\\sqrt{5}, 0, 0)\\)"
+    },
+    {
+     "label": "D",
+     "text": "(0, 0, 0)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Every point of the x-axis has the form \\((t, 0, 0)\\). The segment from \\((0, 1, 2)\\) to \\((t, 0, 0)\\) is \\(t\\hat{i} - \\hat{j} - 2\\hat{k}\\), and it is perpendicular to the x-axis when its dot product with the direction \\(\\hat{i}\\) is zero, i.e. \\(t = 0\\). So the foot of the perpendicular is \\((0, 0, 0)\\), which is option (D) (0, 0, 0). In short, the foot is obtained by dropping the y- and z-coordinates of the point."
+  },
+  {
+   "hash": "087af477268e0b5fda3d33f732728e6044435b807cb1ceaf5c02219ee6f53fcd",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "The common region determined by all the constraints of a linear programming problem is called :",
+   "options": [
+    {
+     "label": "A",
+     "text": "an unbounded region"
+    },
+    {
+     "label": "B",
+     "text": "an optimal region"
+    },
+    {
+     "label": "C",
+     "text": "a bounded region"
+    },
+    {
+     "label": "D",
+     "text": "a feasible region"
+    }
+   ],
+   "answer": "D",
+   "solution": "The set of points that satisfy every constraint of a linear programming problem simultaneously, that is the region common to all the constraints, is by definition the feasible region, and each of its points is a feasible solution. It may happen also to be bounded or unbounded, but those words describe the region rather than name it, and the optimal value is attained at a corner point rather than over a region. So the answer is option (D) a feasible region."
+  },
+  {
+   "hash": "c0cbfb26cf504bddb883899e9c029a0831d4a206561c10b701f38615044f596e",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "Let E be an event of a sample space S of an experiment, then \\(P(S \\,|\\, E) = \\)",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(P(S \\cap E)\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(P(E)\\)"
+    },
+    {
+     "label": "C",
+     "text": "1"
+    },
+    {
+     "label": "D",
+     "text": "0"
+    }
+   ],
+   "answer": "C",
+   "solution": "By the definition of conditional probability, \\(P(S \\mid E) = \\frac{P(S \\cap E)}{P(E)}\\), where \\(P(E) \\ne 0\\). Since E is an event of the sample space S, every outcome of E already lies in S, so \\(S \\cap E = E\\). Hence \\(P(S \\mid E) = \\frac{P(E)}{P(E)} = 1\\), which is option (C) 1. (This just says that once E has occurred, the sample space is certain to occur.)"
+  },
+  {
+   "hash": "c7a36e85e6887592ede512ea2a672aaa98651617eea80057a991417f23373739",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Order and Types of Matrices",
+   "stem": "If \\(A = [a_{ij}]\\) be a \\(3 \\times 3\\) matrix, where \\(a_{ij} = i - 3j\\), then which of the following is false ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(a_{11} < 0\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(a_{12} + a_{21} = -6\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(a_{13} > a_{31}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(a_{31} = 0\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "With \\(a_{ij} = i - 3j\\) the relevant entries are \\(a_{11} = 1 - 3 = -2\\), \\(a_{12} = 1 - 6 = -5\\), \\(a_{21} = 2 - 3 = -1\\), \\(a_{13} = 1 - 9 = -8\\) and \\(a_{31} = 3 - 3 = 0\\). Testing each statement: \\(a_{11} = -2 < 0\\) is true; \\(a_{12} + a_{21} = -5 + (-1) = -6\\) is true; \\(a_{31} = 0\\) is true. But \\(a_{13} = -8\\) while \\(a_{31} = 0\\), and \\(-8 > 0\\) is false. So the false statement is option (C) \\(a_{13} > a_{31}\\)."
+  },
+  {
+   "hash": "683f3073f62c405773cd96f420f9c5737045068cb766c55784bad0ad6637fe19",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "The derivative of \\(\\tan^{-1}(x^2)\\) w.r.t. x is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{x}{1 + x^4}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{2x}{1 + x^4}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(-\\dfrac{2x}{1 + x^4}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{1}{1 + x^4}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Apply the chain rule with the inner function \\(u = x^2\\): \\(\\frac{d}{dx}\\tan^{-1}\\left(x^2\\right) = \\frac{1}{1 + \\left(x^2\\right)^2} \\cdot \\frac{d}{dx}\\left(x^2\\right) = \\frac{2x}{1 + x^4}\\), which is option (B) \\(\\frac{2x}{1 + x^4}\\)."
+  },
+  {
+   "hash": "a7a330783a13926450832b2e944b83123862703c60253371b22e7c579b31f57e",
+   "ref": "Q14",
+   "questionNumber": "14",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Order and Degree of a Differential Equation",
+   "stem": "The degree of the differential equation \\((y'')^2 + (y')^3 = x \\sin (y')\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "1"
+    },
+    {
+     "label": "B",
+     "text": "2"
+    },
+    {
+     "label": "C",
+     "text": "3"
+    },
+    {
+     "label": "D",
+     "text": "not defined"
+    }
+   ],
+   "answer": "D",
+   "solution": "Degree is defined only when the differential equation is a polynomial in its derivatives. Here the right-hand side is \\(x \\sin(y')\\), with \\(y'\\) sitting inside a sine, so the equation \\(\\left(y''\\right)^2 + \\left(y'\\right)^3 = x \\sin(y')\\) is not a polynomial in \\(y'\\) and cannot be rearranged into one. Hence its degree is not defined, which is option (D) not defined. (Its order is 2, from the \\(y''\\) term, but order is a separate question.)"
+  },
+  {
+   "hash": "fee031225a7944c04699d7a70b9c4d9f81012033319b3590abcefe52bff538e7",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "The unit vector perpendicular to both vectors \\(\\hat{i} + \\hat{k}\\) and \\(\\hat{i} - \\hat{k}\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2\\hat{j}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\hat{j}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{\\hat{i} - \\hat{k}}{\\sqrt{2}}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{\\hat{i} + \\hat{k}}{\\sqrt{2}}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "A vector perpendicular to both is their cross product. Since \\(\\hat{i} \\times \\hat{i} = \\vec{0}\\), \\(\\hat{k} \\times \\hat{k} = \\vec{0}\\), \\(\\hat{i} \\times \\hat{k} = -\\hat{j}\\) and \\(\\hat{k} \\times \\hat{i} = \\hat{j}\\), we get \\(\\left(\\hat{i} + \\hat{k}\\right) \\times \\left(\\hat{i} - \\hat{k}\\right) = -\\hat{i} \\times \\hat{k} + \\hat{k} \\times \\hat{i} = \\hat{j} + \\hat{j} = 2\\hat{j}\\). Its magnitude is 2, so the required unit vector is \\(\\frac{2\\hat{j}}{2} = \\hat{j}\\), which is option (B) \\(\\hat{j}\\). Note that \\(2\\hat{j}\\) is perpendicular to both but has magnitude 2, so it is not a unit vector."
+  },
+  {
+   "hash": "187589150d83b850419a3ec84ad22b0f23184dbb7e8c8c6e35935a2d4e8d1502",
+   "ref": "Q16",
+   "questionNumber": "16",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "Direction ratios of a vector parallel to line \\(\\dfrac{x-1}{2} = -y = \\dfrac{2z+1}{6}\\) are :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2, -1, 6\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(2, 1, 6\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(2, 1, 3\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(2, -1, 3\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Put the line into standard symmetric form before reading anything off it. The middle member is \\(-y = \\frac{y - 0}{-1}\\), and the last one is \\(\\frac{2z + 1}{6} = \\frac{2\\left(z + \\frac{1}{2}\\right)}{6} = \\frac{z + \\frac{1}{2}}{3}\\). So the line is \\(\\frac{x - 1}{2} = \\frac{y - 0}{-1} = \\frac{z + \\frac{1}{2}}{3}\\), and the denominators are the direction ratios, namely \\(2, -1, 3\\), which is option (D) \\(2, -1, 3\\). The trap is to read the printed 6 as the third direction ratio without first making the coefficient of z equal to 1."
+  },
+  {
+   "hash": "d790d79453454d343723591e87cad89dacff55dfd0debfd64098d55ba1135e0c",
+   "ref": "Q17",
+   "questionNumber": "17",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "If \\(F(x) = \\begin{bmatrix} \\cos x & -\\sin x & 0 \\\\ \\sin x & \\cos x & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\\) and \\([F(x)]^2 = F(kx)\\), then the value of k is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "1"
+    },
+    {
+     "label": "B",
+     "text": "2"
+    },
+    {
+     "label": "C",
+     "text": "0"
+    },
+    {
+     "label": "D",
+     "text": "\\(-2\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Multiply F(x) by itself. The bottom row and last column are \\((0, 0, 1)\\) in both factors, so they survive unchanged, while the top-left \\(2 \\times 2\\) block gives entries \\(\\cos^2 x - \\sin^2 x = \\cos 2x\\) on its diagonal, \\(-\\left(\\cos x \\sin x + \\sin x \\cos x\\right) = -\\sin 2x\\) in position \\((1, 2)\\) and \\(\\sin x \\cos x + \\cos x \\sin x = \\sin 2x\\) in position \\((2, 1)\\). Hence \\([F(x)]^2 = \\begin{bmatrix} \\cos 2x & -\\sin 2x & 0 \\\\ \\sin 2x & \\cos 2x & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} = F(2x)\\). Comparing with \\(F(kx)\\) gives \\(k = 2\\), which is option (B) 2. (F(x) is the rotation through angle x about the z-axis, and doing it twice rotates through \\(2x\\).)"
+  },
+  {
+   "hash": "b83236f500eb487007f49706c61e05438a2ab6b843c1059e0343480fe3c04668",
+   "ref": "Q18",
+   "questionNumber": "18",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "If a line makes an angle of \\(30^\\circ\\) with the positive direction of x-axis, \\(120^\\circ\\) with the positive direction of y-axis, then the angle which it makes with the positive direction of z-axis is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(90^\\circ\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(120^\\circ\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(60^\\circ\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(0^\\circ\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "If a line makes angles \\(\\alpha\\), \\(\\beta\\), \\(\\gamma\\) with the positive x-, y- and z-axes, its direction cosines satisfy \\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\). Here \\(\\cos 30^\\circ = \\frac{\\sqrt{3}}{2}\\) and \\(\\cos 120^\\circ = -\\frac{1}{2}\\), so \\(\\frac{3}{4} + \\frac{1}{4} + \\cos^2\\gamma = 1\\), giving \\(\\cos^2\\gamma = 0\\). Hence \\(\\cos\\gamma = 0\\) and \\(\\gamma = 90^\\circ\\), which is option (A) \\(90^\\circ\\)."
+  },
+  {
+   "hash": "252e3811add5822d90934de3bf8f69f927fa2b7496efbce660539b438049c172",
+   "ref": "Q19",
+   "questionNumber": "19",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Symmetric and Skew-Symmetric Matrices",
+   "stem": "Assertion (A) : For any symmetric matrix A, B'AB is a skew-symmetric matrix.\n\nReason (R) : A square matrix P is skew-symmetric if \\(P' = -P\\).",
+   "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false, but Reason (R) is true."
+    }
+   ],
+   "answer": "D",
+   "solution": "Reason (R) is simply the definition of a skew-symmetric matrix, \\(P' = -P\\), so it is true. Assertion (A) is false: if A is symmetric then \\(A' = A\\), and \\(\\left(B'AB\\right)' = B'A'\\left(B'\\right)' = B'AB\\), so \\(B'AB\\) equals its own transpose and is therefore symmetric, not skew-symmetric. (It could be skew-symmetric only in the trivial case \\(B'AB = O\\), where it is both.) An Assertion that is false with a Reason that is true is option (D) Assertion (A) is false, but Reason (R) is true."
+  },
+  {
+   "hash": "b5c33cdc182e475d53caffe58456cc04eacf4a864d474fa0afe3db8097cf74b7",
+   "ref": "Q20",
+   "questionNumber": "20",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "Assertion (A) : For two non-zero vectors \\(\\vec{a}\\) and \\(\\vec{b}\\), \\(\\vec{a} \\cdot \\vec{b} = \\vec{b} \\cdot \\vec{a}\\).\n\nReason (R) : For two non-zero vectors \\(\\vec{a}\\) and \\(\\vec{b}\\), \\(\\vec{a} \\times \\vec{b} = \\vec{b} \\times \\vec{a}\\).",
+   "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false, but Reason (R) is true."
+    }
+   ],
+   "answer": "C",
+   "solution": "Assertion (A) is true: the scalar product is commutative, since \\(\\vec{a} \\cdot \\vec{b} = |\\vec{a}|\\,|\\vec{b}|\\cos\\theta = \\vec{b} \\cdot \\vec{a}\\). Reason (R) is false: the vector product is anti-commutative, \\(\\vec{a} \\times \\vec{b} = -\\left(\\vec{b} \\times \\vec{a}\\right)\\), so \\(\\vec{a} \\times \\vec{b} = \\vec{b} \\times \\vec{a}\\) would force \\(\\vec{a} \\times \\vec{b} = \\vec{0}\\), which is not the case for all non-zero vectors (take \\(\\vec{a} = \\hat{i}\\) and \\(\\vec{b} = \\hat{j}\\), where \\(\\hat{i} \\times \\hat{j} = \\hat{k}\\) but \\(\\hat{j} \\times \\hat{i} = -\\hat{k}\\)). A true Assertion with a false Reason is option (C) Assertion (A) is true, but Reason (R) is false."
+  },
+  {
+   "hash": "b22436158bf5f6eb4ccc37142da51e8a6046488c7e945e76c73363a1e5aca6e4",
+   "ref": "Q21a",
+   "questionNumber": "21 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Evaluating Inverse Trigonometric Expressions",
+   "stem": "Find the value of \\(\\tan^{-1}\\left(-\\dfrac{1}{\\sqrt{3}}\\right) + \\cot^{-1}\\left(\\dfrac{1}{\\sqrt{3}}\\right) + \\tan^{-1}\\left[\\sin\\left(-\\dfrac{\\pi}{2}\\right)\\right]\\).",
+   "solution": "Take each term at its principal value.\nFirst, \\(\\tan^{-1}\\left(-\\frac{1}{\\sqrt{3}}\\right) = -\\frac{\\pi}{6}\\), because \\(\\tan\\left(-\\frac{\\pi}{6}\\right) = -\\frac{1}{\\sqrt{3}}\\) and \\(-\\frac{\\pi}{6}\\) lies in the principal branch \\(\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\).\nSecond, \\(\\cot^{-1}\\left(\\frac{1}{\\sqrt{3}}\\right) = \\frac{\\pi}{3}\\), because \\(\\cot\\frac{\\pi}{3} = \\frac{1}{\\sqrt{3}}\\) and \\(\\frac{\\pi}{3}\\) lies in the principal branch \\((0, \\pi)\\).\nThird, \\(\\sin\\left(-\\frac{\\pi}{2}\\right) = -1\\), so the last term is \\(\\tan^{-1}(-1) = -\\frac{\\pi}{4}\\).\nAdding the three, the value is \\(-\\frac{\\pi}{6} + \\frac{\\pi}{3} - \\frac{\\pi}{4} = \\frac{-2\\pi + 4\\pi - 3\\pi}{12} = -\\frac{\\pi}{12}\\)."
+  },
+  {
+   "hash": "cca67d95953959f486cbed115f3f3b55f6ce4794d9286f0a6ef1ea38fdffde5f",
+   "ref": "Q21b",
+   "questionNumber": "21 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "Find the domain of the function \\(f(x) = \\sin^{-1}(x^2 - 4)\\). Also, find its range.",
+   "solution": "\\(\\sin^{-1}u\\) is defined only for \\(-1 \\le u \\le 1\\), so x is in the domain exactly when \\(-1 \\le x^2 - 4 \\le 1\\), that is \\(3 \\le x^2 \\le 5\\), that is \\(\\sqrt{3} \\le |x| \\le \\sqrt{5}\\).\nHence the domain is \\(\\left[-\\sqrt{5}, -\\sqrt{3}\\right] \\cup \\left[\\sqrt{3}, \\sqrt{5}\\right]\\).\nOn that domain \\(x^2 - 4\\) is continuous and runs over the whole of \\([-1, 1]\\) (it equals \\(-1\\) at \\(x = \\pm\\sqrt{3}\\) and \\(1\\) at \\(x = \\pm\\sqrt{5}\\)), and \\(\\sin^{-1}\\) maps \\([-1, 1]\\) onto its principal-value branch. Hence the range of f is \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\)."
+  },
+  {
+   "hash": "6b5ac486197323f1877da0ba6d05b3dd802e06896f842de7aaf49aba64bc8c3d",
+   "ref": "Q22a",
+   "questionNumber": "22 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "If \\(f(x) = |\\tan 2x|\\), then find the value of \\(f'(x)\\) at \\(x = \\dfrac{\\pi}{3}\\).",
+   "solution": "First decide which branch of the modulus applies near \\(x = \\frac{\\pi}{3}\\). There \\(2x = \\frac{2\\pi}{3}\\), which lies in \\(\\left(\\frac{\\pi}{2}, \\pi\\right)\\), where the tangent is negative; more generally \\(\\tan 2x < 0\\) for \\(\\frac{\\pi}{4} < x < \\frac{\\pi}{2}\\). So on that whole interval, and in particular in a neighbourhood of \\(x = \\frac{\\pi}{3}\\),\n\\(f(x) = |\\tan 2x| = -\\tan 2x\\).\nDifferentiating, \\(f'(x) = -2\\sec^2 2x\\) for \\(\\frac{\\pi}{4} < x < \\frac{\\pi}{2}\\).\nSince \\(\\cos\\frac{2\\pi}{3} = -\\frac{1}{2}\\), we have \\(\\sec\\frac{2\\pi}{3} = -2\\), so \\(f'\\left(\\frac{\\pi}{3}\\right) = -2(-2)^2 = -8\\)."
+  },
+  {
+   "hash": "39cf0eee8e819c8f616330df5b18468f07ccc3b798ba919221feec795f5f8f71",
+   "ref": "Q22b",
+   "questionNumber": "22 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "If \\(y = \\text{cosec}\\,(\\cot^{-1} x)\\), then prove that \\(\\sqrt{1 + x^2}\\ \\dfrac{dy}{dx} - x = 0\\).",
+   "solution": "Put \\(\\theta = \\cot^{-1}x\\), so that \\(\\cot\\theta = x\\) with \\(\\theta \\in (0, \\pi)\\). On that branch \\(\\sin\\theta > 0\\), so \\(\\text{cosec}\\,\\theta > 0\\) and the positive square root is the correct one.\nThen \\(y = \\text{cosec}\\,\\theta = \\sqrt{1 + \\cot^2\\theta} = \\sqrt{1 + x^2}\\).\nDifferentiating, \\(\\frac{dy}{dx} = \\frac{1}{2\\sqrt{1 + x^2}} \\cdot 2x = \\frac{x}{\\sqrt{1 + x^2}}\\).\nTherefore \\(\\sqrt{1 + x^2}\\,\\frac{dy}{dx} = \\sqrt{1 + x^2} \\cdot \\frac{x}{\\sqrt{1 + x^2}} = x\\), that is \\(\\sqrt{1 + x^2}\\,\\frac{dy}{dx} - x = 0\\), which is what had to be proved."
+  },
+  {
+   "hash": "d40ceeabd9e4caf62a21e579ae0e66201d7491b09c78eaf391443dc7c99abe99",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "If M and m denote the local maximum and local minimum values of the function \\(f(x) = x + \\dfrac{1}{x}\\) \\((x \\ne 0)\\) respectively, find the value of \\((M - m)\\).",
+   "solution": "\\(f'(x) = 1 - \\frac{1}{x^2} = \\frac{x^2 - 1}{x^2} = \\frac{(x + 1)(x - 1)}{x^2}\\), so \\(f'(x) = 0\\) at \\(x = -1\\) and \\(x = 1\\) (the point \\(x = 0\\) is outside the domain).\nApply the second-derivative test with \\(f''(x) = \\frac{2}{x^3}\\). At \\(x = -1\\), \\(f''(-1) = -2 < 0\\), so \\(x = -1\\) is a point of local maximum and the local maximum value is \\(M = f(-1) = -1 + \\frac{1}{-1} = -2\\). At \\(x = 1\\), \\(f''(1) = 2 > 0\\), so \\(x = 1\\) is a point of local minimum and the local minimum value is \\(m = f(1) = 1 + 1 = 2\\).\nHence \\(M - m = -2 - 2 = -4\\).\nThat the local maximum value is smaller than the local minimum value is not a contradiction: the two occur on the separate branches \\(x < 0\\) and \\(x > 0\\) of the domain, which the excluded point \\(x = 0\\) keeps apart."
+  },
+  {
+   "hash": "49a84d855fe285185223f4b22dbadbc421990f1d480a1834bafa58b807bfaa5a",
+   "ref": "Q24",
+   "questionNumber": "24",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Substitution",
+   "stem": "Find :\n\n\\(\\displaystyle\\int \\dfrac{e^{4x} - 1}{e^{4x} + 1}\\, dx\\)",
+   "solution": "Divide the numerator and the denominator by \\(e^{2x}\\), which turns the numerator into (half) the derivative of the denominator:\n\\(\\int \\frac{e^{4x} - 1}{e^{4x} + 1}\\,dx = \\int \\frac{e^{2x} - e^{-2x}}{e^{2x} + e^{-2x}}\\,dx\\).\nNow put \\(t = e^{2x} + e^{-2x}\\), so \\(dt = 2\\left(e^{2x} - e^{-2x}\\right)dx\\) and the integral becomes \\(\\frac{1}{2}\\int \\frac{dt}{t} = \\frac{1}{2}\\log|t| + C\\).\nRestoring t, \\(\\int \\frac{e^{4x} - 1}{e^{4x} + 1}\\,dx = \\frac{1}{2}\\log\\left|e^{2x} + e^{-2x}\\right| + C\\).\nCheck by differentiating: \\(\\frac{1}{2} \\cdot \\frac{2e^{2x} - 2e^{-2x}}{e^{2x} + e^{-2x}} = \\frac{e^{2x} - e^{-2x}}{e^{2x} + e^{-2x}}\\), and multiplying numerator and denominator by \\(e^{2x}\\) returns the original integrand."
+  },
+  {
+   "hash": "75b5057d1395d91c49139fbbacde13c31e267cab4f313fc053e545a1feeb7a8a",
+   "ref": "Q25",
+   "questionNumber": "25",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "Show that \\(f(x) = e^x - e^{-x} + x - \\tan^{-1} x\\) is strictly increasing in its domain.",
+   "solution": "Both exponentials and \\(\\tan^{-1}x\\) are defined for every real x, so the domain of f is R.\nDifferentiating, \\(f'(x) = e^x + e^{-x} + 1 - \\frac{1}{1 + x^2}\\). Since \\(1 - \\frac{1}{1 + x^2} = \\frac{x^2}{1 + x^2}\\), this is\n\\(f'(x) = e^x + \\frac{1}{e^x} + \\frac{x^2}{1 + x^2}\\).\nNow \\(e^x > 0\\) and \\(\\frac{1}{e^x} > 0\\) for every real x, and \\(\\frac{x^2}{1 + x^2} \\ge 0\\). Hence \\(f'(x) > 0\\) for all \\(x \\in R\\) (indeed \\(f'(x) \\ge 2\\), by the AM-GM inequality on the first two terms).\nA function whose derivative is strictly positive throughout an interval is strictly increasing on it, so f is strictly increasing on its whole domain R."
+  },
+  {
+   "hash": "1865519831bef42c928cae5a9f347242e96cc9510d9b907d0e0573a773d86409",
+   "ref": "Q26a",
+   "questionNumber": "26 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Functions in Parametric Form",
+   "stem": "If \\(x = e^{\\cos 3t}\\) and \\(y = e^{\\sin 3t}\\), prove that \\(\\dfrac{dy}{dx} = -\\dfrac{y \\log x}{x \\log y}\\).",
+   "solution": "Differentiate each parametric equation with respect to t:\n\\(\\frac{dx}{dt} = e^{\\cos 3t} \\cdot (-\\sin 3t) \\cdot 3 = -3x\\sin 3t\\) and \\(\\frac{dy}{dt} = e^{\\sin 3t} \\cdot (\\cos 3t) \\cdot 3 = 3y\\cos 3t\\).\nHence \\(\\frac{dy}{dx} = \\dfrac{dy/dt}{dx/dt} = \\frac{3y\\cos 3t}{-3x\\sin 3t} = -\\frac{y\\cos 3t}{x\\sin 3t}\\).\nNow express \\(\\cos 3t\\) and \\(\\sin 3t\\) through x and y by taking logarithms of the given relations: \\(x = e^{\\cos 3t}\\) gives \\(\\cos 3t = \\log x\\), and \\(y = e^{\\sin 3t}\\) gives \\(\\sin 3t = \\log y\\).\nSubstituting these, \\(\\frac{dy}{dx} = -\\frac{y\\log x}{x\\log y}\\), which is what had to be proved."
+  },
+  {
+   "hash": "fd24782350955751e48e2a93ac319873ad7d9ddb73021431ee30def72c0ae62c",
+   "ref": "Q26b",
+   "questionNumber": "26 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "Show that :\n\n\\(\\dfrac{d}{dx}\\big(|x|\\big) = \\dfrac{x}{|x|}, x \\ne 0\\)",
+   "solution": "For every real x we may write \\(|x| = \\sqrt{x^2}\\), the positive square root, since both sides are non-negative and have the same square.\nDifferentiating this form by the chain rule,\n\\(\\frac{d}{dx}\\left(|x|\\right) = \\frac{d}{dx}\\left(x^2\\right)^{1/2} = \\frac{1}{2}\\left(x^2\\right)^{-1/2} \\cdot \\frac{d}{dx}\\left(x^2\\right) = \\frac{1}{2\\sqrt{x^2}} \\cdot 2x = \\frac{x}{\\sqrt{x^2}} = \\frac{x}{|x|}\\).\nThe restriction \\(x \\ne 0\\) is exactly what the third step needs, since it divides by \\(\\sqrt{x^2}\\); and indeed \\(|x|\\) is not differentiable at \\(x = 0\\), its left- and right-hand derivatives there being \\(-1\\) and \\(1\\).\nHence \\(\\frac{d}{dx}\\left(|x|\\right) = \\frac{x}{|x|}\\) for \\(x \\ne 0\\). (The result agrees with the branch-wise reading: the derivative is \\(1\\) when \\(x > 0\\) and \\(-1\\) when \\(x < 0\\).)"
+  },
+  {
+   "hash": "1b4c029c130a04543cc8e9b72a57b7e83f09b1af4d0de8b6febd3c4aa98c2991",
+   "ref": "Q27a",
+   "questionNumber": "27 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals by Substitution",
+   "stem": "Evaluate :\n\n\\(\\displaystyle\\int_{-2}^{2} \\sqrt{\\dfrac{2 - x}{2 + x}}\\, dx\\)",
+   "solution": "Rationalise the integrand first. For \\(-2 < x < 2\\) both \\(2 - x\\) and \\(2 + x\\) are positive, so\n\\(\\sqrt{\\frac{2 - x}{2 + x}} = \\sqrt{\\frac{(2 - x)^2}{(2 + x)(2 - x)}} = \\frac{2 - x}{\\sqrt{4 - x^2}}\\).\nSplitting the fraction, \\(\\int_{-2}^{2}\\sqrt{\\frac{2 - x}{2 + x}}\\,dx = \\int_{-2}^{2}\\frac{2}{\\sqrt{4 - x^2}}\\,dx - \\int_{-2}^{2}\\frac{x}{\\sqrt{4 - x^2}}\\,dx\\).\nThe first integrand is even and the second is odd, and the interval is symmetric about the origin, so the second integral vanishes and the first is twice the integral over \\([0, 2]\\):\n\\(= 2\\int_{0}^{2}\\frac{2}{\\sqrt{4 - x^2}}\\,dx = 4\\left[\\sin^{-1}\\frac{x}{2}\\right]_{0}^{2} = 4\\left(\\frac{\\pi}{2} - 0\\right) = 2\\pi\\)."
+  },
+  {
+   "hash": "e0177edb9608c47f2e013ba737f04fe1f80f76c0c7f2c7bc19b8ac47077f2b20",
+   "ref": "Q27b",
+   "questionNumber": "27 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Partial Fractions",
+   "stem": "Find :\n\n\\(\\displaystyle\\int \\dfrac{1}{x\\,[(\\log x)^2 - 3 \\log x - 4]}\\, dx\\)",
+   "solution": "Put \\(\\log x = t\\), so that \\(\\frac{1}{x}\\,dx = dt\\), and the integral becomes \\(\\int \\frac{dt}{t^2 - 3t - 4}\\).\nComplete the square in the denominator: \\(t^2 - 3t - 4 = \\left(t - \\frac{3}{2}\\right)^2 - \\left(\\frac{5}{2}\\right)^2\\). With \\(u = t - \\frac{3}{2}\\) and \\(a = \\frac{5}{2}\\), the standard result \\(\\int \\frac{du}{u^2 - a^2} = \\frac{1}{2a}\\log\\left|\\frac{u - a}{u + a}\\right| + C\\) gives\n\\(\\frac{1}{5}\\log\\left|\\frac{t - 4}{t + 1}\\right| + C\\).\nPartial fractions give the same thing: \\(t^2 - 3t - 4 = (t - 4)(t + 1)\\) and \\(\\frac{1}{(t - 4)(t + 1)} = \\frac{1}{5}\\left(\\frac{1}{t - 4} - \\frac{1}{t + 1}\\right)\\).\nRestoring \\(t = \\log x\\), \\(\\int \\frac{dx}{x\\left[(\\log x)^2 - 3\\log x - 4\\right]} = \\frac{1}{5}\\log\\left|\\frac{\\log x - 4}{\\log x + 1}\\right| + C\\)."
+  },
+  {
+   "hash": "5b9b610d52a029049f33613fbe682614b31ebc08bc5123592b9ce3b22558d8d5",
+   "ref": "Q28a",
+   "questionNumber": "28 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Find the particular solution of the differential equation given by \\(2xy + y^2 - 2x^2 \\dfrac{dy}{dx} = 0\\); \\(y = 2\\), when \\(x = 1\\).",
+   "solution": "Write the equation as \\(\\frac{dy}{dx} = \\frac{2xy + y^2}{2x^2} = \\frac{y}{x} + \\frac{y^2}{2x^2}\\); the right-hand side involves x and y only through \\(\\frac{y}{x}\\), so the equation is homogeneous.\nPut \\(y = vx\\), so that \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\). The equation becomes \\(v + x\\frac{dv}{dx} = v + \\frac{v^2}{2}\\), i.e. \\(x\\frac{dv}{dx} = \\frac{v^2}{2}\\), which separates as \\(\\frac{dv}{v^2} = \\frac{1}{2} \\cdot \\frac{dx}{x}\\).\nIntegrating both sides, \\(-\\frac{1}{v} = \\frac{1}{2}\\log|x| + C\\), and since \\(v = \\frac{y}{x}\\) this reads \\(-\\frac{x}{y} = \\frac{1}{2}\\log|x| + C\\).\nApply the condition \\(y = 2\\) when \\(x = 1\\): \\(-\\frac{1}{2} = \\frac{1}{2}\\log 1 + C = C\\), so \\(C = -\\frac{1}{2}\\).\nThe particular solution is therefore \\(-\\frac{x}{y} = \\frac{1}{2}\\log|x| - \\frac{1}{2}\\); multiplying throughout by \\(-2\\) gives \\(\\frac{2x}{y} = 1 - \\log|x|\\), that is \\(y = \\frac{2x}{1 - \\log|x|}\\)."
+  },
+  {
+   "hash": "6dda9184dda5823ea19fcf7b4cfdf25e7c40a77feb89b76710d2a7c134c2c2be",
+   "ref": "Q28b",
+   "questionNumber": "28 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "Find the general solution of the differential equation :\n\n\\(y\\, dx = (x + 2y^2)\\, dy\\)",
+   "solution": "The equation is not linear in y, but it is linear in x once y is taken as the independent variable. From \\(y\\,dx = \\left(x + 2y^2\\right)dy\\),\n\\(\\frac{dx}{dy} = \\frac{x + 2y^2}{y} = \\frac{x}{y} + 2y\\), that is \\(\\frac{dx}{dy} - \\frac{1}{y}\\,x = 2y\\),\nwhich is of the form \\(\\frac{dx}{dy} + Px = Q\\) with \\(P = -\\frac{1}{y}\\) and \\(Q = 2y\\).\nThe integrating factor is \\(e^{\\int -\\frac{1}{y}\\,dy} = e^{-\\log y} = \\frac{1}{y}\\).\nHence \\(x \\cdot \\frac{1}{y} = \\int 2y \\cdot \\frac{1}{y}\\,dy = \\int 2\\,dy = 2y + C\\), the integrating factor cancelling the y in the denominator.\nSo the general solution is \\(\\frac{x}{y} = 2y + C\\), that is \\(x = 2y^2 + Cy\\). (Check: \\(\\frac{dx}{dy} = 4y + C\\), so \\(y\\frac{dx}{dy} = 4y^2 + Cy = \\left(2y^2 + Cy\\right) + 2y^2 = x + 2y^2\\), as required.)"
+  },
+  {
+   "hash": "541c8e6997e3961e9ce594f6df3993045ad99ab73cc19ca879443739a0ae9db4",
+   "ref": "Q29",
+   "questionNumber": "29",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "The position vectors of vertices of \\(\\Delta\\) ABC are \\(A(2\\hat{i} - \\hat{j} + \\hat{k})\\), \\(B(\\hat{i} - 3\\hat{j} - 5\\hat{k})\\) and \\(C(3\\hat{i} - 4\\hat{j} - 4\\hat{k})\\). Find all the angles of \\(\\Delta\\) ABC.",
+   "solution": "Take the sides as vectors, one pair from each vertex.\n\\(\\overrightarrow{AB} = -\\hat{i} - 2\\hat{j} - 6\\hat{k}\\), \\(\\overrightarrow{AC} = \\hat{i} - 3\\hat{j} - 5\\hat{k}\\) and \\(\\overrightarrow{BC} = 2\\hat{i} - \\hat{j} + \\hat{k}\\), with \\(\\left|\\overrightarrow{AB}\\right| = \\sqrt{1 + 4 + 36} = \\sqrt{41}\\), \\(\\left|\\overrightarrow{AC}\\right| = \\sqrt{1 + 9 + 25} = \\sqrt{35}\\) and \\(\\left|\\overrightarrow{BC}\\right| = \\sqrt{4 + 1 + 1} = \\sqrt{6}\\).\nAt A: \\(\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = -1 + 6 + 30 = 35\\), so \\(\\cos A = \\frac{35}{\\sqrt{41}\\,\\sqrt{35}} = \\frac{\\sqrt{35}}{\\sqrt{41}}\\) and \\(A = \\cos^{-1}\\frac{\\sqrt{35}}{\\sqrt{41}}\\).\nAt B: \\(\\overrightarrow{BA} \\cdot \\overrightarrow{BC} = \\left(\\hat{i} + 2\\hat{j} + 6\\hat{k}\\right) \\cdot \\left(2\\hat{i} - \\hat{j} + \\hat{k}\\right) = 2 - 2 + 6 = 6\\), so \\(\\cos B = \\frac{6}{\\sqrt{41}\\,\\sqrt{6}} = \\frac{\\sqrt{6}}{\\sqrt{41}}\\) and \\(B = \\cos^{-1}\\frac{\\sqrt{6}}{\\sqrt{41}}\\).\nAt C: \\(\\overrightarrow{CB} \\cdot \\overrightarrow{CA} = \\left(-2\\hat{i} + \\hat{j} - \\hat{k}\\right) \\cdot \\left(-\\hat{i} + 3\\hat{j} + 5\\hat{k}\\right) = 2 + 3 - 5 = 0\\), so \\(\\cos C = 0\\) and \\(C = \\frac{\\pi}{2}\\), that is \\(90^\\circ\\).\nThe three answers are mutually consistent. The right angle at C is confirmed by Pythagoras, \\(\\left|\\overrightarrow{CA}\\right|^2 + \\left|\\overrightarrow{CB}\\right|^2 = 35 + 6 = 41 = \\left|\\overrightarrow{AB}\\right|^2\\); and \\(\\sin B = \\sqrt{1 - \\frac{6}{41}} = \\frac{\\sqrt{35}}{\\sqrt{41}} = \\cos A\\), so \\(A + B = \\frac{\\pi}{2}\\) and the angles sum to \\(\\pi\\). Numerically \\(A \\approx 22.5^\\circ\\), \\(B \\approx 67.5^\\circ\\) and \\(C = 90^\\circ\\)."
+  },
+  {
+   "hash": "9b3e201c98a4ae1649fe966007b8dfdcc6de6cc045aa351edf2aa9614f2b9675",
+   "ref": "Q30",
+   "questionNumber": "30",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "A pair of dice is thrown simultaneously. If X denotes the absolute difference of the numbers appearing on top of the dice, then find the probability distribution of X.",
+   "solution": "Throwing a pair of dice gives \\(6 \\times 6 = 36\\) equally likely ordered outcomes \\((i, j)\\), and \\(X = |i - j|\\) can take the values \\(0, 1, 2, 3, 4, 5\\).\nFor \\(X = 0\\) the outcomes are \\((1, 1), (2, 2), \\ldots, (6, 6)\\), so there are 6 of them. For \\(X = k\\) with \\(k \\ge 1\\) the outcomes are \\((i, i + k)\\) and \\((i + k, i)\\) for \\(i = 1, 2, \\ldots, 6 - k\\), so there are \\(2(6 - k)\\) of them, namely 10, 8, 6, 4 and 2 for \\(k = 1, 2, 3, 4, 5\\). These account for \\(6 + 10 + 8 + 6 + 4 + 2 = 36\\) outcomes, as they must.\nDividing each count by 36, the probability distribution of X is\n\n| X | 0 | 1 | 2 | 3 | 4 | 5 |\n| --- | --- | --- | --- | --- | --- | --- |\n| P(X) | \\(\\frac{6}{36} = \\frac{1}{6}\\) | \\(\\frac{10}{36} = \\frac{5}{18}\\) | \\(\\frac{8}{36} = \\frac{2}{9}\\) | \\(\\frac{6}{36} = \\frac{1}{6}\\) | \\(\\frac{4}{36} = \\frac{1}{9}\\) | \\(\\frac{2}{36} = \\frac{1}{18}\\) |\n\nThe six probabilities add to 1, which confirms the distribution."
+  },
+  {
+   "hash": "9f6c865bb32665d0c1a6671bfc18227d739f885708679f8811b81c83f39dfb0c",
+   "ref": "Q31",
+   "questionNumber": "31",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Parts",
+   "stem": "Find :\n\n\\(\\displaystyle\\int x^2 \\cdot \\sin^{-1}(x^{3/2})\\, dx\\)",
+   "solution": "Substitute \\(t = x^{3/2}\\), so \\(dt = \\frac{3}{2}x^{1/2}\\,dx\\) and therefore \\(x^2\\,dx = \\frac{2}{3}x^{3/2}\\,dt = \\frac{2}{3}t\\,dt\\). The integral becomes \\(\\frac{2}{3}\\int t\\,\\sin^{-1}t\\,dt\\).\nIntegrate by parts, taking \\(\\sin^{-1}t\\) as the first function:\n\\(\\frac{2}{3}\\int t\\sin^{-1}t\\,dt = \\frac{2}{3}\\left[\\sin^{-1}t \\cdot \\frac{t^2}{2} - \\int \\frac{1}{\\sqrt{1 - t^2}} \\cdot \\frac{t^2}{2}\\,dt\\right] = \\frac{1}{3}\\left[t^2\\sin^{-1}t - \\int \\frac{t^2}{\\sqrt{1 - t^2}}\\,dt\\right]\\).\nFor the remaining integral write \\(-t^2 = \\left(1 - t^2\\right) - 1\\), which splits it into two standard forms:\n\\(-\\int \\frac{t^2}{\\sqrt{1 - t^2}}\\,dt = \\int \\sqrt{1 - t^2}\\,dt - \\int \\frac{dt}{\\sqrt{1 - t^2}} = \\left(\\frac{t}{2}\\sqrt{1 - t^2} + \\frac{1}{2}\\sin^{-1}t\\right) - \\sin^{-1}t\\).\nHence the integral equals \\(\\frac{1}{3}\\left[t^2\\sin^{-1}t + \\frac{t}{2}\\sqrt{1 - t^2} - \\frac{1}{2}\\sin^{-1}t\\right] + C\\), and restoring \\(t = x^{3/2}\\),\n\\(\\int x^2\\sin^{-1}\\left(x^{3/2}\\right)dx = \\frac{1}{3}\\left[x^3\\sin^{-1}\\left(x^{3/2}\\right) + \\frac{x^{3/2}}{2}\\sqrt{1 - x^3} - \\frac{1}{2}\\sin^{-1}\\left(x^{3/2}\\right)\\right] + C\\).\n(The integrand is defined for \\(0 \\le x \\le 1\\), which is where \\(x^{3/2}\\) lies in \\([0, 1]\\).)"
+  },
+  {
+   "hash": "8b6f6d60e6b456c057da1a1e64d129830bf07304f7239c7a49ebc844f4d16481",
+   "ref": "Q32a",
+   "questionNumber": "32 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "Show that a function \\(f : R \\to R\\) defined by \\(f(x) = \\dfrac{2x}{1 + x^2}\\) is neither one-one nor onto. Further, find set A so that the given function \\(f : R \\to A\\) becomes an onto function.",
+   "solution": "Not one-one. Suppose \\(f(x_1) = f(x_2)\\), i.e. \\(\\frac{2x_1}{1 + x_1^2} = \\frac{2x_2}{1 + x_2^2}\\). Cross-multiplying gives \\(x_1 + x_1x_2^2 = x_2 + x_1^2x_2\\), so \\(\\left(x_1 - x_2\\right) - x_1x_2\\left(x_1 - x_2\\right) = 0\\), i.e. \\(\\left(x_1 - x_2\\right)\\left(1 - x_1x_2\\right) = 0\\). Equal images therefore do not force \\(x_1 = x_2\\); it is enough that \\(x_1x_2 = 1\\). For instance \\(f(2) = \\frac{4}{1 + 4} = \\frac{4}{5}\\) and \\(f\\left(\\frac{1}{2}\\right) = \\frac{1}{1 + \\frac{1}{4}} = \\frac{4}{5}\\), while \\(2 \\ne \\frac{1}{2}\\). Hence f is not one-one.\nNot onto. Let \\(y = f(x)\\). The value \\(y = 0\\) is attained at \\(x = 0\\). For \\(y \\ne 0\\), \\(y = \\frac{2x}{1 + x^2}\\) rearranges to the quadratic \\(yx^2 - 2x + y = 0\\), whose roots are \\(x = \\frac{2 \\pm \\sqrt{4 - 4y^2}}{2y}\\). A real x exists only if \\(4 - 4y^2 \\ge 0\\), i.e. \\(y^2 \\le 1\\), i.e. \\(-1 \\le y \\le 1\\). So no y outside \\([-1, 1]\\) has a pre-image (for example \\(y = 2\\) has none), and the range is a proper subset of the codomain R. Hence f is not onto.\nThe set A. Every value of \\([-1, 1]\\) is in fact attained, since f is continuous with \\(f(-1) = -1\\), \\(f(0) = 0\\) and \\(f(1) = 1\\); combined with the bound above, the range is exactly \\([-1, 1]\\). So taking \\(A = [-1, 1]\\) makes \\(f : R \\to A\\) an onto function."
+  },
+  {
+   "hash": "4747369f60fbd5c0df854c1e73319c87c093f5a8a9b3c6589f0f9a4df6aa6aef",
+   "ref": "Q32b",
+   "questionNumber": "32 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Equivalence Relations and Classes",
+   "stem": "A relation R is defined on \\(N \\times N\\) (where N is the set of natural numbers) as :\n\n\\((a, b)\\ R\\ (c, d) \\Leftrightarrow a - c = b - d\\)\n\nShow that R is an equivalence relation.",
+   "solution": "Reflexive. Let \\((a, b) \\in N \\times N\\). Then \\(a - a = 0 = b - b\\), so \\((a, b)\\,R\\,(a, b)\\) holds for every \\((a, b) \\in N \\times N\\), and R is reflexive.\nSymmetric. Let \\((a, b)\\,R\\,(c, d)\\), so \\(a - c = b - d\\). Multiplying both sides by \\(-1\\) gives \\(c - a = d - b\\), which is precisely \\((c, d)\\,R\\,(a, b)\\). So R is symmetric.\nTransitive. Let \\((a, b)\\,R\\,(c, d)\\) and \\((c, d)\\,R\\,(e, f)\\), so \\(a - c = b - d\\) and \\(c - e = d - f\\). Adding these two equations, \\((a - c) + (c - e) = (b - d) + (d - f)\\), and the middle terms cancel to give \\(a - e = b - f\\), which is \\((a, b)\\,R\\,(e, f)\\). So R is transitive.\nBeing reflexive, symmetric and transitive, R is an equivalence relation on \\(N \\times N\\). (Rewriting the rule as \\(a - b = c - d\\) shows what it does: it groups the ordered pairs by the common value of \\(a - b\\).)"
+  },
+  {
+   "hash": "de455f26134858efec2e7d03162822b61690a3f76d1980597b3529146baba653",
+   "ref": "Q33",
+   "questionNumber": "33",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the equation of the line which bisects the line segment joining points A(2, 3, 4) and B(4, 5, 8) and is perpendicular to the lines \\(\\dfrac{x-8}{3} = \\dfrac{y+19}{-16} = \\dfrac{z-10}{7}\\) and \\(\\dfrac{x-15}{3} = \\dfrac{y-29}{8} = \\dfrac{z-5}{-5}\\).",
+   "solution": "Let the direction ratios of the required line be a, b, c. The line is perpendicular to both given lines, so its direction is perpendicular to each of their directions \\((3, -16, 7)\\) and \\((3, 8, -5)\\):\n\\(3a - 16b + 7c = 0\\) and \\(3a + 8b - 5c = 0\\).\nBy cross-multiplication, \\(\\frac{a}{(-16)(-5) - 7(8)} = \\frac{b}{7(3) - 3(-5)} = \\frac{c}{3(8) - (-16)(3)}\\), that is \\(\\frac{a}{24} = \\frac{b}{36} = \\frac{c}{72}\\), which reduces to \\(\\frac{a}{2} = \\frac{b}{3} = \\frac{c}{6}\\). So the direction ratios are \\(2, 3, 6\\). (Check: \\(3(2) - 16(3) + 7(6) = 6 - 48 + 42 = 0\\) and \\(3(2) + 8(3) - 5(6) = 6 + 24 - 30 = 0\\).)\nBisecting the segment AB means passing through its mid-point, which for \\(A(2, 3, 4)\\) and \\(B(4, 5, 8)\\) is \\(\\left(\\frac{2 + 4}{2}, \\frac{3 + 5}{2}, \\frac{4 + 8}{2}\\right) = (3, 4, 6)\\).\nHence the required line is \\(\\frac{x - 3}{2} = \\frac{y - 4}{3} = \\frac{z - 6}{6}\\), or in vector form \\(\\vec{r} = 3\\hat{i} + 4\\hat{j} + 6\\hat{k} + \\lambda\\left(2\\hat{i} + 3\\hat{j} + 6\\hat{k}\\right)\\)."
+  },
+  {
+   "hash": "a4ab57ba944a431eb871d9cc34df4f56ff4aa676edebb64002ac4ea2bd8fba79",
+   "ref": "Q34a",
+   "questionNumber": "34 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Solving System of Linear Equations",
+   "stem": "Solve the following system of equations, using matrices :\n\n\\(\\dfrac{2}{x} + \\dfrac{3}{y} + \\dfrac{10}{z} = 4\\), \\(\\dfrac{4}{x} - \\dfrac{6}{y} + \\dfrac{5}{z} = 1\\), \\(\\dfrac{6}{x} + \\dfrac{9}{y} - \\dfrac{20}{z} = 2\\)\n\nwhere \\(x, y, z \\ne 0\\)",
+   "solution": "The equations are linear in \\(\\frac{1}{x}\\), \\(\\frac{1}{y}\\), \\(\\frac{1}{z}\\), so treat those as the unknowns and write the system as \\(AX = B\\), where\n\\(A = \\begin{bmatrix} 2 & 3 & 10 \\\\ 4 & -6 & 5 \\\\ 6 & 9 & -20 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} 1/x \\\\ 1/y \\\\ 1/z \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 4 \\\\ 1 \\\\ 2 \\end{bmatrix}\\).\nExpanding along the first row, \\(|A| = 2(120 - 45) - 3(-80 - 30) + 10(36 + 36) = 150 + 330 + 720 = 1200\\), which is non-zero, so \\(A^{-1}\\) exists and the solution is unique.\nThe cofactors are \\(A_{11} = 75\\), \\(A_{12} = 110\\), \\(A_{13} = 72\\), \\(A_{21} = 150\\), \\(A_{22} = -100\\), \\(A_{23} = 0\\), \\(A_{31} = 75\\), \\(A_{32} = 30\\), \\(A_{33} = -24\\). Transposing the matrix of cofactors,\n\\(\\text{adj}\\,A = \\begin{bmatrix} 75 & 150 & 75 \\\\ 110 & -100 & 30 \\\\ 72 & 0 & -24 \\end{bmatrix}\\), so \\(A^{-1} = \\frac{1}{1200}\\begin{bmatrix} 75 & 150 & 75 \\\\ 110 & -100 & 30 \\\\ 72 & 0 & -24 \\end{bmatrix}\\).\nHence \\(X = A^{-1}B = \\frac{1}{1200}\\begin{bmatrix} 300 + 150 + 150 \\\\ 440 - 100 + 60 \\\\ 288 + 0 - 48 \\end{bmatrix} = \\frac{1}{1200}\\begin{bmatrix} 600 \\\\ 400 \\\\ 240 \\end{bmatrix} = \\begin{bmatrix} 1/2 \\\\ 1/3 \\\\ 1/5 \\end{bmatrix}\\).\nSo \\(\\frac{1}{x} = \\frac{1}{2}\\), \\(\\frac{1}{y} = \\frac{1}{3}\\) and \\(\\frac{1}{z} = \\frac{1}{5}\\), giving \\(x = 2\\), \\(y = 3\\), \\(z = 5\\). Checking in all three equations: \\(1 + 1 + 2 = 4\\), \\(2 - 2 + 1 = 1\\) and \\(3 + 3 - 4 = 2\\)."
+  },
+  {
+   "hash": "265fc6f547d4e70e8180c8cba6463b6e6fe8058f4ecaf213a398649f1823f40d",
+   "ref": "Q34b",
+   "questionNumber": "34 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Adjoint and Inverse of a Matrix",
+   "stem": "If \\(A = \\begin{bmatrix} 1 & \\cot x \\\\ -\\cot x & 1 \\end{bmatrix}\\), show that \\(A'A^{-1} = \\begin{bmatrix} -\\cos 2x & -\\sin 2x \\\\ \\sin 2x & -\\cos 2x \\end{bmatrix}\\).",
+   "solution": "First \\(|A| = 1 \\cdot 1 - \\cot x \\cdot (-\\cot x) = 1 + \\cot^2 x = \\text{cosec}^2 x\\), which is non-zero wherever \\(\\cot x\\) is defined, so \\(A^{-1}\\) exists.\nFor \\(\\begin{bmatrix} p & q \\\\ r & s \\end{bmatrix}\\) the adjoint is \\(\\begin{bmatrix} s & -q \\\\ -r & p \\end{bmatrix}\\), so \\(\\text{adj}\\,A = \\begin{bmatrix} 1 & -\\cot x \\\\ \\cot x & 1 \\end{bmatrix}\\) and \\(A^{-1} = \\frac{1}{\\text{cosec}^2 x}\\begin{bmatrix} 1 & -\\cot x \\\\ \\cot x & 1 \\end{bmatrix}\\).\nTransposing A, \\(A' = \\begin{bmatrix} 1 & -\\cot x \\\\ \\cot x & 1 \\end{bmatrix}\\).\nMultiplying, \\(A'A^{-1} = \\frac{1}{\\text{cosec}^2 x}\\begin{bmatrix} 1 - \\cot^2 x & -2\\cot x \\\\ 2\\cot x & 1 - \\cot^2 x \\end{bmatrix}\\).\nNow \\(\\frac{1}{\\text{cosec}^2 x} = \\sin^2 x\\), so the diagonal entries become \\(\\sin^2 x\\left(1 - \\cot^2 x\\right) = \\sin^2 x - \\cos^2 x = -\\cos 2x\\), and the off-diagonal entries become \\(\\pm\\,\\sin^2 x \\cdot 2\\cot x = \\pm\\,2\\sin x\\cos x = \\pm\\,\\sin 2x\\).\nHence \\(A'A^{-1} = \\begin{bmatrix} -\\cos 2x & -\\sin 2x \\\\ \\sin 2x & -\\cos 2x \\end{bmatrix}\\), which is what had to be shown."
+  },
+  {
+   "hash": "c7f75caa5261e6a395b6d5680579e2d8e0c5d7f705f2c6a3aee7363d4930f160",
+   "ref": "Q35",
+   "questionNumber": "35",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "If \\(A_1\\) denotes the area of region bounded by \\(y^2 = 4x\\), \\(x = 1\\) and x-axis in the first quadrant and \\(A_2\\) denotes the area of region bounded by \\(y^2 = 4x\\), \\(x = 4\\), find \\(A_1 : A_2\\).",
+   "solution": "The curve \\(y^2 = 4x\\) is a parabola with vertex at the origin, opening to the right and symmetric about the x-axis; above the axis it is \\(y = 2\\sqrt{x}\\).\n\\(A_1\\) is bounded by the parabola, the line \\(x = 1\\) and the x-axis in the first quadrant, so it is the single strip above the axis:\n\\(A_1 = \\int_0^1 2\\sqrt{x}\\,dx = 2\\left[\\frac{x^{3/2}}{3/2}\\right]_0^1 = \\frac{4}{3}\\) square units.\n\\(A_2\\) is bounded only by the parabola and the line \\(x = 4\\), with no x-axis restriction, so it is the whole region between them and is symmetric about the x-axis:\n\\(A_2 = 2\\int_0^4 2\\sqrt{x}\\,dx = 4 \\cdot \\frac{2}{3}\\left[x^{3/2}\\right]_0^4 = \\frac{8}{3} \\cdot 4^{3/2} = \\frac{8}{3} \\times 8 = \\frac{64}{3}\\) square units.\nHence \\(A_1 : A_2 = \\frac{4}{3} : \\frac{64}{3} = 4 : 64 = 1 : 16\\)."
+  },
+  {
+   "hash": "9c21dc5917bada781be59c74c8e3f32292a6c0f0a3c0e928357e0094a78a4215",
+   "ref": "Q36i",
+   "questionNumber": "36 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "Find F, when V = 40 km/h.",
+   "context": "Overspeeding increases fuel consumption and decreases fuel economy as a result of tyre rolling friction and air resistance. While vehicles reach optimal fuel economy at different speeds, fuel mileage usually decreases rapidly at speeds above 80 km/h.\n\nThe relation between fuel consumption F (l/100 km) and speed V (km/h) under some constraints is given as \\(F = \\dfrac{V^2}{500} - \\dfrac{V}{4} + 14\\).\n\nOn the basis of the above information, answer the following questions :",
+   "figure": "DECORATIVE — a scatter plot of Fuel (l/100 km) against Speed (km/h) and a photograph of a car instrument cluster. Neither is read from: the relation F = V^2/500 - V/4 + 14 is printed in the stem and every sub-part is answered from it. NOT attached. Page idx 18.",
+   "solution": "Substitute \\(V = 40\\) into \\(F = \\frac{V^2}{500} - \\frac{V}{4} + 14\\):\n\\(F = \\frac{40^2}{500} - \\frac{40}{4} + 14 = \\frac{1600}{500} - 10 + 14 = 3.2 + 4 = 7.2\\).\nSo at 40 km/h the fuel consumption is \\(F = 7.2 = \\frac{36}{5}\\) litres per 100 km."
+  },
+  {
+   "hash": "ceaeb3794b4f0eba550ca522cefc07cac9b51e1fc33e74492417a74ab2f4e79c",
+   "ref": "Q36ii",
+   "questionNumber": "36 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "Find \\(\\dfrac{dF}{dV}\\).",
+   "context": "Overspeeding increases fuel consumption and decreases fuel economy as a result of tyre rolling friction and air resistance. While vehicles reach optimal fuel economy at different speeds, fuel mileage usually decreases rapidly at speeds above 80 km/h.\n\nThe relation between fuel consumption F (l/100 km) and speed V (km/h) under some constraints is given as \\(F = \\dfrac{V^2}{500} - \\dfrac{V}{4} + 14\\).\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "Differentiate \\(F = \\frac{V^2}{500} - \\frac{V}{4} + 14\\) term by term with respect to V. The constant 14 contributes nothing, so\n\\(\\frac{dF}{dV} = \\frac{2V}{500} - \\frac{1}{4} = \\frac{V}{250} - \\frac{1}{4}\\)."
+  },
+  {
+   "hash": "cd0b1889d646c8a3c9a01aea7440916b94506701a3fd19bf572c279f098da3d9",
+   "ref": "Q36iiia",
+   "questionNumber": "36 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Find the speed V for which fuel consumption F is minimum.",
+   "context": "Overspeeding increases fuel consumption and decreases fuel economy as a result of tyre rolling friction and air resistance. While vehicles reach optimal fuel economy at different speeds, fuel mileage usually decreases rapidly at speeds above 80 km/h.\n\nThe relation between fuel consumption F (l/100 km) and speed V (km/h) under some constraints is given as \\(F = \\dfrac{V^2}{500} - \\dfrac{V}{4} + 14\\).\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "For a minimum, first find the stationary point: \\(\\frac{dF}{dV} = \\frac{V}{250} - \\frac{1}{4} = 0\\) gives \\(V = \\frac{250}{4} = 62.5\\).\nNow apply the second-derivative test: \\(\\frac{d^2F}{dV^2} = \\frac{1}{250} > 0\\) for every V, and in particular at \\(V = 62.5\\). A positive second derivative at a stationary point marks a local minimum, and since \\(\\frac{d^2F}{dV^2}\\) is positive everywhere the curve is a parabola opening upwards, so this is the absolute minimum.\nHence the fuel consumption is minimum at \\(V = 62.5\\) km/h. (The value there is \\(F = \\frac{(62.5)^2}{500} - \\frac{62.5}{4} + 14 = 7.8125 - 15.625 + 14 = 6.1875\\) litres per 100 km.)"
+  },
+  {
+   "hash": "7fce5f53bebd5865a9c075e4b0a2036b021453e050717327a0e6521426893470",
+   "ref": "Q36iiib",
+   "questionNumber": "36 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "Find the quantity of fuel required to travel 600 km at the speed V at which \\(\\dfrac{dF}{dV} = -0{\\cdot}01\\).",
+   "context": "Overspeeding increases fuel consumption and decreases fuel economy as a result of tyre rolling friction and air resistance. While vehicles reach optimal fuel economy at different speeds, fuel mileage usually decreases rapidly at speeds above 80 km/h.\n\nThe relation between fuel consumption F (l/100 km) and speed V (km/h) under some constraints is given as \\(F = \\dfrac{V^2}{500} - \\dfrac{V}{4} + 14\\).\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "First find the speed. Setting \\(\\frac{dF}{dV} = -0.01\\) gives \\(\\frac{V}{250} - \\frac{1}{4} = -\\frac{1}{100}\\), so \\(\\frac{V}{250} = \\frac{1}{4} - \\frac{1}{100} = \\frac{25 - 1}{100} = \\frac{24}{100}\\) and \\(V = 250 \\times 0.24 = 60\\) km/h.\nAt that speed the consumption is \\(F = \\frac{60^2}{500} - \\frac{60}{4} + 14 = \\frac{3600}{500} - 15 + 14 = 7.2 - 1 = 6.2\\) litres per 100 km.\nSince F is measured per 100 km, travelling 600 km at this speed needs \\(6 \\times 6.2 = 37.2\\) litres of fuel."
+  },
+  {
+   "hash": "555f13c3d57a745a32eabb08f66f30fb8267c4531a45836e271124b9874dc4d5",
+   "ref": "Q37i",
+   "questionNumber": "37 (i)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Identify and write all the constraints which determine the given feasible region in Figure-2.",
+   "context": "The month of September is celebrated as the Rashtriya Poshan Maah across the country. Following a healthy and well-balanced diet is crucial in order to supply the body with the proper nutrients it needs. A balanced diet also keeps us mentally fit and promotes improved level of energy.\n\nA dietician wishes to minimize the cost of a diet involving two types of foods, food X (x kg) and food Y (y kg) which are available at the rate of ₹ 16/kg and ₹ 20/kg respectively. The feasible region satisfying the constraints is shown in Figure-2.\n\nOn the basis of the above information, answer the following questions :",
+   "figure": "REQUIRED — Figure-2 IS the feasible region and the stem names it explicitly; (i) asks the student to read the bounding lines off it and (ii) needs its corner points. Nothing in the text states the constraints. Page idx 20. NOTE: in the rendered PNG the figure panel is partly overpainted with black bars; the legible parts show corners D(0, 8), C(1, 5), B(2, 4), A(10, 0) and the lines 3x + y = 8, 4x + 5y = 28, x + 2y = 10, x + y = 6. A clean crop must come from the source PDF.",
+   "solution": "Read the boundary lines off Figure-2. The corner points of the shaded region are \\(A(10, 0)\\), \\(B(2, 4)\\), \\(C(1, 5)\\) and \\(D(0, 8)\\), and the edges joining them lie on\nDC: \\(3x + y = 8\\), the line through \\((0, 8)\\) and \\((1, 5)\\);\nCB: \\(x + y = 6\\), the line through \\((1, 5)\\) and \\((2, 4)\\);\nBA: \\(x + 2y = 10\\), the line through \\((2, 4)\\) and \\((10, 0)\\).\nThe region lies on the far side of each of these lines from the origin (the origin fails all three, for example \\(0 + 0 < 10\\)), and since x and y are quantities of food they cannot be negative. Hence the constraints determining the feasible region are\n\\(x + 2y \\ge 10\\), \\(x + y \\ge 6\\), \\(3x + y \\ge 8\\), \\(x \\ge 0\\), \\(y \\ge 0\\).\nThe fourth line drawn in Figure-2, \\(4x + 5y = 28\\), is not a constraint: no edge of the region lies along it. It is the dashed trial line \\(Z = 16x + 20y = 112\\) through the corner B, used in part (ii) to test the unbounded region."
+  },
+  {
+   "hash": "1b5d49f36386ae561a2e8f52cd75c608c96b002f5643e878a9f41b7e3681fb38",
+   "ref": "Q37ii",
+   "questionNumber": "37 (ii)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "If the objective is to minimize cost \\(Z = 16x + 20y\\), find the values of x and y at which cost is minimum. Also, find minimum cost assuming that minimum cost is possible for the given unbounded region.",
+   "context": "The month of September is celebrated as the Rashtriya Poshan Maah across the country. Following a healthy and well-balanced diet is crucial in order to supply the body with the proper nutrients it needs. A balanced diet also keeps us mentally fit and promotes improved level of energy.\n\nA dietician wishes to minimize the cost of a diet involving two types of foods, food X (x kg) and food Y (y kg) which are available at the rate of ₹ 16/kg and ₹ 20/kg respectively. The feasible region satisfying the constraints is shown in Figure-2.\n\nOn the basis of the above information, answer the following questions :",
+   "figure": "REQUIRED — the corner points of the feasible region in Figure-2 are needed to minimise Z. Page idx 20.",
+   "solution": "The feasible region is unbounded, but the question allows us to assume that the minimum is attained, so evaluate \\(Z = 16x + 20y\\) at each corner point.\n\n| Corner point | \\(Z = 16x + 20y\\) |\n| --- | --- |\n| \\(A(10, 0)\\) | \\(16(10) + 20(0) = 160\\) |\n| \\(B(2, 4)\\) | \\(16(2) + 20(4) = 32 + 80 = 112\\) |\n| \\(C(1, 5)\\) | \\(16(1) + 20(5) = 16 + 100 = 116\\) |\n| \\(D(0, 8)\\) | \\(16(0) + 20(8) = 160\\) |\n\nThe smallest of these values is 112, at \\(B(2, 4)\\). So the cost is least when \\(x = 2\\) and \\(y = 4\\), that is 2 kg of food X and 4 kg of food Y, and the minimum cost is Rs 112.\nThe usual check for an unbounded region confirms this: the open half-plane \\(16x + 20y < 112\\), i.e. \\(4x + 5y < 28\\), lies strictly on the origin side of the dashed line drawn in Figure-2 and so has no point in common with the feasible region. Hence 112 really is the minimum value of Z."
+  },
+  {
+   "hash": "02230e992fbef96f47292d0a5560dd72c10cc5ca6a867b08342b72b48deb1da1",
+   "ref": "Q38i",
+   "questionNumber": "38 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "Find the probability that the airplane will not crash.",
+   "context": "Airplanes are by far the safest mode of transportation when the number of transported passengers are measured against personal injuries and fatality totals.\n\nPrevious records state that the probability of an airplane crash is \\(0{\\cdot}00001\\%\\). Further, there are 95% chances that there will be survivors after a plane crash. Assume that in case of no crash, all travellers survive.\n\nLet \\(E_1\\) be the event that there is a plane crash and \\(E_2\\) be the event that there is no crash. Let A be the event that passengers survive after the journey.\n\nOn the basis of the above information, answer the following questions :",
+   "figure": "DECORATIVE — line-art icons of nine modes of transport and a cartoon aeroplane. No data. NOT attached. Page idx 22.",
+   "solution": "The probability of a crash is \\(P(E_1) = 0.00001\\% = \\frac{0.00001}{100} = 0.0000001\\), that is \\(\\frac{1}{10^7}\\).\nThe airplane not crashing is the complementary event \\(E_2\\), so\n\\(P(E_2) = 1 - P(E_1) = 1 - 0.0000001 = 0.9999999\\), that is \\(\\frac{9999999}{10^7}\\)."
+  },
+  {
+   "hash": "00d47c476079ffd17038656d4338a9a39c6c5729fe8606728862570a4b9f1c10",
+   "ref": "Q38ii",
+   "questionNumber": "38 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "Find \\(P(A \\,|\\, E_1) + P(A \\,|\\, E_2)\\).",
+   "context": "Airplanes are by far the safest mode of transportation when the number of transported passengers are measured against personal injuries and fatality totals.\n\nPrevious records state that the probability of an airplane crash is \\(0{\\cdot}00001\\%\\). Further, there are 95% chances that there will be survivors after a plane crash. Assume that in case of no crash, all travellers survive.\n\nLet \\(E_1\\) be the event that there is a plane crash and \\(E_2\\) be the event that there is no crash. Let A be the event that passengers survive after the journey.\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "A is the event that the passengers survive the journey. Given that a crash occurs there is a 95% chance of survivors, so \\(P(A \\mid E_1) = \\frac{95}{100}\\); and it is given that if there is no crash then all travellers survive, so \\(P(A \\mid E_2) = 1\\).\nHence \\(P(A \\mid E_1) + P(A \\mid E_2) = \\frac{95}{100} + 1 = \\frac{195}{100} = 1.95\\).\n(The sum exceeding 1 is not a contradiction: the two probabilities are conditioned on different events, so there is no reason for them to add to 1.)"
+  },
+  {
+   "hash": "8a0d7dc4dde36e9ce9d00ef51d413a74a93dd0b3fb10c2fc40c8e28a316b9cd3",
+   "ref": "Q38iiia",
+   "questionNumber": "38 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Theorem of Total Probability",
+   "stem": "Find P(A).",
+   "context": "Airplanes are by far the safest mode of transportation when the number of transported passengers are measured against personal injuries and fatality totals.\n\nPrevious records state that the probability of an airplane crash is \\(0{\\cdot}00001\\%\\). Further, there are 95% chances that there will be survivors after a plane crash. Assume that in case of no crash, all travellers survive.\n\nLet \\(E_1\\) be the event that there is a plane crash and \\(E_2\\) be the event that there is no crash. Let A be the event that passengers survive after the journey.\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "\\(E_1\\) and \\(E_2\\) are complementary events, so they partition the sample space and the theorem of total probability applies:\n\\(P(A) = P(E_1)\\,P(A \\mid E_1) + P(E_2)\\,P(A \\mid E_2) = \\frac{1}{10^7} \\times \\frac{95}{100} + \\frac{9999999}{10^7} \\times 1\\).\nTaking the common denominator \\(10^9\\),\n\\(P(A) = \\frac{95}{10^9} + \\frac{999999900}{10^9} = \\frac{999999995}{1000000000} = 0.999999995\\)."
+  },
+  {
+   "hash": "a22c4bee9fc8df07c8127e3edd624d9157d95be9494e2165f559358cb7a2a96a",
+   "ref": "Q38iiib",
+   "questionNumber": "38 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Bayes' Theorem",
+   "stem": "Find \\(P(E_2 \\,|\\, A)\\).",
+   "context": "Airplanes are by far the safest mode of transportation when the number of transported passengers are measured against personal injuries and fatality totals.\n\nPrevious records state that the probability of an airplane crash is \\(0{\\cdot}00001\\%\\). Further, there are 95% chances that there will be survivors after a plane crash. Assume that in case of no crash, all travellers survive.\n\nLet \\(E_1\\) be the event that there is a plane crash and \\(E_2\\) be the event that there is no crash. Let A be the event that passengers survive after the journey.\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "By Bayes' theorem,\n\\(P(E_2 \\mid A) = \\frac{P(E_2)\\,P(A \\mid E_2)}{P(E_1)\\,P(A \\mid E_1) + P(E_2)\\,P(A \\mid E_2)}\\).\nThe numerator is \\(\\frac{9999999}{10^7} \\times 1 = \\frac{999999900}{10^9}\\), and the denominator is \\(P(A) = \\frac{999999995}{10^9}\\), computed from the same two branches.\nHence \\(P(E_2 \\mid A) = \\dfrac{999999900/10^9}{999999995/10^9} = \\frac{999999900}{999999995}\\), which is approximately \\(0.999999905\\). As expected it is very close to 1, since survival is overwhelmingly likely to have happened without any crash at all."
+  }
+ ]
+}
