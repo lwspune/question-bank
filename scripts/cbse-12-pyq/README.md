@@ -242,6 +242,28 @@ reuses `findOmmlFailures` verbatim, so it cannot disagree with the exporter.
 
 ---
 
+## ⚠ NEVER STAGE A PATTERN WHILE AGENTS ARE WRITING — bit us TWICE
+
+`git add -A scripts/cbse-12-pyq/` and, the second time, a
+`git status --short | grep | awk` glob that is a broad add wearing a disguise.
+Both swept in-flight `.topaper.json` files into a commit whose message never
+mentioned them. Two separate agents reported it, unprompted.
+
+The content was intact both times, so it reads as a cosmetic history problem.
+It is not. **The second one silently invalidated a running agent's verification**:
+its field-diff compared the working file against `HEAD`, and `HEAD` had just
+become that agent's own half-finished edits, so the check could no longer see a
+corrupted field. It caught this itself and re-ran against the pristine dump
+commit — but nothing warned it, and a less careful agent would have reported a
+clean diff that proved nothing.
+
+The rule, and it generalises past git: **a scratch-file namespace protects an
+agent from other AGENTS, not from the orchestrator mutating shared state
+underneath it.** A probe that diffs against a moving baseline is only as
+trustworthy as the baseline's stability.
+
+So: stage LITERAL paths, and only for papers whose agent has already REPORTED.
+
 ## Hazards that have already bitten
 
 - **The commit leaves a PUBLIC window.** `commitStaged` inserts at the table
