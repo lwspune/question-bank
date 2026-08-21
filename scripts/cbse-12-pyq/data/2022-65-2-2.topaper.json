@@ -24,7 +24,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Homogeneous Differential Equations",
    "stem": "Find the general solution of the differential equation \\( x \\frac{dy}{dx} - y + x \\sin \\frac{y}{x} = 0 \\).",
-   "solution": ""
+   "solution": "Divide through by \\(x\\) and rearrange: \\(\\frac{dy}{dx} = \\frac{y}{x} - \\sin\\frac{y}{x}\\). The right-hand side depends on \\(x\\) and \\(y\\) only through \\(\\frac{y}{x}\\), so the equation is homogeneous. Put \\(\\frac{y}{x} = v\\), i.e. \\(y = vx\\), so that \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\). The equation becomes \\(v + x\\frac{dv}{dx} = v - \\sin v\\), and the \\(v\\) terms cancel to leave \\(x\\frac{dv}{dx} = -\\sin v\\). Separating, \\(\\operatorname{cosec} v\\,dv = -\\frac{dx}{x}\\). Integrating both sides and writing the constant as \\(\\log C\\), \\(\\log|\\operatorname{cosec} v - \\cot v| = -\\log|x| + \\log C\\), so \\(\\log|\\operatorname{cosec} v - \\cot v| + \\log|x| = \\log C\\). Restoring \\(v = \\frac{y}{x}\\), the general solution is \\(x\\left(\\operatorname{cosec}\\frac{y}{x} - \\cot\\frac{y}{x}\\right) = C\\)."
   },
   {
    "hash": "d9ca223a39ecef02be121d399de690bb7ae774aaaee8be9e774cf756d70e1dfd",
@@ -35,7 +35,7 @@
    "chapter": "Vector Algebra",
    "subtopic": "Section Formula",
    "stem": "Using vectors, find the value of 'b' if the points \\( A(-1, -1, 2) \\), \\( B(2, b, 5) \\) and \\( C(3, 11, 6) \\) are collinear. Also, determine the ratio in which the point B divides the line-segment AC internally.",
-   "solution": ""
+   "solution": "Let \\(\\vec{a}, \\vec{b}, \\vec{c}\\) be the position vectors of \\(A, B, C\\), so \\(\\vec{a} = -\\hat{i} - \\hat{j} + 2\\hat{k}\\), \\(\\vec{b} = 2\\hat{i} + b\\hat{j} + 5\\hat{k}\\) and \\(\\vec{c} = 3\\hat{i} + 11\\hat{j} + 6\\hat{k}\\). Then \\(\\overrightarrow{AB} = \\vec{b} - \\vec{a} = 3\\hat{i} + (b + 1)\\hat{j} + 3\\hat{k}\\) and \\(\\overrightarrow{AC} = \\vec{c} - \\vec{a} = 4\\hat{i} + 12\\hat{j} + 4\\hat{k}\\). If the three points are collinear these two vectors are parallel, so their components are proportional: \\(\\frac{3}{4} = \\frac{b + 1}{12} = \\frac{3}{4}\\). The first and third ratios already agree, and \\(\\frac{b + 1}{12} = \\frac{3}{4}\\) gives \\(b + 1 = 9\\), so \\(b = 8\\). With that value, \\(|\\overrightarrow{AB}| = \\sqrt{9 + 81 + 9} = \\sqrt{99} = 3\\sqrt{11}\\) and \\(|\\overrightarrow{AC}| = \\sqrt{16 + 144 + 16} = \\sqrt{176} = 4\\sqrt{11}\\). Since \\(B\\) lies between \\(A\\) and \\(C\\), \\(|\\overrightarrow{BC}| = 4\\sqrt{11} - 3\\sqrt{11} = \\sqrt{11}\\), so \\(B\\) divides \\(AC\\) internally in the ratio \\(3\\sqrt{11} : \\sqrt{11} = 3 : 1\\). As a check, the section formula for that ratio gives \\(\\frac{1 \\cdot \\vec{a} + 3 \\cdot \\vec{c}}{3 + 1} = \\frac{8\\hat{i} + 32\\hat{j} + 20\\hat{k}}{4} = 2\\hat{i} + 8\\hat{j} + 5\\hat{k}\\), which is exactly \\(\\vec{b}\\) with \\(b = 8\\)."
   },
   {
    "hash": "8cb92fdb31e3d897f4c772ce6704576d17de2a54b60ea03a1799e4578b889888",
@@ -46,7 +46,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "Evaluate : \\( \\int_{0}^{\\pi/2} \\frac{x}{\\sin x + \\cos x} \\, dx \\)",
-   "solution": ""
+   "solution": "[CBSE marking scheme: the printed antiderivative line reads \\(\\log\\left|\\sec\\left(x - \\frac{\\pi}{4}\\right) + \\tan\\left(x - \\frac{\\pi}{2}\\right)\\right|\\), but the two arguments must be the same — the second should also be \\(x - \\frac{\\pi}{4}\\). As printed the expression cannot even be evaluated at the lower limit, since \\(\\tan\\left(-\\frac{\\pi}{2}\\right)\\) is undefined, and the scheme's own next line substitutes the \\(\\frac{\\pi}{4}\\) values in any case. Only that one line is affected; the method and the final answer are correct.] Use the property \\(\\int_0^a f(x)\\,dx = \\int_0^a f(a - x)\\,dx\\) with \\(a = \\frac{\\pi}{2}\\). Because \\(\\sin\\left(\\frac{\\pi}{2} - x\\right) = \\cos x\\) and \\(\\cos\\left(\\frac{\\pi}{2} - x\\right) = \\sin x\\), the denominator is unchanged and \\(I = \\int_0^{\\pi/2} \\frac{\\frac{\\pi}{2} - x}{\\sin x + \\cos x}\\,dx\\). Adding this to the original integral, the \\(x\\) terms cancel and \\(2I = \\frac{\\pi}{2}\\int_0^{\\pi/2} \\frac{dx}{\\sin x + \\cos x}\\). Now \\(\\sin x + \\cos x = \\sqrt{2}\\cos\\left(x - \\frac{\\pi}{4}\\right)\\), so \\(2I = \\frac{\\pi}{2\\sqrt{2}}\\int_0^{\\pi/2} \\sec\\left(x - \\frac{\\pi}{4}\\right)dx\\), giving \\(I = \\frac{\\pi}{4\\sqrt{2}}\\left[\\log\\left|\\sec\\left(x - \\frac{\\pi}{4}\\right) + \\tan\\left(x - \\frac{\\pi}{4}\\right)\\right|\\right]_0^{\\pi/2}\\). At the upper limit the argument is \\(\\frac{\\pi}{4}\\), where \\(\\sec = \\sqrt{2}\\) and \\(\\tan = 1\\), giving \\(\\log(\\sqrt{2} + 1)\\); at the lower limit it is \\(-\\frac{\\pi}{4}\\), where \\(\\sec = \\sqrt{2}\\) and \\(\\tan = -1\\), giving \\(\\log(\\sqrt{2} - 1)\\). Hence \\(I = \\frac{\\pi}{4\\sqrt{2}}\\left[\\log(\\sqrt{2} + 1) - \\log(\\sqrt{2} - 1)\\right] = \\frac{\\pi}{4\\sqrt{2}}\\log\\left(\\frac{\\sqrt{2} + 1}{\\sqrt{2} - 1}\\right)\\), which is approximately \\(0.979\\)."
   }
  ]
 }
