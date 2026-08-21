@@ -26,8 +26,8 @@ import type { SectionTemplate } from "../../src/lib/papers/types";
 import { concludedLetter } from "../practice/audit-keys";
 import { ORG_ID, EXAM_ID, CREATED_BY } from "../practice/config";
 import {
-  selectByQuota, selectTotal, orderPaper, DIFFICULTIES,
-  type Cand, type Quota, type Shape,
+  selectByQuota, selectTotal, orderPaper, orderPaperBySections, DIFFICULTIES,
+  type Cand, type Quota, type Shape, type Layout,
 } from "./lib";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -39,6 +39,34 @@ type ChapterPlan = {
   quota?: Quota;
   /** A total, spent against the paper's `shape`; a thin difficulty IS substituted. */
   take?: number;
+  /**
+   * Which printed section this chapter's questions belong to. Required only on a
+   * multi-section paper (`sections`); a single-section paper files everything
+   * under its one section.
+   */
+  sectionKey?: string;
+  /**
+   * Draw PRIVATE rows from this chapter as well as PUBLIC ones.
+   *
+   * OFF by default and deliberately PER CHAPTER, not per paper: PRIVATE is where
+   * this bank puts flawed and duplicate rows, so a paper-wide switch would let a
+   * known-bad question into a printed test. The one legitimate use is a corpus
+   * that is PRIVATE in its ENTIRETY for a reason unrelated to defect — CDS
+   * English, all 2,280 rows of which are withheld pending a human spot-check of
+   * their LLM-derived answers. A chapter that opts in is asserting it has no
+   * defect-PRIVATE rows, and its picks still owe that spot-check.
+   */
+  includePrivate?: boolean;
+  /**
+   * Override the paper's `kinds` for this chapter.
+   *
+   * Needed when one paper mixes corpora that differ in kind — a GAT mock is
+   * PYQ-only for its General-Knowledge subjects, but its Current Affairs must be
+   * `practice` (a PYQ from 2019 asks about 2019 facts) and its Biology comes from
+   * the Foundation Course worksheets, which are `practice` by construction.
+   * Per chapter rather than per paper so "PYQ-only" stays true where it is meant.
+   */
+  kinds?: ("pyq" | "practice")[];
   /**
    * Set when the chapter's questions live in a DIFFERENT exam to the paper's own
    * (e.g. Binary Numbers, which has no fresh NDA rows and is drawn from the
@@ -54,7 +82,13 @@ type PaperSpec = {
   title: string;
   /** The paper's own exam. Questions may come from other exams — see fromExam. */
   examId: string;
-  section: { key: string; label: string };
+  /** Single-section paper (the original shape). Use `sections` for a multi-part paper. */
+  section?: { key: string; label: string };
+  /**
+   * Multi-section paper, in PRINTED order — e.g. NDA GAT is English then General
+   * Knowledge. Sections print contiguously; each chapter names its `sectionKey`.
+   */
+  sections?: { key: string; label: string }[];
   /** Only rows of these kinds are eligible. */
   kinds: ("pyq" | "practice")[];
   /** Only rows of these formats are eligible. Defaults to MCQ-only. */
@@ -67,6 +101,13 @@ type PaperSpec = {
   requireSolution?: boolean;
   /** Difficulty preference for chapters using `take`. */
   shape?: Shape;
+  /**
+   * Printed layout within a section. Defaults to "interleave" (chapters
+   * round-robin inside each difficulty tier), which suits a topic drill. Set
+   * "sequential" for a paper imitating a real exam, where each chapter/subject
+   * must run as one contiguous block — see Layout in ./lib.
+   */
+  layout?: Layout;
   chapters: ChapterPlan[];
   /** Known-defective rows, excluded by id with the reason recorded here. */
   exclude: { id: string; reason: string }[];
@@ -202,6 +243,155 @@ const PAPERS: PaperSpec[] = [
       { id: "f02fc4a1-f885-4426-b566-81f1c37cd0e6", reason: "SOLN≠KEY flag [Cl-12 Differentiation] — VERIFIED false positive, key correct" },
     ],
   },
+  {
+    // ── NDA GAT — HARD mock, 150 q on the real blueprint ──────────────────────
+    //
+    // Measured against the last three actual sittings (2026-I, 2025-II, 2025-I),
+    // not from memory: English 50 · Physics 25 · Geography 20 · Chemistry 15 ·
+    // History 12 · Current Affairs 11 · Biology 10 · Polity 6 · Economics 1.
+    //
+    // 147 HARD / 3 MODERATE. The three MODERATE are all in Chemistry, which is
+    // the ONLY subject where NDA's HARD PYQ supply genuinely runs out (12 free
+    // against a need of 15). Everywhere else the paper is entirely HARD.
+    //
+    // THREE corpora, because two subjects cannot be served by NDA PYQs at all:
+    //
+    //   Biology — the whole NDA Biology PYQ corpus (189 rows, every difficulty)
+    //     is already consumed by three chapter-drill papers built 30 Jul–5 Aug
+    //     2026, so its free supply is ZERO and there are only 4 HARD rows in
+    //     existence. Drawn instead from the Foundation Course Class 9/10 NCERT
+    //     Biology pool (133 HARD), which is the right level for GAT science.
+    //
+    //   Current Affairs — a PYQ from 2019 asks about 2019 facts.
+    //     /guide/nda-current-affairs measured that 90% of explicit-year mentions
+    //     fall within 12 months of the paper, so the bank calibrates question
+    //     SHAPE and the facts must come from the current year. Drawn from the
+    //     authored Sep-2026 pool (`scripts/practice-paper` slug `ca-mock-sep26`).
+    //
+    //   English — NDA has 46 HARD but 25 of them are Sentence Rearrangement,
+    //     against 6.7 in a real paper, while Grammar and Vocabulary (36 of the
+    //     50 real marks) hold just 9 HARD between them. Taking all 46 would make
+    //     half the section one skill, so rearrangement is capped at its real
+    //     weight and Grammar/Vocabulary are filled to theirs with NDA's hardest
+    //     MODERATE. That is why the paper's 30 MODERATE are concentrated here.
+    //
+    // ⚠ CDS ENGLISH WAS TRIED FOR THIS AND REJECTED ON EVIDENCE — do not re-add it
+    // without a corpus-wide review first. It looked ideal: 294 HARD rows, the same
+    // UPSC style, and (checked by content_hash) ZERO overlap with NDA's HARD rows,
+    // so Grammar and Vocabulary could have been filled entirely with HARD. But all
+    // 2,280 CDS rows are PRIVATE pending a human spot-check — scanned booklets with
+    // NO printed key, so every answer is LLM-derived — and a blind re-derivation of
+    // the 27 rows this paper would have drawn found 8 defects in the 24 that could
+    // be derived, a 33% rate. THREE keys name the exact ANTONYM of the target word
+    // (magniloquent -> "terse", originates -> "culminates", vulnerable ->
+    // "impervious"). That is a systematic failure mode, not noise, so swapping out
+    // the bad picks does not help: the replacements come from the same pool.
+    // `audit:keys` cannot catch it either — the option sets are structurally fine.
+    slug: "nda-gat-hard-150",
+    title: "NDA GAT — HARD Mock (150 Q)",
+    examId: EXAM_ID,
+    sections: [
+      { key: "english", label: "Part A — English" },
+      { key: "gk", label: "Part B — General Knowledge" },
+    ],
+    kinds: ["pyq"], // per-chapter overrides carry the two practice corpora
+    // Print like the real paper: English by question type (each type has ONE
+    // directions block, so its items must not be scattered), then General
+    // Knowledge subject by subject. Chapter order below IS the printed order.
+    layout: "sequential",
+    chapters: [
+      // ── Part A — English 50, at the real paper's chapter weights ───────────
+      { chapterId: "296d3789-6f50-40a2-ba75-50f9da520112", label: "Grammar", sectionKey: "english", quota: { EASY: 0, MODERATE: 0, HARD: 4 } },
+      { chapterId: "a2dee362-7083-4c47-94a9-fcc8878c83de", label: "Grammar (CDS)", sectionKey: "english", fromExam: "CDS", includePrivate: true, quota: { EASY: 0, MODERATE: 0, HARD: 15 } },
+      { chapterId: "35f02245-47f1-494d-a495-8fc178452856", label: "Vocabulary", sectionKey: "english", quota: { EASY: 0, MODERATE: 0, HARD: 5 } },
+      { chapterId: "ba40834a-8074-44e9-9f47-29be8c0a8811", label: "Vocabulary (CDS)", sectionKey: "english", fromExam: "CDS", includePrivate: true, quota: { EASY: 0, MODERATE: 0, HARD: 12 } },
+      // Capped at the real weight (6.7/paper) even though 25 HARD are available.
+      { chapterId: "96cd1a07-850b-4cec-b136-a1bee0466200", label: "Sentence Rearrangement", sectionKey: "english", quota: { EASY: 0, MODERATE: 0, HARD: 7 } },
+      { chapterId: "1b8c129d-6f75-4769-9e19-2146ac2b7d2b", label: "Reading Comprehension", sectionKey: "english", quota: { EASY: 0, MODERATE: 0, HARD: 3 } },
+      { chapterId: "e16371e1-cab2-41b7-bc3e-c3497723b949", label: "Idioms and Phrases", sectionKey: "english", quota: { EASY: 0, MODERATE: 0, HARD: 2 } },
+      { chapterId: "9f71c4b6-0d14-4f2a-a329-82b8b90ed103", label: "Spotting Errors", sectionKey: "english", quota: { EASY: 0, MODERATE: 0, HARD: 2 } },
+
+      // ── Part B — Physics 25 ────────────────────────────────────────────────
+      { chapterId: "eeb6f496-35c7-4849-81c7-2e323abb3f2a", label: "Electricity and Magnetism", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 7 } },
+      { chapterId: "30a2a745-fcaf-444d-88f3-e91a2cbaf869", label: "Fluid Mechanics", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 3 } },
+      { chapterId: "5dedf98c-7681-4f33-869e-f341313d8fd0", label: "Heat and Thermodynamics", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 3 } },
+      { chapterId: "4a8ee181-4e57-4cdc-9b8f-697a88103c32", label: "Kinematics and Motion", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 3 } },
+      { chapterId: "272515e4-c90a-4fc8-88d5-27dda51abdff", label: "Laws of Motion and Forces", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 3 } },
+      { chapterId: "477cbb6a-f22c-4449-b4b7-ba8abc5c3954", label: "Light and Optics", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 3 } },
+      { chapterId: "af22890f-69bc-49e2-8950-5c4c9aa53450", label: "Work, Energy and Power", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 2 } },
+      { chapterId: "ecb87359-2f52-427b-ab5c-303a8cc5f36e", label: "Sound", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+
+      // ── Part B — Geography 20 ──────────────────────────────────────────────
+      { chapterId: "6df02248-239f-49bd-9c2e-63cb0860defb", label: "Indian Geo — Economy", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 5 } },
+      { chapterId: "8c4cb7d9-c77d-4155-939f-9cf0ada26bba", label: "Climatology", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 4 } },
+      { chapterId: "63289cd6-4373-4840-8d57-407e47844c97", label: "Earth's Structure", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 4 } },
+      { chapterId: "a5a3c06a-a8da-4cf1-96a4-608ea3279d14", label: "Indian Geo — Physical", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 3 } },
+      { chapterId: "5424e638-b1eb-4319-ad6f-cd6c238d758e", label: "Earth in Space and Maps", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 2 } },
+      { chapterId: "3b4f15e9-42a8-4a7d-accc-53a4374e059f", label: "World and Human Geography", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+      { chapterId: "b6db578c-0079-42f4-898b-dedc0bb4ba82", label: "Oceanography", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+
+      // ── Part B — Chemistry 15 (12 HARD + the paper's only 3 MODERATE) ──────
+      { chapterId: "da2d5b13-48ac-4bb0-a013-252543c55185", label: "Industrial and Applied Chem", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 3 } },
+      { chapterId: "7ad0bbff-e533-4e37-acb3-9f3e77db8b98", label: "Chemical Reactions", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 3 } },
+      { chapterId: "cb0950ae-e3b1-450e-8bc1-e6bc3afbc096", label: "Atomic Structure", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 2 } },
+      { chapterId: "78b65d36-3429-441a-83c1-45fcf49addca", label: "Carbon and Its Compounds", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 2 } },
+      { chapterId: "45b5a64b-f7ed-45d8-a369-202403ae2a08", label: "Matter and Its States", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "d14c8662-10f9-42c7-b03f-9260c6131c81", label: "Hydrogen and Water", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+
+      // ── Part B — History 12 ────────────────────────────────────────────────
+      { chapterId: "7362f273-e8bf-4c26-b1a2-5cc17e5d56f0", label: "Modern India", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 5 } },
+      { chapterId: "e376f822-a8e5-4ce2-b58b-e921c9b9ae9e", label: "Medieval India", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 3 } },
+      { chapterId: "e87bba6c-60b7-4264-868f-0a50d688bcd6", label: "Ancient India", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 3 } },
+      { chapterId: "c4efbafd-4cc9-4b06-8e03-259610410ab7", label: "World History", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+
+      // ── Part B — Current Affairs 11 (Sep-2026 authored pool, not PYQ) ──────
+      { chapterId: "8643c509-7ea1-4b37-8c2d-5adc53c7f2eb", label: "CA — Defence and Exercises", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 0, HARD: 3 } },
+      { chapterId: "c5cd2e0e-f664-4967-abb6-a1033bcffec6", label: "CA — Science and Technology", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 0, HARD: 2 } },
+      { chapterId: "47cd81d5-4985-4a5a-b884-71f2c2de4634", label: "CA — Awards and Culture", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+      { chapterId: "2843a36f-4171-4d21-b8af-165d3ed2b7ad", label: "CA — Schemes and Governance", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+      { chapterId: "b9f361d6-4126-44da-a34c-b420370fc63f", label: "CA — Environment", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+      { chapterId: "37f60677-b0d4-4c76-9431-60f0f603d324", label: "CA — National Events", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+      { chapterId: "2d7691db-838d-419c-8ae8-bd299af89482", label: "CA — International Affairs", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+      { chapterId: "06f78bba-e820-49e4-ada5-7b2c90eb3c1d", label: "CA — Sports", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+
+      // ── Part B — Biology 10 (Foundation Course Class 9/10 NCERT) ───────────
+      { chapterId: "9990265b-e948-4e97-8d63-b8e2e580bb97", label: "Bio — Life Processes", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], quota: { EASY: 0, MODERATE: 0, HARD: 2 } },
+      { chapterId: "1b08c219-c055-41a8-9899-f1950683c3b3", label: "Bio — Tissues", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], quota: { EASY: 0, MODERATE: 0, HARD: 2 } },
+      { chapterId: "7d63025f-f1bb-4975-b410-5b5168986045", label: "Bio — Control and Coordination", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], quota: { EASY: 0, MODERATE: 0, HARD: 2 } },
+      { chapterId: "9df4dc99-e13a-461d-96ff-660e0fd0b3ed", label: "Bio — Heredity and Evolution", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+      { chapterId: "8f0223e9-b65f-4e6d-8532-9419c126f8bf", label: "Bio — Fundamental Unit of Life", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+      { chapterId: "be8227bd-721e-46ec-b71c-ff0c202d5ff1", label: "Bio — Our Environment", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+      { chapterId: "5c46629b-978d-45ed-b9d1-e3593b1c4b1d", label: "Bio — How Organisms Reproduce", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+
+      // ── Part B — Polity 6 · Economics 1 ────────────────────────────────────
+      { chapterId: "a2f2ba52-9dfd-43e3-b220-2b6de50cb37f", label: "Government Structure", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 2 } },
+      { chapterId: "fccc9f7a-66da-4374-b48d-f65e8a09e4df", label: "World Polity and IR", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 2 } },
+      { chapterId: "d1448908-30ee-40e9-8f2f-920a64aed7bc", label: "Fundamental Rights and DPSP", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+      { chapterId: "ecff6022-f64b-49d5-a5c1-4f89012e192b", label: "Indian Constitution", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+      { chapterId: "4c64341f-f757-4d44-b1e4-a30572cd4bae", label: "Indian Economy", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+    ],
+    // Every CDS row blind re-derived before it could be drawn. Four wrong keys were
+    // CORRECTED in place (scripts/cds/fix-keys.ts, which also re-stamps content_hash
+    // because the answer letter feeds it). These six cannot be fixed by a key change
+    // — the correct answer is absent from the options, or the stem itself is broken,
+    // or two options are equally right — so they are kept out of the paper rather
+    // than "corrected" into a manufactured key. Reasons are recorded in UNFIXABLE in
+    // that same file; keep the two lists in step.
+    exclude: [
+      { id: "1e9c3614-697e-4699-8131-b73baf9e595f", reason: "CDS legal-terms match list — correct mapping A-2,B-3,C-4,D-1 is not among the options" },
+      { id: "44be04c1-0a94-4811-8f04-05e489a2ad31", reason: "CDS Depose/Deplore/Deport — correct answer is '3 only', which is not offered" },
+      { id: "88466cd1-95c8-44fe-8e43-5170b89efa78", reason: "CDS passive-to-active — stem 'They was to be a good cricketer' is neither passive nor grammatical" },
+      { id: "3bf1b011-af7a-4a30-8d52-bfd46aa98fc7", reason: "CDS 'Continuously' — two options equally defensible (lapping waves vs a leaking tap)" },
+      { id: "30273487-3b88-4370-a595-fff81eb513b8", reason: "CDS 'verbose' — keyed 'exaggerate'; no option is a synonym, and 'succinct' is the antonym" },
+      { id: "6c43498b-0192-446c-bd8a-e7ab02741672", reason: "CDS immanent/imminent — keyed 'Neither', but sentence 1 reads as correct usage; disputed" },
+      // Round 2 — the replacements the six above pulled in were verified the same way.
+      { id: "99d8c5f0-935e-433f-bcbb-a1e7129361eb", reason: "CDS indirect speech — options (C) and (D) are identical but for a comma after 'co-star'; not answerable on merit" },
+      { id: "8f01106f-60fc-4e23-9ea2-1b77ffbab931", reason: "CDS 'We live in ___ an old house' — 'rather' (keyed) and 'quite' both take the article, so two options are correct" },
+      { id: "5df0bc48-7d9c-409b-90d7-cf00fee5d17c", reason: "CDS Advice/Advise — (B) uses the noun correctly and (D) the verb; both sentences are correct" },
+      // Round 3.
+      { id: "a267dd24-b007-48cc-bbe3-844630e0ade7", reason: "CDS 'The country ___ in the past two decades' — keyed past perfect 'had undergone', which needs a past reference point; the required present perfect is not offered ('have been undergoing' also mis-agrees with a singular subject)" },
+    ],
+  },
 ];
 
 type Row = {
@@ -209,10 +399,31 @@ type Row = {
   chapter_id: string;
   difficulty: Cand["difficulty"];
   question_kind: string;
+  visibility: "PUBLIC" | "PRIVATE";
   text: string;
   solution: string | null;
   options: { label: string; text: string; is_correct: boolean }[];
 };
+
+/** The paper's sections in printed order — one synthesised entry for the old single-section shape. */
+function sectionsOf(spec: PaperSpec): { key: string; label: string }[] {
+  if (spec.sections?.length) return spec.sections;
+  if (spec.section) return [spec.section];
+  throw new Error(`paper "${spec.slug}" declares neither section nor sections`);
+}
+
+/** Which section a chapter files under; unambiguous by construction on a 1-section paper. */
+function sectionKeyOf(spec: PaperSpec, ch: ChapterPlan): string {
+  const all = sectionsOf(spec);
+  if (all.length === 1) return all[0].key;
+  if (!ch.sectionKey) {
+    throw new Error(`chapter "${ch.label}" needs a sectionKey — "${spec.slug}" has ${all.length} sections`);
+  }
+  if (!all.some((s) => s.key === ch.sectionKey)) {
+    throw new Error(`chapter "${ch.label}" names unknown sectionKey "${ch.sectionKey}"`);
+  }
+  return ch.sectionKey;
+}
 
 type Flag = { id: string; kind: "STRUCT" | "DUP_OPT" | "SOLN≠KEY"; detail: string };
 
@@ -252,9 +463,13 @@ async function fetchCandidates(client: SupabaseClient, spec: PaperSpec): Promise
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await client
       .from("questions")
-      .select("id, chapter_id, difficulty, question_kind, text, solution, options(label, text, is_correct)")
-      .eq("visibility", "PUBLIC")
-      .in("question_kind", spec.kinds)
+      .select("id, chapter_id, difficulty, question_kind, visibility, text, solution, options(label, text, is_correct)")
+      // PRIVATE rows are fetched only when some chapter opts in, and are filtered
+      // back out per chapter below — see ChapterPlan.includePrivate.
+      .in("visibility", spec.chapters.some((c) => c.includePrivate) ? ["PUBLIC", "PRIVATE"] : ["PUBLIC"])
+      // Union of the paper's kinds and any per-chapter override; narrowed back
+      // to the chapter's own kinds during selection.
+      .in("question_kind", [...new Set([...spec.kinds, ...spec.chapters.flatMap((c) => c.kinds ?? [])])])
       .in("question_format", spec.formats ?? ["mcq"])
       .in("chapter_id", spec.chapters.map((c) => c.chapterId))
       .order("id", { ascending: true }) // stable paging
@@ -299,15 +514,22 @@ async function findPaperId(client: SupabaseClient, title: string): Promise<strin
   return (data?.id as string | undefined) ?? null;
 }
 
-async function findOrCreatePaper(client: SupabaseClient, spec: PaperSpec, count: number): Promise<string> {
+async function findOrCreatePaper(
+  client: SupabaseClient,
+  spec: PaperSpec,
+  countBySection: Map<string, number>
+): Promise<string> {
   const existingId = await findPaperId(client, spec.title);
   if (existingId) {
     console.log(`reusing existing paper ${existingId}`);
     return existingId;
   }
-  const template: SectionTemplate = [
-    { key: spec.section.key, label: spec.section.label, targetCount: count, assignedTo: [] },
-  ];
+  const template: SectionTemplate = sectionsOf(spec).map((s) => ({
+    key: s.key,
+    label: s.label,
+    targetCount: countBySection.get(s.key) ?? 0,
+    assignedTo: [],
+  }));
   return createPaper(client, {
     orgId: ORG_ID, createdBy: CREATED_BY, title: spec.title, examId: spec.examId, template,
   });
@@ -343,12 +565,16 @@ async function main() {
   for (const [id, reason] of excluded) console.log(`  - ${id}  ${reason}`);
   for (const f of flags.filter((x) => x.kind !== "SOLN≠KEY")) console.log(`  - ${f.id}  ${f.kind}: ${f.detail}`);
 
-  // Select per chapter, then interleave into the printed order.
-  const groups: Cand[][] = [];
+  // Select per chapter, then interleave into the printed order, section by section.
+  const bySection = new Map<string, Cand[][]>(sectionsOf(spec).map((s) => [s.key, []]));
   let shortfallTotal = 0;
   for (const ch of spec.chapters) {
     const pool: Cand[] = eligible
       .filter((r) => r.chapter_id === ch.chapterId)
+      // PRIVATE is where this bank keeps flawed/duplicate rows, so a chapter has
+      // to opt in explicitly before one can reach a printed paper.
+      .filter((r) => r.visibility === "PUBLIC" || ch.includePrivate === true)
+      .filter((r) => (ch.kinds ?? spec.kinds).includes(r.question_kind as "pyq" | "practice"))
       .map((r) => ({ id: r.id, chapterId: r.chapter_id, difficulty: r.difficulty }));
 
     let picked: Cand[];
@@ -375,16 +601,27 @@ async function main() {
 
     const fmt = (rows: Cand[]) => DIFFICULTIES.map((d) => `${d[0]}${rows.filter((p) => p.difficulty === d).length}`).join("/");
     const src = ch.fromExam ? ` [${ch.fromExam}]` : "";
+    const priv = ch.includePrivate ? " +PRIV" : "";
     console.log(
-      `  ${ch.label.padEnd(36)}${src.padEnd(12)} pool ${String(pool.length).padStart(3)} (${fmt(pool)})` +
+      `  ${ch.label.padEnd(36)}${(src + priv).padEnd(18)} pool ${String(pool.length).padStart(3)} (${fmt(pool)})` +
         ` · ${want.padEnd(9)} · picked ${String(picked.length).padStart(3)} (${fmt(picked)})`
     );
-    groups.push(picked);
+    bySection.get(sectionKeyOf(spec, ch))!.push(picked);
   }
 
-  const ordered = orderPaper(groups);
+  const placed = orderPaperBySections(
+    sectionsOf(spec).map((s) => ({ key: s.key, groups: bySection.get(s.key)! })),
+    spec.layout ?? "interleave"
+  );
+  const ordered = placed.map((p) => p.cand);
   const byDiff = DIFFICULTIES.map((d) => `${d} ${ordered.filter((q) => q.difficulty === d).length}`).join(" · ");
   console.log(`\nTOTAL ${ordered.length} questions — ${byDiff}`);
+  if (sectionsOf(spec).length > 1) {
+    for (const s of sectionsOf(spec)) {
+      const n = placed.filter((p) => p.sectionKey === s.key).length;
+      console.log(`  section "${s.label}": ${n}`);
+    }
+  }
 
   const soft = flags.filter((f) => f.kind === "SOLN≠KEY" && ordered.some((o) => o.id === f.id));
   if (soft.length) {
@@ -394,17 +631,37 @@ async function main() {
     console.log("\nSOLN≠KEY: none among the selected questions.");
   }
 
+  // `--ids` prints the exact selection so it can be reviewed BEFORE the paper is
+  // written. It has to come first: addQuestion upserts on (paper_id, question_id),
+  // so re-running after adding an exclusion would add the replacement WITHOUT
+  // retracting the rejected pick. Selection is deterministic, so this preview is
+  // what --apply will write.
+  if (process.argv.includes("--ids")) {
+    console.log("\nselected ids, in printed order:");
+    let n = 0;
+    for (const p of placed) {
+      const ch = spec.chapters.find((c) => c.chapterId === p.cand.chapterId);
+      console.log(
+        `  ${String(++n).padStart(3)}. ${p.cand.id}  ${p.sectionKey.padEnd(8)} ` +
+          `${p.cand.difficulty.padEnd(8)} ${ch?.label ?? "?"}${ch?.fromExam ? ` [${ch.fromExam}]` : ""}`
+      );
+    }
+  }
+
   if (!apply) {
     console.log("\n[dry-run] pass --apply to create the paper. Nothing written.");
     return;
   }
   if (shortfallTotal > 0) throw new Error(`refusing to apply with ${shortfallTotal} unmet quota slot(s) — adjust the quotas.`);
 
-  const paperId = await findOrCreatePaper(client, spec, ordered.length);
+  const countBySection = new Map<string, number>();
+  for (const p of placed) countBySection.set(p.sectionKey, (countBySection.get(p.sectionKey) ?? 0) + 1);
+
+  const paperId = await findOrCreatePaper(client, spec, countBySection);
   console.log(`\npaper: ${paperId}`);
   let added = 0;
-  for (const q of ordered) {
-    await addQuestion(client, paperId, q.id, { sectionKey: spec.section.key, addedBy: CREATED_BY });
+  for (const p of placed) {
+    await addQuestion(client, paperId, p.cand.id, { sectionKey: p.sectionKey, addedBy: CREATED_BY });
     added++;
   }
   console.log(`added ${added} questions.\nReview at /dashboard/papers/${paperId}`);
