@@ -1,0 +1,973 @@
+{
+ "paper": "65/4/1",
+ "year": 2023,
+ "paperId": "2023-65-4-1",
+ "markingScheme": "out/2023-65-4-1/ms/p00.png … p24.png",
+ "rows": [
+  {
+   "hash": "a829277044f0917b3759a9222af59d4a61e2fca886ea7f4b2ac7f23f748aa47b",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Equality of Matrices",
+   "stem": "If \\( x\\begin{bmatrix} 1 \\\\ 2 \\end{bmatrix} + y\\begin{bmatrix} 2 \\\\ 5 \\end{bmatrix} = \\begin{bmatrix} 4 \\\\ 9 \\end{bmatrix} \\), then :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( x = 1,\\ y = 2 \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( x = 2,\\ y = 1 \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( x = 1,\\ y = -1 \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( x = 3,\\ y = 2 \\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Equating corresponding entries of the two column matrices gives \\( x + 2y = 4 \\) and \\( 2x + 5y = 9 \\). From the first, \\( x = 4 - 2y \\), and substituting into the second gives \\( 2(4 - 2y) + 5y = 9 \\), that is \\( 8 + y = 9 \\), so \\( y = 1 \\) and then \\( x = 4 - 2 = 2 \\). The values are \\( x = 2,\\ y = 1 \\)."
+  },
+  {
+   "hash": "ae751c9272a4270ac1cb379e3c5b46a2fae27165ce8623f8e5b6bd79d59440e6",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "The product \\( \\begin{bmatrix} a & b \\\\ -b & a \\end{bmatrix}\\begin{bmatrix} a & -b \\\\ b & a \\end{bmatrix} \\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( \\begin{bmatrix} a^2 + b^2 & 0 \\\\ 0 & a^2 + b^2 \\end{bmatrix} \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( \\begin{bmatrix} (a+b)^2 & 0 \\\\ (a+b)^2 & 0 \\end{bmatrix} \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( \\begin{bmatrix} a^2 + b^2 & 0 \\\\ a^2 + b^2 & 0 \\end{bmatrix} \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( \\begin{bmatrix} a & 0 \\\\ 0 & b \\end{bmatrix} \\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Multiply the two matrices entry by entry. The \\( (1,1) \\) entry is \\( a(a) + b(b) = a^2 + b^2 \\); the \\( (1,2) \\) entry is \\( a(-b) + b(a) = 0 \\); the \\( (2,1) \\) entry is \\( (-b)(a) + a(b) = 0 \\); and the \\( (2,2) \\) entry is \\( (-b)(-b) + a(a) = a^2 + b^2 \\). So the product is the scalar matrix \\( \\begin{bmatrix} a^2 + b^2 & 0 \\\\ 0 & a^2 + b^2 \\end{bmatrix} \\)."
+  },
+  {
+   "hash": "6c16c206ea153de99ccb76778b406aa15dab672ae5fdf21afd6bb1fd9b141ebb",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "If A is a square matrix and \\( A^2 = A \\), then \\( (I + A)^2 - 3A \\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "I"
+    },
+    {
+     "label": "B",
+     "text": "A"
+    },
+    {
+     "label": "C",
+     "text": "2A"
+    },
+    {
+     "label": "D",
+     "text": "3 I"
+    }
+   ],
+   "answer": "A",
+   "solution": "The identity matrix commutes with every square matrix, so \\( (I + A)^2 = I^2 + 2A + A^2 = I + 2A + A^2 \\). Using the given \\( A^2 = A \\), this becomes \\( I + 2A + A = I + 3A \\). Therefore \\( (I + A)^2 - 3A = I + 3A - 3A = I \\), so the expression equals I."
+  },
+  {
+   "hash": "144e992717083f7dae6f403c4c597415ec715913331829e38c03383925af7c24",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Transpose of a Matrix",
+   "stem": "If a matrix \\( A = [1 \\quad 2 \\quad 3] \\), then the matrix AA' (where A' is the transpose of A) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "14"
+    },
+    {
+     "label": "B",
+     "text": "\\( \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 3 \\end{bmatrix} \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( \\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 3 & 1 \\\\ 3 & 1 & 2 \\end{bmatrix} \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( \\begin{bmatrix} 14 \\end{bmatrix} \\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "\\( A \\) is of order \\( 1 \\times 3 \\), so \\( A' \\) is of order \\( 3 \\times 1 \\) and the product \\( AA' \\) is of order \\( 1 \\times 1 \\). Its single entry is \\( 1(1) + 2(2) + 3(3) = 1 + 4 + 9 = 14 \\). The product is therefore the \\( 1 \\times 1 \\) matrix \\( \\begin{bmatrix} 14 \\end{bmatrix} \\) — a matrix, not the scalar 14 — so the correct option is \\( \\begin{bmatrix} 14 \\end{bmatrix} \\)."
+  },
+  {
+   "hash": "2bf50f693926d7f1fc00b4c344f16927b84f406bc2330b3859e761569045fb2b",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Determinant and its Properties",
+   "stem": "The value of \\( \\begin{vmatrix} x+y & y+z & z+x \\\\ z & x & y \\\\ 1 & 1 & 1 \\end{vmatrix} \\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "0"
+    },
+    {
+     "label": "B",
+     "text": "1"
+    },
+    {
+     "label": "C",
+     "text": "\\( x + y + z \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( 2(x + y + z) \\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Apply the row operation \\( R_1 \\to R_1 + R_2 \\). Each entry of the new first row becomes \\( x + y + z \\), so that row is \\( (x+y+z) \\) times the row \\( \\begin{bmatrix} 1 & 1 & 1 \\end{bmatrix} \\), which is exactly the third row of the determinant. A determinant with two proportional rows is zero, so the value is 0."
+  },
+  {
+   "hash": "15a72e5fad6992445a4f9873acc38066d6d215affb0b71fbfc4a9245d0cc369c",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "The function \\( f(x) = |x| \\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "continuous and differentiable everywhere."
+    },
+    {
+     "label": "B",
+     "text": "continuous and differentiable nowhere."
+    },
+    {
+     "label": "C",
+     "text": "continuous everywhere, but differentiable everywhere except at \\( x = 0 \\)."
+    },
+    {
+     "label": "D",
+     "text": "continuous everywhere, but differentiable nowhere."
+    }
+   ],
+   "answer": "C",
+   "solution": "\\( f(x) = |x| \\) is continuous at every real number. At \\( x = 0 \\) the left hand derivative is \\( \\lim_{h \\to 0^{+}} \\frac{|-h| - 0}{-h} = \\lim_{h \\to 0^{+}} \\frac{h}{-h} = -1 \\), while the right hand derivative is \\( \\lim_{h \\to 0^{+}} \\frac{|h| - 0}{h} = 1 \\). These are unequal, so f is not differentiable at \\( x = 0 \\); everywhere else \\( f(x) \\) equals \\( x \\) or \\( -x \\) and is differentiable. So f is continuous everywhere, but differentiable everywhere except at \\( x = 0 \\)."
+  },
+  {
+   "hash": "f4daa19d58dbe8025a4c5b05d0212c8add3a6dd1f6ca46fa23f6c15e81a9c573",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "If \\( y = \\sin^2 (x^3) \\), then \\( \\dfrac{dy}{dx} \\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( 2 \\sin x^3 \\cos x^3 \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( 3x^3 \\sin x^3 \\cos x^3 \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( 6x^2 \\sin x^3 \\cos x^3 \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( 2x^2 \\sin^2 (x^3) \\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Apply the chain rule twice. \\( \\frac{dy}{dx} = 2\\sin(x^3)\\cdot\\frac{d}{dx}\\sin(x^3) = 2\\sin(x^3)\\cos(x^3)\\cdot\\frac{d}{dx}(x^3) = 2\\sin(x^3)\\cos(x^3)\\cdot 3x^2 \\), which is \\( 6x^2 \\sin(x^3)\\cos(x^3) \\)."
+  },
+  {
+   "hash": "a4e037556046a76391b512b37ac717421c7b0e95182232f7be9edc468e794a6a",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Integration as the Inverse of Differentiation",
+   "stem": "\\( \\displaystyle\\int e^{5 \\log x}\\, dx \\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( \\dfrac{x^5}{5} + C \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( \\dfrac{x^6}{6} + C \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( 5x^4 + C \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( 6x^5 + C \\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "For \\( x > 0 \\), \\( 5\\log x = \\log x^5 \\), so \\( e^{5\\log x} = e^{\\log x^5} = x^5 \\). Hence \\( \\int e^{5\\log x}\\,dx = \\int x^5\\,dx = \\frac{x^6}{6} + C \\)."
+  },
+  {
+   "hash": "3e3d6c440cfacf367b35ce7014173ae9b784cf11c9e6562c2ffc011827de77de",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals and the Fundamental Theorem",
+   "stem": "If \\( \\displaystyle\\int_0^a 3x^2\\, dx = 8 \\), then the value of 'a' is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "2"
+    },
+    {
+     "label": "B",
+     "text": "4"
+    },
+    {
+     "label": "C",
+     "text": "8"
+    },
+    {
+     "label": "D",
+     "text": "10"
+    }
+   ],
+   "answer": "A",
+   "solution": "\\( \\int_0^a 3x^2\\,dx = \\left[x^3\\right]_0^a = a^3 - 0 = a^3 \\). Setting \\( a^3 = 8 \\) gives \\( a = 2 \\)."
+  },
+  {
+   "hash": "7afe1f1f96c41be9a94e772302ca7e9a26a72f5ec319bcd2c6298d55ab981db6",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "The integrating factor for solving the differential equation \\( x\\dfrac{dy}{dx} - y = 2x^2 \\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( e^{-y} \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( e^{-x} \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( x \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( \\dfrac{1}{x} \\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Divide throughout by \\( x \\) to reach the standard linear form \\( \\frac{dy}{dx} + Py = Q \\): here \\( \\frac{dy}{dx} - \\frac{1}{x}y = 2x \\), so \\( P = -\\frac{1}{x} \\). The integrating factor is \\( e^{\\int P\\,dx} = e^{-\\int \\frac{dx}{x}} = e^{-\\log|x|} = \\frac{1}{x} \\)."
+  },
+  {
+   "hash": "48b870dc51b1d7083ed188359486fe5f6289c024a6f2743644a67f8461174f5d",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Order and Degree of a Differential Equation",
+   "stem": "The order and degree (if defined) of the differential equation, \\( \\left(\\dfrac{d^2y}{dx^2}\\right)^2 + \\left(\\dfrac{dy}{dx}\\right)^3 = x \\sin\\left(\\dfrac{dy}{dx}\\right) \\) respectively are :",
+   "options": [
+    {
+     "label": "A",
+     "text": "2, 2"
+    },
+    {
+     "label": "B",
+     "text": "1, 3"
+    },
+    {
+     "label": "C",
+     "text": "2, 3"
+    },
+    {
+     "label": "D",
+     "text": "2, degree not defined"
+    }
+   ],
+   "answer": "D",
+   "solution": "The highest order derivative appearing is \\( \\frac{d^2y}{dx^2} \\), so the order is 2. Degree is defined only when the equation is a polynomial in its derivatives, and here \\( \\frac{dy}{dx} \\) occurs inside \\( \\sin\\left(\\frac{dy}{dx}\\right) \\), which is not a polynomial expression in \\( \\frac{dy}{dx} \\). So the answer is 2, degree not defined."
+  },
+  {
+   "hash": "1d8e87073080e33c1fc689450d52c28654e58fcdb7c817884e29fb65e62b908f",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Types of Vectors",
+   "stem": "A unit vector along the vector \\( 4\\hat{i} - 3\\hat{k} \\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( \\dfrac{1}{7}(4\\hat{i} - 3\\hat{k}) \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( \\dfrac{1}{5}(4\\hat{i} - 3\\hat{k}) \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( \\dfrac{1}{\\sqrt{7}}(4\\hat{i} - 3\\hat{k}) \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( \\dfrac{1}{\\sqrt{5}}(4\\hat{i} - 3\\hat{k}) \\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "The vector \\( 4\\hat{i} - 3\\hat{k} \\) has no \\( \\hat{j} \\) component, so its magnitude is \\( \\sqrt{4^2 + 0^2 + (-3)^2} = \\sqrt{25} = 5 \\). A unit vector along it is the vector divided by its magnitude, namely \\( \\frac{1}{5}(4\\hat{i} - 3\\hat{k}) \\)."
+  },
+  {
+   "hash": "6e7a7d3bd42f26af5043c8d01b15e0f7698e562dbb9d96dff95cc0804e0f001b",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "If \\( \\theta \\) is the angle between two vectors \\( \\vec{a} \\) and \\( \\vec{b} \\), then \\( \\vec{a} \\cdot \\vec{b} \\ge 0 \\) only when :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( 0 < \\theta < \\dfrac{\\pi}{2} \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( 0 \\le \\theta \\le \\dfrac{\\pi}{2} \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( 0 < \\theta < \\pi \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( 0 \\le \\theta \\le \\pi \\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "By definition \\( \\vec{a} \\cdot \\vec{b} = |\\vec{a}||\\vec{b}|\\cos\\theta \\), and the two magnitudes are never negative, so the sign of the dot product is the sign of \\( \\cos\\theta \\). The angle between two vectors always satisfies \\( 0 \\le \\theta \\le \\pi \\), and on that interval \\( \\cos\\theta \\ge 0 \\) exactly when \\( 0 \\le \\theta \\le \\frac{\\pi}{2} \\). So the required condition is \\( 0 \\le \\theta \\le \\frac{\\pi}{2} \\)."
+  },
+  {
+   "hash": "f0e930ca8253e611f54c0406b8c7acb8e77334e00d4f40c408918abd3fcc7909",
+   "ref": "Q14",
+   "questionNumber": "14",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "Distance of the point (p, q, r) from y-axis is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( q \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( |q| \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( |q| + |r| \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( \\sqrt{p^2 + r^2} \\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "The foot of the perpendicular from \\( (p, q, r) \\) to the y-axis is the point \\( (0, q, 0) \\), since only the y-coordinate is retained. The required distance is therefore \\( \\sqrt{(p - 0)^2 + (q - q)^2 + (r - 0)^2} = \\sqrt{p^2 + r^2} \\)."
+  },
+  {
+   "hash": "d56d94552512aec107636b9e3d5bf6646894adc3243f0f2927470cd97144dbf1",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "The solution set of the inequation \\( 3x + 5y < 7 \\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "whole xy-plane except the points lying on the line \\( 3x + 5y = 7 \\)."
+    },
+    {
+     "label": "B",
+     "text": "whole xy-plane along with the points lying on the line \\( 3x + 5y = 7 \\)."
+    },
+    {
+     "label": "C",
+     "text": "open half plane containing the origin except the points of line \\( 3x + 5y = 7 \\)."
+    },
+    {
+     "label": "D",
+     "text": "open half plane not containing the origin."
+    }
+   ],
+   "answer": "C",
+   "solution": "The line \\( 3x + 5y = 7 \\) divides the plane into two half planes. Testing the origin, \\( 3(0) + 5(0) = 0 < 7 \\), so the origin satisfies the inequation and the solution set is the half plane on the origin's side of the line. Because the inequality is strict, points of the line itself do not satisfy it, so the half plane is open. Hence the solution set is the open half plane containing the origin, excluding the points of the line \\( 3x + 5y = 7 \\)."
+  },
+  {
+   "hash": "35ee10dd291ea57c4cd1501a555121ad10e5531f3f88ae22feea319ea226521c",
+   "ref": "Q16",
+   "questionNumber": "16",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Which of the following points satisfies both the inequations \\( 2x + y \\le 10 \\) and \\( x + 2y \\ge 8 \\) ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( (-2, 4) \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( (3, 2) \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( (-5, 6) \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( (4, 2) \\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Test each point in both inequations. For \\( (-2, 4) \\): \\( x + 2y = -2 + 8 = 6 \\), which is not \\( \\ge 8 \\). For \\( (3, 2) \\): \\( x + 2y = 3 + 4 = 7 \\), again not \\( \\ge 8 \\). For \\( (-5, 6) \\): \\( x + 2y = -5 + 12 = 7 \\), not \\( \\ge 8 \\). For \\( (4, 2) \\): \\( 2x + y = 8 + 2 = 10 \\le 10 \\) and \\( x + 2y = 4 + 4 = 8 \\ge 8 \\), so both hold. The point is \\( (4, 2) \\)."
+  },
+  {
+   "hash": "6d9b73a57c600f72641d64f75d88b41becdf3e06bc8d4424dd3a794cb6a6b205",
+   "ref": "Q17",
+   "questionNumber": "17",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "If the direction cosines of a line are \\( \\left(\\dfrac{1}{a}, \\dfrac{1}{a}, \\dfrac{1}{a}\\right) \\), then :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( 0 < a < 1 \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( a > 2 \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( a > 0 \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( a = \\pm\\sqrt{3} \\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Direction cosines always satisfy \\( l^2 + m^2 + n^2 = 1 \\). Here that gives \\( \\frac{1}{a^2} + \\frac{1}{a^2} + \\frac{1}{a^2} = 1 \\), i.e. \\( \\frac{3}{a^2} = 1 \\), so \\( a^2 = 3 \\) and \\( a = \\pm\\sqrt{3} \\)."
+  },
+  {
+   "hash": "5ea380cb8451a4b1d1d811cf99f9e2875a8201ad6a6157002ed01f3748531d43",
+   "ref": "Q18",
+   "questionNumber": "18",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Independent Events",
+   "stem": "The probability that A speaks the truth is \\( \\dfrac{4}{5} \\) and that of B speaking the truth is \\( \\dfrac{3}{4} \\). The probability that they contradict each other in stating the same fact is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( \\dfrac{7}{20} \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( \\dfrac{1}{5} \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( \\dfrac{3}{20} \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( \\dfrac{4}{5} \\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "A and B contradict each other when exactly one of them speaks the truth. Their statements are independent, and \\( P(A \\text{ speaks the truth}) = \\frac{4}{5} \\), \\( P(B \\text{ speaks the truth}) = \\frac{3}{4} \\), so the probabilities of speaking falsely are \\( \\frac{1}{5} \\) and \\( \\frac{1}{4} \\). Hence the required probability is \\( \\frac{4}{5}\\times\\frac{1}{4} + \\frac{1}{5}\\times\\frac{3}{4} = \\frac{4}{20} + \\frac{3}{20} = \\frac{7}{20} \\)."
+  },
+  {
+   "hash": "2de3da692da6736689973efb9a9bacb872e42e33b27a1aa873f0f78c28ce42a8",
+   "ref": "Q19",
+   "questionNumber": "19",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "Assertion (A) : All trigonometric functions have their inverses over their respective domains.\n\nReason (R) : The inverse of \\( \\tan^{-1} x \\) exists for some \\( x \\in \\mathbb{R} \\).",
+   "context": "Questions number 19 and 20 are Assertion and Reason based questions carrying 1 mark each. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (a), (b), (c) and (d) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true and Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false and Reason (R) is true."
+    }
+   ],
+   "answer": "D",
+   "solution": "The Assertion is false. A trigonometric function is not one-one on its whole domain — for instance \\( \\sin x \\) takes the value 0 at every integer multiple of \\( \\pi \\) — so it has no inverse there; an inverse exists only after the domain is restricted to a principal value branch. The Reason is true: \\( \\tan^{-1} \\) is a bijection from \\( \\mathbb{R} \\) onto \\( \\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right) \\), so it is itself invertible. Hence Assertion (A) is false and Reason (R) is true."
+  },
+  {
+   "hash": "28c0aa0725204c850bfe94cbbb43beaad9ffab723d0157bbc5f14ba66ba2558f",
+   "ref": "Q20",
+   "questionNumber": "20",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Angle Between Two Lines",
+   "stem": "Assertion (A) : The lines \\( \\vec{r} = \\vec{a}_1 + \\lambda \\vec{b}_1 \\) and \\( \\vec{r} = \\vec{a}_2 + \\mu \\vec{b}_2 \\) are perpendicular, when \\( \\vec{b}_1 \\cdot \\vec{b}_2 = 0 \\).\n\nReason (R) : The angle \\( \\theta \\) between the lines \\( \\vec{r} = \\vec{a}_1 + \\lambda \\vec{b}_1 \\) and \\( \\vec{r} = \\vec{a}_2 + \\mu \\vec{b}_2 \\) is given by \\( \\cos\\theta = \\dfrac{\\vec{b}_1 \\cdot \\vec{b}_2}{|\\vec{b}_1||\\vec{b}_2|} \\).",
+   "context": "Questions number 19 and 20 are Assertion and Reason based questions carrying 1 mark each. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (a), (b), (c) and (d) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true and Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false and Reason (R) is true."
+    }
+   ],
+   "answer": "A",
+   "solution": "The Reason is the standard formula for the angle between two lines with direction vectors \\( \\vec{b}_1 \\) and \\( \\vec{b}_2 \\), and it is true. The Assertion is true as well, and it follows directly from the Reason: the lines are perpendicular when \\( \\theta = \\frac{\\pi}{2} \\), that is when \\( \\cos\\theta = 0 \\), and since \\( |\\vec{b}_1||\\vec{b}_2| \\ne 0 \\) the quotient vanishes exactly when \\( \\vec{b}_1 \\cdot \\vec{b}_2 = 0 \\). So both statements are true and Reason (R) is the correct explanation of Assertion (A)."
+  },
+  {
+   "hash": "171066f1ac43a4a35b104e35e6399c72734ab078ef986d0e6e0ed5c9e3607619",
+   "ref": "Q21a",
+   "questionNumber": "21 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "Find the domain of \\( y = \\sin^{-1}(x^2 - 4) \\).",
+   "solution": "\\( \\sin^{-1} t \\) is defined only for \\( -1 \\le t \\le 1 \\), so the domain is the set of \\( x \\) with \\( -1 \\le x^2 - 4 \\le 1 \\). Adding 4 throughout gives \\( 3 \\le x^2 \\le 5 \\), which is two conditions that must hold together.\nFrom \\( x^2 \\ge 3 \\): \\( x \\le -\\sqrt{3} \\) or \\( x \\ge \\sqrt{3} \\). From \\( x^2 \\le 5 \\): \\( -\\sqrt{5} \\le x \\le \\sqrt{5} \\).\nIntersecting the two sets gives the domain \\( \\left[-\\sqrt{5},\\, -\\sqrt{3}\\right] \\cup \\left[\\sqrt{3},\\, \\sqrt{5}\\right] \\)."
+  },
+  {
+   "hash": "48fc9a5a616f980822bd8f5cdaf3adb87e62a33a7a3b8dca1320fbb513d4640e",
+   "ref": "Q21b",
+   "questionNumber": "21 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Evaluating Inverse Trigonometric Expressions",
+   "stem": "Evaluate :\n\n\\( \\cos^{-1}\\left[\\cos\\left(-\\dfrac{7\\pi}{3}\\right)\\right] \\)",
+   "solution": "Cosine is an even function, so \\( \\cos\\left(-\\frac{7\\pi}{3}\\right) = \\cos\\frac{7\\pi}{3} \\). Since \\( \\frac{7\\pi}{3} = 2\\pi + \\frac{\\pi}{3} \\) and cosine has period \\( 2\\pi \\), this equals \\( \\cos\\frac{\\pi}{3} \\). Now \\( \\frac{\\pi}{3} \\) lies in \\( [0, \\pi] \\), which is the principal value branch of \\( \\cos^{-1} \\), so \\( \\cos^{-1}\\left(\\cos\\frac{\\pi}{3}\\right) = \\frac{\\pi}{3} \\). Hence the value of the expression is \\( \\frac{\\pi}{3} \\)."
+  },
+  {
+   "hash": "a63960c478b061c425555ed50970a706ec4f72047f07c925b058959783dcde3c",
+   "ref": "Q22",
+   "questionNumber": "22",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "If \\( (x^2 + y^2)^2 = xy \\), then find \\( \\dfrac{dy}{dx} \\).",
+   "solution": "Differentiate both sides with respect to \\( x \\), using the chain rule on the left and the product rule on the right:\n\\( 2(x^2 + y^2)\\left(2x + 2y\\frac{dy}{dx}\\right) = x\\frac{dy}{dx} + y \\).\nExpanding the left side, \\( 4x(x^2 + y^2) + 4y(x^2 + y^2)\\frac{dy}{dx} = x\\frac{dy}{dx} + y \\).\nCollecting the terms in \\( \\frac{dy}{dx} \\) on one side, \\( \\left[4y(x^2 + y^2) - x\\right]\\frac{dy}{dx} = y - 4x(x^2 + y^2) \\), so\n\\( \\frac{dy}{dx} = \\frac{y - 4x(x^2 + y^2)}{4y(x^2 + y^2) - x} \\)."
+  },
+  {
+   "hash": "2dfc4adff7c530679c25133bc9866c2022a66db4e589db2ed273f6dfa0546434",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Find the maximum and minimum values of the function given by \\( f(x) = 5 + \\sin 2x \\).",
+   "solution": "For every real \\( x \\), \\( -1 \\le \\sin 2x \\le 1 \\). Adding 5 throughout gives \\( 4 \\le 5 + \\sin 2x \\le 6 \\), that is \\( 4 \\le f(x) \\le 6 \\). Both bounds are actually attained: \\( \\sin 2x = 1 \\) at \\( x = \\frac{\\pi}{4} \\), giving \\( f = 6 \\), and \\( \\sin 2x = -1 \\) at \\( x = \\frac{3\\pi}{4} \\), giving \\( f = 4 \\). Hence the maximum value is 6 and the minimum value is 4."
+  },
+  {
+   "hash": "0dc14976d399df4dd28873e84dc30eae8ef4f8503ab2c29e0101c76e98fc72a5",
+   "ref": "Q24",
+   "questionNumber": "24",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "If the projection of the vector \\( \\hat{i} + \\hat{j} + \\hat{k} \\) on the vector \\( p\\hat{i} + \\hat{j} - 2\\hat{k} \\) is \\( \\dfrac{1}{3} \\), then find the value(s) of p.",
+   "solution": "[CBSE marking scheme: the printed solution squares the projection equation and then reports both roots, \\( p = 2 \\) and \\( p = \\frac{1}{4} \\), without testing them in the original equation. Substituting \\( p = \\frac{1}{4} \\) gives a projection of \\( -\\frac{1}{3} \\), not \\( \\frac{1}{3} \\), so it is an extraneous root introduced by the squaring; only \\( p = 2 \\) satisfies the condition as printed.] The projection of \\( \\vec{a} = \\hat{i} + \\hat{j} + \\hat{k} \\) on \\( \\vec{b} = p\\hat{i} + \\hat{j} - 2\\hat{k} \\) is \\( \\frac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|} \\). Here \\( \\vec{a}\\cdot\\vec{b} = p + 1 - 2 = p - 1 \\) and \\( |\\vec{b}| = \\sqrt{p^2 + 1 + 4} = \\sqrt{p^2 + 5} \\), so the given condition is \\( \\frac{p - 1}{\\sqrt{p^2 + 5}} = \\frac{1}{3} \\).\nSquaring both sides, \\( 9(p-1)^2 = p^2 + 5 \\), i.e. \\( 9p^2 - 18p + 9 = p^2 + 5 \\), which simplifies to \\( 8p^2 - 18p + 4 = 0 \\), or \\( 4p^2 - 9p + 2 = 0 \\). Factorising, \\( (4p - 1)(p - 2) = 0 \\), so \\( p = 2 \\) or \\( p = \\frac{1}{4} \\).\nSquaring can create roots that do not satisfy the original equation, so check both. For \\( p = 2 \\): \\( \\frac{2 - 1}{\\sqrt{9}} = \\frac{1}{3} \\), which is correct. For \\( p = \\frac{1}{4} \\): \\( \\vec{a}\\cdot\\vec{b} = \\frac{1}{4} + 1 - 2 = -\\frac{3}{4} \\) and \\( |\\vec{b}| = \\sqrt{\\frac{1}{16} + 5} = \\frac{9}{4} \\), giving a projection of \\( -\\frac{1}{3} \\). The required projection is positive, so this value is rejected and \\( p = 2 \\). (Read instead as requiring a projection of magnitude \\( \\frac{1}{3} \\), both values would qualify, which is presumably why the scheme lists both.)"
+  },
+  {
+   "hash": "195fa5f25128f62f26a7c35b5b4e22c2a3b61ed050d771dc06c3a38a323f3d19",
+   "ref": "Q25a",
+   "questionNumber": "25 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the vector equation of the line passing through the point (2, 1, 3) and perpendicular to both the lines\n\n\\( \\dfrac{x-1}{1} = \\dfrac{y-2}{2} = \\dfrac{z-3}{3} \\); \\( \\dfrac{x}{-3} = \\dfrac{y}{2} = \\dfrac{z}{5} \\).",
+   "solution": "Let the required line have direction \\( a\\hat{i} + b\\hat{j} + c\\hat{k} \\). It is perpendicular to both given lines, whose directions are \\( \\hat{i} + 2\\hat{j} + 3\\hat{k} \\) and \\( -3\\hat{i} + 2\\hat{j} + 5\\hat{k} \\), so the two dot products vanish:\n\\( a + 2b + 3c = 0 \\) and \\( -3a + 2b + 5c = 0 \\).\nSolving by cross multiplication, \\( \\frac{a}{2(5) - 3(2)} = \\frac{b}{3(-3) - 1(5)} = \\frac{c}{1(2) - 2(-3)} \\), that is \\( \\frac{a}{4} = \\frac{b}{-14} = \\frac{c}{8} \\). Taking the common value as \\( k \\) and dividing by 2, a direction vector is \\( 2\\hat{i} - 7\\hat{j} + 4\\hat{k} \\).\nThe line passes through \\( (2, 1, 3) \\), so its vector equation is \\( \\vec{r} = \\left(2\\hat{i} + \\hat{j} + 3\\hat{k}\\right) + \\lambda\\left(2\\hat{i} - 7\\hat{j} + 4\\hat{k}\\right) \\)."
+  },
+  {
+   "hash": "7bce46c3833c6b0c74e8bbba3bde070d8cd0b1457292cb419dc690240182e372",
+   "ref": "Q25b",
+   "questionNumber": "25 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "The equations of a line are \\( 5x - 3 = 15y + 7 = 3 - 10z \\). Write the direction cosines of the line and find the coordinates of a point through which it passes.",
+   "solution": "Write each of the three expressions as a constant times (variable minus a number): \\( 5x - 3 = 5\\left(x - \\frac{3}{5}\\right) \\), \\( 15y + 7 = 15\\left(y + \\frac{7}{15}\\right) \\) and \\( 3 - 10z = -10\\left(z - \\frac{3}{10}\\right) \\). Equating these three and dividing through, the line in symmetric form is\n\\( \\frac{x - \\frac{3}{5}}{\\frac{1}{5}} = \\frac{y + \\frac{7}{15}}{\\frac{1}{15}} = \\frac{z - \\frac{3}{10}}{-\\frac{1}{10}} \\).\nSo direction ratios are \\( \\left(\\frac{1}{5},\\, \\frac{1}{15},\\, -\\frac{1}{10}\\right) \\), and multiplying by 30 gives the simpler set \\( (6, 2, -3) \\). Since \\( \\sqrt{6^2 + 2^2 + (-3)^2} = \\sqrt{49} = 7 \\), the direction cosines are \\( \\left(\\frac{6}{7},\\, \\frac{2}{7},\\, -\\frac{3}{7}\\right) \\) — or their negatives, if the opposite sense along the line is taken.\nReading the constants off the symmetric form, the line passes through the point \\( \\left(\\frac{3}{5},\\, -\\frac{7}{15},\\, \\frac{3}{10}\\right) \\)."
+  },
+  {
+   "hash": "618d7676de055fc9bb7f9d64e89482a16753367c328700f4df6f8921cef650c9",
+   "ref": "Q26",
+   "questionNumber": "26",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Partial Fractions",
+   "stem": "Find :\n\n\\( \\displaystyle\\int \\dfrac{x^2 + x + 1}{(x+1)^2 (x+2)}\\, dx \\)",
+   "solution": "The denominator has a repeated linear factor, so write\n\\( \\frac{x^2 + x + 1}{(x+1)^2(x+2)} = \\frac{A}{x+1} + \\frac{B}{(x+1)^2} + \\frac{C}{x+2} \\), which gives \\( x^2 + x + 1 = A(x+1)(x+2) + B(x+2) + C(x+1)^2 \\).\nPutting \\( x = -1 \\) gives \\( 1 = B \\); putting \\( x = -2 \\) gives \\( 3 = C \\); and comparing the coefficients of \\( x^2 \\) gives \\( 1 = A + C \\), so \\( A = -2 \\).\nHence \\( \\int \\frac{x^2 + x + 1}{(x+1)^2(x+2)}\\,dx = -2\\int\\frac{dx}{x+1} + \\int\\frac{dx}{(x+1)^2} + 3\\int\\frac{dx}{x+2} = -2\\log|x+1| - \\frac{1}{x+1} + 3\\log|x+2| + C \\)."
+  },
+  {
+   "hash": "491082914088ada40c015f0f45422618288d02c61a9508130025f5920e10ba3d",
+   "ref": "Q27a",
+   "questionNumber": "27 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integrals of Special Forms",
+   "stem": "Evaluate :\n\n\\( \\displaystyle\\int_{\\pi/4}^{\\pi/2} e^{2x}\\left(\\dfrac{1 - \\sin 2x}{1 - \\cos 2x}\\right) dx \\)",
+   "solution": "Put \\( 2x = t \\), so \\( 2\\,dx = dt \\); when \\( x = \\frac{\\pi}{4} \\), \\( t = \\frac{\\pi}{2} \\), and when \\( x = \\frac{\\pi}{2} \\), \\( t = \\pi \\). Then \\( I = \\frac{1}{2}\\int_{\\pi/2}^{\\pi} e^{t}\\left(\\frac{1 - \\sin t}{1 - \\cos t}\\right)dt \\).\nUsing \\( 1 - \\cos t = 2\\sin^2\\frac{t}{2} \\) and \\( \\sin t = 2\\sin\\frac{t}{2}\\cos\\frac{t}{2} \\),\n\\( \\frac{1 - \\sin t}{1 - \\cos t} = \\frac{1 - 2\\sin\\frac{t}{2}\\cos\\frac{t}{2}}{2\\sin^2\\frac{t}{2}} = \\frac{1}{2}\\operatorname{cosec}^2\\frac{t}{2} - \\cot\\frac{t}{2} \\).\nNow take \\( g(t) = -\\cot\\frac{t}{2} \\); then \\( g'(t) = \\frac{1}{2}\\operatorname{cosec}^2\\frac{t}{2} \\), so the bracket is exactly \\( g(t) + g'(t) \\), and \\( \\int e^{t}\\left[g(t) + g'(t)\\right]dt = e^{t}g(t) \\). Hence\n\\( I = \\frac{1}{2}\\left[-e^{t}\\cot\\frac{t}{2}\\right]_{\\pi/2}^{\\pi} \\).\nAt \\( t = \\pi \\), \\( \\cot\\frac{\\pi}{2} = 0 \\); at \\( t = \\frac{\\pi}{2} \\), \\( \\cot\\frac{\\pi}{4} = 1 \\). So \\( I = \\frac{1}{2}\\left[0 - \\left(-e^{\\pi/2}\\right)\\right] = \\frac{1}{2}e^{\\pi/2} \\)."
+  },
+  {
+   "hash": "dc4a1b706c8570ae73c458670624bd3195354951677f33a40cee6a2acd1879c5",
+   "ref": "Q27b",
+   "questionNumber": "27 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "Evaluate :\n\n\\( \\displaystyle\\int_{-2}^{2} \\dfrac{x^2}{1 + 5^x}\\, dx \\)",
+   "solution": "Let \\( I = \\int_{-2}^{2}\\frac{x^2}{1 + 5^{x}}\\,dx \\). Using the property \\( \\int_a^b f(x)\\,dx = \\int_a^b f(a + b - x)\\,dx \\) with \\( a + b = 0 \\),\n\\( I = \\int_{-2}^{2}\\frac{x^2}{1 + 5^{-x}}\\,dx = \\int_{-2}^{2}\\frac{x^2\\,5^{x}}{5^{x} + 1}\\,dx \\).\nAdding this to the original expression,\n\\( 2I = \\int_{-2}^{2}\\frac{x^2\\left(1 + 5^{x}\\right)}{1 + 5^{x}}\\,dx = \\int_{-2}^{2}x^2\\,dx = \\left[\\frac{x^3}{3}\\right]_{-2}^{2} = \\frac{8}{3} + \\frac{8}{3} = \\frac{16}{3} \\).\nHence \\( I = \\frac{8}{3} \\)."
+  },
+  {
+   "hash": "7dadd924cc37e43d76f74664fc5b0ae52c207e511dbd34576eeaf0cf503271a4",
+   "ref": "Q28a",
+   "questionNumber": "28 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integrals of Some Particular Functions",
+   "stem": "Find :\n\n\\( \\displaystyle\\int \\dfrac{e^x}{\\sqrt{5 - 4e^x - e^{2x}}}\\, dx \\)",
+   "solution": "Put \\( e^{x} = t \\), so that \\( e^{x}\\,dx = dt \\) and \\( e^{2x} = t^2 \\). The integral becomes \\( I = \\int\\frac{dt}{\\sqrt{5 - 4t - t^2}} \\).\nComplete the square in the radicand: \\( 5 - 4t - t^2 = 5 - \\left(t^2 + 4t\\right) = 5 + 4 - (t + 2)^2 = 3^2 - (t + 2)^2 \\). So\n\\( I = \\int\\frac{dt}{\\sqrt{3^2 - (t + 2)^2}} = \\sin^{-1}\\left(\\frac{t + 2}{3}\\right) + C \\).\nRestoring \\( t = e^{x} \\), the integral is \\( \\sin^{-1}\\left(\\frac{e^{x} + 2}{3}\\right) + C \\)."
+  },
+  {
+   "hash": "8cfdcf8edd711a5aa7198794ebb8b06822683f447ed1f09c4ccc46b31f4742b5",
+   "ref": "Q28b",
+   "questionNumber": "28 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals by Substitution",
+   "stem": "Evaluate :\n\n\\( \\displaystyle\\int_0^{\\pi/2} \\sqrt{\\sin x}\\, \\cos^5 x\\, dx \\)",
+   "solution": "[CBSE marking scheme: the printed solution states the substitution as \\( \\sin x = t^2 \\), but the line that immediately follows it, \\( \\int_0^1 \\sqrt{t}\\,(1 - t^2)^2\\,dt \\), is the one produced by \\( \\sin x = t \\). The stated substitution does not yield the printed next line; everything from that line onwards, and the final value, are correct.] Split off one factor of \\( \\cos x \\) and write the rest in terms of \\( \\sin x \\): \\( \\cos^5 x = \\left(\\cos^2 x\\right)^2\\cos x = \\left(1 - \\sin^2 x\\right)^2\\cos x \\), so \\( I = \\int_0^{\\pi/2}\\sqrt{\\sin x}\\left(1 - \\sin^2 x\\right)^2\\cos x\\,dx \\).\nPut \\( \\sin x = t \\), so \\( \\cos x\\,dx = dt \\); when \\( x = 0 \\), \\( t = 0 \\), and when \\( x = \\frac{\\pi}{2} \\), \\( t = 1 \\). Then\n\\( I = \\int_0^1 \\sqrt{t}\\left(1 - t^2\\right)^2 dt = \\int_0^1\\left(t^{1/2} - 2t^{5/2} + t^{9/2}\\right)dt = \\left[\\frac{2}{3}t^{3/2} - \\frac{4}{7}t^{7/2} + \\frac{2}{11}t^{11/2}\\right]_0^1 = \\frac{2}{3} - \\frac{4}{7} + \\frac{2}{11} \\).\nOver the common denominator 231 this is \\( \\frac{154 - 132 + 42}{231} = \\frac{64}{231} \\)."
+  },
+  {
+   "hash": "25929be12ad64b36f3712635d92afc425e730b377f8b755e165f035fd3d12577",
+   "ref": "Q29a",
+   "questionNumber": "29 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Find the particular solution of the differential equation \\( \\dfrac{dy}{dx} = \\dfrac{x + y}{x} \\), \\( y(1) = 0 \\).",
+   "solution": "Since \\( \\frac{dy}{dx} = \\frac{x + y}{x} = 1 + \\frac{y}{x} \\) depends only on \\( \\frac{y}{x} \\), the equation is homogeneous. Put \\( y = vx \\), so \\( \\frac{dy}{dx} = v + x\\frac{dv}{dx} \\), and the equation becomes \\( v + x\\frac{dv}{dx} = 1 + v \\), i.e. \\( x\\frac{dv}{dx} = 1 \\), so \\( dv = \\frac{dx}{x} \\).\nIntegrating both sides gives \\( v = \\log|x| + c \\), and restoring \\( v = \\frac{y}{x} \\) gives the general solution \\( y = x\\log|x| + cx \\).\nApplying \\( y(1) = 0 \\): \\( 0 = 1\\cdot\\log 1 + c = c \\), so \\( c = 0 \\). The particular solution is \\( y = x\\log|x| \\)."
+  },
+  {
+   "hash": "a00fa0e32be3814642b135fc1a1be5c789822582fe436b390058b753b52a11aa",
+   "ref": "Q29b",
+   "questionNumber": "29 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Variables Separable",
+   "stem": "Find the general solution of the differential equation \\( e^x \\tan y\\, dx + (1 - e^x)\\sec^2 y\\, dy = 0 \\).",
+   "solution": "The variables separate. From \\( e^{x}\\tan y\\,dx + \\left(1 - e^{x}\\right)\\sec^2 y\\,dy = 0 \\) we get \\( \\frac{\\sec^2 y}{\\tan y}\\,dy = -\\frac{e^{x}}{1 - e^{x}}\\,dx \\).\nOn the left the numerator is the derivative of \\( \\tan y \\), so that integral is \\( \\log|\\tan y| \\). On the right, put \\( u = 1 - e^{x} \\), so \\( du = -e^{x}\\,dx \\) and the integral becomes \\( \\int\\frac{du}{u} = \\log|1 - e^{x}| \\).\nHence \\( \\log|\\tan y| = \\log|1 - e^{x}| + \\log C \\), and the general solution is \\( \\tan y = C\\left(1 - e^{x}\\right) \\)."
+  },
+  {
+   "hash": "6ecaa021bc998c6af65fc45be70b734cd7941cf6e7754343171f9a299e2329fa",
+   "ref": "Q30",
+   "questionNumber": "30",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following linear programming problem graphically :\n\nMinimise : \\( z = -3x + 4y \\)\n\nsubject to the constraints\n\n\\( x + 2y \\le 8 \\),\n\n\\( 3x + 2y \\le 12 \\),\n\n\\( x, y \\ge 0 \\).",
+   "solution": "Draw the feasible region for \\( x + 2y \\le 8 \\), \\( 3x + 2y \\le 12 \\), \\( x \\ge 0 \\), \\( y \\ge 0 \\). The line \\( x + 2y = 8 \\) meets the axes at \\( (8, 0) \\) and \\( (0, 4) \\); the line \\( 3x + 2y = 12 \\) meets them at \\( (4, 0) \\) and \\( (0, 6) \\). Subtracting the first equation from the second gives \\( 2x = 4 \\), so the two lines meet at \\( (2, 3) \\). The region is bounded, with corner points \\( O(0, 0) \\), \\( B(0, 4) \\), \\( E(2, 3) \\) and \\( D(4, 0) \\).\nFor a bounded feasible region a linear objective attains its extreme values at corner points, so evaluate \\( z = -3x + 4y \\) at each: at \\( (0, 0) \\), \\( z = 0 \\); at \\( (0, 4) \\), \\( z = 16 \\); at \\( (2, 3) \\), \\( z = -6 + 12 = 6 \\); at \\( (4, 0) \\), \\( z = -12 \\).\nThe smallest of these values is \\( -12 \\), so the minimum value of z is \\( -12 \\), attained at the point \\( (4, 0) \\)."
+  },
+  {
+   "hash": "89b2d0dec8599204670b0d59c28d722bf9149a5672f515022badb57811970fe0",
+   "ref": "Q31",
+   "questionNumber": "31",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "From a lot of 30 bulbs which include 6 defective bulbs, a sample of 2 bulbs is drawn at random one by one with replacement. Find the probability distribution of the number of defective bulbs and hence find the mean number of defective bulbs.",
+   "solution": "Because the two bulbs are drawn one by one with replacement, the draws are independent and the probability of a defective bulb is the same each time: \\( p = \\frac{6}{30} = \\frac{1}{5} \\), so the probability of a non-defective bulb is \\( \\frac{4}{5} \\).\nLet X denote the number of defective bulbs in the sample of 2, so X takes the values 0, 1 and 2. Then \\( P(X = 0) = \\frac{4}{5}\\times\\frac{4}{5} = \\frac{16}{25} \\); \\( P(X = 1) = 2\\left(\\frac{4}{5}\\times\\frac{1}{5}\\right) = \\frac{8}{25} \\), the factor 2 covering the two orders in which one defective can occur; and \\( P(X = 2) = \\frac{1}{5}\\times\\frac{1}{5} = \\frac{1}{25} \\). These add to 1, as they must, so the probability distribution of X is \\( P(X = 0) = \\frac{16}{25} \\), \\( P(X = 1) = \\frac{8}{25} \\), \\( P(X = 2) = \\frac{1}{25} \\).\nThe mean is \\( \\sum x\\,P(X = x) = 0\\times\\frac{16}{25} + 1\\times\\frac{8}{25} + 2\\times\\frac{1}{25} = \\frac{10}{25} = \\frac{2}{5} \\). (As a check, for two independent trials the mean is \\( np = 2\\times\\frac{1}{5} = \\frac{2}{5} \\).)"
+  },
+  {
+   "hash": "a26b16ead3386b5863582c64527cec5e1a0cfe6ca79e97bcb3e7c117e4321708",
+   "ref": "Q32",
+   "questionNumber": "32",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Solving System of Linear Equations",
+   "stem": "Find the inverse of the matrix \\( A = \\begin{bmatrix} 1 & -1 & 2 \\\\ 0 & 2 & -3 \\\\ 3 & -2 & 4 \\end{bmatrix} \\). Using the inverse, \\( A^{-1} \\), solve the system of linear equations\n\n\\( x - y + 2z = 1 \\); \\( 2y - 3z = 1 \\); \\( 3x - 2y + 4z = 3 \\).",
+   "solution": "Expanding along the first row, \\( |A| = 1\\left(2(4) - (-3)(-2)\\right) - (-1)\\left(0(4) - (-3)(3)\\right) + 2\\left(0(-2) - 2(3)\\right) = 1(8 - 6) + 1(0 + 9) + 2(0 - 6) = 2 + 9 - 12 = -1 \\). Since \\( |A| = -1 \\ne 0 \\), A is invertible.\nThe cofactors are \\( A_{11} = 2 \\), \\( A_{12} = -9 \\), \\( A_{13} = -6 \\), \\( A_{21} = 0 \\), \\( A_{22} = -2 \\), \\( A_{23} = -1 \\), \\( A_{31} = -1 \\), \\( A_{32} = 3 \\), \\( A_{33} = 2 \\). The adjoint is the transpose of the matrix of cofactors, so \\( \\operatorname{adj} A = \\begin{bmatrix} 2 & 0 & -1 \\\\ -9 & -2 & 3 \\\\ -6 & -1 & 2 \\end{bmatrix} \\), and therefore\n\\( A^{-1} = \\frac{1}{|A|}\\operatorname{adj} A = \\frac{1}{-1}\\begin{bmatrix} 2 & 0 & -1 \\\\ -9 & -2 & 3 \\\\ -6 & -1 & 2 \\end{bmatrix} = \\begin{bmatrix} -2 & 0 & 1 \\\\ 9 & 2 & -3 \\\\ 6 & 1 & -2 \\end{bmatrix} \\).\nThe given system has exactly A as its coefficient matrix, so writing it as \\( AX = B \\) with \\( X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} \\) and \\( B = \\begin{bmatrix} 1 \\\\ 1 \\\\ 3 \\end{bmatrix} \\), the solution is \\( X = A^{-1}B \\):\n\\( \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\begin{bmatrix} -2 & 0 & 1 \\\\ 9 & 2 & -3 \\\\ 6 & 1 & -2 \\end{bmatrix}\\begin{bmatrix} 1 \\\\ 1 \\\\ 3 \\end{bmatrix} = \\begin{bmatrix} -2 + 0 + 3 \\\\ 9 + 2 - 9 \\\\ 6 + 1 - 6 \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 2 \\\\ 1 \\end{bmatrix} \\).\nHence \\( x = 1 \\), \\( y = 2 \\), \\( z = 1 \\). Substituting back: \\( 1 - 2 + 2 = 1 \\), \\( 4 - 3 = 1 \\) and \\( 3 - 4 + 4 = 3 \\), so all three equations are satisfied."
+  },
+  {
+   "hash": "ee55e3ae176b9888229fed94791df7a949207c5d04c0d8a1a9d00c42c5bf36e3",
+   "ref": "Q33",
+   "questionNumber": "33",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Under Simple Curves",
+   "stem": "Using integration, find the area of the region bounded by the parabola \\( y^2 = 4ax \\) and its latus rectum.",
+   "solution": "Take \\( a > 0 \\). The parabola \\( y^2 = 4ax \\) has its vertex at the origin and focus at \\( (a, 0) \\), so its latus rectum is the line \\( x = a \\). The region required is bounded on the left by the arc of the parabola and on the right by that line.\nThe parabola is symmetric about the x-axis, so the area is twice the area of the part lying above the axis. There \\( y = 2\\sqrt{ax} \\), and x runs from 0 to a, so\n\\( \\text{Area} = 2\\int_0^a 2\\sqrt{ax}\\,dx = 4\\sqrt{a}\\int_0^a\\sqrt{x}\\,dx = 4\\sqrt{a}\\left[\\frac{2x^{3/2}}{3}\\right]_0^a = 4\\sqrt{a}\\cdot\\frac{2a^{3/2}}{3} = \\frac{8}{3}\\,a\\sqrt{a}\\sqrt{a} = \\frac{8a^2}{3} \\).\nSo the area of the region bounded by the parabola and its latus rectum is \\( \\frac{8a^2}{3} \\) square units."
+  },
+  {
+   "hash": "fb10515e2c09c36f945540d46478f051dc1e1514ab86f5874d4e1165f4378b94",
+   "ref": "Q34a",
+   "questionNumber": "34 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Equivalence Relations and Classes",
+   "stem": "If N denotes the set of all natural numbers and R is the relation on \\( N \\times N \\) defined by (a, b) R (c, d), if \\( ad(b + c) = bc(a + d) \\). Show that R is an equivalence relation.",
+   "solution": "All of a, b, c, d, e, f are natural numbers, so none of them is zero and we may divide by them freely.\nReflexive: for any \\( (a, b) \\in N \\times N \\), the condition \\( (a, b)\\,R\\,(a, b) \\) reads \\( ab(b + a) = ba(a + b) \\), which is true for all a and b. So R is reflexive.\nSymmetric: suppose \\( (a, b)\\,R\\,(c, d) \\), that is \\( ad(b + c) = bc(a + d) \\). Reading the same equality from right to left gives \\( cb(d + a) = da(c + b) \\), which is precisely the condition for \\( (c, d)\\,R\\,(a, b) \\). So R is symmetric.\nTransitive: suppose \\( (a, b)\\,R\\,(c, d) \\) and \\( (c, d)\\,R\\,(e, f) \\), that is \\( ad(b + c) = bc(a + d) \\) and \\( cf(d + e) = de(c + f) \\). Dividing the first equation by \\( abcd \\) gives \\( \\frac{b + c}{bc} = \\frac{a + d}{ad} \\), i.e. \\( \\frac{1}{c} + \\frac{1}{b} = \\frac{1}{d} + \\frac{1}{a} \\); dividing the second by \\( cdef \\) gives \\( \\frac{d + e}{de} = \\frac{c + f}{cf} \\), i.e. \\( \\frac{1}{e} + \\frac{1}{d} = \\frac{1}{f} + \\frac{1}{c} \\). Adding these two and cancelling \\( \\frac{1}{c} \\) and \\( \\frac{1}{d} \\), which occur on both sides, leaves \\( \\frac{1}{b} + \\frac{1}{e} = \\frac{1}{a} + \\frac{1}{f} \\), that is \\( \\frac{e + b}{be} = \\frac{f + a}{af} \\). Cross multiplying gives \\( af(b + e) = be(a + f) \\), which is exactly the condition for \\( (a, b)\\,R\\,(e, f) \\). So R is transitive.\nBeing reflexive, symmetric and transitive, R is an equivalence relation."
+  },
+  {
+   "hash": "e84f2e3741c8e89736af16af33b4fee1cca5b980367a3c4fc171b604a108dd0e",
+   "ref": "Q34b",
+   "questionNumber": "34 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "Let \\( f : \\mathbb{R} - \\left\\{-\\dfrac{4}{3}\\right\\} \\to \\mathbb{R} \\) be a function defined as \\( f(x) = \\dfrac{4x}{3x + 4} \\). Show that f is a one-one function. Also, check whether f is an onto function or not.",
+   "solution": "One-one: suppose \\( f(x_1) = f(x_2) \\) for some \\( x_1, x_2 \\) in the domain. Then \\( \\frac{4x_1}{3x_1 + 4} = \\frac{4x_2}{3x_2 + 4} \\), and cross multiplying gives \\( 4x_1(3x_2 + 4) = 4x_2(3x_1 + 4) \\), i.e. \\( 12x_1x_2 + 16x_1 = 12x_1x_2 + 16x_2 \\). Cancelling \\( 12x_1x_2 \\) leaves \\( 16x_1 = 16x_2 \\), so \\( x_1 = x_2 \\). Hence f is one-one.\nOnto: take any \\( y \\in \\mathbb{R} \\) and look for an x in the domain with \\( f(x) = y \\). From \\( y = \\frac{4x}{3x + 4} \\) we get \\( 3xy + 4y = 4x \\), so \\( x(3y - 4) = -4y \\) and \\( x = \\frac{4y}{4 - 3y} \\). This gives a real value of x for every y except \\( y = \\frac{4}{3} \\), and \\( y = \\frac{4}{3} \\) is genuinely unattainable, since it would require \\( 0 = -\\frac{16}{3} \\).\nSo the range of f is \\( \\mathbb{R} - \\left\\{\\frac{4}{3}\\right\\} \\), which is not the whole codomain \\( \\mathbb{R} \\). Hence f is not an onto function."
+  },
+  {
+   "hash": "4aec29e85d159f9eef8ab03c4649d97c8a631f0d9bf8c00a8c1d944dbfd28427",
+   "ref": "Q35a",
+   "questionNumber": "35 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Shortest Distance Between Two Lines",
+   "stem": "Show that the following lines do not intersect each other :\n\n\\( \\dfrac{x-1}{3} = \\dfrac{y+1}{2} = \\dfrac{z-1}{5} \\); \\( \\dfrac{x+2}{4} = \\dfrac{y-1}{3} = \\dfrac{z+1}{-2} \\)",
+   "solution": "The first line passes through \\( (1, -1, 1) \\) with direction \\( \\vec{b}_1 = 3\\hat{i} + 2\\hat{j} + 5\\hat{k} \\), and the second passes through \\( (-2, 1, -1) \\) with direction \\( \\vec{b}_2 = 4\\hat{i} + 3\\hat{j} - 2\\hat{k} \\). Two lines meet only if the shortest distance between them is zero, so compute that distance.\nHere \\( \\vec{a}_2 - \\vec{a}_1 = -3\\hat{i} + 2\\hat{j} - 2\\hat{k} \\), and\n\\( \\vec{b}_1 \\times \\vec{b}_2 = \\left(2(-2) - 5(3)\\right)\\hat{i} - \\left(3(-2) - 5(4)\\right)\\hat{j} + \\left(3(3) - 2(4)\\right)\\hat{k} = -19\\hat{i} + 26\\hat{j} + \\hat{k} \\).\nThis is not the zero vector, so the lines are not parallel, and \\( \\left|\\vec{b}_1 \\times \\vec{b}_2\\right| = \\sqrt{361 + 676 + 1} = \\sqrt{1038} \\). Also\n\\( \\left(\\vec{a}_2 - \\vec{a}_1\\right)\\cdot\\left(\\vec{b}_1 \\times \\vec{b}_2\\right) = (-3)(-19) + 2(26) + (-2)(1) = 57 + 52 - 2 = 107 \\).\nHence the shortest distance is \\( \\frac{107}{\\sqrt{1038}} \\), which is not zero. The lines are therefore neither parallel nor intersecting; they are skew, so they do not intersect each other."
+  },
+  {
+   "hash": "525ff70fe60a09e17abc233d42719f7471201c7fd03d7830b26191213d2a60c2",
+   "ref": "Q35b",
+   "questionNumber": "35 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Angle Between Two Lines",
+   "stem": "Find the angle between the lines\n\n\\( 2x = 3y = -z \\) and \\( 6x = -y = -4z \\).",
+   "solution": "Put each equation in symmetric form. Setting \\( 2x = 3y = -z \\) equal to a parameter gives \\( \\frac{x}{\\frac{1}{2}} = \\frac{y}{\\frac{1}{3}} = \\frac{z}{-1} \\), and multiplying the denominators by 6 gives direction ratios \\( (3, 2, -6) \\). Similarly \\( 6x = -y = -4z \\) gives \\( \\frac{x}{\\frac{1}{6}} = \\frac{y}{-1} = \\frac{z}{-\\frac{1}{4}} \\), and multiplying by 12 gives direction ratios \\( (2, -12, -3) \\).\nIf \\( \\theta \\) is the angle between the lines, then\n\\( \\cos\\theta = \\left|\\frac{3(2) + 2(-12) + (-6)(-3)}{\\sqrt{9 + 4 + 36}\\,\\sqrt{4 + 144 + 9}}\\right| = \\left|\\frac{6 - 24 + 18}{7\\sqrt{157}}\\right| = 0 \\).\nSince the direction ratios are perpendicular, \\( \\theta = \\frac{\\pi}{2} \\); the angle between the two lines is \\( 90^\\circ \\)."
+  },
+  {
+   "hash": "5e967e2d4ec798488c727865cbdaa39e6146b432ac9db1c385db92c163f6518e",
+   "ref": "Q36i",
+   "questionNumber": "36 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "What is R.H.D. of f(x) at x = 1 ?",
+   "context": "Let f(x) be a real valued function. Then its\n\nLeft Hand Derivative (L.H.D.) : \\( Lf'(a) = \\lim_{h \\to 0} \\dfrac{f(a-h) - f(a)}{-h} \\)\n\nRight Hand Derivative (R.H.D.) : \\( Rf'(a) = \\lim_{h \\to 0} \\dfrac{f(a+h) - f(a)}{h} \\)\n\nAlso, a function f(x) is said to be differentiable at x = a if its L.H.D. and R.H.D. at x = a exist and both are equal.\n\nFor the function \\( f(x) = \\begin{cases} |x - 3|, & x \\ge 1 \\\\ \\dfrac{x^2}{4} - \\dfrac{3x}{2} + \\dfrac{13}{4}, & x < 1 \\end{cases} \\)\n\nanswer the following questions :",
+   "solution": "Here \\( f(1) = |1 - 3| = 2 \\). For small \\( h > 0 \\) the point \\( 1 + h \\) satisfies \\( x \\ge 1 \\), so the first branch applies: \\( f(1 + h) = |1 + h - 3| = |h - 2| = 2 - h \\). Hence\n\\( Rf'(1) = \\lim_{h \\to 0}\\frac{f(1 + h) - f(1)}{h} = \\lim_{h \\to 0}\\frac{(2 - h) - 2}{h} = \\lim_{h \\to 0}\\frac{-h}{h} = -1 \\)."
+  },
+  {
+   "hash": "3308bfc24e114558cdb031c0d76f26c1a8ded91b0e3e683233ff2a93d13544ca",
+   "ref": "Q36ii",
+   "questionNumber": "36 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "What is L.H.D. of f(x) at x = 1 ?",
+   "context": "Let f(x) be a real valued function. Then its\n\nLeft Hand Derivative (L.H.D.) : \\( Lf'(a) = \\lim_{h \\to 0} \\dfrac{f(a-h) - f(a)}{-h} \\)\n\nRight Hand Derivative (R.H.D.) : \\( Rf'(a) = \\lim_{h \\to 0} \\dfrac{f(a+h) - f(a)}{h} \\)\n\nAlso, a function f(x) is said to be differentiable at x = a if its L.H.D. and R.H.D. at x = a exist and both are equal.\n\nFor the function \\( f(x) = \\begin{cases} |x - 3|, & x \\ge 1 \\\\ \\dfrac{x^2}{4} - \\dfrac{3x}{2} + \\dfrac{13}{4}, & x < 1 \\end{cases} \\)\n\nanswer the following questions :",
+   "solution": "For small \\( h > 0 \\) the point \\( 1 - h \\) satisfies \\( x < 1 \\), so the second branch applies:\n\\( f(1 - h) = \\frac{(1 - h)^2}{4} - \\frac{3(1 - h)}{2} + \\frac{13}{4} = \\frac{\\left(1 - 2h + h^2\\right) - 6(1 - h) + 13}{4} = \\frac{h^2 + 4h + 8}{4} \\), while \\( f(1) = |1 - 3| = 2 = \\frac{8}{4} \\). Hence\n\\( Lf'(1) = \\lim_{h \\to 0}\\frac{f(1 - h) - f(1)}{-h} = \\lim_{h \\to 0}\\frac{h^2 + 4h}{-4h} = \\lim_{h \\to 0}\\frac{h + 4}{-4} = -1 \\)."
+  },
+  {
+   "hash": "ffa781fddf1477bd6d1c6196bc0b5d8c5537c29d55ab62cdbfd7b9635ca25a53",
+   "ref": "Q36iiia",
+   "questionNumber": "36 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "Check if the function f(x) is differentiable at x = 1.",
+   "context": "Let f(x) be a real valued function. Then its\n\nLeft Hand Derivative (L.H.D.) : \\( Lf'(a) = \\lim_{h \\to 0} \\dfrac{f(a-h) - f(a)}{-h} \\)\n\nRight Hand Derivative (R.H.D.) : \\( Rf'(a) = \\lim_{h \\to 0} \\dfrac{f(a+h) - f(a)}{h} \\)\n\nAlso, a function f(x) is said to be differentiable at x = a if its L.H.D. and R.H.D. at x = a exist and both are equal.\n\nFor the function \\( f(x) = \\begin{cases} |x - 3|, & x \\ge 1 \\\\ \\dfrac{x^2}{4} - \\dfrac{3x}{2} + \\dfrac{13}{4}, & x < 1 \\end{cases} \\)\n\nanswer the following questions :",
+   "solution": "From the two previous parts, the right hand derivative at \\( x = 1 \\) is \\( Rf'(1) = -1 \\) and the left hand derivative is \\( Lf'(1) = -1 \\). Both one-sided derivatives exist and they are equal, so by the definition given in the passage f is differentiable at \\( x = 1 \\), with \\( f'(1) = -1 \\)."
+  },
+  {
+   "hash": "f9ea319b6cef0360120a948effceff5be84af28db0f8582c9cb34727c49f3110",
+   "ref": "Q36iiib",
+   "questionNumber": "36 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "Find \\( f'(2) \\) and \\( f'(-1) \\).",
+   "context": "Let f(x) be a real valued function. Then its\n\nLeft Hand Derivative (L.H.D.) : \\( Lf'(a) = \\lim_{h \\to 0} \\dfrac{f(a-h) - f(a)}{-h} \\)\n\nRight Hand Derivative (R.H.D.) : \\( Rf'(a) = \\lim_{h \\to 0} \\dfrac{f(a+h) - f(a)}{h} \\)\n\nAlso, a function f(x) is said to be differentiable at x = a if its L.H.D. and R.H.D. at x = a exist and both are equal.\n\nFor the function \\( f(x) = \\begin{cases} |x - 3|, & x \\ge 1 \\\\ \\dfrac{x^2}{4} - \\dfrac{3x}{2} + \\dfrac{13}{4}, & x < 1 \\end{cases} \\)\n\nanswer the following questions :",
+   "solution": "Removing the modulus, the function is \\( f(x) = x - 3 \\) for \\( x \\ge 3 \\), \\( f(x) = 3 - x \\) for \\( 1 \\le x < 3 \\), and \\( f(x) = \\frac{x^2}{4} - \\frac{3x}{2} + \\frac{13}{4} \\) for \\( x < 1 \\).\nSince 2 lies in \\( 1 \\le x < 3 \\), near \\( x = 2 \\) we have \\( f(x) = 3 - x \\), so \\( f'(x) = -1 \\) and \\( f'(2) = -1 \\).\nSince \\( -1 < 1 \\), near \\( x = -1 \\) we have \\( f(x) = \\frac{x^2}{4} - \\frac{3x}{2} + \\frac{13}{4} \\), so \\( f'(x) = \\frac{x}{2} - \\frac{3}{2} \\) and \\( f'(-1) = -\\frac{1}{2} - \\frac{3}{2} = -2 \\)."
+  },
+  {
+   "hash": "4729ea879a8e32064efd295e3d065efbeca4dc65190c50ac34654f669895e961",
+   "ref": "Q37i",
+   "questionNumber": "37 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "What is the probability that all the workers are present for the job ?",
+   "context": "A building contractor undertakes a job to construct 4 flats on a plot along with parking area. Due to strike the probability of many construction workers not being present for the job is \\( 0{\\cdot}65 \\). The probability that many are not present and still the work gets completed on time is \\( 0{\\cdot}35 \\). The probability that work will be completed on time when all workers are present is \\( 0{\\cdot}80 \\).\n\nLet : \\( E_1 \\) : represent the event when many workers were not present for the job;\n\n\\( E_2 \\) : represent the event when all workers were present; and\n\nE : represent completing the construction work on time.\n\nBased on the above information, answer the following questions :",
+   "solution": "The event that all workers are present, \\( E_2 \\), is the complement of the event that many workers are not present, \\( E_1 \\). Since \\( P(E_1) = 0{\\cdot}65 \\), we get \\( P(E_2) = 1 - P(E_1) = 1 - 0{\\cdot}65 = 0{\\cdot}35 \\)."
+  },
+  {
+   "hash": "9a5406ae85d72eebec16866fe651edb910e0e6bf01431aa25e4eec6d708add72",
+   "ref": "Q37ii",
+   "questionNumber": "37 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Theorem of Total Probability",
+   "stem": "What is the probability that construction will be completed on time ?",
+   "context": "A building contractor undertakes a job to construct 4 flats on a plot along with parking area. Due to strike the probability of many construction workers not being present for the job is \\( 0{\\cdot}65 \\). The probability that many are not present and still the work gets completed on time is \\( 0{\\cdot}35 \\). The probability that work will be completed on time when all workers are present is \\( 0{\\cdot}80 \\).\n\nLet : \\( E_1 \\) : represent the event when many workers were not present for the job;\n\n\\( E_2 \\) : represent the event when all workers were present; and\n\nE : represent completing the construction work on time.\n\nBased on the above information, answer the following questions :",
+   "solution": "[CBSE marking scheme: the printed chain ends \\( 0{\\cdot}35 \\times 1{\\cdot}45 = 0{\\cdot}51 \\), but that product is exactly \\( 0{\\cdot}5075 \\); the scheme has rounded to two decimal places without saying so. The exact value is used below, and it makes no difference to part (iii), where both answers still round to the scheme's \\( 0{\\cdot}45 \\) and \\( 0{\\cdot}55 \\).] The events \\( E_1 \\) and \\( E_2 \\) are mutually exclusive and exhaustive, so by the theorem of total probability \\( P(E) = P(E_1)\\,P(E/E_1) + P(E_2)\\,P(E/E_2) \\). The data give \\( P(E/E_1) = 0{\\cdot}35 \\), the chance of finishing on time when many workers are absent, and \\( P(E/E_2) = 0{\\cdot}80 \\), the chance of finishing on time when all are present, while \\( P(E_1) = 0{\\cdot}65 \\) and \\( P(E_2) = 0{\\cdot}35 \\) from part (i). Hence\n\\( P(E) = 0{\\cdot}65 \\times 0{\\cdot}35 + 0{\\cdot}35 \\times 0{\\cdot}80 = 0{\\cdot}2275 + 0{\\cdot}28 = 0{\\cdot}5075 \\)."
+  },
+  {
+   "hash": "a354c2a489f14d4bb26217f34dc4c33d5092cc7232b765ee272c265a1728ed1f",
+   "ref": "Q37iiia",
+   "questionNumber": "37 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Bayes' Theorem",
+   "stem": "What is the probability that many workers are not present given that the construction work is completed on time ?",
+   "context": "A building contractor undertakes a job to construct 4 flats on a plot along with parking area. Due to strike the probability of many construction workers not being present for the job is \\( 0{\\cdot}65 \\). The probability that many are not present and still the work gets completed on time is \\( 0{\\cdot}35 \\). The probability that work will be completed on time when all workers are present is \\( 0{\\cdot}80 \\).\n\nLet : \\( E_1 \\) : represent the event when many workers were not present for the job;\n\n\\( E_2 \\) : represent the event when all workers were present; and\n\nE : represent completing the construction work on time.\n\nBased on the above information, answer the following questions :",
+   "solution": "This asks for \\( P(E_1/E) \\), so use Bayes' theorem:\n\\( P(E_1/E) = \\frac{P(E_1)\\,P(E/E_1)}{P(E_1)\\,P(E/E_1) + P(E_2)\\,P(E/E_2)} \\).\nThe numerator is \\( 0{\\cdot}65 \\times 0{\\cdot}35 = 0{\\cdot}2275 \\), and the denominator is \\( P(E) = 0{\\cdot}5075 \\) from part (ii). Hence\n\\( P(E_1/E) = \\frac{0{\\cdot}2275}{0{\\cdot}5075} = \\frac{2275}{5075} = \\frac{13}{29} \\approx 0{\\cdot}45 \\)."
+  },
+  {
+   "hash": "e3bae30985e120d42cdfb101da289725ae6ecf43201c48925eb3e099bf23d31a",
+   "ref": "Q37iiib",
+   "questionNumber": "37 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Bayes' Theorem",
+   "stem": "What is the probability that all workers were present given that the construction job was completed on time ?",
+   "context": "A building contractor undertakes a job to construct 4 flats on a plot along with parking area. Due to strike the probability of many construction workers not being present for the job is \\( 0{\\cdot}65 \\). The probability that many are not present and still the work gets completed on time is \\( 0{\\cdot}35 \\). The probability that work will be completed on time when all workers are present is \\( 0{\\cdot}80 \\).\n\nLet : \\( E_1 \\) : represent the event when many workers were not present for the job;\n\n\\( E_2 \\) : represent the event when all workers were present; and\n\nE : represent completing the construction work on time.\n\nBased on the above information, answer the following questions :",
+   "solution": "This asks for \\( P(E_2/E) \\), so use Bayes' theorem:\n\\( P(E_2/E) = \\frac{P(E_2)\\,P(E/E_2)}{P(E_1)\\,P(E/E_1) + P(E_2)\\,P(E/E_2)} \\).\nThe numerator is \\( 0{\\cdot}35 \\times 0{\\cdot}80 = 0{\\cdot}28 \\), and the denominator is \\( P(E) = 0{\\cdot}5075 \\) from part (ii). Hence\n\\( P(E_2/E) = \\frac{0{\\cdot}28}{0{\\cdot}5075} = \\frac{2800}{5075} = \\frac{16}{29} \\approx 0{\\cdot}55 \\).\nAs a check, \\( E_1 \\) and \\( E_2 \\) are complementary, so the two conditional probabilities must add to 1, and indeed \\( \\frac{13}{29} + \\frac{16}{29} = 1 \\)."
+  },
+  {
+   "hash": "18500e79b8453dd50c927e9fd225f2d469d06a5af4b26054e4ee075d10523cc0",
+   "ref": "Q38i",
+   "questionNumber": "38 (i)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Let 'x' metres denote the length of the side of the garden perpendicular to the brick wall and 'y' metres denote the length of the side parallel to the brick wall. Determine the relation representing the total length of fencing wire and also write A(x), the area of the garden.",
+   "context": "Sooraj's father wants to construct a rectangular garden using a brick wall on one side of the garden and wire fencing for the other three sides as shown in the figure. He has 200 metres of fencing wire.\n\nBased on the above information, answer the following questions :",
+   "figure": "DECORATIVE — the printed image is a photograph of a brick wall and wire fencing, not a labelled diagram. Every quantity the question needs (rectangular garden, wall on one side, wire on the other three, 200 m of wire) is stated in the passage text, and the sub-part itself defines x and y. Not attached. Page idx 22.",
+   "solution": "The garden is a rectangle with the brick wall running along one whole side, so wire is needed for only the other three sides. Those are the two sides of length x perpendicular to the wall and the single side of length y parallel to it. With 200 metres of wire available, the relation representing the total length of fencing wire is\n\\( 2x + y = 200 \\).\nThe area of the rectangular garden is \\( A = xy \\), and substituting \\( y = 200 - 2x \\) from the relation above gives\n\\( A(x) = x(200 - 2x) = 200x - 2x^2 \\)."
+  },
+  {
+   "hash": "266b1c1a74f86cfb6be5cb3fc4cb89bdc7f27b3a18d0968de5c7a38d865099c9",
+   "ref": "Q38ii",
+   "questionNumber": "38 (ii)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Determine the maximum value of A(x).",
+   "context": "Sooraj's father wants to construct a rectangular garden using a brick wall on one side of the garden and wire fencing for the other three sides as shown in the figure. He has 200 metres of fencing wire.\n\nBased on the above information, answer the following questions :",
+   "solution": "From part (i), \\( A(x) = 200x - 2x^2 \\). Differentiating, \\( \\frac{dA}{dx} = 200 - 4x \\), and setting \\( \\frac{dA}{dx} = 0 \\) gives \\( 200 - 4x = 0 \\), so \\( x = 50 \\).\nDifferentiating again, \\( \\frac{d^2A}{dx^2} = -4 \\), which is negative for every x, so \\( x = 50 \\) gives a maximum. Hence the maximum value of A(x) is\n\\( A(50) = 200(50) - 2(50)^2 = 10000 - 5000 = 5000 \\),\nthat is 5000 square metres, obtained when \\( x = 50 \\) metres and \\( y = 200 - 100 = 100 \\) metres."
+  }
+ ]
+}

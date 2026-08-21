@@ -1,0 +1,976 @@
+{
+ "paper": "65/1/1",
+ "year": 2024,
+ "paperId": "2024-65-1-1",
+ "markingScheme": "out/2024-65-1-1/ms/p00.png … p17.png",
+ "rows": [
+  {
+   "hash": "f22530282a5de49694709ef68bf8b6071025d996627944f25ec2f3347e6592a3",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "A function \\(f : R_+ \\to R\\) (where \\(R_+\\) is the set of all non-negative real numbers) defined by \\(f(x) = 4x + 3\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "one-one but not onto"
+    },
+    {
+     "label": "B",
+     "text": "onto but not one-one"
+    },
+    {
+     "label": "C",
+     "text": "both one-one and onto"
+    },
+    {
+     "label": "D",
+     "text": "neither one-one nor onto"
+    }
+   ],
+   "answer": "A",
+   "solution": "For \\(x_1, x_2 \\ge 0\\), \\(f(x_1) = f(x_2)\\) means \\(4x_1 + 3 = 4x_2 + 3\\), which forces \\(x_1 = x_2\\); so f is one-one. But the domain is only the non-negative reals, so \\(x \\ge 0\\) gives \\(f(x) = 4x + 3 \\ge 3\\), and the range is \\([3, \\infty)\\) — a proper subset of the codomain R. A number such as 0 has no pre-image in \\(R_+\\), so f is not onto. Hence f is one-one but not onto."
+  },
+  {
+   "hash": "4a897f719154f28b46f384cedda9a2e04e2bd655e1a5559328776e409fec1a72",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Order and Types of Matrices",
+   "stem": "If a matrix has 36 elements, the number of possible orders it can have, is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "13"
+    },
+    {
+     "label": "B",
+     "text": "3"
+    },
+    {
+     "label": "C",
+     "text": "5"
+    },
+    {
+     "label": "D",
+     "text": "9"
+    }
+   ],
+   "answer": "D",
+   "solution": "An \\(m \\times n\\) matrix has \\(mn\\) elements, so a possible order corresponds exactly to a factorisation \\(mn = 36\\), i.e. to a divisor m of 36. Since \\(36 = 2^2 \\times 3^2\\), the number of divisors is \\((2+1)(2+1) = 9\\) — giving the orders \\(1 \\times 36\\), \\(2 \\times 18\\), \\(3 \\times 12\\), \\(4 \\times 9\\), \\(6 \\times 6\\), \\(9 \\times 4\\), \\(12 \\times 3\\), \\(18 \\times 2\\) and \\(36 \\times 1\\). So the number of possible orders is 9."
+  },
+  {
+   "hash": "7a217a14b339d1e9ae942607943130a77a420abc13d123d41cd2aba074c57bca",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Continuity",
+   "stem": "Which of the following statements is true for the function \\(f(x) = \\begin{cases} x^2 + 3, & x \\neq 0 \\\\ 1, & x = 0 \\end{cases}\\) ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "f(x) is continuous and differentiable \\(\\forall x \\in \\mathbb{R}\\)"
+    },
+    {
+     "label": "B",
+     "text": "f(x) is continuous \\(\\forall x \\in \\mathbb{R}\\)"
+    },
+    {
+     "label": "C",
+     "text": "f(x) is continuous and differentiable \\(\\forall x \\in \\mathbb{R} - \\{0\\}\\)"
+    },
+    {
+     "label": "D",
+     "text": "f(x) is discontinuous at infinitely many points"
+    }
+   ],
+   "answer": "C",
+   "solution": "For every \\(x \\ne 0\\) the function is the polynomial \\(x^2 + 3\\), which is continuous and differentiable there. At \\(x = 0\\), however, \\(\\lim_{x \\to 0} f(x) = 0 + 3 = 3\\) while \\(f(0) = 1\\), so the limit does not equal the value: f is discontinuous at \\(x = 0\\), and hence not differentiable there either. That is the only bad point, so f is not discontinuous at infinitely many points. The true statement is that f(x) is continuous and differentiable for all \\(x \\in \\mathbb{R} - \\{0\\}\\)."
+  },
+  {
+   "hash": "ee57255d67b5e19a5063370a6bedc45733f8abaf931052dc9b1cd8075450ae27",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "Let f(x) be a continuous function on [a, b] and differentiable on (a, b). Then, this function f(x) is strictly increasing in (a, b) if",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(f'(x) < 0, \\forall x \\in (a, b)\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(f'(x) > 0, \\forall x \\in (a, b)\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(f'(x) = 0, \\forall x \\in (a, b)\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(f(x) > 0, \\forall x \\in (a, b)\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "If \\(f'(x) > 0\\) throughout \\((a, b)\\), then for any \\(a < x_1 < x_2 < b\\) the Mean Value Theorem gives \\(f(x_2) - f(x_1) = f'(c)(x_2 - x_1)\\) for some c between them; both factors are positive, so \\(f(x_2) > f(x_1)\\) and f is strictly increasing. A negative derivative would make f strictly decreasing, a zero derivative would make it constant, and the sign of \\(f(x)\\) itself says nothing about monotonicity. So the required condition is \\(f'(x) > 0, \\forall x \\in (a, b)\\)."
+  },
+  {
+   "hash": "4956d8e5f775928fef4e9e6fabd2ab0d8f81e2a4488af4e79fc5ca36381ad4b5",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Equality of Matrices",
+   "stem": "If \\(\\begin{bmatrix} x + y & 2 \\\\ 5 & xy \\end{bmatrix} = \\begin{bmatrix} 6 & 2 \\\\ 5 & 8 \\end{bmatrix}\\), then the value of \\(\\left( \\frac{24}{x} + \\frac{24}{y} \\right)\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "7"
+    },
+    {
+     "label": "B",
+     "text": "6"
+    },
+    {
+     "label": "C",
+     "text": "8"
+    },
+    {
+     "label": "D",
+     "text": "18"
+    }
+   ],
+   "answer": "D",
+   "solution": "Two matrices are equal only when corresponding entries are equal, so \\(x + y = 6\\) and \\(xy = 8\\). Rather than solve for x and y separately, combine the required expression over a common denominator: \\(\\frac{24}{x} + \\frac{24}{y} = 24 \\cdot \\frac{x + y}{xy} = 24 \\times \\frac{6}{8} = 18\\). So the value is 18."
+  },
+  {
+   "hash": "cdafd76232aa85cf19256fc8e9db3d76eca17f14ebf8fcbd35e7f2baf1beba66",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "\\(\\int_a^b f(x)\\,dx\\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\int_a^b f(a - x)\\,dx\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\int_a^b f(a + b - x)\\,dx\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\int_a^b f(x - (a + b))\\,dx\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\int_a^b f((a - x) + (b - x))\\,dx\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Substitute \\(t = a + b - x\\), so that \\(dt = -dx\\) and the limits \\(x = a\\), \\(x = b\\) become \\(t = b\\), \\(t = a\\). Then \\(\\int_a^b f(a + b - x)\\,dx = -\\int_b^a f(t)\\,dt = \\int_a^b f(t)\\,dt = \\int_a^b f(x)\\,dx\\), since a definite integral does not depend on the name of its variable. So the equal expression is \\(\\int_a^b f(a + b - x)\\,dx\\)."
+  },
+  {
+   "hash": "6ba8feab808b6b5c9acd851d5d16f03d20f8ea002789218a10f35165585ca5be",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "Let \\(\\theta\\) be the angle between two unit vectors \\(\\hat{a}\\) and \\(\\hat{b}\\) such that \\(\\sin \\theta = \\frac{3}{5}\\). Then, \\(\\hat{a} \\cdot \\hat{b}\\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\pm \\frac{3}{5}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\pm \\frac{3}{4}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\pm \\frac{4}{5}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\pm \\frac{4}{3}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "For unit vectors, \\(\\hat{a} \\cdot \\hat{b} = |\\hat{a}|\\,|\\hat{b}|\\cos\\theta = \\cos\\theta\\). From \\(\\sin\\theta = \\frac{3}{5}\\) we get \\(\\cos^2\\theta = 1 - \\frac{9}{25} = \\frac{16}{25}\\), so \\(\\cos\\theta = \\pm\\frac{4}{5}\\) — both signs are admissible, since the angle between two vectors lies in \\([0, \\pi]\\) and may be acute or obtuse. Hence \\(\\hat{a} \\cdot \\hat{b} = \\pm\\frac{4}{5}\\)."
+  },
+  {
+   "hash": "7edf4f5854f4c32f7456bfeae8ae3d29d6f3e5502af5bfbe66589aed5e6c7d5e",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "The integrating factor of the differential equation \\((1 - x^2) \\frac{dy}{dx} + xy = ax\\), \\(-1 < x < 1\\), is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\frac{1}{x^2 - 1}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\frac{1}{\\sqrt{x^2 - 1}}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\frac{1}{1 - x^2}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\frac{1}{\\sqrt{1 - x^2}}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Put the equation in standard linear form by dividing by \\(1 - x^2\\), which is non-zero on \\(-1 < x < 1\\): \\(\\frac{dy}{dx} + \\frac{x}{1 - x^2}\\,y = \\frac{ax}{1 - x^2}\\). The integrating factor is \\(e^{\\int \\frac{x}{1 - x^2}\\,dx}\\), and substituting \\(u = 1 - x^2\\) gives \\(\\int \\frac{x\\,dx}{1 - x^2} = -\\frac{1}{2}\\log|1 - x^2|\\). Hence I.F. \\(= e^{-\\frac{1}{2}\\log(1 - x^2)} = (1 - x^2)^{-1/2} = \\frac{1}{\\sqrt{1 - x^2}}\\)."
+  },
+  {
+   "hash": "1436b44fa8407713fa83d76917da94f476c787c7d9d2eaa43aaf9111df2a96b1",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "If the direction cosines of a line are \\(\\sqrt{3}\\,k\\), \\(\\sqrt{3}\\,k\\), \\(\\sqrt{3}\\,k\\), then the value of k is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\pm 1\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\pm \\sqrt{3}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\pm 3\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\pm \\frac{1}{3}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "The direction cosines of any line satisfy \\(l^2 + m^2 + n^2 = 1\\). Here all three are \\(\\sqrt{3}\\,k\\), so \\(3(\\sqrt{3}\\,k)^2 = 9k^2 = 1\\), giving \\(k^2 = \\frac{1}{9}\\) and \\(k = \\pm\\frac{1}{3}\\)."
+  },
+  {
+   "hash": "2108463850e229be0e4d7260b927b82ffdef234c232d4e9e503821c2d454c4bb",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "A linear programming problem deals with the optimization of a/an :",
+   "options": [
+    {
+     "label": "A",
+     "text": "logarithmic function"
+    },
+    {
+     "label": "B",
+     "text": "linear function"
+    },
+    {
+     "label": "C",
+     "text": "quadratic function"
+    },
+    {
+     "label": "D",
+     "text": "exponential function"
+    }
+   ],
+   "answer": "B",
+   "solution": "A linear programming problem consists of a linear objective function to be maximised or minimised subject to a set of linear constraints — that linearity is exactly what the name records. So it deals with the optimization of a linear function."
+  },
+  {
+   "hash": "32e2076921945e764f6af093f963361ab90849804386aed67f3134094305a1c0",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "If \\(P(A|B) = P(A'|B)\\), then which of the following statements is true ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(P(A) = P(A')\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(P(A) = 2\\,P(B)\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(P(A \\cap B) = \\frac{1}{2}\\,P(B)\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(P(A \\cap B) = 2\\,P(B)\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "By definition \\(P(A|B) = \\frac{P(A \\cap B)}{P(B)}\\) and \\(P(A'|B) = \\frac{P(A' \\cap B)}{P(B)}\\). Equating them (with \\(P(B) \\ne 0\\)) gives \\(P(A \\cap B) = P(A' \\cap B)\\). But B splits into the part inside A and the part outside it, so \\(P(A \\cap B) + P(A' \\cap B) = P(B)\\). Substituting gives \\(2P(A \\cap B) = P(B)\\), that is \\(P(A \\cap B) = \\frac{1}{2}P(B)\\)."
+  },
+  {
+   "hash": "f024669af11038eca54e1d82875f904aae2393ba7d284dfe8d6bf3952ee7cefc",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Determinant and its Properties",
+   "stem": "\\(\\begin{vmatrix} x + 1 & x - 1 \\\\ x^2 + x + 1 & x^2 - x + 1 \\end{vmatrix}\\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2x^3\\)"
+    },
+    {
+     "label": "B",
+     "text": "2"
+    },
+    {
+     "label": "C",
+     "text": "0"
+    },
+    {
+     "label": "D",
+     "text": "\\(2x^3 - 2\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Expanding the determinant, its value is \\((x + 1)(x^2 - x + 1) - (x - 1)(x^2 + x + 1)\\). Each product is a standard factorisation: the first is \\(x^3 + 1\\) and the second is \\(x^3 - 1\\). Hence the determinant equals \\((x^3 + 1) - (x^3 - 1) = 2\\), independent of x."
+  },
+  {
+   "hash": "8396d596096352ffa61700f2cf05d1d729203216cad3bba7ba5324b32568c54a",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "The derivative of \\(\\sin (x^2)\\) w.r.t. x, at \\(x = \\sqrt{\\pi}\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "1"
+    },
+    {
+     "label": "B",
+     "text": "\\(-1\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(-2 \\sqrt{\\pi}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(2 \\sqrt{\\pi}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "By the chain rule, \\(\\frac{d}{dx}\\sin(x^2) = 2x\\cos(x^2)\\). At \\(x = \\sqrt{\\pi}\\) we have \\(x^2 = \\pi\\) and \\(\\cos\\pi = -1\\), so the derivative is \\(2\\sqrt{\\pi} \\times (-1) = -2\\sqrt{\\pi}\\)."
+  },
+  {
+   "hash": "49f3bfc8899175c6c6bf9832d0b434c5cf9cce8f3b5392b602e23b0429f3325c",
+   "ref": "Q14",
+   "questionNumber": "14",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Order and Degree of a Differential Equation",
+   "stem": "The order and degree of the differential equation \\(\\left[ 1 + \\left( \\frac{dy}{dx} \\right)^2 \\right]^3 = \\frac{d^2y}{dx^2}\\) respectively are :",
+   "options": [
+    {
+     "label": "A",
+     "text": "1, 2"
+    },
+    {
+     "label": "B",
+     "text": "2, 3"
+    },
+    {
+     "label": "C",
+     "text": "2, 1"
+    },
+    {
+     "label": "D",
+     "text": "2, 6"
+    }
+   ],
+   "answer": "C",
+   "solution": "The order is the order of the highest derivative appearing, here \\(\\frac{d^2y}{dx^2}\\), so the order is 2. The degree is the power to which that highest derivative is raised once the equation is a polynomial in the derivatives — which it already is. The cube on the left acts on \\(\\frac{dy}{dx}\\), not on the second derivative, and \\(\\frac{d^2y}{dx^2}\\) stands to the first power. So the degree is 1, and the order and degree are 2, 1."
+  },
+  {
+   "hash": "f502f92114badaae31b8fe4f69e9e1aba7ef518463fd3653ebcb02c005e5e474",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Components and Direction Cosines",
+   "stem": "The vector with terminal point A (2, \\(-\\) 3, 5) and initial point B (3, \\(-\\) 4, 7) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\hat{i} - \\hat{j} + 2\\hat{k}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\hat{i} + \\hat{j} + 2\\hat{k}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(-\\hat{i} - \\hat{j} - 2\\hat{k}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-\\hat{i} + \\hat{j} - 2\\hat{k}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "A vector runs from its initial point to its terminal point, so the required vector is \\(\\overrightarrow{BA} = \\) (position vector of A) \\(-\\) (position vector of B) \\(= (2 - 3)\\hat{i} + (-3 + 4)\\hat{j} + (5 - 7)\\hat{k} = -\\hat{i} + \\hat{j} - 2\\hat{k}\\)."
+  },
+  {
+   "hash": "83eb326ecdb75bd0cb5e00d3457924266c8049cec9751d47e47b3989898964a2",
+   "ref": "Q16",
+   "questionNumber": "16",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "The distance of point P(a, b, c) from y-axis is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "b"
+    },
+    {
+     "label": "B",
+     "text": "\\(b^2\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\sqrt{a^2 + c^2}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(a^2 + c^2\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Distance from an axis is measured along the perpendicular to it, so the y-coordinate plays no part: the foot of the perpendicular from \\(P(a, b, c)\\) on the y-axis is \\((0, b, 0)\\). Hence the distance is \\(\\sqrt{(a - 0)^2 + (b - b)^2 + (c - 0)^2} = \\sqrt{a^2 + c^2}\\)."
+  },
+  {
+   "hash": "165655411230a2bcd083c0af1e5053222e5d0d6a143670d90866ac5912d96168",
+   "ref": "Q17",
+   "questionNumber": "17",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "The number of corner points of the feasible region determined by constraints \\(x \\geq 0\\), \\(y \\geq 0\\), \\(x + y \\geq 4\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "0"
+    },
+    {
+     "label": "B",
+     "text": "1"
+    },
+    {
+     "label": "C",
+     "text": "2"
+    },
+    {
+     "label": "D",
+     "text": "3"
+    }
+   ],
+   "answer": "C",
+   "solution": "The line \\(x + y = 4\\) meets the axes at \\((4, 0)\\) and \\((0, 4)\\). The constraint \\(x + y \\ge 4\\) keeps the half-plane away from the origin, and \\(x \\ge 0\\), \\(y \\ge 0\\) confine us to the first quadrant, so the feasible region is the unbounded wedge lying above that line in the first quadrant. Its boundary turns only where the line meets the axes, so the corner points are \\((4, 0)\\) and \\((0, 4)\\) — there are 2 of them."
+  },
+  {
+   "hash": "e051110c8d27bdd5c43a323ff785634bd895ebcd044d9dbc83a1b3ea09db3ec0",
+   "ref": "Q18",
+   "questionNumber": "18",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "If A and B are two non-zero square matrices of same order such that \\((A + B)^2 = A^2 + B^2\\), then :",
+   "options": [
+    {
+     "label": "A",
+     "text": "AB = O"
+    },
+    {
+     "label": "B",
+     "text": "\\(AB = -BA\\)"
+    },
+    {
+     "label": "C",
+     "text": "BA = O"
+    },
+    {
+     "label": "D",
+     "text": "AB = BA"
+    }
+   ],
+   "answer": "B",
+   "solution": "Expanding, \\((A + B)^2 = (A + B)(A + B) = A^2 + AB + BA + B^2\\); the cross terms must be kept separate because matrix multiplication is not commutative. Setting this equal to \\(A^2 + B^2\\) leaves \\(AB + BA = O\\), that is \\(AB = -BA\\). (Nothing forces AB or BA to be the zero matrix on its own.)"
+  },
+  {
+   "hash": "d121c38fe85940d6b378ba87a8288548be1bafa79dfbd49c6afff71f2960009d",
+   "ref": "Q19",
+   "questionNumber": "19",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Determinant and its Properties",
+   "stem": "Assertion (A) : For matrix \\(A = \\begin{bmatrix} 1 & \\cos \\theta & 1 \\\\ -\\cos \\theta & 1 & \\cos \\theta \\\\ -1 & -\\cos \\theta & 1 \\end{bmatrix}\\), where \\(\\theta \\in [0, 2\\pi]\\), \\(|A| \\in [2, 4]\\).\nReason (R) : \\(\\cos \\theta \\in [-1, 1]\\), \\(\\forall \\theta \\in [0, 2\\pi]\\).",
+   "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false, but Reason (R) is true."
+    }
+   ],
+   "answer": "A",
+   "solution": "Expanding \\(|A|\\) along the first row, \\(|A| = 1\\big(1 \\cdot 1 - \\cos\\theta \\cdot (-\\cos\\theta)\\big) - \\cos\\theta\\big((-\\cos\\theta)(1) - \\cos\\theta(-1)\\big) + 1\\big((-\\cos\\theta)(-\\cos\\theta) - 1 \\cdot (-1)\\big)\\), which is \\((1 + \\cos^2\\theta) - \\cos\\theta(0) + (\\cos^2\\theta + 1) = 2 + 2\\cos^2\\theta\\). Since \\(\\cos\\theta \\in [-1, 1]\\) for every \\(\\theta \\in [0, 2\\pi]\\), we get \\(\\cos^2\\theta \\in [0, 1]\\) and hence \\(|A| \\in [2, 4]\\). So the Assertion is true, the Reason is true, and the Reason is precisely the step that pins down the range of \\(|A|\\) — it is the correct explanation of the Assertion."
+  },
+  {
+   "hash": "0b7fe170addcfa358fb61cc31dcf0dfafea68929753e3a9d749c898c3e2478b6",
+   "ref": "Q20",
+   "questionNumber": "20",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "Assertion (A) : A line in space cannot be drawn perpendicular to x, y and z axes simultaneously.\nReason (R) : For any line making angles, \\(\\alpha\\), \\(\\beta\\), \\(\\gamma\\) with the positive directions of x, y and z axes respectively, \\(\\cos^2 \\alpha + \\cos^2 \\beta + \\cos^2 \\gamma = 1\\).",
+   "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false, but Reason (R) is true."
+    }
+   ],
+   "answer": "A",
+   "solution": "If a line were perpendicular to all three axes at once, then \\(\\alpha = \\beta = \\gamma = 90^\\circ\\), so \\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 0 + 0 + 0 = 0\\). That contradicts the identity \\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\), which every line in space satisfies; so no such line exists and the Assertion is true. The Reason is the true identity itself, and it is exactly what makes the Assertion true — so it is the correct explanation of the Assertion."
+  },
+  {
+   "hash": "7845a4c1ce66ebf3b95e65399bb309404857c4db16867e9f71740e5579a8b52a",
+   "ref": "Q21a",
+   "questionNumber": "21 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "Check whether the function \\(f(x) = x^2 |x|\\) is differentiable at \\(x = 0\\) or not.",
+   "solution": "Since \\(|x| = x\\) for \\(x \\ge 0\\) and \\(|x| = -x\\) for \\(x \\le 0\\), the function splits as \\(f(x) = x^3\\) for \\(x \\ge 0\\) and \\(f(x) = -x^3\\) for \\(x \\le 0\\); in particular \\(f(0) = 0\\). Now test the two one-sided derivatives at the origin. Right-hand derivative: \\(\\text{RHD} = \\lim_{h \\to 0}\\frac{f(0 + h) - f(0)}{h} = \\lim_{h \\to 0}\\frac{h^3}{h} = \\lim_{h \\to 0} h^2 = 0\\). Left-hand derivative: for \\(h > 0\\) the point \\(-h\\) is negative, so \\(f(-h) = -(-h)^3 = h^3\\), and \\(\\text{LHD} = \\lim_{h \\to 0}\\frac{f(0 - h) - f(0)}{-h} = \\lim_{h \\to 0}\\frac{h^3}{-h} = \\lim_{h \\to 0}(-h^2) = 0\\). Since LHD \\(=\\) RHD \\(= 0\\), the function is differentiable at \\(x = 0\\), with \\(f'(0) = 0\\)."
+  },
+  {
+   "hash": "f4d1a2662beca319a3db3407a208d5e37f8a35fb67fa46af79f3a0ad5510a2aa",
+   "ref": "Q21b",
+   "questionNumber": "21 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "If \\(y = \\sqrt{\\tan \\sqrt{x}}\\), prove that \\(\\sqrt{x} \\; \\frac{dy}{dx} = \\frac{1 + y^4}{4y}\\).",
+   "solution": "Write \\(y = (\\tan\\sqrt{x})^{1/2}\\) and differentiate by the chain rule, peeling off the square root, then the tangent, then the inner \\(\\sqrt{x}\\): \\(\\frac{dy}{dx} = \\frac{1}{2\\sqrt{\\tan\\sqrt{x}}} \\cdot \\sec^2\\sqrt{x} \\cdot \\frac{1}{2\\sqrt{x}}\\). Multiplying through by \\(\\sqrt{x}\\) clears the last factor: \\(\\sqrt{x}\\,\\frac{dy}{dx} = \\frac{\\sec^2\\sqrt{x}}{4\\sqrt{\\tan\\sqrt{x}}}\\). Now use \\(\\sec^2\\sqrt{x} = 1 + \\tan^2\\sqrt{x}\\) to bring the right-hand side back into terms of y. Squaring the definition gives \\(y^2 = \\tan\\sqrt{x}\\), so \\(\\tan^2\\sqrt{x} = y^4\\) and \\(\\sqrt{\\tan\\sqrt{x}} = y\\). Therefore \\(\\sqrt{x}\\,\\frac{dy}{dx} = \\frac{1 + y^4}{4y}\\), which is what was to be proved."
+  },
+  {
+   "hash": "1d851de5aeaf88ab2347310f356252c0b8fc91ead829f436c8612c9468bae671",
+   "ref": "Q22",
+   "questionNumber": "22",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Show that the function \\(f(x) = 4x^3 - 18x^2 + 27x - 7\\) has neither maxima nor minima.",
+   "solution": "Differentiating, \\(f'(x) = 12x^2 - 36x + 27 = 3(4x^2 - 12x + 9) = 3(2x - 3)^2\\). A perfect square is never negative, so \\(f'(x) \\ge 0\\) for every real x, and \\(f'(x) = 0\\) only at the single point \\(x = \\frac{3}{2}\\). A stationary point yields a maximum or a minimum only if \\(f'\\) changes sign there; here \\(f'\\) is strictly positive on both sides of \\(x = \\frac{3}{2}\\), so no sign change occurs and \\(x = \\frac{3}{2}\\) is only a point of inflection. Hence f is increasing on the whole of R and has neither maxima nor minima."
+  },
+  {
+   "hash": "8b586aa2e124abe31e2848d4a517ffde73bb5b648b4024959d1b688ee245065d",
+   "ref": "Q23a",
+   "questionNumber": "23 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Substitution",
+   "stem": "Find :\n\\(\\int x \\sqrt{1 + 2x} \\; dx\\)",
+   "solution": "The radical is cleared by putting \\(1 + 2x = t^2\\), so that \\(2\\,dx = 2t\\,dt\\), i.e. \\(dx = t\\,dt\\), and \\(x = \\frac{t^2 - 1}{2}\\). The integral becomes \\(\\int x\\sqrt{1 + 2x}\\,dx = \\int \\frac{t^2 - 1}{2} \\cdot t \\cdot t\\,dt = \\frac{1}{2}\\int (t^4 - t^2)\\,dt = \\frac{1}{2}\\left[\\frac{t^5}{5} - \\frac{t^3}{3}\\right] + C\\). Restoring \\(t = \\sqrt{1 + 2x}\\) gives the answer \\(\\frac{(1 + 2x)^{5/2}}{10} - \\frac{(1 + 2x)^{3/2}}{6} + C\\)."
+  },
+  {
+   "hash": "55bf5ca3c399cb94f7c2313f4c010742502d444bb41fa05c7185642f900400df",
+   "ref": "Q23b",
+   "questionNumber": "23 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals by Substitution",
+   "stem": "Evaluate :\n\\(\\int_0^{\\frac{\\pi^2}{4}} \\frac{\\sin \\sqrt{x}}{\\sqrt{x}} \\; dx\\)",
+   "solution": "Put \\(\\sqrt{x} = t\\), so that \\(x = t^2\\) and \\(dx = 2t\\,dt\\); the limits \\(x = 0\\) and \\(x = \\frac{\\pi^2}{4}\\) become \\(t = 0\\) and \\(t = \\frac{\\pi}{2}\\). Then \\(\\int_0^{\\pi^2/4} \\frac{\\sin\\sqrt{x}}{\\sqrt{x}}\\,dx = \\int_0^{\\pi/2} \\frac{\\sin t}{t} \\cdot 2t\\,dt = 2\\int_0^{\\pi/2}\\sin t\\,dt = 2\\big[-\\cos t\\big]_0^{\\pi/2} = 2\\big(0 - (-1)\\big) = 2\\)."
+  },
+  {
+   "hash": "125328c6694a32e51623520ea749adeb27048fff23e577b98ec3a50c897f425b",
+   "ref": "Q24",
+   "questionNumber": "24",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "If \\(\\vec{a}\\) and \\(\\vec{b}\\) are two non-zero vectors such that \\((\\vec{a} + \\vec{b}) \\perp \\vec{a}\\) and \\((2\\vec{a} + \\vec{b}) \\perp \\vec{b}\\), then prove that \\(|\\vec{b}| = \\sqrt{2} \\; |\\vec{a}|\\).",
+   "solution": "Perpendicularity of two vectors means their dot product vanishes. From \\((\\vec{a} + \\vec{b}) \\perp \\vec{a}\\) we get \\((\\vec{a} + \\vec{b}) \\cdot \\vec{a} = 0\\), i.e. \\(|\\vec{a}|^2 + \\vec{b} \\cdot \\vec{a} = 0\\) — call this (1). From \\((2\\vec{a} + \\vec{b}) \\perp \\vec{b}\\) we get \\((2\\vec{a} + \\vec{b}) \\cdot \\vec{b} = 0\\), i.e. \\(2\\,\\vec{a} \\cdot \\vec{b} + |\\vec{b}|^2 = 0\\) — call this (2). Equation (1) gives \\(\\vec{a} \\cdot \\vec{b} = -|\\vec{a}|^2\\), and substituting that into (2) gives \\(2(-|\\vec{a}|^2) + |\\vec{b}|^2 = 0\\), so \\(|\\vec{b}|^2 = 2|\\vec{a}|^2\\). Magnitudes are non-negative, so taking square roots gives \\(|\\vec{b}| = \\sqrt{2}\\,|\\vec{a}|\\), as required."
+  },
+  {
+   "hash": "6c7390afe1d6ee013180da1cbd22f93c25ba8175144161968a80c0f813e13365",
+   "ref": "Q25",
+   "questionNumber": "25",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "In the given figure, ABCD is a parallelogram. If \\(\\overrightarrow{AB} = 2\\hat{i} - 4\\hat{j} + 5\\hat{k}\\) and \\(\\overrightarrow{DB} = 3\\hat{i} - 6\\hat{j} + 2\\hat{k}\\), then find \\(\\overrightarrow{AD}\\) and hence find the area of parallelogram ABCD.",
+   "figure": "ILLUSTRATIVE - a plain parallelogram ABCD (A top-left, B top-right, D bottom-left, C bottom-right) with the diagonal DB drawn. It carries no measurements; the vertex order needed to compute AD is already fixed by the name 'parallelogram ABCD' in the stem, so the question is answerable without it. NOT attached. Page idx 12. NOTE: the rendered PNG of this figure is partially corrupt - the diagram appears triplicated across the top strip and the lower two-thirds of the figure box renders as a solid black block.",
+   "solution": "Going from A to B via D in the parallelogram, the triangle law gives \\(\\overrightarrow{AD} + \\overrightarrow{DB} = \\overrightarrow{AB}\\), so \\(\\overrightarrow{AD} = \\overrightarrow{AB} - \\overrightarrow{DB} = (2\\hat{i} - 4\\hat{j} + 5\\hat{k}) - (3\\hat{i} - 6\\hat{j} + 2\\hat{k}) = -\\hat{i} + 2\\hat{j} + 3\\hat{k}\\). The area of a parallelogram is the magnitude of the cross product of two adjacent sides, and AD and AB are adjacent sides at the vertex A: \\(\\overrightarrow{AD} \\times \\overrightarrow{AB} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ -1 & 2 & 3 \\\\ 2 & -4 & 5 \\end{vmatrix} = (10 + 12)\\hat{i} - (-5 - 6)\\hat{j} + (4 - 4)\\hat{k} = 22\\hat{i} + 11\\hat{j}\\). Hence the area is \\(\\left|\\overrightarrow{AD} \\times \\overrightarrow{AB}\\right| = \\sqrt{22^2 + 11^2} = \\sqrt{484 + 121} = \\sqrt{605} = 11\\sqrt{5}\\) square units."
+  },
+  {
+   "hash": "835da3f75e9065a8267bf2eaaeba98bc0d3ae8ba7a6ab99f79fd215486995f84",
+   "ref": "Q26a",
+   "questionNumber": "26 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Types of Relations",
+   "stem": "A relation R on set \\(A = \\{1, 2, 3, 4, 5\\}\\) is defined as \\(R = \\{(x, y) : |x^2 - y^2| < 8\\}\\). Check whether the relation R is reflexive, symmetric and transitive.",
+   "solution": "Reflexive: for every \\(x \\in A\\), \\(|x^2 - x^2| = 0 < 8\\), so \\((x, x) \\in R\\). Hence R is reflexive. Symmetric: if \\((x, y) \\in R\\) then \\(|x^2 - y^2| < 8\\), and since \\(|y^2 - x^2| = |x^2 - y^2|\\), the same inequality holds with the roles swapped, so \\((y, x) \\in R\\). Hence R is symmetric. Transitive: take \\(x = 1\\), \\(y = 2\\), \\(z = 3\\), all in A. Then \\(|1^2 - 2^2| = 3 < 8\\), so \\((1, 2) \\in R\\), and \\(|2^2 - 3^2| = 5 < 8\\), so \\((2, 3) \\in R\\). But \\(|1^2 - 3^2| = |1 - 9| = 8\\), which is not less than 8, so \\((1, 3) \\notin R\\). This single counter-example shows R is not transitive. Hence R is reflexive and symmetric, but not transitive."
+  },
+  {
+   "hash": "f62d3618a176ea6dcdfc9bb6d6a62a1aadb842fea4986a28b1347556dd18edb4",
+   "ref": "Q26b",
+   "questionNumber": "26 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "A function f is defined from \\(R \\to R\\) as \\(f(x) = ax + b\\), such that \\(f(1) = 1\\) and \\(f(2) = 3\\). Find function f(x). Hence, check whether function f(x) is one-one and onto or not.",
+   "solution": "The two given values pin down a and b: \\(f(1) = a + b = 1\\) and \\(f(2) = 2a + b = 3\\). Subtracting the first from the second gives \\(a = 2\\), and then \\(b = 1 - a = -1\\). So \\(f(x) = 2x - 1\\). One-one: if \\(f(x_1) = f(x_2)\\) then \\(2x_1 - 1 = 2x_2 - 1\\), hence \\(x_1 = x_2\\); so f is one-one. Onto: take any y in the codomain R and set \\(x = \\frac{y + 1}{2}\\), which is a real number and so lies in the domain; then \\(f\\left(\\frac{y + 1}{2}\\right) = 2 \\cdot \\frac{y + 1}{2} - 1 = y\\). Every element of the codomain therefore has a pre-image, so f is onto. Hence \\(f(x) = 2x - 1\\) is both one-one and onto, i.e. a bijection."
+  },
+  {
+   "hash": "e1e60e0d9a8cbdd1881f990922178372e709ce9ec6b57756d13b2e0db0440a6e",
+   "ref": "Q27a",
+   "questionNumber": "27 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "If \\(\\sqrt{1 - x^2} + \\sqrt{1 - y^2} = a\\,(x - y)\\), prove that \\(\\frac{dy}{dx} = \\sqrt{\\frac{1 - y^2}{1 - x^2}}\\).",
+   "solution": "The two square roots suggest a trigonometric substitution. Put \\(x = \\sin\\theta\\) and \\(y = \\sin\\phi\\), so that \\(\\sqrt{1 - x^2} = \\cos\\theta\\) and \\(\\sqrt{1 - y^2} = \\cos\\phi\\). The given relation becomes \\(\\cos\\theta + \\cos\\phi = a(\\sin\\theta - \\sin\\phi)\\). Applying the sum-to-product formulas to both sides, \\(2\\cos\\left(\\frac{\\theta + \\phi}{2}\\right)\\cos\\left(\\frac{\\theta - \\phi}{2}\\right) = 2a\\cos\\left(\\frac{\\theta + \\phi}{2}\\right)\\sin\\left(\\frac{\\theta - \\phi}{2}\\right)\\). The factor \\(\\cos\\left(\\frac{\\theta + \\phi}{2}\\right)\\) is common and cancels, leaving \\(\\cot\\left(\\frac{\\theta - \\phi}{2}\\right) = a\\), i.e. \\(\\theta - \\phi = 2\\cot^{-1}a\\) — a constant, since a is a constant. Restoring \\(\\theta = \\sin^{-1}x\\) and \\(\\phi = \\sin^{-1}y\\) gives \\(\\sin^{-1}x - \\sin^{-1}y = 2\\cot^{-1}a\\). Differentiating both sides with respect to x makes the right-hand side vanish: \\(\\frac{1}{\\sqrt{1 - x^2}} - \\frac{1}{\\sqrt{1 - y^2}}\\,\\frac{dy}{dx} = 0\\). Hence \\(\\frac{dy}{dx} = \\frac{\\sqrt{1 - y^2}}{\\sqrt{1 - x^2}} = \\sqrt{\\frac{1 - y^2}{1 - x^2}}\\)."
+  },
+  {
+   "hash": "4dc02e792f27dd5868c8da0ed2cfcbab5b169734ea77ab390a9acffc1e5cbe45",
+   "ref": "Q27b",
+   "questionNumber": "27 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Logarithmic Differentiation",
+   "stem": "If \\(y = (\\tan x)^x\\), then find \\(\\frac{dy}{dx}\\).",
+   "solution": "Both the base and the exponent involve x, so take logarithms first: \\(\\log y = x\\log(\\tan x)\\). Differentiating both sides with respect to x, using the product rule on the right and the chain rule on the left, \\(\\frac{1}{y}\\,\\frac{dy}{dx} = x \\cdot \\frac{\\sec^2 x}{\\tan x} + \\log(\\tan x)\\). Multiplying by \\(y = (\\tan x)^x\\) gives \\(\\frac{dy}{dx} = (\\tan x)^x\\left[\\frac{x\\sec^2 x}{\\tan x} + \\log(\\tan x)\\right]\\)."
+  },
+  {
+   "hash": "5e26576c141203af487dba849ec5f2f2794f3e62ef9d1913eae3c00582d6f224",
+   "ref": "Q28a",
+   "questionNumber": "28 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Partial Fractions",
+   "stem": "Find :\n\\(\\int \\frac{x^2}{(x^2 + 4)\\,(x^2 + 9)} \\; dx\\)",
+   "solution": "The integrand is a function of \\(x^2\\) alone, so split it into partial fractions in the variable \\(t = x^2\\): \\(\\frac{t}{(t + 4)(t + 9)} = \\frac{A}{t + 4} + \\frac{B}{t + 9}\\) gives \\(t = A(t + 9) + B(t + 4)\\). Putting \\(t = -4\\) gives \\(-4 = 5A\\), so \\(A = -\\frac{4}{5}\\); putting \\(t = -9\\) gives \\(-9 = -5B\\), so \\(B = \\frac{9}{5}\\). Restoring \\(t = x^2\\), the integral becomes \\(I = -\\frac{4}{5}\\int\\frac{dx}{2^2 + x^2} + \\frac{9}{5}\\int\\frac{dx}{3^2 + x^2}\\). Using \\(\\int\\frac{dx}{a^2 + x^2} = \\frac{1}{a}\\tan^{-1}\\frac{x}{a}\\), this is \\(-\\frac{4}{5} \\cdot \\frac{1}{2}\\tan^{-1}\\frac{x}{2} + \\frac{9}{5} \\cdot \\frac{1}{3}\\tan^{-1}\\frac{x}{3} + C\\), that is \\(I = -\\frac{2}{5}\\tan^{-1}\\left(\\frac{x}{2}\\right) + \\frac{3}{5}\\tan^{-1}\\left(\\frac{x}{3}\\right) + C\\)."
+  },
+  {
+   "hash": "66a22f6ba6d87bf7ac79e1d120cebaa4bf21ed7e582b4d913b7687f05dea361e",
+   "ref": "Q28b",
+   "questionNumber": "28 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals and the Fundamental Theorem",
+   "stem": "Evaluate :\n\\(\\int_1^3 \\left( |x - 1| + |x - 2| + |x - 3| \\right) dx\\)",
+   "solution": "On the interval \\([1, 3]\\) the first and third moduli never change sign: \\(|x - 1| = x - 1\\) throughout and \\(|x - 3| = 3 - x\\) throughout. Only \\(|x - 2|\\) changes sign, at \\(x = 2\\). A useful shortcut is that the first and third add to a constant, \\((x - 1) + (3 - x) = 2\\), so \\(\\int_1^3 \\big(|x - 1| + |x - 3|\\big)dx = \\int_1^3 2\\,dx = \\big[2x\\big]_1^3 = 6 - 2 = 4\\). For the middle term, split at \\(x = 2\\): \\(\\int_1^3 |x - 2|\\,dx = \\int_1^2 (2 - x)\\,dx + \\int_2^3 (x - 2)\\,dx = \\left[\\frac{(2 - x)^2}{-2}\\right]_1^2 + \\left[\\frac{(x - 2)^2}{2}\\right]_2^3 = \\frac{1}{2} + \\frac{1}{2} = 1\\). Adding, the value of the integral is \\(4 + 1 = 5\\)."
+  },
+  {
+   "hash": "9cd7569fcf6761524e47dd080ac978520896eca1609b35645d65d861c8a5ba6b",
+   "ref": "Q29",
+   "questionNumber": "29",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Find the particular solution of the differential equation given by \\(x^2 \\frac{dy}{dx} - xy = x^2 \\cos^2 \\left( \\frac{y}{2x} \\right)\\), given that when \\(x = 1\\), \\(y = \\frac{\\pi}{2}\\).",
+   "solution": "Divide throughout by \\(x^2\\) to get \\(\\frac{dy}{dx} = \\frac{y}{x} + \\cos^2\\left(\\frac{y}{2x}\\right)\\); the right-hand side depends only on the ratio \\(y/x\\), so the equation is homogeneous. Put \\(y = vx\\), so that \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\) and \\(\\frac{y}{2x} = \\frac{v}{2}\\). Substituting, \\(v + x\\frac{dv}{dx} = v + \\cos^2\\left(\\frac{v}{2}\\right)\\), and the v terms cancel to leave \\(x\\frac{dv}{dx} = \\cos^2\\left(\\frac{v}{2}\\right)\\). Separating the variables, \\(\\int\\sec^2\\left(\\frac{v}{2}\\right)dv = \\int\\frac{dx}{x}\\), which integrates to \\(2\\tan\\left(\\frac{v}{2}\\right) = \\log|x| + C\\). Restoring \\(v = \\frac{y}{x}\\) gives the general solution \\(2\\tan\\left(\\frac{y}{2x}\\right) = \\log|x| + C\\). Applying the initial condition \\(y = \\frac{\\pi}{2}\\) when \\(x = 1\\): \\(2\\tan\\left(\\frac{\\pi}{4}\\right) = \\log 1 + C\\), so \\(2 = 0 + C\\) and \\(C = 2\\). The particular solution is therefore \\(2\\tan\\left(\\frac{y}{2x}\\right) = \\log|x| + 2\\)."
+  },
+  {
+   "hash": "72104b3d46cf59f2cfc1743ba7836dfa66cae523c6b1f49a0104298fc332ff79",
+   "ref": "Q30",
+   "questionNumber": "30",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following linear programming problem graphically :\nMaximise \\(z = 500x + 300y\\),\nsubject to constraints\n\\(x + 2y \\leq 12\\)\n\\(2x + y \\leq 12\\)\n\\(4x + 5y \\geq 20\\)\n\\(x \\geq 0, \\; y \\geq 0\\)",
+   "solution": "Draw the three boundary lines: \\(x + 2y = 12\\) through \\((0, 6)\\) and \\((12, 0)\\); \\(2x + y = 12\\) through \\((0, 12)\\) and \\((6, 0)\\); and \\(4x + 5y = 20\\) through \\((0, 4)\\) and \\((5, 0)\\). Shading the side of each line indicated by its inequality, and restricting to the first quadrant, leaves a bounded five-sided feasible region with corner points \\(A(0, 4)\\), \\(B(0, 6)\\), \\(C(4, 4)\\), \\(D(6, 0)\\) and \\(E(5, 0)\\). Here C comes from solving \\(x + 2y = 12\\) and \\(2x + y = 12\\) simultaneously, which gives \\(x = y = 4\\); A and E are where \\(4x + 5y = 20\\) meets the axes, and B and D are where the two upper-bound lines meet the axes. Evaluating \\(z = 500x + 300y\\) at each corner: at \\(A(0, 4)\\), \\(z = 1200\\); at \\(B(0, 6)\\), \\(z = 1800\\); at \\(C(4, 4)\\), \\(z = 2000 + 1200 = 3200\\); at \\(D(6, 0)\\), \\(z = 3000\\); at \\(E(5, 0)\\), \\(z = 2500\\). The region is bounded, so the corner-point method applies directly and the greatest of these values is the maximum. Hence \\(z\\) is maximum at \\(x = 4\\), \\(y = 4\\), with maximum value \\(z = 3200\\)."
+  },
+  {
+   "hash": "ac33722222457aa5986237429e7217058357473061db0b34cbf63b4197a96da7",
+   "ref": "Q31",
+   "questionNumber": "31",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Independent Events",
+   "stem": "E and F are two independent events such that \\(P(\\overline{E}) = 0{\\cdot}6\\) and \\(P(E \\cup F) = 0{\\cdot}6\\). Find P(F) and \\(P(\\overline{E} \\cup \\overline{F})\\).",
+   "solution": "From \\(P(\\overline{E}) = 0{\\cdot}6\\) we get \\(P(E) = 1 - 0{\\cdot}6 = 0{\\cdot}4\\). Since E and F are independent, \\(P(E \\cap F) = P(E)\\,P(F) = 0{\\cdot}4\\,P(F)\\). Substituting into the addition rule, \\(P(E \\cup F) = P(E) + P(F) - P(E \\cap F)\\) gives \\(0{\\cdot}6 = 0{\\cdot}4 + P(F) - 0{\\cdot}4\\,P(F) = 0{\\cdot}4 + 0{\\cdot}6\\,P(F)\\). Hence \\(0{\\cdot}6\\,P(F) = 0{\\cdot}2\\) and \\(P(F) = \\frac{1}{3}\\). For the second part, De Morgan's law gives \\(\\overline{E} \\cup \\overline{F} = \\overline{E \\cap F}\\), so \\(P(\\overline{E} \\cup \\overline{F}) = 1 - P(E \\cap F) = 1 - 0{\\cdot}4 \\times \\frac{1}{3} = 1 - \\frac{2}{15} = \\frac{13}{15}\\)."
+  },
+  {
+   "hash": "1ad7a0886127c6e4f68dbd600ec640c1a5c3ce56b0d486e38731d8bc3517f344",
+   "ref": "Q32a",
+   "questionNumber": "32 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Solving System of Linear Equations",
+   "stem": "If \\(A = \\begin{bmatrix} 1 & -2 & 0 \\\\ 2 & -1 & -1 \\\\ 0 & -2 & 1 \\end{bmatrix}\\), find \\(A^{-1}\\) and use it to solve the following system of equations :\n\\(x - 2y = 10\\), \\(2x - y - z = 8\\), \\(-2y + z = 7\\)",
+   "solution": "First check that the inverse exists. Expanding along the first row, \\(|A| = 1\\big[(-1)(1) - (-1)(-2)\\big] - (-2)\\big[2(1) - (-1)(0)\\big] + 0 = 1(-1 - 2) + 2(2) = -3 + 4 = 1 \\ne 0\\), so \\(A^{-1}\\) exists. Computing the nine cofactors and transposing gives \\(\\text{adj}\\,A = \\begin{bmatrix} -3 & 2 & 2 \\\\ -2 & 1 & 1 \\\\ -4 & 2 & 3 \\end{bmatrix}\\), and since \\(|A| = 1\\), \\(A^{-1} = \\frac{1}{|A|}\\,\\text{adj}\\,A = \\begin{bmatrix} -3 & 2 & 2 \\\\ -2 & 1 & 1 \\\\ -4 & 2 & 3 \\end{bmatrix}\\). The given system \\(x - 2y = 10\\), \\(2x - y - z = 8\\), \\(-2y + z = 7\\) has coefficient matrix exactly A, so it is \\(AX = B\\) with \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 10 \\\\ 8 \\\\ 7 \\end{bmatrix}\\). Hence \\(X = A^{-1}B = \\begin{bmatrix} -3 & 2 & 2 \\\\ -2 & 1 & 1 \\\\ -4 & 2 & 3 \\end{bmatrix}\\begin{bmatrix} 10 \\\\ 8 \\\\ 7 \\end{bmatrix} = \\begin{bmatrix} -30 + 16 + 14 \\\\ -20 + 8 + 7 \\\\ -40 + 16 + 21 \\end{bmatrix} = \\begin{bmatrix} 0 \\\\ -5 \\\\ -3 \\end{bmatrix}\\). So \\(x = 0\\), \\(y = -5\\), \\(z = -3\\). Checking: \\(0 - 2(-5) = 10\\), \\(2(0) - (-5) - (-3) = 8\\) and \\(-2(-5) + (-3) = 7\\), so all three equations are satisfied."
+  },
+  {
+   "hash": "19f6756557ff321fdb2d325403d80be490a5b4aeee6b2d1021dee49fd3c2e231",
+   "ref": "Q32b",
+   "questionNumber": "32 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Adjoint and Inverse of a Matrix",
+   "stem": "If \\(A = \\begin{bmatrix} -1 & a & 2 \\\\ 1 & 2 & x \\\\ 3 & 1 & 1 \\end{bmatrix}\\) and \\(A^{-1} = \\begin{bmatrix} 1 & -1 & 1 \\\\ -8 & 7 & -5 \\\\ b & y & 3 \\end{bmatrix}\\), find the value of \\((a + x) - (b + y)\\).",
+   "solution": "The defining property \\(AA^{-1} = I\\) turns each unknown into a single scalar equation, so it is enough to compute the four entries of the product that involve them and set each equal to the corresponding entry of the identity matrix. The \\((3,1)\\) entry is \\(3(1) + 1(-8) + 1(b) = -5 + b\\), and it must be 0, so \\(b = 5\\). The \\((1,3)\\) entry is \\((-1)(1) + a(-5) + 2(3) = 5 - 5a\\), and it must be 0, so \\(a = 1\\). The \\((3,2)\\) entry is \\(3(-1) + 1(7) + 1(y) = 4 + y\\), and it must be 0, so \\(y = -4\\). The \\((2,3)\\) entry is \\(1(1) + 2(-5) + x(3) = 3x - 9\\), and it must be 0, so \\(x = 3\\). Therefore \\((a + x) - (b + y) = (1 + 3) - (5 + (-4)) = 4 - 1 = 3\\)."
+  },
+  {
+   "hash": "034dcdf657d47c49924a6f5a29cf799ea86eb93fe1bede2bc921614c80ab1536",
+   "ref": "Q33a",
+   "questionNumber": "33 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals by Substitution",
+   "stem": "Evaluate :\n\\(\\int_0^{\\frac{\\pi}{4}} \\frac{\\sin x + \\cos x}{9 + 16 \\sin 2x} \\; dx\\)",
+   "solution": "The key observation is that the numerator is the derivative of \\(\\sin x - \\cos x\\), and that \\(\\sin 2x\\) can be written in terms of the same expression: \\((\\sin x - \\cos x)^2 = \\sin^2 x + \\cos^2 x - 2\\sin x\\cos x = 1 - \\sin 2x\\). So put \\(\\sin x - \\cos x = t\\), giving \\((\\cos x + \\sin x)\\,dx = dt\\) and \\(\\sin 2x = 1 - t^2\\); the limits \\(x = 0\\) and \\(x = \\frac{\\pi}{4}\\) become \\(t = -1\\) and \\(t = 0\\). The denominator becomes \\(9 + 16(1 - t^2) = 25 - 16t^2\\), so \\(I = \\int_{-1}^{0}\\frac{dt}{25 - 16t^2} = \\frac{1}{16}\\int_{-1}^{0}\\frac{dt}{\\left(\\frac{5}{4}\\right)^2 - t^2}\\). Using \\(\\int\\frac{dt}{a^2 - t^2} = \\frac{1}{2a}\\log\\left|\\frac{a + t}{a - t}\\right|\\) with \\(a = \\frac{5}{4}\\), this is \\(\\frac{1}{16} \\cdot \\frac{2}{5}\\left[\\log\\left|\\frac{5 + 4t}{5 - 4t}\\right|\\right]_{-1}^{0} = \\frac{1}{40}\\left[\\log\\left|\\frac{5 + 4t}{5 - 4t}\\right|\\right]_{-1}^{0}\\). At \\(t = 0\\) the bracket is \\(\\log 1 = 0\\); at \\(t = -1\\) it is \\(\\log\\frac{1}{9}\\). Hence \\(I = \\frac{1}{40}\\left[0 - \\log\\frac{1}{9}\\right] = \\frac{1}{40}\\log 9 = \\frac{1}{20}\\log 3\\)."
+  },
+  {
+   "hash": "50dbb2a6e0172a4ddb7b7d1fe67f13313a553b655928660ea6d1c77de2a3e10c",
+   "ref": "Q33b",
+   "questionNumber": "33 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Parts",
+   "stem": "Evaluate :\n\\(\\int_0^{\\frac{\\pi}{2}} \\sin 2x \\, \\tan^{-1} (\\sin x) \\; dx\\)",
+   "solution": "Write \\(\\sin 2x = 2\\sin x\\cos x\\), which puts the integral in a form ready for the substitution \\(\\sin x = t\\); then \\(\\cos x\\,dx = dt\\), and the limits \\(x = 0\\), \\(x = \\frac{\\pi}{2}\\) become \\(t = 0\\), \\(t = 1\\). So \\(I = 2\\int_0^1 t\\tan^{-1}t\\,dt\\). Integrate by parts taking \\(\\tan^{-1}t\\) as the first function: \\(\\int t\\tan^{-1}t\\,dt = \\tan^{-1}t \\cdot \\frac{t^2}{2} - \\frac{1}{2}\\int\\frac{t^2}{1 + t^2}\\,dt\\). For the remaining integral, \\(\\int\\frac{t^2}{1 + t^2}\\,dt = \\int\\left(1 - \\frac{1}{1 + t^2}\\right)dt = t - \\tan^{-1}t\\). Hence \\(I = 2\\left[\\frac{t^2}{2}\\tan^{-1}t - \\frac{t}{2} + \\frac{1}{2}\\tan^{-1}t\\right]_0^1\\). At \\(t = 1\\) the bracket is \\(\\frac{1}{2} \\cdot \\frac{\\pi}{4} - \\frac{1}{2} + \\frac{1}{2} \\cdot \\frac{\\pi}{4} = \\frac{\\pi}{4} - \\frac{1}{2}\\), and at \\(t = 0\\) it is 0. Therefore \\(I = 2\\left(\\frac{\\pi}{4} - \\frac{1}{2}\\right) = \\frac{\\pi}{2} - 1\\)."
+  },
+  {
+   "hash": "27dfcbf16cfd5b3aab485e7c8a1230713d46ba69597637bcd3cc32618f93baeb",
+   "ref": "Q34",
+   "questionNumber": "34",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "Using integration, find the area of the ellipse \\(\\frac{x^2}{16} + \\frac{y^2}{4} = 1\\), included between the lines \\(x = -2\\) and \\(x = 2\\).",
+   "solution": "Sketch the ellipse \\(\\frac{x^2}{16} + \\frac{y^2}{4} = 1\\), which has semi-axes 4 along the x-axis and 2 along the y-axis, and draw the vertical lines \\(x = -2\\) and \\(x = 2\\); the required area is the strip of the ellipse cut off between them. Solving the equation for the upper half gives \\(y = 2\\sqrt{1 - \\frac{x^2}{16}} = \\frac{1}{2}\\sqrt{16 - x^2}\\). The strip is symmetric about both axes, so its area is four times the part lying in the first quadrant: \\(\\text{Area} = 4\\int_0^2 y\\,dx = 4 \\cdot \\frac{1}{2}\\int_0^2\\sqrt{4^2 - x^2}\\,dx = 2\\int_0^2\\sqrt{16 - x^2}\\,dx\\). Using \\(\\int\\sqrt{a^2 - x^2}\\,dx = \\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a}\\) with \\(a = 4\\), \\(\\text{Area} = 2\\left[\\frac{x}{2}\\sqrt{16 - x^2} + 8\\sin^{-1}\\frac{x}{4}\\right]_0^2\\). At \\(x = 2\\) the bracket is \\(1 \\cdot \\sqrt{12} + 8\\sin^{-1}\\frac{1}{2} = 2\\sqrt{3} + 8 \\cdot \\frac{\\pi}{6} = 2\\sqrt{3} + \\frac{4\\pi}{3}\\), and at \\(x = 0\\) it is 0. Hence the area is \\(2\\left(2\\sqrt{3} + \\frac{4\\pi}{3}\\right) = 4\\sqrt{3} + \\frac{8\\pi}{3}\\) square units."
+  },
+  {
+   "hash": "6a71e81ee16cacb4cc77730f2daa8770554d6c302363d9d498a363ba456e7d9b",
+   "ref": "Q35",
+   "questionNumber": "35",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "The image of point P(x, y, z) with respect to line \\(\\frac{x}{1} = \\frac{y - 1}{2} = \\frac{z - 2}{3}\\) is P' (1, 0, 7). Find the coordinates of point P.",
+   "solution": "Write the line in parametric form: a general point on it is \\(M(\\lambda,\\; 2\\lambda + 1,\\; 3\\lambda + 2)\\), and its direction ratios are \\(1, 2, 3\\). Since P' is the image of P in the line, the line is the perpendicular bisector of PP'; so the foot of the perpendicular M is the mid-point of PP', and PP' is perpendicular to the line. Take M to be the point above and use the known end P'\\((1, 0, 7)\\): the direction ratios of P'M are \\(\\lambda - 1\\), \\(2\\lambda + 1 - 0 = 2\\lambda + 1\\), and \\(3\\lambda + 2 - 7 = 3\\lambda - 5\\). Perpendicularity to the line means the dot product with \\((1, 2, 3)\\) vanishes: \\(1(\\lambda - 1) + 2(2\\lambda + 1) + 3(3\\lambda - 5) = 0\\), i.e. \\(\\lambda - 1 + 4\\lambda + 2 + 9\\lambda - 15 = 0\\), so \\(14\\lambda = 14\\) and \\(\\lambda = 1\\). Hence \\(M(1, 3, 5)\\). Now use that M is the mid-point of PP' with \\(P(x, y, z)\\) and \\(P'(1, 0, 7)\\): \\(\\frac{x + 1}{2} = 1\\), \\(\\frac{y + 0}{2} = 3\\), \\(\\frac{z + 7}{2} = 5\\), giving \\(x = 1\\), \\(y = 6\\), \\(z = 3\\). So the required point is \\(P(1, 6, 3)\\)."
+  },
+  {
+   "hash": "38fbab5f8a8ecbd90accd0196996b41c8d3f18823f21a0b41a2a77c0f6f65572",
+   "ref": "Q36i",
+   "questionNumber": "36 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "Express \\(\\theta\\) in terms of height of the camera installed on the pole and x.",
+   "context": "The traffic police has installed Over Speed Violation Detection (OSVD) system at various locations in a city. These cameras can capture a speeding vehicle from a distance of 300 m and even function in the dark.\n\nA camera is installed on a pole at the height of 5 m. It detects a car travelling away from the pole at the speed of 20 m/s. At any point, x m away from the base of the pole, the angle of elevation of the speed camera from the car C is \\(\\theta\\).\n\nOn the basis of the above information, answer the following questions :",
+   "figure": "DECORATIVE — an infographic captioned AVERAGE SPEED DETECTION / RADAR SPEED DETECTION showing two camera poles, a car, a stopwatch pair and radar waves, plus the caption Speed = Distance / (Time B – Time A). Nothing is measured off it: the pole height (5 m), the car's speed (20 m/s) and every distance are printed in the stem. NOT attached. Page idx 18.",
+   "solution": "The pole stands vertically, so the camera, the base of the pole and the car C form a right-angled triangle: the height of the camera, 5 m, is the side opposite to \\(\\theta\\), and the horizontal distance x of the car from the base is the side adjacent to it. Hence \\(\\tan\\theta = \\frac{5}{x}\\), that is \\(\\theta = \\tan^{-1}\\left(\\frac{5}{x}\\right)\\)."
+  },
+  {
+   "hash": "f9e0d465289666456908238ff2773d2538b6d40bce5f4f142d64e64cf943fdff",
+   "ref": "Q36ii",
+   "questionNumber": "36 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "Find \\(\\dfrac{d\\theta}{dx}\\).",
+   "context": "The traffic police has installed Over Speed Violation Detection (OSVD) system at various locations in a city. These cameras can capture a speeding vehicle from a distance of 300 m and even function in the dark.\n\nA camera is installed on a pole at the height of 5 m. It detects a car travelling away from the pole at the speed of 20 m/s. At any point, x m away from the base of the pole, the angle of elevation of the speed camera from the car C is \\(\\theta\\).\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "Differentiating \\(\\theta = \\tan^{-1}\\left(\\frac{5}{x}\\right)\\) with respect to x by the chain rule, \\(\\frac{d\\theta}{dx} = \\frac{1}{1 + \\left(\\frac{5}{x}\\right)^2} \\cdot \\left(-\\frac{5}{x^2}\\right) = \\frac{x^2}{x^2 + 25} \\cdot \\left(-\\frac{5}{x^2}\\right) = \\frac{-5}{5^2 + x^2} = \\frac{-5}{25 + x^2}\\). The negative sign is expected: the angle of elevation falls as the car moves further from the pole."
+  },
+  {
+   "hash": "870a3a0d8c01b815f07c43caa5c2a1d2e2ab166b5d708da883df093e07381bc2",
+   "ref": "Q36iiia",
+   "questionNumber": "36 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "Find the rate of change of angle of elevation with respect to time at an instant when the car is 50 m away from the pole.",
+   "context": "The traffic police has installed Over Speed Violation Detection (OSVD) system at various locations in a city. These cameras can capture a speeding vehicle from a distance of 300 m and even function in the dark.\n\nA camera is installed on a pole at the height of 5 m. It detects a car travelling away from the pole at the speed of 20 m/s. At any point, x m away from the base of the pole, the angle of elevation of the speed camera from the car C is \\(\\theta\\).\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "The chain rule links the two rates: \\(\\frac{d\\theta}{dt} = \\frac{d\\theta}{dx} \\times \\frac{dx}{dt}\\). Here the car travels away from the pole at \\(\\frac{dx}{dt} = 20\\) m/s, and we want the instant when \\(x = 50\\) m. Using \\(\\frac{d\\theta}{dx} = \\frac{-5}{5^2 + x^2}\\) from part (ii), \\(\\frac{d\\theta}{dt} = \\left.\\frac{-5}{25 + x^2}\\right|_{x = 50} \\times 20 = \\frac{-5 \\times 20}{25 + 2500} = \\frac{-100}{2525} = \\frac{-4}{101}\\) rad/s. So the angle of elevation is changing at \\(-\\frac{4}{101}\\) rad/s, i.e. decreasing at the rate of \\(\\frac{4}{101}\\) rad/s."
+  },
+  {
+   "hash": "b4415b523572649589f5361fa50d32158905801014e6c506fbfdd7acf06f5153",
+   "ref": "Q36iiib",
+   "questionNumber": "36 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "If the rate of change of angle of elevation with respect to time of another car at a distance of 50 m from the base of the pole is \\(\\dfrac{3}{101}\\) rad/s, then find the speed of the car.",
+   "context": "The traffic police has installed Over Speed Violation Detection (OSVD) system at various locations in a city. These cameras can capture a speeding vehicle from a distance of 300 m and even function in the dark.\n\nA camera is installed on a pole at the height of 5 m. It detects a car travelling away from the pole at the speed of 20 m/s. At any point, x m away from the base of the pole, the angle of elevation of the speed camera from the car C is \\(\\theta\\).\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "Use the same chain rule, \\(\\frac{d\\theta}{dt} = \\frac{d\\theta}{dx} \\times \\frac{dx}{dt}\\), but now with \\(\\frac{d\\theta}{dt}\\) known and \\(\\frac{dx}{dt}\\) to be found. At \\(x = 50\\), \\(\\frac{d\\theta}{dx} = \\frac{-5}{25 + 2500} = \\frac{-5}{2525} = \\frac{-1}{505}\\). Substituting the given \\(\\frac{d\\theta}{dt} = \\frac{3}{101}\\) rad/s, \\(\\frac{3}{101} = \\frac{-1}{505} \\times \\frac{dx}{dt}\\), so \\(\\frac{dx}{dt} = -505 \\times \\frac{3}{101} = -15\\) m/s. The speed is the magnitude of this, namely 15 m/s. (The negative sign is consistent rather than an error: a positive \\(\\frac{d\\theta}{dt}\\) means the angle of elevation is increasing, so this second car must be approaching the pole rather than receding from it.)"
+  },
+  {
+   "hash": "4f7a9e19357376a263c0c0e7d6b59ef1e9569885c8b900719968fb1b46c73466",
+   "ref": "Q37i",
+   "questionNumber": "37 (i)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Theorem of Total Probability",
+   "stem": "Find the probability that an airplane reached its destination late.",
+   "context": "According to recent research, air turbulence has increased in various regions around the world due to climate change. Turbulence makes flights bumpy and often delays the flights.\n\nAssume that, an airplane observes severe turbulence, moderate turbulence or light turbulence with equal probabilities. Further, the chance of an airplane reaching late to the destination are 55%, 37% and 17% due to severe, moderate and light turbulence respectively.\n\nOn the basis of the above information, answer the following questions :",
+   "figure": "DECORATIVE — a photograph captioned 'Turbulence intensity' showing three aeroplanes labelled Light (± 1 meter), Moderate (± 5 meters) and Severe (± 30 meters). The displacement figures play no part in any sub-part; the three probabilities are printed in the stem. NOT attached. Page idx 20.",
+   "solution": "Let A be the event that the airplane reaches its destination late, and let \\(E_1\\), \\(E_2\\), \\(E_3\\) be the events that it meets severe, moderate and light turbulence respectively. These three are mutually exclusive, exhaustive and equally likely, so \\(P(E_1) = P(E_2) = P(E_3) = \\frac{1}{3}\\), while the given percentages are the conditional probabilities \\(P(A|E_1) = \\frac{55}{100}\\), \\(P(A|E_2) = \\frac{37}{100}\\) and \\(P(A|E_3) = \\frac{17}{100}\\). By the theorem of total probability, \\(P(A) = P(E_1)P(A|E_1) + P(E_2)P(A|E_2) + P(E_3)P(A|E_3) = \\frac{1}{3} \\times \\frac{55}{100} + \\frac{1}{3} \\times \\frac{37}{100} + \\frac{1}{3} \\times \\frac{17}{100} = \\frac{1}{3}\\left(\\frac{109}{100}\\right) = \\frac{109}{300}\\)."
+  },
+  {
+   "hash": "6a25e37c34aa4488d17ba77d1bc69d399ddbeb8974973f9fc40714dcfd666015",
+   "ref": "Q37ii",
+   "questionNumber": "37 (ii)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Bayes' Theorem",
+   "stem": "If the airplane reached its destination late, find the probability that it was due to moderate turbulence.",
+   "context": "According to recent research, air turbulence has increased in various regions around the world due to climate change. Turbulence makes flights bumpy and often delays the flights.\n\nAssume that, an airplane observes severe turbulence, moderate turbulence or light turbulence with equal probabilities. Further, the chance of an airplane reaching late to the destination are 55%, 37% and 17% due to severe, moderate and light turbulence respectively.\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "The question reverses the conditioning — the delay is known and the cause is wanted — so this is Bayes' theorem: \\(P(E_2|A) = \\frac{P(E_2)\\,P(A|E_2)}{P(A)}\\), with \\(E_2\\) the event of moderate turbulence. Using \\(P(A) = \\frac{109}{300}\\) from part (i), \\(P(E_2|A) = \\frac{\\frac{1}{3} \\times \\frac{37}{100}}{\\frac{109}{300}} = \\frac{\\frac{37}{300}}{\\frac{109}{300}} = \\frac{37}{109}\\)."
+  },
+  {
+   "hash": "4c6dbbfb131cb4559f49aecb651e909a387fab1173c2964cadb13bf4449b3b2a",
+   "ref": "Q38i",
+   "questionNumber": "38 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "If A is the interval other than principal value branch, give an example of one such interval.",
+   "context": "If a function \\(f : X \\to Y\\) defined as \\(f(x) = y\\) is one-one and onto, then we can define a unique function \\(g : Y \\to X\\) such that \\(g(y) = x\\), where \\(x \\in X\\) and \\(y = f(x)\\), \\(y \\in Y\\). Function g is called the inverse of function f.\n\nThe domain of sine function is R and function sine : \\(R \\to R\\) is neither one-one nor onto. The following graph shows the sine function.\n\nLet sine function be defined from set A to \\([-1, 1]\\) such that inverse of sine function exists, i.e., \\(\\sin^{-1} x\\) is defined from \\([-1, 1]\\) to A.\n\nOn the basis of the above information, answer the following questions :",
+   "figure": "ILLUSTRATIVE — the standard graph of \\(y = \\sin x\\) drawn over \\([-5\\pi/2, 5\\pi/2]\\) with the axes labelled X, X', Y, Y'. It illustrates the passage's claim that sine is neither one-one nor onto; no sub-part reads a value off it, and (iii)(a) asks the student to DRAW a different graph. NOT attached. Page idx 22.",
+   "solution": "For \\(\\sin^{-1}\\) to be defined from \\([-1, 1]\\) to A, the sine function restricted to A must be one-one and must take every value in \\([-1, 1]\\). The principal value branch is \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\); sine is one-one and onto \\([-1, 1]\\) on any interval obtained from it by shifting through a whole number of half-periods. One such interval other than the principal value branch is \\(A = \\left[\\frac{\\pi}{2}, \\frac{3\\pi}{2}\\right]\\). (Other acceptable answers include \\(\\left[-\\frac{3\\pi}{2}, -\\frac{\\pi}{2}\\right]\\) and \\(\\left[\\frac{3\\pi}{2}, \\frac{5\\pi}{2}\\right]\\); in general \\(\\left[(2n - 1)\\frac{\\pi}{2},\\, (2n + 1)\\frac{\\pi}{2}\\right]\\) for any integer n works.)"
+  },
+  {
+   "hash": "81a8917fa22f4bbc9ffb5dc91ca1a3c777fda375209d4055cfac6bc2f874e284",
+   "ref": "Q38ii",
+   "questionNumber": "38 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Evaluating Inverse Trigonometric Expressions",
+   "stem": "If \\(\\sin^{-1} (x)\\) is defined from \\([-1, 1]\\) to its principal value branch, find the value of \\(\\sin^{-1} \\left( -\\dfrac{1}{2} \\right) - \\sin^{-1} (1)\\).",
+   "context": "If a function \\(f : X \\to Y\\) defined as \\(f(x) = y\\) is one-one and onto, then we can define a unique function \\(g : Y \\to X\\) such that \\(g(y) = x\\), where \\(x \\in X\\) and \\(y = f(x)\\), \\(y \\in Y\\). Function g is called the inverse of function f.\n\nThe domain of sine function is R and function sine : \\(R \\to R\\) is neither one-one nor onto. The following graph shows the sine function.\n\nLet sine function be defined from set A to \\([-1, 1]\\) such that inverse of sine function exists, i.e., \\(\\sin^{-1} x\\) is defined from \\([-1, 1]\\) to A.\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "On the principal value branch the values of \\(\\sin^{-1}\\) are taken in \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\). Since \\(\\sin\\left(-\\frac{\\pi}{6}\\right) = -\\frac{1}{2}\\) and \\(-\\frac{\\pi}{6}\\) lies in that branch, \\(\\sin^{-1}\\left(-\\frac{1}{2}\\right) = -\\frac{\\pi}{6}\\); and \\(\\sin\\frac{\\pi}{2} = 1\\) gives \\(\\sin^{-1}(1) = \\frac{\\pi}{2}\\). Hence \\(\\sin^{-1}\\left(-\\frac{1}{2}\\right) - \\sin^{-1}(1) = -\\frac{\\pi}{6} - \\frac{\\pi}{2} = -\\frac{\\pi}{6} - \\frac{3\\pi}{6} = -\\frac{4\\pi}{6} = -\\frac{2\\pi}{3}\\)."
+  },
+  {
+   "hash": "9b5ab9073958abf9bfcac8cff54ea11de7d4348c1b7d19d326d42bff0fe3c689",
+   "ref": "Q38iiia",
+   "questionNumber": "38 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "Draw the graph of \\(\\sin^{-1} x\\) from \\([-1, 1]\\) to its principal value branch.",
+   "context": "If a function \\(f : X \\to Y\\) defined as \\(f(x) = y\\) is one-one and onto, then we can define a unique function \\(g : Y \\to X\\) such that \\(g(y) = x\\), where \\(x \\in X\\) and \\(y = f(x)\\), \\(y \\in Y\\). Function g is called the inverse of function f.\n\nThe domain of sine function is R and function sine : \\(R \\to R\\) is neither one-one nor onto. The following graph shows the sine function.\n\nLet sine function be defined from set A to \\([-1, 1]\\) such that inverse of sine function exists, i.e., \\(\\sin^{-1} x\\) is defined from \\([-1, 1]\\) to A.\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "The graph of \\(y = \\sin^{-1}x\\) on \\([-1, 1]\\) is the mirror image of the graph of \\(y = \\sin x\\), \\(x \\in \\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\), in the line \\(y = x\\) — reflecting a graph in \\(y = x\\) is exactly what interchanging the roles of x and y does. To draw it, mark the domain \\([-1, 1]\\) on the x-axis and the principal value branch \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\) on the y-axis, and draw the two horizontal dashed lines \\(y = \\frac{\\pi}{2}\\) and \\(y = -\\frac{\\pi}{2}\\) as the bounds of the range. The curve begins at \\(\\left(-1, -\\frac{\\pi}{2}\\right)\\), rises steadily through the origin \\((0, 0)\\), and ends at \\(\\left(1, \\frac{\\pi}{2}\\right)\\). It is increasing throughout, is symmetric about the origin because \\(\\sin^{-1}(-x) = -\\sin^{-1}x\\), and its tangent becomes vertical at the two end points \\(x = \\pm 1\\). Nothing is drawn outside \\(-1 \\le x \\le 1\\), since the function is undefined there."
+  },
+  {
+   "hash": "3b0b23ec2753032cc5a6f0cb2b1ebe54d39b19c1d865ba160d22d8336682e96e",
+   "ref": "Q38iiib",
+   "questionNumber": "38 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "Find the domain and range of \\(f(x) = 2 \\sin^{-1} (1 - x)\\).",
+   "context": "If a function \\(f : X \\to Y\\) defined as \\(f(x) = y\\) is one-one and onto, then we can define a unique function \\(g : Y \\to X\\) such that \\(g(y) = x\\), where \\(x \\in X\\) and \\(y = f(x)\\), \\(y \\in Y\\). Function g is called the inverse of function f.\n\nThe domain of sine function is R and function sine : \\(R \\to R\\) is neither one-one nor onto. The following graph shows the sine function.\n\nLet sine function be defined from set A to \\([-1, 1]\\) such that inverse of sine function exists, i.e., \\(\\sin^{-1} x\\) is defined from \\([-1, 1]\\) to A.\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "Domain: \\(\\sin^{-1}\\) is defined only for arguments in \\([-1, 1]\\), so we need \\(-1 \\le 1 - x \\le 1\\). Subtracting 1 throughout gives \\(-2 \\le -x \\le 0\\), and multiplying by \\(-1\\) reverses the inequalities to give \\(0 \\le x \\le 2\\). Hence the domain is \\([0, 2]\\). Range: as x runs over \\([0, 2]\\), the argument \\(1 - x\\) runs over the whole of \\([-1, 1]\\), so \\(\\sin^{-1}(1 - x)\\) takes every value in the principal value branch: \\(-\\frac{\\pi}{2} \\le \\sin^{-1}(1 - x) \\le \\frac{\\pi}{2}\\). Multiplying by 2, \\(-\\pi \\le 2\\sin^{-1}(1 - x) \\le \\pi\\). Hence the range is \\([-\\pi, \\pi]\\)."
+  }
+ ]
+}

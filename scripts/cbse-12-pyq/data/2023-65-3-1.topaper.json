@@ -1,0 +1,976 @@
+{
+ "paper": "65/3/1",
+ "year": 2023,
+ "paperId": "2023-65-3-1",
+ "markingScheme": "out/2023-65-3-1/ms/p00.png … p19.png",
+ "rows": [
+  {
+   "hash": "d03d7dd1358f3bfb193d1e8c75cae9a70917672494ec5c53430649393ac689fc",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Symmetric and Skew-Symmetric Matrices",
+   "stem": "If \\( A = \\begin{bmatrix} 1 & 4 & x \\\\ z & 2 & y \\\\ -3 & -1 & 3 \\end{bmatrix} \\) is a symmetric matrix, then the value of x + y + z is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "10"
+    },
+    {
+     "label": "B",
+     "text": "6"
+    },
+    {
+     "label": "C",
+     "text": "8"
+    },
+    {
+     "label": "D",
+     "text": "0"
+    }
+   ],
+   "answer": "D",
+   "solution": "A symmetric matrix satisfies \\(A = A'\\), that is \\(a_{ij} = a_{ji}\\) for every pair of indices. Comparing the off-diagonal entries: \\(a_{12} = a_{21}\\) gives \\(4 = z\\); \\(a_{13} = a_{31}\\) gives \\(x = -3\\); and \\(a_{23} = a_{32}\\) gives \\(y = -1\\). Hence \\(x + y + z = -3 - 1 + 4 = 0\\), which is option 0."
+  },
+  {
+   "hash": "b05372b6bbad55ebd65f5135d86697b8a83230b16a22ca409d2d255f44c998ec",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Adjoint and Inverse of a Matrix",
+   "stem": "If \\( A \\cdot (\\text{adj } A) = \\begin{bmatrix} 3 & 0 & 0 \\\\ 0 & 3 & 0 \\\\ 0 & 0 & 3 \\end{bmatrix} \\), then the value of \\( |A| + |\\text{adj } A| \\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "12"
+    },
+    {
+     "label": "B",
+     "text": "9"
+    },
+    {
+     "label": "C",
+     "text": "3"
+    },
+    {
+     "label": "D",
+     "text": "27"
+    }
+   ],
+   "answer": "A",
+   "solution": "For a square matrix of order \\(n\\), \\(A\\,(\\text{adj }A) = |A|\\,I\\). Here the product is \\(3I\\) of order 3, so \\(|A| = 3\\). Also \\(|\\text{adj }A| = |A|^{\\,n-1} = 3^{2} = 9\\). Therefore \\(|A| + |\\text{adj }A| = 3 + 9 = 12\\), which is option 12."
+  },
+  {
+   "hash": "5e3b99c7f64742a2a4b505bb3eea7d7936e579cd8616a277bdd3a687bfb9c770",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Symmetric and Skew-Symmetric Matrices",
+   "stem": "A and B are skew-symmetric matrices of same order. AB is symmetric, if :",
+   "options": [
+    {
+     "label": "A",
+     "text": "AB = O"
+    },
+    {
+     "label": "B",
+     "text": "AB = \\( - \\)BA"
+    },
+    {
+     "label": "C",
+     "text": "AB = BA"
+    },
+    {
+     "label": "D",
+     "text": "BA = O"
+    }
+   ],
+   "answer": "C",
+   "solution": "A and B being skew-symmetric means \\(A' = -A\\) and \\(B' = -B\\). Using the reversal law for a transpose, \\((AB)' = B'A' = (-B)(-A) = BA\\). Now AB is symmetric exactly when \\((AB)' = AB\\), that is when \\(BA = AB\\). So the required condition is option AB = BA. (Note that AB = O or BA = O would each make AB symmetric only in the trivial case, and neither is forced by the hypothesis.)"
+  },
+  {
+   "hash": "7e1e6bfc81d0ba8555ce20586a54dd69131672268985590bef20f31ae08284bc",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Transpose of a Matrix",
+   "stem": "For what value of \\( x \\in \\left[ 0, \\frac{\\pi}{2} \\right] \\), is \\( A + A' = \\sqrt{3} \\, I \\), where \\( A = \\begin{bmatrix} \\cos x & \\sin x \\\\ -\\sin x & \\cos x \\end{bmatrix} \\) ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( \\frac{\\pi}{3} \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( \\frac{\\pi}{6} \\)"
+    },
+    {
+     "label": "C",
+     "text": "0"
+    },
+    {
+     "label": "D",
+     "text": "\\( \\frac{\\pi}{2} \\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Transposing, \\(A' = \\begin{bmatrix} \\cos x & -\\sin x \\\\ \\sin x & \\cos x \\end{bmatrix}\\), so the sine terms cancel on addition and \\(A + A' = \\begin{bmatrix} 2\\cos x & 0 \\\\ 0 & 2\\cos x \\end{bmatrix} = (2\\cos x)\\,I\\). Equating this to \\(\\sqrt{3}\\,I\\) gives \\(2\\cos x = \\sqrt{3}\\), i.e. \\(\\cos x = \\frac{\\sqrt{3}}{2}\\). The only value in \\(\\left[0, \\frac{\\pi}{2}\\right]\\) with this cosine is \\(\\frac{\\pi}{6}\\), which is option \\(\\frac{\\pi}{6}\\)."
+  },
+  {
+   "hash": "159f542aaf5962e7f401b1a752b07fdb987cbea195151fb5d3579fcd3272729f",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Area of a Triangle",
+   "stem": "Let A be the area of a triangle having vertices \\( (x_1, y_1) \\), \\( (x_2, y_2) \\) and \\( (x_3, y_3) \\). Which of the following is correct ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( \\begin{vmatrix} x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\\\ x_3 & y_3 & 1 \\end{vmatrix} = \\pm A \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( \\begin{vmatrix} x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\\\ x_3 & y_3 & 1 \\end{vmatrix} = \\pm 2A \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( \\begin{vmatrix} x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\\\ x_3 & y_3 & 1 \\end{vmatrix} = \\pm \\frac{A}{2} \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( \\begin{vmatrix} x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\\\ x_3 & y_3 & 1 \\end{vmatrix}^2 = A^2 \\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "The area of a triangle with the given vertices is \\(A = \\frac{1}{2}\\left|\\,\\begin{vmatrix} x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\\\ x_3 & y_3 & 1 \\end{vmatrix}\\,\\right|\\). The outer modulus is needed because a determinant can come out negative — its sign depends on the order in which the vertices are listed — whereas an area cannot. Removing the modulus therefore gives \\(\\begin{vmatrix} x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\\\ x_3 & y_3 & 1 \\end{vmatrix} = \\pm 2A\\), which is the option \\(\\pm 2A\\)."
+  },
+  {
+   "hash": "ad7630ac2c0cd2e7b61bb539d15442e7b073cfa6e392f32a92b78147d7ebd132",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Integration as the Inverse of Differentiation",
+   "stem": "\\( \\int 2^{x+2} \\, dx \\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( 2^{x+2} + C \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( 2^{x+2} \\log 2 + C \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( \\frac{2^{x+2}}{\\log 2} + C \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( 2 \\cdot \\frac{2^x}{\\log 2} + C \\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Since \\(\\frac{d}{dx}\\left(a^{u}\\right) = a^{u}\\log a\\) when \\(u = x + c\\) and \\(c\\) is constant, we have \\(\\int a^{x+c}\\,dx = \\frac{a^{x+c}}{\\log a} + C\\). With \\(a = 2\\) and \\(c = 2\\), \\(\\int 2^{x+2}\\,dx = \\frac{2^{x+2}}{\\log 2} + C\\), which is option \\(\\frac{2^{x+2}}{\\log 2} + C\\). (The near-miss option \\(2 \\cdot \\frac{2^{x}}{\\log 2} + C\\) equals \\(\\frac{2^{x+1}}{\\log 2} + C\\), which is half the correct value.)"
+  },
+  {
+   "hash": "08dd690aeb5d69c48ca282c5bd04615d18c6e6c5590f079b305dcd8fd9fe4b25",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Integration using Trigonometric Identities",
+   "stem": "\\( \\int \\frac{2 \\cos 2x - 1}{1 + 2 \\sin x} \\, dx \\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( x - 2 \\cos x + C \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( x + 2 \\cos x + C \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( - x - 2 \\cos x + C \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( - x + 2 \\cos x + C \\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Use \\(\\cos 2x = 1 - 2\\sin^{2}x\\) to make the numerator a difference of squares: \\(2\\cos 2x - 1 = 2\\left(1 - 2\\sin^{2}x\\right) - 1 = 1 - 4\\sin^{2}x = (1 - 2\\sin x)(1 + 2\\sin x)\\). The factor \\(1 + 2\\sin x\\) cancels with the denominator, leaving \\(\\int (1 - 2\\sin x)\\,dx = x + 2\\cos x + C\\), which is option \\(x + 2\\cos x + C\\)."
+  },
+  {
+   "hash": "e5eb833a2f29c27fc9c8ffb0c649809ef72962ef044ebd84128cbc49a5868c28",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Variables Separable",
+   "stem": "The solution of the differential equation \\( \\frac{dx}{x} + \\frac{dy}{y} = 0 \\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( \\frac{1}{x} + \\frac{1}{y} = C \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( \\log x - \\log y = C \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( xy = C \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( x + y = C \\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "The variables are already separated, so integrate term by term: \\(\\int\\frac{dx}{x} + \\int\\frac{dy}{y} = 0\\) gives \\(\\log|x| + \\log|y| = \\log C\\). Combining the logarithms, \\(\\log|xy| = \\log C\\), so \\(xy = C\\), which is option xy = C."
+  },
+  {
+   "hash": "d9e83d3edf02bb184b2d6ccc5e3d939bcb061cb05c82a7c4b5c05f9fb90522a4",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Order and Degree of a Differential Equation",
+   "stem": "What is the product of the order and degree of the differential equation \\( \\frac{d^2 y}{dx^2} \\sin y + \\left( \\frac{dy}{dx} \\right)^3 \\cos y = \\sqrt{y} \\) ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "3"
+    },
+    {
+     "label": "B",
+     "text": "2"
+    },
+    {
+     "label": "C",
+     "text": "6"
+    },
+    {
+     "label": "D",
+     "text": "not defined"
+    }
+   ],
+   "answer": "B",
+   "solution": "The highest order derivative present is \\(\\frac{d^{2}y}{dx^{2}}\\), so the order is 2. For the degree, the equation must be a polynomial in the derivatives, and it already is — the \\(\\sqrt{y}\\) involves the dependent variable alone and not any derivative, so it does not disturb the degree, and \\(\\sin y\\), \\(\\cos y\\) are coefficients. The highest order derivative \\(\\frac{d^{2}y}{dx^{2}}\\) occurs to the first power, so the degree is 1. The product is \\(2 \\times 1 = 2\\), which is option 2."
+  },
+  {
+   "hash": "a4ad6585718b77c9a4ccf9b0cfcd14370db1719f26b1e8f668d5bac532a5278c",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Components and Direction Cosines",
+   "stem": "If a vector makes an angle of \\( \\frac{\\pi}{4} \\) with the positive directions of both x-axis and y-axis, then the angle which it makes with positive z-axis is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( \\frac{\\pi}{4} \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( \\frac{3\\pi}{4} \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( \\frac{\\pi}{2} \\)"
+    },
+    {
+     "label": "D",
+     "text": "0"
+    }
+   ],
+   "answer": "C",
+   "solution": "The direction cosines of a vector satisfy \\(\\cos^{2}\\alpha + \\cos^{2}\\beta + \\cos^{2}\\gamma = 1\\). Here \\(\\alpha = \\beta = \\frac{\\pi}{4}\\), so \\(\\cos^{2}\\alpha = \\cos^{2}\\beta = \\frac{1}{2}\\) and the relation becomes \\(\\frac{1}{2} + \\frac{1}{2} + \\cos^{2}\\gamma = 1\\). Hence \\(\\cos^{2}\\gamma = 0\\), so \\(\\cos\\gamma = 0\\) and \\(\\gamma = \\frac{\\pi}{2}\\), which is option \\(\\frac{\\pi}{2}\\)."
+  },
+  {
+   "hash": "64f53cb61c74c00abdfbff94a53299f4fb87304ad8514566aeab8276187faaf2",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "\\( \\vec{a} \\) and \\( \\vec{b} \\) are two non-zero vectors such that the projection of \\( \\vec{a} \\) on \\( \\vec{b} \\) is 0. The angle between \\( \\vec{a} \\) and \\( \\vec{b} \\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( \\frac{\\pi}{2} \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( \\pi \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( \\frac{\\pi}{4} \\)"
+    },
+    {
+     "label": "D",
+     "text": "0"
+    }
+   ],
+   "answer": "A",
+   "solution": "The projection of \\(\\vec{a}\\) on \\(\\vec{b}\\) is \\(\\frac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|} = |\\vec{a}|\\cos\\theta\\), where \\(\\theta\\) is the angle between them. Both vectors are non-zero, so \\(|\\vec{a}| \\neq 0\\) and the projection can vanish only if \\(\\cos\\theta = 0\\). Hence \\(\\theta = \\frac{\\pi}{2}\\), which is option \\(\\frac{\\pi}{2}\\)."
+  },
+  {
+   "hash": "7d11586a7eccb4372f18d1e246b61eb5bc84eeb8235288d3709584ab79bcdc57",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Section Formula",
+   "stem": "In \\( \\Delta \\, ABC \\), \\( \\overrightarrow{AB} = \\hat{i} + \\hat{j} + 2\\hat{k} \\) and \\( \\overrightarrow{AC} = 3\\hat{i} - \\hat{j} + 4\\hat{k} \\). If D is mid-point of BC, then vector \\( \\overrightarrow{AD} \\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( 4\\hat{i} + 6\\hat{k} \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( 2\\hat{i} - 2\\hat{j} + 2\\hat{k} \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( \\hat{i} - \\hat{j} + \\hat{k} \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( 2\\hat{i} + 3\\hat{k} \\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Since D is the mid-point of BC, AD is the median from A, and the median satisfies \\(\\overrightarrow{AD} = \\frac{1}{2}\\left(\\overrightarrow{AB} + \\overrightarrow{AC}\\right)\\). Adding the two given vectors, \\(\\overrightarrow{AB} + \\overrightarrow{AC} = (1 + 3)\\hat{i} + (1 - 1)\\hat{j} + (2 + 4)\\hat{k} = 4\\hat{i} + 6\\hat{k}\\). Halving gives \\(\\overrightarrow{AD} = 2\\hat{i} + 3\\hat{k}\\), which is option \\(2\\hat{i} + 3\\hat{k}\\)."
+  },
+  {
+   "hash": "f37061ad3063f32c994a3eb5e66e1d75ac4aa12217066ce04b58cbc86fbecbba",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Angle Between Two Lines",
+   "stem": "The value of \\( \\lambda \\) for which the angle between the lines \\( \\vec{r} = \\hat{i} + \\hat{j} + \\hat{k} + p(2\\hat{i} + \\hat{j} + 2\\hat{k}) \\) and \\( \\vec{r} = (1 + q)\\hat{i} + (1 + q\\lambda)\\hat{j} + (1 + q)\\hat{k} \\) is \\( \\frac{\\pi}{2} \\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( - 4 \\)"
+    },
+    {
+     "label": "B",
+     "text": "4"
+    },
+    {
+     "label": "C",
+     "text": "2"
+    },
+    {
+     "label": "D",
+     "text": "\\( - 2 \\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "The first line has direction vector \\(\\vec{b_1} = 2\\hat{i} + \\hat{j} + 2\\hat{k}\\). Grouping the second line by its parameter, \\(\\vec{r} = \\left(\\hat{i} + \\hat{j} + \\hat{k}\\right) + q\\left(\\hat{i} + \\lambda\\hat{j} + \\hat{k}\\right)\\), so \\(\\vec{b_2} = \\hat{i} + \\lambda\\hat{j} + \\hat{k}\\). An angle of \\(\\frac{\\pi}{2}\\) means the two directions are perpendicular, so \\(\\vec{b_1}\\cdot\\vec{b_2} = 0\\), that is \\(2(1) + 1(\\lambda) + 2(1) = 0\\). Hence \\(\\lambda + 4 = 0\\), giving \\(\\lambda = -4\\), which is option \\(-4\\)."
+  },
+  {
+   "hash": "cba2759c875642bb173ecb935bc508d7bf9e5e53d3197cfafcc308c945644131",
+   "ref": "Q14",
+   "questionNumber": "14",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "If \\( P(A \\cap B) = \\frac{1}{8} \\) and \\( P(\\overline{A}) = \\frac{3}{4} \\), then \\( P\\left( \\frac{B}{A} \\right) \\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( \\frac{1}{2} \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( \\frac{1}{3} \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( \\frac{1}{6} \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( \\frac{2}{3} \\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "First recover \\(P(A)\\) from its complement: \\(P(A) = 1 - P(\\overline{A}) = 1 - \\frac{3}{4} = \\frac{1}{4}\\). By the definition of conditional probability, \\(P\\left(\\frac{B}{A}\\right) = \\frac{P(A \\cap B)}{P(A)} = \\frac{1/8}{1/4} = \\frac{1}{8} \\times \\frac{4}{1} = \\frac{1}{2}\\), which is option \\(\\frac{1}{2}\\)."
+  },
+  {
+   "hash": "aa1321b96ff15d583f0d9e7b12ff3a0758ea2c48bea73fedf9f7eab15f1a9e58",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "The value of k for which function \\( f(x) = \\begin{cases} x^2, & x \\geq 0 \\\\ kx, & x < 0 \\end{cases} \\) is differentiable at x = 0 is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "1"
+    },
+    {
+     "label": "B",
+     "text": "2"
+    },
+    {
+     "label": "C",
+     "text": "any real number"
+    },
+    {
+     "label": "D",
+     "text": "0"
+    }
+   ],
+   "answer": "D",
+   "solution": "Both branches vanish at 0, so \\(f(0) = 0\\) and \\(f\\) is continuous there for every \\(k\\); differentiability is the real constraint. The right-hand derivative is \\(\\lim_{h \\to 0^{+}}\\frac{f(h) - f(0)}{h} = \\lim_{h \\to 0^{+}}\\frac{h^{2}}{h} = 0\\), while the left-hand derivative is \\(\\lim_{h \\to 0^{-}}\\frac{f(h) - f(0)}{h} = \\lim_{h \\to 0^{-}}\\frac{kh}{h} = k\\). For \\(f\\) to be differentiable at 0 the two must agree, so \\(k = 0\\), which is option 0."
+  },
+  {
+   "hash": "004dea7b72355bf56778a6448c5ee14800e8224640c900592aaec192fef3c06e",
+   "ref": "Q16",
+   "questionNumber": "16",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "If \\( y = \\frac{\\cos x - \\sin x}{\\cos x + \\sin x} \\), then \\( \\frac{dy}{dx} \\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( - \\sec^2 \\left( \\frac{\\pi}{4} - x \\right) \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( \\sec^2 \\left( \\frac{\\pi}{4} - x \\right) \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( \\log \\left| \\sec \\left( \\frac{\\pi}{4} - x \\right) \\right| \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( - \\log \\left| \\sec \\left( \\frac{\\pi}{4} - x \\right) \\right| \\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Divide the numerator and the denominator by \\(\\cos x\\): \\(y = \\frac{1 - \\tan x}{1 + \\tan x}\\). Since \\(\\tan\\frac{\\pi}{4} = 1\\), this is exactly the expansion of \\(\\tan\\left(\\frac{\\pi}{4} - x\\right)\\), so \\(y = \\tan\\left(\\frac{\\pi}{4} - x\\right)\\). Differentiating with the chain rule, the inner derivative is \\(-1\\), so \\(\\frac{dy}{dx} = -\\sec^{2}\\left(\\frac{\\pi}{4} - x\\right)\\), which is option \\(-\\sec^{2}\\left(\\frac{\\pi}{4} - x\\right)\\)."
+  },
+  {
+   "hash": "2fffae24497934d2785d26bf93cc0c65fb94343c815667a961b162732a3a29af",
+   "ref": "Q17",
+   "questionNumber": "17",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "The number of feasible solutions of the linear programming problem given as\nMaximize z = 15x + 30y subject to constraints :\n\\( 3x + y \\leq 12 \\), \\( x + 2y \\leq 10 \\), \\( x \\geq 0 \\), \\( y \\geq 0 \\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "1"
+    },
+    {
+     "label": "B",
+     "text": "2"
+    },
+    {
+     "label": "C",
+     "text": "3"
+    },
+    {
+     "label": "D",
+     "text": "infinite"
+    }
+   ],
+   "answer": "D",
+   "solution": "A feasible solution is any point satisfying all the constraints simultaneously, not merely a corner point. Here the constraints bound a region in the first quadrant with corner points \\((0, 0)\\), \\((4, 0)\\), \\(\\left(\\frac{14}{5}, \\frac{18}{5}\\right)\\) and \\((0, 5)\\) — the third coming from solving \\(3x + y = 12\\) with \\(x + 2y = 10\\). This region has non-zero area, so it contains infinitely many points, each of them a feasible solution. Hence the number of feasible solutions is infinite, which is option infinite. (The counts 3 and 4 would answer the different question of how many corner points there are.)"
+  },
+  {
+   "hash": "ea50fc922e094413d1fef9c4633230db15fb4bcb5ff0be278fa6519411ab70fd",
+   "ref": "Q18",
+   "questionNumber": "18",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "The feasible region of a linear programming problem is shown in the figure below :\nWhich of the following are the possible constraints ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\( x + 2y \\geq 4 \\), \\( x + y \\leq 3 \\), \\( x \\geq 0 \\), \\( y \\geq 0 \\)"
+    },
+    {
+     "label": "B",
+     "text": "\\( x + 2y \\leq 4 \\), \\( x + y \\leq 3 \\), \\( x \\geq 0 \\), \\( y \\geq 0 \\)"
+    },
+    {
+     "label": "C",
+     "text": "\\( x + 2y \\geq 4 \\), \\( x + y \\geq 3 \\), \\( x \\geq 0 \\), \\( y \\geq 0 \\)"
+    },
+    {
+     "label": "D",
+     "text": "\\( x + 2y \\geq 4 \\), \\( x + y \\geq 3 \\), \\( x \\leq 0 \\), \\( y \\leq 0 \\)"
+    }
+   ],
+   "answer": "C",
+   "figure": "REQUIRED — the shaded unbounded feasible region is given only as a graph; the stem names no vertices and no inequalities, so the constraints cannot be identified without it. The printed graph shows the two boundary lines labelled x+y=3 and x+2y=4 with the region above both shaded. Page idx 10.",
+   "solution": "The shading lies in the first quadrant and on the far side of both lines from the origin, so \\(x \\ge 0\\) and \\(y \\ge 0\\), and the two remaining inequalities must exclude the origin. Testing \\((0, 0)\\) in \\(x + 2y \\ge 4\\) gives \\(0 \\ge 4\\), which is false, so the origin is not in that half-plane — matching the figure; testing it in \\(x + y \\ge 3\\) gives \\(0 \\ge 3\\), again false and again matching. Had either inequality pointed the other way the origin would have been included and the region would have been the bounded triangle near the origin, not the unbounded region shown. The constraints are therefore \\(x + 2y \\ge 4\\), \\(x + y \\ge 3\\), \\(x \\ge 0\\), \\(y \\ge 0\\)."
+  },
+  {
+   "hash": "3db0a5228b237f3017857bcb526093d6cc60b297c6207e847e7738d78e70832a",
+   "ref": "Q19",
+   "questionNumber": "19",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "Assertion (A) : Range of \\( \\left[ \\sin^{-1} x + 2 \\cos^{-1} x \\right] \\) is \\( [0, \\pi] \\).\nReason (R) : Principal value branch of \\( \\sin^{-1} x \\) has range \\( \\left[ -\\frac{\\pi}{2}, \\frac{\\pi}{2} \\right] \\).",
+   "context": "Questions number 19 and 20 are Assertion and Reason based questions carrying 1 mark each. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (a), (b), (c) and (d) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true and Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false and Reason (R) is true."
+    }
+   ],
+   "answer": "D",
+   "solution": "Using the identity \\(\\sin^{-1}x + \\cos^{-1}x = \\frac{\\pi}{2}\\), the expression can be rewritten as \\(\\sin^{-1}x + 2\\cos^{-1}x = \\left(\\sin^{-1}x + \\cos^{-1}x\\right) + \\cos^{-1}x = \\frac{\\pi}{2} + \\cos^{-1}x\\). As \\(x\\) runs over \\([-1, 1]\\), \\(\\cos^{-1}x\\) takes every value in \\([0, \\pi]\\), so the expression takes every value in \\(\\left[\\frac{\\pi}{2}, \\frac{3\\pi}{2}\\right]\\). That is not \\([0, \\pi]\\), so Assertion (A) is false. Reason (R) simply states the principal value branch of \\(\\sin^{-1}\\), which is indeed \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\), so it is true. Hence Assertion (A) is false and Reason (R) is true."
+  },
+  {
+   "hash": "722064741c846b665c69c1d2f150e71a0fe4134e10a2f8fafbca4829e025757e",
+   "ref": "Q20",
+   "questionNumber": "20",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Angle Between Two Lines",
+   "stem": "Assertion (A) : A line through the points (4, 7, 8) and (2, 3, 4) is parallel to a line through the points \\( (-1, -2, 1) \\) and (1, 2, 5).\nReason (R) : Lines \\( \\vec{r} = \\vec{a_1} + \\lambda \\vec{b_1} \\) and \\( \\vec{r} = \\vec{a_2} + \\mu \\vec{b_2} \\) are parallel if \\( \\vec{b_1} \\cdot \\vec{b_2} = 0 \\).",
+   "context": "Questions number 19 and 20 are Assertion and Reason based questions carrying 1 mark each. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (a), (b), (c) and (d) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true and Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false and Reason (R) is true."
+    }
+   ],
+   "answer": "C",
+   "solution": "The first line has direction ratios \\((2 - 4,\\ 3 - 7,\\ 4 - 8) = (-2, -4, -4)\\) and the second \\(\\left(1 - (-1),\\ 2 - (-2),\\ 5 - 1\\right) = (2, 4, 4)\\). These are proportional, one being \\(-1\\) times the other, so the lines are parallel and Assertion (A) is true. Reason (R) is false: \\(\\vec{b_1}\\cdot\\vec{b_2} = 0\\) is the condition for the two lines to be perpendicular, whereas parallel lines require \\(\\vec{b_1} \\times \\vec{b_2} = \\vec{0}\\) (equivalently, proportional direction ratios). Hence Assertion (A) is true and Reason (R) is false."
+  },
+  {
+   "hash": "9a66ac78fdd3d298eb729470051f8eb0620f3cfe50dc0df1e8422292670040df",
+   "ref": "Q21",
+   "questionNumber": "21",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "If \\( \\vec{r} = 3\\hat{i} - 2\\hat{j} + 6\\hat{k} \\), find the value of \\( (\\vec{r} \\times \\hat{j}) \\cdot (\\vec{r} \\times \\hat{k}) - 12 \\).",
+   "solution": "Take the two cross products first, using \\(\\hat{i} \\times \\hat{j} = \\hat{k}\\), \\(\\hat{j} \\times \\hat{j} = \\vec{0}\\) and \\(\\hat{k} \\times \\hat{j} = -\\hat{i}\\): \\(\\vec{r} \\times \\hat{j} = 3\\left(\\hat{i} \\times \\hat{j}\\right) - 2\\left(\\hat{j} \\times \\hat{j}\\right) + 6\\left(\\hat{k} \\times \\hat{j}\\right) = 3\\hat{k} - 6\\hat{i}\\). Similarly, using \\(\\hat{i} \\times \\hat{k} = -\\hat{j}\\), \\(\\hat{j} \\times \\hat{k} = \\hat{i}\\) and \\(\\hat{k} \\times \\hat{k} = \\vec{0}\\): \\(\\vec{r} \\times \\hat{k} = -3\\hat{j} - 2\\hat{i}\\). Their scalar product is \\(\\left(-6\\hat{i} + 3\\hat{k}\\right)\\cdot\\left(-2\\hat{i} - 3\\hat{j}\\right) = (-6)(-2) + (0)(-3) + (3)(0) = 12\\). Hence \\(\\left(\\vec{r} \\times \\hat{j}\\right)\\cdot\\left(\\vec{r} \\times \\hat{k}\\right) - 12 = 12 - 12 = 0\\)."
+  },
+  {
+   "hash": "0ff42fb3f978a39849799b6233ba6a23f3a554acd1c2b88d2dac1e55fb99a3fc",
+   "ref": "Q22",
+   "questionNumber": "22",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Angle Between Two Lines",
+   "stem": "If the angle between the lines \\( \\frac{x-5}{\\alpha} = \\frac{y+2}{-5} = \\frac{z + \\frac{24}{5}}{\\beta} \\) and \\( \\frac{x}{1} = \\frac{y}{0} = \\frac{z}{1} \\) is \\( \\frac{\\pi}{4} \\), find the relation between \\( \\alpha \\) and \\( \\beta \\).",
+   "solution": "The two lines have direction ratios \\((\\alpha,\\ -5,\\ \\beta)\\) and \\((1,\\ 0,\\ 1)\\). The angle between them satisfies \\(\\cos\\frac{\\pi}{4} = \\frac{\\left|\\alpha(1) + (-5)(0) + \\beta(1)\\right|}{\\sqrt{\\alpha^{2} + 25 + \\beta^{2}}\\;\\sqrt{1 + 0 + 1}}\\), that is \\(\\frac{1}{\\sqrt{2}} = \\frac{|\\alpha + \\beta|}{\\sqrt{\\alpha^{2} + \\beta^{2} + 25}\\;\\sqrt{2}}\\). The \\(\\sqrt{2}\\) cancels from both sides, leaving \\(|\\alpha + \\beta| = \\sqrt{\\alpha^{2} + \\beta^{2} + 25}\\). Squaring, \\(\\alpha^{2} + 2\\alpha\\beta + \\beta^{2} = \\alpha^{2} + \\beta^{2} + 25\\), so \\(2\\alpha\\beta = 25\\). The required relation is \\(\\alpha\\beta = \\frac{25}{2}\\)."
+  },
+  {
+   "hash": "23b316ab932979a57afcbabe6d97205483f1b26dbb336ef9a83f2616a10af3a4",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "If f(x) = a(tan x \\( - \\) cot x), where a > 0, then find whether f(x) is increasing or decreasing function in its domain.",
+   "solution": "Differentiating, \\(f'(x) = a\\left(\\sec^{2}x + \\operatorname{cosec}^{2}x\\right)\\), since \\(\\frac{d}{dx}(\\tan x) = \\sec^{2}x\\) and \\(\\frac{d}{dx}(\\cot x) = -\\operatorname{cosec}^{2}x\\), and the two minus signs combine into a plus. The domain of \\(f\\) is the set of \\(x\\) for which both \\(\\tan x\\) and \\(\\cot x\\) are defined, i.e. \\(x\\) is not a multiple of \\(\\frac{\\pi}{2}\\); on that domain \\(\\sec x\\) and \\(\\operatorname{cosec}x\\) are defined and non-zero, so \\(\\sec^{2}x > 0\\) and \\(\\operatorname{cosec}^{2}x > 0\\). Since \\(a > 0\\) as well, \\(f'(x) > 0\\) at every point of the domain. Hence \\(f\\) is an increasing function throughout its domain."
+  },
+  {
+   "hash": "33c52291c7c52806c19cfc564a7bc81b2c2491ec38a934cd1e7f84322cc2cfc5",
+   "ref": "Q24a",
+   "questionNumber": "24 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Evaluating Inverse Trigonometric Expressions",
+   "stem": "Evaluate : \\( 3 \\sin^{-1} \\left( \\frac{1}{\\sqrt{2}} \\right) + 2 \\cos^{-1} \\left( \\frac{\\sqrt{3}}{2} \\right) + \\cos^{-1} (0) \\)",
+   "solution": "Take each inverse function in its principal value branch. \\(\\sin^{-1}\\frac{1}{\\sqrt{2}} = \\frac{\\pi}{4}\\), since \\(\\frac{\\pi}{4} \\in \\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\); \\(\\cos^{-1}\\frac{\\sqrt{3}}{2} = \\frac{\\pi}{6}\\), since \\(\\frac{\\pi}{6} \\in [0, \\pi]\\); and \\(\\cos^{-1}0 = \\frac{\\pi}{2}\\). Substituting, the expression is \\(3\\left(\\frac{\\pi}{4}\\right) + 2\\left(\\frac{\\pi}{6}\\right) + \\frac{\\pi}{2} = \\frac{3\\pi}{4} + \\frac{\\pi}{3} + \\frac{\\pi}{2}\\). Over the common denominator 12 this is \\(\\frac{9\\pi + 4\\pi + 6\\pi}{12} = \\frac{19\\pi}{12}\\)."
+  },
+  {
+   "hash": "abf05f3d6d74652c8ed7d8fe30cf98ccf8654454918dfc278f795adf925fab5e",
+   "ref": "Q24b",
+   "questionNumber": "24 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "Draw the graph of \\( f(x) = \\sin^{-1} x \\), \\( x \\in \\left[ -\\frac{1}{\\sqrt{2}}, \\frac{1}{\\sqrt{2}} \\right] \\). Also, write range of f(x).",
+   "solution": "On \\(\\left[-\\frac{1}{\\sqrt{2}}, \\frac{1}{\\sqrt{2}}\\right]\\) the graph is the central portion of the usual arc-sine curve. It is continuous and strictly increasing, passes through the origin, is concave down for \\(x < 0\\) and concave up for \\(x > 0\\) (since \\(f''(x) = \\frac{x}{\\left(1 - x^{2}\\right)^{3/2}}\\)), and runs between the two endpoints \\(\\left(-\\frac{1}{\\sqrt{2}},\\, -\\frac{\\pi}{4}\\right)\\) and \\(\\left(\\frac{1}{\\sqrt{2}},\\, \\frac{\\pi}{4}\\right)\\), because \\(\\sin\\left(\\pm\\frac{\\pi}{4}\\right) = \\pm\\frac{1}{\\sqrt{2}}\\). To scale the sketch, mark \\(\\pm\\frac{1}{\\sqrt{2}}\\) on the x-axis and \\(\\pm\\frac{\\pi}{4}\\) on the y-axis; the curve is the graph of \\(y = \\sin x\\) reflected in the line \\(y = x\\), restricted to this stretch. Since \\(f\\) is increasing, its least and greatest values occur at the two endpoints, so the range of f(x) is \\(\\left[-\\frac{\\pi}{4}, \\frac{\\pi}{4}\\right]\\)."
+  },
+  {
+   "hash": "006d7cefd3ce1bd39348344bf4fff83c412ff00844822878b0252b624b18e690",
+   "ref": "Q25a",
+   "questionNumber": "25 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Logarithmic Differentiation",
+   "stem": "If \\( y = x^{\\frac{1}{x}} \\), then find \\( \\frac{dy}{dx} \\) at x = 1.",
+   "solution": "The variable appears in both the base and the exponent, so use logarithmic differentiation. Taking logarithms, \\(\\log y = \\frac{1}{x}\\log x\\). Differentiating both sides with respect to \\(x\\), and using the product rule on the right, \\(\\frac{1}{y}\\frac{dy}{dx} = -\\frac{1}{x^{2}}\\log x + \\frac{1}{x}\\cdot\\frac{1}{x} = \\frac{1 - \\log x}{x^{2}}\\). Hence \\(\\frac{dy}{dx} = x^{\\frac{1}{x}}\\cdot\\frac{1 - \\log x}{x^{2}}\\). At \\(x = 1\\) we have \\(x^{1/x} = 1\\) and \\(\\log 1 = 0\\), so \\(\\left(\\frac{dy}{dx}\\right)_{x=1} = 1 \\times \\frac{1 - 0}{1} = 1\\)."
+  },
+  {
+   "hash": "906d224addf8ef7c08d1d1ff230178232160865e8bf4e08fb0cf592f345f8004",
+   "ref": "Q25b",
+   "questionNumber": "25 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Functions in Parametric Form",
+   "stem": "If x = a sin 2t, y = a(cos 2t + log tan t), then find \\( \\frac{dy}{dx} \\).",
+   "solution": "Differentiate each of x and y with respect to the parameter t. First, \\(\\frac{dx}{dt} = 2a\\cos 2t\\). Next, \\(\\frac{dy}{dt} = a\\left(-2\\sin 2t + \\frac{1}{\\tan t}\\cdot\\sec^{2}t\\right) = 2a\\left(-\\sin 2t + \\frac{\\sec^{2}t}{2\\tan t}\\right)\\). Simplify the second term: \\(\\frac{\\sec^{2}t}{2\\tan t} = \\frac{1}{2\\sin t\\cos t} = \\frac{1}{\\sin 2t}\\), so \\(\\frac{dy}{dt} = 2a\\left(\\frac{1 - \\sin^{2}2t}{\\sin 2t}\\right) = 2a\\,\\frac{\\cos^{2}2t}{\\sin 2t}\\). Therefore \\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{2a\\cos^{2}2t/\\sin 2t}{2a\\cos 2t} = \\frac{\\cos 2t}{\\sin 2t} = \\cot 2t\\)."
+  },
+  {
+   "hash": "9c2fb502ba280c2ab92bc5d213624146444078c7a615271e34a2d8443a2aa9ef",
+   "ref": "Q26a",
+   "questionNumber": "26 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "Find the general solution of the differential equation :\n\\( \\frac{d}{dx} (x y^2) = 2y (1 + x^2) \\)",
+   "solution": "Expand the derivative on the left by the product rule: \\(\\frac{d}{dx}\\left(xy^{2}\\right) = 2xy\\frac{dy}{dx} + y^{2}\\), so the equation is \\(2xy\\frac{dy}{dx} + y^{2} = 2y\\left(1 + x^{2}\\right)\\). Dividing throughout by \\(2xy\\) puts it in linear form, \\(\\frac{dy}{dx} + \\frac{y}{2x} = \\frac{1}{x} + x\\), with \\(P = \\frac{1}{2x}\\) and \\(Q = \\frac{1}{x} + x\\). The integrating factor is \\(e^{\\int\\frac{1}{2x}dx} = e^{\\frac{1}{2}\\log x} = \\sqrt{x}\\). The solution is then \\(y\\sqrt{x} = \\int\\sqrt{x}\\left(\\frac{1}{x} + x\\right)dx = \\int\\left(x^{-\\frac{1}{2}} + x^{\\frac{3}{2}}\\right)dx = 2\\sqrt{x} + \\frac{2}{5}x^{\\frac{5}{2}} + C\\). Dividing by \\(\\sqrt{x}\\), the general solution is \\(y = 2 + \\frac{2x^{2}}{5} + \\frac{C}{\\sqrt{x}}\\)."
+  },
+  {
+   "hash": "a9f981b39e267a87b3ff636ecfa187a13e94335b59d22d034616e76f226a1ce4",
+   "ref": "Q26b",
+   "questionNumber": "26 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Solve the following differential equation :\n\\( x e^{\\frac{y}{x}} - y + x \\frac{dy}{dx} = 0 \\)",
+   "solution": "Rearrange to isolate the derivative: \\(x\\frac{dy}{dx} = y - xe^{\\frac{y}{x}}\\), so \\(\\frac{dy}{dx} = \\frac{y}{x} - e^{\\frac{y}{x}}\\). The right-hand side depends on x and y only through \\(\\frac{y}{x}\\), so the equation is homogeneous. Put \\(y = vx\\), giving \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\); substituting, \\(v + x\\frac{dv}{dx} = v - e^{v}\\), so the v terms cancel and \\(x\\frac{dv}{dx} = -e^{v}\\). Separating the variables, \\(-e^{-v}\\,dv = \\frac{dx}{x}\\). Integrating both sides, and noting \\(\\int -e^{-v}\\,dv = e^{-v}\\), we get \\(e^{-v} = \\log|x| + C\\). Restoring \\(v = \\frac{y}{x}\\), the solution is \\(e^{-\\frac{y}{x}} = \\log|x| + C\\)."
+  },
+  {
+   "hash": "87532ed26aef98d05ef6d634a3844b7182e7e8881712579cd9a6793b1231c77c",
+   "ref": "Q27",
+   "questionNumber": "27",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "Evaluate :\n\\( \\int_{1}^{3} \\frac{\\sqrt{4-x}}{\\sqrt{x} + \\sqrt{4-x}} \\, dx \\)",
+   "solution": "Use the property \\(\\int_{a}^{b}f(x)\\,dx = \\int_{a}^{b}f(a + b - x)\\,dx\\). Here \\(a + b = 1 + 3 = 4\\), so replacing x by \\(4 - x\\) sends \\(\\sqrt{4 - x}\\) to \\(\\sqrt{x}\\) and \\(\\sqrt{x}\\) to \\(\\sqrt{4 - x}\\), giving \\(I = \\int_{1}^{3}\\frac{\\sqrt{x}}{\\sqrt{4 - x} + \\sqrt{x}}\\,dx\\). The two expressions for I share the same denominator and their numerators add up to exactly that denominator, so adding them gives \\(2I = \\int_{1}^{3}\\frac{\\sqrt{4 - x} + \\sqrt{x}}{\\sqrt{4 - x} + \\sqrt{x}}\\,dx = \\int_{1}^{3}1\\,dx = 3 - 1 = 2\\). Hence \\(I = 1\\)."
+  },
+  {
+   "hash": "ac493c6dbb3803dae2d2076af19be29bbaedd54b56d23042bf90cda35789fc69",
+   "ref": "Q28",
+   "questionNumber": "28",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals by Substitution",
+   "stem": "Evaluate :\n\\( \\int_{1}^{e} \\frac{1}{\\sqrt{4x^2 - (x \\log x)^2}} \\, dx \\)",
+   "solution": "Pull \\(x^{2}\\) out of the radical, which is legitimate because \\(x \\ge 1 > 0\\) on the whole range of integration: \\(\\sqrt{4x^{2} - (x\\log x)^{2}} = \\sqrt{x^{2}\\left(4 - (\\log x)^{2}\\right)} = x\\sqrt{4 - (\\log x)^{2}}\\). So \\(I = \\int_{1}^{e}\\frac{dx}{x\\sqrt{4 - (\\log x)^{2}}}\\). Now substitute \\(\\log x = t\\), so that \\(\\frac{1}{x}dx = dt\\); the limits transform to \\(t = \\log 1 = 0\\) and \\(t = \\log e = 1\\). This gives \\(I = \\int_{0}^{1}\\frac{dt}{\\sqrt{2^{2} - t^{2}}} = \\left[\\sin^{-1}\\frac{t}{2}\\right]_{0}^{1} = \\sin^{-1}\\frac{1}{2} - \\sin^{-1}0 = \\frac{\\pi}{6}\\)."
+  },
+  {
+   "hash": "299a2d988bd3be08e3b40b8bc33ff91df719ec1c9930c4e4531d9aaaaff6ac9d",
+   "ref": "Q29a",
+   "questionNumber": "29 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration using Trigonometric Identities",
+   "stem": "Find :\n\\( \\int \\frac{\\cos x}{\\sin 3x} \\, dx \\)",
+   "solution": "Expand the denominator with the triple-angle identity \\(\\sin 3x = 3\\sin x - 4\\sin^{3}x\\), so that everything is written in \\(\\sin x\\) with a spare \\(\\cos x\\,dx\\) available: \\(I = \\int\\frac{\\cos x\\,dx}{3\\sin x - 4\\sin^{3}x}\\). Put \\(\\sin x = t\\), so \\(\\cos x\\,dx = dt\\) and \\(I = \\int\\frac{dt}{3t - 4t^{3}}\\). Factor \\(t^{3}\\) out of the denominator to set up the next substitution: \\(I = \\int\\frac{dt}{t^{3}\\left(\\frac{3}{t^{2}} - 4\\right)}\\). Now put \\(\\frac{3}{t^{2}} - 4 = z\\), so that \\(-\\frac{6}{t^{3}}dt = dz\\), i.e. \\(\\frac{dt}{t^{3}} = -\\frac{dz}{6}\\). Then \\(I = -\\frac{1}{6}\\int\\frac{dz}{z} = -\\frac{1}{6}\\log|z| + C\\). Restoring \\(z = \\frac{3}{\\sin^{2}x} - 4\\), the integral is \\(I = -\\frac{1}{6}\\log\\left|3\\operatorname{cosec}^{2}x - 4\\right| + C\\). (Differentiating this back returns \\(\\frac{\\operatorname{cosec}^{2}x\\cot x}{3\\operatorname{cosec}^{2}x - 4}\\), which on multiplying numerator and denominator by \\(\\sin^{3}x\\) becomes \\(\\frac{\\cos x}{3\\sin x - 4\\sin^{3}x}\\), the original integrand.)"
+  },
+  {
+   "hash": "452493db3c535906566ecbd0a2ed640c08c7167189bd1c25e71652512dea44e1",
+   "ref": "Q29b",
+   "questionNumber": "29 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Parts",
+   "stem": "Find :\n\\( \\int x^2 \\log (x^2 + 1) \\, dx \\)",
+   "solution": "Integrate by parts, taking \\(\\log\\left(x^{2} + 1\\right)\\) as the first function and \\(x^{2}\\) as the second, so that the logarithm is differentiated away: \\(I = \\log\\left(x^{2} + 1\\right)\\cdot\\frac{x^{3}}{3} - \\int\\frac{2x}{x^{2} + 1}\\cdot\\frac{x^{3}}{3}\\,dx = \\frac{x^{3}}{3}\\log\\left(x^{2} + 1\\right) - \\frac{2}{3}\\int\\frac{x^{4}}{x^{2} + 1}\\,dx\\). The remaining integrand is an improper algebraic fraction, so divide: \\(\\frac{x^{4}}{x^{2} + 1} = x^{2} - 1 + \\frac{1}{x^{2} + 1}\\), whence \\(\\int\\frac{x^{4}}{x^{2} + 1}dx = \\frac{x^{3}}{3} - x + \\tan^{-1}x\\). Therefore \\(I = \\frac{x^{3}}{3}\\log\\left(x^{2} + 1\\right) - \\frac{2}{3}\\left(\\frac{x^{3}}{3} - x + \\tan^{-1}x\\right) + C\\)."
+  },
+  {
+   "hash": "172c5b11035904f7bcb09934813c723b4b1848fe50df0b6984609faa1161202f",
+   "ref": "Q30",
+   "questionNumber": "30",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Determine graphically the minimum value of the following objective function :\nz = 500x + 400y\nsubject to constraints\n\\( x + y \\leq 200 \\),\n\\( x \\geq 20 \\),\n\\( y \\geq 4x \\),\n\\( y \\geq 0 \\).",
+   "solution": "Draw the lines \\(x + y = 200\\), \\(x = 20\\) and \\(y = 4x\\). The feasible region is the set of points on or below \\(x + y = 200\\), on or to the right of \\(x = 20\\), and on or above \\(y = 4x\\); the constraint \\(y \\ge 0\\) is automatically satisfied there, since \\(y \\ge 4x \\ge 80\\). The region is the bounded triangle whose corner points are found by taking the boundary lines in pairs: \\(x = 20\\) with \\(y = 4x\\) gives \\(B(20, 80)\\); \\(x = 20\\) with \\(x + y = 200\\) gives \\(A(20, 180)\\); and \\(y = 4x\\) with \\(x + y = 200\\) gives \\(x + 4x = 200\\), so \\(x = 40\\) and \\(C(40, 160)\\). Because the region is bounded, the corner point method applies. Evaluating \\(z = 500x + 400y\\): at \\(A(20, 180)\\), \\(z = 10000 + 72000 = 82000\\); at \\(C(40, 160)\\), \\(z = 20000 + 64000 = 84000\\); at \\(B(20, 80)\\), \\(z = 10000 + 32000 = 42000\\). The minimum value is therefore \\(z = 42000\\), attained at \\(x = 20\\), \\(y = 80\\)."
+  },
+  {
+   "hash": "33c0949251fcf16e74a2e52cfdd03a2c52094c4619607065b2bf7126144266e8",
+   "ref": "Q31a",
+   "questionNumber": "31 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "A pair of dice is thrown simultaneously. If X denotes the absolute difference of numbers obtained on the pair of dice, then find the probability distribution of X.",
+   "solution": "Throwing two dice gives \\(6 \\times 6 = 36\\) equally likely ordered outcomes, and \\(X\\), the absolute difference of the two numbers, can take the values 0, 1, 2, 3, 4 and 5. The difference is 0 on the six doublets, so \\(P(X = 0) = \\frac{6}{36}\\). For \\(k = 1, 2, 3, 4, 5\\) there are \\(6 - k\\) ordered pairs whose first entry exceeds the second by k, and just as many with the roles reversed, so \\(2(6 - k)\\) outcomes give \\(X = k\\): that is 10, 8, 6, 4 and 2 outcomes respectively. The probability distribution of X is therefore\n\n| X | 0 | 1 | 2 | 3 | 4 | 5 |\n|---|---|---|---|---|---|---|\n| P(X) | \\( \\frac{6}{36} \\) | \\( \\frac{10}{36} \\) | \\( \\frac{8}{36} \\) | \\( \\frac{6}{36} \\) | \\( \\frac{4}{36} \\) | \\( \\frac{2}{36} \\) |\n\nand as a check the six probabilities add to \\(\\frac{6 + 10 + 8 + 6 + 4 + 2}{36} = \\frac{36}{36} = 1\\)."
+  },
+  {
+   "hash": "7730da83d4873d19b2370647311efe9afbfa7c5b05ccb65b504b33d283cb7293",
+   "ref": "Q31b",
+   "questionNumber": "31 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Bayes' Theorem",
+   "stem": "There are two coins. One of them is a biased coin such that P (head) : P (tail) is 1 : 3 and the other coin is a fair coin. A coin is selected at random and tossed once. If the coin showed head, then find the probability that it is a biased coin.",
+   "solution": "Let \\(E_{1}\\) be the event that the biased coin is selected and \\(E_{2}\\) that the fair coin is selected. The coin is chosen at random from the two, so \\(P(E_{1}) = P(E_{2}) = \\frac{1}{2}\\). Let A be the event that the selected coin shows a head. For the biased coin the ratio \\(P(\\text{head}) : P(\\text{tail}) = 1 : 3\\) splits the total probability 1 into four equal parts, so \\(P\\left(\\frac{A}{E_{1}}\\right) = \\frac{1}{4}\\), while for the fair coin \\(P\\left(\\frac{A}{E_{2}}\\right) = \\frac{1}{2}\\). We want the reverse conditional probability, so apply Bayes' theorem: \\(P\\left(\\frac{E_{1}}{A}\\right) = \\frac{P(E_{1})P\\left(\\frac{A}{E_{1}}\\right)}{P(E_{1})P\\left(\\frac{A}{E_{1}}\\right) + P(E_{2})P\\left(\\frac{A}{E_{2}}\\right)} = \\frac{\\frac{1}{2} \\times \\frac{1}{4}}{\\frac{1}{2} \\times \\frac{1}{4} + \\frac{1}{2} \\times \\frac{1}{2}} = \\frac{\\frac{1}{8}}{\\frac{1}{8} + \\frac{1}{4}} = \\frac{\\frac{1}{8}}{\\frac{3}{8}} = \\frac{1}{3}\\). So the probability that the coin was the biased one is \\(\\frac{1}{3}\\)."
+  },
+  {
+   "hash": "1b2e237e4d793da48ba7d13f05a8883c85bfe507ef738999578ab09ac3f15e21",
+   "ref": "Q32",
+   "questionNumber": "32",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "Show that a function f : \\( \\mathbb{R} \\to \\mathbb{R} \\) defined as \\( f(x) = \\frac{5x - 3}{4} \\) is both one-one and onto.",
+   "solution": "Two things have to be proved.\nOne-one: let \\(x_{1}, x_{2} \\in \\mathbb{R}\\) (the domain) with \\(f(x_{1}) = f(x_{2})\\). Then \\(\\frac{5x_{1} - 3}{4} = \\frac{5x_{2} - 3}{4}\\). Multiplying both sides by 4 gives \\(5x_{1} - 3 = 5x_{2} - 3\\), then adding 3 gives \\(5x_{1} = 5x_{2}\\), and dividing by 5 gives \\(x_{1} = x_{2}\\). Since equal images force equal pre-images, f is one-one.\nOnto: let \\(y \\in \\mathbb{R}\\) be any element of the co-domain and solve \\(y = \\frac{5x - 3}{4}\\) for x. This gives \\(4y = 5x - 3\\), so \\(x = \\frac{4y + 3}{5}\\), which is a real number for every real y and hence lies in the domain. Moreover \\(f\\left(\\frac{4y + 3}{5}\\right) = \\frac{5\\left(\\frac{4y + 3}{5}\\right) - 3}{4} = \\frac{4y + 3 - 3}{4} = \\frac{4y}{4} = y\\). So every element of the co-domain has a pre-image, the range of f equals \\(\\mathbb{R}\\), and f is onto.\nBeing both one-one and onto, f is a bijection."
+  },
+  {
+   "hash": "307f0e7f9d5e90fd4490d2f6629de86b91a32b49fabcc6afe7f3fa0e6fa42e94",
+   "ref": "Q33",
+   "questionNumber": "33",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "The area of the region bounded by the line y = mx (m > 0), the curve \\( x^2 + y^2 = 4 \\) and the x-axis in the first quadrant is \\( \\frac{\\pi}{2} \\) units. Using integration, find the value of m.",
+   "solution": "First find where the line meets the circle. Substituting \\(y = mx\\) into \\(x^{2} + y^{2} = 4\\) gives \\(x^{2}\\left(1 + m^{2}\\right) = 4\\), so in the first quadrant the point of intersection has \\(x = \\frac{2}{\\sqrt{1 + m^{2}}}\\); write this abscissa as a. Between \\(x = 0\\) and \\(x = a\\) the region is capped by the line, and between \\(x = a\\) and \\(x = 2\\) it is capped by the circle, so the condition of the question is \\(\\int_{0}^{a}mx\\,dx + \\int_{a}^{2}\\sqrt{4 - x^{2}}\\,dx = \\frac{\\pi}{2}\\). The first integral is \\(\\left[\\frac{mx^{2}}{2}\\right]_{0}^{a} = \\frac{m}{2}\\cdot\\frac{4}{1 + m^{2}} = \\frac{2m}{1 + m^{2}}\\). For the second, \\(\\int\\sqrt{4 - x^{2}}\\,dx = \\frac{x}{2}\\sqrt{4 - x^{2}} + 2\\sin^{-1}\\frac{x}{2}\\); at the upper limit \\(x = 2\\) this equals \\(0 + 2\\left(\\frac{\\pi}{2}\\right) = \\pi\\), and at the lower limit \\(x = a\\), using \\(\\frac{a}{2} = \\frac{1}{\\sqrt{1 + m^{2}}}\\) and \\(\\sqrt{4 - a^{2}} = \\frac{2m}{\\sqrt{1 + m^{2}}}\\) (positive since \\(m > 0\\)), it equals \\(\\frac{2m}{1 + m^{2}} + 2\\sin^{-1}\\frac{1}{\\sqrt{1 + m^{2}}}\\). Substituting both integrals, the two \\(\\frac{2m}{1 + m^{2}}\\) terms cancel and the condition reduces to \\(\\pi - 2\\sin^{-1}\\frac{1}{\\sqrt{1 + m^{2}}} = \\frac{\\pi}{2}\\), i.e. \\(\\sin^{-1}\\frac{1}{\\sqrt{1 + m^{2}}} = \\frac{\\pi}{4}\\). Hence \\(\\frac{1}{\\sqrt{1 + m^{2}}} = \\frac{1}{\\sqrt{2}}\\), so \\(1 + m^{2} = 2\\) and \\(m^{2} = 1\\), giving \\(m = 1\\) since \\(m > 0\\). (As a check, the region is a circular sector of radius 2 subtending the angle \\(\\tan^{-1}m\\) at the centre, whose area \\(\\frac{1}{2}r^{2}\\theta = 2\\tan^{-1}m\\) equals \\(\\frac{\\pi}{2}\\) exactly when \\(\\tan^{-1}m = \\frac{\\pi}{4}\\), i.e. \\(m = 1\\).)"
+  },
+  {
+   "hash": "3271bc35b954ff94adec38a734c3ed4028d15282448d568f10492fc52d83b86a",
+   "ref": "Q34a",
+   "questionNumber": "34 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "If \\( A = \\begin{bmatrix} 1 & 0 & 2 \\\\ 0 & 2 & 1 \\\\ 2 & 0 & 3 \\end{bmatrix} \\), then show that \\( A^3 - 6A^2 + 7A + 2 \\, I = O \\).",
+   "solution": "Compute the powers of A in turn. Squaring, \\(A^{2} = \\begin{bmatrix} 1 & 0 & 2 \\\\ 0 & 2 & 1 \\\\ 2 & 0 & 3 \\end{bmatrix}\\begin{bmatrix} 1 & 0 & 2 \\\\ 0 & 2 & 1 \\\\ 2 & 0 & 3 \\end{bmatrix} = \\begin{bmatrix} 5 & 0 & 8 \\\\ 2 & 4 & 5 \\\\ 8 & 0 & 13 \\end{bmatrix}\\); for instance its \\((1,1)\\) entry is \\(1(1) + 0(0) + 2(2) = 5\\) and its \\((3,3)\\) entry is \\(2(2) + 0(1) + 3(3) = 13\\). Multiplying once more, \\(A^{3} = A^{2}A = \\begin{bmatrix} 5 & 0 & 8 \\\\ 2 & 4 & 5 \\\\ 8 & 0 & 13 \\end{bmatrix}\\begin{bmatrix} 1 & 0 & 2 \\\\ 0 & 2 & 1 \\\\ 2 & 0 & 3 \\end{bmatrix} = \\begin{bmatrix} 21 & 0 & 34 \\\\ 12 & 8 & 23 \\\\ 34 & 0 & 55 \\end{bmatrix}\\). The other three terms are \\(6A^{2} = \\begin{bmatrix} 30 & 0 & 48 \\\\ 12 & 24 & 30 \\\\ 48 & 0 & 78 \\end{bmatrix}\\), \\(7A = \\begin{bmatrix} 7 & 0 & 14 \\\\ 0 & 14 & 7 \\\\ 14 & 0 & 21 \\end{bmatrix}\\) and \\(2I = \\begin{bmatrix} 2 & 0 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 2 \\end{bmatrix}\\). Combining entrywise, \\(A^{3} - 6A^{2} + 7A + 2I = \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & 0 \\end{bmatrix} = O\\) — for example the \\((1,1)\\) entry is \\(21 - 30 + 7 + 2 = 0\\), the \\((2,2)\\) entry is \\(8 - 24 + 14 + 2 = 0\\), and the \\((3,3)\\) entry is \\(55 - 78 + 21 + 2 = 0\\), and every other entry works out to 0 in the same way. Hence \\(A^{3} - 6A^{2} + 7A + 2I = O\\), as required."
+  },
+  {
+   "hash": "1dcbb7f7e8671dbd7ad4579343bba0272650bf5bde13c9085da1e9917d4d3b84",
+   "ref": "Q34b",
+   "questionNumber": "34 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Solving System of Linear Equations",
+   "stem": "If \\( A = \\begin{bmatrix} 3 & 2 \\\\ 5 & -7 \\end{bmatrix} \\), then find \\( A^{-1} \\) and use it to solve the following system of equations :\n3x + 5y = 11, 2x \\( - \\) 7y = \\( - \\) 3.",
+   "solution": "First invert A. Its determinant is \\(|A| = 3(-7) - 2(5) = -21 - 10 = -31\\), which is non-zero, so \\(A^{-1}\\) exists. For a \\(2 \\times 2\\) matrix the adjoint is obtained by swapping the diagonal entries and changing the signs of the other two, so \\(\\text{adj }A = \\begin{bmatrix} -7 & -2 \\\\ -5 & 3 \\end{bmatrix}\\) and \\(A^{-1} = \\frac{1}{|A|}\\text{adj }A = -\\frac{1}{31}\\begin{bmatrix} -7 & -2 \\\\ -5 & 3 \\end{bmatrix}\\). Now write the system in matrix form: \\(\\begin{bmatrix} 3 & 5 \\\\ 2 & -7 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} 11 \\\\ -3 \\end{bmatrix}\\). The coefficient matrix here is not A but its transpose, so the system is \\(A'X = B\\) with \\(X = \\begin{bmatrix} x \\\\ y \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 11 \\\\ -3 \\end{bmatrix}\\). Hence \\(X = \\left(A'\\right)^{-1}B = \\left(A^{-1}\\right)'B\\), and transposing the inverse found above, \\(X = -\\frac{1}{31}\\begin{bmatrix} -7 & -5 \\\\ -2 & 3 \\end{bmatrix}\\begin{bmatrix} 11 \\\\ -3 \\end{bmatrix} = -\\frac{1}{31}\\begin{bmatrix} -77 + 15 \\\\ -22 - 9 \\end{bmatrix} = -\\frac{1}{31}\\begin{bmatrix} -62 \\\\ -31 \\end{bmatrix} = \\begin{bmatrix} 2 \\\\ 1 \\end{bmatrix}\\). Therefore \\(x = 2\\) and \\(y = 1\\), which satisfy both equations: \\(3(2) + 5(1) = 11\\) and \\(2(2) - 7(1) = -3\\)."
+  },
+  {
+   "hash": "e061dbb4e562d00330c0af69e51e5d218a8679a5bbca3cdf8ed3431f17beeec7",
+   "ref": "Q35a",
+   "questionNumber": "35 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the value of b so that the lines \\( \\frac{x-1}{2} = \\frac{y-b}{3} = \\frac{z-3}{4} \\) and \\( \\frac{x-4}{5} = \\frac{y-1}{2} = z \\) are intersecting lines. Also, find the point of intersection of these given lines.",
+   "solution": "Write the lines in the form \\(\\vec{r} = \\vec{a} + \\lambda\\vec{b}\\): the first has \\(\\vec{a_{1}} = (1, b, 3)\\) and \\(\\vec{b_{1}} = (2, 3, 4)\\), the second has \\(\\vec{a_{2}} = (4, 1, 0)\\) and \\(\\vec{b_{2}} = (5, 2, 1)\\). Two lines intersect exactly when they are coplanar, i.e. when \\(\\left(\\vec{a_{2}} - \\vec{a_{1}}\\right)\\cdot\\left(\\vec{b_{1}} \\times \\vec{b_{2}}\\right) = 0\\). With \\(\\vec{a_{2}} - \\vec{a_{1}} = (3,\\ 1 - b,\\ -3)\\) this scalar triple product is the determinant \\(\\begin{vmatrix} 3 & 1 - b & -3 \\\\ 2 & 3 & 4 \\\\ 5 & 2 & 1 \\end{vmatrix} = 0\\). Expanding along the first row, \\(3(3 - 8) - (1 - b)(2 - 20) + (-3)(4 - 15) = -15 + 18(1 - b) + 33 = 36 - 18b\\). Setting this equal to zero gives \\(b = 2\\). To find the point of intersection, take a general point of the first line, which is now \\(\\frac{x - 1}{2} = \\frac{y - 2}{3} = \\frac{z - 3}{4}\\), as \\((2\\lambda + 1,\\ 3\\lambda + 2,\\ 4\\lambda + 3)\\), and require it to satisfy the second line: \\(\\frac{2\\lambda + 1 - 4}{5} = \\frac{3\\lambda + 2 - 1}{2} = 4\\lambda + 3\\). From the first and last expressions, \\(2\\lambda - 3 = 5(4\\lambda + 3) = 20\\lambda + 15\\), so \\(-18\\lambda = 18\\) and \\(\\lambda = -1\\). This value is consistent with the middle expression too, since \\(\\frac{3(-1) + 1}{2} = -1\\) and \\(4(-1) + 3 = -1\\). Substituting \\(\\lambda = -1\\), the point of intersection is \\((-1, -1, -1)\\)."
+  },
+  {
+   "hash": "10bc4812b2b5054283bc35c9bb755762bbf8291e4a1c5edc3b49619ceeafdb90",
+   "ref": "Q35b",
+   "questionNumber": "35 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the equations of all the sides of the parallelogram ABCD whose vertices are A(4, 7, 8), B(2, 3, 4), C(\\( -1, -2, 1 \\)) and D(1, 2, 5). Also, find the coordinates of the foot of the perpendicular from A to CD.",
+   "solution": "First check the labelling: \\(\\overrightarrow{AB} = B - A = (-2, -4, -4)\\) and \\(\\overrightarrow{DC} = C - D = (-2, -4, -4)\\) are equal, so ABCD is indeed a parallelogram with AB parallel to DC and BC parallel to AD. Now use the two-point form \\(\\frac{x - x_{1}}{a} = \\frac{y - y_{1}}{b} = \\frac{z - z_{1}}{c}\\) for each side. Side AB has direction ratios \\((2, 4, 4)\\) and passes through \\(A(4, 7, 8)\\), so it is \\(\\frac{x - 4}{2} = \\frac{y - 7}{4} = \\frac{z - 8}{4}\\). Side BC has direction ratios \\((3, 5, 3)\\) and passes through \\(B(2, 3, 4)\\), so it is \\(\\frac{x - 2}{3} = \\frac{y - 3}{5} = \\frac{z - 4}{3}\\). Side CD has direction ratios \\((1, 2, 2)\\) and passes through \\(C(-1, -2, 1)\\), so it is \\(\\frac{x + 1}{1} = \\frac{y + 2}{2} = \\frac{z - 1}{2}\\). Side DA has direction ratios \\((3, 5, 3)\\) and passes through \\(A(4, 7, 8)\\), so it is \\(\\frac{x - 4}{3} = \\frac{y - 7}{5} = \\frac{z - 8}{3}\\). For the foot of the perpendicular, let P be the point of CD with parameter \\(\\lambda\\), namely \\(P(\\lambda - 1,\\ 2\\lambda - 2,\\ 2\\lambda + 1)\\). Then \\(\\overrightarrow{AP} = (\\lambda - 5,\\ 2\\lambda - 9,\\ 2\\lambda - 7)\\), and AP is perpendicular to CD when its dot product with the direction \\((1, 2, 2)\\) vanishes: \\(1(\\lambda - 5) + 2(2\\lambda - 9) + 2(2\\lambda - 7) = 9\\lambda - 37 = 0\\), so \\(\\lambda = \\frac{37}{9}\\). Substituting back, the foot of the perpendicular from A to CD is \\(\\left(\\frac{28}{9},\\ \\frac{56}{9},\\ \\frac{83}{9}\\right)\\)."
+  },
+  {
+   "hash": "6010023b900aafd9b1ea74937700a033b79a30bab914743d5fd43d95abbb4424",
+   "ref": "Q36i",
+   "questionNumber": "36 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "Find the value of p.",
+   "context": "An octagonal prism is a three-dimensional polyhedron bounded by two octagonal bases and eight rectangular side faces. It has 24 edges and 16 vertices.\n\nThe prism is rolled along the rectangular faces and number on the bottom face (touching the ground) is noted. Let X denote the number obtained on the bottom face and the following table give the probability distribution of X.\n\n| X : | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |\n|---|---|---|---|---|---|---|---|---|\n| P(X) : | p | 2p | 2p | p | 2p | \\( p^2 \\) | \\( 2p^2 \\) | \\( 7p^2 + p \\) |",
+   "figure": "DECORATIVE — the drawing of the octagonal prism on page idx 18 shows the face numbers 8, 1, 2, 3, but every number needed is stated in the passage and the full distribution is in the table. Not a dependency.",
+   "solution": "The probabilities in a distribution must add up to 1, so \\(p + 2p + 2p + p + 2p + p^{2} + 2p^{2} + \\left(7p^{2} + p\\right) = 1\\). Collecting the linear terms gives \\(9p\\) and the quadratic terms \\(10p^{2}\\), so \\(10p^{2} + 9p - 1 = 0\\). Factorising, \\((10p - 1)(p + 1) = 0\\), so \\(p = \\frac{1}{10}\\) or \\(p = -1\\). A probability cannot be negative, so \\(p = \\frac{1}{10}\\)."
+  },
+  {
+   "hash": "843f4febc8bee35355286febe4208c01ec14ca36ded313fb5effd03da00e6aca",
+   "ref": "Q36ii",
+   "questionNumber": "36 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "Find P(X > 6).",
+   "context": "An octagonal prism is a three-dimensional polyhedron bounded by two octagonal bases and eight rectangular side faces. It has 24 edges and 16 vertices.\n\nThe prism is rolled along the rectangular faces and number on the bottom face (touching the ground) is noted. Let X denote the number obtained on the bottom face and the following table give the probability distribution of X.\n\n| X : | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |\n|---|---|---|---|---|---|---|---|---|\n| P(X) : | p | 2p | 2p | p | 2p | \\( p^2 \\) | \\( 2p^2 \\) | \\( 7p^2 + p \\) |",
+   "solution": "Since X takes only the values 1 to 8, the event \\(X > 6\\) is the event that X is 7 or 8. Hence \\(P(X > 6) = P(X = 7) + P(X = 8) = 2p^{2} + \\left(7p^{2} + p\\right) = 9p^{2} + p\\). Substituting \\(p = \\frac{1}{10}\\), this is \\(\\frac{9}{100} + \\frac{1}{10} = \\frac{9}{100} + \\frac{10}{100} = \\frac{19}{100}\\)."
+  },
+  {
+   "hash": "7d0ec4aeb234d766ff12553b99ecd632334f6cadb254bd29fc240c76a59a1777",
+   "ref": "Q36iiia",
+   "questionNumber": "36 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "Find P(X = 3m), where m is a natural number.",
+   "context": "An octagonal prism is a three-dimensional polyhedron bounded by two octagonal bases and eight rectangular side faces. It has 24 edges and 16 vertices.\n\nThe prism is rolled along the rectangular faces and number on the bottom face (touching the ground) is noted. Let X denote the number obtained on the bottom face and the following table give the probability distribution of X.\n\n| X : | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |\n|---|---|---|---|---|---|---|---|---|\n| P(X) : | p | 2p | 2p | p | 2p | \\( p^2 \\) | \\( 2p^2 \\) | \\( 7p^2 + p \\) |",
+   "solution": "X takes only the values 1 to 8, so \\(X = 3m\\) with m a natural number forces \\(3m \\le 8\\), i.e. \\(m = 1\\) or \\(m = 2\\), giving \\(X = 3\\) or \\(X = 6\\); \\(m = 3\\) would need \\(X = 9\\), which is outside the range. Hence \\(P(X = 3m) = P(X = 3) + P(X = 6) = 2p + p^{2}\\). Substituting \\(p = \\frac{1}{10}\\), this is \\(\\frac{2}{10} + \\frac{1}{100} = \\frac{20}{100} + \\frac{1}{100} = \\frac{21}{100}\\)."
+  },
+  {
+   "hash": "dd2131e60bb82e741ba8e47f007febb5da79f95d7614ea4096d004499c915ac4",
+   "ref": "Q36iiib",
+   "questionNumber": "36 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "Find the mean E(X).",
+   "context": "An octagonal prism is a three-dimensional polyhedron bounded by two octagonal bases and eight rectangular side faces. It has 24 edges and 16 vertices.\n\nThe prism is rolled along the rectangular faces and number on the bottom face (touching the ground) is noted. Let X denote the number obtained on the bottom face and the following table give the probability distribution of X.\n\n| X : | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |\n|---|---|---|---|---|---|---|---|---|\n| P(X) : | p | 2p | 2p | p | 2p | \\( p^2 \\) | \\( 2p^2 \\) | \\( 7p^2 + p \\) |",
+   "solution": "By definition \\(E(X) = \\sum x\\,P(X = x)\\), so \\(E(X) = 1(p) + 2(2p) + 3(2p) + 4(p) + 5(2p) + 6\\left(p^{2}\\right) + 7\\left(2p^{2}\\right) + 8\\left(7p^{2} + p\\right)\\). The terms in p are \\(p + 4p + 6p + 4p + 10p + 8p = 33p\\), and the terms in \\(p^{2}\\) are \\(6p^{2} + 14p^{2} + 56p^{2} = 76p^{2}\\), so \\(E(X) = 33p + 76p^{2}\\). Substituting \\(p = \\frac{1}{10}\\), \\(E(X) = \\frac{33}{10} + \\frac{76}{100} = \\frac{330}{100} + \\frac{76}{100} = \\frac{406}{100} = \\frac{203}{50} = 4.06\\)."
+  },
+  {
+   "hash": "a17e79aab7b819228783be57d13450b78d07a20cbefd1c3311708214362d526f",
+   "ref": "Q37i",
+   "questionNumber": "37 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Find the total cost C of digging the tank in terms of x.",
+   "context": "In order to set up a rain water harvesting system, a tank to collect rain water is to be dug. The tank should have a square base and a capacity of 250 \\( \\text{m}^3 \\). The cost of land is ₹ 5,000 per square metre and cost of digging increases with depth and for the whole tank, it is ₹ 40,000 \\( h^2 \\), where h is the depth of the tank in metres. x is the side of the square base of the tank in metres.",
+   "figure": "DECORATIVE — the captioned illustration 'ELEMENTS OF A TYPICAL RAIN WATER HARVESTING SYSTEM' on page idx 20 labels the tank's h and x, but both are already defined in the passage and every number needed is in the text. Not a dependency.",
+   "solution": "The cost has two parts. The land costs \\(5000\\) per square metre and the base is a square of side x, so the land component is \\(5000x^{2}\\); the digging of the whole tank costs \\(40000h^{2}\\). Hence \\(C = 40000h^{2} + 5000x^{2}\\). The capacity fixes h in terms of x: the tank is a cuboid of volume \\(x^{2}h = 250\\), so \\(h = \\frac{250}{x^{2}}\\) and \\(h^{2} = \\frac{(250)^{2}}{x^{4}}\\). Substituting, the total cost in terms of x alone is \\(C = \\frac{40000\\,(250)^{2}}{x^{4}} + 5000x^{2}\\)."
+  },
+  {
+   "hash": "ecf0b6d9fdeefbbdf2cd35a8b76cb88ad64bb501b734d214bb7c19cfe5ae9a77",
+   "ref": "Q37ii",
+   "questionNumber": "37 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Find \\( \\frac{dC}{dx} \\).",
+   "context": "In order to set up a rain water harvesting system, a tank to collect rain water is to be dug. The tank should have a square base and a capacity of 250 \\( \\text{m}^3 \\). The cost of land is ₹ 5,000 per square metre and cost of digging increases with depth and for the whole tank, it is ₹ 40,000 \\( h^2 \\), where h is the depth of the tank in metres. x is the side of the square base of the tank in metres.",
+   "solution": "Write the cost as \\(C = 40000\\,(250)^{2}\\,x^{-4} + 5000x^{2}\\) and differentiate term by term. The first term gives \\(-4 \\times 40000\\,(250)^{2}\\,x^{-5} = \\frac{-160000\\,(250)^{2}}{x^{5}}\\) and the second gives \\(10000x\\). Hence \\(\\frac{dC}{dx} = \\frac{-160000\\,(250)^{2}}{x^{5}} + 10000x\\)."
+  },
+  {
+   "hash": "b69b529b7ff103809f2df31575f07bb33f6535a4788802ad7ec851e3f24a7ddd",
+   "ref": "Q37iiia",
+   "questionNumber": "37 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Find the value of x for which cost C is minimum.",
+   "context": "In order to set up a rain water harvesting system, a tank to collect rain water is to be dug. The tank should have a square base and a capacity of 250 \\( \\text{m}^3 \\). The cost of land is ₹ 5,000 per square metre and cost of digging increases with depth and for the whole tank, it is ₹ 40,000 \\( h^2 \\), where h is the depth of the tank in metres. x is the side of the square base of the tank in metres.",
+   "solution": "For the cost to be minimum we need \\(\\frac{dC}{dx} = 0\\), that is \\(10000x = \\frac{160000\\,(250)^{2}}{x^{5}}\\). Multiplying through by \\(x^{5}\\) gives \\(10000x^{6} = 160000 \\times 250 \\times 250 = 160000 \\times 62500 = 10^{10}\\), so \\(x^{6} = 10^{6}\\) and \\(x = 10\\), taking the positive root because x is the side of the base. To confirm this is a minimum, differentiate again: \\(\\frac{d^{2}C}{dx^{2}} = \\frac{800000\\,(250)^{2}}{x^{6}} + 10000\\), which is positive for every \\(x > 0\\) and in particular at \\(x = 10\\). Hence the cost is minimum when \\(x = 10\\) metres."
+  },
+  {
+   "hash": "fff329ad84ad96b1edf77afef4b9528b637a0cc225cabb600018404d61bb95a3",
+   "ref": "Q37iiib",
+   "questionNumber": "37 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "Check whether the cost function C(x) expressed in terms of x is increasing or not, where x > 0.",
+   "context": "In order to set up a rain water harvesting system, a tank to collect rain water is to be dug. The tank should have a square base and a capacity of 250 \\( \\text{m}^3 \\). The cost of land is ₹ 5,000 per square metre and cost of digging increases with depth and for the whole tank, it is ₹ 40,000 \\( h^2 \\), where h is the depth of the tank in metres. x is the side of the square base of the tank in metres.",
+   "solution": "[CBSE marking scheme: the printed working for this part opens with \\(\\frac{dC}{dx} = \\frac{-160000\\,(250)^{2}}{x^{4}} + 10000x\\), carrying \\(x^{4}\\) in the denominator. Part (ii) of the same scheme prints \\(x^{5}\\), which is the correct derivative of \\(40000\\,(250)^{2}x^{-4}\\), and only \\(x^{5}\\) makes the scheme's very next line — that \\(\\frac{dC}{dx} = 0\\) gives \\(x = 10\\) — true; with \\(x^{4}\\) the stationary point would be \\(x = 10^{6/5}\\) instead. The exponent is a slip, and the conclusion reached below is the scheme's own and is unaffected by it.] From part (ii), \\(\\frac{dC}{dx} = \\frac{-160000\\,(250)^{2}}{x^{5}} + 10000x\\). Putting the two terms over a common denominator, and using \\(160000\\,(250)^{2} = 10^{10}\\), this is \\(\\frac{dC}{dx} = \\frac{10000x^{6} - 10^{10}}{x^{5}} = \\frac{10000\\left(x^{6} - 10^{6}\\right)}{x^{5}}\\). For \\(x > 0\\) the denominator is positive, so the sign of \\(\\frac{dC}{dx}\\) is the sign of \\(x^{6} - 10^{6}\\): it is negative for \\(0 < x < 10\\), zero at \\(x = 10\\), and positive for \\(x > 10\\). So C is decreasing on \\((0, 10)\\) and increasing on \\((10, \\infty)\\). Since \\(\\frac{dC}{dx}\\) changes sign inside the interval \\(x > 0\\), the cost function is not increasing there; it is neither increasing nor decreasing for \\(x > 0\\)."
+  },
+  {
+   "hash": "ad66635afdead6c9211e228901752645ca76bd434378938f0195f2a35d1b01c6",
+   "ref": "Q38i",
+   "questionNumber": "38 (i)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Continuity",
+   "stem": "Is h(t) a continuous function ? Justify.",
+   "context": "A volleyball player serves the ball which takes a parabolic path given by the equation \\( h(t) = -\\frac{7}{2} t^2 + \\frac{13}{2} t + 1 \\), where h(t) is the height of ball at any time t (in seconds), \\( (t \\geq 0) \\).",
+   "figure": "DECORATIVE — the volleyball-court artwork on page idx 22 carries the dimensions 2.43 m (net height) and 9 m (court width), but neither appears in either sub-part; the whole question turns on the printed h(t). Not a dependency.",
+   "solution": "Yes. Here \\(h(t) = -\\frac{7}{2}t^{2} + \\frac{13}{2}t + 1\\) is a polynomial function of t. The identity function \\(t \\mapsto t\\) and every constant function are continuous everywhere, and sums, differences and products of continuous functions are continuous, so every polynomial function is continuous at every real number. Hence h is continuous for all t, and in particular on the physically meaningful domain \\(t \\ge 0\\). So \\(h(t)\\) is a continuous function."
+  },
+  {
+   "hash": "fb140d17f066201e92f6ca93fee5b641aaa031aa3064f865169cb56ef4e2a95f",
+   "ref": "Q38ii",
+   "questionNumber": "38 (ii)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Find the time at which the height of the ball is maximum.",
+   "context": "A volleyball player serves the ball which takes a parabolic path given by the equation \\( h(t) = -\\frac{7}{2} t^2 + \\frac{13}{2} t + 1 \\), where h(t) is the height of ball at any time t (in seconds), \\( (t \\geq 0) \\).",
+   "solution": "Differentiate the height with respect to time: \\(\\frac{dh}{dt} = -7t + \\frac{13}{2}\\). At a maximum \\(\\frac{dh}{dt} = 0\\), so \\(7t = \\frac{13}{2}\\) and \\(t = \\frac{13}{14}\\). Differentiating again, \\(\\frac{d^{2}h}{dt^{2}} = -7 < 0\\), so this stationary point is indeed a maximum. Hence the height of the ball is maximum at \\(t = \\frac{13}{14}\\) seconds, at which the height is \\(h\\left(\\frac{13}{14}\\right) = \\frac{225}{56}\\) metres."
+  }
+ ]
+}

@@ -46,15 +46,30 @@ So open the PNGs. If you find yourself reading extracted text, stop.
 
 Transcribe CBSE's method — a student is being marked against it, so its route
 matters, not just its answer. But **the scheme is wrong often enough that you
-must check it.** Defects already found in these schemes by the transcription
-pass include: an integrating-factor chain carrying a spurious minus; an
-antiderivative printed with `π/2` where `π/4` belongs; a line reading
-`PR = PQ + PS ∵ PS = PR`; a key deriving `m = ±1/2` and then reporting one
-branch; an incoherent penultimate line in an area calculation; a blank marks
-column; and `3/75 or 1/25` printed as if two different answers.
+must check it.** Defects CONFIRMED in these schemes so far: an integrating-factor
+chain carrying a spurious minus; `log|log x|` where `log|tan x|` belongs; a
+magnitude set equal to a vector; a key deriving `m = ±1/2` and then reporting one
+branch; an incoherent penultimate line in an area calculation; two conditional
+probabilities added across different conditioning events (making the answer
+exactly 2× too large); `x⁴` for `x⁵` in a derivative; and both roots reported
+after squaring without testing the extraneous one.
 
 So: **follow the scheme's method, verify its arithmetic, and where it is wrong,
 say so.**
+
+### ⚠ "X or Y" IS NOT A DEFECT — this brief said it was, and was wrong
+
+A scheme writing `3/75 or 1/25`, `1/40 log 9 or 1/20 log 3` or `−4π/6 or −2π/3`
+is telling the examiner **to accept either form from a student**. That is
+ordinary marking practice, not two rival answers. An earlier version of the list
+above named `3/75 or 1/25` as a known defect; an agent duly bracketed it, and
+three later agents independently and correctly refused the same shape. The
+bracket has been removed and the list corrected.
+
+The lesson is larger than the item: **a defect list is a set of hypotheses, and
+naming one here makes you likelier to "find" it.** If something on that list does
+not survive your own check, say so — reporting that a listed defect is absent is
+a result, not a failure.
 
 ### When the scheme is wrong
 
