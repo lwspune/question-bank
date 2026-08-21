@@ -77,6 +77,29 @@ that is a finding, not a licence. Solve the stem AS PRINTED, and say in a bracke
 that the scheme's solution addresses a different reading. The stem is committed
 and hashed; you cannot change it.
 
+### Judge in BOTH directions — this is what makes a bracket credible
+
+Wave 1 found four real defects **and correctly declined three look-alikes**, and
+the declines are what make the four worth reading:
+
+- `√54/√14 → √27/√7` looks like two arithmetic slips. It is one valid compressed
+  step (`√(54/14) = √(27/7)`); both equal 1.963961012.
+- an antiderivative printed `+(3/2 − x)²/2` looks sign-flipped. It is right — the
+  subtracted integral's minus absorbs the chain-rule minus.
+- `∵ PS = QR` looks like the known `∵ PS = PR` defect. It is correct.
+
+**Check before you bracket.** A bracket on a correct step tells a student their
+official sheet is wrong when it is not, which is worse than saying nothing.
+
+### A defect in the QUESTION is not a defect in the SCHEME
+
+2022 65/5/1 Q6(a) gives `P(A) = 1/2`, `P(B) = 7/12`, `P(A̅ ∪ B̅) = 1/4`, which
+force `P(A ∩ B) = 3/4` — impossible, since an intersection cannot exceed either
+marginal. The scheme is not at fault: it does what the question asks and reaches
+the right verdict. So do **not** open with a `[CBSE marking scheme: …]` bracket.
+Solve it as printed, reach the scheme's answer, and add a closing note naming the
+inconsistency, so a careful student who spots it is not left doubting themselves.
+
 ---
 
 ## 4. What a good solution looks like
@@ -121,6 +144,33 @@ Use the Write/Edit tools on the JSON file. `apply-solutions.ts` REFUSES control
 characters, double-escaped backslashes and literal `\n` — all five refusals are
 proven to fire — so a corrupted file will be rejected, but only after you have
 wasted the run.
+
+**It bites your PROBES too, and that is how it actually shows up.** Three wave-1
+agents wrote a verification script through `node -e` or `python -c`, had their
+own regex mangled, and got a flood of false failures — one reported 36. If a
+probe suddenly reports many failures, **suspect the probe before the data**, and
+rewrite it as a file.
+
+A related trap from the same wave: a hand-rolled `/\\n/` check false-alarms on
+`\neq`, `\nabla` and matrix `\\` separators. The real `normalizeNewlines` masks
+math zones first, which is why the applier uses it rather than a second regex.
+
+---
+
+## 6a. Two self-checks that work, and one that does not
+
+**Does not work: `git diff` on the topaper file.** It is UNTRACKED, so the diff is
+empty no matter what you changed. Two wave-1 agents were briefly reassured by a
+vacuously green diff.
+
+**Works: recompute the hash.** For a subjective row,
+`subjectiveContentHash(stem, context)` must still equal the row's stored `hash`;
+for an MCQ, `contentHash(stem, optionTexts, answer)`. If every row still matches,
+you have proved the stem, context, options and answer are untouched — which is
+the whole contract.
+
+**Works: compare key SETS row by row** against the original file, to catch a
+scratch field you added while editing and meant to remove.
 
 ---
 
