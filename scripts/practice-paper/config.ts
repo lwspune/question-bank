@@ -3010,6 +3010,101 @@ export const PAPERS: Record<string, PaperSpec> = {
     section: { key: "gat-mock-21aug", label: "GAT Mock 21 Aug" },
     bankAdd: true,
   },
+
+  // LWS "Current Affairs — Sep 2026" — a 100-question authored CA pool, NOT a printed
+  // test, so `createPaper: false`: it commits bank rows only. It exists because the
+  // NDA Current Affairs PYQ corpus cannot serve a current mock — /guide/nda-current-affairs
+  // measured that 90% of explicit-year mentions in CA questions fall within 12 months
+  // of the paper, and that across 5 years 13 military-exercise questions named 13
+  // DIFFERENT exercises. The bank calibrates question SHAPE; the facts have to come
+  // from the current year. This file is that year's facts, authored against the same
+  // guide's Anchor/Recurring/Occasional theme axis (it ships its own theme-vs-question
+  // coverage matrix, which is what drove the chapter/subtopic classification here).
+  //
+  // Born-digital DOCX with a clean text layer -> pandoc, no vision pass. The 11
+  // Match-List questions were rewritten as GFM pipe-tables in the bank's house style.
+  //
+  // **NO PRINTED KEY WAS TRUSTED BLINDLY.** The source ships an answer key with
+  // one-line explanations, and its own proofing section already corrects two of its
+  // keys (Q36 -> d, Q100 -> a); both corrected values are what the key table carries
+  // and what is committed here.
+  //
+  // 12 rows are held PRIVATE (`status: "flawed"`), for TWO different reasons that the
+  // per-row `reviewNote` distinguishes — the status enum only encodes "stays PRIVATE":
+  //
+  //   THREE are genuinely defective (65, 73, 89). Each is a Match List whose List II
+  //   repeats a value, so two different option strings assign the same text to every
+  //   letter and are equally correct — Q89 has THREE correct options. Q65 is worse: its
+  //   keyed option (c) is factually wrong, putting Ajanta in Karnataka and the Hoysala
+  //   temples in Maharashtra, while (a) and (b) are both right. `audit:keys` CANNOT see
+  //   this class — it compares OPTION texts, which here are distinct strings
+  //   ("A-2, B-3, C-1, D-4"); the repetition is in the list BODY.
+  //
+  //   NINE more (4, 14, 30, 44, 45, 60, 63, 70, 88) are NOT defective — they are
+  //   UNVERIFIED. The source file names them itself as single-source facts dated
+  //   Feb–May 2026 (Padma 2026, Republic Day 2026, BRICS 2026, Project Cheetah 2026,
+  //   the sitting President) and asks for a cross-check against PIB / MEA / ISRO /
+  //   padmaawards.gov.in before distribution. They stay PRIVATE until someone does it.
+  "ca-mock-sep26": {
+    slug: "ca-mock-sep26",
+    title: "NDA GAT — Current Affairs Pool (Sep 2026)",
+    recordsFile: "ca-mock-sep26.records.json",
+    outName: "Tags_NDA_CA_Sep26",
+    sourceFile: "Current Affairs_Sep26.docx",
+    subjectName: "Current Affairs",
+    chapters: {
+      "Awards, Honours, Books and Culture": [
+        "Books, Literature and Authors",
+        "Civilian Awards, Honours and Educational Institutions",
+        "Indian Art, Architecture and Cultural Practices",
+        "UNESCO Recognitions and Cultural Heritage",
+      ],
+      "Defence and Military Exercises": [
+        "Defence Awards, Books and Institutions",
+        "Defence Procurement and Cooperation",
+        "Indian Navy — Ships, Vessels and Naval Policy",
+        "Military Exercises — Bilateral and Multilateral",
+      ],
+      "Environment, Ecology and Energy": [
+        "Climate Change and Summits",
+        "Environmental Campaigns, Disasters and Energy",
+        "Ramsar Sites, Wetlands and Protected Areas",
+        "Wildlife Conservation and Species",
+      ],
+      "Government Schemes, Policy and Governance": [
+        "Governance, Policy and Union Territory Reform",
+        "Government Events, Reports and Announcements",
+        "Health, Education and Welfare Schemes",
+        "Infrastructure, Transport and Cultural Schemes",
+      ],
+      "International Affairs and Relations": [
+        "India's Foreign Policy and Bilateral Relations",
+        "International Organizations and Multilateral Bodies",
+        "World Leaders, Elections and Global Events",
+      ],
+      "National Events, Persons and India General Knowledge": [
+        "Indian Economy, Geography and Resources",
+        "National Days, Festivals and Observances",
+        "National Institutions, Milestones and History",
+      ],
+      "Science and Technology": [
+        "DRDO, Defence and Marine Technology",
+        "Health Technology, Science Awards and Anniversaries",
+        "Information Technology and Railway Safety",
+        "Nuclear and Renewable Energy",
+        "Space Technology and Astronomy",
+      ],
+      "Sports": [
+        "Cricket — Records, Tournaments and Players",
+        "Other Sports and Personalities",
+      ],
+    },
+    pyqNote: "NDA GAT current-affairs practice — LWS Sep 2026 pool (authored, not a PYQ)",
+    examName: "NDA",
+    section: { key: "ca-sep26", label: "Current Affairs Sep 2026" },
+    bankAdd: true,
+    createPaper: false,
+  },
 };
 
 export function requirePaper(slug: string | undefined): PaperSpec {
