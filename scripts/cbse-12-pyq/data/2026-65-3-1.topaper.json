@@ -32,7 +32,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "The inverse cosine is defined only when its argument lies in \\([-1, 1]\\), so we need \\(-1 \\le 2x - 5 \\le 1\\). Adding 5 throughout gives \\(4 \\le 2x \\le 6\\), that is \\(2 \\le x \\le 3\\). Hence the domain is \\([2, 3]\\), which is option (D) \\([2, 3]\\)."
   },
   {
    "hash": "3b97ac60d1103a095b83d76cd20939d569f899c20a45538b79fc65f7b0dc85b5",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Multiply \\(A^2 = 4A + 3I\\) throughout by \\(A^{-1}\\), which gives \\(A = 4I + 3A^{-1}\\). Rearranging, \\(A^{-1} = \\dfrac{1}{3}A - \\dfrac{4}{3}I\\). Comparing this with \\(A^{-1} = xA + yI\\) gives \\(x = \\dfrac{1}{3}\\) and \\(y = -\\dfrac{4}{3}\\), so \\(x + y = \\dfrac{1}{3} - \\dfrac{4}{3} = -1\\), which is option (A) \\(-1\\)."
   },
   {
    "hash": "e66c54d1e9c8cfdc5dcfcb34c45e76a6b83ea6322f145dcfc34c65a3b50fe7da",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Take the transpose of the given matrix, using \\((XY)' = Y'X'\\) and \\((X')' = X\\): \\((AB' + BA')' = (AB')' + (BA')' = BA' + AB' = AB' + BA'\\). The matrix therefore equals its own transpose, so it is symmetric. The same conclusion follows from the skew-symmetry directly: with \\(A' = -A\\) and \\(B' = -B\\) the matrix is \\(-(AB + BA)\\), whose transpose is \\(-(BA + AB)\\), which is itself. Hence it is a symmetric matrix, option (A)."
   },
   {
    "hash": "7fc81b5f739cbcc031979b0c26a52cba9a375e674a5850ef3d7b7e5f7e59ac13",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "The column matrix on the left is of order \\(3 \\times 1\\) and the product on the right is of order \\(3 \\times 3\\). If A has order \\(m \\times n\\), the product \\((3 \\times 1)(m \\times n)\\) is defined only when \\(m = 1\\), and it is then of order \\(3 \\times n\\). Matching \\(3 \\times n\\) with \\(3 \\times 3\\) gives \\(n = 3\\). Hence A must be of order \\(1 \\times 3\\), option (B) \\(1 \\times 3\\)."
   },
   {
    "hash": "09d6fade4173b7f6ae37bd9e8f30c99b2f62726546632a75e7d9a1b671bb7388",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Since \\(A^2 = A\\), we also get \\(A^3 = A^2 \\cdot A = A \\cdot A = A\\). Expanding the cube, \\((I - A)^3 = I - 3A + 3A^2 - A^3 = I - 3A + 3A - A = I - A\\). Comparing \\(I - A\\) with the given \\(xA + I\\) gives \\(x = -1\\), which is option (D) \\(-1\\)."
   },
   {
    "hash": "906e1ea3865ac670211357089828e44cc4c6e4ad5807a9aaead026a239dc7497",
@@ -182,7 +182,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "For any square matrix, \\(B(\\text{adj } B) = |B|\\,I\\). The matrix given is \\(\\dfrac{1}{3}I\\), so \\(|B| = \\dfrac{1}{3}\\). Since \\(\\det(B^{-1}) = \\dfrac{1}{|B|}\\), we get \\(\\det(B^{-1}) = 3\\), which is option (C) \\(3\\)."
   },
   {
    "hash": "76ff7052265f23da02e6c26c20f8b3e26b8f57d84339ce822496d5d751ffeb6f",
@@ -212,7 +212,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Here \\(f(0) = k(0 + 1) = k\\). For \\(x \\ne 0\\), \\(\\left| x^2 \\sin \\dfrac{1}{x} \\right| \\le x^2\\) because \\(|\\sin t| \\le 1\\), so by the sandwich theorem \\(\\lim_{x \\to 0} x^2 \\sin \\dfrac{1}{x} = 0\\). Continuity at \\(x = 0\\) requires \\(f(0)\\) to equal this limit, so \\(k = 0\\), which is option (D) \\(0\\)."
   },
   {
    "hash": "eb01b774ec6dc6f8ea55749ee2c8f26d280aec639af7a03881bb26a8af8b4cb4",
@@ -242,7 +242,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "From \\(\\sin^{-1} x = y\\) we get \\(x = \\sin y\\), so \\(\\dfrac{dx}{dy} = \\cos y\\) and therefore \\(\\dfrac{dy}{dx} = \\dfrac{1}{\\cos y} = \\sec y\\), which is option (D) \\(\\sec y\\). Note that expressed in terms of x the derivative is \\(\\dfrac{1}{\\sqrt{1 - x^2}}\\), which is not the same as the printed \\(\\dfrac{1}{1 - x^2}\\)."
   },
   {
    "hash": "1f64fca323b4a5a5e971af1516798b5433f52d34ce3489926e9e1fc8024161b9",
@@ -272,7 +272,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Write the volume in terms of the diameter \\(d = 2r\\): \\(V = \\dfrac{4}{3}\\pi r^3 = \\dfrac{4}{3}\\pi \\left(\\dfrac{d}{2}\\right)^3 = \\dfrac{\\pi d^3}{6}\\). Hence \\(\\dfrac{dV}{dd} = \\dfrac{\\pi d^2}{2}\\). When the radius is 5 cm the diameter is 10 cm, so the rate is \\(\\dfrac{\\pi \\times 100}{2} = 50\\pi\\). The answer is \\(50\\pi\\) cm\\(^3\\)/cm, option (C)."
   },
   {
    "hash": "a9520d36dd2e2c982baccc2424e872cb407e02cca65865f8fd2dcbc2f4b9ebca",
@@ -302,7 +302,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Multiply numerator and denominator by \\(2^x\\) to get \\(\\displaystyle\\int \\dfrac{2^x\\,dx}{2^{2x} + 1}\\). Put \\(t = 2^x\\), so that \\(dt = 2^x \\log 2\\,dx\\) and \\(2^x\\,dx = \\dfrac{dt}{\\log 2}\\). The integral becomes \\(\\dfrac{1}{\\log 2}\\displaystyle\\int \\dfrac{dt}{1 + t^2} = \\dfrac{\\tan^{-1} t}{\\log 2} + C\\). Restoring \\(t = 2^x\\), the value is \\(\\dfrac{\\tan^{-1}(2^x)}{\\log 2} + C\\), option (C)."
   },
   {
    "hash": "42d08ef22e5c2236269b1a939e32bdd1156f2e8999aab9a579d4be58190f6e85",
@@ -332,7 +332,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "On \\([-1, 0]\\) we have \\(|x| = -x\\), so the integrand equals \\(1 + x\\) there. Also \\(1 - |x|\\) is an even function, so the integral over \\([-1, 1]\\) is twice the integral over either half. Taking the left half gives \\(\\displaystyle\\int_{-1}^{1}(1 - |x|)\\,dx = 2\\int_{-1}^{0}(1 + x)\\,dx\\), which is option (B). Both sides equal 1, whereas the other three options evaluate to 3, 0 and 3 respectively."
   },
   {
    "hash": "b96ad57cb1affc93dc73b317d42a88e8c41fcd300efb509a8357137ad296e73a",
@@ -363,7 +363,7 @@
    ],
    "answer": "B",
    "figure": "REQUIRED — the stem names no region at all ('the shaded region of the circle given below'); only the diagram says which part is shaded. It shows the circle \\(x^2 + y^2 = 9\\) with the line \\(y = 1\\) drawn and the region ABOVE \\(y = 1\\) hatched, axes X'OX / Y'OY. Page idx 6 (English block, mid-page); the same figure is reprinted in the marking scheme at ms page idx 4.",
-   "solution": ""
+   "solution": "The shaded part is the piece of the circle \\(x^2 + y^2 = 9\\) that lies above the line \\(y = 1\\). Integrate in horizontal strips: at height y the strip runs from \\(x = -\\sqrt{9 - y^2}\\) to \\(x = \\sqrt{9 - y^2}\\), so its length is \\(2\\sqrt{9 - y^2}\\), and y runs from the line \\(y = 1\\) up to the top of the circle at \\(y = 3\\). Hence the area is \\(2\\displaystyle\\int_{1}^{3}\\sqrt{9 - y^2}\\,dy\\), which is option (B)."
   },
   {
    "hash": "72cc33600bc822b63b335da639a2b90fe4300df0313a439760003248e79dddff",
@@ -393,7 +393,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "The equation \\(\\dfrac{dy}{dx} = F(x, y)\\) is homogeneous when F is a homogeneous function of degree zero, that is when \\(F(\\lambda x, \\lambda y) = F(x, y)\\), which happens exactly when F can be written as a function of \\(\\dfrac{y}{x}\\) alone. In (ii), \\(\\sin\\dfrac{y}{x} + \\log y - \\log x = \\sin\\dfrac{y}{x} + \\log\\dfrac{y}{x}\\), a function of \\(\\dfrac{y}{x}\\), so it qualifies. In (iii), \\(e^{y/x} + 1\\) is likewise a function of \\(\\dfrac{y}{x}\\), so it qualifies. But \\(3x + 2y\\) and \\(\\sqrt{x^2 + y^2} - y\\) each get multiplied by \\(\\lambda\\) when x and y are replaced by \\(\\lambda x\\) and \\(\\lambda y\\), so they are homogeneous of degree 1, not of degree 0. Hence only (ii) and (iii) qualify, option (D)."
   },
   {
    "hash": "dd2a5966bddf56401b0cb57660ae7e5d781cacaa762dd0612e166f4c5f3f0642",
@@ -423,7 +423,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Since \\(\\vec{a} \\cdot \\vec{b} = |\\vec{a}|\\,|\\vec{b}|\\cos\\theta\\) and \\(\\cos\\theta \\le 1\\) for every angle, we always have \\(\\vec{a} \\cdot \\vec{b} \\le |\\vec{a}|\\,|\\vec{b}|\\). That is option (A). The others are not always true: the triangle inequality runs the other way, \\(|\\vec{a} + \\vec{b}| \\le |\\vec{a}| + |\\vec{b}|\\); \\(|\\vec{a} - \\vec{b}| = |\\vec{a}| - |\\vec{b}|\\) holds only in special cases, and its left side is never negative while its right side can be; and \\(|\\vec{a} \\times \\vec{b}| = |\\vec{a}|\\,|\\vec{b}|\\sin\\theta \\le |\\vec{a}|\\,|\\vec{b}|\\), so the stated inequality is the wrong way round."
   },
   {
    "hash": "219c08be8081998fe2259dcf80a49ca72dfe1a34a5f28f8450c6393bcd7dbba0",
@@ -453,7 +453,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Expanding the dot product, \\((\\vec{a} + \\vec{b}) \\cdot (\\vec{a} - \\vec{b}) = |\\vec{a}|^2 - |\\vec{b}|^2\\). Substituting \\(|\\vec{a}| = 10|\\vec{b}|\\) gives \\(100|\\vec{b}|^2 - |\\vec{b}|^2 = 99|\\vec{b}|^2\\). Setting this equal to 198 gives \\(|\\vec{b}|^2 = 2\\), so \\(|\\vec{b}| = \\sqrt{2}\\), which is option (B) \\(|\\vec{b}| = \\sqrt{2}\\). Consequently \\(|\\vec{a}| = 10\\sqrt{2}\\), so the other three statements are false."
   },
   {
    "hash": "c1031277fad73315b6d04f5578c35057b7be56f61e04b1c273e0f65f80e64276",
@@ -483,7 +483,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "For two lines with direction cosines \\(l_1, m_1, n_1\\) and \\(l_2, m_2, n_2\\), the expression \\(l_1 l_2 + m_1 m_2 + n_1 n_2\\) is the cosine of the angle between the two directed lines, and that quantity can be negative if the chosen directions point oppositely. Since \\(\\theta\\) is specified to be the acute angle between the lines, its cosine is non-negative, so the modulus must be taken: \\(\\cos\\theta = |\\, l_1 l_2 + m_1 m_2 + n_1 n_2 \\,|\\), which is option (D)."
   },
   {
    "hash": "8f135323c8a312358abfac7ffcd928c0effe53ba77a9050099e1fd7abbba672b",
@@ -513,7 +513,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Two lines are parallel exactly when their direction ratios are proportional, so \\(\\dfrac{12}{4} = \\dfrac{-3}{q} = \\dfrac{9}{-p}\\). The first ratio is 3. From \\(\\dfrac{-3}{q} = 3\\) we get \\(q = -1\\), and from \\(\\dfrac{9}{-p} = 3\\) we get \\(-p = 3\\), that is \\(p = -3\\). Hence p and q are respectively \\(-3\\) and \\(-1\\), option (C) \\(-3, -1\\)."
   },
   {
    "hash": "9657a2f184a3751dc192034e1213ca3599bd82cc227c48825a59fc76431ae91f",
@@ -543,7 +543,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "For independent events, \\(P(E \\cup F) = P(E) + P(F) - P(E)P(F)\\). Substituting the given values, \\(\\dfrac{1}{2} = \\dfrac{3}{10} + P(F)\\left(1 - \\dfrac{3}{10}\\right)\\), so \\(\\dfrac{7}{10}P(F) = \\dfrac{1}{5}\\) and \\(P(F) = \\dfrac{2}{7}\\). Independence also gives \\(P(E|F) = P(E) = \\dfrac{3}{10}\\) and \\(P(F|E) = P(F) = \\dfrac{2}{7}\\). Hence \\(P(E|F) - P(F|E) = \\dfrac{3}{10} - \\dfrac{2}{7} = \\dfrac{21 - 20}{70} = \\dfrac{1}{70}\\), which is option (C) \\(\\dfrac{1}{70}\\)."
   },
   {
    "hash": "4311a1c01022f4ac3eda28b5003d55180714f0715dc3ca7e7d9bd077742a27dc",
@@ -574,7 +574,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Separating the variables in \\(\\dfrac{dy}{dx} = e^{x+y} = e^x e^y\\) gives \\(e^{-y}\\,dy = e^x\\,dx\\), so \\(-e^{-y} = e^x + k\\), that is \\(e^x + e^{-y} = C\\). Reason (R) is therefore true. For the Assertion, \\(e^x > 0\\) and \\(e^{-y} > 0\\) for every real x and y, so \\(e^x + e^{-y}\\) is always positive and can never take the value \\(-2\\); Assertion (A) is false. Hence the correct choice is that Assertion (A) is false but Reason (R) is true, option (D)."
   },
   {
    "hash": "2801a8fc179871786d1381aa123177a886f8ccb2a7e9f0cf1493051c361e0d74",
@@ -605,7 +605,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "The vector \\(-2\\vec{a}\\) is a scalar multiple of \\(\\vec{a}\\), so the two vectors are parallel to the same line and are collinear; Assertion (A) is true. For the Reason, \\(\\vec{a} \\cdot (-2\\vec{a}) = -2|\\vec{a}|^2\\), which is non-zero because \\(\\vec{a} \\ne \\vec{0}\\), so Reason (R) is false. In any case a zero dot product would indicate perpendicular vectors, not collinear ones, so (R) could not explain (A). Hence Assertion (A) is true but Reason (R) is false, option (C)."
   },
   {
    "hash": "40d61dca2186cf852417e096c39edd3c5069cabe8ee2cefb18407bf54099d803",
@@ -616,7 +616,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Derivatives of Functions in Parametric Form",
    "stem": "If \\(x = t + \\dfrac{1}{t}\\) and \\(y = t - \\dfrac{1}{t}\\), find \\(\\dfrac{dy}{dx}\\) at \\(t = 2\\).",
-   "solution": ""
+   "solution": "Differentiate each coordinate with respect to the parameter t. From \\(x = t + \\dfrac{1}{t}\\), \\(\\dfrac{dx}{dt} = 1 - \\dfrac{1}{t^2}\\); from \\(y = t - \\dfrac{1}{t}\\), \\(\\dfrac{dy}{dt} = 1 + \\dfrac{1}{t^2}\\). Hence \\(\\dfrac{dy}{dx} = \\dfrac{dy/dt}{dx/dt} = \\dfrac{1 + \\frac{1}{t^2}}{1 - \\frac{1}{t^2}} = \\dfrac{t^2 + 1}{t^2 - 1}\\). Putting \\(t = 2\\) gives \\(\\dfrac{dy}{dx} = \\dfrac{4 + 1}{4 - 1} = \\dfrac{5}{3}\\)."
   },
   {
    "hash": "318a24c703701dbee1d832e55a559156fa2240f6e313121d3f8517b7a83b49b7",
@@ -627,7 +627,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Increasing and Decreasing Functions",
    "stem": "Find the sub-interval(s) of \\(\\left(0, \\dfrac{\\pi}{2}\\right)\\) in which \\(f(x) = \\tan x - 4x\\) is increasing.",
-   "solution": ""
+   "solution": "Differentiating, \\(f'(x) = \\sec^2 x - 4\\). Setting \\(f'(x) = 0\\) gives \\(\\sec^2 x = 4\\), and on \\(\\left(0, \\dfrac{\\pi}{2}\\right)\\) the secant is positive, so \\(\\sec x = 2\\), that is \\(\\cos x = \\dfrac{1}{2}\\) and \\(x = \\dfrac{\\pi}{3}\\). Since \\(\\cos x\\) decreases on this interval, \\(\\cos x > \\dfrac{1}{2}\\) and \\(f'(x) < 0\\) for \\(0 < x < \\dfrac{\\pi}{3}\\), while \\(\\cos x < \\dfrac{1}{2}\\) and \\(f'(x) > 0\\) for \\(\\dfrac{\\pi}{3} < x < \\dfrac{\\pi}{2}\\). Hence f is increasing on the sub-interval \\(\\left(\\dfrac{\\pi}{3}, \\dfrac{\\pi}{2}\\right)\\). The closed-left form \\(\\left[\\dfrac{\\pi}{3}, \\dfrac{\\pi}{2}\\right)\\) is equally acceptable, since \\(f'\\) vanishes only at the single point \\(x = \\dfrac{\\pi}{3}\\)."
   },
   {
    "hash": "aa895a4e4212c4644c8e49955941fcddc5cb5772ac248d501463a900c25b3f9c",
@@ -638,7 +638,7 @@
    "chapter": "Inverse Trigonometric Functions",
    "subtopic": "Evaluating Inverse Trigonometric Expressions",
    "stem": "Find the value of \\(\\sin [\\cot^{-1} \\sqrt{2}\\, (\\cos (\\tan^{-1} 1))]\\).",
-   "solution": ""
+   "solution": "Work outwards from the innermost function. Since \\(\\tan\\dfrac{\\pi}{4} = 1\\), we have \\(\\tan^{-1} 1 = \\dfrac{\\pi}{4}\\), so \\(\\cos\\left(\\tan^{-1} 1\\right) = \\cos\\dfrac{\\pi}{4} = \\dfrac{1}{\\sqrt{2}}\\). The argument of the inverse cotangent is therefore \\(\\sqrt{2} \\times \\dfrac{1}{\\sqrt{2}} = 1\\), and \\(\\cot^{-1} 1 = \\dfrac{\\pi}{4}\\). Hence the required value is \\(\\sin\\dfrac{\\pi}{4} = \\dfrac{1}{\\sqrt{2}}\\)."
   },
   {
    "hash": "31eafff928ead21e9b0af310f613ead7a9798d4d3f2f97d9567133c269558543",
@@ -649,7 +649,7 @@
    "chapter": "Relations and Functions",
    "subtopic": "Types of Relations",
    "stem": "A relation R on \\(A = \\{1, 2, 3\\}\\) is defined as \\(R = \\{(1, 1)\\ (3, 3), (1, 2)\\}\\). Is R a symmetric relation ? Justify. Write the smallest relation set \\(R_1\\) such that \\(R \\cup R_1\\) becomes an equivalence relation on the set \\(\\{1, 2, 3\\}\\).",
-   "solution": ""
+   "solution": "R is not symmetric. Symmetry requires that whenever \\((a, b)\\) belongs to the relation so does \\((b, a)\\); here \\((1, 2) \\in R\\) but \\((2, 1) \\notin R\\), so the condition fails. For \\(R \\cup R_1\\) to be an equivalence relation on \\(\\{1, 2, 3\\}\\) it must be reflexive, symmetric and transitive. Reflexivity needs \\((1, 1)\\), \\((2, 2)\\) and \\((3, 3)\\); of these only \\((2, 2)\\) is missing from R. Symmetry needs \\((2, 1)\\) to accompany \\((1, 2)\\). Adding just these two gives \\(R \\cup R_1 = \\{(1, 1), (2, 2), (3, 3), (1, 2), (2, 1)\\}\\), which is reflexive and symmetric, and is also transitive: the only chains available are \\((1, 2)\\) with \\((2, 1)\\), which needs \\((1, 1)\\), and \\((2, 1)\\) with \\((1, 2)\\), which needs \\((2, 2)\\), and both are present. Since neither added pair could be dropped, the smallest such relation is \\(R_1 = \\{(2, 2), (2, 1)\\}\\)."
   },
   {
    "hash": "cae087b68de73a24d19b6bfecf5ecc481c64dbef965eac1d357a327c7a3c6074",
@@ -660,7 +660,7 @@
    "chapter": "Vector Algebra",
    "subtopic": "Scalar (Dot) Product and Projection",
    "stem": "If for two unit vectors \\(\\vec{a}\\) and \\(\\vec{b}\\), \\(|\\vec{a} + 2\\vec{b}| = |2\\vec{a} - \\vec{b}|\\), then find the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\).",
-   "solution": ""
+   "solution": "Both vectors are unit vectors, so \\(|\\vec{a}| = |\\vec{b}| = 1\\). Squaring the given equality of magnitudes, \\(\\left|\\vec{a} + 2\\vec{b}\\right|^2 = \\left|2\\vec{a} - \\vec{b}\\right|^2\\), that is \\(|\\vec{a}|^2 + 4|\\vec{b}|^2 + 4\\,\\vec{a}\\cdot\\vec{b} = 4|\\vec{a}|^2 + |\\vec{b}|^2 - 4\\,\\vec{a}\\cdot\\vec{b}\\). Substituting the magnitudes gives \\(1 + 4 + 4\\,\\vec{a}\\cdot\\vec{b} = 4 + 1 - 4\\,\\vec{a}\\cdot\\vec{b}\\), so \\(8\\,\\vec{a}\\cdot\\vec{b} = 0\\) and hence \\(\\vec{a}\\cdot\\vec{b} = 0\\). Since neither vector is the zero vector, the angle between them is \\(\\dfrac{\\pi}{2}\\)."
   },
   {
    "hash": "4c5b105a5cf476cc246b9f24b5d219c90c28dea6980a4f9ca0fbe8069853fbad",
@@ -671,7 +671,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Angle Between Two Lines",
    "stem": "If the lines \\(\\dfrac{x - 3}{1} = \\dfrac{1 - y}{1} = \\dfrac{z + 2}{p}\\) and \\(\\dfrac{2 - x}{3} = \\dfrac{y + 1}{5} = \\dfrac{z + 56}{2p}\\) are perpendicular to each other, then find the value(s) of p.",
-   "solution": ""
+   "solution": "First rewrite each line so that every numerator has the form (variable minus constant), because the direction ratios are read off only in that form. The first line, \\(\\dfrac{x - 3}{1} = \\dfrac{1 - y}{1} = \\dfrac{z + 2}{p}\\), becomes \\(\\dfrac{x - 3}{1} = \\dfrac{y - 1}{-1} = \\dfrac{z + 2}{p}\\), so its direction ratios are \\(\\langle 1, -1, p \\rangle\\). The second line, \\(\\dfrac{2 - x}{3} = \\dfrac{y + 1}{5} = \\dfrac{z + 56}{2p}\\), becomes \\(\\dfrac{x - 2}{-3} = \\dfrac{y + 1}{5} = \\dfrac{z + 56}{2p}\\), so its direction ratios are \\(\\langle -3, 5, 2p \\rangle\\). Two lines are perpendicular when \\(a_1a_2 + b_1b_2 + c_1c_2 = 0\\), so \\(1(-3) + (-1)(5) + p(2p) = 0\\), that is \\(2p^2 - 8 = 0\\) and \\(p^2 = 4\\). Hence \\(p = \\pm 2\\), so both \\(p = 2\\) and \\(p = -2\\) are admissible."
   },
   {
    "hash": "522e55c218471ad2a0bc980cd72d15129b2b421b54cc3923818a36b98e5e45a9",
@@ -682,7 +682,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Equation of a Line in Space",
    "stem": "Find the vector equation of a line passing through the origin and perpendicular to both the lines \\(\\vec{r} = 2\\hat{i} - \\hat{j} + 2\\hat{k} + \\lambda(3\\hat{i} + 4\\hat{j} + 2\\hat{k})\\) and \\(\\vec{r} = \\mu(\\hat{i} - \\hat{j} + \\hat{k})\\).",
-   "solution": ""
+   "solution": "A line perpendicular to both of the given lines is parallel to the cross product of their direction vectors. Here \\(\\vec{b_1} = 3\\hat{i} + 4\\hat{j} + 2\\hat{k}\\) and \\(\\vec{b_2} = \\hat{i} - \\hat{j} + \\hat{k}\\), so \\(\\vec{b_1} \\times \\vec{b_2} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 3 & 4 & 2 \\\\ 1 & -1 & 1 \\end{vmatrix} = (4 + 2)\\hat{i} - (3 - 2)\\hat{j} + (-3 - 4)\\hat{k} = 6\\hat{i} - \\hat{j} - 7\\hat{k}\\). The required line passes through the origin, so its position vector is \\(\\vec{0}\\) and its vector equation is \\(\\vec{r} = \\lambda\\left(6\\hat{i} - \\hat{j} - 7\\hat{k}\\right)\\), where \\(\\lambda\\) is a scalar parameter."
   },
   {
    "hash": "941df407dc30c85a02735ea7778c8d7431c0caa10ef4a5d76e36fa70d8db21dd",
@@ -693,7 +693,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration by Substitution",
    "stem": "Find :\n\n\\(\\int \\dfrac{dx}{x^{1/2} + x^{1/3}}\\)",
-   "solution": ""
+   "solution": "The fractional exponents are \\(\\dfrac{1}{2}\\) and \\(\\dfrac{1}{3}\\), whose denominators have LCM 6, so substitute \\(x = t^6\\). Then \\(dx = 6t^5\\,dt\\), \\(x^{1/2} = t^3\\) and \\(x^{1/3} = t^2\\), and the integral becomes \\(\\displaystyle\\int \\dfrac{6t^5\\,dt}{t^3 + t^2} = 6\\int \\dfrac{t^5}{t^2(t + 1)}\\,dt = 6\\int \\dfrac{t^3}{t + 1}\\,dt\\). Dividing out the improper fraction, \\(\\dfrac{t^3}{t + 1} = t^2 - t + 1 - \\dfrac{1}{t + 1}\\), so the integral is \\(6\\displaystyle\\int\\left(t^2 - t + 1 - \\dfrac{1}{t + 1}\\right)dt = 6\\left(\\dfrac{t^3}{3} - \\dfrac{t^2}{2} + t - \\log|t + 1|\\right) + C = 2t^3 - 3t^2 + 6t - 6\\log|t + 1| + C\\). Restoring \\(t = x^{1/6}\\), the answer is \\(2x^{1/2} - 3x^{1/3} + 6x^{1/6} - 6\\log\\left|x^{1/6} + 1\\right| + C\\)."
   },
   {
    "hash": "2cc21ecb65f86565ca5c966c54341212933f6abbc49495a149bf85efe8ba1c9e",
@@ -704,7 +704,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration by Parts",
    "stem": "Find :\n\n\\(\\int \\tan^{-1} \\left(\\dfrac{1 - x}{1 + x}\\right) dx\\)",
-   "solution": ""
+   "solution": "Simplify the integrand first. Putting \\(x = \\tan\\theta\\) gives \\(\\dfrac{1 - x}{1 + x} = \\dfrac{1 - \\tan\\theta}{1 + \\tan\\theta} = \\tan\\left(\\dfrac{\\pi}{4} - \\theta\\right)\\), so \\(\\tan^{-1}\\left(\\dfrac{1 - x}{1 + x}\\right) = \\dfrac{\\pi}{4} - \\tan^{-1} x\\) for \\(x > -1\\). The integral therefore becomes \\(\\displaystyle\\int\\left(\\dfrac{\\pi}{4} - \\tan^{-1} x\\right)dx = \\dfrac{\\pi x}{4} - \\int \\tan^{-1} x\\,dx\\). Integrating \\(\\tan^{-1} x\\) by parts, taking \\(\\tan^{-1} x\\) as the first function and 1 as the second, \\(\\displaystyle\\int \\tan^{-1} x\\,dx = x\\tan^{-1} x - \\int \\dfrac{x}{1 + x^2}\\,dx = x\\tan^{-1} x - \\dfrac{1}{2}\\log\\left(1 + x^2\\right)\\). Hence the required integral is \\(\\dfrac{\\pi x}{4} - x\\tan^{-1} x + \\dfrac{1}{2}\\log\\left(1 + x^2\\right) + C\\)."
   },
   {
    "hash": "5fa931be42eb427733b43009abed9e5e4323602b8e21cba2175acb9e6148f776",
@@ -715,7 +715,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "Evaluate :\n\n\\(\\int_{0}^{\\pi} \\dfrac{\\sin^{2026} x}{\\sin^{2026} x + \\cos^{2026} x}\\, dx\\)",
-   "solution": ""
+   "solution": "Let \\(I = \\displaystyle\\int_{0}^{\\pi} \\dfrac{\\sin^{2026} x}{\\sin^{2026} x + \\cos^{2026} x}\\,dx\\). Replacing x by \\(\\pi - x\\) leaves \\(\\sin x\\) unchanged and sends \\(\\cos x\\) to \\(-\\cos x\\); since 2026 is an even exponent the integrand is unchanged, so the integrand is symmetric about \\(x = \\dfrac{\\pi}{2}\\) and \\(I = 2\\displaystyle\\int_{0}^{\\pi/2} \\dfrac{\\sin^{2026} x}{\\sin^{2026} x + \\cos^{2026} x}\\,dx\\). Now apply \\(\\displaystyle\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a - x)\\,dx\\) with \\(a = \\dfrac{\\pi}{2}\\), which interchanges sine and cosine, giving \\(I = 2\\displaystyle\\int_{0}^{\\pi/2} \\dfrac{\\cos^{2026} x}{\\sin^{2026} x + \\cos^{2026} x}\\,dx\\). Adding the two expressions for I, the integrands add to 1, so \\(2I = 2\\displaystyle\\int_{0}^{\\pi/2} 1\\,dx = 2 \\times \\dfrac{\\pi}{2} = \\pi\\). Hence \\(I = \\dfrac{\\pi}{2}\\)."
   },
   {
    "hash": "38fbb2264dcd9a7115fa6702496c0537d3114b0ba45ca1d56a26aaa9b28c7ed3",
@@ -726,7 +726,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration by Partial Fractions",
    "stem": "Find :\n\n\\(\\int \\dfrac{\\cos x}{(2 + \\sin x)\\,(4 + \\sin x)}\\, dx\\)",
-   "solution": ""
+   "solution": "The numerator is the derivative of \\(\\sin x\\), so substitute \\(\\sin x = t\\), giving \\(\\cos x\\,dx = dt\\) and \\(\\displaystyle\\int \\dfrac{dt}{(2 + t)(4 + t)}\\). Resolve into partial fractions: \\(\\dfrac{1}{(2 + t)(4 + t)} = \\dfrac{1}{2}\\left(\\dfrac{1}{2 + t} - \\dfrac{1}{4 + t}\\right)\\), which checks out because \\(\\dfrac{1}{2}\\cdot\\dfrac{(4 + t) - (2 + t)}{(2 + t)(4 + t)} = \\dfrac{1}{(2 + t)(4 + t)}\\). Integrating term by term, \\(\\dfrac{1}{2}\\left(\\log|2 + t| - \\log|4 + t|\\right) + C = \\dfrac{1}{2}\\log\\left|\\dfrac{2 + t}{4 + t}\\right| + C\\). Restoring \\(t = \\sin x\\), the answer is \\(\\dfrac{1}{2}\\log\\left|\\dfrac{2 + \\sin x}{4 + \\sin x}\\right| + C\\); since \\(-1 \\le \\sin x \\le 1\\) both brackets are in fact positive, so the modulus signs may be dropped."
   },
   {
    "hash": "28efcae112303bced044c6d6c8eb21b4688ad38f84b8ebfa1aa998c0b5d3f0a0",
@@ -737,7 +737,7 @@
    "chapter": "Integrals",
    "subtopic": "Integrals of Some Particular Functions",
    "stem": "Find :\n\n\\(\\int \\dfrac{x + 3}{x^2 + 4x + 5}\\, dx\\)",
-   "solution": ""
+   "solution": "Split the numerator so that part of it is the derivative of the denominator. Since \\(\\dfrac{d}{dx}\\left(x^2 + 4x + 5\\right) = 2x + 4\\), write \\(x + 3 = \\dfrac{1}{2}(2x + 4) + 1\\). Then \\(\\displaystyle\\int \\dfrac{x + 3}{x^2 + 4x + 5}\\,dx = \\dfrac{1}{2}\\int \\dfrac{2x + 4}{x^2 + 4x + 5}\\,dx + \\int \\dfrac{dx}{x^2 + 4x + 5}\\). The first integral is of the form \\(\\displaystyle\\int \\dfrac{f'}{f}\\), giving \\(\\dfrac{1}{2}\\log\\left|x^2 + 4x + 5\\right|\\). For the second, complete the square: \\(x^2 + 4x + 5 = (x + 2)^2 + 1\\), so \\(\\displaystyle\\int \\dfrac{dx}{(x + 2)^2 + 1} = \\tan^{-1}(x + 2)\\). Hence the answer is \\(\\dfrac{1}{2}\\log\\left|x^2 + 4x + 5\\right| + \\tan^{-1}(x + 2) + C\\)."
   },
   {
    "hash": "dd69ce9136357d15fa5bfb5a4142bfc8f3d40103b555be24bb90814fe010cf26",
@@ -748,7 +748,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Homogeneous Differential Equations",
    "stem": "Find the general solution of the differential equation \\(2x^2 \\dfrac{dy}{dx} = y^2 + 2xy\\).",
-   "solution": ""
+   "solution": "Divide throughout by \\(2x^2\\): \\(\\dfrac{dy}{dx} = \\dfrac{y^2 + 2xy}{2x^2} = \\dfrac{1}{2}\\left(\\dfrac{y}{x}\\right)^2 + \\dfrac{y}{x}\\). The right side depends only on \\(\\dfrac{y}{x}\\), so the equation is homogeneous. Put \\(y = vx\\), so that \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\), and the equation becomes \\(v + x\\dfrac{dv}{dx} = \\dfrac{1}{2}v^2 + v\\), that is \\(x\\dfrac{dv}{dx} = \\dfrac{v^2}{2}\\). Separating the variables, \\(\\displaystyle\\int \\dfrac{dv}{v^2} = \\int \\dfrac{dx}{2x}\\), which integrates to \\(-\\dfrac{1}{v} = \\dfrac{1}{2}\\log|x| + C\\). Replacing \\(v = \\dfrac{y}{x}\\), the general solution is \\(-\\dfrac{x}{y} = \\dfrac{1}{2}\\log|x| + C\\), equivalently \\(\\dfrac{x}{y} + \\dfrac{1}{2}\\log|x| + C = 0\\)."
   },
   {
    "hash": "3fa1b0f25345ad6560705f5e3527ae72fe25ae7ab7278dcee0af3f040bb46d86",
@@ -759,7 +759,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Variables Separable",
    "stem": "Find a particular solution of the differential equation \\((x + 1) \\dfrac{dy}{dx} = 2\\,e^{-y} - 1\\), given that \\(y = 0\\) when \\(x = 0\\).",
-   "solution": ""
+   "solution": "[CBSE marking scheme: the principal answer \\((x + 1)\\left(2 - e^{y}\\right) = 1\\) is correct, but the alternative form printed beside it, \\(\\log|x + 1| + \\log\\left|2 - e^{-y}\\right| = 0\\), carries a spurious minus in the exponent and is NOT an equivalent restatement of it. As printed it says \\((x + 1)\\left(2 - e^{-y}\\right) = 1\\); differentiating that gives \\(\\dfrac{dy}{dx} = -\\dfrac{2e^{y} - 1}{x + 1}\\), which does not satisfy the given differential equation, although it happens to pass through the point \\((0, 0)\\). The intended alternative is \\(\\log|x + 1| + \\log\\left|2 - e^{y}\\right| = 0\\), which is exactly the principal answer written logarithmically.] Separating the variables, \\(\\dfrac{dy}{2e^{-y} - 1} = \\dfrac{dx}{x + 1}\\). Multiplying numerator and denominator on the left by \\(e^{y}\\) clears the negative exponent and gives \\(\\dfrac{e^{y}\\,dy}{2 - e^{y}} = \\dfrac{dx}{x + 1}\\). Now put \\(2 - e^{y} = t\\), so that \\(e^{y}\\,dy = -dt\\), and the equation becomes \\(-\\displaystyle\\int \\dfrac{dt}{t} = \\int \\dfrac{dx}{x + 1}\\), that is \\(-\\log|t| = \\log|x + 1| - \\log|c|\\), writing the constant of integration as \\(-\\log|c|\\). Rearranging, \\(\\log|c| = \\log|x + 1| + \\log|t|\\), so \\((x + 1)\\left(2 - e^{y}\\right) = c\\). Applying the given condition \\(y = 0\\) when \\(x = 0\\) gives \\((0 + 1)\\left(2 - e^{0}\\right) = c\\), so \\(c = 1\\). Hence the particular solution is \\((x + 1)\\left(2 - e^{y}\\right) = 1\\)."
   },
   {
    "hash": "ca90415f810a6f2bef07bba3b25ecef3da78f19491d2ec1c2379347b7cad79f0",
@@ -770,7 +770,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Logarithmic Differentiation",
    "stem": "If \\((\\sin x)^y = y^{\\cos x}\\), then find \\(\\dfrac{dy}{dx}\\).",
-   "solution": ""
+   "solution": "Take logarithms of both sides to bring the variable exponents down: \\((\\sin x)^{y} = y^{\\cos x}\\) gives \\(y\\log(\\sin x) = \\cos x \\log y\\). Differentiating both sides with respect to x, using the product rule on each side, \\(y \\cdot \\dfrac{\\cos x}{\\sin x} + \\log(\\sin x)\\dfrac{dy}{dx} = \\cos x \\cdot \\dfrac{1}{y}\\dfrac{dy}{dx} - \\sin x \\log y\\), that is \\(y\\cot x + \\log(\\sin x)\\dfrac{dy}{dx} = \\dfrac{\\cos x}{y}\\dfrac{dy}{dx} - \\sin x \\log y\\). Collecting the derivative terms on one side, \\(\\dfrac{dy}{dx}\\left(\\log(\\sin x) - \\dfrac{\\cos x}{y}\\right) = -\\left(y\\cot x + \\sin x \\log y\\right)\\). Multiplying through by \\(-y\\), \\(\\dfrac{dy}{dx}\\left(\\cos x - y\\log(\\sin x)\\right) = y\\left(y\\cot x + \\sin x \\log y\\right)\\). Hence \\(\\dfrac{dy}{dx} = \\dfrac{y\\left(y\\cot x + \\sin x \\log y\\right)}{\\cos x - y\\log(\\sin x)}\\), which may equivalently be written as \\(\\dfrac{y\\left(y\\cos x + \\sin^2 x \\log y\\right)}{\\sin x\\left(\\cos x - y\\log(\\sin x)\\right)}\\)."
   },
   {
    "hash": "5afd6ff9a405be68c7a3bceef57821580d25fd5014981b974d98562c15ba8d0a",
@@ -782,7 +782,7 @@
    "subtopic": "Independent Events",
    "stem": "A survey was conducted on the patients who have undergone knee replacement surgeries.\n\nIt was found that, Robotic Knee replacement surgeries have 90% success rate.\n\nOn a particular day, robotic surgery was performed on three patients, A, B and C, one after the other. Assuming that the success and failure of each surgery is independent of each other, find the probability that :\n(i) exactly one surgery is successful,\n(ii) at most two surgeries are successful.",
    "figure": "DECORATIVE — a stock illustration of a surgical robot beside a highlighted knee joint, printed between the first and second sentences. It carries no data; the 90% success rate and the three patients are both in the stem text. Not attached. Page idx 14 (English block) / idx 15 (English overflow).",
-   "solution": ""
+   "solution": "Each surgery succeeds with probability \\(\\dfrac{90}{100} = \\dfrac{9}{10}\\) and fails with probability \\(\\dfrac{1}{10}\\), and the three surgeries are independent of one another. (i) Exactly one success can happen in three mutually exclusive ways, according as the successful patient is A, B or C, and each of these has probability \\(\\dfrac{9}{10} \\times \\dfrac{1}{10} \\times \\dfrac{1}{10} = \\dfrac{9}{1000}\\). Hence the probability of exactly one success is \\(3 \\times \\dfrac{9}{1000} = \\dfrac{27}{1000}\\). (ii) \"At most two successes\" is the complement of \"all three successes\", and \\(P(\\text{all three succeed}) = \\left(\\dfrac{9}{10}\\right)^3 = \\dfrac{729}{1000}\\). Hence the required probability is \\(1 - \\dfrac{729}{1000} = \\dfrac{271}{1000}\\)."
   },
   {
    "hash": "bc92789f4812d388477c104fbd75ef424a60f871ccd52987c8ebaac251aa0af7",
@@ -793,7 +793,7 @@
    "chapter": "Relations and Functions",
    "subtopic": "One-One and Onto Functions",
    "stem": "Show that \\(f : R \\to R\\) defined as \\(f(x) = \\dfrac{x}{\\sqrt{1 + x^2}}\\) is one-one but not onto.",
-   "solution": ""
+   "solution": "One-one. Suppose \\(f(x_1) = f(x_2)\\) for some \\(x_1, x_2 \\in R\\), that is \\(\\dfrac{x_1}{\\sqrt{1 + x_1^2}} = \\dfrac{x_2}{\\sqrt{1 + x_2^2}}\\). Both denominators are positive, so the two sides carry the signs of \\(x_1\\) and \\(x_2\\) respectively; equality therefore forces \\(x_1\\) and \\(x_2\\) to have the same sign (and one is zero only if the other is too). Squaring both sides, \\(x_1^2\\left(1 + x_2^2\\right) = x_2^2\\left(1 + x_1^2\\right)\\), which expands to \\(x_1^2 + x_1^2x_2^2 = x_2^2 + x_1^2x_2^2\\), so \\(x_1^2 = x_2^2\\) and hence \\(x_1 = \\pm x_2\\). The possibility \\(x_1 = -x_2\\) is rejected because the two have the same sign, so \\(x_1 = x_2\\) and f is one-one.\n\nNot onto. Let \\(y = \\dfrac{x}{\\sqrt{1 + x^2}}\\) and solve for x. Squaring gives \\(y^2\\left(1 + x^2\\right) = x^2\\), so \\(x^2\\left(1 - y^2\\right) = y^2\\) and \\(x = \\pm\\sqrt{\\dfrac{y^2}{1 - y^2}}\\). This is a real number only when \\(1 - y^2 > 0\\), that is when \\(-1 < y < 1\\). The same bound is visible directly, since \\(|x| < \\sqrt{1 + x^2}\\) for every real x, so \\(|f(x)| < 1\\) always. Hence the range of f is \\((-1, 1)\\), which is a proper subset of the codomain R; for instance \\(y = 1\\) and \\(y = 2\\) have no pre-image. Since the range is not equal to the codomain, f is not onto."
   },
   {
    "hash": "b525a6c3f6425ecbf35b3358c9022157676f576f77744a3aaa1fa479531c7a01",
@@ -804,7 +804,7 @@
    "chapter": "Linear Programming",
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "Solve the following Linear Programming Problem graphically :\n\nMaximise \\(Z = 600x + 400y\\)\n\nsubject to the constraints\n\\(x + 2y \\le 12\\)\n\\(4x + 5y \\ge 20\\)\n\\(2x + y \\le 12\\)\n\\(x,\\ y \\ge 0\\)",
-   "solution": ""
+   "solution": "Draw the lines \\(x + 2y = 12\\), \\(4x + 5y = 20\\) and \\(2x + y = 12\\) in the first quadrant. The feasible region consists of the points that lie on or below the first and third lines, on or above the second, and in the first quadrant; testing the origin shows that \\((0, 0)\\) satisfies the two \\(\\le\\) constraints but fails \\(4x + 5y \\ge 20\\), so the region is the closed bounded pentagon lying away from the origin across the line \\(4x + 5y = 20\\).\n\nIts corner points are found by intersecting the boundary lines in pairs. The line \\(4x + 5y = 20\\) meets the x-axis at \\(C(5, 0)\\) and the y-axis at \\(D(0, 4)\\); the line \\(2x + y = 12\\) meets the x-axis at \\(B(6, 0)\\); the line \\(x + 2y = 12\\) meets the y-axis at \\(E(0, 6)\\); and \\(x + 2y = 12\\) meets \\(2x + y = 12\\) where \\(y = 12 - 2x\\) gives \\(x + 2(12 - 2x) = 12\\), so \\(-3x = -12\\), \\(x = 4\\) and \\(y = 4\\), giving \\(A(4, 4)\\). Each of these five points satisfies all the constraints.\n\nNow evaluate \\(Z = 600x + 400y\\) at each corner point: at \\(A(4, 4)\\), \\(Z = 2400 + 1600 = 4000\\); at \\(B(6, 0)\\), \\(Z = 3600\\); at \\(C(5, 0)\\), \\(Z = 3000\\); at \\(D(0, 4)\\), \\(Z = 1600\\); at \\(E(0, 6)\\), \\(Z = 2400\\). The feasible region is bounded, so the objective function attains its maximum at a corner point. Hence Z is maximum at the point \\((4, 4)\\), with \\(Z_{\\max} = 4000\\)."
   },
   {
    "hash": "cdc61a9934a6e01e0f6db55ce3fe7c84645c8d6cf44ec810e0f526f27e9b8891",
@@ -816,7 +816,7 @@
    "subtopic": "Solving System of Linear Equations",
    "stem": "On the inauguration day of a new showroom, a lucky draw was organized and some vouchers of ₹ 1,000 and ₹ 500 were given to the lucky draw winners.\n\nA total of 60 vouchers were given on the day. The number of ₹ 1,000 vouchers added to 3 times the number of ₹ 500 vouchers, gives 100.\n\nExpress the given information as a system of linear equations in two variables. Hence, find the number of vouchers of each type by matrix method.",
    "figure": "DECORATIVE — a clip-art collage of nine gift vouchers ('30% discount', 'SAVE 50$', '70% off', 'DISCOUNT 50%', promo codes). None of those figures is used by the question; the only data (60 vouchers, ₹ 1,000 and ₹ 500, the '+ 3 times = 100' relation) is in the stem text. Not attached. Page idx 16 (English block) / idx 17 (English overflow).",
-   "solution": ""
+   "solution": "Let x be the number of 1,000-rupee vouchers and y the number of 500-rupee vouchers. \"A total of 60 vouchers were given\" gives \\(x + y = 60\\), and \"the number of 1,000-rupee vouchers added to 3 times the number of 500-rupee vouchers gives 100\" gives \\(x + 3y = 100\\). That is the required system of linear equations.\n\nWrite it as \\(AX = B\\), where \\(A = \\begin{bmatrix} 1 & 1 \\\\ 1 & 3 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 60 \\\\ 100 \\end{bmatrix}\\). Here \\(|A| = 1 \\times 3 - 1 \\times 1 = 2\\), which is non-zero, so A is invertible and the system has the unique solution \\(X = A^{-1}B\\).\n\nThe cofactor matrix gives \\(\\text{adj } A = \\begin{bmatrix} 3 & -1 \\\\ -1 & 1 \\end{bmatrix}\\), so \\(A^{-1} = \\dfrac{1}{|A|}\\,\\text{adj } A = \\dfrac{1}{2}\\begin{bmatrix} 3 & -1 \\\\ -1 & 1 \\end{bmatrix}\\). Hence \\(\\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\dfrac{1}{2}\\begin{bmatrix} 3 & -1 \\\\ -1 & 1 \\end{bmatrix}\\begin{bmatrix} 60 \\\\ 100 \\end{bmatrix} = \\dfrac{1}{2}\\begin{bmatrix} 180 - 100 \\\\ -60 + 100 \\end{bmatrix} = \\dfrac{1}{2}\\begin{bmatrix} 80 \\\\ 40 \\end{bmatrix} = \\begin{bmatrix} 40 \\\\ 20 \\end{bmatrix}\\).\n\nComparing entries, \\(x = 40\\) and \\(y = 20\\). So 40 vouchers of 1,000 rupees and 20 vouchers of 500 rupees were given. This checks out: \\(40 + 20 = 60\\) and \\(40 + 3 \\times 20 = 100\\)."
   },
   {
    "hash": "a7258321c4aecd145926c62018d88568ab8a168b8ebecbcc2675f8a67a1352bd",
@@ -827,7 +827,7 @@
    "chapter": "Matrices",
    "subtopic": "Multiplication of Matrices",
    "stem": "Given that \\(P = \\begin{bmatrix} 2 & -1 \\\\ 3 & 4 \\end{bmatrix}\\), \\(Q = \\begin{bmatrix} 5 & 2 \\\\ 7 & 4 \\end{bmatrix}\\) and \\(R = \\begin{bmatrix} 2 & 5 \\\\ 3 & 8 \\end{bmatrix}\\), find a matrix S such that \\(PQ - RS\\) is a null matrix.",
-   "solution": ""
+   "solution": "First compute the product PQ: \\(PQ = \\begin{bmatrix} 2 & -1 \\\\ 3 & 4 \\end{bmatrix}\\begin{bmatrix} 5 & 2 \\\\ 7 & 4 \\end{bmatrix} = \\begin{bmatrix} 10 - 7 & 4 - 4 \\\\ 15 + 28 & 6 + 16 \\end{bmatrix} = \\begin{bmatrix} 3 & 0 \\\\ 43 & 22 \\end{bmatrix}\\).\n\nSaying that \\(PQ - RS\\) is a null matrix is the same as saying \\(RS = PQ\\). Since \\(|R| = 2 \\times 8 - 5 \\times 3 = 16 - 15 = 1\\), which is non-zero, R is invertible and \\(S = R^{-1}(PQ)\\). Here \\(\\text{adj } R = \\begin{bmatrix} 8 & -5 \\\\ -3 & 2 \\end{bmatrix}\\), so \\(R^{-1} = \\dfrac{1}{1}\\begin{bmatrix} 8 & -5 \\\\ -3 & 2 \\end{bmatrix} = \\begin{bmatrix} 8 & -5 \\\\ -3 & 2 \\end{bmatrix}\\).\n\nTherefore \\(S = \\begin{bmatrix} 8 & -5 \\\\ -3 & 2 \\end{bmatrix}\\begin{bmatrix} 3 & 0 \\\\ 43 & 22 \\end{bmatrix} = \\begin{bmatrix} 24 - 215 & 0 - 110 \\\\ -9 + 86 & 0 + 44 \\end{bmatrix} = \\begin{bmatrix} -191 & -110 \\\\ 77 & 44 \\end{bmatrix}\\).\n\nThe same answer follows by comparing entries: writing \\(S = \\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}\\) gives \\(RS = \\begin{bmatrix} 2a + 5c & 2b + 5d \\\\ 3a + 8c & 3b + 8d \\end{bmatrix}\\), so \\(2a + 5c = 3\\), \\(3a + 8c = 43\\), \\(2b + 5d = 0\\) and \\(3b + 8d = 22\\), whose solution is \\(a = -191\\), \\(b = -110\\), \\(c = 77\\), \\(d = 44\\)."
   },
   {
    "hash": "3ddc2f5d381654e0458aa57678564df089a0431dd7cfbda26ee8905a8003b89f",
@@ -838,7 +838,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Shortest Distance Between Two Lines",
    "stem": "Represent the equations of lines \\(l_1\\) and \\(l_2\\) in vector form and check whether they are intersecting or not.\n\n\\(l_1 : \\dfrac{x + 3}{-3} = \\dfrac{y - 1}{1} = \\dfrac{z - 5}{5}\\)\n\n\\(l_2 : \\dfrac{x + 1}{-1} = \\dfrac{2 - y}{-2} = \\dfrac{z - 5}{5}\\)",
-   "solution": ""
+   "solution": "Read a point and the direction ratios off each symmetric form. For \\(l_1\\) the numerators are already of the form (variable minus constant), so the line passes through \\((-3, 1, 5)\\) with direction ratios \\(\\langle -3, 1, 5 \\rangle\\), giving \\(\\vec{r} = \\left(-3\\hat{i} + \\hat{j} + 5\\hat{k}\\right) + \\lambda\\left(-3\\hat{i} + \\hat{j} + 5\\hat{k}\\right)\\). For \\(l_2\\), rewrite \\(\\dfrac{2 - y}{-2}\\) as \\(\\dfrac{y - 2}{2}\\), so the line is \\(\\dfrac{x + 1}{-1} = \\dfrac{y - 2}{2} = \\dfrac{z - 5}{5}\\); it passes through \\((-1, 2, 5)\\) with direction ratios \\(\\langle -1, 2, 5 \\rangle\\), giving \\(\\vec{r} = \\left(-\\hat{i} + 2\\hat{j} + 5\\hat{k}\\right) + \\mu\\left(-\\hat{i} + 2\\hat{j} + 5\\hat{k}\\right)\\).\n\nTwo lines intersect exactly when they are not parallel and are coplanar, and coplanarity is the condition \\(\\left(\\vec{a_2} - \\vec{a_1}\\right)\\cdot\\left(\\vec{b_1} \\times \\vec{b_2}\\right) = 0\\). Here \\(\\vec{a_2} - \\vec{a_1} = \\left(-\\hat{i} + 2\\hat{j} + 5\\hat{k}\\right) - \\left(-3\\hat{i} + \\hat{j} + 5\\hat{k}\\right) = 2\\hat{i} + \\hat{j}\\), and \\(\\vec{b_1} \\times \\vec{b_2} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ -3 & 1 & 5 \\\\ -1 & 2 & 5 \\end{vmatrix} = (5 - 10)\\hat{i} - (-15 + 5)\\hat{j} + (-6 + 1)\\hat{k} = -5\\hat{i} + 10\\hat{j} - 5\\hat{k}\\).\n\nSince this cross product is not the zero vector, the direction ratios \\(\\langle -3, 1, 5 \\rangle\\) and \\(\\langle -1, 2, 5 \\rangle\\) are not proportional and the lines are not parallel. And \\(\\left(\\vec{a_2} - \\vec{a_1}\\right)\\cdot\\left(\\vec{b_1} \\times \\vec{b_2}\\right) = 2(-5) + 1(10) + 0(-5) = -10 + 10 = 0\\). The lines are therefore coplanar and non-parallel, so they do intersect."
   },
   {
    "hash": "6e43a251ee18a06c73194dba9fded720e5fcf3c530411882323ea49c00ff8492",
@@ -849,7 +849,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Shortest Distance Between Two Lines",
    "stem": "Opposite sides of a square are along the lines :\n\n\\(\\vec{r} = \\hat{i} + 2\\hat{j} - 4\\hat{k} + \\lambda(2\\hat{i} + 3\\hat{j} + 6\\hat{k})\\)\n\n\\(\\vec{r} = 3\\hat{i} + 3\\hat{j} - 5\\hat{k} + \\mu(2\\hat{i} + 3\\hat{j} + 6\\hat{k})\\)\n\nFind the area of the square if direction ratios of other pair of opposite sides of the square are given by \\(<-3, 6, p>\\). Also, find the value of p.",
-   "solution": ""
+   "solution": "Both given lines have the same direction vector \\(\\vec{b} = 2\\hat{i} + 3\\hat{j} + 6\\hat{k}\\), so they are parallel; they carry one pair of opposite sides of the square. The other pair of sides is perpendicular to \\(\\vec{b}\\), so the side of the square is exactly the perpendicular distance between these two parallel lines.\n\nWith \\(\\vec{a_1} = \\hat{i} + 2\\hat{j} - 4\\hat{k}\\) and \\(\\vec{a_2} = 3\\hat{i} + 3\\hat{j} - 5\\hat{k}\\) we get \\(\\vec{a_2} - \\vec{a_1} = 2\\hat{i} + \\hat{j} - \\hat{k}\\), and \\(\\left(\\vec{a_2} - \\vec{a_1}\\right) \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & 1 & -1 \\\\ 2 & 3 & 6 \\end{vmatrix} = (6 + 3)\\hat{i} - (12 + 2)\\hat{j} + (6 - 2)\\hat{k} = 9\\hat{i} - 14\\hat{j} + 4\\hat{k}\\). Its magnitude is \\(\\sqrt{81 + 196 + 16} = \\sqrt{293}\\), and \\(|\\vec{b}| = \\sqrt{4 + 9 + 36} = \\sqrt{49} = 7\\).\n\nThe distance between the parallel lines is \\(\\dfrac{\\left|\\left(\\vec{a_2} - \\vec{a_1}\\right) \\times \\vec{b}\\right|}{|\\vec{b}|} = \\dfrac{\\sqrt{293}}{7}\\), so the side of the square is \\(\\dfrac{\\sqrt{293}}{7}\\) units and its area is \\(\\left(\\dfrac{\\sqrt{293}}{7}\\right)^2 = \\dfrac{293}{49}\\) square units.\n\nFinally, adjacent sides of a square are perpendicular, so the direction ratios \\(\\langle -3, 6, p \\rangle\\) must satisfy \\(\\langle -3, 6, p \\rangle \\cdot \\langle 2, 3, 6 \\rangle = 0\\), that is \\(-6 + 18 + 6p = 0\\). Hence \\(6p = -12\\) and \\(p = -2\\)."
   },
   {
    "hash": "3ced7992a443f97841a012151b24584940c43ec173b25001f8d004e69ffcf9c1",
@@ -862,7 +862,7 @@
    "stem": "Express \\(p(x) = l_1 + l_2\\) in terms of x.",
    "context": "Two vertical light poles of height 22 m and 16 m stand on the opposite sides of a 20 m wide road as shown below in the figure.\n\nTwo ladders of length \\(l_1\\) and \\(l_2\\) are placed from a common point R on the road at a distance of x m from the smaller pole.\n\nBased on the above information, answer the following questions :",
    "figure": "REQUIRED — the schematic the stem points at ('as shown below in the figure'). It is what fixes the arrangement the stem only half-states: pole AB (22 m) on the left, pole CD (16 m) on the right, the 20 m road as BD, R a point of BD with x measured from D (the shorter pole), ladder \\(l_1\\) from R to A and \\(l_2\\) from R to C. Page idx 19 (English block at the top of the page).",
-   "solution": ""
+   "solution": "From the figure, AB is the 22 m pole and CD the 16 m pole, standing at the two ends of the 20 m wide road BD, and R is the common point on the road with \\(RD = x\\) measured from the smaller pole, so \\(BR = 20 - x\\). Each pole is vertical, so triangles ABR and CDR are right-angled at B and at D respectively. By Pythagoras, \\(l_1 = AR = \\sqrt{22^2 + (20 - x)^2}\\) and \\(l_2 = CR = \\sqrt{16^2 + x^2}\\). Hence \\(p(x) = l_1 + l_2 = \\sqrt{484 + (20 - x)^2} + \\sqrt{256 + x^2}\\), which on expanding the square becomes \\(p(x) = \\sqrt{x^2 - 40x + 884} + \\sqrt{x^2 + 256}\\)."
   },
   {
    "hash": "2e64323d07f1044d10c0848e7c4b9294e5704266e26084cf1744dbef103b3c37",
@@ -875,7 +875,7 @@
    "stem": "Find \\(p'(x)\\).",
    "context": "Two vertical light poles of height 22 m and 16 m stand on the opposite sides of a 20 m wide road as shown below in the figure.\n\nTwo ladders of length \\(l_1\\) and \\(l_2\\) are placed from a common point R on the road at a distance of x m from the smaller pole.\n\nBased on the above information, answer the following questions :",
    "figure": "REQUIRED — the schematic the stem points at ('as shown below in the figure'). It is what fixes the arrangement the stem only half-states: pole AB (22 m) on the left, pole CD (16 m) on the right, the 20 m road as BD, R a point of BD with x measured from D (the shorter pole), ladder \\(l_1\\) from R to A and \\(l_2\\) from R to C. Page idx 19 (English block at the top of the page).",
-   "solution": ""
+   "solution": "Differentiate each square root by the chain rule. With \\(p(x) = \\sqrt{x^2 - 40x + 884} + \\sqrt{x^2 + 256}\\), \\(p'(x) = \\dfrac{2x - 40}{2\\sqrt{x^2 - 40x + 884}} + \\dfrac{2x}{2\\sqrt{x^2 + 256}}\\), that is \\(p'(x) = \\dfrac{x - 20}{\\sqrt{x^2 - 40x + 884}} + \\dfrac{x}{\\sqrt{x^2 + 256}}\\)."
   },
   {
    "hash": "eafe4d876ef42e670e9d39cdd3effbcfc654aa4ad18e8b44f3b03a540df56905",
@@ -888,7 +888,7 @@
    "stem": "Find the value of x for which \\(l_1^2 + l_2^2\\) is minimum.",
    "context": "Two vertical light poles of height 22 m and 16 m stand on the opposite sides of a 20 m wide road as shown below in the figure.\n\nTwo ladders of length \\(l_1\\) and \\(l_2\\) are placed from a common point R on the road at a distance of x m from the smaller pole.\n\nBased on the above information, answer the following questions :",
    "figure": "REQUIRED — the schematic the stem points at ('as shown below in the figure'). It is what fixes the arrangement the stem only half-states: pole AB (22 m) on the left, pole CD (16 m) on the right, the 20 m road as BD, R a point of BD with x measured from D (the shorter pole), ladder \\(l_1\\) from R to A and \\(l_2\\) from R to C. Page idx 19 (English block at the top of the page).",
-   "solution": ""
+   "solution": "Let \\(q(x) = l_1^2 + l_2^2 = \\left(x^2 - 40x + 884\\right) + \\left(x^2 + 256\\right) = 2x^2 - 40x + 1140\\), a quadratic in x, so the square roots disappear. Then \\(q'(x) = 4x - 40\\), and putting \\(q'(x) = 0\\) gives \\(4x = 40\\), that is \\(x = 10\\). Since \\(q''(x) = 4 > 0\\) for every x, the function is concave up and this critical point is a minimum. Hence \\(l_1^2 + l_2^2\\) is least when \\(x = 10\\) m, that is when R is at the middle of the 20 m road."
   },
   {
    "hash": "d29b4434c0d058a3efc55ed55b1b970fa4173777789da66d456b7234c00e4ccd",
@@ -901,7 +901,7 @@
    "stem": "If the 22 m long pole  is also replaced by a 16 m long pole, at what distance from either pole should the ladders be kept so that the sum of squares of lengths of ladders needed to reach the top of the pole is minimum ?",
    "context": "Two vertical light poles of height 22 m and 16 m stand on the opposite sides of a 20 m wide road as shown below in the figure.\n\nTwo ladders of length \\(l_1\\) and \\(l_2\\) are placed from a common point R on the road at a distance of x m from the smaller pole.\n\nBased on the above information, answer the following questions :",
    "figure": "REQUIRED — the schematic the stem points at ('as shown below in the figure'). It is what fixes the arrangement the stem only half-states: pole AB (22 m) on the left, pole CD (16 m) on the right, the 20 m road as BD, R a point of BD with x measured from D (the shorter pole), ladder \\(l_1\\) from R to A and \\(l_2\\) from R to C. Page idx 19 (English block at the top of the page).",
-   "solution": ""
+   "solution": "Now both poles are 16 m tall. Let the common point be at a distance y m from one pole, so that it is \\((20 - y)\\) m from the other. Each ladder is the hypotenuse of a right triangle of height 16, so the sum of the squares of their lengths is \\(r(y) = \\left(16^2 + y^2\\right) + \\left(16^2 + (20 - y)^2\\right) = 256 + y^2 + 256 + 400 - 40y + y^2 = 2y^2 - 40y + 912\\).\n\nDifferentiating, \\(r'(y) = 4y - 40\\), and \\(r'(y) = 0\\) gives \\(y = 10\\). Since \\(r''(y) = 4 > 0\\), this is a minimum. Hence the ladders should be kept at a distance of 10 m from either pole, that is at the mid-point of the road."
   },
   {
    "hash": "1a86dacdc9fc44978adcce59080bf50d631962cac5fc74a27b2564a6600d4a24",
@@ -914,7 +914,7 @@
    "stem": "Find the probability that a student selected at random is a regular student.",
    "context": "A survey was conducted to find out the success rate of students who qualified the entrance examination by dropping a year after class XII.\n\nAs per the data collected, 40% students appearing in the examination were dropouts and the remaining students were regular students of class XII.\n\nOf the dropouts, 5% qualify the examination while 10% of the regular students qualify the examination.\n\nBased on the above information, answer the following questions.",
    "figure": "DECORATIVE — a cartoon of a student at a desk piled with books under a thought bubble reading 'DROP OR NOT?'. It carries no data; the 40% / 5% / 10% figures are all in the passage. Not attached. Page idx 21 (English overflow block at the top of the page).",
-   "solution": ""
+   "solution": "Of all the students appearing in the examination, 40 per cent are dropouts, so the remaining \\(100 - 40 = 60\\) per cent are regular students of class XII. Hence the probability that a student selected at random is a regular student is \\(\\dfrac{60}{100} = \\dfrac{3}{5}\\)."
   },
   {
    "hash": "b1964ccfaa8d9d5dcf89ff900243c73caf0107cfdeb0894506f6a9ad8c3be3d9",
@@ -927,7 +927,7 @@
    "stem": "A student is selected at random from a group of dropout students. What is the probability that the student will not qualify the examination ?",
    "context": "A survey was conducted to find out the success rate of students who qualified the entrance examination by dropping a year after class XII.\n\nAs per the data collected, 40% students appearing in the examination were dropouts and the remaining students were regular students of class XII.\n\nOf the dropouts, 5% qualify the examination while 10% of the regular students qualify the examination.\n\nBased on the above information, answer the following questions.",
    "figure": "DECORATIVE — a cartoon of a student at a desk piled with books under a thought bubble reading 'DROP OR NOT?'. It carries no data; the 40% / 5% / 10% figures are all in the passage. Not attached. Page idx 21 (English overflow block at the top of the page).",
-   "solution": ""
+   "solution": "Among the dropouts, 5 per cent qualify the examination, so the other \\(100 - 5 = 95\\) per cent do not. Since the student is being selected from the group of dropouts, the required probability is this conditional proportion, namely \\(\\dfrac{95}{100} = \\dfrac{19}{20}\\)."
   },
   {
    "hash": "d5ae634617ed66f6f457553949384360e3c3945b9a03f9b8e83f0e30680941c0",
@@ -940,7 +940,7 @@
    "stem": "A student selected at random qualified the examination. Find the probability that student is not a dropout.",
    "context": "A survey was conducted to find out the success rate of students who qualified the entrance examination by dropping a year after class XII.\n\nAs per the data collected, 40% students appearing in the examination were dropouts and the remaining students were regular students of class XII.\n\nOf the dropouts, 5% qualify the examination while 10% of the regular students qualify the examination.\n\nBased on the above information, answer the following questions.",
    "figure": "DECORATIVE — a cartoon of a student at a desk piled with books under a thought bubble reading 'DROP OR NOT?'. It carries no data; the 40% / 5% / 10% figures are all in the passage. Not attached. Page idx 21 (English overflow block at the top of the page).",
-   "solution": ""
+   "solution": "Let \\(E_1\\) be the event that the student appearing in the examination is a dropout, \\(E_2\\) that the student is a regular student, and A that the student qualified the examination. Then \\(P(E_1) = \\dfrac{40}{100}\\), \\(P(E_2) = \\dfrac{60}{100}\\), \\(P(A|E_1) = \\dfrac{5}{100}\\) and \\(P(A|E_2) = \\dfrac{10}{100}\\). The events \\(E_1\\) and \\(E_2\\) are mutually exclusive and exhaustive, and \"not a dropout\" is precisely \\(E_2\\), so by Bayes' theorem \\(P(E_2|A) = \\dfrac{P(E_2)\\,P(A|E_2)}{P(E_1)\\,P(A|E_1) + P(E_2)\\,P(A|E_2)} = \\dfrac{\\frac{60}{100} \\times \\frac{10}{100}}{\\frac{40}{100} \\times \\frac{5}{100} + \\frac{60}{100} \\times \\frac{10}{100}} = \\dfrac{600}{200 + 600} = \\dfrac{600}{800} = \\dfrac{3}{4}\\)."
   },
   {
    "hash": "0f06f736c4c51f95ebf40ec078302ed94fd45dde0f1dac9053837f36a9a595a1",
@@ -953,7 +953,7 @@
    "stem": "A student selected at random did not qualify the examination. Find the probability that the student was a regular student.",
    "context": "A survey was conducted to find out the success rate of students who qualified the entrance examination by dropping a year after class XII.\n\nAs per the data collected, 40% students appearing in the examination were dropouts and the remaining students were regular students of class XII.\n\nOf the dropouts, 5% qualify the examination while 10% of the regular students qualify the examination.\n\nBased on the above information, answer the following questions.",
    "figure": "DECORATIVE — a cartoon of a student at a desk piled with books under a thought bubble reading 'DROP OR NOT?'. It carries no data; the 40% / 5% / 10% figures are all in the passage. Not attached. Page idx 21 (English overflow block at the top of the page).",
-   "solution": ""
+   "solution": "Keep the same notation: \\(E_1\\) is \"dropout\", \\(E_2\\) is \"regular\", A is \"qualified\", so \\(A'\\) is \"did not qualify\". Then \\(P(E_1) = \\dfrac{40}{100}\\) and \\(P(E_2) = \\dfrac{60}{100}\\), while \\(P(A'|E_1) = \\dfrac{95}{100}\\) (95 per cent of the dropouts fail to qualify) and \\(P(A'|E_2) = \\dfrac{90}{100}\\) (90 per cent of the regular students fail to qualify). By Bayes' theorem, \\(P(E_2|A') = \\dfrac{P(E_2)\\,P(A'|E_2)}{P(E_1)\\,P(A'|E_1) + P(E_2)\\,P(A'|E_2)} = \\dfrac{\\frac{60}{100} \\times \\frac{90}{100}}{\\frac{40}{100} \\times \\frac{95}{100} + \\frac{60}{100} \\times \\frac{90}{100}} = \\dfrac{5400}{3800 + 5400} = \\dfrac{5400}{9200} = \\dfrac{27}{46}\\)."
   },
   {
    "hash": "50714f81deea0b088ecf3cee626af4d23fb0500f255c50b0cde006d8a5082397",
@@ -966,7 +966,7 @@
    "stem": "Write the equation of the boundary line AB of the park.",
    "context": "There is a triangular park in the society. The park is divided into two sections as shown in the figure.\n\nIn the region OAC, children are allowed to play games like cricket, football, while in the region AOB, activities which involve running are not allowed.\n\nThe vertices of the triangular park ABC are \\(A(0, 4)\\), \\(B(-2, 0)\\) and \\(C(3, 0)\\).\n\nBased on the above information, answer the following questions :",
    "figure": "DECORATIVE — two side-by-side images: a landscape-architect's colour plan of a waterfront park, and a plot of triangle ABC on the coordinate axes with A on the y-axis at 4, B at −2 and C at 3 on the x-axis. The plan is pure decoration and the plot only restates the vertices, which the passage already gives numerically. Not attached. Page idx 23 (English block).",
-   "solution": ""
+   "solution": "The boundary AB joins \\(A(0, 4)\\) and \\(B(-2, 0)\\), so its slope is \\(\\dfrac{0 - 4}{-2 - 0} = \\dfrac{-4}{-2} = 2\\). Using the point \\(A(0, 4)\\) in the point-slope form, \\(y - 4 = 2(x - 0)\\), that is \\(y = 2x + 4\\). Hence the equation of AB is \\(2x - y + 4 = 0\\)."
   },
   {
    "hash": "b1797f70e9beb286a4ed97b54a383b226d9e54837ef5ee83c69b97b48dc0a512",
@@ -979,7 +979,7 @@
    "stem": "Write the equation of the boundary line AC of the park.",
    "context": "There is a triangular park in the society. The park is divided into two sections as shown in the figure.\n\nIn the region OAC, children are allowed to play games like cricket, football, while in the region AOB, activities which involve running are not allowed.\n\nThe vertices of the triangular park ABC are \\(A(0, 4)\\), \\(B(-2, 0)\\) and \\(C(3, 0)\\).\n\nBased on the above information, answer the following questions :",
    "figure": "DECORATIVE — two side-by-side images: a landscape-architect's colour plan of a waterfront park, and a plot of triangle ABC on the coordinate axes with A on the y-axis at 4, B at −2 and C at 3 on the x-axis. The plan is pure decoration and the plot only restates the vertices, which the passage already gives numerically. Not attached. Page idx 23 (English block).",
-   "solution": ""
+   "solution": "The boundary AC joins \\(A(0, 4)\\) and \\(C(3, 0)\\), which are its y-intercept and x-intercept respectively. Using the intercept form \\(\\dfrac{x}{a} + \\dfrac{y}{b} = 1\\) with \\(a = 3\\) and \\(b = 4\\) gives \\(\\dfrac{x}{3} + \\dfrac{y}{4} = 1\\), and multiplying through by 12 gives \\(4x + 3y = 12\\)."
   },
   {
    "hash": "7bebebcf33a10d52a59338f40b3ce55f0e24b92a5714fa6cc910ff41a7a05b6e",
@@ -992,7 +992,7 @@
    "stem": "Using integration, find the area of region OAC, in which children are allowed to play cricket, football.",
    "context": "There is a triangular park in the society. The park is divided into two sections as shown in the figure.\n\nIn the region OAC, children are allowed to play games like cricket, football, while in the region AOB, activities which involve running are not allowed.\n\nThe vertices of the triangular park ABC are \\(A(0, 4)\\), \\(B(-2, 0)\\) and \\(C(3, 0)\\).\n\nBased on the above information, answer the following questions :",
    "figure": "DECORATIVE — two side-by-side images: a landscape-architect's colour plan of a waterfront park, and a plot of triangle ABC on the coordinate axes with A on the y-axis at 4, B at −2 and C at 3 on the x-axis. The plan is pure decoration and the plot only restates the vertices, which the passage already gives numerically. Not attached. Page idx 23 (English block).",
-   "solution": ""
+   "solution": "The region OAC is the triangle bounded by the y-axis from O to \\(A(0, 4)\\), the line AC, and the x-axis from \\(C(3, 0)\\) back to the origin. Taking vertical strips, the height of a strip at abscissa x runs from the x-axis up to the line AC, and from \\(4x + 3y = 12\\) that height is \\(y = \\dfrac{12 - 4x}{3}\\); x runs from 0 to 3. Hence the area is \\(\\displaystyle\\int_{0}^{3} \\dfrac{12 - 4x}{3}\\,dx = \\dfrac{1}{3}\\left[12x - 2x^2\\right]_{0}^{3} = \\dfrac{1}{3}\\left(36 - 18\\right) = 6\\) square units."
   },
   {
    "hash": "3150c141988752e8438b6fa3adfab3c14800d0a7d53614fbba91a356ced26e3a",
@@ -1005,7 +1005,7 @@
    "stem": "Using integration, find the area of region AOB.",
    "context": "There is a triangular park in the society. The park is divided into two sections as shown in the figure.\n\nIn the region OAC, children are allowed to play games like cricket, football, while in the region AOB, activities which involve running are not allowed.\n\nThe vertices of the triangular park ABC are \\(A(0, 4)\\), \\(B(-2, 0)\\) and \\(C(3, 0)\\).\n\nBased on the above information, answer the following questions :",
    "figure": "DECORATIVE — two side-by-side images: a landscape-architect's colour plan of a waterfront park, and a plot of triangle ABC on the coordinate axes with A on the y-axis at 4, B at −2 and C at 3 on the x-axis. The plan is pure decoration and the plot only restates the vertices, which the passage already gives numerically. Not attached. Page idx 23 (English block).",
-   "solution": ""
+   "solution": "The region AOB is the triangle bounded by the y-axis from O to \\(A(0, 4)\\), the line AB, and the x-axis from \\(B(-2, 0)\\) to the origin. Taking vertical strips, the height of a strip at abscissa x runs from the x-axis up to the line AB, and from \\(2x - y + 4 = 0\\) that height is \\(y = 2x + 4\\); x runs from \\(-2\\) to 0. Hence the area is \\(\\displaystyle\\int_{-2}^{0} (2x + 4)\\,dx = \\left[x^2 + 4x\\right]_{-2}^{0} = 0 - \\left(4 - 8\\right) = 4\\) square units."
   }
  ]
 }

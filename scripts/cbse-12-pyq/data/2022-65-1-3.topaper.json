@@ -13,7 +13,7 @@
    "chapter": "Vector Algebra",
    "subtopic": "Scalar (Dot) Product and Projection",
    "stem": "If \\(\\vec{a} = 2\\hat{i} + y\\hat{j} + \\hat{k}\\) and \\(\\vec{b} = \\hat{i} + 2\\hat{j} + 3\\hat{k}\\) are two vectors for which the vector \\((\\vec{a} + \\vec{b})\\) is perpendicular to the vector \\((\\vec{a} - \\vec{b})\\), then find all the possible values of y.",
-   "solution": ""
+   "solution": "Two vectors are perpendicular exactly when their dot product vanishes, so \\((\\vec{a} + \\vec{b}) \\cdot (\\vec{a} - \\vec{b}) = 0\\). Expanding, the two cross terms cancel and this collapses to \\(|\\vec{a}|^2 - |\\vec{b}|^2 = 0\\). Here \\(|\\vec{a}|^2 = 2^2 + y^2 + 1^2 = y^2 + 5\\) and \\(|\\vec{b}|^2 = 1^2 + 2^2 + 3^2 = 14\\), so \\(y^2 + 5 - 14 = 0\\), that is \\(y^2 = 9\\). Hence \\(y = 3\\) or \\(y = -3\\); both values are admissible, since the condition depends on \\(y\\) only through \\(y^2\\)."
   },
   {
    "hash": "63044e8b7610656c16a277cb253d10c1570d83337398c9cc29cb63208269e250",
@@ -24,7 +24,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "The Plane",
    "stem": "Find the co-ordinates of point where the line \\(\\frac{x - 3}{-1} = \\frac{y + 4}{1} = \\frac{z + 5}{6}\\) crosses the plane passing through points \\(\\left(\\frac{7}{2}, 0, 0\\right)\\), \\((0, 7, 0)\\) and \\((0, 0, 7)\\).",
-   "solution": ""
+   "solution": "Set each ratio of the line equal to \\(\\lambda\\), so a general point of the line is \\((-\\lambda + 3,\\ \\lambda - 4,\\ 6\\lambda - 5)\\). The three given points are the plane's intercepts on the axes, so the intercept form applies directly: \\(\\frac{x}{7/2} + \\frac{y}{7} + \\frac{z}{7} = 1\\), that is \\(\\frac{2x}{7} + \\frac{y}{7} + \\frac{z}{7} = 1\\), or \\(2x + y + z = 7\\). Substituting the general point, \\(2(-\\lambda + 3) + (\\lambda - 4) + (6\\lambda - 5) = 7\\), which simplifies to \\(5\\lambda - 3 = 7\\), so \\(5\\lambda = 10\\) and \\(\\lambda = 2\\). The point of crossing is therefore \\((1, -2, 7)\\). It checks out both ways: \\(\\frac{1-3}{-1} = \\frac{-2+4}{1} = \\frac{7+5}{6} = 2\\), and \\(2(1) + (-2) + 7 = 7\\)."
   },
   {
    "hash": "29674c79f41238d00d1d5527d7934e0fdb408d2521de01dd2d728e2304834585",
@@ -35,7 +35,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Homogeneous Differential Equations",
    "stem": "Solve the differential equation : \\(\\frac{dy}{dx} = \\frac{x^2 + y^2}{xy}\\).",
-   "solution": ""
+   "solution": "Numerator and denominator are both of degree \\(2\\), so the right-hand side is homogeneous of degree \\(0\\) and the substitution \\(y = vx\\) applies. Then \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\), while \\(\\frac{x^2 + y^2}{xy} = \\frac{x^2(1 + v^2)}{x \\cdot vx} = \\frac{1 + v^2}{v}\\). The equation becomes \\(v + x\\frac{dv}{dx} = \\frac{1 + v^2}{v}\\), so \\(x\\frac{dv}{dx} = \\frac{1 + v^2}{v} - v = \\frac{1 + v^2 - v^2}{v} = \\frac{1}{v}\\). The variables now separate as \\(v\\,dv = \\frac{dx}{x}\\), and integrating both sides gives \\(\\frac{v^2}{2} = \\log|x| + C\\). Restoring \\(v = \\frac{y}{x}\\), the general solution is \\(\\frac{y^2}{2x^2} = \\log|x| + C\\), equivalently \\(y^2 = 2x^2\\left(\\log|x| + C\\right)\\)."
   },
   {
    "hash": "5f0f96210780da4138b5fcec61045321ee706213de9443b40151dbc7db4cfef2",
@@ -46,7 +46,7 @@
    "chapter": "Application of Integrals",
    "subtopic": "Area Under Simple Curves",
    "stem": "Using integration, find the area of the region enclosed by the curve \\(y = x^2\\), the \\(x\\)-axis and the ordinates \\(x = -2\\) and \\(x = 1\\).",
-   "solution": ""
+   "solution": "Sketch \\(y = x^2\\): it is a parabola with vertex at the origin lying entirely on or above the \\(x\\)-axis. So over the whole span \\(x = -2\\) to \\(x = 1\\) the region sits above the axis, and no part of the integral needs a sign correction even though the interval straddles the origin. Hence the required area is \\(A = \\int_{-2}^{1} x^2\\,dx = \\left[\\frac{x^3}{3}\\right]_{-2}^{1} = \\frac{1}{3} - \\left(\\frac{-8}{3}\\right) = \\frac{9}{3} = 3\\) square units."
   },
   {
    "hash": "8ea52723d11364210069f02b71a1bc54dc0e572fbee1fb727a4757bfd1155628",
@@ -57,7 +57,7 @@
    "chapter": "Application of Integrals",
    "subtopic": "Area Bounded by a Curve and a Line",
    "stem": "Using integration, find the area of the region enclosed by line \\(y = \\sqrt{3}x\\), semi-circle \\(y = \\sqrt{4 - x^2}\\) and \\(x\\)-axis in first quadrant.",
-   "solution": ""
+   "solution": "First find where the line meets the semi-circle: \\(\\sqrt{3}\\,x = \\sqrt{4 - x^2}\\) gives \\(3x^2 = 4 - x^2\\), so \\(4x^2 = 4\\) and, in the first quadrant, \\(x = 1\\) with \\(y = \\sqrt{3}\\). The semi-circle itself meets the \\(x\\)-axis at \\(x = 2\\). So the region is capped by the line for \\(0 \\le x \\le 1\\) and by the circle for \\(1 \\le x \\le 2\\), and the area splits accordingly: \\(A = \\int_0^1 \\sqrt{3}\\,x\\,dx + \\int_1^2 \\sqrt{4 - x^2}\\,dx\\). The first piece is \\(\\sqrt{3}\\left[\\frac{x^2}{2}\\right]_0^1 = \\frac{\\sqrt{3}}{2}\\). For the second, use \\(\\int \\sqrt{a^2 - x^2}\\,dx = \\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a}\\) with \\(a = 2\\): \\(\\left[\\frac{x}{2}\\sqrt{4 - x^2} + 2\\sin^{-1}\\frac{x}{2}\\right]_1^2 = \\left(0 + 2 \\cdot \\frac{\\pi}{2}\\right) - \\left(\\frac{\\sqrt{3}}{2} + 2 \\cdot \\frac{\\pi}{6}\\right) = \\pi - \\frac{\\sqrt{3}}{2} - \\frac{\\pi}{3}\\). Adding the two pieces, the \\(\\frac{\\sqrt{3}}{2}\\) terms cancel and \\(A = \\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}\\) square units. As a check, the region is exactly the circular sector of radius \\(2\\) between the angles \\(0\\) and \\(\\frac{\\pi}{3}\\), of area \\(\\frac{1}{2}(2)^2\\left(\\frac{\\pi}{3}\\right) = \\frac{2\\pi}{3}\\)."
   }
  ]
 }

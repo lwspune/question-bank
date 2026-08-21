@@ -33,7 +33,7 @@
    ],
    "answer": "D",
    "figure": "REQUIRED - the stem is only 'The following graph represents :'; the curve (asymptote y = 0, branches through (1, pi/2) and (-1, -pi/2)) IS the question. Page idx 2.",
-   "solution": ""
+   "solution": "Read the graph off its two branches. Nothing at all is drawn between \\(x = -1\\) and \\(x = 1\\), so the domain is \\(|x| \\ge 1\\); the right branch begins at \\((1, \\pi/2)\\) and falls towards the x-axis, the left branch rises from \\((-1, -\\pi/2)\\) towards the x-axis, so \\(y = 0\\) is a horizontal asymptote that is approached but never attained. That is exactly \\(y = \\operatorname{cosec}^{-1} x\\), whose domain is \\(|x| \\ge 1\\) and whose range is \\(\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]\\) with \\(0\\) removed. The other three are ruled out at once: \\(y = \\sec^{-1} x\\) has the same domain but range \\([0, \\pi]\\) with asymptote \\(y = \\dfrac{\\pi}{2}\\), while \\(y = \\cos^{-1} x\\) and \\(y = \\tan^{-1} x\\) are defined for \\(|x| < 1\\) too and so would fill the gap the graph leaves empty. The graph represents \\(y = \\operatorname{cosec}^{-1} x\\)."
   },
   {
    "hash": "ce860c207de2d87377a6b68fea88f8ec3b22df64b626605dad37c8835933a19a",
@@ -63,7 +63,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Build the matrix entry by entry from \\(a_{ij} = \\dfrac{|i - 3j|}{2}\\): \\(a_{11} = \\dfrac{|1 - 3|}{2} = 1\\), \\(a_{12} = \\dfrac{|1 - 6|}{2} = \\dfrac{5}{2}\\), \\(a_{21} = \\dfrac{|2 - 3|}{2} = \\dfrac{1}{2}\\), \\(a_{22} = \\dfrac{|2 - 6|}{2} = 2\\). So \\(A = \\begin{bmatrix} 1 & \\dfrac{5}{2} \\\\ \\dfrac{1}{2} & 2 \\end{bmatrix}\\). Transposing interchanges the two off-diagonal entries and leaves the diagonal alone, giving \\(A' = \\begin{bmatrix} 1 & \\dfrac{1}{2} \\\\ \\dfrac{5}{2} & 2 \\end{bmatrix}\\) — the option carrying \\(\\dfrac{1}{2}\\) in the top-right and \\(\\dfrac{5}{2}\\) in the bottom-left."
   },
   {
    "hash": "0140628ddb897907725628fbe89478f8ee4049d9b07b3f71d7df021731b5a8ee",
@@ -93,7 +93,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Take each inverse function in its own principal branch. \\(\\sec^{-1}\\) has principal range \\([0, \\pi]\\) excluding \\(\\dfrac{\\pi}{2}\\), and \\(\\sec\\dfrac{\\pi}{4} = \\sqrt{2}\\), so \\(\\sec^{-1}\\left(\\sqrt{2}\\right) = \\dfrac{\\pi}{4}\\). \\(\\operatorname{cosec}^{-1}\\) has principal range \\(\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]\\) excluding \\(0\\), and \\(\\operatorname{cosec}\\left(-\\dfrac{\\pi}{4}\\right) = -\\sqrt{2}\\), so \\(\\operatorname{cosec}^{-1}\\left(-\\sqrt{2}\\right) = -\\dfrac{\\pi}{4}\\). Hence the expression is \\(\\dfrac{\\pi}{4} + 2\\left(-\\dfrac{\\pi}{4}\\right) = \\dfrac{\\pi}{4} - \\dfrac{\\pi}{2} = -\\dfrac{\\pi}{4}\\), which is the option \\(-\\dfrac{\\pi}{4}\\)."
   },
   {
    "hash": "d779f8fd7b036b7bf49a9174d46bd5c6b533c069e9f95e3bcc5c15847ceaab49",
@@ -123,7 +123,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Three points are collinear exactly when the triangle they span has zero area, so set the determinant to zero: \\(\\dfrac{1}{2}\\begin{vmatrix} 2 & 3 & 1 \\\\ 0 & 4 & 1 \\\\ p & 2 & 1 \\end{vmatrix} = 0\\). Expanding along the first row, \\(2(4 - 2) - 3(0 - p) + 1(0 - 4p) = 4 + 3p - 4p = 4 - p\\). So \\(4 - p = 0\\), giving \\(p = 4\\) — the option \\(4\\). As a check, \\((2,3)\\) and \\((0,4)\\) determine the line \\(x + 2y = 8\\), and \\((4, 2)\\) satisfies it."
   },
   {
    "hash": "cbb3534b832078d72b0c4794b4d31e9d7090251642232b03a9a43865095d344e",
@@ -153,7 +153,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Differentiate the outer exponential and multiply by the derivative of its exponent. With \\(y = e^{e^x}\\), the chain rule gives \\(\\dfrac{dy}{dx} = e^{e^x} \\cdot \\dfrac{d}{dx}\\left(e^x\\right) = e^x\\, e^{e^x}\\), which is the option \\(e^x\\, e^{e^x}\\). The tempting answer \\(e^{e^x}\\) forgets the inner derivative, and \\(\\left(e^x\\right)^2 = e^{2x}\\) is a different function altogether."
   },
   {
    "hash": "665173c398e36b5ab76fec9e2a074cf748eca88b0d1b3d9328b4c0e6f10ea619",
@@ -183,7 +183,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "For a sphere \\(V = \\dfrac{4}{3}\\pi r^3\\), so differentiating with respect to time, \\(\\dfrac{dV}{dt} = 4\\pi r^2 \\dfrac{dr}{dt}\\). The volume changing at the same rate as the radius means \\(\\dfrac{dV}{dt} = \\dfrac{dr}{dt}\\), and since that rate is non-zero it may be cancelled, forcing \\(4\\pi r^2 = 1\\). But \\(4\\pi r^2\\) is precisely the surface area \\(S\\) of the sphere, so \\(S = 1\\), i.e. 1 sq. unit. Notice the radius itself never has to be found — the condition hands you the surface area directly."
   },
   {
    "hash": "1b0f2445535c95d26d0a48653de85b303eefe5add80c014b819497ee853d2586",
@@ -213,7 +213,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Continuity at \\(x = 0\\) requires \\(\\lim_{x \\to 0} f(x) = f(0) = k\\). For \\(x \\neq 0\\), \\(f(x) = \\dfrac{\\sin x}{x} + \\cos x\\), and using the standard limit \\(\\lim_{x \\to 0}\\dfrac{\\sin x}{x} = 1\\) together with the continuity of \\(\\cos\\), \\(\\lim_{x \\to 0} f(x) = 1 + \\cos 0 = 1 + 1 = 2\\). So \\(k = 2\\), which is the option \\(2\\)."
   },
   {
    "hash": "1059a6d7e914cbe7ab76587d3dba5a1eaab23755d85d21dba688c2b06a5cd8a8",
@@ -243,7 +243,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "On \\(0 < x < 3\\) the greatest-integer function \\(f(x) = [x]\\) is a step function: it equals \\(0\\) on \\((0,1)\\), \\(1\\) on \\([1,2)\\) and \\(2\\) on \\([2,3)\\). On each of those pieces it is constant, hence differentiable with derivative \\(0\\). At an integer it jumps, and a function that is not even continuous at a point cannot be differentiable there. The only integers strictly inside the interval are \\(x = 1\\) and \\(x = 2\\) — the endpoints \\(0\\) and \\(3\\) are excluded by the strict inequalities — so \\(f\\) fails to be differentiable at only two points."
   },
   {
    "hash": "b113fc803f0d0d8758a1e4caca18deaf7a4f553ee2304deb1a8e335ff212d089",
@@ -273,7 +273,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Pull the coefficient of \\(x^2\\) out of the radical: \\(\\sqrt{25 - 16x^2} = 4\\sqrt{\\dfrac{25}{16} - x^2}\\), so the integral becomes \\(\\dfrac{1}{4}\\displaystyle\\int \\dfrac{dx}{\\sqrt{\\left(\\dfrac{5}{4}\\right)^2 - x^2}}\\). Applying the standard form \\(\\displaystyle\\int\\dfrac{dx}{\\sqrt{a^2 - x^2}} = \\sin^{-1}\\dfrac{x}{a} + C\\) with \\(a = \\dfrac{5}{4}\\) gives \\(\\dfrac{1}{4}\\sin^{-1}\\dfrac{4x}{5} + C\\), which is the option \\(\\dfrac{1}{4}\\sin^{-1}\\dfrac{4x}{5} + C\\). Differentiating that back returns \\(\\dfrac{1}{\\sqrt{25 - 16x^2}}\\), confirming it."
   },
   {
    "hash": "4c16c2df87f04ecded55755876843dfb81e1305ce42453c2585354d0b5edd62b",
@@ -303,7 +303,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Multiply numerator and denominator by \\(e^x\\) so the integrand becomes a function of \\(e^x\\) alone: \\(\\displaystyle\\int_0^1 \\dfrac{dx}{e^x + e^{-x}} = \\displaystyle\\int_0^1 \\dfrac{e^x\\, dx}{e^{2x} + 1}\\). Substituting \\(t = e^x\\) gives \\(dt = e^x dx\\), and the limits \\(x = 0, 1\\) become \\(t = 1, e\\). So the value is \\(\\displaystyle\\int_1^e \\dfrac{dt}{1 + t^2} = \\left[\\tan^{-1} t\\right]_1^e = \\tan^{-1} e - \\tan^{-1} 1 = \\tan^{-1} e - \\dfrac{\\pi}{4}\\). Comparing with the given form \\(\\tan^{-1} e + k\\) gives \\(k = -\\dfrac{\\pi}{4}\\), the option \\(-\\dfrac{\\pi}{4}\\)."
   },
   {
    "hash": "7e4cc67b8d66e12d29505c2e0706ae7ca86af1b44c82fcd07a2936beb597a61f",
@@ -333,7 +333,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "On \\(0 \\le x \\le 2\\) the line \\(y = x\\) lies on or above the x-axis, so no part of the region falls below the axis and the area is simply \\(\\displaystyle\\int_0^2 x\\, dx = \\left[\\dfrac{x^2}{2}\\right]_0^2 = 2 - 0 = 2\\). Geometrically the region is the right triangle with vertices \\((0,0)\\), \\((2,0)\\) and \\((2,2)\\), of area \\(\\dfrac{1}{2} \\times 2 \\times 2 = 2\\), which agrees. The area is 2 sq. units."
   },
   {
    "hash": "a2975478de7279368da91c43b436a25b0c4fb5365d570e0083c0c79df9b4727c",
@@ -363,7 +363,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "The order of a differential equation is the order of the highest derivative it contains. Here that is \\(\\dfrac{d^3y}{dx^3}\\), so the order is \\(3\\). The degree is the power to which that highest-order derivative is raised, once the equation is a polynomial in the derivatives — which this one already is. That power is \\(2\\), so the degree is \\(2\\). The cube on \\(\\dfrac{dy}{dx}\\) is a red herring: degree is read off the highest-order derivative only, not off the lower ones. The product is \\(3 \\times 2 = 6\\), which is the option \\(6\\)."
   },
   {
    "hash": "505db8268ef5d8227b5fb578d7e0d2b523e53fa88932ff481c2341dbcbb2321e",
@@ -393,7 +393,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "A first-order equation is linear when it can be written as \\(\\dfrac{dy}{dx} + P(x)\\,y = Q(x)\\), or with the roles of the variables swapped as \\(\\dfrac{dx}{dy} + P(y)\\,x = Q(y)\\) — the dependent variable and its derivative appearing only to the first power, and never multiplied together. Testing each: \\(\\left(1 + x^2\\right)dy + 2xy\\, dx = \\cot x\\, dx\\) rearranges to \\(\\dfrac{dy}{dx} + \\dfrac{2x}{1 + x^2}y = \\dfrac{\\cot x}{1 + x^2}\\), linear in \\(y\\). \\(y + \\dfrac{d}{dx}(xy) = x(\\sin x + \\log x)\\) becomes \\(x\\dfrac{dy}{dx} + 2y = x(\\sin x + \\log x)\\), again linear in \\(y\\). \\(y\\, dx - \\left(x + 3y^2\\right)dy = 0\\) becomes \\(\\dfrac{dx}{dy} - \\dfrac{1}{y}x = 3y\\), linear in \\(x\\). But \\(x\\left(1 + y^2\\right)dx - y\\left(1 + x^2\\right)dy = 0\\) gives \\(\\dfrac{dy}{dx} = \\dfrac{x\\left(1 + y^2\\right)}{y\\left(1 + x^2\\right)}\\), whose right side carries \\(y^2\\) and \\(\\dfrac{1}{y}\\) at once; swapping the roles leaves \\(x^2\\) and \\(\\dfrac{1}{x}\\) in the same way, so it is linear in neither variable. It is variable-separable but not linear, so \\(x\\left(1 + y^2\\right)dx - y\\left(1 + x^2\\right)dy = 0\\) is the one that is not a linear differential equation."
   },
   {
    "hash": "0b95b77c7ff36a90d748b8d3dd58ef283e9da809c78e80cad87fcf59ae0236df",
@@ -423,7 +423,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "The conditions \\(x \\ge 0\\) and \\(y \\ge 0\\) confine every feasible point to the first quadrant, so the quadrant is settled immediately and only boundedness is in question. The region is not empty: on the y-axis, \\(3x + y \\ge 3\\) forces \\(y \\ge 3\\) while \\(2x - y \\ge -5\\) forces \\(y \\le 5\\), so the whole segment from \\((0,3)\\) to \\((0,5)\\) qualifies. And it runs off to infinity: every point \\((t, 0)\\) with \\(t \\ge 1\\) satisfies \\(3t \\ge 3\\) and \\(2t \\ge -5\\), so points arbitrarily far out along the x-axis are feasible and no circle can enclose the region. Hence it is unbounded and lies in the first quadrant."
   },
   {
    "hash": "6c73951874b80528fa426e996536519e2ea01f3de5eb1edcb2f9d412595b6d66",
@@ -454,7 +454,7 @@
    ],
    "answer": "C",
    "figure": "REQUIRED - the stem names segment AB but prints no coordinates; the shaded feasible region ABCO with A(0, 5), B(3, 4), C(5, 0), O(0, 0) is only in the graph. Page idx 8.",
-   "solution": ""
+   "solution": "If \\(Z\\) attains its maximum at every point of the segment AB, and not merely at a corner, then the objective line \\(px + qy = Z\\) must be parallel to AB — otherwise sliding the line would separate the values at A and B. From the graph \\(A = (0, 5)\\) and \\(B = (3, 4)\\), so AB has slope \\(\\dfrac{4 - 5}{3 - 0} = -\\dfrac{1}{3}\\); indeed A, B and \\((15, 0)\\) all satisfy \\(x + 3y = 15\\). The objective line has slope \\(-\\dfrac{p}{q}\\), so \\(-\\dfrac{p}{q} = -\\dfrac{1}{3}\\), giving \\(q = 3p\\). Checking directly with \\(q = 3p\\): \\(Z(A) = 5q = 15p\\) and \\(Z(B) = 3p + 4q = 3p + 12p = 15p\\), equal as required, while \\(Z(C) = 5p\\) is smaller. So \\(q = 3p\\)."
   },
   {
    "hash": "99f2596c0cc92b95c971c26271f879bc7193f256142cd241050e7f9ed14c0250",
@@ -484,7 +484,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "A cross product is the zero vector exactly when the two vectors are parallel (neither being zero here, since \\(3\\hat{i} - 2\\hat{j} + 5\\hat{k}\\) is not zero), so their components must be proportional: \\(\\dfrac{3}{4} = \\dfrac{-2}{p} = \\dfrac{5}{q}\\). From \\(\\dfrac{3}{4} = \\dfrac{-2}{p}\\) we get \\(3p = -8\\), so \\(p = -\\dfrac{8}{3}\\); from \\(\\dfrac{3}{4} = \\dfrac{5}{q}\\) we get \\(3q = 20\\), so \\(q = \\dfrac{20}{3}\\). That is the option \\(p = -\\dfrac{8}{3},\\ q = \\dfrac{20}{3}\\). The choice \\(p = 0,\\ q = 0\\) fails because \\(4\\hat{i}\\) on its own is not parallel to \\(3\\hat{i} - 2\\hat{j} + 5\\hat{k}\\), and the remaining two swap or shrink the required ratios."
   },
   {
    "hash": "f9b614e8aa8ad63e740c9ecdbf3594d7aeb60a86ff2ad0945ae1461d7a54e28b",
@@ -514,7 +514,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Take two sides issuing from the same vertex: \\(\\vec{AB} = 2\\hat{i} - \\hat{j} - 2\\hat{k}\\) and \\(\\vec{AC} = \\hat{i} - \\hat{j} + 2\\hat{k}\\). Their cross product is \\(\\vec{AB} \\times \\vec{AC} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & -1 & -2 \\\\ 1 & -1 & 2 \\end{vmatrix} = (-2 - 2)\\hat{i} - (4 + 2)\\hat{j} + (-2 + 1)\\hat{k} = -4\\hat{i} - 6\\hat{j} - \\hat{k}\\), with magnitude \\(\\sqrt{16 + 36 + 1} = \\sqrt{53}\\). That magnitude is the area of the parallelogram on the two sides, so the triangle is half of it: \\(\\dfrac{\\sqrt{53}}{2}\\) sq. units."
   },
   {
    "hash": "e59a9a0c89c750674f113e864a543143de572e5e2471e4a5e05f6fe1403d0778",
@@ -544,7 +544,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "The marble is put back each time, so the three draws are independent and identically distributed with \\(P(\\text{red}) = \\dfrac{4}{4 + 5 + 1} = \\dfrac{4}{10} = \\dfrac{2}{5}\\) on every draw. Attack the complement, since 'at least one red' fails in only one way: all three draws non-red. With \\(P(\\text{not red}) = \\dfrac{3}{5}\\), \\(P(\\text{no red at all}) = \\left(\\dfrac{3}{5}\\right)^3 = \\dfrac{27}{125}\\). Hence \\(P(\\text{at least one red}) = 1 - \\dfrac{27}{125} = \\dfrac{98}{125}\\), which is the option \\(\\dfrac{98}{125}\\)."
   },
   {
    "hash": "b81b0d4f6907960e5da2b5c06a1608ce27e9e078a534c5a1594904257a8b7015",
@@ -575,7 +575,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "The Assertion is true: matrix multiplication is not commutative in general. A two-line counterexample settles it — \\(\\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}\\begin{bmatrix} 1 & 0 \\\\ 1 & 1 \\end{bmatrix} = \\begin{bmatrix} 2 & 1 \\\\ 1 & 1 \\end{bmatrix}\\), whereas the same two factors in the opposite order give \\(\\begin{bmatrix} 1 & 1 \\\\ 1 & 2 \\end{bmatrix}\\). The Reason is also true: if \\(D_1\\) and \\(D_2\\) are diagonal of the same order, with diagonal entries \\(d_i\\) and \\(e_i\\), then both \\(D_1D_2\\) and \\(D_2D_1\\) are diagonal with \\(i\\)-th diagonal entry \\(d_ie_i = e_id_i\\), so they are equal. But the Reason describes a special family in which the two products always do agree, and that cannot explain why the products may fail to agree in general — it is evidence pointing the other way. So both statements are true and the Reason is not the correct explanation of the Assertion."
   },
   {
    "hash": "906228950ec602088cd4cdf3096833a828d557e0d6313f8a653483ab6c07e559",
@@ -606,7 +606,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "The Assertion is true on both counts. One-one: if \\(x_1^3 + 2 = x_2^3 + 2\\) then \\(x_1^3 = x_2^3\\), and since cubing is strictly increasing this forces \\(x_1 = x_2\\). Not onto: for \\(f(x) = y\\) we would need \\(x = (y - 2)^{1/3}\\), and this is not a natural number for most \\(y\\) in the codomain — for \\(y = 4\\) it gives the irrational \\(2^{1/3}\\), and for \\(y = 1\\) it is not even positive. Indeed the range is \\(\\{3, 10, 29, 66, \\ldots\\}\\), a proper subset of \\(N\\), so \\(f\\) is one-one but not onto. The Reason is the same observation — that the candidate pre-image \\((y - 2)^{1/3}\\) need not lie in the domain \\(N\\) — which is exactly why ontoness fails, so it is true and it is the correct explanation. Both are true and the Reason correctly explains the Assertion. [A note on the printed wording, so a careful reader is not left doubting themselves: the Reason begins 'Since for all \\(y \\in N\\) (codomain), there does not exist \\(x = (y - 2)^{1/3}\\) in \\(N\\)'. Read strictly, 'for all' is too strong — \\(y = 3\\) does have the pre-image \\(x = 1\\) — and what is meant is that there exists such a \\(y\\). The official key takes the intended reading; the quantifier, not the mathematics, is the slip.]"
   },
   {
    "hash": "214fa0ee955c40f196b15b016ebf8e07a975f4b419af5fb9d3828aef53aea517",
@@ -617,7 +617,7 @@
    "chapter": "Inverse Trigonometric Functions",
    "subtopic": "Evaluating Inverse Trigonometric Expressions",
    "stem": "Evaluate :\n\n\\(\\tan^{-1}\\left(-\\dfrac{1}{\\sqrt{3}}\\right) + \\cot^{-1}\\left(\\dfrac{1}{\\sqrt{3}}\\right) + \\tan^{-1}\\left(\\sin\\left(-\\dfrac{\\pi}{2}\\right)\\right) + \\tan^{-1}\\left(\\tan\\dfrac{2\\pi}{3}\\right)\\)",
-   "solution": ""
+   "solution": "Take each term in its own principal branch. \\(\\tan^{-1}\\) has range \\(\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)\\) and \\(\\tan\\left(-\\dfrac{\\pi}{6}\\right) = -\\dfrac{1}{\\sqrt{3}}\\), so \\(\\tan^{-1}\\left(-\\dfrac{1}{\\sqrt{3}}\\right) = -\\dfrac{\\pi}{6}\\). \\(\\cot^{-1}\\) has range \\((0, \\pi)\\) and \\(\\cot\\dfrac{\\pi}{3} = \\dfrac{1}{\\sqrt{3}}\\), so \\(\\cot^{-1}\\left(\\dfrac{1}{\\sqrt{3}}\\right) = \\dfrac{\\pi}{3}\\). For the third term, \\(\\sin\\left(-\\dfrac{\\pi}{2}\\right) = -1\\), so it is \\(\\tan^{-1}(-1) = -\\dfrac{\\pi}{4}\\). The last term is the one that needs care: \\(\\dfrac{2\\pi}{3}\\) lies outside the principal range, so \\(\\tan^{-1}\\left(\\tan\\dfrac{2\\pi}{3}\\right)\\) is not \\(\\dfrac{2\\pi}{3}\\). Since \\(\\tan\\) has period \\(\\pi\\), \\(\\tan\\dfrac{2\\pi}{3} = \\tan\\left(\\dfrac{2\\pi}{3} - \\pi\\right) = \\tan\\left(-\\dfrac{\\pi}{3}\\right)\\), and \\(-\\dfrac{\\pi}{3}\\) does lie in \\(\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)\\), so the term equals \\(-\\dfrac{\\pi}{3}\\). Adding the four values, \\(-\\dfrac{\\pi}{6} + \\dfrac{\\pi}{3} - \\dfrac{\\pi}{4} - \\dfrac{\\pi}{3} = -\\dfrac{\\pi}{6} - \\dfrac{\\pi}{4} = -\\dfrac{2\\pi + 3\\pi}{12} = -\\dfrac{5\\pi}{12}\\)."
   },
   {
    "hash": "0ec3866721cd8bd78c21dcff99be2d4edc5f4aff54d9774d1419a1227585d1e3",
@@ -628,7 +628,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Continuity",
    "stem": "Show that the function \\(f(x) = \\begin{cases} \\dfrac{\\cos x}{-x + \\dfrac{\\pi}{2}}, & x \\neq \\dfrac{\\pi}{2} \\\\[2ex] 1, & x = \\dfrac{\\pi}{2} \\end{cases}\\) is continuous at \\(x = \\dfrac{\\pi}{2}\\).",
-   "solution": ""
+   "solution": "Continuity at \\(x = \\dfrac{\\pi}{2}\\) requires the limit there to exist and to equal the value the definition assigns. Substitute \\(x = \\dfrac{\\pi}{2} + h\\), so that \\(h \\to 0\\) as \\(x \\to \\dfrac{\\pi}{2}\\) and \\(h\\) may be of either sign. The numerator becomes \\(\\cos\\left(\\dfrac{\\pi}{2} + h\\right) = -\\sin h\\) and the denominator becomes \\(-\\left(\\dfrac{\\pi}{2} + h\\right) + \\dfrac{\\pi}{2} = -h\\), so for \\(x \\neq \\dfrac{\\pi}{2}\\), \\(f(x) = \\dfrac{-\\sin h}{-h} = \\dfrac{\\sin h}{h}\\). Hence \\(\\lim_{x \\to \\pi/2} f(x) = \\lim_{h \\to 0}\\dfrac{\\sin h}{h} = 1\\), and because the substitution assumed nothing about the sign of \\(h\\) this covers both one-sided limits. The function is also defined at the point, with \\(f\\left(\\dfrac{\\pi}{2}\\right) = 1\\). Since \\(\\lim_{x \\to \\pi/2} f(x) = 1 = f\\left(\\dfrac{\\pi}{2}\\right)\\), the function \\(f\\) is continuous at \\(x = \\dfrac{\\pi}{2}\\)."
   },
   {
    "hash": "998e2ae79fbb1c42a01bf4e005d3cd8f2f74ef7099891a716beca96915cb1b4b",
@@ -639,7 +639,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Differentiability and the Chain Rule",
    "stem": "Find whether the function \\(f(x) = \\begin{cases} x - 1, & x < 2 \\\\ 2x - 3, & x \\geq 2 \\end{cases}\\) at \\(x = 2\\) is differentiable or not.",
-   "solution": ""
+   "solution": "First check that continuity is not the obstacle: \\(f(2) = 2(2) - 3 = 1\\), and the left-hand piece tends to \\(2 - 1 = 1\\) as well, so \\(f\\) is continuous at \\(x = 2\\) and differentiability is a genuine question. Left-hand derivative: for \\(h < 0\\) the point \\(2 + h\\) lies in \\(x < 2\\), so \\(f(2 + h) = (2 + h) - 1 = 1 + h\\) and \\(\\text{LHD} = \\lim_{h \\to 0^-}\\dfrac{(1 + h) - 1}{h} = \\lim_{h \\to 0^-}\\dfrac{h}{h} = 1\\). Right-hand derivative: for \\(h > 0\\) the point lies in \\(x \\ge 2\\), so \\(f(2 + h) = 2(2 + h) - 3 = 1 + 2h\\) and \\(\\text{RHD} = \\lim_{h \\to 0^+}\\dfrac{(1 + 2h) - 1}{h} = \\lim_{h \\to 0^+}\\dfrac{2h}{h} = 2\\). Since \\(\\text{LHD} = 1\\) and \\(\\text{RHD} = 2\\) are unequal, the two one-sided derivatives disagree and \\(f\\) is not differentiable at \\(x = 2\\). Geometrically the graph has a corner there: the slope jumps from 1 to 2 without any break in the curve."
   },
   {
    "hash": "eeb10ec928ed2ac814d4a1eb4bd03c2788d04c74a26c6e34a7d90ba5e2b6fc95",
@@ -650,7 +650,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Increasing and Decreasing Functions",
    "stem": "Find the values of x for which \\(f(x) = x^x\\), \\(x > 0\\) is increasing.",
-   "solution": ""
+   "solution": "Since \\(x > 0\\), differentiate logarithmically. Put \\(y = x^x\\), so \\(\\log y = x\\log x\\); differentiating, \\(\\dfrac{1}{y}\\dfrac{dy}{dx} = \\log x + x \\cdot \\dfrac{1}{x} = \\log x + 1\\), giving \\(f'(x) = x^x\\left(1 + \\log x\\right)\\). For \\(x > 0\\) the factor \\(x^x = e^{x\\log x}\\) is a positive exponential and can never vanish or change sign, so the sign of \\(f'\\) is decided entirely by \\(1 + \\log x\\). Now \\(1 + \\log x > 0\\) precisely when \\(\\log x > -1\\), that is when \\(x > e^{-1} = \\dfrac{1}{e}\\). Hence \\(f\\) is increasing for \\(x > \\dfrac{1}{e}\\), i.e. on \\(\\left(\\dfrac{1}{e}, \\infty\\right)\\); on \\(\\left(0, \\dfrac{1}{e}\\right)\\) the derivative is negative and \\(f\\) decreases. The single point \\(x = \\dfrac{1}{e}\\), where \\(f'\\) vanishes, may be included if increasing is read in the non-strict sense, so \\(\\left[\\dfrac{1}{e}, \\infty\\right)\\) is equally acceptable."
   },
   {
    "hash": "a32bca22763b2174979cbc55d97f87875df02cc2ff5057323e7780f7fd5959bc",
@@ -661,7 +661,7 @@
    "chapter": "Vector Algebra",
    "subtopic": "Addition of Vectors",
    "stem": "If the position vectors of three points A, B and C are \\(3\\hat{i} + \\hat{j}\\), \\(5\\hat{i} + 6\\hat{j} - 3\\hat{k}\\) and \\(4\\hat{j}\\) respectively, then show that they form an isosceles triangle.",
-   "solution": ""
+   "solution": "Write the position vectors as \\(\\vec{a} = 3\\hat{i} + \\hat{j}\\), \\(\\vec{b} = 5\\hat{i} + 6\\hat{j} - 3\\hat{k}\\) and \\(\\vec{c} = 4\\hat{j}\\), then form the three sides by subtraction: \\(\\vec{AB} = \\vec{b} - \\vec{a} = 2\\hat{i} + 5\\hat{j} - 3\\hat{k}\\), \\(\\vec{BC} = \\vec{c} - \\vec{b} = -5\\hat{i} - 2\\hat{j} + 3\\hat{k}\\) and \\(\\vec{CA} = \\vec{a} - \\vec{c} = 3\\hat{i} - 3\\hat{j}\\). Their lengths are \\(\\left|\\vec{AB}\\right| = \\sqrt{4 + 25 + 9} = \\sqrt{38}\\), \\(\\left|\\vec{BC}\\right| = \\sqrt{25 + 4 + 9} = \\sqrt{38}\\) and \\(\\left|\\vec{CA}\\right| = \\sqrt{9 + 9} = \\sqrt{18}\\). Two of the three sides are equal, \\(\\left|\\vec{AB}\\right| = \\left|\\vec{BC}\\right| = \\sqrt{38}\\). The points are genuinely non-collinear, since the sum of any two lengths exceeds the third — \\(\\sqrt{38} + \\sqrt{18} > \\sqrt{38}\\) and \\(2\\sqrt{38} > \\sqrt{18}\\) — so they really do bound a triangle. Hence A, B and C form an isosceles triangle."
   },
   {
    "hash": "eff94dc5be5a1ecf8e6daba7cb14040bbae76038fcf620994696acef611f9f2b",
@@ -672,7 +672,7 @@
    "chapter": "Vector Algebra",
    "subtopic": "Vector (Cross) Product",
    "stem": "Let two rods placed on the ground be represented by vectors \\(4\\hat{i} - \\hat{j} + 3\\hat{k}\\) and \\(-2\\hat{i} + \\hat{j} - 2\\hat{k}\\). Find a vector representing a flag-post of height 5 m that has to be erected perpendicular to both the rods.",
-   "solution": ""
+   "solution": "A vector perpendicular to both rods is supplied by their cross product. With \\(\\vec{a} = 4\\hat{i} - \\hat{j} + 3\\hat{k}\\) and \\(\\vec{b} = -2\\hat{i} + \\hat{j} - 2\\hat{k}\\), \\(\\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 4 & -1 & 3 \\\\ -2 & 1 & -2 \\end{vmatrix} = (2 - 3)\\hat{i} - (-8 + 6)\\hat{j} + (4 - 2)\\hat{k} = -\\hat{i} + 2\\hat{j} + 2\\hat{k}\\). Its magnitude is \\(\\sqrt{1 + 4 + 4} = 3\\), so a unit vector perpendicular to both rods is \\(\\dfrac{1}{3}\\left(-\\hat{i} + 2\\hat{j} + 2\\hat{k}\\right)\\). The flag-post is 5 m tall, so scale that unit vector by 5: the required vector is \\(5 \\cdot \\dfrac{-\\hat{i} + 2\\hat{j} + 2\\hat{k}}{3} = -\\dfrac{5}{3}\\hat{i} + \\dfrac{10}{3}\\hat{j} + \\dfrac{10}{3}\\hat{k}\\), whose length is indeed \\(\\dfrac{5}{3}\\sqrt{1 + 4 + 4} = 5\\). The opposite vector \\(\\dfrac{5}{3}\\hat{i} - \\dfrac{10}{3}\\hat{j} - \\dfrac{10}{3}\\hat{k}\\) is equally perpendicular and equally long — it simply points the other way along the same normal — and the marking scheme accepts either."
   },
   {
    "hash": "9fb2308c7eea1b364c260a0712a22b7ac6817f72c4341af66309eeb3a17503a2",
@@ -683,7 +683,7 @@
    "chapter": "Vector Algebra",
    "subtopic": "Components and Direction Cosines",
    "stem": "A unit vector \\(\\vec{a}\\) is such that it makes an angle \\(\\dfrac{\\pi}{4}\\) with x-axis, \\(\\dfrac{\\pi}{3}\\) with y-axis and an acute angle \\(\\theta\\) with z-axis. Find \\(\\theta\\) and the components of \\(\\vec{a}\\).",
-   "solution": ""
+   "solution": "For a unit vector the direction cosines satisfy \\(l^2 + m^2 + n^2 = 1\\), where here \\(l = \\cos\\dfrac{\\pi}{4}\\), \\(m = \\cos\\dfrac{\\pi}{3}\\) and \\(n = \\cos\\theta\\). Substituting, \\(\\cos^2\\dfrac{\\pi}{4} + \\cos^2\\dfrac{\\pi}{3} + \\cos^2\\theta = 1\\), i.e. \\(\\dfrac{1}{2} + \\dfrac{1}{4} + \\cos^2\\theta = 1\\), so \\(\\cos^2\\theta = \\dfrac{1}{4}\\) and \\(\\cos\\theta = \\pm\\dfrac{1}{2}\\). The angle with the z-axis is given to be acute, which selects the positive root: \\(\\cos\\theta = \\dfrac{1}{2}\\), so \\(\\theta = \\dfrac{\\pi}{3}\\). Because \\(\\vec{a}\\) has unit length its components are exactly its direction cosines, namely \\(\\dfrac{1}{\\sqrt{2}}\\), \\(\\dfrac{1}{2}\\) and \\(\\dfrac{1}{2}\\); that is, \\(\\vec{a} = \\dfrac{1}{\\sqrt{2}}\\hat{i} + \\dfrac{1}{2}\\hat{j} + \\dfrac{1}{2}\\hat{k}\\)."
   },
   {
    "hash": "51861cd8a295d640818d4d533b8007e1b612159937d685932c16b3d099a02637",
@@ -694,7 +694,7 @@
    "chapter": "Relations and Functions",
    "subtopic": "One-One and Onto Functions",
    "stem": "Let \\(A = \\mathbb{R} - \\{3\\}\\) and \\(B = \\mathbb{R} - \\{1\\}\\). A function \\(f : A \\to B\\) is defined by \\(f(x) = \\left(\\dfrac{x - 2}{x - 3}\\right)\\). Find whether f is one-one and onto.",
-   "solution": ""
+   "solution": "One-one: suppose \\(f(a) = f(b)\\) for some \\(a, b \\in A\\). Then \\(\\dfrac{a - 2}{a - 3} = \\dfrac{b - 2}{b - 3}\\), and cross-multiplying, \\((a - 2)(b - 3) = (b - 2)(a - 3)\\), i.e. \\(ab - 3a - 2b + 6 = ab - 3b - 2a + 6\\). Cancelling \\(ab\\) and \\(6\\) from both sides leaves \\(-3a - 2b = -3b - 2a\\), so \\(-a = -b\\) and therefore \\(a = b\\). Hence \\(f\\) is one-one. Onto: take an arbitrary \\(y \\in B = \\mathbb{R} - \\{1\\}\\) and try to solve \\(y = \\dfrac{x - 2}{x - 3}\\) for \\(x\\). Then \\(y(x - 3) = x - 2\\), so \\(x(y - 1) = 3y - 2\\) and \\(x = \\dfrac{3y - 2}{y - 1}\\), which is well defined precisely because \\(y \\neq 1\\). This \\(x\\) does lie in \\(A = \\mathbb{R} - \\{3\\}\\): were it equal to \\(3\\) we would need \\(3y - 2 = 3(y - 1) = 3y - 3\\), i.e. \\(-2 = -3\\), which is false. So every element of \\(B\\) has a pre-image in \\(A\\) and \\(f\\) is onto. Being both one-one and onto, \\(f\\) is a bijection from \\(A\\) onto \\(B\\)."
   },
   {
    "hash": "d33d842217759ffd2bf2c0b0505895287e4fbbfa11d73e852c113d04609d856e",
@@ -705,7 +705,7 @@
    "chapter": "Relations and Functions",
    "subtopic": "Equivalence Relations and Classes",
    "stem": "Let n be a fixed positive integer. A relation R is defined in set \\(\\mathbb{Z}\\) such that \\(R = \\{(x, y) : (x - y)\\) is divisible by \\(n, \\; x, y \\in \\mathbb{Z}\\}\\). Determine if R is an equivalence relation.",
-   "solution": ""
+   "solution": "Test the three defining properties in turn. Reflexive: for any \\(a \\in \\mathbb{Z}\\), \\(a - a = 0 = n \\cdot 0\\) is divisible by \\(n\\), so \\((a, a) \\in R\\) and \\(R\\) is reflexive. Symmetric: let \\((a, b) \\in R\\), so \\(a - b = np\\) for some \\(p \\in \\mathbb{Z}\\). Then \\(b - a = n(-p)\\) and \\(-p \\in \\mathbb{Z}\\), so \\(b - a\\) is divisible by \\(n\\) and \\((b, a) \\in R\\); hence \\(R\\) is symmetric. Transitive: let \\((a, b) \\in R\\) and \\((b, c) \\in R\\), so \\(a - b = np\\) and \\(b - c = nr\\) with \\(p, r \\in \\mathbb{Z}\\). Adding, \\(a - c = (a - b) + (b - c) = n(p + r)\\), and \\(p + r \\in \\mathbb{Z}\\), so \\(a - c\\) is divisible by \\(n\\) and \\((a, c) \\in R\\); hence \\(R\\) is transitive. All three hold, so \\(R\\) is an equivalence relation on \\(\\mathbb{Z}\\). It is the familiar relation of congruence modulo \\(n\\), and its equivalence classes are the \\(n\\) residue classes."
   },
   {
    "hash": "1a316060ff29031146fbbef827b92b37e760015ea2625531d0bcaab245390ba9",
@@ -716,7 +716,7 @@
    "chapter": "Matrices",
    "subtopic": "Multiplication of Matrices",
    "stem": "If \\(A = \\begin{bmatrix} 3 & 2 & 0 \\\\ 1 & 4 & 0 \\\\ 0 & 0 & 5 \\end{bmatrix}\\), then compute \\(A^2 - 7A + 10\\,I\\).",
-   "solution": ""
+   "solution": "Square \\(A\\) first, multiplying row into column: \\(A^2 = \\begin{bmatrix} 3 & 2 & 0 \\\\ 1 & 4 & 0 \\\\ 0 & 0 & 5 \\end{bmatrix}\\begin{bmatrix} 3 & 2 & 0 \\\\ 1 & 4 & 0 \\\\ 0 & 0 & 5 \\end{bmatrix} = \\begin{bmatrix} 11 & 14 & 0 \\\\ 7 & 18 & 0 \\\\ 0 & 0 & 25 \\end{bmatrix}\\); for instance the leading entry is \\(3(3) + 2(1) + 0(0) = 11\\) and the entry in row 2, column 2 is \\(1(2) + 4(4) + 0(0) = 18\\). Next \\(7A = \\begin{bmatrix} 21 & 14 & 0 \\\\ 7 & 28 & 0 \\\\ 0 & 0 & 35 \\end{bmatrix}\\) and \\(10I = \\begin{bmatrix} 10 & 0 & 0 \\\\ 0 & 10 & 0 \\\\ 0 & 0 & 10 \\end{bmatrix}\\). Combining entry by entry, \\(A^2 - 7A + 10I = \\begin{bmatrix} 11 - 21 + 10 & 14 - 14 & 0 \\\\ 7 - 7 & 18 - 28 + 10 & 0 \\\\ 0 & 0 & 25 - 35 + 10 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & 0 \\end{bmatrix}\\). So \\(A^2 - 7A + 10I = O\\), the null matrix of order 3 — that is, \\(A\\) satisfies the matrix equation \\(A^2 - 7A + 10I = O\\)."
   },
   {
    "hash": "5a09b1cd12a861f593a5ee07942448b2d85ca7c08e63430c24d41f43b0e65564",
@@ -727,7 +727,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
    "stem": "If \\(xy = e^{x - y}\\), then find \\(\\dfrac{dy}{dx}\\).",
-   "solution": ""
+   "solution": "Differentiate both sides of \\(xy = e^{x - y}\\) with respect to \\(x\\), using the product rule on the left and the chain rule on the right: \\(x\\dfrac{dy}{dx} + y = e^{x - y}\\left(1 - \\dfrac{dy}{dx}\\right)\\). Gather the derivative terms on one side: \\(x\\dfrac{dy}{dx} + e^{x - y}\\dfrac{dy}{dx} = e^{x - y} - y\\), so \\(\\left(x + e^{x - y}\\right)\\dfrac{dy}{dx} = e^{x - y} - y\\) and therefore \\(\\dfrac{dy}{dx} = \\dfrac{e^{x - y} - y}{x + e^{x - y}}\\). This tidies up using the original equation itself: substituting \\(e^{x - y} = xy\\) gives \\(\\dfrac{dy}{dx} = \\dfrac{xy - y}{x + xy} = \\dfrac{y(x - 1)}{x(y + 1)}\\). The same answer comes out faster by taking logarithms first — \\(\\log x + \\log y = x - y\\) differentiates to \\(\\dfrac{1}{x} + \\dfrac{1}{y}\\dfrac{dy}{dx} = 1 - \\dfrac{dy}{dx}\\), which rearranges to \\(\\dfrac{dy}{dx} = \\dfrac{1 - \\frac{1}{x}}{1 + \\frac{1}{y}} = \\dfrac{y(x - 1)}{x(y + 1)}\\). Either form is a complete answer."
   },
   {
    "hash": "31c0c906711146e4841627558a1ee6978a108cb27094103905b78c7b256d6668",
@@ -738,7 +738,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
    "stem": "Differentiate \\(\\tan^{-1}\\left(\\dfrac{\\sqrt{1 + x^2} - \\sqrt{1 - x^2}}{\\sqrt{1 + x^2} + \\sqrt{1 - x^2}}\\right)\\) with respect to \\(\\cos^{-1} x^2\\).",
-   "solution": ""
+   "solution": "The substitution that unlocks this is \\(x^2 = \\cos\\theta\\), because then \\(\\theta = \\cos^{-1} x^2\\) is exactly the variable we are asked to differentiate with respect to. Writing \\(y\\) for the given expression, \\(y = \\tan^{-1}\\left(\\dfrac{\\sqrt{1 + \\cos\\theta} - \\sqrt{1 - \\cos\\theta}}{\\sqrt{1 + \\cos\\theta} + \\sqrt{1 - \\cos\\theta}}\\right)\\). Apply the half-angle identities \\(1 + \\cos\\theta = 2\\cos^2\\dfrac{\\theta}{2}\\) and \\(1 - \\cos\\theta = 2\\sin^2\\dfrac{\\theta}{2}\\). Since \\(x^2\\) lies in \\([0, 1]\\) we have \\(\\theta \\in \\left[0, \\dfrac{\\pi}{2}\\right]\\) and so \\(\\dfrac{\\theta}{2} \\in \\left[0, \\dfrac{\\pi}{4}\\right]\\), where both \\(\\cos\\dfrac{\\theta}{2}\\) and \\(\\sin\\dfrac{\\theta}{2}\\) are non-negative; the square roots therefore come out as \\(\\sqrt{2}\\cos\\dfrac{\\theta}{2}\\) and \\(\\sqrt{2}\\sin\\dfrac{\\theta}{2}\\) with no modulus sign to worry about. The \\(\\sqrt{2}\\) cancels top and bottom, leaving \\(y = \\tan^{-1}\\left(\\dfrac{\\cos\\frac{\\theta}{2} - \\sin\\frac{\\theta}{2}}{\\cos\\frac{\\theta}{2} + \\sin\\frac{\\theta}{2}}\\right)\\). Dividing numerator and denominator by \\(\\cos\\dfrac{\\theta}{2}\\) turns the bracket into \\(\\dfrac{1 - \\tan\\frac{\\theta}{2}}{1 + \\tan\\frac{\\theta}{2}} = \\tan\\left(\\dfrac{\\pi}{4} - \\dfrac{\\theta}{2}\\right)\\), and since \\(\\dfrac{\\pi}{4} - \\dfrac{\\theta}{2}\\) lies in \\(\\left[0, \\dfrac{\\pi}{4}\\right]\\), well inside the principal branch, \\(y = \\dfrac{\\pi}{4} - \\dfrac{\\theta}{2}\\). Differentiating, \\(\\dfrac{dy}{d\\theta} = -\\dfrac{1}{2}\\). As \\(\\theta\\) is \\(\\cos^{-1} x^2\\), the required derivative is \\(-\\dfrac{1}{2}\\)."
   },
   {
    "hash": "932d886bf13737607c160033b5681d19b79db7cfaa037c670c6b1dcceb77ac3d",
@@ -749,7 +749,7 @@
    "chapter": "Linear Programming",
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "Solve the following Linear Programming Problem graphically :\n\nMaximise \\(Z = 200x + 120y\\)\n\nsubject to the constraints\n\n\\(x + y \\leq 300\\)\n\n\\(3x + y \\leq 600\\)\n\n\\(x - y \\geq -100\\)\n\n\\(x, y \\geq 0\\)",
-   "solution": ""
+   "solution": "Draw the three boundary lines in the first quadrant. \\(x + y = 300\\) joins \\((300, 0)\\) to \\((0, 300)\\); \\(3x + y = 600\\) joins \\((200, 0)\\) to \\((0, 600)\\); and \\(x - y = -100\\), i.e. \\(y = x + 100\\), passes through \\((0, 100)\\) and \\((200, 300)\\). The origin satisfies all four constraints — \\(0 \\le 300\\), \\(0 \\le 600\\) and \\(0 - 0 = 0 \\ge -100\\) — so each inequality keeps the side containing the origin, and together with \\(x, y \\ge 0\\) the feasible region is a bounded convex polygon. Its corners come from the boundary lines taken in pairs: the origin \\(O(0, 0)\\); \\((0, 100)\\), where \\(y = x + 100\\) meets the y-axis; \\((100, 200)\\), where \\(y = x + 100\\) meets \\(x + y = 300\\), since \\(x + (x + 100) = 300\\) gives \\(x = 100\\); \\((150, 150)\\), where \\(x + y = 300\\) meets \\(3x + y = 600\\), since subtracting gives \\(2x = 300\\); and \\((200, 0)\\), where \\(3x + y = 600\\) meets the x-axis. Evaluating \\(Z = 200x + 120y\\) at each corner: \\(Z(0, 0) = 0\\); \\(Z(0, 100) = 12000\\); \\(Z(100, 200) = 20000 + 24000 = 44000\\); \\(Z(150, 150) = 30000 + 18000 = 48000\\); \\(Z(200, 0) = 40000\\). The region is bounded, so the corner-point theorem guarantees the maximum is the largest of these. Hence \\(Z\\) is maximum at \\(x = 150\\), \\(y = 150\\), where \\(Z = 48000\\)."
   },
   {
    "hash": "1f8bdfa8f6596e3456ad8aa9aaff08d895282c5e02626f313a7b2fabbb5e205e",
@@ -760,7 +760,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Equation of a Line in Space",
    "stem": "Find a point on the line \\(\\dfrac{x - 2}{3} = \\dfrac{1 - y}{2} = \\dfrac{z - 3}{2}\\) at a distance of \\(\\sqrt{2}\\) units from the point (1, 2, 3).",
-   "solution": ""
+   "solution": "Rewrite the middle ratio so that every numerator carries a \\(+\\) sign on its variable: \\(\\dfrac{1 - y}{2} = \\dfrac{y - 1}{-2}\\), so the line is \\(\\dfrac{x - 2}{3} = \\dfrac{y - 1}{-2} = \\dfrac{z - 3}{2} = k\\). A general point on it is \\(P(3k + 2,\\ -2k + 1,\\ 2k + 3)\\). With \\(Q(1, 2, 3)\\), the joining vector is \\(\\vec{QP} = (3k + 1)\\hat{i} + (-2k - 1)\\hat{j} + 2k\\hat{k}\\), so \\(PQ^2 = (3k + 1)^2 + (2k + 1)^2 + (2k)^2 = \\left(9k^2 + 6k + 1\\right) + \\left(4k^2 + 4k + 1\\right) + 4k^2 = 17k^2 + 10k + 2\\). The distance is to be \\(\\sqrt{2}\\), so \\(17k^2 + 10k + 2 = 2\\), i.e. \\(17k^2 + 10k = 0\\), which factorises as \\(k(17k + 10) = 0\\) and gives \\(k = 0\\) or \\(k = -\\dfrac{10}{17}\\). With \\(k = 0\\) the point is \\((2, 1, 3)\\). With \\(k = -\\dfrac{10}{17}\\) it is \\(\\left(-\\dfrac{30}{17} + 2,\\ \\dfrac{20}{17} + 1,\\ -\\dfrac{20}{17} + 3\\right) = \\left(\\dfrac{4}{17},\\ \\dfrac{37}{17},\\ \\dfrac{31}{17}\\right)\\). Both roots are genuine — the sphere of radius \\(\\sqrt{2}\\) centred at \\(Q\\) cuts the line in two places — so the required points are \\((2, 1, 3)\\) and \\(\\left(\\dfrac{4}{17},\\ \\dfrac{37}{17},\\ \\dfrac{31}{17}\\right)\\)."
   },
   {
    "hash": "ccfd2fe43db1f9ce00ca13d91b8dc3d741d79da56e1bbb0fd35999b553adbfed",
@@ -771,7 +771,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Shortest Distance Between Two Lines",
    "stem": "Find the shortest distance between the lines\n\n\\(\\vec{r} = (4 + \\lambda)\\hat{i} + (2\\lambda - 1)\\hat{j} - 3\\lambda\\hat{k}\\)\n\n\\(\\vec{r} = (1 + 2\\mu)\\hat{i} + (2 - 5\\mu)\\hat{k} + (4\\mu - 1)\\hat{j}\\).",
-   "solution": ""
+   "solution": "Read a point and a direction off each line. The first, \\(\\vec{r} = \\left(4\\hat{i} - \\hat{j}\\right) + \\lambda\\left(\\hat{i} + 2\\hat{j} - 3\\hat{k}\\right)\\), gives \\(\\vec{a_1} = 4\\hat{i} - \\hat{j}\\) and \\(\\vec{b_1} = \\hat{i} + 2\\hat{j} - 3\\hat{k}\\). The second prints its \\(\\hat{j}\\) and \\(\\hat{k}\\) terms out of the usual order; collecting them gives \\(\\vec{r} = \\left(\\hat{i} - \\hat{j} + 2\\hat{k}\\right) + \\mu\\left(2\\hat{i} + 4\\hat{j} - 5\\hat{k}\\right)\\), so \\(\\vec{a_2} = \\hat{i} - \\hat{j} + 2\\hat{k}\\) and \\(\\vec{b_2} = 2\\hat{i} + 4\\hat{j} - 5\\hat{k}\\). The two directions are not proportional — \\(\\dfrac{1}{2} = \\dfrac{2}{4}\\) but \\(\\dfrac{-3}{-5} \\neq \\dfrac{1}{2}\\) — so the lines are skew and the formula \\(d = \\left|\\dfrac{\\left(\\vec{a_2} - \\vec{a_1}\\right) \\cdot \\left(\\vec{b_1} \\times \\vec{b_2}\\right)}{\\left|\\vec{b_1} \\times \\vec{b_2}\\right|}\\right|\\) applies. Here \\(\\vec{a_2} - \\vec{a_1} = -3\\hat{i} + 0\\hat{j} + 2\\hat{k}\\) and \\(\\vec{b_1} \\times \\vec{b_2} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & 2 & -3 \\\\ 2 & 4 & -5 \\end{vmatrix} = (-10 + 12)\\hat{i} - (-5 + 6)\\hat{j} + (4 - 4)\\hat{k} = 2\\hat{i} - \\hat{j}\\), whose magnitude is \\(\\sqrt{4 + 1} = \\sqrt{5}\\). The numerator is \\(\\left(-3\\hat{i} + 2\\hat{k}\\right) \\cdot \\left(2\\hat{i} - \\hat{j}\\right) = -6 + 0 + 0 = -6\\). Hence \\(d = \\dfrac{6}{\\sqrt{5}}\\), or equivalently \\(\\dfrac{6\\sqrt{5}}{5}\\) units."
   },
   {
    "hash": "54f1ec4cbdcc9505af8f86a9c00ccbf5e95b50f9148118b28c8ed79fc7d2811e",
@@ -782,7 +782,7 @@
    "chapter": "Probability",
    "subtopic": "Theorem of Total Probability",
    "stem": "In a school, the probability of holding a debate competition is \\(\\dfrac{1}{3}\\) and that of a quiz competition is \\(\\dfrac{2}{3}\\). In the two participating teams, A has 4 girls and 6 boys and B has 7 girls and 3 boys. If a debate competition is held, the students are selected from team A and for the quiz competition they are selected from team B. If only two students are to be chosen from the teams, then find the probability that one will be a girl and the other a boy.",
-   "solution": ""
+   "solution": "Let \\(D\\) be the event that the debate competition is held and \\(Q\\) that the quiz competition is held, so \\(P(D) = \\dfrac{1}{3}\\) and \\(P(Q) = \\dfrac{2}{3}\\); these two are mutually exclusive and exhaustive. Let \\(E\\) be the event that of the two students chosen, one is a girl and the other a boy. If the debate is held the pair is drawn from team A, which has 4 girls and 6 boys among 10 students, so \\(P(E \\mid D) = \\dfrac{{}^4C_1 \\times {}^6C_1}{{}^{10}C_2} = \\dfrac{24}{45} = \\dfrac{8}{15}\\). If the quiz is held the pair is drawn from team B, which has 7 girls and 3 boys among 10, so \\(P(E \\mid Q) = \\dfrac{{}^7C_1 \\times {}^3C_1}{{}^{10}C_2} = \\dfrac{21}{45} = \\dfrac{7}{15}\\). The competition held decides which team is used, so by the theorem of total probability \\(P(E) = P(D)\\,P(E \\mid D) + P(Q)\\,P(E \\mid Q) = \\dfrac{1}{3} \\times \\dfrac{8}{15} + \\dfrac{2}{3} \\times \\dfrac{7}{15} = \\dfrac{8}{45} + \\dfrac{14}{45} = \\dfrac{22}{45}\\). Note that each conditional probability is weighted by the chance of its own competition before adding — the two cannot simply be summed, since they are conditioned on different events."
   },
   {
    "hash": "0a0051dc986e076a566e35641c482040c74f597a4929d99d6db237cc21f012a5",
@@ -793,7 +793,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration by Partial Fractions",
    "stem": "Find :\n\n\\(\\displaystyle\\int \\dfrac{x}{(x - 1)(x^2 + 4)}\\, dx\\)",
-   "solution": ""
+   "solution": "The denominator carries one linear factor and one irreducible quadratic, so the partial-fraction form is \\(\\dfrac{x}{(x - 1)\\left(x^2 + 4\\right)} = \\dfrac{A}{x - 1} + \\dfrac{Bx + C}{x^2 + 4}\\). Multiplying up, \\(x = A\\left(x^2 + 4\\right) + (Bx + C)(x - 1)\\). Putting \\(x = 1\\) kills the second term and gives \\(1 = 5A\\), so \\(A = \\dfrac{1}{5}\\). Comparing coefficients of \\(x^2\\) gives \\(0 = A + B\\), so \\(B = -\\dfrac{1}{5}\\); comparing constant terms gives \\(0 = 4A - C\\), so \\(C = \\dfrac{4}{5}\\). Hence the integral splits into three standard pieces: \\(\\displaystyle\\int \\dfrac{x\\,dx}{(x - 1)\\left(x^2 + 4\\right)} = \\dfrac{1}{5}\\displaystyle\\int\\dfrac{dx}{x - 1} - \\dfrac{1}{5}\\displaystyle\\int\\dfrac{x\\,dx}{x^2 + 4} + \\dfrac{4}{5}\\displaystyle\\int\\dfrac{dx}{x^2 + 4}\\). The first gives \\(\\dfrac{1}{5}\\log|x - 1|\\). For the second, force the numerator to be the derivative of the denominator: \\(-\\dfrac{1}{5}\\displaystyle\\int\\dfrac{x\\,dx}{x^2 + 4} = -\\dfrac{1}{10}\\displaystyle\\int\\dfrac{2x\\,dx}{x^2 + 4} = -\\dfrac{1}{10}\\log\\left(x^2 + 4\\right)\\), with no modulus needed since \\(x^2 + 4 > 0\\) always. The third uses \\(\\displaystyle\\int\\dfrac{dx}{x^2 + a^2} = \\dfrac{1}{a}\\tan^{-1}\\dfrac{x}{a}\\) with \\(a = 2\\), giving \\(\\dfrac{4}{5} \\cdot \\dfrac{1}{2}\\tan^{-1}\\dfrac{x}{2} = \\dfrac{2}{5}\\tan^{-1}\\dfrac{x}{2}\\). Altogether \\(\\displaystyle\\int \\dfrac{x\\,dx}{(x - 1)\\left(x^2 + 4\\right)} = \\dfrac{1}{5}\\log|x - 1| - \\dfrac{1}{10}\\log\\left(x^2 + 4\\right) + \\dfrac{2}{5}\\tan^{-1}\\dfrac{x}{2} + C\\)."
   },
   {
    "hash": "e54ed8f82279efc35ffa63b62e7523bc82d3ec1b8d7a306b4ef903b980a0618f",
@@ -804,7 +804,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration by Parts",
    "stem": "Evaluate :\n\n\\(\\displaystyle\\int_0^1 \\dfrac{x \\tan^{-1} x}{\\left(1 + x^2\\right)^{3/2}}\\, dx\\)",
-   "solution": ""
+   "solution": "Both awkward features — the power \\(\\left(1 + x^2\\right)^{3/2}\\) and the \\(\\tan^{-1}x\\) — surrender to the same substitution \\(x = \\tan t\\), for which \\(dx = \\sec^2 t\\,dt\\) and \\(\\tan^{-1}x = t\\); the limits \\(x = 0\\) and \\(x = 1\\) become \\(t = 0\\) and \\(t = \\dfrac{\\pi}{4}\\). Since \\(1 + x^2 = \\sec^2 t\\), we have \\(\\left(1 + x^2\\right)^{3/2} = \\sec^3 t\\), so \\(I = \\displaystyle\\int_0^{\\pi/4} \\dfrac{t\\tan t}{\\sec^3 t}\\,\\sec^2 t\\,dt = \\displaystyle\\int_0^{\\pi/4} \\dfrac{t\\tan t}{\\sec t}\\,dt = \\displaystyle\\int_0^{\\pi/4} t\\sin t\\,dt\\), using \\(\\dfrac{\\tan t}{\\sec t} = \\sin t\\). Now integrate by parts, taking \\(t\\) as the first function and \\(\\sin t\\) as the second: \\(\\displaystyle\\int t\\sin t\\,dt = -t\\cos t + \\displaystyle\\int\\cos t\\,dt = -t\\cos t + \\sin t\\). Evaluating between the limits, \\(I = \\left[-t\\cos t + \\sin t\\right]_0^{\\pi/4} = \\left(-\\dfrac{\\pi}{4}\\cdot\\dfrac{1}{\\sqrt{2}} + \\dfrac{1}{\\sqrt{2}}\\right) - (0 + 0) = -\\dfrac{\\pi}{4\\sqrt{2}} + \\dfrac{1}{\\sqrt{2}}\\). Putting the two terms over the common denominator \\(4\\sqrt{2}\\) gives \\(I = \\dfrac{4 - \\pi}{4\\sqrt{2}}\\), which is about \\(0{\\cdot}152\\). Either form is acceptable."
   },
   {
    "hash": "330a903756717fc76b71076425037f06f7c3187e9232707f3870b86a866e495f",
@@ -815,7 +815,7 @@
    "chapter": "Application of Integrals",
    "subtopic": "Area Under Simple Curves",
    "stem": "Using integration, find the area of the region enclosed by the curve \\(y = |x - 6|\\), the x-axis, and between \\(x = 4\\) and \\(x = 8\\).",
-   "solution": ""
+   "solution": "The curve \\(y = |x - 6|\\) is the V-shaped graph whose vertex sits on the x-axis at \\((6, 0)\\), rising to \\((4, 2)\\) on the left and \\((8, 2)\\) on the right. On \\(4 \\le x \\le 6\\), \\(x - 6 \\le 0\\), so \\(y = -(x - 6) = 6 - x\\); on \\(6 \\le x \\le 8\\), \\(x - 6 \\ge 0\\), so \\(y = x - 6\\). The curve never dips below the x-axis, so the required area is \\(\\displaystyle\\int_4^8 |x - 6|\\,dx\\) — but the modulus must be resolved by splitting the interval at the corner \\(x = 6\\), since a single antiderivative cannot serve both pieces. So the area is \\(-\\displaystyle\\int_4^6 (x - 6)\\,dx + \\displaystyle\\int_6^8 (x - 6)\\,dx\\). Now \\(-\\left[\\dfrac{(x - 6)^2}{2}\\right]_4^6 = -\\left(0 - \\dfrac{4}{2}\\right) = 2\\), and \\(\\left[\\dfrac{(x - 6)^2}{2}\\right]_6^8 = \\dfrac{4}{2} - 0 = 2\\). Hence the enclosed area is \\(2 + 2 = 4\\) square units. As a check, the region is two right triangles, each of base 2 and height 2 and so of area \\(\\dfrac{1}{2} \\times 2 \\times 2 = 2\\), which agrees."
   },
   {
    "hash": "565dfcda401bd736a34a87e9290a2288ec4b54b87810ce096955cc1c65e0b09c",
@@ -826,7 +826,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Linear Differential Equations",
    "stem": "Solve the differential equation \\(y e^y\\, dx = \\left(y^3 + 2x e^y\\right) dy\\), when \\(y(0) = 1\\).",
-   "solution": ""
+   "solution": "Look at where each variable sits: \\(x\\) appears only to the first power, while \\(y\\) appears inside \\(e^y\\) and \\(y^3\\). That is the signal to treat \\(x\\) as the dependent variable and \\(y\\) as the independent one. Dividing \\(y e^y\\,dx = \\left(y^3 + 2x e^y\\right)dy\\) through by \\(y e^y\\,dy\\) gives \\(\\dfrac{dx}{dy} = \\dfrac{y^3}{y e^y} + \\dfrac{2x e^y}{y e^y} = y^2 e^{-y} + \\dfrac{2}{y}x\\), that is \\(\\dfrac{dx}{dy} - \\dfrac{2}{y}x = y^2 e^{-y}\\) — linear in \\(x\\), with \\(P(y) = -\\dfrac{2}{y}\\) and \\(Q(y) = y^2 e^{-y}\\). The integrating factor is \\(e^{\\int -\\frac{2}{y}\\,dy} = e^{-2\\log y} = \\dfrac{1}{y^2}\\). Multiplying through by it, the left side collapses to a single derivative: \\(\\dfrac{d}{dy}\\left(\\dfrac{x}{y^2}\\right) = \\dfrac{1}{y^2}\\cdot y^2 e^{-y} = e^{-y}\\), where the whole point of the factor is that the \\(y^2\\) cancels. Integrating, \\(\\dfrac{x}{y^2} = \\displaystyle\\int e^{-y}\\,dy = -e^{-y} + c\\), so the general solution is \\(x = y^2\\left(c - e^{-y}\\right)\\). Now apply the condition \\(y(0) = 1\\), i.e. \\(y = 1\\) when \\(x = 0\\): \\(0 = 1 \\cdot \\left(c - e^{-1}\\right)\\), so \\(c = e^{-1}\\). The required particular solution is \\(x = y^2\\left(e^{-1} - e^{-y}\\right)\\)."
   },
   {
    "hash": "f45d804f940afeeb4c7d7da25d871ba9f6b055a06b9008783f54d4aa01250f94",
@@ -837,7 +837,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Homogeneous Differential Equations",
    "stem": "Find the general solution of the differential equation \\(\\left(x^3 - 3xy^2\\right) dx = \\left(y^3 - 3x^2 y\\right) dy\\).",
-   "solution": ""
+   "solution": "Every term on both sides has total degree 3 in \\(x\\) and \\(y\\), so the equation is homogeneous. Write it as \\(\\dfrac{dy}{dx} = \\dfrac{x^3 - 3xy^2}{y^3 - 3x^2 y}\\) and substitute \\(y = vx\\), so that \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\). Dividing numerator and denominator by \\(x^3\\) turns the right-hand side into \\(\\dfrac{1 - 3v^2}{v^3 - 3v}\\), giving \\(v + x\\dfrac{dv}{dx} = \\dfrac{1 - 3v^2}{v^3 - 3v}\\). Hence \\(x\\dfrac{dv}{dx} = \\dfrac{1 - 3v^2 - v\\left(v^3 - 3v\\right)}{v^3 - 3v} = \\dfrac{1 - 3v^2 - v^4 + 3v^2}{v^3 - 3v} = \\dfrac{1 - v^4}{v^3 - 3v}\\), and separating the variables gives \\(\\displaystyle\\int\\dfrac{3v - v^3}{v^4 - 1}\\,dv = \\displaystyle\\int\\dfrac{dx}{x}\\), after multiplying numerator and denominator by \\(-1\\). For the left integral put \\(t = v^2\\), so \\(dt = 2v\\,dv\\) and it becomes \\(\\dfrac{1}{2}\\displaystyle\\int\\dfrac{3 - t}{t^2 - 1}\\,dt\\). Partial fractions give \\(\\dfrac{3 - t}{(t - 1)(t + 1)} = \\dfrac{1}{t - 1} - \\dfrac{2}{t + 1}\\), so the integral is \\(\\dfrac{1}{2}\\log|t - 1| - \\log|t + 1| = \\dfrac{1}{2}\\log\\left|v^2 - 1\\right| - \\log\\left|v^2 + 1\\right|\\). The marking scheme records this same antiderivative in the compressed form \\(\\dfrac{3}{4}\\log\\left|\\dfrac{v^2 - 1}{v^2 + 1}\\right| - \\dfrac{1}{4}\\log\\left|v^4 - 1\\right|\\); expanding it and using \\(v^4 - 1 = \\left(v^2 - 1\\right)\\left(v^2 + 1\\right)\\) gives \\(\\left(\\dfrac{3}{4} - \\dfrac{1}{4}\\right)\\log\\left|v^2 - 1\\right| - \\left(\\dfrac{3}{4} + \\dfrac{1}{4}\\right)\\log\\left|v^2 + 1\\right|\\), which is the same expression, so the two agree. Restoring \\(v = \\dfrac{y}{x}\\), with \\(v^2 - 1 = \\dfrac{y^2 - x^2}{x^2}\\), \\(v^2 + 1 = \\dfrac{y^2 + x^2}{x^2}\\) and \\(v^4 - 1 = \\dfrac{y^4 - x^4}{x^4}\\), the general solution is \\(\\dfrac{3}{4}\\log\\left|\\dfrac{y^2 - x^2}{y^2 + x^2}\\right| - \\dfrac{1}{4}\\log\\left|\\dfrac{y^4 - x^4}{x^4}\\right| = \\log x + c\\). Tidying the logarithms, the same relation reads \\(\\dfrac{\\sqrt{\\left|y^2 - x^2\\right|}}{x^2 + y^2} = C\\), and differentiating that implicitly returns \\(\\dfrac{dy}{dx} = \\dfrac{x^3 - 3xy^2}{y^3 - 3x^2y}\\), confirming the solution."
   },
   {
    "hash": "aebc9040780f9716e8b87f439c1dfdabb5f24fdd534b4445bd93521880725584",
@@ -848,7 +848,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Equation of a Line in Space",
    "stem": "Find the equation of a line (in vector and cartesian form) that passes through the point of intersection of lines \\(\\dfrac{x - 1}{2} = \\dfrac{y - 2}{3} = \\dfrac{z - 3}{4}\\) and \\(\\dfrac{x - 4}{5} = \\dfrac{y - 1}{2} = z\\) and is parallel to the vector \\(3\\hat{i} + 2\\hat{j} - 8\\hat{k}\\).",
-   "solution": ""
+   "solution": "Parameterise each line separately, using different letters so the two parameters cannot be confused. Setting \\(\\dfrac{x - 1}{2} = \\dfrac{y - 2}{3} = \\dfrac{z - 3}{4} = a\\) gives the general point \\(P(2a + 1,\\ 3a + 2,\\ 4a + 3)\\); setting \\(\\dfrac{x - 4}{5} = \\dfrac{y - 1}{2} = z = b\\) gives \\(Q(5b + 4,\\ 2b + 1,\\ b)\\). The lines meet where \\(P\\) and \\(Q\\) coincide, so all three coordinates must agree: \\(2a + 1 = 5b + 4\\), \\(3a + 2 = 2b + 1\\) and \\(4a + 3 = b\\). Substituting the third equation into the first, \\(2a + 1 = 5(4a + 3) + 4 = 20a + 19\\), so \\(-18a = 18\\) and \\(a = -1\\); then \\(b = 4(-1) + 3 = -1\\). The middle equation has not been used, and with three equations in two unknowns it must be checked rather than assumed: \\(3(-1) + 2 = -1\\) and \\(2(-1) + 1 = -1\\) do agree, so the lines genuinely intersect. Their point of intersection is \\(P(2(-1) + 1,\\ 3(-1) + 2,\\ 4(-1) + 3) = (-1, -1, -1)\\). The required line passes through \\((-1, -1, -1)\\) and is parallel to \\(3\\hat{i} + 2\\hat{j} - 8\\hat{k}\\), so in vector form \\(\\vec{r} = \\left(-\\hat{i} - \\hat{j} - \\hat{k}\\right) + \\lambda\\left(3\\hat{i} + 2\\hat{j} - 8\\hat{k}\\right)\\), and in cartesian form \\(\\dfrac{x + 1}{3} = \\dfrac{y + 1}{2} = \\dfrac{z + 1}{-8}\\)."
   },
   {
    "hash": "d2d5fea80628cdb535e2602cda255b9d98f5f8a0910c5b30ca2f2681d3f51594",
@@ -861,7 +861,7 @@
    "stem": "Establish a relation between the height h of the juice in the cup and radius r of the surface of the juice in the cup, if the semi-vertical angle of the cone is \\(\\alpha\\).",
    "context": "At a birthday party, children are being served orange juice in conical cups, as shown in the figure.\n\nEach cup is 15 cm deep and has a radius 5 cm. The juice is being poured into this cup at a rate of \\(0{\\cdot}1\\) cm\\(^3\\)/s.\n\nOn the basis of the above information, answer the following questions :",
    "figure": "DECORATIVE - the passage says 'as shown in the figure' and a labelled cone (R = 5 cm, H = 15 cm, r, h, l, alpha) is printed on page idx 18, but both dimensions are stated in the text and every other symbol is defined in the sub-parts. Opened and checked; a reference, not a dependency.",
-   "solution": ""
+   "solution": "Take the axial cross-section of the cup, a triangle with the apex at the bottom. The semi-vertical angle \\(\\alpha\\) sits at that apex; the radius \\(r\\) of the juice surface is the side opposite it and the depth \\(h\\) of the juice is the side adjacent, so \\(\\tan\\alpha = \\dfrac{r}{h}\\), giving \\(r = h\\tan\\alpha\\). The angle is fixed once and for all by the cup itself, which has radius 5 cm at a depth of 15 cm, so \\(\\tan\\alpha = \\dfrac{5}{15} = \\dfrac{1}{3}\\). The relation is therefore \\(r = \\dfrac{h}{3}\\): the juice surface always has radius one-third of the juice depth, because the cone of juice is similar to the cone of the cup however full it is."
   },
   {
    "hash": "00b9e3f40c19999e1ac7f8f593e88600e2f062508ff23e73c133d012dc4ee886",
@@ -874,7 +874,7 @@
    "stem": "At what rate is the juice level in the cup rising when the juice is 6 cm deep ?",
    "context": "At a birthday party, children are being served orange juice in conical cups, as shown in the figure.\n\nEach cup is 15 cm deep and has a radius 5 cm. The juice is being poured into this cup at a rate of \\(0{\\cdot}1\\) cm\\(^3\\)/s.\n\nOn the basis of the above information, answer the following questions :",
    "figure": "DECORATIVE - the passage says 'as shown in the figure' and a labelled cone (R = 5 cm, H = 15 cm, r, h, l, alpha) is printed on page idx 18, but both dimensions are stated in the text and every other symbol is defined in the sub-parts. Opened and checked; a reference, not a dependency.",
-   "solution": ""
+   "solution": "The juice occupies a cone of depth \\(h\\) and surface radius \\(r = \\dfrac{h}{3}\\), so its volume is \\(V = \\dfrac{1}{3}\\pi r^2 h = \\dfrac{1}{3}\\pi\\left(\\dfrac{h}{3}\\right)^2 h = \\dfrac{\\pi h^3}{27}\\) — a function of \\(h\\) alone, which is exactly what part (i) buys us. Differentiating with respect to time, \\(\\dfrac{dV}{dt} = \\dfrac{\\pi}{27}\\cdot 3h^2\\,\\dfrac{dh}{dt} = \\dfrac{\\pi h^2}{9}\\,\\dfrac{dh}{dt}\\). The juice is poured in at \\(\\dfrac{dV}{dt} = 0{\\cdot}1\\) cm\\(^3\\)/s, and we want the moment when \\(h = 6\\), so \\(0{\\cdot}1 = \\dfrac{\\pi(36)}{9}\\,\\dfrac{dh}{dt} = 4\\pi\\,\\dfrac{dh}{dt}\\). Hence \\(\\dfrac{dh}{dt} = \\dfrac{0{\\cdot}1}{4\\pi} = \\dfrac{1}{40\\pi}\\) cm/s, so the juice level is rising at \\(\\dfrac{1}{40\\pi}\\) cm/s (roughly \\(0{\\cdot}008\\) cm/s)."
   },
   {
    "hash": "2f5dac183974ee5c1c6885dd9a345328656e09919bebe3714873b10d80b9ff24",
@@ -887,7 +887,7 @@
    "stem": "When the juice is 6 cm deep, then find at what rate is the upper surface area of juice increasing ?",
    "context": "At a birthday party, children are being served orange juice in conical cups, as shown in the figure.\n\nEach cup is 15 cm deep and has a radius 5 cm. The juice is being poured into this cup at a rate of \\(0{\\cdot}1\\) cm\\(^3\\)/s.\n\nOn the basis of the above information, answer the following questions :",
    "figure": "DECORATIVE - the passage says 'as shown in the figure' and a labelled cone (R = 5 cm, H = 15 cm, r, h, l, alpha) is printed on page idx 18, but both dimensions are stated in the text and every other symbol is defined in the sub-parts. Opened and checked; a reference, not a dependency.",
-   "solution": ""
+   "solution": "The upper surface of the juice is a circle of radius \\(r = \\dfrac{h}{3}\\), so its area is \\(A = \\pi r^2 = \\pi\\left(\\dfrac{h}{3}\\right)^2 = \\dfrac{\\pi h^2}{9}\\). Differentiating with respect to time, \\(\\dfrac{dA}{dt} = \\dfrac{2\\pi h}{9}\\,\\dfrac{dh}{dt}\\). Part (ii) established that when \\(h = 6\\) the level rises at \\(\\dfrac{dh}{dt} = \\dfrac{1}{40\\pi}\\) cm/s, so \\(\\dfrac{dA}{dt} = \\dfrac{2\\pi(6)}{9}\\cdot\\dfrac{1}{40\\pi} = \\dfrac{12\\pi}{9}\\cdot\\dfrac{1}{40\\pi} = \\dfrac{12}{360} = \\dfrac{1}{30}\\). Notice that the \\(\\pi\\) cancels, leaving a clean rational answer: the upper surface area of the juice is increasing at \\(\\dfrac{1}{30}\\) cm\\(^2\\)/s."
   },
   {
    "hash": "850907f1dfe9238ea921848b133909335a722e5ec7febe43bc5bcd9c57f873df",
@@ -900,7 +900,7 @@
    "stem": "When the juice is 6 cm deep, then find the rate at which the wetted surface area of the cup is increasing.",
    "context": "At a birthday party, children are being served orange juice in conical cups, as shown in the figure.\n\nEach cup is 15 cm deep and has a radius 5 cm. The juice is being poured into this cup at a rate of \\(0{\\cdot}1\\) cm\\(^3\\)/s.\n\nOn the basis of the above information, answer the following questions :",
    "figure": "DECORATIVE - the passage says 'as shown in the figure' and a labelled cone (R = 5 cm, H = 15 cm, r, h, l, alpha) is printed on page idx 18, but both dimensions are stated in the text and every other symbol is defined in the sub-parts. Opened and checked; a reference, not a dependency.",
-   "solution": ""
+   "solution": "The wetted surface is the part of the cup in contact with the juice, i.e. the curved surface of the juice cone, whose area is \\(S = \\pi r l\\) with \\(l\\) the slant height (there is no base to include, since the cone tapers to a point at the bottom). With \\(r = \\dfrac{h}{3}\\), \\(l = \\sqrt{r^2 + h^2} = \\sqrt{\\dfrac{h^2}{9} + h^2} = h\\sqrt{\\dfrac{10}{9}} = \\dfrac{h\\sqrt{10}}{3}\\), so \\(S = \\pi \\cdot \\dfrac{h}{3} \\cdot \\dfrac{h\\sqrt{10}}{3} = \\dfrac{\\sqrt{10}\\,\\pi h^2}{9}\\). Differentiating with respect to time, \\(\\dfrac{dS}{dt} = \\dfrac{2\\sqrt{10}\\,\\pi h}{9}\\,\\dfrac{dh}{dt}\\). Substituting \\(h = 6\\) and \\(\\dfrac{dh}{dt} = \\dfrac{1}{40\\pi}\\) from part (ii), \\(\\dfrac{dS}{dt} = \\dfrac{2\\sqrt{10}\\,\\pi(6)}{9}\\cdot\\dfrac{1}{40\\pi} = \\dfrac{12\\sqrt{10}}{360} = \\dfrac{\\sqrt{10}}{30}\\). So the wetted surface area of the cup is increasing at \\(\\dfrac{\\sqrt{10}}{30}\\) cm\\(^2\\)/s — exactly \\(\\sqrt{10}\\) times the rate found in part (iii)(a), since \\(S\\) and \\(A\\) differ only by that constant factor."
   },
   {
    "hash": "eb2a675d9b0a8d56eb733f6c92aa619c8c7e391b7582f20f3f4d74f85547ff0e",
@@ -912,7 +912,7 @@
    "subtopic": "Solving System of Linear Equations",
    "stem": "Write the equations representing the various dimensions and express them as the matrix equation \\(AX = B\\).",
    "context": "A carpenter needs to design a wooden box in the shape of a cuboid such that the sum of its length and breadth is 3 cm more than its height. Twice of its length, thrice of its breadth and its height add up to 10 cm. Its breadth added to 7 times its height is 1 cm less than 3 times its length.\n\nOn the basis of the above information, answer the following questions :",
-   "solution": ""
+   "solution": "Let the length, breadth and height of the box be \\(l\\), \\(b\\) and \\(h\\) centimetres, and turn each sentence into an equation. The sum of the length and breadth being 3 cm more than the height gives \\(l + b = h + 3\\), i.e. \\(l + b - h = 3\\). Twice the length, thrice the breadth and the height adding to 10 cm gives \\(2l + 3b + h = 10\\). The breadth added to 7 times the height being 1 cm less than 3 times the length gives \\(b + 7h = 3l - 1\\), i.e. \\(-3l + b + 7h = -1\\). Reading the coefficients row by row, the system \\(AX = B\\) is \\(\\begin{bmatrix} 1 & 1 & -1 \\\\ 2 & 3 & 1 \\\\ -3 & 1 & 7 \\end{bmatrix}\\begin{bmatrix} l \\\\ b \\\\ h \\end{bmatrix} = \\begin{bmatrix} 3 \\\\ 10 \\\\ -1 \\end{bmatrix}\\). (The third equation may equally be arranged as \\(3l - b - 7h = 1\\), which simply multiplies that row and the corresponding entry of \\(B\\) by \\(-1\\); the marking scheme notes that either arrangement is acceptable.)"
   },
   {
    "hash": "2875f367a02de5aaf7217be9a58ce4a42ef8d4a61bad4461c22afc3265979dfa",
@@ -924,7 +924,7 @@
    "subtopic": "Adjoint and Inverse of a Matrix",
    "stem": "Find if \\(A^{-1}\\) exists. Justify your answer.",
    "context": "A carpenter needs to design a wooden box in the shape of a cuboid such that the sum of its length and breadth is 3 cm more than its height. Twice of its length, thrice of its breadth and its height add up to 10 cm. Its breadth added to 7 times its height is 1 cm less than 3 times its length.\n\nOn the basis of the above information, answer the following questions :",
-   "solution": ""
+   "solution": "The inverse \\(A^{-1}\\) exists exactly when \\(A\\) is non-singular, that is when \\(|A| \\neq 0\\), so the whole question is one determinant. Expanding along the first row, \\(|A| = 1\\,(3 \\times 7 - 1 \\times 1) - 1\\,(2 \\times 7 - 1 \\times (-3)) + (-1)\\,(2 \\times 1 - 3 \\times (-3)) = 1(21 - 1) - 1(14 + 3) - 1(2 + 9) = 20 - 17 - 11 = -8\\). Since \\(|A| = -8 \\neq 0\\), the matrix is non-singular and \\(A^{-1}\\) does exist. As a bonus this settles the carpenter's problem: a non-singular coefficient matrix means the three conditions determine the length, breadth and height uniquely."
   },
   {
    "hash": "994e2860aa986fab4ab6ab8ad2b71692620952c98f5938d44e47b7e7f0d487f3",
@@ -936,7 +936,7 @@
    "subtopic": "Adjoint and Inverse of a Matrix",
    "stem": "Find \\(A^{-1}\\).",
    "context": "A carpenter needs to design a wooden box in the shape of a cuboid such that the sum of its length and breadth is 3 cm more than its height. Twice of its length, thrice of its breadth and its height add up to 10 cm. Its breadth added to 7 times its height is 1 cm less than 3 times its length.\n\nOn the basis of the above information, answer the following questions :",
-   "solution": ""
+   "solution": "Use \\(A^{-1} = \\dfrac{1}{|A|}\\,\\text{adj}\\,A\\), with \\(|A| = -8\\) from part (ii). For \\(A = \\begin{bmatrix} 1 & 1 & -1 \\\\ 2 & 3 & 1 \\\\ -3 & 1 & 7 \\end{bmatrix}\\) the cofactors are \\(A_{11} = 21 - 1 = 20\\), \\(A_{12} = -(14 + 3) = -17\\), \\(A_{13} = 2 + 9 = 11\\), \\(A_{21} = -(7 + 1) = -8\\), \\(A_{22} = 7 - 3 = 4\\), \\(A_{23} = -(1 + 3) = -4\\), \\(A_{31} = 1 + 3 = 4\\), \\(A_{32} = -(1 + 2) = -3\\) and \\(A_{33} = 3 - 2 = 1\\). The adjoint is the transpose of the matrix of cofactors, so \\(\\text{adj}\\,A = \\begin{bmatrix} 20 & -8 & 4 \\\\ -17 & 4 & -3 \\\\ 11 & -4 & 1 \\end{bmatrix}\\) and therefore \\(A^{-1} = -\\dfrac{1}{8}\\begin{bmatrix} 20 & -8 & 4 \\\\ -17 & 4 & -3 \\\\ 11 & -4 & 1 \\end{bmatrix}\\). (If the third condition was instead written as \\(3l - b - 7h = 1\\), giving third row \\(3,\\ -1,\\ -7\\), then \\(|A| = 8\\) and \\(A^{-1} = \\dfrac{1}{8}\\begin{bmatrix} -20 & 8 & 4 \\\\ 17 & -4 & -3 \\\\ -11 & 4 & 1 \\end{bmatrix}\\). That is not the same matrix as the one above: negating a row of \\(A\\) negates the corresponding column of \\(A^{-1}\\), so here only the third column changes sign. Both are correct inverses of their own \\(A\\), and the marking scheme states explicitly that a different but consistent arrangement is to be marked accordingly.)"
   },
   {
    "hash": "1a52ed804550d0381be224880b91792f96b513326cd79c15651d8c2a4e29ea1c",
@@ -948,7 +948,7 @@
    "subtopic": "Multiplication of Matrices",
    "stem": "Find \\(A^2 + 7\\,I\\).",
    "context": "A carpenter needs to design a wooden box in the shape of a cuboid such that the sum of its length and breadth is 3 cm more than its height. Twice of its length, thrice of its breadth and its height add up to 10 cm. Its breadth added to 7 times its height is 1 cm less than 3 times its length.\n\nOn the basis of the above information, answer the following questions :",
-   "solution": ""
+   "solution": "Square the coefficient matrix of part (i), multiplying row into column: \\(A^2 = \\begin{bmatrix} 1 & 1 & -1 \\\\ 2 & 3 & 1 \\\\ -3 & 1 & 7 \\end{bmatrix}\\begin{bmatrix} 1 & 1 & -1 \\\\ 2 & 3 & 1 \\\\ -3 & 1 & 7 \\end{bmatrix} = \\begin{bmatrix} 6 & 3 & -7 \\\\ 5 & 12 & 8 \\\\ -22 & 7 & 53 \\end{bmatrix}\\); for instance the leading entry is \\(1(1) + 1(2) + (-1)(-3) = 6\\), and the entry in row 3, column 3 is \\((-3)(-1) + 1(1) + 7(7) = 53\\). Adding \\(7I\\) changes only the three diagonal entries, so \\(A^2 + 7I = \\begin{bmatrix} 6 + 7 & 3 & -7 \\\\ 5 & 12 + 7 & 8 \\\\ -22 & 7 & 53 + 7 \\end{bmatrix} = \\begin{bmatrix} 13 & 3 & -7 \\\\ 5 & 19 & 8 \\\\ -22 & 7 & 60 \\end{bmatrix}\\). (Had the third equation been arranged as \\(3l - b - 7h = 1\\), giving third row \\(3,\\ -1,\\ -7\\), the result would be \\(\\begin{bmatrix} 7 & 5 & 7 \\\\ 11 & 17 & -6 \\\\ -20 & 7 & 52 \\end{bmatrix}\\) instead — \\(A^2\\) depends on the arrangement chosen in part (i), so it has to be computed from whichever \\(A\\) was actually set up. The marking scheme prints both and directs the examiner to mark accordingly.)"
   },
   {
    "hash": "19f2ee3c4db8acb7fc9a28468a4c1b1ba7a2e3830112bf8e6ba96e62bac52bc5",
@@ -960,7 +960,7 @@
    "subtopic": "Theorem of Total Probability",
    "stem": "What is the probability that he selects a red cap ?",
    "context": "An NGO organises a charity event in which they decide to distribute woollen caps to protect children from winter. The caps to be distributed are in three separate boxes, Box I has 30 red caps, Box II has 20 red and 10 green caps, and Box III has 30 green caps. The probability that a Box i is selected and a cap picked out is \\(\\dfrac{i}{6}\\), where i = 1, 2, 3.\n\nBased on the above information, answer the following questions :\n\nA person selects a cap.",
-   "solution": ""
+   "solution": "Let \\(B_1\\), \\(B_2\\) and \\(B_3\\) be the events that Box I, Box II and Box III respectively is the box used. The problem states that Box \\(i\\) is selected with probability \\(\\dfrac{i}{6}\\), so \\(P(B_1) = \\dfrac{1}{6}\\), \\(P(B_2) = \\dfrac{2}{6}\\) and \\(P(B_3) = \\dfrac{3}{6}\\); these sum to 1, confirming the three boxes are mutually exclusive and exhaustive. The chance of a red cap given each box is read straight off its contents: Box I holds 30 red caps and nothing else, so \\(P(R \\mid B_1) = 1\\); Box II holds 20 red among 30 caps, so \\(P(R \\mid B_2) = \\dfrac{20}{30} = \\dfrac{2}{3}\\); Box III holds no red cap at all, so \\(P(R \\mid B_3) = 0\\). By the theorem of total probability, \\(P(R) = P(B_1)P(R \\mid B_1) + P(B_2)P(R \\mid B_2) + P(B_3)P(R \\mid B_3) = \\dfrac{1}{6}(1) + \\dfrac{2}{6}\\left(\\dfrac{2}{3}\\right) + \\dfrac{3}{6}(0) = \\dfrac{1}{6} + \\dfrac{2}{9} = \\dfrac{3}{18} + \\dfrac{4}{18} = \\dfrac{7}{18}\\). So the probability of selecting a red cap is \\(\\dfrac{7}{18}\\)."
   },
   {
    "hash": "25503e585831e67ead82e86b1c6207a6eebfa714e4b5ffc88b681f5f45fbe63a",
@@ -972,7 +972,7 @@
    "subtopic": "Bayes' Theorem",
    "stem": "If he selects a green cap, what is the probability that the cap has come from Box II ?",
    "context": "An NGO organises a charity event in which they decide to distribute woollen caps to protect children from winter. The caps to be distributed are in three separate boxes, Box I has 30 red caps, Box II has 20 red and 10 green caps, and Box III has 30 green caps. The probability that a Box i is selected and a cap picked out is \\(\\dfrac{i}{6}\\), where i = 1, 2, 3.\n\nBased on the above information, answer the following questions :\n\nA person selects a cap.",
-   "solution": ""
+   "solution": "This runs backwards — from the colour observed to the box it came from — so it is Bayes' theorem. Every cap is either red or green, so part (i) gives \\(P(G) = 1 - P(R) = 1 - \\dfrac{7}{18} = \\dfrac{11}{18}\\). (Computing it forwards agrees: \\(\\dfrac{1}{6}(0) + \\dfrac{2}{6}\\left(\\dfrac{1}{3}\\right) + \\dfrac{3}{6}(1) = \\dfrac{2}{18} + \\dfrac{9}{18} = \\dfrac{11}{18}\\).) Box II holds 10 green caps among 30, so \\(P(G \\mid B_2) = \\dfrac{10}{30} = \\dfrac{1}{3}\\), while \\(P(B_2) = \\dfrac{2}{6}\\). Then \\(P(B_2 \\mid G) = \\dfrac{P(B_2)\\,P(G \\mid B_2)}{P(G)} = \\dfrac{\\dfrac{2}{6} \\times \\dfrac{1}{3}}{\\dfrac{11}{18}} = \\dfrac{\\dfrac{2}{18}}{\\dfrac{11}{18}} = \\dfrac{2}{11}\\). So given that the cap selected is green, the probability that it came from Box II is \\(\\dfrac{2}{11}\\)."
   }
  ]
 }

@@ -63,7 +63,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "A sum is defined only where BOTH terms are defined, so take the intersection of the two domains. \\(\\cos^{-1} x\\) is defined only for \\(-1 \\le x \\le 1\\), while \\(\\sin x\\) is defined for every real \\(x\\). The intersection is \\([-1,\\ 1]\\), which is option \\([-1,\\ 1]\\). Note the endpoints are included, since \\(\\cos^{-1}(\\pm 1)\\) exists; that is what separates it from the open interval \\((-1,\\ 1)\\)."
   },
   {
    "hash": "194c4e12a5cc6fd995ef3bd4e0837bf8aa962d46f4c281db901749de177b47c9",
@@ -93,7 +93,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "A \\(3 \\times 3\\) matrix has \\(3 \\times 3 = 9\\) entries, and each entry may be filled independently in 2 ways, as \\(\\sqrt{2}\\) or as \\(\\sqrt{3}\\). By the multiplication principle the number of such matrices is \\(2^9 = 512\\), which is option \\(512\\)."
   },
   {
    "hash": "265e0a4a8e4861afa45e943181b35785d6ef8738d67ee9f896e714edb39e9512",
@@ -123,7 +123,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Here \\(A\\) is a diagonal matrix, so interchanging rows and columns leaves it unchanged: \\(A^{T} = A\\). That is exactly the definition of a symmetric matrix, so the answer is option symmetric matrix. It is not scalar (a scalar matrix needs all three diagonal entries equal, whereas \\(\\sqrt{3},\\ \\sqrt{2},\\ \\sqrt{5}\\) are different), not the identity, and not null."
   },
   {
    "hash": "bd7745e8e6189efe3a04522ff52af6549b269d8624ead983f8bb38344e5016d3",
@@ -153,7 +153,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "For a square matrix of order \\(n\\), multiplying every entry by a scalar \\(k\\) multiplies the determinant by \\(k^{n}\\). With \\(n = 3\\) and \\(k = 2\\), and using \\(|AB| = |A||B|\\), \\(|2AB| = 2^{3}|A||B| = 8 \\times 3 \\times 5 = 120\\), which is option \\(120\\). The common slip is to write \\(2|A||B| = 30\\), forgetting that the scalar is raised to the power \\(n\\)."
   },
   {
    "hash": "ca4bc16dd87071dd0d53fda4ca08a70c5edae1314cd9c10715080fc994b98b73",
@@ -183,7 +183,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "For a square matrix of order \\(n\\), \\(|\\mathrm{adj}\\ A| = |A|^{\\,n-1}\\). With \\(n = 3\\) and \\(|A| = 5\\), \\(|\\mathrm{adj}\\ A| = 5^{2} = 25\\), which is option \\(25\\)."
   },
   {
    "hash": "cbb9fb66a8c5f17fb68685e1bbd2fc28336d7d1e9ed111c2330630d275a71486",
@@ -213,7 +213,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Two matrices are equal only when every corresponding entry agrees. Comparing the entries in the first row gives \\(2x - 1 = x + 3\\), so \\(x = 4\\); the other first-row entry \\(3x = 12\\) gives the same \\(x = 4\\), so the data are consistent. Comparing the remaining entry, \\(y^{2} - 1 = 35\\), so \\(y^{2} = 36\\) and \\(y = 6\\) or \\(y = -6\\). Hence \\(x - y = 4 - 6 = -2\\) or \\(x - y = 4 - (-6) = 10\\), which is option \\(-2\\) or \\(10\\)."
   },
   {
    "hash": "ad7a077a091c7da4436ed7d96754092c08ae92c8911c84c191b70ab3e2fbc020",
@@ -243,7 +243,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "A piecewise function is continuous on \\(R\\) exactly when the pieces agree at the two joins. At \\(x = 3\\) the left piece gives the value 1, so \\(3a + b = 1\\). At \\(x = 5\\) the right piece gives the value 7, so \\(5a + b = 7\\). Subtracting the first from the second gives \\(2a = 6\\), so \\(a = 3\\), and then \\(b = 1 - 9 = -8\\). Hence \\(a = 3,\\ b = -8\\), which is option \\(a = 3,\\ b = -8\\)."
   },
   {
    "hash": "caf3b59cff19b5fd629e13ac7e88b265158f78f3b4458e387199eab5ba2dec96",
@@ -273,7 +273,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Differentiating, \\(f'(x) = -16x^{7}\\). Since 7 is odd, \\(f'\\) is an odd function: \\(f'(-x) = -16(-x)^{7} = 16x^{7} = -f'(x)\\). Putting \\(x = \\tfrac{1}{2}\\) gives \\(f'\\left(-\\tfrac{1}{2}\\right) = -f'\\left(\\tfrac{1}{2}\\right)\\), i.e. \\(f'\\left(\\tfrac{1}{2}\\right) = -f'\\left(-\\tfrac{1}{2}\\right)\\), which is the option stating that. Concretely \\(f'\\left(\\tfrac{1}{2}\\right) = -\\tfrac{1}{8}\\) and \\(f'\\left(-\\tfrac{1}{2}\\right) = \\tfrac{1}{8}\\)."
   },
   {
    "hash": "d780c3a894880eb89c73ddd03cc1114d8a2b140a622bc108272a270b50f1374a",
@@ -303,7 +303,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "The diameter is \\(\\tfrac{5}{2}(3x + 1)\\), so the radius is half of it, \\(r = \\tfrac{5}{4}(3x + 1)\\). Then \\(V = \\tfrac{4}{3}\\pi r^{3} = \\tfrac{4}{3}\\pi \\left(\\tfrac{5}{4}\\right)^{3}(3x+1)^{3} = \\tfrac{125\\pi}{48}(3x+1)^{3}\\). Differentiating with respect to \\(x\\) and using the chain rule, \\(\\dfrac{dV}{dx} = \\tfrac{125\\pi}{48} \\times 3(3x+1)^{2} \\times 3 = \\tfrac{375\\pi}{16}(3x+1)^{2}\\). At \\(x = 1\\), \\((3x+1)^{2} = 16\\), so \\(\\dfrac{dV}{dx} = 375\\pi\\), which is option \\(375\\pi\\). The usual slip is to treat the given expression as the radius rather than the diameter."
   },
   {
    "hash": "93af4627e4e5c838f9f28653074527e9521464b5eed1991ac43455f4d2f99b09",
@@ -333,7 +333,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Differentiating, \\(f'(x) = 2 - \\cos x\\). Since \\(-1 \\le \\cos x \\le 1\\) for every real \\(x\\), we get \\(1 \\le f'(x) \\le 3\\), so \\(f'(x) > 0\\) throughout \\(R\\). A function with a strictly positive derivative on \\(R\\) is increasing everywhere, so the answer is option an increasing function. Because \\(f'\\) never vanishes, \\(f\\) has no maximum at any point, which rules out the two options naming a maximum."
   },
   {
    "hash": "5de09cc49d5fb5972795ac627971e5b42fbf69a66589dc8e2d1738ba52390498",
@@ -363,7 +363,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Use \\(e^{k \\log x} = x^{k}\\) to clear the exponentials: the integrand becomes \\(\\dfrac{x^{9} - x^{8}}{x^{6} - x^{5}}\\). Factorising, \\(\\dfrac{x^{8}(x - 1)}{x^{5}(x - 1)} = x^{3}\\) for \\(x \\ne 1\\). Hence \\(\\displaystyle\\int x^{3}\\,dx = \\dfrac{x^{4}}{4} + C\\), which is option \\(\\dfrac{x^{4}}{4} + C\\)."
   },
   {
    "hash": "bfd5d9c1cb64178cd845a1da488adbee3aaa70b6b72b7c7d7de824be1e324d55",
@@ -393,7 +393,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "The relation \\(\\displaystyle\\int_{a}^{b} f(x)\\,dx = \\int_{a}^{b} f(a + b - x)\\,dx\\) is a standard property of definite integrals, obtained by the substitution \\(t = a + b - x\\), which reverses the limits and supplies a compensating minus sign. So the true statement is that option. The others fail: for an EVEN function \\(\\displaystyle\\int_{-a}^{a} f = 2\\int_{0}^{a} f\\) and for an ODD function the integral is 0, so the two options quoting these have the parities interchanged; and the last option misstates the splitting property, which is \\(\\displaystyle\\int_{0}^{2a} f(x)\\,dx = \\int_{0}^{a} f(x)\\,dx + \\int_{0}^{a} f(2a - x)\\,dx\\)."
   },
   {
    "hash": "100b10be10999d3326aece2b978d1be66c10a478256edac1e3f5b72803cc7d07",
@@ -423,7 +423,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Put \\(t = e^{x}\\), so \\(dt = e^{x}\\,dx\\) and \\(e^{2x} = t^{2}\\). The integral becomes \\(\\displaystyle\\int \\dfrac{dt}{\\sqrt{4 - t^{2}}}\\), which is the standard form \\(\\displaystyle\\int \\dfrac{dt}{\\sqrt{a^{2} - t^{2}}} = \\sin^{-1}\\dfrac{t}{a} + C\\) with \\(a = 2\\). Hence the value is \\(\\sin^{-1}\\left(\\dfrac{e^{x}}{2}\\right) + C\\), which is that option. Differentiating it back gives \\(\\dfrac{1}{\\sqrt{1 - e^{2x}/4}} \\times \\dfrac{e^{x}}{2} = \\dfrac{e^{x}}{\\sqrt{4 - e^{2x}}}\\), confirming the choice."
   },
   {
    "hash": "ca2c4be1613957fc21e5ee26e9009454cf284b88dc2f7d73d2ebc7ed01aa0692",
@@ -453,7 +453,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Ropes tied parallel to each other means the two vectors are parallel, so their corresponding components are proportional: \\(\\dfrac{2}{3} = \\dfrac{10}{15} = \\dfrac{\\lambda}{6}\\). The first two ratios are indeed equal, both \\(\\tfrac{2}{3}\\), and solving \\(\\dfrac{\\lambda}{6} = \\dfrac{2}{3}\\) gives \\(\\lambda = 4\\), which is option \\(4\\). Equivalently the second vector is \\(\\tfrac{2}{3}\\) times the first, and \\(\\tfrac{2}{3} \\times 6 = 4\\)."
   },
   {
    "hash": "e8efff7b1ecd6884be9dc193a0cb45b6e1f9a0c59b0e315b2206bb202d6b8d62",
@@ -483,7 +483,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Square both sides, using \\(|\\vec{u}|^{2} = \\vec{u} \\cdot \\vec{u}\\). Then \\(|\\vec{a}|^{2} + 2\\vec{a} \\cdot \\vec{b} + |\\vec{b}|^{2} = |\\vec{a}|^{2} - 2\\vec{a} \\cdot \\vec{b} + |\\vec{b}|^{2}\\), which reduces to \\(4\\,\\vec{a} \\cdot \\vec{b} = 0\\), so \\(\\vec{a} \\cdot \\vec{b} = 0\\). A zero dot product means the vectors are perpendicular, so the answer is option orthogonal vectors. Geometrically the two diagonals of a parallelogram are equal precisely when it is a rectangle."
   },
   {
    "hash": "8a8da3b793ec2d1cfac925af09657b1333cedfea920065ced477fb2b19250883",
@@ -513,7 +513,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "By definition \\(P(\\overline{A} \\mid B) = \\dfrac{P(\\overline{A} \\cap B)}{P(B)}\\), and \\(B\\) splits into the part inside \\(A\\) and the part outside it, so \\(P(\\overline{A} \\cap B) = P(B) - P(A \\cap B) = \\dfrac{5}{7} - \\dfrac{4}{7} = \\dfrac{1}{7}\\). Therefore \\(P(\\overline{A} \\mid B) = \\dfrac{1/7}{5/7} = \\dfrac{1}{5}\\), which is option \\(\\dfrac{1}{5}\\). [Note: the data as printed are not consistent, since \\(P(A \\cap B) = \\tfrac{4}{7}\\) exceeds \\(P(A) = \\tfrac{1}{7}\\), and an intersection can never be more likely than either event containing it. No genuine pair of events has these three probabilities. The computation above is the one the question intends and is what the official key marks; a student who spots the clash is right to.]"
   },
   {
    "hash": "bfb113b96ba1ee5f17577340cb31ac8819cccc5d5dc9dabec4c3cdc26ee6bcf0",
@@ -543,7 +543,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "The coin and the card are drawn independently, so the probabilities multiply. \\(P(\\text{head}) = \\dfrac{1}{2}\\). A pack of 52 has 12 face cards (a jack, a queen and a king in each of the four suits), so \\(P(\\text{face card}) = \\dfrac{12}{52} = \\dfrac{3}{13}\\). Hence the required probability is \\(\\dfrac{1}{2} \\times \\dfrac{3}{13} = \\dfrac{3}{26}\\), which is option \\(\\dfrac{3}{26}\\)."
   },
   {
    "hash": "cbb5b3196ec3efb9bcd1d659664f0f8a3bb411fc8b387d1973d137c82d29f6ce",
@@ -574,7 +574,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Assertion: for \\(x \\ne 0\\), \\(\\left| x \\sin \\dfrac{1}{x} \\right| \\le |x|\\) because the sine of anything lies between \\(-1\\) and 1. Letting \\(x \\to 0\\) squeezes the function to 0, which is the value \\(f(0)\\) is defined to have, so \\(f\\) is continuous at \\(x = 0\\) and the Assertion is TRUE. Reason: it records that \\(\\sin \\dfrac{1}{x}\\) stays within \\(-1\\) and 1, i.e. it is bounded, and that boundedness is exactly what makes the product with \\(x \\to 0\\) tend to zero. So the Reason is TRUE and is the correct explanation, which is the option saying both are true with the Reason explaining the Assertion. [Note: read the Reason as a statement of BOUNDEDNESS. As \\(x \\to 0\\), \\(\\sin \\dfrac{1}{x}\\) does not settle down to any one finite value, it oscillates faster and faster between \\(-1\\) and 1; the limit \\(\\lim_{x \\to 0} \\sin \\dfrac{1}{x}\\) does not exist. It is the fact that the oscillation never escapes \\([-1,\\ 1]\\) that carries the argument.]"
   },
   {
    "hash": "6c29e289b6968724840da74b8f47c242262b2d2365b7375669c90c848ef0056b",
@@ -605,7 +605,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Assertion: \\(\\dfrac{\\sqrt{3}}{2} \\approx 0.866\\), so it lies strictly between \\(-1\\) and 1. There is no angle whose secant has modulus less than 1, since \\(|\\sec \\theta| \\ge 1\\) always. So \\(\\sec^{-1}\\left(\\dfrac{\\sqrt{3}}{2}\\right)\\) has no value at all and the set of its values is empty; the Assertion is TRUE. Reason: the domain of \\(\\sec^{-1} x\\) is indeed \\(R - (-1,\\ 1)\\), that is \\(|x| \\ge 1\\), so the Reason is TRUE. Moreover the Reason is precisely why the Assertion holds, because \\(\\dfrac{\\sqrt{3}}{2}\\) is one of the excluded numbers. Hence the answer is the option saying both are true with the Reason the correct explanation."
   },
   {
    "hash": "cd474629993859b583a6f84c07f6d83298dc97417af13877b40907cc6483ed63",
@@ -616,7 +616,7 @@
    "chapter": "Relations and Functions",
    "subtopic": "One-One and Onto Functions",
    "stem": "Let \\(f : A \\to B\\) be defined by \\(f(x) = \\dfrac{x - 2}{x - 3}\\), where \\(A = R - \\{3\\}\\) and \\(B = R - \\{1\\}\\). Discuss the bijectivity of the function.",
-   "solution": ""
+   "solution": "Bijective means one-one together with onto, so check the two separately.\n\nOne-one: let \\(x_1,\\ x_2 \\in A\\) with \\(f(x_1) = f(x_2)\\), i.e. \\(\\dfrac{x_1 - 2}{x_1 - 3} = \\dfrac{x_2 - 2}{x_2 - 3}\\). Cross-multiplying, \\((x_1 - 2)(x_2 - 3) = (x_2 - 2)(x_1 - 3)\\), which expands to \\(x_1x_2 - 3x_1 - 2x_2 + 6 = x_1x_2 - 3x_2 - 2x_1 + 6\\). Cancelling gives \\(-x_1 = -x_2\\), so \\(x_1 = x_2\\) and \\(f\\) is one-one.\n\nOnto: take any \\(y \\in B\\) and solve \\(y = \\dfrac{x - 2}{x - 3}\\) for \\(x\\). Then \\(y(x - 3) = x - 2\\), so \\(x(y - 1) = 3y - 2\\) and \\(x = \\dfrac{3y - 2}{y - 1}\\). This is defined because \\(y \\ne 1\\) in \\(B\\), and it does lie in \\(A\\), since \\(\\dfrac{3y - 2}{y - 1} = 3\\) would force \\(3y - 2 = 3y - 3\\), i.e. \\(-2 = -3\\), which is impossible. This \\(x\\) satisfies \\(f(x) = y\\), so every element of \\(B\\) is an image and \\(f\\) is onto.\n\nBeing both one-one and onto, \\(f\\) is a bijection from \\(A\\) to \\(B\\)."
   },
   {
    "hash": "5142e375deec82cab62145932d19169f03846807c172d322a08f88d4df232465",
@@ -627,7 +627,7 @@
    "chapter": "Matrices",
    "subtopic": "Multiplication of Matrices",
    "stem": "If \\(A = \\begin{bmatrix} 2 & 3 \\\\ -1 & 2 \\end{bmatrix}\\), then show that \\(A^2 - 4A + 7I = 0\\).",
-   "solution": ""
+   "solution": "First compute \\(A^{2} = A \\times A\\):\n\n\\(A^{2} = \\begin{bmatrix} 2 & 3 \\\\ -1 & 2 \\end{bmatrix}\\begin{bmatrix} 2 & 3 \\\\ -1 & 2 \\end{bmatrix} = \\begin{bmatrix} 4 - 3 & 6 + 6 \\\\ -2 - 2 & -3 + 4 \\end{bmatrix} = \\begin{bmatrix} 1 & 12 \\\\ -4 & 1 \\end{bmatrix}\\)\n\nNext \\(4A = \\begin{bmatrix} 8 & 12 \\\\ -4 & 8 \\end{bmatrix}\\) and \\(7I = \\begin{bmatrix} 7 & 0 \\\\ 0 & 7 \\end{bmatrix}\\). Substituting,\n\n\\(A^{2} - 4A + 7I = \\begin{bmatrix} 1 - 8 + 7 & 12 - 12 + 0 \\\\ -4 + 4 + 0 & 1 - 8 + 7 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix} = O\\)\n\nwhich is what was to be shown. (This is the Cayley-Hamilton relation for \\(A\\): here \\(\\mathrm{tr}\\,A = 4\\) and \\(|A| = 4 + 3 = 7\\), so \\(A\\) does satisfy \\(A^{2} - (\\mathrm{tr}\\,A)A + |A|I = O\\).)"
   },
   {
    "hash": "f7ba37af189d657cb693f6899fdabcc13a502d5237c0590a17bf7726a76684b9",
@@ -638,7 +638,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
    "stem": "Differentiate \\(\\left(\\dfrac{5^x}{x^5}\\right)\\) with respect to x.",
-   "solution": ""
+   "solution": "Write the quotient as a product so the product rule applies directly: \\(y = \\dfrac{5^{x}}{x^{5}} = 5^{x} \\times x^{-5}\\).\n\nUsing \\(\\dfrac{d}{dx}(5^{x}) = 5^{x}\\log 5\\) and \\(\\dfrac{d}{dx}(x^{-5}) = -5x^{-6}\\),\n\n\\(\\dfrac{dy}{dx} = 5^{x}\\log 5 \\times x^{-5} + 5^{x} \\times (-5x^{-6}) = \\dfrac{5^{x}}{x^{5}}\\log 5 - \\dfrac{5 \\times 5^{x}}{x^{6}}\\)\n\nSince \\(5 \\times 5^{x} = 5^{x+1}\\), this is \\(\\dfrac{dy}{dx} = \\dfrac{5^{x}}{x^{5}}\\log 5 - \\dfrac{5^{x+1}}{x^{6}}\\), or equivalently \\(\\dfrac{5^{x}}{x^{6}}\\left(x\\log 5 - 5\\right)\\). Here \\(\\log\\) is the natural logarithm."
   },
   {
    "hash": "2e4a6ed23bcc1a0c6432af3b3cdfa81e9ee28d1e55f424105679fb3b63aac702",
@@ -649,7 +649,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
    "stem": "If \\(-2x^2 - 5xy + y^3 = 76\\), then find \\(\\dfrac{dy}{dx}\\).",
-   "solution": ""
+   "solution": "Differentiate both sides of \\(-2x^{2} - 5xy + y^{3} = 76\\) with respect to \\(x\\), treating \\(y\\) as a function of \\(x\\). The middle term needs the product rule and the last needs the chain rule:\n\n\\(-4x - 5\\left(y + x\\dfrac{dy}{dx}\\right) + 3y^{2}\\dfrac{dy}{dx} = 0\\)\n\nso \\(-4x - 5y - 5x\\dfrac{dy}{dx} + 3y^{2}\\dfrac{dy}{dx} = 0\\). Collecting the derivative terms,\n\n\\(\\left(3y^{2} - 5x\\right)\\dfrac{dy}{dx} = 4x + 5y\\)\n\nHence \\(\\dfrac{dy}{dx} = \\dfrac{4x + 5y}{3y^{2} - 5x}\\), valid wherever \\(3y^{2} \\ne 5x\\)."
   },
   {
    "hash": "0602122da93278e049944c8fbd195c84792f0ca89ec80daaca397d2ae915bf80",
@@ -660,7 +660,7 @@
    "chapter": "Linear Programming",
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "In a Linear Programming Problem, the objective function \\(Z = 5x + 4y\\) needs to be maximised under constraints \\(3x + y \\le 6\\), \\(x \\le 1\\), \\(x,\\ y \\ge 0\\). Express the LPP on the graph and shade the feasible region and mark the corner points.",
-   "solution": ""
+   "solution": "Treat each constraint as a line and shade the side that satisfies the inequality.\n\nThe line \\(3x + y = 6\\) meets the axes at \\((0,\\ 6)\\) and \\((2,\\ 0)\\); since \\((0,\\ 0)\\) gives \\(0 \\le 6\\), the region \\(3x + y \\le 6\\) is the side containing the origin. The line \\(x = 1\\) is vertical, and \\(x \\le 1\\) is everything to its left. Finally \\(x \\ge 0,\\ y \\ge 0\\) restrict us to the first quadrant.\n\nThe feasible region is the overlap of these four half-planes: a bounded quadrilateral. Its boundary runs along the \\(y\\)-axis from the origin up to \\((0,\\ 6)\\), then down the line \\(3x + y = 6\\) to the point where that line meets \\(x = 1\\), then down the line \\(x = 1\\) to the \\(x\\)-axis, and back along the \\(x\\)-axis to the origin. Putting \\(x = 1\\) in \\(3x + y = 6\\) gives \\(y = 3\\), so that meeting point is \\((1,\\ 3)\\).\n\nThe corner points to mark are therefore \\(O(0,\\ 0)\\), \\(C(1,\\ 0)\\), \\(B(1,\\ 3)\\) and \\(A(0,\\ 6)\\), and the shaded feasible region is the quadrilateral \\(OCBA\\).\n\n(Beyond what is asked here: evaluating \\(Z = 5x + 4y\\) at these corners gives 0, 5, 17 and 24, so the maximum would be 24 at \\(A(0,\\ 6)\\).)"
   },
   {
    "hash": "3ae2e49b5397916e4dda0f6ae446456213b6905d282071a2fa9f0e4e8119c747",
@@ -671,7 +671,7 @@
    "chapter": "Probability",
    "subtopic": "Random Variables and Probability Distributions",
    "stem": "10 identical blocks are marked with '0' on two of them, '1' on three of them, '2' on four of them and '3' on one of them and put in a box. If X denotes the number written on the block, then write the probability distribution of X and calculate its mean.",
-   "solution": ""
+   "solution": "There are 10 blocks in all and each is equally likely to be drawn, so each probability is the count of blocks carrying that number divided by 10. The numbers 0, 1, 2 and 3 appear on 2, 3, 4 and 1 blocks respectively, giving the probability distribution\n\n| \\(X\\) | 0 | 1 | 2 | 3 |\n|---|---|---|---|---|\n| \\(P(X)\\) | \\(\\dfrac{2}{10}\\) | \\(\\dfrac{3}{10}\\) | \\(\\dfrac{4}{10}\\) | \\(\\dfrac{1}{10}\\) |\n\nThese four probabilities add to \\(\\dfrac{2 + 3 + 4 + 1}{10} = 1\\), as they must.\n\nThe mean is \\(E(X) = \\sum x_i p_i = 0 \\times \\dfrac{2}{10} + 1 \\times \\dfrac{3}{10} + 2 \\times \\dfrac{4}{10} + 3 \\times \\dfrac{1}{10} = \\dfrac{0 + 3 + 8 + 3}{10} = \\dfrac{14}{10} = \\dfrac{7}{5}\\), that is 1.4."
   },
   {
    "hash": "c2a19ea719670ffede0f442da0ac7beb7e9cb4ac362b08db7545c709211e5ee0",
@@ -682,7 +682,7 @@
    "chapter": "Probability",
    "subtopic": "Conditional Probability",
    "stem": "In a village of 8000 people, 3000 go out of the village to work and 4000 are women. It is noted that 30% of women go out of the village to work. What is the probability that a randomly chosen individual is either a woman or a person working outside the village ?",
-   "solution": ""
+   "solution": "Let \\(A\\) be the event that the person chosen is a woman and \\(B\\) the event that the person works outside the village. Out of the 8000 people, 4000 are women and 3000 work outside, so \\(P(A) = \\dfrac{4000}{8000} = \\dfrac{1}{2}\\) and \\(P(B) = \\dfrac{3000}{8000} = \\dfrac{3}{8}\\).\n\nThe people who are BOTH are the women who work outside, namely 30% of the 4000 women, which is 1200 people. So \\(P(A \\cap B) = \\dfrac{1200}{8000} = \\dfrac{3}{20}\\).\n\n\"Either a woman or a person working outside\" is the union, so by the addition theorem\n\n\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = \\dfrac{1}{2} + \\dfrac{3}{8} - \\dfrac{3}{20} = \\dfrac{20 + 15 - 6}{40} = \\dfrac{29}{40}\\)\n\nSubtracting \\(P(A \\cap B)\\) matters: without it the 1200 women working outside would be counted twice."
   },
   {
    "hash": "4c39eab2c0a2df4918dd1134917b3135792ce7e9298907c73069d26293aa82ad",
@@ -693,7 +693,7 @@
    "chapter": "Relations and Functions",
    "subtopic": "One-One and Onto Functions",
    "stem": "Show that the function \\(f : R \\to R\\) defined by \\(f(x) = 4x^3 - 5\\), \\(\\forall\\ x \\in R\\) is one-one and onto.",
-   "solution": ""
+   "solution": "One-one: suppose \\(x_1,\\ x_2 \\in R\\) with \\(f(x_1) = f(x_2)\\). Then \\(4x_1^{3} - 5 = 4x_2^{3} - 5\\), so \\(x_1^{3} = x_2^{3}\\). Since \\(t \\mapsto t^{3}\\) is strictly increasing on \\(R\\), it takes each value once, so \\(x_1 = x_2\\). Hence \\(f\\) is one-one.\n\nOnto: let \\(y\\) be any element of the codomain \\(R\\), and try to solve \\(f(x) = y\\). From \\(4x^{3} - 5 = y\\) we get \\(x^{3} = \\dfrac{y + 5}{4}\\), so \\(x = \\left(\\dfrac{y + 5}{4}\\right)^{1/3}\\). Every real number has exactly one real cube root, so this \\(x\\) exists and is real, i.e. \\(x \\in R\\), and by construction \\(f(x) = 4\\left(\\dfrac{y+5}{4}\\right) - 5 = y\\). So every \\(y\\) in the codomain is attained and \\(f\\) is onto.\n\nBeing one-one and onto, \\(f\\) is a bijection.\n\n[Note: the official scheme's printed \"onto\" step argues only that \\(x \\in R \\Rightarrow 4x^{3} - 5 \\in R\\), which shows the range lies INSIDE the codomain, something true of every function and so not by itself a proof of ontoness. Producing the pre-image \\(\\left(\\frac{y+5}{4}\\right)^{1/3}\\), as above, is what actually settles it. The scheme's conclusion is correct.]"
   },
   {
    "hash": "38813e6df7553833158ae48661fb75dc162551af0f2995c04ded9b899eee7ca0",
@@ -704,7 +704,7 @@
    "chapter": "Relations and Functions",
    "subtopic": "Equivalence Relations and Classes",
    "stem": "Let R be a relation defined on a set N of natural numbers such that \\(R = \\{(x, y) : xy \\text{ is a square of a natural number},\\ x,\\ y \\in N\\}\\). Determine if the relation R is an equivalence relation.",
-   "solution": ""
+   "solution": "Test the three properties in turn.\n\nReflexive: for any \\(x \\in N\\), \\(x \\times x = x^{2}\\), which is the square of the natural number \\(x\\). So \\((x,\\ x) \\in R\\) for every \\(x\\), and \\(R\\) is reflexive.\n\nSymmetric: let \\((x,\\ y) \\in R\\), so \\(xy\\) is the square of a natural number. Multiplication is commutative, so \\(yx = xy\\) is the same number and is therefore also a square. Hence \\((y,\\ x) \\in R\\) and \\(R\\) is symmetric.\n\nTransitive: let \\((x,\\ y) \\in R\\) and \\((y,\\ z) \\in R\\), say \\(xy = a^{2}\\) and \\(yz = b^{2}\\) with \\(a,\\ b \\in N\\). Multiplying, \\((xy)(yz) = a^{2}b^{2}\\), i.e. \\(xz\\,y^{2} = (ab)^{2}\\), so \\(xz = \\left(\\dfrac{ab}{y}\\right)^{2}\\). Now \\(\\dfrac{ab}{y}\\) is a positive rational number whose square, \\(xz\\), is a positive integer; a rational whose square is an integer must itself be an integer. So \\(\\dfrac{ab}{y} \\in N\\) and \\(xz\\) is the square of a natural number, giving \\((x,\\ z) \\in R\\). Hence \\(R\\) is transitive.\n\nSince \\(R\\) is reflexive, symmetric and transitive, \\(R\\) IS an equivalence relation.\n\n(An alternative route to transitivity: for each prime \\(p\\), \"\\(xy\\) is a square\" says the exponents of \\(p\\) in \\(x\\) and \\(y\\) have the same parity. If \\(x,\\ y\\) match in parity and \\(y,\\ z\\) match in parity, then \\(x,\\ z\\) match too, so \\(xz\\) is a square.)"
   },
   {
    "hash": "b0987fbdaaddda131d55a72d55296af9964069ddd8d1eda0cf372d2e41f12e32",
@@ -715,7 +715,7 @@
    "chapter": "Determinants",
    "subtopic": "Solving System of Linear Equations",
    "stem": "Let \\(2x + 5y - 1 = 0\\) and \\(3x + 2y - 7 = 0\\) represent the equations of two lines on which the ants are moving on the ground. Using matrix method, find a point common to the paths of the ants.",
-   "solution": ""
+   "solution": "A point common to the two paths is a point lying on both lines, so solve the system \\(2x + 5y = 1\\), \\(3x + 2y = 7\\) by the matrix method. Write it as \\(AX = B\\) with\n\n\\(A = \\begin{bmatrix} 2 & 5 \\\\ 3 & 2 \\end{bmatrix},\\quad X = \\begin{bmatrix} x \\\\ y \\end{bmatrix},\\quad B = \\begin{bmatrix} 1 \\\\ 7 \\end{bmatrix}\\)\n\nHere \\(|A| = 2 \\times 2 - 5 \\times 3 = 4 - 15 = -11 \\ne 0\\), so \\(A^{-1}\\) exists and the solution is unique. For a \\(2 \\times 2\\) matrix the adjoint swaps the leading diagonal and negates the other, so \\(\\mathrm{adj}\\ A = \\begin{bmatrix} 2 & -5 \\\\ -3 & 2 \\end{bmatrix}\\) and \\(A^{-1} = \\dfrac{-1}{11}\\begin{bmatrix} 2 & -5 \\\\ -3 & 2 \\end{bmatrix}\\).\n\nThen \\(X = A^{-1}B = \\dfrac{-1}{11}\\begin{bmatrix} 2 & -5 \\\\ -3 & 2 \\end{bmatrix}\\begin{bmatrix} 1 \\\\ 7 \\end{bmatrix} = \\dfrac{-1}{11}\\begin{bmatrix} 2 - 35 \\\\ -3 + 14 \\end{bmatrix} = \\dfrac{-1}{11}\\begin{bmatrix} -33 \\\\ 11 \\end{bmatrix} = \\begin{bmatrix} 3 \\\\ -1 \\end{bmatrix}\\)\n\nSo \\(x = 3,\\ y = -1\\) and the point common to the paths of the ants is \\((3,\\ -1)\\). Checking: \\(2(3) + 5(-1) = 1\\) and \\(3(3) + 2(-1) = 7\\), both as required."
   },
   {
    "hash": "57dab01463bb39b26f633978ccac75b1ab9150114791e95c7a51ace092307707",
@@ -726,7 +726,7 @@
    "chapter": "Matrices",
    "subtopic": "Multiplication of Matrices",
    "stem": "A shopkeeper sells 50 Chemistry, 60 Physics and 35 Maths books on day I and sells 40 Chemistry, 45 Physics and 50 Maths books on day II. If the selling price for each such subject book is ₹ 150 (Chemistry), ₹ 175 (Physics) and ₹ 180 (Maths), then find his total sale in two days, using matrix method. If cost price of all the books together is ₹ 35,000, what profit did he earn after the sale of two days ?",
-   "solution": ""
+   "solution": "Put the day-wise sales in a matrix and the prices in a column, so that the matrix product forms exactly the required sums of (number sold) times (price).\n\n\\(A = \\begin{bmatrix} 50 & 60 & 35 \\\\ 40 & 45 & 50 \\end{bmatrix}\\) (row 1 is Day I, row 2 is Day II, columns are Chemistry, Physics, Maths), and \\(B = \\begin{bmatrix} 150 \\\\ 175 \\\\ 180 \\end{bmatrix}\\).\n\nThen\n\n\\(AB = \\begin{bmatrix} 50(150) + 60(175) + 35(180) \\\\ 40(150) + 45(175) + 50(180) \\end{bmatrix} = \\begin{bmatrix} 7500 + 10500 + 6300 \\\\ 6000 + 7875 + 9000 \\end{bmatrix} = \\begin{bmatrix} 24300 \\\\ 22875 \\end{bmatrix}\\)\n\nSo the sale is Rs 24,300 on Day I and Rs 22,875 on Day II, and the total sale over the two days is \\(24300 + 22875 = \\) Rs 47,175.\n\nThe cost price of all the books together is Rs 35,000, so the profit is \\(47175 - 35000 = \\) Rs 12,175."
   },
   {
    "hash": "9704d225e847fc4b64921634ac82c50a2231d28edc145511fe0ebcf90c941faf",
@@ -737,7 +737,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Differentiability and the Chain Rule",
    "stem": "Differentiate \\(y = \\sqrt{\\log\\left\\{\\sin\\left(\\dfrac{x^3}{3} - 1\\right)\\right\\}}\\) with respect to x.",
-   "solution": ""
+   "solution": "This is a chain of four functions, so differentiate from the outside inwards. Write \\(u = \\dfrac{x^{3}}{3} - 1\\), so \\(y = \\sqrt{\\log(\\sin u)}\\).\n\nThe outer square root contributes \\(\\dfrac{1}{2\\sqrt{\\log(\\sin u)}}\\); the logarithm contributes \\(\\dfrac{1}{\\sin u}\\); the sine contributes \\(\\cos u\\); and finally \\(\\dfrac{du}{dx} = \\dfrac{3x^{2}}{3} = x^{2}\\). Multiplying these together,\n\n\\(\\dfrac{dy}{dx} = \\dfrac{1}{2\\sqrt{\\log(\\sin u)}} \\times \\dfrac{1}{\\sin u} \\times \\cos u \\times x^{2}\\)\n\nSince \\(\\dfrac{\\cos u}{\\sin u} = \\cot u\\), this simplifies to\n\n\\(\\dfrac{dy}{dx} = \\dfrac{x^{2}\\cot\\left(\\dfrac{x^{3}}{3} - 1\\right)}{2\\sqrt{\\log\\left\\{\\sin\\left(\\dfrac{x^{3}}{3} - 1\\right)\\right\\}}}\\)\n\n[Note on the question as printed: over the real numbers this \\(y\\) is not actually defined on any interval. Since \\(\\sin u \\le 1\\), we always have \\(\\log(\\sin u) \\le 0\\), with equality only where \\(\\sin u = 1\\); so the quantity under the square root is never positive and the square root is real only at isolated points, where it equals 0. The question is therefore a formal exercise in applying the chain rule rather than a genuine derivative on a domain, and the expression above is the answer the marking scheme awards. The same treatment is standard for this family of textbook questions.]"
   },
   {
    "hash": "cb1e636273e72563330f7f659bfae70df1a5c8bbbd896da0d9fbbf24236c1098",
@@ -748,7 +748,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Maxima and Minima",
    "stem": "Amongst all pairs of positive integers with product as 289, find which of the two numbers add up to the least.",
-   "solution": ""
+   "solution": "Let the two positive numbers be \\(x\\) and \\(y\\) with \\(xy = 289\\), so \\(y = \\dfrac{289}{x}\\), and let \\(S\\) be their sum:\n\n\\(S = x + y = x + \\dfrac{289}{x}\\)\n\nDifferentiating, \\(\\dfrac{dS}{dx} = 1 - \\dfrac{289}{x^{2}}\\). Setting \\(\\dfrac{dS}{dx} = 0\\) gives \\(x^{2} = 289\\), so \\(x = 17\\) (rejecting \\(x = -17\\), as the numbers are positive).\n\nFor the second derivative test, \\(\\dfrac{d^{2}S}{dx^{2}} = \\dfrac{578}{x^{3}}\\), and at \\(x = 17\\) this is \\(\\dfrac{578}{4913} > 0\\), so \\(S\\) is minimum there.\n\nHence \\(x = 17\\) and \\(y = \\dfrac{289}{17} = 17\\), and the least sum is \\(17 + 17 = 34\\). So the pair that adds up to the least is 17 and 17.\n\n(A check using the integer condition: \\(289 = 17^{2}\\), whose only factorisations into two positive integers are \\(1 \\times 289\\) and \\(17 \\times 17\\), with sums 290 and 34. The calculus and the direct count agree.)"
   },
   {
    "hash": "6f29c5d0b8078c6cf465c618fc11bad90debb97baf920be8e84757142c3a7ce9",
@@ -759,7 +759,7 @@
    "chapter": "Linear Programming",
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "In the Linear Programming Problem for objective function \\(Z = 18x + 10y\\) subject to constraints\n\n\\(4x + y \\ge 20\\)\n\n\\(2x + 3y \\ge 30\\)\n\n\\(x,\\ y \\ge 0\\)\n\nfind the minimum value of Z.",
-   "solution": ""
+   "solution": "Draw the two boundary lines. \\(4x + y = 20\\) meets the axes at \\((5,\\ 0)\\) and \\((0,\\ 20)\\); \\(2x + 3y = 30\\) meets them at \\((15,\\ 0)\\) and \\((0,\\ 10)\\). Since the origin fails both inequalities, the feasible region lies AWAY from the origin, and together with \\(x,\\ y \\ge 0\\) it is an unbounded region in the first quadrant.\n\nIts corner points are found as follows. On the \\(y\\)-axis the binding constraint is \\(4x + y \\ge 20\\), giving \\((0,\\ 20)\\); note \\((0,\\ 10)\\) is NOT a corner, since it fails \\(4x + y \\ge 20\\). On the \\(x\\)-axis the binding constraint is \\(2x + 3y \\ge 30\\), giving \\((15,\\ 0)\\); note \\((5,\\ 0)\\) fails \\(2x + 3y \\ge 30\\). The two lines cross where \\(y = 20 - 4x\\) and \\(2x + 3(20 - 4x) = 30\\), i.e. \\(-10x = -30\\), so \\(x = 3\\) and \\(y = 8\\).\n\nEvaluating \\(Z = 18x + 10y\\) at the corners:\n\n| Corner point | \\(Z = 18x + 10y\\) |\n|---|---|\n| \\((0,\\ 20)\\) | \\(200\\) |\n| \\((3,\\ 8)\\) | \\(134\\) |\n| \\((15,\\ 0)\\) | \\(270\\) |\n\nThe smallest of these is 134. Because the region is unbounded, this must be confirmed: the open half-plane \\(18x + 10y < 134\\) has no point in common with the feasible region, so no smaller value is attainable.\n\nHence the minimum value of \\(Z\\) is \\(134\\), at \\((3,\\ 8)\\)."
   },
   {
    "hash": "d74d8109e9687cb0d1ca88c45923ce2f7d75f2e41ca03678a169cc108abf1ef7",
@@ -770,7 +770,7 @@
    "chapter": "Vector Algebra",
    "subtopic": "Scalar (Dot) Product and Projection",
    "stem": "The scalar product of the vector \\(\\vec{a} = \\hat{i} - \\hat{j} + 2\\hat{k}\\) with a unit vector along sum of vectors \\(\\vec{b} = 2\\hat{i} - 4\\hat{j} + 5\\hat{k}\\) and \\(\\vec{c} = \\lambda\\hat{i} - 2\\hat{j} - 3\\hat{k}\\) is equal to 1. Find the value of \\(\\lambda\\).",
-   "solution": ""
+   "solution": "First add the two vectors: \\(\\vec{d} = \\vec{b} + \\vec{c} = (2 + \\lambda)\\hat{i} + (-4 - 2)\\hat{j} + (5 - 3)\\hat{k} = (2 + \\lambda)\\hat{i} - 6\\hat{j} + 2\\hat{k}\\).\n\nIts magnitude is \\(|\\vec{d}| = \\sqrt{(2 + \\lambda)^{2} + 36 + 4} = \\sqrt{(2 + \\lambda)^{2} + 40}\\), so the unit vector along \\(\\vec{d}\\) is \\(\\hat{d} = \\dfrac{(2 + \\lambda)\\hat{i} - 6\\hat{j} + 2\\hat{k}}{\\sqrt{(2 + \\lambda)^{2} + 40}}\\).\n\nThe condition \\(\\vec{a} \\cdot \\hat{d} = 1\\) with \\(\\vec{a} = \\hat{i} - \\hat{j} + 2\\hat{k}\\) gives\n\n\\(\\dfrac{(1)(2 + \\lambda) + (-1)(-6) + (2)(2)}{\\sqrt{(2 + \\lambda)^{2} + 40}} = 1\\), i.e. \\((2 + \\lambda) + 6 + 4 = \\sqrt{(2 + \\lambda)^{2} + 40}\\)\n\nWriting \\(t = 2 + \\lambda\\), this is \\(t + 10 = \\sqrt{t^{2} + 40}\\). Squaring, \\(t^{2} + 20t + 100 = t^{2} + 40\\), so \\(20t = -60\\) and \\(t = -3\\), giving \\(\\lambda = -5\\).\n\nSquaring can introduce a false root, so check: with \\(t = -3\\) the left side is \\(-3 + 10 = 7\\), which is positive, and the right side is \\(\\sqrt{9 + 40} = \\sqrt{49} = 7\\). The two agree, so \\(\\lambda = -5\\) is genuine."
   },
   {
    "hash": "05d2d8895c1c7a918efab8c2f02af1410d06f9edad8c7d1f4a017178e8faaaf5",
@@ -781,7 +781,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Shortest Distance Between Two Lines",
    "stem": "Find the shortest distance between the lines :\n\n\\(\\vec{r} = (2\\hat{i} - \\hat{j} + 3\\hat{k}) + \\lambda(\\hat{i} - 2\\hat{j} + 3\\hat{k})\\)\n\n\\(\\vec{r} = (\\hat{i} + 4\\hat{k}) + \\mu(3\\hat{i} - 6\\hat{j} + 9\\hat{k})\\).",
-   "solution": ""
+   "solution": "Compare the direction vectors first. The second line's direction is \\(3\\hat{i} - 6\\hat{j} + 9\\hat{k} = 3(\\hat{i} - 2\\hat{j} + 3\\hat{k})\\), which is a scalar multiple of the first line's direction \\(\\hat{i} - 2\\hat{j} + 3\\hat{k}\\). So the lines are PARALLEL, not skew, and the skew-line formula cannot be used: its numerator \\(\\vec{b_1} \\times \\vec{b_2}\\) would be the zero vector.\n\nFor two parallel lines \\(\\vec{r} = \\vec{a_1} + \\lambda\\vec{b}\\) and \\(\\vec{r} = \\vec{a_2} + \\mu\\vec{b}\\), the shortest distance is \\(\\dfrac{\\left|\\vec{b} \\times (\\vec{a_2} - \\vec{a_1})\\right|}{|\\vec{b}|}\\).\n\nHere \\(\\vec{a_1} = 2\\hat{i} - \\hat{j} + 3\\hat{k}\\), \\(\\vec{a_2} = \\hat{i} + 4\\hat{k}\\) and \\(\\vec{b} = \\hat{i} - 2\\hat{j} + 3\\hat{k}\\), so \\(\\vec{a_2} - \\vec{a_1} = -\\hat{i} + \\hat{j} + \\hat{k}\\). Then\n\n\\(\\vec{b} \\times (\\vec{a_2} - \\vec{a_1}) = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & -2 & 3 \\\\ -1 & 1 & 1 \\end{vmatrix} = (-2 - 3)\\hat{i} - (1 + 3)\\hat{j} + (1 - 2)\\hat{k} = -5\\hat{i} - 4\\hat{j} - \\hat{k}\\)\n\nHence \\(\\left|\\vec{b} \\times (\\vec{a_2} - \\vec{a_1})\\right| = \\sqrt{25 + 16 + 1} = \\sqrt{42}\\) and \\(|\\vec{b}| = \\sqrt{1 + 4 + 9} = \\sqrt{14}\\).\n\nShortest distance \\(= \\dfrac{\\sqrt{42}}{\\sqrt{14}} = \\sqrt{\\dfrac{42}{14}} = \\sqrt{3}\\) units."
   },
   {
    "hash": "d9bc9435a2dd4620be26a7b964bed7e3c0506f14875dfa07d699340a4a67d038",
@@ -792,7 +792,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration by Partial Fractions",
    "stem": "Find :\n\n\\(\\displaystyle\\int \\dfrac{x^2 + 1}{(x^2 + 2)(2x^2 + 1)}\\, dx\\)",
-   "solution": ""
+   "solution": "Every power of \\(x\\) here is even, so treat \\(x^{2}\\) as the variable when splitting into partial fractions. Put \\(u = x^{2}\\) and write\n\n\\(\\dfrac{u + 1}{(u + 2)(2u + 1)} = \\dfrac{A}{u + 2} + \\dfrac{B}{2u + 1}\\)\n\nMultiplying up, \\(u + 1 = A(2u + 1) + B(u + 2)\\). Putting \\(u = -2\\) gives \\(-1 = -3A\\), so \\(A = \\dfrac{1}{3}\\); putting \\(u = -\\dfrac{1}{2}\\) gives \\(\\dfrac{1}{2} = \\dfrac{3}{2}B\\), so \\(B = \\dfrac{1}{3}\\). Restoring \\(u = x^{2}\\),\n\n\\(\\displaystyle\\int \\dfrac{x^{2} + 1}{(x^{2} + 2)(2x^{2} + 1)}\\,dx = \\dfrac{1}{3}\\int \\dfrac{dx}{x^{2} + 2} + \\dfrac{1}{3}\\int \\dfrac{dx}{2x^{2} + 1}\\)\n\nFor the first, \\(\\displaystyle\\int \\dfrac{dx}{x^{2} + a^{2}} = \\dfrac{1}{a}\\tan^{-1}\\dfrac{x}{a}\\) with \\(a = \\sqrt{2}\\), giving \\(\\dfrac{1}{\\sqrt{2}}\\tan^{-1}\\dfrac{x}{\\sqrt{2}}\\).\n\nFor the second, take out the 2: \\(\\displaystyle\\int \\dfrac{dx}{2x^{2} + 1} = \\dfrac{1}{2}\\int \\dfrac{dx}{x^{2} + \\tfrac{1}{2}}\\), which with \\(a = \\dfrac{1}{\\sqrt{2}}\\) gives \\(\\dfrac{1}{2} \\times \\sqrt{2}\\,\\tan^{-1}(\\sqrt{2}x) = \\dfrac{1}{\\sqrt{2}}\\tan^{-1}(\\sqrt{2}x)\\).\n\nTherefore\n\n\\(\\displaystyle\\int \\dfrac{x^{2} + 1}{(x^{2} + 2)(2x^{2} + 1)}\\,dx = \\dfrac{1}{3\\sqrt{2}}\\left[\\tan^{-1}\\dfrac{x}{\\sqrt{2}} + \\tan^{-1}(\\sqrt{2}x)\\right] + C\\)\n\n(Differentiating this back reproduces the integrand, which is the quickest check.)"
   },
   {
    "hash": "236dbf48da86d81c14f45c725e5dcccfe878cb5412cbd9816c28ba43d711c6a3",
@@ -803,7 +803,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "Evaluate :\n\n\\(\\displaystyle\\int_{0}^{\\pi} \\dfrac{x \\tan x}{\\sec x + \\tan x}\\, dx\\)",
-   "solution": ""
+   "solution": "Use the property \\(\\displaystyle\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a - x)\\,dx\\) with \\(a = \\pi\\).\n\nLet \\(I = \\displaystyle\\int_{0}^{\\pi} \\dfrac{x\\tan x}{\\sec x + \\tan x}\\,dx\\).  ... (i)\n\nReplacing \\(x\\) by \\(\\pi - x\\) and using \\(\\tan(\\pi - x) = -\\tan x\\), \\(\\sec(\\pi - x) = -\\sec x\\), the two minus signs cancel in the quotient:\n\n\\(\\dfrac{-\\tan x}{-\\sec x - \\tan x} = \\dfrac{\\tan x}{\\sec x + \\tan x}\\)\n\nso \\(I = \\displaystyle\\int_{0}^{\\pi} \\dfrac{(\\pi - x)\\tan x}{\\sec x + \\tan x}\\,dx\\).  ... (ii)\n\nAdding (i) and (ii), the \\(x\\) cancels and\n\n\\(2I = \\pi\\displaystyle\\int_{0}^{\\pi} \\dfrac{\\tan x}{\\sec x + \\tan x}\\,dx\\)\n\nRationalise by multiplying numerator and denominator by \\((\\sec x - \\tan x)\\), using \\(\\sec^{2}x - \\tan^{2}x = 1\\):\n\n\\(2I = \\pi\\displaystyle\\int_{0}^{\\pi} \\tan x(\\sec x - \\tan x)\\,dx = \\pi\\int_{0}^{\\pi} \\left(\\sec x\\tan x - \\tan^{2}x\\right)dx\\)\n\nand since \\(\\tan^{2}x = \\sec^{2}x - 1\\),\n\n\\(2I = \\pi\\displaystyle\\int_{0}^{\\pi} \\left(\\sec x\\tan x - \\sec^{2}x + 1\\right)dx = \\pi\\left[\\sec x - \\tan x + x\\right]_{0}^{\\pi}\\)\n\nAt \\(x = \\pi\\) this is \\(-1 - 0 + \\pi\\), and at \\(x = 0\\) it is \\(1 - 0 + 0 = 1\\). Subtracting,\n\n\\(2I = \\pi\\left[(\\pi - 1) - 1\\right] = \\pi(\\pi - 2)\\)\n\nHence \\(I = \\dfrac{\\pi}{2}(\\pi - 2)\\), which may also be written \\(\\pi\\left(\\dfrac{\\pi}{2} - 1\\right)\\), approximately 1.793.\n\n(A student may worry that \\(\\sec x\\) and \\(\\tan x\\) blow up at \\(x = \\dfrac{\\pi}{2}\\), which lies inside the interval. Nothing actually goes wrong: multiplying numerator and denominator by \\(\\cos x\\) turns the integrand into \\(\\dfrac{x\\sin x}{1 + \\sin x}\\), which is perfectly well behaved on \\([0,\\ \\pi]\\), and the antiderivative likewise satisfies \\(\\sec x - \\tan x = \\dfrac{1 - \\sin x}{\\cos x} = \\dfrac{\\cos x}{1 + \\sin x}\\), which is continuous there and takes the value 0 at \\(x = \\dfrac{\\pi}{2}\\). So the evaluation above is legitimate.)"
   },
   {
    "hash": "962293940f1b77ab22839bb6dfd1da5cb11425304349b7d8646790daf86945e1",
@@ -814,7 +814,7 @@
    "chapter": "Application of Integrals",
    "subtopic": "Area Bounded by a Curve and a Line",
    "stem": "A woman discovered a scratch along a straight line on a circular table top of radius 8 cm. She divided the table top into 4 equal quadrants and discovered the scratch passing through the origin inclined at an angle \\(\\dfrac{\\pi}{4}\\) anticlockwise along the positive direction of x-axis. Find the area of the region enclosed by the x-axis, the scratch and the circular table top in the first quadrant, using integration.",
-   "solution": ""
+   "solution": "Set the centre of the table top at the origin, so the rim is the circle \\(x^{2} + y^{2} = 64\\) of radius 8. The scratch passes through the origin at \\(\\dfrac{\\pi}{4}\\) to the positive \\(x\\)-axis, so its equation is \\(y = x\\) (its slope is \\(\\tan\\dfrac{\\pi}{4} = 1\\)).\n\nThe scratch meets the rim where \\(x^{2} + x^{2} = 64\\), i.e. \\(2x^{2} = 64\\), so \\(x^{2} = 32\\) and, in the first quadrant, \\(x = 4\\sqrt{2}\\). The point of intersection is \\(A(4\\sqrt{2},\\ 4\\sqrt{2})\\).\n\nThe required region is bounded below by the \\(x\\)-axis, above-left by the scratch \\(y = x\\), and on the right by the arc of the circle. Sweeping in \\(x\\), it is bounded above by the LINE from \\(x = 0\\) to \\(x = 4\\sqrt{2}\\), and by the CIRCLE from \\(x = 4\\sqrt{2}\\) to \\(x = 8\\). Hence\n\n\\(\\text{Area} = \\displaystyle\\int_{0}^{4\\sqrt{2}} x\\,dx + \\int_{4\\sqrt{2}}^{8} \\sqrt{64 - x^{2}}\\,dx\\)\n\nThe first integral is \\(\\left[\\dfrac{x^{2}}{2}\\right]_{0}^{4\\sqrt{2}} = \\dfrac{32}{2} = 16\\).\n\nFor the second, use \\(\\displaystyle\\int \\sqrt{a^{2} - x^{2}}\\,dx = \\dfrac{x}{2}\\sqrt{a^{2} - x^{2}} + \\dfrac{a^{2}}{2}\\sin^{-1}\\dfrac{x}{a}\\) with \\(a = 8\\):\n\n\\(\\left[\\dfrac{x}{2}\\sqrt{64 - x^{2}} + 32\\sin^{-1}\\dfrac{x}{8}\\right]_{4\\sqrt{2}}^{8}\\)\n\nAt \\(x = 8\\): \\(\\dfrac{8}{2}(0) + 32\\sin^{-1}(1) = 32 \\times \\dfrac{\\pi}{2} = 16\\pi\\).\n\nAt \\(x = 4\\sqrt{2}\\): \\(\\dfrac{4\\sqrt{2}}{2}\\sqrt{64 - 32} + 32\\sin^{-1}\\dfrac{1}{\\sqrt{2}} = 2\\sqrt{2} \\times 4\\sqrt{2} + 32 \\times \\dfrac{\\pi}{4} = 16 + 8\\pi\\).\n\nSo the second integral is \\(16\\pi - (16 + 8\\pi) = 8\\pi - 16\\).\n\nAdding, \\(\\text{Area} = 16 + 8\\pi - 16 = 8\\pi\\ \\text{cm}^{2}\\), about 25.13 square centimetres.\n\n(Cross-check without integration: the region is exactly a sector of the circle of angle \\(\\dfrac{\\pi}{4}\\), whose area is \\(\\dfrac{1}{2}r^{2}\\theta = \\dfrac{1}{2}(64)\\left(\\dfrac{\\pi}{4}\\right) = 8\\pi\\). The two agree.)"
   },
   {
    "hash": "ca5ec88051a99dd1965f47911fcd6f33ccf3cae5ece098abfffd2a2c788b7254",
@@ -825,7 +825,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Linear Differential Equations",
    "stem": "Solve the differential equation \\(\\dfrac{dy}{dx} = \\cos x - 2y\\).",
-   "solution": ""
+   "solution": "Rearrange into the standard linear form: \\(\\dfrac{dy}{dx} + 2y = \\cos x\\), so \\(P = 2\\) and \\(Q = \\cos x\\), both functions of \\(x\\) alone.\n\nThe integrating factor is \\(\\mathrm{I.F.} = e^{\\int P\\,dx} = e^{\\int 2\\,dx} = e^{2x}\\), and the solution is given by \\(y \\times \\mathrm{I.F.} = \\displaystyle\\int Q \\times \\mathrm{I.F.}\\,dx\\), that is\n\n\\(y\\,e^{2x} = \\displaystyle\\int e^{2x}\\cos x\\,dx\\)\n\nCall this integral \\(I_1\\) and integrate by parts twice, taking \\(e^{2x}\\) as the second function each time:\n\n\\(I_1 = \\cos x \\times \\dfrac{e^{2x}}{2} - \\displaystyle\\int (-\\sin x)\\dfrac{e^{2x}}{2}\\,dx = \\dfrac{e^{2x}\\cos x}{2} + \\dfrac{1}{2}\\int e^{2x}\\sin x\\,dx\\)\n\nApplying parts again to the remaining integral, \\(\\displaystyle\\int e^{2x}\\sin x\\,dx = \\sin x \\times \\dfrac{e^{2x}}{2} - \\int \\cos x \\times \\dfrac{e^{2x}}{2}\\,dx\\), so\n\n\\(I_1 = \\dfrac{e^{2x}\\cos x}{2} + \\dfrac{e^{2x}\\sin x}{4} - \\dfrac{1}{4}I_1\\)\n\nThe original integral has reappeared, so collect it: \\(\\dfrac{5}{4}I_1 = \\dfrac{e^{2x}}{4}\\left(2\\cos x + \\sin x\\right)\\), giving\n\n\\(I_1 = \\dfrac{e^{2x}}{5}\\left(2\\cos x + \\sin x\\right)\\)\n\nTherefore \\(y\\,e^{2x} = \\dfrac{e^{2x}}{5}(2\\cos x + \\sin x) + C\\), and dividing through by \\(e^{2x}\\),\n\n\\(y = \\dfrac{1}{5}\\left(2\\cos x + \\sin x\\right) + Ce^{-2x}\\)\n\n(Check: differentiating gives \\(\\dfrac{dy}{dx} = \\dfrac{1}{5}(-2\\sin x + \\cos x) - 2Ce^{-2x}\\), and \\(\\cos x - 2y = \\cos x - \\dfrac{2}{5}(2\\cos x + \\sin x) - 2Ce^{-2x} = \\dfrac{1}{5}\\cos x - \\dfrac{2}{5}\\sin x - 2Ce^{-2x}\\). The two agree.)"
   },
   {
    "hash": "b679c30802fb37ec3e0b73892f02268f7a7c2223c8de393a1a5e1f50d106c152",
@@ -836,7 +836,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Equation of a Line in Space",
    "stem": "Find the point Q on the line \\(\\dfrac{2x + 4}{6} = \\dfrac{y + 1}{2} = \\dfrac{-2z + 6}{-4}\\) at a distance of \\(3\\sqrt{2}\\) from the point \\(P(1, 2, 3)\\).",
-   "solution": ""
+   "solution": "First put the line in standard symmetric form, so that the denominators are genuine direction ratios. Taking the coefficient of the variable out of each numerator:\n\n\\(\\dfrac{2x + 4}{6} = \\dfrac{2(x + 2)}{6} = \\dfrac{x + 2}{3}\\), and \\(\\dfrac{-2z + 6}{-4} = \\dfrac{-2(z - 3)}{-4} = \\dfrac{z - 3}{2}\\)\n\nso the line is \\(\\dfrac{x + 2}{3} = \\dfrac{y + 1}{2} = \\dfrac{z - 3}{2}\\), with direction ratios \\(3,\\ 2,\\ 2\\).\n\nSetting each ratio equal to \\(\\lambda\\), a general point on the line is \\(Q(3\\lambda - 2,\\ 2\\lambda - 1,\\ 2\\lambda + 3)\\).\n\nWith \\(P(1,\\ 2,\\ 3)\\) and \\(PQ = 3\\sqrt{2}\\), square both sides to avoid the radical:\n\n\\((3\\lambda - 3)^{2} + (2\\lambda - 3)^{2} + (2\\lambda)^{2} = 18\\)\n\nExpanding, \\(9\\lambda^{2} - 18\\lambda + 9 + 4\\lambda^{2} - 12\\lambda + 9 + 4\\lambda^{2} = 18\\), i.e. \\(17\\lambda^{2} - 30\\lambda + 18 = 18\\), so\n\n\\(17\\lambda^{2} - 30\\lambda = 0 \\Rightarrow \\lambda(17\\lambda - 30) = 0 \\Rightarrow \\lambda = 0\\ \\text{or}\\ \\lambda = \\dfrac{30}{17}\\)\n\nBoth roots are admissible here, since squaring a distance introduces no sign restriction, so there are two such points.\n\nFor \\(\\lambda = 0\\): \\(Q(-2,\\ -1,\\ 3)\\).\n\nFor \\(\\lambda = \\dfrac{30}{17}\\): \\(Q\\left(\\dfrac{90}{17} - 2,\\ \\dfrac{60}{17} - 1,\\ \\dfrac{60}{17} + 3\\right) = Q\\left(\\dfrac{56}{17},\\ \\dfrac{43}{17},\\ \\dfrac{111}{17}\\right)\\).\n\nSo the required point is \\(Q(-2,\\ -1,\\ 3)\\) or \\(Q\\left(\\dfrac{56}{17},\\ \\dfrac{43}{17},\\ \\dfrac{111}{17}\\right)\\); both are genuinely at distance \\(3\\sqrt{2}\\) from \\(P\\)."
   },
   {
    "hash": "809af68e45abec5a1ac305e502bb67531c8f815a46cbf32b195022af1ecf7274",
@@ -847,7 +847,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Equation of a Line in Space",
    "stem": "Find the image of the point \\((-1, 5, 2)\\) in the line \\(\\dfrac{2x - 4}{2} = \\dfrac{y}{2} = \\dfrac{2 - z}{3}\\). Find the length of the line segment joining the points (given point and the image point).",
-   "solution": ""
+   "solution": "First rewrite the line in standard form by taking out the coefficient of each variable:\n\n\\(\\dfrac{2x - 4}{2} = \\dfrac{2(x - 2)}{2} = \\dfrac{x - 2}{1}\\), and \\(\\dfrac{2 - z}{3} = \\dfrac{-(z - 2)}{3} = \\dfrac{z - 2}{-3}\\)\n\nso the line is \\(\\dfrac{x - 2}{1} = \\dfrac{y}{2} = \\dfrac{z - 2}{-3}\\), with direction ratios \\(1,\\ 2,\\ -3\\).\n\nLet \\(A(-1,\\ 5,\\ 2)\\) be the given point, \\(A'(a,\\ b,\\ c)\\) its image, and \\(M\\) the foot of the perpendicular from \\(A\\) to the line. By the definition of an image in a line, \\(M\\) is the MID-POINT of \\(AA'\\).\n\nA general point of the line is \\(M(\\lambda + 2,\\ 2\\lambda,\\ -3\\lambda + 2)\\), so the direction ratios of \\(AM\\) are\n\n\\((\\lambda + 2) - (-1),\\ 2\\lambda - 5,\\ (-3\\lambda + 2) - 2\\), that is \\(\\lambda + 3,\\ 2\\lambda - 5,\\ -3\\lambda\\)\n\nSince \\(AM\\) is perpendicular to the line, the dot product of these with \\(1,\\ 2,\\ -3\\) vanishes:\n\n\\(1(\\lambda + 3) + 2(2\\lambda - 5) - 3(-3\\lambda) = 0 \\Rightarrow \\lambda + 3 + 4\\lambda - 10 + 9\\lambda = 0 \\Rightarrow 14\\lambda = 7 \\Rightarrow \\lambda = \\dfrac{1}{2}\\)\n\nHence \\(M\\left(\\dfrac{5}{2},\\ 1,\\ \\dfrac{1}{2}\\right)\\).\n\nNow use the mid-point condition, \\(M = \\left(\\dfrac{a - 1}{2},\\ \\dfrac{b + 5}{2},\\ \\dfrac{c + 2}{2}\\right)\\):\n\n\\(\\dfrac{a - 1}{2} = \\dfrac{5}{2} \\Rightarrow a = 6\\); \\(\\dfrac{b + 5}{2} = 1 \\Rightarrow b = -3\\); \\(\\dfrac{c + 2}{2} = \\dfrac{1}{2} \\Rightarrow c = -1\\).\n\nSo the image is \\(A'(6,\\ -3,\\ -1)\\).\n\nFinally the length of the segment joining the given point to its image is\n\n\\(AA' = \\sqrt{(6 + 1)^{2} + (-3 - 5)^{2} + (-1 - 2)^{2}} = \\sqrt{49 + 64 + 9} = \\sqrt{122}\\) units, about 11.05."
   },
   {
    "hash": "e99ec6f45260f2fa1bd0c03e785359ea91eba1949cf04e0df0f88a36e4a2619f",
@@ -860,7 +860,7 @@
    "stem": "Complete the given figure to explain their entire movement plan along the respective vectors.",
    "context": "Three friends A, B and C move out from the same location O at the same time in three different directions to reach their destinations. They move out on straight paths and decide that A and B after reaching their destinations will meet up with C at his predecided destination, following straight paths from A to C and B to C in such a way that \\(\\overrightarrow{OA} = \\vec{a}\\), \\(\\overrightarrow{OB} = \\vec{b}\\) and \\(\\overrightarrow{OC} = 5\\vec{a} - 2\\vec{b}\\) respectively.\n\nBased upon the above information, answer the following questions :",
    "figure": "REQUIRED — this sub-part asks the student to COMPLETE the printed figure, so the figure is the question. The diagram sits in the shared case-study passage (O with rays to A, B and C labelled \\(\\vec{a}\\), \\(\\vec{b}\\) and \\(5\\vec{a} - 2\\vec{b}\\)) and is therefore visible to all four siblings, but only (i) is unanswerable without it. Page idx 18.",
-   "solution": ""
+   "solution": "The printed figure already shows the three outward journeys from the common starting point \\(O\\): the arrow \\(\\overrightarrow{OA} = \\vec{a}\\), the arrow \\(\\overrightarrow{OB} = \\vec{b}\\), and the arrow \\(\\overrightarrow{OC} = 5\\vec{a} - 2\\vec{b}\\). What is missing is the SECOND stage of the plan, in which A and B each travel on to meet C.\n\nTo complete it, join \\(A\\) to \\(C\\) and put an arrowhead at \\(C\\), representing \\(\\overrightarrow{AC}\\); and join \\(B\\) to \\(C\\) and put an arrowhead at \\(C\\), representing \\(\\overrightarrow{BC}\\). The figure then closes into two triangles \\(OAC\\) and \\(OBC\\) sharing the side \\(OC\\).\n\nThe completed diagram displays the triangle law twice over, which is the point of drawing it: travelling \\(O\\) to \\(A\\) and then \\(A\\) to \\(C\\) has the same net effect as going straight from \\(O\\) to \\(C\\), so \\(\\overrightarrow{OA} + \\overrightarrow{AC} = \\overrightarrow{OC}\\); and likewise \\(\\overrightarrow{OB} + \\overrightarrow{BC} = \\overrightarrow{OC}\\). These are exactly the relations used in part (ii)."
   },
   {
    "hash": "9e6eb7bf22fd8c92f345750da1f786f8624866662a2c9c9783de32911f34013a",
@@ -872,7 +872,7 @@
    "subtopic": "Addition of Vectors",
    "stem": "Find vectors \\(\\overrightarrow{AC}\\) and \\(\\overrightarrow{BC}\\).",
    "context": "Three friends A, B and C move out from the same location O at the same time in three different directions to reach their destinations. They move out on straight paths and decide that A and B after reaching their destinations will meet up with C at his predecided destination, following straight paths from A to C and B to C in such a way that \\(\\overrightarrow{OA} = \\vec{a}\\), \\(\\overrightarrow{OB} = \\vec{b}\\) and \\(\\overrightarrow{OC} = 5\\vec{a} - 2\\vec{b}\\) respectively.\n\nBased upon the above information, answer the following questions :",
-   "solution": ""
+   "solution": "Use the triangle law in the form \\(\\overrightarrow{PQ} = \\overrightarrow{OQ} - \\overrightarrow{OP}\\), i.e. head minus tail, with both position vectors measured from \\(O\\).\n\nFor \\(\\overrightarrow{AC}\\), the head is \\(C\\) and the tail is \\(A\\):\n\n\\(\\overrightarrow{AC} = \\overrightarrow{OC} - \\overrightarrow{OA} = \\left(5\\vec{a} - 2\\vec{b}\\right) - \\vec{a} = 4\\vec{a} - 2\\vec{b}\\)\n\nFor \\(\\overrightarrow{BC}\\), the head is \\(C\\) and the tail is \\(B\\):\n\n\\(\\overrightarrow{BC} = \\overrightarrow{OC} - \\overrightarrow{OB} = \\left(5\\vec{a} - 2\\vec{b}\\right) - \\vec{b} = 5\\vec{a} - 3\\vec{b}\\)\n\nSo \\(\\overrightarrow{AC} = 4\\vec{a} - 2\\vec{b}\\) and \\(\\overrightarrow{BC} = 5\\vec{a} - 3\\vec{b}\\)."
   },
   {
    "hash": "f4e5733c46639d34582ff8941d7cc0212611b27ea6ce94407351a564816838b3",
@@ -884,7 +884,7 @@
    "subtopic": "Scalar (Dot) Product and Projection",
    "stem": "If \\(\\vec{a} \\cdot \\vec{b} = 1\\), distance of O to A is 1 km and that from O to B is 2 km, then find the angle between \\(\\overrightarrow{OA}\\) and \\(\\overrightarrow{OB}\\). Also, find \\(|\\vec{a} \\times \\vec{b}|\\).",
    "context": "Three friends A, B and C move out from the same location O at the same time in three different directions to reach their destinations. They move out on straight paths and decide that A and B after reaching their destinations will meet up with C at his predecided destination, following straight paths from A to C and B to C in such a way that \\(\\overrightarrow{OA} = \\vec{a}\\), \\(\\overrightarrow{OB} = \\vec{b}\\) and \\(\\overrightarrow{OC} = 5\\vec{a} - 2\\vec{b}\\) respectively.\n\nBased upon the above information, answer the following questions :",
-   "solution": ""
+   "solution": "The distances given are the magnitudes of the two vectors, so \\(|\\vec{a}| = |\\overrightarrow{OA}| = 1\\) and \\(|\\vec{b}| = |\\overrightarrow{OB}| = 2\\), and we are told \\(\\vec{a} \\cdot \\vec{b} = 1\\).\n\nFrom the definition \\(\\vec{a} \\cdot \\vec{b} = |\\vec{a}||\\vec{b}|\\cos\\theta\\), where \\(\\theta\\) is the angle between \\(\\overrightarrow{OA}\\) and \\(\\overrightarrow{OB}\\),\n\n\\(\\cos\\theta = \\dfrac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}||\\vec{b}|} = \\dfrac{1}{1 \\times 2} = \\dfrac{1}{2}\\)\n\nso \\(\\theta = \\cos^{-1}\\dfrac{1}{2} = \\dfrac{\\pi}{3}\\), that is 60 degrees.\n\nFor the cross product, \\(|\\vec{a} \\times \\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\theta\\). With \\(\\theta = \\dfrac{\\pi}{3}\\) we have \\(\\sin\\theta = \\dfrac{\\sqrt{3}}{2}\\), so\n\n\\(|\\vec{a} \\times \\vec{b}| = 1 \\times 2 \\times \\dfrac{\\sqrt{3}}{2} = \\sqrt{3}\\)"
   },
   {
    "hash": "53e9cd53903a4ff1b9a67e203adf3101207104ca6988ca30c815ad0a3a3b6fbe",
@@ -896,7 +896,7 @@
    "subtopic": "Vector (Cross) Product",
    "stem": "If \\(\\vec{a} = 2\\hat{i} - \\hat{j} + 4\\hat{k}\\) and \\(\\vec{b} = \\hat{j} - \\hat{k}\\), then find a unit vector perpendicular to \\((\\vec{a} + \\vec{b})\\) and \\((\\vec{a} - \\vec{b})\\).",
    "context": "Three friends A, B and C move out from the same location O at the same time in three different directions to reach their destinations. They move out on straight paths and decide that A and B after reaching their destinations will meet up with C at his predecided destination, following straight paths from A to C and B to C in such a way that \\(\\overrightarrow{OA} = \\vec{a}\\), \\(\\overrightarrow{OB} = \\vec{b}\\) and \\(\\overrightarrow{OC} = 5\\vec{a} - 2\\vec{b}\\) respectively.\n\nBased upon the above information, answer the following questions :",
-   "solution": ""
+   "solution": "A vector perpendicular to both \\((\\vec{a} + \\vec{b})\\) and \\((\\vec{a} - \\vec{b})\\) is their cross product, so form the two vectors first.\n\nWith \\(\\vec{a} = 2\\hat{i} - \\hat{j} + 4\\hat{k}\\) and \\(\\vec{b} = \\hat{j} - \\hat{k}\\),\n\n\\(\\vec{a} + \\vec{b} = 2\\hat{i} + 0\\hat{j} + 3\\hat{k}\\) and \\(\\vec{a} - \\vec{b} = 2\\hat{i} - 2\\hat{j} + 5\\hat{k}\\)\n\nThen\n\n\\(\\vec{c} = (\\vec{a} + \\vec{b}) \\times (\\vec{a} - \\vec{b}) = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & 0 & 3 \\\\ 2 & -2 & 5 \\end{vmatrix}\\)\n\nExpanding: the \\(\\hat{i}\\) component is \\(0(5) - 3(-2) = 6\\); the \\(\\hat{j}\\) component is \\(-\\left[2(5) - 3(2)\\right] = -4\\); the \\(\\hat{k}\\) component is \\(2(-2) - 0(2) = -4\\). So \\(\\vec{c} = 6\\hat{i} - 4\\hat{j} - 4\\hat{k}\\).\n\nIts magnitude is \\(|\\vec{c}| = \\sqrt{36 + 16 + 16} = \\sqrt{68} = 2\\sqrt{17}\\), so the required unit vector is\n\n\\(\\hat{c} = \\dfrac{6\\hat{i} - 4\\hat{j} - 4\\hat{k}}{2\\sqrt{17}} = \\dfrac{1}{\\sqrt{17}}\\left(3\\hat{i} - 2\\hat{j} - 2\\hat{k}\\right)\\)\n\n(The negative of this, \\(-\\dfrac{1}{\\sqrt{17}}(3\\hat{i} - 2\\hat{j} - 2\\hat{k})\\), is equally perpendicular to both; either is an acceptable answer. A quick check: \\(\\vec{c} \\cdot (\\vec{a} + \\vec{b}) = 12 + 0 - 12 = 0\\) and \\(\\vec{c} \\cdot (\\vec{a} - \\vec{b}) = 12 + 8 - 20 = 0\\), as required.)"
   },
   {
    "hash": "e1c8b66e157841b83a14d33f5ec775734b4096d036613f21a4a3ef27439f5ff2",
@@ -909,7 +909,7 @@
    "stem": "Write the order and degree of the given differential equation.",
    "context": "Camphor is a waxy, colourless solid with strong aroma that evaporates through the process of sublimation, if left in the open at room temperature.\n\n(Cylindrical-shaped Camphor tablets)\n\nA cylindrical camphor tablet whose height is equal to its radius (r) evaporates when exposed to air such that the rate of reduction of its volume is proportional to its total surface area. Thus, \\(\\dfrac{dV}{dt} = kS\\) is the differential equation, where V is the volume, S is the surface area and t is the time in hours.\n\nBased upon the above information, answer the following questions :",
    "figure": "DECORATIVE — the photograph captioned '(Cylindrical-shaped Camphor tablets)' carries no data; every quantity the case study needs is in the passage text. NOT attached, per the rule that a figure reference is not a figure dependency. Page idx 20.",
-   "solution": ""
+   "solution": "The given differential equation is \\(\\dfrac{dV}{dt} = kS\\).\n\nThe ORDER of a differential equation is the order of the highest derivative appearing in it. The only derivative here is \\(\\dfrac{dV}{dt}\\), a first derivative, so the order is 1.\n\nThe DEGREE is the power to which that highest-order derivative is raised, once the equation has been written as a polynomial in its derivatives. Here \\(\\dfrac{dV}{dt}\\) occurs to the first power, so the degree is 1.\n\nHence order = 1 and degree = 1."
   },
   {
    "hash": "1aa06bce298270fd607e2990f14c04d384e914943f1251bcf1a902407e9e02db",
@@ -921,7 +921,7 @@
    "subtopic": "General and Particular Solutions",
    "stem": "Substituting \\(V = \\pi r^3\\) and \\(S = 2\\pi r^2\\), we get the differential equation \\(\\dfrac{dr}{dt} = \\dfrac{2}{3}k\\). Solve it, given that \\(r(0) = 5\\) mm.",
    "context": "Camphor is a waxy, colourless solid with strong aroma that evaporates through the process of sublimation, if left in the open at room temperature.\n\n(Cylindrical-shaped Camphor tablets)\n\nA cylindrical camphor tablet whose height is equal to its radius (r) evaporates when exposed to air such that the rate of reduction of its volume is proportional to its total surface area. Thus, \\(\\dfrac{dV}{dt} = kS\\) is the differential equation, where V is the volume, S is the surface area and t is the time in hours.\n\nBased upon the above information, answer the following questions :",
-   "solution": ""
+   "solution": "The equation \\(\\dfrac{dr}{dt} = \\dfrac{2}{3}k\\) has a constant on the right, so the variables are already separated. Integrating both sides,\n\n\\(\\displaystyle\\int dr = \\dfrac{2}{3}k\\int dt \\Rightarrow r = \\dfrac{2}{3}kt + C\\)\n\nApply the initial condition \\(r(0) = 5\\) mm: putting \\(t = 0\\) gives \\(5 = 0 + C\\), so \\(C = 5\\).\n\nTherefore the particular solution is\n\n\\(r = \\dfrac{2}{3}kt + 5\\)\n\nSo the radius falls off linearly with time. Physically \\(k\\) must be negative, since the tablet is evaporating and \\(r\\) has to decrease.\n\n[Note on the data as printed: the passage describes \\(S\\) as the \"total surface area\", but for a cylinder whose height equals its radius the total surface area is \\(2\\pi r^{2} + 2\\pi r h = 4\\pi r^{2}\\), whereas the substitution supplied is \\(S = 2\\pi r^{2}\\), which is the CURVED surface area. The equation to be solved is the one the question hands us, and it is self-consistent with \\(S = 2\\pi r^{2}\\): from \\(V = \\pi r^{3}\\), \\(\\dfrac{dV}{dt} = 3\\pi r^{2}\\dfrac{dr}{dt}\\), and setting this equal to \\(k(2\\pi r^{2})\\) does give \\(\\dfrac{dr}{dt} = \\dfrac{2}{3}k\\). Had the true total \\(4\\pi r^{2}\\) been used, the equation would have read \\(\\dfrac{dr}{dt} = \\dfrac{4}{3}k\\). Nothing in the answers is affected, since the differential equation is given.]"
   },
   {
    "hash": "8c5e393d7e3a967f98e542c66da8d3b32b171da2d74549a385d6d230663e155b",
@@ -933,7 +933,7 @@
    "subtopic": "General and Particular Solutions",
    "stem": "If it is given that \\(r = 3\\) mm when \\(t = 1\\) hour, find the value of k. Hence, find t for \\(r = 0\\) mm.",
    "context": "Camphor is a waxy, colourless solid with strong aroma that evaporates through the process of sublimation, if left in the open at room temperature.\n\n(Cylindrical-shaped Camphor tablets)\n\nA cylindrical camphor tablet whose height is equal to its radius (r) evaporates when exposed to air such that the rate of reduction of its volume is proportional to its total surface area. Thus, \\(\\dfrac{dV}{dt} = kS\\) is the differential equation, where V is the volume, S is the surface area and t is the time in hours.\n\nBased upon the above information, answer the following questions :",
-   "solution": ""
+   "solution": "From part (ii) the radius obeys \\(r = \\dfrac{2}{3}kt + 5\\).\n\nSubstituting the given reading \\(r = 3\\) mm at \\(t = 1\\) hour:\n\n\\(3 = \\dfrac{2}{3}k(1) + 5 \\Rightarrow \\dfrac{2}{3}k = -2 \\Rightarrow k = -3\\)\n\nThe negative sign is expected, since the tablet is shrinking. Putting this back gives\n\n\\(r = -2t + 5\\)\n\nThe tablet has fully evaporated when \\(r = 0\\):\n\n\\(0 = -2t + 5 \\Rightarrow t = \\dfrac{5}{2} = 2.5\\ \\text{hours}\\)\n\nSo \\(k = -3\\) and the tablet disappears after 2.5 hours."
   },
   {
    "hash": "6bc8f7e6ce1706da68d2cafc29b38c91c60500be3086c50183b0a3a941e57aa9",
@@ -945,7 +945,7 @@
    "subtopic": "General and Particular Solutions",
    "stem": "If it is given that \\(r = 1\\) mm when \\(t = 1\\) hour, find the value of k. Hence, find t for \\(r = 0\\) mm.",
    "context": "Camphor is a waxy, colourless solid with strong aroma that evaporates through the process of sublimation, if left in the open at room temperature.\n\n(Cylindrical-shaped Camphor tablets)\n\nA cylindrical camphor tablet whose height is equal to its radius (r) evaporates when exposed to air such that the rate of reduction of its volume is proportional to its total surface area. Thus, \\(\\dfrac{dV}{dt} = kS\\) is the differential equation, where V is the volume, S is the surface area and t is the time in hours.\n\nBased upon the above information, answer the following questions :",
-   "solution": ""
+   "solution": "From part (ii) the radius obeys \\(r = \\dfrac{2}{3}kt + 5\\).\n\nSubstituting the given reading \\(r = 1\\) mm at \\(t = 1\\) hour:\n\n\\(1 = \\dfrac{2}{3}k(1) + 5 \\Rightarrow \\dfrac{2}{3}k = -4 \\Rightarrow k = -6\\)\n\nAgain \\(k\\) is negative, as it must be for an evaporating tablet. Putting this back gives\n\n\\(r = -4t + 5\\)\n\nThe tablet has fully evaporated when \\(r = 0\\):\n\n\\(0 = -4t + 5 \\Rightarrow t = \\dfrac{5}{4} = 1.25\\ \\text{hours}\\)\n\nSo \\(k = -6\\) and the tablet disappears after 1.25 hours. (It evaporates faster than in the alternative version of this part, which is what one expects: the radius had already fallen to 1 mm after the first hour instead of 3 mm.)"
   },
   {
    "hash": "d6a350049c2beaff9cbf9b99c5285a3110da2db5a166f23b3a9cc926ca6271c5",
@@ -957,7 +957,7 @@
    "subtopic": "Theorem of Total Probability",
    "stem": "A person was tested randomly. What is the probability that he/she has contracted the disease ?",
    "context": "Based upon the results of regular medical check-ups in a hospital, it was found that out of 1000 people, 700 were very healthy, 200 maintained average health and 100 had a poor health record.\n\nLet \\(A_1\\) : People with good health,\n\n\\(A_2\\) : People with average health,\n\nand \\(A_3\\) : People with poor health.\n\nDuring a pandemic, the data expressed that the chances of people contracting the disease from category \\(A_1\\), \\(A_2\\) and \\(A_3\\) are 25%, 35% and 50%, respectively.\n\nBased upon the above information, answer the following questions :",
-   "solution": ""
+   "solution": "The three health categories partition the 1000 people, so use the theorem of total probability. From the counts,\n\n\\(P(A_1) = \\dfrac{700}{1000} = \\dfrac{7}{10},\\quad P(A_2) = \\dfrac{200}{1000} = \\dfrac{2}{10},\\quad P(A_3) = \\dfrac{100}{1000} = \\dfrac{1}{10}\\)\n\nLet \\(A\\) be the event that the person has contracted the disease. The stated chances give the conditional probabilities\n\n\\(P(A \\mid A_1) = \\dfrac{25}{100},\\quad P(A \\mid A_2) = \\dfrac{35}{100},\\quad P(A \\mid A_3) = \\dfrac{50}{100}\\)\n\nBy the theorem of total probability,\n\n\\(P(A) = P(A_1)P(A \\mid A_1) + P(A_2)P(A \\mid A_2) + P(A_3)P(A \\mid A_3)\\)\n\n\\(= \\dfrac{7}{10} \\times \\dfrac{25}{100} + \\dfrac{2}{10} \\times \\dfrac{35}{100} + \\dfrac{1}{10} \\times \\dfrac{50}{100} = \\dfrac{175 + 70 + 50}{1000} = \\dfrac{295}{1000}\\)\n\nHence \\(P(A) = 0.295\\), which in lowest terms is \\(\\dfrac{59}{200}\\)."
   },
   {
    "hash": "ce90e0b6a6cba7a6b84ad0fbabb91ef18b7ddcee3169ddf594b8497a9dacf46a",
@@ -969,7 +969,7 @@
    "subtopic": "Bayes' Theorem",
    "stem": "Given that the person has not contracted the disease, what is the probability that the person is from category \\(A_2\\) ?",
    "context": "Based upon the results of regular medical check-ups in a hospital, it was found that out of 1000 people, 700 were very healthy, 200 maintained average health and 100 had a poor health record.\n\nLet \\(A_1\\) : People with good health,\n\n\\(A_2\\) : People with average health,\n\nand \\(A_3\\) : People with poor health.\n\nDuring a pandemic, the data expressed that the chances of people contracting the disease from category \\(A_1\\), \\(A_2\\) and \\(A_3\\) are 25%, 35% and 50%, respectively.\n\nBased upon the above information, answer the following questions :",
-   "solution": ""
+   "solution": "[CBSE marking scheme: the Bayes formula as PRINTED shows the denominator as \\(P(A_1)P(\\overline{A} \\mid A_1) + P(A_2)P(\\overline{A} \\mid A_2)\\) only, omitting the third term \\(P(A_3)P(\\overline{A} \\mid A_3)\\). The substitution line immediately below it does include all three terms, and the printed answer \\(\\dfrac{26}{141}\\) is correct; but the two-term formula as displayed would give \\(\\dfrac{26}{131}\\). The complete three-term denominator is used here.]\n\nWe now condition on the person NOT having contracted the disease, so first write down the complementary conditional probabilities:\n\n\\(P(\\overline{A} \\mid A_1) = \\dfrac{75}{100},\\quad P(\\overline{A} \\mid A_2) = \\dfrac{65}{100},\\quad P(\\overline{A} \\mid A_3) = \\dfrac{50}{100}\\)\n\nBy Bayes' theorem, with all three categories in the denominator,\n\n\\(P(A_2 \\mid \\overline{A}) = \\dfrac{P(A_2)P(\\overline{A} \\mid A_2)}{P(A_1)P(\\overline{A} \\mid A_1) + P(A_2)P(\\overline{A} \\mid A_2) + P(A_3)P(\\overline{A} \\mid A_3)}\\)\n\n\\(= \\dfrac{\\dfrac{2}{10} \\times \\dfrac{65}{100}}{\\dfrac{7}{10} \\times \\dfrac{75}{100} + \\dfrac{2}{10} \\times \\dfrac{65}{100} + \\dfrac{1}{10} \\times \\dfrac{50}{100}}\\)\n\nEvery term carries a factor \\(\\dfrac{1}{1000}\\), which cancels, leaving\n\n\\(= \\dfrac{2 \\times 65}{7 \\times 75 + 2 \\times 65 + 1 \\times 50} = \\dfrac{130}{525 + 130 + 50} = \\dfrac{130}{705} = \\dfrac{26}{141}\\)\n\nSo \\(P(A_2 \\mid \\overline{A}) = \\dfrac{26}{141}\\), approximately 0.184.\n\n(A check on the denominator: it is \\(P(\\overline{A}) = 1 - 0.295 = 0.705 = \\dfrac{705}{1000}\\), agreeing with part (i).)"
   }
  ]
 }

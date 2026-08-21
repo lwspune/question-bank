@@ -13,7 +13,7 @@
    "chapter": "Probability",
    "subtopic": "Conditional Probability",
    "stem": "Three friends A, B and C got their photograph clicked. Find the probability that B is standing at the central position, given that A is standing at the left corner.",
-   "solution": ""
+   "solution": "Three friends standing in a row can be arranged in \\(3! = 6\\) ways, so the sample space is \\(S = \\{ABC, ACB, BAC, BCA, CAB, CBA\\}\\), each arrangement read as (left, centre, right) and each equally likely. Let \\(E_1\\) be the event that B stands at the central position and \\(E_2\\) the event that A stands at the left corner. The arrangements with A at the left are \\(ABC\\) and \\(ACB\\), so \\(P(E_2) = \\dfrac{2}{6}\\). Of these, only \\(ABC\\) also has B in the centre, so \\(P(E_1 \\cap E_2) = \\dfrac{1}{6}\\). By the definition of conditional probability, \\(P(E_1 \\mid E_2) = \\dfrac{P(E_1 \\cap E_2)}{P(E_2)} = \\dfrac{1/6}{2/6} = \\dfrac{1}{2}\\). Hence the required probability is \\(\\dfrac{1}{2}\\) -- which makes sense, since fixing A at the left leaves B equally likely to take either of the two remaining places."
   },
   {
    "hash": "7b4f917fbfbd34233beecef12233421328e62f8bb916f2bc5e31f1e46d15c8ce",
@@ -24,7 +24,7 @@
    "chapter": "Application of Integrals",
    "subtopic": "Area Bounded by a Curve and a Line",
    "stem": "If the area of the region bounded by the line \\(y = mx\\) and the curve \\(x^2 = y\\) is \\(\\dfrac{32}{3}\\) sq. units, then find the positive value of m, using integration.",
-   "solution": ""
+   "solution": "The area is not given as a number to compute but as a condition on \\(m\\), so set up the integral in terms of \\(m\\) and then solve. The curve \\(x^2 = y\\) is the upward parabola \\(y = x^2\\) and \\(y = mx\\) is a line through the origin. They meet where \\(mx = x^2\\), that is \\(x(x - m) = 0\\), so the \\(x\\)-coordinates of intersection are \\(0\\) and \\(m\\). For \\(m > 0\\) the line lies above the parabola on \\([0, m]\\), so the enclosed area is \\(\\int_{0}^{m} \\left(mx - x^2\\right) dx = \\left[\\dfrac{mx^2}{2} - \\dfrac{x^3}{3}\\right]_{0}^{m} = \\dfrac{m^3}{2} - \\dfrac{m^3}{3} = \\dfrac{m^3}{6}\\). Equating this to the given area, \\(\\dfrac{m^3}{6} = \\dfrac{32}{3}\\), so \\(m^3 = \\dfrac{32 \\times 6}{3} = 64\\) and therefore \\(m = 4\\). Hence the positive value of \\(m\\) is \\(4\\)."
   },
   {
    "hash": "36c23fdc364ba632b024685eb25c49bb4881079996d72b8c2697c2562a96cac6",
@@ -35,7 +35,7 @@
    "chapter": "Vector Algebra",
    "subtopic": "Scalar (Dot) Product and Projection",
    "stem": "If \\(\\vec{a} = 2\\hat{i} - \\hat{j} + \\hat{k}\\), \\(\\vec{b} = \\hat{i} + \\hat{j} - 2\\hat{k}\\) and \\(\\vec{c} = \\hat{i} + 3\\hat{j} - \\hat{k}\\) and the projection of vector \\(\\vec{c} + \\lambda \\vec{b}\\) on vector \\(\\vec{a}\\) is \\(2\\sqrt{6}\\), then find the value of \\(\\lambda\\).",
-   "solution": ""
+   "solution": "The projection of a vector \\(\\vec{u}\\) on \\(\\vec{a}\\) is \\(\\dfrac{\\vec{u} \\cdot \\vec{a}}{|\\vec{a}|}\\), so the given condition reads \\(\\dfrac{(\\vec{c} + \\lambda\\vec{b}) \\cdot \\vec{a}}{|\\vec{a}|} = 2\\sqrt{6}\\). First, \\(|\\vec{a}| = \\sqrt{2^2 + (-1)^2 + 1^2} = \\sqrt{4 + 1 + 1} = \\sqrt{6}\\). Expanding the dot product by linearity, \\((\\vec{c} + \\lambda\\vec{b}) \\cdot \\vec{a} = \\vec{c} \\cdot \\vec{a} + \\lambda(\\vec{b} \\cdot \\vec{a})\\), where \\(\\vec{c} \\cdot \\vec{a} = (1)(2) + (3)(-1) + (-1)(1) = 2 - 3 - 1 = -2\\) and \\(\\vec{b} \\cdot \\vec{a} = (1)(2) + (1)(-1) + (-2)(1) = 2 - 1 - 2 = -1\\). Substituting, \\(\\dfrac{-2 + \\lambda(-1)}{\\sqrt{6}} = 2\\sqrt{6}\\), so \\(-2 - \\lambda = 2\\sqrt{6} \\times \\sqrt{6} = 12\\). Hence \\(-\\lambda = 14\\), giving \\(\\lambda = -14\\)."
   },
   {
    "hash": "a3658e2a2c319ae5b63e39c583dc336ef8b2d59974e2d41830d4ee1f9f23f2fb",
@@ -46,7 +46,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "Evaluate :\n\n\\(\\displaystyle\\int_{-3}^{3} \\dfrac{x^4}{1 + e^x} \\, dx\\)",
-   "solution": ""
+   "solution": "The factor \\(\\dfrac{1}{1 + e^x}\\) is neither even nor odd, but the limits are symmetric, so use \\(\\int_{-a}^{a} f(x)\\,dx = \\int_{-a}^{a} f(-x)\\,dx\\) and add. Let \\(I = \\int_{-3}^{3} \\dfrac{x^4}{1 + e^x}\\,dx\\) ... (1). Replacing \\(x\\) by \\(-x\\), and noting \\((-x)^4 = x^4\\), gives \\(I = \\int_{-3}^{3} \\dfrac{x^4}{1 + e^{-x}}\\,dx\\). Multiplying numerator and denominator by \\(e^x\\), \\(I = \\int_{-3}^{3} \\dfrac{e^x x^4}{1 + e^x}\\,dx\\) ... (2). Adding (1) and (2), the awkward denominator cancels: \\(2I = \\int_{-3}^{3} \\dfrac{x^4\\left(1 + e^x\\right)}{1 + e^x}\\,dx = \\int_{-3}^{3} x^4\\,dx\\). Now \\(2I = \\left[\\dfrac{x^5}{5}\\right]_{-3}^{3} = \\dfrac{243}{5} - \\left(-\\dfrac{243}{5}\\right) = \\dfrac{486}{5}\\), so \\(I = \\dfrac{243}{5}\\). Hence the value of the integral is \\(\\dfrac{243}{5}\\)."
   }
  ]
 }

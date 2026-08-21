@@ -32,7 +32,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Test the three properties one at a time on \\(A = \\{1, 2, 3\\}\\).\nReflexive: this needs \\((1,1)\\), \\((2,2)\\) and \\((3,3)\\) all present. \\((3,3)\\) is missing, so R is not reflexive.\nSymmetric: \\((1,2) \\in R\\) but \\((2,1) \\notin R\\), so R is not symmetric.\nTransitive: the only chains available are \\((1,1)\\) followed by \\((1,2)\\), which demands \\((1,2)\\), and \\((1,2)\\) followed by \\((2,2)\\), which again demands \\((1,2)\\) — and it is present. No chain is broken, so R is transitive.\nHence R is transitive but neither reflexive nor symmetric, which is the option Transitive only."
   },
   {
    "hash": "b2e96ab68189d9a18eecf062ff2e958d9d26f2bf5e13c26c477e6ab0c3e2b262",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Only those identities that follow from distributivity alone, without assuming \\(AB = BA\\), are always true.\n(i) \\((A+B)(A-B) = A^2 - AB + BA - B^2\\), which collapses to \\(A^2 - B^2\\) only when \\(AB = BA\\). Matrix multiplication is not commutative in general, so (i) is not always true.\n(ii) \\(AB = BA\\) is exactly the assumption that fails in general, so (ii) is not always true.\n(iii) \\((A+B)^2 = (A+B)(A+B) = A^2 + AB + BA + B^2\\). This uses only the distributive law and keeps \\(AB\\) and \\(BA\\) as separate terms, so it is always true.\n(iv) False: \\(A = \\begin{bmatrix} 1 & 0 \\\\ 0 & 0 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 0 & 0 \\\\ 0 & 1 \\end{bmatrix}\\) are both non-zero, yet \\(AB = 0\\).\nSo only statement (iii) always holds, which is the option Only (iii)."
   },
   {
    "hash": "593a19687c011d2635e9674772987ee7c656b678b4f9425687a96633c91c836f",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "A matrix is symmetric when \\(A = A'\\), that is, when \\(a_{ij} = a_{ji}\\) for every pair of entries placed symmetrically about the leading diagonal.\nComparing the \\((1,2)\\) and \\((2,1)\\) entries gives \\(a = -1\\); the \\((1,3)\\) and \\((3,1)\\) entries give \\(b = 0\\); the \\((2,3)\\) and \\((3,2)\\) entries give \\(c = 5\\).\nHence \\(3a + b + c = 3(-1) + 0 + 5 = 2\\), which is the option \\(2\\)."
   },
   {
    "hash": "af3ab6163d32edbbd72d03ee5690e6392202b21673d9eac7c0576c70b7f21993",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Transposing swaps the two off-diagonal entries, so \\(A' = \\begin{bmatrix} \\cos x & \\sin x \\\\ -\\sin x & \\cos x \\end{bmatrix}\\), and those off-diagonal terms cancel when the two matrices are added:\n\\(A + A' = \\begin{bmatrix} 2\\cos x & 0 \\\\ 0 & 2\\cos x \\end{bmatrix}\\).\nSetting this equal to \\(I\\) gives \\(2\\cos x = 1\\), that is \\(\\cos x = \\frac{1}{2}\\).\nOn \\(\\left[0, \\frac{\\pi}{2}\\right]\\) the only solution is \\(x = \\frac{\\pi}{3}\\), which is the option \\(\\frac{\\pi}{3}\\)."
   },
   {
    "hash": "24577f1f6f7351f4a1f59d1629d2a7193eab191b1d013237e749c3bcdd8770ce",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "For an invertible matrix \\(A\\) and a non-zero scalar \\(k\\), \\((kA)^{-1} = \\frac{1}{k}A^{-1}\\): the scalar inverts and the matrix inverts, and a scalar commutes with everything so no order question arises.\nWith \\(k = 3\\) this gives \\((3A)^{-1} = \\frac{1}{3}A^{-1}\\).\nChecking directly, \\((3A)\\left(\\frac{1}{3}A^{-1}\\right) = \\left(3 \\cdot \\frac{1}{3}\\right)AA^{-1} = I\\), confirming the option \\(\\frac{1}{3}A^{-1}\\)."
   },
   {
    "hash": "2ffdefb2c2acadc30d4a20ffda301e91a5631a578555e9232f255bf7b2c695f4",
@@ -182,7 +182,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Expand along the first column, whose entries are \\(-1\\), \\(-2\\) and \\(0\\). The cofactors are \\(\\begin{vmatrix} a & -1 \\\\ 4 & 2a \\end{vmatrix} = 2a^2 + 4\\) and \\(-\\begin{vmatrix} -2 & 5 \\\\ 4 & 2a \\end{vmatrix} = 4a + 20\\), so\n\\(\\Delta = (-1)\\left(2a^2 + 4\\right) + (-2)\\left(4a + 20\\right) = -2a^2 - 8a - 44\\).\nSetting \\(\\Delta = -86\\) gives \\(-2a^2 - 8a - 44 = -86\\), which simplifies to \\(a^2 + 4a - 21 = 0\\).\nThe question asks only for the SUM of the possible values of a, and for a quadratic that sum is \\(-\\frac{4}{1} = -4\\) without solving. Factorising confirms it: \\((a+7)(a-3) = 0\\), so \\(a = -7\\) or \\(a = 3\\), and \\(-7 + 3 = -4\\). This is the option \\(-4\\)."
   },
   {
    "hash": "619dbd3c67c4dd270c7d75c2b77ccf667d7f5ab65865a1ecc76bc6148f6141a2",
@@ -212,7 +212,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Differentiate both sides with respect to \\(x\\), treating \\(y\\) as a function of \\(x\\):\n\\(-e^{-x} - e^{-y}\\frac{dy}{dx} = 0\\).\nHence \\(e^{-y}\\frac{dy}{dx} = -e^{-x}\\), so \\(\\frac{dy}{dx} = -\\frac{e^{-x}}{e^{-y}} = -e^{-x+y} = -e^{y-x}\\), which is the option \\(-e^{y-x}\\)."
   },
   {
    "hash": "dca1abe7d93ddd43997bbceeeb8934e1caae8543eefce60898db6e95bb9fdc8c",
@@ -242,7 +242,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "\\(f'(x) = 1 - \\frac{1}{x^2}\\), which vanishes at \\(x = 1\\) and \\(x = -1\\), and \\(f''(x) = \\frac{2}{x^3}\\).\nAt \\(x = 1\\), \\(f''(1) = 2 > 0\\), so there is a local MINIMUM, of value \\(f(1) = 1 + 1 = 2\\).\nAt \\(x = -1\\), \\(f''(-1) = -2 < 0\\), so there is a local MAXIMUM, of value \\(f(-1) = -1 - 1 = -2\\).\nSo the local maximum value is \\(-2\\), which is that option.\nThis also settles the last option: here the local minimum value \\(2\\) is GREATER than the local maximum value \\(-2\\). That is possible only because the two turning points lie on branches separated by the break at \\(x = 0\\), so neither is a maximum or minimum of the function as a whole."
   },
   {
    "hash": "154be5c679d23f50655a05d8774506f895b94832747ac0faa44b089d2f061edc",
@@ -272,7 +272,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Substituting \\(u = 2x\\) turns the integrand into a standard form: \\(\\int \\frac{dx}{1 + 4x^2} = \\frac{1}{2}\\int\\frac{du}{1+u^2} = \\frac{1}{2}\\tan^{-1}(2x)\\).\nEvaluating between \\(0\\) and \\(2a\\) gives \\(\\frac{1}{2}\\tan^{-1}(4a) - 0 = \\frac{\\pi}{6}\\), so \\(\\tan^{-1}(4a) = \\frac{\\pi}{3}\\).\nHence \\(4a = \\tan\\frac{\\pi}{3} = \\sqrt{3}\\), giving \\(a = \\frac{\\sqrt{3}}{4}\\), which is the option \\(\\frac{\\sqrt{3}}{4}\\)."
   },
   {
    "hash": "c2ea5ba66264c5d237f2b8ad28f3a4d87bac641cdc7f63b42d90de97fb7e9c5a",
@@ -302,7 +302,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "The parabola \\(y = x^2\\) meets the line \\(y = 16\\) where \\(x^2 = 16\\), that is at \\(x = -4\\) and \\(x = 4\\), so the region is symmetric about the y axis.\nIntegrating with respect to \\(y\\) means using horizontal strips: at height \\(y\\) the strip runs from \\(x = -\\sqrt{y}\\) to \\(x = \\sqrt{y}\\), so its length is \\(2\\sqrt{y}\\), and \\(y\\) runs from \\(0\\) to \\(16\\).\nThe area is therefore \\(2\\int_{0}^{16} \\sqrt{y}\\,dy\\), which is that option.\nAs a check it equals \\(2 \\cdot \\frac{2}{3}(16)^{3/2} = \\frac{256}{3}\\), and the vertical-strip form \\(\\int_{-4}^{4}\\left(16 - x^2\\right)dx\\) gives the same \\(\\frac{256}{3}\\). The option without the factor \\(2\\) measures only the half of the region lying in \\(x \\ge 0\\)."
   },
   {
    "hash": "33cc94d921ea9fa0431eec29c0643ebed61c497fe4120c77b94e8804c0370a2a",
@@ -332,7 +332,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "The variables separate at once: \\(\\frac{dy}{\\sqrt{y}} = \\frac{dx}{\\sqrt{x}}\\).\nIntegrating both sides gives \\(2\\sqrt{y} = 2\\sqrt{x} + c\\); dividing by \\(2\\) and renaming the constant,\n\\(\\sqrt{y} - \\sqrt{x} = C\\), which is that option."
   },
   {
    "hash": "42a48860199ad3b7520b8acaaf78fc7738ba6fbf52748d1afbc4e3e44397573a",
@@ -362,7 +362,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "First put the equation in standard linear form by dividing throughout by \\(2x\\), so that the coefficient of \\(\\frac{dy}{dx}\\) is \\(1\\):\n\\(\\frac{dy}{dx} - \\frac{1}{2x}y = \\frac{3}{2x}\\), so \\(P(x) = -\\frac{1}{2x}\\).\nThen \\(\\int P\\,dx = -\\frac{1}{2}\\log|x|\\), and the integrating factor is \\(e^{-\\frac{1}{2}\\log|x|} = x^{-1/2} = \\frac{1}{\\sqrt{x}}\\), which is the option \\(\\frac{1}{\\sqrt{x}}\\).\nThe trap is to read a factor off the undivided equation and reach \\(e^{-x}\\); the coefficient of \\(\\frac{dy}{dx}\\) must be made \\(1\\) before \\(P(x)\\) can be identified."
   },
   {
    "hash": "52f970c43f18888208d2ff79f6754cc07578a71e9426da523b53f8e9dec791f0",
@@ -392,7 +392,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "\\(\\left|\\lambda\\vec{a}\\right| = |\\lambda|\\left|\\vec{a}\\right| = 5|\\lambda|\\), so everything turns on the range of \\(|\\lambda|\\), not of \\(\\lambda\\) itself.\nAs \\(\\lambda\\) runs over \\([-2, 1]\\), \\(|\\lambda|\\) runs over \\([0, 2]\\): the largest value is \\(2\\), attained at \\(\\lambda = -2\\), and the smallest is \\(0\\), attained at \\(\\lambda = 0\\), which lies inside the interval.\nSo the greatest value of \\(\\left|\\lambda\\vec{a}\\right|\\) is \\(5 \\times 2 = 10\\) and the smallest is \\(5 \\times 0 = 0\\), and their sum is \\(10\\), which is the option \\(10\\).\nThe common slip is to take \\(\\lambda = 1\\) as giving the smallest magnitude, namely \\(5\\); but \\(\\lambda = 0\\) is admissible and makes the vector null."
   },
   {
    "hash": "9544683c000794a3af4fba114c1477d926f6f44ac92fa61067b50d3cb10fe717",
@@ -422,7 +422,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Let the direction cosines of the required vector be \\(l\\), \\(m\\), \\(n\\). Perpendicular to the z axis means the angle with it is \\(\\frac{\\pi}{2}\\), so \\(n = \\cos\\frac{\\pi}{2} = 0\\); equal angles with the x and y axes means \\(l = m\\).\nThen \\(l^2 + m^2 + n^2 = 1\\) becomes \\(2l^2 = 1\\), so \\(l = m = \\frac{1}{\\sqrt{2}}\\).\nA vector of magnitude \\(3\\) in this direction is\n\\(3\\left(\\frac{1}{\\sqrt{2}}\\hat{i} + \\frac{1}{\\sqrt{2}}\\hat{j}\\right) = \\frac{3}{\\sqrt{2}}\\hat{i} + \\frac{3}{\\sqrt{2}}\\hat{j} = \\frac{3\\sqrt{2}}{2}\\hat{i} + \\frac{3\\sqrt{2}}{2}\\hat{j}\\),\nwhich is that option. A quick check: its magnitude is \\(\\sqrt{\\frac{9}{2} + \\frac{9}{2}} = 3\\), as required."
   },
   {
    "hash": "feaef50d8ab61546e64b4664bdbf66c94d05dd00ecdb838f1a4db2a8ae710266",
@@ -452,7 +452,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Direction ratios may be read off only once each numerator has the form \\(x - x_1\\) with coefficient \\(1\\) on the variable. Rewriting each term,\n\\(\\frac{2x-1}{4} = \\frac{x - \\frac{1}{2}}{2}\\), \\(\\frac{1-y}{3} = \\frac{y-1}{-3}\\), and \\(\\frac{-z}{6} = \\frac{z-0}{-6}\\).\nSo the direction ratios are \\(2\\), \\(-3\\), \\(-6\\), and \\(\\sqrt{2^2 + (-3)^2 + (-6)^2} = \\sqrt{49} = 7\\).\nDividing by \\(7\\), the direction cosines are \\(\\frac{2}{7}\\), \\(\\frac{-3}{7}\\), \\(\\frac{-6}{7}\\), which is that option.\nThe option built on \\(4\\), \\(-3\\), \\(-6\\) comes from taking the printed denominators as they stand, without first making the coefficient of \\(x\\) equal to \\(1\\)."
   },
   {
    "hash": "0d411ebae890418d0cd1b423902953e25129b43310be462d80727f6575523131",
@@ -482,7 +482,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "In a linear programming problem the linear expression to be optimised — the one being maximised or minimised — is called the objective function. The inequalities restricting the variables are the constraints, the region they cut out is the feasible region, and the corner points of that region are what the objective function is evaluated at. So the required term is an objective function."
   },
   {
    "hash": "b3c6f8266ec67ddaa6e1b1e76fdfac3015a9b428f56824a3f02f37f1a3a09a3f",
@@ -513,7 +513,7 @@
    ],
    "answer": "C",
    "figure": "REQUIRED - the question IS about a printed graph; the shaded feasible region is the only thing that distinguishes the four option pairs. The stem carries no numbers at all. Page idx 10.",
-   "solution": ""
+   "solution": "Read the two boundary lines off their intercepts. One passes through \\((0,5)\\) and \\((5,0)\\), so it is \\(x + y = 5\\). The other passes through \\((0,3)\\) and \\((9,0)\\), so it is \\(\\frac{x}{9} + \\frac{y}{3} = 1\\), that is \\(x + 3y = 9\\).\nThe two meet where \\(x + y = 5\\) and \\(x + 3y = 9\\); subtracting gives \\(2y = 4\\), so \\(y = 2\\) and \\(x = 3\\) — exactly the point at which the shading begins in the figure.\nNow test an interior point of the shaded region, say \\((5, 1)\\): \\(x + y = 6 \\ge 5\\) and \\(x + 3y = 8 \\le 9\\). So the region lies on the far side of \\(x + y = 5\\) and the near side of \\(x + 3y = 9\\).\nThe non-trivial constraints are therefore \\(x + y \\ge 5\\) and \\(x + 3y \\le 9\\), which is that option."
   },
   {
    "hash": "bbea5e60e5aae26164e36be809cc0786b4c143d034f234b6288a65e42cc30488",
@@ -543,7 +543,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Use the definition of conditional probability together with De Morgan's law:\n\\(P(A'|B') = \\frac{P(A' \\cap B')}{P(B')}\\).\nNow \\(A' \\cap B' = (A \\cup B)'\\), so \\(P(A' \\cap B') = 1 - P(A \\cup B)\\).\nHence \\(P(A'|B') = \\frac{1 - P(A \\cup B)}{P(B')}\\), which is that option.\nThe near-miss option puts \\(A \\cap B\\) in the numerator; that would require \\(A' \\cap B'\\) to equal \\((A \\cap B)'\\), whereas De Morgan's law turns the intersection of the complements into the complement of the UNION."
   },
   {
    "hash": "1718875801f45328342679943cd353ac921b98db1ee3db83fc482b126fff8e6d",
@@ -574,7 +574,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Write \\(\\theta\\) for the angle between the two vectors, so that \\(\\left|\\vec{a} \\times \\vec{b}\\right| = \\left|\\vec{a}\\right|\\left|\\vec{b}\\right|\\sin\\theta\\) and \\(\\vec{a} \\cdot \\vec{b} = \\left|\\vec{a}\\right|\\left|\\vec{b}\\right|\\cos\\theta\\).\nAssertion: \\(\\left|\\vec{a} \\times \\vec{b}\\right|^2 + \\left(\\vec{a} \\cdot \\vec{b}\\right)^2 = \\left|\\vec{a}\\right|^2\\left|\\vec{b}\\right|^2\\left(\\sin^2\\theta + \\cos^2\\theta\\right) = \\left|\\vec{a}\\right|^2\\left|\\vec{b}\\right|^2\\). So the Assertion is TRUE, and it holds for every pair of vectors.\nReason: \\(\\left(\\vec{a} \\cdot \\vec{b}\\right)\\tan\\theta = \\left|\\vec{a}\\right|\\left|\\vec{b}\\right|\\cos\\theta \\cdot \\frac{\\sin\\theta}{\\cos\\theta} = \\left|\\vec{a}\\right|\\left|\\vec{b}\\right|\\sin\\theta = \\left|\\vec{a} \\times \\vec{b}\\right|\\). So the Reason is TRUE as well, wherever \\(\\tan\\theta\\) is defined.\nBut the Reason is stated only for \\(\\theta \\neq \\frac{\\pi}{2}\\), while the Assertion holds for every pair of vectors including perpendicular ones. The Reason therefore cannot account for the whole of the Assertion.\nHence both Assertion and Reason are true, but the Reason is not the correct explanation of the Assertion."
   },
   {
    "hash": "7a989f7f5270cc8fcca2f2ec6efe10872f9f9910e61bf11be82813f8705daebc",
@@ -605,7 +605,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Direction cosines always satisfy \\(l^2 + m^2 + n^2 = 1\\). For \\(\\langle 1, 1, 1 \\rangle\\) that sum is \\(1 + 1 + 1 = 3\\), not \\(1\\), so no line can have these as its direction cosines and the Assertion is FALSE. They are perfectly good direction RATIOS; dividing by \\(\\sqrt{3}\\) gives the corresponding direction cosines \\(\\frac{1}{\\sqrt{3}}, \\frac{1}{\\sqrt{3}}, \\frac{1}{\\sqrt{3}}\\), whose squares do sum to \\(1\\).\nThe Reason is a true statement in its own right: \\(\\cos\\theta = 1\\) does indeed hold, at \\(\\theta = 0\\).\nHence the Assertion is false, but the Reason is true."
   },
   {
    "hash": "2cb828eaf13b0f460d85550c96d45361413ba9a393e2f2897763dce32973a9a3",
@@ -616,7 +616,7 @@
    "chapter": "Relations and Functions",
    "subtopic": "One-One and Onto Functions",
    "stem": "Check whether \\(f : R - \\{3\\} \\to R\\) defined as \\(f(x) = \\dfrac{x - 2}{x - 3}\\) is onto or not.",
-   "solution": ""
+   "solution": "A function is onto only if its range fills the whole codomain, which here is \\(R\\). So find the range by solving for \\(x\\).\nPut \\(y = \\frac{x-2}{x-3}\\). Then \\(y(x-3) = x-2\\), so \\(yx - 3y = x - 2\\) and \\(x(y-1) = 3y-2\\), giving\n\\(x = \\frac{3y-2}{y-1}\\).\nThis expression is defined for every \\(y\\) except \\(y = 1\\), so every real number other than \\(1\\) does have a pre-image, while \\(1\\) has none. Indeed \\(\\frac{x-2}{x-3} = 1\\) would force \\(x - 2 = x - 3\\), that is \\(-2 = -3\\), which is impossible.\nHence the range is \\(R - \\{1\\}\\), which is a proper subset of the codomain \\(R\\).\nTherefore f is NOT onto."
   },
   {
    "hash": "7cffe43a34096439470f8bafb85d8879e8867e2ba142ea36f45894ce0b302ad5",
@@ -627,7 +627,7 @@
    "chapter": "Relations and Functions",
    "subtopic": "One-One and Onto Functions",
    "stem": "Check whether \\(f : Z \\times Z \\to Z \\times Z\\) (where Z is the set of integers) defined as \\(f(x, y) = (2y, 3x)\\) is injective or not.",
-   "solution": ""
+   "solution": "Injectivity means distinct inputs give distinct outputs, so start by assuming two inputs share an image.\nLet \\((x_1, y_1), (x_2, y_2) \\in Z \\times Z\\) with \\(f(x_1, y_1) = f(x_2, y_2)\\). Then\n\\((2y_1, 3x_1) = (2y_2, 3x_2)\\).\nEquating the two components separately, \\(2y_1 = 2y_2\\) gives \\(y_1 = y_2\\), and \\(3x_1 = 3x_2\\) gives \\(x_1 = x_2\\).\nSo \\((x_1, y_1) = (x_2, y_2)\\), and therefore f IS injective."
   },
   {
    "hash": "3fde747bd5ac3d3eb29d74cce3cc3dc10ea71ba7cb80be5f766052e34d297d95",
@@ -638,7 +638,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Derivatives of Functions in Parametric Form",
    "stem": "If \\(x = a \\sin^3 t\\), \\(y = b \\cos^3 t\\), then find \\(\\dfrac{dy}{dx}\\) at \\(t = \\dfrac{\\pi}{4}\\).",
-   "solution": ""
+   "solution": "Both coordinates are given in terms of the parameter \\(t\\), so differentiate each with respect to \\(t\\) and divide.\n\\(\\frac{dx}{dt} = 3a\\sin^2 t\\cos t\\) and \\(\\frac{dy}{dt} = -3b\\cos^2 t\\sin t\\).\nHence\n\\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{-3b\\cos^2 t\\sin t}{3a\\sin^2 t\\cos t} = -\\frac{b}{a}\\cdot\\frac{\\cos t}{\\sin t} = -\\frac{b}{a}\\cot t\\).\nAt \\(t = \\frac{\\pi}{4}\\), \\(\\cot\\frac{\\pi}{4} = 1\\), so\n\\(\\left.\\frac{dy}{dx}\\right|_{t = \\frac{\\pi}{4}} = -\\frac{b}{a}\\)."
   },
   {
    "hash": "ea7f35c4e9202d6e09d2ea1ba6952022044f230ee6df89b1e6212b5ab0d93542",
@@ -649,7 +649,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Absolute Maximum and Minimum on a Closed Interval",
    "stem": "Find the absolute maximum value of \\(f(x) = \\cos x + \\sin^2 x\\), \\(x \\in [0, \\pi]\\)",
-   "solution": ""
+   "solution": "On a closed interval the absolute maximum occurs either at a critical point or at an endpoint, so find the critical points and then compare values at all of them.\n\\(f'(x) = -\\sin x + 2\\sin x\\cos x = \\sin x\\left(2\\cos x - 1\\right)\\).\nSetting \\(f'(x) = 0\\) gives \\(\\sin x = 0\\) or \\(\\cos x = \\frac{1}{2}\\). On \\([0, \\pi]\\) the first gives the endpoints \\(x = 0\\) and \\(x = \\pi\\), and the second gives \\(x = \\frac{\\pi}{3}\\).\nNow evaluate f at all three:\n\\(f(0) = \\cos 0 + \\sin^2 0 = 1 + 0 = 1\\),\n\\(f\\left(\\frac{\\pi}{3}\\right) = \\frac{1}{2} + \\left(\\frac{\\sqrt{3}}{2}\\right)^2 = \\frac{1}{2} + \\frac{3}{4} = \\frac{5}{4}\\),\n\\(f(\\pi) = -1 + 0 = -1\\).\nThe largest of these is \\(\\frac{5}{4}\\), so the absolute maximum value of \\(f(x)\\) is \\(\\frac{5}{4}\\), attained at \\(x = \\frac{\\pi}{3}\\)."
   },
   {
    "hash": "ab689d27e46746db217b91e62e9170e8ceb0a844cc5412b37ce18cdaae449130",
@@ -660,7 +660,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Rate of Change of Quantities",
    "stem": "If the volume of a solid hemisphere increases at a uniform rate, prove that its surface area varies inversely as its radius.",
-   "solution": ""
+   "solution": "For a solid hemisphere of radius \\(r\\), the volume is \\(V = \\frac{2}{3}\\pi r^3\\) and the total surface area is \\(S = 3\\pi r^2\\) (the curved part \\(2\\pi r^2\\) together with the flat circular face \\(\\pi r^2\\)).\nThe volume increases at a uniform rate, so \\(\\frac{dV}{dt}\\) is a constant, say C. Differentiating the volume,\n\\(\\frac{dV}{dt} = 2\\pi r^2\\frac{dr}{dt} = C\\), so \\(\\frac{dr}{dt} = \\frac{C}{2\\pi r^2}\\).\nNow differentiate the surface area and substitute this:\n\\(\\frac{dS}{dt} = 6\\pi r\\frac{dr}{dt} = 6\\pi r \\times \\frac{C}{2\\pi r^2} = \\frac{3C}{r}\\).\nSince C is constant, \\(\\frac{dS}{dt} = \\frac{3C}{r}\\) is inversely proportional to \\(r\\). Hence the surface area varies inversely as the radius, as required.\n[Note on the wording: taken literally, \\(S = 3\\pi r^2\\) INCREASES with \\(r\\), so it is not \\(S\\) itself that varies inversely as \\(r\\). The statement to be proved is the standard one about the RATE of change: the rate at which the surface area grows is inversely proportional to the radius, which is exactly what \\(\\frac{dS}{dt} = \\frac{3C}{r}\\) says. The official marking scheme proves this same statement.]"
   },
   {
    "hash": "fead1583fe75a0f990df8dcdeb9c28ffcdfa4240ff286d6c0819743e154e60eb",
@@ -671,7 +671,7 @@
    "chapter": "Vector Algebra",
    "subtopic": "Section Formula",
    "stem": "If \\(\\overrightarrow{AB} = \\hat{j} + \\hat{k}\\) and \\(\\overrightarrow{AC} = 3\\hat{i} - \\hat{j} + 4\\hat{k}\\) represent the two vectors along the sides AB and AC of \\(\\Delta ABC\\), prove that the median \\(\\overrightarrow{AD} = \\dfrac{\\overrightarrow{AB} + \\overrightarrow{AC}}{2}\\), where D is midpoint of BC.\n\nHence, find the length of median AD.",
-   "solution": ""
+   "solution": "Take A as the origin of position vectors. Then the position vector of B is \\(\\overrightarrow{AB}\\) and the position vector of C is \\(\\overrightarrow{AC}\\).\nD is the midpoint of BC, so by the midpoint form of the section formula its position vector is the average of those of B and C, namely \\(\\frac{\\overrightarrow{AB} + \\overrightarrow{AC}}{2}\\).\nBut the position vector of D taken from the origin A is precisely \\(\\overrightarrow{AD}\\). Hence\n\\(\\overrightarrow{AD} = \\frac{\\overrightarrow{AB} + \\overrightarrow{AC}}{2}\\), which is what was to be proved.\nNow substitute the given vectors:\n\\(\\overrightarrow{AD} = \\frac{\\left(\\hat{j} + \\hat{k}\\right) + \\left(3\\hat{i} - \\hat{j} + 4\\hat{k}\\right)}{2} = \\frac{3\\hat{i} + 5\\hat{k}}{2}\\).\nThe \\(\\hat{j}\\) components cancel. Therefore the length of the median is\n\\(\\left|\\overrightarrow{AD}\\right| = \\frac{1}{2}\\sqrt{3^2 + 0^2 + 5^2} = \\frac{\\sqrt{34}}{2}\\) units."
   },
   {
    "hash": "df6082b05c549cf946d0cb49537e82af87e808ffc7ccdb37061e29f7dc3bfa7f",
@@ -682,7 +682,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Equation of a Line in Space",
    "stem": "Find the co-ordinates of the point on the line \\(\\vec{r} = -\\hat{j} + 3\\hat{k} + \\lambda(2\\hat{i} - 2\\hat{j} + \\hat{k})\\) such that the sum of co-ordinates is 3.",
-   "solution": ""
+   "solution": "Write the general point of the line by collecting components. Since \\(\\vec{r} = -\\hat{j} + 3\\hat{k} + \\lambda\\left(2\\hat{i} - 2\\hat{j} + \\hat{k}\\right)\\),\n\\(\\vec{r} = 2\\lambda\\hat{i} + \\left(-2\\lambda - 1\\right)\\hat{j} + \\left(\\lambda + 3\\right)\\hat{k}\\),\nso a general point on the line is \\(\\left(2\\lambda,\\ -2\\lambda - 1,\\ \\lambda + 3\\right)\\).\nThe condition is that the sum of the coordinates is \\(3\\):\n\\(2\\lambda + \\left(-2\\lambda - 1\\right) + \\left(\\lambda + 3\\right) = 3\\).\nThe \\(2\\lambda\\) terms cancel, leaving \\(\\lambda + 2 = 3\\), so \\(\\lambda = 1\\).\nSubstituting \\(\\lambda = 1\\) gives \\(\\vec{r} = 2\\hat{i} - 3\\hat{j} + 4\\hat{k}\\), so the required point is \\((2, -3, 4)\\).\nCheck: \\(2 + (-3) + 4 = 3\\), as required."
   },
   {
    "hash": "c081027c084d022c8a9ed4dc288b42c90999bc2400c20e5cf6ad732807511c6f",
@@ -693,7 +693,7 @@
    "chapter": "Integrals",
    "subtopic": "Integrals of Some Particular Functions",
    "stem": "Find : \\(\\displaystyle\\int \\dfrac{x + 2}{\\sqrt{9x - x^2}}\\, dx\\)",
-   "solution": ""
+   "solution": "The denominator carries \\(9x - x^2\\), whose derivative is \\(9 - 2x\\). So split the numerator into a multiple of that derivative plus a constant, which turns the integral into one standard form plus another.\nLet \\(x + 2 = A\\left(9 - 2x\\right) + B\\). Comparing coefficients of \\(x\\) gives \\(1 = -2A\\), so \\(A = -\\frac{1}{2}\\); comparing constants gives \\(2 = 9A + B = -\\frac{9}{2} + B\\), so \\(B = \\frac{13}{2}\\).\nHence\n\\(I = -\\frac{1}{2}\\int\\frac{9-2x}{\\sqrt{9x-x^2}}\\,dx + \\frac{13}{2}\\int\\frac{dx}{\\sqrt{9x-x^2}}\\).\nIn the first integral put \\(u = 9x - x^2\\), so \\(du = (9-2x)dx\\) and it becomes \\(-\\frac{1}{2}\\int\\frac{du}{\\sqrt{u}} = -\\frac{1}{2}\\left(2\\sqrt{u}\\right) = -\\sqrt{9x-x^2}\\).\nFor the second, complete the square: \\(9x - x^2 = -\\left(x^2 - 9x\\right) = \\left(\\frac{9}{2}\\right)^2 - \\left(x - \\frac{9}{2}\\right)^2\\), so it is of the form \\(\\int\\frac{dx}{\\sqrt{a^2 - u^2}} = \\sin^{-1}\\frac{u}{a}\\) with \\(a = \\frac{9}{2}\\) and \\(u = x - \\frac{9}{2}\\), giving \\(\\frac{13}{2}\\sin^{-1}\\left(\\frac{2x-9}{9}\\right)\\).\nTherefore\n\\(I = -\\sqrt{9x - x^2} + \\frac{13}{2}\\sin^{-1}\\left(\\frac{2x-9}{9}\\right) + C\\)."
   },
   {
    "hash": "df596e87d97e02fa3a3fc8ce0dc9c7f751c8d95ddc701cd34639775ef730d925",
@@ -704,7 +704,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "Evaluate : \\(\\displaystyle\\int_{\\frac{\\pi}{12}}^{\\frac{5\\pi}{12}} \\dfrac{dx}{1 + \\sqrt{\\cot x}}\\)",
-   "solution": ""
+   "solution": "This is the classic king-property integral, where the limits satisfy \\(\\frac{\\pi}{12} + \\frac{5\\pi}{12} = \\frac{\\pi}{2}\\).\nFirst clear the surd in the denominator. Since \\(\\sqrt{\\cot x} = \\frac{\\sqrt{\\cos x}}{\\sqrt{\\sin x}}\\),\n\\(I = \\int_{\\frac{\\pi}{12}}^{\\frac{5\\pi}{12}}\\frac{dx}{1 + \\sqrt{\\cot x}} = \\int_{\\frac{\\pi}{12}}^{\\frac{5\\pi}{12}}\\frac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}}\\,dx\\) . . . (i)\nNow apply \\(\\int_a^b f(x)\\,dx = \\int_a^b f(a + b - x)\\,dx\\) with \\(a + b = \\frac{\\pi}{2}\\). Since \\(\\sin\\left(\\frac{\\pi}{2} - x\\right) = \\cos x\\) and \\(\\cos\\left(\\frac{\\pi}{2} - x\\right) = \\sin x\\), the integrand simply swaps sine and cosine:\n\\(I = \\int_{\\frac{\\pi}{12}}^{\\frac{5\\pi}{12}}\\frac{\\sqrt{\\cos x}}{\\sqrt{\\cos x} + \\sqrt{\\sin x}}\\,dx\\) . . . (ii)\nAdding (i) and (ii), the two numerators combine to give the common denominator, so the integrand becomes \\(1\\):\n\\(2I = \\int_{\\frac{\\pi}{12}}^{\\frac{5\\pi}{12}} 1\\,dx = \\left[x\\right]_{\\frac{\\pi}{12}}^{\\frac{5\\pi}{12}} = \\frac{5\\pi}{12} - \\frac{\\pi}{12} = \\frac{\\pi}{3}\\).\nTherefore \\(I = \\frac{\\pi}{6}\\)."
   },
   {
    "hash": "5ac318fcbe388545c0b3b633a0ffe344428edbeb9402a1474abd1913cf1465bc",
@@ -715,7 +715,7 @@
    "chapter": "Integrals",
    "subtopic": "Definite Integrals and the Fundamental Theorem",
    "stem": "Evaluate : \\(\\displaystyle\\int_{\\frac{-\\pi}{6}}^{\\frac{\\pi}{2}} (\\sin |x| + \\cos |x|)\\, dx\\)",
-   "solution": ""
+   "solution": "The modulus changes definition at \\(x = 0\\), which lies inside the interval, so split the integral there.\nFor \\(x < 0\\), \\(|x| = -x\\), so \\(\\sin|x| = \\sin(-x) = -\\sin x\\) while \\(\\cos|x| = \\cos(-x) = \\cos x\\). For \\(x \\ge 0\\), \\(|x| = x\\) and both are unchanged. Hence\n\\(I = \\int_{-\\frac{\\pi}{6}}^{0}\\left(-\\sin x + \\cos x\\right)dx + \\int_{0}^{\\frac{\\pi}{2}}\\left(\\sin x + \\cos x\\right)dx\\).\nIntegrating each,\n\\(I = \\left[\\cos x + \\sin x\\right]_{-\\frac{\\pi}{6}}^{0} + \\left[-\\cos x + \\sin x\\right]_{0}^{\\frac{\\pi}{2}}\\).\nThe first bracket gives \\((1 + 0) - \\left(\\frac{\\sqrt{3}}{2} - \\frac{1}{2}\\right) = 1 - \\frac{\\sqrt{3}}{2} + \\frac{1}{2}\\), and the second gives \\((0 + 1) - (-1 + 0) = 2\\).\nAdding,\n\\(I = \\frac{3}{2} - \\frac{\\sqrt{3}}{2} + 2 = \\frac{7 - \\sqrt{3}}{2}\\)."
   },
   {
    "hash": "07086a999920a22219bcd3e214f5ebe85db96aa5496f69af633e4136d40b79cb",
@@ -726,7 +726,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration by Substitution",
    "stem": "If \\(\\dfrac{d}{dx}(F(x)) = \\dfrac{1}{e^x + 1}\\), then find \\(F(x)\\) given that \\(F(0) = \\log \\dfrac{1}{2}\\).",
-   "solution": ""
+   "solution": "Since \\(\\frac{d}{dx}\\left(F(x)\\right) = \\frac{1}{e^x + 1}\\), F is an antiderivative of that function, so integrate it and then fix the constant using \\(F(0)\\).\nThe substitution is easier if the exponential is moved into the numerator, so multiply numerator and denominator by \\(e^{-x}\\):\n\\(F(x) = \\int\\frac{dx}{e^x + 1} = \\int\\frac{e^{-x}}{1 + e^{-x}}\\,dx\\).\nNow put \\(u = 1 + e^{-x}\\), so \\(du = -e^{-x}dx\\) and the integral becomes \\(-\\int\\frac{du}{u} = -\\log|u|\\). Hence\n\\(F(x) = -\\log\\left(1 + e^{-x}\\right) + C\\), the modulus being unnecessary as \\(1 + e^{-x} > 0\\).\nApply the given condition. At \\(x = 0\\), \\(F(0) = -\\log 2 + C\\), and this is to equal \\(\\log\\frac{1}{2} = -\\log 2\\), so \\(C = 0\\).\nTherefore\n\\(F(x) = -\\log\\left(1 + e^{-x}\\right)\\),\nwhich may equally be written as \\(F(x) = x - \\log\\left(e^x + 1\\right)\\), since \\(1 + e^{-x} = \\frac{e^x + 1}{e^x}\\)."
   },
   {
    "hash": "d0cb5bef314f85fd852a1fded810984af7afd585ce1b2844afdbd561f1ec1a06",
@@ -737,7 +737,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Homogeneous Differential Equations",
    "stem": "Solve the following differential equation :\n\n\\(x\\dfrac{dy}{dx} = y - x \\sin^2 \\left(\\dfrac{y}{x}\\right)\\), given that \\(y(1) = \\dfrac{\\pi}{6}\\)",
-   "solution": ""
+   "solution": "Every occurrence of the variables is through the ratio \\(\\frac{y}{x}\\), so this is a homogeneous equation. Divide throughout by \\(x\\) first:\n\\(\\frac{dy}{dx} = \\frac{y}{x} - \\sin^2\\left(\\frac{y}{x}\\right)\\).\nPut \\(\\frac{y}{x} = v\\), so that \\(y = vx\\) and \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\). The equation becomes\n\\(v + x\\frac{dv}{dx} = v - \\sin^2 v\\), that is \\(x\\frac{dv}{dx} = -\\sin^2 v\\).\nThe variables now separate. Writing \\(\\frac{dv}{\\sin^2 v} = -\\frac{dx}{x}\\) and multiplying through by \\(-1\\),\n\\(-\\int \\mathrm{cosec}^2 v\\,dv = \\int\\frac{dx}{x}\\).\nSince \\(\\int \\mathrm{cosec}^2 v\\,dv = -\\cot v\\), the left side is \\(\\cot v\\), so\n\\(\\cot v = \\log|x| + C\\), that is \\(\\cot\\left(\\frac{y}{x}\\right) = \\log|x| + C\\).\nNow use \\(y(1) = \\frac{\\pi}{6}\\): at \\(x = 1\\), \\(v = \\frac{\\pi}{6}\\), and \\(\\cot\\frac{\\pi}{6} = \\sqrt{3}\\) while \\(\\log 1 = 0\\). So \\(C = \\sqrt{3}\\).\nThe required solution is\n\\(\\cot\\left(\\frac{y}{x}\\right) = \\log|x| + \\sqrt{3}\\)."
   },
   {
    "hash": "0ac2d77268893bb210ed1d421c59d64e63a95241bbf6913364e32a1e3043c322",
@@ -748,7 +748,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Linear Differential Equations",
    "stem": "Find the general solution of the differential equation : \\(y \\log y \\dfrac{dx}{dy} + x = \\dfrac{2}{y}\\).",
-   "solution": ""
+   "solution": "Here \\(\\frac{dx}{dy}\\) appears rather than \\(\\frac{dy}{dx}\\), so treat x as the dependent variable and y as the independent one; the equation is then linear in x.\nDividing throughout by \\(y\\log y\\),\n\\(\\frac{dx}{dy} + \\frac{1}{y\\log y}\\,x = \\frac{2}{y^2\\log y}\\),\nso \\(P(y) = \\frac{1}{y\\log y}\\).\nFor the integrating factor, note that with \\(u = \\log y\\) we have \\(du = \\frac{dy}{y}\\), so \\(\\int\\frac{dy}{y\\log y} = \\int\\frac{du}{u} = \\log\\left(\\log y\\right)\\). Hence\n\\(\\text{I.F.} = e^{\\log\\left(\\log y\\right)} = \\log y\\).\nThe solution is \\(x \\times \\text{I.F.} = \\int Q(y) \\times \\text{I.F.}\\,dy\\), and the \\(\\log y\\) factors cancel:\n\\(x\\log y = \\int\\frac{2}{y^2\\log y}\\times\\log y\\,dy = \\int\\frac{2}{y^2}\\,dy = -\\frac{2}{y} + C\\).\nTherefore the general solution is\n\\(x\\log y = -\\frac{2}{y} + C\\), equivalently \\(xy\\log y = -2 + Cy\\)."
   },
   {
    "hash": "41b0dc8e6fed335d50ab4f797bf13a9bb7f518bf15bfe4aae3ae5b31d5c3c0c2",
@@ -759,7 +759,7 @@
    "chapter": "Linear Programming",
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "Solve the following linear programming problem graphically :\n\nMaximize \\(Z = 10500x + 9000y\\)\n\nSubject to constraints\n\n\\(x + y \\leq 50\\)\n\n\\(2x + y \\leq 80\\)\n\n\\(x, y \\geq 0\\)",
-   "solution": ""
+   "solution": "Draw the two boundary lines from their intercepts. The line \\(x + y = 50\\) joins \\((50, 0)\\) to \\((0, 50)\\), and the line \\(2x + y = 80\\) joins \\((40, 0)\\) to \\((0, 80)\\). With \\(x, y \\ge 0\\), both inequalities are of \"less than or equal\" type, so the feasible region is the part of the first quadrant lying below both lines.\nAlong the x axis the tighter restriction is \\(2x + y \\le 80\\), giving \\(x \\le 40\\); along the y axis it is \\(x + y \\le 50\\), giving \\(y \\le 50\\). The two lines cross where \\(x + y = 50\\) and \\(2x + y = 80\\); subtracting the first from the second gives \\(x = 30\\), and then \\(y = 20\\).\nSo the feasible region is the bounded quadrilateral with corner points \\(O(0,0)\\), \\(A(0,50)\\), \\(B(30,20)\\) and \\(C(40,0)\\). Since it is bounded, the maximum of Z occurs at one of these corners. Evaluating \\(Z = 10500x + 9000y\\):\nat \\(O(0,0)\\), \\(Z = 0\\);\nat \\(A(0,50)\\), \\(Z = 9000 \\times 50 = 450000\\);\nat \\(B(30,20)\\), \\(Z = 10500 \\times 30 + 9000 \\times 20 = 315000 + 180000 = 495000\\);\nat \\(C(40,0)\\), \\(Z = 10500 \\times 40 = 420000\\).\nThe greatest of these is \\(495000\\). Hence Z is maximum at \\(x = 30\\), \\(y = 20\\), with maximum value \\(Z = 495000\\)."
   },
   {
    "hash": "95df056e6d34c9de4ae689ab9a9b40dc896429bb51dffb4e86d07ac974cf2574",
@@ -771,7 +771,7 @@
    "subtopic": "Independent Events",
    "stem": "The probability of hitting the target by a trained sniper is three times the probability of not hitting the target on a stormy day due to high wind speed.\n\nThe sniper fired two shots on the target on a stormy day when wind speed was very high. Find the probability that\n\n(i) target is hit\n\n(ii) atleast one shot misses the target.",
    "figure": "DECORATIVE - a captioned clip-art picture of a kneeling sniper sits between the first sentence and the rest of the stem. It carries no data; every number needed is in the text. Page idx 16. Not attached.",
-   "solution": ""
+   "solution": "First find the two probabilities from the relation given in the question.\nLet the probability of NOT hitting the target on such a day be \\(p\\). Then the probability of hitting it is \\(3p\\). These are complementary, so\n\\(p + 3p = 1\\), giving \\(p = \\frac{1}{4}\\).\nSo, writing H for a hit, \\(P(H) = \\frac{3}{4}\\) and \\(P\\left(\\overline{H}\\right) = \\frac{1}{4}\\). The two shots are independent, so probabilities multiply.\n(i) The target is hit if at least one of the two shots hits, so work with the complement, which is that BOTH shots miss:\n\\(P(\\text{target is hit}) = 1 - P\\left(\\overline{H}\\ \\overline{H}\\right) = 1 - \\frac{1}{4}\\times\\frac{1}{4} = 1 - \\frac{1}{16} = \\frac{15}{16}\\).\n(ii) At least one shot misses is the complement of BOTH shots hitting:\n\\(P(\\text{at least one misses}) = 1 - P(HH) = 1 - \\frac{3}{4}\\times\\frac{3}{4} = 1 - \\frac{9}{16} = \\frac{7}{16}\\)."
   },
   {
    "hash": "bcbddb908b88d0653f9b06779d33c8765a497054292d81741ecc80fd543dba41",
@@ -782,7 +782,7 @@
    "chapter": "Probability",
    "subtopic": "Conditional Probability",
    "stem": "Mother, Father and Son line up at random for a family picture. Let events E : Son on one end and F : Father in the middle. Find \\(P(E/F)\\).",
-   "solution": ""
+   "solution": "With three people there are \\(3! = 6\\) equally likely line-ups. Writing M, F, S for Mother, Father and Son, the sample space is\n\\(\\{MFS,\\ MSF,\\ FMS,\\ FSM,\\ SMF,\\ SFM\\}\\).\nEvent F is that the Father stands in the middle, which happens in \\(MFS\\) and \\(SFM\\), so \\(P(F) = \\frac{2}{6}\\).\nEvent \\(E \\cap F\\) is that the Son is on one end AND the Father is in the middle. In both \\(MFS\\) and \\(SFM\\) the Son is indeed at an end, so \\(E \\cap F\\) is also \\(\\{MFS,\\ SFM\\}\\) and \\(P(E \\cap F) = \\frac{2}{6}\\).\nTherefore\n\\(P(E/F) = \\frac{P(E \\cap F)}{P(F)} = \\frac{2/6}{2/6} = 1\\).\nThis is worth seeing directly: once the Father occupies the middle place, only the two end places remain for the Mother and the Son, so the Son is certain to be on an end. Conditional on F, event E is a sure event, so \\(P(E/F) = 1\\)."
   },
   {
    "hash": "b9f7b82074162fd8ed73c410245b36a35a5ace81164949c5a28bc01b3664d569",
@@ -793,7 +793,7 @@
    "chapter": "Determinants",
    "subtopic": "Solving System of Linear Equations",
    "stem": "If \\(P = \\begin{bmatrix} 1 & -1 & 0 \\\\ 2 & 3 & 4 \\\\ 0 & 1 & 2 \\end{bmatrix}\\) and \\(Q = \\begin{bmatrix} 2 & 2 & -4 \\\\ -4 & 2 & -4 \\\\ 2 & -1 & 5 \\end{bmatrix}\\), find (QP) and hence solve the following system of equations using matrices :\n\n\\(x - y = 3\\), \\(2x + 3y + 4z = 17\\), \\(y + 2z = 7\\)",
-   "solution": ""
+   "solution": "First multiply the two given matrices. Taking the rows of Q against the columns of P,\n\\(QP = \\begin{bmatrix} 2 & 2 & -4 \\\\ -4 & 2 & -4 \\\\ 2 & -1 & 5 \\end{bmatrix}\\begin{bmatrix} 1 & -1 & 0 \\\\ 2 & 3 & 4 \\\\ 0 & 1 & 2 \\end{bmatrix} = \\begin{bmatrix} 6 & 0 & 0 \\\\ 0 & 6 & 0 \\\\ 0 & 0 & 6 \\end{bmatrix} = 6I\\).\n(For instance the first entry is \\(2(1) + 2(2) + (-4)(0) = 6\\), and the next in that row is \\(2(-1) + 2(3) + (-4)(1) = 0\\).)\nSince \\(QP = 6I\\), we may write \\(\\left(\\frac{1}{6}Q\\right)P = I\\), so P is invertible and\n\\(P^{-1} = \\frac{1}{6}Q\\).\nNow look at the system. Written in matrix form \\(PX = R\\), the three equations \\(x - y = 3\\), \\(2x + 3y + 4z = 17\\), \\(y + 2z = 7\\) have coefficient matrix exactly P (the missing terms contributing zeros), with\n\\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\) and \\(R = \\begin{bmatrix} 3 \\\\ 17 \\\\ 7 \\end{bmatrix}\\).\nHence \\(X = P^{-1}R = \\frac{1}{6}QR\\):\n\\(X = \\frac{1}{6}\\begin{bmatrix} 2 & 2 & -4 \\\\ -4 & 2 & -4 \\\\ 2 & -1 & 5 \\end{bmatrix}\\begin{bmatrix} 3 \\\\ 17 \\\\ 7 \\end{bmatrix} = \\frac{1}{6}\\begin{bmatrix} 6 + 34 - 28 \\\\ -12 + 34 - 28 \\\\ 6 - 17 + 35 \\end{bmatrix} = \\frac{1}{6}\\begin{bmatrix} 12 \\\\ -6 \\\\ 24 \\end{bmatrix} = \\begin{bmatrix} 2 \\\\ -1 \\\\ 4 \\end{bmatrix}\\).\nTherefore \\(x = 2\\), \\(y = -1\\), \\(z = 4\\).\nCheck: \\(2 - (-1) = 3\\); \\(2(2) + 3(-1) + 4(4) = 4 - 3 + 16 = 17\\); \\((-1) + 2(4) = 7\\). All three hold."
   },
   {
    "hash": "1e748cbe0c87433baef3d38316373ecf0404f695a95b9c52217a24c2e372dd3a",
@@ -804,7 +804,7 @@
    "chapter": "Determinants",
    "subtopic": "Determinant and its Properties",
    "stem": "Obtain the value of \\(\\Delta = \\begin{vmatrix} 1 + x & 1 & 1 \\\\ 1 & 1 + y & 1 \\\\ 1 & 1 & 1 + z \\end{vmatrix}\\) in terms of \\(x\\), y and z.\n\nFurther, if \\(\\Delta = 0\\) and \\(x\\), y, z are non-zero real numbers, prove that \\(x^{-1} + y^{-1} + z^{-1} = -1\\).",
-   "solution": ""
+   "solution": "Expand the determinant along the first row.\n\\(\\Delta = (1+x)\\left[(1+y)(1+z) - 1\\right] - 1\\left[(1+z) - 1\\right] + 1\\left[1 - (1+y)\\right]\\).\nThe second bracket is \\(z\\) and the third is \\(-y\\), so\n\\(\\Delta = (1+x)\\left(1 + y + z + yz - 1\\right) - z - y = (1+x)\\left(y + z + yz\\right) - z - y\\).\nMultiplying out, \\((1+x)(y + z + yz) = y + z + yz + xy + xz + xyz\\), and the \\(y\\) and \\(z\\) terms cancel against \\(-z - y\\). Hence\n\\(\\Delta = xy + yz + zx + xyz\\).\nNow suppose \\(\\Delta = 0\\) with \\(x\\), \\(y\\), \\(z\\) all non-zero. Then\n\\(xy + yz + zx + xyz = 0\\), so \\(yz + zx + xy = -xyz\\).\nSince \\(xyz \\neq 0\\) we may divide both sides by \\(xyz\\). Term by term, \\(\\frac{yz}{xyz} = \\frac{1}{x}\\), \\(\\frac{zx}{xyz} = \\frac{1}{y}\\) and \\(\\frac{xy}{xyz} = \\frac{1}{z}\\), while the right side becomes \\(-1\\). Therefore\n\\(\\frac{1}{x} + \\frac{1}{y} + \\frac{1}{z} = -1\\), that is \\(x^{-1} + y^{-1} + z^{-1} = -1\\), as required."
   },
   {
    "hash": "cf5628f34b7588e375f7266b563943795b2a5e60d6edcec4e73c616ef93029c3",
@@ -815,7 +815,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Increasing and Decreasing Functions",
    "stem": "Find the sub intervals in which \\(f(x) = \\cot^{-1}(\\sin x + \\cos x)\\), \\(x \\in (0, \\pi)\\) is increasing and decreasing.",
-   "solution": ""
+   "solution": "Differentiate, using \\(\\frac{d}{du}\\cot^{-1}u = -\\frac{1}{1+u^2}\\) with \\(u = \\sin x + \\cos x\\), so that \\(\\frac{du}{dx} = \\cos x - \\sin x\\):\n\\(f'(x) = \\frac{-\\left(\\cos x - \\sin x\\right)}{1 + \\left(\\sin x + \\cos x\\right)^2} = \\frac{\\sin x - \\cos x}{1 + \\left(\\sin x + \\cos x\\right)^2}\\).\nThe denominator is at least \\(1\\), so it is always positive and the sign of \\(f'(x)\\) is the sign of \\(\\sin x - \\cos x\\) alone.\nFor the critical point, \\(f'(x) = 0\\) gives \\(\\sin x = \\cos x\\), that is \\(\\tan x = 1\\), so \\(x = \\frac{\\pi}{4}\\) is the only such point in \\((0, \\pi)\\).\nTo read off the sign on each side, write \\(\\sin x - \\cos x = \\sqrt{2}\\sin\\left(x - \\frac{\\pi}{4}\\right)\\).\nOn \\(\\left(0, \\frac{\\pi}{4}\\right)\\): \\(x - \\frac{\\pi}{4}\\) lies in \\(\\left(-\\frac{\\pi}{4}, 0\\right)\\), where the sine is negative, so \\(f'(x) < 0\\).\nOn \\(\\left(\\frac{\\pi}{4}, \\pi\\right)\\): \\(x - \\frac{\\pi}{4}\\) lies in \\(\\left(0, \\frac{3\\pi}{4}\\right)\\), where the sine is positive, so \\(f'(x) > 0\\).\nHence \\(f(x)\\) is DECREASING on \\(\\left(0, \\frac{\\pi}{4}\\right)\\) and INCREASING on \\(\\left(\\frac{\\pi}{4}, \\pi\\right)\\).\n(The closed forms \\(\\left(0, \\frac{\\pi}{4}\\right]\\) and \\(\\left[\\frac{\\pi}{4}, \\pi\\right)\\) are equally acceptable, since \\(f'\\) vanishes only at the single point \\(x = \\frac{\\pi}{4}\\).)"
   },
   {
    "hash": "0a53e6d5ab3a5a28e1e963f211450ddb3940607741fcb9ade7da7f507c3db3ca",
@@ -827,7 +827,7 @@
    "subtopic": "Maxima and Minima",
    "stem": "A rectangle of perimeter 36 cm is revolved around one of its sides to sweep out a cylinder of maximum volume.\n\nFind the dimensions of the rectangle.",
    "figure": "DECORATIVE - a plain line drawing of a rectangle beside a cylinder with a rotation arrow, printed between the two sentences of the stem. It is unlabelled and carries no measurement; the perimeter and the axis of revolution are both stated in the text. Page idx 18. Not attached.",
-   "solution": ""
+   "solution": "Let the sides of the rectangle be \\(x\\) and \\(y\\). The perimeter is \\(36\\) cm, so \\(2(x + y) = 36\\), giving \\(y = 18 - x\\).\nRevolve the rectangle about the side of length \\(18 - x\\). That side becomes the axis, so it is the HEIGHT of the cylinder, while the other side \\(x\\) sweeps out the circular face and is therefore the RADIUS. Hence\n\\(V = \\pi x^2\\left(18 - x\\right) = \\pi\\left(18x^2 - x^3\\right)\\).\nDifferentiating,\n\\(\\frac{dV}{dx} = \\pi\\left(36x - 3x^2\\right) = 3\\pi x\\left(12 - x\\right)\\).\nSetting \\(\\frac{dV}{dx} = 0\\) gives \\(x = 0\\) or \\(x = 12\\). Since \\(x = 0\\) gives no cylinder at all, the only admissible critical point is \\(x = 12\\) cm.\nTo confirm it is a maximum,\n\\(\\frac{d^2V}{dx^2} = \\pi\\left(36 - 6x\\right)\\), and at \\(x = 12\\) this is \\(\\pi(36 - 72) = -36\\pi < 0\\).\nSo the volume is greatest when \\(x = 12\\), and then the other side is \\(18 - 12 = 6\\).\nHence the dimensions of the rectangle are \\(12\\) cm and \\(6\\) cm. (Check: the perimeter is \\(2(12 + 6) = 36\\) cm, and the cylinder has radius \\(12\\) cm and height \\(6\\) cm.)"
   },
   {
    "hash": "38a86df6d32586934169758a4d573367e97320aeafe074dc6cd90b23e03bdf89",
@@ -838,7 +838,7 @@
    "chapter": "Inverse Trigonometric Functions",
    "subtopic": "Domains, Ranges and Principal Value Branches",
    "stem": "Find the domain of \\(g(x) = \\cos^{-1}(x^2 - 1)\\). Hence, find the value of \\(x\\) for which \\(g(x) = \\dfrac{\\pi}{3}\\).\n\nAlso, write the range of \\(\\cos^{-1} x\\) other than its principal branch.",
-   "solution": ""
+   "solution": "The inverse cosine is defined only on \\([-1, 1]\\), so the domain of g is fixed by requiring its input to lie there:\n\\(-1 \\le x^2 - 1 \\le 1\\).\nAdding \\(1\\) throughout gives \\(0 \\le x^2 \\le 2\\). The left-hand inequality holds automatically for every real \\(x\\), so the binding condition is \\(x^2 \\le 2\\), that is \\(|x| \\le \\sqrt{2}\\).\nHence the domain of \\(g(x)\\) is \\(\\left[-\\sqrt{2}, \\sqrt{2}\\right]\\).\nNext, set \\(g(x) = \\frac{\\pi}{3}\\):\n\\(\\cos^{-1}\\left(x^2 - 1\\right) = \\frac{\\pi}{3}\\), so \\(x^2 - 1 = \\cos\\frac{\\pi}{3} = \\frac{1}{2}\\).\nThus \\(x^2 = \\frac{3}{2}\\) and \\(x = \\pm\\sqrt{\\frac{3}{2}} = \\pm\\frac{\\sqrt{6}}{2}\\).\nBoth values are admissible, since \\(\\sqrt{\\frac{3}{2}} \\approx 1.22\\) lies inside \\(\\left[-\\sqrt{2}, \\sqrt{2}\\right]\\).\nFinally, the principal branch of \\(\\cos^{-1}x\\) has range \\([0, \\pi]\\). A different branch is obtained by taking any other interval on which the cosine is one-one and still covers all of \\([-1, 1]\\), that is any interval of the form \\(\\left[n\\pi, (n+1)\\pi\\right]\\). So a valid range other than the principal one is \\([-\\pi, 0]\\), or equally \\([\\pi, 2\\pi]\\)."
   },
   {
    "hash": "0701c49047a6f116463e8b1a942334df857a175f33908ccdd4129efd187e9334",
@@ -849,7 +849,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Equation of a Line in Space",
    "stem": "A line passing through the points A(1, 2, 3) and B(5, 8, 11) intersects the line \\(\\vec{r} = 4\\hat{i} + \\hat{j} + \\lambda(5\\hat{i} + 2\\hat{j} + \\hat{k})\\). Find the co-ordinates of the point of intersection. Hence, write the equation of a line passing through the point of intersection and perpendicular to both the lines.",
-   "solution": ""
+   "solution": "First write both lines in cartesian form.\nThe line through \\(A(1,2,3)\\) and \\(B(5,8,11)\\) has direction \\(\\langle 5-1,\\ 8-2,\\ 11-3\\rangle = \\langle 4, 6, 8\\rangle\\), which reduces to \\(\\langle 2, 3, 4\\rangle\\). So\n\\(l_1: \\frac{x-1}{2} = \\frac{y-2}{3} = \\frac{z-3}{4} = \\mu\\), giving the general point \\(P\\left(2\\mu + 1,\\ 3\\mu + 2,\\ 4\\mu + 3\\right)\\).\nThe given line \\(\\vec{r} = 4\\hat{i} + \\hat{j} + \\lambda\\left(5\\hat{i} + 2\\hat{j} + \\hat{k}\\right)\\) passes through \\((4, 1, 0)\\) with direction \\(\\langle 5, 2, 1\\rangle\\). So\n\\(l_2: \\frac{x-4}{5} = \\frac{y-1}{2} = \\frac{z}{1} = \\lambda\\), giving the general point \\(Q\\left(5\\lambda + 4,\\ 2\\lambda + 1,\\ \\lambda\\right)\\).\nAt the point of intersection P and Q coincide, so comparing coordinates:\n\\(2\\mu + 1 = 5\\lambda + 4\\), \\(3\\mu + 2 = 2\\lambda + 1\\), \\(4\\mu + 3 = \\lambda\\).\nFrom the third, \\(\\lambda = 4\\mu + 3\\). Substituting into the second, \\(3\\mu + 2 = 2(4\\mu + 3) + 1 = 8\\mu + 7\\), so \\(-5\\mu = 5\\) and \\(\\mu = -1\\); then \\(\\lambda = 4(-1) + 3 = -1\\).\nThe first equation must be checked, since three equations in two unknowns are consistent only if the lines really do meet: \\(2(-1) + 1 = -1\\) and \\(5(-1) + 4 = -1\\), so it holds.\nSubstituting \\(\\mu = -1\\) gives the point of intersection \\((-1, -1, -1)\\).\nFor the second part, a line perpendicular to both \\(l_1\\) and \\(l_2\\) has direction along the cross product of their directions:\n\\(\\langle 2, 3, 4\\rangle \\times \\langle 5, 2, 1\\rangle = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & 3 & 4 \\\\ 5 & 2 & 1 \\end{vmatrix} = \\hat{i}(3 - 8) - \\hat{j}(2 - 20) + \\hat{k}(4 - 15) = -5\\hat{i} + 18\\hat{j} - 11\\hat{k}\\).\nSo the required line passes through \\((-1, -1, -1)\\) with direction ratios \\(\\langle -5, 18, -11\\rangle\\):\n\\(\\frac{x+1}{-5} = \\frac{y+1}{18} = \\frac{z+1}{-11}\\),\nwhich may equally be written with the direction reversed as \\(\\frac{x+1}{5} = \\frac{y+1}{-18} = \\frac{z+1}{11}\\), or in vector form as\n\\(\\vec{r} = \\left(-\\hat{i} - \\hat{j} - \\hat{k}\\right) + \\mu\\left(5\\hat{i} - 18\\hat{j} + 11\\hat{k}\\right)\\)."
   },
   {
    "hash": "cd4112fd2c0f174a98c3a9a9ce9d457a429f5dc4d28520596daad37523891f76",
@@ -862,7 +862,7 @@
    "stem": "What is the probability that selected person is a female ?",
    "context": "Smoking increases the risk of lung problems.\n\nA study revealed that 170 in 1000 males who smoke develop lung complications, while 120 out of 1000 females who smoke develop lung related problems. In a colony, 50 people were found to be smokers of which 30 are males.\n\nA person is selected at random from these 50 people and tested for lung related problems.\n\nBased on the given information, answer the following questions :",
    "figure": "DECORATIVE - a captioned infographic of smoking-related lung symptoms sits under the opening sentence. Every figure the questions need (170/1000, 120/1000, 50, 30) is in the prose. Page idx 20. Not attached.",
-   "solution": ""
+   "solution": "The selection is made from the \\(50\\) smokers in the colony, of whom \\(30\\) are male, so the number of females is \\(50 - 30 = 20\\).\nWriting F for the event that the person chosen is a female,\n\\(P(F) = \\frac{20}{50} = \\frac{2}{5}\\)."
   },
   {
    "hash": "babcc2cc1c2f961e23f9bab21622646be6ab749dcb04ebdbc7b9f0579881b654",
@@ -874,7 +874,7 @@
    "subtopic": "Conditional Probability",
    "stem": "If a male person is selected, what is the probability that he will not be suffering from lung problems ?",
    "context": "Smoking increases the risk of lung problems.\n\nA study revealed that 170 in 1000 males who smoke develop lung complications, while 120 out of 1000 females who smoke develop lung related problems. In a colony, 50 people were found to be smokers of which 30 are males.\n\nA person is selected at random from these 50 people and tested for lung related problems.\n\nBased on the given information, answer the following questions :",
-   "solution": ""
+   "solution": "Write M for \"the person is male\" and L for \"the person suffers from lung complications\".\nThe study gives \\(170\\) in every \\(1000\\) male smokers developing lung complications, so \\(P(L|M) = \\frac{170}{1000} = \\frac{17}{100}\\).\n\"Will not be suffering\" is the complementary event, taken within the same conditioning on M:\n\\(P(L'|M) = 1 - P(L|M) = 1 - \\frac{17}{100} = \\frac{83}{100}\\)."
   },
   {
    "hash": "ce91bdd47622ae701aba5b91837d7d774cb80deec24f6213775449eb1c135a0a",
@@ -886,7 +886,7 @@
    "subtopic": "Bayes' Theorem",
    "stem": "A person selected at random is detected with lung complications. Find the probability that selected person is a female.",
    "context": "Smoking increases the risk of lung problems.\n\nA study revealed that 170 in 1000 males who smoke develop lung complications, while 120 out of 1000 females who smoke develop lung related problems. In a colony, 50 people were found to be smokers of which 30 are males.\n\nA person is selected at random from these 50 people and tested for lung related problems.\n\nBased on the given information, answer the following questions :",
-   "solution": ""
+   "solution": "Here the effect (lung complications) is known and the cause (the person's sex) is being inferred, so this is a Bayes' theorem calculation.\nFrom the colony, \\(P(M) = \\frac{30}{50} = \\frac{3}{5}\\) and \\(P(F) = \\frac{20}{50} = \\frac{2}{5}\\). From the study,\n\\(P(L|M) = \\frac{170}{1000} = \\frac{17}{100}\\) and \\(P(L|F) = \\frac{120}{1000} = \\frac{12}{100}\\).\nBy Bayes' theorem,\n\\(P(F|L) = \\frac{P(F)\\,P(L|F)}{P(M)\\,P(L|M) + P(F)\\,P(L|F)}\\).\nSubstituting,\n\\(P(F|L) = \\frac{\\frac{2}{5}\\times\\frac{12}{100}}{\\frac{3}{5}\\times\\frac{17}{100} + \\frac{2}{5}\\times\\frac{12}{100}} = \\frac{\\frac{24}{500}}{\\frac{51}{500} + \\frac{24}{500}} = \\frac{24}{75}\\).\nTherefore the required probability is \\(\\frac{24}{75}\\), which in lowest terms is \\(\\frac{8}{25}\\)."
   },
   {
    "hash": "bbb749d4571d65cbbebf2079204f4e905c402a202d554eb7381a9d7a039e578b",
@@ -898,7 +898,7 @@
    "subtopic": "Bayes' Theorem",
    "stem": "A person selected at random is not having lung problems, find the probability that the person is a male.",
    "context": "Smoking increases the risk of lung problems.\n\nA study revealed that 170 in 1000 males who smoke develop lung complications, while 120 out of 1000 females who smoke develop lung related problems. In a colony, 50 people were found to be smokers of which 30 are males.\n\nA person is selected at random from these 50 people and tested for lung related problems.\n\nBased on the given information, answer the following questions :",
-   "solution": ""
+   "solution": "This is again Bayes' theorem, but conditioned on the complementary event \\(L'\\), that the person does NOT have lung problems.\nAs before \\(P(M) = \\frac{3}{5}\\) and \\(P(F) = \\frac{2}{5}\\). The complementary conditional probabilities are\n\\(P(L'|M) = 1 - \\frac{170}{1000} = \\frac{83}{100}\\) and \\(P(L'|F) = 1 - \\frac{120}{1000} = \\frac{88}{100}\\).\nBy Bayes' theorem,\n\\(P(M|L') = \\frac{P(M)\\,P(L'|M)}{P(M)\\,P(L'|M) + P(F)\\,P(L'|F)}\\).\nSubstituting,\n\\(P(M|L') = \\frac{\\frac{3}{5}\\times\\frac{83}{100}}{\\frac{3}{5}\\times\\frac{83}{100} + \\frac{2}{5}\\times\\frac{88}{100}} = \\frac{\\frac{249}{500}}{\\frac{249}{500} + \\frac{176}{500}} = \\frac{249}{425}\\).\nTherefore the required probability is \\(\\frac{249}{425}\\). (Since \\(249 = 3 \\times 83\\) and \\(425 = 5^2 \\times 17\\) share no factor, this is already in lowest terms.)"
   },
   {
    "hash": "fbe496a534e6e487ebce118b83960732522ac735c37a466bdae367e199db5100",
@@ -910,7 +910,7 @@
    "subtopic": "Area Under Simple Curves",
    "stem": "Express y as a function of \\(x\\) from the given equation of ellipse.",
    "context": "A racing track is build around an elliptical ground whose equation is given by \\(9x^2 + 16y^2 = 144\\). The width of the track is 3 m as shown below :\n\nBased on given information, answer the following questions :",
-   "solution": ""
+   "solution": "Make \\(y\\) the subject of the equation of the ellipse. From \\(9x^2 + 16y^2 = 144\\),\n\\(16y^2 = 144 - 9x^2\\), so \\(y^2 = \\frac{144 - 9x^2}{16} = \\frac{9\\left(16 - x^2\\right)}{16}\\).\nTaking the square root,\n\\(y = \\frac{3}{4}\\sqrt{16 - x^2}\\).\nThe positive root is taken because the part of the ground being described lies above the x axis; the full ellipse is the pair \\(y = \\pm\\frac{3}{4}\\sqrt{16 - x^2}\\). Written in standard form the equation is \\(\\frac{x^2}{16} + \\frac{y^2}{9} = 1\\), so the semi-axes are \\(4\\) and \\(3\\)."
   },
   {
    "hash": "a704e93ea1b1e2ce02f31c11e8d889392961f57b438933fc8a11301cbd82c179",
@@ -922,7 +922,7 @@
    "subtopic": "Integrals of Special Forms",
    "stem": "Integrate the function obtained in (i) with respect to \\(x\\).",
    "context": "A racing track is build around an elliptical ground whose equation is given by \\(9x^2 + 16y^2 = 144\\). The width of the track is 3 m as shown below :\n\nBased on given information, answer the following questions :",
-   "solution": ""
+   "solution": "Integrate the function found in (i), taking the constant \\(\\frac{3}{4}\\) outside:\n\\(\\int y\\,dx = \\int\\frac{3}{4}\\sqrt{16 - x^2}\\,dx = \\frac{3}{4}\\int\\sqrt{4^2 - x^2}\\,dx\\).\nUsing the standard result \\(\\int\\sqrt{a^2 - x^2}\\,dx = \\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a} + C\\) with \\(a = 4\\), so that \\(\\frac{a^2}{2} = 8\\),\n\\(\\int y\\,dx = \\frac{3}{4}\\left[\\frac{x}{2}\\sqrt{16 - x^2} + 8\\sin^{-1}\\left(\\frac{x}{4}\\right)\\right] + C\\),\nwhich expands to \\(\\frac{3x}{8}\\sqrt{16 - x^2} + 6\\sin^{-1}\\left(\\frac{x}{4}\\right) + C\\)."
   },
   {
    "hash": "bf355d7d813749b7d3b97bb29fead1b06a6b938cb51f18a6f9792bf44608f390",
@@ -934,7 +934,7 @@
    "subtopic": "Area Under Simple Curves",
    "stem": "Find the area of the region enclosed within the elliptical ground excluding the track using integration.",
    "context": "A racing track is build around an elliptical ground whose equation is given by \\(9x^2 + 16y^2 = 144\\). The width of the track is 3 m as shown below :\n\nBased on given information, answer the following questions :",
-   "solution": ""
+   "solution": "The region enclosed within the elliptical ground but excluding the track is the inner ellipse itself, \\(\\frac{x^2}{16} + \\frac{y^2}{9} = 1\\).\nAn ellipse is symmetric about both axes, so its area is four times the area of the part lying in the first quadrant, where \\(x\\) runs from \\(0\\) to the semi-major axis \\(4\\):\n\\(\\text{Area} = 4\\int_{0}^{4}\\frac{3}{4}\\sqrt{16 - x^2}\\,dx = 3\\left[\\frac{x}{2}\\sqrt{16 - x^2} + 8\\sin^{-1}\\left(\\frac{x}{4}\\right)\\right]_{0}^{4}\\).\nAt \\(x = 4\\) the first term vanishes because \\(\\sqrt{16 - 16} = 0\\), leaving \\(8\\sin^{-1}1 = 8 \\times \\frac{\\pi}{2} = 4\\pi\\); at \\(x = 0\\) both terms are zero. Hence\n\\(\\text{Area} = 3\\left(4\\pi - 0\\right) = 12\\pi\\) square metres.\nThis agrees with the standard formula \\(\\pi ab = \\pi \\times 4 \\times 3 = 12\\pi\\)."
   },
   {
    "hash": "b5636d24bc0569c8d3352eca889eb8b8786db259e038673f5e5c84a0c5bc416b",
@@ -947,7 +947,7 @@
    "stem": "Write the co-ordinates of the points P and Q where the outer edge of the track cuts \\(x\\) axis and y axis in first quadrant and find the area of the triangle formed by points P, O, Q using integration.",
    "context": "A racing track is build around an elliptical ground whose equation is given by \\(9x^2 + 16y^2 = 144\\). The width of the track is 3 m as shown below :\n\nBased on given information, answer the following questions :",
    "figure": "REQUIRED - the passage's diagram (page idx 20, right-hand panel) is what fixes the track's geometry: it marks 4 and a further 3 m along the x axis and 3 on the y axis, showing the outer edge is an ellipse with semi-axes 7 and 6 rather than a curve at uniform perpendicular distance 3. Without it P and Q are not determined. The other three sub-parts of this case study are answerable from the text alone.",
-   "solution": ""
+   "solution": "Read the outer edge off the diagram. Along the x axis the inner ellipse reaches \\(4\\) and the track adds a further \\(3\\) m, so the outer edge meets the positive x axis at \\(P(7, 0)\\). Along the y axis the inner ellipse reaches \\(3\\) and the track again adds \\(3\\) m, so the outer edge meets the positive y axis at \\(Q(0, 6)\\).\nThe triangle POQ is bounded by the two axes and the line PQ. Using the intercept form, the line through \\(P(7,0)\\) and \\(Q(0,6)\\) is\n\\(\\frac{x}{7} + \\frac{y}{6} = 1\\), that is \\(y = \\frac{6}{7}\\left(7 - x\\right)\\).\nThe required area is the region under this line from \\(x = 0\\) to \\(x = 7\\):\n\\(\\text{Area} = \\int_{0}^{7} y\\,dx = \\int_{0}^{7}\\frac{6}{7}\\left(7 - x\\right)dx = \\frac{6}{7}\\left[-\\frac{\\left(7-x\\right)^2}{2}\\right]_{0}^{7}\\).\nAt \\(x = 7\\) the bracket is \\(0\\) and at \\(x = 0\\) it is \\(-\\frac{49}{2}\\), so\n\\(\\text{Area} = \\frac{6}{7}\\left(0 + \\frac{49}{2}\\right) = \\frac{6 \\times 49}{14} = 21\\) square metres.\nThis is the expected answer, since a right triangle with legs \\(7\\) and \\(6\\) has area \\(\\frac{1}{2} \\times 7 \\times 6 = 21\\)."
   },
   {
    "hash": "fa4750a214f4cbea136a823c33978260237c6cded458f973c559999d81bdc663",
@@ -960,7 +960,7 @@
    "stem": "Find \\(f'(x)\\) for \\(0 < x < 3\\).",
    "context": "Sports car racing is a form of motorsport which uses sports car prototypes. The competition is held on special tracks designed in various shapes.\n\nThe equation of one such track is given as follows :\n\n\\(f(x) = \\begin{cases} x^4 - 4x^2 + 4, & 0 \\leq x < 3 \\\\ x^2 + 40, & x \\geq 3 \\end{cases}\\)\n\nBased on given information, answer the following questions :",
    "figure": "DECORATIVE - a clip-art winding race track with two cars, printed between the opening sentences and the piecewise definition. It is not the graph of f and carries no data. Page idx 22. Not attached.",
-   "solution": ""
+   "solution": "On the interval \\(0 < x < 3\\) the relevant piece of the definition is \\(f(x) = x^4 - 4x^2 + 4\\), which is a polynomial, so differentiate it term by term:\n\\(f'(x) = 4x^3 - 8x\\)."
   },
   {
    "hash": "573e88d1f9f7e8c00b546ccb702a52601952d2697e9232da8c896f9d1e66b79f",
@@ -972,7 +972,7 @@
    "subtopic": "Differentiability and the Chain Rule",
    "stem": "Find \\(f'(4)\\)",
    "context": "Sports car racing is a form of motorsport which uses sports car prototypes. The competition is held on special tracks designed in various shapes.\n\nThe equation of one such track is given as follows :\n\n\\(f(x) = \\begin{cases} x^4 - 4x^2 + 4, & 0 \\leq x < 3 \\\\ x^2 + 40, & x \\geq 3 \\end{cases}\\)\n\nBased on given information, answer the following questions :",
-   "solution": ""
+   "solution": "Since \\(4 > 3\\), the point lies in the range \\(x \\ge 3\\), where \\(f(x) = x^2 + 40\\). Differentiating that piece,\n\\(f'(x) = 2x\\).\nTherefore \\(f'(4) = 2 \\times 4 = 8\\)."
   },
   {
    "hash": "437259e2069971fa6f99e2b121b92cfb5aa5188a3e56c48bbee5607ac1810adc",
@@ -984,7 +984,7 @@
    "subtopic": "Continuity",
    "stem": "Test for continuity of \\(f(x)\\) at \\(x = 3\\).",
    "context": "Sports car racing is a form of motorsport which uses sports car prototypes. The competition is held on special tracks designed in various shapes.\n\nThe equation of one such track is given as follows :\n\n\\(f(x) = \\begin{cases} x^4 - 4x^2 + 4, & 0 \\leq x < 3 \\\\ x^2 + 40, & x \\geq 3 \\end{cases}\\)\n\nBased on given information, answer the following questions :",
-   "solution": ""
+   "solution": "Continuity at \\(x = 3\\) requires the left-hand limit, the right-hand limit and the value of the function there all to agree.\nSince \\(3\\) falls in the second piece, \\(f(3) = 3^2 + 40 = 49\\).\nLeft-hand limit, using the piece valid just below \\(3\\):\n\\(\\lim_{x \\to 3^-} \\left(x^4 - 4x^2 + 4\\right) = 81 - 36 + 4 = 49\\).\nRight-hand limit, using the piece valid at and above \\(3\\):\n\\(\\lim_{x \\to 3^+} \\left(x^2 + 40\\right) = 9 + 40 = 49\\).\nAll three values equal \\(49\\), so \\(\\lim_{x \\to 3^-} f(x) = \\lim_{x \\to 3^+} f(x) = f(3)\\) and therefore \\(f(x)\\) IS continuous at \\(x = 3\\)."
   },
   {
    "hash": "bed39b48b06943569a649f57c51fe65f602baf936fead1ac2b74200b0ceae181",
@@ -996,7 +996,7 @@
    "subtopic": "Differentiability and the Chain Rule",
    "stem": "Test for differentiability of \\(f(x)\\) at \\(x = 3\\).",
    "context": "Sports car racing is a form of motorsport which uses sports car prototypes. The competition is held on special tracks designed in various shapes.\n\nThe equation of one such track is given as follows :\n\n\\(f(x) = \\begin{cases} x^4 - 4x^2 + 4, & 0 \\leq x < 3 \\\\ x^2 + 40, & x \\geq 3 \\end{cases}\\)\n\nBased on given information, answer the following questions :",
-   "solution": ""
+   "solution": "Differentiability at \\(x = 3\\) requires the left-hand and right-hand derivatives to agree. Here \\(f(3) = 3^2 + 40 = 49\\), and the left piece also takes the value \\(81 - 36 + 4 = 49\\) at \\(x = 3\\), so each difference quotient is that of the corresponding polynomial and its limit is that polynomial's derivative at \\(3\\).\nLeft-hand derivative, from \\(x^4 - 4x^2 + 4\\) whose derivative is \\(4x^3 - 8x\\):\n\\(\\text{LHD} = 4(3)^3 - 8(3) = 108 - 24 = 84\\).\nRight-hand derivative, from \\(x^2 + 40\\) whose derivative is \\(2x\\):\n\\(\\text{RHD} = 2(3) = 6\\).\nSince \\(\\text{LHD} = 84 \\neq 6 = \\text{RHD}\\), the two one-sided derivatives differ, so \\(f(x)\\) is NOT differentiable at \\(x = 3\\).\n(Note that this is consistent with the previous part: continuity at a point is necessary for differentiability but not sufficient, and this function is a clear instance of the gap.)"
   }
  ]
 }

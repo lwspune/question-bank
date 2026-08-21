@@ -13,7 +13,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Variables Separable",
    "stem": "Find the particular solution of the differential equation \\( \\frac{dy}{dx} = 2y^2 \\), given \\( y = 1 \\) when \\( x = 1 \\).",
-   "solution": ""
+   "solution": "The variables separate immediately: \\(\\frac{dy}{y^2} = 2\\,dx\\). Integrating both sides, \\(\\int y^{-2}\\,dy = 2\\int dx\\) gives \\(-\\frac{1}{y} = 2x + C\\). Now use the given condition \\(y = 1\\) when \\(x = 1\\): \\(-1 = 2 + C\\), so \\(C = -3\\). The particular solution is therefore \\(-\\frac{1}{y} = 2x - 3\\), that is \\(y = \\frac{-1}{2x - 3}\\), or equivalently \\(y = \\frac{1}{3 - 2x}\\). Substituting \\(x = 1\\) returns \\(y = 1\\), as required."
   },
   {
    "hash": "28cd01345326afe8c4f9afb75722e62de60f1a625af429fd95ee5ea7140e383e",

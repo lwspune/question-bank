@@ -13,7 +13,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Variables Separable",
    "stem": "Solve the differential equation : \\(\\log\\left(\\frac{dy}{dx}\\right) = x - y\\).",
-   "solution": ""
+   "solution": "Taking exponentials of both sides turns this into a variables-separable equation. From \\(\\log\\left(\\frac{dy}{dx}\\right) = x - y\\) we get \\(\\frac{dy}{dx} = e^{x-y} = e^x \\cdot e^{-y}\\), so the variables separate as \\(e^y\\,dy = e^x\\,dx\\). Integrating both sides gives \\(e^y = e^x + C\\), which is the required general solution."
   },
   {
    "hash": "0e0cf85b61b8215dee2b2714ea86215af4f72c7adea428b38b7d17b1b41c1c56",
@@ -24,7 +24,7 @@
    "chapter": "Integrals",
    "subtopic": "Integrals of Some Particular Functions",
    "stem": "Find : \\(\\int \\frac{x^3 + x}{x^4 - 9}\\,dx\\).",
-   "solution": ""
+   "solution": "Split the integrand so that each piece carries its own substitution: \\(\\int \\frac{x^3 + x}{x^4 - 9}\\,dx = \\int \\frac{x^3}{x^4 - 9}\\,dx + \\int \\frac{x}{x^4 - 9}\\,dx\\). In the first integral the numerator is, up to the factor \\(4\\), the derivative of the denominator, so it integrates to \\(\\frac{1}{4}\\log|x^4 - 9|\\). For the second put \\(x^2 = t\\), so \\(2x\\,dx = dt\\) and it becomes \\(\\frac{1}{2}\\int \\frac{dt}{t^2 - 3^2}\\). Using \\(\\int \\frac{dt}{t^2 - a^2} = \\frac{1}{2a}\\log\\left|\\frac{t-a}{t+a}\\right|\\) with \\(a = 3\\), this is \\(\\frac{1}{2}\\cdot\\frac{1}{2(3)}\\log\\left|\\frac{t-3}{t+3}\\right| = \\frac{1}{12}\\log\\left|\\frac{x^2-3}{x^2+3}\\right|\\). Hence \\(\\int \\frac{x^3 + x}{x^4 - 9}\\,dx = \\frac{1}{4}\\log|x^4 - 9| + \\frac{1}{12}\\log\\left|\\frac{x^2-3}{x^2+3}\\right| + C\\). Differentiating this answer returns \\(\\frac{x^3}{x^4-9} + \\frac{x}{x^4-9}\\), confirming it."
   },
   {
    "hash": "656bec5b27fb855036990413105de9b07e612a32f2f243f002c8652d1f0f7632",
@@ -35,7 +35,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "Evaluate, using properties : \\(\\int_{-\\pi}^{\\pi} (3\\sin x - 2)^2\\,dx\\).",
-   "solution": ""
+   "solution": "Expand the square first: \\(I = \\int_{-\\pi}^{\\pi} (3\\sin x - 2)^2\\,dx = \\int_{-\\pi}^{\\pi} (9\\sin^2 x - 12\\sin x + 4)\\,dx\\). The interval \\([-\\pi, \\pi]\\) is symmetric about the origin, and on it \\(9\\sin^2 x\\) and \\(4\\) are even functions while \\(12\\sin x\\) is odd. So the middle term contributes \\(0\\) and the other two double: \\(I = 2\\int_0^{\\pi} 9\\sin^2 x\\,dx + 2\\int_0^{\\pi} 4\\,dx\\). Using \\(\\sin^2 x = \\frac{1 - \\cos 2x}{2}\\), the first part is \\(9\\int_0^{\\pi} (1 - \\cos 2x)\\,dx = 9\\left[x - \\frac{\\sin 2x}{2}\\right]_0^{\\pi} = 9\\pi\\), and the second is \\(\\left[8x\\right]_0^{\\pi} = 8\\pi\\). Hence \\(I = 9\\pi + 8\\pi = 17\\pi\\)."
   },
   {
    "hash": "59e423b01bc9b94525062ef84650bc65843731c407cc4d119ff69049347e56cb",
@@ -46,7 +46,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Equation of a Line in Space",
    "stem": "Find the co-ordinates of the point on the line \\(\\frac{x + 2}{3} = \\frac{y + 1}{2} = \\frac{z - 3}{2}\\) which is at a distance of 5 units from the point \\((1, 3, 3)\\).",
-   "solution": ""
+   "solution": "Write the line in parametric form. Setting each ratio equal to \\(\\lambda\\), a general point of the line is \\((3\\lambda - 2,\\ 2\\lambda - 1,\\ 2\\lambda + 3)\\). Its distance from \\((1, 3, 3)\\) must be \\(5\\), so \\(\\sqrt{(3\\lambda - 3)^2 + (2\\lambda - 4)^2 + (2\\lambda)^2} = 5\\). Squaring, \\(9\\lambda^2 - 18\\lambda + 9 + 4\\lambda^2 - 16\\lambda + 16 + 4\\lambda^2 = 25\\), that is \\(17\\lambda^2 - 34\\lambda + 25 = 25\\). The constants cancel, leaving \\(17\\lambda(\\lambda - 2) = 0\\), so \\(\\lambda = 0\\) or \\(\\lambda = 2\\). These give the two points \\((-2, -1, 3)\\) and \\((4, 3, 7)\\). Both genuinely satisfy the condition: \\(\\sqrt{9 + 16 + 0} = 5\\) and \\(\\sqrt{9 + 0 + 16} = 5\\), so neither root is extraneous."
   },
   {
    "hash": "d6be02f7fd886651cc2cc425d74af624a3da1f30904c3bf54a96639c2b98a26c",
@@ -57,7 +57,7 @@
    "chapter": "Probability",
    "subtopic": "Bayes' Theorem",
    "stem": "A man is known to speak truth 7 out of 10 times. He threw a pair of dice and reports that doublet appeared. Find the probability that it was actually a doublet.",
-   "solution": ""
+   "solution": "Let \\(E_1\\) be the event that a doublet actually appeared, \\(E_2\\) that it did not, and \\(A\\) the event that the man reports a doublet. Throwing a pair of dice has \\(36\\) equally likely outcomes, of which the \\(6\\) doublets \\((1,1), (2,2), \\ldots, (6,6)\\) are favourable, so \\(P(E_1) = \\frac{6}{36} = \\frac{1}{6}\\) and \\(P(E_2) = \\frac{5}{6}\\). He speaks the truth \\(7\\) times out of \\(10\\). If a doublet did appear, he reports one exactly when he is truthful, so \\(P(A \\mid E_1) = \\frac{7}{10}\\); if no doublet appeared, he reports one exactly when he lies, so \\(P(A \\mid E_2) = \\frac{3}{10}\\). By Bayes' theorem, \\(P(E_1 \\mid A) = \\frac{P(E_1)P(A \\mid E_1)}{P(E_1)P(A \\mid E_1) + P(E_2)P(A \\mid E_2)} = \\frac{\\frac{1}{6}\\cdot\\frac{7}{10}}{\\frac{1}{6}\\cdot\\frac{7}{10} + \\frac{5}{6}\\cdot\\frac{3}{10}} = \\frac{7}{7 + 15} = \\frac{7}{22}\\)."
   }
  ]
 }

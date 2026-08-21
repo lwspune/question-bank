@@ -362,7 +362,7 @@
     }
    ],
    "answer": "D",
-   "solution": "First confirm the three vectors really do close up into a triangle: \\(\\vec{a} + \\vec{b} + \\vec{c} = (2 + 1 - 3)\\hat{i} + (-1 - 3 + 4)\\hat{j} + (1 - 5 + 4)\\hat{k} = \\vec{0}\\), so taken in order they form a closed figure. Their squared lengths are \\(|\\vec{a}|^2 = 4 + 1 + 1 = 6\\), \\(|\\vec{b}|^2 = 1 + 9 + 25 = 35\\) and \\(|\\vec{c}|^2 = 9 + 16 + 16 = 41\\). Since \\(6 + 35 = 41\\), the three sides satisfy the converse of Pythagoras' theorem, so the triangle is right-angled — option a right-angled triangle. It is neither equilateral nor isosceles, since \\(\\sqrt{6}\\), \\(\\sqrt{35}\\) and \\(\\sqrt{41}\\) are all different."
+   "solution": "First confirm the three vectors really do close up into a triangle: \\(\\vec{a} + \\vec{b} + \\vec{c} = (2 + 1 - 3)\\hat{i} + (-1 - 3 + 4)\\hat{j} + (1 - 5 + 4)\\hat{k} = \\vec{0}\\), so taken in order they form a closed figure. Their squared lengths are \\(|\\vec{a}|^2 = 4 + 1 + 1 = 6\\), \\(|\\vec{b}|^2 = 1 + 9 + 25 = 35\\) and \\(|\\vec{c}|^2 = 9 + 16 + 16 = 41\\). Since \\(6 + 35 = 41\\), the three sides satisfy the converse of Pythagoras' theorem, so the triangle is right-angled, matching the choice “a right-angled triangle”. It is neither equilateral nor isosceles, since \\(\\sqrt{6}\\), \\(\\sqrt{35}\\) and \\(\\sqrt{41}\\) are all different."
   },
   {
    "hash": "0842689757cf230f02015ed1f87d9c387cdb5fe4529b0dc9b4fd2c74c5cead28",
@@ -727,7 +727,7 @@
    "chapter": "Integrals",
    "subtopic": "Integrals of Some Particular Functions",
    "stem": "Find : \\(\\displaystyle\\int \\dfrac{3x + 5}{\\sqrt{x^{2} + 2x + 4}}\\,dx\\)",
-   "solution": ""
+   "solution": "The numerator is split into a multiple of the derivative of the quadratic under the root, plus a constant. Since \\(\\frac{d}{dx}\\left(x^2 + 2x + 4\\right) = 2x + 2\\), write \\(3x + 5 = \\frac{3}{2}(2x + 2) + 2\\), which is an identity because \\(\\frac{3}{2}(2x + 2) = 3x + 3\\) and \\(3 + 2 = 5\\).\nHence \\(I = \\frac{3}{2}\\int \\frac{2x + 2}{\\sqrt{x^2 + 2x + 4}}\\,dx + 2\\int \\frac{dx}{\\sqrt{x^2 + 2x + 4}}\\).\nIn the first integral put \\(t = x^2 + 2x + 4\\), so that \\(dt = (2x + 2)\\,dx\\) and it becomes \\(\\frac{3}{2}\\int t^{-1/2}\\,dt = \\frac{3}{2}\\left(2\\sqrt{t}\\right) = 3\\sqrt{x^2 + 2x + 4}\\).\nFor the second, complete the square: \\(x^2 + 2x + 4 = (x + 1)^2 + 3 = (x + 1)^2 + \\left(\\sqrt{3}\\right)^2\\). Using the standard result \\(\\int \\frac{dx}{\\sqrt{x^2 + a^2}} = \\log\\left|x + \\sqrt{x^2 + a^2}\\right|\\), this integral is \\(2\\log\\left|(x + 1) + \\sqrt{x^2 + 2x + 4}\\right|\\).\nTherefore \\(I = 3\\sqrt{x^2 + 2x + 4} + 2\\log\\left|(x + 1) + \\sqrt{x^2 + 2x + 4}\\right| + C\\).\n(Check by differentiating: the first term gives \\(\\frac{3(x + 1)}{\\sqrt{x^2 + 2x + 4}}\\) and the second gives \\(\\frac{2}{\\sqrt{x^2 + 2x + 4}}\\), and these add to \\(\\frac{3x + 5}{\\sqrt{x^2 + 2x + 4}}\\), the original integrand.)"
   },
   {
    "hash": "3599a6cf6bad54fe91be227edd026f160813280a8e0da652ddaff5c60d0b644d",
@@ -738,7 +738,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Variables Separable",
    "stem": "Find the particular solution of the differential equation \\(\\dfrac{dy}{dx} = y \\cot 2x\\), given that \\(y\\left(\\dfrac{\\pi}{4}\\right) = 2\\).",
-   "solution": ""
+   "solution": "The variables separate at once: \\(\\frac{dy}{y} = \\cot 2x\\,dx\\).\nIntegrating both sides, \\(\\int \\frac{dy}{y} = \\int \\cot 2x\\,dx\\) gives \\(\\log|y| = \\frac{1}{2}\\log|\\sin 2x| + \\log c\\), where the factor \\(\\frac{1}{2}\\) comes from the \\(2x\\) inside the cotangent.\nCombining the right-hand side into a single logarithm, \\(\\log|y| = \\log\\left(c\\sqrt{|\\sin 2x|}\\right)\\), so the general solution is \\(y = c\\sqrt{\\sin 2x}\\).\nNow use the given condition. At \\(x = \\frac{\\pi}{4}\\) we have \\(\\sin 2x = \\sin \\frac{\\pi}{2} = 1\\), so \\(y\\left(\\frac{\\pi}{4}\\right) = 2\\) gives \\(2 = c\\sqrt{1} = c\\).\nHence the required particular solution is \\(y = 2\\sqrt{\\sin 2x}\\)."
   },
   {
    "hash": "8fe2d0eff1844aee49f090e08529aea2377fbc75844916de9b7e8a1435403c0f",
@@ -749,7 +749,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Homogeneous Differential Equations",
    "stem": "Find the particular solution of the differential equation \\(\\left(xe^{y/x} + y\\right) dx = x\\,dy\\), given that \\(y = 1\\) when \\(x = 1\\).",
-   "solution": ""
+   "solution": "Rearranging, \\(\\frac{dy}{dx} = \\frac{xe^{y/x} + y}{x} = e^{y/x} + \\frac{y}{x}\\). The right-hand side depends on \\(x\\) and \\(y\\) only through the ratio \\(\\frac{y}{x}\\), so the equation is homogeneous.\nPut \\(y = vx\\), so that \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\). Substituting gives \\(v + x\\frac{dv}{dx} = e^{v} + v\\), and the \\(v\\) cancels from both sides to leave \\(x\\frac{dv}{dx} = e^{v}\\).\nThis separates as \\(e^{-v}\\,dv = \\frac{dx}{x}\\). Integrating, \\(-e^{-v} = \\log|x| + C\\), and restoring \\(v = \\frac{y}{x}\\) gives \\(-e^{-y/x} = \\log|x| + C\\).\nApply \\(y = 1\\) when \\(x = 1\\): \\(-e^{-1} = \\log 1 + C = C\\), so \\(C = -e^{-1}\\).\nThe particular solution is therefore \\(-e^{-y/x} = \\log|x| - e^{-1}\\), which is usually written \\(\\log|x| + e^{-y/x} = e^{-1}\\)."
   },
   {
    "hash": "993cde28439509796dd499b2bc8944885b8a1a738aeddf90b790a360d99d0d60",
@@ -760,7 +760,7 @@
    "chapter": "Linear Programming",
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "Solve the following linear programming problem graphically :\n\nMaximise \\(Z = 2x + 3y\\)\n\nsubject to the constraints :\n\n\\(x + y \\le 6\\)\n\n\\(x \\ge 2\\)\n\n\\(y \\le 3\\)\n\n\\(x, y \\ge 0\\)",
-   "solution": ""
+   "solution": "Draw the lines \\(x + y = 6\\), \\(x = 2\\) and \\(y = 3\\), and shade the region satisfying every constraint together with \\(x \\ge 0\\) and \\(y \\ge 0\\). The feasible region is the bounded quadrilateral ABCD with corner points \\(A(2, 3)\\), \\(B(3, 3)\\), \\(C(6, 0)\\) and \\(D(2, 0)\\): A is where \\(x = 2\\) meets \\(y = 3\\), B is where \\(y = 3\\) meets \\(x + y = 6\\), C is where \\(x + y = 6\\) meets the X-axis, and D is where \\(x = 2\\) meets the X-axis.\nEvaluate \\(Z = 2x + 3y\\) at each corner point:\n\n| Corner point | Value of \\(Z = 2x + 3y\\) |\n|---|---|\n| \\(A(2, 3)\\) | \\(4 + 9 = 13\\) |\n| \\(B(3, 3)\\) | \\(6 + 9 = 15\\) |\n| \\(C(6, 0)\\) | \\(12 + 0 = 12\\) |\n| \\(D(2, 0)\\) | \\(4 + 0 = 4\\) |\n\nThe feasible region is bounded, so the objective function attains its maximum at one of the corner points. The largest of the four values is \\(15\\).\nHence the maximum value of \\(Z\\) is \\(15\\), occurring at \\(x = 3\\), \\(y = 3\\)."
   },
   {
    "hash": "615b14bd8b27462a7a35c2d693c353aa9a4c6cccab71868c919f9756a4dc3759",
@@ -771,7 +771,7 @@
    "chapter": "Probability",
    "subtopic": "Bayes' Theorem",
    "stem": "A card from a well shuffled deck of 52 playing cards is lost. From the remaining cards of the pack, a card is drawn at random and is found to be a King. Find the probability of the lost card being a King.",
-   "solution": ""
+   "solution": "Let \\(E_1\\) be the event that the lost card is a King and \\(E_2\\) the event that it is not, and let A be the event that a card drawn from the remaining \\(51\\) cards is a King. A pack contains \\(4\\) Kings among \\(52\\) cards, so \\(P(E_1) = \\frac{4}{52} = \\frac{1}{13}\\) and \\(P(E_2) = \\frac{48}{52} = \\frac{12}{13}\\).\nIf the lost card was a King, only \\(3\\) Kings remain among the \\(51\\), so \\(P(A\\,|\\,E_1) = \\frac{3}{51}\\). If it was not a King, all \\(4\\) Kings remain, so \\(P(A\\,|\\,E_2) = \\frac{4}{51}\\).\nWe are told the drawn card is a King and asked for the probability that the lost one was, so this is Bayes' theorem: \\(P(E_1\\,|\\,A) = \\frac{P(E_1)P(A\\,|\\,E_1)}{P(E_1)P(A\\,|\\,E_1) + P(E_2)P(A\\,|\\,E_2)}\\).\nSubstituting, \\(P(E_1\\,|\\,A) = \\frac{\\frac{1}{13} \\times \\frac{3}{51}}{\\frac{1}{13} \\times \\frac{3}{51} + \\frac{12}{13} \\times \\frac{4}{51}}\\). The common factor \\(\\frac{1}{13 \\times 51}\\) cancels from numerator and denominator, leaving \\(\\frac{3}{3 + 48} = \\frac{3}{51} = \\frac{1}{17}\\).\nSo the probability that the lost card was a King is \\(\\frac{1}{17}\\).\n(This is slightly less than the prior probability \\(\\frac{1}{13}\\), which is as it should be: a King is harder to draw when a King has already been lost, so drawing one is mild evidence against \\(E_1\\).)"
   },
   {
    "hash": "c9b2824e6df987c181cb36583ae61f783a7bedb9b2a55d58627eed5c429f619e",
@@ -782,7 +782,7 @@
    "chapter": "Probability",
    "subtopic": "Random Variables and Probability Distributions",
    "stem": "A biased die is twice as likely to show an even number as an odd number. If such a die is thrown twice, find the probability distribution of the number of sixes. Also, find the mean of the distribution.",
-   "solution": ""
+   "solution": "Let each odd face carry probability \\(p\\). The die being twice as likely to show an even number as an odd number makes each even face carry probability \\(2p\\). The six probabilities must add to \\(1\\), so \\(3p + 3(2p) = 9p = 1\\), giving \\(p = \\frac{1}{9}\\).\nSix is an even face, so \\(P(\\text{six}) = 2p = \\frac{2}{9}\\) and \\(P(\\text{not a six}) = \\frac{7}{9}\\).\nLet X be the number of sixes obtained in the two throws, so X takes the values \\(0\\), \\(1\\) and \\(2\\), and the throws are independent. Then \\(P(X = 0) = \\frac{7}{9} \\times \\frac{7}{9} = \\frac{49}{81}\\), \\(P(X = 1) = 2 \\times \\frac{7}{9} \\times \\frac{2}{9} = \\frac{28}{81}\\) (the factor \\(2\\) because the six may fall on either throw), and \\(P(X = 2) = \\frac{2}{9} \\times \\frac{2}{9} = \\frac{4}{81}\\).\nThe probability distribution of the number of sixes is therefore\n\n| \\(X\\) | 0 | 1 | 2 |\n|---|---|---|---|\n| \\(P(X)\\) | \\(\\frac{49}{81}\\) | \\(\\frac{28}{81}\\) | \\(\\frac{4}{81}\\) |\n\n(These add to \\(\\frac{49 + 28 + 4}{81} = 1\\), as they must.)\nThe mean is \\(\\sum x_i p_i = 0\\left(\\frac{49}{81}\\right) + 1\\left(\\frac{28}{81}\\right) + 2\\left(\\frac{4}{81}\\right) = \\frac{28 + 8}{81} = \\frac{36}{81} = \\frac{4}{9}\\).\nSo the mean of the distribution is \\(\\frac{4}{9}\\). (X is binomial with \\(n = 2\\) and \\(p = \\frac{2}{9}\\), and the check \\(np = 2 \\times \\frac{2}{9} = \\frac{4}{9}\\) agrees.)"
   },
   {
    "hash": "2a6361d116364f6b78d550512609f85204e2df10e5a6c05301e22ad811d15165",
@@ -793,7 +793,7 @@
    "chapter": "Application of Integrals",
    "subtopic": "Area Under Simple Curves",
    "stem": "Sketch the graph of \\(y = x\\,|x|\\) and hence find the area bounded by this curve, X-axis and the ordinates \\(x = -2\\) and \\(x = 2\\), using integration.",
-   "solution": ""
+   "solution": "Since \\(|x| = -x\\) for \\(x < 0\\) and \\(|x| = x\\) for \\(x \\ge 0\\), the curve is the piecewise parabola \\(y = -x^2\\) for \\(x < 0\\) and \\(y = x^2\\) for \\(x \\ge 0\\).\nSketch: for \\(x \\ge 0\\) it is the right-hand half of the parabola \\(y = x^2\\), rising through the origin to \\((2, 4)\\); for \\(x < 0\\) it is that arc reflected through the origin, falling to \\((-2, -4)\\). The graph passes through the origin, lies below the X-axis for \\(x < 0\\) and above it for \\(x > 0\\), and is symmetric about the origin.\nBecause the curve crosses the X-axis at \\(x = 0\\), the region must be split there and the two parts added as areas.\nFor \\(0 \\le x \\le 2\\) the curve lies above the axis, so that part has area \\(\\int_{0}^{2} x^2\\,dx = \\left[\\frac{x^3}{3}\\right]_{0}^{2} = \\frac{8}{3}\\).\nFor \\(-2 \\le x \\le 0\\) the curve lies below the axis, so that part has area \\(\\int_{-2}^{0}(-y)\\,dx = \\int_{-2}^{0} x^2\\,dx = \\left[\\frac{x^3}{3}\\right]_{-2}^{0} = 0 - \\left(-\\frac{8}{3}\\right) = \\frac{8}{3}\\).\nThe two parts are congruent, each of area \\(\\frac{8}{3}\\), so the required area is \\(\\frac{8}{3} + \\frac{8}{3} = \\frac{16}{3}\\) square units.\n[A note on the official marking scheme, which compresses all of this into \\(\\text{Area} = \\int_{-2}^{2} y\\,dx = 2\\int_{0}^{2} y\\,dx = \\frac{16}{3}\\). Read as areas — which is how its figure shades the region, both lobes together — that chain is fine and gives the same \\(\\frac{16}{3}\\). But do not read it as an identity between signed integrals: \\(y = x|x|\\) is an odd function, so the signed \\(\\int_{-2}^{2} y\\,dx\\) is \\(0\\), and the rule \\(\\int_{-a}^{a} f = 2\\int_{0}^{a} f\\) holds for even functions, not odd ones. That is exactly why the region is split at the origin above. A student who integrates straight through and gets \\(0\\) has not made an arithmetic slip — they have integrated the signed function instead of measuring area.]"
   },
   {
    "hash": "1c0617f8ecafff122085ef6a321d7e8a990c0998738d04ff5ea7bd66024ec43e",
@@ -804,7 +804,7 @@
    "chapter": "Application of Integrals",
    "subtopic": "Area Bounded by a Curve and a Line",
    "stem": "Using integration, find the area bounded by the ellipse \\(9x^{2} + 25y^{2} = 225\\), the lines \\(x = -2\\), \\(x = 2\\), and the X-axis.",
-   "solution": ""
+   "solution": "Divide \\(9x^2 + 25y^2 = 225\\) throughout by \\(225\\) to reach the standard form \\(\\frac{x^2}{25} + \\frac{y^2}{9} = 1\\). This is an ellipse centred at the origin with semi-axis \\(a = 5\\) along the X-axis and \\(b = 3\\) along the Y-axis, so \\(y = \\pm\\frac{3}{5}\\sqrt{25 - x^2}\\).\nThe region bounded by the ellipse, the lines \\(x = -2\\) and \\(x = 2\\) and the X-axis is the strip of the upper half of the ellipse standing between those two ordinates, so we take the positive root \\(y = \\frac{3}{5}\\sqrt{5^2 - x^2}\\). Both lines cut the curve, since \\(2 < 5\\).\nHence the required area is \\(\\int_{-2}^{2} \\frac{3}{5}\\sqrt{5^2 - x^2}\\,dx\\). This integrand is an even function of \\(x\\), so the integral equals \\(\\frac{6}{5}\\int_{0}^{2}\\sqrt{5^2 - x^2}\\,dx\\).\nUsing the standard result \\(\\int \\sqrt{a^2 - x^2}\\,dx = \\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a}\\) with \\(a = 5\\), the area is \\(\\frac{6}{5}\\left[\\frac{x}{2}\\sqrt{25 - x^2} + \\frac{25}{2}\\sin^{-1}\\frac{x}{5}\\right]_{0}^{2}\\).\nAt \\(x = 2\\) the bracket equals \\(1 \\times \\sqrt{21} + \\frac{25}{2}\\sin^{-1}\\frac{2}{5}\\), and at \\(x = 0\\) it equals \\(0\\).\nTherefore the area is \\(\\frac{6}{5}\\left(\\sqrt{21} + \\frac{25}{2}\\sin^{-1}\\frac{2}{5}\\right) = \\frac{6\\sqrt{21}}{5} + 15\\sin^{-1}\\frac{2}{5}\\) square units.\nNumerically that is about \\(5{\\cdot}50 + 6{\\cdot}17 = 11{\\cdot}67\\) square units, a plausible share of the upper half of the ellipse, whose area is \\(\\frac{1}{2}\\pi ab = \\frac{15\\pi}{2} \\approx 23{\\cdot}56\\) square units."
   },
   {
    "hash": "fe0901da3f1af09ee39ab9e8566db2fa7af2d1c6c4a603a3e9890e0ed129539f",
@@ -815,7 +815,7 @@
    "chapter": "Relations and Functions",
    "subtopic": "One-One and Onto Functions",
    "stem": "Let \\(A = R - \\{5\\}\\) and \\(B = R - \\{1\\}\\). Consider the function \\(f : A \\to B\\), defined by \\(f(x) = \\dfrac{x-3}{x-5}\\). Show that f is one-one and onto.",
-   "solution": ""
+   "solution": "One-one. Suppose \\(f(x_1) = f(x_2)\\) for some \\(x_1, x_2 \\in A\\), that is \\(\\frac{x_1 - 3}{x_1 - 5} = \\frac{x_2 - 3}{x_2 - 5}\\). Cross-multiplying (legitimate, since neither denominator is zero on A), \\((x_1 - 3)(x_2 - 5) = (x_2 - 3)(x_1 - 5)\\), i.e. \\(x_1x_2 - 5x_1 - 3x_2 + 15 = x_1x_2 - 5x_2 - 3x_1 + 15\\).\nCancelling \\(x_1x_2\\) and \\(15\\) leaves \\(-5x_1 - 3x_2 = -5x_2 - 3x_1\\), so \\(-2x_1 = -2x_2\\) and hence \\(x_1 = x_2\\). Therefore f is one-one.\nOnto. Let \\(y \\in B\\) be arbitrary and try to solve \\(y = \\frac{x - 3}{x - 5}\\) for \\(x\\). Then \\(y(x - 5) = x - 3\\), so \\(yx - 5y = x - 3\\), giving \\(x(y - 1) = 5y - 3\\) and \\(x = \\frac{5y - 3}{y - 1}\\).\nSince \\(y \\in B = R - \\{1\\}\\) we have \\(y \\ne 1\\), so this \\(x\\) is a well-defined real number. It also lies in A: were \\(\\frac{5y - 3}{y - 1}\\) equal to \\(5\\) we would need \\(5y - 3 = 5y - 5\\), i.e. \\(-3 = -5\\), which is impossible, so \\(x \\ne 5\\).\nThis \\(x\\) does map to \\(y\\): \\(f\\left(\\frac{5y - 3}{y - 1}\\right) = \\frac{\\frac{5y - 3}{y - 1} - 3}{\\frac{5y - 3}{y - 1} - 5} = \\frac{(5y - 3) - 3(y - 1)}{(5y - 3) - 5(y - 1)} = \\frac{2y}{2} = y\\).\nSo every element of B has a pre-image in A, and f is onto. Being both one-one and onto, f is a bijection from A to B."
   },
   {
    "hash": "c74754aaa1cc64416fef27f6c90f6e3ed6d495c2fb1cf99a294310fa6d70bed7",
@@ -826,7 +826,7 @@
    "chapter": "Relations and Functions",
    "subtopic": "Types of Relations",
    "stem": "Check whether the relation S in the set of real numbers R defined by \\(S = \\{(a, b) : \\text{where } a - b + \\sqrt{2} \\text{ is an irrational number}\\}\\) is reflexive, symmetric or transitive.",
-   "solution": ""
+   "solution": "Reflexive. For any real number a, \\(a - a + \\sqrt{2} = \\sqrt{2}\\), which is irrational. So \\((a, a) \\in S\\) for every \\(a \\in R\\), and S is reflexive.\nSymmetric. Take \\(a = \\sqrt{2}\\) and \\(b = 1\\). Then \\(a - b + \\sqrt{2} = \\sqrt{2} - 1 + \\sqrt{2} = 2\\sqrt{2} - 1\\), which is irrational, so \\(\\left(\\sqrt{2},\\, 1\\right) \\in S\\). Reversing the pair, \\(b - a + \\sqrt{2} = 1 - \\sqrt{2} + \\sqrt{2} = 1\\), which is rational, so \\(\\left(1,\\, \\sqrt{2}\\right) \\notin S\\). A single counter-example suffices: S is not symmetric.\nTransitive. Take \\(a = 1\\), \\(b = \\sqrt{3}\\) and \\(c = \\sqrt{2}\\). Then \\(a - b + \\sqrt{2} = 1 - \\sqrt{3} + \\sqrt{2}\\) is irrational, so \\(\\left(1,\\, \\sqrt{3}\\right) \\in S\\), and \\(b - c + \\sqrt{2} = \\sqrt{3} - \\sqrt{2} + \\sqrt{2} = \\sqrt{3}\\) is irrational, so \\(\\left(\\sqrt{3},\\, \\sqrt{2}\\right) \\in S\\). But \\(a - c + \\sqrt{2} = 1 - \\sqrt{2} + \\sqrt{2} = 1\\) is rational, so \\(\\left(1,\\, \\sqrt{2}\\right) \\notin S\\). Hence S is not transitive.\nTherefore S is reflexive, but neither symmetric nor transitive."
   },
   {
    "hash": "ea0fc27ed2f4dacf909ae38bc1beef23b92627259c41b87e67e1b7d6230d17c0",
@@ -837,7 +837,7 @@
    "chapter": "Determinants",
    "subtopic": "Solving System of Linear Equations",
    "stem": "If \\(A = \\begin{bmatrix} 2 & 1 & -3 \\\\ 3 & 2 & 1 \\\\ 1 & 2 & -1 \\end{bmatrix}\\), find \\(A^{-1}\\) and hence solve the following system of equations :\n\n\\(2x + y - 3z = 13\\)\n\n\\(3x + 2y + z = 4\\)\n\n\\(x + 2y - z = 8\\)",
-   "solution": ""
+   "solution": "First confirm that A can be inverted. Expanding the determinant along the first row,\n\\(|A| = 2\\left[(2)(-1) - (1)(2)\\right] - 1\\left[(3)(-1) - (1)(1)\\right] + (-3)\\left[(3)(2) - (2)(1)\\right] = 2(-4) - 1(-4) - 3(4) = -8 + 4 - 12 = -16\\).\nSince \\(|A| = -16 \\ne 0\\), \\(A^{-1}\\) exists.\nThe cofactors of A are \\(A_{11} = -4\\), \\(A_{12} = 4\\), \\(A_{13} = 4\\), \\(A_{21} = -5\\), \\(A_{22} = 1\\), \\(A_{23} = -3\\), \\(A_{31} = 7\\), \\(A_{32} = -11\\) and \\(A_{33} = 1\\). The adjoint is the transpose of the matrix of cofactors, so \\(\\operatorname{adj} A = \\begin{bmatrix} -4 & -5 & 7 \\\\ 4 & 1 & -11 \\\\ 4 & -3 & 1 \\end{bmatrix}\\).\nHence \\(A^{-1} = \\frac{1}{|A|}\\operatorname{adj} A = -\\frac{1}{16}\\begin{bmatrix} -4 & -5 & 7 \\\\ 4 & 1 & -11 \\\\ 4 & -3 & 1 \\end{bmatrix}\\).\nThe coefficient matrix of the three equations is exactly A, so the system is \\(AX = B\\) with \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 13 \\\\ 4 \\\\ 8 \\end{bmatrix}\\), and since \\(A^{-1}\\) exists the unique solution is \\(X = A^{-1}B\\).\nCarrying out the multiplication, \\(X = -\\frac{1}{16}\\begin{bmatrix} -4 & -5 & 7 \\\\ 4 & 1 & -11 \\\\ 4 & -3 & 1 \\end{bmatrix}\\begin{bmatrix} 13 \\\\ 4 \\\\ 8 \\end{bmatrix} = -\\frac{1}{16}\\begin{bmatrix} -52 - 20 + 56 \\\\ 52 + 4 - 88 \\\\ 52 - 12 + 8 \\end{bmatrix} = -\\frac{1}{16}\\begin{bmatrix} -16 \\\\ -32 \\\\ 48 \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 2 \\\\ -3 \\end{bmatrix}\\).\nHence \\(x = 1\\), \\(y = 2\\) and \\(z = -3\\).\n(Substituting back: \\(2 + 2 + 9 = 13\\), \\(3 + 4 - 3 = 4\\) and \\(1 + 4 + 3 = 8\\), so all three equations are satisfied.)"
   },
   {
    "hash": "dcf1baa2a5e41917aa8c4db8755777cca203d67170da52ef93cdd9ac4c55bb30",
@@ -848,7 +848,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Shortest Distance Between Two Lines",
    "stem": "Find the distance between the line \\(\\dfrac{x}{2} = \\dfrac{2y-6}{4} = \\dfrac{1-z}{-1}\\) and another line parallel to it passing through the point \\((4, 0, -5)\\).",
-   "solution": ""
+   "solution": "First rewrite the given line in standard symmetric form. Since \\(\\frac{2y - 6}{4} = \\frac{2(y - 3)}{4} = \\frac{y - 3}{2}\\) and \\(\\frac{1 - z}{-1} = \\frac{-(z - 1)}{-1} = \\frac{z - 1}{1}\\), the line is \\(L_1 : \\frac{x - 0}{2} = \\frac{y - 3}{2} = \\frac{z - 1}{1}\\). So \\(L_1\\) passes through \\(A_1(0, 3, 1)\\) and has direction \\(\\vec{b} = 2\\hat{i} + 2\\hat{j} + \\hat{k}\\).\nThe other line is parallel to it and passes through \\(A_2(4, 0, -5)\\), so \\(L_2 : \\frac{x - 4}{2} = \\frac{y}{2} = \\frac{z + 5}{1}\\), with the same direction \\(\\vec{b}\\).\nFor two parallel lines \\(\\vec{r} = \\vec{a_1} + \\lambda \\vec{b}\\) and \\(\\vec{r} = \\vec{a_2} + \\mu \\vec{b}\\), the distance between them is \\(d = \\frac{\\left|\\left(\\vec{a_2} - \\vec{a_1}\\right) \\times \\vec{b}\\right|}{\\left|\\vec{b}\\right|}\\).\nHere \\(\\vec{a_2} - \\vec{a_1} = \\left(4\\hat{i} + 0\\hat{j} - 5\\hat{k}\\right) - \\left(0\\hat{i} + 3\\hat{j} + \\hat{k}\\right) = 4\\hat{i} - 3\\hat{j} - 6\\hat{k}\\).\nThen \\(\\left(\\vec{a_2} - \\vec{a_1}\\right) \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 4 & -3 & -6 \\\\ 2 & 2 & 1 \\end{vmatrix} = \\hat{i}(-3 + 12) - \\hat{j}(4 + 12) + \\hat{k}(8 + 6) = 9\\hat{i} - 16\\hat{j} + 14\\hat{k}\\).\nIts magnitude is \\(\\sqrt{81 + 256 + 196} = \\sqrt{533}\\), while \\(\\left|\\vec{b}\\right| = \\sqrt{4 + 4 + 1} = 3\\).\nHence the distance between the two lines is \\(\\frac{\\sqrt{533}}{3}\\) units, which is about \\(7{\\cdot}70\\) units."
   },
   {
    "hash": "9ba7eae12c80b7a195abc849868c0b7d7308d3f60f4956d03847ee8acffd57c4",
@@ -859,7 +859,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Angle Between Two Lines",
    "stem": "If the lines \\(\\dfrac{x-1}{-3} = \\dfrac{y-2}{2k} = \\dfrac{z-3}{2}\\) and \\(\\dfrac{x-1}{3k} = \\dfrac{y-1}{1} = \\dfrac{z-6}{-7}\\) are perpendicular to each other, find the value of k and hence write the vector equation of a line perpendicular to these two lines and passing through the point \\((3, -4, 7)\\).",
-   "solution": ""
+   "solution": "The direction ratios are read off the denominators: \\(L_1\\) has direction \\(-3,\\ 2k,\\ 2\\) and \\(L_2\\) has direction \\(3k,\\ 1,\\ -7\\).\nTwo lines are perpendicular exactly when the dot product of their directions vanishes, so \\((-3)(3k) + (2k)(1) + (2)(-7) = 0\\), that is \\(-9k + 2k - 14 = 0\\), i.e. \\(-7k = 14\\), giving \\(k = -2\\).\nWith \\(k = -2\\) the two directions become \\(\\vec{b_1} = -3\\hat{i} - 4\\hat{j} + 2\\hat{k}\\) and \\(\\vec{b_2} = -6\\hat{i} + \\hat{j} - 7\\hat{k}\\). (Check: \\((-3)(-6) + (-4)(1) + (2)(-7) = 18 - 4 - 14 = 0\\), so they are indeed perpendicular.)\nA line perpendicular to both must be along their cross product: \\(\\vec{b_1} \\times \\vec{b_2} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ -3 & -4 & 2 \\\\ -6 & 1 & -7 \\end{vmatrix} = \\hat{i}(28 - 2) - \\hat{j}(21 + 12) + \\hat{k}(-3 - 24) = 26\\hat{i} - 33\\hat{j} - 27\\hat{k}\\).\nThe required line passes through \\((3, -4, 7)\\), whose position vector is \\(3\\hat{i} - 4\\hat{j} + 7\\hat{k}\\).\nHence its vector equation is \\(\\vec{r} = \\left(3\\hat{i} - 4\\hat{j} + 7\\hat{k}\\right) + \\lambda\\left(26\\hat{i} - 33\\hat{j} - 27\\hat{k}\\right)\\)."
   },
   {
    "hash": "e32db754bf4f9f424dd2c917c40d1a4d32b686e319e2285678c88c0cbeff9a92",
@@ -872,7 +872,7 @@
    "stem": "Determine the number of units (\\(x\\)) that should be sold to maximise the revenue \\(R(x) = x\\,p(x)\\). Also, verify the result.",
    "context": "A store has been selling calculators at ₹ 350 each. A market survey indicates that a reduction in price (p) of calculator increases the number of units (\\(x\\)) sold. The relation between the price and quantity sold is given by the demand function \\(p = 450 - \\dfrac{1}{2}x\\).\n\nBased on the above information, answer the following questions :",
    "figure": "DECORATIVE - a clip-art picture of a calculator with a Rs 350 price tag. Every number the sub-parts need is in the passage text. Page idx 20.",
-   "solution": ""
+   "solution": "The revenue from selling x units at price \\(p(x)\\) each is \\(R(x) = x\\,p(x) = x\\left(450 - \\frac{x}{2}\\right) = 450x - \\frac{x^2}{2}\\).\nDifferentiating, \\(\\frac{dR}{dx} = 450 - x\\). For a maximum or a minimum, \\(\\frac{dR}{dx} = 0\\), which gives \\(x = 450\\).\nTo verify that this is a maximum, differentiate again: \\(\\frac{d^2R}{dx^2} = -1\\), which is negative for every x and in particular at \\(x = 450\\). By the second derivative test the stationary point is a point of maximum.\nHence the revenue is maximised when \\(450\\) units are sold.\n(The maximum revenue is then \\(R(450) = 450(450) - \\frac{450^2}{2} = 202500 - 101250 = 101250\\) rupees.)"
   },
   {
    "hash": "396c8d94b99f85412d7114b81c5ac9a042ab5fe9bd8db928df08d0cfd45289c0",
@@ -884,7 +884,7 @@
    "subtopic": "Maxima and Minima",
    "stem": "What rebate in price of calculator should the store give to maximise the revenue ?",
    "context": "A store has been selling calculators at ₹ 350 each. A market survey indicates that a reduction in price (p) of calculator increases the number of units (\\(x\\)) sold. The relation between the price and quantity sold is given by the demand function \\(p = 450 - \\dfrac{1}{2}x\\).\n\nBased on the above information, answer the following questions :",
-   "solution": ""
+   "solution": "From part (i) the revenue is greatest when \\(x = 450\\) units are sold, so we need the price at which that many units will sell.\nThe demand function gives it directly: \\(p = 450 - \\frac{x}{2} = 450 - \\frac{450}{2} = 450 - 225 = 225\\) rupees.\nThe calculators were being sold at \\(350\\) rupees each, so the reduction required is \\(350 - 225 = 125\\).\nThe store should therefore give a rebate of \\(125\\) rupees per calculator."
   },
   {
    "hash": "322a73a8b076592e5d47d94a9458df34dd76676bfa0178278d0e8b8e197d03d9",
@@ -897,7 +897,7 @@
    "stem": "How far is the star V from star A ?",
    "context": "An instructor at the astronomical centre shows three among the brightest stars in a particular constellation. Assume that the telescope is located at O(0, 0, 0) and the three stars have their locations at the points D, A and V having position vectors \\(2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\), \\(7\\hat{i} + 5\\hat{j} + 8\\hat{k}\\) and \\(-3\\hat{i} + 7\\hat{j} + 11\\hat{k}\\) respectively.\n\nBased on the above information, answer the following questions :",
    "figure": "DECORATIVE - a night-sky photograph with the three stars labelled D, A and V and the telescope at O. Every position vector the sub-parts need is printed in the passage. Page idx 20.",
-   "solution": ""
+   "solution": "The distance from star A to star V is the magnitude of \\(\\overrightarrow{AV}\\), and \\(\\overrightarrow{AV}\\) is the position vector of V minus the position vector of A.\nSo \\(\\overrightarrow{AV} = \\left(-3\\hat{i} + 7\\hat{j} + 11\\hat{k}\\right) - \\left(7\\hat{i} + 5\\hat{j} + 8\\hat{k}\\right) = -10\\hat{i} + 2\\hat{j} + 3\\hat{k}\\).\nHence \\(\\left|\\overrightarrow{AV}\\right| = \\sqrt{(-10)^2 + 2^2 + 3^2} = \\sqrt{100 + 4 + 9} = \\sqrt{113}\\) units, which is about \\(10{\\cdot}63\\) units."
   },
   {
    "hash": "7974e0937a0baa4bcdbacaf0b6534c33517f1ede4198dd365c3623b3add20461",
@@ -909,7 +909,7 @@
    "subtopic": "Types of Vectors",
    "stem": "Find a unit vector in the direction of \\(\\overrightarrow{DA}\\).",
    "context": "An instructor at the astronomical centre shows three among the brightest stars in a particular constellation. Assume that the telescope is located at O(0, 0, 0) and the three stars have their locations at the points D, A and V having position vectors \\(2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\), \\(7\\hat{i} + 5\\hat{j} + 8\\hat{k}\\) and \\(-3\\hat{i} + 7\\hat{j} + 11\\hat{k}\\) respectively.\n\nBased on the above information, answer the following questions :",
-   "solution": ""
+   "solution": "First find the vector itself: \\(\\overrightarrow{DA}\\) is the position vector of A minus the position vector of D, so \\(\\overrightarrow{DA} = \\left(7\\hat{i} + 5\\hat{j} + 8\\hat{k}\\right) - \\left(2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\right) = 5\\hat{i} + 2\\hat{j} + 4\\hat{k}\\).\nIts magnitude is \\(\\left|\\overrightarrow{DA}\\right| = \\sqrt{5^2 + 2^2 + 4^2} = \\sqrt{25 + 4 + 16} = \\sqrt{45} = 3\\sqrt{5}\\).\nA unit vector in the direction of a vector is the vector divided by its own magnitude, so the required unit vector is \\(\\frac{5\\hat{i} + 2\\hat{j} + 4\\hat{k}}{3\\sqrt{5}}\\)."
   },
   {
    "hash": "72d9d78c40a8e828b5294987742b68490876b401747741a8716fcdb2a3d7b11c",
@@ -921,7 +921,7 @@
    "subtopic": "Scalar (Dot) Product and Projection",
    "stem": "Find the measure of \\(\\angle VDA\\).",
    "context": "An instructor at the astronomical centre shows three among the brightest stars in a particular constellation. Assume that the telescope is located at O(0, 0, 0) and the three stars have their locations at the points D, A and V having position vectors \\(2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\), \\(7\\hat{i} + 5\\hat{j} + 8\\hat{k}\\) and \\(-3\\hat{i} + 7\\hat{j} + 11\\hat{k}\\) respectively.\n\nBased on the above information, answer the following questions :",
-   "solution": ""
+   "solution": "The angle \\(\\angle VDA\\) has its vertex at D, so it is the angle between the vectors \\(\\overrightarrow{DV}\\) and \\(\\overrightarrow{DA}\\) — both must be taken as pointing away from D.\nThese are \\(\\overrightarrow{DV} = \\left(-3\\hat{i} + 7\\hat{j} + 11\\hat{k}\\right) - \\left(2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\right) = -5\\hat{i} + 4\\hat{j} + 7\\hat{k}\\) and \\(\\overrightarrow{DA} = \\left(7\\hat{i} + 5\\hat{j} + 8\\hat{k}\\right) - \\left(2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\right) = 5\\hat{i} + 2\\hat{j} + 4\\hat{k}\\).\nTheir dot product is \\(\\overrightarrow{DV} \\cdot \\overrightarrow{DA} = (-5)(5) + (4)(2) + (7)(4) = -25 + 8 + 28 = 11\\), and their magnitudes are \\(\\left|\\overrightarrow{DV}\\right| = \\sqrt{25 + 16 + 49} = \\sqrt{90}\\) and \\(\\left|\\overrightarrow{DA}\\right| = \\sqrt{25 + 4 + 16} = \\sqrt{45}\\).\nSince \\(\\sqrt{90} \\times \\sqrt{45} = \\sqrt{4050} = 45\\sqrt{2}\\), we get \\(\\cos \\angle VDA = \\frac{\\overrightarrow{DV} \\cdot \\overrightarrow{DA}}{\\left|\\overrightarrow{DV}\\right|\\left|\\overrightarrow{DA}\\right|} = \\frac{11}{45\\sqrt{2}} = \\frac{11\\sqrt{2}}{90}\\).\nHence \\(\\angle VDA = \\cos^{-1}\\left(\\frac{11\\sqrt{2}}{90}\\right)\\), which is about \\(80^\\circ\\). (The dot product is positive, so the angle must be acute, and it is.)"
   },
   {
    "hash": "ca4547a148bf1dbed86c7a0cb2ab55c8325eceeabdf8ec75680f7650b5915f78",
@@ -933,7 +933,7 @@
    "subtopic": "Scalar (Dot) Product and Projection",
    "stem": "What is the projection of vector \\(\\overrightarrow{DV}\\) on vector \\(\\overrightarrow{DA}\\) ?",
    "context": "An instructor at the astronomical centre shows three among the brightest stars in a particular constellation. Assume that the telescope is located at O(0, 0, 0) and the three stars have their locations at the points D, A and V having position vectors \\(2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\), \\(7\\hat{i} + 5\\hat{j} + 8\\hat{k}\\) and \\(-3\\hat{i} + 7\\hat{j} + 11\\hat{k}\\) respectively.\n\nBased on the above information, answer the following questions :",
-   "solution": ""
+   "solution": "The projection of one vector on another is their dot product divided by the magnitude of the vector being projected onto, so the projection of \\(\\overrightarrow{DV}\\) on \\(\\overrightarrow{DA}\\) is \\(\\frac{\\overrightarrow{DV} \\cdot \\overrightarrow{DA}}{\\left|\\overrightarrow{DA}\\right|}\\).\nBoth vectors start at D: \\(\\overrightarrow{DV} = \\left(-3\\hat{i} + 7\\hat{j} + 11\\hat{k}\\right) - \\left(2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\right) = -5\\hat{i} + 4\\hat{j} + 7\\hat{k}\\) and \\(\\overrightarrow{DA} = \\left(7\\hat{i} + 5\\hat{j} + 8\\hat{k}\\right) - \\left(2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\right) = 5\\hat{i} + 2\\hat{j} + 4\\hat{k}\\).\nTheir dot product is \\((-5)(5) + (4)(2) + (7)(4) = -25 + 8 + 28 = 11\\), and \\(\\left|\\overrightarrow{DA}\\right| = \\sqrt{25 + 4 + 16} = \\sqrt{45} = 3\\sqrt{5}\\).\nHence the projection is \\(\\frac{11}{3\\sqrt{5}} = \\frac{11\\sqrt{5}}{15}\\) units, which is about \\(1{\\cdot}64\\) units. (It is positive, so \\(\\overrightarrow{DV}\\) leans towards \\(\\overrightarrow{DA}\\) rather than away from it.)"
   },
   {
    "hash": "62df52eaf91155bafc261f137a59ea2d800f0519368691eb9a7ac00f2619f54b",
@@ -946,7 +946,7 @@
    "stem": "What is the probability that at least one of them is selected ?",
    "context": "Rohit, Jaspreet and Alia appeared for an interview for three vacancies in the same post. The probability of Rohit's selection is \\(\\dfrac{1}{5}\\), Jaspreet's selection is \\(\\dfrac{1}{3}\\) and Alia's selection is \\(\\dfrac{1}{4}\\). The event of selection is independent of each other.\n\nBased on the above information, answer the following questions :",
    "figure": "DECORATIVE - a clip-art illustration of three candidates. It carries no data; all three probabilities are in the passage. Page idx 22.",
-   "solution": ""
+   "solution": "It is quicker to work through the complement, since at least one is the opposite of none.\nThe three selections are independent, and the probabilities of not being selected are \\(1 - \\frac{1}{5} = \\frac{4}{5}\\) for Rohit, \\(1 - \\frac{1}{3} = \\frac{2}{3}\\) for Jaspreet and \\(1 - \\frac{1}{4} = \\frac{3}{4}\\) for Alia.\nSo \\(P(\\text{none is selected}) = \\frac{4}{5} \\times \\frac{2}{3} \\times \\frac{3}{4} = \\frac{24}{60} = \\frac{2}{5}\\), and therefore \\(P(\\text{at least one is selected}) = 1 - \\frac{2}{5} = \\frac{3}{5}\\)."
   },
   {
    "hash": "3d01b29df63ee20e389d3ab2ee3eeeeaba5ea766bd12d8aa5d0b3b51e9d04b8d",
@@ -958,7 +958,7 @@
    "subtopic": "Conditional Probability",
    "stem": "Find \\(P(G\\,|\\,\\overline{H})\\) where G is the event of Jaspreet's selection and \\(\\overline{H}\\) denotes the event that Rohit is not selected.",
    "context": "Rohit, Jaspreet and Alia appeared for an interview for three vacancies in the same post. The probability of Rohit's selection is \\(\\dfrac{1}{5}\\), Jaspreet's selection is \\(\\dfrac{1}{3}\\) and Alia's selection is \\(\\dfrac{1}{4}\\). The event of selection is independent of each other.\n\nBased on the above information, answer the following questions :",
-   "solution": ""
+   "solution": "By the definition of conditional probability, \\(P\\left(G\\,|\\,\\overline{H}\\right) = \\frac{P\\left(G \\cap \\overline{H}\\right)}{P\\left(\\overline{H}\\right)}\\).\nThe events of selection are independent, so \\(P\\left(G \\cap \\overline{H}\\right) = P(G)\\,P\\left(\\overline{H}\\right) = \\frac{1}{3} \\times \\frac{4}{5} = \\frac{4}{15}\\), while \\(P\\left(\\overline{H}\\right) = 1 - \\frac{1}{5} = \\frac{4}{5}\\).\nHence \\(P\\left(G\\,|\\,\\overline{H}\\right) = \\frac{4/15}{4/5} = \\frac{4}{15} \\times \\frac{5}{4} = \\frac{1}{3}\\).\nThis is simply \\(P(G)\\) over again, which is exactly what independence means: knowing that Rohit was not selected tells us nothing about Jaspreet."
   },
   {
    "hash": "f3bece0d7a59ee128b8b871d7051294bdc531b2ff573d943bd22d368192a879c",
@@ -970,7 +970,7 @@
    "subtopic": "Independent Events",
    "stem": "Find the probability that exactly one of them is selected.",
    "context": "Rohit, Jaspreet and Alia appeared for an interview for three vacancies in the same post. The probability of Rohit's selection is \\(\\dfrac{1}{5}\\), Jaspreet's selection is \\(\\dfrac{1}{3}\\) and Alia's selection is \\(\\dfrac{1}{4}\\). The event of selection is independent of each other.\n\nBased on the above information, answer the following questions :",
-   "solution": ""
+   "solution": "Write R, J and A for the events that Rohit, Jaspreet and Alia respectively are selected, so \\(P(R) = \\frac{1}{5}\\), \\(P(J) = \\frac{1}{3}\\), \\(P(A) = \\frac{1}{4}\\), and the complements are \\(P\\left(\\overline{R}\\right) = \\frac{4}{5}\\), \\(P\\left(\\overline{J}\\right) = \\frac{2}{3}\\), \\(P\\left(\\overline{A}\\right) = \\frac{3}{4}\\).\nExactly one selected splits into three mutually exclusive cases, one for each candidate who might be the lucky one, and independence lets each be multiplied out:\n\\(P(R)\\,P\\left(\\overline{J}\\right)P\\left(\\overline{A}\\right) = \\frac{1}{5} \\times \\frac{2}{3} \\times \\frac{3}{4} = \\frac{6}{60}\\),\n\\(P\\left(\\overline{R}\\right)P(J)\\,P\\left(\\overline{A}\\right) = \\frac{4}{5} \\times \\frac{1}{3} \\times \\frac{3}{4} = \\frac{12}{60}\\),\n\\(P\\left(\\overline{R}\\right)P\\left(\\overline{J}\\right)P(A) = \\frac{4}{5} \\times \\frac{2}{3} \\times \\frac{1}{4} = \\frac{8}{60}\\).\nAdding the three, \\(P(\\text{exactly one is selected}) = \\frac{6 + 12 + 8}{60} = \\frac{26}{60} = \\frac{13}{30}\\)."
   },
   {
    "hash": "1076873af5bdcc8f5a28457655de1b9c8e8b499ea14f73ba666896d42e8d8445",
@@ -982,7 +982,7 @@
    "subtopic": "Independent Events",
    "stem": "Find the probability that exactly two of them are selected.",
    "context": "Rohit, Jaspreet and Alia appeared for an interview for three vacancies in the same post. The probability of Rohit's selection is \\(\\dfrac{1}{5}\\), Jaspreet's selection is \\(\\dfrac{1}{3}\\) and Alia's selection is \\(\\dfrac{1}{4}\\). The event of selection is independent of each other.\n\nBased on the above information, answer the following questions :",
-   "solution": ""
+   "solution": "Write R, J and A for the events that Rohit, Jaspreet and Alia respectively are selected, so \\(P(R) = \\frac{1}{5}\\), \\(P(J) = \\frac{1}{3}\\), \\(P(A) = \\frac{1}{4}\\), and the complements are \\(P\\left(\\overline{R}\\right) = \\frac{4}{5}\\), \\(P\\left(\\overline{J}\\right) = \\frac{2}{3}\\), \\(P\\left(\\overline{A}\\right) = \\frac{3}{4}\\).\nExactly two selected splits into three mutually exclusive cases, one for each candidate who might be the one left out, and independence lets each be multiplied out:\n\\(P(R)\\,P(J)\\,P\\left(\\overline{A}\\right) = \\frac{1}{5} \\times \\frac{1}{3} \\times \\frac{3}{4} = \\frac{3}{60}\\),\n\\(P(R)\\,P\\left(\\overline{J}\\right)P(A) = \\frac{1}{5} \\times \\frac{2}{3} \\times \\frac{1}{4} = \\frac{2}{60}\\),\n\\(P\\left(\\overline{R}\\right)P(J)\\,P(A) = \\frac{4}{5} \\times \\frac{1}{3} \\times \\frac{1}{4} = \\frac{4}{60}\\).\nAdding the three, \\(P(\\text{exactly two are selected}) = \\frac{3 + 2 + 4}{60} = \\frac{9}{60} = \\frac{3}{20}\\)."
   }
  ]
 }

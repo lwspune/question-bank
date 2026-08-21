@@ -195,6 +195,30 @@ A related trap from the same wave: a hand-rolled `/\\n/` check false-alarms on
 `\neq`, `\nabla` and matrix `\\` separators. The real `normalizeNewlines` masks
 math zones first, which is why the applier uses it rather than a second regex.
 
+### ⚠ NAMESPACE YOUR SCRATCH FILES — the scratchpad is SHARED
+
+Up to a dozen agents run at once, in one directory. Two separate agents in the
+same wave reported this, so it is systemic, not bad luck:
+
+- one wrote a generically-named `merge_solutions.py`; **a concurrent agent
+  overwrote it with its own copy whose source path was hardcoded to a DIFFERENT
+  PAPER.** Running it would have written one paper's solutions into another
+  paper's file — silently, with every hash still valid, because the file
+  structure would have been intact and only the text wrong.
+- another had its scratch script silently DELETED mid-run by the same collision.
+
+Prefix every scratch file with your paper id (`_tmp_p2026_65_4_1_verify.ts`).
+And if a script you wrote behaves oddly, check it is still the script you wrote.
+
+### ⚠ DO NOT COPY A REGEX CHARACTER CLASS OUT OF ANOTHER FILE
+
+Two leftover scratch probes in this directory were found to contain **literal
+control bytes inside a control-character class** — the very bytes they were
+written to detect, pasted in as raw characters instead of escapes. One agent
+copied that class into its own probe and inherited the corruption. Build
+patterns from ASCII escapes (`\x00-\x08`) or `String.fromCharCode`, never by
+copying a class you cannot see the bytes of. (Both files have been deleted.)
+
 ---
 
 ## 6a. Two self-checks that work, and one that does not

@@ -22,6 +22,19 @@
  * ALREADY-SOLVED ROWS ARE OMITTED BY DEFAULT, and that is what keeps the job
  * finite: 78 papers print 3,519 questions but only 1,766 distinct rows, so a
  * question solved from one series must not be re-solved from the next.
+ *
+ * ...WHICH MAKES THE OUTPUT A WORK FILE, NOT AN ARCHIVE — and these files are
+ * COMMITTED, so that distinction has teeth. Re-dumping 2024-65-4-1 after 30 of
+ * its rows were solved from a sibling cut the file from 53 rows to 23; committing
+ * that would have DELETED 30 authored solutions from the repo's source of record.
+ * (Nothing is destroyed — git history and the DB both hold them — but the tracked
+ * file stops being a truthful record of the paper, and a reader would conclude
+ * the paper has 23 questions.) An authoring agent caught this, not any gate.
+ *
+ * So: `--full` rebuilds the file as a MIRROR OF THE DB — every row the paper
+ * prints, each carrying whatever solution is stored right now. Run it before
+ * committing a paper that was ever re-dumped. `--all` is different and is for
+ * re-authoring: same rows, all solutions BLANK.
  */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
@@ -38,8 +51,9 @@ type Q = {
 
 async function main() {
   const id = process.argv[2];
-  const all = process.argv.includes("--all");
-  if (!id) throw new Error("usage: dump-solutions.ts <paperId> [--all]");
+  const full = process.argv.includes("--full");
+  const all = process.argv.includes("--all") || full;
+  if (!id) throw new Error("usage: dump-solutions.ts <paperId> [--all|--full]");
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
   const paper = JSON.parse(readFileSync(join(DATA, `${id}.questions.json`), "utf8")) as
@@ -58,7 +72,7 @@ async function main() {
       : contentHash(q.stem, (q.options ?? []).map((o) => o.text), q.answer ?? ""),
   }));
 
-  const state = new Map<string, { id: string; solved: boolean; kind: string }>();
+  const state = new Map<string, { id: string; solved: boolean; kind: string; stored: string | null }>();
   const hashes = withHash.map((w) => w.hash);
   for (let i = 0; i < hashes.length; i += 100) {
     const { data, error } = await client.from("questions")
@@ -69,6 +83,7 @@ async function main() {
     for (const r of data!) {
       state.set(r.content_hash as string, {
         id: r.id as string, solved: r.solution != null, kind: r.question_kind as string,
+        stored: (r.solution as string | null) ?? null,
       });
     }
   }
@@ -96,7 +111,9 @@ async function main() {
       // the correct option is not given").
       ...(q._noCorrectOption ? { noCorrectOption: true } : {}),
       ...(q._figure ? { figure: q._figure } : {}),
-      solution: "",
+      // --full mirrors the DB so the committed file stays a truthful record of
+      // the whole paper; --all deliberately blanks it, for re-authoring.
+      solution: full ? (s.stored ?? "") : "",
     });
   }
 
@@ -110,7 +127,12 @@ async function main() {
     rows: out,
   }, null, 1));
 
-  console.log(`${id}: ${paper.questions.length} printed | ${out.length} NEED a solution`);
+  const blank = out.filter((r) => !(r as { solution: string }).solution).length;
+  console.log(
+    full
+      ? `${id}: ${paper.questions.length} printed | ${out.length} row(s) mirrored from the DB (${blank} still unsolved) -- ARCHIVE MODE, do not hand this to an agent`
+      : `${id}: ${paper.questions.length} printed | ${out.length} NEED a solution`
+  );
   console.log(`  already solved elsewhere: ${solved} | absent: ${absent} | not a pyq row: ${foreign}`);
   console.log(`  marking scheme: ${msPages} rendered pages under out/${id}/ms/`);
   if (notes.length) for (const n of notes) console.log(`  ${n}`);

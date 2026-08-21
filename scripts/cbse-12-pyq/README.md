@@ -414,6 +414,47 @@ four, so pages are scanned independently. Anything the rules cannot settle — a
 page with no region, or with several — is REFUSED and adjudicated by hand in
 `data/figure-picks.json`, which records what was seen rather than a rule.
 
+### Does every question that TALKS about a figure carry one? — audited 2026-08-21
+
+`audit-figures.ts`. No other gate reads a stem and asks whether the thing it
+points at exists: `validate.ts` checks transcription files, `board:lint` checks
+section structure, `audit-keys` checks options, `audit-omml` checks Word export.
+A row whose stem says "In the given figure, ..." with `image_url` null is
+**unanswerable, renders as a complete question, and is invisible to every count**.
+
+**Result: 23 rows reference a figure they do not carry — and all 23 are
+answerable from the words.** They are only EIGHT distinct questions, six of them
+case-study sets whose four sub-parts share one context, and every one was opened
+and read rather than sampled:
+
+| | why the figure is illustrative |
+|---|---|
+| 2023 65/1/1 Q23(a) | `AC = (5/4)AB` fixes C on ray AB algebraically |
+| 2023 65/1/1 Q37 (4 rows) | semi-vertical angle 45° is stated in the context |
+| 2023 65/4/1 Q38 (2 rows) | the stem itself defines x and y and the 200 m of wire |
+| 2024 65/1/1 Q25 | the labelling ABCD determines `AD = AB − DB` |
+| 2024 65/1/1 Q38 (4 rows) | context defines the whole map in words; the graph is the familiar sine curve |
+| 2026 65/2/1 Q37 (3 rows) | ellipse equation AND the 3 m track width both given |
+| 2026 65/3/1 Q38 (4 rows) | vertices A(0,4), B(−2,0), C(3,0) given explicitly |
+| 2026 65/4/1 Q36 (4 rows) | cup is 15 cm deep, radius 5 cm — both stated |
+
+This CONFIRMS the figure phase's judgement: 41 attached figures is the real load,
+and nothing load-bearing was missed.
+
+**The probe's own bug is the transferable part.** Version 1 was written from the
+rows it flagged, so it learned only their phrasing and reported 16. Run against
+rows that DO carry a figure, it turned out blind to three more forms — `as shown
+below`, `The following graph is a combination of`, `The following graph
+represents` — each of which, on a row with no image, is precisely the
+unanswerable case. Widening it found **7 more rows across two whole sets**. A
+probe validated only against the cases it already flags cannot show you what it
+misses; check it against the population it calls CLEAN.
+
+The reverse direction (15 rows carrying an image whose stem never says "figure")
+is all legitimate — "The following graph represents :" is a question where the
+figure IS the stem. The regex stays narrow there on purpose: matching "the graph
+of y = sin x" would bury the real hits.
+
 ### Questions whose OPTIONS are graphs — resolved
 
 `2025 65/1/x Q5/Q14/Q18` (a graph stem with four graph options) and

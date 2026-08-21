@@ -13,7 +13,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Equation of a Line in Space",
    "stem": "Find the vector equation of a line passing through a point with position vector \\(2\\hat{i} - \\hat{j} + \\hat{k}\\) and parallel to the line joining the points \\(-\\hat{i} + 4\\hat{j} + \\hat{k}\\) and \\(\\hat{i} + 2\\hat{j} + 2\\hat{k}\\).",
-   "solution": ""
+   "solution": "A line is fixed by a point on it and a vector parallel to it, so the only work is finding the direction. Two lines are parallel when they share a direction vector, and the direction of the line joining the two given points is the difference of their position vectors: \\(\\left(\\hat{i} + 2\\hat{j} + 2\\hat{k}\\right) - \\left(-\\hat{i} + 4\\hat{j} + \\hat{k}\\right) = 2\\hat{i} - 2\\hat{j} + \\hat{k}\\). The required line passes through the point with position vector \\(\\vec{a} = 2\\hat{i} - \\hat{j} + \\hat{k}\\) and is parallel to \\(\\vec{b} = 2\\hat{i} - 2\\hat{j} + \\hat{k}\\). Using \\(\\vec{r} = \\vec{a} + \\lambda\\vec{b}\\), the vector equation of the line is \\(\\vec{r} = \\left(2\\hat{i} - \\hat{j} + \\hat{k}\\right) + \\lambda\\left(2\\hat{i} - 2\\hat{j} + \\hat{k}\\right)\\), where \\(\\lambda\\) is a scalar parameter."
   },
   {
    "hash": "2820796ebbdd628852ecffe5daf656bf7e53b69b035f4530bb7d0ab7d5adebea",
@@ -24,7 +24,7 @@
    "chapter": "Vector Algebra",
    "subtopic": "Vector (Cross) Product",
    "stem": "Let \\(\\vec{a} = \\hat{i} + \\hat{j}\\), \\(\\vec{b} = \\hat{i} - \\hat{j}\\) and \\(\\vec{c} = \\hat{i} + \\hat{j} + \\hat{k}\\). If \\(\\hat{n}\\) is a unit vector such that \\(\\vec{a} \\cdot \\hat{n} = 0\\) and \\(\\vec{b} \\cdot \\hat{n} = 0\\), then find \\(\\left|\\vec{c} \\cdot \\hat{n}\\right|\\).",
-   "solution": ""
+   "solution": "A zero dot product means perpendicularity, so \\(\\vec{a} \\cdot \\hat{n} = 0\\) and \\(\\vec{b} \\cdot \\hat{n} = 0\\) say that \\(\\hat{n}\\) is perpendicular to both \\(\\vec{a}\\) and \\(\\vec{b}\\). The vector perpendicular to two given vectors is their cross product, so \\(\\hat{n} = \\pm\\dfrac{\\vec{a} \\times \\vec{b}}{|\\vec{a} \\times \\vec{b}|}\\). Here \\(\\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & 1 & 0 \\\\ 1 & -1 & 0 \\end{vmatrix} = \\hat{i}(0 - 0) - \\hat{j}(0 - 0) + \\hat{k}(-1 - 1) = -2\\hat{k}\\), whose magnitude is \\(2\\). Hence \\(\\hat{n} = -\\hat{k}\\) (or equally \\(\\hat{n} = \\hat{k}\\), since the question only fixes \\(\\hat{n}\\) up to sign). Therefore \\(\\left|\\vec{c} \\cdot \\hat{n}\\right| = \\left|\\left(\\hat{i} + \\hat{j} + \\hat{k}\\right) \\cdot \\left(-\\hat{k}\\right)\\right| = |-1| = 1\\). The modulus is what makes the sign ambiguity harmless, and the required value is \\(1\\)."
   },
   {
    "hash": "05606ef22873abee24840358fc5ffb025fbbf11b52b8451cd7a299994344875f",
@@ -35,7 +35,7 @@
    "chapter": "Vector Algebra",
    "subtopic": "Vector (Cross) Product",
    "stem": "If \\(\\vec{a}\\) and \\(\\vec{b}\\) are unit vectors inclined at an angle \\(30^\\circ\\) to each other, then find the area of the parallelogram with \\(\\left(\\vec{a} + 3\\vec{b}\\right)\\) and \\(\\left(3\\vec{a} + \\vec{b}\\right)\\) as adjacent sides.",
-   "solution": ""
+   "solution": "The area of a parallelogram with adjacent sides \\(\\vec{p}\\) and \\(\\vec{q}\\) is \\(|\\vec{p} \\times \\vec{q}|\\), so expand the cross product using its distributive property: \\(\\left(\\vec{a} + 3\\vec{b}\\right) \\times \\left(3\\vec{a} + \\vec{b}\\right) = 3\\left(\\vec{a} \\times \\vec{a}\\right) + \\left(\\vec{a} \\times \\vec{b}\\right) + 9\\left(\\vec{b} \\times \\vec{a}\\right) + 3\\left(\\vec{b} \\times \\vec{b}\\right)\\). The cross product of a vector with itself is the zero vector, so the first and last terms vanish, and \\(\\vec{b} \\times \\vec{a} = -\\left(\\vec{a} \\times \\vec{b}\\right)\\) by anti-commutativity. This leaves \\(\\left(\\vec{a} \\times \\vec{b}\\right) - 9\\left(\\vec{a} \\times \\vec{b}\\right) = -8\\left(\\vec{a} \\times \\vec{b}\\right)\\). Taking magnitudes, the area is \\(8\\left|\\vec{a} \\times \\vec{b}\\right| = 8|\\vec{a}||\\vec{b}|\\sin 30^{\\circ}\\). Since \\(\\vec{a}\\) and \\(\\vec{b}\\) are unit vectors, \\(|\\vec{a}| = |\\vec{b}| = 1\\), so the area is \\(8 \\times 1 \\times 1 \\times \\dfrac{1}{2} = 4\\) square units."
   },
   {
    "hash": "1ff307b9151dfb3e58ac8e2f1dcaaf3fd5e5992cc1ea00aab414f284b7f36530",
@@ -46,7 +46,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "Evaluate :\n\n\\(\\int_0^{\\pi/2} \\dfrac{1}{1 + (\\tan x)^{2/3}}\\, dx\\)",
-   "solution": ""
+   "solution": "No antiderivative of this integrand is available, so use the property \\(\\int_0^a f(x)\\,dx = \\int_0^a f(a - x)\\,dx\\) with \\(a = \\dfrac{\\pi}{2}\\). First write the integrand in terms of sine and cosine: since \\(\\tan x = \\dfrac{\\sin x}{\\cos x}\\), \\(I = \\int_0^{\\pi/2} \\dfrac{dx}{1 + \\dfrac{\\sin^{2/3} x}{\\cos^{2/3} x}} = \\int_0^{\\pi/2} \\dfrac{\\cos^{2/3} x}{\\cos^{2/3} x + \\sin^{2/3} x}\\,dx\\) ... (I). Now replace \\(x\\) by \\(\\dfrac{\\pi}{2} - x\\), which interchanges sine and cosine: \\(I = \\int_0^{\\pi/2} \\dfrac{\\sin^{2/3} x}{\\sin^{2/3} x + \\cos^{2/3} x}\\,dx\\) ... (II). The two integrands share a denominator and their numerators add to it exactly, so adding (I) and (II) gives \\(2I = \\int_0^{\\pi/2} \\dfrac{\\cos^{2/3} x + \\sin^{2/3} x}{\\cos^{2/3} x + \\sin^{2/3} x}\\,dx = \\int_0^{\\pi/2} 1\\,dx = \\dfrac{\\pi}{2}\\). Hence \\(I = \\dfrac{\\pi}{4}\\)."
   },
   {
    "hash": "e3894fce844183e717da94dc8c5b843a5580e69125b857b3db35ed9f50928a12",
@@ -57,7 +57,7 @@
    "chapter": "Probability",
    "subtopic": "Bayes' Theorem",
    "stem": "In a factory, machine A produces 30% of total output, machine B produces 25% and the machine C produces the remaining output. The defective items produced by machines A, B and C are 1%, 1.2%, 2% respectively. An item is picked at random from a day's output and found to be defective. Find the probability that it was produced by machine B?",
-   "solution": ""
+   "solution": "The defect is observed and the machine is to be inferred, so this is Bayes' theorem. Let \\(E_1\\), \\(E_2\\), \\(E_3\\) be the events that the item was produced by machine A, B, C respectively, and \\(F\\) the event that the item is defective. Machine C makes the remaining \\(100 - 30 - 25 = 45\\) per cent, so \\(P(E_1) = \\dfrac{30}{100}\\), \\(P(E_2) = \\dfrac{25}{100}\\), \\(P(E_3) = \\dfrac{45}{100}\\), while the defect rates give \\(P(F \\mid E_1) = \\dfrac{1}{100}\\), \\(P(F \\mid E_2) = \\dfrac{1.2}{100}\\), \\(P(F \\mid E_3) = \\dfrac{2}{100}\\). By Bayes' theorem, \\(P(E_2 \\mid F) = \\dfrac{P(E_2)P(F \\mid E_2)}{P(E_1)P(F \\mid E_1) + P(E_2)P(F \\mid E_2) + P(E_3)P(F \\mid E_3)}\\). Every term carries a factor \\(\\dfrac{1}{100} \\times \\dfrac{1}{100}\\), which cancels, so the ratio reduces to \\(\\dfrac{25 \\times 1.2}{30 \\times 1 + 25 \\times 1.2 + 45 \\times 2} = \\dfrac{30}{30 + 30 + 90} = \\dfrac{30}{150} = \\dfrac{1}{5}\\). Hence the probability that the defective item came from machine B is \\(\\dfrac{1}{5}\\)."
   }
  ]
 }
