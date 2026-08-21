@@ -2901,6 +2901,115 @@ export const PAPERS: Record<string, PaperSpec> = {
     bankAdd: true,
     createPaper: true,
   },
+  // LWS "21 Aug" GAT mock — a 150-q three-subject paper: English (Q1-50),
+  // Physics (Q51-100) and Indian Geography (Q101-150). Source is a born-digital
+  // .docx with a clean text layer, so every stem and all four options came
+  // straight from the document XML; NO vision pass was needed except for the
+  // five embedded PNGs.
+  //
+  // NUMBERING IS CONTINUOUS 1-150 AND DOES NOT MATCH THE SOURCE. The document
+  // numbers each section from 1 (English 1-50, Physics Q1-Q50, Geography 1-50),
+  // which cannot address a single OMR sheet, so the three blocks were laid end
+  // to end. The printed paper is regenerated from these rows, so the student
+  // sees 1-150 and the Excel matches it.
+  //
+  // **THE SOURCE HAS NO ANSWER KEY OF ANY KIND** — every answer here is DERIVED.
+  //
+  // **Q97 IS AUTHORED, NOT FROM THE PAPER.** The document skips Physics Q47
+  // entirely (it runs Q46, Q48), so the Physics section held 49 questions. A
+  // replacement was written to fill the gap on the user's instruction; its
+  // reviewNote says so and it needs teacher approval like any derived answer.
+  //
+  // FIVE FIGURES, none of which survive as images because this pipeline has no
+  // figure slot: four circuit diagrams (Q65, Q67, Q70, Q71) whose topology is
+  // written into the stem instead, and one that was merely the rendered text
+  // "(Take g = 10 m/s^2)" (Q75), folded into the stem verbatim.
+  //
+  // FOUR FLAWED QUESTIONS, all Physics, all kept PRIVATE:
+  //   Q70 stem asks for NET RESISTANCE but all four options are currents in
+  //       amperes; the net resistance (16.67 ohm) matches no option. Keyed the
+  //       current, 0.6 A, which is what the option set actually answers.
+  //   Q75 options (a) and (c) are both "20 m", which is also the correct answer.
+  //   Q85 options (c) and (d) name the SAME two phenomena in reverse order, so
+  //       both are defensible. Keyed (c), which follows the stem's own ordering.
+  //   Q92 options (a) and (d) are both "1 and 2 only", which is the right answer.
+  //
+  // FOUR DUPLICATES against the existing NDA bank (Q69, Q80, Q100, Q114): two
+  // are exact stem-and-option matches, two are the same problem with a different
+  // option set. All four back the paper and stay PRIVATE.
+  //
+  // Q67's stem AND option (c) were REWORDED. The paper asks which bulb "will
+  // glow quickly" with option (c) "will glow faster", but at the instant of
+  // closing an uncharged capacitor is a short circuit, so both bulbs light
+  // together and only the STEADY behaviour separates them. Asking about
+  // continuous glow is the defensible physics; flagged for teacher confirmation.
+  "gat-mock-21aug": {
+    slug: "gat-mock-21aug",
+    title: "NDA GAT — LWS Mock 21 Aug (English, Physics, Indian Geography)",
+    recordsFile: "gat-mock-21aug.records.json",
+    outName: "Tags_NDA_GAT_Mock_21Aug",
+    sourceFile: "21 Aug ( Eng, PHY, IND GEO).docx",
+    subjects: {
+      English: {
+        "Fill in the Blanks": ["Contextual Word Selection (Phrasal Verbs and Collocations)"],
+        Grammar: [
+          "Active and Passive Voice", "Articles, Determiners and Quantifiers",
+          "Parts of Speech", "Preposition Usage",
+        ],
+        "Spotting Errors": [
+          "No Error (Correct Sentence)", "Sentence Improvement", "Tense and Verb Form",
+          "Word Choice, Prepositions and Punctuation",
+        ],
+        Vocabulary: ["Word Definition"],
+      },
+      Physics: {
+        "Electricity and Magnetism": [
+          "Combination of Resistors", "Electric Current and Ohm's Law", "Electrical Devices",
+          "Electrical Power, Energy and Heating", "Electrostatics", "Resistance and Resistivity",
+        ],
+        "Energy Sources": ["Energy Sources"],
+        Gravitation: [
+          "Gravitational Field and Potential", "Newton's Law of Gravitation",
+          "Orbits, Kepler and Escape",
+        ],
+        "Heat and Thermodynamics": ["Heat, Calorimetry and Specific Heat"],
+        "Kinematics and Motion": ["Equations of Motion and Graphs", "Projectile and Vertical Motion"],
+        "Laws of Motion and Forces": ["Impulse and Momentum", "Newton's Laws of Motion"],
+        "Light and Optics": [
+          "Human Eye and Optical Instruments", "Light Phenomena and Spectrum",
+          "Prisms and Dispersion", "Reflection and Mirrors", "Refraction, Speed of Light and TIR",
+        ],
+        "Modern Physics": ["Nuclear Physics", "Quantum and Modern EM"],
+        "Oscillations and Waves": ["Simple Harmonic Motion and General Waves"],
+        Sound: [
+          "Sound Behaviours — Reflection, Echo, Reverberation, Beats",
+          "Wave Equation, Speed, and Frequency Bands",
+        ],
+        "Units, Measurement and Dimensions": ["Units and Dimensions"],
+        "Work, Energy and Power": ["Energy and Conservation"],
+      },
+      Geography: {
+        "Earth's Structure, Landforms and Geological Time": ["Soils", "Volcanoes and Igneous Activity"],
+        "Indian Geography — Economy, Resources and Transport": [
+          "Economic Sectors and Government Schemes",
+          "Energy and Industries — Power, Petroleum, Iron and Steel",
+          "Highways, Railways and Transport Corridors", "Ports and Maritime Infrastructure",
+        ],
+        "Indian Geography — Physical Features": [
+          "Forests and Natural Vegetation of India", "Indian Rivers, Lakes and Water Bodies",
+          "Indian Soils and Climate-Agriculture", "Indian States and Islands",
+          "Location, Extent and Frontiers of India", "Mountains, Plateaus and Plains of India",
+        ],
+        "World and Human Geography": [
+          "Human Geography — Megacities and Population", "World — Rivers, Canals and Water Bodies",
+        ],
+      },
+    },
+    pyqNote: "NDA GAT practice — LWS Mock 21 Aug",
+    examName: "NDA",
+    section: { key: "gat-mock-21aug", label: "GAT Mock 21 Aug" },
+    bankAdd: true,
+  },
 };
 
 export function requirePaper(slug: string | undefined): PaperSpec {
