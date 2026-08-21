@@ -32,7 +32,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Solve it and count. The equation \\(\\frac{dy}{dx} - y = 1\\) is linear with \\(P = -1\\), so \\(\\text{I.F.} = e^{-x}\\) and \\(\\frac{d}{dx}\\left(y e^{-x}\\right) = e^{-x}\\). Integrating, \\(y e^{-x} = -e^{-x} + c\\), so the general solution is \\(y = c e^{x} - 1\\), a family with ONE arbitrary constant. The initial condition \\(y(0) = 1\\) forces \\(1 = c - 1\\), so \\(c = 2\\) and \\(y = 2e^{x} - 1\\) — a single curve. Hence exactly \\(1\\) solution, which is the choice \\(1\\). (This is the general principle: a first-order equation has a one-parameter family of solutions, and one initial condition pins the parameter down to a unique member.)"
   },
   {
    "hash": "6b910c764980405784f9377c5664c8e4a0fe9bb61614d7b7b6a1d772827b8476",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "A scalar matrix is a diagonal matrix whose diagonal entries are all EQUAL, so a scalar matrix of order 3 has the form \\(kI = \\begin{bmatrix} k & 0 & 0 \\\\ 0 & k & 0 \\\\ 0 & 0 & k \\end{bmatrix}\\). It is therefore determined by the single number \\(k\\), and the off-diagonal entries are forced to be \\(0\\) — which is one of the permitted values, so every such choice is admissible. Since \\(k\\) may be \\(-1\\), \\(0\\) or \\(1\\), there are exactly \\(3\\) such matrices, matching the choice \\(3\\). (The value \\(3^9\\) counts ALL \\(3 \\times 3\\) matrices with entries from that set, ignoring the scalar condition entirely.)"
   },
   {
    "hash": "92baf3a10b199f56798b7fff1e48fb2ac8e0916ae384eddf392271e1853d665a",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Apply the chain rule with the inner function \\(u = \\log x + e^{x}\\). Then \\(\\frac{d}{dx}\\cos u = -\\sin u \\cdot \\frac{du}{dx}\\), where \\(\\frac{du}{dx} = \\frac{1}{x} + e^{x}\\). So the derivative is \\(-\\sin(\\log x + e^{x})\\left(\\frac{1}{x} + e^{x}\\right)\\). Now put \\(x = 1\\): the inner function is \\(\\log 1 + e^{1} = 0 + e = e\\), and the bracket is \\(\\frac{1}{1} + e^{1} = 1 + e\\). Hence the value is \\(-(1 + e)\\sin e\\), matching the choice \\(-(1 + e)\\sin e\\). (Forgetting the chain-rule factor gives \\(-\\sin e\\), which is why that also appears among the choices.)"
   },
   {
    "hash": "16c1ed794efa71c11e4d3260c0e5895a4fa819287350c7a0f2544b3c59b9a053",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "The equivalence classes of a relation PARTITION the set: they cover it and they are pairwise DISJOINT. Checking the four statements against that: the union of all the classes is indeed the whole of \\(A\\), so that one is true; if \\(x\\) lies in both \\(A_i\\) and \\(A_j\\) then those classes coincide, so that one is true; and every two members of one class are related, since a class is exactly the set of elements related to a given one, so that one is true as well. The remaining statement, \\(A_i \\cap A_j \\ne \\phi\\) for \\(i \\ne j\\), asserts that two DIFFERENT classes overlap, which contradicts disjointness — for distinct classes \\(A_i \\cap A_j = \\phi\\). Since the question asks which statement is NOT true, the answer is the choice \\(A_i \\cap A_j \\ne \\phi, i \\ne j\\)."
   },
   {
    "hash": "f3b4a2dbdabe0220c5ab2a1641d47497b69bfbcca39e3d1a829d4e0cbc6bccd3",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Evaluate the two sides and equate. Left side: \\(\\int_0^2 2e^{2x}\\,dx = \\left[e^{2x}\\right]_0^2 = e^4 - 1\\), since \\(\\frac{d}{dx}e^{2x} = 2e^{2x}\\) so the factor \\(2\\) is exactly what the antiderivative needs. Right side: \\(\\int_0^a e^{x}\\,dx = \\left[e^{x}\\right]_0^a = e^{a} - 1\\). Equating, \\(e^{a} - 1 = e^{4} - 1\\), so \\(e^{a} = e^{4}\\) and, the exponential being one-one, \\(a = 4\\). This is the choice \\(4\\)."
   },
   {
    "hash": "b0fcfdc99851af3d5846bfe820c0f317f84d8f19a7d220786564e66e6d2edcfd",
@@ -163,7 +163,7 @@
    "chapter": "Integrals",
    "subtopic": "Definite Integrals by Substitution",
    "stem": "Evaluate :\n\n\\(\\displaystyle\\int_0^{a^3} \\dfrac{x^2}{x^6 + a^6}\\, dx\\)",
-   "solution": ""
+   "solution": "Notice that \\(x^6 = (x^3)^2\\) and that \\(x^2\\,dx\\) is, up to a constant, the differential of \\(x^3\\). So put \\(x^3 = t\\), giving \\(3x^2\\,dx = dt\\), that is \\(x^2\\,dx = \\frac{dt}{3}\\). The limits become \\(t = 0\\) when \\(x = 0\\) and \\(t = (a^3)^3 = a^9\\) when \\(x = a^3\\). The integral turns into \\(\\frac{1}{3}\\int_0^{a^9} \\frac{dt}{t^2 + (a^3)^2}\\). Using \\(\\int \\frac{dt}{t^2 + p^2} = \\frac{1}{p}\\tan^{-1}\\frac{t}{p}\\) with \\(p = a^3\\), this is \\(\\frac{1}{3} \\cdot \\frac{1}{a^3}\\left[\\tan^{-1}\\frac{t}{a^3}\\right]_0^{a^9} = \\frac{1}{3a^3}\\left(\\tan^{-1} a^6 - \\tan^{-1} 0\\right)\\). Since \\(\\tan^{-1} 0 = 0\\), the value is \\(\\frac{1}{3a^3}\\tan^{-1}\\left(a^6\\right)\\)."
   },
   {
    "hash": "f9fa838ca9094c14288ca47b162cbc5d8ed0d341f5b7e61a384e57ef8534ffd6",
@@ -174,7 +174,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Differentiability and the Chain Rule",
    "stem": "Check the differentiability of \\(f(x) = |\\cos x|\\) at \\(x = \\dfrac{\\pi}{2}\\).",
-   "solution": ""
+   "solution": "The modulus changes formula exactly where \\(\\cos x\\) changes sign, and \\(x = \\frac{\\pi}{2}\\) is such a point, so remove the modulus on either side of it: \\(f(x) = \\cos x\\) for \\(0 \\le x \\le \\frac{\\pi}{2}\\) (where \\(\\cos x \\ge 0\\)) and \\(f(x) = -\\cos x\\) for \\(\\frac{\\pi}{2} \\le x \\le \\pi\\) (where \\(\\cos x \\le 0\\)). Note \\(f\\left(\\frac{\\pi}{2}\\right) = 0\\). Left-hand derivative: \\(\\lim_{h \\to 0} \\frac{f\\left(\\frac{\\pi}{2} - h\\right) - f\\left(\\frac{\\pi}{2}\\right)}{-h} = \\lim_{h \\to 0} \\frac{\\cos\\left(\\frac{\\pi}{2} - h\\right) - 0}{-h} = \\lim_{h \\to 0} \\frac{\\sin h}{-h} = -1\\), using \\(\\lim_{h \\to 0}\\frac{\\sin h}{h} = 1\\). Right-hand derivative: \\(\\lim_{h \\to 0} \\frac{f\\left(\\frac{\\pi}{2} + h\\right) - f\\left(\\frac{\\pi}{2}\\right)}{h} = \\lim_{h \\to 0} \\frac{-\\cos\\left(\\frac{\\pi}{2} + h\\right) - 0}{h} = \\lim_{h \\to 0} \\frac{\\sin h}{h} = 1\\). Since the left-hand derivative \\(-1\\) is not equal to the right-hand derivative \\(1\\), the function \\(f(x) = |\\cos x|\\) is NOT differentiable at \\(x = \\frac{\\pi}{2}\\). (It IS continuous there — the graph has a corner, not a jump.)"
   },
   {
    "hash": "e085303272a739c4025d8876580600de4531fb3e57d42927736775e390d8fa78",
@@ -185,7 +185,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Second Order Derivatives",
    "stem": "If \\(y = A \\sin 2x + B \\cos 2x\\) and \\(\\dfrac{d^2y}{dx^2} - ky = 0\\), find the value of k.",
-   "solution": ""
+   "solution": "Differentiate twice and compare with the given equation. First, \\(\\frac{dy}{dx} = 2A\\cos 2x - 2B\\sin 2x\\). Differentiating again, \\(\\frac{d^2y}{dx^2} = -4A\\sin 2x - 4B\\cos 2x = -4\\left(A\\sin 2x + B\\cos 2x\\right) = -4y\\). So the function satisfies \\(\\frac{d^2y}{dx^2} + 4y = 0\\). Comparing this with the given \\(\\frac{d^2y}{dx^2} - ky = 0\\), we need \\(-k = 4\\), so \\(k = -4\\). (The relation holds for every choice of the constants \\(A\\) and \\(B\\), which is why \\(k\\) is a single definite number and not an expression in them.)"
   },
   {
    "hash": "df37223abcf9f97c5988ef9fecd2651e957566810af83f01a0e8179b5e1eeabc",
@@ -196,7 +196,7 @@
    "chapter": "Vector Algebra",
    "subtopic": "Scalar (Dot) Product and Projection",
    "stem": "If vectors \\(\\vec{a}\\), \\(\\vec{b}\\) and \\(2\\vec{a} + 3\\vec{b}\\) are unit vectors, then find the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\).",
-   "solution": ""
+   "solution": "Being unit vectors, \\(|\\vec{a}| = |\\vec{b}| = |2\\vec{a} + 3\\vec{b}| = 1\\). Square the third condition, using \\(|\\vec{u}|^2 = \\vec{u} \\cdot \\vec{u}\\): \\(|2\\vec{a} + 3\\vec{b}|^2 = 4|\\vec{a}|^2 + 12\\,\\vec{a} \\cdot \\vec{b} + 9|\\vec{b}|^2 = 1\\). Substituting \\(|\\vec{a}|^2 = |\\vec{b}|^2 = 1\\) gives \\(4 + 12\\,\\vec{a} \\cdot \\vec{b} + 9 = 1\\), so \\(12\\,\\vec{a} \\cdot \\vec{b} = -12\\) and \\(\\vec{a} \\cdot \\vec{b} = -1\\). Now \\(\\vec{a} \\cdot \\vec{b} = |\\vec{a}||\\vec{b}|\\cos\\theta = \\cos\\theta\\), so \\(\\cos\\theta = -1\\) and hence \\(\\theta = \\pi\\), that is \\(180^{\\circ}\\). The two vectors are therefore antiparallel. (This is consistent: \\(\\cos\\theta = -1\\) forces \\(\\vec{b} = -\\vec{a}\\), and then \\(2\\vec{a} + 3\\vec{b} = -\\vec{a}\\), whose magnitude is indeed \\(1\\).)"
   },
   {
    "hash": "838892d547c99fe8f89e1fc35e85606760d53c8329aebf34432deb4c6aadd673",
@@ -207,7 +207,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Logarithmic Differentiation",
    "stem": "If \\(x^{30} y^{20} = (x + y)^{50}\\), prove that \\(\\dfrac{dy}{dx} = \\dfrac{y}{x}\\).",
-   "solution": ""
+   "solution": "The relation is a product of high powers, so take logarithms first to turn products into sums. Taking \\(\\log\\) of both sides, \\(30\\log x + 20\\log y = 50\\log(x + y)\\). Differentiating with respect to \\(x\\), remembering the chain rule on \\(y\\) and on \\(x + y\\): \\(\\frac{30}{x} + \\frac{20}{y}\\frac{dy}{dx} = \\frac{50}{x + y}\\left(1 + \\frac{dy}{dx}\\right)\\). Collect the derivative terms on the left and the rest on the right: \\(\\frac{dy}{dx}\\left(\\frac{20}{y} - \\frac{50}{x + y}\\right) = \\frac{50}{x + y} - \\frac{30}{x}\\). Combining each side over a common denominator, the left bracket is \\(\\frac{20(x + y) - 50y}{y(x + y)} = \\frac{20x - 30y}{y(x + y)}\\) and the right side is \\(\\frac{50x - 30(x + y)}{x(x + y)} = \\frac{20x - 30y}{x(x + y)}\\). So \\(\\frac{dy}{dx} \\cdot \\frac{20x - 30y}{y(x + y)} = \\frac{20x - 30y}{x(x + y)}\\). Cancelling the common factor \\(\\frac{20x - 30y}{x + y}\\) leaves \\(\\frac{dy}{dx} \\cdot \\frac{1}{y} = \\frac{1}{x}\\), that is \\(\\frac{dy}{dx} = \\frac{y}{x}\\), as required."
   },
   {
    "hash": "e13463617ad981847516a582019ce6fb477279152a52f18673cd0effa6c433c3",
@@ -218,7 +218,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Derivatives of Exponential and Logarithmic Functions",
    "stem": "Find \\(\\dfrac{dy}{dx}\\), if \\(5^x + 5^y = 5^{x+y}\\).",
-   "solution": ""
+   "solution": "Differentiate both sides with respect to \\(x\\), using \\(\\frac{d}{dx}5^{u} = 5^{u}\\log 5 \\cdot \\frac{du}{dx}\\): \\(5^{x}\\log 5 + 5^{y}\\log 5 \\, \\frac{dy}{dx} = 5^{x+y}\\log 5\\left(1 + \\frac{dy}{dx}\\right)\\). Cancel the common factor \\(\\log 5\\), and then use the GIVEN relation to replace \\(5^{x+y}\\) by \\(5^{x} + 5^{y}\\): \\(5^{x} + 5^{y}\\frac{dy}{dx} = \\left(5^{x} + 5^{y}\\right)\\left(1 + \\frac{dy}{dx}\\right)\\). Expanding the right side, \\(5^{x} + 5^{y}\\frac{dy}{dx} = 5^{x} + 5^{x}\\frac{dy}{dx} + 5^{y} + 5^{y}\\frac{dy}{dx}\\). The terms \\(5^{x}\\) and \\(5^{y}\\frac{dy}{dx}\\) cancel from both sides, leaving \\(0 = 5^{x}\\frac{dy}{dx} + 5^{y}\\). Hence \\(\\frac{dy}{dx} = -\\frac{5^{y}}{5^{x}} = -5^{\\,y-x}\\)."
   },
   {
    "hash": "ade07c19febd9bd987df4da86b5af5d95c7997ec1b590b25585bb17f89418a44",
@@ -229,7 +229,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Equation of a Line in Space",
    "stem": "Find the value of p for which the lines\n\n\\(\\vec{r} = \\lambda\\hat{i} + (2\\lambda + 1)\\hat{j} + (3\\lambda + 2)\\hat{k}\\) and\n\n\\(\\vec{r} = \\hat{i} - 3\\mu\\hat{j} + (p\\mu + 7)\\hat{k}\\)\n\nare perpendicular to each other and also intersect. Also, find the point of intersection of the given lines.",
-   "solution": ""
+   "solution": "Read each line as a point plus a direction. The first is \\(\\vec{r} = \\hat{j} + 2\\hat{k} + \\lambda(\\hat{i} + 2\\hat{j} + 3\\hat{k})\\), with direction \\(\\hat{i} + 2\\hat{j} + 3\\hat{k}\\); the second is \\(\\vec{r} = \\hat{i} + 7\\hat{k} + \\mu(-3\\hat{j} + p\\hat{k})\\), with direction \\(-3\\hat{j} + p\\hat{k}\\). Perpendicularity means the dot product of the directions vanishes: \\((\\hat{i} + 2\\hat{j} + 3\\hat{k}) \\cdot (-3\\hat{j} + p\\hat{k}) = 0 + 2(-3) + 3p = -6 + 3p = 0\\), so \\(p = 2\\). Now check that they really meet, and find where. A general point of the first line is \\((\\lambda,\\; 2\\lambda + 1,\\; 3\\lambda + 2)\\) and of the second (with \\(p = 2\\)) is \\((1,\\; -3\\mu,\\; 2\\mu + 7)\\). Equating coordinates gives \\(\\lambda = 1\\), \\(2\\lambda + 1 = -3\\mu\\) and \\(3\\lambda + 2 = 2\\mu + 7\\). The first two give \\(\\lambda = 1\\) and \\(3 = -3\\mu\\), so \\(\\mu = -1\\); substituting into the third gives \\(5 = 5\\), which holds, so the lines do intersect. Putting \\(\\lambda = 1\\) into the first line, the point of intersection is \\((1, 3, 5)\\). Hence \\(p = 2\\) and the lines meet at \\((1, 3, 5)\\)."
   },
   {
    "hash": "f8c0da3d0b32201a5f7b200053a19b028c5ad81724c970aa4e3f412cba950bd3",
@@ -240,7 +240,7 @@
    "chapter": "Determinants",
    "subtopic": "Adjoint and Inverse of a Matrix",
    "stem": "If \\(A = \\begin{bmatrix} 5 & 0 & 4 \\\\ 2 & 3 & 2 \\\\ 1 & 2 & 1 \\end{bmatrix}\\) and \\(B^{-1} = \\begin{bmatrix} 1 & 3 & 3 \\\\ 1 & 4 & 3 \\\\ 1 & 3 & 4 \\end{bmatrix}\\), find \\((AB)^{-1}\\).\n\nAlso, find \\(|(AB)^{-1}|\\).",
-   "solution": ""
+   "solution": "Use the reversal law \\((AB)^{-1} = B^{-1}A^{-1}\\); since \\(B^{-1}\\) is already given, only \\(A^{-1}\\) has to be computed. Expanding along the first row, \\(|A| = 5(3 \\cdot 1 - 2 \\cdot 2) - 0 + 4(2 \\cdot 2 - 3 \\cdot 1) = 5(-1) + 4(1) = -1 \\ne 0\\), so \\(A^{-1}\\) exists. The cofactors are \\(A_{11} = -1\\), \\(A_{12} = 0\\), \\(A_{13} = 1\\), \\(A_{21} = 8\\), \\(A_{22} = 1\\), \\(A_{23} = -10\\), \\(A_{31} = -12\\), \\(A_{32} = -2\\), \\(A_{33} = 15\\). Transposing the cofactor matrix, \\(\\text{adj}\\,A = \\begin{bmatrix} -1 & 8 & -12 \\\\ 0 & 1 & -2 \\\\ 1 & -10 & 15 \\end{bmatrix}\\), so \\(A^{-1} = \\frac{\\text{adj}\\,A}{|A|} = \\begin{bmatrix} 1 & -8 & 12 \\\\ 0 & -1 & 2 \\\\ -1 & 10 & -15 \\end{bmatrix}\\). Multiplying, \\((AB)^{-1} = B^{-1}A^{-1} = \\begin{bmatrix} 1 & 3 & 3 \\\\ 1 & 4 & 3 \\\\ 1 & 3 & 4 \\end{bmatrix}\\begin{bmatrix} 1 & -8 & 12 \\\\ 0 & -1 & 2 \\\\ -1 & 10 & -15 \\end{bmatrix} = \\begin{bmatrix} -2 & 19 & -27 \\\\ -2 & 18 & -25 \\\\ -3 & 29 & -42 \\end{bmatrix}\\). For the determinant there is no need to expand this product: \\(\\left|(AB)^{-1}\\right| = \\left|B^{-1}\\right|\\left|A^{-1}\\right|\\), and \\(\\left|B^{-1}\\right| = 1(16 - 9) - 3(4 - 3) + 3(3 - 4) = 7 - 3 - 3 = 1\\) while \\(\\left|A^{-1}\\right| = \\frac{1}{|A|} = -1\\). Hence \\(\\left|(AB)^{-1}\\right| = 1 \\times (-1) = -1\\)."
   },
   {
    "hash": "eba56505b94284ede08935525f7e67c6526e0ca83dbd33e441e3b1f5a9a6a51b",
@@ -251,7 +251,7 @@
    "chapter": "Determinants",
    "subtopic": "Solving System of Linear Equations",
    "stem": "Given \\(A = \\begin{bmatrix} 1 & 1 & 1 \\\\ 2 & 3 & 2 \\\\ 1 & 1 & 2 \\end{bmatrix}\\), find \\(A^{-1}\\). Use it to solve the following system of equations :\n\n\\(x + y + z = 1\\)\n\n\\(2x + 3y + 2z = 2\\)\n\n\\(x + y + 2z = 4\\)",
-   "solution": ""
+   "solution": "Expanding along the first row, \\(|A| = 1(3 \\cdot 2 - 2 \\cdot 1) - 1(2 \\cdot 2 - 2 \\cdot 1) + 1(2 \\cdot 1 - 3 \\cdot 1) = 4 - 2 - 1 = 1 \\ne 0\\), so \\(A^{-1}\\) exists and the system has a unique solution. The cofactors are \\(A_{11} = 4\\), \\(A_{12} = -2\\), \\(A_{13} = -1\\), \\(A_{21} = -1\\), \\(A_{22} = 1\\), \\(A_{23} = 0\\), \\(A_{31} = -1\\), \\(A_{32} = 0\\), \\(A_{33} = 1\\). Transposing gives \\(\\text{adj}\\,A = \\begin{bmatrix} 4 & -1 & -1 \\\\ -2 & 1 & 0 \\\\ -1 & 0 & 1 \\end{bmatrix}\\), and since \\(|A| = 1\\), \\(A^{-1} = \\text{adj}\\,A = \\begin{bmatrix} 4 & -1 & -1 \\\\ -2 & 1 & 0 \\\\ -1 & 0 & 1 \\end{bmatrix}\\). The system is exactly \\(AX = B\\) with \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 1 \\\\ 2 \\\\ 4 \\end{bmatrix}\\), because the coefficient matrix of the three equations is the given \\(A\\). Hence \\(X = A^{-1}B = \\begin{bmatrix} 4 & -1 & -1 \\\\ -2 & 1 & 0 \\\\ -1 & 0 & 1 \\end{bmatrix}\\begin{bmatrix} 1 \\\\ 2 \\\\ 4 \\end{bmatrix} = \\begin{bmatrix} 4 - 2 - 4 \\\\ -2 + 2 + 0 \\\\ -1 + 0 + 4 \\end{bmatrix} = \\begin{bmatrix} -2 \\\\ 0 \\\\ 3 \\end{bmatrix}\\). So \\(x = -2\\), \\(y = 0\\), \\(z = 3\\). Checking in the original equations: \\(-2 + 0 + 3 = 1\\), \\(-4 + 0 + 6 = 2\\), and \\(-2 + 0 + 6 = 4\\), all as required."
   }
  ]
 }

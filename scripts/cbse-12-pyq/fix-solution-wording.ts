@@ -74,6 +74,33 @@ const FIXES: Fix[] = [
     find: "which is also why \\(\\log(-5)\\) in option (C) is meaningless.",
     replace: "which is also why the choice \\(\\log(-5)\\) is meaningless.",
   },
+  // "Hence <letter>" where the letter NAMES A MATRIX. `concludedLetter`'s first
+  // pattern is /Hence[,\s]*\(?([A-Da-d])\)?/, meant for "Hence (C)" — but a
+  // maths solution writes "Hence B is of order 3 x 4" about a matrix called B.
+  // A corpus scan of all 494 solved MCQs found exactly these three: one LIVE
+  // false positive and two LATENT (agreeing with their key only by coincidence,
+  // and going red the moment options are reordered). All three keys are correct.
+  {
+    source: "cbse-12-pyq-2023-65-4-3",
+    qnum: "1",
+    why: "'Hence B is of order 3x4' — B is the MATRIX. Key (A) 3x4 correct: A' is 4x3 so B has 3 rows; AB' defined so B has 4 columns.",
+    find: "Hence B is of order \\( 3 \\times 4 \\)",
+    replace: "So the order of B is \\( 3 \\times 4 \\)",
+  },
+  {
+    source: "cbse-12-pyq-2024-65-5-3",
+    qnum: "2",
+    why: "'Hence A is invertible' — A is the MATRIX. Latent: the probe currently resolves elsewhere, but the collision is one reorder away.",
+    find: "Hence A is invertible for every",
+    replace: "So A is invertible for every",
+  },
+  {
+    source: "cbse-12-pyq-2026-65-3-1",
+    qnum: "4",
+    why: "'Hence A must be of order 1x3' — A is the MATRIX. Latent, same shape.",
+    find: "Hence A must be of order \\(1 \\times 3\\)",
+    replace: "So the order of A must be \\(1 \\times 3\\)",
+  },
 ];
 
 async function main() {

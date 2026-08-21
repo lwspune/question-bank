@@ -32,7 +32,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "The cross product and the dot product share the same pair of magnitudes, so the first can be used to find that pair. From \\(|\\vec{a} \\times \\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\frac{\\pi}{3} = 3\\sqrt{3}\\) and \\(\\sin\\frac{\\pi}{3} = \\frac{\\sqrt{3}}{2}\\), we get \\(|\\vec{a}||\\vec{b}| \\cdot \\frac{\\sqrt{3}}{2} = 3\\sqrt{3}\\), hence \\(|\\vec{a}||\\vec{b}| = 6\\). Then \\(\\vec{a} \\cdot \\vec{b} = |\\vec{a}||\\vec{b}|\\cos\\frac{\\pi}{3} = 6 \\times \\frac{1}{2} = 3\\), which is the choice 3."
   },
   {
    "hash": "3ab751f395774bb37c882861c34d204608c497edec2a681f1573981454d0b5da",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "In a parallelogram \\(ABCD\\) the diagonals \\(AC\\) and \\(BD\\) bisect each other, so the mid-point of \\(AC\\) is the mid-point of \\(BD\\). In position vectors this reads \\(\\vec{A} + \\vec{C} = \\vec{B} + \\vec{D}\\), giving \\(\\vec{D} = \\vec{A} + \\vec{C} - \\vec{B}\\). Here \\(\\vec{A} + \\vec{C} = (4 + 12)\\hat{i} + (2 + 4)\\hat{j} + (-6 + 5)\\hat{k} = 16\\hat{i} + 6\\hat{j} - \\hat{k}\\), and subtracting \\(\\vec{B} = 5\\hat{i} - 3\\hat{j} + \\hat{k}\\) gives \\(\\vec{D} = 11\\hat{i} + 9\\hat{j} - 2\\hat{k}\\), which is the choice \\(11\\hat{i} + 9\\hat{j} - 2\\hat{k}\\). The same result follows from \\(\\overrightarrow{AD} = \\overrightarrow{BC}\\), since \\(ABCD\\) taken in order has \\(AD\\) parallel and equal to \\(BC\\)."
   },
   {
    "hash": "166938ae25473205157efde4be024f780a1160fb4583acd13280656c41887fad",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "The event \\(A - B\\) is the part of \\(A\\) that lies outside \\(B\\), so \\(P(A - B) = P(A \\cap B') = P(A) - P(A \\cap B)\\). Substituting the given values, \\(\\frac{1}{5} = \\frac{3}{5} - P(A \\cap B)\\), so \\(P(A \\cap B) = \\frac{2}{5}\\). Therefore \\(P\\left(\\frac{B}{A}\\right) = \\frac{P(A \\cap B)}{P(A)} = \\frac{2/5}{3/5} = \\frac{2}{3}\\), which is the choice \\(\\frac{2}{3}\\)."
   },
   {
    "hash": "ce05d7e219c060c0521fb688b2483ebb9daa94d5896b8eb8a7bb514f13bccb60",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Evaluate each side separately using \\(\\cos^2 x = \\frac{1 + \\cos 2x}{2}\\). For the left integral, \\(\\int_{0}^{2\\pi}\\cos^2 x\\,dx = \\left[\\frac{x}{2} + \\frac{\\sin 2x}{4}\\right]_{0}^{2\\pi} = \\pi\\), since \\(\\sin 4\\pi = \\sin 0 = 0\\). For the right one, \\(\\int_{0}^{\\pi/2}\\cos^2 x\\,dx = \\left[\\frac{x}{2} + \\frac{\\sin 2x}{4}\\right]_{0}^{\\pi/2} = \\frac{\\pi}{4}\\), because \\(\\sin\\pi = 0\\). Hence \\(\\pi = k \\cdot \\frac{\\pi}{4}\\), so \\(k = 4\\), which is the choice 4."
   },
   {
    "hash": "65bbaf4b04bd1a4211ba5d3a78e492e13090d8e170d3e61f8188585219218ea4",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "A symmetric matrix satisfies \\(a_{ij} = a_{ji}\\), so a \\(3 \\times 3\\) symmetric matrix is completely determined by the entries on and above the main diagonal — the \\(3\\) diagonal entries together with the \\(3\\) entries above it, \\(6\\) in all. Each of those \\(6\\) may independently be \\(1\\) or \\(-1\\), and the remaining \\(3\\) entries below the diagonal are then forced by symmetry. The count is therefore \\(2^6 = 64\\), which is the choice 64. (The figure \\(512 = 2^9\\) would count all \\(3 \\times 3\\) matrices with those entries, symmetric or not.)"
   },
   {
    "hash": "30d1aff4dd9555044ab9ac274458ae607f7c2c7a20438c5139643b4560e29331",
@@ -182,7 +182,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "A line equally inclined to the three coordinate axes makes equal angles with them, so its direction cosines are equal: \\(l = m = n\\). Combined with \\(l^2 + m^2 + n^2 = 1\\) this gives \\(3l^2 = 1\\), so \\(l = m = n = \\pm\\frac{1}{\\sqrt{3}}\\); either sign describes the same line, and the corresponding direction ratios are \\(1, 1, 1\\). A line through \\((1, 2, 3)\\) with those direction ratios is \\(\\frac{x - 1}{1} = \\frac{y - 2}{1} = \\frac{z - 3}{1}\\), which is the choice \\(\\frac{x - 1}{1} = \\frac{y - 2}{1} = \\frac{z - 3}{1}\\). Of the alternatives, the two with direction ratios \\(1, 2, 3\\) are not equally inclined to the axes, and \\(\\frac{x}{1} = \\frac{y}{1} = \\frac{z}{1}\\) has the right direction but passes through the origin rather than \\((1, 2, 3)\\)."
   },
   {
    "hash": "37200f4c516e7dba811bb66d52cabd857087198503f4eeea70f7797180f30b77",
@@ -193,7 +193,7 @@
    "chapter": "Vector Algebra",
    "subtopic": "Components and Direction Cosines",
    "stem": "If points A, B and C have position vectors \\(2\\hat{i}\\), \\(\\hat{j}\\) and \\(2\\hat{k}\\) respectively, then show that \\(\\Delta ABC\\) is an isosceles triangle.",
-   "solution": ""
+   "solution": "Compare the two sides meeting at \\(B\\). With position vectors \\(\\vec{A} = 2\\hat{i}\\), \\(\\vec{B} = \\hat{j}\\) and \\(\\vec{C} = 2\\hat{k}\\), we have \\(\\overrightarrow{BA} = \\vec{A} - \\vec{B} = 2\\hat{i} - \\hat{j}\\) and \\(\\overrightarrow{BC} = \\vec{C} - \\vec{B} = 2\\hat{k} - \\hat{j}\\). Their lengths are \\(\\left|\\overrightarrow{BA}\\right| = \\sqrt{2^2 + (-1)^2} = \\sqrt{5}\\) and \\(\\left|\\overrightarrow{BC}\\right| = \\sqrt{(-1)^2 + 2^2} = \\sqrt{5}\\). Since \\(\\left|\\overrightarrow{BA}\\right| = \\left|\\overrightarrow{BC}\\right| = \\sqrt{5}\\), two sides of \\(\\Delta ABC\\) are equal, so the triangle is isosceles. (The third side is \\(\\left|\\overrightarrow{AC}\\right| = \\left|-2\\hat{i} + 2\\hat{k}\\right| = 2\\sqrt{2}\\), which differs from \\(\\sqrt{5}\\), so the triangle is isosceles but not equilateral.)"
   },
   {
    "hash": "91cab095131d0b6f340879df369601a63ebc250ff676af544b9c655f1b393eb8",
@@ -204,7 +204,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Rate of Change of Quantities",
    "stem": "If equal sides of an isosceles triangle with fixed base 10 cm are increasing at the rate of 4 cm/sec, how fast is the area of triangle increasing at an instant when all sides become equal ?",
-   "solution": ""
+   "solution": "Let each equal side be \\(x\\) cm, so that \\(\\frac{dx}{dt} = 4\\) cm/sec while the base stays fixed at \\(10\\) cm. The altitude drawn to the base bisects it, creating a right triangle with hypotenuse \\(x\\) and one leg \\(5\\), so the height is \\(\\sqrt{x^2 - 25}\\) and the area is \\(A = \\frac{1}{2}(10)\\sqrt{x^2 - 25} = 5\\sqrt{x^2 - 25}\\). Differentiating with respect to \\(t\\), \\(\\frac{dA}{dt} = 5 \\cdot \\frac{2x}{2\\sqrt{x^2 - 25}} \\cdot \\frac{dx}{dt} = \\frac{5x}{\\sqrt{x^2 - 25}}\\cdot\\frac{dx}{dt}\\). All three sides are equal when \\(x = 10\\), and there \\(\\sqrt{x^2 - 25} = \\sqrt{75} = 5\\sqrt{3}\\). Substituting, \\(\\left.\\frac{dA}{dt}\\right|_{x = 10} = \\frac{5(10)}{5\\sqrt{3}} \\times 4 = \\frac{40}{\\sqrt{3}}\\) cm\\(^2\\)/sec, that is \\(\\frac{40\\sqrt{3}}{3} \\approx 23.09\\) cm\\(^2\\)/sec."
   },
   {
    "hash": "69df5e57a4488fbc8b243c97a83b8ad569d353805d82ab2dffe6d0684e0d33be",
@@ -215,7 +215,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Second Order Derivatives",
    "stem": "If \\(y = \\sqrt{ax + b}\\), then prove that \\(y\\left(\\frac{d^2y}{dx^2}\\right) + \\left(\\frac{dy}{dx}\\right)^2 = 0\\).",
-   "solution": ""
+   "solution": "Squaring clears the radical and makes the differentiation straightforward: \\(y = \\sqrt{ax + b}\\) gives \\(y^2 = ax + b\\). Differentiating with respect to \\(x\\), \\(2y\\frac{dy}{dx} = a\\). Differentiating a second time, the left side needs the product rule while the right side is the constant \\(a\\), whose derivative is zero: \\(2y\\frac{d^2y}{dx^2} + 2\\left(\\frac{dy}{dx}\\right)^2 = 0\\). Dividing throughout by \\(2\\) gives \\(y\\frac{d^2y}{dx^2} + \\left(\\frac{dy}{dx}\\right)^2 = 0\\), which is the required result."
   },
   {
    "hash": "c38c333900b311afaf063c62a0d3ca6de3211ae80fc0625edea1184ec3439c63",
@@ -226,7 +226,7 @@
    "chapter": "Linear Programming",
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "Solve the following Linear Programming problem graphically :\nMaximize : \\(Z = 3x + 3.5y\\)\nsubject to constraints : \\(x + 2y \\ge 240\\),\n\\(3x + 1.5y \\ge 270\\),\n\\(1.5x + 2y \\le 310\\),\n\\(x \\ge 0, y \\ge 0\\).",
-   "solution": ""
+   "solution": "The feasible region is the set of points satisfying \\(x + 2y \\ge 240\\), \\(3x + 1.5y \\ge 270\\), \\(1.5x + 2y \\le 310\\) and \\(x, y \\ge 0\\); its corners are the pairwise intersections of the three boundary lines. Solving \\(x + 2y = 240\\) with \\(1.5x + 2y = 310\\), subtraction gives \\(0.5x = 70\\), so \\(x = 140\\) and \\(y = 50\\), the point \\(B(140, 50)\\). Solving \\(x + 2y = 240\\) with \\(3x + 1.5y = 270\\), substituting \\(x = 240 - 2y\\) gives \\(-4.5y = -450\\), so \\(y = 100\\) and \\(x = 40\\), the point \\(A(40, 100)\\). Solving \\(3x + 1.5y = 270\\) with \\(1.5x + 2y = 310\\), substituting \\(y = 180 - 2x\\) gives \\(-2.5x = -50\\), so \\(x = 20\\) and \\(y = 140\\), the point \\(C(20, 140)\\). Neither axis contributes a corner: on \\(y = 0\\) the constraints demand \\(x \\ge 240\\) and \\(x \\le \\frac{620}{3}\\) at once, and on \\(x = 0\\) they demand \\(y \\ge 180\\) and \\(y \\le 155\\) at once, both impossible. The region is therefore the bounded triangle \\(ABC\\), and the optimum is attained at a corner. Evaluating \\(Z = 3x + 3.5y\\): \\(Z(A) = 120 + 350 = 470\\), \\(Z(B) = 420 + 175 = 595\\) and \\(Z(C) = 60 + 490 = 550\\). Hence the maximum value is \\(Z = 595\\), at \\(x = 140\\), \\(y = 50\\)."
   },
   {
    "hash": "eacaa85740eb857f2fe07d5efe06c3fc73d694de70a482eba82d345b3abd4014",
@@ -237,7 +237,7 @@
    "chapter": "Integrals",
    "subtopic": "Integrals of Some Particular Functions",
    "stem": "Find \\(\\int \\frac{x + 2}{\\sqrt{x^2 - 4x - 5}} \\, dx\\).",
-   "solution": ""
+   "solution": "Split the numerator so that one part is a multiple of the derivative of the radicand. Since \\(\\frac{d}{dx}\\left(x^2 - 4x - 5\\right) = 2x - 4\\), write \\(x + 2 = \\frac{1}{2}(2x - 4) + 4\\). Then \\(\\int\\frac{x + 2}{\\sqrt{x^2 - 4x - 5}}dx = \\frac{1}{2}\\int\\frac{2x - 4}{\\sqrt{x^2 - 4x - 5}}dx + 4\\int\\frac{dx}{\\sqrt{x^2 - 4x - 5}}\\). The first integral is of the form \\(\\int\\frac{f'}{\\sqrt{f}}\\), giving \\(\\frac{1}{2} \\cdot 2\\sqrt{x^2 - 4x - 5} = \\sqrt{x^2 - 4x - 5}\\). For the second, complete the square: \\(x^2 - 4x - 5 = (x - 2)^2 - 3^2\\), and \\(\\int\\frac{dx}{\\sqrt{(x - 2)^2 - 3^2}} = \\log\\left|x - 2 + \\sqrt{x^2 - 4x - 5}\\right|\\). Combining, \\(\\int\\frac{x + 2}{\\sqrt{x^2 - 4x - 5}}dx = \\sqrt{x^2 - 4x - 5} + 4\\log\\left|x - 2 + \\sqrt{x^2 - 4x - 5}\\right| + c\\)."
   },
   {
    "hash": "356381b8726b91a73d203d849664f368a5a2a1be76aaee18adbf2c34f7029246",
@@ -248,7 +248,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "Evaluate \\(\\int\\limits_{-a}^{a} f(x) \\, dx\\), where \\(f(x) = \\frac{9^x}{1 + 9^x}\\).",
-   "solution": ""
+   "solution": "Let \\(I = \\int_{-a}^{a}\\frac{9^x}{1 + 9^x}dx\\) — call this (i). Apply the property \\(\\int_{-a}^{a}f(x)\\,dx = \\int_{-a}^{a}f(-a + a - x)\\,dx\\), which here replaces \\(x\\) by \\(-x\\): \\(I = \\int_{-a}^{a}\\frac{9^{-x}}{1 + 9^{-x}}dx\\). Multiplying numerator and denominator by \\(9^x\\) turns this into \\(I = \\int_{-a}^{a}\\frac{1}{1 + 9^x}dx\\) — call this (ii). Adding (i) and (ii), the two integrands combine to \\(\\frac{9^x + 1}{1 + 9^x} = 1\\), so \\(2I = \\int_{-a}^{a}dx = \\left[x\\right]_{-a}^{a} = 2a\\). Hence \\(I = a\\)."
   },
   {
    "hash": "e2d2d68d5b699f79a232bf41216355094f4504b504dd50479013ea8d1d482811",
@@ -259,7 +259,7 @@
    "chapter": "Probability",
    "subtopic": "Random Variables and Probability Distributions",
    "stem": "Two numbers are selected from first six even natural numbers at random without replacement. If X denotes the greater of two numbers selected, find the probability distribution of X.",
-   "solution": ""
+   "solution": "The first six even natural numbers are \\(2, 4, 6, 8, 10, 12\\). Choosing two of them without replacement gives \\(\\binom{6}{2} = 15\\) equally likely selections. Let \\(X\\) be the greater of the two chosen. \\(X\\) cannot equal \\(2\\), the smallest number, so its possible values are \\(4, 6, 8, 10, 12\\). Once the greater number is fixed, the other must be one of the numbers below it, so \\(X = 4\\) arises in \\(1\\) way, \\(X = 6\\) in \\(2\\) ways, \\(X = 8\\) in \\(3\\) ways, \\(X = 10\\) in \\(4\\) ways and \\(X = 12\\) in \\(5\\) ways. Dividing each count by \\(15\\), the probability distribution of \\(X\\) is \\(P(X = 4) = \\frac{1}{15}\\), \\(P(X = 6) = \\frac{2}{15}\\), \\(P(X = 8) = \\frac{3}{15}\\), \\(P(X = 10) = \\frac{4}{15}\\), \\(P(X = 12) = \\frac{5}{15}\\). As a check, these sum to \\(\\frac{1 + 2 + 3 + 4 + 5}{15} = 1\\)."
   },
   {
    "hash": "ed7dd7732113f58e6fd09825cf9ab95b5e6aab280506d47f0e99c73e82121265",
@@ -270,7 +270,7 @@
    "chapter": "Probability",
    "subtopic": "Independent Events",
    "stem": "A fair coin and an unbiased die are tossed. Let A be the event, \"Head appears on the coin\" and B be the event, \"3 comes on the die\". Find whether A and B are independent events or not.",
-   "solution": ""
+   "solution": "Tossing a fair coin together with an unbiased die gives \\(12\\) equally likely outcomes, \\(S = \\{H1, H2, H3, H4, H5, H6, T1, T2, T3, T4, T5, T6\\}\\). The event \\(A\\), a head on the coin, consists of the six outcomes \\(H1\\) to \\(H6\\), so \\(P(A) = \\frac{6}{12} = \\frac{1}{2}\\). The event \\(B\\), a \\(3\\) on the die, consists of the two outcomes \\(H3\\) and \\(T3\\), so \\(P(B) = \\frac{2}{12} = \\frac{1}{6}\\). Their intersection is the single outcome \\(H3\\), so \\(P(A \\cap B) = \\frac{1}{12}\\). Now \\(P(A) \\cdot P(B) = \\frac{1}{2} \\times \\frac{1}{6} = \\frac{1}{12}\\), which equals \\(P(A \\cap B)\\). The defining condition for independence is met, so \\(A\\) and \\(B\\) are independent events."
   },
   {
    "hash": "d92cdf6cd931ee3f8235ccc7e2bbf1bb2e1624852d79f21e66531f1c8ecc6910",
@@ -281,7 +281,7 @@
    "chapter": "Application of Integrals",
    "subtopic": "Area Bounded by a Curve and a Line",
    "stem": "Find the area of the smaller region bounded by the curves \\(\\frac{x^2}{25} + \\frac{y^2}{16} = 1\\) and \\(\\frac{x}{5} + \\frac{y}{4} = 1\\), using integration.",
-   "solution": ""
+   "solution": "The ellipse \\(\\frac{x^2}{25} + \\frac{y^2}{16} = 1\\) has semi-axes \\(5\\) and \\(4\\), meeting the positive axes at \\((5, 0)\\) and \\((0, 4)\\); the line \\(\\frac{x}{5} + \\frac{y}{4} = 1\\) is precisely the chord joining those two intercepts. The smaller of the two regions they bound is therefore the part of the first-quadrant quarter-ellipse lying above the chord, running from \\(x = 0\\) to \\(x = 5\\) between \\(y = \\frac{4}{5}(5 - x)\\) below and \\(y = \\frac{4}{5}\\sqrt{25 - x^2}\\) above. Hence the required area is \\(\\frac{4}{5}\\int_{0}^{5}\\sqrt{25 - x^2}\\,dx - \\frac{4}{5}\\int_{0}^{5}(5 - x)\\,dx\\). For the first integral, \\(\\int\\sqrt{25 - x^2}\\,dx = \\frac{x}{2}\\sqrt{25 - x^2} + \\frac{25}{2}\\sin^{-1}\\frac{x}{5}\\), so \\(\\int_{0}^{5}\\sqrt{25 - x^2}\\,dx = 0 + \\frac{25}{2}\\cdot\\frac{\\pi}{2} - 0 = \\frac{25\\pi}{4}\\) (as expected, a quarter of the circle of radius \\(5\\)), and \\(\\frac{4}{5} \\times \\frac{25\\pi}{4} = 5\\pi\\). The second integral gives \\(\\frac{4}{5}\\left[5x - \\frac{x^2}{2}\\right]_{0}^{5} = \\frac{4}{5}\\left(25 - \\frac{25}{2}\\right) = 10\\), which is simply the area of the right triangle with legs \\(5\\) and \\(4\\). Therefore the required area is \\(5\\pi - 10\\) square units, about \\(5.71\\). This is consistent with the quarter-ellipse having area \\(\\frac{1}{4}\\pi(5)(4) = 5\\pi\\), from which the triangle of area \\(10\\) is removed."
   }
  ]
 }

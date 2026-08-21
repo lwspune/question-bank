@@ -32,7 +32,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Transposing a matrix leaves its determinant unchanged, so \\(\\left|\\mathrm{A}'\\right| = \\left|\\mathrm{A}\\right| = -2\\). For a square matrix of order \\(n\\), \\(\\left|k\\mathrm{A}\\right| = k^{n}\\left|\\mathrm{A}\\right|\\), because each of the \\(n\\) rows contributes one factor of \\(k\\). Here \\(n = 2\\) and \\(k = 5\\), so \\(\\left|5\\mathrm{A}'\\right| = 5^{2}\\left|\\mathrm{A}'\\right| = 25 \\times (-2) = -50\\), which is option (A) \\(-50\\). Treating \\(k\\) as a single factor gives \\(5 \\times (-2) = -10\\), which is exactly why \\(-10\\) is offered as a distractor."
   },
   {
    "hash": "ce78cd822db2797a121bfb5326de6e8599cee71148070d58fc5e1dd3f8cb2bcc",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "The product \\(\\mathrm{PQ}\\) exists only when the number of columns of P equals the number of rows of Q, which is 3. So P has order \\(m \\times 3\\) for some \\(m\\), and then \\(\\mathrm{PQ}\\) has order \\(m \\times 2\\). A diagonal matrix is by definition square, so \\(m \\times 2\\) forces \\(m = 2\\). Hence P is of order \\(2 \\times 3\\), which is option (C) \\(2 \\times 3\\)."
   },
   {
    "hash": "281321ae5fbbc9e4a7399de410826a8bf3ad8bc20c64998a312b78914ed36de9",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "The sine function takes the value 1 only at \\(\\dfrac{\\pi}{2} + 2n\\pi\\), so \\(\\sin(xy) = 1\\) forces the product \\(xy\\) to be one of those constants. Differentiating \\(xy = \\text{constant}\\) with respect to \\(x\\) gives \\(y + x\\dfrac{dy}{dx} = 0\\), that is \\(\\dfrac{dy}{dx} = -\\dfrac{y}{x}\\), which is option (D) \\(-\\dfrac{y}{x}\\). Differentiating the relation exactly as printed instead gives \\(\\cos(xy)\\left(y + x\\dfrac{dy}{dx}\\right) = 0\\), which says nothing here, since \\(\\cos(xy) = 0\\) at every point where \\(\\sin(xy) = 1\\); it is the constancy of \\(xy\\) that settles the derivative."
   },
   {
    "hash": "6150fbc004ed98aaf7c79a190bf00eed84d0ca6417b55e4b67a68a82d1c4321b",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Substitute \\(t = \\cot\\theta\\), so that \\(dt = -\\mathrm{cosec}^{2}\\theta\\, d\\theta\\) and the limits become \\(t = \\cot\\dfrac{\\pi}{4} = 1\\) and \\(t = \\cot\\dfrac{\\pi}{2} = 0\\). Then \\(\\displaystyle\\int_{\\pi/4}^{\\pi/2}\\cot\\theta\\;\\mathrm{cosec}^{2}\\theta\\;d\\theta = \\int_{1}^{0} t\\,(-dt) = \\int_{0}^{1} t\\,dt = \\left[\\dfrac{t^{2}}{2}\\right]_{0}^{1} = \\dfrac{1}{2}\\), which is option (A) \\(\\dfrac{1}{2}\\). Equivalently the antiderivative is \\(-\\dfrac{\\cot^{2}\\theta}{2}\\), and \\(0 - \\left(-\\dfrac{1}{2}\\right) = \\dfrac{1}{2}\\); losing the minus sign carried by \\(dt\\) is what produces the distractor \\(-\\dfrac{1}{2}\\)."
   },
   {
    "hash": "31bf1880ae1a7a56d3b670dd52687d5250076890be9fa1885bfdbe11f107215d",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Take the 4 out of the radical: \\(\\sqrt{9 - 4x^{2}} = 2\\sqrt{\\dfrac{9}{4} - x^{2}}\\). Hence \\(\\displaystyle\\int\\dfrac{dx}{\\sqrt{9 - 4x^{2}}} = \\dfrac{1}{2}\\int\\dfrac{dx}{\\sqrt{\\left(\\dfrac{3}{2}\\right)^{2} - x^{2}}} = \\dfrac{1}{2}\\sin^{-1}\\left(\\dfrac{x}{3/2}\\right) + c = \\dfrac{1}{2}\\sin^{-1}\\left(\\dfrac{2x}{3}\\right) + c\\), which is option (B) \\(\\dfrac{1}{2}\\sin^{-1}\\left(\\dfrac{2x}{3}\\right) + c\\). Differentiating that back confirms the constant: \\(\\dfrac{1}{2}\\cdot\\dfrac{2/3}{\\sqrt{1 - \\dfrac{4x^{2}}{9}}} = \\dfrac{1}{3}\\cdot\\dfrac{3}{\\sqrt{9 - 4x^{2}}} = \\dfrac{1}{\\sqrt{9 - 4x^{2}}}\\)."
   },
   {
    "hash": "9bf63be3936577bd67a74ffdcd25f18b487af71a359a604a87239ab8663e4ec1",
@@ -182,7 +182,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "The parabola \\(y^{2} = 4x\\) is symmetric about the X-axis, and the line \\(x = 1\\) meets it at \\((1, 2)\\) and \\((1, -2)\\). Taking twice the part above the axis, the required area is \\(2\\displaystyle\\int_{0}^{1} y\\,dx = 2\\int_{0}^{1} 2\\sqrt{x}\\,dx = 4\\left[\\dfrac{2}{3}x^{3/2}\\right]_{0}^{1} = \\dfrac{8}{3}\\) square units, which is option (B) \\(\\dfrac{8}{3}\\). Integrating only the upper half and forgetting to double it gives \\(\\dfrac{4}{3}\\), the first distractor."
   },
   {
    "hash": "20fcee3e5f8760615e423285fef757cd8bd3b5b6d9e8d0335a3340795a76023e",
@@ -212,7 +212,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Since \\(e^{x+y} = e^{x}e^{y}\\), the variables separate: \\(\\dfrac{dy}{e^{y}} = e^{x}\\,dx\\), i.e. \\(e^{-y}\\,dy = e^{x}\\,dx\\). Integrating both sides gives \\(-e^{-y} = e^{x} + k\\), and rearranging, \\(e^{x} + e^{-y} = c\\) where \\(c = -k\\) is an arbitrary constant. That is option (A) \\(e^{x} + e^{-y} = c\\)."
   },
   {
    "hash": "7976aec4fb1df38b2be9c4dac1732c6e13eb10a4805a95a3c8075463358c4c36",
@@ -223,7 +223,7 @@
    "chapter": "Inverse Trigonometric Functions",
    "subtopic": "Evaluating Inverse Trigonometric Expressions",
    "stem": "If a \\(= \\sin^{-1}\\left(\\dfrac{\\sqrt{2}}{2}\\right) + \\cos^{-1}\\left(-\\dfrac{1}{2}\\right)\\) and\n\nb \\(= \\tan^{-1}\\left(\\sqrt{3}\\right) - \\cot^{-1}\\left(-\\dfrac{1}{\\sqrt{3}}\\right)\\)\n\nthen find the value of a + b.",
-   "solution": ""
+   "solution": "Read every inverse function on its principal branch. Since \\(\\dfrac{\\sqrt{2}}{2} = \\dfrac{1}{\\sqrt{2}}\\), we have \\(\\sin^{-1}\\left(\\dfrac{\\sqrt{2}}{2}\\right) = \\dfrac{\\pi}{4}\\); and because \\(\\cos^{-1}\\) takes its values in \\([0, \\pi]\\), \\(\\cos^{-1}\\left(-\\dfrac{1}{2}\\right) = \\pi - \\cos^{-1}\\left(\\dfrac{1}{2}\\right) = \\pi - \\dfrac{\\pi}{3} = \\dfrac{2\\pi}{3}\\). Hence \\(a = \\dfrac{\\pi}{4} + \\dfrac{2\\pi}{3} = \\dfrac{3\\pi + 8\\pi}{12} = \\dfrac{11\\pi}{12}\\). Next, \\(\\tan^{-1}\\left(\\sqrt{3}\\right) = \\dfrac{\\pi}{3}\\), and since \\(\\cot^{-1}\\) takes its values in \\((0, \\pi)\\), a negative argument gives an obtuse angle: \\(\\cot^{-1}\\left(-\\dfrac{1}{\\sqrt{3}}\\right) = \\pi - \\cot^{-1}\\left(\\dfrac{1}{\\sqrt{3}}\\right) = \\pi - \\dfrac{\\pi}{3} = \\dfrac{2\\pi}{3}\\). So \\(b = \\dfrac{\\pi}{3} - \\dfrac{2\\pi}{3} = -\\dfrac{\\pi}{3}\\). Therefore \\(a + b = \\dfrac{11\\pi}{12} - \\dfrac{\\pi}{3} = \\dfrac{11\\pi - 4\\pi}{12} = \\dfrac{7\\pi}{12}\\)."
   },
   {
    "hash": "712e68c50ecba54221dbd78589a71e4fadbdf6be53db7093be739d256621f2ee",
@@ -234,7 +234,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Rate of Change of Quantities",
    "stem": "Sand is pouring from a pipe at the rate of 15 cm\\(^3\\)/minute. The falling sand forms a cone on the ground such that the height of the cone is always one-third of the radius of the base. How fast is the height of the sand cone increasing at the instant when the height is 4 cm ?",
-   "solution": ""
+   "solution": "Let the sand cone have height \\(h\\), base radius \\(r\\) and volume \\(\\mathrm{V}\\) at time \\(t\\). Sand arrives at \\(\\dfrac{d\\mathrm{V}}{dt} = 15\\) cm\\(^{3}\\)/minute, and the shape condition \"the height is always one-third of the radius\" means \\(h = \\dfrac{r}{3}\\), i.e. \\(r = 3h\\). Using this to eliminate \\(r\\), \\(\\mathrm{V} = \\dfrac{1}{3}\\pi r^{2}h = \\dfrac{1}{3}\\pi (3h)^{2}h = 3\\pi h^{3}\\), which depends on \\(h\\) alone. Differentiating with respect to \\(t\\), \\(\\dfrac{d\\mathrm{V}}{dt} = 9\\pi h^{2}\\dfrac{dh}{dt}\\), so \\(9\\pi h^{2}\\dfrac{dh}{dt} = 15\\) and \\(\\dfrac{dh}{dt} = \\dfrac{5}{3\\pi h^{2}}\\). At the instant when \\(h = 4\\) cm, \\(\\dfrac{dh}{dt} = \\dfrac{5}{3\\pi \\times 16} = \\dfrac{5}{48\\pi}\\) cm/minute, roughly \\(0.033\\) cm/minute."
   },
   {
    "hash": "1c9a1c9340d15daf0ef5fb507278b350cece4ab1cea700a6243172aac215acfd",
@@ -245,7 +245,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Differentiability and the Chain Rule",
    "stem": "Find the values of a and b so that the following function is differentiable for all values of \\(x\\) :\n\n\\(\\mathrm{f}(x) = \\begin{cases} \\mathrm{a}x + \\mathrm{b}, & x > -1 \\\\ \\mathrm{b}x^2 - 3, & x \\le -1 \\end{cases}\\)",
-   "solution": ""
+   "solution": "Each piece is a polynomial, so f is automatically differentiable everywhere except possibly at the join \\(x = -1\\); and since differentiability implies continuity, BOTH conditions have to hold there. Continuity at \\(x = -1\\): the left-hand limit, which is also the value, is \\(\\lim_{x \\to -1^{-}}\\left(\\mathrm{b}x^{2} - 3\\right) = \\mathrm{b} - 3 = \\mathrm{f}(-1)\\), while the right-hand limit is \\(\\lim_{x \\to -1^{+}}\\left(\\mathrm{a}x + \\mathrm{b}\\right) = -\\mathrm{a} + \\mathrm{b}\\). Equating them, \\(\\mathrm{b} - 3 = -\\mathrm{a} + \\mathrm{b}\\), so \\(\\mathrm{a} = 3\\). Differentiability at \\(x = -1\\): the left-hand derivative is \\(\\lim_{x \\to -1^{-}}\\dfrac{\\left(\\mathrm{b}x^{2} - 3\\right) - \\left(\\mathrm{b} - 3\\right)}{x + 1} = \\lim_{x \\to -1^{-}}\\dfrac{\\mathrm{b}\\left(x^{2} - 1\\right)}{x + 1} = \\lim_{x \\to -1^{-}}\\mathrm{b}(x - 1) = -2\\mathrm{b}\\), and the right-hand derivative, using \\(\\mathrm{a} = 3\\), is \\(\\lim_{x \\to -1^{+}}\\dfrac{\\left(\\mathrm{a}x + \\mathrm{b}\\right) - \\left(\\mathrm{b} - 3\\right)}{x + 1} = \\lim_{x \\to -1^{+}}\\dfrac{3x + 3}{x + 1} = 3\\). Equating the two gives \\(-2\\mathrm{b} = 3\\), so \\(\\mathrm{b} = -\\dfrac{3}{2}\\). Check: with \\(\\mathrm{a} = 3\\) and \\(\\mathrm{b} = -\\dfrac{3}{2}\\) both branches give \\(\\mathrm{f}(-1) = -\\dfrac{9}{2}\\), and the two one-sided derivatives are \\(-3x\\big|_{x=-1} = 3\\) and \\(3\\), which agree. [CBSE marking scheme: its main route and its answers \\(\\mathrm{a} = 3\\), \\(\\mathrm{b} = -\\dfrac{3}{2}\\) are correct, but in the \"Alternately\" route the RHD is printed with the SAME difference quotient as the LHD, namely \\(\\dfrac{\\mathrm{f}(-1) - \\mathrm{f}(-1-h)}{h}\\), whereas the algebra written underneath it is \\(\\dfrac{\\mathrm{f}(-1+h) - \\mathrm{f}(-1)}{h}\\). The two one-sided derivatives cannot come from one and the same quotient, so that label is a printing slip.]"
   },
   {
    "hash": "edf18a96254828f60bc31e3bb51b704f65a01c1ee7218c0f85ce5850945c6dc8",
@@ -256,7 +256,7 @@
    "chapter": "Vector Algebra",
    "subtopic": "Vector (Cross) Product",
    "stem": "Given \\(\\vec{a} = 2\\hat{i} - \\hat{j} + \\hat{k}\\), \\(\\vec{b} = 3\\hat{i} - \\hat{k}\\) and \\(\\vec{c} = 2\\hat{i} + \\hat{j} - 2\\hat{k}\\). Find a vector \\(\\vec{d}\\) which is perpendicular to both \\(\\vec{a}\\) and \\(\\vec{b}\\) and \\(\\vec{c} \\cdot \\vec{d} = 3\\).",
-   "solution": ""
+   "solution": "A vector perpendicular to both \\(\\vec{a}\\) and \\(\\vec{b}\\) must be parallel to their cross product, so write \\(\\vec{d} = \\lambda\\left(\\vec{a} \\times \\vec{b}\\right)\\). With \\(\\vec{a} = 2\\hat{i} - \\hat{j} + \\hat{k}\\) and \\(\\vec{b} = 3\\hat{i} + 0\\hat{j} - \\hat{k}\\), \\(\\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & -1 & 1 \\\\ 3 & 0 & -1 \\end{vmatrix} = \\hat{i}\\left[(-1)(-1) - (1)(0)\\right] - \\hat{j}\\left[(2)(-1) - (1)(3)\\right] + \\hat{k}\\left[(2)(0) - (-1)(3)\\right] = \\hat{i} + 5\\hat{j} + 3\\hat{k}\\). So \\(\\vec{d} = \\lambda\\left(\\hat{i} + 5\\hat{j} + 3\\hat{k}\\right)\\), and the second condition fixes \\(\\lambda\\): \\(\\vec{c} \\cdot \\vec{d} = \\lambda\\left[(2)(1) + (1)(5) + (-2)(3)\\right] = \\lambda(2 + 5 - 6) = \\lambda\\), and this must equal 3, so \\(\\lambda = 3\\). Hence \\(\\vec{d} = 3\\hat{i} + 15\\hat{j} + 9\\hat{k}\\). Checking all three requirements: \\(\\vec{a} \\cdot \\vec{d} = 6 - 15 + 9 = 0\\), \\(\\vec{b} \\cdot \\vec{d} = 9 + 0 - 9 = 0\\) and \\(\\vec{c} \\cdot \\vec{d} = 6 + 15 - 18 = 3\\)."
   },
   {
    "hash": "04ba9244433a09a49b4ecab75ec79552d821c242d4eef2a6510a5df47ce23592",
@@ -267,7 +267,7 @@
    "chapter": "Probability",
    "subtopic": "Theorem of Total Probability",
    "stem": "Bag I contains 3 red and 4 black balls, Bag II contains 5 red and 2 black balls. Two balls are transferred at random from Bag I to Bag II and then a ball is drawn at random from Bag II. Find the probability that the drawn ball is red in colour.",
-   "solution": ""
+   "solution": "Condition on what gets transferred, since that is what changes Bag II. Bag I holds 3 red and 4 black, so the two balls moved across fall into three cases: \\(\\mathrm{E}_{1}\\), both red; \\(\\mathrm{E}_{2}\\), both black; \\(\\mathrm{E}_{3}\\), one red and one black. There are \\({}^{7}C_{2} = 21\\) equally likely pairs, so \\(\\mathrm{P}\\left(\\mathrm{E}_{1}\\right) = \\dfrac{{}^{3}C_{2}}{21} = \\dfrac{3}{21} = \\dfrac{1}{7}\\), \\(\\mathrm{P}\\left(\\mathrm{E}_{2}\\right) = \\dfrac{{}^{4}C_{2}}{21} = \\dfrac{6}{21} = \\dfrac{2}{7}\\) and \\(\\mathrm{P}\\left(\\mathrm{E}_{3}\\right) = \\dfrac{3 \\times 4}{21} = \\dfrac{4}{7}\\); these sum to 1, as they must. Let A be the event that the ball finally drawn from Bag II is red. Bag II starts with 5 red and 2 black and always contains \\(7 + 2 = 9\\) balls after the transfer, so \\(\\mathrm{P}\\left(\\mathrm{A}\\mid\\mathrm{E}_{1}\\right) = \\dfrac{7}{9}\\) (5 red plus the 2 transferred), \\(\\mathrm{P}\\left(\\mathrm{A}\\mid\\mathrm{E}_{2}\\right) = \\dfrac{5}{9}\\) and \\(\\mathrm{P}\\left(\\mathrm{A}\\mid\\mathrm{E}_{3}\\right) = \\dfrac{6}{9}\\). By the theorem of total probability, \\(\\mathrm{P}(\\mathrm{A}) = \\dfrac{1}{7}\\times\\dfrac{7}{9} + \\dfrac{2}{7}\\times\\dfrac{5}{9} + \\dfrac{4}{7}\\times\\dfrac{6}{9} = \\dfrac{7 + 10 + 24}{63} = \\dfrac{41}{63}\\)."
   },
   {
    "hash": "c5a84f9b45d565378585d5f4b08d03c6e090349e4adf9c544a29bd84a3cffedc",
@@ -278,7 +278,7 @@
    "chapter": "Linear Programming",
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "Solve the following Linear Programming problem graphically :\n\nMaximise \\(\\mathrm{Z} = 300x + 600\\mathrm{y}\\)\n\nSubject to \\(x + 2\\mathrm{y} \\le 12\\)\n\n\\(2x + \\mathrm{y} \\le 12\\)\n\n\\(x + \\dfrac{5}{4}\\mathrm{y} \\ge 5\\)\n\n\\(x \\ge 0,\\ \\mathrm{y} \\ge 0\\).",
-   "solution": ""
+   "solution": "Draw the three boundary lines \\(x + 2\\mathrm{y} = 12\\), \\(2x + \\mathrm{y} = 12\\) and \\(x + \\dfrac{5}{4}\\mathrm{y} = 5\\) (equivalently \\(4x + 5\\mathrm{y} = 20\\)) in the first quadrant. The origin satisfies the first two inequalities, so the feasible region lies on or below those two lines; it fails \\(x + \\dfrac{5}{4}\\mathrm{y} \\ge 5\\), so the region lies on the far side of the third line from the origin. Together with \\(x \\ge 0\\) and \\(\\mathrm{y} \\ge 0\\) this is a bounded pentagon, so the maximum is attained at a corner point. On the Y-axis, \\(x + \\dfrac{5}{4}\\mathrm{y} = 5\\) gives \\(\\mathrm{A}(0, 4)\\) and \\(x + 2\\mathrm{y} = 12\\) gives \\(\\mathrm{B}(0, 6)\\); on the X-axis, \\(2x + \\mathrm{y} = 12\\) gives \\(\\mathrm{D}(6, 0)\\) and \\(x + \\dfrac{5}{4}\\mathrm{y} = 5\\) gives \\(\\mathrm{E}(5, 0)\\); and solving \\(x + 2\\mathrm{y} = 12\\) together with \\(2x + \\mathrm{y} = 12\\) gives the fifth corner \\(\\mathrm{C}(4, 4)\\). Evaluating \\(\\mathrm{Z} = 300x + 600\\mathrm{y}\\) at each: \\(\\mathrm{Z}(\\mathrm{A}) = 2400\\), \\(\\mathrm{Z}(\\mathrm{B}) = 3600\\), \\(\\mathrm{Z}(\\mathrm{C}) = 1200 + 2400 = 3600\\), \\(\\mathrm{Z}(\\mathrm{D}) = 1800\\) and \\(\\mathrm{Z}(\\mathrm{E}) = 1500\\). The greatest value is 3600 and it occurs at TWO corners, B and C. Whenever that happens the optimum is attained along the whole edge joining them: the segment BC lies on \\(x + 2\\mathrm{y} = 12\\), and there \\(\\mathrm{Z} = 300\\left(x + 2\\mathrm{y}\\right) = 300 \\times 12 = 3600\\) identically. Hence the maximum value of Z is 3600, attained at every point of the line segment BC joining \\((0, 6)\\) and \\((4, 4)\\)."
   }
  ]
 }

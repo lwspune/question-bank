@@ -32,7 +32,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Let B be of order \\( m \\times n \\). Since A is \\( 3 \\times 4 \\), the transpose \\( A' \\) is \\( 4 \\times 3 \\). For \\( A'B \\) to be defined the columns of \\( A' \\) must match the rows of B, so \\( m = 3 \\). For \\( AB' \\) to be defined the columns of A must match the rows of \\( B' \\), so \\( B' \\) has 4 rows, which means B has 4 columns and \\( n = 4 \\). So the order of B is \\( 3 \\times 4 \\) -- the same order as A, which is why both products come out defined."
   },
   {
    "hash": "9335439682bfeda8972c08215f1f565c9d59ca11786f6870bc32d499d17bf79d",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "The area of a triangle with vertices \\( (x_1, y_1) \\), \\( (x_2, y_2) \\), \\( (x_3, y_3) \\) is \\( \\dfrac{1}{2}\\left| \\begin{vmatrix} x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\\\ x_3 & y_3 & 1 \\end{vmatrix} \\right| \\). Expanding for \\( (2, -6) \\), \\( (5, 4) \\) and \\( (k, 4) \\) gives \\( \\dfrac{1}{2}\\left| 2(4 - 4) + 5(4 + 6) + k(-6 - 4) \\right| = \\dfrac{1}{2}|50 - 10k| = |25 - 5k| \\). Setting this equal to 35 gives \\( 25 - 5k = 35 \\) or \\( 25 - 5k = -35 \\), that is \\( k = -2 \\) or \\( k = 12 \\). Both are genuine: the modulus is the reason there are two branches, not a squaring step, and each value places the third vertex 7 units from \\( (5, 4) \\) along the line \\( y = 4 \\), giving a triangle of base 7 and height 10. So \\( k = 12,\\ -2 \\)."
   },
   {
    "hash": "86e269a1e8e3a51c105fc951f68e2b9963f095b8478f4aed1763df8815c36150",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "The right hand derivative only sees \\( x > 0 \\), and there both moduli open positively: \\( |x| = x \\), and \\( \\sin x > 0 \\) for small positive x so \\( |\\sin x| = \\sin x \\). Also \\( f(0) = 0 + 0 + 6 = 6 \\). From first principles, \\( Rf'(0) = \\displaystyle\\lim_{h \\to 0^+} \\dfrac{f(h) - f(0)}{h} = \\lim_{h \\to 0^+} \\dfrac{2h + 3\\sin h + 6 - 6}{h} = 2 + 3\\lim_{h \\to 0^+} \\dfrac{\\sin h}{h} = 2 + 3 \\). So the right hand derivative is 5. (Equivalently, on the right of 0 the function is \\( 2x + 3\\sin x + 6 \\), whose derivative \\( 2 + 3\\cos x \\) is 5 at \\( x = 0 \\).)"
   },
   {
    "hash": "d1b25f10ba0b08584db277bae924eafc6e16030bdfa90a81f49b113e6efc27e2",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "The sine of the angle comes from the cross product, since \\( |\\vec{a} \\times \\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\theta \\). Here \\( \\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 3 & 1 & 2 \\\\ 1 & 1 & 2 \\end{vmatrix} = \\hat{i}(2 - 2) - \\hat{j}(6 - 2) + \\hat{k}(3 - 1) = -4\\hat{j} + 2\\hat{k} \\), so \\( |\\vec{a} \\times \\vec{b}| = \\sqrt{16 + 4} = 2\\sqrt{5} \\). Also \\( |\\vec{a}| = \\sqrt{9 + 1 + 4} = \\sqrt{14} \\) and \\( |\\vec{b}| = \\sqrt{1 + 1 + 4} = \\sqrt{6} \\), so \\( |\\vec{a}||\\vec{b}| = \\sqrt{84} = 2\\sqrt{21} \\). Hence \\( \\sin\\theta = \\dfrac{2\\sqrt{5}}{2\\sqrt{21}} = \\dfrac{\\sqrt{5}}{\\sqrt{21}} = \\sqrt{\\dfrac{5}{21}} \\)."
   },
   {
    "hash": "ff5549e607e1e007d45889873ba48ba3314d5e4c65f2a31b96d3eb360becd745",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Suppose the point divides the join of \\( (1, 2, 3) \\) and \\( (3, 2, 1) \\) in the ratio \\( k : 1 \\). By the section formula its z-coordinate is \\( \\dfrac{k(1) + 1(3)}{k + 1} \\), and the point lies on the xy-plane, so this must be 0. That gives \\( k + 3 = 0 \\), so \\( k = -3 \\). A negative ratio means the division is external, so the ratio is 3 : 1 externally. As a check, dividing externally in 3 : 1 gives \\( \\left( \\dfrac{3(3) - 1(1)}{2},\\ \\dfrac{3(2) - 1(2)}{2},\\ \\dfrac{3(1) - 1(3)}{2} \\right) = (4,\\ 2,\\ 0) \\), which does lie on the xy-plane. Note that both endpoints have positive z, so no point strictly between them can reach \\( z = 0 \\); the division had to be external."
   },
   {
    "hash": "3e562751b02fd6c8193f1495400ef0298b93c881f496fcb13824ba27b1d6c6ba",
@@ -182,7 +182,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Independence turns the addition theorem into an equation in \\( P(F) \\) alone: \\( P(E \\cup F) = P(E) + P(F) - P(E)P(F) \\), so \\( 0{\\cdot}5 = 0{\\cdot}3 + P(F)(1 - 0{\\cdot}3) \\), giving \\( 0{\\cdot}7\\,P(F) = 0{\\cdot}2 \\) and \\( P(F) = \\dfrac{2}{7} \\). Independence also collapses both conditional probabilities: \\( P(E/F) = P(E) = \\dfrac{3}{10} \\) and \\( P(F/E) = P(F) = \\dfrac{2}{7} \\). Hence \\( P(E/F) - P(F/E) = \\dfrac{3}{10} - \\dfrac{2}{7} = \\dfrac{21 - 20}{70} = \\dfrac{1}{70} \\)."
   },
   {
    "hash": "e0d3e712594ee02eca3efd53a80cf68f3ddb7805f9a62419fee4ee74706e442f",
@@ -193,7 +193,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
    "stem": "If \\( xy = e^{x-y} \\), then show that \\( \\dfrac{dy}{dx} = \\dfrac{y(x-1)}{x(y+1)} \\).",
-   "solution": ""
+   "solution": "Taking logarithms of both sides turns the product and the exponential into sums: \\( \\log(xy) = x - y \\), that is \\( \\log x + \\log y = x - y \\). Differentiating with respect to x, \\( \\dfrac{1}{x} + \\dfrac{1}{y}\\dfrac{dy}{dx} = 1 - \\dfrac{dy}{dx} \\). Collecting the derivative terms on one side, \\( \\left( \\dfrac{1}{y} + 1 \\right)\\dfrac{dy}{dx} = 1 - \\dfrac{1}{x} \\), so \\( \\dfrac{1 + y}{y}\\cdot\\dfrac{dy}{dx} = \\dfrac{x - 1}{x} \\). Therefore \\( \\dfrac{dy}{dx} = \\dfrac{x - 1}{x} \\times \\dfrac{y}{1 + y} = \\dfrac{y(x - 1)}{x(y + 1)} \\), as required."
   },
   {
    "hash": "7791ede9b9300f5ef1cc77519f0c3d5c6907e8d2e492d08051823af22acef884",
@@ -204,7 +204,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Rate of Change of Quantities",
    "stem": "Find the point on the curve \\( y^2 = 8x \\) for which the abscissa and ordinate change at the same rate.",
-   "solution": ""
+   "solution": "Changing at the same rate means \\( \\dfrac{dx}{dt} = \\dfrac{dy}{dt} \\), and this common rate is not zero, or the point would not be moving at all. Differentiating \\( y^2 = 8x \\) with respect to t gives \\( 2y\\dfrac{dy}{dt} = 8\\dfrac{dx}{dt} \\). Substituting \\( \\dfrac{dx}{dt} = \\dfrac{dy}{dt} \\) and cancelling that common non-zero factor leaves \\( 2y = 8 \\), so \\( y = 4 \\). The point lies on the curve, so \\( 16 = 8x \\) and \\( x = 2 \\). The required point is \\( (2,\\ 4) \\)."
   },
   {
    "hash": "38b0688443c5d15532e9c996228297428c06d6287cb02ea218b0b61320e1a7ef",
@@ -215,7 +215,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration by Partial Fractions",
    "stem": "Find :\n\n\\( \\displaystyle\\int \\dfrac{2}{(1 - x)(1 + x^2)}\\, dx \\)",
-   "solution": ""
+   "solution": "[CBSE marking scheme: in one intermediate line the printed solution restates the integrand as \\( \\dfrac{2}{(1 - x)(1 - x^2)} \\), with a minus where the plus belongs. It is a misprint only -- the partial fractions set up above it and the split and the final answer below it all use \\( 1 + x^2 \\) correctly, so nothing in the method or the result is affected.] The denominator has a linear factor and an irreducible quadratic factor, so write \\( \\dfrac{2}{(1 - x)(1 + x^2)} = \\dfrac{A}{1 - x} + \\dfrac{Bx + C}{1 + x^2} \\). Clearing denominators gives \\( 2 = A(1 + x^2) + (Bx + C)(1 - x) \\). Putting \\( x = 1 \\) gives \\( 2 = 2A \\), so \\( A = 1 \\); comparing coefficients of \\( x^2 \\) gives \\( 0 = A - B \\), so \\( B = 1 \\); and comparing constants gives \\( 2 = A + C \\), so \\( C = 1 \\). Hence \\( I = \\displaystyle\\int \\dfrac{dx}{1 - x} + \\int \\dfrac{x + 1}{x^2 + 1}\\, dx = \\int \\dfrac{dx}{1 - x} + \\dfrac{1}{2}\\int \\dfrac{2x}{x^2 + 1}\\, dx + \\int \\dfrac{dx}{x^2 + 1} \\). Integrating each piece, \\( I = -\\log|1 - x| + \\dfrac{1}{2}\\log(x^2 + 1) + \\tan^{-1}x + C \\)."
   },
   {
    "hash": "b3a4af6771c05ca2f21296e26d88fd07ff9d98c94469d5cc7636061cded141a9",
@@ -226,7 +226,7 @@
    "chapter": "Integrals",
    "subtopic": "Definite Integrals by Substitution",
    "stem": "Evaluate :\n\n\\( \\displaystyle\\int_{1/3}^{1} \\dfrac{(x - x^3)^{1/3}}{x^4}\\, dx \\)",
-   "solution": ""
+   "solution": "The trick is to pull \\( x^3 \\) out of the cube root, not x. Write \\( x - x^3 = x^3\\left( \\dfrac{1}{x^2} - 1 \\right) \\), so \\( (x - x^3)^{1/3} = x\\left( \\dfrac{1}{x^2} - 1 \\right)^{1/3} \\) for \\( x > 0 \\), and the integrand becomes \\( \\dfrac{1}{x^3}\\left( \\dfrac{1}{x^2} - 1 \\right)^{1/3} \\). Now put \\( t = \\dfrac{1}{x^2} - 1 \\), so that \\( dt = -\\dfrac{2}{x^3}\\,dx \\), that is \\( \\dfrac{dx}{x^3} = -\\dfrac{dt}{2} \\). The limits go with the substitution: \\( x = \\dfrac{1}{3} \\) gives \\( t = 9 - 1 = 8 \\), and \\( x = 1 \\) gives \\( t = 0 \\). Hence \\( I = \\displaystyle\\int_{8}^{0} t^{1/3}\\left( -\\dfrac{dt}{2} \\right) = \\dfrac{1}{2}\\int_{0}^{8} t^{1/3}\\, dt \\), the minus sign being absorbed by reversing the limits. This equals \\( \\dfrac{1}{2}\\left[ \\dfrac{3t^{4/3}}{4} \\right]_0^8 = \\dfrac{3}{8}\\left( 8^{4/3} \\right) = \\dfrac{3}{8} \\times 16 = 6 \\). So the value of the integral is 6."
   },
   {
    "hash": "da74d0b142f60ab137f5b7cd71f986f632235a0808884787a41a9d33b09ede5c",
@@ -237,7 +237,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "Evaluate :\n\n\\( \\displaystyle\\int_{1}^{3} \\left\\{ |(x - 1)| + |(x - 2)| \\right\\} dx \\)",
-   "solution": ""
+   "solution": "Open each modulus over the range of integration. On the whole of \\( [1, 3] \\) we have \\( x \\ge 1 \\), so \\( |x - 1| = x - 1 \\) throughout. The second modulus changes sign at \\( x = 2 \\): \\( |x - 2| = -(x - 2) \\) on \\( [1, 2] \\) and \\( |x - 2| = x - 2 \\) on \\( [2, 3] \\). Hence \\( I = \\displaystyle\\int_1^3 (x - 1)\\, dx - \\int_1^2 (x - 2)\\, dx + \\int_2^3 (x - 2)\\, dx \\). Evaluating each with \\( \\left[ \\dfrac{(x - a)^2}{2} \\right] \\): the first is \\( \\dfrac{4}{2} - 0 = 2 \\); the second is \\( 0 - \\dfrac{1}{2} = -\\dfrac{1}{2} \\), which enters with a minus and so contributes \\( +\\dfrac{1}{2} \\); and the third is \\( \\dfrac{1}{2} - 0 = \\dfrac{1}{2} \\). Adding, \\( I = 2 + \\dfrac{1}{2} + \\dfrac{1}{2} = 3 \\)."
   },
   {
    "hash": "2a872fc013cc0c3442be5114b8c6ef92cf15202ac896c2cc18a382df0114eead",
@@ -248,7 +248,7 @@
    "chapter": "Linear Programming",
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "Solve the following linear programming problem graphically :\n\nMaximise \\( z = 5x + 3y \\)\n\nsubject to the constraints\n\n\\( 3x + 5y \\le 15 \\),\n\n\\( 5x + 2y \\le 10 \\),\n\n\\( x, y \\ge 0 \\).",
-   "solution": ""
+   "solution": "Draw \\( 3x + 5y = 15 \\) and \\( 5x + 2y = 10 \\) and shade the part of the first quadrant lying on or below both. The region is a bounded quadrilateral with corners \\( O(0, 0) \\); \\( B(0, 3) \\), where \\( 3x + 5y = 15 \\) cuts the y-axis; \\( C(2, 0) \\), where \\( 5x + 2y = 10 \\) cuts the x-axis; and P, where the two lines meet. Note the other two intercepts, \\( (0, 5) \\) and \\( (5, 0) \\), are NOT corners -- each fails the other constraint. For P, solve \\( 3x + 5y = 15 \\) with \\( 5x + 2y = 10 \\): multiplying by 2 and 5 gives \\( 6x + 10y = 30 \\) and \\( 25x + 10y = 50 \\), so \\( 19x = 20 \\) and \\( x = \\dfrac{20}{19} \\); then \\( 2y = 10 - \\dfrac{100}{19} = \\dfrac{90}{19} \\), so \\( y = \\dfrac{45}{19} \\). Evaluating \\( z = 5x + 3y \\) at the corners: \\( z(O) = 0 \\), \\( z(B) = 9 \\), \\( z(C) = 10 \\), and \\( z(P) = \\dfrac{100}{19} + \\dfrac{135}{19} = \\dfrac{235}{19} \\), which is about \\( 12{\\cdot}37 \\). The region is bounded, so the corner values settle it. The maximum is \\( z = \\dfrac{235}{19} \\), attained at \\( \\left( \\dfrac{20}{19},\\ \\dfrac{45}{19} \\right) \\)."
   },
   {
    "hash": "3e8161a0bfe52ae6e7c1990812e6123027377811be3b614a95e59ab6863113f5",
@@ -259,7 +259,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Equation of a Line in Space",
    "stem": "Find the image of the point \\( (2, -1, 5) \\) in the line \\( \\dfrac{x - 11}{10} = \\dfrac{y + 2}{-4} = \\dfrac{z + 8}{-11} \\).",
-   "solution": ""
+   "solution": "Let \\( P(2, -1, 5) \\) and let M be the foot of the perpendicular from P to the line. Writing each ratio as \\( \\lambda \\), a general point of the line is \\( M(10\\lambda + 11,\\ -4\\lambda - 2,\\ -11\\lambda - 8) \\), so the direction ratios of PM are \\( (10\\lambda + 9,\\ -4\\lambda - 1,\\ -11\\lambda - 13) \\). PM is perpendicular to the line, whose direction ratios are \\( (10, -4, -11) \\), so their dot product vanishes: \\( 10(10\\lambda + 9) - 4(-4\\lambda - 1) - 11(-11\\lambda - 13) = 0 \\). Expanding, \\( 100\\lambda + 90 + 16\\lambda + 4 + 121\\lambda + 143 = 0 \\), that is \\( 237\\lambda + 237 = 0 \\), so \\( \\lambda = -1 \\) and \\( M(1, 2, 3) \\). The image \\( P'(\\alpha, \\beta, \\gamma) \\) is the reflection of P in the line, so M is the mid-point of \\( PP' \\): \\( \\dfrac{\\alpha + 2}{2} = 1 \\), \\( \\dfrac{\\beta - 1}{2} = 2 \\), \\( \\dfrac{\\gamma + 5}{2} = 3 \\). These give \\( \\alpha = 0 \\), \\( \\beta = 5 \\), \\( \\gamma = 1 \\). Hence the image of \\( (2, -1, 5) \\) in the given line is \\( (0, 5, 1) \\)."
   },
   {
    "hash": "195414e303f09bd45dd3797f444ff73773da100f86203cb1ebbb149c0da210f9",
@@ -270,7 +270,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Equation of a Line in Space",
    "stem": "Vertices B and C of \\( \\Delta \\) ABC lie on the line \\( \\dfrac{x + 2}{2} = \\dfrac{y - 1}{1} = \\dfrac{z}{4} \\). Find the area of \\( \\Delta \\) ABC given that point A has coordinates \\( (1, -1, 2) \\) and the line segment BC has length of 5 units.",
-   "solution": ""
+   "solution": "B and C both lie on the given line, so BC lies along it and the height of the triangle from A is simply the perpendicular distance h from \\( A(1, -1, 2) \\) to that line -- the individual positions of B and C never matter, only that \\( BC = 5 \\). Writing each ratio as \\( \\lambda \\), a general point of the line is \\( M(2\\lambda - 2,\\ \\lambda + 1,\\ 4\\lambda) \\), so the direction ratios of AM are \\( (2\\lambda - 3,\\ \\lambda + 2,\\ 4\\lambda - 2) \\). Since \\( AM \\perp BC \\) and the line has direction ratios \\( (2, 1, 4) \\), \\( 2(2\\lambda - 3) + 1(\\lambda + 2) + 4(4\\lambda - 2) = 0 \\), that is \\( 21\\lambda - 12 = 0 \\), so \\( \\lambda = \\dfrac{4}{7} \\) and \\( M\\left( -\\dfrac{6}{7},\\ \\dfrac{11}{7},\\ \\dfrac{16}{7} \\right) \\). Then \\( h = AM = \\sqrt{\\left( -\\dfrac{6}{7} - 1 \\right)^2 + \\left( \\dfrac{11}{7} + 1 \\right)^2 + \\left( \\dfrac{16}{7} - 2 \\right)^2} = \\sqrt{\\dfrac{169 + 324 + 4}{49}} = \\dfrac{\\sqrt{497}}{7} \\). Hence the area of triangle ABC is \\( \\dfrac{1}{2} \\times BC \\times h = \\dfrac{1}{2} \\times 5 \\times \\dfrac{\\sqrt{497}}{7} = \\dfrac{5\\sqrt{497}}{14} \\) square units, which is about \\( 7{\\cdot}96 \\)."
   }
  ]
 }

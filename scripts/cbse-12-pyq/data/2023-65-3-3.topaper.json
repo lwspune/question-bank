@@ -32,7 +32,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Use the two product formulas together. From \\( |\\vec{a} \\times \\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\theta \\) with \\( \\theta = \\frac{\\pi}{4} \\), we get \\( |\\vec{a}||\\vec{b}| \\cdot \\frac{1}{\\sqrt{2}} = 1 \\), so \\( |\\vec{a}||\\vec{b}| = \\sqrt{2} \\). Then \\( \\vec{a} \\cdot \\vec{b} = |\\vec{a}||\\vec{b}|\\cos\\theta = \\sqrt{2} \\cdot \\frac{1}{\\sqrt{2}} = 1 \\). Equivalently, since \\( \\theta = \\frac{\\pi}{4} \\) makes \\( \\sin\\theta = \\cos\\theta \\), the dot product simply equals the magnitude of the cross product here. So the value is 1."
   },
   {
    "hash": "815c0741a87fa2fdf008cdcfbc1585e9ed16407bb4cc92d180b5f482d46c21ae",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "[CBSE marking scheme: the answer LETTER (d) is correct, but the equation reprinted beside it in the scheme's answer cell is mis-typed as \\( \\frac{x-1}{2} = \\frac{y+1}{2} = \\frac{z}{-2} \\). That line has direction ratios \\( \\langle 2, 2, -2 \\rangle \\), which are not proportional to the given line's \\( \\langle 1, 2, -2 \\rangle \\), and it passes through \\( (1, -1, 0) \\) rather than the required \\( (2, -1, 0) \\) — so it fails both conditions of the question. The option actually printed on the question paper, \\( \\frac{x-2}{1} = \\frac{y+1}{2} = \\frac{z}{-2} \\), is correct; only the scheme's re-typing of it is wrong.] First read the direction ratios of the given line. Written as \\( \\frac{x}{1} = \\frac{y-1}{2} = \\frac{2-z}{2} \\), its last fraction must be rearranged: \\( \\frac{2-z}{2} = \\frac{-(z-2)}{2} = \\frac{z-2}{-2} \\). So the line is \\( \\frac{x-0}{1} = \\frac{y-1}{2} = \\frac{z-2}{-2} \\), with direction ratios \\( \\langle 1, 2, -2 \\rangle \\). A parallel line keeps those direction ratios, and passing through \\( (2, -1, 0) \\) it is \\( \\frac{x-2}{1} = \\frac{y+1}{2} = \\frac{z-0}{-2} \\), that is \\( \\frac{x-2}{1} = \\frac{y+1}{2} = \\frac{z}{-2} \\). Note how the two traps in the option list work: forgetting to flip the sign of \\( 2-z \\) leaves \\( +2 \\) under z, and mis-signing the point gives \\( x+2 \\) or \\( y-1 \\)."
   },
   {
    "hash": "94f64e15a7e74a2e8774f13f7c63e90256ed263dfc6cdd4336aa6aa0b63d08dc",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "If X and Y are independent, so are X and \\( \\overline{Y} \\). Hence \\( P(X \\cap \\overline{Y}) = P(X)\\,P(\\overline{Y}) \\), which gives \\( \\frac{2}{5} = \\frac{3}{5}\\,P(\\overline{Y}) \\), so \\( P(\\overline{Y}) = \\frac{2}{5} \\times \\frac{5}{3} = \\frac{2}{3} \\). Therefore \\( P(Y) = 1 - \\frac{2}{3} = \\frac{1}{3} \\). As a check, \\( P(X \\cap Y) = \\frac{3}{5} \\times \\frac{1}{3} = \\frac{1}{5} \\), and \\( \\frac{1}{5} + \\frac{2}{5} = \\frac{3}{5} = P(X) \\), as it must be since \\( X \\cap Y \\) and \\( X \\cap \\overline{Y} \\) partition X."
   },
   {
    "hash": "3af073621c7ec6a1ca7e5068028e45a0acf0f8266fadbcc7b5eede5bbe101706",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Expand the square without assuming the matrices commute, since matrix multiplication is not commutative in general: \\( (A + B)^2 = (A + B)(A + B) = A^2 + AB + BA + B^2 \\). Setting this equal to \\( A^2 + B^2 \\) leaves \\( AB + BA = O \\), that is \\( AB = -BA \\). Note that this is weaker than the tempting first choice \\( AB = BA \\): the condition forces the two products to be negatives of each other, and \\( AB = BA \\) would additionally require \\( 2AB = O \\). So the relation that follows is \\( AB = -BA \\)."
   },
   {
    "hash": "3629caf23b7ae65c6b885d4681181fb8f51475a3109001a3a7b75ca6812f4458",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Split the bracket: \\( \\frac{x+1}{x^2} = \\frac{1}{x} + \\frac{1}{x^2} \\), so the integral is \\( \\int e^{-x}\\left(\\frac{1}{x} + \\frac{1}{x^2}\\right) dx \\). This fits the standard form \\( \\int e^{-x}\\left(f(x) - f'(x)\\right) dx = -e^{-x} f(x) + C \\) with \\( f(x) = \\frac{1}{x} \\), since then \\( f'(x) = -\\frac{1}{x^2} \\) and \\( f(x) - f'(x) = \\frac{1}{x} + \\frac{1}{x^2} \\). Hence the integral is \\( -\\frac{e^{-x}}{x} + C \\). Differentiating back confirms it: \\( \\frac{d}{dx}\\left(-\\frac{e^{-x}}{x}\\right) = -\\frac{(-e^{-x})x - e^{-x}}{x^2} = \\frac{e^{-x}(x+1)}{x^2} \\), which is the integrand."
   },
   {
    "hash": "89a5734ea0a3c5ce57dcffab79d1525cf8583e9d5e8e40b3efdc8cbc47f6f950",
@@ -182,7 +182,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Let \\( I = \\int_{0}^{\\pi/2} \\log \\tan x \\, dx \\) and apply \\( \\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a - x)\\,dx \\) with \\( a = \\frac{\\pi}{2} \\). Since \\( \\tan\\left(\\frac{\\pi}{2} - x\\right) = \\cot x = \\frac{1}{\\tan x} \\), we get \\( I = \\int_{0}^{\\pi/2} \\log \\cot x \\, dx = \\int_{0}^{\\pi/2} \\left(-\\log \\tan x\\right) dx = -I \\). Hence \\( 2I = 0 \\) and \\( I = 0 \\). The value is 0. (Intuitively, the substitution reflects the interval about \\( x = \\frac{\\pi}{4} \\), where \\( \\log \\tan x = 0 \\); the negative area on \\( \\left(0, \\frac{\\pi}{4}\\right) \\) exactly cancels the positive area on \\( \\left(\\frac{\\pi}{4}, \\frac{\\pi}{2}\\right) \\).)"
   },
   {
    "hash": "f69ccd541501b045d3b761d9b05b69bc74dc891886a6052b74fc89148e154cb6",
@@ -193,7 +193,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Direction Cosines and Direction Ratios",
    "stem": "Find the direction cosines of the line whose Cartesian equations are\n5x \\( - \\) 3 = 15y + 7 = 3 \\( - \\) 10z.",
-   "solution": ""
+   "solution": "The equations must first be put into the symmetric form \\( \\frac{x - x_1}{a} = \\frac{y - y_1}{b} = \\frac{z - z_1}{c} \\), which means making the coefficient of each variable 1. Factor each expression: \\( 5x - 3 = 5\\left(x - \\frac{3}{5}\\right) \\), \\( 15y + 7 = 15\\left(y + \\frac{7}{15}\\right) \\) and \\( 3 - 10z = -10\\left(z - \\frac{3}{10}\\right) \\). Equating them and dividing through, the line is \\( \\frac{x - \\frac{3}{5}}{\\frac{1}{5}} = \\frac{y + \\frac{7}{15}}{\\frac{1}{15}} = \\frac{z - \\frac{3}{10}}{-\\frac{1}{10}} \\). So the direction ratios are \\( \\left\\langle \\frac{1}{5}, \\frac{1}{15}, -\\frac{1}{10} \\right\\rangle \\); multiplying by 30 to clear the fractions gives the equivalent set \\( \\langle 6, 2, -3 \\rangle \\). Its magnitude is \\( \\sqrt{36 + 4 + 9} = \\sqrt{49} = 7 \\), so the direction cosines are \\( \\frac{6}{7}, \\frac{2}{7}, -\\frac{3}{7} \\). (Direction ratios may be scaled freely, but direction cosines may not — they must satisfy \\( l^2 + m^2 + n^2 = \\frac{36 + 4 + 9}{49} = 1 \\), which is the check here. The opposite signs \\( -\\frac{6}{7}, -\\frac{2}{7}, \\frac{3}{7} \\) are equally acceptable, since they describe the same line traversed the other way.)"
   },
   {
    "hash": "616fd0cd60a967e2fb7cf40d011b0d34fe2428a2e6dff075ac4787ae03e18542",
@@ -204,7 +204,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Rate of Change of Quantities",
    "stem": "Find the points on the curve \\( 6y = x^3 + 2 \\) at which ordinate is changing 8 times as fast as abscissa.",
-   "solution": ""
+   "solution": "\"Ordinate changing 8 times as fast as abscissa\" means \\( \\frac{dy}{dt} = 8\\,\\frac{dx}{dt} \\), where t is time. Differentiate the curve \\( 6y = x^3 + 2 \\) with respect to t: \\( 6\\,\\frac{dy}{dt} = 3x^2\\,\\frac{dx}{dt} \\). Substituting the given relation, \\( 6\\left(8\\,\\frac{dx}{dt}\\right) = 3x^2\\,\\frac{dx}{dt} \\), and cancelling \\( \\frac{dx}{dt} \\) (which is non-zero, else neither coordinate is changing) gives \\( 48 = 3x^2 \\), so \\( x^2 = 16 \\) and \\( x = \\pm 4 \\). Both signs must be kept, since the curve is defined for all real x. Now find the matching ordinates from \\( 6y = x^3 + 2 \\): for \\( x = 4 \\), \\( 6y = 64 + 2 = 66 \\), so \\( y = 11 \\); for \\( x = -4 \\), \\( 6y = -64 + 2 = -62 \\), so \\( y = -\\frac{31}{3} \\). The required points are \\( (4, 11) \\) and \\( \\left(-4, -\\frac{31}{3}\\right) \\)."
   },
   {
    "hash": "33ec4a7c3e4675259ab5554a592129b044828f312ea12706d0bb5dbb20b18569",
@@ -215,7 +215,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "Evaluate :\n\\( \\int_{0}^{\\pi/4} \\log (1 + \\tan x) \\, dx \\)",
-   "solution": ""
+   "solution": "Let \\( I = \\int_{0}^{\\pi/4} \\log(1 + \\tan x)\\,dx \\) and use \\( \\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a - x)\\,dx \\) with \\( a = \\frac{\\pi}{4} \\), so that \\( I = \\int_{0}^{\\pi/4} \\log\\left(1 + \\tan\\left(\\frac{\\pi}{4} - x\\right)\\right) dx \\). Now \\( \\tan\\left(\\frac{\\pi}{4} - x\\right) = \\frac{1 - \\tan x}{1 + \\tan x} \\), so the bracket becomes \\( 1 + \\frac{1 - \\tan x}{1 + \\tan x} = \\frac{(1 + \\tan x) + (1 - \\tan x)}{1 + \\tan x} = \\frac{2}{1 + \\tan x} \\). Hence \\( I = \\int_{0}^{\\pi/4} \\log\\frac{2}{1 + \\tan x}\\,dx = \\int_{0}^{\\pi/4} \\log 2\\,dx - \\int_{0}^{\\pi/4} \\log(1 + \\tan x)\\,dx = \\frac{\\pi}{4}\\log 2 - I \\). Therefore \\( 2I = \\frac{\\pi}{4}\\log 2 \\), giving \\( I = \\frac{\\pi}{8}\\log 2 \\). The neat feature of this route is that the awkward integrand never has to be integrated at all — it is eliminated by adding it to its own reflection."
   },
   {
    "hash": "b558afde4e467a03c62d00ff6dec33eaa804e2503c7986d2d70c2aa4f598ff7c",
@@ -226,7 +226,7 @@
    "chapter": "Integrals",
    "subtopic": "Definite Integrals and the Fundamental Theorem",
    "stem": "Find :\n\\( \\int_{1}^{4} \\frac{1}{\\sqrt{2x+1} - \\sqrt{2x-1}} \\, dx \\)",
-   "solution": ""
+   "solution": "Rationalise the denominator by multiplying above and below by \\( \\sqrt{2x+1} + \\sqrt{2x-1} \\). The denominator becomes \\( (2x+1) - (2x-1) = 2 \\), a constant, which is what makes this integrable: \\( I = \\int_{1}^{4} \\frac{\\sqrt{2x+1} + \\sqrt{2x-1}}{2}\\,dx \\). Integrating each term with the rule \\( \\int (2x \\pm 1)^{1/2} dx = \\frac{(2x \\pm 1)^{3/2}}{3} \\) (the extra factor 2 from the chain rule combines with the 2 in the denominator to give 6), \\( I = \\left[\\frac{(2x+1)^{3/2}}{6} + \\frac{(2x-1)^{3/2}}{6}\\right]_{1}^{4} \\). At \\( x = 4 \\) the bracket is \\( \\frac{9^{3/2}}{6} + \\frac{7^{3/2}}{6} = \\frac{27}{6} + \\frac{7^{3/2}}{6} \\); at \\( x = 1 \\) it is \\( \\frac{3^{3/2}}{6} + \\frac{1}{6} \\). Subtracting, \\( I = \\frac{27 + 7^{3/2} - 3^{3/2} - 1}{6} = \\frac{26 + 7\\sqrt{7} - 3\\sqrt{3}}{6} \\), which is approximately 6.554."
   },
   {
    "hash": "112266e748b0b3ae294aa7fde935854d4507c19cd4e2df1f2acee9ed223814f9",
@@ -237,7 +237,7 @@
    "chapter": "Linear Programming",
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "Solve the following linear programming problem graphically :\nMinimize z = x + 2y\nsubject to the constraints\n\\( 2x + y \\geq 3 \\),\n\\( x + 2y \\geq 6 \\),\n\\( x \\geq 0 \\),\n\\( y \\geq 0 \\).",
-   "solution": ""
+   "solution": "Draw the lines \\( 2x + y = 3 \\) and \\( x + 2y = 6 \\) in the first quadrant and shade the region satisfying both inequalities. The two lines meet where \\( y = 3 - 2x \\) and \\( x + 2(3 - 2x) = 6 \\), i.e. \\( -3x = 0 \\), so they cross at \\( (0, 3) \\) — a point already on the y-axis, which is why the region has only two corner points: \\( (0, 3) \\), where \\( x = 0 \\) meets both lines, and \\( (6, 0) \\), where \\( x + 2y = 6 \\) meets the x-axis. The feasible region is unbounded, extending upwards and to the right. Evaluating \\( z = x + 2y \\): at \\( (0, 3) \\), \\( z = 0 + 6 = 6 \\); at \\( (6, 0) \\), \\( z = 6 + 0 = 6 \\). Because the region is unbounded, 6 is only a candidate minimum and must be confirmed: draw \\( x + 2y < 6 \\) and check whether any of it is feasible. It is not, since every feasible point satisfies \\( x + 2y \\ge 6 \\) by the second constraint. Hence the minimum value is \\( z = 6 \\), and since the two corner values are equal it is attained at every point of the segment joining \\( (0, 3) \\) and \\( (6, 0) \\) — the whole of that segment lies on \\( x + 2y = 6 \\), where the objective function is identically 6. (The official scheme reaches the same conclusion but calls this segment \"AB\", while the only two points labelled on its own diagram are \\( B(0, 3) \\) and \\( C(6, 0) \\); the segment meant is the one joining those two points.)"
   },
   {
    "hash": "b34550160209f6bdb0deac9fd84ed967f6b5d6bf4690b165db49fd49449044ea",
@@ -248,7 +248,7 @@
    "chapter": "Relations and Functions",
    "subtopic": "One-One and Onto Functions",
    "stem": "Check whether a function f : \\( \\mathbb{R} \\to \\left[ -\\frac{1}{2}, \\frac{1}{2} \\right] \\) defined as \\( f(x) = \\frac{x}{1 + x^2} \\) is one-one and onto or not.",
-   "solution": ""
+   "solution": "The function is NOT one-one, but it IS onto. One-one: suppose \\( f(x_1) = f(x_2) \\), i.e. \\( \\frac{x_1}{1 + x_1^2} = \\frac{x_2}{1 + x_2^2} \\). Cross-multiplying, \\( x_1 + x_1 x_2^2 = x_2 + x_1^2 x_2 \\), so \\( (x_1 - x_2) - x_1 x_2 (x_1 - x_2) = 0 \\), that is \\( (x_1 - x_2)(1 - x_1 x_2) = 0 \\). The second factor can vanish without \\( x_1 = x_2 \\): any pair with \\( x_1 x_2 = 1 \\) works. Taking \\( x_1 = 2 \\) and \\( x_2 = \\frac{1}{2} \\) gives \\( f(2) = \\frac{2}{5} \\) and \\( f\\!\\left(\\frac{1}{2}\\right) = \\frac{1/2}{5/4} = \\frac{2}{5} \\), two distinct inputs with the same image, so f is not one-one. Onto: let \\( y \\in \\left[-\\frac{1}{2}, \\frac{1}{2}\\right] \\) and solve \\( y = \\frac{x}{1 + x^2} \\), i.e. \\( yx^2 - x + y = 0 \\). If \\( y = 0 \\), then \\( x = 0 \\) is a pre-image, since \\( f(0) = 0 \\). If \\( y \\ne 0 \\) this is a genuine quadratic in x with \\( x = \\frac{1 \\pm \\sqrt{1 - 4y^2}}{2y} \\), and a real root exists precisely when \\( 1 - 4y^2 \\ge 0 \\), i.e. \\( |y| \\le \\frac{1}{2} \\) — which every y in the given codomain satisfies. So every element of \\( \\left[-\\frac{1}{2}, \\frac{1}{2}\\right] \\) has a real pre-image, the range equals the codomain, and f is onto. The endpoints are attained: \\( f(1) = \\frac{1}{2} \\) and \\( f(-1) = -\\frac{1}{2} \\), which is exactly why the codomain was chosen as this interval."
   }
  ]
 }

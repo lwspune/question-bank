@@ -32,7 +32,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Since \\(\\tan\\frac{\\pi}{4} = 1\\), the integrand is exactly a tangent-sum expansion: \\(\\frac{1 + \\tan x}{1 - \\tan x} = \\frac{\\tan\\frac{\\pi}{4} + \\tan x}{1 - \\tan\\frac{\\pi}{4}\\,\\tan x} = \\tan\\left(\\frac{\\pi}{4} + x\\right)\\). Therefore \\(\\int \\frac{1 + \\tan x}{1 - \\tan x}\\,dx = \\int \\tan\\left(\\frac{\\pi}{4} + x\\right)dx = \\log\\left|\\sec\\left(\\frac{\\pi}{4} + x\\right)\\right| + C\\), which is the choice \\(\\log\\left|\\sec\\left(\\frac{\\pi}{4} + x\\right)\\right| + C\\)."
   },
   {
    "hash": "0facbc3f9776a6d75d5e9b40fbd0b02bcbb9e53372557758017f35ad285e1a00",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "The vector \\(\\hat{i} - b\\hat{j} + \\hat{k}\\) has direction ratios \\(1, -b, 1\\), so its direction cosines are \\(\\frac{1}{|\\vec{r}|}, \\frac{-b}{|\\vec{r}|}, \\frac{1}{|\\vec{r}|}\\). Being equally inclined to all three coordinate axes means these three direction cosines are equal, so \\(-b = 1\\), giving \\(b = -1\\). The vector is then \\(\\hat{i} + \\hat{j} + \\hat{k}\\), whose direction cosines are each \\(\\frac{1}{\\sqrt{3}}\\), confirming the equal inclination. So the value is \\(-1\\)."
   },
   {
    "hash": "1d9c1a3814c2159bd66e40f7ed6010e8e55e1fdc698242e0f4c73d77bfa7a3fb",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Let the direction cosines of the line be \\(l, m, n\\). Being perpendicular to the x-axis, whose direction ratios are \\(1, 0, 0\\), gives \\(l = 0\\); being perpendicular to the z-axis, whose direction ratios are \\(0, 0, 1\\), gives \\(n = 0\\). Since \\(l^2 + m^2 + n^2 = 1\\), this leaves \\(m^2 = 1\\). Taking \\(m = 1\\), the direction cosines are \\(0, 1, 0\\) — the line is parallel to the y-axis, which is what a line perpendicular to both the other axes must be."
   },
   {
    "hash": "34d9f9164885b72bec545c32ea7a9ca4532a59185307f097b61c326b6a09b09f",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Continuity at \\(x = 0\\) is the only thing in question, since each branch is continuous on its own side. From the branch for \\(x \\le 0\\), \\(f(0) = k\\left(3(0)^2 - 5(0)\\right) = 0\\), and \\(\\lim_{x \\to 0^-} f(x) = 0\\) as well — the factor \\(3x^2 - 5x\\) vanishes at \\(x = 0\\), so multiplying it by \\(k\\) cannot change that, whatever \\(k\\) may be. From the other side, \\(\\lim_{x \\to 0^+} f(x) = \\cos 0 = 1\\). Continuity would require \\(0 = 1\\), which is impossible, so no value of \\(k\\) makes \\(f\\) continuous. Hence the choice 'No value'."
   },
   {
    "hash": "9e356d619f520cfe14e6808e7191cb76f3bb974f399394f5023b7a9abb93e997",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "For an \\(n \\times n\\) matrix \\(M\\) and a scalar \\(c\\), \\(|cM| = c^{n}|M|\\); here \\(n = 3\\). Also \\(|A^{-1}| = \\frac{1}{|A|}\\). Hence \\(\\left|\\frac{A^{-1}}{2}\\right| = \\left(\\frac{1}{2}\\right)^{3}\\left|A^{-1}\\right| = \\frac{1}{8}\\cdot\\frac{1}{|A|} = \\frac{1}{8|A|}\\). Comparing this with the given \\(\\frac{1}{k|A|}\\) gives \\(k = 8\\)."
   },
   {
    "hash": "8954929e361e42c365fe10fa16df165ad1f4f6bf7d90fd62c1b47e3215386b71",
@@ -183,7 +183,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "A function from \\(P\\) to \\(Q\\) fails to be onto exactly when it misses one of the two elements of \\(Q\\). There are \\(2^5 = 32\\) functions in all from a 5-element set to a 2-element set, and exactly 2 of them are constant (the ones that miss an element), so the number of onto functions is \\(32 - 2 = 30\\). The Assertion is therefore correct. The Reason, however, offers \\(n^m\\) as the count of onto functions; that expression is the total number of functions from an \\(m\\)-element set to an \\(n\\)-element set, onto or not — here it gives 32, not 30, so it even contradicts the Assertion it is supposed to justify. So the Assertion is true while the Reason is false."
   },
   {
    "hash": "2f4e4080f12dea3161a586f5e6d339f028d0df23d5d84b7c9ee17136954986d5",
@@ -194,7 +194,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Increasing and Decreasing Functions",
    "stem": "Find the sub-intervals in which \\(f(x) = \\log (2 + x) - \\frac{x}{2 + x}\\), \\(x > -2\\) is increasing or decreasing.",
-   "solution": ""
+   "solution": "Differentiate, using the quotient rule on the second term: \\(f'(x) = \\frac{1}{2 + x} - \\frac{(2 + x)(1) - x(1)}{(2 + x)^2} = \\frac{1}{2 + x} - \\frac{2}{(2 + x)^2}\\). Putting the two over a common denominator, \\(f'(x) = \\frac{(2 + x) - 2}{(2 + x)^2} = \\frac{x}{(2 + x)^2}\\). For \\(x > -2\\) the denominator \\((2 + x)^2\\) is strictly positive, so \\(f'(x)\\) carries the same sign as \\(x\\). Hence \\(f'(x) < 0\\) on \\((-2, 0)\\) and \\(f'(x) > 0\\) on \\((0, \\infty)\\). So \\(f\\) is decreasing on the sub-interval \\((-2, 0)\\) and increasing on the sub-interval \\((0, \\infty)\\)."
   },
   {
    "hash": "539a604d651337c07357e8c6773deaa3442b2669ef6a2a6ed3f519bc625b4106",
@@ -205,7 +205,7 @@
    "chapter": "Vector Algebra",
    "subtopic": "Scalar (Dot) Product and Projection",
    "stem": "For two non-zero vectors \\(\\vec{a}\\) and \\(\\vec{b}\\), if \\(|\\vec{a} - \\vec{b}| = |\\vec{a} + \\vec{b}|\\), then find the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\).",
-   "solution": ""
+   "solution": "Since both sides are non-negative, the given equality may be squared: \\(|\\vec{a} - \\vec{b}|^2 = |\\vec{a} + \\vec{b}|^2\\), that is \\(|\\vec{a}|^2 - 2\\,\\vec{a}\\cdot\\vec{b} + |\\vec{b}|^2 = |\\vec{a}|^2 + 2\\,\\vec{a}\\cdot\\vec{b} + |\\vec{b}|^2\\). The squared magnitudes cancel from both sides, leaving \\(4\\,\\vec{a}\\cdot\\vec{b} = 0\\), so \\(\\vec{a}\\cdot\\vec{b} = 0\\). Writing \\(\\vec{a}\\cdot\\vec{b} = |\\vec{a}||\\vec{b}|\\cos\\theta\\) and using that \\(\\vec{a}\\) and \\(\\vec{b}\\) are non-zero, so \\(|\\vec{a}| \\ne 0\\) and \\(|\\vec{b}| \\ne 0\\), we get \\(\\cos\\theta = 0\\). Hence the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\) is \\(\\frac{\\pi}{2}\\), i.e. \\(90^\\circ\\)."
   },
   {
    "hash": "1074e9fcecab732c2100bcef5b46449bd604e091a3e2cfd3bbad8205f54f664a",
@@ -216,7 +216,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Homogeneous Differential Equations",
    "stem": "Find the general solution of the differential equation :\n\\(\\frac{dx}{dy} = \\frac{e^{x/y}\\left(\\frac{x}{y} - 1\\right)}{1 + e^{x/y}}\\).",
-   "solution": ""
+   "solution": "The right-hand side involves \\(x\\) and \\(y\\) only through the ratio \\(\\frac{x}{y}\\), so the equation is homogeneous and we substitute \\(x = vy\\), which gives \\(\\frac{dx}{dy} = v + y\\frac{dv}{dy}\\). Substituting, \\(v + y\\frac{dv}{dy} = \\frac{e^{v}(v - 1)}{1 + e^{v}}\\), so \\(y\\frac{dv}{dy} = \\frac{e^{v}(v - 1) - v\\left(1 + e^{v}\\right)}{1 + e^{v}} = \\frac{v e^{v} - e^{v} - v - v e^{v}}{1 + e^{v}} = -\\frac{e^{v} + v}{1 + e^{v}}\\). Separating the variables, \\(\\frac{e^{v} + 1}{e^{v} + v}\\,dv = -\\frac{dy}{y}\\). On the left the numerator is precisely the derivative of the denominator, so integrating gives \\(\\log\\left|e^{v} + v\\right| = -\\log|y| + \\log C\\), i.e. \\(e^{v} + v = \\frac{C}{y}\\). Restoring \\(v = \\frac{x}{y}\\), \\(e^{x/y} + \\frac{x}{y} = \\frac{C}{y}\\), and multiplying through by \\(y\\) gives the general solution \\(y\\,e^{x/y} + x = C\\)."
   },
   {
    "hash": "58c32c05a7e8a4d881c81a22aaa196237dad0038ec0db807ff0ee1c9b405c60d",
@@ -227,7 +227,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Linear Differential Equations",
    "stem": "Find the particular solution of the differential equation \\(\\frac{dy}{dx} + \\cot x \\cdot y = \\cos^2 x\\), given that when \\(x = \\frac{\\pi}{2}\\), y = 0.",
-   "solution": ""
+   "solution": "This is linear in \\(y\\), of the form \\(\\frac{dy}{dx} + Py = Q\\) with \\(P = \\cot x\\) and \\(Q = \\cos^2 x\\). The integrating factor is \\(e^{\\int \\cot x\\,dx} = e^{\\log|\\sin x|} = \\sin x\\). Multiplying through, the solution is \\(y\\sin x = \\int \\cos^2 x\\,\\sin x\\,dx + C\\). For that integral put \\(u = \\cos x\\), so \\(du = -\\sin x\\,dx\\) and \\(\\int \\cos^2 x \\sin x\\,dx = -\\int u^2\\,du = -\\frac{u^3}{3} = -\\frac{\\cos^3 x}{3}\\). Hence \\(y\\sin x = -\\frac{\\cos^3 x}{3} + C\\). Applying the given condition \\(y = 0\\) when \\(x = \\frac{\\pi}{2}\\), and using \\(\\cos\\frac{\\pi}{2} = 0\\), \\(\\sin\\frac{\\pi}{2} = 1\\): \\(0 = -\\frac{0}{3} + C\\), so \\(C = 0\\). The particular solution is \\(y\\sin x = -\\frac{\\cos^3 x}{3}\\), that is \\(y = -\\frac{\\cos^3 x}{3\\sin x}\\)."
   },
   {
    "hash": "0fb4d3286db75186a684e0d5695812d1cc19b3e057d0ce7e930de644f13c29c5",
@@ -238,7 +238,7 @@
    "chapter": "Linear Programming",
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "Solve the following linear programming problem graphically :\nMaximize P = 100x + 5y\nsubject to the constraints\n\\(x + y \\le 300\\),\n\\(3x + y \\le 600\\),\n\\(y \\le x + 200\\),\n\\(x, y \\ge 0\\).",
-   "solution": ""
+   "solution": "[CBSE marking scheme: in the printed graph the slanted boundary rising to the right is labelled \\(y = x + 100\\), but the constraint is \\(y \\le x + 200\\) and the line actually drawn — through the marked points \\((0, 200)\\) and \\((50, 250)\\) — is \\(y = x + 200\\). Only the label is mistyped; the shaded region, the five corner points and every value in the scheme's table are correct.] The constraints \\(x + y \\le 300\\), \\(3x + y \\le 600\\), \\(y \\le x + 200\\), \\(x \\ge 0\\), \\(y \\ge 0\\) determine a bounded convex feasible region. Its corner points come from intersecting the boundary lines in pairs: \\(x + y = 300\\) with \\(3x + y = 600\\) gives \\(2x = 300\\), so \\((150, 150)\\); \\(x + y = 300\\) with \\(y = x + 200\\) gives \\(2x = 100\\), so \\((50, 250)\\); \\(y = x + 200\\) with \\(x = 0\\) gives \\((0, 200)\\); \\(3x + y = 600\\) with \\(y = 0\\) gives \\((200, 0)\\); and the origin \\((0, 0)\\). Evaluating \\(P = 100x + 5y\\) at each: \\(P(0, 0) = 0\\), \\(P(200, 0) = 20000\\), \\(P(150, 150) = 15000 + 750 = 15750\\), \\(P(50, 250) = 5000 + 1250 = 6250\\), \\(P(0, 200) = 1000\\). Since the feasible region is bounded, the largest of these values is the maximum: \\(P = 20000\\), attained at \\(x = 200\\), \\(y = 0\\)."
   },
   {
    "hash": "2d6caa20209acb8559fe64d56ca7f80f98e03888092ec0d870b7aedd98fa1380",
@@ -249,7 +249,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "Evaluate :\n\\(\\int\\limits_{0}^{\\frac{\\pi}{2}} |\\sin x - \\cos x| \\, dx\\)",
-   "solution": ""
+   "solution": "The modulus must be removed before integrating, so first locate the sign change. On \\(\\left[0, \\frac{\\pi}{2}\\right]\\), \\(\\sin x - \\cos x = 0\\) only at \\(x = \\frac{\\pi}{4}\\); the expression is negative on \\(\\left[0, \\frac{\\pi}{4}\\right)\\) and positive on \\(\\left(\\frac{\\pi}{4}, \\frac{\\pi}{2}\\right]\\). Splitting the integral there, \\(I = \\int_{0}^{\\pi/4}(\\cos x - \\sin x)\\,dx + \\int_{\\pi/4}^{\\pi/2}(\\sin x - \\cos x)\\,dx\\). The first integral is \\(\\left[\\sin x + \\cos x\\right]_{0}^{\\pi/4} = \\left(\\frac{1}{\\sqrt{2}} + \\frac{1}{\\sqrt{2}}\\right) - (0 + 1) = \\sqrt{2} - 1\\). The second is \\(\\left[-\\cos x - \\sin x\\right]_{\\pi/4}^{\\pi/2} = (0 - 1) - \\left(-\\frac{1}{\\sqrt{2}} - \\frac{1}{\\sqrt{2}}\\right) = -1 + \\sqrt{2}\\). Adding the two equal parts, \\(I = 2\\sqrt{2} - 2\\)."
   },
   {
    "hash": "46e84c09dcd5e88de4bf00ea88ba0c10c4e299b3fa8736f2bf91d81e99c758d6",
@@ -260,7 +260,7 @@
    "chapter": "Application of Integrals",
    "subtopic": "Area Bounded by a Curve and a Line",
    "stem": "Find the area of the region \\(\\{(x, y) : x^2 + y^2 \\le 1 \\le x + y\\}\\), using integration.",
-   "solution": ""
+   "solution": "The region is the part of the closed unit disc \\(x^2 + y^2 \\le 1\\) lying on or above the line \\(x + y = 1\\), since the condition \\(1 \\le x + y\\) means \\(x + y \\ge 1\\). To find where the boundary curves meet, substitute \\(y = 1 - x\\) into \\(x^2 + y^2 = 1\\): \\(x^2 + (1 - x)^2 = 1\\), i.e. \\(2x^2 - 2x = 0\\), so \\(x = 0\\) or \\(x = 1\\). The circle and the line therefore meet at \\((0, 1)\\) and \\((1, 0)\\), and the region lies over \\(0 \\le x \\le 1\\). For each such \\(x\\) the region runs from the chord \\(y = 1 - x\\) up to the arc \\(y = \\sqrt{1 - x^2}\\), so the required area is \\(\\int_{0}^{1}\\left(\\sqrt{1 - x^2} - (1 - x)\\right)dx\\). Now \\(\\int_{0}^{1}\\sqrt{1 - x^2}\\,dx = \\left[\\frac{x}{2}\\sqrt{1 - x^2} + \\frac{1}{2}\\sin^{-1} x\\right]_{0}^{1} = \\left(0 + \\frac{1}{2}\\cdot\\frac{\\pi}{2}\\right) - 0 = \\frac{\\pi}{4}\\), and \\(\\int_{0}^{1}(1 - x)\\,dx = \\left[x - \\frac{x^2}{2}\\right]_{0}^{1} = 1 - \\frac{1}{2} = \\frac{1}{2}\\). Hence the area of the region is \\(\\frac{\\pi}{4} - \\frac{1}{2}\\) square units."
   }
  ]
 }

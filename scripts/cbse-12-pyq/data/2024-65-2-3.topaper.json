@@ -32,7 +32,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Differentiate by the chain rule, using \\(\\frac{d}{du}\\cos^{-1} u = -\\frac{1}{\\sqrt{1 - u^2}}\\) with \\(u = e^{x}\\): \\(\\frac{dy}{dx} = -\\frac{1}{\\sqrt{1 - e^{2x}}} \\cdot e^{x} = -\\frac{e^{x}}{\\sqrt{1 - e^{2x}}}\\). None of the choices carries a factor \\(e^{x}\\) outside, so pull \\(e^{2x}\\) out of the radical: \\(1 - e^{2x} = e^{2x}\\left(e^{-2x} - 1\\right)\\), and since \\(e^{x} > 0\\), \\(\\sqrt{1 - e^{2x}} = e^{x}\\sqrt{e^{-2x} - 1}\\). The factor \\(e^{x}\\) now cancels, leaving \\(\\frac{dy}{dx} = -\\frac{1}{\\sqrt{e^{-2x} - 1}}\\), which is the choice \\(-\\frac{1}{\\sqrt{e^{-2x} - 1}}\\). (The MINUS is the derivative of \\(\\cos^{-1}\\), and the radicand is \\(e^{-2x} - 1\\) rather than \\(e^{-2x} + 1\\) — the two features that separate this from the other three choices.)"
   },
   {
    "hash": "24f5986d1039ca387fc58855ed0ce20d825facf38c94280ef2fa5d0009bb089f",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Take the two ideas separately. The ORDER is the order of the highest derivative present, and the highest here is \\(y''\\), so the order is \\(2\\). The DEGREE is the power of the highest-order derivative only AFTER the equation has been written as a polynomial in the derivatives, and it is not defined when that cannot be done. Here the term \\(\\log(y')\\) makes the equation non-polynomial in \\(y'\\), and no algebraic manipulation removes it, so the degree is NOT DEFINED. The question asks for degree and order in that order, so the answer is the choice 'not defined, 2'. (The exponent \\(5\\) on the right belongs to \\(x\\), not to a derivative, so it plays no part in either.)"
   },
   {
    "hash": "cf0dbda2e9f3ce60888ddb994ca198b4c27561f69de4f8a36080fb7b88054ea0",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Form \\(A + A'\\). Transposing swaps the off-diagonal entries, so \\(A' = \\begin{bmatrix} \\tan x & -1 \\\\ 1 & \\tan x \\end{bmatrix}\\) and \\(A + A' = \\begin{bmatrix} 2\\tan x & 0 \\\\ 0 & 2\\tan x \\end{bmatrix} = 2\\tan x \\, I\\) — the off-diagonal entries \\(1\\) and \\(-1\\) cancel, which is what makes the sum a scalar matrix at all. Equating this to \\(2\\sqrt{3}\\,I\\) gives \\(2\\tan x = 2\\sqrt{3}\\), so \\(\\tan x = \\sqrt{3}\\). On \\(\\left[0, \\frac{\\pi}{2}\\right]\\) the only such value is \\(x = \\frac{\\pi}{3}\\), which is the choice \\(\\frac{\\pi}{3}\\)."
   },
   {
    "hash": "1042dbe0a17320e6e4a5060b6a8de25e562757086b35dd4a891cf807074c8dcf",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Simplify the radicand first, using \\(\\sin^2 x + \\cos^2 x = 1\\) and \\(\\sin 2x = 2\\sin x\\cos x\\): \\(1 + \\sin 2x = \\sin^2 x + \\cos^2 x + 2\\sin x\\cos x = (\\sin x + \\cos x)^2\\). Hence \\(\\sqrt{1 + \\sin 2x} = |\\sin x + \\cos x|\\), and on \\(\\left[0, \\frac{\\pi}{4}\\right]\\) both \\(\\sin x\\) and \\(\\cos x\\) are non-negative, so the modulus simply opens as \\(\\sin x + \\cos x\\). Integrating, \\(\\int (\\sin x + \\cos x)\\,dx = -\\cos x + \\sin x + C\\). So an anti-derivative is \\(-\\cos x + \\sin x\\), matching the choice \\(-\\cos x + \\sin x\\). (Check by differentiating: \\(\\frac{d}{dx}(-\\cos x + \\sin x) = \\sin x + \\cos x\\), which is the integrand on this interval.)"
   },
   {
    "hash": "2e1e0c12a7cabc545fc0322a39ee90378afccecf48826a2f0fd850b3ae827cd2",
@@ -153,7 +153,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Examine the Assertion first. The bracket \\(\\vec{b} \\cdot \\vec{c}\\) is indeed a scalar, say \\(k\\); but the full expression is \\(k\\,\\vec{a}\\), a scalar MULTIPLE of the vector \\(\\vec{a}\\). Multiplying a vector by a scalar rescales it and possibly reverses it, but the result is still a vector, not a number. So the Assertion is FALSE. The Reason states that the dot product of two vectors is a scalar, which is exactly the definition of the scalar product, so the Reason is TRUE. Note that the Reason, although true, describes only the bracket and says nothing about the scalar-times-vector step, which is where the Assertion goes wrong. Hence the correct code is the one stating that the Assertion is false while the Reason is true."
   },
   {
    "hash": "f8d813d81f03bd8a7476d15d8536ef453f49f6cbc6ddea965cc4e7826ff56583",
@@ -164,7 +164,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Increasing and Decreasing Functions",
    "stem": "Determine whether the function \\(f(x) = x^2 - 6x + 3\\) is increasing or decreasing in [4, 6].",
-   "solution": ""
+   "solution": "The sign of the derivative on the open interval settles it. Differentiating, \\(f'(x) = 2x - 6\\). For \\(4 < x < 6\\) we have \\(8 < 2x < 12\\), so \\(2 < 2x - 6 < 6\\), and in particular \\(f'(x) > 0\\) for every \\(x\\) in \\((4, 6)\\). A function that is continuous on \\([4, 6]\\) and has a positive derivative throughout \\((4, 6)\\) is strictly increasing on \\([4, 6]\\). Hence \\(f(x) = x^2 - 6x + 3\\) is INCREASING on \\([4, 6]\\). (This sits well with the shape of the graph: the parabola has its vertex at \\(x = 3\\), so the whole interval \\([4, 6]\\) lies on its rising branch. As a check, \\(f(4) = -5\\) and \\(f(6) = 3\\).)"
   },
   {
    "hash": "fcae30e5af4b06bb27bebe4115762b2981bc6e26e69ee68192ae99fa9bb7e849",
@@ -175,7 +175,7 @@
    "chapter": "Inverse Trigonometric Functions",
    "subtopic": "Evaluating Inverse Trigonometric Expressions",
    "stem": "Find the value of \\(\\sin^{-1}\\left(-\\dfrac{1}{2}\\right) + \\cos^{-1}\\left(-\\dfrac{\\sqrt{3}}{2}\\right) + \\cot^{-1}\\left(\\tan \\dfrac{4\\pi}{3}\\right)\\).",
-   "solution": ""
+   "solution": "Take the three terms one at a time, keeping each answer inside its own principal-value branch. First, \\(\\sin^{-1}\\) has range \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\), and since \\(\\sin\\left(-\\frac{\\pi}{6}\\right) = -\\frac{1}{2}\\), we get \\(\\sin^{-1}\\left(-\\frac{1}{2}\\right) = -\\frac{\\pi}{6}\\). Second, \\(\\cos^{-1}\\) has range \\([0, \\pi]\\), and for a negative argument \\(\\cos^{-1}(-t) = \\pi - \\cos^{-1} t\\); since \\(\\cos^{-1}\\frac{\\sqrt{3}}{2} = \\frac{\\pi}{6}\\), we get \\(\\cos^{-1}\\left(-\\frac{\\sqrt{3}}{2}\\right) = \\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6}\\). Third, simplify the argument before applying the inverse: \\(\\tan\\frac{4\\pi}{3} = \\tan\\left(\\pi + \\frac{\\pi}{3}\\right) = \\tan\\frac{\\pi}{3} = \\sqrt{3}\\), and \\(\\cot^{-1}\\sqrt{3} = \\frac{\\pi}{6}\\) since \\(\\cot\\frac{\\pi}{6} = \\sqrt{3}\\) and \\(\\frac{\\pi}{6}\\) lies in the range \\((0, \\pi)\\). Adding, the value is \\(-\\frac{\\pi}{6} + \\frac{5\\pi}{6} + \\frac{\\pi}{6} = \\frac{5\\pi}{6}\\)."
   },
   {
    "hash": "228e90e210c4dedb35e8064dbbfedf30de7373baf701289ddc32870afc03b375",
@@ -186,7 +186,7 @@
    "chapter": "Inverse Trigonometric Functions",
    "subtopic": "Domains, Ranges and Principal Value Branches",
    "stem": "Find the domain of \\(f(x) = \\cos^{-1}(1 - x^2)\\). Also, find its range.",
-   "solution": ""
+   "solution": "For \\(\\cos^{-1} u\\) to be defined we need \\(-1 \\le u \\le 1\\), so here \\(-1 \\le 1 - x^2 \\le 1\\). Subtracting \\(1\\) throughout gives \\(-2 \\le -x^2 \\le 0\\), and multiplying by \\(-1\\) (which reverses the inequalities) gives \\(0 \\le x^2 \\le 2\\). The left inequality holds for every real \\(x\\), and the right gives \\(|x| \\le \\sqrt{2}\\). Hence the DOMAIN is \\(\\left[-\\sqrt{2}, \\sqrt{2}\\right]\\). For the range, note that as \\(x\\) runs over that interval, \\(x^2\\) takes every value in \\([0, 2]\\), so \\(1 - x^2\\) takes every value in \\([-1, 1]\\) — the whole domain of \\(\\cos^{-1}\\). Since \\(\\cos^{-1}\\) maps \\([-1, 1]\\) onto its principal-value branch \\([0, \\pi]\\), the RANGE of \\(f\\) is \\([0, \\pi]\\). (The endpoints are attained: \\(f(0) = \\cos^{-1} 1 = 0\\) and \\(f\\left(\\pm\\sqrt{2}\\right) = \\cos^{-1}(-1) = \\pi\\).)"
   },
   {
    "hash": "f9ad65e8e9c855cbf8343daef0b7141d28f11399a5644b505d8785a2c636cd8b",
@@ -197,7 +197,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration by Parts",
    "stem": "Find :\n\n\\(\\displaystyle\\int x^2 \\log (x^2 - 1)\\, dx\\)",
-   "solution": ""
+   "solution": "Integrate by parts, taking the logarithm as the first function (it simplifies on differentiating) and \\(x^2\\) as the second. With \\(\\int x^2\\,dx = \\frac{x^3}{3}\\) and \\(\\frac{d}{dx}\\log(x^2 - 1) = \\frac{2x}{x^2 - 1}\\), we get \\(\\int x^2 \\log(x^2 - 1)\\,dx = \\log(x^2 - 1) \\cdot \\frac{x^3}{3} - \\int \\frac{2x}{x^2 - 1} \\cdot \\frac{x^3}{3}\\,dx = \\log(x^2 - 1)\\cdot\\frac{x^3}{3} - \\frac{2}{3}\\int \\frac{x^4}{x^2 - 1}\\,dx\\). The remaining integrand is improper, so split it by adding and subtracting \\(1\\): \\(\\frac{x^4}{x^2 - 1} = \\frac{x^4 - 1 + 1}{x^2 - 1} = \\frac{(x^2 - 1)(x^2 + 1)}{x^2 - 1} + \\frac{1}{x^2 - 1} = x^2 + 1 + \\frac{1}{x^2 - 1}\\). Now \\(\\int (x^2 + 1)\\,dx = \\frac{x^3}{3} + x\\) and \\(\\int \\frac{dx}{x^2 - 1} = \\frac{1}{2}\\log\\left|\\frac{x - 1}{x + 1}\\right|\\). Putting the pieces together, the integral is \\(\\frac{x^3}{3}\\log(x^2 - 1) - \\frac{2}{3}\\left[\\frac{x^3}{3} + x + \\frac{1}{2}\\log\\left|\\frac{x - 1}{x + 1}\\right|\\right] + C\\). (The result is valid where the logarithm is defined, that is for \\(|x| > 1\\).)"
   },
   {
    "hash": "92ed63e5310033740c4e402f7854ad29953a1072157bb2675f44e9ecc247c62d",
@@ -208,7 +208,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Second Order Derivatives",
    "stem": "If \\(y = (\\log x)^2\\), prove that \\(x^2 y'' + x y' = 2\\).",
-   "solution": ""
+   "solution": "Differentiate once, by the chain rule: \\(y' = 2\\log x \\cdot \\frac{1}{x} = \\frac{2\\log x}{x}\\). Rather than differentiate this quotient directly, clear the denominator first — this is what keeps the second differentiation short: \\(x y' = 2\\log x\\). Now differentiate both sides with respect to \\(x\\), using the product rule on the left: \\(x y'' + y' = \\frac{2}{x}\\). Multiplying throughout by \\(x\\) gives \\(x^2 y'' + x y' = 2\\), which is the required result."
   },
   {
    "hash": "d239c4eeda46499eaf02873af8d26d3d6fef1ca9a9bc86ad1e221b5385d6d2c4",
@@ -219,7 +219,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
    "stem": "If \\(y = \\sin (\\tan^{-1} e^x)\\), then find \\(\\dfrac{dy}{dx}\\) at \\(x = 0\\).",
-   "solution": ""
+   "solution": "This is a chain of three functions, so differentiate from the outside in. With \\(\\frac{d}{du}\\sin u = \\cos u\\), \\(\\frac{d}{dv}\\tan^{-1} v = \\frac{1}{1 + v^2}\\) and \\(\\frac{d}{dx}e^{x} = e^{x}\\), we get \\(\\frac{dy}{dx} = \\cos\\left(\\tan^{-1} e^{x}\\right) \\cdot \\frac{1}{1 + \\left(e^{x}\\right)^2} \\cdot e^{x} = \\cos\\left(\\tan^{-1} e^{x}\\right) \\cdot \\frac{e^{x}}{1 + e^{2x}}\\). Now evaluate at \\(x = 0\\), where \\(e^{0} = 1\\). The angle becomes \\(\\tan^{-1} 1 = \\frac{\\pi}{4}\\), so the cosine factor is \\(\\cos\\frac{\\pi}{4} = \\frac{1}{\\sqrt{2}}\\), and the second factor is \\(\\frac{1}{1 + 1} = \\frac{1}{2}\\). Hence \\(\\left.\\frac{dy}{dx}\\right|_{x=0} = \\frac{1}{\\sqrt{2}} \\cdot \\frac{1}{2} = \\frac{1}{2\\sqrt{2}}\\)."
   },
   {
    "hash": "ae918f9afe7510bad58a362605c387f78329ab31263cbdd998d525e726b4b4a2",
@@ -230,7 +230,7 @@
    "chapter": "Relations and Functions",
    "subtopic": "One-One and Onto Functions",
    "stem": "Show that a function \\(f : R \\to R\\) defined as \\(f(x) = x^2 + x + 1\\) is neither one-one nor onto. Also, find all the values of x for which \\(f(x) = 3\\).",
-   "solution": ""
+   "solution": "NOT ONE-ONE: suppose \\(f(x_1) = f(x_2)\\), so \\(x_1^2 + x_1 + 1 = x_2^2 + x_2 + 1\\). Then \\(x_1^2 - x_2^2 + x_1 - x_2 = 0\\), which factorises as \\((x_1 - x_2)(x_1 + x_2 + 1) = 0\\). So either \\(x_1 = x_2\\) OR \\(x_1 + x_2 = -1\\), and the second alternative allows two DIFFERENT inputs with the same image. A concrete pair: \\(f(0) = 1\\) and \\(f(-1) = 1 - 1 + 1 = 1\\), with \\(0 \\ne -1\\). Hence \\(f\\) is not one-one. NOT ONTO: put \\(y = x^2 + x + 1\\), so \\(x^2 + x + (1 - y) = 0\\), and by the quadratic formula \\(x = \\frac{-1 \\pm \\sqrt{1 - 4(1 - y)}}{2} = \\frac{-1 \\pm \\sqrt{4y - 3}}{2}\\). A real pre-image exists only when \\(4y - 3 \\ge 0\\), that is \\(y \\ge \\frac{3}{4}\\). So the range is \\(\\left[\\frac{3}{4}, \\infty\\right)\\), which is not the whole codomain \\(\\mathbb{R}\\) — no real \\(x\\) gives \\(f(x) = 0\\), for instance. Hence \\(f\\) is not onto. FINALLY, solving \\(f(x) = 3\\): \\(x^2 + x + 1 = 3\\), so \\(x^2 + x - 2 = 0\\), that is \\((x + 2)(x - 1) = 0\\), giving \\(x = -2\\) and \\(x = 1\\). (That this equation has two roots is itself a second illustration of the failure of one-one, and note \\(-2 + 1 = -1\\), exactly the condition found above.)"
   },
   {
    "hash": "4d18082921cdd2d89710fc1c3c4c7688c1b29d288ac441c4f2a94af5e4f73317",
@@ -241,7 +241,7 @@
    "chapter": "Relations and Functions",
    "subtopic": "Equivalence Relations and Classes",
    "stem": "A relation R is defined on \\(N \\times N\\) (where N is the set of natural numbers) as \\((a, b)\\ R\\ (c, d) \\Leftrightarrow \\dfrac{a}{c} = \\dfrac{b}{d}\\). Show that R is an equivalence relation.",
-   "solution": ""
+   "solution": "All entries are natural numbers, hence non-zero, so every quotient written below is defined and may be inverted. REFLEXIVE: for any \\((a, b) \\in N \\times N\\) we have \\(\\frac{a}{a} = 1 = \\frac{b}{b}\\), so \\((a, b)\\,R\\,(a, b)\\) and \\(R\\) is reflexive. SYMMETRIC: let \\((a, b)\\,R\\,(c, d)\\), so \\(\\frac{a}{c} = \\frac{b}{d}\\). Taking reciprocals of both sides — legitimate since neither is zero — gives \\(\\frac{c}{a} = \\frac{d}{b}\\), which is precisely \\((c, d)\\,R\\,(a, b)\\). So \\(R\\) is symmetric. TRANSITIVE: let \\((a, b)\\,R\\,(c, d)\\) and \\((c, d)\\,R\\,(e, f)\\), so \\(\\frac{a}{c} = \\frac{b}{d}\\) and \\(\\frac{c}{e} = \\frac{d}{f}\\). Multiplying the two equations, \\(\\frac{a}{c} \\cdot \\frac{c}{e} = \\frac{b}{d} \\cdot \\frac{d}{f}\\), and the factors \\(c\\) and \\(d\\) cancel to leave \\(\\frac{a}{e} = \\frac{b}{f}\\), that is \\((a, b)\\,R\\,(e, f)\\). So \\(R\\) is transitive. Being reflexive, symmetric and transitive, \\(R\\) is an equivalence relation."
   },
   {
    "hash": "46c775547667cc11ba6680b5cf18bdd065161a95e5cc01adac52da88fe14bcc2",
@@ -252,7 +252,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Equation of a Line in Space",
    "stem": "The vertices of \\(\\Delta\\) ABC are A(1, 1, 0), B(1, 2, 1) and C(\\(-2\\), 2, \\(-1\\)). Find the equations of the medians through A and B. Use the equations so obtained to find the coordinates of the centroid.",
-   "solution": ""
+   "solution": "A median joins a vertex to the mid-point of the opposite side, so find those mid-points first. MEDIAN THROUGH A: the mid-point of BC is \\(D\\left(\\frac{1 + (-2)}{2}, \\frac{2 + 2}{2}, \\frac{1 + (-1)}{2}\\right) = \\left(-\\frac{1}{2}, 2, 0\\right)\\). Its direction ratios are \\(-\\frac{1}{2} - 1,\\; 2 - 1,\\; 0 - 0\\), that is \\(-\\frac{3}{2}, 1, 0\\), or on doubling \\(-3, 2, 0\\). So the median through A is \\(\\frac{x - 1}{-3} = \\frac{y - 1}{2} = \\frac{z}{0}\\). MEDIAN THROUGH B: the mid-point of AC is \\(E\\left(\\frac{1 + (-2)}{2}, \\frac{1 + 2}{2}, \\frac{0 + (-1)}{2}\\right) = \\left(-\\frac{1}{2}, \\frac{3}{2}, -\\frac{1}{2}\\right)\\), and the direction ratios are \\(-\\frac{3}{2}, -\\frac{1}{2}, -\\frac{3}{2}\\), or on doubling \\(-3, -1, -3\\). So the median through B is \\(\\frac{x - 1}{-3} = \\frac{y - 2}{-1} = \\frac{z - 1}{-3}\\). CENTROID: the medians meet at it, so intersect the two lines. A general point of the first is \\((-3\\lambda + 1,\\; 2\\lambda + 1,\\; 0)\\) and of the second is \\((-3\\mu + 1,\\; -\\mu + 2,\\; -3\\mu + 1)\\). Equating the \\(z\\)-coordinates gives \\(0 = -3\\mu + 1\\), so \\(\\mu = \\frac{1}{3}\\); equating the \\(x\\)-coordinates gives \\(\\lambda = \\mu = \\frac{1}{3}\\); and the \\(y\\)-coordinates then agree, since both give \\(\\frac{5}{3}\\). Substituting \\(\\lambda = \\frac{1}{3}\\) into the first line, the centroid is \\(\\left(0, \\frac{5}{3}, 0\\right)\\). (This matches the usual formula \\(\\left(\\frac{1 + 1 - 2}{3}, \\frac{1 + 2 + 2}{3}, \\frac{0 + 1 - 1}{3}\\right)\\).)"
   }
  ]
 }

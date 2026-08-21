@@ -32,7 +32,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "The two conditions fix every entry of the \\(2 \\times 2\\) matrix: the diagonal entries have \\(i = j\\) so \\(a_{11} = a_{22} = 0\\), and the off-diagonal entries have \\(i \\ne j\\) so \\(a_{12} = a_{21} = 1\\). Hence \\(A = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}\\). Squaring, \\(A^2 = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}\\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 \\cdot 0 + 1 \\cdot 1 & 0 \\cdot 1 + 1 \\cdot 0 \\\\ 1 \\cdot 0 + 0 \\cdot 1 & 1 \\cdot 1 + 0 \\cdot 0 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\\). So \\(A^2\\) is the identity matrix \\(\\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\\)."
   },
   {
    "hash": "6827bac388f7ff90643c5f93b490684059318d71fc59c513ae89473d664d77d4",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Expand along the first row, where the zero in the middle position kills one term: \\(\\begin{vmatrix} 6 & 0 & -1 \\\\ 2 & 1 & 4 \\\\ 1 & 1 & 3 \\end{vmatrix} = 6(1 \\times 3 - 4 \\times 1) - 0(2 \\times 3 - 4 \\times 1) + (-1)(2 \\times 1 - 1 \\times 1)\\). This is \\(6(3 - 4) - 0 + (-1)(2 - 1) = -6 - 1 = -7\\), so the value of the determinant is \\(-7\\)."
   },
   {
    "hash": "55f8b46cd658577d3ea786b1eaa39e6e3f0e0ebbad189a46e0b544727505491c",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Write the modulus piecewise: \\(f(x) = x^2\\) for \\(x \\ge 0\\) and \\(f(x) = -x^2\\) for \\(x < 0\\). Each piece is a polynomial, so \\(f\\) is certainly differentiable at every \\(x \\ne 0\\); only the join needs checking. There \\(f(0) = 0\\), and the right-hand derivative is \\(\\lim_{h \\to 0^+} \\dfrac{f(0 + h) - f(0)}{h} = \\lim_{h \\to 0^+} \\dfrac{h^2}{h} = 0\\), while the left-hand derivative is \\(\\lim_{h \\to 0^-} \\dfrac{f(0 + h) - f(0)}{h} = \\lim_{h \\to 0^-} \\dfrac{-h^2}{h} = 0\\). The two agree, so \\(f'(0) = 0\\) exists. Hence \\(f\\) is differentiable at every real number, i.e. in R, with \\(f'(x) = 2|x|\\)."
   },
   {
    "hash": "92c7a80d225e3714f57fd490f37a7c421fcaca00d8272ca09a46ab8a14482f4e",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "An antiderivative of \\(\\sin 2x\\) is \\(-\\dfrac{\\cos 2x}{2}\\), so \\(\\displaystyle\\int_{0}^{\\pi/4} \\sin 2x\\,dx = \\left[-\\dfrac{\\cos 2x}{2}\\right]_{0}^{\\pi/4} = -\\dfrac{\\cos(\\pi/2)}{2} + \\dfrac{\\cos 0}{2} = -0 + \\dfrac{1}{2} = \\dfrac{1}{2}\\). So the value is \\(\\dfrac{1}{2}\\)."
   },
   {
    "hash": "920917cafa51536b2cec025fb2d48504265ca567a4484744f40607998f0ea51a",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Equal angles with the three axes make the direction cosines of \\(\\hat{a}\\) equal, and the angles being acute makes them positive. So \\(l = m = n > 0\\) with \\(l^2 + m^2 + n^2 = 1\\), giving \\(l = m = n = \\dfrac{1}{\\sqrt{3}}\\) and \\(\\hat{a} = \\dfrac{1}{\\sqrt{3}}(\\hat{i} + \\hat{j} + \\hat{k})\\). Now \\(|\\vec{b}| = \\sqrt{5^2 + 7^2 + (-1)^2} = \\sqrt{75} = 5\\sqrt{3}\\) and \\(\\hat{a} \\cdot \\vec{b} = \\dfrac{1}{\\sqrt{3}}(5 + 7 - 1) = \\dfrac{11}{\\sqrt{3}}\\). Hence the projection of \\(\\hat{a}\\) on \\(\\vec{b}\\) is \\(\\dfrac{\\hat{a} \\cdot \\vec{b}}{|\\vec{b}|} = \\dfrac{11/\\sqrt{3}}{5\\sqrt{3}} = \\dfrac{11}{5 \\times 3} = \\dfrac{11}{15}\\)."
   },
   {
    "hash": "094f22628181b995bb9b53098287591400308b2f05d5aa11ecce4af82e15c851",
@@ -182,7 +182,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "By definition \\(P(B'/A) = \\dfrac{P(A \\cap B')}{P(A)}\\). Since \\(A\\) and \\(B\\) are independent, so are \\(A\\) and \\(B'\\), giving \\(P(A \\cap B') = P(A)\\,P(B')\\). Hence \\(P(B'/A) = \\dfrac{P(A)\\,P(B')}{P(A)} = P(B') = 1 - P(B) = 1 - \\dfrac{1}{4} = \\dfrac{3}{4}\\). Note that \\(P(A) = \\dfrac{1}{3}\\) is not needed at all: under independence, conditioning on the event A changes nothing. So the required probability is \\(\\dfrac{3}{4}\\)."
   },
   {
    "hash": "31e52f8e0091fff2d7c9882e4ef73928eefb5ae9ab339fe159fb45e6762e3e5f",
@@ -193,7 +193,7 @@
    "chapter": "Inverse Trigonometric Functions",
    "subtopic": "Domains, Ranges and Principal Value Branches",
    "stem": "Draw the graph of the principal branch of the function \\(f(x) = \\cos^{-1} x\\).",
-   "solution": ""
+   "solution": "The principal branch of \\(f(x) = \\cos^{-1} x\\) has domain \\([-1, 1]\\) and range \\([0, \\pi]\\), and its graph is the reflection of \\(y = \\cos x\\), \\(x \\in [0, \\pi]\\), in the line \\(y = x\\). To draw it, mark the three anchor points \\((-1, \\pi)\\), \\(\\left(0, \\dfrac{\\pi}{2}\\right)\\) and \\((1, 0)\\) and join them by a single smooth falling arc. The fall is strict because \\(f'(x) = -\\dfrac{1}{\\sqrt{1 - x^2}} < 0\\) on \\((-1, 1)\\), and the same expression shows the tangent becomes vertical as \\(x \\to -1^+\\) and \\(x \\to 1^-\\), so the arc meets the two end points steeply. Since \\(f''(x) = -\\dfrac{x}{(1 - x^2)^{3/2}}\\) changes sign at \\(x = 0\\), the arc is concave up on \\((-1, 0)\\) and concave down on \\((0, 1)\\), with its point of inflection at \\(\\left(0, \\dfrac{\\pi}{2}\\right)\\). Nothing is drawn outside \\(-1 \\le x \\le 1\\), and the curve never leaves the strip \\(0 \\le y \\le \\pi\\)."
   },
   {
    "hash": "c9b3aff78ff8e13031596ed96a737335cc5235adb9c35a57f34c8bedeb9eb20c",
@@ -204,7 +204,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Angle Between Two Lines",
    "stem": "Find the angle between the following two lines :\n\n\\(\\vec{r} = 2\\hat{i} - 5\\hat{j} + \\hat{k} + \\lambda(3\\hat{i} + 2\\hat{j} + 6\\hat{k})\\);\n\n\\(\\vec{r} = 7\\hat{i} - 6\\hat{k} + \\mu(\\hat{i} + 2\\hat{j} + 2\\hat{k})\\)",
-   "solution": ""
+   "solution": "The angle between two lines depends only on their direction vectors, here \\(\\vec{b_1} = 3\\hat{i} + 2\\hat{j} + 6\\hat{k}\\) and \\(\\vec{b_2} = \\hat{i} + 2\\hat{j} + 2\\hat{k}\\). If \\(\\theta\\) is the angle between the lines, then \\(\\cos\\theta = \\left|\\dfrac{\\vec{b_1} \\cdot \\vec{b_2}}{|\\vec{b_1}|\\,|\\vec{b_2}|}\\right|\\). Here \\(\\vec{b_1} \\cdot \\vec{b_2} = 3 + 4 + 12 = 19\\), \\(|\\vec{b_1}| = \\sqrt{9 + 4 + 36} = 7\\) and \\(|\\vec{b_2}| = \\sqrt{1 + 4 + 4} = 3\\). Hence \\(\\cos\\theta = \\dfrac{19}{7 \\times 3} = \\dfrac{19}{21}\\), so \\(\\theta = \\cos^{-1}\\left(\\dfrac{19}{21}\\right)\\)."
   },
   {
    "hash": "0911c0b2ec819a3d8a3a08f76cf53b656af1ca62adf04cafe37684d0bff55c4e",
@@ -215,7 +215,7 @@
    "chapter": "Determinants",
    "subtopic": "Area of a Triangle",
    "stem": "Using determinants, find the area of \\(\\Delta PQR\\) with vertices P(3, 1), Q(9, 3) and R(5, 7). Also, find the equation of line PQ using determinants.",
-   "solution": ""
+   "solution": "Area of \\(\\Delta PQR = \\dfrac{1}{2}\\left|\\begin{vmatrix} 3 & 1 & 1 \\\\ 9 & 3 & 1 \\\\ 5 & 7 & 1 \\end{vmatrix}\\right|\\). Expanding along the first row, the determinant is \\(3(3 \\times 1 - 1 \\times 7) - 1(9 \\times 1 - 1 \\times 5) + 1(9 \\times 7 - 3 \\times 5) = 3(-4) - 1(4) + 1(48) = -12 - 4 + 48 = 32\\). Hence the area is \\(\\dfrac{1}{2} \\times 32 = 16\\) square units. For line PQ, a point \\((x, y)\\) lies on it exactly when \\((x, y)\\), P(3, 1) and Q(9, 3) are collinear, i.e. \\(\\begin{vmatrix} x & y & 1 \\\\ 3 & 1 & 1 \\\\ 9 & 3 & 1 \\end{vmatrix} = 0\\). Expanding along the first row, \\(x(1 - 3) - y(3 - 9) + (9 - 9) = 0\\), that is \\(-2x + 6y = 0\\), which on dividing by \\(-2\\) becomes \\(x - 3y = 0\\). Both P and Q satisfy it, as they must."
   },
   {
    "hash": "0fc71f344a3ab9ec8dfc34182b24e9c2549341145d656747a12825e429835830",
@@ -226,7 +226,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "Evaluate : \\(\\displaystyle\\int_{-\\pi/4}^{\\pi/4} \\dfrac{\\cos 2x}{1 + \\cos 2x}\\,dx\\)",
-   "solution": ""
+   "solution": "Let \\(I = \\displaystyle\\int_{-\\pi/4}^{\\pi/4} \\dfrac{\\cos 2x}{1 + \\cos 2x}\\,dx\\). Replacing \\(x\\) by \\(-x\\) leaves the integrand unchanged, so it is even and \\(I = 2\\displaystyle\\int_{0}^{\\pi/4} \\dfrac{\\cos 2x}{1 + \\cos 2x}\\,dx\\). Now split off the constant part: \\(\\dfrac{\\cos 2x}{1 + \\cos 2x} = \\dfrac{(1 + \\cos 2x) - 1}{1 + \\cos 2x} = 1 - \\dfrac{1}{1 + \\cos 2x}\\), and since \\(1 + \\cos 2x = 2\\cos^2 x\\) this is \\(1 - \\dfrac{1}{2}\\sec^2 x\\). Hence \\(I = 2\\displaystyle\\int_{0}^{\\pi/4}\\left(1 - \\dfrac{1}{2}\\sec^2 x\\right)dx = 2\\left[x - \\dfrac{1}{2}\\tan x\\right]_{0}^{\\pi/4} = \\left[2x - \\tan x\\right]_{0}^{\\pi/4}\\). At the upper limit this is \\(\\dfrac{\\pi}{2} - 1\\) and at the lower limit it is \\(0\\), so \\(I = \\dfrac{\\pi}{2} - 1\\)."
   },
   {
    "hash": "29ae763383ac163a145bac3aaedafdcb03c6e86380da027124a076e0c4d1e79f",
@@ -237,7 +237,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration by Substitution",
    "stem": "Find : \\(\\displaystyle\\int e^{x^2}(x^5 + 2x^3)\\,dx\\)",
-   "solution": ""
+   "solution": "Let \\(I = \\displaystyle\\int e^{x^2}(x^5 + 2x^3)\\,dx\\) and put \\(x^2 = t\\), so that \\(2x\\,dx = dt\\). Pulling one factor of \\(x\\) out to meet \\(dx\\), \\((x^5 + 2x^3)\\,dx = (x^4 + 2x^2)\\,x\\,dx = (t^2 + 2t)\\dfrac{dt}{2}\\), and therefore \\(I = \\dfrac{1}{2}\\displaystyle\\int e^{t}(t^2 + 2t)\\,dt\\). The bracket is exactly of the form \\(f(t) + f'(t)\\) with \\(f(t) = t^2\\), and \\(\\displaystyle\\int e^{t}\\{f(t) + f'(t)\\}\\,dt = e^{t}f(t) + C\\). Hence \\(I = \\dfrac{1}{2}e^{t}t^2 + C = \\dfrac{1}{2}x^4 e^{x^2} + C\\). Checking by differentiation, \\(\\dfrac{d}{dx}\\left(\\dfrac{1}{2}x^4 e^{x^2}\\right) = \\dfrac{1}{2}\\left(4x^3 e^{x^2} + x^4 \\cdot 2x\\,e^{x^2}\\right) = e^{x^2}(2x^3 + x^5)\\), which is the original integrand."
   },
   {
    "hash": "38f10aacd0f35a3f214514ec6d172ebe5c71f848c28b6af04fd78c37fbb8aa56",
@@ -248,7 +248,7 @@
    "chapter": "Application of Integrals",
    "subtopic": "Area Bounded by a Curve and a Line",
    "stem": "Find the area of the minor segment of the circle \\(x^2 + y^2 = 4\\) cut off by the line \\(x = 1\\), using integration.",
-   "solution": ""
+   "solution": "The circle \\(x^2 + y^2 = 4\\) has centre at the origin and radius \\(2\\), and the line \\(x = 1\\) meets it where \\(y^2 = 3\\), i.e. at \\((1, \\sqrt{3})\\) and \\((1, -\\sqrt{3})\\). The minor segment is the smaller of the two pieces the chord cuts off, so it is the region to the RIGHT of \\(x = 1\\), bounded by the chord and the arc, running from \\(x = 1\\) to \\(x = 2\\). It is symmetric about the x-axis, so Area \\(= 2\\displaystyle\\int_{1}^{2}\\sqrt{4 - x^2}\\,dx\\). Using \\(\\displaystyle\\int\\sqrt{a^2 - x^2}\\,dx = \\dfrac{x}{2}\\sqrt{a^2 - x^2} + \\dfrac{a^2}{2}\\sin^{-1}\\dfrac{x}{a}\\) with \\(a = 2\\), Area \\(= 2\\left[\\dfrac{x}{2}\\sqrt{4 - x^2} + 2\\sin^{-1}\\dfrac{x}{2}\\right]_{1}^{2}\\). At \\(x = 2\\) the bracket is \\(0 + 2\\sin^{-1}(1) = 2 \\times \\dfrac{\\pi}{2} = \\pi\\); at \\(x = 1\\) it is \\(\\dfrac{1}{2}\\sqrt{3} + 2\\sin^{-1}\\dfrac{1}{2} = \\dfrac{\\sqrt{3}}{2} + \\dfrac{\\pi}{3}\\). Hence Area \\(= 2\\left(\\pi - \\dfrac{\\sqrt{3}}{2} - \\dfrac{\\pi}{3}\\right) = 2\\left(\\dfrac{2\\pi}{3} - \\dfrac{\\sqrt{3}}{2}\\right) = \\dfrac{4\\pi}{3} - \\sqrt{3}\\) square units, about \\(2.46\\). As a check, the chord subtends a central angle of \\(\\dfrac{2\\pi}{3}\\), and the standard formula \\(\\dfrac{1}{2}r^2(\\phi - \\sin\\phi)\\) gives the same value."
   },
   {
    "hash": "92c2b98154045d17b0034047f736ff90412b1c79b5a724566a1b674cb9a56d73",
@@ -259,7 +259,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "Evaluate : \\(\\displaystyle\\int_{0}^{\\pi} \\dfrac{x}{1 + \\sin x}\\,dx\\)",
-   "solution": ""
+   "solution": "[CBSE marking scheme: the penultimate line is printed as \\(-\\dfrac{\\pi}{2}\\left[\\tan\\left(-\\dfrac{\\pi}{4}\\right) - \\tan\\left(-\\dfrac{\\pi}{4}\\right)\\right]\\), a bracket whose two terms are identical and which therefore evaluates to \\(0\\), not to the \\(\\pi\\) printed on the very next line. The lower limit \\(x = 0\\) contributes \\(\\tan\\dfrac{\\pi}{4}\\), so the bracket should read \\(\\tan\\left(-\\dfrac{\\pi}{4}\\right) - \\tan\\dfrac{\\pi}{4} = -1 - 1 = -2\\). Only that one line is mistyped; the scheme's method and its final answer \\(\\pi\\) are correct.] Let \\(I = \\displaystyle\\int_{0}^{\\pi}\\dfrac{x}{1 + \\sin x}\\,dx\\). Apply \\(\\displaystyle\\int_{0}^{a}f(x)\\,dx = \\displaystyle\\int_{0}^{a}f(a - x)\\,dx\\) with \\(a = \\pi\\); since \\(\\sin(\\pi - x) = \\sin x\\), this gives \\(I = \\displaystyle\\int_{0}^{\\pi}\\dfrac{\\pi - x}{1 + \\sin x}\\,dx\\). Adding the two expressions for \\(I\\), the \\(x\\) terms cancel and \\(2I = \\pi\\displaystyle\\int_{0}^{\\pi}\\dfrac{dx}{1 + \\sin x}\\), so \\(I = \\dfrac{\\pi}{2}\\displaystyle\\int_{0}^{\\pi}\\dfrac{dx}{1 + \\sin x}\\). Now \\(1 + \\sin x = 1 + \\cos\\left(\\dfrac{\\pi}{2} - x\\right) = 2\\cos^2\\left(\\dfrac{\\pi}{4} - \\dfrac{x}{2}\\right)\\), hence \\(I = \\dfrac{\\pi}{4}\\displaystyle\\int_{0}^{\\pi}\\sec^2\\left(\\dfrac{\\pi}{4} - \\dfrac{x}{2}\\right)dx = \\dfrac{\\pi}{4}\\left[-2\\tan\\left(\\dfrac{\\pi}{4} - \\dfrac{x}{2}\\right)\\right]_{0}^{\\pi}\\). Evaluating, \\(I = -\\dfrac{\\pi}{2}\\left[\\tan\\left(-\\dfrac{\\pi}{4}\\right) - \\tan\\dfrac{\\pi}{4}\\right] = -\\dfrac{\\pi}{2}(-1 - 1) = \\pi\\). As an independent check, \\(t = \\tan\\dfrac{x}{2}\\) turns \\(\\displaystyle\\int_{0}^{\\pi}\\dfrac{dx}{1 + \\sin x}\\) into \\(\\displaystyle\\int_{0}^{\\infty}\\dfrac{2\\,dt}{(1 + t)^2} = 2\\), giving \\(I = \\dfrac{\\pi}{2} \\times 2 = \\pi\\)."
   }
  ]
 }

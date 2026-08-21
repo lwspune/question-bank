@@ -32,7 +32,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "A skew-symmetric matrix satisfies \\( A' = -A \\). Taking determinants of both sides and using \\( |A'| = |A| \\), for order 3 we get \\( |A| = |-A| = (-1)^3 |A| = -|A| \\), so \\( 2|A| = 0 \\), i.e. \\( |A| = 0 \\). (This is the standard fact that every skew-symmetric matrix of odd order is singular.) Hence \\( x = 0 \\), and \\( (2023)^x = (2023)^0 = 1 \\). So the value is 1, matching the choice 1."
   },
   {
    "hash": "a632842ed1ed67b47226b51b4bc25aa291cbb5cee4f86565f90e0a8a04dd0024",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "For \\( 0 \\le x \\le 2 \\), the curve \\( y = \\sqrt{4 - x^2} \\) is the part of the circle \\( x^2 + y^2 = 4 \\) lying in the first quadrant, so the integral is the area of a quarter disc of radius 2, namely \\( \\frac{1}{4}\\pi(2)^2 = \\pi \\). Formally, substitute \\( x = 2\\sin\\theta \\), \\( dx = 2\\cos\\theta\\,d\\theta \\), with \\( \\theta \\) running from 0 to \\( \\frac{\\pi}{2} \\): the integral becomes \\( \\int_{0}^{\\pi/2} 4\\cos^2\\theta\\,d\\theta = 2\\int_{0}^{\\pi/2}(1 + \\cos 2\\theta)\\,d\\theta = 2\\left[\\theta + \\frac{\\sin 2\\theta}{2}\\right]_{0}^{\\pi/2} = 2\\left(\\frac{\\pi}{2}\\right) = \\pi \\). So the value is \\( \\pi \\)."
   },
   {
    "hash": "751be464e22205de66f1aac1e3dbcdf21493e11f4d48250f4f3b32607740affe",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "The vector \\( \\overrightarrow{BA} \\) runs from B to A, so it is the position vector of A minus that of B: \\( \\overrightarrow{BA} = (1 - 3)\\hat{i} + (2 - 4)\\hat{j} + (-1 - 0)\\hat{k} = -2\\hat{i} - 2\\hat{j} - \\hat{k} \\). Its magnitude is \\( \\sqrt{(-2)^2 + (-2)^2 + (-1)^2} = \\sqrt{9} = 3 \\). Dividing each component by the magnitude gives the direction cosines \\( -\\frac{2}{3}, -\\frac{2}{3}, -\\frac{1}{3} \\). Two checks worth making: the order of the letters matters, since \\( \\overrightarrow{AB} \\) would give the same three numbers with the opposite sign, and direction cosines must satisfy \\( l^2 + m^2 + n^2 = \\frac{4}{9} + \\frac{4}{9} + \\frac{1}{9} = 1 \\), which rules out the unnormalised choices \\( -2, -2, -1 \\) and \\( 2, 2, 1 \\)."
   },
   {
    "hash": "daf9c6ca3e2a2764736442f90bdca8887b11347ee40263680647b071b589b161",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Set \\( \\frac{x+1}{2} = \\frac{y+2}{3} = \\frac{z+3}{4} = t \\), so a general point of the line is \\( (2t - 1,\\ 3t - 2,\\ 4t - 3) \\). The point P(a, b, 0) has third coordinate 0, so \\( 4t - 3 = 0 \\), giving \\( t = \\frac{3}{4} \\). Then \\( a = 2\\left(\\frac{3}{4}\\right) - 1 = \\frac{3}{2} - 1 = \\frac{1}{2} \\) and \\( b = 3\\left(\\frac{3}{4}\\right) - 2 = \\frac{9}{4} - 2 = \\frac{1}{4} \\). So \\( (a, b) = \\left(\\frac{1}{2}, \\frac{1}{4}\\right) \\)."
   },
   {
    "hash": "b00cb30527867efd8e8fbaababcc13904f8fb1099a0db1631c22537aceea7db3",
@@ -152,7 +152,7 @@
     }
    ],
    "noCorrectOption": true,
-   "solution": ""
+   "solution": "[This question is defective: none of the four printed options is the correct value, and CBSE acknowledged it. The official marking scheme carries no working for this question at all — its entry reads only \"One mark should be awarded to everyone who has attempted this question.\" The correct value is derived below.] From \\( P(\\overline{A}) = \\frac{1}{2} \\) and \\( P(\\overline{B}) = \\frac{2}{3} \\) we get \\( P(A) = 1 - \\frac{1}{2} = \\frac{1}{2} \\) and \\( P(B) = 1 - \\frac{2}{3} = \\frac{1}{3} \\). Then \\( P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = \\frac{1}{2} + \\frac{1}{3} - \\frac{1}{4} = \\frac{6 + 4 - 3}{12} = \\frac{7}{12} \\). By De Morgan's law \\( \\overline{A} \\cap \\overline{B} = \\overline{A \\cup B} \\), so \\( P(\\overline{A} \\cap \\overline{B}) = 1 - \\frac{7}{12} = \\frac{5}{12} \\). Therefore \\( P\\left(\\frac{\\overline{A}}{\\overline{B}}\\right) = \\frac{P(\\overline{A} \\cap \\overline{B})}{P(\\overline{B})} = \\frac{5/12}{2/3} = \\frac{5}{12} \\times \\frac{3}{2} = \\frac{5}{8} \\). The value \\( \\frac{5}{8} \\) is not among the choices \\( \\frac{3}{8} \\), \\( \\frac{8}{9} \\), \\( \\frac{1}{8} \\), \\( \\frac{1}{4} \\). Note that the given data is itself perfectly consistent — \\( P(A \\cap B) = \\frac{1}{4} \\) exceeds neither \\( P(A) = \\frac{1}{2} \\) nor \\( P(B) = \\frac{1}{3} \\) — so the fault lies in the list of options, not in the probabilities supplied."
   },
   {
    "hash": "20ab5b83a037954884a2d78329ea288a6787bfb0880ab55b62afeb44d4da2dfa",
@@ -182,7 +182,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Use the reversal law \\( (AB)' = B'A' \\), which turns the question into a single product. \\( AB = \\begin{bmatrix} 1 & 0 \\\\ 0 & 0 \\end{bmatrix}\\begin{bmatrix} 1 & 1 \\\\ 0 & 0 \\end{bmatrix} = \\begin{bmatrix} 1 & 1 \\\\ 0 & 0 \\end{bmatrix} \\), so \\( B'A' = (AB)' = \\begin{bmatrix} 1 & 0 \\\\ 1 & 0 \\end{bmatrix} \\). Multiplying directly gives the same thing: \\( B' = \\begin{bmatrix} 1 & 0 \\\\ 1 & 0 \\end{bmatrix} \\) and \\( A' = \\begin{bmatrix} 1 & 0 \\\\ 0 & 0 \\end{bmatrix} \\), whose product is \\( \\begin{bmatrix} 1 & 0 \\\\ 1 & 0 \\end{bmatrix} \\). So the required matrix is \\( \\begin{bmatrix} 1 & 0 \\\\ 1 & 0 \\end{bmatrix} \\)."
   },
   {
    "hash": "3d6ce068295781ff2a0c3f64117333d3cc382971cb0137ae4eb191356926c3ca",
@@ -193,7 +193,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Increasing and Decreasing Functions",
    "stem": "Consider the statement \"There exists at least one value of \\( b \\in \\mathbb{R} \\) for which \\( f(x) = \\frac{b}{x} \\), \\( b \\neq 0 \\) is strictly increasing in \\( \\mathbb{R} - \\{0\\} \\).\"\nState True or False. Justify.",
-   "solution": ""
+   "solution": "The statement is True. Here \\( f(x) = \\frac{b}{x} = b\\,x^{-1} \\), so \\( f'(x) = -\\frac{b}{x^2} \\). Since \\( x^2 > 0 \\) for every \\( x \\ne 0 \\), the sign of \\( f'(x) \\) is simply the sign of \\( -b \\), and it is the same on both sides of the origin. So take any negative b — for instance \\( b = -1 \\), giving \\( f(x) = -\\frac{1}{x} \\) and \\( f'(x) = \\frac{1}{x^2} > 0 \\). For every \\( b < 0 \\) we then have \\( f'(x) > 0 \\) throughout \\( (-\\infty, 0) \\) and throughout \\( (0, \\infty) \\), so f is strictly increasing on each of the two intervals making up \\( \\mathbb{R} - \\{0\\} \\). At least one such value of b therefore exists, which is exactly what the statement claims, so it is True. [A note on the wording, not a fault in the marking scheme: \\( \\mathbb{R} - \\{0\\} \\) is not an interval, and \"strictly increasing in \\( \\mathbb{R} - \\{0\\} \\)\" is being read in the usual textbook sense of increasing on each interval of the domain, which is the reading the official scheme uses. Under the stricter global reading, that \\( x_1 < x_2 \\) should imply \\( f(x_1) < f(x_2) \\) for every pair drawn from the whole set, no value of b works: with \\( b = -1 \\) we have \\( -1 < 1 \\) but \\( f(-1) = 1 > f(1) = -1 \\), because the two branches are separated by the vertical asymptote at \\( x = 0 \\).]"
   },
   {
    "hash": "ff5504100f5a65b3daa552e9e77c438a8537785fb3069168dab693f75cb2c3d8",
@@ -204,7 +204,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Angle Between Two Lines",
    "stem": "Find the value of p, so that lines \\( \\frac{x-1}{-2} = \\frac{y-4}{3p} = \\frac{z-3}{4} \\) and \\( \\frac{x-2}{4p} = \\frac{y-5}{2} = \\frac{1-z}{7} \\) are perpendicular to each other.",
-   "solution": ""
+   "solution": "Read the direction ratios off each line, taking care with the third fraction of the second line. The first line \\( \\frac{x-1}{-2} = \\frac{y-4}{3p} = \\frac{z-3}{4} \\) is already in standard form, with direction ratios \\( \\langle -2,\\ 3p,\\ 4 \\rangle \\). In the second line \\( \\frac{1-z}{7} = \\frac{-(z-1)}{7} = \\frac{z-1}{-7} \\), so it reads \\( \\frac{x-2}{4p} = \\frac{y-5}{2} = \\frac{z-1}{-7} \\) and its direction ratios are \\( \\langle 4p,\\ 2,\\ -7 \\rangle \\); rewriting that fraction is the step this question is really testing, since reading the coefficient as \\( +7 \\) changes the answer. Two lines are perpendicular when the dot product of their direction ratios vanishes: \\( (-2)(4p) + (3p)(2) + (4)(-7) = 0 \\), that is \\( -8p + 6p - 28 = 0 \\), so \\( -2p = 28 \\) and \\( p = -14 \\)."
   },
   {
    "hash": "347550663d6c9cb2ab3ab7a90cf4117d9dbb10a64aec9999e72840456ca62c90",
@@ -215,7 +215,7 @@
    "chapter": "Integrals",
    "subtopic": "Integrals of Some Particular Functions",
    "stem": "Find :\n\\( \\int \\frac{e^x}{\\sqrt{e^{2x} - 4e^x - 5}} \\, dx \\)",
-   "solution": ""
+   "solution": "The numerator \\( e^x \\) is exactly the derivative of \\( e^x \\), which invites the substitution \\( t = e^x \\), so that \\( dt = e^x\\,dx \\) and \\( e^{2x} = t^2 \\). The integral becomes \\( \\int \\frac{dt}{\\sqrt{t^2 - 4t - 5}} \\). Complete the square in the radicand: \\( t^2 - 4t - 5 = (t - 2)^2 - 4 - 5 = (t - 2)^2 - 3^2 \\). This is now the standard form \\( \\int \\frac{du}{\\sqrt{u^2 - a^2}} = \\log\\left|u + \\sqrt{u^2 - a^2}\\right| + C \\) with \\( u = t - 2 \\) and \\( a = 3 \\), giving \\( \\log\\left|(t - 2) + \\sqrt{t^2 - 4t - 5}\\right| + C \\). Substituting \\( t = e^x \\) back, the answer is \\( \\log\\left|e^x - 2 + \\sqrt{e^{2x} - 4e^x - 5}\\right| + C \\)."
   },
   {
    "hash": "594f0090d741f38daf550730f3719a4697c23d1e32ca0c832fb98a51999c86ce",
@@ -226,7 +226,7 @@
    "chapter": "Linear Programming",
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "Solve the following linear programming problem graphically :\nMaximize z = 3x + 9y\nsubject to the constraints\n\\( x + y \\geq 10 \\),\n\\( x + 3y \\leq 60 \\),\n\\( x \\leq y \\),\n\\( x \\geq 0 \\), \\( y \\geq 0 \\).",
-   "solution": ""
+   "solution": "Draw the boundary lines \\( x + y = 10 \\), \\( x + 3y = 60 \\) and \\( y = x \\) together with the axes, and shade the region satisfying all five constraints. It is a bounded quadrilateral with vertices A(0, 20), B(0, 10), C(5, 5) and D(15, 15), obtained as follows: the line \\( x = 0 \\) meets \\( x + y = 10 \\) at (0, 10) and \\( x + 3y = 60 \\) at (0, 20); \\( y = x \\) meets \\( x + y = 10 \\) at \\( 2x = 10 \\), i.e. (5, 5); and \\( y = x \\) meets \\( x + 3y = 60 \\) at \\( 4x = 60 \\), i.e. (15, 15). Now evaluate \\( z = 3x + 9y \\) at each corner: at A(0, 20), \\( z = 0 + 180 = 180 \\); at B(0, 10), \\( z = 0 + 90 = 90 \\); at C(5, 5), \\( z = 15 + 45 = 60 \\); at D(15, 15), \\( z = 45 + 135 = 180 \\). The largest of these is 180, so the maximum value of z is 180. Because the maximum is attained at two adjacent corners, it is attained at every point of the segment joining them, and the reason is visible in the objective function itself: along AD the constraint \\( x + 3y = 60 \\) holds, and \\( z = 3x + 9y = 3(x + 3y) = 3(60) = 180 \\) identically there. So the maximum value is \\( z = 180 \\), occurring at every point of the line segment AD."
   },
   {
    "hash": "ef034ae839e601dcd3d88c58a1d69d0dc445eb0a34fab56cfc6103c78b72dae9",
@@ -237,7 +237,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "Evaluate :\n\\( \\int_{-\\pi/2}^{\\pi/2} \\frac{\\sin^{100} x}{\\sin^{100} x + \\cos^{100} x} \\, dx \\)",
-   "solution": ""
+   "solution": "Write \\( I = \\int_{-\\pi/2}^{\\pi/2} \\frac{\\sin^{100} x}{\\sin^{100} x + \\cos^{100} x}\\,dx \\). Replacing x by \\( -x \\) leaves both \\( \\sin^{100} x \\) and \\( \\cos^{100} x \\) unchanged, because the exponent is even, so the integrand is an even function and the limits can be folded: \\( I = 2\\int_{0}^{\\pi/2} \\frac{\\sin^{100} x}{\\sin^{100} x + \\cos^{100} x}\\,dx \\). Now apply the property \\( \\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a - x)\\,dx \\) with \\( a = \\frac{\\pi}{2} \\), which interchanges sine and cosine: \\( I = 2\\int_{0}^{\\pi/2} \\frac{\\cos^{100} x}{\\cos^{100} x + \\sin^{100} x}\\,dx \\). Adding these two expressions for the same I, the numerators combine to the common denominator: \\( 2I = 2\\int_{0}^{\\pi/2} \\frac{\\sin^{100} x + \\cos^{100} x}{\\sin^{100} x + \\cos^{100} x}\\,dx = 2\\int_{0}^{\\pi/2} dx = 2\\left[x\\right]_{0}^{\\pi/2} = \\pi \\). Hence \\( I = \\frac{\\pi}{2} \\). Notice the exponent 100 never has to be handled — only the fact that it is even, so the same value would follow for any even power."
   },
   {
    "hash": "f313a76cfeacc33906833dd26054d7b32c35aabe4fc2482b1e4e6b4a644f4f86",
@@ -248,7 +248,7 @@
    "chapter": "Relations and Functions",
    "subtopic": "One-One and Onto Functions",
    "stem": "Prove that a function f : \\( [0, \\infty) \\to [-5, \\infty) \\) defined as \\( f(x) = 4x^2 + 4x - 5 \\) is both one-one and onto.",
-   "solution": ""
+   "solution": "One-one: let \\( x_1, x_2 \\in [0, \\infty) \\) with \\( f(x_1) = f(x_2) \\). Then \\( 4x_1^2 + 4x_1 - 5 = 4x_2^2 + 4x_2 - 5 \\), so \\( 4(x_1^2 - x_2^2) + 4(x_1 - x_2) = 0 \\). Dividing by 4 and factorising, \\( (x_1 + x_2)(x_1 - x_2) + (x_1 - x_2) = 0 \\), that is \\( (x_1 - x_2)\\left[(x_1 + x_2) + 1\\right] = 0 \\). The second factor cannot vanish: since \\( x_1 \\ge 0 \\) and \\( x_2 \\ge 0 \\) we have \\( x_1 + x_2 + 1 \\ge 1 > 0 \\), so the possibility \\( x_1 + x_2 = -1 \\) is rejected. Hence \\( x_1 = x_2 \\), and f is one-one. The restriction of the domain to \\( [0, \\infty) \\) is what makes this work — on the whole of \\( \\mathbb{R} \\) this parabola is not one-one, since its vertex sits at \\( x = -\\frac{1}{2} \\). Onto: take any \\( y \\in [-5, \\infty) \\) and try to solve \\( f(x) = y \\), i.e. \\( 4x^2 + 4x - 5 - y = 0 \\). By the quadratic formula, \\( x = \\frac{-4 \\pm \\sqrt{16 + 16(5 + y)}}{8} = \\frac{-4 \\pm 4\\sqrt{6 + y}}{8} = \\frac{-1 \\pm \\sqrt{6 + y}}{2} \\). Since \\( y \\ge -5 \\) we have \\( 6 + y \\ge 1 \\), so \\( \\sqrt{6 + y} \\) is real and at least 1. Taking the positive sign gives \\( x = \\frac{-1 + \\sqrt{6 + y}}{2} \\ge \\frac{-1 + 1}{2} = 0 \\), so this x lies in the domain \\( [0, \\infty) \\) and satisfies \\( f(x) = y \\). (The negative sign would give \\( x \\le -1 \\), outside the domain, so it is discarded.) Every element of the codomain thus has a pre-image, so the range equals the codomain \\( [-5, \\infty) \\) and f is onto. Being both one-one and onto, f is a bijection."
   }
  ]
 }

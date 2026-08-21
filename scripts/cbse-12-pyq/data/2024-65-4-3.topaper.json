@@ -32,7 +32,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "First square the matrix: \\(A^2 = \\begin{bmatrix} 3 & 1 \\\\ -1 & 2 \\end{bmatrix}\\begin{bmatrix} 3 & 1 \\\\ -1 & 2 \\end{bmatrix} = \\begin{bmatrix} 8 & 5 \\\\ -5 & 3 \\end{bmatrix}\\). Then \\(A^2 + 7I = \\begin{bmatrix} 15 & 5 \\\\ -5 & 10 \\end{bmatrix}\\), while \\(kA = \\begin{bmatrix} 3k & k \\\\ -k & 2k \\end{bmatrix}\\). Comparing entries gives \\(3k = 15\\), \\(k = 5\\), \\(-k = -5\\) and \\(2k = 10\\), all four agreeing on \\(k = 5\\)."
   },
   {
    "hash": "a1ac726fc71e904f7c25ad85b30d15a13d9679f9f492b8865fdb99fad161caa4",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Write \\(M = \\begin{bmatrix} -2 & 0 & 1 \\\\ 9 & 2 & -3 \\\\ 6 & 1 & \\lambda \\end{bmatrix}\\), so that \\(B = \\dfrac{1}{3}M\\), and multiply out \\(AM\\) row by row. For example the leading entry is \\(1(-2) + (-1)(9) + 2(6) = 1\\), and the bottom-right entry is \\(3(1) + (-2)(-3) + 4\\lambda = 9 + 4\\lambda\\). Altogether \\(AM = \\begin{bmatrix} 1 & 0 & 4 + 2\\lambda \\\\ 0 & 1 & -6 - 3\\lambda \\\\ 0 & 0 & 9 + 4\\lambda \\end{bmatrix}\\). Requiring \\(AM = I\\) gives \\(4 + 2\\lambda = 0\\), \\(-6 - 3\\lambda = 0\\) and \\(9 + 4\\lambda = 1\\), and all three agree on \\(\\lambda = -2\\); with that value \\(M\\) is precisely \\(A^{-1}\\). So the required value is \\(-2\\).\n[Note on the question as printed: it is inconsistent. Since \\(B = \\dfrac{1}{3}M\\), we get \\(AB = \\dfrac{1}{3}AM\\), whose leading entry is \\(\\dfrac{1}{3}\\) and never \\(1\\) — so \\(AB = I\\) cannot hold for ANY \\(\\lambda\\), and the factor \\(\\dfrac{1}{3}\\) must be a misprint. A candidate who kept the factor and matched only the bottom-right entry would solve \\(\\dfrac{1}{3}(9 + 4\\lambda) = 1\\) and reach \\(-\\dfrac{3}{2}\\), which is one of the other choices; CBSE's marking scheme accordingly accepts either \\(-2\\) or \\(-\\dfrac{3}{2}\\). The key stored here is \\(-2\\), the value that genuinely makes \\(M = A^{-1}\\).]"
   },
   {
    "hash": "cdb9b33d19f0f7f8735d02f244b78d0bdb0b9f1bb168452c361e2cad70cba07c",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Put \\(u = x^2\\) and \\(v = x^3\\), and use \\(\\dfrac{du}{dv} = \\dfrac{du/dx}{dv/dx}\\). Here \\(\\dfrac{du}{dx} = 2x\\) and \\(\\dfrac{dv}{dx} = 3x^2\\), so \\(\\dfrac{du}{dv} = \\dfrac{2x}{3x^2} = \\dfrac{2}{3x}\\) (for \\(x \\neq 0\\)). The derivative of \\(x^2\\) with respect to \\(x^3\\) is therefore \\(\\dfrac{2}{3x}\\)."
   },
   {
    "hash": "c39af6165b1cbc9bdebc06f19b8902ebde5884999a6cc8b0e4d10ab98cad9c0a",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "A modulus function is continuous everywhere, and a sum of continuous functions is continuous, so \\(f\\) is continuous on all of \\(R\\) — in particular at \\(x = 0\\) and \\(x = 2\\). That rules out the two choices claiming a break. Differentiability is another matter: \\(|x|\\) has a corner at \\(x = 0\\) and \\(|x - 2|\\) has a corner at \\(x = 2\\). Writing \\(f\\) piecewise, \\(f(x) = 2 - 2x\\) for \\(x < 0\\), \\(f(x) = 2\\) for \\(0 \\le x \\le 2\\) and \\(f(x) = 2x - 2\\) for \\(x > 2\\). At \\(x = 0\\) the left-hand derivative is \\(-2\\) and the right-hand derivative is \\(0\\); at \\(x = 2\\) they are \\(0\\) and \\(2\\). The one-sided derivatives differ at both points, so \\(f\\) fails to be differentiable at each of them. Hence \\(f\\) is continuous, but not differentiable at \\(x = 0\\) and \\(x = 2\\)."
   },
   {
    "hash": "f197b24a977609f0e88946b1d3db207bd2ac85951285c5d0c5258b0ea07813fb",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Substitute \\(u = \\dfrac{\\theta}{3}\\), so \\(d\\theta = 3\\, du\\) and the limits \\(\\theta = 0, \\pi\\) become \\(u = 0, \\dfrac{\\pi}{3}\\). Then the integral is \\(3\\int\\limits_{0}^{\\pi/3} \\tan^2 u\\, du\\). Using \\(\\tan^2 u = \\sec^2 u - 1\\), this is \\(3\\int\\limits_{0}^{\\pi/3}(\\sec^2 u - 1)\\, du = 3\\left[\\tan u - u\\right]_{0}^{\\pi/3} = 3\\left(\\tan\\dfrac{\\pi}{3} - \\dfrac{\\pi}{3}\\right) = 3\\left(\\sqrt{3} - \\dfrac{\\pi}{3}\\right) = 3\\sqrt{3} - \\pi\\). (Note the value must be positive, since \\(\\tan^2\\) is non-negative, and \\(3\\sqrt{3} - \\pi \\approx 2.06\\) indeed is.)"
   },
   {
    "hash": "a32838f76dec479ff6b518e45c7ddf6f0e30d88f83b9f0bef9401759739ed4c7",
@@ -182,7 +182,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "The equation is already in the standard linear form \\(\\dfrac{dy}{dx} + Py = Q\\), with \\(P = \\dfrac{2}{x}\\). The integrating factor is \\(e^{\\int P\\, dx} = e^{\\int \\frac{2}{x}\\, dx} = e^{2\\log|x|} = e^{\\log x^2} = x^2\\). So the integrating factor is \\(x^2\\). (The choice \\(e^{\\log(2x)}\\) simplifies to \\(2x\\), which is not it, and \\(\\dfrac{2}{x}\\) is \\(P\\) itself rather than the integrating factor.)"
   },
   {
    "hash": "e722f3cde28ae84bc44a8e719ba5c03c765f903afc9e10abef361e07c45b00db",
@@ -212,7 +212,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "The line passes through the point whose position vector is \\(\\hat{i} - \\hat{j}\\), that is \\((1, -1, 0)\\), and being parallel to \\(\\vec{r} = \\hat{i} + \\hat{k} + \\mu(2\\hat{i} - \\hat{j})\\) it has the same direction vector \\(2\\hat{i} - \\hat{j}\\), i.e. direction ratios \\(\\langle 2, -1, 0 \\rangle\\). The Cartesian form of a line through \\((x_1, y_1, z_1)\\) with direction ratios \\(\\langle a, b, c \\rangle\\) is \\(\\dfrac{x - x_1}{a} = \\dfrac{y - y_1}{b} = \\dfrac{z - z_1}{c}\\), so here it is \\(\\dfrac{x - 1}{2} = \\dfrac{y + 1}{-1} = \\dfrac{z}{0}\\). (The zero denominator is the usual symbolic convention recording that \\(z\\) stays \\(0\\) along the line.)"
   },
   {
    "hash": "920ab427a51deb5c3b1dac1281c4c5bbe6eb705573892623848bcba27925600d",

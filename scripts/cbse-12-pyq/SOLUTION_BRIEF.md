@@ -159,10 +159,23 @@ fired on this corpus and both were correct maths. Avoid them:
    the minimum.)"** Same for "why log(-5) in option (C) is meaningless" →
    "why the choice log(-5) is meaningless".
 
+4. **"Hence &lt;letter&gt;" WHERE THE LETTER NAMES A MATRIX, point or set.** The
+   extractor's first pattern is `Hence[,\s]*\(?([A-Da-d])\)?`, meant for "Hence
+   (C)" — but maths writes **"Hence B is of order 3 × 4"** about a matrix called
+   B, and the probe reads that as concluding option B. A scan of all 494 solved
+   MCQs found three, one live and two latent (agreeing with their key only by
+   coincidence, and one reorder away from going red). Write **"So the order of B
+   is 3 × 4"** — any connective but "Hence" is safe.
+
 This is not cosmetic. A false SOLN≠KEY costs a human the work of re-deriving a
 question that was never wrong, and — worse — it is indistinguishable from the
 real thing, so a corpus full of them trains the reader to skim past the genuine
 flag when it comes.
+
+**The general rule behind all four: a solution must never put a bare capital
+A–D where a reader — or a probe — could take it for an option label**, unless it
+IS the option you are concluding. Name matrices in prose ("the matrix B"),
+distractors by value, and Assertion-Reason statements by word.
 
 ---
 
