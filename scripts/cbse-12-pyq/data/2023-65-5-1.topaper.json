@@ -1,0 +1,964 @@
+{
+ "paper": "65/5/1",
+ "year": 2023,
+ "paperId": "2023-65-5-1",
+ "markingScheme": "out/2023-65-5-1/ms/p00.png … p23.png",
+ "rows": [
+  {
+   "hash": "ec906d2b920f48d91eaaba961ad972884a2fa68665831c01d1c4192d3d3b1df3",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Relations and Functions",
+   "subtopic": "Types of Relations",
+   "stem": "Let A = {3, 5}. Then number of reflexive relations on A is",
+   "options": [
+    {
+     "label": "A",
+     "text": "2"
+    },
+    {
+     "label": "B",
+     "text": "4"
+    },
+    {
+     "label": "C",
+     "text": "0"
+    },
+    {
+     "label": "D",
+     "text": "8"
+    }
+   ],
+   "answer": "B",
+   "solution": "A relation on A is reflexive exactly when it contains both (3, 3) and (5, 5). The other two ordered pairs, (3, 5) and (5, 3), are each free to be present or absent, giving \\(2^2 = 4\\) choices. In general a set with \\(n\\) elements admits \\(2^{n^2 - n}\\) reflexive relations, and here \\(2^{4-2} = 4\\), which is option 4."
+  },
+  {
+   "hash": "4bc1f1f5b459a2e63f02a643a605416e767a35ead8898c7b08c037b75fc3c290",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Evaluating Inverse Trigonometric Expressions",
+   "stem": "\\(\\sin\\left[\\dfrac{\\pi}{3} + \\sin^{-1}\\left(\\dfrac{1}{2}\\right)\\right]\\) is equal to",
+   "options": [
+    {
+     "label": "A",
+     "text": "1"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{1}{2}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{1}{3}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{1}{4}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Since \\(\\sin^{-1}\\left(\\dfrac{1}{2}\\right) = \\dfrac{\\pi}{6}\\) (the principal value), the expression becomes \\(\\sin\\left(\\dfrac{\\pi}{3} + \\dfrac{\\pi}{6}\\right) = \\sin\\dfrac{\\pi}{2} = 1\\), which is option 1."
+  },
+  {
+   "hash": "bdcaf31fee4c327e2977d6973c6a44987a914a4c71a2e9538744bdafdead593e",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Adjoint and Inverse of a Matrix",
+   "stem": "If for a square matrix A, \\(A^2 - A + I = O\\), then \\(A^{-1}\\) equals",
+   "options": [
+    {
+     "label": "A",
+     "text": "A"
+    },
+    {
+     "label": "B",
+     "text": "\\(A + I\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(I - A\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(A - I\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Rearranging \\(A^2 - A + I = O\\) gives \\(I = A - A^2 = A(I - A)\\). This exhibits a matrix whose product with \\(A\\) is the identity, so \\(A\\) is invertible; multiplying \\(A(I - A) = I\\) on the left by \\(A^{-1}\\) gives \\(I - A = A^{-1}\\). Hence \\(A^{-1}\\) is option \\(I - A\\)."
+  },
+  {
+   "hash": "3cf429fcaf18ce034c12d7a85a8089d8b6c70d88a6253eed8892e08577ee53f7",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "If \\(A = \\begin{bmatrix} 1 & 0 \\\\ 2 & 1 \\end{bmatrix}\\), \\(B = \\begin{bmatrix} x & 0 \\\\ 1 & 1 \\end{bmatrix}\\) and \\(A = B^2\\), then \\(x\\) equals",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\pm 1\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-1\\)"
+    },
+    {
+     "label": "C",
+     "text": "1"
+    },
+    {
+     "label": "D",
+     "text": "2"
+    }
+   ],
+   "answer": "C",
+   "solution": "Squaring B, \\(B^2 = \\begin{bmatrix} x & 0 \\\\ 1 & 1 \\end{bmatrix}\\begin{bmatrix} x & 0 \\\\ 1 & 1 \\end{bmatrix} = \\begin{bmatrix} x^2 & 0 \\\\ x+1 & 1 \\end{bmatrix}\\). Equating this with \\(A = \\begin{bmatrix} 1 & 0 \\\\ 2 & 1 \\end{bmatrix}\\) gives two conditions at once: \\(x^2 = 1\\) and \\(x + 1 = 2\\). The first on its own allows \\(x = \\pm 1\\), but the second forces \\(x = 1\\), and indeed \\(x = -1\\) makes \\(B^2\\) the identity matrix rather than A. So the value is option 1."
+  },
+  {
+   "hash": "7032ce26c03e441fb9c250b7efd744f1842e9e2f12c27b903d3056b8c32dca16",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Determinant and its Properties",
+   "stem": "If \\(\\begin{vmatrix} \\alpha & 3 & 4 \\\\ 1 & 2 & 1 \\\\ 1 & 4 & 1 \\end{vmatrix} = 0\\), then the value of \\(\\alpha\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "1"
+    },
+    {
+     "label": "B",
+     "text": "2"
+    },
+    {
+     "label": "C",
+     "text": "3"
+    },
+    {
+     "label": "D",
+     "text": "4"
+    }
+   ],
+   "answer": "D",
+   "solution": "Expand along the first row: \\(\\alpha(2 \\times 1 - 1 \\times 4) - 3(1 \\times 1 - 1 \\times 1) + 4(1 \\times 4 - 2 \\times 1) = -2\\alpha - 0 + 8\\). Setting the determinant to zero gives \\(2\\alpha = 8\\), so \\(\\alpha = 4\\), which is option 4. (Substituting \\(\\alpha = 4\\) back does give a determinant of 0.)"
+  },
+  {
+   "hash": "193b0295a8b503c0137beeef392a673b75a8d49229aab90b9738047bd4bd5e7d",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Logarithmic Differentiation",
+   "stem": "The derivative of \\(x^{2x}\\) w.r.t. \\(x\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(x^{2x-1}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(2x^{2x}\\log x\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(2x^{2x}(1 + \\log x)\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(2x^{2x}(1 - \\log x)\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "The base and the exponent both involve \\(x\\), so use logarithmic differentiation. Put \\(y = x^{2x}\\); then \\(\\log y = 2x\\log x\\). Differentiating both sides with respect to \\(x\\), \\(\\dfrac{1}{y}\\dfrac{dy}{dx} = 2\\log x + 2x \\times \\dfrac{1}{x} = 2(1 + \\log x)\\). Hence \\(\\dfrac{dy}{dx} = 2x^{2x}(1 + \\log x)\\), which is option \\(2x^{2x}(1 + \\log x)\\)."
+  },
+  {
+   "hash": "8cefdea3080ab8e18b85f00cc6a21630940c30b366b4181dcda9304185c1b8ad",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Continuity",
+   "stem": "The function \\(f(x) = [x]\\), where \\([x]\\) denotes the greatest integer less than or equal to \\(x\\), is continuous at",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(x = 1\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(x = 1.5\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(x = -2\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(x = 4\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "The greatest-integer function is constant on each interval between consecutive integers and jumps by 1 at every integer, so it is discontinuous exactly at the integers and continuous everywhere else. Of the four values offered, \\(1\\), \\(-2\\) and \\(4\\) are integers, so \\(f\\) fails to be continuous there. Only \\(1.5\\) is not an integer, so \\(f\\) is continuous at \\(x = 1.5\\)."
+  },
+  {
+   "hash": "683aa095c6157b6c1f9e0e33e3bca016c797238772830511e69ceaa70af1b836",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Second Order Derivatives",
+   "stem": "If \\(x = A\\cos 4t + B\\sin 4t\\), then \\(\\dfrac{d^2x}{dt^2}\\) is equal to",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(x\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-x\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(16x\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-16x\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Differentiating once, \\(\\dfrac{dx}{dt} = -4A\\sin 4t + 4B\\cos 4t\\). Differentiating again, \\(\\dfrac{d^2x}{dt^2} = -16A\\cos 4t - 16B\\sin 4t = -16(A\\cos 4t + B\\sin 4t) = -16x\\), which is option \\(-16x\\)."
+  },
+  {
+   "hash": "149c79c65789e22cd2217c7e91a54aed0101a65adf3327207fa6b13662800748",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Increasing and Decreasing Functions",
+   "stem": "The interval in which the function \\(f(x) = 2x^3 + 9x^2 + 12x - 1\\) is decreasing, is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\((-1, \\infty)\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\((-2, -1)\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\((-\\infty, -2)\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\([-1, 1]\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "\\(f'(x) = 6x^2 + 18x + 12 = 6(x^2 + 3x + 2) = 6(x+1)(x+2)\\). A product of two linear factors is negative only strictly between its roots, so \\(f'(x) < 0\\) exactly for \\(-2 < x < -1\\). Hence \\(f\\) is decreasing on \\((-2, -1)\\), which is that option; on \\((-\\infty, -2)\\) and \\((-1, \\infty)\\) the derivative is positive and \\(f\\) is increasing."
+  },
+  {
+   "hash": "0d72ae09a13c06b55bcea397db0efb0c06b01fc53f4e6ab11a27a2ef10eb1888",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Integration using Trigonometric Identities",
+   "stem": "\\(\\displaystyle\\int \\dfrac{\\sec x}{\\sec x - \\tan x}\\,dx\\) equals",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\sec x - \\tan x + c\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\sec x + \\tan x + c\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\tan x - \\sec x + c\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-(\\sec x + \\tan x) + c\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Rationalise by multiplying numerator and denominator by \\(\\sec x + \\tan x\\). The denominator becomes \\(\\sec^2 x - \\tan^2 x = 1\\), so the integral reduces to \\(\\displaystyle\\int \\sec x(\\sec x + \\tan x)\\,dx = \\displaystyle\\int (\\sec^2 x + \\sec x \\tan x)\\,dx = \\tan x + \\sec x + c\\). That is option \\(\\sec x + \\tan x + c\\)."
+  },
+  {
+   "hash": "20b4987e0dcdbde4dcb31c6feb3acff86e4bec860a62076ffb1a5934ad48dae8",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals and the Fundamental Theorem",
+   "stem": "\\(\\displaystyle\\int_{-1}^{1} \\dfrac{|x - 2|}{x - 2}\\,dx\\), \\(x \\ne 2\\) is equal to",
+   "options": [
+    {
+     "label": "A",
+     "text": "1"
+    },
+    {
+     "label": "B",
+     "text": "\\(-1\\)"
+    },
+    {
+     "label": "C",
+     "text": "2"
+    },
+    {
+     "label": "D",
+     "text": "\\(-2\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "The whole interval of integration lies to the left of 2, so for every \\(x\\) in \\([-1, 1]\\) we have \\(x - 2 < 0\\) and therefore \\(|x - 2| = -(x - 2)\\). The integrand is thus the constant \\(-1\\) throughout, and \\(\\displaystyle\\int_{-1}^{1}(-1)\\,dx = -1 \\times \\left(1 - (-1)\\right) = -2\\), which is option \\(-2\\)."
+  },
+  {
+   "hash": "42b952b6a6d1a7b38567c6eaeb152f02c957e4f9c53187f927b0fdd1c125c957",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Order and Degree of a Differential Equation",
+   "stem": "The sum of the order and the degree of the differential equation \\(\\dfrac{d}{dx}\\left(\\left(\\dfrac{dy}{dx}\\right)^3\\right)\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "2"
+    },
+    {
+     "label": "B",
+     "text": "3"
+    },
+    {
+     "label": "C",
+     "text": "5"
+    },
+    {
+     "label": "D",
+     "text": "0"
+    }
+   ],
+   "solution": "[CBSE marking scheme: this question has no correct option among the four. CBSE acknowledges the defect but does not spell out its nature — the answer row for this paper names no choice at all, reading only \"Due to error in the question, 1 mark should be awarded to each student who attempted the question.\" The defect is that what is printed, \\(\\dfrac{d}{dx}\\left(\\left(\\dfrac{dy}{dx}\\right)^3\\right)\\), carries no equals sign — it is an expression, not a differential equation — and order and degree are defined only for an equation. So as printed the quantity asked for does not exist, and none of 2, 3, 5, 0 can be right. Both the English and the Hindi versions of the paper were checked and neither prints an equals sign.] Read as it was evidently meant, that is \\(\\dfrac{d}{dx}\\left(\\left(\\dfrac{dy}{dx}\\right)^3\\right) = 0\\), the chain rule gives \\(3\\left(\\dfrac{dy}{dx}\\right)^2 \\dfrac{d^2y}{dx^2} = 0\\). The highest derivative present is \\(\\dfrac{d^2y}{dx^2}\\), so the order is 2; the equation is a polynomial in the derivatives and that highest derivative occurs to the first power, so the degree is 1. Their sum is \\(2 + 1 = 3\\), the nearest printed option — but this value rests on repairing the question, not on what it actually says, so no key is recorded."
+  },
+  {
+   "hash": "0cddc00f34b8a6e688539862b790ce289bd1dcf19b4a6c7243084447d241a60f",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Types of Vectors",
+   "stem": "Two vectors \\(\\vec{a} = a_1\\hat{i} + a_2\\hat{j} + a_3\\hat{k}\\) and \\(\\vec{b} = b_1\\hat{i} + b_2\\hat{j} + b_3\\hat{k}\\) are collinear if",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(a_1b_1 + a_2b_2 + a_3b_3 = 0\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{a_1}{b_1} = \\dfrac{a_2}{b_2} = \\dfrac{a_3}{b_3}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(a_1 = b_1,\\ a_2 = b_2,\\ a_3 = b_3\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(a_1 + a_2 + a_3 = b_1 + b_2 + b_3\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "Two vectors are collinear precisely when one is a scalar multiple of the other, say \\(\\vec{a} = \\lambda\\vec{b}\\). Comparing components gives \\(a_1 = \\lambda b_1\\), \\(a_2 = \\lambda b_2\\), \\(a_3 = \\lambda b_3\\), so the three ratios are all equal to the same \\(\\lambda\\): \\(\\dfrac{a_1}{b_1} = \\dfrac{a_2}{b_2} = \\dfrac{a_3}{b_3}\\). That is the option with the equal ratios. Note that \\(a_1b_1 + a_2b_2 + a_3b_3 = 0\\) is the condition for the vectors to be perpendicular, not collinear, and equal components would make the vectors identical, which is far stronger than collinear."
+  },
+  {
+   "hash": "5408659c75ae4f2aacd34a93277c751371b1b77da87e295c39b36aab2d0eb354",
+   "ref": "Q14",
+   "questionNumber": "14",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Components and Direction Cosines",
+   "stem": "The magnitude of the vector \\(6\\hat{i} - 2\\hat{j} + 3\\hat{k}\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "1"
+    },
+    {
+     "label": "B",
+     "text": "5"
+    },
+    {
+     "label": "C",
+     "text": "7"
+    },
+    {
+     "label": "D",
+     "text": "12"
+    }
+   ],
+   "answer": "C",
+   "solution": "The magnitude is the square root of the sum of the squares of the components: \\(\\sqrt{6^2 + (-2)^2 + 3^2} = \\sqrt{36 + 4 + 9} = \\sqrt{49} = 7\\), which is option 7."
+  },
+  {
+   "hash": "beda30acdc46d8526f7ae561d844b8112c38dad8cc198c6747f39d2f93f1426c",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "If a line makes angles of \\(90^{\\circ}\\), \\(135^{\\circ}\\) and \\(45^{\\circ}\\) with the \\(x\\), y and z axes respectively, then its direction cosines are",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0, -\\dfrac{1}{\\sqrt{2}}, \\dfrac{1}{\\sqrt{2}}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-\\dfrac{1}{\\sqrt{2}}, 0, \\dfrac{1}{\\sqrt{2}}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{1}{\\sqrt{2}}, 0, -\\dfrac{1}{\\sqrt{2}}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(0, \\dfrac{1}{\\sqrt{2}}, \\dfrac{1}{\\sqrt{2}}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "The direction cosines of a line are simply the cosines of the angles it makes with the three axes. Here they are \\(\\cos 90^{\\circ} = 0\\), \\(\\cos 135^{\\circ} = -\\dfrac{1}{\\sqrt{2}}\\) and \\(\\cos 45^{\\circ} = \\dfrac{1}{\\sqrt{2}}\\), so the direction cosines are \\(0,\\ -\\dfrac{1}{\\sqrt{2}},\\ \\dfrac{1}{\\sqrt{2}}\\). As a check they satisfy \\(l^2 + m^2 + n^2 = 0 + \\dfrac{1}{2} + \\dfrac{1}{2} = 1\\). The signs matter: the angle with the y-axis is obtuse, so the middle cosine must be the negative one."
+  },
+  {
+   "hash": "cfb910b23d97d4dcaea413b9034881c206e72d27bc15c2fbf03af7c8558d8460",
+   "ref": "Q16",
+   "questionNumber": "16",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Angle Between Two Lines",
+   "stem": "The angle between the lines \\(2x = 3y = -z\\) and \\(6x = -y = -4z\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0^{\\circ}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(30^{\\circ}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(45^{\\circ}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(90^{\\circ}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Each line is given in a compressed form, so first recover its direction ratios. Setting \\(2x = 3y = -z = t\\) gives \\(x = \\dfrac{t}{2}\\), \\(y = \\dfrac{t}{3}\\), \\(z = -t\\), so the direction ratios are \\(\\dfrac{1}{2},\\ \\dfrac{1}{3},\\ -1\\), or \\(3, 2, -6\\) after multiplying by 6. Similarly \\(6x = -y = -4z = s\\) gives \\(x = \\dfrac{s}{6}\\), \\(y = -s\\), \\(z = -\\dfrac{s}{4}\\), with direction ratios \\(\\dfrac{1}{6},\\ -1,\\ -\\dfrac{1}{4}\\), or \\(2, -12, -3\\) after multiplying by 12. Their dot product is \\(3(2) + 2(-12) + (-6)(-3) = 6 - 24 + 18 = 0\\), so the direction vectors are perpendicular and the angle between the lines is \\(90^{\\circ}\\)."
+  },
+  {
+   "hash": "60fcd3b4e4de14b23f09bebd42d8c81cd2462b171d49ed7bb4010014615870be",
+   "ref": "Q17",
+   "questionNumber": "17",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "If for any two events A and B, \\(P(A) = \\dfrac{4}{5}\\) and \\(P(A \\cap B) = \\dfrac{7}{10}\\), then P(B/A) is equal to",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{1}{10}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{1}{8}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{7}{8}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{17}{20}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "By the definition of conditional probability, \\(P(B/A) = \\dfrac{P(A \\cap B)}{P(A)} = \\dfrac{7/10}{4/5} = \\dfrac{7}{10} \\times \\dfrac{5}{4} = \\dfrac{35}{40} = \\dfrac{7}{8}\\), which is option \\(\\dfrac{7}{8}\\)."
+  },
+  {
+   "hash": "2e8013efbb43beb6e0b8cf6aa347b31457d71992a98afc70b59e585975071481",
+   "ref": "Q18",
+   "questionNumber": "18",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Independent Events",
+   "stem": "Five fair coins are tossed simultaneously. The probability of the events that atleast one head comes up is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{27}{32}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{5}{32}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{31}{32}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{1}{32}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "It is far quicker to work with the complement. \"At least one head\" fails only in the single outcome where all five coins show tails, and since the tosses are independent that has probability \\(\\left(\\dfrac{1}{2}\\right)^5 = \\dfrac{1}{32}\\). Hence \\(P(\\text{at least one head}) = 1 - \\dfrac{1}{32} = \\dfrac{31}{32}\\), which is option \\(\\dfrac{31}{32}\\)."
+  },
+  {
+   "hash": "e5da968c7f72d128a28761de56f6f0e5bb1ab6a99034c9ec5960b7674adb7c2e",
+   "ref": "Q19",
+   "questionNumber": "19",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "**Assertion (A) :** Two coins are tossed simultaneously. The probability of getting two heads, if it is known that at least one head comes up, is \\(\\dfrac{1}{3}\\).\n\n**Reason (R) :** Let E and F be two events with a random experiment, then \\(P(F/E) = \\dfrac{P(E \\cap F)}{P(E)}\\).",
+   "context": "In the following questions 19 and 20, a statement of Assertion (A) is followed by a statement of Reason (R). Choose the correct answer out of the following choices :",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both (A) and (R) are true and (R) is the correct explanation of (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both (A) and (R) are true, but (R) is not the correct explanation of (A)."
+    },
+    {
+     "label": "C",
+     "text": "(A) is true and (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "(A) is false, but (R) is true."
+    }
+   ],
+   "answer": "A",
+   "solution": "Test the Assertion first. The sample space for two coins is \\(\\{HH, HT, TH, TT\\}\\). Let E be \"at least one head\", so E has the three outcomes HH, HT, TH and \\(P(E) = \\dfrac{3}{4}\\); let F be \"two heads\", so \\(E \\cap F = \\{HH\\}\\) and \\(P(E \\cap F) = \\dfrac{1}{4}\\). Then \\(P(F/E) = \\dfrac{1/4}{3/4} = \\dfrac{1}{3}\\), so (A) is true. (R) is the standard definition of conditional probability and is also true. Moreover (R) is exactly the rule applied to obtain the value in (A), so it explains it. Hence both are true and (R) is the correct explanation of (A)."
+  },
+  {
+   "hash": "88e155522c54b384d420e8fc2e2199b65009b7cde97335c46e69cb3e33b2784c",
+   "ref": "Q20",
+   "questionNumber": "20",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "**Assertion (A) :** \\(\\displaystyle\\int_{2}^{8} \\dfrac{\\sqrt{10 - x}}{\\sqrt{x} + \\sqrt{10 - x}}\\,dx = 3\\)\n\n**Reason (R) :** \\(\\displaystyle\\int_{a}^{b} f(x)\\,dx = \\int_{a}^{b} f(a + b - x)\\,dx\\)",
+   "context": "In the following questions 19 and 20, a statement of Assertion (A) is followed by a statement of Reason (R). Choose the correct answer out of the following choices :",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both (A) and (R) are true and (R) is the correct explanation of (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both (A) and (R) are true, but (R) is not the correct explanation of (A)."
+    },
+    {
+     "label": "C",
+     "text": "(A) is true and (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "(A) is false, but (R) is true."
+    }
+   ],
+   "answer": "A",
+   "solution": "Write \\(I = \\displaystyle\\int_{2}^{8} \\dfrac{\\sqrt{10-x}}{\\sqrt{x} + \\sqrt{10-x}}\\,dx\\). Here \\(a + b = 2 + 8 = 10\\), so the property in (R) replaces \\(x\\) by \\(10 - x\\), which swaps the two surds and gives \\(I = \\displaystyle\\int_{2}^{8} \\dfrac{\\sqrt{x}}{\\sqrt{10-x} + \\sqrt{x}}\\,dx\\). Adding the two forms, the numerators combine to the whole denominator, so \\(2I = \\displaystyle\\int_{2}^{8} 1\\,dx = 8 - 2 = 6\\) and \\(I = 3\\). So (A) is true. (R) is a standard property of definite integrals, so it is true as well, and it is the very step that produced the value — hence it is the correct explanation of (A)."
+  },
+  {
+   "hash": "6965423ffd47c5df29606764bded85d26462e15e06846f91d129763604b17d81",
+   "ref": "Q21",
+   "questionNumber": "21",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "Write the domain and range (principle value branch) of the following functions :\n\n\\(f(x) = \\tan^{-1} x\\)",
+   "solution": "The tangent function is not one-one on the whole of its domain, so to invert it we restrict it to \\(\\left(-\\dfrac{\\pi}{2},\\ \\dfrac{\\pi}{2}\\right)\\), where it is strictly increasing and takes every real value exactly once. Inverting that restriction, the domain of \\(f(x) = \\tan^{-1}x\\) is the whole set of real numbers \\(R\\), and its range, the principal value branch, is \\(\\left(-\\dfrac{\\pi}{2},\\ \\dfrac{\\pi}{2}\\right)\\). The end points are excluded because \\(\\tan\\left(\\pm\\dfrac{\\pi}{2}\\right)\\) is undefined, so \\(\\tan^{-1}x\\) approaches \\(\\pm\\dfrac{\\pi}{2}\\) but never attains either value."
+  },
+  {
+   "hash": "8b6675eed72d0ac890660b012f803b29540d385f5bc571155a83363351608d1d",
+   "ref": "Q22a",
+   "questionNumber": "22 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "If \\(f(x) = \\begin{cases} x^2, & \\text{if } x \\ge 1 \\\\ x, & \\text{if } x < 1 \\end{cases}\\), then show that f is not differentiable at \\(x = 1\\).",
+   "solution": "Differentiability at \\(x = 1\\) requires the right-hand and left-hand derivatives there to exist and agree. Since \\(1 \\ge 1\\), the first branch applies at the point itself and \\(f(1) = 1^2 = 1\\). For \\(h > 0\\) we have \\(1 + h > 1\\), so \\(f(1+h) = (1+h)^2\\) and RHD \\(= \\displaystyle\\lim_{h \\to 0}\\dfrac{(1+h)^2 - 1}{h} = \\displaystyle\\lim_{h \\to 0}\\dfrac{2h + h^2}{h} = \\displaystyle\\lim_{h \\to 0}(2 + h) = 2\\). For \\(h > 0\\) we have \\(1 - h < 1\\), so the second branch applies, \\(f(1-h) = 1 - h\\), and LHD \\(= \\displaystyle\\lim_{h \\to 0}\\dfrac{f(1-h) - f(1)}{-h} = \\displaystyle\\lim_{h \\to 0}\\dfrac{(1-h) - 1}{-h} = \\displaystyle\\lim_{h \\to 0}\\dfrac{-h}{-h} = 1\\). Since RHD \\(= 2\\) while LHD \\(= 1\\), the two do not agree, so \\(f\\) is not differentiable at \\(x = 1\\). (It is continuous there, since both branches give the value 1 — continuity does not imply differentiability.)"
+  },
+  {
+   "hash": "8ab48d8e6b7b62fa506528ac062bcd0d07155285d7bc74298166839828e14afb",
+   "ref": "Q22b",
+   "questionNumber": "22 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Continuity",
+   "stem": "Find the value(s) of '\\(\\lambda\\)', if the function \\(f(x) = \\begin{cases} \\dfrac{\\sin^2 \\lambda x}{x^2}, & \\text{if } x \\ne 0 \\\\ 1, & \\text{if } x = 0 \\end{cases}\\) is continuous at \\(x = 0\\).",
+   "solution": "For \\(f\\) to be continuous at \\(x = 0\\) we need \\(\\displaystyle\\lim_{x \\to 0} f(x) = f(0) = 1\\). Evaluate the limit by forcing the standard form \\(\\displaystyle\\lim_{\\theta \\to 0}\\dfrac{\\sin\\theta}{\\theta} = 1\\): \\(\\displaystyle\\lim_{x \\to 0}\\dfrac{\\sin^2 \\lambda x}{x^2} = \\displaystyle\\lim_{x \\to 0}\\left(\\dfrac{\\sin \\lambda x}{\\lambda x}\\right)^2 \\times \\lambda^2 = 1 \\times \\lambda^2 = \\lambda^2\\). Equating to \\(f(0)\\) gives \\(\\lambda^2 = 1\\), so \\(\\lambda = 1\\) or \\(\\lambda = -1\\). Both values are admissible — the function involves \\(\\sin^2 \\lambda x\\), which is unchanged when the sign of \\(\\lambda\\) flips — so the answer is \\(\\lambda = \\pm 1\\), and both branches must be reported. (The step above assumes \\(\\lambda \\ne 0\\); if \\(\\lambda = 0\\) the quotient is identically 0 and the limit is 0, not 1, which is consistent with the formula \\(\\lambda^2\\) and does not satisfy the requirement.)"
+  },
+  {
+   "hash": "d180aed0b1af0388c3ba1ca43dac4d57d9fe727dcbb4f338b783d670c4c7649d",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "Sketch the region bounded by the lines \\(2x + y = 8\\), \\(y = 2\\), \\(y = 4\\) and the y-axis. Hence, obtain its area using integration.",
+   "solution": "Sketch: the line \\(2x + y = 8\\) cuts the axes at \\((4, 0)\\) and \\((0, 8)\\); the horizontal lines \\(y = 2\\) and \\(y = 4\\) meet it where \\(2x = 6\\) and \\(2x = 4\\), that is at \\((3, 2)\\) and \\((2, 4)\\); and they meet the y-axis at \\((0, 2)\\) and \\((0, 4)\\). The region enclosed is therefore the trapezium with vertices \\((0, 2)\\), \\((3, 2)\\), \\((2, 4)\\) and \\((0, 4)\\), lying between the two horizontal lines with the y-axis on the left and the slanted line on the right. Because the horizontal lines are the natural limits, integrate with respect to \\(y\\), writing the right-hand boundary as \\(x = \\dfrac{8 - y}{2}\\). Area \\(= \\displaystyle\\int_{2}^{4}\\dfrac{8 - y}{2}\\,dy = \\dfrac{1}{2}\\left[8y - \\dfrac{y^2}{2}\\right]_{2}^{4} = \\dfrac{1}{2}\\left[(32 - 8) - (16 - 2)\\right] = \\dfrac{1}{2}(24 - 14) = 5\\) square units. As a check, the trapezium has parallel sides of length 3 and 2 and height 2, giving \\(\\dfrac{1}{2}(3 + 2)(2) = 5\\)."
+  },
+  {
+   "hash": "0ee610940374e86ee03fc07539226cc16d3013d3d813f530d5dd8e2e90983642",
+   "ref": "Q24a",
+   "questionNumber": "24 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "If the vectors \\(\\vec{a}\\) and \\(\\vec{b}\\) are such that \\(|\\vec{a}| = 3\\), \\(|\\vec{b}| = \\dfrac{2}{3}\\) and \\(\\vec{a} \\times \\vec{b}\\) is a unit vector, then find the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\).",
+   "solution": "Let \\(\\theta\\) be the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\). A unit vector has magnitude 1, so \\(\\left|\\vec{a} \\times \\vec{b}\\right| = 1\\). Using \\(\\left|\\vec{a} \\times \\vec{b}\\right| = |\\vec{a}|\\,|\\vec{b}|\\sin\\theta\\), this gives \\(3 \\times \\dfrac{2}{3} \\times \\sin\\theta = 1\\), that is \\(2\\sin\\theta = 1\\) and \\(\\sin\\theta = \\dfrac{1}{2}\\). Hence \\(\\theta = \\dfrac{\\pi}{6}\\), or \\(30^{\\circ}\\). (Strictly, the angle between two vectors is taken in \\([0, \\pi]\\), where \\(\\sin\\theta = \\dfrac{1}{2}\\) is also satisfied by \\(\\theta = \\dfrac{5\\pi}{6}\\); the given data alone does not rule that out, and the marking scheme reports only the acute value \\(\\dfrac{\\pi}{6}\\), which is the expected answer.)"
+  },
+  {
+   "hash": "28d075e4167b06993b8e1be026f9bc231fe1da30d64023176686d6b84303030a",
+   "ref": "Q24b",
+   "questionNumber": "24 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "Find the area of a parallelogram whose adjacent sides are determined by the vectors \\(\\vec{a} = \\hat{i} - \\hat{j} + 3\\hat{k}\\) and \\(\\vec{b} = 2\\hat{i} - 7\\hat{j} + \\hat{k}\\).",
+   "solution": "The area of a parallelogram with adjacent sides \\(\\vec{a}\\) and \\(\\vec{b}\\) is \\(\\left|\\vec{a} \\times \\vec{b}\\right|\\). Here \\(\\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & -1 & 3 \\\\ 2 & -7 & 1 \\end{vmatrix} = \\hat{i}\\left[(-1)(1) - (3)(-7)\\right] - \\hat{j}\\left[(1)(1) - (3)(2)\\right] + \\hat{k}\\left[(1)(-7) - (-1)(2)\\right] = 20\\hat{i} + 5\\hat{j} - 5\\hat{k}\\). Hence the area is \\(\\sqrt{20^2 + 5^2 + (-5)^2} = \\sqrt{400 + 25 + 25} = \\sqrt{450} = 15\\sqrt{2}\\) square units."
+  },
+  {
+   "hash": "0913e5249957dd66dfe56c8461714cc7b64fb5d13dac4f5c04137131751f3718",
+   "ref": "Q25",
+   "questionNumber": "25",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the vector and the cartesian equations of a line that passes through the point A(1, 2, \\(-1\\)) and parallel to the line \\(5x - 25 = 14 - 7y = 35z\\).",
+   "solution": "First put the given line into standard symmetric form so its direction ratios can be read off. Factor each part about a convenient point: \\(5x - 25 = 5(x - 5)\\), \\(14 - 7y = -7(y - 2)\\) and \\(35z = 35(z - 0)\\), so the line is \\(5(x-5) = -7(y-2) = 35(z-0)\\). Dividing throughout by 35 gives \\(\\dfrac{x-5}{7} = \\dfrac{y-2}{-5} = \\dfrac{z}{1}\\), so its direction ratios are \\(7, -5, 1\\). A line parallel to it has the same direction vector \\(\\vec{b} = 7\\hat{i} - 5\\hat{j} + \\hat{k}\\), and it is to pass through \\(A(1, 2, -1)\\), whose position vector is \\(\\vec{a} = \\hat{i} + 2\\hat{j} - \\hat{k}\\). Vector equation: \\(\\vec{r} = (\\hat{i} + 2\\hat{j} - \\hat{k}) + \\lambda(7\\hat{i} - 5\\hat{j} + \\hat{k})\\). Cartesian equation: \\(\\dfrac{x-1}{7} = \\dfrac{y-2}{-5} = \\dfrac{z+1}{1}\\)."
+  },
+  {
+   "hash": "77e58cc3f1a997cdbbd7c7e9a3815496a58c2488930f04355476286b9e11a1d6",
+   "ref": "Q27a",
+   "questionNumber": "27 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "Differentiate \\(\\sec^{-1}\\left(\\dfrac{1}{\\sqrt{1 - x^2}}\\right)\\) w.r.t. \\(\\sin^{-1}(2x\\sqrt{1 - x^2})\\).",
+   "solution": "Call the two functions \\(U = \\sec^{-1}\\left(\\dfrac{1}{\\sqrt{1-x^2}}\\right)\\) and \\(V = \\sin^{-1}\\left(2x\\sqrt{1-x^2}\\right)\\); we want \\(\\dfrac{dU}{dV}\\). Both simplify dramatically under the substitution \\(x = \\sin\\theta\\), for then \\(\\sqrt{1-x^2} = \\cos\\theta\\). First, \\(U = \\sec^{-1}\\left(\\dfrac{1}{\\cos\\theta}\\right) = \\sec^{-1}(\\sec\\theta) = \\theta = \\sin^{-1}x\\), so \\(\\dfrac{dU}{dx} = \\dfrac{1}{\\sqrt{1-x^2}}\\). Second, \\(V = \\sin^{-1}(2\\sin\\theta\\cos\\theta) = \\sin^{-1}(\\sin 2\\theta) = 2\\theta = 2\\sin^{-1}x\\), so \\(\\dfrac{dV}{dx} = \\dfrac{2}{\\sqrt{1-x^2}}\\). Dividing, \\(\\dfrac{dU}{dV} = \\dfrac{dU/dx}{dV/dx} = \\dfrac{1/\\sqrt{1-x^2}}{2/\\sqrt{1-x^2}} = \\dfrac{1}{2}\\). The marking scheme adds the caution that these simplifications hold only on the branch where \\(\\theta\\) stays in range; on the alternative substitution \\(x = \\cos\\theta\\) — equivalently for negative \\(x\\), where \\(\\sec^{-1}(\\sec\\theta)\\) returns \\(-\\theta\\) rather than \\(\\theta\\) — the same working gives \\(-\\dfrac{1}{2}\\)."
+  },
+  {
+   "hash": "0bb80617de259e0c259eb1e987831fa061036e92d837064bc79fe0e5e4fec674",
+   "ref": "Q27b",
+   "questionNumber": "27 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Second Order Derivatives",
+   "stem": "If \\(y = \\tan x + \\sec x\\), then prove that \\(\\dfrac{d^2y}{dx^2} = \\dfrac{\\cos x}{(1 - \\sin x)^2}\\).",
+   "solution": "Combining the two terms over a common denominator makes the first derivative collapse neatly: \\(y = \\tan x + \\sec x = \\dfrac{\\sin x}{\\cos x} + \\dfrac{1}{\\cos x} = \\dfrac{\\sin x + 1}{\\cos x}\\). By the quotient rule, \\(\\dfrac{dy}{dx} = \\dfrac{\\cos x \\times \\cos x - (\\sin x + 1)(-\\sin x)}{\\cos^2 x} = \\dfrac{\\cos^2 x + \\sin^2 x + \\sin x}{\\cos^2 x} = \\dfrac{1 + \\sin x}{1 - \\sin^2 x}\\). Since \\(1 - \\sin^2 x = (1 - \\sin x)(1 + \\sin x)\\), the factor \\(1 + \\sin x\\) cancels and \\(\\dfrac{dy}{dx} = \\dfrac{1}{1 - \\sin x} = (1 - \\sin x)^{-1}\\). Differentiating once more by the chain rule, \\(\\dfrac{d^2y}{dx^2} = -(1 - \\sin x)^{-2} \\times (-\\cos x) = \\dfrac{\\cos x}{(1 - \\sin x)^2}\\), which is what was to be proved."
+  },
+  {
+   "hash": "0386ca57a6a0c90a9b7cf862a67a6a304c91ebc1d93a8be6dd31b9b87662fed0",
+   "ref": "Q28a",
+   "questionNumber": "28 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "Evaluate : \\(\\displaystyle\\int_{0}^{2\\pi} \\dfrac{1}{1 + e^{\\sin x}}\\,dx\\)",
+   "solution": "There is no elementary antiderivative here, so use the king property \\(\\displaystyle\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a - x)\\,dx\\). Let \\(I = \\displaystyle\\int_{0}^{2\\pi}\\dfrac{1}{1 + e^{\\sin x}}\\,dx\\). With \\(a = 2\\pi\\) and \\(\\sin(2\\pi - x) = -\\sin x\\), \\(I = \\displaystyle\\int_{0}^{2\\pi}\\dfrac{1}{1 + e^{-\\sin x}}\\,dx\\). Multiplying numerator and denominator of that integrand by \\(e^{\\sin x}\\) gives \\(I = \\displaystyle\\int_{0}^{2\\pi}\\dfrac{e^{\\sin x}}{e^{\\sin x} + 1}\\,dx\\). Adding the two expressions for \\(I\\), the integrands sum to \\(\\dfrac{1 + e^{\\sin x}}{1 + e^{\\sin x}} = 1\\), so \\(2I = \\displaystyle\\int_{0}^{2\\pi} 1\\,dx = 2\\pi\\). Hence \\(I = \\pi\\)."
+  },
+  {
+   "hash": "af4b738b49c9239cc2c3c7fd959133e40ab9c711c81f8a12938d270160777345",
+   "ref": "Q28b",
+   "questionNumber": "28 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Partial Fractions",
+   "stem": "Find : \\(\\displaystyle\\int \\dfrac{x^4}{(x - 1)(x^2 + 1)}\\,dx\\)",
+   "solution": "The fraction is improper — the numerator has degree 4 and the denominator degree 3 — so divide before decomposing. Since \\((x-1)(x^2+1) = x^3 - x^2 + x - 1\\), long division gives quotient \\(x + 1\\) and remainder 1, that is \\(\\dfrac{x^4}{(x-1)(x^2+1)} = x + 1 + \\dfrac{1}{(x-1)(x^2+1)}\\). Now split the proper fraction: put \\(\\dfrac{1}{(x-1)(x^2+1)} = \\dfrac{A}{x-1} + \\dfrac{Bx + C}{x^2+1}\\), so \\(1 = A(x^2+1) + (Bx + C)(x - 1)\\). Setting \\(x = 1\\) gives \\(2A = 1\\), so \\(A = \\dfrac{1}{2}\\); comparing coefficients of \\(x^2\\) gives \\(A + B = 0\\), so \\(B = -\\dfrac{1}{2}\\); comparing constants gives \\(A - C = 1\\), so \\(C = -\\dfrac{1}{2}\\). Hence the integral is \\(\\displaystyle\\int\\left[x + 1 + \\dfrac{1}{2(x-1)} - \\dfrac{1}{2}\\cdot\\dfrac{x+1}{x^2+1}\\right]dx\\). Splitting the last term as \\(\\dfrac{x}{x^2+1} + \\dfrac{1}{x^2+1}\\) and integrating term by term, \\(= \\dfrac{x^2}{2} + x + \\dfrac{1}{2}\\log|x-1| - \\dfrac{1}{4}\\log(x^2+1) - \\dfrac{1}{2}\\tan^{-1}x + C\\). (No modulus is needed on \\(x^2+1\\), which is always positive.)"
+  },
+  {
+   "hash": "692df6362b2fd38a223ba18744f24f745599d7823bacbc6dd61468ddabca1880",
+   "ref": "Q29",
+   "questionNumber": "29",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "Find the area of the following region using integration :\n\n\\(\\{(x, y) : y^2 \\le 2x \\text{ and } y \\ge x - 4\\}\\)",
+   "solution": "Sketch: \\(y^2 \\le 2x\\) is the region inside the rightward-opening parabola \\(y^2 = 2x\\) (vertex at the origin), and \\(y \\ge x - 4\\) is the half-plane above the line \\(y = x - 4\\). The required region is the piece of the parabola's interior lying above that line. They meet where \\(y^2 = 2(y + 4)\\), i.e. \\(y^2 - 2y - 8 = 0\\), so \\((y-4)(y+2) = 0\\) and \\(y = 4\\) or \\(y = -2\\), giving the points \\((8, 4)\\) and \\((2, -2)\\). Because both boundaries are single-valued as functions of \\(y\\), integrate with respect to \\(y\\): the line \\(x = y + 4\\) is the right-hand boundary and the parabola \\(x = \\dfrac{y^2}{2}\\) the left-hand one. Area \\(= \\displaystyle\\int_{-2}^{4}\\left[(y + 4) - \\dfrac{y^2}{2}\\right]dy = \\left[\\dfrac{y^2}{2} + 4y - \\dfrac{y^3}{6}\\right]_{-2}^{4} = \\left(8 + 16 - \\dfrac{32}{3}\\right) - \\left(2 - 8 + \\dfrac{4}{3}\\right) = \\dfrac{40}{3} + \\dfrac{14}{3} = \\dfrac{54}{3} = 18\\) square units."
+  },
+  {
+   "hash": "332a504a88c2c45c01376e33b76a1b388f5ae4ff3593d32cef804b7913349f9b",
+   "ref": "Q30a",
+   "questionNumber": "30 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the coordinates of the foot of the perpendicular drawn from the point P(0, 2, 3) to the line \\(\\dfrac{x + 3}{5} = \\dfrac{y - 1}{2} = \\dfrac{z + 4}{3}\\).",
+   "solution": "Parametrise the line: setting each ratio equal to \\(\\lambda\\), a general point on it is \\(M(5\\lambda - 3,\\ 2\\lambda + 1,\\ 3\\lambda - 4)\\). The vector from \\(P(0, 2, 3)\\) to \\(M\\) has direction ratios \\(5\\lambda - 3 - 0,\\ 2\\lambda + 1 - 2,\\ 3\\lambda - 4 - 3\\), that is \\(5\\lambda - 3,\\ 2\\lambda - 1,\\ 3\\lambda - 7\\). If \\(M\\) is the foot of the perpendicular then \\(PM\\) is perpendicular to the line, whose direction ratios are \\(5, 2, 3\\), so their dot product vanishes: \\(5(5\\lambda - 3) + 2(2\\lambda - 1) + 3(3\\lambda - 7) = 0\\). Expanding, \\(25\\lambda - 15 + 4\\lambda - 2 + 9\\lambda - 21 = 0\\), i.e. \\(38\\lambda - 38 = 0\\), so \\(\\lambda = 1\\). Substituting back, the foot of the perpendicular is \\(M(2, 3, -1)\\)."
+  },
+  {
+   "hash": "2cd2acf176156109db193b80c3d2e1065a56afccecef50cc147c8b74e3c75ed0",
+   "ref": "Q30b",
+   "questionNumber": "30 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "Three vectors \\(\\vec{a}\\), \\(\\vec{b}\\) and \\(\\vec{c}\\) satisfy the condition \\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0}\\). Evaluate the quantity \\(\\mu = \\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{c} + \\vec{c} \\cdot \\vec{a}\\), if \\(|\\vec{a}| = 3\\), \\(|\\vec{b}| = 4\\) and \\(|\\vec{c}| = 2\\).",
+   "solution": "The three dot products wanted are exactly the cross terms that appear when a sum of three vectors is squared, so take the dot product of the given relation with itself. Since \\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0}\\), we have \\(\\left|\\vec{a} + \\vec{b} + \\vec{c}\\right|^2 = 0\\). Expanding, \\(\\left|\\vec{a}\\right|^2 + \\left|\\vec{b}\\right|^2 + \\left|\\vec{c}\\right|^2 + 2\\left(\\vec{a}\\cdot\\vec{b} + \\vec{b}\\cdot\\vec{c} + \\vec{c}\\cdot\\vec{a}\\right) = 0\\), that is \\(3^2 + 4^2 + 2^2 + 2\\mu = 0\\), so \\(9 + 16 + 4 + 2\\mu = 0\\) and \\(2\\mu = -29\\). Hence \\(\\mu = -\\dfrac{29}{2}\\)."
+  },
+  {
+   "hash": "3d44bb06656b1bac60328e35af31136e5d0185d175bb332dda271094b284ef4f",
+   "ref": "Q31",
+   "questionNumber": "31",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Shortest Distance Between Two Lines",
+   "stem": "Find the distance between the lines :\n\n\\(\\vec{r} = (\\hat{i} + 2\\hat{j} - 4\\hat{k}) + \\lambda(2\\hat{i} + 3\\hat{j} + 6\\hat{k})\\);\n\n\\(\\vec{r} = (3\\hat{i} + 3\\hat{j} - 5\\hat{k}) + \\mu(4\\hat{i} + 6\\hat{j} + 12\\hat{k})\\)",
+   "solution": "Read off \\(\\vec{a_1} = \\hat{i} + 2\\hat{j} - 4\\hat{k}\\), \\(\\vec{b_1} = 2\\hat{i} + 3\\hat{j} + 6\\hat{k}\\), \\(\\vec{a_2} = 3\\hat{i} + 3\\hat{j} - 5\\hat{k}\\), \\(\\vec{b_2} = 4\\hat{i} + 6\\hat{j} + 12\\hat{k}\\). Notice first that \\(\\vec{b_2} = 2\\vec{b_1}\\), so the two lines are PARALLEL, not skew — the shortest-distance formula for skew lines does not apply and the distance between parallel lines must be used instead: \\(d = \\dfrac{\\left|(\\vec{a_2} - \\vec{a_1}) \\times \\vec{b}\\right|}{\\left|\\vec{b}\\right|}\\) with the common direction \\(\\vec{b} = 2\\hat{i} + 3\\hat{j} + 6\\hat{k}\\). Here \\(\\vec{a_2} - \\vec{a_1} = 2\\hat{i} + \\hat{j} - \\hat{k}\\), and \\((\\vec{a_2} - \\vec{a_1}) \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & 1 & -1 \\\\ 2 & 3 & 6 \\end{vmatrix} = \\hat{i}(6 + 3) - \\hat{j}(12 + 2) + \\hat{k}(6 - 2) = 9\\hat{i} - 14\\hat{j} + 4\\hat{k}\\). Therefore \\(d = \\dfrac{\\sqrt{81 + 196 + 16}}{\\sqrt{4 + 9 + 36}} = \\dfrac{\\sqrt{293}}{\\sqrt{49}} = \\dfrac{\\sqrt{293}}{7}\\) units."
+  },
+  {
+   "hash": "e028e4b8ba6ab1d07dfbda4b354cc8305797efeec8f0a863fab5f21012f352f4",
+   "ref": "Q32a",
+   "questionNumber": "32 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "The median of an equilateral triangle is increasing at the rate of \\(2\\sqrt{3}\\) cm/s. Find the rate at which its side is increasing.",
+   "solution": "In an equilateral triangle the median from a vertex is also the altitude, so the two rates asked about are linked by simple geometry. Let \\(x\\) be the side of \\(\\triangle ABC\\) and \\(h\\) the median from \\(A\\) to the midpoint of \\(BC\\). That median splits the triangle into two right triangles with hypotenuse \\(x\\) and base \\(\\dfrac{x}{2}\\), so \\(h^2 = x^2 - \\dfrac{x^2}{4} = \\dfrac{3x^2}{4}\\) and \\(h = \\dfrac{\\sqrt{3}}{2}x\\), that is \\(x = \\dfrac{2h}{\\sqrt{3}}\\). Both are functions of time, so differentiate with respect to \\(t\\): \\(\\dfrac{dx}{dt} = \\dfrac{2}{\\sqrt{3}}\\dfrac{dh}{dt}\\). We are given \\(\\dfrac{dh}{dt} = 2\\sqrt{3}\\) cm/s, so \\(\\dfrac{dx}{dt} = \\dfrac{2}{\\sqrt{3}} \\times 2\\sqrt{3} = 4\\). The side is therefore increasing at 4 cm/s. Note the answer does not depend on the current size of the triangle: median and side stay in the fixed ratio \\(\\dfrac{\\sqrt{3}}{2}\\), so their rates are in that same fixed ratio."
+  },
+  {
+   "hash": "1d3f20967b1a2a0f454b219ec08b8ef478a79e05ee24d258bce2424e20c4f2db",
+   "ref": "Q32b",
+   "questionNumber": "32 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Sum of two numbers is 5. If the sum of the cubes of these numbers is least, then find the sum of the squares of these numbers.",
+   "solution": "Let the two numbers be \\(x\\) and \\(y\\) with \\(x + y = 5\\), so \\(y = 5 - x\\) and there is one free variable. Let \\(S\\) be the sum of their cubes, \\(S = x^3 + y^3 = x^3 + (5 - x)^3\\). Then \\(\\dfrac{dS}{dx} = 3x^2 - 3(5-x)^2 = 3\\left[x^2 - (25 - 10x + x^2)\\right] = 3(10x - 25) = 15(2x - 5)\\). Setting \\(\\dfrac{dS}{dx} = 0\\) gives \\(x = \\dfrac{5}{2}\\), and \\(\\dfrac{d^2S}{dx^2} = 30 > 0\\), so \\(S\\) is a minimum there. In fact the cubic terms cancel completely — expanding gives \\(S = 15x^2 - 75x + 125\\), an upward parabola — so this stationary point is the global minimum over all real \\(x\\), not merely a local one. The two numbers are therefore \\(\\dfrac{5}{2}\\) and \\(5 - \\dfrac{5}{2} = \\dfrac{5}{2}\\), and the sum of their squares is \\(\\dfrac{25}{4} + \\dfrac{25}{4} = \\dfrac{50}{4} = \\dfrac{25}{2}\\)."
+  },
+  {
+   "hash": "3e4c8e6e2ab7bda6968d97ca57c60da76e7ebb6e890a0af46726aaf0a0b637ce",
+   "ref": "Q33",
+   "questionNumber": "33",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals by Substitution",
+   "stem": "Evaluate : \\(\\displaystyle\\int_{0}^{\\pi/2} \\sin 2x \\tan^{-1}(\\sin x)\\,dx\\)",
+   "solution": "Let \\(I = \\displaystyle\\int_{0}^{\\pi/2}\\sin 2x\\,\\tan^{-1}(\\sin x)\\,dx\\). Write \\(\\sin 2x = 2\\sin x\\cos x\\), which exposes a \\(\\cos x\\,dx\\) ready for substitution: \\(I = \\displaystyle\\int_{0}^{\\pi/2} 2\\sin x\\,\\tan^{-1}(\\sin x)\\,\\cos x\\,dx\\). Put \\(t = \\sin x\\), so \\(dt = \\cos x\\,dx\\), and the limits \\(x = 0\\) and \\(x = \\dfrac{\\pi}{2}\\) become \\(t = 0\\) and \\(t = 1\\). Then \\(I = 2\\displaystyle\\int_{0}^{1} t\\,\\tan^{-1}t\\,dt\\). Integrate by parts taking \\(\\tan^{-1}t\\) as the first function and \\(t\\) as the second: \\(I = 2\\left[\\dfrac{t^2}{2}\\tan^{-1}t\\right]_{0}^{1} - 2\\displaystyle\\int_{0}^{1}\\dfrac{1}{1+t^2}\\times\\dfrac{t^2}{2}\\,dt = 2 \\times \\dfrac{1}{2} \\times \\dfrac{\\pi}{4} - \\displaystyle\\int_{0}^{1}\\dfrac{t^2}{1+t^2}\\,dt = \\dfrac{\\pi}{4} - \\displaystyle\\int_{0}^{1}\\dfrac{t^2}{1+t^2}\\,dt\\). For the remaining integral write \\(\\dfrac{t^2}{1+t^2} = 1 - \\dfrac{1}{1+t^2}\\), giving \\(\\displaystyle\\int_{0}^{1}\\dfrac{t^2}{1+t^2}\\,dt = \\left[t - \\tan^{-1}t\\right]_{0}^{1} = 1 - \\dfrac{\\pi}{4}\\). Hence \\(I = \\dfrac{\\pi}{4} - \\left(1 - \\dfrac{\\pi}{4}\\right) = \\dfrac{\\pi}{2} - 1\\)."
+  },
+  {
+   "hash": "1a8b8f556496a0d9828828d434bd2a619c5492a1220386649f8ee6c99bff7fdb",
+   "ref": "Q34",
+   "questionNumber": "34",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following Linear Programming Problem graphically :\n\nMaximize : \\(P = 70x + 40y\\)\n\nsubject to : \\(3x + 2y \\le 9\\),\n\n\\(3x + y \\le 9\\),\n\n\\(x \\ge 0,\\ y \\ge 0\\)",
+   "solution": "Graph the constraints in the first quadrant. The line \\(3x + 2y = 9\\) meets the axes at \\((3, 0)\\) and \\(\\left(0,\\ \\dfrac{9}{2}\\right)\\); the line \\(3x + y = 9\\) meets them at \\((3, 0)\\) and \\((0, 9)\\). Solving the two together, subtracting the second from the first gives \\(y = 0\\) and hence \\(x = 3\\), so they intersect on the x-axis at \\((3, 0)\\) rather than at an interior point. Wherever \\(y > 0\\) we have \\(3x + 2y > 3x + y\\), so \\(3x + 2y \\le 9\\) is the binding constraint and \\(3x + y \\le 9\\) is then automatic. The feasible region is therefore the triangle with corner points \\(O(0, 0)\\), \\(B\\left(0,\\ \\dfrac{9}{2}\\right)\\) and \\(C(3, 0)\\). It is bounded, so by the corner point theorem the maximum of \\(P\\) occurs at one of these vertices. Evaluating \\(P = 70x + 40y\\): at \\(O(0, 0)\\), \\(P = 0\\); at \\(B\\left(0,\\ \\dfrac{9}{2}\\right)\\), \\(P = 40 \\times \\dfrac{9}{2} = 180\\); at \\(C(3, 0)\\), \\(P = 70 \\times 3 = 210\\). Hence the maximum value is \\(P = 210\\), attained at \\(x = 3\\), \\(y = 0\\)."
+  },
+  {
+   "hash": "370a1fb020715a17bb209332fd667920861ef472acc9f9d7753bc2e9458c8d37",
+   "ref": "Q35a",
+   "questionNumber": "35 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Bayes' Theorem",
+   "stem": "In answering a question on a multiple choice test, a student either knows the answer or guesses. Let \\(\\dfrac{3}{5}\\) be the probability that he knows the answer and \\(\\dfrac{2}{5}\\) be the probability that he guesses. Assuming that a student who guesses at the answer will be correct with probability \\(\\dfrac{1}{3}\\). What is the probability that the student knows the answer, given that he answered it correctly ?",
+   "solution": "We are told how likely a correct answer is under each cause and asked to reverse the reasoning, so this is Bayes' theorem. Let A be the event that the student knows the answer, B that he guesses, and E that he answers correctly. Then \\(P(A) = \\dfrac{3}{5}\\) and \\(P(B) = \\dfrac{2}{5}\\); these are mutually exclusive and exhaustive, as they must be, since \\(\\dfrac{3}{5} + \\dfrac{2}{5} = 1\\). A student who knows the answer is certain to be right, so \\(P(E/A) = 1\\), while a guesser is right with \\(P(E/B) = \\dfrac{1}{3}\\). By Bayes' theorem, \\(P(A/E) = \\dfrac{P(A)\\,P(E/A)}{P(A)\\,P(E/A) + P(B)\\,P(E/B)} = \\dfrac{\\dfrac{3}{5} \\times 1}{\\dfrac{3}{5} \\times 1 + \\dfrac{2}{5} \\times \\dfrac{1}{3}} = \\dfrac{\\dfrac{3}{5}}{\\dfrac{9}{15} + \\dfrac{2}{15}} = \\dfrac{\\dfrac{3}{5}}{\\dfrac{11}{15}} = \\dfrac{3}{5} \\times \\dfrac{15}{11} = \\dfrac{9}{11}\\). So given that he answered correctly, the probability that he actually knew the answer is \\(\\dfrac{9}{11}\\) — higher than the prior \\(\\dfrac{3}{5}\\), as one would expect, since a correct answer is evidence in favour of knowing."
+  },
+  {
+   "hash": "6f9f4f957c4d91c2e8f7f5a16d057b65eac468a846771c0460f7d91c9ec430c0",
+   "ref": "Q35b",
+   "questionNumber": "35 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "A box contains 10 tickets, 2 of which carry a prize of ₹ 8 each, 5 of which carry a prize of ₹ 4 each, and remaining 3 carry a prize of ₹ 2 each. If one ticket is drawn at random, find the mean value of the prize.",
+   "solution": "Let \\(X\\) be the prize carried by the ticket drawn. Since the ticket is drawn at random from 10, each ticket is equally likely, and \\(X\\) takes the values 8, 4 and 2 with \\(P(X = 8) = \\dfrac{2}{10} = \\dfrac{1}{5}\\), \\(P(X = 4) = \\dfrac{5}{10} = \\dfrac{1}{2}\\) and \\(P(X = 2) = \\dfrac{3}{10}\\). These sum to \\(\\dfrac{2 + 5 + 3}{10} = 1\\), as a probability distribution must. The mean is \\(\\sum x\\,P(X = x) = 8 \\times \\dfrac{1}{5} + 4 \\times \\dfrac{1}{2} + 2 \\times \\dfrac{3}{10} = \\dfrac{8}{5} + 2 + \\dfrac{3}{5} = \\dfrac{16 + 20 + 6}{10} = \\dfrac{42}{10} = \\dfrac{21}{5}\\). So the mean value of the prize is \\(\\dfrac{21}{5}\\), that is ₹ 4.20."
+  },
+  {
+   "hash": "6989d73a44c39ca7fdf847c3e3bf37e0f8f37a4e7303ee96854a7f2f7efaa83a",
+   "ref": "Q36i",
+   "questionNumber": "36 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Types of Relations",
+   "stem": "How many relations are possible from B to G ?",
+   "context": "An organization conducted bike race under two different categories – Boys and Girls. There were 28 participants in all. Among all of them, finally three from category 1 and two from category 2 were selected for the final race. Ravi forms two sets B and G with these participants for his college project.\n\nLet B = \\(\\{b_1, b_2, b_3\\}\\) and G = \\(\\{g_1, g_2\\}\\), where B represents the set of Boys selected and G the set of Girls selected for the final race.\n\nBased on the above information, answer the following questions :",
+   "figure": "DECORATIVE — a stock photograph of two motorcyclists racing, printed between the passage and the sub-parts on page idx 20. Opened before deciding: it carries no data, no labels and no numbers; every quantity the sub-parts need (the sets B and G and their elements) is stated in the passage text. Not attached.",
+   "solution": "A relation from B to G is by definition any subset of the cartesian product \\(B \\times G\\). Here B has 3 elements and G has 2, so \\(B \\times G\\) contains \\(3 \\times 2 = 6\\) ordered pairs, and a set of 6 elements has \\(2^6\\) subsets. Hence the number of possible relations from B to G is \\(2^6 = 64\\)."
+  },
+  {
+   "hash": "2dfa6c05d8c8fb70ce991bfd74ef8db42c6ecb4ebf260ea31fb97f0314a47f93",
+   "ref": "Q36ii",
+   "questionNumber": "36 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "Among all the possible relations from B to G, how many functions can be formed from B to G ?",
+   "context": "An organization conducted bike race under two different categories – Boys and Girls. There were 28 participants in all. Among all of them, finally three from category 1 and two from category 2 were selected for the final race. Ravi forms two sets B and G with these participants for his college project.\n\nLet B = \\(\\{b_1, b_2, b_3\\}\\) and G = \\(\\{g_1, g_2\\}\\), where B represents the set of Boys selected and G the set of Girls selected for the final race.\n\nBased on the above information, answer the following questions :",
+   "figure": "DECORATIVE — a stock photograph of two motorcyclists racing, printed between the passage and the sub-parts on page idx 20. Opened before deciding: it carries no data, no labels and no numbers; every quantity the sub-parts need (the sets B and G and their elements) is stated in the passage text. Not attached.",
+   "solution": "A relation from B to G is a function when every element of B is paired with exactly one element of G. So each of the 3 boys \\(b_1, b_2, b_3\\) must be assigned one of the 2 girls, and the three assignments are independent. By the multiplication principle the number of such functions is \\(2 \\times 2 \\times 2 = 2^3 = 8\\). (These 8 are among the 64 relations counted in the previous part.)"
+  },
+  {
+   "hash": "e6d277c8548d3489b6a207ac552f08f4f571b7039668774765d832e636185e90",
+   "ref": "Q36iiia",
+   "questionNumber": "36 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Equivalence Relations and Classes",
+   "stem": "Let \\(R : B \\to B\\) be defined by \\(R = \\{(x, y) : x \\text{ and } y \\text{ are students of the same sex}\\}\\). Check if R is an equivalence relation.",
+   "context": "An organization conducted bike race under two different categories – Boys and Girls. There were 28 participants in all. Among all of them, finally three from category 1 and two from category 2 were selected for the final race. Ravi forms two sets B and G with these participants for his college project.\n\nLet B = \\(\\{b_1, b_2, b_3\\}\\) and G = \\(\\{g_1, g_2\\}\\), where B represents the set of Boys selected and G the set of Girls selected for the final race.\n\nBased on the above information, answer the following questions :",
+   "figure": "DECORATIVE — a stock photograph of two motorcyclists racing, printed between the passage and the sub-parts on page idx 20. Opened before deciding: it carries no data, no labels and no numbers; every quantity the sub-parts need (the sets B and G and their elements) is stated in the passage text. Not attached.",
+   "solution": "Every member of B is a boy, so any two elements of B are of the same sex and R is in fact the whole of \\(B \\times B\\); but check the three properties directly. Reflexive: each student is of the same sex as himself, so \\((x, x) \\in R\\) for every \\(x \\in B\\). Symmetric: if \\(x\\) and \\(y\\) are of the same sex then so are \\(y\\) and \\(x\\), so \\((x, y) \\in R \\Rightarrow (y, x) \\in R\\). Transitive: if \\(x\\) and \\(y\\) are of the same sex and \\(y\\) and \\(z\\) are of the same sex, then \\(x\\) and \\(z\\) are of the same sex, so \\((x, y) \\in R\\) and \\((y, z) \\in R\\) together give \\((x, z) \\in R\\). Being reflexive, symmetric and transitive, R is an equivalence relation. It has a single equivalence class, the whole of B."
+  },
+  {
+   "hash": "a374eebcad58811845169b9d306d224a6afb50e67dffe473709f831c4210c23a",
+   "ref": "Q36iiib",
+   "questionNumber": "36 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "A function \\(f : B \\to G\\) be defined by \\(f = \\{(b_1, g_1), (b_2, g_2), (b_3, g_1)\\}\\).\n\nCheck if f is bijective. Justify your answer.",
+   "context": "An organization conducted bike race under two different categories – Boys and Girls. There were 28 participants in all. Among all of them, finally three from category 1 and two from category 2 were selected for the final race. Ravi forms two sets B and G with these participants for his college project.\n\nLet B = \\(\\{b_1, b_2, b_3\\}\\) and G = \\(\\{g_1, g_2\\}\\), where B represents the set of Boys selected and G the set of Girls selected for the final race.\n\nBased on the above information, answer the following questions :",
+   "figure": "DECORATIVE — a stock photograph of two motorcyclists racing, printed between the passage and the sub-parts on page idx 20. Opened before deciding: it carries no data, no labels and no numbers; every quantity the sub-parts need (the sets B and G and their elements) is stated in the passage text. Not attached.",
+   "solution": "A bijection must be both one-one and onto, so it is enough to fail one of them. Here \\(f\\) is NOT one-one: \\(b_1\\) and \\(b_3\\) are distinct elements of B, yet \\(f(b_1) = g_1 = f(b_3)\\), so two different elements have the same image. Hence \\(f\\) is not bijective. (It is onto, since both \\(g_1\\) and \\(g_2\\) appear as images and so the range is the whole of G — but that is not enough on its own. Indeed no function from a 3-element set to a 2-element set can ever be one-one, by the pigeonhole principle, so no such \\(f\\) could be bijective whatever the pairings.)"
+  },
+  {
+   "hash": "ec4a4e6bff2a0734cf75f4a08ca59d1485847ac997f347bead12d88faa669e86",
+   "ref": "Q37i",
+   "questionNumber": "37 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Solving System of Linear Equations",
+   "stem": "Convert the given above situation into a matrix equation of the form AX = B.",
+   "context": "Gautam buys 5 pens, 3 bags and 1 instrument box and pays a sum of ₹ 160. From the same shop, Vikram buys 2 pens, 1 bag and 3 instrument boxes and pays a sum of ₹ 190. Also Ankur buys 1 pen, 2 bags and 4 instrument boxes and pays a sum of ₹ 250.\n\nBased on the above information, answer the following questions :",
+   "solution": "[CBSE marking scheme: the printed matrix equation is correct, but the sentence beneath it misnames the unknowns — it says \"x is the number of pens bought, y the number of bags and z the number of instrument boxes\". Those numbers are given in the passage (5, 3 and 1 for Gautam, and so on) and are the ENTRIES of A; they are not what is being solved for. The unknowns x, y, z are the PRICES of one pen, one bag and one instrument box.] Let ₹ x, ₹ y and ₹ z be the price of one pen, one bag and one instrument box respectively. Gautam's purchase gives \\(5x + 3y + z = 160\\), Vikram's gives \\(2x + y + 3z = 190\\), and Ankur's gives \\(x + 2y + 4z = 250\\). Collecting the coefficients row by row, these three equations are exactly the single matrix equation \\(AX = B\\) with \\(A = \\begin{bmatrix} 5 & 3 & 1 \\\\ 2 & 1 & 3 \\\\ 1 & 2 & 4 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 160 \\\\ 190 \\\\ 250 \\end{bmatrix}\\)."
+  },
+  {
+   "hash": "510e36e934e57255181a7709122da3a9b70e92c77830e7f47dcf6c349de0d3f4",
+   "ref": "Q37ii",
+   "questionNumber": "37 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Determinant and its Properties",
+   "stem": "Find \\(|A|\\).",
+   "context": "Gautam buys 5 pens, 3 bags and 1 instrument box and pays a sum of ₹ 160. From the same shop, Vikram buys 2 pens, 1 bag and 3 instrument boxes and pays a sum of ₹ 190. Also Ankur buys 1 pen, 2 bags and 4 instrument boxes and pays a sum of ₹ 250.\n\nBased on the above information, answer the following questions :",
+   "solution": "With \\(A = \\begin{bmatrix} 5 & 3 & 1 \\\\ 2 & 1 & 3 \\\\ 1 & 2 & 4 \\end{bmatrix}\\), expand along the first row: \\(|A| = 5(1 \\times 4 - 3 \\times 2) - 3(2 \\times 4 - 3 \\times 1) + 1(2 \\times 2 - 1 \\times 1) = 5(4 - 6) - 3(8 - 3) + 1(4 - 1) = 5(-2) - 3(5) + 1(3) = -10 - 15 + 3 = -22\\). So \\(|A| = -22\\). Since \\(|A| \\ne 0\\), A is non-singular, so it has an inverse and the system \\(AX = B\\) has a unique solution."
+  },
+  {
+   "hash": "27a78184d5c05ad17c455922e0124b163add77021ea407288a17dedae6c9e0ae",
+   "ref": "Q37iiia",
+   "questionNumber": "37 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Adjoint and Inverse of a Matrix",
+   "stem": "Find \\(A^{-1}\\).",
+   "context": "Gautam buys 5 pens, 3 bags and 1 instrument box and pays a sum of ₹ 160. From the same shop, Vikram buys 2 pens, 1 bag and 3 instrument boxes and pays a sum of ₹ 190. Also Ankur buys 1 pen, 2 bags and 4 instrument boxes and pays a sum of ₹ 250.\n\nBased on the above information, answer the following questions :",
+   "solution": "Since \\(|A| = -22 \\ne 0\\), the inverse exists and \\(A^{-1} = \\dfrac{1}{|A|}\\,\\mathrm{adj}(A)\\). Computing the nine cofactors of \\(A = \\begin{bmatrix} 5 & 3 & 1 \\\\ 2 & 1 & 3 \\\\ 1 & 2 & 4 \\end{bmatrix}\\): \\(A_{11} = 4 - 6 = -2\\), \\(A_{12} = -(8 - 3) = -5\\), \\(A_{13} = 4 - 1 = 3\\), \\(A_{21} = -(12 - 2) = -10\\), \\(A_{22} = 20 - 1 = 19\\), \\(A_{23} = -(10 - 3) = -7\\), \\(A_{31} = 9 - 1 = 8\\), \\(A_{32} = -(15 - 2) = -13\\), \\(A_{33} = 5 - 6 = -1\\). The adjoint is the TRANSPOSE of this cofactor matrix, so \\(\\mathrm{adj}(A) = \\begin{bmatrix} -2 & -10 & 8 \\\\ -5 & 19 & -13 \\\\ 3 & -7 & -1 \\end{bmatrix}\\). Hence \\(A^{-1} = \\dfrac{1}{-22}\\begin{bmatrix} -2 & -10 & 8 \\\\ -5 & 19 & -13 \\\\ 3 & -7 & -1 \\end{bmatrix} = \\dfrac{1}{22}\\begin{bmatrix} 2 & 10 & -8 \\\\ 5 & -19 & 13 \\\\ -3 & 7 & 1 \\end{bmatrix}\\). As a check, \\(A\\,\\mathrm{adj}(A) = -22\\,I\\), which is \\(|A|\\,I\\) as it should be."
+  },
+  {
+   "hash": "03d764a78f08d67327d16422a64e4a66ddefcc9978f438187e364d27a9274ccc",
+   "ref": "Q37iiib",
+   "questionNumber": "37 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "Determine \\(P = A^2 - 5A\\).",
+   "context": "Gautam buys 5 pens, 3 bags and 1 instrument box and pays a sum of ₹ 160. From the same shop, Vikram buys 2 pens, 1 bag and 3 instrument boxes and pays a sum of ₹ 190. Also Ankur buys 1 pen, 2 bags and 4 instrument boxes and pays a sum of ₹ 250.\n\nBased on the above information, answer the following questions :",
+   "solution": "First square A. Each entry of \\(A^2\\) is a row of A dotted with a column of A; for instance the (1, 1) entry is \\(5(5) + 3(2) + 1(1) = 32\\) and the (2, 3) entry is \\(2(1) + 1(3) + 3(4) = 17\\). Carrying this out for all nine entries, \\(A^2 = \\begin{bmatrix} 5 & 3 & 1 \\\\ 2 & 1 & 3 \\\\ 1 & 2 & 4 \\end{bmatrix}\\begin{bmatrix} 5 & 3 & 1 \\\\ 2 & 1 & 3 \\\\ 1 & 2 & 4 \\end{bmatrix} = \\begin{bmatrix} 32 & 20 & 18 \\\\ 15 & 13 & 17 \\\\ 13 & 13 & 23 \\end{bmatrix}\\). Also \\(5A = \\begin{bmatrix} 25 & 15 & 5 \\\\ 10 & 5 & 15 \\\\ 5 & 10 & 20 \\end{bmatrix}\\). Subtracting entry by entry, \\(P = A^2 - 5A = \\begin{bmatrix} 7 & 5 & 13 \\\\ 5 & 8 & 2 \\\\ 8 & 3 & 3 \\end{bmatrix}\\)."
+  },
+  {
+   "hash": "372ad9e65fd69e6679a537ff71b3215ada3e672235af7fcd76f28ad991cea284",
+   "ref": "Q38i",
+   "questionNumber": "38 (i)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Show that \\((x^2 - y^2)\\,dx + 2xy\\,dy = 0\\) is a differential equation of the type \\(\\dfrac{dy}{dx} = g\\left(\\dfrac{y}{x}\\right)\\).",
+   "context": "An equation involving derivatives of the dependent variable with respect to the independent variables is called a differential equation. A differential equation of the form \\(\\dfrac{dy}{dx} = F(x, y)\\) is said to be homogeneous if F(x, y) is a homogeneous function of degree zero, whereas a function F(x, y) is a homogenous function of degree n if \\(F(\\lambda x, \\lambda y) = \\lambda^n F(x, y)\\). To solve a homogeneous differential equation of the type \\(\\dfrac{dy}{dx} = F(x, y) = g\\left(\\dfrac{y}{x}\\right)\\), we make the substitution \\(y = vx\\) and then separate the variables.\n\nBased on the above, answer the following questions :",
+   "solution": "First bring the equation to derivative form. From \\((x^2 - y^2)\\,dx + 2xy\\,dy = 0\\) we get \\(2xy\\,dy = -(x^2 - y^2)\\,dx = (y^2 - x^2)\\,dx\\), so \\(\\dfrac{dy}{dx} = \\dfrac{y^2 - x^2}{2xy} = F(x, y)\\). Now test the degree of homogeneity by replacing \\(x\\) with \\(\\lambda x\\) and \\(y\\) with \\(\\lambda y\\): \\(F(\\lambda x, \\lambda y) = \\dfrac{\\lambda^2 y^2 - \\lambda^2 x^2}{2(\\lambda x)(\\lambda y)} = \\dfrac{\\lambda^2 (y^2 - x^2)}{\\lambda^2 (2xy)} = F(x, y) = \\lambda^0 F(x, y)\\), so \\(F\\) is a homogeneous function of degree zero. Equivalently, dividing numerator and denominator by \\(x^2\\) puts it explicitly in terms of \\(\\dfrac{y}{x}\\): \\(\\dfrac{dy}{dx} = \\dfrac{\\left(\\dfrac{y}{x}\\right)^2 - 1}{2\\left(\\dfrac{y}{x}\\right)} = g\\left(\\dfrac{y}{x}\\right)\\), which is the required form."
+  },
+  {
+   "hash": "ee2fa920b1fba2149f70466f9bdd975a505030c4215fd5bf1a99d598efd94f79",
+   "ref": "Q38ii",
+   "questionNumber": "38 (ii)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Solve the above equation to find its general solution.",
+   "context": "An equation involving derivatives of the dependent variable with respect to the independent variables is called a differential equation. A differential equation of the form \\(\\dfrac{dy}{dx} = F(x, y)\\) is said to be homogeneous if F(x, y) is a homogeneous function of degree zero, whereas a function F(x, y) is a homogenous function of degree n if \\(F(\\lambda x, \\lambda y) = \\lambda^n F(x, y)\\). To solve a homogeneous differential equation of the type \\(\\dfrac{dy}{dx} = F(x, y) = g\\left(\\dfrac{y}{x}\\right)\\), we make the substitution \\(y = vx\\) and then separate the variables.\n\nBased on the above, answer the following questions :",
+   "solution": "The equation is homogeneous, so use the substitution given in the passage. Put \\(y = vx\\); then \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\), and from part (i) the equation reads \\(v + x\\dfrac{dv}{dx} = \\dfrac{v^2 - 1}{2v}\\). Isolating the derivative term, \\(x\\dfrac{dv}{dx} = \\dfrac{v^2 - 1}{2v} - v = \\dfrac{v^2 - 1 - 2v^2}{2v} = \\dfrac{-(1 + v^2)}{2v}\\). The variables now separate: \\(\\dfrac{2v}{1 + v^2}\\,dv = -\\dfrac{dx}{x}\\). The left side is of the form \\(\\dfrac{f'(v)}{f(v)}\\), so integrating both sides gives \\(\\log(1 + v^2) = -\\log|x| + \\log C\\), that is \\(\\log\\left[|x|\\,(1 + v^2)\\right] = \\log C\\) and hence \\(x(1 + v^2) = C\\). Finally substitute back \\(v = \\dfrac{y}{x}\\): \\(x\\left(1 + \\dfrac{y^2}{x^2}\\right) = C\\), i.e. \\(\\dfrac{x^2 + y^2}{x} = C\\). The general solution is therefore \\(x^2 + y^2 = Cx\\), a family of circles through the origin with centres on the x-axis."
+  }
+ ]
+}
