@@ -1,0 +1,220 @@
+{
+ "paper": "65/4/1",
+ "year": 2022,
+ "paperId": "2022-65-4-1",
+ "markingScheme": "out/2022-65-4-1/ms/p00.png … p09.png",
+ "rows": [
+  {
+   "hash": "8b52f3915ad177a7ece2baf7ffa66b9d57c390dc959460dbb821c5443a2f1364",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "A bag contains 3 red and 4 white balls. Three balls are drawn at random, one-by-one without replacement from the bag. If the first ball drawn is red in colour, then find the probability that the remaining two balls drawn are also red in colour.",
+   "solution": "Let \\(A\\) be the event that the first ball drawn is red, and \\(B\\) the event that the remaining two balls drawn are also red. What is wanted is the conditional probability \\(P(B \\mid A) = \\dfrac{P(A \\cap B)}{P(A)}\\).\n\nThe bag holds 3 red and 4 white balls, so \\(P(A) = \\dfrac{3}{7}\\). The event \\(A \\cap B\\) is simply \"all three balls drawn are red\", and drawing without replacement gives \\(P(A \\cap B) = \\dfrac{3}{7} \\times \\dfrac{2}{6} \\times \\dfrac{1}{5} = \\dfrac{1}{35}\\).\n\nTherefore \\(P(B \\mid A) = \\dfrac{1/35}{3/7} = \\dfrac{1}{35} \\times \\dfrac{7}{3} = \\dfrac{1}{15}\\).\n\nThe same answer follows directly: once a red ball has been removed, 2 red and 4 white balls remain, and the next two are both red with probability \\(\\dfrac{2}{6} \\times \\dfrac{1}{5} = \\dfrac{1}{15}\\)."
+  },
+  {
+   "hash": "b6667a96c6c7299731c9bdfd04d3b39cde812d91afcee432b67561ab1b021f95",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "A coin is tossed twice. The following table shows the probability distribution of number of tails :\n\n| X | 0 | 1 | 2 |\n|---|---|---|---|\n| P(X) | K | 6K | 9K |\n\n(a) Find the value of K.\n\n(b) Is the coin tossed biased or unbiased ? Justify your answer.",
+   "solution": "(a) The probabilities in a distribution must sum to 1, so \\(K + 6K + 9K = 1\\), i.e. \\(16K = 1\\), giving \\(K = \\dfrac{1}{16}\\).\n\n(b) With that value, \\(P(X = 0) = \\dfrac{1}{16}\\), \\(P(X = 1) = \\dfrac{6}{16}\\) and \\(P(X = 2) = \\dfrac{9}{16}\\). Let \\(P(T) = p\\) and \\(P(H) = q\\), where \\(X\\) counts the tails in two tosses. Getting no tail means two heads, so \\(q^2 = \\dfrac{1}{16}\\), giving \\(q = \\dfrac{1}{4}\\) and hence \\(p = \\dfrac{3}{4}\\).\n\nThese values fit the rest of the table, which confirms the reading: \\(P(X = 1) = 2pq = 2 \\times \\dfrac{3}{4} \\times \\dfrac{1}{4} = \\dfrac{6}{16}\\) and \\(P(X = 2) = p^2 = \\dfrac{9}{16}\\).\n\nSince \\(P(H) = \\dfrac{1}{4}\\) and \\(P(T) = \\dfrac{3}{4}\\) are not equal, the coin is biased."
+  },
+  {
+   "hash": "4e125cdf055d9c4bf3332664cb5b2ffb14ac8b194bd969b74c36e00fa2e7f2cc",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "The Plane",
+   "stem": "The foot of a perpendicular drawn from the point \\((-2, -1, -3)\\) on a plane is \\((1, -3, 3)\\). Find the equation of the plane.",
+   "solution": "The segment joining the external point \\(A(-2, -1, -3)\\) to the foot of the perpendicular \\(B(1, -3, 3)\\) is itself normal to the plane, so its direction ratios are the direction ratios of the normal:\n\n\\(\\langle 1 - (-2),\\; -3 - (-1),\\; 3 - (-3) \\rangle = \\langle 3, -2, 6 \\rangle\\).\n\nThe plane passes through the foot \\(B(1, -3, 3)\\), so its equation is\n\n\\(3(x - 1) - 2(y + 3) + 6(z - 3) = 0\\),\n\nwhich simplifies to \\(3x - 2y + 6z = 27\\)."
+  },
+  {
+   "hash": "8be408735bc6efa12b0f7a33287d581899569200c398b736308325a9d80a2ff1",
+   "ref": "Q4a",
+   "questionNumber": "4 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "If \\(|\\vec{a} \\times \\vec{b}|^2 + |\\vec{a} \\cdot \\vec{b}|^2 = 400\\) and \\(|\\vec{b}| = 5\\), then find the value of \\(|\\vec{a}|\\).",
+   "solution": "Let \\(\\theta\\) be the angle between the two vectors. Then \\(|\\vec{a} \\times \\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\theta\\) and \\(|\\vec{a} \\cdot \\vec{b}| = |\\vec{a}||\\vec{b}|\\cos\\theta\\), so squaring and adding makes the angle disappear:\n\n\\(|\\vec{a} \\times \\vec{b}|^2 + |\\vec{a} \\cdot \\vec{b}|^2 = |\\vec{a}|^2|\\vec{b}|^2\\sin^2\\theta + |\\vec{a}|^2|\\vec{b}|^2\\cos^2\\theta = |\\vec{a}|^2|\\vec{b}|^2\\).\n\nHence \\(|\\vec{a}|^2|\\vec{b}|^2 = 400\\). Substituting \\(|\\vec{b}| = 5\\) gives \\(|\\vec{a}|^2 \\times 25 = 400\\), so \\(|\\vec{a}|^2 = 16\\) and, magnitude being non-negative, \\(|\\vec{a}| = 4\\)."
+  },
+  {
+   "hash": "1339fa87923de7aa32ea51f0cedafebdde8a5a8165604d4335f4f01e34744a1b",
+   "ref": "Q4b",
+   "questionNumber": "4 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Components and Direction Cosines",
+   "stem": "Find all the possible vectors of magnitude \\(5\\sqrt{3}\\) which are equally inclined to the coordinate axes.",
+   "solution": "A vector equally inclined to the three coordinate axes makes the same angle with each of them, so its three direction cosines are equal, which means its three components are equal. Let the vector be \\(x\\hat{i} + x\\hat{j} + x\\hat{k}\\).\n\nIts magnitude is \\(\\sqrt{x^2 + x^2 + x^2} = \\sqrt{3x^2}\\), and this is given as \\(5\\sqrt{3}\\):\n\n\\(\\sqrt{3x^2} = 5\\sqrt{3} \\Rightarrow 3x^2 = 75 \\Rightarrow x^2 = 25 \\Rightarrow x = \\pm 5\\).\n\nBoth signs are admissible, so the required vectors are \\(5\\hat{i} + 5\\hat{j} + 5\\hat{k}\\) and \\(-5\\hat{i} - 5\\hat{j} - 5\\hat{k}\\)."
+  },
+  {
+   "hash": "3bb1e8978baade77ef9e4a32a56b74d1b2327540f64e98ecd5ca9dcf43e8e968",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Variables Separable",
+   "stem": "Find the general solution of the differential equation\n\n\\(\\sec^2 x \\cdot \\tan y \\, dx + \\sec^2 y \\cdot \\tan x \\, dy = 0.\\)",
+   "solution": "[CBSE marking scheme: the printed integration line reads \\(\\log|\\log x| + \\log|\\tan y| = \\log C\\); the first term should be \\(\\log|\\tan x|\\), as the scheme's own next line \\(\\tan x \\cdot \\tan y = C\\) requires. The final answer is unaffected.]\n\nThe variables separate once the equation is divided throughout by \\(\\tan x \\cdot \\tan y\\):\n\n\\(\\dfrac{\\sec^2 x}{\\tan x}\\,dx + \\dfrac{\\sec^2 y}{\\tan y}\\,dy = 0\\).\n\nIn each term the numerator is the derivative of the denominator, since \\(\\dfrac{d}{dx}(\\tan x) = \\sec^2 x\\), so each integrates to a logarithm. Writing the constant of integration as \\(\\log C\\),\n\n\\(\\log|\\tan x| + \\log|\\tan y| = \\log C\\).\n\nCombining the logarithms gives \\(\\log|\\tan x \\cdot \\tan y| = \\log C\\), so the general solution is\n\n\\(\\tan x \\cdot \\tan y = C\\)."
+  },
+  {
+   "hash": "60e416717c13ccdf7ef5111e2459859c01fbfccefc34775013b4921acad7f20e",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Parts",
+   "stem": "Evaluate :\n\n\\(\\displaystyle\\int_0^1 x^2 e^x \\, dx\\)",
+   "solution": "Integrate by parts, taking \\(x^2\\) as the first function and \\(e^x\\) as the second:\n\n\\(\\displaystyle\\int_0^1 x^2 e^x \\, dx = \\left[x^2 e^x\\right]_0^1 - \\int_0^1 2x e^x \\, dx\\).\n\nThe remaining integral needs integration by parts once more: \\(\\displaystyle\\int 2x e^x \\, dx = 2xe^x - 2e^x\\). Substituting back,\n\n\\(\\displaystyle\\int_0^1 x^2 e^x \\, dx = \\left[x^2 e^x - 2xe^x + 2e^x\\right]_0^1\\).\n\nAt \\(x = 1\\) the bracket is \\(e - 2e + 2e = e\\); at \\(x = 0\\) it is \\(0 - 0 + 2 = 2\\).\n\nHence the value of the integral is \\(e - 2\\)."
+  },
+  {
+   "hash": "1e26ed1020e7c0ac935800210628b924ce021e5264bb766da8be23960ac6547e",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "Find the area of the region \\(\\{(x, y) : x^2 \\le y \\le x + 2\\}\\), using integration.",
+   "solution": "The region is bounded below by the parabola \\(y = x^2\\) and above by the line \\(y = x + 2\\). Sketching the two curves shows the parabola opening upwards with the line cutting it at two points.\n\nThe curves meet where \\(x^2 = x + 2\\), i.e. \\(x^2 - x - 2 = 0\\), so \\((x - 2)(x + 1) = 0\\) and the x-coordinates of intersection are \\(x = -1\\) and \\(x = 2\\). Between these values the line lies above the parabola, so\n\nArea \\(= \\displaystyle\\int_{-1}^{2}\\left[(x + 2) - x^2\\right]dx = \\left[\\dfrac{(x + 2)^2}{2} - \\dfrac{x^3}{3}\\right]_{-1}^{2}\\).\n\nAt \\(x = 2\\) this is \\(\\dfrac{16}{2} - \\dfrac{8}{3} = 8 - \\dfrac{8}{3} = \\dfrac{16}{3}\\); at \\(x = -1\\) it is \\(\\dfrac{1}{2} - \\left(-\\dfrac{1}{3}\\right) = \\dfrac{5}{6}\\).\n\nArea \\(= \\dfrac{16}{3} - \\dfrac{5}{6} = \\dfrac{32 - 5}{6} = \\dfrac{27}{6} = \\dfrac{9}{2}\\) square units."
+  },
+  {
+   "hash": "89fca616d0c3dbcafeca391cf860a7754ca6d3311b13e5cbc0f2faf9d3029067",
+   "ref": "Q8a",
+   "questionNumber": "8 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Substitution",
+   "stem": "Find :\n\n\\(\\displaystyle\\int \\dfrac{1}{e^x + 1} \\, dx\\)",
+   "solution": "Substitute \\(e^x = t\\), so that \\(e^x\\,dx = dt\\) and therefore \\(dx = \\dfrac{dt}{t}\\). The integral becomes\n\n\\(\\displaystyle\\int \\dfrac{1}{e^x + 1}\\,dx = \\int \\dfrac{1}{t + 1}\\cdot\\dfrac{dt}{t} = \\int \\dfrac{dt}{t(t + 1)}\\).\n\nSplit into partial fractions using \\(\\dfrac{1}{t(t + 1)} = \\dfrac{1}{t} - \\dfrac{1}{t + 1}\\):\n\n\\(\\displaystyle\\int \\dfrac{dt}{t} - \\int \\dfrac{dt}{t + 1} = \\log|t| - \\log|t + 1| + C\\).\n\nRestoring \\(t = e^x\\), which is always positive, the answer is\n\n\\(\\log e^x - \\log(e^x + 1) + C = \\log\\left|\\dfrac{e^x}{1 + e^x}\\right| + C\\),\n\nwhich may equally be written as \\(x - \\log(e^x + 1) + C\\)."
+  },
+  {
+   "hash": "6e25771197b6a7e6872e37bad90546ced3bda3d94788fc10313cf5cd227229a6",
+   "ref": "Q8b",
+   "questionNumber": "8 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Definite Integrals and the Fundamental Theorem",
+   "stem": "Evaluate :\n\n\\(\\displaystyle\\int_1^4 \\{|x| + |3 - x|\\} \\, dx\\)",
+   "solution": "Each modulus must be resolved over the interval of integration. On \\([1, 4]\\) we have \\(x > 0\\), so \\(|x| = x\\) throughout. The second modulus changes sign at \\(x = 3\\): \\(|3 - x| = 3 - x\\) for \\(1 \\le x \\le 3\\), and \\(|3 - x| = x - 3\\) for \\(3 \\le x \\le 4\\). So split the integral at \\(x = 3\\):\n\n\\(I = \\displaystyle\\int_1^3 \\{x + (3 - x)\\}\\,dx + \\int_3^4 \\{x + (x - 3)\\}\\,dx = \\int_1^3 3\\,dx + \\int_3^4 (2x - 3)\\,dx\\).\n\nThe first part is \\(\\left[3x\\right]_1^3 = 9 - 3 = 6\\).\n\nThe second is \\(\\left[x^2 - 3x\\right]_3^4 = (16 - 12) - (9 - 9) = 4 - 0 = 4\\).\n\nHence \\(I = 6 + 4 = 10\\)."
+  },
+  {
+   "hash": "4422a7fc4dfcdc03ae8f6b385541bab604cddf233fa65b30c9649ce50263c6c0",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "If \\(\\vec{a}\\), \\(\\vec{b}\\) and \\(\\vec{c}\\) are mutually perpendicular vectors of equal magnitude, then prove that the vector \\((2\\vec{a} + \\vec{b} + 2\\vec{c})\\) is equally inclined to both \\(\\vec{a}\\) and \\(\\vec{c}\\). Also, find the angle between \\(\\vec{a}\\) and \\((2\\vec{a} + \\vec{b} + 2\\vec{c})\\).",
+   "solution": "Let \\(|\\vec{a}| = |\\vec{b}| = |\\vec{c}| = m\\). Because the three vectors are mutually perpendicular, every dot product between distinct ones vanishes: \\(\\vec{a}\\cdot\\vec{b} = \\vec{b}\\cdot\\vec{c} = \\vec{a}\\cdot\\vec{c} = 0\\).\n\nFirst find the magnitude of the combination. Expanding the square,\n\n\\(|2\\vec{a} + \\vec{b} + 2\\vec{c}|^2 = 4|\\vec{a}|^2 + |\\vec{b}|^2 + 4|\\vec{c}|^2 + 4\\,\\vec{a}\\cdot\\vec{b} + 4\\,\\vec{b}\\cdot\\vec{c} + 8\\,\\vec{a}\\cdot\\vec{c} = 4m^2 + m^2 + 4m^2 = 9m^2\\),\n\nso \\(|2\\vec{a} + \\vec{b} + 2\\vec{c}| = 3m\\).\n\nLet \\(\\theta\\) be the angle the combination makes with \\(\\vec{a}\\). Since \\((2\\vec{a} + \\vec{b} + 2\\vec{c})\\cdot\\vec{a} = 2|\\vec{a}|^2 = 2m^2\\),\n\n\\(\\cos\\theta = \\dfrac{(2\\vec{a} + \\vec{b} + 2\\vec{c})\\cdot\\vec{a}}{|2\\vec{a} + \\vec{b} + 2\\vec{c}|\\,|\\vec{a}|} = \\dfrac{2m^2}{3m \\cdot m} = \\dfrac{2}{3}\\).\n\nLet \\(\\alpha\\) be the angle it makes with \\(\\vec{c}\\). Since \\((2\\vec{a} + \\vec{b} + 2\\vec{c})\\cdot\\vec{c} = 2|\\vec{c}|^2 = 2m^2\\) as well,\n\n\\(\\cos\\alpha = \\dfrac{2m^2}{3m \\cdot m} = \\dfrac{2}{3}\\).\n\nThus \\(\\cos\\theta = \\cos\\alpha\\), and as both angles lie in \\([0, \\pi]\\) this gives \\(\\theta = \\alpha\\). Hence \\((2\\vec{a} + \\vec{b} + 2\\vec{c})\\) is equally inclined to \\(\\vec{a}\\) and \\(\\vec{c}\\).\n\nThe required angle between \\(\\vec{a}\\) and \\((2\\vec{a} + \\vec{b} + 2\\vec{c})\\) is \\(\\cos^{-1}\\left(\\dfrac{2}{3}\\right)\\)."
+  },
+  {
+   "hash": "87faddde96722d853e60038e93573e8eb7432fea17910235507f028360727a17",
+   "ref": "Q10a",
+   "questionNumber": "10 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "If a line makes \\(60^\\circ\\) and \\(45^\\circ\\) angles with the positive directions of x-axis and z-axis respectively, then find the angle that it makes with the positive direction of y-axis. Hence, write the direction cosines of the line.",
+   "solution": "[CBSE marking scheme: the printed key correctly reaches \\(m = \\pm\\dfrac{1}{2}\\) but then reports only \\(\\theta = 60^\\circ\\) and the single triple \\(\\left\\langle \\dfrac{1}{2}, \\dfrac{1}{2}, \\dfrac{1}{\\sqrt{2}} \\right\\rangle\\). The branch \\(m = -\\dfrac{1}{2}\\) satisfies both given conditions just as well and is included below.]\n\nLet the direction cosines of the line be \\(l, m, n\\), where \\(l, m, n\\) are the cosines of the angles the line makes with the positive x-, y- and z-axes.\n\nGiven \\(l = \\cos 60^\\circ = \\dfrac{1}{2}\\) and \\(n = \\cos 45^\\circ = \\dfrac{1}{\\sqrt{2}}\\).\n\nDirection cosines satisfy \\(l^2 + m^2 + n^2 = 1\\), so\n\n\\(\\dfrac{1}{4} + m^2 + \\dfrac{1}{2} = 1 \\Rightarrow m^2 = \\dfrac{1}{4} \\Rightarrow m = \\pm\\dfrac{1}{2}\\).\n\nBoth signs give a genuine direction: each of \\(\\left(\\dfrac{1}{2}, \\dfrac{1}{2}, \\dfrac{1}{\\sqrt{2}}\\right)\\) and \\(\\left(\\dfrac{1}{2}, -\\dfrac{1}{2}, \\dfrac{1}{\\sqrt{2}}\\right)\\) is a unit vector making \\(60^\\circ\\) with the x-axis and \\(45^\\circ\\) with the z-axis.\n\nSo the angle with the positive direction of the y-axis is \\(\\cos^{-1}\\left(\\dfrac{1}{2}\\right) = 60^\\circ\\) or \\(\\cos^{-1}\\left(-\\dfrac{1}{2}\\right) = 120^\\circ\\).\n\nThe direction cosines of the line are accordingly \\(\\left\\langle \\dfrac{1}{2}, \\dfrac{1}{2}, \\dfrac{1}{\\sqrt{2}} \\right\\rangle\\) when the y-angle is \\(60^\\circ\\), or \\(\\left\\langle \\dfrac{1}{2}, -\\dfrac{1}{2}, \\dfrac{1}{\\sqrt{2}} \\right\\rangle\\) when it is \\(120^\\circ\\)."
+  },
+  {
+   "hash": "77b019fe9d7d41e679282875783fdc3c14e167b3facc05ceccc2dcf692d0852f",
+   "ref": "Q10b",
+   "questionNumber": "10 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Shortest Distance Between Two Lines",
+   "stem": "Check whether the lines \\(\\dfrac{x - 1}{2} = \\dfrac{y - 2}{3} = \\dfrac{z - 3}{4}\\) and \\(\\dfrac{x - 4}{5} = \\dfrac{y - 1}{2} = z\\) are skew or not.",
+   "solution": "Two lines are skew when they are neither parallel nor intersecting, i.e. when they do not lie in a common plane. The test is the scalar triple product \\((\\vec{a_2} - \\vec{a_1})\\cdot(\\vec{b_1} \\times \\vec{b_2})\\): it is zero exactly when the lines are coplanar.\n\nRead off a point and a direction for each line. The first passes through \\(\\vec{a_1} = \\hat{i} + 2\\hat{j} + 3\\hat{k}\\) with direction \\(\\vec{b_1} = 2\\hat{i} + 3\\hat{j} + 4\\hat{k}\\). Writing the second as \\(\\dfrac{x - 4}{5} = \\dfrac{y - 1}{2} = \\dfrac{z - 0}{1}\\), it passes through \\(\\vec{a_2} = 4\\hat{i} + \\hat{j}\\) with direction \\(\\vec{b_2} = 5\\hat{i} + 2\\hat{j} + \\hat{k}\\).\n\nThen \\(\\vec{a_2} - \\vec{a_1} = 3\\hat{i} - \\hat{j} - 3\\hat{k}\\), and\n\n\\(\\vec{b_1} \\times \\vec{b_2} = (3 \\times 1 - 4 \\times 2)\\hat{i} - (2 \\times 1 - 4 \\times 5)\\hat{j} + (2 \\times 2 - 3 \\times 5)\\hat{k} = -5\\hat{i} + 18\\hat{j} - 11\\hat{k}\\).\n\nThis is not the zero vector, so the lines are not parallel. Now\n\n\\((\\vec{a_2} - \\vec{a_1})\\cdot(\\vec{b_1} \\times \\vec{b_2}) = 3(-5) + (-1)(18) + (-3)(-11) = -15 - 18 + 33 = 0\\).\n\nThe scalar triple product vanishes, so the two lines are coplanar and therefore intersect. Hence the given lines are not skew."
+  },
+  {
+   "hash": "efc107ad3e0397ee7269195a2033aec4433b69e9284e11b1d2dea678f0c5ddb0",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "The Plane",
+   "stem": "Find the equations of the planes passing through the line of intersection of the planes \\(\\vec{r} \\cdot (\\hat{i} + 3\\hat{j}) = 6\\) and \\(\\vec{r} \\cdot (3\\hat{i} - \\hat{j} - 4\\hat{k}) = 0\\), which are at a distance of 1 unit from the origin.",
+   "solution": "Any plane through the line of intersection of two given planes belongs to the family formed by adding a multiple of one equation to the other. Here that family is\n\n\\(\\vec{r}\\cdot(\\hat{i} + 3\\hat{j}) - 6 + \\lambda\\left[\\vec{r}\\cdot(3\\hat{i} - \\hat{j} - 4\\hat{k})\\right] = 0\\),\n\nwhich collects into \\(\\vec{r}\\cdot\\left[(1 + 3\\lambda)\\hat{i} + (3 - \\lambda)\\hat{j} - 4\\lambda\\hat{k}\\right] = 6\\) for some \\(\\lambda\\).\n\nFor a plane written as \\(\\vec{r}\\cdot\\vec{n} = 6\\), the distance from the origin is \\(\\dfrac{6}{|\\vec{n}|}\\). Setting this equal to 1 gives \\(|\\vec{n}| = 6\\), i.e. \\(|\\vec{n}|^2 = 36\\):\n\n\\((1 + 3\\lambda)^2 + (3 - \\lambda)^2 + (-4\\lambda)^2 = 36\\).\n\nExpanding, \\(1 + 6\\lambda + 9\\lambda^2 + 9 - 6\\lambda + \\lambda^2 + 16\\lambda^2 = 36\\). The terms in \\(\\lambda\\) cancel, leaving \\(10 + 26\\lambda^2 = 36\\), so \\(26\\lambda^2 = 26\\) and \\(\\lambda = \\pm 1\\).\n\nFor \\(\\lambda = 1\\): \\(\\vec{r}\\cdot(4\\hat{i} + 2\\hat{j} - 4\\hat{k}) = 6\\).\n\nFor \\(\\lambda = -1\\): \\(\\vec{r}\\cdot(-2\\hat{i} + 4\\hat{j} + 4\\hat{k}) = 6\\).\n\nAs a check, each normal has magnitude \\(\\sqrt{16 + 4 + 16} = \\sqrt{4 + 16 + 16} = 6\\), so each plane is indeed 1 unit from the origin."
+  },
+  {
+   "hash": "3619f7a98dab8dc4fca69ab761ef31112159596e6c8e4f1da23d9f9810372789",
+   "ref": "Q12a",
+   "questionNumber": "12 (a)",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "Find the particular solution of the differential equation \\(x \\dfrac{dy}{dx} + y + \\dfrac{1}{1 + x^2} = 0\\), given that \\(y(1) = 0\\).",
+   "solution": "Divide throughout by \\(x\\) to put the equation into the standard linear form \\(\\dfrac{dy}{dx} + Py = Q\\):\n\n\\(\\dfrac{dy}{dx} + \\dfrac{1}{x}y = \\dfrac{-1}{x(1 + x^2)}\\).\n\nHere \\(P = \\dfrac{1}{x}\\), so the integrating factor is\n\n\\(\\text{I.F.} = e^{\\int \\frac{1}{x}dx} = e^{\\log x} = x\\).\n\nThe solution is \\(y \\cdot \\text{I.F.} = \\int Q \\cdot \\text{I.F.}\\,dx + C\\), and the factor of \\(x\\) cancels neatly:\n\n\\(y \\cdot x = \\displaystyle\\int x \\cdot \\dfrac{-1}{x(1 + x^2)}\\,dx + C = \\int \\dfrac{-1}{1 + x^2}\\,dx + C\\),\n\nso \\(xy = -\\tan^{-1}x + C\\).\n\nApply the initial condition \\(y(1) = 0\\): \\(1 \\times 0 = -\\tan^{-1}(1) + C = -\\dfrac{\\pi}{4} + C\\), giving \\(C = \\dfrac{\\pi}{4}\\).\n\nThe particular solution is therefore \\(xy = \\dfrac{\\pi}{4} - \\tan^{-1}x\\)."
+  },
+  {
+   "hash": "7728b570bc7517a44fe88ef42c1c3530ac656f563fa513cd091c2bf60eca1b00",
+   "ref": "Q12b",
+   "questionNumber": "12 (b)",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Find the general solution of the differential equation\n\n\\(x (y^3 + x^3) \\, dy = (2y^4 + 5x^3 y) \\, dx.\\)",
+   "solution": "Write the equation as \\(\\dfrac{dy}{dx} = \\dfrac{2y^4 + 5x^3y}{xy^3 + x^4}\\). Numerator and denominator are both homogeneous of degree 4, so the substitution \\(y = vx\\) applies, with \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\).\n\nSubstituting, every term carries a factor \\(x^4\\) which cancels, and the equation becomes\n\n\\(v + x\\dfrac{dv}{dx} = \\dfrac{2v^4 + 5v}{v^3 + 1}\\).\n\nHence \\(x\\dfrac{dv}{dx} = \\dfrac{2v^4 + 5v}{v^3 + 1} - v = \\dfrac{2v^4 + 5v - v^4 - v}{v^3 + 1} = \\dfrac{v^4 + 4v}{v^3 + 1}\\).\n\nSeparating the variables, \\(\\dfrac{v^3 + 1}{v^4 + 4v}\\,dv = \\dfrac{dx}{x}\\). Multiplying both sides by 4 makes the numerator on the left exactly the derivative of its denominator, since \\(\\dfrac{d}{dv}(v^4 + 4v) = 4v^3 + 4\\):\n\n\\(\\displaystyle\\int \\dfrac{4v^3 + 4}{v^4 + 4v}\\,dv = 4\\int \\dfrac{dx}{x}\\),\n\nso \\(\\log|v^4 + 4v| = 4\\log x + \\log C = \\log(Cx^4)\\).\n\nRestoring \\(v = \\dfrac{y}{x}\\) gives \\(v^4 + 4v = \\dfrac{y^4}{x^4} + \\dfrac{4y}{x} = \\dfrac{y^4 + 4yx^3}{x^4}\\), so\n\n\\(\\log\\left|\\dfrac{y^4 + 4yx^3}{x^4}\\right| = \\log(Cx^4)\\).\n\nThe general solution is therefore \\(y^4 + 4yx^3 = Cx^8\\)."
+  },
+  {
+   "hash": "ea3142b4c43ecff282c342540fc7d63a3ba0a72501386ea58629730c7271adb4",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "Evaluate :\n\n\\(\\displaystyle\\int_0^{\\pi/2} (2 \\log \\cos x - \\log \\sin 2x) \\, dx\\)",
+   "solution": "First combine the two logarithms into one. Using \\(\\sin 2x = 2\\sin x\\cos x\\),\n\n\\(2\\log\\cos x - \\log\\sin 2x = \\log\\left(\\dfrac{\\cos^2 x}{2\\sin x\\cos x}\\right) = \\log\\left(\\dfrac{\\cot x}{2}\\right)\\).\n\nSo let \\(I = \\displaystyle\\int_0^{\\pi/2}\\log\\left(\\dfrac{\\cot x}{2}\\right)dx\\)  ... (1)\n\nNow apply the property \\(\\displaystyle\\int_0^a f(x)\\,dx = \\int_0^a f(a - x)\\,dx\\) with \\(a = \\dfrac{\\pi}{2}\\). Since \\(\\cot\\left(\\dfrac{\\pi}{2} - x\\right) = \\tan x\\),\n\n\\(I = \\displaystyle\\int_0^{\\pi/2}\\log\\left(\\dfrac{\\tan x}{2}\\right)dx\\)  ... (2)\n\nAdding (1) and (2), the product \\(\\tan x \\cdot \\cot x = 1\\) removes \\(x\\) entirely:\n\n\\(2I = \\displaystyle\\int_0^{\\pi/2}\\log\\left(\\dfrac{\\tan x}{2}\\cdot\\dfrac{\\cot x}{2}\\right)dx = \\int_0^{\\pi/2}\\log\\dfrac{1}{4}\\,dx = \\log\\dfrac{1}{4}\\left[x\\right]_0^{\\pi/2} = \\dfrac{\\pi}{2}\\log\\dfrac{1}{4}\\).\n\nHence \\(I = \\dfrac{\\pi}{4}\\log\\dfrac{1}{4}\\), which since \\(\\log\\dfrac{1}{4} = -2\\log 2\\) is the same as\n\n\\(I = -\\dfrac{\\pi}{2}\\log 2\\)."
+  },
+  {
+   "hash": "72e869fee12dbab0fae37c082e8ba783a9e1551e94274ba3c656238225a3ad73",
+   "ref": "Q14a",
+   "questionNumber": "14 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Independent Events",
+   "stem": "exactly one of them earns 10 points.",
+   "context": "In a game of Archery, each ring of the Archery target is valued. The centremost ring is worth 10 points and rest of the rings are allotted points 9 to 1 in sequential order moving outwards.\n\nArcher A is likely to earn 10 points with a probability of \\(0{\\cdot}8\\) and Archer B is likely the earn 10 points with a probability of \\(0{\\cdot}9\\).\n\nBased on the above information, answer the following questions :\n\nIf both of them hit the Archery target, then find the probability that",
+   "figure": "DECORATIVE — the printed archery-target illustration (page idx 6) only labels the rings '1 point' to '10 points', which the passage already states in words. Both probabilities needed (0·8, 0·9) are in the stem text. Not attached.",
+   "solution": "Let \\(A\\) be the event that Archer A earns 10 points and \\(B\\) the event that Archer B earns 10 points, so \\(P(A) = 0.8\\) and \\(P(B) = 0.9\\). The two archers shoot independently of each other, and the complements are \\(P(\\bar{A}) = 0.2\\) and \\(P(\\bar{B}) = 0.1\\).\n\n\"Exactly one of them earns 10 points\" happens in two mutually exclusive ways: A scores 10 and B does not, or B scores 10 and A does not. By independence each is a product, and being mutually exclusive the two are added:\n\n\\(P(\\text{exactly one}) = P(A)P(\\bar{B}) + P(\\bar{A})P(B) = 0.8 \\times 0.1 + 0.2 \\times 0.9\\)\n\n\\(= 0.08 + 0.18 = 0.26\\)."
+  },
+  {
+   "hash": "b1d7add67af231336046ab37e86caaac4978c64fabf9294e629029fb414f122e",
+   "ref": "Q14b",
+   "questionNumber": "14 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Independent Events",
+   "stem": "both of them earn 10 points.",
+   "context": "In a game of Archery, each ring of the Archery target is valued. The centremost ring is worth 10 points and rest of the rings are allotted points 9 to 1 in sequential order moving outwards.\n\nArcher A is likely to earn 10 points with a probability of \\(0{\\cdot}8\\) and Archer B is likely the earn 10 points with a probability of \\(0{\\cdot}9\\).\n\nBased on the above information, answer the following questions :\n\nIf both of them hit the Archery target, then find the probability that",
+   "solution": "Let \\(A\\) be the event that Archer A earns 10 points and \\(B\\) the event that Archer B earns 10 points, so \\(P(A) = 0.8\\) and \\(P(B) = 0.9\\).\n\nThe two archers shoot independently, so the probability that both events occur is the product of their probabilities:\n\n\\(P(A \\cap B) = P(A)\\,P(B) = 0.8 \\times 0.9 = 0.72\\).\n\nSo the probability that both of them earn 10 points is \\(0.72\\)."
+  }
+ ]
+}

@@ -1,0 +1,221 @@
+{
+ "paper": "65/5/1",
+ "year": 2022,
+ "paperId": "2022-65-5-1",
+ "markingScheme": "out/2022-65-5-1/ms/p00.png … p10.png",
+ "rows": [
+  {
+   "hash": "a96b6b3e5234e0dc08a6146336201b040c2c243b54719f5d16fee255d344108a",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integrals of Some Particular Functions",
+   "stem": "Find : \\(\\int \\dfrac{dx}{\\sqrt{4x - x^2}}\\)",
+   "solution": "The radicand is not yet in a standard form, so complete the square: \\(4x - x^2 = -\\left(x^2 - 4x\\right) = -\\left[(x-2)^2 - 4\\right] = 2^2 - (x-2)^2\\). The integral then matches the standard result \\(\\int \\dfrac{du}{\\sqrt{a^2 - u^2}} = \\sin^{-1}\\dfrac{u}{a} + C\\), with \\(u = x-2\\) and \\(a = 2\\). Hence \\(\\int \\dfrac{dx}{\\sqrt{4x - x^2}} = \\int \\dfrac{dx}{\\sqrt{2^2 - (x-2)^2}} = \\sin^{-1}\\left(\\dfrac{x-2}{2}\\right) + C\\)."
+  },
+  {
+   "hash": "b15632b690282bac6b70826b14b88639b60c3552a1b4675e3810bfaa2c2c6da4",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Variables Separable",
+   "stem": "Find the general solution of the following differential equation :\n\n\\(\\dfrac{dy}{dx} = e^{x-y} + x^2 e^{-y}\\)",
+   "solution": "The right-hand side factorises, and that is what makes the variables separable: \\(\\dfrac{dy}{dx} = e^{x}e^{-y} + x^{2}e^{-y} = e^{-y}\\left(e^{x} + x^{2}\\right)\\). Separating, \\(e^{y}\\,dy = \\left(e^{x} + x^{2}\\right)dx\\). Integrating both sides, \\(\\int e^{y}\\,dy = \\int \\left(e^{x} + x^{2}\\right)dx\\), which gives the general solution \\(e^{y} = e^{x} + \\dfrac{x^{3}}{3} + C\\)."
+  },
+  {
+   "hash": "656522de356214520a691894414234701c75c80b8cdedf62750c7322ce43048b",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "Let X be a random variable which assumes values \\(x_1\\), \\(x_2\\), \\(x_3\\), \\(x_4\\) such that \\(2P(X = x_1) = 3P(X = x_2) = P(X = x_3) = 5P(X = x_4)\\).\n\nFind the probability distribution of X.",
+   "solution": "Give the four equal products a common name: let \\(2P(X = x_1) = 3P(X = x_2) = P(X = x_3) = 5P(X = x_4) = k\\). Then \\(P(X = x_1) = \\dfrac{k}{2}\\), \\(P(X = x_2) = \\dfrac{k}{3}\\), \\(P(X = x_3) = k\\) and \\(P(X = x_4) = \\dfrac{k}{5}\\).\n\nThe probabilities of a distribution must add to 1, so \\(\\dfrac{k}{2} + \\dfrac{k}{3} + k + \\dfrac{k}{5} = 1\\). Over a common denominator of 30 this is \\(\\dfrac{15k + 10k + 30k + 6k}{30} = 1\\), i.e. \\(\\dfrac{61k}{30} = 1\\), so \\(k = \\dfrac{30}{61}\\).\n\nSubstituting back, the probability distribution of X is\n\n| \\(X\\) | \\(x_1\\) | \\(x_2\\) | \\(x_3\\) | \\(x_4\\) |\n|---|---|---|---|---|\n| \\(P(X)\\) | \\(\\dfrac{15}{61}\\) | \\(\\dfrac{10}{61}\\) | \\(\\dfrac{30}{61}\\) | \\(\\dfrac{6}{61}\\) |\n\nAs a check, \\(\\dfrac{15 + 10 + 30 + 6}{61} = \\dfrac{61}{61} = 1\\)."
+  },
+  {
+   "hash": "bd387a3e5b5ae6beff9728d5b942922a9b7e8bf91e34144012728484c8e0d0b4",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "If \\(\\vec{a} = \\hat{i} + \\hat{j} + \\hat{k}\\), \\(\\vec{a} \\cdot \\vec{b} = 1\\) and \\(\\vec{a} \\times \\vec{b} = \\hat{j} - \\hat{k}\\), then find \\(\\left|\\vec{b}\\right|\\).",
+   "solution": "Write the unknown vector in components, \\(\\vec{b} = x\\hat{i} + y\\hat{j} + z\\hat{k}\\), and turn each given condition into an equation.\n\nFrom \\(\\vec{a} \\cdot \\vec{b} = 1\\): \\(x + y + z = 1\\).\n\nFor the cross product, \\(\\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & 1 & 1 \\\\ x & y & z \\end{vmatrix} = (z-y)\\hat{i} - (z-x)\\hat{j} + (y-x)\\hat{k}\\). Comparing this with \\(\\hat{j} - \\hat{k}\\) component by component gives \\(z - y = 0\\), \\(-(z-x) = 1\\) i.e. \\(x - z = 1\\), and \\(y - x = -1\\) i.e. \\(x - y = 1\\).\n\nSo \\(y = z\\) and \\(x = 1 + z\\); putting these into \\(x + y + z = 1\\) gives \\(1 + 3z = 1\\), hence \\(z = 0\\), \\(y = 0\\) and \\(x = 1\\). Therefore \\(\\vec{b} = \\hat{i}\\) and \\(\\left|\\vec{b}\\right| = 1\\).\n\nCheck: \\(\\left(\\hat{i} + \\hat{j} + \\hat{k}\\right) \\cdot \\hat{i} = 1\\) and \\(\\left(\\hat{i} + \\hat{j} + \\hat{k}\\right) \\times \\hat{i} = \\hat{j} - \\hat{k}\\), so both conditions hold."
+  },
+  {
+   "hash": "55aee67ff657ba57a20f12c4d4caaf2bc9527652df13113dd7ee9811c9a1ec57",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "If a line makes an angle \\(\\alpha\\), \\(\\beta\\), \\(\\gamma\\) with the coordinate axes, then find the value of \\(\\cos 2\\alpha + \\cos 2\\beta + \\cos 2\\gamma\\).",
+   "solution": "The angles a line makes with the axes give its direction cosines \\(l = \\cos\\alpha\\), \\(m = \\cos\\beta\\), \\(n = \\cos\\gamma\\), and these always satisfy \\(l^2 + m^2 + n^2 = 1\\), that is \\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\).\n\nNow use the double-angle form \\(\\cos 2\\theta = 2\\cos^2\\theta - 1\\) on each term: \\(\\cos 2\\alpha + \\cos 2\\beta + \\cos 2\\gamma = \\left(2\\cos^2\\alpha - 1\\right) + \\left(2\\cos^2\\beta - 1\\right) + \\left(2\\cos^2\\gamma - 1\\right) = 2\\left(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma\\right) - 3\\).\n\nSubstituting the identity above, this is \\(2(1) - 3 = -1\\). So the required value is \\(-1\\), whatever the line."
+  },
+  {
+   "hash": "3499b63f704440dc9f4e7f01e512a8643c865cf7e90dca9cbde1fb3a786c8515",
+   "ref": "Q6a",
+   "questionNumber": "6 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Independent Events",
+   "stem": "Events A and B are such that\n\n\\(P(A) = \\dfrac{1}{2}\\), \\(P(B) = \\dfrac{7}{12}\\) and \\(P\\left(\\overline{A} \\cup \\overline{B}\\right) = \\dfrac{1}{4}\\)\n\nFind whether the events A and B are independent or not.",
+   "solution": "The third datum is about a union of complements, so convert it with De Morgan's law: \\(\\overline{A} \\cup \\overline{B} = \\overline{A \\cap B}\\), hence \\(P\\left(\\overline{A} \\cup \\overline{B}\\right) = 1 - P(A \\cap B)\\).\n\nTherefore \\(1 - P(A \\cap B) = \\dfrac{1}{4}\\), giving \\(P(A \\cap B) = \\dfrac{3}{4}\\).\n\nA and B are independent precisely when \\(P(A \\cap B) = P(A)\\,P(B)\\). Here \\(P(A)\\,P(B) = \\dfrac{1}{2} \\times \\dfrac{7}{12} = \\dfrac{7}{24}\\), and \\(\\dfrac{3}{4} \\neq \\dfrac{7}{24}\\). So the events A and B are not independent.\n\nNote: the three figures quoted in the question are not mutually consistent as probabilities. They force \\(P(A \\cap B) = \\dfrac{3}{4}\\), which is impossible because an intersection can never be more likely than either event on its own, and \\(P(A) = \\dfrac{1}{2}\\). That is a flaw in the data as set, not in the working above; on the comparison the question actually asks for, the verdict is the same either way."
+  },
+  {
+   "hash": "79306e468c053d79cb6dc5096a7a3be867eb8e0a51e8a6bfdd863b95767be962",
+   "ref": "Q6b",
+   "questionNumber": "6 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Multiplication Theorem on Probability",
+   "stem": "A box \\(B_1\\) contains 1 white ball and 3 red balls. Another box \\(B_2\\) contains 2 white balls and 3 red balls. If one ball is drawn at random from each of the boxes \\(B_1\\) and \\(B_2\\), then find the probability that the two balls drawn are of the same colour.",
+   "solution": "The two draws are from different boxes, so they are independent, and \"same colour\" splits into two mutually exclusive cases: both white, or both red.\n\nBox \\(B_1\\) holds 1 white and 3 red, a total of 4, so \\(P\\left(\\text{white from } B_1\\right) = \\dfrac{1}{4}\\) and \\(P\\left(\\text{red from } B_1\\right) = \\dfrac{3}{4}\\). Box \\(B_2\\) holds 2 white and 3 red, a total of 5, so \\(P\\left(\\text{white from } B_2\\right) = \\dfrac{2}{5}\\) and \\(P\\left(\\text{red from } B_2\\right) = \\dfrac{3}{5}\\).\n\nHence \\(P(\\text{same colour}) = P(\\text{both white}) + P(\\text{both red}) = \\dfrac{1}{4} \\times \\dfrac{2}{5} + \\dfrac{3}{4} \\times \\dfrac{3}{5} = \\dfrac{2}{20} + \\dfrac{9}{20} = \\dfrac{11}{20}\\)."
+  },
+  {
+   "hash": "276702cbd3562310539a32ea98621da885fca7863a6648920fe39510639d8643",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "Evaluate :\n\n\\(\\int_0^{\\pi/4} \\dfrac{dx}{1 + \\tan x}\\)",
+   "solution": "There is no elementary antiderivative worth chasing here; instead use the property \\(\\int_0^a f(x)\\,dx = \\int_0^a f(a-x)\\,dx\\) with \\(a = \\dfrac{\\pi}{4}\\).\n\nLet \\(I = \\int_0^{\\pi/4} \\dfrac{dx}{1 + \\tan x}\\). Replacing \\(x\\) by \\(\\dfrac{\\pi}{4} - x\\), \\(I = \\int_0^{\\pi/4} \\dfrac{dx}{1 + \\tan\\left(\\dfrac{\\pi}{4} - x\\right)}\\).\n\nSince \\(\\tan\\left(\\dfrac{\\pi}{4} - x\\right) = \\dfrac{1 - \\tan x}{1 + \\tan x}\\), the denominator becomes \\(1 + \\dfrac{1 - \\tan x}{1 + \\tan x} = \\dfrac{\\left(1 + \\tan x\\right) + \\left(1 - \\tan x\\right)}{1 + \\tan x} = \\dfrac{2}{1 + \\tan x}\\). The awkward fraction has inverted, leaving \\(I = \\dfrac{1}{2}\\int_0^{\\pi/4}\\left(1 + \\tan x\\right)dx\\).\n\nNow \\(\\int \\left(1 + \\tan x\\right)dx = x + \\log|\\sec x|\\), so \\(I = \\dfrac{1}{2}\\Big[x + \\log \\sec x\\Big]_0^{\\pi/4} = \\dfrac{1}{2}\\left(\\dfrac{\\pi}{4} + \\log\\sqrt{2} - 0\\right) = \\dfrac{1}{2}\\left(\\dfrac{\\pi}{4} + \\dfrac{1}{2}\\log 2\\right)\\).\n\nHence \\(I = \\dfrac{\\pi}{8} + \\dfrac{1}{4}\\log 2\\)."
+  },
+  {
+   "hash": "a192578f185baaa3c6ab1d3012618dac8e8b0cde76e8314db427fce816f90ed3",
+   "ref": "Q8a",
+   "questionNumber": "8 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "If \\(\\vec{a}\\) and \\(\\vec{b}\\) are two vectors such that \\(\\left|\\vec{a} + \\vec{b}\\right| = \\left|\\vec{b}\\right|\\), then prove that \\(\\left(\\vec{a} + 2\\vec{b}\\right)\\) is perpendicular to \\(\\vec{a}\\).",
+   "solution": "Perpendicularity is a statement about a dot product, and the given condition is about lengths, so square it using \\(\\left|\\vec{u}\\right|^2 = \\vec{u} \\cdot \\vec{u}\\).\n\nFrom \\(\\left|\\vec{a} + \\vec{b}\\right| = \\left|\\vec{b}\\right|\\) we get \\(\\left(\\vec{a} + \\vec{b}\\right) \\cdot \\left(\\vec{a} + \\vec{b}\\right) = \\vec{b} \\cdot \\vec{b}\\), that is \\(\\left|\\vec{a}\\right|^2 + 2\\,\\vec{a} \\cdot \\vec{b} + \\left|\\vec{b}\\right|^2 = \\left|\\vec{b}\\right|^2\\).\n\nThe \\(\\left|\\vec{b}\\right|^2\\) terms cancel, leaving \\(\\left|\\vec{a}\\right|^2 + 2\\,\\vec{a} \\cdot \\vec{b} = 0\\).\n\nWriting \\(\\left|\\vec{a}\\right|^2\\) as \\(\\vec{a} \\cdot \\vec{a}\\) and taking \\(\\vec{a}\\) out as a common factor on the right of each dot product, \\(\\vec{a} \\cdot \\vec{a} + 2\\,\\vec{b} \\cdot \\vec{a} = 0\\), i.e. \\(\\left(\\vec{a} + 2\\vec{b}\\right) \\cdot \\vec{a} = 0\\).\n\nA vanishing dot product means the two vectors are perpendicular, so \\(\\vec{a} + 2\\vec{b}\\) is perpendicular to \\(\\vec{a}\\), as required."
+  },
+  {
+   "hash": "137738fa82e86e0b05d4de3d3a91aa44c405cb010c909d04a12112b2526cf636",
+   "ref": "Q8b",
+   "questionNumber": "8 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Scalar (Dot) Product and Projection",
+   "stem": "If \\(\\vec{a}\\) and \\(\\vec{b}\\) are unit vectors and \\(\\theta\\) is the angle between them, then prove that\n\n\\(\\sin \\dfrac{\\theta}{2} = \\dfrac{1}{2} \\left|\\vec{a} - \\vec{b}\\right|\\).",
+   "solution": "Work with the square of the length, because that is what turns into dot products.\n\n\\(\\left|\\vec{a} - \\vec{b}\\right|^2 = \\left(\\vec{a} - \\vec{b}\\right) \\cdot \\left(\\vec{a} - \\vec{b}\\right) = \\left|\\vec{a}\\right|^2 - 2\\,\\vec{a} \\cdot \\vec{b} + \\left|\\vec{b}\\right|^2\\).\n\nBoth are unit vectors, so \\(\\left|\\vec{a}\\right| = \\left|\\vec{b}\\right| = 1\\), and by definition of the angle between them \\(\\vec{a} \\cdot \\vec{b} = \\left|\\vec{a}\\right|\\left|\\vec{b}\\right|\\cos\\theta = \\cos\\theta\\). Hence \\(\\left|\\vec{a} - \\vec{b}\\right|^2 = 1 - 2\\cos\\theta + 1 = 2\\left(1 - \\cos\\theta\\right)\\).\n\nUsing \\(1 - \\cos\\theta = 2\\sin^2\\dfrac{\\theta}{2}\\), this becomes \\(\\left|\\vec{a} - \\vec{b}\\right|^2 = 4\\sin^2\\dfrac{\\theta}{2}\\), so \\(\\left|\\vec{a} - \\vec{b}\\right| = 2\\sin\\dfrac{\\theta}{2}\\). No modulus sign is needed on the right because the angle between two vectors satisfies \\(0 \\le \\theta \\le \\pi\\), which makes \\(\\sin\\dfrac{\\theta}{2} \\ge 0\\).\n\nDividing by 2, \\(\\sin\\dfrac{\\theta}{2} = \\dfrac{1}{2}\\left|\\vec{a} - \\vec{b}\\right|\\), as required."
+  },
+  {
+   "hash": "2e949f5046d96da1ba4b6a19f0f53cccfa452188701bfa01f0786a2d69ba7754",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "The Plane",
+   "stem": "Find the equation of the plane passing through the line of intersection of the planes \\(\\vec{r} \\cdot \\left(\\hat{i} + \\hat{j} + \\hat{k}\\right) = 10\\) and \\(\\vec{r} \\cdot \\left(2\\hat{i} + 3\\hat{j} - \\hat{k}\\right) + 4 = 0\\) and passing through the point \\((-2, 3, 1)\\).",
+   "solution": "Any plane through the line of intersection of \\(\\vec{r} \\cdot \\vec{n_1} - d_1 = 0\\) and \\(\\vec{r} \\cdot \\vec{n_2} - d_2 = 0\\) belongs to the one-parameter family \\(\\left(\\vec{r} \\cdot \\vec{n_1} - d_1\\right) + \\lambda\\left(\\vec{r} \\cdot \\vec{n_2} - d_2\\right) = 0\\); the single unknown \\(\\lambda\\) is then fixed by the extra point.\n\nHere the family is \\(\\vec{r} \\cdot \\left[\\left(\\hat{i} + \\hat{j} + \\hat{k}\\right) + \\lambda\\left(2\\hat{i} + 3\\hat{j} - \\hat{k}\\right)\\right] - 10 + 4\\lambda = 0\\), i.e. \\(\\vec{r} \\cdot \\left[(1 + 2\\lambda)\\hat{i} + (1 + 3\\lambda)\\hat{j} + (1 - \\lambda)\\hat{k}\\right] - 10 + 4\\lambda = 0\\).\n\nThe point \\((-2, 3, 1)\\) lies on it, so putting \\(\\vec{r} = -2\\hat{i} + 3\\hat{j} + \\hat{k}\\): \\(-2(1 + 2\\lambda) + 3(1 + 3\\lambda) + (1 - \\lambda) - 10 + 4\\lambda = 0\\). The constants give \\(-2 + 3 + 1 - 10 = -8\\) and the \\(\\lambda\\) terms give \\(-4\\lambda + 9\\lambda - \\lambda + 4\\lambda = 8\\lambda\\), so \\(8\\lambda - 8 = 0\\) and \\(\\lambda = 1\\).\n\nWith \\(\\lambda = 1\\) the normal vector is \\(3\\hat{i} + 4\\hat{j} + 0\\hat{k}\\) and the constant is \\(-10 + 4 = -6\\), so the required plane is \\(\\vec{r} \\cdot \\left(3\\hat{i} + 4\\hat{j}\\right) - 6 = 0\\), that is \\(3x + 4y = 6\\) in Cartesian form.\n\nCheck: at \\((-2, 3, 1)\\), \\(3(-2) + 4(3) = 6\\), so the point does lie on it."
+  },
+  {
+   "hash": "d6d92f5d09656230cad2e1e8c73d00aa03b19a97c8309ae17db6cd533a61435f",
+   "ref": "Q10a",
+   "questionNumber": "10 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Parts",
+   "stem": "Find :\n\n\\(\\int e^x \\cdot \\sin 2x\\, dx\\)",
+   "solution": "Neither factor simplifies on differentiation, so integrate by parts twice and recover the original integral as an unknown.\n\nLet \\(I = \\int e^x \\sin 2x\\,dx\\). Taking \\(\\sin 2x\\) as the first function and \\(e^x\\) as the second, \\(I = e^x \\sin 2x - \\int 2\\cos 2x \\cdot e^x\\,dx\\).\n\nApply parts again to the new integral: \\(\\int e^x \\cos 2x\\,dx = e^x\\cos 2x - \\int \\left(-2\\sin 2x\\right)e^x\\,dx = e^x\\cos 2x + 2I\\).\n\nSubstituting back, \\(I = e^x\\sin 2x - 2\\left[e^x\\cos 2x + 2I\\right] = e^x\\sin 2x - 2e^x\\cos 2x - 4I\\).\n\nCollecting the \\(I\\) terms, \\(5I = e^x\\left(\\sin 2x - 2\\cos 2x\\right)\\), so \\(I = \\dfrac{1}{5}e^x\\left(\\sin 2x - 2\\cos 2x\\right) + C\\).\n\nCheck by differentiating: \\(\\dfrac{1}{5}\\left[e^x\\left(\\sin 2x - 2\\cos 2x\\right) + e^x\\left(2\\cos 2x + 4\\sin 2x\\right)\\right] = \\dfrac{1}{5}e^x\\left(5\\sin 2x\\right) = e^x\\sin 2x\\)."
+  },
+  {
+   "hash": "bf7369f2ac3dc929bc8aaee25ef71da07ae948e47f2612fcaf52a4516e3871d3",
+   "ref": "Q10b",
+   "questionNumber": "10 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Partial Fractions",
+   "stem": "Find :\n\n\\(\\int \\dfrac{2x}{\\left(x^2 + 1\\right)\\left(x^2 + 2\\right)}\\, dx\\)",
+   "solution": "Everything in sight depends on \\(x\\) only through \\(x^2\\), and the numerator \\(2x\\,dx\\) is exactly the differential of \\(x^2\\). So substitute \\(t = x^2\\), \\(dt = 2x\\,dx\\):\n\n\\(\\int \\dfrac{2x\\,dx}{\\left(x^2 + 1\\right)\\left(x^2 + 2\\right)} = \\int \\dfrac{dt}{(t + 1)(t + 2)}\\).\n\nSplit this into partial fractions. Since the two linear factors differ by 1, \\(\\dfrac{1}{(t+1)(t+2)} = \\dfrac{1}{t+1} - \\dfrac{1}{t+2}\\).\n\nIntegrating, \\(\\int \\dfrac{dt}{t+1} - \\int \\dfrac{dt}{t+2} = \\log|t+1| - \\log|t+2| + C\\).\n\nRestoring \\(t = x^2\\), the result is \\(\\log\\left(x^2 + 1\\right) - \\log\\left(x^2 + 2\\right) + C\\), or equivalently \\(\\log\\left(\\dfrac{x^2 + 1}{x^2 + 2}\\right) + C\\). The modulus signs may be dropped because \\(x^2 + 1\\) and \\(x^2 + 2\\) are positive for every real \\(x\\)."
+  },
+  {
+   "hash": "da8ede6e4ada602fed379df7366fe270dba466d5e1dbc7fa3623cb70f145b3a9",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Bayes' Theorem",
+   "stem": "Three persons A, B and C apply for a job of manager in a private company. Chances of their selection are in the ratio 1 : 2 : 4. The probability that A, B and C can introduce changes to increase the profits of a company are 0.8, 0.5 and 0.3 respectively. If increase in the profit does not take place, find the probability that it is due to the appointment of A.",
+   "solution": "This asks for a cause given an effect, so it is Bayes' theorem. Let \\(E_1\\), \\(E_2\\), \\(E_3\\) be the events that A, B, C respectively is selected, and let \\(F\\) be the event that an increase in profit does not take place.\n\nThe selection chances are in the ratio \\(1 : 2 : 4\\), which totals 7 parts, so \\(P(E_1) = \\dfrac{1}{7}\\), \\(P(E_2) = \\dfrac{2}{7}\\), \\(P(E_3) = \\dfrac{4}{7}\\).\n\nThe figures 0.8, 0.5 and 0.3 are the probabilities that an increase does take place, so the conditional probabilities of \\(F\\) are their complements: \\(P(F \\mid E_1) = 0.2\\), \\(P(F \\mid E_2) = 0.5\\), \\(P(F \\mid E_3) = 0.7\\). Missing this complement is the one place this question goes wrong.\n\nBy Bayes' theorem, \\(P(E_1 \\mid F) = \\dfrac{P(E_1)P(F \\mid E_1)}{P(E_1)P(F \\mid E_1) + P(E_2)P(F \\mid E_2) + P(E_3)P(F \\mid E_3)}\\).\n\nSubstituting, \\(P(E_1 \\mid F) = \\dfrac{\\dfrac{1}{7} \\times \\dfrac{2}{10}}{\\dfrac{1}{7} \\times \\dfrac{2}{10} + \\dfrac{2}{7} \\times \\dfrac{5}{10} + \\dfrac{4}{7} \\times \\dfrac{7}{10}}\\). Every term carries the common factor \\(\\dfrac{1}{70}\\), which cancels, leaving \\(\\dfrac{2}{2 + 10 + 28} = \\dfrac{2}{40} = \\dfrac{1}{20}\\).\n\nSo the probability that the failure to increase profit is due to A's appointment is \\(\\dfrac{1}{20}\\)."
+  },
+  {
+   "hash": "edb84bee6d1a30d27b20cf9d1d98072a51da506173e57522a8a972d02e0cf639",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Bounded by a Curve and a Line",
+   "stem": "Find the area bounded by the curves \\(y = |x - 1|\\) and \\(y = 1\\), using integration.",
+   "solution": "[CBSE marking scheme: the method and the final answer are right, but the penultimate line is printed as \\(= -1 + 2 = 1\\), which does not follow from the line above it. That line is \\(\\dfrac{1}{2} + \\left[4 - \\dfrac{4}{2} - 2 + \\dfrac{1}{2}\\right]\\), and the bracket evaluates to \\(\\dfrac{1}{2}\\), so the step should read \\(\\dfrac{1}{2} + \\dfrac{1}{2} = 1\\). The printed \\(-1 + 2\\) reaches the correct total by coincidence.]\n\nThe modulus splits the curve into two rays: \\(y = 1 - x\\) for \\(x \\le 1\\) and \\(y = x - 1\\) for \\(x \\ge 1\\), meeting at the vertex \\((1, 0)\\). It cuts the line \\(y = 1\\) where \\(|x - 1| = 1\\), i.e. at \\((0, 1)\\) and \\((2, 1)\\).\n\nThe bounded region is therefore the triangle lying below \\(y = 1\\) and above the two rays, running from \\(x = 0\\) to \\(x = 2\\). Because the lower boundary changes formula at the vertex, split the integral there:\n\n\\(\\text{Area} = \\int_0^1 \\left[1 - (1 - x)\\right]dx + \\int_1^2 \\left[1 - (x - 1)\\right]dx = \\int_0^1 x\\,dx + \\int_1^2 (2 - x)\\,dx\\).\n\nThe first integral is \\(\\left[\\dfrac{x^2}{2}\\right]_0^1 = \\dfrac{1}{2}\\). The second is \\(\\left[2x - \\dfrac{x^2}{2}\\right]_1^2 = \\left(4 - 2\\right) - \\left(2 - \\dfrac{1}{2}\\right) = 2 - \\dfrac{3}{2} = \\dfrac{1}{2}\\).\n\nHence the required area is \\(\\dfrac{1}{2} + \\dfrac{1}{2} = 1\\) square unit. This agrees with the elementary check: the region is a triangle of base 2 (from \\(x = 0\\) to \\(x = 2\\)) and height 1, of area \\(\\dfrac{1}{2}(2)(1) = 1\\)."
+  },
+  {
+   "hash": "5dce703ed2bab77288218d3055c531e28a5d6478372c4d13b98618239c073263",
+   "ref": "Q13a",
+   "questionNumber": "13 (a)",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "Solve the following differential equation :\n\n\\(\\left(y - \\sin^2 x\\right) dx + \\tan x\\, dy = 0\\)",
+   "solution": "Rearrange into the standard linear form. Dividing through by \\(dx\\), \\(\\tan x\\,\\dfrac{dy}{dx} + y = \\sin^2 x\\), and dividing by \\(\\tan x\\), \\(\\dfrac{dy}{dx} + \\dfrac{y}{\\tan x} = \\dfrac{\\sin^2 x}{\\tan x}\\).\n\nThe right-hand side simplifies: \\(\\dfrac{\\sin^2 x}{\\tan x} = \\sin^2 x \\cdot \\dfrac{\\cos x}{\\sin x} = \\sin x\\cos x\\). So the equation is \\(\\dfrac{dy}{dx} + \\left(\\cot x\\right)y = \\sin x\\cos x\\), which is linear with \\(P = \\cot x\\) and \\(Q = \\sin x\\cos x\\).\n\nThe integrating factor is \\(\\text{I.F.} = e^{\\int \\cot x\\,dx} = e^{\\log \\sin x} = \\sin x\\).\n\nThe solution is \\(y \\cdot \\text{I.F.} = \\int Q \\cdot \\text{I.F.}\\,dx\\), i.e. \\(y\\sin x = \\int \\sin x\\cos x \\cdot \\sin x\\,dx = \\int \\sin^2 x\\cos x\\,dx\\).\n\nPut \\(t = \\sin x\\), so \\(dt = \\cos x\\,dx\\), and the integral becomes \\(\\int t^2\\,dt = \\dfrac{t^3}{3} + C = \\dfrac{\\sin^3 x}{3} + C\\).\n\nHence the general solution is \\(y\\sin x = \\dfrac{\\sin^3 x}{3} + C\\)."
+  },
+  {
+   "hash": "ae8588934054a7320872088a6a39e389be133a6c04caab5a8c1b9cf4263923a0",
+   "ref": "Q13b",
+   "questionNumber": "13 (b)",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Find the general solution of the differential equation :\n\n\\(\\left(x^3 + y^3\\right) dy = x^2 y\\, dx\\)",
+   "solution": "Written as \\(\\dfrac{dy}{dx} = \\dfrac{x^2 y}{x^3 + y^3}\\), numerator and denominator are both homogeneous of degree 3, so the substitution \\(y = vx\\) will work. Then \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\).\n\nThe right-hand side becomes \\(\\dfrac{x^2 \\cdot vx}{x^3 + v^3x^3} = \\dfrac{vx^3}{x^3\\left(1 + v^3\\right)} = \\dfrac{v}{1 + v^3}\\), so \\(v + x\\dfrac{dv}{dx} = \\dfrac{v}{1 + v^3}\\).\n\nHence \\(x\\dfrac{dv}{dx} = \\dfrac{v}{1 + v^3} - v = \\dfrac{v - v\\left(1 + v^3\\right)}{1 + v^3} = \\dfrac{-v^4}{1 + v^3}\\).\n\nSeparating the variables, \\(\\int \\dfrac{1 + v^3}{v^4}\\,dv = -\\int \\dfrac{dx}{x}\\), i.e. \\(\\int v^{-4}\\,dv + \\int \\dfrac{dv}{v} = -\\log|x| + C\\), which integrates to \\(-\\dfrac{1}{3v^3} + \\log|v| = -\\log|x| + C\\).\n\nNow put back \\(v = \\dfrac{y}{x}\\), so \\(\\dfrac{1}{v^3} = \\dfrac{x^3}{y^3}\\): \\(-\\dfrac{x^3}{3y^3} + \\log\\left|\\dfrac{y}{x}\\right| = -\\log|x| + C\\). Writing \\(\\log\\left|\\dfrac{y}{x}\\right| = \\log|y| - \\log|x|\\), the two \\(\\log|x|\\) terms cancel.\n\nThe general solution is therefore \\(\\log|y| - \\dfrac{x^3}{3y^3} = C\\)."
+  },
+  {
+   "hash": "84dd5100919acc19ef8301ea36d58395e23bf88c74ca409e7192dfca2d9551f1",
+   "ref": "Q14a",
+   "questionNumber": "14 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Shortest Distance Between Two Lines",
+   "stem": "Find the shortest distance between the given lines.",
+   "context": "Two motorcycles A and B are running at the speed more than the allowed speed on the roads represented by the lines \\(\\vec{r} = \\lambda\\left(\\hat{i} + 2\\hat{j} - \\hat{k}\\right)\\) and \\(\\vec{r} = \\left(3\\hat{i} + 3\\hat{j}\\right) + \\mu\\left(2\\hat{i} + \\hat{j} + \\hat{k}\\right)\\) respectively.\n\nBased on the above information, answer the following questions :",
+   "figure": "DECORATIVE — a stock photograph of two motorcyclists racing head-on, printed between the passage and the sub-parts on page idx 6. Opened before deciding: it carries no axes, labels or numbers; both lines needed by (a) and (b) are given in vector form in the passage text. Not attached. (The same stock photograph is reused by CBSE in the 2023 65/5/1 Q36 case study, where it was also judged decorative.)",
+   "solution": "For two lines \\(\\vec{r} = \\vec{a_1} + \\lambda\\vec{b_1}\\) and \\(\\vec{r} = \\vec{a_2} + \\mu\\vec{b_2}\\), the shortest distance is \\(\\text{SD} = \\dfrac{\\left|\\left(\\vec{a_2} - \\vec{a_1}\\right) \\cdot \\left(\\vec{b_1} \\times \\vec{b_2}\\right)\\right|}{\\left|\\vec{b_1} \\times \\vec{b_2}\\right|}\\).\n\nReading the two roads off the passage, \\(\\vec{a_1} = \\vec{0}\\), \\(\\vec{b_1} = \\hat{i} + 2\\hat{j} - \\hat{k}\\), and \\(\\vec{a_2} = 3\\hat{i} + 3\\hat{j}\\), \\(\\vec{b_2} = 2\\hat{i} + \\hat{j} + \\hat{k}\\). So \\(\\vec{a_2} - \\vec{a_1} = 3\\hat{i} + 3\\hat{j}\\).\n\nThe common perpendicular direction is \\(\\vec{b_1} \\times \\vec{b_2} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & 2 & -1 \\\\ 2 & 1 & 1 \\end{vmatrix} = \\hat{i}(2 + 1) - \\hat{j}(1 + 2) + \\hat{k}(1 - 4) = 3\\hat{i} - 3\\hat{j} - 3\\hat{k}\\).\n\nThe numerator is therefore \\(\\left(3\\hat{i} + 3\\hat{j}\\right) \\cdot \\left(3\\hat{i} - 3\\hat{j} - 3\\hat{k}\\right) = 9 - 9 + 0 = 0\\).\n\nSince the numerator vanishes while \\(\\left|\\vec{b_1} \\times \\vec{b_2}\\right| = 3\\sqrt{3} \\neq 0\\), the shortest distance between the two lines is \\(0\\).\n\nA zero shortest distance means the lines are not skew but actually intersect — which is exactly why the two motorcycles are in danger of colliding, and why part (b) has an answer at all."
+  },
+  {
+   "hash": "03289f6f0db994ceb4e9dd47c53534648b71dbd6a88872d89b3d52639547df7d",
+   "ref": "Q14b",
+   "questionNumber": "14 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the point at which the motorcycles may collide.",
+   "context": "Two motorcycles A and B are running at the speed more than the allowed speed on the roads represented by the lines \\(\\vec{r} = \\lambda\\left(\\hat{i} + 2\\hat{j} - \\hat{k}\\right)\\) and \\(\\vec{r} = \\left(3\\hat{i} + 3\\hat{j}\\right) + \\mu\\left(2\\hat{i} + \\hat{j} + \\hat{k}\\right)\\) respectively.\n\nBased on the above information, answer the following questions :",
+   "figure": "DECORATIVE — a stock photograph of two motorcyclists racing head-on, printed between the passage and the sub-parts on page idx 6. Opened before deciding: it carries no axes, labels or numbers; both lines needed by (a) and (b) are given in vector form in the passage text. Not attached. (The same stock photograph is reused by CBSE in the 2023 65/5/1 Q36 case study, where it was also judged decorative.)",
+   "solution": "Part (a) showed the shortest distance is \\(0\\), so the two roads genuinely meet; the collision point is their point of intersection.\n\nA general point on the first line \\(\\vec{r} = \\lambda\\left(\\hat{i} + 2\\hat{j} - \\hat{k}\\right)\\) is \\(\\left(\\lambda,\\ 2\\lambda,\\ -\\lambda\\right)\\).\n\nA general point on the second line \\(\\vec{r} = \\left(3\\hat{i} + 3\\hat{j}\\right) + \\mu\\left(2\\hat{i} + \\hat{j} + \\hat{k}\\right)\\) is \\(\\left(2\\mu + 3,\\ \\mu + 3,\\ \\mu\\right)\\).\n\nAt the meeting point all three coordinates agree, giving \\(\\lambda = 2\\mu + 3\\), \\(2\\lambda = \\mu + 3\\) and \\(-\\lambda = \\mu\\).\n\nSubstituting the first into the second, \\(2\\left(2\\mu + 3\\right) = \\mu + 3\\), so \\(4\\mu + 6 = \\mu + 3\\), hence \\(3\\mu = -3\\) and \\(\\mu = -1\\), giving \\(\\lambda = 2(-1) + 3 = 1\\). These also satisfy the third equation, since \\(-\\lambda = -1 = \\mu\\) — the consistency check that confirms the lines really do intersect.\n\nPutting \\(\\lambda = 1\\) into the first line, the motorcycles may collide at \\(\\hat{i} + 2\\hat{j} - \\hat{k}\\), that is at the point \\((1,\\ 2,\\ -1)\\)."
+  }
+ ]
+}
