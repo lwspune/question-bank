@@ -1,0 +1,975 @@
+{
+  "paper": "65/5/1",
+  "year": 2025,
+  "paperId": "2025-65-5-1",
+  "markingScheme": "out/2025-65-5-1/ms/p00.png … p-1.png",
+  "rows": [
+    {
+      "hash": "4ea05f224204b2a78d3dfcbad0c6213de037a5dca3b743f342f395c8d552440f",
+      "ref": "Q1",
+      "questionNumber": "1",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Multiplication of Matrices",
+      "stem": "If \\(A = \\begin{bmatrix} 5 & 0 & 0 \\\\ 0 & 5 & 0 \\\\ 0 & 0 & 5 \\end{bmatrix}\\), then \\(A^3\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(3\\begin{bmatrix} 5 & 0 & 0 \\\\ 0 & 5 & 0 \\\\ 0 & 0 & 5 \\end{bmatrix}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\begin{bmatrix} 125 & 0 & 0 \\\\ 0 & 125 & 0 \\\\ 0 & 0 & 125 \\end{bmatrix}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\begin{bmatrix} 15 & 0 & 0 \\\\ 0 & 15 & 0 \\\\ 0 & 0 & 15 \\end{bmatrix}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\begin{bmatrix} 5^3 & 0 & 0 \\\\ 0 & 5 & 0 \\\\ 0 & 0 & 5 \\end{bmatrix}\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "Every entry off the leading diagonal is zero and all three diagonal entries are equal, so \\(A = 5I\\), where \\(I\\) is the \\(3 \\times 3\\) identity matrix. Then \\(A^3 = (5I)^3 = 5^3 I^3 = 125\\,I\\), since \\(I^3 = I\\). Hence \\(A^3 = \\begin{bmatrix} 125 & 0 & 0 \\\\ 0 & 125 & 0 \\\\ 0 & 0 & 125 \\end{bmatrix}\\), the option whose three diagonal entries are all \\(125\\). Note that cubing a matrix is not the same as multiplying it by \\(3\\), which rules out the option \\(3\\begin{bmatrix} 5 & 0 & 0 \\\\ 0 & 5 & 0 \\\\ 0 & 0 & 5 \\end{bmatrix}\\), and that every diagonal entry is cubed, not just the first, which rules out the option with entries \\(5^3, 5, 5\\)."
+    },
+    {
+      "hash": "046945990ee720cddafa4577c7654eac30f764bfcef0d060e95b5b08cdde1b9a",
+      "ref": "Q2",
+      "questionNumber": "2",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "stem": "If \\(P(A \\cup B) = 0{\\cdot}9\\) and \\(P(A \\cap B) = 0{\\cdot}4\\), then \\(P(\\overline{A}) + P(\\overline{B})\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0{\\cdot}3\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(1\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(1{\\cdot}3\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(0{\\cdot}7\\)"
+        }
+      ],
+      "answer": "D",
+      "solution": "For any two events, \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\), so \\(P(A) + P(B) = P(A \\cup B) + P(A \\cap B) = 0{\\cdot}9 + 0{\\cdot}4 = 1{\\cdot}3\\). Since \\(P(\\overline{A}) = 1 - P(A)\\) and \\(P(\\overline{B}) = 1 - P(B)\\), we get \\(P(\\overline{A}) + P(\\overline{B}) = 2 - \\left(P(A) + P(B)\\right) = 2 - 1{\\cdot}3 = 0{\\cdot}7\\). So the value is \\(0{\\cdot}7\\). Note that the individual probabilities \\(P(A)\\) and \\(P(B)\\) are never needed — only their sum."
+    },
+    {
+      "hash": "8180733675f7b02203e9bd54148204e5fefa008fb0d38f6a110cf6061db5ee98",
+      "ref": "Q3",
+      "questionNumber": "3",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Matrices",
+      "subtopic": "Multiplication of Matrices",
+      "stem": "If \\(A = \\begin{bmatrix} 1 & 2 & 3 \\\\ -4 & 3 & 7 \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 4 & 3 \\\\ -1 & 2 \\\\ 0 & 5 \\end{bmatrix}\\), then the correct statement is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "Only AB is defined."
+        },
+        {
+          "label": "B",
+          "text": "Only BA is defined."
+        },
+        {
+          "label": "C",
+          "text": "AB and BA, both are defined."
+        },
+        {
+          "label": "D",
+          "text": "AB and BA, both are not defined."
+        }
+      ],
+      "answer": "C",
+      "solution": "A product \\(PQ\\) is defined only when the number of columns of \\(P\\) equals the number of rows of \\(Q\\). Here \\(A\\) is of order \\(2 \\times 3\\) and \\(B\\) is of order \\(3 \\times 2\\). For \\(AB\\), the \\(3\\) columns of \\(A\\) match the \\(3\\) rows of \\(B\\), so \\(AB\\) is defined and has order \\(2 \\times 2\\). For \\(BA\\), the \\(2\\) columns of \\(B\\) match the \\(2\\) rows of \\(A\\), so \\(BA\\) is defined too and has order \\(3 \\times 3\\). Hence the correct statement is that AB and BA, both are defined — even though the two products are matrices of different orders and so can never be equal."
+    },
+    {
+      "hash": "3256b2991cec8dca8481a541330ba64618e694f83e516352bba6719f4807af59",
+      "ref": "Q4",
+      "questionNumber": "4",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Determinant and its Properties",
+      "stem": "If \\(\\begin{vmatrix} 2x & 5 \\\\ 12 & x \\end{vmatrix} = \\begin{vmatrix} 6 & -5 \\\\ 4 & 3 \\end{vmatrix}\\), then the value of x is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(3\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(7\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\pm 7\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\pm 3\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "Expanding each determinant, \\(\\begin{vmatrix} 2x & 5 \\\\ 12 & x \\end{vmatrix} = 2x \\cdot x - 5 \\cdot 12 = 2x^2 - 60\\) and \\(\\begin{vmatrix} 6 & -5 \\\\ 4 & 3 \\end{vmatrix} = 6 \\cdot 3 - (-5) \\cdot 4 = 18 + 20 = 38\\). Equating them gives \\(2x^2 - 60 = 38\\), so \\(2x^2 = 98\\), \\(x^2 = 49\\) and \\(x = \\pm 7\\). Both signs satisfy the original equation, so the value of x is \\(\\pm 7\\), not \\(7\\) alone."
+    },
+    {
+      "hash": "a626c41e41974a38e61e950658caf16634f1eeafebf7d546bf145dec70d1d3b4",
+      "ref": "Q5",
+      "questionNumber": "5",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Continuity",
+      "stem": "If \\(f(x) = \\begin{cases} \\dfrac{\\sin^2 ax}{x^2}, & x \\neq 0 \\\\[4pt] 1, & x = 0 \\end{cases}\\) is continuous at \\(x = 0\\), then the value of a is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(1\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-1\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\pm 1\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(0\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "Continuity at \\(x = 0\\) requires \\(\\lim_{x \\to 0} f(x) = f(0) = 1\\). Now \\(\\lim_{x \\to 0} \\dfrac{\\sin^2 ax}{x^2} = \\lim_{x \\to 0} a^2\\left(\\dfrac{\\sin ax}{ax}\\right)^2 = a^2\\), using the standard limit \\(\\lim_{t \\to 0} \\dfrac{\\sin t}{t} = 1\\). So the condition is \\(a^2 = 1\\), which gives \\(a = \\pm 1\\). Both signs work, because \\(a\\) enters the limit only through \\(a^2\\)."
+    },
+    {
+      "hash": "5574b5de0e307764a70863ea724f7cf1fb0a487403a17cb72f90ba57ae82c9e9",
+      "ref": "Q6",
+      "questionNumber": "6",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Determinant and its Properties",
+      "stem": "If \\(A = [a_{ij}]\\) is a \\(3 \\times 3\\) diagonal matrix such that \\(a_{11} = 1\\), \\(a_{22} = 5\\) and \\(a_{33} = -2\\), then \\(|A|\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-10\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(10\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(1\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "A diagonal matrix has every entry off the leading diagonal equal to zero, so \\(A = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 5 & 0 \\\\ 0 & 0 & -2 \\end{bmatrix}\\). The determinant of a diagonal matrix is simply the product of its diagonal entries, so \\(|A| = 1 \\times 5 \\times (-2) = -10\\)."
+    },
+    {
+      "hash": "7b0d1fc7da9cc006600390beb7827a9e8307772a07cf9d316d74a4cfe1ae68c6",
+      "ref": "Q7",
+      "questionNumber": "7",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Domains, Ranges and Principal Value Branches",
+      "stem": "The principal value of \\(\\cot^{-1}\\left(-\\dfrac{1}{\\sqrt{3}}\\right)\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(-\\dfrac{\\pi}{3}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(-\\dfrac{2\\pi}{3}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\dfrac{\\pi}{3}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\dfrac{2\\pi}{3}\\)"
+        }
+      ],
+      "answer": "D",
+      "solution": "The principal value branch of \\(\\cot^{-1}\\) is \\((0, \\pi)\\), so we need the angle \\(\\theta\\) in \\((0, \\pi)\\) with \\(\\cot\\theta = -\\dfrac{1}{\\sqrt{3}}\\). Since \\(\\cot\\dfrac{\\pi}{3} = \\dfrac{1}{\\sqrt{3}}\\) and the cotangent is negative in the second quadrant, \\(\\theta = \\pi - \\dfrac{\\pi}{3} = \\dfrac{2\\pi}{3}\\). So the principal value is \\(\\dfrac{2\\pi}{3}\\). The negative options \\(-\\dfrac{\\pi}{3}\\) and \\(-\\dfrac{2\\pi}{3}\\) are rejected because they lie outside \\((0, \\pi)\\) — a common slip is to borrow the range \\(\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]\\) of \\(\\tan^{-1}\\)."
+    },
+    {
+      "hash": "5de3e9d6e74e2a458be8217b78f5764e94b1f04e7e7b20665878a746d2a068ac",
+      "ref": "Q8",
+      "questionNumber": "8",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Determinants",
+      "subtopic": "Determinant and its Properties",
+      "stem": "If \\(\\begin{bmatrix} 4+x & x-1 \\\\ -2 & 3 \\end{bmatrix}\\) is a singular matrix, then the value of x is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(1\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(-2\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(-4\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "A square matrix is singular when its determinant is zero. Here \\(\\begin{vmatrix} 4+x & x-1 \\\\ -2 & 3 \\end{vmatrix} = 3(4+x) - (-2)(x-1) = 12 + 3x + 2x - 2 = 5x + 10\\). Setting \\(5x + 10 = 0\\) gives \\(x = -2\\)."
+    },
+    {
+      "hash": "edbde40315d58a035b641582149c558bb2e7ee880a5a3b49abc70e36f81d1d5c",
+      "ref": "Q9",
+      "questionNumber": "9",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Continuity",
+      "stem": "If \\(f(x) = \\{[x],\\ x \\in R\\}\\) is the greatest integer function, then the correct statement is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "f is continuous but not differentiable at \\(x = 2\\)."
+        },
+        {
+          "label": "B",
+          "text": "f is neither continuous nor differentiable at \\(x = 2\\)."
+        },
+        {
+          "label": "C",
+          "text": "f is continuous as well as differentiable at \\(x = 2\\)."
+        },
+        {
+          "label": "D",
+          "text": "f is not continuous but differentiable at \\(x = 2\\)."
+        }
+      ],
+      "answer": "B",
+      "solution": "For the greatest integer function \\(f(x) = [x]\\), the left-hand limit at \\(x = 2\\) is \\(\\lim_{x \\to 2^-} [x] = 1\\), while the right-hand limit is \\(\\lim_{x \\to 2^+} [x] = 2\\), which also equals \\(f(2) = [2] = 2\\). The two one-sided limits are unequal, so \\(f\\) is not continuous at \\(x = 2\\); and a function that is not continuous at a point cannot be differentiable there. Hence f is neither continuous nor differentiable at \\(x = 2\\)."
+    },
+    {
+      "hash": "30f45f7d03c59332a5828b57b26292e87b00616bba83343086b95cb4c4b34112",
+      "ref": "Q10",
+      "questionNumber": "10",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "stem": "The slope of the curve \\(y = -x^3 + 3x^2 + 8x - 20\\) is maximum at :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((1, -10)\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\((1, 10)\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\((10, 1)\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\((-10, 1)\\)"
+        }
+      ],
+      "answer": "A",
+      "solution": "The slope of the curve at \\(x\\) is \\(m = \\dfrac{dy}{dx} = -3x^2 + 6x + 8\\). We must maximise \\(m\\) itself, so differentiate again: \\(\\dfrac{dm}{dx} = -6x + 6 = 0\\) gives \\(x = 1\\), and \\(\\dfrac{d^2m}{dx^2} = -6 < 0\\) confirms a maximum there. The question asks for the point on the curve, so substitute \\(x = 1\\) into the curve: \\(y = -(1)^3 + 3(1)^2 + 8(1) - 20 = -1 + 3 + 8 - 20 = -10\\). The slope is therefore maximum at \\((1, -10)\\)."
+    },
+    {
+      "hash": "191bdf08647f3d4ee966d9658b03eff35e55cb2539d5fa35cb4cf6ce8b794482",
+      "ref": "Q11",
+      "questionNumber": "11",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Integration using Trigonometric Identities",
+      "stem": "\\(\\displaystyle\\int \\sqrt{1 + \\sin x}\\ dx\\) is equal to :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2\\left(-\\sin\\dfrac{x}{2} + \\cos\\dfrac{x}{2}\\right) + C\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(2\\left(\\sin\\dfrac{x}{2} - \\cos\\dfrac{x}{2}\\right) + C\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(-2\\left(\\sin\\dfrac{x}{2} + \\cos\\dfrac{x}{2}\\right) + C\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(2\\left(\\sin\\dfrac{x}{2} + \\cos\\dfrac{x}{2}\\right) + C\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "Use the half-angle identity \\(1 + \\sin x = \\sin^2\\dfrac{x}{2} + \\cos^2\\dfrac{x}{2} + 2\\sin\\dfrac{x}{2}\\cos\\dfrac{x}{2} = \\left(\\sin\\dfrac{x}{2} + \\cos\\dfrac{x}{2}\\right)^2\\). Hence \\(\\int\\sqrt{1+\\sin x}\\,dx = \\int\\left(\\sin\\dfrac{x}{2} + \\cos\\dfrac{x}{2}\\right)dx = -2\\cos\\dfrac{x}{2} + 2\\sin\\dfrac{x}{2} + C\\), which is \\(2\\left(\\sin\\dfrac{x}{2} - \\cos\\dfrac{x}{2}\\right) + C\\). The sign pattern comes from integrating: the sine term integrates to a negative cosine and the cosine term to a positive sine, so the two signs swap places."
+    },
+    {
+      "hash": "a2432e3fc41e324620f180c8effc7c962514cb8c2621a0cf5d666fc6a1c03c39",
+      "ref": "Q12",
+      "questionNumber": "12",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Integrals",
+      "subtopic": "Definite Integrals by Substitution",
+      "stem": "\\(\\displaystyle\\int_{0}^{\\pi/2} \\cos x \\cdot e^{\\sin x}\\ dx\\) is equal to :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(0\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(1 - e\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(e - 1\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(e\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "Put \\(t = \\sin x\\), so that \\(dt = \\cos x\\,dx\\); the limits change from \\(x = 0\\) to \\(t = 0\\) and from \\(x = \\dfrac{\\pi}{2}\\) to \\(t = 1\\). Then \\(\\int_{0}^{\\pi/2}\\cos x \\cdot e^{\\sin x}\\,dx = \\int_{0}^{1} e^{t}\\,dt = \\left[e^{t}\\right]_{0}^{1} = e^{1} - e^{0} = e - 1\\)."
+    },
+    {
+      "hash": "904bcdba98d721d5dced3e5899f91476c325e9ca91656440bef8269536c5a94f",
+      "ref": "Q13",
+      "questionNumber": "13",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Under Simple Curves",
+      "stem": "The area of the region enclosed between the curve \\(y = x|x|\\), x-axis, \\(x = -2\\) and \\(x = 2\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\dfrac{8}{3}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{16}{3}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(0\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(8\\)"
+        }
+      ],
+      "answer": "B",
+      "solution": "Here \\(y = x|x|\\) equals \\(x^2\\) for \\(x \\ge 0\\) and \\(-x^2\\) for \\(x < 0\\), so the curve lies below the x-axis on \\([-2, 0]\\) and above it on \\([0, 2]\\). Area is the integral of \\(|y|\\), taken piecewise: \\(\\int_{-2}^{0}\\left(-x|x|\\right)dx + \\int_{0}^{2} x|x|\\,dx = \\int_{-2}^{0} x^2\\,dx + \\int_{0}^{2} x^2\\,dx = 2\\left[\\dfrac{x^3}{3}\\right]_{0}^{2} = 2 \\times \\dfrac{8}{3} = \\dfrac{16}{3}\\). Note that \\(0\\) is the value of the signed integral \\(\\int_{-2}^{2} x|x|\\,dx\\), since \\(x|x|\\) is an odd function — but an area cannot be zero here, which is exactly why the moduli must be taken first."
+    },
+    {
+      "hash": "6428c85b7e2534b001a5937e9aca3b11e5a7f96dda8433be8e1c78f00b3c8d70",
+      "ref": "Q14",
+      "questionNumber": "14",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Differential Equations",
+      "subtopic": "Linear Differential Equations",
+      "stem": "The integrating factor of the differential equation \\(\\left(\\dfrac{e^{-2\\sqrt{x}}}{\\sqrt{x}} - \\dfrac{y}{\\sqrt{x}}\\right)\\dfrac{dx}{dy} = 1\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(e^{-1/\\sqrt{x}}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(e^{2/\\sqrt{x}}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(e^{2\\sqrt{x}}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(e^{-2\\sqrt{x}}\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "First put the equation in standard linear form. Taking the reciprocal of both sides of \\(\\left(\\dfrac{e^{-2\\sqrt{x}}}{\\sqrt{x}} - \\dfrac{y}{\\sqrt{x}}\\right)\\dfrac{dx}{dy} = 1\\) gives \\(\\dfrac{dy}{dx} = \\dfrac{e^{-2\\sqrt{x}}}{\\sqrt{x}} - \\dfrac{y}{\\sqrt{x}}\\), that is \\(\\dfrac{dy}{dx} + \\dfrac{1}{\\sqrt{x}}\\,y = \\dfrac{e^{-2\\sqrt{x}}}{\\sqrt{x}}\\). This is linear in \\(y\\) with \\(P(x) = \\dfrac{1}{\\sqrt{x}}\\), so the integrating factor is \\(e^{\\int P\\,dx} = e^{\\int x^{-1/2}dx} = e^{2\\sqrt{x}}\\). Note the integrating factor depends only on the coefficient of \\(y\\); the term \\(e^{-2\\sqrt{x}}\\) on the right is a distractor."
+    },
+    {
+      "hash": "662fbb3ef2ce07f91b449610fc8e44b90d952fd5d4963db6dc195f6d24b620be",
+      "ref": "Q15",
+      "questionNumber": "15",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Differential Equations",
+      "subtopic": "Order and Degree of a Differential Equation",
+      "stem": "The sum of the order and degree of the differential equation \\(\\left[1 + \\left(\\dfrac{dy}{dx}\\right)^2\\right]^3 = \\dfrac{d^2y}{dx^2}\\) is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(2\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\dfrac{5}{2}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(3\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(4\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "The highest order derivative appearing is \\(\\dfrac{d^2y}{dx^2}\\), so the order is \\(2\\). The equation is already a polynomial in the derivatives — no radicals or fractional powers of a derivative are present — and \\(\\dfrac{d^2y}{dx^2}\\) occurs to the first power, so the degree is \\(1\\). The index \\(3\\) sits on a bracket containing only \\(\\dfrac{dy}{dx}\\) and so does not affect the degree, which is read off the highest order derivative alone. The sum is \\(2 + 1 = 3\\)."
+    },
+    {
+      "hash": "be3c196c3b7a735cf7b70e8404f5415fef93c281dff3e639674e72ad26a1f727",
+      "ref": "Q16",
+      "questionNumber": "16",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "stem": "For a Linear Programming Problem (LPP), the given objective function \\(Z = 3x + 2y\\) is subject to constraints :\n\n\\(x + 2y \\le 10\\)\n\n\\(3x + y \\le 15\\)\n\n\\(x,\\ y \\ge 0\\)\n\nThe correct feasible region is :",
+      "options": [
+        {
+          "label": "A",
+          "text": "ABC"
+        },
+        {
+          "label": "B",
+          "text": "AOEC"
+        },
+        {
+          "label": "C",
+          "text": "CED"
+        },
+        {
+          "label": "D",
+          "text": "Open unbounded region BCD"
+        }
+      ],
+      "answer": "B",
+      "figure": "REQUIRED — the stem asks which region of a printed graph is the feasible region; unanswerable without it. Page idx 8.",
+      "solution": "Draw the two boundary lines. \\(x + 2y = 10\\) passes through \\(D(10, 0)\\) and \\(A(0, 5)\\); \\(3x + y = 15\\) passes through \\(E(5, 0)\\) and \\(B(0, 15)\\). Solving them together, \\(x + 2y = 10\\) and \\(3x + y = 15\\) meet at \\(C(4, 3)\\). Both constraints are of the \\(\\le\\) type and \\(x, y \\ge 0\\), so the feasible region is the part of the first quadrant lying on the origin side of both lines. Testing \\(O(0,0)\\): \\(0 \\le 10\\) and \\(0 \\le 15\\) are both true, so the origin belongs to the region. Its corner points are \\(O(0,0)\\), \\(E(5,0)\\), \\(C(4,3)\\) and \\(A(0,5)\\) — the bounded quadrilateral marked AOEC on the graph. The region is bounded, which rules out the open unbounded region BCD, and it must contain the origin, which rules out ABC and CED."
+    },
+    {
+      "hash": "1d3a7d33d743bdfc8852ce3b0e231af13dc216f7e286eed89d36f7c4b803f27c",
+      "ref": "Q17",
+      "questionNumber": "17",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Addition of Vectors",
+      "stem": "Let \\(\\vec{a}\\) be a position vector whose tip is the point \\((2, -3)\\). If \\(\\overrightarrow{AB} = \\vec{a}\\), where coordinates of A are \\((-4, 5)\\), then the coordinates of B are :",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\((-2, -2)\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\((2, -2)\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\((-2, 2)\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\((2, 2)\\)"
+        }
+      ],
+      "answer": "C",
+      "solution": "A position vector whose tip is the point \\((2, -3)\\) is \\(\\vec{a} = 2\\hat{i} - 3\\hat{j}\\). If \\(B\\) has coordinates \\((x, y)\\), then \\(\\overrightarrow{AB} = (x - (-4))\\hat{i} + (y - 5)\\hat{j} = (x + 4)\\hat{i} + (y - 5)\\hat{j}\\). Equating this with \\(\\vec{a}\\) component by component: \\(x + 4 = 2\\) gives \\(x = -2\\), and \\(y - 5 = -3\\) gives \\(y = 2\\). So the coordinates of B are \\((-2, 2)\\)."
+    },
+    {
+      "hash": "801194bac01ad47b05edbd147030f8d9b6a5f87b22d3e82144497a037672b24e",
+      "ref": "Q18",
+      "questionNumber": "18",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "stem": "The respective values of \\(|\\vec{a}|\\) and \\(|\\vec{b}|\\), if given \\((\\vec{a} - \\vec{b}) \\cdot (\\vec{a} + \\vec{b}) = 512\\) and \\(|\\vec{a}| = 3|\\vec{b}|\\), are :",
+      "options": [
+        {
+          "label": "A",
+          "text": "48 and 16"
+        },
+        {
+          "label": "B",
+          "text": "3 and 1"
+        },
+        {
+          "label": "C",
+          "text": "24 and 8"
+        },
+        {
+          "label": "D",
+          "text": "6 and 2"
+        }
+      ],
+      "answer": "C",
+      "solution": "Expanding the given product, \\((\\vec{a} - \\vec{b})\\cdot(\\vec{a} + \\vec{b}) = |\\vec{a}|^2 - |\\vec{b}|^2\\), because the cross terms \\(\\vec{a}\\cdot\\vec{b}\\) and \\(-\\vec{b}\\cdot\\vec{a}\\) cancel. So \\(|\\vec{a}|^2 - |\\vec{b}|^2 = 512\\). Substituting \\(|\\vec{a}| = 3|\\vec{b}|\\) gives \\(9|\\vec{b}|^2 - |\\vec{b}|^2 = 8|\\vec{b}|^2 = 512\\), so \\(|\\vec{b}|^2 = 64\\) and \\(|\\vec{b}| = 8\\) (a magnitude is non-negative). Then \\(|\\vec{a}| = 3 \\times 8 = 24\\). The respective values are 24 and 8."
+    },
+    {
+      "hash": "4cd7fff13ba1c315238d86bf9b7386d95a6945a0a34eda1df79d05fd4aa1d0fc",
+      "ref": "Q19",
+      "questionNumber": "19",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "stem": "**Assertion (A) :** The shaded portion of the graph represents the feasible region for the given Linear Programming Problem (LPP).\n\nMin \\(Z = 50x + 70y\\)\n\nsubject to constraints\n\n\\(2x + y \\ge 8\\), \\(x + 2y \\ge 10\\), \\(x,\\ y \\ge 0\\)\n\n\\(Z = 50x + 70y\\) has a minimum value \\(= 380\\) at \\(B(2, 4)\\).\n\n**Reason (R) :** The region representing \\(50x + 70y < 380\\) does not have any point common with the feasible region.",
+      "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "A",
+      "figure": "REQUIRED — the Assertion is ABOUT a printed shaded graph. Page idx 10.",
+      "solution": "The shaded region is the unbounded region lying on the far side of both lines \\(2x + y = 8\\) and \\(x + 2y = 10\\) in the first quadrant, which is correct for the \\(\\ge\\) constraints given. Its corner points are \\(A(0, 8)\\) on the y-axis, \\(C(10, 0)\\) on the x-axis, and \\(B(2, 4)\\) where the two lines cross — solving \\(2x + y = 8\\) with \\(x + 2y = 10\\) indeed gives \\(x = 2\\), \\(y = 4\\). Evaluating \\(Z = 50x + 70y\\) at the corners: \\(Z(A) = 560\\), \\(Z(B) = 100 + 280 = 380\\) and \\(Z(C) = 500\\), so \\(380\\) is the smallest corner value. Because the region is unbounded, a smallest corner value is not automatically the minimum: it is the minimum only if the open half-plane \\(50x + 70y < 380\\) has no point in common with the feasible region. The dashed line \\(5x + 7y = 38\\) drawn in the figure is exactly \\(Z = 380\\), and the feasible region lies entirely on or above it, so that half-plane is indeed disjoint from the region. The Assertion is therefore true, the Reason is true, and the Reason states precisely the test that establishes the Assertion. Hence both Assertion and Reason are true and Reason is the correct explanation of the Assertion."
+    },
+    {
+      "hash": "8e31860cc726ab54da90c31aac2bbc7ef910f133c5786bbf724fded7071e4fd7",
+      "ref": "Q20",
+      "questionNumber": "20",
+      "marks": 1,
+      "format": "mcq",
+      "chapter": "Relations and Functions",
+      "subtopic": "One-One and Onto Functions",
+      "stem": "**Assertion (A) :** Let \\(A = \\{x \\in R : -1 \\le x \\le 1\\}\\). If \\(f : A \\to A\\) be defined as \\(f(x) = x^2\\), then f is not an onto function.\n\n**Reason (R) :** If \\(y = -1 \\in A\\), then \\(x = \\pm\\sqrt{-1} \\notin A\\).",
+      "context": "Questions number 19 and 20 are Assertion and Reason based questions. Two statements are given, one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the codes (A), (B), (C) and (D) as given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "B",
+          "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is **not** the correct explanation of the Assertion (A)."
+        },
+        {
+          "label": "C",
+          "text": "Assertion (A) is true, but Reason (R) is false."
+        },
+        {
+          "label": "D",
+          "text": "Assertion (A) is false, but Reason (R) is true."
+        }
+      ],
+      "answer": "A",
+      "solution": "Here \\(A = \\{x \\in R : -1 \\le x \\le 1\\}\\) and \\(f(x) = x^2\\), so for every \\(x \\in A\\) the value \\(f(x) = x^2\\) lies in \\([0, 1]\\). The range \\([0, 1]\\) is a proper subset of the codomain \\(A = [-1, 1]\\), so \\(f\\) is not onto and the Assertion is true. The Reason produces a concrete witness: \\(y = -1\\) is an element of the codomain \\(A\\), yet \\(x^2 = -1\\) has no real solution at all, so certainly no \\(x \\in A\\) is mapped to it. That statement is true, and exhibiting an element of the codomain with no pre-image is exactly what it means for a function to fail to be onto. Hence both Assertion and Reason are true and Reason is the correct explanation of the Assertion."
+    },
+    {
+      "hash": "347643f6a7cadd3b9960e059c9b64763a25104948b68e6e0df7c399e57b233af",
+      "ref": "Q21",
+      "questionNumber": "21",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Inverse Trigonometric Functions",
+      "subtopic": "Domains, Ranges and Principal Value Branches",
+      "stem": "Find the domain of the function \\(f(x) = \\cos^{-1}(x^2 - 4)\\).",
+      "solution": "The function \\(\\cos^{-1}t\\) is defined only for \\(t \\in [-1, 1]\\), so \\(f(x) = \\cos^{-1}(x^2 - 4)\\) exists precisely when \\(-1 \\le x^2 - 4 \\le 1\\). Adding \\(4\\) throughout gives \\(3 \\le x^2 \\le 5\\), that is \\(\\sqrt{3} \\le |x| \\le \\sqrt{5}\\). Both signs of \\(x\\) are allowed, so the domain is \\(x \\in \\left[-\\sqrt{5},\\, -\\sqrt{3}\\right] \\cup \\left[\\sqrt{3},\\, \\sqrt{5}\\right]\\)."
+    },
+    {
+      "hash": "10ead86c91a7b1c63d0edd2aac5d3c4e9342f284df031009a5241fde62ee77b7",
+      "ref": "Q22",
+      "questionNumber": "22",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Rate of Change of Quantities",
+      "stem": "Surface area of a balloon (spherical), when air is blown into it, increases at a rate of 5 mm\\(^2\\)/s. When the radius of the balloon is 8 mm, find the rate at which the volume of the balloon is increasing.",
+      "solution": "Let \\(r\\) be the radius of the balloon at time \\(t\\), with surface area \\(S = 4\\pi r^2\\) and volume \\(V = \\dfrac{4}{3}\\pi r^3\\). We are given \\(\\dfrac{dS}{dt} = 5\\) mm\\(^2\\)/s and want \\(\\dfrac{dV}{dt}\\) when \\(r = 8\\) mm. Differentiating the surface area with respect to \\(t\\): \\(\\dfrac{dS}{dt} = 8\\pi r\\dfrac{dr}{dt}\\), so \\(\\dfrac{dr}{dt} = \\dfrac{5}{8\\pi r}\\). Differentiating the volume: \\(\\dfrac{dV}{dt} = 4\\pi r^2\\dfrac{dr}{dt} = 4\\pi r^2 \\times \\dfrac{5}{8\\pi r} = \\dfrac{5r}{2}\\). Notice that \\(\\pi\\) cancels, so no approximation is needed. At \\(r = 8\\), \\(\\dfrac{dV}{dt} = \\dfrac{5 \\times 8}{2} = 20\\) mm\\(^3\\)/s, so the volume is increasing at 20 mm\\(^3\\)/s."
+    },
+    {
+      "hash": "6eb2f330be108e6cbbacd03251227e48a2caad2f8e6624de0aaa122faea9734e",
+      "ref": "Q23a",
+      "questionNumber": "23 (a)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Differentiability and the Chain Rule",
+      "stem": "Differentiate \\(\\dfrac{\\sin x}{\\sqrt{\\cos x}}\\) with respect to x.",
+      "solution": "Let \\(y = \\dfrac{\\sin x}{\\sqrt{\\cos x}}\\) and apply the quotient rule, using \\(\\dfrac{d}{dx}\\sqrt{\\cos x} = \\dfrac{-\\sin x}{2\\sqrt{\\cos x}}\\). Then \\(\\dfrac{dy}{dx} = \\dfrac{\\sqrt{\\cos x}\\cdot\\cos x - \\sin x\\cdot\\left(\\dfrac{-\\sin x}{2\\sqrt{\\cos x}}\\right)}{\\cos x}\\). Multiplying numerator and denominator by \\(2\\sqrt{\\cos x}\\) clears the inner radical and gives \\(\\dfrac{dy}{dx} = \\dfrac{2\\cos^2 x + \\sin^2 x}{2\\cos x\\sqrt{\\cos x}} = \\dfrac{2\\cos^2 x + \\sin^2 x}{2(\\cos x)^{3/2}}\\). Using \\(\\sin^2 x = 1 - \\cos^2 x\\) in the numerator, this simplifies to \\(\\dfrac{1 + \\cos^2 x}{2(\\cos x)^{3/2}}\\). Either form is acceptable."
+    },
+    {
+      "hash": "f97c158af64c358a0c7547f278f2565574fcfeb5375bea133b225385d12ccfdb",
+      "ref": "Q23b",
+      "questionNumber": "23 (b)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Second Order Derivatives",
+      "stem": "If \\(y = 5\\cos x - 3\\sin x\\), prove that \\(\\dfrac{d^2y}{dx^2} + y = 0\\).",
+      "solution": "Given \\(y = 5\\cos x - 3\\sin x\\), differentiate once: \\(\\dfrac{dy}{dx} = -5\\sin x - 3\\cos x\\). Differentiate again: \\(\\dfrac{d^2y}{dx^2} = -5\\cos x + 3\\sin x\\). The right-hand side is exactly \\(-\\left(5\\cos x - 3\\sin x\\right) = -y\\). Therefore \\(\\dfrac{d^2y}{dx^2} = -y\\), that is \\(\\dfrac{d^2y}{dx^2} + y = 0\\), which is what had to be proved."
+    },
+    {
+      "hash": "20ea8d66d523fff1333520c400b4b6c512ca911055e7d6075b9418265f5ad028",
+      "ref": "Q24a",
+      "questionNumber": "24 (a)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Vector (Cross) Product",
+      "stem": "Find a vector of magnitude 5 which is perpendicular to both the vectors \\(3\\hat{i} - 2\\hat{j} + \\hat{k}\\) and \\(4\\hat{i} + 3\\hat{j} - 2\\hat{k}\\).",
+      "solution": "Let \\(\\vec{a} = 3\\hat{i} - 2\\hat{j} + \\hat{k}\\) and \\(\\vec{b} = 4\\hat{i} + 3\\hat{j} - 2\\hat{k}\\). A vector perpendicular to both is their cross product: \\(\\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 3 & -2 & 1 \\\\ 4 & 3 & -2 \\end{vmatrix} = \\hat{i}\\left((-2)(-2) - (1)(3)\\right) - \\hat{j}\\left((3)(-2) - (1)(4)\\right) + \\hat{k}\\left((3)(3) - (-2)(4)\\right) = \\hat{i} + 10\\hat{j} + 17\\hat{k}\\). Its magnitude is \\(\\left|\\vec{a} \\times \\vec{b}\\right| = \\sqrt{1^2 + 10^2 + 17^2} = \\sqrt{390}\\), so the unit vector in that direction is \\(\\hat{n} = \\dfrac{1}{\\sqrt{390}}\\left(\\hat{i} + 10\\hat{j} + 17\\hat{k}\\right)\\). Scaling to magnitude \\(5\\), the required vector is \\(\\dfrac{5}{\\sqrt{390}}\\left(\\hat{i} + 10\\hat{j} + 17\\hat{k}\\right)\\). Its negative has the same magnitude and is also perpendicular to both, so it is an equally valid answer — the question asks for a vector, not the vector."
+    },
+    {
+      "hash": "b7d6101f5cf4b23968f950466f42e8218d3a4938d316621688c900224153b16d",
+      "ref": "Q24b",
+      "questionNumber": "24 (b)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Vector (Cross) Product",
+      "stem": "Let \\(\\vec{a}, \\vec{b}\\) and \\(\\vec{c}\\) be three vectors such that \\(\\vec{a} \\cdot \\vec{b} = \\vec{a} \\cdot \\vec{c}\\) and \\(\\vec{a} \\times \\vec{b} = \\vec{a} \\times \\vec{c}\\), \\(\\vec{a} \\neq \\vec{0}\\). Show that \\(\\vec{b} = \\vec{c}\\).",
+      "solution": "From \\(\\vec{a}\\cdot\\vec{b} = \\vec{a}\\cdot\\vec{c}\\) we get \\(\\vec{a}\\cdot\\left(\\vec{b} - \\vec{c}\\right) = 0\\). Since \\(\\vec{a} \\neq \\vec{0}\\), this means that either \\(\\vec{b} - \\vec{c} = \\vec{0}\\), or \\(\\vec{b} - \\vec{c}\\) is a non-zero vector perpendicular to \\(\\vec{a}\\). From \\(\\vec{a} \\times \\vec{b} = \\vec{a} \\times \\vec{c}\\) we get \\(\\vec{a} \\times \\left(\\vec{b} - \\vec{c}\\right) = \\vec{0}\\), so again either \\(\\vec{b} - \\vec{c} = \\vec{0}\\), or \\(\\vec{b} - \\vec{c}\\) is a non-zero vector parallel to \\(\\vec{a}\\). A non-zero vector cannot be both perpendicular and parallel to the same non-zero vector \\(\\vec{a}\\), so the second alternative is impossible in both statements taken together. The only possibility left is \\(\\vec{b} - \\vec{c} = \\vec{0}\\), that is \\(\\vec{b} = \\vec{c}\\). Note that either condition on its own is not enough — it is the two holding simultaneously that forces the conclusion."
+    },
+    {
+      "hash": "921fcd69201b004ca543fa7d3ab407e0d48a8d57fc5c44914532e3aa8501ff76",
+      "ref": "Q25",
+      "questionNumber": "25",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Section Formula",
+      "stem": "A man needs to hang two lanterns on a straight wire whose end points have coordinates \\(A(4, 1, -2)\\) and \\(B(6, 2, -3)\\). Find the coordinates of the points where he hangs the lanterns such that these points trisect the wire AB.",
+      "solution": "Let \\(P\\) and \\(Q\\) be the two points at which the lanterns hang, so that they trisect \\(AB\\) with \\(A(4, 1, -2)\\) and \\(B(6, 2, -3)\\). Then \\(P\\) divides \\(AB\\) internally in the ratio \\(1 : 2\\) and \\(Q\\) divides it in the ratio \\(2 : 1\\). By the section formula, \\(P = \\left(\\dfrac{1 \\times 6 + 2 \\times 4}{1 + 2},\\ \\dfrac{1 \\times 2 + 2 \\times 1}{1 + 2},\\ \\dfrac{1 \\times (-3) + 2 \\times (-2)}{1 + 2}\\right) = \\left(\\dfrac{14}{3},\\ \\dfrac{4}{3},\\ -\\dfrac{7}{3}\\right)\\) and \\(Q = \\left(\\dfrac{2 \\times 6 + 1 \\times 4}{2 + 1},\\ \\dfrac{2 \\times 2 + 1 \\times 1}{2 + 1},\\ \\dfrac{2 \\times (-3) + 1 \\times (-2)}{2 + 1}\\right) = \\left(\\dfrac{16}{3},\\ \\dfrac{5}{3},\\ -\\dfrac{8}{3}\\right)\\). So the lanterns hang at \\(\\left(\\dfrac{14}{3}, \\dfrac{4}{3}, -\\dfrac{7}{3}\\right)\\) and \\(\\left(\\dfrac{16}{3}, \\dfrac{5}{3}, -\\dfrac{8}{3}\\right)\\)."
+    },
+    {
+      "hash": "3c3fae9c786a3c17ebb268bad06c954eb6b125f6dea1376025862e502fe52e3e",
+      "ref": "Q26",
+      "questionNumber": "26",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Increasing and Decreasing Functions",
+      "stem": "Find the value of 'a' for which \\(f(x) = \\sqrt{3}\\sin x - \\cos x - 2ax + 6\\) is decreasing in R.",
+      "solution": "The function \\(f\\) is decreasing on \\(R\\) exactly when \\(f'(x) \\le 0\\) for every real \\(x\\). Differentiating, \\(f'(x) = \\sqrt{3}\\cos x + \\sin x - 2a\\), so the requirement is \\(\\sqrt{3}\\cos x + \\sin x \\le 2a\\) for all \\(x\\). Write the left side as a single cosine: \\(\\sqrt{3}\\cos x + \\sin x = 2\\left(\\dfrac{\\sqrt{3}}{2}\\cos x + \\dfrac{1}{2}\\sin x\\right) = 2\\left(\\cos x\\cos\\dfrac{\\pi}{6} + \\sin x\\sin\\dfrac{\\pi}{6}\\right) = 2\\cos\\left(x - \\dfrac{\\pi}{6}\\right)\\). The condition becomes \\(2\\cos\\left(x - \\dfrac{\\pi}{6}\\right) \\le 2a\\), i.e. \\(\\cos\\left(x - \\dfrac{\\pi}{6}\\right) \\le a\\) for every \\(x\\). Since \\(\\cos\\left(x - \\dfrac{\\pi}{6}\\right)\\) ranges over \\([-1, 1]\\) and actually attains the value \\(1\\), the inequality holds for all \\(x\\) precisely when \\(a \\ge 1\\). Hence \\(a \\in [1, \\infty)\\). At \\(a = 1\\) the derivative vanishes only at isolated points and is negative elsewhere, so \\(f\\) is still decreasing there; the marking scheme accordingly accepts \\((1, \\infty)\\) as well, for a candidate who works with the strict inequality \\(f'(x) < 0\\)."
+    },
+    {
+      "hash": "62573b517ca15e7da1a207650de868d47e4b9071a1c91b7bfbbd1a5c8e7b422e",
+      "ref": "Q27a",
+      "questionNumber": "27 (a)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Integration by Partial Fractions",
+      "stem": "Find : \\(\\displaystyle\\int \\dfrac{2x}{(x^2 + 3)(x^2 - 5)}\\ dx\\)",
+      "solution": "The numerator \\(2x\\,dx\\) is exactly the differential of \\(x^2\\), which is the signal to substitute. Put \\(t = x^2\\), so \\(dt = 2x\\,dx\\) and \\(I = \\displaystyle\\int\\dfrac{2x\\,dx}{(x^2+3)(x^2-5)} = \\int\\dfrac{dt}{(t+3)(t-5)}\\). Now split into partial fractions: writing \\(\\dfrac{1}{(t+3)(t-5)} = \\dfrac{A}{t+3} + \\dfrac{B}{t-5}\\) gives \\(A(t-5) + B(t+3) = 1\\); putting \\(t = 5\\) yields \\(B = \\dfrac{1}{8}\\) and putting \\(t = -3\\) yields \\(A = -\\dfrac{1}{8}\\). Hence \\(I = \\displaystyle\\int\\left(-\\dfrac{1}{8(t+3)} + \\dfrac{1}{8(t-5)}\\right)dt = \\dfrac{1}{8}\\left[\\log|t-5| - \\log|t+3|\\right] + C = \\dfrac{1}{8}\\log\\left|\\dfrac{t-5}{t+3}\\right| + C\\). Restoring \\(t = x^2\\), the answer is \\(\\dfrac{1}{8}\\log\\left|\\dfrac{x^2-5}{x^2+3}\\right| + C\\)."
+    },
+    {
+      "hash": "5e63f0f0ebb12c94a5831205766fcfcbe6f521c1ccdf1edc994b1041f7da7c2f",
+      "ref": "Q27b",
+      "questionNumber": "27 (b)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Integrals",
+      "subtopic": "Properties of Definite Integrals",
+      "stem": "Evaluate : \\(\\displaystyle\\int_{1}^{4} \\left(|x - 2| + |x - 4|\\right)\\ dx\\)",
+      "solution": "Break each modulus at its own critical point. On \\([1, 4]\\), the expression \\(x - 2\\) changes sign at \\(x = 2\\), so \\(|x-2| = 2 - x\\) on \\([1, 2]\\) and \\(|x-2| = x - 2\\) on \\([2, 4]\\). The expression \\(x - 4\\) is negative or zero throughout \\([1, 4]\\), so \\(|x-4| = 4 - x\\) on the whole interval. Hence \\(\\displaystyle\\int_{1}^{4}\\left(|x-2| + |x-4|\\right)dx = \\int_{1}^{2}(2-x)\\,dx + \\int_{2}^{4}(x-2)\\,dx + \\int_{1}^{4}(4-x)\\,dx\\). Evaluating each: \\(\\displaystyle\\int_{1}^{2}(2-x)\\,dx = \\left[2x - \\dfrac{x^2}{2}\\right]_{1}^{2} = 2 - \\dfrac{3}{2} = \\dfrac{1}{2}\\); \\(\\displaystyle\\int_{2}^{4}(x-2)\\,dx = \\left[\\dfrac{(x-2)^2}{2}\\right]_{2}^{4} = 2\\); \\(\\displaystyle\\int_{1}^{4}(4-x)\\,dx = \\left[4x - \\dfrac{x^2}{2}\\right]_{1}^{4} = 8 - \\dfrac{7}{2} = \\dfrac{9}{2}\\). The total is \\(\\dfrac{1}{2} + 2 + \\dfrac{9}{2} = 7\\)."
+    },
+    {
+      "hash": "b67eccf38adbc1df2ff7798a3c0b71caf4ab4f867fc99d130f0a28583be9b8f4",
+      "ref": "Q28",
+      "questionNumber": "28",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Differential Equations",
+      "subtopic": "Homogeneous Differential Equations",
+      "stem": "Find the particular solution of the differential equation \\(\\left[x\\sin^2\\left(\\dfrac{y}{x}\\right) - y\\right]dx + x\\,dy = 0\\) given that \\(y = \\dfrac{\\pi}{4}\\), when \\(x = 1\\).",
+      "solution": "Rearranging the equation, \\(x\\,dy = \\left[y - x\\sin^2\\dfrac{y}{x}\\right]dx\\), so \\(\\dfrac{dy}{dx} = \\dfrac{y}{x} - \\sin^2\\dfrac{y}{x}\\). Every term on the right depends on \\(x\\) and \\(y\\) only through \\(\\dfrac{y}{x}\\), so the equation is homogeneous. Put \\(y = vx\\), giving \\(\\dfrac{dy}{dx} = v + x\\dfrac{dv}{dx}\\); the equation becomes \\(v + x\\dfrac{dv}{dx} = v - \\sin^2 v\\), so \\(x\\dfrac{dv}{dx} = -\\sin^2 v\\). Separating the variables, \\(-\\mathrm{cosec}^2 v\\,dv = \\dfrac{dx}{x}\\). Integrating and using \\(\\displaystyle\\int\\mathrm{cosec}^2 v\\,dv = -\\cot v\\), the left side gives \\(-(-\\cot v) = \\cot v\\), so \\(\\cot v = \\log|x| + C\\), that is \\(\\cot\\dfrac{y}{x} = \\log|x| + C\\). Applying the initial condition \\(y = \\dfrac{\\pi}{4}\\) when \\(x = 1\\): \\(\\cot\\dfrac{\\pi}{4} = 1\\) and \\(\\log 1 = 0\\), so \\(C = 1\\). The particular solution is \\(\\cot\\dfrac{y}{x} = \\log|x| + 1\\)."
+    },
+    {
+      "hash": "b5f32aef3b69ad9457ab7c6661e24d25dc6b18596b95681f86b466ab887bb09e",
+      "ref": "Q29",
+      "questionNumber": "29",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Linear Programming",
+      "subtopic": "Graphical Solution and the Feasible Region",
+      "stem": "In the Linear Programming Problem (LPP), find the point/points giving maximum value for \\(Z = 5x + 10y\\)\n\nsubject to constraints\n\n\\(x + 2y \\le 120\\)\n\n\\(x + y \\ge 60\\)\n\n\\(x - 2y \\ge 0\\)\n\n\\(x,\\ y \\ge 0\\)",
+      "solution": "Plot the three boundary lines in the first quadrant: \\(x + 2y = 120\\), \\(x + y = 60\\) and \\(x - 2y = 0\\). Their pairwise intersections give the corner points of the feasible region. Solving \\(x + y = 60\\) with \\(x - 2y = 0\\) gives \\(D(40, 20)\\); solving \\(x + 2y = 120\\) with \\(x - 2y = 0\\) gives \\(A(60, 30)\\); the line \\(x + 2y = 120\\) meets the x-axis at \\(B(120, 0)\\) and \\(x + y = 60\\) meets it at \\(C(60, 0)\\). Each of these satisfies all four constraints, so the feasible region is the bounded quadrilateral \\(DABC\\). Evaluating \\(Z = 5x + 10y\\) at the corners: \\(Z(A) = 300 + 300 = 600\\), \\(Z(B) = 600 + 0 = 600\\), \\(Z(C) = 300 + 0 = 300\\), \\(Z(D) = 200 + 200 = 400\\). The maximum value \\(600\\) is attained at two distinct corner points, \\(A(60, 30)\\) and \\(B(120, 0)\\), and when that happens every point of the segment joining them gives the same value. This is easy to see directly: the whole of \\(AB\\) lies on \\(x + 2y = 120\\), and there \\(Z = 5x + 10y = 5(x + 2y) = 5 \\times 120 = 600\\) identically. So the maximum value of \\(Z\\) is \\(600\\), attained at every point of the segment \\(AB\\)."
+    },
+    {
+      "hash": "a2aeed5833667b5b527acdf9432f71e4606b1a6193a34c65d735c7e6e29e304c",
+      "ref": "Q30a",
+      "questionNumber": "30 (a)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "stem": "If \\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0}\\) such that \\(|\\vec{a}| = 3\\), \\(|\\vec{b}| = 5\\), \\(|\\vec{c}| = 7\\), then find the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\).",
+      "solution": "From \\(\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0}\\) we get \\(\\vec{a} + \\vec{b} = -\\vec{c}\\), and taking magnitudes, \\(\\left|\\vec{a} + \\vec{b}\\right| = \\left|-\\vec{c}\\right| = \\left|\\vec{c}\\right| = 7\\). Squaring both sides and expanding, \\(\\left|\\vec{a}\\right|^2 + \\left|\\vec{b}\\right|^2 + 2\\,\\vec{a}\\cdot\\vec{b} = \\left|\\vec{c}\\right|^2\\), that is \\(9 + 25 + 2\\,\\vec{a}\\cdot\\vec{b} = 49\\). Hence \\(2\\,\\vec{a}\\cdot\\vec{b} = 15\\). If \\(\\theta\\) is the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\), then \\(2\\,\\vec{a}\\cdot\\vec{b} = 2\\left|\\vec{a}\\right|\\left|\\vec{b}\\right|\\cos\\theta = 2 \\times 3 \\times 5\\cos\\theta = 30\\cos\\theta = 15\\), so \\(\\cos\\theta = \\dfrac{1}{2}\\) and \\(\\theta = \\dfrac{\\pi}{3}\\)."
+    },
+    {
+      "hash": "238993f4528d63f9447b12eeb28186beb3341b84c7ceee2055e5f405a4c1396d",
+      "ref": "Q30b",
+      "questionNumber": "30 (b)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Vector Algebra",
+      "subtopic": "Scalar (Dot) Product and Projection",
+      "stem": "If \\(\\vec{a}\\) and \\(\\vec{b}\\) are unit vectors inclined with each other at an angle \\(\\theta\\), then prove that \\(\\dfrac{1}{2}|\\vec{a} - \\vec{b}| = \\sin\\dfrac{\\theta}{2}\\).",
+      "solution": "Since \\(\\vec{a}\\) and \\(\\vec{b}\\) are unit vectors, \\(\\left|\\vec{a}\\right| = \\left|\\vec{b}\\right| = 1\\) and \\(\\vec{a}\\cdot\\vec{b} = \\left|\\vec{a}\\right|\\left|\\vec{b}\\right|\\cos\\theta = \\cos\\theta\\). Expanding the square of the magnitude of the difference, \\(\\left|\\vec{a} - \\vec{b}\\right|^2 = \\left|\\vec{a}\\right|^2 + \\left|\\vec{b}\\right|^2 - 2\\,\\vec{a}\\cdot\\vec{b} = 1 + 1 - 2\\cos\\theta = 2\\left(1 - \\cos\\theta\\right)\\). Using the half-angle identity \\(1 - \\cos\\theta = 2\\sin^2\\dfrac{\\theta}{2}\\), this is \\(\\left|\\vec{a} - \\vec{b}\\right|^2 = 4\\sin^2\\dfrac{\\theta}{2}\\). The angle between two vectors satisfies \\(0 \\le \\theta \\le \\pi\\), so \\(\\dfrac{\\theta}{2}\\) lies in \\(\\left[0, \\dfrac{\\pi}{2}\\right]\\) and \\(\\sin\\dfrac{\\theta}{2} \\ge 0\\); taking the non-negative square root of both sides is therefore legitimate and gives \\(\\left|\\vec{a} - \\vec{b}\\right| = 2\\sin\\dfrac{\\theta}{2}\\). Dividing by \\(2\\), \\(\\dfrac{1}{2}\\left|\\vec{a} - \\vec{b}\\right| = \\sin\\dfrac{\\theta}{2}\\), as required."
+    },
+    {
+      "hash": "4615e58cceee4b3a7f27f68d78e6f61eae6713606a594c60234f462bdc7e775d",
+      "ref": "Q31a",
+      "questionNumber": "31 (a)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Conditional Probability",
+      "stem": "The probability that a student buys a colouring book is \\(0{\\cdot}7\\) and that she buys a box of colours is \\(0{\\cdot}2\\). The probability that she buys a colouring book, given that she buys a box of colours, is \\(0{\\cdot}3\\). Find the probability that the student :\n\n(i) Buys both the colouring book and the box of colours.\n\n(ii) Buys a box of colours given that she buys the colouring book.",
+      "solution": "Let \\(A\\) be the event that the student buys a colouring book and \\(B\\) the event that she buys a box of colours. The data give \\(P(A) = 0{\\cdot}7\\), \\(P(B) = 0{\\cdot}2\\) and \\(P\\!\\left(\\dfrac{A}{B}\\right) = 0{\\cdot}3\\). (i) By the definition of conditional probability, \\(P\\!\\left(\\dfrac{A}{B}\\right) = \\dfrac{P(A \\cap B)}{P(B)}\\), so \\(P(A \\cap B) = 0{\\cdot}3 \\times 0{\\cdot}2 = 0{\\cdot}06\\), that is \\(\\dfrac{3}{50}\\). This is the probability that she buys both the colouring book and the box of colours. (ii) The probability that she buys a box of colours given that she buys the colouring book is \\(P\\!\\left(\\dfrac{B}{A}\\right) = \\dfrac{P(A \\cap B)}{P(A)} = \\dfrac{0{\\cdot}06}{0{\\cdot}7} = \\dfrac{6}{70} = \\dfrac{3}{35}\\), which is about \\(0{\\cdot}086\\). Note that the two conditional probabilities are quite different, because the conditioning events have different probabilities."
+    },
+    {
+      "hash": "38d3b50c52a399aeb05f277dfc332bdfa9ddfec976cc1d71285cd4eaa93a9f6c",
+      "ref": "Q31b",
+      "questionNumber": "31 (b)",
+      "marks": 3,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Random Variables and Probability Distributions",
+      "stem": "A person has a fruit box that contains 6 apples and 4 oranges. He picks out a fruit three times, one after the other, after replacing the previous one in the box. Find :\n\n(i) The probability distribution of the number of oranges he draws.\n\n(ii) The expectation of the random variable (number of oranges).",
+      "solution": "Each fruit is replaced before the next draw, so the three draws are independent and the probability of an orange is the same every time: \\(p = \\dfrac{4}{6 + 4} = \\dfrac{4}{10} = \\dfrac{2}{5}\\), and the probability of not drawing an orange is \\(q = 1 - \\dfrac{2}{5} = \\dfrac{3}{5}\\). Let \\(X\\) be the number of oranges drawn, so \\(X\\) is binomial with \\(n = 3\\) and \\(p = \\dfrac{2}{5}\\), taking the values \\(0, 1, 2, 3\\). (i) Using \\(P(X = r) = {}^{3}C_{r}\\,p^{r}q^{3-r}\\): \\(P(X = 0) = \\left(\\dfrac{3}{5}\\right)^{3} = \\dfrac{27}{125}\\); \\(P(X = 1) = 3\\left(\\dfrac{2}{5}\\right)\\left(\\dfrac{3}{5}\\right)^{2} = \\dfrac{54}{125}\\); \\(P(X = 2) = 3\\left(\\dfrac{2}{5}\\right)^{2}\\left(\\dfrac{3}{5}\\right) = \\dfrac{36}{125}\\); \\(P(X = 3) = \\left(\\dfrac{2}{5}\\right)^{3} = \\dfrac{8}{125}\\). As a check, \\(27 + 54 + 36 + 8 = 125\\), so the four probabilities sum to \\(1\\). (ii) \\(E(X) = \\sum p_i x_i = 0 \\times \\dfrac{27}{125} + 1 \\times \\dfrac{54}{125} + 2 \\times \\dfrac{36}{125} + 3 \\times \\dfrac{8}{125} = \\dfrac{54 + 72 + 24}{125} = \\dfrac{150}{125} = \\dfrac{6}{5}\\). This agrees with the binomial mean \\(np = 3 \\times \\dfrac{2}{5} = \\dfrac{6}{5}\\)."
+    },
+    {
+      "hash": "9e3429504ee6b3a19f3749404f79c4ec481f8abe21d1cb5acde64cf928cb04a5",
+      "ref": "Q32",
+      "questionNumber": "32",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Application of Integrals",
+      "subtopic": "Area Bounded by a Curve and a Line",
+      "stem": "Sketch a graph of \\(y = x^2\\). Using integration, find the area of the region bounded by \\(y = 9\\), \\(x = 0\\) and \\(y = x^2\\).",
+      "solution": "The graph of \\(y = x^2\\) is an upward parabola with its vertex at the origin and axis along the y-axis; the horizontal line \\(y = 9\\) meets it where \\(x^2 = 9\\), that is at \\((-3, 9)\\) and \\((3, 9)\\). The region bounded by \\(y = 9\\), \\(x = 0\\) and \\(y = x^2\\) is therefore the strip lying below the line, above the parabola and on one side of the y-axis — in the first quadrant it is bounded by \\(x = 0\\) on the left, \\(y = 9\\) on top and the arc of the parabola on the right. Integrating along the y-axis, a horizontal strip at height \\(y\\) runs from \\(x = 0\\) to \\(x = \\sqrt{y}\\), so its length is \\(\\sqrt{y}\\) and \\(y\\) runs from \\(0\\) to \\(9\\). Hence the required area \\(= \\displaystyle\\int_{0}^{9}\\sqrt{y}\\,dy = \\dfrac{2}{3}\\left[y^{3/2}\\right]_{0}^{9} = \\dfrac{2}{3}\\left(27 - 0\\right) = 18\\) square units. The same answer follows by integrating along the x-axis: \\(\\displaystyle\\int_{0}^{3}\\left(9 - x^2\\right)dx = 27 - 9 = 18\\). The marking scheme adds a note that a candidate who takes the corresponding region in the second quadrant should also be credited — by the symmetry of the parabola about the y-axis that area is again \\(18\\) square units."
+    },
+    {
+      "hash": "c1f3f2b9f7bc4b28a2651be3ce285ac40e016cbd02a4d1958a155b2b661d04c8",
+      "ref": "Q33",
+      "questionNumber": "33",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Determinants",
+      "subtopic": "Solving System of Linear Equations",
+      "stem": "A furniture workshop produces three types of furniture – chairs, tables and beds each day. On a particular day the total number of furniture pieces produced is 45. It was also found that production of beds exceeds that of chairs by 8, while the total production of beds and chairs together is twice the production of tables. Determine the units produced of each type of furniture, using matrix method.",
+      "solution": "Let \\(x\\), \\(y\\) and \\(z\\) be the numbers of chairs, tables and beds produced. The total is \\(45\\) pieces, so \\(x + y + z = 45\\). Beds exceed chairs by \\(8\\), so \\(z - x = 8\\), which we write as \\(-x + 0\\cdot y + z = 8\\). Beds and chairs together are twice the tables, so \\(x + z = 2y\\), that is \\(x - 2y + z = 0\\). In matrix form this is \\(AX = B\\) with \\(A = \\begin{bmatrix} 1 & 1 & 1 \\\\ -1 & 0 & 1 \\\\ 1 & -2 & 1 \\end{bmatrix}\\), \\(X = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 45 \\\\ 8 \\\\ 0 \\end{bmatrix}\\). Expanding along the first row, \\(|A| = 1(0 + 2) - 1(-1 - 1) + 1(2 - 0) = 2 + 2 + 2 = 6 \\neq 0\\), so \\(A^{-1}\\) exists and the system has the unique solution \\(X = A^{-1}B\\). Computing the cofactors and transposing gives \\(\\mathrm{adj}(A) = \\begin{bmatrix} 2 & -3 & 1 \\\\ 2 & 0 & -2 \\\\ 2 & 3 & 1 \\end{bmatrix}\\), so \\(A^{-1} = \\dfrac{1}{|A|}\\mathrm{adj}(A) = \\dfrac{1}{6}\\begin{bmatrix} 2 & -3 & 1 \\\\ 2 & 0 & -2 \\\\ 2 & 3 & 1 \\end{bmatrix}\\). Therefore \\(\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = \\dfrac{1}{6}\\begin{bmatrix} 2 & -3 & 1 \\\\ 2 & 0 & -2 \\\\ 2 & 3 & 1 \\end{bmatrix}\\begin{bmatrix} 45 \\\\ 8 \\\\ 0 \\end{bmatrix} = \\dfrac{1}{6}\\begin{bmatrix} 90 - 24 \\\\ 90 \\\\ 90 + 24 \\end{bmatrix} = \\dfrac{1}{6}\\begin{bmatrix} 66 \\\\ 90 \\\\ 114 \\end{bmatrix} = \\begin{bmatrix} 11 \\\\ 15 \\\\ 19 \\end{bmatrix}\\). So the workshop produces 11 chairs, 15 tables and 19 beds. These satisfy all three conditions: \\(11 + 15 + 19 = 45\\), \\(19 - 11 = 8\\), and \\(19 + 11 = 30 = 2 \\times 15\\)."
+    },
+    {
+      "hash": "099e4f4a902253cc2e664f97af2c08b96ee50ca0219574de1018a89b2d31dc71",
+      "ref": "Q34a",
+      "questionNumber": "34 (a)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Logarithmic Differentiation",
+      "stem": "For a positive constant 'a', differentiate \\(a^{t + \\frac{1}{t}}\\) with respect to \\(\\left(t + \\dfrac{1}{t}\\right)^a\\), where t is a non-zero real number.",
+      "solution": "We are asked for the derivative of one function with respect to another, so set \\(u = a^{\\,t + \\frac{1}{t}}\\) and \\(v = \\left(t + \\dfrac{1}{t}\\right)^{a}\\) and use \\(\\dfrac{du}{dv} = \\dfrac{du/dt}{dv/dt}\\). Note the two are structurally different: \\(u\\) has a constant base and a variable index, while \\(v\\) has a variable base and a constant index. Differentiating \\(u\\) by the exponential rule and the chain rule, \\(\\dfrac{du}{dt} = a^{\\,t+\\frac{1}{t}}\\log a \\cdot \\dfrac{d}{dt}\\left(t + \\dfrac{1}{t}\\right) = a^{\\,t+\\frac{1}{t}}\\log a\\left(1 - \\dfrac{1}{t^2}\\right)\\). Differentiating \\(v\\) by the power rule and the chain rule, \\(\\dfrac{dv}{dt} = a\\left(t + \\dfrac{1}{t}\\right)^{a-1}\\left(1 - \\dfrac{1}{t^2}\\right)\\). Dividing, the common factor \\(\\left(1 - \\dfrac{1}{t^2}\\right)\\) cancels and \\(\\dfrac{du}{dv} = \\dfrac{a^{\\,t+\\frac{1}{t}}\\log a}{a\\left(t + \\dfrac{1}{t}\\right)^{a-1}}\\)."
+    },
+    {
+      "hash": "1f4e541872a7fad73e0ce383cf83a0c1c854762a29b15de4f7d755ae358dba50",
+      "ref": "Q34b",
+      "questionNumber": "34 (b)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Continuity and Differentiability",
+      "subtopic": "Logarithmic Differentiation",
+      "stem": "Find \\(\\dfrac{dy}{dx}\\) if \\(y^x + x^y + x^x = a^b\\), where a and b are constants.",
+      "solution": "Split the left side into three pieces, \\(u = y^{x}\\), \\(v = x^{y}\\) and \\(w = x^{x}\\). Since \\(a\\) and \\(b\\) are constants, \\(a^{b}\\) is a constant, so differentiating \\(u + v + w = a^{b}\\) with respect to \\(x\\) gives \\(\\dfrac{du}{dx} + \\dfrac{dv}{dx} + \\dfrac{dw}{dx} = 0\\). Each piece needs logarithmic differentiation, because both base and index vary. For \\(u = y^{x}\\): \\(\\log u = x\\log y\\), so \\(\\dfrac{1}{u}\\dfrac{du}{dx} = \\dfrac{x}{y}\\dfrac{dy}{dx} + \\log y\\), giving \\(\\dfrac{du}{dx} = y^{x}\\left(\\dfrac{x}{y}\\dfrac{dy}{dx} + \\log y\\right) = xy^{x-1}\\dfrac{dy}{dx} + y^{x}\\log y\\). For \\(v = x^{y}\\): \\(\\log v = y\\log x\\), so \\(\\dfrac{1}{v}\\dfrac{dv}{dx} = \\dfrac{y}{x} + \\log x\\dfrac{dy}{dx}\\), giving \\(\\dfrac{dv}{dx} = yx^{y-1} + x^{y}\\log x\\dfrac{dy}{dx}\\). For \\(w = x^{x}\\): \\(\\log w = x\\log x\\), so \\(\\dfrac{1}{w}\\dfrac{dw}{dx} = 1 + \\log x\\), giving \\(\\dfrac{dw}{dx} = x^{x}\\left(1 + \\log x\\right)\\). Adding the three and setting the sum to zero, \\(xy^{x-1}\\dfrac{dy}{dx} + y^{x}\\log y + yx^{y-1} + x^{y}\\log x\\dfrac{dy}{dx} + x^{x}\\left(1 + \\log x\\right) = 0\\). Collecting the \\(\\dfrac{dy}{dx}\\) terms, \\(\\dfrac{dy}{dx}\\left(xy^{x-1} + x^{y}\\log x\\right) = -\\left[x^{x}\\left(1 + \\log x\\right) + y^{x}\\log y + yx^{y-1}\\right]\\), so \\(\\dfrac{dy}{dx} = -\\dfrac{x^{x}\\left(1 + \\log x\\right) + y^{x}\\log y + yx^{y-1}}{xy^{x-1} + x^{y}\\log x}\\)."
+    },
+    {
+      "hash": "37efdc9a8a1014b3545086f5e93f977f4820d8cc636914f2f6f32d07990ee5cc",
+      "ref": "Q35a",
+      "questionNumber": "35 (a)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Equation of a Line in Space",
+      "stem": "Find the foot of the perpendicular drawn from the point \\((1, 1, 4)\\) on the line \\(\\dfrac{x+2}{5} = \\dfrac{y+1}{2} = \\dfrac{-z+4}{-3}\\).",
+      "solution": "First put the line in standard form. The third ratio \\(\\dfrac{-z+4}{-3}\\) is the same as \\(\\dfrac{z-4}{3}\\), since multiplying numerator and denominator by \\(-1\\) changes nothing, so the line is \\(\\dfrac{x+2}{5} = \\dfrac{y+1}{2} = \\dfrac{z-4}{3}\\) and its direction ratios are \\(\\langle 5, 2, 3\\rangle\\). Set each ratio equal to \\(\\lambda\\); then a general point on the line is \\(M\\left(5\\lambda - 2,\\ 2\\lambda - 1,\\ 3\\lambda + 4\\right)\\). With \\(P(1, 1, 4)\\), the direction ratios of \\(\\overrightarrow{PM}\\) are \\(\\langle 5\\lambda - 2 - 1,\\ 2\\lambda - 1 - 1,\\ 3\\lambda + 4 - 4\\rangle = \\langle 5\\lambda - 3,\\ 2\\lambda - 2,\\ 3\\lambda\\rangle\\). The point \\(M\\) is the foot of the perpendicular exactly when \\(\\overrightarrow{PM}\\) is perpendicular to the line, i.e. when the dot product of their direction ratios vanishes: \\(5(5\\lambda - 3) + 2(2\\lambda - 2) + 3(3\\lambda) = 0\\). This gives \\(25\\lambda - 15 + 4\\lambda - 4 + 9\\lambda = 0\\), i.e. \\(38\\lambda = 19\\) and \\(\\lambda = \\dfrac{1}{2}\\). Substituting back, the foot of the perpendicular is \\(M\\left(\\dfrac{5}{2} - 2,\\ 1 - 1,\\ \\dfrac{3}{2} + 4\\right) = \\left(\\dfrac{1}{2},\\ 0,\\ \\dfrac{11}{2}\\right)\\)."
+    },
+    {
+      "hash": "5e540290425a00913d60e04487a003880ac61fce0aa9282540ea3811238b4732",
+      "ref": "Q35b",
+      "questionNumber": "35 (b)",
+      "marks": 5,
+      "format": "subjective",
+      "chapter": "Three Dimensional Geometry",
+      "subtopic": "Equation of a Line in Space",
+      "stem": "Find the point on the line \\(\\dfrac{x-1}{3} = \\dfrac{y+1}{2} = \\dfrac{z-4}{3}\\) at a distance of \\(2\\sqrt{2}\\) units from the point \\((-1, -1, 2)\\).",
+      "solution": "Set \\(\\dfrac{x-1}{3} = \\dfrac{y+1}{2} = \\dfrac{z-4}{3} = \\lambda\\), so that a general point on the line is \\(P\\left(3\\lambda + 1,\\ 2\\lambda - 1,\\ 3\\lambda + 4\\right)\\). Its distance from the given point \\((-1, -1, 2)\\) has components \\(3\\lambda + 1 - (-1) = 3\\lambda + 2\\), \\(2\\lambda - 1 - (-1) = 2\\lambda\\) and \\(3\\lambda + 4 - 2 = 3\\lambda + 2\\), so the distance is \\(\\sqrt{(3\\lambda + 2)^2 + (2\\lambda)^2 + (3\\lambda + 2)^2}\\). Setting this equal to \\(2\\sqrt{2}\\) and squaring, \\(2(3\\lambda + 2)^2 + 4\\lambda^2 = 8\\), i.e. \\(18\\lambda^2 + 24\\lambda + 8 + 4\\lambda^2 = 8\\), which reduces to \\(22\\lambda^2 + 24\\lambda = 0\\). Factorising, \\(2\\lambda\\left(11\\lambda + 12\\right) = 0\\), so \\(\\lambda = 0\\) or \\(\\lambda = -\\dfrac{12}{11}\\). Substituting \\(\\lambda = 0\\) gives the point \\((1, -1, 4)\\), and substituting \\(\\lambda = -\\dfrac{12}{11}\\) gives \\(\\left(-\\dfrac{25}{11},\\ -\\dfrac{35}{11},\\ \\dfrac{8}{11}\\right)\\). Squaring can introduce a false root, so both must be tested: the first gives displacement components \\(2, 0, 2\\) and the second \\(-\\dfrac{14}{11}, -\\dfrac{24}{11}, -\\dfrac{14}{11}\\), whose squares sum to \\(8\\) in each case. Both distances are exactly \\(\\sqrt{8} = 2\\sqrt{2}\\), so neither root is extraneous and there are two such points on the line."
+    },
+    {
+      "hash": "598507352ef7afea385c94b74cbc311d041cc7b2fd345e269de4a1980f07d418",
+      "ref": "Q36i",
+      "questionNumber": "36 (i)",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "stem": "Taking length = breadth = x m and height = y m, express the surface area (S) of the box in terms of x and its volume (V), which is constant.",
+      "context": "A carpenter needs to make a wooden cuboidal box, closed from all sides, which has a square base and fixed volume. Since he is short of the paint required to paint the box on completion, he wants the surface area to be minimum.\n\nOn the basis of the above information, answer the following questions :",
+      "solution": "The base is a square of side \\(x\\) metres and the height is \\(y\\) metres, so the volume is \\(V = x^2 y\\), which gives \\(y = \\dfrac{V}{x^2}\\). The box is closed on all sides, so its surface consists of the square base, the square top, and four rectangular sides each of area \\(xy\\); hence \\(S = 2x^2 + 4xy\\). Substituting for \\(y\\) to eliminate it, \\(S = 2x^2 + 4x \\cdot \\dfrac{V}{x^2} = 2x^2 + \\dfrac{4V}{x}\\), where \\(V\\) is a constant."
+    },
+    {
+      "hash": "d74375e95f52eb08db982f7afd55d16023fea65b7e90bcad833fa9c81666156d",
+      "ref": "Q36ii",
+      "questionNumber": "36 (ii)",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "stem": "Find \\(\\dfrac{dS}{dx}\\).",
+      "context": "A carpenter needs to make a wooden cuboidal box, closed from all sides, which has a square base and fixed volume. Since he is short of the paint required to paint the box on completion, he wants the surface area to be minimum.\n\nOn the basis of the above information, answer the following questions :",
+      "solution": "Differentiate \\(S = 2x^2 + \\dfrac{4V}{x} = 2x^2 + 4Vx^{-1}\\) with respect to \\(x\\), treating \\(V\\) as a constant: \\(\\dfrac{dS}{dx} = 4x - 4Vx^{-2} = 4x - \\dfrac{4V}{x^2} = 4\\left(x - \\dfrac{V}{x^2}\\right)\\)."
+    },
+    {
+      "hash": "5e681cc17c61a64e2147f271d5ccd5fd78639029f8a512798c0bad45e45d7328",
+      "ref": "Q36iiia",
+      "questionNumber": "36 (iii) (a)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "stem": "Find a relation between x and y such that the surface area (S) is minimum.",
+      "context": "A carpenter needs to make a wooden cuboidal box, closed from all sides, which has a square base and fixed volume. Since he is short of the paint required to paint the box on completion, he wants the surface area to be minimum.\n\nOn the basis of the above information, answer the following questions :",
+      "solution": "For a turning point of \\(S\\) we set \\(\\dfrac{dS}{dx} = 0\\), so \\(4\\left(x - \\dfrac{V}{x^2}\\right) = 0\\), which gives \\(x = \\dfrac{V}{x^2}\\), that is \\(V = x^3\\). Since \\(V = x^2y\\), this says \\(x^2y = x^3\\), and dividing by \\(x^2\\) (the side length is positive) gives \\(y = x\\). To confirm that this is a minimum rather than a maximum, differentiate again: \\(\\dfrac{d^2S}{dx^2} = 4 + \\dfrac{8V}{x^3} = 4\\left(1 + \\dfrac{2V}{x^3}\\right)\\), which is positive for every \\(x > 0\\). Hence the surface area is least when \\(y = x\\) — in other words, when the box is a cube."
+    },
+    {
+      "hash": "4e386c5fcd3c1717cc0cc4f7a785f08ceaa6a471e60b614eb1e0c9ad4bc99a5e",
+      "ref": "Q36iiib",
+      "questionNumber": "36 (iii) (b)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Application of Derivatives",
+      "subtopic": "Maxima and Minima",
+      "stem": "If surface area (S) is constant, the volume \\((V) = \\dfrac{1}{4}(Sx - 2x^3)\\), x being the edge of base. Show that volume (V) is maximum for \\(x = \\sqrt{\\dfrac{S}{6}}\\).",
+      "context": "A carpenter needs to make a wooden cuboidal box, closed from all sides, which has a square base and fixed volume. Since he is short of the paint required to paint the box on completion, he wants the surface area to be minimum.\n\nOn the basis of the above information, answer the following questions :",
+      "solution": "Here the surface area \\(S\\) is the constant and \\(V = \\dfrac{1}{4}\\left(Sx - 2x^3\\right)\\) is to be maximised over \\(x\\). Differentiating, \\(\\dfrac{dV}{dx} = \\dfrac{1}{4}\\left(S - 6x^2\\right)\\). Setting \\(\\dfrac{dV}{dx} = 0\\) gives \\(6x^2 = S\\), so \\(x^2 = \\dfrac{S}{6}\\) and \\(x = \\sqrt{\\dfrac{S}{6}}\\), taking the positive root since \\(x\\) is the edge of the base. Differentiating a second time, \\(\\dfrac{d^2V}{dx^2} = \\dfrac{1}{4}\\left(-12x\\right) = -3x\\), and at \\(x = \\sqrt{\\dfrac{S}{6}}\\) this equals \\(-3\\sqrt{\\dfrac{S}{6}}\\), which is negative. By the second derivative test the volume is therefore a maximum at \\(x = \\sqrt{\\dfrac{S}{6}}\\), which is what had to be shown."
+    },
+    {
+      "hash": "6d010a8f63d797dee1df7ece370ec0d2fb3b8e94d318930b5183b56e7b63f792",
+      "ref": "Q37i",
+      "questionNumber": "37 (i)",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "One-One and Onto Functions",
+      "stem": "Is f a bijective function ?",
+      "context": "Let A be the set of 30 students of class XII in a school. Let \\(f : A \\to N\\), N is a set of natural numbers such that function \\(f(x) = \\) Roll Number of student x.\n\nOn the basis of the given information, answer the following :",
+      "solution": "No — \\(f\\) is not a bijective function. It is one-one, since two different students of the class cannot share a roll number, but it fails to be onto, and a bijection has to be both. The reason is set out in part (ii)."
+    },
+    {
+      "hash": "394797e5f36065de57ae2e3c83885236671304919260f22c2c643568bb697e05",
+      "ref": "Q37ii",
+      "questionNumber": "37 (ii)",
+      "marks": 1,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "One-One and Onto Functions",
+      "stem": "Give reasons to support your answer to (i).",
+      "context": "Let A be the set of 30 students of class XII in a school. Let \\(f : A \\to N\\), N is a set of natural numbers such that function \\(f(x) = \\) Roll Number of student x.\n\nOn the basis of the given information, answer the following :",
+      "solution": "The class has \\(30\\) students, so the roll numbers they carry are \\(1, 2, 3, \\ldots, 30\\) and the range of \\(f\\) is the finite set \\(\\{1, 2, 3, \\ldots, 30\\}\\). The codomain, however, is the whole set \\(N\\) of natural numbers. Since the range is a proper subset of the codomain — no student is mapped to \\(31\\), or to any natural number beyond \\(30\\) — there are elements of the codomain with no pre-image, so \\(f\\) is not onto. A function that is not onto cannot be bijective, which settles part (i)."
+    },
+    {
+      "hash": "73d2134533a2f0ea8fc4451eb1b5ce23c9a488e594edaa5b82f108aeb22f8283",
+      "ref": "Q37iiia",
+      "questionNumber": "37 (iii) (a)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "Types of Relations",
+      "stem": "Let R be a relation defined by the teacher to plan the seating arrangement of students in pairs, where\n\n\\(R = \\{(x, y) : x,\\ y\\) are Roll Numbers of students such that \\(y = 3x\\}\\).\n\nList the elements of R. Is the relation R reflexive, symmetric and transitive ? Justify your answer.",
+      "context": "Let A be the set of 30 students of class XII in a school. Let \\(f : A \\to N\\), N is a set of natural numbers such that function \\(f(x) = \\) Roll Number of student x.\n\nOn the basis of the given information, answer the following :",
+      "solution": "The roll numbers run from \\(1\\) to \\(30\\), and a pair \\((x, y)\\) belongs to \\(R\\) only if both \\(x\\) and \\(y\\) are roll numbers with \\(y = 3x\\). That forces \\(3x \\le 30\\), i.e. \\(x \\le 10\\), so \\(R = \\{(1, 3), (2, 6), (3, 9), (4, 12), (5, 15), (6, 18), (7, 21), (8, 24), (9, 27), (10, 30)\\}\\), which has \\(10\\) elements. \\(R\\) is not reflexive: \\((1, 1) \\notin R\\), since \\(x = 3x\\) holds for no roll number. \\(R\\) is not symmetric: \\((1, 3) \\in R\\) but \\((3, 1) \\notin R\\), because \\(1 \\neq 3 \\times 3\\). \\(R\\) is not transitive: \\((1, 3) \\in R\\) and \\((3, 9) \\in R\\), yet \\((1, 9) \\notin R\\), since \\(9 \\neq 3 \\times 1\\). So the relation has none of the three properties."
+    },
+    {
+      "hash": "a921f0ce2e3506586d647316d8e0c02af150c461a6c2a222b63c1082862ef2d6",
+      "ref": "Q37iiib",
+      "questionNumber": "37 (iii) (b)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Relations and Functions",
+      "subtopic": "Types of Relations",
+      "stem": "Let R be a relation defined by\n\n\\(R = \\{(x, y) : x,\\ y\\) are Roll Numbers of students such that \\(y = x^3\\}\\).\n\nList the elements of R. Is R a function ? Justify your answer.",
+      "context": "Let A be the set of 30 students of class XII in a school. Let \\(f : A \\to N\\), N is a set of natural numbers such that function \\(f(x) = \\) Roll Number of student x.\n\nOn the basis of the given information, answer the following :",
+      "solution": "A pair \\((x, y)\\) belongs to \\(R\\) only if both \\(x\\) and \\(y\\) are roll numbers with \\(y = x^3\\), which forces \\(x^3 \\le 30\\), i.e. \\(x \\le 3\\). Hence \\(R = \\{(1, 1), (2, 8), (3, 27)\\}\\). \\(R\\) is not a function on the set of roll numbers. A function must assign an image to every element of its domain, but here only the roll numbers \\(1\\), \\(2\\) and \\(3\\) have images: for \\(x = 4\\) the value \\(x^3 = 64\\) is not a roll number of the class, and the same failure occurs for every \\(x\\) from \\(4\\) to \\(30\\). So \\(R\\) is a relation but not a function. (Note that \\(R\\) does not fail for the other reason — no element has two images — it fails because most elements have none.)"
+    },
+    {
+      "hash": "42eb8060b796f0aa5c3444faf6de751cc5bb53b0e38fdb478db386259f736c95",
+      "ref": "Q38i",
+      "questionNumber": "38 (i)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Theorem of Total Probability",
+      "stem": "Calculate the probability of a randomly chosen seed to germinate.",
+      "context": "A gardener wanted to plant vegetables in his garden. Hence he bought 10 seeds of brinjal plant, 12 seeds of cabbage plant and 8 seeds of radish plant. The shopkeeper assured him of germination probabilities of brinjal, cabbage and radish to be 25%, 35% and 40% respectively. But before he could plant the seeds, they got mixed up in the bag and he had to sow them randomly.\n\nBased upon the above information, answer the following questions :",
+      "figure": "DECORATIVE — the three captioned photographs (Radish / Cabbage / Brinjal) carry no data. Every number needed is in the stem text. NOT attached, per the rule that a figure reference is not a figure dependency.",
+      "solution": "Altogether there are \\(10 + 12 + 8 = 30\\) seeds, and since they were mixed up and sown at random, each is equally likely to be chosen. Let \\(B\\), \\(C\\) and \\(R\\) be the events that the chosen seed is brinjal, cabbage and radish respectively, and let \\(A\\) be the event that the chosen seed germinates. Then \\(P(B) = \\dfrac{10}{30}\\), \\(P(C) = \\dfrac{12}{30}\\) and \\(P(R) = \\dfrac{8}{30}\\), while the assured germination rates give \\(P\\!\\left(\\dfrac{A}{B}\\right) = \\dfrac{25}{100}\\), \\(P\\!\\left(\\dfrac{A}{C}\\right) = \\dfrac{35}{100}\\) and \\(P\\!\\left(\\dfrac{A}{R}\\right) = \\dfrac{40}{100}\\). The three events \\(B\\), \\(C\\), \\(R\\) are mutually exclusive and exhaustive, so by the theorem of total probability \\(P(A) = P(B)P\\!\\left(\\dfrac{A}{B}\\right) + P(C)P\\!\\left(\\dfrac{A}{C}\\right) + P(R)P\\!\\left(\\dfrac{A}{R}\\right) = \\dfrac{10}{30}\\times\\dfrac{25}{100} + \\dfrac{12}{30}\\times\\dfrac{35}{100} + \\dfrac{8}{30}\\times\\dfrac{40}{100} = \\dfrac{250 + 420 + 320}{3000} = \\dfrac{990}{3000} = \\dfrac{33}{100}\\). So the probability that a randomly chosen seed germinates is \\(\\dfrac{33}{100}\\), or \\(33\\%\\)."
+    },
+    {
+      "hash": "a4ce123f43cc4b83af66dce06cc004a30d85729aa35313ed3ae8a87d502b6d5c",
+      "ref": "Q38ii",
+      "questionNumber": "38 (ii)",
+      "marks": 2,
+      "format": "subjective",
+      "chapter": "Probability",
+      "subtopic": "Bayes' Theorem",
+      "stem": "What is the probability that it is a cabbage seed, given that the chosen seed germinates ?",
+      "context": "A gardener wanted to plant vegetables in his garden. Hence he bought 10 seeds of brinjal plant, 12 seeds of cabbage plant and 8 seeds of radish plant. The shopkeeper assured him of germination probabilities of brinjal, cabbage and radish to be 25%, 35% and 40% respectively. But before he could plant the seeds, they got mixed up in the bag and he had to sow them randomly.\n\nBased upon the above information, answer the following questions :",
+      "solution": "This asks for the reverse conditional probability \\(P\\!\\left(\\dfrac{C}{A}\\right)\\) — cabbage given germination — which is what Bayes' theorem supplies: \\(P\\!\\left(\\dfrac{C}{A}\\right) = \\dfrac{P(C)P\\!\\left(\\dfrac{A}{C}\\right)}{P(B)P\\!\\left(\\dfrac{A}{B}\\right) + P(C)P\\!\\left(\\dfrac{A}{C}\\right) + P(R)P\\!\\left(\\dfrac{A}{R}\\right)}\\). The numerator is \\(\\dfrac{12}{30}\\times\\dfrac{35}{100} = \\dfrac{420}{3000}\\) and the denominator is precisely the \\(P(A) = \\dfrac{990}{3000}\\) computed in part (i). Hence \\(P\\!\\left(\\dfrac{C}{A}\\right) = \\dfrac{420/3000}{990/3000} = \\dfrac{420}{990} = \\dfrac{42}{99} = \\dfrac{14}{33}\\). Note that this exceeds \\(P(C) = \\dfrac{12}{30} = 0{\\cdot}4\\) only slightly, because cabbage seeds germinate a little better than the overall rate of \\(33\\%\\)."
+    }
+  ]
+}

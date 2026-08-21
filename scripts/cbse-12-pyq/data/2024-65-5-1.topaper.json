@@ -1,0 +1,975 @@
+{
+ "paper": "65/5/1",
+ "year": 2024,
+ "paperId": "2024-65-5-1",
+ "markingScheme": "out/2024-65-5-1/ms/p00.png … p17.png",
+ "rows": [
+  {
+   "hash": "e5470c010534bc6291199d9ae0c3e6d62ec0902cb1d5afac50b37bf426c6396a",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Relations and Functions",
+   "subtopic": "One-One and Onto Functions",
+   "stem": "A function \\(f : \\mathbb{R} \\to \\mathbb{R}\\) defined as \\(f(x) = x^2 - 4x + 5\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "injective but not surjective."
+    },
+    {
+     "label": "B",
+     "text": "surjective but not injective."
+    },
+    {
+     "label": "C",
+     "text": "both injective and surjective."
+    },
+    {
+     "label": "D",
+     "text": "neither injective nor surjective."
+    }
+   ],
+   "answer": "D",
+   "solution": "Complete the square: \\(f(x) = x^2 - 4x + 5 = (x - 2)^2 + 1\\). Since \\((x - 2)^2 \\ge 0\\), the smallest value f can take is 1, so the range is \\([1, \\infty)\\), which is not the whole co-domain \\(\\mathbb{R}\\) — no negative number is an image, so f is not surjective. It is not injective either, because the graph is a parabola symmetric about \\(x = 2\\): for instance \\(f(1) = f(3) = 2\\) although \\(1 \\ne 3\\). So f is neither injective nor surjective, which is option (D) neither injective nor surjective."
+  },
+  {
+   "hash": "baea838e8a073bd4b135d5b03286d614e4682385d93d5c29aeeabf266a75a2ef",
+   "ref": "Q2",
+   "questionNumber": "2",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Symmetric and Skew-Symmetric Matrices",
+   "stem": "If \\(A = \\begin{bmatrix} a & c & -1 \\\\ b & 0 & 5 \\\\ 1 & -5 & 0 \\end{bmatrix}\\) is a skew-symmetric matrix, then the value of \\(2a - (b + c)\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(0\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(1\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(-10\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(10\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "A skew-symmetric matrix satisfies \\(A^{T} = -A\\), i.e. \\(a_{ij} = -a_{ji}\\) for every pair of entries. Taking \\(i = j\\) forces every diagonal entry to be zero, so the \\((1,1)\\) entry gives \\(a = 0\\). Comparing the \\((1,2)\\) and \\((2,1)\\) entries gives \\(c = -b\\), that is \\(b + c = 0\\). (The remaining off-diagonal pairs are already consistent: \\(a_{13} = -1\\) with \\(a_{31} = 1\\), and \\(a_{23} = 5\\) with \\(a_{32} = -5\\).) Hence \\(2a - (b + c) = 2(0) - 0 = 0\\), which is option (A) 0."
+  },
+  {
+   "hash": "958d6957246fe03bc2b2138cad442feb424c21a70fefb1d2da3f462655851665",
+   "ref": "Q3",
+   "questionNumber": "3",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Adjoint and Inverse of a Matrix",
+   "stem": "If A is a square matrix of order 3 such that the value of \\(\\left|\\mathrm{adj}{\\cdot}\\mathrm{A}\\right| = 8\\), then the value of \\(\\left|\\mathrm{A}^{\\mathrm{T}}\\right|\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\sqrt{2}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-\\sqrt{2}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(8\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(2\\sqrt{2}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "For a square matrix of order n, \\(\\left|\\mathrm{adj}\\,A\\right| = |A|^{\\,n-1}\\). Here \\(n = 3\\), so \\(|A|^{2} = 8\\) and \\(|A| = \\pm 2\\sqrt{2}\\). A determinant is unchanged by transposing the matrix, so \\(\\left|A^{T}\\right| = |A| = 2\\sqrt{2}\\), which is option (D) \\(2\\sqrt{2}\\). (The other root, \\(-2\\sqrt{2}\\), is not offered among the options — the only negative choice is \\(-\\sqrt{2}\\), which squares to 2, not 8.)"
+  },
+  {
+   "hash": "3ccf7cedb8d8ce1436d42f783f7b1721a3f0152921237314447566d3e4a5a75a",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Determinants",
+   "subtopic": "Adjoint and Inverse of a Matrix",
+   "stem": "If inverse of matrix \\(\\begin{bmatrix} 7 & -3 & -3 \\\\ -1 & 1 & 0 \\\\ -1 & 0 & 1 \\end{bmatrix}\\) is the matrix \\(\\begin{bmatrix} 1 & 3 & 3 \\\\ 1 & \\lambda & 3 \\\\ 1 & 3 & 4 \\end{bmatrix}\\), then value of \\(\\lambda\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(-4\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(1\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(3\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(4\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "If the second matrix is the inverse of the first, their product is the identity matrix. Only one entry of the product involves \\(\\lambda\\), so pick that one: the \\((2,2)\\) entry is the second row of the first matrix times the second column of the second matrix, \\((-1)(3) + (1)(\\lambda) + (0)(3) = \\lambda - 3\\). For the identity this must equal 1, so \\(\\lambda = 4\\), which is option (D) 4."
+  },
+  {
+   "hash": "92e195b9d55278730af2fe071808d2860d2385c7fdd95656c15c7522d1c12e17",
+   "ref": "Q5",
+   "questionNumber": "5",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "If \\(\\begin{bmatrix} x & 2 & 0 \\end{bmatrix} \\begin{bmatrix} 5 \\\\ -1 \\\\ x \\end{bmatrix} = \\begin{bmatrix} 3 & 1 \\end{bmatrix} \\begin{bmatrix} -2 \\\\ x \\end{bmatrix}\\), then value of \\(x\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(-1\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(0\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(1\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(2\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "Each side is a \\(1 \\times 1\\) matrix. The left side is \\((x)(5) + (2)(-1) + (0)(x) = 5x - 2\\); note the \\(x\\) in the column vector is multiplied by 0 and drops out. The right side is \\((3)(-2) + (1)(x) = x - 6\\). Equating the two entries, \\(5x - 2 = x - 6\\), so \\(4x = -4\\) and \\(x = -1\\), which is option (A) \\(-1\\)."
+  },
+  {
+   "hash": "36beb870f332e819c26442700b979405d90d41c4f84e9a340da429d8dc0075eb",
+   "ref": "Q6",
+   "questionNumber": "6",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Matrices",
+   "subtopic": "Multiplication of Matrices",
+   "stem": "Find the matrix \\(A^2\\), where \\(A = [a_{ij}]\\) is a \\(2 \\times 2\\) matrix whose elements are given by \\(a_{ij} = \\text{maximum } (i, j) - \\text{minimum } (i, j)\\) :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\begin{bmatrix} 1 & 1 \\\\ 1 & 1 \\end{bmatrix}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "Build A entry by entry. On the diagonal \\(i = j\\), so the maximum and the minimum coincide and \\(a_{11} = a_{22} = 0\\). Off the diagonal the two indices are 1 and 2, so \\(a_{12} = a_{21} = 2 - 1 = 1\\). Hence \\(A = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}\\), and \\(A^{2} = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}\\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\\), the identity matrix — option (C) \\(\\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\\)."
+  },
+  {
+   "hash": "4cf54fea4d62e791f5406b905a204aab939d91381fc2367e54024159638a8ff1",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "If \\(xe^y = 1\\), then the value of \\(\\dfrac{dy}{dx}\\) at \\(x = 1\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(-1\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(1\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(-e\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-\\dfrac{1}{e}\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "The quickest route is to make y explicit. From \\(xe^{y} = 1\\) we get \\(e^{y} = \\dfrac{1}{x}\\), so \\(y = -\\log x\\) and \\(\\dfrac{dy}{dx} = -\\dfrac{1}{x}\\). At \\(x = 1\\) this is \\(-1\\), which is option (A) \\(-1\\). (Differentiating implicitly gives the same thing: \\(e^{y} + xe^{y}\\dfrac{dy}{dx} = 0\\), and since \\(xe^{y} = 1\\) this is \\(\\dfrac{1}{x} + \\dfrac{dy}{dx} = 0\\).)"
+  },
+  {
+   "hash": "a6f6736cc06e8927ec21d9c8e43f2cec23f828cefe5644dcd488f81845723f56",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "Derivative of \\(e^{\\sin^2 x}\\) with respect to \\(\\cos x\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\sin x\\, e^{\\sin^2 x}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\cos x\\, e^{\\sin^2 x}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(-2 \\cos x\\, e^{\\sin^2 x}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-2 \\sin^2 x \\cos x\\, e^{\\sin^2 x}\\)"
+    }
+   ],
+   "answer": "C",
+   "solution": "\"Derivative of u with respect to v\" means \\(\\dfrac{du}{dv} = \\dfrac{du/dx}{dv/dx}\\). Put \\(u = e^{\\sin^{2}x}\\) and \\(v = \\cos x\\). By the chain rule \\(\\dfrac{du}{dx} = e^{\\sin^{2}x} \\cdot 2\\sin x\\cos x\\), and \\(\\dfrac{dv}{dx} = -\\sin x\\). Dividing, the \\(\\sin x\\) cancels: \\(\\dfrac{du}{dv} = \\dfrac{2\\sin x\\cos x\\; e^{\\sin^{2}x}}{-\\sin x} = -2\\cos x\\; e^{\\sin^{2}x}\\), which is option (C) \\(-2\\cos x\\, e^{\\sin^2 x}\\)."
+  },
+  {
+   "hash": "f4f7ae3e989cd00d3d78bfdf1286d998cb46cda6bdbc8a28ec9eb35fcd65cf54",
+   "ref": "Q9",
+   "questionNumber": "9",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "The function \\(f(x) = \\dfrac{x}{2} + \\dfrac{2}{x}\\) has a local minima at \\(x\\) equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(1\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(0\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(-2\\)"
+    }
+   ],
+   "answer": "A",
+   "solution": "\\(f'(x) = \\dfrac{1}{2} - \\dfrac{2}{x^{2}}\\), which vanishes when \\(x^{2} = 4\\), so the critical points are \\(x = 2\\) and \\(x = -2\\). Now \\(f''(x) = \\dfrac{4}{x^{3}}\\), so \\(f''(2) = \\dfrac{1}{2} > 0\\) (a local minimum) while \\(f''(-2) = -\\dfrac{1}{2} < 0\\) (a local maximum). Note \\(x = 0\\) is not a candidate at all, since f is not even defined there. So the local minimum is at \\(x = 2\\), which is option (A) 2."
+  },
+  {
+   "hash": "5d31c837756510df36d1fcb3d2ed6ad20be4e1d682af23f401676c26086eb10c",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "Given a curve \\(y = 7x - x^3\\) and \\(x\\) increases at the rate of 2 units per second. The rate at which the slope of the curve is changing, when \\(x = 5\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(-60\\) units/sec"
+    },
+    {
+     "label": "B",
+     "text": "\\(60\\) units/sec"
+    },
+    {
+     "label": "C",
+     "text": "\\(-70\\) units/sec"
+    },
+    {
+     "label": "D",
+     "text": "\\(-140\\) units/sec"
+    }
+   ],
+   "answer": "A",
+   "solution": "The quantity being tracked is the slope, not y itself. The slope is \\(m = \\dfrac{dy}{dx} = 7 - 3x^{2}\\). Differentiating m with respect to time, \\(\\dfrac{dm}{dt} = -6x\\,\\dfrac{dx}{dt}\\). Substituting \\(\\dfrac{dx}{dt} = 2\\) and \\(x = 5\\) gives \\(\\dfrac{dm}{dt} = -6(5)(2) = -60\\), which is option (A) \\(-60\\) units/sec. The sign is meaningful: the slope is decreasing."
+  },
+  {
+   "hash": "69e83b426779ed0aedef9114d13d52ace56017040c19e731fdc5740d137cac0d",
+   "ref": "Q11",
+   "questionNumber": "11",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Substitution",
+   "stem": "\\(\\displaystyle\\int \\dfrac{1}{x(\\log x)^2}\\, dx\\) is equal to :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(2 \\log (\\log x) + c\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(-\\dfrac{1}{\\log x} + c\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{(\\log x)^3}{3} + c\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{3}{(\\log x)^3} + c\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "The factor \\(\\dfrac{1}{x}\\) is exactly the derivative of \\(\\log x\\), which invites the substitution \\(t = \\log x\\), \\(dt = \\dfrac{dx}{x}\\). The integral becomes \\(\\displaystyle\\int \\dfrac{dt}{t^{2}} = \\int t^{-2}\\,dt = -\\dfrac{1}{t} + c\\). Substituting back, the value is \\(-\\dfrac{1}{\\log x} + c\\), which is option (B) \\(-\\dfrac{1}{\\log x} + c\\)."
+  },
+  {
+   "hash": "c82a3e2e56f4d426c469a480ed7814ce2c27295b676658a3bc1259420b6adadd",
+   "ref": "Q12",
+   "questionNumber": "12",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "The value of \\(\\displaystyle\\int_{-1}^{1} x\\,|x|\\, dx\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{1}{6}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{1}{3}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(-\\dfrac{1}{6}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(0\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Let \\(f(x) = x|x|\\). Then \\(f(-x) = (-x)\\,|-x| = -x|x| = -f(x)\\), so f is an odd function, and the integral of an odd function over an interval symmetric about the origin is zero. Splitting the integral confirms it: on \\([-1, 0]\\) we have \\(|x| = -x\\) so the integrand is \\(-x^{2}\\), giving \\(-\\dfrac{1}{3}\\); on \\([0, 1]\\) the integrand is \\(x^{2}\\), giving \\(\\dfrac{1}{3}\\). The two cancel, so the value is 0, which is option (D) \\(0\\)."
+  },
+  {
+   "hash": "26827eba4517698baee24c216eef64fd6708082262f05bd7727a1456ea7e0928",
+   "ref": "Q13",
+   "questionNumber": "13",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Under Simple Curves",
+   "stem": "Area of the region bounded by curve \\(y^2 = 4x\\) and the X-axis between \\(x = 0\\) and \\(x = 1\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{2}{3}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{8}{3}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(3\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{4}{3}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "The region is bounded by the curve and the X-axis, so it is the strip under the upper branch \\(y = 2\\sqrt{x}\\) from \\(x = 0\\) to \\(x = 1\\). Its area is \\(\\displaystyle\\int_{0}^{1} 2\\sqrt{x}\\,dx = 2\\left[\\dfrac{2}{3}x^{3/2}\\right]_{0}^{1} = \\dfrac{4}{3}\\) square units, which is option (D) \\(\\dfrac{4}{3}\\)."
+  },
+  {
+   "hash": "5d97d4e22da162a844c0ef007f7d3dd6e503c8f02b44abe2f708775311580fa1",
+   "ref": "Q14",
+   "questionNumber": "14",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Differential Equations",
+   "subtopic": "Order and Degree of a Differential Equation",
+   "stem": "The order of the differential equation \\(\\dfrac{d^4y}{dx^4} - \\sin\\left(\\dfrac{d^2y}{dx^2}\\right) = 5\\) is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(4\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(3\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(2\\)"
+    },
+    {
+     "label": "D",
+     "text": "not defined"
+    }
+   ],
+   "answer": "A",
+   "solution": "The order of a differential equation is simply the order of the highest derivative that appears in it. The derivatives present here are \\(\\dfrac{d^{4}y}{dx^{4}}\\) and \\(\\dfrac{d^{2}y}{dx^{2}}\\), so the order is 4, which is option (A) \\(4\\). Do not be drawn to \"not defined\": it is the DEGREE that is undefined here, because \\(\\dfrac{d^{2}y}{dx^{2}}\\) sits inside a sine and the equation is therefore not a polynomial in its derivatives. The question asks only for the order."
+  },
+  {
+   "hash": "28c25085a83f0451ccda895b94d3d155d57615a5658be8b4da1cb3bef8f4f9f3",
+   "ref": "Q15",
+   "questionNumber": "15",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Section Formula",
+   "stem": "The position vectors of points P and Q are \\(\\vec{p}\\) and \\(\\vec{q}\\) respectively. The point R divides line segment PQ in the ratio 3 : 1 and S is the mid-point of line segment PR. The position vector of S is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{\\vec{p} + 3\\vec{q}}{4}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{\\vec{p} + 3\\vec{q}}{8}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{5\\vec{p} + 3\\vec{q}}{4}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{5\\vec{p} + 3\\vec{q}}{8}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "Do it in two steps. R divides PQ internally in the ratio \\(3 : 1\\), so by the section formula its position vector is \\(\\vec{r} = \\dfrac{3\\vec{q} + 1\\vec{p}}{3 + 1} = \\dfrac{\\vec{p} + 3\\vec{q}}{4}\\). S is the mid-point of PR, so its position vector is the average of \\(\\vec{p}\\) and \\(\\vec{r}\\): \\(\\dfrac{1}{2}\\left(\\vec{p} + \\dfrac{\\vec{p} + 3\\vec{q}}{4}\\right) = \\dfrac{4\\vec{p} + \\vec{p} + 3\\vec{q}}{8} = \\dfrac{5\\vec{p} + 3\\vec{q}}{8}\\), which is option (D) \\(\\dfrac{5\\vec{p} + 3\\vec{q}}{8}\\). Note that the value reached at the first step is the position vector of R itself — the trap for anyone who stops after the first step."
+  },
+  {
+   "hash": "c7dd4215c794b5da34fc423157dd416d095d20c2d6c81d5b4764beb6104d5676",
+   "ref": "Q16",
+   "questionNumber": "16",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Direction Cosines and Direction Ratios",
+   "stem": "The angle which the line \\(\\dfrac{x}{1} = \\dfrac{y}{-1} = \\dfrac{z}{0}\\) makes with the positive direction of Y-axis is :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{5\\pi}{6}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{3\\pi}{4}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{5\\pi}{4}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{7\\pi}{4}\\)"
+    }
+   ],
+   "answer": "B",
+   "solution": "The line has direction ratios \\(1, -1, 0\\), whose magnitude is \\(\\sqrt{1 + 1 + 0} = \\sqrt{2}\\), so its direction cosines are \\(\\dfrac{1}{\\sqrt{2}}, -\\dfrac{1}{\\sqrt{2}}, 0\\). The second of these is the cosine of the angle \\(\\beta\\) made with the positive Y-axis, so \\(\\cos\\beta = -\\dfrac{1}{\\sqrt{2}}\\). Since an angle between a line and an axis is taken in \\([0, \\pi]\\), \\(\\beta = \\dfrac{3\\pi}{4}\\), which is option (B) \\(\\dfrac{3\\pi}{4}\\). (Options (C) and (D) exceed \\(\\pi\\) and so cannot be such an angle at all.)"
+  },
+  {
+   "hash": "cd9b0ce5c955900f545358b35151fc60071ca7d6483bace46026e124c027dc2f",
+   "ref": "Q17",
+   "questionNumber": "17",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "The Cartesian equation of the line passing through the point \\((1, -3, 2)\\) and parallel to the line :\n\n\\(\\vec{r} = (2 + \\lambda)\\hat{i} + \\lambda\\hat{j} + (2\\lambda - 1)\\hat{k}\\) is",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(\\dfrac{x-1}{2} = \\dfrac{y+3}{0} = \\dfrac{z-2}{-1}\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(\\dfrac{x+1}{1} = \\dfrac{y-3}{1} = \\dfrac{z+2}{2}\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(\\dfrac{x+1}{2} = \\dfrac{y-3}{0} = \\dfrac{z+2}{-1}\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(\\dfrac{x-1}{1} = \\dfrac{y+3}{1} = \\dfrac{z-2}{2}\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "First read off the direction of the given line by collecting the terms in \\(\\lambda\\): \\(\\vec{r} = (2\\hat{i} - \\hat{k}) + \\lambda(\\hat{i} + \\hat{j} + 2\\hat{k})\\). So its direction ratios are \\(1, 1, 2\\), and a parallel line has the same ones. The line through \\((1, -3, 2)\\) with these direction ratios is \\(\\dfrac{x - 1}{1} = \\dfrac{y + 3}{1} = \\dfrac{z - 2}{2}\\), which is option (D) \\(\\dfrac{x-1}{1} = \\dfrac{y+3}{1} = \\dfrac{z-2}{2}\\). Options (B) and (C) fail because their numerators correspond to the point \\((-1, 3, -2)\\), not the given point."
+  },
+  {
+   "hash": "c7f1301bd65c6ca1c0ba06e7f5e6600856d36114d6e2a9cfba9aec1550f92411",
+   "ref": "Q18",
+   "questionNumber": "18",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "If A and B are events such that \\(P(A/B) = P(B/A) \\ne 0\\), then :",
+   "options": [
+    {
+     "label": "A",
+     "text": "\\(A \\subset B\\), but \\(A \\ne B\\)"
+    },
+    {
+     "label": "B",
+     "text": "\\(A = B\\)"
+    },
+    {
+     "label": "C",
+     "text": "\\(A \\cap B = \\phi\\)"
+    },
+    {
+     "label": "D",
+     "text": "\\(P(A) = P(B)\\)"
+    }
+   ],
+   "answer": "D",
+   "solution": "By definition \\(P(A/B) = \\dfrac{P(A \\cap B)}{P(B)}\\) and \\(P(B/A) = \\dfrac{P(A \\cap B)}{P(A)}\\). Setting them equal gives \\(\\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{P(A \\cap B)}{P(A)}\\). The common value is given to be non-zero, so \\(P(A \\cap B) \\ne 0\\) and we may cancel it, leaving \\(P(A) = P(B)\\) — option (D) \\(P(A) = P(B)\\). Note why the others fail: \\(A \\cap B = \\phi\\) is ruled out outright, since it would make both conditional probabilities 0; and while \\(A = B\\) would certainly produce equal probabilities, nothing in the data forces the two events to be the same set — only their probabilities must agree."
+  },
+  {
+   "hash": "5b82d7776fde83c4e84144de1f7fc260c9d1aecdee858e195ebed58233219175",
+   "ref": "Q19",
+   "questionNumber": "19",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Domains, Ranges and Principal Value Branches",
+   "stem": "**Assertion (A) :** Domain of \\(y = \\cos^{-1}(x)\\) is \\([-1, 1]\\).\n\n**Reason (R) :** The range of the principal value branch of \\(y = \\cos^{-1}(x)\\) is \\(\\left[0, \\pi\\right] - \\left\\{\\dfrac{\\pi}{2}\\right\\}\\).",
+   "context": "Direction : In questions numbers 19 and 20, two statements are given one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the following options :",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and the Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false, but Reason (R) is true."
+    }
+   ],
+   "answer": "C",
+   "solution": "The Assertion is true: \\(\\cos x\\) takes values in \\([-1, 1]\\), so its inverse is defined exactly on \\([-1, 1]\\). The Reason is false: the principal value branch of \\(\\cos^{-1}\\) is the whole closed interval \\([0, \\pi]\\), with nothing removed. In particular \\(\\dfrac{\\pi}{2}\\) is very much attained, at \\(x = 0\\), since \\(\\cos^{-1}(0) = \\dfrac{\\pi}{2}\\). (The set \\(\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right] - \\{0\\}\\) that a student may be half-remembering is the principal range of \\(\\operatorname{cosec}^{-1}\\), not of \\(\\cos^{-1}\\).) So the Assertion is true and the Reason is false, which is option (C) Assertion (A) is true, but Reason (R) is false."
+  },
+  {
+   "hash": "e78e81630a0e66ced017a31ddd8067aafb169558c15fb0e221344bfdb8ac30a6",
+   "ref": "Q20",
+   "questionNumber": "20",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Vector Algebra",
+   "subtopic": "Addition of Vectors",
+   "stem": "**Assertion (A) :** The vectors\n\n\\(\\vec{a} = 6\\hat{i} + 2\\hat{j} - 8\\hat{k}\\)\n\n\\(\\vec{b} = 10\\hat{i} - 2\\hat{j} - 6\\hat{k}\\)\n\n\\(\\vec{c} = 4\\hat{i} - 4\\hat{j} + 2\\hat{k}\\)\n\nrepresent the sides of a right angled triangle.\n\n**Reason (R) :** Three non-zero vectors of which none of two are collinear forms a triangle if their resultant is zero vector or sum of any two vectors is equal to the third.",
+   "context": "Direction : In questions numbers 19 and 20, two statements are given one labelled Assertion (A) and the other labelled Reason (R). Select the correct answer from the following options :",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and the Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false, but Reason (R) is true."
+    }
+   ],
+   "answer": "B",
+   "solution": "First check that they form a triangle: \\(\\vec{a} + \\vec{c} = (6 + 4)\\hat{i} + (2 - 4)\\hat{j} + (-8 + 2)\\hat{k} = 10\\hat{i} - 2\\hat{j} - 6\\hat{k} = \\vec{b}\\), so one vector is the sum of the other two and the three do close into a triangle. Now check the right angle: \\(\\vec{a}\\cdot\\vec{c} = (6)(4) + (2)(-4) + (-8)(2) = 24 - 8 - 16 = 0\\), so the sides represented by \\(\\vec{a}\\) and \\(\\vec{c}\\) meet at a right angle. The Assertion is therefore true. The Reason is a correct statement too. But notice what it does and does not do: it establishes only that the three vectors form a TRIANGLE, and says nothing at all about the angle between any two of them — that came from the dot product being zero. So the Reason, though true, is not the correct explanation of the Assertion, which is option (B) Both Assertion (A) and Reason (R) are true and Reason (R) is not the correct explanation of the Assertion (A)."
+  },
+  {
+   "hash": "108056673ac3381fa48f69887ca78431260e10a658386e907add77d258056480",
+   "ref": "Q21",
+   "questionNumber": "21",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Inverse Trigonometric Functions",
+   "subtopic": "Evaluating Inverse Trigonometric Expressions",
+   "stem": "Find value of k if\n\n\\(\\sin^{-1}\\left[\\mathrm{k}\\tan\\left(2\\cos^{-1}\\dfrac{\\sqrt{3}}{2}\\right)\\right] = \\dfrac{\\pi}{3}\\).",
+   "solution": "Work from the inside out. Since \\(\\cos\\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}\\) and \\(\\dfrac{\\pi}{6}\\) lies in the principal range \\([0, \\pi]\\), we have \\(\\cos^{-1}\\dfrac{\\sqrt{3}}{2} = \\dfrac{\\pi}{6}\\). Hence the inner angle is \\(2 \\times \\dfrac{\\pi}{6} = \\dfrac{\\pi}{3}\\), and \\(\\tan\\dfrac{\\pi}{3} = \\sqrt{3}\\). Now take the sine of both sides of the given equation, which removes the \\(\\sin^{-1}\\): \\(\\mathrm{k}\\tan\\left(2\\cos^{-1}\\dfrac{\\sqrt{3}}{2}\\right) = \\sin\\dfrac{\\pi}{3}\\), that is \\(\\mathrm{k}\\sqrt{3} = \\dfrac{\\sqrt{3}}{2}\\). Dividing by \\(\\sqrt{3}\\) gives \\(\\mathrm{k} = \\dfrac{1}{2}\\)."
+  },
+  {
+   "hash": "4b214e3eb8f54667d14e2a2b93297c5e018adf9b5400225601bfb33698eec9fc",
+   "ref": "Q22a",
+   "questionNumber": "22 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Continuity",
+   "stem": "Verify whether the function f defined by\n\n\\(\\mathrm{f}(x) = \\begin{cases} x\\sin\\left(\\dfrac{1}{x}\\right), & x \\ne 0 \\\\ 0, & x = 0 \\end{cases}\\)\n\nis continuous at \\(x = 0\\) or not.",
+   "solution": "f is continuous at \\(x = 0\\) precisely when \\(\\displaystyle\\lim_{x \\to 0} f(x)\\) exists and equals \\(f(0) = 0\\). The factor \\(\\sin\\dfrac{1}{x}\\) oscillates ever faster as \\(x \\to 0\\) and has no limit of its own, but it is always trapped between \\(-1\\) and \\(1\\), so for every \\(x \\ne 0\\) we get \\(\\left|x\\sin\\dfrac{1}{x}\\right| \\le |x|\\), i.e. \\(-|x| \\le x\\sin\\dfrac{1}{x} \\le |x|\\). Both outer bounds tend to 0 as \\(x \\to 0\\), so by the sandwich (squeeze) theorem \\(\\displaystyle\\lim_{x \\to 0} x\\sin\\dfrac{1}{x} = 0\\). This equals \\(f(0)\\), so f is continuous at \\(x = 0\\)."
+  },
+  {
+   "hash": "bfcece4cf3642f3b4681d87bd17a73a9a0f564268f54bdebd385fd612cee7918",
+   "ref": "Q22b",
+   "questionNumber": "22 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Differentiability and the Chain Rule",
+   "stem": "Check for differentiability of the function f defined by \\(\\mathrm{f}(x) = |x - 5|\\), at the point \\(x = 5\\).",
+   "solution": "Here \\(f(5) = |5 - 5| = 0\\), so we compare the two one-sided derivatives at \\(x = 5\\). For \\(x < 5\\) we have \\(x - 5 < 0\\), so \\(|x - 5| = -(x - 5)\\) and the left-hand derivative is \\(\\mathrm{LHD} = \\displaystyle\\lim_{x \\to 5^{-}} \\dfrac{|x - 5| - 0}{x - 5} = \\lim_{x \\to 5^{-}} \\dfrac{-(x - 5)}{x - 5} = -1\\). For \\(x > 5\\) we have \\(|x - 5| = x - 5\\), so the right-hand derivative is \\(\\mathrm{RHD} = \\displaystyle\\lim_{x \\to 5^{+}} \\dfrac{x - 5}{x - 5} = 1\\). Since \\(\\mathrm{LHD} \\ne \\mathrm{RHD}\\), the derivative does not exist there: f is not differentiable at \\(x = 5\\). (It is still continuous there — the graph has a sharp corner at \\(x = 5\\), not a break.)"
+  },
+  {
+   "hash": "71991f7bcde0030864f5a87f5c5afdc923d73e6a924a85f355cea006b3a8439e",
+   "ref": "Q23",
+   "questionNumber": "23",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Rate of Change of Quantities",
+   "stem": "The area of the circle is increasing at a uniform rate of 2 cm\\(^2\\)/sec. How fast is the circumference of the circle increasing when the radius r = 5 cm ?",
+   "solution": "Let r be the radius at time t, so the area is \\(A = \\pi r^{2}\\) and the circumference is \\(C = 2\\pi r\\). The radius is the link between the two given quantities, so find its rate first. Differentiating \\(A = \\pi r^{2}\\) with respect to t and using \\(\\dfrac{dA}{dt} = 2\\), we get \\(2\\pi r\\dfrac{dr}{dt} = 2\\), so \\(\\dfrac{dr}{dt} = \\dfrac{1}{\\pi r}\\). Now differentiate the circumference: \\(\\dfrac{dC}{dt} = 2\\pi\\dfrac{dr}{dt} = 2\\pi \\cdot \\dfrac{1}{\\pi r} = \\dfrac{2}{r}\\). At \\(r = 5\\) cm this gives \\(\\dfrac{dC}{dt} = \\dfrac{2}{5} = 0.4\\) cm/sec."
+  },
+  {
+   "hash": "4be8daaf423ab7f3c0b75e2674f94e7b44fd6f497d01ebd6c3802014f8bf2e14",
+   "ref": "Q24a",
+   "questionNumber": "24 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Substitution",
+   "stem": "Find : \\(\\displaystyle\\int \\cos^3 x\\; \\mathrm{e}^{\\log \\sin x}\\, \\mathrm{d}x\\)",
+   "solution": "The first move is to simplify the exponential rather than integrate it: \\(\\mathrm{e}^{\\log \\sin x} = \\sin x\\) (on the interval where \\(\\sin x > 0\\), which is where the logarithm is defined at all). So the integral is \\(\\displaystyle\\int \\cos^{3}x\\,\\sin x\\,\\mathrm{d}x\\). Now the single \\(\\sin x\\) is, up to sign, the derivative of \\(\\cos x\\), so put \\(t = \\cos x\\), giving \\(\\mathrm{d}t = -\\sin x\\,\\mathrm{d}x\\), i.e. \\(\\sin x\\,\\mathrm{d}x = -\\mathrm{d}t\\). The integral becomes \\(-\\displaystyle\\int t^{3}\\,\\mathrm{d}t = -\\dfrac{t^{4}}{4} + C\\). Substituting back, the answer is \\(-\\dfrac{\\cos^{4}x}{4} + C\\)."
+  },
+  {
+   "hash": "1724afdc23983b442f0499ac6add686d81e5299bce86baddc94e1dfa58697761",
+   "ref": "Q24b",
+   "questionNumber": "24 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integrals of Some Particular Functions",
+   "stem": "Find : \\(\\displaystyle\\int \\dfrac{1}{5 + 4x - x^2}\\, \\mathrm{d}x\\)",
+   "solution": "Complete the square in the denominator, taking care with the sign of the \\(x^{2}\\) term: \\(5 + 4x - x^{2} = 5 - (x^{2} - 4x) = 5 - \\left[(x - 2)^{2} - 4\\right] = 9 - (x - 2)^{2} = 3^{2} - (x - 2)^{2}\\). This is the standard form \\(\\displaystyle\\int\\dfrac{\\mathrm{d}u}{a^{2} - u^{2}} = \\dfrac{1}{2a}\\log\\left|\\dfrac{a + u}{a - u}\\right| + C\\), with \\(a = 3\\) and \\(u = x - 2\\) (and \\(\\mathrm{d}u = \\mathrm{d}x\\)). So the integral equals \\(\\dfrac{1}{6}\\log\\left|\\dfrac{3 + (x - 2)}{3 - (x - 2)}\\right| + C = \\dfrac{1}{6}\\log\\left|\\dfrac{x + 1}{5 - x}\\right| + C\\)."
+  },
+  {
+   "hash": "9408560b33b7383d0319e28f413303268131b6e57610f5a925b85b80acb3f879",
+   "ref": "Q25",
+   "questionNumber": "25",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the vector equation of the line passing through the point \\((2, 3, -5)\\) and making equal angles with the co-ordinate axes.",
+   "solution": "Let the line make the same angle with each axis, so its three direction cosines are equal: \\(\\cos\\alpha = \\cos\\beta = \\cos\\gamma = l\\), say. Direction cosines always satisfy \\(l^{2} + m^{2} + n^{2} = 1\\), which here becomes \\(3l^{2} = 1\\), so \\(l = \\pm\\dfrac{1}{\\sqrt{3}}\\). Either sign gives direction cosines \\(\\dfrac{1}{\\sqrt{3}}, \\dfrac{1}{\\sqrt{3}}, \\dfrac{1}{\\sqrt{3}}\\) up to an overall sign, i.e. direction ratios \\(1, 1, 1\\) — the two signs describe the same line traced in opposite senses. A line through the point with position vector \\(2\\hat{i} + 3\\hat{j} - 5\\hat{k}\\) and direction \\(\\hat{i} + \\hat{j} + \\hat{k}\\) has vector equation \\(\\vec{r} = 2\\hat{i} + 3\\hat{j} - 5\\hat{k} + \\lambda\\left(\\hat{i} + \\hat{j} + \\hat{k}\\right)\\), where \\(\\lambda\\) is a scalar parameter."
+  },
+  {
+   "hash": "73293f6dc1c67c46ec53f2085380a2fa36b4127d27312d37930b65fc4ed71e33",
+   "ref": "Q26a",
+   "questionNumber": "26 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Logarithmic Differentiation",
+   "stem": "Find \\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}\\), if \\((\\cos x)^{\\mathrm{y}} = (\\cos \\mathrm{y})^{x}\\).",
+   "solution": "Both sides have a variable in the exponent, so take logarithms first to bring the exponents down: \\(\\mathrm{y}\\log\\cos x = x\\log\\cos \\mathrm{y}\\). Each side is now a product of two functions of x (remembering that y is itself a function of x), so differentiate both sides using the product rule and the chain rule: \\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}\\log\\cos x + \\mathrm{y}\\cdot\\dfrac{-\\sin x}{\\cos x} = \\log\\cos \\mathrm{y} + x\\cdot\\dfrac{-\\sin \\mathrm{y}}{\\cos \\mathrm{y}}\\cdot\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}\\), that is \\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}\\log\\cos x - \\mathrm{y}\\tan x = \\log\\cos \\mathrm{y} - x\\tan \\mathrm{y}\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}\\). Collect the \\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}\\) terms on one side: \\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}\\left(\\log\\cos x + x\\tan \\mathrm{y}\\right) = \\log\\cos \\mathrm{y} + \\mathrm{y}\\tan x\\). Hence \\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}x} = \\dfrac{\\log\\cos \\mathrm{y} + \\mathrm{y}\\tan x}{\\log\\cos x + x\\tan \\mathrm{y}}\\)."
+  },
+  {
+   "hash": "d7803f8156dd1d65aad0b595ef4a9f882de334f3228cbb2a220a487baec40eaf",
+   "ref": "Q26b",
+   "questionNumber": "26 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
+   "stem": "If \\(\\sqrt{1 - x^2} + \\sqrt{1 - \\mathrm{y}^2} = \\mathrm{a}(x - \\mathrm{y})\\), prove that \\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}x} = \\sqrt{\\dfrac{1 - \\mathrm{y}^2}{1 - x^2}}\\).",
+   "solution": "Differentiating this relation directly is messy, so substitute the square roots away. Put \\(x = \\sin A\\) and \\(\\mathrm{y} = \\sin B\\), so that \\(A = \\sin^{-1}x\\), \\(B = \\sin^{-1}\\mathrm{y}\\), \\(\\sqrt{1 - x^{2}} = \\cos A\\) and \\(\\sqrt{1 - \\mathrm{y}^{2}} = \\cos B\\). The given relation becomes \\(\\cos A + \\cos B = \\mathrm{a}\\left(\\sin A - \\sin B\\right)\\). Apply the sum-to-product formulas to both sides: \\(2\\cos\\dfrac{A + B}{2}\\cos\\dfrac{A - B}{2} = 2\\mathrm{a}\\cos\\dfrac{A + B}{2}\\sin\\dfrac{A - B}{2}\\). Cancelling the common factor \\(2\\cos\\dfrac{A + B}{2}\\) leaves \\(\\cot\\dfrac{A - B}{2} = \\mathrm{a}\\), so \\(A - B = 2\\cot^{-1}\\mathrm{a}\\) — a CONSTANT, since a is constant. In terms of x and y this says \\(\\sin^{-1}x - \\sin^{-1}\\mathrm{y} = 2\\cot^{-1}\\mathrm{a}\\). Differentiating both sides with respect to x, the right-hand side gives 0: \\(\\dfrac{1}{\\sqrt{1 - x^{2}}} - \\dfrac{1}{\\sqrt{1 - \\mathrm{y}^{2}}}\\dfrac{\\mathrm{d}y}{\\mathrm{d}x} = 0\\). Rearranging, \\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}x} = \\dfrac{\\sqrt{1 - \\mathrm{y}^{2}}}{\\sqrt{1 - x^{2}}} = \\sqrt{\\dfrac{1 - \\mathrm{y}^{2}}{1 - x^{2}}}\\), as required."
+  },
+  {
+   "hash": "a71aadedf4efb2e072616a008eae4c257f68798fcb566c092948904f3e34b5d6",
+   "ref": "Q27",
+   "questionNumber": "27",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Continuity and Differentiability",
+   "subtopic": "Second Order Derivatives",
+   "stem": "If \\(x = \\mathrm{a} \\sin^3 \\theta\\), \\(\\mathrm{y} = \\mathrm{b} \\cos^3 \\theta\\), then find \\(\\dfrac{\\mathrm{d}^2\\mathrm{y}}{\\mathrm{d}x^2}\\) at \\(\\theta = \\dfrac{\\pi}{4}\\).",
+   "solution": "The curve is given parametrically, so differentiate each coordinate with respect to \\(\\theta\\) first: \\(\\dfrac{\\mathrm{d}x}{\\mathrm{d}\\theta} = 3\\mathrm{a}\\sin^{2}\\theta\\cos\\theta\\) and \\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}\\theta} = -3\\mathrm{b}\\cos^{2}\\theta\\sin\\theta\\). Dividing, \\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}x} = \\dfrac{-3\\mathrm{b}\\cos^{2}\\theta\\sin\\theta}{3\\mathrm{a}\\sin^{2}\\theta\\cos\\theta} = -\\dfrac{\\mathrm{b}}{\\mathrm{a}}\\cot\\theta\\). The second derivative is NOT obtained by differentiating this again with respect to \\(\\theta\\) alone — the chain rule must be used: \\(\\dfrac{\\mathrm{d}^{2}y}{\\mathrm{d}x^{2}} = \\dfrac{\\mathrm{d}}{\\mathrm{d}\\theta}\\left(-\\dfrac{\\mathrm{b}}{\\mathrm{a}}\\cot\\theta\\right)\\cdot\\dfrac{\\mathrm{d}\\theta}{\\mathrm{d}x} = \\dfrac{\\mathrm{b}}{\\mathrm{a}}\\csc^{2}\\theta \\cdot \\dfrac{1}{3\\mathrm{a}\\sin^{2}\\theta\\cos\\theta} = \\dfrac{\\mathrm{b}}{3\\mathrm{a}^{2}}\\sec\\theta\\,\\csc^{4}\\theta\\). Finally evaluate at \\(\\theta = \\dfrac{\\pi}{4}\\), where \\(\\sec\\dfrac{\\pi}{4} = \\sqrt{2}\\) and \\(\\csc\\dfrac{\\pi}{4} = \\sqrt{2}\\) so \\(\\csc^{4}\\dfrac{\\pi}{4} = 4\\): \\(\\dfrac{\\mathrm{d}^{2}y}{\\mathrm{d}x^{2}} = \\dfrac{\\mathrm{b}}{3\\mathrm{a}^{2}}\\cdot\\sqrt{2}\\cdot 4 = \\dfrac{4\\sqrt{2}\\,\\mathrm{b}}{3\\mathrm{a}^{2}}\\)."
+  },
+  {
+   "hash": "17c5d72e07fd0f25b96967f0b61880bdd5d24dccd24bd8d058f458f53372863d",
+   "ref": "Q28a",
+   "questionNumber": "28 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Properties of Definite Integrals",
+   "stem": "Evaluate : \\(\\displaystyle\\int_{0}^{\\pi} \\dfrac{\\mathrm{e}^{\\cos x}}{\\mathrm{e}^{\\cos x} + \\mathrm{e}^{-\\cos x}}\\, \\mathrm{d}x\\)",
+   "solution": "No antiderivative is needed here — use the king's property \\(\\displaystyle\\int_{0}^{\\mathrm{a}} f(x)\\,\\mathrm{d}x = \\int_{0}^{\\mathrm{a}} f(\\mathrm{a} - x)\\,\\mathrm{d}x\\). Let \\(I = \\displaystyle\\int_{0}^{\\pi} \\dfrac{\\mathrm{e}^{\\cos x}}{\\mathrm{e}^{\\cos x} + \\mathrm{e}^{-\\cos x}}\\,\\mathrm{d}x\\). Replacing x by \\(\\pi - x\\) and using \\(\\cos(\\pi - x) = -\\cos x\\), the same integral is also \\(I = \\displaystyle\\int_{0}^{\\pi} \\dfrac{\\mathrm{e}^{-\\cos x}}{\\mathrm{e}^{-\\cos x} + \\mathrm{e}^{\\cos x}}\\,\\mathrm{d}x\\). Adding the two expressions, the two numerators add to exactly the shared denominator: \\(2I = \\displaystyle\\int_{0}^{\\pi} \\dfrac{\\mathrm{e}^{\\cos x} + \\mathrm{e}^{-\\cos x}}{\\mathrm{e}^{\\cos x} + \\mathrm{e}^{-\\cos x}}\\,\\mathrm{d}x = \\int_{0}^{\\pi} 1\\,\\mathrm{d}x = \\pi\\). Hence \\(I = \\dfrac{\\pi}{2}\\)."
+  },
+  {
+   "hash": "cb042b1713a4d2440c70a3e4f32050cc1a098287293c7fbb10d1135d39d5a936",
+   "ref": "Q28b",
+   "questionNumber": "28 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Integrals",
+   "subtopic": "Integration by Partial Fractions",
+   "stem": "Find : \\(\\displaystyle\\int \\dfrac{2x + 1}{(x + 1)^2\\,(x - 1)}\\, \\mathrm{d}x\\)",
+   "solution": "The denominator has a repeated linear factor, so the partial-fraction form needs both \\(x + 1\\) and \\((x + 1)^{2}\\): \\(\\dfrac{2x + 1}{(x + 1)^{2}(x - 1)} = \\dfrac{A}{x + 1} + \\dfrac{B}{(x + 1)^{2}} + \\dfrac{C}{x - 1}\\). Clearing denominators, \\(2x + 1 = A(x + 1)(x - 1) + B(x - 1) + C(x + 1)^{2}\\). Putting \\(x = 1\\) kills the first two terms and gives \\(3 = 4C\\), so \\(C = \\dfrac{3}{4}\\). Putting \\(x = -1\\) gives \\(-1 = -2B\\), so \\(B = \\dfrac{1}{2}\\). Comparing the coefficients of \\(x^{2}\\) on the two sides gives \\(0 = A + C\\), so \\(A = -\\dfrac{3}{4}\\). Therefore the integral is \\(-\\dfrac{3}{4}\\displaystyle\\int\\dfrac{\\mathrm{d}x}{x + 1} + \\dfrac{1}{2}\\int\\dfrac{\\mathrm{d}x}{(x + 1)^{2}} + \\dfrac{3}{4}\\int\\dfrac{\\mathrm{d}x}{x - 1} = -\\dfrac{3}{4}\\log|x + 1| - \\dfrac{1}{2(x + 1)} + \\dfrac{3}{4}\\log|x - 1| + K\\), where K is the constant of integration. Combining the two logarithms, this may also be written \\(\\dfrac{3}{4}\\log\\left|\\dfrac{x - 1}{x + 1}\\right| - \\dfrac{1}{2(x + 1)} + K\\)."
+  },
+  {
+   "hash": "268fc9ddee504b477717b1f77489edb89ec1a6bbc9468761fe816f26714c79b1",
+   "ref": "Q29a",
+   "questionNumber": "29 (a)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Linear Differential Equations",
+   "stem": "Find the particular solution of the differential equation\n\n\\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}x} - 2x\\mathrm{y} = 3x^2\\, \\mathrm{e}^{x^2}\\) ; \\(\\mathrm{y}(0) = 5\\).",
+   "solution": "The equation is already in the linear form \\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}x} + P\\mathrm{y} = Q\\), with \\(P = -2x\\) and \\(Q = 3x^{2}\\mathrm{e}^{x^{2}}\\). The integrating factor is \\(\\mathrm{e}^{\\int P\\,\\mathrm{d}x} = \\mathrm{e}^{\\int -2x\\,\\mathrm{d}x} = \\mathrm{e}^{-x^{2}}\\). The general solution is then \\(\\mathrm{y}\\cdot\\mathrm{e}^{-x^{2}} = \\displaystyle\\int \\mathrm{e}^{-x^{2}}\\cdot 3x^{2}\\mathrm{e}^{x^{2}}\\,\\mathrm{d}x + C\\). Notice that the two exponentials cancel — which is the whole point of the way the question is built — leaving \\(\\displaystyle\\int 3x^{2}\\,\\mathrm{d}x = x^{3}\\). So \\(\\mathrm{y}\\,\\mathrm{e}^{-x^{2}} = x^{3} + C\\). Applying \\(\\mathrm{y}(0) = 5\\): at \\(x = 0\\), \\(\\mathrm{e}^{0} = 1\\), so \\(5 = 0 + C\\) and \\(C = 5\\). The particular solution is \\(\\mathrm{y}\\,\\mathrm{e}^{-x^{2}} = x^{3} + 5\\), that is \\(\\mathrm{y} = \\left(x^{3} + 5\\right)\\mathrm{e}^{x^{2}}\\)."
+  },
+  {
+   "hash": "0dcdaf8516ae6fbed25914e24ffe66ccef4ac1d68f17a8f71c2db211f4332ee3",
+   "ref": "Q29b",
+   "questionNumber": "29 (b)",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Differential Equations",
+   "subtopic": "Homogeneous Differential Equations",
+   "stem": "Solve the following differential equation :\n\n\\(x^2\\, \\mathrm{d}y + \\mathrm{y}(x + \\mathrm{y})\\, \\mathrm{d}x = 0\\)",
+   "solution": "Rearrange into derivative form: \\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}x} = -\\dfrac{\\mathrm{y}(x + \\mathrm{y})}{x^{2}} = -\\dfrac{\\mathrm{y}}{x} - \\left(\\dfrac{\\mathrm{y}}{x}\\right)^{2}\\). The right-hand side depends on x and y only through the ratio \\(\\dfrac{\\mathrm{y}}{x}\\), so the equation is homogeneous. Put \\(\\mathrm{y} = vx\\), so that \\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}x} = v + x\\dfrac{\\mathrm{d}v}{\\mathrm{d}x}\\). Substituting, \\(v + x\\dfrac{\\mathrm{d}v}{\\mathrm{d}x} = -v - v^{2}\\), so \\(x\\dfrac{\\mathrm{d}v}{\\mathrm{d}x} = -\\left(v^{2} + 2v\\right)\\). Separating the variables, \\(\\displaystyle\\int\\dfrac{\\mathrm{d}v}{v^{2} + 2v} = -\\int\\dfrac{\\mathrm{d}x}{x}\\). Writing \\(v^{2} + 2v = (v + 1)^{2} - 1\\) and using \\(\\displaystyle\\int\\dfrac{\\mathrm{d}u}{u^{2} - 1} = \\dfrac{1}{2}\\log\\left|\\dfrac{u - 1}{u + 1}\\right|\\) with \\(u = v + 1\\), the left side is \\(\\dfrac{1}{2}\\log\\left|\\dfrac{v}{v + 2}\\right|\\). So \\(\\dfrac{1}{2}\\log\\left|\\dfrac{v}{v + 2}\\right| = -\\log|x| + \\log|C|\\), i.e. \\(\\left|\\dfrac{v}{v + 2}\\right| = \\dfrac{C^{2}}{x^{2}}\\). Finally put back \\(v = \\dfrac{\\mathrm{y}}{x}\\), so that \\(\\dfrac{v}{v + 2} = \\dfrac{\\mathrm{y}}{\\mathrm{y} + 2x}\\), and the solution is \\(\\dfrac{\\mathrm{y}}{\\mathrm{y} + 2x} = \\dfrac{k}{x^{2}}\\), i.e. \\(x^{2}\\mathrm{y} = k\\left(\\mathrm{y} + 2x\\right)\\), where k is an arbitrary constant."
+  },
+  {
+   "hash": "8f53cdf4a066e1021d07d90ef19153eb746313d706fdb227018cd4aa31fd0aa9",
+   "ref": "Q30",
+   "questionNumber": "30",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Vector Algebra",
+   "subtopic": "Vector (Cross) Product",
+   "stem": "Find a vector of magnitude 4 units perpendicular to each of the vectors \\(2\\hat{i} - \\hat{j} + \\hat{k}\\) and \\(\\hat{i} + \\hat{j} - \\hat{k}\\) and hence verify your answer.",
+   "solution": "Let \\(\\vec{a} = 2\\hat{i} - \\hat{j} + \\hat{k}\\) and \\(\\vec{b} = \\hat{i} + \\hat{j} - \\hat{k}\\). A vector perpendicular to both is their cross product: \\(\\vec{a}\\times\\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 2 & -1 & 1 \\\\ 1 & 1 & -1 \\end{vmatrix} = \\hat{i}\\left[(-1)(-1) - (1)(1)\\right] - \\hat{j}\\left[(2)(-1) - (1)(1)\\right] + \\hat{k}\\left[(2)(1) - (-1)(1)\\right] = 0\\hat{i} + 3\\hat{j} + 3\\hat{k}\\). Its magnitude is \\(\\sqrt{0 + 9 + 9} = 3\\sqrt{2}\\), so the unit vector in that direction is \\(\\dfrac{3\\hat{j} + 3\\hat{k}}{3\\sqrt{2}} = \\dfrac{\\hat{j} + \\hat{k}}{\\sqrt{2}}\\). Scaling to magnitude 4, the required vector is \\(\\vec{d} = 4\\cdot\\dfrac{\\hat{j} + \\hat{k}}{\\sqrt{2}} = 2\\sqrt{2}\\,\\hat{j} + 2\\sqrt{2}\\,\\hat{k}\\). Its negative, \\(-2\\sqrt{2}\\,\\hat{j} - 2\\sqrt{2}\\,\\hat{k}\\), is equally valid. Verification, as the question asks: \\(\\left|\\vec{d}\\right| = \\sqrt{8 + 8} = 4\\), so the magnitude is right; \\(\\vec{d}\\cdot\\vec{a} = (0)(2) + \\left(2\\sqrt{2}\\right)(-1) + \\left(2\\sqrt{2}\\right)(1) = 0\\) and \\(\\vec{d}\\cdot\\vec{b} = (0)(1) + \\left(2\\sqrt{2}\\right)(1) + \\left(2\\sqrt{2}\\right)(-1) = 0\\), so \\(\\vec{d}\\) is indeed perpendicular to both."
+  },
+  {
+   "hash": "0115405c39b52cd3ca28cdc31067dc4fc8d43f3236ae980845f602a0efdb023c",
+   "ref": "Q31",
+   "questionNumber": "31",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Random Variables and Probability Distributions",
+   "stem": "The random variable X has the following probability distribution where a and b are some constants :\n\n| X | 1 | 2 | 3 | 4 | 5 |\n|---|---|---|---|---|---|\n| P(X) | 0.2 | a | a | 0.2 | b |\n\nIf the mean E(X) = 3, then find values of a and b and hence determine \\(P(X \\ge 3)\\).",
+   "solution": "Two conditions determine the two unknowns. First, the probabilities of a distribution must sum to 1: \\(0.2 + \\mathrm{a} + \\mathrm{a} + 0.2 + \\mathrm{b} = 1\\), so \\(2\\mathrm{a} + \\mathrm{b} = 0.6\\). Second, the mean is \\(E(X) = \\sum x_{i}p_{i} = 1(0.2) + 2\\mathrm{a} + 3\\mathrm{a} + 4(0.2) + 5\\mathrm{b} = 5\\mathrm{a} + 5\\mathrm{b} + 1\\), and setting this equal to 3 gives \\(5\\mathrm{a} + 5\\mathrm{b} = 2\\), i.e. \\(\\mathrm{a} + \\mathrm{b} = 0.4\\). Subtracting the second relation from the first eliminates b and gives \\(\\mathrm{a} = 0.2\\), and then \\(\\mathrm{b} = 0.2\\). So \\(\\mathrm{a} = \\mathrm{b} = \\dfrac{1}{5}\\). For the last part it is quicker to use the complement than to add three terms: \\(P(X \\ge 3) = 1 - \\left[P(X = 1) + P(X = 2)\\right] = 1 - \\left(0.2 + 0.2\\right) = 0.6 = \\dfrac{3}{5}\\)."
+  },
+  {
+   "hash": "d2d7816913c3321fd1af6ebfd592f141ff30beb591f01adb674b5396575c00ba",
+   "ref": "Q32a",
+   "questionNumber": "32 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Solving System of Linear Equations",
+   "stem": "If \\(\\mathrm{A} = \\begin{bmatrix} 1 & 2 & -3 \\\\ 2 & 0 & -3 \\\\ 1 & 2 & 0 \\end{bmatrix}\\), then find \\(\\mathrm{A}^{-1}\\) and hence solve the following system of equations :\n\n\\(x + 2\\mathrm{y} - 3\\mathrm{z} = 1\\)\n\n\\(2x - 3\\mathrm{z} = 2\\)\n\n\\(x + 2\\mathrm{y} = 3\\)",
+   "solution": "Expanding along the first row, \\(\\left|A\\right| = 1\\left[(0)(0) - (-3)(2)\\right] - 2\\left[(2)(0) - (-3)(1)\\right] + (-3)\\left[(2)(2) - (0)(1)\\right] = 6 - 6 - 12 = -12\\). Since \\(\\left|A\\right| \\ne 0\\), \\(A^{-1}\\) exists. The cofactors are \\(A_{11} = 6,\\; A_{12} = -3,\\; A_{13} = 4,\\; A_{21} = -6,\\; A_{22} = 3,\\; A_{23} = 0,\\; A_{31} = -6,\\; A_{32} = -3,\\; A_{33} = -4\\), and the adjoint is the TRANSPOSE of the cofactor matrix: \\(\\mathrm{adj}\\,A = \\begin{bmatrix} 6 & -6 & -6 \\\\ -3 & 3 & -3 \\\\ 4 & 0 & -4 \\end{bmatrix}\\). Hence \\(A^{-1} = \\dfrac{\\mathrm{adj}\\,A}{\\left|A\\right|} = -\\dfrac{1}{12}\\begin{bmatrix} 6 & -6 & -6 \\\\ -3 & 3 & -3 \\\\ 4 & 0 & -4 \\end{bmatrix}\\). Now the system: its coefficient matrix is exactly A (the second equation has no y term, matching the 0 in the second row, and the third has no z term, matching the 0 in the third row), so it is \\(AX = B\\) with \\(X = \\begin{bmatrix} x \\\\ \\mathrm{y} \\\\ \\mathrm{z} \\end{bmatrix}\\) and \\(B = \\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix}\\). Therefore \\(X = A^{-1}B = -\\dfrac{1}{12}\\begin{bmatrix} 6 & -6 & -6 \\\\ -3 & 3 & -3 \\\\ 4 & 0 & -4 \\end{bmatrix}\\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix} = -\\dfrac{1}{12}\\begin{bmatrix} -24 \\\\ -6 \\\\ -8 \\end{bmatrix} = \\begin{bmatrix} 2 \\\\ \\frac{1}{2} \\\\ \\frac{2}{3} \\end{bmatrix}\\). So \\(x = 2\\), \\(\\mathrm{y} = \\dfrac{1}{2}\\), \\(\\mathrm{z} = \\dfrac{2}{3}\\). Checking in the three equations: \\(2 + 1 - 2 = 1\\), \\(4 - 2 = 2\\), and \\(2 + 1 = 3\\)."
+  },
+  {
+   "hash": "a6f3d898044a9b2eb6a588c3dd080459debb737ed2a8a13a0312fbf51e9a1359",
+   "ref": "Q32b",
+   "questionNumber": "32 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Determinants",
+   "subtopic": "Solving System of Linear Equations",
+   "stem": "Find the product of the matrices \\(\\begin{bmatrix} 1 & 2 & -3 \\\\ 2 & 3 & 2 \\\\ 3 & -3 & -4 \\end{bmatrix}\\) and \\(\\begin{bmatrix} -6 & 17 & 13 \\\\ 14 & 5 & -8 \\\\ -15 & 9 & -1 \\end{bmatrix}\\) and hence solve the system of linear equations :\n\n\\(x + 2\\mathrm{y} - 3\\mathrm{z} = -4\\)\n\n\\(2x + 3\\mathrm{y} + 2\\mathrm{z} = 2\\)\n\n\\(3x - 3\\mathrm{y} - 4\\mathrm{z} = 11\\)",
+   "solution": "Call the two matrices A and B and multiply row by column. For example the first row of A against the three columns of B gives \\(-6 + 28 + 45 = 67\\), \\(17 + 10 - 27 = 0\\) and \\(13 - 16 + 3 = 0\\); carrying on in the same way, \\(AB = \\begin{bmatrix} 67 & 0 & 0 \\\\ 0 & 67 & 0 \\\\ 0 & 0 & 67 \\end{bmatrix} = 67\\,I\\). This is the point of the \"hence\": since \\(AB = 67I\\), dividing by 67 gives \\(A\\left(\\dfrac{1}{67}B\\right) = I\\), so \\(A^{-1} = \\dfrac{1}{67}B = \\dfrac{1}{67}\\begin{bmatrix} -6 & 17 & 13 \\\\ 14 & 5 & -8 \\\\ -15 & 9 & -1 \\end{bmatrix}\\) — the inverse is obtained without computing a single cofactor. The given system has coefficient matrix A, so it is \\(AX = C\\) with \\(X = \\begin{bmatrix} x \\\\ \\mathrm{y} \\\\ \\mathrm{z} \\end{bmatrix}\\) and \\(C = \\begin{bmatrix} -4 \\\\ 2 \\\\ 11 \\end{bmatrix}\\). Hence \\(X = A^{-1}C = \\dfrac{1}{67}\\begin{bmatrix} -6 & 17 & 13 \\\\ 14 & 5 & -8 \\\\ -15 & 9 & -1 \\end{bmatrix}\\begin{bmatrix} -4 \\\\ 2 \\\\ 11 \\end{bmatrix} = \\dfrac{1}{67}\\begin{bmatrix} 201 \\\\ -134 \\\\ 67 \\end{bmatrix} = \\begin{bmatrix} 3 \\\\ -2 \\\\ 1 \\end{bmatrix}\\). So \\(x = 3\\), \\(\\mathrm{y} = -2\\), \\(\\mathrm{z} = 1\\). Checking in the third equation, \\(9 + 6 - 4 = 11\\), as required."
+  },
+  {
+   "hash": "ebe5eb8ee492b921d6f85e92f14d7c0666bff16c9bc2802a9a219e65ee73bc78",
+   "ref": "Q33",
+   "questionNumber": "33",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Application of Integrals",
+   "subtopic": "Area Under Simple Curves",
+   "stem": "Find the area of the region bounded by the curve \\(4x^2 + \\mathrm{y}^2 = 36\\) using integration.",
+   "solution": "Divide throughout by 36 to put the curve in standard form: \\(\\dfrac{x^{2}}{9} + \\dfrac{\\mathrm{y}^{2}}{36} = 1\\). This is an ellipse centred at the origin, meeting the X-axis at \\((\\pm 3, 0)\\) and the Y-axis at \\((0, \\pm 6)\\), so it is taller than it is wide. Because the ellipse is symmetric about both axes, the whole enclosed area is four times the part in the first quadrant. In the first quadrant, solving for y gives \\(\\mathrm{y} = 6\\sqrt{1 - \\dfrac{x^{2}}{9}} = 2\\sqrt{9 - x^{2}}\\), with x running from 0 to 3. Hence the area is \\(4\\displaystyle\\int_{0}^{3} 2\\sqrt{9 - x^{2}}\\,\\mathrm{d}x = 8\\int_{0}^{3}\\sqrt{9 - x^{2}}\\,\\mathrm{d}x\\). Using the standard result \\(\\displaystyle\\int\\sqrt{\\mathrm{a}^{2} - x^{2}}\\,\\mathrm{d}x = \\dfrac{x}{2}\\sqrt{\\mathrm{a}^{2} - x^{2}} + \\dfrac{\\mathrm{a}^{2}}{2}\\sin^{-1}\\dfrac{x}{\\mathrm{a}}\\) with \\(\\mathrm{a} = 3\\), the area is \\(8\\left[\\dfrac{x}{2}\\sqrt{9 - x^{2}} + \\dfrac{9}{2}\\sin^{-1}\\dfrac{x}{3}\\right]_{0}^{3}\\). At \\(x = 3\\) the square-root term vanishes and \\(\\sin^{-1}(1) = \\dfrac{\\pi}{2}\\); at \\(x = 0\\) both terms are 0. So the area is \\(8\\cdot\\dfrac{9}{2}\\cdot\\dfrac{\\pi}{2} = 18\\pi\\) square units. (This agrees with the standard formula \\(\\pi \\mathrm{a}\\mathrm{b} = \\pi(3)(6)\\) for the area of an ellipse.)"
+  },
+  {
+   "hash": "720271b1f2973750b97b2def8d6894a2e1032ad60041ccd66bccf64c5313ff0f",
+   "ref": "Q34a",
+   "questionNumber": "34 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Equation of a Line in Space",
+   "stem": "Find the co-ordinates of the foot of the perpendicular drawn from the point \\((2, 3, -8)\\) to the line \\(\\dfrac{4 - x}{2} = \\dfrac{\\mathrm{y}}{6} = \\dfrac{1 - \\mathrm{z}}{3}\\).\n\nAlso, find the perpendicular distance of the given point from the line.",
+   "solution": "First rewrite the line in standard form, since two of its numerators have x and z with a minus sign: \\(\\dfrac{4 - x}{2} = \\dfrac{x - 4}{-2}\\) and \\(\\dfrac{1 - \\mathrm{z}}{3} = \\dfrac{\\mathrm{z} - 1}{-3}\\), so the line is \\(\\dfrac{x - 4}{-2} = \\dfrac{\\mathrm{y}}{6} = \\dfrac{\\mathrm{z} - 1}{-3}\\). Its direction ratios are therefore \\(-2, 6, -3\\), and a general point on it, taking the common ratio to be \\(\\lambda\\), is \\(B\\left(-2\\lambda + 4,\\; 6\\lambda,\\; -3\\lambda + 1\\right)\\). Let \\(A(2, 3, -8)\\) be the given point and let B be the foot of the perpendicular. The direction ratios of AB are \\(\\left(-2\\lambda + 4\\right) - 2,\\; 6\\lambda - 3,\\; \\left(-3\\lambda + 1\\right) + 8\\), i.e. \\(-2\\lambda + 2,\\; 6\\lambda - 3,\\; -3\\lambda + 9\\). Since AB is perpendicular to the line, the dot product of these direction ratios with \\(-2, 6, -3\\) is zero: \\(-2\\left(-2\\lambda + 2\\right) + 6\\left(6\\lambda - 3\\right) - 3\\left(-3\\lambda + 9\\right) = 0\\), that is \\(4\\lambda - 4 + 36\\lambda - 18 + 9\\lambda - 27 = 0\\), so \\(49\\lambda = 49\\) and \\(\\lambda = 1\\). Substituting \\(\\lambda = 1\\), the foot of the perpendicular is \\(B(2, 6, -2)\\). The perpendicular distance is then \\(AB = \\sqrt{(2 - 2)^{2} + (6 - 3)^{2} + (-2 + 8)^{2}} = \\sqrt{0 + 9 + 36} = \\sqrt{45} = 3\\sqrt{5}\\) units."
+  },
+  {
+   "hash": "6622493b8f4af13d3add7ca86fac15ba9c0e65117b32c0156959bc6987c07dd2",
+   "ref": "Q34b",
+   "questionNumber": "34 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Three Dimensional Geometry",
+   "subtopic": "Shortest Distance Between Two Lines",
+   "stem": "Find the shortest distance between the lines \\(\\mathrm{L}_1\\) & \\(\\mathrm{L}_2\\) given below :\n\n\\(\\mathrm{L}_1\\) : The line passing through \\((2, -1, 1)\\) and parallel to \\(\\dfrac{x}{1} = \\dfrac{\\mathrm{y}}{1} = \\dfrac{\\mathrm{z}}{3}\\)\n\n\\(\\mathrm{L}_2 : \\vec{r} = \\hat{i} + (2\\mu + 1)\\hat{j} - (\\mu + 2)\\hat{k}\\).",
+   "solution": "Put both lines into the form \\(\\vec{r} = \\vec{a} + t\\vec{b}\\). \\(\\mathrm{L}_1\\) passes through \\((2, -1, 1)\\) and is parallel to a line with direction ratios \\(1, 1, 3\\), so \\(\\mathrm{L}_1 : \\vec{r} = 2\\hat{i} - \\hat{j} + \\hat{k} + \\lambda\\left(\\hat{i} + \\hat{j} + 3\\hat{k}\\right)\\). For \\(\\mathrm{L}_2\\), collect the terms in \\(\\mu\\): \\(\\vec{r} = \\hat{i} + \\hat{j} - 2\\hat{k} + \\mu\\left(2\\hat{j} - \\hat{k}\\right)\\). So \\(\\vec{a}_1 = 2\\hat{i} - \\hat{j} + \\hat{k}\\), \\(\\vec{b}_1 = \\hat{i} + \\hat{j} + 3\\hat{k}\\), \\(\\vec{a}_2 = \\hat{i} + \\hat{j} - 2\\hat{k}\\), \\(\\vec{b}_2 = 2\\hat{j} - \\hat{k}\\). The lines are not parallel, so use the skew-lines formula. First \\(\\vec{a}_2 - \\vec{a}_1 = -\\hat{i} + 2\\hat{j} - 3\\hat{k}\\), and \\(\\vec{b}_1 \\times \\vec{b}_2 = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & 1 & 3 \\\\ 0 & 2 & -1 \\end{vmatrix} = \\hat{i}(-1 - 6) - \\hat{j}(-1 - 0) + \\hat{k}(2 - 0) = -7\\hat{i} + \\hat{j} + 2\\hat{k}\\), whose magnitude is \\(\\sqrt{49 + 1 + 4} = \\sqrt{54} = 3\\sqrt{6}\\). Their dot product is \\(\\left(\\vec{a}_2 - \\vec{a}_1\\right)\\cdot\\left(\\vec{b}_1 \\times \\vec{b}_2\\right) = (-1)(-7) + (2)(1) + (-3)(2) = 7 + 2 - 6 = 3\\). Hence the shortest distance is \\(\\dfrac{\\left|\\left(\\vec{a}_2 - \\vec{a}_1\\right)\\cdot\\left(\\vec{b}_1 \\times \\vec{b}_2\\right)\\right|}{\\left|\\vec{b}_1 \\times \\vec{b}_2\\right|} = \\dfrac{3}{3\\sqrt{6}} = \\dfrac{1}{\\sqrt{6}}\\) units. (Since this is non-zero, the two lines are indeed skew.)"
+  },
+  {
+   "hash": "eeef2d142cbcd897db3d6c257f486ccf03faf4cfca6db7f6c6bd660856137617",
+   "ref": "Q35",
+   "questionNumber": "35",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Linear Programming",
+   "subtopic": "Graphical Solution and the Feasible Region",
+   "stem": "Solve the following L.P.P. graphically :\n\nMaximise \\(\\mathrm{Z} = 60x + 40\\mathrm{y}\\)\n\nSubject to \\(x + 2\\mathrm{y} \\le 12\\)\n\n\\(2x + \\mathrm{y} \\le 12\\)\n\n\\(4x + 5\\mathrm{y} \\ge 20\\)\n\n\\(x, \\mathrm{y} \\ge 0\\)",
+   "solution": "Draw the three boundary lines \\(x + 2\\mathrm{y} = 12\\), \\(2x + \\mathrm{y} = 12\\) and \\(4x + 5\\mathrm{y} = 20\\) in the first quadrant. The feasible region is the set of points lying ON OR BELOW the first two lines (each contains the origin side, since \\(0 \\le 12\\)) and ON OR ABOVE the third (the origin fails \\(4x + 5\\mathrm{y} \\ge 20\\), so the region is on the far side from the origin), together with \\(x \\ge 0\\) and \\(\\mathrm{y} \\ge 0\\). This region is bounded, so the maximum is attained at a corner point. The corners are found as follows. On the Y-axis, \\(4x + 5\\mathrm{y} = 20\\) gives \\(A(0, 4)\\) and \\(x + 2\\mathrm{y} = 12\\) gives \\(B(0, 6)\\). On the X-axis, \\(2x + \\mathrm{y} = 12\\) gives \\(D(6, 0)\\) and \\(4x + 5\\mathrm{y} = 20\\) gives \\(E(5, 0)\\). The remaining corner is where \\(x + 2\\mathrm{y} = 12\\) meets \\(2x + \\mathrm{y} = 12\\); solving these simultaneously gives \\(C(4, 4)\\). Now evaluate \\(\\mathrm{Z} = 60x + 40\\mathrm{y}\\) at each corner: at \\(A(0, 4)\\), \\(\\mathrm{Z} = 160\\); at \\(B(0, 6)\\), \\(\\mathrm{Z} = 240\\); at \\(C(4, 4)\\), \\(\\mathrm{Z} = 240 + 160 = 400\\); at \\(D(6, 0)\\), \\(\\mathrm{Z} = 360\\); at \\(E(5, 0)\\), \\(\\mathrm{Z} = 300\\). The largest of these is 400. Hence Z is maximum at \\(x = 4\\), \\(\\mathrm{y} = 4\\), and the maximum value is \\(\\mathrm{Z} = 400\\)."
+  },
+  {
+   "hash": "b6beb1c66a024c2275cd71f024b98a63cf8f7e7aa339e77f417cff0380b824e0",
+   "ref": "Q36ai",
+   "questionNumber": "36 (a) (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Types of Relations",
+   "stem": "Find whether the relation R is symmetric or not.",
+   "context": "Students of a school are taken to a railway museum to learn about railways heritage and its history.\n\nAn exhibit in the museum depicted many rail lines on the track near the railway station. Let L be the set of all rail lines on the railway track and R be the relation on L defined by\n\nR = \\(\\{(l_1, l_2) : l_1\\) is parallel to \\(l_2\\}\\)\n\nOn the basis of the above information, answer the following questions :",
+   "figure": "DECORATIVE — a photograph of rail lines near a station. Every term needed is defined in the passage text. Page idx 20.",
+   "solution": "Yes, R is symmetric. Take any \\(\\left(l_1, l_2\\right) \\in R\\), which means \\(l_1\\) is parallel to \\(l_2\\). Being parallel is a mutual property of a pair of lines — two lines either share a direction or they do not — so \\(l_2\\) is parallel to \\(l_1\\) as well, and therefore \\(\\left(l_2, l_1\\right) \\in R\\). Since this holds for every pair in R, the relation R is symmetric."
+  },
+  {
+   "hash": "0df6d4d0ca0f7ba4b8de101c53c1663a489a417309c2ca9974e1befa31df0460",
+   "ref": "Q36aii",
+   "questionNumber": "36 (a) (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Types of Relations",
+   "stem": "Find whether the relation R is transitive or not.",
+   "context": "Students of a school are taken to a railway museum to learn about railways heritage and its history.\n\nAn exhibit in the museum depicted many rail lines on the track near the railway station. Let L be the set of all rail lines on the railway track and R be the relation on L defined by\n\nR = \\(\\{(l_1, l_2) : l_1\\) is parallel to \\(l_2\\}\\)\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "Yes, R is transitive. Suppose \\(\\left(l_1, l_2\\right) \\in R\\) and \\(\\left(l_2, l_3\\right) \\in R\\), that is \\(l_1\\) is parallel to \\(l_2\\) and \\(l_2\\) is parallel to \\(l_3\\). Then \\(l_1\\) and \\(l_3\\) both have the same direction as \\(l_2\\), so they have the same direction as each other: \\(l_1\\) is parallel to \\(l_3\\), and hence \\(\\left(l_1, l_3\\right) \\in R\\). Since this holds for every such chain, R is transitive."
+  },
+  {
+   "hash": "be5dca1055e2fa221fb319d601f85851dfbfc62042c0e2103046b8fbe8619f87",
+   "ref": "Q36aiii",
+   "questionNumber": "36 (a) (iii)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Equivalence Relations and Classes",
+   "stem": "If one of the rail lines on the railway track is represented by the equation \\(\\mathrm{y} = 3x + 2\\), then find the set of rail lines in R related to it.",
+   "context": "Students of a school are taken to a railway museum to learn about railways heritage and its history.\n\nAn exhibit in the museum depicted many rail lines on the track near the railway station. Let L be the set of all rail lines on the railway track and R be the relation on L defined by\n\nR = \\(\\{(l_1, l_2) : l_1\\) is parallel to \\(l_2\\}\\)\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "Two non-vertical lines are parallel exactly when they have the same slope. The given rail line \\(\\mathrm{y} = 3x + 2\\) is in the form \\(\\mathrm{y} = m x + c\\) with slope \\(m = 3\\), so the lines related to it are precisely those whose slope is also 3 — the intercept c is free to be anything. Hence the required set is \\(\\left\\{l : l \\text{ is a line of the form } \\mathrm{y} = 3x + c,\\; c \\in \\mathbb{R}\\right\\}\\). This is the whole family of lines parallel to the given one; the particular value \\(c = 2\\) recovers the line itself, which belongs to the set because a line is parallel to itself under this relation. (In the language of equivalence relations, this set is the equivalence class of \\(\\mathrm{y} = 3x + 2\\).)"
+  },
+  {
+   "hash": "f4f9160ca491f84715533416471ca69be65c8e947101c2502dbfda3b3afe65e0",
+   "ref": "Q36b",
+   "questionNumber": "36 (b)",
+   "marks": 4,
+   "format": "subjective",
+   "chapter": "Relations and Functions",
+   "subtopic": "Types of Relations",
+   "stem": "Let S be the relation defined by S = \\(\\{(l_1, l_2) : l_1\\) is perpendicular to \\(l_2\\}\\) check whether the relation S is symmetric and transitive.",
+   "context": "Students of a school are taken to a railway museum to learn about railways heritage and its history.\n\nAn exhibit in the museum depicted many rail lines on the track near the railway station. Let L be the set of all rail lines on the railway track and R be the relation on L defined by\n\nR = \\(\\{(l_1, l_2) : l_1\\) is parallel to \\(l_2\\}\\)\n\nOn the basis of the above information, answer the following questions :",
+   "solution": "SYMMETRIC — yes. Let \\(\\left(l_1, l_2\\right) \\in S\\), so \\(l_1\\) is perpendicular to \\(l_2\\). Perpendicularity is a mutual property of a pair of lines: the angle between them is a right angle whichever line is named first, so \\(l_2\\) is perpendicular to \\(l_1\\) and \\(\\left(l_2, l_1\\right) \\in S\\). Hence S is symmetric. TRANSITIVE — no. Suppose \\(\\left(l_1, l_2\\right) \\in S\\) and \\(\\left(l_2, l_3\\right) \\in S\\), so \\(l_1\\) is perpendicular to \\(l_2\\) and \\(l_2\\) is perpendicular to \\(l_3\\). Two lines in a plane that are both perpendicular to the same line are parallel to each other, so \\(l_1\\) is parallel to \\(l_3\\) — and parallel lines are certainly not perpendicular. Hence \\(\\left(l_1, l_3\\right) \\notin S\\), and S is not transitive. A concrete instance: if \\(l_1\\) is \\(\\mathrm{y} = 0\\), \\(l_2\\) is \\(x = 0\\) and \\(l_3\\) is \\(\\mathrm{y} = 5\\), then \\(l_1 \\perp l_2\\) and \\(l_2 \\perp l_3\\), but \\(l_1\\) and \\(l_3\\) are parallel, not perpendicular. (Note on the official sheet: the marking scheme writes R throughout its part (b) for the relation the question calls S. The relation being tested there is the perpendicularity relation S defined in this part, not the parallelism relation R of part (a).)"
+  },
+  {
+   "hash": "6c3125a5168a1b3ee5fc90781f3c442f8a64b3bc4def97468978bf417bb12baa",
+   "ref": "Q37i",
+   "questionNumber": "37 (i)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Write the expression for the area of the visiting card in terms of \\(x\\).",
+   "context": "A rectangular visiting card is to contain 24 sq.cm. of printed matter. The margins at the top and bottom of the card are to be 1 cm and the margins on the left and right are to be 1½ cm as shown below :\n\nOn the basis of the above information, answer the following questions :",
+   "figure": "REQUIRED — two diagrams of the card; the variables \\(x\\) and \\(y\\) (the dimensions of the printed matter) are LABELLED ONLY IN THE FIGURE and are never defined in the stem text, yet part (i) asks for the area \"in terms of \\(x\\)\". Page idx 22.",
+   "solution": "Read the labels off the figure: \\(x\\) is the WIDTH of the printed matter (the horizontal arrow) and \\(\\mathrm{y}\\) is its HEIGHT (the vertical arrow). The printed matter must occupy 24 sq.cm, so \\(x\\mathrm{y} = 24\\). Now build the card around it. The left and right margins are \\(\\dfrac{3}{2}\\) cm each, so the card is \\(x + 2\\left(\\dfrac{3}{2}\\right) = x + 3\\) cm wide; the top and bottom margins are 1 cm each, so it is \\(\\mathrm{y} + 2(1) = \\mathrm{y} + 2\\) cm tall. Hence the area of the card is \\(A = (x + 3)(\\mathrm{y} + 2)\\). To get it in terms of \\(x\\) alone, substitute \\(\\mathrm{y} = \\dfrac{24}{x}\\) from the printed-matter condition: \\(A(x) = (x + 3)\\left(\\dfrac{24}{x} + 2\\right) = 24 + 2x + \\dfrac{72}{x} + 6\\), that is \\(A(x) = 2x + \\dfrac{72}{x} + 30\\) square centimetres, for \\(x > 0\\)."
+  },
+  {
+   "hash": "8b06eada1be61a6b117d78a38bb5b8feb25c55256b32b0e23b42298874271023",
+   "ref": "Q37ii",
+   "questionNumber": "37 (ii)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Application of Derivatives",
+   "subtopic": "Maxima and Minima",
+   "stem": "Obtain the dimensions of the card of minimum area.",
+   "context": "A rectangular visiting card is to contain 24 sq.cm. of printed matter. The margins at the top and bottom of the card are to be 1 cm and the margins on the left and right are to be 1½ cm as shown below :\n\nOn the basis of the above information, answer the following questions :",
+   "figure": "REQUIRED — same two diagrams as 37 (i); \\(x\\) and \\(y\\) are defined only there. Page idx 22.",
+   "solution": "[CBSE marking scheme: the second-derivative test is printed as \\(A''(6) = \\dfrac{144}{6}\\). That substitutes \\(x = 6\\) into \\(\\dfrac{144}{x^{3}}\\) without cubing the 6; the correct value is \\(\\dfrac{144}{6^{3}} = \\dfrac{144}{216} = \\dfrac{2}{3}\\). Both numbers are positive, so the conclusion — a minimum at \\(x = 6\\) — and the dimensions that follow are unaffected.] From part (i), \\(A(x) = 2x + \\dfrac{72}{x} + 30\\) for \\(x > 0\\). Differentiating, \\(A'(x) = 2 - \\dfrac{72}{x^{2}}\\) and \\(A''(x) = \\dfrac{144}{x^{3}}\\). Setting \\(A'(x) = 0\\) gives \\(\\dfrac{72}{x^{2}} = 2\\), so \\(x^{2} = 36\\) and \\(x = 6\\); the root \\(x = -6\\) is rejected because \\(x\\) is a length. Applying the second-derivative test at this critical point, \\(A''(6) = \\dfrac{144}{216} = \\dfrac{2}{3} > 0\\), so the area is a MINIMUM at \\(x = 6\\). The corresponding height of the printed matter is \\(\\mathrm{y} = \\dfrac{24}{6} = 4\\) cm. Hence the card measures \\(x + 3 = 9\\) cm by \\(\\mathrm{y} + 2 = 6\\) cm — that is, the dimensions of the card of minimum area are 9 cm and 6 cm, giving a minimum area of \\(54\\) sq.cm."
+  },
+  {
+   "hash": "98645ce94f2414e0b91f505b072981886702e8ccb607d10b15a4842c569c1cfc",
+   "ref": "Q38i",
+   "questionNumber": "38 (i)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "Let \\(\\mathrm{E}_1\\) and \\(\\mathrm{E}_2\\) respectively denote the event of customer paying or not paying the first month bill in time.\n\nFind \\(P(\\mathrm{E}_1)\\), \\(P(\\mathrm{E}_2)\\).",
+   "context": "A departmental store sends bills to charge its customers once a month. Past experience shows that 70% of its customers pay their first month bill in time. The store also found that the customer who pays the bill in time has the probability of 0.8 of paying in time next month and the customer who doesn't pay in time has the probability of 0.4 of paying in time the next month.\n\nBased on the above information, answer the following questions :",
+   "solution": "The passage states that 70% of customers pay the first month's bill in time, so \\(P\\left(\\mathrm{E}_1\\right) = \\dfrac{70}{100} = 0.7\\). The event \\(\\mathrm{E}_2\\) is exactly the complement of \\(\\mathrm{E}_1\\) — a customer either pays that first bill in time or does not — so \\(P\\left(\\mathrm{E}_2\\right) = 1 - 0.7 = 0.3\\)."
+  },
+  {
+   "hash": "b3582af9cc4cc6efa121d1265acb32c8d13cc39a887c21e2faa45a157a9d55c8",
+   "ref": "Q38ii",
+   "questionNumber": "38 (ii)",
+   "marks": 1,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Conditional Probability",
+   "stem": "Let A denotes the event of customer paying second month's bill in time, then find \\(P(\\mathrm{A}|\\mathrm{E}_1)\\) and \\(P(\\mathrm{A}|\\mathrm{E}_2)\\).",
+   "context": "A departmental store sends bills to charge its customers once a month. Past experience shows that 70% of its customers pay their first month bill in time. The store also found that the customer who pays the bill in time has the probability of 0.8 of paying in time next month and the customer who doesn't pay in time has the probability of 0.4 of paying in time the next month.\n\nBased on the above information, answer the following questions :",
+   "solution": "Both of these are read straight off the passage, once the conditioning is matched to the wording. \\(P\\left(\\mathrm{A}|\\mathrm{E}_1\\right)\\) is the chance of paying the second month's bill in time GIVEN that the first was paid in time, and the store found that \"the customer who pays the bill in time has the probability of 0.8 of paying in time next month\", so \\(P\\left(\\mathrm{A}|\\mathrm{E}_1\\right) = 0.8\\). Likewise \\(P\\left(\\mathrm{A}|\\mathrm{E}_2\\right)\\) conditions on the first bill NOT being paid in time, and the corresponding figure given is 0.4, so \\(P\\left(\\mathrm{A}|\\mathrm{E}_2\\right) = 0.4\\)."
+  },
+  {
+   "hash": "d03dad0ae0870153d68baeb9668c768189ce8f4acc25321b5c7e18bbe086dcfb",
+   "ref": "Q38iiia",
+   "questionNumber": "38 (iii) (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Theorem of Total Probability",
+   "stem": "Find the probability of customer paying second month's bill in time.",
+   "context": "A departmental store sends bills to charge its customers once a month. Past experience shows that 70% of its customers pay their first month bill in time. The store also found that the customer who pays the bill in time has the probability of 0.8 of paying in time next month and the customer who doesn't pay in time has the probability of 0.4 of paying in time the next month.\n\nBased on the above information, answer the following questions :",
+   "solution": "The question asks for \\(P(\\mathrm{A})\\) with no condition attached, but the data are all conditional on what happened in the first month. The events \\(\\mathrm{E}_1\\) and \\(\\mathrm{E}_2\\) are mutually exclusive and exhaustive, so the theorem of total probability applies: \\(P(\\mathrm{A}) = P\\left(\\mathrm{E}_1\\right)P\\left(\\mathrm{A}|\\mathrm{E}_1\\right) + P\\left(\\mathrm{E}_2\\right)P\\left(\\mathrm{A}|\\mathrm{E}_2\\right)\\). Substituting the values found above, \\(P(\\mathrm{A}) = (0.7)(0.8) + (0.3)(0.4) = 0.56 + 0.12 = 0.68\\), that is \\(\\dfrac{17}{25}\\)."
+  },
+  {
+   "hash": "738614c44e36bb004afbd6e6340c1fbfdff2e03784c31821b4c953e740f72d4f",
+   "ref": "Q38iiib",
+   "questionNumber": "38 (iii) (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Probability",
+   "subtopic": "Bayes' Theorem",
+   "stem": "Find the probability of customer paying first month's bill in time if it is found that customer has paid the second month's bill in time.",
+   "context": "A departmental store sends bills to charge its customers once a month. Past experience shows that 70% of its customers pay their first month bill in time. The store also found that the customer who pays the bill in time has the probability of 0.8 of paying in time next month and the customer who doesn't pay in time has the probability of 0.4 of paying in time the next month.\n\nBased on the above information, answer the following questions :",
+   "solution": "[CBSE marking scheme: the Bayes expression here is labelled \\(P(\\mathrm{A})\\) — the very quantity the scheme evaluates as \\(\\dfrac{17}{25}\\) in the alternative just above, so as printed the sheet gives \\(P(\\mathrm{A})\\) two different values. The formula written and the value \\(\\dfrac{14}{17}\\) are correct; it is only the left-hand label that is wrong. The quantity being computed is \\(P\\left(\\mathrm{E}_1|\\mathrm{A}\\right)\\).] The conditioning here runs backwards in time — we are told the outcome of the second month and asked about the first — which is exactly what Bayes' theorem is for. We want \\(P\\left(\\mathrm{E}_1|\\mathrm{A}\\right)\\): \\(P\\left(\\mathrm{E}_1|\\mathrm{A}\\right) = \\dfrac{P\\left(\\mathrm{E}_1\\right)P\\left(\\mathrm{A}|\\mathrm{E}_1\\right)}{P\\left(\\mathrm{E}_1\\right)P\\left(\\mathrm{A}|\\mathrm{E}_1\\right) + P\\left(\\mathrm{E}_2\\right)P\\left(\\mathrm{A}|\\mathrm{E}_2\\right)} = \\dfrac{(0.7)(0.8)}{(0.7)(0.8) + (0.3)(0.4)} = \\dfrac{0.56}{0.68} = \\dfrac{56}{68} = \\dfrac{14}{17}\\). Note that the denominator is just \\(P(\\mathrm{A}) = 0.68\\) from the previous part, so this is the share of on-time second-month payers who had also paid on time in the first month."
+  }
+ ]
+}
