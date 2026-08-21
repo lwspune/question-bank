@@ -32,7 +32,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Test each description in turn against \\(A = \\begin{bmatrix} 0 & 0 & -5 \\\\ 0 & 3 & 0 \\\\ 4{\\cdot}3 & 0 & 0 \\end{bmatrix}\\).\nSkew-symmetric would require \\(A' = -A\\), which forces every diagonal entry to be \\(0\\); here \\(a_{22} = 3 \\ne 0\\), and in any case \\(a_{13} = -5\\) while \\(a_{31} = 4{\\cdot}3 \\ne 5\\). So it is not skew-symmetric.\nDiagonal would require every entry off the leading diagonal to be \\(0\\), but \\(a_{13} = -5\\) and \\(a_{31} = 4{\\cdot}3\\) are non-zero. So it is not diagonal, and a scalar matrix — a diagonal matrix with all its diagonal entries equal — is ruled out for the same reason.\nWhat is left is simply the order: A has \\(3\\) rows and \\(3\\) columns, so it is a square matrix."
   },
   {
    "hash": "a3139ea5f8aec848e9e74cd1c9818ff39d03a5489da03152c92c4511fe78c7dd",
@@ -63,7 +63,7 @@
    ],
    "answer": "A",
    "figure": "REQUIRED — the question IS the printed graph; the stem names no curve at all. Two branches opening left and right, drawn only for \\(|x| \\ge 1\\), with the Y-axis marked \\(-\\pi, -\\pi/2, \\pi/2, \\pi, 3\\pi/2, 2\\pi\\) and dashed horizontal lines at \\(y = -\\pi/2\\), \\(y = \\pi/2\\) and \\(y = 3\\pi/2\\). Page idx 4.",
-   "solution": ""
+   "solution": "Read the picture rather than looking for a formula.\nThe curve is drawn only for \\(|x| \\ge 1\\) — nothing at all is plotted between \\(x = -1\\) and \\(x = 1\\) — and all of its asymptotes are HORIZONTAL (the dashed lines \\(y = -\\frac{\\pi}{2}\\), \\(y = \\frac{\\pi}{2}\\) and \\(y = \\frac{3\\pi}{2}\\)). Both \\(y = \\sec x\\) and \\(y = \\text{cosec}\\, x\\) are periodic in \\(x\\) with VERTICAL asymptotes and take every value with \\(|y| \\ge 1\\), so neither can be this graph; also their domain gaps run along the y-direction, not a solid block \\(-1 < x < 1\\) of the x-axis. That leaves the two inverse functions, and a domain of \\(|x| \\ge 1\\) fits both of them.\nThe deciding feature is where each branch turns. The right-hand branch has its vertex ON the x-axis at \\((1, 0)\\), and \\(\\sec^{-1}(1) = 0\\) whereas \\(\\text{cosec}^{-1}(1) = \\frac{\\pi}{2}\\); correspondingly the left-hand branch turns at \\((-1, \\pi)\\), and \\(\\sec^{-1}(-1) = \\pi\\). The asymptote \\(y = \\frac{\\pi}{2}\\) is exactly the value \\(\\sec^{-1} x\\) approaches as \\(|x| \\to \\infty\\) (the branches above and below are the same curve shifted by multiples of \\(\\pi\\)).\nHence the graph depicts \\(y = \\sec^{-1} x\\)."
   },
   {
    "hash": "bae16d6b1c4f10a745dce6ec4c4706a1d3247ff7ffcde5e763460db90c597a1c",
@@ -93,7 +93,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "A critical point is a point of the domain where \\(f'(x) = 0\\) or \\(f'\\) fails to exist. The domain of \\(f(x) = x^x\\) is \\(x > 0\\), so \\(x = 0\\) is not even in the domain and cannot be a critical point.\nDifferentiate logarithmically. Let \\(y = x^x\\); taking logarithms, \\(\\log y = x \\log x\\). Differentiating both sides with respect to x,\n\\(\\frac{1}{y}\\frac{dy}{dx} = \\log x + x \\cdot \\frac{1}{x} = \\log x + 1\\),\nso\n\\(\\frac{dy}{dx} = x^x\\left(1 + \\log x\\right)\\).\nSince \\(x^x > 0\\) for every \\(x > 0\\), the derivative vanishes only when\n\\(1 + \\log x = 0 \\Rightarrow \\log x = -1 \\Rightarrow x = e^{-1}\\).\nHence the critical point is \\(x = e^{-1}\\). (At \\(x = e\\) the derivative is \\(e^{e}(1 + 1) = 2e^{e} \\ne 0\\), and at \\(x = 1\\) it is \\(1(1 + 0) = 1 \\ne 0\\), so neither of those is critical.)"
   },
   {
    "hash": "c1ec24861da754e73719da77e855d88c9fca9d3b4fb9230c7d46470618752283",
@@ -123,7 +123,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "The ORDER is the order of the highest derivative present. Here the highest is \\(\\frac{d^2y}{dx^2}\\), so the order is \\(2\\).\nFor the DEGREE, the equation must first be a polynomial in the derivatives — and this one already is, once the bracket is expanded:\n\\(\\left[\\frac{d^2y}{dx^2} - 1\\right]^2 = \\frac{dy}{dx} \\Rightarrow \\left(\\frac{d^2y}{dx^2}\\right)^2 - 2\\frac{d^2y}{dx^2} + 1 - \\frac{dy}{dx} = 0\\).\nNo derivative sits inside a logarithm, a radical or a trigonometric function, so the degree is defined, and it is the power to which the HIGHEST derivative is raised, namely \\(2\\).\nHence the order and degree are respectively '2, 2'."
   },
   {
    "hash": "88a4897684c7abda9280e99c15d76ade9689f88e1e18323b2723b108105e3843",
@@ -153,7 +153,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "The meeting is held only if ALL THREE members turn up, so it is cancelled precisely when at least one of them is absent. Work with the complement.\nThe probabilities that the members DO turn up are\n\\(P(A) = 1 - 0\\cdot10 = 0\\cdot90\\), \\(P(B) = 1 - 0\\cdot20 = 0\\cdot80\\), \\(P(C) = 1 - 0\\cdot05 = 0\\cdot95\\),\nand, taking the three attendances to be independent,\n\\(P(\\text{meeting held}) = 0\\cdot90 \\times 0\\cdot80 \\times 0\\cdot95 = 0\\cdot684\\).\nTherefore\n\\(P(\\text{meeting cancelled}) = 1 - 0\\cdot684 = 0\\cdot316\\),\nwhich is the choice \\(0\\cdot316\\).\n(The value \\(0\\cdot35\\) is what you get by simply adding \\(0\\cdot10 + 0\\cdot20 + 0\\cdot05\\), which over-counts the overlaps; \\(0\\cdot001\\) is the probability that all three are absent.)"
   },
   {
    "hash": "d056a08d4b7c71fb31eb17e0931aaa913a774fd9d7a4238ad1ccb7e16dc03d81",
@@ -164,7 +164,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Increasing and Decreasing Functions",
    "stem": "Find the interval in which \\(f(x) = x + \\dfrac{1}{x}\\) is always increasing, \\(x \\ne 0\\).",
-   "solution": ""
+   "solution": "Here \\(f(x) = x + \\frac{1}{x}\\), so\n\\(f'(x) = 1 - \\frac{1}{x^2} = \\frac{x^2 - 1}{x^2}\\).\nSince \\(x^2 > 0\\) throughout the domain, the SIGN of \\(f'\\) is the sign of \\(x^2 - 1 = (x - 1)(x + 1)\\). It vanishes at \\(x = 1\\) and \\(x = -1\\), and these two points, together with the excluded point \\(x = 0\\), cut the domain into four pieces:\nfor \\(x < -1\\): \\(x^2 > 1\\), so \\(f'(x) > 0\\);\nfor \\(-1 < x < 0\\): \\(x^2 < 1\\), so \\(f'(x) < 0\\);\nfor \\(0 < x < 1\\): \\(x^2 < 1\\), so \\(f'(x) < 0\\);\nfor \\(x > 1\\): \\(x^2 > 1\\), so \\(f'(x) > 0\\).\nHence f is increasing on \\((-\\infty, -1]\\) and on \\([1, \\infty)\\) — that is, f is always increasing on \\(R - (-1, 1)\\) — and it is decreasing on \\((-1, 0)\\) and on \\((0, 1)\\).\n(The endpoints \\(\\pm 1\\) may be included because \\(f'\\) vanishes only at those isolated points; \\(x = -1\\) gives the local maximum \\(f(-1) = -2\\) and \\(x = 1\\) gives the local minimum \\(f(1) = 2\\).)"
   },
   {
    "hash": "7a8b9d2684f0dded95526e122d7b9da88665931608ee534b5e3c4084317f3686",
@@ -175,7 +175,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Angle Between Two Lines",
    "stem": "Find the angle at which the given lines are inclined to each other :\n\n\\(l_1 : \\dfrac{x - 5}{2} = \\dfrac{y + 3}{1} = \\dfrac{z - 1}{-3}\\)\n\n\\(l_2 : \\dfrac{x}{3} = \\dfrac{y - 1}{2} = \\dfrac{z + 5}{-1}\\)",
-   "solution": ""
+   "solution": "Both lines are already in symmetric form, so their direction ratios can be read straight off:\n\\(l_1\\) has direction ratios \\((2, 1, -3)\\) and \\(l_2\\) has direction ratios \\((3, 2, -1)\\).\nIf \\(\\theta\\) is the angle between the lines, then\n\\(\\cos\\theta = \\frac{|a_1a_2 + b_1b_2 + c_1c_2|}{\\sqrt{a_1^2 + b_1^2 + c_1^2}\\ \\sqrt{a_2^2 + b_2^2 + c_2^2}}\\).\nThe numerator is\n\\((2)(3) + (1)(2) + (-3)(-1) = 6 + 2 + 3 = 11\\),\nand each magnitude is\n\\(\\sqrt{2^2 + 1^2 + (-3)^2} = \\sqrt{14}\\), \\(\\sqrt{3^2 + 2^2 + (-1)^2} = \\sqrt{14}\\).\nHence\n\\(\\cos\\theta = \\frac{11}{\\sqrt{14}\\sqrt{14}} = \\frac{11}{14}\\), so \\(\\theta = \\cos^{-1}\\left(\\frac{11}{14}\\right)\\)\n(about \\(38^{\\circ}13'\\)). Note that the points \\((5, -3, 1)\\) and \\((0, 1, -5)\\) on the lines play no part — the angle between two lines depends only on their directions."
   },
   {
    "hash": "ae24eb2c41627c3bf3cdc72fa9eea4e8ccc3dfaf5b2ff00a7029b92d7430b332",
@@ -186,7 +186,7 @@
    "chapter": "Matrices",
    "subtopic": "Multiplication of Matrices",
    "stem": "Find the value of x, if \\(\\begin{bmatrix} 1 & x & 1 \\end{bmatrix} \\begin{bmatrix} 1 & 3 & 2 \\\\ 2 & 5 & 1 \\\\ 15 & 3 & 2 \\end{bmatrix} \\begin{bmatrix} 1 \\\\ 2 \\\\ x \\end{bmatrix} = O.\\)",
-   "solution": ""
+   "solution": "Multiply from the right, so that every intermediate step stays a single column. First,\n\\(\\begin{bmatrix} 1 & 3 & 2 \\\\ 2 & 5 & 1 \\\\ 15 & 3 & 2 \\end{bmatrix}\\begin{bmatrix} 1 \\\\ 2 \\\\ x \\end{bmatrix} = \\begin{bmatrix} 1 + 6 + 2x \\\\ 2 + 10 + x \\\\ 15 + 6 + 2x \\end{bmatrix} = \\begin{bmatrix} 7 + 2x \\\\ 12 + x \\\\ 21 + 2x \\end{bmatrix}\\).\nNow pre-multiply by the row matrix:\n\\(\\begin{bmatrix} 1 & x & 1 \\end{bmatrix}\\begin{bmatrix} 7 + 2x \\\\ 12 + x \\\\ 21 + 2x \\end{bmatrix} = (7 + 2x) + x(12 + x) + (21 + 2x)\\)\n\\(= 7 + 2x + 12x + x^2 + 21 + 2x = x^2 + 16x + 28\\).\nThe product is the \\(1 \\times 1\\) zero matrix, so\n\\(x^2 + 16x + 28 = 0 \\Rightarrow (x + 14)(x + 2) = 0\\)\n(since \\(14 \\times 2 = 28\\) and \\(14 + 2 = 16\\)).\nHence \\(x = -14\\) or \\(x = -2\\). Both roots are admissible — nothing in the question excludes either."
   },
   {
    "hash": "ab46a51a5fc8da5f12355061e6217273aa6030b9a6d58a536a2372c59ab1f137",
@@ -197,7 +197,7 @@
    "chapter": "Probability",
    "subtopic": "Theorem of Total Probability",
    "stem": "Bag I contains 4 white and 5 black balls. Bag II contains 6 white and 7 black balls. A ball drawn randomly by from bag I is transferred to bag II and then a ball is drawn randomly from bag II. Find the probability that the ball drawn is white.",
-   "solution": ""
+   "solution": "The colour of the transferred ball is not known, so the two possibilities must be taken separately and their contributions added: this is the theorem of total probability.\nBag I holds \\(4 + 5 = 9\\) balls, so\n\\(P(\\text{white transferred}) = \\frac{4}{9}\\), \\(P(\\text{black transferred}) = \\frac{5}{9}\\).\nBag II starts with \\(6\\) white and \\(7\\) black, i.e. \\(13\\) balls, and the transfer makes it \\(14\\).\nIf a WHITE ball was transferred, Bag II holds \\(7\\) white out of \\(14\\), so the conditional probability of drawing white is \\(\\frac{7}{14}\\).\nIf a BLACK ball was transferred, Bag II holds \\(6\\) white out of \\(14\\), so the conditional probability is \\(\\frac{6}{14}\\).\nTherefore\n\\(P(\\text{white drawn}) = \\frac{4}{9} \\cdot \\frac{7}{14} + \\frac{5}{9} \\cdot \\frac{6}{14} = \\frac{28}{126} + \\frac{30}{126} = \\frac{58}{126} = \\frac{29}{63}\\).\nSo the probability that the ball drawn from Bag II is white is \\(\\frac{29}{63}\\), which is about \\(0\\cdot460\\)."
   },
   {
    "hash": "c024f94f73d2925cff09227f8da721afcd9be227041b07b6f6b1cc0c60f0a125",
@@ -208,7 +208,7 @@
    "chapter": "Application of Integrals",
    "subtopic": "Area Bounded by a Curve and a Line",
    "stem": "Using integration, find the area of the ellipse \\(\\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} = 1\\) bounded between the lines \\(x = -\\dfrac{a}{2}\\) to \\(x = \\dfrac{a}{2}\\).",
-   "solution": ""
+   "solution": "The ellipse \\(\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1\\) is symmetric about BOTH axes, and the strip cut off between \\(x = -\\frac{a}{2}\\) and \\(x = \\frac{a}{2}\\) shares that symmetry, so it is enough to work out the part lying in the first quadrant and multiply by \\(4\\).\nSolving for the upper half, \\(y = \\frac{b}{a}\\sqrt{a^2 - x^2}\\). Hence\n\\(\\text{Area} = 4\\int_{0}^{a/2} \\frac{b}{a}\\sqrt{a^2 - x^2}\\;dx = \\frac{4b}{a}\\int_{0}^{a/2} \\sqrt{a^2 - x^2}\\;dx\\).\nUsing the standard result \\(\\int \\sqrt{a^2 - x^2}\\,dx = \\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a}\\),\n\\(\\text{Area} = \\frac{4b}{a}\\left[\\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a}\\right]_{0}^{a/2}\\).\nAt the upper limit \\(x = \\frac{a}{2}\\) we have \\(\\sqrt{a^2 - \\frac{a^2}{4}} = \\frac{\\sqrt{3}\\,a}{2}\\) and \\(\\sin^{-1}\\frac{1}{2} = \\frac{\\pi}{6}\\); the lower limit contributes nothing. So\n\\(\\text{Area} = \\frac{4b}{a}\\left[\\frac{a}{4}\\cdot\\frac{\\sqrt{3}\\,a}{2} + \\frac{a^2}{2}\\cdot\\frac{\\pi}{6}\\right] = \\frac{4b}{a}\\left[\\frac{\\sqrt{3}\\,a^2}{8} + \\frac{\\pi a^2}{12}\\right]\\)\n\\(= ab\\left[\\frac{\\sqrt{3}}{2} + \\frac{\\pi}{3}\\right]\\) square units.\nAs a check this is roughly \\(1\\cdot913\\,ab\\), about \\(61\\%\\) of the whole ellipse \\(\\pi ab \\approx 3\\cdot142\\,ab\\), which is the right sort of share for the middle half of the width."
   },
   {
    "hash": "0367806c4ba049f118ff682d7508ca6cb39a244884aadb1f39b0287d1bbaaf8a",
@@ -219,7 +219,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Shortest Distance Between Two Lines",
    "stem": "Show that the line passing through the points \\(A(0,\\ -1,\\ -1)\\) and \\(B(4,\\ 5,\\ 1)\\) intersects the line joining points \\(C(3,\\ 9,\\ 4)\\) and \\(D(-4,\\ 4,\\ 4)\\).",
-   "solution": ""
+   "solution": "Two lines in space meet if and only if they are COPLANAR and not parallel, so both conditions have to be checked.\nThe line through \\(A(0, -1, -1)\\) and \\(B(4, 5, 1)\\) has direction ratios\n\\(\\langle 4 - 0,\\ 5 + 1,\\ 1 + 1 \\rangle = \\langle 4, 6, 2 \\rangle\\),\nand the line through \\(C(3, 9, 4)\\) and \\(D(-4, 4, 4)\\) has direction ratios\n\\(\\langle -4 - 3,\\ 4 - 9,\\ 4 - 4 \\rangle = \\langle -7, -5, 0 \\rangle\\).\nFor coplanarity of the lines through \\((x_1, y_1, z_1)\\) and \\((x_2, y_2, z_2)\\) with those directions, the condition is\n\\(\\begin{vmatrix} x_2 - x_1 & y_2 - y_1 & z_2 - z_1 \\\\ a_1 & b_1 & c_1 \\\\ a_2 & b_2 & c_2 \\end{vmatrix} = 0\\).\nTaking \\(A\\) and \\(C\\) as the two points,\n\\(\\begin{vmatrix} 3 - 0 & 9 + 1 & 4 + 1 \\\\ 4 & 6 & 2 \\\\ -7 & -5 & 0 \\end{vmatrix} = \\begin{vmatrix} 3 & 10 & 5 \\\\ 4 & 6 & 2 \\\\ -7 & -5 & 0 \\end{vmatrix}\\)\n\\(= 3\\left(6 \\cdot 0 - 2 \\cdot (-5)\\right) - 10\\left(4 \\cdot 0 - 2 \\cdot (-7)\\right) + 5\\left(4 \\cdot (-5) - 6 \\cdot (-7)\\right)\\)\n\\(= 3(10) - 10(14) + 5(22) = 30 - 140 + 110 = 0\\).\nSo the two lines are coplanar. They are also not parallel, since \\(\\langle 4, 6, 2 \\rangle\\) and \\(\\langle -7, -5, 0 \\rangle\\) are not proportional (for instance \\(c_1 = 2 \\ne 0 = c_2\\) while \\(a_1, a_2\\) are both non-zero). Two coplanar lines that are not parallel must meet, so the line AB does intersect the line CD.\nThe point of intersection is easy to locate: a point of AB is \\((4t,\\ -1 + 6t,\\ -1 + 2t)\\) and every point of CD has \\(z = 4\\), so \\(-1 + 2t = 4\\) gives \\(t = \\frac{5}{2}\\) and the point \\((10, 14, 4)\\). This does lie on CD, since \\((10, 14, 4) = C + (-1)\\langle -7, -5, 0 \\rangle = (3 + 7,\\ 9 + 5,\\ 4)\\).\n[Note: the marking scheme stops at the vanishing determinant and writes 'Hence lines intersect each other'. A zero determinant on its own only establishes that the lines are coplanar — coplanar lines may instead be parallel — so the short check that the direction ratios are not proportional, shown above, is what completes the argument. The scheme's conclusion is correct.]"
   }
  ]
 }

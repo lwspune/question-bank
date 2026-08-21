@@ -33,7 +33,7 @@
    ],
    "answer": "D",
    "figure": "REQUIRED — the question IS the printed graph; the stem names no function at all. The curve rises from about \\((-1, -\\pi/2)\\) through the origin to about \\((1, \\pi/2)\\), with \\((-1, 0)\\) and \\((1, 0)\\) marked on the x-axis and \\(\\pi/2\\), \\(-\\pi/2\\) marked on the y-axis. NOTE this is a DIFFERENT graph from 65/7/1's Q1, which has horizontal asymptotes and keys arctan. Page idx 2.",
-   "solution": ""
+   "solution": "Read the picture rather than looking for a formula.\nThe curve exists only for \\(-1 \\le x \\le 1\\) — the points \\((-1, 0)\\) and \\((1, 0)\\) mark where the x-axis is crossed and nothing is drawn beyond them — it passes through the ORIGIN, it is increasing, and it runs from \\(y = -\\frac{\\pi}{2}\\) up to \\(y = \\frac{\\pi}{2}\\).\nThat domain of \\([-1, 1]\\) rules out \\(y = \\tan^{-1} x\\) at once (defined for every real \\(x\\), with horizontal asymptotes) and \\(y = \\sec^{-1} x\\) as well (defined only for \\(|x| \\ge 1\\), the exact opposite gap). It also rules out \\(y = \\cos^{-1} x\\), which has the right domain but is DECREASING, runs from \\(\\pi\\) down to \\(0\\), and never takes a negative value — it does not pass through the origin.\nWhat is left matches perfectly: \\(\\sin^{-1} 0 = 0\\), \\(\\sin^{-1}(1) = \\frac{\\pi}{2}\\), \\(\\sin^{-1}(-1) = -\\frac{\\pi}{2}\\), and the principal branch is increasing on \\([-1, 1]\\).\nHence the graph illustrates \\(y = \\sin^{-1} x\\)."
   },
   {
    "hash": "daeb6aa80162a621c4eaea0264f4f8b5228d91383521bfe2a0e51ee6063c82fe",
@@ -63,7 +63,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "For f to be continuous at \\(x = 0\\), the limit of \\(f(x)\\) as \\(x \\to 0\\) must equal the value \\(f(0) = 1\\).\nRewrite the quotient so that the standard limit \\(\\lim_{\\theta \\to 0}\\frac{\\sin\\theta}{\\theta} = 1\\) can be used:\n\\(\\frac{\\sin^2 ax}{x^2} = \\left(\\frac{\\sin ax}{ax}\\right)^2 \\cdot a^2\\).\nAs \\(x \\to 0\\) we also have \\(ax \\to 0\\) (for \\(a \\ne 0\\)), so \\(\\frac{\\sin ax}{ax} \\to 1\\) and\n\\(\\lim_{x \\to 0} f(x) = 1^2 \\cdot a^2 = a^2\\).\nContinuity therefore requires \\(a^2 = 1\\), that is \\(a = 1\\) or \\(a = -1\\). Both values genuinely work, because only \\(a^2\\) enters the limit, so the answer is \\(\\pm 1\\).\n(Taking \\(a = 0\\) would make the limit \\(0 \\ne 1\\), so that choice fails; and quoting only \\(1\\) or only \\(-1\\) discards a valid value.)"
   },
   {
    "hash": "c9e56a4f8f5c978aebc512b56f807d0ab0beee40fa68d123c16c66b898bb5d0d",
@@ -93,7 +93,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Test the three properties on \\(a\\,R\\,b \\iff |a - b| > 0\\). Since a modulus is never negative, \\(|a - b| > 0\\) says exactly that \\(a \\ne b\\), so R is the relation 'is different from'.\nREFLEXIVE: \\(a\\,R\\,a\\) would need \\(|a - a| = 0 > 0\\), which is false. So R is not reflexive — indeed it fails for EVERY a.\nSYMMETRIC: \\(|a - b| = |b - a|\\), so \\(|a - b| > 0\\) holds precisely when \\(|b - a| > 0\\). Hence \\(a\\,R\\,b \\Rightarrow b\\,R\\,a\\) and R is symmetric.\nTRANSITIVE: take \\(a = 1\\), \\(b = 2\\), \\(c = 1\\). Then \\(1\\,R\\,2\\) and \\(2\\,R\\,1\\) both hold, but \\(1\\,R\\,1\\) does not, since \\(|1 - 1| = 0\\). So R is not transitive, and the combined description 'symmetric and transitive' fails too.\nThe only property R possesses is that it is symmetric."
   },
   {
    "hash": "66be0de8532db96ecbe9fe78245465f1aacac8298b4f8b6d2352a414edaf5da6",
@@ -123,7 +123,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "The numerator \\(a^x\\) is, up to a constant, the derivative of \\(a^x\\), and the expression \\(a^{2x} = (a^x)^2\\) — that pairing is the signal to substitute.\nPut \\(t = a^x\\). Then \\(dt = a^x \\log_e a\\;dx\\), so \\(a^x dx = \\frac{dt}{\\log_e a}\\), and \\(1 - a^{2x} = 1 - t^2\\). Hence\n\\(\\int \\frac{a^x}{\\sqrt{1 - a^{2x}}}\\,dx = \\frac{1}{\\log_e a}\\int \\frac{dt}{\\sqrt{1 - t^2}} = \\frac{\\sin^{-1} t}{\\log_e a} + C\\).\nRestoring \\(t = a^x\\),\n\\(\\int \\frac{a^x}{\\sqrt{1 - a^{2x}}}\\,dx = \\frac{\\sin^{-1}(a^x)}{\\log_e a} + C\\),\nwhich is the choice \\(\\frac{\\sin^{-1}(a^x)}{\\log_e a} + C\\).\n(Differentiating that expression returns the integrand, which is the quickest check. The form with \\(\\cos^{-1}\\) differs from it by more than a constant only in sign, so it is an antiderivative of the NEGATIVE of the integrand; and dividing by \\(a^x\\) instead of by \\(\\log_e a\\) does not differentiate back at all.)"
   },
   {
    "hash": "95aa7ed876027fa1f61eb94c5cabcd587dbf8623a5e7bcf935a3218db11bd4aa",
@@ -153,7 +153,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "The conditional probability gives the intersection: by definition \\(P\\!\\left(\\frac{A}{B}\\right) = \\frac{P(A \\cap B)}{P(B)}\\), so\n\\(P(A \\cap B) = P\\!\\left(\\frac{A}{B}\\right) \\cdot P(B) = \\frac{2}{5} \\times \\frac{3}{5} = \\frac{6}{25}\\).\nBy the addition theorem,\n\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = \\frac{1}{5} + \\frac{3}{5} - \\frac{6}{25} = \\frac{5}{25} + \\frac{15}{25} - \\frac{6}{25} = \\frac{14}{25}\\).\nBy De Morgan's law \\(A' \\cap B' = (A \\cup B)'\\), so\n\\(P(A' \\cap B') = 1 - P(A \\cup B) = 1 - \\frac{14}{25} = \\frac{11}{25}\\),\nwhich is the choice \\(\\frac{11}{25}\\).\n(Note that A and B are NOT independent here: independence would need \\(P(A \\cap B) = \\frac{1}{5} \\times \\frac{3}{5} = \\frac{3}{25}\\), whereas it is \\(\\frac{6}{25}\\). The value \\(\\frac{14}{25}\\) is \\(P(A \\cup B)\\) itself, not its complement.)"
   },
   {
    "hash": "8867237d6e9c951336a2cc74a09d437ebadfbbbeabe70fffd723c7716e8e26d9",
@@ -164,7 +164,7 @@
    "chapter": "Matrices",
    "subtopic": "Multiplication of Matrices",
    "stem": "If \\(\\begin{bmatrix} 3 & -1 \\\\ 0 & 1 \\\\ 2 & -3 \\end{bmatrix} A = \\begin{bmatrix} 2 \\\\ -5 \\\\ -17 \\end{bmatrix}\\), then find matrix A.",
-   "solution": ""
+   "solution": "The matrix on the left is of order \\(3 \\times 2\\) and the product is \\(3 \\times 1\\), so A must be of order \\(2 \\times 1\\). Let \\(A = \\begin{bmatrix} x \\\\ y \\end{bmatrix}\\). Then\n\\(\\begin{bmatrix} 3 & -1 \\\\ 0 & 1 \\\\ 2 & -3 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} 3x - y \\\\ y \\\\ 2x - 3y \\end{bmatrix} = \\begin{bmatrix} 2 \\\\ -5 \\\\ -17 \\end{bmatrix}\\).\nEquating corresponding entries gives three equations:\n\\(3x - y = 2\\), \\(y = -5\\), \\(2x - 3y = -17\\).\nThe second gives \\(y = -5\\) immediately, and substituting into the first,\n\\(3x + 5 = 2 \\Rightarrow 3x = -3 \\Rightarrow x = -1\\).\nNow TEST these values in the third equation, which has not yet been used:\n\\(2(-1) - 3(-5) = -2 + 15 = 13\\), but the right-hand side is \\(-17\\).\nThe three equations are therefore inconsistent — no pair \\((x, y)\\) satisfies all of them — so there is no matrix A with the stated property. Hence the required matrix A does not exist.\n[Note: the inconsistency is in the QUESTION's data, not in the working. The marking scheme reaches the same verdict by exactly this route, so 'A does not exist' is the expected answer; a student who finds \\(x = -1\\), \\(y = -5\\) from two of the equations and stops has not finished, because the third equation is what settles the matter.]"
   },
   {
    "hash": "11d740745a43205807eea44b3abf364b1b5d367d2b1f47ec3de3fb339d590d0a",
@@ -175,7 +175,7 @@
    "chapter": "Linear Programming",
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "In a Linear Programming Program (LPP) for objective function \\(Z = 14x - 10y\\)\n\nsubject to constraints\n\n\\(x + y \\le 8\\)\n\n\\(3x - 2y \\ge -6\\)\n\n\\(x,\\ y \\ge 0\\)\n\nshade the feasible region and mark the corner points in a neatly drawn graph.",
-   "solution": ""
+   "solution": "Draw the two boundary lines first, then decide which side of each is wanted.\n\\(x + y = 8\\) passes through \\((8, 0)\\) and \\((0, 8)\\). Testing the origin, \\(0 + 0 = 0 \\le 8\\), so \\(x + y \\le 8\\) is the side CONTAINING the origin.\n\\(3x - 2y = -6\\) passes through \\((0, 3)\\) and \\((-2, 0)\\). Testing the origin, \\(3(0) - 2(0) = 0 \\ge -6\\), so \\(3x - 2y \\ge -6\\) is again the side containing the origin — that is, the region on or below this line.\nWith \\(x \\ge 0\\) and \\(y \\ge 0\\) the feasible region is confined to the first quadrant, and it is the BOUNDED quadrilateral cut out by these four boundaries. Shade it.\nThe corner points are found by intersecting the boundaries in pairs:\n\\(O(0, 0)\\) — the two axes;\n\\(C(8, 0)\\) — the x-axis and \\(x + y = 8\\);\n\\(A(0, 3)\\) — the y-axis and \\(3x - 2y = -6\\);\n\\(B(2, 6)\\) — the two lines together, since \\(y = 8 - x\\) in \\(3x - 2y = -6\\) gives \\(3x - 2(8 - x) = -6\\), i.e. \\(5x = 10\\), \\(x = 2\\) and \\(y = 6\\).\nSo the feasible region is the quadrilateral \\(O(0, 0)\\), \\(C(8, 0)\\), \\(B(2, 6)\\), \\(A(0, 3)\\), and these four points are the corner points to be marked. (For reference, \\(Z = 14x - 10y\\) takes the values \\(0\\), \\(112\\), \\(-32\\) and \\(-30\\) at them, though this question asks only for the graph and the corner points.)"
   },
   {
    "hash": "c21347dd627ea5f06dd4307a165c9e04edafa714ee516c4f0fdc53164467278c",
@@ -186,7 +186,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Derivatives of Implicit and Inverse Trigonometric Functions",
    "stem": "Show that the derivative of \\(\\tan^{-1} (\\sec x + \\tan x)\\), \\(\\left[-\\dfrac{\\pi}{2} < x < \\dfrac{\\pi}{2}\\right]\\) with respect to x is equal to \\(\\dfrac{1}{2}\\).",
-   "solution": ""
+   "solution": "The neat route is to simplify the expression inside \\(\\tan^{-1}\\) BEFORE differentiating; done directly the chain rule is very messy.\nWrite\n\\(\\sec x + \\tan x = \\frac{1}{\\cos x} + \\frac{\\sin x}{\\cos x} = \\frac{1 + \\sin x}{\\cos x}\\).\nNow express both parts through the same half-angle. Using \\(\\sin x = \\cos\\left(\\frac{\\pi}{2} - x\\right)\\) and \\(\\cos x = \\sin\\left(\\frac{\\pi}{2} - x\\right)\\),\n\\(\\frac{1 + \\sin x}{\\cos x} = \\frac{1 + \\cos\\left(\\frac{\\pi}{2} - x\\right)}{\\sin\\left(\\frac{\\pi}{2} - x\\right)} = \\frac{2\\cos^2\\left(\\frac{\\pi}{4} - \\frac{x}{2}\\right)}{2\\sin\\left(\\frac{\\pi}{4} - \\frac{x}{2}\\right)\\cos\\left(\\frac{\\pi}{4} - \\frac{x}{2}\\right)} = \\cot\\left(\\frac{\\pi}{4} - \\frac{x}{2}\\right)\\),\nusing \\(1 + \\cos 2\\theta = 2\\cos^2\\theta\\) and \\(\\sin 2\\theta = 2\\sin\\theta\\cos\\theta\\) with \\(\\theta = \\frac{\\pi}{4} - \\frac{x}{2}\\).\nSince \\(\\cot\\theta = \\tan\\left(\\frac{\\pi}{2} - \\theta\\right)\\),\n\\(\\cot\\left(\\frac{\\pi}{4} - \\frac{x}{2}\\right) = \\tan\\left(\\frac{\\pi}{2} - \\frac{\\pi}{4} + \\frac{x}{2}\\right) = \\tan\\left(\\frac{\\pi}{4} + \\frac{x}{2}\\right)\\).\nTherefore\n\\(\\tan^{-1}(\\sec x + \\tan x) = \\tan^{-1}\\left(\\tan\\left(\\frac{\\pi}{4} + \\frac{x}{2}\\right)\\right) = \\frac{\\pi}{4} + \\frac{x}{2}\\),\nand the cancellation is legitimate because for \\(-\\frac{\\pi}{2} < x < \\frac{\\pi}{2}\\) the angle \\(\\frac{\\pi}{4} + \\frac{x}{2}\\) lies in \\(\\left(0, \\frac{\\pi}{2}\\right)\\), which sits inside the principal branch \\(\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\).\nDifferentiating the resulting linear expression,\n\\(\\frac{d}{dx}\\left[\\tan^{-1}(\\sec x + \\tan x)\\right] = \\frac{d}{dx}\\left(\\frac{\\pi}{4} + \\frac{x}{2}\\right) = \\frac{1}{2}\\),\nas required."
   },
   {
    "hash": "4c2a11a304b513fe72b79b1f40fafafb4a6f436a35f581d74a3319d138715adb",
@@ -197,7 +197,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Maxima and Minima",
    "stem": "Find dimensions of a rectangle of perimeter 12 cm which will generate maximum volume when swept along a circular rotation keeping the shorter side fixed as the axis.",
-   "solution": ""
+   "solution": "[CBSE marking scheme: the printed solution models the sweep by setting \\(2\\pi r = x\\) — that is, it treats the longer side as the CIRCUMFERENCE of the cylinder, giving \\(V = \\pi\\left(\\frac{x}{2\\pi}\\right)^2 y\\). Rotating a rectangle about one of its sides produces a cylinder whose RADIUS is the adjacent side, so the volume is \\(\\pi x^2 y\\). The two expressions differ only by the constant factor \\(4\\pi^2\\), and multiplying a function by a positive constant does not move its maximum, so the scheme still reaches the correct dimensions; only its volume figure would be wrong.]\nLet the sides of the rectangle be \\(x\\) cm and \\(y\\) cm, with \\(y\\) the shorter side, which is held fixed as the axis. The perimeter condition gives\n\\(2(x + y) = 12 \\Rightarrow x + y = 6 \\Rightarrow y = 6 - x\\).\nSweeping the rectangle a full turn about the side of length \\(y\\) generates a cylinder of height \\(y\\) whose radius is the other side, \\(x\\). So\n\\(V = \\pi x^2 y = \\pi x^2 (6 - x) = \\pi\\left(6x^2 - x^3\\right)\\), for \\(0 < x < 6\\).\nDifferentiating,\n\\(\\frac{dV}{dx} = \\pi\\left(12x - 3x^2\\right) = 3\\pi x (4 - x)\\).\nSetting this to zero gives \\(x = 0\\) (rejected, it is not a rectangle) or \\(x = 4\\). For the second-derivative test,\n\\(\\frac{d^2V}{dx^2} = \\pi(12 - 6x)\\), so at \\(x = 4\\) it is \\(\\pi(12 - 24) = -12\\pi < 0\\),\nconfirming a maximum.\nThen \\(y = 6 - 4 = 2\\). Note this is consistent with the question: \\(y = 2 < 4 = x\\), so the side held fixed really is the shorter one.\nHence the rectangle measures \\(4\\) cm by \\(2\\) cm, with the \\(2\\) cm side as the axis (the resulting cylinder has volume \\(\\pi(4)^2(2) = 32\\pi\\) cubic cm)."
   },
   {
    "hash": "247ee534f6666ea02550ce971fb9d706ad9811b09a265aafd0086910677f94d3",
@@ -208,7 +208,7 @@
    "chapter": "Integrals",
    "subtopic": "Properties of Definite Integrals",
    "stem": "Evaluate :\n\n\\(\\displaystyle\\int_{0}^{\\pi} \\dfrac{x \\sin x}{1 + \\cos^2 x}\\, dx\\)",
-   "solution": ""
+   "solution": "The limits \\(0\\) and \\(\\pi\\) with an \\(x\\) multiplying an otherwise symmetric integrand is the signal for the property \\(\\int_0^a f(x)\\,dx = \\int_0^a f(a - x)\\,dx\\).\nLet \\(I = \\int_{0}^{\\pi} \\frac{x \\sin x}{1 + \\cos^2 x}\\,dx\\). Replacing \\(x\\) by \\(\\pi - x\\), and using \\(\\sin(\\pi - x) = \\sin x\\) and \\(\\cos(\\pi - x) = -\\cos x\\) (so \\(\\cos^2\\) is unchanged),\n\\(I = \\int_{0}^{\\pi} \\frac{(\\pi - x)\\sin x}{1 + \\cos^2 x}\\,dx\\).\nAdding the two forms, the awkward factor \\(x\\) cancels:\n\\(2I = \\int_{0}^{\\pi} \\frac{\\pi \\sin x}{1 + \\cos^2 x}\\,dx \\Rightarrow I = \\frac{\\pi}{2}\\int_{0}^{\\pi} \\frac{\\sin x}{1 + \\cos^2 x}\\,dx\\).\nNow substitute \\(t = \\cos x\\), so \\(dt = -\\sin x\\,dx\\); when \\(x = 0\\), \\(t = 1\\), and when \\(x = \\pi\\), \\(t = -1\\). Hence\n\\(I = \\frac{\\pi}{2}\\int_{1}^{-1} \\frac{-dt}{1 + t^2} = \\frac{\\pi}{2}\\int_{-1}^{1} \\frac{dt}{1 + t^2} = \\frac{\\pi}{2}\\left[\\tan^{-1} t\\right]_{-1}^{1}\\).\nTherefore\n\\(I = \\frac{\\pi}{2}\\left(\\frac{\\pi}{4} - \\left(-\\frac{\\pi}{4}\\right)\\right) = \\frac{\\pi}{2} \\cdot \\frac{\\pi}{2} = \\frac{\\pi^2}{4}\\).\nSo the value of the integral is \\(\\frac{\\pi^2}{4}\\), which is about \\(2\\cdot467\\) — a positive number, as it must be, since the integrand is non-negative throughout \\([0, \\pi]\\)."
   },
   {
    "hash": "912280b75e4329be52d73e2e3f559d8d3c730453490fa6da5cb37cd2b3af87bc",
@@ -219,7 +219,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Homogeneous Differential Equations",
    "stem": "Solve the differential equation \\((x^2 + y^2)\\, dx + xy\\, dy = 0\\), \\(y(1) = 1\\).",
-   "solution": ""
+   "solution": "Every term of \\((x^2 + y^2)\\,dx + xy\\,dy = 0\\) has total degree \\(2\\) in x and y, so the equation is homogeneous and the substitution \\(y = vx\\) will separate it.\nWriting it in derivative form,\n\\(\\frac{dy}{dx} = -\\frac{x^2 + y^2}{xy} = -\\frac{1 + \\left(\\frac{y}{x}\\right)^2}{\\frac{y}{x}}\\).\nPut \\(y = vx\\), so that \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\). Then\n\\(v + x\\frac{dv}{dx} = -\\frac{1 + v^2}{v} \\Rightarrow x\\frac{dv}{dx} = -\\frac{1 + v^2}{v} - v = -\\frac{1 + 2v^2}{v}\\).\nSeparating the variables,\n\\(\\frac{v\\,dv}{1 + 2v^2} = -\\frac{dx}{x}\\).\nThe left side is \\(\\frac{1}{4}\\) of \\(\\frac{4v\\,dv}{1 + 2v^2}\\), whose numerator is exactly the derivative of the denominator, so integrating gives\n\\(\\frac{1}{4}\\log\\left(1 + 2v^2\\right) = -\\log|x| + \\log C\\).\nMultiplying by \\(4\\) and combining the logarithms,\n\\(\\log\\left(1 + 2v^2\\right) = \\log\\frac{C^4}{x^4} \\Rightarrow 1 + 2v^2 = \\frac{D}{x^4}\\), where \\(D = C^4\\).\nRestoring \\(v = \\frac{y}{x}\\),\n\\(1 + \\frac{2y^2}{x^2} = \\frac{D}{x^4} \\Rightarrow x^4 + 2x^2y^2 = D\\), that is \\(\\left(x^2 + 2y^2\\right)x^2 = D\\).\nApplying the initial condition \\(y(1) = 1\\): \\(1 + 2 = D\\), so \\(D = 3\\).\nHence the particular solution is\n\\(\\left(x^2 + 2y^2\\right)x^2 = 3\\), i.e. \\(x^4 + 2x^2y^2 = 3\\).\nCheck by differentiating: \\(4x^3 + 4xy^2 + 4x^2y\\frac{dy}{dx} = 0\\), and dividing by \\(4x\\) gives \\(x^2 + y^2 + xy\\frac{dy}{dx} = 0\\), which is the original equation."
   }
  ]
 }
