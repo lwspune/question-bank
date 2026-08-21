@@ -127,3 +127,50 @@ export function orderPaper(groups: Cand[][]): Cand[] {
 
   return out;
 }
+
+/** One printed section of a paper and the per-chapter picks that fill it. */
+export type SectionGroup = { key: string; groups: Cand[][] };
+
+/**
+ * How a section's chapters are laid out.
+ *
+ *   "interleave" — round-robin the chapters inside each difficulty tier, so a
+ *     two-topic drill alternates instead of arriving as two solid blocks.
+ *   "sequential" — each chapter runs contiguously, in spec order.
+ *
+ * A real exam paper is `sequential`, and for GAT that is structural rather than
+ * cosmetic: the English half prints ONE directions block per question type
+ * ("In this section each item consists of six sentences…"), so scattering those
+ * questions would force the directions to repeat for every item; and the General
+ * Knowledge half runs subject by subject, Physics through Economics.
+ */
+export type Layout = "interleave" | "sequential";
+
+/**
+ * Lay out a MULTI-SECTION paper: sections in declared order, contiguous, each
+ * ordered internally by `orderPaper`.
+ *
+ * The section wall is the point. `orderPaper` sweeps EASY -> MODERATE -> HARD
+ * across every group it is given, which is right inside one subject and wrong
+ * across a paper's parts: NDA GAT is English 1-50 then General Knowledge
+ * 51-150, and a candidate works one part at a time. Flattening all the chapters
+ * into a single `orderPaper` call would scatter English through the GK block by
+ * difficulty and stop the paper being the test it is imitating.
+ *
+ * A single-section paper is byte-identical to `orderPaper` on the same groups,
+ * so the papers built before sections existed do not move.
+ */
+export function orderPaperBySections(
+  sections: SectionGroup[],
+  layout: Layout = "interleave"
+): { sectionKey: string; cand: Cand }[] {
+  return sections.flatMap((s) => {
+    // "sequential" runs orderPaper on ONE group at a time, which keeps that
+    // chapter whole while still ordering it EASY -> MODERATE -> HARD internally.
+    const ordered =
+      layout === "sequential"
+        ? s.groups.flatMap((g) => orderPaper([g]))
+        : orderPaper(s.groups);
+    return ordered.map((cand) => ({ sectionKey: s.key, cand }));
+  });
+}

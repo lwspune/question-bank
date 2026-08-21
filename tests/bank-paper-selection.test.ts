@@ -1,5 +1,11 @@
 import { describe, it, expect } from "vitest";
-import { selectByQuota, selectTotal, orderPaper, type Cand } from "../scripts/bank-paper/lib";
+import {
+  selectByQuota,
+  selectTotal,
+  orderPaper,
+  orderPaperBySections,
+  type Cand,
+} from "../scripts/bank-paper/lib";
 
 const c = (id: string, chapterId: string, difficulty: Cand["difficulty"]): Cand => ({
   id,
@@ -135,5 +141,118 @@ describe("orderPaper", () => {
   it("handles an empty group without emitting a hole", () => {
     const bd = [c("bd-e", "bd", "EASY")];
     expect(orderPaper([bd, []]).map((q) => q.id)).toEqual(["bd-e"]);
+  });
+});
+
+describe("orderPaperBySections", () => {
+  // A real GAT paper is English 1-50 then General Knowledge 51-150. A candidate
+  // works one section at a time, so difficulty may NOT be interleaved across the
+  // section boundary the way orderPaper interleaves across chapters.
+  it("keeps sections contiguous even when a later section is easier", () => {
+    const eng = [c("eng-h", "grammar", "HARD")];
+    const gk = [c("gk-e", "physics", "EASY")];
+    const out = orderPaperBySections([
+      { key: "english", groups: [eng] },
+      { key: "gk", groups: [gk] },
+    ]);
+    // orderPaper alone would put the EASY question first; the section wall forbids it.
+    expect(out.map((q) => q.cand.id)).toEqual(["eng-h", "gk-e"]);
+    expect(out.map((q) => q.sectionKey)).toEqual(["english", "gk"]);
+  });
+
+  it("applies the existing within-section ordering unchanged", () => {
+    const phy = [c("phy-e", "phy", "EASY"), c("phy-h", "phy", "HARD")];
+    const geo = [c("geo-e", "geo", "EASY"), c("geo-h", "geo", "HARD")];
+    const out = orderPaperBySections([{ key: "gk", groups: [phy, geo] }]);
+    expect(out.map((q) => q.cand.id)).toEqual(orderPaper([phy, geo]).map((q) => q.id));
+  });
+
+  // Backwards compatibility: the three shipped single-section papers must not move.
+  it("is identical to orderPaper for a single section", () => {
+    const a = [c("a1", "a", "HARD"), c("a2", "a", "EASY")];
+    const b = [c("b1", "b", "MODERATE")];
+    const out = orderPaperBySections([{ key: "maths", groups: [a, b] }]);
+    expect(out.map((q) => q.cand.id)).toEqual(orderPaper([a, b]).map((q) => q.id));
+    expect(new Set(out.map((q) => q.sectionKey))).toEqual(new Set(["maths"]));
+  });
+
+  it("tags every question with the section it was drawn for", () => {
+    const eng = [c("e1", "voc", "HARD"), c("e2", "voc", "EASY")];
+    const gk = [c("g1", "phy", "HARD")];
+    const out = orderPaperBySections([
+      { key: "english", groups: [eng] },
+      { key: "gk", groups: [gk] },
+    ]);
+    expect(out.filter((q) => q.sectionKey === "english").map((q) => q.cand.id).sort()).toEqual(["e1", "e2"]);
+    expect(out.filter((q) => q.sectionKey === "gk").map((q) => q.cand.id)).toEqual(["g1"]);
+  });
+
+  it("is a permutation of its input across sections", () => {
+    const eng = [c("a", "voc", "HARD"), c("b", "voc", "EASY")];
+    const gk = [c("cc", "phy", "MODERATE"), c("d", "geo", "EASY")];
+    const out = orderPaperBySections([
+      { key: "english", groups: [eng] },
+      { key: "gk", groups: [gk] },
+    ]);
+    expect(out.map((q) => q.cand.id).sort()).toEqual(["a", "b", "cc", "d"]);
+  });
+
+  it("skips an empty section without emitting a hole", () => {
+    const gk = [c("g1", "phy", "HARD")];
+    const out = orderPaperBySections([
+      { key: "english", groups: [] },
+      { key: "gk", groups: [gk] },
+    ]);
+    expect(out.map((q) => q.cand.id)).toEqual(["g1"]);
+  });
+
+  // A real GAT paper prints ONE directions block per English question type and
+  // runs the GK half subject by subject, so a chapter's questions must stay
+  // together rather than being interleaved by difficulty.
+  describe('layout: "sequential"', () => {
+    const phy = [c("phy-h", "phy", "HARD"), c("phy-e", "phy", "EASY")];
+    const chem = [c("chem-m", "chem", "MODERATE")];
+    const geo = [c("geo-h", "geo", "HARD")];
+
+    it("keeps each chapter contiguous, in spec order", () => {
+      const out = orderPaperBySections([{ key: "gk", groups: [phy, chem, geo] }], "sequential");
+      expect(out.map((q) => q.cand.id)).toEqual(["phy-e", "phy-h", "chem-m", "geo-h"]);
+    });
+
+    it("still runs EASY -> MODERATE -> HARD *within* a chapter", () => {
+      const mixed = [c("m", "x", "MODERATE"), c("h", "x", "HARD"), c("e", "x", "EASY")];
+      const out = orderPaperBySections([{ key: "gk", groups: [mixed] }], "sequential");
+      expect(out.map((q) => q.cand.id)).toEqual(["e", "m", "h"]);
+    });
+
+    it("does not let a later chapter's EASY question jump the earlier chapter", () => {
+      const out = orderPaperBySections([{ key: "gk", groups: [geo, phy] }], "sequential");
+      // interleave would lead with phy-e; sequential must not.
+      expect(out[0].cand.id).toBe("geo-h");
+      expect(orderPaper([geo, phy])[0].id).toBe("phy-e"); // the contrast, pinned
+    });
+
+    it("still honours the section wall", () => {
+      const out = orderPaperBySections(
+        [{ key: "english", groups: [[c("eng-h", "voc", "HARD")]] }, { key: "gk", groups: [phy] }],
+        "sequential"
+      );
+      expect(out.map((q) => q.sectionKey)).toEqual(["english", "gk", "gk"]);
+    });
+
+    it("is a permutation of its input", () => {
+      const out = orderPaperBySections([{ key: "gk", groups: [phy, chem, geo] }], "sequential");
+      expect(out.map((q) => q.cand.id).sort()).toEqual(["chem-m", "geo-h", "phy-e", "phy-h"]);
+    });
+
+    it("defaults to interleave, so existing papers are untouched", () => {
+      const a = [{ key: "gk", groups: [phy, chem, geo] }];
+      expect(orderPaperBySections(a).map((q) => q.cand.id)).toEqual(
+        orderPaperBySections(a, "interleave").map((q) => q.cand.id)
+      );
+      expect(orderPaperBySections(a).map((q) => q.cand.id)).toEqual(
+        orderPaper([phy, chem, geo]).map((q) => q.id)
+      );
+    });
   });
 });
