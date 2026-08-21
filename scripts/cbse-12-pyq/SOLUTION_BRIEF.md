@@ -245,6 +245,17 @@ So test both, and note the direction each is blind in: the byte scan misses an
 escaped control char; a regex over the JSON *text* misses nothing but will
 false-alarm on legitimate `\\n` inside a math zone. Neither alone is sufficient.
 
+**AND SCAN YOUR OWN PROBE FILES.** THREE separate agents this run found a literal
+`0x01` in a file they had written through the ordinary Write tool — no heredoc
+involved. One landed inside a Python *comment*, so the interpreter parsed it
+silently and the probe ran, wrong, without complaint. The maintainer put one in
+this very brief while writing the paragraph above.
+
+Two consequences. A corrupt probe is as dangerous as corrupt data, so point the
+byte scanner at your scratch files as well as the corpus. And **never type an
+escape sequence you are describing** — name it in words, or build it from
+`chr()` / `String.fromCharCode`.
+
 ### ⚠ DO NOT COPY A REGEX CHARACTER CLASS OUT OF ANOTHER FILE
 
 Two leftover scratch probes in this directory were found to contain **literal

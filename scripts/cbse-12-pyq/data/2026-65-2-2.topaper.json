@@ -32,7 +32,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Use the half-angle identity \\(1 + \\cos x = 2\\cos^2\\frac{x}{2}\\), which turns the integrand into a standard form: \\(\\int\\frac{dx}{1 + \\cos x} = \\int\\frac{dx}{2\\cos^2\\frac{x}{2}} = \\frac{1}{2}\\int\\sec^2\\frac{x}{2}\\,dx\\). Since \\(\\int\\sec^2\\frac{x}{2}\\,dx = 2\\tan\\frac{x}{2}\\), this equals \\(\\frac{1}{2} \\cdot 2\\tan\\frac{x}{2} + C = \\tan\\frac{x}{2} + C\\). (The factor \\(\\frac{1}{2}\\) from the identity is cancelled by the 2 the chain rule produces on integrating, which is why no \\(\\frac{1}{2}\\) survives in the answer.)"
   },
   {
    "hash": "6736878956465b0179462955d22b476cef331df677a644258b34ceadd2940ef7",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "The variables separate: \\(x\\,dy = y\\,dx\\), so \\(\\frac{dy}{y} = \\frac{dx}{x}\\). Integrating both sides gives \\(\\log|y| = \\log|x| + \\log k_1\\), that is \\(y = k_1 x\\), which can be written as \\(x = ky\\) with \\(k = \\frac{1}{k_1}\\). So the general solution is \\(x = ky\\). (The forms \\(xy = k\\) and \\(\\log y + \\log x = k\\) both say \\(xy\\) is constant, which solves \\(x\\,dy + y\\,dx = 0\\) — the equation with the opposite sign.)"
   },
   {
    "hash": "ccf3ac22248d1aa0987485ddeeffa67fb6eef2952fc3fb8d7189b6ec814d1c51",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "B",
-   "solution": ""
+   "solution": "Write the line in symmetric form. From \\(x = y = 1 - z\\), put each expression equal to a parameter: \\(x = y\\) and \\(z = 1 - x\\), so \\(\\frac{x}{1} = \\frac{y}{1} = \\frac{z - 1}{-1}\\). Its direction ratios are therefore \\(<1, 1, -1>\\), whose magnitude is \\(\\sqrt{1 + 1 + 1} = \\sqrt{3}\\). Dividing each by \\(\\sqrt{3}\\) gives the direction cosines \\(\\frac{1}{\\sqrt{3}}, \\frac{1}{\\sqrt{3}}, \\frac{-1}{\\sqrt{3}}\\). (The triple \\(1, 1, 1\\) cannot be a set of direction cosines at all, since \\(1^2 + 1^2 + 1^2 = 3 \\ne 1\\).)"
   },
   {
    "hash": "99db32124d0de6150bacea914270b2ed8f83618a6f201c5798645ff909897fae",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Test the three properties in turn on \\(R = \\{(1, 2), (2, 1), (2, 2)\\}\\) over \\(A = \\{1, 2, 3\\}\\). Reflexive would require \\((1,1)\\), \\((2,2)\\) and \\((3,3)\\) all to be in R; only \\((2,2)\\) is, so R is not reflexive. Symmetric requires that whenever \\((a,b) \\in R\\) so is \\((b,a)\\): \\((1,2)\\) is paired with \\((2,1)\\), and \\((2,2)\\) is its own reverse, so R is symmetric. Transitive would require, from \\((1,2)\\) and \\((2,1)\\), that \\((1,1) \\in R\\) — it is not, so R is not transitive. Hence R is symmetric only."
   },
   {
    "hash": "21c2ada6791032a86238b97db7a2dbce99807be0b2718c22a3b99b015b1333a5",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "Write down the transpose and add. With \\(A = \\begin{bmatrix} \\frac{1}{2}\\cos x & -\\sin x \\\\ \\sin x & \\frac{1}{2}\\cos x \\end{bmatrix}\\), we have \\(A' = \\begin{bmatrix} \\frac{1}{2}\\cos x & \\sin x \\\\ -\\sin x & \\frac{1}{2}\\cos x \\end{bmatrix}\\), so \\(A + A' = \\begin{bmatrix} \\cos x & 0 \\\\ 0 & \\cos x \\end{bmatrix}\\) — the off-diagonal terms cancel. Setting this equal to \\(I = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}\\) gives \\(\\cos x = 1\\), and the only value of \\(x\\) in \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\) with \\(\\cos x = 1\\) is \\(x = 0\\)."
   },
   {
    "hash": "74bfb5a0791e4424f972ef5f83495774143045b8094ed4acbc6b7e266be91ab0",
@@ -182,7 +182,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Differentiate \\(e^{x + y} = 3x\\) implicitly with respect to \\(x\\), remembering that \\(y\\) is a function of \\(x\\): \\(e^{x + y}\\left(1 + \\frac{dy}{dx}\\right) = 3\\). Hence \\(1 + \\frac{dy}{dx} = \\frac{3}{e^{x + y}}\\), so \\(\\frac{dy}{dx} = \\frac{3}{e^{x + y}} - 1 = \\frac{3 - e^{x + y}}{e^{x + y}}\\)."
   },
   {
    "hash": "976b4d6a101d86fd19b010e31c615f68373c0d3f95aa117d142caf1aae30ea98",
@@ -193,7 +193,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Equation of a Line in Space",
    "stem": "Find the co-ordinates of foot of perpendicular drawn from (0, 0, 0) to line \\(\\dfrac{x}{1} = \\dfrac{y + 1}{-1} = \\dfrac{z - 3}{-2}\\).",
-   "solution": ""
+   "solution": "Let the foot of the perpendicular be Q. Writing \\(\\frac{x}{1} = \\frac{y + 1}{-1} = \\frac{z - 3}{-2} = \\lambda\\), a general point of the line is \\(Q\\left(\\lambda,\\; -\\lambda - 1,\\; 3 - 2\\lambda\\right)\\). With \\(P(0, 0, 0)\\), the vector \\(\\vec{PQ}\\) has direction ratios \\(<\\lambda,\\; -\\lambda - 1,\\; 3 - 2\\lambda>\\), while the line has direction ratios \\(<1, -1, -2>\\). Since \\(PQ\\) is perpendicular to the line, the dot product vanishes: \\(1(\\lambda) - 1(-\\lambda - 1) - 2(3 - 2\\lambda) = 0\\), that is \\(\\lambda + \\lambda + 1 - 6 + 4\\lambda = 0\\), so \\(6\\lambda = 5\\) and \\(\\lambda = \\frac{5}{6}\\). Substituting back, the foot of the perpendicular is \\(\\left(\\frac{5}{6},\\; -\\frac{11}{6},\\; \\frac{4}{3}\\right)\\)."
   },
   {
    "hash": "cd10b90951984bbea9ab2044fcce905a34997ac328269ce4edbd89de41b13861",
@@ -204,7 +204,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Derivatives of Functions in Parametric Form",
    "stem": "If \\(x = \\sin t - \\cos t\\), \\(y = \\sin t \\cos t\\), find \\(\\dfrac{dy}{dx}\\) at \\(t = \\dfrac{\\pi}{4}\\).",
-   "solution": ""
+   "solution": "Differentiate each coordinate with respect to \\(t\\): \\(\\frac{dx}{dt} = \\cos t + \\sin t\\), and by the product rule \\(\\frac{dy}{dt} = \\cos t \\cdot \\cos t + \\sin t \\cdot (-\\sin t) = \\cos^2 t - \\sin^2 t\\). Hence \\(\\frac{dy}{dx} = \\frac{\\cos^2 t - \\sin^2 t}{\\cos t + \\sin t} = \\frac{(\\cos t - \\sin t)(\\cos t + \\sin t)}{\\cos t + \\sin t} = \\cos t - \\sin t\\), the cancellation being legitimate near \\(t = \\frac{\\pi}{4}\\), where \\(\\cos t + \\sin t = \\sqrt{2} \\ne 0\\). At \\(t = \\frac{\\pi}{4}\\), \\(\\cos\\frac{\\pi}{4} = \\sin\\frac{\\pi}{4} = \\frac{1}{\\sqrt{2}}\\), so \\(\\frac{dy}{dx} = 0\\)."
   },
   {
    "hash": "41e89ae65a1349e2623b532ef6aaed41ec671f051e4d6f3e6ce878f9ed035078",
@@ -215,7 +215,7 @@
    "chapter": "Linear Programming",
    "subtopic": "Graphical Solution and the Feasible Region",
    "stem": "Solve the following linear programming problem graphically :\n\nMaximize \\(Z = 8000x + 12000y\\)\n\nSubject to constraints\n\n\\(3x + 4y \\leq 60\\)\n\n\\(x + 3y \\leq 30\\)\n\n\\(x \\geq 0, y \\geq 0\\)",
-   "solution": ""
+   "solution": "First find the corner points of the feasible region. The line \\(3x + 4y = 60\\) meets the axes at \\((20, 0)\\) and \\((0, 15)\\); the line \\(x + 3y = 30\\) meets them at \\((30, 0)\\) and \\((0, 10)\\). Solving the two together: from the second, \\(x = 30 - 3y\\), and substituting into the first, \\(3(30 - 3y) + 4y = 60\\), so \\(-5y = -30\\), giving \\(y = 6\\) and \\(x = 12\\). With \\(x \\ge 0\\) and \\(y \\ge 0\\) the region is bounded, with corner points \\(O(0, 0)\\), \\(A(0, 10)\\), \\(B(12, 6)\\) and \\(C(20, 0)\\) — note that on the y-axis the binding constraint is \\(x + 3y \\le 30\\), giving 10 rather than 15, and on the x-axis it is \\(3x + 4y \\le 60\\), giving 20 rather than 30. Evaluating \\(Z = 8000x + 12000y\\) at each corner: \\(Z(O) = 0\\), \\(Z(A) = 1{,}20{,}000\\), \\(Z(B) = 96{,}000 + 72{,}000 = 1{,}68{,}000\\), \\(Z(C) = 1{,}60{,}000\\). Hence the maximum value is \\(Z = 1{,}68{,}000\\), attained at \\(x = 12\\), \\(y = 6\\)."
   },
   {
    "hash": "43c6f457ac9fd359472185153103705ec05c55f3abd6d5e1b92585e97d969605",
@@ -226,7 +226,7 @@
    "chapter": "Integrals",
    "subtopic": "Integrals of Some Particular Functions",
    "stem": "Find : \\(\\displaystyle\\int \\dfrac{2x + 1}{\\sqrt{6x + x^2}}\\, dx\\)",
-   "solution": ""
+   "solution": "Split the numerator into a multiple of the derivative of the quadratic plus a constant. Since \\(\\frac{d}{dx}\\left(6x + x^2\\right) = 6 + 2x\\), write \\(2x + 1 = A(6 + 2x) + B\\); comparing coefficients of \\(x\\) gives \\(2A = 2\\), so \\(A = 1\\), and then \\(6 + B = 1\\) gives \\(B = -5\\). Hence \\(I = \\int\\frac{6 + 2x}{\\sqrt{6x + x^2}}\\,dx - 5\\int\\frac{dx}{\\sqrt{6x + x^2}}\\). For the first integral put \\(u = 6x + x^2\\), so \\(du = (6 + 2x)dx\\) and it becomes \\(\\int\\frac{du}{\\sqrt{u}} = 2\\sqrt{u} = 2\\sqrt{6x + x^2}\\). For the second, complete the square: \\(6x + x^2 = (x + 3)^2 - 3^2\\), so \\(\\int\\frac{dx}{\\sqrt{(x + 3)^2 - 3^2}} = \\log\\left|(x + 3) + \\sqrt{6x + x^2}\\right|\\). Therefore \\(I = 2\\sqrt{6x + x^2} - 5\\log\\left|(x + 3) + \\sqrt{6x + x^2}\\right| + C\\)."
   },
   {
    "hash": "520133932e48092e8483ee90beb3dc90f6d359331dc6955ab6820a03ea43622a",
@@ -237,7 +237,7 @@
    "chapter": "Inverse Trigonometric Functions",
    "subtopic": "Domains, Ranges and Principal Value Branches",
    "stem": "Find the domain of \\(p(x) = \\sin^{-1}(1 - 2x^2)\\). Hence, find the value of \\(x\\) for which \\(p(x) = \\dfrac{\\pi}{6}\\). Also, write the range of \\(2p(x) + \\dfrac{\\pi}{2}\\).",
-   "solution": ""
+   "solution": "Domain. The domain of \\(\\sin^{-1}\\) is \\([-1, 1]\\), so we need \\(-1 \\le 1 - 2x^2 \\le 1\\). The right-hand inequality gives \\(-2x^2 \\le 0\\), which is true for every real \\(x\\); the left-hand one gives \\(-2 \\le -2x^2\\), that is \\(x^2 \\le 1\\), so \\(-1 \\le x \\le 1\\). Hence the domain of \\(p\\) is \\([-1, 1]\\).\nSolving \\(p(x) = \\frac{\\pi}{6}\\). Here \\(\\sin^{-1}\\left(1 - 2x^2\\right) = \\frac{\\pi}{6}\\), so \\(1 - 2x^2 = \\sin\\frac{\\pi}{6} = \\frac{1}{2}\\). Then \\(2x^2 = \\frac{1}{2}\\), so \\(x^2 = \\frac{1}{4}\\) and \\(x = \\pm\\frac{1}{2}\\); both values lie in the domain, so \\(x = \\frac{1}{2}\\) or \\(x = -\\frac{1}{2}\\).\nRange of \\(2p(x) + \\frac{\\pi}{2}\\). As \\(x\\) runs over \\([-1, 1]\\), the expression \\(1 - 2x^2\\) runs continuously over the whole of \\([-1, 1]\\) — it equals 1 at \\(x = 0\\) and \\(-1\\) at \\(x = \\pm 1\\) — so \\(p(x)\\) takes every value in \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\). Doubling gives \\(-\\pi \\le 2p(x) \\le \\pi\\), and adding \\(\\frac{\\pi}{2}\\) throughout gives \\(-\\frac{\\pi}{2} \\le 2p(x) + \\frac{\\pi}{2} \\le \\frac{3\\pi}{2}\\). Hence the required range is \\(\\left[-\\frac{\\pi}{2}, \\frac{3\\pi}{2}\\right]\\)."
   },
   {
    "hash": "9d2ee71a557ecffb798d88330bc6fc1aaabefc284fd3a04611d02b6bd7e608c3",
@@ -248,7 +248,7 @@
    "chapter": "Application of Derivatives",
    "subtopic": "Increasing and Decreasing Functions",
    "stem": "Find the sub-interval of \\((0, \\pi)\\) in which \\(f(x) = \\tan^{-1}(\\sin x - \\cos x)\\) is increasing and decreasing.",
-   "solution": ""
+   "solution": "Differentiate using the chain rule: \\(f'(x) = \\frac{\\cos x + \\sin x}{1 + (\\sin x - \\cos x)^2}\\). The denominator is at least 1 and so is always positive, which means the sign of \\(f'(x)\\) is decided entirely by \\(\\cos x + \\sin x\\). Setting \\(f'(x) = 0\\) gives \\(\\cos x + \\sin x = 0\\), i.e. \\(\\tan x = -1\\), whose only solution in \\((0, \\pi)\\) is \\(x = \\frac{3\\pi}{4}\\). Writing \\(\\cos x + \\sin x = \\sqrt{2}\\sin\\left(x + \\frac{\\pi}{4}\\right)\\) makes the sign easy to read: for \\(x \\in \\left(0, \\frac{3\\pi}{4}\\right)\\) the angle \\(x + \\frac{\\pi}{4}\\) lies in \\(\\left(\\frac{\\pi}{4}, \\pi\\right)\\), where the sine is positive, so \\(f'(x) > 0\\); for \\(x \\in \\left(\\frac{3\\pi}{4}, \\pi\\right)\\) it lies in \\(\\left(\\pi, \\frac{5\\pi}{4}\\right)\\), where the sine is negative, so \\(f'(x) < 0\\). Hence \\(f\\) is increasing on \\(\\left(0, \\frac{3\\pi}{4}\\right)\\) and decreasing on \\(\\left(\\frac{3\\pi}{4}, \\pi\\right)\\). (Since \\(f'\\) vanishes only at the single point \\(x = \\frac{3\\pi}{4}\\), the intervals may equally be quoted as \\(\\left(0, \\frac{3\\pi}{4}\\right]\\) and \\(\\left[\\frac{3\\pi}{4}, \\pi\\right)\\).)"
   },
   {
    "hash": "f87b2c3e184fad1bdd7c9ecd9754616d9dfda3dde506675a9881e0f5b5c7f17b",
@@ -260,7 +260,7 @@
    "subtopic": "Maxima and Minima",
    "stem": "A rectangle of perimeter 24 cm is revolved along one of its sides to sweep out a cylinder of maximum volume. Find the dimensions of the rectangle.",
    "figure": "DECORATIVE - a plain line drawing of a rectangle beside a cylinder with a rotation arrow, printed below the stem. It is unlabelled and carries no measurement; the perimeter and the axis of revolution are both stated in the text. Page idx 18. Not attached.",
-   "solution": ""
+   "solution": "Let the sides of the rectangle be \\(x\\) and \\(y\\). The perimeter is 24 cm, so \\(2(x + y) = 24\\), giving \\(y = 12 - x\\) with \\(0 < x < 12\\). Revolve the rectangle about the side of length \\(12 - x\\); that side becomes the axis, so the cylinder swept out has height \\(12 - x\\) and radius \\(x\\). Its volume is \\(V = \\pi x^2 (12 - x) = \\pi\\left(12x^2 - x^3\\right)\\). Then \\(\\frac{dV}{dx} = \\pi\\left(24x - 3x^2\\right) = 3\\pi x(8 - x)\\), which vanishes at \\(x = 0\\) and \\(x = 8\\); the value \\(x = 0\\) is rejected because it gives no cylinder at all, leaving \\(x = 8\\). Testing it, \\(\\frac{d^2V}{dx^2} = \\pi(24 - 6x)\\), and at \\(x = 8\\) this is \\(\\pi(24 - 48) = -24\\pi < 0\\), so the volume is indeed a maximum there. Hence \\(x = 8\\) and \\(12 - x = 4\\), so the dimensions of the rectangle are 8 cm and 4 cm. (Because \\(x\\) is free to take any value in \\((0, 12)\\), this single calculation already compares both ways of choosing the axis of revolution.)"
   }
  ]
 }

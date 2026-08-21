@@ -32,7 +32,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "Write the left side out first: \\(\\frac{d}{dx}(\\sin y) = \\cos y \\cdot \\frac{dy}{dx}\\), so the differential equation is \\(\\cos y \\cdot \\frac{dy}{dx} = y^2\\). The highest-order derivative that appears is \\(\\frac{dy}{dx}\\), so the order is 1. The equation is already polynomial in that derivative and \\(\\frac{dy}{dx}\\) occurs to the first power, so the degree is 1. Hence the order and degree are 1, 1."
   },
   {
    "hash": "9e41e73d1afcc209dbc06a831777e7b4d39e78eb01bcd29cd5448ed1e49f003b",
@@ -62,7 +62,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "The line \\(\\frac{x}{0} = \\frac{y}{1} = \\frac{z}{0}\\) passes through the origin with direction ratios \\(<0, 1, 0>\\), so it is the y-axis. The foot of the perpendicular from \\((1, 2, 3)\\) to the y-axis is \\((0, 2, 0)\\), so the required length is \\(\\sqrt{(1-0)^2 + (2-2)^2 + (3-0)^2} = \\sqrt{1 + 0 + 9} = \\sqrt{10}\\). Equivalently, the distance of a point from the y-axis is \\(\\sqrt{x^2 + z^2}\\). So the length of the perpendicular is \\(\\sqrt{10}\\)."
   },
   {
    "hash": "7d65a71a550a1b885ff4852c764086510b5a0c1781cf7d84d4cd3713c59c9838",
@@ -92,7 +92,7 @@
     }
    ],
    "answer": "C",
-   "solution": ""
+   "solution": "For every real \\(x\\), \\(\\tan^{-1} x\\) lies in the principal value branch \\(\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\), and neither endpoint is ever attained. Since \\(\\tan^{-1} x = 3y\\), we need \\(-\\frac{\\pi}{2} < 3y < \\frac{\\pi}{2}\\), and dividing throughout by 3 gives \\(-\\frac{\\pi}{6} < y < \\frac{\\pi}{6}\\). The inequalities must be strict, so the version written with \\(\\le\\) is not correct."
   },
   {
    "hash": "458e155404cf72f32fa99c42d6c849c1f458f474d19235e426d8fb70fc0a4e7f",
@@ -122,7 +122,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "A column matrix has exactly one column, so its order must be of the form \\(m \\times 1\\). Among the orders offered, \\(2 \\times 1\\) and \\(m \\times 1\\) are plainly of that form, and \\(1 \\times 1\\) is too — a single entry is simultaneously a row matrix and a column matrix. Only \\(1 \\times 2\\) has two columns, so \\(1 \\times 2\\) cannot be the order of a column matrix."
   },
   {
    "hash": "acc773e949a77d50905c6ce6c76c9459f7e024ef4a3af8d524676c4a07fe9acc",
@@ -152,7 +152,7 @@
     }
    ],
    "answer": "D",
-   "solution": ""
+   "solution": "Since A and B are symmetric, \\(A' = A\\) and \\(B' = B\\). Take the transpose of \\(AB - BA\\), using \\((PQ)' = Q'P'\\): \\((AB - BA)' = (AB)' - (BA)' = B'A' - A'B' = BA - AB = -(AB - BA)\\), so \\(AB - BA\\) is skew-symmetric. The other three expressions are all symmetric: \\((A^2 + B^2)' = (A')^2 + (B')^2 = A^2 + B^2\\), likewise \\((A^2 - B^2)' = A^2 - B^2\\), and \\((AB + BA)' = B'A' + A'B' = BA + AB = AB + BA\\). Hence the skew-symmetric matrix is \\(AB - BA\\)."
   },
   {
    "hash": "9e164c7542a408337b1b52b1de9cc2e773f06d9ecb00efc66ab8f174be634758",
@@ -182,7 +182,7 @@
     }
    ],
    "answer": "A",
-   "solution": ""
+   "solution": "\\(f\\) is continuous on the closed interval \\([-5, 2]\\), so its absolute maximum is attained either at a critical point or at an endpoint. Here \\(f'(x) = 2x\\) vanishes only at \\(x = 0\\), where \\(f(0) = 1\\); at the endpoints \\(f(-5) = 25 + 1 = 26\\) and \\(f(2) = 4 + 1 = 5\\). The greatest of these is 26, so the absolute maximum value is 26. (The value 1 is the absolute minimum, and 5 is merely the value at the right-hand endpoint.)"
   },
   {
    "hash": "11dd691093b1a2e99c975e156179322dd828abb6204cb5da83f677900584d5ea",
@@ -193,7 +193,7 @@
    "chapter": "Vector Algebra",
    "subtopic": "Scalar (Dot) Product and Projection",
    "stem": "A vector \\(\\vec{a}\\) of magnitude 14 has direction ratios \\(<2, 3, -6>\\). Find the projection of the vector \\(\\vec{a}\\) on \\(\\hat{i}\\).",
-   "solution": ""
+   "solution": "The direction ratios \\(<2, 3, -6>\\) have magnitude \\(\\sqrt{2^2 + 3^2 + (-6)^2} = \\sqrt{4 + 9 + 36} = 7\\), so the unit vector along \\(\\vec{a}\\) is \\(\\frac{1}{7}\\left(2\\hat{i} + 3\\hat{j} - 6\\hat{k}\\right)\\). Since \\(|\\vec{a}| = 14\\), \\(\\vec{a} = \\frac{14}{7}\\left(2\\hat{i} + 3\\hat{j} - 6\\hat{k}\\right) = 4\\hat{i} + 6\\hat{j} - 12\\hat{k}\\). The projection of \\(\\vec{a}\\) on \\(\\hat{i}\\) is \\(\\frac{\\vec{a} \\cdot \\hat{i}}{|\\hat{i}|} = \\vec{a} \\cdot \\hat{i} = 4\\)."
   },
   {
    "hash": "3713feb2d0140959bff87502abf6d591947531499ca462675b104353489f8900",
@@ -204,7 +204,7 @@
    "chapter": "Inverse Trigonometric Functions",
    "subtopic": "Properties of Inverse Trigonometric Functions",
    "stem": "Simplify : \\(\\cot^{-1} \\sqrt{\\frac{1 + \\cos 2x}{1 - \\cos 2x}}\\), \\(x \\in \\left( 0, \\frac{\\pi}{2} \\right)\\).",
-   "solution": ""
+   "solution": "Use the double-angle identities \\(1 + \\cos 2x = 2\\cos^2 x\\) and \\(1 - \\cos 2x = 2\\sin^2 x\\). Then \\(\\cot^{-1}\\sqrt{\\frac{1 + \\cos 2x}{1 - \\cos 2x}} = \\cot^{-1}\\sqrt{\\frac{2\\cos^2 x}{2\\sin^2 x}} = \\cot^{-1}\\left|\\cot x\\right|\\). For \\(x \\in \\left(0, \\frac{\\pi}{2}\\right)\\) both \\(\\sin x\\) and \\(\\cos x\\) are positive, so \\(\\left|\\cot x\\right| = \\cot x\\); and that interval lies inside \\((0, \\pi)\\), the principal value branch of \\(\\cot^{-1}\\), so \\(\\cot^{-1}(\\cot x) = x\\). The expression therefore simplifies to \\(x\\)."
   },
   {
    "hash": "18f66594a0b824b34781e392ff2724217e80ff686dc94ab1bc1c46fc94ca02b1",
@@ -215,7 +215,7 @@
    "chapter": "Inverse Trigonometric Functions",
    "subtopic": "Evaluating Inverse Trigonometric Expressions",
    "stem": "Evaluate : \\(\\sin \\left( \\tan^{-1} \\left( -\\sqrt{3} \\right) - \\sec^{-1} 2 \\right)\\)",
-   "solution": ""
+   "solution": "Evaluate the two inverse functions separately. \\(\\tan^{-1}\\left(-\\sqrt{3}\\right) = -\\frac{\\pi}{3}\\), because \\(-\\frac{\\pi}{3}\\) lies in the principal branch \\(\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\) and \\(\\tan\\left(-\\frac{\\pi}{3}\\right) = -\\sqrt{3}\\). Also \\(\\sec^{-1} 2 = \\frac{\\pi}{3}\\), since \\(\\sec\\frac{\\pi}{3} = 2\\) and \\(\\frac{\\pi}{3} \\in [0, \\pi]\\). Hence the given expression is \\(\\sin\\left(-\\frac{\\pi}{3} - \\frac{\\pi}{3}\\right) = \\sin\\left(-\\frac{2\\pi}{3}\\right) = -\\sin\\frac{2\\pi}{3} = -\\frac{\\sqrt{3}}{2}\\)."
   },
   {
    "hash": "661c26124ab659bea3ac6d45f81f6b3f01f86894cdf0bad7c191f2a35111a77e",
@@ -226,7 +226,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Homogeneous Differential Equations",
    "stem": "Find the general solution of the differential equation :\n\\(y^2\\,dx + (x^2 - xy + y^2)\\,dy = 0\\)",
-   "solution": ""
+   "solution": "Both coefficients are homogeneous of degree 2, and since \\(dx\\) carries the simpler coefficient it is easier to treat \\(x\\) as the dependent variable. From \\(y^2\\,dx + (x^2 - xy + y^2)\\,dy = 0\\) we get \\(\\frac{dx}{dy} = -\\frac{x^2 - xy + y^2}{y^2} = -\\left(\\frac{x}{y}\\right)^2 + \\frac{x}{y} - 1\\). Put \\(x = vy\\), so that \\(\\frac{dx}{dy} = v + y\\frac{dv}{dy}\\). The equation becomes \\(v + y\\frac{dv}{dy} = -v^2 + v - 1\\), that is \\(y\\frac{dv}{dy} = -\\left(1 + v^2\\right)\\). Separating the variables, \\(\\frac{dv}{1 + v^2} = -\\frac{dy}{y}\\), and integrating both sides gives \\(\\tan^{-1} v = -\\log|y| + C\\). Restoring \\(v = \\frac{x}{y}\\), the general solution is \\(\\tan^{-1}\\frac{x}{y} = -\\log|y| + C\\), i.e. \\(\\tan^{-1}\\frac{x}{y} + \\log|y| = C\\)."
   },
   {
    "hash": "4093b75dfe962d6394d1f8add0baecc37a8aca0d051f1e5190ce88a185134450",
@@ -237,7 +237,7 @@
    "chapter": "Differential Equations",
    "subtopic": "Variables Separable",
    "stem": "Find the particular solution of the differential equation \\(\\frac{dy}{dx} = y \\tan x\\), given that \\(y = 2\\) if \\(x = 0\\).",
-   "solution": ""
+   "solution": "The variables separate at once: \\(\\frac{dy}{y} = \\tan x\\,dx\\). Integrating both sides, \\(\\int\\frac{dy}{y} = \\int\\tan x\\,dx\\) gives \\(\\log|y| = \\log|\\sec x| + \\log C\\), so \\(\\log\\left|\\frac{y}{\\sec x}\\right| = \\log C\\) and hence \\(y = C\\sec x\\). Now apply the given condition: at \\(x = 0\\), \\(\\sec 0 = 1\\), so \\(2 = C\\). The required particular solution is \\(y = 2\\sec x\\)."
   },
   {
    "hash": "05e1887c8ed3e3451fb132d6b3a8afddb714011271ef605cc51ef630324d2a1a",
@@ -248,7 +248,7 @@
    "chapter": "Integrals",
    "subtopic": "Integration by Parts",
    "stem": "Evaluate : \\(\\int_{0}^{1} x \\sin^{-1} x \\, dx\\)",
-   "solution": ""
+   "solution": "Integrate by parts, taking \\(\\sin^{-1} x\\) as the first function and \\(x\\) as the second: \\(\\int_{0}^{1} x\\sin^{-1} x\\,dx = \\left[\\sin^{-1} x \\cdot \\frac{x^2}{2}\\right]_{0}^{1} - \\int_{0}^{1} \\frac{1}{\\sqrt{1 - x^2}} \\cdot \\frac{x^2}{2}\\,dx = \\frac{\\pi}{4} - \\frac{1}{2}\\int_{0}^{1} \\frac{x^2}{\\sqrt{1 - x^2}}\\,dx\\). For the remaining integral write \\(x^2 = 1 - \\left(1 - x^2\\right)\\), so that \\(\\frac{x^2}{\\sqrt{1 - x^2}} = \\frac{1}{\\sqrt{1 - x^2}} - \\sqrt{1 - x^2}\\). Using \\(\\int\\sqrt{1 - x^2}\\,dx = \\frac{x}{2}\\sqrt{1 - x^2} + \\frac{1}{2}\\sin^{-1} x\\), we get \\(\\int_{0}^{1} \\frac{x^2}{\\sqrt{1 - x^2}}\\,dx = \\left[\\sin^{-1} x - \\frac{x}{2}\\sqrt{1 - x^2} - \\frac{1}{2}\\sin^{-1} x\\right]_{0}^{1} = \\frac{\\pi}{2} - 0 - \\frac{\\pi}{4} = \\frac{\\pi}{4}\\). Therefore the value of the integral is \\(\\frac{\\pi}{4} - \\frac{1}{2} \\cdot \\frac{\\pi}{4} = \\frac{\\pi}{4} - \\frac{\\pi}{8} = \\frac{\\pi}{8}\\)."
   },
   {
    "hash": "c4b2814eed80ec1f4def3a8a52a95e74e8612092d58df0becf6b030a61a84e5f",
@@ -259,7 +259,7 @@
    "chapter": "Continuity and Differentiability",
    "subtopic": "Derivatives of Functions in Parametric Form",
    "stem": "If \\(x = 3 \\sin t - \\sin 3t\\), \\(y = 3 \\cos t - \\cos 3t\\)\nfind \\(\\frac{dy}{dx}\\) and prove that \\(\\frac{d^2y}{dx^2} = \\frac{-\\operatorname{cosec}^3 2t \\cdot \\operatorname{cosec} t}{3}\\)",
-   "solution": ""
+   "solution": "Differentiate each coordinate with respect to the parameter: \\(\\frac{dx}{dt} = 3\\cos t - 3\\cos 3t\\) and \\(\\frac{dy}{dt} = -3\\sin t + 3\\sin 3t\\). Now use the sum-to-product identities \\(\\sin 3t - \\sin t = 2\\cos 2t\\,\\sin t\\) and \\(\\cos t - \\cos 3t = 2\\sin 2t\\,\\sin t\\), so that \\(\\frac{dy}{dx} = \\frac{3\\left(\\sin 3t - \\sin t\\right)}{3\\left(\\cos t - \\cos 3t\\right)} = \\frac{2\\cos 2t\\,\\sin t}{2\\sin 2t\\,\\sin t} = \\cot 2t\\). For the second derivative, differentiate \\(\\cot 2t\\) with respect to \\(t\\) and multiply by \\(\\frac{dt}{dx}\\): \\(\\frac{d^2y}{dx^2} = -2\\operatorname{cosec}^2 2t \\cdot \\frac{dt}{dx}\\). Since \\(\\frac{dx}{dt} = 3\\left(\\cos t - \\cos 3t\\right) = 6\\sin 2t\\,\\sin t\\), we have \\(\\frac{dt}{dx} = \\frac{1}{6\\sin 2t\\,\\sin t}\\). Hence \\(\\frac{d^2y}{dx^2} = -\\frac{2\\operatorname{cosec}^2 2t}{6\\sin 2t\\,\\sin t} = -\\frac{1}{3}\\operatorname{cosec}^3 2t \\cdot \\operatorname{cosec} t = \\frac{-\\operatorname{cosec}^3 2t \\cdot \\operatorname{cosec} t}{3}\\), which is what was to be proved."
   },
   {
    "hash": "d9a0612f676aa50ae113b7ca37bbe9c799a441ae9a6bf17d6c538e718b3b9b1f",
@@ -270,7 +270,7 @@
    "chapter": "Three Dimensional Geometry",
    "subtopic": "Equation of a Line in Space",
    "stem": "Prove that the line through points A(0, -1, -1) and B(4, 5, 1) intersects the line through points C(3, 9, 4) and D(-4, 4, 4). Hence, write the equation of line passing through the point of intersection of lines AB and CD as well as origin.",
-   "solution": ""
+   "solution": "Line AB passes through \\(A(0, -1, -1)\\) with direction \\(\\vec{AB} = (4, 6, 2)\\), which is proportional to \\((2, 3, 1)\\), so AB is \\(\\frac{x}{2} = \\frac{y + 1}{3} = \\frac{z + 1}{1}\\). Line CD passes through \\(C(3, 9, 4)\\) with direction \\(\\vec{CD} = (-7, -5, 0)\\), so CD is \\(\\frac{x - 3}{-7} = \\frac{y - 9}{-5} = \\frac{z - 4}{0}\\). A general point of AB is \\(\\left(2\\lambda,\\; 3\\lambda - 1,\\; \\lambda - 1\\right)\\) and a general point of CD is \\(\\left(-7\\mu + 3,\\; -5\\mu + 9,\\; 4\\right)\\). The lines meet only if all three coordinates can be made to agree. The z-coordinates give \\(\\lambda - 1 = 4\\), so \\(\\lambda = 5\\); the x-coordinates then give \\(2(5) = -7\\mu + 3\\), so \\(\\mu = -1\\). Testing this pair in the remaining equation, \\(3\\lambda - 1 = 14\\) and \\(-5\\mu + 9 = 14\\), which agree — so the two lines do intersect, and the point of intersection is \\((10, 14, 4)\\). Finally, the line through the origin and \\((10, 14, 4)\\) has direction ratios \\(<10, 14, 4>\\), proportional to \\(<5, 7, 2>\\), so its equation is \\(\\frac{x}{5} = \\frac{y}{7} = \\frac{z}{2}\\)."
   }
  ]
 }
