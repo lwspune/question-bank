@@ -4,6 +4,8 @@ import type {
   ExamStarter,
   StarterChapter,
 } from "@/lib/questions/browseLanding";
+import { getExamBySlug } from "@/lib/exam/examContext";
+import { groupExamFamilies, familyTotal } from "@/lib/exam/examFamily";
 
 /**
  * What bare `/browse` shows instead of 25 arbitrary questions.
@@ -28,6 +30,10 @@ export default function BrowseLanding({
   chapters: StarterChapter[];
   chapterDirectoryCount: number;
 }) {
+  // Board exams grouped into two families. `buildExamStarters` has already
+  // dropped any exam with nothing in the default view, so a family that lost
+  // all but one member correctly degrades back to a single pill.
+  const examNodes = groupExamFamilies(exams, (e) => getExamBySlug(e.slug));
   return (
     <div className="space-y-8">
       <section aria-labelledby="browse-start-exam">
@@ -39,27 +45,64 @@ export default function BrowseLanding({
           Start with an exam
         </h2>
         <ul className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {exams.map((exam) => (
-            <li key={exam.slug}>
-              <Link
-                href={exam.href}
-                className="group flex items-center justify-between gap-3 rounded-lg border bg-card p-4 shadow-sm transition-colors hover:border-brand-accent/60 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              >
-                <span className="min-w-0">
-                  <span className="block truncate text-sm font-medium">
-                    {exam.displayName}
+          {examNodes.map((node) => {
+            if (node.kind === "family") {
+              // A family pill CANNOT apply a filter — `examId` is one UUID and
+              // there is no board-level filter — so the board is a heading and
+              // each class stays its own filter-applying link. The count is
+              // summed from the DEFAULT-VIEW numbers these pills already carry,
+              // never the homepage's total-PUBLIC figure.
+              const total = familyTotal(node, (e) => e.questionCount);
+              return (
+                <li key={node.board}>
+                  <div className="flex h-full flex-col rounded-lg border bg-card p-4 shadow-sm">
+                    <span className="block truncate text-sm font-medium">
+                      {node.label}
+                    </span>
+                    <span className="mt-0.5 block text-xs tabular-nums text-brand-accent">
+                      {total.toLocaleString("en-IN")} questions
+                    </span>
+                    <ul className="mt-2.5 flex flex-wrap gap-1.5">
+                      {node.classes.map((cls) => (
+                        <li key={cls.item.slug}>
+                          <Link
+                            href={cls.item.href}
+                            aria-label={`${node.label} ${cls.label}`}
+                            className="inline-flex items-center gap-1 rounded-full border bg-background px-2.5 py-1 text-xs font-medium transition-colors hover:border-brand-accent/60 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                          >
+                            {cls.label}
+                            <ArrowRight className="h-3 w-3 text-muted-foreground" aria-hidden />
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </li>
+              );
+            }
+            const exam = node.item;
+            return (
+              <li key={exam.slug}>
+                <Link
+                  href={exam.href}
+                  className="group flex items-center justify-between gap-3 rounded-lg border bg-card p-4 shadow-sm transition-colors hover:border-brand-accent/60 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
+                  <span className="min-w-0">
+                    <span className="block truncate text-sm font-medium">
+                      {exam.displayName}
+                    </span>
+                    <span className="mt-0.5 block text-xs tabular-nums text-brand-accent">
+                      {exam.questionCount.toLocaleString("en-IN")} questions
+                    </span>
                   </span>
-                  <span className="mt-0.5 block text-xs tabular-nums text-brand-accent">
-                    {exam.questionCount.toLocaleString("en-IN")} questions
-                  </span>
-                </span>
-                <ArrowRight
-                  className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5"
-                  aria-hidden
-                />
-              </Link>
-            </li>
-          ))}
+                  <ArrowRight
+                    className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5"
+                    aria-hidden
+                  />
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </section>
 

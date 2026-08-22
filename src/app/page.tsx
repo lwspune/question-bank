@@ -22,6 +22,8 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
+import { getExamBySlug } from "@/lib/exam/examContext";
+import { groupExamFamilies, familyTotal } from "@/lib/exam/examFamily";
 
 export const revalidate = 86400;
 
@@ -82,6 +84,29 @@ const EXAM_META: Record<
 
 const DEFAULT_EXAM_META = { Icon: BookOpen, blurb: "Past-year question bank." };
 
+// Board-family cards. The six (board, class) exams render as two cards with
+// their classes as links inside, rather than six competing tiles.
+//
+// A family card deliberately gets NO single destination: pickExamCardHref
+// resolves guide -> notes -> bank PER EXAM, so a family href would either pick
+// a class silently or drop the visitor in the unfiltered bank. Keeping the
+// class links means every destination is exactly what it was before.
+//
+// No "Textbook"/"Worksheets" tag either — the members disagree (mh-ssc-10 is
+// board PYQs, not a textbook corpus), so one tag for the card would be false.
+const FAMILY_META: Record<string, { Icon: typeof BookOpen; blurb: string }> = {
+  CBSE: {
+    Icon: Library,
+    blurb:
+      "NCERT textbook solutions for Class 11 and 12, plus CBSE board past papers.",
+  },
+  "Maharashtra State Board": {
+    Icon: BookMarked,
+    blurb:
+      "Balbharati textbook solutions Class 9 to 12, plus SSC and HSC board past papers.",
+  },
+};
+
 type SurfacePreview = {
   href: string;
   title: string;
@@ -131,6 +156,10 @@ export default async function Home() {
   // Cached (24h) — the two session reads above make this route dynamic, so
   // without the cache these 12 head-counts would run on every anonymous hit.
   const catalog = await getCachedExamCatalog();
+  // Group the six (board, class) exams into two family cards. Presentation
+  // only: every class link keeps the exact href it had before, and the hero's
+  // exam COUNT below still reports 13 — we do have 13 corpora.
+  const examNodes = groupExamFamilies(catalog.exams, (e) => getExamBySlug(e.slug));
 
   return (
     <>
@@ -187,7 +216,57 @@ export default async function Home() {
             </h2>
           </div>
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {catalog.exams.map((exam) => {
+            {examNodes.map((node) => {
+              if (node.kind === "family") {
+                const meta = FAMILY_META[node.board] ?? DEFAULT_EXAM_META;
+                const Icon = meta.Icon;
+                // Summed from THIS surface's own numbers (total PUBLIC). The
+                // /browse pills sum a different count for the same families —
+                // see familyTotal.
+                const total = familyTotal(node, (e) => e.totalPublicQuestions);
+                return (
+                  <li key={node.board}>
+                    <div className="flex h-full flex-col rounded-lg border bg-card p-4">
+                      <div className="mb-2 flex items-center gap-3">
+                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                          <Icon className="h-4 w-4" aria-hidden />
+                        </span>
+                        <div className="min-w-0 flex-1">
+                          <p className="truncate text-sm font-semibold tracking-tight">
+                            {node.label}
+                          </p>
+                          <p className="text-xs tabular-nums text-muted-foreground">
+                            {total > 0
+                              ? `${total.toLocaleString("en-IN")} questions`
+                              : "Coming soon"}
+                          </p>
+                        </div>
+                      </div>
+                      <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">
+                        {meta.blurb}
+                      </p>
+                      <ul className="mt-3 flex flex-wrap gap-1.5">
+                        {node.classes.map((cls) => (
+                          <li key={cls.item.slug}>
+                            <Link
+                              href={cls.item.href}
+                              // The visible text is "Class 9", which on its own
+                              // does not say which board — so the accessible
+                              // name carries it.
+                              aria-label={`${node.label} ${cls.label}`}
+                              className="inline-flex items-center gap-1 rounded-full border bg-background px-2.5 py-1 text-xs font-medium transition-colors hover:border-brand-accent/60 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                            >
+                              {cls.label}
+                              <ArrowRight className="h-3 w-3 text-muted-foreground" aria-hidden />
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </li>
+                );
+              }
+              const exam = node.item;
               const meta = EXAM_META[exam.slug] ?? DEFAULT_EXAM_META;
               const Icon = meta.Icon;
               const tag = exam.boardExam

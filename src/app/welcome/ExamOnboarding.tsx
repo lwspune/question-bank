@@ -6,7 +6,8 @@ import { toast } from "sonner";
 import { BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProfileChips from "@/components/ProfileChips";
-import { EXAM_REGISTRY, isExamSlug, type ExamSlug } from "@/lib/exam/examContext";
+import { isExamSlug, type ExamSlug } from "@/lib/exam/examContext";
+import { EXAM_CHIP_OPTIONS } from "@/lib/profile/examChoices";
 import { setExamCookie } from "@/lib/exam/examCookie";
 import { STAGES, STAGE_LABELS, type Stage } from "@/lib/profile/onboarding";
 
@@ -17,7 +18,7 @@ import { STAGES, STAGE_LABELS, type Stage } from "@/lib/profile/onboarding";
  * exam so /browse, notes and mocks personalise the same second. Asked once —
  * onboarded_at is stamped on both Continue and Skip.
  */
-const EXAM_OPTIONS = EXAM_REGISTRY.map((e) => ({ value: e.slug, label: e.displayName }));
+const EXAM_OPTIONS = EXAM_CHIP_OPTIONS;
 const STAGE_OPTIONS = STAGES.map((s) => ({ value: s, label: STAGE_LABELS[s] }));
 
 export default function ExamOnboarding({
