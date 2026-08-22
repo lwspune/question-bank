@@ -17,6 +17,14 @@
  * instead, and listed at the bottom of this file so the next reader inherits the
  * finding rather than re-deriving it.
  *
+ * ⚠ A BLIND PASS ON A VOCABULARY ITEM MUST BE GIVEN THE DIRECTIONS. Three of the
+ * four fixes below were WRONG and have been reverted (see REVERTED). The pass ran
+ * against "stem + options only" — which withholds the key, correctly, but ALSO
+ * withheld the section directions. For an antonym item the directions ARE the
+ * question: "John is a magniloquent person" plus four words is not a question, it
+ * is a word list, and an agent with no directions answers the synonym question
+ * every time. Withhold the KEY. Never withhold the TASK.
+ *
  * `content_hash` COVERS THE ANSWER LETTER (see src/lib/upload/hash.ts), so
  * flipping a key silently invalidates the row's dedup identity: a later re-ingest
  * of the same question would hash differently and insert a SECOND copy. Every fix
@@ -30,31 +38,65 @@ require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: tr
 
 type Fix = { id: string; from: string; to: string; why: string };
 
-/** Blind-re-derived 2026-08-21 against stem + options only, key withheld. */
+/**
+ * Blind-re-derived 2026-08-21 against stem + options only, key withheld.
+ *
+ * Only the Q55 grammar fix survives. The three vocabulary "fixes" were reverted
+ * 2026-08-22 — see REVERTED below and the ⚠ in the header.
+ */
 const FIXES: Fix[] = [
+  {
+    id: "74727659-8411-49c4-8b33-cdbd2bd0130a",
+    from: "B",
+    to: "A",
+    why: "'A biography is ___ person's life history' — keyed 'about', which leaves the sentence ungrammatical ('about person's life history'). Only 'about a' supplies the article the noun phrase needs. (Section type is fill-blank-grammar, so no directions ambiguity: this fix stands.)",
+  },
+];
+
+/**
+ * FIXES THAT WERE THEMSELVES WRONG, reverted by apply-key-reverts.ts.
+ *
+ * All three sit in sections whose type in scripts/cds/data/*.sections.json is
+ * `antonyms`, whose stored `context` reads "opposite in meaning to the underlined
+ * word", and whose stored `subtopic` is literally "Antonyms". The blind pass never
+ * saw any of that, so it answered the synonym question — and each `why` below
+ * gives the game away by rejecting the original key BECAUSE it is "the exact
+ * antonym", which on an antonym paper is the reason to KEEP it.
+ *
+ * The option sets settle it. Read as antonym questions each has exactly one
+ * defensible answer and three synonyms of the target word; read as synonym
+ * questions each has THREE defensible answers. The fix pass even noticed this and
+ * recorded it as "the option set is weak even after the fix" — that weakness was
+ * the symptom of reading the wrong task, not a flaw in the question.
+ *
+ * ⚠ DO NOT MOVE THESE BACK INTO `FIXES`. After the revert each row is once again
+ * in exactly the `from` state the guard above expects, so a re-run would reapply
+ * the bad fix silently rather than failing closed.
+ */
+export const REVERTED: (Fix & { reverted: string })[] = [
   {
     id: "43ecdc7c-2d7f-4af1-8463-6e2f1ecb7ecd",
     from: "B",
     to: "D",
     why: "'This river originates from the Ganges' — keyed 'culminates', which means to REACH AN END, the opposite of originates. 'Emanates' (issues/flows from) is the only option carrying the sense; 'initiates' and 'inaugurates' are transitive and take an object.",
-  },
-  {
-    id: "74727659-8411-49c4-8b33-cdbd2bd0130a",
-    from: "B",
-    to: "A",
-    why: "'A biography is ___ person's life history' — keyed 'about', which leaves the sentence ungrammatical ('about person's life history'). Only 'about a' supplies the article the noun phrase needs.",
+    reverted:
+      "2021-2 Q83 is section type `antonyms`. 'Culminates' IS the answer precisely because it means to reach an end; 'emanates', 'initiates' and 'inaugurates' all carry the sense of beginning and are the three distractors. Key restored to B.",
   },
   {
     id: "073d69fc-0611-4c10-99c7-8156db0c3c28",
     from: "D",
     to: "A",
     why: "'magniloquent' keyed 'terse' — the exact antonym (magniloquent is speaking in a high-flown, bombastic way; terse is brief). 'Pompous' is the standard gloss. NOTE: 'turgid' and 'lofty' are also defensible, so the option set is weak even after the fix.",
+    reverted:
+      "2022-1 Q68 is section type `antonyms`. 'Terse' is the answer BECAUSE it is the exact antonym; pompous, turgid and lofty are three synonyms of magniloquent, which is why they read as 'also defensible' under a synonym reading. Key restored to D.",
   },
   {
     id: "4519eefc-b38a-462a-a033-d7e01e445385",
     from: "B",
     to: "D",
     why: "'vulnerable people' keyed 'impervious' — the exact antonym (impervious is impenetrable). 'Defenceless' is the closest synonym. NOTE: 'helpless' is also arguable, so the option set is weak even after the fix.",
+    reverted:
+      "2019-2 Q67 is section type `antonyms`. 'Impervious' is the answer BECAUSE it is the exact antonym; 'helpless' and 'defenceless' are both synonyms of vulnerable (hence 'also arguable') and 'imperious' is the unrelated distractor. Key restored to B.",
   },
 ];
 
@@ -78,7 +120,10 @@ async function main() {
     auth: { persistSession: false },
   });
 
-  console.log(`CDS key corrections — ${FIXES.length} fix(es), ${UNFIXABLE.length} recorded as unfixable\n`);
+  console.log(
+    `CDS key corrections — ${FIXES.length} fix(es), ${UNFIXABLE.length} recorded as unfixable, ` +
+      `${REVERTED.length} reverted as wrong (see REVERTED)\n`
+  );
 
   for (const fix of FIXES) {
     const { data: q, error: qErr } = await client
