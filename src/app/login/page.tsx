@@ -177,19 +177,35 @@ function BrandPanel() {
           <BookOpen className="h-5 w-5" aria-hidden />
           <span>PYQ Vault</span>
         </div>
+        {/*
+          AUDIENCE-NEUTRAL ON PURPOSE. This panel used to read "For coaching
+          staff. … A focused tool for teachers." — copy from when the paper
+          builder was the whole product. Every route into /login is now a
+          STUDENT path (the header Sign in, the /notes paywall, the question and
+          concept report dialogs, /pricing, and /signup's "Go to sign in"), and
+          the accounts match: 124 of 131 are non-staff. It also promised a Word
+          download that has been teacher-gated since 2026-07-18, so a returning
+          student read a promise the product would refuse.
+
+          Both audiences sign in here, so this names what an account restores
+          for everyone first, then attributes the download to teachers rather
+          than dropping it. Positioning follows the homepage hero — do not
+          invent a third one here.
+        */}
         <div>
           <p className="font-serif text-3xl leading-snug tracking-tight lg:text-4xl">
-            Build a question paper in
+            Pick up right where
             <br />
-            two minutes flat.
+            you left off.
           </p>
           <p className="mt-4 max-w-md text-sm text-primary-foreground/70">
-            For coaching staff. Filter by exam, chapter and difficulty, then
-            download a Question Paper + Answer Key as Word files.
+            Your saved questions, mock attempts and notes progress, all waiting
+            for you. Teachers can also download question papers and answer keys
+            as Word files.
           </p>
         </div>
         <p className="text-xs text-primary-foreground/50">
-          A focused tool for teachers.
+          Built on real past-year questions.
         </p>
       </div>
     </aside>
