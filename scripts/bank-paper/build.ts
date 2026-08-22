@@ -25,6 +25,7 @@ import { createPaper, addQuestion } from "../../src/lib/papers/admin";
 import type { SectionTemplate } from "../../src/lib/papers/types";
 import { concludedLetter } from "../practice/audit-keys";
 import { ORG_ID, EXAM_ID, CREATED_BY } from "../practice/config";
+import { auditEnglishSection, type EnglishRow } from "./english";
 import {
   selectByQuota, selectTotal, orderPaper, orderPaperBySections, DIFFICULTIES,
   type Cand, type Quota, type Shape, type Layout,
@@ -405,6 +406,61 @@ type Row = {
   options: { label: string; text: string; is_correct: boolean }[];
 };
 
+/**
+ * Audit the ENGLISH picks against the structural rules before anything is written.
+ *
+ * Deliberately a SEPARATE query over the ~50 selected ids rather than widening
+ * fetchCandidates: that would pull RC passages and join four name tables across
+ * every candidate pool on every paper, including the Maths ones that have no
+ * English at all. Returns [] when the paper has no English questions.
+ */
+async function auditEnglishPicks(
+  client: SupabaseClient,
+  ids: string[]
+): Promise<ReturnType<typeof auditEnglishSection>> {
+  if (!ids.length) return [];
+  const { data, error } = await client
+    .from("questions")
+    .select("id, difficulty, context, set_id, chapters(name), subtopics(name), subjects(name, exams(name))")
+    .in("id", ids);
+  if (error) throw new Error(`english audit: ${error.message}`);
+
+  type Q = {
+    id: string; difficulty: EnglishRow["difficulty"]; context: string | null; set_id: string | null;
+    chapters: { name: string } | null;
+    subtopics: { name: string } | null;
+    subjects: { name: string; exams: { name: string } | null } | null;
+  };
+  const byId = new Map((data as unknown as Q[]).map((q) => [q.id, q]));
+
+  // Keep the caller's PRINTED order — the contiguity rules are about position.
+  const english: EnglishRow[] = ids
+    .map((id) => byId.get(id))
+    .filter((q): q is Q => !!q && q.subjects?.name === "English")
+    .map((q) => ({
+      id: q.id,
+      chapter: q.chapters?.name ?? "(none)",
+      subtopic: q.subtopics?.name ?? null,
+      setId: q.set_id,
+      exam: q.subjects?.exams?.name ?? "(none)",
+      difficulty: q.difficulty,
+      contextLen: (q.context ?? "").length,
+    }));
+  if (!english.length) return [];
+
+  const setIds = [...new Set(english.map((q) => q.setId).filter((s): s is string => !!s))];
+  const sizes = new Map<string, number>();
+  for (let i = 0; i < setIds.length; i += 150) {
+    const { data: sd, error: se } = await client
+      .from("questions").select("set_id").in("set_id", setIds.slice(i, i + 150));
+    if (se) throw new Error(`english audit set sizes: ${se.message}`);
+    for (const row of (sd ?? []) as { set_id: string | null }[]) {
+      if (row.set_id) sizes.set(row.set_id, (sizes.get(row.set_id) ?? 0) + 1);
+    }
+  }
+  return auditEnglishSection(english, sizes);
+}
+
 /** The paper's sections in printed order — one synthesised entry for the old single-section shape. */
 function sectionsOf(spec: PaperSpec): { key: string; label: string }[] {
   if (spec.sections?.length) return spec.sections;
@@ -648,9 +704,28 @@ async function main() {
     }
   }
 
+  // English structural rules — reported on a dry run, BLOCKING on --apply.
+  const engViolations = await auditEnglishPicks(client, ordered.map((q) => q.id));
+  if (engViolations.length) {
+    const byRule = new Map<string, number>();
+    for (const v of engViolations) byRule.set(v.rule, (byRule.get(v.rule) ?? 0) + 1);
+    console.log(`\n⚠  ENGLISH STRUCTURE — ${engViolations.length} violation(s):`);
+    for (const [rule, n] of [...byRule.entries()].sort()) console.log(`     ${rule} × ${n}`);
+    console.log(`   Full detail: npx tsx scripts/bank-paper/audit-english.ts <paperId>`);
+    console.log(`   Rules + why each exists: scripts/bank-paper/english.ts`);
+  } else if (ordered.length) {
+    console.log("\nEnglish structure: OK (or no English questions).");
+  }
+
   if (!apply) {
     console.log("\n[dry-run] pass --apply to create the paper. Nothing written.");
     return;
+  }
+  if (engViolations.length) {
+    throw new Error(
+      `refusing to apply with ${engViolations.length} English structure violation(s) — ` +
+        `fix the spec (whole passages, blocks not singletons, one run per subtopic) and re-run.`
+    );
   }
   if (shortfallTotal > 0) throw new Error(`refusing to apply with ${shortfallTotal} unmet quota slot(s) — adjust the quotas.`);
 
