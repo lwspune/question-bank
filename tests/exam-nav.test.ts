@@ -42,7 +42,13 @@ describe("resolveExamNav", () => {
   });
 
   it("falls back to the index for an exam with no guide subtree", () => {
-    expect(resolveExamNav("mht-cet", IDS).guidesHref).toBe("/guide");
+    // neet has no /guide subtree; mht-cet gained one on 2026-08-22, so it is
+    // no longer the right exemplar for this fallback.
+    expect(resolveExamNav("neet", IDS).guidesHref).toBe("/guide");
+  });
+
+  it("sends the Guides tab to the MHT-CET subtree for mht-cet", () => {
+    expect(resolveExamNav("mht-cet", IDS).guidesHref).toBe("/guide/mht-cet");
   });
 
   it("sends the Board tab to the exam hub only for a board exam", () => {

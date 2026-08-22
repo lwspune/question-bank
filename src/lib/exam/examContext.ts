@@ -112,7 +112,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "mht-cet",
     displayName: "MHT-CET",
     examName: "MHT-CET",
-    guidesPath: null,
+    guidesPath: "/guide/mht-cet", // hub: MHT-CET Mathematics (Template C)
     notesPath: "/notes/mht-cet", // exam hub: MHT-CET Maths notes
   },
   {

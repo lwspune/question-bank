@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf, Mail, Newspaper, NotebookPen, Scale, TrendingUp } from "lucide-react";
+import { Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf, Mail, Newspaper, NotebookPen, Scale, Sigma, TrendingUp } from "lucide-react";
 import { CONTACT_EMAIL } from "@/lib/brand";
 
 const REPORT_EMAIL = CONTACT_EMAIL;
@@ -82,6 +82,13 @@ export default function Footer() {
           >
             <Newspaper className="h-3 w-3" aria-hidden />
             NDA Current Affairs Guide
+          </Link>
+          <Link
+            href="/guide/mht-cet-maths"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+          >
+            <Sigma className="h-3 w-3" aria-hidden />
+            MHT-CET Maths Guide
           </Link>
           <Link
             href="/notes/nda"

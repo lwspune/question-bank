@@ -8,7 +8,8 @@ import { getExamBySlug } from "@/lib/exam/examContext";
 
 describe("pickExamCardHref", () => {
   const nda = getExamBySlug("nda")!; // has a /guide subtree
-  const mhtcet = getExamBySlug("mht-cet")!; // no guide, has shipped notes
+  const mhtcet = getExamBySlug("mht-cet")!; // gained a /guide subtree 2026-08-22
+  const jee = getExamBySlug("jee-mains")!; // no guide, has shipped notes
   const neet = getExamBySlug("neet")!; // no guide, no shipped notes yet
 
   it("prefers the guide subtree when the exam has one", () => {
@@ -16,7 +17,13 @@ describe("pickExamCardHref", () => {
   });
 
   it("falls back to the notes hub when there's no guide but notes have shipped", () => {
-    expect(pickExamCardHref(mhtcet, "uuid-cet", true)).toBe("/notes/mht-cet");
+    // Was mht-cet until it shipped a guide on 2026-08-22; jee-mains is now the
+    // exam that has notes (jee-mains-maths) and no /guide subtree.
+    expect(pickExamCardHref(jee, "uuid-jee", true)).toBe("/notes/jee-mains");
+  });
+
+  it("prefers the guide over the notes hub for mht-cet, which now has both", () => {
+    expect(pickExamCardHref(mhtcet, "uuid-cet", true)).toBe("/guide/mht-cet");
   });
 
   it("falls back to the exam's bank when there's neither a guide nor shipped notes", () => {

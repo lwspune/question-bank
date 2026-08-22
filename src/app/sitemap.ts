@@ -15,6 +15,8 @@ import { ROUTES as HISTORY_ROUTES } from "@/app/guide/nda-history/_data/nda-hist
 import { PLAYBOOK_SLUGS as HISTORY_PLAYBOOK_SLUGS } from "@/app/guide/nda-history/_data/playbooks";
 import { ROUTES as POLITY_ROUTES } from "@/app/guide/nda-polity/_data/nda-polity";
 import { PLAYBOOK_SLUGS as POLITY_PLAYBOOK_SLUGS } from "@/app/guide/nda-polity/_data/playbooks";
+import { ROUTES as CET_MATHS_ROUTES } from "@/app/guide/mht-cet-maths/_data/mht-cet-maths";
+import { PLAYBOOK_SLUGS as CET_MATHS_PLAYBOOK_SLUGS } from "@/app/guide/mht-cet-maths/_data/playbooks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -77,11 +79,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const buildDate = new Date();
 
   const guideEntries: MetadataRoute.Sitemap = [
-    // NOTE: /guide is deliberately ABSENT — it is a redirect to /guide/nda, not
-    // a page. Listing a redirecting URL in a sitemap asks Google to index
-    // something that does not exist; it was one of the 3 "Page with redirect"
-    // entries in the 2026-08-09 coverage report. Add it back only if it ever
-    // becomes a real exam picker.
+    // /guide WAS deliberately absent while it was a bare redirect to
+    // /guide/nda — listing a redirecting URL asks Google to index something
+    // that does not exist, and it was one of the 3 "Page with redirect"
+    // entries in the 2026-08-09 coverage report. It became a real exam picker
+    // on 2026-08-22 (NDA + MHT-CET), so it is a genuine page again and belongs
+    // here. Highest priority of the guide tree: it is the tree's front door.
+    {
+      url: `${SITE_URL}/guide`,
+      lastModified: buildDate,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
     {
       url: `${SITE_URL}/guide/nda`,
       lastModified: buildDate,
@@ -193,6 +202,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: r.slug === "" ? 0.9 : 0.8,
+    })),
+    {
+      url: `${SITE_URL}/guide/mht-cet`,
+      lastModified: buildDate,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    ...CET_MATHS_ROUTES.map((r) => ({
+      url: r.slug
+        ? `${SITE_URL}/guide/mht-cet-maths/${r.slug}`
+        : `${SITE_URL}/guide/mht-cet-maths`,
+      lastModified: buildDate,
+      changeFrequency: "weekly" as const,
+      priority: r.slug === "" ? 0.9 : 0.8,
+    })),
+    ...CET_MATHS_PLAYBOOK_SLUGS.map((slug) => ({
+      url: `${SITE_URL}/guide/mht-cet-maths/playbooks/${slug}`,
+      lastModified: buildDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
     })),
     ...POLITY_PLAYBOOK_SLUGS.map((slug) => ({
       url: `${SITE_URL}/guide/nda-polity/playbooks/${slug}`,

@@ -24,6 +24,7 @@ import { PLAYBOOKS as NDA_BIOLOGY_PLAYBOOKS } from "@/app/guide/nda-biology/_dat
 import { PLAYBOOKS as NDA_GEOGRAPHY_PLAYBOOKS } from "@/app/guide/nda-geography/_data/playbooks";
 import { PLAYBOOKS as NDA_HISTORY_PLAYBOOKS } from "@/app/guide/nda-history/_data/playbooks";
 import { PLAYBOOKS as NDA_POLITY_PLAYBOOKS } from "@/app/guide/nda-polity/_data/playbooks";
+import { PLAYBOOKS as MHT_CET_MATHS_PLAYBOOKS } from "@/app/guide/mht-cet-maths/_data/playbooks";
 import { getSubtopicNotesEntry } from "@/lib/notes/subtopicSlugRegistry";
 import { getNotesChapterEntry } from "./notesIndex";
 import { getPrincipleName, getConceptName } from "./tagNames";
@@ -87,24 +88,31 @@ const NDA_ENGLISH_BY_SUBTOPIC = buildSubtopicMap(NDA_ENGLISH_PLAYBOOKS);
  * single-page landings stay special-cased in resolveGuide.
  */
 const CHAPTER_KEYED_GUIDES: ReadonlyArray<{
+  exam: string;
   subject: string;
   guideSlug: string;
   playbooks: ReadonlyArray<{ slug: string; name: string; chapter: string }>;
 }> = [
-  { subject: "Physics", guideSlug: "nda-physics", playbooks: NDA_PHYSICS_PLAYBOOKS },
-  { subject: "Chemistry", guideSlug: "nda-chemistry", playbooks: NDA_CHEMISTRY_PLAYBOOKS },
-  { subject: "Biology", guideSlug: "nda-biology", playbooks: NDA_BIOLOGY_PLAYBOOKS },
-  { subject: "Geography", guideSlug: "nda-geography", playbooks: NDA_GEOGRAPHY_PLAYBOOKS },
-  { subject: "History", guideSlug: "nda-history", playbooks: NDA_HISTORY_PLAYBOOKS },
-  { subject: "Polity", guideSlug: "nda-polity", playbooks: NDA_POLITY_PLAYBOOKS },
+  { exam: "NDA", subject: "Physics", guideSlug: "nda-physics", playbooks: NDA_PHYSICS_PLAYBOOKS },
+  { exam: "NDA", subject: "Chemistry", guideSlug: "nda-chemistry", playbooks: NDA_CHEMISTRY_PLAYBOOKS },
+  { exam: "NDA", subject: "Biology", guideSlug: "nda-biology", playbooks: NDA_BIOLOGY_PLAYBOOKS },
+  { exam: "NDA", subject: "Geography", guideSlug: "nda-geography", playbooks: NDA_GEOGRAPHY_PLAYBOOKS },
+  { exam: "NDA", subject: "History", guideSlug: "nda-history", playbooks: NDA_HISTORY_PLAYBOOKS },
+  { exam: "NDA", subject: "Polity", guideSlug: "nda-polity", playbooks: NDA_POLITY_PLAYBOOKS },
+  // MHT-CET Maths is Template C — chapter-grain playbooks, no principle axis,
+  // so it slots straight into this registry. Note the subject literal is
+  // "Maths", not "Mathematics": NDA uses the latter, MHT-CET and JEE the former.
+  { exam: "MHT-CET", subject: "Maths", guideSlug: "mht-cet-maths", playbooks: MHT_CET_MATHS_PLAYBOOKS },
 ];
+
+const chapterKeyedKey = (exam: string, subject: string) => `${exam}::${subject}`;
 
 const CHAPTER_KEYED_BY_SUBJECT = new Map<
   string,
   { guideSlug: string; byChapter: Map<string, PlaybookEntry> }
 >(
   CHAPTER_KEYED_GUIDES.map((g) => [
-    g.subject,
+    chapterKeyedKey(g.exam, g.subject),
     { guideSlug: g.guideSlug, byChapter: buildChapterMap(g.playbooks) },
   ])
 );
@@ -134,6 +142,17 @@ function resolveGuide(
   input: ResourceInput,
   tags?: ResourceTags
 ): ResourceLink | null {
+  // MHT-CET (Template C) — chapter-grain playbooks only; this exam has no
+  // principle axis, so it never touches the principle-tag path below.
+  if (input.examName === "MHT-CET") {
+    const ck = CHAPTER_KEYED_BY_SUBJECT.get(
+      chapterKeyedKey(input.examName, input.subjectName)
+    );
+    if (!ck) return null;
+    const hit = ck.byChapter.get(input.chapterName);
+    return hit ? playbookLink(ck.guideSlug, hit) : null;
+  }
+
   if (input.examName !== "NDA") return null;
 
   // Mathematics (Template A) — no per-chapter playbook page. When the question
@@ -165,7 +184,9 @@ function resolveGuide(
 
   // Chapter-keyed playbook guides (physics/chemistry/biology/geography/
   // history/polity) — registry lookup.
-  const ck = CHAPTER_KEYED_BY_SUBJECT.get(input.subjectName);
+  const ck = CHAPTER_KEYED_BY_SUBJECT.get(
+    chapterKeyedKey(input.examName, input.subjectName)
+  );
   if (ck) {
     const hit = ck.byChapter.get(input.chapterName);
     return hit ? playbookLink(ck.guideSlug, hit) : null;
