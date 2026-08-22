@@ -1,12 +1,20 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useMemo, useState, useTransition } from "react";
 import { ChevronDown, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { isFitExam } from "@/lib/relevance/fit";
+import { getExamByName } from "@/lib/exam/examContext";
+import {
+  groupExamFamilies,
+  resolveFamilySelection,
+  familyDefaultValue,
+  familyKey,
+  isFamilyKey,
+} from "@/lib/exam/examFamily";
 import {
   Select,
   SelectContent,
@@ -134,6 +142,37 @@ export default function FilterBar({
     filters.fit !== "all" ||
     !!filters.q;
 
+  // Exam picker, grouped into board families (CBSE 11/12, Maharashtra 9-12).
+  // The list itself still comes from the DB via listExams() — the registry only
+  // GROUPS it — so an exam ingested before anyone adds a registry entry keeps
+  // appearing as a top-level option instead of vanishing. See examFamily.
+  //
+  // Purely presentational: `filters.examId` remains one UUID and `?examId=` is
+  // unchanged, so every existing link still resolves. The family is DERIVED
+  // from the selected exam rather than stored, which is what lets a shared URL
+  // re-open with the right family showing and no extra state to carry.
+  const examNodes = useMemo(
+    () => groupExamFamilies(exams, (e) => getExamByName(e.name)),
+    [exams]
+  );
+  const examSelection = resolveFamilySelection(
+    examNodes,
+    filters.examId,
+    (e) => e.id
+  );
+
+  function onExamTopChange(value: string) {
+    if (value === ALL) return update({ examId: null });
+    if (!isFamilyKey(value)) return update({ examId: value });
+    // Picking a family commits its LOWEST class immediately. There is no
+    // board-with-no-class state the bank can express — the taxonomy below exam
+    // is per-exam, so "Mathematics" is four distinct subject rows across the
+    // Maharashtra exams — and leaving examId null here would show the whole
+    // bank under a trigger reading "Maharashtra State Board".
+    const node = examNodes.find((n) => n.kind === "family" && familyKey(n.board) === value);
+    if (node?.kind === "family") update({ examId: familyDefaultValue(node, (e) => e.id) });
+  }
+
   // Sections keyed for ordered rendering. Mobile sheet leads with difficulty
   // and PYQ year (the multi-pick filters teachers reach for most), pushing
   // the long chapter/subtopic accordions below the fold.
@@ -234,17 +273,48 @@ export default function FilterBar({
       <div className="space-y-1.5">
         <Label htmlFor="exam">Exam</Label>
         <Select
-          value={filters.examId ?? ALL}
-          onValueChange={(v) => update({ examId: v === ALL ? null : v })}
+          value={examSelection.topValue ?? ALL}
+          onValueChange={onExamTopChange}
         >
           <SelectTrigger id="exam">
             <SelectValue placeholder="All exams" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value={ALL}>All exams</SelectItem>
-            {exams.map((x) => (
-              <SelectItem key={x.id} value={x.id}>
-                {x.name}
+            {examNodes.map((node) =>
+              node.kind === "flat" ? (
+                <SelectItem key={node.item.id} value={node.item.id}>
+                  {node.item.name}
+                </SelectItem>
+              ) : (
+                <SelectItem key={node.board} value={familyKey(node.board)}>
+                  {node.label}
+                </SelectItem>
+              )
+            )}
+          </SelectContent>
+        </Select>
+      </div>
+    ),
+    // Rendered ONLY while a board family is selected — see the `order` filter
+    // below. Deliberately not a permanently-disabled control like Subject:
+    // Subject applies to every exam, whereas a class applies to two of the nine
+    // top-level entries, so a dead "Class" row on NDA would re-add exactly the
+    // clutter this grouping removes.
+    examClass: (
+      <div className="space-y-1.5">
+        <Label htmlFor="exam-class">Class</Label>
+        <Select
+          value={examSelection.classValue ?? undefined}
+          onValueChange={(v) => update({ examId: v })}
+        >
+          <SelectTrigger id="exam-class">
+            <SelectValue placeholder="Pick a class" />
+          </SelectTrigger>
+          <SelectContent>
+            {examSelection.classes.map((c) => (
+              <SelectItem key={c.value} value={c.value}>
+                {c.label}
               </SelectItem>
             ))}
           </SelectContent>
@@ -447,10 +517,14 @@ export default function FilterBar({
   //   format — only where the bank actually holds more than one format. Five of
   //            eleven exams are 100% MCQ (29,524 questions). The decision is
   //            made server-side; see shouldShowFormatFilter.
+  //   examClass — only while a board FAMILY is selected (CBSE, Maharashtra
+  //            State Board). Seven of the nine top-level entries are single
+  //            exams with no class to pick.
   const order: SectionKey[] = (mode === "staged" ? STAGED_ORDER : LIVE_ORDER).filter(
     (k) =>
       (k !== "fit" || isFitExam(filters.examId)) &&
-      (k !== "format" || showFormat)
+      (k !== "format" || showFormat) &&
+      (k !== "examClass" || examSelection.classes.length > 0)
   );
 
   return (
@@ -485,6 +559,7 @@ type SectionKey =
   | "format"
   | "fit"
   | "exam"
+  | "examClass"
   | "subject"
   | "chapters"
   | "subtopics"
@@ -546,6 +621,7 @@ const LIVE_ORDER: SectionKey[] = [
   "format",
   "fit",
   "exam",
+  "examClass",
   "subject",
   "chapters",
   "subtopics",
@@ -559,6 +635,7 @@ const STAGED_ORDER: SectionKey[] = [
   "format",
   "fit",
   "exam",
+  "examClass",
   "subject",
   "difficulty",
   "pyqYears",

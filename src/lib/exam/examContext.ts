@@ -97,6 +97,17 @@ export type ExamEntry = {
    */
   board?: Board;
   std?: Std;
+  /**
+   * Overrides the derived `Class <std>` label used by the grouped exam pickers
+   * (see lib/exam/examFamily). Set ONLY where a board names its years something
+   * students actually say and search for — Maharashtra's SSC (10) and HSC (12).
+   * Everywhere else the label is derived, so there is nothing to keep in sync.
+   *
+   * This is a label for the CLASS WITHIN ITS FAMILY, not a replacement for
+   * `displayName`, which still names the exam standalone (chips, cards, the
+   * /browse active-filter chip).
+   */
+  classLabel?: string;
 };
 
 export const EXAM_REGISTRY: readonly ExamEntry[] = [
@@ -150,6 +161,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "mh-hsc-12",
     displayName: "MH HSC 12",
     examName: "Maharashtra HSC Class 12", // must match the `exams` DB row exactly
+    classLabel: "Class 12 (HSC)", // grouped pickers: HSC is what Maharashtra students say
     mixedFormats: true, // 2,582 subjective vs 268 MCQ
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/mh-hsc-12", // exam hub: "coming soon" until notes ship
@@ -235,6 +247,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     slug: "mh-ssc-10",
     displayName: "MH SSC 10",
     examName: "Maharashtra State Board Class 10", // must match the `exams` DB row exactly
+    classLabel: "Class 10 (SSC)", // grouped pickers: SSC is what Maharashtra students say
     mixedFormats: true, // 1,390 subjective vs 245 MCQ
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/mh-ssc-10", // exam hub: "coming soon" until notes ship
@@ -267,6 +280,19 @@ export function isExamSlug(value: unknown): value is ExamSlug {
 export function getExamBySlug(slug: string | null | undefined): ExamEntry | null {
   if (!slug) return null;
   return EXAM_REGISTRY.find((e) => e.slug === slug) ?? null;
+}
+
+/**
+ * Registry entry by its `exams` DB name. The inverse join to `getExamIdMap`,
+ * which resolves the same pair the other way — needed because the /browse
+ * filter list comes from the DB (`listExams`) and carries names, not slugs.
+ *
+ * Null for a DB exam with no registry entry, which callers must treat as
+ * "ungrouped", never as "drop it" — see groupExamFamilies.
+ */
+export function getExamByName(examName: string | null | undefined): ExamEntry | null {
+  if (!examName) return null;
+  return EXAM_REGISTRY.find((e) => e.examName === examName) ?? null;
 }
 
 /** True when an exam (by its DB name) has a practice-only corpus and should
