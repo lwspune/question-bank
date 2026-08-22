@@ -22,7 +22,15 @@ export async function getRecentUploads(
     .order("created_at", { ascending: false })
     .limit(RECENT_UPLOADS_LIMIT);
 
-  if (error) throw new Error(`recent uploads: ${error.message}`);
+  // DEGRADE, DON'T THROW. This shares a Promise.all with getDashboardStats on
+  // /dashboard, so a throw here 500s the whole page just as surely. The page
+  // already renders nothing when this list is empty, so an empty list is a
+  // clean degradation rather than a misleading one.
+  if (error) {
+    // Boundary log: the only place this DB error text survives.
+    console.error("recent uploads read failed:", error.message);
+    return [];
+  }
 
   return (data ?? []).map((r) => ({
     id: r.id as string,
