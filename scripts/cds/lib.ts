@@ -78,6 +78,32 @@ export function undFirst(text: string, w: string): string {
   return text.replace(re, () => und(w));
 }
 
+/**
+ * The internal provenance bracket this pipeline appends to every solution (see
+ * the `solution` template in buildRecords below). It records that the answer is
+ * LLM-derived from a booklet with no printed key — a fact worth keeping, but the
+ * answer-key export prints `solution` verbatim, so it reaches students.
+ *
+ * Deliberately anchored to this exact shape rather than a generic `\[[^\]]*\]`:
+ * solutions across the bank carry other bracketed editorial notes — `[Textbook…]`
+ * errata brackets especially — and a greedy strip would silently delete
+ * adjudicated findings. Tolerates an ASCII hyphen for the em dash because the
+ * corpus was written over several passes.
+ */
+const DERIVATION_MARKER_RE =
+  /\s*\[LLM-derived,\s*confidence:[^\]]*?;\s*no official key\s*[—–-]\s*verify before PUBLIC\]\s*/g;
+
+/**
+ * Remove the provenance bracket from a stored solution. Idempotent, and a no-op
+ * on text that never had one. The fact itself is not lost — callers move it to
+ * `derived_model` / `derived_at` and a `question_reviews` row, which no surface
+ * renders. See tests/cds-strip-marker.test.ts.
+ */
+export function stripDerivationMarker(solution: string | null | undefined): string {
+  if (!solution) return "";
+  return solution.replace(DERIVATION_MARKER_RE, " ").trim();
+}
+
 export function normalizeDirections(d: string): string {
   const body = d.replace(/^\s*Directions\s*:?\s*/i, "").trim();
   return "Directions: " + body;
