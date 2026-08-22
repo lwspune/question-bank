@@ -131,3 +131,77 @@ describe.skipIf(!HAS_ENV)("getDashboardStats (against LWS Pune seed)", () => {
     }
   });
 });
+
+/**
+ * Degradation contract (no DB needed).
+ *
+ * The five stat tiles are decorative. Before this, `getDashboardStats` threw on
+ * any RPC/query error, so a Postgres statement timeout (SQLSTATE 57014) took
+ * the WHOLE /dashboard page down with it — Members, Branches, Papers and
+ * Reports included. Measured on prod 2026-08-22: 21 successful RPC calls
+ * against 21 logged 57014 cancellations over the same window, i.e. roughly half
+ * of all dashboard loads 500'd.
+ *
+ * So a failure must degrade to zeroes + `unavailable: true`, never throw.
+ */
+type StubResult = { data: unknown; error: { message: string } | null };
+
+function stubClient(rpc: StubResult, job: StubResult): SupabaseClient {
+  return {
+    rpc: async () => rpc,
+    from: () => ({
+      select: () => ({
+        eq: () => ({
+          order: () => ({
+            limit: () => ({ maybeSingle: async () => job }),
+          }),
+        }),
+      }),
+    }),
+  } as unknown as SupabaseClient;
+}
+
+const OK_RPC: StubResult = {
+  data: {
+    total_questions: 12,
+    chapters_covered: 3,
+    by_exam: [{ exam_id: "e1", exam_name: "NDA", count: 12 }],
+  },
+  error: null,
+};
+const OK_JOB: StubResult = { data: null, error: null };
+const TIMEOUT: StubResult = {
+  data: null,
+  error: { message: "canceling statement due to statement timeout" },
+};
+
+describe("getDashboardStats degradation", () => {
+  it("does not throw when the stats RPC times out", async () => {
+    await expect(
+      getDashboardStats(stubClient(TIMEOUT, OK_JOB), "org-1")
+    ).resolves.toBeDefined();
+  });
+
+  it("reports unavailable + zeroes when the stats RPC fails", async () => {
+    const stats = await getDashboardStats(stubClient(TIMEOUT, OK_JOB), "org-1");
+    expect(stats.unavailable).toBe(true);
+    expect(stats.totalQuestions).toBe(0);
+    expect(stats.examsCovered).toBe(0);
+    expect(stats.chaptersCovered).toBe(0);
+    expect(stats.byExam).toEqual([]);
+    expect(stats.daysSinceLastUpload).toBeNull();
+  });
+
+  it("degrades when only the upload_jobs read fails", async () => {
+    const stats = await getDashboardStats(stubClient(OK_RPC, TIMEOUT), "org-1");
+    expect(stats.unavailable).toBe(true);
+  });
+
+  it("reports unavailable:false and real numbers on the happy path", async () => {
+    const stats = await getDashboardStats(stubClient(OK_RPC, OK_JOB), "org-1");
+    expect(stats.unavailable).toBe(false);
+    expect(stats.totalQuestions).toBe(12);
+    expect(stats.chaptersCovered).toBe(3);
+    expect(stats.byExam).toEqual([{ examId: "e1", examName: "NDA", count: 12 }]);
+  });
+});

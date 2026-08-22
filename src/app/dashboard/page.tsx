@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import {
   Activity,
+  AlertTriangle,
   HeartPulse,
   ArrowRight,
   BookOpen,
@@ -78,7 +79,10 @@ export default async function DashboardPage() {
     ]);
 
   const isAdmin = member.role === "ADMIN";
-  const isFresh = stats.totalQuestions === 0;
+  // The `unavailable` half is load-bearing: a degraded read reports 0
+  // questions, and without it this page would show the new-org onboarding
+  // screen to an org holding 57k rows.
+  const isFresh = stats.totalQuestions === 0 && !stats.unavailable;
 
   return (
     <>
@@ -101,19 +105,38 @@ export default async function DashboardPage() {
           openConceptReportCount={openConceptReportCount}
         />
 
+        {stats.unavailable && (
+          <p className="flex items-start gap-2 rounded-md border border-amber-500/40 bg-amber-500/5 px-4 py-3 text-sm text-muted-foreground">
+            <AlertTriangle
+              className="mt-0.5 h-4 w-4 shrink-0 text-amber-600 dark:text-amber-500"
+              aria-hidden
+            />
+            <span>
+              Bank statistics could not be loaded just now. Everything else on
+              this page works normally.
+            </span>
+          </p>
+        )}
+
         {!isFresh && (
           <>
-            <Section heading="At a glance">
-              <StatGrid stats={stats} />
-            </Section>
+            {/* Hidden rather than zeroed when the read failed: five tiles all
+                reading 0 look like data, and this org has 57k questions. */}
+            {!stats.unavailable && (
+              <>
+                <Section heading="At a glance">
+                  <StatGrid stats={stats} />
+                </Section>
 
-            {stats.byExam.length > 0 && (
-              <Section heading="By exam">
-                <ByExamBreakdown
-                  rows={stats.byExam}
-                  total={stats.totalQuestions}
-                />
-              </Section>
+                {stats.byExam.length > 0 && (
+                  <Section heading="By exam">
+                    <ByExamBreakdown
+                      rows={stats.byExam}
+                      total={stats.totalQuestions}
+                    />
+                  </Section>
+                )}
+              </>
             )}
 
             {isAdmin && recentUploads.length > 0 && (

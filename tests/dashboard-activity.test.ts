@@ -65,3 +65,34 @@ describe.skipIf(!HAS_ENV)("getRecentUploads (against LWS Pune seed)", () => {
     }
   });
 });
+
+/**
+ * Degradation contract (no DB needed).
+ *
+ * This loader sits in the SAME `Promise.all` as getDashboardStats on
+ * /dashboard, so a throw here 500s the page just as surely. The recent-uploads
+ * list is decorative — the page already renders nothing when it is empty — so
+ * a failed read degrades to an empty list rather than taking the page down.
+ */
+describe("getRecentUploads degradation", () => {
+  function failingClient(): SupabaseClient {
+    return {
+      from: () => ({
+        select: () => ({
+          eq: () => ({
+            order: () => ({
+              limit: async () => ({
+                data: null,
+                error: { message: "canceling statement due to statement timeout" },
+              }),
+            }),
+          }),
+        }),
+      }),
+    } as unknown as SupabaseClient;
+  }
+
+  it("returns an empty list instead of throwing when the read fails", async () => {
+    await expect(getRecentUploads(failingClient(), "org-1")).resolves.toEqual([]);
+  });
+});
