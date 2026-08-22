@@ -25,6 +25,7 @@ import { STRATEGY_HEADLINE as ENGLISH_HEADLINE } from "@/app/guide/nda-english/_
 import { STRATEGY_HEADLINE as PHYSICS_HEADLINE } from "@/app/guide/nda-physics/_data/strategy";
 import { STRATEGY_HEADLINE as CHEMISTRY_HEADLINE } from "@/app/guide/nda-chemistry/_data/strategy";
 import { STRATEGY_HEADLINE as BIOLOGY_HEADLINE } from "@/app/guide/nda-biology/_data/strategy";
+import { STRATEGY_HEADLINE as CET_MATHS_HEADLINE } from "@/app/guide/mht-cet-maths/_data/strategy";
 
 type Headline = {
   paperQ: number;
@@ -36,19 +37,33 @@ type Headline = {
   targetAccuracyPct: number;
 };
 
+/**
+ * The marking scheme is PER EXAM, not universal. Until 2026-08-22 this suite
+ * asserted `penaltyPerWrong ~= marksPerCorrect / 3` for every guide, which is
+ * NDA's -1/3 rule stated as though it were a law. MHT-CET has NO negative
+ * marking at all, so that assertion would have been false for a correct
+ * headline. Making the scheme explicit data is what keeps the invariant
+ * meaningful for both.
+ */
+type MarkingScheme = "nda-one-third" | "none";
+
 type GuideSpec = {
   guide: string;
   headline: Headline;
   examName: string;
   subjectName: string;
+  marking: MarkingScheme;
 };
 
 const GUIDES: GuideSpec[] = [
-  { guide: "nda-maths",     headline: MATHS_HEADLINE,     examName: "NDA", subjectName: "Mathematics" },
-  { guide: "nda-english",   headline: ENGLISH_HEADLINE,   examName: "NDA", subjectName: "English" },
-  { guide: "nda-physics",   headline: PHYSICS_HEADLINE,   examName: "NDA", subjectName: "Physics" },
-  { guide: "nda-chemistry", headline: CHEMISTRY_HEADLINE, examName: "NDA", subjectName: "Chemistry" },
-  { guide: "nda-biology",   headline: BIOLOGY_HEADLINE,   examName: "NDA", subjectName: "Biology" },
+  { guide: "nda-maths",     headline: MATHS_HEADLINE,     examName: "NDA",     subjectName: "Mathematics", marking: "nda-one-third" },
+  { guide: "nda-english",   headline: ENGLISH_HEADLINE,   examName: "NDA",     subjectName: "English",     marking: "nda-one-third" },
+  { guide: "nda-physics",   headline: PHYSICS_HEADLINE,   examName: "NDA",     subjectName: "Physics",     marking: "nda-one-third" },
+  { guide: "nda-chemistry", headline: CHEMISTRY_HEADLINE, examName: "NDA",     subjectName: "Chemistry",   marking: "nda-one-third" },
+  { guide: "nda-biology",   headline: BIOLOGY_HEADLINE,   examName: "NDA",     subjectName: "Biology",     marking: "nda-one-third" },
+  // Subject literal is "Maths", not "Mathematics" — MHT-CET and JEE use the
+  // short form in the DB while NDA uses the long one.
+  { guide: "mht-cet-maths", headline: CET_MATHS_HEADLINE, examName: "MHT-CET", subjectName: "Maths",       marking: "none" },
 ];
 
 const HAS_ENV =
@@ -56,7 +71,7 @@ const HAS_ENV =
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 describe("STRATEGY_HEADLINE — internal invariants (pure)", () => {
-  for (const { guide, headline } of GUIDES) {
+  for (const { guide, headline, marking } of GUIDES) {
     describe(guide, () => {
       it("paperQ × marksPerCorrect === totalMarks", () => {
         expect(headline.paperQ * headline.marksPerCorrect).toBeCloseTo(
@@ -65,11 +80,25 @@ describe("STRATEGY_HEADLINE — internal invariants (pure)", () => {
         );
       });
 
-      it("penaltyPerWrong ≈ marksPerCorrect / 3 (NDA −1/3 scheme)", () => {
-        expect(headline.penaltyPerWrong).toBeCloseTo(
-          headline.marksPerCorrect / 3,
-          2 // allow rounding (NDA Maths uses 0.83, exact would be 0.833)
-        );
+      it("penaltyPerWrong matches the exam's declared marking scheme", () => {
+        if (marking === "nda-one-third") {
+          expect(headline.penaltyPerWrong).toBeCloseTo(
+            headline.marksPerCorrect / 3,
+            2 // allow rounding (NDA Maths uses 0.83, exact would be 0.833)
+          );
+        } else {
+          // MHT-CET deducts nothing. This is not a missing value — it is the
+          // fact the whole guide's strategy rests on, so pin it as exactly 0.
+          expect(headline.penaltyPerWrong).toBe(0);
+        }
+      });
+
+      it("attempts every question when nothing is deducted for a wrong one", () => {
+        // With no penalty a blank and a wrong answer score identically, so any
+        // targetAttempts below paperQ is strictly worse than guessing.
+        if (marking === "none") {
+          expect(headline.targetAttempts).toBe(headline.paperQ);
+        }
       });
 
       it("targetMarks ≤ totalMarks", () => {

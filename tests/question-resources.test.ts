@@ -660,3 +660,50 @@ describe("getQuestionResources — notes are exam+subject scoped", () => {
     expect(res.notes).toBeNull();
   });
 });
+
+describe("getQuestionResources — MHT-CET Maths guide (Template C)", () => {
+  it("links the chapter playbook for a covered MHT-CET Maths chapter", () => {
+    const res = call({
+      examName: "MHT-CET",
+      subjectName: "Maths",
+      chapterName: "Vectors",
+      subtopicName: "Dot Product, Angle, and Perpendicularity",
+    });
+    expect(res.guide).not.toBeNull();
+    expect(res.guide!.href).toBe("/guide/mht-cet-maths/playbooks/vectors");
+    expect(res.guide!.label).toContain("Playbook");
+  });
+
+  it("returns no guide for an MHT-CET Maths chapter below the playbook line", () => {
+    // Quadratic Equations is 0.15 q/paper and ships no playbook by design.
+    const res = call({
+      examName: "MHT-CET",
+      subjectName: "Maths",
+      chapterName: "Quadratic Equations",
+      subtopicName: "Roots — Nature, Vieta's Relations, and Conditions",
+    });
+    expect(res.guide).toBeNull();
+  });
+
+  it("returns no guide for MHT-CET subjects with no guide yet", () => {
+    const res = call({
+      examName: "MHT-CET",
+      subjectName: "Physics",
+      chapterName: "Electrostatics",
+      subtopicName: null,
+    });
+    expect(res.guide).toBeNull();
+  });
+
+  it("does not leak an NDA chapter name into the MHT-CET guide", () => {
+    // "Vectors" is a chapter in BOTH banks; the registry is keyed by
+    // (exam, subject) so each must resolve to its own guide.
+    const nda = call({
+      examName: "NDA",
+      subjectName: "Mathematics",
+      chapterName: "Vectors",
+      subtopicName: null,
+    });
+    expect(nda.guide!.href).toBe("/guide/nda-maths");
+  });
+});

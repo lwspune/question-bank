@@ -131,8 +131,14 @@ describe("resolveGuidesHref", () => {
     expect(resolveGuidesHref("nda")).toBe("/guide/nda");
   });
 
-  it("returns /guide for mht-cet (no guide subtree yet — falls back to index)", () => {
-    expect(resolveGuidesHref("mht-cet")).toBe("/guide");
+  it("returns the MHT-CET subtree for mht-cet", () => {
+    // Shipped 2026-08-22 (Template C, Mathematics). The guide-less fallback
+    // is still covered below by neet + jee-mains.
+    expect(resolveGuidesHref("mht-cet")).toBe("/guide/mht-cet");
+  });
+
+  it("returns /guide for jee-mains (no guide subtree yet — falls back to index)", () => {
+    expect(resolveGuidesHref("jee-mains")).toBe("/guide");
   });
 
   it("returns /guide for null exam (no exam context)", () => {
