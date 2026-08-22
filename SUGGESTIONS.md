@@ -47,6 +47,34 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-08-22
+
+### Build the MHT-CET Physics and Chemistry guides — the template call is already measured for both
+
+MHT-CET Maths shipped as Template C (tier-style strands) on 2026-08-22. Its two sibling subjects have comparable banks — Physics 2,221 PYQ / 24 chapters, Chemistry 2,165 / 30 — and the analysis that chose Maths's template already measured both, so neither needs a fresh survey to START. They must NOT be copies of the Maths guide: the three subjects have genuinely different shapes.
+
+**Why:** Physics and Chemistry are Paper II (1 mark each) against Maths's Paper I (2 marks), so together they are half the exam and currently have no guide at all. The measurements are perishable — they were taken 2026-08-22 and the bank grows.
+
+**How to apply:** Chemistry is the cleaner call and the better pilot — %HARD is flat AND near-zero (3.3% overall; of 30 chapters only two exceed 15% and both are tiny), which is the textbook **pure Template B** entry condition, and 5 chapters already have shipped `/notes` to cross-link. Physics is **Template C** like Maths: 17 of 24 chapters exceed 15% HARD and the HARD is concentrated (top-2 subtopics carry 63-95% where a chapter has >=4 subtopics — Wave Optics 93%, Rotational Dynamics 90%), which is a live cherry-pick pattern. Both inherit the no-negative-marking axis: at 1 mark per question and 50 questions in the shared 90-minute paper, the order-and-time framing matters even more than it does for Maths. Reuse the two agent contracts from the Maths build (a data brief carrying every verified number, and a routes brief) — they are the reason that build had no fabricated statistics.
+
+### Guides have no subject-level registry, so every new exam hub is hand-written
+
+`/notes` derives its hubs from `NOTES_CHAPTERS`, which is why a new exam's notes hub costs nothing. Guides have no equivalent: each hub hardcodes its own `GUIDES` array (NDA 10 entries, MHT-CET 1), which is exactly why shipping MHT-CET required a hand-written `/guide/mht-cet/page.tsx`. The 2026-08-22 rail helper `src/lib/guide/guidesNav.ts` models the EXAM level only and says so in its header.
+
+**Why:** it is the difference between "a third exam's guides are a registry entry" and "a third exam's guides are another bespoke page". It also blocks two things that would otherwise be cheap: a rail that shows subjects under the active exam, and a data-driven check that every shipped guide subtree is actually linked from its hub.
+
+**How to apply:** add a `GUIDE_SUBJECTS` registry (exam slug, subject route, display name, template kind, q-count source) mirroring `NOTES_CHAPTERS`' role, then rewrite both hubs to render from it and extend `guidesNav.ts` with a `subjectsForExam()`. Worth doing BEFORE the Physics/Chemistry guides above, since those would add two more hardcoded entries to a list that should be data. Keep the per-guide editorial copy where it is — only the enumeration needs to move.
+
+### `tagNames.ts`'s principle map is exam-blind — latent today, live the moment a non-NDA guide adds principle tags
+
+`PRINCIPLE_BY_SLUG` in `src/lib/links/tagNames.ts` is a flat `slug -> name` map built ONLY from `nda-maths/_data/principles.ts`. `question_principle_tags` is `(question_id, principle_slug)` with a free-text slug and no exam column, so if a second exam ever defines a principle with a slug NDA also uses, an MHT-CET question's `/browse` chip would render NDA's name and link into the NDA guide.
+
+**Why:** it is a wrong cross-exam link, not a cosmetic miss, and it is invisible until it happens. It did NOT fire on 2026-08-22 only because MHT-CET Maths shipped as Template C, which has no principle axis — a deliberate choice, not a safeguard. The notes half of exactly this bug WAS live (a same-named subtopic across two exams produced a 404 for 9 NDA questions, fixed the same day in `a76f851`); the guide half is the same defect still armed.
+
+**How to apply:** key the map by `(examName, subjectName, slug)` the way `notesIndex`/`subtopicSlugRegistry` were keyed on 2026-08-22, and take the exam from the `ResourceInput` already threaded into `getQuestionResources`. Cheap now (one exam contributes principles); it gets expensive once a second catalog exists. Note the MHT-CET Maths lever survey DID confirm 5 genuine cross-chapter principles (perpendicularity-condition 83 q/7 ch, angle-between 87/7, extremum 115/16, tangent-normal 54/7, parallelism-condition 43/5) — so a future Template-A-style principles axis for that guide is plausible, and would trip this.
+
+---
+
 ## 2026-08-17
 
 ### ARCHITECTURE.md's `scripts/` tree is missing 15 of the pipelines it is supposed to map — **MAHARASHTRA GROUP DONE 2026-08-17, 10 remain**
