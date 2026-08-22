@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf, Newspaper, Scale, TrendingUp } from "lucide-react";
-import AppHeader from "@/components/AppHeader";
-import Footer from "@/components/Footer";
+import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
+import { buildGuideSideNav } from "@/lib/guide/guidesNav";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 
 export const metadata: Metadata = {
@@ -178,36 +178,18 @@ const GUIDES: ExamGuide[] = [
 
 export default function NdaGuideIndex() {
   return (
-    <>
-      <AppHeader />
-      <main className="mx-auto max-w-5xl px-4 pb-16 pt-6 sm:px-6 sm:pt-8">
+    <GuideShell
+      guideTitle="Strategy Guides"
+      sideNav={buildGuideSideNav()}
+      breadcrumbs={[{ href: "/guide", label: "Guides" }, { label: "NDA" }]}
+    >
         <GuideJsonLd
           type="CollectionPage"
           path="/guide/nda"
           headline="NDA Guides — Strategy for Maths, English, Physics, Chemistry, Biology, Geography, History, Polity and Economics"
           description="Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, NDA PART B Chemistry, NDA PART B Biology, NDA PART A Geography, NDA PART A History, NDA PART A Polity, and NDA PART A Economics. Every claim is measured against the live past-year question bank."
         />
-        <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground">
-          <ol className="flex flex-wrap items-center gap-1.5">
-            <li>
-              <Link href="/" className="hover:text-foreground">
-                Home
-              </Link>
-            </li>
-            <li className="flex items-center gap-1.5">
-              <ArrowRight className="h-3 w-3" aria-hidden />
-              <Link href="/guide" className="hover:text-foreground">
-                Guides
-              </Link>
-            </li>
-            <li className="flex items-center gap-1.5">
-              <ArrowRight className="h-3 w-3" aria-hidden />
-              <span className="font-medium text-foreground">NDA</span>
-            </li>
-          </ol>
-        </nav>
-
-        <div className="mt-6 sm:mt-8">
+        <div>
           <GuideHero
             eyebrow="NDA Guides"
             title="Strategy guides for NDA Maths, English, Physics, Chemistry, Biology, Geography, History, Polity, Economics and Current Affairs"
@@ -215,7 +197,7 @@ export default function NdaGuideIndex() {
           />
         </div>
 
-        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <ul className="mt-8 grid gap-5 sm:grid-cols-2">
           {GUIDES.map((g) => {
             const Icon = g.href.includes("english")
               ? Languages
@@ -302,8 +284,6 @@ export default function NdaGuideIndex() {
             subject&rsquo;s past-year question shape.
           </p>
         </section>
-      </main>
-      <Footer />
-    </>
+    </GuideShell>
   );
 }
