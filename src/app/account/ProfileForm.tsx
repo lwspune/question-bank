@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import ProfileChips from "@/components/ProfileChips";
-import { EXAM_REGISTRY, isExamSlug, type ExamSlug } from "@/lib/exam/examContext";
+import { isExamSlug, type ExamSlug } from "@/lib/exam/examContext";
+import { EXAM_CHIP_OPTIONS } from "@/lib/profile/examChoices";
 import { setExamCookie } from "@/lib/exam/examCookie";
 import { STAGES, STAGE_LABELS, type Stage } from "@/lib/profile/onboarding";
 import {
@@ -20,7 +21,7 @@ import {
 } from "@/lib/profile/fields";
 import type { ProfileRow } from "@/lib/profile/service";
 
-const EXAM_OPTIONS = EXAM_REGISTRY.map((e) => ({ value: e.slug, label: e.displayName }));
+const EXAM_OPTIONS = EXAM_CHIP_OPTIONS;
 const STAGE_OPTIONS = STAGES.map((s) => ({ value: s, label: STAGE_LABELS[s] }));
 const MEDIUM_OPTIONS = MEDIUMS.map((m) => ({ value: m, label: m === "hindi" ? "Hindi" : "English" }));
 const STREAM_LABELS: Record<Stream, string> = {
