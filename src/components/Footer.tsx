@@ -8,9 +8,17 @@ export default function Footer() {
   return (
     <footer className="mt-16 border-t bg-background">
       <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        {/*
+          "free for teachers" until 2026-08-22 — and this renders on EVERY page,
+          including the anon browse and landing surfaces that are the whole SEO
+          funnel. It excluded the 95% of accounts that are students, and it was
+          backwards on its own terms: browsing is what is free to everyone,
+          while the Word download is the TEACHER-gated capability. Phrasing
+          matches the /browse hero's stat band rather than coining a new one.
+        */}
         <p>
           From the team at <span className="font-medium">PYQ Vault</span> — free
-          for teachers.
+          to browse, forever.
         </p>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
           <Link
