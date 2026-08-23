@@ -25,7 +25,7 @@ import { createPaper, addQuestion } from "../../src/lib/papers/admin";
 import type { SectionTemplate } from "../../src/lib/papers/types";
 import { concludedLetter } from "../practice/audit-keys";
 import { ORG_ID, EXAM_ID, CREATED_BY } from "../practice/config";
-import { auditEnglishSection, type EnglishRow } from "./english";
+import { auditEnglishSection, orderEnglishBlocks, type EnglishRow } from "./english";
 import {
   selectByQuota, selectTotal, orderPaper, orderPaperBySections, DIFFICULTIES,
   type Cand, type Quota, type Shape, type Layout,
@@ -76,6 +76,31 @@ type ChapterPlan = {
    * visible in the spec instead of hidden behind a bare uuid.
    */
   fromExam?: string;
+  /**
+   * SET-AWARE selection, for a section whose questions share printed
+   * "Directions:" blocks (English).
+   *
+   * Each entry names one bank set and how many of its questions to take, in
+   * printed order. `quota`/`take` cannot express this: they select per question
+   * by difficulty, which scatters a block across the paper and makes its
+   * directions print once per fragment (R5). See ./english.ts.
+   *
+   * A shared-PASSAGE set (Reading Comprehension, Cloze) must omit `take` so the
+   * whole set is drawn — R2 makes those atomic, because taking 2 of a 5-question
+   * passage means a candidate reads the whole passage for 2 marks.
+   */
+  blocks?: { setId: string; take?: number; note?: string }[];
+  /**
+   * Per-chapter override of the paper's `requireConfirmedReview`.
+   *
+   * Needed because one paper can mix a corpus that NEEDS the gate with one that
+   * does not: CDS English and the Foundation Course have no official key, so
+   * only a recorded blind re-derivation makes a row shippable — while NDA PYQs
+   * carry the paper-setter's own key and come from the audited bank. Applying
+   * the gate to those would starve them to zero, since they were never part of
+   * the review run.
+   */
+  requireConfirmedReview?: boolean;
 };
 
 type PaperSpec = {
@@ -89,7 +114,17 @@ type PaperSpec = {
    * Multi-section paper, in PRINTED order — e.g. NDA GAT is English then General
    * Knowledge. Sections print contiguously; each chapter names its `sectionKey`.
    */
-  sections?: { key: string; label: string }[];
+  sections?: {
+    key: string;
+    label: string;
+    /**
+     * "difficulty" (default) runs `orderPaper`, which sweeps EASY -> MODERATE ->
+     * HARD. "english-blocks" runs `orderEnglishBlocks` instead, which groups by
+     * subtopic and keeps each directions set contiguous — the difficulty sweep
+     * is exactly what tore the sets apart in the 2026-08-21 mock.
+     */
+    ordering?: "difficulty" | "english-blocks";
+  }[];
   /** Only rows of these kinds are eligible. */
   kinds: ("pyq" | "practice")[];
   /** Only rows of these formats are eligible. Defaults to MCQ-only. */
@@ -110,11 +145,193 @@ type PaperSpec = {
    */
   layout?: Layout;
   chapters: ChapterPlan[];
+  /**
+   * Draw only questions carrying a `question_reviews` row with
+   * verdict='confirmed'.
+   *
+   * For a corpus with NO official key — CDS English, whose answers are all
+   * LLM-derived — the recorded blind re-derivation is the only evidence a key is
+   * right, so a paper built from it must not reach beyond what was checked.
+   * Reads the evidence rather than a hand-maintained id list, so it cannot drift
+   * from what was actually reviewed.
+   */
+  requireConfirmedReview?: boolean;
   /** Known-defective rows, excluded by id with the reason recorded here. */
   exclude: { id: string; reason: string }[];
 };
 
 const PAPERS: PaperSpec[] = [
+  {
+    // ── NDA GAT — LWS Mock CDS-1, Part A (English 50) ────────────────────────
+    //
+    // Part B (General Knowledge 100) is not built yet; its chapters append to
+    // this same spec and a re-run fills them, because addQuestion upserts on
+    // (paper, question).
+    //
+    // WHY CDS, AFTER IT WAS REJECTED. `nda-gat-hard-150` carries a warning that
+    // CDS English was tried and dropped on a 33% blind-re-derivation defect
+    // rate, citing three keys that "name the exact ANTONYM of the target word".
+    // All three are ANTONYM questions — their context reads "Directions:
+    // opposite in meaning to the underlined word", their distractors are
+    // synonyms of the target, and the keyed antonym is correct. That check had
+    // run WITHOUT the context field, so it read antonym items as synonym items.
+    //
+    // Re-run properly on 2026-08-23 (95 questions, 13 whole sets, directions
+    // supplied, key and solution withheld at dump time): **89/95 agreed, 93.7%**
+    // — HIGH-confidence rows 71/72. Six disagreements, adjudicated one by one:
+    // ONE genuine stored-key error (2024-II Q97, immanent/imminent — the bank
+    // says "neither", the answer is "1 only"), one probable (2022-II Q72,
+    // continuously/continually), four genuinely ambiguous where the stored key
+    // is defensible. Confirmed defect rate ~1%, not 33%. All six are excluded
+    // below rather than adjudicated into the paper — 89 confirmed rows serve 50
+    // slots, so ambiguity is affordable.
+    //
+    // The 89 agreements are recorded in `question_reviews`
+    // (method=blind_rederivation, verdict=confirmed, run_label
+    // "bank-paper:cds-english-blind-2026-08-23"), and `requireConfirmedReview`
+    // reads THAT rather than a list kept in sync by hand. A CDS row with no
+    // review cannot enter this paper.
+    //
+    // BLOCK SHAPE. Every CDS question shares a printed directions block, so
+    // selection is by SET (`blocks`), not by difficulty quota — a per-question
+    // pick scatters the sets and `auditEnglishSection` refuses the apply. The
+    // nine blocks below are sized 10/5/5/5/5/5/5/5/5, against a real GAT
+    // paper's 2/3/5/5/5/5/5/5/10. Reading Comprehension omits `take` so its
+    // passage set is drawn whole (R2).
+    //
+    // Chapter weights follow the last three sittings (Grammar 17.6/paper,
+    // Vocabulary 14.2, Rearrangement 6.0, RC 4.0, Idioms 3.2, Spotting 1.0),
+    // rounded into real block sizes.
+    slug: "nda-gat-cds-1-english",
+    title: "NDA GAT — LWS Mock CDS-1",
+    examId: EXAM_ID,
+    sections: [
+      { key: "english", label: "Part A — English", ordering: "english-blocks" },
+      { key: "gk", label: "Part B — General Knowledge" },
+    ],
+    kinds: ["pyq"], // per-chapter overrides carry the Foundation Course practice rows
+    // The Foundation Course stores a bare key; only rows whose solution was
+    // written by the blind pass are shippable in a teacher's answer key.
+    requireSolution: true,
+    layout: "sequential",
+    chapters: [
+      {
+        chapterId: "a2dee362-7083-4c47-94a9-fcc8878c83de", label: "Grammar (CDS)",
+        sectionKey: "english", fromExam: "CDS", includePrivate: true, requireConfirmedReview: true,
+        blocks: [
+          { setId: "43ed3f0a-1f75-4d70-b9ce-453176b7a0be:S10", take: 7, note: "2022-II" },
+          { setId: "2fb47771-8ec7-4532-a9ff-257a9f621541:S16", take: 5, note: "2024-II" },
+          // Only 3 eligible: two of this set's confirmed rows carry duplicate
+          // option texts and the audit refuses them. Asking for 5 would report a
+          // shortfall; 3 is a legal block (real GAT prints a 3).
+          { setId: "fecd882e-6838-4664-9773-e46c406feee2:S13", take: 3, note: "2025-I" },
+        ],
+      },
+      {
+        chapterId: "ba40834a-8074-44e9-9f47-29be8c0a8811", label: "Vocabulary (CDS)",
+        sectionKey: "english", fromExam: "CDS", includePrivate: true, requireConfirmedReview: true,
+        blocks: [
+          { setId: "0908c614-73f6-4d5a-895c-4f8de0dc8408:S3", take: 10, note: "2026-I" },
+          { setId: "55d278a3-5600-474f-aa18-d4296ab1b0f5:S12", take: 5, note: "2024-I" },
+        ],
+      },
+      {
+        chapterId: "12af0006-e2c9-43d6-8cbc-052be8f24bc5", label: "Sentence Rearrangement (CDS)",
+        sectionKey: "english", fromExam: "CDS", includePrivate: true, requireConfirmedReview: true,
+        blocks: [{ setId: "150ac3dd-95d5-4c6f-b1f1-d30511167e21:S7", take: 5, note: "2021-II" }],
+      },
+      {
+        chapterId: "9d51a7e8-221f-4460-9604-7270447147e9", label: "Reading Comprehension (CDS)",
+        sectionKey: "english", fromExam: "CDS", includePrivate: true, requireConfirmedReview: true,
+        // No `take` — R2: the passage set is atomic. This is the ONLY CDS RC set
+        // whose passage was actually stored; 83% of that chapter has a context
+        // reading "(Passage not stored — refer to the source booklet)".
+        blocks: [{ setId: "0908c614-73f6-4d5a-895c-4f8de0dc8408:S13", note: "2026-I, whole passage" }],
+      },
+      {
+        chapterId: "b4bd8726-c6de-45ca-911e-950c1e96ed88", label: "Idioms and Phrases (CDS)",
+        sectionKey: "english", fromExam: "CDS", includePrivate: true, requireConfirmedReview: true,
+        // 2024-I rather than 2018-II: the 2018-II block's stems appear to have
+        // lost their carrier sentences ("On the fly" stored bare while every
+        // option is a full sentence) — our extraction defect, not CDS's.
+        blocks: [{ setId: "55d278a3-5600-474f-aa18-d4296ab1b0f5:S3", take: 5, note: "2024-I" }],
+      },
+      {
+        chapterId: "573a9ea2-e537-4417-b17c-67f5854877a2", label: "Spotting Errors (CDS)",
+        sectionKey: "english", fromExam: "CDS", includePrivate: true, requireConfirmedReview: true,
+        blocks: [{ setId: "48c9d9a3-5e50-4582-8933-2d30c73a01ae:S2", take: 5, note: "2025-II" }],
+      },
+      // ── Part B — Physics 25 (Foundation Course, + NDA for the two gaps) ────
+      { chapterId: "c1e9dd85-6c07-4c3c-b5d9-73c4350eb32c", label: "PHY Light - Reflection and Refraction", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 1, HARD: 1 } },
+      { chapterId: "266bfff5-57f9-4ac4-a6e6-d1d79a449db1", label: "PHY The Human Eye and the Colourful World", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 2, HARD: 0 } },
+      { chapterId: "08e44970-d5fa-4e62-b750-93c1d0902c99", label: "PHY Electricity", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 0, MODERATE: 1, HARD: 2 } },
+      { chapterId: "cbf0cd21-bb77-46b3-a7cc-b8d5e9469426", label: "PHY Magnetic Effects of Electric Current", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 2, HARD: 0 } },
+      { chapterId: "9c6901c1-e162-42c8-afb4-07ce730d538b", label: "PHY Force and Laws of Motion", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "65aeabdf-8fa2-4d2f-b91b-1442885b723c", label: "PHY Sound (incl. the Oscillations seat)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 2, HARD: 0 } },
+      { chapterId: "17cfdfa0-e201-4a5e-8402-3e915dc971f7", label: "PHY Motion", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "baf73524-d5eb-43f4-917e-a5c9d928883f", label: "PHY Work and Energy", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "09018942-cca4-4b54-bf6b-6c1a360f1691", label: "PHY Gravitation (+ the Fluids seat: thrust, pressure, buoyancy)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      // No Foundation Course chapter covers these; drawn from free NDA PYQs,
+      // which unlike the Foundation rows already carry worked solutions.
+      { chapterId: "5dedf98c-7681-4f33-869e-f341313d8fd0", label: "PHY Heat and Thermodynamics", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "51f93cb7-95f0-4a12-af8b-6c894de8d17c", label: "PHY Modern Physics", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — Chemistry 15 ──────────────────────────────────────────────
+      { chapterId: "82892c84-a5ba-41db-a229-c6105acf7f8b", label: "CHE Carbon and Its Compounds (+ the Bonding seat)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 2, HARD: 0 } },
+      { chapterId: "92ab663b-7516-4b1f-9604-a6a20e7ef998", label: "CHE Structure of the Atom", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      { chapterId: "695fea8c-e966-4c6e-b585-bdd9a7323f49", label: "CHE Acids, Bases and Salts", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "33325289-969e-4b06-892d-3da4bce00b89", label: "CHE Matter in Our Surroundings", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "c4efaa8a-82fa-4e1c-9181-06eb16465bf8", label: "CHE Chemical Reactions and Equations", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "1ff615cf-3256-4f95-bd53-0e3807aa000e", label: "CHE Metals and Non-metals (+ the Industrial seats)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 1, HARD: 1 } },
+      { chapterId: "d14c8662-10f9-42c7-b03f-9260c6131c81", label: "CHE Hydrogen and Water", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — Biology 10 (Foundation Course; NDA Biology PYQ is exhausted) ─
+      { chapterId: "9990265b-e948-4e97-8d63-b8e2e580bb97", label: "BIO Life Processes (+ a Plant Biology seat)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 2, HARD: 0 } },
+      { chapterId: "7d63025f-f1bb-4975-b410-5b5168986045", label: "BIO Control and Coordination", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "8f0223e9-b65f-4e6d-8532-9419c126f8bf", label: "BIO The Fundamental Unit of Life", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "1b08c219-c055-41a8-9899-f1950683c3b3", label: "BIO Tissues (+ a Plant Biology seat)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "5c46629b-978d-45ed-b9d1-e3593b1c4b1d", label: "BIO How Do Organisms Reproduce", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 1 },
+      { chapterId: "be8227bd-721e-46ec-b71c-ff0c202d5ff1", label: "BIO Our Environment", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      // ── Part B — Geography 20 (NDA PYQ) ────────────────────────────────────
+      { chapterId: "6df02248-239f-49bd-9c2e-63cb0860defb", label: "GEO Indian Geo - Economy, Resources, Transport", sectionKey: "gk", quota: { EASY: 1, MODERATE: 3, HARD: 1 } },
+      { chapterId: "63289cd6-4373-4840-8d57-407e47844c97", label: "GEO Earth's Structure and Landforms", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 1 } },
+      { chapterId: "a5a3c06a-a8da-4cf1-96a4-608ea3279d14", label: "GEO Indian Geo - Physical Features", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 1 } },
+      { chapterId: "8c4cb7d9-c77d-4155-939f-9cf0ada26bba", label: "GEO Climatology, Atmosphere and Weather", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 1 } },
+      { chapterId: "3b4f15e9-42a8-4a7d-accc-53a4374e059f", label: "GEO World and Human Geography", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "5424e638-b1eb-4319-ad6f-cd6c238d758e", label: "GEO Earth in Space, Maps and Coordinates", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "b6db578c-0079-42f4-898b-dedc0bb4ba82", label: "GEO Oceanography", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — History 12 (NDA PYQ) ──────────────────────────────────────
+      { chapterId: "7362f273-e8bf-4c26-b1a2-5cc17e5d56f0", label: "HIS Modern India", sectionKey: "gk", quota: { EASY: 1, MODERATE: 3, HARD: 2 } },
+      { chapterId: "e376f822-a8e5-4ce2-b58b-e921c9b9ae9e", label: "HIS Medieval India", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "e87bba6c-60b7-4264-868f-0a50d688bcd6", label: "HIS Ancient India", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "c4efbafd-4cc9-4b06-8e03-259610410ab7", label: "HIS World History", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+
+      // ── Part B — Polity 6 (NDA PYQ) ────────────────────────────────────────
+      { chapterId: "a2f2ba52-9dfd-43e3-b220-2b6de50cb37f", label: "POL Government Structure", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      { chapterId: "d1448908-30ee-40e9-8f2f-920a64aed7bc", label: "POL Fundamental Rights, DPSP, Local Governance", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      { chapterId: "ecff6022-f64b-49d5-a5c1-4f89012e192b", label: "POL Indian Constitution", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "fccc9f7a-66da-4374-b48d-f65e8a09e4df", label: "POL World Polity and IR", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+
+      // ── Part B — Economics 1 (NDA PYQ; the subject is one chapter) ─────────
+      { chapterId: "4c64341f-f757-4d44-b1e4-a30572cd4bae", label: "ECO Indian Economy", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — Current Affairs 11 ────────────────────────────────────────
+      // NOT PYQ: a 2019 paper asks about 2019 facts, so CA has to come from the
+      // current year. Drawn from `Current Affairs_Sep26.docx` (ingested
+      // 2026-08-21, the newest CA pool; 88 PUBLIC, 77 not yet used in a paper).
+      // Seats follow the guide's CA weightage, capped by what that pool holds.
+      { chapterId: "2d7691db-838d-419c-8ae8-bd299af89482", label: "CA International Affairs", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      { chapterId: "2843a36f-4171-4d21-b8af-165d3ed2b7ad", label: "CA Government Schemes and Policy", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      { chapterId: "8643c509-7ea1-4b37-8c2d-5adc53c7f2eb", label: "CA Defence and Military Exercises", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "06f78bba-e820-49e4-ada5-7b2c90eb3c1d", label: "CA Sports", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "c5cd2e0e-f664-4967-abb6-a1033bcffec6", label: "CA Science and Technology", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "47cd81d5-4985-4a5a-b884-71f2c2de4634", label: "CA Awards, Honours and Culture", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "37f60677-b0d4-4c76-9431-60f0f603d324", label: "CA National Events and India GK", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "b9f361d6-4126-44da-a34c-b420370fc63f", label: "CA Environment, Ecology and Energy", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+    ],
+    exclude: [],
+  },
   {
     slug: "nda-binomial-dist-logs",
     title: "NDA Maths — Binomial Distribution & Logarithms (60 Q)",
@@ -276,18 +493,40 @@ const PAPERS: PaperSpec[] = [
     //     weight and Grammar/Vocabulary are filled to theirs with NDA's hardest
     //     MODERATE. That is why the paper's 30 MODERATE are concentrated here.
     //
-    // ⚠ CDS ENGLISH WAS TRIED FOR THIS AND REJECTED ON EVIDENCE — do not re-add it
-    // without a corpus-wide review first. It looked ideal: 294 HARD rows, the same
-    // UPSC style, and (checked by content_hash) ZERO overlap with NDA's HARD rows,
-    // so Grammar and Vocabulary could have been filled entirely with HARD. But all
-    // 2,280 CDS rows are PRIVATE pending a human spot-check — scanned booklets with
-    // NO printed key, so every answer is LLM-derived — and a blind re-derivation of
-    // the 27 rows this paper would have drawn found 8 defects in the 24 that could
-    // be derived, a 33% rate. THREE keys name the exact ANTONYM of the target word
-    // (magniloquent -> "terse", originates -> "culminates", vulnerable ->
-    // "impervious"). That is a systematic failure mode, not noise, so swapping out
-    // the bad picks does not help: the replacements come from the same pool.
-    // `audit:keys` cannot catch it either — the option sets are structurally fine.
+    // ⚠ THE CDS-ENGLISH REJECTION RECORDED HERE WAS WRONG — corrected 2026-08-23.
+    //
+    // This comment used to say CDS English had been tried and dropped on a blind
+    // re-derivation that found "8 defects in 24, a 33% rate", citing three keys
+    // that name "the exact ANTONYM of the target word" (magniloquent -> terse,
+    // originates -> culminates, vulnerable -> impervious).
+    //
+    // All three are ANTONYM QUESTIONS. Their `context` reads "Directions:
+    // opposite in meaning to the underlined word", their three distractors are
+    // synonyms of the target, and the keyed antonym is correct — that is a
+    // well-formed antonym item, not an inversion. The earlier check had run
+    // WITHOUT the context field, so it read antonym items as synonym items and
+    // flagged every correct key as inverted. The 33% was a measurement artifact.
+    //
+    // Re-run properly (95 questions, 13 whole sets, directions supplied, key and
+    // solution withheld at dump time): **89/95 agreed, 93.7%**; HIGH-confidence
+    // rows 71/72. Of six disagreements, ONE is a genuine stored-key error
+    // (2024-II Q97 immanent/imminent), one probable, four ambiguous with the
+    // stored key defensible. Confirmed defect rate ~1%.
+    //
+    // The 89 agreements are recorded in `question_reviews` (run_label
+    // "bank-paper:cds-english-blind-2026-08-23"), and `nda-gat-cds-1-english`
+    // draws from them under `requireConfirmedReview`.
+    //
+    // WHAT STILL HOLDS: all 2,280 CDS rows are PRIVATE (no printed key, every
+    // answer LLM-derived), so a chapter must opt in via `includePrivate` AND the
+    // rows must carry a confirmed review. Do not draw un-reviewed CDS rows.
+    //
+    // THE TRANSFERABLE LESSON: a shared-context corpus cannot be re-derived from
+    // stem + options alone — the directions are the half that says what is being
+    // asked. See scripts/bank-paper/dump-english-blind.ts.
+    //
+    // This paper's own English half is unchanged and still draws NDA + CDS by
+    // difficulty quota; it was never built (no such paper exists in the org).
     slug: "nda-gat-hard-150",
     title: "NDA GAT — HARD Mock (150 Q)",
     examId: EXAM_ID,
@@ -403,6 +642,12 @@ type Row = {
   visibility: "PUBLIC" | "PRIVATE";
   text: string;
   solution: string | null;
+  /** Set/context/number drive the English block rules — see ./english.ts. */
+  set_id: string | null;
+  context: string | null;
+  question_number: string | null;
+  subtopics: { name: string } | null;
+  chapters: { subjects: { name: string; exams: { name: string } } } | null;
   options: { label: string; text: string; is_correct: boolean }[];
 };
 
@@ -462,7 +707,9 @@ async function auditEnglishPicks(
 }
 
 /** The paper's sections in printed order — one synthesised entry for the old single-section shape. */
-function sectionsOf(spec: PaperSpec): { key: string; label: string }[] {
+function sectionsOf(
+  spec: PaperSpec
+): { key: string; label: string; ordering?: "difficulty" | "english-blocks" }[] {
   if (spec.sections?.length) return spec.sections;
   if (spec.section) return [spec.section];
   throw new Error(`paper "${spec.slug}" declares neither section nor sections`);
@@ -519,7 +766,10 @@ async function fetchCandidates(client: SupabaseClient, spec: PaperSpec): Promise
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await client
       .from("questions")
-      .select("id, chapter_id, difficulty, question_kind, visibility, text, solution, options(label, text, is_correct)")
+      .select(
+        "id, chapter_id, difficulty, question_kind, visibility, text, solution, set_id, context, question_number, "
+          + "subtopics(name), chapters(subjects(name, exams(name))), options(label, text, is_correct)"
+      )
       // PRIVATE rows are fetched only when some chapter opts in, and are filtered
       // back out per chapter below — see ChapterPlan.includePrivate.
       .in("visibility", spec.chapters.some((c) => c.includePrivate) ? ["PUBLIC", "PRIVATE"] : ["PUBLIC"])
@@ -531,11 +781,42 @@ async function fetchCandidates(client: SupabaseClient, spec: PaperSpec): Promise
       .order("id", { ascending: true }) // stable paging
       .range(from, from + PAGE - 1);
     if (error) throw new Error(`fetchCandidates: ${error.message}`);
-    rows.push(...((data ?? []) as Row[]));
+    rows.push(...((data ?? []) as unknown as Row[]));
     if (!data || data.length < PAGE) break;
   }
   // A key with no working is not shippable in a teacher's answer key.
   return spec.requireSolution ? rows.filter((r) => (r.solution ?? "").trim() !== "") : rows;
+}
+
+/**
+ * Ids among `candidateIds` that carry a question_reviews row with
+ * verdict='confirmed'.
+ *
+ * Chunked at 200 because `.in()` puts the list in the URL — this repo has
+ * already had a query 400 at 833 ids, and that limit is separate from (and much
+ * smaller than) the 1000-row cap on a result.
+ */
+/** The spec's own label for a chapter id — used to give EnglishRow its chapter. */
+function chapterLabelOf(spec: PaperSpec, chapterId: string): string {
+  const ch = spec.chapters.find((c) => c.chapterId === chapterId);
+  return (ch?.label ?? "").replace(/\s*\(CDS\)\s*$/, "").trim();
+}
+
+async function fetchConfirmedReviewed(
+  client: SupabaseClient,
+  candidateIds: string[]
+): Promise<Set<string>> {
+  const out = new Set<string>();
+  for (let i = 0; i < candidateIds.length; i += 200) {
+    const { data, error } = await client
+      .from("question_reviews")
+      .select("question_id")
+      .eq("verdict", "confirmed")
+      .in("question_id", candidateIds.slice(i, i + 200));
+    if (error) throw new Error(`fetchConfirmedReviewed: ${error.message}`);
+    for (const r of data ?? []) out.add(r.question_id as string);
+  }
+  return out;
 }
 
 /**
@@ -615,7 +896,27 @@ async function main() {
   const flags = auditRows(all);
   const hardFlagged = new Set(flags.filter((f) => f.kind !== "SOLN≠KEY").map((f) => f.id));
 
-  const eligible = all.filter((r) => !excluded.has(r.id) && !used.has(r.id) && !hardFlagged.has(r.id));
+  // Only rows an actual review confirmed, when the spec demands it. Read from
+  // question_reviews so the gate tracks the evidence rather than a list someone
+  // has to remember to update.
+  // Fetch if the SPEC or ANY CHAPTER asks for it. Gating this on the spec flag
+  // alone left `confirmed` null while per-chapter filters still ran, and a null
+  // set makes that filter pass everything — the gate silently did nothing.
+  let confirmed: Set<string> | null = null;
+  if (spec.requireConfirmedReview || spec.chapters.some((c) => c.requireConfirmedReview)) {
+    confirmed = await fetchConfirmedReviewed(client, all.map((r) => r.id));
+    console.log(
+      `requireConfirmedReview: ${confirmed.size} of ${all.length} candidate(s) carry a confirmed review`
+    );
+  }
+
+  const eligible = all.filter(
+    (r) =>
+      !excluded.has(r.id) &&
+      !used.has(r.id) &&
+      !hardFlagged.has(r.id) &&
+      true
+  );
   const droppedUsed = all.filter((r) => used.has(r.id)).length;
   console.log(`excluded: ${spec.exclude.length} listed defect(s), ${droppedUsed} already in a paper, ${hardFlagged.size} audit STRUCT/DUP`);
   for (const [id, reason] of excluded) console.log(`  - ${id}  ${reason}`);
@@ -631,7 +932,20 @@ async function main() {
       // to opt in explicitly before one can reach a printed paper.
       .filter((r) => r.visibility === "PUBLIC" || ch.includePrivate === true)
       .filter((r) => (ch.kinds ?? spec.kinds).includes(r.question_kind as "pyq" | "practice"))
-      .map((r) => ({ id: r.id, chapterId: r.chapter_id, difficulty: r.difficulty }));
+      .filter((r) => {
+        const need = ch.requireConfirmedReview ?? spec.requireConfirmedReview ?? false;
+        return !need || confirmed === null || confirmed.has(r.id);
+      })
+      .map((r) => ({
+        id: r.id,
+        chapterId: r.chapter_id,
+        difficulty: r.difficulty,
+        setId: r.set_id,
+        subtopic: r.subtopics?.name ?? null,
+        exam: r.chapters?.subjects?.exams?.name ?? null,
+        contextLen: (r.context ?? "").length,
+        questionNumber: Number(r.question_number ?? 0),
+      }));
 
     let picked: Cand[];
     let want: string;
@@ -651,8 +965,36 @@ async function main() {
         console.log(`  ⚠  SHORTFALL: ${res.shortfall} short — pool too small`);
         shortfallTotal += res.shortfall;
       }
+    } else if (ch.blocks) {
+      // Set-aware: take each named block in printed order. A shortfall is
+      // REPORTED, never back-filled from another set — silently substituting
+      // would put a second directions block where the spec asked for one.
+      const picked_: Cand[] = [];
+      for (const b of ch.blocks) {
+        const inSet = pool
+          .filter((r) => r.setId === b.setId)
+          .sort((x, y) => (x.questionNumber ?? 0) - (y.questionNumber ?? 0));
+        const want_ = b.take ?? inSet.length;
+        if (inSet.length === 0) {
+          console.log(`  ⚠  BLOCK ${b.setId} — no eligible questions; block dropped`);
+          shortfallTotal += want_;
+          continue;
+        }
+        if (b.take == null && inSet.length < 2) {
+          console.log(`  ⚠  BLOCK ${b.setId} — only ${inSet.length} question(s); below MIN_BLOCK_SIZE`);
+        }
+        if (inSet.length < want_) {
+          console.log(
+            `  ⚠  BLOCK ${b.setId} — asked ${want_}, only ${inSet.length} eligible; SHORT ${want_ - inSet.length}`
+          );
+          shortfallTotal += want_ - inSet.length;
+        }
+        picked_.push(...inSet.slice(0, want_));
+      }
+      picked = picked_;
+      want = `blocks ${ch.blocks.map((b) => b.take ?? "all").join("+")}`;
     } else {
-      throw new Error(`chapter "${ch.label}" declares neither quota nor take`);
+      throw new Error(`chapter "${ch.label}" declares neither quota, take nor blocks`);
     }
 
     const fmt = (rows: Cand[]) => DIFFICULTIES.map((d) => `${d[0]}${rows.filter((p) => p.difficulty === d).length}`).join("/");
@@ -665,10 +1007,33 @@ async function main() {
     bySection.get(sectionKeyOf(spec, ch))!.push(picked);
   }
 
-  const placed = orderPaperBySections(
-    sectionsOf(spec).map((s) => ({ key: s.key, groups: bySection.get(s.key)! })),
-    spec.layout ?? "interleave"
-  );
+  // A section flagged "english-blocks" is ordered by orderEnglishBlocks, which
+  // groups by subtopic and keeps each directions set contiguous. Routing it
+  // through orderPaper instead would sweep EASY -> MODERATE -> HARD and split
+  // every set — the exact defect ./english.ts was written to make unbuildable.
+  const placed: { sectionKey: string; cand: Cand }[] = [];
+  for (const sec of sectionsOf(spec)) {
+    const groups = bySection.get(sec.key)!;
+    if (sec.ordering === "english-blocks") {
+      const rows: EnglishRow[] = groups.flat().map((c) => ({
+        id: c.id,
+        chapter: chapterLabelOf(spec, c.chapterId),
+        subtopic: c.subtopic ?? null,
+        setId: c.setId ?? null,
+        exam: c.exam ?? "",
+        difficulty: c.difficulty,
+        contextLen: c.contextLen ?? 0,
+      }));
+      const byId = new Map(groups.flat().map((c) => [c.id, c]));
+      for (const r of orderEnglishBlocks(rows)) {
+        placed.push({ sectionKey: sec.key, cand: byId.get(r.id)! });
+      }
+      continue;
+    }
+    placed.push(
+      ...orderPaperBySections([{ key: sec.key, groups }], spec.layout ?? "interleave")
+    );
+  }
   const ordered = placed.map((p) => p.cand);
   const byDiff = DIFFICULTIES.map((d) => `${d} ${ordered.filter((q) => q.difficulty === d).length}`).join(" · ");
   console.log(`\nTOTAL ${ordered.length} questions — ${byDiff}`);
