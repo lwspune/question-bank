@@ -93,6 +93,172 @@ export type PaperSpec = {
 };
 
 export const PAPERS: Record<string, PaperSpec> = {
+  // Oswaal "NDA/NA Mathematics - Sample Question Paper 1" (book pp.306-314) - a 120-q
+  // publisher-authored MOCK (not a UPSC PYQ), so it files as practice. Spans 30 of the
+  // 31 NDA Maths chapters, hence multi-chapter mode with a per-record `chapter`.
+  //
+  // **A FULL PRINTED ANSWER KEY EXISTS** (pp.314-316), with a topic + chapter tag per
+  // question, so no answer was derived blind - each solution was authored TO the printed
+  // key. The book's own chapter labels ("2D", "Vector", "Integration", "Matrix and
+  // Determinant") are NOT our canonical names and were mapped per question.
+  //
+  // The book prints NO worked solutions ("SCAN THE CODE / For elaborated Solutions"), so
+  // all 120 solutions are authored here.
+  //
+  // Stems + options are VISION-transcribed: the PDF text layer is born-digital but
+  // arithmetically lossy - fractions flatten and interleave (Q7's limit extracts as
+  // "tan 7 tan 3 / tan 5 tan", Q14's four options are unreadable noise) and exponents
+  // flatten ("(x + 3)3" for (x+3)^3). Prose survives; math does not.
+  //
+  // Dedup vs the 6,709-row NDA Mathematics corpus: 67 NEW / 43 MAYBE / 10 DUP. The 10
+  // confirmed duplicates (Q18, 38, 52, 58, 59, 74, 76, 80, 99, 116) carry status "dup"
+  // and stay PRIVATE, backing the paper only.
+  "oswaal-nda-maths-sp1": {
+    slug: "oswaal-nda-maths-sp1",
+    title: "NDA Mathematics — Oswaal Sample Question Paper 1 (120 Q)",
+    recordsFile: "oswaal-nda-maths-sp1.records.json",
+    outName: "Tags_NDA_Oswaal_Maths_SP1",
+    sourceFile: "NDA_Maths_Oswaal_Sample_Paper_1.pdf",
+    subjectName: "Mathematics",
+    chapters: {
+      "3D Geometry": [
+        "Direction Cosines and Ratios",
+        "Distance, Section, and Collinearity in 3D",
+        "Sphere",
+        "The Straight Line in 3D",
+      ],
+      "Application of Derivatives": [
+        "Monotonicity, Extrema, and Critical Points",
+        "Optimisation — Geometric, Trigonometric, AM-GM",
+      ],
+      "Applications of Integration": [
+        "Area Between Two Curves and Intersection Points",
+        "Area Bounded by a Curve, Lines, and Axes",
+      ],
+      "Binary Numbers": [
+        "Binary to Decimal Conversion",
+      ],
+      "Binomial Distribution": [
+        "Mean, Variance, and Parameter Estimation in B(n, p)",
+      ],
+      "Binomial Theorem": [
+        "Coefficients and Specific Terms in Expansion",
+      ],
+      "Circles": [
+        "Circle Equation — Centre, Radius, Diameter, and Properties",
+      ],
+      "Complex Numbers": [
+        "Cube Roots of Unity",
+        "Powers and Roots",
+      ],
+      "Conics": [
+        "Conic Sections — Identification and Eccentricity Comparison",
+        "Parabola — Equation, Properties, and Latus Rectum",
+      ],
+      "Definite Integration": [
+        "Fundamental Theorem, Periodic Integrals, and Leibniz Rule",
+        "Integration of Absolute Value, Piecewise, and Greatest Integer Functions",
+      ],
+      "Differential Equations": [
+        "Order, Degree, and Solutions of ODE",
+        "Solving and Verifying ODEs — Separable, IVP, and Applications",
+      ],
+      "Differentiation": [
+        "Differentiability of Absolute Value, Piecewise, and Greatest Integer Functions",
+        "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+        "Parametric, Implicit, and Higher-Order Derivatives",
+      ],
+      "Functions": [
+        "Composition and Inverse of Functions",
+        "Domain, Range, and Function Properties",
+      ],
+      "Height & Distance": [
+        "Heights and Distances from Angles of Elevation",
+        "Shadows, Leaning Structures, and Special Geometry",
+      ],
+      "Indefinite Integration": [
+        "Integration by Substitution — Algebraic, Trigonometric, and Composite Forms",
+      ],
+      "Inverse Trigonometry": [
+        "Evaluation of Composite Inverse Trigonometric Expressions",
+        "Identities, Properties, and Sum-Difference Formulas",
+        "Solving Inverse Trigonometric Equations and Geometric Applications",
+      ],
+      "Limits & Continuity": [
+        "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+        "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+      ],
+      "Lines": [
+        "Angle Between Lines, Parallelism, and Perpendicularity",
+        "Distance, Section, and Locus",
+        "Equation, Slope, and Family of Lines",
+        "Triangles, Quadrilaterals, and Polygons",
+      ],
+      "Logarithms": [
+        "Logarithm Identities, Change of Base, and Sums",
+      ],
+      "Matrices & Determinants": [
+        "Cofactors, Adjoint, and Inverse",
+        "Special Determinants — Trig, Complex, Roots of Unity, Polynomial",
+      ],
+      "Permutation & Combination": [
+        "Combinations",
+        "Factorials and Binomial Coefficients",
+        "Forming Numbers from Digits",
+        "Geometric Counting",
+      ],
+      "Probability": [
+        "Conditional Probability, Total Probability, and Bayes' Theorem",
+        "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+        "Independent Events",
+        "Probability via Counting",
+      ],
+      "Properties of Triangle": [
+        "In-circle and Regular Polygon Geometry",
+      ],
+      "Quadratic Equations": [
+        "Nature of Roots and Boundary Conditions",
+        "Vieta's Relations and Root-Coefficient Identities",
+      ],
+      "Sequence & Series": [
+        "Arithmetic Progressions",
+        "Geometric Progressions",
+        "Harmonic Progressions and the Three Means",
+        "Interrelating AP, GP and HP",
+        "Special Series and Special Sums",
+      ],
+      "Sets & Relations": [
+        "Counting Sets, Subsets, and Inclusion-Exclusion",
+        "Relations — Properties, Cartesian Product, and Counting",
+        "Set Operations, Identities, and Cartesian Products of Sets",
+      ],
+      "Statistics": [
+        "Dispersion — Standard Deviation, Variance, Mean Deviation",
+        "Measures of Central Tendency — Mean, Median, Mode",
+        "Regression and Correlation",
+      ],
+      "Trigonometric Equations": [
+        "General Solutions and Counting Solutions of Trigonometric Equations",
+      ],
+      "Trigonometric Identities": [
+        "Compound Angle Formulas",
+        "Maximum and Minimum of Trigonometric Expressions",
+        "Multiple and Half-Angle Formulas",
+        "Specific Values and Quadrants",
+      ],
+      "Vectors": [
+        "Cross Product and Triple Product",
+        "Dot Product and Angle",
+        "Magnitude, Components, Projection, and Direction Cosines",
+      ],
+    },
+    pyqNote:
+      "NDA Maths practice — Oswaal NDA/NA Sample Question Paper 1 (Mathematics, 120 Q)",
+    examName: "NDA",
+    section: { key: "oswaal-maths-sp1", label: "Oswaal Maths Sample Paper 1" },
+    bankAdd: true,
+  },
+
   // LWS "Chemistry Mock CM1" — a 50-q NDA Chemistry mock spanning the Class 9/10 NCERT
   // chemistry spine: Acids/Bases/Salts (Q1-20), Carbon and its Compounds (Q21-36, with
   // hardness of water + mass-per-cent folded in) and Metals/Non-metals + general

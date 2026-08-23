@@ -12,7 +12,31 @@ export type Difficulty = "EASY" | "MODERATE" | "HARD";
 
 export const DIFFICULTIES: Difficulty[] = ["EASY", "MODERATE", "HARD"];
 
-export type Cand = { id: string; chapterId: string; difficulty: Difficulty };
+/**
+ * A selectable question.
+ *
+ * `setId` and the fields under it are OPTIONAL and were added for the English
+ * section, whose questions share printed "Directions:" blocks. Selecting and
+ * ordering per QUESTION — which is all `Cand` could express before — is
+ * structurally blind to those blocks, and the difficulty sort in `orderPaper`
+ * then actively tears them apart. See scripts/bank-paper/english.ts for the
+ * measured damage that caused.
+ *
+ * Optional rather than required so every paper built before sets existed selects
+ * and orders byte-identically.
+ */
+export type Cand = {
+  id: string;
+  chapterId: string;
+  difficulty: Difficulty;
+  setId?: string | null;
+  subtopic?: string | null;
+  exam?: string | null;
+  /** Length of the shared directions/passage text; 0 means the question has none. */
+  contextLen?: number;
+  /** Printed number in the source paper — the within-set order. */
+  questionNumber?: number;
+};
 
 export type Quota = Record<Difficulty, number>;
 
