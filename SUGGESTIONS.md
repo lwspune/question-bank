@@ -53,11 +53,30 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ### `/browse` is hitting the same 8s statement-timeout wall — and unlike the dashboard, this one CAN reach students
 
-Found while diagnosing the `/dashboard` 500s (see the 2026-08-22 Decisions entry). The `questions` list query is being cancelled with SQLSTATE 57014 too: **12 cancellations on 2026-08-21, 2 on 2026-08-22**, plus 2 on the `source_file` read used by ingestion scripts.
+**MEASURED 2026-08-22 — the investigation is DONE, do not repeat it.** Deferred on the user's call ("leave it"): nobody has complained, and unlike the dashboard bug it is intermittent rather than a coin flip. What it currently costs is CI-gate flakes.
 
-**Why it matters more than the dashboard bug did:** `/dashboard` could only ever be seen by one person (LWS Pune has a single ADMIN, and TEACHERs redirect to `/browse` before the stats call). `/browse` is public. `queryQuestions` already retries a 57014 twice before throwing, so most cancellations are absorbed — **but the logs cannot distinguish a request that recovered on retry from one that failed all three attempts**, because both emit cancellations and only the count differs. So the number of visitors who actually saw an error page is currently **unknown, and could be zero**.
+Production, `pg_stat_statements` over the 3 days to 2026-08-22 — the `/browse` phase-A id query (`exam_id` + `question_kind`, `ORDER BY created_at DESC`):
 
-**How to apply:** measure it the way `get_dashboard_stats` was measured, which took about twenty minutes and is directly reusable — pull the query text out of `postgres_logs` filtered to `sql_state_code = '57014'`, find its row in `pg_stat_statements` for mean/max/stddev against the 3s (anon) or 8s (authenticated) cap, then `EXPLAIN (ANALYZE, TIMING OFF, BUFFERS)` it under `set local role anon` inside a rolled-back transaction. Note the trap that cost time in the dashboard investigation: `SET ROLE` reproduces RLS faithfully but **does NOT reproduce that role's `statement_timeout`**, which is applied at login. Check first whether the RLS predicate is forcing a Seq Scan the way it was for `get_dashboard_stats` (4,470ms vs 165ms for identical SQL, role the only variable) — the read policy on `questions` is shared, so the same cause is plausible but unproven. Instrumenting how often a retry actually saves a request would be worth more than the fix if the answer turns out to be "always".
+| Caller | Calls | Mean | Max | Cap |
+|---|---:|---:|---:|---:|
+| authenticated | 402 | **1,894 ms** | **7,460 ms** | 8,000 ms |
+| anon | 758 | 531 ms | 2,439 ms | 3,000 ms |
+| anon, no exam filter | — | — | **2,229 ms** (53,488 index entries read for 25 rows) | 3,000 ms |
+
+**THE CAUSE IS THE SORT, and that is isolated, not inferred.** Same query, same filters, only the ORDER BY varying (anon, JEE, `question_kind='pyq'`):
+
+| Sort | Plan | Buffers | Time |
+|---|---|---:|---:|
+| *(none)* | Index Only Scan, 25 rows read | 30 | **0.2 ms** |
+| `id ASC` | PK scan, no sort | 136 | 88.7 ms |
+| `created_at DESC` (shipped) | scan **10,493** rows + top-N sort | 2,242 | 7.6 ms - 2,229 ms |
+| `pyq_year DESC` | scan 10,493 rows + top-N sort | 8,118 | **3,116 ms** |
+
+**Why migration 0077's index does not help, despite being exactly the right shape** (`(question_kind, exam_id, created_at DESC, source_row, id) WHERE visibility='PUBLIC'`, confirmed `indisvalid`): **PostgreSQL never turns the `question_kind =` equality into an Index Cond — it is always a Filter.** Verified three ways, including a probe where `question_kind` was the ONLY predicate (still a Filter; 53,488 entries scanned for 25 rows). Because the index's LEADING column is never pinned to one value, index order is not `created_at` order, so the sort cannot be skipped. **Root cause of that refusal is NOT established** — it is an enum column, the index is valid, and the leading column is correct. That is the one open question.
+
+Second finding: **authenticated is ~3.6x worse than anon** because a signed-in user may see PRIVATE rows, so no `WHERE visibility='PUBLIC'` partial index is usable at all. It falls back to `questions_filter_idx` (10,336 buffers).
+
+**How to apply — and the sequencing matters more than the fix.** Reordering the sort is a PRODUCT change, not a performance fix: every candidate ordering needs its own index, `pyq_year DESC` (the most useful to a student) currently measures WORST, and `id ASC` only looks cheap here because this filter matches ~18% of the table — on a selective filter (a 15-question chapter) that plan walks the entire primary key and is far worse. So **decide the ordering BEFORE building the index, or you will build one for an order you are about to change.** Then either lead the index with `exam_id` (which the planner demonstrably does use as an Index Cond) or move `question_kind` into the index PREDICATE rather than a key column, sidestepping the enum problem entirely. Cost either way: another index on the most heavily-written table in the schema, paid on every ingest — this project has declined that trade before, deliberately. Before committing, get the usage shape: the filter split is known (48% no filters, 31% exam-only, 11% chapter/subtopic) but not WHO — if `/browse` is mostly staff building papers, newest-first may simply be correct and the whole question is moot.
 
 ### `get_format_mix` is being called ~17 times a day by something that no longer exists in `src/`
 
