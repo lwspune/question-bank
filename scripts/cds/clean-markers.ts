@@ -23,12 +23,21 @@
  * and inventing a plausible id would put a fabrication where the schema promises a
  * fact. The note says "model not recorded" instead.
  *
- * VERDICT IS `unverifiable`, NOT `confirmed`. The source booklets carry no printed
- * key, so there is nothing to verify against — and the 2026-08-21 blind pass that
- * examined these rows ran without the section directions, which is exactly how it
- * produced three wrong "fixes" (see fix-keys.ts). Recording `confirmed` here would
- * turn an unverified answer green, which is the failure 0074's own header warns
- * about.
+ * VERDICT IS `unverifiable` — BUT ONLY FOR A ROW THAT HAS NO BETTER EVIDENCE.
+ * The source booklets carry no printed key, so by default there is nothing to
+ * verify against, and the 2026-08-21 blind pass that examined these rows ran
+ * without the section directions, which is exactly how it produced three wrong
+ * "fixes" (see fix-keys.ts). Recording `confirmed` on that basis would turn an
+ * unverified answer green, which is the failure 0074's own header warns about.
+ *
+ * SUPERSEDED FOR SOME ROWS (2026-08-23). A re-run WITH the directions supplied
+ * blind-re-derived 95 CDS questions and agreed with the stored key on 89
+ * (93.7%); those carry a `confirmed` review under run_label
+ * "bank-paper:cds-english-blind-2026-08-23". `question_reviews` is append-only
+ * and the newest row is the current belief, so writing `unverifiable` over one
+ * of those would DOWNGRADE a row that has genuinely been checked. This script
+ * therefore strips the marker from every row but emits a review only where none
+ * already confirms the key.
  *
  * SAFE ON HASHES: `contentHash` takes question + options + answer. `solution` is
  * not an input, so nothing here can desync dedup identity. Asserted at run time.
@@ -102,8 +111,25 @@ async function main() {
     return;
   }
 
+  // Rows a properly-instrumented pass has already confirmed. Chunked at 200
+  // because `.in()` puts the list in the URL.
+  const alreadyConfirmed = new Set<string>();
+  {
+    const ids = inScope.map((r) => r.id);
+    for (let i = 0; i < ids.length; i += 200) {
+      const { data, error } = await client
+        .from("question_reviews")
+        .select("question_id")
+        .eq("verdict", "confirmed")
+        .in("question_id", ids.slice(i, i + 200));
+      if (error) throw new Error(`question_reviews: ${error.message}`);
+      for (const r of data ?? []) alreadyConfirmed.add(r.question_id as string);
+    }
+  }
+
   const reviews: ReviewInput[] = [];
   let changed = 0;
+  let skippedReview = 0;
 
   for (const r of inScope) {
     const before = r.solution ?? "";
@@ -150,6 +176,15 @@ async function main() {
       if (error) throw new Error(`solution ${r.id}: ${error.message}`);
     }
 
+    if (alreadyConfirmed.has(r.id)) {
+      // A confirmation already stands; `unverifiable` is APPEND-ONLY and newest
+      // wins, so emitting one here would overwrite better evidence with worse.
+      skippedReview += 1;
+      console.log(`  provenance: already confirmed by a directions-supplied pass — no review emitted`);
+      console.log();
+      continue;
+    }
+
     reviews.push({
       questionId: r.id,
       // Unchanged by this edit — solution is not a hash input.
@@ -170,6 +205,10 @@ async function main() {
   }
 
   console.log(`${changed} row(s) ${apply ? "cleaned" : "would be cleaned"}.`);
+  console.log(
+    `${reviews.length} provenance review(s) to record; ` +
+      `${skippedReview} skipped (already confirmed by a directions-supplied pass).`
+  );
 
   if (apply) {
     const res = await recordReviews(client, reviews);
