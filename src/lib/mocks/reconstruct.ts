@@ -135,6 +135,28 @@ export function neetMockTitle(year: number, isRe: boolean): string {
   return `${isRe ? "Re-NEET" : "NEET"} (UG) ${year}`;
 }
 
+/** A CDS sitting within a year: UPSC's own CDS (I) / CDS (II) labels. */
+export type CdsEdition = "I" | "II";
+
+/**
+ * CDS slug — edition-aware, e.g. "cds-2026-i-english", "cds-2025-ii-english".
+ *
+ * THE REASON THIS EXISTS: `pyq_month` is NULL on every CDS row, so the generic
+ * mockSlug() emits the SAME slug for the I and II sittings of one year — and
+ * since the mock id is slugToUuid(slug), the second upsert would SILENTLY
+ * OVERWRITE the first, leaving one sitting of that year missing with no error.
+ * The edition segment is what keeps the two sittings distinct. (NEET solves the
+ * same null-month problem with its `-re` segment.)
+ */
+export function cdsMockSlug(year: number, edition: CdsEdition): string {
+  return `cds-${year}-${edition.toLowerCase()}-english`;
+}
+
+/** CDS title, e.g. "CDS (I) 2026 — English" (the scripts/cds pyqNote form). */
+export function cdsMockTitle(year: number, edition: CdsEdition): string {
+  return `CDS (${edition}) ${year} — English`;
+}
+
 /**
  * Check reconstructed rows against the blueprint. Returns a list of issue
  * strings (empty = the paper faithfully reconstructs). Never throws.

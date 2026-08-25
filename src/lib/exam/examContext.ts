@@ -140,6 +140,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "CDS", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/cds", // exam hub: "coming soon" until CDS notes ship
+    hasMocks: true, // CDS English mocks (2017-I … 2026-I) published at /mock
   },
   {
     slug: "foundation-course",

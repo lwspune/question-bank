@@ -1845,6 +1845,32 @@
   "options": [
    {
     "label": "A",
+    "text": "A-3, B-4, C-1, D-2"
+   },
+   {
+    "label": "B",
+    "text": "A-2, B-1, C-4, D-3"
+   },
+   {
+    "label": "C",
+    "text": "A-2, B-4, C-1, D-3"
+   },
+   {
+    "label": "D",
+    "text": "A-3, B-1, C-4, D-2"
+   }
+  ],
+  "answer": "B",
+  "reasoning": "A. Vernacular -> 2 (language of ordinary people); B. Rhetoric -> 1 (language intended to influence people); C. Parlance -> 4 (language used by a particular group of people); D. Jargon -> 3 (language used for a specialized communication). That pairing is printed code (b). KEY FIX PENDING: must move D -> B via scripts/cds/apply-key-fixes.ts. [Options repaired 2026-08-25 from source p17: the row had carried Q72's code table.]",
+  "confidence": "HIGH",
+  "difficulty": "HARD"
+ },
+ {
+  "number": 72,
+  "stem": "| List I | List II |\n| --- | --- |\n| A. Internecine | 1. Officially cancelling the power of an agreement |\n| B. Revoke | 2. To clear someone officially from an earlier accusation |\n| C. Exonerate | 3. Things occurring between people of same community |\n| D. Venerable | 4. Valued and respected |",
+  "options": [
+   {
+    "label": "A",
     "text": "A-3, B-1, C-2, D-4"
    },
    {
@@ -1860,35 +1886,9 @@
     "text": "A-4, B-1, C-2, D-3"
    }
   ],
-  "answer": "D",
-  "reasoning": "B. Rhetoric -> 1 (language intended to influence people); D. Jargon -> 3 (specialized communication). The remaining {2,4} split as A. Vernacular -> 4 (a particular group/region's language) and C. Parlance -> 2 (common everyday speech), giving A-4, B-1, C-2, D-3.",
-  "confidence": "MEDIUM",
-  "difficulty": "HARD"
- },
- {
-  "number": 72,
-  "stem": "| List I | List II |\n| --- | --- |\n| A. Internecine | 1. Officially cancelling the power of an agreement |\n| B. Revoke | 2. To clear someone officially from an earlier accusation |\n| C. Exonerate | 3. Things occurring between people of same community |\n| D. Venerable | 4. Valued and respected |",
-  "options": [
-   {
-    "label": "A",
-    "text": "A-2, B-4, C-3, D-1"
-   },
-   {
-    "label": "B",
-    "text": "A-2, B-1, C-4, D-3"
-   },
-   {
-    "label": "C",
-    "text": "A-2, B-4, C-1, D-3"
-   },
-   {
-    "label": "D",
-    "text": "A-3, B-1, C-4, D-2"
-   }
-  ],
-  "answer": "D",
-  "reasoning": "Definitionally A. Internecine -> 3 (between people of same community), B. Revoke -> 1 (officially cancel an agreement), C. Exonerate -> 2 (clear from accusation), D. Venerable -> 4 (valued and respected). Only option (d) carries the correct A-3 and B-1 anchors; the printed C/D values appear OCR/print-degraded.",
-  "confidence": "LOW",
+  "answer": "A",
+  "reasoning": "A. Internecine -> 3 (things occurring between people of same community); B. Revoke -> 1 (officially cancelling the power of an agreement); C. Exonerate -> 2 (to clear someone officially from an earlier accusation); D. Venerable -> 4 (valued and respected). That pairing is printed code (a). KEY FIX PENDING: must move D -> A via scripts/cds/apply-key-fixes.ts. [Options repaired 2026-08-25 from source p17: the row had carried a mis-read of Q71's code table, and no option matched the derivable pairing.]",
+  "confidence": "HIGH",
   "difficulty": "HARD"
  },
  {
@@ -1905,21 +1905,47 @@
    },
    {
     "label": "C",
-    "text": "A-2, B-4, C-1, D-3"
+    "text": "A-4, B-2, C-1, D-3"
    },
    {
     "label": "D",
-    "text": "A-4, B-2, C-1, D-3"
+    "text": "A-4, B-1, C-2, D-3"
    }
   ],
-  "answer": "D",
-  "reasoning": "A. Atonement -> 4 (making amends for mistakes); B. Sacrilege -> 2 (contaminating a holy place); C. Clawback -> 1 (retrieving money already paid); D. Bandwagon -> 3 (involvement of a large number of people).",
+  "answer": "C",
+  "reasoning": "A. Atonement -> 4 (making amends for mistakes); B. Sacrilege -> 2 (contaminating a holy place); C. Clawback -> 1 (retrieving money already paid); D. Bandwagon -> 3 (involvement of a large number of people). That pairing is printed code (c). KEY FIX PENDING: must move D -> C via scripts/cds/apply-key-fixes.ts. [Options C and D repaired 2026-08-25 from source p17: C had carried a row of Q71's code table and D had carried printed (c).]",
   "confidence": "HIGH",
   "difficulty": "MODERATE"
  },
  {
   "number": 74,
   "stem": "| List I | List II |\n| --- | --- |\n| A. Felony | 1. A long written piece of criticism |\n| B. Restitution | 2. To return a lost or stolen article |\n| C. Chagrin | 3. Serious crime |\n| D. Diatribe | 4. Distressed on account of humiliation |",
+  "options": [
+   {
+    "label": "A",
+    "text": "A-1, B-2, C-4, D-3"
+   },
+   {
+    "label": "B",
+    "text": "A-1, B-4, C-2, D-3"
+   },
+   {
+    "label": "C",
+    "text": "A-3, B-2, C-4, D-1"
+   },
+   {
+    "label": "D",
+    "text": "A-3, B-4, C-2, D-1"
+   }
+  ],
+  "answer": "C",
+  "reasoning": "A. Felony -> 3 (serious crime); B. Restitution -> 2 (return a lost or stolen article); C. Chagrin -> 4 (distressed on account of humiliation); D. Diatribe -> 1 (a long written piece of criticism). That pairing is printed code (c). KEY FIX PENDING: must move D -> C via scripts/cds/apply-key-fixes.ts. [Options repaired 2026-08-25 from source p18: the row had carried Q75's code table, which holds the same four rows with (a)/(b) and (c)/(d) transposed - invisible to a set comparison.]",
+  "confidence": "HIGH",
+  "difficulty": "MODERATE"
+ },
+ {
+  "number": 75,
+  "stem": "| List I | List II |\n| --- | --- |\n| A. Wrangle | 1. Additional piece of information added to the main text |\n| B. Wacky | 2. Amusing and strange |\n| C. Codex | 3. Complicated and prolonged argument |\n| D. Postscript | 4. An ancient text |",
   "options": [
    {
     "label": "A",
@@ -1939,34 +1965,8 @@
    }
   ],
   "answer": "D",
-  "reasoning": "A. Felony -> 3 (serious crime); B. Restitution -> 2 (return a lost or stolen article); C. Chagrin -> 4 (distressed on account of humiliation); D. Diatribe -> 1 (a long written piece of criticism).",
+  "reasoning": "A. Wrangle -> 3 (complicated and prolonged argument); B. Wacky -> 2 (amusing and strange); C. Codex -> 4 (an ancient text); D. Postscript -> 1 (additional piece of information added to the main text). That pairing is printed code (d). KEY FIX PENDING: must move C -> D via scripts/cds/apply-key-fixes.ts. [Options repaired 2026-08-25 from source p18: the row had carried Q76's code table, and no option matched the derivable pairing.]",
   "confidence": "HIGH",
-  "difficulty": "MODERATE"
- },
- {
-  "number": 75,
-  "stem": "| List I | List II |\n| --- | --- |\n| A. Wrangle | 1. Additional piece of information added to the main text |\n| B. Wacky | 2. Amusing and strange |\n| C. Codex | 3. Complicated and prolonged argument |\n| D. Postscript | 4. An ancient text |",
-  "options": [
-   {
-    "label": "A",
-    "text": "A-1, B-2, C-3, D-4"
-   },
-   {
-    "label": "B",
-    "text": "A-1, B-3, C-2, D-4"
-   },
-   {
-    "label": "C",
-    "text": "A-4, B-2, C-3, D-1"
-   },
-   {
-    "label": "D",
-    "text": "A-4, B-3, C-2, D-1"
-   }
-  ],
-  "answer": "C",
-  "reasoning": "Definitionally A. Wrangle -> 3 (complicated and prolonged argument), B. Wacky -> 2 (amusing and strange), C. Codex -> 4 (an ancient text), D. Postscript -> 1 (additional piece of information). Only option (c) carries the certain B-2 and D-1 anchors; its A/C values appear OCR-degraded, so it is selected as the intended key.",
-  "confidence": "LOW",
   "difficulty": "HARD"
  },
  {
@@ -2001,32 +2001,6 @@
   "options": [
    {
     "label": "A",
-    "text": "A-3, B-2, C-4, D-1"
-   },
-   {
-    "label": "B",
-    "text": "A-3, B-4, C-2, D-1"
-   },
-   {
-    "label": "C",
-    "text": "A-1, B-2, C-4, D-3"
-   },
-   {
-    "label": "D",
-    "text": "A-1, B-4, C-2, D-3"
-   }
-  ],
-  "answer": "A",
-  "reasoning": "Definitionally A. Ex gratia -> 2 (done for free), B. Suo moto -> 3 (on his own motion), C. Arraignment -> 4 (state the charges in court), D. Locus standi -> 1 (right or capacity to bring an action). Only option (a) carries the certain C-4 and D-1 anchors; its A/B values (3,2) appear OCR-transposed from the intended (2,3).",
-  "confidence": "MEDIUM",
-  "difficulty": "HARD"
- },
- {
-  "number": 78,
-  "stem": "| List I | List II |\n| --- | --- |\n| A. Fait accompli | 1. Something already decided with no option to deny |\n| B. Hedonism | 2. Government by the military |\n| C. Hoplarchy | 3. Government by the mobs |\n| D. Ochlocracy | 4. Pertaining to pleasure |",
-  "options": [
-   {
-    "label": "A",
     "text": "A-2, B-4, C-3, D-1"
    },
    {
@@ -2042,8 +2016,34 @@
     "text": "A-1, B-4, C-2, D-3"
    }
   ],
+  "answer": "B",
+  "reasoning": "A. Ex gratia -> 2 (something that is done for free); B. Suo moto -> 3 (on his own motion); C. Arraignment -> 4 (to state the charges in a court of law); D. Locus standi -> 1 (the right or capacity to bring an action). That pairing is printed code (b). KEY FIX PENDING: must move A -> B via scripts/cds/apply-key-fixes.ts. [Options A and B repaired 2026-08-25 from source p19: they had carried Q78's rows, so no option matched the derivable pairing.]",
+  "confidence": "HIGH",
+  "difficulty": "HARD"
+ },
+ {
+  "number": 78,
+  "stem": "| List I | List II |\n| --- | --- |\n| A. Fait accompli | 1. Something already decided with no option to deny |\n| B. Hedonism | 2. Government by the military |\n| C. Hoplarchy | 3. Government by the mobs |\n| D. Ochlocracy | 4. Pertaining to pleasure |",
+  "options": [
+   {
+    "label": "A",
+    "text": "A-3, B-2, C-4, D-1"
+   },
+   {
+    "label": "B",
+    "text": "A-3, B-4, C-2, D-1"
+   },
+   {
+    "label": "C",
+    "text": "A-1, B-2, C-4, D-3"
+   },
+   {
+    "label": "D",
+    "text": "A-1, B-4, C-2, D-3"
+   }
+  ],
   "answer": "D",
-  "reasoning": "A. Fait accompli -> 1 (something already decided, no option to deny); B. Hedonism -> 4 (pertaining to pleasure); C. Hoplarchy -> 2 (government by the military); D. Ochlocracy -> 3 (government by the mobs).",
+  "reasoning": "A. Fait accompli -> 1 (something already decided, no option to deny); B. Hedonism -> 4 (pertaining to pleasure); C. Hoplarchy -> 2 (government by the military); D. Ochlocracy -> 3 (government by the mobs). That pairing is printed code (d), so the stored key D is already correct and needs no change. [Options A and B repaired 2026-08-25 from source p19: they had carried Q77's rows. Printed (d) is 1 4 2 3 in BOTH questions' tables, which is why a wrong option set still produced the right key letter here.]",
   "confidence": "HIGH",
   "difficulty": "MODERATE"
  },

@@ -1997,11 +1997,11 @@
  {
   "number": 76,
   "type": "match-list",
-  "stem": "| List I (Parts of Speech) | List II (Word) |\n| --- | --- |\n| A. Noun | 1. Extremely |\n| B. Verb | 2. Spectacular |\n| C. Adverb | 3. Spectator |\n| D. Adjective | 4. Spectate |",
+  "stem": "| List I (Parts of Speech) | List II (Word) |\n| --- | --- |\n| A. Noun | 1. Extremely |\n| B. Verb | 2. Spectatorial |\n| C. Adverb | 3. Spectator |\n| D. Adjective | 4. Spectate |",
   "options": [
    {
     "label": "A",
-    "text": "A-1, B-1, C-4, D-3"
+    "text": "A-2, B-1, C-4, D-3"
    },
    {
     "label": "B",
@@ -2009,7 +2009,7 @@
    },
    {
     "label": "C",
-    "text": "A-2, B-1, C-4, D-3"
+    "text": "A-3, B-1, C-4, D-2"
    },
    {
     "label": "D",
@@ -2017,7 +2017,7 @@
    }
   ],
   "answer": "D",
-  "reasoning": "A (Noun)->Spectator(3), B (Verb)->Spectate(4), C (Adverb)->Extremely(1), D (Adjective)->Spectacular(2) = A-3, B-4, C-1, D-2 = option D.",
+  "reasoning": "A (Noun)->Spectator(3), B (Verb)->Spectate(4), C (Adverb)->Extremely(1), D (Adjective)->Spectatorial(2) = A-3, B-4, C-1, D-2 = option D.",
   "confidence": "MED",
   "difficulty": "EASY"
  },
@@ -2036,7 +2036,7 @@
    },
    {
     "label": "C",
-    "text": "A-1, B-3, C-2, D-4"
+    "text": "A-1, B-2, C-3, D-4"
    },
    {
     "label": "D",
@@ -2109,23 +2109,23 @@
   "options": [
    {
     "label": "A",
-    "text": "A-2, B-4, C-3, D-1"
+    "text": "A-2, B-3, C-4, D-1"
    },
    {
     "label": "B",
-    "text": "A-1, B-4, C-3, D-2"
+    "text": "A-2, B-4, C-3, D-1"
    },
    {
     "label": "C",
-    "text": "A-1, B-3, C-4, D-2"
+    "text": "A-1, B-4, C-3, D-2"
    },
    {
     "label": "D",
-    "text": "A-2, B-3, C-4, D-1"
+    "text": "A-1, B-3, C-4, D-2"
    }
   ],
-  "answer": "A",
-  "reasoning": "A (Noun)->Intuition(2), B (Verb)->Intuit(4), C (Adverb)->Intuitively(3), D (Adjective)->Intuitive(1) = A-2, B-4, C-3, D-1 = option A.",
+  "answer": "B",
+  "reasoning": "A (Noun)->Intuition(2), B (Verb)->Intuit(4), C (Adverb)->Intuitively(3), D (Adjective)->Intuitive(1) = A-2, B-4, C-3, D-1, which is printed option (b). KEY FIX PENDING: the stored key A predates the option repair (the four codes were rotated by one) and must move A -> B via scripts/cds/apply-key-fixes.ts.",
   "confidence": "MED",
   "difficulty": "EASY"
  },
@@ -2711,7 +2711,7 @@
    },
    {
     "label": "B",
-    "text": "A-2, B-4, C-3, D-1"
+    "text": "A-1, B-4, C-3, D-2"
    },
    {
     "label": "C",
@@ -2719,7 +2719,7 @@
    },
    {
     "label": "D",
-    "text": "A-1, B-4, C-3, D-2"
+    "text": "A-2, B-4, C-3, D-1"
    }
   ],
   "answer": "C",
@@ -2785,7 +2785,7 @@
   "options": [
    {
     "label": "A",
-    "text": "A-4, B-1, C-2, D-3"
+    "text": "A-4, B-2, C-1, D-3"
    },
    {
     "label": "B",
@@ -2793,15 +2793,15 @@
    },
    {
     "label": "C",
-    "text": "A-4, B-2, C-1, D-3"
+    "text": "A-4, B-1, C-2, D-3"
    },
    {
     "label": "D",
     "text": "A-3, B-2, C-1, D-4"
    }
   ],
-  "answer": "A",
-  "reasoning": "Feat = an achievement requiring great courage (4); Fate = development of events outside a person's control (1); Fathom = used to measure depth of water (2); Faux pas = an embarrassing mistake (3). So A-4, B-1, C-2, D-3 = option A.",
+  "answer": "C",
+  "reasoning": "Feat = an achievement requiring great courage (4); Fate = development of events outside a person's control (1); Fathom = used to measure depth of water (2); Faux pas = an embarrassing mistake (3). So A-4, B-1, C-2, D-3, which is printed option (c). KEY FIX PENDING: the stored key A predates the option repair (printed (a) and (c) had been swapped) and must move A -> C via scripts/cds/apply-key-fixes.ts.",
   "confidence": "HIGH",
   "difficulty": "MODERATE"
  },
@@ -2889,11 +2889,11 @@
   "options": [
    {
     "label": "A",
-    "text": "A-2, B-3, C-4, D-1"
+    "text": "A-1, B-3, C-4, D-2"
    },
    {
     "label": "B",
-    "text": "A-1, B-3, C-4, D-2"
+    "text": "A-2, B-3, C-4, D-1"
    },
    {
     "label": "C",
@@ -2904,8 +2904,8 @@
     "text": "A-1, B-4, C-3, D-2"
    }
   ],
-  "answer": "A",
-  "reasoning": "Devious = skilful in using underhand tactics (2); Devolution = transfer of power from higher to lower government (3); Detriment = the state of being harmed or damaged (4); Detract = cause something to seem less valuable (1). So A-2, B-3, C-4, D-1 = option A.",
+  "answer": "B",
+  "reasoning": "Devious = skilful in using underhand tactics (2); Devolution = transfer of power from higher to lower government (3); Detriment = the state of being harmed or damaged (4); Detract = cause something to seem less valuable (1). So A-2, B-3, C-4, D-1, which is printed option (b). KEY FIX PENDING: the stored key A predates the option repair (printed (a) and (b) had been swapped) and must move A -> B via scripts/cds/apply-key-fixes.ts.",
   "confidence": "HIGH",
   "difficulty": "MODERATE"
  },

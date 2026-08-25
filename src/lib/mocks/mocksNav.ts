@@ -47,3 +47,17 @@ export function mockSideNav(): { href: string; label: string }[] {
 export function mockExamSlugs(): ExamSlug[] {
   return getMockExams().map((e) => e.slug);
 }
+
+/**
+ * The mock exams as prose, for /mock's indexed <title> + description:
+ * "NDA", "NDA & NEET", "NDA, CDS & NEET". Derived rather than hand-written
+ * because the hardcoded "NDA & NEET" copy went stale the moment a third exam
+ * shipped — an indexed page naming two exams while serving three. Registry
+ * order, so the output is deterministic.
+ */
+export function mockExamNames(): string {
+  const names = getMockExams().map((e) => e.displayName);
+  if (names.length === 0) return "";
+  if (names.length === 1) return names[0];
+  return `${names.slice(0, -1).join(", ")} & ${names[names.length - 1]}`;
+}

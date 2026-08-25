@@ -8,18 +8,42 @@
  * decisions log). Any other shape falls through to the OMML pipeline,
  * where it silently renders without an underline.
  *
- * This script scans every PUBLIC question's text / context / solution
- * and every option's text for inline `\(\underline{...}\)` segments,
- * then classifies each one as "covered" (bypassed → native underline)
- * or "fall-through" (still routes through borderBox → broken in Word).
+ * This script scans every question's text / context / solution and every
+ * option's text for inline `\(\underline{...}\)` segments, then classifies
+ * each one as "covered" (bypassed → native underline) or "fall-through"
+ * (still routes through borderBox → broken in Word).
  *
  * Exits 0 always — informational. Run after each new English / Biology
  * batch lands to catch silent failure-mode regressions.
  *
  * Usage:
- *   npx tsx scripts/audit-underline-patterns.ts
+ *   npx tsx scripts/audit-underline-patterns.ts              # whole bank
+ *   npm run audit:underlines -- Eng_CDS                      # one source
  *
- * Requires NEXT_PUBLIC_SUPABASE_URL + NEXT_PUBLIC_SUPABASE_ANON_KEY in env.
+ * TWO CHANGES MADE 2026-08-25, both forced by the CDS ingest:
+ *
+ * 1. IT SCANS ALL VISIBILITIES, NOT JUST PUBLIC. It used to filter
+ *    `visibility='PUBLIC'`, which made it structurally blind to any corpus
+ *    still being prepared — exactly the case it is most useful for. CDS sat
+ *    PRIVATE with 1,241 underline zones (its ENTIRE math surface) and this
+ *    audit could not see one of them until the moment they went live. A
+ *    defect you can only detect after publishing is detected too late.
+ *
+ * 2. IT USES THE SERVICE-ROLE CLIENT, and that is a timeout fix, not a
+ *    permissions one. The scan is an unindexed triple-OR `LIKE '%underline%'`
+ *    over three long-form columns — an unavoidable seq scan, measured at
+ *    ~2.9s / 10,522 buffers once the bank passed ~56k rows. The `anon` role
+ *    carries `statement_timeout=3s`, so the audit began failing outright with
+ *    `canceling statement due to statement timeout`; `service_role` connects
+ *    via `authenticator` (8s) and has comfortable headroom.
+ *
+ *    Keyset pagination was measured as an alternative and is WORSE, not
+ *    better: ordering by the pkey turns the sequential read into random heap
+ *    access — 9.1s / 21,558 buffers, 3x slower. Do not "optimise" this into
+ *    an id-ordered walk. If it ever times out again the levers are the source
+ *    filter above, or a narrower id-only first pass.
+ *
+ * Requires NEXT_PUBLIC_SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY in env.
  */
 import * as fs from "node:fs";
 import * as path from "node:path";
@@ -58,30 +82,35 @@ function collectHits(
 async function main() {
   loadEnv();
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !key) {
     console.error(
-      "Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY in env."
+      "Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY in env."
     );
     process.exit(1);
   }
-  const client = createClient(url, key);
+  const client = createClient(url, key, { auth: { persistSession: false } });
 
-  console.log("Scanning PUBLIC questions for \\underline{...} payloads...\n");
+  // Optional source_file substring filter, like audit:text / audit:omml.
+  const srcFilter = process.argv.slice(2).find((a) => !a.startsWith("--"));
+  console.log(
+    `Scanning questions for \\underline{...} payloads` +
+      `${srcFilter ? ` (source_file ~ "${srcFilter}")` : " (whole bank)"}...\n`
+  );
 
   const hits: Hit[] = [];
 
-  // Stream PUBLIC questions in pages of 500 (defends against the
-  // PostgREST 1000-row cap as the bank grows past it).
+  // Stream questions in pages of 500 (defends against the PostgREST 1000-row
+  // cap as the bank grows past it).
   const pageSize = 500;
   let from = 0;
   for (;;) {
-    const { data, error } = await client
+    let q = client
       .from("questions")
       .select("id, text, context, solution")
-      .eq("visibility", "PUBLIC")
-      .or("text.like.*underline*,context.like.*underline*,solution.like.*underline*")
-      .range(from, from + pageSize - 1);
+      .or("text.like.*underline*,context.like.*underline*,solution.like.*underline*");
+    if (srcFilter) q = q.ilike("source_file", `%${srcFilter}%`);
+    const { data, error } = await q.range(from, from + pageSize - 1);
     if (error) {
       console.error("Query failed:", error.message);
       process.exit(1);
@@ -99,11 +128,24 @@ async function main() {
   // Options live in their own table — separate pass.
   from = 0;
   for (;;) {
-    const { data, error } = await client
+    // `options` has no source_file of its own, so a scoped run must filter
+    // through its parent question with an INNER join. Without this the filtered
+    // run silently reported OTHER exams' option hits — it printed CDS question
+    // counts beside Chemistry option fall-throughs, which reads as a CDS defect.
+    // The select string must be a literal for supabase-js to type the result,
+    // so the two shapes are built as separate queries rather than a ternary.
+    const scoped = client
+      .from("options")
+      .select("question_id, label, text, questions!inner(source_file)")
+      .like("text", "%underline%")
+      .ilike("questions.source_file", `%${srcFilter ?? ""}%`)
+      .range(from, from + pageSize - 1);
+    const unscoped = client
       .from("options")
       .select("question_id, label, text")
       .like("text", "%underline%")
       .range(from, from + pageSize - 1);
+    const { data, error } = srcFilter ? await scoped : await unscoped;
     if (error) {
       console.error("Options query failed:", error.message);
       process.exit(1);

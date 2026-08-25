@@ -1,10 +1,16 @@
 import { describe, it, expect } from "vitest";
-import { NDA_MATHS_PAPER, NEET_PAPER } from "@/lib/mocks/blueprints";
+import {
+  NDA_MATHS_PAPER,
+  NEET_PAPER,
+  CDS_ENGLISH_PAPER,
+} from "@/lib/mocks/blueprints";
 import {
   mockSlug,
   mockTitle,
   neetMockSlug,
   neetMockTitle,
+  cdsMockSlug,
+  cdsMockTitle,
   orderPaperRows,
   validatePaperRows,
   buildMockPaper,
@@ -49,6 +55,21 @@ function mathsRows(count = 120): PaperQuestionRow[] {
   }
   // shuffle to prove ordering is derived, not input order
   return rows.sort((a, b) => (a.id < b.id ? 1 : -1));
+}
+
+// A CDS English sitting: 120 rows, ONE bank subject, source_row clean 1..120.
+function cdsRows(count = 120): PaperQuestionRow[] {
+  const rows: PaperQuestionRow[] = [];
+  for (let i = 1; i <= count; i++) {
+    rows.push({
+      id: `q-${i}`,
+      sourceRow: i,
+      questionNumber: String(i),
+      subjectName: "English",
+      answer: (["A", "B", "C", "D"] as const)[i % 4],
+    });
+  }
+  return rows.sort((a, b) => (a.id < b.id ? 1 : -1)); // shuffle
 }
 
 describe("mockSlug", () => {
@@ -230,5 +251,73 @@ describe("NEET reconstruction", () => {
     expect(graced?.grace).toBe(true);
     // a normal question carries no grace flag
     expect(snap.questions.find((q) => q.questionId === "q-1")?.grace).toBeUndefined();
+  });
+});
+
+describe("CDS reconstruction", () => {
+  it("builds edition-aware slugs and titles", () => {
+    expect(cdsMockSlug(2026, "I")).toBe("cds-2026-i-english");
+    expect(cdsMockSlug(2017, "II")).toBe("cds-2017-ii-english");
+    expect(cdsMockTitle(2026, "I")).toBe("CDS (I) 2026 — English");
+    expect(cdsMockTitle(2025, "II")).toBe("CDS (II) 2025 — English");
+  });
+
+  /**
+   * THE COLLISION GUARD. `pyq_month` is NULL on every CDS row, so the generic
+   * mockSlug() produces the SAME slug for the I and II sittings of one year —
+   * and because the mock id is slugToUuid(slug), the second upsert would
+   * SILENTLY OVERWRITE the first. cdsMockSlug must separate them.
+   */
+  it("gives the two same-year sittings distinct slugs AND distinct ids", () => {
+    // The collision the generic helper would produce (month is null for both):
+    expect(mockSlug("cds", 2025, null, "english")).toBe(
+      mockSlug("cds", 2025, null, "english")
+    );
+
+    const one = cdsMockSlug(2025, "I");
+    const two = cdsMockSlug(2025, "II");
+    expect(one).not.toBe(two);
+    expect(slugToUuid(one)).not.toBe(slugToUuid(two));
+  });
+
+  it("builds a 120-question, 100-mark, single-section snapshot", () => {
+    const snap = buildMockPaper(CDS_ENGLISH_PAPER, cdsRows(120), {
+      year: 2026,
+      month: null,
+      slug: cdsMockSlug(2026, "I"),
+      title: cdsMockTitle(2026, "I"),
+    });
+    expect(snap.slug).toBe("cds-2026-i-english");
+    expect(snap.id).toBe(slugToUuid("cds-2026-i-english"));
+    expect(snap.title).toBe("CDS (I) 2026 — English");
+    expect(snap.pyqMonth).toBeNull();
+    expect(snap.totalQuestions).toBe(120);
+    expect(snap.totalMarks).toBe(100); // 120 * 0.8333, rounded off the float drift
+    expect(snap.durationSecs).toBe(120 * 60);
+    expect(snap.sections).toEqual([
+      { key: "english", label: "English", count: 120 },
+    ]);
+    expect(snap.questions).toHaveLength(120);
+    expect(snap.questions.map((q) => q.position)).toEqual(
+      Array.from({ length: 120 }, (_, i) => i + 1)
+    );
+    // ordered by source_row despite the shuffled input
+    expect(snap.questions[0].questionId).toBe("q-1");
+    expect(snap.questions[119].questionId).toBe("q-120");
+    expect(snap.questions[0]).toMatchObject({
+      sectionKey: "english",
+      marks: 0.8333,
+      negMarks: -0.2778,
+    });
+  });
+
+  it("rejects a short paper — 120 is a HARD count contract", () => {
+    expect(() =>
+      buildMockPaper(CDS_ENGLISH_PAPER, cdsRows(119), {
+        year: 2026,
+        month: null,
+        slug: cdsMockSlug(2026, "I"),
+      })
+    ).toThrow(/120/);
   });
 });
