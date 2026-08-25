@@ -33,6 +33,21 @@ export const SOURCE_ROOT =
   "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Test_Series\\NDA Math 1 to 10 - Complete Mock\\" +
   "Questions_paper\\File updated 1 to 10 NDA Math  Author Manuscript";
 
+/**
+ * The WEEKLY NDA-1 2026 mock series — a SIBLING folder of SOURCE_ROOT, and a
+ * different source despite the similar name. Five dated papers (8-3-26 →
+ * 5-4-26), each 120 q on the NDA Paper I blueprint, each shipping a Maths and a
+ * GAT paper (only Maths is in scope here).
+ *
+ * Only FOUR are ingested. Test-5 (5-4-26) IS the paper already committed as
+ * `NDA_Maths_Mock_Test_03.docx`: a stem-similarity pass over all 6,829 NDA
+ * Maths rows matched 68 of its questions at Jaccard 1.00, every one at the SAME
+ * question number and 100% concentrated in that single source_file. Re-ingesting
+ * it would be a no-op at best (content_hash would dedup it) and a second copy at
+ * worst, so it is deliberately absent rather than listed and disabled.
+ */
+export const WEEKLY_ROOT = "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Test_Series\\NDA_Mock_Tests";
+
 export const OUT = join(__dirname, "out"); // gitignored: pandoc media + previews
 export const DATA = join(__dirname, "data"); // committed: extraction + classification
 
@@ -118,6 +133,16 @@ export type Paper = {
    * ships its solutions for Q8/Q38/Q56 in a separate "Missing Solutions" file.
    */
   extraSolutionDocx?: string[];
+  /**
+   * A standalone answer-key DOCX holding a GRID table (the weekly NDA-1 2026
+   * series). Distinct from the ten-paper series, which prints its key as a tail
+   * `ANSWER KEYS` block inside the question or solution document.
+   *
+   * Read by `parseGridAnswerKey`, whose duplicate/missing lists are REPORTED so
+   * a mislabelled cell can be repaired from the grid's own geometry rather than
+   * silently resolved into a wrong key.
+   */
+  answerKeyDocx?: string;
   /** The typeset booklet. Used to arbitrate when the manuscript looks corrupt. */
   printedPdf?: string;
   sourceFile: string; // questions.source_file — the dedup/rollback key
@@ -140,6 +165,7 @@ export type Paper = {
 };
 
 const p = (...seg: string[]) => join(SOURCE_ROOT, ...seg);
+const w = (...seg: string[]) => join(WEEKLY_ROOT, ...seg);
 
 export const PAPERS: Record<string, Paper> = {
   m1: {
@@ -1221,6 +1247,7 @@ PAPERS.m9 = {
         "the solution prints no answer letter. Its working settles it: the slope through (1,0) and (-2,sqrt3) is (sqrt3-0)/(-2-1) = -1/sqrt3, so the angle with the x-axis is 150 degrees — which the solution states outright = option C",
     },
   },
+
 };
 
 // Mock 10 is a SINGLE DOCX interleaving each question with its `SOL. (x)`.
@@ -1328,6 +1355,398 @@ PAPERS.m10 = {
         "no key printed. The line's direction ratios (a,b,c) are exactly the plane's normal, so the line is perpendicular to the plane and the angle between line and plane is 90 degrees. The paper's own solution says precisely that: 'Obviously the line perpendicular to the plane because a/a = b/b = c/c i.e. there direction ratios are proportional' = option D",
     },
   },
+};
+
+
+// ── Weekly NDA-1 2026 series (WEEKLY_ROOT). Four papers; see the note on
+//    WEEKLY_ROOT for why Test-5 is absent. ─────────────────────────────────
+//
+// Measured differences from the ten-paper series, none of them guessable:
+//  - stray `dir="rtl"` runs split question NUMBERS mid-digit (w3 loses 26 of
+//    120 without `normalizeRtlSpans`);
+//  - the answer key, where one exists, is a standalone DOCX holding a GRID
+//    table rather than a tail `ANSWER KEYS` block;
+//  - only w1 and w3 have a key document at all. w2 and w4 draw every answer
+//    from letters printed on their solutions, and 21 and 17 questions
+//    respectively carry NO key from any source — those rest on the blind
+//    derivation alone and must be adjudicated by hand before commit.
+PAPERS.w1 = {
+  id: "w1",
+  label: "NDA Maths Weekly Mock Test 1 (08-03-26)",
+  questionDocx: w("01", "MATHS MOCK TEST-1 (8-3-26) (1).docx"),
+  solutionDocx: w("01", "MATHS MOCK TEST-1 (8-3-26) SOLUTION (2).docx"),
+  answerKeyDocx: w("01", "ANS KEY MATHS MOCK TEST-1 NDA-1 2026 (1).docx"),
+  printedPdf: w("01", "MATHS MOCK TEST-1 (8-3-26) (1).pdf"),
+  sourceFile: "NDA_Maths_Weekly_Mock_2026_T1.docx",
+  questionCount: 120,
+  note: "NDA Mathematics weekly mock test 1, 08-03-26 (LWS NDA-1 2026 test series)",
+  // Grid key is complete (120/120) and agrees with all 33 letters printed on
+  // the solutions — 0 disagreements. The strongest key evidence of the four.
+  errata: {
+    50: {
+      optionTexts: ["\\(2\\pi\\)", "\\(\\pi\\)", "0", "2"],
+      reason:
+        "this question alone labels its options `A) B) C) D)` — uppercase, closing paren only, no opening paren. Measured across all four weekly papers it is the ONLY such line, so the four texts are supplied here rather than teaching the shared label pattern an uppercase form: `A.`/`A)` occurs in ordinary assertion-reason prose ('...and R explains A'), and loosening it would put all fourteen papers at risk to fix one question. Texts are verbatim; the key is untouched",
+    },
+  },
+};
+
+PAPERS.w2 = {
+  id: "w2",
+  label: "NDA Maths Weekly Mock Test 2 (15-03-26)",
+  questionDocx: w("02", "MATHS MOCK TEST-2 (15-3-26) NDA-1.docx"),
+  solutionDocx: w("02", "MATHS MOCK TEST-2 (15-3-26) SOLUTION NDA-1.docx"),
+  printedPdf: w("02", "MATHS MOCK TEST-2 (15-3-26) NDA-1.pdf"),
+  sourceFile: "NDA_Maths_Weekly_Mock_2026_T2.docx",
+  questionCount: 120,
+  note: "NDA Mathematics weekly mock test 2, 15-03-26 (LWS NDA-1 2026 test series)",
+  // Q108's number is printed INSIDE its own stem — "...the deviations of 50
+  // observations from 30 is **108.** then the mean..." — so the numbering scan
+  // never sees a Q108 start. That costs TWO questions, not one: with no
+  // boundary, Q108's text and its four options are absorbed into Q107, and
+  // under "last chain wins" Q107 ships with Q108's options (50/30/51/31) and an
+  // answer letter that points into them. Q107 is repaired here; Q108 is
+  // supplied as an extraQuestion below.
+  errata: {
+    // Five questions across this series print their DATA as a picture of a
+    // table. The stem is then unanswerable from text alone, which is the defect
+    // the ten-paper series still carries unresolved on m3 Q60/Q93. These are
+    // clean 2-row/2-column grids, so they are transcribed as GFM pipe-tables —
+    // the bank's own convention for tabular question content, which renders on
+    // /browse and exports as a native Word table — rather than attached as an
+    // image. An image is reserved for a genuine diagram (see Q109 below).
+    104: {
+      stem:
+        "The mean deviation from the median for the following data is\n\n" +
+        "| \\(x\\) | 10 | 11 | 12 | 13 |\n" +
+        "|---|---|---|---|---|\n" +
+        "| \\(f\\) | 6 | 12 | 18 | 12 |",
+      reason:
+        "the frequency table is printed as an image (media/image1.png), so the stem carried no data at all and the question could not be answered from its text. Transcribed verbatim from that image as a pipe-table",
+    },
+    110: {
+      context:
+        "An incomplete frequency distribution is given below. Total of the frequency is 229.\n\n" +
+        "| Variate | Frequency |\n" +
+        "|---|---|\n" +
+        "| 10-20 | 12 |\n" +
+        "| 20-30 | 30 |\n" +
+        "| 30-40 | \\(x\\) |\n" +
+        "| 40-50 | 65 |\n" +
+        "| 50-60 | 45 |\n" +
+        "| 60-70 | 25 |\n" +
+        "| 70-80 | 18 |",
+      reason:
+        "the distribution is printed as an image (media/image3.png), leaving all THREE questions of this set (110-112) with no data. Transcribed verbatim. The transcription is corroborated by the paper's own keys: the listed frequencies sum to 195, so x = 229 - 195 = 34, and that x reproduces the printed key for Q111 (median 45.9 = 46) and Q112 (mean 10495/229 = 45.8)",
+    },
+    107: {
+      stem:
+        "If a variable takes discrete values \\(x + 4,x - \\frac{7}{2},x - \\frac{5}{2},x - 3,x - 2,x + \\frac{1}{2},x + 5(x > 0),\\) then the median is",
+      optionTexts: [
+        "\\(x - 1/2\\)",
+        "\\(x - 5/4\\)",
+        "\\(x - 2\\)",
+        "\\(x + 5/4\\)",
+      ],
+      reason:
+        "Q108's missing boundary let its text and options be absorbed into this block, so the stem ran on past 'then the median is' and the four options extracted were Q108's (50/30/51/31). Both restored verbatim from the source. Printed key (c) is untouched and is correct: the seven values sort to x-7/2, x-3, x-5/2, x-2, x+1/2, x+4, x+5, whose 4th (median) term is x-2 = option (c)",
+    },
+  },
+  // This paper prints no answer key at all; 20 of its questions also carry no
+  // letter on their solution, so these are the only source of an answer for
+  // them. Each was derived from the stem and then re-verified numerically
+  // (mpmath/sympy) against the question's own data, never against the
+  // derivation that proposed it.
+  resolutions: {
+    6: {
+      answer: "D",
+      reason:
+        "2x = -1 + i*sqrt3 makes x a primitive cube root of unity, so 1 + x - x^2 = -2w^2 and 1 - x + x^2 = -2w. Both sixth powers are 64, and the stem subtracts them, so the value is 0. Verified numerically: the expression evaluates to 7e-15",
+    },
+    19: {
+      answer: "D",
+      reason:
+        "the left side is ((a^2-b^2)^2)^(x-1). Taking logs, (x-1)(log|a-b| + log(a+b)) = 2x*log|a-b|/2 - log(a+b) reduces to x*log(a+b) = log|a-b|, so x = log|a-b| / log(a+b). Matching exponents termwise is NOT available here — it gives -2 = 0 — which is why the log route is the intended one",
+    },
+    21: {
+      answer: "B",
+      reason:
+        "g[f(x)] = log_e(f(x)^2) = log_e(3x^2 - 4x + 5). That quadratic has its minimum at x = 2/3 with value 11/3 and is unbounded above, so the range is [log_e(11/3), infinity)",
+    },
+    27: {
+      answer: "B",
+      reason:
+        "15 divides n! for every n >= 5, so only 1!+2!+3!+4! = 33 survives, and 33 mod 15 = 3. Confirmed by computing the full 95-term sum",
+    },
+    31: {
+      answer: "A",
+      reason:
+        "C(2n,1), C(2n,2), C(2n,3) in AP gives (2n)^2 - 9(2n) + 14 = 0, i.e. 2n^2 - 9n + 7 = 0, so the requested 2n^2 - 9n = -7. Confirmed by scanning m = 2n for 2*C(m,2) = C(m,1) + C(m,3): the only admissible root is m = 7",
+    },
+    32: {
+      answer: "A",
+      reason:
+        "setting x = y = z = 1 gives the coefficient sum (1-2+3)^n = 2^n = 128, so n = 7; the greatest binomial coefficient of (1+x)^7 is C(7,3) = 35",
+    },
+    41: {
+      answer: "C",
+      reason:
+        "columns 2 and 3 of the determinant are identical ((a+2), (a+3), (a+4) in both), so it vanishes for every a. Verified numerically at a = 3.7",
+    },
+    42: {
+      answer: "C",
+      reason:
+        "with A = arccos x, B = arccos y, C = arccos z summing to pi, the standard identity gives x^2 + y^2 + z^2 + 2xyz = 1, so the expression equals 1 - 2xyz",
+    },
+    48: {
+      answer: "D",
+      reason:
+        "each cosine is at least -1, so a sum of four of them equal to -4 forces every theta_i = pi. Then cot(theta_i/2) = cot(pi/2) = 0 and the sum is 0",
+    },
+    65: {
+      answer: "A",
+      reason:
+        "2ae = 8 and 2a/e = 25 give ae = 4 and a/e = 12.5, whose product is a^2 = 50. So a = 5*sqrt2 and the major axis 2a = 10*sqrt2",
+    },
+    70: {
+      answer: "D",
+      reason:
+        "coplanarity fixes lambda = 4; the lines then meet where t = s = 1, at (5,5,5). That point fails options A (25 vs 20), B (20 vs 25) and C (30 vs 24), and satisfies x = y = z",
+    },
+    79: {
+      answer: "A",
+      reason:
+        "f(x) = x/(1+|x|) has derivative 1/(1+x)^2 for x > 0 and 1/(1-x)^2 for x < 0, both tending to 1 at the origin, and f is continuous there — so it is differentiable on the whole line. Confirmed with a one-sided difference quotient at 40-digit precision: both sides give 1.000000",
+    },
+    81: {
+      answer: "D",
+      reason:
+        "approaching 3 from below, [x] = 2 so the quotient is -1/(x-3) -> +infinity; from above [x] = 3 and the quotient is 0. The one-sided limits differ, so the limit does not exist",
+    },
+    86: {
+      answer: "C",
+      reason:
+        "with u = e^x sin x and v = e^x cos x, v*u' - u*v' = e^(2x)(cos x sin x + cos^2 x - sin x cos x + sin^2 x) = e^(2x), which is exactly u^2 + v^2. Verified numerically at x = 0.7 (both sides 4.0551999668)",
+    },
+    88: {
+      answer: "B",
+      reason:
+        "dy/dx = 4x - 1 equals the line's slope 3 at x = 1, where y = 2 - 1 + 1 = 2, giving the point (1,2)",
+    },
+    89: {
+      answer: "A",
+      reason:
+        "dy/dx = 1/(1+x) - 4/(2+x)^2 = x^2 / [(1+x)(2+x)^2], which is non-negative for every x > -1 and zero only at the isolated point x = 0. So the function increases throughout x > -1, not merely on a sub-interval",
+    },
+    95: {
+      answer: "B",
+      reason:
+        "sin x + cos x = sqrt2 * cos(x - pi/4), so the integral is (pi/2)log(sqrt2) + integral of log cos over [-pi/2, 0], i.e. (pi/4)log2 - (pi/2)log2 = -(pi/4)log2. Verified by quadrature to 40 digits",
+    },
+    102: {
+      answer: "B",
+      reason:
+        "111000 in binary is 56, and .0101 is 1/4 + 1/16 = 0.3125, giving 56.3125",
+    },
+    106: {
+      answer: "C",
+      reason:
+        "variance = sum(x^2)/N - (sum(x)/N)^2 = 18000/60 - (960/60)^2 = 300 - 256 = 44",
+    },
+    110: {
+      answer: "C",
+      reason:
+        "the listed frequencies (12, 30, 65, 45, 25, 18) sum to 195 and the total is 229, so the missing x = 34. The same x reproduces the paper's own printed keys for Q111 and Q112, which is what corroborates the table transcription in the errata above",
+    },
+    109: {
+      hold: true,
+      reason:
+        "UNANSWERABLE AS EXTRACTED. The stem is 'The curve given below represent a/an' and the curve is an image (media/image2.png) — a cumulative-frequency plot. Unlike this paper's five other figures it is a genuine DIAGRAM, not a table, so it cannot be transcribed into the stem; and describing it in words would state the answer, since the answer IS what the curve is called (ogive). This pipeline has no image_url attach path, so the row is held rather than shipped with a stem that names nothing. Re-admit it if a figure-attach step is added",
+    },
+  },
+  extraQuestions: [
+    {
+      number: 108,
+      numberLabel: "108",
+      stem: "If the sum of the deviations of 50 observations from 30 is 50, then the mean of these observations is",
+      optionTexts: ["50", "30", "51", "31"],
+      answer: "D",
+      solution:
+        "Given \\(\\sum_{i = 1}^{50}\\left( x_{i} - 30 \\right) = 50\\), so \\(\\sum_{i = 1}^{50} x_{i} = 30 \\times 50 + 50 = 50 \\times 31\\). " +
+        "Hence mean \\(\\overline{x} = \\frac{\\sum_{i = 1}^{50} x_{i}}{50} = \\frac{50 \\times 31}{50} = 31\\).",
+      reason:
+        "the source prints this question's NUMBER inside its own stem ('...from 30 is **108.** then the mean...'), so no Q108 start exists to split on and the value the stem depends on is missing. Both are recovered from the paper's own worked solution, which opens 'sum(x_i - 30) = 50' and derives 50*31/50 = 31 — its own key (d). The repair is minimal and self-consistent: one value restored, key untouched",
+    },
+  ],
+};
+
+PAPERS.w3 = {
+  id: "w3",
+  label: "NDA Maths Weekly Mock Test 3 (22-03-26)",
+  questionDocx: w("03", "MOCK TEST-3 MATHS (22-3-26).docx"),
+  solutionDocx: w("03", "MOCK TEST-3 MATHS SOLUTION (22-3-26).docx"),
+  answerKeyDocx: w("03", "ANS KEY MOCK-3 TEST 2026 NDA-1 (22-3-26).docx"),
+  printedPdf: w("03", "MOCK TEST-3 MATHS (22-3-26).pdf"),
+  sourceFile: "NDA_Maths_Weekly_Mock_2026_T3.docx",
+  questionCount: 120,
+  note: "NDA Mathematics weekly mock test 3, 22-03-26 (LWS NDA-1 2026 test series)",
+  errata: {
+    // The grid prints "59" in the cell where 49 belongs, so 59 appears twice
+    // and 49 never does. The row settles it: a row carries k, k+20, k+40,
+    // k+60, k+80, k+100, and the offending cell is the THIRD pair of the row
+    // whose first pair is 9 — i.e. 49. The genuine 59 sits in the row
+    // beginning 19, and reads B, which is also what the solution document
+    // prints. So both numbers are recoverable and neither is a guess.
+    90: {
+      stem:
+        "The variance of the following distribution is\n\n" +
+        "| \\(x_{i}\\) | 2 | 3 | 11 |\n" +
+        "|---|---|---|---|\n" +
+        "| \\(f_{i}\\) | \\(\\frac{1}{3}\\) | \\(\\frac{1}{2}\\) | \\(\\frac{1}{6}\\) |",
+      reason:
+        "the distribution is printed as an image (media/image1.png), so the stem carried no data. Transcribed verbatim from that image; the f values sum to 1, i.e. it is a probability distribution rather than a frequency table, which the printed key is consistent with",
+    },
+    94: {
+      context:
+        "Some data is kept on a computer disk but unfortunately some of it is lost because of a virus. Only the following could be recovered, where the three Performance columns are Average, Good and Excellent.\n\n" +
+        "| | Average | Good | Excellent | Total |\n" +
+        "|---|---|---|---|---|\n" +
+        "| Male | | | 10 | |\n" +
+        "| Female | | | | 32 |\n" +
+        "| Total | | 30 | | |\n\n" +
+        "An expert committee was formed, which decided that the following facts were self evident. " +
+        "Half the students were either excellent or good. \\(40\\%\\) of the students were females. " +
+        "One-third of the male students were average.",
+      reason:
+        "the partially-recovered table is printed as an image (media/image2.png), so all FIVE questions of this set (94-98) lost the only three numbers the puzzle supplies and were unanswerable. The blanks are deliberate — they are what the questions ask for — so the table is transcribed with them intact. The reading (Male/Excellent 10, Female/Total 32, Total/Good 30) is confirmed by all five printed keys simultaneously: 40% female = 32 gives 80 students and 48 males; a third of males average = 16 (key Q94); excellent+good = 40 with good = 30 leaves excellent = 10, all male, so female excellent = 0 (key Q95); male good = 48 - 16 - 10 = 22 (key Q98); 22/30 = 0.73 (key Q96); (30-22)/32 = 0.25 (key Q97)",
+    },
+    49: {
+      answer: "C",
+      reason:
+        "answer-key grid defect: the cell holding this answer is mislabelled '59'. It is the 3rd pair of the row starting 9 (9, 29, [49], 69, 89, 109), so it is Q49. Its letter C is therefore Q49's",
+    },
+    59: {
+      answer: "B",
+      reason:
+        "answer-key grid defect (the other half of Q49's): with '59' printed twice, a first-wins read hands Q59 the letter C belonging to Q49. The genuine Q59 cell is the 3rd pair of the row starting 19 and reads B — independently confirmed by the solution document, which also gives B. This was the ONLY disagreement between the grid and the 66 letters printed on the solutions",
+    },
+  },
+};
+
+PAPERS.w4 = {
+  id: "w4",
+  label: "NDA Maths Weekly Mock Test 4 (29-03-26)",
+  questionDocx: w("04", "MATHS MOCK TEST-4 (29-3-26) NDA-1 (2).docx"),
+  solutionDocx: w("04", "MATHS MOCK TEST-4 (29-3-26) NDA-1 SOLUTION (2).docx"),
+  printedPdf: w("04", "MATHS MOCK TEST-4 (29-3-26) NDA-1 (2).pdf"),
+  sourceFile: "NDA_Maths_Weekly_Mock_2026_T4.docx",
+  questionCount: 120,
+  note: "NDA Mathematics weekly mock test 4, 29-03-26 (LWS NDA-1 2026 test series)",
+  errata: {
+    98: {
+      stem:
+        "Find the mean deviation about median for the following data.\n\n" +
+        "| Marks | 0-10 | 10-20 | 20-30 | 30-40 | 40-50 | 50-60 |\n" +
+        "|---|---|---|---|---|---|---|\n" +
+        "| Number of girls | 6 | 8 | 14 | 16 | 4 | 2 |",
+      reason:
+        "the frequency table is printed as an image (media/image1.png), so the stem carried no data. Transcribed verbatim as a pipe-table. This question also has NO printed key, so without the table it could be neither answered nor derived",
+    },
+  },
+  // Like w2 this paper prints no answer key; 17 questions carry no letter on
+  // their solution either, so these resolutions are their only answer source.
+  // Each derived from the stem, then re-verified numerically against the
+  // question's own data.
+  resolutions: {
+    1: {
+      answer: "A",
+      reason:
+        "rationalising gives numerator 3 - 4sin^2(theta) + 8i*sin(theta), so the imaginary part vanishes only when sin(theta) = 0. The single value in 0 < theta < 2pi is pi",
+    },
+    5: {
+      answer: "A",
+      reason:
+        "A intersect B is a subset of A, so (A intersect B) intersect A is just A intersect B, whose size is the given 2. n(A) = 8 is not needed",
+    },
+    18: {
+      answer: "D",
+      reason:
+        "with sin(theta) and cos(theta) as the roots of ax^2+bx+c, the sum is -b/a and the product c/a. Squaring the sum: b^2/a^2 = 1 + 2c/a, so b^2 = a^2 + 2ac. Then (a+c)^2 = a^2 + 2ac + c^2 = b^2 + c^2, which is option D. Option A fails unless c = 2a, so it is not an identity",
+    },
+    34: {
+      answer: "B",
+      reason:
+        "x^3 + 1 - x^2 - x factors as (x-1)^2 (x+1), and (x-1)^2 > 0 for the excluded x != 1, so the inequality holds exactly when x > -1. Confirmed by sampling x = -2, -0.5, 0.5, 2",
+    },
+    49: {
+      hold: true,
+      reason:
+        "NO CORRECT OPTION AS PRINTED, and no source documents a repair (this question has neither a printed key nor a worked solution). Expanding, 2f(x) - 3f(2x) + f(4x) cancels at orders 0 and 1 but its x^2 coefficient is 3f''(0) = 12, which is NOT zero — so divided by x^3 the expression diverges. Verified numerically with f(x) = 2x^2: the ratio is 1.2e4 at x = 1e-3 and 1.2e5 at x = 1e-4, i.e. growing like 12/x, while the SAME numerator over x^2 is a constant 12. So the intended denominator is x^2 and the intended answer 12 = option A. Repairing the stem on that reasoning is exactly the 'repair to make an answer fit' the pipeline forbids, so the row is held instead",
+    },
+    55: {
+      answer: "A",
+      reason:
+        "the integral over [2,9] is the integral over [-3,9] minus that over [-3,2] = -5/6 - 7/3 = -19/6",
+    },
+    56: {
+      answer: "D",
+      reason:
+        "partial fractions give 2/(x+1) - 1/((x+1)^2+1), so the integral is 2log2 - arctan2 + pi/4. All THREE printed forms equal that: II differs only by writing arccot2 = pi/2 - arctan2, and III by arccot3 = pi/2 - arctan3 together with arctan2 + arctan3 = 3pi/4. Verified by quadrature to 40 digits — all three agree with the integral at 1.0645438067",
+    },
+    58: {
+      answer: "A",
+      reason:
+        "product rule on f(x)g(x) = e^x arcsin(x) gives e^x arcsin(x) + e^x/sqrt(1-x^2), i.e. e^x(1/sqrt(1-x^2) + arcsin x). Note the set defines h = f[g(x)] but this question asks for the PRODUCT's derivative, not the composite's",
+    },
+    69: {
+      answer: "C",
+      reason:
+        "dy/dx = e^y(e^x + e^-x) separates to e^-y dy = (e^x + e^-x)dx, giving -e^-y = e^x - e^-x + c', i.e. e^-y = e^-x - e^x + c. Option A is also malformed (it prints e^x twice)",
+    },
+    75: {
+      answer: "B",
+      reason:
+        "substituting into 3x - 5y + 7 gives +8 at (2,1) and +21 at (3,-1). Same sign, so the points lie on the same side",
+    },
+    78: {
+      answer: "B",
+      reason:
+        "x = 5 sec(phi), y = 3 tan(phi) is x^2/25 - y^2/9 = 1, so a = 5, b = 3 and c^2 = a^2 + b^2 = 34. The distance between the foci is 2c = 2*sqrt34",
+    },
+    87: {
+      answer: "A",
+      reason:
+        "the third vector a+b+c is the sum of the first two entries' constituents — it lies in the span of a and b+c — so the three are coplanar and the scalar triple product is 0",
+    },
+    97: {
+      answer: "C",
+      reason:
+        "with both means zero, r = sum(x_i y_i) / (n * sigma_x * sigma_y) = 12 / (10*2*3) = 0.2",
+    },
+    98: {
+      answer: "A",
+      reason:
+        "N = 50, so the median class is 20-30 (cumulative frequency 14 before it, f = 14), giving median = 20 + (25-14)/14*10 = 27.857. Then sum f|x - median| = 517.14 and the mean deviation is 517.14/50 = 10.343, i.e. 10.34. Depends on the table transcribed in the errata above",
+    },
+    106: {
+      answer: "C",
+      reason:
+        "mean 5 gives a + b = 10; SD 2 gives sum(x^2) = 145, so a^2 + b^2 = 62 and hence ab = (100 - 62)/2 = 19. The quadratic with those roots is x^2 - 10x + 19 = 0",
+    },
+    118: {
+      answer: "B",
+      reason:
+        "the GP condition gives t^2 + 5t + 4 = 0 with t = tan(theta), so t = -1 or t = -4. t = -1 is INADMISSIBLE: the three terms become -1, 0, 0, which is not a geometric progression (the ratio is undefined). Only t = -4 gives a genuine GP (-4, -6, -9, ratio 1.5), and there the expression is (7 + 5/4)/(9 - 16) = -33/28. The rejected root yields exactly 12/5 = option A, so that distractor is the trap this question is built around",
+    },
+    119: {
+      answer: "D",
+      reason:
+        "writing theta = (theta+alpha) - alpha and theta+2alpha = (theta+alpha) + alpha, the relation reduces to -2 sin(u)cos(alpha) = 4 cos(u)sin(alpha), i.e. tan(theta+alpha) = -2 tan(alpha). The requested sum is therefore 0. Verified numerically by solving for theta at alpha = 0.3",
+    },
+  },
+  // Writes `**Directions (Q Nos. 57-59)**` — no dot after the Q. A fifth
+  // spelling of the shared-context header; NOS_RANGE already tolerates it and
+  // `tests/nda-mock-parse.test.ts` pins that so it cannot regress.
 };
 
 export function requirePaper(id: string): Paper {

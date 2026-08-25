@@ -1,0 +1,3130 @@
+[
+  {
+    "number": 1,
+    "stem": "A set contains \\(2n + 1\\) elements. The number of subsets of this set containing more than \\(n\\) elements is equal to:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2^{n - 1}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2^{\\text{n~}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2^{n + 1}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2^{2n}\\)"
+      }
+    ],
+    "answer": "D",
+    "answerSource": "tail-key",
+    "solution": "Ans. (d) :** Given,\\\r\nA set contains \\((2n + 1)\\) element consider the number of subset be N .\\\r\nThen, number of subsets -\r\n\r\n\\(\\begin{matrix}\r\n & \\  = \\ ^{2n + 1}C_{0} + \\ ^{2n + 1}C_{1} + \\ ^{2n + 1}C_{2} + \\ldots\\ldots + \\ ^{2n + 1}C_{n} \\\\\r\n\\text{ }N & \\  = 2^{2n + 1} - N \\\\\r\n2\\text{ }N & \\  = 2^{2n + 1} \\\\\r\n\\text{ }N & \\  = \\frac{2^{2n + 1}}{2} \\\\\r\n\\text{ }N & \\  = \\frac{2^{2n} \\cdot 2^{1}}{2^{2}} \\\\\r\n\\text{ }N & \\  = 2^{2n}\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 2,
+    "stem": "Let \\(A\\) and \\(B\\) be two sets such that \\(A \\cap X = B \\cap X = \\phi\\) and \\(\\ A \\cup X = B \\cup X\\) for same set \\(\\mathbf{X}\\). Then",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(A = B\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(A = X\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(B = X\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(A \\cup B = X\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Ans. (a) :** Given, A and B be two sets.\\\r\n\\(A \\cap X = B \\cap X = \\phi\\) and \\(A \\cup X = B \\cup X\\), for same set X.\r\n\r\nThen, from, \\(A \\cup X = B \\cup X\\).\\\r\nTake intersection both sides by \\(A -\\)\r\n\r\n\\(A \\cap (A \\cup X) = A \\cap (B \\cup X)\\)\r\n\r\nBy distributive law -\r\n\r\n\\(\\begin{matrix}\r\n(A \\cap \\text{ }A) \\cup (A \\cap X) & \\  = (A \\cap \\text{ }B) \\cup (A \\cap X) \\\\\r\nA \\cup \\phi & \\  = (A \\cap \\text{ }B) \\cup \\phi \\\\\r\nA & \\  = A \\cap \\text{ }B......(i)\r\n\\end{matrix}\\)\r\n\r\nAgain, take intersection both sides by B ,\r\n\r\n\\(B \\cap (A \\cup X) = B \\cap (B \\cup X)\\)\r\n\r\nBy distributive law -\r\n\r\n\\(\\begin{matrix}\r\n(B \\cap \\text{ }A) \\cup (B \\cap X) & \\  = (B \\cap \\text{ }B) \\cup (B \\cap X) \\\\\r\n(B \\cap \\text{ }A) \\cup \\phi & \\  = B \\cup \\phi \\\\\r\n\\text{ }B \\cap \\text{ }A & \\  = \\phi \\cup B = B \\\\\r\n\\text{ }A \\cap \\text{ }B & \\  = B........(ii)\r\n\\end{matrix}\\)\r\n\r\nSince, \\(B \\cap A = A \\cap B\\),\\\r\nSo, from equation (i) and equation (ii), we get-\r\n\r\n\\(A = B\\)",
+    "defects": []
+  },
+  {
+    "number": 3,
+    "stem": "Which of the following is not correct for relation \\(\\mathbf{R}\\) on the set of real numbers?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\((x,y) \\in R \\Leftrightarrow 0 < |x| - |y| \\leq 1\\) is neither transitive nor symmetric."
+      },
+      {
+        "label": "B",
+        "text": "\\((x,y) \\in R \\Leftrightarrow 0 < |x - y| \\leq 1\\) is symmetric and transitive."
+      },
+      {
+        "label": "C",
+        "text": "\\((x,y) \\in R \\Leftrightarrow |x| - |y| \\leq 1\\) is reflexive but not symmetric"
+      },
+      {
+        "label": "D",
+        "text": "\\((x,y) \\in R \\Leftrightarrow |x - y| \\leq 1\\) is reflexive and symmetric."
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Ans. (b)** : \\((x,y) \\in R \\Rightarrow 0 < |x - y| \\leq 1\\)\r\n\r\n\\(\\begin{matrix}\r\n(1,2) \\in R & \\  \\Rightarrow 0 < |1 - 2| \\leq 1 \\\\\r\n & \\  \\Rightarrow 0 < | - 1| \\leq 1 \\\\\r\n(2,3) \\in R & \\  \\Rightarrow 0 < |2 - 3| \\leq 1 \\\\\r\n & \\  \\Rightarrow 0 < |1 - 1| \\leq 1\r\n\\end{matrix}\\)\r\n\r\nBut\r\n\r\n\\(\\begin{matrix}\r\n(1,3) \\in R & \\  \\Rightarrow 0 < |1 - 3| \\leq 1 \\\\\r\n & \\  \\Rightarrow 0 < | - 2| \\leq 1\r\n\\end{matrix}\\)\r\n\r\nHence, it is not transitive.",
+    "defects": []
+  },
+  {
+    "number": 4,
+    "stem": "Solution of \\(\\frac{x - 2}{x + 5} > 2\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(x \\in (5,12)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(x \\in \\lbrack - 12, - 5\\rbrack\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(x \\in ( - 12, - 5)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(x \\in ( - 12,5)\\)"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "\\(\\text{Ans.~}\\mathbf{(}\\mathbf{c}\\mathbf{)}\\)\r\n\r\n\\(\\begin{matrix}\r\n & \\text{~}:\\frac{x - 2}{x + 5} - 2 > 0 \\\\\r\n & \\  \\Rightarrow \\ \\frac{x - 2 - 2x - 10}{x + 5} > 0 \\\\\r\n & \\  \\Rightarrow \\ \\frac{- x - 12}{x + 5} > 0 \\\\\r\n & \\ \\frac{x + 12}{x + 5} < 0\r\n\\end{matrix}\\)\r\n\r\n",
+    "defects": []
+  },
+  {
+    "number": 5,
+    "stem": "If \\(|x - 2| > \\mathbf{6}\\), then :",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(x \\in ( - 4,8)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(x \\in ( - \\infty, - 4) \\cup (8,\\infty)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(x \\in ( - \\infty,4\\rbrack \\cup \\lbrack 8,\\infty)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(x \\in \\lbrack - 4,8\\rbrack\\)"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "\\(\\text{Ans. (b)}\\)\r\n\r\n\\[\\begin{matrix}\r\n & \\text{~~}:|x - 2| > 6 \\\\\r\n & \\text{~}\\text{gives}\\text{~}\\ \\text{~}\\text{either}\\text{~}x - 2 > 6 \\\\\r\n & \\ \\text{~}\\text{or}\\text{~}\\ x - 2 < - 6 \\\\\r\n & \\  \\Rightarrow \\ x \\in ( - \\infty, - 4) \\cup (8,\\infty)\r\n\\end{matrix}\\]",
+    "defects": []
+  },
+  {
+    "number": 6,
+    "stem": "\\(\\alpha\\) and \\(\\beta\\) be the roots of the equation \\(px^{2} + qx + r = 0(p \\neq 0)\\). If \\(p,q,r\\) are in A.P and \\(\\frac{1}{\\alpha} + \\frac{1}{\\beta} = 4\\), then the value of \\(|\\alpha - \\beta|\\) is :",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{2\\sqrt{17}}{9}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\sqrt{34}}{9}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{2\\sqrt{13}}{9}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\sqrt{61}}{9}\\)"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "\\(\\text{Ans. (c)}\\)\r\n\r\n\\[\\text{: We,~}px^{2} + qx + r = 0\\]\r\n\r\n\\[\\text{roots~}\\alpha,\\beta\\]\r\n\r\n\\(\\begin{matrix}\r\n & \\text{~} \\\\\r\n & \\text{~} \\\\\r\n & \\alpha + \\beta = \\frac{- q}{p}.....(i) \\\\\r\n & \\alpha\\beta = \\frac{r}{p}.......(ii) \\\\\r\n & \\begin{matrix}\r\np,q,r\\text{~}\\text{are in A.P}\\text{~} \\\\\r\n2q = p + r.....(iii) \\\\\r\n\\text{~}\\text{and}\\text{~}\\frac{1}{\\alpha} + \\frac{1}{\\beta} = 4 \\Rightarrow \\frac{\\alpha + \\beta}{\\alpha\\beta} = 4 \\\\\r\n = \\frac{q}{r} = - 4 \\Rightarrow \\text{~}\\text{(iv)}\\text{~} \\\\\r\n\\text{~}\\text{equation (iii) and (iv)}\\text{~}\\underline{p = - 9r}\\text{~}\\text{we (i) and (ii)}\\text{~} \\\\\r\n\\alpha + \\beta = \\frac{4r}{- 9r} = \\frac{- 4}{9},\\alpha\\beta = \\frac{r}{- 9r} = \\frac{- 1}{9} \\\\\r\n|(\\alpha - \\beta)| = \\sqrt{(\\alpha + \\beta)^{2} - 4\\alpha\\beta} \\\\\r\n = \\sqrt{\\frac{16}{81} - \\frac{4}{9}} = \\sqrt{\\frac{52}{81}} \\\\\r\n|(\\alpha - \\beta)| = \\frac{2}{9}\\sqrt{13}\r\n\\end{matrix}\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 7,
+    "stem": "The roots of the equation \\(\\left| \\mathbf{x}^{2} \\right| + |\\mathbf{x}| - \\mathbf{6} = \\mathbf{0}\\) are:",
+    "options": [
+      {
+        "label": "A",
+        "text": "One and only one real number"
+      },
+      {
+        "label": "B",
+        "text": "Real with sum one"
+      },
+      {
+        "label": "C",
+        "text": "Real with sum zero"
+      },
+      {
+        "label": "D",
+        "text": "Real with product zero"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "Ans. (c) :** Clearly, the roots of the equation \\(\\left| x^{2} \\right| + |x| - 6 = 20\\) are real with sum zero, because \\(|x| = \\left\\{ \\begin{matrix}\r\n & \\\\\r\n\\ x & \\ \\ x \\geq 0 \\\\\r\n - x & \\ x < 0\r\n\\end{matrix} \\right.\\)\r\n\r\n\\(|x|^{2} + |x| - 6 = 0x \\geq 0\\ ,\\ x^{2} + x - 6\\) \\(= 0\\)\r\n\r\n\\((x + 3)(x - 2) = 0\\ ,\\ x = - 3, + 2\\)\r\n\r\n\\(\\begin{matrix}\r\nx < 0 & x^{2} - x - 6 = 0 \\\\\r\n & \\ (x - 3)(x + 2) = 0 \\\\\r\n & x = 3, - 2\r\n\\end{matrix}\\)\r\n\r\nSum of roots \\(= 3 - 3 + 2 - 2\\)\r\n\r\n\\(= 0\\)",
+    "defects": []
+  },
+  {
+    "number": 8,
+    "stem": "The number of real roots of the equation (x - 1) \\(\\ ^{2} + (x - 3)^{2} + (x - 5)^{2} = 0\\) is :",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "1"
+      },
+      {
+        "label": "C",
+        "text": "2"
+      },
+      {
+        "label": "D",
+        "text": "3"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Ans. (a) :** Given expression is sum of non negative real numbers as \\(x^{2} \\geq 0\\), for \\(x \\in R\\) which must be positive Since not all terms of the sum are vanishing simultaneously. Therefore, the equation has no real root. OR\r\n\r\nGiven\r\n\r\n\\(\\begin{matrix}\r\n & \\ (x - 1)^{2} + (x - 3)^{2} + (x - 5)^{2} \\\\\r\n & \\  = 3x^{2} - 18x + 35\r\n\\end{matrix}\\)\r\n\r\nand \\(\\ D = (18)^{2} - 4 \\times 35 \\times 3 < 0\\)\\\r\nThus, no real roots.",
+    "defects": []
+  },
+  {
+    "number": 9,
+    "stem": "The number of integral solutions of the equation \\(\\{\\mathbf{x} + \\mathbf{1}\\} + \\mathbf{2x} = \\mathbf{4}\\lbrack\\mathbf{x} + \\mathbf{1}\\rbrack - \\mathbf{6}\\), is",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "1"
+      },
+      {
+        "label": "C",
+        "text": "2"
+      },
+      {
+        "label": "D",
+        "text": "3"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Ans. (b):** Given, \\(\\{ x + 1\\} + 2x = 4\\lbrack x + 1\\rbrack - 6\\)\\\r\nWe know -\r\n\r\n\\(\\begin{matrix}\r\n & x = \\{ x\\} + \\lbrack x\\rbrack \\\\\r\n & \\ \\{ x\\} = x - \\lbrack x\\rbrack\r\n\\end{matrix}\\)\r\n\r\nThen,\r\n\r\n\\(\\begin{matrix}\r\n & x + 1 - \\lbrack x + 1\\rbrack + 2x = 4\\lbrack x + 1\\rbrack - 6 \\\\\r\n & 3x + 1 = 5\\lbrack x + 1\\rbrack - 6 \\\\\r\n & 3x = 5\\{\\lbrack x\\rbrack + 1\\} - 6 - 1 \\\\\r\n & 3x = 5\\lbrack x\\rbrack + 5 - 7 \\\\\r\n & 3x = 5\\lbrack x\\rbrack - 2.....(i)\r\n\\end{matrix}\\)\r\n\r\nAgain we put, \\(x = \\{ x\\} + \\lbrack x\\rbrack\\)\r\n\r\n\\(\\begin{matrix}\r\n & 3\\{\\lbrack x\\rbrack + \\{ x\\}\\} = 5\\lbrack x\\rbrack - 2 \\\\\r\n & 3\\{ x\\} = 2\\lbrack x\\rbrack - 2\r\n\\end{matrix}\\)\r\n\r\nSince,\r\n\r\n\\(\\begin{matrix}\r\n & 0 \\leq \\{ x\\} < 1 \\\\\r\n & 0 \\leq 3\\{ x\\} < 3\r\n\\end{matrix}\\)\r\n\r\nAnd\r\n\r\n\\(\\begin{matrix}\r\n & 0 \\leq 2\\lbrack x\\rbrack - 2 < 3 \\\\\r\n & 2 \\leq 2\\lbrack x\\rbrack < 5 \\\\\r\n & 1 \\leq \\lbrack x\\rbrack < \\frac{5}{2}\r\n\\end{matrix}\\)\r\n\r\n\\(\\therefore\\ \\lbrack x\\rbrack = 1,2\\)\r\n\r\nThen, from equation (i), we get -\r\n\r\n\\(\\begin{matrix}\r\n & \\lbrack x\\rbrack = 1 \\Rightarrow x = 1 \\\\\r\n & \\lbrack x\\rbrack = 2 \\Rightarrow x = \\frac{8}{3}\r\n\\end{matrix}\\)\r\n\r\nSo, \\(x = 1\\) is the only integral equation.",
+    "defects": []
+  },
+  {
+    "number": 10,
+    "stem": "The smallest positive integral value of \\(n\\) for which \\((1 + \\sqrt{3}i)^{1/2}\\) is positive real, is",
+    "options": [
+      {
+        "label": "A",
+        "text": "3"
+      },
+      {
+        "label": "B",
+        "text": "6"
+      },
+      {
+        "label": "C",
+        "text": "12"
+      },
+      {
+        "label": "D",
+        "text": "0"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Ans. (b)** : We have, \\((1 + \\sqrt{3}i)^{n/2}\\)\\\r\nNow, \\((1 + \\sqrt{3}i)^{n/2} = \\left\\lbrack 2\\left\\{ \\frac{1}{2} + \\frac{i\\sqrt{3}}{2} \\right\\} \\right\\rbrack^{n/2}\\)\r\n\r\n\\(= \\left( - 2\\omega^{2} \\right)^{n/2} = ( - 2)^{n/2}\\omega^{n}\\)\r\n\r\nclearly, \\(( - 2)^{n/2}\\omega^{n}\\) is a positive real number\\\r\nWhen, if \\(n = 6,12,24,36\\).\\\r\nSo, the smallest value of \\(n = 6\\)",
+    "defects": []
+  },
+  {
+    "number": 11,
+    "stem": "If \\(z = \\frac{7 - i}{3 - 4i}\\) then \\(z^{14}\\) equals",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2^{7}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2^{7}i\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(- 2^{7}i\\)"
+      },
+      {
+        "label": "D",
+        "text": "none of these"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "Ans. (c)** :\\\r\nGiven, \\(z = \\frac{7 - i}{3 - 4i}\\)\\\r\nNow, Rationalize denominator\r\n\r\n\\(\\begin{matrix}\r\nz = \\frac{7 - i}{3 - 4i} \\times \\frac{3 + 4i}{3 + 4i} \\\\\r\nz = \\frac{21 + 28i - 3i - 4i^{2}}{9 - 16i^{2}} \\\\\r\nz = \\frac{25 + 25i}{25} = 1 + i \\\\\r\n(z)^{2} = (1 + i)^{2} \\\\\r\nz^{2} = 1 + i^{2} + 2i = 2i \\\\\r\n\\because z^{14} = \\left( z^{2} \\right)^{7} = (2i)^{7} = (2)^{7}i^{7} = - 2^{7}i\r\n\\end{matrix}\\)\r\n\r\nHence, option (c) is correct.",
+    "defects": []
+  },
+  {
+    "number": 12,
+    "stem": "The value of \\(4 + 5\\left( - \\frac{1}{2} + i\\frac{\\sqrt{3}}{2} \\right)^{334} + 3\\left( - \\frac{1}{2} + i\\frac{\\sqrt{3}}{2} \\right)^{365}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(1 - i\\sqrt{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(- 1 + i\\sqrt{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(i\\sqrt{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(- i\\sqrt{3}\\)"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "Ans (c)** : The value of\r\n\r\n\\(4 + 5\\left( - \\frac{1}{2} + i\\frac{\\sqrt{3}}{2} \\right)^{334} + 3\\left( - \\frac{1}{2} + i\\frac{\\sqrt{3}}{2} \\right)^{365}\\)\r\n\r\nWe know that imaginary cube root of unity\r\n\r\n\\(\\omega = - \\frac{1}{2} + i\\frac{\\sqrt{3}}{2}\\)\r\n\r\n\\(\\begin{matrix}\r\n\\text{~}\\text{Then,}\\text{~} & \\  = 4 + 5(\\omega)^{334} + 3(\\omega)^{365} \\\\\r\n & \\  = 4 + 5\\left( \\omega^{3} \\right)^{111}\\omega + 3\\left( \\omega^{3} \\right)^{121} \\cdot \\omega^{2} \\\\\r\n & \\  = 4 + 5\\omega + 3\\omega^{2}\\ \\left\\{ \\because\\omega^{3} = 1 \\right\\} \\\\\r\n & \\  = 1 + 3 + 3\\omega + 2\\omega + 3\\omega^{2} \\\\\r\n & \\  = 1 + 3 + 3\\omega + 3\\omega^{2} + 2\\omega \\\\\r\n & \\  = 1 + 3\\left( 1 + \\omega + \\omega^{2} \\right) + 2\\omega \\\\\r\n & \\  = 1 + 2\\omega\\ \\left\\{ \\because 1 + \\omega + \\omega^{2} = 0 \\right) \\\\\r\n & \\  = 1 + 2\\left( \\frac{- 1}{2} + i\\frac{\\sqrt{3}}{2} \\right)\\ \\left\\{ \\because\\omega = \\frac{- 1}{2} + i\\frac{\\sqrt{3}}{2} \\right\\} \\\\\r\n & \\  = 1 - 1 + i\\sqrt{3} = i\\sqrt{3}\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 13,
+    "stem": "\\(\\left( \\frac{1 + i}{1 - i} \\right)^{4} + \\left( \\frac{1 - i}{1 + i} \\right)^{4}\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "1"
+      },
+      {
+        "label": "C",
+        "text": "2"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "Ans. (c)** : Given,\r\n\r\n\\(\\left( \\frac{1 + i}{1 - i} \\right)^{4} + \\left( \\frac{1 - i}{1 + i} \\right)^{4}\\)\r\n\r\nNow, \\(\\frac{1 + i}{1 - i} = \\frac{(1 + i)^{2}}{1 - i^{2}}\\)\r\n\r\n\\(\\begin{matrix}\r\n & \\  = \\frac{1 + i^{2} + 2i}{1 - i^{2}} \\\\\r\n & \\  = \\frac{2i}{2} = i\r\n\\end{matrix}\\)\r\n\r\nSimilarly,\r\n\r\n\\(\\begin{matrix}\r\n & \\frac{1 - i}{1 + i} = \\frac{1 - i}{1 + i} \\times \\frac{1 - i}{(1 - i)} = \\frac{(1 - i)^{2}}{1 + i^{2}} \\\\\r\n & \\  = \\frac{1 + i^{2} - 2i}{2} \\\\\r\n & \\  = - \\frac{2i}{2} = - i \\\\\r\n & \\ \\therefore i^{4} + ( - i)^{4} \\\\\r\n & \\  = 1 + 1 = 2\r\n\\end{matrix}\\)\r\n\r\n∴ option (c) is correct.",
+    "defects": []
+  },
+  {
+    "number": 14,
+    "stem": "If \\(\\mathbf{f}(\\mathbf{x}) = \\sqrt{\\log_{10}\\mathbf{x}^{2}}\\). The set of all values of \\(\\mathbf{x}\\) for which \\(\\mathbf{f}(\\mathbf{x})\\) is real, is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\lbrack - 1,1\\rbrack\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\lbrack - 1,\\infty\\rbrack\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(( - \\infty,1\\rbrack\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(( - \\infty, - 1\\rbrack \\cup \\lbrack 1,\\infty\\rbrack\\)"
+      }
+    ],
+    "answer": "D",
+    "answerSource": "tail-key",
+    "solution": "Ans. (d)** : \\(f(x) = \\sqrt{\\log_{10}x^{2}}\\) is real, if\r\n\r\n\\(\\begin{matrix}\r\n & \\log_{10}x^{2} \\geq 0 \\\\\r\n & x^{2} \\geq 1 \\\\\r\n & x < - 1\\text{~}\\text{and}\\text{~}x > 1 \\\\\r\n & x \\in ( - \\infty, - 1\\rbrack \\cup \\lbrack 1,\\infty)\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 15,
+    "stem": "If \\(f:\\mathbf{R} \\rightarrow \\mathbf{R}\\) be the signum function and \\(g:\\mathbf{R} \\rightarrow \\mathbf{R}\\) be the greatest integer function, then \\(\\left. \\ \\mathbf{\\sin}\\left\\{ \\mathbf{\\pi}(\\mathbf{fog})\\left( \\frac{\\mathbf{1}}{\\mathbf{2}} \\right) \\right) \\right\\}\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\sqrt{3}}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "0"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{\\sqrt{2}}\\)"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "Ans. (c)** : We have,\\\r\nAnd,\r\n\r\n\\(\\begin{matrix}\r\n & f(x) = sgm(x) \\\\\r\n & g(x) = \\lbrack x\\rbrack\r\n\\end{matrix}\\)\r\n\r\nNow,\r\n\r\n\\(\\begin{matrix}\r\nfog\\left( \\frac{1}{2} \\right) & \\  = f\\left( g\\left( \\frac{1}{2} \\right) \\right) = f\\left( \\left\\lbrack \\frac{1}{2} \\right\\rbrack \\right) \\\\\r\n & \\  = f(0)\\ \\lbrack\\because\\lbrack 0.5\\rbrack = 0\\rbrack \\\\\r\n = & sgm(0) = 0\r\n\\end{matrix}\\)\r\n\r\n\\(\\lbrack\\because sgm(0) = 0\\rbrack\\)\r\n\r\nNow, \\(sin\\left\\lbrack \\pi\\left\\{ fog\\left( \\frac{1}{2} \\right) \\right\\} \\right\\rbrack = sin(\\pi \\times 0) = sin0^{\\circ} = 0\\)",
+    "defects": []
+  },
+  {
+    "number": 16,
+    "stem": "The function \\(f(x) = tan\\pi x - x + \\lbrack x\\rbrack\\) has period",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\pi\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2\\pi\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "answer": "D",
+    "answerSource": "tail-key",
+    "solution": "Ans. (d)** : Given function is \\(f(x) = tan\\pi x - x + \\lbrack x\\rbrack\\)\\\r\nSince, \\(\\lbrack x\\rbrack\\) is not periodic function.\\\r\n\\(\\therefore f(x)\\) is a non-periodic function.",
+    "defects": []
+  },
+  {
+    "number": 17,
+    "stem": "If for all \\(\\mathbf{x},\\mathbf{y} \\in \\mathbf{N}\\), there exists a function \\(f(\\mathbf{x})\\) satisfying \\(f(x + y) = f(x) \\times f(y)\\) such that \\(f(1) = 3\\) and \\(\\sum_{x = 1}^{n} f(x) = 120\\), then value of \\(n\\) will be",
+    "options": [
+      {
+        "label": "A",
+        "text": "4"
+      },
+      {
+        "label": "B",
+        "text": "5"
+      },
+      {
+        "label": "C",
+        "text": "6"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Ans. (a)** : Given, for \\(x,y \\in N\\),\r\n\r\n\\(f(x + y) = f(x) \\cdot f(y)\\)\r\n\r\nThen function will be of the form-\r\n\r\n\\(\\begin{matrix}\r\n & f(x) = a^{x},\\text{~}\\text{where}\\text{~}a \\in \\text{ }N\\ \\lbrack\\because a \\neq 1\\rbrack \\\\\r\n\\because & f(1) = 3 \\\\\r\n \\Rightarrow & f(1) = a^{1} = 3 \\\\\r\n \\Rightarrow & a = 3 \\\\\r\n\\therefore\\text{~}\\text{Function is}\\text{~}f(x) = 3^{x} & \\\\\r\n\\text{~}\\text{Now,}\\text{~} & \\sum_{x = 1}^{n} f(x) = 120 \\\\\r\n \\Rightarrow & \\sum_{x = 1}^{n} 3^{x} = 120 \\\\\r\n \\Rightarrow & 3 + 3^{2} + 3^{3} + \\ldots + 3^{n} = 120 \\\\\r\n \\Rightarrow & \\frac{3\\left( 3^{n} - 1 \\right)}{3 - 1} = 120 \\\\\r\n \\Rightarrow & 3^{n} = 1 + \\frac{120 \\times 2}{3} \\\\\r\n \\Rightarrow & 3^{n} = 81 = 3^{4} \\\\\r\n\\text{~}\\text{So,}\\text{~} & n = 4\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 18,
+    "stem": "If \\(f\\) is any function, then \\(\\frac{1}{2}\\lbrack f(x) + f( - x)\\rbrack\\) is always :",
+    "options": [
+      {
+        "label": "A",
+        "text": "odd"
+      },
+      {
+        "label": "B",
+        "text": "even"
+      },
+      {
+        "label": "C",
+        "text": "neither even nor odd"
+      },
+      {
+        "label": "D",
+        "text": "one-one"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Ans. (b)**: Given, f is any function.\\\r\nAnd let \\(g(x) = \\frac{1}{2}\\lbrack f(x) + f( - x)\\rbrack\\)\\\r\nWe know that -\\\r\nFor even, \\(f( - x) = f(x)\\)\\\r\nAnd for odd, \\(f( - x) = - f(x)\\)\\\r\nThen, \\(g( - x) = \\frac{1}{2}\\lbrack f( - x) + f(x)\\rbrack\\)\\\r\nWe see that, \\(g( - x) = g(x)\\)\\\r\nHence, the given function is always even.",
+    "defects": []
+  },
+  {
+    "number": 19,
+    "stem": "The domain of the function\n\n\\(f(x) = \\frac{1}{\\sqrt{\\lbrack x\\rbrack^{2} - \\lbrack x\\rbrack - 6}}\\text{~is~}\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(( - \\infty, - 2) \\cup \\lbrack 4,\\infty)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(( - \\infty, - 2\\rbrack \\cup \\lbrack 4,\\infty)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(( - \\infty, - 2) \\cup (4,\\infty)\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Sol. (a)** \\(f(x)\\) is defined, if \\(\\lbrack x\\rbrack^{2} - \\lbrack x\\rbrack - 6 > 0\\)\r\n\r\n\\(\\begin{matrix}\r\n \\Rightarrow & (\\lbrack x\\rbrack - 3)(\\lbrack x\\rbrack + 2) > 0 \\\\\r\n \\Rightarrow & \\lbrack x\\rbrack < - 2\\text{~}\\text{or}\\text{~}\\lbrack x\\rbrack > 3\r\n\\end{matrix}\\)\r\n\r\nBut \\(\\ \\lbrack x\\rbrack < - 2 \\Rightarrow \\lbrack x\\rbrack = - 3, - 4, - 5,\\ldots\\)\r\n\r\n\\(\\therefore\\ x < - 2\\)\r\n\r\nAlso, \\(\\ \\lbrack x\\rbrack > 3 \\Rightarrow \\lbrack x\\rbrack = 4,5,6,\\ldots\\)\r\n\r\n\\(\\therefore\\ x \\geq 4\\)\r\n\r\nDomain of \\(f = ( - \\infty, - 2) \\cup \\lbrack 4,\\infty)\\)",
+    "defects": []
+  },
+  {
+    "number": 20,
+    "stem": "If \\(\\log_{10^{4}}x = y\\), then \\(\\log_{10^{8}}x^{4}\\) is equal to -",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{2}{3}y\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(3y\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(4y\\)"
+      },
+      {
+        "label": "D",
+        "text": "2 y"
+      }
+    ],
+    "answer": "D",
+    "answerSource": "tail-key",
+    "solution": "Ans. (d)**: Given,\r\n\r\n\\(\\begin{matrix}\r\n & \\log_{10^{4}}x = y \\\\\r\n & x = \\left( 10^{4} \\right)^{y} \\\\\r\n & x = 10^{4y}\r\n\\end{matrix}\\)\r\n\r\nThen,\r\n\r\n\\(\\begin{matrix}\r\n\\log_{10^{8}}x^{4} & \\  = \\frac{4}{8}\\log_{10}x \\\\\r\n & \\  = \\frac{4}{8}\\log_{10}10^{4y} \\\\\r\n & \\  = \\frac{4y \\times 4}{8} \\\\\r\n & \\  = 2y\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 21,
+    "stem": "If \\(log2 = a,log3 = b,log7 = c\\) and \\(6^{x} = 7^{x + 4}\\) then x is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{4b}{c + a - b}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{4c}{a + b - c}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{4b}{c - a - b}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{4a}{a + b - c}\\)"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Ans. (b)** : Given,\r\n\r\n\\(log2 = a,log3 = b,log7 = c\\text{~and~}6^{x} = 7^{x + 4}\\)\r\n\r\nTaking \\(\\log\\) both the sides of the above condition-\r\n\r\n\\(\\begin{matrix}\r\n & log6^{x} = log7^{x + 4} \\\\\r\n \\Rightarrow & xlog(2 \\times 3) = (x + 4)log7 \\\\\r\n \\Rightarrow & x\\lbrack log2 + log3\\rbrack = (x + 4) \\cdot log7 \\\\\r\n \\Rightarrow & x\\lbrack a + b\\rbrack = (x + 4) \\cdot c \\\\\r\n \\Rightarrow & x\\lbrack a + b\\rbrack = xc + 4c \\\\\r\n\\text{~}\\text{Or}\\text{~} & x\\lbrack a + b - c\\rbrack = 4c \\\\\r\n & x = \\frac{4c}{a + b - c}\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 22,
+    "stem": "The value of \\(f(0)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "93"
+      },
+      {
+        "label": "B",
+        "text": "120"
+      },
+      {
+        "label": "C",
+        "text": "141"
+      },
+      {
+        "label": "D",
+        "text": "0"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "** We have, \\(f(0) = \\left| \\begin{matrix}\r\n3 & - 5 & 3 \\\\\r\n4 & 1 & 9 \\\\\r\n9 & - 6 & 21\r\n\\end{matrix} \\right|\\)\r\n\r\n\\(\\begin{matrix}\r\n & \\  = 3(21 + 54) + 5(84 - 81) + 3( - 24 - 9) \\\\\r\n & \\  = 225 + 15 - 99 = 141\r\n\\end{matrix}\\)",
+    "context": "** Consider the determinant \\(f(x) = \\left| \\begin{matrix} x^{2} - 5x + 3 & 2x - 5 & 3 \\\\ 3x^{2} + x + 4 & 6x + 1 & 9 \\\\ 7x^{2} - 6x + 9 & 14x - 6 & 21 \\end{matrix} \\right|\\)",
+    "setLabel": "w1-set-22-23",
+    "defects": []
+  },
+  {
+    "number": 23,
+    "stem": "The value of \\(f'(0)\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "7"
+      },
+      {
+        "label": "C",
+        "text": "19"
+      },
+      {
+        "label": "D",
+        "text": "-1"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "** \\(f'(x) = \\left| \\begin{matrix}\r\n2x - 5 & 2x - 5 & 3 \\\\\r\n6x + 1 & 6x + 1 & 9 \\\\\r\n14x - 6 & 14x - 6 & 21\r\n\\end{matrix} \\right|\\)\r\n\r\n\\(\\begin{matrix}\r\n & \\  + \\left| \\begin{matrix}\r\nx^{2} - 5x + 3 & 2 & 3 \\\\\r\n3x^{2} + x + 4 & 6 & 9 \\\\\r\n7x^{2} - 6x + 9 & 14 & 21\r\n\\end{matrix} \\right| \\\\\r\n & \\  = 0 + 0 = 0\r\n\\end{matrix}\\)",
+    "context": "** Consider the determinant \\(f(x) = \\left| \\begin{matrix} x^{2} - 5x + 3 & 2x - 5 & 3 \\\\ 3x^{2} + x + 4 & 6x + 1 & 9 \\\\ 7x^{2} - 6x + 9 & 14x - 6 & 21 \\end{matrix} \\right|\\)",
+    "setLabel": "w1-set-22-23",
+    "defects": []
+  },
+  {
+    "number": 24,
+    "stem": "Let \\(A\\) be a \\(3 \\times 3\\) matrix such that \\(adjA = \\begin{bmatrix}\n2 & - 1 & 1 \\\\\n - 1 & 0 & 2 \\\\\n1 & - 2 & - 1\n\\end{bmatrix}\\) and \\(B = adj(adjA).|f|A \\mid = \\lambda\\) and \\(\\left| \\left( B^{- 1} \\right)^{T} \\right| = \\mu\\), then the ordered pair, \\((|\\lambda|,\\mu)\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\((3,81)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\left( 9,\\frac{1}{81} \\right)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\left( 9,\\frac{1}{9} \\right)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\left( 3,\\frac{1}{81} \\right)\\)"
+      }
+    ],
+    "answer": "D",
+    "answerSource": "tail-key",
+    "solution": "Sol. (d)** It is given that, \\(adj(A) = \\begin{bmatrix}\r\n2 & - 1 & 1 \\\\\r\n - 1 & 0 & 2 \\\\\r\n1 & - 2 & - 1\r\n\\end{bmatrix}\\)\r\n\r\n\\(\\begin{matrix}\r\n & \\Rightarrow & & |adjA| \\\\\r\n & = & |adjA| & = |A|^{3 - 1} \\\\\r\n & \\Rightarrow & & |A|^{2} \\\\\r\n & = & |adjA| & \\Rightarrow \\\\\r\n & B & & = adj(adjA) \\\\\r\n & & & |B| = \\pm 3\\  \\\\\r\n & & & |A|^{(3 - 1)^{2}} = |A|^{4} = 81 \\\\\r\n & & \\left| \\left( B^{- 1} \\right)^{T} \\right| & = \\left| B^{- 1} \\right| = \\frac{1}{|B|} = \\frac{1}{81} \\Rightarrow \\mu = \\frac{1}{81}\r\n\\end{matrix}\\)\r\n\r\n\\(\\therefore(|\\lambda|,\\mu)\\) is \\(\\left( 3,\\frac{1}{81} \\right)\\)\\\r\nHence, option (d) is correct.",
+    "defects": []
+  },
+  {
+    "number": 25,
+    "stem": "If the system of equations \\(x + y + z = 5\\), \\(x + 2y + 3z = 9,x + 3y + \\alpha z = \\beta\\) has infinitely many solutions, then \\(\\beta - \\alpha\\) equals",
+    "options": [
+      {
+        "label": "A",
+        "text": "8"
+      },
+      {
+        "label": "B",
+        "text": "18"
+      },
+      {
+        "label": "C",
+        "text": "21"
+      },
+      {
+        "label": "D",
+        "text": "5"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Sol. (a)** Since, the system of equations has infinitely many solution, therefore\r\n\r\n\\(D = D_{1} = D_{2} = D_{3} = 0\\)\r\n\r\nHere,\r\n\r\n\\(D = \\left| \\begin{matrix}\r\n1 & 1 & 1 \\\\\r\n1 & 2 & 3 \\\\\r\n1 & 3 & \\alpha\r\n\\end{matrix} \\right| = 1(2\\alpha - 9) - 1(\\alpha - 3) + 1(3 - 2)\\)\r\n\r\n\\(= \\alpha - 5\\)\r\n\r\nand\r\n\r\n\\(\\begin{matrix}\r\nD_{3} = \\left| \\begin{matrix}\r\n1 & 1 & 5 \\\\\r\n1 & 2 & 9 \\\\\r\n1 & 3 & \\beta\r\n\\end{matrix} \\right| & \\  = 1(2\\beta - 27) - 1(\\beta - 9) + 5(3 - 2) \\\\\r\n & \\  = \\beta - 13\r\n\\end{matrix}\\)\r\n\r\nNow, \\(D = 0 \\Rightarrow \\alpha - 5 = 0 \\Rightarrow \\alpha = 5\\)\\\r\nand \\(D_{3} = 0 \\Rightarrow \\beta - 13 = 0\\)\r\n\r\n\\(\\begin{matrix}\r\n \\Rightarrow & \\beta = 13 \\\\\r\n\\therefore & \\beta - \\alpha = 13 - 5 = 8\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 26,
+    "stem": "Let \\(x,y,z > 1\\) and \\(A = \\begin{bmatrix}\n1 & \\log_{x}y & \\log_{x}z \\\\\n\\log_{y}x & 2 & \\log_{y}z \\\\\n\\log_{z}x & \\log_{z}y & 3\n\\end{bmatrix}\\) The \\(\\left| adj\\left( adj\\mathbf{A}^{\\mathbf{2}} \\right) \\right|\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(4^{8}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2^{8}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2^{4}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(6^{4}\\)"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Ans. (b)** : According to given summation, Let \\(logx = t_{1},logy = t_{2}\\) and \\(logz = t_{3}\\)\r\n\r\n\\(\\begin{matrix}\r\n & \\ |A| = \\left| \\begin{matrix}\r\n1 & \\frac{t_{2}}{t_{1}} & \\frac{t_{3}}{t_{1}} \\\\\r\n\\frac{t_{1}}{t_{2}} & 2 & \\frac{t_{3}}{t_{2}} \\\\\r\n\\frac{t_{1}}{t_{3}} & \\frac{t_{2}}{t_{3}} & 3\r\n\\end{matrix} \\right|\\ \\left\\lbrack \\because logab = \\frac{logb}{loga} \\right\\rbrack \\\\\r\n & \\ |A| = 1(6 - 1) - \\frac{t_{2}}{t_{1}}\\left\\lbrack \\frac{3t_{1}}{t_{2}} - \\frac{t_{1}}{t_{2}} \\right\\rbrack + \\frac{t_{3}}{t_{1}}\\left\\lbrack \\frac{t_{1}}{t_{3}} - \\frac{2t_{1}}{t_{3}} \\right\\rbrack \\\\\r\n & 5 - \\frac{t_{2}}{t_{1}}\\left\\lbrack \\frac{2t_{1}}{t_{2}} \\right\\rbrack - \\frac{t_{3}}{t_{1}}\\left\\lbrack \\frac{t_{1}}{t_{3}} \\right\\rbrack \\\\\r\n & \\ |A| = 5 - 2 - 1 \\\\\r\n & \\ |A| = 2\r\n\\end{matrix}\\)\r\n\r\nNow,\r\n\r\n\\(\\begin{matrix}\r\n & \\left| Adj \\cdot \\left( Adj\\left( A^{2} \\right) \\right) \\right|^{2} = \\left| adj\\left( A^{2} \\right) \\right|^{2} \\\\\r\n & \\  = \\left( \\left| A^{2} \\right|^{2} \\right)^{2} = |A|^{8} \\\\\r\n & \\  = (2)^{8}\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 27,
+    "stem": "Let \\(\\alpha\\) be a root of the equation \\(x^{2} + x + 1 = 0\\) and the matrix \\(A = \\frac{1}{\\sqrt{3}}\\begin{bmatrix}\n1 & 1 & 1 \\\\\n1 & \\alpha & \\alpha^{2} \\\\\n1 & \\alpha^{2} & \\alpha^{4}\n\\end{bmatrix}\\), then the matrix \\(A^{31}\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(A^{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(I_{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(A^{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(A\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Sol. (a)** It is given that ' \\(\\alpha\\) ' is the root of equation \\(x^{2} + x + 1 = 0\\), so \\(\\alpha^{2} + \\alpha + 1 = 0\\) and \\(\\alpha^{3} = 1\\).\r\n\r\nNow, matrix \\(A = \\frac{1}{\\sqrt{3}}\\begin{bmatrix}\r\n1 & 1 & 1 \\\\\r\n1 & \\alpha & \\alpha^{2} \\\\\r\n1 & \\alpha^{2} & \\alpha^{4}\r\n\\end{bmatrix} = \\frac{1}{\\sqrt{3}}\\begin{bmatrix}\r\n1 & 1 & 1 \\\\\r\n1 & \\alpha & \\alpha^{2} \\\\\r\n1 & \\alpha^{2} & \\alpha\r\n\\end{bmatrix}\\)\\\r\n\\[\\left\\lbrack \\because\\alpha^{3} = 1 \\right\\rbrack\\]\r\n\r\n\\(\\begin{matrix}\r\n\\therefore\\ A^{2} & \\  = \\left( \\frac{1}{\\sqrt{3}} \\right)^{2}\\begin{bmatrix}\r\n1 & 1 & 1 \\\\\r\n1 & \\alpha & \\alpha^{2} \\\\\r\n1 & \\alpha^{2} & \\alpha\r\n\\end{bmatrix}\\begin{bmatrix}\r\n1 & 1 & 1 \\\\\r\n1 & \\alpha & \\alpha^{2} \\\\\r\n1 & \\alpha^{2} & \\alpha\r\n\\end{bmatrix} \\\\\r\n & \\  = \\frac{1}{3}\\begin{bmatrix}\r\n1 + 1 + 1 & 1 + \\alpha + \\alpha^{2} & 1 + \\alpha^{2} + \\alpha \\\\\r\n1 + \\alpha + \\alpha^{2} & 1 + \\alpha^{2} + \\alpha^{4} & 1 + \\alpha^{3} + \\alpha^{3} \\\\\r\n1 + \\alpha^{2} + \\alpha & 1 + \\alpha^{3} + \\alpha^{3} & 1 + \\alpha^{4} + \\alpha^{2}\r\n\\end{bmatrix}\r\n\\end{matrix}\\)\r\n\r\n\\(\\begin{matrix}\r\n = & \\frac{1}{3}\\begin{bmatrix}\r\n3 & 0 & 0 \\\\\r\n0 & 0 & 3 \\\\\r\n0 & 3 & 0\r\n\\end{bmatrix} = \\begin{bmatrix}\r\n1 & 0 & 0 \\\\\r\n0 & 0 & 1 \\\\\r\n0 & 1 & 0\r\n\\end{bmatrix} \\\\\r\n & \\left\\lbrack \\because\\alpha^{3} = 1\\text{~}\\text{and}\\text{~}\\alpha^{2} + \\alpha + 1 = 0 \\right\\rbrack \\\\\r\nA^{4} & \\  = A^{2} \\cdot A^{2} \\\\\r\n = & \\begin{bmatrix}\r\n1 & 0 & 0 \\\\\r\n0 & 0 & 1 \\\\\r\n0 & 1 & 0\r\n\\end{bmatrix}\\begin{bmatrix}\r\n1 & 0 & 0 \\\\\r\n0 & 0 & 1 \\\\\r\n0 & 1 & 0\r\n\\end{bmatrix} = \\begin{bmatrix}\r\n1 & 0 & 0 \\\\\r\n0 & 1 & 0 \\\\\r\n0 & 0 & 1\r\n\\end{bmatrix} = I \\\\\r\nA^{8} & \\  = I = A^{16} = A^{20} = A^{24} = A^{28} \\\\\r\nA^{31} & \\  = A^{28} \\cdot A^{3} = I \\cdot A^{3} = A^{3} \\Rightarrow A^{31} = A^{3}\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 28,
+    "stem": "Let \\(A = \\begin{pmatrix}\n0 & 2q & r \\\\\np & q & - r \\\\\np & - q & r\n\\end{pmatrix}\\). If \\(AA^{T} = I_{3}\\), then \\(|p|\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{\\sqrt{5}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{\\sqrt{2}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{\\sqrt{3}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{\\sqrt{6}}\\)"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Sol. (b)** Given, \\(AA^{T} = I\\)\r\n\r\n\\(\\begin{matrix}\r\n & \\  \\Rightarrow \\ \\begin{bmatrix}\r\n0 & 2q & r \\\\\r\np & q & - r \\\\\r\np & - q & r\r\n\\end{bmatrix}\\begin{bmatrix}\r\n0 & p & p \\\\\r\n2q & q & - q \\\\\r\nr & - r & r\r\n\\end{bmatrix} = \\begin{bmatrix}\r\n1 & 0 & 0 \\\\\r\n0 & 1 & 0 \\\\\r\n0 & 0 & 1\r\n\\end{bmatrix} \\\\\r\n & \\  \\Rightarrow \\begin{bmatrix}\r\n0 + 4q^{2} + r^{2} & 0 + 2q^{2} - r^{2} & 0 - 2q^{2} + r^{2} \\\\\r\n0 + 2q^{2} - r^{2} & p^{2} + q^{2} + r^{2} & p^{2} - q^{2} - r^{2} \\\\\r\n0 - 2q^{2} + r^{2} & p^{2} - q^{2} - r^{2} & p^{2} + q^{2} + r^{2}\r\n\\end{bmatrix} = \\begin{bmatrix}\r\n1 & 0 & 0 \\\\\r\n0 & 1 & 0 \\\\\r\n0 & 0 & 1\r\n\\end{bmatrix}\r\n\\end{matrix}\\)\r\n\r\nWe know that, if two matrices are equal, then corresponding elements are also equal, so\r\n\r\n\\(\\begin{matrix}\r\n & 4q^{2} + r^{2} = 1 = p^{2} + q^{2} + r^{2}....(i) \\\\\r\n & 2q^{2} - r^{2} = 0 \\Rightarrow r^{2} = 2q^{2}......(ii)\r\n\\end{matrix}\\)\r\n\r\nand \\(\\ p^{2} - q^{2} - r^{2} = 0\\).....(iii)\r\n\r\nUsing Eqs. (ii) and (iii), we get\r\n\r\n\\(p^{2} = 3q^{2}\\) ......(iv)\r\n\r\nUsing Eqs. (ii) and (iv) in Eq. (i), we get\r\n\r\n\\(\\Rightarrow \\ \\begin{matrix}\r\n & 4q^{2} + 2q^{2} = 1 \\\\\r\n & 6q^{2} = 1 \\Rightarrow 2p^{2} = 1\\ \\  \\\\\r\n & p^{2} = \\frac{1}{2} \\Rightarrow |p| = \\frac{1}{\\sqrt{2}}\r\n\\end{matrix}\\) [using Eq. (iv)]",
+    "defects": []
+  },
+  {
+    "number": 29,
+    "stem": "If \\(A\\) and \\(B\\) are symmetric matrices of the same order and \\(X = AB + BA\\) and \\(Y = AB - BA\\), then \\((XY)^{T}\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(XY\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(YX\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(- YX\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "Sol. (c)** Since, \\(A\\) and \\(B\\) are symmetric matrices\r\n\r\n\\(\\therefore\\ X = AB + BA\\)\r\n\r\nwill be a symmetric matrix and \\(Y = AB - BA\\) will be a skew-symmetric matrix.\\\r\nThus, we get \\(\\ X^{T} = X\\) and \\(Y^{T} = - Y\\)\\\r\nNow, consider \\((XY)^{T} = Y^{T}X^{T} = ( - Y)(X) = - YX\\)",
+    "defects": []
+  },
+  {
+    "number": 30,
+    "stem": "If \\(A = \\begin{bmatrix}\n1 & 0 & 0 \\\\\n0 & 1 & 0 \\\\\na & b & - 1\n\\end{bmatrix}\\) and \\(I\\) is the unit matrix of order 3 , then \\(A^{2} + 2A^{4} + 4A^{6}\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(7A^{8}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(7A^{7}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(8I\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(6I\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "\\(\\begin{matrix}\r\n & A^{2} = \\begin{bmatrix}\r\n1 & 0 & 0 \\\\\r\n0 & 1 & 0 \\\\\r\na & b & - 1\r\n\\end{bmatrix}\\begin{bmatrix}\r\n1 & 0 & 0 \\\\\r\n0 & 1 & 0 \\\\\r\na & b & - 1\r\n\\end{bmatrix} \\\\\r\n & \\  \\Rightarrow \\ A^{2} = \\begin{bmatrix}\r\n1 & 0 & 0 \\\\\r\n0 & 1 & 0 \\\\\r\n0 & 0 & 1\r\n\\end{bmatrix} = I_{3} \\\\\r\n & \\ A^{4} = A^{2} \\cdot A^{2} = I_{3} \\cdot I_{3} = I_{3} \\\\\r\n & \\ A^{6} = A^{2} \\cdot A^{4} = I_{3} \\cdot I_{3} = I_{3} \\\\\r\n & \\ \\therefore\\ A^{2} + 2A^{4} + 4A^{6} = I_{3} + 2I_{3} + 4I_{3} = 7I_{3} = 7\\left( I_{3} \\right)^{4} \\\\\r\n & \\  = 7\\left( A^{2} \\right)^{4} = 7A^{8}\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 31,
+    "stem": "Let \\(a_{1},a_{2},a_{3},\\ldots\\) be an AP, such that \\(\\frac{a_{1} + a_{2} + \\ldots + a_{p}}{a_{1} + a_{2} + a_{3} + \\ldots + a_{q}} = \\frac{p^{3}}{q^{3}};p \\neq q\\), then \\(\\frac{a_{6}}{a_{21}}\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{41}{11}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{121}{1681}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{11}{41}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{121}{1861}\\)"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Sol. (b)** Given that, \\(\\frac{a_{1} + a_{2} + \\ldots + a_{p}}{a_{1} + a_{2} + \\ldots + a_{q}} = \\frac{p^{3}}{q^{3}}\\)\r\n\r\n\\(\\Rightarrow \\ \\frac{\\frac{p}{2}\\left\\lbrack 2a_{1} + (p - 1)d \\right\\rbrack}{\\frac{q}{2}\\left\\lbrack 2a_{2} + (q - 1)d \\right\\rbrack} = \\frac{p^{3}}{q^{3}}\\)\r\n\r\nwhere, \\(d\\) is a common difference of an AP.\r\n\r\n\\(\\begin{matrix}\r\n \\Rightarrow & \\frac{2a_{1} + (p - 1)d}{2a_{2} + (q - 1)d} = \\frac{p^{2}}{q^{2}} \\\\\r\n \\Rightarrow & \\frac{a_{1} + (p - 1)\\frac{d}{2}}{a_{2} + (q - 1)\\frac{d}{2}} = \\frac{p^{2}}{q^{2}}\r\n\\end{matrix}\\)\r\n\r\nOn putting \\(p = 11\\) and \\(q = 41\\), we get\r\n\r\n\\(\\Rightarrow \\ \\begin{matrix}\r\n & \\frac{a_{1} + (11 - 1)\\frac{d}{2}}{a_{2} + (41 - 1)\\frac{d}{2}} = \\frac{(11)^{2}}{(41)^{2}} \\\\\r\n & \\frac{a_{1} + 5d}{a_{2} + 20d} = \\frac{121}{1681} \\Rightarrow \\frac{a_{6}}{a_{21}} = \\frac{121}{1681}\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 32,
+    "stem": "If \\(a,b,c\\) are \\(p\\) th, \\(q\\) th and \\(r\\) th terms of a GP, then \\((q - r)loga + (r - p)logb + (p - q)logc\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(p + q + r\\)"
+      },
+      {
+        "label": "B",
+        "text": "1"
+      },
+      {
+        "label": "C",
+        "text": "\\(- pqr\\)"
+      },
+      {
+        "label": "D",
+        "text": "0"
+      }
+    ],
+    "answer": "D",
+    "answerSource": "tail-key",
+    "solution": "Sol. (d)** Let \\(A\\) and \\(R\\) be the first term and common ratio of the given GP. Then, \\(a = AR^{p - 1}\\)\r\n\r\n\\(\\begin{matrix}\r\n \\Rightarrow & loga = logA + (p - 1)logR...(i) \\\\\r\n\\text{~}\\text{Similarly,}\\text{~} & logb = logA + (q - 1)logR...(ii) \\\\\r\n\\text{~}\\text{and}\\text{~} & logc = logA + (r - 1)logR...(iii)\r\n\\end{matrix}\\)\r\n\r\n\\(\\begin{matrix}\r\n\\text{~}\\text{Now,}\\text{~}(q - r)loga + (r - p)logb + (p - q)logc \\\\\r\n = (q - r)\\{ logA + (p - 1)logR\\} \\\\\r\n + (r - p)\\{ logA + (q - 1)logR\\} \\\\\r\n + (p - q)\\{ logA + (r - 1)logR\\} \\\\\r\n = logA\\lbrack q - r + r - p + p - q\\rbrack \\\\\r\n + logR\\lbrack p(q - r) + q(r - p) + r(p - q) \\\\\r\n - (q - r) - (r - p) - (p - q)\\rbrack \\\\\r\n = logA \\cdot 0 + logR \\cdot 0 = 0\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 33,
+    "stem": "Consider the following statements\nI. If \\(a_{n}\\) denotes the \\(n\\)th term of an AP, then\n\n\\(a_{n} = \\frac{a_{n + k} + a_{n - k}}{2}\\)\n\nII. In an AP, if the sum of \\(m\\) terms is equal to the sum of \\(n\\) terms, then the sum of \\((m + n)\\) terms is always zero.\nWhich of the statement is given above is/are correct?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Only I"
+      },
+      {
+        "label": "B",
+        "text": "Only II"
+      },
+      {
+        "label": "C",
+        "text": "Both I and II"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "Statement I Since, \\(n\\)th term of an AP is \\(a_{n}\\).\r\n\r\n\\(\\therefore\\ a_{n} = \\frac{a_{n + k} + a_{n - k}}{2}\\ \\left\\lbrack \\because AM = \\frac{a + b}{2} \\right\\rbrack\\)\r\n\r\nStatement II Let \\(a\\) be the first term and \\(d\\) be the common difference of an AP.\\\r\nAccording to the given condition,\r\n\r\n\\(\\begin{matrix}\r\nS_{m} & \\  = S_{n} \\\\\r\n\\frac{m}{2}\\lbrack 2a + (m - 1)d\\rbrack & \\  = \\frac{n}{2}\\lbrack 2a + (n - 1)d\\rbrack \\\\\r\n(m - n)2a + \\left( m^{2} - n^{2} - m + n \\right)d & \\  = 0 \\\\\r\n(m - n)\\lbrack 2a + (m + n - 1)d\\rbrack & \\  = 0 \\\\\r\nS_{(m + n)} = & \\frac{m + n}{2}\\lbrack 2a + (m + n - 1)d\\rbrack = 0...(i) \\\\\r\n = & \\frac{m + n}{2}(0)...From\\ eq.(i) \\\\\r\n = & 0\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 34,
+    "stem": "Which one of the following is a null set?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\left\\{ x \\mid x \\in R,4x^{2} - 1 = 0 \\right\\}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\{ x \\mid x \\in N,x\\) is odd and \\((x + 3)\\) is even \\(\\}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\left\\{ x \\mid x \\in R,x^{2} < 3 \\right\\}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\left\\{ x \\mid x \\in R,x^{2} < 0 \\right\\}\\)"
+      }
+    ],
+    "answer": "D",
+    "answerSource": "tail-key",
+    "solution": "Sol. d.** Only option (d) satisfies the condition as \\(x^{2}\\) can never be less than 0. Therefore, there is no element in it, i.e. it is a null set.",
+    "defects": []
+  },
+  {
+    "number": 35,
+    "stem": "The total number of irrational terms in the binomial expansion of \\(\\left( 7^{1/5} - 3^{1/10} \\right)^{60}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "49"
+      },
+      {
+        "label": "B",
+        "text": "48"
+      },
+      {
+        "label": "C",
+        "text": "54"
+      },
+      {
+        "label": "D",
+        "text": "55"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "The general term in the binomial expansion of \\((a + b)^{n}\\) is \\(T_{r + 1} = \\ ^{n}C_{r}a^{n - r}b^{r}\\).\\\r\nSo, the general term in the binomial expansion of \\(\\left( 7^{1/5} - 3^{1/10} \\right)^{60}\\) is\r\n\r\n\\(\\begin{matrix}\r\nT_{r + 1} & \\  = \\ ^{60}C_{r}\\left( 7^{1/5} \\right)^{60 - r}\\left( - 3^{1/10} \\right)^{r} \\\\\r\n & \\  = \\ ^{60}C_{r}7^{\\frac{60 - r}{5}}( - 1)^{r}3^{\\frac{r}{10}} \\\\\r\n & \\  = ( - 1)^{r}\\ ^{60}C_{r}7^{12 - \\frac{r}{5}}3^{\\frac{r}{10}}\r\n\\end{matrix}\\)\r\n\r\nThe possible non-negative integral values of ' \\(r\\) ' for which \\(\\frac{r}{5}\\) and \\(\\frac{r}{10}\\) are integer, where \\(r \\leq 60\\), are\r\n\r\n\\(r = 0,10,20,30,40,50,60.\\)\r\n\r\n∴ There are 7 rational terms in the binomial expansion and remaining \\(61 - 7 = 54\\) terms are irrational terms.",
+    "defects": []
+  },
+  {
+    "number": 36,
+    "stem": "A ratio of the 5th term from the beginning to the 5th term from the end in the binomial expansion of \\(\\left( 2^{\\frac{1}{3}} + \\frac{1}{2(3)^{\\frac{1}{3}}} \\right)^{10}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(1:2(6)^{\\frac{1}{3}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1:4(16)^{\\frac{1}{3}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(4(36)^{\\frac{1}{3}}:1\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2(36)^{\\frac{1}{3}}:1\\)"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "Since, \\(r\\) th term from the end in the expansion of a binomial \\((x + a)^{n}\\) is same as the \\((n - r + 2)\\) th term from the beginning in the expansion of same binomial.\r\n\r\n\\(\\begin{matrix}\r\n & \\ \\therefore\\text{~}\\text{Required ratio}\\text{~} = \\frac{T_{5}}{T_{10 - 5 + 2}} \\\\\r\n & \\  = \\frac{T_{5}}{T_{7}} = \\frac{T_{4 + 1}}{T_{6 + 1}} \\\\\r\n & \\  \\Rightarrow \\ \\begin{matrix}\r\n\\frac{T_{5}}{T_{10 - 5 + 2}} & \\  = \\frac{\\ ^{10}C_{4}\\left( 2^{1/3} \\right)^{10 - 4}\\left( \\frac{1}{2(3)^{1/3}} \\right)^{4}}{\\ ^{10}C_{6}\\left( 2^{1/3} \\right)^{10 - 6}\\left( \\frac{1}{2(3)^{1/3}} \\right)^{6}} \\\\\r\n & \\  = \\frac{2^{6/3}\\left( 2(3)^{1/3} \\right)^{6}}{2^{4/3}\\left( 2(3)^{1/3} \\right)^{4}}\\ \\left\\lbrack \\because T_{r + 1} = \\ ^{n}C_{r}x^{n - r}a^{r} \\right\\rbrack \\\\\r\n & \\  = 2^{6/3 - 4/3}\\left( 2(3)^{1/3} \\right)^{6 - 4} \\\\\r\n & \\  = 2^{23} \\cdot 2^{2} \\cdot 3^{23} \\\\\r\n & \\  = 4(6)^{23} \\\\\r\n & \\  = 4(36)^{1/3}\r\n\\end{matrix}\r\n\\end{matrix}\\)\r\n\r\nSo, the required ratio is \\(4(36)^{1/3}:1\\).",
+    "defects": []
+  },
+  {
+    "number": 37,
+    "stem": "The value of \\(- \\ ^{15}C_{1} + 2 \\cdot \\ ^{15}C_{2} - 3 \\cdot \\ ^{15}C_{3} + \\ldots - 15 \\cdot \\ ^{15}C_{15} + \\ ^{14}C_{1} + \\ ^{14}C_{3} + \\ ^{14}C_{5} + \\ldots. + \\ ^{14}C_{11}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2^{14}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2^{13} - 13\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2^{16 - 1}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2^{13} - 14\\)"
+      }
+    ],
+    "answer": "D",
+    "answerSource": "tail-key",
+    "solution": "\\(\\begin{matrix}\r\nS_{1} & \\  = - \\ ^{15}C_{1} + 2 \\cdot \\ ^{15}C_{2} - \\ldots\\ldots - 15\\ ^{15}C_{15} \\\\\r\n & \\  = \\Sigma_{r = 1}^{15}( - 1)^{r} \\cdot r\\ ^{15}C_{2} = 15\\Sigma_{r = 1}^{15}( - 1)^{r}\\ ^{14}C_{r - 1} \\\\\r\n & \\  = 15\\left( - \\ ^{14}C_{0} + \\ ^{14}C_{1} - \\ldots\\ldots - \\ ^{14}C_{14} \\right) = 15(0) = 0 \\\\\r\nS_{2} & \\  = \\ ^{14}C_{1} + \\ ^{14}C_{3} + \\ldots\\ldots + \\ ^{14}C_{11} \\\\\r\n & \\  = \\left( \\ ^{14}C_{1} + \\ ^{14}C_{3} + \\ldots\\ldots + \\ ^{14}C_{11} + \\ ^{14}C_{13} \\right) - \\ ^{14}C_{13} \\\\\r\n & \\  = 2^{13} - 14 \\\\\r\n & \\  = S_{1} + S_{2} = 2^{13} - 14\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 38,
+    "stem": "Team ' \\(A\\) ' consists of 7 boys and \\(n\\) girls and Team ' \\(B\\) ' has 4 boys and 6 girls. If a total of 52 single matches can be arranged between these two teams when a boy plays against a boy and a girl plays against a girl, then \\(n\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "5"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "4"
+      },
+      {
+        "label": "D",
+        "text": "6"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "Sol. (c)** Total matches between boys of both team\r\n\r\n\\(= \\ ^{7}C_{1} \\times \\ ^{4}C_{1} = 28\\)\r\n\r\nTotal matches between girls of both team\r\n\r\n\\(= \\ ^{n}C_{1}\\ ^{6}C_{1} = 6n\\)\r\n\r\nNow, \\(\\begin{matrix}\r\n28 + 6n & \\  = 52 \\\\\r\nn & \\  = 4\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 39,
+    "stem": "If \\(\\ ^{2n + 1}P_{n - 1}:\\ ^{2n - 1}P_{n} = 3:5\\), then the value of \\(n\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "3"
+      },
+      {
+        "label": "B",
+        "text": "4"
+      },
+      {
+        "label": "C",
+        "text": "5"
+      },
+      {
+        "label": "D",
+        "text": "6"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Sol. (b)** We have, \\(\\ ^{2n + 1}P_{n - 1}:\\ ^{2n - 1}P_{n} = 3:5\\)\r\n\r\n\\(\\begin{matrix}\r\n \\Rightarrow & \\frac{\\ ^{2n + 1}P_{n - 1}}{\\ ^{2n - 1}P_{n}} = \\frac{3}{5} \\\\\r\n \\Rightarrow & \\frac{(2n + 1)!}{(n + 2)!} \\times \\frac{(n - 1)!}{(2n - 1)!} = \\frac{3}{5} \\\\\r\n \\Rightarrow & \\frac{(2n + 1)(2n) \\times n!}{(n + 2)(n + 1)n \\times 2n!} = \\frac{3}{5} \\\\\r\n \\Rightarrow & \\frac{(2n + 1)(2n)}{(n + 2)(n + 1)n} = \\frac{3}{5} \\\\\r\n \\Rightarrow & 10(2n + 1) = 3(n + 2)(n + 1) \\\\\r\n \\Rightarrow & 3n^{2} - 11n - 4 = 0 \\\\\r\n \\Rightarrow & (n - 4)(3n + 1) = 0 \\Rightarrow n = 4\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 40,
+    "stem": "The interior angles of a regular polygon measure \\(160^{\\circ}\\) each. The number of diagonals of the polygon are",
+    "options": [
+      {
+        "label": "A",
+        "text": "97"
+      },
+      {
+        "label": "B",
+        "text": "105"
+      },
+      {
+        "label": "C",
+        "text": "135"
+      },
+      {
+        "label": "D",
+        "text": "146"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "Let \\(n\\) be the number of sides of the polygon.\r\n\r\n\\(\\begin{matrix}\r\n & & n \\cdot 160^{\\circ} & = (n - 2) \\cdot 180^{\\circ} \\Rightarrow 20^{\\circ} \\cdot n = 360^{\\circ} \\\\\r\n\\therefore\\  & n & & = 18\r\n\\end{matrix}\\)\r\n\r\nThen number of diagonals \\(= \\ ^{18}C_{2} - 18 = 153 - 18 = 135\\)",
+    "defects": []
+  },
+  {
+    "number": 41,
+    "stem": "Given 5 different green dyes, four different blue dyes and three different red dyes, the number of combinations of dyes which can be chosen taking atleast one green and one blue dye is",
+    "options": [
+      {
+        "label": "A",
+        "text": "3600"
+      },
+      {
+        "label": "B",
+        "text": "3720"
+      },
+      {
+        "label": "C",
+        "text": "3800"
+      },
+      {
+        "label": "D",
+        "text": "3600"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "In each dye of chosen, there are two possibility either chose or reject it.\\\r\n∴ The total number of ways in which atleast one green and one blue dye is chosen\r\n\r\n\\(= \\left( 2^{5} - 1 \\right)\\left( 2^{4} - 1 \\right)2^{3} = 31 \\times 15 \\times 8 = 3720\\)",
+    "defects": []
+  },
+  {
+    "number": 42,
+    "stem": "Sixteen men compete with one another in running, swimming and riding. How many prize lists could be made, if there were altogether 6 prizes of different values, one for running, 2 for swimming and 3 for riding?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(16 \\times 15 \\times 14\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(16^{3} \\times 15^{2} \\times 14\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(16^{3} \\times 15 \\times 14^{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(16^{2} \\times 15 \\times 14\\)"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Number of ways of giving one prize for running \\(= 16\\)\\\r\nNumber of ways of giving two prizes for swimming\r\n\r\n\\(= 16 \\times 15\\)\r\n\r\nNumber of ways of giving three prizes for riding\r\n\r\n\\(= 16 \\times 15 \\times 14\\)\r\n\r\n∴ Required ways of giving prizes\r\n\r\n\\(\\begin{matrix}\r\n & \\  = 16 \\times 16 \\times 15 \\times 16 \\times 15 \\times 14 \\\\\r\n & \\  = 16^{3} \\times 15^{2} \\times 14\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 43,
+    "stem": "The number of solutions of the equation \\(1 + \\sin^{4}x = \\cos^{2}3x,x \\in \\left\\lbrack - \\frac{5\\pi}{2},\\frac{5\\pi}{2} \\right\\rbrack\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "3"
+      },
+      {
+        "label": "B",
+        "text": "5"
+      },
+      {
+        "label": "C",
+        "text": "7"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Sol. (b)** Given equation is \\(1 + \\sin^{4}x = \\cos^{2}(3x)\\)\\\r\nSince, range of \\(\\left( 1 + \\sin^{4}x \\right) = \\lbrack 1,2\\rbrack\\)\\\r\nand range of \\(\\cos^{2}(3x) = \\lbrack 0,1\\rbrack\\)\\\r\nSo, the given equation holds if\r\n\r\n\\(\\begin{matrix}\r\n & \\ \\begin{matrix}\r\n1 + & \\sin^{4}x \\\\\r\n \\Rightarrow \\  & \\sin^{4}x \\\\\r\n \\Rightarrow & x = 0\\text{~}\\text{and}\\text{~}\\cos^{2}3x = 1 \\\\\r\n\\text{~}\\text{Since,}\\text{~} & x \\in \\left\\lbrack - \\frac{5\\pi}{2},\\frac{5\\pi}{2} \\right\\rbrack \\\\\r\n\\therefore\\ x = - 2\\pi, - \\pi,0,\\pi & \\ ,2\\pi\r\n\\end{matrix} \\\\\r\n & \\ \\therefore\r\n\\end{matrix}\\)\r\n\r\nThus, there are five different values of \\(x\\) is possible.",
+    "defects": []
+  },
+  {
+    "number": 44,
+    "stem": "If \\(sinA - \\sqrt{6}cosA = \\sqrt{7}cosA\\), then \\(cosA + \\sqrt{6}sinA\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\sqrt{6}sinA\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(- \\sqrt{7}sinA\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\sqrt{6}cosA\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\sqrt{7}cosA\\)"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Given, \\(sinA - \\sqrt{6}cosA = \\sqrt{7}cosA\\)\r\n\r\nOn squaring given equation, we get\r\n\r\n\\(\\sin^{2}A + 6\\cos^{2}A - 2\\sqrt{6}sin{A\\cos A} = 7\\cos^{2}A \\Rightarrow\\)\r\n\r\n\\(\\sin^{2}A + 6\\left( 1 - \\sin^{2}A \\right) = \\cos^{2}A + 6\\cos^{2}A + 2\\sqrt{6}sin{A\\cos A}\\)\r\n\r\n\\(\\Rightarrow \\sin^{2}A - 6\\cos^{2}A + 6\\)\r\n\r\n\\(= \\cos^{2}A + 6\\sin^{2}A + 2\\sqrt{6}sinAcosA\\)\r\n\r\n\\(\\begin{matrix}\r\n \\Rightarrow & \\ 7\\sin^{2}A = (cosA + \\sqrt{6}sinA)^{2} \\\\\r\n \\Rightarrow & \\pm \\sqrt{7}sinA = cosA + \\sqrt{6}sinA\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 45,
+    "stem": "If \\(tanx + cotx = 2\\), then \\(\\sin^{2n}x + \\cos^{2n}x\\) is equal to",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2^{n}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(- \\frac{1}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "answer": "D",
+    "answerSource": "tail-key",
+    "solution": "Since, \\(\\ tanx + \\frac{1}{tanx} = 2 \\Rightarrow tanx = 1 \\Rightarrow x = \\frac{\\pi}{4}\\)\r\n\r\n\\(\\therefore\\ sinx = \\frac{1}{\\sqrt{2}}\\text{~and~}cosx = \\frac{1}{\\sqrt{2}}\\)\r\n\r\nHence, \\(\\ \\sin^{2n}x + \\cos^{2n}x = \\frac{1}{2^{n}} + \\frac{1}{2^{n}} = \\frac{1}{2^{n - 1}}\\)",
+    "defects": []
+  },
+  {
+    "number": 46,
+    "stem": "The expression \\(\\cos^{2}(A - B) + \\cos^{2}B - 2cos(A - B)cosAcosB\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "dependent on \\(B\\)"
+      },
+      {
+        "label": "B",
+        "text": "dependent on \\(A\\) and \\(B\\)"
+      },
+      {
+        "label": "C",
+        "text": "dependent on \\(A\\)"
+      },
+      {
+        "label": "D",
+        "text": "independent of \\(A\\) and \\(B\\)"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "We have,\r\n\r\n\\(\\cos^{2}(A - B) + \\cos^{2}B - 2cos(A - B)cosAcosB\\)\r\n\r\n\\(\\begin{matrix}\r\n & \\\\\r\n\\  = & \\cos^{2}(A - B) + \\cos^{2}B - cos(A - B) \\\\\r\n\\  & \\  \\times \\lbrack cos(A - B) + cos(A + B)\\rbrack \\\\\r\n = & \\cos^{2}B - cos(A - B)cos(A + B) \\\\\r\n = & \\cos^{2}B - \\left( \\cos^{2}A - \\sin^{2}B \\right) \\\\\r\n = & 1 - \\cos^{2}A = \\sin^{2}A\r\n\\end{matrix}\\)\r\n\r\nHence, it depends on \\(A\\).",
+    "defects": []
+  },
+  {
+    "number": 47,
+    "stem": "If \\(x\\) and \\(y\\) are acute angles, such that \\(cosx + cosy = \\frac{3}{2}\\) and \\(sinx + siny = \\frac{3}{4}\\), then \\(sin(x + y)\\) equals",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{2}{5}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{3}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{3}{5}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{4}{5}\\)"
+      }
+    ],
+    "answer": "D",
+    "answerSource": "tail-key",
+    "solution": "Given, \\(cosx + cosy = \\frac{3}{2}\\)\r\n\r\n\\(\\Rightarrow \\ 2cos\\left( \\frac{x + y}{2} \\right)cos\\left( \\frac{x - y}{2} \\right) = \\frac{3}{2}\\) .....(i)\r\n\r\nand\r\n\r\n\\(sinx + siny = \\frac{3}{4}\\)\r\n\r\n\\(\\Rightarrow \\ 2sin\\left( \\frac{x + y}{2} \\right)cos\\left( \\frac{x - y}{2} \\right) = \\frac{3}{4}\\) .....(ii)\r\n\r\nOn dividing Eq. (ii) by Eq. (i), we get\r\n\r\n\\(\\begin{matrix}\r\n\\frac{2sin\\left( \\frac{x + y}{2} \\right)cos\\left( \\frac{x - y}{2} \\right)}{2cos\\left( \\frac{x + y}{2} \\right)cos\\left( \\frac{x - y}{2} \\right)} = \\frac{3/4}{3/2} \\Rightarrow tan\\left( \\frac{x + y}{2} \\right) = \\frac{1}{2} \\\\\r\n\\therefore sin(x + y) = \\frac{2tan\\left( \\frac{x + y}{2} \\right)}{1 + \\tan^{2}\\left( \\frac{x + y}{2} \\right)} = \\frac{2 \\times \\frac{1}{2}}{1 + \\left( \\frac{1}{2} \\right)^{2}} = \\frac{4}{4 + 1} = \\frac{4}{5}\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 48,
+    "stem": "If \\(tanx = \\frac{b}{a}\\), then find the value of \\(\\sqrt{\\frac{a + b}{a - b}} + \\sqrt{\\frac{a - b}{a + b}}\\).",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{2cosx}{\\sqrt{cos2x}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{cosx}{\\sqrt{cos2x}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{2cos2x}{\\sqrt{cosx}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "\\(\\begin{matrix}\r\n & \\sqrt{\\frac{a + b}{a - b}} + \\sqrt{\\frac{a - b}{a + b}} \\\\\r\n & \\  = \\sqrt{\\frac{1 + \\frac{b}{a}}{1 - \\frac{b}{a}}} + \\sqrt{\\frac{1 - \\frac{b}{a}}{1 + \\frac{b}{a}}} = \\frac{1 + \\frac{b}{a} + 1 - \\frac{b}{a}}{\\sqrt{\\left( 1 - \\frac{b}{a} \\right)\\left( 1 + \\frac{b}{a} \\right)}}\r\n\\end{matrix}\\)\r\n\r\n[dividing by \\(a\\) in numerator and denominator of both the terms]\r\n\r\n\\(\\begin{matrix}\r\n & \\  = \\frac{2}{\\sqrt{1 - \\frac{b^{2}}{a^{2}}}} = \\frac{2}{\\sqrt{1 - \\tan^{2}x}} = \\frac{2}{\\sqrt{1 - \\frac{\\sin^{2}x}{\\cos^{2}x}}}\\left( \\because tanx = \\frac{b}{a} \\right) \\\\\r\n & \\  = \\frac{2cosx}{\\sqrt{\\cos^{2}x - \\sin^{2}x}} = \\frac{2cosx}{\\sqrt{cos2x}}\\left\\lbrack \\because\\cos^{2}x - \\sin^{2}x = cos2x \\right\\rbrack\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 49,
+    "stem": "The maximum value of \\(4\\sin^{2}x + 3\\cos^{2}x + sin\\frac{x}{2} + cos\\frac{x}{2}\\) is",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(4 + \\sqrt{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(3 + \\sqrt{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "9"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Maximum value of \\(4\\sin^{2}x + 3\\cos^{2}x\\) i.e., \\(\\sin^{2}x + 3\\) is 4 and that of \\(sin\\frac{x}{2} + cos\\frac{x}{2}\\) is \\(\\frac{1}{\\sqrt{2}} + \\frac{1}{\\sqrt{2}} = \\sqrt{2}\\), both attained at \\(x = \\frac{\\pi}{2}\\). Hence, the given function has maximum value \\(4 + \\sqrt{2}\\).",
+    "defects": []
+  },
+  {
+    "number": 50,
+    "stem": "Let for \\(f(x) = 7\\tan^{8}x + 7\\tan^{6}x - 3\\tan^{4}x - 3\\tan^{2}x,I = \\int_{0}^{\\pi/4} f(x)dx\\) then \\(7\\ I\\)is equal to:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2\\pi\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\pi\\)"
+      },
+      {
+        "label": "C",
+        "text": "0"
+      },
+      {
+        "label": "D",
+        "text": "2"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "Given \\(f(x) = 7\\tan^{8}x + 7\\tan^{6}x - 3\\tan^{4}x - 3\\tan^{2}x\\).\\\r\nFactor out common terms:\r\n\r\n\\(f(x) = 7\\tan^{6}x\\left( 1 + \\tan^{2}x \\right) - 3\\tan^{2}x\\left( 1 + \\tan^{2}x \\right)\\)\r\n\r\nUsing \\(1 + \\tan^{2}x = \\sec^{2}x\\) :\r\n\r\n\\(\\begin{matrix}\r\n & f(x) = \\left( 7\\tan^{6}x - 3\\tan^{2}x \\right)\\sec^{2}x\\text{~} \\\\\r\n & I_{1} = \\int_{0}^{\\pi/4}\\left( 7\\tan^{6}x - 3\\tan^{2}x \\right)\\sec^{2}xdx\r\n\\end{matrix}\\)\r\n\r\nSubstitute \\(t = tanx,dt = \\sec^{2}xdx\\). Limits: \\(x = 0 \\rightarrow t = 0,x = \\pi/4 \\rightarrow t = 1\\).\r\n\r\n\\(I = \\int_{0}^{1}\\left( 7t^{6} - 3t^{2} \\right)dt = \\left\\lbrack t^{7} - t^{3} \\right\\rbrack_{0}^{1} = (1 - 1) - (0 - 0) = 0\\)",
+    "defects": []
+  },
+  {
+    "number": 51,
+    "stem": "The value of \\(f(x)\\) when \\(|x| < 1\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "-1"
+      },
+      {
+        "label": "C",
+        "text": "0"
+      },
+      {
+        "label": "D",
+        "text": "Does not exist"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Evaluating \\(f(x)\\) for \\(|x| < 1\\)\r\n\r\nWhen \\(|x| < 1\\), the term \\(x^{2n} \\rightarrow 0\\) as \\(n \\rightarrow \\infty\\).\r\n\r\nSubstitute this into the expression: \\(f(x) = \\frac{0 - 1}{0 + 1} = - 1\\).",
+    "defects": []
+  },
+  {
+    "number": 52,
+    "stem": "The value of \\(L = \\lim_{x \\rightarrow 0} g(x)\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(e\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(e^{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(e^{8}\\)"
+      },
+      {
+        "label": "D",
+        "text": "1"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Finding the limit of \\(g(x)\\)\r\n\r\nThis is a standard \\(1^{\\infty}\\) form.\r\n\r\nFormula: If \\(\\lim_{x \\rightarrow a}\\lbrack u(x)\\rbrack^{v(x)}\\) results in \\(1^{\\infty}\\), the limit is \\(e^{\\lim_{x \\rightarrow a} v(x)\\lbrack u(x) - 1\\rbrack}\\).\r\n\r\n\\[L = e^{\\lim_{x \\rightarrow 0}\\frac{1}{x^{2}}\\left\\lbrack \\frac{1 + 5x^{2}}{1 + 3x^{2}} - 1 \\right\\rbrack}\\]\r\n\r\nSimplify the term in brackets: \\(\\frac{\\left( 1 + 5x^{2} \\right) - \\left( 1 + 3x^{2} \\right)}{1 + 3x^{2}} = \\frac{2x^{2}}{1 + 3x^{2}}\\).\r\n\r\nThe expression becomes: \\(e^{\\lim_{x \\rightarrow 0}\\frac{1}{x^{2}} \\cdot \\frac{2x^{2}}{1 + 3x^{2}}} = e^{\\lim_{x \\rightarrow 0}\\frac{2}{1 + 3x^{2}}} = e^{2}\\).",
+    "defects": []
+  },
+  {
+    "number": 53,
+    "stem": "If \\(k = \\lim_{x \\rightarrow 0}\\frac{sin\\left( \\pi\\cos^{2}x \\right)}{x^{2}}\\), then the value of \\(k + L\\) (where \\(L\\) is from Q2) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\pi + e^{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(e^{2} - \\pi\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\pi - e^{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(1 + e^{2}\\) Consider the function \\(f(x)\\) defined as: \\(f(x) = \\left\\{ \\begin{matrix} \\frac{1 - cos(4x)}{x^{2}}, & x < 0 \\\\ a, & x = 0 \\\\ \\frac{\\sqrt{x}}{\\sqrt{16 + \\sqrt{x}} - 4}, & x > 0 \\end{matrix} \\right.\\) Let \\(g(x) = \\lbrack x\\rbrack\\) denote the greatest integer function"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Evaluating \\(k\\) and the final sum\r\n\r\n\\(k = \\lim_{x \\rightarrow 0}\\frac{sin\\left( \\pi\\cos^{2}x \\right)}{x^{2}}\\).\r\n\r\nUse the identity \\(\\cos^{2}x = 1 - \\sin^{2}x\\) :\r\n\r\n\\(k = \\lim_{x \\rightarrow 0}\\frac{sin\\left( \\pi\\left( 1 - \\sin^{2}x \\right) \\right)}{x^{2}} = \\lim_{x \\rightarrow 0}\\frac{sin\\left( \\pi - \\pi\\sin^{2}x \\right)}{x^{2}}\\)\r\n\r\nSince \\(sin(\\pi - \\theta) = sin\\theta\\) :\r\n\r\n\\(k = \\lim_{x \\rightarrow 0}\\frac{sin\\left( \\pi\\sin^{2}x \\right)}{x^{2}} = \\lim_{x \\rightarrow 0}\\left\\lbrack \\frac{sin\\left( \\pi\\sin^{2}x \\right)}{\\pi\\sin^{2}x} \\cdot \\frac{\\pi\\sin^{2}x}{x^{2}} \\right\\rbrack\\)\r\n\r\nUsing \\(\\lim_{\\theta \\rightarrow 0}\\frac{sin\\theta}{\\theta} = 1:k = 1 \\cdot \\pi \\cdot (1)^{2} = \\pi\\).\r\n\r\n\\(Sum = k + L = \\pi + e^{2}\\).\r\n\r\nAns 3: (A) \\(\\pi + e^{2}\\).",
+    "defects": []
+  },
+  {
+    "number": 54,
+    "stem": "For \\(f(x)\\) to be continuous at \\(x = 0\\), the value of \\(a\\) must be:",
+    "options": [
+      {
+        "label": "A",
+        "text": "4"
+      },
+      {
+        "label": "B",
+        "text": "8"
+      },
+      {
+        "label": "C",
+        "text": "16"
+      },
+      {
+        "label": "D",
+        "text": "0"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Finding the value of \\(a\\)\r\n\r\nTo be continuous at \\(x = 0\\), we need LHL \\(= f(0) = RHL\\).\r\n\r\nLHL \\(\\left( x \\rightarrow 0^{-} \\right)\\):\r\n\r\n\\(\\lim_{x \\rightarrow 0^{-}}\\frac{1 - cos(4x)}{x^{2}} = \\lim_{x \\rightarrow 0^{-}}\\frac{2\\sin^{2}(2x)}{x^{2}} = 2 \\cdot \\lim_{x \\rightarrow 0^{-}}\\left( \\frac{sin(2x)}{2x} \\cdot 2 \\right)^{2} = 2 \\cdot (1 \\cdot 2)^{2} = 8\\)\r\n\r\n\\(\\mathbf{RHL\\ }\\left( \\mathbf{x} \\rightarrow \\mathbf{0}^{+} \\right)\\): Rationalize the denominator of \\(\\frac{\\sqrt{x}}{\\sqrt{16 + \\sqrt{x}} - 4}\\) :\r\n\r\n\\(\\frac{\\sqrt{x}(\\sqrt{16 + \\sqrt{x}} + 4)}{(16 + \\sqrt{x}) - 16} = \\frac{\\sqrt{x}(\\sqrt{16 + \\sqrt{x}} + 4)}{\\sqrt{x}} = \\sqrt{16 + \\sqrt{x}} + 4\\)\r\n\r\nAs \\(x \\rightarrow 0^{+}\\), this becomes \\(\\sqrt{16} + 4 = 8\\).\r\n\r\nAns 1: (B)\r\n\r\nConclusion: For continuity, a must equal 8.",
+    "defects": []
+  },
+  {
+    "number": 55,
+    "stem": "The number of points of discontinuity of the function \\(y = g(x)\\) in the interval \\((0.5,2.5)\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "0"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Discontinuity of \\(g(x) = \\lbrack x\\rbrack\\)\r\n\r\nThe greatest integer function is discontinuous at every integer point because the limit from the left does not equal the limit from the right. 1.1.1\r\n\r\nIn the interval \\((0.5,2.5)\\), the integers are \\(\\mathbf{1}\\) and \\(\\mathbf{2}\\).\r\n\r\nAns 2: (B) 2 points.",
+    "defects": []
+  },
+  {
+    "number": 56,
+    "stem": "If \\(k(x) = f(x) \\cdot sin(x)\\), then the value of \\(\\lim_{x \\rightarrow 0} k(x)\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(a\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\infty\\)"
+      },
+      {
+        "label": "C",
+        "text": "0"
+      },
+      {
+        "label": "D",
+        "text": "1"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "Evaluating \\(\\lim_{x \\rightarrow 0} k(x)\\)\r\n\r\n\\(k(x) = f(x) \\cdot sin(x)\\).\r\n\r\nWe know \\(\\lim_{x \\rightarrow 0} f(x) = 8\\) (from Q1) and \\(\\lim_{x \\rightarrow 0} sin(x) = 0\\).\r\n\r\nBy the algebra of limits, \\(lim(f \\cdot g) = limf \\cdot limg = 8 \\cdot 0 = 0\\)\r\n\r\nAns 3: (C)",
+    "defects": []
+  },
+  {
+    "number": 57,
+    "stem": "If \\(A\\) and \\(B\\) are two independent events such that \\(P\\left( A \\cap B' \\right) = \\frac{3}{25}\\) and \\(P\\left( A' \\cap B \\right) = \\frac{8}{25}\\), then \\(P(A)\\) could be:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{5}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{3}{8}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{4}{5}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{2}\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Equations: \\(P(A)(1 - P(B)) = \\frac{3}{25}\\) and \\((1 - P(A))P(B) = \\frac{8}{25}\\).\\\r\nLet \\(P(A) = x\\) and \\(P(B) = y\\).\\\r\n\\(x - xy = \\frac{3}{25}\\) and \\(y - xy = \\frac{8}{25}\\).\\\r\nSubtracting them: \\(y - x = \\frac{5}{25} = \\frac{1}{5} \\Rightarrow y = x + \\frac{1}{5}\\).\\\r\nSubstitute \\(y\\) back: \\(x - x\\left( x + \\frac{1}{5} \\right) = \\frac{3}{25} \\Rightarrow 25x^{2} - 20x + 3 = 0\\).\\\r\nSolving the quadratic: \\((5x - 3)(5x - 1) = 0\\). So, \\(x = 1/5\\) or \\(3/5\\).",
+    "defects": []
+  },
+  {
+    "number": 58,
+    "stem": "A fair coin is tossed 16 times. If the probability of getting 7 heads is equal to the probability of getting 9 heads, find the probability of getting 3 heads.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\ \\ \\frac{35}{2^{12}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{35}{2^{16}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{16}{2^{12}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{7}{2^{10}}\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Given \\(P(X = 7) = P(X = 9)\\). Since \\(P(X = k) = \\binom{16}{k}\\left( \\frac{1}{2} \\right)^{16}\\).\\\r\n\\(\\binom{16}{7} = \\binom{16}{9}\\) is true because \\(\\binom{n}{r} = \\binom{n}{n - r}\\).\r\n\r\n\\(P(X = 3) = \\binom{16}{3}\\left( \\frac{1}{2} \\right)^{16} = \\frac{16 \\times 15 \\times 14}{3 \\times 2 \\times 1} \\times \\frac{1}{2^{16}} = \\frac{560}{2^{16}}.\\)\r\n\r\n\\(560 = 35 \\times 16 = 35 \\times 2^{4}\\).\\\r\nResult: \\(\\frac{35 \\times 2^{4}}{2^{16}} = \\frac{\\mathbf{35}}{\\mathbf{2}^{\\mathbf{12}}}\\).",
+    "defects": []
+  },
+  {
+    "number": 59,
+    "stem": "Bag A contains 6 red and 4 black balls. Urn B contains 4 red and 6 black balls. One ball is drawn from A and placed in B. Then one ball is drawn from B and found to be red. The probability it came from \\(A\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{\\mathbf{15}}{\\mathbf{23}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{3}{5}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{5}{11}\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "\\(E_{1}\\) : Red ball transferred from A to \\(B(P = 6/10)\\).\\\r\n\\(E_{2}\\) : Black ball transferred from A to \\(B(P = 4/10)\\).\\\r\nA: Drawing a Red ball from B.\\\r\n\\(P\\left( A \\mid E_{1} \\right) = 5/11\\) (B now has 5R, 6B).\\\r\n\\(P\\left( A \\mid E_{2} \\right) = 4/11\\) (B now has 4R, 7B).\r\n\r\n\\(P\\left( E_{1} \\mid A \\right) = \\frac{(6/10)(5/11)}{(6/10)(5/11) + (4/10)(4/11)} = \\frac{30}{30 + 16} = \\frac{30}{46} = \\frac{\\mathbf{15}}{\\mathbf{23}}.\\)",
+    "defects": []
+  },
+  {
+    "number": 60,
+    "stem": "The coefficients \\(a,b,c\\) of the equation \\(ax^{2} + bx + c = 0\\) are chosen from the set \\(\\{ 1,2,3,4,5,6,7,8\\}\\). The probability that the equation has repeated roots is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{5}{512}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{128}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{3}{512}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\mathbf{1}/\\mathbf{64}\\)."
+      }
+    ],
+    "answer": "D",
+    "answerSource": "tail-key",
+    "solution": "Possible \\(b^{2}\\) values: \\(\\{ 1,4,9,16,25,36,49,64\\}\\). \\(b\\) must be even for \\(b^{2}\\) to be a multiple of 4 . If \\(b = 2,ac = 1 \\Rightarrow (1,1) - 1\\) case If \\(b = 4,ac = 4 \\Rightarrow (1,4),(4,1),(2,2) - 3\\) cases If \\(b = 6,ac = 9 \\Rightarrow (3,3) - 1\\) case If \\(b = 8,ac = 16 \\Rightarrow (2,8),(8,2),(4,4) - 3\\) cases Total \\(= 1 + 3 + 1 + 3 = 8\\) cases. Prob \\(= 8/8^{3} = \\mathbf{1}/\\mathbf{64}\\).",
+    "defects": []
+  },
+  {
+    "number": 61,
+    "stem": "The probability of a shooter hitting a target is \\(\\frac{1}{3}\\). The minimum number of shots required so that the probability of hitting the target at least once is greater than \\(\\frac{5}{6}\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "3"
+      },
+      {
+        "label": "B",
+        "text": "4"
+      },
+      {
+        "label": "C",
+        "text": "5"
+      },
+      {
+        "label": "D",
+        "text": "6"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "\\(\\begin{matrix}\r\n & P(\\text{~}\\text{at least one hit}\\text{~}) = 1 - P(\\text{~}\\text{no hits}\\text{~}) = 1 - (2/3)^{n}. \\\\\r\n & 1 - (2/3)^{n} > 5/6 \\Rightarrow (2/3)^{n} < 1/6.\r\n\\end{matrix}\\)\r\n\r\nTrial: \\((2/3)^{4} = 16/81 \\approx 0.197( > 0.166)\\).\r\n\r\n\\((2/3)^{5} = 32/243 \\approx 0.131( < 0.166).\\)\r\n\r\nMinimum \\(n = \\mathbf{5}\\).",
+    "defects": []
+  },
+  {
+    "number": 62,
+    "stem": "Two distinct numbers are selected from \\(\\{ 1,2,\\ldots,50\\}\\). The probability that their product is divisible by 3 is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{16}{50}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{17}{50}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{33}{50}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{13}{25}\\)"
+      }
+    ],
+    "answer": "D",
+    "answerSource": "tail-key",
+    "solution": "Total ways \\(= \\ ^{50}C_{2} = 1225\\).\\\r\nNumbers NOT divisible by 3 in \\(\\{ 1..50\\}\\) are \\(50 - 16 = 34\\).\\\r\nWays to pick 2 numbers not divisible by \\(3 = \\ ^{34}C_{2} = 561\\).\\\r\nWays where product IS divisible \\(= 1225 - 561 = 664\\).\r\n\r\n\\(\\text{~Prob~} = 664/1225 \\approx \\mathbf{0.54}.\\)",
+    "defects": []
+  },
+  {
+    "number": 63,
+    "stem": "A point \\(A(x,y)\\) lies in the region bounded by the \\(y\\)-axis, \\(2y + x = 6\\) and \\(5x - 6y = 30\\). The probability that \\(y < 1\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{4}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{5}{9}\\)"
+      },
+      {
+        "label": "C",
+        "text": "Value based on area ratio"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "Calculated by (Area of region where \\(y < 1\\) ) / (Total Area of triangle)\r\n\r\nTotal region area is the triangle formed by the vertices of the lines.\r\n\r\nCalculate the area of the portion where \\(y < 1\\) within that triangle.\r\n\r\nProb \\(= \\frac{Area(y < 1)}{\\text{~Total Area~}}\\).",
+    "defects": []
+  },
+  {
+    "number": 64,
+    "stem": "A fair die is thrown until a 2 appears. The probability that 2 appears in an even numbered throw is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{5}{6}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{5}{11}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{6}{11}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{6}\\)"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "** \\(\\frac{5}{11}\\)\\\r\nExplanation: - Events: \\(\\mathbf{T}_{2}\\) (Tail-Head style), \\(\\mathbf{T}_{4},\\mathbf{T}_{6}\\ldots\\)\r\n\r\n\\[\\mathbf{P} = (5/6)(1/6) + (5/6)^{3}(1/6) + (5/6)^{5}(1/6)\\ldots\\]\r\n\r\nThis is a GP: \\(a = 5/36,r = 25/36\\).\r\n\r\nSum \\(= \\frac{5/36}{1 - 25/36} = \\frac{5/36}{11/36} = \\mathbf{5}/\\mathbf{11}\\).",
+    "defects": []
+  },
+  {
+    "number": 65,
+    "stem": "An urn contains 6 white and 9 black balls. Two successive draws of 4 balls are made without replacement. The probability that the first draw gives all white balls and the second all black is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{5}{715}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{3}{256}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{715}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{5}{6}\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "First draw (4 balls from 15): \\(P_{1} = \\frac{\\ ^{6}C_{4}}{\\ ^{15}C_{4}}\\).\\\r\nRemaining: 2W, 9B.\\\r\nSecond draw (4 balls from 11): \\(P_{2} = \\frac{\\ ^{9}C_{4}}{\\ ^{11}C_{4}}\\).\\\r\nTotal Prob \\(= P_{1} \\times P_{2} = \\frac{15}{1365} \\times \\frac{126}{330} = \\frac{\\mathbf{1}}{\\mathbf{715}} \\times 4.2\\ldots\\) (approx \\(\\mathbf{5}/\\mathbf{715}\\) after simplification).",
+    "defects": []
+  },
+  {
+    "number": 66,
+    "stem": "A random variable \\(X\\) has a binomial distribution \\(B(n,p)\\). If the mean is 4 and the variance is 3 , then \\(P(X = 1)\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(16\\left( \\frac{3}{4} \\right)^{15}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(4\\left( \\frac{1}{4} \\right)^{15}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(n = 16,p = 1/4\\)"
+      },
+      {
+        "label": "D",
+        "text": "None of these"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "** \\(4\\left( \\frac{\\mathbf{1}}{\\mathbf{4}} \\right)^{\\mathbf{15}}\\)\r\n\r\n\\(np = 4,npq = 3\\).\r\n\r\nDivide: \\(q = 3/4 \\Rightarrow p = 1/4\\).\r\n\r\n\\(n(1/4) = 4 \\Rightarrow n = 16\\).\r\n\r\n\\(\\mathbf{P}(X = 1) = \\binom{16}{1}(1/4)^{1}(3/4)^{15} = 16 \\times \\frac{1}{4} \\times \\left( \\frac{3}{4} \\right)^{15} = \\mathbf{4} \\times \\left( \\frac{\\mathbf{3}}{\\mathbf{4}} \\right)^{\\mathbf{15}}\\).",
+    "defects": []
+  },
+  {
+    "number": 67,
+    "stem": "If the variance of \\(n\\) observations \\(x_{1},x_{2},\\ldots,x_{n}\\) is \\(\\sigma^{2}\\), then the variance of \\(ax_{1} + b,ax_{2} + b,\\ldots,ax_{n} + b\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(a\\sigma^{2} + b\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(a^{2}\\sigma^{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(a^{2}\\sigma^{2} + b^{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(a\\sigma + b\\)"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Effect of Change of Origin and Scale\\\r\nProperty: Variance is independent of origin (adding b) but sensitive to scale (multiplying by \\(a\\) ).\r\n\r\nIf \\(y = ax + b\\), then \\(Var(y) = a^{2}Var(x)\\).\\\r\nResult: \\(a^{2}\\sigma^{2}\\).",
+    "defects": []
+  },
+  {
+    "number": 68,
+    "stem": "Two sets of data have 10 and 20 observations with means 10 and 20 and variances 4 and 9 respectively. The combined variance is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "24.33"
+      },
+      {
+        "label": "B",
+        "text": "29.33"
+      },
+      {
+        "label": "C",
+        "text": "30.00"
+      },
+      {
+        "label": "D",
+        "text": "25.50"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Combined Variance\r\n\r\n\\(n_{1} = 10,{\\bar{x}}_{1} = 10,\\sigma_{1}^{2} = 4 \\mid n_{2} = 20,{\\bar{x}}_{2} = 20,\\sigma_{2}^{2} = 9\\).\r\n\r\nCombined Mean \\(\\bar{x} = \\frac{(10 \\times 10) + (20 \\times 20)}{10 + 20} = \\frac{500}{30} = 16.67\\).\r\n\r\n\\(d_{1} = {\\bar{x}}_{1} - \\bar{x} = - 6.67,d_{2} = {\\bar{x}}_{2} - \\bar{x} = 3.33\\).\r\n\r\n\\(\\sigma^{2} = \\frac{n_{1}\\left( \\sigma_{1}^{2} + d_{1}^{2} \\right) + n_{2}\\left( \\sigma_{2}^{2} + d_{2}^{2} \\right)}{n_{1} + n_{2}} = \\frac{10(4 + 44.4) + 20(9 + 11.1)}{30} \\approx \\mathbf{29.33}\\).",
+    "defects": []
+  },
+  {
+    "number": 69,
+    "stem": "The mean deviation about the mean for the data \\(\\{ 3,10,10,4,7,10,5\\}\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "2"
+      },
+      {
+        "label": "B",
+        "text": "2.57"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "3.12"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Mean Deviation about Mean\r\n\r\nData: \\(\\{ 3,10,10,4,7,10,5\\}\\). Sum \\(= 49,n = 7\\).\r\n\r\nMean \\(\\bar{x} = 49/7 = 7\\).\r\n\r\nAbsolute deviations \\(\\left| x_{i} - 7 \\right|\\) :\r\n\r\n\\(|3 - 7| = 4,|10 - 7| = 3,|10 - 7| = 3,|4 - 7| = 3,|7 - 7| = 0,|10 - 7| = 3,|5 - 7| = 2\\)\r\n\r\nSum of deviations \\(= 4 + 3 + 3 + 3 + 0 + 3 + 2 = 18\\).\r\n\r\nM.D. \\(= 18/7 \\approx \\mathbf{2.57}\\).",
+    "defects": []
+  },
+  {
+    "number": 70,
+    "stem": "The mean and variance of 7 observations are 8 and 16 respectively. If five of these are \\(2,4,10,12,14\\), then the product of the remaining two is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "45"
+      },
+      {
+        "label": "B",
+        "text": "48"
+      },
+      {
+        "label": "C",
+        "text": "54"
+      },
+      {
+        "label": "D",
+        "text": "60"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Missing Observations (7 items)\r\n\r\nMean \\(= 8 \\Rightarrow \\sum_{}^{}\\ x_{i} = 56\\). Given 5 items sum to 42 . So, \\(x + y = 56 - 42 = 14\\).\r\n\r\nVariance \\(= 16 \\Rightarrow \\frac{\\sum_{}^{}\\ x_{i}^{2}}{7} - 8^{2} = 16 \\Rightarrow \\sum_{}^{}\\ x_{i}^{2} = 7(16 + 64) = 560\\).\r\n\r\nSum of squares of known 5 items \\(= 4 + 16 + 100 + 144 + 196 = 460\\).\r\n\r\nSo, \\(x^{2} + y^{2} = 560 - 460 = 100\\).\r\n\r\nUsing \\((x + y)^{2} = x^{2} + y^{2} + 2xy \\Rightarrow 14^{2} = 100 + 2xy \\Rightarrow 196 - 100 = 2xy\\).\r\n\r\n\\(2xy = 96 \\Rightarrow xy = 48\\).",
+    "defects": []
+  },
+  {
+    "number": 71,
+    "stem": "The variance of the first \\(n\\) natural numbers is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{n^{2} - 1}{12}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{n^{2} + 1}{12}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{n(n + 1)}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{n^{2} - 1}{6}\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Variance of First \\(\\mathbf{n}\\) Natural Numbers\r\n\r\nMean \\(\\bar{x} = \\frac{n + 1}{2}\\). Sum of squares \\(\\sum_{}^{}\\ x^{2} = \\frac{n(n + 1)(2n + 1)}{6}\\).\\\r\n\\(Var = \\frac{\\sum_{}^{}\\ x^{2}}{n} - (\\bar{x})^{2} = \\frac{(n + 1)(2n + 1)}{6} - \\frac{(n + 1)^{2}}{4} = \\frac{n + 1}{2}\\left\\lbrack \\frac{2n + 1}{3} - \\frac{n + 1}{2} \\right\\rbrack\\).\\\r\n\\(Var = \\frac{n + 1}{2}\\left\\lbrack \\frac{4n + 2 - 3n - 3}{6} \\right\\rbrack = \\frac{\\mathbf{n}^{2} - \\mathbf{1}}{\\mathbf{12}}\\).",
+    "defects": []
+  },
+  {
+    "number": 72,
+    "stem": "The mean and variance of 8 observations are 9 and 9.25 , respectively. If six of the observations are \\(6,12,4,8,10\\), and 12 , find the remaining two observations \\(x\\) and \\(y\\) (where \\(x > y\\) ).",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(x = 12,y = 10\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(x = 14,y = 6\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(x = 15,y = 5\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(x = 11,y = 9\\)"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Finding 8 Observations\r\n\r\nGiven: Mean \\(= 9\\), Variance \\(= 9.25,n = 8\\). Known: \\(6,7,10,12,12,13\\). Unknown: \\(x,y\\).\r\n\r\nStep 1 (Mean): Sum of given \\(= 60.x + y = (8 \\times 9) - 60 = 12\\).\r\n\r\nStep \\(2(\\) Variance \\():\\frac{\\sum_{}^{}\\ x_{i}^{2}}{8} - 9^{2} = 9.25 \\Rightarrow \\sum_{}^{}\\ x_{i}^{2} = 8 \\times 90.25 = 722\\).\r\n\r\nStep 3: Sum of squares of given \\(= 642 \\cdot x^{2} + y^{2} = 722 - 642 = 80\\).\r\n\r\nStep 4: \\(2xy = (12)^{2} - 80 = 64 \\Rightarrow xy = 32\\).\r\n\r\nResult: \\(x,y\\) are roots of \\(t^{2} - 12t + 32 = 0\\), which are \\(\\mathbf{4}\\) and \\(\\mathbf{8}\\).",
+    "defects": []
+  },
+  {
+    "number": 73,
+    "stem": "If the standard deviation of numbers \\(2,3,a,11\\) is 3.5 , then which of the following is true?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(3a^{2} - 26a + 55 = 0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(3a^{2} - 32a + 84 = 0\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(3a^{2} - 34a + 91 = 0\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(a = 5\\) only"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Standard Deviation Equation\r\n\r\nS.D. \\(= 3.5 \\Rightarrow Var = 12.25\\).\r\n\r\nMean \\(\\bar{x} = \\frac{2 + 3 + a + 11}{4} = \\frac{16 + a}{4}\\).\r\n\r\n\\(\\frac{4 + 9 + a^{2} + 121}{4} - \\left( \\frac{16 + a}{4} \\right)^{2} = 12.25\\).\r\n\r\nMultiply by 16 and simplify to get the quadratic: \\(\\mathbf{3a}^{\\mathbf{2}} - \\mathbf{32a} + \\mathbf{84} = \\mathbf{0}\\).",
+    "defects": []
+  },
+  {
+    "number": 74,
+    "stem": "In a moderately asymmetrical distribution, if the mode is 24 and the median is 18 , the mean is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "12"
+      },
+      {
+        "label": "B",
+        "text": "15"
+      },
+      {
+        "label": "C",
+        "text": "21"
+      },
+      {
+        "label": "D",
+        "text": "9"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Empirical Formula\r\n\r\nMode \\(= 3 \\times\\) Median \\(- 2 \\times\\) Mean .\r\n\r\n\\(24 = 3(18) - 2(\\) Mean \\() \\Rightarrow 24 = 54 - 2(\\) Mean \\()\\).\r\n\r\n\\(2(\\) Mean \\() = 30 \\Rightarrow\\) Mean \\(= 15\\).",
+    "defects": []
+  },
+  {
+    "number": 75,
+    "stem": "Let \\(n\\) be the number of observations such that \\(\\sum_{}^{}\\ x_{i} = 10\\) and \\(\\sum_{}^{}\\ x_{i}^{2} = 40\\). If the mean is 1 , then the variance is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "3"
+      },
+      {
+        "label": "B",
+        "text": "4"
+      },
+      {
+        "label": "C",
+        "text": "5"
+      },
+      {
+        "label": "D",
+        "text": "2"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Sum of Squares & Mean\r\n\r\n\\(n\\) such that \\(\\sum_{}^{}\\ x_{i} = 10\\) and \\(\\bar{x} = 1 \\Rightarrow \\frac{10}{n} = 1 \\Rightarrow n = 10\\).\r\n\r\n\\(Var = \\frac{\\sum_{}^{}\\ x_{i}^{2}}{n} - (\\bar{x})^{2} = \\frac{40}{10} - 1^{2} = 4 - 1 = \\mathbf{3}\\).",
+    "defects": []
+  },
+  {
+    "number": 76,
+    "stem": "For a frequency distribution, the mean is 10 and the coefficient of variation is \\(60\\%\\). The standard deviation is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "6"
+      },
+      {
+        "label": "B",
+        "text": "36"
+      },
+      {
+        "label": "C",
+        "text": "0.6"
+      },
+      {
+        "label": "D",
+        "text": "10"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Coefficient of Variation (C.V.)\r\n\r\n\\(C.V. = \\frac{\\sigma}{\\bar{x}} \\times 100\\).\r\n\r\n\\(60 = \\frac{\\sigma}{10} \\times 100 \\Rightarrow 60 = 10\\sigma\\).\r\n\r\n\\(\\sigma = 6\\).",
+    "defects": []
+  },
+  {
+    "number": 77,
+    "stem": "If the line \\(2x + y = k\\) passes through the point which divides the line segment joining \\((1,1)\\) and \\((2,4)\\) in the ratio \\(3:2\\) internally, then \\(k\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "6"
+      },
+      {
+        "label": "B",
+        "text": "\\(11/5\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(29/5\\)"
+      },
+      {
+        "label": "D",
+        "text": "5"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "Step 1: Find point \\(P(x,y)\\) using ratio \\(3:2\\) for \\(A(1,1)\\) and \\(B(2,4)\\) :\r\n\r\n\\(x = \\frac{3(2) + 2(1)}{5} = \\frac{8}{5};y = \\frac{3(4) + 2(1)}{5} = \\frac{14}{5}.\\)\r\n\r\nStep 2: Plug \\(P(8/5,14/5)\\) into \\(2x + y = k\\) :\r\n\r\n\\(2(8/5) + 14/5 = 16/5 + 14/5 = 30/5 = 6\\)\r\n\r\nResult: \\(k = 6\\).",
+    "defects": []
+  },
+  {
+    "number": 78,
+    "stem": "The equation of the tangent to the circle \\(x^{2} + y^{2} = 25\\) at the point \\((3,4)\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(3x + 4y = 25\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(4x - 3y = 0\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(3x - 4y = 25\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(4x + 3y = 25\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Method: Use \\(T = 0\\) at \\(\\left( x_{1},y_{1} \\right)\\).\r\n\r\nReplace \\(x^{2} \\rightarrow xx_{1}\\) and \\(y^{2} \\rightarrow yy_{1}\\).\r\n\r\n\\(x(3) + y(4) = 25\\).\r\n\r\nResult: \\(3x + 4y = 25\\).",
+    "defects": []
+  },
+  {
+    "number": 79,
+    "stem": "If one end of a focal chord of the parabola \\(y^{2} = 16x\\) is \\((1,4)\\), then the length of the focal chord is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "25"
+      },
+      {
+        "label": "B",
+        "text": "20"
+      },
+      {
+        "label": "C",
+        "text": "16"
+      },
+      {
+        "label": "D",
+        "text": "22"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Focal Chord of Parabola\r\n\r\n\\(y^{2} = 16x \\Rightarrow 4a = 16 \\Rightarrow a = 4\\).\r\n\r\nOne end \\(\\left( x_{1},y_{1} \\right) = (1,4)\\). Since \\(y_{1}^{2} = 4ax_{1}\\), this is \\(\\left( at^{2},2at \\right)\\).\r\n\r\n\\(2(4)t = 4 \\Rightarrow t = 1/2\\).\r\n\r\nLength of focal chord \\(= a(t + 1/t)^{2} = 4(1/2 + 2)^{2} = 4(2.5)^{2} = 4(6.25) = 25\\).",
+    "defects": []
+  },
+  {
+    "number": 80,
+    "stem": "If the distance between the foci of an ellipse is 6 and the distance between its directrices is 12 , then its eccentricity \\(e\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(1/\\sqrt{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\sqrt{3}/2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2/3\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Distance between foci: \\(2ae = 6 \\Rightarrow ae = 3\\).\r\n\r\nDistance between directrices: \\(2a/e = 12 \\Rightarrow a/e = 6\\).\r\n\r\nMultiply: \\((ae) \\times (a/e) = 3 \\times 6 \\Rightarrow a^{2} = 18\\).\r\n\r\nDivide: \\((ae)/(a/e) = 3/6 \\Rightarrow e^{2} = 1/2\\).\r\n\r\nResult: \\(e = 1/\\sqrt{2}\\).",
+    "defects": []
+  },
+  {
+    "number": 81,
+    "stem": "The eccentricity of the hyperbola whose latus rectum is 8 and conjugate axis is equal to half of the distance between the foci is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(4/3\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2/\\sqrt{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\sqrt{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "2"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Latus Rectum: \\(2b^{2}/a = 8 \\Rightarrow b^{2} = 4a\\).\r\n\r\nConjugate axis \\((2b) =\\) half of distance between foci \\((ae):2b = ae \\Rightarrow b = ae/2\\).\r\n\r\nSquare it: \\(b^{2} = a^{2}e^{2}/4\\).\r\n\r\nSubstitute \\(b^{2} = a^{2}\\left( e^{2} - 1 \\right):a^{2}\\left( e^{2} - 1 \\right) = a^{2}e^{2}/4 \\Rightarrow e^{2} - 1 = e^{2}/4\\).\r\n\r\n\\(3e^{2}/4 = 1 \\Rightarrow e^{2} = 4/3 \\Rightarrow e = 2/\\sqrt{3}\\).",
+    "defects": []
+  },
+  {
+    "number": 82,
+    "stem": "The image of the point \\((1,2)\\) in the line \\(x - 3y + 4 = 0\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "(1.2, 1.4)"
+      },
+      {
+        "label": "B",
+        "text": "\\(( - 1, - 2)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\((0,0)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\((2,1)\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Image of a Point\r\n\r\nFormula: \\(\\frac{x - x_{1}}{a} = \\frac{y - y_{1}}{b} = - 2\\frac{ax_{1} + by_{1} + c}{a^{2} + b^{2}}\\).\r\n\r\n\\(\\frac{x - 1}{1} = \\frac{y - 2}{- 3} = - 2\\frac{1 - 3(2) + 4}{1 + 9} = - 2\\frac{- 1}{10} = \\frac{1}{5}\\).\r\n\r\n\\(x - 1 = 1/5 \\Rightarrow x = 1.2;y - 2 = - 3/5 \\Rightarrow y = 1.4\\).",
+    "defects": []
+  },
+  {
+    "number": 83,
+    "stem": "If the circles \\(x^{2} + y^{2} + 2x + 2ky + 6 = 0\\) and \\(x^{2} + y^{2} + 2ky + k = 0\\) intersect orthogonally, then \\(k\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "2 or \\(- 3/2\\)"
+      },
+      {
+        "label": "B",
+        "text": "-2 or \\(3/2\\)"
+      },
+      {
+        "label": "C",
+        "text": "2 or 3"
+      },
+      {
+        "label": "D",
+        "text": "0"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Orthogonal Circles\r\n\r\nCondition: \\(2g_{1}g_{2} + 2f_{1}f_{2} = c_{1} + c_{2}\\).\r\n\r\nCircle 1: \\(g_{1} = 1,f_{1} = k,c_{1} = 6\\). Circle 2: \\(g_{2} = 0,f_{2} = k,c_{2} = k\\).\r\n\r\n\\(2(1)(0) + 2(k)(k) = 6 + k \\Rightarrow 2k^{2} - k - 6 = 0\\).\r\n\r\nSolve: \\((2k + 3)(k - 2) = 0 \\Rightarrow k = 2\\) or \\(- 3/2\\).",
+    "defects": []
+  },
+  {
+    "number": 84,
+    "stem": "The line \\(y = mx + 1\\) is a tangent to the parabola \\(y^{2} = 4x\\) if \\(m\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{1}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Tangent Condition for Parabola\r\n\r\nFor \\(y^{2} = 4ax\\), the line \\(y = mx + c\\) is a tangent if \\(c = a/m\\).\r\n\r\nHere \\(y^{2} = 4x \\Rightarrow a = 1\\). Line is \\(y = mx + 1 \\Rightarrow c = 1\\).\r\n\r\n\\(1 = 1/m \\Rightarrow m = 1\\).",
+    "defects": []
+  },
+  {
+    "number": 85,
+    "stem": "The locus of the mid-point of the chord of the circle \\(x^{2} + y^{2} = 4\\) which subtends a right angle at the origin is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(x^{2} + y^{2} = 1\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(x^{2} + y^{2} = 2\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(x + y = 2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(x^{2} + y^{2} = 4\\)"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Locus of Mid-point\r\n\r\nIf a chord of circle \\(x^{2} + y^{2} = r^{2}\\) subtends \\(90^{\\circ}\\) at origin, the distance of the chord from origin is \\(r/\\sqrt{2}\\).\r\n\r\nHere \\(r^{2} = 4 \\Rightarrow r = 2\\).\r\n\r\nDistance of mid-point \\((h,k)\\) from origin: \\(\\sqrt{h^{2} + k^{2}} = 2/\\sqrt{2} = \\sqrt{2}\\).\r\n\r\nSquare it: \\(x^{2} + y^{2} = 2\\).",
+    "defects": []
+  },
+  {
+    "number": 86,
+    "stem": "The area of the triangle formed by the lines \\(y = x,x = 6\\), and \\(y = 0\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "36"
+      },
+      {
+        "label": "B",
+        "text": "18"
+      },
+      {
+        "label": "C",
+        "text": "9"
+      },
+      {
+        "label": "D",
+        "text": "72"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Area of Triangle\r\n\r\nVertices are \\((0,0)\\) from \\(y = x\\) and \\(y = 0,(6,0)\\) from \\(x = 6\\) and \\(y = 0\\), and \\((6,6)\\) from \\(x = 6\\) and \\(y = x\\).\r\n\r\nThis is a right-angled triangle with base \\(= 6\\) and height \\(= 6\\).\r\n\r\nArea \\(= 1/2 \\times 6 \\times 6 = 18\\).",
+    "defects": []
+  },
+  {
+    "number": 87,
+    "stem": "Let \\(\\overrightarrow{a} = \\widehat{i} + \\widehat{j} + \\widehat{k},\\overrightarrow{b} = \\widehat{i} - \\widehat{j} + \\widehat{k}\\) and \\(\\overrightarrow{c} = \\widehat{i} - \\widehat{j} - \\widehat{k}\\). A vector \\(\\overrightarrow{v}\\) in the plane of \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\) whose projection on \\(\\overrightarrow{c}\\) is \\(\\frac{1}{\\sqrt{3}}\\), is given by:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(3\\widehat{i} - \\widehat{j} + 3\\widehat{k}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\widehat{i} - 3\\widehat{j} + 3\\widehat{k}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(5\\widehat{i} - 2\\widehat{j} + 5\\widehat{k}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(2\\widehat{i} - \\widehat{j} + 3\\widehat{k}\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Any vector \\(\\overrightarrow{v}\\) in the plane of \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\) is \\(\\overrightarrow{v} = \\lambda\\overrightarrow{a} + \\mu\\overrightarrow{b}\\).\r\n\r\n\\(\\overrightarrow{v} = (\\lambda + \\mu)\\widehat{i} + (\\lambda - \\mu)\\widehat{j} + (\\lambda + \\mu)\\widehat{k}\\)\r\n\r\nProjection on \\(\\overrightarrow{c}\\) is \\(\\frac{\\overrightarrow{v} \\cdot \\overrightarrow{c}}{|\\overrightarrow{c}|} = \\frac{1}{\\sqrt{3}}\\).\r\n\r\n\\(\\overrightarrow{v} \\cdot \\overrightarrow{c} = (\\lambda + \\mu) - (\\lambda - \\mu) - (\\lambda + \\mu) = \\mu - \\lambda\\)\r\n\r\nSince \\(|\\overrightarrow{c}| = \\sqrt{1^{2} + ( - 1)^{2} + ( - 1)^{2}} = \\sqrt{3}\\), we get \\(\\frac{\\mu - \\lambda}{\\sqrt{3}} = \\frac{1}{\\sqrt{3}} \\Rightarrow \\mu - \\lambda = 1\\).\\\r\nTest options: For (A), \\(v = 3\\widehat{i} - \\widehat{j} + 3\\widehat{k}\\). Here \\(\\lambda + \\mu = 3\\) and \\(\\lambda - \\mu = - 1\\). Solving gives \\(\\mu = 2,\\lambda = 1\\), which satisfies \\(\\mu - \\lambda = 1\\).",
+    "defects": []
+  },
+  {
+    "number": 88,
+    "stem": "The shortest distance between the lines \\(\\frac{x - 1}{2} = \\frac{y - 2}{3} = \\frac{z - 3}{4}\\) and \\(\\frac{x - 2}{3} = \\frac{y - 4}{4} = \\frac{z - 5}{5}\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{\\sqrt{6}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{6}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\sqrt{6}\\)"
+      },
+      {
+        "label": "D",
+        "text": "0 (Lines intersect)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Shortest Distance (SD)\\\r\nLine 1: \\(\\overrightarrow{a_{1}} = (1,2,3),\\overrightarrow{b_{1}} = (2,3,4)\\). Line 2: \\(\\overrightarrow{a_{2}} = (2,4,5),\\overrightarrow{b_{2}} = (3,4,5)\\).\r\n\r\n\\(\\begin{matrix}\r\n & {\\overrightarrow{a}}_{2} - {\\overrightarrow{a}}_{1} = (1,2,2) \\\\\r\n & {\\overrightarrow{b}}_{1} \\times {\\overrightarrow{b}}_{2} = \\left| \\begin{matrix}\r\n\\widehat{i} & \\widehat{j} & \\widehat{k} \\\\\r\n2 & 3 & 4 \\\\\r\n3 & 4 & 5\r\n\\end{matrix} \\right| = ( - 1,2, - 1) \\\\\r\n & SD = \\frac{|(1,2,2) \\cdot ( - 1,2, - 1)|}{\\sqrt{1 + 4 + 1}} = \\frac{| - 1 + 4 - 2|}{\\sqrt{6}} = \\frac{1}{\\sqrt{6}}\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 89,
+    "stem": "A unit vector bisecting the angle between \\(\\overrightarrow{a} = 3\\widehat{i} + 4\\widehat{j}\\) and \\(\\overrightarrow{b} = 5\\widehat{i} + 12\\widehat{j}\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{64\\widehat{i} + 112\\widehat{j}}{130}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{8\\widehat{i} + 14\\widehat{j}}{\\sqrt{260}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{2\\widehat{i} + \\widehat{j}}{\\sqrt{5}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{\\sqrt{650}}(11\\widehat{i} + 23\\widehat{j})\\)"
+      }
+    ],
+    "answer": "D",
+    "answerSource": "tail-key",
+    "solution": "Angle Bisector\r\n\r\nUnit vector along \\(\\overrightarrow{a}\\) is \\(\\widehat{a} = \\frac{3\\widehat{i} + 4\\widehat{j}}{5}\\). Unit vector along \\(\\overrightarrow{b}\\) is \\(\\widehat{b} = \\frac{5\\widehat{i} + 12\\widehat{j}}{13}\\).\r\n\r\nBisector direction is \\(\\widehat{a} + \\widehat{b} = \\left( \\frac{3}{5} + \\frac{5}{13} \\right)\\widehat{i} + \\left( \\frac{4}{5} + \\frac{12}{13} \\right)\\widehat{j} = \\frac{64}{65}\\widehat{i} + \\frac{112}{65}\\widehat{j}\\).\r\n\r\nNormalize this vector to get the unit vector.",
+    "defects": []
+  },
+  {
+    "number": 90,
+    "stem": "The foot of the perpendicular from the point \\((1,6,3)\\) to the line \\(\\frac{x}{1} = \\frac{y - 1}{2} = \\frac{z - 2}{3}\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\((1,3,5)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(( - 1, - 1, - 1)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\((2,5,8)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\((0,1,2)\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Foot of Perpendicular\\\r\nGeneral point \\(P\\) on line: \\((\\lambda,2\\lambda + 1,3\\lambda + 2)\\).\\\r\nVector \\(MP\\) from \\(M(1,6,3)\\) to \\(P \\cdot (\\lambda - 1,2\\lambda - 5,3\\lambda - 1)\\).\\\r\n\\(MP\\bot\\) line direction \\((1,2,3) \\Rightarrow 1(\\lambda - 1) + 2(2\\lambda - 5) + 3(3\\lambda - 1) = 0\\). \\(\\lambda - 1 + 4\\lambda - 10 + 9\\lambda - 3 = 0 \\Rightarrow 14\\lambda = 14 \\Rightarrow \\lambda = 1\\).\r\n\r\nPoint \\(P\\) is \\((1,2(1) + 1,3(1) + 2) = (1,3,5)\\).",
+    "defects": []
+  },
+  {
+    "number": 91,
+    "stem": "If the volume of a parallelepiped formed by vectors \\(\\widehat{i} + \\lambda\\widehat{j} + \\widehat{k},\\widehat{j} + \\lambda\\widehat{k}\\) and \\(\\lambda\\widehat{i} + \\widehat{k}\\) is minimum, then \\(\\lambda\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\ \\sqrt{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(1/\\sqrt{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "1"
+      },
+      {
+        "label": "D",
+        "text": "0"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Minimum Volume\r\n\r\nVolume \\(V = |\\lbrack\\overrightarrow{a}\\overrightarrow{b}\\overrightarrow{c}\\rbrack| = \\left| \\begin{matrix}\r\n1 & \\lambda & 1 \\\\\r\n0 & 1 & \\lambda \\\\\r\n\\lambda & 0 & 1\r\n\\end{matrix} \\right| = 1(1) - \\lambda\\left( 0 - \\lambda^{2} \\right) + 1(0 - \\lambda) = 1 + \\lambda^{3} - \\lambda\\).\r\n\r\nFor minimum, \\(\\frac{dV}{d\\lambda} = 3\\lambda^{2} - 1 = 0 \\Rightarrow \\lambda^{2} = 1/3 \\Rightarrow \\lambda = 1/\\sqrt{3}\\).",
+    "defects": []
+  },
+  {
+    "number": 92,
+    "stem": "If the vectors \\(\\overrightarrow{a} = (\\alpha,1,1),\\overrightarrow{b} = (1,\\beta,1)\\) and \\(\\overrightarrow{c} = (1,1,\\gamma)\\) are coplanar, then the value of \\(\\frac{1}{1 - \\alpha} + \\frac{1}{1 - \\beta} + \\frac{1}{1 - \\gamma}\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "1"
+      },
+      {
+        "label": "C",
+        "text": "-1"
+      },
+      {
+        "label": "D",
+        "text": "2"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Coplanar Vectors Property\r\n\r\nDeterminant \\(\\left| \\begin{matrix}\r\n\\alpha & 1 & 1 \\\\\r\n1 & \\beta & 1 \\\\\r\n1 & 1 & \\gamma\r\n\\end{matrix} \\right| = 0\\).\r\n\r\nUsing properties of determinants (subtracting rows), this simplifies to a standard result: \\(\\frac{1}{1 - \\alpha} + \\frac{1}{1 - \\beta} + \\frac{1}{1 - \\gamma} = 1\\).",
+    "defects": []
+  },
+  {
+    "number": 93,
+    "stem": "The projection of the line segment joining \\((1,0,3)\\) and \\((2,5,1)\\) on the line whose direction ratios are \\((6,2,3)\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(10/7\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(13/7\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(4/7\\)"
+      },
+      {
+        "label": "D",
+        "text": "1"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "The vector \\(\\overrightarrow{AB}\\) represents the line segment joining points \\(A\\) and \\(B\\).\r\n\r\n\\(\\begin{matrix}\r\n\\overrightarrow{AB} = \\left( x_{2} - x_{1} \\right)\\widehat{i} + \\left( y_{2} - y_{1} \\right)\\widehat{j} + \\left( z_{2} - z_{1} \\right)\\widehat{k} \\\\\r\n\\overrightarrow{AB} = (2 - 1)\\widehat{i} + (5 - 0)\\widehat{j} + (1 - 3)\\widehat{k} \\\\\r\n\\overrightarrow{AB} = 1\\widehat{i} + 5\\widehat{j} - 2\\widehat{k}\r\n\\end{matrix}\\)\r\n\r\n1. Magnitude of the direction vector: \\(\\sqrt{6^{2} + 2^{2} + 3^{2}} = \\sqrt{36 + 4 + 9} = \\sqrt{49} = 7\\).\r\n\r\n2. Unit Vector \\((\\widehat{d}):\\frac{6\\widehat{i} + 2\\widehat{j} + 3\\widehat{k}}{7}\\).\r\n\r\nThe projection of vector \\(\\overrightarrow{AB}\\) on unit vector \\(\\widehat{d}\\) is given by the dot product:\r\n\r\n\\(\\begin{matrix}\r\n\\text{~Projection~} = |\\overrightarrow{AB} \\cdot \\widehat{d}| \\\\\r\n\\text{~Projection~} = \\frac{|(1 \\times 6) + (5 \\times 2) + ( - 2 \\times 3)|}{7} \\\\\r\n\\text{~Projection~} = \\frac{|6 + 10 - 6|}{7} \\\\\r\n\\text{~Projection~} = \\frac{10}{7}\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 94,
+    "stem": "The distance of the point \\((1, - 2,3)\\) from the plane \\(x - y + z = 5\\) measured parallel to the line \\(\\frac{x}{2} = \\frac{y}{3} = \\frac{z}{- 6}\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "7"
+      },
+      {
+        "label": "C",
+        "text": "\\(1/7\\)"
+      },
+      {
+        "label": "D",
+        "text": "5"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Distance Measured Parallel to Line\r\n\r\nLine through \\((1, - 2,3)\\) parallel to \\((2,3, - 6)\\) is \\(\\frac{x - 1}{2} = \\frac{y + 2}{3} = \\frac{z - 3}{- 6} = r\\).\r\n\r\nGeneral point: \\((2r + 1,3r - 2, - 6r + 3)\\).\r\n\r\nPut in plane \\(x - y + z = 5:(2r + 1) - (3r - 2) + ( - 6r + 3) = 5\\).\r\n\r\n\\(2r + 1 - 3r + 2 - 6r + 3 = 5 \\Rightarrow - 7r + 6 = 5 \\Rightarrow r = 1/7\\).\r\n\r\nDistance \\(= \\sqrt{(2r)^{2} + (3r)^{2} + ( - 6r)^{2}} = \\sqrt{49r^{2}} = 7r = 7(1/7) = 1\\).",
+    "defects": []
+  },
+  {
+    "number": 95,
+    "stem": "A vector \\(\\overrightarrow{r}\\) is equally inclined to the axes \\(OX,OY,OZ\\). If the magnitude of \\(\\overrightarrow{r}\\) is \\(3\\sqrt{3}\\), then \\(\\overrightarrow{r}\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(3(\\widehat{i} + \\widehat{j} + \\widehat{k})\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\widehat{i} + \\widehat{j} + \\widehat{k}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(3\\sqrt{3}(\\widehat{i} + \\widehat{j} + \\widehat{k})\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(9(\\widehat{i} + \\widehat{j} + \\widehat{k})\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Equally Inclined Vector\r\n\r\nIf inclined equally, \\(l = m = n = 1/\\sqrt{3}\\).\r\n\r\n\\(\\overrightarrow{r} = |\\overrightarrow{r}|(l\\widehat{i} + m\\widehat{j} + n\\widehat{k}) = 3\\sqrt{3}\\left( \\frac{1}{\\sqrt{3}}\\widehat{i} + \\frac{1}{\\sqrt{3}}\\widehat{j} + \\frac{1}{\\sqrt{3}}\\widehat{k} \\right) = 3(\\widehat{i} + \\widehat{j} + \\widehat{k})\\).",
+    "defects": []
+  },
+  {
+    "number": 96,
+    "stem": "If \\(\\overrightarrow{a} + \\overrightarrow{b} + \\overrightarrow{c} = 0\\) and \\(|\\overrightarrow{a}| = 3,|\\overrightarrow{b}| = 5,|\\overrightarrow{c}| = 7\\), then the angle between \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(30^{\\circ}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(45^{\\circ}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(60^{\\circ}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(90^{\\circ}\\)"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "Angle between \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\)\r\n\r\n\\(\\overrightarrow{a} + \\overrightarrow{b} = - \\overrightarrow{c} \\Rightarrow |\\overrightarrow{a} + \\overrightarrow{b}|^{2} = | - \\overrightarrow{c}|^{2}\\).\r\n\r\n\\(|\\overrightarrow{a}|^{2} + |\\overrightarrow{b}|^{2} + 2|\\overrightarrow{a}||\\overrightarrow{b}|cos\\theta = |\\overrightarrow{c}|^{2}\\).\r\n\r\n\\(3^{2} + 5^{2} + 2(3)(5)cos\\theta = 7^{2} \\Rightarrow 9 + 25 + 30cos\\theta = 49\\).\r\n\r\n\\(30cos\\theta = 15 \\Rightarrow cos\\theta = 1/2 \\Rightarrow \\theta = 60^{\\circ}\\).",
+    "defects": []
+  },
+  {
+    "number": 97,
+    "stem": "If \\(\\cos^{- 1}x - \\cos^{- 1}\\frac{y}{2} = \\alpha\\), then \\(4x^{2} - 4xycos\\alpha + y^{2}\\) is equal to:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(4\\sin^{2}\\alpha\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2\\sin^{2}\\alpha\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(4\\cos^{2}\\alpha\\)"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Use formula: \\(\\cos^{- 1}A - \\cos^{- 1}B = \\cos^{- 1}\\left( AB + \\sqrt{1 - A^{2}}\\sqrt{1 - B^{2}} \\right)\\).\r\n\r\n\\(\\begin{matrix}\r\n & \\cos^{- 1}\\left( \\frac{xy}{2} + \\sqrt{1 - x^{2}}\\sqrt{1 - \\frac{y^{2}}{4}} \\right) = \\alpha. \\\\\r\n & cos\\alpha - \\frac{xy}{2} = \\sqrt{1 - x^{2}}\\sqrt{\\frac{4 - y^{2}}{4}}.\r\n\\end{matrix}\\)\r\n\r\nSquare both sides: \\(\\left( cos\\alpha - \\frac{xy}{2} \\right)^{2} = \\left( 1 - x^{2} \\right)\\left( \\frac{4 - y^{2}}{4} \\right)\\).\r\n\r\n\\(\\cos^{2}\\alpha + \\frac{x^{2}y^{2}}{4} - xycos\\alpha = \\frac{4 - y^{2} - 4x^{2} + x^{2}y^{2}}{4}.\\)\r\n\r\nMultiply by 4: \\(4\\cos^{2}\\alpha + x^{2}y^{2} - 4xycos\\alpha = 4 - y^{2} - 4x^{2} + x^{2}y^{2}\\).\\\r\nRearrange: \\(4x^{2} - 4xycos\\alpha + y^{2} = 4 - 4\\cos^{2}\\alpha = \\mathbf{4}\\sin^{2}\\mathbf{\\alpha}\\).",
+    "defects": []
+  },
+  {
+    "number": 98,
+    "stem": "The value of \\(tan\\left( \\frac{1}{2}\\cos^{- 1}\\frac{\\sqrt{5}}{3} \\right)\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{3 - \\sqrt{5}}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{3 + \\sqrt{5}}{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\sqrt{5} - 1}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{\\sqrt{5} + 1}{2}\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Let \\(\\cos^{- 1}\\frac{\\sqrt{5}}{3} = \\theta \\Longrightarrow cos\\theta = \\frac{\\sqrt{5}}{3}\\).\\\r\nWe need to find \\(tan(\\theta/2)\\).\\\r\nUse the half-angle formula: \\(\\tan^{2}\\frac{\\theta}{2} = \\frac{1 - cos\\theta}{1 + cos\\theta}\\).\r\n\r\n\\(\\tan^{2}\\frac{\\theta}{2} = \\frac{1 - \\sqrt{5}/3}{1 + \\sqrt{5}/3} = \\frac{3 - \\sqrt{5}}{3 + \\sqrt{5}}.\\)\r\n\r\nRationalise: \\(\\frac{(3 - \\sqrt{5})^{2}}{9 - 5} = \\frac{(3 - \\sqrt{5})^{2}}{4}\\).\\\r\nTaking square root: \\(tan\\frac{\\theta}{2} = \\frac{3 - \\sqrt{5}}{2}\\).",
+    "defects": []
+  },
+  {
+    "number": 99,
+    "stem": "If \\(\\sin^{- 1}x + \\sin^{- 1}2x = \\frac{\\pi}{3}\\), then \\(x\\) is equal to:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{1}{2}\\sqrt{\\frac{3}{7}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{2}\\sqrt{\\frac{2}{3}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\frac{\\sqrt{3}}{2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{1}{7}\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Let \\(\\sin^{- 1}x = A\\) and \\(\\sin^{- 1}2x = B\\). Then \\(A + B = 60^{\\circ}\\).\r\n\r\n\\(\\begin{matrix}\r\n & sinA = x \\Longrightarrow cosA = \\sqrt{1 - x^{2}} \\\\\r\n & sinB = 2x \\Longrightarrow cosB = \\sqrt{1 - 4x^{2}}\r\n\\end{matrix}\\)\r\n\r\nTaking \\(\\cos\\) on both sides: \\(cos(A + B) = cos\\left( 60^{\\circ} \\right) = 1/2\\).\r\n\r\n\\(cosAcosB - sinAsinB = 1/2\\)\r\n\r\n\\(\\begin{matrix}\r\n & \\Longrightarrow \\sqrt{1 - x^{2}}\\sqrt{1 - 4x^{2}} - 2x^{2} = 1/2 \\\\\r\n & \\sqrt{\\left( 1 - x^{2} \\right)\\left( 1 - 4x^{2} \\right)} = 2x^{2} + 1/2\r\n\\end{matrix}\\)\r\n\r\nSquaring and solving for \\(x^{2}\\) gives \\(x^{2} = 3/28\\).\r\n\r\n\\(x = \\sqrt{3/28} = \\frac{1}{2}\\sqrt{3/7}\\)",
+    "defects": []
+  },
+  {
+    "number": 100,
+    "stem": "In a triangle, if the sides are \\(13,14,15\\), then the inradius \\((r)\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "3"
+      },
+      {
+        "label": "B",
+        "text": "4"
+      },
+      {
+        "label": "C",
+        "text": "5"
+      },
+      {
+        "label": "D",
+        "text": "4.5"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Solution:\r\n\r\n\\(s = \\frac{13 + 14 + 15}{2} = 21\\).\r\n\r\n\\(\\Delta = \\sqrt{s(s - a)(s - b)(s - c)} = \\sqrt{21 \\times 8 \\times 7 \\times 6} = 84\\).\r\n\r\n\\(r = \\frac{\\Delta}{s} = \\frac{84}{21} = \\mathbf{4}\\).",
+    "defects": []
+  },
+  {
+    "number": 101,
+    "stem": "If \\(m_{a},m_{b},m_{c}\\) are the lengths of the medians of \\(\\bigtriangleup ABC\\), then \\(4\\left( m_{a}^{2} + m_{b}^{2} + m_{c}^{2} \\right)\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(3\\left( a^{2} + b^{2} + c^{2} \\right)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(a^{2} + b^{2} + c^{2}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2\\left( a^{2} + b^{2} + c^{2} \\right)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(9R^{2}\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Solution: Use Apollonius Theorem: \\(m_{a}^{2} = \\frac{1}{4}\\left( 2b^{2} + 2c^{2} - a^{2} \\right)\\).\\\r\nSumming all three: \\(m_{a}^{2} + m_{b}^{2} + m_{c}^{2} = \\frac{1}{4}\\left( 3a^{2} + 3b^{2} + 3c^{2} \\right)\\).\\\r\nMultiply by 4 to get \\(\\mathbf{3}\\left( \\mathbf{a}^{2} + \\mathbf{b}^{2} + \\mathbf{c}^{2} \\right)\\).",
+    "defects": []
+  },
+  {
+    "number": 102,
+    "stem": "A tree breaks due to a storm and the broken part bends so that the top of the tree touches the ground making an angle of \\(30^{\\circ}\\) with it. The distance from the foot of the tree to where the top touches the ground is 8 m . The total height of the tree was:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(8\\sqrt{3}\\text{ }m\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(16\\sqrt{3}\\text{ }m\\)"
+      },
+      {
+        "label": "C",
+        "text": "8 m"
+      },
+      {
+        "label": "D",
+        "text": "24 m"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Solution: Vertical part \\(= 8tan30^{\\circ} = 8/\\sqrt{3}\\). Broken part (hypotenuse)\r\n\r\n\\(\\begin{matrix}\r\n & \\  = 8sec30^{\\circ} = 16/\\sqrt{3}. \\\\\r\n & \\text{~Total height~} = \\frac{8}{\\sqrt{3}} + \\frac{16}{\\sqrt{3}} = \\frac{24}{\\sqrt{3}} = \\mathbf{8}\\sqrt{\\mathbf{3}}.\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 103,
+    "stem": "A tower stands at the centre of a circular park. If \\(\\mathbf{A}\\) and \\(\\mathbf{B}\\) are two points on the boundary such that \\(AB = a\\) subtends an angle of \\(60^{\\circ}\\) at the foot of the tower, and the angle of elevation of the top of the tower from \\(\\mathbf{A}\\) or \\(\\mathbf{B}\\) is \\(30^{\\circ}\\), then the height of the tower is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(a/\\sqrt{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(a\\sqrt{3}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(2a/\\sqrt{3}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(a/3\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Solution: In \\(\\bigtriangleup OAB\\) (foot \\(O\\) ), since \\(OA = OB\\) (radius) and \\(\\angle AOB = 60^{\\circ}\\), it is an equilateral triangle. So radius \\(R = a\\).\\\r\nHeight \\(h = Rtan30^{\\circ} = a \\times (1/\\sqrt{3}) = \\mathbf{a}/\\sqrt{\\mathbf{3}}\\).",
+    "defects": []
+  },
+  {
+    "number": 104,
+    "stem": "The angle between the curves \\(y^{2} = x\\) and \\(x^{2} = y\\) at \\((1,1)\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\tan^{- 1}(3/4)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\tan^{- 1}(4/3)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\pi/2\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\pi/4\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Angle of Intersection\r\n\r\nCurves: \\(y^{2} = x\\) and \\(x^{2} = y\\). Intersection point: \\((1,1)\\).\r\n\r\nFor \\(y^{2} = x \\Longrightarrow 2y \\cdot y' = 1 \\Longrightarrow y' = 1/2y\\). At \\((1,1)\\), slope \\(m_{1} = 1/2\\).\r\n\r\nFor \\(x^{2} = y \\Longrightarrow y' = 2x\\). At \\((1,1)\\), slope \\(m_{2} = 2\\).\r\n\r\nFormula: \\(tan\\theta = \\left| \\frac{m_{2} - m_{1}}{1 + m_{1}m_{2}} \\right| = \\left| \\frac{2 - 1/2}{1 + 1} \\right| = \\frac{3/2}{2} = 3/4\\).",
+    "defects": []
+  },
+  {
+    "number": 105,
+    "stem": "A balloon, which always remains spherical, is being inflated by pumping in 900 cubic centimetres of gas per second. The rate at which the radius of the balloon increases when the radius is 15 cm is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(1/\\pi cm/s\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(2/\\pi cm/s\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\pi cm/s\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(15/\\pi cm/s\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Rate of Change (Balloon)\\\r\nVolume \\(V = \\frac{4}{3}\\pi r^{3}\\). Given \\(dVldt = 900\\).\r\n\r\n\\(\\begin{matrix}\r\n & dVldt = 4\\pi r^{2}(dr/dt) \\Longrightarrow 900 = 4\\pi(15)^{2}(dr/dt) \\\\\r\n & 900 = 4\\pi(225)(dr/dt) \\Longrightarrow 900 = 900\\pi(dr/dt) \\\\\r\n & dr/dt = 1/\\pi\r\n\\end{matrix}\\)",
+    "defects": []
+  },
+  {
+    "number": 106,
+    "stem": "The minimum value of \\(2x + 3y\\) subject to \\(xy = 6(x,y > 0)\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "12"
+      },
+      {
+        "label": "B",
+        "text": "10"
+      },
+      {
+        "label": "C",
+        "text": "6"
+      },
+      {
+        "label": "D",
+        "text": "18"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Minimum Value (AM-GM)\\\r\nFor \\(x,y > 0,\\frac{2x + 3y}{2} \\geq \\sqrt{2x \\cdot 3y}\\).\\\r\nGiven \\(xy = 6 \\Longrightarrow \\sqrt{6 \\cdot 6} = 6\\).\r\n\r\n\\(\\frac{2x + 3y}{2} \\geq 6 \\Longrightarrow 2x + 3y \\geq 12.\\)",
+    "defects": []
+  },
+  {
+    "number": 107,
+    "stem": "If \\(f(x) = kx^{3} - 9x^{2} + 9x + 3\\) is increasing on \\(\\mathbb{R}\\), then the value of \\(k\\) lies in:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(k < 3\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(k > 3\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(k \\leq 3\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(k \\geq 3\\)"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Monotonicity (Parameter \\(k\\) )\r\n\r\n\\(f'(x) = 3kx^{2} - 18x + 9\\)\r\n\r\nFor \\(f(x)\\) to be increasing on \\(\\mathbb{R},f'(x) \\geq 0\\) for all \\(x\\).\\\r\nCondition for quadratic \\(Ax^{2} + Bx + C \\geq 0\\) is \\(A > 0\\) and \\(D \\leq 0\\).\r\n\r\n\\(D = ( - 18)^{2} - 4(3k)(9) = 324 - 108k \\leq 0 \\Longrightarrow 324 \\leq 108k \\Longrightarrow k \\geq 3.\\)",
+    "defects": []
+  },
+  {
+    "number": 108,
+    "stem": "The minimum value of \\(f(x) = x^{2} + 250/x\\) for \\(x > 0\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "25"
+      },
+      {
+        "label": "B",
+        "text": "50"
+      },
+      {
+        "label": "C",
+        "text": "75"
+      },
+      {
+        "label": "D",
+        "text": "100 Consider a sphere \\(S\\) given by the equation \\(x^{2} + y^{2} + z^{2} - 2x + 4y - 6z - 11 = 0\\). A plane \\(P\\) passes through the point \\((1, - 2,3)\\) and is perpendicular to the line joining the origin to the centre of the sphere."
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "Minimum of \\(x^{2} + 250/x\\)\r\n\r\n\\(f'(x) = 2x - 250/x^{2}\\). Set to \\(0 \\Longrightarrow 2x^{3} = 250 \\Longrightarrow x^{3} = 125 \\Longrightarrow x = 5\\).\r\n\r\nMin value \\(f(5) = 5^{2} + 250/5 = 25 + 50 = 75\\).\r\n\r\n**SOL. 109-110** Passage 1: Intersection of Sphere and Plane\\\r\nSphere \\(S:x^{2} + y^{2} + z^{2} - 2x + 4y - 6z - 11 = 0\\)\r\n\r\nCentre (C): \\((1, - 2,3)\\) [using \\(( - g, - f, - h)\\) ]\r\n\r\nRadius \\((\\mathbf{R}):\\sqrt{1^{2} + ( - 2)^{2} + 3^{2} - ( - 11)} = \\sqrt{1 + 4 + 9 + 11} = \\sqrt{25} = 5\\).\r\n\r\nPlane \\(P\\). Passes through \\((1, - 2,3)\\) and is perpendicular to \\(OC\\) ( \\(O\\) is origin).\r\n\r\nSince the point \\((1, - 2,3)\\) is the Centre of the sphere, any plane passing through it is a Diametrical Plane.\r\n\r\nRadius of the Intersection Circle:\r\n\r\nSince the plane passes through the centre, the intersection is a Great Circle.\r\n\r\nRadius of Circle \\(=\\) Radius of Sphere \\(= \\mathbf{5}\\).\r\n\r\nResult: (B)\r\n\r\nSphere with this circle as a Great Circle:\r\n\r\nThe \"Great Circle\" of a sphere is the largest possible circle, having the same centre and radius as the sphere.\r\n\r\nTherefore, the required sphere is identical to \\(S\\), but the options suggest a slight variation in the constant term for different contexts.\r\n\r\n(Calculation check: If a plane is \\(z = k\\), the intersection is \\(x^{2} + y^{2} = R^{2} - k^{2}\\). If the circle is a great circle, \\(k = 0\\) ).",
+    "defects": []
+  },
+  {
+    "number": 109,
+    "stem": "The radius of the circle formed by the intersection of the sphere \\(S\\) and the plane \\(P\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\sqrt{21}\\)"
+      },
+      {
+        "label": "B",
+        "text": "5"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\sqrt{15}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(3\\sqrt{2}\\)"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": null,
+    "defects": [
+      "no solution in source"
+    ]
+  },
+  {
+    "number": 110,
+    "stem": "The equation of the sphere which has this intersection circle as its great circle is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(x^{2} + y^{2} + z^{2} - 2x + 4y - 6z + 11 = 0\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(x^{2} + y^{2} + z^{2} - 2x + 4y - 6z - 14 = 0\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(x^{2} + y^{2} + z^{2} - 2x + 4y - 6z + 9 = 0\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(x^{2} + y^{2} + z^{2} - 2x + 4y - 6z + 5 = 0\\)"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": null,
+    "defects": [
+      "no solution in source"
+    ]
+  },
+  {
+    "number": 111,
+    "stem": "Let \\(f(x) = x^{3} + x - 5\\). If \\(g\\) is the inverse of \\(f\\), find \\(g'(5)\\).",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(1/13\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{1}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "1"
+      },
+      {
+        "label": "D",
+        "text": "13"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Solution:\r\n\r\nSince \\(g\\) is the inverse of \\(f\\), we use the formula \\(g'(y) = \\frac{1}{f'(x)}\\) where \\(y = f(x)\\).\r\n\r\n2. We need \\(g'(5)\\), so set \\(f(x) = 5\\) :\r\n\r\n\\(x^{3} + x - 5 = 5 \\Longrightarrow x^{3} + x - 10 = 0.\\)\r\n\r\nBy inspection, \\(x = 2\\) satisfies the equation \\((8 + 2 - 10 = 0)\\).\\\r\n3. Differentiate \\(f(x):f'(x) = 3x^{2} + 1\\).\\\r\n4. At \\(x = 2,f'(2) = 3(4) + 1 = 13\\).\\\r\n5. Thus, \\(g'(5) = \\mathbf{1}/\\mathbf{13}\\).",
+    "defects": []
+  },
+  {
+    "number": 112,
+    "stem": "Let \\(f(x + y) = f(x)f(y)\\) for all \\(x,y\\). If \\(f(5) = 2\\) and \\(f'(0) = 3\\), then \\(f'(5)\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "5"
+      },
+      {
+        "label": "B",
+        "text": "6"
+      },
+      {
+        "label": "C",
+        "text": "\\(2/3\\)"
+      },
+      {
+        "label": "D",
+        "text": "0"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Solution:\r\n\r\nUsing the first principle: \\(f'(x) = \\lim_{h \\rightarrow 0}\\frac{f(x + h) - f(x)}{h}\\).\r\n\r\n\\(f'(x) = \\lim_{h \\rightarrow 0}\\frac{f(x)f(h) - f(x)}{h} = f(x)\\lim_{h \\rightarrow 0}\\frac{f(h) - 1}{h}\\).\r\n\r\nSince \\(f(0 + 0) = f(0)f(0),f(0) = 1\\). So the limit is \\(f'(0)\\).\r\n\r\n\\(f'(x) = f(x) \\cdot f'(0)\\).\r\n\r\n\\(f'(5) = f(5) \\cdot f'(0) = 2 \\times 3 = \\mathbf{6}\\).",
+    "defects": []
+  },
+  {
+    "number": 113,
+    "stem": "If \\(y^{2} = ax^{2} + bx + c\\), then \\(y^{3}\\frac{d^{2}y}{dx^{2}}\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "A constant"
+      },
+      {
+        "label": "B",
+        "text": "A function of \\(x\\) only"
+      },
+      {
+        "label": "C",
+        "text": "A function of \\(y\\) only"
+      },
+      {
+        "label": "D",
+        "text": "0"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Solution:\r\n\r\nDifferentiate: \\(2yy' = 2ax + b \\Longrightarrow yy' = ax + \\frac{b}{2}\\).\r\n\r\nDifferentiate again: \\(\\left( y' \\right)^{2} + yy^{''} = a\\).\r\n\r\nSubstitute \\(y' = \\frac{ax + b/2}{y}\\) :\r\n\r\n\\(\\left( \\frac{ax + b/2}{y} \\right)^{2} + yy^{''} = a \\Longrightarrow \\frac{(ax + b/2)^{2}}{y^{2}} + yy^{''} = a.\\)\r\n\r\nMultiply by \\(y^{2}:(ax + b/2)^{2} + y^{3}y^{''} = ay^{2}\\).\r\n\r\n\\(y^{3}y^{''} = a\\left( ax^{2} + bx + c \\right) - \\left( a^{2}x^{2} + abx + b^{2}/4 \\right) = ac - b^{2}/4\\).\r\n\r\nSince \\(a,b,c\\) are constants, \\(y^{3}y^{''}\\) is a constant. (Specifically, \\(\\frac{4ac - b^{2}}{4}\\) ).",
+    "defects": []
+  },
+  {
+    "number": 114,
+    "stem": "The solution of the differential equation \\(\\frac{dy}{dx} = e^{x - y} + x^{2}e^{- y}\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(e^{y} = e^{x} + \\frac{x^{3}}{3} + C\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(e^{y} = e^{x} + x^{3} + C\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(y = e^{x} + \\frac{x^{3}}{3} + C\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(e^{- y} = e^{x} + \\frac{x^{3}}{3} + C\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Solution:\r\n\r\nRewrite: \\(\\frac{dy}{dx} = e^{- y}\\left( e^{x} + x^{2} \\right)\\).\r\n\r\nSeparate: \\(e^{y}dy = \\left( e^{x} + x^{2} \\right)dx\\).\r\n\r\nIntegrate: \\(\\int e^{y}dy = \\int\\left( e^{x} + x^{2} \\right)dx\\).\r\n\r\nResult: \\(e^{y} = e^{x} + \\frac{x^{3}}{3} + C\\).",
+    "defects": []
+  },
+  {
+    "number": 115,
+    "stem": "The differential equation of all non-vertical lines passing through the origin is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\frac{dy}{dx} = \\frac{y}{x}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{dy}{dx} = \\frac{x}{y}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(xdy + ydx = 0\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{d^{2}y}{dx^{2}} = 0\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Solution:\r\n\r\nEquation of lines through origin: \\(y = mx\\).\r\n\r\nDifferentiate: \\(\\frac{dy}{dx} = m\\).\r\n\r\nSubstitute \\(m = y/x\\) from the original equation.\r\n\r\nResult: \\(\\frac{dy}{dx} = \\frac{y}{x}\\).",
+    "defects": []
+  },
+  {
+    "number": 116,
+    "stem": "The order and degree of the differential equation \\(\\sqrt{\\frac{d^{2}y}{dx^{2}}} = \\sqrt[3]{\\frac{dy}{dx} + 3}\\) are:",
+    "options": [
+      {
+        "label": "A",
+        "text": "2,3"
+      },
+      {
+        "label": "B",
+        "text": "3,2"
+      },
+      {
+        "label": "C",
+        "text": "2,2"
+      },
+      {
+        "label": "D",
+        "text": "2,6"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Solution:\\\r\nTo find the degree, we must make the powers of derivatives integers.\r\n\r\nEquation: \\(\\left( y^{''} \\right)^{1/2} = \\left( y' + 3 \\right)^{1/3}\\).\r\n\r\nRaise both sides to the power of 6 (LCM of 2 and 3):\r\n\r\n\\(\\left\\lbrack \\left( y^{''} \\right)^{1/2} \\right\\rbrack^{6} = \\left\\lbrack \\left( y' + 3 \\right)^{1/3} \\right\\rbrack^{6} \\Longrightarrow \\left( y^{''} \\right)^{3} = \\left( y' + 3 \\right)^{2}.\\)\r\n\r\nHighest derivative is \\(y^{''}\\) (Order 2), and its power is 3 (Degree 3).",
+    "defects": []
+  },
+  {
+    "number": 117,
+    "stem": "Find the order and degree of \\(y = x\\frac{dy}{dx} + \\frac{2}{\\int_{}^{}\\ \\frac{dy}{dx}dx}\\).",
+    "options": [
+      {
+        "label": "A",
+        "text": "1, 2"
+      },
+      {
+        "label": "B",
+        "text": "2,1"
+      },
+      {
+        "label": "C",
+        "text": "1,1"
+      },
+      {
+        "label": "D",
+        "text": "2,2"
+      }
+    ],
+    "answer": "B",
+    "answerSource": "tail-key",
+    "solution": "Solution:\r\n\r\nSimplify the integral: \\(\\int\\frac{dy}{dx}dx = y + c\\).\r\n\r\nEquation: \\(y = xy' + \\frac{2}{y + c}\\).\r\n\r\nMultiply by \\((y + c):y(y + c) = xy'(y + c) + 2\\).\r\n\r\nThis is a first-order equation. However, if the question meant \\(\\int ydx\\), you would differentiate the whole equation to remove the integral sign, which would increase the order.\r\n\r\nNote: In the specific form \\(y = xy' + \\int f(x)dx\\), differentiate once to get \\(y^{''}\\).",
+    "defects": []
+  },
+  {
+    "number": 118,
+    "stem": "If \\(\\int_{}^{}\\ \\frac{dx}{(x + 1)(x + 2)} = Alog|x + 1| + Blog|x + 2| + C\\), then \\(A + B\\) is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "0"
+      },
+      {
+        "label": "D",
+        "text": "-1"
+      }
+    ],
+    "answer": "C",
+    "answerSource": "tail-key",
+    "solution": "Solution:\r\n\r\nUse Partial Fractions: \\(\\frac{1}{(x + 1)(x + 2)} = \\frac{1}{x + 1} - \\frac{1}{x + 2}\\).\r\n\r\nIntegrating gives \\(log|x + 1| - log|x + 2| + C\\).\r\n\r\nHere \\(\\mathbf{A} = 1\\) and \\(\\mathbf{B} = - 1\\).\r\n\r\n\\(A + B = 1 + ( - 1) = 0\\).",
+    "defects": []
+  },
+  {
+    "number": 119,
+    "stem": "The integral \\(\\int\\frac{dx}{x^{2}\\left( x^{4} + 1 \\right)^{3/4}}\\) is equal to:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(- \\frac{\\left( x^{4} + 1 \\right)^{1/4}}{x} + C\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\frac{\\left( x^{4} + 1 \\right)^{1/4}}{x} + C\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(- \\frac{\\left( x^{4} + 1 \\right)^{1/4}}{x^{2}} + C\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\frac{x}{\\left( x^{4} + 1 \\right)^{1/4}} + C\\)"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Factor out \\(x^{4}\\) from the bracket: \\(\\left( x^{4}\\left( 1 + x^{- 4} \\right) \\right)^{3/4} = x^{3}\\left( 1 + x^{- 4} \\right)^{3/4}\\).\\\r\nIntegral becomes: \\(\\int\\frac{dx}{x^{5}\\left( 1 + x^{- 4} \\right)^{3/4}}\\).\\\r\nSubstitute \\(t = 1 + x^{- 4} \\Longrightarrow dt = - 4x^{- 5}dx \\Longrightarrow \\frac{dx}{x^{5}} = - \\frac{dt}{4}\\).\\\r\nIntegral: \\(- \\frac{1}{4}\\int t^{- 3/4}dt = - \\frac{1}{4}\\left( \\frac{t^{1/4}}{1/4} \\right) = - t^{1/4} = - \\left( 1 + x^{- 4} \\right)^{1/4}\\).\\\r\nSimplify: \\(- \\left( \\frac{x^{4} + 1}{x^{4}} \\right)^{1/4} = - \\frac{\\left( \\mathbf{x}^{4} + \\mathbf{1} \\right)^{1/4}}{\\mathbf{x}} + \\mathbf{C}\\).",
+    "defects": []
+  },
+  {
+    "number": 120,
+    "stem": "Find \\(\\lim_{x \\rightarrow 0}\\frac{1 - cosxcos2xcos3x}{x^{2}}\\).",
+    "options": [
+      {
+        "label": "A",
+        "text": "7"
+      },
+      {
+        "label": "B",
+        "text": "14"
+      },
+      {
+        "label": "C",
+        "text": "0"
+      },
+      {
+        "label": "D",
+        "text": "1"
+      }
+    ],
+    "answer": "A",
+    "answerSource": "tail-key",
+    "solution": "Using the identity \\(1 - coskx \\approx \\frac{(kx)^{2}}{2}\\) :\r\n\r\n\\(\\begin{matrix}\r\n & cosx \\approx 1 - \\frac{x^{2}}{2},cos2x \\approx 1 - \\frac{4x^{2}}{2},cos3x \\approx 1 - \\frac{9x^{2}}{2}. \\\\\r\n & \\left( 1 - \\frac{x^{2}}{2} \\right)\\left( 1 - 2x^{2} \\right)\\left( 1 - \\frac{9x^{2}}{2} \\right) \\approx 1 - \\left( \\frac{1}{2} + 2 + \\frac{9}{2} \\right)x^{2} = 1 - 7x^{2}.\r\n\\end{matrix}\\)\r\n\r\nNumerator: \\(1 - \\left( 1 - 7x^{2} \\right) = 7x^{2}\\).\r\n\r\n\\(\\text{~Limit~} = \\lim_{x \\rightarrow 0}\\frac{7x^{2}}{x^{2}} = 7\\)",
+    "defects": []
+  }
+]

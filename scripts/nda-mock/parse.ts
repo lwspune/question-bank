@@ -104,6 +104,42 @@ export function unwrapNumberedImageAlt(md: string): string {
 }
 
 /**
+ * Rejoin text that Word split across a right-to-left run.
+ *
+ * The weekly NDA-1 2026 series carries stray `dir="rtl"` runs, which pandoc
+ * emits as bracketed spans. Two shapes, and only the first loses data:
+ *
+ *   `**2**[0]{dir="rtl"}**.**`  — a question NUMBER split mid-digit. The
+ *     numbering scan sees `**2**` followed by junk, so the question is never
+ *     recognised and vanishes. Mock 3 of that series lost 26 of its 120 this
+ *     way, and a lost question has no symptom downstream — the paper simply
+ *     commits short.
+ *   `[]{dir="rtl"}the`          — an empty span wrapping ordinary prose.
+ *
+ * So the rule is an UNWRAP, never a delete: the span's inner text is real
+ * content. After unwrapping, a bold boundary can sit between two halves of one
+ * number (`**2**0**.**`), which is rejoined line-initially only — that is where
+ * every observed case occurs, and anchoring keeps a legitimate mid-sentence
+ * `**2**0**` from being fused.
+ */
+export function normalizeRtlSpans(md: string): string {
+  const unwrapped = md.replace(/\[([^\]]*)\]\{dir="rtl"\}/g, (_m, inner: string) => inner);
+  // Collapse repeatedly: a three-digit number arrives as two separate spans.
+  let out = unwrapped;
+  for (;;) {
+    const next = out.replace(/^(\s*)\*\*(\d{1,3})\*\*(\d{1,3})\*\*/gm, "$1**$2$3");
+    if (next === out) break;
+    out = next;
+  }
+  // The second shape wraps the WHOLE number, leaving the bold marker between
+  // the number and its terminator (`[40]{dir="rtl"}**.**` -> `40**.**`). The
+  // numbering scan expects the terminator to follow the digits directly, so
+  // drop the intervening emphasis. Line-anchored, and the terminator is
+  // required, so this cannot fuse an ordinary bolded numeral in prose.
+  return out.replace(/^([ \t]*)(\d{1,3})\*\*+([.)])/gm, "$1$2$3");
+}
+
+/**
  * Split a paper's markdown into per-question blocks.
  *
  * Two hazards this guards against:
@@ -394,6 +430,53 @@ export function parseTailAnswerKey(md: string): Map<number, string> {
 }
 
 /**
+ * Read a standalone answer-key GRID, the weekly NDA-1 2026 series' format.
+ *
+ * The key is its own DOCX holding a 12-column pandoc grid table where a row
+ * carries six `(number, letter)` pairs — row k is k, k+20, k+40, k+60, k+80,
+ * k+100 — so the paper's 120 answers fit in 20 rows.
+ *
+ * `duplicates` and `missing` are returned rather than resolved, and that is the
+ * point of the function. Mock 3's grid prints `59` in the cell where `49`
+ * belongs, so 59 appears twice and 49 never does. A first-wins Map would hand
+ * Q59 the letter that actually belongs to Q49 and report a complete key — a
+ * wrong answer with no symptom anywhere downstream. Surfacing both lists lets
+ * the caller repair it from the grid's own geometry (the row a cell sits in
+ * documents which number it must be) and settle it against the solution
+ * document, which is how that defect was diagnosed.
+ */
+export function parseGridAnswerKey(
+  md: string,
+  total: number,
+): { keys: Map<number, string>; duplicates: number[]; missing: number[] } {
+  const keys = new Map<number, string>();
+  const seen: number[] = [];
+  for (const line of md.split("\n")) {
+    if (!line.trimStart().startsWith("|")) continue;
+    const cells = line
+      .trim()
+      .replace(/^\||\|$/g, "")
+      .split("|")
+      .map((c) => c.replace(/\*+/g, "").trim());
+    // Pair cells left-to-right. A title row ("Answer Key-MATHS MOCK TEST-1")
+    // yields no (digits, letter) pair and so contributes nothing.
+    for (let i = 0; i + 1 < cells.length; i += 2) {
+      const n = cells[i];
+      const letter = cells[i + 1];
+      if (!/^\d{1,3}$/.test(n) || !/^[a-dA-D]$/.test(letter)) continue;
+      const num = Number(n);
+      if (num < 1 || num > total) continue;
+      seen.push(num);
+      if (!keys.has(num)) keys.set(num, letter.toUpperCase());
+    }
+  }
+  const duplicates = [...new Set(seen.filter((n, i) => seen.indexOf(n) !== i))].sort((a, b) => a - b);
+  const missing: number[] = [];
+  for (let n = 1; n <= total; n++) if (!keys.has(n)) missing.push(n);
+  return { keys, duplicates, missing };
+}
+
+/**
  * Read answers stated inline on a solution: `38.(c)`, `39\. (b)`, or Mock 10's
  * `**SOL. (a)**` (which attaches to the most recent question number).
  */
@@ -402,14 +485,27 @@ export function parseInlineAnswers(md: string): Map<number, string> {
   const lines = md.split("\n");
   let last: number | null = null;
 
-  const lead = new RegExp("^" + Q_START_SRC + String.raw`\s*\(\s*([a-dA-D])\s*\)`);
+  // Between the number and the letter the papers put an optional answer word.
+  // The ten-paper series writes none (`38.(c)`); the weekly NDA-1 2026 series
+  // writes `Ans.`, `Ans-`, `Ans- ` or `Sol.`, and mixes spellings within one
+  // document. Missing these is silent: the question reports "no answer from any
+  // source", which reads identically to a paper that prints no key at all.
+  //
+  // The closing paren stays REQUIRED. Accepting a bare trailing letter would
+  // make any heading ending in a stray character an answer.
+  const ANSWER_WORD = String.raw`(?:\*{0,2}(?:Ans|Sol|Solution)\s*[.\-:]?\s*\*{0,2}\s*)?`;
+  const lead = new RegExp("^" + Q_START_SRC + ANSWER_WORD + String.raw`\s*\(\s*([a-dA-D])\s*\)`);
   const sol = /\*{0,2}SOL\s*\.?\s*\*{0,2}\s*\(\s*([a-dA-D])\s*\)/i;
 
   for (const ln of lines) {
     const l = lead.exec(ln);
     if (l) {
       const n = startNumber(l);
-      out.set(n, l[3].toUpperCase());
+      // FIRST head wins, matching `parseVisionAnswerKey`. A solution that cites
+      // an earlier question ("as in 5. (b) above") restates the number, and the
+      // block's own heading is the authoritative one. Verified drift-free
+      // across all ten committed papers.
+      if (!out.has(n)) out.set(n, l[3].toUpperCase());
       last = n;
       continue;
     }
@@ -515,8 +611,32 @@ export function parseSupplementSolutions(md: string): {
  * 1/9 em, so removing it is visually indistinguishable and cannot change what a
  * formula says. `\mspace` never occurs in prose, so a global replace is safe.
  */
+/**
+ * Unicode vulgar fractions typed as a single glyph. KaTeX carries no metrics
+ * for these in math mode, so `\(½\)` — which in this source is sometimes an
+ * ENTIRE answer option — renders broken rather than as a half.
+ *
+ * Converted rather than stripped: the glyph is the option's whole content, so
+ * removing it would leave an empty option, which is worse than a broken one.
+ */
+const VULGAR_FRACTIONS: Record<string, string> = {
+  "½": "\\frac{1}{2}",
+  "⅓": "\\frac{1}{3}",
+  "⅔": "\\frac{2}{3}",
+  "¼": "\\frac{1}{4}",
+  "¾": "\\frac{3}{4}",
+  "⅕": "\\frac{1}{5}",
+  "⅙": "\\frac{1}{6}",
+  "⅛": "\\frac{1}{8}",
+  "⅜": "\\frac{3}{8}",
+  "⅝": "\\frac{5}{8}",
+  "⅞": "\\frac{7}{8}",
+};
+
 export function stripKatexUnsupported(text: string): string {
-  return text.replace(/\\mspace\s*\{[^{}]*\}/g, "");
+  return text
+    .replace(/\\mspace\s*\{[^{}]*\}/g, "")
+    .replace(/[½⅓⅔¼¾⅕⅙⅛⅜⅝⅞]/g, (ch) => VULGAR_FRACTIONS[ch] ?? ch);
 }
 
 /**
