@@ -1,35 +1,69 @@
 /**
- * Build NDA mock tests from the bank — "use PYQPs as is".
+ * Build mock tests from the bank — "use PYQPs as is".
  *
- * Blueprint-driven: for each MOCK_BLUEPRINTS entry (Paper I Mathematics, Paper II
- * GAT), discovers every sitting (distinct pyq_year × pyq_month of the PUBLIC pyq
- * corpus for that paper's subjects), reconstructs each into an immutable snapshot
- * via the pure core (src/lib/mocks/reconstruct.ts), and upserts a `mock_tests`
- * row keyed on the deterministic slugToUuid id (re-running is idempotent).
+ * A mock is exactly the PYQs of one sitting, reconstructed into an immutable
+ * snapshot by the pure core (src/lib/mocks/reconstruct.ts) and upserted into
+ * `mock_tests` keyed on the deterministic slugToUuid id (re-running is
+ * idempotent). Content is NOT copied: the snapshot stores ordered question refs;
+ * delivery renders live from `questions`.
+ *
+ * TWO WAYS A SITTING IS DISCOVERED, and the split is a property of the corpus:
+ *   • YEAR × MONTH (NDA) — `pyq_month` distinguishes the two sittings of a year,
+ *     so the sittings can be discovered from the bank itself. Driven by
+ *     MOCK_BLUEPRINTS.
+ *   • SOURCE_FILE (NEET, CDS) — `pyq_month` is NULL and two sittings share a
+ *     year (NEET 2024 + Re-NEET 2024; CDS (I) + CDS (II)), so the bank cannot
+ *     tell them apart and the sittings come from a registry. NEET's is
+ *     hand-written (each sitting carries bespoke grace/override/length facts);
+ *     CDS's is DERIVED from scripts/cds/config.ts (see cdsSittings.ts).
+ * Both feed one shared loop (`buildFromSourceFiles`) and one shared writer
+ * (`emitMock`) so a fix to the write path cannot land on one exam and miss the
+ * other — the drift this repo has already paid for twice.
  *
  *   npx tsx scripts/mocks/build.ts                       # dry-run all papers
  *   npx tsx scripts/mocks/build.ts --apply               # upsert as status='draft'
  *   npx tsx scripts/mocks/build.ts --apply --publish     # ...and publish
  *   npx tsx scripts/mocks/build.ts --paper=gat --apply --publish
+ *   npx tsx scripts/mocks/build.ts --paper=cds
  *   npx tsx scripts/mocks/build.ts --only=2024-Sep --apply --publish
+ *   npx tsx scripts/mocks/build.ts --only=cds-2026-i-english
+ *
+ * NOTE ON --publish: the upsert writes `status` unconditionally, so re-running
+ * an already-published family WITHOUT --publish demotes it to 'draft'. Re-run
+ * shipped mocks with `--apply --publish`.
  *
  * Writes via the service-role client (bypasses RLS by design — same as the other
- * ingest scripts). Content is NOT copied: the snapshot stores ordered question
- * refs; delivery renders live from `questions`.
+ * ingest scripts).
  */
 import { join } from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { MOCK_BLUEPRINTS, NEET_PAPER, type MockPaperBlueprint } from "../../src/lib/mocks/blueprints";
+import {
+  MOCK_BLUEPRINTS,
+  NEET_PAPER,
+  CDS_ENGLISH_PAPER,
+  type MockPaperBlueprint,
+} from "../../src/lib/mocks/blueprints";
 import {
   buildMockPaper,
   neetMockSlug,
   neetMockTitle,
+  type MockPaperSnapshot,
   type PaperQuestionRow,
 } from "../../src/lib/mocks/reconstruct";
+import { deriveCdsSittings } from "./cdsSittings";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 }
+
+/** Run-wide accumulators threaded through every build path. */
+type RunState = {
+  apply: boolean;
+  publish: boolean;
+  only: string | undefined;
+  built: { n: number };
+  failures: string[];
+};
 
 /** Distinct bank subject names a paper's sections span. */
 function paperSubjects(bp: MockPaperBlueprint): string[] {
@@ -83,12 +117,25 @@ async function discoverSittings(db: SupabaseClient, chapterIds: string[]) {
   return [...seen.values()].sort((a, b) => b.year - a.year || (a.month ?? "").localeCompare(b.month ?? ""));
 }
 
-/** Fetch one sitting's rows (id + ordering + subject + correct-option label). */
+// ── Shared fetch ────────────────────────────────────────────────────────────
+// Every sitting is the same query — PUBLIC pyq rows of this paper's chapters,
+// paged — differing only in HOW the sitting is pinned. One implementation takes
+// that as a typed pin so the select list, the paging, and the option→answer
+// mapping cannot drift apart between exams.
+
+/** How a sitting is pinned within a paper's corpus. */
+type SittingPin =
+  | { by: "yearMonth"; year: number; month: string | null }
+  | { by: "sourceFile"; sourceFile: string };
+
+function pinLabel(pin: SittingPin): string {
+  return pin.by === "sourceFile" ? pin.sourceFile : `${pin.year}-${pin.month ?? "-"}`;
+}
+
 async function fetchPaperRows(
   db: SupabaseClient,
   chapterToSubject: Map<string, string>,
-  year: number,
-  month: string | null
+  pin: SittingPin
 ): Promise<PaperQuestionRow[]> {
   const chapterIds = [...chapterToSubject.keys()];
   const out: PaperQuestionRow[] = [];
@@ -99,11 +146,15 @@ async function fetchPaperRows(
       .select("id, source_row, question_number, chapter_id, options(label,is_correct)")
       .in("chapter_id", chapterIds)
       .eq("question_kind", "pyq")
-      .eq("visibility", "PUBLIC")
-      .eq("pyq_year", year);
-    q = month === null ? q.is("pyq_month", null) : q.eq("pyq_month", month);
+      .eq("visibility", "PUBLIC");
+    if (pin.by === "sourceFile") {
+      q = q.eq("source_file", pin.sourceFile);
+    } else {
+      q = q.eq("pyq_year", pin.year);
+      q = pin.month === null ? q.is("pyq_month", null) : q.eq("pyq_month", pin.month);
+    }
     const { data, error } = await q.range(from, from + PAGE - 1);
-    if (error) throw new Error(`fetch rows ${year}-${month}: ${error.message}`);
+    if (error) throw new Error(`fetch rows ${pinLabel(pin)}: ${error.message}`);
     for (const r of data ?? []) {
       const opts = (r.options ?? []) as { label: string; is_correct: boolean }[];
       out.push({
@@ -119,6 +170,117 @@ async function fetchPaperRows(
   return out;
 }
 
+/** One sitting's rows, pinned by year + month (NDA). */
+function fetchRowsByYearMonth(
+  db: SupabaseClient,
+  chapterToSubject: Map<string, string>,
+  year: number,
+  month: string | null
+): Promise<PaperQuestionRow[]> {
+  return fetchPaperRows(db, chapterToSubject, { by: "yearMonth", year, month });
+}
+
+/** One sitting's rows, pinned by source_file (NEET, CDS). */
+function fetchRowsBySourceFile(
+  db: SupabaseClient,
+  chapterToSubject: Map<string, string>,
+  sourceFile: string
+): Promise<PaperQuestionRow[]> {
+  return fetchPaperRows(db, chapterToSubject, { by: "sourceFile", sourceFile });
+}
+
+// ── Shared write ────────────────────────────────────────────────────────────
+
+/**
+ * Log the snapshot, upsert it when applying, and count it. The single writer for
+ * every exam — the `mock_tests` column list lives here once.
+ */
+async function emitMock(
+  db: SupabaseClient,
+  examId: string,
+  snap: MockPaperSnapshot,
+  run: RunState
+): Promise<void> {
+  const graceCount = snap.questions.filter((q) => q.grace).length;
+  console.log(
+    `  ✓ ${snap.slug.padEnd(20)} ${snap.title}  ` +
+      `(${snap.totalQuestions}q / ${snap.totalMarks}m${graceCount ? `, ${graceCount} grace` : ""})`
+  );
+  if (run.apply) {
+    const { error } = await db.from("mock_tests").upsert(
+      {
+        id: snap.id, slug: snap.slug, exam_id: examId, paper_code: snap.paperCode,
+        pyq_year: snap.pyqYear, pyq_month: snap.pyqMonth, title: snap.title,
+        duration_secs: snap.durationSecs, marking: snap.marking, sections: snap.sections,
+        questions: snap.questions, total_questions: snap.totalQuestions, total_marks: snap.totalMarks,
+        status: run.publish ? "published" : "draft", updated_at: new Date().toISOString(),
+      },
+      { onConflict: "id" }
+    );
+    if (error) { run.failures.push(`${snap.slug}: upsert ${error.message}`); return; }
+  }
+  run.built.n++;
+}
+
+// ── source_file-keyed sittings (NEET + CDS) ─────────────────────────────────
+
+/**
+ * One sitting of a source_file-keyed exam. Everything genuinely bespoke to an
+ * exam stays at its CALL SITE: `prepare` does per-sitting row surgery (NEET's
+ * grace marking + include-overrides), and durationSecs / questionCount are
+ * optional overrides only NEET needs.
+ */
+type SourceFileSitting = {
+  /** Registry key — matched by `--only` alongside the slug. */
+  key: string;
+  sourceFile: string;
+  year: number;
+  slug: string;
+  title: string;
+  /** Override the blueprint duration (NEET's 200-q sittings). */
+  durationSecs?: number;
+  /** Expected full length — a soft advisory warning, NOT a contract. Omit where
+   *  the blueprint declares a hard section count (CDS) — that already throws. */
+  questionCount?: number;
+  /** Per-sitting row surgery, applied after fetch and before reconstruction. */
+  prepare?: (rows: PaperQuestionRow[]) => PaperQuestionRow[];
+};
+
+async function buildFromSourceFiles(
+  db: SupabaseClient,
+  bp: MockPaperBlueprint,
+  allSittings: SourceFileSitting[],
+  run: RunState
+) {
+  const { examId, chapterToSubject } = await resolvePaper(db, bp);
+  const only = run.only;
+  // Match `--only` against either the registry key or the emitted slug: for NEET
+  // the two are identical, for CDS the key is the config paper id ("2026-1").
+  const sittings = allSittings.filter((s) => !only || s.key === only || s.slug === only);
+  console.log(`\n${bp.paperLabel} — ${sittings.length} sitting(s)${only ? ` (filtered: ${only})` : ""}\n`);
+
+  for (const s of sittings) {
+    let rows = await fetchRowsBySourceFile(db, chapterToSubject, s.sourceFile);
+    if (s.prepare) rows = s.prepare(rows);
+    if (s.questionCount != null && rows.length !== s.questionCount) {
+      console.log(`  ! ${s.key}: ${rows.length} rows vs expected ${s.questionCount} (shipping the PUBLIC subset)`);
+    }
+
+    let snap;
+    try {
+      snap = buildMockPaper(bp, rows, {
+        year: s.year, month: null,
+        slug: s.slug, title: s.title,
+        durationSecs: s.durationSecs,
+      });
+    } catch (e) {
+      run.failures.push(`${s.key}: ${e instanceof Error ? e.message.split("\n").slice(0, 4).join(" | ") : String(e)}`);
+      continue;
+    }
+    await emitMock(db, examId, snap, run);
+  }
+}
+
 // ── NEET ────────────────────────────────────────────────────────────────────
 // NEET is one combined paper with per-SITTING variance the NDA year+month loop
 // can't express: pyq_month is null everywhere AND two sittings share a year
@@ -126,6 +288,8 @@ async function fetchPaperRows(
 // its true length (180 vs 200), duration, the officially dropped/bonus GRACE
 // question numbers (full marks to all, no valid key), and any include-OVERRIDE
 // (a real paper question deduped out of its own sitting — referenced by id).
+// Hand-written (unlike CDS's derived registry) because none of those facts is
+// recorded anywhere else.
 type NeetSitting = {
   key: string; // the mock slug (also the --only filter key)
   sourceFile: string;
@@ -165,93 +329,47 @@ const NEET_SITTINGS: NeetSitting[] = [
   { key: "neet-2026-re", sourceFile: "RE_NEET_UG_2026.pdf", year: 2026, isRe: true, questionCount: 180, durationSecs: 180 * 60, graceNumbers: [26], overrides: [] },
 ];
 
-/** Fetch one NEET sitting's PUBLIC pyq rows, keyed by source_file. */
-async function fetchNeetRows(
-  db: SupabaseClient,
-  chapterToSubject: Map<string, string>,
-  sourceFile: string
-): Promise<PaperQuestionRow[]> {
-  const chapterIds = [...chapterToSubject.keys()];
-  const out: PaperQuestionRow[] = [];
-  const PAGE = 1000;
-  for (let from = 0; ; from += PAGE) {
-    const { data, error } = await db
-      .from("questions")
-      .select("id, source_row, question_number, chapter_id, options(label,is_correct)")
-      .in("chapter_id", chapterIds)
-      .eq("question_kind", "pyq")
-      .eq("visibility", "PUBLIC")
-      .eq("source_file", sourceFile)
-      .range(from, from + PAGE - 1);
-    if (error) throw new Error(`fetch NEET rows ${sourceFile}: ${error.message}`);
-    for (const r of data ?? []) {
-      const opts = (r.options ?? []) as { label: string; is_correct: boolean }[];
-      out.push({
-        id: r.id as string,
-        sourceRow: (r.source_row as number | null) ?? null,
-        questionNumber: (r.question_number as string | null) ?? null,
-        subjectName: chapterToSubject.get(r.chapter_id as string) ?? "?",
-        answer: (opts.find((o) => o.is_correct)?.label as "A" | "B" | "C" | "D" | null) ?? null,
-      });
-    }
-    if (!data || data.length < PAGE) break;
-  }
-  return out;
+/** NEET sittings as the shared shape — grace + overrides ride in `prepare`. */
+function neetSittings(): SourceFileSitting[] {
+  return NEET_SITTINGS.map((s) => ({
+    key: s.key,
+    sourceFile: s.sourceFile,
+    year: s.year,
+    slug: neetMockSlug(s.year, s.isRe),
+    title: neetMockTitle(s.year, s.isRe),
+    durationSecs: s.durationSecs,
+    questionCount: s.questionCount,
+    prepare: (rows) => {
+      // Mark officially dropped/bonus questions as grace (full marks to all).
+      const grace = new Set(s.graceNumbers);
+      const out = rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r));
+      // Inject include-overrides (a deduped real question referenced at its slot).
+      for (const ov of s.overrides) {
+        out.push({ id: ov.questionId, sourceRow: ov.questionNumber, questionNumber: String(ov.questionNumber), subjectName: ov.subjectName, answer: ov.answer });
+      }
+      return out;
+    },
+  }));
 }
 
-async function buildNeet(
-  db: SupabaseClient,
-  apply: boolean,
-  publish: boolean,
-  only: string | undefined,
-  built: { n: number },
-  failures: string[]
-) {
-  const { examId, chapterToSubject } = await resolvePaper(db, NEET_PAPER);
-  const sittings = NEET_SITTINGS.filter((s) => !only || s.key === only);
-  console.log(`\n${NEET_PAPER.paperLabel} — ${sittings.length} sitting(s)${only ? ` (filtered: ${only})` : ""}\n`);
-
-  for (const s of sittings) {
-    let rows = await fetchNeetRows(db, chapterToSubject, s.sourceFile);
-    // Mark officially dropped/bonus questions as grace (full marks to all).
-    const grace = new Set(s.graceNumbers);
-    rows = rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r));
-    // Inject include-overrides (a deduped real question referenced at its slot).
-    for (const ov of s.overrides) {
-      rows.push({ id: ov.questionId, sourceRow: ov.questionNumber, questionNumber: String(ov.questionNumber), subjectName: ov.subjectName, answer: ov.answer });
-    }
-    if (rows.length !== s.questionCount) {
-      console.log(`  ! ${s.key}: ${rows.length} rows vs expected ${s.questionCount} (shipping the PUBLIC subset)`);
-    }
-
-    let snap;
-    try {
-      snap = buildMockPaper(NEET_PAPER, rows, {
-        year: s.year, month: null,
-        slug: neetMockSlug(s.year, s.isRe), title: neetMockTitle(s.year, s.isRe),
-        durationSecs: s.durationSecs,
-      });
-    } catch (e) {
-      failures.push(`${s.key}: ${e instanceof Error ? e.message.split("\n").slice(0, 4).join(" | ") : String(e)}`);
-      continue;
-    }
-    const graceCount = snap.questions.filter((q) => q.grace).length;
-    console.log(`  ✓ ${snap.slug.padEnd(16)} ${snap.title}  (${snap.totalQuestions}q / ${snap.totalMarks}m${graceCount ? `, ${graceCount} grace` : ""})`);
-    if (apply) {
-      const { error } = await db.from("mock_tests").upsert(
-        {
-          id: snap.id, slug: snap.slug, exam_id: examId, paper_code: snap.paperCode,
-          pyq_year: snap.pyqYear, pyq_month: snap.pyqMonth, title: snap.title,
-          duration_secs: snap.durationSecs, marking: snap.marking, sections: snap.sections,
-          questions: snap.questions, total_questions: snap.totalQuestions, total_marks: snap.totalMarks,
-          status: publish ? "published" : "draft", updated_at: new Date().toISOString(),
-        },
-        { onConflict: "id" }
-      );
-      if (error) { failures.push(`${snap.slug}: upsert ${error.message}`); continue; }
-    }
-    built.n++;
-  }
+// ── CDS ─────────────────────────────────────────────────────────────────────
+// CDS English is source_file-keyed for the same reason as NEET (pyq_month NULL,
+// two sittings share a year) but is otherwise perfectly uniform: 19 × 120 q, no
+// grace, no overrides, one duration. So it needs no hand-written registry — its
+// sittings are DERIVED from scripts/cds/config.ts, the source of record the
+// ingestion pipeline stamps into source_file (see cdsSittings.ts).
+//
+// No `questionCount` advisory: the blueprint declares a HARD count of 120, so a
+// short sitting already fails loudly in validatePaperRows — a soft warning first
+// would just be noise ahead of the throw.
+function cdsSittings(): SourceFileSitting[] {
+  return deriveCdsSittings().map((s) => ({
+    key: s.key,
+    sourceFile: s.sourceFile,
+    year: s.year,
+    slug: s.slug,
+    title: s.title,
+  }));
 }
 
 async function main() {
@@ -269,13 +387,14 @@ async function main() {
   const NDA_CODES = new Set(["maths", "gat"]);
   const runNda = !paperFilter || NDA_CODES.has(paperFilter);
   const runNeet = !paperFilter || paperFilter === "neet";
-  if (paperFilter && !runNda && !runNeet) {
-    throw new Error(`no paper matches --paper=${paperFilter} (known: maths, gat, neet)`);
+  const runCds = !paperFilter || paperFilter === "cds";
+  if (paperFilter && !runNda && !runNeet && !runCds) {
+    throw new Error(`no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds)`);
   }
 
+  const run: RunState = { apply, publish, only, built: { n: 0 }, failures: [] };
+
   const blueprints = runNda ? MOCK_BLUEPRINTS.filter((b) => !paperFilter || b.code === paperFilter) : [];
-  const built = { n: 0 };
-  const failures: string[] = [];
   for (const bp of blueprints) {
     const { examId, chapterToSubject } = await resolvePaper(db, bp);
     let sittings = await discoverSittings(db, [...chapterToSubject.keys()]);
@@ -283,7 +402,7 @@ async function main() {
     console.log(`\n${bp.paperLabel} — ${sittings.length} sitting(s)${only ? ` (filtered: ${only})` : ""}\n`);
 
     for (const { year, month } of sittings) {
-      const rows = await fetchPaperRows(db, chapterToSubject, year, month);
+      const rows = await fetchRowsByYearMonth(db, chapterToSubject, year, month);
       // 2020 was a single combined NDA I+II sitting (COVID); the bank tags it Apr.
       const titleOverride =
         year === 2020 && month === "Apr"
@@ -293,31 +412,18 @@ async function main() {
       try {
         snap = buildMockPaper(bp, rows, { year, month, title: titleOverride });
       } catch (e) {
-        failures.push(`${bp.code} ${year} ${month ?? "-"}: ${e instanceof Error ? e.message.split("\n")[0] : String(e)}`);
+        run.failures.push(`${bp.code} ${year} ${month ?? "-"}: ${e instanceof Error ? e.message.split("\n")[0] : String(e)}`);
         continue;
       }
-      console.log(`  ✓ ${snap.slug.padEnd(20)} ${snap.title}  (${snap.totalQuestions}q / ${snap.totalMarks}m)`);
-      if (apply) {
-        const { error } = await db.from("mock_tests").upsert(
-          {
-            id: snap.id, slug: snap.slug, exam_id: examId, paper_code: snap.paperCode,
-            pyq_year: snap.pyqYear, pyq_month: snap.pyqMonth, title: snap.title,
-            duration_secs: snap.durationSecs, marking: snap.marking, sections: snap.sections,
-            questions: snap.questions, total_questions: snap.totalQuestions, total_marks: snap.totalMarks,
-            status: publish ? "published" : "draft", updated_at: new Date().toISOString(),
-          },
-          { onConflict: "id" }
-        );
-        if (error) { failures.push(`${snap.slug}: upsert ${error.message}`); continue; }
-      }
-      built.n++;
+      await emitMock(db, examId, snap, run);
     }
   }
 
-  if (runNeet) await buildNeet(db, apply, publish, only, built, failures);
+  if (runNeet) await buildFromSourceFiles(db, NEET_PAPER, neetSittings(), run);
+  if (runCds) await buildFromSourceFiles(db, CDS_ENGLISH_PAPER, cdsSittings(), run);
 
-  console.log(`\n${apply ? "Upserted" : "Would build"} ${built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);
-  if (failures.length) { console.log(`\n${failures.length} failure(s):`); failures.forEach((f) => console.log(`  ✗ ${f}`)); }
+  console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);
+  if (run.failures.length) { console.log(`\n${run.failures.length} failure(s):`); run.failures.forEach((f) => console.log(`  ✗ ${f}`)); }
   if (!apply) console.log("\n(dry-run — re-run with --apply to write)");
 }
 

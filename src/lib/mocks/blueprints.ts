@@ -131,6 +131,41 @@ export const NEET_PAPER: MockPaperBlueprint = {
   ],
 };
 
+/**
+ * CDS English — one paper: 120 questions, 100 marks, 2 hours.
+ *
+ * ONE section, because CDS English is ONE bank subject. The real paper does run
+ * ~13 "Directions:"-headed sections (synonyms, cloze, spotting errors, …) — but
+ * their SELECTION and ORDER vary by year (2026 opens with word-pairs, 2017 with
+ * ordering-of-words), so they are not a stable delivery shape. Each question
+ * carries its own Directions block in its `context`, which is where that
+ * structure lives; putting it in the blueprint would need a per-sitting section
+ * list and would still tell the runner nothing it can't render from the context.
+ *
+ * Marking is the real UPSC scheme recorded in scripts/cds/config.ts: "120 Q /
+ * 100 marks / 2 hrs / 1-3 negative" — so +0.8333 per correct (100/120) and
+ * −0.2778 wrong (a third of the question's own marks, as for NDA). These are
+ * FRACTIONAL, unlike every other blueprint here: 120 × 0.8333 = 99.996 in
+ * floating point, which is why totalMarks() below rounds.
+ *
+ * `pyq_month` is NULL on every CDS row and the two sittings of a year (I and II)
+ * share it — so CDS canNOT be discovered by the NDA year+month loop, and is
+ * deliberately absent from MOCK_BLUEPRINTS (the NEET situation). Its sittings
+ * come from the scripts/cds/config.ts paper registry, and its slug must be
+ * edition-aware (see cdsMockSlug in reconstruct.ts).
+ */
+export const CDS_ENGLISH_PAPER: MockPaperBlueprint = {
+  code: "english",
+  examName: "CDS",
+  examSlug: "cds",
+  paperLabel: "English",
+  durationSecs: 120 * 60,
+  marking: { correct: 0.8333, wrong: -0.2778 },
+  sections: [
+    { key: "english", label: "English", subjects: ["English"], count: 120 },
+  ],
+};
+
 /** The NDA blueprints the build script's year+month discovery loop iterates. */
 export const MOCK_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   NDA_MATHS_PAPER,
@@ -141,6 +176,7 @@ export const MOCK_BLUEPRINTS: readonly MockPaperBlueprint[] = [
 const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   ...MOCK_BLUEPRINTS,
   NEET_PAPER,
+  CDS_ENGLISH_PAPER,
 ];
 
 /** Sum of the DECLARED section counts (0 when a blueprint declares none). */
@@ -148,9 +184,16 @@ export function totalQuestions(bp: MockPaperBlueprint): number {
   return bp.sections.reduce((sum, s) => sum + (s.count ?? 0), 0);
 }
 
-/** Total marks at full correct (uniform-per-paper marking). */
+/**
+ * Total marks at full correct (uniform-per-paper marking), rounded to 2dp.
+ *
+ * The rounding is load-bearing for FRACTIONAL marking: CDS is 120 × 0.8333,
+ * which floats to 99.99600000000001 and would render as "/ 99.996". Integer and
+ * 2dp schemes (NDA 300 / 600, NEET) are unaffected. Matches the same rounding
+ * buildMockPaper already applies to the snapshot's totalMarks.
+ */
 export function totalMarks(bp: MockPaperBlueprint): number {
-  return totalQuestions(bp) * bp.marking.correct;
+  return Math.round(totalQuestions(bp) * bp.marking.correct * 100) / 100;
 }
 
 /** Find a blueprint by exam slug + paper code; null when not registered. */

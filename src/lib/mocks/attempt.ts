@@ -126,9 +126,16 @@ export function gradeMock(
   }
 
   // Round to 2dp to kill float drift (−0.83 sums), then coerce −0 to 0.
+  // maxScore needs it too, not just score: CDS marks are fractional (0.8333),
+  // so a 120-question paper accumulates to 99.99599999999981 and the results
+  // page would read "/ 99.996" instead of "/ 100".
   const round2 = (n: number) => Math.round(n * 100) / 100 || 0;
   score = round2(score);
-  for (const sec of Object.values(sectionScores)) sec.score = round2(sec.score);
+  maxScore = round2(maxScore);
+  for (const sec of Object.values(sectionScores)) {
+    sec.score = round2(sec.score);
+    sec.maxScore = round2(sec.maxScore);
+  }
 
   return { correct, wrong, skipped, score, maxScore, verdicts, sectionScores };
 }

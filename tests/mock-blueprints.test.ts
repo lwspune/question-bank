@@ -4,6 +4,7 @@ import {
   NDA_MATHS_PAPER,
   NDA_GAT_PAPER,
   NEET_PAPER,
+  CDS_ENGLISH_PAPER,
   getBlueprint,
   totalQuestions,
   totalMarks,
@@ -84,6 +85,45 @@ describe("NEET blueprint", () => {
   it("is resolvable by getBlueprint but is NOT in the NDA discovery list", () => {
     expect(getBlueprint("neet", "full")).toBe(NEET_PAPER);
     expect(MOCK_BLUEPRINTS).not.toContain(NEET_PAPER); // NDA year+month loop only
+    expect(MOCK_BLUEPRINTS).toHaveLength(2);
+  });
+});
+
+describe("CDS blueprint", () => {
+  it("is one English paper of 120 questions in a single section", () => {
+    expect(CDS_ENGLISH_PAPER.code).toBe("english");
+    expect(CDS_ENGLISH_PAPER.examSlug).toBe("cds");
+    expect(CDS_ENGLISH_PAPER.examName).toBe("CDS");
+    expect(totalQuestions(CDS_ENGLISH_PAPER)).toBe(120);
+    expect(CDS_ENGLISH_PAPER.sections).toHaveLength(1);
+    expect(CDS_ENGLISH_PAPER.sections[0].subjects).toEqual(["English"]);
+    // Hard count contract: every CDS sitting is exactly 120 questions.
+    expect(CDS_ENGLISH_PAPER.sections[0].count).toBe(120);
+  });
+
+  it("runs for 2 hours", () => {
+    expect(CDS_ENGLISH_PAPER.durationSecs).toBe(120 * 60);
+  });
+
+  /**
+   * The load-bearing arithmetic case: CDS marks are FRACTIONAL (100 marks over
+   * 120 questions = 0.8333 each, penalty = 1/3 of that). 120 * 0.8333 is
+   * 99.99600000000001 in floating point — the paper must still report exactly
+   * 100 marks, not "99.996".
+   */
+  it("totals exactly 100 marks at +0.8333 / -0.2778", () => {
+    expect(CDS_ENGLISH_PAPER.marking).toEqual({
+      correct: 0.8333,
+      wrong: -0.2778,
+    });
+    expect(totalMarks(CDS_ENGLISH_PAPER)).toBe(100);
+  });
+
+  it("is resolvable by getBlueprint but is NOT in the NDA discovery list", () => {
+    expect(getBlueprint("cds", "english")).toBe(CDS_ENGLISH_PAPER);
+    // MOCK_BLUEPRINTS drives the NDA year+month discovery loop; CDS sittings
+    // carry a NULL pyq_month, so it must never enter that loop.
+    expect(MOCK_BLUEPRINTS).not.toContain(CDS_ENGLISH_PAPER);
     expect(MOCK_BLUEPRINTS).toHaveLength(2);
   });
 });

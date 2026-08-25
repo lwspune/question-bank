@@ -103,6 +103,27 @@ describe("gradeMock", () => {
     expect(r.sectionScores.chemistry).toMatchObject({ correct: 1, wrong: 0, score: 4 });
   });
 
+  /**
+   * CDS marks are fractional (100 marks / 120 questions = 0.8333 each). Summing
+   * 0.8333 one hundred and twenty times gives 99.99600000000001 in floating
+   * point — maxScore must be rounded like `score` already is, or the results
+   * page renders "/ 99.996". Applies to the per-section maxScore too.
+   */
+  it("rounds maxScore so a fractional-marks paper reports its true total", () => {
+    const cds: MockGradeQuestion[] = Array.from({ length: 120 }, (_, i) => ({
+      questionId: `c${i + 1}`,
+      sectionKey: "english",
+      marks: 0.8333,
+      negMarks: -0.2778,
+      answer: "A" as const,
+    }));
+    const r = gradeMock(cds, {});
+    expect(r.maxScore).toBe(100);
+    expect(r.sectionScores.english.maxScore).toBe(100);
+    expect(r.skipped).toBe(120);
+    expect(r.score).toBe(0);
+  });
+
   it("mixes grace and normal questions correctly", () => {
     const mixed: MockGradeQuestion[] = [
       { questionId: "n1", sectionKey: "physics", marks: 4, negMarks: -1, answer: "A" },

@@ -5,16 +5,19 @@ import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPublishedMocks } from "@/lib/mocks/query";
-import { mockSideNav } from "@/lib/mocks/mocksNav";
+import { mockSideNav, mockExamNames } from "@/lib/mocks/mocksNav";
 import MockCatalogueList from "./_components/MockCatalogueList";
 
 // Public catalogue — anon + stable, cacheable. New mocks appear on revalidation.
 export const revalidate = 3600;
 
+// Derived from the registry (pure, no DB) so the exam list in the indexed title
+// cannot go stale the way the hardcoded "NDA & NEET" did when CDS shipped.
+const EXAMS = mockExamNames();
+
 export const metadata: Metadata = {
-  title: "NDA & NEET Mock Tests — real PYQ papers, timed & auto-graded",
-  description:
-    "Take real past NDA and NEET (UG) papers as full-length, timed mock tests — the exact questions from each sitting, official marking, instant scoring. Free, from PYQ Vault.",
+  title: `${EXAMS} Mock Tests — real PYQ papers, timed & auto-graded`,
+  description: `Take real past ${EXAMS} papers as full-length, timed mock tests — the exact questions from each sitting, official marking, instant scoring. Free, from PYQ Vault.`,
   alternates: { canonical: "/mock" },
 };
 
