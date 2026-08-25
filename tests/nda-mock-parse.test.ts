@@ -12,6 +12,8 @@ import {
   parseCombinedBlock,
   stripKatexUnsupported,
   parseSupplementSolutions,
+  normalizeRtlSpans,
+  parseGridAnswerKey,
   fixStackedOperators,
   stripPandocInlineMarkup,
 } from "../scripts/nda-mock/parse";
@@ -821,5 +823,200 @@ describe("parseVisionAnswerKey", () => {
 
   it("rejects a number outside the paper", () => {
     expect(parseVisionAnswerKey("500. (a) => x\n", 120).size).toBe(0);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Weekly NDA-1 2026 mock series (Test_Series/NDA_Mock_Tests). Two source shapes
+// the ten-paper series never had, both of which silently lose real data.
+// ─────────────────────────────────────────────────────────────────────────────
+
+describe("normalizeRtlSpans", () => {
+  it("rejoins a question number split by an RTL span", () => {
+    // Mock 3 of the weekly series emits `**2**[0]{dir="rtl"}**.**` for Q20.
+    // Left alone the numbering scan sees `**2**` followed by junk and the
+    // question vanishes: 26 of 120 were lost this way.
+    const out = normalizeRtlSpans('**2**[0]{dir="rtl"}**.** If \\(x=1\\) then');
+    expect(out.startsWith("**20.**")).toBe(true);
+  });
+
+  it("keeps the digits of a multi-span number in printed order", () => {
+    expect(normalizeRtlSpans('**1**[0]{dir="rtl"}[4]{dir="rtl"}**.** x')).toContain("**104.**");
+  });
+
+  it("unwraps an RTL span in ordinary prose without eating its text", () => {
+    // The same markers wrap plain words ("[]{dir=rtl}the [] number"), so the
+    // rule must be an unwrap, never a delete.
+    const out = normalizeRtlSpans('Let []{dir="rtl"}the []{dir="rtl"}number of sides');
+    expect(out).toContain("the");
+    expect(out).toContain("number of sides");
+    expect(out).not.toContain("rtl");
+  });
+
+  it("recovers a number wholly inside an RTL span", () => {
+    // The second shape, and it unwraps to something the numbering scan still
+    // cannot read: `[40]{dir="rtl"}**.**` becomes `40**.**`, where the bold
+    // marker sits BETWEEN the number and its terminator. Seven of w3's
+    // questions arrive this way.
+    const out = normalizeRtlSpans('[40]{dir="rtl"}**.** The value of determinant');
+    expect(splitQuestionBlocks(out + "\n(a) 1 (b) 2 (c) 3 (d) 4").map((b) => b.number)).toEqual([40]);
+  });
+
+  it("recovers a number wholly inside an RTL span with a paren terminator", () => {
+    const out = normalizeRtlSpans('[7]{dir="rtl"}**)** Evaluate');
+    expect(splitQuestionBlocks(out + "\n(a) 1 (b) 2 (c) 3 (d) 4").map((b) => b.number)).toEqual([7]);
+  });
+
+  it("leaves text with no RTL spans byte-identical", () => {
+    const src = "**7.** The roots of \\(x^{2}+1=0\\) are\\\n(a) real (b) complex";
+    expect(normalizeRtlSpans(src)).toBe(src);
+  });
+
+  it("lets splitQuestionBlocks recover an RTL-split number end to end", () => {
+    const md = [
+      "**19.** A cubical dice is thrown\\\\",
+      "(a) 1 (b) 2 (c) 3 (d) 4",
+      "",
+      '**2**[0]{dir="rtl"}**.** If \\(^{n}C_{6}=33\\) find n\\\\',
+      "(a) 10 (b) 11 (c) 12 (d) 9",
+      "",
+      '**2**[1]{dir="rtl"}**.** The 16th term is\\\\',
+      "(a) 1 (b) 2 (c) 3 (d) 4",
+    ].join("\n");
+    const blocks = splitQuestionBlocks(normalizeRtlSpans(md));
+    expect(blocks.map((b) => b.number)).toEqual([19, 20, 21]);
+  });
+});
+
+describe("parseGridAnswerKey", () => {
+  // The weekly series prints its key as a 12-column pandoc grid table where
+  // ROW k carries k, k+20, k+40, k+60, k+80, k+100 as (number, letter) pairs.
+  const GRID = [
+    "+------------+------------+------------+------------+",
+    "| **1**      | **D**      | **21**     | **B**      |",
+    "+------------+------------+------------+------------+",
+    "| **2**      | **A**      | **22**     | **C**      |",
+    "+------------+------------+------------+------------+",
+  ].join("\n");
+
+  it("reads (number, letter) pairs across the row", () => {
+    const { keys } = parseGridAnswerKey(GRID, 40);
+    expect(keys.get(1)).toBe("D");
+    expect(keys.get(21)).toBe("B");
+    expect(keys.get(2)).toBe("A");
+    expect(keys.get(22)).toBe("C");
+  });
+
+  it("reports a duplicated label instead of silently keeping one", () => {
+    // Mock 3's grid prints "59" in the cell where 49 belongs, so 59 appears
+    // twice and 49 never does. First-wins would hand Q59 the value that
+    // actually belongs to Q49 — a wrong key with no symptom.
+    const bad = [
+      "| **9**      | **C**      | **59**     | **C**      |",
+      "| **19**     | **A**      | **59**     | **B**      |",
+    ].join("\n");
+    const { duplicates, missing } = parseGridAnswerKey(bad, 120);
+    expect(duplicates).toContain(59);
+    expect(missing).toContain(49);
+  });
+
+  it("ignores the table's title row and any non-key cell", () => {
+    const withTitle = "| **Answer Key-MATHS MOCK TEST-1**  |\n" + GRID;
+    const { keys } = parseGridAnswerKey(withTitle, 40);
+    expect(keys.size).toBe(4);
+  });
+
+  it("rejects a number outside the paper", () => {
+    const { keys } = parseGridAnswerKey("| **500** | **A** |", 120);
+    expect(keys.size).toBe(0);
+  });
+
+  it("accepts unbolded cells", () => {
+    const { keys } = parseGridAnswerKey("| 3 | b | 23 | c |", 40);
+    expect(keys.get(3)).toBe("B");
+    expect(keys.get(23)).toBe("C");
+  });
+});
+
+describe("stripKatexUnsupported — unicode vulgar fractions", () => {
+  // The weekly series types some options as a single vulgar-fraction glyph:
+  // the WHOLE option is `\(½\)`. KaTeX has no metrics for these in math mode
+  // ("No character metrics for '½'"), so the student sees a broken option
+  // rather than a half. Six such options across w1/w2/w4; the ten-paper series
+  // has none, so this is new to this source.
+  it("converts ½ inside a math zone to a real fraction", () => {
+    expect(stripKatexUnsupported("\\(½\\)")).toBe("\\(\\frac{1}{2}\\)");
+  });
+
+  it("converts ¼ and ¾", () => {
+    expect(stripKatexUnsupported("\\(¼\\)")).toBe("\\(\\frac{1}{4}\\)");
+    expect(stripKatexUnsupported("\\(¾\\)")).toBe("\\(\\frac{3}{4}\\)");
+  });
+
+  it("converts a glyph embedded in a longer expression", () => {
+    expect(stripKatexUnsupported("\\(x + ½\\)")).toBe("\\(x + \\frac{1}{2}\\)");
+  });
+
+  it("still strips \\mspace", () => {
+    expect(stripKatexUnsupported("a\\mspace{2mu}b")).toBe("ab");
+  });
+
+  it("leaves ordinary text untouched", () => {
+    expect(stripKatexUnsupported("\\(\\frac{1}{2}\\)")).toBe("\\(\\frac{1}{2}\\)");
+  });
+});
+
+describe("parseInlineAnswers — weekly-series solution heads", () => {
+  // The weekly series states the answer on the solution's heading line, in four
+  // spellings that vary BETWEEN papers and sometimes within one. The ten-paper
+  // parser only knew `38.(c)` and `SOL. (a)`, so it read 45 of w2's 99 printed
+  // letters and the other 54 questions arrived with "no answer from any source"
+  // — indistinguishable from a paper that genuinely prints no key.
+  it("reads `N. Ans. (d) :`", () => {
+    const keys = parseInlineAnswers("**1. Ans. (d) :** Given,\\\nA set contains\n");
+    expect(keys.get(1)).toBe("D");
+  });
+
+  it("reads `N. Ans. (b)` with the colon outside the bold", () => {
+    expect(parseInlineAnswers("**1. Ans. (b)** : For quadratic\n").get(1)).toBe("B");
+  });
+
+  it("reads `N. Ans-(b)` with a hyphen and no space", () => {
+    expect(parseInlineAnswers("**7. Ans-(b)**\\\nWe have\n").get(7)).toBe("B");
+  });
+
+  it("reads `N. Ans- (c)` with a hyphen and a space", () => {
+    expect(parseInlineAnswers("**9. Ans- (c)**\\\n").get(9)).toBe("C");
+  });
+
+  it("reads `N. Sol. (c)`", () => {
+    expect(parseInlineAnswers("**4. Sol. (c)** We have,\n").get(4)).toBe("C");
+  });
+
+  it("reads a bare `N. (b)` head", () => {
+    expect(parseInlineAnswers("**2. (a)** We have\n").get(2)).toBe("A");
+  });
+
+  it("does not read an option letter cited mid-solution", () => {
+    // "so (c) is excluded" inside a worked solution must not become the answer.
+    const keys = parseInlineAnswers("**5. Ans. (a)** Given\nsince (c) is excluded we get\n");
+    expect(keys.get(5)).toBe("A");
+    expect(keys.size).toBe(1);
+  });
+
+  it("keeps the FIRST head when a later line restates the number", () => {
+    expect(parseInlineAnswers("**5. Ans. (a)** work\n**5. Ans. (d)** as in\n").get(5)).toBe("A");
+  });
+});
+
+describe("detectDirectionSets — weekly-series spellings", () => {
+  it("accepts `Q Nos.` with no dot after the Q", () => {
+    // Mock 4 writes `**Directions (Q Nos. 57-59)**`. A fifth spelling; the
+    // existing NOS_RANGE already tolerates it, and this pins that.
+    const md = "**Directions (Q Nos. 57-59)** Let \\(f(x)=e^{x}\\)\n\n**57.** What is x\\\n(a) 1 (b) 2 (c) 3 (d) 4";
+    const sets = detectDirectionSets(md);
+    expect(sets).toHaveLength(1);
+    expect(sets[0].from).toBe(57);
+    expect(sets[0].to).toBe(59);
   });
 });

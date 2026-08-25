@@ -31,6 +31,8 @@ import {
   parseSupplementSolutions,
   fixStackedOperators,
   stripPandocInlineMarkup,
+  normalizeRtlSpans,
+  parseGridAnswerKey,
 } from "./parse";
 import { stripPandocArtifacts } from "../lib/pandocArtifacts";
 import { requirePaper, DATA, OUT, type Paper } from "./config";
@@ -51,10 +53,16 @@ export type ExtractedQuestion = {
 };
 
 function pandoc(docx: string, mediaDir: string): string {
-  return execFileSync("pandoc", [docx, "-t", "markdown", "--wrap=none", `--extract-media=${mediaDir}`], {
-    encoding: "utf8",
-    maxBuffer: 200 * 1024 * 1024,
-  });
+  const raw = execFileSync(
+    "pandoc",
+    [docx, "-t", "markdown", "--wrap=none", `--extract-media=${mediaDir}`],
+    { encoding: "utf8", maxBuffer: 200 * 1024 * 1024 },
+  );
+  // Applied to EVERY document at the boundary rather than per-paper: a stray
+  // rtl run is a Word artefact that can appear in any of them, and where none
+  // is present this is a byte-identical no-op (asserted by `drift.ts` over the
+  // ten already-committed papers).
+  return normalizeRtlSpans(raw);
 }
 
 export function extractPaper(paper: Paper): {
@@ -90,11 +98,51 @@ export function extractPaper(paper: Paper): {
   // the identical format.
   const qTail = parseTailAnswerKey(qMd);
   const sTail = qMd === sMd ? new Map<number, string>() : parseTailAnswerKey(sMd);
-  const tailKey = qTail.size >= sTail.size ? qTail : sTail;
+  const bestTail = qTail.size >= sTail.size ? qTail : sTail;
+  let tailKey = bestTail;
+
   const inlineKey = parseInlineAnswers(sMd);
   report.push(
-    `tail ANSWER KEYS entries: ${tailKey.size} (in the ${tailKey === qTail ? "question" : "solution"} paper)`,
+    `tail ANSWER KEYS entries: ${bestTail.size}` +
+      (bestTail.size ? ` (in the ${bestTail === qTail ? "question" : "solution"} paper)` : ""),
   );
+
+  // A standalone GRID key (weekly series) is a third source of the same fact.
+  // Reported on its OWN line, never folded into the tail count above: those are
+  // different documents, and a report that says "tail key: 120" for a paper
+  // whose tail block is empty sends the next reader to the wrong file.
+  //
+  // Its defects are surfaced, never auto-resolved. A duplicated label means one
+  // number's letter is sitting in another number's cell, and only the grid's
+  // geometry plus the solution document can say which.
+  if (paper.answerKeyDocx) {
+    const kMd = pandoc(paper.answerKeyDocx, join(mediaDir, "k"));
+    const grid = parseGridAnswerKey(kMd, paper.questionCount);
+    report.push(`grid ANSWER KEY entries : ${grid.keys.size}/${paper.questionCount}`);
+    if (grid.duplicates.length) {
+      report.push(
+        `  DEFECT: label(s) printed twice: ${grid.duplicates.join(", ")} — ` +
+          `so ${grid.missing.join(", ") || "no number"} never appears. One cell carries the ` +
+          `wrong label; repair via an errata 'answer' entry after checking the row it sits in.`,
+      );
+    } else if (grid.missing.length) {
+      report.push(`  grid key missing: ${grid.missing.join(", ")}`);
+    }
+    // Disagreements between the grid and the letters printed on the solutions
+    // are the single most valuable signal this source offers — two documents,
+    // independently typed. Report every one; the adjudication step settles them.
+    const clash = [...grid.keys.keys()].filter(
+      (n) => inlineKey.has(n) && inlineKey.get(n) !== grid.keys.get(n),
+    );
+    report.push(
+      `  grid vs solution letters: overlap ${[...grid.keys.keys()].filter((n) => inlineKey.has(n)).length}, ` +
+        `DISAGREE ${clash.length}` +
+        (clash.length
+          ? ` -> ${clash.map((n) => `Q${n}(grid=${grid.keys.get(n)},soln=${inlineKey.get(n)})`).join(" ")}`
+          : ""),
+    );
+    if (grid.keys.size > tailKey.size) tailKey = grid.keys;
+  }
   report.push(`inline solution answers : ${inlineKey.size}`);
   if (qTail.size && sTail.size) {
     const clash = [...qTail.keys()].filter((n) => sTail.has(n) && sTail.get(n) !== qTail.get(n));
