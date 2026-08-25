@@ -293,9 +293,10 @@ export const CHAPTERS: Record<string, Chapter> = {
   //    percentage bar), so ~3 diagrams. The "girls per 1000 boys" block below them
   //    is an Activity and is NOT ingested.
   //
-  //    🚧 NOT TRANSCRIBED YET — no data/statistics-9.*.json exists and nothing is
-  //    committed. Pages are rendered under out/statistics-9/ and the answers under
-  //    out/_answers/statistics-9/. Established so far:
+  //    ✅ SHIPPED 2026-08-15 — 69 q PUBLIC, live-verified. Everything below is the
+  //    PRE-INGEST inventory, kept as the source of record for what was established
+  //    off the page before transcription. It is HISTORY, not outstanding work.
+  //    Established at that time:
   //      · Problem set 7's MCQ key, read off the ANSWERS page: (i) C (ii) B
   //        (iii) D (iv) B (v) A (vi) D (vii) B (viii) A (ix) C (x) C — ten items.
   //        Blind-re-derive before trusting these; they are recorded here only so
@@ -523,6 +524,116 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Ch.3 Triangles (Part 2, Geometry). Pages 24-50 (1-based) → 0-based 33-59,
+  //    the LARGEST chapter of the volume at 27 pages. Boundary VERIFIED off the
+  //    renders at BOTH ends: 33 carries the "3 Triangles" banner and 60 already
+  //    opens "4 Constructions of Triangles".
+  //    Answers: 0-based 134-135.
+  //
+  //    ⚠ THE KEY IS COMPLETE FOR EVERY NON-PROOF QUESTION - all five practice
+  //    sets AND the Problem-set MCQ block are keyed - which is why this chapter
+  //    was taken next: the step-6 gate runs on everything the key can reach.
+  //    Its gaps (3.1 Q8/Q10, 3.2 Q5/Q6, 3.4 Q5-Q8, 3.5 Q3, Prob Q2-Q8) are
+  //    ALL proofs or "draw a sketch". The Part-2 ANSWERS section is only five
+  //    pages for nine chapters and skips proofs by design, so a missing entry
+  //    there is NOT a defect and must not be reported as one.
+  //
+  //    THE BOOK'S PRINTED ANSWER KEY FOR THIS CHAPTER IS **NOT IN THIS FILE**.
+  //    It lives in `scripts/mh-sb-9/data/triangles-9.key.md`, deliberately out of
+  //    reach of anyone reading this entry. A fence drawn inside the file every
+  //    transcription agent is told to open is not a boundary - it was read past
+  //    three times on 2026-08-22. Do not inline it here again.
+  //
+  //    ⚠ BOTH answer pages are load-bearing. 134 carries Practice sets 3.1-3.5;
+  //    **135 opens with "Problem set 3" and NO repeated "3. Triangles" heading**,
+  //    so a read scoped to 134 alone silently drops the entire Problem-set MCQ
+  //    key with nothing on the page to signal the loss. Read `answerPages` at a
+  //    chapter's LAST answer, never its first.
+  //
+  //    ⚠ VISION-ONLY (Part-2 operator-glyph substitution + flattened exponents).
+  //    Never reach for dump-text.ts here.
+  //
+  //    ⚠ BLOCK INVENTORY, verified page by page off the renders. SEVEN BANDS,
+  //    50 rows. Scanning for `Solution :` alone is NOT enough in this volume -
+  //    the p-56 worked example is labelled only `Ex.` - so the inventory was
+  //    built by reading all 27 pages:
+  //      b1  34-36   "Solved examples" Ex (1) .. Ex (4) -> `3.1 SolvedEx.1`..`.4`.
+  //                  Ex (1)+Ex (2) on 34, Ex (3) on 35, Ex (4) on 36. The block
+  //                  and Practice set 3.1 SHARE page 36, so b1 and b2 both read
+  //                  it and each owns only its own half.
+  //      b2  36-37   Practice set 3.1 = Q1..Q10. Q1-Q4 on 36, Q5-Q10 on 37.
+  //      b3  40-42   Practice set 3.2 = Q1(i)-(iv) on 40 · Q2(i)-(ii), Q3, Q4,
+  //                  Q5 on 41 · Q6 at the TOP of 42, above the "Let's learn"
+  //                  banner that starts the isosceles theory.
+  //      b4  47      Practice set 3.3 = Q1..Q4, entirely on 47.
+  //      b5  52-53   Practice set 3.4 = Q1..Q5 on 52 · Q6, Q7, Q8 on 53.
+  //      b6  56      one worked example (`Ex.`, Fig. 3.57) -> `3.5 SolvedEx.1`
+  //                  AND Practice set 3.5 = Q1..Q3, all four on 56.
+  //      b7  58-59   Problem set 3 = Q1(i)-(iii) MCQ + Q2..Q5 on 58 · Q6, Q7,
+  //                  Q8 on 59, which then closes with a "Use your brain power!"
+  //                  box and the end-of-chapter ornament.
+  //    Pages 33, 38-39, 43-46, 48-51, 54-55 and 57 are theory and carry NO
+  //    exercise block. 57 is a "Project" (draw a map of your locality) - skipped
+  //    as open-ended, the standing convention for this book.
+  //
+  //    ⚠ THIS CHAPTER IS DENSE WITH FILL-IN-THE-BLANK ACTIVITY PROOFS and they
+  //    are NOT all the same thing:
+  //      · The theory boxes on 43, 44, 45, 48, 49, 50 and 51 are Activities -
+  //        skipped, like every other Activity in this book.
+  //      · But `3.1 SolvedEx.2` and `3.1 SolvedEx.4` are NUMBERED SOLVED
+  //        EXAMPLES whose printed solution happens to carry blanks. They are
+  //        ingested with the blanks FILLED IN (sympy-free, one-line arithmetic),
+  //        so PUBLIC ships a whole worked solution rather than a hole - the
+  //        Class-12 Indefinite-Integration precedent. Each carries a `_note`.
+  //
+  //    ⚠ TWO PRINTED SECTION HEADINGS ARE MISSING FROM THE "Let's study" BOX,
+  //    and one of them earns a subtopic while the other does not:
+  //      · "Property of an exterior angle of triangle" (p25) carries no exercise
+  //        block of its own - its questions land in Practice set 3.1 - so it is
+  //        folded into the remote-interior-angles subtopic.
+  //      · "Properties of inequalities of sides and angles of a triangle" (p41)
+  //        is the opposite case: it backs most of Practice set 3.4 and most of
+  //        Problem set 3. Dropping it would leave ~13 rows with nowhere sensible
+  //        to sit, so the book's own printed heading IS a subtopic below.
+  //    Conversely the box's "Property of 30 - 60 - 90 angled triangle" and
+  //    "Perpendicular bisector theorem" bullets are DROPPED: after transcription
+  //    they tallied ZERO exercise rows each (both are taught here and drilled in
+  //    later chapters), and shipping them would put a /browse filter on the page
+  //    that returns nothing - the Linear Programming precedent.
+  //
+  //    ⚠ FIGURE-HEAVY, and the load is the highest of any Class-9 Maths chapter
+  //    so far: 24 numbered figures are cited BY NUMBER from a question stem, and
+  //    several questions (PS 3.1 Q5/Q6/Q9, PS 3.2 Q1/Q2/Q3, PS 3.3 Q1, PS 3.4
+  //    Q1/Q7) are unanswerable without theirs because the measures live only on
+  //    the drawing. Crop BEFORE authoring, not after, and keep each figure's
+  //    CAPTION in the crop - every stem refers to its figure by number, so a
+  //    clipped caption breaks the reference.
+  "triangles-9": {
+    id: "triangles-9",
+    chapterName: "Triangles",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_09_Maths__Triangles.pdf",
+    pdf: PART2,
+    pages: range(33, 59),
+    answersPdf: PART2,
+    answerPages: range(134, 135),
+    note: "Maharashtra State Board (Class 9) — Triangles (Balbharati textbook, Part 2 Geometry)",
+    // The chapter's own "Let's study" list (printed p24 / 0-based 33), verbatim
+    // and in the book's own reading order (left column top-to-bottom, then
+    // right), MINUS the two bullets that tallied zero exercise rows and PLUS
+    // the printed inequalities heading from p41 - see the note above.
+    subtopics: [
+      "Theorem of remote interior angles of a triangle",
+      "Congruence of triangles",
+      "Theorem of an isosceles triangle",
+      "Median of a triangle",
+      "Property of median on hypotenuse of a right angled triangle",
+      "Angle bisector theorem",
+      "Properties of inequalities of sides and angles of a triangle",
+      "Similar triangles",
+    ],
+  },
+
   // ── Ch.4 Constructions of Triangles (Part 2, Geometry). Pages 51-56 (1-based)
   //    → 0-based 60-65, the SMALLEST chapter in the volume at 6 pages. Opener
   //    VERIFIED: 60 carries the "4 Constructions of Triangles" banner and 66
@@ -574,12 +685,126 @@ export const CHAPTERS: Record<string, Chapter> = {
     // NO answersPdf ON PURPOSE - the book keys no question in this chapter.
     // Do not "restore" one; see the note above.
     note: "Maharashtra State Board (Class 9) — Constructions of Triangles (Balbharati textbook, Part 2 Geometry)",
-    // The book's own "Construction I / II / III" headings, which are exactly the
-    // three types the exercises drill.
+    // The book's own "Construction I / II / III" headings, which are the three
+    // types the exercises drill — PLUS a fourth, added at ingest for the single
+    // question that is none of them. Problem set 4 Q.3 gives a PERIMETER and a
+    // RATIO of sides and no angle at all: once the sides are computed it is the
+    // three-sides (SSS) construction from the previous standard. Filing it under
+    // "Given Two Angles and Perimeter" would put it behind a /browse filter whose
+    // name states a fact the question does not have (it gives no angle), so it
+    // gets its own subtopic even though it is a single row.
     subtopics: [
       "Construction Given Base, Base Angle and Sum of Remaining Sides",
       "Construction Given Base, Base Angle and Difference of Remaining Sides",
       "Construction Given Two Angles and Perimeter",
+      "Construction Given Perimeter and Ratio of Sides",
+    ],
+  },
+
+  // ── Ch.5 Quadrilaterals (Part 2, Geometry). Pages 57-75 (1-based) → 0-based
+  //    66-84. Opener VERIFIED: 0-based 66 carries the "5 Quadrilaterals" banner
+  //    and 85 opens "6 Circle", so the chapter is 19pp — the longest in Part 2.
+  //    Answers: 0-based 135 (printed p126) — see the ⚠ on answerPages below.
+  //
+  //    ⚠ BLOCK INVENTORY, verified page by page off the renders 2026-08-23.
+  //    FOUR BANDS, 49 rows. The chapter alternates theory → solved block →
+  //    practice set, five times over:
+  //      b1  70-71   "Solved Examples" opens on 70 (y≈476) with Ex (1); Ex (2) is
+  //                  at the TOP of 71, ABOVE the Practice set 5.1 banner (y≈288),
+  //                  so BOTH are `5.1 SolvedEx.n` · Practice set 5.1 = 7 q, all on
+  //                  71. Nothing spills to 72, which is pure theory.
+  //      b2  75-76   "Solved examples -" = Ex (1), Ex (2), Ex (3) on 75 →
+  //                  `5.2 SolvedEx.1..3` · Practice set 5.2 = 5 q, all on 76.
+  //      b3  78-80   Practice set 5.3 = 5 q on 78 (Q5 is a SIX-item true/false
+  //                  set → 10 rows) · "Solved examples" Ex (1), Ex (2) on 79 →
+  //                  `5.4 SolvedEx.1..2` · Practice set 5.4 = 3 q on 80.
+  //                  NOTE the solved block sits BETWEEN 5.3 and 5.4 and therefore
+  //                  belongs to 5.4, which is the practice set that CLOSES its
+  //                  theory band. There is NO solved block before 5.3.
+  //      b4  81-83   Ex (1) on 81 and Ex (2) on 81 → `5.5 SolvedEx.1..2` ·
+  //                  Practice set 5.5 = 4 q on 82 · Problem set 5 opens at the
+  //                  FOOT of 82 (Q1(i) only) and runs to 83: Q1 = a THREE-item
+  //                  MCQ block, then Q2..Q9. 83 ends at Q9.
+  //    Pages 67-69, 72, 73, 74, 77 and 84 carry NO rows. 67-69/72-74/77 are
+  //    theory: theorems whose "proofs" are fill-in-the-blank scaffolds ("Complete
+  //    the proof by giving suitable reasons", "Write 'Given', 'To prove' and
+  //    'proof' of the theorem"), skipped like every other Activity in this book.
+  //    84 is an "Activity" box (plywood + screws) plus an "Additional information"
+  //    box proving the 2:1 median property — supplementary theory under no
+  //    exercise heading and outside every numbered block, so it is skipped too.
+  //
+  //    ⚠ THE 81/82 SEAM. `5.5 SolvedEx.2` ("the quadrilateral formed by joining
+  //    the midpoints of the sides of a quadrilateral is a parallelogram") states
+  //    its Given/To prove/Construction at the foot of 81 and its entire Proof
+  //    completes at the TOP of 82, above the Practice set 5.5 banner. This is the
+  //    TRUNCATION class, not the duplicate class: a duplicate ref makes merge.ts
+  //    throw, while a solution that stops mid-derivation passes every gate and
+  //    simply never reaches its conclusion. Cut bands at BLOCK boundaries.
+  //
+  //    ⚠ A MARKER-ONLY SCAN MISSES `5.1 SolvedEx.2`. Scanning for `Solution :` /
+  //    `Ex\.` finds nothing at the top of 71, because the book writes "Ex (2)"
+  //    with no period — the same gap that hid two whole rows on Ch.6. Every band
+  //    was therefore settled by READING the page, and each agent was told to
+  //    report on territory it does not own.
+  //
+  //    ⚠ THE KEY IS INCOMPLETE BY DESIGN AND PRACTICE SET 5.2 IS ANSWERED
+  //    NOWHERE. The Part-2 ANSWERS section is five pages for nine chapters and it
+  //    SKIPS EVERY PROOF; all five questions of 5.2 are proofs, so the key runs
+  //    5.1 → 5.3 with nothing between. That is the book being terse, NOT a gap in
+  //    our work — report those rows `NO-KEY-ENTRY`. Same for PS 5.1 Q5/Q7, PS 5.4
+  //    Q3, PS 5.5 Q2-Q4 and Prob Q7-Q9. Only 26 of the 49 rows are keyed at all
+  //    (26 keyed + 14 unkeyed proofs + 9 solved examples = 49). This read "25"
+  //    until 2026-08-25; the slip was in the coverage arithmetic in
+  //    `quadrilaterals-9.key.md`, which counted Practice set 5.3 as "nine of ten"
+  //    when 4 questions + 6 sub-items of Q5 is ten, and that block is keyed in
+  //    full. Corrected in both places against the rendered answer page.
+  //
+  //    THE BOOK'S PRINTED ANSWER KEY FOR THIS CHAPTER IS **NOT IN THIS FILE**.
+  //    It lives in `scripts/mh-sb-9/data/quadrilaterals-9.key.md`, deliberately
+  //    out of reach of anyone reading this entry, together with the coverage
+  //    arithmetic the step-6 gate must report against. Do not inline it here.
+  //
+  //    ⚠ VISION-ONLY, and measured rather than assumed. On top of the Part-2
+  //    operator substitution (`D ABC` for the triangle, `@` for congruent, `\`
+  //    for therefore, `Ð` for the angle sign) the text layer flattens the stacked
+  //    fractions this chapter is full of: the midpoint theorem's `PQ = ½BC`
+  //    extracts as "PQ = 1 2 BC" and the key's `6.5√2` loses its radical
+  //    entirely. Never reach for dump-text.ts here.
+  //
+  //    ⚠ FIGURE-HEAVY, like Ch.2 and Ch.6 — 14 question figures across four
+  //    blocks (5.12/5.13 · 5.22/5.23/5.24/5.25 · 5.32 · 5.38/5.39/5.40/5.41 ·
+  //    5.42/5.43/5.44). Practice set 5.2 and Practice set 5.5 are unanswerable
+  //    from their stems alone. The solved examples' own figures sit INSIDE their
+  //    printed solutions and need no separate crop (the Ch.6 convention).
+  "quadrilaterals-9": {
+    id: "quadrilaterals-9",
+    chapterName: "Quadrilaterals",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_09_Maths__Quadrilaterals.pdf",
+    pdf: PART2,
+    pages: range(66, 84),
+    answersPdf: PART2,
+    // ONE page, and that is verified at BOTH ends rather than inferred from where
+    // the block starts: 135 opens with "5. Quadrilaterals" immediately under the
+    // Problem set 3 answers, and closes with the "6. Circle" banner further down
+    // the SAME page. So the block neither begins on 134 nor spills onto 136.
+    // (Read a chapter's LAST answer, not its first — on Ch.8 a page-scoped read
+    // silently dropped 16 of 33 keyed rows because the block spanned a break.)
+    answerPages: range(135, 135),
+    note: "Maharashtra State Board (Class 9) — Quadrilaterals (Balbharati textbook, Part 2 Geometry)",
+    // The chapter's own "Let's study" list (printed p57 / 0-based 66), verbatim
+    // and in the book's own printed order — including its plural "Rectangles" and
+    // its unhyphenated "Mid point theorem". Read off the opener, never guessed:
+    // on Ch.6 a provisional list invented a heading the book does not have, merged
+    // two the book lists separately, and dropped a third.
+    subtopics: [
+      "Parallelogram",
+      "Tests of parallelogram",
+      "Rhombus",
+      "Rectangles",
+      "Square",
+      "Trapezium",
+      "Mid point theorem",
     ],
   },
 
@@ -596,25 +821,77 @@ export const CHAPTERS: Record<string, Chapter> = {
   //
   //    ⚠ THE KEY IS THE SPARSEST IN THE VOLUME, and that is structural rather
   //    than an omission: most of this chapter is THEOREMS and CONSTRUCTIONS, and
-  //    the book keys neither. Transcribed in full:
-  //      PS 6.1  1. 20 cm · 2. 5 cm · 3. 32 units · 4. 9 units
-  //      PS 6.2  1. 12 cm · 2. 24 cm
-  //      PS 6.3  (NOTHING - it is entirely "construct the incircle and
-  //              circumcircle of ...", whose answer is the drawing)
-  //      Prob 6  1. (i) A (ii) C (iii) A (iv) B (v) D (vi) C (vii) **D or B**
-  //              2. 2:1 · 4. 24 units
-  //    ⚠ NOTE Problem set 6 Q1(vii): the printed key itself reads "D or B" - the
-  //      BOOK acknowledges two acceptable options. Do not "resolve" that to a
-  //      single letter; blind-re-derive it and, if both genuinely fit, preserve
-  //      the ambiguity with an errata bracket rather than picking one.
   //
   //    ⚠ Vision-only (Part-2 operator-glyph substitution) and heavily
   //    figure-bearing, like Ch.2 - the chord/arc exercises reference numbered
   //    figures carrying the given lengths.
   //
-  //    🚧 NOT COMMITTED YET. Exercise pages are 0-based 88 (PS 6.1), 91 (PS 6.2)
-  //    and 95-96 (PS 6.3 + Problem set 6); solved examples sit on 87, 88 and 90.
-  //    Established so far:
+  //    ⚠ BLOCK INVENTORY, verified page by page off the renders 2026-08-22.
+  //    THREE BANDS, ~29 rows:
+  //      b1  87-88   `Ex (1)` on 87 and `Ex (2)` on 88, BOTH before the Practice
+  //                  set 6.1 banner (checked - the banner is below Ex (2) on 88),
+  //                  so both are `6.1 SolvedEx.n` · Practice set 6.1 = 6 q, all on
+  //                  88 (Q1-Q4 numeric, Q5 reads Fig 6.9, Q6 a proof). The
+  //                  `Activity I` box below Q6 is skipped by standing convention.
+  //      b2  90-91   one solved example on 90 -> `6.2 SolvedEx.1` · Practice set
+  //                  6.2 = 3 q on 91. NOTE the key answers only TWO of the three,
+  //                  so expect exactly one NO-KEY-ENTRY - that is the book being
+  //                  terse about a proof, not a gap in our work.
+  //      b4  92-93   TWO worked constructions -> `6.3 SolvedEx.1` (incircle
+  //                  method, p92) and `6.3 SolvedEx.2` (circumcircle method,
+  //                  p93). ** MY FIRST INVENTORY MISSED BOTH ** and the gap is
+  //                  worth understanding: I scanned for `Solution :` markers, and
+  //                  NEITHER of these prints one - the numbered steps (1)-(5) ARE
+  //                  the solution. The inventory then listed 87-88, 90-91 and
+  //                  95-96 with nothing between 91 and 95, so pages 92-94 were
+  //                  owned by nobody. A sibling band reading p92 as "territory I
+  //                  do not own" is the only reason they surfaced. Scan for
+  //                  `Ex.` + `Construct` too, not just `Solution :`.
+  //      b3  95-96   Practice set 6.3 = 5 q (ALL constructions) · Problem set 6 =
+  //                  Q1 (a SEVEN-item MCQ block) + Q2..Q6. 96 ends with an "ICT
+  //                  Tools or Links" box and the end-of-chapter ornament.
+  //    p94 carries only Activity boxes and a Remember-this table -> no rows.
+  //
+  //    ⚠ THE CONSTRUCTION LOAD IS 7, NOT 5 — this entry previously recorded
+  //    Problem set 6 "Q2 onward" as unread, and reading it changed the number.
+  //    **Prob Q2 and Prob Q3 are ALSO ruler-and-compass constructions**: Q2 asks
+  //    for the incircle AND circumcircle of an equilateral triangle of side 7.5
+  //    (then the ratio of the radii - it is the one construction row that also
+  //    has a numeric answer as well as a drawing - and the p95 "Remember this !"
+  //    box states the general fact it depends on outright), and Q3 asks for both
+  //    circles of a SAS triangle. So the
+  //    solution-diagram set is PS 6.3 Q1-Q5 plus Prob Q2 and Q3.
+  //    Split by type: INCIRCLE only = PS 6.3 Q1 (ASA), Q3 (SSS); CIRCUMCIRCLE
+  //    only = Q2 (ASA), Q4 (SAS), Q5 (isosceles, DE=EF=6 and angle F=45, which
+  //    resolves uniquely to a right angle at E); BOTH = Prob Q2, Prob Q3.
+  //
+  //    ⚠ QUESTION-SIDE figures (image_url, distinct from the solution diagrams):
+  //    PS 6.1 Q5 reads Fig 6.9, and Prob Q4/Q5/Q6 read Figs 6.19/6.20/6.21. The
+  //    solved examples' own figures (6.8 etc.) sit INSIDE their printed solutions
+  //    and need no separate crop.
+  //
+  //    ⚠ PRINTED DEFECTS, all outside a question stem except the first, which is
+  //    ON a solved row and DOES get an errata bracket:
+  //      · p92's worked example prints "angle Q = 35" in its STEM while BOTH of
+  //        its own figures (Rough fig. 6.14 and Fig. 6.15) label that angle 65.
+  //        A 30-degree contradiction inside one worked example. Confirmed at
+  //        magnification twice, independently. The construction METHOD is
+  //        unaffected - its five steps never use the value - so the row ships
+  //        with the stem as printed and a bracket naming the disagreement.
+  //        p93's worked example has NO such problem: its 4.2 cm / 60 / 70 are
+  //        reproduced exactly in both of its figures.
+  //      · p95 "Remember this !" prints "coincedent" for coincident, TWICE.
+  //      · p94's Activity table spells "incenter"/"circumcenter" (American -er)
+  //        while p92/p93 and the body text use "incentre"/"circumcentre".
+  //    The last two are theory prose -> publisher report, no errata bracket.
+  //
+  //    ⚠ NOTATION: this book writes the incentre `I` and the circumcentre `C`.
+  //    p92's "Let's recall" says the point of concurrence of the perpendicular
+  //    bisectors "is denoted by the letter C", and p93's worked example uses C
+  //    in its step (3), its two figures and its theory paragraph. The solution
+  //    diagrams follow the book rather than the more common `O`.
+  //
+  //    Established earlier:
   //      · PS 6.1 (printed p79) = 6 questions - Q1-Q4 numeric chord/radius work
   //        (ALL FOUR printed answers re-derived and AGREE) + Q5 (Fig 6.9, show
   //        AP = BQ) + Q6 (prove two bisected chords are parallel). Only Q5 needs
@@ -624,20 +901,19 @@ export const CHAPTERS: Record<string, Chapter> = {
   //        and none possible - the answer is the drawing. **Whatever is decided
   //        for Ch.4's construction diagrams applies here too**; until then this
   //        set is the chapter's blocker.
-  //      · Problem set 6 Q1 (p86) = SEVEN MCQs. All 7 blind-re-derived: six match
-  //        the printed key exactly (A C A B D C) and the seventh is a defect -
-  //        see below. Q2 onward are on 0-based 96 and NOT yet read.
+  //      · Problem set 6 Q1 (p86) = SEVEN MCQs, all blind-re-derived in an
+  //        earlier session; the outcome is recorded below the fence, because it
+  //        quotes the letters. Q2-Q6 were "NOT yet read" when that note was
+  //        written and HAVE now been read - see the block inventory above.
   //
-  //    ⚠ A BOOK ANSWER-KEY DEFECT, and it is the interesting kind - the key is
-  //      too GENEROUS rather than wrong. Problem set 6 Q1(vii) asks for the
-  //      distance between two parallel chords of lengths 6 cm and 8 cm in a
-  //      circle of radius 5 cm that are **on opposite sides of the centre**, and
-  //      the printed key reads "D or B". The two chords are at distances
-  //      sqrt(25-9) = 4 and sqrt(25-16) = 3 from the centre. On OPPOSITE sides
-  //      the distance is 4 + 3 = 7 cm (option D); on the SAME side it would be
-  //      4 - 3 = 1 cm (option B). The stem says opposite sides, so **D is the
-  //      only correct answer** and B answers a question the stem excludes. Key D
-  //      and carry an errata bracket rather than reproducing the hedge.
+  //    the book keys neither. Transcribed in full:
+  //
+  //    THE BOOK'S PRINTED ANSWER KEY FOR THIS CHAPTER IS **NOT IN THIS FILE**.
+  //    It lives in `scripts/mh-sb-9/data/circle-9.key.md`, deliberately out of reach
+  //    of anyone reading this entry. A fence drawn inside the file every agent is
+  //    told to open is not a boundary - it was read past three times on 2026-08-22.
+  //    Do not inline it here again.
+
   "circle-9": {
     id: "circle-9",
     chapterName: "Circle",
@@ -648,12 +924,163 @@ export const CHAPTERS: Record<string, Chapter> = {
     answersPdf: PART2,
     answerPages: range(135, 136),
     note: "Maharashtra State Board (Class 9) — Circle (Balbharati textbook, Part 2 Geometry)",
-    // 🚧 PROVISIONAL — replace with the chapter's own "Let's study" list once the
-    // opener page (0-based 85) is read.
+    // The chapter's own "Let's study" list (printed p76 / 0-based 85), verbatim.
+    // The earlier PROVISIONAL list was wrong in three ways and is recorded here
+    // as a caution against guessing a subtopic list before reading the opener:
+    // it invented "Arcs of a Circle" (the book has no such heading), MERGED
+    // incircle and circumcircle which the book lists as two separate bullets,
+    // and dropped "Circle" itself. Note the book's singular "Property".
     subtopics: [
-      "Properties of Chord",
-      "Arcs of a Circle",
-      "Incircle and Circumcircle",
+      "Circle",
+      "Property of chord of the circle",
+      "Incircle",
+      "Circumcircle",
+    ],
+  },
+
+  // ── Ch.8 Trigonometry (Part 2, Geometry). Pages 100-113 (1-based) → 0-based
+  //    109-122. Opener VERIFIED: 0-based 109 carries the "8 Trigonometry" banner
+  //    and 123 opens "9 Surface Area and Volume".
+  //    Structure: introduction + Pythagoras/similarity recall (109-110) · the
+  //    trigonometric ratios (111-112) · Practice set 8.1 (113) · relations among
+  //    the ratios and ratios of particular angles (114-118) · a single printed
+  //    "Solved Examples :" block of FOUR worked examples (119) · Practice set 8.2
+  //    (121) · Problem set 8 (122).
+  //    Answers: 0-based 136-137.
+  //
+  //    ⚠ BLOCK INVENTORY, verified page by page off the renders. THREE BANDS:
+  //      b1  113        Practice set 8.1 = 4 questions, ENTIRELY on 113. Q1 (Fig.
+  //                     8.12) · Q2 (Fig. 8.13) · Q3 (Fig. 8.14) · Q4 (Fig. 8.15,
+  //                     two sub-items of three ratios each). Nothing spills.
+  //      b2  119-120    "Solved Examples :" = Ex.(1) .. Ex.4. ** Ex. 4's SOLUTION
+  //                     IS TRUNCATED at the foot of 119 and completes at the TOP
+  //                     of 120 ** - see the seam warning below.
+  //      b3  121-122    Practice set 8.2 = 4 questions, entirely on 121 (Q1 is a
+  //                     NINE-COLUMN table) · Problem set 8 = 5 questions, entirely
+  //                     on 122 (Q1 is a four-item MCQ block, Q5 is three
+  //                     fill-in-the-blanks). 122 ends with the end-of-chapter
+  //                     ornament, so the chapter is closed.
+  //    Pages 109-112 and 114-118 are theory and carry NO exercise block. The
+  //    "Ex." markers on 111 and 112 are FILL-IN-THE-BLANK activity boxes ("side
+  //    opposite to angle P = ....."), not worked examples - they print no
+  //    Solution and are skipped like every other Activity in this book. The
+  //    "Use your brain power!" box on 120 is skipped on the same rule.
+  //
+  //    ⚠ THE 119/120 SEAM IS THE ONE THAT BITES, and it is the truncation class
+  //    rather than the duplicate class - which matters, because a duplicate ref
+  //    makes merge.ts throw while a truncated solution passes EVERY gate and
+  //    simply stops before reaching its answer. Cut bands at BLOCK boundaries,
+  //    never page ranges, and have each band report on territory it does not own.
+  //
+  //    ⚠ ONE SECTION IS MISSING FROM THE "Let's study" LIST: 120 opens a heading
+  //    "Important Equation in Trigonometry" (the derivation of sin^2 + cos^2 = 1)
+  //    that the box on 109 does not mention. It carries no questions of its own;
+  //    its exercise work lands in Practice set 8.2, so it is folded into the
+  //    "Relations among Trigonometric Ratios" subtopic rather than given one.
+  //
+  //    ⚠ THE KEY IS COMPLETE - all three exercise blocks are keyed, so the step-6
+  //    cross-check runs on every exercise row. That is why this chapter was taken
+  //    ahead of the other four remaining Part-2 chapters: Ch.4 is keyed NOWHERE
+  //    (the ANSWERS section jumps 3 → 5), Ch.5 is missing PS 5.2 and Ch.6 is
+  //    missing PS 6.3. Transcribed key, for the cross-check to diff against:
+  //
+  //    THE BOOK'S PRINTED ANSWER KEY FOR THIS CHAPTER IS **NOT IN THIS FILE**.
+  //    It lives in `scripts/mh-sb-9/data/trigonometry-9.key.md`, deliberately out of reach
+  //    of anyone reading this entry. A fence drawn inside the file every agent is
+  //    told to open is not a boundary - it was read past three times on 2026-08-22.
+  //    Do not inline it here again.
+  //
+  //    ⚠ VISION-ONLY, and that is MEASURED rather than assumed. On top of the
+  //    Part-2 operator substitution (`D ABC` for the triangle, `\` for therefore,
+  //    a replacement char for every angle and degree sign), the text layer
+  //    FLATTENS EXPONENTS - the opener's Pythagoras statement extracts as
+  //    "(AB)2 + (BC)2 = (AC)2", a different equation - and scrambles the key's
+  //    stacked fractions and surds beyond recovery (PS 8.2 Q2(iv) comes out as
+  //    "2 3 3 1 +"). Never reach for dump-text.ts here.
+  //
+  //    ⚠ PRACTICE SET 8.1 IS UNANSWERABLE WITHOUT ITS FIGURES. All four of its
+  //    questions ask for ratios read off numbered figures (Fig. 8.12-8.15) and
+  //    the stems name no side lengths at all. Problem set 8 carries three more
+  //    figure references. Crop BEFORE authoring, not after.
+  //
+  //    ⚠ STEP-6 RESULT: 33 exercise rows diffed, 33 AGREE, 0 OUR-ANSWER-WRONG,
+  //    0 BOOK-KEY-WRONG, 0 NO-KEY-ENTRY. ZERO book answer-key errors - the
+  //    cleanest key in the volume. Coverage is 33 of 37, NOT 37: the four solved
+  //    examples are outside this gate BY CONSTRUCTION (the ANSWERS section is
+  //    organised under "Practice set"/"Problem set" headings only, and a worked
+  //    example's answer is printed inside its own solution, so there is nothing
+  //    external to diff). Say "0 wrong across 33"; "across 37" would be a
+  //    different and unearned claim.
+  //    Every one of the 33 has a key entry, which is unusual for this volume's
+  //    terse 5-page Part-2 key and has a cause: Ch.8 contains NO proof questions,
+  //    and proofs are what that key skips.
+  //    Verified by THIRD independent derivation from the stems (sympy over 45
+  //    numeric quantities), testing BOTH our answer and the book's against it -
+  //    never by comparing the two to each other, which lets a shared error hide.
+  //
+  //    ⚠ TWO EQUIVALENT-FORM CASES that would each read as a false disagreement:
+  //      · Ex 8.2 Q2(iv) - the book prints 2*sqrt3/(sqrt3+1) UNRATIONALISED where
+  //        we print 3 - sqrt3. Same number (1.2679491924...).
+  //      · Ex 8.1 Q4(i) - the book writes RQ/PR and PQ/RQ where we write QR/PR
+  //        and PQ/QR. RQ and QR NAME THE SAME SEGMENT, vertices reversed.
+  //    Everywhere else the surd forms coincide exactly (both leave 1/sqrt2,
+  //    sqrt2/sqrt3, 1/sqrt3 and 2*sqrt2/3 unrationalised), so the 18-cell table
+  //    needed no equivalence work at all.
+  //
+  //    ⚠ TWO KEY ENTRIES LOOK LIKE TYPOS AND ARE CORRECT - do not "fix" them.
+  //    Which two, and why, is recorded in data/trigonometry-9.key.md rather than
+  //    here: naming them means quoting the key, and this file is the one every
+  //    transcription agent is told to open.
+  //
+  //    ⚠ FOUR PRINTED DEFECTS, ALL IN THEORY rather than in a question, so they
+  //    belong in the publisher report and get no errata bracket:
+  //      · 113 "Remember this !" prints  tan(theta) = opposite side of angle
+  //        theta / OPPOSITE side of angle theta. The denominator must be the
+  //        ADJACENT side. This is a WRONG FORMULA in the box students memorise
+  //        from, not a spelling slip - the most serious of the four.
+  //      · 113 the same box prints "adjcent side" for adjacent.
+  //      · 109 the "Let's study" box prints "Trigonometic Ratios" (missing r).
+  //      · 114 and 119 both print "complimentary" for complementary.
+  //    The subtopic below is spelled CORRECTLY - a subtopic is a navigation
+  //    label, not an answer, so nothing factual turns on it (the Physics-spine
+  //    TITLE_FIXES precedent). The book also numbers its own worked examples
+  //    inconsistently: "Ex. (1)", "Ex. (2)", then "Ex. 3" and "Ex. 4" bare.
+  //
+  //    ⚠ SOLVED-EXAMPLE REFS ARE `8.2 SolvedEx.1` .. `8.2 SolvedEx.4`, per the
+  //    standing TRANSCRIPTION_BRIEF convention. Worth stating why, because the
+  //    `8.2` LOOKS like a printed section number and this volume has none: it is
+  //    the PRACTICE SET that closes the theory band the examples sit in, not a
+  //    section heading. Practice sets ARE numbered, so the ref is well-founded,
+  //    and it is what puts the solved block immediately before Practice set 8.2
+  //    on /board. Do not "fix" it to a flat SolvedEx.N.
+  "trigonometry-9": {
+    id: "trigonometry-9",
+    chapterName: "Trigonometry",
+    subjectName: "Mathematics",
+    sourceFile: "StateBoard_09_Maths__Trigonometry.pdf",
+    pdf: PART2,
+    pages: range(109, 122),
+    answersPdf: PART2,
+    // BOTH pages are load-bearing and 136 alone is a silent truncation: the Ch.8
+    // key block spans the break, and p-137 opens with a bare "2." and NO repeated
+    // "Practice set 8.2" heading. Reading only 136 yields Practice set 8.1 plus
+    // Q1 of 8.2 and drops Ex 8.2 Q2(i)-(vi), Q3, Q4 and ALL of Problem set 8 -
+    // 16 of the 33 keyed rows - with nothing on the page to signal the loss.
+    // This is why answerPages is read at a chapter's LAST answer, not its first.
+    answerPages: range(136, 137),
+    note: "Maharashtra State Board (Class 9) — Trigonometry (Balbharati textbook, Part 2 Geometry)",
+    // The chapter's own "Let's study" list (printed p100), with the book's
+    // "Trigonometic" corrected to "Trigonometric" per the note above, and with
+    // "Introduction of Trigonometry" DROPPED. That is a measured call, not a
+    // judgement: after transcription all 37 rows tallied 17 Trigonometric Ratios
+    // / 11 Relations / 9 Particular Angles and ZERO for the introduction, which
+    // is question-less prose (the Pythagoras + similar-triangles recall and the
+    // shadow-stick Activity). Shipping it would put a /browse filter on the page
+    // that returns nothing - the Class-12 Linear Programming precedent.
+    subtopics: [
+      "Trigonometric Ratios",
+      "Relations among Trigonometric Ratios",
+      "Trigonometric Ratios of Particular Angles",
     ],
   },
 
@@ -692,8 +1119,9 @@ export const CHAPTERS: Record<string, Chapter> = {
   //    ⚠ Vision-only (Part-2 operator-glyph substitution). Solved examples sit on
   //    0-based 127, 128 and 131, plus a worked Activity on 130.
   //
-  //    🚧 NOT COMMITTED YET - pages rendered under out/surface-area-volume-9/ and
-  //    the answers under out/_answers/surface-area-volume-9/. Established:
+  //    ✅ SHIPPED 2026-08-15 — 34 q PUBLIC, live-verified. Everything below is the
+  //    PRE-INGEST inventory, kept as the source of record. It is HISTORY, not
+  //    outstanding work. Established at that time:
   //      · PS 9.1 (printed p115) = 8 questions, NO figures (all text), and ALL
   //        EIGHT printed answers were re-derived and AGREE.
   //      · PS 9.2 (pp119-120) = 10 questions; Q1-Q9 read, Q10 overleaf on p120
@@ -866,9 +1294,10 @@ export const CHAPTERS: Record<string, Chapter> = {
   //    them is answerable from the stem alone. VECTOR art → snapCrop, and every
   //    crop must clear the montage verify-gate before flip.
   //
-  //    🚧 NOT COMMITTED YET — pages rendered under out/parallel-lines-9/ and the
-  //    answer page under out/_answers/parallel-lines-9/. EXERCISE INVENTORY IS
-  //    COMPLETE, read page by page: 31 exercise ROWS.
+  //    ✅ SHIPPED 2026-08-15 — 31 q PUBLIC, live-verified, matching the inventory
+  //    below exactly. Everything below is the PRE-INGEST inventory, kept as the
+  //    source of record. It is HISTORY, not outstanding work. EXERCISE INVENTORY,
+  //    read page by page: 31 exercise ROWS.
   //      Practice set 2.1 (printed pp17-18) = 5 q / 11 rows — Q1 (Fig 2.5, four
   //        sub-items) · Q2 (Fig 2.6, find a,b,c,d) · Q3 (Fig 2.7, find a,b,c) ·
   //        Q4* (Fig 2.8, a PROOF) · Q5 (Fig 2.9, four sub-items).

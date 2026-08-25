@@ -1,0 +1,26 @@
+[
+  {
+    "id": "a50c26f7-3194-4d66-9079-1b134927f1d4",
+    "ref": "Prob Q1(i)",
+    "derived_answer": "D",
+    "why": "Triangle inequality bounds the third side to 3.5 cm < x < 6.5 cm; 3.4 cm is the only listed length outside that range.",
+    "solution": "By the triangle inequality the third side must be less than the sum of the other two and greater than their difference. Sum \\(= 5 + 1.5 = 6.5\\) cm and difference \\(= 5 - 1.5 = 3.5\\) cm, so the third side \\(x\\) must satisfy \\(3.5 < x < 6.5\\) (in cm). The lengths 3.7 cm, 3.8 cm and 4.1 cm all lie inside this range and so are possible. Since \\(3.4 < 3.5\\), a side of that length would give \\(3.4 + 1.5 = 4.9 < 5\\), so no triangle can be formed. Hence the third side cannot be 3.4 cm.",
+    "matches_current": true
+  },
+  {
+    "id": "0d13ccd8-8906-4218-868e-c8509fa798ea",
+    "ref": "Prob Q1(ii)",
+    "derived_answer": "B",
+    "why": "In a triangle the greater angle has the greater side opposite it; the side opposite \\(\\angle R\\) is PQ and the side opposite \\(\\angle Q\\) is PR, so \\(\\angle R > \\angle Q\\) gives \\(PQ > PR\\).",
+    "solution": "In a triangle, the side opposite the greater angle is the greater side. In \\(\\triangle PQR\\) the side opposite \\(\\angle R\\) is \\(PQ\\), and the side opposite \\(\\angle Q\\) is \\(PR\\). Given \\(\\angle R > \\angle Q\\), the side opposite \\(\\angle R\\) must exceed the side opposite \\(\\angle Q\\). The side \\(QR\\) lies opposite \\(\\angle P\\), about which the question says nothing, so no comparison involving \\(QR\\) can be made. Hence \\(PQ > PR\\).",
+    "matches_current": true
+  },
+  {
+    "id": "11a05000-c99c-44b2-abeb-a70235b98a39",
+    "ref": "Prob Q1(iii)",
+    "derived_answer": "B",
+    "why": "\\(\\angle Q = 180^\\circ - 65^\\circ - 95^\\circ = 20^\\circ\\), so \\(\\angle Q < \\angle T < \\angle P\\) and the opposite sides give \\(TP < PQ < TQ\\); of the four statements only \\(PQ < TQ\\) holds.",
+    "solution": "The angles of a triangle add to \\(180^\\circ\\), so \\(\\angle Q = 180^\\circ - 65^\\circ - 95^\\circ = 20^\\circ\\). Ordering the angles gives \\(\\angle Q < \\angle T < \\angle P\\), that is \\(20^\\circ < 65^\\circ < 95^\\circ\\). Since the greater angle has the greater side opposite it, and \\(TP\\) lies opposite \\(\\angle Q\\), \\(PQ\\) lies opposite \\(\\angle T\\) and \\(TQ\\) lies opposite \\(\\angle P\\), the sides are in the order \\(TP < PQ < TQ\\). This makes the statements \\(PQ < TP\\), \\(TQ < TP < PQ\\) and \\(PQ < TP < TQ\\) all false, because each of them asserts \\(PQ < TP\\). The one true statement is \\(PQ < TQ\\).",
+    "matches_current": true
+  }
+]

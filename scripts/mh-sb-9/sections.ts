@@ -130,6 +130,125 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
   //    Solved block DEFERRED like Ch.7's: Ex./Solution blocks sit on 0-based 127,
   //    128 and 131 and only one is transcribed, so three exercise blocks ship and
   //    the solved block goes in when the rest are read — see config.ts.
+  // ── Ch.4 Constructions of Triangles (Part 2, Geometry) — verified against
+  //    9th_Maths_Part2_SB.pdf (printed pp.51-56), block by block off the
+  //    renders. SEVEN blocks: the chapter alternates a numbered "Construction"
+  //    walkthrough with the practice set that drills it, three times, then the
+  //    problem set. Physical reading order:
+  //      opener + perpendicular-bisector recall (theory, printed p51)
+  //      Construction I  worked Ex (p52)   -> Practice set 4.1 (p53)
+  //      Construction II worked Ex (1) (p53) and Ex. 2 (p54) -> Practice set 4.2 (p54)
+  //      Construction III worked Ex (pp55-56) -> Practice set 4.3 (p56)
+  //      Problem set 4 (p56)
+  //    ⚠ Construction II carries TWO worked examples, not one, and they are on
+  //    DIFFERENT PAGES: Ex (1) closes p53 above the Practice set 4.1 banner's
+  //    successor and Ex. 2 opens p54. A band cut at the page boundary drops one.
+  //    ⚠ EVERY answer in this chapter is a DRAWING and the book keys none of
+  //    them — the Part-2 answers section runs 1, 2, 3, 5, 6, 7, 8, 9 and skips 4
+  //    — so all 18 rows ship with an authored `solution_image_url`, the same
+  //    call made for Ch.6's constructions and for Linear Programming's feasible
+  //    regions. The ICT Tools box at the foot of p56 is not a question.
+  "constructions-9": [
+    { group: "Construction I", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.1 SolvedEx"] },
+    { group: "Practice Set 4.1", label: "Practice Set 4.1", kind: "exercise", refPrefixes: ["Ex 4.1 "] },
+    { group: "Construction II", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.2 SolvedEx"] },
+    { group: "Practice Set 4.2", label: "Practice Set 4.2", kind: "exercise", refPrefixes: ["Ex 4.2 "] },
+    { group: "Construction III", label: "Solved Examples", kind: "solved_example", refPrefixes: ["4.3 SolvedEx"] },
+    { group: "Practice Set 4.3", label: "Practice Set 4.3", kind: "exercise", refPrefixes: ["Ex 4.3 "] },
+    { group: "Problem Set 4", label: "Problem Set 4", kind: "miscellaneous", refPrefixes: ["Prob "] },
+  ],
+
+  // ── Ch.3 Triangles (Part 2, Geometry) — 27pp, the largest Part-2 chapter.
+  //    Physical reading order: the congruence/inequality theory with its four
+  //    worked examples → Practice sets 3.1-3.4 → the theory closing on one more
+  //    worked example → Practice set 3.5 → Problem set 3.
+  //    Only TWO solved runs (before 3.1 and before 3.5); 3.2-3.4 are drilled
+  //    straight off the theorems with no worked example between them, which is
+  //    why there is no `3.2/3.3/3.4 SolvedEx` block.
+  //    Blocks reconcile 4+10+10+4+8+1+3+10 = 50.
+  "triangles-9": [
+    { group: "Congruence of Triangles", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.1 SolvedEx"] },
+    { group: "Practice Set 3.1", label: "Practice Set 3.1", kind: "exercise", refPrefixes: ["Ex 3.1 "] },
+    { group: "Practice Set 3.2", label: "Practice Set 3.2", kind: "exercise", refPrefixes: ["Ex 3.2 "] },
+    { group: "Practice Set 3.3", label: "Practice Set 3.3", kind: "exercise", refPrefixes: ["Ex 3.3 "] },
+    { group: "Practice Set 3.4", label: "Practice Set 3.4", kind: "exercise", refPrefixes: ["Ex 3.4 "] },
+    { group: "Similar Triangles and Proportionality", label: "Solved Examples", kind: "solved_example", refPrefixes: ["3.5 SolvedEx"] },
+    { group: "Practice Set 3.5", label: "Practice Set 3.5", kind: "exercise", refPrefixes: ["Ex 3.5 "] },
+    { group: "Problem Set 3", label: "Problem Set 3", kind: "miscellaneous", refPrefixes: ["Prob "] },
+  ],
+
+  // ── Ch.5 Quadrilaterals (Part 2, Geometry) — 19pp. Physical reading order
+  //    interleaves FOUR solved runs with the five practice sets; only Practice
+  //    set 5.3 has no worked example ahead of it.
+  //    ⚠ Practice set 5.2 has NO entry in the book's ANSWERS section — the key
+  //    goes 5.1, 5.3, 5.4, 5.5. Those rows are legitimately NO-KEY-ENTRY at the
+  //    step-6 gate, not a gap in our work.
+  //    Blocks reconcile 2+7+3+5+10+2+3+2+4+11 = 49.
+  "quadrilaterals-9": [
+    { group: "Properties of a Parallelogram", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.1 SolvedEx"] },
+    { group: "Practice Set 5.1", label: "Practice Set 5.1", kind: "exercise", refPrefixes: ["Ex 5.1 "] },
+    { group: "Tests for a Parallelogram", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.2 SolvedEx"] },
+    { group: "Practice Set 5.2", label: "Practice Set 5.2", kind: "exercise", refPrefixes: ["Ex 5.2 "] },
+    { group: "Practice Set 5.3", label: "Practice Set 5.3", kind: "exercise", refPrefixes: ["Ex 5.3 "] },
+    { group: "Rhombus, Rectangle and Square", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.4 SolvedEx"] },
+    { group: "Practice Set 5.4", label: "Practice Set 5.4", kind: "exercise", refPrefixes: ["Ex 5.4 "] },
+    { group: "Trapezium and the Midpoint Theorem", label: "Solved Examples", kind: "solved_example", refPrefixes: ["5.5 SolvedEx"] },
+    { group: "Practice Set 5.5", label: "Practice Set 5.5", kind: "exercise", refPrefixes: ["Ex 5.5 "] },
+    { group: "Problem Set 5", label: "Problem Set 5", kind: "miscellaneous", refPrefixes: ["Prob "] },
+  ],
+
+  // ── Ch.6 Circle (Part 2, Geometry) — verified against 9th_Maths_Part2_SB.pdf
+  //    (printed pp.76-87), block by block off the renders. SEVEN blocks, because
+  //    this chapter interleaves THREE separate solved-example runs with its three
+  //    practice sets rather than front-loading them:
+  //      chord properties + 2 worked examples -> Practice set 6.1
+  //      congruent chords + 1 worked example  -> Practice set 6.2
+  //      the two CONSTRUCTION walkthroughs    -> Practice set 6.3
+  //      Problem set 6
+  //    ⚠ The `6.3 SolvedEx` pair (the incircle and circumcircle METHODS, printed
+  //    pp.83-84) print no "Solution :" label — their numbered steps ARE the
+  //    solution — which is why a marker-based scan missed them entirely and they
+  //    were nearly left out of the chapter. They are ordinary solved examples and
+  //    belong immediately before the practice set that drills them.
+  //    ⚠ Practice set 6.3's five questions and Problem set 6's Q2/Q3 are
+  //    ruler-and-compass constructions the book does NOT key, because the answer
+  //    is a drawing. They ship with authored `solution_image_url` diagrams — the
+  //    same call made for Linear Programming's feasible regions.
+  "circle-9": [
+    { group: "Properties of a Chord", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.1 SolvedEx"] },
+    { group: "Practice Set 6.1", label: "Practice Set 6.1", kind: "exercise", refPrefixes: ["Ex 6.1 "] },
+    { group: "Congruent Chords", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.2 SolvedEx"] },
+    { group: "Practice Set 6.2", label: "Practice Set 6.2", kind: "exercise", refPrefixes: ["Ex 6.2 "] },
+    { group: "Incircle and Circumcircle", label: "Solved Examples", kind: "solved_example", refPrefixes: ["6.3 SolvedEx"] },
+    { group: "Practice Set 6.3", label: "Practice Set 6.3", kind: "exercise", refPrefixes: ["Ex 6.3 "] },
+    { group: "Problem Set 6", label: "Problem Set 6", kind: "miscellaneous", refPrefixes: ["Prob "] },
+  ],
+
+  // ── Ch.8 Trigonometry (Part 2, Geometry) — verified against
+  //    9th_Maths_Part2_SB.pdf (printed pp.100-113), block by block off the
+  //    renders. Physical reading order: introduction and Pythagoras/similarity
+  //    recall → the trigonometric ratios → Practice set 8.1 → relations among the
+  //    ratios and ratios of particular angles → the printed "Solved Examples :"
+  //    block → Practice set 8.2 → Problem set 8.
+  //    FOUR BLOCKS, and note the solved block sits BETWEEN the two practice sets
+  //    rather than before the first: SEVEN pages of theory separate Practice set
+  //    8.1 (printed p104) from Practice set 8.2 (p112), and the four worked
+  //    examples land in that gap on pp110-111. Its refs are "8.2 SolvedEx" — the
+  //    practice set that CLOSES its theory band, per TRANSCRIPTION_BRIEF, which
+  //    is exactly what places it here rather than at the top of the chapter.
+  //    ⚠ The fourth worked example is TRUNCATED across the printed page break
+  //    (stem and part of the solution on p110, the rest on p111), so its row is
+  //    stitched from two pages. A solution that stopped at the page foot would
+  //    still look complete and pass every gate — see config.ts.
+  //    Problem set 8 is ONE book block (Q.1 = a four-item "choose the correct
+  //    alternative" MCQ, Q.2-Q.5 free-response) → a single miscellaneous block.
+  "trigonometry-9": [
+    { group: "Practice Set 8.1", label: "Practice Set 8.1", kind: "exercise", refPrefixes: ["Ex 8.1 "] },
+    { group: "Ratios of Particular Angles", label: "Solved Examples", kind: "solved_example", refPrefixes: ["8.2 SolvedEx"] },
+    { group: "Practice Set 8.2", label: "Practice Set 8.2", kind: "exercise", refPrefixes: ["Ex 8.2 "] },
+    { group: "Problem Set 8", label: "Problem Set 8", kind: "miscellaneous", refPrefixes: ["Prob "] },
+  ],
+
   "surface-area-volume-9": [
     { group: "Practice Set 9.1", label: "Practice Set 9.1", kind: "exercise", refPrefixes: ["Ex 9.1 "] },
     { group: "Practice Set 9.2", label: "Practice Set 9.2", kind: "exercise", refPrefixes: ["Ex 9.2 "] },

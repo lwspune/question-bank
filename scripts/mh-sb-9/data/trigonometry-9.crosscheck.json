@@ -1,0 +1,214 @@
+[
+  {
+    "ref": "Ex 8.1 Q1(i)",
+    "verdict": "AGREE",
+    "book": "QR/PQ",
+    "ours": "sin P = QR/PQ"
+  },
+  {
+    "ref": "Ex 8.1 Q1(ii)",
+    "verdict": "AGREE",
+    "book": "QR/PQ",
+    "ours": "cos Q = QR/PQ",
+    "note": "Same ratio as Q1(i) in both sources, which is correct: with the right angle at R, angles P and Q are complementary and QR is opposite P while adjacent to Q, so sin P and cos Q are the same quotient."
+  },
+  {
+    "ref": "Ex 8.1 Q1(iii)",
+    "verdict": "AGREE",
+    "book": "QR/PR",
+    "ours": "tan P = QR/PR"
+  },
+  {
+    "ref": "Ex 8.1 Q1(iv)",
+    "verdict": "AGREE",
+    "book": "PR/QR",
+    "ours": "tan Q = PR/QR"
+  },
+  {
+    "ref": "Ex 8.1 Q2(i)",
+    "verdict": "AGREE",
+    "book": "a/c",
+    "ours": "sin X = YZ/XZ = a/c"
+  },
+  {
+    "ref": "Ex 8.1 Q2(ii)",
+    "verdict": "AGREE",
+    "book": "b/a",
+    "ours": "tan Z = XY/YZ = b/a"
+  },
+  {
+    "ref": "Ex 8.1 Q2(iii)",
+    "verdict": "AGREE",
+    "book": "b/c",
+    "ours": "cos X = XY/XZ = b/c"
+  },
+  {
+    "ref": "Ex 8.1 Q2(iv)",
+    "verdict": "AGREE",
+    "book": "a/b",
+    "ours": "tan X = YZ/XY = a/b"
+  },
+  {
+    "ref": "Ex 8.1 Q3(i)",
+    "verdict": "AGREE",
+    "book": "MN/LN",
+    "ours": "sin 50 = MN/LN"
+  },
+  {
+    "ref": "Ex 8.1 Q3(ii)",
+    "verdict": "AGREE",
+    "book": "LM/LN",
+    "ours": "cos 50 = LM/LN"
+  },
+  {
+    "ref": "Ex 8.1 Q3(iii)",
+    "verdict": "AGREE",
+    "book": "LM/MN",
+    "ours": "tan 40 = LM/MN"
+  },
+  {
+    "ref": "Ex 8.1 Q3(iv)",
+    "verdict": "AGREE",
+    "book": "MN/LN",
+    "ours": "cos 40 = MN/LN",
+    "note": "Same ratio as Q3(i) in both sources, correctly: 50 and 40 are complementary, so sin 50 and cos 40 read the same quotient off the same triangle."
+  },
+  {
+    "ref": "Ex 8.1 Q4(i)",
+    "verdict": "AGREE",
+    "book": "PQ/PR, RQ/PR, PQ/RQ",
+    "ours": "sin a = PQ/PR, cos a = QR/PR, tan a = PQ/QR",
+    "note": "Equivalence needed: the book writes the leg as RQ where we write QR. RQ and QR name the same segment of the same triangle (reversed vertex order), so cos a = RQ/PR is our QR/PR and tan a = PQ/RQ is our PQ/QR. Rule 2 (a ratio written in equivalent side labels is AGREE)."
+  },
+  {
+    "ref": "Ex 8.1 Q4(ii)",
+    "verdict": "AGREE",
+    "book": "QS/PS, PQ/PS, QS/PQ",
+    "ours": "sin t = QS/PS, cos t = PQ/PS, tan t = QS/PQ"
+  },
+  {
+    "ref": "Ex 8.2 Q1",
+    "verdict": "AGREE",
+    "book": "sin: 12/37, 1/sqrt2, sqrt2/sqrt3, 21/29, 8/17, 1/3 ; cos: 60/61, 1/sqrt2, sqrt3/2, 20/29, 15/17, 4/5, 2sqrt2/3 ; tan: 12/35, 11/60, 1/sqrt3, sqrt2, 3/4",
+    "ours": "same 18 filled cells, column for column",
+    "note": "The book prints only the FILLED-IN cells, as three positional lists rather than a rebuilt table, so the column alignment is an inference - but a fully constrained one: each column carries exactly one given ratio, so which cells are blank is determined, and the blank counts match the printed list lengths exactly (sin 6, cos 7, tan 5 = 18). Every cell was re-derived from that column's given ratio alone (Pythagoras / sin^2+cos^2=1) and both our value and the book's were tested against that third derivation - 18/18 agree, in identical surd form (the book leaves 1/sqrt2, sqrt2/sqrt3, 1/sqrt3 and 2sqrt2/3 unrationalised, as do we), so no equivalence testing was even needed here. The 9 given cells were also confirmed to round-trip out of the derivation."
+  },
+  {
+    "ref": "Ex 8.2 Q2(i)",
+    "verdict": "AGREE",
+    "book": "11/2",
+    "ours": "11/2"
+  },
+  {
+    "ref": "Ex 8.2 Q2(ii)",
+    "verdict": "AGREE",
+    "book": "93/20",
+    "ours": "93/20"
+  },
+  {
+    "ref": "Ex 8.2 Q2(iii)",
+    "verdict": "AGREE",
+    "book": "5",
+    "ours": "5"
+  },
+  {
+    "ref": "Ex 8.2 Q2(iv)",
+    "verdict": "AGREE",
+    "book": "2sqrt3/(sqrt3+1)",
+    "ours": "3 - sqrt3",
+    "note": "Equivalence tested, NOT a disagreement: the book prints the unrationalised form and we print the rationalised one. 2sqrt3/(sqrt3+1) x (sqrt3-1)/(sqrt3-1) = 2sqrt3(sqrt3-1)/2 = 3 - sqrt3; both evaluate to 1.2679491924... An independent derivation from the stem, tan60/(sin60+cos60), was tested against BOTH forms and matches both. Our stored solution already names the unrationalised form explicitly."
+  },
+  {
+    "ref": "Ex 8.2 Q2(v)",
+    "verdict": "AGREE",
+    "book": "3/4",
+    "ours": "3/4"
+  },
+  {
+    "ref": "Ex 8.2 Q2(vi)",
+    "verdict": "AGREE",
+    "book": "sqrt3/2",
+    "ours": "sqrt3/2"
+  },
+  {
+    "ref": "Ex 8.2 Q3",
+    "verdict": "AGREE",
+    "book": "3/5",
+    "ours": "cos t = 3/5"
+  },
+  {
+    "ref": "Ex 8.2 Q4",
+    "verdict": "AGREE",
+    "book": "8/17",
+    "ours": "sin t = 8/17"
+  },
+  {
+    "ref": "Prob Q1(i)",
+    "verdict": "AGREE",
+    "book": "A",
+    "ours": "A",
+    "note": "Key re-derived independently of both sources: only sin t = cos(90-t) holds for every acute t. Tested at 20, 30 and 50 degrees; options B, C and D fail at all three. Deliberately NOT tested at 45 degrees, where sin = cos and tan = cot make options A and D both read true and the discrimination is lost - which is the trap this question is built around."
+  },
+  {
+    "ref": "Prob Q1(ii)",
+    "verdict": "AGREE",
+    "book": "D",
+    "ours": "D",
+    "note": "sin 90 = 1 = option D."
+  },
+  {
+    "ref": "Prob Q1(iii)",
+    "verdict": "AGREE",
+    "book": "C",
+    "ours": "C",
+    "note": "2tan45 + cos45 - sin45 = 2 + 0 = 2 = option C."
+  },
+  {
+    "ref": "Prob Q1(iv)",
+    "verdict": "AGREE",
+    "book": "D",
+    "ours": "D",
+    "note": "cos28/sin62 = 1 = option D (28 and 62 are complementary)."
+  },
+  {
+    "ref": "Prob Q2",
+    "verdict": "AGREE",
+    "book": "sin T = 12/13, cos T = 5/13, tan T = 12/5, sin U = 5/13, cos U = 12/13, tan U = 5/12",
+    "ours": "identical, all six",
+    "note": "Third derivation from the stem: right angle at S, TS=5, SU=12, so TU = sqrt(25+144) = 13; all six ratios read off that triangle and tested against both sources."
+  },
+  {
+    "ref": "Prob Q3",
+    "verdict": "AGREE",
+    "book": "sin Y = 8/17, cos Y = 15/17, tan Y = 8/15, sin Z = 15/17, cos Z = 8/17, tan Z = 15/8",
+    "ours": "identical, all six",
+    "note": "Third derivation from the stem: right angle at X so YZ=17 is the hypotenuse, XY = sqrt(289-64) = 15; all six ratios tested against both sources."
+  },
+  {
+    "ref": "Prob Q4",
+    "verdict": "AGREE",
+    "book": "sin t = 7/25, tan t = 7/24, sin^2 t = 49/625, cos^2 t = 576/625",
+    "ours": "identical, all four"
+  },
+  {
+    "ref": "Prob Q5(i)",
+    "verdict": "AGREE",
+    "book": "70",
+    "ours": "70",
+    "note": "Verified by evaluating rather than by asserting the complement rule: sin 20 and cos 70 are the same number."
+  },
+  {
+    "ref": "Prob Q5(ii)",
+    "verdict": "AGREE",
+    "book": "60",
+    "ours": "60",
+    "note": "tan 30 x tan 60 = (1/sqrt3)(sqrt3) = 1, confirmed by evaluation."
+  },
+  {
+    "ref": "Prob Q5(iii)",
+    "verdict": "AGREE",
+    "book": "50",
+    "ours": "50",
+    "note": "cos 40 and sin 50 evaluate to the same number."
+  }
+]
