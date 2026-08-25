@@ -1,0 +1,145 @@
+[
+ {
+  "q": "1826",
+  "derived": "NONE",
+  "value": "median = sqrt(237)/2 = 7.6974...",
+  "confidence": "high",
+  "why": "The stem's first vector is printed as 8i+4k with no label; taking it as AB, the median through A is (AB+AC)/2 = (13i-2j+8k)/2, of length sqrt(237)/2 = 7.697, which equals none of sqrt(45)=6.708, sqrt(18)=4.243, sqrt(33)=5.745, sqrt(20)=4.472.",
+  "flag": "STEM_SUSPECT / NO_OPTION_MATCHES - the stem is mangled ('If the vertices 8i+4k and AC = ...' has no vector label on the first term). As printed nothing matches. Note the corrections are not unique: AB = 3i+4k gives exactly sqrt(33) (C) while AB = -3i+4k gives exactly sqrt(18) (B), and sqrt(45) (A) is exactly |AC| - a classic distractor. Because two plausible repairs land on two different options, this cannot be settled without the printed page."
+ },
+ {
+  "q": "1884",
+  "derived": "C",
+  "value": "0",
+  "confidence": "high",
+  "why": "a.b = 4lambda+4 = 0 gives lambda = -1, so a = (-1,2,2), b = (2,2,-1) and |a+b| = |(1,4,1)| = 3sqrt(2) = |a-b| = |(-3,0,3)|; more generally a perpendicular to b forces |a+b| = |a-b| identically, so the difference is 0."
+ },
+ {
+  "q": "1891",
+  "derived": "C",
+  "value": "sqrt(593) = 24.3516 (the other diagonal is 15)",
+  "confidence": "high",
+  "why": "With |a|^2=8, |b|^2=9, a.b = 2sqrt(2)*3*cos(pi/4) = 6, the diagonals are (5a+2b)+(a-3b) = 6a-b of length^2 288-72+9 = 225 (=15) and (5a+2b)-(a-3b) = 4a+5b of length^2 128+240+225 = 593, so the longer diagonal is sqrt(593)."
+ },
+ {
+  "q": "1954",
+  "derived": "B",
+  "value": "a x (b x c) = 0",
+  "confidence": "high",
+  "why": "By the BAC-CAB identity a x (b x c) = b(a.c) - c(a.b), and both scalar products vanish when a is perpendicular to b and to c, so the vector triple product is the zero vector; a.(b x c) is instead a non-zero SCALAR (a is parallel to b x c), and a x (b+c) = a x b + a x c need not vanish.",
+  "flag": "STEM_SUSPECT - the stem names the perpendicular vector 'x' while every option is written in terms of 'a'; solved by reading 'x' as 'a'. Option A is also mis-typed, equating a scalar triple product to the vector 0."
+ },
+ {
+  "q": "1969",
+  "derived": "A",
+  "value": "0",
+  "confidence": "high",
+  "why": "Put u = b+c; then (b+c) x (a+b+c) = u x (a+u) = u x a, so the expression is a.(u x a), a scalar triple product with a repeated vector, hence identically 0 (confirmed numerically on random vectors)."
+ },
+ {
+  "q": "1972",
+  "derived": "D",
+  "value": "0, 1, 0",
+  "confidence": "high",
+  "why": "The planes x = 0 (the yz-plane) and z = 0 (the xy-plane) intersect in the y-axis, whose direction cosines are 0, 1, 0."
+ },
+ {
+  "q": "1979",
+  "derived": "C",
+  "value": "-2",
+  "confidence": "high",
+  "why": "(1-tan^2 a)/(1+tan^2 a) = cos2a = 2cos^2 a - 1 and (1-tan^2 b)/sec^2 b = cos^2 b - sin^2 b = 2cos^2 b - 1, while -2sin^2 g = 2cos^2 g - 2; summing gives 2(cos^2 a + cos^2 b + cos^2 g) - 4 = 2(1) - 4 = -2 (verified numerically for four different direction ratios)."
+ },
+ {
+  "q": "1985",
+  "derived": "C",
+  "value": "l = m = n = +/- 1/sqrt(3)",
+  "confidence": "high",
+  "why": "Equal angles give cos(alpha) = cos(beta) = cos(gamma) = k, and l^2+m^2+n^2 = 1 forces 3k^2 = 1, so k = +/- 1/sqrt(3); option B fails the unit-sum condition (3 != 1) and D gives 3(1/9) = 1/3 != 1."
+ },
+ {
+  "q": "2008",
+  "derived": "C",
+  "value": "a = -5",
+  "confidence": "high",
+  "why": "Direction ratios are (2, a, 4) and (1, 2, 2); perpendicularity requires 2 + 2a + 8 = 0, so a = -5."
+ },
+ {
+  "q": "2015",
+  "derived": "C",
+  "value": "direction ratios (0, 1, 0) - a line along the y-direction through (x1, y1, z1)",
+  "confidence": "high",
+  "why": "The symmetric form has direction ratios <0,1,0>, so the line is parallel to the y-axis (it is therefore perpendicular to the xz-plane, ruling out D, and not parallel to the x-axis, ruling out B).",
+  "flag": "MULTIPLE_OPTIONS_MATCH - option A ('perpendicular to the x-axis') is also a true statement, since (0,1,0).(1,0,0) = 0 and the angle between lines in 3-D is defined by direction vectors regardless of intersection. C is the complete characterisation and is the intended answer, but A is not false."
+ },
+ {
+  "q": "2121",
+  "derived": "B",
+  "value": "-3 < x < 3",
+  "confidence": "high",
+  "why": "The radical must be real AND the denominator non-zero, so 9 - x^2 > 0 strictly, giving the open interval (-3, 3); x = +/-3 is excluded because it makes the denominator 0."
+ },
+ {
+  "q": "2151",
+  "derived": "D",
+  "value": "7P4 = 840",
+  "confidence": "high",
+  "why": "An injection from a 4-element set into a 7-element set is an ordered selection of 4 distinct images: 7*6*5*4 = 840."
+ },
+ {
+  "q": "2156",
+  "derived": "B",
+  "value": "10! = 3628800",
+  "confidence": "high",
+  "why": "A bijection from a finite set to itself is a permutation of its 10 elements, and there are 10! of them."
+ },
+ {
+  "q": "2178",
+  "derived": "D",
+  "value": "f^{-1}(-4/3) = -7/18",
+  "confidence": "high",
+  "why": "Solving (2x-3)/(3x+4) = -4/3 gives 6x - 9 = -12x - 16, so x = -7/18 (checked: f(-7/18) = -4/3 exactly); -7/18 is none of 0, 3/4 or -2/3, so 'None of these' is correct. (-4/3 is the excluded DOMAIN point of f, not the excluded range point 2/3, so the inverse image genuinely exists.)"
+ },
+ {
+  "q": "2182",
+  "derived": "B",
+  "value": "exactly one solution, x = -(2^100 + 1)/(6^100 - 1)",
+  "confidence": "high",
+  "why": "f(g(x)) = 2^100(3^100 x + 1) + 1 = 6^100 x + 2^100 + 1, so f(g(x)) = x is the linear equation (6^100 - 1)x = -(2^100 + 1) with non-zero leading coefficient, hence a unique root - a singleton set."
+ },
+ {
+  "q": "2215",
+  "derived": "A",
+  "value": "period = pi",
+  "confidence": "high",
+  "why": "sin^2 x = (1 - cos 2x)/2, and cos 2x has period pi, so sin^2 x repeats with period pi (and pi is the least such value, since sin^2 is not constant on any shorter interval)."
+ },
+ {
+  "q": "2242",
+  "derived": "A",
+  "value": "1",
+  "confidence": "high",
+  "why": "Divide numerator and denominator by 4^n: (1 + (3/4)^n)/(1 - (3/4)^n) -> (1+0)/(1-0) = 1 as n -> infinity."
+ },
+ {
+  "q": "2312",
+  "derived": "C",
+  "value": "2 log a",
+  "confidence": "high",
+  "why": "x(a^x - 1) ~ x * (x log a) = x^2 log a while 1 - cos x ~ x^2/2, so the ratio tends to 2 log a (confirmed symbolically with sympy)."
+ },
+ {
+  "q": "2347",
+  "derived": "C",
+  "value": "tan[f(x)] continuous on [0,pi]; 1/f(x) discontinuous at x = 2",
+  "confidence": "high",
+  "why": "f maps [0,pi] onto [-1, pi/2 - 1] = [-1, 0.5708], which contains no odd multiple of pi/2 (nearest are +/-1.5708), so tan(f(x)) never blows up; but f(2) = 0 and 2 lies in [0, pi], so 1/f(x) is undefined/discontinuous there."
+ },
+ {
+  "q": "2370",
+  "derived": "B",
+  "value": "6 points: x = 2^(1/3), 3^(1/3), 4^(1/3), 5^(1/3), 6^(1/3), 7^(1/3)",
+  "confidence": "high",
+  "why": "On (1,2) the map x -> x^3 - 3 is continuous and strictly increasing from -2 to 5 (both endpoints excluded), so the greatest-integer function jumps exactly where x^3 - 3 hits an integer strictly between -2 and 5, i.e. at -1,0,1,2,3,4 - six values, each giving one x in (1,2)."
+ }
+]
