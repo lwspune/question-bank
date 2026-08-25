@@ -1,0 +1,31 @@
+[
+  {
+    "id": "7d465033-6c97-4035-9388-899836cfc3de",
+    "ref": "Prob Q2",
+    "solution": "Construction: Draw seg DS \\(= 7.5\\) cm. With D and S as centres and radius \\(7.5\\) cm draw arcs cutting each other at P; join seg DP and seg SP. \\(\\Delta\\)DSP is the required equilateral triangle. Draw the bisectors of \\(\\angle\\)D and \\(\\angle\\)S and let them meet at O. In an equilateral triangle the angle bisectors and the perpendicular bisectors of the sides are coincident, so this one point O is both the incentre and the circumcentre. Draw seg OM \\(\\perp\\) DS, M on DS; the circle with centre O and radius OM is the incircle (it touches all three sides). The circle with centre O and radius OD is the circumcircle (it passes through D, S and P).\nExact radii: since \\(\\Delta\\)DSP is equilateral, M is the midpoint of DS and seg PM \\(\\perp\\) DS, and O lies on seg PM. Here \\(DM = MS = 3.75\\) cm, so by Pythagoras' theorem in right \\(\\Delta\\)PMS, \\(PM = \\sqrt{(7.5)^2 - (3.75)^2} = \\sqrt{42.1875} = 3.75\\sqrt{3}\\) cm. Let \\(R = OP = OD = OS\\) (circumradius) and \\(r = OM\\) (inradius). Since P, O, M are collinear, \\(R + r = PM = 3.75\\sqrt{3}\\). In right \\(\\Delta\\)OMS, \\(OS^2 = OM^2 + MS^2\\), that is \\(R^2 - r^2 = (3.75)^2 = 14.0625\\). So \\((R + r)(R - r) = 14.0625\\), giving \\(R - r = \\frac{14.0625}{3.75\\sqrt{3}} = \\frac{3.75}{\\sqrt{3}} = 1.25\\sqrt{3}\\). Solving the two equations, \\(R = 2.5\\sqrt{3} \\approx 4.3\\) cm and \\(r = 1.25\\sqrt{3} \\approx 2.2\\) cm, which agrees with the measurement on the figure.\nTherefore radius of circumcircle : radius of incircle \\(= 2.5\\sqrt{3} : 1.25\\sqrt{3} = 2 : 1\\) (this derivation is the substance; the chapter's own 'Remember this !' box states the same \\(2 : 1\\) result and so corroborates it).",
+    "diagramWouldHelp": true,
+    "diagramNote": "Equilateral triangle DSP of side 7.5 cm with the three angle bisectors meeting at O, a small incircle centred at O touching all three sides (radius about 2.2 cm) and a larger concentric circumcircle through D, S, P (radius about 4.3 cm)."
+  },
+  {
+    "id": "f650f99a-eb6b-4cef-b59b-8702d6025ba6",
+    "ref": "Prob Q3",
+    "solution": "Construction of \\(\\Delta\\)NTS: Draw seg TS \\(= 7.5\\) cm. At T draw ray TX so that \\(\\angle\\)STX \\(= 110^\\circ\\). On ray TX cut off seg TN \\(= 5.7\\) cm. Join seg NS. \\(\\Delta\\)NTS is the required triangle.\nIncircle: Draw the bisectors of \\(\\angle\\)NTS and \\(\\angle\\)TSN and let them meet at I; I is the incentre. Draw seg IM \\(\\perp\\) TS, M on TS. The circle with centre I and radius IM is the incircle; it touches all three sides.\nCircumcircle: Draw the perpendicular bisectors of seg NT and seg TS and let them meet at C; C is the circumcentre. The circle with centre C and radius CN is the circumcircle; it passes through N, T and S.\nSince \\(\\angle\\)NTS \\(= 110^\\circ\\) is obtuse, \\(\\Delta\\)NTS is an obtuse-angled triangle, so the two perpendicular bisectors meet outside the triangle. Hence the incentre I lies inside the triangle as always, but the circumcentre C lies outside \\(\\Delta\\)NTS, on the opposite side of seg NS from the vertex T, and the circumcircle still passes through all three vertices N, T and S.",
+    "diagramWouldHelp": true,
+    "diagramNote": "Triangle NTS with TS = 7.5 cm horizontal, angle T = 110 degrees and TN = 5.7 cm; incircle centred at I inside the triangle touching all three sides, and a circumcircle through N, T, S whose centre C is outside the triangle, beyond side NS."
+  },
+  {
+    "id": "4cda72d9-ab33-4935-893e-7a183259bfba",
+    "ref": "Prob Q4",
+    "solution": "C is the centre and seg QT is a diameter, so \\(CT = 13\\) is the radius. Hence \\(CS = CT = 13\\). Diameter QT \\(\\perp\\) chord RS at P, and the perpendicular drawn from the centre of a circle to a chord bisects the chord, so \\(RP = PS = \\frac{1}{2} RS\\). In right angled \\(\\Delta\\)CPS, by Pythagoras' theorem, \\(CS^2 = CP^2 + PS^2\\), so \\(13^2 = 5^2 + PS^2\\), giving \\(PS^2 = 169 - 25 = 144\\) and \\(PS = 12\\). Therefore \\(RS = 2 \\times PS = 2 \\times 12 = 24\\)."
+  },
+  {
+    "id": "f7ee00a2-e845-49a7-93c4-7c1954e55b98",
+    "ref": "Prob Q5",
+    "solution": "Draw seg PM \\(\\perp\\) chord AB, M on AB, and seg PN \\(\\perp\\) chord CD, N on CD.\nIn \\(\\Delta\\)PME and \\(\\Delta\\)PNE:\n\\(\\angle\\)PME \\(\\cong\\) \\(\\angle\\)PNE (each is \\(90^\\circ\\), by construction).\n\\(\\angle\\)PEM \\(\\cong\\) \\(\\angle\\)PEN (M lies on ray EA and N lies on ray ED, so these are the angles \\(\\angle\\)AEP and \\(\\angle\\)DEP, which are congruent as given).\nseg PE \\(\\cong\\) seg PE (common side).\nSo \\(\\Delta\\)PME \\(\\cong\\) \\(\\Delta\\)PNE by the AAS test, and therefore seg PM \\(\\cong\\) seg PN by corresponding sides of congruent triangles.\nPM and PN are the distances of chord AB and chord CD from the centre P, so the two chords are equidistant from the centre. Chords of a circle that are equidistant from the centre are congruent. Therefore AB \\(=\\) CD."
+  },
+  {
+    "id": "4dd25cad-8b82-43a8-8a9f-ef8a79c2961f",
+    "ref": "Prob Q6",
+    "solution": "CD is a diameter, so it passes through the centre O, and CD \\(\\perp\\) AB at E means seg OE \\(\\perp\\) chord AB. The perpendicular drawn from the centre of a circle to a chord bisects the chord, so E is the midpoint of AB, that is seg AE \\(\\cong\\) seg EB.\nIn \\(\\Delta\\)AEC and \\(\\Delta\\)BEC:\nseg AE \\(\\cong\\) seg BE (proved above).\n\\(\\angle\\)AEC \\(\\cong\\) \\(\\angle\\)BEC (each is \\(90^\\circ\\), since CD \\(\\perp\\) AB at E).\nseg CE \\(\\cong\\) seg CE (common side).\nSo \\(\\Delta\\)AEC \\(\\cong\\) \\(\\Delta\\)BEC by the SAS test, and therefore seg CA \\(\\cong\\) seg CB by corresponding sides of congruent triangles.\nThus two sides of \\(\\Delta\\)ABC are congruent. Hence \\(\\Delta\\)ABC is an isosceles triangle."
+  }
+]

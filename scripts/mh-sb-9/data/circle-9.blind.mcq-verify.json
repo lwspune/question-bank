@@ -1,0 +1,58 @@
+[
+  {
+    "id": "f4c4efa2-91f9-4d0f-bbb6-4ff93f5373b7",
+    "ref": "Prob Q1(i)",
+    "derived_answer": "A",
+    "why": "Half-chord \\(=\\sqrt{10^2-6^2}=8\\), so the full chord is \\(16\\) cm.",
+    "solution": "Let the chord be \\(\\text{AB}\\), the centre \\(\\text{O}\\), and let \\(\\text{OM}\\) be the perpendicular from the centre to the chord, so \\(l(\\text{OM}) = 6\\) cm and \\(l(\\text{OA}) = 10\\) cm.\n\nThe perpendicular drawn from the centre of a circle to a chord bisects the chord, so \\(\\text{M}\\) is the midpoint of \\(\\text{AB}\\) and \\(l(\\text{AB}) = 2 \\times l(\\text{AM})\\).\n\nIn the right-angled triangle \\(\\text{OMA}\\), by Pythagoras' theorem:\n\\(l(\\text{OA})^2 = l(\\text{OM})^2 + l(\\text{AM})^2\\)\n\\(10^2 = 6^2 + l(\\text{AM})^2\\)\n\\(100 = 36 + l(\\text{AM})^2\\)\n\\(l(\\text{AM})^2 = 64\\), hence \\(l(\\text{AM}) = 8\\) cm.\n\nTherefore \\(l(\\text{AB}) = 2 \\times 8 = 16\\) cm, which is the alternative \"16 cm\".\n\nWhy the others fail: \"8 cm\" is only the half-chord \\(l(\\text{AM})\\) and forgets to double it; \"12 cm\" is \\(2 \\times 6\\), i.e. doubling the distance \\(l(\\text{OM})\\) instead of the half-chord; \"32 cm\" doubles once too often and is in any case impossible, since no chord can exceed the diameter \\(2 \\times 10 = 20\\) cm.",
+    "matches_current": true
+  },
+  {
+    "id": "28b91d41-f009-4366-8c8d-9d096bce19de",
+    "ref": "Prob Q1(ii)",
+    "derived_answer": "C",
+    "why": "The three angle bisectors of a triangle are concurrent at the incentre.",
+    "solution": "Every point on the bisector of an angle is equidistant from the two arms of that angle. So a point lying on all three angle bisectors of a triangle is equidistant from all three sides, and that common distance is the radius of the circle that touches all three sides from inside. That point is called the **incentre**, and the circle drawn with it as centre is the incircle.\n\nHence the point of concurrence of all the angle bisectors is the incentre.\n\nWhy the others fail: the centroid is where the three **medians** meet (each joining a vertex to the midpoint of the opposite side); the circumcentre is where the three **perpendicular bisectors of the sides** meet, and it is equidistant from the three *vertices*, not the sides; the orthocentre is where the three **altitudes** meet.",
+    "matches_current": true
+  },
+  {
+    "id": "16a0f2f4-6ad1-4a75-ab71-4ed0b2d59d75",
+    "ref": "Prob Q1(iii)",
+    "derived_answer": "A",
+    "why": "A circle passing through all three vertices of a triangle is its circumcircle.",
+    "solution": "A circle passes through a point only if that point is at a distance equal to the radius from the centre. So a circle through all three vertices must have a centre that is equidistant from the three vertices. That point is the circumcentre (the concurrence of the perpendicular bisectors of the sides), and the circle drawn with the circumcentre as centre and passing through the vertices is called the **circumcircle**.\n\nHence the required name is circumcircle.\n\nWhy the others fail: the incircle **touches** the three sides and does not pass through any vertex; \"congruent circles\" merely means circles of equal radii and says nothing about a triangle; \"concentric circles\" are circles sharing the same centre but having different radii.",
+    "matches_current": true
+  },
+  {
+    "id": "1e40cae6-1537-449b-b839-ba887c7979f2",
+    "ref": "Prob Q1(iv)",
+    "derived_answer": "B",
+    "why": "\\(r=\\sqrt{12^2+5^2}=\\sqrt{169}=13\\) cm.",
+    "solution": "Let the chord be \\(\\text{AB}\\) with \\(l(\\text{AB}) = 24\\) cm, let \\(\\text{O}\\) be the centre, and let \\(\\text{OM} \\perp \\text{AB}\\) with \\(l(\\text{OM}) = 5\\) cm.\n\nThe perpendicular from the centre bisects the chord, so\n\\(l(\\text{AM}) = \\dfrac{24}{2} = 12\\) cm.\n\nIn the right-angled triangle \\(\\text{OMA}\\), by Pythagoras' theorem:\n\\(l(\\text{OA})^2 = l(\\text{OM})^2 + l(\\text{AM})^2 = 5^2 + 12^2 = 25 + 144 = 169\\)\n\\(l(\\text{OA}) = \\sqrt{169} = 13\\) cm.\n\nSince \\(\\text{OA}\\) is a radius, the radius is \\(13\\) cm, i.e. the alternative \"13 cm\".\n\nWhy the others fail: \"12 cm\" is just the half-chord \\(l(\\text{AM})\\), and a radius must be longer than that because it is the hypotenuse of the same right-angled triangle; \"14 cm\" would give a half-chord of \\(\\sqrt{14^2-5^2}=\\sqrt{171}\\approx 13.1\\) cm and a chord of about \\(26.2\\) cm, not \\(24\\) cm; \"15 cm\" would give a half-chord of \\(\\sqrt{225-25}=\\sqrt{200}\\approx 14.1\\) cm and a chord of about \\(28.3\\) cm.",
+    "matches_current": true
+  },
+  {
+    "id": "0f1931cf-9eab-48ce-b9f4-46c05c300493",
+    "ref": "Prob Q1(v)",
+    "derived_answer": "D",
+    "why": "The longest chord is the diameter, \\(2 \\times 2.9 = 5.8\\) cm.",
+    "solution": "For a chord at distance \\(d\\) from the centre of a circle of radius \\(r\\), the half-chord is \\(\\sqrt{r^2 - d^2}\\), so the chord length is \\(2\\sqrt{r^2 - d^2}\\). This is largest when \\(d\\) is smallest, that is when \\(d = 0\\) and the chord passes through the centre. Such a chord is the diameter, and its length is \\(2r\\).\n\nSo the longest chord of a circle is its diameter:\n\\(2r = 2 \\times 2.9 = 5.8\\) cm, which is the alternative \"5.8 cm\".\n\nWhy the others fail: \"3.5 cm\" and \"10 cm\" are not equal to \\(2 \\times 2.9\\); moreover \"7 cm\" and \"10 cm\" are both greater than the diameter \\(5.8\\) cm, and no chord can be longer than the diameter. (Note that \\(2.9\\) cm itself would be the radius, not the longest chord.)",
+    "matches_current": true
+  },
+  {
+    "id": "6cd318a3-9b91-4a9a-9247-0cf0527fcc73",
+    "ref": "Prob Q1(vi)",
+    "derived_answer": "C",
+    "why": "\\(l(\\text{OP}) = 4.2 > 4 = r\\), so P lies outside the circle.",
+    "solution": "A point \\(\\text{P}\\) lies inside, on, or outside a circle with centre \\(\\text{O}\\) and radius \\(r\\) according as \\(l(\\text{OP}) < r\\), \\(l(\\text{OP}) = r\\), or \\(l(\\text{OP}) > r\\).\n\nHere \\(r = 4\\) cm and \\(l(\\text{OP}) = 4.2\\) cm.\n\nComparing, \\(4.2 > 4\\), so \\(l(\\text{OP}) > r\\).\n\nTherefore the point \\(\\text{P}\\) lies **outside the circle**.\n\nWhy the others fail: \"on the centre\" would need \\(l(\\text{OP}) = 0\\); \"inside the circle\" would need \\(l(\\text{OP}) < 4\\) cm; \"on the circle\" would need \\(l(\\text{OP})\\) to be exactly \\(4\\) cm.",
+    "matches_current": true
+  },
+  {
+    "id": "1cd6288f-bbad-4494-b633-e5f68db635f1",
+    "ref": "Prob Q1(vii)",
+    "derived_answer": "D",
+    "why": "Distances are \\(4\\) cm and \\(3\\) cm; the chords are on opposite sides, so the gap is \\(4+3=7\\) cm.",
+    "solution": "Let the centre be \\(\\text{O}\\) and the radius \\(r = 5\\) cm. Drop the perpendicular from \\(\\text{O}\\) to each chord; each perpendicular bisects its chord.\n\nFor the chord of length \\(6\\) cm, the half-chord is \\(3\\) cm, so its distance \\(d_1\\) from the centre satisfies\n\\(d_1^2 = 5^2 - 3^2 = 25 - 9 = 16\\), giving \\(d_1 = 4\\) cm.\n\nFor the chord of length \\(8\\) cm, the half-chord is \\(4\\) cm, so\n\\(d_2^2 = 5^2 - 4^2 = 25 - 16 = 9\\), giving \\(d_2 = 3\\) cm.\n\nThe chords are parallel, so both perpendiculars lie along one line through \\(\\text{O}\\). The question states that the chords lie on **opposite sides** of the centre, so the centre lies between them and the two distances add:\ndistance between the chords \\(= d_1 + d_2 = 4 + 3 = 7\\) cm, which is the alternative \"7 cm\".\n\nWhy the others fail: \"1 cm\" is \\(d_1 - d_2\\), which is the answer for the *other* configuration, where both chords lie on the **same** side of the centre — the stem rules that case out; \"2 cm\" corresponds to no configuration of these two chords; \"8 cm\" is larger than the greatest possible separation \\(d_1 + d_2 = 7\\) cm, so it is impossible.",
+    "matches_current": true
+  }
+]

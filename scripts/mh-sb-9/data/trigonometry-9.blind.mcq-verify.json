@@ -1,0 +1,30 @@
+[
+  {
+    "id": "6cbe4e11-d77e-4b00-9107-245b354d2029",
+    "ref": "Prob Q1(i)",
+    "derived_answer": "A",
+    "why": "sin t = cos(90 - t) is the complementary-angle identity, true for every t; B and C reduce to cot t and fail at t = 30, and D (tan t = cot t) is true only at t = 45, so it is a single-angle distractor, not an identity.",
+    "solution": "In a right-angled triangle the two acute angles are \\(\\theta\\) and \\(90^{\\circ} - \\theta\\), and the side opposite \\(\\theta\\) is the side adjacent to \\(90^{\\circ} - \\theta\\). Dividing that side by the hypotenuse gives \\(\\sin \\theta\\) read from one angle and \\(\\cos (90^{\\circ} - \\theta)\\) read from the other, so \\(\\sin \\theta = \\cos (90^{\\circ} - \\theta)\\) holds for every \\(\\theta\\). That is the true statement.\n\nThe other three use \\(\\tan (90^{\\circ} - \\theta) = \\cot \\theta\\). The statement equating \\(\\cos \\theta\\) with \\(\\tan (90^{\\circ} - \\theta)\\) claims \\(\\cos \\theta = \\cot \\theta\\); at \\(\\theta = 30^{\\circ}\\) this reads \\(\\tfrac{\\sqrt{3}}{2} = \\sqrt{3}\\), which is false. The statement equating \\(\\sin \\theta\\) with \\(\\tan (90^{\\circ} - \\theta)\\) claims \\(\\sin \\theta = \\cot \\theta\\), i.e. \\(\\sin^{2} \\theta = \\cos \\theta\\), which is satisfied at one particular angle only, not identically; at \\(\\theta = 30^{\\circ}\\) it reads \\(\\tfrac{1}{2} = \\sqrt{3}\\). The statement equating \\(\\tan \\theta\\) with \\(\\tan (90^{\\circ} - \\theta)\\) claims \\(\\tan \\theta = \\cot \\theta\\), which forces \\(\\tan^{2} \\theta = 1\\) and so holds only at \\(\\theta = 45^{\\circ}\\).\n\nOne caution about testing: do not check these at \\(\\theta = 45^{\\circ}\\). There \\(\\sin 45^{\\circ} = \\cos 45^{\\circ}\\) and \\(\\tan 45^{\\circ} = \\cot 45^{\\circ} = 1\\), so the genuine identity and the \\(45^{\\circ}\\)-only statement both come out true and cannot be told apart. Testing at \\(\\theta = 30^{\\circ}\\) instead discriminates: \\(\\sin 30^{\\circ} = \\tfrac{1}{2} = \\cos 60^{\\circ}\\) still holds, while \\(\\tan 30^{\\circ} = \\tfrac{1}{\\sqrt{3}}\\) and \\(\\tan 60^{\\circ} = \\sqrt{3}\\) are clearly different. An identity must hold for all admissible \\(\\theta\\), so a statement that is true at a single angle is not an identity."
+  },
+  {
+    "id": "0592ea09-d86a-48f3-83ab-3a6b12b28e19",
+    "ref": "Prob Q1(ii)",
+    "derived_answer": "D",
+    "why": "sin 90 = 1; the other options are the sine values of other particular angles (root3/2 = sin 60, 0 = sin 0, 1/2 = sin 30).",
+    "solution": "For an acute angle, \\(\\sin \\theta = \\dfrac{\\text{side opposite } \\theta}{\\text{hypotenuse}}\\). As \\(\\theta\\) increases towards \\(90^{\\circ}\\), the side opposite \\(\\theta\\) grows until it coincides with the hypotenuse itself, so the ratio becomes \\(\\dfrac{\\text{hypotenuse}}{\\text{hypotenuse}} = 1\\). Hence \\(\\sin 90^{\\circ} = 1\\), which is also the largest value \\(\\sin \\theta\\) ever takes.\n\nThe three rejected values are the sines of other angles in the standard table and belong to those angles, not to \\(90^{\\circ}\\): \\(\\tfrac{\\sqrt{3}}{2} = \\sin 60^{\\circ}\\), \\(0 = \\sin 0^{\\circ}\\) (and \\(0 = \\cos 90^{\\circ}\\), which is the value being confused with this one), and \\(\\tfrac{1}{2} = \\sin 30^{\\circ}\\)."
+  },
+  {
+    "id": "20db8e4b-4188-43b5-928d-c437d080da5c",
+    "ref": "Prob Q1(iii)",
+    "derived_answer": "C",
+    "why": "cos 45 = sin 45 = 1/root2 cancel exactly, leaving 2 tan 45 = 2 x 1 = 2; option B drops the factor 2 and option D keeps the two 45 terms instead of cancelling them.",
+    "solution": "Use the particular values \\(\\tan 45^{\\circ} = 1\\) and \\(\\cos 45^{\\circ} = \\sin 45^{\\circ} = \\tfrac{1}{\\sqrt{2}}\\). Substituting,\n\n\\(2 \\tan 45^{\\circ} + \\cos 45^{\\circ} - \\sin 45^{\\circ} = 2(1) + \\tfrac{1}{\\sqrt{2}} - \\tfrac{1}{\\sqrt{2}} = 2 + 0 = 2\\).\n\nThe two \\(45^{\\circ}\\) terms are equal and are subtracted, so they cancel exactly and the expression reduces to \\(2 \\tan 45^{\\circ} = 2\\). (Equivalently, \\(\\cos 45^{\\circ} = \\sin 45^{\\circ}\\) is the complementary-angle identity \\(\\cos \\theta = \\sin (90^{\\circ} - \\theta)\\) at \\(\\theta = 45^{\\circ}\\), the one angle that is its own complement.)\n\nThe value \\(1\\) comes from evaluating \\(\\tan 45^{\\circ} = 1\\) but dropping the coefficient \\(2\\). The value \\(3\\) comes from a sign slip that adds the two \\(45^{\\circ}\\) terms instead of subtracting them, which would give \\(2 + \\sqrt{2} \\approx 3.41\\) and is not a whole number at all. The value \\(0\\) would require \\(\\tan 45^{\\circ} = 0\\), whereas \\(\\tan 45^{\\circ} = 1\\)."
+  },
+  {
+    "id": "67c7d1b4-131b-436e-ae69-5e05c7d0c432",
+    "ref": "Prob Q1(iv)",
+    "derived_answer": "D",
+    "why": "sin 62 = cos(90 - 62) = cos 28, so numerator and denominator are the same non-zero number and the quotient is 1; option C would need cos 28 = 0 and option B a sign inversion.",
+    "solution": "First notice that the two angles are complementary: \\(28^{\\circ} + 62^{\\circ} = 90^{\\circ}\\), so \\(62^{\\circ} = 90^{\\circ} - 28^{\\circ}\\). Applying \\(\\sin (90^{\\circ} - \\theta) = \\cos \\theta\\) with \\(\\theta = 28^{\\circ}\\),\n\n\\(\\sin 62^{\\circ} = \\sin (90^{\\circ} - 28^{\\circ}) = \\cos 28^{\\circ}\\).\n\nThe denominator is therefore the same number as the numerator, and that number is non-zero (\\(\\cos 28^{\\circ} \\approx 0.88\\)), so\n\n\\(\\dfrac{\\cos 28^{\\circ}}{\\sin 62^{\\circ}} = \\dfrac{\\cos 28^{\\circ}}{\\cos 28^{\\circ}} = 1\\).\n\nThe quotient could be \\(0\\) only if \\(\\cos 28^{\\circ} = 0\\), which happens at \\(90^{\\circ}\\) and at no acute angle. It cannot be negative, since the sine and the cosine of an acute angle are both positive. It could equal \\(2\\) only if \\(\\cos 28^{\\circ}\\) were twice \\(\\sin 62^{\\circ}\\), whereas the identity just used shows the two are equal."
+  }
+]

@@ -1,0 +1,79 @@
+[
+  {
+    "ref": "5.2 SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Tests of parallelogram",
+    "difficulty": "MODERATE",
+    "stem": "\\(\\square\\)PQRS is parallelogram. M is the midpoint of side PQ and N is the mid point of side RS. Prove that \\(\\square\\)PMNS and \\(\\square\\)MQRN are parallelograms.",
+    "solution": "[Textbook misprint: the last line of the book's own printed proof concludes \\(\\square\\)PMNQ is a parallelogram, but the quadrilateral under proof is \\(\\square\\)PMNS. The book contradicts itself twice over: the question asks for \\(\\square\\)PMNS, its own 'To prove' line names \\(\\square\\)PMNS, and every step of the proof establishes side PM \\(\\parallel\\) side SN and side PM \\(\\cong\\) side SN, which are two sides of PMNS and not of any quadrilateral having Q as a vertex. In Fig. 5.19, Q is the bottom-left corner of the parallelogram while M and N are the midpoints of side PQ and side RS, so P-M-N-S is the upper of the two smaller parallelograms and P-M-N-Q is not a quadrilateral of that figure at all. The solution is transcribed exactly as printed; read that final line as \\(\\square\\)PMNS.]\n\nGiven : \\(\\square\\)PQRS is a parallelogram. M and N are the midpoints of side PQ and side RS respectively.\n\nTo prove : \\(\\square\\)PMNS is a parallelogram.\n\\(\\square\\)MQRN is a parallelogram.\n\nProof : side PQ \\(\\parallel\\) side SR\n\\(\\therefore\\) side PM \\(\\parallel\\) side SN ...... (\\(\\because\\) P-M-Q; S-N-R) ......(I)\nside PQ \\(\\cong\\) side SR.\n\\(\\therefore\\) \\(\\frac{1}{2}\\) side PQ = \\(\\frac{1}{2}\\) side SR\n\\(\\therefore\\) side PM \\(\\cong\\) side SN ..... (\\(\\because\\) M and N are midpoints.)......(II)\n\\(\\therefore\\) From (I) and (II), \\(\\square\\)PMNQ is a parallelogram,\nSimilarly, we can prove that \\(\\square\\)MQRN is parallelogram.",
+    "_note": "BOOK DEFECT — transcribed faithfully, NOT corrected. The 'To prove' names PMNS, but the second-to-last line of the book's own printed proof concludes 'PMNQ is a parallelogram'. PMNQ is not the quadrilateral under discussion: the (I)+(II) argument establishes side PM || side SN and side PM = side SN, which is the one-pair-parallel-and-congruent test applied to P-M-N-S, i.e. it proves PMNS. Verified at 2x zoom on the rendered page — the printed letters are unambiguously P M N Q. Flagged for adjudication."
+  },
+  {
+    "ref": "5.2 SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Tests of parallelogram",
+    "difficulty": "MODERATE",
+    "stem": "Points D and E are the midpoints of side AB and side AC of \\(\\triangle\\)ABC respectively. Point F is on ray ED such that ED = DF. Prove that \\(\\square\\)AFBE is a parallelogram. For this example write 'given' and 'to prove' and complete the proof given below.",
+    "solution": "Given : In \\(\\triangle\\)ABC, point D is the midpoint of side AB and point E is the midpoint of side AC. Point F is on ray ED such that E-D-F and ED = DF.\n\nTo prove : \\(\\square\\)AFBE is a parallelogram.\n\nProof : seg AB and seg EF are diagonals of \\(\\square\\)AFBE.\nseg AD \\(\\cong\\) seg DB ....... (\\(\\because\\) D is the midpoint of seg AB — given)\nseg ED \\(\\cong\\) seg DF ....... construction.\n\\(\\therefore\\) Diagonals of \\(\\square\\)AFBE bisect each other (each passes through point D, which is the midpoint of both)\n\\(\\therefore\\) \\(\\square\\)AFBE is a parallelogram ...by diagonals bisect each other test.",
+    "_note": "The book prints this worked example as a FILL-IN-THE-BLANK scaffold: its 'Given' and 'To prove' are printed as blank dashes, and its 'Proof' carries five empty boxes — 'seg AB and seg EF are [ ] of AFBE', 'seg AD = seg DB ....[ ]', 'seg [ ] = seg [ ] .......construction', 'Diagonals of AFBE [ ] each other', 'AFBE is a parallelogram ...by [ ] test'. The blanks have been COMPLETED (diagonals / D is the midpoint of seg AB / ED and DF / bisect / diagonals bisect each other) so the row does not ship a holed model answer to students. The book's own step order and reason annotations are preserved; the stem is transcribed verbatim, including its instruction to the student to complete the proof."
+  },
+  {
+    "ref": "5.2 SolvedEx.3",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Rhombus",
+    "difficulty": "EASY",
+    "stem": "Prove that every rhombus is a parallelogram.",
+    "solution": "Given : \\(\\square\\)ABCD is a rhombus.\n\nTo prove : \\(\\square\\)ABCD is parallelogram.\n\nProof : seg AB \\(\\cong\\) seg BC \\(\\cong\\) seg CD \\(\\cong\\) seg DA (given)\n\\(\\therefore\\) side AB \\(\\cong\\) side CD and side BC \\(\\cong\\) side AD\n\\(\\therefore\\) \\(\\square\\)ABCD is a parallelogram..... opposite side test for parallelogram"
+  },
+  {
+    "ref": "Ex 5.2 Q1",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tests of parallelogram",
+    "difficulty": "MODERATE",
+    "stem": "In figure 5.22, \\(\\square\\)ABCD is a parallelogram, P and Q are midpoints of side AB and DC respectively, then prove \\(\\square\\)APCQ is a parallelogram. (In the figure the vertices run A at the top left, D at the top right, C at the bottom right and B at the bottom left, so side AB is the left side and side DC the right side; P lies on side AB and Q on side DC, and seg AQ and seg PC are drawn, forming the quadrilateral A-P-C-Q.)",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. 5.22 — parallelogram ABCD drawn with A top-left, D top-right, C bottom-right, B bottom-left. P marked on side AB and Q on side DC; the segments AQ and PC are drawn across the interior, cutting out quadrilateral APCQ."
+  },
+  {
+    "ref": "Ex 5.2 Q2",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rectangles",
+    "difficulty": "EASY",
+    "stem": "Using opposite angles test for parallelogram, prove that every rectangle is a parallelogram."
+  },
+  {
+    "ref": "Ex 5.2 Q3",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tests of parallelogram",
+    "difficulty": "HARD",
+    "stem": "In figure 5.23, G is the point of concurrence of medians of \\(\\triangle\\)DEF. Take point H on ray DG such that D-G-H and DG = GH, then prove that \\(\\square\\)GEHF is a parallelogram. (In the figure D is at the top with E at the lower left and F at the lower right; the medians of \\(\\triangle\\)DEF meet at G, and ray DG is produced through the midpoint of seg EF to the point H below seg EF, with seg GE, seg EH, seg HF and seg FG drawn.)",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. 5.23 — triangle DEF with D at the apex, E lower left, F lower right. The three medians meet at the centroid G; ray DG continues through the marked midpoint of seg EF and out to H below the triangle, with DG = GH. The four segments GE, EH, HF, FG are drawn, so GEHF is a quadrilateral whose diagonals are seg GH and seg EF."
+  },
+  {
+    "ref": "Ex 5.2 Q4",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Rectangles",
+    "difficulty": "HARD",
+    "stem": "Prove that quadrilateral formed by the intersection of angle bisectors of all angles of a parallelogram is a rectangle. (Figure 5.24) (In the figure the parallelogram is ABCD with A at the top left, B at the top right, C at the bottom right and D at the bottom left; the bisectors of \\(\\angle\\)A, \\(\\angle\\)B, \\(\\angle\\)C and \\(\\angle\\)D are drawn as dashed rays and meet in pairs at the four points P, Q, R and S, which form the quadrilateral \\(\\square\\)PQRS inside the parallelogram.)",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. 5.24 — parallelogram ABCD (A top-left, B top-right, C bottom-right, D bottom-left) with the bisector of each of its four angles drawn as a dashed ray. Consecutive bisectors meet at P (upper), Q (right), R (lower) and S (left); the solid quadrilateral PQRS they enclose is the one to be proved a rectangle."
+  },
+  {
+    "ref": "Ex 5.2 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Tests of parallelogram",
+    "difficulty": "MODERATE",
+    "stem": "In figure 5.25, if points P, Q, R, S are on the sides of parallelogram such that AP = BQ = CR = DS then prove that \\(\\square\\)PQRS is a parallelogram. (In the figure the parallelogram is ABCD with A at the top left, B at the top right, C at the bottom right and D at the bottom left; P lies on side AB, Q on side BC, R on side CD and S on side DA, the equal parts AP, BQ, CR and DS are marked with single ticks, and seg PQ, seg QR, seg RS and seg SP are drawn.)",
+    "diagramWouldHelp": true,
+    "diagramNote": "Fig. 5.25 — parallelogram ABCD (A top-left, B top-right, C bottom-right, D bottom-left). P is on side AB, Q on side BC, R on side CD and S on side DA; single tick marks show AP, BQ, CR and DS are congruent. The four segments PQ, QR, RS, SP are drawn to give quadrilateral PQRS."
+  }
+]
