@@ -1,0 +1,82 @@
+[
+ {"q":"748","derived":"D","value":"0.35",
+  "confidence":"high",
+  "why":"Mutually exclusive so P(A∪B)=0.25+0.4=0.65; by De Morgan P(A^C∩B^C)=1-P(A∪B)=0.35."},
+
+ {"q":"759","derived":"D","value":"20/36 = 5/9",
+  "confidence":"high",
+  "why":"Even on first die = 18 outcomes, total 8 = 5 outcomes, overlap {(2,6),(4,4),(6,2)} = 3, so 18+5-3 = 20 of 36 = 5/9, which is none of the three listed values.",
+  "flag":"NO_OPTION_MATCHES — 5/9 is not 1/36, 3/36 or 11/36; option D 'None of these' is the correct choice, so the row is well-posed but only via the catch-all."},
+
+ {"q":"770","derived":"D","value":"1",
+  "confidence":"high",
+  "why":"A={4,5,6}, B={1,2,3,4}; A∪B is the whole sample space {1,...,6}, so P=1."},
+
+ {"q":"777","derived":"C","value":"17/19",
+  "confidence":"high",
+  "why":"Product is odd only if all three are odd: C(10,3)/C(20,3)=120/1140=2/19, so P(even)=1-2/19=17/19."},
+
+ {"q":"782","derived":"C","value":"3/8",
+  "confidence":"high",
+  "why":"Exactly one head in three tosses: C(3,1)/2^3 = 3/8."},
+
+ {"q":"814","derived":"D","value":"P(A)=1/3, P(A∩B)=2/15",
+  "confidence":"high",
+  "why":"Independence gives P(A)+0.4-0.4P(A)=0.6 ⇒ P(A)=1/3; then P(A∩B)=(1/3)(2/5)=2/15. (Note 1/3 is also offered as option A — that is P(A), not the quantity asked for.)"},
+
+ {"q":"831","derived":"B","value":"2/5",
+  "confidence":"high",
+  "why":"Bayes: (1/4·1)/(3/4·1/2 + 1/4·1) = (1/4)/(5/8) = 2/5."},
+
+ {"q":"840","derived":"A","value":"k=1/9, mean=3, variance=4/3",
+  "confidence":"high",
+  "why":"9k=1 ⇒ k=1/9; E[X]=27/9=3 and E[X²]=93/9=31/3, so Var=31/3-9=4/3."},
+
+ {"q":"852","derived":"A","value":"473/729 ≈ 0.6488",
+  "confidence":"high",
+  "why":"p=2/6=1/3, n=6; P(≥2)=1-(2/3)^6-6(1/3)(2/3)^5 = 1-64/729-192/729 = 473/729 ≈ 0.649."},
+
+ {"q":"879","derived":"A","value":"9",
+  "confidence":"high",
+  "why":"Sum = 72 over 8 observations, so mean = 9."},
+
+ {"q":"881","derived":"A","value":"246",
+  "confidence":"high",
+  "why":"Sum = mean × n = 41 × 6 = 246."},
+
+ {"q":"885","derived":"B","value":"14.0",
+  "confidence":"high",
+  "why":"Original sum 16×16=256; delete 16 ⇒ 240 over 15 items; add 3+4+5=12 ⇒ 252 over 18 items = 14."},
+
+ {"q":"898","derived":"B","value":"80% men, 20% women",
+  "confidence":"high",
+  "why":"26x+21(1-x)=25 ⇒ 5x=4 ⇒ x=0.8, so men 80% and women 20% (order in the option matches the order asked)."},
+
+ {"q":"908","derived":"D","value":"least / minimum",
+  "confidence":"high",
+  "why":"Σ|x_i − a| is minimised when a is the median, so mean deviation about the median is less than that about any other value."},
+
+ {"q":"919","derived":"B","value":"variance 5, SD √5",
+  "confidence":"high",
+  "why":"Mean 4, squared deviations 9,1,1,9 sum 20, variance 20/4=5, SD=√5."},
+
+ {"q":"930","derived":"D","value":"variance 4, SD 2",
+  "confidence":"high",
+  "why":"With d_i=x_i−5: mean of d = 9/9 = 1 and Σd² /9 = 5, so variance = 5 − 1² = 4 (shift-invariant), SD = 2."},
+
+ {"q":"934","derived":"D","value":"x = 11",
+  "confidence":"high",
+  "why":"Variance of the first x natural numbers is (x²−1)/12 = 10 ⇒ x² = 121 ⇒ x = 11 (positive root)."},
+
+ {"q":"1044","derived":"B","value":"A = π/6 (with B = π/4)",
+  "confidence":"high",
+  "why":"Substituting sin²B = sin A into 2(1−sin²A)=3(1−sin²B) gives 2sin²A−3sinA+1=0 ⇒ sinA=1/2 (sinA=1 is not acute); verified 2cos²(π/6)=3/2=3cos²(π/4)."},
+
+ {"q":"1046","derived":"C","value":"7",
+  "confidence":"high",
+  "why":"cos θ ranges over [−1,1], so the minimum of 5cos θ + 12 is 12 − 5 = 7."},
+
+ {"q":"1076","derived":"C","value":"4",
+  "confidence":"high",
+  "why":"Pair as (tan81+tan9) − (tan63+tan27) = (cot9+tan9) − (cot27+tan27) = 2/sin18 − 2/sin54 = 8/(√5−1) − 8/(√5+1) = 4; numerically 4.000."}
+]
