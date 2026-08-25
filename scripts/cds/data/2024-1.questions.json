@@ -2645,11 +2645,11 @@
   "options": [
    {
     "label": "A",
-    "text": "A-3, B-4, C-1, D-2"
+    "text": "A-3, B-1, C-4, D-2"
    },
    {
     "label": "B",
-    "text": "A-3, B-4, C-2, D-1"
+    "text": "A-3, B-4, C-1, D-2"
    },
    {
     "label": "C",
@@ -2660,8 +2660,8 @@
     "text": "A-2, B-1, C-4, D-3"
    }
   ],
-  "answer": "A",
-  "reasoning": "Attaché = diplomatic support staff (3); Aperitif = a drink just before a meal (4); Avant-garde = new and experimental (1); Alibi = proven fact of being elsewhere (2). Code A-3, B-4, C-1, D-2 = option (a).",
+  "answer": "B",
+  "reasoning": "Attaché = diplomatic support staff (3); Aperitif = a drink just before a meal (4); Avant-garde = new and experimental (1); Alibi = proven fact of being elsewhere (2). That pairing, A-3 B-4 C-1 D-2, is printed code (b). KEY FIX PENDING: must move A -> B via scripts/cds/apply-key-fixes.ts. [Options A and B repaired 2026-08-25 from source p24: A had carried printed (b), and B had carried A-3 B-4 C-2 D-1, which matches no printed row. Q101 and Q102 print the same four rows with (a) and (b) transposed, so the error is invisible to a set comparison.]",
   "confidence": "HIGH",
   "difficulty": "MEDIUM"
  },
@@ -2723,23 +2723,23 @@
   "options": [
    {
     "label": "A",
-    "text": "A-2, B-4, C-3, D-1"
+    "text": "A-1, B-3, C-4, D-2"
    },
    {
     "label": "B",
-    "text": "A-1, B-3, C-2, D-4"
+    "text": "A-2, B-4, C-3, D-1"
    },
    {
     "label": "C",
-    "text": "A-1, B-4, C-3, D-2"
+    "text": "A-2, B-3, C-4, D-1"
    },
    {
     "label": "D",
-    "text": "A-2, B-3, C-4, D-1"
+    "text": "A-1, B-4, C-3, D-2"
    }
   ],
-  "answer": "D",
-  "reasoning": "Déjà vu = feeling of having experienced the present (2); Faux pas = tactless remark or act (3); En route = during the course of a journey (4); Laissez-faire = policy of minimal governmental interference (1). Code A-2, B-3, C-4, D-1 = option (d).",
+  "answer": "C",
+  "reasoning": "Déjà vu = feeling of having experienced the present (2); Faux pas = tactless remark or act (3); En route = during the course of a journey (4); Laissez-faire = policy of minimal governmental interference (1). That pairing, A-2 B-3 C-4 D-1, is printed code (c). KEY FIX PENDING: must move D -> C via scripts/cds/apply-key-fixes.ts. [All four options repaired 2026-08-25 from source p25: the row's four codes were scrambled across letters (ours A/C/D held printed b/d/c) and its B held A-1 B-3 C-2 D-4, which matches no printed row.]",
   "confidence": "HIGH",
   "difficulty": "MEDIUM"
  },

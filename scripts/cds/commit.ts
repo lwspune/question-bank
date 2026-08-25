@@ -81,9 +81,31 @@ async function main() {
   for (const e of result.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
 
   // Default visibility is PUBLIC (migration 0022) — force PRIVATE pending review.
+  //
+  // THIS UPDATE IS PAPER-WIDE, NOT INSERT-ONLY, and that is a live hazard once a
+  // paper has been published: re-committing it to repair ONE question silently
+  // un-publishes all 120. It bit exactly that way on 2026-08-25, when a handful
+  // of mis-keyed rows were repaired after the corpus had gone PUBLIC. So count
+  // the PUBLIC rows first and refuse to demote them without an explicit flag —
+  // the fix for a repaired row is `commit --allow-unpublish` followed by
+  // `flip-public`, never a silent demotion nobody notices.
+  const { count: publicBefore } = await client
+    .from("questions")
+    .select("id", { count: "exact", head: true })
+    .eq("exam_id", EXAM_ID)
+    .eq("source_file", paper.sourceFile)
+    .eq("visibility", "PUBLIC");
+  if ((publicBefore ?? 0) > 0 && !process.argv.includes("--allow-unpublish")) {
+    throw new Error(
+      `${publicBefore} row(s) of ${paper.sourceFile} are currently PUBLIC and this ` +
+        `step would set the whole paper PRIVATE.\n` +
+        `  Re-run with --allow-unpublish, then re-publish with:\n` +
+        `    npx tsx scripts/cds/flip-public.ts ${paper.id} --apply`
+    );
+  }
   const { error: uErr, count } = await client.from("questions").update({ visibility: "PRIVATE" }, { count: "exact" }).eq("exam_id", EXAM_ID).eq("source_file", paper.sourceFile);
   if (uErr) throw new Error(`visibility update failed: ${uErr.message}`);
-  console.log(`set ${count} rows to PRIVATE.`);
+  console.log(`set ${count} rows to PRIVATE.${(publicBefore ?? 0) > 0 ? `  (${publicBefore} were PUBLIC — re-publish with flip-public)` : ""}`);
 
   const { count: linked } = await client.from("questions").select("id", { count: "exact", head: true }).eq("exam_id", EXAM_ID).eq("source_file", paper.sourceFile);
   await client.from("upload_jobs").update({ status: "COMPLETED", total_rows: linked ?? 0, inserted: result.inserted, skipped: result.skipped, finished_at: new Date().toISOString() }).eq("id", jobId);

@@ -1,8 +1,13 @@
 # CDS English ingestion
 
 Scanned CDS English booklets (image PDFs, **no text layer**, **no answer key**) → the bank,
-PRIVATE, `question_kind='pyq'`. Answers are **LLM-derived** + confidence-flagged; a human
-spot-checks before flipping PUBLIC. New exam **CDS** reuses the NDA-English taxonomy.
+`question_kind='pyq'`. Answers are **LLM-derived** + confidence-flagged. New exam **CDS** reuses
+the NDA-English taxonomy.
+
+**Status: all 2,280 rows are PUBLIC and back 19 timed mocks (2026-08-25).** `commit.ts` still
+writes PRIVATE — publishing is a separate, deliberate step (`flip-public.ts`). The blind
+re-derivation of the LLM-derived keys is still outstanding; see the section at the bottom, and
+read the defect-class note there before editing any transcription.
 
 Each paper is ~120 Q in ~13 **sections**, each opening with a `Directions:` block. **Section
 order/selection varies by year** — so every paper gets a section-map pre-pass, and transcription
@@ -95,5 +100,39 @@ A/B/C + `"No error"` as D — the stem is rebuilt + underlined from them.
 - `2017-1` — committed PRIVATE (120). 11 sections, old dense format (20-q grid Q1–20, 26-q spotting-errors with 4-part Q21–27, 22-q sentence-improvement, 6 RC passages). **Lowest-confidence paper — 60 MED** (the packed grid + rearrangements with blank-S fragments); prioritise for source review before PUBLIC.
 - `2017-2` — committed PRIVATE (120). 12 sections (20-q paragraph-rearrange, 20-q part-rearrange grid, 5 RC passages, 25-q spotting-errors, Word-Substitution synonyms). 50 MED.
 
-**INGESTION COMPLETE (2026-06-16):** all **19 CDS English papers** (2017-I … 2026-I) committed PRIVATE — **2280 questions**, every one with Directions-in-context + 4 options + exactly 1 correct; 253 sets. **Before flipping PUBLIC:** human spot-check the LLM-derived answers (no official keys exist), prioritising MED-flagged items; the oldest dense scans (2017-1 especially, + the part-rearrangement grids) carry the most uncertainty.
+**INGESTION COMPLETE (2026-06-16):** all **19 CDS English papers** (2017-I … 2026-I) committed PRIVATE — **2280 questions**, every one with Directions-in-context + 4 options + exactly 1 correct; 253 sets.
+
+## PUBLIC + 19 mock tests (2026-08-25)
+
+The whole corpus is **PUBLIC** (`flip-public.ts`) and backs **19 timed mocks** at `/mock` — 120 q / 100 marks / 2 h, penalty 1/3 (`cds-<year>-<i|ii>-english`). The blind re-derivation of the LLM-derived keys was **deliberately deferred** by product decision; see the SUGGESTIONS.md backfill ledger.
+
+### The defect class this surfaced — read before touching any CDS transcription
+
+Preparing the mocks found **19 wrong answer keys**, and the mechanism matters more than the count: **the transcriber repeatedly copied the CORRECT option's text into the WRONG letter's slot and then keyed that letter.** The answer as *content* was right; the answer as a *letter* was wrong.
+
+Three consequences, each learned the expensive way:
+
+1. **Repairing option text alone makes a row WORSE.** It moves the correct answer to a different letter and leaves the key on a genuine distractor — while removing the duplicate that was the only tripwire. Text and key must move together; `apply-key-fixes.ts` asserts both the old and the new key and refuses if the new key still sits in a duplicate group.
+2. **A BLIND RE-DERIVATION CANNOT CATCH IT.** The solver derives the right answer, finds that text at some label, and confirms that label. Proof, not inference: `question_reviews` holds `bank-paper:cds-english-blind-2026-08-23`, 89 rows, all `confirmed` — and one of them (2021-2 Q59) is a key we then proved wrong from the printed page. **Transcription fidelity is a PREREQUISITE control, not a parallel one.**
+3. **Duplicate detection is a weak detector.** Sweeping the 60 match-list questions found **10 of 40 corrupted in the unswept papers — 0 of them with any duplicate**, 9 carrying live wrong keys. A swap or rotation of an option block leaves four distinct strings, invisible to `audit:keys`, to the duplicate scan, and to a set-only comparison.
+
+**The check that does work, per question:** compare the option **set** against the printed page (catches a wrong option) **and separately** the label→text **ORDER** (catches a swap/rotation). Both. `2025-1` Q78 is the case that proves you need both — its set was wrong yet its key was still right, so a set-only check would have "fixed" it into being wrong.
+
+**Root cause is LAYOUT, so triage by it:** 7 of the 10 sit in `2025-1` Q71-80, whose page interleaves three questions and three `Code:` tables across two columns — in column flow a table belongs to the question whose lists END the left column, not the one printed beside it. Blocks where the code table sits directly under its own question came back clean (2026-1 10/10, 2025-1 Q101-110 10/10). Note `2025-1`'s two blocks were transcribed to *opposite* standards in the same paper.
+
+### Tools added
+
+| script | what |
+|---|---|
+| `flip-public.ts` | PRIVATE→PUBLIC, scoped by `exam_id`; structural gate fails closed; warns on duplicate options and separates key-in-group from distractor-only; asserts a bank-wide PUBLIC delta so nothing outside CDS moved |
+| `apply-key-fixes.ts` | the 20 adjudicated key corrections as data, each asserting old + new key; idempotent |
+| `resync.ts` | deletes rows whose `content_hash` no longer matches the JSON, reusing the real commit pipeline to compute expected hashes; **refuses if a stale row is used in a teacher paper** |
+| `verify-keys.ts` | asserts every adjudicated key is live, PUBLIC and unambiguous — reads expectations from `KEY_FIXES`, so there is no second copy to drift |
+| `verify-mocks.ts` | asserts each mock's 120 refs resolve to live PUBLIC gradeable rows (a PRIVATE ref renders BLANK with no error and grades every answer wrong) |
+| `matchlist-verify.ts` | re-asserts all 40 match-list code tables; proven to go red on an injected wrong code and an injected wrong key |
+| `audit-keys.ts` | CDS-scoped structural probe (`npm run audit:keys` is hard-filtered to `question_kind='practice'`) |
+
+**Order matters when repairing a live paper:** `commit.ts <paper> --apply --allow-unpublish` → `resync.ts <paper> --apply` → `flip-public.ts <paper> --apply`. `commit.ts` sets the WHOLE paper PRIVATE, not just new rows, so it now refuses to silently un-publish a live paper without that flag.
+
+**Still owed:** human spot-check / blind re-derivation of the LLM-derived answers (no official keys exist), prioritising MED-flagged items — worst first by uncertain-row count: 2025-2 (62), 2017-1 (60), 2024-2 (58), 2018-1 (55), 2022-2 (53). The oldest dense scans and the part-rearrangement grids carry the most uncertainty. Treat the 89 rows of the 2026-08-23 blind run as **unverified** until their option sets have been checked against the source.
 - `2024-1` was Elementary Mathematics; replaced with the correct English booklet 2026-06-15.
