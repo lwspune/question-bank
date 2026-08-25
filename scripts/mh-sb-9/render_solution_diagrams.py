@@ -283,7 +283,23 @@ class Canvas:
         if s.get("label"):
             mx, my = (p[0] + q[0]) / 2, (p[1] + q[1]) / 2
             dx = s.get("dx", 6) * SS; dy = s.get("dy", -18) * SS
-            self.d.text((mx + dx, my + dy), s["label"], font=self.fs, fill=color)
+            self._text((mx + dx, my + dy), s["label"], self.fs, color)
+
+    def _text(self, xy, txt, font, fill):
+        """Draw a label, optionally on a white halo.
+
+        A ruler-and-compass figure has arcs and bisectors converging on exactly
+        the points that need labelling, so a plain glyph gets a line drawn
+        through it — legible, but a struck character is the class of defect this
+        pipeline has already shipped once (a line label struck a `+` into what
+        reads as `-`). `label_halo` is OPT-IN per spec so every chapter that does
+        not set it renders byte-identically to before; only the Ch.4 construction
+        builders turn it on."""
+        if self.spec.get("label_halo"):
+            self.d.text(xy, txt, font=font, fill=fill,
+                        stroke_width=2 * SS, stroke_fill=(255, 255, 255))
+        else:
+            self.d.text(xy, txt, font=font, fill=fill)
 
     def poly(self, pl):
         # An OUTLINED polygon/polyline (spec["polygon"] only shades — this draws edges).
@@ -312,7 +328,7 @@ class Canvas:
         self.d.ellipse([x - r, y - r, x + r, y + r], fill=(20, 20, 20))
         if p.get("label"):
             dx = p.get("dx", 8) * SS; dy = p.get("dy", -18) * SS
-            self.d.text((x + dx, y + dy), p["label"], font=self.f, fill=(20, 20, 20))
+            self._text((x + dx, y + dy), p["label"], self.f, (20, 20, 20))
 
     def caption(self):
         cap = self.spec.get("caption", "")
@@ -773,22 +789,72 @@ def _construct_sum(base, ang_deg, total, names="ABC"):
     sA = (total * total - base * base) / (2.0 * (total - uc))
     A = (sA * u[0], sA * u[1])
     M = ((D[0] + C[0]) / 2.0, (D[1] + C[1]) / 2.0)
+    _assert_construction(B, C, D, A, given=total, sign=+1, what=f"sum base={base} ang={ang_deg} t={total}")
     return {"B": B, "C": C, "D": D, "A": A, "M": M, "names": names}
 
 
 def _construct_diff(base, ang_deg, diff, names="ABC"):
-    """Construction II: base BC, angle B, and AB - AC given. D is taken on the
-    OPPOSITE ray, which is the only structural difference from Construction I."""
+    """Construction II: base BC, angle B, and AB - AC given.
+
+    D IS ON THE SAME RAY AS A, at BD = AB - AC. This corrected a real bug on
+    2026-08-22 and the fix is one sign, so it is worth recording why the wrong
+    version looked right. The original placed D on the OPPOSITE ray, reasoning
+    that this was "the only structural difference from Construction I" — but it
+    kept Construction I's sA, which is the SAME-ray solution. The result passed
+    every check anyone was making: the triangle was correct (AB - AC really was
+    the given difference, and A did not move), so the only thing wrong was the
+    property the picture DEPICTS — AD == AC, which is what puts A on the
+    perpendicular bisector of DC and what the two compass arcs are drawn to show.
+    Measured on Ex 4.2 Q1: opposite ray gave AD = 12.0718 against AC = 6.6718;
+    same ray gives AD = AC = 6.6718 exactly. So the figure was asserting a
+    construction step that does not hold, and NO gate can catch that — the arcs
+    are drawn wherever this function says they cross.
+
+    The opposite-ray construction is a real one, but it solves AC - AB = diff,
+    which is a different question from the one these stems ask.
+    """
     import math as m
     B = (0.0, 0.0); C = (base, 0.0)
     t = m.radians(ang_deg); u = (m.cos(t), m.sin(t))
-    D = (-diff * u[0], -diff * u[1])          # opposite ray BS
+    D = (diff * u[0], diff * u[1])            # SAME ray BT, at BD = AB - AC
     uc = u[0] * C[0] + u[1] * C[1]
     # A on ray BT with AD = AC, A at parameter s > 0 along u
     sA = (base * base - diff * diff) / (2.0 * (uc - diff))
     A = (sA * u[0], sA * u[1])
     M = ((D[0] + C[0]) / 2.0, (D[1] + C[1]) / 2.0)
+    _assert_construction(B, C, D, A, given=diff, sign=-1, what=f"diff base={base} ang={ang_deg} d={diff}")
     return {"B": B, "C": C, "D": D, "A": A, "M": M, "names": names}
+
+
+def _assert_construction(B, C, D, A, given, sign, what):
+    """Refuse to emit a construction that does not satisfy its own definition.
+
+    Exists because the 2026-08-22 `_construct_diff` sign bug was INVISIBLE to
+    every other check: the triangle it produced was correct, so a reader
+    verifying "does AB - AC equal the given difference?" got yes, while the
+    compass arcs the figure draws were crossing at a point not equidistant from
+    D and C. A diagram is the one artifact whose defect cannot be caught
+    downstream — it is drawn wherever this code says — so the invariant has to
+    be asserted HERE, at the point of construction.
+
+    Two properties, both load-bearing:
+      AD == AC   — A is on the perpendicular bisector of DC. This is the step the
+                   two arcs depict, and the one the sign bug broke.
+      AB (sign) AC == given  — the sum (sign=+1) or difference (sign=-1) the
+                   question actually gives.
+    """
+    import math as m
+    dist = lambda P, Q: m.hypot(P[0] - Q[0], P[1] - Q[1])
+    ad, ac, ab = dist(A, D), dist(A, C), dist(A, B)
+    if abs(ad - ac) > 1e-9:
+        raise AssertionError(
+            f"{what}: A is NOT equidistant from D and C (AD={ad:.6f}, AC={ac:.6f}). "
+            "The compass arcs would be drawn crossing at a point the construction "
+            "does not actually produce."
+        )
+    got = ab + sign * ac
+    if abs(got - given) > 1e-9:
+        raise AssertionError(f"{what}: AB{'+' if sign > 0 else '-'}AC = {got:.6f}, expected {given}")
 
 
 def _construction_spec(ref, g, caption):
@@ -823,11 +889,21 @@ def _construction_spec(ref, g, caption):
             lo, hi = hi, lo + 360
         return lo - 14, hi + 14
     wD = _window(D); wC = _window(C)
-    xs = [B[0], C[0], D[0], A[0], pb0[0], pb1[0]]
-    ys = [B[1], C[1], D[1], A[1], pb0[1], pb1[1]]
+    # Frame on the CONSTRUCTION-CRITICAL points — the triangle, D, and the two
+    # places the arcs cross — NOT on the full drawn extent of the perpendicular
+    # bisector. When seg DC is long (the opposite-ray cases, where D is behind B)
+    # the bisector's 0.78*|DC| tails dominate the range and squeeze the triangle
+    # itself down to a sliver; observed on 4.2 SolvedEx.2. The bisector still
+    # draws its full length and simply runs off the edge, which is what a
+    # construction line does on paper.
+    _vx, _vy = A[0] - M[0], A[1] - M[1]
+    _nv = m.hypot(_vx, _vy) or 1.0
+    _lab = (24.0 * _vx / _nv, -24.0 * _vy / _nv)
+    xs = [B[0], C[0], D[0], A[0], i1[0], i2[0]]
+    ys = [B[1], C[1], D[1], A[1], i1[1], i2[1]]
     pad = 0.14 * max(max(xs) - min(xs), max(ys) - min(ys))
     return {
-        "ref": ref, "caption": caption, "axes": False, "equal_aspect": True,
+        "ref": ref, "caption": caption, "axes": False, "equal_aspect": True, "label_halo": True,
         "xr": [min(xs) - pad, max(xs) + pad], "yr": [min(ys) - pad, max(ys) + pad],
         "segments": [
             seg(B, C, color=AXIS),                     # the base
@@ -843,28 +919,578 @@ def _construction_spec(ref, g, caption):
         "points": [
             {"x": B[0], "y": B[1], "label": nB, "dx": -16, "dy": 4},
             {"x": C[0], "y": C[1], "label": nC, "dx": 8, "dy": 4},
-            {"x": A[0], "y": A[1], "label": nA, "dx": -6, "dy": -22},
+            # The apex sits exactly where the two arcs and the bisector cross, so
+            # a fixed offset lands the letter on top of them in most of these
+            # figures. Push it along the direction from the midpoint of DC AWAY
+            # from the construction — that is the one quadrant guaranteed empty,
+            # because everything the construction draws converges on A from the
+            # DC side. (Pixel space has y DOWN, hence the flipped sign.)
+            {"x": A[0], "y": A[1], "label": nA, "dx": _lab[0] - 5, "dy": _lab[1] - 8},
             {"x": D[0], "y": D[1], "label": "D", "dx": 9, "dy": -20},
         ],
     }
 
 
+def _perp_bisector_bits(U, V, half_frac=0.75, r_frac=0.62):
+    """Everything needed to DRAW the perpendicular bisector of seg UV as a
+    construction step: its midpoint, a finite segment along it, and the two
+    compass arcs whose crossing points locate it.
+
+    The arcs are computed from where the two equal circles ACTUALLY intersect
+    and are drawn only over the angular window spanning those points, so they
+    visibly cross ON the bisector. Same idea as `_construction_spec`, pulled out
+    because the perimeter construction needs it TWICE (on AP and on AQ)."""
+    import math as m
+    M = ((U[0] + V[0]) / 2.0, (U[1] + V[1]) / 2.0)
+    dx, dy = V[0] - U[0], V[1] - U[1]
+    L = m.hypot(dx, dy) or 1.0
+    px_, py_ = -dy / L, dx / L                       # unit normal to UV
+    half = half_frac * L
+    pb0 = (M[0] - px_ * half, M[1] - py_ * half)
+    pb1 = (M[0] + px_ * half, M[1] + py_ * half)
+    r = r_frac * L
+    h = m.sqrt(max(r * r - (L / 2.0) ** 2, 1e-9))
+    i1 = (M[0] + px_ * h, M[1] + py_ * h)
+    i2 = (M[0] - px_ * h, M[1] - py_ * h)
+
+    def _window(ctr):
+        a1 = m.degrees(m.atan2(i1[1] - ctr[1], i1[0] - ctr[0]))
+        a2 = m.degrees(m.atan2(i2[1] - ctr[1], i2[0] - ctr[0]))
+        lo, hi = min(a1, a2), max(a1, a2)
+        if hi - lo > 180:
+            lo, hi = hi, lo + 360
+        return lo - 12, hi + 12
+
+    wU, wV = _window(U), _window(V)
+    arcs = [
+        {"cx": U[0], "cy": U[1], "r": r, "t0": wU[0], "t1": wU[1], "color": GREEN},
+        {"cx": V[0], "cy": V[1], "r": r, "t0": wV[0], "t1": wV[1], "color": GREEN},
+    ]
+    return {"M": M, "pb0": pb0, "pb1": pb1, "arcs": arcs, "n": (px_, py_), "u": (dx / L, dy / L)}
+
+
+def _construct_perimeter(perimeter, ang_B, ang_C, names="ABC", ends="PQ"):
+    """Construction III: the PERIMETER and the two angles that include the base.
+
+    Takes the angles of the REAL triangle (the ones the question prints) and
+    halves them here, so a caller cannot forget the halving — the single most
+    likely way to draw a plausible-looking but wrong figure for this type.
+
+    Method (the book's): lay the perimeter out as one segment PQ, take the two
+    base vertices B and C on it with PB = BA and CQ = CA. Then triangle PBA is
+    isosceles, so its two base angles are equal and sum to the exterior angle
+    ang_B — hence the ray at P makes ang_B/2. Same at Q.
+    """
+    import math as m
+    if ang_B <= 0 or ang_C <= 0 or ang_B + ang_C >= 180.0:
+        raise ValueError(f"perimeter construction impossible: angles {ang_B} + {ang_C}")
+    hb, hc = ang_B / 2.0, ang_C / 2.0
+    apex = 180.0 - hb - hc
+    P = (0.0, 0.0); Q = (perimeter, 0.0)
+    # triangle PAQ by ASA on PQ
+    PA = perimeter * m.sin(m.radians(hc)) / m.sin(m.radians(apex))
+    A = (PA * m.cos(m.radians(hb)), PA * m.sin(m.radians(hb)))
+    QA = perimeter * m.sin(m.radians(hb)) / m.sin(m.radians(apex))
+    # B on PQ with BP = BA  =>  b = PA / (2 cos hb);  C likewise from Q
+    B = (PA / (2.0 * m.cos(m.radians(hb))), 0.0)
+    C = (perimeter - QA / (2.0 * m.cos(m.radians(hc))), 0.0)
+    # ONE LETTER, ONE POINT. The auxiliary endpoints default to P and Q (the
+    # book's own letters), but the TRIANGLE may already be called PQR — as
+    # Ex 4.3 Q1 is — in which case the figure would carry two different points
+    # labelled P and two labelled Q, silently. Caught by the audit re-derivation
+    # rather than by eye, so it is asserted here; the caller passes `ends` to
+    # match whatever letters its authored solution text uses.
+    if set(ends) & set(names):
+        raise AssertionError(
+            f"perimeter construction: auxiliary endpoint label(s) {sorted(set(ends) & set(names))} "
+            f"collide with the triangle's own vertices '{names}'. Pass a different `ends`."
+        )
+    _assert_perimeter_construction(P, Q, A, B, C, perimeter, ang_B, ang_C)
+    return {"P": P, "Q": Q, "A": A, "B": B, "C": C, "names": names, "ends": ends}
+
+
+def _assert_perimeter_construction(P, Q, A, B, C, perimeter, ang_B, ang_C):
+    """Refuse to emit a perimeter construction that does not satisfy its own
+    definition. Same reasoning as `_assert_construction`: a diagram is drawn
+    wherever this code says, so no downstream gate can catch a false one.
+
+    FOUR properties, each one a thing the figure CLAIMS:
+      B, C strictly between P and Q, in that order — else the drawing shows a
+          vertex outside the perimeter segment it was cut from.
+      BP == BA and CQ == CA — the equal-length property that makes B and C the
+          feet of the two perpendicular bisectors. This is the step the arcs
+          depict, and the analogue of the AD == AC bug in Construction II.
+      AB + BC + CA == perimeter — the quantity the question actually gives.
+      angle ABC == ang_B and angle ACB == ang_C — the other two givens.
+    """
+    import math as m
+    d = lambda U, V: m.hypot(U[0] - V[0], U[1] - V[1])
+    if not (P[0] + 1e-9 < B[0] < C[0] < Q[0] - 1e-9):
+        raise AssertionError(
+            f"perimeter construction: B={B[0]:.6f}, C={C[0]:.6f} are not in order "
+            f"strictly inside P={P[0]:.6f}..Q={Q[0]:.6f}"
+        )
+    for nm, X, Y, Z in (("B", B, P, A), ("C", C, Q, A)):
+        if abs(d(X, Y) - d(X, Z)) > 1e-9:
+            raise AssertionError(
+                f"perimeter construction: {nm} is not equidistant from its end of PQ "
+                f"and from A ({d(X, Y):.9f} vs {d(X, Z):.9f}) — the arcs would cross "
+                "at a point the construction does not produce."
+            )
+    per = d(A, B) + d(B, C) + d(C, A)
+    if abs(per - perimeter) > 1e-9:
+        raise AssertionError(f"perimeter construction: AB+BC+CA = {per:.9f}, expected {perimeter}")
+    ang = lambda V, U, W: m.degrees(m.acos(max(-1.0, min(1.0, (
+        (U[0] - V[0]) * (W[0] - V[0]) + (U[1] - V[1]) * (W[1] - V[1])
+    ) / (d(V, U) * d(V, W))))))
+    for nm, got, want in (("B", ang(B, A, C), ang_B), ("C", ang(C, A, B), ang_C)):
+        if abs(got - want) > 1e-7:
+            raise AssertionError(f"perimeter construction: angle at {nm} is {got:.7f}, expected {want}")
+
+
+def _perimeter_spec(ref, g, caption):
+    """Canvas spec for the perimeter construction. Existing primitives only."""
+    P, Q, A, B, C = g["P"], g["Q"], g["A"], g["B"], g["C"]
+    nA, nB, nC = g["names"][0], g["names"][1], g["names"][2]
+    seg = lambda p, q, **k: dict(x1=p[0], y1=p[1], x2=q[0], y2=q[1], **k)
+    bp = _perp_bisector_bits(A, P, half_frac=0.60, r_frac=0.60)
+    bq = _perp_bisector_bits(A, Q, half_frac=0.60, r_frac=0.60)
+    segments = [
+        seg(P, Q, color=GRAY),                       # the perimeter laid out
+        seg(P, A, color=GRAY, dashed=True),          # the ray at P
+        seg(Q, A, color=GRAY, dashed=True),          # the ray at Q
+        seg(bp["pb0"], bp["pb1"], color=RED, dashed=True),
+        seg(bq["pb0"], bq["pb1"], color=RED, dashed=True),
+        seg(A, B, color=AXIS), seg(A, C, color=AXIS), seg(B, C, color=AXIS),
+    ]
+    rights = [
+        {"x": bp["M"][0], "y": bp["M"][1], "u": bp["u"], "v": bp["n"], "size": 0.22},
+        {"x": bq["M"][0], "y": bq["M"][1], "u": bq["u"], "v": bq["n"], "size": 0.22},
+    ]
+    xs = [P[0], Q[0], A[0], bp["pb0"][0], bp["pb1"][0], bq["pb0"][0], bq["pb1"][0]]
+    ys = [P[1], Q[1], A[1], bp["pb0"][1], bp["pb1"][1], bq["pb0"][1], bq["pb1"][1]]
+    pad = 0.13 * max(max(xs) - min(xs), max(ys) - min(ys))
+    return {
+        "ref": ref, "caption": caption, "axes": False, "equal_aspect": True, "label_halo": True,
+        "xr": [min(xs) - pad, max(xs) + pad], "yr": [min(ys) - pad, max(ys) + pad],
+        "segments": segments,
+        "conics": bp["arcs"] + bq["arcs"],
+        "rightangles": rights,
+        "points": [
+            {"x": P[0], "y": P[1], "label": g.get("ends", "PQ")[0], "dx": -18, "dy": 6},
+            {"x": Q[0], "y": Q[1], "label": g.get("ends", "PQ")[1], "dx": 10, "dy": 6},
+            {"x": A[0], "y": A[1], "label": nA, "dx": -6, "dy": -24},
+            # B and C sit ON the base with a red bisector crossing through each,
+            # so their labels are pushed clear of the crossing rather than left
+            # at the default offset, where the dashed line strikes the letter.
+            {"x": B[0], "y": B[1], "label": nB, "dx": -24, "dy": 10},
+            {"x": C[0], "y": C[1], "label": nC, "dx": 12, "dy": 10},
+        ],
+    }
+
+
+def _construct_ratio(perimeter, ratio, names="ABC"):
+    """Perimeter plus the RATIO of the three sides — the one question in Ch.4
+    that is none of the book's three taught types. Turn the ratio into lengths,
+    then it is the three-sides (SSS) construction from the previous standard.
+
+    The LONGEST side is taken as the base, which is what makes the two compass
+    arcs cross cleanly above it.
+    """
+    import math as m
+    if len(ratio) != 3 or any(r <= 0 for r in ratio):
+        raise ValueError(f"ratio must be three positive numbers, got {ratio}")
+    k = perimeter / float(sum(ratio))
+    sides = sorted((r * k for r in ratio))            # ascending
+    small, mid, base = sides
+    if small + mid <= base:
+        raise ValueError(f"ratio {ratio} at perimeter {perimeter} violates the triangle inequality")
+    tri = _tri_sss(small, base, mid, names)           # AB = small, BC = base, CA = mid
+    _assert_ratio_construction(tri, perimeter, ratio)
+    return tri
+
+
+def _assert_ratio_construction(tri, perimeter, ratio):
+    """Refuse to emit a ratio construction whose drawn sides are not actually in
+    the given ratio. The failure this guards is silent: a triangle drawn from
+    slightly wrong side lengths still looks like a triangle."""
+    import math as m
+    a, b, c = _side_lengths(tri["A"], tri["B"], tri["C"])   # BC, CA, AB
+    got = sorted([a, b, c])
+    want = sorted(r * perimeter / float(sum(ratio)) for r in ratio)
+    if abs(sum(got) - perimeter) > 1e-9:
+        raise AssertionError(f"ratio construction: perimeter drawn is {sum(got):.9f}, expected {perimeter}")
+    for g_, w_ in zip(got, want):
+        if abs(g_ - w_) > 1e-9:
+            raise AssertionError(f"ratio construction: side {g_:.9f} != required {w_:.9f}")
+    # and the ratio itself, tested pairwise so a uniform scale error cannot pass
+    rs = sorted(float(r) for r in ratio)
+    for i in range(3):
+        for j in range(i + 1, 3):
+            if abs(got[i] * rs[j] - got[j] * rs[i]) > 1e-9:
+                raise AssertionError(f"ratio construction: {got[i]:.6f}:{got[j]:.6f} is not {rs[i]}:{rs[j]}")
+
+
+def _ratio_spec(ref, tri, caption):
+    """Canvas spec for the SSS construction: base plus the two crossing arcs."""
+    import math as m
+    A, B, C = tri["A"], tri["B"], tri["C"]
+    nA, nB, nC = tri["names"][0], tri["names"][1], tri["names"][2]
+    seg = lambda p, q, **k: dict(x1=p[0], y1=p[1], x2=q[0], y2=q[1], **k)
+    d = lambda U, V: m.hypot(U[0] - V[0], U[1] - V[1])
+    rB, rC = d(A, B), d(A, C)
+    # each arc swept about the direction from its centre to A, so the two visibly
+    # cross AT A — which is the construction step.
+    def arc(ctr, r, col):
+        th = m.degrees(m.atan2(A[1] - ctr[1], A[0] - ctr[0]))
+        return {"cx": ctr[0], "cy": ctr[1], "r": r, "t0": th - 26, "t1": th + 26, "color": col}
+    xs = [A[0], B[0], C[0]]; ys = [A[1], B[1], C[1]]
+    pad = 0.17 * max(max(xs) - min(xs), max(ys) - min(ys))
+    return {
+        "ref": ref, "caption": caption, "axes": False, "equal_aspect": True, "label_halo": True,
+        "xr": [min(xs) - pad, max(xs) + pad], "yr": [min(ys) - pad, max(ys) + pad],
+        "segments": [
+            seg(B, C, color=AXIS, label=f"{d(B, C):.1f} cm", dx=-14, dy=6),
+            seg(A, B, color=AXIS, label=f"{rB:.1f} cm", dx=-46, dy=-8),
+            seg(A, C, color=AXIS, label=f"{rC:.1f} cm", dx=8, dy=-8),
+        ],
+        "conics": [arc(B, rB, GREEN), arc(C, rC, GREEN)],
+        "points": [
+            {"x": A[0], "y": A[1], "label": nA, "dx": -6, "dy": -24},
+            {"x": B[0], "y": B[1], "label": nB, "dx": -18, "dy": 6},
+            {"x": C[0], "y": C[1], "label": nC, "dx": 10, "dy": 6},
+        ],
+    }
+
+
+# ── Ch.6 Circle: incircle / circumcircle constructions ──────────────────────
+# Same principle as the Ch.4 triangle constructions above: SOLVE the geometry
+# exactly, then draw what the solution says, so the figure is truthful rather
+# than schematic. The book prints no answer for a construction — the drawing IS
+# the answer — which is exactly the case `solution_image_url` (migration 0042)
+# exists for, and the same call made for Linear Programming's feasible regions.
+
+def _tri_asa(ang_B, base, ang_C, names="ABC"):
+    """Triangle from two angles and the INCLUDED side BC (the ASA case)."""
+    import math as m
+    if ang_B + ang_C >= 180.0:
+        raise ValueError(f"ASA impossible: {ang_B} + {ang_C} >= 180")
+    B = (0.0, 0.0); C = (base, 0.0)
+    # A is the intersection of the ray from B at ang_B and the ray from C at
+    # (180 - ang_C). Solve for the parameter along B's ray.
+    tb, tc = m.radians(ang_B), m.radians(ang_C)
+    ang_A = m.pi - tb - tc
+    # sine rule: BA / sin(C) = BC / sin(A)
+    ba = base * m.sin(tc) / m.sin(ang_A)
+    A = (ba * m.cos(tb), ba * m.sin(tb))
+    return {"A": A, "B": B, "C": C, "names": names}
+
+
+def _tri_sss(ab, bc, ca, names="ABC"):
+    """Triangle from three sides. Raises if they violate the triangle inequality
+    — a construction that cannot exist must fail loudly, not draw something."""
+    import math as m
+    for x, y, z in ((ab, bc, ca), (bc, ca, ab), (ca, ab, bc)):
+        if x + y <= z:
+            raise ValueError(f"SSS impossible: {ab}, {bc}, {ca} violate the triangle inequality")
+    B = (0.0, 0.0); C = (bc, 0.0)
+    # A: |AB| = ab, |AC| = ca
+    x = (ab * ab - ca * ca + bc * bc) / (2.0 * bc)
+    y = m.sqrt(max(ab * ab - x * x, 0.0))
+    return {"A": (x, y), "B": B, "C": C, "names": names}
+
+
+def _tri_sas(side_BA, ang_B, side_BC, names="ABC"):
+    """Triangle from two sides and their INCLUDED angle."""
+    import math as m
+    B = (0.0, 0.0); C = (side_BC, 0.0)
+    t = m.radians(ang_B)
+    A = (side_BA * m.cos(t), side_BA * m.sin(t))
+    return {"A": A, "B": B, "C": C, "names": names}
+
+
+def _side_lengths(A, B, C):
+    import math as m
+    d = lambda P, Q: m.hypot(P[0] - Q[0], P[1] - Q[1])
+    return d(B, C), d(C, A), d(A, B)          # a, b, c (opposite A, B, C)
+
+
+def _foot(P, U, V):
+    """Foot of the perpendicular from P onto line UV."""
+    ux, uy = V[0] - U[0], V[1] - U[1]
+    L2 = ux * ux + uy * uy
+    t = ((P[0] - U[0]) * ux + (P[1] - U[1]) * uy) / L2
+    return (U[0] + t * ux, U[1] + t * uy)
+
+
+def _incircle(A, B, C):
+    """Incentre and inradius, plus the touch point on each side.
+
+    ASSERTS the defining property: the incentre is equidistant from all THREE
+    sides, and that common distance is the radius drawn. A figure whose circle
+    is not actually tangent to the sides is asserting a construction that does
+    not hold — the Ch.4 sign bug in a different costume.
+    """
+    import math as m
+    a, b, c = _side_lengths(A, B, C)
+    s = a + b + c
+    I = ((a * A[0] + b * B[0] + c * C[0]) / s, (a * A[1] + b * B[1] + c * C[1]) / s)
+    area = abs((B[0] - A[0]) * (C[1] - A[1]) - (C[0] - A[0]) * (B[1] - A[1])) / 2.0
+    r = area / (s / 2.0)
+    touches = {"BC": _foot(I, B, C), "CA": _foot(I, C, A), "AB": _foot(I, A, B)}
+    d = lambda P, Q: m.hypot(P[0] - Q[0], P[1] - Q[1])
+    for name, T in touches.items():
+        if abs(d(I, T) - r) > 1e-9:
+            raise AssertionError(f"incircle: centre is {d(I,T):.9f} from {name}, not r={r:.9f}")
+    return {"I": I, "r": r, "touches": touches}
+
+
+def _circumcircle(A, B, C):
+    """Circumcentre and circumradius.
+
+    ASSERTS that the centre really is equidistant from all three VERTICES — the
+    property the two perpendicular bisectors are drawn to locate.
+    """
+    import math as m
+    ax, ay = A; bx, by = B; cx, cy = C
+    dd = 2.0 * (ax * (by - cy) + bx * (cy - ay) + cx * (ay - by))
+    if abs(dd) < 1e-12:
+        raise ValueError("circumcircle: the three points are collinear")
+    ux = ((ax**2 + ay**2) * (by - cy) + (bx**2 + by**2) * (cy - ay) + (cx**2 + cy**2) * (ay - by)) / dd
+    uy = ((ax**2 + ay**2) * (cx - bx) + (bx**2 + by**2) * (ax - cx) + (cx**2 + cy**2) * (bx - ax)) / dd
+    O = (ux, uy)
+    d = lambda P, Q: m.hypot(P[0] - Q[0], P[1] - Q[1])
+    R = d(O, A)
+    for name, V in (("A", A), ("B", B), ("C", C)):
+        if abs(d(O, V) - R) > 1e-9:
+            raise AssertionError(f"circumcircle: centre is {d(O,V):.9f} from {name}, not R={R:.9f}")
+    # midpoints of two sides, for drawing the perpendicular bisectors that locate O
+    mids = {"AB": ((ax + bx) / 2, (ay + by) / 2), "BC": ((bx + cx) / 2, (by + cy) / 2)}
+    return {"O": O, "R": R, "mids": mids}
+
+
+def _circle_spec(ref, tri, which, caption):
+    """Canvas spec for an incircle / circumcircle / both construction.
+
+    `which` in {"in", "circum", "both"}. Uses only existing primitives: finite
+    `segments`, `conics` (a full turn t0=0..360 is a circle), `points`,
+    `rightangles`, `axes:false`, `equal_aspect`.
+    """
+    import math as m
+    A, B, C = tri["A"], tri["B"], tri["C"]
+    nA, nB, nC = tri["names"][0], tri["names"][1], tri["names"][2]
+    seg = lambda p, q, **k: dict(x1=p[0], y1=p[1], x2=q[0], y2=q[1], **k)
+    segments = [seg(A, B, color=AXIS), seg(B, C, color=AXIS), seg(C, A, color=AXIS)]
+    conics, points, rights = [], [], []
+    xs = [A[0], B[0], C[0]]; ys = [A[1], B[1], C[1]]
+
+    # THE BOOK'S OWN NOTATION: p-92's "Let's recall" says the point of
+    # concurrence of the perpendicular bisectors "is denoted by the letter C",
+    # and the incentre is I throughout. So use C, not O — a student holding the
+    # book should see the same letter. Fall back to O only if a VERTEX is already
+    # called C, which would otherwise put two different points under one label.
+    # (None of this chapter's seven constructions has a vertex C, so the fallback
+    # is defensive rather than load-bearing — but it is one line and the
+    # alternative is a figure that silently means two things by C.)
+    circum_label = "O" if "C" in (nA, nB, nC) else "C"
+
+    if which in ("in", "both"):
+        g = _incircle(A, B, C)
+        I, r, T = g["I"], g["r"], g["touches"]["BC"]
+        # the two ANGLE BISECTORS that locate the incentre (from B and from C),
+        # drawn to the incentre — that is the construction step
+        segments += [seg(B, I, color=GRAY, dashed=True), seg(C, I, color=GRAY, dashed=True)]
+        # the perpendicular from I to BC IS the radius; mark the right angle
+        segments += [seg(I, T, color=RED, dashed=True)]
+        ux, uy = (C[0] - B[0]), (C[1] - B[1])
+        L = m.hypot(ux, uy) or 1.0
+        rights.append({"x": T[0], "y": T[1], "u": (ux / L, uy / L),
+                       "v": ((I[0] - T[0]) / r, (I[1] - T[1]) / r), "size": 0.22})
+        conics.append({"cx": I[0], "cy": I[1], "r": r, "t0": 0, "t1": 360, "color": GREEN})
+        incentre = I
+        xs += [I[0] - r, I[0] + r]; ys += [I[1] - r, I[1] + r]
+    else:
+        incentre = None
+
+    if which in ("circum", "both"):
+        g = _circumcircle(A, B, C)
+        O, R, mids = g["O"], g["R"], g["mids"]
+        # the two PERPENDICULAR BISECTORS that locate the circumcentre
+        for side, Mp in mids.items():
+            segments.append(seg(Mp, O, color=GRAY, dashed=True))
+        conics.append({"cx": O[0], "cy": O[1], "r": R, "t0": 0, "t1": 360, "color": BLUE})
+        xs += [O[0] - R, O[0] + R]; ys += [O[1] - R, O[1] + R]
+    else:
+        O = None
+
+    # ONE label per POINT, not one per circle. In an EQUILATERAL triangle the
+    # incentre and circumcentre COINCIDE — the book says so outright on p-95
+    # ("The incentre and the circumcentre of an equilateral triangle are
+    # coincedent" [sic]) — so drawing both labels stacks two letters on one dot
+    # and renders as an unreadable blob. Observed for real on Prob Q2, whose
+    # centre came out looking like a stray vertex label.
+    if incentre is not None and O is not None and m.hypot(incentre[0] - O[0], incentre[1] - O[1]) < 1e-9:
+        points.append({"x": incentre[0], "y": incentre[1], "label": f"I = {circum_label}", "dx": 10, "dy": -8})
+    else:
+        if incentre is not None:
+            points.append({"x": incentre[0], "y": incentre[1], "label": "I", "dx": 8, "dy": -8})
+        if O is not None:
+            points.append({"x": O[0], "y": O[1], "label": circum_label, "dx": 8, "dy": -8})
+
+    points += [
+        {"x": A[0], "y": A[1], "label": nA, "dx": -6, "dy": -22},
+        {"x": B[0], "y": B[1], "label": nB, "dx": -18, "dy": 6},
+        {"x": C[0], "y": C[1], "label": nC, "dx": 10, "dy": 6},
+    ]
+    pad = 0.13 * max(max(xs) - min(xs), max(ys) - min(ys))
+    return {
+        "ref": ref, "caption": caption, "axes": False, "equal_aspect": True,
+        "xr": [min(xs) - pad, max(xs) + pad], "yr": [min(ys) - pad, max(ys) + pad],
+        "segments": segments, "conics": conics, "points": points,
+        "rightangles": rights,
+    }
+
+
+def build_circle_specs():
+    """Class-9 Ch.6 Circle — the SEVEN ruler-and-compass constructions.
+
+    Practice set 6.3 is five of them and the book keys NONE (its answers section
+    prints nothing for that block, because the answer is a drawing). Problem set
+    6 Q2 and Q3 are two more, which the config entry previously missed — it had
+    recorded Q2-onward as unread.
+
+    Each entry names the triangle CASE explicitly (ASA / SSS / SAS) so the
+    mapping from the printed stem to the solver is auditable: getting the case
+    wrong would silently draw a different triangle that still looks plausible.
+    """
+    S = [
+        # ── The two WORKED CONSTRUCTIONS (printed pp.83-84) ─────────────────
+        # These are `solved` rows: the book prints its own figures for them, but
+        # those figures cannot be cropped cleanly — on p92 the numbered steps
+        # interleave horizontally with the drawings, so no column gutter exists.
+        # Rendering them instead is both cheaper and better: it produces the same
+        # truthful geometry as the other seven rather than a crop of a rough
+        # sketch, and each row's solution cites its figure BY NUMBER, so it must
+        # have one.
+        #
+        # ⚠ SolvedEx.1 IS DRAWN AT THE STEM'S 35 DEGREES, NOT THE FIGURES' 65.
+        # The book contradicts itself here (stem "angle Q = 35", both of its own
+        # figures label that angle 65 — confirmed at magnification twice). Our
+        # stored stem is the printed 35, so the diagram must match the stem it
+        # accompanies; drawing 65 would make the row internally inconsistent on
+        # the page. The errata bracket names the disagreement.
+        ("6.3 SolvedEx.1", _tri_sas(6.0, 35.0, 5.5, "PQR"), "in",
+         "6.3 SolvedEx.1 — PQ = 6 cm, angle Q = 35 (as the STEM prints it), QR = 5.5 cm; incircle"),
+        # SolvedEx.2: DE = 4.2, angle D = 60, angle E = 70 -> ASA on DE, apex F.
+        # This one's stem and figures agree (checked).
+        ("6.3 SolvedEx.2", _tri_asa(60.0, 4.2, 70.0, "FDE"), "circum",
+         "6.3 SolvedEx.2 — DE = 4.2 cm, angle D = 60, angle E = 70; circumcircle"),
+        # ── Practice set 6.3 ────────────────────────────────────────────────
+        # Q1: angle B = 100, BC = 6.4, angle C = 50  -> ASA, incircle
+        ("Ex 6.3 Q1", _tri_asa(100.0, 6.4, 50.0, "ABC"), "in",
+         "Ex 6.3 Q1 — angle B = 100, BC = 6.4 cm, angle C = 50; incircle"),
+        # Q2: angle P = 70, angle R = 50, QR = 7.3. QR is the side between Q and
+        # R, so the given angles are at R and (by sum) at Q = 60 -> ASA on QR.
+        ("Ex 6.3 Q2", _tri_asa(60.0, 7.3, 50.0, "PQR"), "circum",
+         "Ex 6.3 Q2 — angle P = 70, angle R = 50, QR = 7.3 cm; circumcircle"),
+        # Q3: XY = 6.7, YZ = 5.8, XZ = 6.9 -> SSS, incircle
+        ("Ex 6.3 Q3", _tri_sss(6.7, 5.8, 6.9, "XYZ"), "in",
+         "Ex 6.3 Q3 — XY = 6.7 cm, YZ = 5.8 cm, XZ = 6.9 cm; incircle"),
+        # Q4: LM = 7.2, angle M = 105, MN = 6.4 -> SAS about M, circumcircle
+        ("Ex 6.3 Q4", _tri_sas(7.2, 105.0, 6.4, "LMN"), "circum",
+         "Ex 6.3 Q4 — LM = 7.2 cm, angle M = 105, MN = 6.4 cm; circumcircle"),
+        # Q5: DE = EF = 6, angle F = 45. DE is opposite F, so the sine rule gives
+        # sin D = sin 45; D = 135 would force angle E = 0, so D = 45 and E = 90.
+        # That makes it ASA on EF with angles 90 at E and 45 at F — the triangle
+        # is determined, NOT the ambiguous SSA case it superficially resembles.
+        ("Ex 6.3 Q5", _tri_asa(90.0, 6.0, 45.0, "DEF"), "circum",
+         "Ex 6.3 Q5 — DE = EF = 6 cm, angle F = 45; circumcircle"),
+        # ── Problem set 6 ───────────────────────────────────────────────────
+        # Q2: equilateral DSP, side 7.5 -> BOTH circles (the question then asks
+        # for the ratio of the radii).
+        ("Prob Q2", _tri_sss(7.5, 7.5, 7.5, "DSP"), "both",
+         "Prob Q2 — equilateral triangle DSP of side 7.5 cm; incircle and circumcircle"),
+        # Q3: NT = 5.7, TS = 7.5, angle NTS = 110 -> SAS about T, BOTH circles
+        ("Prob Q3", _tri_sas(5.7, 110.0, 7.5, "NTS"), "both",
+         "Prob Q3 — NT = 5.7 cm, TS = 7.5 cm, angle NTS = 110; incircle and circumcircle"),
+    ]
+    return [_circle_spec(ref, tri, which, cap) for ref, tri, which, cap in S]
+
+
 def build_constructions_specs():
     """Class-9 Ch.4 Constructions of Triangles. The book prints NO answers for
     this chapter because every answer is a drawing, so these figures ARE the
-    answers."""
+    answers.
+
+    Every row of this chapter gets one — all 18, the four worked constructions
+    included. The book's own figures for the worked ones cannot be cropped: on
+    printed pp.52-55 the numbered steps sit in the LEFT column with the drawings
+    beside them in the right, and each rough figure, fair figure and step list
+    interleaves vertically, so no rectangle contains one figure alone. Rendering
+    is also better than a crop here, because these are TRUE constructions rather
+    than the book's freehand rough sketches.
+
+    `names` is always (apex, angle-vertex, other-base-vertex) for the sum and
+    difference types, and (apex, P-end vertex, Q-end vertex) for the perimeter
+    type — so a question that puts the given angle at C rather than B is handled
+    by REORDERING the names, never by a second solver.
+    """
     out = []
-    # Practice set 4.1 - base, adjacent angle, SUM of the other two sides
+    # ── Construction I: base, an adjacent angle, SUM of the other two sides ──
     for ref, base, ang, tot, nm, cap in [
-        ("Ex 4.1 Q1", 4.2, 40, 8.5, "PQR", "QR = 4.2 cm, angle Q = 40, PQ + PR = 8.5 cm"),
-        ("Ex 4.1 Q2", 6.0, 50, 9.0, "XYZ", "YZ = 6 cm, angle Y = 50, XY + XZ = 9 cm"),
+        ("4.1 SolvedEx.1", 6.3, 75, 9.0, "ABC",
+         "4.1 SolvedEx.1 - BC = 6.3 cm, angle B = 75, AB + AC = 9 cm"),
+        ("Ex 4.1 Q1", 4.2, 40, 8.5, "PQR", "Ex 4.1 Q1 - QR = 4.2 cm, angle Q = 40, PQ + PR = 8.5 cm"),
+        ("Ex 4.1 Q2", 6.0, 50, 9.0, "XYZ", "Ex 4.1 Q2 - YZ = 6 cm, angle Y = 50, XY + XZ = 9 cm"),
+        # Q3's given angle is at C, so C takes the angle-vertex slot: names "ACB".
+        ("Ex 4.1 Q3", 6.2, 50, 9.8, "ACB", "Ex 4.1 Q3 - BC = 6.2 cm, angle ACB = 50, AB + AC = 9.8 cm"),
+        # Q4 gives the PERIMETER with a base and an adjacent angle, so subtract
+        # the base first: AB + AC = 10 - 3.2 = 6.8. Still Construction I.
+        ("Ex 4.1 Q4", 3.2, 45, 6.8, "ACB",
+         "Ex 4.1 Q4 - BC = 3.2 cm, angle ACB = 45, perimeter 10 cm so AB + AC = 6.8 cm"),
+        ("Prob Q1", 4.9, 45, 10.3, "XYZ", "Prob Q1 - YZ = 4.9 cm, angle Y = 45, XY + XZ = 10.3 cm"),
     ]:
         out.append(_construction_spec(ref, _construct_sum(base, ang, tot, nm), cap))
-    # Practice set 4.2 - base, adjacent angle, DIFFERENCE of the other two sides
+    # ── Construction II: base, an adjacent angle, DIFFERENCE of the other two ──
+    # A NEGATIVE `diff` is the book's second worked case, where the LARGER side is
+    # the one NOT meeting the given angle (AC - AB given): D then falls on the
+    # opposite ray, which is exactly what a negative parameter produces, and
+    # `_assert_construction` still checks AD == AC and AB - AC == the (negative)
+    # given. One solver, both cases.
     for ref, base, ang, dif, nm, cap in [
-        ("Ex 4.2 Q1", 7.4, 45, 2.7, "XYZ", "YZ = 7.4 cm, angle Y = 45, XY - XZ = 2.7 cm"),
+        ("4.2 SolvedEx.1", 7.5, 40, 3.0, "ABC",
+         "4.2 SolvedEx.1 - BC = 7.5 cm, angle B = 40, AB - AC = 3 cm"),
+        ("4.2 SolvedEx.2", 7.0, 40, -3.0, "ABC",
+         "4.2 SolvedEx.2 - BC = 7 cm, angle B = 40, AC - AB = 3 cm (D on the opposite ray)"),
+        ("Ex 4.2 Q1", 7.4, 45, 2.7, "XYZ", "Ex 4.2 Q1 - YZ = 7.4 cm, angle Y = 45, XY - XZ = 2.7 cm"),
+        ("Ex 4.2 Q2", 6.5, 40, 2.5, "PQR", "Ex 4.2 Q2 - QR = 6.5 cm, angle Q = 40, PQ - PR = 2.5 cm"),
+        ("Ex 4.2 Q3", 6.0, 100, -2.5, "ABC",
+         "Ex 4.2 Q3 - BC = 6 cm, angle B = 100, AC - AB = 2.5 cm (D on the opposite ray)"),
+        ("Prob Q4", 6.4, 55, 2.4, "PQR", "Prob Q4 - QR = 6.4 cm, angle Q = 55, PQ - PR = 2.4 cm"),
     ]:
         out.append(_construction_spec(ref, _construct_diff(base, ang, dif, nm), cap))
+    # ── Construction III: the PERIMETER and the two angles including the base ──
+    # Angles are the PRINTED ones; `_construct_perimeter` halves them itself.
+    # `ends` names the two auxiliary endpoints and MUST match the letters the
+    # row's authored solution text uses — Ex 4.3 Q1's triangle is PQR and
+    # Ex 4.3 Q2's solution works on MN, so neither can take the default "PQ".
+    for ref, per, aB, aC, nm, ends, cap in [
+        ("4.3 SolvedEx.1", 11.3, 70, 60, "ABC", "PQ",
+         "4.3 SolvedEx.1 - AB + BC + CA = 11.3 cm, angle B = 70, angle C = 60"),
+        ("Ex 4.3 Q1", 9.5, 70, 80, "PQR", "MN",
+         "Ex 4.3 Q1 - PQ + QR + PR = 9.5 cm, angle Q = 70, angle R = 80"),
+        ("Ex 4.3 Q2", 10.5, 46, 58, "ZXY", "MN",
+         "Ex 4.3 Q2 - perimeter 10.5 cm, angle X = 46, angle Y = 58"),
+        ("Ex 4.3 Q3", 11.0, 60, 80, "LMN", "PQ",
+         "Ex 4.3 Q3 - LM + MN + NL = 11 cm, angle M = 60, angle N = 80"),
+        ("Prob Q2", 11.2, 70, 60, "ABC", "PQ",
+         "Prob Q2 - AB + BC + AC = 11.2 cm, angle B = 70, angle C = 60"),
+    ]:
+        out.append(_perimeter_spec(ref, _construct_perimeter(per, aB, aC, nm, ends), cap))
+    # ── The one question that is none of the three taught types ──────────────
+    out.append(_ratio_spec(
+        "Prob Q3", _construct_ratio(14.4, (2, 3, 4), "ABC"),
+        "Prob Q3 - perimeter 14.4 cm, sides in the ratio 2 : 3 : 4, so 3.2, 4.8 and 6.4 cm"))
     return out
 
 
@@ -930,6 +1556,7 @@ def build_statistics_specs():
 SPEC_BUILDERS = {
     "statistics-9": build_statistics_specs,
     "constructions-9": build_constructions_specs,
+    "circle-9": build_circle_specs,
     "pair-lines-12": build_pair_lines_specs,
     "linear-prog-12": build_linear_prog_specs,
     "app-def-integration-12": build_app_integration_specs,
