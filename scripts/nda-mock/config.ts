@@ -1394,22 +1394,31 @@ PAPERS.w1 = {
       reason:
         "this question alone labels its options `A) B) C) D)` — uppercase, closing paren only, no opening paren. Measured across all four weekly papers it is the ONLY such line, so the four texts are supplied here rather than teaching the shared label pattern an uppercase form: `A.`/`A)` occurs in ordinary assertion-reason prose ('...and R explains A'), and loosening it would put all fourteen papers at risk to fix one question. Texts are verbatim; the key is untouched",
     },
+    16: {
+      answer: "A",
+      reason:
+        "PRINTED KEY D IS WRONG; the period is 1. The solution's entire argument is a non-sequitur — it says '[x] is not a periodic function, therefore f(x) is non-periodic', reasoning about [x] in ISOLATION when the stem combines it as -x + [x], which is exactly the fractional part -{x} and IS periodic with period 1. Since tan(pi*x) also has period 1, f(x+1) = f(x) identically; verified to 1e-14 at seven awkward points (0.13, 0.37, 0.61, 1.29, -0.71, 2.44, 3.87), and 1/4, 1/3, 1/2 and 3/4 were each tested and rejected, so 1 is the FUNDAMENTAL period and option A is right",
+    },
   },
-  // Two WRONG PRINTED KEYS, both surfaced by the blind pass and both proved
-  // from the paper's own working rather than from the derivation that flagged
-  // them. Note this paper's grid key agrees with its solution letters on all 33
+  // TWO WRONG PRINTED KEYS on this paper (Q10 here, Q16 in the errata above),
+  // both surfaced by the blind pass and both proved from the paper's own
+  // working rather than from the derivation that flagged them.
+  //
+  // A corrected key goes in `errata.answer` wherever it can, NOT here: that
+  // replaces the key before adjudication, so the blind derivation keeps working
+  // as a live check and the agreement shows up as a real AGREE. `resolutions`
+  // short-circuits the comparison, which is right only when there is nothing to
+  // compare — Q10 is here precisely because its blind derivation is `null` (the
+  // agent correctly refused to answer a stem that mentions no n).
+  //
+  // Note this paper's grid key agrees with its solution letters on all 33
   // questions where both exist — so two sources agreeing is not evidence the
-  // answer is right, only that they were typed from each other.
+  // answer is right, only that one was typed from the other.
   resolutions: {
     10: {
       answer: "C",
       reason:
         "printed key B is WRONG, and the paper's own solution refutes it. With the stem repaired to the exponent n/2 that the solution itself prints, (1 + sqrt3 i)^(n/2) = 2^(n/2) * exp(i*pi*n/6), which is positive real exactly when n is a multiple of 12. The solution factors it as (-2)^(n/2) * omega^n and then asserts that is positive 'when n = 6, 12, 24, 36' — but at n = 6 its OWN expression evaluates to (-2)^3 * omega^6 = -8, a NEGATIVE real. Its list is wrong at the first element and the key follows that error. Verified: n=3 gives 2.83i, n=6 gives -8, n=12 gives +64, so 12 = option C",
-    },
-    16: {
-      answer: "A",
-      reason:
-        "printed key D ('None of these') is WRONG; the period is 1. The solution's entire argument is a non-sequitur — it says '[x] is not a periodic function, therefore f(x) is non-periodic', reasoning about [x] in ISOLATION when the stem combines it as -x + [x], which is exactly the fractional part -{x} and IS periodic with period 1. Since tan(pi*x) also has period 1, f(x+1) = f(x) identically; verified to 1e-14 at seven awkward points (0.13, 0.37, 0.61, 1.29, -0.71, 2.44, 3.87), and 1/4, 1/3, 1/2 and 3/4 were each tested and rejected, so 1 is the FUNDAMENTAL period and option A is right",
     },
   },
 };
@@ -1643,6 +1652,16 @@ PAPERS.w3 = {
       reason:
         "the partially-recovered table is printed as an image (media/image2.png), so all FIVE questions of this set (94-98) lost the only three numbers the puzzle supplies and were unanswerable. The blanks are deliberate — they are what the questions ask for — so the table is transcribed with them intact. The reading (Male/Excellent 10, Female/Total 32, Total/Good 30) is confirmed by all five printed keys simultaneously: 40% female = 32 gives 80 students and 48 males; a third of males average = 16 (key Q94); excellent+good = 40 with good = 30 leaves excellent = 10, all male, so female excellent = 0 (key Q95); male good = 48 - 16 - 10 = 22 (key Q98); 22/30 = 0.73 (key Q96); (30-22)/32 = 0.25 (key Q97)",
     },
+    24: {
+      answer: "A",
+      reason:
+        "printed key B is WRONG. The number of ways to throw a sum of 6 with n dice is the number of compositions of 6 into n parts of 1..6, i.e. C(5, n-1) — verified by exhaustive enumeration: 10 of 1296 with four dice, 10 of 216 with three, 5 of 36 with two. Those probabilities are 5/648 : 5/108 : 5/36, a ratio of 1 : 6 : 18 = option A. The paper's own solution asserts the favourable counts are 2^4, 2^3, 2^2 (16, 8, 4), which are simply not the counts — the true values are 10, 10, 5 — and its 1:3:9 follows from that error",
+    },
+    36: {
+      answer: "C",
+      reason:
+        "printed key A (=2) is WRONG; A = 5 = option C. The first term is log2 log2 log4 256 = log2 log2 4 = log2 2 = 1. The second is 2*log_sqrt2(2) = 2*2 = 4, since log_sqrt2(2) = 2. So A = 5. The solution's own rewrite of the second argument to (sqrt2)^2 changes nothing — that is still 2, so the term is still 4 and A is still 5 — but it then evaluates the term as 1, which is where the key comes from. For the key to be right log_sqrt2(2) would have to be 0.5 rather than 2, so the solution contradicts itself rather than merely disagreeing with us",
+    },
     49: {
       answer: "C",
       reason:
@@ -1666,6 +1685,28 @@ PAPERS.w4 = {
   questionCount: 120,
   note: "NDA Mathematics weekly mock test 4, 29-03-26 (LWS NDA-1 2026 test series)",
   errata: {
+    14: {
+      optionTexts: [
+        "\\(400\\sqrt{3}\\text{ }m\\)",
+        "\\(\\frac{400}{\\sqrt{3}}\\text{ }m\\)",
+        "\\(\\frac{100}{\\sqrt{3}}\\text{ }m\\)",
+        "\\(200\\sqrt{3}\\text{ }m\\)",
+      ],
+      reason:
+        "option (d) absorbed the set header that follows it. The source prints 'For next two question' on its own line between this question and Q15, and since it names neither Direction/Passage nor a Q-range, detectDirectionSets does not cut there and the trailing line was swallowed by the last option chain. Measured across all four weekly papers this spelling occurs ONCE, so it is repaired here rather than taught to the shared header pattern",
+    },
+    16: {
+      context:
+        "For the next two questions, consider the sphere \\(4\\left( x^{2} + y^{2} + z^{2} \\right) - 16x + 20y - 32z + 5 = 0\\).",
+      reason:
+        "the stem is the bare phrase 'Find the centre' — the object lives in Q15, which the swallowed 'For next two question' header was introducing, so as extracted this question names nothing to find the centre OF. The sphere is restored as shared context from Q15's own stem. Note the key (d) is correct and is NOT changed: dividing by 4 gives centre (2, -5/2, 4) and radius 5 (which is also Q15's printed key), and option (b) prints (2, 5/2, 4) — right in two coordinates, wrong in the SIGN of y — so no option matches and 'none' is right. Option (d) is printed as the bare word 'Not' in the source and is left as printed: nothing in the paper documents the intended wording, and expanding it would be invention",
+    },
+    31: {
+      stem:
+        "The two positive number, whose difference is 12 and whose A.M. exceeds their G.M. by 2, are",
+      reason:
+        "the stem trails a stray fragment of untranslated Hindi ('वे दो धनात्मक' — 'those two positive'), a bilingual-paper artifact left mid-sentence in the source. Dropped as a dangling fragment; the English stem is complete without it and the key is untouched",
+    },
     98: {
       stem:
         "Find the mean deviation about median for the following data.\n\n" +

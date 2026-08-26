@@ -1,0 +1,202 @@
+[
+  {
+    "number": 21,
+    "answer": "C",
+    "working": "General term T(r+1) = C(17,r) (x^(1/2))^(17-r) (-y^(1/2))^r. The 16th term is r = 15: C(17,15) = C(17,2) = 136, x-power (17-15)/2 = 1, y-power 15/2, and (-1)^15 = -1, so T16 = -136 x y^(15/2). Confirmed symbolically.",
+    "confidence": "high",
+    "chapter": "Binomial Theorem",
+    "subtopic": "Coefficients and Specific Terms in Expansion",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 22,
+    "answer": "D",
+    "working": "As printed the second term is sqrt(3/(2x^2)) = sqrt(3/2) * x^(-1), so the exponent of x in T(r+1) is (10-r)/2 - r = (10-3r)/2, zero only at the non-integer r = 10/3. Expanding all 11 terms gives x-exponents 5, 7/2, 2, 1/2, -1, -5/2, -4, -11/2, -7, -17/2, -10 (an arithmetic ladder of step -3/2) and none of them is 0, so no term is independent of x and 'None of these' is correct as the stem stands.",
+    "confidence": "medium",
+    "chapter": "Binomial Theorem",
+    "subtopic": "Coefficients and Specific Terms in Expansion",
+    "difficulty": "MODERATE",
+    "notes": "Probable transcription defect in the scope of the second radical. If the second term is sqrt(3)/(2x^2) (radical over the 3 only) -- the standard textbook form of this problem -- the exponent condition is (10-r)/2 - 2r = 0, giving r = 2 and constant term C(10,2)*(1/3)^4*(3/4) = 135/324 = 5/12, i.e. option B exactly. That exact match to a printed option is strong evidence the intended stem is the sqrt(3)/(2x^2) form and that the printed key is B. Under the stem AS PRINTED that value cannot arise at all: the r = 2 term has coefficient 5/6 and sits at x^2. Answered D per the as-printed rule; flagging so the adjudicator can decide whether to repair the radical."
+  },
+  {
+    "number": 23,
+    "answer": "D",
+    "working": "Binomial with n = 5, p = 3/4. P(at least 3) = sum over k = 3,4,5 of C(5,k)(3/4)^k(1/4)^(5-k) = (10*27 + 5*81 + 1*243)/4^5 = (270+405+243)/1024 = 918/1024 = 459/512.",
+    "confidence": "high",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Computing Binomial Probabilities — Exact, At-Least, and Complementary Events",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 24,
+    "answer": "A",
+    "working": "A sum of 6 with n dice needs compositions of 6 into n parts each between 1 and 6 (the upper bound never binds here). 4 dice: C(5,3) = 10 of 6^4 = 1296. 3 dice: C(5,2) = 10 of 216. 2 dice: 5 of 36. So the probabilities are 10/1296, 10/216, 5/36; multiplying all three by 1296 gives 10 : 60 : 180 = 1 : 6 : 18, in the stated order 4, 3, 2 dice. Counts verified by exhaustive enumeration.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 25,
+    "answer": "A",
+    "working": "P(fail Maths | fail Chemistry) = P(fail both)/P(fail Chemistry) = 0.10/0.15 = 2/3.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 26,
+    "answer": "B",
+    "working": "For mutually exclusive events P(A union B union C) = P(A)+P(B)+P(C) = 2/3 + 1/4 + 1/6 = 8/12+3/12+2/12 = 13/12, which exceeds 1. No probability can exceed 1, so this assignment is impossible and the statement is false.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 27,
+    "answer": "C",
+    "working": "One experiment is 3 tosses and 'success' is exactly 2 heads, with probability C(3,2)/2^3 = 3/8; so a single experiment fails with probability 5/8. Repeating the experiment 3 times independently, P(no success at all) = (5/8)^3 = 125/512.",
+    "confidence": "high",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Computing Binomial Probabilities — Exact, At-Least, and Complementary Events",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 28,
+    "answer": "B",
+    "working": "The product ends in 1, 3, 7 or 9 exactly when it is odd and not divisible by 5, which forces every factor's last digit into {1,3,7,9} (any factor ending in an even digit makes the product even; any ending in 5 makes it end in 5 or 0). Each factor's last digit is one of 10 equally likely digits, so the probability is (4/10)^4 = (2/5)^4 = 16/625. Verified by enumerating all 10^4 last-digit combinations: 256/10000 = 16/625.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 29,
+    "answer": "B",
+    "working": "Inclusion-exclusion: P(A intersect B) = P(A) + P(B) - P(A union B) = 1/4 + 2/5 - 1/2 = (5 + 8 - 10)/20 = 3/20.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 30,
+    "answer": "A",
+    "working": "A splits into (A intersect B) and (A intersect B'), so P(A intersect B') = P(A) - P(A intersect B) = 1/4 - 3/20 = 5/20 - 3/20 = 2/20 = 1/10.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 31,
+    "answer": "B",
+    "working": "By De Morgan, A' intersect B' is the complement of A union B, so P(A' intersect B') = 1 - P(A union B) = 1 - 1/2 = 1/2.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Event Algebra — Inclusion-Exclusion, Mutually Exclusive, Exhaustive",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 32,
+    "answer": "C",
+    "working": "|z-1| = |z+i| says z is equidistant from 1 = (1,0) and -i = (0,-1), i.e. the perpendicular bisector of that segment. With z = x+iy: (x-1)^2 + y^2 = x^2 + (y+1)^2 reduces to -2x = 2y, so y = -x -- a straight line, and it passes through the origin.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Conjugate",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 33,
+    "answer": "B",
+    "working": "w = -1/2 + i sqrt(3)/2 is a primitive cube root of unity, so w^3 = 1 and 1 + w + w^2 = 0; hence -1-w^2 = w and w^4 = w. The determinant becomes |1 1 1; 1 w w^2; 1 w^2 w| = (w^2 - w^4) - (w - w^2) + (w^2 - w) = 3(w^2 - w) = 3w(w-1). Numerically -3*sqrt(3)*i, which matches option B exactly; option D is its negative (+3*sqrt(3)*i) and option C is -1.5 - 2.598i.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Special Determinants — Trig, Complex, Roots of Unity, Polynomial",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 34,
+    "answer": "C",
+    "working": "(1+i)/sqrt(2) = exp(i pi/4) and (1-i)/sqrt(2) = exp(-i pi/4). The 8th powers are exp(2 pi i) = 1 and exp(-2 pi i) = 1, so the sum is 1 + 1 = 2. Confirmed symbolically.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Powers and Roots",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 35,
+    "answer": "B",
+    "working": "Reading the denominator as iz+1 and putting z = x+iy, rationalising gives Im((2z+1)/(iz+1)) = (-x(2x+1) - 2y(y-1))/(x^2 + (y-1)^2). Setting that equal to -2 and clearing the denominator cancels the -2x^2 and -2y^2 terms on both sides and leaves x + 2y - 2 = 0, a straight line (strictly, the line minus the point (0,1) where the denominator vanishes -- that point does lie on the line).",
+    "confidence": "medium",
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Conjugate",
+    "difficulty": "MODERATE",
+    "notes": "The stem prints the denominator's z carrying a DOT accent (pandoc 'overset dot over z'), which is not standard notation in a complex-locus problem -- a dot over z is a time derivative, meaningless here. I read it as plain z, the standard anthologised form of this problem, which yields the straight line x + 2y - 2 = 0. If instead the dot is a mangled CONJUGATE bar, i.e. Im((2z+1)/(i*conj(z)+1)) = -2, the same rationalisation gives -x + 4y^2 + 6y + 2 = 0, i.e. x = 4y^2 + 6y + 2, a PARABOLA -- option C. Both readings land on a printed option, so the option list does not disambiguate; the accent is the only evidence and it is ambiguous. Flagging for adjudication rather than treating either reading as settled."
+  },
+  {
+    "number": 36,
+    "answer": "C",
+    "working": "Innermost first: log_4 256 = log_4 (4^4) = 4; then log_2 4 = 2; then log_2 2 = 1. And 2 log_(sqrt 2) 2 = 2 * (ln 2 / ln 2^(1/2)) = 2 * 2 = 4. So A = 1 + 4 = 5.",
+    "confidence": "high",
+    "chapter": "Logarithms",
+    "subtopic": "Logarithm Identities, Change of Base, and Sums",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 37,
+    "answer": "C",
+    "working": "(a+2b)^2 = a^2 + 4b^2 + 4ab = 12ab + 4ab = 16ab, so a+2b = 4 sqrt(ab) and log(a+2b) = log 4 + (1/2) log(ab) = 2 log 2 + (1/2)(log a + log b) = (1/2)(log a + log b + 4 log 2). Checked numerically at six (a,b) pairs satisfying the constraint, deliberately with b not equal to 1: b = 1 makes log b = 0 and so makes options C and D identical, i.e. it is not a discriminating point. At b = 2, b = 5 and b = 3/7 only option C matches.",
+    "confidence": "high",
+    "chapter": "Logarithms",
+    "subtopic": "Logarithm Identities, Change of Base, and Sums",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 38,
+    "answer": "A",
+    "working": "C1 -> C1+C2+C3 makes every entry of the first column 2 + 4 sin 4t (using sin^2 + cos^2 = 1 in each row); factor it out, then R2-R1 and R3-R1 leave a triangular determinant equal to 1. So the determinant is 2 + 4 sin 4t, and it vanishes when sin 4t = -1/2. With t in (0, pi/2), 4t runs over (0, 2pi), giving 4t = 7pi/6 or 11pi/6, i.e. t = 7pi/24 or 11pi/24. Only 7pi/24 is offered (13pi/24 exceeds pi/2, and both 5pi/24 and pi/24 give determinant 4, not 0).",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Special Determinants — Trig, Complex, Roots of Unity, Polynomial",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 39,
+    "answer": "B",
+    "working": "A determinant equals that of its transpose, so A = |a b c; d e f; l m n|. B = |l m n; a b c; d e f| is that same matrix with its rows cyclically shifted (third row brought to the top), a 3-cycle and therefore an even permutation, so the determinant is unchanged: B = A and A - B = 0. Verified symbolically (A - B expands to 0, while A + B is twice a non-zero general expression, so option A fails).",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Determinant Properties, Operations, and Sums",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 40,
+    "answer": "C",
+    "working": "R1 -> R1+R2+R3 makes every entry of the first row a+b+c; factoring that out and then doing C2-C1 and C3-C1 leaves a triangular determinant with diagonal 1, -(a+b+c), -(a+b+c), i.e. (a+b+c)^2. Total (a+b+c)^3. Confirmed symbolically: the expansion factors exactly as (a+b+c)^3.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Determinant Properties, Operations, and Sums",
+    "difficulty": "MODERATE",
+    "notes": ""
+  }
+]
