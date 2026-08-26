@@ -206,6 +206,37 @@ which silently lost data before it was handled:
 `NOS_RANGE` already tolerated it; `tests/nda-mock-parse.test.ts` now pins that so
 it cannot regress.
 
+### Outcome: 465 of 480 committed, and the keys are worse than they look
+
+All 480 questions were blind-derived (24 packets) and adjudicated to **zero
+disagreements**. Committed PRIVATE, `question_kind='practice'`:
+
+| | committed | wrong keys found | held | deduped |
+|---|---|---|---|---|
+| w1 | 113 | **8** | 6 | 1 |
+| w2 | 117 | 0 | 1 | 2 |
+| w3 | 118 | 3 | 2 | 0 |
+| w4 | 117 | 2 | 2 | 1 |
+
+**13 wrong printed keys, and w1 holds eight of them.** That paper is the reason
+the blind pass is not optional here, and its failure mode is specific: **its KEY
+GRID is unreliable while its SOLUTIONS are mostly sound.** Six of its eight are
+refuted by the paper's own working — the solution computes the division point
+correctly and the key disagrees (Q77), the solution says "This is a first-order
+equation" while its key claims order 2 (Q117), the solution performs the
+LCM-of-6 step and the key prints the resulting pair transposed (Q116).
+
+**Two sources agreeing is not evidence.** w1's grid key agrees with its solution
+letters on all 33 questions where both exist, and two of those agreed answers are
+wrong. Agreement only means one was typed from the other.
+
+**Fifteen questions were held**, eleven of them because NO printed option is
+correct — not because the derivation was uncertain. w1's Q61-72 statistics block
+alone accounts for five: 664/1225 against options {0.32, 0.34, 0.66, 0.52};
+3/715 with its numerator and denominator split across DIFFERENT options; a
+combined variance of 266/9 = 29.556 against a key of 29.33; and a Q72 whose stem
+and its own solution use different data, neither reading landing on an option.
+
 ### Data printed as a picture of a table
 
 Five questions across the weekly series print their data as an image, leaving the
@@ -365,12 +396,22 @@ matches ordinary prose. Source-verified as CORRECT, do not "fix":
 |---|---|---|
 | m3 Q94 | `SOLN≠KEY` | solution says "nothing can be said about option (a), (b) and (c)" — the trailing `(c)` reads as the conclusion |
 | m10 Q11 | `SOLN_A!=KEY_C` | solution ends "Hence A ∩ B = Φ" — `A` is a SET NAME, not an option letter. Key C is right: e^x > x for all real x, so the curves never meet |
+| w3 Q9 | `SOLN_A!=KEY_C` | solution ends "Hence, **a** relation R is reflexive and transitive" — the indefinite ARTICLE reads as an option letter. Key C is right |
 
-The third standing flag is NOT a false positive and must not be "fixed" either:
+And one from `audit:text`, same character:
+
+| Row | Flag | Why it fires |
+|---|---|---|
+| w2 Q37 | `TABLE_NO_SEPARATOR` | determinant notation `\|A\| = 1(18-5) …` with LaTeX `\\` row breaks looks like a pipe-table row. There is no `\|---\|` separator, so `parseTableBlocks` correctly leaves it as prose — which is the intended behaviour, not a defect |
+
+These flags are NOT false positives and must not be "fixed" either — in each the
+stored answer is right and the SOURCE contradicts itself:
 
 | Row | Flag | Why it fires |
 |---|---|---|
 | m6 Q10 | `SOLN_A!=KEY_B` | the printed solution proves "Statement I is false. Statement II is true by definition" and then closes "Hence, **(a)** is the correct answer" — contradicting itself in its own last line. The stored answer B ("Only II") follows the reasoning and is correct; the source's concluding LETTER is the defect |
+| w4 Q35 | `SOLN_D!=KEY_B` | taking log₁₀ reduces the inequality to `(t−3)(t²+1) > 0`, i.e. `t > 3`, so `x > 1000` = key B. BOTH halves of the solution are wrong: its derivation claims an extra `(0,1)` branch (at x = 0.5 the LHS is 0.25, not > 1000) and it then closes "Hence option (d)". Key B stands |
+| w1 Q41, w2 Q57 | `DUP_OPT` | genuine printed duplicates — w1 Q41's options (A) and (D) are both 3600, and w2 Q57's (A) and (B) both read "Only I". Both were reported by the blind agents at derivation time; the answers are unaffected because the correct value appears exactly once in each |
 
 So the bank-wide sweep over all 1,181 rows leaves exactly three flags: two probe artefacts and one
 genuine source contradiction whose row is already right.
