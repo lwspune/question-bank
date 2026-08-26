@@ -77,8 +77,19 @@ const LLM_RESIDUE = /\bas an AI\b|\bI cannot\b|\bI'm unable\b|\blanguage model (
 /** Assertion-instead-of-derivation markers. */
 const HANDWAVE = /\b(?:obviously|clearly|evidently)\b|it is (?:a )?(?:well[- ]known|standard) (?:fact|result)|self[- ]explanatory|by inspection it is clear/i;
 
-/** A stem that promises a figure. */
-const FIGURE_REF = /\b(?:figure|fig\.|diagram|graph|image|picture|shown (?:below|above)|given (?:figure|diagram))\b/i;
+/**
+ * A stem that promises a figure.
+ *
+ * `image` and `picture` are deliberately NOT here. In a GAT paper the overwhelmingly
+ * common use of "image" is the OPTICAL sense — "what will be the nature of the image?"
+ * for a concave mirror — which references no figure at all. Including it produced 7
+ * false positives against 2 genuine hits across four papers, and a probe that is wrong
+ * three times out of four gets ignored, which costs more than it catches.
+ */
+const FIGURE_REF = /\b(?:figure|fig\.|diagram)\b|\bshown (?:below|above|in the)\b|\bgiven (?:figure|diagram)\b|\bgraph (?:below|above|shown|given)\b/i;
+// `graph` needs a locative too, for the same reason as `image`: "which best describes the
+// displacement-time GRAPH of a particle" asks what SHAPE a graph would have and references
+// no printed figure at all. Bare `graph` produced a false positive on exactly that.
 
 export function lintRecord(r: PaperRec & { context?: string; imageUrl?: string | null }): Finding[] {
   const out: Finding[] = [];
@@ -143,7 +154,14 @@ function main() {
     readFileSync(join(DATA, spec.recordsFile ?? `${slug}.records.json`), "utf-8"),
   );
 
-  const findings = recs.flatMap((r) => lintRecord(r as any));
+  const status = new Map(recs.map((r) => [r.n, r.status ?? "new"]));
+  // A `dup` or `flawed` row is never PUBLIC — and under createPaper:false it is never
+  // even committed. Its defects are the audit trail of what the book got wrong, so they
+  // are REPORTED but must not block: otherwise a faithfully-documented book defect stops
+  // a clean ingest, and the pressure becomes to stop documenting it.
+  const findings = recs
+    .flatMap((r) => lintRecord(r as any))
+    .map((f) => (status.get(f.n) === "new" ? f : { ...f, severity: "TRIAGE" as const, msg: `[${status.get(f.n)}, withheld] ${f.msg}` }));
   const blocking = findings.filter((f) => f.severity === "BLOCK");
   const triage = findings.filter((f) => f.severity === "TRIAGE");
 

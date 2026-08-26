@@ -93,6 +93,835 @@ export type PaperSpec = {
 };
 
 export const PAPERS: Record<string, PaperSpec> = {
+  // Oswaal "NDA/NA: 10 Mock Test Papers" — GAT Mock Test 2. 150-q publisher-authored
+  // GAT mock (English Q1–50 + General Knowledge Q51–150), filed as PRACTICE, not PYQ.
+  // Multi-subject, per-record `subject` + `chapter`. Mix: English 50 · Physics 27 · Geography 19 · History 17 · Chemistry 13 · Biology 12 · Current Affairs 8 · Polity 4.
+  //
+  // 117 new / 15 dup / 18 flawed. Only `new` rows are PUBLIC-eligible.
+  // flawed: [2, 23, 41, 56, 65, 69, 77, 79, 80, 83, 84, 85, 87, 98, 135, 146, 148, 149]
+  // dup:    [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 58, 82, 86, 123, 133]
+  //
+  // Answer policy for this source: the printed key is the WEAKER of its two printed
+  // sources. Wherever key and worked solution named different letters, adjudication
+  // sided with the SOLUTION — 12 times out of 12 across the series. And most disputes
+  // show NO letter disagreement at all: the solution states the key's letter while its
+  // own words prove another. Every disputed key is PRESERVED as printed, held `flawed`
+  // (so the row never publishes), with the derivation in its reviewNote.
+  // See scripts/practice-paper/GAT_RULES.md.
+  "oswaal-gat-mock-2": {
+    slug: "oswaal-gat-mock-2",
+    title: "NDA GAT — Oswaal Mock Test 2 (150 Q)",
+    recordsFile: "oswaal-gat-mock-2.records.json",
+    outName: "Tags_NDA_Oswaal_GAT_Mock_2",
+    sourceFile: "Oswaal_NDA_GAT_Mock_Test_2.pdf",
+    subjects: {
+      "Biology": {
+        "Biodiversity and Classification": ["Animal Kingdom Classification"],
+        "Cell Biology": ["Cell Organelles and Functions", "Osmosis and Tonicity"],
+        "Ecology and Environment": ["Ecosystems, Biomes and Ecological Interactions"],
+        "Genetics and Evolution": ["Heredity and DNA"],
+        "Human Physiology": [
+          "Circulatory and Lymphatic System",
+          "Connective and Epithelial Tissues",
+          "Excretory and Reproductive Anatomy",
+          "Nervous System and Sense Organs",
+        ],
+        "Microbiology and Disease": ["Pathogens and Diseases"],
+      },
+      "Chemistry": {
+        "Acids, Bases and Salts": ["Common Acids: Names, Formulas and Uses"],
+        "Atomic Structure and Periodic Classification": ["Periodic Trends, Valency and Atomicity"],
+        "Carbon and Its Compounds": ["Allotropes of Carbon"],
+        "Chemistry in Everyday Life": ["Common Chemicals and Their Uses"],
+        "Hydrogen and Water": ["Hardness and Purity of Water"],
+        "Industrial and Applied Chemistry": [
+          "Cement, Glass and Building Materials",
+          "Fertilizers",
+          "Industrial Gases, Manufacturing and Reactions",
+        ],
+        "Matter and Its States": ["Compounds, Mixtures and Solutions"],
+        "Metals and Non-Metals": ["Extraction of Metals and Ores", "Reactivity Series and Reactions with Water"],
+      },
+      "Current Affairs": {
+        "Awards, Honours, Books and Culture": ["Indian Art, Architecture and Cultural Practices"],
+        "Defence and Military Exercises": ["Military Exercises — Bilateral and Multilateral"],
+        "Environment, Ecology and Energy": [
+          "Environmental Campaigns, Disasters and Energy",
+          "Wildlife Conservation and Species",
+        ],
+        "Government Schemes, Policy and Governance": ["Government Events, Reports and Announcements"],
+        "Science and Technology": ["Space Technology and Astronomy"],
+      },
+      "English": {
+        "Idioms and Phrases": ["Idiom Meaning"],
+        "Sentence Rearrangement": ["Sentence Part Rearrangement (PQRS)"],
+        "Spotting Errors": [
+          "Articles, Determiners and Pronouns",
+          "Subject-Verb Agreement",
+          "Tense and Verb Form",
+          "Word Choice, Prepositions and Punctuation",
+        ],
+        "Vocabulary": ["Antonyms", "Synonyms"],
+      },
+      "Geography": {
+        "Climatology, Atmosphere and Weather": [
+          "Atmospheric Layers, Composition and Aurora",
+          "Atmospheric Pressure and Winds",
+          "Climate Classification and Zones",
+          "Cyclones, Fronts and Local Winds",
+          "Humidity, Condensation, Clouds and Precipitation",
+          "Insolation, Temperature and Solar Geometry",
+        ],
+        "Earth's Structure, Landforms and Geological Time": [
+          "Landforms and Mass Movements",
+          "Rocks, Minerals and Geological Time",
+        ],
+        "Indian Geography — Economy, Resources and Transport": [
+          "Minerals and Mining",
+          "Ports and Maritime Infrastructure",
+        ],
+        "Indian Geography — Physical Features": [
+          "Indian Rivers, Lakes and Water Bodies",
+          "Indian Soils and Climate-Agriculture",
+          "Mountains, Plateaus and Plains of India",
+        ],
+        "Oceanography": ["Tides and Ocean Movements"],
+      },
+      "History": {
+        "Ancient India": [
+          "Buddhism, Jainism and Religious Architecture",
+          "Harappan and Indus Valley Civilization",
+          "Post-Mauryan, Gupta and Sangam Period",
+          "Society, Trade and Foreign Connections",
+        ],
+        "Medieval India": [
+          "Bhakti and Sufi Movements",
+          "Medieval Literature and Texts",
+          "Mughal Empire and Administration",
+          "Other Medieval Kingdoms (Chola, Rajput, Ahom, Sikh)",
+        ],
+        "Modern India": [
+          "British Economic Policy and Industrial India",
+          "European Trading and Early British Conquest",
+          "Freedom Movement — INC, Gandhi and Independence",
+        ],
+      },
+      "Physics": {
+        "Electricity and Magnetism": [
+          "Electrical Devices",
+          "Electrical Power, Energy and Heating",
+          "Magnetic Force and Fleming's Rules",
+          "Magnetism and Magnetic Effects of Current",
+          "Resistance and Resistivity",
+        ],
+        "Energy Sources": ["Energy Sources"],
+        "Gravitation": [
+          "Gravitational Field and Potential",
+          "Newton's Law of Gravitation",
+          "Orbits, Kepler and Escape",
+        ],
+        "Heat and Thermodynamics": ["Heat, Calorimetry and Specific Heat", "Temperature and Thermometry"],
+        "Kinematics and Motion": ["Equations of Motion and Graphs"],
+        "Light and Optics": [
+          "Human Eye and Optical Instruments",
+          "Reflection and Mirrors",
+          "Refraction, Speed of Light and TIR",
+        ],
+        "Modern Physics": ["Nuclear Physics"],
+        "Units, Measurement and Dimensions": ["Units and Dimensions"],
+        "Work, Energy and Power": ["Energy and Conservation"],
+      },
+      "Polity": {
+        "Fundamental Rights, DPSP and Local Governance": ["Electoral Systems"],
+        "Government Structure — Parliament, Judiciary and Constitutional Bodies": [
+          "Parliament — Composition, Procedures and Powers",
+        ],
+        "Indian Constitution — Making, Foundation and Amendments": ["Federal Structure — States, UTs and Finance"],
+      },
+    },
+    pyqNote: "NDA GAT practice — Oswaal 10 Mock Test Papers, Mock Test 2",
+    examName: "NDA",
+    section: { key: "oswaal-gat-mock-2", label: "GAT Mock Test 2" },
+    bankAdd: true,
+    createPaper: false, // bank rows only — no /dashboard/papers paper, no OMR Excel requested
+  },
+  // Oswaal "NDA/NA: 10 Mock Test Papers" — GAT Mock Test 5. 150-q publisher-authored
+  // GAT mock (English Q1–50 + General Knowledge Q51–150), filed as PRACTICE, not PYQ.
+  // Multi-subject, per-record `subject` + `chapter`. Mix: English 50 · Physics 25 · Geography 20 · Chemistry 15 · History 12 · Biology 10 · Polity 10 · Current Affairs 7 · Economics 1.
+  //
+  // 112 new / 24 dup / 14 flawed. Only `new` rows are PUBLIC-eligible.
+  // flawed: [39, 40, 42, 50, 51, 58, 65, 68, 93, 97, 122, 133, 137, 142]
+  // dup:    [5, 6, 7, 11, 12, 13, 14, 15, 16, 17, 18, 21, 22, 23, 24, 25, 31, 37, 38, 41, 47, 48, 49, 66]
+  //
+  // Answer policy for this source: the printed key is the WEAKER of its two printed
+  // sources. Wherever key and worked solution named different letters, adjudication
+  // sided with the SOLUTION — 12 times out of 12 across the series. And most disputes
+  // show NO letter disagreement at all: the solution states the key's letter while its
+  // own words prove another. Every disputed key is PRESERVED as printed, held `flawed`
+  // (so the row never publishes), with the derivation in its reviewNote.
+  // See scripts/practice-paper/GAT_RULES.md.
+  "oswaal-gat-mock-5": {
+    slug: "oswaal-gat-mock-5",
+    title: "NDA GAT — Oswaal Mock Test 5 (150 Q)",
+    recordsFile: "oswaal-gat-mock-5.records.json",
+    outName: "Tags_NDA_Oswaal_GAT_Mock_5",
+    sourceFile: "Oswaal_NDA_GAT_Mock_Test_5.pdf",
+    subjects: {
+      "Biology": {
+        "Biodiversity and Classification": ["Animal Kingdom Classification", "Plant Kingdom Classification"],
+        "Human Physiology": [
+          "Connective and Epithelial Tissues",
+          "Endocrine System and Hormones",
+          "Excretory and Reproductive Anatomy",
+          "Nutrition, Vitamins and Minerals",
+        ],
+        "Microbiology and Disease": ["Disease Vectors — Malaria", "Pathogens and Diseases"],
+        "Plant Biology": ["Plant Tissues and Meristems", "Transpiration, Tropisms and Plant Processes"],
+      },
+      "Chemistry": {
+        "Atomic Structure and Periodic Classification": [
+          "Atomic Models: Dalton, Rutherford, Bohr",
+          "Atomic Number, Mass Number and Subatomic Particles",
+          "Electron Configuration and Valence Shells",
+          "Isotopes and Isoelectronic Species",
+          "Periodic Trends, Valency and Atomicity",
+        ],
+        "Matter and Its States": ["Compounds, Mixtures and Solutions"],
+        "Metals and Non-Metals": ["Reactivity Series and Reactions with Water"],
+        "Mole Concept and Stoichiometry": ["Stoichiometry and Laws of Chemical Combination"],
+      },
+      "Current Affairs": {
+        "Environment, Ecology and Energy": ["Ramsar Sites, Wetlands and Protected Areas"],
+        "Government Schemes, Policy and Governance": ["Health, Education and Welfare Schemes"],
+        "National Events, Persons and India General Knowledge": [
+          "Indian Economy, Geography and Resources",
+          "National Institutions, Milestones and History",
+        ],
+        "Sports": ["Cricket — Records, Tournaments and Players", "Other Sports and Personalities"],
+      },
+      "Economics": {
+        "Indian Economy": ["Five Year Plans and Indian Planning"],
+      },
+      "English": {
+        "Idioms and Phrases": ["Idiom Meaning"],
+        "Sentence Rearrangement": ["Sentence Part Rearrangement (PQRS)"],
+        "Spotting Errors": [
+          "Articles, Determiners and Pronouns",
+          "No Error (Correct Sentence)",
+          "Subject-Verb Agreement",
+          "Tense and Verb Form",
+          "Word Choice, Prepositions and Punctuation",
+        ],
+        "Vocabulary": ["Antonyms", "Synonyms"],
+      },
+      "Geography": {
+        "Earth in Space, Maps and Coordinates": [
+          "Earth's Shape, Rotation and Motion",
+          "Latitude, Longitude and Geographical Grid",
+          "Planets and Solar System",
+          "Time Zones and International Date Line",
+        ],
+        "Earth's Structure, Landforms and Geological Time": [
+          "Landforms and Mass Movements",
+          "Volcanoes and Igneous Activity",
+        ],
+        "Indian Geography — Physical Features": [
+          "Forests and Natural Vegetation of India",
+          "Mountains, Plateaus and Plains of India",
+        ],
+        "Oceanography": ["Marine Ecosystems — Coral Reefs"],
+        "World and Human Geography": [
+          "World — Coordinates, Time and Place",
+          "World — Rivers, Canals and Water Bodies",
+        ],
+      },
+      "History": {
+        "Ancient India": ["Mahajanapadas, Magadha and Mauryan Empire"],
+        "Medieval India": [
+          "Bhakti and Sufi Movements",
+          "Medieval Literature and Texts",
+          "Other Medieval Kingdoms (Chola, Rajput, Ahom, Sikh)",
+        ],
+        "Modern India": [
+          "British Administration, Acts and Legislation",
+          "European Trading and Early British Conquest",
+          "Freedom Movement — INC, Gandhi and Independence",
+          "Post-Independence India",
+        ],
+      },
+      "Physics": {
+        "Electricity and Magnetism": ["Combination of Resistors", "Electrical Devices"],
+        "Fluid Mechanics and Properties of Matter": ["Pressure and Surface Tension"],
+        "Gravitation": ["Newton's Law of Gravitation"],
+        "Heat and Thermodynamics": [
+          "Heat, Calorimetry and Specific Heat",
+          "Phase Change and Boiling",
+          "Thermodynamic Processes",
+        ],
+        "Kinematics and Motion": ["Vectors and Position"],
+        "Laws of Motion and Forces": ["Newton's Laws of Motion"],
+        "Light and Optics": [
+          "Lenses and Lens Formula",
+          "Light Phenomena and Spectrum",
+          "Prisms and Dispersion",
+          "Reflection and Mirrors",
+        ],
+        "Modern Physics": ["Nuclear Physics"],
+        "Oscillations and Waves": ["Simple Harmonic Motion and General Waves", "Simple Pendulum"],
+        "Units, Measurement and Dimensions": ["Units and Dimensions"],
+      },
+      "Polity": {
+        "Fundamental Rights, DPSP and Local Governance": [
+          "Electoral Systems",
+          "Fundamental Rights, DPSP and Duties",
+        ],
+        "Government Structure — Parliament, Judiciary and Constitutional Bodies": [
+          "Constitutional Bodies and Offices",
+          "Parliament — Composition, Procedures and Powers",
+        ],
+        "Indian Constitution — Making, Foundation and Amendments": [
+          "Constitutional Amendments",
+          "Federal Structure — States, UTs and Finance",
+        ],
+      },
+    },
+    pyqNote: "NDA GAT practice — Oswaal 10 Mock Test Papers, Mock Test 5",
+    examName: "NDA",
+    section: { key: "oswaal-gat-mock-5", label: "GAT Mock Test 5" },
+    bankAdd: true,
+    createPaper: false, // bank rows only — no /dashboard/papers paper, no OMR Excel requested
+  },
+  // Oswaal "NDA/NA: 10 Mock Test Papers" — GAT Mock Test 6. 150-q publisher-authored
+  // GAT mock (English Q1–50 + General Knowledge Q51–150), filed as PRACTICE, not PYQ.
+  // Multi-subject, per-record `subject` + `chapter`. Mix: English 50 · Physics 26 · History 22 · Chemistry 14 · Geography 14 · Biology 10 · Polity 8 · Current Affairs 6.
+  //
+  // 108 new / 16 dup / 26 flawed. Only `new` rows are PUBLIC-eligible.
+  // flawed: [10, 47, 52, 54, 58, 61, 63, 70, 79, 94, 106, 107, 113, 115, 117, 118, 122, 127, 129, 130, 132, 134, 135, 142, 143, 147]
+  // dup:    [36, 37, 38, 39, 40, 64, 91, 126, 128, 131, 133, 136, 137, 138, 139, 140]
+  //
+  // Answer policy for this source: the printed key is the WEAKER of its two printed
+  // sources. Wherever key and worked solution named different letters, adjudication
+  // sided with the SOLUTION — 12 times out of 12 across the series. And most disputes
+  // show NO letter disagreement at all: the solution states the key's letter while its
+  // own words prove another. Every disputed key is PRESERVED as printed, held `flawed`
+  // (so the row never publishes), with the derivation in its reviewNote.
+  // See scripts/practice-paper/GAT_RULES.md.
+  "oswaal-gat-mock-6": {
+    slug: "oswaal-gat-mock-6",
+    title: "NDA GAT — Oswaal Mock Test 6 (150 Q)",
+    recordsFile: "oswaal-gat-mock-6.records.json",
+    outName: "Tags_NDA_Oswaal_GAT_Mock_6",
+    sourceFile: "Oswaal_NDA_GAT_Mock_Test_6.pdf",
+    subjects: {
+      "Biology": {
+        "Biochemistry": ["Anaerobic Respiration and Fermentation", "Protein Structure"],
+        "Cell Biology": ["Cell Wall and Cell Membrane"],
+        "Genetics and Evolution": ["Heredity and DNA", "Theory of Evolution"],
+        "Human Physiology": ["Respiratory System"],
+        "Microbiology and Disease": ["Pathogens and Diseases"],
+        "Plant Biology": ["Photosynthesis", "Seed, Fruit and Embryo Development"],
+      },
+      "Chemistry": {
+        "Acids, Bases and Salts": ["Salts and Common Compounds", "pH Scale and Common Substances"],
+        "Atomic Structure and Periodic Classification": [
+          "Atomic Number, Mass Number and Subatomic Particles",
+          "Periodic Trends, Valency and Atomicity",
+        ],
+        "Carbon and Its Compounds": ["Soaps, Detergents and Hydrogenation of Oils"],
+        "Chemical Reactions": ["Redox: Oxidation, Reduction and Reducing Agents"],
+        "Hydrogen and Water": ["Hardness and Purity of Water"],
+        "Matter and Its States": [
+          "Compounds, Mixtures and Solutions",
+          "States of Matter, Phase Changes and Diffusion",
+        ],
+        "Metals and Non-Metals": ["Corrosion and Its Prevention", "Extraction of Metals and Ores"],
+        "Mole Concept and Stoichiometry": ["Stoichiometry and Laws of Chemical Combination"],
+      },
+      "Current Affairs": {
+        "Awards, Honours, Books and Culture": ["UNESCO Recognitions and Cultural Heritage"],
+        "Defence and Military Exercises": ["Defence Awards, Books and Institutions"],
+        "National Events, Persons and India General Knowledge": ["Indian Economy, Geography and Resources"],
+        "Science and Technology": ["DRDO, Defence and Marine Technology", "Nuclear and Renewable Energy"],
+        "Sports": ["Other Sports and Personalities"],
+      },
+      "English": {
+        "Fill in the Blanks": [
+          "Contextual Fill-in-Blank",
+          "Contextual Word Selection (Phrasal Verbs and Collocations)",
+        ],
+        "Grammar": ["Parts of Speech"],
+        "Sentence Rearrangement": ["Sentence Part Rearrangement (PQRS)"],
+        "Spotting Errors": [
+          "Articles, Determiners and Pronouns",
+          "Sentence Improvement",
+          "Subject-Verb Agreement",
+          "Tense and Verb Form",
+        ],
+        "Vocabulary": ["Antonyms", "Synonyms"],
+      },
+      "Geography": {
+        "Climatology, Atmosphere and Weather": [
+          "Atmospheric Pressure and Winds",
+          "Cyclones, Fronts and Local Winds",
+          "Insolation, Temperature and Solar Geometry",
+        ],
+        "Earth's Structure, Landforms and Geological Time": [
+          "Earth's Interior, Crust and Plate Tectonics",
+          "Earthquakes and Seismic Waves",
+          "Landforms and Mass Movements",
+        ],
+        "Indian Geography — Economy, Resources and Transport": ["Highways, Railways and Transport Corridors"],
+        "Indian Geography — Physical Features": [
+          "Forests and Natural Vegetation of India",
+          "Indian Rivers, Lakes and Water Bodies",
+          "Indian Soils and Climate-Agriculture",
+        ],
+      },
+      "History": {
+        "Ancient India": [
+          "Ancient Indian Literature and Inscriptions",
+          "Mahajanapadas, Magadha and Mauryan Empire",
+          "Vedic Age, Society and Literature",
+        ],
+        "Medieval India": [
+          "Bhakti and Sufi Movements",
+          "Medieval Travellers, Trade and Crops",
+          "Mughal Empire and Administration",
+          "Other Medieval Kingdoms (Chola, Rajput, Ahom, Sikh)",
+          "Vijayanagara Empire",
+        ],
+        "Modern India": [
+          "19th Century Social and Religious Reform",
+          "British Administration, Acts and Legislation",
+          "Freedom Movement — INC, Gandhi and Independence",
+        ],
+        "World History": ["Enlightenment and Political Revolutions"],
+      },
+      "Physics": {
+        "Astronomy and Space": ["Astronomy and Space"],
+        "Electricity and Magnetism": [
+          "Combination of Resistors",
+          "Electrostatics",
+          "Magnetic Force and Fleming's Rules",
+          "Magnetism and Magnetic Effects of Current",
+          "Resistance and Resistivity",
+        ],
+        "Fluid Mechanics and Properties of Matter": [
+          "Buoyancy, Density and Flotation",
+          "Pressure and Surface Tension",
+        ],
+        "Heat and Thermodynamics": ["Heat, Calorimetry and Specific Heat", "Temperature and Thermometry"],
+        "Kinematics and Motion": ["Equations of Motion and Graphs"],
+        "Laws of Motion and Forces": ["Newton's Laws of Motion"],
+        "Light and Optics": [
+          "Lenses and Lens Formula",
+          "Reflection and Mirrors",
+          "Refraction, Speed of Light and TIR",
+        ],
+        "Modern Physics": ["Quantum and Modern EM"],
+        "Oscillations and Waves": ["Simple Harmonic Motion and General Waves"],
+        "Sound": ["Foundations — Sound, Perception, and the Ear"],
+        "Work, Energy and Power": ["Work-Energy Theorem and Power"],
+      },
+      "Polity": {
+        "Fundamental Rights, DPSP and Local Governance": ["Fundamental Rights, DPSP and Duties"],
+        "Government Structure — Parliament, Judiciary and Constitutional Bodies": [
+          "Parliament — Composition, Procedures and Powers",
+        ],
+        "Indian Constitution — Making, Foundation and Amendments": [
+          "Constitutional Amendments",
+          "Features, Parts and Schedules of Constitution",
+          "Federal Structure — States, UTs and Finance",
+        ],
+      },
+    },
+    pyqNote: "NDA GAT practice — Oswaal 10 Mock Test Papers, Mock Test 6",
+    examName: "NDA",
+    section: { key: "oswaal-gat-mock-6", label: "GAT Mock Test 6" },
+    bankAdd: true,
+    createPaper: false, // bank rows only — no /dashboard/papers paper, no OMR Excel requested
+  },
+  // Oswaal "NDA/NA: 10 Mock Test Papers" — GAT Mock Test 7. 150-q publisher-authored
+  // GAT mock (English Q1–50 + General Knowledge Q51–150), filed as PRACTICE, not PYQ.
+  // Multi-subject, per-record `subject` + `chapter`. Mix: English 50 · Physics 24 · Polity 20 · History 18 · Geography 13 · Biology 12 · Chemistry 7 · Current Affairs 6.
+  //
+  // 126 new / 8 dup / 16 flawed. Only `new` rows are PUBLIC-eligible.
+  // flawed: [18, 39, 40, 44, 49, 65, 68, 71, 72, 78, 97, 120, 122, 130, 144, 147]
+  // dup:    [86, 111, 112, 113, 114, 115, 116, 117]
+  //
+  // Answer policy for this source: the printed key is the WEAKER of its two printed
+  // sources. Wherever key and worked solution named different letters, adjudication
+  // sided with the SOLUTION — 12 times out of 12 across the series. And most disputes
+  // show NO letter disagreement at all: the solution states the key's letter while its
+  // own words prove another. Every disputed key is PRESERVED as printed, held `flawed`
+  // (so the row never publishes), with the derivation in its reviewNote.
+  // See scripts/practice-paper/GAT_RULES.md.
+  "oswaal-gat-mock-7": {
+    slug: "oswaal-gat-mock-7",
+    title: "NDA GAT — Oswaal Mock Test 7 (150 Q)",
+    recordsFile: "oswaal-gat-mock-7.records.json",
+    outName: "Tags_NDA_Oswaal_GAT_Mock_7",
+    sourceFile: "Oswaal_NDA_GAT_Mock_Test_7.pdf",
+    subjects: {
+      "Biology": {
+        "Biochemistry": ["Protein Structure"],
+        "Biodiversity and Classification": ["Animal Kingdom Classification"],
+        "Cell Biology": ["Cell Organelles and Functions", "Cell Wall and Cell Membrane", "Microscopy"],
+        "Human Physiology": [
+          "Circulatory and Lymphatic System",
+          "Digestive System and Enzymes",
+          "Nervous System and Sense Organs",
+          "Nutrition, Vitamins and Minerals",
+        ],
+        "Microbiology and Disease": ["Pathogens and Diseases"],
+      },
+      "Chemistry": {
+        "Acids, Bases and Salts": ["Acid-Base Theory: Concepts, Oxides and Electrolytes"],
+        "Chemical Bonding": ["Valency, Oxidation States and Molecular Formula"],
+        "Chemistry in Everyday Life": ["Common Chemicals and Their Uses"],
+        "Industrial and Applied Chemistry": ["Fertilizers", "Industrial Gases, Manufacturing and Reactions"],
+        "Matter and Its States": ["States of Matter, Phase Changes and Diffusion"],
+        "Mole Concept and Stoichiometry": ["Mole Concept, Avogadro's Law and Molar Calculations"],
+      },
+      "Current Affairs": {
+        "Environment, Ecology and Energy": ["Wildlife Conservation and Species"],
+        "Government Schemes, Policy and Governance": [
+          "Governance, Policy and Union Territory Reform",
+          "Government Events, Reports and Announcements",
+          "Health, Education and Welfare Schemes",
+          "Infrastructure, Transport and Cultural Schemes",
+        ],
+        "International Affairs and Relations": ["World Leaders, Elections and Global Events"],
+      },
+      "English": {
+        "Cloze Test": ["Word Selection in Passage"],
+        "Grammar": ["Active and Passive Voice", "Articles, Determiners and Quantifiers", "Sentence Completion"],
+        "Idioms and Phrases": ["Idiom Meaning"],
+        "Sentence Rearrangement": ["Sentence Part Rearrangement (PQRS)"],
+        "Spotting Errors": [
+          "Articles, Determiners and Pronouns",
+          "No Error (Correct Sentence)",
+          "Subject-Verb Agreement",
+          "Tense and Verb Form",
+          "Word Choice, Prepositions and Punctuation",
+        ],
+        "Vocabulary": ["Antonyms", "Confusable Word Pairs", "Synonyms"],
+      },
+      "Geography": {
+        "Earth in Space, Maps and Coordinates": ["Latitude, Longitude and Geographical Grid"],
+        "Earth's Structure, Landforms and Geological Time": ["Earth's Interior, Crust and Plate Tectonics"],
+        "Oceanography": ["Marine Ecosystems — Coral Reefs"],
+        "World and Human Geography": [
+          "Human Geography — Megacities and Population",
+          "World — Coordinates, Time and Place",
+          "World — Rivers, Canals and Water Bodies",
+        ],
+      },
+      "History": {
+        "Ancient India": [
+          "Buddhism, Jainism and Religious Architecture",
+          "Mahajanapadas, Magadha and Mauryan Empire",
+          "Post-Mauryan, Gupta and Sangam Period",
+        ],
+        "Medieval India": ["Other Medieval Kingdoms (Chola, Rajput, Ahom, Sikh)"],
+        "Modern India": [
+          "19th Century Social and Religious Reform",
+          "British Administration, Acts and Legislation",
+          "British Economic Policy and Industrial India",
+          "Freedom Movement — INC, Gandhi and Independence",
+          "Post-Independence India",
+        ],
+      },
+      "Physics": {
+        "Electricity and Magnetism": [
+          "Combination of Resistors",
+          "Electrostatics",
+          "Magnetism and Magnetic Effects of Current",
+        ],
+        "Fluid Mechanics and Properties of Matter": ["Buoyancy, Density and Flotation"],
+        "Heat and Thermodynamics": [
+          "Heat, Calorimetry and Specific Heat",
+          "Phase Change and Boiling",
+          "Temperature and Thermometry",
+        ],
+        "Laws of Motion and Forces": ["Newton's Laws of Motion"],
+        "Light and Optics": [
+          "Human Eye and Optical Instruments",
+          "Lenses and Lens Formula",
+          "Light Phenomena and Spectrum",
+          "Refraction, Speed of Light and TIR",
+        ],
+        "Modern Physics": ["Quantum and Modern EM"],
+        "Oscillations and Waves": ["Simple Harmonic Motion and General Waves", "Simple Pendulum"],
+        "Units, Measurement and Dimensions": ["Units and Dimensions"],
+      },
+      "Polity": {
+        "Government Structure — Parliament, Judiciary and Constitutional Bodies": [
+          "Constitutional Bodies and Offices",
+          "Judiciary — Supreme Court and High Courts",
+        ],
+        "Indian Constitution — Making, Foundation and Amendments": [
+          "Features, Parts and Schedules of Constitution",
+        ],
+      },
+    },
+    pyqNote: "NDA GAT practice — Oswaal 10 Mock Test Papers, Mock Test 7",
+    examName: "NDA",
+    section: { key: "oswaal-gat-mock-7", label: "GAT Mock Test 7" },
+    bankAdd: true,
+    createPaper: false, // bank rows only — no /dashboard/papers paper, no OMR Excel requested
+  },
+  // Oswaal "NDA/NA: 10 Mock Test Papers" — GAT Mock Test 8. 150-q publisher-authored
+  // GAT mock (English Q1–50 + General Knowledge Q51–150), filed as PRACTICE, not PYQ.
+  // Multi-subject, per-record `subject` + `chapter`. Mix: English 50 · Physics 22 · Polity 20 · History 18 · Geography 12 · Chemistry 12 · Current Affairs 10 · Biology 6.
+  //
+  // 126 new / 10 dup / 14 flawed. Only `new` rows are PUBLIC-eligible.
+  // flawed: [10, 31, 32, 33, 34, 39, 48, 55, 73, 85, 125, 132, 144, 145]
+  // dup:    [95, 111, 112, 113, 114, 115, 116, 117, 130, 140]
+  //
+  // Answer policy for this source: the printed key is the WEAKER of its two printed
+  // sources. Wherever key and worked solution named different letters, adjudication
+  // sided with the SOLUTION — 12 times out of 12 across the series. And most disputes
+  // show NO letter disagreement at all: the solution states the key's letter while its
+  // own words prove another. Every disputed key is PRESERVED as printed, held `flawed`
+  // (so the row never publishes), with the derivation in its reviewNote.
+  // See scripts/practice-paper/GAT_RULES.md.
+  "oswaal-gat-mock-8": {
+    slug: "oswaal-gat-mock-8",
+    title: "NDA GAT — Oswaal Mock Test 8 (150 Q)",
+    recordsFile: "oswaal-gat-mock-8.records.json",
+    outName: "Tags_NDA_Oswaal_GAT_Mock_8",
+    sourceFile: "Oswaal_NDA_GAT_Mock_Test_8.pdf",
+    subjects: {
+      "Biology": {
+        "Biodiversity and Classification": ["Plant Kingdom Classification"],
+        "Cell Biology": ["Cell Organelles and Functions"],
+        "Genetics and Evolution": ["Heredity and DNA", "Theory of Evolution"],
+        "Microbiology and Disease": ["Pathogens and Diseases"],
+      },
+      "Chemistry": {
+        "Acids, Bases and Salts": ["Common Acids: Names, Formulas and Uses", "pH Scale and Common Substances"],
+        "Atomic Structure and Periodic Classification": ["Periodic Trends, Valency and Atomicity"],
+        "Carbon and Its Compounds": ["Allotropes of Carbon"],
+        "Chemical Bonding": ["Ionic and Covalent Bonding", "Valency, Oxidation States and Molecular Formula"],
+        "Chemical Reactions": ["Physical vs Chemical Changes"],
+        "Industrial and Applied Chemistry": ["Cement, Glass and Building Materials"],
+        "Matter and Its States": ["Compounds, Mixtures and Solutions", "Separation Techniques"],
+        "Metals and Non-Metals": ["Reactivity Series and Reactions with Water"],
+      },
+      "Current Affairs": {
+        "Awards, Honours, Books and Culture": ["Books, Literature and Authors"],
+        "Defence and Military Exercises": ["Indian Navy — Ships, Vessels and Naval Policy"],
+        "Environment, Ecology and Energy": ["Wildlife Conservation and Species"],
+        "Government Schemes, Policy and Governance": [
+          "Government Events, Reports and Announcements",
+          "Infrastructure, Transport and Cultural Schemes",
+        ],
+        "National Events, Persons and India General Knowledge": ["National Institutions, Milestones and History"],
+        "Science and Technology": [
+          "Health Technology, Science Awards and Anniversaries",
+          "Nuclear and Renewable Energy",
+          "Space Technology and Astronomy",
+        ],
+      },
+      "English": {
+        "Cloze Test": ["Word Selection in Passage"],
+        "Fill in the Blanks": [
+          "Contextual Fill-in-Blank",
+          "Contextual Word Selection (Phrasal Verbs and Collocations)",
+        ],
+        "Grammar": ["Parts of Speech"],
+        "Idioms and Phrases": ["Idiom Meaning"],
+        "Sentence Rearrangement": ["Sentence Part Rearrangement (PQRS)"],
+        "Spotting Errors": [
+          "Sentence Improvement",
+          "Subject-Verb Agreement",
+          "Word Choice, Prepositions and Punctuation",
+        ],
+        "Vocabulary": ["Antonyms", "Synonyms"],
+      },
+      "Geography": {
+        "World and Human Geography": [
+          "Human Geography — Megacities and Population",
+          "World — Coordinates, Time and Place",
+        ],
+      },
+      "History": {
+        "Ancient India": ["Vedic Age, Society and Literature"],
+        "Medieval India": [
+          "Bhakti and Sufi Movements",
+          "Medieval Travellers, Trade and Crops",
+          "Mughal Empire and Administration",
+        ],
+        "Modern India": [
+          "19th Century Social and Religious Reform",
+          "British Administration, Acts and Legislation",
+          "Freedom Movement — INC, Gandhi and Independence",
+        ],
+      },
+      "Physics": {
+        "Astronomy and Space": ["Astronomy and Space"],
+        "Electricity and Magnetism": [
+          "Combination of Resistors",
+          "Electric Current and Ohm's Law",
+          "Electrostatics",
+          "Magnetism and Magnetic Effects of Current",
+          "Resistance and Resistivity",
+        ],
+        "Fluid Mechanics and Properties of Matter": ["Pressure and Surface Tension"],
+        "Heat and Thermodynamics": ["Phase Change and Boiling"],
+        "Laws of Motion and Forces": ["Newton's Laws of Motion"],
+        "Light and Optics": ["Reflection and Mirrors"],
+        "Modern Physics": ["Nuclear Physics", "Quantum and Modern EM"],
+        "Oscillations and Waves": ["Simple Pendulum"],
+        "Sound": ["Foundations — Sound, Perception, and the Ear", "Wave Equation, Speed, and Frequency Bands"],
+        "Work, Energy and Power": ["Work-Energy Theorem and Power"],
+      },
+      "Polity": {
+        "Government Structure — Parliament, Judiciary and Constitutional Bodies": [
+          "Parliament — Composition, Procedures and Powers",
+        ],
+        "Indian Constitution — Making, Foundation and Amendments": ["Federal Structure — States, UTs and Finance"],
+      },
+    },
+    pyqNote: "NDA GAT practice — Oswaal 10 Mock Test Papers, Mock Test 8",
+    examName: "NDA",
+    section: { key: "oswaal-gat-mock-8", label: "GAT Mock Test 8" },
+    bankAdd: true,
+    createPaper: false, // bank rows only — no /dashboard/papers paper, no OMR Excel requested
+  },
+  // Oswaal "NDA/NA: 10 Mock Test Papers" — GAT Mock Test 9. 150-q publisher-authored
+  // GAT mock (English Q1–50 + General Knowledge Q51–150), filed as PRACTICE, not PYQ.
+  // Multi-subject, per-record `subject` + `chapter`. Mix: English 50 · Physics 21 · Polity 20 · History 17 · Chemistry 15 · Geography 14 · Biology 7 · Current Affairs 6.
+  //
+  // 129 new / 12 dup / 9 flawed. Only `new` rows are PUBLIC-eligible.
+  // flawed: [19, 44, 85, 122, 123, 125, 143, 147, 149]
+  // dup:    [86, 87, 88, 89, 90, 111, 112, 113, 114, 115, 116, 117]
+  //
+  // Answer policy for this source: the printed key is the WEAKER of its two printed
+  // sources. Wherever key and worked solution named different letters, adjudication
+  // sided with the SOLUTION — 12 times out of 12 across the series. And most disputes
+  // show NO letter disagreement at all: the solution states the key's letter while its
+  // own words prove another. Every disputed key is PRESERVED as printed, held `flawed`
+  // (so the row never publishes), with the derivation in its reviewNote.
+  // See scripts/practice-paper/GAT_RULES.md.
+  "oswaal-gat-mock-9": {
+    slug: "oswaal-gat-mock-9",
+    title: "NDA GAT — Oswaal Mock Test 9 (150 Q)",
+    recordsFile: "oswaal-gat-mock-9.records.json",
+    outName: "Tags_NDA_Oswaal_GAT_Mock_9",
+    sourceFile: "Oswaal_NDA_GAT_Mock_Test_9.pdf",
+    subjects: {
+      "Biology": {
+        "Biodiversity and Classification": ["Animal Kingdom Classification"],
+        "Cell Biology": ["Cell Wall and Cell Membrane"],
+        "Human Physiology": ["Endocrine System and Hormones", "Nervous System and Sense Organs"],
+        "Microbiology and Disease": ["Pathogens and Diseases"],
+        "Plant Biology": ["Plant Tissues and Meristems"],
+      },
+      "Chemistry": {
+        "Acids, Bases and Salts": ["Acid-Base Theory: Concepts, Oxides and Electrolytes"],
+        "Atomic Structure and Periodic Classification": ["Periodic Trends, Valency and Atomicity"],
+        "Carbon and Its Compounds": [
+          "Common Carbon Compounds and Pigments",
+          "Functional Groups and Common Organic Compounds",
+        ],
+        "Chemical Bonding": ["Ionic and Covalent Bonding"],
+        "Chemical Reactions": [
+          "Specific Reactions: Precipitation, Electrolysis and Daily Life",
+          "Thermal and Photochemical Decomposition",
+        ],
+        "Chemistry in Everyday Life": ["Common Chemicals and Their Uses"],
+        "Industrial and Applied Chemistry": ["Cement, Glass and Building Materials"],
+        "Matter and Its States": ["Compounds, Mixtures and Solutions"],
+        "Metals and Non-Metals": ["Corrosion and Its Prevention"],
+      },
+      "Current Affairs": {
+        "Awards, Honours, Books and Culture": ["Civilian Awards, Honours and Educational Institutions"],
+        "Defence and Military Exercises": ["Defence Procurement and Cooperation"],
+        "Environment, Ecology and Energy": ["Environmental Campaigns, Disasters and Energy"],
+        "Government Schemes, Policy and Governance": ["Government Events, Reports and Announcements"],
+        "National Events, Persons and India General Knowledge": ["National Days, Festivals and Observances"],
+        "Science and Technology": ["Space Technology and Astronomy"],
+      },
+      "English": {
+        "Cloze Test": ["Word Selection in Passage"],
+        "Fill in the Blanks": [
+          "Contextual Fill-in-Blank",
+          "Contextual Word Selection (Phrasal Verbs and Collocations)",
+        ],
+        "Grammar": ["Parts of Speech"],
+        "Idioms and Phrases": ["Idiom Meaning"],
+        "Sentence Rearrangement": ["Sentence Part Rearrangement (PQRS)"],
+        "Spotting Errors": [
+          "Articles, Determiners and Pronouns",
+          "Sentence Improvement",
+          "Subject-Verb Agreement",
+          "Tense and Verb Form",
+          "Word Choice, Prepositions and Punctuation",
+        ],
+        "Vocabulary": ["Antonyms", "Confusable Word Pairs", "Synonyms", "Word Definition"],
+      },
+      "Geography": {
+        "Earth in Space, Maps and Coordinates": ["Earth's Shape, Rotation and Motion"],
+        "Earth's Structure, Landforms and Geological Time": [
+          "Earth's Interior, Crust and Plate Tectonics",
+          "Landforms and Mass Movements",
+          "Rocks, Minerals and Geological Time",
+          "Weathering and Denudation",
+        ],
+        "Oceanography": ["Ocean Currents", "Ocean Waves and Sea-Floor Topography", "Tides and Ocean Movements"],
+        "World and Human Geography": [
+          "World — Coordinates, Time and Place",
+          "World — Rivers, Canals and Water Bodies",
+        ],
+      },
+      "History": {
+        "Ancient India": ["Post-Mauryan, Gupta and Sangam Period"],
+        "Medieval India": ["Other Medieval Kingdoms (Chola, Rajput, Ahom, Sikh)"],
+        "Modern India": [
+          "19th Century Social and Religious Reform",
+          "British Administration, Acts and Legislation",
+          "Freedom Movement — INC, Gandhi and Independence",
+        ],
+      },
+      "Physics": {
+        "Electricity and Magnetism": [
+          "Combination of Resistors",
+          "Magnetic Force and Fleming's Rules",
+          "Magnetism and Magnetic Effects of Current",
+          "Resistance and Resistivity",
+        ],
+        "Fluid Mechanics and Properties of Matter": ["Buoyancy, Density and Flotation"],
+        "Heat and Thermodynamics": ["Temperature and Thermometry"],
+        "Laws of Motion and Forces": ["Impulse and Momentum"],
+        "Light and Optics": [
+          "Human Eye and Optical Instruments",
+          "Lenses and Lens Formula",
+          "Reflection and Mirrors",
+        ],
+        "Modern Physics": ["Atomic Structure", "Nuclear Physics"],
+        "Oscillations and Waves": ["Simple Harmonic Motion and General Waves"],
+        "Sound": ["Applications — SONAR, Transducers, Instruments"],
+        "Work, Energy and Power": ["Energy and Conservation"],
+      },
+      "Polity": {
+        "Government Structure — Parliament, Judiciary and Constitutional Bodies": [
+          "Constitutional Bodies and Offices",
+          "Parliament — Composition, Procedures and Powers",
+        ],
+        "Indian Constitution — Making, Foundation and Amendments": [
+          "Federal Structure — States, UTs and Finance",
+          "Making of Constitution and Constitutional History",
+        ],
+      },
+    },
+    pyqNote: "NDA GAT practice — Oswaal 10 Mock Test Papers, Mock Test 9",
+    examName: "NDA",
+    section: { key: "oswaal-gat-mock-9", label: "GAT Mock Test 9" },
+    bankAdd: true,
+    createPaper: false, // bank rows only — no /dashboard/papers paper, no OMR Excel requested
+  },
   // Oswaal "NDA/NA: 10 Mock Test Papers" - GAT Mock Test 10. A 150-q publisher-authored
   // GAT mock (English Q1-50 + General Knowledge Q51-150), so it files as PRACTICE, not PYQ.
   // Multi-subject: 8 of the 9 NDA GAT subjects, per-record `subject` + `chapter`.
