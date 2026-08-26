@@ -19,7 +19,7 @@
  * this way the key has a machine-checkable provenance.
  */
 import { execFileSync } from "node:child_process";
-import { readFileSync, writeFileSync, readdirSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { requirePaper, DATA, type Paper } from "./config";
 import type { ExtractedQuestion } from "./extract";
@@ -103,6 +103,22 @@ export function buildVisionExtract(
   report.push(`transcribed questions: ${byNumber.size}`);
   report.push(`answer letters from the solution text layer: ${keys.size}`);
 
+  // Worked solutions, transcribed by vision from the solution PDF. Optional:
+  // this paper committed without any, and the file merely fills them in.
+  const workedSolutions = new Map<number, string>();
+  const solPath = join(DATA, `${paper.id}.solutions.json`);
+  if (existsSync(solPath)) {
+    const raw = JSON.parse(readFileSync(solPath, "utf8")) as Record<string, string>;
+    for (const [k, v] of Object.entries(raw)) {
+      const n = Number(k);
+      if (!Number.isInteger(n) || n < 1 || n > paper.questionCount) {
+        throw new Error(`${paper.id}.solutions.json: "${k}" is not a question number of this paper`);
+      }
+      if (typeof v === "string" && v.trim()) workedSolutions.set(n, v.trim());
+    }
+    report.push(`worked solutions transcribed  : ${workedSolutions.size}/${paper.questionCount}`);
+  }
+
   const clean = (s: string) => fixStackedOperators(stripKatexUnsupported(s));
   const questions: ExtractedQuestion[] = [];
   for (const n of [...byNumber.keys()].sort((a, b) => a - b)) {
@@ -136,9 +152,12 @@ export function buildVisionExtract(
       options,
       answer,
       answerSource: errata?.answer ? "errata" : answer ? "solution-text" : null,
-      // Worked solutions are NOT transcribed for this paper: they run to 27
-      // pages of flattened math, and a solution is not required to commit a row.
-      solution: null,
+      // Worked solutions come from a SEPARATE vision transcription of the
+      // solution PDF (data/<id>.solutions.json), because pandoc reduces this
+      // paper's math to positioned glyphs. Absent that file the row still
+      // commits — a solution has never been required — so this stays optional
+      // rather than becoming a new hard dependency for the vision lane.
+      solution: errata?.solution ?? workedSolutions.get(n) ?? null,
       defects,
     });
   }
