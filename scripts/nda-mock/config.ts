@@ -153,6 +153,17 @@ export type Paper = {
   /** Questions the source failed to number — see ExtraQuestion. */
   extraQuestions?: ExtraQuestion[];
   /**
+   * `questionNumber -> filename` under `out/<id>/q/media/`, attached by
+   * `attach-images.ts`. pandoc's --extract-media already writes each figure as
+   * a standalone file during extract, so unlike the board pipelines there is
+   * nothing to crop — the mapping IS the work.
+   *
+   * Explicit rather than a directory sweep, and deliberately so: m3's media
+   * also holds a full-width advertising banner for a third-party coaching
+   * institute that is embedded in the source manuscript. A sweep would attach it.
+   */
+  figures?: Record<number, string>;
+  /**
    * A shared-context block the source prints with NO recognisable header, so
    * `detectDirectionSets` cannot find it and its questions arrive with no
    * context at all — unanswerable, and silently so.
@@ -181,6 +192,13 @@ const p = (...seg: string[]) => join(SOURCE_ROOT, ...seg);
 const w = (...seg: string[]) => join(WEEKLY_ROOT, ...seg);
 
 export const PAPERS: Record<string, Paper> = {
+  // Two solutions carry a frequency table that pandoc emitted as a "simple
+  // table" — a dashed ASCII grid, which nothing in this bank parses: GFM
+  // pipe-tables need a |---| separator row, so these render on /browse as a
+  // wall of dashes and space-separated numbers. Rewritten as pipe-tables, which
+  // BlockText renders natively and the docx exporter emits as a real <w:tbl>.
+  // Question, options and key are untouched; `solution` is not part of
+  // content_hash, so resync.ts updates these in place.
   m1: {
     id: "m1",
     label: "NDA Maths Mock Test 1",
@@ -194,6 +212,29 @@ export const PAPERS: Record<string, Paper> = {
     // each one re-verified against the extracted text before being encoded —
     // two of the four turned out to be already applied in this manuscript.
     errata: {
+      113: {
+        solution:
+          "| Cl | f | cf |\n|---|---|---|\n| 0.5 - 5.5 | 3 | 3 |\n| 5.5 - 10.5 | 7 | 10 |\n" +
+          "| 10.5 - 15.5 | 6 | 16 |\n| 15.5 - 20.5 | 5 | 21 |\n| Sum | 21 | |\n\n" +
+          "Here \\(N = 21\\) and \\(\\frac{N}{2} = 10.5\\), so the median class is 10.5 - 15.5.\n\n" +
+          "Median \\(= L_{1} + \\left( \\frac{\\frac{N}{2} - c}{f} \\right) \\times d " +
+          "= 10.5 + \\frac{10.5 - 10}{6} \\times 5 = 10.917\\).\n\n" +
+          "The modal class is 5.5 - 10.5, so the median is not contained in the modal class and the distribution is not well shaped.",
+        reason:
+          "the frequency table was a pandoc SIMPLE table (a dashed ASCII grid), which no renderer in this bank parses — GFM needs a |---| separator — so it displayed as a wall of dashes and loose numbers. Rewritten as a pipe-table. The class intervals also mixed '-' and '--' between rows; normalised to '-'. One arithmetic gap in the source is closed while here: the median line printed '10.5 + (10.5-10)/6 x = 10.917' with the class width missing after the multiplication sign; d = 5 is what makes the printed 10.917 come out, so it is restored rather than left as a dangling operator",
+      },
+      114: {
+        solution:
+          "| Cl | f | cf | x | fx |\n|---|---|---|---|---|\n| 0-10 | 5 | 5 | 5 | 25 |\n" +
+          "| 10-20 | 10 | 15 | 15 | 150 |\n| 20-30 | 20 | 35 | 25 | 500 |\n" +
+          "| 30-40 | 5 | 40 | 35 | 175 |\n| 40-50 | 10 | 50 | 45 | 450 |\n" +
+          "| Sum | \\(\\Sigma f = 50\\) | | | \\(\\Sigma fx = 1300\\) |\n\n" +
+          "Here \\(n = 50\\) and \\(\\frac{N}{2} = 25\\), so the median class is 20-30.\n\n" +
+          "Median \\(= L_{1} + \\frac{\\left( \\frac{N}{2} - c \\right)}{f} \\times d " +
+          "= 20 + \\frac{25 - 15}{20} \\times 10 = 25\\).",
+        reason:
+          "same pandoc simple-table defect as Q113. Also corrects a typo the source made in its own next line: it printed 'Median class is 20-20', which is not one of its rows — the class is 20-30, which is what the working then uses (L1 = 20, c = 15, f = 20, d = 10) to reach the printed 25",
+      },
       17: {
         // The paper prints FOUR options but labels them (a)(b)(c)(c): the last
         // is meant to be (d), which is what the key points at. Supplying the
@@ -542,6 +583,16 @@ PAPERS.m3 = {
   sourceFile: "NDA_Maths_Mock_Test_03.docx",
   questionCount: 120,
   note: "NDA Mathematics mock test 3 (LWS test series)",
+  // The two rows the README has carried as an open item since ingest: both
+  // stems cite a figure ("as shown in the figure", "the above diagram") and the
+  // link the parser stripped pointed at a local extraction path, so they were
+  // unanswerable as shipped. Both figures are in media/ and are attached here.
+  // NB media/image1.jpeg is NOT a figure — it is an advertising banner for a
+  // third-party coaching institute, embedded in the source manuscript.
+  figures: {
+    60: "image2.png", // positively-skewed frequency curve
+    93: "image3.png", // three-circle Venn with the shaded region
+  },
   errata: {
     4: {
       // Labels print as (a) () (c) (d) — the second is EMPTY — and option (c)
@@ -1069,6 +1120,19 @@ PAPERS.m8 = {
   questionCount: 120,
   note: "NDA Mathematics mock test 8 (LWS test series)",
   errata: {
+    109: {
+      solution:
+        "| Midpoint (x) | Frequency (f) | fx |\n|---|---|---|\n| 10 | 17 | 170 |\n" +
+        "| 30 | \\(f_{1}\\) | \\(30f_{1}\\) |\n| 50 | 32 | 1600 |\n| 70 | \\(f_{2}\\) | \\(70f_{2}\\) |\n" +
+        "| 90 | 19 | 1710 |\n| Total | 120 | \\(30f_{1} + 70f_{2} + 3480\\) |\n\n" +
+        "Therefore \\(\\bar{x} = \\frac{1}{120}\\sum fx\\), so " +
+        "\\(50 = \\frac{1}{120}\\left( 30f_{1} + 70f_{2} + 3480 \\right)\\), giving " +
+        "\\(3f_{1} + 7f_{2} = 252\\) ... (1)\n\n" +
+        "Also \\(f_{1} + f_{2} + 68 = 120\\), so \\(f_{1} + f_{2} = 52\\) ... (2)\n\n" +
+        "Solving (1) and (2): \\(f_{1} = 28\\), \\(f_{2} = 24\\).",
+      reason:
+        "the frequency table was a pandoc SIMPLE table (a dashed ASCII grid) that no renderer here parses, so it displayed as a wall of dashes and loose numbers. Rewritten as a pipe-table. The \\[...\\] display-math wrappers around the individual cells are dropped in favour of inline \\(...\\): a display zone inside a table cell forces a line break in the middle of a row",
+    },
     1: {
       context:
         "Consider the complex numbers \\(z_{1}\\) and \\(z_{2}\\) satisfying the relation \\(\\left| z_{1} + z_{2} \\right|^{2} = \\left| z_{1} \\right|^{2} + \\left| z_{2} \\right|^{2}\\)",

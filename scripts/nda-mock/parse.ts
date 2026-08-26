@@ -693,9 +693,14 @@ const VULGAR_FRACTIONS: Record<string, string> = {
 };
 
 export function stripKatexUnsupported(text: string): string {
-  return text
-    .replace(/\\mspace\s*\{[^{}]*\}/g, "")
-    .replace(/[½⅓⅔¼¾⅕⅙⅛⅜⅝⅞]/g, (ch) => VULGAR_FRACTIONS[ch] ?? ch);
+  const withoutMspace = text.replace(/\\mspace\s*\{[^{}]*\}/g, "");
+  // Convert ONLY inside a math zone. Outside one a vulgar fraction is a
+  // perfectly good character, and rewriting it renders the LaTeX literally —
+  // m1 Q85's option A is a bare "½" with no delimiters, which the first version
+  // of this turned into a visible `\frac{1}{2}`.
+  return withoutMspace.replace(/\\\((?:[^\\]|\\(?!\)))*\\\)|\\\[(?:[^\\]|\\(?!\]))*\\\]/g, (zone) =>
+    zone.replace(/[½⅓⅔¼¾⅕⅙⅛⅜⅝⅞]/g, (ch) => VULGAR_FRACTIONS[ch] ?? ch),
+  );
 }
 
 /**

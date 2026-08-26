@@ -2952,7 +2952,7 @@
     ],
     "answer": "D",
     "answerSource": "tail-key",
-    "solution": "------------------------------------\r\n  Cl             f          cf\r\n  -------------- ---------- ----------\r\n  0.5 - 5.5      3          3\r\n\r\n  5.5 - 10.5     7          10\r\n\r\n  10.5 -- 15.5   6          16\r\n\r\n  15.5 -- 20.5   5          21\r\n\r\n  Sum            21         \r\n  ------------------------------------\r\n\r\nHere, N = 21 and \\(\\frac{N}{2} = 10.5\\)\\\r\nSo, the median class is 10.5 -15.5\\\r\nMedian = \\(L_{1} + \\left( \\frac{\\frac{N}{2} - c}{f} \\right) \\times d\\)\\\r\n\\(= 10.5 + \\frac{10.5 - 10}{6} \\times = 10.917\\)\\\r\nModal class is 5.5 -- 10.5\\\r\nThus, median is not contained in modal class. So, the distribution is not well shaped.",
+    "solution": "| Cl | f | cf |\n|---|---|---|\n| 0.5 - 5.5 | 3 | 3 |\n| 5.5 - 10.5 | 7 | 10 |\n| 10.5 - 15.5 | 6 | 16 |\n| 15.5 - 20.5 | 5 | 21 |\n| Sum | 21 | |\n\nHere \\(N = 21\\) and \\(\\frac{N}{2} = 10.5\\), so the median class is 10.5 - 15.5.\n\nMedian \\(= L_{1} + \\left( \\frac{\\frac{N}{2} - c}{f} \\right) \\times d = 10.5 + \\frac{10.5 - 10}{6} \\times 5 = 10.917\\).\n\nThe modal class is 5.5 - 10.5, so the median is not contained in the modal class and the distribution is not well shaped.",
     "defects": []
   },
   {
@@ -2978,7 +2978,7 @@
     ],
     "answer": "C",
     "answerSource": "tail-key",
-    "solution": "-------------------------------------------------------------\r\n  Cl      f                   cf   x     fx\r\n  ------- ------------------- ---- ----- ----------------------\r\n  0-10    5                   5    5     25\r\n\r\n  10-20   10                  15   15    150\r\n\r\n  20-30   20                  35   25    500\r\n\r\n  30-40   5                   40   35    175\r\n\r\n  40-50   10                  50   45    450\r\n\r\n  Sum     \\[\\Sigma f = 50\\]              \\[\\Sigma fx = 1300\\]\r\n  -------------------------------------------------------------\r\n\r\nHere, \\(n = 50\\ and\\frac{N}{2} = 25\\)\\\r\nSo, Median class is 20-20\\\r\nMedian = \\(L_{1} + \\frac{\\left( \\frac{N}{2} - c \\right)}{f} \\times d\\)\\\r\n\\(= 20 + \\frac{25 - 15}{20} \\times 10\\  = 25\\)",
+    "solution": "| Cl | f | cf | x | fx |\n|---|---|---|---|---|\n| 0-10 | 5 | 5 | 5 | 25 |\n| 10-20 | 10 | 15 | 15 | 150 |\n| 20-30 | 20 | 35 | 25 | 500 |\n| 30-40 | 5 | 40 | 35 | 175 |\n| 40-50 | 10 | 50 | 45 | 450 |\n| Sum | \\(\\Sigma f = 50\\) | | | \\(\\Sigma fx = 1300\\) |\n\nHere \\(n = 50\\) and \\(\\frac{N}{2} = 25\\), so the median class is 20-30.\n\nMedian \\(= L_{1} + \\frac{\\left( \\frac{N}{2} - c \\right)}{f} \\times d = 20 + \\frac{25 - 15}{20} \\times 10 = 25\\).",
     "context": "The following table given the continuous frequency distribution of a continuous variable X. ------------------------------------------------------- Class interval   0-10   10-20   20-30   30-40   40-50 ---------------- ------ ------- ------- ------- ------- Frequency        5      10      20      5       10 -------------------------------------------------------",
     "setLabel": "m1-set-114-115",
     "defects": []

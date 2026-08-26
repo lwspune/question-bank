@@ -1086,3 +1086,27 @@ describe("referencesMissingFigure — the flip-public gate", () => {
     expect(referencesMissingFigure("Find the mean deviation for the following data.\n\n| x | 1 |\n|---|---|\n| f | 2 |", null)).toBe(false);
   });
 });
+
+describe("stripKatexUnsupported — vulgar fractions only inside math", () => {
+  // The first version replaced the glyph everywhere, which is right inside a
+  // math zone and WRONG outside one: a bare "½" is a perfectly good character
+  // in plain text, and rewriting it to \frac{1}{2} there renders the LaTeX
+  // literally. m1 Q85's option A is exactly that — a bare ½ with no delimiters.
+  it("leaves a bare glyph outside math alone", () => {
+    expect(stripKatexUnsupported("½")).toBe("½");
+    expect(stripKatexUnsupported("about ½ of the total")).toBe("about ½ of the total");
+  });
+
+  it("still converts inside an inline math zone", () => {
+    expect(stripKatexUnsupported("\\(½\\)")).toBe("\\(\\frac{1}{2}\\)");
+    expect(stripKatexUnsupported("\\(x + ¼\\)")).toBe("\\(x + \\frac{1}{4}\\)");
+  });
+
+  it("converts inside display math", () => {
+    expect(stripKatexUnsupported("\\[½\\]")).toBe("\\[\\frac{1}{2}\\]");
+  });
+
+  it("handles a string with both", () => {
+    expect(stripKatexUnsupported("½ of \\(½\\)")).toBe("½ of \\(\\frac{1}{2}\\)");
+  });
+});
