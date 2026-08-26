@@ -17,6 +17,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { requirePaper, DATA, OUT, EXAM_ID, SUBJECT_NAME } from "./config";
+import { deEmphasiseOption } from "./parse";
 import type { ExtractedQuestion } from "./extract";
 
 function loadEnv() {
@@ -83,7 +84,13 @@ async function main() {
       }
       if (!q.context) lastSet = undefined;
       out.push(`**Q${q.number}.** ${q.stem}`, "");
-      for (const o of q.options) out.push(`  (${o.label}) ${o.text}`);
+      // Emphasis is STRIPPED from options here (never at extraction, where the
+      // text feeds content_hash). Some sources bold the correct option, and the
+      // packet was passing that straight through — letting an agent read the
+      // answer off the typography instead of deriving it, which turns this
+      // pass into a second copy of the key without leaving a trace. Found by an
+      // agent that declared it rather than used it.
+      for (const o of q.options) out.push(`  (${o.label}) ${deEmphasiseOption(o.text)}`);
       out.push("");
     }
     const f = join(dir, `q${String(from).padStart(3, "0")}-${String(to).padStart(3, "0")}.md`);

@@ -13,6 +13,7 @@ import {
   stripKatexUnsupported,
   parseSupplementSolutions,
   normalizeRtlSpans,
+  deEmphasiseOption,
   parseGridAnswerKey,
   fixStackedOperators,
   stripPandocInlineMarkup,
@@ -935,6 +936,42 @@ describe("parseGridAnswerKey", () => {
     const { keys } = parseGridAnswerKey("| 3 | b | 23 | c |", 40);
     expect(keys.get(3)).toBe("B");
     expect(keys.get(23)).toBe("C");
+  });
+});
+
+describe("deEmphasiseOption — the blind packet must not leak the key", () => {
+  // Some sources bold the CORRECT option. The blind packet inherits that
+  // emphasis, so an agent can read the answer off the typography instead of
+  // deriving it — which silently converts the strongest control in this
+  // pipeline into a copy of the key. Measured on the weekly series: 2 of 480
+  // questions have exactly one bolded option, and in BOTH the bolded option is
+  // the key. Small, but it only has to happen on a question the agent would
+  // otherwise have got wrong.
+  it("strips markdown bold", () => {
+    expect(deEmphasiseOption("**15/23**")).toBe("15/23");
+  });
+
+  it("strips LaTeX \\mathbf and \\textbf while keeping their content", () => {
+    expect(deEmphasiseOption("\\(\\mathbf{7}\\)")).toBe("\\(7\\)");
+    expect(deEmphasiseOption("\\(\\textbf{x + 1}\\)")).toBe("\\(x + 1\\)");
+  });
+
+  it("keeps nested braces intact when unwrapping", () => {
+    expect(deEmphasiseOption("\\(\\mathbf{\\frac{1}{2}}\\)")).toBe("\\(\\frac{1}{2}\\)");
+  });
+
+  it("leaves an unemphasised option byte-identical", () => {
+    const s = "\\(\\frac{15}{23}\\)";
+    expect(deEmphasiseOption(s)).toBe(s);
+  });
+
+  it("strips emphasis that wraps only part of the option", () => {
+    expect(deEmphasiseOption("**Only** I and II")).toBe("Only I and II");
+  });
+
+  it("is idempotent", () => {
+    const once = deEmphasiseOption("**\\(\\mathbf{3}\\)**");
+    expect(deEmphasiseOption(once)).toBe(once);
   });
 });
 

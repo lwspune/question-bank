@@ -430,6 +430,43 @@ export function parseTailAnswerKey(md: string): Map<number, string> {
 }
 
 /**
+ * Remove emphasis from an OPTION, for the blind packet only.
+ *
+ * Some sources bold the correct option. The blind packet inherits that
+ * emphasis, so an agent can read the answer off the typography instead of
+ * deriving it — quietly turning the strongest control in this pipeline into a
+ * second copy of the key. Measured across the weekly series: 2 of 480
+ * questions have exactly one bolded option and in BOTH the bolded one is the
+ * key. Rare, but it only has to land on a question the agent would otherwise
+ * have got wrong, and it is undetectable afterwards.
+ *
+ * Deliberately NOT applied at extraction: the stored option text is part of
+ * `content_hash`, so stripping it there would re-hash every affected row and
+ * silently orphan committed questions. This is a presentation-layer scrub.
+ */
+export function deEmphasiseOption(text: string): string {
+  let out = text.replace(/\*\*(.+?)\*\*/gs, "$1");
+  // Unwrap \mathbf{...} / \textbf{...}, matching braces so nested groups
+  // (\mathbf{\frac{1}{2}}) survive intact rather than being truncated.
+  for (const cmd of ["mathbf", "textbf"]) {
+    for (;;) {
+      const at = out.indexOf(`\\${cmd}{`);
+      if (at < 0) break;
+      const open = at + cmd.length + 2;
+      let depth = 1;
+      let i = open;
+      for (; i < out.length && depth > 0; i++) {
+        if (out[i] === "{") depth++;
+        else if (out[i] === "}") depth--;
+      }
+      if (depth !== 0) break; // unbalanced — leave it alone rather than corrupt it
+      out = out.slice(0, at) + out.slice(open, i - 1) + out.slice(i);
+    }
+  }
+  return out;
+}
+
+/**
  * Read a standalone answer-key GRID, the weekly NDA-1 2026 series' format.
  *
  * The key is its own DOCX holding a 12-column pandoc grid table where a row
