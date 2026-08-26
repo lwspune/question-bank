@@ -32,12 +32,12 @@ const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!url || !key) throw new Error("missing NEXT_PUBLIC_SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY");
 
-const outDir = process.argv[2];
-if (!outDir) throw new Error("usage: dump-english-blind.ts <outDir>");
+const [outDir, configPath] = process.argv.slice(2);
+if (!outDir) throw new Error("usage: dump-english-blind.ts <outDir> [configJson]");
 
 /** How many questions to verify per chapter — ~2x the blueprint need, so a
  *  failed row can be dropped without re-running the whole check. */
-const WANT: Record<string, number> = {
+const DEFAULT_WANT: Record<string, number> = {
   Grammar: 30,
   Vocabulary: 30,
   "Sentence Rearrangement": 10,
@@ -45,6 +45,9 @@ const WANT: Record<string, number> = {
   "Spotting Errors": 10,
   "Reading Comprehension": 5, // the single surviving real passage set
 };
+const WANT: Record<string, number> = configPath
+  ? (JSON.parse(require("node:fs").readFileSync(configPath, "utf8")) as Record<string, number>)
+  : DEFAULT_WANT;
 
 const DIFF_RANK: Record<string, number> = { HARD: 2, MODERATE: 1, EASY: 0 };
 
@@ -84,17 +87,42 @@ async function main() {
     if (data.length < 1000) break;
   }
 
+  // Already committed to a paper, or already carrying a confirmed review.
+  // Verifying either again is wasted work: a used row cannot be drawn a second
+  // time, and a confirmed row is usable as it stands.
+  const skip = new Set<string>();
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await db
+      .from("paper_questions").select("question_id").order("question_id").range(from, from + 999);
+    if (error) throw new Error(error.message);
+    for (const r of data ?? []) skip.add(r.question_id as string);
+    if (!data || data.length < 1000) break;
+  }
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await db
+      .from("question_reviews").select("question_id").eq("verdict", "confirmed")
+      .order("question_id").range(from, from + 999);
+    if (error) throw new Error(error.message);
+    for (const r of data ?? []) skip.add(r.question_id as string);
+    if (!data || data.length < 1000) break;
+  }
+
   // Group into sets, dropping anything whose passage was never stored and any
   // set the corpus holds with fewer than 2 questions (R4).
   const sets = new Map<string, Row[]>();
+  const dropped = new Set<string>();
   for (const r of rows) {
     if (!r.set_id) continue;
     if ((r.context ?? "").toLowerCase().includes("not stored")) continue;
     if (!(r.chapter in WANT)) continue;
+    // A set holding ANY skipped row cannot be drawn whole, so drop the set
+    // rather than emit a fragment R2 would refuse.
+    if (skip.has(r.id)) { dropped.add(r.set_id); continue; }
     if (!sets.has(r.set_id)) sets.set(r.set_id, []);
     sets.get(r.set_id)!.push(r);
   }
 
+  for (const d of dropped) sets.delete(d);
   const ranked = [...sets.entries()]
     .map(([setId, items]) => {
       const mean =

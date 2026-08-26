@@ -83,6 +83,16 @@ async function main() {
     if (!data || data.length < 1000) break;
   }
 
+  // Already-confirmed rows are usable as they stand; re-deriving them is waste.
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await db
+      .from("question_reviews").select("question_id").eq("verdict", "confirmed")
+      .order("question_id").range(from, from + 999);
+    if (error) throw new Error(error.message);
+    for (const r of data ?? []) used.add(r.question_id as string);
+    if (!data || data.length < 1000) break;
+  }
+
   const blind: any[] = [];
   const keys: any[] = [];
   console.log("chapter".padEnd(44) + "want".padStart(6) + "pool".padStart(7) + "taken".padStart(7) + "figs".padStart(6));
