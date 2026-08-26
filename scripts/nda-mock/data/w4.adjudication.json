@@ -833,7 +833,7 @@
   },
   {
     "number": 65,
-    "verdict": "DISAGREE",
+    "verdict": "RULED",
     "printedKey": "C",
     "blindAnswer": "D",
     "confidence": "low",
@@ -841,8 +841,8 @@
     "subtopic": "Integration by Substitution — Algebraic, Trigonometric, and Composite Forms",
     "difficulty": "HARD",
     "working": "Statement I as printed integrates 2x dx/(x^2 + 2), which gives ln(x^2 + 2) + C, not 2sqrt(x^2+2) + C: at x = 0.7 the claimed antiderivative differentiates to 0.88721 while the printed integrand is 0.56225. Statement II's claimed antiderivative differentiates to 0.11728 at x = 0.6, 0.59581 at x = 1.4 and 0.42655 at x = 2.3, against targets 0.10021, 0.70563 and 0.43476; the primitive that does match exactly is (2/11)ln|x^(11/2) + sqrt(1+x^11)|. Both statements are therefore false as printed, so 'None of these'.",
-    "notes": "STEM CORRUPTION - answered AS PRINTED, but the printing is damaged in two places. (a) Statement I's denominator prints as (x^2 + 2) with no radical, yet its claimed answer 2sqrt(x^2+2) + C is exactly right for d(x^2+1)/sqrt(x^2+2) - the classic 'd(x^2+1) = d(x^2+2)' trick - so a lost radical sign is very likely and I was probably meant to be TRUE. (b) Statement II's numerator prints x^(alpha/2); alpha is almost certainly a mis-read 9, since x^(9/2)/sqrt(1+x^11) is what the substitution t = x^(11/2) linearises. (c) Even after repairing that numerator, II's claimed right-hand side stays WRONG: it needs x^(11/2), not x, inside the log (verified at x = 0.6, 1.4, 2.3), and no choice of numerator exponent makes the printed RHS correct, because differentiating it does not have the form x^k/sqrt(1+x^11). I answered D because both statements are false exactly as printed. If the radical in I is an extraction loss, the intended key is C ('Only I').",
-    "resolved": null
+    "notes": "printed key C is CORRECT and stands. This entry exists only because Statement I's stem was repaired above (its lost radical restored from the paper's own solution), which leaves the blind derivation STALE — it answered D on the reasoning that BOTH statements are false AS PRINTED, and its own note says outright that if the radical is an extraction loss the intended key is C. So the two agree once the repair is applied. A stem repair invalidates any blind derivation of that question; recording it beats leaving a permanent false DISAGREE",
+    "resolved": "C"
   },
   {
     "number": 66,

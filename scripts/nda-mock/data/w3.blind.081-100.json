@@ -1,0 +1,202 @@
+[
+  {
+    "number": 81,
+    "answer": "A",
+    "working": "With A+B+C=180 and C fixed, cotA cotB = (cos(A-B) - cosC)/(cos(A-B) + cosC), which for acute C is increasing in cos(A-B) and so is maximised at A=B, where it equals tan^2(C/2). So k = tan^2(C/2)*cosC; putting u = tan^2(C/2) in (0,1) gives k = u(1-u)/(1+u), maximised at u = sqrt(2)-1 with k_max = 0.1715729, which is below 1/(3*sqrt(3)) = 0.1924501. A grid search over all acute (A,B) confirms the maximum 0.1715725. Since k also tends to 0 as the triangle approaches right-angled, only 'k <= 1/(3*sqrt(3))' holds for every acute triangle. (B) and (D) fail at small k; (C) fails because the equilateral value 1/6 exceeds 1/9.",
+    "confidence": "high",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Triangle Identities — A+B+C=π, Half-Angle, and Double-Angle",
+    "difficulty": "MODERATE",
+    "notes": "Stem prints cotA cotB cosC (cosine on the third factor); the standard textbook expression here is cotA cotB cotC. Answered AS PRINTED. Flagging only because the two readings differ numerically (printed max 0.171573 vs 1/(3*sqrt(3)) = 0.192450 exactly, attained at the equilateral triangle) even though BOTH readings give (A) as the only always-true option."
+  },
+  {
+    "number": 82,
+    "answer": "B",
+    "working": "cosA/a = (b^2+c^2-a^2)/(2abc) and cyclically, so the three terms sum to [(b^2+c^2-a^2)+(c^2+a^2-b^2)+(a^2+b^2-c^2)]/(2abc) = (a^2+b^2+c^2)/(2abc). For the second, b cosA = (b^2+c^2-a^2)/(2c) and a cosB = (a^2+c^2-b^2)/(2c), so b cosA - a cosB = (b^2-a^2)/c and c(b cosA - a cosB) = b^2 - a^2. Both parts match (B); checked numerically on three random triangles (option A's first part is twice too large and its second part has the wrong sign).",
+    "confidence": "high",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Sine and Cosine Rules — Solving Triangles",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 83,
+    "answer": "C",
+    "working": "a^2 = b^2 + c^2 - 2bc cosA = 4 + 3 - 2*2*sqrt(3)*(sqrt(3)/2) = 1, so a = 1 and the sides 1, sqrt(3), 2 satisfy 1 + 3 = 4, i.e. B = 90 degrees. Area = (1/2)bc sinA = sqrt(3)/2 and s = (3+sqrt(3))/2, so r = Area/s = sqrt(3)/(3+sqrt(3)) = (sqrt(3)-1)/2 = 0.36603. Cross-checked by the right-triangle relation r = s - hypotenuse = (3+sqrt(3))/2 - 2 = (sqrt(3)-1)/2.",
+    "confidence": "high",
+    "chapter": "Properties of Triangle",
+    "subtopic": "In-circle and Regular Polygon Geometry",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 84,
+    "answer": "A",
+    "working": "Given b, c and B, the sine rule forces sinC = c sinB / b. The hypothesis b < c sinB makes c sinB / b > 1, so sinC > 1 and no angle C exists. Equivalently, c sinB is the perpendicular distance from A to the line BC, so a side b shorter than that distance cannot reach the opposite side. Hence no triangle is possible.",
+    "confidence": "high",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Sine and Cosine Rules — Solving Triangles",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 85,
+    "answer": "B",
+    "working": "With height h, the shadow lengths are h/tan30 = h*sqrt(3) and h/tan45 = h. The 30-degree shadow is 60 m longer, so h*sqrt(3) - h = 60, giving h = 60/(sqrt(3)-1) = 60(sqrt(3)+1)/2 = 30(sqrt(3)+1) = 81.96 m.",
+    "confidence": "high",
+    "chapter": "Height & Distance",
+    "subtopic": "Shadows, Leaning Structures, and Special Geometry",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 86,
+    "answer": "A",
+    "working": "tan(theta) = height/shadow = h/(sqrt(3)h) = 1/sqrt(3), so theta = 30 degrees.",
+    "confidence": "high",
+    "chapter": "Height & Distance",
+    "subtopic": "Shadows, Leaning Structures, and Special Geometry",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 87,
+    "answer": "D",
+    "working": "cos^-1(1/x) = sec^-1(x) and sin^-1(1/y) = cosec^-1(y), so cos^-1(1/y) = pi/2 - sin^-1(1/y) = pi/2 - cosec^-1(y). Adding: cos^-1(1/x) + cos^-1(1/y) = sec^-1(x) - cosec^-1(y) + pi/2, and the given condition sec^-1(x) = cosec^-1(y) cancels the first two terms, leaving pi/2.",
+    "confidence": "high",
+    "chapter": "Inverse Trigonometry",
+    "subtopic": "Identities, Properties, and Sum-Difference Formulas",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 88,
+    "answer": "C",
+    "working": "Put theta = tan^-1(x), so cos(theta) = 1/sqrt(1+x^2). Then phi = cot^-1(1/sqrt(1+x^2)) has cot(phi) = 1/sqrt(1+x^2), i.e. tan(phi) = sqrt(1+x^2), so sin(phi) = tan(phi)/sqrt(1+tan^2(phi)) = sqrt(1+x^2)/sqrt(2+x^2) = sqrt((x^2+1)/(x^2+2)). Verified numerically at x = 0.3, 1.7, 4.2 (option A is also real for x>=1 but disagrees at every one of those points; option B is real only for x>=2 and disagrees there).",
+    "confidence": "high",
+    "chapter": "Inverse Trigonometry",
+    "subtopic": "Evaluation of Composite Inverse Trigonometric Expressions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 89,
+    "answer": "A",
+    "working": "'Twice as far from P as from Q' means the point divides PQ in the ratio 2:1. The external division gives ((2*(-2) - 1*3)/(2-1), (2*5 - 1*(-4))/(2-1)) = (-7, 14). Check: distance from P(3,-4) is sqrt(100+324) = sqrt(424) and from Q(-2,5) is sqrt(25+81) = sqrt(106), and sqrt(424) = 2*sqrt(106) exactly; the point is also collinear with P and Q (cross-product residual 0). None of the other three options is even collinear with PQ.",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Distance, Section, and Locus",
+    "difficulty": "MODERATE",
+    "notes": "The condition also admits the INTERNAL 2:1 point (-1/3, 2), verified to satisfy dP/dQ = 2 exactly; the stem says 'the coordinates of point' as if unique. Only the external point appears among the options, so (A) is unambiguous as an option choice."
+  },
+  {
+    "number": 90,
+    "answer": "A",
+    "working": "The f_i are relative frequencies summing to 1. Mean = 2*(1/3) + 3*(1/2) + 11*(1/6) = (4+9+11)/6 = 4. E[x^2] = 4*(1/3) + 9*(1/2) + 121*(1/6) = (8+27+121)/6 = 26. Variance = 26 - 4^2 = 10.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 91,
+    "answer": "B",
+    "working": "Mean = (3+4+5+6+7)/5 = 5. Absolute deviations 2,1,0,1,2 sum to 6, so the mean deviation is 6/5 = 1.2. (The median is also 5, so the mean deviation about the median is the same 1.2 — the answer does not depend on which centre is intended.)",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 92,
+    "answer": "D",
+    "working": "A pie chart divides a full circle into sectors whose angles are proportional to the component shares, which is exactly 'partitioning a total into subparts'. An ogive plots cumulative frequency, a pictograph uses symbols for counts, and a histogram shows a frequency distribution over class intervals — none of the three displays parts of one whole.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Frequency Distributions and Graphical Representation",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 93,
+    "answer": "D",
+    "working": "Statistical data are numerical observations of a variable collected over units or time and open to aggregation and analysis. Options (A), (B) and (C) are lists of names/labels (qualitative identifiers with no measured quantity), while (D) is a numerical measurement — monthly rainfall volume over 24 months — which admits a mean, a variance and a trend.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Frequency Distributions and Graphical Representation",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 94,
+    "answer": "B",
+    "working": "Females = 40% of the total and females total 32, so N = 32/0.4 = 80 and males = 48. One-third of the males were average, so male-average = 48/3 = 16. (Consistency check: excellent+good = N/2 = 40, good = 30 so excellent = 10, and male-excellent = 10 leaves female-excellent = 0; male-good = 48 - 16 - 10 = 22, female-good = 8, female-average = 24, and average total = 16+24 = 40 = 80-40. Every cell is non-negative and all margins reconcile.)",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Frequency Distributions and Graphical Representation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 95,
+    "answer": "A",
+    "working": "N = 80 (32 females = 40%). Half of the students were excellent or good, i.e. 40; the good total is 30, so the excellent total is 10. All 10 excellents are male (given), so female-and-excellent = 10 - 10 = 0.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Frequency Distributions and Graphical Representation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 96,
+    "answer": "B",
+    "working": "Males = 48, of whom 16 are average and 10 excellent, so male-good = 48 - 16 - 10 = 22. The good total is 30, so the proportion of good students who are male is 22/30 = 11/15 = 0.7333, i.e. 0.73 to two decimals.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Frequency Distributions and Graphical Representation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 97,
+    "answer": "B",
+    "working": "Good total 30 minus male-good 22 gives female-good = 8. Females number 32, so the proportion of female students who are good is 8/32 = 0.25.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Frequency Distributions and Graphical Representation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 98,
+    "answer": "C",
+    "working": "Males = 48 with male-average = 48/3 = 16 and male-excellent = 10 given, so male-and-good = 48 - 16 - 10 = 22.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Frequency Distributions and Graphical Representation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 99,
+    "answer": "A",
+    "working": "BC has slope (6-0)/(4-8) = -3/2, so the altitude from A(0,0) is y = (2/3)x. AC has slope 6/4 = 3/2, so the altitude from B(8,0) is y = -(2/3)(x-8). Solving gives x = 4, y = 8/3. The third altitude checks out: the vector from C(4,6) to (4,8/3) is vertical and AB is horizontal, so their dot product is 0. Orthocentre = (4, 8/3).",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Triangles, Quadrilaterals, and Polygons",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 100,
+    "answer": null,
+    "working": "All four points are vertices of their convex hull (each lies outside the triangle of the other three), so the quadrilateral they bound has area given by the shoelace formula in convex order A(1,1), C(7,-3), D(12,2), B(7,21): |(-24) + 7 + 288 + (-7)|/2 = 264/2 = 132. Enumerating all three distinct cyclic orderings of the four points confirms only two are simple (non-self-intersecting) and both give 132; the printed order A-B-C-D is NOT simple (side DA crosses side BC at (7, 17/11)) and its shoelace magnitude is 47. Splitting into triangles ABC + ACD gives 72 + 25 = 97 and ABD + BCD gives 107 + 60 = 167, so no reasonable reading reaches 179-182 either.",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Triangles, Quadrilaterals, and Polygons",
+    "difficulty": "MODERATE",
+    "notes": "NO OPTION MATCHES. Derived area = 132 for the (convex) quadrilateral on A(1,1), B(7,21), C(7,-3), D(12,2); the four options are 182, 181, 180, 179. Note the area is 132 independently of D's y-coordinate (because B and C share x = 7), so a corrupted D cannot explain the gap; the printed vertex order is additionally self-intersecting. Answer left null rather than picking the nearest option."
+  }
+]

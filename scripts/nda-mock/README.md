@@ -298,6 +298,22 @@ Each of these silently lost real questions before it was fixed; the tests in
   looked for in both documents (and a disagreement between two such blocks is
   reported, not silently resolved).
 
+## A stem repair INVALIDATES that question's blind derivation
+
+The blind pass answers the stem as it stood when the packet was written. Repair
+the stem afterwards — restore a lost radical, fix a limit point, supply a missing
+context — and the derivation on file is about a different question. `adjudicate`
+cannot know that, so it keeps reporting a DISAGREE (or an UNRESOLVED, where the
+agent correctly returned `null` on the broken text) forever.
+
+Either re-run that packet, or record a `resolutions` entry saying the blind is
+stale and why. Do NOT leave it looking like a live disagreement: the next reader
+has no way to tell a real key dispute from a repaired stem. Four questions in
+the weekly series carry such an entry — w1 Q51/Q52 (context declared after the
+fact), w3 Q57 ('maximum' -> 'minimum'), w4 Q65 (radical restored) — and in each
+the agent's own note already says what its answer would have been under the
+repaired reading, which is what makes the ruling checkable rather than asserted.
+
 ## Errata
 
 `config.ts` carries a per-paper `errata` map, and **every entry is re-verified against

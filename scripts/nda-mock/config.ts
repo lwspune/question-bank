@@ -1817,6 +1817,11 @@ PAPERS.w4 = {
   // Each derived from the stem, then re-verified numerically against the
   // question's own data.
   resolutions: {
+    65: {
+      answer: "C",
+      reason:
+        "printed key C is CORRECT and stands. This entry exists only because Statement I's stem was repaired above (its lost radical restored from the paper's own solution), which leaves the blind derivation STALE — it answered D on the reasoning that BOTH statements are false AS PRINTED, and its own note says outright that if the radical is an extraction loss the intended key is C. So the two agree once the repair is applied. A stem repair invalidates any blind derivation of that question; recording it beats leaving a permanent false DISAGREE",
+    },
     1: {
       answer: "A",
       reason:

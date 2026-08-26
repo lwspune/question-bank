@@ -101,3 +101,14 @@ prints it; those questions are unanswerable without it, so read it.
   share one scratch directory and a generic name gets overwritten underneath you.
 - Report at the end: how many you answered, how many are `null`, which numbers
   carry notes, and your low-confidence numbers.
+
+## If a stem looks damaged
+
+Answer it AS PRINTED and describe the damage — that is the rule above. But where
+you can see what the intended text was, say so explicitly and give the answer it
+would imply. That single sentence is what lets the adjudicator repair the stem
+from the source's own working and settle the question, instead of holding it.
+
+Every stem repair made in this series was possible because an agent wrote
+something of the form: "as printed the answer is D; if the missing radical is an
+extraction loss, the intended key is C."
