@@ -1383,10 +1383,33 @@ PAPERS.w1 = {
   // Grid key is complete (120/120) and agrees with all 33 letters printed on
   // the solutions — 0 disagreements. The strongest key evidence of the four.
   errata: {
+    10: {
+      stem:
+        "The smallest positive integral value of \\(n\\) for which \\((1 + \\sqrt{3}i)^{n/2}\\) is positive real, is",
+      reason:
+        "the printed stem's exponent is the constant 1/2, so NO n appears anywhere in it and the question — which asks for the smallest n — cannot be answered at all. The repair is documented by the paper's own solution, whose first line reads '(1 + sqrt3 i)^{n/2}'. Not a repair chosen to make an answer fit: it makes the printed key WRONG (see the resolution below), which is the opposite of convenient",
+    },
     50: {
       optionTexts: ["\\(2\\pi\\)", "\\(\\pi\\)", "0", "2"],
       reason:
         "this question alone labels its options `A) B) C) D)` — uppercase, closing paren only, no opening paren. Measured across all four weekly papers it is the ONLY such line, so the four texts are supplied here rather than teaching the shared label pattern an uppercase form: `A.`/`A)` occurs in ordinary assertion-reason prose ('...and R explains A'), and loosening it would put all fourteen papers at risk to fix one question. Texts are verbatim; the key is untouched",
+    },
+  },
+  // Two WRONG PRINTED KEYS, both surfaced by the blind pass and both proved
+  // from the paper's own working rather than from the derivation that flagged
+  // them. Note this paper's grid key agrees with its solution letters on all 33
+  // questions where both exist — so two sources agreeing is not evidence the
+  // answer is right, only that they were typed from each other.
+  resolutions: {
+    10: {
+      answer: "C",
+      reason:
+        "printed key B is WRONG, and the paper's own solution refutes it. With the stem repaired to the exponent n/2 that the solution itself prints, (1 + sqrt3 i)^(n/2) = 2^(n/2) * exp(i*pi*n/6), which is positive real exactly when n is a multiple of 12. The solution factors it as (-2)^(n/2) * omega^n and then asserts that is positive 'when n = 6, 12, 24, 36' — but at n = 6 its OWN expression evaluates to (-2)^3 * omega^6 = -8, a NEGATIVE real. Its list is wrong at the first element and the key follows that error. Verified: n=3 gives 2.83i, n=6 gives -8, n=12 gives +64, so 12 = option C",
+    },
+    16: {
+      answer: "A",
+      reason:
+        "printed key D ('None of these') is WRONG; the period is 1. The solution's entire argument is a non-sequitur — it says '[x] is not a periodic function, therefore f(x) is non-periodic', reasoning about [x] in ISOLATION when the stem combines it as -x + [x], which is exactly the fractional part -{x} and IS periodic with period 1. Since tan(pi*x) also has period 1, f(x+1) = f(x) identically; verified to 1e-14 at seven awkward points (0.13, 0.37, 0.61, 1.29, -0.71, 2.44, 3.87), and 1/4, 1/3, 1/2 and 3/4 were each tested and rejected, so 1 is the FUNDAMENTAL period and option A is right",
     },
   },
 };

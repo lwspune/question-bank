@@ -1,0 +1,202 @@
+[
+  {
+    "number": 1,
+    "answer": "D",
+    "working": "Total subsets of a (2n+1)-set is 2^(2n+1). Pair each subset with its complement: |S| > n exactly when |complement| <= n, so the subsets with more than n elements are in bijection with those having at most n, giving half of 2^(2n+1) = 2^(2n). Checked by direct summation of C(2n+1,k) for k=n+1..2n+1 at n=1..6: 4, 16, 64, 256, 1024, 4096 = 2^(2n) every time. Note n=1 gives 4 for option B as well, so the discriminating check is n>=2.",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Counting Sets, Subsets, and Inclusion-Exclusion",
+    "difficulty": "EASY",
+    "notes": "Option B is printed as 2^{n~} with a stray tilde from extraction; it reads as 2^n. Does not affect the answer."
+  },
+  {
+    "number": 2,
+    "answer": "A",
+    "working": "A = A intersect (A union X) = A intersect (B union X) = (A intersect B) union (A intersect X) = (A intersect B) union empty = A intersect B, so A is a subset of B. The same argument with A and B swapped gives B a subset of A. Hence A = B. B, C and D fail on the simple witness A = B = empty with X any non-empty set.",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Set Operations, Identities, and Cartesian Products of Sets",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 3,
+    "answer": "B",
+    "working": "The question asks which statement is NOT correct. B claims 0 < |x-y| <= 1 is symmetric and transitive; symmetry holds but transitivity fails at x=0, y=1, z=2 (0R1 and 1R2 both hold, but |0-2| = 2 > 1 so 0R2 fails), so B is the false statement. The other three check out: A is not symmetric (1R0.5 but not 0.5R1) and not transitive (3R2.2, 2.2R1.4, but |3|-|1.4| = 1.6 > 1); C is reflexive (|x|-|x| = 0 <= 1) and not symmetric (0R5 but not 5R0); D is reflexive and symmetric by inspection.",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Relations — Properties, Cartesian Product, and Counting",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 4,
+    "answer": "C",
+    "working": "(x-2)/(x+5) - 2 > 0 gives (-x-12)/(x+5) > 0, i.e. (x+12)/(x+5) < 0, so x lies strictly between the two zeros -12 and -5. Confirmed with sympy solveset over the reals: Interval.open(-12, -5). Both endpoints are excluded (-5 makes the expression undefined, -12 gives equality), which rules out the closed interval in B.",
+    "confidence": "high",
+    "chapter": "Linear Inequalities",
+    "subtopic": "Linear Systems and Feasible Regions",
+    "difficulty": "EASY",
+    "notes": "Classification caveat: this is a one-variable rational inequality, and the only subtopic under Linear Inequalities in the live taxonomy is 'Linear Systems and Feasible Regions', which is a loose fit. Chapter is right; subtopic is the only one available."
+  },
+  {
+    "number": 5,
+    "answer": "B",
+    "working": "|x-2| > 6 splits into x-2 > 6 or x-2 < -6, i.e. x > 8 or x < -4, and both inequalities are strict so the endpoints are excluded. Confirmed with sympy: Union(Interval.open(-oo,-4), Interval.open(8,oo)). C is the trap with the wrong left endpoint (4 instead of -4) and closed brackets.",
+    "confidence": "high",
+    "chapter": "Linear Inequalities",
+    "subtopic": "Linear Systems and Feasible Regions",
+    "difficulty": "EASY",
+    "notes": "Classification caveat: absolute-value inequality in one variable; 'Linear Systems and Feasible Regions' is the only subtopic available under Linear Inequalities and is a loose fit."
+  },
+  {
+    "number": 6,
+    "answer": "C",
+    "working": "1/alpha + 1/beta = (alpha+beta)/(alpha*beta) = (-q/p)/(r/p) = -q/r = 4, so q = -4r. p, q, r in A.P. gives p = 2q - r = -9r. Taking r = 1: p = -9, q = -4 (and -4-(-9) = 1-(-4) = 5, so the A.P. holds). Then alpha+beta = -q/p = -4/9 and alpha*beta = r/p = -1/9, so (alpha-beta)^2 = 16/81 + 4/9 = 52/81 and |alpha-beta| = sqrt(52)/9 = 2*sqrt(13)/9 = 0.801234. Verified by solving -9x^2-4x+1 = 0 directly in sympy; the other three options evaluate to 0.916, 0.648 and 0.868, all distinct from it.",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Vieta's Relations and Root-Coefficient Identities",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 7,
+    "answer": "C",
+    "working": "x^2 is already non-negative so |x^2| = x^2, and the equation is |x|^2 + |x| - 6 = 0, i.e. (|x|+3)(|x|-2) = 0. |x| = -3 is inadmissible, leaving |x| = 2, so x = 2 and x = -2: two real roots with sum 0 and product -4. That rules out A (there are two, not one), B (sum is 0, not 1) and D (product is -4, not 0). sympy returns exactly [-2, 2].",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Special Quadratics — Parametric, Logarithmic, Constructed",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 8,
+    "answer": "A",
+    "working": "A sum of three real squares is zero only if each term is zero, and x cannot equal 1, 3 and 5 at once, so there is no real root. Expanding confirms it: 3x^2 - 18x + 35 with discriminant 324 - 420 = -96 < 0. sympy's real solveset is the empty set.",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Nature of Roots and Boundary Conditions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 9,
+    "answer": "B",
+    "working": "Using {x+1} = {x} and [x+1] = [x]+1, the equation becomes {x} + 2x = 4[x] - 2; substituting x = [x] + {x} gives 3{x} = 2[x] - 2, so {x} = (2[x]-2)/3. The constraint 0 <= {x} < 1 forces 2 <= 2[x] < 5, i.e. [x] = 1 or [x] = 2, giving x = 1 and x = 8/3. Both were confirmed by an exact-fraction scan over [-2000, 2000] in steps of 1/12, which found these two and nothing else. Of the two, only x = 1 is an integer, so the number of INTEGRAL solutions as printed is 1.",
+    "confidence": "medium",
+    "chapter": "Functions",
+    "subtopic": "Greatest Integer Function",
+    "difficulty": "MODERATE",
+    "notes": "Answer-affecting reading. The equation has exactly two real solutions, x = 1 and x = 8/3, but only x = 1 is an integer. Answered as printed ('the number of integral solutions') = 1 = option B. If the intended question is the number of solutions with 'integral' loose or spurious, the answer would be 2 = option C. Both counts are on the option list, so this needs a source check of the stem wording."
+  },
+  {
+    "number": 10,
+    "answer": null,
+    "working": "As printed the exponent is the constant 1/2, so no n appears anywhere in the expression and the question cannot be answered: (1+sqrt(3)i)^(1/2) = sqrt(2)*e^(i*pi/6) = 1.2247 + 0.7071i, a fixed non-real number, so no positive integer n makes it positive real and no option is correct.",
+    "confidence": "low",
+    "chapter": "Complex Numbers",
+    "subtopic": "Powers and Roots",
+    "difficulty": "MODERATE",
+    "notes": "DEFECT: the stem asks for the smallest positive integral n but the printed expression (1+sqrt(3)i)^(1/2) contains no n. Answer left null rather than repaired. For the adjudicator, the two natural repairs both land on the option list: with exponent n/2 the smallest n is 12 (option C), with exponent n it is 6 (option B). The option ladder favours the n/2 reading, because under it 3 gives a purely imaginary value, 6 gives the negative real -8, and 12 is the first positive real -- so 3 and 6 are the two classic traps and all three of A, B, C carry meaning. Under the exponent-n reading, 12 is a dead option. That is evidence the printed '1/2' is a corrupted 'n/2', but it is a description, not a repair. Option D (0) is not a positive integer under any reading."
+  },
+  {
+    "number": 11,
+    "answer": "C",
+    "working": "Rationalise: (7-i)/(3-4i) = (7-i)(3+4i)/25 = (21+25i+4)/25 = 1+i. Then (1+i)^2 = 2i, so z^14 = ((1+i)^2)^7 = (2i)^7 = 128*i^7 = -128i = -2^7 i. Confirmed numerically: z = 1+1j and z^14 = -128j exactly.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Powers and Roots",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 12,
+    "answer": "C",
+    "working": "w = -1/2 + i*sqrt(3)/2 is a primitive cube root of unity, so powers reduce mod 3: 334 = 1 (mod 3) gives w^334 = w, and 365 = 2 (mod 3) gives w^365 = w^2. The expression is 4 + 5w + 3w^2; substituting w^2 = -1-w gives 4 + 5w - 3 - 3w = 1 + 2w = 1 + (-1 + i*sqrt(3)) = i*sqrt(3). Numeric check gives 1.732050807568621j against i*sqrt(3) = 1.7320508075688772j.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 13,
+    "answer": "C",
+    "working": "(1+i)/(1-i) = (1+i)^2/((1-i)(1+i)) = 2i/2 = i, and the second fraction is its reciprocal, -i. So the expression is i^4 + (-i)^4 = 1 + 1 = 2. Numeric check returns exactly (2+0j).",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Powers and Roots",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 14,
+    "answer": "D",
+    "working": "The square root needs log10(x^2) >= 0, i.e. x^2 >= 1, i.e. |x| >= 1 (x = 0 is excluded anyway since log10(0) is undefined). So x lies in (-inf,-1] union [1,inf). sympy's real solveset for log(x^2,10) >= 0 returns Union(Interval(-oo,-1), Interval(1,oo)). A is the complement trap.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Domain, Range, and Function Properties",
+    "difficulty": "EASY",
+    "notes": "Cosmetic only, not answer-affecting: options B and D print a closing square bracket on infinity ('[1,∞]'); the intended set in D is unambiguous."
+  },
+  {
+    "number": 15,
+    "answer": "C",
+    "working": "(fog)(1/2) = f(g(1/2)) = sgn([1/2]) = sgn(0) = 0, so the value is sin(pi*0) = 0. The answer is robust to the order of composition: reading it as gof instead gives [sgn(1/2)] = [1] = 1 and sin(pi*1) = 0 as well, so either reading yields 0.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Composition and Inverse of Functions",
+    "difficulty": "EASY",
+    "notes": "Cosmetic only, not answer-affecting: the braces in the stem are mismatched (an opening brace closed by a parenthesis). The value is 0 under either grouping and under either order of composition."
+  },
+  {
+    "number": 16,
+    "answer": "A",
+    "working": "Write f(x) = tan(pi*x) - (x - [x]) = tan(pi*x) - {x}. Both tan(pi*x) and {x} have period 1, so f(x+1) = f(x), verified numerically at x = 0.13, 0.37, 0.61, 1.29, -0.71 and 2.44 (agreement to 1e-9). No smaller period exists: if T in (0,1) were one, then for small x > 0 we would need tan(pi*x+pi*T) = tan(pi*x) + T identically, and differentiating gives sec^2(pi*T) = 1 at x = 0, forcing T to be an integer. A numeric check at T = 0.5 fails at every sample point. So the period is 1.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Domain, Range, and Function Properties",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 17,
+    "answer": "A",
+    "working": "f(x+y) = f(x)f(y) on N with f(1) = 3 forces f(x) = 3^x. The sum is then a G.P.: 3(3^n - 1)/2 = 120, so 3^n = 81 and n = 4. Direct summation confirms: n=1,2,3,4 give 3, 12, 39, 120, and n=5 overshoots to 363.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Functional Equations",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 18,
+    "answer": "B",
+    "working": "Let g(x) = (1/2)[f(x) + f(-x)]. Then g(-x) = (1/2)[f(-x) + f(x)] = g(x) for every x, so g is even for any f (this is the standard even part of f). It is not generally one-one -- being even, it fails injectivity whenever its domain contains a non-zero point and its two values agree, which is always.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Domain, Range, and Function Properties",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 19,
+    "answer": "A",
+    "working": "The radicand sits in a denominator, so we need [x]^2 - [x] - 6 > 0 strictly, i.e. ([x]-3)([x]+2) > 0, i.e. [x] <= -3 or [x] >= 4 since [x] is an integer. [x] <= -3 is equivalent to x < -2, and [x] >= 4 is equivalent to x >= 4, giving (-inf,-2) union [4,inf). Boundary scan confirms: x = -2.2 works, x = -2.0 and x = -1.9 fail (radicand 0), x = 3.9 fails (radicand 0), x = 4.0 works. So -2 is excluded and 4 is included, which is exactly option A and rules out the closed -2 in B and the open 4 in C.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Greatest Integer Function",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 20,
+    "answer": "D",
+    "working": "log base 10^4 of x = y means x = 10^(4y), so x^4 = 10^(16y) and log base 10^8 of x^4 = 16y/8 = 2y. Equivalently by change of base, log_{10^8} x^4 = (4/8)*log10(x) = (1/2)*(4y) = 2y. sympy simplifies the expression to 2*y, and numeric spot checks at y = 0.3, 1.7, 2.9 give 0.6, 3.4, 5.8.",
+    "confidence": "high",
+    "chapter": "Logarithms",
+    "subtopic": "Logarithm Identities, Change of Base, and Sums",
+    "difficulty": "EASY",
+    "notes": ""
+  }
+]

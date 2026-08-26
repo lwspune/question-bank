@@ -1,0 +1,202 @@
+[
+  {
+    "number": 1,
+    "answer": "A",
+    "working": "Multiply numerator and denominator by the conjugate (1 + 2i sin t): the quotient becomes ((3 - 4 sin^2 t) + 8i sin t)/(1 + 4 sin^2 t). It is real exactly when 8 sin t = 0, i.e. sin t = 0. On 0 < t < 2pi the only such value is t = pi. Checked all four options numerically: pi gives 3 (real); pi/6 gives 1 + 2i; pi/3 gives 1.732i; pi/2 gives -0.2 + 1.6i.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Conjugate",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 2,
+    "answer": "A",
+    "working": "Write a = e^(i alpha), b = e^(i beta), c = e^(i gamma), each of unit modulus. Then b/c + c/a + a/b = e^(i(beta-gamma)) + e^(i(gamma-alpha)) + e^(i(alpha-beta)), whose imaginary part is exactly sin(beta-gamma) + sin(gamma-alpha) + sin(alpha-beta) — the same sum the question asks for, just reordered. The given value 1 is real, so that imaginary part must be 0.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Conjugate",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 3,
+    "answer": "C",
+    "working": "(1+i)^n/(1-i)^(n-2) = [(1+i)/(1-i)]^n * (1-i)^2. Since (1+i)/(1-i) = i and (1-i)^2 = -2i, the expression equals i^n * (-2i) = -2 i^(n+1). Evaluated both sides for n = 1,2,3,4,5,7,10,-3: option C matched at every value while A, B and D failed (e.g. n=1 gives 2, and -2 i^2 = 2, whereas -i^0 = -1).",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Powers and Roots",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 4,
+    "answer": "D",
+    "working": "Modulus of 3/2 + i sqrt(3)/2 is sqrt(9/4 + 3/4) = sqrt(3); argument is arctan((sqrt3/2)/(3/2)) = pi/6. So the 50th power is (sqrt3)^50 * e^(i*50pi/6) = 3^25 * e^(i*25pi/3), and 25pi/3 - 8pi = pi/3. Hence x + iy = e^(i pi/3) = 1/2 + i sqrt(3)/2. Verified numerically: (1.5 + 0.8660i)^50 / 3^25 = 0.5 + 0.86603i.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Powers and Roots",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 5,
+    "answer": "A",
+    "working": "As printed the expression is n((A intersect B) intersect A). Since A intersect B is a subset of A, intersecting it again with A changes nothing, so (A intersect B) intersect A = A intersect B and its cardinality is the given 2. n(A) = 8 is not used.",
+    "confidence": "medium",
+    "chapter": "Sets & Relations",
+    "subtopic": "Counting Sets, Subsets, and Inclusion-Exclusion",
+    "difficulty": "EASY",
+    "notes": "SUSPECTED EXTRACTION DEFECT (answered as printed, not repaired). The stem's LaTeX is visibly broken at exactly the point in question: 'n((A \\cap B) \\cap' closes math mode and then continues in plain text as 'A)'. A complement mark on the first bracket appears to have been lost. Under the intended reading n((A intersect B)' intersect A) = n(A) - n(A intersect B) = 8 - 2 = 6, which is option C and would explain why the option set is 2/4/6/8 and why n(A) = 8 is supplied at all. I have answered the stem AS PRINTED (2 = option A); if the printed key is C, this is the reason and the stem needs repair rather than the key."
+  },
+  {
+    "number": 6,
+    "answer": "A",
+    "working": "A - B = {a,b,c} - {b,c,d} = {a}. B intersect C = {b,c,d} intersect {a,d,c} = {c,d}. The Cartesian product of {a} with {c,d} is {(a,c),(a,d)}.",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Set Operations, Identities, and Cartesian Products of Sets",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 7,
+    "answer": "B",
+    "working": "'a differs from b by 3' is read as a - b = 3, i.e. a = b + 3, so the ordered pairs are (4,1),(5,2),(6,3),... which is option B. Option A is the reverse relation b - a = 3, and option C is b = 3a, a different rule entirely.",
+    "confidence": "medium",
+    "chapter": "Sets & Relations",
+    "subtopic": "Relations — Properties, Cartesian Product, and Counting",
+    "difficulty": "EASY",
+    "notes": "Genuinely ambiguous wording, flagged rather than resolved silently. If 'differs by 3' is read symmetrically as |a - b| = 3, the relation contains BOTH the option-A pairs and the option-B pairs, so neither A nor B is the whole relation and option D would be correct. I have taken the directional reading a - b = 3, which is the standard reading for this stem and gives B. A disagreement here is a wording dispute, not an arithmetic one."
+  },
+  {
+    "number": 8,
+    "answer": "A",
+    "working": "log_9 3 = 1/2 so 4^(1/2) = 2; log_2 4 = 2 so 9^2 = 81; the left side is 2 + 81 = 83. So 10^(log_x 83) = 83. Taking log base 10 gives log(83)/log(x) = log(83)/log(10), hence log x = log 10 and x = 10. Verified numerically: LHS = 83.0 exactly, and x = 10 returns 83.0 while x = 4 returns 1540.",
+    "confidence": "high",
+    "chapter": "Logarithms",
+    "subtopic": "Solving Logarithmic Equations and Applications",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 9,
+    "answer": "B",
+    "working": "Put t = 2^(1/(2x)), so 2^(1/x) = t^2. The left side is log2(6) + log2(t) = log2(6t) and the right is log2(t^2 + 8), giving t^2 - 6t + 8 = 0, so t = 2 or t = 4. Then 1/(2x) = 1 gives x = 1/2 and 1/(2x) = 2 gives x = 1/4. Both substituted back and matched to 10 decimals; 1/3, -1/4 and -1/2 all failed.",
+    "confidence": "high",
+    "chapter": "Logarithms",
+    "subtopic": "Solving Logarithmic Equations and Applications",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 10,
+    "answer": "C",
+    "working": "Orthogonality of x^2+y^2+2g1x+2f1y+c1 = 0 and x^2+y^2+2g2x+2f2y+c2 = 0 requires 2g1g2 + 2f1f2 = c1 + c2. Here g1 = lambda, f1 = 3, c1 = 1 and g2 = 2, f2 = 1, c2 = 0, so 4 lambda + 6 = 1 and lambda = -5/4. Tested all four options: only -5/4 makes the left side equal 1.",
+    "confidence": "high",
+    "chapter": "Circles",
+    "subtopic": "Circle Equation — Centre, Radius, Diameter, and Properties",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 11,
+    "answer": "C",
+    "working": "For x^2/25 + y^2/9 = 1, a = 5, b = 3 and c = sqrt(25-9) = 4, so the foci S, S' are (+-4, 0) and the minor-axis ends B, B' are (0, +-3). SBS'B' is a rhombus whose diagonals are the perpendicular segments SS' = 8 and BB' = 6, so its area is (1/2)(8)(6) = 24 sq units.",
+    "confidence": "high",
+    "chapter": "Conics",
+    "subtopic": "Ellipse — Foci, Eccentricity, and Focal Distances",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 12,
+    "answer": "C",
+    "working": "The line x = 4y - 2 is y = (x+2)/4 and the parabola is y = x^2/4. Setting them equal gives x^2 = x + 2, so x = -1 and x = 2. Area = (1/4) * integral from -1 to 2 of (x + 2 - x^2) dx = (1/4)(9/2) = 9/8. Confirmed by numeric integration over 2,000,000 strips: 1.1250000.",
+    "confidence": "high",
+    "chapter": "Applications of Integration",
+    "subtopic": "Area Between Two Curves and Intersection Points",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 13,
+    "answer": "C",
+    "working": "The angle of depression from the top equals the angle of elevation from the point, so height = distance * tan 60 = sqrt(3)/(sqrt(3)+1). Rationalising by (sqrt(3)-1) gives (3 - sqrt(3))/2. Numerically 0.63397, which matches option C (0.63397) and none of the others (2.36603, 0.86603, 3.46410).",
+    "confidence": "high",
+    "chapter": "Height & Distance",
+    "subtopic": "Heights and Distances from Angles of Elevation",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 14,
+    "answer": "B",
+    "working": "The two points lie on opposite sides, so the required distance is the sum of the two horizontal distances: 100/tan30 + 100/tan60 = 100*sqrt(3) + 100/sqrt(3) = (300 + 100)/sqrt(3) = 400/sqrt(3). Numerically 230.94, matching option B exactly; the other options are 692.82, 57.74 and 346.41.",
+    "confidence": "high",
+    "chapter": "Height & Distance",
+    "subtopic": "Heights and Distances from Angles of Elevation",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 15,
+    "answer": "B",
+    "working": "Divide the equation by 4 to get the standard form x^2+y^2+z^2 - 4x + 5y - 8z + 5/4 = 0. Centre is (2, -5/2, 4) and radius = sqrt(2^2 + (5/2)^2 + 4^2 - 5/4) = sqrt(4 + 25/4 + 16 - 5/4) = sqrt(25) = 5. Computed with exact fractions: r^2 = 25 exactly.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "Sphere",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 16,
+    "answer": "D",
+    "working": "Same sphere as Q15. Dividing by 4 gives x^2+y^2+z^2 - 4x + 5y - 8z + 5/4 = 0, so the centre is (-(-4)/2, -(5)/2, -(-8)/2) = (2, -5/2, 4). Verified with exact fractions, and it is consistent with the radius 5 of Q15 (2^2 + (5/2)^2 + 4^2 - 5/4 = 25). None of the explicit options A, B or C is this point, so the catch-all option D is chosen.",
+    "confidence": "low",
+    "chapter": "3D Geometry",
+    "subtopic": "Sphere",
+    "difficulty": "EASY",
+    "notes": "TWO DEFECTS, both described rather than repaired. (1) The derived centre is (2, -5/2, 4). Option B prints (2, 5/2, 4) — correct in two coordinates and WRONG IN THE SIGN of the y-coordinate, so it is not the centre as printed; option A (2,3,4) and option C (-4,5,-8) are further off (C is just the raw coefficient triple -4, 5, -8 with signs shuffled, i.e. the value you get by forgetting to halve and negate). I have NOT picked B as the nearest match. (2) Option D is truncated in the source to the single word 'Not' — presumably 'None of these' or 'Not defined'. I answer D on the reading that it is a none-of-these catch-all, which is why confidence is low: if D means something else, the correct output for this question is null. Strongly suspect the printed key is B and that the sign was lost when the option was typeset. Also note the stem carries no data of its own ('Find the centre'); it is the second half of a set whose sphere is given in Q15, flagged by the 'For next two question' fragment trailing Q14."
+  },
+  {
+    "number": 17,
+    "answer": "A",
+    "working": "From the shared context alpha + beta = -b/a and alpha*beta = c/a. For a^3 x^2 + abc x + c^3 = 0 the root sum is -bc/a^2 and the product is c^3/a^3. Option A gives sum alpha*beta(alpha+beta) = (c/a)(-b/a) = -bc/a^2 and product (alpha*beta)^3 = c^3/a^3 — both match. Verified against numerically computed roots for (a,b,c) = (2,-5,3), (1,7,5) and (3,2,-4); A matched all three. Note (2,-5,3) is NOT a discriminating triple — option C happens to agree there because alpha*beta = 1.5 coincides with alpha^2*beta for that data — but C fails on the other two.",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Vieta's Relations and Root-Coefficient Identities",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 18,
+    "answer": "D",
+    "working": "alpha + beta = -b/a = sin t + cos t and alpha*beta = c/a = sin t cos t. Squaring the first, b^2/a^2 = 1 + 2c/a, so b^2 = a^2 + 2ac. Then b^2 + c^2 = a^2 + 2ac + c^2 = (a+c)^2, which is option D. Tested numerically at three awkward angles (t = 0.37, 1.13, 2.90 rad) and with a = 2.7 as well as a = 1: D held to machine precision every time, while A, B and C each failed.",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Vieta's Relations and Root-Coefficient Identities",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 19,
+    "answer": "A",
+    "working": "Since a*alpha^2 + b*alpha + c = 0, alpha(a*alpha + b) = -c, so 1/(a*alpha + b) = -alpha/c, and likewise for beta. Sum of the new roots = -(alpha+beta)/c = b/(ac); product = alpha*beta/c^2 = 1/(ac). The monic equation x^2 - (b/ac)x + 1/(ac) = 0 clears to ac*x^2 - bx + 1 = 0, which is option A. Verified by computing 1/(a*alpha+b), 1/(a*beta+b) directly for (a,b,c) = (2,-5,3), (1,7,5), (3,2,-4) and matching them against the roots of each option — A matched all three, B gave the negatives, C gave unrelated values.",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Vieta's Relations and Root-Coefficient Identities",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 20,
+    "answer": "A",
+    "working": "From x^2 - px - q = 0: u + v = p and uv = -q. I is correct — reversing the coefficients gives -q x^2 - p x + 1 = 0, i.e. q x^2 + p x - 1 = 0, whose root sum -p/q equals (u+v)/(uv) and whose root product -1/q equals 1/(uv). II is correct — (x-p)(x+q) = 0 has roots p and -q, which are precisely u+v and uv. III is FALSE — the equation with roots u^2, v^2 is x^2 - (p^2+2q)x + q^2 = 0, not x^2 + p^2 x + q^2 = 0, since u^2 + v^2 = p^2 + 2q, not -p^2. Checked with (p,q) = (1,1), (3,-2), (-4,5): I and II matched every time, III never did (e.g. p=3,q=-2 gives u^2,v^2 = 1,4 while the stated equation has roots -8.53 and -0.47).",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Vieta's Relations and Root-Coefficient Identities",
+    "difficulty": "MODERATE",
+    "notes": ""
+  }
+]

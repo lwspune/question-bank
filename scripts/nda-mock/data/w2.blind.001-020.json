@@ -1,0 +1,202 @@
+[
+  {
+    "number": 1,
+    "answer": "B",
+    "working": "Equal roots require the discriminant to vanish: (8k)^2 - 4*k*32 = 64k^2 - 128k = 64k(k-2) = 0, so k = 0 or k = 2. k = 0 kills the x^2 term and leaves 32 = 0, which is not a quadratic with equal roots, so k = 2.",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Nature of Roots and Boundary Conditions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 2,
+    "answer": "D",
+    "working": "Put t = x^2: t^2 - 5t + 6 = 0 gives t = 2, 3, so x^2 = 2 or x^2 = 3 and x = +/-sqrt(2), +/-sqrt(3). Option (A) is the distractor that forgets to take the square root.",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Special Quadratics — Parametric, Logarithmic, Constructed",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 3,
+    "answer": "B",
+    "working": "Real coefficients force the conjugate 3+4i to be the other root, so sum = 6 = -b/a giving b = -6a, and product = 9+16 = 25 = c/a giving c = 25a. Then 31a + b + c = 31a - 6a + 25a = 50a, and 2c = 2(25a) = 50a, so the value equals 2c (2b = -12a and 2a are both wrong).",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Vieta's Relations and Root-Coefficient Identities",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 4,
+    "answer": "A",
+    "working": "Equal roots in x^2+bx+a=0 give b^2 = 4a and the repeated root r = -b/2; substituting r into ax^2+x+b=0 gives ab^2/4 + b/2 = 0, i.e. b = 0 or ab = -2. b=0 forces a=0 (both equations then have root 0), and ab=-2 with a=b^2/4 gives b^3=-8, so b=-2, a=1 (checked: x^2-2x+1 has the double root 1, and x^2+x-2 has roots 1 and -2, common root 1). Both branches give 2a^2 + b = 0.",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Nature of Roots and Boundary Conditions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 5,
+    "answer": "B",
+    "working": "x^2+1 > 0 for every real x, so the inequality may be cross-multiplied without a sign split: 2(x+2) > x^2+1 gives x^2 - 2x - 3 < 0, i.e. (x-3)(x+1) < 0 and -1 < x < 3. The integers strictly inside are 0, 1, 2 — three of them.",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Nature of Roots and Boundary Conditions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 6,
+    "answer": "D",
+    "working": "2x = -1 + i*sqrt(3) makes x = w, a primitive cube root of unity, so 1 + w + w^2 = 0. Then 1 + x - x^2 = 1 + w - w^2 = -2w^2 and 1 - x + x^2 = 1 - w + w^2 = -2w. Sixth powers: (-2w^2)^6 = 64*w^12 = 64 and (-2w)^6 = 64*w^6 = 64, so the difference is 64 - 64 = 0 (verified symbolically).",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Cube Roots of Unity",
+    "difficulty": "MODERATE",
+    "notes": "Stem prints '(1-x^2+x)^6 - 1(1-x+x^2)^6'; the stray '1' between the minus sign and the second bracket looks like an extraction artefact. Both readings — a plain difference, or a difference with coefficient 1 — evaluate to 0, so the answer is unaffected. (Had the operator been '+', the value would be 128, which is not among the options.)"
+  },
+  {
+    "number": 7,
+    "answer": "C",
+    "working": "z+1 = (z+4) - 3, so |z+1| <= |z+4| + 3 <= 3 + 3 = 6, and the bound is attained: z = -7 satisfies |z+4| = 3 and gives |z+1| = 6. That single witness also falsifies (A) <=5 and (B) <=4, so only <=6 holds for all admissible z.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Conjugate",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 8,
+    "answer": "D",
+    "working": "With z = x+iy, z^2 + |z|^2 = (x^2-y^2+2ixy) + (x^2+y^2) = 2x^2 + 2ixy. Both parts vanish iff x = 0 (which makes the imaginary part 0 automatically), leaving y free: every purely imaginary z = iy is a solution, so there are infinitely many.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Conjugate",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 9,
+    "answer": "B",
+    "working": "Writing z = x+iy the equation becomes x^2 + y^2 + 4x + 6y + 4 = 0 (the imaginary parts cancel identically), i.e. (x+2)^2 + (y+3)^2 = 9. Radius = 3. Equivalently, for z*zbar + abar*z + a*zbar + b = 0 with a = 2+3i, b = 4, radius = sqrt(|a|^2 - b) = sqrt(13-4) = 3.",
+    "confidence": "high",
+    "chapter": "Complex Numbers",
+    "subtopic": "Modulus, Argument, and Conjugate",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 10,
+    "answer": "C",
+    "working": "If the two classes meet at the same hour no student can attend both, so the sets are disjoint and |C union P| = 20 + 30 = 50, making (A) true. If they meet at different hours the ten double-enrolled students are counted twice, so |C union P| = 20 + 30 - 10 = 40, making (B) true. Both statements hold, so (C).",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Counting Sets, Subsets, and Inclusion-Exclusion",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 11,
+    "answer": "C",
+    "working": "65% own neither, so |C union S| = 35%. Inclusion-exclusion gives |C and S| = 25 + 15 - 35 = 5%. If 5% of the total is 1500 families then the total is 1500/0.05 = 30000.",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Counting Sets, Subsets, and Inclusion-Exclusion",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 12,
+    "answer": "A",
+    "working": "A = {x in Z : |x| < 3} = {-2,-1,0,1,2}. Pairing each x with y = |x| (and |x| lies in A for every such x) gives R = {(-2,2),(-1,1),(0,0),(1,1),(2,2)}, which is the set listed in (A). (C) wrongly drops the negative preimages.",
+    "confidence": "high",
+    "chapter": "Sets & Relations",
+    "subtopic": "Relations — Properties, Cartesian Product, and Counting",
+    "difficulty": "EASY",
+    "notes": "Option (A) is printed with a missing opening parenthesis on its first pair ('{ - 2,2),...'); the intended set is unambiguous and no other option matches it, so this is a typesetting artefact rather than a defect that changes the answer."
+  },
+  {
+    "number": 13,
+    "answer": "C",
+    "working": "Replacing x by -x gives 2f(-x) + 3f(x) = 15 + 4x. Solving the pair {2u+3v = 15-4x, 3u+2v = 15+4x} for u = f(x) gives 5u = 15 + 20x, so f(x) = 4x + 3 (checked back in the original relation), and f(2) = 11.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Functional Equations",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 14,
+    "answer": "B",
+    "working": "Cutting squares of side x gives V = x(24-2x)^2 on 0 < x < 12. V' = (24-2x)(24-6x), whose interior zero is x = 4 (x = 12 is the degenerate endpoint with V = 0). V(4) = 4*16^2 = 1024 is the maximum, so the height is 4 cm.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Optimisation — Geometric, Trigonometric, AM-GM",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 15,
+    "answer": "B",
+    "working": "Left inequality: x^2+4x+4 > 9x-2 gives x^2-5x+6 > 0, so x < 2 or x > 3. Right inequality: x^2+4x+4 < 12x-3 gives x^2-8x+7 < 0, so 1 < x < 7. The intersection is (1,2) union (3,7); (1,2) contains no integer and (3,7) contains 4, 5, 6 — three integral values.",
+    "confidence": "high",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Nature of Roots and Boundary Conditions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 16,
+    "answer": "C",
+    "working": "x - [x] is the fractional part, so f(x) = {x} + 3 and f(x+1) = {x+1} + 3 = {x} + 3 = f(x); no smaller positive period exists because {x} rises from 0 to 1 once per unit interval. It is a genuine function (so not (A)), its period is 1 not pi (so not (B)), and it is many-to-one hence non-invertible (so not (D)).",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Greatest Integer Function",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 17,
+    "answer": "A",
+    "working": "log_4[(x^3+x^2)/(x+1)] = log_4[x^2(x+1)/(x+1)] = log_4(x^2) = 2, so x^2 = 16 and x = 4 given x > 0 (x = -4 is rejected by the stated domain, and it also makes the original logarithm arguments negative).",
+    "confidence": "high",
+    "chapter": "Logarithms",
+    "subtopic": "Solving Logarithmic Equations and Applications",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 18,
+    "answer": "C",
+    "working": "f(x+y) + f(x-y) = [a^(x+y) + a^(-x-y) + a^(x-y) + a^(-x+y)]/2, while 2f(x)f(y) = 2*(a^x+a^-x)(a^y+a^-y)/4 = [a^(x+y) + a^(x-y) + a^(-x+y) + a^(-x-y)]/2 — the same four terms. Checked numerically at an awkward point (a = 3.5, x = 3/7, y = -5/11): both sides give 2.677544..., while f(x)f(y) = 1.3388 and f(x)-f(y) = -0.0189 do not match.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Functional Equations",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 19,
+    "answer": "D",
+    "working": "LHS = ((a^2-b^2)^2)^(x-1) = (a-b)^(2x-2)*(a+b)^(2x-2). Equating with (a-b)^(2x)*(a+b)^(-2) and cancelling gives (a+b)^(2x) = (a-b)^2, so 2x*log(a+b) = 2*log|a-b| and x = log|a-b|/log(a+b). Verified numerically: for (a,b) = (5,2) and (9,4), only candidate D makes both sides agree to 10 significant figures; A, B and C all fail.",
+    "confidence": "high",
+    "chapter": "Logarithms",
+    "subtopic": "Solving Logarithmic Equations and Applications",
+    "difficulty": "HARD",
+    "notes": ""
+  },
+  {
+    "number": 20,
+    "answer": "A",
+    "working": "3x^2 - 4x + 5 has discriminant 16 - 60 = -44 < 0 with a positive leading coefficient, so it is strictly positive for every real x (its minimum value is 11/3 at x = 2/3). The square root is therefore defined on all of R.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Domain, Range, and Function Properties",
+    "difficulty": "EASY",
+    "notes": ""
+  }
+]
