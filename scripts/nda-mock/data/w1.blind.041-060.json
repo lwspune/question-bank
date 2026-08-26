@@ -1,0 +1,202 @@
+[
+  {
+    "number": 41,
+    "answer": "B",
+    "working": "At least one green: 2^5 - 1 = 31 non-empty subsets; at least one blue: 2^4 - 1 = 15; red is unrestricted so all 2^3 = 8 subsets count. 31 * 15 * 8 = 3720.",
+    "confidence": "high",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Combinations",
+    "difficulty": "EASY",
+    "notes": "Options (A) and (D) are both 3600, so the four options carry only three distinct values. The derived 3720 is option (B)."
+  },
+  {
+    "number": 42,
+    "answer": "B",
+    "working": "The three events are separate, so a man may win in more than one, but the prizes within an event have different values and so go to different men. Running 16 ways, swimming 16*15, riding 16*15*14; the product is 16^3 * 15^2 * 14 = 12,902,400. Option (C), 16^3 * 15 * 14^2, evaluates to 12,042,240.",
+    "confidence": "high",
+    "chapter": "Permutation & Combination",
+    "subtopic": "Arrangements with Restrictions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 43,
+    "answer": "B",
+    "working": "1 + sin^4 x >= 1 while cos^2 3x <= 1, so equality forces both sides to equal 1: sin x = 0 and cos^2 3x = 1. sin x = 0 gives x = k*pi, at which 3x = 3k*pi and cos^2 3x = 1 automatically, so every such x works. In [-5pi/2, 5pi/2] = [-7.854, 7.854] the multiples of pi are k = -2,-1,0,1,2, i.e. 5 solutions. A 400k-point scan of cos^2(3x) - 1 - sin^4 x over the interval returns exactly those five points.",
+    "confidence": "high",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "General Solutions and Counting Solutions of Trigonometric Equations",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 44,
+    "answer": null,
+    "working": "The given equation gives sin A = (sqrt6 + sqrt7) cos A, i.e. tan A = sqrt6 + sqrt7. Then cos A + sqrt6 sin A = (1 + 6 + sqrt42) cos A = sqrt7 (sqrt6 + sqrt7) cos A = +sqrt7 sin A. Checked numerically on both branches: at A = arctan(sqrt6+sqrt7) the target is 2.5962223 and sqrt7 sin A = 2.5962223, while -sqrt7 sin A = -2.5962223; at A + pi both flip sign together, so the plus sign holds on both branches. The squaring route (sinA - sqrt6 cosA)^2 + (cosA + sqrt6 sinA)^2 = 7 gives only Y^2 = 7 sin^2 A, i.e. Y = +/- sqrt7 sin A, and the given equation fixes the sign to +.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": "No option matches the derived value. Derived value is +sqrt7 sin A; option (B) is -sqrt7 sin A, right in magnitude and wrong in sign, and the other three (sqrt6 sinA = 2.4036, sqrt6 cosA = 0.4717, sqrt7 cosA = 0.5095) do not match at all. (B) reads like a mangled '+/- sqrt7 sin A' - the sign-ambiguous answer the squaring route produces - with the leading + lost. Answer left null rather than snapped to the nearest option."
+  },
+  {
+    "number": 45,
+    "answer": "D",
+    "working": "tan x + cot x = 2 gives (sin^2 x + cos^2 x)/(sin x cos x) = 2, so sin x cos x = 1/2 and sin 2x = 1, x = pi/4 + k*pi, where sin^2 x = cos^2 x = 1/2. Hence sin^{2n}x + cos^{2n}x = 2*(1/2)^n = 2^{1-n}: 1 at n=1, 1/2 at n=2, 1/4 at n=3. That is not constant, and it equals 2^n only at n=1/2 and 1/2 only at n=2, so no listed closed form is correct in general.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 46,
+    "answer": "C",
+    "working": "Write A = (A-B) + B and expand cos A = cos(A-B)cos B - sin(A-B)sin B. The expression collapses to (1 - cos(2(A-B) + 2B))/2 = (1 - cos 2A)/2 = sin^2 A. Tested at four awkward pairs rather than convenient ones: (1.0, 0.3) -> 0.708073 = sin^2(1.0); (0.5, 1.2) -> 0.229849 = sin^2(0.5); (2.7, -0.9) -> 0.182654 = sin^2(2.7); (0.11, 3.3) -> 0.012051 = sin^2(0.11). Each time it equals sin^2 A and not sin^2 B, so it depends on A alone.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 47,
+    "answer": "D",
+    "working": "Sum-to-product on both givens and dividing: (sin x + sin y)/(cos x + cos y) = tan((x+y)/2) = (3/4)/(3/2) = 1/2. Then sin(x+y) = 2t/(1+t^2) with t = 1/2 gives (1)/(5/4) = 4/5.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Product-to-Sum and Sum-to-Product Identities",
+    "difficulty": "MODERATE",
+    "notes": "Stem premise is inconsistent with its own data, though the answer is unaffected: squaring and adding the two givens gives 2 + 2cos(x-y) = 2.8125, so cos(x-y) = 0.40625 and x-y = 66.03 deg, while x+y = 53.13 deg. That forces x = 59.58 deg and y = -6.45 deg, so y is not acute. The half-angle derivation never uses the acuteness and still yields 4/5."
+  },
+  {
+    "number": 48,
+    "answer": "A",
+    "working": "Over a common denominator the sum is [(a+b) + (a-b)]/sqrt((a+b)(a-b)) = 2a/sqrt(a^2 - b^2). With b = a tan x, a^2 - b^2 = a^2 (cos^2 x - sin^2 x)/cos^2 x = a^2 cos 2x/cos^2 x, so for a > 0 and cos x > 0 the value is 2 cos x/sqrt(cos 2x). Checked numerically with a = 3 at x = 0.15, 0.3, 0.6: 2.023241, 2.103154, 2.742154, matching 2cos x/sqrt(cos 2x) exactly and double option (B) each time.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 49,
+    "answer": "A",
+    "working": "4sin^2 x + 3cos^2 x = 3 + sin^2 x, whose maximum is 4; sin(x/2) + cos(x/2) = sqrt2 sin(x/2 + pi/4), whose maximum is sqrt2. The two maxima are attained together, at x = pi/2: sin^2 x = 1 and x/2 = pi/4 gives sin + cos = sqrt2. So the maximum is 4 + sqrt2 = 5.414214, confirmed by a 2M-point scan over [-4pi, 4pi] which returns 5.4142136 at x = -3.5pi (congruent to pi/2 mod 4pi).",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Maximum and Minimum of Trigonometric Expressions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 50,
+    "answer": "C",
+    "working": "Group as 7tan^6 x (tan^2 x + 1) - 3tan^2 x (tan^2 x + 1) = sec^2 x (7 tan^6 x - 3 tan^2 x). Substituting t = tan x, dt = sec^2 x dx, with t running 0 to 1: I = int_0^1 (7t^6 - 3t^2) dt = [t^7 - t^3] from 0 to 1 = 1 - 1 = 0. So 7I = 0. Numerical quadrature of the original integrand returns I = -9e-43, i.e. zero.",
+    "confidence": "high",
+    "chapter": "Definite Integration",
+    "subtopic": "Fundamental Theorem, Periodic Integrals, and Leibniz Rule",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 51,
+    "answer": null,
+    "working": "Unanswerable as printed: the Directions block defining this f(x) is absent. The only f(x) printed anywhere in the packet is the piecewise function in the block that appears after Q53, and that f is not constant on |x| < 1 - it is (1-cos4x)/x^2 for x<0, a at x=0, and sqrt(x)/(sqrt(16+sqrt x)-4) for x>0 - so it takes none of 1, -1, 0 uniformly there, and it certainly exists. Q50's f(x) is likewise non-constant on |x|<1 (f(0)=0 but f(0.5)=-0.92).",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "MODERATE",
+    "notes": "Missing shared context. Q51-Q53 are a three-question set - Q53 refers to 'L is from Q2', i.e. to Q52 - whose Directions block was never captured in the packet. The block printed at the end of Q53's option (D) belongs to Q54-Q56 (it defines the piecewise f and g(x)=[x] that those three ask about), not to Q51-Q53. Answer left null rather than guessed."
+  },
+  {
+    "number": 52,
+    "answer": null,
+    "working": "Unanswerable as printed: g(x) is never defined for this question. The only g in the packet is g(x) = [x] from the block after Q53, and lim_{x->0}[x] does not exist at all (left limit -1, right limit 0), so none of e, e^2, e^8, 1 is its value. The option set (powers of e) points to an exponential-limit form of the type (1 + kx)^{1/x}, whose definition sits in the missing Directions block.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "MODERATE",
+    "notes": "Missing shared context - same absent block as Q51. Recorded for the adjudicator, as an inference from a neighbouring question rather than a derivation from this stem: Q53 asks for k + L, k is exactly pi, and the only Q53 option of the form pi + (something) is pi + e^2, which forces L = e^2, i.e. option (B) here. Answer still left null because this stem alone cannot support it."
+  },
+  {
+    "number": 53,
+    "answer": "A",
+    "working": "k is self-contained and exact: cos^2 x = 1 - sin^2 x, so sin(pi cos^2 x) = sin(pi - pi sin^2 x) = sin(pi sin^2 x) ~ pi sin^2 x ~ pi x^2, giving k = pi (numerically 3.14159265358875 at x = 1e-6, against pi = 3.14159265358979). L is then pinned by elimination: L is one of Q52's four listed values {e, e^2, e^8, 1}, all positive, so k + L = pi + L, and pi + e^2 is the only option of that shape - e^2 - pi and pi - e^2 are differences, and 1 + e^2 would need k = 1.",
+    "confidence": "medium",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "MODERATE",
+    "notes": "The context defining g(x), and hence L, is missing from the packet (see Q52), so the answer rests on elimination over Q52's own printed option list plus the assumption that the set is internally consistent. k = pi is exact and independent of that assumption; confidence is medium only because of the missing block."
+  },
+  {
+    "number": 54,
+    "answer": "B",
+    "working": "Left: (1 - cos 4x)/x^2 = 2sin^2(2x)/x^2 -> 2*4 = 8. Right: multiply by (sqrt(16+sqrt x) + 4)/(same); the denominator becomes (16 + sqrt x) - 16 = sqrt x, which cancels the numerator's sqrt x, leaving sqrt(16 + sqrt x) + 4 -> 4 + 4 = 8. Both one-sided limits are 8 (numerically 8.0 and 8.0000125 at x = 1e-8), so continuity at 0 requires a = 8.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 55,
+    "answer": "B",
+    "working": "g(x) = [x] jumps exactly at the integers and is constant between them. The integers strictly inside (0.5, 2.5) are 1 and 2, so there are 2 points of discontinuity (2.5 and 0.5 are not integers and the endpoints are excluded anyway).",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "One-Sided Limits, Greatest Integer, and Absolute Value Limits",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 56,
+    "answer": "C",
+    "working": "lim_{x->0} f(x) = 8 from both sides (Q54's working), and lim_{x->0} sin x = 0, so the product tends to 8 * 0 = 0. The value of a is irrelevant, since a limit ignores the value at the point. Numerically the product is 8.0e-6 at x = 1e-6 and -8.0e-6 at x = -1e-6, both -> 0.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 57,
+    "answer": "A",
+    "working": "Independence gives p(1-q) = 3/25 and (1-p)q = 8/25. Subtracting, q - p = 5/25 = 1/5; substituting q = p + 1/5 into the first gives 25p^2 - 20p + 3 = 0, so p = 1/5 (with q = 2/5) or p = 3/5 (with q = 4/5). An exhaustive search over p, q in multiples of 1/25 confirms exactly these two solutions, and both satisfy the givens. Only 1/5 is listed, which is why the stem says 'could be'.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 58,
+    "answer": "A",
+    "working": "The stated condition is automatically satisfied: C(16,7) = C(16,9) = 11440, so for a fair coin P(7 heads) = P(9 heads) identically (for a biased coin it would force q^2 = p^2, i.e. p = 1/2 again). Then P(3 heads) = C(16,3)/2^16 = 560/65536 = 35/4096 = 35/2^12.",
+    "confidence": "high",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Computing Binomial Probabilities — Exact, At-Least, and Complementary Events",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 59,
+    "answer": "A",
+    "working": "P(transferred red) = 6/10, after which B holds 5 red of 11, so P(red drawn | transferred red) = 5/11; P(transferred black) = 4/10, after which P(red drawn) = 4/11. Total P(red drawn) = (3/5)(5/11) + (2/5)(4/11) = 15/55 + 8/55 = 23/55. Bayes: P(transferred ball was red | red drawn) = (15/55)/(23/55) = 15/23 = 0.6521739.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "notes": "Wording ambiguity worth flagging. Read literally, 'the probability it came from A' asks whether the ball drawn from B is the very ball transferred, which is (3/5)(1/11)/(23/55) = 3/23 = 0.1304 and appears among no option. The standard textbook reading - that the transferred ball was red - gives 15/23 and is the only reading matching an option, so (A) is taken. Separately, the packet leaks source formatting here: option (A) is printed in bold. The 15/23 above was derived by Bayes independently of that."
+  },
+  {
+    "number": 60,
+    "answer": "D",
+    "working": "Repeated roots require the discriminant b^2 - 4ac = 0. Exhaustive enumeration over a,b,c in {1..8}: b must be even, and b=2 gives ac=1 (1 triple), b=4 gives ac=4 (3 triples), b=6 gives ac=9 (1 triple, a=c=3, since 1*9 and 9*1 leave the set), b=8 gives ac=16 (3 triples) - 8 triples in total out of 8^3 = 512. Probability = 8/512 = 1/64 = 0.015625, against 5/512 = 0.009766, 1/128 = 0.007813 and 3/512 = 0.005859.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "notes": "Packet leaks source formatting: option (D) is printed in bold. The 1/64 above was reached by independent enumeration of all 512 triples."
+  }
+]

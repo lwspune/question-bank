@@ -1629,6 +1629,11 @@ PAPERS.w3 = {
     // whose first pair is 9 — i.e. 49. The genuine 59 sits in the row
     // beginning 19, and reads B, which is also what the solution document
     // prints. So both numbers are recoverable and neither is a guess.
+    57: {
+      stem: "The minimum value of \\((x - a)(x - b)\\) is",
+      reason:
+        "the stem prints 'maximum', which no option can satisfy: (x-a)(x-b) is an upward parabola and is unbounded above (with a=2, b=7 it takes 14, 24, 9114, 991014 at x = 0, 10, 100, 1000). The repair is documented by the paper's OWN solution, which sets dy/dx = 0 and then labels the result — in Hindi — 'फलन का निम्निष्ठ मान', the function's MINIMUM value. That stationary value is -(a-b)^2/4, exactly the printed key D, so a single edit to one word makes stem, solution and key all consistent; the alternative would be to call both the solution and the key wrong",
+    },
     90: {
       stem:
         "The variance of the following distribution is\n\n" +
@@ -1671,6 +1676,18 @@ PAPERS.w3 = {
       answer: "B",
       reason:
         "answer-key grid defect (the other half of Q49's): with '59' printed twice, a first-wins read hands Q59 the letter C belonging to Q49. The genuine Q59 cell is the 3rd pair of the row starting 19 and reads B — independently confirmed by the solution document, which also gives B. This was the ONLY disagreement between the grid and the 66 letters printed on the solutions",
+    },
+  },
+  resolutions: {
+    57: {
+      answer: "D",
+      reason:
+        "printed key D is CORRECT and stands. This entry exists only because the stem was repaired above ('maximum' -> 'minimum', documented by the solution's own Hindi), which leaves the blind derivation STALE: it correctly returned null against the UNREPAIRED stem, since an upward parabola has no maximum. Its own note records that under the minimum reading the answer is D, so the two agree once the repair is applied — but adjudicate compares against a null and would otherwise report this as unresolved. A stem repair invalidates any blind derivation of that question; the honest move is to say so rather than to leave a defective-looking verdict",
+    },
+    44: {
+      hold: true,
+      reason:
+        "DEFECTIVE AS PRINTED — no option is derivable under EITHER reading, and the paper's two sources contradict each other. The coefficient determinant is -(k+3)(2k+1), so the system has a unique solution, and is therefore consistent, for every k except -3 and -1/2: verified explicitly, k=1 gives (41/12, 5/12, 3/4) and k=2 gives (81/25, 7/25, 3/5). So 'consistent' is true of BOTH option C and option D. At k=-3 equation 2 reads 0*z = 3 and at k=-1/2 equation 3 forces z=2 while equation 2 gives z=6/5, so 'inconsistent' is true of BOTH A and B. On top of that the printed KEY is B — a value that makes the system inconsistent — while the printed SOLUTION concludes k = -3, which is option A. Repairing this would mean choosing between two wrong sources AND inventing a tie-break the question does not supply, so it is held instead",
     },
   },
 };
