@@ -1,0 +1,202 @@
+[
+  {
+    "number": 41,
+    "answer": "C",
+    "working": "Expanding the determinant gives x^3 - 67x + 126 = 0 (sympy: roots -9, 2, 7). There is no x^2 term, so the three roots sum to 0; with two roots 7 and 2 the third is -(7+2) = -9. Cross-check by product: product of roots = -126, and 7*2*(-9) = -126.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Special Determinants — Trig, Complex, Roots of Unity, Polynomial",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 42,
+    "answer": "D",
+    "working": "Row 1 of the new determinant is 2*(3a, b, c), so pull out 2; column 1 then reads (3a, 3m, 3x), so pull out 3. What is left is the original determinant, giving 2*3*k = 6k. Verified symbolically: the ratio of the two determinants is exactly 6.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Determinant Properties, Operations, and Sums",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 43,
+    "answer": "C",
+    "working": "A^j = [[1, j], [0, 1]], so the sum over j = 1..n-1 is [[n-1, (n-1)n/2], [0, n-1]] = (n-1)*[[1, n/2], [0, 1]]. Checked against options for n = 3,4,5,6: only option C reproduces the sum each time (options B and D have a wrong zero pattern, option A has the wrong scalar).",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Matrix Operations, Polynomials, and Equations",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 44,
+    "answer": null,
+    "working": "Coefficient determinant is -(k+3)(2k+1), so the system has a unique solution (hence is consistent) for every k other than -3 and -1/2. Solved explicitly: k = 1 gives (x,y,z) = (41/12, 5/12, 3/4) and k = 2 gives (81/25, 7/25, 3/5), so options C AND D are both consistent; k = -3 makes eq.2 read 0 = 3 and k = -1/2 makes eq.3 give z = 2 against eq.2's z = 6/5, so options A AND B are both inconsistent.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Linear Systems — Consistency, Cramer's Rule, Solution Space",
+    "difficulty": "MODERATE",
+    "notes": "DEFECT - the question admits more than one option. As printed ('consistent') both C (k=1) and D (k=2) are correct, and in fact every k except -3 and -1/2 is. If the intended word was 'inconsistent', then both A (-3) and B (-1/2) are correct. The question is ambiguous under either reading, so no single letter can be derived; answer left null rather than guessing between C and D."
+  },
+  {
+    "number": 45,
+    "answer": "B",
+    "working": "The product is (1x3)(3x3)(3x1); (1x3)(3x3) = 1x3 and (1x3)(3x1) = 1x1. Confirmed by building the product symbolically - its shape is (1, 1). This is the standard quadratic-form product, which is a single scalar entry.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Matrix Operations, Polynomials, and Equations",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 46,
+    "answer": "A",
+    "working": "The symmetric part is B = (A + A')/2. A + A' = [[4,10,2],[10,2,14],[2,14,16]], so B = [[2,5,1],[5,1,7],[1,7,8]], which is option A. Verified that this B is symmetric, that C = (A - A')/2 is skew-symmetric, and that B + C = A exactly.",
+    "confidence": "high",
+    "chapter": "Matrices & Determinants",
+    "subtopic": "Special Matrices — Skew-Symmetric, Diagonal, Idempotent, Orthogonal, Rotation",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 47,
+    "answer": "D",
+    "working": "For x > b the quotient is (x-b)/(x-b) = 1 and for x < b it is -(x-b)/(x-b) = -1, so the right-hand limit is 1 and the left-hand limit is -1 (confirmed numerically). The two one-sided limits differ, so the limit does not exist and none of options A, B, C is correct.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "One-Sided Limits, Greatest Integer, and Absolute Value Limits",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 48,
+    "answer": "D",
+    "working": "Continuity at 0 forces c to equal the limit. Using sin 3x = 3x - (3x)^3/6 + ..., the numerator 9x - 3 sin 3x = 3*(27x^3/6) + O(x^5) = 13.5 x^3, so the quotient tends to 13.5/5 = 27/10. sympy gives the limit as 27/10, and the numeric values at x = 0.1, 0.01, 0.001 are 2.6879, 2.6999, 2.70000.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Continuity and Differentiability — Piecewise, Modulus, Composed, Oscillatory",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 49,
+    "answer": "C",
+    "working": "The limit is by definition f'(4) for f(x) = sqrt(x^2+9). f'(x) = x/sqrt(x^2+9), so f'(4) = 4/sqrt(25) = 4/5. sympy evaluates the limit directly as 4/5. Option A (5/4) is the reciprocal trap and B is the sign trap.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 50,
+    "answer": "B",
+    "working": "Taylor-expand in h: f(x+2h) - 2f(x+h) + f(x) = (2h - 2h) f'(x) + (2h^2 - h^2) f''(x) + O(h^3) = h^2 f''(x) + O(h^3), so dividing by h^2 gives f''(x). Verified on three explicit functions (x^4+3x^2, e^x, sin x) - in each case the limit equals f''(x) exactly. Option A is dimensionally wrong (an h survives).",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 51,
+    "answer": "D",
+    "working": "Expanding along the first row, f(x) = sin x (x^2 - x) - cos x (x^3 - 2x^2) - x^3 tan x. To order x^3 the first term is -x^2 + x^3 and the second is 2x^2 - x^3, so f(x) = x^2 + O(x^4) and f(x)/x^2 -> 1. sympy's series gives f(x) = x^2 - 11x^4/6 + ... and the limit as 1; numerically f/x^2 = 0.9820, 0.99982, 0.9999982 at x = 0.1, 0.01, 0.001.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "HARD",
+    "notes": ""
+  },
+  {
+    "number": 52,
+    "answer": "A",
+    "working": "Rationalise: (sqrt(1+x) - sqrt(1-x)) = 2x/(sqrt(1+x)+sqrt(1-x)) -> x as x -> 0, and arcsin x ~ x, so the ratio tends to 1. sympy gives 1; numerically 0.99958 at x = +/-0.1 and 0.99999996 at x = 0.001. Option D (2) is the trap from forgetting the 1/(sqrt+sqrt) factor tends to 1/2.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 53,
+    "answer": "A",
+    "working": "Put x = sin t; then 1 + sqrt(1-x^2) = 1 + cos t and x/(1+sqrt(1-x^2)) = sin t/(1+cos t) = tan(t/2), so arctan(...) = t/2 = (1/2) arcsin x. Hence the derivative with respect to arcsin x is 1/2. Verified symbolically: (du/dx)/(dv/dx) simplifies to exactly 1/2, and u - v/2 evaluates to 0 at the awkward point x = 0.37.",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 54,
+    "answer": "D",
+    "working": "Rows 2 and 3 are constant, so d^3/dx^3 of the determinant only differentiates row 1, giving [6, -cos x, sin x]. At x = 0 that row is [6, -1, 0], which is identical to row 2, so the determinant is 0 - a value free of p. Verified symbolically for p = 0, 1, 2, -3, 1/2: the third derivative at 0 is 0 in every case, so the answer is 'independent of p'.",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Implicit, and Higher-Order Derivatives",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 55,
+    "answer": "A",
+    "working": "Take logs: ln y = sin x * ln(ln x), so y'/y = cos x * ln(ln x) + sin x /(x ln x), giving y' = (ln x)^{sin x} [ sin x/(x ln x) + cos x ln(ln x) ], which is option A. Confirmed symbolically - option A minus the sympy derivative simplifies to 0 (and matches numerically at x = 2.3).",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 56,
+    "answer": "A",
+    "working": "With g = x/(1 + x tan x), g' = [ (1 + x tan x) - x(tan x + x sec^2 x) ]/(1 + x tan x)^2 = (1 - x^2 sec^2 x)/(1 + x tan x)^2. Setting the numerator to zero gives x sec x = 1, i.e. x = cos x. Numerically the root of x = cos x is 0.73909; g' there is 0 and g takes 0.43956, 0.44161, 0.43962 at 0.689, 0.739, 0.789, so it is a maximum. Option C fails (at the root of x = cot x, x = 0.8603, g' = -0.185), and x = sec x has no root where x sec x = 1.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 57,
+    "answer": null,
+    "working": "(x-a)(x-b) = x^2 - (a+b)x + ab is an upward parabola, so it is unbounded above and has no maximum (sympy: limit as x -> inf is +oo; with a=2, b=7 the values at x = 0, 10, 100 are 14, 24, 9114). Its only stationary point is x = (a+b)/2, where the value is -(a-b)^2/4, and that is the MINIMUM.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "EASY",
+    "notes": "DEFECT - as printed no option is correct, because (x-a)(x-b) has no maximum value. Answering as printed rather than repairing the stem: the sup is +infinity. If the intended word was 'minimum', the answer is D, -(a-b)^2/4, which is exactly the stationary value at x=(a+b)/2 (checked: a=2, b=7 gives -6.25 at x=4.5). Option B, (a-b)^2/4, is the maximum of the sign-flipped (x-a)(b-x), the other common form of this question."
+  },
+  {
+    "number": 58,
+    "answer": "B",
+    "working": "The condition is (dy/dx)*y = x, i.e. y dy = x dx, so y^2 - x^2 = C; at (5,3), 9 - 25 = -16, giving x^2 - y^2 = 16. Note all three of A, B, C pass through (5,3), so the point alone does not decide it - substituting into the ODE does: y y' - x is 0 for B but -2x for A and -16x/25 for C. sympy's dsolve with y(5)=3 returns y = sqrt(x^2 - 16).",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 59,
+    "answer": "B",
+    "working": "f'(x) = 4x - 1/x = (4x^2 - 1)/x for x != 0, with zeros at x = -1/2 and 1/2. For x > 0 the sign is that of 4x^2 - 1, positive when x > 1/2; for x < 0 the denominator is negative, so f' > 0 needs 4x^2 - 1 < 0, i.e. -1/2 < x < 0. Sign scan confirms f' > 0 exactly on (-1/2, 0) and (1/2, inf), and f increases from 1.2035 to 1.5113 across (-0.45, -0.25) while decreasing on (0.2, 0.4).",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 60,
+    "answer": "A",
+    "working": "f'(x) = e^{-x} - (x+2)e^{-x} = -(x+1)e^{-x}, which is negative exactly when x > -1 (e^{-x} > 0 always). Numeric check: f' = +2.24 at x = -1.5 and -0.824, -0.910, -0.558, -0.199 at x = -0.5, 0.5, 1.5, 3, so f decreases on the whole of (-1, inf). Options B, C, D are proper subsets of that interval, so A is the full answer.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "EASY",
+    "notes": ""
+  }
+]

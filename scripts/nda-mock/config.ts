@@ -1701,6 +1701,11 @@ PAPERS.w4 = {
       reason:
         "the stem is the bare phrase 'Find the centre' — the object lives in Q15, which the swallowed 'For next two question' header was introducing, so as extracted this question names nothing to find the centre OF. The sphere is restored as shared context from Q15's own stem. Note the key (d) is correct and is NOT changed: dividing by 4 gives centre (2, -5/2, 4) and radius 5 (which is also Q15's printed key), and option (b) prints (2, 5/2, 4) — right in two coordinates, wrong in the SIGN of y — so no option matches and 'none' is right. Option (d) is printed as the bare word 'Not' in the source and is left as printed: nothing in the paper documents the intended wording, and expanding it would be invention",
     },
+    53: {
+      answer: "C",
+      reason:
+        "PRINTED KEY B (=1) IS WRONG; f'(3/2) = -1 = option C. The set's function simplifies to a sign: x - 2*sqrt(x-1) = (sqrt(x-1) - 1)^2, so f(x) = |sqrt(x-1) - 1| / (sqrt(x-1) - 1) * x = sign(sqrt(x-1) - 1) * x. That is +x for x > 2 and -x for 1 < x < 2, so f' is +1 and -1 on the two branches. The PAIR is built on exactly that branch point — Q52 samples x = 10 (key A = 1, correct) and Q53 samples x = 3/2, which is on the other side. The paper's solution for this question prints 'f'(3/2) = 1' with no working at all: it is Q52's answer carried over unrecomputed, which defeats the only thing the pair was set to test. Verified at 40 digits: f' = -1 at x = 1.2, 1.5, 1.9 and +1 at x = 2.5, 10, 17",
+    },
     31: {
       stem:
         "The two positive number, whose difference is 12 and whose A.M. exceeds their G.M. by 2, are",
