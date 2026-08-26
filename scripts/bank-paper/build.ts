@@ -26,6 +26,7 @@ import type { SectionTemplate } from "../../src/lib/papers/types";
 import { concludedLetter } from "../practice/audit-keys";
 import { ORG_ID, EXAM_ID, CREATED_BY } from "../practice/config";
 import { auditEnglishSection, orderEnglishBlocks, type EnglishRow } from "./english";
+import { auditPaperText, type PaperTextRow } from "./paper-text";
 import {
   selectByQuota, selectTotal, orderPaper, orderPaperBySections, DIFFICULTIES,
   type Cand, type Quota, type Shape, type Layout,
@@ -161,6 +162,154 @@ type PaperSpec = {
 };
 
 const PAPERS: PaperSpec[] = [
+  {
+    // ── NDA GAT — LWS Mock 2 (150 q) ─────────────────────────────────────────
+    //
+    // Same shape as Mock 1, drawn from what Mock 1 did not use — `build.ts`
+    // excludes any question already in a paper, so Part B reuses Mock 1's
+    // chapter/quota entries verbatim and lands on a disjoint set.
+    //
+    // ENGLISH DIFFERS IN ONE STRUCTURAL WAY: no Reading Comprehension block.
+    // Mock 1 took the ONLY CDS RC set whose passage was actually stored, and R2
+    // makes a passage set atomic so it cannot be split across two papers. Of the
+    // remaining RC sets, four are S1/S2 co-relationship items misfiled under
+    // Reading Comprehension (their "passage" is a 269-char directions line) and
+    // the rest have no passage at all — 223 of 268 RC rows carry a context
+    // reading "(Passage not stored — refer to the source booklet)". So Cloze 10
+    // takes the comprehension slot, which is blueprint-legitimate: the 2024
+    // sittings ran Cloze 10 with no separate RC block.
+    //
+    // Spotting Errors drops to 0 to make room. Defensible on the measured
+    // weightage — it ran 1.0/paper across 2024-26 and ZERO in four of the last
+    // five sittings.
+    //
+    // Blocks: 10 / 7 / 5 / 5 / 5 / 5 / 3 / 5 = 8 directions blocks for 50
+    // questions, against a real GAT paper's 7-10.
+    //
+    // Every CDS and Foundation row is gated on a recorded blind re-derivation
+    // (run "bank-paper:cds-english-blind-2026-08-23" and its Mock-2 sibling).
+    // Excluded by that gate rather than by hand: three 2020-II rearrangement
+    // items where two independent passes disagreed with the stored key, and the
+    // five Foundation rows disputed in BOTH Mock 1's pass and Mock 2's — the
+    // repeat disagreement is stronger evidence than either pass alone.
+    slug: "nda-gat-lws-mock-2",
+    title: "NDA GAT — LWS Mock 2",
+    examId: EXAM_ID,
+    sections: [
+      { key: "english", label: "Part A — English", ordering: "english-blocks" },
+      { key: "gk", label: "Part B — General Knowledge" },
+    ],
+    kinds: ["pyq"], // per-chapter overrides carry the Foundation Course practice rows
+    requireSolution: true,
+    layout: "sequential",
+    chapters: [
+      {
+        chapterId: "a2dee362-7083-4c47-94a9-fcc8878c83de", label: "Grammar (CDS)",
+        sectionKey: "english", fromExam: "CDS", includePrivate: true, requireConfirmedReview: true,
+        blocks: [
+          { setId: "150ac3dd-95d5-4c6f-b1f1-d30511167e21:S1", take: 7, note: "2021-II" },
+          { setId: "b1c830a8-065c-48fc-9fa8-00bfae3f9888:S14", take: 5, note: "2018-II" },
+          { setId: "48c9d9a3-5e50-4582-8933-2d30c73a01ae:S11", take: 3, note: "2025-II" },
+        ],
+      },
+      {
+        chapterId: "ba40834a-8074-44e9-9f47-29be8c0a8811", label: "Vocabulary (CDS)",
+        sectionKey: "english", fromExam: "CDS", includePrivate: true, requireConfirmedReview: true,
+        blocks: [
+          { setId: "0908c614-73f6-4d5a-895c-4f8de0dc8408:S2", take: 10, note: "2026-I" },
+          { setId: "48c9d9a3-5e50-4582-8933-2d30c73a01ae:S4", take: 5, note: "2025-II" },
+        ],
+      },
+      {
+        chapterId: "59f37ee2-094c-4670-b036-67765c81ce03", label: "Cloze Test (CDS)",
+        sectionKey: "english", fromExam: "CDS", includePrivate: true, requireConfirmedReview: true,
+        // No `take` — R2: a shared-passage set is atomic. One of only TWO CDS
+        // cloze passages that were actually stored.
+        blocks: [{ setId: "48c9d9a3-5e50-4582-8933-2d30c73a01ae:S14", note: "2025-II, whole passage" }],
+      },
+      {
+        chapterId: "12af0006-e2c9-43d6-8cbc-052be8f24bc5", label: "Sentence Rearrangement (CDS)",
+        sectionKey: "english", fromExam: "CDS", includePrivate: true, requireConfirmedReview: true,
+        blocks: [{ setId: "82fc90f2-e71d-4238-82fa-517828b7b9d5:S5", take: 5, note: "2020-II" }],
+      },
+      {
+        chapterId: "b4bd8726-c6de-45ca-911e-950c1e96ed88", label: "Idioms and Phrases (CDS)",
+        sectionKey: "english", fromExam: "CDS", includePrivate: true, requireConfirmedReview: true,
+        blocks: [{ setId: "71ba1f2b-0045-41ef-89b5-e5ae7a5c4307:S3", take: 5, note: "2022-I" }],
+      },
+
+      // ── Part B — Physics 25 (Foundation Course, + NDA for the two gaps) ────
+      { chapterId: "c1e9dd85-6c07-4c3c-b5d9-73c4350eb32c", label: "PHY Light - Reflection and Refraction", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 1, HARD: 1 } },
+      { chapterId: "266bfff5-57f9-4ac4-a6e6-d1d79a449db1", label: "PHY The Human Eye and the Colourful World", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      { chapterId: "08e44970-d5fa-4e62-b750-93c1d0902c99", label: "PHY Electricity", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 0, MODERATE: 1, HARD: 2 } },
+      { chapterId: "cbf0cd21-bb77-46b3-a7cc-b8d5e9469426", label: "PHY Magnetic Effects of Electric Current", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 2, HARD: 0 } },
+      { chapterId: "9c6901c1-e162-42c8-afb4-07ce730d538b", label: "PHY Force and Laws of Motion", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      { chapterId: "65aeabdf-8fa2-4d2f-b91b-1442885b723c", label: "PHY Sound (incl. the Oscillations seat)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      { chapterId: "17cfdfa0-e201-4a5e-8402-3e915dc971f7", label: "PHY Motion", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "baf73524-d5eb-43f4-917e-a5c9d928883f", label: "PHY Work and Energy", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "09018942-cca4-4b54-bf6b-6c1a360f1691", label: "PHY Gravitation (+ the Fluids seat: thrust, pressure, buoyancy)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      // No Foundation Course chapter covers these; drawn from free NDA PYQs,
+      // which unlike the Foundation rows already carry worked solutions.
+      { chapterId: "5dedf98c-7681-4f33-869e-f341313d8fd0", label: "PHY Heat and Thermodynamics", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "51f93cb7-95f0-4a12-af8b-6c894de8d17c", label: "PHY Modern Physics", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — Chemistry 15 ──────────────────────────────────────────────
+      { chapterId: "82892c84-a5ba-41db-a229-c6105acf7f8b", label: "CHE Carbon and Its Compounds (+ the Bonding seat)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      { chapterId: "92ab663b-7516-4b1f-9604-a6a20e7ef998", label: "CHE Structure of the Atom", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      { chapterId: "695fea8c-e966-4c6e-b585-bdd9a7323f49", label: "CHE Acids, Bases and Salts", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "33325289-969e-4b06-892d-3da4bce00b89", label: "CHE Matter in Our Surroundings", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "c4efaa8a-82fa-4e1c-9181-06eb16465bf8", label: "CHE Chemical Reactions and Equations", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "1ff615cf-3256-4f95-bd53-0e3807aa000e", label: "CHE Metals and Non-metals (+ the Industrial seats)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 1, HARD: 1 } },
+      { chapterId: "d14c8662-10f9-42c7-b03f-9260c6131c81", label: "CHE Hydrogen and Water", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — Biology 10 (Foundation Course; NDA Biology PYQ is exhausted) ─
+      { chapterId: "9990265b-e948-4e97-8d63-b8e2e580bb97", label: "BIO Life Processes (+ a Plant Biology seat)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      { chapterId: "7d63025f-f1bb-4975-b410-5b5168986045", label: "BIO Control and Coordination", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "8f0223e9-b65f-4e6d-8532-9419c126f8bf", label: "BIO The Fundamental Unit of Life", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "1b08c219-c055-41a8-9899-f1950683c3b3", label: "BIO Tissues (+ a Plant Biology seat)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      { chapterId: "5c46629b-978d-45ed-b9d1-e3593b1c4b1d", label: "BIO How Do Organisms Reproduce", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 1 },
+      { chapterId: "be8227bd-721e-46ec-b71c-ff0c202d5ff1", label: "BIO Our Environment", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      // ── Part B — Geography 20 (NDA PYQ) ────────────────────────────────────
+      { chapterId: "6df02248-239f-49bd-9c2e-63cb0860defb", label: "GEO Indian Geo - Economy, Resources, Transport", sectionKey: "gk", quota: { EASY: 1, MODERATE: 3, HARD: 1 } },
+      { chapterId: "63289cd6-4373-4840-8d57-407e47844c97", label: "GEO Earth's Structure and Landforms", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 1 } },
+      { chapterId: "a5a3c06a-a8da-4cf1-96a4-608ea3279d14", label: "GEO Indian Geo - Physical Features", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 1 } },
+      { chapterId: "8c4cb7d9-c77d-4155-939f-9cf0ada26bba", label: "GEO Climatology, Atmosphere and Weather", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 1 } },
+      { chapterId: "3b4f15e9-42a8-4a7d-accc-53a4374e059f", label: "GEO World and Human Geography", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "5424e638-b1eb-4319-ad6f-cd6c238d758e", label: "GEO Earth in Space, Maps and Coordinates", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "b6db578c-0079-42f4-898b-dedc0bb4ba82", label: "GEO Oceanography", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — History 12 (NDA PYQ) ──────────────────────────────────────
+      { chapterId: "7362f273-e8bf-4c26-b1a2-5cc17e5d56f0", label: "HIS Modern India", sectionKey: "gk", quota: { EASY: 1, MODERATE: 3, HARD: 2 } },
+      { chapterId: "e376f822-a8e5-4ce2-b58b-e921c9b9ae9e", label: "HIS Medieval India", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "e87bba6c-60b7-4264-868f-0a50d688bcd6", label: "HIS Ancient India", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "c4efbafd-4cc9-4b06-8e03-259610410ab7", label: "HIS World History", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+
+      // ── Part B — Polity 6 (NDA PYQ) ────────────────────────────────────────
+      { chapterId: "a2f2ba52-9dfd-43e3-b220-2b6de50cb37f", label: "POL Government Structure", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      { chapterId: "d1448908-30ee-40e9-8f2f-920a64aed7bc", label: "POL Fundamental Rights, DPSP, Local Governance", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      { chapterId: "ecff6022-f64b-49d5-a5c1-4f89012e192b", label: "POL Indian Constitution", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "fccc9f7a-66da-4374-b48d-f65e8a09e4df", label: "POL World Polity and IR", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+
+      // ── Part B — Economics 1 (NDA PYQ; the subject is one chapter) ─────────
+      { chapterId: "4c64341f-f757-4d44-b1e4-a30572cd4bae", label: "ECO Indian Economy", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — Current Affairs 11 ────────────────────────────────────────
+      // NOT PYQ: a 2019 paper asks about 2019 facts, so CA has to come from the
+      // current year. Drawn from `Current Affairs_Sep26.docx` (ingested
+      // 2026-08-21, the newest CA pool; 88 PUBLIC, 77 not yet used in a paper).
+      // Seats follow the guide's CA weightage, capped by what that pool holds.
+      { chapterId: "2d7691db-838d-419c-8ae8-bd299af89482", label: "CA International Affairs", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      { chapterId: "2843a36f-4171-4d21-b8af-165d3ed2b7ad", label: "CA Government Schemes and Policy", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      { chapterId: "8643c509-7ea1-4b37-8c2d-5adc53c7f2eb", label: "CA Defence and Military Exercises", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "06f78bba-e820-49e4-ada5-7b2c90eb3c1d", label: "CA Sports", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "c5cd2e0e-f664-4967-abb6-a1033bcffec6", label: "CA Science and Technology", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "47cd81d5-4985-4a5a-b884-71f2c2de4634", label: "CA Awards, Honours and Culture", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "37f60677-b0d4-4c76-9431-60f0f603d324", label: "CA National Events and India GK", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "b9f361d6-4126-44da-a34c-b420370fc63f", label: "CA Environment, Ecology and Energy", sectionKey: "gk", kinds: ["practice"], quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+    ],
+    exclude: [],
+  },
+
   {
     // ── NDA GAT — LWS Mock CDS-1, Part A (English 50) ────────────────────────
     //
@@ -652,6 +801,39 @@ type Row = {
 };
 
 /**
+ * Audit the TEXT of every pick against the seven paper-text rules.
+ *
+ * Separate query over the selected ids for the same reason auditEnglishPicks is:
+ * the selection pool carries only what selection needs, and these rules need the
+ * stem, the options and the solution.
+ */
+async function auditPickedText(
+  client: SupabaseClient,
+  ids: string[]
+): Promise<ReturnType<typeof auditPaperText>> {
+  const rows: PaperTextRow[] = [];
+  for (let i = 0; i < ids.length; i += 200) {
+    const { data, error } = await client
+      .from("questions")
+      .select("id, question_number, text, context, solution, image_url, chapters(name, subjects(name)), options(text)")
+      .in("id", ids.slice(i, i + 200));
+    if (error) throw new Error(`auditPickedText: ${error.message}`);
+    for (const q of (data ?? []) as any[]) {
+      rows.push({
+        id: q.id,
+        where: `${q.chapters?.subjects?.name ?? "?"} / ${q.chapters?.name ?? "?"} Q${q.question_number ?? "?"}`,
+        stem: q.text ?? "",
+        context: q.context ?? null,
+        solution: q.solution ?? null,
+        optionsText: (q.options ?? []).map((o: { text: string }) => o.text).join(" || "),
+        hasImage: !!q.image_url,
+      });
+    }
+  }
+  return auditPaperText(rows);
+}
+
+/**
  * Audit the ENGLISH picks against the structural rules before anything is written.
  *
  * Deliberately a SEPARATE query over the ~50 selected ids rather than widening
@@ -1069,6 +1251,22 @@ async function main() {
     }
   }
 
+  // Paper-text rules (./paper-text.ts). P1-P4 and P7 are objective and BLOCK an
+  // apply; P5 (a figure re-described in prose) and P6 (a hand-waved solution)
+  // need a human read and are reported only — marking a judgement call blocking
+  // trains people to skip the gate.
+  const textViolations = await auditPickedText(client, ordered.map((q) => q.id));
+  const blockingText = textViolations.filter((v) => v.blocking);
+  if (textViolations.length === 0) {
+    console.log("\nPaper text: OK — no rule violations.");
+  } else {
+    console.log(`\nPaper text: ${textViolations.length} violation(s) (${blockingText.length} blocking):`);
+    for (const v of textViolations) {
+      console.log(`  ${v.blocking ? "BLOCK" : "note "} ${v.rule.padEnd(28)} ${v.where}`);
+      console.log(`         ${v.detail}`);
+    }
+  }
+
   // English structural rules — reported on a dry run, BLOCKING on --apply.
   const engViolations = await auditEnglishPicks(client, ordered.map((q) => q.id));
   if (engViolations.length) {
@@ -1086,10 +1284,12 @@ async function main() {
     console.log("\n[dry-run] pass --apply to create the paper. Nothing written.");
     return;
   }
-  if (engViolations.length) {
+  if (engViolations.length || blockingText.length) {
     throw new Error(
-      `refusing to apply with ${engViolations.length} English structure violation(s) — ` +
-        `fix the spec (whole passages, blocks not singletons, one run per subtopic) and re-run.`
+      `refusing to apply with ${blockingText.length} blocking paper-text violation(s) + ` +
+      `${engViolations.length} English structure violation(s) — ` +
+        `fix the spec (whole passages, blocks not singletons, one run per subtopic) ` +
+        `or the offending rows, then re-run.`
     );
   }
   if (shortfallTotal > 0) throw new Error(`refusing to apply with ${shortfallTotal} unmet quota slot(s) — adjust the quotas.`);
