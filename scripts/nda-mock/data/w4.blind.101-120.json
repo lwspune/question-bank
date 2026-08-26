@@ -1,0 +1,202 @@
+[
+  {
+    "number": 101,
+    "answer": "A",
+    "working": "The weight attached to r is the number of ways of selecting r out of n, i.e. C(n,r). Weighted mean = sum_{r=1..n} r*C(n,r) / sum_{r=1..n} C(n,r) = n*2^(n-1) / (2^n - 1). Checked against direct summation for n = 2,3,4,5,6: 4/3, 12/7, 32/15, 80/31, 64/21 — all equal to option A.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 102,
+    "answer": "D",
+    "working": "Shifting by a does not change the variance. Mean of (x_i - a) = n/n = 1 and mean of (x_i - a)^2 = na/n = a, so variance = a - 1^2 = a - 1 and SD = sqrt(a - 1). Note the SD is independent of n, which rules out B and C.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 103,
+    "answer": "C",
+    "working": "Total sum = 8*10 = 80; the six given values sum to 63, so x + y = 17. Sum of squares = 8*(13.5 + 100) = 908; the six given squares sum to 739, so x^2 + y^2 = 169. Then 2xy = 289 - 169 = 120 and (x - y)^2 = 169 - 120 = 49, giving |x - y| = 7 (the pair is 5 and 12).",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 104,
+    "answer": "C",
+    "working": "For x = 1..17 the mean is 9 and the variance is (17^2 - 1)/12 = 24. Under y = ax + b, mean_y = 9a + b = 17 and var_y = 24a^2 = 216, so a^2 = 9 and a = 3 (a > 0). Then b = 17 - 27 = -10 and a + b = -7.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 105,
+    "answer": "D",
+    "working": "There are n+1 terms. By symmetry C(2n+1,r) = C(2n+1,2n+1-r), so the listed first half sums to half of 2^(2n+1), i.e. 2^(2n). Hence AM = 2^(2n)/(n+1). Verified for n = 1..4: sums 4, 16, 64, 256 giving 2, 16/3, 16, 256/5.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 106,
+    "answer": "C",
+    "working": "Mean 5 gives 3+5+7+a+b = 25, so a + b = 10. Variance 4 gives sum of squares = 5*(4 + 25) = 145, and 9+25+49 = 83, so a^2 + b^2 = 62. Then 2ab = 100 - 62 = 38, ab = 19, so a and b satisfy x^2 - 10x + 19 = 0 (roots 5 +/- sqrt 6).",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 107,
+    "answer": "C",
+    "working": "f is given on -1 < x < 1 (tan(pi*x/2) is finite there). g needs 3 + 4x - 4x^2 >= 0, i.e. (2x - 3)(2x + 1) <= 0, i.e. -1/2 <= x <= 3/2. The intersection of (-1,1) with [-1/2, 3/2] is [-1/2, 1).",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Domain, Range, and Function Properties",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 108,
+    "answer": "D",
+    "working": "Take g = f inverse. From y = (a x^2 + b)^3, x^2 = (y^(1/3) - b)/a, so g(x) = ((x^(1/3) - b)/a)^(1/2). Then f(g(x)) = (a*(x^(1/3) - b)/a + b)^3 = x and g(f(x)) = (((a x^2 + b) - b)/a)^(1/2) = x on the branch where the roots are taken positive, so the two compositions agree. Option A gives f(g(x)) = (2b - x^(1/3))^3, not x.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Composition and Inverse of Functions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 109,
+    "answer": "A",
+    "working": "2*pi/|a| = 4/7 gives |a| = 7*pi/2, and pi/|c| = 2/5 gives |c| = 5*pi/2. Then |a| + |c| = 6*pi and |a| - |c| = pi in magnitude, so sin(6*pi) + cos(-pi) = 0 + (-1) = -1.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Domain, Range, and Function Properties",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 110,
+    "answer": "A",
+    "working": "Since [n + y] = n + [y] for integer n, the expression equals 3[sin x] + 3. On [pi, 3pi/2] sin x runs from 0 down to -1. For every x in (pi, 3pi/2] we have -1 <= sin x < 0, so [sin x] = -1 and the value is 0. A numeric sweep of the closed interval returns exactly the value set {0, 3}.",
+    "confidence": "medium",
+    "chapter": "Functions",
+    "subtopic": "Greatest Integer Function",
+    "difficulty": "MODERATE",
+    "notes": "DEFECT — two options are attainable as printed. The interval is closed, so at the single endpoint x = pi we get sin x = 0 exactly and [0] + [1] + [2] = 3, which is option D; everywhere else on the interval the value is 0, which is option A. I report A because it is the value on all but one isolated point (and the usual intended answer), but D is not wrong as the stem is printed. The ambiguity disappears if the interval is open at pi."
+  },
+  {
+    "number": 111,
+    "answer": "B",
+    "working": "On [-2, infinity) we have x + 2 >= 0, so f(x) = |x + 2| = x + 2, which is strictly increasing and hence one-one. A and C are parabolas on all of R (f(x) = f(-x) for A; f(4) = f(5) = 0 for C), and D is a ratio of quadratics on R which is neither one-one nor even everywhere defined (its denominator 4 + 3x - 5x^2 vanishes).",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Function Definition and Classification — Injectivity, Surjectivity, Bijectivity",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 112,
+    "answer": "C",
+    "working": "Put s = sec x, so s^2 = 1 - s. Then t = tan^2 x = s^2 - 1 = -s, hence t^2 = s^2 = 1 - s = 1 + t, i.e. t^2 = t + 1. Reducing: t^3 = 2t + 1, t^4 = 3t + 2, so t^4 - t^2 - 2t + 1 = (3t + 2) - (t + 1) - 2t + 1 = 2. Consistency check: t must be positive, giving t = (1 + sqrt 5)/2 and sec x = -(1 + sqrt 5)/2 with |sec x| > 1, which is admissible; both roots of t^2 = t + 1 return 2 anyway.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Specific Values and Quadrants",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 113,
+    "answer": "B",
+    "working": "By Cauchy-Schwarz (sin^4/2 + cos^4/3)(2 + 3) >= (sin^2 + cos^2)^2 = 1, so the left side is at least 1/5 with equality only when sin^2/2 = cos^2/3, i.e. sin^2 x = 2/5 and cos^2 x = 3/5 (a numeric sweep finds no other solution). Then sin^8/8 + cos^8/27 = (16/625)/8 + (81/625)/27 = 2/625 + 3/625 = 1/125. Also tan^2 x = 2/3, so option C is false.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Specific Values and Quadrants",
+    "difficulty": "MODERATE",
+    "notes": "Option (A) is printed as the fragment \"tan^2 x + 4/3\" with no equality sign, so it asserts nothing and cannot be evaluated as true or false. It does not affect the answer: (B) is exactly correct and (C) is false since tan^2 x = 2/3."
+  },
+  {
+    "number": 114,
+    "answer": "C",
+    "working": "Reduce each factor: cos(pi/2 + x) = -sin x so the cube gives -sin^3 x; cot(3pi + x) = cot x; sec(x - 3pi) = sec(x - pi) = -sec x; cosec(3pi/2 - x) = 1/(-cos x) = -sec x. Numerator = 2(-sin^3 x)(cot x)(-sec x)(-sec x) = -2 sin^2 x / cos x. Denominator = cot x * tan^2 x * sin x = sin^2 x / cos x. Ratio = -2. Confirmed numerically at x = 0.3, 1.1, 2.0, -0.7, 4.5 (all -2.000).",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Specific Values and Quadrants",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 115,
+    "answer": "B",
+    "working": "Since 3pi/8 = pi/2 - pi/8, cos(3pi/8) = sin(pi/8) and sin(3pi/8) = cos(pi/8). The expression becomes sin(pi/8)cos(pi/8)(cos^2(pi/8) + sin^2(pi/8)) = sin(pi/8)cos(pi/8) = (1/2)sin(pi/4) = 1/(2 sqrt 2). Sympy simplifies it to sqrt(2)/4 = 0.35355, matching option B.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Multiple and Half-Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 116,
+    "answer": "D",
+    "working": "Expand: 5 sin(theta - pi/6) = (5 sqrt3/2) sin theta - (5/2) cos theta, so the expression is (1/2) cos theta + (5 sqrt3/2) sin theta. Its maximum is sqrt(1/4 + 75/4) = sqrt(76/4) = sqrt 19 = 4.3589, confirmed by a numeric sweep over a full period (max 4.35890).",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Maximum and Minimum of Trigonometric Expressions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 117,
+    "answer": "A",
+    "working": "2(1 - sin^2 theta) + 3 sin theta = 0 gives 2 sin^2 theta - 3 sin theta - 2 = 0, i.e. (2 sin theta + 1)(sin theta - 2) = 0, so sin theta = -1/2 (sin theta = 2 is rejected). In [-2pi, 2pi] the roots are -5pi/6, -pi/6, 7pi/6, 11pi/6; a numeric scan returns exactly these four. Their sum is (-5 - 1 + 7 + 11)pi/6 = 12pi/6 = 2pi.",
+    "confidence": "high",
+    "chapter": "Trigonometric Equations",
+    "subtopic": "General Solutions and Counting Solutions of Trigonometric Equations",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 118,
+    "answer": "B",
+    "working": "GP condition (2t + 2)^2 = t(3t + 3) with t = tan theta factorises as (t + 1)(t + 4) = 0, so t = -1 or t = -4. t = -1 makes the second and third terms 0 and 0, which is not a GP (zero term, undefined ratio), so it is inadmissible and t = -4. Then cot theta = -1/4 and sqrt(sec^2 theta - 1) = |tan theta| = 4 (positive root). Value = (7 + 5/4)/(9 - 16) = (33/4)/(-7) = -33/28. Direct numeric evaluation at theta = arctan(-4) gives -1.17857 = -33/28.",
+    "confidence": "high",
+    "chapter": "Sequence & Series",
+    "subtopic": "Geometric Progressions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 119,
+    "answer": "D",
+    "working": "Write theta = (theta + alpha) - alpha and theta + 2alpha = (theta + alpha) + alpha, and set u = theta + alpha. Then sin(u - alpha) = 3 sin(u + alpha) expands to -2 sin u cos alpha = 4 cos u sin alpha, i.e. tan u = -2 tan alpha. Hence tan(theta + alpha) + 2 tan alpha = 0. Verified numerically for alpha = 0.3, 1.0, -0.55, 0.77 (residuals of order 1e-16).",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Compound Angle Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 120,
+    "answer": "D",
+    "working": "Angles in AP with A + B + C = pi give B = pi/3 and A + C = 2pi/3. By the sine rule a/c = sin A/sin C, so (a/c) sin 2C = 2 sin A cos C and (c/a) sin 2A = 2 sin C cos A. Their sum is 2 sin(A + C) = 2 sin(2pi/3) = sqrt 3. Checked numerically at A = 15, 30, 50, 80, 110 degrees — every case returns 1.7320508.",
+    "confidence": "high",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Sine and Cosine Rules — Solving Triangles",
+    "difficulty": "MODERATE",
+    "notes": "The second term is printed with a capital C as \"(C/a) sin 2A\"; read literally that mixes the angle C with the side a and the expression is then not constant. It is transcribed here as the side c, which is the only reading under which the expression has a single value; answered on that reading."
+  }
+]

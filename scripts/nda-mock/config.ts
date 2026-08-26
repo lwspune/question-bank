@@ -1407,6 +1407,36 @@ PAPERS.w1 = {
       reason:
         "this question alone labels its options `A) B) C) D)` — uppercase, closing paren only, no opening paren. Measured across all four weekly papers it is the ONLY such line, so the four texts are supplied here rather than teaching the shared label pattern an uppercase form: `A.`/`A)` occurs in ordinary assertion-reason prose ('...and R explains A'), and loosening it would put all fourteen papers at risk to fix one question. Texts are verbatim; the key is untouched",
     },
+    77: {
+      answer: "A",
+      reason:
+        "PRINTED KEY C (29/5) IS WRONG; k = 6 = option A. The 3:2 internal division of (1,1) and (2,4) is ((3*2+2*1)/5, (3*4+2*1)/5) = (8/5, 14/5) — which the paper's own solution computes correctly — and 2(8/5) + 14/5 = 30/5 = 6. So the solution's own point refutes its key",
+    },
+    89: {
+      answer: "B",
+      reason:
+        "PRINTED KEY D IS WRONG; the answer is B. The bisector direction is a_hat + b_hat = (3i+4j)/5 + (5i+12j)/13 = (64i + 112j)/65, of magnitude sqrt(256/65) = 1.98456, so the unit bisector is (8i + 14j)/sqrt260. Option D, (11i+23j)/sqrt650, is a unit vector but is NOT parallel to the bisector at all (its cross product with the sum is non-zero) — so it fails the only property the question asks for. Option A is the well-built distractor: it points the right way but has magnitude 0.99228, i.e. it is not a unit vector",
+    },
+    107: {
+      answer: "D",
+      reason:
+        "PRINTED KEY B (k > 3) IS WRONG; the answer is D (k >= 3). f'(x) = 3k x^2 - 18x + 9 >= 0 for all x needs k > 0 and discriminant 324 - 108k <= 0, i.e. k >= 3. The boundary is admissible, not excluded: at k = 3, f'(x) = 9(x-1)^2, which is zero only at the ISOLATED point x = 1 (f'(0) = f'(2) = 9), and a function whose derivative vanishes at isolated points is still increasing. Note this paper's sibling w2 Q89 keys the SAME convention the other way — there the key correctly includes the isolated zero — so the two are inconsistent with each other",
+    },
+    116: {
+      answer: "A",
+      reason:
+        "PRINTED KEY B (3,2) IS WRONG; the answer is A (2,3), and B looks like the pair transposed. Raising sqrt(y'') = cbrt(y'+3) to the sixth power gives (y'')^3 = (y'+3)^2. The highest derivative present is y'', so the ORDER is 2 — an order of 3 is impossible for an equation containing no third derivative — and its power is 3, so the degree is 3. The paper's own solution performs exactly this LCM-of-6 step",
+    },
+    117: {
+      answer: "C",
+      reason:
+        "PRINTED KEY B (2,1) IS WRONG; the answer is C (1,1), and the paper's own solution refutes the key in words. As printed the denominator is the integral of (dy/dx) dx = y + c, so the equation is y(y+c) = x y'(y+c) + 2 — highest derivative y', appearing to the first power, hence order 1 and degree 1. The solution states outright 'This is a first-order equation', which is incompatible with its own key's order of 2. (The classical Clairaut form uses 2/(dy/dx) and would give (1,2) = option A; that reading also contradicts key B, so B is wrong either way.)",
+    },
+    66: {
+      answer: "D",
+      reason:
+        "PRINTED KEY B IS WRONG; the answer is D ('None of these'). np = 4 and npq = 3 give q = 3/4, p = 1/4, n = 16, so P(X=1) = C(16,1)*(1/4)*(3/4)^15 = 4*(3/4)^15 = 0.05345. The correct expression is SPLIT ACROSS TWO OPTIONS and neither is right: (A) 16(3/4)^15 has the right base with a coefficient 4x too large, and (B) 4(1/4)^15 has the right coefficient with p and q swapped in the base (3.7e-09, seven orders of magnitude out). Option (C) states 'n = 16, p = 1/4', which is not a probability at all. The printed solution makes the SAME p/q swap as its key — it writes 4(1/4)^15 verbatim — so key and solution are consistent with each other and both wrong",
+    },
     16: {
       answer: "A",
       reason:
@@ -1458,7 +1488,48 @@ PAPERS.w1 = {
   // Note this paper's grid key agrees with its solution letters on all 33
   // questions where both exist — so two sources agreeing is not evidence the
   // answer is right, only that one was typed from the other.
+  // Q61-72 is this paper's statistics/probability block and it is the worst-made
+  // stretch of the series: FIVE of its questions have no correct option, plus
+  // the Q66 key error in the errata above. Each was derived exactly (Fraction /
+  // exhaustive count), and in every case the printed options are near-misses
+  // rather than a value we failed to reach — which is what distinguishes a
+  // defective question from a wrong derivation.
   resolutions: {
+    44: {
+      hold: true,
+      reason:
+        "NO CORRECT OPTION — the printed one has the right magnitude and the wrong SIGN. sinA - sqrt6 cosA = sqrt7 cosA gives tanA = sqrt6 + sqrt7, so cosA + sqrt6 sinA = sinA[1/(sqrt6+sqrt7) + sqrt6] = sinA[(sqrt7 - sqrt6) + sqrt6] = +sqrt7 sinA. Verified on BOTH branches of tanA = sqrt6+sqrt7: at A = 1.3770 the expression is +2.5962223 and sqrt7 sinA is +2.5962223; at A = 4.5186 both are -2.5962223. The printed key B is -sqrt7 sinA, which is the negative on both. The error is traceable: the solution SQUARES the given equation, which loses the sign, and the option was written from that ambiguous route rather than from the linear one",
+    },
+    62: {
+      hold: true,
+      reason:
+        "NO CORRECT OPTION. Two distinct numbers from {1..50}: 16 are multiples of 3, so P(product divisible by 3) = 1 - C(34,2)/C(50,2) = 1 - 561/1225 = 664/1225 = 0.54204. The options are 16/50 (0.32), 17/50 (0.34), 33/50 (0.66) and the key 13/25 (0.52). 664/1225 is in lowest terms, and no rounding reaches 13/25 — that would need 637 favourable pairs against the true 664. Drawing WITH replacement instead gives 0.5376, so no reading of the stem lands on a printed option either",
+    },
+    63: {
+      hold: true,
+      reason:
+        "DEFECTIVE OPTION — the printed key points at a placeholder that was never filled in. Option (C), which the key selects, reads 'Value based on area ratio': that is a description of the method, not a value, so it cannot be the probability. The paper's solution is the same non-answer ('Calculated by (Area of region where y < 1)/(Total Area of triangle)') and never computes a number. The true probability is 5/6, which no option offers. Held rather than repaired: nothing in the source documents the intended option text, and inventing it would be inventing the answer",
+    },
+    65: {
+      hold: true,
+      reason:
+        "NO CORRECT OPTION, and the options are a scrambled version of the right value. 6 white and 9 black; P(first draw of 4 all white) = C(6,4)/C(15,4) = 1/91, then from the remaining 2W/9B, P(second draw of 4 all black) = C(9,4)/C(11,4) = 21/55. The product is 3/715. The printed options split that value between them — (B) 3/256 carries the right numerator, (A) 5/715 and (C) 1/715 the right denominator — and none is 3/715. The key is (A)",
+    },
+    68: {
+      hold: true,
+      reason:
+        "NO CORRECT OPTION. n1=10, mean 10, var 4; n2=20, mean 20, var 9. Combined mean = 50/3, so the combined variance is [10(4 + (10-50/3)^2) + 20(9 + (20-50/3)^2)]/30 = 266/9 = 29.5556. The printed key is 29.33, which is 88/3 = 29.3333 — a different number, not a rounding of ours: the options are quoted to two decimals and one of them (30.00) is exact, so 29.56 would have been printed if intended",
+    },
+    72: {
+      hold: true,
+      reason:
+        "NO CORRECT OPTION UNDER EITHER READING, and the stem and its own solution use DIFFERENT DATA. The stem lists the six known observations as 6, 12, 4, 8, 10, 12; the solution lists 6, 7, 10, 12, 12, 13 (the standard NCERT set). From the stem's data, x+y = 20 and x^2+y^2 = 218, giving xy = 91 and the pair (13, 7). From the solution's data, x+y = 12 and x^2+y^2 = 80, giving the pair (4, 8). The options are (12,10), (14,6), (15,5) and (11,9) — neither pair appears. The key (14,6) has the right sum for the stem's data but x^2+y^2 = 232 against the required 218",
+    },
+    110: {
+      hold: true,
+      reason:
+        "NO CORRECT OPTION — the question is degenerate, and its sibling Q109 is what exposes it. Sphere S: x^2+y^2+z^2-2x+4y-6z-11 = 0 has centre (1,-2,3) and radius 5 — and (1,-2,3) is EXACTLY the point the plane P is required to pass through. So P cuts through the centre, its section is already a great circle of radius 5, and the sphere having that as a great circle is S itself. The family S + lambda*P = 0 confirms it independently: forcing the family's centre onto P gives -14*lambda = 0, i.e. lambda = 0. All four printed options are concentric with S but carry constants +11, -14, +9, +5, i.e. radii sqrt3, 2*sqrt7, sqrt5 and 3 — none is 5. Q109 is unaffected; its answer 5 is offered as option (B)",
+    },
     51: {
       answer: "B",
       reason:
