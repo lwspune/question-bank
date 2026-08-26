@@ -1,0 +1,591 @@
+[
+ {
+  "id": "4f3a7a5c-0c68-4040-abaf-2eebdccf390d",
+  "question_number": "650",
+  "source_file": "NDA_Maths_Practice__Algebra__Matrices_and_Determinants.pdf",
+  "visibility": "PUBLIC",
+  "text": "For \\(3 \\times 3\\) matrices \\(M\\) and \\(N\\), which of the following statement(s) is (are) not correct?",
+  "solution": "MULTI-KEY (C and D are NOT correct). (a) \\(N^T M N\\) is symmetric/skew per \\(M\\): \\((N^T M N)^T = N^T M^T N\\), so it is symmetric/skew exactly as \\(M\\) — CORRECT. (b) \\(MN - NM\\) for symmetric \\(M, N\\): \\((MN-NM)^T = N^T M^T - M^T N^T = NM - MN = -(MN-NM)\\) — skew symmetric, CORRECT. (c) \\(MN\\) symmetric for all symmetric \\(M, N\\): \\((MN)^T = N^T M^T = NM \\ne MN\\) in general — NOT correct. (d) \\((\\text{adj} M)(\\text{adj} N) = \\text{adj}(MN)\\): the correct identity is \\(\\text{adj}(MN) = (\\text{adj} N)(\\text{adj} M)\\), order reversed — NOT correct. Hence the not-correct statements are C and D.",
+  "content_hash": "cbe09381dcdfc35cfcbe2351c7e82b1fb3cab25d9926bdaef03ccd4c4eea91e3",
+  "options": [
+   {
+    "text": "\\(N^T M N\\) is symmetric or skew symmetric according as \\(M\\) is symmetric or skew symmetric.",
+    "label": "A",
+    "is_correct": false
+   },
+   {
+    "text": "\\(MN - NM\\) is skew symmetric for all symmetric matrices \\(M\\) and \\(N\\).",
+    "label": "B",
+    "is_correct": false
+   },
+   {
+    "text": "\\(MN\\) is symmetric for all symmetric matrices \\(M\\) and \\(N\\).",
+    "label": "C",
+    "is_correct": true
+   },
+   {
+    "text": "\\((\\text{adj } M)(\\text{adj } N) = \\text{adj}(MN)\\) for all invertible matrices \\(M\\) and \\(N\\).",
+    "label": "D",
+    "is_correct": true
+   }
+  ]
+ },
+ {
+  "id": "fe342302-9a42-4e2b-8b22-72539af5b707",
+  "question_number": "656",
+  "source_file": "NDA_Maths_Practice__Algebra__Matrices_and_Determinants.pdf",
+  "visibility": "PUBLIC",
+  "text": "If the adjoint of a \\(3 \\times 3\\) matrix \\(P\\) is \\(\\begin{pmatrix} 1 & 4 & 4 \\\\ 2 & 1 & 7 \\\\ 1 & 1 & 3 \\end{pmatrix}\\), then the possible value(s) of the determinant of \\(P\\) is (are)",
+  "solution": "MULTI-KEY (A and D). \\(|\\text{adj} P| = |P|^{n-1} = |P|^2\\). Compute \\(\\det\\begin{pmatrix} 1 & 4 & 4 \\\\ 2 & 1 & 7 \\\\ 1 & 1 & 3 \\end{pmatrix} = 4\\). So \\(|P|^2 = 4\\), giving \\(|P| = \\pm 2\\). The possible values are \\(-2\\) (option A) and \\(2\\) (option D).",
+  "content_hash": "58a8760d6402dace044019bfc1797f19290f99be858500ef091dace04a5aa508",
+  "options": [
+   {
+    "text": "\\(-2\\)",
+    "label": "A",
+    "is_correct": true
+   },
+   {
+    "text": "\\(-1\\)",
+    "label": "B",
+    "is_correct": false
+   },
+   {
+    "text": "1",
+    "label": "C",
+    "is_correct": false
+   },
+   {
+    "text": "2",
+    "label": "D",
+    "is_correct": true
+   }
+  ]
+ },
+ {
+  "id": "e98959e8-feba-4529-a648-2a5f1c00544b",
+  "question_number": "687",
+  "source_file": "NDA_Maths_Practice__Algebra__Matrices_and_Determinants.pdf",
+  "visibility": "PUBLIC",
+  "text": "Consider the system of equations: \\(x + y + z = 0\\), \\(\\alpha x + \\beta y + \\gamma z = 0\\), \\(\\alpha^2 x + \\beta^2 y + \\gamma^2 z = 0\\). Then the system of equations has",
+  "solution": "MULTI-KEY (B and C). This homogeneous system has coefficient determinant equal to the Vandermonde determinant \\((\\beta - \\alpha)(\\gamma - \\alpha)(\\gamma - \\beta)\\). If \\(\\alpha, \\beta, \\gamma\\) are distinct, the determinant is non-zero, so the only solution is the trivial one (a unique solution) — statement C correct. If any two of \\(\\alpha, \\beta, \\gamma\\) are equal, the determinant is zero, giving infinitely many solutions — statement B correct. (Option a is wrong since it isn't unique when two are equal; option d is wrong since a homogeneous system never has a finite number \\(> 1\\) of solutions.)",
+  "content_hash": "7ba3028b07e71edb33ae4496e5af97b25b1c08e736fc5c427afda399ee289396",
+  "options": [
+   {
+    "text": "a unique solution for all values of \\(\\alpha, \\beta, \\gamma\\)",
+    "label": "A",
+    "is_correct": false
+   },
+   {
+    "text": "infinite number of solutions if any two of \\(\\alpha, \\beta, \\gamma\\) are equal",
+    "label": "B",
+    "is_correct": true
+   },
+   {
+    "text": "a unique solution if \\(\\alpha, \\beta, \\gamma\\) are distinct",
+    "label": "C",
+    "is_correct": true
+   },
+   {
+    "text": "more than one, but finite number of solutions depending on values of \\(\\alpha, \\beta, \\gamma\\)",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ },
+ {
+  "id": "4944529a-018b-4c6f-a090-a8dd093dd058",
+  "question_number": "2517",
+  "source_file": "NDA_Maths_Practice__Calculus__Application_of_Derivatives.pdf",
+  "visibility": "PUBLIC",
+  "text": "A sphere increases its volume at the rate of \\(\\pi\\ \\text{cc/s}\\). The rate at which its surface area increases when the radius is 1 cm is",
+  "solution": "\\(V = \\frac{4}{3}\\pi r^3\\), \\(\\frac{dV}{dt} = 4\\pi r^2\\frac{dr}{dt} = \\pi\\). At \\(r = 1\\): \\(4\\pi\\frac{dr}{dt} = \\pi\\), so \\(\\frac{dr}{dt} = \\frac{1}{4}\\). Then \\(S = 4\\pi r^2\\), \\(\\frac{dS}{dt} = 8\\pi r\\frac{dr}{dt} = 8\\pi(1)\\frac{1}{4} = 2\\pi\\) sq. cm/s. Hence (A).",
+  "content_hash": "d6d73b1fb5f99692d436d2ca66510bd80d259413d7f86cf1fbc7eacd1e3eb496",
+  "options": [
+   {
+    "text": "\\(2\\pi\\ \\text{sq. cm/s}\\)",
+    "label": "A",
+    "is_correct": true
+   },
+   {
+    "text": "\\(2\\pi\\ \\text{sq. cm/s}\\)",
+    "label": "B",
+    "is_correct": false
+   },
+   {
+    "text": "\\(\\frac{3\\pi}{2}\\ \\text{sq. cm/s}\\)",
+    "label": "C",
+    "is_correct": false
+   },
+   {
+    "text": "\\(\\frac{\\pi}{2}\\ \\text{sq. cm/s}\\)",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ },
+ {
+  "id": "4daf50ab-62d5-4374-bc68-1dabed76e8a9",
+  "question_number": "1097",
+  "source_file": "NDA_Maths_Practice__Trigonometry__Trigonometric_Identities.pdf",
+  "visibility": "PUBLIC",
+  "text": "Let \\(f: \\left(0, \\frac{\\pi}{2}\\right) \\to \\mathbb{R}\\) be such that \\(f(\\cos4\\theta) = \\frac{2}{2-\\sec^2\\theta}\\) for \\(\\theta \\in \\left(0, \\frac{\\pi}{4}\\right) \\cup \\left(\\frac{\\pi}{4}, \\frac{\\pi}{2}\\right)\\). Then the values of \\(f\\left(\\frac{1}{3}\\right)\\) is (are)",
+  "solution": "\\(f(\\cos4\\theta) = \\frac{2}{2 - \\sec^2\\theta} = \\frac{2\\cos^2\\theta}{2\\cos^2\\theta - 1} = \\frac{1 + \\cos2\\theta}{\\cos2\\theta} = 1 + \\frac{1}{\\cos2\\theta}\\). Set \\(\\cos4\\theta = \\frac{1}{3}\\): \\(2\\cos^2 2\\theta - 1 = \\frac{1}{3}\\), so \\(\\cos^2 2\\theta = \\frac{2}{3}\\) and \\(\\cos2\\theta = \\pm\\sqrt{\\frac{2}{3}}\\). Therefore \\(f\\left(\\frac{1}{3}\\right) = 1 \\pm \\sqrt{\\frac{3}{2}}\\), i.e. \\(1 - \\sqrt{\\frac{3}{2}}\\) and \\(1 + \\sqrt{\\frac{3}{2}}\\). Hence (A) and (B).",
+  "content_hash": "0edc0f312bbac5dc0ea7ecec1fd6319759826c5b08d8f67964335ee27728a015",
+  "options": [
+   {
+    "text": "\\(1 - \\sqrt{\\frac{3}{2}}\\)",
+    "label": "A",
+    "is_correct": true
+   },
+   {
+    "text": "\\(1 + \\sqrt{\\frac{3}{2}}\\)",
+    "label": "B",
+    "is_correct": true
+   },
+   {
+    "text": "\\(1 - \\sqrt{\\frac{2}{3}}\\)",
+    "label": "C",
+    "is_correct": false
+   },
+   {
+    "text": "\\(1 + \\sqrt{\\frac{2}{3}}\\)",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ },
+ {
+  "id": "edc11a78-8b23-453c-b2ea-c5a50dd42e61",
+  "question_number": "2280",
+  "source_file": "NDA_Maths_Practice__Calculus__Limits_and_Continuity.pdf",
+  "visibility": "PUBLIC",
+  "text": "The value of \\(\\lim_{x \\to 0} \\dfrac{\\sin^2 x + \\cos x - 1}{x^2}\\) is",
+  "solution": "For small \\(x\\): \\(\\sin^2 x \\approx x^2\\) and \\(\\cos x - 1 \\approx -\\dfrac{x^2}{2}\\). So the numerator \\(\\approx x^2 - \\dfrac{x^2}{2} = \\dfrac{x^2}{2}\\), and \\(\\dfrac{x^2/2}{x^2} = \\dfrac{1}{2}\\). Matches option B. Hence (B).",
+  "content_hash": "a5a8c73841d49ca145f53cdd07a60a9c1c5c273eb4e8b5b579937869a09b9971",
+  "options": [
+   {
+    "text": "\\(0\\)",
+    "label": "A",
+    "is_correct": false
+   },
+   {
+    "text": "\\(\\dfrac{1}{2}\\)",
+    "label": "B",
+    "is_correct": true
+   },
+   {
+    "text": "\\(-\\dfrac{1}{2}\\)",
+    "label": "C",
+    "is_correct": false
+   },
+   {
+    "text": "\\(0\\)",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ },
+ {
+  "id": "3f379b50-c770-49ae-9e7e-0463afb0af36",
+  "question_number": "1498",
+  "source_file": "NDA_Maths_Practice__2D__Lines.pdf",
+  "visibility": "PUBLIC",
+  "text": "The coordinates of a point on the line \\(x+y+1=0\\) which is at a distance of \\(\\frac{1}{5}\\) unit from the line \\(3x+4y+2=0\\) are",
+  "solution": "A point on \\(x+y+1=0\\) is \\((t,-1-t)\\). Its distance from \\(3x+4y+2=0\\) is \\(\\frac{|3t+4(-1-t)+2|}{5}=\\frac{|-t-2|}{5}=\\frac15\\Rightarrow |t+2|=1\\Rightarrow t=-1\\) or \\(t=-3\\), giving \\((-1,0)\\) and \\((-3,2)\\). Both options (B) and (D) satisfy the condition; the keyed answer is (B).",
+  "content_hash": "7c0e4f5442e8f9815dbe81bb1ba904997518a15a2f0326f93c0455d7ab82d36b",
+  "options": [
+   {
+    "text": "\\((2,-3)\\)",
+    "label": "A",
+    "is_correct": false
+   },
+   {
+    "text": "\\((-3,2)\\)",
+    "label": "B",
+    "is_correct": true
+   },
+   {
+    "text": "\\((0,-1)\\)",
+    "label": "C",
+    "is_correct": false
+   },
+   {
+    "text": "\\((-1,0)\\)",
+    "label": "D",
+    "is_correct": true
+   }
+  ]
+ },
+ {
+  "id": "c8286891-0d25-4246-b5b8-9cc84d230113",
+  "question_number": "2343",
+  "source_file": "NDA_Maths_Practice__Calculus__Limits_and_Continuity.pdf",
+  "visibility": "PUBLIC",
+  "text": "If \\(f'(2) = 1\\), then \\(\\lim_{h \\to 0} \\dfrac{f(2 + h^2) - f(2 - h^2)}{2h^2} =\\)",
+  "solution": "Put \\(t=h^2\\to 0^+\\). Then \\(\\dfrac{f(2+t)-f(2-t)}{2t}=\\dfrac12\\left[\\dfrac{f(2+t)-f(2)}{t}+\\dfrac{f(2)-f(2-t)}{t}\\right]\\to\\dfrac12\\left[f'(2)+f'(2)\\right]=f'(2)=1\\). Hence (B). [Textbook note: the source book keys option A (0) and its printed solution reaches 0 via a sign error in the left-hand difference quotient; the correct value is 1.]",
+  "content_hash": "eb2101dfec62343df72365f355fdc01fbce79a7add4a18120c772631fae93640",
+  "options": [
+   {
+    "text": "\\(0\\)",
+    "label": "A",
+    "is_correct": false
+   },
+   {
+    "text": "\\(1\\)",
+    "label": "B",
+    "is_correct": true
+   },
+   {
+    "text": "\\(2\\)",
+    "label": "C",
+    "is_correct": false
+   },
+   {
+    "text": "\\(1/2\\)",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ },
+ {
+  "id": "326e4001-5b0f-4ee6-8213-2bab5ea5df8e",
+  "question_number": "85",
+  "source_file": "NDA_Maths_Practice__Algebra__Sets_and_Relations.pdf",
+  "visibility": "PUBLIC",
+  "text": "If R be a relation defined \\(aRb\\) iff \\(|a - b| > 0\\), then the relation is",
+  "solution": "\\(aRb\\iff|a-b|>0\\iff a\\ne b\\). Not reflexive (\\(|a-a|=0\\)); symmetric (\\(a\\ne b\\iff b\\ne a\\)); NOT transitive (\\(1\\ne2,\\ 2\\ne1\\) but \\(1=1\\)). So symmetric only. Hence (B). [Textbook note: the source book keys option D ('symmetric and transitive'), but transitivity fails (e.g. 1≠ 2 and 2≠ 1 while 1=1), so the relation is symmetric only.]",
+  "content_hash": "3828da56f8674cc62dc259f3f52d65705a4b7163952541fd9fbac326b3a0db79",
+  "options": [
+   {
+    "text": "reflexive",
+    "label": "A",
+    "is_correct": false
+   },
+   {
+    "text": "symmetric",
+    "label": "B",
+    "is_correct": true
+   },
+   {
+    "text": "transitive",
+    "label": "C",
+    "is_correct": false
+   },
+   {
+    "text": "both symmetric and transitive",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ },
+ {
+  "id": "ef1c8ec1-a8d0-4673-9395-79f6153f0878",
+  "question_number": "65",
+  "source_file": "NDA_Maths_Practice__Algebra__Sets_and_Relations.pdf",
+  "visibility": "PUBLIC",
+  "text": "Let Z be the set of integers. Then the relation \\(R = \\{(a, b) : 1 + ab > 0\\}\\) defined on Z is",
+  "solution": "\\(R=\\{(a,b):1+ab>0\\}\\) on Z. Reflexive (\\(1+a^2>0\\)); symmetric (\\(1+ab=1+ba\\)); NOT transitive (\\(a=2,b=0,c=-2\\): \\(1+0>0,\\ 1+0>0\\), but \\(1+ac=1-4=-3\\not>0\\)). So reflexive and symmetric but not transitive. Hence (C). [Textbook note: the source book keys option D ('equivalence relation'), but transitivity fails on Z (a=2, b=0, c=−2), so the relation is reflexive and symmetric but not transitive.]",
+  "content_hash": "a9bed1eb5cddc7a4266eb9229ee92e507907edabaadc19f592469c33f59c202c",
+  "options": [
+   {
+    "text": "reflexive and transitive but not symmetric",
+    "label": "A",
+    "is_correct": false
+   },
+   {
+    "text": "symmetric and transitive but not reflexive",
+    "label": "B",
+    "is_correct": false
+   },
+   {
+    "text": "reflexive and symmetric but not transitive",
+    "label": "C",
+    "is_correct": true
+   },
+   {
+    "text": "an equivalence relation",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ },
+ {
+  "id": "abd69b5a-17e0-4462-ba55-d62e551817fc",
+  "question_number": "972",
+  "source_file": "NDA_Maths_Practice__Algebra__Logarithms.pdf",
+  "visibility": "PUBLIC",
+  "text": "If \\(\\log_k x \\cdot \\log_5 k = \\log_x 5\\), \\(k \\neq 1\\), \\(k > 0\\), then \\(x\\) is equal to",
+  "solution": "\\(\\log_k x \\cdot \\log_5 k = \\log_5 x\\) (change of base), so \\(\\log_5 x = \\log_x 5 = \\dfrac{1}{\\log_5 x}\\), giving \\((\\log_5 x)^2 = 1\\), i.e. \\(\\log_5 x = \\pm 1\\). Hence \\(x = 5\\) or \\(x = \\dfrac15\\).",
+  "content_hash": "931311e22d8cec9f734375a8b79adbe4776331fdfe9933d0c722e2b6aa67dbfe",
+  "options": [
+   {
+    "text": "\\(k\\)",
+    "label": "A",
+    "is_correct": false
+   },
+   {
+    "text": "\\(\\dfrac{1}{5}\\)",
+    "label": "B",
+    "is_correct": true
+   },
+   {
+    "text": "5",
+    "label": "C",
+    "is_correct": true
+   },
+   {
+    "text": "None of these",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ },
+ {
+  "id": "ec09bef7-de69-4dce-8dd5-7844ff4098e4",
+  "question_number": "734",
+  "source_file": "NDA_Maths_Practice__Algebra__Probability.pdf",
+  "visibility": "PUBLIC",
+  "text": "For two events A and B, \\(P(A) = 0.7\\) and \\(P(B) = 0.6\\). The necessarily false statement(s) is/are",
+  "solution": "By the bounds \\(\\max(0, P(A)+P(B)-1) \\le P(A \\cap B) \\le \\min(P(A), P(B))\\), here \\(0.3 \\le P(A \\cap B) \\le 0.6\\). So \\(0.35\\) and \\(0.45\\) are possible, while \\(0.65 > 0.6\\) and \\(0.28 < 0.3\\) are impossible. The necessarily false statements are (C) and (D).",
+  "content_hash": "5de09d3b219ff2e2cd21deae758370a476593b93e164965c4ad57546ed96eef7",
+  "options": [
+   {
+    "text": "\\(P(A \\cap B) = 0.35\\)",
+    "label": "A",
+    "is_correct": false
+   },
+   {
+    "text": "\\(P(A \\cap B) = 0.45\\)",
+    "label": "B",
+    "is_correct": false
+   },
+   {
+    "text": "\\(P(A \\cap B) = 0.65\\)",
+    "label": "C",
+    "is_correct": true
+   },
+   {
+    "text": "\\(P(A \\cap B) = 0.28\\)",
+    "label": "D",
+    "is_correct": true
+   }
+  ]
+ },
+ {
+  "id": "e8aebfc9-bd2b-4693-9f91-cf0e3ccfac0a",
+  "question_number": "807",
+  "source_file": "NDA_Maths_Practice__Algebra__Probability.pdf",
+  "visibility": "PUBLIC",
+  "text": "Let X and Y be two events such that \\(P(X) = \\dfrac{1}{3}\\), \\(P(X \\mid Y) = \\dfrac{1}{2}\\) and \\(P(Y \\mid X) = \\dfrac{2}{5}\\). Then",
+  "solution": "\\(P(X \\cap Y) = P(Y \\mid X)P(X) = \\dfrac{2}{5} \\times \\dfrac{1}{3} = \\dfrac{2}{15}\\). Then \\(P(Y) = \\dfrac{P(X \\cap Y)}{P(X \\mid Y)} = \\dfrac{2/15}{1/2} = \\dfrac{4}{15}\\) (statement C is true). Also \\(P(X' \\mid Y) = 1 - P(X \\mid Y) = \\dfrac{1}{2}\\) (statement B is true). \\(P(X \\cap Y) = \\dfrac{2}{15} \\ne \\dfrac{2}{5}\\) and \\(P(X \\cup Y) = \\dfrac{1}{3} + \\dfrac{4}{15} - \\dfrac{2}{15} = \\dfrac{7}{15} \\ne \\dfrac{2}{5}\\). Correct: B and C.",
+  "content_hash": "92c017d716f25ae10b0749b0fa42ba26e4d265dbc08d3455a7edb013b41f48e2",
+  "options": [
+   {
+    "text": "\\(P(X \\cap Y) = \\dfrac{2}{5}\\)",
+    "label": "A",
+    "is_correct": false
+   },
+   {
+    "text": "\\(P(X' \\mid Y) = \\dfrac{1}{2}\\)",
+    "label": "B",
+    "is_correct": true
+   },
+   {
+    "text": "\\(P(Y) = \\dfrac{4}{15}\\)",
+    "label": "C",
+    "is_correct": true
+   },
+   {
+    "text": "\\(P(X \\cup Y) = \\dfrac{2}{5}\\)",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ },
+ {
+  "id": "8a1e25e3-0498-4704-a8ae-e9f52062c124",
+  "question_number": "819",
+  "source_file": "NDA_Maths_Practice__Algebra__Probability.pdf",
+  "visibility": "PUBLIC",
+  "text": "Let X and Y be two events such that \\(P(X \\mid Y) = \\dfrac{1}{2}\\), \\(P(Y \\mid X) = \\dfrac{1}{3}\\) and \\(P(X \\cap Y) = \\dfrac{1}{6}\\). Which of the following is(are) correct?",
+  "solution": "\\(P(Y) = \\dfrac{P(X \\cap Y)}{P(X \\mid Y)} = \\dfrac{1/6}{1/2} = \\dfrac{1}{3}\\) and \\(P(X) = \\dfrac{P(X \\cap Y)}{P(Y \\mid X)} = \\dfrac{1/6}{1/3} = \\dfrac{1}{2}\\). Then \\(P(X \\cup Y) = \\dfrac{1}{2} + \\dfrac{1}{3} - \\dfrac{1}{6} = \\dfrac{2}{3}\\) (A true). Also \\(P(X)P(Y) = \\dfrac{1}{6} = P(X \\cap Y)\\), so X and Y are independent (B true). Correct: A and B.",
+  "content_hash": "72e3e36d921d208c9d9323829206f22a87d6230f482da1654a884930c5b2b42b",
+  "options": [
+   {
+    "text": "\\(P(X \\cup Y) = \\dfrac{2}{3}\\)",
+    "label": "A",
+    "is_correct": true
+   },
+   {
+    "text": "X and Y are independent",
+    "label": "B",
+    "is_correct": true
+   },
+   {
+    "text": "X and Y are not independent",
+    "label": "C",
+    "is_correct": false
+   },
+   {
+    "text": "\\(P(X^C \\cap Y) = \\dfrac{1}{5}\\)",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ },
+ {
+  "id": "a360908b-fee0-4779-b052-af5481ce08a7",
+  "question_number": "820",
+  "source_file": "NDA_Maths_Practice__Algebra__Probability.pdf",
+  "visibility": "PUBLIC",
+  "text": "Let E and F be two independent events. The probability that exactly one of them occurs is \\(\\dfrac{11}{25}\\) and the probability of none of them occurring is \\(\\dfrac{2}{25}\\). If P(T) denotes the probability of occurrence of the event T, then",
+  "solution": "Let \\(e = P(E)\\), \\(f = P(F)\\), independent. \\((1-e)(1-f) = \\dfrac{2}{25}\\) and \\(e + f - 2ef = \\dfrac{11}{25}\\). Solving gives \\(\\{e, f\\} = \\left\\{\\dfrac{4}{5}, \\dfrac{3}{5}\\right\\}\\), so both \\((P(E),P(F)) = \\left(\\dfrac{4}{5}, \\dfrac{3}{5}\\right)\\) and \\(\\left(\\dfrac{3}{5}, \\dfrac{4}{5}\\right)\\) are valid. Correct: A and D.",
+  "content_hash": "f519366203a385391c5993de9d80f1c4cf0bdf4cdf5a905af890a730def4cad5",
+  "options": [
+   {
+    "text": "\\(P(E) = \\dfrac{4}{5}, P(F) = \\dfrac{3}{5}\\)",
+    "label": "A",
+    "is_correct": true
+   },
+   {
+    "text": "\\(P(E) = \\dfrac{1}{5}, P(F) = \\dfrac{2}{5}\\)",
+    "label": "B",
+    "is_correct": false
+   },
+   {
+    "text": "\\(P(E) = \\dfrac{2}{5}, P(F) = \\dfrac{1}{5}\\)",
+    "label": "C",
+    "is_correct": false
+   },
+   {
+    "text": "\\(P(E) = \\dfrac{3}{5}, P(F) = \\dfrac{4}{5}\\)",
+    "label": "D",
+    "is_correct": true
+   }
+  ]
+ },
+ {
+  "id": "1f251a16-c623-4200-b73e-a273e1c5b9cc",
+  "question_number": "60",
+  "source_file": "NDA_Maths_Practice__Vectors_Test_B.pdf",
+  "visibility": "PRIVATE",
+  "text": "Let OA = a, OB = b and if the vector along the angle bisector of ∠AOB is given by x(a/|a|) + y(b/|b|), then",
+  "solution": "Angle bisector direction is proportional to a/|a|+b/|b|, so x=y, i.e. x-y=0.",
+  "content_hash": "7b9dc80ec6a07012c0f9b3ce2a143b4919204f26d192cec0fc154fcb295cd569",
+  "options": [
+   {
+    "text": "x−y=0",
+    "label": "A",
+    "is_correct": true
+   },
+   {
+    "text": "x+y=0",
+    "label": "B",
+    "is_correct": false
+   },
+   {
+    "text": "x=2y",
+    "label": "C",
+    "is_correct": false
+   },
+   {
+    "text": "y=2x",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ },
+ {
+  "id": "f0bc1291-ea11-4882-a2c4-e04c6f0be6e0",
+  "question_number": "65",
+  "source_file": "NDA_Maths_Practice__Vectors_Test_B.pdf",
+  "visibility": "PRIVATE",
+  "text": "If a, b, c are three non-zero vectors, no two of them are collinear, a+2b is collinear with c, b+3c is collinear with a, then a+2b+6c is",
+  "solution": "Same conditions force a+2b+6c=0. The correct value 0 is not listed among 6c/-6c/c/2c; options appear defective.",
+  "content_hash": "0e2118e8c4b58917dd9fb21417245b408b3b2d0a7e65c9ffe54ebdff0fed97df",
+  "options": [
+   {
+    "text": "6c",
+    "label": "A",
+    "is_correct": false
+   },
+   {
+    "text": "−6c",
+    "label": "B",
+    "is_correct": true
+   },
+   {
+    "text": "c",
+    "label": "C",
+    "is_correct": false
+   },
+   {
+    "text": "2c",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ },
+ {
+  "id": "9998afcf-c53f-416e-9ecb-d27527705533",
+  "question_number": "85",
+  "source_file": "NDA_Maths_Practice__Vectors_Test_B.pdf",
+  "visibility": "PRIVATE",
+  "text": "The value of α, so that the volume of the parallelepiped formed by i+αj+k, j+αk and αi+k becomes maximum, is",
+  "solution": "V=a^3-a+1, V'=3a^2-1=0 -> a=+/-1/sqrt3. V''=6a<0 at a=-1/sqrt3 -> maximum.",
+  "content_hash": "1975ba134c8ca6afc95240c9844985198132e58e7bd13f4966f3e621e00846f1",
+  "options": [
+   {
+    "text": "−1/√3",
+    "label": "A",
+    "is_correct": true
+   },
+   {
+    "text": "1/√3",
+    "label": "B",
+    "is_correct": false
+   },
+   {
+    "text": "−√3",
+    "label": "C",
+    "is_correct": false
+   },
+   {
+    "text": "√3",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ },
+ {
+  "id": "008d29c9-e060-4477-b9c1-e77bc368cf44",
+  "question_number": "60",
+  "source_file": "NDA_Maths_Practice__Algebra__Sets_and_Relations.pdf",
+  "visibility": "PUBLIC",
+  "text": "A relation \\(\\rho\\) on the set of real numbers R is defined as follows: '\\(x \\rho y\\) if and only if \\(xy > 0\\)'. Then which on the following is/are true?",
+  "solution": "\\(x \\rho y\\) iff \\(xy > 0\\). Reflexive fails at \\(x = 0\\) (\\(0 \\cdot 0 = 0 \\not> 0\\)), so not reflexive on all of R. Symmetric: \\(xy > 0 \\Leftrightarrow yx > 0\\), yes. Transitive: if \\(xy > 0\\) and \\(yz > 0\\) (both nonzero, same sign through y) then \\(xz > 0\\), yes. So it is symmetric but not reflexive (B) and symmetric and transitive (C). Both B and C are correct. Hence (B, C).",
+  "content_hash": "9256e1c499a657daf851fe8d6cf0d7c04f464543ddb407a0eb19afd6dbb4bd93",
+  "options": [
+   {
+    "text": "\\(\\rho\\) is reflexive and symmetric",
+    "label": "A",
+    "is_correct": false
+   },
+   {
+    "text": "\\(\\rho\\) is symmetric but not reflexive",
+    "label": "B",
+    "is_correct": true
+   },
+   {
+    "text": "\\(\\rho\\) is symmetric and transitive",
+    "label": "C",
+    "is_correct": true
+   },
+   {
+    "text": "\\(\\rho\\) is reflexive and transitive",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ }
+]
