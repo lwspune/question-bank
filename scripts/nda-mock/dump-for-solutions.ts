@@ -17,10 +17,11 @@
  * transcribing pages blind would faithfully copy a foreign solution onto the
  * wrong row. Giving it the stem lets it check, and the brief tells it to.
  */
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { requirePaper, DATA, OUT } from "./config";
 import type { ExtractedQuestion } from "./extract";
+import type { Adjudicated } from "./adjudicate";
 
 function main() {
   const paper = requirePaper(process.argv[2]);
@@ -29,6 +30,23 @@ function main() {
     readFileSync(join(DATA, `${paper.id}.extract.json`), "utf8"),
   );
   const byNumber = new Map(qs.map((q) => [q.number, q]));
+
+  // The SETTLED answer is the ADJUDICATED one, which is not the extract's.
+  // The extract carries only what the source printed; every question settled by
+  // hand — a wrong printed key, or one the source never keyed — differs. On m9
+  // that is 10 of 120, and they are precisely the questions where a
+  // solution-vs-stem mismatch is most likely, so handing an agent the printed
+  // key there would point the check at the wrong target.
+  const adjPath = join(DATA, `${paper.id}.adjudication.json`);
+  if (!existsSync(adjPath)) {
+    throw new Error(`no adjudication for ${paper.id} — run adjudicate.ts first; the printed key is NOT the settled answer`);
+  }
+  const adjudicated: Adjudicated[] = JSON.parse(readFileSync(adjPath, "utf8"));
+  const settled = new Map(adjudicated.map((a) => [a.number, a]));
+  const overridden = adjudicated.filter(
+    (a) => a.resolved && a.resolved !== byNumber.get(a.number)?.answer,
+  ).length;
+  console.log(`settled answers from adjudication: ${settled.size} (${overridden} differ from the printed key)`);
 
   const dir = join(OUT, paper.id, "solwork");
   mkdirSync(dir, { recursive: true });
@@ -52,7 +70,13 @@ function main() {
       }
       out.push(`**Q${n}.** ${q.stem}`, "");
       for (const o of q.options) out.push(`  (${o.label}) ${o.text}`);
-      out.push("", `  SETTLED ANSWER: ${q.answer ?? "(none)"}`, "");
+      const a = settled.get(n);
+      const answer = a?.resolved ?? null;
+      const note =
+        a && a.resolved && a.printedKey && a.resolved !== a.printedKey
+          ? `  (the paper PRINTS ${a.printedKey}; that key was adjudicated wrong)`
+          : "";
+      out.push("", `  SETTLED ANSWER: ${answer ?? "(held — not settled)"}${note}`, "");
     }
     const f = join(dir, `q${String(from).padStart(3, "0")}-${String(to).padStart(3, "0")}.md`);
     writeFileSync(f, out.join("\n"), "utf8");
