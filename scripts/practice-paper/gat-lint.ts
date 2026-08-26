@@ -86,7 +86,33 @@ const HANDWAVE = /\b(?:obviously|clearly|evidently)\b|it is (?:a )?(?:well[- ]kn
  * false positives against 2 genuine hits across four papers, and a probe that is wrong
  * three times out of four gets ignored, which costs more than it catches.
  */
-const FIGURE_REF = /\b(?:figure|fig\.|diagram)\b|\bshown (?:below|above|in the)\b|\bgiven (?:figure|diagram)\b|\bgraph (?:below|above|shown|given)\b/i;
+/**
+ * A stem POINTING AT a figure it expects to be shown — deliberately not every use of the
+ * word "figure".
+ *
+ * The reference must be DEICTIC: some determiner or position word tying it to a specific
+ * picture ("the figure", "the diagram below", "shown above"). A bare `\bfigure\b` also
+ * matches ordinary descriptive prose — LWS Mock 5 Q69 reads "Ardhanarisvara, a figure of
+ * half Shiva and half Parvati", where "figure" means a sculpted form and no diagram is
+ * missing. That fired as a BLOCK and would have stopped a clean commit.
+ *
+ * Same family as the `image` trap: an optics question saying "the image is inverted" is
+ * talking about physics, not about an attachment.
+ */
+const FIGURE_REF = new RegExp(
+  [
+    // "the figure below", "diagram shown above", "molecule given below"
+    "\\b(?:figure|fig\\.?|diagram|graph|sketch|circuit|molecule|structure|network)\\s+" +
+      "(?:given|shown)?\\s*(?:below|above)\\b",
+    // "the given figure", "the following diagram", "the adjoining sketch"
+    "\\b(?:given|following|adjoining|accompanying)\\s+(?:figure|fig\\.?|diagram|graph|sketch)\\b",
+    // "as shown in the figure"
+    "\\bshown in the (?:figure|diagram|graph|sketch|adjoining)\\b",
+    // an explicit numbered reference: "Refer to Fig. 2"
+    "\\bfig\\.\\s*\\d",
+  ].join("|"),
+  "i",
+);
 // `graph` needs a locative too, for the same reason as `image`: "which best describes the
 // displacement-time GRAPH of a particle" asks what SHAPE a graph would have and references
 // no printed figure at all. Bare `graph` produced a false positive on exactly that.
@@ -146,13 +172,24 @@ export function lintRecord(r: PaperRec & { context?: string; imageUrl?: string |
 }
 
 function main() {
-  const slug = process.argv[2];
-  if (!slug) throw new Error("usage: gat-lint.ts <slug>");
-  const spec = PAPERS[slug];
-  if (!spec) throw new Error(`unknown paper slug "${slug}"`);
-  const recs: PaperRec[] = JSON.parse(
-    readFileSync(join(DATA, spec.recordsFile ?? `${slug}.records.json`), "utf-8"),
-  );
+  const arg = process.argv[2];
+  if (!arg) throw new Error("usage: gat-lint.ts <slug> | gat-lint.ts --file=<path>");
+
+  // `--file=` lints a records file that is not registered in PAPERS yet. Without it the
+  // only way to lint is to add a config entry first, which puts the gate AFTER the commit
+  // it is meant to inform — you want to know a paper's rule violations while deciding
+  // whether and how to ingest it, not once it is already wired in.
+  let slug = arg;
+  let path: string;
+  if (arg.startsWith("--file=")) {
+    path = arg.slice("--file=".length);
+    slug = path.replace(/\\/g, "/").split("/").pop() ?? path;
+  } else {
+    const spec = PAPERS[arg];
+    if (!spec) throw new Error(`unknown paper slug "${arg}"`);
+    path = join(DATA, spec.recordsFile ?? `${arg}.records.json`);
+  }
+  const recs: PaperRec[] = JSON.parse(readFileSync(path, "utf-8"));
 
   const status = new Map(recs.map((r) => [r.n, r.status ?? "new"]));
   // A `dup` or `flawed` row is never PUBLIC — and under createPaper:false it is never
