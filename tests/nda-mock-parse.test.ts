@@ -14,6 +14,7 @@ import {
   parseSupplementSolutions,
   normalizeRtlSpans,
   deEmphasiseOption,
+  referencesMissingFigure,
   parseGridAnswerKey,
   fixStackedOperators,
   stripPandocInlineMarkup,
@@ -1055,5 +1056,33 @@ describe("detectDirectionSets — weekly-series spellings", () => {
     expect(sets).toHaveLength(1);
     expect(sets[0].from).toBe(57);
     expect(sets[0].to).toBe(59);
+  });
+});
+
+describe("referencesMissingFigure — the flip-public gate", () => {
+  // A stem that points at a figure the row does not carry is unanswerable, and
+  // publishing it is worse than holding it: the reader cannot tell whether the
+  // figure is missing or they have misread the question. Five such rows exist
+  // in the ten-paper series (the README's open m3 Q60/Q93 item is two of them).
+  it("flags a stem citing a figure when image_url is absent", () => {
+    expect(referencesMissingFigure("The area of the shaded region shown in the figure above is", null)).toBe(true);
+    expect(referencesMissingFigure("The curve given below represents a/an", undefined)).toBe(true);
+  });
+
+  it("does not flag the same stem once a figure is attached", () => {
+    expect(referencesMissingFigure("as shown in the figure above", "https://x/y.png")).toBe(false);
+  });
+
+  it("does not flag a stem that merely contains the word figure", () => {
+    // "significant figures" and "figure out" are ordinary prose, and a
+    // gate that fires on them would hold real questions.
+    expect(referencesMissingFigure("Round 3.14159 to three significant figures", null)).toBe(false);
+    expect(referencesMissingFigure("Figure out the value of x if 2x = 8", null)).toBe(false);
+  });
+
+  it("does not flag a table transcribed into the stem", () => {
+    // The weekly series inlines its data as GFM pipe-tables rather than
+    // images; those stems say "the following data", not "the figure".
+    expect(referencesMissingFigure("Find the mean deviation for the following data.\n\n| x | 1 |\n|---|---|\n| f | 2 |", null)).toBe(false);
   });
 });

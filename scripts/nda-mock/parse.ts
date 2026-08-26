@@ -430,6 +430,28 @@ export function parseTailAnswerKey(md: string): Map<number, string> {
 }
 
 /**
+ * Does this stem point at a figure the row does not carry?
+ *
+ * The gate for `flip-public`. A question saying "as shown in the figure above"
+ * with no `image_url` is unanswerable, and publishing it is worse than holding
+ * it: the reader cannot tell whether the figure is missing or they have misread
+ * the question. Five such rows exist in the ten-paper series.
+ *
+ * Deliberately narrow. It matches a figure CITATION, not the word "figure" —
+ * "three significant figures" and "figure out the value" are ordinary prose,
+ * and a gate that held those would keep real questions out of the bank. It also
+ * has to ignore "the following data", which is how the weekly series introduces
+ * a table it transcribed INTO the stem rather than left as an image.
+ */
+const FIGURE_CITATION =
+  /\b(?:in|from|shown\s+in|given\s+in|given\s+below|below|above)\s+(?:the\s+)?(?:adjoining\s+|following\s+)?(?:figure|diagram|graph|fig\.?)\b|\b(?:figure|diagram|graph)\s+(?:above|below|shown)\b|\bthe\s+(?:curve|graph|figure|diagram)\s+given\s+below\b/i;
+
+export function referencesMissingFigure(text: string, imageUrl: string | null | undefined): boolean {
+  if (imageUrl) return false;
+  return FIGURE_CITATION.test(text);
+}
+
+/**
  * Remove emphasis from an OPTION, for the blind packet only.
  *
  * Some sources bold the correct option. The blind packet inherits that
