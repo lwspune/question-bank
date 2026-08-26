@@ -1,0 +1,202 @@
+[
+  {
+    "number": 61,
+    "answer": "C",
+    "working": "Miss probability is 2/3, so P(at least one hit in n shots) = 1 - (2/3)^n. The requirement 1 - (2/3)^n > 5/6 is (2/3)^n < 1/6: n=4 gives 16/81 = 0.1975 (still above 1/6 = 0.1667) and n=5 gives 32/243 = 0.1317 < 1/6. Minimum n = 5.",
+    "confidence": "high",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Computing Binomial Probabilities — Exact, At-Least, and Complementary Events",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 62,
+    "answer": null,
+    "working": "The product is divisible by 3 iff at least one of the two numbers is a multiple of 3. There are 16 multiples of 3 in 1..50 and 34 non-multiples, so P = 1 - C(34,2)/C(50,2) = 1 - 561/1225 = 664/1225 = 0.54204. Brute force over all 1225 pairs confirms 664 favourable.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "notes": "DEFECT - no option matches. Derived value 664/1225 = 0.54204. Printed options are 16/50 = 0.32, 17/50 = 0.34, 33/50 = 0.66 and 13/25 = 0.52; the nearest, 13/25, is not equal (13/25 would need 637 favourable pairs, not 664). Sampling with replacement instead of without still gives 1 - (34/50)^2 = 0.5376, so no reading of the stem produces a printed option."
+  },
+  {
+    "number": 63,
+    "answer": "D",
+    "working": "The three lines meet pairwise at (0,3), (0,-5) and (6,0), so the bounded region is a triangle of area (1/2)(8)(6) = 24. The line y = 1 crosses the y-axis edge at (0,1) and the edge x + 2y = 6 at (4,1) (it misses the third edge, which reaches y = 1 only at x = 7.2, outside the segment), cutting off a top triangle of area (1/2)(2)(4) = 4. So the y < 1 part has area 20 and P = 20/24 = 5/6. A 400k-point Monte Carlo over the triangle gives 0.8332, confirming 5/6.",
+    "confidence": "medium",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "notes": "Derived value is 5/6. (A) 1/4 and (B) 5/9 are both wrong and (C) 'Value based on area ratio' is not a value at all - it looks like a corrupted option, so as printed (D) None of these is the only correct choice. Flagging because if (C) was originally '5/6' the intended key would be C. Classification note: this is geometric (area-ratio) probability and the live taxonomy has no geometric-probability subtopic; 'Probability via Counting' is the closest favourable/total fit."
+  },
+  {
+    "number": 64,
+    "answer": "B",
+    "working": "The first 2 falls on throw 2k with probability (5/6)^(2k-1) * (1/6). Summing over k >= 1 is a GP with first term 5/36 and ratio 25/36: (5/36)/(1 - 25/36) = (5/36)(36/11) = 5/11. Numerically summing 400 terms gives 0.454545, matching 5/11.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Independent Events",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 65,
+    "answer": null,
+    "working": "P(first four all white) = C(6,4)/C(15,4) = 15/1365 = 1/91. That leaves 2 white and 9 black, so P(next four all black) = C(9,4)/C(11,4) = 126/330 = 21/55. The product is 21/5005 = 3/715 = 0.0041958.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Probability via Counting",
+    "difficulty": "MODERATE",
+    "notes": "DEFECT - no option matches. Derived value 3/715. The printed options split it: (B) 3/256 has the right numerator with the wrong denominator, while (A) 5/715 and (C) 1/715 have the right denominator with the wrong numerator ((A) evaluates to 1/143). (D) 5/6 is unrelated. 3/715 is the standard textbook answer for this urn problem, so one of (A)/(C) is most likely a mis-transcribed 3/715."
+  },
+  {
+    "number": 66,
+    "answer": "D",
+    "working": "np = 4 and npq = 3 give q = 3/4, hence p = 1/4 and n = 16. Then P(X=1) = C(16,1)(1/4)(3/4)^15 = 4(3/4)^15 = 0.053454. (A) 16(3/4)^15 = 0.21382 is four times too large (it drops the factor p = 1/4), (B) 4(1/4)^15 = 3.7e-09 uses the wrong base, and (C) states n and p rather than a probability, so None of these is correct as printed.",
+    "confidence": "medium",
+    "chapter": "Binomial Distribution",
+    "subtopic": "Mean, Variance, and Parameter Estimation in B(n, p)",
+    "difficulty": "MODERATE",
+    "notes": "The correct expression 4(3/4)^15 is split across the two numeric options - (A) supplies the wrong coefficient with the right base, (B) the right coefficient with the wrong base - and (C) is not a probability. That pattern suggests the option block is damaged. Answering (D) strictly as printed; if the source key says (A), the option text is wrong by a factor of 4, not the derivation."
+  },
+  {
+    "number": 67,
+    "answer": "B",
+    "working": "Adding the constant b shifts every observation and its mean equally, so deviations are unchanged; multiplying by a scales each deviation by a and each squared deviation by a^2. Hence the variance is a^2 * sigma^2, independent of b.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 68,
+    "answer": null,
+    "working": "Combined mean = (10*10 + 20*20)/30 = 50/3. With d1 = 10 - 50/3 = -20/3 and d2 = 20 - 50/3 = 10/3, combined variance = [n1(s1^2 + d1^2) + n2(s2^2 + d2^2)]/(n1+n2) = [10(4 + 400/9) + 20(9 + 100/9)]/30 = (484.444 + 402.222)/30 = 266/9 = 29.5556.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "MODERATE",
+    "notes": "DEFECT - no option matches. Derived value 266/9 = 29.5556 exactly. The nearest printed option, (B) 29.33 (= 88/3), is not equal; the options are given to two decimals and one of them is exact (30.00), so 29.33 is a distinct value rather than a rounding of 29.56. Reading the '4 and 9' as standard deviations instead of variances gives 81.56, and swapping the two groups gives 27.89, so no alternative reading yields a printed option. If the key is (B), the source arithmetic is wrong."
+  },
+  {
+    "number": 69,
+    "answer": "B",
+    "working": "The seven values sum to 49, so the mean is 7. Absolute deviations are 4,3,3,3,0,3,2, summing to 18, so the mean deviation about the mean is 18/7 = 2.5714.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 70,
+    "answer": "B",
+    "working": "Sum of all seven = 7*8 = 56 and sum of squares = 7(variance + mean^2) = 7(16+64) = 560. The five given values sum to 42 with squares summing to 460, so the remaining two satisfy a+b = 14 and a^2+b^2 = 100. Then 2ab = (a+b)^2 - (a^2+b^2) = 196 - 100 = 96, so ab = 48.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 71,
+    "answer": "A",
+    "working": "Mean = (n+1)/2 and mean of squares = (n+1)(2n+1)/6, so variance = (n+1)(2n+1)/6 - (n+1)^2/4 = (n^2-1)/12. Checked directly: n=5 gives 2, n=7 gives 4, n=10 gives 33/4, all equal to (n^2-1)/12 and none equal to (n^2+1)/12.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 72,
+    "answer": null,
+    "working": "Sum of all eight = 8*9 = 72 and sum of squares = 8(9.25 + 81) = 722. The six given values sum to 52 with squares summing to 504, so x+y = 20 and x^2+y^2 = 218, giving xy = (400-218)/2 = 91. Then x and y are the roots of t^2 - 20t + 91 = 0, i.e. 13 and 7 (x=13, y=7). Substituting back gives mean 9 and variance 9.25 exactly.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "MODERATE",
+    "notes": "DEFECT - no option matches. Derived pair is x = 13, y = 7. (A) 12,10 does not even sum to 20 (it gives mean 9.25, not 9); (B) 14,6 gives variance 11; (C) 15,5 gives 13.25; (D) 11,9 gives 7.25. The full data set here is the standard NCERT set {4,6,7,8,10,12,12,13} with 13 and 7 held back, which confirms 13 and 7 is the intended pair - it is simply absent from the options."
+  },
+  {
+    "number": 73,
+    "answer": "B",
+    "working": "With mean (16+a)/4, variance = (4+9+a^2+121)/4 - ((16+a)/4)^2 = 12.25. Multiplying through by 16: 4(134+a^2) - (16+a)^2 = 196, i.e. 536 + 4a^2 - 256 - 32a - a^2 = 196, giving 3a^2 - 32a + 84 = 0. Its roots a = 6 and a = 14/3 both return SD exactly 3.5, whereas the roots of (A) give SDs 3.4911/3.5620 and those of (C) give 3.5620/3.5148.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 74,
+    "answer": "B",
+    "working": "The empirical relation for a moderately asymmetrical distribution is Mode = 3 Median - 2 Mean. So 24 = 3(18) - 2*Mean = 54 - 2*Mean, giving Mean = 15.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Measures of Central Tendency — Mean, Median, Mode",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 75,
+    "answer": "A",
+    "working": "Mean = (sum x)/n = 10/n = 1 forces n = 10. Then variance = (sum x^2)/n - mean^2 = 40/10 - 1^2 = 4 - 1 = 3.",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 76,
+    "answer": "A",
+    "working": "Coefficient of variation = 100 * SD / mean, so 60 = 100 * SD / 10, giving SD = 6. (Option (B) 36 is the variance-shaped distractor, (C) 0.6 omits the percentage.)",
+    "confidence": "high",
+    "chapter": "Statistics",
+    "subtopic": "Dispersion — Standard Deviation, Variance, Mean Deviation",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 77,
+    "answer": "A",
+    "working": "The point dividing (1,1) and (2,4) internally in 3:2 is ((3*2 + 2*1)/5, (3*4 + 2*1)/5) = (8/5, 14/5). Substituting into 2x + y = k gives k = 16/5 + 14/5 = 30/5 = 6.",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Distance, Section, and Locus",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 78,
+    "answer": "A",
+    "working": "(3,4) lies on x^2+y^2 = 25, and the tangent there is x*x1 + y*y1 = 25, i.e. 3x + 4y = 25. Verified: its distance from the centre (0,0) is 25/5 = 5, the radius. Option (B) 4x - 3y = 0 also passes through (3,4) but its distance from the centre is 0, so it is the diameter (the normal), not the tangent; (C) and (D) do not pass through (3,4) at all.",
+    "confidence": "high",
+    "chapter": "Circles",
+    "subtopic": "Inscribed Geometry, Tangents, and Segments",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 79,
+    "answer": "A",
+    "working": "4a = 16 so a = 4 and the focus is (4,0). The point (1,4) is on the parabola and corresponds to t = 1/2 in (4t^2, 8t). The other end of a focal chord has parameter -1/t = -2, i.e. (16,-16), and the chord through (1,4) and (16,-16) does pass through (4,0). Length = sqrt(15^2 + 20^2) = sqrt(625) = 25, matching a(t + 1/t)^2 = 4(2.5)^2 = 25.",
+    "confidence": "high",
+    "chapter": "Conics",
+    "subtopic": "Parabola — Equation, Properties, and Latus Rectum",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 80,
+    "answer": "A",
+    "working": "Distance between foci 2ae = 6 gives ae = 3; distance between directrices 2a/e = 12 gives a/e = 6. Dividing, e^2 = 3/6 = 1/2, so e = 1/sqrt(2). Check: a = 3 sqrt(2) gives 2ae = 6 and 2a/e = 12 exactly.",
+    "confidence": "high",
+    "chapter": "Conics",
+    "subtopic": "Ellipse — Foci, Eccentricity, and Focal Distances",
+    "difficulty": "EASY",
+    "notes": ""
+  }
+]

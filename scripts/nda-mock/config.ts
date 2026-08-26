@@ -1694,6 +1694,11 @@ PAPERS.w3 = {
       reason:
         "the stem prints 'maximum', which no option can satisfy: (x-a)(x-b) is an upward parabola and is unbounded above (with a=2, b=7 it takes 14, 24, 9114, 991014 at x = 0, 10, 100, 1000). The repair is documented by the paper's OWN solution, which sets dy/dx = 0 and then labels the result — in Hindi — 'फलन का निम्निष्ठ मान', the function's MINIMUM value. That stationary value is -(a-b)^2/4, exactly the printed key D, so a single edit to one word makes stem, solution and key all consistent; the alternative would be to call both the solution and the key wrong",
     },
+    75: {
+      answer: "D",
+      reason:
+        "PRINTED KEY A IS WRONG, and the paper's own solution refutes it in its own working. The auxiliary equation m^3 - 4m^2 + 5m - 2 = 0 factors as (m-1)^2 (m-2), and the solution writes exactly that — '(D-1)(D-1)(D-2) = 0, D = 1,1,2'. Roots 1 (double) and 2 give (c1 + c2 x) e^x + c3 e^(2x) = option D. Option A is the same expression with e^(-x), which would need a root at -1; the cubic does not have one (its value at m = -1 is -12)",
+    },
     90: {
       stem:
         "The variance of the following distribution is\n\n" +
@@ -1739,6 +1744,11 @@ PAPERS.w3 = {
     },
   },
   resolutions: {
+    100: {
+      hold: true,
+      reason:
+        "NO CORRECT OPTION. With A(1,1), B(7,21), C(7,-3), D(12,2) the four points are all hull vertices and the quadrilateral they bound has area 132 (shoelace in convex order A, C, D, B) — the options are 179, 180, 181, 182. The PRINTED vertex order A-B-C-D is self-intersecting (side DA crosses side BC), so it bounds no simple region at all; its shoelace magnitude is 47. The printed key 179 comes from the solution adding triangle ABC (72) to triangle ABD (107) — two triangles that share the SIDE AB rather than a diagonal, so they overlap and tile nothing. Splitting on the actual diagonal AC gives 72 + 25 = 97. A corrupted vertex cannot rescue it either: B and C share x = 7, so the area is 132 whatever D's y-coordinate is. Held rather than repaired, since no single edit reaches any printed option",
+    },
     57: {
       answer: "D",
       reason:

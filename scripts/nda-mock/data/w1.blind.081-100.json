@@ -1,0 +1,202 @@
+[
+  {
+    "number": 81,
+    "answer": "B",
+    "working": "For x^2/a^2 - y^2/b^2 = 1 the conjugate axis is 2b and the distance between foci is 2ae, so 2b = (1/2)(2ae) gives 2b = ae. With b^2 = a^2(e^2 - 1) this yields a^2 e^2/4 = a^2(e^2 - 1), i.e. e^2 - 1 = e^2/4, so e^2 = 4/3 and e = 2/sqrt(3). The latus rectum 2b^2/a = 8 only fixes the size (a = 12, b = 4*sqrt(3)) and is consistent with this e; it is not needed for the eccentricity.",
+    "confidence": "high",
+    "chapter": "Conics",
+    "subtopic": "Hyperbola — Foci and Eccentricity",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 82,
+    "answer": "A",
+    "working": "Reflection formula (x - x1)/A = (y - y1)/B = -2(A x1 + B y1 + C)/(A^2 + B^2) with A = 1, B = -3, C = 4 and (x1, y1) = (1, 2): A x1 + B y1 + C = 1 - 6 + 4 = -1, A^2 + B^2 = 10, so the common ratio is 2/10 = 0.2. Image = (1 + 1(0.2), 2 + (-3)(0.2)) = (1.2, 1.4).",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Distance, Section, and Locus",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 83,
+    "answer": "A",
+    "working": "Orthogonality condition 2 g1 g2 + 2 f1 f2 = c1 + c2. Here g1 = 1, f1 = k, c1 = 6 and g2 = 0, f2 = k, c2 = k, so 2k^2 = 6 + k, i.e. 2k^2 - k - 6 = 0, giving k = (1 +/- 7)/4 = 2 or -3/2.",
+    "confidence": "high",
+    "chapter": "Circles",
+    "subtopic": "Circle Equation — Centre, Radius, Diameter, and Properties",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 84,
+    "answer": "A",
+    "working": "Substituting y = mx + 1 into y^2 = 4x gives m^2 x^2 + (2m - 4)x + 1 = 0; tangency requires the discriminant (2m - 4)^2 - 4m^2 = 0, i.e. -16m + 16 = 0, so m = 1. (Equivalently c = a/m with a = 1 gives 1 = 1/m.)",
+    "confidence": "high",
+    "chapter": "Conics",
+    "subtopic": "Parabola — Equation, Properties, and Latus Rectum",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 85,
+    "answer": "B",
+    "working": "The origin is the centre of x^2 + y^2 = 4, so a chord subtending 90 degrees there cuts off an isosceles right triangle with legs 2; the chord's distance from the centre is 2/sqrt(2) = sqrt(2). The mid-point of the chord is exactly the foot of that perpendicular, so it always lies at distance sqrt(2) from the origin: locus x^2 + y^2 = 2.",
+    "confidence": "high",
+    "chapter": "Circles",
+    "subtopic": "Inscribed Geometry, Tangents, and Segments",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 86,
+    "answer": "B",
+    "working": "The three lines meet at (0, 0), (6, 6) and (6, 0). Base along y = 0 from (0,0) to (6,0) is 6 and the height to (6,6) is 6, so the area is (1/2)(6)(6) = 18.",
+    "confidence": "high",
+    "chapter": "Lines",
+    "subtopic": "Triangles, Quadrilaterals, and Polygons",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 87,
+    "answer": "A",
+    "working": "Two conditions must both hold: v coplanar with a and b (scalar triple product [a b v] = 0) and v.c/|c| = 1/sqrt(3). Testing all four options: det(a, b, v) = 0 only for A (3,-1,3) and C (5,-2,5), and of those the projection on c = (1,-1,-1), |c| = sqrt(3), is 1/sqrt(3) for A (v.c = 3 + 1 - 3 = 1) but 2/sqrt(3) for C. Also A = 1*a + 2*b, so it genuinely lies in the plane.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Magnitude, Components, Projection, and Direction Cosines",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 88,
+    "answer": "A",
+    "working": "d1 x d2 = (2,3,4) x (3,4,5) = (-1, 2, -1) with magnitude sqrt(6); the join of the given points is (2-1, 4-2, 5-3) = (1,2,2), whose dot with (-1,2,-1) is -1 + 4 - 2 = 1 (non-zero, so the lines are skew, not intersecting). Shortest distance = |1|/sqrt(6) = 1/sqrt(6).",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "The Straight Line in 3D",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 89,
+    "answer": "B",
+    "working": "|a| = 5 and |b| = 13, so the internal bisector direction is a/5 + b/13 = (3/5 + 5/13, 4/5 + 12/13) = (64/65, 112/65), i.e. parallel to (8, 14). A UNIT vector along it is (8i + 14j)/sqrt(8^2 + 14^2) = (8i + 14j)/sqrt(260), which is option B exactly.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Dot Product and Angle",
+    "difficulty": "MODERATE",
+    "notes": "Option A (64i + 112j)/130 points along the same bisector but is NOT a unit vector: its magnitude is 8*sqrt(65)/65 = 0.99228, so it fails the 'unit vector' requirement. It is the natural distractor if the printed key disagrees. Options C and D are not parallel to the bisector at all (D is a unit vector but in the wrong direction)."
+  },
+  {
+    "number": 90,
+    "answer": "A",
+    "working": "A general point of the line is (t, 1 + 2t, 2 + 3t); the vector from (1,6,3) to it is (t - 1, 2t - 5, 3t - 1). Setting its dot product with the direction (1,2,3) to zero gives 14t - 14 = 0, so t = 1 and the foot is (1, 3, 5).",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "The Straight Line in 3D",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 91,
+    "answer": "B",
+    "working": "Volume = |det[[1, L, 1], [0, 1, L], [L, 0, 1]]| = |L^3 - L + 1|. Setting d/dL (L^3 - L + 1) = 3L^2 - 1 = 0 gives L = +/- 1/sqrt(3), and the local minimum of the cubic is at L = 1/sqrt(3), where the volume is 1 - 2/(3*sqrt(3)) = 0.6151. Evaluating the four options directly: sqrt(3) -> 4.464, 1/sqrt(3) -> 0.615, 1 -> 1, 0 -> 1, so B is the smallest.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Cross Product and Triple Product",
+    "difficulty": "MODERATE",
+    "notes": "Strictly the infimum of |L^3 - L + 1| is 0, attained at the real root L = -1.32472, but there the three vectors are coplanar and no parallelepiped exists (degenerate); that value is not among the options either. Among the four printed options B is unambiguously the minimum."
+  },
+  {
+    "number": 92,
+    "answer": "B",
+    "working": "Coplanarity means det[[al,1,1],[1,be,1],[1,1,ga]] = 0, which expands to al*be*ga - al - be - ga + 2 = 0. That is exactly the condition under which 1/(1-al) + 1/(1-be) + 1/(1-ga) = 1 (clear denominators: the sum equals 1 iff the same cubic relation holds). Checked on four independent random coplanar triples, e.g. (3/2, 4/3, 5/6) and (3, 2/3, 5/3), each giving the sum exactly 1.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Cross Product and Triple Product",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 93,
+    "answer": "A",
+    "working": "The segment vector is (2-1, 5-0, 1-3) = (1, 5, -2). The unit vector along (6, 2, 3) is (6, 2, 3)/7 since |(6,2,3)| = 7. Projection = (1*6 + 5*2 + (-2)*3)/7 = (6 + 10 - 6)/7 = 10/7.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "Direction Cosines and Ratios",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 94,
+    "answer": "A",
+    "working": "Move from (1,-2,3) along direction (2,3,-6): the point is (1+2t, -2+3t, 3-6t). Substituting into x - y + z = 5 gives 6 - 7t = 5, so t = 1/7. The distance travelled is |t| * |(2,3,-6)| = (1/7)(7) = 1.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "The Plane",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 95,
+    "answer": "A",
+    "working": "Equal inclination to all three axes gives direction cosines (1/sqrt(3), 1/sqrt(3), 1/sqrt(3)), so r = |r| * (i + j + k)/sqrt(3) = 3*sqrt(3)*(i + j + k)/sqrt(3) = 3(i + j + k). Check: |3(i+j+k)| = 3*sqrt(3).",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Magnitude, Components, Projection, and Direction Cosines",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 96,
+    "answer": "C",
+    "working": "From a + b + c = 0, c = -(a + b), so |c|^2 = |a|^2 + |b|^2 + 2|a||b|cos(theta): 49 = 9 + 25 + 30 cos(theta), giving cos(theta) = 15/30 = 1/2 and theta = 60 degrees.",
+    "confidence": "high",
+    "chapter": "Vectors",
+    "subtopic": "Dot Product and Angle",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 97,
+    "answer": "A",
+    "working": "With A = arccos(x) and B = arccos(y/2), alpha = A - B gives cos(alpha) = x(y/2) + sqrt(1-x^2)sqrt(1-y^2/4). Isolating the radical and squaring yields x^2 - xy cos(alpha) + y^2/4 = sin^2(alpha); multiplying by 4 gives 4x^2 - 4xy cos(alpha) + y^2 = 4 sin^2(alpha). Tested at the awkward point x = 3/5, y = 8/5 (so y/2 = 4/5): the expression evaluates to 196/625 = 0.3136 and 4 sin^2(alpha) = 0.3136, while 2 sin^2 = 0.1568 and 4 cos^2 = 3.6864 both fail.",
+    "confidence": "high",
+    "chapter": "Inverse Trigonometry",
+    "subtopic": "Identities, Properties, and Sum-Difference Formulas",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 98,
+    "answer": "A",
+    "working": "Let theta = arccos(sqrt(5)/3), so cos(theta) = sqrt(5)/3 and sin(theta) = sqrt(1 - 5/9) = 2/3. Then tan(theta/2) = (1 - cos theta)/sin theta = (1 - sqrt(5)/3)/(2/3) = (3 - sqrt(5))/2. Numerically 0.381966, matching option A exactly (B = 2.618, C = 0.618, D = 1.618).",
+    "confidence": "high",
+    "chapter": "Inverse Trigonometry",
+    "subtopic": "Evaluation of Composite Inverse Trigonometric Expressions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 99,
+    "answer": "A",
+    "working": "Write arcsin(2x) = pi/3 - arcsin(x) and take sine: 2x = (sqrt(3)/2)sqrt(1-x^2) - x/2, so 5x = sqrt(3) sqrt(1-x^2) (which also forces x > 0). Squaring: 25x^2 = 3 - 3x^2, so 28x^2 = 3 and x = sqrt(3/28) = (1/2)sqrt(3/7). Verified: arcsin(0.327327) + arcsin(0.654654) = 1.047198 = pi/3.",
+    "confidence": "high",
+    "chapter": "Inverse Trigonometry",
+    "subtopic": "Solving Inverse Trigonometric Equations and Geometric Applications",
+    "difficulty": "MODERATE",
+    "notes": "Option C is the inadmissible-root distractor: x = sqrt(3)/2 makes 2x = sqrt(3) > 1, outside the domain of arcsin. Options B and D give sums of 1.3759 and 0.4331, neither equal to pi/3."
+  },
+  {
+    "number": 100,
+    "answer": "B",
+    "working": "s = (13 + 14 + 15)/2 = 21; by Heron, area = sqrt(21*8*7*6) = sqrt(7056) = 84. Then r = area/s = 84/21 = 4.",
+    "confidence": "high",
+    "chapter": "Properties of Triangle",
+    "subtopic": "In-circle and Regular Polygon Geometry",
+    "difficulty": "EASY",
+    "notes": ""
+  }
+]
