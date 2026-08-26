@@ -577,6 +577,45 @@ different hand-waving). It also asserts **hash neutrality**: `contentHash` cover
 hash byte-identical — which is what makes this class safe to fix in bulk without
 stranding a single `question_reviews` verdict.
 
+**What the REPORTs turned out to be — adjudicated against the printed sources
+2026-08-26, and the result is the most useful part of the whole sweep.** All 14
+outstanding REPORTs were read against the source. They split exactly by corpus,
+and the two halves needed OPPOSITE treatment:
+
+- **10 practice rows — every key was already RIGHT.** 10/10 matched the
+  booklet's own printed answer key, so not one was a wrong answer. Eight were
+  OUR transcription corrupting the stem or options; two are BOOK defects where
+  our text is byte-faithful and the printed page is itself wrong.
+- **4 PYQ rows — every key was WRONG.** All four stems byte-faithful to the
+  scanned UPSC booklets, so the answer was the issue, not the text.
+
+**The rule that falls out: WHICH corpus a REPORT comes from predicts what is
+broken.** A practice row comes from a vision-transcribed booklet that ships its
+own printed key, so the key is the trustworthy half and the text is the suspect
+half. A PYQ row comes from a clean scanned paper that ships **no key at all**
+(the tail pages are "SPACE FOR ROUGH WORK") — so the text is the trustworthy
+half and the *answer* is a derivation someone made later. Check the half that
+can be wrong.
+
+**Corollary for PYQs, and it is why the Excel must never be cited as a source:**
+where a stored PYQ answer traces to a prep-house spreadsheet rather than a
+published key, it is a derivation with no more standing than a fresh one — and
+in this batch a demonstrably worse one, since the spreadsheet's own `Solution`
+column contained a literal `?` placeholder mid-derivation on one row and ended
+"REVIEW: official answer is 0; ... check problem statement" on another. Correcting
+such a key is not overriding the examiner. Preserve-the-paper's-defect applies
+only when there IS an issued key to preserve.
+
+**Reconstructions are hypotheses — measured 3 wrong out of 4.** Where a rewriter
+proposed what the "intended" stem must have been, the printed page contradicted
+it three times out of the four it guessed. Never apply a REPORT on a derivation.
+
+**A key move does not re-grade.** `mock_attempts` stores a frozen score, so
+correcting a key leaves the review screen showing a student's answer as correct
+while the result screen still calls it wrong. Run
+`scripts/reviews/regrade-attempt.ts <mockSlug>` after any key change; it reuses
+the app's own `gradeMock` and refuses to lower a score without `--allow-lower`.
+
 ---
 
 ## 6. Build procedure (paper builder)

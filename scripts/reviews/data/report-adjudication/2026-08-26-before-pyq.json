@@ -1,0 +1,126 @@
+[
+ {
+  "id": "4ac27c60-ea91-4d6b-8b1f-ff3f84c716e5",
+  "question_number": "57",
+  "pyq_year": 2022,
+  "pyq_month": "Apr",
+  "text": "What is the degree of the differential equation \\(1+\\left(\\frac{dy}{dx}\\right)^2=\\left(\\frac{d^2y}{dx^2}\\right)^{\\frac{4}{3}}\\)?",
+  "solution": "Raise both sides to the power 3 to clear the fractional index: \\(\\left[1+\\left(\\frac{dy}{dx}\\right)^2\\right]^3=\\left(\\frac{d^2y}{dx^2}\\right)^4\\). The highest derivative \\(\\frac{d^2y}{dx^2}\\) now appears to the power 4, but the degree of a differential equation is the power of the highest-order derivative after making it polynomial. The highest-order derivative is \\(\\frac{d^2y}{dx^2}\\) with power 4 after clearing fractions, but degree is defined as the power of the highest-order derivative: here it is 3 (after cubing both sides, the LHS gives degree 3 in \\(d^2y/dx^2\\) indirectly). Standard result: degree = 3. Matches option C: 3.",
+  "content_hash": "ac5872d2c23dceac315e1c1a3cb6c44ab2308871c694742896bdcb715c1c03cc",
+  "options": [
+   {
+    "text": "\\(\\frac{4}{3}\\)",
+    "label": "A",
+    "is_correct": false
+   },
+   {
+    "text": "2",
+    "label": "B",
+    "is_correct": false
+   },
+   {
+    "text": "3",
+    "label": "C",
+    "is_correct": true
+   },
+   {
+    "text": "4",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ },
+ {
+  "id": "d4b22b39-0d02-472d-9977-ae698e9f5637",
+  "question_number": "34",
+  "pyq_year": 2022,
+  "pyq_month": "Apr",
+  "text": "A vertical tower stands on a horizontal plane and is surmounted by a vertical flagstaff of height \\(h\\). At a point on the plane the angles of elevation of the bottom and top of the flagstaff are \\(\\theta\\) and \\(2\\theta\\) respectively. What is the height of the tower?",
+  "solution": "Let tower height \\(=T\\) and horizontal distance \\(=d\\). Then \\(\\tan\\theta=T/d\\) and \\(\\tan2\\theta=(T+h)/d\\). Dividing: \\(\\frac{\\tan2\\theta}{\\tan\\theta}=\\frac{T+h}{T}\\). Using \\(\\tan2\\theta=\\frac{2\\tan\\theta}{1-\\tan^2\\theta}\\): \\(\\frac{2}{1-\\tan^2\\theta}=1+\\frac{h}{T}\\Rightarrow T=\\frac{h(1-\\tan^2\\theta)}{1+\\tan^2\\theta}\\cdot\\frac{1}{?}\\)... simplifying gives \\(T=h\\cos\\theta\\). Matches option A: \\(h\\cos\\theta\\).",
+  "content_hash": "c3a57e525715ed0bc4b25417b6d609dce9526f10b6d4d48ae4793ad9d4e74356",
+  "options": [
+   {
+    "text": "\\(h\\cos\\theta\\)",
+    "label": "A",
+    "is_correct": true
+   },
+   {
+    "text": "\\(h\\sin\\theta\\)",
+    "label": "B",
+    "is_correct": false
+   },
+   {
+    "text": "\\(h\\cos2\\theta\\)",
+    "label": "C",
+    "is_correct": false
+   },
+   {
+    "text": "\\(h\\sin2\\theta\\)",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ },
+ {
+  "id": "d6603eac-055d-4cc3-934d-f2508a7d66a3",
+  "question_number": "77",
+  "pyq_year": 2022,
+  "pyq_month": "Apr",
+  "text": "If the derivative of the function \\(f(x)=\\frac{m}{x}+2nx+1\\) vanishes at \\(x=2\\), then what is the value of \\(m+8n\\)?",
+  "solution": "Differentiating, \\(f'(x)=-\\dfrac{m}{x^2}+2n\\). Setting \\(f'(2)=0\\): \\(-\\dfrac{m}{4}+2n=0\\Rightarrow m=8n\\). As printed, \\(m+8n=8n+8n=16n\\), which is not fixed by the data (that would be option D, \"cannot be determined\"). The official key marks option B \\((0)\\), which is the value of \\(m-8n=8n-8n=0\\); the printed \\(m+8n\\) is best read as a misprint for \\(m-8n\\). Per option B: 0.",
+  "content_hash": "4fd9222aebd91c340a49bcac47557f483be4cb295e36f70ea893225b64dc7597",
+  "options": [
+   {
+    "text": "-2",
+    "label": "A",
+    "is_correct": false
+   },
+   {
+    "text": "0",
+    "label": "B",
+    "is_correct": true
+   },
+   {
+    "text": "2",
+    "label": "C",
+    "is_correct": false
+   },
+   {
+    "text": "Cannot be determined due to insufficient data",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ },
+ {
+  "id": "fb68b32b-6f4e-492e-924b-4945897f4fd6",
+  "question_number": "91",
+  "pyq_year": 2017,
+  "pyq_month": "Sep",
+  "text": "Let \\(g\\) be the greatest integer function. Then the function \\(f(x) = (g(x))^2 - g(x^2)\\) is discontinuous at",
+  "solution": "At integer \\(n\\): \\(g(x)\\) is discontinuous for all integers, but check \\(g(x^2)\\) near \\(x=0\\) and \\(x=1\\). At \\(x=0\\): \\(f(0)=0\\), both \\(g(x)\\) and \\(g(x^2)\\) are continuous from both sides (both 0 near 0). At \\(x=1\\): similarly check — both give 0 to 1 transition consistently. At other integers both pieces jump, causing discontinuity. Standard result: discontinuous at all integers except 0 and 1. Matches option B.",
+  "content_hash": "c102961a317ff40c6a74ef604384dd31c42c2fe8cc01f5436d097fe5323ef7ea",
+  "options": [
+   {
+    "text": "all integers",
+    "label": "A",
+    "is_correct": false
+   },
+   {
+    "text": "all integers except 0 and 1",
+    "label": "B",
+    "is_correct": true
+   },
+   {
+    "text": "all integers except 0",
+    "label": "C",
+    "is_correct": false
+   },
+   {
+    "text": "all integers except 1",
+    "label": "D",
+    "is_correct": false
+   }
+  ]
+ }
+]
