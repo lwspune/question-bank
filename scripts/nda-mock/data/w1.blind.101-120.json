@@ -1,0 +1,202 @@
+[
+  {
+    "number": 101,
+    "answer": "A",
+    "working": "Apollonius: m_a^2 = (2b^2 + 2c^2 - a^2)/4 and cyclically, so the three medians sum to m_a^2+m_b^2+m_c^2 = (3/4)(a^2+b^2+c^2). Multiplying by 4 gives 3(a^2+b^2+c^2). Verified symbolically.",
+    "confidence": "high",
+    "chapter": "Properties of Triangle",
+    "subtopic": "Sine and Cosine Rules — Solving Triangles",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 102,
+    "answer": "A",
+    "working": "Let h be the standing stump and L the broken part, hinged at the break and reaching the ground 8 m from the foot at 30 deg. cos30 = 8/L gives L = 16/sqrt(3); tan30 = h/8 gives h = 8/sqrt(3). Total height = h + L = 24/sqrt(3) = 8*sqrt(3) m (= 13.856).",
+    "confidence": "high",
+    "chapter": "Height & Distance",
+    "subtopic": "Shadows, Leaning Structures, and Special Geometry",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 103,
+    "answer": "A",
+    "working": "With the tower at the centre O, OA = OB = r and angle AOB = 60 deg, so triangle OAB is equilateral and r = AB = a. From A the elevation is 30 deg, so tan30 = h/r gives h = a*tan30 = a/sqrt(3).",
+    "confidence": "high",
+    "chapter": "Height & Distance",
+    "subtopic": "Heights and Distances from Angles of Elevation",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 104,
+    "answer": "A",
+    "working": "y^2 = x gives 2y y' = 1 so y' = 1/2 at (1,1); x^2 = y gives y' = 2x = 2 at (1,1). tan(theta) = |(2 - 1/2)/(1 + 2*(1/2))| = (3/2)/2 = 3/4, so the angle is arctan(3/4).",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Tangents and Slopes",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 105,
+    "answer": "A",
+    "working": "V = (4/3)pi r^3 so dV/dt = 4 pi r^2 dr/dt. At r = 15: 900 = 4 pi (225) dr/dt = 900 pi dr/dt, hence dr/dt = 1/pi cm/s.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Tangents and Slopes",
+    "difficulty": "EASY",
+    "notes": "Classification remark only, not a defect: the live Application of Derivatives list has no rate-of-change / related-rates subtopic, so this question is filed under the nearest available one. The derived answer is unaffected."
+  },
+  {
+    "number": 106,
+    "answer": "A",
+    "working": "AM-GM on the two positive terms: 2x + 3y >= 2*sqrt(2x*3y) = 2*sqrt(6xy) = 2*sqrt(36) = 12, equality when 2x = 3y = 6, i.e. x = 3, y = 2, which does satisfy xy = 6. Substituting y = 6/x and differentiating 2x + 18/x gives the same critical point x = 3 with value 12.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Optimisation — Geometric, Trigonometric, AM-GM",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 107,
+    "answer": "D",
+    "working": "f'(x) = 3k x^2 - 18x + 9 must be non-negative for every real x, which requires k > 0 and discriminant 324 - 108k <= 0, i.e. k >= 3. At the boundary k = 3, f'(x) = 9(x-1)^2 >= 0 and vanishes only at the isolated point x = 1, so f is still increasing there and k = 3 is admissible. Hence k >= 3.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 108,
+    "answer": "C",
+    "working": "f'(x) = 2x - 250/x^2 = 0 gives x^3 = 125, x = 5; f''(x) = 2 + 500/x^3 > 0 there, so it is a minimum, and f(5) = 25 + 50 = 75. AM-GM agrees: x^2 + 125/x + 125/x >= 3*(125*125)^(1/3) = 75.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Optimisation — Geometric, Trigonometric, AM-GM",
+    "difficulty": "EASY",
+    "notes": "Packet formatting defect, describing not repairing: the shared-context paragraph belonging to Q109/Q110 has been glued onto the end of option (D), which prints as '100 Consider a sphere S given by the equation x^2+y^2+z^2-2x+4y-6z-11=0. A plane P passes through the point (1,-2,3) ...'. Option (D)'s own value is 100. All four option values are intact and the answer is unaffected."
+  },
+  {
+    "number": 109,
+    "answer": "B",
+    "working": "S: centre (1,-2,3), radius sqrt(1+4+9+11) = 5. The plane through (1,-2,3) with normal along OC = (1,-2,3) is x - 2y + 3z - 14 = 0. The distance from the centre to it is |1 + 4 + 9 - 14|/sqrt(14) = 0, so the plane passes through the centre and the section is a great circle of radius 5.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "Sphere",
+    "difficulty": "MODERATE",
+    "notes": "Observation, carried forward to Q110: the point (1,-2,3) the plane is required to pass through IS the centre of S, so the configuration is degenerate. That does not stop Q109 (5 is offered as option B) but it is what makes Q110 unanswerable as printed."
+  },
+  {
+    "number": 110,
+    "answer": null,
+    "working": "Because the plane passes through the centre of S (distance 0, see Q109), the section circle already has centre (1,-2,3) and radius 5, so the sphere having it as a great circle is S itself: x^2+y^2+z^2-2x+4y-6z-11 = 0. The family S + lambda*P = 0 confirms this: forcing the family centre ((2-lambda)/2, lambda-2, (6-3lambda)/2) to lie on x-2y+3z-14=0 gives -14*lambda = 0, i.e. lambda = 0. Every printed option is concentric with S but with constant term +11, -14, +9, +5, giving radii sqrt(3), 2*sqrt(7), sqrt(5) and 3 respectively. None equals 5, so no option is correct.",
+    "confidence": "high",
+    "chapter": "3D Geometry",
+    "subtopic": "Sphere",
+    "difficulty": "MODERATE",
+    "notes": "No option matches the derived answer. The correct sphere is S itself, constant term -11; the four options carry +11, -14, +9 and +5. Answered null rather than picking the nearest. Root cause is the degenerate stem noted on Q109 (the given point is the sphere's own centre), which collapses the intended two-step construction: whatever plane not through the centre was intended, all four options are concentric with S, and a sphere concentric with S can only take the S-P section as a great circle if its radius is exactly 5."
+  },
+  {
+    "number": 111,
+    "answer": "A",
+    "working": "g'(5) = 1/f'(a) where f(a) = 5. a^3 + a - 5 = 5 gives a^3 + a - 10 = 0, whose only real root is a = 2 (8 + 2 - 10 = 0). f'(x) = 3x^2 + 1 so f'(2) = 13, hence g'(5) = 1/13.",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 112,
+    "answer": "B",
+    "working": "Putting x = y = 0 gives f(0) = f(0)^2, and f is not identically zero since f(5) = 2, so f(0) = 1. Then f'(x) = lim_h (f(x)f(h) - f(x))/h = f(x) * lim_h (f(h) - f(0))/h = f(x) f'(0) = 3 f(x). Therefore f'(5) = 3 f(5) = 3*2 = 6.",
+    "confidence": "high",
+    "chapter": "Functions",
+    "subtopic": "Functional Equations",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 113,
+    "answer": "A",
+    "working": "Differentiating y^2 = ax^2+bx+c gives 2y y' = 2ax + b; differentiating again gives y'^2 + y y'' = a. Hence y^3 y'' = y^2 (a - y'^2) = a(ax^2+bx+c) - (2ax+b)^2/4 = ac - b^2/4, a constant independent of both x and y. Verified symbolically (difference from (4ac-b^2)/4 is identically 0) and at three awkward numeric points.",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Implicit, and Higher-Order Derivatives",
+    "difficulty": "HARD",
+    "notes": ""
+  },
+  {
+    "number": 114,
+    "answer": "A",
+    "working": "dy/dx = e^(-y)(e^x + x^2) separates: e^y dy = (e^x + x^2) dx, so e^y = e^x + x^3/3 + C. sympy dsolve returns y = log(C1 + x^3/3 + exp(x)), which is the same relation.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Solving and Verifying ODEs — Separable, IVP, and Applications",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 115,
+    "answer": "A",
+    "working": "Non-vertical lines through the origin form the one-parameter family y = mx. Differentiating gives y' = m, and eliminating the parameter with m = y/x gives dy/dx = y/x. Option D (d2y/dx2 = 0) is the two-parameter family of ALL lines y = mx + c, which does not force passage through the origin.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Formation of ODE from Curves and General Solutions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 116,
+    "answer": "A",
+    "working": "The highest derivative present is y'', so the order is 2. Raising both sides of sqrt(y'') = (y'+3)^(1/3) to the 6th power clears both radicals: (y'')^3 = (y'+3)^2. The power of the highest-order derivative is then 3, so the degree is 3. Order 2, degree 3.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, and Solutions of ODE",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 117,
+    "answer": "C",
+    "working": "Taken as printed, the integral of (dy/dx) dx is y, so the equation reads y = x*(dy/dx) + 2/y. Clearing the fraction gives y^2 = x*y*(dy/dx) + 2, i.e. x*y*y' - y^2 + 2 = 0. The highest derivative is the first, appearing to the first power, so the order is 1 and the degree is 1.",
+    "confidence": "medium",
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, and Solutions of ODE",
+    "difficulty": "MODERATE",
+    "notes": "Ambiguous printed stem, described not repaired. The denominator prints as an integral, Integral((dy/dx) dx), which evaluates to y (strictly y + const), giving order 1 degree 1 = option C, which is what I answered. The classical Clairaut-form version of this question has 2/(dy/dx) in the denominator, which yields x*y'^2 - y*y' + 2 = 0, order 1 degree 2 = option A. If the printed integral sign is an extraction artefact for a plain dy/dx, the intended answer is A. Confidence is medium for this reason only; the derivation from the text as printed is solid."
+  },
+  {
+    "number": 118,
+    "answer": "C",
+    "working": "Partial fractions: 1/((x+1)(x+2)) = 1/(x+1) - 1/(x+2), so the integral is log|x+1| - log|x+2| + C. Hence A = 1, B = -1 and A + B = 0. (More generally A and B must sum to 0 for any 1/((x+p)(x+q)) of this shape.)",
+    "confidence": "high",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Partial Fractions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 119,
+    "answer": "A",
+    "working": "Pull x^4 out of the bracket: (x^4+1)^(3/4) = x^3 (1 + x^-4)^(3/4), so the integrand is x^-5 (1 + x^-4)^(-3/4). Substituting u = 1 + x^-4, du = -4 x^-5 dx, gives -(1/4)*Integral u^(-3/4) du = -u^(1/4) = -(1 + x^-4)^(1/4) = -(x^4+1)^(1/4)/x. Checked the other way too: differentiating option A returns the integrand exactly (symbolic difference 0), while B, C and D all leave a non-zero residual.",
+    "confidence": "high",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Substitution — Algebraic, Trigonometric, and Composite Forms",
+    "difficulty": "HARD",
+    "notes": ""
+  },
+  {
+    "number": 120,
+    "answer": "A",
+    "working": "With cos t = 1 - t^2/2 + O(t^4), the product cos x cos2x cos3x = 1 - (1/2 + 2 + 9/2) x^2 + O(x^4) = 1 - 7x^2 + O(x^4), so (1 - product)/x^2 -> 7. Confirmed by sympy limit = 7 and numerically (6.99998367 at x = 0.001, 6.99999984 at x = 0.0001).",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "MODERATE",
+    "notes": ""
+  }
+]
