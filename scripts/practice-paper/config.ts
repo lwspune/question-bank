@@ -93,6 +93,169 @@ export type PaperSpec = {
 };
 
 export const PAPERS: Record<string, PaperSpec> = {
+  // Oswaal "NDA/NA: 10 Mock Test Papers" - GAT Mock Test 10. A 150-q publisher-authored
+  // GAT mock (English Q1-50 + General Knowledge Q51-150), so it files as PRACTICE, not PYQ.
+  // Multi-subject: 8 of the 9 NDA GAT subjects, per-record `subject` + `chapter`.
+  //
+  // SOURCE QUALITY. Born-digital with a clean text layer, a complete printed 150-entry
+  // ANSWER KEY and complete printed worked solutions - so no vision pass was needed and
+  // every answer has two printed sources. That matters, because the key is the WEAKER of
+  // the two: across this series, wherever key and solution named different letters,
+  // adjudication sided with the SOLUTION 7 times out of 7.
+  //
+  // KEY DISPUTES (12 rows held `flawed`, printed key PRESERVED in every case, derivation in
+  // reviewNote). Q133 is the only one an automated key-vs-solution LETTER diff could see:
+  // the key prints (b) but H = I^2*Rt gives (c) 32,400 J, and (b) is tied for LAST with (d),
+  // so it is a transposition. The rest are STEALTH - the solution states the key's letter
+  // while its own words prove another: Q70 lists K2 = 8,611 m above Kanchenjunga = 8,586 m
+  // then concludes the option that reverses them; Q94's explanation says both statements are
+  // correct while keying "1 only"; Q118 argues mass-is-constant, which is the case for a
+  // hydrometer reading the SAME on a mountain, then keys "less"; Q128 keys "more than one
+  // angle" where Brewster's tan i = n has exactly one root (brute-forced at four refractive
+  // indices); Q145 keys the bryologist N.S. Parihar over J.C. Bose - and the SAME question is
+  // keyed the same wrong way in Oswaal's Year-wise Solved Papers, so it is one error reprinted.
+  //
+  // BOOK DEFECTS preserved as printed: Q31's option set is a corrupted copy of Q32's (the
+  // blank needs an adjective, all four options are nouns, and its own solution argues Q32's
+  // case) - "curtained" is almost certainly a typo for "sustained"; Q100's option (d) is
+  // truncated ON THE PAGE ("...a geographical treatise on") - it carries no terminating full
+  // stop where (a)-(c) all do, so the words were never printed; Q122 asks for "final velocity
+  // at maximum height", which its own solution says is zero, then keys u^2/2g - a LENGTH.
+  //
+  // AUTHORED REPAIRS the text layer cannot produce, all in data/*.records.json: Q121 and Q122
+  // are the only two questions with stacked fractions, and a vinculum is a VECTOR LINE, not a
+  // character - Q121's four options all collapsed to a bare "g". Q124's solution is authored
+  // because the book prints "Explanation:" and nothing after it.
+  //
+  // Dedup: 10 dup (semantic, vs the live NDA bank) + 12 flawed stay PRIVATE; 128 new are
+  // PUBLIC-eligible. Q111-117 is a 7-question block the mock reprints from an existing NDA
+  // PYQ run already in the bank.
+  //
+  // Verified before commit: option ORDER correct on all 150 (checked three ways, incl.
+  // transcribing the printed answer-key grid and diffing it 150/150); the 4-option invariant
+  // holds on the page for all 150; zero raster images in the PDF, which BOUNDS the
+  // fraction-loss to Q121/Q122. See scripts/practice-paper/GAT_RULES.md.
+  "oswaal-gat-mock-10": {
+    slug: "oswaal-gat-mock-10",
+    title: "NDA GAT - Oswaal Mock Test 10 (150 Q)",
+    recordsFile: "oswaal-gat-mock-10.records.json",
+    outName: "Tags_NDA_Oswaal_GAT_Mock_10",
+    sourceFile: "Oswaal_NDA_GAT_Mock_Test_10.pdf",
+    subjects: {
+      "Biology": {
+        "Biodiversity and Classification": ["Animal Kingdom Classification", "Kingdom Fungi"],
+        "Cell Biology": ["Cell Organelles and Functions", "Cell Structure Fundamentals"],
+        "Ecology and Environment": ["Ecosystems, Biomes and Ecological Interactions"],
+        "Human Physiology": ["Nervous System and Sense Organs"],
+        "Microbiology and Disease": ["Pathogens and Diseases"],
+        "Plant Biology": ["Plant Tissues and Meristems", "Transpiration, Tropisms and Plant Processes"],
+      },
+      "Chemistry": {
+        "Atomic Structure and Periodic Classification": ["Atomic Number, Mass Number and Subatomic Particles"],
+        "Carbon and Its Compounds": ["Allotropes of Carbon"],
+        "Chemical Reactions": [
+          "Redox: Oxidation, Reduction and Reducing Agents",
+          "Specific Reactions: Precipitation, Electrolysis and Daily Life",
+          "Types of Reactions: Combination, Decomposition, Displacement",
+        ],
+        "Chemistry in Everyday Life": ["Common Chemicals and Their Uses"],
+        "Matter and Its States": ["Separation Techniques"],
+      },
+      "Current Affairs": {
+        "Environment, Ecology and Energy": ["Wildlife Conservation and Species"],
+        "Government Schemes, Policy and Governance": [
+          "Government Events, Reports and Announcements",
+          "Health, Education and Welfare Schemes",
+        ],
+        "National Events, Persons and India General Knowledge": [
+          "Indian Economy, Geography and Resources",
+          "National Institutions, Milestones and History",
+        ],
+        "Science and Technology": [
+          "Health Technology, Science Awards and Anniversaries",
+          "Information Technology and Railway Safety",
+          "Space Technology and Astronomy",
+        ],
+      },
+      "English": {
+        "Cloze Test": ["Word Selection in Passage"],
+        "Fill in the Blanks": [
+          "Contextual Fill-in-Blank",
+          "Contextual Word Selection (Phrasal Verbs and Collocations)",
+        ],
+        "Grammar": ["Parts of Speech"],
+        "Idioms and Phrases": ["Idiom Meaning"],
+        "Sentence Rearrangement": ["Sentence Part Rearrangement (PQRS)"],
+        "Spotting Errors": [
+          "Articles, Determiners and Pronouns",
+          "Sentence Improvement",
+          "Tense and Verb Form",
+          "Word Choice, Prepositions and Punctuation",
+        ],
+        "Vocabulary": ["Antonyms", "Confusable Word Pairs", "Synonyms"],
+      },
+      "Geography": {
+        "Earth's Structure, Landforms and Geological Time": [
+          "Earth's Interior, Crust and Plate Tectonics",
+          "Landforms and Mass Movements",
+        ],
+        "Indian Geography — Economy, Resources and Transport": ["Ports and Maritime Infrastructure"],
+        "Indian Geography — Physical Features": [
+          "Indian Rivers, Lakes and Water Bodies",
+          "Indian States and Islands",
+          "Location, Extent and Frontiers of India",
+          "Mountains, Plateaus and Plains of India",
+        ],
+      },
+      "History": {
+        "Ancient India": [
+          "Post-Mauryan, Gupta and Sangam Period",
+          "Society, Trade and Foreign Connections",
+          "Vedic Age, Society and Literature",
+        ],
+        "Medieval India": ["Other Medieval Kingdoms (Chola, Rajput, Ahom, Sikh)"],
+        "Modern India": [
+          "19th Century Social and Religious Reform",
+          "British Administration, Acts and Legislation",
+          "European Trading and Early British Conquest",
+          "Freedom Movement — INC, Gandhi and Independence",
+        ],
+      },
+      "Physics": {
+        "Electricity and Magnetism": [
+          "Electric Current and Ohm's Law",
+          "Electrical Devices",
+          "Electrical Power, Energy and Heating",
+        ],
+        "Fluid Mechanics and Properties of Matter": [
+          "Buoyancy, Density and Flotation",
+          "Pressure and Surface Tension",
+        ],
+        "Heat and Thermodynamics": ["Heat, Calorimetry and Specific Heat", "Temperature and Thermometry"],
+        "Kinematics and Motion": ["Projectile and Vertical Motion"],
+        "Laws of Motion and Forces": ["Impulse and Momentum", "Newton's Laws of Motion"],
+        "Light and Optics": ["Reflection and Mirrors", "Refraction, Speed of Light and TIR"],
+        "Modern Physics": ["Quantum and Modern EM"],
+        "Oscillations and Waves": ["Simple Pendulum"],
+        "Sound": ["Wave Equation, Speed, and Frequency Bands"],
+      },
+      "Polity": {
+        "Fundamental Rights, DPSP and Local Governance": ["Electoral Systems", "Fundamental Rights, DPSP and Duties"],
+        "Government Structure — Parliament, Judiciary and Constitutional Bodies": [
+          "Constitutional Bodies and Offices",
+          "Judiciary — Supreme Court and High Courts",
+          "Parliament — Composition, Procedures and Powers",
+        ],
+        "Indian Constitution — Making, Foundation and Amendments": ["Federal Structure — States, UTs and Finance"],
+      },
+    },
+    pyqNote: "NDA GAT practice - Oswaal 10 Mock Test Papers, Mock Test 10",
+    examName: "NDA",
+    section: { key: "oswaal-gat-mock-10", label: "GAT Mock Test 10" },
+    bankAdd: true,
+    createPaper: false, // bank rows only - no /dashboard/papers paper, no OMR Excel requested
+  },
+
   // Oswaal "NDA/NA Mathematics - Sample Question Paper 1" (book pp.306-314) - a 120-q
   // publisher-authored MOCK (not a UPSC PYQ), so it files as practice. Spans 30 of the
   // 31 NDA Maths chapters, hence multi-chapter mode with a per-record `chapter`.
