@@ -1525,6 +1525,12 @@ PAPERS.w2 = {
       reason:
         "the distribution is printed as an image (media/image3.png), leaving all THREE questions of this set (110-112) with no data. Transcribed verbatim. The transcription is corroborated by the paper's own keys: the listed frequencies sum to 195, so x = 229 - 195 = 34, and that x reproduces the printed key for Q111 (median 45.9 = 46) and Q112 (mean 10495/229 = 45.8)",
     },
+    86: {
+      context:
+        "Consider the functions \\(u = e^{x}\\sin x\\) and \\(v = e^{x}\\cos x\\), then",
+      reason:
+        "the shared context for Q86-87 prints \\(v = e^{x}\\cos^{x}\\) — a cosine with no argument, raised to the power x, which is malformed and leaves both questions unanswerable as written. Read as e^x cos x, which the option sets corroborate rather than merely permit: it makes Q86 exactly u^2 + v^2 (its key C, since v*u' - u*v' = e^(2x)) and Q87 exactly 2v (its key B). Both printed keys stand",
+    },
     107: {
       stem:
         "If a variable takes discrete values \\(x + 4,x - \\frac{7}{2},x - \\frac{5}{2},x - 3,x - 2,x + \\frac{1}{2},x + 5(x > 0),\\) then the median is",
@@ -1771,6 +1777,19 @@ PAPERS.w4 = {
         "For the next two questions, consider the sphere \\(4\\left( x^{2} + y^{2} + z^{2} \\right) - 16x + 20y - 32z + 5 = 0\\).",
       reason:
         "the stem is the bare phrase 'Find the centre' — the object lives in Q15, which the swallowed 'For next two question' header was introducing, so as extracted this question names nothing to find the centre OF. The sphere is restored as shared context from Q15's own stem. Note the key (d) is correct and is NOT changed: dividing by 4 gives centre (2, -5/2, 4) and radius 5 (which is also Q15's printed key), and option (b) prints (2, 5/2, 4) — right in two coordinates, wrong in the SIGN of y — so no option matches and 'none' is right. Option (d) is printed as the bare word 'Not' in the source and is left as printed: nothing in the paper documents the intended wording, and expanding it would be invention",
+    },
+    61: {
+      answer: "B",
+      reason:
+        "PRINTED KEY D ('None of the above') IS WRONG; the minimum is 0 = option B. x^2 - 3x + 1 has discriminant 5 > 0, so it vanishes at (3 +/- sqrt5)/2, and an absolute value cannot go below 0 — so 0 is attained and is the minimum. The solution differentiates as though the modulus were not there (dy/dx = 2x - 3 = 0 at x = 3/2), which is the one point where the quadratic is most negative: y = |-5/4| = 5/4 is a local MAXIMUM of the modulus, not its minimum. 5/4 is not an option, which is how the solution talked itself into 'None of the above'",
+    },
+    65: {
+      stem:
+        "I. \\(\\int_{}^{}\\ \\frac{d\\left( x^{2} + 1 \\right)}{\\sqrt{x^{2} + 2}}\\) is equal to \\(2\\sqrt{x^{2} + 2} + C\\)\n" +
+        "II. \\(\\int_{}^{}\\ \\frac{x^{\\alpha/2}}{\\sqrt{1 + x^{11}}}dx\\) is \\(\\frac{2}{11}ln\\left| x + \\sqrt{1 + x^{11}} \\right| + C\\)\n\n" +
+        "Which of the following is/are correct?",
+      reason:
+        "Statement I's denominator lost its radical: it prints (x^2 + 2) where the paper's own solution writes 'I = integral dt/sqrt(1+y) where x^2+1 = t, = 2*sqrt(1+t) + C = 2*sqrt(x^2+2) + C. Thus, Statement I is true.' As printed the statement is FALSE (the integral of d(x^2+1)/(x^2+2) is ln(x^2+2) + C — at x = 0.7 the claimed antiderivative differentiates to 0.887 against an integrand of 0.562), which would make the answer 'None of these' rather than the printed key C. Restoring the radical the solution documents makes I true and key C ('Only I') correct. Statement II is left AS PRINTED and is genuinely false: its right-hand side needs ln|x^(11/2) + sqrt(1+x^11)|, which is exactly what the solution derives, so the printed 'x' is the source's error and II is correctly excluded either way",
     },
     53: {
       answer: "C",
