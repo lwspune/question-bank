@@ -153,6 +153,19 @@ export type Paper = {
   /** Questions the source failed to number — see ExtraQuestion. */
   extraQuestions?: ExtraQuestion[];
   /**
+   * A shared-context block the source prints with NO recognisable header, so
+   * `detectDirectionSets` cannot find it and its questions arrive with no
+   * context at all — unanswerable, and silently so.
+   *
+   * w1 prints three: one under a bare `**Passage:**` (the word is supported but
+   * the pattern also requires a Q-range, which is absent), and two under plain
+   * lead-in prose ("Consider the function f(x) defined as:", "Consider a sphere
+   * S given by..."). Declared per-paper rather than by loosening the header
+   * pattern: a rule that fires on any paragraph beginning "Consider" would
+   * swallow ordinary stems across all fourteen papers.
+   */
+  contextSets?: { from: number; to: number; context: string }[];
+  /**
    * VISION LANE. `tag -> pdf path`, rendered to page PNGs by
    * `render-vision.ts` and transcribed by eye instead of by pandoc.
    *
@@ -1400,6 +1413,37 @@ PAPERS.w1 = {
         "PRINTED KEY D IS WRONG; the period is 1. The solution's entire argument is a non-sequitur — it says '[x] is not a periodic function, therefore f(x) is non-periodic', reasoning about [x] in ISOLATION when the stem combines it as -x + [x], which is exactly the fractional part -{x} and IS periodic with period 1. Since tan(pi*x) also has period 1, f(x+1) = f(x) identically; verified to 1e-14 at seven awkward points (0.13, 0.37, 0.61, 1.29, -0.71, 2.44, 3.87), and 1/4, 1/3, 1/2 and 3/4 were each tested and rejected, so 1 is the FUNDAMENTAL period and option A is right",
     },
   },
+  // Three shared-context blocks this paper prints with no usable header, so
+  // detectDirectionSets found only one set (22-23) out of four and eight
+  // questions arrived with nothing to answer FROM. Transcribed verbatim.
+  contextSets: [
+    {
+      from: 51,
+      to: 53,
+      context:
+        "Let \\(f(x)\\) and \\(g(x)\\) be two functions defined as: " +
+        "\\(f(x) = \\lim_{n \\rightarrow \\infty}\\frac{x^{2n} - 1}{x^{2n} + 1}\\) and " +
+        "\\(g(x) = \\left( \\frac{1 + 5x^{2}}{1 + 3x^{2}} \\right)^{1/x^{2}}\\) for \\(x \\neq 0\\).",
+    },
+    {
+      from: 54,
+      to: 56,
+      context:
+        "Consider the function \\(f(x)\\) defined as \\(f(x) = \\left\\{ \\begin{matrix} " +
+        "\\frac{1 - \\cos(4x)}{x^{2}}, & x < 0 \\\\ a, & x = 0 \\\\ " +
+        "\\frac{\\sqrt{x}}{\\sqrt{16 + \\sqrt{x}} - 4}, & x > 0 \\end{matrix} \\right.\\) " +
+        "Let \\(g(x) = \\lbrack x\\rbrack\\) denote the greatest integer function.",
+    },
+    {
+      from: 109,
+      to: 110,
+      context:
+        "Consider a sphere \\(S\\) given by the equation " +
+        "\\(x^{2} + y^{2} + z^{2} - 2x + 4y - 6z - 11 = 0\\). A plane \\(P\\) passes through " +
+        "the point \\((1, -2, 3)\\) and is perpendicular to the line joining the origin to " +
+        "the centre of the sphere.",
+    },
+  ],
   // TWO WRONG PRINTED KEYS on this paper (Q10 here, Q16 in the errata above),
   // both surfaced by the blind pass and both proved from the paper's own
   // working rather than from the derivation that flagged them.
@@ -1415,6 +1459,16 @@ PAPERS.w1 = {
   // questions where both exist — so two sources agreeing is not evidence the
   // answer is right, only that one was typed from the other.
   resolutions: {
+    51: {
+      answer: "B",
+      reason:
+        "printed key B is CORRECT. This entry exists only because the blind derivation is STALE: it was made before the headerless Passage block was declared in contextSets above, so the agent saw a stem referring to an f(x) that was nowhere in its packet and rightly returned null. With the context restored, |x| < 1 makes x^(2n) -> 0 so f = (0-1)/(0+1) = -1 = option B; verified numerically at x = 0.3, 0.9 and -0.5, all converging to -1.000000000",
+    },
+    52: {
+      answer: "B",
+      reason:
+        "printed key B is CORRECT; same stale-blind situation as Q51. log g = (1/x^2)*log((1+5x^2)/(1+3x^2)) -> 5 - 3 = 2, so L = e^2 = option B. Verified: g(0.1) = 6.8424, g(0.01) = 7.38315, g(0.001) = 7.388997, converging on e^2 = 7.389056",
+    },
     10: {
       answer: "C",
       reason:

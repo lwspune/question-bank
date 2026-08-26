@@ -194,6 +194,17 @@ export function extractPaper(paper: Paper): {
   if (sets.length) {
     report.push(`shared-context sets: ${sets.map((s) => `${s.from}-${s.to}`).join(", ")}`);
   }
+  // Headerless shared-context blocks, declared in config because no pattern can
+  // find them (see Paper.contextSets). A detected set always wins, so this can
+  // only ever ADD context to a question that had none.
+  for (const cs of paper.contextSets ?? []) {
+    if (!sets.some((s) => cs.from >= s.from && cs.from <= s.to)) {
+      sets.push({ from: cs.from, to: cs.to, context: cs.context });
+      report.push(`  declared context set: ${cs.from}-${cs.to} (no header in source)`);
+    } else {
+      report.push(`  !! declared context set ${cs.from}-${cs.to} OVERLAPS a detected set — ignored`);
+    }
+  }
   const setFor = (n: number) => sets.find((s) => n >= s.from && n <= s.to);
 
   // A combined document (Mock 10) interleaves each question with its solution,

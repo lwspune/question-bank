@@ -1,0 +1,202 @@
+[
+  {
+    "number": 81,
+    "answer": "D",
+    "working": "Right of 3 the floor is 3 so the numerator is exactly 0 and the quotient is 0; left of 3 the floor is 2 so the numerator is -1 while the denominator tends to 0 from below, giving +infinity. Checked at x = 3 +/- 0.001: right 0, left 1000. The one-sided limits differ, so the limit does not exist.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "One-Sided Limits, Greatest Integer, and Absolute Value Limits",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 82,
+    "answer": "D",
+    "working": "tan2x = 2x + 8x^3/3 + ... and 2tanx = 2x + 2x^3/3 + ..., so tan2x - 2tanx ~ 2x^3 and its square ~ 4x^6; with x^2 the numerator ~ 4x^8. Also 1 - cos2x = 2sin^2 x ~ 2x^2, so the denominator ~ (2x^2)^4 = 16x^8. Ratio -> 4/16 = 1/4. Numerically f(0.0001) = 0.250000013.",
+    "confidence": "high",
+    "chapter": "Limits & Continuity",
+    "subtopic": "Limit Evaluation Techniques — L'Hôpital, Rationalization, Standard Forms",
+    "difficulty": "HARD",
+    "notes": ""
+  },
+  {
+    "number": 83,
+    "answer": "D",
+    "working": "Change of base: f = ln(ln x)/ln(x^2) = ln(L)/(2L) with L = ln x. Then f' = (1 - ln L)/(2 L^2 x). At x = e, L = 1 and ln L = 0, so f'(e) = 1/(2e) = (2e)^-1. Central difference at x = e gives 0.18393972, matching 1/(2e).",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 84,
+    "answer": "C",
+    "working": "The exponent is y plus the whole tower again, i.e. y + x, so x = e^(y+x). Taking logs, y = ln x - x, hence dy/dx = 1/x - 1 = (1-x)/x. Verified numerically at x = 2: derivative -0.5 = (1-2)/2.",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Implicit, and Higher-Order Derivatives",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 85,
+    "answer": "C",
+    "working": "f'(x) = 6(x-a)(x-2a) with a > 0, so the critical points are a and 2a; f''(a) = -6a < 0 (maximum at p = a) and f''(2a) = 6a > 0 (minimum at q = 2a). p^2 = q gives a^2 = 2a, and since a > 0, a = 2.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 86,
+    "answer": "C",
+    "working": "With u = e^x sinx and v = e^x cosx, du/dx = e^x(sinx+cosx) and dv/dx = e^x(cosx-sinx). Then v du/dx - u dv/dx = e^2x(sinx cosx + cos^2 x) - e^2x(sinx cosx - sin^2 x) = e^2x, and u^2 + v^2 = e^2x too. Checked at x = 0.7: both equal 4.0552 while v^2 = 2.372.",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Differentiation Techniques — Chain Rule, Logarithmic, Composite Functions",
+    "difficulty": "EASY",
+    "notes": "Shared-context stem is malformed as printed: it gives v = e^x cos^x, i.e. a cosine with no argument raised to the power x. Answered under the only sensible reading v = e^x cos x; no repair made to the stem."
+  },
+  {
+    "number": 87,
+    "answer": "B",
+    "working": "u = e^x sinx gives u' = e^x(sinx + cosx) and u'' = e^x(sinx+cosx) + e^x(cosx-sinx) = 2 e^x cosx = 2v. Second difference at x = 0.7 gives 3.08040605, equal to 2v there.",
+    "confidence": "high",
+    "chapter": "Differentiation",
+    "subtopic": "Parametric, Implicit, and Higher-Order Derivatives",
+    "difficulty": "EASY",
+    "notes": "Same malformed shared context as Q86 (v printed as e^x cos^x); read as v = e^x cos x."
+  },
+  {
+    "number": 88,
+    "answer": "B",
+    "working": "Parallel to y = 3x + 9 means slope 3, so dy/dx = 4x - 1 = 3 and x = 1; then y = 2(1) - 1 + 1 = 2, giving the point (1,2). Option (A) (2,1) is the same pair reversed and (C) (3,9) is not on the curve.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Tangents and Slopes",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 89,
+    "answer": "A",
+    "working": "dy/dx = 1/(1+x) - 4/(2+x)^2 = [(2+x)^2 - 4(1+x)] / [(1+x)(2+x)^2] = x^2 / [(1+x)(2+x)^2] (sympy confirms x^2/(x^3+5x^2+8x+4)). For x > -1 both factors of the denominator are positive and the numerator is a square, so the derivative is non-negative on the whole domain, vanishing only at the isolated point x = 0. Hence increasing throughout x > -1.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Monotonicity, Extrema, and Critical Points",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 90,
+    "answer": "C",
+    "working": "Setting the derivative cosx e^sinx - sinx e^cosx = 0 gives the symmetric point x = pi/4, where sinx = cosx = 1/sqrt2 and f = 2 e^(1/sqrt2) = 4.05623. A 200000-point scan over [0, 2pi) finds the global maximum exactly at x = pi/4 with that value; the rival candidates 2e = 5.4366 and 2 sqrt(e) = 3.2974 are respectively unattainable and smaller.",
+    "confidence": "high",
+    "chapter": "Application of Derivatives",
+    "subtopic": "Optimisation — Geometric, Trigonometric, AM-GM",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 91,
+    "answer": "A",
+    "working": "Dividing by cos^2 x and putting t = tanx gives the standard form (1/(ab)) arctan((a/b) tanx) + C. Matching (1/12) arctan(3 tanx) needs ab = 12 and a/b = 3, so b^2 = 4 and a = 3b: a = +/-6, b = +/-2. Numerically the integral of 1/(36 sin^2 x + 4 cos^2 x) over [0.3, 1.1] equals (1/12)[arctan(3tan x)] over the same range to 40 digits.",
+    "confidence": "high",
+    "chapter": "Indefinite Integration",
+    "subtopic": "Integration by Substitution — Algebraic, Trigonometric, and Composite Forms",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 92,
+    "answer": "B",
+    "working": "From Q91, a = 6 and b = 2 (up to sign), so max(a sinx + b cosx) = sqrt(a^2 + b^2) = sqrt(36+4) = sqrt40.",
+    "confidence": "high",
+    "chapter": "Trigonometric Identities",
+    "subtopic": "Maximum and Minimum of Trigonometric Expressions",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 93,
+    "answer": "A",
+    "working": "[x^2] is even, so the integral is 2 times the integral over [0,2], which splits at 1, sqrt2, sqrt3 with values 0,1,2,3: 2[(sqrt2-1) + 2(sqrt3-sqrt2) + 3(2-sqrt3)] = 10 - 2sqrt2 - 2sqrt3 (numerically 3.70747126). Written as A + 2B + sqrt2 C this forces A = 10 (with B = -sqrt3 and C = -2).",
+    "confidence": "high",
+    "chapter": "Definite Integration",
+    "subtopic": "Integration of Absolute Value, Piecewise, and Greatest Integer Functions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 94,
+    "answer": "B",
+    "working": "From the same evaluation, the integral is 10 - 2sqrt3 - 2sqrt2. Matching A + 2B + sqrt2 C term by term, the 2B slot carries -2sqrt3, so B = -sqrt3 (and then sqrt2 C = -2sqrt2 gives C = -2, consistent).",
+    "confidence": "high",
+    "chapter": "Definite Integration",
+    "subtopic": "Integration of Absolute Value, Piecewise, and Greatest Integer Functions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 95,
+    "answer": "B",
+    "working": "sinx + cosx = sqrt2 cos(x - pi/4); with t = x - pi/4 the integral becomes the integral over [-pi/2, 0] of ln(sqrt2 cos t) dt = (pi/2)(ln2)/2 + integral of ln cos t = (pi/4)ln2 - (pi/2)ln2 = -(pi/4)ln2. Numerical quadrature gives -0.54439652, equal to -pi ln2 / 4.",
+    "confidence": "high",
+    "chapter": "Definite Integration",
+    "subtopic": "Properties of Definite Integrals — Symmetry, King's, Odd/Even",
+    "difficulty": "HARD",
+    "notes": ""
+  },
+  {
+    "number": 96,
+    "answer": "C",
+    "working": "The curve is above the x-axis on [1,2], so the area is the integral of x^2 + 2 from 1 to 2 = [x^3/3 + 2x] = (8/3+4) - (1/3+2) = 13/3. Quadrature confirms 4.33333.",
+    "confidence": "high",
+    "chapter": "Applications of Integration",
+    "subtopic": "Area Bounded by a Curve, Lines, and Axes",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 97,
+    "answer": "A",
+    "working": "Conditioning on all three faces being different restricts the sample space to 6*5*4 = 120 equally likely ordered outcomes. Distinct triples summing to 8 are {1,2,5} and {1,3,4}, giving 2*3! = 12 outcomes. Probability = 12/120 = 1/10; exhaustive enumeration over the 216 throws confirms 120 and 12.",
+    "confidence": "high",
+    "chapter": "Probability",
+    "subtopic": "Conditional Probability, Total Probability, and Bayes' Theorem",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 98,
+    "answer": "A",
+    "working": "Two parameters means eliminating A and B: e^3x and e^5x are solutions of the operator (D-3)(D-5) = D^2 - 8D + 15, so y'' - 8y' + 15y = 0. Substituting y = A e^3x + B e^5x into that expression simplifies to 0 identically (sympy).",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Formation of ODE from Curves and General Solutions",
+    "difficulty": "MODERATE",
+    "notes": ""
+  },
+  {
+    "number": 99,
+    "answer": "B",
+    "working": "The family has two arbitrary constants A and B, so eliminating them needs two differentiations and the resulting equation y'' - 8y' + 15y = 0 has highest derivative of order 2.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, and Solutions of ODE",
+    "difficulty": "EASY",
+    "notes": ""
+  },
+  {
+    "number": 100,
+    "answer": "C",
+    "working": "y'' - 8y' + 15y = 0 is polynomial in the derivatives and the highest derivative y'' occurs to the first power, so the degree is 1.",
+    "confidence": "high",
+    "chapter": "Differential Equations",
+    "subtopic": "Order, Degree, and Solutions of ODE",
+    "difficulty": "EASY",
+    "notes": ""
+  }
+]

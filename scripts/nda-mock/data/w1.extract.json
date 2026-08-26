@@ -1327,6 +1327,8 @@
     "answer": "B",
     "answerSource": "tail-key",
     "solution": "Evaluating \\(f(x)\\) for \\(|x| < 1\\)\r\n\r\nWhen \\(|x| < 1\\), the term \\(x^{2n} \\rightarrow 0\\) as \\(n \\rightarrow \\infty\\).\r\n\r\nSubstitute this into the expression: \\(f(x) = \\frac{0 - 1}{0 + 1} = - 1\\).",
+    "context": "Let \\(f(x)\\) and \\(g(x)\\) be two functions defined as: \\(f(x) = \\lim_{n \\rightarrow \\infty}\\frac{x^{2n} - 1}{x^{2n} + 1}\\) and \\(g(x) = \\left( \\frac{1 + 5x^{2}}{1 + 3x^{2}} \\right)^{1/x^{2}}\\) for \\(x \\neq 0\\).",
+    "setLabel": "w1-set-51-53",
     "defects": []
   },
   {
@@ -1353,6 +1355,8 @@
     "answer": "B",
     "answerSource": "tail-key",
     "solution": "Finding the limit of \\(g(x)\\)\r\n\r\nThis is a standard \\(1^{\\infty}\\) form.\r\n\r\nFormula: If \\(\\lim_{x \\rightarrow a}\\lbrack u(x)\\rbrack^{v(x)}\\) results in \\(1^{\\infty}\\), the limit is \\(e^{\\lim_{x \\rightarrow a} v(x)\\lbrack u(x) - 1\\rbrack}\\).\r\n\r\n\\[L = e^{\\lim_{x \\rightarrow 0}\\frac{1}{x^{2}}\\left\\lbrack \\frac{1 + 5x^{2}}{1 + 3x^{2}} - 1 \\right\\rbrack}\\]\r\n\r\nSimplify the term in brackets: \\(\\frac{\\left( 1 + 5x^{2} \\right) - \\left( 1 + 3x^{2} \\right)}{1 + 3x^{2}} = \\frac{2x^{2}}{1 + 3x^{2}}\\).\r\n\r\nThe expression becomes: \\(e^{\\lim_{x \\rightarrow 0}\\frac{1}{x^{2}} \\cdot \\frac{2x^{2}}{1 + 3x^{2}}} = e^{\\lim_{x \\rightarrow 0}\\frac{2}{1 + 3x^{2}}} = e^{2}\\).",
+    "context": "Let \\(f(x)\\) and \\(g(x)\\) be two functions defined as: \\(f(x) = \\lim_{n \\rightarrow \\infty}\\frac{x^{2n} - 1}{x^{2n} + 1}\\) and \\(g(x) = \\left( \\frac{1 + 5x^{2}}{1 + 3x^{2}} \\right)^{1/x^{2}}\\) for \\(x \\neq 0\\).",
+    "setLabel": "w1-set-51-53",
     "defects": []
   },
   {
@@ -1379,6 +1383,8 @@
     "answer": "A",
     "answerSource": "tail-key",
     "solution": "Evaluating \\(k\\) and the final sum\r\n\r\n\\(k = \\lim_{x \\rightarrow 0}\\frac{sin\\left( \\pi\\cos^{2}x \\right)}{x^{2}}\\).\r\n\r\nUse the identity \\(\\cos^{2}x = 1 - \\sin^{2}x\\) :\r\n\r\n\\(k = \\lim_{x \\rightarrow 0}\\frac{sin\\left( \\pi\\left( 1 - \\sin^{2}x \\right) \\right)}{x^{2}} = \\lim_{x \\rightarrow 0}\\frac{sin\\left( \\pi - \\pi\\sin^{2}x \\right)}{x^{2}}\\)\r\n\r\nSince \\(sin(\\pi - \\theta) = sin\\theta\\) :\r\n\r\n\\(k = \\lim_{x \\rightarrow 0}\\frac{sin\\left( \\pi\\sin^{2}x \\right)}{x^{2}} = \\lim_{x \\rightarrow 0}\\left\\lbrack \\frac{sin\\left( \\pi\\sin^{2}x \\right)}{\\pi\\sin^{2}x} \\cdot \\frac{\\pi\\sin^{2}x}{x^{2}} \\right\\rbrack\\)\r\n\r\nUsing \\(\\lim_{\\theta \\rightarrow 0}\\frac{sin\\theta}{\\theta} = 1:k = 1 \\cdot \\pi \\cdot (1)^{2} = \\pi\\).\r\n\r\n\\(Sum = k + L = \\pi + e^{2}\\).\r\n\r\nAns 3: (A) \\(\\pi + e^{2}\\).",
+    "context": "Let \\(f(x)\\) and \\(g(x)\\) be two functions defined as: \\(f(x) = \\lim_{n \\rightarrow \\infty}\\frac{x^{2n} - 1}{x^{2n} + 1}\\) and \\(g(x) = \\left( \\frac{1 + 5x^{2}}{1 + 3x^{2}} \\right)^{1/x^{2}}\\) for \\(x \\neq 0\\).",
+    "setLabel": "w1-set-51-53",
     "defects": []
   },
   {
@@ -1405,6 +1411,8 @@
     "answer": "B",
     "answerSource": "tail-key",
     "solution": "Finding the value of \\(a\\)\r\n\r\nTo be continuous at \\(x = 0\\), we need LHL \\(= f(0) = RHL\\).\r\n\r\nLHL \\(\\left( x \\rightarrow 0^{-} \\right)\\):\r\n\r\n\\(\\lim_{x \\rightarrow 0^{-}}\\frac{1 - cos(4x)}{x^{2}} = \\lim_{x \\rightarrow 0^{-}}\\frac{2\\sin^{2}(2x)}{x^{2}} = 2 \\cdot \\lim_{x \\rightarrow 0^{-}}\\left( \\frac{sin(2x)}{2x} \\cdot 2 \\right)^{2} = 2 \\cdot (1 \\cdot 2)^{2} = 8\\)\r\n\r\n\\(\\mathbf{RHL\\ }\\left( \\mathbf{x} \\rightarrow \\mathbf{0}^{+} \\right)\\): Rationalize the denominator of \\(\\frac{\\sqrt{x}}{\\sqrt{16 + \\sqrt{x}} - 4}\\) :\r\n\r\n\\(\\frac{\\sqrt{x}(\\sqrt{16 + \\sqrt{x}} + 4)}{(16 + \\sqrt{x}) - 16} = \\frac{\\sqrt{x}(\\sqrt{16 + \\sqrt{x}} + 4)}{\\sqrt{x}} = \\sqrt{16 + \\sqrt{x}} + 4\\)\r\n\r\nAs \\(x \\rightarrow 0^{+}\\), this becomes \\(\\sqrt{16} + 4 = 8\\).\r\n\r\nAns 1: (B)\r\n\r\nConclusion: For continuity, a must equal 8.",
+    "context": "Consider the function \\(f(x)\\) defined as \\(f(x) = \\left\\{ \\begin{matrix} \\frac{1 - \\cos(4x)}{x^{2}}, & x < 0 \\\\ a, & x = 0 \\\\ \\frac{\\sqrt{x}}{\\sqrt{16 + \\sqrt{x}} - 4}, & x > 0 \\end{matrix} \\right.\\) Let \\(g(x) = \\lbrack x\\rbrack\\) denote the greatest integer function.",
+    "setLabel": "w1-set-54-56",
     "defects": []
   },
   {
@@ -1431,6 +1439,8 @@
     "answer": "B",
     "answerSource": "tail-key",
     "solution": "Discontinuity of \\(g(x) = \\lbrack x\\rbrack\\)\r\n\r\nThe greatest integer function is discontinuous at every integer point because the limit from the left does not equal the limit from the right. 1.1.1\r\n\r\nIn the interval \\((0.5,2.5)\\), the integers are \\(\\mathbf{1}\\) and \\(\\mathbf{2}\\).\r\n\r\nAns 2: (B) 2 points.",
+    "context": "Consider the function \\(f(x)\\) defined as \\(f(x) = \\left\\{ \\begin{matrix} \\frac{1 - \\cos(4x)}{x^{2}}, & x < 0 \\\\ a, & x = 0 \\\\ \\frac{\\sqrt{x}}{\\sqrt{16 + \\sqrt{x}} - 4}, & x > 0 \\end{matrix} \\right.\\) Let \\(g(x) = \\lbrack x\\rbrack\\) denote the greatest integer function.",
+    "setLabel": "w1-set-54-56",
     "defects": []
   },
   {
@@ -1457,6 +1467,8 @@
     "answer": "C",
     "answerSource": "tail-key",
     "solution": "Evaluating \\(\\lim_{x \\rightarrow 0} k(x)\\)\r\n\r\n\\(k(x) = f(x) \\cdot sin(x)\\).\r\n\r\nWe know \\(\\lim_{x \\rightarrow 0} f(x) = 8\\) (from Q1) and \\(\\lim_{x \\rightarrow 0} sin(x) = 0\\).\r\n\r\nBy the algebra of limits, \\(lim(f \\cdot g) = limf \\cdot limg = 8 \\cdot 0 = 0\\)\r\n\r\nAns 3: (C)",
+    "context": "Consider the function \\(f(x)\\) defined as \\(f(x) = \\left\\{ \\begin{matrix} \\frac{1 - \\cos(4x)}{x^{2}}, & x < 0 \\\\ a, & x = 0 \\\\ \\frac{\\sqrt{x}}{\\sqrt{16 + \\sqrt{x}} - 4}, & x > 0 \\end{matrix} \\right.\\) Let \\(g(x) = \\lbrack x\\rbrack\\) denote the greatest integer function.",
+    "setLabel": "w1-set-54-56",
     "defects": []
   },
   {
@@ -2835,6 +2847,8 @@
     "answer": "B",
     "answerSource": "tail-key",
     "solution": null,
+    "context": "Consider a sphere \\(S\\) given by the equation \\(x^{2} + y^{2} + z^{2} - 2x + 4y - 6z - 11 = 0\\). A plane \\(P\\) passes through the point \\((1, -2, 3)\\) and is perpendicular to the line joining the origin to the centre of the sphere.",
+    "setLabel": "w1-set-109-110",
     "defects": [
       "no solution in source"
     ]
@@ -2863,6 +2877,8 @@
     "answer": "C",
     "answerSource": "tail-key",
     "solution": null,
+    "context": "Consider a sphere \\(S\\) given by the equation \\(x^{2} + y^{2} + z^{2} - 2x + 4y - 6z - 11 = 0\\). A plane \\(P\\) passes through the point \\((1, -2, 3)\\) and is perpendicular to the line joining the origin to the centre of the sphere.",
+    "setLabel": "w1-set-109-110",
     "defects": [
       "no solution in source"
     ]
