@@ -1765,6 +1765,39 @@ PAPERS.w3 = {
       reason:
         "the stem prints 'maximum', which no option can satisfy: (x-a)(x-b) is an upward parabola and is unbounded above (with a=2, b=7 it takes 14, 24, 9114, 991014 at x = 0, 10, 100, 1000). The repair is documented by the paper's OWN solution, which sets dy/dx = 0 and then labels the result — in Hindi — 'फलन का निम्निष्ठ मान', the function's MINIMUM value. That stationary value is -(a-b)^2/4, exactly the printed key D, so a single edit to one word makes stem, solution and key all consistent; the alternative would be to call both the solution and the key wrong",
     },
+    // The source prints ONE combined solution block headed 'Solutions (Q. Nos.
+    // 29-31)' immediately after solution 28, so the whole block was absorbed
+    // into Q28 — leaving Q28's stored solution carrying three other questions'
+    // working and Q29/30/31 with none at all. Split back out here. Answers are
+    // unaffected (all four AGREE with the blind pass); this is a solution-text
+    // repair only, and `solution` is not part of content_hash.
+    28: {
+      solution:
+        "Ans-(b) : If \\(n\\) is an integer taken at random we get " +
+        "\\(\\Rightarrow \\frac{2^{n}}{5^{4}} = \\frac{2^{4}}{5^{4}} = \\frac{16}{625}\\)",
+      reason:
+        "this solution had absorbed the whole 'Solutions (Q. Nos. 29-31)' block that follows it in the source — 889 characters carrying three other questions' working, including the \\mathbf{31.} matrix that audit:omml flagged as unconvertible. Trimmed to its own working; the three absorbed solutions are restored to Q29, Q30 and Q31 below",
+    },
+    29: {
+      solution:
+        "We have \\(P(A) = \\frac{1}{4}\\), \\(P(B) = \\frac{2}{5}\\) and \\(P(A \\cup B) = \\frac{1}{2}\\). " +
+        "From the addition theorem, \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\), so " +
+        "\\(P(A \\cap B) = \\frac{1}{4} + \\frac{2}{5} - \\frac{1}{2} = \\frac{3}{20}\\).",
+      reason: "restored from the combined 'Solutions (Q. Nos. 29-31)' block absorbed into Q28",
+    },
+    30: {
+      solution:
+        "We have \\(P(A) = \\frac{1}{4}\\) and \\(P(A \\cap B) = \\frac{3}{20}\\) (from Q29), so " +
+        "\\(P\\left( A \\cap B' \\right) = P(A) - P(A \\cap B) = \\frac{1}{4} - \\frac{3}{20} = \\frac{1}{10}\\).",
+      reason: "restored from the combined 'Solutions (Q. Nos. 29-31)' block absorbed into Q28",
+    },
+    31: {
+      solution:
+        "\\(P\\left( A' \\cap B' \\right) = P\\left( \\overline{A \\cup B} \\right) = 1 - P(A \\cup B) " +
+        "= 1 - \\frac{1}{2} = \\frac{1}{2}\\).",
+      reason:
+        "restored from the combined 'Solutions (Q. Nos. 29-31)' block absorbed into Q28. The complement is written \\overline{A \\cup B} rather than (A \\cup B)': a PRIME on a parenthesised group containing \\cup is unconvertible to OMML (the documented failure class — ^{c}, {(...)}' and ^{\\prime} all fail too, and \\overline is the only passing form). KaTeX renders either, so the defect would surface only as raw LaTeX in a teacher's downloaded Word answer key",
+    },
     75: {
       answer: "D",
       reason:
@@ -1922,6 +1955,11 @@ PAPERS.w4 = {
       answer: "B",
       reason:
         "x^3 + 1 - x^2 - x factors as (x-1)^2 (x+1), and (x-1)^2 > 0 for the excluded x != 1, so the inequality holds exactly when x > -1. Confirmed by sampling x = -2, -0.5, 0.5, 2",
+    },
+    92: {
+      hold: true,
+      reason:
+        "NO CORRECT OPTION — every option is a variant of the same overcount. Numbered ranks are 2-10, so prime-numbered cards are 2,3,5,7 (16 cards) and multiples of 5 are 5,10 (8 cards), and the four 5s belong to BOTH sets. Exhaustive enumeration of all C(52,2) = 1326 pairs gives 118 favourable, i.e. 59/663. The printed key D is 64/663 = 16*8/1326, the naive product, which both counts the four same-card 'pairs' and double-counts the six five-five pairs; the solution writes exactly that product. Option B (62/663) removes only the same-card cases and option A (94/663) applies that half-correction while treating face cards as numbers. The correct 59/663 is absent, so no single repair reaches a printed option",
     },
     49: {
       hold: true,

@@ -726,7 +726,7 @@
     ],
     "answer": "B",
     "answerSource": "tail-key",
-    "solution": "Ans-(b)**\\\r\nहल : If(n) integer taken at random we get\r\n\r\n\\(\\Rightarrow \\frac{2^{n}}{5^{4}} = \\frac{2^{4}}{5^{4}} = \\frac{16}{625}\\)\r\n\r\n**Solutions (Q. Nos. 29-31)**\\\r\nWe have, \\(P(A) = \\frac{1}{4},P(B) = \\frac{2}{5}\\) and \\(P(A \\cup B) = \\frac{1}{2}\\)\\\r\nFrom addition theorem, we have\r\n\r\n\\(\\begin{matrix}\r\nP(A \\cup B) & \\  = P(A) + P(B) - P(A \\cap B) \\\\\r\n\\frac{1}{2} & \\  = \\frac{1}{4} + \\frac{2}{5} - P(A \\cap B) \\\\\r\n\\mathbf{29.}\\ P(A \\cap B) & \\  = \\frac{1}{4} + \\frac{2}{5} - \\frac{1}{2} = \\frac{3}{20}\r\n\\end{matrix}\\)\r\n\r\nNow,\r\n\r\n\\(\\begin{matrix}\r\n\\mathbf{30.}\\ \\ P\\left( A \\cap B' \\right) & \\  = P(A) - P(A \\cap B) \\\\\r\n & \\  = \\frac{1}{4} - \\frac{3}{20} = \\frac{1}{10}\r\n\\end{matrix}\\)\r\n\r\nAgain,\r\n\r\n\\(\\begin{matrix}\r\n\\mathbf{31.}\\ \\ \\ \\ P\\left( A' \\cap B' \\right) & \\  = P\\left\\{ (A \\cup B)' \\right\\} \\\\\r\n & \\  = 1 - P(A \\cup B) \\\\\r\n & \\  = 1 - \\frac{1}{2} = \\frac{1}{2}\r\n\\end{matrix}\\)",
+    "solution": "Ans-(b) : If \\(n\\) is an integer taken at random we get \\(\\Rightarrow \\frac{2^{n}}{5^{4}} = \\frac{2^{4}}{5^{4}} = \\frac{16}{625}\\)",
     "defects": []
   },
   {
@@ -752,12 +752,10 @@
     ],
     "answer": "B",
     "answerSource": "tail-key",
-    "solution": null,
+    "solution": "We have \\(P(A) = \\frac{1}{4}\\), \\(P(B) = \\frac{2}{5}\\) and \\(P(A \\cup B) = \\frac{1}{2}\\). From the addition theorem, \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\), so \\(P(A \\cap B) = \\frac{1}{4} + \\frac{2}{5} - \\frac{1}{2} = \\frac{3}{20}\\).",
     "context": "** Consider \\(A\\) and \\(B\\) are two non-mutually exclusive events. If \\(P(A) = \\frac{1}{4},P(B) = \\frac{2}{5}\\) and \\(P(A \\cup B) = \\frac{1}{2}\\),",
     "setLabel": "w3-set-29-31",
-    "defects": [
-      "no solution in source"
-    ]
+    "defects": []
   },
   {
     "number": 30,
@@ -782,12 +780,10 @@
     ],
     "answer": "A",
     "answerSource": "tail-key",
-    "solution": null,
+    "solution": "We have \\(P(A) = \\frac{1}{4}\\) and \\(P(A \\cap B) = \\frac{3}{20}\\) (from Q29), so \\(P\\left( A \\cap B' \\right) = P(A) - P(A \\cap B) = \\frac{1}{4} - \\frac{3}{20} = \\frac{1}{10}\\).",
     "context": "** Consider \\(A\\) and \\(B\\) are two non-mutually exclusive events. If \\(P(A) = \\frac{1}{4},P(B) = \\frac{2}{5}\\) and \\(P(A \\cup B) = \\frac{1}{2}\\),",
     "setLabel": "w3-set-29-31",
-    "defects": [
-      "no solution in source"
-    ]
+    "defects": []
   },
   {
     "number": 31,
@@ -812,12 +808,10 @@
     ],
     "answer": "B",
     "answerSource": "tail-key",
-    "solution": null,
+    "solution": "\\(P\\left( A' \\cap B' \\right) = P\\left( \\overline{A \\cup B} \\right) = 1 - P(A \\cup B) = 1 - \\frac{1}{2} = \\frac{1}{2}\\).",
     "context": "** Consider \\(A\\) and \\(B\\) are two non-mutually exclusive events. If \\(P(A) = \\frac{1}{4},P(B) = \\frac{2}{5}\\) and \\(P(A \\cup B) = \\frac{1}{2}\\),",
     "setLabel": "w3-set-29-31",
-    "defects": [
-      "no solution in source"
-    ]
+    "defects": []
   },
   {
     "number": 32,

@@ -1184,7 +1184,7 @@
   },
   {
     "number": 92,
-    "verdict": "UNRESOLVED",
+    "verdict": "HELD",
     "printedKey": "D",
     "blindAnswer": null,
     "confidence": "medium",
@@ -1192,7 +1192,7 @@
     "subtopic": "Probability via Counting",
     "difficulty": "MODERATE",
     "working": "Numbered ranks are 2-10: prime-numbered cards {2,3,5,7} = 16, multiples of 5 {5,10} = 8, and the four 5s lie in BOTH sets. Brute force over all C(52,2) = 1326 unordered pairs counts 118 pairs in which one card is prime-numbered and the other is a multiple of 5 (48 with {2,3,7}x{10}, 48 with {2,3,7}x{5}, 16 with {5}x{10}, and 6 five-five pairs), giving 118/1326 = 59/663. No option equals that.",
-    "notes": "No option matches. Exact answer 118/1326 = 59/663 (brute-forced over all 1326 pairs). The alternative reading in which every rank counts as a number (A=1, J=11, Q=12, K=13, so primes 2,3,5,7,11,13 = 24 cards) gives 182/1326 = 91/663, also absent. All four options are naive variants of 16x8 = 128: D = 128/1326 = 64/663 is the plain 16C1 x 8C1 / 52C2, which wrongly includes the 4 cases where the same 5 is used for both roles and double-counts the 6 five-five pairs; B = (128-4)/1326 = 62/663 removes only the same-card cases; A = (24x8-4)/1326 = 94/663 is that same half-correction with face cards treated as numbers. D is the likeliest printed key and is 64/663 against the correct 59/663.",
+    "notes": "NO CORRECT OPTION — every option is a variant of the same overcount. Numbered ranks are 2-10, so prime-numbered cards are 2,3,5,7 (16 cards) and multiples of 5 are 5,10 (8 cards), and the four 5s belong to BOTH sets. Exhaustive enumeration of all C(52,2) = 1326 pairs gives 118 favourable, i.e. 59/663. The printed key D is 64/663 = 16*8/1326, the naive product, which both counts the four same-card 'pairs' and double-counts the six five-five pairs; the solution writes exactly that product. Option B (62/663) removes only the same-card cases and option A (94/663) applies that half-correction while treating face cards as numbers. The correct 59/663 is absent, so no single repair reaches a printed option",
     "resolved": null
   },
   {
