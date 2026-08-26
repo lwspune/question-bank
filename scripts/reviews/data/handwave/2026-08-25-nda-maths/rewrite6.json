@@ -1,0 +1,64 @@
+[
+  {
+    "questionId": "3a2fbde9-337d-42ee-9e3b-8b1c6e9dd163",
+    "qnum": "22",
+    "action": "REWRITE",
+    "why": "The old solution declared its own working 'complex', abandoned it and asserted the answer as a standard result; the deduction is actually two clean Vieta steps once the log is inverted by change of base.",
+    "solution": "Write \\(t=\\log_{0.5}(a^2)\\), so \\(t>0\\) and the equation is \\(x^2+tx+t^4=0\\).\nBy the change-of-base rule \\(\\log_{a^2}(0.5)=\\dfrac{1}{\\log_{0.5}(a^2)}=\\dfrac{1}{t}\\), so the given condition \\(\\beta^2=\\alpha\\log_{a^2}(0.5)\\) reads\n\\(\\beta^2=\\dfrac{\\alpha}{t}\\), i.e. \\(\\alpha=t\\beta^2\\).\nVieta's relations for \\(x^2+tx+t^4=0\\) give \\(\\alpha+\\beta=-t\\) and \\(\\alpha\\beta=t^4\\).\nPut \\(\\alpha=t\\beta^2\\) into the product:\n\\(t\\beta^2\\cdot\\beta=t^4\\Rightarrow t\\beta^3=t^4\\Rightarrow\\beta^3=t^3\\Rightarrow\\beta=t\\).\nNow use the sum:\n\\(\\alpha=-t-\\beta=-t-t=-2t\\), and since \\(\\beta=t\\) this is \\(\\alpha=-2\\beta\\).\nHence (C)."
+  },
+  {
+    "questionId": "5e9b700c-6c84-475b-beb2-4759cca387cb",
+    "qnum": "17",
+    "action": "REWRITE",
+    "why": "The old solution broke off mid-expansion with an ellipsis and asserted the cross terms sum to 6ab; every square is now expanded and the two cube-root identities applied visibly.",
+    "solution": "The non-real cube roots of unity satisfy \\(\\omega^3=1\\) and \\(1+\\omega+\\omega^2=0\\); consequently \\(\\omega^4=\\omega^3\\cdot\\omega=\\omega\\).\nSquare each of the three expressions.\n\\(x^2=(a+b)^2=a^2+b^2+2ab\\).\n\\(y^2=(a\\omega+b\\omega^2)^2=a^2\\omega^2+b^2\\omega^4+2ab\\,\\omega^3=a^2\\omega^2+b^2\\omega+2ab\\).\n\\(z^2=(a\\omega^2+b\\omega)^2=a^2\\omega^4+b^2\\omega^2+2ab\\,\\omega^3=a^2\\omega+b^2\\omega^2+2ab\\).\nAdd the three, grouping the \\(a^2\\) terms and the \\(b^2\\) terms:\n\\(x^2+y^2+z^2=a^2(1+\\omega^2+\\omega)+b^2(1+\\omega+\\omega^2)+6ab\\).\nBoth brackets are \\(1+\\omega+\\omega^2=0\\), so\n\\(x^2+y^2+z^2=a^2\\cdot 0+b^2\\cdot 0+6ab=6ab\\).\nHence (A)."
+  },
+  {
+    "questionId": "9967b15a-79bb-4d0c-97cb-b7ab60cf1114",
+    "qnum": "85",
+    "action": "REWRITE",
+    "why": "The old solution quoted the two closed-form antiderivatives without producing them; one integration by parts gives the relation directly and needs no closed form at all.",
+    "solution": "By the fundamental theorem of calculus, differentiating each integral returns its integrand:\n\\(\\dfrac{du}{dx}=e^x\\cos x\\) and \\(\\dfrac{dv}{dx}=e^x\\sin x\\).\nNow integrate \\(v\\) by parts, taking \\(\\sin x\\) as the first function and \\(e^x\\) as the second:\n\\(v=\\int e^x\\sin x\\,dx=\\sin x\\cdot e^x-\\int(\\cos x)e^x\\,dx=e^x\\sin x-\\int e^x\\cos x\\,dx\\).\nThe integral that remains is exactly \\(u\\), so \\(v=e^x\\sin x-u\\), that is\n\\(u+v=e^x\\sin x\\).\nComparing with \\(\\dfrac{dv}{dx}=e^x\\sin x\\) gives \\(u+v=\\dfrac{dv}{dx}\\).\nHence (D)."
+  },
+  {
+    "questionId": "3684a3b6-1554-46c2-8fad-adf9069909f3",
+    "qnum": "63",
+    "action": "REWRITE",
+    "why": "The old solution set up the tangent formula and then asserted that substituting 'simplifies to tan(theta)=1' without doing the algebra; the whole cancellation is now shown.",
+    "solution": "Put both lines in the form \\(Ax+By=C\\) and read off their normal vectors.\nFirst line: \\(px+qy=p+q\\), normal \\(\\vec{n_1}=(p,\\,q)\\).\nSecond line: \\(p(x-y)+q(x+y)=2q\\Rightarrow (p+q)x+(q-p)y=2q\\), normal \\(\\vec{n_2}=(p+q,\\,q-p)\\).\nThe acute angle between two lines equals the acute angle between their normals.\nDot product: \\(\\vec{n_1}\\cdot\\vec{n_2}=p(p+q)+q(q-p)=p^2+pq+q^2-pq=p^2+q^2\\).\nLengths: \\(|\\vec{n_1}|=\\sqrt{p^2+q^2}\\) and\n\\(|\\vec{n_2}|=\\sqrt{(p+q)^2+(q-p)^2}=\\sqrt{p^2+2pq+q^2+q^2-2pq+p^2}=\\sqrt{2(p^2+q^2)}\\).\nTherefore\n\\(\\cos\\theta=\\dfrac{p^2+q^2}{\\sqrt{p^2+q^2}\\cdot\\sqrt{2(p^2+q^2)}}=\\dfrac{p^2+q^2}{\\sqrt2\\,(p^2+q^2)}=\\dfrac{1}{\\sqrt2}\\).\nSo \\(\\theta=45^\\circ\\), and \\(\\sin\\theta=\\sin45^\\circ=\\dfrac{1}{\\sqrt2}\\).\nHence (D)."
+  },
+  {
+    "questionId": "f0e6f0c2-b3ce-4682-b74a-e4c08c946447",
+    "qnum": "10",
+    "action": "REWRITE",
+    "why": "The old solution wrote the correct reciprocal-AP condition and then jumped straight to b^2=ac; the cross-multiplication and cancellation are now carried out.",
+    "solution": "If \\((a+b),\\,2b,\\,(b+c)\\) are in HP, then their reciprocals \\(\\dfrac{1}{a+b},\\ \\dfrac{1}{2b},\\ \\dfrac{1}{b+c}\\) are in AP, so twice the middle term equals the sum of the outer two:\n\\(\\dfrac{2}{2b}=\\dfrac{1}{a+b}+\\dfrac{1}{b+c}\\), i.e. \\(\\dfrac{1}{b}=\\dfrac{(b+c)+(a+b)}{(a+b)(b+c)}=\\dfrac{a+2b+c}{(a+b)(b+c)}\\).\nCross-multiplying: \\((a+b)(b+c)=b(a+2b+c)\\).\nExpand each side:\nleft \\(=ab+ac+b^2+bc\\), right \\(=ab+2b^2+bc\\).\nCancel \\(ab+bc\\) from both sides: \\(ac+b^2=2b^2\\), so \\(b^2=ac\\).\nThus \\(b\\) is the geometric mean of \\(a\\) and \\(c\\), i.e. \\(a,\\,b,\\,c\\) are in GP.\nHence (C)."
+  },
+  {
+    "questionId": "f905fcb5-906a-4db5-a29c-43ed4cd184ad",
+    "qnum": "32",
+    "action": "REPORT",
+    "why": "As printed the quantity x+y+z is NOT determined by the data, so the key 0 cannot be derived: writing the common value as k gives x=k/cos(theta), y=k/cos(2pi/3-theta), z=k/cos(2pi/3+theta), and x+y+z evaluates to -3k at theta=0 and about -4.826k at theta=0.3 rad, so it varies with theta and with k. The identity that genuinely yields 0 here is 1/x+1/y+1/z = [cos(theta)+cos(2pi/3-theta)+cos(2pi/3+theta)]/k = 0 (since cos(2pi/3-theta)+cos(2pi/3+theta) = 2cos(2pi/3)cos(theta) = -cos(theta)), which is equivalent to xy+yz+zx=0. The angles match the classic PYQ 'if x cos(theta) = y cos(theta+2pi/3) = z cos(theta+4pi/3), what is xy+yz+zx?', whose answer is 0 and whose option set is exactly -1/0/1/3. So the stem's 'x+y+z' is almost certainly a mis-transcription of 'xy+yz+zx'; the key 0 belongs to that quantity. Recommend source-verifying the stem against the printed paper before any rewrite — repairing the solution alone would leave a solution that cannot honestly reach its own answer."
+  },
+  {
+    "questionId": "bfc075e8-676a-49fd-b1a1-06266ceb05e8",
+    "qnum": "38",
+    "action": "REWRITE",
+    "why": "The old solution asserted that cross-multiplying 'simplifies to 2a=d' with none of the algebra, and also dropped the p/q factor when forming the ratio without saying so.",
+    "solution": "For an AP, \\(S_n=\\dfrac{n}{2}\\big[2a+(n-1)d\\big]\\), so\n\\(\\dfrac{S_p}{S_q}=\\dfrac{p\\big[2a+(p-1)d\\big]}{q\\big[2a+(q-1)d\\big]}=\\dfrac{p^2}{q^2}\\).\nCancel one factor \\(\\dfrac{p}{q}\\) from both sides:\n\\(\\dfrac{2a+(p-1)d}{2a+(q-1)d}=\\dfrac{p}{q}\\).\nCross-multiply:\n\\(q\\big[2a+(p-1)d\\big]=p\\big[2a+(q-1)d\\big]\\)\n\\(\\Rightarrow 2aq+pqd-qd=2ap+pqd-pd\\).\nThe term \\(pqd\\) cancels from both sides, leaving\n\\(2aq-qd=2ap-pd\\)\n\\(\\Rightarrow 2a(q-p)=d(q-p)\\).\nThe ratio condition is stated for \\(p\\neq q\\), so \\(q-p\\neq0\\) and we may divide by it:\n\\(d=2a\\).\nThat is, the common difference equals twice the first term.\nHence (C)."
+  },
+  {
+    "questionId": "9c040b9f-8815-4e82-80ae-c92e2f473abd",
+    "qnum": "33",
+    "action": "REWRITE",
+    "why": "The old solution offered two half-started routes and then asserted the value; the half-angle reduction plus one sum-to-product step is now carried through to the cancellation.",
+    "solution": "First, \\(\\sin(-95^\\circ)=-\\sin95^\\circ=-\\sin(90^\\circ+5^\\circ)=-\\cos5^\\circ\\), so \\(r^2=\\cos^2 5^\\circ\\) and\n\\(p^2+q^2+r^2=\\sin^2 35^\\circ+\\sin^2 25^\\circ+\\cos^2 5^\\circ\\).\nApply \\(\\sin^2\\phi=\\dfrac{1-\\cos2\\phi}{2}\\) to the first two and \\(\\cos^2\\phi=\\dfrac{1+\\cos2\\phi}{2}\\) to the third:\n\\(=\\dfrac{1-\\cos70^\\circ}{2}+\\dfrac{1-\\cos50^\\circ}{2}+\\dfrac{1+\\cos10^\\circ}{2}=\\dfrac{3-(\\cos70^\\circ+\\cos50^\\circ)+\\cos10^\\circ}{2}\\).\nCombine the bracket by the sum-to-product identity \\(\\cos A+\\cos B=2\\cos\\dfrac{A+B}{2}\\cos\\dfrac{A-B}{2}\\):\n\\(\\cos70^\\circ+\\cos50^\\circ=2\\cos60^\\circ\\cos10^\\circ=2\\cdot\\dfrac12\\cdot\\cos10^\\circ=\\cos10^\\circ\\).\nSo the numerator becomes \\(3-\\cos10^\\circ+\\cos10^\\circ=3\\), and\n\\(p^2+q^2+r^2=\\dfrac{3}{2}\\).\nHence (C)."
+  },
+  {
+    "questionId": "6a9591db-8f5c-470b-9abd-24c182abbdb5",
+    "qnum": "58",
+    "action": "REWRITE",
+    "why": "The old solution quoted the point-of-contact formula (a/m^2, 2a/m) as a given; for this parabola the point falls out of two lines of implicit differentiation, so the formula need not be assumed.",
+    "solution": "The tangent makes \\(45^\\circ\\) with the positive \\(x\\)-axis, so its slope is \\(\\tan45^\\circ=1\\).\nDifferentiate \\(y^2=4x\\) implicitly with respect to \\(x\\):\n\\(2y\\dfrac{dy}{dx}=4\\Rightarrow\\dfrac{dy}{dx}=\\dfrac{2}{y}\\).\nAt the point of contact \\((x_1,y_1)\\) this derivative is the slope of the tangent:\n\\(\\dfrac{2}{y_1}=1\\Rightarrow y_1=2\\).\nThe point of contact lies on the parabola, so \\(y_1^2=4x_1\\):\n\\(4=4x_1\\Rightarrow x_1=1\\).\nThe point of contact is \\((1,\\,2)\\).\nHence (D)."
+  }
+]

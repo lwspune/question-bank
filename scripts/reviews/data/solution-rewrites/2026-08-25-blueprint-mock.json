@@ -1,0 +1,26 @@
+[
+  {
+    "questionId": "02fe2e70-15cd-420e-af23-9b080a3cb2bb",
+    "qnum": "566",
+    "why": "Asserted the maximum is 2 and declined to give the witness matrix ('achieved e.g. by an appropriate 0-1 matrix'), and never argued why 3 is impossible. Both halves were unverifiable by a student. Now gives the witness and proves the bound.",
+    "solution": "Expand along the first row: \\(\\det = a_{11}(a_{22}a_{33}-a_{23}a_{32}) - a_{12}(a_{21}a_{33}-a_{23}a_{31}) + a_{13}(a_{21}a_{32}-a_{22}a_{31})\\). Each bracket is a difference of two \\(0/1\\) products, so each lies in \\(\\{-1,0,1\\}\\) and \\(\\det \\le 3\\).\n\n**A value of 2 is attained.** Take \\(\\begin{vmatrix} 0 & 1 & 1 \\\\ 1 & 0 & 1 \\\\ 1 & 1 & 0 \\end{vmatrix} = 0(0-1) - 1(0-1) + 1(1-0) = 0 + 1 + 1 = 2\\).\n\n**A value of 3 is impossible.** It would need all three signed terms equal to \\(+1\\), forcing \\(a_{11}=a_{12}=a_{13}=1\\) and\n\\(a_{22}a_{33}-a_{23}a_{32} = 1\\), \\(a_{21}a_{33}-a_{23}a_{31} = -1\\), \\(a_{21}a_{32}-a_{22}a_{31} = 1\\).\nThe first gives \\(a_{22}=a_{33}=1\\) and \\(a_{23}a_{32}=0\\); the second gives \\(a_{23}a_{31}=1\\), so \\(a_{23}=a_{31}=1\\) and hence \\(a_{32}=0\\). Substituting into the third: \\(a_{21}\\cdot 0 - 1\\cdot 1 = -1 \\ne 1\\), a contradiction.\n\nSo the greatest value is \\(2\\). Hence (B)."
+  },
+  {
+    "questionId": "08ff804a-75a5-4537-814e-0f7d47fa8c3e",
+    "qnum": "1076",
+    "why": "Set up the pairing correctly, then skipped the actual evaluation ('Evaluating gives 4. (Verified numerically.)') — but evaluating 2/sin18 - 2/sin54 IS the difficulty of the question. Now carries the exact surd values and the arithmetic.",
+    "solution": "Pair the terms whose angles are complementary: \\(\\tan 81^\\circ - \\tan 63^\\circ - \\tan 27^\\circ + \\tan 9^\\circ = (\\tan 81^\\circ + \\tan 9^\\circ) - (\\tan 63^\\circ + \\tan 27^\\circ)\\).\n\nSince \\(\\tan 81^\\circ = \\cot 9^\\circ\\), the first bracket is \\(\\cot 9^\\circ + \\tan 9^\\circ = \\dfrac{\\cos 9^\\circ}{\\sin 9^\\circ} + \\dfrac{\\sin 9^\\circ}{\\cos 9^\\circ} = \\dfrac{1}{\\sin 9^\\circ\\cos 9^\\circ} = \\dfrac{2}{\\sin 18^\\circ}\\). Likewise \\(\\tan 63^\\circ = \\cot 27^\\circ\\) gives the second bracket \\(= \\dfrac{2}{\\sin 54^\\circ}\\).\n\nSo the expression \\(= \\dfrac{2}{\\sin 18^\\circ} - \\dfrac{2}{\\sin 54^\\circ}\\). Using the standard values \\(\\sin 18^\\circ = \\dfrac{\\sqrt5 - 1}{4}\\) and \\(\\sin 54^\\circ = \\dfrac{\\sqrt5 + 1}{4}\\):\n\n\\(\\dfrac{2}{\\sin 18^\\circ} = \\dfrac{8}{\\sqrt5 - 1} = \\dfrac{8(\\sqrt5+1)}{4} = 2(\\sqrt5+1)\\), and \\(\\dfrac{2}{\\sin 54^\\circ} = \\dfrac{8}{\\sqrt5 + 1} = \\dfrac{8(\\sqrt5-1)}{4} = 2(\\sqrt5-1)\\).\n\nTheir difference is \\(2(\\sqrt5+1) - 2(\\sqrt5-1) = 4\\). Hence (C)."
+  },
+  {
+    "questionId": "1448892a-722f-45aa-883c-f039de53a55c",
+    "qnum": "1979",
+    "why": "The stored algebra double-counted 2cos^2(gamma) (it is already inside the sum of squares), left a dangling term it could not resolve, and then deferred to 'the printed solution'. Corrected: the three terms sum cleanly using cos^2a+cos^2b+cos^2c = 1.",
+    "solution": "A line making angles \\(\\alpha, \\beta, \\gamma\\) with the axes has direction cosines satisfying \\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\).\n\nReduce each term to a cosine of the double angle:\n\\(\\dfrac{1-\\tan^2\\alpha}{1+\\tan^2\\alpha} = \\dfrac{1-\\tan^2\\alpha}{\\sec^2\\alpha} = \\cos^2\\alpha - \\sin^2\\alpha = \\cos 2\\alpha = 2\\cos^2\\alpha - 1\\).\n\\(\\dfrac{1-\\tan^2\\beta}{\\sec^2\\beta} = \\cos 2\\beta = 2\\cos^2\\beta - 1\\).\n\\(-2\\sin^2\\gamma = -2(1 - \\cos^2\\gamma) = 2\\cos^2\\gamma - 2\\).\n\nAdding the three:\n\\((2\\cos^2\\alpha - 1) + (2\\cos^2\\beta - 1) + (2\\cos^2\\gamma - 2) = 2(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma) - 4\\).\n\nBy the direction-cosine identity the bracket is \\(1\\), so the value is \\(2(1) - 4 = -2\\). Hence (C)."
+  },
+  {
+    "questionId": "19906a4d-6ed2-42d3-bc94-4dff7e21ce98",
+    "qnum": "1082",
+    "why": "Named the method ('grouping the numerator into products of 2 cos x') and then asserted its result, falling back on a numerical spot-check at x = 0.3. The grouping is three lines and is now shown.",
+    "solution": "Multiply each denominator term by \\(2\\cos x\\) and use \\(2\\cos A\\,\\sin B = \\sin(A+B) - \\sin(A-B)\\), i.e. \\(2\\cos x\\,\\sin kx = \\sin(k+1)x + \\sin(k-1)x\\):\n\n\\(2\\cos x\\,\\sin 7x = \\sin 8x + \\sin 6x\\)\n\\(2\\cos x\\,(6\\sin 5x) = 6\\sin 6x + 6\\sin 4x\\)\n\\(2\\cos x\\,(12\\sin 3x) = 12\\sin 4x + 12\\sin 2x\\)\n\nAdding these three lines:\n\\(2\\cos x\\,(\\sin 7x + 6\\sin 5x + 12\\sin 3x) = \\sin 8x + (1+6)\\sin 6x + (6+12)\\sin 4x + 12\\sin 2x = \\sin 8x + 7\\sin 6x + 18\\sin 4x + 12\\sin 2x\\),\n\nwhich is exactly the numerator. So the numerator equals \\(2\\cos x\\) times the denominator, and since \\(0 < x < \\pi\\) keeps the denominator non-zero, the ratio is \\(2\\cos x\\). Hence (D)."
+  }
+]

@@ -1,0 +1,296 @@
+[
+ {
+  "questionId": "fb68b32b-6f4e-492e-924b-4945897f4fd6",
+  "qnum": "91",
+  "chapter": "Limits & Continuity",
+  "difficulty": "HARD",
+  "kind": "pyq",
+  "sourceFile": "NDA_II_2017_Maths.xlsx",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "Let \\(g\\) be the greatest integer function. Then the function \\(f(x) = (g(x))^2 - g(x^2)\\) is discontinuous at",
+  "context": null,
+  "options": {
+   "A": "all integers",
+   "B": "all integers except 0 and 1",
+   "C": "all integers except 0",
+   "D": "all integers except 1"
+  },
+  "key": "B",
+  "currentSolution": "At integer \\(n\\): \\(g(x)\\) is discontinuous for all integers, but check \\(g(x^2)\\) near \\(x=0\\) and \\(x=1\\). At \\(x=0\\): \\(f(0)=0\\), both \\(g(x)\\) and \\(g(x^2)\\) are continuous from both sides (both 0 near 0). At \\(x=1\\): similarly check — both give 0 to 1 transition consistently. At other integers both pieces jump, causing discontinuity. Standard result: discontinuous at all integers except 0 and 1. Matches option B."
+ },
+ {
+  "questionId": "d0e35f23-3cc8-4fd5-9ae6-d0820f0fa0d6",
+  "qnum": "26",
+  "chapter": "Permutation & Combination",
+  "difficulty": "HARD",
+  "kind": "pyq",
+  "sourceFile": "NDA_II_2017_Maths.xlsx",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "A tea party is arranged for 16 people along two sides of a long table with eight chairs on each side. Four particular men wish to sit on one particular side and two particular men on the other side. The number of ways they can be seated is",
+  "context": null,
+  "options": {
+   "A": "\\(24 \\times 8! \\times 8!\\)",
+   "B": "\\((8!)^3\\)",
+   "C": "\\(210 \\times 8! \\times 8!\\)",
+   "D": "\\(16!\\)"
+  },
+  "key": "C",
+  "currentSolution": "Side 1 (4 specific men must sit): Choose 4 seats from 8 for the 4 men: \\(\\binom{8}{4}\\times 4!\\) ways; fill remaining 4 seats from 10 people: \\(\\binom{10}{4}\\times 4!\\). Actually: fix 4 men on side 1 — choose 4 of 8 chairs: \\(\\binom{8}{4}\\) ways, arrange: \\(4!\\); 2 men on side 2: \\(\\binom{8}{2}\\times 2!\\); remaining 10 people fill 10 chairs: \\(10!\\). Net = \\(\\binom{8}{4}\\binom{8}{2}\\times 4!\\times 2!\\times 10!\\). Standard result: \\(210\\times 8!\\times 8!\\). Matches option C."
+ },
+ {
+  "questionId": "d051e8b1-e23b-4cdf-b251-7433cab955f3",
+  "qnum": "37",
+  "chapter": "Properties of Triangle",
+  "difficulty": "MODERATE",
+  "kind": "pyq",
+  "sourceFile": "NDA_II_2017_Maths.xlsx",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "In a triangle \\(ABC\\), \\(a - 2b + c = 0\\). The value of \\(\\cot\\!\\left(\\dfrac{A}{2}\\right)\\cot\\!\\left(\\dfrac{C}{2}\\right)\\) is",
+  "context": null,
+  "options": {
+   "A": "\\(\\dfrac{9}{2}\\)",
+   "B": "3",
+   "C": "\\(\\dfrac{3}{2}\\)",
+   "D": "1"
+  },
+  "key": "B",
+  "currentSolution": "\\(\\cot\\frac{A}{2}\\cot\\frac{C}{2}=\\frac{s(s-a)\\cdot s(s-c)}{(s-b)^2\\cdot...}\\). Using \\(a-2b+c=0\\Rightarrow a+c=2b\\Rightarrow s=\\frac{a+b+c}{2}=\\frac{3b}{2}\\), \\(s-b=\\frac{b}{2}\\). \\(\\cot\\frac{A}{2}\\cot\\frac{C}{2}=\\frac{s(s-b)}{(s-a)(s-c)}\\cdot(s-b)... \\). Actually \\(\\cot\\frac{A}{2}\\cdot\\cot\\frac{C}{2}=\\frac{s}{s-b}\\) (standard result when \\(b\\) is the middle term). \\(\\frac{s}{s-b}=\\frac{3b/2}{b/2}=3\\). Matches option B: 3."
+ },
+ {
+  "questionId": "0d866fc3-662f-41ff-a8b4-f6a9089544e8",
+  "qnum": "96",
+  "chapter": "Matrices & Determinants",
+  "difficulty": "HARD",
+  "kind": "pyq",
+  "sourceFile": "NDA_II_2017_Maths.xlsx",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "The value of the determinant \\(\\begin{vmatrix}1-\\alpha & \\alpha-\\alpha^2 & \\alpha^2 \\\\ 1-\\beta & \\beta-\\beta^2 & \\beta^2 \\\\ 1-\\gamma & \\gamma-\\gamma^2 & \\gamma^2\\end{vmatrix}\\) is equal to",
+  "context": null,
+  "options": {
+   "A": "\\((\\alpha-\\beta)(\\beta-\\gamma)(\\alpha-\\gamma)\\)",
+   "B": "\\((\\alpha-\\beta)(\\beta-\\gamma)(\\gamma-\\alpha)\\)",
+   "C": "\\((\\alpha-\\beta)(\\beta-\\gamma)(\\gamma-\\alpha)(\\alpha+\\beta+\\gamma)\\)",
+   "D": "0"
+  },
+  "key": "B",
+  "currentSolution": "Factor column 1 from columns: \\(C_2\\to C_2+C_1\\alpha\\): gives Vandermonde-like structure. Standard result: det \\(=(\\alpha-\\beta)(\\beta-\\gamma)(\\gamma-\\alpha)\\). Matches option B."
+ },
+ {
+  "questionId": "83917b25-f997-4ab4-8b5f-0cb5779381a2",
+  "qnum": "115",
+  "chapter": "Probability",
+  "difficulty": "HARD",
+  "kind": "pyq",
+  "sourceFile": "NDA1_2018_Maths_PYQ.xlsx",
+  "flags": [
+   "DEFERS_TO_SOURCE"
+  ],
+  "stem": "A,B events with 2P(A)=3P(B), 0<P(A)<P(B)<1. Which ordering is correct?",
+  "context": null,
+  "options": {
+   "A": "\\(P(A|B)<P(B|A)<P(A\\cap B)\\)",
+   "B": "\\(P(A\\cap B)<P(B|A)<P(A|B)\\)",
+   "C": "\\(P(B|A)<P(A|B)<P(A\\cap B)\\)",
+   "D": "\\(P(A\\cap B)<P(A|B)<P(B|A)\\)"
+  },
+  "key": "D",
+  "currentSolution": "Note on the printed stem: as printed, \\(2P(A)=3P(B)\\) gives \\(P(A)=\\tfrac{3}{2}P(B)\\), which conflicts with \\(P(A)<P(B)\\). The original NDA 2018 paper has this inconsistency. The intended reading (under which all options are well-defined and option D is correct) is the proportionality \\(3P(A)=2P(B)\\), i.e. \\(P(A)=\\tfrac{2}{3}P(B)\\), consistent with \\(0<P(A)<P(B)<1\\). Under \\(0<P(A)<P(B)<1\\): - \\(P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}\\) and \\(P(B\\mid A)=\\dfrac{P(A\\cap B)}{P(A)}\\). Since \\(P(A)<P(B)\\), the second denominator is smaller, so \\(P(B\\mid A)>P(A\\mid B)\\). - \\(P(A\\mid B)\\geq P(A\\cap B)\\) because \\(P(B)\\leq 1\\); with \\(0<P(B)<1\\), the inequality is strict: \\(P(A\\mid B)>P(A\\cap B)\\). Chaining: \\(P(A\\cap B)<P(A\\mid B)<P(B\\mid A)\\). Matches option D."
+ },
+ {
+  "questionId": "90352246-69b2-4e65-bb79-cc76106c420d",
+  "qnum": "42",
+  "chapter": "Trigonometric Equations",
+  "difficulty": "HARD",
+  "kind": "pyq",
+  "sourceFile": "NDA2_2018_Maths_PYQ.xlsx",
+  "flags": [
+   "ASSERTS_EVALUATION"
+  ],
+  "stem": "What is/are the solution(s) of the trigonometric equation \\(\\csc x + \\cot x = \\sqrt{3}\\), where \\(0 < x < 2\\pi\\)?",
+  "context": null,
+  "options": {
+   "A": "\\(\\frac{5\\pi}{3}\\) only",
+   "B": "\\(\\frac{\\pi}{3}\\) only",
+   "C": "\\(\\pi\\) only",
+   "D": "\\(\\pi, \\frac{\\pi}{3}, \\frac{5\\pi}{3}\\)"
+  },
+  "key": "B",
+  "currentSolution": "\\(\\csc x+\\cot x=(1+\\cos x)/\\sin x=\\sqrt{3}\\Rightarrow 1+\\cos x=\\sqrt{3}\\sin x\\). Squaring and simplifying gives \\(2\\cos^2 x+\\cos x-1=0\\Rightarrow(2\\cos x-1)(\\cos x+1)=0\\), so \\(\\cos x=1/2\\) (\\(x=\\pi/3, 5\\pi/3\\)) or \\(\\cos x=-1\\) (\\(x=\\pi\\)). Verify in the original equation: at \\(x=\\pi/3\\), \\(\\csc=2/\\sqrt{3}\\), \\(\\cot=1/\\sqrt{3}\\), sum \\(=\\sqrt{3}\\) — holds. At \\(x=5\\pi/3\\), \\(\\csc=-2/\\sqrt{3}\\), \\(\\cot=-1/\\sqrt{3}\\), sum \\(=-\\sqrt{3}\\) — extraneous. At \\(x=\\pi\\), \\(\\csc,\\cot\\) undefined — extraneous. Only \\(x=\\pi/3\\) — matches option B."
+ },
+ {
+  "questionId": "735e47e6-6a17-404d-bc85-93279e21c954",
+  "qnum": "27",
+  "chapter": "Differentiation",
+  "difficulty": "HARD",
+  "kind": "pyq",
+  "sourceFile": "NDA2_2018_Maths_PYQ.xlsx",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "Suppose f(x) is such a quadratic expression that it is positive for all real x. If \\(g(x) = f(x) + f'(x) + f''(x)\\), then for any real x",
+  "context": null,
+  "options": {
+   "A": "\\(g(x) < 0\\)",
+   "B": "\\(g(x) > 0\\)",
+   "C": "\\(g(x) = 0\\)",
+   "D": "\\(g(x) \\geq 0\\)"
+  },
+  "key": "B",
+  "currentSolution": "Let \\(f(x)=ax^2+bx+c\\) with \\(a>0, b^2-4ac<0\\). Then \\(f''=2a>0\\), and \\(g(x)=ax^2+bx+c+(2ax+b)+2a\\) is a quadratic with positive leading coefficient and discriminant \\((b+2a)^2-4a(c+b+2a)<0\\) (can be shown), so \\(g(x)>0\\) always. Matches option B: \\(g(x) > 0\\)."
+ },
+ {
+  "questionId": "7bfb0aa7-0e2f-4ab3-9ec3-1e953433a2f5",
+  "qnum": "49",
+  "chapter": "Quadratic Equations",
+  "difficulty": "HARD",
+  "kind": "pyq",
+  "sourceFile": "NDA2_2018_Maths_PYQ.xlsx",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "The ratio of roots of the equations \\(ax^2 + bx + c = 0\\) and \\(px^2 + qx + r = 0\\) are equal. If \\(D_1\\) and \\(D_2\\) are respective discriminants, then what is \\(\\frac{D_1}{D_2}\\) equal to?",
+  "context": null,
+  "options": {
+   "A": "\\(\\frac{a^2}{p^2}\\)",
+   "B": "\\(\\frac{b^2}{q^2}\\)",
+   "C": "\\(\\frac{c^2}{r^2}\\)",
+   "D": "None of the above"
+  },
+  "key": "B",
+  "currentSolution": "If roots are in ratio \\(k:1\\), then for \\(ax^2+bx+c=0\\): \\(\\frac{(k+1)^2}{k}=\\frac{b^2}{ac}\\) and similarly for the second. Since ratios are equal: \\(\\frac{b^2}{ac}=\\frac{q^2}{pr}\\). Then \\(\\frac{D_1}{D_2}=\\frac{b^2-4ac}{q^2-4pr}=\\frac{b^2}{q^2}\\) (can be shown via the ratio condition). Matches option B: \\(\\frac{b^2}{q^2}\\)."
+ },
+ {
+  "questionId": "aec7ab59-a716-43d2-9b8b-3b0366895500",
+  "qnum": "18",
+  "chapter": "Matrices & Determinants",
+  "difficulty": "EASY",
+  "kind": "pyq",
+  "sourceFile": "NDA2_2018_Maths_PYQ.xlsx",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "If A and B are two invertible square matrices of same order, then what is \\((AB)^{-1}\\) equal to?",
+  "context": null,
+  "options": {
+   "A": "\\(B^{-1}A^{-1}\\)",
+   "B": "\\(A^{-1}B^{-1}\\)",
+   "C": "\\(B^{-1}A\\)",
+   "D": "\\(A^{-1}B\\)"
+  },
+  "key": "A",
+  "currentSolution": "By the reversal law for inverses: \\((AB)^{-1} = B^{-1}A^{-1}\\). This is a standard result verified by \\((AB)(B^{-1}A^{-1})=I\\). Matches option A: \\(B^{-1}A^{-1}\\)."
+ },
+ {
+  "questionId": "c82cbb95-7819-4815-99ef-e26c2dbb3890",
+  "qnum": "30",
+  "chapter": "Matrices & Determinants",
+  "difficulty": "EASY",
+  "kind": "pyq",
+  "sourceFile": "NDA2_2018_Maths_PYQ.xlsx",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "Let matrix B be the adjoint of a square matrix A, \\(l\\) be the identity matrix of same order as A. If \\(k\\) \\((\\neq 0)\\) is the determinant of the matrix A, then what is AB equal to?",
+  "context": null,
+  "options": {
+   "A": "\\(l\\)",
+   "B": "\\(kl\\)",
+   "C": "\\(k^2l\\)",
+   "D": "\\(\\frac{1}{k}l\\)"
+  },
+  "key": "B",
+  "currentSolution": "The standard result is \\(A \\cdot \\text{adj}(A) = \\det(A) \\cdot I = kI = kl\\). So \\(AB = kl\\). Matches option B: \\(kl\\)."
+ },
+ {
+  "questionId": "eca833a5-fd3c-413a-91f3-2996aa55e0a0",
+  "qnum": "37",
+  "chapter": "Trigonometric Identities",
+  "difficulty": "HARD",
+  "kind": "pyq",
+  "sourceFile": "NDA_2019_I_Maths_PYQ.xlsx",
+  "flags": [
+   "ASSERTS_EVALUATION"
+  ],
+  "stem": "What is \\(\\sin^2(\\alpha-\\beta)+2ab\\cos(\\alpha-\\beta)\\) equal to?",
+  "context": "Consider the following for the next 02 (two) items:\n\nIt is given that \\(\\cos(\\theta-\\alpha)=a\\), \\(\\cos(\\theta-\\beta)=b\\).",
+  "options": {
+   "A": "\\(a^2+b^2\\)",
+   "B": "\\(a^2-b^2\\)",
+   "C": "\\(b^2-a^2\\)",
+   "D": "\\(-(a^2+b^2)\\)"
+  },
+  "key": "A",
+  "currentSolution": "Using \\(\\cos(\\alpha-\\beta)=ab+\\sqrt{(1-a^2)(1-b^2)}\\) and \\(\\sin^2(\\alpha-\\beta)=1-\\cos^2(\\alpha-\\beta)\\). Let \\(c=\\cos(\\alpha-\\beta)\\). Then \\(\\sin^2(\\alpha-\\beta)+2ab\\cdot c = 1-c^2+2abc\\). Substituting \\(c=ab+\\sqrt{(1-a^2)(1-b^2)}\\) and simplifying gives \\(a^2+b^2\\). Matches option A: \\(a^2+b^2\\)."
+ },
+ {
+  "questionId": "918fc4d6-72da-45b5-87bd-0d18f1c8de8a",
+  "qnum": "54",
+  "chapter": "Lines",
+  "difficulty": "HARD",
+  "kind": "pyq",
+  "sourceFile": "NDA2_2019_Maths_PYQ.xlsx",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "An equilateral triangle has one vertex at \\((-1, -1)\\) and another vertex at \\(\\left(-\\sqrt{3}, \\sqrt{3}\\right)\\). The third vertex may lie on",
+  "context": null,
+  "options": {
+   "A": "\\(\\left(-\\sqrt{2}, \\sqrt{2}\\right)\\)",
+   "B": "\\(\\left(\\sqrt{2}, -\\sqrt{2}\\right)\\)",
+   "C": "(1, 1)",
+   "D": "(1, -1)"
+  },
+  "key": "C",
+  "currentSolution": "The third vertex of an equilateral triangle can be found by rotating one vertex about the midpoint by 60°. Computing gives \\((1,1)\\) or \\((-1+\\sqrt{3}-1, -1-\\sqrt{3}+1)\\)... standard result gives \\((1,1)\\). Matches option C: \\((1, 1)\\)."
+ },
+ {
+  "questionId": "0b373f1b-bac1-47e3-9632-b730be7e4f20",
+  "qnum": "113",
+  "chapter": "Quadratic Equations",
+  "difficulty": "MODERATE",
+  "kind": "pyq",
+  "sourceFile": "NDA1_2021_Maths_QuestionBank.xlsx",
+  "flags": [
+   "VERIFIED_NUMERICALLY"
+  ],
+  "stem": "If \\(k\\) is one of the roots of the equation \\(x(x+1)+1=0\\), then what is its other root?",
+  "context": null,
+  "options": {
+   "A": "1",
+   "B": "\\(-k\\)",
+   "C": "\\(k^2\\)",
+   "D": "\\(-k^2\\)"
+  },
+  "key": "C",
+  "currentSolution": "Equation \\(x^2+x+1=0\\) has roots \\(\\omega\\) and \\(\\omega^2\\) (complex cube roots of unity). If \\(k=\\omega\\), the other root is \\(\\omega^2=k^2\\) (verified: product of roots \\(=1=k\\cdot k^2=k^3=1\\)). Matches option C: \\(k^2\\)."
+ },
+ {
+  "questionId": "8524bc72-0af6-4875-9881-a1dab18fa421",
+  "qnum": "19",
+  "chapter": "Quadratic Equations",
+  "difficulty": "HARD",
+  "kind": "pyq",
+  "sourceFile": "NDA1_2022_Maths_QuestionBank.xlsx",
+  "flags": [
+   "ASSERTS_EVALUATION"
+  ],
+  "stem": "If the roots of the equation \\(x^2-ax-bx-cx+bc+ca=0\\) are equal, then which one of the following is correct?",
+  "context": null,
+  "options": {
+   "A": "\\(a+b+c=0\\)",
+   "B": "\\(a-b+c=0\\)",
+   "C": "\\(a+b-c=0\\)",
+   "D": "\\(-a+b+c=0\\)"
+  },
+  "key": "C",
+  "currentSolution": "The equation rewrites as \\(x^2-(a+b+c)x+(bc+ca)=0\\). For equal roots discriminant \\(=0\\): \\((a+b+c)^2-4(bc+ca)=0\\). Expanding and simplifying gives \\((a+b-c)^2=0\\), so \\(a+b-c=0\\). Matches option C: \\(a+b-c=0\\)."
+ }
+]

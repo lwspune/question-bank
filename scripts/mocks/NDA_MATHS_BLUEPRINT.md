@@ -511,6 +511,72 @@ shell-mangled needle looks like), and **`content_hash` is RECOMPUTED** when stem
 changes while the row id is preserved so `paper_questions` refs survive. Editing only the
 `solution` leaves the hash untouched by design — which is also a useful self-check.
 
+### 5f. RULE 5 — A SOLUTION MUST DERIVE, NOT ASSERT
+
+> **A solution that names a method and then states its result is not a solution.**
+> The student cannot follow it, and a printed answer key is the one surface where
+> they cannot ask a follow-up question. **Correctness and explicability are separate
+> properties and need separate gates** — RULE 4's blind pass CANNOT see this class,
+> because the key is right, so the row simply AGREEs.
+
+**Diagnostic — a narrative verb carrying the conclusion, with no executed step:**
+
+| Marker | What it is hiding |
+|---|---|
+| `(verified numerically)` / `verified numerically at x = …` | a spot-check standing in for a proof |
+| `evaluating gives` / `simplifying gives` / `works out to` | the evaluation that IS the question |
+| `achieved e.g. by an appropriate …` / `a suitable choice` | the witness that makes the claim checkable |
+| `it can be shown` / `standard result` / `well-known result` | the derivation |
+| `the printed solution …` / `following the book` | an authority the student has never seen |
+
+**BREVITY IS NOT THE TEST — this is the part that is easy to get wrong.** A
+one-step question deserves a one-line solution: *"Sum = 6 × 41 = 246"* is complete.
+Length and equation-count are poor proxies and produce mostly false positives
+(measured: a length/equation probe flagged 15 rows of which 11 were fine). The test
+is whether every claimed step is *executed*, not how long the text is. Prose can be
+complete too — *"the matrix is Hermitian, so its determinant is real"* names a
+property the reader can verify entry by entry.
+
+**Measured on Mock 1: 4 of 120 (3.3%)** — all four with correct keys, so all four
+invisible to the blind pass. One had an actual algebra error underneath the
+hand-waving (a term double-counted, then papered over by deferring to "the printed
+solution"), which is the reason this is a correctness risk and not only a
+readability one.
+
+**Bank-wide NDA Maths (5,347 PUBLIC solutions), by marker:** `it can be shown` /
+`standard result` 34 · `the printed solution` / `following the book` 22 ·
+`evaluating gives` 20 · `verified numerically` 12 · `by an appropriate` 1.
+
+**THE SWEEP'S REAL FINDING — this class is a CORRECTNESS probe, not a readability
+one.** Rewriting the 79 flagged rows produced **62 rewrites, 2 legitimate keeps and
+15 REPORTs where the keyed answer could not be reached at all** — a 19% defect
+rate among flagged rows. Nearly every REPORT is a **mis-transcribed stem sitting
+under a correct key**, and the hand-waving was the symptom: the original author
+could not derive the printed answer from the corrupted stem either, so they
+gestured at a method and asserted the result. Read that way, "verified
+numerically" is a *distress signal*, and grepping for it finds broken questions
+that no key-checking gate can see.
+
+**One trap that justifies banning numeric-check-as-justification outright.** On
+one row the true relation and the transcribed one **intersect at exactly one
+point** — and that point is the obvious angle to spot-check (45°). A numerical
+check there agrees by coincidence and *falsely confirms* the wrong stem. That is
+almost certainly how the original claim was produced. A spot-check cannot
+distinguish "identity" from "coincidence at the point I happened to pick".
+
+**Give the rewriter three verbs, not one.** REWRITE / KEEP / REPORT. Without an
+explicit REPORT option a rewriter facing an unreachable key will manufacture a
+plausible derivation — the exact failure being repaired. Every REPORT is a
+correctness finding for source adjudication and must never be auto-applied.
+
+**Repairing:** `scripts/reviews/apply-solution-rewrites.ts` takes a run file of
+rewrites and refuses one that is a no-op, carries a control character, is
+double-escaped, or **still contains a marker phrase** (rewriting hand-waving into
+different hand-waving). It also asserts **hash neutrality**: `contentHash` covers
+(text, options, answer) and NOT `solution`, so a solution rewrite must leave the
+hash byte-identical — which is what makes this class safe to fix in bulk without
+stranding a single `question_reviews` verdict.
+
 ---
 
 ## 6. Build procedure (paper builder)
@@ -534,7 +600,10 @@ changes while the row id is preserved so `paper_questions` refs survive. Editing
 8. Run the §5d audits scoped to the source files used.
 9. **Run the RULE 4 solution review (§5e)** — blind re-derivation + render check, and
    source-verify every flag before changing anything. Expect ~2-3% of rows to need repair.
-10. Download Question Paper + Answer Key (teacher-gated — needs a TEACHER/org account).
+10. **Run the RULE 5 hand-wave scan (§5f)** — grep the paper's solutions for the marker
+    table. This is a SEPARATE pass from step 9 and finds a different class: step 9 checks
+    the answer is right, step 10 checks the student can see WHY. Expect ~3%.
+11. Download Question Paper + Answer Key (teacher-gated — needs a TEACHER/org account).
 
 **Question order on the printed paper — RULE 3.** Do NOT print in chapter order: that hands the
 student a free difficulty map. Two properties must both hold, and the second is easy to miss:

@@ -1,0 +1,97 @@
+[
+  {
+    "questionId": "f54481a3-f0a1-4c46-b832-9c092b976f1a",
+    "qnum": "1011",
+    "action": "REWRITE",
+    "why": "The old solution set up 16(m^2-n^2) and 16mn and then jumped to the conclusion with \"working through\" plus a numerical check; the sum-and-difference step that actually closes it was never shown.",
+    "solution": "Read the two givens as a sum and a difference.\n\\(4m + 4n = \\cot\\theta[(1+\\sin\\theta)+(1-\\sin\\theta)] = 2\\cot\\theta\\), so \\(m+n = \\dfrac{\\cot\\theta}{2}\\).\n\\(4m - 4n = \\cot\\theta[(1+\\sin\\theta)-(1-\\sin\\theta)] = 2\\cot\\theta\\sin\\theta = 2\\cos\\theta\\), since \\(\\cot\\theta\\sin\\theta = \\cos\\theta\\); so \\(m-n = \\dfrac{\\cos\\theta}{2}\\).\nHence \\(m^2-n^2 = (m+n)(m-n) = \\dfrac{\\cot\\theta\\cos\\theta}{4}\\), and squaring, \\((m^2-n^2)^2 = \\dfrac{\\cot^2\\theta\\cos^2\\theta}{16}\\).\nNow the product of the two givens: \\(16mn = \\cot^2\\theta(1+\\sin\\theta)(1-\\sin\\theta) = \\cot^2\\theta(1-\\sin^2\\theta) = \\cot^2\\theta\\cos^2\\theta\\), so \\(mn = \\dfrac{\\cot^2\\theta\\cos^2\\theta}{16}\\).\nThe two right-hand sides are the same expression, so \\((m^2-n^2)^2 = mn\\). Hence (A)."
+  },
+  {
+    "questionId": "e38ca6e9-537e-43ee-9f92-c1f165b31a56",
+    "qnum": "1053",
+    "action": "REWRITE",
+    "why": "The old solution named the half-angle formula and then said \"after simplification\" without performing the substitution, so the factorisation that produces the answer was invisible.",
+    "solution": "Use the half-angle formula \\(\\tan^2\\dfrac{\\theta}{2} = \\dfrac{1-\\cos\\theta}{1+\\cos\\theta}\\) and substitute the given \\(\\cos\\theta = \\dfrac{\\cos\\alpha-\\cos\\beta}{1-\\cos\\alpha\\cos\\beta}\\).\nNumerator:\n\\(1-\\cos\\theta = \\dfrac{(1-\\cos\\alpha\\cos\\beta)-(\\cos\\alpha-\\cos\\beta)}{1-\\cos\\alpha\\cos\\beta} = \\dfrac{(1+\\cos\\beta)-\\cos\\alpha(1+\\cos\\beta)}{1-\\cos\\alpha\\cos\\beta} = \\dfrac{(1+\\cos\\beta)(1-\\cos\\alpha)}{1-\\cos\\alpha\\cos\\beta}\\).\nDenominator:\n\\(1+\\cos\\theta = \\dfrac{(1-\\cos\\alpha\\cos\\beta)+(\\cos\\alpha-\\cos\\beta)}{1-\\cos\\alpha\\cos\\beta} = \\dfrac{(1-\\cos\\beta)+\\cos\\alpha(1-\\cos\\beta)}{1-\\cos\\alpha\\cos\\beta} = \\dfrac{(1-\\cos\\beta)(1+\\cos\\alpha)}{1-\\cos\\alpha\\cos\\beta}\\).\nDividing, the factor \\(1-\\cos\\alpha\\cos\\beta\\) cancels:\n\\(\\tan^2\\dfrac{\\theta}{2} = \\dfrac{1-\\cos\\alpha}{1+\\cos\\alpha}\\cdot\\dfrac{1+\\cos\\beta}{1-\\cos\\beta} = \\tan^2\\dfrac{\\alpha}{2}\\cdot\\cot^2\\dfrac{\\beta}{2}\\),\nusing \\(\\tan^2\\dfrac{\\alpha}{2} = \\dfrac{1-\\cos\\alpha}{1+\\cos\\alpha}\\) and \\(\\cot^2\\dfrac{\\beta}{2} = \\dfrac{1+\\cos\\beta}{1-\\cos\\beta}\\).\nTaking square roots, \\(\\tan\\dfrac{\\theta}{2} = \\pm\\,\\cot\\dfrac{\\beta}{2}\\tan\\dfrac{\\alpha}{2}\\), so one of the values is \\(\\cot\\dfrac{\\beta}{2}\\tan\\dfrac{\\alpha}{2}\\). Hence (A)."
+  },
+  {
+    "questionId": "5aafa33d-c20a-4f2e-960c-bcb768fdd865",
+    "qnum": "1068",
+    "action": "REWRITE",
+    "why": "The old solution had the right two identities but never accounted for how the n twos are distributed between the innermost multiplier and the outer layers, which is the whole point of the question, and leaned on a numerical check instead.",
+    "solution": "Innermost layer: \\(2(1+\\cos\\theta) = 4\\cos^2\\dfrac{\\theta}{2}\\) by the identity \\(1+\\cos\\phi = 2\\cos^2\\dfrac{\\phi}{2}\\), so \\(\\sqrt{2(1+\\cos\\theta)} = 2\\cos\\dfrac{\\theta}{2}\\) — the positive root, because \\(0^\\circ<\\theta<180^\\circ\\) places \\(\\dfrac{\\theta}{2}\\) in the first quadrant where the cosine is positive.\nEvery outer layer repeats the same step: \\(\\sqrt{2+2\\cos\\phi} = \\sqrt{4\\cos^2\\dfrac{\\phi}{2}} = 2\\cos\\dfrac{\\phi}{2}\\), which halves the angle each time.\nCount the twos: one of them is the multiplier inside the innermost radical, so the remaining \\(n-1\\) are the outer \\(2+\\) terms. The innermost radical gives \\(2\\cos\\dfrac{\\theta}{2}\\), and the \\(n-1\\) outer layers halve that angle \\(n-1\\) further times, giving\n\\(2\\cos\\dfrac{\\theta}{2^{\\,1+(n-1)}} = 2\\cos\\dfrac{\\theta}{2^{n}}\\).\nThe two smallest cases confirm the indexing: for \\(n=1\\) the expression is \\(\\sqrt{2(1+\\cos\\theta)} = 2\\cos\\dfrac{\\theta}{2}\\), and for \\(n=2\\) it is \\(\\sqrt{2+2\\cos\\dfrac{\\theta}{2}} = 2\\cos\\dfrac{\\theta}{4}\\). Hence (A)."
+  },
+  {
+    "questionId": "630637a2-9f90-4a0f-8f42-b0d8f4487c81",
+    "qnum": "1163",
+    "action": "REPORT",
+    "why": "The stem is defective and no option is reachable from it: substituting \\(\\cos 2\\alpha=\\frac{1-t^2}{1+t^2}\\), \\(\\cos 2\\beta=\\frac{1-u^2}{1+u^2}\\) (with \\(t=\\tan\\alpha\\), \\(u=\\tan\\beta\\)) into the given relation yields \\(t^2=\\frac{1+7u^2}{3+u^2}\\), not \\(2u^2\\) — e.g. \\(\\beta=30^\\circ\\) forces \\(\\cos2\\alpha=0\\), so \\(\\tan\\alpha=1\\) while the four options give 0.816, 0.408, 0.236 and 0.577. The numerator's coefficient should be 3, not 2: with \\(\\cos2\\alpha=\\frac{3\\cos2\\beta-1}{3-\\cos2\\beta}\\) the same substitution gives exactly \\(t=\\sqrt2\\,u\\), i.e. option A. Worth noting the trap that let this through: \\(t^2=2u^2\\) and \\(t^2=\\frac{1+7u^2}{3+u^2}\\) intersect only at \\(u^2=1\\), so a spot-check at \\(\\beta=45^\\circ\\) — the natural angle to try — agrees by coincidence and falsely confirms the key."
+  },
+  {
+    "questionId": "1985017e-003e-4cc8-b473-917124956f2f",
+    "qnum": "741",
+    "action": "REPORT",
+    "why": "As stated the answer is not among the options. With three questions at \\(p=\\tfrac14\\) and two at \\(p=\\tfrac13\\), P(at least 4 correct) = P(all 5) + P(one four-option wrong) + P(one three-option wrong) = \\(\\tfrac1{64}\\cdot\\tfrac19 + \\tfrac9{64}\\cdot\\tfrac19 + \\tfrac1{64}\\cdot\\tfrac49 = \\tfrac{14}{576} = \\tfrac{7}{288}\\approx 0.0243\\), which equals none of 3/32, 3/128, 3/256, 3/64 (the nearest, 3/128 = 0.0234, is not equal). The keyed 3/64 is reached exactly when the last two questions have TWO options each: with \\(p=\\tfrac12\\) the same sum is \\(\\tfrac1{64}\\cdot\\tfrac14 + \\tfrac9{64}\\cdot\\tfrac14 + \\tfrac1{64}\\cdot\\tfrac12 = \\tfrac{12}{256} = \\tfrac{3}{64}\\). So the stem's \"two questions have three options each (A, B, C)\" should read \"two options each (A, B)\"; the key is right and the stem is mis-transcribed."
+  },
+  {
+    "questionId": "8136a988-08b6-4a1f-8f12-af1c819b8f11",
+    "qnum": "805",
+    "action": "REWRITE",
+    "why": "The old solution miscounted the conditioning event — it called the denominator 5 entities when tying the 4 American couples still leaves the Indian man and his wife as two separate people (6 entities) — and then asserted the ratio rather than dividing.",
+    "solution": "Ten people sit round a circle. Condition on the given event: each of the four American men is next to his wife.\nDenominator. Tie each American couple into a single block. The circle then holds those 4 blocks plus the Indian man and the Indian wife as two separate people — 6 entities. Six entities can be arranged round a circle in \\((6-1)! = 120\\) ways, and each of the 4 blocks can be internally ordered in 2 ways, so the number of seatings satisfying the condition is \\(120\\times 2^4 = 1920\\).\nNumerator. Now require in addition that the Indian man sits next to his wife. All 5 couples are then blocks — 5 entities — arranged round the circle in \\((5-1)! = 24\\) ways, each of the 5 blocks internally ordered in 2 ways: \\(24\\times 2^5 = 24\\times 32 = 768\\) seatings.\nConditional probability \\(= \\dfrac{768}{1920} = \\dfrac{2}{5}\\). Hence (C)."
+  },
+  {
+    "questionId": "762e3e4f-de6e-4ee7-aeee-65fb95ac8cd6",
+    "qnum": "696",
+    "action": "REWRITE",
+    "why": "The old solution wrote down the determinant condition and the product \\((1+a)(1+b)(1+c)\\) but never combined them — it said \"one finds\" and appealed to a numerical check, hiding the one line that makes the answer exact.",
+    "solution": "A homogeneous system has a non-trivial solution exactly when its coefficient determinant is zero:\n\\(\\begin{vmatrix} a & a & -1 \\\\ b & -1 & b \\\\ -1 & c & c \\end{vmatrix} = a(-c-bc) - a(bc+b) - (bc-1) = -2abc - ab - bc - ca + 1 = 0\\),\nthat is, \\(ab+bc+ca+2abc = 1\\).   ...(i)\nNow put \\(S = \\dfrac{1}{1+a}+\\dfrac{1}{1+b}+\\dfrac{1}{1+c}\\) over the common denominator \\((1+a)(1+b)(1+c)\\). Writing \\(p=a+b+c\\), \\(q=ab+bc+ca\\), \\(r=abc\\):\nnumerator \\(= (1+b)(1+c)+(1+a)(1+c)+(1+a)(1+b) = 3 + 2p + q\\),\ndenominator \\(= (1+a)(1+b)(1+c) = 1 + p + q + r\\).\nSubtract twice the denominator from the numerator:\n\\((3+2p+q) - 2(1+p+q+r) = 1 - q - 2r\\),\nand by (i) \\(q + 2r = 1\\), so this difference is exactly 0.\nTherefore numerator \\(= 2\\times\\) denominator, i.e. \\(S = 2\\). Hence (C)."
+  },
+  {
+    "questionId": "869ddb35-de15-48e9-961e-22971d8aeb10",
+    "qnum": "375",
+    "action": "REWRITE",
+    "why": "Two steps were asserted rather than done — the algebra collapsing the AP condition to \\(n^2-9n+14=0\\), and the claim that the odd-power coefficients sum to \\(2^{n-1}\\).",
+    "solution": "In \\((1+x)^n\\) the general term is \\(T_{r+1} = \\binom{n}{r}x^r\\), so the 2nd, 3rd and 4th coefficients are \\(\\binom{n}{1}, \\binom{n}{2}, \\binom{n}{3}\\) (a 4th term requires \\(n\\ge 3\\)).\nAP condition (middle term is the average of its neighbours):\n\\(2\\binom{n}{2} = \\binom{n}{1} + \\binom{n}{3}\\), i.e. \\(2\\cdot\\dfrac{n(n-1)}{2} = n + \\dfrac{n(n-1)(n-2)}{6}\\), so \\(n(n-1) = n + \\dfrac{n(n-1)(n-2)}{6}\\).\nDivide by \\(n\\) (\\(n>0\\)): \\(n-1 = 1 + \\dfrac{(n-1)(n-2)}{6}\\).\nMultiply by 6: \\(6n-6 = 6 + (n-1)(n-2) = 6 + n^2 - 3n + 2\\), so \\(n^2 - 9n + 14 = 0\\), i.e. \\((n-2)(n-7) = 0\\). Since \\(n=2\\) leaves no 4th term, \\(n = 7\\).\nSum of the coefficients of odd powers: put \\(x=1\\) in \\((1+x)^7\\) to get \\(\\sum_r \\binom{7}{r} = 2^7\\), and put \\(x=-1\\) to get \\(\\sum_r (-1)^r\\binom{7}{r} = 0\\). Subtracting the second from the first cancels every even-power coefficient and doubles every odd-power one, so twice the required sum is \\(2^7 - 0\\), giving \\(2^6 = 64\\). Hence (B)."
+  },
+  {
+    "questionId": "2265828d-9802-4f1d-90d8-70ce4ac650c7",
+    "qnum": "447",
+    "action": "REPORT",
+    "why": "The keyed angle does not satisfy the stated condition. The G.P. condition \\(\\cos^2\\theta = (1-\\sin\\theta)\\tan\\theta\\) clears to \\(\\cos^3\\theta = \\sin\\theta(1-\\sin\\theta)\\); at \\(\\theta=\\pi/3\\) the two sides are \\(0.125\\) and \\(0.8660-0.75 = 0.1160\\) — close enough that a loose numerical check would pass it, but not equal. The equation's only root in \\((0^\\circ,90^\\circ)\\) is \\(\\approx 62.03^\\circ\\), which is not a standard angle, and \\(\\pi/6\\) fails as well (residual \\(0.461\\)). There is also a structural objection: the condition involves \\(\\sin\\theta\\) and \\(\\tan\\theta\\), both odd, so its solution set cannot be the \\(\\pm\\)-symmetric family \\(2n\\pi\\pm\\pi/3\\) of the keyed option (nor option D). The first term of the progression is almost certainly mis-transcribed; I could not identify the intended one with confidence, so no rewrite is offered."
+  },
+  {
+    "questionId": "c3432f0e-6de1-4d20-8ce5-191c17aad619",
+    "qnum": "461",
+    "action": "REWRITE",
+    "why": "The old solution stated the G.P. condition and then jumped straight to the answer in one asserted step — the entire computation converting the condition into the two cotangent powers was missing.",
+    "solution": "G.P. condition (square of the middle term equals the product of the outer two):\n\\(\\cos^2\\theta = \\sin\\theta\\tan\\theta = \\sin\\theta\\cdot\\dfrac{\\sin\\theta}{\\cos\\theta} = \\dfrac{\\sin^2\\theta}{\\cos\\theta}\\),\nso \\(\\cos^3\\theta = \\sin^2\\theta\\).   ...(i)\nUse (i) to express the two powers of \\(\\cot\\theta\\) in terms of \\(\\cos\\theta\\) alone. Cubing (i) gives \\(\\sin^6\\theta = \\cos^9\\theta\\), hence\n\\(\\cot^6\\theta = \\dfrac{\\cos^6\\theta}{\\sin^6\\theta} = \\dfrac{\\cos^6\\theta}{\\cos^9\\theta} = \\dfrac{1}{\\cos^3\\theta}\\),\n\\(\\cot^2\\theta = \\dfrac{\\cos^2\\theta}{\\sin^2\\theta} = \\dfrac{\\cos^2\\theta}{\\cos^3\\theta} = \\dfrac{1}{\\cos\\theta}\\).\nSubtract:\n\\(\\cot^6\\theta - \\cot^2\\theta = \\dfrac{1}{\\cos^3\\theta} - \\dfrac{1}{\\cos\\theta} = \\dfrac{1-\\cos^2\\theta}{\\cos^3\\theta} = \\dfrac{\\sin^2\\theta}{\\cos^3\\theta}\\),\nand by (i) the numerator equals the denominator, so the value is \\(1\\). Hence (A)."
+  },
+  {
+    "questionId": "8390d73a-c1d8-4766-b0ba-0aae25046f3b",
+    "qnum": "77",
+    "action": "REWRITE",
+    "why": "The evaluations were right but the solution ended by deferring to the source and to \"the bank state\" rather than standing on its own reasoning; the underlying stem is defective (statement 2 has lost its \"= 0\"), so the rewrite states the literal reading that supports the key without appealing to any outside authority.",
+    "solution": "\\(f(x) = x^2 - 3\\) is an even function, so \\(f(-1) = f(1) = 1 - 3 = -2\\). Continuing the iteration, \\(f(-2) = 4 - 3 = 1\\) and \\(f(1) = -2\\).\nTherefore \\((f\\circ f\\circ f)(1) = f\\big(f(f(1))\\big) = f\\big(f(-2)\\big) = f(1) = -2\\), and by the same chain \\((f\\circ f\\circ f)(-1) = f\\big(f(-2)\\big) = f(1) = -2\\). The two agree, so statement 1 is correct.\nStatement 2 carries no equality, inequality or claim of any kind: it is the bare expression \\((f\\circ f\\circ f)(-1) - 4(f\\circ f\\circ f)(1) - (f\\circ f)(0)\\). Its value is\n\\(-2 - 4(-2) - f(f(0)) = -2 + 8 - f(-3) = 6 - (9-3) = 6 - 6 = 0\\),\nbut an expression asserts nothing, so there is no proposition in statement 2 that can be judged correct.\nOnly statement 1 is correct. Hence (A)."
+  },
+  {
+    "questionId": "442c15be-3c0f-4a80-85de-3ee9208493a5",
+    "qnum": "43",
+    "action": "REWRITE",
+    "why": "The old solution multiplied \\(\\sqrt3/8\\) by 2 with no explanation and then appealed to an unnamed product formula; neither the pairing nor the triple-angle step was shown.",
+    "solution": "In degrees, \\(\\dfrac{\\pi}{18} = 10^\\circ\\), \\(\\dfrac{5\\pi}{18} = 50^\\circ\\), \\(\\dfrac{7\\pi}{18} = 70^\\circ\\), so \\(K = \\sin 10^\\circ\\,\\sin 50^\\circ\\,\\sin 70^\\circ\\).\nPair the last two, writing \\(50^\\circ = 60^\\circ - 10^\\circ\\) and \\(70^\\circ = 60^\\circ + 10^\\circ\\), and apply the identity \\(\\sin(A-B)\\sin(A+B) = \\sin^2 A - \\sin^2 B\\):\n\\(\\sin 50^\\circ\\sin 70^\\circ = \\sin^2 60^\\circ - \\sin^2 10^\\circ = \\dfrac{3}{4} - \\sin^2 10^\\circ\\).\nTherefore\n\\(K = \\sin 10^\\circ\\left(\\dfrac{3}{4} - \\sin^2 10^\\circ\\right) = \\dfrac{1}{4}\\left(3\\sin 10^\\circ - 4\\sin^3 10^\\circ\\right)\\).\nThe bracket is the triple-angle identity \\(\\sin 3\\theta = 3\\sin\\theta - 4\\sin^3\\theta\\) at \\(\\theta = 10^\\circ\\), so it equals \\(\\sin 30^\\circ = \\dfrac{1}{2}\\).\nHence \\(K = \\dfrac{1}{4}\\cdot\\dfrac{1}{2} = \\dfrac{1}{8}\\). Hence (C)."
+  },
+  {
+    "questionId": "c671868d-11b6-4f98-8dce-6933b8f63393",
+    "qnum": "14",
+    "action": "REWRITE",
+    "why": "The question IS the identity \\(\\operatorname{adj}(A^T) = (\\operatorname{adj}A)^T\\), so citing it as a known fact makes the solution circular; the entry-by-entry proof is three lines and is what the question is testing.",
+    "solution": "Write \\(C_{ij}(A)\\) for the cofactor of the \\((i,j)\\) entry of \\(A\\), so that by definition \\((\\operatorname{adj}A)_{ij} = C_{ji}(A)\\) — the adjoint is the transpose of the cofactor matrix.\nDeleting row \\(i\\) and column \\(j\\) of \\(A^T\\) leaves precisely the transpose of what remains after deleting row \\(j\\) and column \\(i\\) of \\(A\\), and a determinant is unchanged by transposition, so the minors satisfy \\(M_{ij}(A^T) = M_{ji}(A)\\). The sign \\((-1)^{i+j}\\) is symmetric in \\(i\\) and \\(j\\), so \\(C_{ij}(A^T) = C_{ji}(A)\\).\nNow compare the two matrices entry by entry:\n\\(\\big(\\operatorname{adj}A^T\\big)_{ij} = C_{ji}(A^T) = C_{ij}(A)\\),\n\\(\\big((\\operatorname{adj}A)^T\\big)_{ij} = (\\operatorname{adj}A)_{ji} = C_{ij}(A)\\).\nEvery entry matches, so \\(\\operatorname{adj}A^T = (\\operatorname{adj}A)^T\\) and their difference is the zero matrix. Since \\(A\\) is \\(n\\times n\\), its adjoint is \\(n\\times n\\), so the difference is the null matrix of the same order as \\(A\\). Hence (C)."
+  },
+  {
+    "questionId": "aeafc6c5-d565-41b0-9d86-18f329fdcd2a",
+    "qnum": "51",
+    "action": "REWRITE",
+    "why": "The old solution expanded the determinant and then invoked the answer as a known fact; the step joining the coplanarity condition to the sum of the three fractions was never taken.",
+    "solution": "Three vectors are coplanar exactly when their scalar triple product vanishes:\n\\(\\begin{vmatrix} a & 1 & 1 \\\\ 1 & b & 1 \\\\ 1 & 1 & c \\end{vmatrix} = a(bc-1) - (c-1) + (1-b) = abc - a - b - c + 2 = 0\\).   ...(i)\nPut \\(S = \\dfrac{1}{1-a}+\\dfrac{1}{1-b}+\\dfrac{1}{1-c}\\) over the common denominator \\((1-a)(1-b)(1-c)\\), which is non-zero because \\(a,b,c \\neq 1\\):\nnumerator \\(= (1-b)(1-c) + (1-a)(1-c) + (1-a)(1-b)\\)\n\\(= (1-b-c+bc) + (1-a-c+ac) + (1-a-b+ab) = 3 - 2(a+b+c) + (ab+bc+ca)\\),\ndenominator \\(= (1-a)(1-b)(1-c) = 1 - (a+b+c) + (ab+bc+ca) - abc\\).\nSubtract the denominator from the numerator; the \\((ab+bc+ca)\\) terms cancel and the linear terms combine:\nnumerator \\(-\\) denominator \\(= 2 - (a+b+c) + abc\\),\nwhich is exactly the left-hand side of (i) and is therefore 0.\nSo the numerator equals the denominator and \\(S = 1\\). Hence (B)."
+  }
+]

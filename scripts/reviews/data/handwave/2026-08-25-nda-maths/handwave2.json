@@ -1,0 +1,296 @@
+[
+ {
+  "questionId": "ee241b3c-739c-48b5-bc83-f13537f1b284",
+  "qnum": "3031",
+  "chapter": "Differential Equations",
+  "difficulty": "MODERATE",
+  "kind": "practice",
+  "sourceFile": "NDA_Maths_Practice__Calculus__Differential_Equations.pdf",
+  "flags": [
+   "DEFERS_TO_SOURCE"
+  ],
+  "stem": "The solution of the differential equation \\(\\dfrac{dy}{dx} = \\dfrac{y}{x} + x\\sin\\dfrac{y}{x}\\) is",
+  "context": null,
+  "options": {
+   "A": "\\(y = x\\tan^{-1}(\\log x)\\)",
+   "B": "\\(y = 2x\\tan^{-1}(Ce^x)\\)",
+   "C": "\\(2y = x\\cos^{-1}(Ce^x)\\)",
+   "D": "\\(2y = x\\cot^{-1}(Ce^x)\\)"
+  },
+  "key": "B",
+  "currentSolution": "Homogeneous form (as printed): put \\(y = vx\\), reduce and integrate the separable part to obtain \\(\\tan\\dfrac{v}{2}\\) type expression, yielding \\(2y = x\\cot^{-1}(Ce^x)\\). Hence (B)."
+ },
+ {
+  "questionId": "fca7bec8-b26e-4a40-b204-3986e8d6dd52",
+  "qnum": "3039",
+  "chapter": "Differential Equations",
+  "difficulty": "HARD",
+  "kind": "practice",
+  "sourceFile": "NDA_Maths_Practice__Calculus__Differential_Equations.pdf",
+  "flags": [
+   "DEFERS_TO_SOURCE"
+  ],
+  "stem": "\\(\\log x\\dfrac{dy}{dx} + \\dfrac{y}{x} = \\sin 2x\\) is",
+  "context": null,
+  "options": {
+   "A": "\\(y\\log|x| = C - \\dfrac{1}{2}\\cos x\\)",
+   "B": "\\(y\\log|x| = C + \\dfrac{1}{2}\\cos 2x\\)",
+   "C": "\\(y\\log|x| = C - \\dfrac{1}{2}\\cos 2x\\)",
+   "D": "\\(xy\\log|x| = C - \\dfrac{1}{2}\\cos 2x\\)"
+  },
+  "key": "C",
+  "currentSolution": "The equation (as printed) is linear with IF making the left side an exact derivative \\(\\dfrac{d}{dx}(y\\log|x|)\\). Integrating the right side \\(\\sin 2x\\): \\(\\int \\sin 2x\\,dx = -\\dfrac{1}{2}\\cos 2x + C\\). Thus \\(y\\log|x| = C - \\dfrac{1}{2}\\cos 2x\\). Hence (C)."
+ },
+ {
+  "questionId": "0f327546-fd8c-4e0d-8490-c041b33a3671",
+  "qnum": "2776",
+  "chapter": "Definite Integration",
+  "difficulty": "MODERATE",
+  "kind": "practice",
+  "sourceFile": "NDA_Maths_Practice__Calculus__Definite_Integration.pdf",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "\\(\\int_{0}^{\\pi/2}\\dfrac{1}{a^2\\sin^2 x+b^2\\cos^2 x}\\,dx\\) is equal to",
+  "context": null,
+  "options": {
+   "A": "\\(\\dfrac{\\pi a}{4b}\\)",
+   "B": "\\(\\dfrac{\\pi b}{4a}\\)",
+   "C": "\\(\\dfrac{\\pi}{2ab}\\)",
+   "D": "\\(\\dfrac{\\pi a}{2b}\\)"
+  },
+  "key": "C",
+  "currentSolution": "Standard result: \\(\\int_{0}^{\\pi/2}\\dfrac{dx}{a^2\\sin^2 x+b^2\\cos^2 x}=\\dfrac{\\pi}{2ab}\\) (divide by \\(\\cos^2 x\\) and substitute \\(t=\\tan x\\)). Hence (C)."
+ },
+ {
+  "questionId": "8335220c-dc3d-4c6d-886c-d2e2f6afead4",
+  "qnum": "2813",
+  "chapter": "Definite Integration",
+  "difficulty": "HARD",
+  "kind": "practice",
+  "sourceFile": "NDA_Maths_Practice__Calculus__Definite_Integration.pdf",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "\\(\\int_{0}^{\\pi/4}\\log\\left(\\dfrac{\\sin x+\\cos x}{\\cos x}\\right)dx\\) is equal to",
+  "context": null,
+  "options": {
+   "A": "\\(\\dfrac{\\pi}{2}\\log 2\\)",
+   "B": "\\(\\log 2\\)",
+   "C": "\\(\\dfrac{\\pi}{4}\\log 2\\)",
+   "D": "\\(\\dfrac{\\pi}{8}\\log 2\\)"
+  },
+  "key": "D",
+  "currentSolution": "\\(\\log\\dfrac{\\sin x+\\cos x}{\\cos x}=\\log(1+\\tan x)\\). The standard result \\(\\int_{0}^{\\pi/4}\\log(1+\\tan x)\\,dx=\\dfrac{\\pi}{8}\\log 2\\) (King's rule \\(x\\to\\tfrac{\\pi}{4}-x\\)). Hence (D)."
+ },
+ {
+  "questionId": "83357322-0464-40ac-b749-025abd04e4be",
+  "qnum": "2879",
+  "chapter": "Definite Integration",
+  "difficulty": "HARD",
+  "kind": "practice",
+  "sourceFile": "NDA_Maths_Practice__Calculus__Definite_Integration.pdf",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "\\(\\displaystyle\\int_{0}^{\\pi/2} \\log(\\sin x)\\,dx = \\)",
+  "context": null,
+  "options": {
+   "A": "\\(\\pi\\log 2\\)",
+   "B": "\\(-\\pi\\log 2\\)",
+   "C": "\\(\\pi\\log\\dfrac{1}{\\sqrt{2}}\\)",
+   "D": "\\(-\\dfrac{\\pi}{2}\\log 2\\)"
+  },
+  "key": "D",
+  "currentSolution": "The standard result \\(\\int_{0}^{\\pi/2}\\log(\\sin x)\\,dx=\\int_{0}^{\\pi/2}\\log(\\cos x)\\,dx=-\\frac{\\pi}{2}\\log 2\\). (Adding the two equal integrals and using \\(\\sin x\\cos x=\\tfrac12\\sin 2x\\) gives \\(2I=-\\frac{\\pi}{2}\\log 2\\); hence \\(I=-\\frac{\\pi}{2}\\log 2\\).) Hence (D)."
+ },
+ {
+  "questionId": "cfb4a758-256c-475c-897b-d51d92887261",
+  "qnum": "2735",
+  "chapter": "Indefinite Integration",
+  "difficulty": "HARD",
+  "kind": "practice",
+  "sourceFile": "NDA_Maths_Practice__Calculus__Indefinite_Integration.pdf",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "\\(\\displaystyle\\int \\cos(\\log x)\\,dx = F(x) + c\\), where \\(c\\) is an arbitrary constant. Here \\(F(x) =\\)",
+  "context": null,
+  "options": {
+   "A": "\\(x[\\cos(\\log x) + \\sin(\\log x)]\\)",
+   "B": "\\(x[\\cos(\\log x) - \\sin(\\log x)]\\)",
+   "C": "\\(\\dfrac{x}{2}[\\cos(\\log x) + \\sin(\\log x)]\\)",
+   "D": "\\(\\dfrac{x}{2}[\\cos(\\log x) - \\sin(\\log x)]\\)"
+  },
+  "key": "C",
+  "currentSolution": "Integrating by parts twice (or using the standard result), \\(\\displaystyle\\int \\cos(\\log x)\\,dx = \\dfrac{x}{2}[\\cos(\\log x) + \\sin(\\log x)] + c\\). So \\(F(x) = \\dfrac{x}{2}[\\cos(\\log x) + \\sin(\\log x)]\\). Matches option C. Hence (C)."
+ },
+ {
+  "questionId": "87665d39-65c3-4a35-8365-9dcbeea389b4",
+  "qnum": "2578",
+  "chapter": "Application of Derivatives",
+  "difficulty": "MODERATE",
+  "kind": "practice",
+  "sourceFile": "NDA_Maths_Practice__Calculus__Application_of_Derivatives.pdf",
+  "flags": [
+   "ASSERTS_EVALUATION"
+  ],
+  "stem": "The distance, from the origin, of the normal to the curve, \\(x = 2\\cos t + 2t \\sin t\\), \\(y = 2 \\sin t - 2t \\cos t\\) at \\(t = \\frac{\\pi}{4}\\) is",
+  "context": null,
+  "options": {
+   "A": "\\(4\\)",
+   "B": "\\(2\\sqrt{2}\\)",
+   "C": "\\(2\\)",
+   "D": "\\(\\sqrt{2}\\)"
+  },
+  "key": "C",
+  "currentSolution": "\\(x = 2\\cos t + 2t\\sin t\\), \\(\\frac{dx}{dt} = -2\\sin t + 2\\sin t + 2t\\cos t = 2t\\cos t\\). \\(y = 2\\sin t - 2t\\cos t\\), \\(\\frac{dy}{dt} = 2\\cos t - 2\\cos t + 2t\\sin t = 2t\\sin t\\). So \\(\\frac{dy}{dx} = \\tan t\\), slope of normal \\(= -\\cot t\\). At \\(t = \\frac{\\pi}{4}\\): point \\(\\left(\\sqrt{2} + \\frac{\\pi}{\\sqrt{2}}, \\sqrt{2} - \\frac{\\pi}{\\sqrt{2}}\\right)\\), slope of normal \\(= -1\\). The normal works out to \\(x + y = 2\\sqrt{2}\\), whose distance from the origin is \\(\\frac{2\\sqrt{2}}{\\sqrt{2}} = 2\\). Hence (C)."
+ },
+ {
+  "questionId": "077fa5c4-82ec-4cc3-ad5f-7c1b5b45c85e",
+  "qnum": "2526",
+  "chapter": "Application of Derivatives",
+  "difficulty": "EASY",
+  "kind": "practice",
+  "sourceFile": "NDA_Maths_Practice__Calculus__Application_of_Derivatives.pdf",
+  "flags": [
+   "DEFERS_TO_SOURCE"
+  ],
+  "stem": "The function \\(f(x) = x^2 + 2x - 5\\) is strictly increasing in the interval",
+  "context": null,
+  "options": {
+   "A": "\\([-1, \\infty)\\)",
+   "B": "\\((-\\infty, -1)\\)",
+   "C": "\\((-\\infty, -1]\\)",
+   "D": "\\((-1, \\infty)\\)"
+  },
+  "key": "D",
+  "currentSolution": "[Source defect — two options are correct. Source-verified against the printed NDA Maths practice Calculus booklet Q2526 and its answer key: the printed options are exactly (a) \\([-1,\\infty)\\), (b) \\((-\\infty,-1)\\), (c) \\((-\\infty,-1]\\), (d) \\((-1,\\infty)\\), and the printed key is (d). But \\(f\\) is strictly increasing on the CLOSED interval too — for \\(-1\\le x_1<x_2\\) we have \\(f(x_1)<f(x_2)\\), e.g. \\(f(-1)=-6<f(0)=-5\\) — so option (a) is equally true and is in fact the maximal such interval. Strict monotonicity does not require \\(f'>0\\) at an isolated endpoint. The printed key (d) is retained here to match the source; a student answering (a) is not wrong.] \\(f(x)=x^{2}+2x-5\\Rightarrow f'(x)=2x+2\\), which is positive for \\(x>-1\\). Hence \\(f\\) is strictly increasing on \\((-1,\\infty)\\), and equally on \\([-1,\\infty)\\) since \\(f'\\) vanishes only at the single point \\(x=-1\\). Matches option D as printed."
+ },
+ {
+  "questionId": "ce7779cd-0984-4b44-8ff2-a26fd6faabb2",
+  "qnum": "2406",
+  "chapter": "Differentiation",
+  "difficulty": "MODERATE",
+  "kind": "practice",
+  "sourceFile": "NDA_Maths_Practice__Calculus__Differentiation.pdf",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "If \\(y = \\sin^{-1}\\left(2x - \\sqrt{1 - x^2}\\right)\\), \\(-\\frac{1}{\\sqrt{2}} \\leq x \\leq \\frac{1}{\\sqrt{2}}\\), then \\(\\frac{dy}{dx}\\) is equal to",
+  "context": null,
+  "options": {
+   "A": "\\(\\frac{x}{\\sqrt{1 - x^2}}\\)",
+   "B": "\\(\\frac{1}{\\sqrt{1 - x^2}}\\)",
+   "C": "\\(\\frac{2}{\\sqrt{1 - x^2}}\\)",
+   "D": "\\(\\frac{2x}{\\sqrt{1 - x^2}}\\)"
+  },
+  "key": "C",
+  "currentSolution": "Put \\(x = \\sin\\theta\\), so \\(\\sqrt{1 - x^2} = \\cos\\theta\\) and \\(2x - \\sqrt{1 - x^2}\\) is not a standard double-angle; instead note the standard result \\(\\sin^{-1}\\left(2x\\sqrt{1 - x^2}\\right)\\)-type reduces here so that \\(y = 2\\sin^{-1}x\\) over the given domain. Differentiating, \\(\\frac{dy}{dx} = \\frac{2}{\\sqrt{1 - x^2}}\\). Hence (C)."
+ },
+ {
+  "questionId": "f8f5923f-f1a6-4ccf-9d3a-b7e0ca7e57b1",
+  "qnum": "2461",
+  "chapter": "Differentiation",
+  "difficulty": "MODERATE",
+  "kind": "practice",
+  "sourceFile": "NDA_Maths_Practice__Calculus__Differentiation.pdf",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "If \\(x^m y^n=(x+y)^{m+n}\\), then \\(\\dfrac{dy}{dx}\\) is equal to",
+  "context": null,
+  "options": {
+   "A": "\\(\\dfrac{x+y}{xy}\\)",
+   "B": "\\(xy\\)",
+   "C": "\\(0\\)",
+   "D": "\\(\\dfrac{y}{x}\\)"
+  },
+  "key": "D",
+  "currentSolution": "Taking logs of \\(x^m y^n=(x+y)^{m+n}\\): \\(m\\log x+n\\log y=(m+n)\\log(x+y)\\). Differentiating gives \\(\\dfrac{m}{x}+\\dfrac{n}{y}y'=(m+n)\\dfrac{1+y'}{x+y}\\). This simplifies (standard result) to \\(\\dfrac{dy}{dx}=\\dfrac{y}{x}\\). Hence (D)."
+ },
+ {
+  "questionId": "30dbcadf-295c-4aa1-8fff-bb9e6166c5da",
+  "qnum": "2259",
+  "chapter": "Limits & Continuity",
+  "difficulty": "EASY",
+  "kind": "practice",
+  "sourceFile": "NDA_Maths_Practice__Calculus__Limits_and_Continuity.pdf",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "\\(\\lim_{x \\to 1} \\dfrac{x^m - 1}{x^n - 1} =\\)",
+  "context": null,
+  "options": {
+   "A": "\\(\\dfrac{n}{m}\\)",
+   "B": "\\(\\dfrac{m}{n}\\)",
+   "C": "\\(\\dfrac{2m}{n}\\)",
+   "D": "\\(\\dfrac{2n}{m}\\)"
+  },
+  "key": "B",
+  "currentSolution": "Using the standard result \\(\\lim_{x \\to 1} \\dfrac{x^p - 1}{x^q - 1} = \\dfrac{p}{q}\\) with \\(p = m\\), \\(q = n\\): the limit is \\(\\dfrac{m}{n}\\). Matches option B. Hence (B)."
+ },
+ {
+  "questionId": "27c4c954-a946-463c-939b-488f6722411b",
+  "qnum": "1217",
+  "chapter": "Trigonometric Equations",
+  "difficulty": "HARD",
+  "kind": "practice",
+  "sourceFile": "NDA_Maths_Practice__Trigonometry__Trigonometric_Equations.pdf",
+  "flags": [
+   "VERIFIED_NUMERICALLY"
+  ],
+  "stem": "The general solution of \\(\\tan\\left(\\frac{\\pi}{2}\\sin\\theta\\right) = \\cot\\left(\\frac{\\pi}{2}\\cos\\theta\\right)\\) is",
+  "context": null,
+  "options": {
+   "A": "\\(\\theta = 2r\\pi + \\frac{\\pi}{2}, r \\in Z\\)",
+   "B": "\\(\\theta = 2r\\pi, r \\in Z\\)",
+   "C": "\\(\\theta = 2r\\pi + \\frac{\\pi}{2}\\) and \\(\\theta = 2r\\pi, r \\in Z\\)",
+   "D": "None of the above"
+  },
+  "key": "D",
+  "currentSolution": "Since \\(\\tan A=\\cot B\\iff A+B=n\\pi+\\dfrac{\\pi}{2}\\), the equation gives \\(\\dfrac{\\pi}{2}\\sin\\theta+\\dfrac{\\pi}{2}\\cos\\theta=n\\pi+\\dfrac{\\pi}{2}\\), i.e. \\(\\sin\\theta+\\cos\\theta=2n+1\\). Because \\(|\\sin\\theta+\\cos\\theta|\\le\\sqrt2\\), the only admissible odd integers are \\(\\pm1\\). \\(\\sin\\theta+\\cos\\theta=1\\Rightarrow\\theta=2r\\pi\\) or \\(\\theta=2r\\pi+\\dfrac{\\pi}{2}\\); the second is INADMISSIBLE, since \\(\\tan\\!\\left(\\dfrac{\\pi}{2}\\sin\\theta\\right)=\\tan\\dfrac{\\pi}{2}\\) is undefined there. \\(\\sin\\theta+\\cos\\theta=-1\\Rightarrow\\theta=2r\\pi+\\pi\\) or \\(\\theta=2r\\pi-\\dfrac{\\pi}{2}\\); the first IS admissible — at \\(\\theta=\\pi\\), \\(\\tan\\!\\left(\\dfrac{\\pi}{2}\\sin\\pi\\right)=\\tan 0=0\\) and \\(\\cot\\!\\left(\\dfrac{\\pi}{2}\\cos\\pi\\right)=\\cot\\!\\left(-\\dfrac{\\pi}{2}\\right)=0\\) — while the second is again undefined. So the complete solution set is \\(\\theta=r\\pi\\), \\(r\\in Z\\), i.e. every integer multiple of \\(\\pi\\), not merely the even ones. Option B, \\(\\theta=2r\\pi\\), lists only valid solutions but MISSES the odd multiples, so it is incomplete; option A and hence option C contain the inadmissible \\(\\pi/2\\) branch. No listed option is the full solution set. Matches option D: None. (Verified numerically: \\(\\theta=0,\\pi,2\\pi\\) all satisfy the equation, while \\(\\theta=\\pi/2\\) and \\(3\\pi/2\\) leave both sides undefined.)"
+ },
+ {
+  "questionId": "928970cf-c8f8-47bb-9075-e8fad9886da7",
+  "qnum": "1030",
+  "chapter": "Trigonometric Identities",
+  "difficulty": "HARD",
+  "kind": "practice",
+  "sourceFile": "NDA_Maths_Practice__Trigonometry__Trigonometric_Identities.pdf",
+  "flags": [
+   "VERIFIED_NUMERICALLY"
+  ],
+  "stem": "If \\(x\\sin\\theta = y\\cos\\theta = \\dfrac{2z\\tan\\theta}{1 - \\tan^2\\theta}\\), then \\(4z^2(x^2 + y^2) =\\)",
+  "context": null,
+  "options": {
+   "A": "\\((x^2 + y^2)^3\\)",
+   "B": "\\((x^2 - y^2)^3\\)",
+   "C": "\\((x^2 - y^2)^2\\)",
+   "D": "\\((x^2 + y^2)^2\\)"
+  },
+  "key": "C",
+  "currentSolution": "The common value is \\(z\\tan 2\\theta = K\\), so \\(x = \\frac{K}{\\sin\\theta},\\ y = \\frac{K}{\\cos\\theta}\\). Working through, \\(4z^2(x^2 + y^2) = (x^2 - y^2)^2\\). (Verified numerically.) Hence (C)."
+ },
+ {
+  "questionId": "a89a52c5-7f22-4180-b453-e070c9cf1e15",
+  "qnum": "1065",
+  "chapter": "Trigonometric Identities",
+  "difficulty": "HARD",
+  "kind": "practice",
+  "sourceFile": "NDA_Maths_Practice__Trigonometry__Trigonometric_Identities.pdf",
+  "flags": [
+   "VERIFIED_NUMERICALLY"
+  ],
+  "stem": "\\(\\tan\\frac{\\pi}{5} + 2\\tan\\frac{2\\pi}{5} + 4\\cot\\frac{4\\pi}{5} =\\)",
+  "context": null,
+  "options": {
+   "A": "\\(\\cot\\frac{\\pi}{5}\\)",
+   "B": "\\(\\cot\\frac{2\\pi}{5}\\)",
+   "C": "\\(\\tan\\frac{3\\pi}{5}\\)",
+   "D": "\\(\\cot\\frac{4\\pi}{5}\\)"
+  },
+  "key": "A",
+  "currentSolution": "Using the recurrence \\(\\cot\\theta - \\tan\\theta = 2\\cot 2\\theta\\) repeatedly with \\(\\theta = \\frac{\\pi}{5}\\): \\(\\tan\\frac{\\pi}{5} + 2\\tan\\frac{2\\pi}{5} + 4\\cot\\frac{4\\pi}{5} = \\cot\\frac{\\pi}{5}\\). (Verified numerically.) Hence (A)."
+ }
+]
