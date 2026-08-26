@@ -1,12 +1,30 @@
 # NDA Maths mock-test-series ingestion
 
-Ingests the LWS **"NDA Math 1 to 10 - Complete Mock"** author manuscripts (10 papers
-× 120 questions) into the bank as **NDA / Mathematics, `question_kind='practice'`**.
+Ingests LWS authored mock papers into the bank as **NDA / Mathematics,
+`question_kind='practice'`**. Two sources, both 120 q on the NDA Paper I blueprint:
+
+| ids | source | folder |
+|---|---|---|
+| `m1`–`m10` | "NDA Math 1 to 10 - Complete Mock" author manuscripts | `Test_Series/NDA Math 1 to 10 - Complete Mock/` |
+| `w1`–`w4` | the **weekly NDA-1 2026 series**, dated 8-3-26 → 29-3-26 | `Test_Series/NDA_Mock_Tests/` |
+
+They are SIBLING folders with confusingly similar names and they are different
+papers. See "The weekly series" below for what differs — it is not a variant of
+the ten-paper series, it is a second source that happens to fit the same pipeline.
 
 These are *authored* mock papers, not real NDA sittings, so they must not enter the
 audited PYQ corpus. One `source_file` per paper keeps each mock reconstructable — a
 prerequisite if they later become `/mock` timed tests (they match the NDA Paper I
 blueprint exactly: 120 q · 300 marks · 150 min).
+
+**The weekly folder holds five papers and only four are ingested.** Its Test-5
+(5-4-26) **is** the paper already committed as `NDA_Maths_Mock_Test_03.docx`: a
+stem-similarity pass over all 6,829 NDA Maths rows matched 68 of its questions at
+Jaccard 1.00, every one at the SAME question number and 100% concentrated in that
+one `source_file`. Mocks 1–4 by contrast show only ten incidental single-question
+overlaps between them, at differing numbers and scattered across sources. So the
+two folders are not disjoint, and **any further paper from either must be
+similarity-checked against the bank before it is added**, not assumed new.
 
 ## Why this is the pandoc lane, not the vision lane
 
@@ -30,6 +48,11 @@ npx tsx scripts/nda-mock/dump-blind.ts m1 20
 # 3. Agent pass (6 agents x 20 q). Each derives the answer FROM SCRATCH and
 #    classifies into the handout's taxonomy -> data/m1.blind.<range>.json.
 #    Dispatch ~3 at a time; larger fan-outs have hit the account session limit.
+#    The contract is BLIND_BRIEF.md — point each agent at it rather than
+#    restating the rules inline, and name the packet, handout and output path.
+#    It carries the one rule that matters (config.ts and the *.extract.json
+#    carry the printed key, so an agent that opens either is no longer blind)
+#    and the describe-never-repair rule for defective questions.
 
 # 2b. Prove the math RENDERS. Delimiter balance is not enough — this runs every
 #     zone through the real KaTeX parser using the site's own splitter.
@@ -144,11 +167,83 @@ all on the questions it introduces:
 | `Q.(75-77) :` | 8 — no `Nos.` at all, and the paren sits AFTER the `Q.` |
 | `(Q. Nos. 114 and 115)` | 1 — joined by "and", not a dash |
 
+## The weekly series (w1–w4) — what differs, measured
+
+Same pandoc lane, same downstream steps. Four structural differences, each of
+which silently lost data before it was handled:
+
+| | w1 | w2 | w3 | w4 |
+|---|---|---|---|---|
+| standalone GRID answer key | yes, 120/120 | **none** | yes, 119/120 | **none** |
+| letters printed on solutions | 33 | 100 | 87 | 103 |
+| questions with NO key from any source | 0 | **20** | 0 | **17** |
+| shared-context sets | 1 | 16 | 3 | 8 |
+
+- **The answer key is a standalone DOCX holding a GRID table** (`answerKeyDocx`),
+  not a tail `ANSWER KEYS` block. Row *k* carries six `(number, letter)` pairs —
+  k, k+20, k+40, k+60, k+80, k+100 — so 120 answers fit in 20 rows. Read by
+  `parseGridAnswerKey`, which REPORTS duplicate and missing labels rather than
+  resolving them; see the w3 defect under Errata.
+- **w2 and w4 have no key document at all**, so 37 questions across them have no
+  answer from any source and rest entirely on the blind derivation. Those are
+  `resolutions` entries carrying the derivation and its numeric verification.
+- **Stray `dir="rtl"` runs split question NUMBERS.** Two shapes, both handled by
+  `normalizeRtlSpans` and both invisible downstream — a lost question just makes
+  the paper commit short:
+  - `**2**[0]{dir="rtl"}**.**` — the number split mid-digit;
+  - `[40]{dir="rtl"}**.**` — the whole number wrapped, leaving the bold marker
+    between the number and its terminator (`40**.**`).
+  w3 lost **26 of its 120** questions to these. The same markers wrap ordinary
+  prose, so the rule is an unwrap, never a delete.
+- **Solution heads carry the answer in four spellings** — `N. Ans. (d) :`,
+  `N. Ans-(b)`, `N. Ans- (c)`, `N. Sol. (c)`, plus a bare `N. (b)` — and mix
+  within one document. `parseInlineAnswers` accepts an optional answer word
+  between the number and the letter; without it w2 read 45 of its 100 printed
+  letters and the other 55 reported as "no answer from any source", which is
+  indistinguishable from a paper that prints no key.
+
+**A fifth `Directions` spelling: `(Q Nos. 57-59)`, no dot after the Q** (w4).
+`NOS_RANGE` already tolerated it; `tests/nda-mock-parse.test.ts` now pins that so
+it cannot regress.
+
+### Data printed as a picture of a table
+
+Five questions across the weekly series print their data as an image, leaving the
+stem unanswerable — the defect m3 Q60/Q93 still carries as an open item below.
+These are clean grids, so they are transcribed as **GFM pipe-tables** into the
+stem or the shared context (the bank's own convention: renders on `/browse`,
+exports as a native Word table) rather than attached as an image:
+
+| question | data |
+|---|---|
+| w2 Q104 | x/f frequency row |
+| w2 Q110–112 (set) | variate/frequency distribution, total 229 |
+| w3 Q90 | probability distribution (the f values sum to 1) |
+| w3 Q94–98 (set) | a deliberately INCOMPLETE performance table |
+| w4 Q98 | marks/number-of-girls distribution |
+
+Two of these transcriptions are corroborated by the paper's own keys rather than
+trusted: w2's missing frequency x = 34 reproduces the printed keys for Q111 and
+Q112, and w3's three recovered numbers (10, 32, 30) reproduce all five keys of
+the Q94–98 set simultaneously.
+
+**One figure is a genuine diagram and is HELD** — w2 Q109 asks what a plotted
+curve represents, and the answer *is* what the curve is called, so it can be
+neither transcribed nor described without stating it. This pipeline has no
+`image_url` attach path; re-admit the row if one is added.
+
 ## Parser traps already paid for
 
 Each of these silently lost real questions before it was fixed; the tests in
 `tests/nda-mock-parse.test.ts` pin all of them.
 
+- **A question's own NUMBER can be printed inside its stem.** w2 Q108 reads
+  "...the deviations of 50 observations from 30 is **108.** then the mean...", so
+  no Q108 start exists to split on. That costs TWO questions, not one: with no
+  boundary, Q108's text and its four options are absorbed into Q107, and under
+  "last chain wins" Q107 then ships with Q108's options and a key pointing into
+  them — a wrong answer on a question that looks intact. Q107 is repaired by
+  errata and Q108 supplied via `extraQuestions` (its first use in this pipeline).
 - **A 4-space-indented sub-list is not a question.** Q4 embeds "1. AB is defined /
   2. BA is defined"; reading those as question starts truncated the paper at Q4 and
   lost 89 of 120. Hence the ≤3-space cap in `Q_LEAD`, and no whitespace between the
@@ -209,6 +304,16 @@ Each of these silently lost real questions before it was fixed; the tests in
 the extracted text before being trusted** — of Mock 1's four `Corrections.docx` items,
 two were already applied in the Author Manuscript. Recording that explicitly stops a
 later session "re-applying" a fix and corrupting a correct value.
+
+**The weekly series' sharpest key defect is a mislabelled grid cell.** w3's key
+prints "59" in the cell where 49 belongs, so 59 appears twice and 49 never does —
+and a first-wins read would hand Q59 the letter belonging to Q49 and report a
+complete key, i.e. a wrong answer with no symptom. The grid's own geometry fixes
+it: the offending cell is the 3rd pair of the row beginning 9 (9, 29, **49**, 69,
+89, 109), so its C is Q49's, and the genuine Q59 sits in the row beginning 19 and
+reads B. The solution document independently gives B — and that was the ONLY
+disagreement between the grid and the 87 letters printed on w3's solutions, which
+is what makes the diagnosis safe rather than a guess.
 
 `optionTexts` is the escape hatch for when the source's own option *labels* are broken
 (Q17 prints `(a)(b)(c)(c)`): the parser refuses to guess which duplicate was meant to
