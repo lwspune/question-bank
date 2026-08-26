@@ -1,0 +1,96 @@
+[
+ {
+  "questionId": "d4b22b39-0d02-472d-9977-ae698e9f5637",
+  "qnum": "34",
+  "action": "REPORT",
+  "why": "The old solution breaks off mid-algebra and asserts the answer; worked through, the tower height is \\(h\\cos 2\\theta\\) (option C), not the keyed \\(h\\cos\\theta\\). With tower \\(T\\) at distance \\(d\\): \\(T=d\\tan\\theta\\) and \\(h=d(\\tan 2\\theta-\\tan\\theta)=d\\sin\\theta/(\\cos\\theta\\cos 2\\theta)\\), so \\(T/h=\\cos 2\\theta\\). At \\(\\theta=30^\\circ\\), \\(d=1\\): \\(T=0.5774\\), \\(h=1.1547\\), \\(h\\cos 2\\theta=0.5774\\) while \\(h\\cos\\theta=1.0000\\). Either the key should be C or the stem's angles are mislabelled."
+ },
+ {
+  "questionId": "4ac27c60-ea91-4d6b-8b1f-ff3f84c716e5",
+  "qnum": "57",
+  "action": "REPORT",
+  "why": "With the exponent \\(4/3\\) given in the stem, cubing both sides yields \\(\\left[1+(y')^2\\right]^3=(y'')^4\\), so the highest-order derivative carries power 4 and the degree is 4 (option D), not the keyed 3. Degree 3 follows only from the mirror-image stem \\(1+(y')^2=(y'')^{3/4}\\), which on raising to the 4th power gives \\(\\left[1+(y')^2\\right]^4=(y'')^3\\). So either the stem exponent is transposed or the key is wrong; the old solution's closing sentence contradicts its own first line."
+ },
+ {
+  "questionId": "d6603eac-055d-4cc3-934d-f2508a7d66a3",
+  "qnum": "77",
+  "action": "REPORT",
+  "why": "\\(f'(x)=-m/x^2+2n\\) and \\(f'(2)=0\\) give \\(-m/4+2n=0\\), i.e. \\(m=8n\\). That fixes \\(m-8n=0\\) but leaves \\(m+8n=16n\\) undetermined, so the stem as given supports option D, not the keyed 0. Option B requires the stem to ask for \\(m-8n\\), or the function to read \\(f(x)=m/x-2nx+1\\) (which gives \\(m=-8n\\) and \\(m+8n=0\\)). The existing solution already reaches this conclusion correctly but presents it as a key/stem disagreement rather than a derivation; it needs a source check, not a rewrite."
+ },
+ {
+  "questionId": "64652e86-38c8-48d8-b9d7-c37cf79b027c",
+  "qnum": "30",
+  "action": "REWRITE",
+  "why": "The old solution described the permutation loosely and then leaned on a numerical spot-check; the sign is now obtained by counting interchanges explicitly.",
+  "solution": "A determinant is unchanged by transposition, so transpose first:\n\\(\\begin{vmatrix} a_{21} & a_{31} & a_{11} \\\\ a_{23} & a_{33} & a_{13} \\\\ a_{22} & a_{32} & a_{12} \\end{vmatrix}=\\begin{vmatrix} a_{21} & a_{23} & a_{22} \\\\ a_{31} & a_{33} & a_{32} \\\\ a_{11} & a_{13} & a_{12} \\end{vmatrix}\\)\n\nRead the transposed array against \\(A\\). Its three rows are rows 2, 3, 1 of \\(A\\), and within every row the columns stand in the order 1, 3, 2. So it is \\(A\\) with one row rearrangement and one column rearrangement.\n\nRows: to go from the order \\((1,2,3)\\) to \\((2,3,1)\\), interchange \\(R_1\\leftrightarrow R_2\\) to get \\((2,1,3)\\), then \\(R_2\\leftrightarrow R_3\\) to get \\((2,3,1)\\). Two interchanges contribute \\((-1)^2=+1\\).\n\nColumns: the order \\((1,3,2)\\) comes from \\((1,2,3)\\) by the single interchange \\(C_2\\leftrightarrow C_3\\), contributing \\(-1\\).\n\nTherefore the determinant equals \\((+1)(-1)\\Delta=-\\Delta\\).\n\nHence (D)."
+ },
+ {
+  "questionId": "e9c0fc07-e185-4b8e-a10b-b33e49bf0a97",
+  "qnum": "82",
+  "action": "REWRITE",
+  "why": "The old solution quoted \\(I_2=\\pi/\\sqrt{2}\\) without proof and asserted \\(I_1=\\frac{\\pi}{2}I_2\\); both steps are now derived.",
+  "solution": "Step 1 — strip the \\(x\\) out of \\(I_1\\). Apply \\(\\int_0^a f(x)\\,dx=\\int_0^a f(a-x)\\,dx\\) with \\(a=\\pi\\), using \\(\\cos^2(\\pi-x)=\\cos^2x\\):\n\\(I_1=\\int_0^{\\pi}\\dfrac{\\pi-x}{1+\\cos^2x}\\,dx\\).\nAdd this to the original expression for \\(I_1\\):\n\\(2I_1=\\int_0^{\\pi}\\dfrac{\\pi}{1+\\cos^2x}\\,dx\\), so \\(I_1=\\dfrac{\\pi}{2}J\\) where \\(J=\\displaystyle\\int_0^{\\pi}\\dfrac{dx}{1+\\cos^2x}\\).\n\nStep 2 — evaluate \\(J\\). Since \\(\\cos^2(\\pi-x)=\\cos^2x\\), the integrand is symmetric about \\(x=\\pi/2\\), so \\(J=2\\int_0^{\\pi/2}\\dfrac{dx}{1+\\cos^2x}\\). Divide numerator and denominator by \\(\\cos^2x\\) and use \\(\\sec^2x=1+\\tan^2x\\):\n\\(J=2\\int_0^{\\pi/2}\\dfrac{\\sec^2x}{\\sec^2x+1}\\,dx=2\\int_0^{\\pi/2}\\dfrac{\\sec^2x}{2+\\tan^2x}\\,dx\\).\nPut \\(t=\\tan x\\), \\(dt=\\sec^2x\\,dx\\); as \\(x:0\\to\\pi/2\\), \\(t:0\\to\\infty\\):\n\\(J=2\\int_0^{\\infty}\\dfrac{dt}{2+t^2}=2\\cdot\\dfrac{1}{\\sqrt2}\\left[\\tan^{-1}\\dfrac{t}{\\sqrt2}\\right]_0^{\\infty}=\\dfrac{2}{\\sqrt2}\\cdot\\dfrac{\\pi}{2}=\\dfrac{\\pi}{\\sqrt2}\\).\n\nStep 3 — combine. \\(I_1=\\dfrac{\\pi}{2}\\cdot\\dfrac{\\pi}{\\sqrt2}=\\dfrac{\\pi^2}{2\\sqrt2}\\), so \\(I_1^2=\\dfrac{\\pi^4}{4\\cdot2}=\\dfrac{\\pi^4}{8}\\) and \\(8I_1^2=\\pi^4\\).\n\nHence (D)."
+ },
+ {
+  "questionId": "540a9b94-9a22-4aa9-ac2a-a53afe1543fe",
+  "qnum": "83",
+  "action": "REWRITE",
+  "why": "The old solution quoted the value of the integral outright; the substitution that produces it is now shown.",
+  "solution": "Because \\(\\sin^2(\\pi-x)=\\sin^2x\\), the integrand is symmetric about \\(x=\\pi/2\\), so\n\\(I_2=2\\int_0^{\\pi/2}\\dfrac{dx}{1+\\sin^2x}\\).\n\nDivide numerator and denominator by \\(\\cos^2x\\), and use \\(\\sec^2x=1+\\tan^2x\\) so that \\(\\sec^2x+\\tan^2x=1+2\\tan^2x\\):\n\\(I_2=2\\int_0^{\\pi/2}\\dfrac{\\sec^2x}{\\sec^2x+\\tan^2x}\\,dx=2\\int_0^{\\pi/2}\\dfrac{\\sec^2x}{1+2\\tan^2x}\\,dx\\).\n\nPut \\(t=\\tan x\\), so \\(dt=\\sec^2x\\,dx\\) and the limits \\(x:0\\to\\pi/2\\) become \\(t:0\\to\\infty\\):\n\\(I_2=2\\int_0^{\\infty}\\dfrac{dt}{1+2t^2}=2\\cdot\\dfrac{1}{\\sqrt2}\\left[\\tan^{-1}\\left(\\sqrt2\\,t\\right)\\right]_0^{\\infty}=\\dfrac{2}{\\sqrt2}\\cdot\\dfrac{\\pi}{2}=\\dfrac{\\pi}{\\sqrt2}\\).\n\nHence (A)."
+ },
+ {
+  "questionId": "94b21743-acb9-4f33-bf53-e5d7bcc4fd4f",
+  "qnum": "50",
+  "action": "REWRITE",
+  "why": "The old solution mis-stated the rationalisation, left a surd expansion unfinished and closed with a numerical check; the product is now factorised into perfect squares so the root is exact.",
+  "solution": "For \\((3+2\\sqrt2)x^2-(4+2\\sqrt3)x+(8+4\\sqrt3)=0\\), the product of the roots is\n\\(\\alpha\\beta=\\dfrac{8+4\\sqrt3}{3+2\\sqrt2}\\), and the GM is \\(\\sqrt{\\alpha\\beta}\\).\n\nWrite both parts as perfect squares:\n\\(8+4\\sqrt3=2\\left(4+2\\sqrt3\\right)=2\\left(\\sqrt3+1\\right)^2\\), since \\(\\left(\\sqrt3+1\\right)^2=3+2\\sqrt3+1=4+2\\sqrt3\\);\n\\(3+2\\sqrt2=\\left(\\sqrt2+1\\right)^2\\), since \\(\\left(\\sqrt2+1\\right)^2=2+2\\sqrt2+1=3+2\\sqrt2\\).\n\nSo \\(\\alpha\\beta=\\dfrac{2\\left(\\sqrt3+1\\right)^2}{\\left(\\sqrt2+1\\right)^2}\\) and\n\\(\\text{GM}=\\sqrt{\\alpha\\beta}=\\dfrac{\\sqrt2\\left(\\sqrt3+1\\right)}{\\sqrt2+1}\\).\n\nRationalise the denominator: \\(\\dfrac{1}{\\sqrt2+1}=\\dfrac{\\sqrt2-1}{(\\sqrt2+1)(\\sqrt2-1)}=\\sqrt2-1\\). Hence\n\\(\\text{GM}=\\sqrt2\\left(\\sqrt3+1\\right)\\left(\\sqrt2-1\\right)\\).\n\nExpand the bracket product: \\(\\left(\\sqrt3+1\\right)\\left(\\sqrt2-1\\right)=\\sqrt6-\\sqrt3+\\sqrt2-1\\), so\n\\(\\text{GM}=\\sqrt2\\left(\\sqrt6-\\sqrt3+\\sqrt2-1\\right)\\).\n\nHence (A)."
+ },
+ {
+  "questionId": "6dc4b3a9-ffef-4725-a8e7-6822015f39be",
+  "qnum": "47",
+  "action": "REWRITE",
+  "why": "The old solution jumped from the substitution to a quadratic in \\(s\\) that does not follow, then quoted a root; the elimination between \\(s\\) and \\(\\sin 2x\\) is now carried out in full.",
+  "solution": "Put \\(s=\\sin x+\\cos x\\) and \\(S=\\sin 2x=2\\sin x\\cos x\\). Squaring \\(s\\) gives \\(s^2=1+2\\sin x\\cos x=1+S\\), and \\(\\sin x\\cos x=\\dfrac{S}{2}\\).\n\nCollect the four reciprocal terms over \\(\\sin x\\cos x\\):\n\\(\\tan x+\\cot x=\\dfrac{\\sin^2x+\\cos^2x}{\\sin x\\cos x}=\\dfrac{1}{\\sin x\\cos x}=\\dfrac{2}{S}\\),\n\\(\\sec x+\\operatorname{cosec} x=\\dfrac{\\sin x+\\cos x}{\\sin x\\cos x}=\\dfrac{2s}{S}\\).\n\nThe given equation becomes \\(s+\\dfrac{2}{S}+\\dfrac{2s}{S}=7\\). Multiply through by \\(S\\), which is legitimate since \\(S=\\sin 2x=0\\) would leave \\(\\tan x,\\cot x,\\sec x,\\operatorname{cosec} x\\) undefined:\n\\(sS+2+2s=7S\\Rightarrow s(S+2)=7S-2\\Rightarrow s=\\dfrac{7S-2}{S+2}\\).\n\nNow eliminate \\(s\\) using \\(s^2=1+S\\):\n\\((7S-2)^2=(1+S)(S+2)^2\\).\nLeft side: \\(49S^2-28S+4\\).\nRight side: \\((1+S)(S^2+4S+4)=S^2+4S+4+S^3+4S^2+4S=S^3+5S^2+8S+4\\).\nSubtracting,\n\\(S^3+5S^2+8S+4-49S^2+28S-4=0\\Rightarrow S^3-44S^2+36S=0\\Rightarrow S\\left(S^2-44S+36\\right)=0\\).\n\nDiscarding \\(S=0\\), the equation reduces to \\(\\sin^2 2x-44\\sin 2x+36=0\\).\n\nHence (A)."
+ },
+ {
+  "questionId": "12ce98a7-109a-4c56-ac4a-c9a07613448a",
+  "qnum": "45",
+  "action": "REWRITE",
+  "why": "The old solution skipped the equal-tangent step and quoted a quadratic \\(m^2-16m-36=0\\) that does not come from its own cosine-rule line; the algebra is now done and it factors far more simply.",
+  "solution": "The two tangents drawn to a circle from an external point are equal, so at each vertex the two touch-lengths agree:\n\\(PN=PM=n\\), \\(QL=QN=n+2\\), \\(RM=RL=n+4\\).\n\nTherefore\n\\(PQ=PN+NQ=n+(n+2)=2n+2\\),\n\\(PR=PM+MR=n+(n+4)=2n+4\\),\n\\(QR=QL+LR=(n+2)+(n+4)=2n+6\\).\n\nApply the cosine rule at \\(P\\), the angle opposite \\(QR\\):\n\\(\\cos P=\\dfrac{PQ^2+PR^2-QR^2}{2\\cdot PQ\\cdot PR}\\).\n\nNumerator: \\((2n+2)^2+(2n+4)^2-(2n+6)^2=(4n^2+8n+4)+(4n^2+16n+16)-(4n^2+24n+36)=4n^2-16=4(n-2)(n+2)\\).\nDenominator: \\(2(2n+2)(2n+4)=2\\cdot2(n+1)\\cdot2(n+2)=8(n+1)(n+2)\\).\n\nSo \\(\\cos P=\\dfrac{4(n-2)(n+2)}{8(n+1)(n+2)}=\\dfrac{n-2}{2(n+1)}\\).\n\nSet this equal to \\(\\dfrac13\\):\n\\(3(n-2)=2(n+1)\\Rightarrow 3n-6=2n+2\\Rightarrow n=8\\).\n\nThe sides are then \\(18,20,22\\), and \\(\\cos P=\\dfrac{18^2+20^2-22^2}{2(18)(20)}=\\dfrac{240}{720}=\\dfrac13\\); \\(QR=22\\) is the longest side, so \\(P\\) is indeed the largest angle, as the question requires.\n\nHence (C)."
+ },
+ {
+  "questionId": "10912ab0-c546-4d6b-b496-c111bf95428c",
+  "qnum": "33",
+  "action": "REWRITE",
+  "why": "The old solution stalled at \\(A=\\pi/2\\) (a wrong deduction) and then quoted the answer; the condition in fact reduces to \\(A=|B-C|\\), and the branch giving a determinate value is identified explicitly.",
+  "solution": "First simplify what is asked:\n\\(\\tan\\dfrac B2+\\cot\\dfrac B2=\\dfrac{\\sin^2(B/2)+\\cos^2(B/2)}{\\sin(B/2)\\cos(B/2)}=\\dfrac{1}{\\tfrac12\\sin B}=\\dfrac{2}{\\sin B}\\).\n\nNow use the given condition. Since \\(A+B+C=\\pi\\), we have \\(\\dfrac{B+C}{2}=\\dfrac{\\pi}{2}-\\dfrac A2\\), so \\(\\cos\\dfrac{B+C}{2}=\\sin\\dfrac A2\\) and\n\\(\\cos B+\\cos C=2\\cos\\dfrac{B+C}{2}\\cos\\dfrac{B-C}{2}=2\\sin\\dfrac A2\\cos\\dfrac{B-C}{2}\\),\nwhile \\(\\sin A=2\\sin\\dfrac A2\\cos\\dfrac A2\\).\n\nEquating the two sides of \\(\\sin A=\\cos B+\\cos C\\) and cancelling \\(\\sin\\dfrac A2\\), which is non-zero for \\(0<A<\\pi\\):\n\\(\\cos\\dfrac A2=\\cos\\dfrac{B-C}{2}\\).\nBoth \\(\\dfrac A2\\) and \\(\\dfrac{B-C}{2}\\) lie in \\(\\left(-\\dfrac\\pi2,\\dfrac\\pi2\\right)\\), where cosine is one-to-one on magnitudes, so \\(A=|B-C|\\).\n\nTake \\(A=B-C\\). Then \\(B=A+C\\), and substituting into \\(A+B+C=\\pi\\) gives \\(B+B=\\pi\\), so \\(B=\\dfrac\\pi2\\) and \\(\\sin B=1\\). Therefore\n\\(\\tan\\dfrac B2+\\cot\\dfrac B2=\\dfrac{2}{\\sin B}=2\\).\n\nHence (D).\n\n[Note on the other branch: \\(A=C-B\\) forces \\(C=\\dfrac\\pi2\\) and leaves \\(B\\) free, so \\(2/\\sin B\\) is then not a fixed number and matches none of the four options (for example \\(A=60^\\circ,B=30^\\circ,C=90^\\circ\\) satisfies the given condition and gives \\(4\\)). The configuration intended by the question is the right angle at \\(B\\).]"
+ },
+ {
+  "questionId": "87e8b875-c24d-43c4-904f-e696dd5ec29f",
+  "qnum": "83",
+  "action": "REWRITE",
+  "why": "The old solution asserted the two component integrals equal \\(\\pi/4\\); the pairing argument that establishes it is now shown.",
+  "solution": "Split the numerator and write\n\\(J=\\displaystyle\\int_0^{\\pi/2}\\dfrac{\\sin x}{\\sin x+\\cos x}\\,dx\\), \\(\\;K=\\displaystyle\\int_0^{\\pi/2}\\dfrac{\\cos x}{\\sin x+\\cos x}\\,dx\\), so that \\(k=\\dfrac{aJ+bK}{a+b}\\).\n\nAdding the two integrals:\n\\(J+K=\\displaystyle\\int_0^{\\pi/2}\\dfrac{\\sin x+\\cos x}{\\sin x+\\cos x}\\,dx=\\int_0^{\\pi/2}dx=\\dfrac{\\pi}{2}\\).\n\nThe two are also equal. Apply \\(\\int_0^a f(x)\\,dx=\\int_0^a f(a-x)\\,dx\\) to \\(J\\) with \\(a=\\dfrac\\pi2\\), using \\(\\sin\\left(\\dfrac\\pi2-x\\right)=\\cos x\\) and \\(\\cos\\left(\\dfrac\\pi2-x\\right)=\\sin x\\):\n\\(J=\\displaystyle\\int_0^{\\pi/2}\\dfrac{\\cos x}{\\cos x+\\sin x}\\,dx=K\\).\n\nSo \\(2J=\\dfrac\\pi2\\), giving \\(J=K=\\dfrac\\pi4\\), and therefore\n\\(k=\\dfrac{a\\cdot\\frac{\\pi}{4}+b\\cdot\\frac{\\pi}{4}}{a+b}=\\dfrac{(a+b)\\frac{\\pi}{4}}{a+b}=\\dfrac{\\pi}{4}\\).\n\nHence (A)."
+ },
+ {
+  "questionId": "497d773e-49b3-4724-ac52-ed6fc43ad75b",
+  "qnum": "2",
+  "action": "REWRITE",
+  "why": "The old solution wandered through fractional powers and a special case before stumbling onto the answer; parametrising the GP by its common ratio settles it in two lines.",
+  "solution": "Let the common ratio of the GP \\(p,\\;g_1,\\;g_2,\\;q\\) be \\(r\\). Then\n\\(g_1=pr\\), \\(g_2=pr^2\\), \\(q=pr^3\\).\n\nSo\n\\(\\dfrac{g_1^2}{g_2}=\\dfrac{p^2r^2}{pr^2}=p\\), and \\(\\dfrac{g_2^2}{g_1}=\\dfrac{p^2r^4}{pr}=pr^3=q\\).\n\nAdding, \\(\\dfrac{g_1^2}{g_2}+\\dfrac{g_2^2}{g_1}=p+q\\).\n\nSince \\(m\\) is the arithmetic mean of \\(p\\) and \\(q\\), \\(m=\\dfrac{p+q}{2}\\), so \\(p+q=2m\\).\n\nHence (B)."
+ },
+ {
+  "questionId": "ff90c302-2337-4aee-a432-6cccae6692ac",
+  "qnum": "23",
+  "action": "KEEP",
+  "why": "The determinant is expanded term by term to \\(q-p+2\\), the positivity condition is turned into the exact equivalence \\(q+2>p\\), and A and B are killed by an explicit counterexample; the bracketed paragraph is an honest record of the genuine C-versus-D option overlap in the paper, not a substitute for a derivation."
+ },
+ {
+  "questionId": "57f5c55b-b522-4a83-a359-24d2b6b7ce73",
+  "qnum": "27",
+  "action": "REWRITE",
+  "why": "The old solution trailed off mid-identity twice and then asserted the value; the numerator and denominator are now each reduced to \\(\\sin 40^\\circ\\) so the ratio is exact.",
+  "solution": "\\(\\dfrac{\\sqrt3\\,p}{4}-\\dfrac{q}{4}=\\dfrac14\\left(\\dfrac{\\sqrt3}{\\sin 20^\\circ}-\\dfrac{1}{\\sin 70^\\circ}\\right)=\\dfrac14\\cdot\\dfrac{\\sqrt3\\sin 70^\\circ-\\sin 20^\\circ}{\\sin 20^\\circ\\sin 70^\\circ}\\).\n\nUse \\(\\sin 70^\\circ=\\cos 20^\\circ\\) throughout.\n\nNumerator: \\(\\sqrt3\\cos 20^\\circ-\\sin 20^\\circ=2\\left(\\dfrac{\\sqrt3}{2}\\cos 20^\\circ-\\dfrac12\\sin 20^\\circ\\right)=2\\left(\\sin 60^\\circ\\cos 20^\\circ-\\cos 60^\\circ\\sin 20^\\circ\\right)\\).\nBy \\(\\sin(X-Y)=\\sin X\\cos Y-\\cos X\\sin Y\\), this is \\(2\\sin\\left(60^\\circ-20^\\circ\\right)=2\\sin 40^\\circ\\).\n\nDenominator: \\(\\sin 20^\\circ\\cos 20^\\circ=\\dfrac12\\left(2\\sin 20^\\circ\\cos 20^\\circ\\right)=\\dfrac12\\sin 40^\\circ\\).\n\nTherefore\n\\(\\dfrac{\\sqrt3\\,p}{4}-\\dfrac{q}{4}=\\dfrac14\\cdot\\dfrac{2\\sin 40^\\circ}{\\tfrac12\\sin 40^\\circ}=\\dfrac14\\times 4=1\\).\n\nHence (C)."
+ }
+]

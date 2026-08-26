@@ -1,0 +1,98 @@
+[
+  {
+    "questionId": "ee241b3c-739c-48b5-bc83-f13537f1b284",
+    "qnum": "3031",
+    "action": "REWRITE",
+    "why": "The old text skipped the whole separable integration and then stated option D's expression while naming option B, so it contradicted itself.",
+    "solution": "The right side depends on \\(y/x\\), so put \\(y=vx\\), giving \\(\\dfrac{dy}{dx}=v+x\\dfrac{dv}{dx}\\).\n\nSubstituting: \\(v+x\\dfrac{dv}{dx}=v+x\\sin v\\), so \\(x\\dfrac{dv}{dx}=x\\sin v\\), i.e. \\(\\dfrac{dv}{dx}=\\sin v\\).\n\nSeparate the variables: \\(\\dfrac{dv}{\\sin v}=dx\\), so \\(\\int\\csc v\\,dv=\\int dx\\), which gives \\(\\log\\left|\\tan\\dfrac{v}{2}\\right|=x+k\\).\n\nExponentiating, \\(\\tan\\dfrac{v}{2}=Ce^{x}\\) where \\(C=\\pm e^{k}\\). Hence \\(\\dfrac{v}{2}=\\tan^{-1}(Ce^{x})\\), so \\(v=2\\tan^{-1}(Ce^{x})\\).\n\nRestoring \\(v=\\dfrac{y}{x}\\): \\(\\dfrac{y}{x}=2\\tan^{-1}(Ce^{x})\\), that is \\(y=2x\\tan^{-1}(Ce^{x})\\).\n\nHence (B)."
+  },
+  {
+    "questionId": "fca7bec8-b26e-4a40-b204-3986e8d6dd52",
+    "qnum": "3039",
+    "action": "REWRITE",
+    "why": "The old text asserted that an integrating factor makes the left side the derivative of \\(y\\log|x|\\) without ever applying the product rule to show it.",
+    "solution": "Apply the product rule to \\(y\\log|x|\\):\n\\(\\dfrac{d}{dx}\\big(y\\log|x|\\big)=\\log|x|\\,\\dfrac{dy}{dx}+y\\cdot\\dfrac{1}{x}=\\log|x|\\dfrac{dy}{dx}+\\dfrac{y}{x}\\),\nwhich is exactly the left-hand side of the equation.\n\nSo the equation reads \\(\\dfrac{d}{dx}\\big(y\\log|x|\\big)=\\sin 2x\\).\n\nIntegrate both sides with respect to \\(x\\), using \\(\\int\\sin 2x\\,dx=-\\dfrac{1}{2}\\cos 2x\\):\n\\(y\\log|x|=C-\\dfrac{1}{2}\\cos 2x\\).\n\nHence (C)."
+  },
+  {
+    "questionId": "0f327546-fd8c-4e0d-8490-c041b33a3671",
+    "qnum": "2776",
+    "action": "REWRITE",
+    "why": "The old text quoted the value as a named result and only parenthesised the method instead of carrying out the substitution and evaluating the limits.",
+    "solution": "Divide numerator and denominator by \\(\\cos^2x\\):\n\\(I=\\displaystyle\\int_{0}^{\\pi/2}\\frac{\\sec^2x}{a^2\\tan^2x+b^2}\\,dx\\).\n\nPut \\(t=\\tan x\\), so \\(dt=\\sec^2x\\,dx\\). The limits become \\(x=0\\Rightarrow t=0\\) and \\(x\\to\\frac{\\pi}{2}^{-}\\Rightarrow t\\to\\infty\\):\n\\(I=\\displaystyle\\int_{0}^{\\infty}\\frac{dt}{a^2t^2+b^2}=\\frac{1}{a^2}\\int_{0}^{\\infty}\\frac{dt}{t^2+\\left(\\frac{b}{a}\\right)^{2}}\\).\n\nUsing \\(\\int\\dfrac{dt}{t^2+c^2}=\\dfrac{1}{c}\\tan^{-1}\\dfrac{t}{c}\\) with \\(c=\\dfrac{b}{a}\\):\n\\(I=\\dfrac{1}{a^2}\\cdot\\dfrac{a}{b}\\left[\\tan^{-1}\\dfrac{at}{b}\\right]_{0}^{\\infty}=\\dfrac{1}{ab}\\left(\\dfrac{\\pi}{2}-0\\right)=\\dfrac{\\pi}{2ab}\\).\n\nHence (C)."
+  },
+  {
+    "questionId": "8335220c-dc3d-4c6d-886c-d2e2f6afead4",
+    "qnum": "2813",
+    "action": "REWRITE",
+    "why": "The old text named the reflection property but never performed the substitution, so the cancellation that produces \\(2I\\) was never shown.",
+    "solution": "First simplify the integrand: \\(\\dfrac{\\sin x+\\cos x}{\\cos x}=1+\\tan x\\), so\n\\(I=\\displaystyle\\int_{0}^{\\pi/4}\\log(1+\\tan x)\\,dx\\).\n\nApply \\(\\displaystyle\\int_{0}^{a}f(x)\\,dx=\\int_{0}^{a}f(a-x)\\,dx\\) with \\(a=\\dfrac{\\pi}{4}\\). Since \\(\\tan\\left(\\dfrac{\\pi}{4}-x\\right)=\\dfrac{1-\\tan x}{1+\\tan x}\\),\n\\(1+\\tan\\left(\\dfrac{\\pi}{4}-x\\right)=1+\\dfrac{1-\\tan x}{1+\\tan x}=\\dfrac{(1+\\tan x)+(1-\\tan x)}{1+\\tan x}=\\dfrac{2}{1+\\tan x}\\).\n\nTherefore\n\\(I=\\displaystyle\\int_{0}^{\\pi/4}\\log\\frac{2}{1+\\tan x}\\,dx=\\int_{0}^{\\pi/4}\\log 2\\,dx-\\int_{0}^{\\pi/4}\\log(1+\\tan x)\\,dx=\\frac{\\pi}{4}\\log 2-I\\).\n\nSo \\(2I=\\dfrac{\\pi}{4}\\log 2\\), giving \\(I=\\dfrac{\\pi}{8}\\log 2\\).\n\nHence (D)."
+  },
+  {
+    "questionId": "83357322-0464-40ac-b749-025abd04e4be",
+    "qnum": "2879",
+    "action": "REWRITE",
+    "why": "The old text quoted the value as a named result and its parenthetical sketch was internally inconsistent, jumping from \\(2I=-\\frac{\\pi}{2}\\log 2\\) to \\(I=-\\frac{\\pi}{2}\\log 2\\).",
+    "solution": "Let \\(I=\\displaystyle\\int_{0}^{\\pi/2}\\log(\\sin x)\\,dx\\).\n\nBy \\(\\displaystyle\\int_{0}^{a}f(x)\\,dx=\\int_{0}^{a}f(a-x)\\,dx\\) with \\(a=\\dfrac{\\pi}{2}\\), and \\(\\sin\\left(\\dfrac{\\pi}{2}-x\\right)=\\cos x\\):\n\\(I=\\displaystyle\\int_{0}^{\\pi/2}\\log(\\cos x)\\,dx\\).\n\nAdd the two expressions for \\(I\\):\n\\(2I=\\displaystyle\\int_{0}^{\\pi/2}\\log(\\sin x\\cos x)\\,dx=\\int_{0}^{\\pi/2}\\log\\frac{\\sin 2x}{2}\\,dx=\\int_{0}^{\\pi/2}\\log(\\sin 2x)\\,dx-\\frac{\\pi}{2}\\log 2\\).\n\nIn the remaining integral put \\(t=2x\\), \\(dt=2\\,dx\\):\n\\(\\displaystyle\\int_{0}^{\\pi/2}\\log(\\sin 2x)\\,dx=\\frac{1}{2}\\int_{0}^{\\pi}\\log(\\sin t)\\,dt\\).\n\nSince \\(\\sin(\\pi-t)=\\sin t\\), the integrand is symmetric about \\(t=\\dfrac{\\pi}{2}\\), so \\(\\displaystyle\\int_{0}^{\\pi}\\log(\\sin t)\\,dt=2\\int_{0}^{\\pi/2}\\log(\\sin t)\\,dt=2I\\). Hence \\(\\displaystyle\\int_{0}^{\\pi/2}\\log(\\sin 2x)\\,dx=\\frac{1}{2}\\cdot 2I=I\\).\n\nSubstituting back: \\(2I=I-\\dfrac{\\pi}{2}\\log 2\\), so \\(I=-\\dfrac{\\pi}{2}\\log 2\\).\n\nHence (D)."
+  },
+  {
+    "questionId": "cfb4a758-256c-475c-897b-d51d92887261",
+    "qnum": "2735",
+    "action": "REWRITE",
+    "why": "The old text said to integrate by parts twice but performed neither pass, so the reader never sees where the factor \\(\\frac{1}{2}\\) comes from.",
+    "solution": "Put \\(x=e^{t}\\), so \\(\\log x=t\\) and \\(dx=e^{t}\\,dt\\):\n\\(I=\\displaystyle\\int\\cos(\\log x)\\,dx=\\int e^{t}\\cos t\\,dt\\).\n\nIntegrate by parts with \\(u=\\cos t\\), \\(dv=e^{t}dt\\):\n\\(I=e^{t}\\cos t+\\displaystyle\\int e^{t}\\sin t\\,dt\\).\n\nIntegrate \\(\\displaystyle\\int e^{t}\\sin t\\,dt\\) by parts again with \\(u=\\sin t\\), \\(dv=e^{t}dt\\):\n\\(\\displaystyle\\int e^{t}\\sin t\\,dt=e^{t}\\sin t-\\int e^{t}\\cos t\\,dt=e^{t}\\sin t-I\\).\n\nSubstituting this back: \\(I=e^{t}\\cos t+e^{t}\\sin t-I\\), so \\(2I=e^{t}(\\cos t+\\sin t)\\) and\n\\(I=\\dfrac{e^{t}}{2}(\\cos t+\\sin t)+c\\).\n\nRestoring \\(e^{t}=x\\) and \\(t=\\log x\\):\n\\(F(x)=\\dfrac{x}{2}\\big[\\cos(\\log x)+\\sin(\\log x)\\big]\\).\n\nDifferentiating this back confirms it: \\(F'(x)=\\dfrac{1}{2}\\big[\\cos(\\log x)+\\sin(\\log x)\\big]+\\dfrac{x}{2}\\left[\\dfrac{-\\sin(\\log x)}{x}+\\dfrac{\\cos(\\log x)}{x}\\right]=\\cos(\\log x)\\).\n\nHence (C)."
+  },
+  {
+    "questionId": "87665d39-65c3-4a35-8365-9dcbeea389b4",
+    "qnum": "2578",
+    "action": "REWRITE",
+    "why": "The old text asserted the normal \"works out to\" \\(x+y=2\\sqrt{2}\\), and the point it printed was wrong — the parameter term is \\(\\frac{\\pi}{2\\sqrt{2}}\\), not \\(\\frac{\\pi}{\\sqrt{2}}\\).",
+    "solution": "Differentiate the parametric equations:\n\\(\\dfrac{dx}{dt}=-2\\sin t+2\\sin t+2t\\cos t=2t\\cos t\\),\n\\(\\dfrac{dy}{dt}=2\\cos t-2\\cos t+2t\\sin t=2t\\sin t\\).\n\nSo \\(\\dfrac{dy}{dx}=\\dfrac{2t\\sin t}{2t\\cos t}=\\tan t\\), and the normal has slope \\(-\\cot t\\).\n\nAt \\(t=\\dfrac{\\pi}{4}\\) the slope of the normal is \\(-\\cot\\dfrac{\\pi}{4}=-1\\), and the point of contact is\n\\(x_{0}=2\\cdot\\dfrac{1}{\\sqrt2}+2\\cdot\\dfrac{\\pi}{4}\\cdot\\dfrac{1}{\\sqrt2}=\\sqrt2+\\dfrac{\\pi}{2\\sqrt2}\\),\n\\(y_{0}=2\\cdot\\dfrac{1}{\\sqrt2}-2\\cdot\\dfrac{\\pi}{4}\\cdot\\dfrac{1}{\\sqrt2}=\\sqrt2-\\dfrac{\\pi}{2\\sqrt2}\\).\n\nThe normal is \\(y-y_{0}=-1\\cdot(x-x_{0})\\), i.e. \\(x+y=x_{0}+y_{0}\\). The two \\(\\dfrac{\\pi}{2\\sqrt2}\\) terms cancel, leaving \\(x_{0}+y_{0}=2\\sqrt2\\), so the normal is\n\\(x+y-2\\sqrt2=0\\).\n\nIts distance from the origin is \\(\\dfrac{|0+0-2\\sqrt2|}{\\sqrt{1^{2}+1^{2}}}=\\dfrac{2\\sqrt2}{\\sqrt2}=2\\).\n\nHence (C)."
+  },
+  {
+    "questionId": "077fa5c4-82ec-4cc3-ad5f-7c1b5b45c85e",
+    "qnum": "2526",
+    "action": "KEEP",
+    "why": "The derivation is already complete (\\(f'(x)=2x+2>0\\) for \\(x>-1\\) is computed and applied), and the deferral to the printed key is a deliberately preserved source-defect note recording that option (a) is equally true — not a skipped step."
+  },
+  {
+    "questionId": "ce7779cd-0984-4b44-8ff2-a26fd6faabb2",
+    "qnum": "2406",
+    "action": "REPORT",
+    "why": "The stem is corrupt and no derivation can honestly reach the key: as printed, \\(y=\\sin^{-1}(2x-\\sqrt{1-x^{2}})\\) has derivative \\(\\frac{1}{\\sqrt{1-(2x-\\sqrt{1-x^{2}})^{2}}}\\left(2+\\frac{x}{\\sqrt{1-x^{2}}}\\right)\\), which matches NO option (at \\(x=0.3\\) it is 2.4747 against A 0.3145, B 1.0483, C 2.0966, D 0.6290), and at \\(x=-0.4\\) the argument is \\(-1.7165\\), outside \\([-1,1]\\), so \\(y\\) is not even real on the domain the stem itself states — the intended stem is \\(y=\\sin^{-1}\\!\\left(2x\\sqrt{1-x^{2}}\\right)\\) (a product, not a difference), for which the stated domain \\(-\\frac{1}{\\sqrt2}\\le x\\le\\frac{1}{\\sqrt2}\\) is exactly the range where \\(y=2\\sin^{-1}x\\) and hence \\(\\frac{dy}{dx}=\\frac{2}{\\sqrt{1-x^{2}}}\\), so key (C) is right and it is the STEM that needs repairing."
+  },
+  {
+    "questionId": "f8f5923f-f1a6-4ccf-9d3a-b7e0ca7e57b1",
+    "qnum": "2461",
+    "action": "REWRITE",
+    "why": "The old text set up the differentiated equation and then jumped straight to the answer, hiding the entire algebraic cancellation that is the whole point of the question.",
+    "solution": "Take logarithms of \\(x^{m}y^{n}=(x+y)^{m+n}\\):\n\\(m\\log x+n\\log y=(m+n)\\log(x+y)\\).\n\nDifferentiate with respect to \\(x\\), writing \\(y'=\\dfrac{dy}{dx}\\):\n\\(\\dfrac{m}{x}+\\dfrac{n}{y}\\,y'=\\dfrac{(m+n)(1+y')}{x+y}\\).\n\nGather the \\(y'\\) terms on the right:\n\\(\\dfrac{m}{x}-\\dfrac{m+n}{x+y}=y'\\left[\\dfrac{m+n}{x+y}-\\dfrac{n}{y}\\right]\\).\n\nCombine each side over a common denominator.\nLeft: \\(\\dfrac{m(x+y)-(m+n)x}{x(x+y)}=\\dfrac{mx+my-mx-nx}{x(x+y)}=\\dfrac{my-nx}{x(x+y)}\\).\nBracket on the right: \\(\\dfrac{(m+n)y-n(x+y)}{y(x+y)}=\\dfrac{my+ny-nx-ny}{y(x+y)}=\\dfrac{my-nx}{y(x+y)}\\).\n\nSo \\(\\dfrac{my-nx}{x(x+y)}=y'\\cdot\\dfrac{my-nx}{y(x+y)}\\).\n\nCancelling the common factor \\(\\dfrac{my-nx}{x+y}\\) leaves \\(\\dfrac{1}{x}=\\dfrac{y'}{y}\\), that is \\(\\dfrac{dy}{dx}=\\dfrac{y}{x}\\).\n\nHence (D)."
+  },
+  {
+    "questionId": "30dbcadf-295c-4aa1-8fff-bb9e6166c5da",
+    "qnum": "2259",
+    "action": "REWRITE",
+    "why": "The old text quoted the ratio as a named result rather than deriving it, so nothing explains where \\(m\\) and \\(n\\) come from.",
+    "solution": "Both numerator and denominator vanish at \\(x=1\\), so divide each by \\(x-1\\):\n\\(\\displaystyle\\lim_{x\\to1}\\frac{x^{m}-1}{x^{n}-1}=\\lim_{x\\to1}\\frac{\\dfrac{x^{m}-1}{x-1}}{\\dfrac{x^{n}-1}{x-1}}\\).\n\nEach piece is a difference quotient at \\(x=1\\): for any exponent \\(k\\),\n\\(\\displaystyle\\lim_{x\\to1}\\frac{x^{k}-1}{x-1}=\\lim_{x\\to1}\\frac{x^{k}-1^{k}}{x-1}=\\left.\\frac{d}{dx}x^{k}\\right|_{x=1}=\\left.kx^{k-1}\\right|_{x=1}=k\\).\n\nSo the numerator tends to \\(m\\) and the denominator to \\(n\\); since \\(n\\neq0\\), the quotient of the limits gives\n\\(\\displaystyle\\lim_{x\\to1}\\frac{x^{m}-1}{x^{n}-1}=\\frac{m}{n}\\).\n\nHence (B)."
+  },
+  {
+    "questionId": "27c4c954-a946-463c-939b-488f6722411b",
+    "qnum": "1217",
+    "action": "REWRITE",
+    "why": "The derivation itself was sound but it closed by citing a numerical spot-check as justification; the rewrite keeps the argument and replaces that citation with the exact evaluations, which are already the real evidence.",
+    "solution": "\\(\\tan A=\\cot B\\) means \\(\\tan A=\\tan\\left(\\dfrac{\\pi}{2}-B\\right)\\), so \\(A=n\\pi+\\dfrac{\\pi}{2}-B\\), i.e. \\(A+B=n\\pi+\\dfrac{\\pi}{2}\\).\n\nHere \\(\\dfrac{\\pi}{2}\\sin\\theta+\\dfrac{\\pi}{2}\\cos\\theta=n\\pi+\\dfrac{\\pi}{2}\\), which gives \\(\\sin\\theta+\\cos\\theta=2n+1\\).\n\nSince \\(\\sin\\theta+\\cos\\theta=\\sqrt2\\sin\\left(\\theta+\\dfrac{\\pi}{4}\\right)\\) lies in \\([-\\sqrt2,\\sqrt2]\\) and \\(2n+1\\) is an odd integer, the only possibilities are \\(2n+1=1\\) and \\(2n+1=-1\\).\n\nCase \\(\\sin\\theta+\\cos\\theta=1\\): \\(\\sin\\left(\\theta+\\dfrac{\\pi}{4}\\right)=\\dfrac{1}{\\sqrt2}\\), so \\(\\theta+\\dfrac{\\pi}{4}=2r\\pi+\\dfrac{\\pi}{4}\\) or \\(2r\\pi+\\dfrac{3\\pi}{4}\\), giving \\(\\theta=2r\\pi\\) or \\(\\theta=2r\\pi+\\dfrac{\\pi}{2}\\). At \\(\\theta=2r\\pi+\\dfrac{\\pi}{2}\\) we have \\(\\sin\\theta=1\\), and \\(\\tan\\dfrac{\\pi}{2}\\) is undefined, so that branch is rejected. At \\(\\theta=2r\\pi\\): \\(\\sin\\theta=0\\) gives \\(\\tan 0=0\\), and \\(\\cos\\theta=1\\) gives \\(\\cot\\dfrac{\\pi}{2}=0\\) — both sides equal \\(0\\), so it is a solution.\n\nCase \\(\\sin\\theta+\\cos\\theta=-1\\): \\(\\sin\\left(\\theta+\\dfrac{\\pi}{4}\\right)=-\\dfrac{1}{\\sqrt2}\\), giving \\(\\theta=2r\\pi+\\pi\\) or \\(\\theta=2r\\pi-\\dfrac{\\pi}{2}\\). The second has \\(\\sin\\theta=-1\\), and \\(\\tan\\left(-\\dfrac{\\pi}{2}\\right)\\) is undefined, so it is rejected. At \\(\\theta=2r\\pi+\\pi\\): \\(\\sin\\theta=0\\) gives \\(\\tan 0=0\\), and \\(\\cos\\theta=-1\\) gives \\(\\cot\\left(-\\dfrac{\\pi}{2}\\right)=0\\) — again both sides are \\(0\\), so it is a solution.\n\nThe complete solution set is therefore \\(\\theta=2r\\pi\\) together with \\(\\theta=2r\\pi+\\pi\\), that is \\(\\theta=r\\pi,\\ r\\in Z\\) — every integer multiple of \\(\\pi\\), not only the even ones.\n\nOption (B) lists only \\(\\theta=2r\\pi\\) and omits the odd multiples, so it is incomplete. Options (A) and (C) include \\(\\theta=2r\\pi+\\dfrac{\\pi}{2}\\), where both sides are undefined. No listed option is the full solution set.\n\nHence (D)."
+  },
+  {
+    "questionId": "928970cf-c8f8-47bb-9075-e8fad9886da7",
+    "qnum": "1030",
+    "action": "REWRITE",
+    "why": "The old text said only \"working through\" and then cited a numerical check; neither \\(x^{2}+y^{2}\\) nor \\(x^{2}-y^{2}\\) was ever computed.",
+    "solution": "First, \\(\\dfrac{2\\tan\\theta}{1-\\tan^{2}\\theta}=\\tan 2\\theta\\), so the three equal quantities are \\(x\\sin\\theta\\), \\(y\\cos\\theta\\) and \\(z\\tan2\\theta\\).\n\nLet their common value be \\(K\\). Then\n\\(x=\\dfrac{K}{\\sin\\theta}\\), \\(y=\\dfrac{K}{\\cos\\theta}\\), \\(z=\\dfrac{K}{\\tan2\\theta}=K\\cot2\\theta\\).\n\nNow, using \\(\\sin2\\theta=2\\sin\\theta\\cos\\theta\\) so that \\(\\sin^{2}\\theta\\cos^{2}\\theta=\\dfrac{\\sin^{2}2\\theta}{4}\\):\n\\(x^{2}+y^{2}=K^{2}\\left(\\dfrac{1}{\\sin^{2}\\theta}+\\dfrac{1}{\\cos^{2}\\theta}\\right)=K^{2}\\cdot\\dfrac{\\cos^{2}\\theta+\\sin^{2}\\theta}{\\sin^{2}\\theta\\cos^{2}\\theta}=\\dfrac{K^{2}}{\\sin^{2}\\theta\\cos^{2}\\theta}=\\dfrac{4K^{2}}{\\sin^{2}2\\theta}\\).\n\nSimilarly, using \\(\\cos^{2}\\theta-\\sin^{2}\\theta=\\cos2\\theta\\):\n\\(x^{2}-y^{2}=K^{2}\\cdot\\dfrac{\\cos^{2}\\theta-\\sin^{2}\\theta}{\\sin^{2}\\theta\\cos^{2}\\theta}=\\dfrac{4K^{2}\\cos2\\theta}{\\sin^{2}2\\theta}\\).\n\nTherefore\n\\(4z^{2}(x^{2}+y^{2})=4K^{2}\\cot^{2}2\\theta\\cdot\\dfrac{4K^{2}}{\\sin^{2}2\\theta}=\\dfrac{16K^{4}\\cos^{2}2\\theta}{\\sin^{2}2\\theta\\cdot\\sin^{2}2\\theta}=\\dfrac{16K^{4}\\cos^{2}2\\theta}{\\sin^{4}2\\theta}\\),\nwhile\n\\((x^{2}-y^{2})^{2}=\\left(\\dfrac{4K^{2}\\cos2\\theta}{\\sin^{2}2\\theta}\\right)^{2}=\\dfrac{16K^{4}\\cos^{2}2\\theta}{\\sin^{4}2\\theta}\\).\n\nThe two expressions are the same, so \\(4z^{2}(x^{2}+y^{2})=(x^{2}-y^{2})^{2}\\).\n\nHence (C)."
+  },
+  {
+    "questionId": "a89a52c5-7f22-4180-b453-e070c9cf1e15",
+    "qnum": "1065",
+    "action": "REWRITE",
+    "why": "The old text named the recurrence and asserted the answer without ever writing out the two substitutions, so the telescoping cancellation was invisible.",
+    "solution": "Start from the identity\n\\(\\cot\\theta-\\tan\\theta=\\dfrac{\\cos\\theta}{\\sin\\theta}-\\dfrac{\\sin\\theta}{\\cos\\theta}=\\dfrac{\\cos^{2}\\theta-\\sin^{2}\\theta}{\\sin\\theta\\cos\\theta}=\\dfrac{\\cos2\\theta}{\\frac{1}{2}\\sin2\\theta}=2\\cot2\\theta\\),\nwhich rearranges to \\(\\tan\\theta=\\cot\\theta-2\\cot2\\theta\\).\n\nWith \\(\\theta=\\dfrac{\\pi}{5}\\): \\(\\tan\\dfrac{\\pi}{5}=\\cot\\dfrac{\\pi}{5}-2\\cot\\dfrac{2\\pi}{5}\\).\n\nWith \\(\\theta=\\dfrac{2\\pi}{5}\\): \\(\\tan\\dfrac{2\\pi}{5}=\\cot\\dfrac{2\\pi}{5}-2\\cot\\dfrac{4\\pi}{5}\\), so \\(2\\tan\\dfrac{2\\pi}{5}=2\\cot\\dfrac{2\\pi}{5}-4\\cot\\dfrac{4\\pi}{5}\\).\n\nAdd these to the third term:\n\\(\\tan\\dfrac{\\pi}{5}+2\\tan\\dfrac{2\\pi}{5}+4\\cot\\dfrac{4\\pi}{5}=\\left(\\cot\\dfrac{\\pi}{5}-2\\cot\\dfrac{2\\pi}{5}\\right)+\\left(2\\cot\\dfrac{2\\pi}{5}-4\\cot\\dfrac{4\\pi}{5}\\right)+4\\cot\\dfrac{4\\pi}{5}\\).\n\nThe \\(\\cot\\dfrac{2\\pi}{5}\\) terms cancel and so do the \\(\\cot\\dfrac{4\\pi}{5}\\) terms, leaving \\(\\cot\\dfrac{\\pi}{5}\\).\n\nHence (A)."
+  }
+]

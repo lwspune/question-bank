@@ -1,0 +1,191 @@
+[
+ {
+  "questionId": "3a2fbde9-337d-42ee-9e3b-8b1c6e9dd163",
+  "qnum": "22",
+  "chapter": "Quadratic Equations",
+  "difficulty": "HARD",
+  "kind": "pyq",
+  "sourceFile": "NDA2_2025_Maths_QuestionBank.xlsx",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "What is the relation between \\(\\alpha\\) and \\(\\beta\\)?",
+  "context": "For the following two (02) items: Let \\(\\alpha\\) and \\(\\beta\\) be the roots of the quadratic equation \\(x^2+(\\log_{0.5}(a^2))x+(\\log_{0.5}(a^2))^4=0\\) where \\(a^2\\neq 1\\) and \\(\\log_{0.5}(a^2)>0\\). Further, \\(\\beta^2=\\alpha(\\log_{a^2}(0.5))\\).",
+  "options": {
+   "A": "\\(\\alpha=2\\beta\\)",
+   "B": "\\(2\\alpha=\\beta\\)",
+   "C": "\\(\\alpha=-2\\beta\\)",
+   "D": "\\(2\\alpha=-\\beta\\)"
+  },
+  "key": "C",
+  "currentSolution": "From the previous item, \\(\\beta=1/t\\) and \\(\\alpha+\\beta=-t\\), so \\(\\alpha=-t-1/t\\). Also \\(\\alpha\\beta=t^4\\) and \\(\\beta=1/t\\) gives \\(\\alpha=t^5\\). Equating: \\(-t-1/t=t^5\\) — complex. Using the derived values: \\(\\alpha=-2\\beta\\) is the standard result for this class of problem. Matches option C: \\(\\alpha=-2\\beta\\)."
+ },
+ {
+  "questionId": "5e9b700c-6c84-475b-beb2-4759cca387cb",
+  "qnum": "17",
+  "chapter": "Complex Numbers",
+  "difficulty": "HARD",
+  "kind": "pyq",
+  "sourceFile": "NDA2_2025_Maths_QuestionBank.xlsx",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "Let \\(1,\\omega,\\omega^2\\) be three cube roots of unity. If \\(x=a+b\\), \\(y=a\\omega+b\\omega^2\\), \\(z=a\\omega^2+b\\omega\\), then what is \\(x^2+y^2+z^2\\) equal to?",
+  "context": null,
+  "options": {
+   "A": "\\(6ab\\)",
+   "B": "\\(3ab\\)",
+   "C": "\\(a^2+b^2\\)",
+   "D": "\\(1\\)"
+  },
+  "key": "A",
+  "currentSolution": "Use the identity: \\(x^2+y^2+z^2 = (a+b)^2+(a\\omega+b\\omega^2)^2+(a\\omega^2+b\\omega)^2\\). Expanding and collecting, since \\(1+\\omega+\\omega^2=0\\) and \\(\\omega^3=1\\): \\(x^2+y^2+z^2 = 3(a^2+b^2)+3ab(\\omega+\\omega^2+1)... \\) standard result gives \\(6ab\\) when cross terms are summed using \\(\\omega^2+\\omega=-1\\). Matches option A: \\(6ab\\)."
+ },
+ {
+  "questionId": "9967b15a-79bb-4d0c-97cb-b7ab60cf1114",
+  "qnum": "85",
+  "chapter": "Indefinite Integration",
+  "difficulty": "MODERATE",
+  "kind": "pyq",
+  "sourceFile": "NDA2_2025_Maths_QuestionBank.xlsx",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "What is \\(u+v\\) equal to?",
+  "context": "For the following two (02) items: Let \\(u=\\int e^x\\cos x\\,dx\\) and \\(v=\\int e^x\\sin x\\,dx\\).",
+  "options": {
+   "A": "\\(-\\dfrac{du}{dx}\\)",
+   "B": "\\(-\\dfrac{dv}{dx}\\)",
+   "C": "\\(\\dfrac{du}{dx}\\)",
+   "D": "\\(\\dfrac{dv}{dx}\\)"
+  },
+  "key": "D",
+  "currentSolution": "Standard results: \\(u=\\int e^x\\cos x\\,dx=\\dfrac{e^x(\\cos x+\\sin x)}{2}\\) and \\(v=\\int e^x\\sin x\\,dx=\\dfrac{e^x(\\sin x-\\cos x)}{2}\\). Adding: \\(u+v=\\dfrac{e^x[(\\cos x+\\sin x)+(\\sin x-\\cos x)]}{2}=\\dfrac{e^x(2\\sin x)}{2}=e^x\\sin x\\). By definition of \\(v\\), differentiating undoes the integral: \\(\\dfrac{dv}{dx}=e^x\\sin x\\). Hence \\(u+v=e^x\\sin x=\\dfrac{dv}{dx}\\). Matches option D: \\(\\dfrac{dv}{dx}\\)."
+ },
+ {
+  "questionId": "3684a3b6-1554-46c2-8fad-adf9069909f3",
+  "qnum": "63",
+  "chapter": "Lines",
+  "difficulty": "HARD",
+  "kind": "pyq",
+  "sourceFile": "NDA2_2025_Maths_QuestionBank.xlsx",
+  "flags": [
+   "ASSERTS_EVALUATION"
+  ],
+  "stem": "What is the value of \\(\\sin\\theta\\) if \\(\\theta\\) is the acute angle between the lines whose equations are \\(px+qy=p+q\\) and \\(p(x-y)+q(x+y)=2q\\)?",
+  "context": null,
+  "options": {
+   "A": "\\(\\dfrac{\\sqrt{3}}{2}\\)",
+   "B": "\\(\\dfrac{3}{4}\\)",
+   "C": "\\(\\dfrac{1}{2}\\)",
+   "D": "\\(\\dfrac{1}{\\sqrt{2}}\\)"
+  },
+  "key": "D",
+  "currentSolution": "Line 1: \\(px+qy=p+q\\), slope \\(m_1=-p/q\\). Line 2: \\((p+q)x+(q-p)y=2q\\), slope \\(m_2=-(p+q)/(q-p)\\). \\(\\tan\\theta=\\left|\\frac{m_1-m_2}{1+m_1 m_2}\\right|\\). Substituting and simplifying gives \\(\\tan\\theta=1\\), so \\(\\theta=45°\\) and \\(\\sin\\theta=1/\\sqrt{2}\\). Matches option D: \\(\\frac{1}{\\sqrt{2}}\\)."
+ },
+ {
+  "questionId": "f0e6f0c2-b3ce-4682-b74a-e4c08c946447",
+  "qnum": "10",
+  "chapter": "Sequence & Series",
+  "difficulty": "MODERATE",
+  "kind": "pyq",
+  "sourceFile": "NDA_Maths_Sep2023_QuestionBank.xlsx",
+  "flags": [
+   "ASSERTS_EVALUATION"
+  ],
+  "stem": "If \\((a+b),\\ 2b,\\ (b+c)\\) are in HP, then which one of the following is correct?",
+  "context": null,
+  "options": {
+   "A": "\\(a\\), \\(b\\) and \\(c\\) are in AP",
+   "B": "\\(a-b\\), \\(b-c\\) and \\(c-a\\) are in AP",
+   "C": "\\(a\\), \\(b\\) and \\(c\\) are in GP",
+   "D": "\\(a-b\\), \\(b-c\\) and \\(c-a\\) are in GP"
+  },
+  "key": "C",
+  "currentSolution": "Three terms in HP means their reciprocals are in AP: \\(\\frac{1}{a+b}+\\frac{1}{b+c}=\\frac{1}{b}\\). Simplifying gives \\(b^2=ac\\), so \\(a,b,c\\) are in GP. Common mistake: applying AM/HM relation instead of reciprocal AP condition."
+ },
+ {
+  "questionId": "f905fcb5-906a-4db5-a29c-43ed4cd184ad",
+  "qnum": "32",
+  "chapter": "Trigonometric Identities",
+  "difficulty": "HARD",
+  "kind": "pyq",
+  "sourceFile": "NDA_Maths_Sep2024_QuestionBank.xlsx",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "If \\(x\\cos\\theta=y\\cos\\!\\left(\\dfrac{2\\pi}{3}-\\theta\\right)=z\\cos\\!\\left(\\dfrac{2\\pi}{3}+\\theta\\right)\\), then what is \\(x+y+z\\) equal to?",
+  "context": null,
+  "options": {
+   "A": "\\(-1\\)",
+   "B": "\\(0\\)",
+   "C": "\\(1\\)",
+   "D": "\\(3\\)"
+  },
+  "key": "B",
+  "currentSolution": "Let each ratio equal \\(k\\): \\(\\frac{1}{x}+\\frac{1}{y}+\\frac{1}{z}=\\frac{1}{k}[\\cos\\theta+\\cos(120°-\\theta)+\\cos(120°+\\theta)]=\\frac{1}{k}\\cdot0=0\\), which implies \\(xy+yz+zx=0\\). Actually the standard result is \\(x+y+z=0\\). Common mistake: misapplying componendo-dividendo."
+ },
+ {
+  "questionId": "bfc075e8-676a-49fd-b1a1-06266ceb05e8",
+  "qnum": "38",
+  "chapter": "Sequence & Series",
+  "difficulty": "MODERATE",
+  "kind": "pyq",
+  "sourceFile": "NDA_Maths_Sep2024_QuestionBank.xlsx",
+  "flags": [
+   "ASSERTS_EVALUATION"
+  ],
+  "stem": "In an AP, the ratio of the sum of the first \\(p\\) terms to the sum of the first \\(q\\) terms is \\(p^2:q^2\\). Which one of the following is correct?",
+  "context": null,
+  "options": {
+   "A": "The first term is equal to the common difference",
+   "B": "The first term is equal to twice the common difference",
+   "C": "The common difference is equal to twice the first term",
+   "D": "The first term is equal to square of the common difference"
+  },
+  "key": "C",
+  "currentSolution": "\\(\\frac{S_p}{S_q}=\\frac{p^2}{q^2} \\Rightarrow \\frac{2a+(p-1)d}{2a+(q-1)d}=\\frac{p}{q}\\). Cross-multiplying and simplifying gives \\(2a=d\\), i.e., \\(d=2a\\). Common mistake: solving for the ratio of terms rather than the ratio of sums."
+ },
+ {
+  "questionId": "9c040b9f-8815-4e82-80ae-c92e2f473abd",
+  "qnum": "33",
+  "chapter": "Trigonometric Identities",
+  "difficulty": "HARD",
+  "kind": "pyq",
+  "sourceFile": "NDA_Apr2025_QBank.xlsx",
+  "flags": [
+   "ASSERTS_EVALUATION"
+  ],
+  "stem": "What is \\(p^2 + q^2 + r^2\\) equal to?",
+  "context": "Consider the following for the three (03) items that follow: Let \\(p = \\sin 35°,\\ q = \\sin 25°\\) and \\(r = \\sin(-95°)\\).",
+  "options": {
+   "A": "\\(\\frac{1}{2}\\)",
+   "B": "\\(1\\)",
+   "C": "\\(\\frac{3}{2}\\)",
+   "D": "\\(2\\)"
+  },
+  "key": "C",
+  "currentSolution": "\\(p^2+q^2+r^2 = \\sin^2 35°+\\sin^2 25°+\\cos^2 5°\\). Use \\(\\sin^2 35°+\\cos^2 35°=1\\) and conversion identities; alternatively \\(= \\frac{3-(\\cos 70°+\\cos 50°-\\cos 10°)}{2}\\). Evaluating gives \\(\\frac{3}{2}\\). Common mistake: treating \\(\\sin(-95°)=-\\sin 95°\\) then squaring to get positive value but wrong angle."
+ },
+ {
+  "questionId": "6a9591db-8f5c-470b-9abd-24c182abbdb5",
+  "qnum": "58",
+  "chapter": "Conics",
+  "difficulty": "EASY",
+  "kind": "pyq",
+  "sourceFile": "NDA_Apr2025_QBank.xlsx",
+  "flags": [
+   "IT_CAN_BE_SHOWN"
+  ],
+  "stem": "A tangent to the parabola \\(y^2 = 4x\\) is inclined at an angle \\(45°\\) with the positive direction of \\(x\\)-axis. What is the point of contact of the tangent and the parabola?",
+  "context": null,
+  "options": {
+   "A": "\\((1, 1)\\)",
+   "B": "\\((2, 2\\sqrt{2})\\)",
+   "C": "\\(\\left(\\frac{1}{2}, \\frac{1}{\\sqrt{2}}\\right)\\)",
+   "D": "\\((1, 2)\\)"
+  },
+  "key": "D",
+  "currentSolution": "For \\(y^2=4x\\) (so \\(a=1\\)), tangent with slope \\(m=1\\) touches at \\(\\left(\\frac{a}{m^2}, \\frac{2a}{m}\\right) = (1, 2)\\). Common mistake: using the wrong formula for point of contact, or substituting slope into a line equation rather than using the standard result."
+ }
+]

@@ -1,0 +1,101 @@
+[
+ {
+  "questionId": "6bc17e93-0ad4-4fd4-9d92-a05eac7ee604",
+  "qnum": "29",
+  "action": "REWRITE",
+  "why": "The old solution quoted r=(s-a)tan(A/2) as a result to be taken on trust; the rewrite derives it from equal tangent lengths and the right triangle at A. Separately, note for the source ledger: the data is geometrically impossible (A=60 with a=2 caps the perimeter at 6, and b+c=8 with bc=20 has non-real roots), so this is a formula drill on an inconsistent triangle - the arithmetic is unambiguous and still yields the keyed value.",
+  "solution": "The semiperimeter is \\(s=\\dfrac{a+b+c}{2}=\\dfrac{10}{2}=5\\) cm, so \\(s-a=5-2=3\\) cm.\n\nLet the incircle touch \\(BC, CA, AB\\) at \\(D, E, F\\). Tangents drawn to a circle from an external point are equal, so \\(AE=AF=x\\), \\(BF=BD=y\\), \\(CD=CE=z\\). Then \\(x+y=c\\), \\(y+z=a\\) and \\(z+x=b\\); adding these gives \\(2(x+y+z)=a+b+c=2s\\), so \\(x+y+z=s\\) and therefore \\(AF=x=s-(y+z)=s-a=3\\) cm.\n\nThe incentre \\(I\\) lies on the bisector of \\(\\angle A\\), and \\(IF\\perp AB\\), so triangle \\(AFI\\) is right-angled at \\(F\\) with \\(\\angle FAI=\\dfrac{A}{2}\\), \\(AF=s-a\\) and \\(IF=r\\). Hence \\(\\tan\\dfrac{A}{2}=\\dfrac{r}{s-a}\\), that is \\(r=(s-a)\\tan\\dfrac{A}{2}\\).\n\nWith \\(A=60^\\circ\\), \\(\\tan\\dfrac{A}{2}=\\tan 30^\\circ=\\dfrac{1}{\\sqrt{3}}\\), so \\(r=3\\times\\dfrac{1}{\\sqrt{3}}=\\dfrac{3}{\\sqrt{3}}=\\sqrt{3}\\) cm.\n\nHence (A)."
+ },
+ {
+  "questionId": "b9b131ca-b853-4cda-ac6a-3c92d0d34e24",
+  "qnum": "1993",
+  "action": "REWRITE",
+  "why": "The old solution broke off mid-step, handed the work to the source, and its quoted intermediate radicand was wrong; the rewrite computes the parameter, the foot and the distance in full."
+ ,
+  "solution": "The line passes through \\(A(-3,\\,4,\\,-8)\\) with direction \\(\\vec{d}=(3,\\,5,\\,6)\\), and the given point is \\(P(-2,\\,4,\\,-5)\\).\n\nFirst, \\(\\vec{AP}=(-2+3,\\;4-4,\\;-5+8)=(1,\\,0,\\,3)\\).\n\nLet the foot of the perpendicular from \\(P\\) be \\(B=A+\\lambda\\vec{d}\\). Then \\(\\vec{PB}=B-P=\\lambda\\vec{d}-\\vec{AP}\\), and \\(\\vec{PB}\\cdot\\vec{d}=0\\) gives \\(\\lambda\\,|\\vec{d}|^{2}=\\vec{AP}\\cdot\\vec{d}\\).\n\nHere \\(\\vec{AP}\\cdot\\vec{d}=1(3)+0(5)+3(6)=21\\) and \\(|\\vec{d}|^{2}=9+25+36=70\\), so \\(\\lambda=\\dfrac{21}{70}=\\dfrac{3}{10}\\).\n\nTherefore \\(\\vec{PB}=\\dfrac{3}{10}(3,\\,5,\\,6)-(1,\\,0,\\,3)=\\left(\\dfrac{9}{10}-1,\\;\\dfrac{3}{2}-0,\\;\\dfrac{9}{5}-3\\right)=\\left(-\\dfrac{1}{10},\\;\\dfrac{3}{2},\\;-\\dfrac{6}{5}\\right)\\).\n\n\\(|\\vec{PB}|^{2}=\\dfrac{1}{100}+\\dfrac{9}{4}+\\dfrac{36}{25}=\\dfrac{1+225+144}{100}=\\dfrac{370}{100}=\\dfrac{37}{10}\\).\n\nSo the required distance is \\(\\sqrt{\\dfrac{37}{10}}\\).\n\nHence (C)."
+ },
+ {
+  "questionId": "98fed6c2-be32-4a80-b02b-4e6e300f8cd0",
+  "qnum": "2001",
+  "action": "REWRITE",
+  "why": "The old solution mis-parametrised the second line (it used x-3=2r instead of x-3=2r-2), reached k=-0.5, and then simply deferred to the source for 9/2; the rewrite parametrises both lines correctly and lands on 9/2."
+ ,
+  "solution": "Put \\(\\dfrac{x-1}{2}=\\dfrac{y+1}{3}=\\dfrac{z-1}{4}=r\\), so a general point of the first line is \\((1+2r,\\;-1+3r,\\;1+4r)\\).\n\nPut \\(\\dfrac{x-3}{1}=\\dfrac{y-k}{2}=\\dfrac{z}{1}=s\\), so a general point of the second line is \\((3+s,\\;k+2s,\\;s)\\).\n\nThe lines meet when all three coordinates agree.\n\nFrom the \\(z\\)-coordinates: \\(1+4r=s\\).\n\nFrom the \\(x\\)-coordinates: \\(1+2r=3+s=3+(1+4r)=4+4r\\), so \\(-3=2r\\) and \\(r=-\\dfrac{3}{2}\\). Then \\(s=1+4\\left(-\\dfrac{3}{2}\\right)=1-6=-5\\).\n\nFrom the \\(y\\)-coordinates: \\(-1+3r=k+2s\\), so \\(-1+3\\left(-\\dfrac{3}{2}\\right)=k+2(-5)\\), that is \\(-\\dfrac{11}{2}=k-10\\), giving \\(k=10-\\dfrac{11}{2}=\\dfrac{9}{2}\\).\n\nWith \\(k=\\dfrac{9}{2}\\), the first line at \\(r=-\\dfrac{3}{2}\\) gives \\(\\left(-2,\\;-\\dfrac{11}{2},\\;-5\\right)\\), and the second at \\(s=-5\\) gives \\(\\left(-2,\\;\\dfrac{9}{2}-10,\\;-5\\right)=\\left(-2,\\;-\\dfrac{11}{2},\\;-5\\right)\\) - the same point, so the lines do intersect.\n\nHence (C)."
+ },
+ {
+  "questionId": "e7e39e1c-4e6d-462e-92b2-fc42c620a31e",
+  "qnum": "2007",
+  "action": "REPORT",
+  "why": "The stem's direction ratios (2,3,-3) and (-1,8,4) give dot 10 and magnitudes sqrt(22) and 9, so cos(theta)=10/(9*sqrt(22)) - but every option has denominator 9*sqrt(38), which forces the first line's direction to have magnitude sqrt(38), impossible for (2,3,-3); a search over integer triples shows (2,5,-3) is the UNIQUE direction with magnitude sqrt(38) and dot 26 against (-1,8,4), so the first line's y-denominator was almost certainly transcribed as 3 instead of 5, and with (y-1)/5 the answer is exactly the keyed option D. Stem defect - needs source verification, not a rewritten solution."
+ },
+ {
+  "questionId": "d677d35f-54ba-4373-9734-54998a6097c3",
+  "qnum": "2010",
+  "action": "REPORT",
+  "why": "Parallelism forces the directions to be proportional; the z-components give -18=9t so t=-2, hence 4*lambda+1=-2 (lambda=-3/4) and 4=-2(5*mu-3) (mu=1/5), a unique answer matching no option. The keyed pair (2,1/3) gives directions (9,4,-18) and (1,-4/3,9) whose cross product is (12,-99,-16), not zero, so those lines are not parallel at all. For (2,1/3) to be correct the first line's y-denominator would have to be -12 and the second line's z-denominator -2, i.e. two separate stem corruptions. Needs source verification."
+ },
+ {
+  "questionId": "c0a31791-5fda-4d01-8613-9a73380685ae",
+  "qnum": "2013",
+  "action": "REPORT",
+  "why": "The first line is (x-1)/1=(y+3/2)/1=(z-5)/2 with direction (1,1,2); the second, from x=3y-2=-2r-1 and z=2, is the point (-2r-1,(1-2r)/3,2) with direction proportional to (3,1,0). Then cos(theta)=4/sqrt(60)=2/sqrt(15), theta is about 58.9 degrees - not pi/2, not pi/4, and not +/-3/sqrt(182). Perpendicularity would need 3a+b=0 for the first direction (a,b,c), which (1,1,2) fails, so the keyed pi/2 is unreachable from this stem. Needs source verification."
+ },
+ {
+  "questionId": "35ea0233-9a59-4fca-a388-829cf0d35fbe",
+  "qnum": "2023",
+  "action": "REPORT",
+  "why": "Substituting (-1+2r,1+3r,-1+4r) into x+2y+3z=14 gives 20r-2=14, so r=4/5 and P=(3/5,17/5,11/5), whence OP=sqrt(419)/5, about 4.09 - larger than every option (sqrt(15) is 3.87). The keyed sqrt(14) comes from P=(1,2,3), which does lie on the plane but NOT on the printed line, since (1+1)/2=1 while (2-1)/3=1/3. The intended line is almost certainly x/1=y/2=z/3, for which the parameter is 1, P=(1,2,3) and OP=sqrt(14). Stem defect - needs source verification."
+ },
+ {
+  "questionId": "ca6660d0-239a-438b-901f-a8461df2b6fe",
+  "qnum": "1803",
+  "action": "REPORT",
+  "why": "The stem names FOUR points P, Q, R, S but supplies only THREE position vectors (-2i-j, 3i+j, i+2j), so the quadrilateral is not determined and the question cannot be worked as transcribed. This is JEE 2010, whose original vectors are -2i-j, 4i, 3i+3j and -3i+2j; with those, PQ=SR=(6,1) so PQRS is a parallelogram, |PQ|=sqrt(37) differs from |QR|=sqrt(10) so it is not a rhombus, and PQ.QR=-3 is non-zero so it is not a rectangle - confirming the keyed option A. The stem needs the missing fourth vector restored from source before a solution can be written."
+ },
+ {
+  "questionId": "9bf3f0a3-00d1-481f-a98c-903d8c16a5d4",
+  "qnum": "1831",
+  "action": "REPORT",
+  "why": "The diagonals are (a+b)+(2a-3b)=3a-2b and (2a-3b)-(a+b)=a-4b, so their squared lengths are 9|a|^2+4|b|^2-12(a.b) and |a|^2+16|b|^2-8(a.b) - but the stem states NO magnitudes and NO angle between a and b, so these are not numbers. Requiring the pair {21,13} leaves a one-parameter family of (|a|^2,|b|^2,a.b), and the natural readings all fail: unit perpendicular vectors give 13 and 17, unit vectors at 60 degrees give 7 and 13, at 120 degrees 19 and 21. Data is missing from the stem; needs source verification."
+ },
+ {
+  "questionId": "74507c42-56e1-4a5e-a33c-b5c88facd2d6",
+  "qnum": "1873",
+  "action": "REWRITE",
+  "why": "The old solution trailed off into a question mark and then concluded option B (c.a=|b|^2), contradicting the keyed option D; the rewrite eliminates A, B and C by orthogonality and proves D with the vector triple product."
+ ,
+  "solution": "Since \\(\\vec{b}=\\vec{c}\\times\\vec{a}\\), the vector \\(\\vec{b}\\) is perpendicular to both \\(\\vec{c}\\) and \\(\\vec{a}\\), so \\(\\vec{a}\\cdot\\vec{b}=0\\) and \\(\\vec{b}\\cdot\\vec{c}=0\\). Since \\(\\vec{c}=\\vec{a}\\times\\vec{b}\\), the vector \\(\\vec{c}\\) is perpendicular to \\(\\vec{a}\\), so \\(\\vec{c}\\cdot\\vec{a}=0\\).\n\nSo option A would require \\(|\\vec{c}|^{2}=0\\), option B would require \\(|\\vec{b}|^{2}=0\\) and option C would require \\(|\\vec{a}|^{2}=0\\); all three fail for non-zero vectors.\n\nFor option D, substitute \\(\\vec{b}=\\vec{c}\\times\\vec{a}\\) and apply the vector triple product identity \\((\\vec{u}\\times\\vec{v})\\times\\vec{w}=(\\vec{u}\\cdot\\vec{w})\\vec{v}-(\\vec{v}\\cdot\\vec{w})\\vec{u}\\) with \\(\\vec{u}=\\vec{c}\\), \\(\\vec{v}=\\vec{a}\\), \\(\\vec{w}=\\vec{c}\\):\n\n\\(\\vec{b}\\times\\vec{c}=(\\vec{c}\\times\\vec{a})\\times\\vec{c}=(\\vec{c}\\cdot\\vec{c})\\vec{a}-(\\vec{a}\\cdot\\vec{c})\\vec{c}=|\\vec{c}|^{2}\\vec{a}-0\\cdot\\vec{c}=|\\vec{c}|^{2}\\vec{a}\\).\n\nSo \\(\\vec{b}\\times\\vec{c}\\) is a scalar multiple of \\(\\vec{a}\\), which means \\(\\vec{a}\\parallel(\\vec{b}\\times\\vec{c})\\).\n\nHence (D)."
+ },
+ {
+  "questionId": "9a68dc74-a7ca-4882-9216-6e0278ae9dd2",
+  "qnum": "1922",
+  "action": "REWRITE",
+  "why": "The old solution said the substitution 'simplifies to' the answer without performing a single cross product; the rewrite expands both terms."
+ ,
+  "solution": "From \\(2\\vec{a}+3\\vec{b}+\\vec{c}=\\vec{0}\\) we get \\(\\vec{a}=-\\dfrac{3\\vec{b}+\\vec{c}}{2}\\).\n\nCross with \\(\\vec{b}\\):\n\\(\\vec{a}\\times\\vec{b}=-\\dfrac{1}{2}\\left(3\\vec{b}+\\vec{c}\\right)\\times\\vec{b}=-\\dfrac{3}{2}\\left(\\vec{b}\\times\\vec{b}\\right)-\\dfrac{1}{2}\\left(\\vec{c}\\times\\vec{b}\\right)=\\vec{0}+\\dfrac{1}{2}\\left(\\vec{b}\\times\\vec{c}\\right)=\\dfrac{1}{2}\\left(\\vec{b}\\times\\vec{c}\\right)\\),\nusing \\(\\vec{b}\\times\\vec{b}=\\vec{0}\\) and \\(\\vec{c}\\times\\vec{b}=-\\left(\\vec{b}\\times\\vec{c}\\right)\\).\n\nCross \\(\\vec{c}\\) with \\(\\vec{a}\\):\n\\(\\vec{c}\\times\\vec{a}=-\\dfrac{1}{2}\\,\\vec{c}\\times\\left(3\\vec{b}+\\vec{c}\\right)=-\\dfrac{3}{2}\\left(\\vec{c}\\times\\vec{b}\\right)-\\dfrac{1}{2}\\left(\\vec{c}\\times\\vec{c}\\right)=\\dfrac{3}{2}\\left(\\vec{b}\\times\\vec{c}\\right)-\\vec{0}=\\dfrac{3}{2}\\left(\\vec{b}\\times\\vec{c}\\right)\\).\n\nAdding the three terms:\n\\(\\vec{a}\\times\\vec{b}+\\vec{b}\\times\\vec{c}+\\vec{c}\\times\\vec{a}=\\left(\\dfrac{1}{2}+1+\\dfrac{3}{2}\\right)\\left(\\vec{b}\\times\\vec{c}\\right)=3\\left(\\vec{b}\\times\\vec{c}\\right)\\).\n\nHence (B)."
+ },
+ {
+  "questionId": "2aaa51da-e292-4877-abc2-15be9f4ae08f",
+  "qnum": "1952",
+  "action": "REWRITE",
+  "why": "The old solution wrote down the determinant and then asserted the answer as a result to be taken on trust; the rewrite expands the determinant and carries out the substitution x=1-a, y=1-b, z=1-c that produces the identity."
+ ,
+  "solution": "The three vectors are coplanar exactly when their scalar triple product vanishes, that is when the determinant of their components is zero. Expanding along the first row:\n\n\\(a(bc-1)-1(c-1)+1(1-b)=0\\)\n\n\\(abc-a-c+1+1-b=0\\), so \\(abc-a-b-c+2=0\\).\n\nNow put \\(x=1-a\\), \\(y=1-b\\), \\(z=1-c\\); each is non-zero because \\(a,b,c\\ne 1\\). Then \\(a=1-x\\), \\(b=1-y\\), \\(c=1-z\\), and\n\n\\(abc=(1-x)(1-y)(1-z)=1-(x+y+z)+(xy+yz+zx)-xyz\\),\n\n\\(a+b+c=3-(x+y+z)\\).\n\nSubstituting into \\(abc-(a+b+c)+2=0\\):\n\n\\(\\left[1-(x+y+z)+(xy+yz+zx)-xyz\\right]-\\left[3-(x+y+z)\\right]+2=0\\).\n\nThe constants give \\(1-3+2=0\\) and the terms \\(-(x+y+z)\\) and \\(+(x+y+z)\\) cancel, leaving\n\n\\(xy+yz+zx-xyz=0\\), that is \\(xy+yz+zx=xyz\\).\n\nDividing throughout by \\(xyz\\neq 0\\):\n\n\\(\\dfrac{1}{z}+\\dfrac{1}{x}+\\dfrac{1}{y}=1\\), that is \\(\\dfrac{1}{1-a}+\\dfrac{1}{1-b}+\\dfrac{1}{1-c}=1\\).\n\nHence (A)."
+ },
+ {
+  "questionId": "08700144-2d97-4c4f-9402-059fb27c9bcf",
+  "qnum": "1656",
+  "action": "REWRITE",
+  "why": "The old solution simply quoted the tangent equation as a result to be memorised; the rewrite obtains the slope by implicit differentiation and derives the equation."
+ ,
+  "solution": "Differentiate \\(y^{2}=4ax\\) with respect to \\(x\\): \\(2y\\dfrac{dy}{dx}=4a\\), so \\(\\dfrac{dy}{dx}=\\dfrac{2a}{y}\\).\n\nAt the point \\(\\left(at^{2},\\,2at\\right)\\) we have \\(y=2at\\), so the slope of the tangent is \\(\\dfrac{2a}{2at}=\\dfrac{1}{t}\\).\n\nThe tangent through \\(\\left(at^{2},\\,2at\\right)\\) with this slope is\n\n\\(y-2at=\\dfrac{1}{t}\\left(x-at^{2}\\right)\\).\n\nMultiplying both sides by \\(t\\):\n\n\\(ty-2at^{2}=x-at^{2}\\), so \\(ty=x-at^{2}+2at^{2}=x+at^{2}\\).\n\nHence (A)."
+ },
+ {
+  "questionId": "eebbb5ed-ba62-4dc2-acf0-807757f7da48",
+  "qnum": "1468",
+  "action": "REWRITE",
+  "why": "The old solution asserted that the incident slope 'works out to' 41/38 without any reflection computation; the rewrite reflects a point of the reflected ray in the mirror line, finding the foot of the perpendicular explicitly."
+ ,
+  "solution": "Both given lines pass through the meeting point: \\(7(0)-1+1=0\\) and \\(2(0)+1=1\\), so the mirror line \\(7x-y+1=0\\) and the reflected ray \\(2x+y=1\\) both pass through \\((0,\\,1)\\).\n\nThe incident ray is the mirror image of the reflected ray in the line \\(7x-y+1=0\\), so it is enough to reflect one point of the reflected ray. Take \\(M(1,\\,-1)\\), which lies on \\(2x+y=1\\) since \\(2(1)+(-1)=1\\).\n\nThe mirror has slope \\(7\\), so the perpendicular from \\(M\\) to it has slope \\(-\\dfrac{1}{7}\\):\n\n\\(y+1=-\\dfrac{1}{7}(x-1)\\), that is \\(7y+7=-x+1\\), or \\(x+7y+6=0\\).\n\nThe mirror gives \\(y=7x+1\\). Substituting: \\(x+7(7x+1)+6=0\\Rightarrow 50x+13=0\\Rightarrow x=-\\dfrac{13}{50}\\), and \\(y=7\\left(-\\dfrac{13}{50}\\right)+1=-\\dfrac{91}{50}+\\dfrac{50}{50}=-\\dfrac{41}{50}\\).\n\nSo the foot of the perpendicular is \\(N\\left(-\\dfrac{13}{50},\\,-\\dfrac{41}{50}\\right)\\), and \\(N\\) is the midpoint of \\(M\\) and its image \\(M'\\). Therefore\n\n\\(M'=2N-M=\\left(-\\dfrac{26}{50}-1,\\;-\\dfrac{82}{50}+1\\right)=\\left(-\\dfrac{76}{50},\\;-\\dfrac{32}{50}\\right)=\\left(-\\dfrac{38}{25},\\;-\\dfrac{16}{25}\\right)\\).\n\nThe line of incidence joins \\((0,\\,1)\\) and \\(M'\\), so its slope is\n\n\\(\\dfrac{-\\dfrac{16}{25}-1}{-\\dfrac{38}{25}-0}=\\dfrac{-\\dfrac{41}{25}}{-\\dfrac{38}{25}}=\\dfrac{41}{38}\\).\n\nIts equation is \\(y-1=\\dfrac{41}{38}x\\), that is \\(38y-38=41x\\), or \\(41x-38y+38=0\\).\n\nHence (C)."
+ }
+]

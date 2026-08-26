@@ -1,0 +1,99 @@
+[
+  {
+    "questionId": "fb68b32b-6f4e-492e-924b-4945897f4fd6",
+    "qnum": "91",
+    "action": "REPORT",
+    "why": "Working it from the definition gives a discontinuity at 0 as well — on the whole interval (-1,0) the function is identically 1 while f(0)=0 — so it is discontinuous at every integer except 1, which is option D, not the keyed option B."
+  },
+  {
+    "questionId": "d0e35f23-3cc8-4fd5-9ae6-d0820f0fa0d6",
+    "qnum": "26",
+    "action": "REWRITE",
+    "why": "The old solution started one counting route, abandoned it mid-sentence with 'Actually', started a second route, and then jumped to the printed figure without ever multiplying anything out.",
+    "solution": "Side I has 8 chairs and must contain the 4 particular men; side II has 8 chairs and must contain the 2 particular men. That leaves \\(16-4-2=10\\) unrestricted people, of whom \\(8-4=4\\) must go to side I and \\(8-2=6\\) to side II.\n\nStep 1 — split the 10 unrestricted people. Choose which 4 of them sit on side I:\n\\(\\binom{10}{4}=\\dfrac{10\\times 9\\times 8\\times 7}{4\\times 3\\times 2\\times 1}=\\dfrac{5040}{24}=210\\) ways.\nThe remaining 6 go to side II, so no further choice is needed.\n\nStep 2 — seat each side. Side I now has a fixed set of 8 people and 8 distinct chairs, giving \\(8!\\) arrangements; side II likewise gives \\(8!\\) arrangements.\n\nTotal \\(=210\\times 8!\\times 8!\\).\n\nHence (C)."
+  },
+  {
+    "questionId": "d051e8b1-e23b-4cdf-b251-7433cab955f3",
+    "qnum": "37",
+    "action": "REWRITE",
+    "why": "The old solution wrote two broken half-finished fractions with trailing dots, then asserted the product equals s/(s-b) without deriving it.",
+    "solution": "From \\(a-2b+c=0\\) we get \\(a+c=2b\\), so\n\\(s=\\dfrac{a+b+c}{2}=\\dfrac{2b+b}{2}=\\dfrac{3b}{2}\\), and \\(s-b=\\dfrac{3b}{2}-b=\\dfrac{b}{2}\\).\n\nNow use the half-angle formulas \\(\\tan\\dfrac{A}{2}=\\sqrt{\\dfrac{(s-b)(s-c)}{s(s-a)}}\\) and \\(\\tan\\dfrac{C}{2}=\\sqrt{\\dfrac{(s-a)(s-b)}{s(s-c)}}\\). Taking reciprocals,\n\\(\\cot\\dfrac{A}{2}=\\sqrt{\\dfrac{s(s-a)}{(s-b)(s-c)}}\\) and \\(\\cot\\dfrac{C}{2}=\\sqrt{\\dfrac{s(s-c)}{(s-a)(s-b)}}\\).\n\nMultiply the two, and the factors \\((s-a)\\) and \\((s-c)\\) cancel between numerator and denominator:\n\\(\\cot\\dfrac{A}{2}\\cot\\dfrac{C}{2}=\\sqrt{\\dfrac{s(s-a)}{(s-b)(s-c)}\\cdot\\dfrac{s(s-c)}{(s-a)(s-b)}}=\\sqrt{\\dfrac{s^{2}(s-a)(s-c)}{(s-a)(s-c)(s-b)^{2}}}=\\sqrt{\\dfrac{s^{2}}{(s-b)^{2}}}=\\dfrac{s}{s-b}\\).\n\nSubstituting the two values found above:\n\\(\\cot\\dfrac{A}{2}\\cot\\dfrac{C}{2}=\\dfrac{3b/2}{b/2}=3\\).\n\nHence (B)."
+  },
+  {
+    "questionId": "0d866fc3-662f-41ff-a8b4-f6a9089544e8",
+    "qnum": "96",
+    "action": "REWRITE",
+    "why": "The old solution named a column operation that does not produce the claimed structure, said 'Vandermonde-like', and then asserted the answer without expanding or fixing the sign.",
+    "solution": "Observe that every row sums to 1: \\((1-\\alpha)+(\\alpha-\\alpha^{2})+\\alpha^{2}=1\\), and likewise for the \\(\\beta\\) and \\(\\gamma\\) rows.\n\nStep 1 — apply \\(C_1\\to C_1+C_2+C_3\\) (this leaves the determinant unchanged). Every entry of the first column becomes 1:\n\\(\\begin{vmatrix}1 & \\alpha-\\alpha^{2} & \\alpha^{2}\\\\ 1 & \\beta-\\beta^{2} & \\beta^{2}\\\\ 1 & \\gamma-\\gamma^{2} & \\gamma^{2}\\end{vmatrix}\\)\n\nStep 2 — apply \\(C_2\\to C_2+C_3\\). The second column becomes \\(\\alpha-\\alpha^{2}+\\alpha^{2}=\\alpha\\), and similarly \\(\\beta\\) and \\(\\gamma\\):\n\\(\\begin{vmatrix}1 & \\alpha & \\alpha^{2}\\\\ 1 & \\beta & \\beta^{2}\\\\ 1 & \\gamma & \\gamma^{2}\\end{vmatrix}\\)\n\nStep 3 — expand this Vandermonde determinant. Do \\(R_2\\to R_2-R_1\\) and \\(R_3\\to R_3-R_1\\):\n\\(\\begin{vmatrix}1 & \\alpha & \\alpha^{2}\\\\ 0 & \\beta-\\alpha & \\beta^{2}-\\alpha^{2}\\\\ 0 & \\gamma-\\alpha & \\gamma^{2}-\\alpha^{2}\\end{vmatrix}\\)\nExpanding along the first column and factoring \\((\\beta-\\alpha)\\) out of \\(R_2\\) and \\((\\gamma-\\alpha)\\) out of \\(R_3\\), using \\(\\beta^{2}-\\alpha^{2}=(\\beta-\\alpha)(\\beta+\\alpha)\\):\n\\(=(\\beta-\\alpha)(\\gamma-\\alpha)\\begin{vmatrix}1 & \\beta+\\alpha\\\\ 1 & \\gamma+\\alpha\\end{vmatrix}=(\\beta-\\alpha)(\\gamma-\\alpha)\\big[(\\gamma+\\alpha)-(\\beta+\\alpha)\\big]=(\\beta-\\alpha)(\\gamma-\\alpha)(\\gamma-\\beta)\\).\n\nStep 4 — match the option form. Flip the sign of two factors: \\((\\beta-\\alpha)=-(\\alpha-\\beta)\\) and \\((\\gamma-\\beta)=-(\\beta-\\gamma)\\). The two minus signs cancel:\n\\((\\beta-\\alpha)(\\gamma-\\alpha)(\\gamma-\\beta)=(-1)(\\alpha-\\beta)\\cdot(\\gamma-\\alpha)\\cdot(-1)(\\beta-\\gamma)=(\\alpha-\\beta)(\\beta-\\gamma)(\\gamma-\\alpha)\\).\n\nHence (B)."
+  },
+  {
+    "questionId": "83917b25-f997-4ab4-8b5f-0cb5779381a2",
+    "qnum": "115",
+    "action": "REWRITE",
+    "why": "The inequality argument was sound, but it was framed as adopting whichever reading of the stem makes the paper's answer come out right; the ordering in fact needs only 0<P(A)<P(B)<1, so the ratio never enters.",
+    "solution": "Write \\(p=P(A\\cap B)\\). The three quantities being compared are\n\\(P(A\\cap B)=p\\), \\(\\quad P(A\\mid B)=\\dfrac{p}{P(B)}\\), \\(\\quad P(B\\mid A)=\\dfrac{p}{P(A)}\\),\nall with the same numerator \\(p\\), so the ordering is decided entirely by the denominators. Take \\(p>0\\); if \\(p=0\\) all three are 0 and no strict ordering exists.\n\nFirst comparison. Since \\(0<P(B)<1\\), dividing the positive number \\(p\\) by \\(P(B)\\) enlarges it:\n\\(P(A\\mid B)=\\dfrac{p}{P(B)}>\\dfrac{p}{1}=p=P(A\\cap B)\\).\n\nSecond comparison. Since \\(0<P(A)<P(B)\\), taking reciprocals of positive numbers reverses the inequality: \\(\\dfrac{1}{P(A)}>\\dfrac{1}{P(B)}\\). Multiplying through by \\(p>0\\):\n\\(P(B\\mid A)=\\dfrac{p}{P(A)}>\\dfrac{p}{P(B)}=P(A\\mid B)\\).\n\nChaining the two:\n\\(P(A\\cap B)<P(A\\mid B)<P(B\\mid A)\\).\n\n[Note: only \\(0<P(A)<P(B)<1\\) was used. The stem's ratio condition \\(2P(A)=3P(B)\\) would give \\(P(A)=\\tfrac{3}{2}P(B)>P(B)\\), which conflicts with \\(P(A)<P(B)\\); since the ratio plays no part in either comparison above, the ordering is unaffected either way.]\n\nHence (D)."
+  },
+  {
+    "questionId": "90352246-69b2-4e65-bb79-cc76106c420d",
+    "qnum": "42",
+    "action": "REWRITE",
+    "why": "The old solution hid the squaring algebra behind 'Squaring and simplifying gives'; the half-angle route below avoids squaring altogether, so no extraneous roots are created in the first place.",
+    "solution": "Use \\(1+\\cos x=2\\cos^{2}\\dfrac{x}{2}\\) and \\(\\sin x=2\\sin\\dfrac{x}{2}\\cos\\dfrac{x}{2}\\):\n\\(\\csc x+\\cot x=\\dfrac{1}{\\sin x}+\\dfrac{\\cos x}{\\sin x}=\\dfrac{1+\\cos x}{\\sin x}=\\dfrac{2\\cos^{2}\\frac{x}{2}}{2\\sin\\frac{x}{2}\\cos\\frac{x}{2}}=\\dfrac{\\cos\\frac{x}{2}}{\\sin\\frac{x}{2}}=\\cot\\dfrac{x}{2}\\).\nThis is valid wherever \\(\\sin x\\neq 0\\), which the original equation already requires.\n\nSo the equation becomes \\(\\cot\\dfrac{x}{2}=\\sqrt{3}\\).\n\nFor \\(0<x<2\\pi\\) we have \\(0<\\dfrac{x}{2}<\\pi\\), and \\(\\cot\\) is strictly decreasing on \\((0,\\pi)\\), so it attains the value \\(\\sqrt{3}\\) exactly once there. Since \\(\\cot\\dfrac{\\pi}{6}=\\sqrt{3}\\), that point is \\(\\dfrac{x}{2}=\\dfrac{\\pi}{6}\\), i.e. \\(x=\\dfrac{\\pi}{3}\\).\n\nSubstituting back: \\(\\csc\\dfrac{\\pi}{3}+\\cot\\dfrac{\\pi}{3}=\\dfrac{2}{\\sqrt{3}}+\\dfrac{1}{\\sqrt{3}}=\\dfrac{3}{\\sqrt{3}}=\\sqrt{3}\\), so it satisfies the equation.\n\nThe other listed values fail: at \\(x=\\pi\\), \\(\\sin x=0\\), so \\(\\csc x\\) and \\(\\cot x\\) are undefined; at \\(x=\\dfrac{5\\pi}{3}\\), \\(\\csc x=-\\dfrac{2}{\\sqrt{3}}\\) and \\(\\cot x=-\\dfrac{1}{\\sqrt{3}}\\), whose sum is \\(-\\sqrt{3}\\neq\\sqrt{3}\\).\n\nHence (B)."
+  },
+  {
+    "questionId": "735e47e6-6a17-404d-bc85-93279e21c954",
+    "qnum": "27",
+    "action": "REWRITE",
+    "why": "The old solution wrote down the discriminant of g and then tagged '(can be shown)' onto the one claim the whole question turns on — that it is negative — without expanding it.",
+    "solution": "Let \\(f(x)=ax^{2}+bx+c\\). For \\(f\\) to be positive for every real \\(x\\) it must open upwards and never meet the axis, so\n\\(a>0\\) and \\(b^{2}-4ac<0\\).\n\nDifferentiate: \\(f'(x)=2ax+b\\) and \\(f''(x)=2a\\). Therefore\n\\(g(x)=(ax^{2}+bx+c)+(2ax+b)+2a=ax^{2}+(b+2a)x+(c+b+2a)\\),\nagain a quadratic, with the same leading coefficient \\(a>0\\).\n\nNow expand its discriminant term by term:\n\\((b+2a)^{2}-4a(c+b+2a)=b^{2}+4ab+4a^{2}-4ac-4ab-8a^{2}\\).\nThe \\(4ab\\) terms cancel and \\(4a^{2}-8a^{2}=-4a^{2}\\), leaving\n\\(=b^{2}-4ac-4a^{2}=(b^{2}-4ac)-4a^{2}\\).\n\nBoth pieces are negative: \\(b^{2}-4ac<0\\) by hypothesis, and \\(-4a^{2}<0\\) because \\(a\\neq 0\\). So the discriminant of \\(g\\) is strictly negative.\n\nA quadratic with positive leading coefficient and negative discriminant has no real zero, so it never changes sign and never reaches 0; its sign is that of its leading coefficient. Hence \\(g(x)>0\\) for every real \\(x\\) — strictly, so the weaker option \\(g(x)\\geq 0\\) is not the sharpest true statement.\n\nHence (B)."
+  },
+  {
+    "questionId": "7bfb0aa7-0e2f-4ab3-9ec3-1e953433a2f5",
+    "qnum": "49",
+    "action": "REWRITE",
+    "why": "The old solution reached the condition b^2/(ac)=q^2/(pr) and then jumped straight to the answer with '(can be shown via the ratio condition)', skipping the cancellation that is the entire point.",
+    "solution": "Let the roots of \\(ax^{2}+bx+c=0\\) be \\(\\alpha,\\beta\\) in the ratio \\(k:1\\), and the roots of \\(px^{2}+qx+r=0\\) be \\(\\gamma,\\delta\\) in the same ratio \\(k:1\\).\n\nStep 1 — turn the ratio into a coefficient relation. For the first equation \\(\\alpha+\\beta=-\\dfrac{b}{a}\\) and \\(\\alpha\\beta=\\dfrac{c}{a}\\), so\n\\(\\dfrac{(\\alpha+\\beta)^{2}}{\\alpha\\beta}=\\dfrac{b^{2}/a^{2}}{c/a}=\\dfrac{b^{2}}{ac}\\).\nWriting the roots as \\(\\alpha=kt,\\ \\beta=t\\), the same expression is\n\\(\\dfrac{(kt+t)^{2}}{kt\\cdot t}=\\dfrac{t^{2}(k+1)^{2}}{kt^{2}}=\\dfrac{(k+1)^{2}}{k}\\).\nSo \\(\\dfrac{b^{2}}{ac}=\\dfrac{(k+1)^{2}}{k}\\), and by the identical argument \\(\\dfrac{q^{2}}{pr}=\\dfrac{(k+1)^{2}}{k}\\).\n\nStep 2 — call this common value \\(m\\), so \\(ac=\\dfrac{b^{2}}{m}\\) and \\(pr=\\dfrac{q^{2}}{m}\\). Substitute into the discriminants:\n\\(D_{1}=b^{2}-4ac=b^{2}-\\dfrac{4b^{2}}{m}=b^{2}\\cdot\\dfrac{m-4}{m}\\),\n\\(D_{2}=q^{2}-4pr=q^{2}-\\dfrac{4q^{2}}{m}=q^{2}\\cdot\\dfrac{m-4}{m}\\).\n\nStep 3 — divide. The factor \\(\\dfrac{m-4}{m}\\) is the same in both and cancels (it is non-zero precisely when \\(D_{2}\\neq 0\\), i.e. \\(k\\neq 1\\), which the division requires anyway):\n\\(\\dfrac{D_{1}}{D_{2}}=\\dfrac{b^{2}\\cdot\\frac{m-4}{m}}{q^{2}\\cdot\\frac{m-4}{m}}=\\dfrac{b^{2}}{q^{2}}\\).\n\nHence (B)."
+  },
+  {
+    "questionId": "aec7ab59-a716-43d2-9b8b-3b0366895500",
+    "qnum": "18",
+    "action": "REWRITE",
+    "why": "The old solution named the reversal law and gestured at one product without associating the factors, and never said why uniqueness of the inverse lets you conclude from it.",
+    "solution": "Since \\(A\\) and \\(B\\) are invertible, \\(A^{-1}\\) and \\(B^{-1}\\) exist. Multiply \\(AB\\) by the candidate \\(B^{-1}A^{-1}\\) on each side, regrouping by associativity:\n\n\\((AB)(B^{-1}A^{-1})=A(BB^{-1})A^{-1}=A\\,I\\,A^{-1}=AA^{-1}=I\\),\n\n\\((B^{-1}A^{-1})(AB)=B^{-1}(A^{-1}A)B=B^{-1}\\,I\\,B=B^{-1}B=I\\).\n\nSo \\(B^{-1}A^{-1}\\) is a two-sided inverse of \\(AB\\). The inverse of a matrix is unique, therefore \\((AB)^{-1}=B^{-1}A^{-1}\\).\n\nThe order cannot be swapped: \\((AB)(A^{-1}B^{-1})=A(BA^{-1})B^{-1}\\), and \\(BA^{-1}\\) does not collapse to \\(I\\) unless \\(A\\) and \\(B\\) happen to commute.\n\nHence (A)."
+  },
+  {
+    "questionId": "c82cbb95-7819-4815-99ef-e26c2dbb3890",
+    "qnum": "30",
+    "action": "REWRITE",
+    "why": "The old solution quoted A·adj(A)=det(A)I as a bare result with no reason; the cofactor-expansion argument for it is two lines and belongs in the answer.",
+    "solution": "Let \\(A=[a_{ij}]\\) be of order \\(n\\) and let \\(C_{ij}\\) denote the cofactor of \\(a_{ij}\\). By definition the adjoint is the transpose of the cofactor matrix, so \\(B=\\mathrm{adj}(A)\\) has \\((i,j)\\) entry \\(C_{ji}\\).\n\nThe \\((i,j)\\) entry of \\(AB\\) is therefore\n\\((AB)_{ij}=\\sum_{t=1}^{n}a_{it}\\,C_{jt}\\).\n\nDiagonal entries \\((i=j)\\): \\(\\sum_{t}a_{it}C_{it}\\) is exactly the cofactor expansion of \\(\\det A\\) along row \\(i\\), so \\((AB)_{ii}=\\det A=k\\).\n\nOff-diagonal entries \\((i\\neq j)\\): \\(\\sum_{t}a_{it}C_{jt}\\) is the cofactor expansion along row \\(j\\) of the matrix obtained from \\(A\\) by replacing row \\(j\\) with a copy of row \\(i\\) — the cofactors \\(C_{jt}\\) do not involve row \\(j\\), so they are unchanged by that replacement. That matrix has two identical rows (rows \\(i\\) and \\(j\\)), so its determinant is 0, giving \\((AB)_{ij}=0\\).\n\nSo \\(AB\\) carries \\(k\\) all along its diagonal and 0 everywhere else, that is \\(AB=kI\\), written \\(kl\\) in the options.\n\nHence (B)."
+  },
+  {
+    "questionId": "eca833a5-fd3c-413a-91f3-2996aa55e0a0",
+    "qnum": "37",
+    "action": "REWRITE",
+    "why": "The old solution asserted a formula for cos(alpha-beta) carrying an unexplained square root of ambiguous sign, then hid the whole cancellation behind 'substituting and simplifying gives'.",
+    "solution": "Put \\(u=\\theta-\\alpha\\) and \\(v=\\theta-\\beta\\), so that \\(\\cos u=a\\) and \\(\\cos v=b\\). Then\n\\(\\alpha-\\beta=(\\theta-\\beta)-(\\theta-\\alpha)=v-u\\).\n\nStep 1 — expand the cosine of the difference:\n\\(\\cos(\\alpha-\\beta)=\\cos(v-u)=\\cos v\\cos u+\\sin v\\sin u=ab+s\\), where \\(s=\\sin u\\sin v\\).\n\nStep 2 — record what \\(s^{2}\\) is (its sign is never needed):\n\\(s^{2}=\\sin^{2}u\\,\\sin^{2}v=(1-\\cos^{2}u)(1-\\cos^{2}v)=(1-a^{2})(1-b^{2})=1-a^{2}-b^{2}+a^{2}b^{2}\\).\n\nStep 3 — write \\(c=\\cos(\\alpha-\\beta)=ab+s\\), so \\(\\sin^{2}(\\alpha-\\beta)=1-c^{2}\\), and expand the required expression:\n\\(\\sin^{2}(\\alpha-\\beta)+2ab\\cos(\\alpha-\\beta)=1-c^{2}+2abc\\)\n\\(=1-(ab+s)^{2}+2ab(ab+s)\\)\n\\(=1-\\big(a^{2}b^{2}+2abs+s^{2}\\big)+2a^{2}b^{2}+2abs\\).\nThe terms \\(-2abs\\) and \\(+2abs\\) cancel, and \\(-a^{2}b^{2}+2a^{2}b^{2}=a^{2}b^{2}\\), leaving\n\\(=1+a^{2}b^{2}-s^{2}\\).\n\nStep 4 — substitute \\(s^{2}\\) from Step 2:\n\\(=1+a^{2}b^{2}-\\big(1-a^{2}-b^{2}+a^{2}b^{2}\\big)=1+a^{2}b^{2}-1+a^{2}+b^{2}-a^{2}b^{2}=a^{2}+b^{2}\\).\n\nOnly \\(s^{2}\\) ever appears, so the unknown sign of \\(\\sin u\\sin v\\) does not affect the answer.\n\nHence (A)."
+  },
+  {
+    "questionId": "918fc4d6-72da-45b5-87bd-0d18f1c8de8a",
+    "qnum": "54",
+    "action": "REWRITE",
+    "why": "The old solution described a rotation it never carried out, produced a garbled half-computed coordinate pair, and then trailed off into asserting the answer.",
+    "solution": "Let \\(P=(-1,-1)\\) and \\(Q=(-\\sqrt{3},\\sqrt{3})\\).\n\nStep 1 — find the side length. \n\\(PQ^{2}=(-\\sqrt{3}+1)^{2}+(\\sqrt{3}+1)^{2}=(3-2\\sqrt{3}+1)+(3+2\\sqrt{3}+1)=(4-2\\sqrt{3})+(4+2\\sqrt{3})=8\\),\nso \\(PQ=2\\sqrt{2}\\).\n\nStep 2 — the third vertex \\(R\\) must satisfy \\(RP^{2}=RQ^{2}=8\\). Compute \\(RP^{2}\\) for each option:\n\n\\((-\\sqrt{2},\\sqrt{2})\\): \\(RP^{2}=(-\\sqrt{2}+1)^{2}+(\\sqrt{2}+1)^{2}=(3-2\\sqrt{2})+(3+2\\sqrt{2})=6\\neq 8\\).\n\n\\((\\sqrt{2},-\\sqrt{2})\\): \\(RP^{2}=(\\sqrt{2}+1)^{2}+(-\\sqrt{2}+1)^{2}=(3+2\\sqrt{2})+(3-2\\sqrt{2})=6\\neq 8\\).\n\n\\((1,-1)\\): \\(RP^{2}=(1+1)^{2}+(-1+1)^{2}=4+0=4\\neq 8\\).\n\n\\((1,1)\\): \\(RP^{2}=(1+1)^{2}+(1+1)^{2}=4+4=8\\) — this one survives.\n\nStep 3 — confirm the surviving point against \\(Q\\) as well:\n\\(RQ^{2}=(1+\\sqrt{3})^{2}+(1-\\sqrt{3})^{2}=(1+2\\sqrt{3}+3)+(1-2\\sqrt{3}+3)=(4+2\\sqrt{3})+(4-2\\sqrt{3})=8\\).\n\nSo for \\(R=(1,1)\\), \\(RP=RQ=PQ=2\\sqrt{2}\\): all three sides are equal and the triangle is equilateral. (An equilateral triangle on \\(PQ\\) has two possible third vertices, one on each side of \\(PQ\\); the question asks only where the third vertex may lie, so exhibiting this one settles it.)\n\nHence (C)."
+  },
+  {
+    "questionId": "0b373f1b-bac1-47e3-9632-b730be7e4f20",
+    "qnum": "113",
+    "action": "REWRITE",
+    "why": "The old solution reached for cube roots of unity and cited a numerical check as its justification; the answer follows directly from the equation itself in two lines.",
+    "solution": "Expand the equation: \\(x(x+1)+1=x^{2}+x+1=0\\).\n\nSince \\(k\\) is a root, \\(k^{2}+k+1=0\\), which rearranges to\n\\(k^{2}=-(k+1)\\).\n\nThe sum of the two roots of \\(x^{2}+x+1=0\\) is \\(-\\dfrac{1}{1}=-1\\), so if one root is \\(k\\) the other is\n\\(-1-k=-(k+1)\\).\n\nComparing the two displayed lines, the other root \\(-(k+1)\\) is precisely \\(k^{2}\\).\n\nA cross-check with the product of roots: the product is \\(\\dfrac{1}{1}=1\\), and \\(k\\cdot k^{2}=k^{3}\\); multiplying \\(k^{2}+k+1=0\\) by \\((k-1)\\) gives \\(k^{3}-1=0\\), so \\(k^{3}=1\\), as required. Note also \\(k\\neq 0\\), since \\(0^{2}+0+1=1\\neq 0\\), so \\(k\\) and \\(k^{2}\\) are genuinely the two roots.\n\nHence (C)."
+  },
+  {
+    "questionId": "8524bc72-0af6-4875-9881-a1dab18fa421",
+    "qnum": "19",
+    "action": "REWRITE",
+    "why": "The old solution set up the discriminant correctly but replaced the expansion and the recognition of the perfect square with 'Expanding and simplifying gives'.",
+    "solution": "Collect the \\(x\\) terms:\n\\(x^{2}-ax-bx-cx+bc+ca=x^{2}-(a+b+c)x+(bc+ca)=0\\).\n\nEqual roots means the discriminant is zero:\n\\((a+b+c)^{2}-4(bc+ca)=0\\).\n\nExpand \\((a+b+c)^{2}=a^{2}+b^{2}+c^{2}+2ab+2bc+2ca\\) and subtract \\(4bc+4ca\\):\n\\(a^{2}+b^{2}+c^{2}+2ab+2bc+2ca-4bc-4ca=a^{2}+b^{2}+c^{2}+2ab-2bc-2ca\\).\n\nThis is a perfect square. Expanding \\((a+b-c)^{2}\\) gives\n\\(a^{2}+b^{2}+c^{2}+2ab-2ac-2bc\\),\nwhich matches the previous line term for term.\n\nSo the condition is \\((a+b-c)^{2}=0\\), and since a square vanishes only when its base does,\n\\(a+b-c=0\\).\n\nHence (C)."
+  }
+]
