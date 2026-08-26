@@ -22,6 +22,7 @@ import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { requirePaper, DATA } from "./config";
 import { findLatexImbalance } from "./lib";
+import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 
 function main() {
   const paper = requirePaper(process.argv[2]);
@@ -62,7 +63,13 @@ function main() {
         rejected.push(`${f} Q${n}: control character (a backslash eaten by a shell heredoc)`);
         continue;
       }
-      if (text.includes("\\n")) {
+      // Detect via the REAL normaliser, never a second regex. The first version
+      // here tested `text.includes("\\n")` and flagged five perfectly good
+      // solutions, because that also matches the opening of \neq, \ne, \notin,
+      // \nu and \nabla. src/lib/upload/textGuard.ts already says exactly this —
+      // it reuses normalizeNewlines "so the guard can never disagree with the
+      // normaliser about what counts as a literal newline".
+      if (normalizeNewlines(text) !== text) {
         rejected.push(`${f} Q${n}: literal two-character \\n — the DB rejects these at the write boundary`);
         continue;
       }
