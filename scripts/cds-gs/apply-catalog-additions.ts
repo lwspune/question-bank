@@ -471,6 +471,60 @@ const ADDITIONS_ROUND2: Addition[] = [
  * was added to Ancient India as well as Medieval, after round 2's Medieval-only
  * placement stranded Ajanta.
  */
+// ROUND 3 — applied 2026-08-28, after twelve papers. Every entry below is backed by
+// a transcriber hitting it on a real question and saying so, and the three biggest
+// are not independent gaps at all: they are ONE rule — round 2's asymmetry rule —
+// violated in three different places. See the analysis block above for the
+// measurements, including the probe that overstated the Delhi Sultanate gap 3x.
+//
+// The `Civilian Awards, Honours and Educational Institutions` RENAME is deliberately
+// NOT here. An addition prevents future mis-filing and is cheaper the earlier it
+// lands; a rename only corrects filing that already happened, so its cost is
+// per-question and identical whenever paid. It waits for one end-of-run pass.
+const ADDITIONS_ROUND3: Addition[] = [
+  // ── The asymmetry rule, violation 1: a dynastic slot the Sultanate never got ──
+  // Medieval India names the Mughals and Vijayanagara as chapters' worth of dynasty
+  // and then lumps the rest into "Other Medieval Kingdoms (Chola, Rajput, Ahom,
+  // Sikh)" — a list that does not include the Delhi Sultanate. Modest volume
+  // (~0.4 q/paper, measured), but structurally obvious beside its two siblings.
+  { subject: "History", chapter: "Medieval India", subtopics: ["Delhi Sultanate"],
+    why: "2020-1 Q35 (Turkan-i-Chihalgani) had to go on 'Other Medieval Kingdoms', which names four dynasties and not the Sultanate; Q36 (Mongol invasions) went to Warfare. Measured across eleven committed papers: 3 genuine Sultanate questions, two of them Amir Khusrau rows already defensibly filed under Medieval Literature." },
+
+  // ── The asymmetry rule, violation 2: attribution is not a physics topic ─────────
+  // "Who discovered X" is a question SHAPE. Physics has a general slot; Biology had
+  // only the topic-specific "Antibiotics — Discovery" and Chemistry had nothing, so
+  // both were absorbing attribution questions into CONTENT subtopics — the exact
+  // mechanism that produced the awards catch-all.
+  { subject: "Biology", chapter: "Microbiology and Disease", subtopics: ["Scientists and Discoveries"],
+    why: "2020-1 Q30 (Jenner and immunization) had to go on 'Antibiotics — Discovery', which is about antibiotics, not about who discovered what." },
+  { subject: "Chemistry", chapter: "Atomic Structure and Periodic Classification", subtopics: ["Scientists and Discoveries"],
+    why: "2020-2 Q97 (who introduced the symbols of the elements) had to go on 'Atomic Models: Dalton, Rutherford, Bohr', which is about the models rather than the attribution. Independently found by a different transcriber on a different paper from the Biology case." },
+
+  // ── The asymmetry rule, violation 3: economic geography exists only for India ───
+  // Indian Geography carries eight economic subtopics; World and Human Geography's
+  // seven are all physical or political. `chapter` is HARD-validated, so a
+  // world-scope economic question cannot be parked on the Indian chapter and gets
+  // pushed onto whatever world subtopic is nearest BY SHAPE. Only the two evidenced
+  // axes are added — world PORTS already have a counterpart, so the asymmetry is
+  // partial and mirroring the whole Indian chapter would invent unused subtopics.
+  { subject: "Geography", chapter: "World and Human Geography",
+    subtopics: ["World Agriculture and Farming Systems", "World Minerals, Mining and Resources"],
+    why: "Agriculture: 2021-1 Q39 (Milpa, Ladang) and 2020-1 Q42 (world farming-system types), both parked on 'World Natural Vegetation and Biomes'. Minerals: 2020-2 Q38 (the Climax mine, largest molybdenum producer) filed under 'World Political Geography' because its options were country names — a mining question under political geography." },
+
+  // ── Individually-evidenced gaps ────────────────────────────────────────────────
+  // The strongest single piece of evidence in the whole round: the existing subtopic
+  // EXCLUDES muscle BY NAME, so this is not a judgement call about granularity.
+  { subject: "Biology", chapter: "Human Physiology", subtopics: ["Muscle Tissue"],
+    why: "2020-1 Q112 (structure of a cardiac muscle cell). Human Physiology's only tissue subtopic is 'Connective and Epithelial Tissues', which excludes muscle in its own name." },
+  { subject: "Physics", chapter: "Heat and Thermodynamics",
+    subtopics: ["Modes of Heat Transfer — Conduction, Convection and Radiation"],
+    why: "2024-2 Q22. Verified absent: the chapter's four subtopics are Heat/Calorimetry/Specific Heat, Phase Change and Boiling, Temperature and Thermometry, and Thermodynamic Processes — none covers transfer. Also the only Physics gap in a subject otherwise measured as well-fitted (98 q, zero off-catalog)." },
+  { subject: "History", chapter: "Modern India", subtopics: ["Art, Painting and Sculpture"],
+    why: "2020-1 Q34 (modern Indian painters / art institutions). Ancient and Medieval both have this subtopic and Modern does not — the round-2 period-chapter asymmetry, still unclosed for the third period. 'Indian Literature, Poets and Cultural Figures' is a literature slot, not an art one." },
+  { subject: "History", chapter: "Ancient India", subtopics: ["Archaeology, Sites and Excavations"],
+    why: "2021-2 Q43 (who IDENTIFIED Taxila — an archaeology question, not a society/trade one) and 2025-2 Q57 (Girnar, Cholistan, Mant, Sannati site identification). Two independent hits." },
+];
+
 function main() {
   const apply = process.argv.includes("--apply");
   const path = join(__dirname, "catalog.json");
@@ -480,7 +534,7 @@ function main() {
   let newSubtopics = 0;
   const errors: string[] = [];
 
-  for (const a of [...ADDITIONS, ...ADDITIONS_ROUND2]) {
+  for (const a of [...ADDITIONS, ...ADDITIONS_ROUND2, ...ADDITIONS_ROUND3]) {
     const chapters = catalog[a.subject];
     if (!chapters) {
       errors.push(`unknown subject "${a.subject}" — additions never create a subject`);
