@@ -157,6 +157,23 @@ Write **one JSON file** to the path your prompt names. Shape:
 }
 ```
 
+## WRITE AFTER EVERY PAGE — not "early", not "when the band is done"
+
+Agents on this pipeline die to transient API errors. Three have. What separates a
+12-question loss from a total one is purely how often the output file was written.
+
+The rule is literal: **after you finish reading a page, write the file.** Not after
+you have verified the whole band, not once your checks pass, not when the work
+feels ready to show. One agent held its output while it verified every code block
+in its band, died on the last step, and lost all of it — its final words were
+"All code blocks verified. Writing B1."
+
+A partial file is not a mess, it is a checkpoint. The merge step reconciles bands
+against 1-120 and fails loudly on any gap, so an incomplete file cannot slip
+through unnoticed — and a resumed agent can verify what is there and continue,
+which costs a fraction of redoing it. Overwrite the same path each time; the last
+write wins.
+
 `difficulty` is `EASY` | `MODERATE` | `HARD` — judged as a CDS aspirant, not as you.
 `flags` is a string array; leave it `[]` when there is nothing to say.
 
