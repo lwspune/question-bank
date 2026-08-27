@@ -27,7 +27,7 @@ const CATALOG: Catalog = {
   "Basic Numeracy": {
     "Number System": ["Divisibility and Remainders"],
   },
-  "Reading Comprehension": {
+  Comprehension: {
     "Reading Comprehension": ["Central Idea and Best Reflection"],
   },
 };

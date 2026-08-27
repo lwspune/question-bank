@@ -68,7 +68,7 @@ SUBJECT_ORDER = [
     "Chemistry",
     "Biology",
     "Current Affairs and IR",
-    "Reading Comprehension",
+    "Comprehension",
     "Logical Reasoning and Analytical Ability",
     "General Mental Ability",
     "Basic Numeracy",
