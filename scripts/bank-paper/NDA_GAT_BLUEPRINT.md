@@ -35,6 +35,10 @@ can re-run them rather than guess.
 | Format | MCQ, 4 options, exactly one correct |
 | Sections | Part A — English (50) · Part B — General Knowledge (100) |
 
+**The exported paper prints NO "Part A" / "Part B" heading, and that is a decision, not a
+gap** (2026-08-27). Questions run 1..150 in section order and the split is implicit. Mocks
+CDS-1, 2 and 3 all ship this way; do not "fix" it.
+
 Part A prints before Part B. `build.ts` `layout: "sequential"` and the section order in
 `sections[]` are what enforce it; `export-docx.ts` prints by (section's place in the
 template, then position within it), because `paper_questions.position` restarts per section.
