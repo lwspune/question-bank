@@ -37,8 +37,10 @@ import {
   validateCatalog,
   validateRows,
   findLonelyContexts,
+  assignSetLabels,
   type Band,
   type Derivation,
+  type TQ,
 } from "./lib";
 
 function loadBands(paperId: string): Band[] {
@@ -110,34 +112,52 @@ function main() {
   if (covErrs.length) fail("3 COVERAGE", covErrs);
   console.log(`GATE 3 COVERAGE: ok (1..${pat.questions}, none missing, none out of range)`);
 
+  // --- 3b. sets ------------------------------------------------------------
+  // Items sharing a passage become a SET, which commitStaged turns into a
+  // `set_id`. That is what makes /browse and the Word export render the passage
+  // ONCE above its questions instead of repeating it on every card, and what
+  // makes a later correction to a passage mirror to its siblings.
+  //
+  // Derived here from the transcribed passages rather than asked of the
+  // transcription agents, so it cannot disagree with what they read.
+  let sets: TQ[];
+  try {
+    sets = assignSetLabels(questions);
+  } catch (e) {
+    fail("3b SETS", [(e as Error).message]);
+    return;
+  }
+  const setCount = new Set(sets.filter((q) => q.setLabel).map((q) => q.setLabel)).size;
+  const inSets = sets.filter((q) => q.setLabel).length;
+  console.log(`GATE 3b SETS: ok (${setCount} set(s) covering ${inSets} item(s))`);
+
   // --- 4. structure --------------------------------------------------------
-  const placeholder: Derivation[] = questions.map((q) => ({
+  const placeholder: Derivation[] = sets.map((q) => ({
     number: q.number,
     answer: "A",
     value: "(placeholder - merge-time structural check only)",
     confidence: "LOW",
     reasoning: "",
   }));
-  const placeholderRows = buildRecords(questions, placeholder);
+  const placeholderRows = buildRecords(sets, placeholder);
   const structErrs = validateRows(placeholderRows, 1, pat.questions);
   if (structErrs.length) fail("4 STRUCTURE", structErrs);
   console.log(`GATE 4 STRUCTURE: ok`);
 
   const lonely = findLonelyContexts(placeholderRows);
   if (lonely.length) {
-    console.log(`
-  ${lonely.length} lonely-context warning(s) — read each, they are not all defects:`);
+    console.log(`\n  ${lonely.length} lonely-context warning(s) — read each, they are not all defects:`);
     for (const w of lonely) console.log(`    ~ ${w}`);
   }
 
   // --- report --------------------------------------------------------------
   const bySubject = new Map<string, number>();
-  for (const q of questions) bySubject.set(q.subject, (bySubject.get(q.subject) ?? 0) + 1);
+  for (const q of sets) bySubject.set(q.subject, (bySubject.get(q.subject) ?? 0) + 1);
   console.log(`\nsubject spread:`);
   for (const [s, n] of [...bySubject.entries()].sort((a, b) => b[1] - a[1])) {
     console.log(`  ${String(n).padStart(3)}  ${s}`);
   }
-  const withContext = questions.filter((q) => q.context).length;
+  const withContext = sets.filter((q) => q.context).length;
   if (paper.paper === 2) console.log(`\n${withContext} of ${questions.length} items carry a shared context.`);
   else if (withContext) console.log(`\n!! ${withContext} Paper I item(s) carry a context — Paper I has no shared passages.`);
 
@@ -146,7 +166,7 @@ function main() {
     return;
   }
   const out = dataPath(paper.id, "merged");
-  writeFileSync(out, JSON.stringify({ paper: paper.id, questions }, null, 2) + "\n");
+  writeFileSync(out, JSON.stringify({ paper: paper.id, questions: sets }, null, 2) + "\n");
   console.log(`\nwrote ${out}`);
 }
 

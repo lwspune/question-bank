@@ -46,6 +46,21 @@ export type TQ = {
    * used by exactly one question for this reason.
    */
   context?: string;
+  /**
+   * Set membership. Items sharing one passage share one label, which
+   * `commitStaged` turns into a `set_id` (`<uploadJobId>:<setLabel>`).
+   *
+   * NOT decoration, and leaving it unset is a real defect: `groupBySet` collapses
+   * a consecutive run of rows sharing a `set_id` so the passage renders ONCE
+   * above its questions on /browse and prints once in a downloaded Word paper,
+   * and `applyEdit` mirrors a corrected passage to every sibling in the set.
+   * Without it the passage repeats on every card, repeats in the export, and a
+   * fix to one copy silently leaves the others stale.
+   *
+   * Assigned by `assignSetLabels`, never by a transcription agent — it is derived
+   * from the passages they transcribed, so it cannot disagree with them.
+   */
+  setLabel?: string;
   flags?: string[];
 };
 
@@ -364,6 +379,56 @@ export function crosstab(
 }
 
 /**
+ * Group items that share a passage into sets, labelling each by its first item.
+ *
+ * A passage carried by exactly ONE item gets no label: a set of one is not a set,
+ * and `groupBySet` renders a lone context correctly without one.
+ *
+ * REFUSES a set whose members are not consecutive. That is not fussiness —
+ * `groupBySet` collapses a CONSECUTIVE run of rows sharing a set_id, so a
+ * non-consecutive set would render as two separate groups repeating the same
+ * passage, which is the exact defect this function exists to prevent. If it ever
+ * fires, the paper interleaves two passages and the fix is a real decision, not a
+ * relabelling.
+ *
+ * Pure: returns new objects rather than mutating the input.
+ */
+export function assignSetLabels(questions: TQ[]): TQ[] {
+  const ordered = [...questions].sort((a, b) => a.number - b.number);
+
+  const groups = new Map<string, TQ[]>();
+  for (const q of ordered) {
+    if (!q.context) continue;
+    const k = norm(q.context);
+    groups.set(k, [...(groups.get(k) ?? []), q]);
+  }
+
+  const labelByKey = new Map<string, string>();
+  for (const [k, members] of groups) {
+    if (members.length < 2) continue;
+    const numbers = members.map((m) => m.number);
+    const first = Math.min(...numbers);
+    const last = Math.max(...numbers);
+    if (last - first + 1 !== members.length) {
+      throw new Error(
+        `the passage shared by Q${numbers.join(", Q")} is not carried by a consecutive run ` +
+          `(Q${first}..Q${last} spans ${last - first + 1} items but only ${members.length} carry it). ` +
+          `groupBySet only collapses consecutive rows, so this would render the passage twice. ` +
+          `Check the page: either an item in the middle lost its copy of the passage, or two ` +
+          `passages are interleaved.`
+      );
+    }
+    labelByKey.set(k, `Q${first}`);
+  }
+
+  return questions.map((q) => {
+    if (!q.context) return { ...q };
+    const label = labelByKey.get(norm(q.context));
+    return label ? { ...q, setLabel: label } : { ...q };
+  });
+}
+
+/**
  * The provenance bracket every derived answer carries. This corpus has no printed
  * key and no external anchor, and the answer-key export prints `solution`
  * verbatim — so a reader of a downloaded paper sees this too, which is the intent.
@@ -397,6 +462,7 @@ export function buildRecords(
       subject: q.subject,
       chapter: q.chapter,
       subtopic: q.subtopic,
+      ...(q.setLabel ? { setLabel: q.setLabel } : {}),
       ...(q.context ? { context: q.context } : {}),
       question: q.stem,
       optionA: opt("A"),
