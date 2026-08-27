@@ -17,6 +17,11 @@
  * fix is silently reverted by the next re-commit from source. Both are written
  * here, and the DB update is keyed on `question_number` scoped to this paper's
  * `source_file` so it cannot reach another paper's rows.
+ *
+ * `--source-only` skips the DB half, for a paper that is MERGED BUT NOT YET
+ * COMMITTED. Without it such a paper fails on the per-row 'expected to update
+ * exactly 1 row, updated 0' assertion — which is the assertion doing its job, so
+ * the fix is to tell it there are no rows rather than to weaken it.
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -92,6 +97,10 @@ async function main() {
   console.log(`\nrewrote ${dataPath(paper.id, "questions")}`);
 
   // 2. live rows — resolve/auto-create the taxonomy, then update by question_number
+  if (process.argv.includes("--source-only")) {
+    console.log("[--source-only] skipping the database update (paper not committed yet).");
+    return;
+  }
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },
   });
