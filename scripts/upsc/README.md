@@ -83,6 +83,39 @@ Pure core in `lib.ts` (TDD: `tests/upsc-lib.test.ts`, 37 cases).
 `out/` is gitignored (regenerable); `data/` and `derived/` are **committed** —
 the derivations are the evidence behind every answer.
 
+## Passages are SETS, not repeated text
+
+Items sharing a passage are grouped: `assignSetLabels` labels each group by its
+first item, `buildRecords` emits it as `setLabel`, and `commitStaged` turns that
+into a `set_id` of `<uploadJobId>:<setLabel>`.
+
+That is load-bearing in three places, and leaving it unset is a silent defect
+rather than a cosmetic one:
+
+- **`/browse`** — `groupBySet` collapses a run of rows sharing a `set_id` so the
+  passage renders ONCE above its questions. Without it the full passage repeats
+  on every card.
+- **The Word export** — same grouping, so a downloaded paper prints the passage
+  once under its Directions heading instead of once per question.
+- **`applyEdit`** — a corrected passage is mirrored to every sibling in the set.
+  Without a `set_id`, fixing one copy leaves the others stale.
+
+`content_hash` excludes `setLabel`, so this can be backfilled onto committed rows
+without changing any id — verified on the pilot (0 hashes changed).
+
+Two rules the pure core enforces:
+- **A passage carried by exactly one item gets no label.** A set of one is not a
+  set, and `groupBySet` renders a lone context correctly without one. CSAT does
+  produce these: a "Directions for the following 2 (two) items" block containing
+  two passages gives each item its own.
+- **A set whose members are not consecutive is REFUSED.** `groupBySet` only
+  collapses a consecutive run, so a scattered set would render the same passage
+  twice — the exact defect this exists to prevent. If it fires, an item in the
+  middle has lost its copy of the passage, or two passages are interleaved.
+
+On the 2025 CSAT: **13 sets covering 26 of the 28 passage-bearing items**, every
+one a consecutive pair, the remaining 2 legitimately unlabelled.
+
 ## The thing that matters most: OPTION FIDELITY
 
 There is no key, so **every answer is derived by reading the options**. If the

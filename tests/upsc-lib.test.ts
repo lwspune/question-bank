@@ -7,6 +7,7 @@ import {
   buildRecords,
   validateRows,
   findLonelyContexts,
+  assignSetLabels,
   findLatexImbalance,
   englishPagesFor,
   type Band,
@@ -26,7 +27,7 @@ const CATALOG: Catalog = {
   "Basic Numeracy": {
     "Number System": ["Divisibility and Remainders"],
   },
-  Comprehension: {
+  "Reading Comprehension": {
     "Reading Comprehension": ["Central Idea and Best Reflection"],
   },
 };
@@ -306,4 +307,68 @@ describe("validateRows", () => {
   });
 
 
+});
+
+describe("assignSetLabels", () => {
+  const withCtx = (n: number, ctx?: string, stem = `Q${n}?`) =>
+    q({ number: n, stem, ...(ctx ? { context: ctx } : {}) });
+
+  it("groups items that share a passage under one label", () => {
+    const p = "Passage - 1\n\nSome text.";
+    const out = assignSetLabels([withCtx(1, p), withCtx(2, p)]);
+    expect(out[0].setLabel).toBeDefined();
+    expect(out[0].setLabel).toBe(out[1].setLabel);
+  });
+
+  it("gives two DIFFERENT passages two different labels", () => {
+    const out = assignSetLabels([withCtx(1, "Passage A"), withCtx(2, "Passage A"), withCtx(3, "Passage B"), withCtx(4, "Passage B")]);
+    expect(out[0].setLabel).toBe(out[1].setLabel);
+    expect(out[2].setLabel).toBe(out[3].setLabel);
+    expect(out[0].setLabel).not.toBe(out[2].setLabel);
+  });
+
+  it("leaves a LONE passage unlabelled — a set of one is not a set", () => {
+    expect(assignSetLabels([withCtx(1, "Only mine")])[0].setLabel).toBeUndefined();
+  });
+
+  it("leaves a context-less item unlabelled", () => {
+    expect(assignSetLabels([withCtx(1)])[0].setLabel).toBeUndefined();
+  });
+
+  it("labels by the FIRST item of the group, so the label is stable and readable", () => {
+    const p = "Passage - 1";
+    const out = assignSetLabels([withCtx(7, p), withCtx(8, p)]);
+    expect(out[0].setLabel).toBe("Q7");
+  });
+
+  it("ignores whitespace differences when deciding two items share a passage", () => {
+    const out = assignSetLabels([withCtx(1, "Passage  one"), withCtx(2, "Passage one")]);
+    expect(out[0].setLabel).toBe(out[1].setLabel);
+  });
+
+  it("REFUSES a set whose members are not consecutive — groupBySet only collapses a consecutive run", () => {
+    const p = "Shared";
+    expect(() => assignSetLabels([withCtx(1, p), withCtx(2, "Other"), withCtx(3, p)])).toThrow(/consecutive/i);
+  });
+
+  it("is a pure mapping — it does not mutate its input", () => {
+    const p = "Passage - 1";
+    const input = [withCtx(1, p), withCtx(2, p)];
+    assignSetLabels(input);
+    expect(input[0].setLabel).toBeUndefined();
+  });
+});
+
+describe("buildRecords + sets", () => {
+  it("carries setLabel through to the row commitStaged consumes", () => {
+    const p = "Passage - 1";
+    const qs = assignSetLabels([q({ number: 1, context: p }), q({ number: 2, stem: "Other?", context: p })]);
+    const rows = buildRecords(qs, [d(), d({ number: 2 })]);
+    expect(rows[0].setLabel).toBe("Q1");
+    expect(rows[1].setLabel).toBe("Q1");
+  });
+
+  it("emits no setLabel for an unset question", () => {
+    expect(buildRecords([q()], [d()])[0].setLabel).toBeUndefined();
+  });
 });
