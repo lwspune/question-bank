@@ -280,25 +280,47 @@ const ADDITIONS_ROUND2: Addition[] = [
 /**
  * ROUND 3 CANDIDATES — evidence banked, NOT yet adjudicated or applied.
  *
- * These are `catalog-gap` flags that survived round 2, i.e. a transcriber holding
- * the 297-subtopic catalog still found nothing that fitted. Recorded here rather
- * than left in band reports, because a gap noticed and forgotten is worse than one
- * never noticed — it gets silently re-parked somewhere wrong on the next paper.
+ * These are gaps that survived round 2: a transcriber holding the ~298-subtopic
+ * catalog still found nothing that fitted. Recorded here rather than left in band
+ * reports, because a gap noticed and forgotten is worse than one never noticed —
+ * it gets silently re-parked somewhere wrong on the next paper.
  *
- *   - Plant mineral nutrition — macro- vs micronutrients (2024-2 Q1). Parked in
- *     `Plant Biology > Transpiration, Tropisms and Plant Processes`.
- *   - Modes of heat transfer — conduction / convection / radiation (2024-2 Q22).
- *     Parked in `Heat, Calorimetry and Specific Heat`.
- *   - Civil-service training academies and their locations, LBSNAA / NACIN
- *     (2024-2 Q31). Parked in `Polity > Government Departments and Schemes`.
- *   - National symbols — Flag Code of India, state emblem (2024-2 Q32). Parked in
- *     `National Institutions, Milestones and History`.
+ * THE STRUCTURAL ONE, and the reason to do a round 3 at all rather than keep
+ * bolting on subtopics: `Current Affairs > Awards, Honours, Books and Culture >
+ * Civilian Awards, Honours and Educational Institutions` has become a CATCH-ALL
+ * FOR EVERY KIND OF AWARD. Two bands on different papers hit it independently and
+ * from different directions — 2023-1 Q84 (UNEP Champions of the Earth, an
+ * ENVIRONMENTAL award) and 2023-1 Q38 (the 2022 Nobel Prize in Physics, an
+ * INTERNATIONAL SCIENTIFIC prize) — and both observed that the subtopic plainly
+ * means Padma-style INDIAN CIVILIAN honours. Round 2 already carved film awards
+ * out on exactly this logic, so the pattern is established: the chapter wants
+ * splitting by award TYPE, not another one-off subtopic per award that turns up.
  *
- * WORTH NOTING STRUCTURALLY: round 2 gave PHYSICS no entries at all, and one of
- * the four above is a physics gap. Physics is also the subject whose per-paper
- * count swings most (7 to 16 across the papers ingested so far), so its catalog
- * fit is the least well evidenced of the eight and deserves a deliberate look
- * rather than another round of incidental flags.
+ * Individual gaps:
+ *   - Indian TRIBES and ethnic communities (2023-1 Q35, Bhil/Gond/Ahom/Adi).
+ *     Parked in `Population, Census and Urbanisation`. The near-misses are worse:
+ *     'Other Medieval Kingdoms' names the Ahom but as a DYNASTY.
+ *   - Plant mineral nutrition, macro- vs micronutrients (2024-2 Q1).
+ *   - Modes of heat transfer, conduction/convection/radiation (2024-2 Q22).
+ *   - Civil-service training academies, LBSNAA / NACIN (2024-2 Q31).
+ *   - National symbols, Flag Code of India, state emblem (2024-2 Q32).
+ *   - Agricultural science / crop biotechnology (2025-2 Q117, ICAR genome-edited
+ *     rice), parked in `Health Technology, Science Awards and Anniversaries`.
+ *   - Archaeological SITE identification as distinct from literature/inscriptions
+ *     (2025-2 Q57 — Girnar, Cholistan, Mant, Sannati). Thin; its current home is
+ *     defensible via the Girnar inscription, so this may never need an entry.
+ *   - Cross-period social movements (2025-2 Q10 chains 1873 / 1928 / 1973).
+ *     Thin, recorded only so it is not rediscovered as if new.
+ *
+ * WORTH NOTING: round 2 gave PHYSICS no entries at all, and one of the above is a
+ * physics gap. Physics also swings most per paper (7 to 16 across the papers
+ * ingested so far), so its catalog fit is the least well evidenced of the eight
+ * subjects and deserves a deliberate look rather than another round of incidental
+ * flags.
+ *
+ * ALREADY FIXED, listed so it is not re-proposed: `Art, Painting and Sculpture`
+ * was added to Ancient India as well as Medieval, after round 2's Medieval-only
+ * placement stranded Ajanta.
  */
 function main() {
   const apply = process.argv.includes("--apply");
