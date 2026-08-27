@@ -372,3 +372,30 @@ describe("buildRecords + sets", () => {
     expect(buildRecords([q()], [d()])[0].setLabel).toBeUndefined();
   });
 });
+
+describe("validateRows — Directions preamble in context", () => {
+  const rows = (qs: TQ[], ds: Derivation[]) => buildRecords(qs, ds);
+
+  it("REJECTS a context carrying a 'Directions for the following N items' preamble", () => {
+    const bad = q({
+      context:
+        "Directions for the following 2 (two) items :\nRead the following two passages...\n\nPassage - 1\n\nSome prose.",
+    });
+    expect(validateRows(rows([bad], [d()]), 1, 1).join(" ")).toMatch(/Directions/i);
+  });
+
+  it("names the mismatch it causes, so the fix is obvious", () => {
+    const bad = q({ context: "Directions for the following 4 (four) items :\nblah\n\nProse." });
+    expect(validateRows(rows([bad], [d()]), 1, 1).join(" ")).toMatch(/instruction, not passage/i);
+  });
+
+  it("accepts a context that is passage prose only", () => {
+    const ok = q({ context: "A single number for inflation is an aggregate across commodities." });
+    expect(validateRows(rows([ok], [d()]), 1, 1)).toEqual([]);
+  });
+
+  it("does not fire on prose that merely mentions directions", () => {
+    const ok = q({ context: "The court issued directions for the following year's budget." });
+    expect(validateRows(rows([ok], [d()]), 1, 1)).toEqual([]);
+  });
+});

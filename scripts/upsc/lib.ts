@@ -477,6 +477,34 @@ export function buildRecords(
   return rows;
 }
 
+/**
+ * A `Directions for the following N (n) items :` preamble sitting inside a
+ * `context`.
+ *
+ * `context` holds the PASSAGE. The directions block is an INSTRUCTION about a
+ * run of items, and putting it in a passage produces a visibly wrong page: the
+ * heading claims N items while the card beneath it shows however many share that
+ * passage — usually one or two. On the 2025 CSAT pilot exactly two items carried
+ * it (one band included the preamble, four did not) and both rendered a single
+ * question under a "2 (two) items" heading.
+ *
+ * It is also unfixable by grouping. Items under one directions block routinely
+ * have DIFFERENT passages, and `groupBySet` takes the passage from the first row
+ * of a run — so making them one set would render the first passage above every
+ * member and silently drop the rest.
+ *
+ * Anchored on the literal phrase and the item-count parenthetical so ordinary
+ * prose that happens to mention directions does not fire.
+ */
+function findDirectionsPreamble(s: string): string | null {
+  if (!/directions\s+for\s+the\s+following\s+\d+\s*\(/i.test(s)) return null;
+  return (
+    "context carries a 'Directions for the following N items' preamble — that is " +
+    "instruction, not passage. Its item count will contradict however many questions " +
+    "actually share this passage. Keep the passage prose only."
+  );
+}
+
 /** A GFM pipe table needs a `|---|---|` separator, or the renderer prints literal pipes. */
 function findTableWithoutSeparator(s: string): string | null {
   const lines = s.split("\n");
@@ -535,6 +563,11 @@ export function validateRows(rows: RawRow[], qFrom: number, qTo: number): string
       if (bad) errs.push(`Q${r.questionNumber} ${name}: ${bad}`);
       const table = findTableWithoutSeparator(val);
       if (table) errs.push(`Q${r.questionNumber} ${name}: ${table}`);
+    }
+
+    if (r.context) {
+      const preamble = findDirectionsPreamble(r.context);
+      if (preamble) errs.push(`Q${r.questionNumber} context: ${preamble}`);
     }
 
     // content_hash is stem + sorted options + answer, and EXCLUDES context — two

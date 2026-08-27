@@ -116,6 +116,19 @@ Two rules the pure core enforces:
 On the 2025 CSAT: **13 sets covering 26 of the 28 passage-bearing items**, every
 one a consecutive pair, the remaining 2 legitimately unlabelled.
 
+### `context` is the PASSAGE, never the Directions block
+
+`validateRows` REFUSES a context carrying a `Directions for the following N (n)
+items :` preamble, and that rule was earned: on the pilot one band of five
+included it while the other four did not, so two items shipped with a heading
+claiming **2 items** above a card showing **1**. Nothing else caught it — the
+text is real, the delimiters balance, the coverage is complete.
+
+It cannot be fixed by grouping either. Items under one directions block routinely
+have DIFFERENT passages, and `groupBySet` takes the passage from the first row of
+a run — so making them one set would render the first passage above every member
+and silently drop the rest. The preamble simply does not belong in a passage.
+
 ## The thing that matters most: OPTION FIDELITY
 
 There is no key, so **every answer is derived by reading the options**. If the
