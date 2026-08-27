@@ -138,6 +138,34 @@ to reuse GK items between NDA and CDS (probed: five distinctive stems, zero matc
 GK bank), unlike the English paper where it does. Treat 98.3% as a floor on quality, never as
 an accuracy estimate.
 
+## No corroboration channel exists — measured twice, from two directions
+
+Worth recording so nobody re-hunts for one. There is no external anchor for these answers,
+and two independent probes now say so:
+
+1. **UPSC does not appear to reuse GK items between NDA and CDS** — five distinctive stems
+   from the pilot, zero matches in our 4,086-question NDA GK bank. (It *does* reuse ENGLISH
+   items, which is why the sibling corpus found one.)
+2. **UPSC does not repeat GK questions across CDS sittings either.** A cross-paper near-
+   duplicate sweep over 720 questions from 6 papers surfaced 55 candidates and **exactly one
+   is a genuine repeat**: the Nilgiri Biosphere Reserve question, set in CDS (I) 2024 Q42 and
+   again in CDS (I) 2025 Q9 with a DIFFERENT distractor set.
+
+The other 54 are an artefact worth knowing about, because it will recur in any similar sweep:
+**a large share of CDS GK stems are boilerplate, with the entire content in the OPTIONS** —
+"Which one of the following statements regarding X is not correct". 2024-1 Q70 (GST) and
+2024-2 Q84 (S-waves) score 0.94 on stem similarity and share nothing else. Any dedup or
+similarity check on this corpus must read the options, not the stem.
+
+That boilerplate is harmless for `content_hash`, which is stem + sorted options + answer — and
+that is confirmed rather than assumed: every paper committed `inserted=120 skipped=0`.
+
+**The one genuine repeat is a free control, and it passed.** Four agents (two blind passes on
+each of two papers, neither pair seeing the other paper) independently answered Nilgiri, at
+HIGH confidence, at DIFFERENT letters (A and B) because the option sets differ — so it cannot
+be positional bias. One data point, not a base rate, but it is the only external-ish
+corroboration the pipeline has produced.
+
 ## Known paper defects found (transcribed as printed, never smoothed)
 
 - **Q41** — asks for ascending order of atmospheric gases; the true ascending order is not
