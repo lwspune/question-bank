@@ -138,6 +138,37 @@ to reuse GK items between NDA and CDS (probed: five distinctive stems, zero matc
 GK bank), unlike the English paper where it does. Treat 98.3% as a floor on quality, never as
 an accuracy estimate.
 
+## Figures — rare, but they exist, and there is NO figure step
+
+**Measured: 0 figure-dependent questions across the 720 in the first six papers
+transcribed; `2023-2` is the first, with 3** (Q2 a distance-time graph, Q14 a labelled
+plant-cell diagram, Q34 a pendulum at five positions). An early survey reported "zero figures
+across all 33 pages" of the papers it sampled, and that was true of what it sampled — it just
+was not true of the corpus.
+
+This pipeline has **no snapCrop / attach-images step**, unlike the sibling State Board and
+NCERT pipelines. The stopgap is a **word-description in the stem**, in square brackets, written
+by the transcriber: `[Graph: distance on the vertical axis against time ... part A rises with a
+gentle slope, part B much more steeply ...]`.
+
+That worked on all three, and the reason it worked is worth stating, because it is the rule for
+the next one: **describe the GEOMETRY, never the answer.** Q34's description says R hangs lowest
+of the five bobs; it does not say R is where potential energy is least. Each of the three is
+answerable from its description alone, which was checked question by question rather than
+assumed.
+
+Two honest limits: a description is a second transcription layer with its own error surface,
+and a student sees prose where the paper shows a picture. If a later paper carries figures in
+quantity rather than ones and twos, port the sibling pipelines' crop-and-attach path instead of
+scaling the prose.
+
+**Do not measure this with a loose regex.** Two probes were wrong before one was right:
+`given below` matches the boilerplate "Select the correct answer using the code given below"
+and fired on 162 questions; a `graph|diagram|figure|map` word-scan then fired on "road map",
+"velocity-time graph" as a concept, "data visualisation" and "Best Picture" — 7 hits, all
+false. Only the bracketed-description marker is reliable, because the transcriber writes it
+deliberately.
+
 ## No corroboration channel exists — measured twice, from two directions
 
 Worth recording so nobody re-hunts for one. There is no external anchor for these answers,
