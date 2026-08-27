@@ -258,7 +258,7 @@ export const SUBJECTS = () => Object.keys(catalog());
  * classification into a merge-time error rather than a silently misfiled question.
  */
 export const P2_SUBJECTS = [
-  "Reading Comprehension",
+  "Comprehension",
   "Logical Reasoning and Analytical Ability",
   "General Mental Ability",
   "Basic Numeracy",
