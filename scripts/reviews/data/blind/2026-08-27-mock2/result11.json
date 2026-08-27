@@ -1,0 +1,10 @@
+[
+ {
+  "questionId": "6d644819-04ee-45e1-bb22-170f90f59c89",
+  "qnum": "1130",
+  "derived": "A",
+  "value": "2b/sqrt(a^2-b^2) = 2 tan(alpha)/sqrt(1-tan^2(alpha)) = 2 sin(alpha)/sqrt(cos 2alpha)",
+  "confidence": "high",
+  "note": "Decisive step: put both radicals over the common denominator sqrt((a+b)(a-b)), so the difference collapses to [(a+b)-(a-b)]/sqrt(a^2-b^2) = 2b/sqrt(a^2-b^2); dividing numerator and denominator by a gives 2tan(alpha)/sqrt(1-tan^2(alpha)) = 2sin(alpha)/sqrt(cos 2alpha). Verified at 40 digits with mpmath for (a,b) = (2,1), (5,2), (3,1), (10,3), (7,5) and (100,1): option A agreed to within 5e-41 in every case while B, C and D were off by 0.02 to 14. Test angles were chosen away from the only two interior points where another option happens to equal A, namely alpha = pi/8 (A=C, also B=D) and alpha = 0.581489 (A=D), since an agreement there would prove nothing."
+ }
+]

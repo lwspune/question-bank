@@ -1,0 +1,122 @@
+[
+ {
+  "questionId": "3d488b7e-bbae-4e37-b11b-daffd13f709e",
+  "qnum": "2322",
+  "derived": "B",
+  "value": "2 log 2 (natural log), i.e. log 4 = 1.386294",
+  "confidence": "high",
+  "note": "Numerator x(2^x - 1) ~ x^2 log 2, denominator 1 - cos x ~ x^2/2, so the limit is 2 log 2. sympy limit returns 2*log(2) exactly."
+ },
+ {
+  "questionId": "4aff5e8b-62b8-41a2-8907-685ed899b634",
+  "qnum": "2391",
+  "derived": "B",
+  "value": "continuous on all of R; left derivative -1 and right derivative +1 at x = 10, so not differentiable there",
+  "confidence": "high",
+  "note": "Absolute value of a linear function has a single corner at its zero, x = 10. Option D names x = 0, where the function is perfectly smooth."
+ },
+ {
+  "questionId": "25bd9e56-b580-4033-bd2e-c34780743518",
+  "qnum": "2401",
+  "derived": "B",
+  "value": "10",
+  "confidence": "high",
+  "note": "Chain rule gives dy/dx = 2x f'(x^2+2); at x = 1 the inner argument is 3, so the value is 2 times f'(3) = 2 times 5 = 10."
+ },
+ {
+  "questionId": "26a03919-2965-4f88-b01f-cfc7775dd805",
+  "qnum": "2407",
+  "derived": "D",
+  "value": "dy/dx = 1 + x + x^2/2, which equals y - x^3/6",
+  "confidence": "high",
+  "note": "The series is TRUNCATED at the x^3 term, so the derivative is not y (it differs by x^3/6, verified nonzero at x = 0.5, 1, 2), and it is neither e nor sin x. Only if the series ran to infinity would option C hold; as printed the answer is None of these."
+ },
+ {
+  "questionId": "1ce9f087-6486-4b63-a784-4fd0788bf4b4",
+  "qnum": "2471",
+  "derived": "C",
+  "value": "tan(theta); at theta = 0.7 the derivative is 0.8422884, matching tan(0.7) = 0.8422884",
+  "confidence": "high",
+  "note": "dx/dtheta = 2(-sin theta + 1/sin theta) = 2 cos^2(theta)/sin(theta) and dy/dtheta = 2 cos theta, giving tan theta. Tested at theta = 0.7, which separates all four options (cot 1.187, cos 0.765, sin 0.644)."
+ },
+ {
+  "questionId": "48dbf3b7-cc6b-4ed6-8b72-6fe5cf8418c7",
+  "qnum": "2487",
+  "derived": "B",
+  "value": "-(d2y/dx2) times (dy/dx)^(-3)",
+  "confidence": "high",
+  "note": "dx/dy = 1/y', so d2x/dy2 = d/dx(1/y') times dx/dy = -y''/(y')^3. Verified symbolically against an explicit invertible function (e^x + x^3 + 2x): option B matched exactly, the other three differed numerically at x = 0.7."
+ },
+ {
+  "questionId": "1372749b-5a9a-4a89-8bd9-6f4891f6447d",
+  "qnum": "2538",
+  "derived": "C",
+  "value": "constant, identically 3/4",
+  "confidence": "high",
+  "note": "sympy simplifies f to 3/4 and f'(x) to exactly 0; sampled at six scattered x values (including negative) all give 0.75. So the function is neither increasing nor decreasing."
+ },
+ {
+  "questionId": "157d91da-be83-46ca-9722-ba336004eadd",
+  "qnum": "2631",
+  "derived": "A",
+  "value": "sqrt(15)/2 = 1.9364917",
+  "confidence": "high",
+  "note": "Minimise d^2 = x^2 + (x^2-4)^2 = t^2 - 7t + 16 with t = x^2; minimum at t = 7/2 giving d^2 = 15/4. Note the deliberate trap: option C is sqrt(15/2) = 2.7386, a different number from sqrt(15)/2."
+ },
+ {
+  "questionId": "65e8f4dc-ce5e-4c2b-9228-84bfdd735e56",
+  "qnum": "2701",
+  "derived": "B",
+  "value": "(1/2)[log(g/f)]^2 + C",
+  "confidence": "high",
+  "note": "Put u = log(g/f); then du/dx = g'/g - f'/f is exactly the first factor, and the bracket is u itself, so the integral is u^2/2. Verified by differentiating all four candidates against a concrete pair f = e^x + 2, g = x^2 + 3: only B matched (residual simplified to 0)."
+ },
+ {
+  "questionId": "26752a9c-d5d1-4b50-9180-043e8a2a7171",
+  "qnum": "2707",
+  "derived": "C",
+  "value": "log|1 + e^x sin x| + C",
+  "confidence": "high",
+  "note": "Multiplying numerator and denominator by e^x makes the numerator e^x(sin x + cos x), which is the derivative of the new denominator 1 + e^x sin x. Confirmed by differentiating all four options at x = 0.8 and x = 2.0; only C reproduced the integrand at both points."
+ },
+ {
+  "questionId": "129f159c-ce6e-4950-8e88-07f686176af5",
+  "qnum": "2812",
+  "derived": "A",
+  "value": "1",
+  "confidence": "high",
+  "note": "36 - 12x + x^2 = (x-6)^2, so the integrand is log x/(log x + log(6-x)); the king-property reflection x -> 6-x maps [2,4] to itself and the integrand to its complement, so 2I = 4-2 = 2. mpmath quadrature returns 1.0000000."
+ },
+ {
+  "questionId": "bb1b7b08-6892-426f-9d00-ef480cb35772",
+  "qnum": "2832",
+  "derived": "A",
+  "value": "55",
+  "confidence": "high",
+  "note": "The step function contributes k over each unit interval [k, k+1), so the integral is 0+1+...+10 = 55. Numerical quadrature split at the integer breakpoints also gives 55."
+ },
+ {
+  "questionId": "27919f19-0554-46c8-ba89-84eb6a1bfa06",
+  "qnum": "2936",
+  "derived": "B",
+  "value": "1/3",
+  "confidence": "high",
+  "note": "The curves meet at (0,0) and (1,1); the integral of sqrt(x) - x^2 over [0,1] is 2/3 - 1/3 = 1/3, confirmed numerically to 30 digits."
+ },
+ {
+  "questionId": "18d9c707-1c33-47e9-8df2-f0d59c45069d",
+  "qnum": "2993",
+  "derived": "A",
+  "value": "y y'' + (y')^2 + 1 = 0",
+  "confidence": "high",
+  "note": "Differentiating x^2 + y^2 = 1 gives x + y y' = 0; differentiating again gives 1 + (y')^2 + y y'' = 0. Substituting y = sqrt(1-x^2) makes expression A identically zero while B, C, D are nonzero at x = 0.6."
+ },
+ {
+  "questionId": "297235ca-52dd-49a7-976c-56ba397fd8e1",
+  "qnum": "3019",
+  "derived": "A",
+  "value": "y = (x+4)/(1+e^x); y(-4) = 0 exactly, and y'(x) = 0 at x = -0.79206 which lies in (-1,0)",
+  "confidence": "high",
+  "note": "FLAG - MORE THAN ONE OPTION IS CORRECT. The left side is d/dx[(1+e^x)y], so (1+e^x)y = x + C and y(0) = 2 gives C = 4. Then A is true (y(-4) = 0) and C is ALSO true: the derivative numerator 1 - e^x(x+3) is +0.141 at x = -1 and -2 at x = 0, with a root at x = -0.792059968 inside (-1,0), so D is false. B is false (y(-2) = 1.7616). The stem's wording 'is (are) true' shows this was authored as a multiple-correct item; as a single-key MCQ it is defective. I report A, but a key of C would be equally defensible on the mathematics."
+ }
+]

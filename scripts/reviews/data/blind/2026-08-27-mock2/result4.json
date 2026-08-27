@@ -1,0 +1,122 @@
+[
+ {
+  "questionId": "210d16e3-7458-4a15-87ee-665b9cc5f37a",
+  "qnum": "197",
+  "derived": "B",
+  "value": "New sum = -a(b-1)/b, new product = (b-1)^2/b, so b*x^2 + a(b-1)x + (b-1)^2 = 0",
+  "confidence": "high",
+  "note": "Sum of new roots is (alpha+beta) - (alpha+beta)/(alpha*beta) = -a + a/b; product is alpha*beta - 2 + 1/(alpha*beta) = b - 2 + 1/b. Clearing the denominator b gives option B exactly (sympy expansion identical). Discriminating numeric check with a=5, b=6 (roots -2, -3): new roots are -5/3 and -5/2, and only option B has precisely those roots (A and D give surds/complex roots, C returns the original roots)."
+ },
+ {
+  "questionId": "31b7d4ac-8fa4-49c1-a298-4630343048f5",
+  "qnum": "243",
+  "derived": "C",
+  "value": "52 three-digit even numbers",
+  "confidence": "high",
+  "note": "Units digit 0: 5*4 = 20 arrangements; units digit 2 or 4: hundreds cannot be 0, so 2*4*4 = 32. Total 52. Confirmed by brute-force enumeration of all permutations of {0..5} taken 3 at a time with a non-zero leading digit and an even last digit: exactly 52."
+ },
+ {
+  "questionId": "456961ed-a48c-4fe3-8dac-fa437bda4888",
+  "qnum": "266",
+  "derived": "B",
+  "value": "D5 = 44 derangements",
+  "confidence": "high",
+  "note": "Number of ways every letter goes into a wrong envelope is the derangement number D5 = 5!(1 - 1/1! + 1/2! - 1/3! + 1/4! - 1/5!) = 44. Verified both by the recurrence D(n) = (n-1)(D(n-1)+D(n-2)) and by brute-force counting fixed-point-free permutations of 5 elements."
+ },
+ {
+  "questionId": "14265f72-11ea-4fc8-b822-9e23863117fc",
+  "qnum": "312",
+  "derived": "D",
+  "value": "10r - 3n - 3 = 0",
+  "confidence": "high",
+  "note": "Dividing the two gives nCr / nC(r-1) = (n-r+1)/r = 84/36 = 7/3, hence 3n + 3 = 10r, i.e. 10r - 3n - 3 = 0. A search over integers shows the unique pair satisfying both given values is (n, r) = (9, 3); substituting it, option D evaluates to 0 while A = 9, B = -27, C = 54, so only D holds."
+ },
+ {
+  "questionId": "5016f87e-f38f-4a73-bb38-bd44a2c66555",
+  "qnum": "333",
+  "derived": "D",
+  "value": "n = 8",
+  "confidence": "high",
+  "note": "T(n) = C(n,3), so T(n+1) - T(n) = C(n,2) = n(n-1)/2 = 28, giving n^2 - n - 56 = 0 and n = 8. Checked the other options directly: n=4 gives 6, n=5 gives 10, n=6 gives 15; only n=8 gives 28."
+ },
+ {
+  "questionId": "88be35fe-5433-4969-a5e5-d86552220cae",
+  "qnum": "342",
+  "derived": "A",
+  "value": "Pascal's rule: C(n+1, r) = C(n, r-1) + C(n, r)",
+  "confidence": "high",
+  "note": "Option A is Pascal's identity. Swept all n from 0 to 11 and all admissible r: option A had zero counterexamples, while B, C and D failed on 78, 89 and 78 cases respectively, so exactly one option is correct."
+ },
+ {
+  "questionId": "3a933383-0944-4dfc-8a82-a56074e6e164",
+  "qnum": "448",
+  "derived": "A",
+  "value": "1/b",
+  "confidence": "high",
+  "note": "With x = (a+b)/2 and y = (b+c)/2, the sum is 1/(a+b) + 1/(b+c) = (a+2b+c)/(ab+ac+b^2+bc). Using the G.P. condition ac = b^2 the denominator factors as b(a+2b+c), leaving 1/b. Verified symbolically with a, ar, ar^2 (sympy returns 1/(a*r) = 1/b) and numerically at a=2, r=3 where the value is 1/6 = 1/b."
+ },
+ {
+  "questionId": "cc1b386f-e263-40c0-b423-1130aa8fdfd9",
+  "qnum": "490",
+  "derived": "D",
+  "value": "2^9 = 512",
+  "confidence": "high",
+  "note": "A 3x3 matrix has 9 independent entries and each can be chosen in 2 ways, so the count is 2^9. The other options correspond to 4, 5 and 6 free entries and have no bearing on a 3x3 matrix."
+ },
+ {
+  "questionId": "b26c7c4b-23a2-4aad-8733-02a32fbcbe39",
+  "qnum": "540",
+  "derived": "B",
+  "value": "A + A^T is symmetric",
+  "confidence": "high",
+  "note": "(A + A^T)^T = A^T + A = A + A^T, so the matrix equals its own transpose and is symmetric for every square A. It is diagonal or the identity only for special A, and skew-symmetric only in the degenerate case A + A^T = 0, so B is the only universally correct option."
+ },
+ {
+  "questionId": "275fe2e9-56d2-4628-a10b-44eb3827514e",
+  "qnum": "563",
+  "derived": "D",
+  "value": "0",
+  "confidence": "high",
+  "note": "The circulant determinant expands to -(alpha^3 + beta^3 + gamma^3 - 3*alpha*beta*gamma), which factors as -(alpha+beta+gamma)(...). Since the cubic x^3 + a^2 x + b has no x^2 term, the sum of the roots is 0 and the determinant vanishes identically. Verified numerically with mpmath at four discriminating (a, b) pairs, including a negative b and a fractional a; every determinant came out 0 while -a^3, a^3 and a^3-3b all differed, so the three non-zero options are ruled out."
+ },
+ {
+  "questionId": "45ebd955-d2ac-4f46-bacb-47a3340aec40",
+  "qnum": "576",
+  "derived": "C",
+  "value": "-8",
+  "confidence": "high",
+  "note": "[e] = 2, [pi] = 3, and pi^2 - 6 = 3.8696 so [pi^2 - 6] = 3. The determinant of [[2,3,3],[3,3,2],[3,2,3]] is 2(9-4) - 3(9-6) + 3(6-9) = 10 - 9 - 9 = -8, confirmed by sympy. Since -8 is offered, the 'None of these' option does not apply."
+ },
+ {
+  "questionId": "330725d3-30be-4b53-bf8f-7f47d109a7cb",
+  "qnum": "607",
+  "derived": "B",
+  "value": "2 * 15! * 16! * 17!",
+  "confidence": "high",
+  "note": "Pulling 15!, 16!, 17! out of the three rows leaves det[[1,16,272],[1,17,306],[1,18,342]] = 2, so the value is 2*(15!)(16!)(17!). Computed the exact 41-digit determinant with sympy and it matches option B byte-for-byte; options A, C and D were each tested against the exact value and all fail."
+ },
+ {
+  "questionId": "0b8acff9-a318-41c7-9f5d-681639722638",
+  "qnum": "625",
+  "derived": "D",
+  "value": "D = xy, so divisible by both x and y",
+  "confidence": "high",
+  "note": "Subtracting row 1 from rows 2 and 3 gives an upper-triangular-style matrix with diagonal 1, x, y, so D = xy exactly (sympy factors the determinant as x*y). It is therefore divisible by both variables."
+ },
+ {
+  "questionId": "2307e68b-f79e-47b9-ba77-d3fd24c5792a",
+  "qnum": "640",
+  "derived": "A",
+  "value": "AB = [[2, -2], [2, 3]]",
+  "confidence": "high",
+  "note": "(B^-1 A^-1)^-1 = (A^-1)^-1 (B^-1)^-1 = A B. Multiplying gives [[2,-2],[2,3]]. Computed the left side directly by inverting both matrices, multiplying and inverting the product; the result equals A*B and matches option A only, with B, C and D all failing an exact matrix comparison."
+ },
+ {
+  "questionId": "238b2532-710a-40d8-8ebc-2f981fd03c78",
+  "qnum": "651",
+  "derived": "D",
+  "value": "det(A^-1) = +-0.2",
+  "confidence": "high",
+  "note": "For order 3, |adj A| = |A|^(n-1) = |A|^2 = 25, so |A| = +-5 and |A^-1| = 1/|A| = +-0.2. Constructed explicit 3x3 matrices with determinant +5 and -5 and confirmed both give |adj| = 25 with |A^-1| = +-1/5. Option B (+-5) is the determinant of A itself, a trap; option C evaluates to 625^(-1/5) = 0.2759, not 0.2."
+ }
+]
