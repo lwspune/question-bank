@@ -60,25 +60,35 @@ async function main() {
         .reduce((a, f) => a + count(join(derivedDir, f)), 0);
       const answers = existsSync(dataPath(id, "answers")) ? count(dataPath(id, "answers")) : 0;
 
-      const { count: dbAll } = await client
+      // A FAILED read must not render as "0 rows committed".
+      //
+      // This reported 0/19 papers and 0 rows on a run where the database in fact
+      // held 720 — because `count` came back null and `?? 0` turned "the read did
+      // not work" into the most alarming possible claim, indistinguishable from a
+      // real zero. PostgREST returns a null count on a degraded response, so the
+      // null has to survive as its own state and print as `?` rather than a digit.
+      const { count: dbAll, error: eAll } = await client
         .from("questions")
         .select("id", { count: "exact", head: true })
         .eq("exam_id", EXAM_ID)
         .eq("source_file", paper.sourceFile);
-      const { count: dbPub } = await client
+      const { count: dbPub, error: ePub } = await client
         .from("questions")
         .select("id", { count: "exact", head: true })
         .eq("exam_id", EXAM_ID)
         .eq("source_file", paper.sourceFile)
         .eq("visibility", "PUBLIC");
+      const db = eAll || dbAll === null ? null : dbAll;
+      const pub = ePub || dbPub === null ? null : dbPub;
 
-      return { id, bands: bands.length, bandQ, merged, passA, passB, answers, db: dbAll ?? 0, pub: dbPub ?? 0,
+      return { id, bands: bands.length, bandQ, merged, passA, passB, answers, db, pub,
                rendered: existsSync(join(OUT, id)) };
     })
   );
 
   const N = QUESTIONS_PER_PAPER;
-  const mark = (n: number) => (n === 0 ? "  ·" : n === N ? String(n).padStart(3) : `${String(n).padStart(3)}!`);
+  const mark = (n: number | null) =>
+    n === null ? "  ?" : n === 0 ? "  ·" : n === N ? String(n).padStart(3) : `${String(n).padStart(3)}!`;
   console.log(`\nCDS General Knowledge — ${ids.length} papers, ${N} questions each\n`);
   console.log(`  paper    px  bands   txn  merged   passA   passB  answr      DB  PUBLIC`);
   console.log(`  ${"-".repeat(70)}`);
@@ -86,13 +96,17 @@ async function main() {
     console.log(
       `  ${r.id.padEnd(8)} ${(r.rendered ? "y" : "-").padStart(2)}  ${String(r.bands).padStart(5)}  ` +
         `${mark(r.bandQ)}   ${mark(r.merged)}    ${mark(r.passA)}    ${mark(r.passB)}   ${mark(r.answers)}  ` +
-        `${mark(r.db)}     ${r.pub === 0 ? "  ·" : String(r.pub).padStart(3)}`
+        `${mark(r.db)}     ${r.pub === null ? "  ?" : r.pub === 0 ? "  ·" : String(r.pub).padStart(3)}`
     );
   }
+  const unread = rows.filter((r) => r.db === null).length;
   const done = rows.filter((r) => r.db === N).length;
-  const totalDb = rows.reduce((a, r) => a + r.db, 0);
-  const totalPub = rows.reduce((a, r) => a + r.pub, 0);
+  const totalDb = rows.reduce((a, r) => a + (r.db ?? 0), 0);
+  const totalPub = rows.reduce((a, r) => a + (r.pub ?? 0), 0);
   console.log(`  ${"-".repeat(70)}`);
+  if (unread) {
+    console.log(`  ! ${unread} paper(s) could not be read from the database — totals below are a FLOOR, not a count.`);
+  }
   console.log(`  ${done}/${ids.length} papers committed · ${totalDb} rows in the bank · ${totalPub} PUBLIC`);
   console.log(`\n  "!" marks a count that is not ${N} — i.e. in progress or short.`);
   console.log(`  "px" is whether out/<id>/ still holds rendered pages (delete after commit; regenerable).`);
