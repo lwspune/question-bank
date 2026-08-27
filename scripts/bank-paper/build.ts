@@ -70,6 +70,24 @@ type ChapterPlan = {
    */
   kinds?: ("pyq" | "practice")[];
   /**
+   * Restrict this chapter to ONE ingested source file.
+   *
+   * Needed because `kinds: ["practice"]` does not pin a pool. NDA Current Affairs
+   * holds 21 distinct practice `source_file`s — the current-year authored pool
+   * plus CA questions harvested from older mocks and books — and CA is the one
+   * subject where a stale pick is silently wrong (a 2024 question asks about 2024
+   * facts and still reads as a well-formed question).
+   *
+   * MEASURED CONSEQUENCE of not having this: `nda-gat-lws-mock-2` states in its
+   * own comment that its CA came from `Current Affairs_Sep26.docx`, and 3 of its
+   * 11 CA picks came from `NDA_GAT_MOCK_W1.docx` instead. The comment asserted an
+   * intent the code could not enforce.
+   *
+   * Exact match, and OPTIONAL: a chapter that omits it is unfiltered, so every
+   * spec written before this field existed behaves identically.
+   */
+  sourceFile?: string;
+  /**
    * Set when the chapter's questions live in a DIFFERENT exam to the paper's own
    * (e.g. Binary Numbers, which has no fresh NDA rows and is drawn from the
    * Cadetprep worksheet course). Documentation only — candidates are fetched by
@@ -162,6 +180,210 @@ type PaperSpec = {
 };
 
 const PAPERS: PaperSpec[] = [
+  {
+    // ── NDA GAT — LWS Mock 3 (150 q) ─────────────────────────────────────────
+    //
+    // Built to scripts/bank-paper/NDA_GAT_BLUEPRINT.md. READ THAT FIRST — the
+    // allocation, the two-window rule, the Foundation mapping and the supply
+    // ledger all live there now rather than being copied down a third spec.
+    //
+    // Drawn from what Mocks CDS-1 and 2 did not use; build.ts excludes any
+    // question already in a paper, so the GK chapter list is Mock 2's and still
+    // lands on a disjoint set.
+    //
+    // ── THREE THINGS THAT ARE NOT COPIES OF MOCK 2, each measured 2026-08-27 ──
+    //
+    // 1. FOUNDATION CHAPTERS USE `take`, NOT `quota`. Mocks 1-2 drew that pool's
+    //    EASY and MODERATE rows and what is left is HARD-skewed — 8 of its 17
+    //    chapters have ZERO MODERATE free. Copying Mock 2's quotas verbatim
+    //    under-fills TEN of them (Electricity, Magnetic Effects, Motion, Work and
+    //    Energy, Acids, Matter, Chemical Reactions, Control and Coordination,
+    //    Fundamental Unit of Life, Our Environment). `take` spends against the
+    //    paper's shape and substitutes; a quota reports a shortfall against a
+    //    difficulty that no longer exists.
+    //
+    // 2. CURRENT AFFAIRS IS PINNED with `sourceFile`. `kinds: ["practice"]` does
+    //    not pin a pool — NDA CA holds 21 distinct practice source_files. Mock 2
+    //    claimed the Sep-26 pool in its comment and drew 3 of its 11 from
+    //    NDA_GAT_MOCK_W1.docx. `National Events` additionally drops to `take`
+    //    because the Sep-26 pool has 0 MODERATE free in that chapter.
+    //
+    // 3. NO `includePrivate` ON THE ENGLISH CHAPTERS. All 2,280 CDS rows went
+    //    PUBLIC on 2026-08-25 (0 PRIVATE remain), so the flag is a no-op today —
+    //    and omitting it is strictly safer, since a CDS row withdrawn for defect
+    //    later would then stay excluded rather than being opted back in.
+    //
+    // ── ENGLISH: 14 BLOCKS, WHICH IS A KNOWN DEVIATION ───────────────────────
+    //
+    // The blueprint targets 7-10 directions blocks (real GAT sizes 2/3/5/5/5/5/
+    // 5/5/10). This paper prints FOURTEEN, four of them 2-question, because that
+    // is the entire remaining confirmed CDS English pool and it comes in
+    // fragments. Recorded rather than hidden.
+    //
+    // WHY THERE IS NO CLOZE OR READING COMPREHENSION BLOCK. The one remaining
+    // cloze set (fecd882e-…:S15) has 10 rows of which only 8 are confirmed, and
+    // R2 makes a shared-passage set ATOMIC — 8 of 10 cannot be drawn at all.
+    // Topping it up was attempted and failed on the merits: Q111 turned out to
+    // carry a wrong stem AND a wrong key (repaired 2026-08-27 against the printed
+    // booklet — see scripts/cds/fix-keys.ts), and Q113 came back UNVERIFIABLE
+    // (`has` vs `has had`, both defensible, and CDS ships no answer key), so it
+    // cannot carry a confirmed review. RC has 0 confirmed rows and 83% of that
+    // chapter has no stored passage at all.
+    //
+    // ⚠ THIS EXHAUSTS CONFIRMED CDS ENGLISH. Mock 4 cannot be built this way.
+    // See NDA_GAT_BLUEPRINT.md §8a/§9 for the three options, and note that §8a
+    // records why a further blind pass is the weakest of them.
+    slug: "nda-gat-lws-mock-3",
+    title: "NDA GAT — LWS Mock 3",
+    examId: EXAM_ID,
+    sections: [
+      { key: "english", label: "Part A — English", ordering: "english-blocks" },
+      { key: "gk", label: "Part B — General Knowledge" },
+    ],
+    kinds: ["pyq"], // per-chapter overrides carry the Foundation + CA practice rows
+    requireSolution: true,
+    layout: "sequential",
+    chapters: [
+      // ── Part A — English 50 (Grammar 12 · Vocabulary 20 · Idioms 10 ·
+      //    Rearrangement 5 · Spotting Errors 3) ───────────────────────────────
+      {
+        chapterId: "a2dee362-7083-4c47-94a9-fcc8878c83de", label: "Grammar (CDS)",
+        sectionKey: "english", fromExam: "CDS", requireConfirmedReview: true,
+        blocks: [
+          { setId: "2fb47771-8ec7-4532-a9ff-257a9f621541:S14", take: 5, note: "2024-II" },
+          { setId: "2fb47771-8ec7-4532-a9ff-257a9f621541:S12", take: 3, note: "2024-II" },
+          { setId: "43ed3f0a-1f75-4d70-b9ce-453176b7a0be:S10", take: 2, note: "2022-II" },
+          { setId: "48c9d9a3-5e50-4582-8933-2d30c73a01ae:S11", take: 2, note: "2025-II" },
+        ],
+      },
+      {
+        chapterId: "ba40834a-8074-44e9-9f47-29be8c0a8811", label: "Vocabulary (CDS)",
+        sectionKey: "english", fromExam: "CDS", requireConfirmedReview: true,
+        blocks: [
+          { setId: "55d278a3-5600-474f-aa18-d4296ab1b0f5:S1", take: 5, note: "2024-I" },
+          { setId: "2fb47771-8ec7-4532-a9ff-257a9f621541:S10", take: 5, note: "2024-II" },
+          { setId: "55d278a3-5600-474f-aa18-d4296ab1b0f5:S14", take: 5, note: "2024-I" },
+          { setId: "fecd882e-6838-4664-9773-e46c406feee2:S9", take: 3, note: "2025-I" },
+          { setId: "55d278a3-5600-474f-aa18-d4296ab1b0f5:S12", take: 2, note: "2024-I" },
+        ],
+      },
+      {
+        chapterId: "b4bd8726-c6de-45ca-911e-950c1e96ed88", label: "Idioms and Phrases (CDS)",
+        sectionKey: "english", fromExam: "CDS", requireConfirmedReview: true,
+        blocks: [
+          { setId: "b1c830a8-065c-48fc-9fa8-00bfae3f9888:S10", take: 5, note: "2018-II" },
+          { setId: "71ba1f2b-0045-41ef-89b5-e5ae7a5c4307:S3", take: 5, note: "2022-I" },
+        ],
+      },
+      {
+        chapterId: "12af0006-e2c9-43d6-8cbc-052be8f24bc5", label: "Sentence Rearrangement (CDS)",
+        sectionKey: "english", fromExam: "CDS", requireConfirmedReview: true,
+        blocks: [
+          { setId: "150ac3dd-95d5-4c6f-b1f1-d30511167e21:S7", take: 3, note: "2021-II" },
+          { setId: "82fc90f2-e71d-4238-82fa-517828b7b9d5:S5", take: 2, note: "2020-II" },
+        ],
+      },
+      {
+        chapterId: "573a9ea2-e537-4417-b17c-67f5854877a2", label: "Spotting Errors (CDS)",
+        sectionKey: "english", fromExam: "CDS", requireConfirmedReview: true,
+        blocks: [{ setId: "48c9d9a3-5e50-4582-8933-2d30c73a01ae:S2", take: 3, note: "2025-II" }],
+      },
+
+      // ── Part B — Physics 25 (Foundation Course + NDA for the two gaps) ──────
+      // ⚠ Force and Laws of Motion is at EXACTLY its seat count (2 free
+      //    confirmed); one STRUCT/DUP refusal there lands Physics short.
+      { chapterId: "c1e9dd85-6c07-4c3c-b5d9-73c4350eb32c", label: "PHY Light - Reflection and Refraction", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      { chapterId: "266bfff5-57f9-4ac4-a6e6-d1d79a449db1", label: "PHY The Human Eye and the Colourful World", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      { chapterId: "08e44970-d5fa-4e62-b750-93c1d0902c99", label: "PHY Electricity", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      { chapterId: "cbf0cd21-bb77-46b3-a7cc-b8d5e9469426", label: "PHY Magnetic Effects of Electric Current", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      { chapterId: "9c6901c1-e162-42c8-afb4-07ce730d538b", label: "PHY Force and Laws of Motion", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      { chapterId: "65aeabdf-8fa2-4d2f-b91b-1442885b723c", label: "PHY Sound (incl. the Oscillations seat)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      { chapterId: "17cfdfa0-e201-4a5e-8402-3e915dc971f7", label: "PHY Motion", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 1 },
+      { chapterId: "baf73524-d5eb-43f4-917e-a5c9d928883f", label: "PHY Work and Energy", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 1 },
+      { chapterId: "09018942-cca4-4b54-bf6b-6c1a360f1691", label: "PHY Gravitation (+ the Fluids seat: thrust, pressure, buoyancy)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      // No Foundation chapter covers these; NDA PYQ, which already carries worked
+      // solutions. Heat's HARD supply is exactly 1 free — zero slack.
+      { chapterId: "5dedf98c-7681-4f33-869e-f341313d8fd0", label: "PHY Heat and Thermodynamics", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "51f93cb7-95f0-4a12-af8b-6c894de8d17c", label: "PHY Modern Physics", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — Chemistry 15 ──────────────────────────────────────────────
+      // ⚠ Structure of the Atom is at EXACTLY its seat count (2 free confirmed).
+      { chapterId: "82892c84-a5ba-41db-a229-c6105acf7f8b", label: "CHE Carbon and Its Compounds (+ the Bonding seat)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      { chapterId: "92ab663b-7516-4b1f-9604-a6a20e7ef998", label: "CHE Structure of the Atom", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      { chapterId: "695fea8c-e966-4c6e-b585-bdd9a7323f49", label: "CHE Acids, Bases and Salts", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      { chapterId: "33325289-969e-4b06-892d-3da4bce00b89", label: "CHE Matter in Our Surroundings", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      { chapterId: "c4efaa8a-82fa-4e1c-9181-06eb16465bf8", label: "CHE Chemical Reactions and Equations", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      { chapterId: "1ff615cf-3256-4f95-bd53-0e3807aa000e", label: "CHE Metals and Non-metals (+ the Industrial seats)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      // `take`, not a MODERATE quota: NDA Hydrogen and Water has 8 free PYQ and
+      // ALL of them are EASY, so Mock 2's { MODERATE: 1 } cannot be met here.
+      { chapterId: "d14c8662-10f9-42c7-b03f-9260c6131c81", label: "CHE Hydrogen and Water", sectionKey: "gk", take: 1 },
+
+      // ── Part B — Biology 10 (Foundation Course; NDA Biology PYQ is exhausted) ─
+      // ⚠ The Fundamental Unit of Life is at EXACTLY its seat count (2).
+      { chapterId: "9990265b-e948-4e97-8d63-b8e2e580bb97", label: "BIO Life Processes (+ a Plant Biology seat)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      { chapterId: "7d63025f-f1bb-4975-b410-5b5168986045", label: "BIO Control and Coordination", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 1 },
+      { chapterId: "8f0223e9-b65f-4e6d-8532-9419c126f8bf", label: "BIO The Fundamental Unit of Life", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      { chapterId: "1b08c219-c055-41a8-9899-f1950683c3b3", label: "BIO Tissues (+ a Plant Biology seat)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      { chapterId: "5c46629b-978d-45ed-b9d1-e3593b1c4b1d", label: "BIO How Do Organisms Reproduce", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 1 },
+      { chapterId: "be8227bd-721e-46ec-b71c-ff0c202d5ff1", label: "BIO Our Environment", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 1 },
+
+      // ── Part B — Geography 20 (NDA PYQ) ────────────────────────────────────
+      { chapterId: "6df02248-239f-49bd-9c2e-63cb0860defb", label: "GEO Indian Geo - Economy, Resources, Transport", sectionKey: "gk", quota: { EASY: 1, MODERATE: 3, HARD: 1 } },
+      { chapterId: "63289cd6-4373-4840-8d57-407e47844c97", label: "GEO Earth's Structure and Landforms", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 1 } },
+      { chapterId: "a5a3c06a-a8da-4cf1-96a4-608ea3279d14", label: "GEO Indian Geo - Physical Features", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 1 } },
+      { chapterId: "8c4cb7d9-c77d-4155-939f-9cf0ada26bba", label: "GEO Climatology, Atmosphere and Weather", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 1 } },
+      { chapterId: "3b4f15e9-42a8-4a7d-accc-53a4374e059f", label: "GEO World and Human Geography", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "5424e638-b1eb-4319-ad6f-cd6c238d758e", label: "GEO Earth in Space, Maps and Coordinates", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "b6db578c-0079-42f4-898b-dedc0bb4ba82", label: "GEO Oceanography", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — History 12 (NDA PYQ) ──────────────────────────────────────
+      { chapterId: "7362f273-e8bf-4c26-b1a2-5cc17e5d56f0", label: "HIS Modern India", sectionKey: "gk", quota: { EASY: 1, MODERATE: 3, HARD: 2 } },
+      { chapterId: "e376f822-a8e5-4ce2-b58b-e921c9b9ae9e", label: "HIS Medieval India", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "e87bba6c-60b7-4264-868f-0a50d688bcd6", label: "HIS Ancient India", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "c4efbafd-4cc9-4b06-8e03-259610410ab7", label: "HIS World History", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+
+      // ── Part B — Polity 6 (NDA PYQ) ────────────────────────────────────────
+      // ⚠ World Polity's HARD supply is exactly 1 free — zero slack.
+      { chapterId: "a2f2ba52-9dfd-43e3-b220-2b6de50cb37f", label: "POL Government Structure", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      { chapterId: "d1448908-30ee-40e9-8f2f-920a64aed7bc", label: "POL Fundamental Rights, DPSP, Local Governance", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      { chapterId: "ecff6022-f64b-49d5-a5c1-4f89012e192b", label: "POL Indian Constitution", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "fccc9f7a-66da-4374-b48d-f65e8a09e4df", label: "POL World Polity and IR", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+
+      // ── Part B — Economics 1 (NDA PYQ; the subject is one chapter) ─────────
+      { chapterId: "4c64341f-f757-4d44-b1e4-a30572cd4bae", label: "ECO Indian Economy", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — Current Affairs 11 (Sep-2026 pool, PINNED) ────────────────
+      // A PYQ from 2019 asks about 2019 facts, so CA must come from the current
+      // year — and `sourceFile` is what makes that true rather than intended.
+      { chapterId: "2d7691db-838d-419c-8ae8-bd299af89482", label: "CA International Affairs", sectionKey: "gk", kinds: ["practice"], sourceFile: "Current Affairs_Sep26.docx", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      { chapterId: "2843a36f-4171-4d21-b8af-165d3ed2b7ad", label: "CA Government Schemes and Policy", sectionKey: "gk", kinds: ["practice"], sourceFile: "Current Affairs_Sep26.docx", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      { chapterId: "8643c509-7ea1-4b37-8c2d-5adc53c7f2eb", label: "CA Defence and Military Exercises", sectionKey: "gk", kinds: ["practice"], sourceFile: "Current Affairs_Sep26.docx", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "06f78bba-e820-49e4-ada5-7b2c90eb3c1d", label: "CA Sports", sectionKey: "gk", kinds: ["practice"], sourceFile: "Current Affairs_Sep26.docx", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "c5cd2e0e-f664-4967-abb6-a1033bcffec6", label: "CA Science and Technology", sectionKey: "gk", kinds: ["practice"], sourceFile: "Current Affairs_Sep26.docx", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "47cd81d5-4985-4a5a-b884-71f2c2de4634", label: "CA Awards, Honours and Culture", sectionKey: "gk", kinds: ["practice"], sourceFile: "Current Affairs_Sep26.docx", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      // `take`: the Sep-26 pool has 0 MODERATE free in this chapter (2 HARD).
+      { chapterId: "37f60677-b0d4-4c76-9431-60f0f603d324", label: "CA National Events and India GK", sectionKey: "gk", kinds: ["practice"], sourceFile: "Current Affairs_Sep26.docx", take: 1 },
+      { chapterId: "b9f361d6-4126-44da-a34c-b420370fc63f", label: "CA Environment, Ecology and Energy", sectionKey: "gk", kinds: ["practice"], sourceFile: "Current Affairs_Sep26.docx", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+    ],
+    exclude: [
+      {
+        id: "06a7cd42-2eff-454f-b913-092de073f7cc",
+        reason:
+          "Foundation Physics 'The Human Eye and the Colourful World' Q5: the stem says the beam is incident 'as shown in the four option figures' and the OPTIONS are diagrams, but no image is stored — so the question is unanswerable as it stands (GAT rule 7 / P4-figure-ref-no-image, which blocks the build). Excluded rather than shipped; the chapter has 5 free confirmed rows for 3 seats, so the seat is still filled.",
+      },
+      {
+        id: "af549231-0143-4635-9bd7-cadb071c88b4",
+        reason:
+          "NDA GAT Q102 climate-type match list: List I and List II are LINEARISED INTO PROSE (column-aligned with spaces) and never parse as a GFM pipe table, so the printed paper would show a run-on stem instead of a two-column table (GAT rule 2 / P2-matchlist-not-a-table, which blocks the build). Repairing it edits the STEM, which re-stamps content_hash and must be mirrored to the source of record — a content task, not a paper task. Excluded here; the chapter has 56 free rows for 4 seats.",
+      },
+      {
+        id: "9a0a10a4-0e6e-4e22-9826-2e9a34529453",
+        reason:
+          "NDA 2018-Sep GAT Q73 (sunrise order of Itanagar/Imphal/Agartala/Aizawl): flagged SOLN≠KEY, and the SOLUTION is right — sunrise runs east to west, and by longitude (Imphal ~93.9E, Itanagar ~93.6E, Aizawl ~92.7E, Agartala ~91.3E) the order is 2-1-4-3 = option B, which is what the stored solution derives. The stored key C (1-4-3-2) puts Imphal LAST when it is the easternmost of the four; no season explains that, since Agartala lies 2.6 degrees further west (~10 min). NOT re-keyed here: it is a PYQ whose key came from a prep-house Excel (NDA2_GAT_2018_PYQ.xlsx), and adjudicating an NDA PYQ key needs the source paper. Excluded from this paper so a student is not handed a key that contradicts its own printed solution; the defect stands recorded for that adjudication.",
+      },
+    ],
+  },
+
   {
     // ── NDA GAT — LWS Mock 2 (150 q) ─────────────────────────────────────────
     //
@@ -789,6 +1011,8 @@ type Row = {
   difficulty: Cand["difficulty"];
   question_kind: string;
   visibility: "PUBLIC" | "PRIVATE";
+  /** Pins a chapter to one ingested pool — see ChapterPlan.sourceFile. */
+  source_file: string | null;
   text: string;
   solution: string | null;
   /** Set/context/number drive the English block rules — see ./english.ts. */
@@ -949,7 +1173,7 @@ async function fetchCandidates(client: SupabaseClient, spec: PaperSpec): Promise
     const { data, error } = await client
       .from("questions")
       .select(
-        "id, chapter_id, difficulty, question_kind, visibility, text, solution, set_id, context, question_number, "
+        "id, chapter_id, difficulty, question_kind, visibility, source_file, text, solution, set_id, context, question_number, "
           + "subtopics(name), chapters(subjects(name, exams(name))), options(label, text, is_correct)"
       )
       // PRIVATE rows are fetched only when some chapter opts in, and are filtered
@@ -1114,6 +1338,8 @@ async function main() {
       // to opt in explicitly before one can reach a printed paper.
       .filter((r) => r.visibility === "PUBLIC" || ch.includePrivate === true)
       .filter((r) => (ch.kinds ?? spec.kinds).includes(r.question_kind as "pyq" | "practice"))
+      // Undefined = unfiltered, so specs predating this field are unaffected.
+      .filter((r) => ch.sourceFile === undefined || r.source_file === ch.sourceFile)
       .filter((r) => {
         const need = ch.requireConfirmedReview ?? spec.requireConfirmedReview ?? false;
         return !need || confirmed === null || confirmed.has(r.id);
