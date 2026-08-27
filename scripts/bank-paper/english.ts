@@ -235,10 +235,25 @@ export function selectWholeSets(
  * Ordering is alphabetical throughout so a re-run reproduces the paper.
  */
 export function orderEnglishBlocks(rows: EnglishRow[]): EnglishRow[] {
+  // The separator is NUL, written as the ESCAPE `\u0000` and not as a literal
+  // byte. Two separate points:
+  //
+  //   WHY NUL. A composite key joined on a character the data can contain cannot
+  //   be split back apart — chapter, subtopic and set id all contain spaces and
+  //   hyphens. NUL cannot occur in any of them. (CLAUDE.md records the same bug
+  //   from the other direction, 2026-08-04: `${exam} ${chapter}` was unsplittable
+  //   because BOTH halves contained spaces.)
+  //
+  //   WHY THE ESCAPE. Written as a literal 0x00 byte — as it was until
+  //   2026-08-27, almost certainly from a shell heredoc eating the backslash —
+  //   the file is binary to every text tool: `file` reports "data" and grep
+  //   answers "Binary file matches" and searches nothing. That silently excluded
+  //   this file from every text probe in the repo. The escape is the same string
+  //   value with none of that.
   const key = (q: EnglishRow) =>
     isStimulusChapter(q.chapter)
-      ? `${q.chapter} ${q.setId ?? ""}`
-      : `${q.chapter} ${q.subtopic ?? ""} ${q.setId ?? ""}`;
+      ? `${q.chapter}\u0000${q.setId ?? ""}`
+      : `${q.chapter}\u0000${q.subtopic ?? ""}\u0000${q.setId ?? ""}`;
 
   const buckets = new Map<string, EnglishRow[]>();
   for (const q of rows) {
