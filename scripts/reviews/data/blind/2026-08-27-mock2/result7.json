@@ -1,0 +1,122 @@
+[
+ {
+  "questionId": "6a76c802-38e7-412f-943e-0769b9551be4",
+  "qnum": "1613",
+  "derived": "C",
+  "value": "k = 4",
+  "confidence": "high",
+  "note": "Normalise the first circle by 2: g1=-3/4, f1=3/2, c1=k/2; second gives g2=-2, f2=5, c2=16. Orthogonality 2g1g2+2f1f2=c1+c2 gives 3+15=k/2+16, so k=4. Forgetting to divide the first circle by 2 would give k=41 (option A), which is the intended trap."
+ },
+ {
+  "questionId": "279a3c7a-ce9a-4fb9-abd5-aa6d190fe453",
+  "qnum": "1679",
+  "derived": "C",
+  "value": "y^2 - 8x - 4y + 12 = 0",
+  "confidence": "high",
+  "note": "Focus and vertex share y=2, so the axis is horizontal with a=2 and the parabola opens right: (y-2)^2 = 8(x-1), i.e. y^2 - 4y - 8x + 12 = 0. Expansion confirmed with sympy."
+ },
+ {
+  "questionId": "207eb91b-8662-403c-8599-c475de49654a",
+  "qnum": "1718",
+  "derived": "B",
+  "value": "e = sqrt(5/12) = sqrt(15)/6 = 0.64550",
+  "confidence": "high",
+  "note": "Dividing by 84 gives x^2/7 + y^2/12 = 1, so the major axis is along y (12 > 7) and e^2 = 1 - 7/12 = 5/12. Options C (0.18634) and A (0.31944) are numerically distinct, so no ambiguity."
+ },
+ {
+  "questionId": "4c07f464-7c6d-4ef1-8bed-21a107b41fed",
+  "qnum": "1819",
+  "derived": "D",
+  "value": "vector CA",
+  "confidence": "high",
+  "note": "PA + CP = CP + PA = CA by the triangle law. Option D, CB + BA, telescopes to CA; option A gives AB, which is the reverse vector. The position of P inside the triangle is irrelevant."
+ },
+ {
+  "questionId": "14fa3556-d5c2-474c-8b1b-dea88246a00c",
+  "qnum": "1894",
+  "derived": "C",
+  "value": "m = -|a|^2 / |b|^2",
+  "confidence": "high",
+  "note": "With a.b = 0, (a+b).(a+mb) = |a|^2 + m|b|^2 = 0, so m = -|a|^2/|b|^2. Option B (-1) is only correct in the special case |a| = |b|, which the stem does not state."
+ },
+ {
+  "questionId": "0c29d1f4-c9bf-4702-9a17-742badbd663c",
+  "qnum": "1941",
+  "derived": "B",
+  "value": "-408 i - 12 j + 135 k",
+  "confidence": "high",
+  "note": "r = OP = (7, -13, 20); moment = r x F with F = (5, 10, 16), giving (-408, -12, 135). Option A differs only in the i component (20 instead of -408), the value you get if the i term is mis-signed."
+ },
+ {
+  "questionId": "0a0e9035-79c2-40fc-a539-538264fc0fa2",
+  "qnum": "1967",
+  "derived": "B",
+  "value": "x = -2",
+  "confidence": "high",
+  "note": "Coplanarity means the scalar triple product vanishes; the 3x3 determinant expands to 2x + 4, so x = -2."
+ },
+ {
+  "questionId": "70b6c190-b294-43b4-86b2-d71d8671d4eb",
+  "qnum": "1973",
+  "derived": "B",
+  "value": "(-2, 1, -2), equivalently (2, -1, 2)",
+  "confidence": "high",
+  "note": "Cross product of (-1,2,2) and (0,2,1) is (-2, 1, -2); option B (2,-1,2) is exactly its negative, so it is parallel and is the only option whose dot product with BOTH given lines is zero (checked all four: A gives 5 and 4, C gives 8 and 4, D gives -4 and 0)."
+ },
+ {
+  "questionId": "85f83909-eaa5-4ea7-ab23-5a55d6a9e8a2",
+  "qnum": "2000",
+  "derived": "C",
+  "value": "(3 i - j - 4 k)/sqrt(26)",
+  "confidence": "high",
+  "note": "(3+y)/(-1) is (y-(-3))/(-1), so the direction ratios are (3, -1, -4) with magnitude sqrt(26). Option A flips the k sign, which is the trap if the y-term rewrite is done carelessly."
+ },
+ {
+  "questionId": "f9b02de7-9269-4897-8899-c67fb1d8f08b",
+  "qnum": "2114",
+  "derived": "A",
+  "value": "[1, infinity)",
+  "confidence": "high",
+  "note": "f(x) = (x+1)^2 + 1, minimum value 1 attained at x = -1, so the endpoint is included and the range is closed at 1. Option D is the same interval with the attained minimum wrongly excluded."
+ },
+ {
+  "questionId": "10207ef2-a43e-449a-a1e4-8df49ce10081",
+  "qnum": "2144",
+  "derived": "C",
+  "value": "many-one into",
+  "confidence": "high",
+  "note": "f(1)=f(3)=a so it is many-one, and c is not in the image so it is into. Option D reads 'one of these', which is almost certainly a misprint of 'none of these'; it does not affect the answer since C is exactly correct."
+ },
+ {
+  "questionId": "32828337-5ea6-4556-937a-a1f047caa920",
+  "qnum": "2186",
+  "derived": "B",
+  "value": "f(x) is identically 5/4, so (g o f)(x) = g(5/4) = 1",
+  "confidence": "high",
+  "note": "sympy simplifies f to the constant 5/4, confirmed numerically at x = 0, 0.3, 1.0, 2.7 and -1.4 (all 1.25). Since f is constant, g need only be known at 5/4, which the stem supplies."
+ },
+ {
+  "questionId": "0c8e380d-7237-4082-944e-1b3249c37428",
+  "qnum": "2187",
+  "derived": "A",
+  "value": "x = -1",
+  "confidence": "high",
+  "note": "f(g(x)) = x^2 + 4x and g(f(x)) = x^2 + 2x - 2; equating cancels the quadratic term and gives 2x = -2, so x = -1 uniquely."
+ },
+ {
+  "questionId": "30dbcadf-295c-4aa1-8fff-bb9e6166c5da",
+  "qnum": "2259",
+  "derived": "B",
+  "value": "m/n",
+  "confidence": "high",
+  "note": "Standard 0/0 limit; L'Hopital or the factorisation (x^m-1)/(x-1) over (x^n-1)/(x-1) gives m/n. sympy returns m/n."
+ },
+ {
+  "questionId": "108de593-d0c6-46e8-826b-1dfa77faf4fd",
+  "qnum": "2277",
+  "derived": "D",
+  "value": "right-hand limit 1/sqrt(2), left-hand limit -1/sqrt(2), so the two-sided limit does not exist",
+  "confidence": "high",
+  "note": "sqrt(1-cos x) = sqrt(2)*|sin(x/2)|, and the absolute value makes the numerator even while the denominator is odd, so the one-sided limits are +0.70711 and -0.70711. sympy confirms both. Note option C (sqrt 2) is not the value of either one-sided limit; the common wrong answer 1/sqrt(2) is not even offered."
+ }
+]

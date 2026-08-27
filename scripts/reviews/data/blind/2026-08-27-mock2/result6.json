@@ -1,0 +1,122 @@
+[
+ {
+  "questionId": "53dd141c-7104-413c-ba7c-4bf8c08bbfea",
+  "qnum": "1135",
+  "derived": "B",
+  "value": "1/8 (= 0.125 exactly)",
+  "confidence": "high",
+  "note": "sin(7pi/14) = sin(pi/2) = 1, so the product reduces to sin(pi/14)sin(3pi/14)sin(5pi/14), the standard 1/8 identity. Numeric check at 40 dps gives 0.125000000..., matching B and separating it cleanly from 1/4 and sqrt(2)/7."
+ },
+ {
+  "questionId": "559c4822-9d49-4e7c-aa61-b6b11377577c",
+  "qnum": "1166",
+  "derived": "A",
+  "value": "0",
+  "confidence": "high",
+  "note": "With A = ln x and B = ln y the expression is cos A cos B - (1/2)[cos(A-B) + cos(A+B)], and the bracket is exactly 2 cos A cos B, so the value is identically 0. Evaluated at four discriminating pairs (2,3), (5,0.7), (1.3,11), (0.4,0.25) it returns ~1e-41 while (1/2)f(x)f(y) and f(x+y) are far from zero there, so B and C are ruled out."
+ },
+ {
+  "questionId": "79e67dc5-8c2f-4bc8-a337-0f61a80719ea",
+  "qnum": "1168",
+  "derived": "D",
+  "value": "tan(theta)",
+  "confidence": "high",
+  "note": "The condition gives tan(theta+alpha) = 1, so alpha = pi/4 - theta + n*pi. Then (1-tan alpha)/(1+tan alpha) = tan(pi/4 - alpha) = tan(theta). Verified at theta = 0.3, 1.1, -0.7, 2.4 for n = 0, 1, -1: the expression equals tan(theta) every time, and those points separate tan(theta) from -tan(theta), -cos(theta) and 0."
+ },
+ {
+  "questionId": "8a2db20c-3a30-41fa-ac0b-b6e5b39f160d",
+  "qnum": "1174",
+  "derived": "A",
+  "value": "sqrt(a^2 + b^2)",
+  "confidence": "high",
+  "note": "a sin t + b cos t = sqrt(a^2+b^2) sin(t + phi), so the maximum is sqrt(a^2+b^2). A fine scan over one period with (a,b) = (3,4) gives 5.0 and with (a,b) = (-2,5) gives 5.3852, against |a|+|b| = 7 in both cases, so option B (which is |a|+|b|) is excluded by the second, discriminating pair."
+ },
+ {
+  "questionId": "9004cad9-f744-4e2d-9570-03888d6a94e2",
+  "qnum": "1187",
+  "derived": "D",
+  "value": "5 solutions: x = 0, pi/2, pi, 3pi/2, 2pi",
+  "confidence": "high",
+  "note": "Putting s = sin^2 x gives s^4 + (1-s)^3 - 1 = s(s-1)(s^2+3), so on [0,1] only s = 0 and s = 1, i.e. sin x = 0 or cos x = 0, giving 5 points in the closed interval [0, 2pi]. Worth flagging: sympy's solveset returned only {0, pi/2, 3pi/2, 2pi} and silently dropped x = pi, which is a genuine solution (0 + (-1)^6 = 1); a 200k-point numeric scan finds all 5."
+ },
+ {
+  "questionId": "242cd12d-61fa-4a83-a92b-5a5335f33590",
+  "qnum": "1212",
+  "derived": "C",
+  "value": "2 solutions: x = pi/6 and x = 5pi/6",
+  "confidence": "high",
+  "note": "Clearing cos x gives 2 sin^2 x + sin x - 1 = 0, i.e. (2 sin x - 1)(sin x + 1) = 0. sin x = -1 gives x = 3pi/2, where cos x = 0 and both tan x and sec x are undefined, so it is rejected; sin x = 1/2 gives pi/6 and 5pi/6. A crude sign-change scan does flag 3pi/2 because sin x + 1 vanishes there too (a removable singularity of the combined quotient), but the stated function is undefined at that point."
+ },
+ {
+  "questionId": "38a88446-3a5f-44b8-89ac-a2a45457ac6e",
+  "qnum": "1283",
+  "derived": "D",
+  "value": "pi",
+  "confidence": "high",
+  "note": "cos 4x has period pi/2 and tan 3x has period pi/3; the LCM of pi/2 and pi/3 is pi. Tested numerically at five sample points: pi/12, pi/6 and pi/2 all fail as periods, pi holds to 1e-20."
+ },
+ {
+  "questionId": "18a8d19d-9075-49ca-bdb2-5d740af16edd",
+  "qnum": "1324",
+  "derived": "D",
+  "value": "[-1/3, 1/2]",
+  "confidence": "high",
+  "note": "sqrt(1-2x) needs x <= 1/2; the arcsine needs -1 <= (3x-1)/2 <= 1, i.e. -1/3 <= x <= 1. Intersection is [-1/3, 1/2]. Boundary checks confirm x = -0.4 fails the arcsine condition and x = 0.51 fails the radical, while both endpoints -1/3 and 1/2 are admissible."
+ },
+ {
+  "questionId": "1f898842-9a35-4c36-8761-b3b68713f398",
+  "qnum": "1365",
+  "derived": "A",
+  "value": "3*sqrt(7)/8 = 0.99215674...",
+  "confidence": "high",
+  "note": "2 arctan(1/2) has tan = (2*(1/2))/(1-1/4) = 4/3, so its cot is 3/4. With phi = arccos(3/4), sin phi = sqrt(7)/4 and sin 2phi = 2*(3/4)*(sqrt(7)/4) = 3 sqrt(7)/8. Direct 40 dps evaluation matches option A digit for digit; the other three options are 1.65, 6.61 and 3.97, all outside [-1,1] except B."
+ },
+ {
+  "questionId": "2cab78be-9fae-4eb0-b84a-a53f72f5739d",
+  "qnum": "1440",
+  "derived": "A",
+  "value": "a = 6",
+  "confidence": "high",
+  "note": "Slope = (a-4)/(-2-3) = (a-4)/(-5) = -2/5 gives a - 4 = 2, so a = 6. Solved symbolically for confirmation."
+ },
+ {
+  "questionId": "5962aa32-6fec-469a-bdfe-54dfedd041a3",
+  "qnum": "1443",
+  "derived": "C",
+  "value": "1/p + 1/q = 3",
+  "confidence": "high",
+  "note": "The collinearity determinant is 9pq - 3p - 3q = 0; dividing by -3pq gives 1/p + 1/q - 3 = 0. Checked at three discriminating collinear pairs (p,q) = (2, 2/5), (1/2, 1), (5/3, 5/12): 1/p + 1/q is 3 every time, while 1/p + 3/q takes the values 8, 5 and 39/5, so option D is not an identity."
+ },
+ {
+  "questionId": "3c58dbec-0716-4505-9858-21733f848235",
+  "qnum": "1456",
+  "derived": "D",
+  "value": "x + y = 2",
+  "confidence": "high",
+  "note": "If the intercepts are (A,0) and (0,B) then the midpoint (A/2, B/2) = (1,1) forces A = B = 2, so x/2 + y/2 = 1, i.e. x + y = 2. Confirmed the other way as well: only option D passes through both (2,0) and (0,2), and only its own intercept midpoint is (1,1) (A gives (3/4, 3/2), B gives (3/4, -3/2), C is a line through the origin with no proper intercept segment)."
+ },
+ {
+  "questionId": "4c9dd4d0-5e66-4e05-97c8-ff98644658fd",
+  "qnum": "1475",
+  "derived": "A",
+  "value": "pi/6 (30 degrees)",
+  "confidence": "high",
+  "note": "Slopes are -sqrt(3) and -1/sqrt(3); tan of the angle is |(m1-m2)/(1+m1 m2)| = (2/sqrt(3))/2 = 1/sqrt(3), so the acute angle is pi/6. Sympy simplifies the arctan to exactly pi/6. Note option C, 5pi/2, is not a valid angle between two lines at all."
+ },
+ {
+  "questionId": "59bd6a98-22a4-490a-929d-82a4b08e5b3d",
+  "qnum": "1499",
+  "derived": "B",
+  "value": "a^2",
+  "confidence": "high",
+  "note": "p1 = |a|/sqrt(sec^2 t + cosec^2 t) = |a sin 2t|/2, so 4 p1^2 = a^2 sin^2 2t; and p2 = |a cos 2t| since the second line's normal is a unit vector, so p2^2 = a^2 cos^2 2t. The sum is a^2. Verified at five (theta, a) pairs (0.7,3), (1.3,2), (0.2,5), (2.9,1.5), (-0.5,4) where a^2, a and 1/a^2 all differ; the result equals a^2 in every case."
+ },
+ {
+  "questionId": "49c9f0e2-9d56-4904-b76d-d08c750feaef",
+  "qnum": "1596",
+  "derived": "D",
+  "value": "centre (2, -1), radius 3",
+  "confidence": "high",
+  "note": "Eliminating theta gives (x-2)^2 + (y+1)^2 = 9 identically, so the centre is (2, -1). Confirmed symbolically."
+ }
+]

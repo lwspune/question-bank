@@ -1,0 +1,122 @@
+[
+ {
+  "questionId": "2e0b9de9-3e59-4d16-b317-a6dab43136e6",
+  "qnum": "716",
+  "derived": "B",
+  "value": "C(4,2)/C(52,2) = 6/1326 = 1/221",
+  "confidence": "high",
+  "note": "Both cards aces, drawn without replacement: 6 favourable pairs out of 1326. Exactly 1/221."
+ },
+ {
+  "questionId": "15649e4e-530c-45b8-bee4-8134526f3260",
+  "qnum": "764",
+  "derived": "D",
+  "value": "0.01636 (at least two of 4 share a birthday); 0.01630 if read as exactly one shared pair",
+  "confidence": "high",
+  "note": "1 - (365*364*363*362)/365^4 = 0.016356. The alternative reading (exactly two of the four share) gives 0.016303, so both readings round to 0.016 and the choice is unaffected."
+ },
+ {
+  "questionId": "1bdaa0e6-4d14-43af-b525-fb4633371f80",
+  "qnum": "766",
+  "derived": "C",
+  "value": "18/1140 = 3/190",
+  "confidence": "high",
+  "note": "Consecutive triples from 1..20 start at 1..18, so 18 favourable; total C(20,3) = 1140."
+ },
+ {
+  "questionId": "b816df7f-0dd4-44a9-b23c-29a305a86ed7",
+  "qnum": "780",
+  "derived": "D",
+  "value": "1/2 - 1/3 = 1/6",
+  "confidence": "high",
+  "note": "P(A) = 1 - 2/3 = 1/3. A-bar intersect B is the part of A union B outside A, so P = P(A union B) - P(A) = 1/6."
+ },
+ {
+  "questionId": "25585210-e2ba-4395-8de0-ea466f6ecc99",
+  "qnum": "787",
+  "derived": "C",
+  "value": "(4 + 13 - 1)/52 = 16/52 = 4/13",
+  "confidence": "high",
+  "note": "Inclusion-exclusion; the king of spades is the single overlap."
+ },
+ {
+  "questionId": "17a83ba3-81b9-4704-8d0d-2d7a7befe84d",
+  "qnum": "790",
+  "derived": "C",
+  "value": "13/16",
+  "confidence": "high",
+  "note": "Enumerated all 16 matrices with entries from {0,1}: det = ad - bc takes value 1 three times, 0 ten times, -1 three times. Non-negative in 13 of 16 cases."
+ },
+ {
+  "questionId": "1491d1f6-dbf3-4d24-b2a6-8a18b496f6c5",
+  "qnum": "797",
+  "derived": "B",
+  "value": "2/6 = 1/3",
+  "confidence": "high",
+  "note": "Conditional on sum 7 there are 6 ordered outcomes; only (3,4) and (4,3) contain a 3."
+ },
+ {
+  "questionId": "6f8a3fb5-3129-4692-a6fd-4556dcbe1110",
+  "qnum": "813",
+  "derived": "B",
+  "value": "P(A) = 0.3",
+  "confidence": "high",
+  "note": "A and B independent implies A and B-bar independent, so P(A) + 5/7 - P(A)(5/7) = 0.8, giving P(A)(2/7) = 0.6/7 and P(A) = 0.3 exactly."
+ },
+ {
+  "questionId": "4f3f7e85-0976-43a7-9716-220300b1b001",
+  "qnum": "878",
+  "derived": "B",
+  "value": "35 years",
+  "confidence": "high",
+  "note": "Total drops from 25*40 = 1000 to 25*39 = 975, a fall of 25; the retiring teacher was 60, so the new one is 60 - 25 = 35."
+ },
+ {
+  "questionId": "4a82bda4-6b14-419e-91b3-bdf5e0215520",
+  "qnum": "889",
+  "derived": "A",
+  "value": "Mode = 3(34) - 2(36) = 30",
+  "confidence": "high",
+  "note": "Empirical relation Mode = 3 Median - 2 Mean."
+ },
+ {
+  "questionId": "1f5dbaae-e53f-4311-887c-dbdb407bba95",
+  "qnum": "953",
+  "derived": "B",
+  "value": "Means 35 and 22.857",
+  "confidence": "high",
+  "note": "Mean = 100 * SD / CV: 2100/60 = 35 and 1600/70 = 22.857, matching '35, 22.85'."
+ },
+ {
+  "questionId": "1efb0899-2deb-41fb-8544-2adcd9874c44",
+  "qnum": "956",
+  "derived": "B",
+  "value": "Means 40 and 60",
+  "confidence": "high",
+  "note": "2200/55 = 40 and 3900/65 = 60, both exact, so 'None of these' does not apply."
+ },
+ {
+  "questionId": "0fa96efd-c92c-4304-8212-ba0d0fd7b467",
+  "qnum": "1022",
+  "derived": "D",
+  "value": "sec(theta) + cosec(theta)",
+  "confidence": "high",
+  "note": "tan + cot = 1/(sin cos), so the product is (sin+cos)/(sin cos) = 1/cos + 1/sin. Checked numerically at theta = 1/3 and 1.4 rad: only option D gives a zero difference, the other three are clearly separated. Minor render flag: options C and D use the macro \\cosec, which is not defined in stock KaTeX (\\csc is) and may render as an error."
+ },
+ {
+  "questionId": "5aafa33d-c20a-4f2e-960c-bcb768fdd865",
+  "qnum": "1068",
+  "derived": "A",
+  "value": "2 cos(theta / 2^n)",
+  "confidence": "high",
+  "note": "Innermost sqrt(2(1+cos theta)) = 2 cos(theta/2), and each further '2 +' layer halves the angle again; with n twos in total (the innermost one included) the result is 2 cos(theta/2^n). Verified numerically at theta = 30, 80, 150, 179 degrees for n = 1, 2, 3, 5 - option A matches to 40 digits every time while B and C are separated at each point."
+ },
+ {
+  "questionId": "6d644819-04ee-45e1-bb22-170f90f59c89",
+  "qnum": "1130",
+  "derived": "NONE",
+  "value": "2b/sqrt(a^2 - b^2) = 2 sin(alpha/2)/sqrt(cos alpha)",
+  "confidence": "high",
+  "note": "STEM APPEARS CORRUPT. The difference simplifies to 2b/sqrt(a^2-b^2); substituting the printed tan(alpha/2) = b/a gives 2 sin(alpha/2)/sqrt(cos alpha), which matches no option - checked at alpha = 10, 20, 30, 40 degrees where all four options are well separated (e.g. at 30 degrees the value is 0.5562 against 1.4142, 2.4495, 1.0746, 1.8612). Under the reading tan(alpha) = b/a the value is exactly option A, 2 sin(alpha)/sqrt(cos 2 alpha), agreeing to 30 digits at all four test angles. Two further signs that tan(alpha) = b/a is intended: a > b > 0 then forces tan(alpha) < 1, i.e. the stated 0 < alpha < pi/4, and that same range is exactly what makes cos 2 alpha positive so sqrt(cos 2 alpha) is real. So the intended key is almost certainly A and the '/2' is a transcription defect; reported as NONE because as printed no option is correct."
+ }
+]

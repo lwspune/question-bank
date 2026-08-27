@@ -1,0 +1,18 @@
+[
+ {
+  "questionId": "796af396-8f3c-4be4-8437-1fecbacdb0f6",
+  "qnum": "45",
+  "derived": "D",
+  "value": "V + W = 1 exactly",
+  "confidence": "high",
+  "note": "(8+3*sqrt7)^20 + (8-3*sqrt7)^20 is an integer N = 1117557426346045182876674 because the irrational parts cancel, so U + V + W = N; since 0 < V < 1 and 0 < W < 1 the sum V + W lies strictly between 0 and 2 and must be the integer N - U, hence exactly 1. Sympy expansion gives V + W = 1 exactly (W is about 8.95e-25)."
+ },
+ {
+  "questionId": "0e393555-dcd7-4d07-9209-69fed4051651",
+  "qnum": "46",
+  "derived": "B",
+  "value": "(U+V)W = 1",
+  "confidence": "high",
+  "note": "U + V is (8+3*sqrt7)^20 and W is (8-3*sqrt7)^20, so their product is ((8+3*sqrt7)(8-3*sqrt7))^20 = (64-63)^20 = 1. Verified by exact expansion in sympy: the product simplifies to 1."
+ }
+]

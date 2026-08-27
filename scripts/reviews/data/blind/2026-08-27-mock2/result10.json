@@ -1,0 +1,10 @@
+[
+ {
+  "questionId": "86b33da3-1ed5-4a48-b55c-7882c69b05e0",
+  "qnum": "2997",
+  "derived": "A",
+  "value": "Differential equation: sqrt(1-x^2) * dy/dx = sqrt(1-y^2), i.e. dy/dx = sqrt((1-y^2)/(1-x^2)). Order 1, DEGREE 1.",
+  "confidence": "high",
+  "note": "Put x=sin t, y=sin u: the relation becomes 2cos((t+u)/2)cos((t-u)/2) = a*2cos((t+u)/2)sin((t-u)/2), so cot((t-u)/2)=a and asin(x)-asin(y) is constant; differentiating gives sqrt(1-x^2)y' = sqrt(1-y^2), which is already POLYNOMIAL (linear) in y', so the degree is 1 - the radicals sit in x and y, not in the derivative, and squaring to get degree 2 (option C) is neither needed nor permitted. Verified with sympy (eliminating a from the implicit derivative returns y'=sqrt(1-y^2)/sqrt(1-x^2) exactly) and numerically at 13 (a,x) points to ~1e-27, with asin(x)-asin(y)=2*acot(a) constant across x."
+ }
+]

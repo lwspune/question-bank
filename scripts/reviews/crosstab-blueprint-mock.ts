@@ -58,7 +58,17 @@ async function main() {
     .eq("paper_id", paperId);
   if (error) throw error;
 
-  const byQ = new Map<string, { pos: number; key: string | null; opts: Record<string, string> }>();
+  // KEYED ON questions.id, NOT question_number.
+  //
+  // `question_number` is per-source-file and repeats freely once a paper draws
+  // on several: Blueprint Mock 2 contains three different questions numbered 75
+  // and two numbered 113. Keying on the number silently overwrote three
+  // derivations, and the loss is invisible — the row still reports AGREE,
+  // against another question's answer.
+  const byQ = new Map<
+    string,
+    { pos: number; qnum: string; key: string | null; opts: Record<string, string> }
+  >();
   for (const r of rows as any[]) {
     const q = r.questions;
     const opts: Record<string, string> = {};
@@ -67,24 +77,47 @@ async function main() {
       opts[o.label] = o.text ?? "";
       if (o.is_correct) key = o.label;
     }
-    byQ.set(String(q.question_number), { pos: r.position, key, opts });
+    byQ.set(String(q.id), { pos: r.position, qnum: String(q.question_number), key, opts });
   }
 
+  // Solvers have written the question number under three different field names
+  // across runs (`q`, `qnum`, `questionNumber`) and the note under two (`why`,
+  // `note`). Accept all of them: a shape mismatch here does not fail loudly, it
+  // silently drops every row into MISSING, which reads as "the solver never ran"
+  // — the most misleading outcome this tool can produce.
   const derived = new Map<string, Blind>();
-  for (const f of readdirSync(dir).filter((f) => /^result\d+\.json$/.test(f))) {
-    for (const b of JSON.parse(readFileSync(join(dir, f), "utf8")) as Blind[]) {
-      derived.set(String(b.q), b);
+  const files = readdirSync(dir).filter((f) => /^result\d+\.json$/.test(f));
+  let loaded = 0;
+  for (const f of files) {
+    for (const raw of JSON.parse(readFileSync(join(dir, f), "utf8")) as any[]) {
+      const id = raw.questionId ?? raw.id;
+      const qnum = raw.q ?? raw.qnum ?? raw.questionNumber;
+      if (!id) {
+        console.error(`  !! ${f}: a row carries no questionId — cannot join it safely`);
+        continue;
+      }
+      if (derived.has(String(id)))
+        console.error(`  !! ${f}: questionId ${id} derived twice — later wins`);
+      derived.set(String(id), {
+        ...raw,
+        q: String(qnum ?? id),
+        why: raw.why ?? raw.note,
+      });
+      loaded++;
     }
   }
+  console.log(`loaded ${loaded} blind derivation(s) from ${files.length} file(s) in ${dir}`);
 
   const buckets = new Map<string, string[]>();
   const push = (b: string, line: string) =>
     buckets.set(b, [...(buckets.get(b) ?? []), line]);
 
-  for (const [q, meta] of [...byQ.entries()].sort((a, b) => a[1].pos - b[1].pos)) {
-    const d = derived.get(q);
+  for (const [qid, meta] of [...byQ.entries()].sort((a, b) => a[1].pos - b[1].pos)) {
+    const d = derived.get(qid);
+    // Print the question NUMBER (what a reader can find on the paper) while
+    // joining on the id (what is actually unique).
     const line = (b: string) =>
-      `  pos ${String(meta.pos).padStart(3)}  Q${q.padEnd(7)} key=${meta.key ?? "?"}  blind=${
+      `  pos ${String(meta.pos).padStart(3)}  Q${meta.qnum.padEnd(7)} key=${meta.key ?? "?"}  blind=${
         d?.derived ?? "-"
       }  ${(d?.value || d?.why || "").slice(0, 120)}${d?.flag ? `  [${d.flag}]` : ""}`;
     if (!d) {
