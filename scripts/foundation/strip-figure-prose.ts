@@ -38,6 +38,9 @@ import { EXAM_ID, ORG_ID, WORKSHEETS, requireWorksheet } from "./config";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
+/** Paragraph separator, as a constant so a shell-authored edit cannot eat it. */
+const PARA = "\n\n";
+
 /** Count ( and ) outside math zones — `\(` `\)` are KaTeX delimiters. */
 function orphanClose(s: string): number {
   const bare = s.replace(/\\\(|\\\)/g, "  ");
@@ -62,6 +65,44 @@ export function stripTail(text: string): string | null {
   if (orphanClose(head) !== 0) return null;
   if (!/[.?:]$/.test(head)) return null;
   return head;
+}
+
+/**
+ * The stem with a COMPLETE parenthetical figure description removed.
+ *
+ * A SECOND, DISTINCT DEFECT from the headless tail above. `stripTail` keys on an
+ * ORPHAN close-paren, so it correctly refuses these: the parenthesis is intact,
+ * a whole paragraph of it, describing a figure that IS attached —
+ *
+ *   "(The figure is a section of an ovary ... P and Q are developing follicles,
+ *    T is the released ovum, R is the corpus luteum ...)"
+ *
+ * That is not untidiness. On the five NDA GAT Mock 3 figures it gives the answer
+ * away: the question asks which statement about the labelled structures is
+ * correct, and the parenthetical names every label. Another states that ∠e is
+ * marked inside the prism, which is the mis-marking under test. Removing it is
+ * the same judgement `paper-text.ts` P5 makes — the figure is the evidence, the
+ * prose is a redundant stand-in — with the difference that here it also leaks.
+ *
+ * ONLY safe once the figure is verified present and legible; the caller owns
+ * that, exactly as the P5 rule is non-blocking because a description is
+ * sometimes the only thing making a question answerable.
+ */
+export function stripParenthetical(text: string): string | null {
+  const paras = text.split("\n\n");
+  if (paras.length < 2) return null;
+  const idx = paras.findIndex((p) => {
+    const t = p.trim();
+    return (
+      t.startsWith("(") && t.endsWith(")") && orphanClose(t) === 0 &&
+      /\b(figure|graph|diagram|image|picture)\b/i.test(t)
+    );
+  });
+  if (idx === -1) return null;
+  const rest = paras.filter((_, i) => i !== idx).join("\n\n").trim();
+  // The remainder must still stand alone as a complete question.
+  if (!rest || orphanClose(rest) !== 0 || !/[.?:_]$/.test(rest.trimEnd())) return null;
+  return rest;
 }
 
 type Row = { id: string; text: string; content_hash: string; question_number: string | null };
@@ -91,7 +132,8 @@ async function main() {
       if (!data) { problems.push(`${id} Q${qnum}: no such row`); continue; }
 
       const row = data as unknown as Row & { options: { label: string; text: string; is_correct: boolean }[] };
-      const next = stripTail(row.text);
+      // Headless tail first; then the complete-parenthetical case.
+      const next = stripTail(row.text) ?? stripParenthetical(row.text);
       if (!next) { console.log(`ok    ${id} Q${qnum}: nothing to strip`); continue; }
 
       const optTexts = row.options.map((o) => o.text);
@@ -115,7 +157,12 @@ async function main() {
 
   for (const p of planned) {
     console.log(`\n${p.where}   -${p.row.text.length - p.next.length} chars   ${p.row.content_hash.slice(0, 8)} -> ${p.newHash.slice(0, 8)}`);
-    console.log(`  REMOVED: ${JSON.stringify(p.row.text.slice(p.next.length).trim().slice(0, 150))}`);
+    // The removed text is a SUFFIX for stripTail but can sit MID-STEM for
+    // stripParenthetical, so report whichever paragraph actually went.
+    const removed = p.row.text.startsWith(p.next)
+      ? p.row.text.slice(p.next.length)
+      : p.row.text.split(PARA).find((q) => !p.next.includes(q.trim())) ?? "(mid-stem)";
+    console.log(`  REMOVED: ${JSON.stringify(removed.trim().slice(0, 150))}`);
     console.log(`  KEEPS  : ${JSON.stringify(p.next)}`);
   }
   if (problems.length) {
