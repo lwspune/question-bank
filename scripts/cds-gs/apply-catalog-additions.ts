@@ -385,6 +385,66 @@ const ADDITIONS_ROUND2: Addition[] = [
  * defer the `Civilian Awards, Honours and Educational Institutions` rename plus its
  * three institution re-files to a single end-of-run pass.
  *
+ * SCIENTIST-ATTRIBUTION EXISTS IN PHYSICS AND NOWHERE ELSE — the round-2 asymmetry
+ * rule again, one level up. Round 2 twice added a subtopic to ONE period chapter of
+ * History and stranded content in another; the rule written then was that a topic
+ * subtopic which is not period-specific belongs in EVERY period chapter it can occur
+ * in. The same holds ACROSS SUBJECTS, and the catalog violates it here:
+ *
+ *   Physics    > Modern Physics            > Scientists and Discoveries   (general)
+ *   Biology    > Microbiology and Disease  > Antibiotics — Discovery      (topic-specific)
+ *   Chemistry  >                           > nothing at all
+ *
+ * "Who discovered X" is not a physics question — it is a question shape that occurs in
+ * every science subject. Two independent hits, from different papers and different
+ * transcribers, neither having seen the other's report:
+ *   - 2020-1 Q30 (Jenner and immunization) had to go on `Antibiotics — Discovery`,
+ *     which is about antibiotics, not about scientists.
+ *   - 2020-2 Q97 (who introduced the symbols of the elements) had to go on
+ *     `Atomic Models: Dalton, Rutherford, Bohr`, which is about atomic models.
+ * In both cases the parked home is a CONTENT subtopic absorbing an ATTRIBUTION
+ * question, which is precisely how a catch-all forms — the mechanism measured on
+ * `Civilian Awards, Honours and Educational Institutions` above.
+ *
+ * Round 3 should add `Scientists and Discoveries` to Biology and to Chemistry, mirroring
+ * the Physics entry. Note the Physics one is itself oddly filed under `Modern Physics`
+ * — an attribution question is not necessarily modern physics — but that is existing
+ * structure and is left alone rather than widened into a fourth thing to fix.
+ *
+ * ECONOMIC GEOGRAPHY EXISTS FOR INDIA AND NOT FOR THE WORLD — the asymmetry rule a
+ * third time, and the one with the most hits. Measured across the full Geography
+ * catalog: `Indian Geography — Economy, Resources and Transport` carries EIGHT
+ * economic subtopics (agriculture, economic sectors, energy and industries,
+ * transport corridors, manufacturing, minerals and mining, population, ports),
+ * while `World and Human Geography`'s seven are ALL physical or political —
+ * continents and relief, rivers and canals, natural vegetation, political borders,
+ * coordinates, megacities, ports. There is no world agriculture, no world minerals,
+ * no world energy or manufacturing anywhere.
+ *
+ * That matters because `chapter` is HARD-validated: a world-scope economic question
+ * cannot simply be parked on the Indian chapter, so it gets pushed onto whichever
+ * world subtopic is nearest by shape rather than by subject. Three hits, three
+ * papers, three transcribers:
+ *   - 2021-1 Q39  Milpa and Ladang (world shifting cultivation) -> World Natural
+ *     Vegetation and Biomes
+ *   - 2020-1 Q42  types of world farming systems -> same
+ *   - 2020-2 Q38  the Climax mine, world's largest molybdenum producer -> World
+ *     Political Geography, on the reasoning that the question reduces to "which
+ *     country"
+ * The last is the clearest symptom: a MINING question filed under POLITICAL
+ * geography because the option set happened to be country names.
+ *
+ * Round 3 should add `World Agriculture and Farming Systems` and `World Minerals,
+ * Mining and Resources` to `World and Human Geography`. Two subtopics cover all
+ * three hits.
+ *
+ * BE PRECISE ABOUT THE SCOPE OF THE CLAIM, though: the asymmetry is PARTIAL, not
+ * total. `World Ports, Straits and Maritime Geography` already exists as a
+ * counterpart to the Indian `Ports and Maritime Infrastructure`, so the catalog is
+ * not blind to world economic geography as a principle — it is missing two specific
+ * axes. Adding only what is evidenced beats "mirror every Indian economic subtopic",
+ * which would create four or five subtopics no question has ever needed.
+ *
  * Individual gaps:
  *   - Indian TRIBES and ethnic communities (2023-1 Q35, Bhil/Gond/Ahom/Adi).
  *     Parked in `Population, Census and Urbanisation`. The near-misses are worse:
