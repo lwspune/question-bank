@@ -4,8 +4,20 @@ Scanned CDS "General Knowledge" booklets (image PDFs, **no text layer**, **NO AN
 → the bank, `question_kind='pyq'`, under the existing **CDS** exam across **8 new
 General-Knowledge subjects**.
 
-**Status: PILOT COMPLETE — `2018-1` committed PRIVATE (120 q). Nothing is PUBLIC.**
-The remaining 18 papers are NOT started. Publishing is a separate, deliberate decision;
+**Status: 4 of 19 papers committed PRIVATE — 480 q. A 5th (`2024-2`) is transcribed
+and merged but not yet derived. Nothing is PUBLIC.**
+
+| paper | committed | dual-blind agreement | HIGH | MED | LOW |
+|---|---|---|---|---|---|
+| 2018-1 | 120 | 118/120 — 98.3% | 83/83 | 30/30 | 5/7 |
+| 2025-1 | 120 | 117/120 — 97.5% | 94/94 | 20/21 | 3/5 |
+| 2025-2 | 120 | 119/120 — 99.2% | 95/95 | 20/20 | 4/5 |
+| 2024-1 | 120 | 118/120 — 98.3% | 71/71 | 41/42 | 6/7 |
+
+**Four independent measurements, stable to within 1.7 points, and HIGH is 343/343 across
+all of them** — every single disagreement in every paper sits in MED or LOW. The confidence
+field is a reliable router for review effort. What this still does NOT measure is correlated
+error; see "What the pilot measured" below, which stands unchanged. Publishing is a separate, deliberate decision;
 read "What the pilot measured" before taking it.
 
 ## Why this is not the `scripts/cds` pipeline
