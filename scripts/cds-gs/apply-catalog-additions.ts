@@ -176,6 +176,101 @@ const ADDITIONS: Addition[] = [
   },
 ];
 
+/**
+ * ROUND 2 — adjudicated from the 46 `catalog-gap` flags raised by the four papers
+ * transcribed AFTER round 1 (2018-1 re-filed, plus 2025-1, 2025-2, 2024-1).
+ *
+ * Round 1 was adjudicated from a 4-paper SURVEY plus the pilot's flags. This round
+ * is different in kind and better evidenced: it comes from four papers transcribed
+ * question-by-question against the round-1 catalog, so each flag is a place where a
+ * transcriber who HAD the extended catalog in hand still found nothing that fitted.
+ *
+ * Same cost asymmetry as round 1 — an entry creates nothing in the DB until a
+ * question uses it, so an unused one is free while a missing one mis-files across
+ * the 15 papers still to come. Applying now rather than at the end is deliberate:
+ * only 4 papers need re-filing today, against 19 later.
+ *
+ * NO new chapters this round. Every gap is a missing subtopic under a chapter that
+ * is already the right home — which is itself evidence that round 1 got the
+ * chapter-level structure right.
+ *
+ * DELIBERATELY NOT ADDED, flagged twice now and still homeless. Recorded so the
+ * next reader knows these were considered and declined, not overlooked:
+ *   - attribution of famous quotations to public figures (2018-1 Q93) — an option
+ *     set spanning Indian and British figures fits no single chapter.
+ *   - a national event/exhibition and its host State (2018-1 Q65).
+ *   - a foreign landmark in the news (2025-2 Q115) — too thin, and the existing
+ *     World Leaders/Global Events subtopic is a defensible home.
+ *   - Special Category Status (2025-2 Q19) — `Federal Structure — States, UTs and
+ *     Finance` already covers centre-state devolution; the flag was raised soft.
+ */
+const ADDITIONS_ROUND2: Addition[] = [
+  // ── History: the richest seam, 15 flags ────────────────────────────────────
+  // Military technology spans THREE period chapters, so it gets the same subtopic
+  // name in each rather than one cross-cutting chapter. History is period-chaptered
+  // and that is the right organising principle; a same-named subtopic per period
+  // works WITH it. Two of these four questions currently sit in "Society, Economy
+  // and Land Grants", which is plainly wrong for a siege engine.
+  { subject: "History", chapter: "Ancient India", subtopics: ["Warfare, Arms and Military Technology"],
+    why: "2025-1 Q38 (Sanskrit names for the bow as a weapon of war)." },
+  { subject: "History", chapter: "Medieval India", subtopics: ["Warfare, Arms and Military Technology"],
+    why: "2025-1 Q36 (stirrup, Konarak c.1250) and Q39 (manjaniq siege engine) — both currently wedged into Society, Economy and Land Grants." },
+  { subject: "History", chapter: "Modern India", subtopics: ["Warfare, Arms and Military Technology"],
+    why: "2025-1 Q42 (flint-lock muskets, bayonets, cannon used by Europeans in India)." },
+
+  { subject: "History", chapter: "Medieval India",
+    subtopics: ["Science, Medicine and Technology", "Art, Painting and Sculpture", "Religious and Philosophical Schools"],
+    why: "Science/medicine: 2024-1 Q3 (Jai Singh's observatories and astronomical tables) + Q96 (Tibb-i-Yunani, smallpox inoculation). Painting: 2024-1 Q49 (early Chola mural at Brihadisvara) — History had only Temple and Rock-Cut Architecture. Philosophy: 2024-1 Q98 (Kashmir Shaivism, Vasugupta) — the only religious bucket is scoped to Bhakti and Sufi." },
+  // The Marathas are simply MISSING from a catalog that names four other medieval
+  // dynasties — a real omission for Indian history, not a fine-grained gap, and
+  // one the NDA taxonomy carried in unnoticed. And rock ART is not rock-cut
+  // ARCHITECTURE, so Bhimbetka had nowhere to sit either.
+  { subject: "History", chapter: "Medieval India", subtopics: ["Maratha Empire and Administration"],
+    why: "2024-2 Q55 (Shivaji's Ashta Pradhan) had to go under 'Other Medieval Kingdoms (Chola, Rajput, Ahom, Sikh)', which names four dynasties and not the Marathas." },
+  { subject: "History", chapter: "Ancient India", subtopics: ["Prehistory, Stone Age and Rock Art"],
+    why: "2024-2 Q56 (Mesolithic art at Bhimbetka) was filed under 'Temple and Rock-Cut Architecture' — rock ART is not rock-cut ARCHITECTURE, and the catalog began at the Harappan period with nothing before it." },
+  { subject: "History", chapter: "Ancient India", subtopics: ["Chalcolithic and Pre-Harappan Cultures"],
+    why: "2024-1 Q1 (Jorwe, Malwa, Ahar-Banas) had to go under Harappan and Indus Valley, which is a different culture entirely." },
+  { subject: "History", chapter: "Modern India",
+    subtopics: ["Revolt of 1857 and Popular Uprisings", "Indian Literature, Poets and Cultural Figures"],
+    why: "1857: 2025-2 Q64 (Shah Mal, Gonoo) was forced into 'Freedom Movement — INC, Gandhi and Independence', which postdates it by three decades. Literature: 2025-2 Q59, Q63, Q65 — three in one band." },
+
+  // ── Geography: 10 flags, clustering on the WORLD side ──────────────────────
+  { subject: "Geography", chapter: "World and Human Geography",
+    subtopics: [
+      "World Political Geography — Countries, Borders and Regions",
+      "World Physical Geography — Continents, Relief and Landmarks",
+      "World Natural Vegetation and Biomes",
+    ],
+    why: "Political: 2024-1 Q40 (Arabian Peninsula), 2025-1 Q98 (Ukraine's neighbours), 2025-2 Q9 (Durand Line — named boundary lines are a CDS staple). Physical: 2024-1 Q41 (Antarctica's relief), 2025-1 Q12 (Virunga). Biomes: 2025-2 Q93 (mid-latitude deciduous forests) — Geography had only the India-scoped Forests and Natural Vegetation." },
+  { subject: "Geography", chapter: "Oceanography", subtopics: ["Salinity and Composition of Sea Water"],
+    why: "2025-1 Q7 (ascending order of salts in sea water) — Oceanography's four subtopics are coral, currents, waves/sea-floor and tides, none chemical." },
+  { subject: "Geography", chapter: "Indian Geography — Economy, Resources and Transport",
+    subtopics: ["Manufacturing Industries"],
+    why: "2025-2 Q99 (cotton textiles, sugar, cement) — the existing 'Energy and Industries — Power, Petroleum, Iron and Steel' is energy and heavy industry." },
+
+  // ── Economics: round 1 built the chapters, round 2 fills the micro one ─────
+  { subject: "Economics", chapter: "Microeconomics — Demand, Supply and Market Structure",
+    subtopics: ["Externalities, Market Failure and Public Goods", "Market Equilibrium and Comparative Statics"],
+    why: "2024-1 Q69 (positive externality, cap-and-trade, Pigouvian subsidy, Tragedy of the Commons) and Q76 (demand shift against perfectly elastic supply). Both core micro, from the 10-question theory block that made 2024-1 a 17-question Economics paper." },
+
+  { subject: "Economics", chapter: "National Income, Growth and Development Indicators",
+    subtopics: ["Industrial and Manufacturing Policy"],
+    why: "2024-2 Q96 (Atmanirbhar Bharat; the same slot serves PLI and Make in India). Economics > Indian Economy offers only Five Year Plans, agriculture schemes and international trade, so industrial policy fell to Current Affairs by default." },
+  { subject: "Biology", chapter: "Microbiology and Disease",
+    subtopics: ["Traditional Medicine and Public Health Systems"],
+    why: "2024-2 Q107 (Siddha, Unani, Sowa-Rigpa, Ayurveda) had NO home anywhere in the catalog — the nearest candidate, Chemistry > Medicines and Health Chemistry, is drug chemistry and is simply a different subject." },
+
+  // ── Biology and Chemistry ─────────────────────────────────────────────────
+  { subject: "Biology", chapter: "Biochemistry", subtopics: ["Carbohydrates and Biomolecules"],
+    why: "2025-1 Q77 (lactose composition) and 2025-2 Q48 (mono/di/polysaccharide classification) — flagged independently on two papers, both parked in Human Physiology > Nutrition." },
+  { subject: "Biology", chapter: "Plant Biology", subtopics: ["Plant Morphology — Roots, Stems and Modifications"],
+    why: "2024-1 Q28 (tuber, bulb, corm, rhizome, taproot) had to go under Vegetative Propagation, which is a different process." },
+  { subject: "Chemistry", chapter: "Metals and Non-Metals",
+    subtopics: ["Classification of Elements — Metals, Non-Metals and Metalloids"],
+    why: "2025-1 Q57 (metalloid classification) was filed under Atomic Structure > Periodic Trends; the Metals and Non-Metals chapter is the right home but its subtopics are alloys, corrosion, extraction and reactivity — none is the classification itself." },
+];
+
 function main() {
   const apply = process.argv.includes("--apply");
   const path = join(__dirname, "catalog.json");
@@ -185,7 +280,7 @@ function main() {
   let newSubtopics = 0;
   const errors: string[] = [];
 
-  for (const a of ADDITIONS) {
+  for (const a of [...ADDITIONS, ...ADDITIONS_ROUND2]) {
     const chapters = catalog[a.subject];
     if (!chapters) {
       errors.push(`unknown subject "${a.subject}" — additions never create a subject`);

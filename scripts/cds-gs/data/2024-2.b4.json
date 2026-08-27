@@ -1,0 +1,465 @@
+{
+  "band": "B4",
+  "pages": [16, 17, 18, 19],
+  "bandReport": {
+    "numbersFound": [91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "30 questions, Q91-Q120, contiguous with no gaps. Page split: p16 = Q91-96 (printed 33-A), p17 = Q97-105 (35-A), p18 = Q106-113 (37-A), p19 = Q114-120 (39-A). FIRST: Q91 opens at the head of p16's left column with a complete 'Consider the following statements :' stem — nothing continues from p15. LAST: Q120 is complete, its option (d) 'Climate resilience' sitting well above the footer with roughly a third of the right column left blank. THE PAPER ENDS AT Q120 — confirmed three ways: p19 is the last page of a 20-page PDF (0-based 0-19), there is no Q121 anywhere on it, and nothing follows Q120 but whitespace and the 'RAKU-S-GKL ( 39 - A )' footer. There is NO trailing blank or rough-work page in this render; the last page carries questions. No column-break option splits anywhere in the band: every question's four options sit whole in the same column as their stem. Nothing belonging to a neighbouring band is visible. Band content is heavily Economics (Q91-105, essentially the whole Economics block of the paper) then Current Affairs (Q106-120), with one Geography question (Q115) and no Match List / Statement I-II question anywhere in the band. Every crop taken at 6.5-8x from PDF pages 16-19; the PDF has NO text layer on any of these pages (get_text() returns 0 characters), so the page image was the only source and every option block was re-read label by label."
+  },
+  "questions": [
+    {
+      "number": 91,
+      "stem": "Consider the following statements :\n1. A rupee Vostro account is an account that an Indian bank holds for a foreign bank in the domestic currency (rupee) to enable domestic banks to provide international banking services.\n2. Insurance density, i.e., average insurance premium per capita does not fully capture the financing gap in the event of a premature death because most of the insurance products sold in India are savings-linked with a small component of protection.\nWhich of the statements given above is/are correct ?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Economics",
+      "chapter": "Money, Banking and Public Finance",
+      "subtopic": "Banking, RBI and Financial Institutions",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 92,
+      "stem": "Consider the following statements :\n1. An additional spending by the Government of ₹ X is likely to have less impact on income than an additional transfer of ₹ X to households.\n2. An additional spending by the Government of ₹ X is likely to have less impact on income if it is not accompanied by an expansion in money supply.\nWhich of the statements given above is/are correct ?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Economics",
+      "chapter": "Money, Banking and Public Finance",
+      "subtopic": "Union Budget and Fiscal Policy",
+      "difficulty": "HARD",
+      "flags": ["Statements 1 and 2 share their first 15 words verbatim ('An additional spending by the Government of ₹ X is likely to have less impact on income'), diverging only in the clause that follows. Re-read at 6.5x: this is what the page prints, not a transcription slip."]
+    },
+    {
+      "number": 93,
+      "stem": "Long-Term Low Emissions Development Strategy envisions :\n1. a transition from fossil fuels in a just, smooth, sustainable manner.\n2. increased use of bio-fuels.\n3. climate resistant urban development.\n4. financing of sustainable development through Green Bonds.\nSelect the answer using the code given below :",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "1, 2 and 3" },
+        { "label": "C", "text": "2 and 4 only" },
+        { "label": "D", "text": "1, 3 and 4" }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "Environment, Ecology and Energy",
+      "subtopic": "Climate Change and Summits",
+      "difficulty": "HARD",
+      "flags": ["Code block is not in the usual ascending pattern — the two-item options sit at (a) and (c) and the three-item options at (b) and (d). Verified at 6.5x and transcribed as printed."]
+    },
+    {
+      "number": 94,
+      "stem": "Which one among the following was the focus of the Twelfth Five-Year Plan ?",
+      "options": [
+        { "label": "A", "text": "Sustainable and Inclusive Growth" },
+        { "label": "B", "text": "Social Justice and Equality" },
+        { "label": "C", "text": "Food, Work and Productivity" },
+        { "label": "D", "text": "Attainment of Self-reliance" }
+      ],
+      "subject": "Economics",
+      "chapter": "Indian Economy",
+      "subtopic": "Five Year Plans and Indian Planning",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 95,
+      "stem": "Which of the following is **not** included in the Capital Account of the Balance of Payments of a country ?",
+      "options": [
+        { "label": "A", "text": "Foreign Direct Investment" },
+        { "label": "B", "text": "Commercial Borrowing" },
+        { "label": "C", "text": "Invisibles" },
+        { "label": "D", "text": "External Assistance" }
+      ],
+      "subject": "Economics",
+      "chapter": "Indian Economy",
+      "subtopic": "International Trade and Finance",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 96,
+      "stem": "The Atmanirbhar Bharat Scheme announced by the Government helps in :\n1. Enhancing India's manufacturing capabilities and exports across the industries\n2. Incentivizing foreign investments for domestic production\nSelect the answer using the code given below :",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "Government Schemes, Policy and Governance",
+      "subtopic": "Governance, Policy and Union Territory Reform",
+      "difficulty": "MODERATE",
+      "flags": ["catalog-gap: nothing covers industrial / manufacturing policy schemes (Atmanirbhar Bharat, PLI, Make in India). Economics > Indian Economy offers only Five Year Plans, agriculture-and-livestock schemes and international trade, so a manufacturing-incentive scheme has no subject home and lands in Current Affairs by default."]
+    },
+    {
+      "number": 97,
+      "stem": "Which one of the following statements for a firm's equilibrium in Perfect Competition is **not** correct ?",
+      "options": [
+        { "label": "A", "text": "The market price must be greater or equal to average variable cost in the short run." },
+        { "label": "B", "text": "The market price must be equal to marginal cost." },
+        { "label": "C", "text": "The market price must be equal to average cost in the long run." },
+        { "label": "D", "text": "The marginal cost decreases at the equilibrium output." }
+      ],
+      "subject": "Economics",
+      "chapter": "Microeconomics — Demand, Supply and Market Structure",
+      "subtopic": "Market Structures and Types of Firms",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 98,
+      "stem": "Which one of the following taxes is **not** included in the Central Pool to be shared with the States according to the recommendations of Finance Commission of India ?",
+      "options": [
+        { "label": "A", "text": "Personal Income Tax" },
+        { "label": "B", "text": "Corporate Profit Tax" },
+        { "label": "C", "text": "Surcharge and Cess" },
+        { "label": "D", "text": "Excise Duties" }
+      ],
+      "subject": "Economics",
+      "chapter": "Money, Banking and Public Finance",
+      "subtopic": "Taxation and Public Finance",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 99,
+      "stem": "Which one of the following dimensions is **not** included in Human Development Index ?",
+      "options": [
+        { "label": "A", "text": "Life Expectancy at birth" },
+        { "label": "B", "text": "Mean years of schooling" },
+        { "label": "C", "text": "Expected years of schooling" },
+        { "label": "D", "text": "Mortality rate" }
+      ],
+      "subject": "Economics",
+      "chapter": "National Income, Growth and Development Indicators",
+      "subtopic": "Poverty, Employment and Human Development",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 100,
+      "stem": "Suppose there are only two normal goods in the economy, X and Y. If price of good X increases, which would be the correct statement from below ?",
+      "options": [
+        { "label": "A", "text": "Demand for good X decreases and demand for Y is indeterminate." },
+        { "label": "B", "text": "Demand for good X decreases and demand for Y decreases." },
+        { "label": "C", "text": "Demand for good X increases and demand for Y is indeterminate." },
+        { "label": "D", "text": "Demand for good X increases and demand for Y decreases." }
+      ],
+      "subject": "Economics",
+      "chapter": "Microeconomics — Demand, Supply and Market Structure",
+      "subtopic": "Demand, Supply and Elasticity",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 101,
+      "stem": "If the price index increased from 100 in 2021 to 110 in 2022 to 132 in 2023, then the rate of inflation is :",
+      "options": [
+        { "label": "A", "text": "10%" },
+        { "label": "B", "text": "32%" },
+        { "label": "C", "text": "20%" },
+        { "label": "D", "text": "Cannot be determined" }
+      ],
+      "subject": "Economics",
+      "chapter": "Money, Banking and Public Finance",
+      "subtopic": "Money, Inflation and Price Behaviour",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Option block is printed OUT of ascending numeric order — (a) 10%, (b) 32%, (c) 20%. Verified at 8x; transcribed exactly as printed, NOT re-sorted.",
+        "The stem does not name the year whose inflation rate is required, and the printed options happen to offer three defensible readings: the 2022 rate (10%), the 2023 rate (20%) and the cumulative 2021-to-2023 change (32%). Transcribed as printed; noted as a possible stem defect."
+      ]
+    },
+    {
+      "number": 102,
+      "stem": "The Rangarajan Committee methodology for determining the poverty line incorporated which of the following ?\n1. A food component\n2. A normative level of expenditure for essential non-food items\n3. A behaviourally determined expenditure for other non-food items\nSelect the answer using the code given below :",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "2 and 3 only" },
+        { "label": "C", "text": "1, 2 and 3" },
+        { "label": "D", "text": "1 and 3 only" }
+      ],
+      "subject": "Economics",
+      "chapter": "National Income, Growth and Development Indicators",
+      "subtopic": "Poverty, Employment and Human Development",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 103,
+      "stem": "Which one of the following is **not** a fund managed by NIIFL (National Investment and Infrastructure Fund Limited) ?",
+      "options": [
+        { "label": "A", "text": "Master Fund" },
+        { "label": "B", "text": "Fund of Funds" },
+        { "label": "C", "text": "Strategic Opportunities Fund" },
+        { "label": "D", "text": "Global Investment Fund" }
+      ],
+      "subject": "Economics",
+      "chapter": "Money, Banking and Public Finance",
+      "subtopic": "Banking, RBI and Financial Institutions",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 104,
+      "stem": "Pandit Deendayal Upadhyay National Welfare Fund was established with the view to help which one of the following groups ?",
+      "options": [
+        { "label": "A", "text": "Medical Practitioners" },
+        { "label": "B", "text": "Farmers" },
+        { "label": "C", "text": "Sportspersons" },
+        { "label": "D", "text": "War Widows" }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "Government Schemes, Policy and Governance",
+      "subtopic": "Health, Education and Welfare Schemes",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 105,
+      "stem": "Which one among the following items comprises the major portion of revenue expenditure of the Union Government of India ?",
+      "options": [
+        { "label": "A", "text": "Salaries" },
+        { "label": "B", "text": "Interest Payments" },
+        { "label": "C", "text": "Road Transport and Highways" },
+        { "label": "D", "text": "Defence Services" }
+      ],
+      "subject": "Economics",
+      "chapter": "Money, Banking and Public Finance",
+      "subtopic": "Union Budget and Fiscal Policy",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 106,
+      "stem": "India's women's badminton team recently won the Badminton Asia Team Championship, 2024. Who among the following players was **not** a part of the team ?",
+      "options": [
+        { "label": "A", "text": "P.V. Sindhu" },
+        { "label": "B", "text": "Treesa Jolly" },
+        { "label": "C", "text": "Anmol Kharb" },
+        { "label": "D", "text": "Saina Nehwal" }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "Sports",
+      "subtopic": "Other Sports and Personalities",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 107,
+      "stem": "Which of the following statements related to Indian medicine system is **not** correct ?",
+      "options": [
+        { "label": "A", "text": "The Siddha system is a holistic system of medicine." },
+        { "label": "B", "text": "Sowa-Rigpa has been in practice in the Himalayan regions of India." },
+        { "label": "C", "text": "Unani system of medicine has been dissociated from the Ministry of Ayush." },
+        { "label": "D", "text": "Sushruta Samhita is a major source of Ayurveda." }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "Government Schemes, Policy and Governance",
+      "subtopic": "Health, Education and Welfare Schemes",
+      "difficulty": "HARD",
+      "flags": ["catalog-gap: no chapter or subtopic for AYUSH / traditional Indian systems of medicine (Ayurveda, Unani, Siddha, Sowa-Rigpa, Homoeopathy). The question spans a Ministry's remit and a classical text; the nearest fits are Chemistry > Chemistry in Everyday Life > Medicines and Health Chemistry (wrong — that is drug chemistry) and this welfare-schemes subtopic, chosen for the Ministry of Ayush framing."]
+    },
+    {
+      "number": 108,
+      "stem": "Which one of the following statements is correct about NISHTHA, a Government of India initiative ?",
+      "options": [
+        { "label": "A", "text": "It is a training module recently introduced in LBSNAA for civil servants." },
+        { "label": "B", "text": "It is a teacher-training programme." },
+        { "label": "C", "text": "It is a training programme for the new recruits in Delhi Police to inculcate integrity of service among them." },
+        { "label": "D", "text": "It is a workshop for newly elected Members of Parliament organized routinely by the Lok Sabha Secretariat." }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "Government Schemes, Policy and Governance",
+      "subtopic": "Health, Education and Welfare Schemes",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 109,
+      "stem": "Arrange the BRICS countries in ascending order of their rank in the Human Development Report 2023-24, released by the UNDP :\n1. China\n2. India\n3. Russia\n4. Brazil\n5. South Africa\nSelect the answer using the code given below :",
+      "options": [
+        { "label": "A", "text": "2, 5, 4, 1, 3" },
+        { "label": "B", "text": "2, 4, 5, 3, 1" },
+        { "label": "C", "text": "5, 4, 2, 3, 1" },
+        { "label": "D", "text": "4, 5, 2, 1, 3" }
+      ],
+      "subject": "Economics",
+      "chapter": "National Income, Growth and Development Indicators",
+      "subtopic": "Economic Curves, Indices and Statistical Reports",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 110,
+      "stem": "India has signed a Trade and Economic Partnership Agreement (TEPA) with EFTA, which is a regional group consisting of four countries. Which one of the following countries is **not** a member of this group ?",
+      "options": [
+        { "label": "A", "text": "Switzerland" },
+        { "label": "B", "text": "Norway" },
+        { "label": "C", "text": "Iceland" },
+        { "label": "D", "text": "England" }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "International Affairs and Relations",
+      "subtopic": "International Organizations and Multilateral Bodies",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 111,
+      "stem": "Which one of the following countries shares the territorial boundary with both Russia and Ukraine ?",
+      "options": [
+        { "label": "A", "text": "Estonia" },
+        { "label": "B", "text": "Latvia" },
+        { "label": "C", "text": "Belarus" },
+        { "label": "D", "text": "Poland" }
+      ],
+      "subject": "Geography",
+      "chapter": "World and Human Geography",
+      "subtopic": "World — Coordinates, Time and Place",
+      "difficulty": "MODERATE",
+      "flags": ["catalog-gap (soft, subtopic only): World and Human Geography has no subtopic for world political boundaries / neighbouring countries. Filed under 'World — Coordinates, Time and Place' as the nearest general world-places bucket; the other three (megacities, rivers/canals, ports/straits) are further off."]
+    },
+    {
+      "number": 112,
+      "stem": "In June 2024, India signed a Memorandum of Understanding (MoU) with USA for supporting Indian Railways to achieve Mission Net Zero Carbon Emission by the year :",
+      "options": [
+        { "label": "A", "text": "2030" },
+        { "label": "B", "text": "2040" },
+        { "label": "C", "text": "2050" },
+        { "label": "D", "text": "2070" }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "International Affairs and Relations",
+      "subtopic": "India's Foreign Policy and Bilateral Relations",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 113,
+      "stem": "Which one of the following statements is correct about the PM-JANMAN scheme ?",
+      "options": [
+        { "label": "A", "text": "It is a scheme of the Government of India to impart electoral literacy to voters." },
+        { "label": "B", "text": "It is a scheme of the Government of India for deepening of democracy in the functioning of Panchayati Raj institutions." },
+        { "label": "C", "text": "It is a scheme of the Government of India for benefitting every member of the tribal community from Government schemes." },
+        { "label": "D", "text": "It is a scheme of the Government of India for benefitting migrants workers in the unorganized sector." }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "Government Schemes, Policy and Governance",
+      "subtopic": "Health, Education and Welfare Schemes",
+      "difficulty": "MODERATE",
+      "flags": ["Option (d) prints 'migrants workers' (not 'migrant workers'). Verified at 6.5x and transcribed as printed."]
+    },
+    {
+      "number": 114,
+      "stem": "Which of the following statements is **not** correct ?",
+      "options": [
+        { "label": "A", "text": "SAGAR-SETU is a mobile app, which aims to improve the Ease of Doing Business." },
+        { "label": "B", "text": "Harit Sagar aims at achieving Zero Carbon Emission Goal." },
+        { "label": "C", "text": "Sagar Manthan is a mission launched by Ministry of Ports, Shipping and Waterways, Government of India, to increase fish production." },
+        { "label": "D", "text": "Costa Serena is the first international cruise liner in India." }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "Government Schemes, Policy and Governance",
+      "subtopic": "Infrastructure, Transport and Cultural Schemes",
+      "difficulty": "HARD",
+      "flags": ["The stem is fully generic ('Which of the following statements is not correct ?') and names no topic — the four options are the only thing identifying it. Transcribed as printed."]
+    },
+    {
+      "number": 115,
+      "stem": "ISRO, in its studies, has revealed that there is a 178% increase in the size of the Ghepang Ghat Glacial Lake. In which of the following States/UTs is this lake located ?",
+      "options": [
+        { "label": "A", "text": "Jammu & Kashmir" },
+        { "label": "B", "text": "Ladakh" },
+        { "label": "C", "text": "Himachal Pradesh" },
+        { "label": "D", "text": "Uttarakhand" }
+      ],
+      "subject": "Geography",
+      "chapter": "Indian Geography — Physical Features",
+      "subtopic": "Indian Rivers, Lakes and Water Bodies",
+      "difficulty": "HARD",
+      "flags": ["The ISRO study is scene-setting; what is tested is the lake's State/UT, so this is filed as Indian physical geography rather than as a dated Current-Affairs finding."]
+    },
+    {
+      "number": 116,
+      "stem": "Which of the following State/s is/are common to Bru-Reang Agreement, NLFT (SD) Agreement and Tripartite Agreement with TIPRA ?",
+      "options": [
+        { "label": "A", "text": "Tripura" },
+        { "label": "B", "text": "Assam and Tripura" },
+        { "label": "C", "text": "Tripura and Mizoram" },
+        { "label": "D", "text": "Manipur and Mizoram" }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "National Events, Persons and India General Knowledge",
+      "subtopic": "National Institutions, Milestones and History",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 117,
+      "stem": "Which of the following movies won the 96th Academy Award 2024 in the Best Picture category ?",
+      "options": [
+        { "label": "A", "text": "Anatomy of a Fall" },
+        { "label": "B", "text": "Oppenheimer" },
+        { "label": "C", "text": "Barbie" },
+        { "label": "D", "text": "Killers of the Flower Moon" }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "Awards, Honours, Books and Culture",
+      "subtopic": "Films, Cinema and Festival Awards",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 118,
+      "stem": "India's first dedicated OPD for the Transgenders was opened at which one among the following hospitals ?",
+      "options": [
+        { "label": "A", "text": "AIIMS, New Delhi" },
+        { "label": "B", "text": "PGIMER, Chandigarh" },
+        { "label": "C", "text": "KGMU, Lucknow" },
+        { "label": "D", "text": "RML Hospital, New Delhi" }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "National Events, Persons and India General Knowledge",
+      "subtopic": "National Institutions, Milestones and History",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 119,
+      "stem": "Which one of the following statements about 'INS Tarmugli' is **not** correct ?",
+      "options": [
+        { "label": "A", "text": "It is a fast attack craft commissioned by the Indian Navy." },
+        { "label": "B", "text": "It was commissioned at Naval Dockyard, Visakhapatnam." },
+        { "label": "C", "text": "It was given by the Government of India to Sri Lankan Naval Force in 2006 and returned to the Indian Navy in May 2023." },
+        { "label": "D", "text": "It is supposed to be used for coastal surveillance." }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "Defence and Military Exercises",
+      "subtopic": "Indian Navy — Ships, Vessels and Naval Policy",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 120,
+      "stem": "Which one of the following resolutions in the final agreement reached at COP28 is associated with the target of achieving 'Net Zero by 2050' ?",
+      "options": [
+        { "label": "A", "text": "Fossil fuel phase-out" },
+        { "label": "B", "text": "Methane emission cuts" },
+        { "label": "C", "text": "Global goal on adaptation" },
+        { "label": "D", "text": "Climate resilience" }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "Environment, Ecology and Energy",
+      "subtopic": "Climate Change and Summits",
+      "difficulty": "MODERATE",
+      "flags": []
+    }
+  ]
+}
