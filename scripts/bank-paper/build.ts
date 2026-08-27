@@ -70,6 +70,24 @@ type ChapterPlan = {
    */
   kinds?: ("pyq" | "practice")[];
   /**
+   * Restrict this chapter to ONE ingested source file.
+   *
+   * Needed because `kinds: ["practice"]` does not pin a pool. NDA Current Affairs
+   * holds 21 distinct practice `source_file`s — the current-year authored pool
+   * plus CA questions harvested from older mocks and books — and CA is the one
+   * subject where a stale pick is silently wrong (a 2024 question asks about 2024
+   * facts and still reads as a well-formed question).
+   *
+   * MEASURED CONSEQUENCE of not having this: `nda-gat-lws-mock-2` states in its
+   * own comment that its CA came from `Current Affairs_Sep26.docx`, and 3 of its
+   * 11 CA picks came from `NDA_GAT_MOCK_W1.docx` instead. The comment asserted an
+   * intent the code could not enforce.
+   *
+   * Exact match, and OPTIONAL: a chapter that omits it is unfiltered, so every
+   * spec written before this field existed behaves identically.
+   */
+  sourceFile?: string;
+  /**
    * Set when the chapter's questions live in a DIFFERENT exam to the paper's own
    * (e.g. Binary Numbers, which has no fresh NDA rows and is drawn from the
    * Cadetprep worksheet course). Documentation only — candidates are fetched by
@@ -789,6 +807,8 @@ type Row = {
   difficulty: Cand["difficulty"];
   question_kind: string;
   visibility: "PUBLIC" | "PRIVATE";
+  /** Pins a chapter to one ingested pool — see ChapterPlan.sourceFile. */
+  source_file: string | null;
   text: string;
   solution: string | null;
   /** Set/context/number drive the English block rules — see ./english.ts. */
@@ -949,7 +969,7 @@ async function fetchCandidates(client: SupabaseClient, spec: PaperSpec): Promise
     const { data, error } = await client
       .from("questions")
       .select(
-        "id, chapter_id, difficulty, question_kind, visibility, text, solution, set_id, context, question_number, "
+        "id, chapter_id, difficulty, question_kind, visibility, source_file, text, solution, set_id, context, question_number, "
           + "subtopics(name), chapters(subjects(name, exams(name))), options(label, text, is_correct)"
       )
       // PRIVATE rows are fetched only when some chapter opts in, and are filtered
@@ -1114,6 +1134,8 @@ async function main() {
       // to opt in explicitly before one can reach a printed paper.
       .filter((r) => r.visibility === "PUBLIC" || ch.includePrivate === true)
       .filter((r) => (ch.kinds ?? spec.kinds).includes(r.question_kind as "pyq" | "practice"))
+      // Undefined = unfiltered, so specs predating this field are unaffected.
+      .filter((r) => ch.sourceFile === undefined || r.source_file === ch.sourceFile)
       .filter((r) => {
         const need = ch.requireConfirmedReview ?? spec.requireConfirmedReview ?? false;
         return !need || confirmed === null || confirmed.has(r.id);
