@@ -227,6 +227,12 @@ const ADDITIONS_ROUND2: Addition[] = [
   // ARCHITECTURE, so Bhimbetka had nowhere to sit either.
   { subject: "History", chapter: "Medieval India", subtopics: ["Maratha Empire and Administration"],
     why: "2024-2 Q55 (Shivaji's Ashta Pradhan) had to go under 'Other Medieval Kingdoms (Chola, Rajput, Ahom, Sikh)', which names four dynasties and not the Marathas." },
+  // Round 2 first added `Art, Painting and Sculpture` to MEDIEVAL India only, for a
+  // Chola mural — an asymmetry that stranded AJANTA, which is both the canonical
+  // Indian painting site and ANCIENT. Adding it to Ancient India too; the period
+  // axis is the chapter, so the same subtopic belongs in both.
+  { subject: "History", chapter: "Ancient India", subtopics: ["Art, Painting and Sculpture"],
+    why: "2025-2 Q62 (Ajanta cave paintings — yakshas/apsaras, the 'multiple perspectives' technique) was stranded in Temple and Rock-Cut Architecture: Ajanta IS a rock-cut site, but the question tests its PAINTING, not its architecture." },
   { subject: "History", chapter: "Ancient India", subtopics: ["Prehistory, Stone Age and Rock Art"],
     why: "2024-2 Q56 (Mesolithic art at Bhimbetka) was filed under 'Temple and Rock-Cut Architecture' — rock ART is not rock-cut ARCHITECTURE, and the catalog began at the Harappan period with nothing before it." },
   { subject: "History", chapter: "Ancient India", subtopics: ["Chalcolithic and Pre-Harappan Cultures"],
