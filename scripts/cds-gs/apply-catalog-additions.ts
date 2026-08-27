@@ -271,6 +271,29 @@ const ADDITIONS_ROUND2: Addition[] = [
     why: "2025-1 Q57 (metalloid classification) was filed under Atomic Structure > Periodic Trends; the Metals and Non-Metals chapter is the right home but its subtopics are alloys, corrosion, extraction and reactivity — none is the classification itself." },
 ];
 
+/**
+ * ROUND 3 CANDIDATES — evidence banked, NOT yet adjudicated or applied.
+ *
+ * These are `catalog-gap` flags that survived round 2, i.e. a transcriber holding
+ * the 297-subtopic catalog still found nothing that fitted. Recorded here rather
+ * than left in band reports, because a gap noticed and forgotten is worse than one
+ * never noticed — it gets silently re-parked somewhere wrong on the next paper.
+ *
+ *   - Plant mineral nutrition — macro- vs micronutrients (2024-2 Q1). Parked in
+ *     `Plant Biology > Transpiration, Tropisms and Plant Processes`.
+ *   - Modes of heat transfer — conduction / convection / radiation (2024-2 Q22).
+ *     Parked in `Heat, Calorimetry and Specific Heat`.
+ *   - Civil-service training academies and their locations, LBSNAA / NACIN
+ *     (2024-2 Q31). Parked in `Polity > Government Departments and Schemes`.
+ *   - National symbols — Flag Code of India, state emblem (2024-2 Q32). Parked in
+ *     `National Institutions, Milestones and History`.
+ *
+ * WORTH NOTING STRUCTURALLY: round 2 gave PHYSICS no entries at all, and one of
+ * the four above is a physics gap. Physics is also the subject whose per-paper
+ * count swings most (7 to 16 across the papers ingested so far), so its catalog
+ * fit is the least well evidenced of the eight and deserves a deliberate look
+ * rather than another round of incidental flags.
+ */
 function main() {
   const apply = process.argv.includes("--apply");
   const path = join(__dirname, "catalog.json");
