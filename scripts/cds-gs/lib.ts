@@ -166,6 +166,26 @@ export function mergeBands(bands: Band[]): { questions: TQ[]; errors: string[] }
  * of all of them: several chapter names are plausible under more than one subject,
  * and validating against the union would wave a mis-filed row straight through.
  */
+/**
+ * Catalog names use EM DASHES ("Microeconomics — Demand, ..."). A transcription
+ * agent that types an ASCII hyphen produces a hard-validation failure whose cause
+ * is INVISIBLE in a terminal, because the two strings look identical. This finds
+ * the intended entry so the error can say which.
+ *
+ * It SUGGESTS; it never repairs. The data file is the source of record and should
+ * hold the literal catalog string — normalising at merge would leave the file and
+ * the database disagreeing about what was authored.
+ */
+function nearMatch(value: string, candidates: string[]): string | null {
+  // The dash range is written with \u escapes rather than literal dash glyphs:
+  // U+2010..U+2015 are six visually near-identical characters, and a literal
+  // range is unreadable in review and easy to mangle.
+  const loose = (x: string) =>
+    x.replace(/[‐-―-]/g, "-").replace(/\s+/g, " ").trim().toLowerCase();
+  const target = loose(value);
+  return candidates.find((c) => loose(c) === target) ?? null;
+}
+
 export function validateCatalog(
   questions: TQ[],
   catalog: Catalog
@@ -183,12 +203,18 @@ export function validateCatalog(
     }
     const subtopics = chapters[q.chapter];
     if (!subtopics) {
-      errors.push(`Q${q.number}: chapter "${q.chapter}" is not a chapter of subject "${q.subject}"`);
+      const near = nearMatch(q.chapter, Object.keys(chapters));
+      errors.push(
+        `Q${q.number}: chapter "${q.chapter}" is not a chapter of subject "${q.subject}"` +
+          (near ? ` — did you mean "${near}"? (the catalog uses an em dash)` : "")
+      );
       continue;
     }
     if (q.subtopic && !subtopics.includes(q.subtopic)) {
+      const near = nearMatch(q.subtopic, subtopics);
       warnings.push(
-        `Q${q.number}: subtopic "${q.subtopic}" is not listed under "${q.subject} / ${q.chapter}"`
+        `Q${q.number}: subtopic "${q.subtopic}" is not listed under "${q.subject} / ${q.chapter}"` +
+          (near ? ` — did you mean "${near}"? (the catalog uses an em dash)` : "")
       );
     }
   }

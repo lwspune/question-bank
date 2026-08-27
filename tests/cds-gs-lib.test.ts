@@ -139,6 +139,27 @@ describe("validateCatalog — subject/chapter are HARD, subtopic is soft", () =>
     expect(errors[0]).toMatch(/Oceanography/);
   });
 
+  it("suggests the intended chapter when only the dash differs", () => {
+    const cat: Catalog = { Economics: { "Microeconomics — Demand, Supply and Market Structure": ["Demand, Supply and Elasticity"] } };
+    const { errors } = validateCatalog(
+      [q({ subject: "Economics", chapter: "Microeconomics - Demand, Supply and Market Structure", subtopic: "Demand, Supply and Elasticity" })],
+      cat
+    );
+    expect(errors).toHaveLength(1);
+    expect(errors[0]).toMatch(/did you mean/i);
+    expect(errors[0]).toMatch(/Microeconomics — Demand/);
+  });
+
+  it("suggests the intended subtopic when only the dash differs", () => {
+    const cat: Catalog = { Physics: { "Sound": ["Applications — SONAR, Transducers, Instruments"] } };
+    const { warnings } = validateCatalog(
+      [q({ subject: "Physics", chapter: "Sound", subtopic: "Applications - SONAR, Transducers, Instruments" })],
+      cat
+    );
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0]).toMatch(/did you mean/i);
+  });
+
   it("WARNS but does not error on an unknown subtopic", () => {
     const { errors, warnings } = validateCatalog([q({ subtopic: "Atomic Clocks" })], CATALOG);
     expect(errors).toEqual([]);
