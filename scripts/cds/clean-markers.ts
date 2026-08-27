@@ -64,11 +64,13 @@ type Row = {
 };
 
 async function main() {
-  const paperId = process.argv[2];
   const apply = process.argv.includes("--apply");
-  if (!paperId || paperId.startsWith("--")) {
-    throw new Error("usage: clean-markers.ts <paperId> [--apply]");
+  const paperId = process.argv[2]?.startsWith("--") ? undefined : process.argv[2];
+  const setsArg = process.argv.find((a) => a.startsWith("--sets="))?.slice("--sets=".length);
+  if (!paperId && !setsArg) {
+    throw new Error("usage: clean-markers.ts <paperId> [--apply]   |   clean-markers.ts --sets=<setId,...> [--apply]");
   }
+  if (paperId && setsArg) throw new Error("give a paperId OR --sets=, not both");
 
   const client = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -76,13 +78,38 @@ async function main() {
     { auth: { persistSession: false } }
   );
 
-  const { data: pq, error: pqErr } = await client
-    .from("paper_questions")
-    .select("question_id")
-    .eq("paper_id", paperId);
-  if (pqErr) throw new Error(`paper_questions: ${pqErr.message}`);
-  const ids = (pq ?? []).map((r) => r.question_id as string);
-  if (ids.length === 0) throw new Error(`paper ${paperId} has no questions`);
+  let ids: string[];
+  if (paperId) {
+    const { data: pq, error: pqErr } = await client
+      .from("paper_questions")
+      .select("question_id")
+      .eq("paper_id", paperId);
+    if (pqErr) throw new Error(`paper_questions: ${pqErr.message}`);
+    ids = (pq ?? []).map((r) => r.question_id as string);
+    if (ids.length === 0) throw new Error(`paper ${paperId} has no questions`);
+  } else {
+    // SET SCOPE, for cleaning rows a paper has not been built from yet.
+    //
+    // The paper scope alone is circular: scripts/bank-paper/build.ts REFUSES to
+    // apply while any selected row trips P7-internal-provenance (added
+    // 2026-08-26), and this marker is exactly that violation — so the paper
+    // cannot be created, and without a paper this script had nothing to scope to.
+    // Cleaning by directions-set breaks the loop and matches how the English
+    // half of a GAT mock is specified (`blocks`), so the sets pasted here are the
+    // same ones the spec names.
+    const setIds = setsArg!.split(",").map((s) => s.trim()).filter(Boolean);
+    if (!setIds.length) throw new Error("--sets= given but empty");
+    const seen = new Set<string>();
+    for (let i = 0; i < setIds.length; i += 50) {
+      const { data, error } = await client
+        .from("questions").select("id").in("set_id", setIds.slice(i, i + 50));
+      if (error) throw new Error(`questions by set: ${error.message}`);
+      for (const r of data ?? []) seen.add(r.id as string);
+    }
+    ids = [...seen];
+    if (ids.length === 0) throw new Error(`no questions found for ${setIds.length} set(s)`);
+    console.log(`set scope: ${setIds.length} set(s) -> ${ids.length} question(s)`);
+  }
 
   const rows: Row[] = [];
   for (let i = 0; i < ids.length; i += 100) {
@@ -103,7 +130,7 @@ async function main() {
   const inScope = rows.filter((r) => (r.exams as { name?: string } | null)?.name === "CDS");
   const marked = inScope.filter((r) => (r.solution ?? "").includes("LLM-derived"));
   console.log(
-    `paper ${paperId}: ${rows.length} question(s), ${inScope.length} from CDS, ` +
+    `${paperId ? `paper ${paperId}` : `${ids.length} question(s) in set scope`}: ${rows.length} question(s), ${inScope.length} from CDS, ` +
       `${marked.length} still carrying the derivation marker\n`
   );
   if (inScope.length === 0) {
