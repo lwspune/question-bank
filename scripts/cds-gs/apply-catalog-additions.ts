@@ -335,6 +335,37 @@ const ADDITIONS_ROUND2: Addition[] = [
  * Indian civilian award), but two questions is thin, and `Civilian Awards and Honours`
  * covers them without strain once the institutions leave. Left un-split deliberately.
  *
+ * THE DELHI SULTANATE HAS NO SUBTOPIC ANYWHERE, and it is the one structural hole
+ * in History. `Medieval India` gives the Mughals a chapter-level dynastic slot
+ * (`Mughal Empire and Administration`) and Vijayanagara another
+ * (`Vijayanagara Empire`), while its remaining dynastic slot is literally
+ * `Other Medieval Kingdoms (Chola, Rajput, Ahom, Sikh)` — the Sultanate is named
+ * in neither. Found on 2020-1, whose Q35 (Turkan-i-Chihalgani) and Q36 (the Mongol
+ * invasions) had to be parked on `Other Medieval Kingdoms` and `Warfare, Arms and
+ * Military Technology` respectively.
+ *
+ * MEASURED before proposing, and the measurement CUT THE CLAIM DOWN. A first probe
+ * reported nine affected questions across the committed papers and read as urgent.
+ * Five were false: `sultan` matches inside conSULTANt and reSULTANt, and separately
+ * matched Sultanpur National Park in a Ramsar question; `Sayyid` matched a painter's
+ * name rather than the dynasty. Re-run with terms that cannot occur as ordinary
+ * English or as another proper noun (delhi sultanate, khalji, tughlaq, iltutmish,
+ * balban, chihalgani, iqta, amir), the real figure is THREE across eleven papers —
+ * and two of those three are Amir Khusrau questions already sitting on
+ * `Medieval Literature and Texts`, which is a defensible home for a literature
+ * question, with the third on `Society, Economy and Land Grants`, also defensible.
+ *
+ * So: add `Delhi Sultanate` to Medieval India in round 3, because the hole is real
+ * and the addition is structurally correct beside its two sibling dynastic slots —
+ * but it is NOT urgent and it triggers little or no re-filing of existing rows. The
+ * rate is roughly 0.4 questions per paper.
+ *
+ * This is the prefix-matching trap the syllabus-map work already recorded
+ * (`cement` inside `displaCEMENT`), met again in a different corpus. Anchor the
+ * search on a term that cannot occur as ordinary English, and read the matched text
+ * before believing a count — an inflated count makes a modest gap look like an
+ * emergency, and would have justified re-filing rows that are correctly filed.
+ *
  * Individual gaps:
  *   - Indian TRIBES and ethnic communities (2023-1 Q35, Bhil/Gond/Ahom/Adi).
  *     Parked in `Population, Census and Urbanisation`. The near-misses are worse:
