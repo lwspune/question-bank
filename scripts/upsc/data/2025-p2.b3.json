@@ -1,0 +1,503 @@
+{
+  "band": "b3",
+  "pages": [
+    18,
+    20,
+    22,
+    24
+  ],
+  "bandReport": {
+    "numbersFound": [
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48
+    ],
+    "firstComplete": false,
+    "lastComplete": true,
+    "notes": "Pages carry printed page numbers 19-A (p18), 21-A (p20), 23-A (p22), 25-A (p24). Items 32-48, no gaps, no repeats.\n\nQ32 IS THE REASON firstComplete IS false, AND IT IS AN OPEN GAP THAT NO BAND CLOSES ON ITS OWN. Its stem and all four options are complete on p18-c1, but it opens 'With reference to the above passage' and that passage is NOT on any of my pages. It is Passage-1 of a 'Directions for the following 4 (four) items' block whose Passage-2 heading appears lower in p18-c1; that block therefore governs items 31, 32 (Passage-1) and 33, 34 (Passage-2), and Passage-1 sits on the preceding English page (index 16), which belongs to band b2. I have deliberately left Q32's `context` EMPTY rather than copy text I did not read off my own pages -- two bands transcribing the same passage slightly differently is exactly the conflict the merge refuses on, and laundering another band's transcription into my file would hide which pages it was actually read from.\n\nTHE FIX, verified against the sibling file as it stood when this band was written: 2025-p2.b2.json covers items 15-31 and stops at 31, so it does NOT report item 32 at all; its Q31 carries the governing Passage-1, beginning 'In our country, regrettably, teaching and learning for the examination have been our forte'. So the passage exists in b2 attached to Q31, item 32 exists only here, and nothing currently joins them. Q32 needs that passage copied onto it -- by the merge step or by a human reading page index 16 -- before it is usable. Until then Q32 is answerable only by guesswork.\n\nPASSAGE MAPPING, worked out from what each item actually refers to, not from the directions block:\n  - p18-c1 'Passage - 2' (population growth / food production / 16% of calories fed to chickens) governs Q33 and Q34 ONLY. Both are on p18-c2 and both point back at it ('the passage' / 'the above passage'). It is carried in the `context` of those two items and nowhere else.\n  - p22-c1 opens 'Directions for the following 4 (four) items : Read the following two passages ...' -- this is the nesting case. It covers items 41-44 and contains TWO passages, each governing two items:\n      * 'Passage - 1' (net-zero carbon / demand-side measures / supply-side investments), p22-c1, governs Q41 (p22-c1) and Q42 (p22-c2). Q42's statements are about supply-side investments and low-carbon behaviour, which is Passage-1's subject matter, not Passage-2's.\n      * 'Passage - 2' (world consumption of raw materials / batteries / reusing materials), p22-c2, governs Q43 and Q44 (both p24-c1). Both are about circular economy and reusing minerals/batteries.\n    The directions sentence itself is NOT pasted into any item's context -- only the passage that actually governs each item is.\n\nQ35-Q40 (p20) and Q45-Q48 (p24-c2) are standalone items with no shared material; they carry no `context`.\n\nPASSAGE HEADINGS: the labels 'Passage - 1' / 'Passage - 2' are structural markers, not passage content, so `context` holds the passage prose only.\n\nCOLUMN CROPS: all four pages had gutterFound=true with healthy gutter widths (42, 34, 41, 40 px), and all four splits are sound. Two cosmetic overreaches, neither affecting reading: p18-c1 and p20-c1 and p24-c1 each catch the bare item numbers of the NEXT column at their right edge ('33.', '34.' on p18-c1; '38.', '39.', '40.' on p20-c1; '45.', '46.', '47.', '48.' on p24-c1), and correspondingly the c2 crops of p18, p20 and p24 have those same item numbers clipped off their left edge. I took the item numbers for the c2 items from the whole-page images and the text from the c2 crops. No line was cut down its middle and no option block was at risk of being attributed to a neighbouring item.\n\nVERIFIED AT ZOOM (glyphs that change the question): Q35's product is 7 x 343 x 385 x 1000 x 2401 x 77777 (77777 is five sevens) and the divisor is 35^n. Q38's equation is 60_15_3_20_4 = 20. Q47 reads 'Let P = QQQ' -- the operator is an equals sign; there is a small scan speck sitting above its upper stroke that can read as a second mark at low magnification, but at 3x it is plainly '='.\n\nNo defective items found: every item has exactly four distinct options, no duplicated option text, no missing option, no skipped number. Nothing on these pages continues past p24 -- Q48's option (d) is followed only by the page footer.\n\nNo answers are supplied anywhere in this file; this booklet prints no key. [MERGE FIX] Q32 was transcribed with no context: its governing passage (Passage-1 of the \"following 4 items\" block) is printed on p16, which belongs to band b2, so this band never saw it. Q32's stem says \"With reference to the above passage\", and the page shows Q32 following Q31 directly with no intervening passage, so Q31's context was copied onto it. This is the band-seam class the brief warns about."
+  },
+  "questions": [
+    {
+      "number": 32,
+      "context": "In our country, regrettably, teaching and learning for the examination have been our forte but the new demands of society and the future of work require critical and independent thinking, learning through doing, asking questions from multiple disciplinary perspectives on the same issue, using evidence for building arguments, and reflecting and articulation. Higher education should not \"either be a mere servant of the government policy or a passive respondent to public mood.\" Higher learning is all about how to think rather than what to think. Teaching has to be re-invented.",
+      "stem": "With reference to the above passage, the following assumptions have been made :\nI. Higher education is a constantly evolving subject that needs to align towards new developments in all spheres of society.\nII. In our country, sufficient funds are not allocated for promoting higher education.\nWhich of the above assumptions is/are valid ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "I only"
+        },
+        {
+          "label": "B",
+          "text": "II only"
+        },
+        {
+          "label": "C",
+          "text": "Both I and II"
+        },
+        {
+          "label": "D",
+          "text": "Neither I nor II"
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": [
+        "GOVERNING PASSAGE NOT ON THIS BAND'S PAGES: the item refers to 'the above passage', which is the Passage-1 of the directions block ending on the preceding English page (index 16, band b2). context deliberately left empty rather than transcribed from outside this band. Attach before use."
+      ]
+    },
+    {
+      "number": 33,
+      "context": "If there is inequality in the pattern of population growth, there is greater inequality in food production and utilization. As societies become wealthier, their consumption of animal products increases. This means that a greater proportion of such basic foodstuff as grains and legumes that could feed humans directly is instead being converted into feed for poultry and large farm animals. Yet this conversion of plant-based food into animal food for humans is far from efficient. Only 16% of the calories fed to chickens are recovered by us when we eat them. This conversion rate goes down to five to seven per cent in large animals that are fed grain to add fat and some protein before slaughter.",
+      "stem": "Which one of the following statements best reflects the crux of the passage ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "There is an urgent need for a public policy to promote the consumption of cereal-based foods in wealthier societies."
+        },
+        {
+          "label": "B",
+          "text": "Animal-based food is far less efficient than grain/plant-based food in terms of production and utilization."
+        },
+        {
+          "label": "C",
+          "text": "Plant-based protein should replace the animal-based protein in our daily diets."
+        },
+        {
+          "label": "D",
+          "text": "Inequality in food production and consumption is inevitable in any fast changing society."
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 34,
+      "context": "If there is inequality in the pattern of population growth, there is greater inequality in food production and utilization. As societies become wealthier, their consumption of animal products increases. This means that a greater proportion of such basic foodstuff as grains and legumes that could feed humans directly is instead being converted into feed for poultry and large farm animals. Yet this conversion of plant-based food into animal food for humans is far from efficient. Only 16% of the calories fed to chickens are recovered by us when we eat them. This conversion rate goes down to five to seven per cent in large animals that are fed grain to add fat and some protein before slaughter.",
+      "stem": "With reference to the above passage, the following assumptions have been made :\nI. The food manufacturing and processing industries in every country should align their objectives and processes in accordance with the changing needs of the societies.\nII. Wealthier societies tend to incur great loss of calories of food materials due to indirect utilization of their agricultural produce.\nWhich of the above assumptions is/are valid ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "I only"
+        },
+        {
+          "label": "B",
+          "text": "II only"
+        },
+        {
+          "label": "C",
+          "text": "Both I and II"
+        },
+        {
+          "label": "D",
+          "text": "Neither I nor II"
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 35,
+      "stem": "What is the maximum value of n such that \\(7 \\times 343 \\times 385 \\times 1000 \\times 2401 \\times 77777\\) is divisible by \\(35^n\\) ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "3"
+        },
+        {
+          "label": "B",
+          "text": "4"
+        },
+        {
+          "label": "C",
+          "text": "5"
+        },
+        {
+          "label": "D",
+          "text": "7"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Prime Numbers and Factorisation",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 36,
+      "stem": "What is X in the sequence 24, X, 12, 18, 36, 90 ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "18"
+        },
+        {
+          "label": "B",
+          "text": "12"
+        },
+        {
+          "label": "C",
+          "text": "9"
+        },
+        {
+          "label": "D",
+          "text": "6"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Series and Analogy",
+      "subtopic": "Number Series",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 37,
+      "stem": "P and Q walk along a circular track. They start at 5:00 a.m. from the same point in opposite directions. P walks at an average speed of 5 rounds per hour and Q walks at an average speed of 3 rounds per hour. How many times will they cross each other between 5:20 a.m. and 7:00 a.m. ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "12"
+        },
+        {
+          "label": "B",
+          "text": "13"
+        },
+        {
+          "label": "C",
+          "text": "14"
+        },
+        {
+          "label": "D",
+          "text": "15"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Time, Speed and Work",
+      "subtopic": "Time, Speed and Distance",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 38,
+      "stem": "If \\(P = +\\), \\(Q = -\\), \\(R = \\times\\), \\(S = \\div\\), then insert the proper notations between the successive numbers in the equation \\(60\\_15\\_3\\_20\\_4 = 20\\) :",
+      "options": [
+        {
+          "label": "A",
+          "text": "SPRQ"
+        },
+        {
+          "label": "B",
+          "text": "QRPS"
+        },
+        {
+          "label": "C",
+          "text": "QRSP"
+        },
+        {
+          "label": "D",
+          "text": "SPQR"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Coding-Decoding and Symbol Logic",
+      "subtopic": "Symbol and Inequality Coding",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 39,
+      "stem": "A tram overtakes 2 persons X and Y walking at an average speed of 3 km/hr and 4 km/hr in the same direction and completely passes them in 8 seconds and 9 seconds respectively. What is the length of the tram ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "15 m"
+        },
+        {
+          "label": "B",
+          "text": "18 m"
+        },
+        {
+          "label": "C",
+          "text": "20 m"
+        },
+        {
+          "label": "D",
+          "text": "24 m"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Time, Speed and Work",
+      "subtopic": "Trains, Boats and Streams",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 40,
+      "stem": "If \\(N^2 = 12345678987654321\\), then how many digits does the number N have ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "8"
+        },
+        {
+          "label": "B",
+          "text": "9"
+        },
+        {
+          "label": "C",
+          "text": "10"
+        },
+        {
+          "label": "D",
+          "text": "11"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 41,
+      "context": "Over the next 30 years, many countries are promising to move to net-zero carbon, implying that household emissions will have to be cut to close to nothing. A leading climate scientist reckons that, at best, half the reduction might be achieved through demand-side measures, such as behavioural changes by individuals and households. And even that would require companies and governments to provide more incentives to change through supply-side investments to make low-carbon options cheaper and more widely available.",
+      "stem": "Which one of the following statements best reflects the central idea conveyed by the passage ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Moving to net-zero carbon is possible only by the reduction in household emissions."
+        },
+        {
+          "label": "B",
+          "text": "Low-carbon behaviour in people can be brought about by incentivising them."
+        },
+        {
+          "label": "C",
+          "text": "Cheaper goods and services can be made available to people by using low-carbon technologies."
+        },
+        {
+          "label": "D",
+          "text": "Manufacturing industries that use low-carbon technologies should be provided with subsidies."
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 42,
+      "context": "Over the next 30 years, many countries are promising to move to net-zero carbon, implying that household emissions will have to be cut to close to nothing. A leading climate scientist reckons that, at best, half the reduction might be achieved through demand-side measures, such as behavioural changes by individuals and households. And even that would require companies and governments to provide more incentives to change through supply-side investments to make low-carbon options cheaper and more widely available.",
+      "stem": "With reference to the above passage, the following assumptions have been made :\nI. Supply-side investments in companies can result in low-carbon behaviour in people.\nII. People are not capable of adapting low-carbon behaviour without the involvement of Government and Companies.\nWhich of the above assumptions is/are valid ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "I only"
+        },
+        {
+          "label": "B",
+          "text": "II only"
+        },
+        {
+          "label": "C",
+          "text": "Both I and II"
+        },
+        {
+          "label": "D",
+          "text": "Neither I nor II"
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 43,
+      "context": "In only 50 years, the world's consumption of raw materials has nearly quadrupled, to more than 100 billion tons. Less than 9% of this is reused. Batteries of old vehicles contain materials such as lithium, cobalt, manganese and nickel that are pricey and can be hard to obtain. Supply chains are long and complicated. Buyers' risks are being aggravated by their suppliers' poor environmental and labour standards. Reusing materials makes sense. Once batteries reach the ends of their lives, they should go back to a factory where their ingredients can be recovered and put into new batteries.",
+      "stem": "Which one of the following statements best reflects the most logical, rational and pragmatic message conveyed by the passage ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Green economy is not possible without reusing critical minerals."
+        },
+        {
+          "label": "B",
+          "text": "Every sector of economy should adapt the reuse of material resources immediately."
+        },
+        {
+          "label": "C",
+          "text": "Circular economy can be beneficial for sustainable growth."
+        },
+        {
+          "label": "D",
+          "text": "Circular use of material resources is the only option for some industries for their survival."
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 44,
+      "context": "In only 50 years, the world's consumption of raw materials has nearly quadrupled, to more than 100 billion tons. Less than 9% of this is reused. Batteries of old vehicles contain materials such as lithium, cobalt, manganese and nickel that are pricey and can be hard to obtain. Supply chains are long and complicated. Buyers' risks are being aggravated by their suppliers' poor environmental and labour standards. Reusing materials makes sense. Once batteries reach the ends of their lives, they should go back to a factory where their ingredients can be recovered and put into new batteries.",
+      "stem": "With reference to the above passage, the following assumptions have been made :\nI. Automobile factories are examples of the circular economy.\nII. Economic growth is compatible with circular use of mineral resources.\nWhich of the above assumptions is/are valid ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "I only"
+        },
+        {
+          "label": "B",
+          "text": "II only"
+        },
+        {
+          "label": "C",
+          "text": "Both I and II"
+        },
+        {
+          "label": "D",
+          "text": "Neither I nor II"
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 45,
+      "stem": "A set (X) of 20 pipes can fill 70% of a tank in 14 minutes. Another set (Y) of 10 pipes fills \\(3/8^{\\text{th}}\\) of the tank in 6 minutes. A third set (Z) of 16 pipes can empty half of the tank in 20 minutes. If half of the pipes of set X are closed and only half of the pipes of set Y are open, and all pipes of the set (Z) are open, then how long will it take to fill 50% of the tank ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "8 minutes"
+        },
+        {
+          "label": "B",
+          "text": "10 minutes"
+        },
+        {
+          "label": "C",
+          "text": "12 minutes"
+        },
+        {
+          "label": "D",
+          "text": "16 minutes"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Time, Speed and Work",
+      "subtopic": "Pipes and Cisterns",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 46,
+      "stem": "If n is a natural number, then what is the number of distinct remainders of \\((1^n + 2^n)\\) when divided by 4 ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "1"
+        },
+        {
+          "label": "C",
+          "text": "2"
+        },
+        {
+          "label": "D",
+          "text": "3"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 47,
+      "stem": "Let \\(P = QQQ\\) be a 3-digit number. What is the HCF of P and 481 ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "13"
+        },
+        {
+          "label": "C",
+          "text": "37"
+        },
+        {
+          "label": "D",
+          "text": "481"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Factors, Multiples, HCF and LCM",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 48,
+      "stem": "What is the \\(489^{\\text{th}}\\) digit in the number 123456789101112 ... ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "3"
+        },
+        {
+          "label": "C",
+          "text": "6"
+        },
+        {
+          "label": "D",
+          "text": "9"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE",
+      "flags": []
+    }
+  ]
+}
