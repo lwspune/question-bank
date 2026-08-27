@@ -80,6 +80,18 @@ unrecognised value fails the build, it does not auto-create.
 - Pick the chapter that the question actually **tests**, not one a keyword hints at.
   A question naming a river but asking which state a dam is in is Indian Geography —
   Economy/Resources, not Rivers.
+- **An INSTITUTION question: structure/function, or a dated event?** This is the split that
+  otherwise gets decided differently by every band. A question testing an institution's
+  **structure, mandate or function** goes to its subject home — the NHRC's functions are
+  Polity, how India Post Payments Bank is incorporated is Economics. A question testing a
+  **dated event, appointment or announcement** goes to Current Affairs — who chairs a task
+  force constituted "recently" is a Current-Affairs recall, even though the body is the RBI.
+- **A DEFENCE question: the system, or the news about it?** Same shape. "Which missile is
+  India's first indigenous long-range subsonic cruise missile" is identification, so it is
+  `Defence and Military Exercises > Weapon Systems, Missiles and Military Aircraft`. "DRDO
+  test-fired X in month Y" is an event, so it is `Science and Technology > DRDO, Defence and
+  Marine Technology`. Decide by what is being TESTED, never by whether DRDO built the thing —
+  otherwise the two subtopics split the same weapon arbitrarily.
 - If nothing in the catalog fits, still pick the closest chapter, and add a `flags`
   entry `"catalog-gap: <what is missing>"`. **Do not invent a chapter or subtopic
   name.** The gaps you report are collected and adjudicated as a batch.
