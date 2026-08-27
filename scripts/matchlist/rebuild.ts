@@ -201,8 +201,15 @@ function emit(
   const orphan = keep.find((p) => /^\s*\(?(?:[A-H]|\d{1,2})\)?\s*[.)]\s/.test(p));
   if (orphan) return { ok: false, why: `labelled item left outside the table: ${orphan.slice(0, 50)}` };
 
-  const leading = keep.filter((p) => !/^Codes?\s*[:.]?/i.test(p));
-  const trailing = keep.filter((p) => /^Codes?\s*[:.]?/i.test(p));
+  // The Code block prints BELOW the table. It is two shapes, not one: the
+  // "Code :" line itself, and a bare column-label row ("A  B  C  D") that often
+  // sits on its own line. Matching only the former left that bare row stranded
+  // ABOVE the table on 7 rows — nothing lost, but it reads wrongly on a printed
+  // paper, which is the surface this whole repair exists for.
+  const isCode = (p: string) =>
+    /^Codes?\s*[:.]?/i.test(p) || /^\(?[A-H]\)?(?:\s+\(?[A-H]\)?){2,}\s*$/.test(p.trim());
+  const leading = keep.filter((p) => !isCode(p));
+  const trailing = keep.filter(isCode);
 
   const rows = Math.max(left.length, right.length);
   const out: string[] = [];
