@@ -305,6 +305,36 @@ const ADDITIONS_ROUND2: Addition[] = [
  * out on exactly this logic, so the pattern is established: the chapter wants
  * splitting by award TYPE, not another one-off subtopic per award that turns up.
  *
+ * MEASURED 2026-08-28, and it SHARPENS the structural finding above rather than
+ * confirming it. Reading all 11 questions that subtopic holds across the 9 committed
+ * papers, the split is not by award TYPE at all — it is TWO DIFFERENT AXES sharing
+ * one name:
+ *
+ *   7 awards/honours  Padma (2023-2 Q110), Bharat Ratna (2024-1 Q118), Jnanpith
+ *                     (2022-1 Q111), Nobel Physics (2023-1 Q38), UNEP Champions of
+ *                     the Earth (2023-1 Q84), and two FOREIGN state honours —
+ *                     Suriname's Yellow Star (2023-2 Q119), Kuwait's Mubarak
+ *                     Al-Kabeer (2025-1 Q116)
+ *   3 institutions    Indian Maritime University (2023-2 Q95), a Ministry of
+ *                     Culture body (2025-1 Q107), an institute/location match list
+ *                     (2025-2 Q16) — none of which mentions an award at all
+ *   1 borderline      2018-1 Q65, which State hosts the Nobel Prize Series India
+ *                     exhibition: an EVENT-hosting question wearing an award's name
+ *
+ * So the remedy is CHEAPER than splitting by type, and needs no new subtopic:
+ * `Current Affairs > National Events, Persons and India General Knowledge >
+ * National Institutions, Milestones and History` ALREADY EXISTS and is a clean fit
+ * for all three — IMU and the IITs are central institutions established by statute.
+ * Round 3 should therefore RENAME this subtopic to `Civilian Awards and Honours`,
+ * dropping the educational-institutions clause that made it a catch-all, and RE-FILE
+ * those three. Check for a home before adding one: round 2 twice added a subtopic to
+ * one period chapter and stranded content in another, and an addition that duplicates
+ * an existing home is the same mistake pointing the other way.
+ *
+ * The foreign-honours pair is a genuine second candidate (a Kuwaiti order is not an
+ * Indian civilian award), but two questions is thin, and `Civilian Awards and Honours`
+ * covers them without strain once the institutions leave. Left un-split deliberately.
+ *
  * Individual gaps:
  *   - Indian TRIBES and ethnic communities (2023-1 Q35, Bhil/Gond/Ahom/Adi).
  *     Parked in `Population, Census and Urbanisation`. The near-misses are worse:
