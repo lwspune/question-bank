@@ -1,0 +1,192 @@
+{
+  "band": "B8",
+  "pages": [20, 21],
+  "bandReport": {
+    "numbersFound": [109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Q109 opens cleanly at the top of p20's left column with its number and full stem — nothing continues in from p19. Q120 ends with its option (d) followed only by the footer, and the paper genuinely ends at Q120: the source PDF has 22 pages (0-based indices 0-21), so my p21 (index 21) is the LAST page in the file, and there is no content of any kind below Q120(d). Two caveats about that final page, both harmless: it still prints '[ P.T.O.' in the footer, which is boilerplate on every page of this booklet rather than a pointer to a missing page; and the printed page numbers jump 41 (p20) -> 43 (p21), i.e. printed page 42 is the blank verso and is not scanned. Nothing in my band belongs to a neighbouring band. TWO-COLUMN HAZARD, verified rather than eyeballed: at the foot of p20 the options of Q112 (left column) and Q115 (right column) INTERLEAVE line-for-line, and the PDF text layer merges them into single blocks reading '(a) sexual harassment in the work- (a) 1 only'. I re-separated them by word-level x-coordinate (left column x<300, right column x>300) and confirmed Q112 = sexual harassment/Sati/dowry death/rape and Q115 = 1 only/2 and 3 only/1 and 2 only/1, 2 and 3. The same check was run on p21, where it matters more: Q118 (left) and Q119 (right) BOTH have an option whose text is '1 only', so a column swap there would have been invisible — confirmed Q118 = 1 only/2 and 3/3 only/1 and 4 and Q119 = 1 only/2 only/Both 1 and 2/Neither 1 nor 2, with Q120's options (improve/diminish/remain constant/first diminish and then improve) sitting in the right column below Q118's block."
+  },
+  "questions": [
+    {
+      "number": 109,
+      "stem": "The projects under Coastal Berth Scheme of the flagship Sagarmala Programme are distributed over how many States?",
+      "options": [
+        { "label": "A", "text": "Eight" },
+        { "label": "B", "text": "Ten" },
+        { "label": "C", "text": "Twelve" },
+        { "label": "D", "text": "Fourteen" }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "Government Schemes, Policy and Governance",
+      "subtopic": "Infrastructure, Transport and Cultural Schemes",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 110,
+      "stem": "Which one of the following statements about the National Adaptation Fund for Climate Change is **not** correct?",
+      "options": [
+        { "label": "A", "text": "The fund is meant to assist national and State level activities to meet the cost of adaptation measures." },
+        { "label": "B", "text": "This scheme has been taken as a Central Sector Scheme." },
+        { "label": "C", "text": "The Indian Council of Agricultural Research is the national implementing entity for the fund." },
+        { "label": "D", "text": "The scheme has been in force since 2015-2016." }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "Environment, Ecology and Energy",
+      "subtopic": "Climate Change and Summits",
+      "difficulty": "MODERATE",
+      "flags": ["The page sets 'not' in bold italic; the emphasis is load-bearing (this is a negative-stem question) and is preserved as **not**."]
+    },
+    {
+      "number": 111,
+      "stem": "'SAMPRITI-2017' is a joint military exercise between armed forces of India and",
+      "options": [
+        { "label": "A", "text": "Bhutan" },
+        { "label": "B", "text": "Bangladesh" },
+        { "label": "C", "text": "Pakistan" },
+        { "label": "D", "text": "Myanmar" }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "Defence and Military Exercises",
+      "subtopic": "Military Exercises — Bilateral and Multilateral",
+      "difficulty": "MODERATE",
+      "flags": ["OCR/image disagreement, resolved from the image at 9x: the text layer reads 'militaiy', the page clearly prints 'military' (an rn/ry OCR artifact). Page prints single quotes around 'SAMPRITI-2017'; transcribed as straight quotes per the brief."]
+    },
+    {
+      "number": 112,
+      "stem": "The judgement of the Supreme Court of India in the Vishakha Case pertains to",
+      "options": [
+        { "label": "A", "text": "sexual harassment in the workplace" },
+        { "label": "B", "text": "Sati" },
+        { "label": "C", "text": "dowry death" },
+        { "label": "D", "text": "rape" }
+      ],
+      "subject": "Polity",
+      "chapter": "Government Structure — Parliament, Judiciary and Constitutional Bodies",
+      "subtopic": "Judiciary — Supreme Court and High Courts",
+      "difficulty": "EASY",
+      "flags": ["Option (a) is hyphenated across a line break as 'work-' / 'place'. The PDF text layer encodes that hyphen as U+00AD (SOFT hyphen), confirming it is a discretionary line-break hyphen and not part of the word, so it is transcribed as the single word 'workplace'. Options are printed lowercase except 'Sati'; case preserved as printed."]
+    },
+    {
+      "number": 113,
+      "stem": "The first BRICS Summit, after the inclusion of South Africa, was held at",
+      "options": [
+        { "label": "A", "text": "Brasilia" },
+        { "label": "B", "text": "Sanya" },
+        { "label": "C", "text": "Yekaterinburg" },
+        { "label": "D", "text": "Durban" }
+      ],
+      "subject": "Current Affairs",
+      "chapter": "International Affairs and Relations",
+      "subtopic": "International Summits, Initiatives and Forums",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 114,
+      "stem": "Who deciphered the Brahmi and Kharoshthi scripts?",
+      "options": [
+        { "label": "A", "text": "Piyadassi" },
+        { "label": "B", "text": "Colin Mackenzie" },
+        { "label": "C", "text": "Alexander Cunningham" },
+        { "label": "D", "text": "James Prinsep" }
+      ],
+      "subject": "History",
+      "chapter": "Ancient India",
+      "subtopic": "Ancient Indian Literature and Inscriptions",
+      "difficulty": "EASY",
+      "flags": ["The page italicises the script names Brahmi and Kharoshthi; italics here are a typographic convention for script names rather than meaning-changing emphasis, so no markdown emphasis is emitted."]
+    },
+    {
+      "number": 115,
+      "stem": "Which of the following is/are the feature(s) of the Brahmadeya Grants during c 600-1200 AD?\n1. Their creation meant a renunciation of actual or potential sources of revenue by the State.\n2. These grants could vary from a small plot to several villages.\n3. Most grants were made in unsettled areas.\n\nSelect the correct answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 and 3 only" },
+        { "label": "C", "text": "1 and 2 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "subject": "History",
+      "chapter": "Ancient India",
+      "subtopic": "Society, Trade and Foreign Connections",
+      "difficulty": "HARD",
+      "flags": ["catalog-gap: no subtopic covers EARLY MEDIEVAL (c 600-1200 AD) agrarian structure / land-grant economy (Brahmadeya, Agrahara, Devadana). The period straddles the catalog's Ancient India and Medieval India chapters; Medieval India has no society/economy subtopic at all, so this is filed under Ancient India > 'Society, Trade and Foreign Connections' as the closest available home."]
+    },
+    {
+      "number": 116,
+      "stem": "Who is the author of Manimekalai?",
+      "options": [
+        { "label": "A", "text": "Kovalan" },
+        { "label": "B", "text": "Sathanar" },
+        { "label": "C", "text": "Ilango Adigal" },
+        { "label": "D", "text": "Tirutakkatevar" }
+      ],
+      "subject": "History",
+      "chapter": "Ancient India",
+      "subtopic": "Ancient Indian Literature and Inscriptions",
+      "difficulty": "MODERATE",
+      "flags": ["OCR/image disagreement on an OPTION, resolved from the image by cropping option (d) at 9x: the text layer reads 'Timtakkatevar', the page unambiguously prints 'Tirutakkatevar' (the OCR merged 'ru' into 'm'). Transcribed from the image as the source of truth."]
+    },
+    {
+      "number": 117,
+      "stem": "Which one of the following statements about the Elephanta Island is correct?",
+      "options": [
+        { "label": "A", "text": "It was given its name by the British after a large elephant structure located there." },
+        { "label": "B", "text": "It contains one large cave." },
+        { "label": "C", "text": "It is well-known for a spectacular carving of Vishnu described in the Vishnudharmottara Purana." },
+        { "label": "D", "text": "It is associated with the Pashupata sect." }
+      ],
+      "subject": "History",
+      "chapter": "Ancient India",
+      "subtopic": "Buddhism, Jainism and Religious Architecture",
+      "difficulty": "HARD",
+      "flags": ["catalog-gap: HINDU rock-cut cave architecture (Elephanta, Ellora's Shaiva caves, Badami) has no dedicated subtopic — the only religious-architecture subtopic is scoped to 'Buddhism, Jainism and Religious Architecture', which is the closest fit but names neither Hindu nor Shaiva. Note also that option (a) says the island was named by the British, whereas the naming is conventionally attributed to the Portuguese; transcribed exactly as printed, since which statement is correct is the point of the question."]
+    },
+    {
+      "number": 118,
+      "stem": "Which of the following statements about Sir Syed Ahmad Khan is/are correct?\n1. He argued that India was a federation of ethnic communities based on common descent.\n2. His philosophy was very similar to that of the Indian National Congress.\n3. He imagined India as a Nation State based on individual citizen's rights.\n4. The curriculum at the Mohammedan Anglo-Oriental College blended Muslim theology and European empiricism.\n\nSelect the correct answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 and 3" },
+        { "label": "C", "text": "3 only" },
+        { "label": "D", "text": "1 and 4" }
+      ],
+      "subject": "History",
+      "chapter": "Modern India",
+      "subtopic": "19th Century Social and Religious Reform",
+      "difficulty": "HARD",
+      "flags": ["Four numbered statements but the code offers only 1 only / 2 and 3 / 3 only / 1 and 4 — no option covers statement 2 or 4 alone, and no 'all of the above'. Transcribed exactly as printed. Statement 3 uses a curly apostrophe on 'citizen's'; emitted as a straight apostrophe per the brief."]
+    },
+    {
+      "number": 119,
+      "stem": "Consider the following statements about impact of tax :\n1. A tax is shifted forward to consumers if the demand is inelastic relative to supply.\n2. A tax is shifted backward to producers if the supply is relatively more inelastic than demand.\n\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Economics",
+      "chapter": "Indian Economy",
+      "subtopic": "International Trade and Finance",
+      "difficulty": "MODERATE",
+      "flags": ["catalog-gap: this is PUBLIC FINANCE / tax-incidence theory (forward and backward shifting of a tax under elasticity), and the Economics subject has exactly one chapter, 'Indian Economy', whose three subtopics are Five Year Plans, Government Schemes — Agriculture and Livestock, and International Trade and Finance. None covers taxation, public finance or price theory. Filed under the least-bad subtopic; a 'Public Finance, Taxation and Budget' subtopic (or chapter) is needed."]
+    },
+    {
+      "number": 120,
+      "stem": "According to the law of diminishing marginal utility, as the amount of a good consumed increases, the marginal utility of that good tends to",
+      "options": [
+        { "label": "A", "text": "improve" },
+        { "label": "B", "text": "diminish" },
+        { "label": "C", "text": "remain constant" },
+        { "label": "D", "text": "first diminish and then improve" }
+      ],
+      "subject": "Economics",
+      "chapter": "Indian Economy",
+      "subtopic": "International Trade and Finance",
+      "difficulty": "EASY",
+      "flags": ["catalog-gap: this is pure MICROECONOMIC THEORY (consumer behaviour / utility analysis) and has no home at all — the Economics subject has only the 'Indian Economy' chapter, which is scoped to Indian planning, schemes and trade. Chapter is forced; the subtopic assigned is the least-bad of three poor fits. A 'Basic Economic Concepts / Microeconomics' chapter is needed."]
+    }
+  ]
+}

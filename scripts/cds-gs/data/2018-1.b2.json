@@ -1,0 +1,294 @@
+{
+  "band": "B2",
+  "pages": [4, 5, 6],
+  "bandReport": {
+    "numbersFound": [23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Full expected range 23-39 present, no gaps, no duplicates. Q23 starts fresh at the head of p04's left column; PDF index 3 (the band before me) ends with Q22 complete, so nothing continues into my first page. Q39 completes at the foot of p06's right column; PDF index 7 (the band after me) opens with Q40, so nothing spills overleaf. RULE-1 HAZARD WORTH FLAGGING TO THE MERGE: Q27 (p04) and Q35 (p06) are both Match Lists whose Code blocks print the SAME four rows -- 2413 / 2143 / 3142 / 3421 -- but in DIFFERENT label order. Q27 reads (a) 2-4-1-3, (b) 2-1-4-3, (c) 3-1-4-2, (d) 3-4-1-2, while Q35 reads (a) 3-1-4-2, (b) 2-1-4-3, (c) 2-4-1-3, (d) 3-4-1-2 -- i.e. (a) and (c) are transposed between the two questions while (b) and (d) coincide. Both were re-read from 6x crops AND independently confirmed against the PDF's OCR text layer before being written. Anyone copying one block onto the other produces a right-text/wrong-letter key that no downstream check can catch. TWO-COLUMN READING ORDER, p04: the page's flow is NOT column-major throughout -- Q25's stem and option block sit in the LEFT column BELOW Q24, physically alongside Q27's Code block in the right column, and the OCR text layer interleaves them (it emits Q26, Q27's lists, 'Code :', then Q25 entire, then Q27's code rows). The page image reading order was used and Q25's four options were confirmed to belong to Q25's stem in the same column. The same hazard recurs at the FOOT of p06, where the OCR layer interleaves Q36's (c)/(d) with Q39's (a)-(d) line by line ('(c) Conservation and management of / (a) P / marine resources / (b) < P / (d) Navigation of ships and laying / (c) > P / down submarine cables / (d) 2P'); on the page Q36's tail is in the left column and Q39's options in the right, and they are assigned accordingly. VERIFICATION: every one of the 17 questions had its label-to-text order confirmed by two independent reads -- the page image and the PDF's own OCR text layer -- and the six numeric or symbolic option blocks (Q27, Q30, Q31, Q33, Q35, Q39) by a third, a 6x crop. The two reads agree on the option order of all 17. Pages carry printed numbers 9, 11, 13 -- consecutive PDF indices map to odd printed pages only, so this PDF holds the English half of the bilingual booklet with the Hindi versos removed; that is expected, not a gap. No question in this band is missing an option, and every question has exactly four."
+  },
+  "questions": [
+    {
+      "number": 23,
+      "stem": "A protein is synthesized in the endoplasmic reticulum bound ribosomes and it targets to the inner thylakoid space of chloroplast. How many double-layered membrane layers it has to pass to reach its destination?",
+      "options": [
+        { "label": "A", "text": "2" },
+        { "label": "B", "text": "3" },
+        { "label": "C", "text": "4" },
+        { "label": "D", "text": "5" }
+      ],
+      "subject": "Biology",
+      "chapter": "Cell Biology",
+      "subtopic": "Cell Organelles and Functions",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 24,
+      "stem": "Which of the following causes adiabatic temperature changes in atmosphere?",
+      "options": [
+        { "label": "A", "text": "Deflection and advection" },
+        { "label": "B", "text": "Latent heat of condensation" },
+        { "label": "C", "text": "Expansion and compression of the air" },
+        { "label": "D", "text": "Partial absorption of solar radiation by the atmosphere" }
+      ],
+      "subject": "Geography",
+      "chapter": "Climatology, Atmosphere and Weather",
+      "subtopic": "Insolation, Temperature and Solar Geometry",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 25,
+      "stem": "Which one of the following is applicable to collision-coalescence process of precipitation?",
+      "options": [
+        { "label": "A", "text": "Clouds which do not extend beyond the freezing level" },
+        { "label": "B", "text": "Clouds which extend beyond the freezing level" },
+        { "label": "C", "text": "All types of clouds" },
+        { "label": "D", "text": "Cirrocumulus cloud" }
+      ],
+      "subject": "Geography",
+      "chapter": "Climatology, Atmosphere and Weather",
+      "subtopic": "Humidity, Condensation, Clouds and Precipitation",
+      "difficulty": "MODERATE",
+      "flags": [
+        "A faint mark sits after 'collision-coalescence' on the page and the PDF's OCR layer reads it as a full stop ('collision-coalescence. process'). Inspected at 9x: it is a light grey speck below the baseline, markedly fainter than the genuine full stop after the question number and unlike the question mark's dot. Transcribed as a scan artefact, i.e. no period, with the justified word spacing accounting for the gap."
+      ]
+    },
+    {
+      "number": 26,
+      "stem": "Which one of the following places of India experiences highest atmospheric pressure during winter?",
+      "options": [
+        { "label": "A", "text": "Jaisalmer" },
+        { "label": "B", "text": "Leh" },
+        { "label": "C", "text": "Chennai" },
+        { "label": "D", "text": "Guwahati" }
+      ],
+      "subject": "Geography",
+      "chapter": "Climatology, Atmosphere and Weather",
+      "subtopic": "Atmospheric Pressure and Winds",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 27,
+      "stem": "Match List-I with List-II and select the correct answer using the code given below the Lists :\n\n| List-I (Hypothesis/Theory) | List-II (Propounder) |\n|---|---|\n| A. Planetesimal hypothesis | 1. Kober |\n| B. Thermal contraction theory | 2. Chamberlin |\n| C. Geosynclinal Orogen theory | 3. Daly |\n| D. Hypothesis of sliding continent | 4. Jeffreys |\n\nCode :",
+      "options": [
+        { "label": "A", "text": "A-2, B-4, C-1, D-3" },
+        { "label": "B", "text": "A-2, B-1, C-4, D-3" },
+        { "label": "C", "text": "A-3, B-1, C-4, D-2" },
+        { "label": "D", "text": "A-3, B-4, C-1, D-2" }
+      ],
+      "subject": "Geography",
+      "chapter": "Earth's Structure, Landforms and Geological Time",
+      "subtopic": "Earth's Interior, Crust and Plate Tectonics",
+      "difficulty": "HARD",
+      "flags": [
+        "Code block re-read from a 6x crop and independently cross-checked against the PDF OCR layer; both give (a) 2-4-1-3, (b) 2-1-4-3, (c) 3-1-4-2, (d) 3-4-1-2.",
+        "Q35 on p06 prints the SAME four code rows as this question but with (a) and (c) transposed. Do not copy one block onto the other -- see bandReport."
+      ]
+    },
+    {
+      "number": 28,
+      "stem": "Bright light is found to emit from photographer's flashgun. This brightness is due to the presence of which one of the following noble gases?",
+      "options": [
+        { "label": "A", "text": "Argon" },
+        { "label": "B", "text": "Xenon" },
+        { "label": "C", "text": "Neon" },
+        { "label": "D", "text": "Helium" }
+      ],
+      "subject": "Chemistry",
+      "chapter": "Chemistry in Everyday Life",
+      "subtopic": "Common Chemicals and Their Uses",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 29,
+      "stem": "Which one of the following is **not** a characteristic of a compound?",
+      "options": [
+        { "label": "A", "text": "Composition is variable." },
+        { "label": "B", "text": "All particles of compound are of only one type." },
+        { "label": "C", "text": "Particles of compound have two or more elements." },
+        { "label": "D", "text": "Its constituents cannot be separated by simple physical methods." }
+      ],
+      "subject": "Chemistry",
+      "chapter": "Matter and Its States",
+      "subtopic": "Compounds, Mixtures and Solutions",
+      "difficulty": "EASY",
+      "flags": [
+        "The four options are printed with terminating full stops; transcribed as printed."
+      ]
+    },
+    {
+      "number": 30,
+      "stem": "Which of the following substances cause temporary hardness in water?\n\n1. \\(\\mathrm{Mg(HCO_3)_2}\\)\n2. \\(\\mathrm{Ca(HCO_3)_2}\\)\n3. \\(\\mathrm{CaCl_2}\\)\n4. \\(\\mathrm{MgSO_4}\\)\n\nSelect the correct answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "3 and 4" },
+        { "label": "B", "text": "2 and 3" },
+        { "label": "C", "text": "1 and 4" },
+        { "label": "D", "text": "1 and 2" }
+      ],
+      "subject": "Chemistry",
+      "chapter": "Hydrogen and Water",
+      "subtopic": "Hardness and Purity of Water",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Subscripts confirmed from a 6x crop; the PDF OCR layer flattens them (it reads 'Mg(HC03)2', 'MgS04') and was not relied on for these formulas."
+      ]
+    },
+    {
+      "number": 31,
+      "stem": "Which one of the following elements will be an isobar of calcium if the atomic number of calcium is 20 and its mass number is 40?",
+      "options": [
+        { "label": "A", "text": "Element with 20 protons and 18 neutrons" },
+        { "label": "B", "text": "Element with 18 protons and 19 neutrons" },
+        { "label": "C", "text": "Element with 20 protons and 19 neutrons" },
+        { "label": "D", "text": "Element with 18 protons and 22 neutrons" }
+      ],
+      "subject": "Chemistry",
+      "chapter": "Atomic Structure and Periodic Classification",
+      "subtopic": "Atomic Number, Mass Number and Subatomic Particles",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Proton/neutron counts confirmed from a 6x crop. The PDF OCR layer reflows this option block badly (it emits option (d) as '2 2 neutrons / 18 protons', reversing the printed order) and was not relied on."
+      ]
+    },
+    {
+      "number": 32,
+      "stem": "Which of the following represents a relation for 'heat lost = heat gained'?",
+      "options": [
+        { "label": "A", "text": "Principle of thermal equilibrium" },
+        { "label": "B", "text": "Principle of colors" },
+        { "label": "C", "text": "Principle of calorimetry" },
+        { "label": "D", "text": "Principle of vaporization" }
+      ],
+      "subject": "Physics",
+      "chapter": "Heat and Thermodynamics",
+      "subtopic": "Heat, Calorimetry and Specific Heat",
+      "difficulty": "EASY",
+      "flags": [
+        "The page sets the quoted phrase with a raised-comma opening mark and a closing single quote; transcribed with straight single quotes."
+      ]
+    },
+    {
+      "number": 33,
+      "stem": "Two metallic wires made from copper have same length but the radius of wire 1 is half of that of wire 2. The resistance of wire 1 is \\(R\\). If both the wires are joined together in series, the total resistance becomes",
+      "options": [
+        { "label": "A", "text": "\\(2R\\)" },
+        { "label": "B", "text": "\\(\\frac{R}{2}\\)" },
+        { "label": "C", "text": "\\(\\frac{5}{4}R\\)" },
+        { "label": "D", "text": "\\(\\frac{3}{4}R\\)" }
+      ],
+      "subject": "Physics",
+      "chapter": "Electricity and Magnetism",
+      "subtopic": "Combination of Resistors",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Fractions confirmed from a 6x crop; the PDF OCR layer loses them entirely (it emits '2R / R 2 / 4' with no association to labels) and was not relied on."
+      ]
+    },
+    {
+      "number": 34,
+      "stem": "When the Sun is near the horizon during the morning or evening, it appears reddish. The phenomenon that is responsible for this observation is",
+      "options": [
+        { "label": "A", "text": "reflection of light" },
+        { "label": "B", "text": "refraction of light" },
+        { "label": "C", "text": "dispersion of light" },
+        { "label": "D", "text": "scattering of light" }
+      ],
+      "subject": "Physics",
+      "chapter": "Light and Optics",
+      "subtopic": "Light Phenomena and Spectrum",
+      "difficulty": "EASY",
+      "flags": [
+        "The four options are printed in lower case, unlike most option blocks in this paper; transcribed as printed."
+      ]
+    },
+    {
+      "number": 35,
+      "stem": "Match List-I with List-II and select the correct answer using the code given below the Lists :\n\n| List-I (Cloud) | List-II (Characteristic) |\n|---|---|\n| A. Cirrus | 1. Rain-giving |\n| B. Stratus | 2. Feathery appearance |\n| C. Nimbus | 3. Vertically growing |\n| D. Cumulus | 4. Horizontally spreading |\n\nCode :",
+      "options": [
+        { "label": "A", "text": "A-3, B-1, C-4, D-2" },
+        { "label": "B", "text": "A-2, B-1, C-4, D-3" },
+        { "label": "C", "text": "A-2, B-4, C-1, D-3" },
+        { "label": "D", "text": "A-3, B-4, C-1, D-2" }
+      ],
+      "subject": "Geography",
+      "chapter": "Climatology, Atmosphere and Weather",
+      "subtopic": "Humidity, Condensation, Clouds and Precipitation",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Code block re-read from a 6x crop and independently cross-checked against the PDF OCR layer; both give (a) 3-1-4-2, (b) 2-1-4-3, (c) 2-4-1-3, (d) 3-4-1-2.",
+        "Q27 on p04 prints the SAME four code rows as this question but with (a) and (c) transposed. Do not copy one block onto the other -- see bandReport.",
+        "The page prints the 'Code' line with a semicolon-like mark in the OCR layer ('Code ;'); the image shows the usual colon and it is transcribed as 'Code :'."
+      ]
+    },
+    {
+      "number": 36,
+      "stem": "Which one of the following is **not** an exclusive right of the concerned coastal nations over Exclusive Economic Zone (EEZ)?",
+      "options": [
+        { "label": "A", "text": "Survey and exploitation of mineral resources of ocean deposits" },
+        { "label": "B", "text": "Exploitation of marine water energy and marine organisms including fishing" },
+        { "label": "C", "text": "Conservation and management of marine resources" },
+        { "label": "D", "text": "Navigation of ships and laying down submarine cables" }
+      ],
+      "subject": "Polity",
+      "chapter": "World Polity, Democracy and International Relations",
+      "subtopic": "United Nations and Global Institutions",
+      "difficulty": "MODERATE",
+      "flags": [
+        "catalog-gap: no chapter or subtopic covers the law of the sea / UNCLOS maritime zones (EEZ, territorial waters, contiguous zone, continental shelf). This question tests which right is reserved to a coastal state versus which is a high-seas freedom open to all states -- an international-law fact, not a physical-oceanography one -- so Geography > Oceanography (whose subtopics are all physical: currents, tides, sea-floor, coral) does not fit either. Filed under the closest available home, Polity > World Polity ... > United Nations and Global Institutions, since UNCLOS is a UN convention."
+      ]
+    },
+    {
+      "number": 37,
+      "stem": "In which one of the following groups of States in India is the Integrated Coastal Zone Management (ICZM) Project being implemented as a pilot investment?",
+      "options": [
+        { "label": "A", "text": "Gujarat, Kerala and Goa" },
+        { "label": "B", "text": "Kerala, Karnataka and Andhra Pradesh" },
+        { "label": "C", "text": "Gujarat, Odisha and West Bengal" },
+        { "label": "D", "text": "Maharashtra, Andhra Pradesh and Tamil Nadu" }
+      ],
+      "subject": "Geography",
+      "chapter": "Indian Geography — Economy, Resources and Transport",
+      "subtopic": "Economic Sectors and Government Schemes",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 38,
+      "stem": "Which of the following statements about the National Water Academy (NWA) is/are correct?\n\n1. The primary objective of the NWA is to function as Centre of Excellence in training for in-service engineers from Central and State organizations on various aspects of water resource planning.\n2. The NWA is located in New Delhi.\n\nSelect the correct answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Polity",
+      "chapter": "Government Structure — Parliament, Judiciary and Constitutional Bodies",
+      "subtopic": "Government Departments and Schemes",
+      "difficulty": "HARD",
+      "flags": [
+        "Statement 1 breaks across lines as 'organiza-' / 'tions'; that is a justification hyphen, not printed punctuation, and is rejoined to 'organizations'."
+      ]
+    },
+    {
+      "number": 39,
+      "stem": "A wire of copper having length \\(l\\) and area of cross-section \\(A\\) is taken and a current \\(I\\) is flown through it. The power dissipated in the wire is \\(P\\). If we take an aluminium wire having same dimensions and pass the same current through it, the power dissipated will be",
+      "options": [
+        { "label": "A", "text": "\\(P\\)" },
+        { "label": "B", "text": "\\(< P\\)" },
+        { "label": "C", "text": "\\(> P\\)" },
+        { "label": "D", "text": "\\(2P\\)" }
+      ],
+      "subject": "Physics",
+      "chapter": "Electricity and Magnetism",
+      "subtopic": "Resistance and Resistivity",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Symbols confirmed from a 6x crop: the length is an italic lower-case l and the current an italic upper-case I, which are near-identical in this typeface. Options (b) and (c) are bare inequalities as printed ('< P', '> P'), not full expressions."
+      ]
+    }
+  ]
+}
