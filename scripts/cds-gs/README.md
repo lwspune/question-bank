@@ -17,8 +17,8 @@ and merged but not yet derived. Nothing is PUBLIC.**
 **Four independent measurements, stable to within 1.7 points, and HIGH is 343/343 across
 all of them** — every single disagreement in every paper sits in MED or LOW. The confidence
 field is a reliable router for review effort. What this still does NOT measure is correlated
-error; see "What the pilot measured" below, which stands unchanged. Publishing is a separate, deliberate decision;
-read "What the pilot measured" before taking it.
+error; see "What the pilot measured" below, which stands unchanged. Publishing is a
+separate, deliberate decision — read that section before taking it.
 
 ## Why this is not the `scripts/cds` pipeline
 
