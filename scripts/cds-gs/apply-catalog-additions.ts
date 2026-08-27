@@ -231,6 +231,15 @@ const ADDITIONS_ROUND2: Addition[] = [
   // Chola mural — an asymmetry that stranded AJANTA, which is both the canonical
   // Indian painting site and ANCIENT. Adding it to Ancient India too; the period
   // axis is the chapter, so the same subtopic belongs in both.
+  // SECOND instance of the same mistake, caught the same way. Round 2 put
+  // `Religious and Philosophical Schools` under MEDIEVAL India only, so a band
+  // transcribing a 7th-8th century Mimamsa philosopher had to file him as
+  // MEDIEVAL purely to reach the subtopic — distorting the period axis to reach a
+  // topic. A topic subtopic that is not period-specific belongs in every period
+  // chapter it can occur in; adding one to a single chapter silently forces
+  // mis-dating. Same fix as Art/Painting below.
+  { subject: "History", chapter: "Ancient India", subtopics: ["Religious and Philosophical Schools"],
+    why: "2022-2 Q37 (Kumarila Bhatta and Prabhakara, the 7th-8th c. Mimamsa thinkers) was filed under Medieval India solely because Ancient India had no philosophy-schools subtopic. The chapter was wrong; only the subtopic was missing." },
   { subject: "History", chapter: "Ancient India", subtopics: ["Art, Painting and Sculpture"],
     why: "2025-2 Q62 (Ajanta cave paintings — yakshas/apsaras, the 'multiple perspectives' technique) was stranded in Temple and Rock-Cut Architecture: Ajanta IS a rock-cut site, but the question tests its PAINTING, not its architecture." },
   { subject: "History", chapter: "Ancient India", subtopics: ["Prehistory, Stone Age and Rock Art"],
