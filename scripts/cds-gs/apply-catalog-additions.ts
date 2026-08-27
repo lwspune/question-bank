@@ -366,6 +366,25 @@ const ADDITIONS_ROUND2: Addition[] = [
  * before believing a count — an inflated count makes a modest gap look like an
  * emergency, and would have justified re-filing rows that are correctly filed.
  *
+ * WHEN TO APPLY: AN ADDITION AND A RENAME HAVE DIFFERENT ECONOMICS, and round 2's
+ * blanket rule ("applying it re-files 5 papers now vs 19 later, so sooner is
+ * cheaper") is only half right. It holds for an ADDITION, whose whole value is
+ * preventing FUTURE mis-filing: every paper transcribed before the addition lands
+ * is a paper that had to park content somewhere approximate, so an addition is
+ * strictly cheaper the earlier it goes in.
+ *
+ * It does NOT hold for a RENAME or a re-file, which only corrects filing that has
+ * ALREADY happened. That cost is per-QUESTION, not per-paper, so it is identical
+ * whenever it is paid — eleven rows cost the same to move today or after the
+ * nineteenth paper. A rename can therefore wait for one consolidated pass at the
+ * end, where it is done once against a settled corpus rather than repeatedly
+ * against a moving one.
+ *
+ * Hence the split for round 3: apply the ADDITIONS as soon as no agent is mid-flight
+ * (a catalog change under a running transcriber invalidates its validation), and
+ * defer the `Civilian Awards, Honours and Educational Institutions` rename plus its
+ * three institution re-files to a single end-of-run pass.
+ *
  * Individual gaps:
  *   - Indian TRIBES and ethnic communities (2023-1 Q35, Bhil/Gond/Ahom/Adi).
  *     Parked in `Population, Census and Urbanisation`. The near-misses are worse:
