@@ -1,0 +1,312 @@
+{
+  "band": "b5",
+  "pages": [18, 19, 20, 21],
+  "bandReport": {
+    "numbersFound": [81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Pages map to printed pages 37 (idx 18), 39 (idx 19), 41 (idx 20), 43 (idx 21) - only odd printed pages are present, i.e. the English side. Item 81 opens at the top of idx 18 and item 100 is whole at the foot of idx 21 c2, so neither band edge is cut. No item spills past my pages. Idx 21 is the last content page of Paper I and item 100 is the last item; the footer there still prints '[ P.T.O.' even though the paper ends, which is a booklet quirk, not a missing page. COLUMN CROPS: all eight crops split cleanly on the gutter; no line is sliced and no item number is missing from the top of any c2. One caveat - on idx 21 the gutter was detected at x=879 of a 1684px page (about 37px right of centre), so p21-c1.png is wider than its siblings and also catches the centred page number '43'; no c2 text was pulled into it and nothing was lost, so I read that page from the columns as normal (cross-checked against p21.png). Show-through of the Hindi reverse side is visible as faint ghosting on idx 19, 20 and 21 but never obscures the English text. TRANSCRIPTION CHOICES: (1) Item 84 prints genuine bold column headers ('Aircraft type' / 'Description'), so it is rendered as a GFM pipe table; item 96 is also a pairs list but prints NO column headers, so it is kept as roman-numeral lines with the printed colon rather than inventing header text for a table. (2) Item 84 III prints 'C-17 Globe-master III' hyphenated across a line break; transcribed as the whole word 'C-17 Globemaster III'. (3) Item 97 statement III reads 'Strengthening Multiculturalism for Just Global Development and Security' - I checked the word at both column and full-page zoom and it is printed 'Multiculturalism', so that is what is transcribed; recorded here only so a later reader does not mistake it for an OCR slip of mine. (4) Typographic quotes and apostrophes are normalised to ASCII and the en dashes in the item 99 scores to hyphens; no words changed. (5) The booklet's space-before-colon style ('statements :', 'Statement I :') is preserved as printed. SOFT SUBTOPICS not in catalog.json, flagged for possible extension: 'Rare Earth Elements' (item 81, under Chemistry > Inorganic Chemistry: Metals and Minerals - the listed subtopics there cover extraction, batteries and metallurgy impacts, none of which is what the item asks), 'Cloud Seeding' (item 85, under Chemistry > Atmospheric Chemistry and Environmental Pollution), and 'Lokpal and Lokayuktas' (item 98, under Polity and Governance > Constitutional and Statutory Bodies - Lokpal is a statutory body but not a commission, so 'Special Commissions' would be wrong). No question in this band contains mathematics, so there are no LaTeX zones. No duplicated option text and no defective item found."
+  },
+  "questions": [
+    {
+      "number": 81,
+      "stem": "Consider the following statements :\nStatement I :\nSome rare earth elements are used in the manufacture of flat television screens and computer monitors.\nStatement II :\nSome rare earth elements have phosphorescent properties.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        { "label": "A", "text": "Both Statement I and Statement II are correct and Statement II explains Statement I" },
+        { "label": "B", "text": "Both Statement I and Statement II are correct but Statement II does not explain Statement I" },
+        { "label": "C", "text": "Statement I is correct but Statement II is not correct" },
+        { "label": "D", "text": "Statement I is not correct but Statement II is correct" }
+      ],
+      "subject": "Chemistry",
+      "chapter": "Inorganic Chemistry: Metals and Minerals",
+      "subtopic": "Rare Earth Elements",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 82,
+      "stem": "Consider the following statements :\nI. Indian Railways have prepared a National Rail Plan (NRP) to create a 'future ready' railway system by 2028.\nII. 'Kavach' is an Automatic Train Protection system developed in collaboration with Germany.\nIII. 'Kavach' system consists of RFID tags fitted on track in station section.\nWhich of the statements given above are not correct?",
+      "options": [
+        { "label": "A", "text": "I and II only" },
+        { "label": "B", "text": "II and III only" },
+        { "label": "C", "text": "I and III only" },
+        { "label": "D", "text": "I, II and III" }
+      ],
+      "subject": "Current Affairs and IR",
+      "chapter": "Government Schemes and Programmes",
+      "subtopic": "Infrastructure and Digital Missions",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 83,
+      "stem": "Consider the following space missions :\nI. Axiom-4\nII. SpaDeX\nIII. Gaganyaan\nHow many of the space missions given above encourage and support micro-gravity research?",
+      "options": [
+        { "label": "A", "text": "Only one" },
+        { "label": "B", "text": "Only two" },
+        { "label": "C", "text": "All the three" },
+        { "label": "D", "text": "None" }
+      ],
+      "subject": "Current Affairs and IR",
+      "chapter": "Science, Technology and Space in the News",
+      "subtopic": "Space Missions and Programmes",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 84,
+      "stem": "With reference to India's defence, consider the following pairs :\n\n| Aircraft type | Description |\n|---|---|\n| I. Dornier-228 | Maritime patrol aircraft |\n| II. IL-76 | Supersonic combat aircraft |\n| III. C-17 Globemaster III | Military transport aircraft |\n\nHow many of the pairs given above are correctly matched?",
+      "options": [
+        { "label": "A", "text": "Only one" },
+        { "label": "B", "text": "Only two" },
+        { "label": "C", "text": "All the three" },
+        { "label": "D", "text": "None" }
+      ],
+      "subject": "Current Affairs and IR",
+      "chapter": "Defence and Internal Security",
+      "subtopic": "Defence Equipment and Missiles",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 85,
+      "stem": "Artificial way of causing rainfall to reduce air pollution makes use of",
+      "options": [
+        { "label": "A", "text": "silver iodide and potassium iodide" },
+        { "label": "B", "text": "silver nitrate and potassium iodide" },
+        { "label": "C", "text": "silver iodide and potassium nitrate" },
+        { "label": "D", "text": "silver nitrate and potassium chloride" }
+      ],
+      "subject": "Chemistry",
+      "chapter": "Atmospheric Chemistry and Environmental Pollution",
+      "subtopic": "Cloud Seeding",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 86,
+      "stem": "Consider the following statements with regard to pardoning power of the President of India :\nI. The exercise of this power by the President can be subjected to limited judicial review.\nII. The President can exercise this power without the advice of the Central Government.\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "subject": "Polity and Governance",
+      "chapter": "The Union Executive",
+      "subtopic": "The President of India",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 87,
+      "stem": "Consider the following statements :\nI. On the dissolution of the House of the People, the Speaker shall not vacate his/her office until immediately before the first meeting of the House of the People after the dissolution.\nII. According to the provisions of the Constitution of India, a Member of the House of the People on being elected as Speaker shall resign from his/her political party immediately.\nIII. The Speaker of the House of the People may be removed from his/her office by a resolution of the House of the People passed by a majority of all the then Members of the House, provided that no resolution shall be moved unless at least fourteen days' notice has been given of the intention to move the resolution.\nWhich of the statements given above are correct?",
+      "options": [
+        { "label": "A", "text": "I and II only" },
+        { "label": "B", "text": "II and III only" },
+        { "label": "C", "text": "I and III only" },
+        { "label": "D", "text": "I, II and III" }
+      ],
+      "subject": "Polity and Governance",
+      "chapter": "The Union Legislature (Parliament)",
+      "subtopic": "Officers of the House",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 88,
+      "stem": "Consider the following statements :\nI. If any question arises as to whether a Member of the House of the People has become subject to disqualification under the 10th Schedule, the President's decision in accordance with the opinion of the Council of Union Ministers shall be final.\nII. There is no mention of the word 'political party' in the Constitution of India.\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "subject": "Polity and Governance",
+      "chapter": "The Union Legislature (Parliament)",
+      "subtopic": "Parliamentary Procedures",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 89,
+      "stem": "Consider the following statements :\nStatement I :\nIn India, State Governments have no power for making rules for grant of concessions in respect of extraction of minor minerals even though such minerals are located in their territories.\nStatement II :\nIn India, the Central Government has the power to notify minor minerals under the relevant law.\nWhich one of the following is correct in respect of the above statements?",
+      "options": [
+        { "label": "A", "text": "Both Statement I and Statement II are correct and Statement II explains Statement I" },
+        { "label": "B", "text": "Both Statement I and Statement II are correct but Statement II does not explain Statement I" },
+        { "label": "C", "text": "Statement I is correct but Statement II is not correct" },
+        { "label": "D", "text": "Statement I is not correct but Statement II is correct" }
+      ],
+      "subject": "Polity and Governance",
+      "chapter": "Centre-State Relations and Federalism",
+      "subtopic": "Federal Features",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 90,
+      "stem": "Which organization has enacted the Nature Restoration Law (NRL) to tackle climate change and biodiversity loss?",
+      "options": [
+        { "label": "A", "text": "The European Union" },
+        { "label": "B", "text": "The World Bank" },
+        { "label": "C", "text": "The Organization for Economic Cooperation and Development" },
+        { "label": "D", "text": "The Food and Agriculture Organization" }
+      ],
+      "subject": "Environment and Ecology",
+      "chapter": "Environmental Governance and Legislation",
+      "subtopic": "Environmental Laws and Rules",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 91,
+      "stem": "Consider the following statements :\nI. Panchayats at the intermediate level exist in all States.\nII. To be eligible to be a Member of a Panchayat at the intermediate level, a person should attain the age of thirty years.\nIII. The Chief Minister of a State constitutes a commission to review the financial position of Panchayats at the intermediate levels and to make recommendations regarding the distribution of net proceeds of taxes and duties, leviable by the State, between the State and Panchayats at the intermediate level.\nWhich of the statements given above are not correct?",
+      "options": [
+        { "label": "A", "text": "I and II only" },
+        { "label": "B", "text": "II and III only" },
+        { "label": "C", "text": "I and III only" },
+        { "label": "D", "text": "I, II and III" }
+      ],
+      "subject": "Polity and Governance",
+      "chapter": "Local Government and Administration",
+      "subtopic": "Panchayati Raj",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 92,
+      "stem": "Consider the following statements in respect of BIMSTEC :\nI. It is a regional organization consisting of seven member States till January 2025.\nII. It came into existence with the signing of the Dhaka Declaration, 1999.\nIII. Bangladesh, India, Sri Lanka, Thailand and Nepal are founding member States of BIMSTEC.\nIV. In BIMSTEC, the subsector of 'tourism' is being led by India.\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I and II" },
+        { "label": "B", "text": "II and III" },
+        { "label": "C", "text": "I and IV" },
+        { "label": "D", "text": "I only" }
+      ],
+      "subject": "Current Affairs and IR",
+      "chapter": "International Organizations and Groupings",
+      "subtopic": "SAARC, BIMSTEC and Neighbourhood Groupings",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 93,
+      "stem": "Who amongst the following are members of the Jury to select the recipient of 'Gandhi Peace Prize'?\nI. The President of India\nII. The Prime Minister of India\nIII. The Chief Justice of India\nIV. The Leader of Opposition in the Lok Sabha\nSelect the correct answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "II and IV only" },
+        { "label": "B", "text": "I, II and III" },
+        { "label": "C", "text": "II, III and IV" },
+        { "label": "D", "text": "I and III only" }
+      ],
+      "subject": "Current Affairs and IR",
+      "chapter": "Awards, Honours and Sports",
+      "subtopic": "National and International Awards",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 94,
+      "stem": "GPS-Aided Geo Augmented Navigation (GAGAN) uses a system of ground stations to provide necessary augmentation. Which of the following statements is/are correct in respect of GAGAN?\nI. It is designed to provide additional accuracy and integrity.\nII. It will allow more uniform and high quality air traffic management.\nIII. It will provide benefits only in aviation but not in other modes of transportation.\nSelect the correct answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "I, II and III" },
+        { "label": "B", "text": "II and III only" },
+        { "label": "C", "text": "I only" },
+        { "label": "D", "text": "I and II only" }
+      ],
+      "subject": "Physics",
+      "chapter": "Communication and Information Technology",
+      "subtopic": "Satellite Navigation",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 95,
+      "stem": "Consider the following statements regarding AI Action Summit held in Grand Palais, Paris in February 2025 :\nI. Co-chaired with India, the event builds on the advances made at the Bletchley Park Summit held in 2023 and the Seoul Summit held in 2024.\nII. Along with other countries, US and UK also signed the declaration on inclusive and sustainable AI.\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "subject": "Current Affairs and IR",
+      "chapter": "Persons, Places and Events in the News",
+      "subtopic": "Summits and Conferences",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 96,
+      "stem": "Consider the following pairs :\nI. International Year of the Woman Farmer : 2026\nII. International Year of Sustainable and Resilient Tourism : 2027\nIII. International Year of Peace and Trust : 2025\nIV. International Year of Asteroid Awareness and Planetary Defence : 2029\nHow many of the pairs given above are correctly matched?",
+      "options": [
+        { "label": "A", "text": "Only one" },
+        { "label": "B", "text": "Only two" },
+        { "label": "C", "text": "Only three" },
+        { "label": "D", "text": "All the four" }
+      ],
+      "subject": "Current Affairs and IR",
+      "chapter": "International Organizations and Groupings",
+      "subtopic": "United Nations and its Agencies",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 97,
+      "stem": "Consider the following statements with regard to BRICS :\nI. 16th BRICS Summit was held under the Chairship of Russia in Kazan.\nII. Indonesia has become a full member of BRICS.\nIII. The theme of the 16th BRICS Summit was Strengthening Multiculturalism for Just Global Development and Security.\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I and II" },
+        { "label": "B", "text": "II and III" },
+        { "label": "C", "text": "I and III" },
+        { "label": "D", "text": "I only" }
+      ],
+      "subject": "Current Affairs and IR",
+      "chapter": "International Organizations and Groupings",
+      "subtopic": "BRICS, SCO and Emerging Blocs",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 98,
+      "stem": "Consider the following statements about Lokpal :\nI. The power of Lokpal applies to public servants of India, but not to the Indian public servants posted outside India.\nII. The Chairperson or a Member shall not be a Member of the Parliament or a Member of the Legislature of any State or Union Territory, and only the Chief Justice of India, whether incumbent or retired, has to be its Chairperson.\nIII. The Chairperson or a Member shall not be a person of less than forty-five years of age on the date of assuming office as the Chairperson or Member, as the case may be.\nIV. Lokpal cannot inquire into the allegations of corruption against a sitting Prime Minister of India.\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "III only" },
+        { "label": "B", "text": "II and III" },
+        { "label": "C", "text": "I and IV" },
+        { "label": "D", "text": "None of the above statements is correct" }
+      ],
+      "subject": "Polity and Governance",
+      "chapter": "Constitutional and Statutory Bodies",
+      "subtopic": "Lokpal and Lokayuktas",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 99,
+      "stem": "Consider the following statements in respect of the first Kho Kho World Cup :\nI. The event was held in Delhi, India.\nII. Indian men beat Nepal with a score of 78-40 in the final to become the World Champion in men category.\nIII. Indian women beat Nepal with a score of 54-36 in the final to become the World Champion in women category.\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II and III only" },
+        { "label": "C", "text": "I and III only" },
+        { "label": "D", "text": "I, II and III" }
+      ],
+      "subject": "Current Affairs and IR",
+      "chapter": "Awards, Honours and Sports",
+      "subtopic": "Sports Events and Achievements",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 100,
+      "stem": "Consider the following statements :\nI. In the finals of the 45th Chess Olympiad held in 2024, Gukesh Dommaraju became the world's youngest winner after defeating the Russian player Ian Nepomniachtchi.\nII. Abhimanyu Mishra, an American chess player, holds the record of becoming world's youngest ever Grandmaster.\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "I only" },
+        { "label": "B", "text": "II only" },
+        { "label": "C", "text": "Both I and II" },
+        { "label": "D", "text": "Neither I nor II" }
+      ],
+      "subject": "Current Affairs and IR",
+      "chapter": "Awards, Honours and Sports",
+      "subtopic": "Sports Events and Achievements",
+      "difficulty": "MODERATE",
+      "flags": []
+    }
+  ]
+}
