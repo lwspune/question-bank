@@ -72,7 +72,14 @@ export type Hit = { ref: string; token: string; kind: "year" | "proper-noun" };
  * rather than a name — the single biggest source of false positives.
  */
 export function ungroundedTokens(solution: string, chapterText: string): Hit[] {
-  const hay = norm(chapterText);
+  // The possessive is stripped from the CANDIDATE below, so it must be stripped
+  // from the haystack too or the two can never meet. Left asymmetric, any
+  // multi-word name whose chapter form carries a possessive is unmatchable however
+  // plainly it is printed: the chapter says "Let's Discuss", the candidate becomes
+  // "Let Discuss", and containment fails forever. Proved with a control pair by an
+  // ingestion agent — the same phrase without the possessive matched cleanly.
+  const stripPossessive = (s: string) => s.replace(/['’]s\b/g, "");
+  const hay = stripPossessive(norm(chapterText));
   const hayLower = hay.toLowerCase();
   // Strip inline math and markdown emphasis BEFORE anything is extracted. A LaTeX
   // macro is not a claim about the world: \Rightarrow inside a math zone was

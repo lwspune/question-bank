@@ -17,5 +17,12 @@
     "paths": { "@/*": ["./src/*"] }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    // Pipeline OUTPUT directories: rendered page images, text dumps, and the
+    // throwaway probes ingestion agents write beside them. They are gitignored, but
+    // tsc reads from disk regardless, so one agent's half-finished scratch file
+    // turned the whole prepush gate red for everyone else during a parallel run.
+    "scripts/**/out"
+  ]
 }

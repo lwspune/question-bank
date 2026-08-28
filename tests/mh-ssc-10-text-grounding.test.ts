@@ -138,3 +138,29 @@ describe("ungroundedTokens — LaTeX and markdown artefacts", () => {
     expect(tokens(sol)).toContain("Cavendish");
   });
 });
+
+// ── The possessive asymmetry, proved with a control by the Environmental
+//    Management ingestion agent: the candidate token has `'s` stripped but the
+//    chapter haystack does not, so any MULTI-WORD name containing a possessive can
+//    never match, however plainly it is printed.
+describe("ungroundedTokens — possessives in the haystack", () => {
+  it("matches a multi-word name whose chapter form carries a possessive", () => {
+    const chapter = "The box on page 41 is headed Let's Discuss and asks for information.";
+    const sol = "The chapter's Let's Discuss box asks the student to collect information.";
+    expect(ungroundedTokens(sol, chapter).map((h) => h.token)).not.toContain("Let Discuss");
+  });
+
+  it("matches a curly-apostrophe possessive too", () => {
+    const chapter = "Hope’s apparatus demonstrates the anomalous behaviour of water.";
+    // Mid-sentence on purpose: a sentence-INITIAL capital is a separate rule, and
+    // testing both at once would not tell us which one fired.
+    const sol = "The experiment uses Hope’s apparatus to show the effect.";
+    expect(ungroundedTokens(sol, chapter).map((h) => h.token)).not.toContain("Hope apparatus");
+  });
+
+  it("still reports a name that is genuinely absent", () => {
+    const chapter = "The box on page 41 is headed Let's Discuss.";
+    const sol = "The chapter never mentions Bishnoi's Movement anywhere.";
+    expect(ungroundedTokens(sol, chapter).map((h) => h.token)).toContain("Bishnoi Movement");
+  });
+});
