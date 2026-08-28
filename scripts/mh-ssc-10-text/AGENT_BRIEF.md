@@ -154,10 +154,22 @@ into `question_reviews` that this pass did not earn.
 
 ## 5. Answers — grounding is the whole control
 
-**The Science and humanities books print NO answer key**, so the end-of-book
-cross-check that governs the Maths books cannot run. Every answer is authored, and
-the only thing standing between us and a fluent invention is that each claim comes
-from the chapter's own prose.
+**The humanities books print NO answer key at all, and the Science books print
+almost none**, so the end-of-book cross-check that governs the Maths books cannot
+run. Every answer is authored, and the only thing standing between us and a fluent
+invention is that each claim comes from the chapter's own prose.
+
+The Science exception is small and exact, and your dispatch will say whether it
+touches your chapter. Measured across all twenty chapter dumps with
+`\bAns(wer)?[[:space:]]*[:.]`, the two volumes print **24 answers across six
+chapters** — Gravitation 7, Lenses 4, Effects of Electric Current 4, Heat 4, Space
+Missions 3, Refraction of Light 2 — and nothing in the other fourteen. Note the
+book is inconsistent about the spelling: `Ans:`, `Ans :` with a space, and
+`Answer :` all occur, which is exactly how the first census of this came out at
+nine instead of twenty-four. Where a printed answer exists: **derive it yourself
+first**, then compare, then state the agreement in the stored solution. Never put
+the printed answer in the stem, and never quietly adopt it over your own
+derivation — a disagreement is a finding worth reporting loudly.
 
 - Author strictly from `out/<id>.text.md` and the page images. If the chapter does
   not state something, **say so in the answer** rather than supplying it from general

@@ -608,14 +608,27 @@ export const CHAPTERS: Record<string, Chapter> = {
   //
   // THERE IS A PARTIAL PRINTED ANSWER KEY, and it is worth knowing exactly how partial.
   // Unlike the humanities books - which print nothing anywhere - these two print a bold
-  // "Ans: ..." under SOME numerical exercise items. Measured across all twenty chapter
-  // dumps (case-SENSITIVE; a case-insensitive scan is worthless here because "organs."
-  // matches): NINE items in the whole of both volumes - seven in Gravitation Q.5 and two
-  // in Lenses. Every other chapter prints none. So the end-of-book cross-check gate that
-  // governs the Maths books cannot run here either; those nine are a spot-check on nine
-  // rows, not a key. Where one exists it IS consulted and agreement is stated in the
-  // stored solution, because a derivation that reproduces the printed value is stronger
-  // evidence than one that does not.
+  // answer under SOME numerical exercise items. Measured across all twenty chapter dumps:
+  // TWENTY-FOUR items across SIX chapters - Gravitation 7, Lenses 4, Effects of Electric
+  // Current 4, Heat 4, Space Missions 3, Refraction of Light 2. The other fourteen
+  // chapters print none. So the end-of-book cross-check gate that governs the Maths books
+  // still cannot run here; twenty-four is a spot-check on twenty-four rows, not a key.
+  // Where one exists it IS consulted, the answer is derived FIRST, and the agreement is
+  // stated in the stored solution - a derivation that reproduces the printed value is
+  // stronger evidence than one that does not.
+  //
+  // THE COUNT ABOVE IS A CORRECTION, and how the first one was wrong is the useful part.
+  // It read NINE across TWO chapters, from a scan for `Ans[:.]`. Being case-SENSITIVE was
+  // right and is still right - a case-insensitive scan is worthless here because "organs."
+  // matches - but the pattern was rigid in two ways the book is not: this text prints
+  // `Ans :` with a SPACE before the colon in four of the six chapters, and spells it
+  // `Answer :` in Heat. The scan that holds is `\bAns(wer)?[[:space:]]*[:.]`. Two
+  // ingestion agents found the undercount independently, from different chapters, before
+  // this was corrected - and each of their own re-counts was itself short (19 and 24 by
+  // patterns that missed, respectively, the `Answer` spelling and a trailing period),
+  // which is the whole lesson: a census of a typeset feature is only as good as the
+  // variants you thought to allow for, and the cost of getting it wrong lands on the
+  // chapters you then tell "there is nothing to check against".
 
   "sci-gravitation-10": {
     id: "sci-gravitation-10",
