@@ -1,0 +1,199 @@
+{
+  "band": "b1",
+  "pages": [2, 4, 6, 8],
+  "bandReport": {
+    "numbersFound": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Band covers items 1-12 off page indices 2, 4, 6, 8 (printed pages 3, 5, 7, 9). Item 1 opens the paper, so nothing precedes it; item 12 ends complete at the foot of p08-c2 followed by '[ P.T.O.', so item 13 begins on p10 (not my pages). No number skips. Column crops were clean on all four pages (gutter detected on every one); nothing had to be read off the whole-page image, and no sliced line or misattributed option block was seen.\n\nPASSAGE MAPPING. Two directions blocks fall in this band and they are NOT 1:1 — both nest, and they nest UNEVENLY, so do not assume a fixed items-per-passage ratio for this paper.\n  Block A, 'Directions for the following 3 (three) items : Read the following two passages...' (opens p02-c1). Passage-1 (human development / fossil fuels) governs items 1 AND 2. Passage-2 (deforestation / denudation) governs item 3 ONLY. Passage-2 SPANS A PAGE BREAK: it starts in p02-c2 under the 'Passage-2' heading and finishes at the top of p04-c1 ('country including the Sutlej-Ganga Plains ... except in the rainy season.'). Both halves are joined in item 3's context.\n  Block B, 'Directions for the following 4 (four) items : Read the following two passages...' (opens p08-c1). Passage-1 (shoe-making / trained physician) governs item 11 ONLY. Passage-2 (the poverty line) governs item 12 — and, per a structural check of p10-c1, ALSO items 13 and 14, which are outside my band. So block B splits 1 + 3, not 2 + 2.\n\nHANDOFF TO THE BAND OWNING PAGE 10 (IMPORTANT): items 13 and 14 are governed by Passage-2 of block B, whose text is printed ENTIRELY ON PAGE 8 (p08-c2) and does not repeat on page 10. That band must copy that passage into the context of items 13 and 14 or those two items will ship with no passage at all. I have not transcribed items 13/14 myself (they are wholly outside my pages) to avoid a conflicting duplicate; I only read p10-c1 far enough to establish which passage governs them.\n\nCONTEXT-vs-STEM CALL. Items 3 and 11 are each governed by a passage that governs only that one item. The brief's rule of thumb ('unique to one item -> stem') would put those two passages in the stem, but the shipped sibling file 2023-p2.b1.json stores single-item passages in `context` throughout, so I followed that precedent and put every passage in `context`. This is safe here because no hash collision is possible: all five passage-bound stems in this band (1, 2, 3, 11, 12) are textually distinct from one another and from every other item, so nothing distinguishing has been parked in a hash-excluded field. Flagged so it can be cheaply overruled. No data-sufficiency items occur in this band.\n\nPRINTED DEFECTS, transcribed as printed and NOT corrected:\n  - Item 12's passage ends 'the choices people have to lead variable and valued lives.' The word is printed 'variable' (verified at 2x zoom); the source phrase is normally 'valuable'. Left as printed.\n  - The same passage prints 'the lack of real opportunity given by social constraints as well as personal circumstances-to choose other types of living' with a CLOSING em dash and no opening one. The opening dash is missing in the booklet. Left as printed.\n\nTRANSCRIPTION CONVENTIONS: typographic quotes and apostrophes in the booklet were normalised to ASCII ' and \"; em dashes were kept as em dashes because they carry sense. The rupee glyph is written as the rupee sign in item 8. Item 8 prints 'not' in bold in 'Which of the above statements are not correct?' and that emphasis is preserved as **not**, since it inverts the question. Hyphenated line-breaks in prose were rejoined ('infra-structure' -> 'infrastructure').\n\nDIGIT VERIFICATION: this scan is coarser than the earlier papers, so every numeric-critical item was re-read at 2x magnification before transcription - item 4's sequence, item 5's permitted digit set, item 6's distances, item 7's year, item 8's amounts and note counts, item 9's four powers, item 10's digit set. All confirmed; no digit in this band is ambiguous."
+  },
+  "questions": [
+    {
+      "number": 1,
+      "context": "The main threat to maintaining progress in human development comes from the increasingly evident unsustainability of production and consumption patterns. Current production models rely heavily on fossil fuels. We now know that this is unsustainable because the resources are finite. The close link between economic growth and greenhouse gas emissions needs to be severed for human development to become truly sustainable. Some developed countries have begun to alleviate the worst effects by expanding recycling and investing in public transport and infrastructure. But most developing countries are hampered by the high costs and low availability of clean energy sources. Developed countries need to support developing countries' transition to sustainable human development.",
+      "stem": "Unsustainability in production pattern is due to which of the following?\n1. Heavy dependence on fossil fuels\n2. Limited availability of resources\n3. Expansion of recycling\nSelect the correct answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "1 and 3 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Supporting and Contradicting Statements",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 2,
+      "context": "The main threat to maintaining progress in human development comes from the increasingly evident unsustainability of production and consumption patterns. Current production models rely heavily on fossil fuels. We now know that this is unsustainable because the resources are finite. The close link between economic growth and greenhouse gas emissions needs to be severed for human development to become truly sustainable. Some developed countries have begun to alleviate the worst effects by expanding recycling and investing in public transport and infrastructure. But most developing countries are hampered by the high costs and low availability of clean energy sources. Developed countries need to support developing countries' transition to sustainable human development.",
+      "stem": "Consider the following statements :\nDeveloped countries can support developing countries' transition to sustainable human development by\n1. making clean energy sources available at low cost\n2. providing loans for improving their public transport at nominal interest rates\n3. encouraging them to change their production and consumption patterns\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "1 and 2 only" },
+        { "label": "C", "text": "2 and 3 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 3,
+      "context": "Unless the forces and tendencies which are responsible for destroying the country's environment are checked in the near future and afforestation of denuded areas is taken up on a massive scale, the harshness of the climatic conditions and soil erosion by wind and water will increase to such an extent that agriculture, which is the mainstay of our people, will gradually become impossible. The desert countries of the world and our own desert areas in Rajasthan are a grim reminder of the consequences of large-scale deforestation. Pockets of desert-like landscape are now appearing in other parts of the country including the Sutlej-Ganga Plains and the Deccan Plateau. Where only a few decades back there used to be lush green forests with perennial streams and springs, there is only brown earth, bare of vegetation, without any water in the streams and springs except in the rainy season.",
+      "stem": "According to the passage given above, deforestation and denudation will ultimately lead to which of the following?\n1. Depletion of soil resource\n2. Shortage of land for the common man\n3. Lack of water for cultivation\nSelect the correct answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "2 and 3 only" },
+        { "label": "C", "text": "1 and 3 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 4,
+      "stem": "What is the value of \\(X\\) in the sequence 20, 10, 10, 15, 30, 75, \\(X\\)?",
+      "options": [
+        { "label": "A", "text": "105" },
+        { "label": "B", "text": "120" },
+        { "label": "C", "text": "150" },
+        { "label": "D", "text": "225" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Series and Analogy",
+      "subtopic": "Number Series",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 5,
+      "stem": "An Identity Card has the number ABCDEFG, not necessarily in that order, where each letter represents a distinct digit (1, 2, 4, 5, 7, 8, 9 only). The number is divisible by 9. After deleting the first digit from the right, the resulting number is divisible by 6. After deleting two digits from the right of original number, the resulting number is divisible by 5. After deleting three digits from the right of original number, the resulting number is divisible by 4. After deleting four digits from the right of original number, the resulting number is divisible by 3. After deleting five digits from the right of original number, the resulting number is divisible by 2. Which of the following is a possible value for the sum of the middle three digits of the number?",
+      "options": [
+        { "label": "A", "text": "8" },
+        { "label": "B", "text": "9" },
+        { "label": "C", "text": "11" },
+        { "label": "D", "text": "12" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 6,
+      "stem": "Two friends \\(X\\) and \\(Y\\) start running and they run together for 50 m in the same direction and reach a point. \\(X\\) turns right and runs 60 m, while \\(Y\\) turns left and runs 40 m. Then \\(X\\) turns left and runs 50 m and stops, while \\(Y\\) turns right and runs 50 m and then stops. How far are the two friends from each other now?",
+      "options": [
+        { "label": "A", "text": "100 m" },
+        { "label": "B", "text": "90 m" },
+        { "label": "C", "text": "60 m" },
+        { "label": "D", "text": "50 m" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Blood Relations and Directions",
+      "subtopic": "Directions and Distances",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 7,
+      "stem": "Which date of June 2099 among the following is Sunday?",
+      "options": [
+        { "label": "A", "text": "4" },
+        { "label": "B", "text": "5" },
+        { "label": "C", "text": "6" },
+        { "label": "D", "text": "7" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Clocks and Calendars",
+      "subtopic": "Calendars and Day Calculation",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 8,
+      "stem": "A bill for ₹1,840 is paid in the denominations of ₹50, ₹20 and ₹10 notes. 50 notes in all are used. Consider the following statements :\n1. 25 notes of ₹50 are used and the remaining are in the denominations of ₹20 and ₹10.\n2. 35 notes of ₹20 are used and the remaining are in the denominations of ₹50 and ₹10.\n3. 20 notes of ₹10 are used and the remaining are in the denominations of ₹50 and ₹20.\nWhich of the above statements are **not** correct?",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "2 and 3 only" },
+        { "label": "C", "text": "1 and 3 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Algebra and Equations",
+      "subtopic": "Linear and Quadratic Equations",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 9,
+      "stem": "Which number amongst \\(2^{40}\\), \\(3^{21}\\), \\(4^{18}\\) and \\(8^{12}\\) is the smallest?",
+      "options": [
+        { "label": "A", "text": "\\(2^{40}\\)" },
+        { "label": "B", "text": "\\(3^{21}\\)" },
+        { "label": "C", "text": "\\(4^{18}\\)" },
+        { "label": "D", "text": "\\(8^{12}\\)" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Comparison of Powers and Exponents",
+      "difficulty": "MODERATE",
+      "flags": [
+        "subtopic not in catalog: item compares the magnitudes of four exponentials by reducing them to a common base; nearest listed subtopic under Number System is 'Unit Digit and Powers', which is about terminal digits and does not describe this item"
+      ]
+    },
+    {
+      "number": 10,
+      "stem": "The digits 1 to 9 are arranged in three rows in such a way that each row contains three digits, and the number formed in the second row is twice the number formed in the first row; and the number formed in the third row is thrice the number formed in the first row. Repetition of digits is not allowed. If only three of the four digits 2, 3, 7 and 9 are allowed to use in the first row, how many such combinations are possible to be arranged in the three rows?",
+      "options": [
+        { "label": "A", "text": "4" },
+        { "label": "B", "text": "3" },
+        { "label": "C", "text": "2" },
+        { "label": "D", "text": "1" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Permutations and Combinations",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 11,
+      "context": "\"In simple matters like shoe-making, we think only a specially trained person will serve our purpose, but in politics, we presume that everyone who knows how to get votes knows how to administer a State. When we are ill, we call for a trained physician, whose degree is a guarantee of specific preparation and technical competence—we do not ask for the handsomest physician, or the most eloquent one : well then, when the whole State is ill should we not look for the service and guidance of the wisest and the best?\"",
+      "stem": "Which one of the following statements best reflects the message of the author of the passage?",
+      "options": [
+        { "label": "A", "text": "We assume that in a democracy, any politician is qualified to administer a State." },
+        { "label": "B", "text": "Politicians should be selected from those trained in administration." },
+        { "label": "C", "text": "We need to devise a method of barring incompetence from public office." },
+        { "label": "D", "text": "As voters select their administrators, the eligibility of politicians to administer a State cannot be questioned." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 12,
+      "context": "The poverty line is quite unsatisfactory when it comes to grasping the extent of poverty in India. It is not only because of its extremely narrow definition of 'who is poor' and the debatable methodology used to count the poor, but also because of a more fundamental assumption underlying it. It exclusively relies on the notion of poverty as insufficient income or insufficient purchasing power. One can better categorize it by calling it income poverty. If poverty is ultimately about deprivations affecting human well-being, then income poverty is only one aspect of it. Poverty of a life, in our view, lies not merely in the impoverished state in which the person actually lives, but also in the lack of real opportunity given by social constraints as well as personal circumstances—to choose other types of living. Even the relevance of low incomes, meagre possessions, and other aspects of what are standardly seen as economic poverty relate ultimately to their role in curtailing capabilities, i.e., their role in severely restricting the choices people have to lead variable and valued lives.",
+      "stem": "Why is the methodology adopted in India to count the 'poor' debatable?",
+      "options": [
+        { "label": "A", "text": "There is some confusion regarding what should constitute the 'poverty line'." },
+        { "label": "B", "text": "There are wide diversities in the condition of the rural and urban poor." },
+        { "label": "C", "text": "There is no uniform global standard for measuring income poverty." },
+        { "label": "D", "text": "It is based on the proposition of poverty as meagre income or buying capacity." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    }
+  ]
+}

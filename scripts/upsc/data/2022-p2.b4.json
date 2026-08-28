@@ -1,0 +1,211 @@
+{
+  "band": "b4",
+  "pages": [26, 28, 30, 32],
+  "bandReport": {
+    "numbersFound": [44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Items 44-56 (13 items) across printed pages 27, 29, 31, 33. Column crops p26/p28/p30/p32 c1+c2 were all clean - no slicing, no stray fragments, no missing item numbers at the top of c2; nothing had to be read off the whole-page image. PASSAGE OUTSIDE THE BAND: item 44 says 'With reference to the passage' but its passage is printed on page index 24 (printed p.25), outside this band. That page carries 'Directions for the following 4 (four) items' over TWO passages - Passage-1 (leisure/overstrain) governs items 41-42, Passage-2 (demographic dividend) governs items 43-44. Item 44's statements are both about demographic dividend and higher education, so Passage-2 is its governing passage; I read page 24 and its c2 crop and have included that passage verbatim as item 44's context. WITHIN-BAND PASSAGES: page 30 (printed p.31) carries 'Directions for the following 3 (three) items' over two passages - Passage-1 (economic organization / leisure / education) governs item 51 ONLY; Passage-2 (presents and children's joys) governs items 52 AND 53. Item 53's stem is the bare 'The author of the passage is against', which is only answerable against Passage-2, and 52 and 53 are the 2nd and 3rd of the 3 items in that block. Per the shipped convention in 2023-p2.merged.json / 2025-p2.merged.json (which both contain single-item contexts) the single-item Passage-1 is still stored in context; there is no hash-collision risk because item 51's options are unique text. Neither the 'Directions...' preamble nor the 'Passage-1 / Passage-2' label is included in any context field. DATA SUFFICIENCY: items 48, 49 and 50 share identical boilerplate ('Which one of the following is correct in respect of the Question and the Statements?') and identical option sets. Their 'Question :' and 'Statement-1 / Statement-2' lines - and, for 48 and 50, their unique scenario preambles (circular table of six persons; six one-hour lectures between 8:00 a.m. and 2:00 p.m.) - are held in the STEM, not context, so the three items cannot collide on content_hash. Item 49 has no scenario preamble on the page and none was invented. PRINTED TEXT PRESERVED AS-IS, not corrected: (1) item 46 prints the decimal point of '1.25 times the first route' as a RAISED/MIDDLE dot (U+00B7) in the Indian typographic style - transcribed verbatim as '1·25', meaning is unambiguously one point two five; (2) page 30 Passage-2's closing clause reads 'the happiness that come our way' - 'come' where 'comes' is grammatically required. This is the booklet's own text and has been left uncorrected. Apostrophes have been written as ASCII (') rather than the printed curly quotes, because 2023-p2.merged.json already carries a U+FFFD replacement character from a smart quote at that position. No LaTeX was needed anywhere in this band: every variable (P, Q, X, Y, Z, A-F, x) occurs as a bare italic letter in running prose, never in an expression, matching the shipped convention of leaving such letters plain. Booklet header on all four pages: VGYH-D-CST/46A. No item numbers skip, none is duplicated, and no question in the band is defective."
+  },
+  "questions": [
+    {
+      "number": 44,
+      "context": "The demographic dividend, which has begun in India and is expected to last another few decades, is a great window of opportunity. The demographic dividend is basically a swelling in the working age population, which conversely means that the relative ratio of very young and very old will, for a while, be on the decline. From the experience of Ireland and China, we know that this can be a source of energy and an engine of economic growth. The demographic dividend tends to raise a nation's savings rate since in any nation, it is the working age population that is the main saver. And since the savings rate is an important driver of growth, this should help elevate our growth rate. However, the benefits of demographic dividend depend on the quality of the working age population. And this implies bringing back the importance of education, acquisition of skills and human capital.",
+      "stem": "With reference to the passage, which of the following inferences can be drawn?\n1. Demographic dividend is an essential condition for a country to rapidly increase its economic growth rate.\n2. Promotion of higher education is an essential condition for a country for its rapid economic growth.\nSelect the correct answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 45,
+      "stem": "Five friends P, Q, X, Y and Z purchased some notebooks. The relevant information is given below :\n1. Z purchased 8 notebooks more than X did.\n2. P and Q together purchased 21 notebooks.\n3. Q purchased 5 notebooks less than P did.\n4. X and Y together purchased 28 notebooks.\n5. P purchased 5 notebooks more than X did.\nIf each notebook is priced ₹40, then what is the total cost of all the notebooks?",
+      "options": [
+        { "label": "A", "text": "₹2,600" },
+        { "label": "B", "text": "₹2,400" },
+        { "label": "C", "text": "₹2,360" },
+        { "label": "D", "text": "₹2,320" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Algebra and Equations",
+      "subtopic": "Linear and Quadratic Equations",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 46,
+      "stem": "A man started from home at 14:30 hours and drove to village, arriving there when the village clock indicated 15:15 hours. After staying for 25 minutes, he drove back by a different route of length 1·25 times the first route at a rate twice as fast reaching home at 16:00 hours. As compared to the clock at home, the village clock is",
+      "options": [
+        { "label": "A", "text": "10 minutes slow" },
+        { "label": "B", "text": "5 minutes slow" },
+        { "label": "C", "text": "10 minutes fast" },
+        { "label": "D", "text": "5 minutes fast" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Time, Speed and Work",
+      "subtopic": "Time, Speed and Distance",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 47,
+      "stem": "A person X wants to distribute some pens among six children A, B, C, D, E and F. Suppose A gets twice the number of pens received by B, three times that of C, four times that of D, five times that of E and six times that of F. What is the minimum number of pens X should buy so that the number of pens each one gets is an even number?",
+      "options": [
+        { "label": "A", "text": "147" },
+        { "label": "B", "text": "150" },
+        { "label": "C", "text": "294" },
+        { "label": "D", "text": "300" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Factors, Multiples, HCF and LCM",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 48,
+      "stem": "Six persons A, B, C, D, E and F are sitting equidistant from each other around a circular table (facing the centre of the table).\nConsider the Question and two Statements given below :\nQuestion : Who is sitting on the immediate left of A?\nStatement-1 : B is sitting opposite to C and D is sitting opposite to E.\nStatement-2 : F is sitting on the immediate left of B.\nWhich one of the following is correct in respect of the Question and the Statements?",
+      "options": [
+        { "label": "A", "text": "Statement-1 alone is sufficient to answer the Question" },
+        { "label": "B", "text": "Statement-2 alone is sufficient to answer the Question" },
+        { "label": "C", "text": "Both Statement-1 and Statement-2 are sufficient to answer the Question" },
+        { "label": "D", "text": "Both Statement-1 and Statement-2 are not sufficient to answer the Question" }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Sufficiency",
+      "subtopic": "Two-Statement Data Sufficiency",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 49,
+      "stem": "Consider the Question and two Statements given below :\nQuestion : What is the age of Manisha?\nStatement-1 : Manisha is 24 years younger than her mother.\nStatement-2 : 5 years later, the ages of Manisha and her mother will be in the ratio 3 : 5.\nWhich one of the following is correct in respect of the Question and the Statements?",
+      "options": [
+        { "label": "A", "text": "Statement-1 alone is sufficient to answer the Question" },
+        { "label": "B", "text": "Statement-2 alone is sufficient to answer the Question" },
+        { "label": "C", "text": "Both Statement-1 and Statement-2 are sufficient to answer the Question" },
+        { "label": "D", "text": "Both Statement-1 and Statement-2 are not sufficient to answer the Question" }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Sufficiency",
+      "subtopic": "Two-Statement Data Sufficiency",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 50,
+      "stem": "Six lectures A, B, C, D, E and F, each of one hour duration, are scheduled between 8:00 a.m. and 2:00 p.m.\nConsider the Question and two Statements given below :\nQuestion : Which lecture is in the third period?\nStatement-1 : Lecture F is preceded by A and followed by C.\nStatement-2 : There is no lecture after lecture B.\nWhich one of the following is correct in respect of the Question and the Statements?",
+      "options": [
+        { "label": "A", "text": "Statement-1 alone is sufficient to answer the Question" },
+        { "label": "B", "text": "Statement-2 alone is sufficient to answer the Question" },
+        { "label": "C", "text": "Both Statement-1 and Statement-2 are sufficient to answer the Question" },
+        { "label": "D", "text": "Both Statement-1 and Statement-2 are not sufficient to answer the Question" }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Sufficiency",
+      "subtopic": "Two-Statement Data Sufficiency",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 51,
+      "context": "In an economic organization, allowing mankind to benefit by the productivity of machines should lead to a very good life of leisure, and much leisure is apt to be tedious except to those who have intelligent activities and interests. If a leisured population is to be happy, it must be an educated population, and must be educated with a view to enjoyment as well as to the direct usefulness of technical knowledge.",
+      "stem": "Which of the following statements best reflects the underlying tone of the passage?",
+      "options": [
+        { "label": "A", "text": "Only an educated population can best make use of the benefits of economic progress." },
+        { "label": "B", "text": "All economic development should be aimed at the creation of leisure." },
+        { "label": "C", "text": "An increase in the educated population of a country leads to an increase in the happiness of its people." },
+        { "label": "D", "text": "Use of machines should be encouraged in order to create a large leisured population." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Author's Tone and Attitude",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 52,
+      "context": "If presents bring less thrill now that we are grown up, perhaps it is because we have too much already; or perhaps it is because we have lost the fullness of the joy of giving, and with it the fullness of the joy of receiving. Children's fears are poignant, their miseries are acute, but they do not look too forward nor too far backward. Their joys are clear and complete, because they have not yet learnt always to add 'but' to every proposition. Perhaps we are too cautious, too anxious, too sceptical. Perhaps some of our cares would shrink if we thought less about them and entered with more single-minded enjoyment into the happiness that come our way.",
+      "stem": "With reference to the passage, which one of the following statements is correct?",
+      "options": [
+        { "label": "A", "text": "It is not possible for adults to feel thrilled by presents." },
+        { "label": "B", "text": "There can be more than one reason why adults feel less thrilled by presents." },
+        { "label": "C", "text": "The author does not know why adults feel less thrilled by presents." },
+        { "label": "D", "text": "Adults have less capacity to feel the joy of loving or being loved." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Supporting and Contradicting Statements",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 53,
+      "context": "If presents bring less thrill now that we are grown up, perhaps it is because we have too much already; or perhaps it is because we have lost the fullness of the joy of giving, and with it the fullness of the joy of receiving. Children's fears are poignant, their miseries are acute, but they do not look too forward nor too far backward. Their joys are clear and complete, because they have not yet learnt always to add 'but' to every proposition. Perhaps we are too cautious, too anxious, too sceptical. Perhaps some of our cares would shrink if we thought less about them and entered with more single-minded enjoyment into the happiness that come our way.",
+      "stem": "The author of the passage is against",
+      "options": [
+        { "label": "A", "text": "worrying too much about the past and future" },
+        { "label": "B", "text": "being in the habit of thinking about presents" },
+        { "label": "C", "text": "not being thrilled by new things" },
+        { "label": "D", "text": "giving and receiving joy only partially" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Author's Tone and Attitude",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 54,
+      "stem": "Let A, B and C represent distinct non-zero digits. Suppose x is the sum of all possible 3-digit numbers formed by A, B and C without repetition.\nConsider the following statements :\n1. The 4-digit least value of x is 1332.\n2. The 3-digit greatest value of x is 888.\nWhich of the above statements is/are correct?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 55,
+      "stem": "There is a numeric lock which has a 3-digit PIN. The PIN contains digits 1 to 7. There is no repetition of digits. The digits in the PIN from left to right are in decreasing order. Any two digits in the PIN differ by at least 2. How many maximum attempts does one need to find out the PIN with certainty?",
+      "options": [
+        { "label": "A", "text": "6" },
+        { "label": "B", "text": "8" },
+        { "label": "C", "text": "10" },
+        { "label": "D", "text": "12" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Permutations and Combinations",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 56,
+      "stem": "There are eight equidistant points on a circle. How many right-angled triangles can be drawn using these points as vertices and taking the diameter as one side of the triangle?",
+      "options": [
+        { "label": "A", "text": "24" },
+        { "label": "B", "text": "16" },
+        { "label": "C", "text": "12" },
+        { "label": "D", "text": "8" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Counting Figures and Objects",
+      "difficulty": "MODERATE",
+      "flags": []
+    }
+  ]
+}

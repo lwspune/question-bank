@@ -120,12 +120,25 @@ for idx in pages:
         entry["gutterWidth"] = best_len
         entry["gutterFound"] = found
 
-        # Overlap a little past the gutter so a glyph sitting on the boundary is
-        # not sliced in half; a few duplicated pixels cost nothing.
-        pad = 12
+        # Overlap past the gutter so a glyph on the boundary is not sliced, and
+        # pad the two sides ASYMMETRICALLY.
+        #
+        # An item NUMBER hangs to the LEFT of its column's text, in its own
+        # narrow indent. When the detected split lands even slightly right of
+        # that indent, the right column's numbers fall into c1 and c2 opens on
+        # un-numbered stems — measured on 2022-p1, where three bands
+        # independently reported it on all their pages ("c2 opens with a bare
+        # '.'", "reads 4. for 64"). No body text is lost, but the transcriber
+        # then has to recover every right-column number from the whole page.
+        #
+        # So c2 reaches back far enough to keep its own numbers. c1's overlap
+        # stays small: widening it would pull the right column's numbers into c1
+        # too, which is the other half of the same complaint.
+        pad_c1 = 12
+        pad_c2 = 56
         page_im = Image.open(io.BytesIO(pix.tobytes("png")))
-        page_im.crop((0, 0, min(W, best_mid + pad), H)).save(f"{outdir}/p{idx:02d}-c1.png")
-        page_im.crop((max(0, best_mid - pad), 0, W, H)).save(f"{outdir}/p{idx:02d}-c2.png")
+        page_im.crop((0, 0, min(W, best_mid + pad_c1), H)).save(f"{outdir}/p{idx:02d}-c1.png")
+        page_im.crop((max(0, best_mid - pad_c2), 0, W, H)).save(f"{outdir}/p{idx:02d}-c2.png")
 
     report["pages"].append(entry)
 
