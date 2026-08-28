@@ -68,11 +68,23 @@ Write `scripts/mh-ssc-10-text/data/<id>.questions.json`, an array of:
   "context": "Answer the following questions.",  // the shared instruction, when there is one
   "setLabel": "Ex Q2",             // present when siblings share a context
   "stem": "...",
-  "options": ["...", "...", "...", "..."],  // MCQ only, exactly 4
-  "answer": "B",                            // MCQ only
-  "note": "..."                             // optional; see §6
+  // MCQ only: EXACTLY four, labelled A,B,C,D in that order. `commit.ts` throws
+  // otherwise, and a subjective row carrying options throws too.
+  "options": [
+    { "label": "A", "text": "..." }, { "label": "B", "text": "..." },
+    { "label": "C", "text": "..." }, { "label": "D", "text": "..." }
+  ],
+  "answer": "B",   // MCQ only: the derived correct letter
+  "note": "..."    // optional; see §6
 }
 ```
+
+The authoritative type is `SBQuestion` in `scripts/stateboard/lib.ts` — read it if
+anything here looks ambiguous, and trust it over this file. Two things it settles
+that are easy to get wrong: **`options` is an array of `{label, text}` objects, not
+of plain strings**, and **`note` is not part of the type at all** — it rides in the
+JSON as documentation for the next reader and never reaches the database. Anything
+a student must see belongs in the `stem` or the `solution`.
 
 Rules that have each cost a real defect:
 
