@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Archive, ArchiveRestore, Loader2, Pencil, Plus, Trash2, Users } from "lucide-react";
@@ -137,6 +138,14 @@ export default function BatchesClient({
           <p className="mt-0.5 text-xs text-muted-foreground">{examName(b.examId)}</p>
         )}
       </div>
+      <Link
+        href={`/dashboard/batches/${b.id}/roster`}
+        className="inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-sm text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        aria-label={`Open the roster for ${b.name}`}
+      >
+        <Users className="h-4 w-4" aria-hidden />
+        Roster
+      </Link>
       <Button
         variant="ghost"
         size="sm"

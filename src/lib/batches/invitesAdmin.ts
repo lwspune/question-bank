@@ -26,6 +26,41 @@ import { parseInviteEmails, inviteState, type InviteState } from "./invites";
 /** Where an invited student lands to accept or decline. */
 const INVITE_ACTION_URL = `${SITE_URL}/account`;
 
+type AuthUserLite = {
+  id: string;
+  email: string | null;
+  user_metadata: { name?: string; full_name?: string } | null;
+};
+
+/**
+ * Every auth user, PAGED.
+ *
+ * listUsers({ perPage: 1000 }) silently returns only the first page — the same
+ * shape as the PostgREST 1000-row cap this project has been bitten by five
+ * times, and it fails the same way: no error, just a short list. members/admin
+ * gets away with one page because it hydrates STAFF (7 rows). Both callers here
+ * hydrate across ALL accounts — 156 today and growing with every signup — so a
+ * single page would eventually render enrolled students as "(unknown)" and let
+ * an already-enrolled student be re-invited. Paged, like listStudents.
+ */
+async function listAllAuthUsers(admin: SupabaseClient): Promise<AuthUserLite[]> {
+  const out: AuthUserLite[] = [];
+  for (let page = 1; ; page++) {
+    const { data, error } = await admin.auth.admin.listUsers({ page, perPage: 1000 });
+    if (error) throw new Error(`listAllAuthUsers: ${error.message}`);
+    const batch = data?.users ?? [];
+    for (const u of batch) {
+      out.push({
+        id: u.id,
+        email: u.email ?? null,
+        user_metadata: (u.user_metadata as AuthUserLite["user_metadata"]) ?? null,
+      });
+    }
+    if (batch.length < 1000) break;
+  }
+  return out;
+}
+
 // ────────────────────────────────────────────────────────────────────
 // inviting
 // ────────────────────────────────────────────────────────────────────
@@ -91,11 +126,9 @@ export async function inviteToBatch(input: {
 
     // Skip anyone already on the roster — re-inviting an enrolled student would
     // ask them to consent to something they have already consented to.
-    const { data: users } = await admin.auth.admin.listUsers({ perPage: 1000 });
+    const allUsers = await listAllAuthUsers(admin);
     const idByEmail = new Map(
-      (users?.users ?? [])
-        .filter((u) => u.email)
-        .map((u) => [u.email!.toLowerCase(), u.id])
+      allUsers.filter((u) => u.email).map((u) => [u.email!.toLowerCase(), u.id])
     );
     const { data: enrolled } = await admin
       .from("batch_enrollments")
@@ -364,8 +397,7 @@ export async function loadRoster(client: SupabaseClient, batchId: string): Promi
   }
 
   const admin = createSupabaseAdminClient();
-  const { data: users } = await admin.auth.admin.listUsers({ perPage: 1000 });
-  const byId = new Map((users?.users ?? []).map((u) => [u.id, u]));
+  const byId = new Map((await listAllAuthUsers(admin)).map((u) => [u.id, u]));
 
   const students = enrollments.map((e) => {
     const u = byId.get(e.user_id);
@@ -405,4 +437,55 @@ export async function revokeInvite(
     .update({ status: "revoked", responded_at: new Date().toISOString() })
     .eq("id", inviteId);
   return error ? { kind: "error", message: error.message } : { kind: "ok" };
+}
+
+export type MyBatch = {
+  batchId: string;
+  batchName: string;
+  orgName: string;
+  joinedAt: string;
+};
+
+/**
+ * The batches a student is enrolled in, for /account.
+ *
+ * Service-role by necessity, not convenience: a student CAN read their own
+ * batch_enrollments rows (0083), but batches_select_scoped (0057) requires an
+ * org id and a student has none — so through RLS they can see that they belong
+ * to some uuid and never what it is called. Hydrating the names here is the
+ * only way the card can say who they are enrolled with.
+ *
+ * Scoped to one user id, which the caller takes from the session.
+ */
+export async function listMyBatches(userId: string): Promise<MyBatch[]> {
+  const admin = createSupabaseAdminClient();
+  const { data, error } = await admin
+    .from("batch_enrollments")
+    .select("batch_id, joined_at, batches(name, org_id)")
+    .eq("user_id", userId)
+    .order("joined_at", { ascending: false });
+  if (error || !data) return [];
+
+  const orgIds = Array.from(
+    new Set(
+      data
+        .map((r) => (r.batches as { org_id?: string } | null)?.org_id)
+        .filter((v): v is string => Boolean(v))
+    )
+  );
+  const { data: orgs } = await admin
+    .from("organizations")
+    .select("id, name")
+    .in("id", orgIds.length > 0 ? orgIds : ["00000000-0000-0000-0000-000000000000"]);
+  const orgName = new Map((orgs ?? []).map((o) => [o.id as string, o.name as string]));
+
+  return data.map((r) => {
+    const b = r.batches as { name?: string; org_id?: string } | null;
+    return {
+      batchId: r.batch_id as string,
+      batchName: b?.name ?? "a batch",
+      orgName: (b?.org_id && orgName.get(b.org_id)) || "An institute",
+      joinedAt: r.joined_at as string,
+    };
+  });
 }
