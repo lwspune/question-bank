@@ -74,7 +74,15 @@ export type Hit = { ref: string; token: string; kind: "year" | "proper-noun" };
 export function ungroundedTokens(solution: string, chapterText: string): Hit[] {
   const hay = norm(chapterText);
   const hayLower = hay.toLowerCase();
-  const sol = norm(solution);
+  // Strip inline math and markdown emphasis BEFORE anything is extracted. A LaTeX
+  // macro is not a claim about the world: \Rightarrow inside a math zone was
+  // reported as an ungrounded name on four Gravitation answers, and with twenty
+  // Science chapters to come that noise would swamp the real signal. Emphasis
+  // markers matter for a different reason — "**Convert the distance …**" puts two
+  // asterisks in front of a sentence-opening word, so the sentence-initial rule
+  // below could no longer see that it WAS sentence-initial and reported "Convert".
+  const plain = solution.replace(/\\\([\s\S]*?\\\)/g, " ").replace(/\*\*/g, "");
+  const sol = norm(plain);
   const hits: Hit[] = [];
   const seen = new Set<string>();
 
@@ -93,9 +101,13 @@ export function ungroundedTokens(solution: string, chapterText: string): Hit[] {
   //    A GFM pipe-table cell is a sentence boundary too: concept-map answers are
   //    authored as tables and every cell opens with a capital, so without this
   //    one table contributes five bogus "names" ("Casts", "Prepares", …).
-  //    (norm() has already collapsed newlines, so the pipe is the only extra
-  //    boundary needed — row breaks are invisible by this point.)
-  const sentences = sol.split(/(?<=[.!?:;])\s+|\s*\|\s*/);
+  //    A PARAGRAPH BREAK is a boundary too. A worked calculation routinely ends a
+  //    paragraph with a closing math delimiter rather than a full stop, so the next
+  //    paragraph's opening word ("Numerator:", "Denominator:") read as mid-sentence
+  //    and was reported as a name. The split therefore runs on `plain`, BEFORE
+  //    norm() collapses the newlines away — which is why norm() is applied per
+  //    sentence here rather than once up front.
+  const sentences = plain.split(/(?<=[.!?:;])\s+|\s*\|\s*|\n+/).map(norm);
   const re = /\b([A-Z][a-zA-Z'’-]*(?:\s+(?:of|the|and|for|de)\s+)?(?:\s*[A-Z][a-zA-Z'’-]*)*)/g;
   for (const sentence of sentences) {
     for (const m of sentence.matchAll(re)) {

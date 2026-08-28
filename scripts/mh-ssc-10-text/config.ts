@@ -60,9 +60,39 @@ const HIST = join(SOURCE_ROOT, "10th_Hist_SB.pdf"); // History + Political Scien
 // NEVER invent a fourth option to reach four; ingest such an item as subjective
 // with the printed choices inside the stem (see HUMANITIES_BRIEF.md).
 const GEOG = join(SOURCE_ROOT, "10th_Geog_SB.pdf");
+// Balbharati Science and Technology Std X, in TWO volumes. Printed page N -> 0-based
+// PDF index N+9, the same offset as HIST (NOT Geography's N+10).
+//   Part 1 (156pp) = the DB subject "Science and Technology I"  - physics + chemistry
+//   Part 2 (132pp) = the DB subject "Science and Technology II" - biology + environment
+// Neither volume has an answers section, so the same no-key regime applies as to the
+// humanities book: keys derived, answers authored from the chapter, grounding audited.
+//
+// EXTRACTION IS VISION FOR ANYTHING CARRYING NOTATION - measured, not assumed. The prose
+// text layer is clean, but across the first 40 pages of EACH volume there are ZERO
+// occurrences of the arrow, the degree sign, any subscript digit and any superscript
+// digit, in a science book full of all four. What that costs is specific and severe:
+//   - exponents are FLATTENED, so r^2 extracts as "r2", 10^-11 as "10 -11" and,
+//     worst, 1.83 x 10^9 as "1.83 x 109"
+//   - fractions serialise out of order across lines: the universal law of gravitation
+//     arrives as "m1m2 / d2 / F =  G"
+//   - the SymbolMT substitution of the Maths book is here too: proportional-to becomes
+//     the letter "a" ("F a m1m2/d2") and therefore becomes a backslash ("\Weight")
+// Chemical formulae are the one safe case - H2O and Na2S lose only their subscript
+// FORMATTING, not their meaning. Read every exercise page as an image; the text dump is
+// for prose grounding only, and any formula taken from it must be checked on the page.
+const SCI1 = join(SOURCE_ROOT, "10th_Sci_Part1_SB.pdf");
+const SCI2 = join(SOURCE_ROOT, "10th_Sci_Part2_SB.pdf");
 // Balbharati Mathematics Part II (Geometry), 180pp. Printed page N → 0-based PDF
 // index N+9, the same offset as HIST. Carries an ANSWERS section at idx 173+.
 // VISION-ONLY — see the note on "pythagoras-10" below before touching it.
+// Balbharati Mathematics Part I (Algebra), 188pp. Printed page N -> 0-based PDF
+// index N+9, the same offset as MATHS2. Chapter openers were located by scanning
+// for the chapter title set at >15pt (this book sets it at 25-28pt) and each range
+// cross-checked against a Practice-set/Problem-set heading scan of every page:
+//   idx  10 Linear Equations   39 Quadratic Equations   64 Arithmetic Progression
+//   idx  90 Financial Planning  122 Probability  138 Statistics   ANSWERS 178-186
+// VISION-ONLY, like every maths volume here.
+const MATHS1 = join(SOURCE_ROOT, "10th_Maths_Part1_SB.pdf");
 const MATHS2 = join(SOURCE_ROOT, "10th_Maths_Part2_SB.pdf");
 
 export type Chapter = {
@@ -555,6 +585,416 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ══ SCIENCE AND TECHNOLOGY — all twenty chapters of the two volumes ══
+  //
+  // Page ranges: each volume's contents page gives the printed start page of every
+  // chapter, and an Exercise-heading scan of all 156 + 132 pages confirms where each
+  // chapter ends. SEVEN chapters' exercises spill onto the following page, so those
+  // ranges deliberately run one page past the Exercise heading — they are noted
+  // individually below.
+  //
+  // Subtopics are the LIVE DB names, fetched rather than retyped, so a textbook row
+  // files onto the same axis as the board PYQs already on that chapter. As with the
+  // History chapters, drifted near-duplicates are REUSED rather than renamed, because
+  // a rename re-files shipped PYQ rows: Heat carries both "Humidity" and "Humidity and
+  // Relative Humidity", both "Anomalous Behaviour of Water" and "Anomalous Expansion
+  // of Water"; Refraction carries both "Refractive Index" and "Absolute Refractive
+  // Index"; and several others are similar. That is a reviewed rename pass of its own.
+  //
+  // NOTE the subject split is per VOLUME and is not negotiable: Carbon Compounds,
+  // Metallurgy and Chemical Reactions and Equations exist as chapter rows under BOTH
+  // Science I and Science II (a leftover of the old syllabus, where Paper II carried a
+  // chemistry half). The textbook chapters belong to Part 1, so they take Science I.
+  //
+  // THERE IS A PARTIAL PRINTED ANSWER KEY, and it is worth knowing exactly how partial.
+  // Unlike the humanities books - which print nothing anywhere - these two print a bold
+  // "Ans: ..." under SOME numerical exercise items. Measured across all twenty chapter
+  // dumps (case-SENSITIVE; a case-insensitive scan is worthless here because "organs."
+  // matches): NINE items in the whole of both volumes - seven in Gravitation Q.5 and two
+  // in Lenses. Every other chapter prints none. So the end-of-book cross-check gate that
+  // governs the Maths books cannot run here either; those nine are a spot-check on nine
+  // rows, not a key. Where one exists it IS consulted and agreement is stated in the
+  // stored solution, because a derivation that reproduces the printed value is stronger
+  // evidence than one that does not.
+
+  "sci-gravitation-10": {
+    id: "sci-gravitation-10",
+    chapterName: "Gravitation",
+    subjectName: "Science and Technology I",
+    sourceFile: "StateBoard_10_ScienceI__Gravitation.pdf",
+    pdf: SCI1,
+    pages: range(10, 24), // printed pp 1-15; Exercise on idx 23
+    note: "Maharashtra State Board (Class 10) \u2014 Gravitation (Balbharati textbook, Science and Technology Part I)",
+    subtopics: [
+      "Kepler's Laws of Planetary Motion",
+      "Newton's Law of Gravitation",
+      "Free Fall and Acceleration due to Gravity",
+      "Mass and Weight",
+      "Equations of Motion under Gravity",
+      "Escape Velocity and Satellites",
+    ],
+  },
+
+  "sci-periodic-10": {
+    id: "sci-periodic-10",
+    chapterName: "Periodic Classification of Elements",
+    subjectName: "Science and Technology I",
+    sourceFile: "StateBoard_10_ScienceI__Periodic_Classification_of_Elements.pdf",
+    pdf: SCI1,
+    pages: range(25, 38), // printed pp 16-29; Exercise on idx 37
+    note: "Maharashtra State Board (Class 10) \u2014 Periodic Classification of Elements (Balbharati textbook, Science and Technology Part I)",
+    subtopics: [
+      "Early Attempts and Mendeleev's Periodic Table",
+      "Mendeleev's Periodic Law",
+      "Mendeleev's Periodic Table",
+      "Modern Periodic Table",
+      "Electronic Configuration and Position in Periodic Table",
+      "Groups of the Modern Periodic Table",
+      "Groups and Valency",
+      "Periodic Trends",
+      "Periodic Trends - Atomic Radius",
+    ],
+  },
+
+  "sci-chem-reactions-10": {
+    id: "sci-chem-reactions-10",
+    chapterName: "Chemical Reactions and Equations",
+    subjectName: "Science and Technology I",
+    sourceFile: "StateBoard_10_ScienceI__Chemical_Reactions_and_Equations.pdf",
+    pdf: SCI1,
+    pages: range(39, 55), // printed pp 30-46; Exercise on idx 54, spills to 55
+    note: "Maharashtra State Board (Class 10) \u2014 Chemical Reactions and Equations (Balbharati textbook, Science and Technology Part I)",
+    subtopics: [
+      "Physical and Chemical Changes",
+      "Balancing Chemical Equations",
+      "Types of Chemical Reactions",
+      "Displacement Reaction",
+      "Oxidation, Reduction and Corrosion",
+      "Rate of Chemical Reaction",
+    ],
+  },
+
+  "sci-electric-current-10": {
+    id: "sci-electric-current-10",
+    chapterName: "Effects of Electric Current",
+    subjectName: "Science and Technology I",
+    sourceFile: "StateBoard_10_ScienceI__Effects_of_Electric_Current.pdf",
+    pdf: SCI1,
+    pages: range(56, 70), // printed pp 47-61; Exercise on idx 69, spills to 70
+    note: "Maharashtra State Board (Class 10) \u2014 Effects of Electric Current (Balbharati textbook, Science and Technology Part I)",
+    subtopics: [
+      "Potential Difference",
+      "Series and Parallel Combination of Resistors",
+      "Heating Effect of Electric Current",
+      "Electric Power",
+      "Magnetic Effect of Electric Current",
+      "Fleming's Left Hand Rule",
+      "Fleming's Right Hand Rule",
+      "Electric Motor",
+      "Electric Motor and Generator",
+      "Alternating Current",
+      "Domestic Electric Circuit and Fuse",
+      "Domestic Electric Circuits and Safety",
+      "Electrical Measuring Instruments",
+      "Electroplating",
+    ],
+  },
+
+  "sci-heat-10": {
+    id: "sci-heat-10",
+    chapterName: "Heat",
+    subjectName: "Science and Technology I",
+    sourceFile: "StateBoard_10_ScienceI__Heat.pdf",
+    pdf: SCI1,
+    pages: range(71, 81), // printed pp 62-72; Exercise on idx 80
+    note: "Maharashtra State Board (Class 10) \u2014 Heat (Balbharati textbook, Science and Technology Part I)",
+    subtopics: [
+      "Concept of Heat and Temperature",
+      "Concept of Heat and its Units",
+      "Specific Heat Capacity",
+      "Specific Heat - Heat Energy Calculation",
+      "Principle of Heat Exchange",
+      "Latent Heat and Change of State",
+      "Anomalous Behaviour of Water",
+      "Anomalous Expansion of Water",
+      "Humidity",
+      "Humidity and Relative Humidity",
+    ],
+  },
+
+  "sci-refraction-10": {
+    id: "sci-refraction-10",
+    chapterName: "Refraction of Light",
+    subjectName: "Science and Technology I",
+    sourceFile: "StateBoard_10_ScienceI__Refraction_of_Light.pdf",
+    pdf: SCI1,
+    pages: range(82, 88), // printed pp 73-79; Exercise on idx 88
+    note: "Maharashtra State Board (Class 10) \u2014 Refraction of Light (Balbharati textbook, Science and Technology Part I)",
+    subtopics: [
+      "Refraction and Refractive Index",
+      "Laws of Refraction",
+      "Refractive Index",
+      "Absolute Refractive Index",
+      "Total Internal Reflection",
+      "Applications of Refraction",
+      "Atmospheric Refraction - Twinkling of Stars",
+      "Dispersion of Light",
+      "Dispersion of Light and Spectrum",
+      "Wavelength and Spectrum of Light",
+      "Wavelength of Visible Light",
+    ],
+  },
+
+  "sci-lenses-10": {
+    id: "sci-lenses-10",
+    chapterName: "Lenses",
+    subjectName: "Science and Technology I",
+    sourceFile: "StateBoard_10_ScienceI__Lenses.pdf",
+    pdf: SCI1,
+    pages: range(89, 101), // printed pp 80-92; Exercise on idx 101
+    note: "Maharashtra State Board (Class 10) \u2014 Lenses (Balbharati textbook, Science and Technology Part I)",
+    subtopics: [
+      "Types of Lenses and Terminology",
+      "Image Formation by Lenses",
+      "Image Formation by a Convex Lens",
+      "Lens Formula and Magnification",
+      "Power of a Lens",
+      "Human Eye - Structure and Image Formation",
+      "Human Eye - Near Point",
+      "Human Eye and Defects of Vision",
+      "Simple Microscope",
+    ],
+  },
+
+  "sci-metallurgy-10": {
+    id: "sci-metallurgy-10",
+    chapterName: "Metallurgy",
+    subjectName: "Science and Technology I",
+    sourceFile: "StateBoard_10_ScienceI__Metallurgy.pdf",
+    pdf: SCI1,
+    pages: range(102, 118), // printed pp 93-109; Exercise on idx 117, spills to 118
+    note: "Maharashtra State Board (Class 10) \u2014 Metallurgy (Balbharati textbook, Science and Technology Part I)",
+    subtopics: [
+      "Properties of Metals and Non-Metals",
+      "Reactivity Series of Metals",
+      "Reactivity Series and Ionic Compounds",
+      "Basic Terms in Metallurgy",
+      "Concentration of Ore - Gravity Separation",
+      "Extraction of Metals",
+      "Ores of Aluminium",
+      "Corrosion and Rusting of Iron",
+      "Corrosion and Alloys",
+      "Alloys and Alloying",
+      "Electroplating",
+    ],
+  },
+
+  "sci-carbon-compounds-10": {
+    id: "sci-carbon-compounds-10",
+    chapterName: "Carbon Compounds",
+    subjectName: "Science and Technology I",
+    sourceFile: "StateBoard_10_ScienceI__Carbon_Compounds.pdf",
+    pdf: SCI1,
+    pages: range(119, 143), // printed pp 110-134; Exercise on idx 142, spills to 143
+    note: "Maharashtra State Board (Class 10) \u2014 Carbon Compounds (Balbharati textbook, Science and Technology Part I)",
+    subtopics: [
+      "Covalent Bonding in Carbon",
+      "Electron Dot Structures",
+      "Hydrocarbons",
+      "Saturated and Unsaturated Hydrocarbons",
+      "Alkanes - Structural and Molecular Formulae",
+      "Hydrocarbons and Functional Groups",
+      "Homologous Series",
+      "IUPAC Nomenclature",
+      "Nomenclature and Isomerism",
+      "Important Organic Compounds",
+      "Fuels and Hydrocarbons",
+      "Rancidity",
+    ],
+  },
+
+  "sci-space-missions-10": {
+    id: "sci-space-missions-10",
+    chapterName: "Space Missions",
+    subjectName: "Science and Technology I",
+    sourceFile: "StateBoard_10_ScienceI__Space_Missions.pdf",
+    pdf: SCI1,
+    pages: range(144, 155), // printed pp 135-146; Exercise on idx 153
+    note: "Maharashtra State Board (Class 10) \u2014 Space Missions (Balbharati textbook, Science and Technology Part I)",
+    subtopics: [
+      "Astronomical Objects",
+      "Satellites and Orbits",
+      "Artificial Satellites",
+      "Artificial Satellites and Their Types",
+      "Launch Vehicles",
+      "Satellites and Launch Vehicles",
+      "Rocket Propulsion",
+      "Space Missions of India",
+      "Importance of Space Missions",
+      "Space Debris and its Management",
+    ],
+  },
+
+  "sci-heredity-10": {
+    id: "sci-heredity-10",
+    chapterName: "Heredity and Evolution",
+    subjectName: "Science and Technology II",
+    sourceFile: "StateBoard_10_ScienceII__Heredity_and_Evolution.pdf",
+    pdf: SCI2,
+    pages: range(10, 19), // printed pp 1-10; Exercise on idx 19
+    note: "Maharashtra State Board (Class 10) \u2014 Heredity and Evolution (Balbharati textbook, Science and Technology Part II)",
+    subtopics: [
+      "Heredity and Variation",
+      "Mendel's Laws of Inheritance",
+      "Evolution and its Theories",
+      "Speciation and Evidences of Evolution",
+    ],
+  },
+
+  "sci-life-processes-1-10": {
+    id: "sci-life-processes-1-10",
+    chapterName: "Life Processes in Living Organisms Part 1",
+    subjectName: "Science and Technology II",
+    sourceFile: "StateBoard_10_ScienceII__Life_Processes_in_Living_Organisms_Part_1.pdf",
+    pdf: SCI2,
+    pages: range(20, 30), // printed pp 11-21; Exercise on idx 30
+    note: "Maharashtra State Board (Class 10) \u2014 Life Processes in Living Organisms Part 1 (Balbharati textbook, Science and Technology Part II)",
+    subtopics: [
+      "Cell Division — Mitosis and Meiosis",
+      "Nutrition in Living Organisms",
+      "Cellular Respiration",
+      "Osmosis and Diffusion",
+      "Osmosis, Diffusion and Absorption",
+      "Transpiration and Water Transport in Plants",
+      "Transport of Materials and Blood",
+      "Excretory System",
+      "Excretory System in Human Beings",
+      "Glands and their Secretions",
+    ],
+  },
+
+  "sci-life-processes-2-10": {
+    id: "sci-life-processes-2-10",
+    chapterName: "Life Processes in Living Organisms Part 2",
+    subjectName: "Science and Technology II",
+    sourceFile: "StateBoard_10_ScienceII__Life_Processes_in_Living_Organisms_Part_2.pdf",
+    pdf: SCI2,
+    pages: range(31, 44), // printed pp 22-35; Exercise on idx 43, spills to 44
+    note: "Maharashtra State Board (Class 10) \u2014 Life Processes in Living Organisms Part 2 (Balbharati textbook, Science and Technology Part II)",
+    subtopics: [
+      "Types of Reproduction",
+      "Human Reproductive System",
+      "Reproductive Health",
+    ],
+  },
+
+  "sci-environment-10": {
+    id: "sci-environment-10",
+    chapterName: "Environmental Management",
+    subjectName: "Science and Technology II",
+    sourceFile: "StateBoard_10_ScienceII__Environmental_Management.pdf",
+    pdf: SCI2,
+    pages: range(45, 55), // printed pp 36-46; Exercise on idx 55
+    note: "Maharashtra State Board (Class 10) \u2014 Environmental Management (Balbharati textbook, Science and Technology Part II)",
+    subtopics: [
+      "Ecosystem and Ecological Balance",
+      "Environmental Conservation",
+      "Biodiversity and Conservation",
+      "Control of Noise Pollution",
+      "Blue Revolution",
+    ],
+  },
+
+  "sci-green-energy-10": {
+    id: "sci-green-energy-10",
+    chapterName: "Towards Green Energy",
+    subjectName: "Science and Technology II",
+    sourceFile: "StateBoard_10_ScienceII__Towards_Green_Energy.pdf",
+    pdf: SCI2,
+    pages: range(56, 69), // printed pp 47-60; Exercise on idx 68, spills to 69
+    note: "Maharashtra State Board (Class 10) \u2014 Towards Green Energy (Balbharati textbook, Science and Technology Part II)",
+    subtopics: [
+      "Energy Sources",
+      "Renewable and Non-Renewable Energy",
+      "Green Energy Technologies",
+    ],
+  },
+
+  "sci-animal-classification-10": {
+    id: "sci-animal-classification-10",
+    chapterName: "Animal Classification",
+    subjectName: "Science and Technology II",
+    sourceFile: "StateBoard_10_ScienceII__Animal_Classification.pdf",
+    pdf: SCI2,
+    pages: range(70, 85), // printed pp 61-76; Exercise on idx 84, spills to 85
+    note: "Maharashtra State Board (Class 10) \u2014 Animal Classification (Balbharati textbook, Science and Technology Part II)",
+    subtopics: [
+      "Basis of Classification",
+      "Non-Chordates",
+      "Chordates",
+    ],
+  },
+
+  "sci-microbiology-10": {
+    id: "sci-microbiology-10",
+    chapterName: "Introduction to Microbiology",
+    subjectName: "Science and Technology II",
+    sourceFile: "StateBoard_10_ScienceII__Introduction_to_Microbiology.pdf",
+    pdf: SCI2,
+    pages: range(86, 96), // printed pp 77-87; Exercise on idx 95, spills to 96
+    note: "Maharashtra State Board (Class 10) \u2014 Introduction to Microbiology (Balbharati textbook, Science and Technology Part II)",
+    subtopics: [
+      "Useful Microorganisms",
+      "Industrial and Applied Microbiology",
+    ],
+  },
+
+  "sci-cell-biotech-10": {
+    id: "sci-cell-biotech-10",
+    chapterName: "Cell Biology and Biotechnology",
+    subjectName: "Science and Technology II",
+    sourceFile: "StateBoard_10_ScienceII__Cell_Biology_and_Biotechnology.pdf",
+    pdf: SCI2,
+    pages: range(97, 109), // printed pp 88-100; Exercise on idx 108
+    note: "Maharashtra State Board (Class 10) \u2014 Cell Biology and Biotechnology (Balbharati textbook, Science and Technology Part II)",
+    subtopics: [
+      "Levels of Body Organization",
+      "Proteins and their Sources",
+      "Genetic Engineering",
+      "Biotechnology and its Applications",
+    ],
+  },
+
+  "sci-social-health-10": {
+    id: "sci-social-health-10",
+    chapterName: "Social Health",
+    subjectName: "Science and Technology II",
+    sourceFile: "StateBoard_10_ScienceII__Social_Health.pdf",
+    pdf: SCI2,
+    pages: range(110, 117), // printed pp 101-108; Exercise on idx 117
+    note: "Maharashtra State Board (Class 10) \u2014 Social Health (Balbharati textbook, Science and Technology Part II)",
+    subtopics: [
+      "Health and Disease",
+      "Social Health and Issues",
+      "Addiction and Stress Management",
+    ],
+  },
+
+  "sci-disaster-10": {
+    id: "sci-disaster-10",
+    chapterName: "Disaster Management",
+    subjectName: "Science and Technology II",
+    sourceFile: "StateBoard_10_ScienceII__Disaster_Management.pdf",
+    pdf: SCI2,
+    pages: range(118, 129), // printed pp 109-120; Exercise on idx 128, spills to 129
+    note: "Maharashtra State Board (Class 10) \u2014 Disaster Management (Balbharati textbook, Science and Technology Part II)",
+    subtopics: [
+      "Types of Disasters",
+      "Disaster Management and Mitigation",
+      "First Aid",
+    ],
+  },
+
   // ── GEOMETRY Ch.2 — the first MATHS chapter in this pipeline, and it breaks
   //    two of the assumptions the humanities chapters above were built on.
   //
@@ -597,6 +1037,261 @@ export const CHAPTERS: Record<string, Chapter> = {
   // section of that name teaches ONLY the obtuse/acute extensions
   // (AB² = BC² + AC² ∓ 2BC×DC). It is not a catch-all, and it starts with 0
   // board PYQs because no past paper has ever sampled it.
+  // ══ MATHEMATICS — Algebra (Part I) and Geometry (Part II) ══
+  //
+  // These twelve differ from every other chapter in this pipeline in TWO ways.
+  //
+  // 1. THE ANSWER-KEY CROSS-CHECK IS A REAL GATE HERE. Both volumes carry an
+  //    ANSWERS section, so `answersPdf`/`answerPages` are set and every authored
+  //    answer must be diffed against the printed key - the control the Science and
+  //    humanities books simply cannot offer. Report the split as AGREE /
+  //    OUR-ANSWER-WRONG / BOOK-KEY-WRONG, and say how many rows were actually
+  //    diffed: a proof question with no key entry is not a gap.
+  //    Known exception: Geometry Ch.4 Geometric Constructions has NO printed
+  //    answers at all (the key jumps from Problem set 3 to Problem set 4), because
+  //    a ruler-and-compass construction has no numeric answer.
+  //
+  // 2. THE BLOCK STRUCTURE IS MULTI-PART, not a single end-of-chapter Exercise:
+  //    interleaved Solved Examples, numbered Practice sets and a closing Problem
+  //    set, all three in scope (the shipped `pythagoras-10` is the precedent).
+  //    Each chapter therefore needs its own outline; those live in
+  //    data/<id>.sections.json rather than sections.ts so that parallel per-chapter
+  //    work cannot collide on one shared module.
+  //
+  // Chapter 2 of Part II is absent on purpose - it is the shipped `pythagoras-10`.
+
+  "alg-linear-equations-10": {
+    id: "alg-linear-equations-10",
+    chapterName: "Linear Equations in Two Variables", // DB spelling
+    subjectName: "Algebra",
+    sourceFile: "StateBoard_10_Algebra__Linear_Equations_in_Two_Variables.pdf",
+    pdf: MATHS1,
+    pages: range(10, 38), // printed pp 1-29; Practice sets 1.1-1.5 + Problem set 1
+    answersPdf: MATHS1,
+    answerPages: [178, 179], // printed pp 169, 170
+    note: "Maharashtra State Board (Class 10) \u2014 Linear Equations in Two Variables (Balbharati textbook, Mathematics Part I / Algebra)",
+    subtopics: [
+      "Consistency of Simultaneous Equations",
+      "Determinant Method (Cramer's Rule)",
+      "Equations Reducible to Linear Form",
+      "Graph of Linear Equations",
+      "Methods of Solving Linear Equations",
+      "Word Problems and Applications",
+    ],
+  },
+
+  "alg-quadratic-equations-10": {
+    id: "alg-quadratic-equations-10",
+    chapterName: "Quadratic Equations", // DB spelling
+    subjectName: "Algebra",
+    sourceFile: "StateBoard_10_Algebra__Quadratic_Equations.pdf",
+    pdf: MATHS1,
+    pages: range(39, 63), // printed pp 30-54; Practice sets 2.1-2.6 + Problem set 2
+    answersPdf: MATHS1,
+    answerPages: [179, 180, 181], // printed pp 170, 171, 172
+    note: "Maharashtra State Board (Class 10) \u2014 Quadratic Equations (Balbharati textbook, Mathematics Part I / Algebra)",
+    subtopics: [
+      "Nature of Roots (Discriminant)",
+      "Relation between Roots and Coefficients",
+      "Roots of a Quadratic Equation",
+      "Solving by Factorisation",
+      "Solving by Formula and Completing the Square",
+      "Standard Form of a Quadratic Equation",
+      "Word Problems and Applications",
+    ],
+  },
+
+  "alg-arithmetic-progression-10": {
+    id: "alg-arithmetic-progression-10",
+    chapterName: "Arithmetic Progression", // DB spelling
+    subjectName: "Algebra",
+    sourceFile: "StateBoard_10_Algebra__Arithmetic_Progression.pdf",
+    pdf: MATHS1,
+    pages: range(64, 89), // printed pp 55-80; Practice sets 3.1-3.4 + Problem set 3
+    answersPdf: MATHS1,
+    answerPages: [181, 182], // printed pp 172, 173
+    note: "Maharashtra State Board (Class 10) \u2014 Arithmetic Progression (Balbharati textbook, Mathematics Part I / Algebra)",
+    subtopics: [
+      "Common Difference of an A.P.",
+      "Concept of Arithmetic Progression",
+      "nth Term of an A.P.",
+      "Sum of n Terms of an A.P.",
+      "Word Problems and Applications",
+    ],
+  },
+
+  "alg-financial-planning-10": {
+    id: "alg-financial-planning-10",
+    chapterName: "Financial Planning", // DB spelling
+    subjectName: "Algebra",
+    sourceFile: "StateBoard_10_Algebra__Financial_Planning.pdf",
+    pdf: MATHS1,
+    pages: range(90, 121), // printed pp 81-112; Practice sets 4.1-4.4 + Problem set 4
+    answersPdf: MATHS1,
+    answerPages: [182, 183, 184], // printed pp 173, 174, 175
+    note: "Maharashtra State Board (Class 10) \u2014 Financial Planning (Balbharati textbook, Mathematics Part I / Algebra)",
+    subtopics: [
+      "Goods and Services Tax (GST)",
+      "Income Tax — Assessment Year",
+      "Income, Expenditure and Savings",
+      "Shares — Face Value, Market Value, Brokerage",
+    ],
+  },
+
+  "alg-probability-10": {
+    id: "alg-probability-10",
+    chapterName: "Probability", // DB spelling
+    subjectName: "Algebra",
+    sourceFile: "StateBoard_10_Algebra__Probability.pdf",
+    pdf: MATHS1,
+    pages: range(122, 137), // printed pp 113-128; Practice sets 5.1-5.4 + Problem set 5
+    answersPdf: MATHS1,
+    answerPages: [183, 184, 185], // printed pp 174, 175, 176
+    note: "Maharashtra State Board (Class 10) \u2014 Probability (Balbharati textbook, Mathematics Part I / Algebra)",
+    subtopics: [
+      "Probability of an Event",
+      "Sample Space and Events",
+    ],
+  },
+
+  "alg-statistics-10": {
+    id: "alg-statistics-10",
+    chapterName: "Statistics", // DB spelling
+    subjectName: "Algebra",
+    sourceFile: "StateBoard_10_Algebra__Statistics.pdf",
+    pdf: MATHS1,
+    pages: range(138, 177), // printed pp 129-168; Practice sets 6.1-6.6 + Problem set 6
+    answersPdf: MATHS1,
+    answerPages: [185, 186], // printed pp 176, 177
+    note: "Maharashtra State Board (Class 10) \u2014 Statistics (Balbharati textbook, Mathematics Part I / Algebra)",
+    subtopics: [
+      "Mean, Median and Mode of Grouped Data",
+      "Median of Ungrouped Data",
+      "Pictorial Representation of Statistical Data",
+    ],
+  },
+
+  "geo-similarity-10": {
+    id: "geo-similarity-10",
+    chapterName: "Similarity", // DB spelling
+    subjectName: "Geometry",
+    sourceFile: "StateBoard_10_Geometry__Similarity.pdf",
+    pdf: MATHS2,
+    pages: range(10, 38), // printed pp 1-29; Practice sets 1.1-1.4 + Problem set 1
+    answersPdf: MATHS2,
+    answerPages: [173, 174], // printed pp 164, 165
+    note: "Maharashtra State Board (Class 10) \u2014 Similarity (Balbharati textbook, Mathematics Part II / Geometry)",
+    subtopics: [
+      "Basic Proportionality Theorem",
+      "Property of an Angle Bisector of a Triangle",
+      "Property of Angle Bisector of a Triangle",
+      "Ratio of Areas of Two Triangles",
+      "Tests of Similarity of Triangles",
+      "Theorem of Areas of Similar Triangles",
+    ],
+  },
+
+  "geo-circle-10": {
+    id: "geo-circle-10",
+    chapterName: "Circle", // DB spelling
+    subjectName: "Geometry",
+    sourceFile: "StateBoard_10_Geometry__Circle.pdf",
+    pdf: MATHS2,
+    pages: range(56, 99), // printed pp 47-90; Practice sets 3.1-3.5 + Problem set 3
+    answersPdf: MATHS2,
+    answerPages: [174, 175], // printed pp 165, 166
+    note: "Maharashtra State Board (Class 10) \u2014 Circle (Balbharati textbook, Mathematics Part II / Geometry)",
+    subtopics: [
+      "Arcs of a Circle",
+      "Cyclic Quadrilateral",
+      "Inscribed Angle and Intercepted Arc",
+      "Measure of an Arc and Central Angle",
+      "Tangent and Secant to a Circle",
+      "Tangent Segment Theorem",
+      "Theorems on Chords and Tangents",
+      "Touching Circles",
+    ],
+  },
+
+  "geo-constructions-10": {
+    id: "geo-constructions-10",
+    chapterName: "Geometric Constructions", // DB spelling
+    subjectName: "Geometry",
+    sourceFile: "StateBoard_10_Geometry__Geometric_Constructions.pdf",
+    pdf: MATHS2,
+    pages: range(100, 108), // printed pp 91-99; Practice sets 4.1-4.2 + Problem set 4
+    answersPdf: MATHS2,
+    answerPages: [175], // printed pp 166
+    note: "Maharashtra State Board (Class 10) \u2014 Geometric Constructions (Balbharati textbook, Mathematics Part II / Geometry)",
+    subtopics: [
+      "Construction of a Similar Triangle",
+      "Construction of a Tangent to a Circle",
+      "Construction of an Angle Bisector",
+      "Construction of Angle Bisector",
+      "Construction of Circumcircle",
+      "Construction of Incircle and Circumcircle",
+      "Division of a Line Segment",
+    ],
+  },
+
+  "geo-coordinate-10": {
+    id: "geo-coordinate-10",
+    chapterName: "Co-ordinate Geometry", // DB spelling
+    subjectName: "Geometry",
+    sourceFile: "StateBoard_10_Geometry__Co_ordinate_Geometry.pdf",
+    pdf: MATHS2,
+    pages: range(109, 132), // printed pp 100-123; Practice sets 5.1-5.3 + Problem set 5
+    answersPdf: MATHS2,
+    answerPages: [175, 176], // printed pp 166, 167
+    note: "Maharashtra State Board (Class 10) \u2014 Co-ordinate Geometry (Balbharati textbook, Mathematics Part II / Geometry)",
+    subtopics: [
+      "Coordinates and Quadrants",
+      "Coordinates and the Cartesian Plane",
+      "Distance Formula",
+      "Equation of a Line",
+      "Section Formula",
+      "Slope of a Line",
+    ],
+  },
+
+  "geo-trigonometry-10": {
+    id: "geo-trigonometry-10",
+    chapterName: "Trigonometry", // DB spelling
+    subjectName: "Geometry",
+    sourceFile: "StateBoard_10_Geometry__Trigonometry.pdf",
+    pdf: MATHS2,
+    pages: range(133, 148), // printed pp 124-139; Practice sets 6.1-6.2 + Problem set 6
+    answersPdf: MATHS2,
+    answerPages: [176, 177], // printed pp 167, 168
+    note: "Maharashtra State Board (Class 10) \u2014 Trigonometry (Balbharati textbook, Mathematics Part II / Geometry)",
+    subtopics: [
+      "Angle in Standard Position",
+      "Heights and Distances",
+      "Trigonometric Ratios and Identities",
+    ],
+  },
+
+  "geo-mensuration-10": {
+    id: "geo-mensuration-10",
+    chapterName: "Mensuration", // DB spelling
+    subjectName: "Geometry",
+    sourceFile: "StateBoard_10_Geometry__Mensuration.pdf",
+    pdf: MATHS2,
+    pages: range(149, 172), // printed pp 140-163; Practice sets 7.1-7.4 + Problem set 7
+    answersPdf: MATHS2,
+    answerPages: [177], // printed pp 168
+    note: "Maharashtra State Board (Class 10) \u2014 Mensuration (Balbharati textbook, Mathematics Part II / Geometry)",
+    subtopics: [
+      "Area of Combined Figures",
+      "Area of Sector and Segment of a Circle",
+      "Areas of Combined Figures",
+      "Circumference of a Circle",
+      "Combination of Solids and Frustum",
+      "Euler's Formula",
+      "Surface Area and Volume of Solids",
+    ],
+  },
+
   "pythagoras-10": {
     id: "pythagoras-10",
     chapterName: "Pythagoras Theorem", // DB spelling — matches the book's own title
