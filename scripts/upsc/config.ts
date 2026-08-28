@@ -16,15 +16,29 @@
 //
 // 22 booklets on disk: BOTH papers for EVERY year 2016-2026, no gaps.
 //
-// NO ANSWER KEY EXISTS. Not in the booklets (their tail pages are questions or
-// rough work), and not in the source folders — checked exhaustively, both trees.
-// So every answer here is DERIVED, by two independent blind passes, and carries
-// that provenance in `solution`. This is the scripts/cds-gs situation exactly.
+// THE BOOKLETS CARRY NO KEY — their tail pages are questions or rough work, and
+// neither source folder had one. That is why the 2025 pilot DERIVED every answer
+// via two independent blind passes.
 //
-//   UPSC does publish official Prelims answer keys on upsc.gov.in once a CSE
-//   cycle closes, so keys for the older years are very likely obtainable. That
-//   would convert derivation into VERIFICATION and change the quality ceiling
-//   of this whole corpus. Worth doing before scaling past the pilot.
+// BUT OFFICIAL KEYS EXIST, and that was established after the pilot shipped.
+// UPSC publishes them separately on upsc.gov.in, after a cycle closes (2023's
+// landed 2024-05-09, about a year after the exam), and FROM THE 2026 CYCLE
+// ONWARD as a provisional key shortly after the exam. Eight are on disk; see
+// fetch-keys.ts, which also records the trap that makes downloading them look
+// like it worked when it did not.
+//
+// So there are TWO answer regimes, and which one a paper is in decides its cost
+// and its quality:
+//
+//   KEY AVAILABLE  — ONE blind derivation pass for the WORKING (the key supplies
+//                    no reasoning, and a correct answer with no working is a
+//                    defect this bank has shipped before), then keycheck.ts takes
+//                    the LETTER from the key. Half the derivation cost, and it
+//                    yields a REAL accuracy against ground truth rather than an
+//                    agreement rate. It also catches the mis-slotted-option class
+//                    that a blind pass structurally cannot.
+//   NO KEY YET     — the pilot's regime: two blind passes + crosstab.ts. Treat
+//                    its agreement rate as a floor on quality, never an accuracy.
 //
 // TWO SOURCE GENERATIONS, and the difference is load-bearing:
 //
@@ -72,6 +86,27 @@ export const EXAM_ID = "62749b2e-ad55-42c2-9ab5-cfcd55d908bb";
 
 export const P1_ROOT = "C:\\Vilas\\LWS_Pune\\UPSC\\Paper_1\\PYQPs";
 export const P2_ROOT = "C:\\Vilas\\LWS_Pune\\UPSC\\Paper-2";
+
+/**
+ * Official UPSC answer keys, alongside the booklets rather than in the repo —
+ * they are 0.1-15 MB scans and `fetch-keys.ts` re-downloads them.
+ *
+ * THE KEYS EXIST, which was not known when this pipeline was designed. Every
+ * answer in the 2025 pilot was DERIVED because the booklets carry none and the
+ * source folder had none. UPSC publishes them separately, after the full cycle
+ * closes (2023's landed 2024-05-09) — and from the 2026 cycle onward, a
+ * PROVISIONAL key shortly after the exam.
+ *
+ * Each key PDF is FOUR pages, one per booklet series A/B/C/D, each a plain
+ * `Q.No -> Key` grid. Every booklet we hold is SERIES A, so page 0 is the one
+ * that matters. They also record dropped questions: the 2023 Paper-I key reads
+ * "No. of Questions Dropped: 1 / taken for Scoring: 99" and keys Q34 as `X`,
+ * which is exactly the `grace` flag src/lib/mocks/ already models.
+ */
+export const KEY_ROOT = "C:\\Vilas\\LWS_Pune\\UPSC\\AnswerKeys";
+
+/** Page index of Series A inside a key PDF. Our booklets are all Series A. */
+export const KEY_SERIES_A_PAGE = 0;
 
 export const OUT = join(__dirname, "out"); // gitignored: rendered PNGs, blind packets
 export const DATA = join(__dirname, "data"); // committed: transcriptions
@@ -181,38 +216,50 @@ export const PAPERS: Record<string, Paper> = {
   "2025-p2": p2(2025, "QP-CSP-25-GENERAL-STUDIES-PAPER-II-26052025.pdf", evens(2, 42), 300),
 
   // --- Paper I, remaining years (pre-pass not done) -----------------------
-  "2026-p1": p1(2026, "QP_CSP_2026_GENERAL_STUDIES_PAPER-I_25052026.pdf", [], 301), // raw bilingual, 56pp
-  "2024-p1": p1(2024, "CSE_P1_2024.pdf", [], 299),
-  "2023-p1": p1(2023, "CSE_P1_2023.pdf", [], 152), // the ONLY booklet of the 22 with an OCR text layer
-  "2022-p1": p1(2022, "CSE_P1_2022.pdf", [], 149),
-  "2021-p1": p1(2021, "CSE_P1_2021.pdf", [], 298),
-  "2020-p1": p1(2020, "CSE_P1_2020.pdf", [], 200),
-  "2019-p1": p1(2019, "CSE_P1_2019.pdf", [], 198),
-  "2018-p1": p1(2018, "CSE_P1_2018.pdf", [], 150), // strip-scanned
-  "2017-p1": p1(2017, "CSE_P1_2017.pdf", [], 150), // strip-scanned
-  "2016-p1": p1(2016, "CSE_P1_2016.pdf", [], 150), // strip-scanned
+  "2026-p1": p1(2026, "QP_CSP_2026_GENERAL_STUDIES_PAPER-I_25052026.pdf", evens(2, 50), 301), // raw bilingual, 56pp
+  "2024-p1": p1(2024, "CSE_P1_2024.pdf", range(1, 21), 299),
+  "2023-p1": p1(2023, "CSE_P1_2023.pdf", range(1, 21), 152), // the ONLY booklet of the 22 with an OCR text layer
+  "2022-p1": p1(2022, "CSE_P1_2022.pdf", range(1, 21), 149),
+  "2021-p1": p1(2021, "CSE_P1_2021.pdf", range(1, 21), 298),
+  "2020-p1": p1(2020, "CSE_P1_2020.pdf", range(1, 21), 200),
+  "2019-p1": p1(2019, "CSE_P1_2019.pdf", range(1, 21), 198),
+  "2018-p1": p1(2018, "CSE_P1_2018.pdf", range(1, 21), 150), // strip-scanned
+  "2017-p1": p1(2017, "CSE_P1_2017.pdf", range(1, 17), 150), // strip-scanned
+  "2016-p1": p1(2016, "CSE_P1_2016.pdf", range(1, 18), 150), // strip-scanned
 
   // --- Paper II, remaining years (pre-pass not done) ----------------------
   // All raw bilingual booklets.
-  "2026-p2": p2(2026, "QP_CSP_2026_GENERAL_STUDIES_PAPER-II_25052026.pdf", [], 300),
-  "2024-p2": p2(2024, "QP-CSP-24-GENERAL-STUDIES-PAPER-II-180624.pdf", [], 299),
+  "2026-p2": p2(2026, "QP_CSP_2026_GENERAL_STUDIES_PAPER-II_25052026.pdf", evens(2, 42), 300),
+  "2024-p2": p2(2024, "QP-CSP-24-GENERAL-STUDIES-PAPER-II-180624.pdf", evens(2, 42), 299),
   "2023-p2": p2(2023, "QP_CS_Pre_Exam_2023_GENERAL_STUDIES_PAPER_II_280523.pdf", [], 300),
-  "2022-p2": p2(2022, "GENERAL STUDIES PAPER II.pdf", [], 150),
-  "2021-p2": p2(2021, "QP-CSP-21-GeneralStudiesPaper-II-121021.pdf", [], 301),
+  "2022-p2": p2(2022, "GENERAL STUDIES PAPER II.pdf", evens(2, 42), 150),
+  "2021-p2": p2(2021, "QP-CSP-21-GeneralStudiesPaper-II-121021.pdf", evens(2, 42), 301),
   "2020-p2": p2(2020, "CSP_2020_GS_Paper-2.pdf", [], 200),
   "2019-p2": p2(2019, "csp-p2.pdf", [], 200),
-  "2018-p2": p2(2018, "QP-CSP-18-GS-II-C.pdf", [], 150), // strip-scanned
+  "2018-p2": p2(2018, "QP-CSP-18-GS-II-C.pdf", evens(2, 42), 150), // strip-scanned
   "2017-p2": p2(2017, "CSP-17-GS_PAPER-II-C.pdf", [], 150), // strip-scanned
   // AT RISK: ~72 DPI, 40 pages of 594x90 strips. Dense two-column text at that
   // resolution may simply not be transcribable. Measure before promising it.
   "2016-p2": p2(2016, "GENERAL_STUDIES_PAPER-II.pdf", [], 72),
 };
 
-export function requirePaper(id: string | undefined): Paper {
+/**
+ * Look a paper up WITHOUT requiring its page pre-pass.
+ *
+ * `requirePaper` refuses a paper whose `englishPages` is empty, which is right
+ * for anything that reads booklet pages — but the answer-key scripts never do,
+ * and blocking them on an unrelated precondition would mean filling in a page
+ * map before you are allowed to download a key.
+ */
+export function paperById(id: string | undefined): Paper {
   if (!id || !PAPERS[id]) {
     throw new Error(`unknown paper "${id}". Known: ${Object.keys(PAPERS).join(", ")}`);
   }
-  const paper = PAPERS[id];
+  return PAPERS[id];
+}
+
+export function requirePaper(id: string | undefined): Paper {
+  const paper = paperById(id);
   if (paper.englishPages.length === 0) {
     throw new Error(
       `paper "${id}" has no englishPages — the page pre-pass has not been done.\n` +
@@ -272,3 +319,10 @@ export function subjectsFor(paper: PaperNumber): string[] {
 }
 
 export const dataPath = (id: string, kind: string) => join(DATA, `${id}.${kind}.json`);
+
+/** Where `fetch-keys.ts` puts a paper's official key PDF. */
+export const keyPath = (id: string) => {
+  const p = PAPERS[id];
+  if (!p) throw new Error(`unknown paper "${id}"`);
+  return join(KEY_ROOT, `AnsKey-CSP-${p.pyqYear}-Paper-${p.paper}.pdf`);
+};

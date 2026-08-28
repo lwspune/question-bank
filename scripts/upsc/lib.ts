@@ -379,6 +379,150 @@ export function crosstab(
 }
 
 /**
+ * An official UPSC answer key for one paper, Series A.
+ *
+ * `dropped` are the questions UPSC WITHDREW after the exam. The key prints them
+ * as `X` and the header counts them out ("No. of Questions Dropped: 1 / taken for
+ * Scoring: 99"). They have no correct answer and must not be shipped with one.
+ */
+export type OfficialKey = {
+  answers: Map<number, string>;
+  dropped: number[];
+  total: number;
+};
+
+const KEY_LETTERS = new Set(["A", "B", "C", "D"]);
+
+/**
+ * Validate a vision-transcribed key into an `OfficialKey`.
+ *
+ * REFUSES a short key. That is the important one: a key silently missing its last
+ * page or its last column looks exactly like a complete key, and would leave a
+ * run of questions falling back to whatever we derived while the run reported
+ * "verified against the official key". A partial key must never be mistaken for
+ * a full one.
+ */
+export function parseOfficialKey(raw: Record<string, string>, total: number): OfficialKey {
+  const answers = new Map<number, string>();
+  const dropped: number[] = [];
+
+  for (const [k, v] of Object.entries(raw)) {
+    const n = Number(k);
+    if (!Number.isInteger(n) || n < 1 || n > total) {
+      throw new Error(`key has Q${k}, outside 1..${total}`);
+    }
+    const letter = String(v ?? "").trim().toUpperCase();
+    if (letter === "X") {
+      dropped.push(n);
+      continue;
+    }
+    if (!KEY_LETTERS.has(letter)) {
+      throw new Error(`Q${n}: key letter ${JSON.stringify(v)} is not A-D or X`);
+    }
+    answers.set(n, letter);
+  }
+
+  const missing: number[] = [];
+  for (let n = 1; n <= total; n++) {
+    if (!answers.has(n) && !dropped.includes(n)) missing.push(n);
+  }
+  if (missing.length) {
+    throw new Error(
+      `key is missing ${missing.length} of ${total} question(s): Q${missing.slice(0, 12).join(", Q")}` +
+        `${missing.length > 12 ? ", ..." : ""}. A partial key must not be used as a full one.`
+    );
+  }
+
+  return { answers, dropped: dropped.sort((a, b) => a - b), total };
+}
+
+export type KeyVerdict = "MATCH" | "MISMATCH" | "DROPPED" | "NOT_DERIVED";
+export type KeyComparison = {
+  number: number;
+  verdict: KeyVerdict;
+  official?: string;
+  derived?: string;
+  derivation?: Derivation;
+};
+
+/**
+ * Compare ONE blind derivation pass against the official key.
+ *
+ * This is strictly stronger than the two-blind-pass crosstab it replaces, and in
+ * a way worth naming: two passes agreeing bounds DISAGREEMENT risk but is blind
+ * to CORRELATED error, and blind to a MIS-SLOTTED OPTION — where the correct
+ * answer's text sits under the wrong letter, so a deriver reasons correctly and
+ * confirms the wrong letter. An external key catches both. A mismatch here is
+ * therefore two hypotheses, not one: our reasoning was wrong, OR our options are
+ * mis-transcribed. Check the page before assuming the first.
+ */
+export function compareToKey(key: OfficialKey, derivations: Derivation[]): KeyComparison[] {
+  const byNumber = new Map(derivations.map((d) => [d.number, d]));
+  const out: KeyComparison[] = [];
+
+  for (let n = 1; n <= key.total; n++) {
+    if (key.dropped.includes(n)) {
+      out.push({ number: n, verdict: "DROPPED", derivation: byNumber.get(n) });
+      continue;
+    }
+    const official = key.answers.get(n)!;
+    const d = byNumber.get(n);
+    if (!d) {
+      out.push({ number: n, verdict: "NOT_DERIVED", official });
+      continue;
+    }
+    const derived = d.answer.trim().toUpperCase();
+    out.push({
+      number: n,
+      verdict: derived === official ? "MATCH" : "MISMATCH",
+      official,
+      derived,
+      derivation: d,
+    });
+  }
+  return out;
+}
+
+/**
+ * Produce the answers to commit: the LETTER from the official key, the WORKING
+ * from our derivation.
+ *
+ * The key supplies no reasoning, and shipping a correct answer with no working is
+ * a defect this bank has recorded before. So the derivation is still run — it is
+ * what a student reads — and the key overrides only the letter.
+ *
+ * A row where the two disagreed gets that stated in its reasoning. Without it the
+ * stored solution would argue at length for a letter the row no longer carries,
+ * which is worse than either half alone.
+ *
+ * DROPPED questions and questions nobody derived are EXCLUDED rather than
+ * defaulted: the first has no correct answer, and the second would ship a bare
+ * letter with no working.
+ */
+export function applyOfficialKey(key: OfficialKey, derivations: Derivation[]): Derivation[] {
+  const out: Derivation[] = [];
+  for (const d of derivations) {
+    if (key.dropped.includes(d.number)) continue;
+    const official = key.answers.get(d.number);
+    if (!official) continue;
+    const derived = d.answer.trim().toUpperCase();
+    if (derived === official) {
+      out.push({ ...d, answer: official });
+      continue;
+    }
+    out.push({
+      ...d,
+      answer: official,
+      reasoning:
+        `${d.reasoning.trim()} [Answer corrected to ${official} from the official UPSC answer key; ` +
+        `an independent blind derivation had reached ${derived}. The reasoning above argues for ` +
+        `${derived} and is retained so the disagreement is visible rather than hidden.]`,
+    });
+  }
+  return out.sort((a, b) => a.number - b.number);
+}
+
+/**
  * Group items that share a passage into sets, labelling each by its first item.
  *
  * A passage carried by exactly ONE item gets no label: a set of one is not a set,
