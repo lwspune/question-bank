@@ -194,10 +194,57 @@ def fmt(seq):
     return str(seq)
 
 
+def parity_outliers(english: list) -> list:
+    """Pages that break the booklet's own Hindi/English alternation.
+
+    WHY THIS EXISTS, and why it beats tuning the threshold. `classify` decides
+    on script alone: Devanagari joins its letters along the shirorekha, so a
+    Hindi page has long horizontal dark runs. That signal COLLAPSES on a page
+    with little prose — and CSAT Paper II is full of such pages, where the item
+    is `51x27x35x62x75`, a letter-analogy string, or four bare numeric options
+    with a few Hindi connectives around them.
+
+    Measured on 2020-p2, whose alternation was then established by reading the
+    pages: the Hindi p33 scored p95run=8 against English pages' 6-8 and Hindi
+    pages' 14-22. It is INSIDE the English range, so there is no threshold and
+    no "uncertain" band that separates it. Run length cannot answer this.
+
+    The alternation can. A bilingual booklet prints each item twice, Hindi then
+    English, so the English pages are all of one parity with no exceptions. Any
+    page breaking that parity is a misclassification until a human says
+    otherwise — which is a far stronger statement than a run-length score.
+
+    Returns the minority-parity pages, or [] when the run is clean.
+    """
+    if len(english) < 4:
+        return []
+    evens = [i for i in english if i % 2 == 0]
+    odds = [i for i in english if i % 2 == 1]
+    # Only meaningful when one parity clearly dominates; a genuinely mixed list
+    # is a different problem and must not be reported as a few stray pages.
+    if not evens or not odds:
+        return []
+    minority = odds if len(evens) > len(odds) else evens
+    return minority if len(minority) * 4 <= len(english) else []
+
+
 CALIBRATION = {
     # Established by reading the pages during the 2025 pilot.
     "2025-p2": list(range(2, 43, 2)),
     "2025-p1": list(range(1, 22)),
+}
+
+# Booklets where `classify` is KNOWN to over-report, and the parity check is what
+# catches it. Kept separate from CALIBRATION on purpose: these are not answers the
+# detector reproduces, they are answers it gets WRONG in a way the warning must
+# keep flagging. Folding them into CALIBRATION would turn --calibrate permanently
+# red, which trains people to ignore it.
+#
+# 2020-p2: pages 29 and 33 were opened and are Hindi (items 56-60 appear in Hindi
+# on p33 and in English on p34). Both are math/analogy pages carrying too little
+# Devanagari for the run-length signal.
+PARITY_CASES = {
+    "2020-p2": [29, 33],
 }
 
 
@@ -218,7 +265,16 @@ def main() -> None:
                 print(f"    got      {fmt(got)}")
                 print(f"    missing  {sorted(set(expected) - set(got))}")
                 print(f"    extra    {sorted(set(got) - set(expected))}")
-        print(f"\n{'detector reproduces both known answers' if ok else 'DETECTOR IS NOT TRUSTWORTHY'}")
+        print("\nPARITY WARNING — booklets the detector gets wrong, which the warning must catch\n")
+        for pid, expected in PARITY_CASES.items():
+            got = parity_outliers(run(pid)["english"])
+            match = got == expected
+            ok &= match
+            print(f"  {pid}: {'CATCHES IT' if match else 'MISSED IT'}  (flagged {got}, expected {expected})")
+            if not match:
+                print("    the alternation check no longer flags a page known to be Hindi.")
+
+        print(f"\n{'detector reproduces every known answer' if ok else 'DETECTOR IS NOT TRUSTWORTHY'}")
         sys.exit(0 if ok else 1)
 
     targets = args if args else (list(PAPERS) if "--all" in flags else [])
@@ -226,12 +282,34 @@ def main() -> None:
         raise SystemExit("name a paper, or pass --all / --calibrate")
 
     results = {}
+    suspect = False
     for pid in targets:
         r = run(pid, verbose="--verbose" in flags)
         results[pid] = r
         print(
             f"{pid:9s} {r['pageCount']:2d}pp  "
             f"EN {fmt(r['english']):34s}  HI {len(r['hindi']):2d}  BLANK {len(r['blank']):2d}  COVER {len(r['cover']):2d}"
+        )
+        outliers = parity_outliers(r["english"])
+        if outliers:
+            suspect = True
+            clean = [i for i in r["english"] if i not in outliers]
+            print(
+                f"          !! {len(outliers)} page(s) break the alternation: {outliers}\n"
+                f"             Every other English page here is "
+                f"{'even' if clean and clean[0] % 2 == 0 else 'odd'}-indexed. A bilingual booklet\n"
+                f"             prints each item twice, so there are no exceptions — these are\n"
+                f"             almost certainly HINDI pages whose script signal collapsed because\n"
+                f"             the page is mostly numerals (see parity_outliers).\n"
+                f"             OPEN THEM before using this list. Without the outliers the run is\n"
+                f"             {fmt(clean)}."
+            )
+
+    if suspect:
+        print(
+            "\n!! At least one paper above has pages breaking the alternation. Do NOT paste its\n"
+            "   page list into config.ts unmodified — feeding a Devanagari page to a transcription\n"
+            "   agent produces a silently missing item, not an error."
         )
 
     if "--json" in flags:
