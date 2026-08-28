@@ -611,6 +611,79 @@ const ADDITIONS_ROUND3: Addition[] = [
     why: "2021-2 Q43 (who IDENTIFIED Taxila — an archaeology question, not a society/trade one) and 2025-2 Q57 (Girnar, Cholistan, Mant, Sannati site identification). Two independent hits." },
 ];
 
+// ROUND 4 — applied 2026-08-28, with the corpus COMPLETE at 19 papers / 2,280 q.
+//
+// SCOPE, and what is deliberately NOT here. Only the ORDINARY additions ran: a
+// missing subtopic under a chapter that already exists, with TWO OR MORE
+// independent hits, plus one structural single-hit fix. Two things were held back
+// for the user because neither is a filing decision:
+//   - CHEMISTRY HAS NO THERMODYNAMICS CHAPTER (verified against all twelve of its
+//     chapters), so state-function and Gibbs-energy rows sit under PHYSICS — the
+//     closest honest home and still the wrong SUBJECT. That is a new chapter, not
+//     a subtopic.
+//   - Sociology, 19th-century world history, the medieval Islamic world and
+//     macroeconomic THEORY sit outside the subject structure entirely. The catalog
+//     came from NDA's GAT-GK taxonomy and CDS plainly reaches further into
+//     academic material; adding four chapters would widen what the product claims
+//     to cover. A scope call, not a catalog one.
+// Single-hit non-structural gaps stay banked in the analysis block above:
+// stereochemistry, kinetic theory, taxonomic hierarchy, biogeography, crustal
+// abundance, electrochemistry, climate finance, notable persons, airports, legal
+// maxims, economic systems, Indian political thought, public administration.
+const ADDITIONS_ROUND4: Addition[] = [
+  // ── 6 hits: the best-evidenced item of the entire run ──────────────────────
+  // Kept out of round 3 only because it had no obvious home; it belongs beside
+  // Population and Census, which is where every one of the six was parked.
+  { subject: "Geography", chapter: "Indian Geography — Economy, Resources and Transport",
+    subtopics: ["Indian Tribes and Ethnic Communities"],
+    why: "SIX hits across five papers: 2023-1 Q35 (Bhil/Gond/Ahom/Adi), 2020-1 Q38 (Nyishi), 2019-1 Q3 (Damin-i-Koh/Santals), 2019-2 Q30 (khuntkatti) and Q59 (a List-I header literally reading 'Ethnic Territorial Segment'), 2017-2 Q1 (Todas). All were parked on Population/Census or on a History chapter; the near-miss 'Other Medieval Kingdoms' names the Ahom but as a DYNASTY." },
+
+  // ── 4 hits each ───────────────────────────────────────────────────────────
+  { subject: "Current Affairs", chapter: "Government Schemes, Policy and Governance",
+    subtopics: ["Rural Development and Village-Level Schemes"],
+    why: "2026-1 Q88 (SAGY), Q106 (CSIR SMART VILLAGE), Q108 (STRY/DAY-NRLM/SVEP) and 2017-2 Q119 (SAGY again). All parked on 'Government Departments and Schemes' under POLITY, which is a machinery-of-government slot rather than a rural-development one." },
+  { subject: "History", chapter: "Modern India", subtopics: ["Peasant and Labour Movements"],
+    why: "2018-2 Q97 (All India Kisan Sabha) and Q119 (Eka Movement), 2017-2 Q35 (AITUC) and Q37 (an opium-policy peasant struggle). Four hits across two papers, and the chapter's existing subtopics are administration, economic policy, the freedom movement and 1857 — none of which is an organised-movement slot." },
+  // Language is not scoped to one hemisphere, so it goes in BOTH chapters. This is
+  // the round-2 asymmetry rule applied deliberately rather than learned again:
+  // adding it to only one strands the other side's questions.
+  { subject: "Geography", chapter: "Indian Geography — Economy, Resources and Transport",
+    subtopics: ["Languages and Linguistic Geography"],
+    why: "2020-1 Q89 (Indian languages) and 2018-2 Q45 (Khasi language family) — the Indian side of a gap also hit from the world side." },
+  { subject: "Geography", chapter: "World and Human Geography", subtopics: ["World Language Families"],
+    why: "2020-1 Q90 (world language families) and 2016-2 Q77 (Roma-Gypsy origins, Romani as Indo-Aryan) — the world side of the same gap. Added alongside the Indian subtopic so neither side strands the other." },
+
+  // ── 3 hits ────────────────────────────────────────────────────────────────
+  { subject: "History", chapter: "Modern India", subtopics: ["Historiography and Historians of India"],
+    why: "2019-1 Q109, 2017-2 Q78 and 2016-2 Q65 (Sumit Sarkar, Ranajit Guha, Bipan Chandra). The nearest home, 'Indian Literature, Poets and Cultural Figures', is a literary slot; an academic historian is not a poet." },
+
+  // ── 2 hits each ───────────────────────────────────────────────────────────
+  { subject: "Chemistry", chapter: "Carbon and Its Compounds", subtopics: ["Polymers and Plastics"],
+    why: "2019-1 Q56 (Nylon 6) and Q78 (thermoplastic vs thermosetting). Both were parked on 'Common Industrial Substances and Alloys', and two different transcribers reached for the same wrong home independently." },
+  { subject: "Physics", chapter: "Fluid Mechanics and Properties of Matter",
+    subtopics: ["Elasticity, Hooke's Law and Young's Modulus"],
+    why: "2019-1 Q85 and 2016-2 Q16. The chapter is NAMED for properties of matter and has no elasticity subtopic — the same shape as Biology's tissue slot excluding muscle by name." },
+  // Ancient India has 'Temple and Rock-Cut Architecture' and Medieval had no
+  // counterpart — the round-2 period asymmetry, still open after round 3.
+  { subject: "History", chapter: "Medieval India", subtopics: ["Temple and Monument Architecture"],
+    why: "2021-2 Q58 (a Vaishnavite temple, all four options Chola-era) and 2017-2 Q77. Ancient India carries 'Temple and Rock-Cut Architecture'; Medieval carried nothing equivalent despite being the period of the great monument-building." },
+  { subject: "Current Affairs", chapter: "National Events, Persons and India General Knowledge",
+    subtopics: ["National Symbols, Emblems and Protocol"],
+    why: "2024-2 Q32 (Flag Code of India, state emblem), 2020-1 Q98 (national fish) and 2026-1 Q105 (Table of Precedence). Three hits." },
+  { subject: "Polity", chapter: "Government Structure — Parliament, Judiciary and Constitutional Bodies",
+    subtopics: ["Civil Services and Training Academies"],
+    why: "2024-2 Q31 (LBSNAA/NACIN), 2020-1 Q110 (National Water Academy) and 2017-2 Q86/Q106 (Art. 311, All India Services). The constitutional provisions and the academies are the same subject and had no slot." },
+
+  // ── Structural single hit: correcting round 3's own application of its rule ──
+  // Round 3 added 'Scientists and Discoveries' to Biology and Chemistry on the
+  // reasoning that "who discovered X" is a question SHAPE occurring in every
+  // subject — then added it only to the subjects that had already produced hits.
+  // Geography produced one within a paper. See the analysis block above.
+  { subject: "Geography", chapter: "Earth in Space, Maps and Coordinates",
+    subtopics: ["Geographers, Scientists and Discoveries"],
+    why: "2019-2 Q72 (who coined the word 'Geography') had to go to World History > Ancient and Classical World. Physics, Biology and Chemistry all carry such a slot after round 3; Geography did not, which is round 3's rule applied too narrowly rather than a new finding." },
+];
+
 function main() {
   const apply = process.argv.includes("--apply");
   const path = join(__dirname, "catalog.json");
@@ -620,7 +693,7 @@ function main() {
   let newSubtopics = 0;
   const errors: string[] = [];
 
-  for (const a of [...ADDITIONS, ...ADDITIONS_ROUND2, ...ADDITIONS_ROUND3]) {
+  for (const a of [...ADDITIONS, ...ADDITIONS_ROUND2, ...ADDITIONS_ROUND3, ...ADDITIONS_ROUND4]) {
     const chapters = catalog[a.subject];
     if (!chapters) {
       errors.push(`unknown subject "${a.subject}" — additions never create a subject`);
