@@ -61,6 +61,75 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ---
 
+## 2026-08-28
+
+### Measure NDA's identical awards catch-all — 13 rows, shipped and PUBLIC
+
+The CDS GK awards subtopic was split on 2026-08-28: `Civilian Awards, Honours and Educational
+Institutions` held 18 rows doing two jobs — 14 awards, 3 pure institution-identification rows
+that never mention an award, 1 event — so it was renamed `Civilian Awards and Honours` and the
+three institutions re-filed onto `National Institutions, Milestones and History`, which already
+existed. **NDA carries a subtopic of the identical name, under an identically-named chapter,
+holding 13 rows of its own**, because the CDS catalog was generated from NDA's GAT-GK taxonomy.
+It was verified as a separate row (different subtopic under a different chapter under a
+different subject under a different exam) and deliberately left untouched.
+
+**Why:** if 3 of CDS's 18 were institutions filed under an awards subtopic, NDA's 13 very
+likely contain some too — and NDA is live, published content students are already filtering.
+The two exams now also diverge on this subtopic name, which is harmless but is a real
+difference rather than an oversight, and someone should know it is deliberate. Nobody has read
+NDA's 13.
+
+**How to apply:** read all 13 and report the awards/institutions split — measurement only, no
+writes. If the split mirrors CDS's, the fix is the same shape (`rename-awards.ts` is
+parameterisable: it resolves its target through exam → subject → chapter and asserts exactly
+one match, so pointing it at NDA is a config change, not a rewrite). Per the learning-
+propagation protocol this is shipped work, so it needs a 360 + explicit permission before any
+write.
+
+### `npm run audit:text` cannot run on a large corpus — it dies on the anon statement timeout
+
+Running `audit:text -- "CDS GK"` against the 2,280-row corpus on 2026-08-28 failed with
+`canceling statement due to statement timeout`. The four text-defect classes had to be checked
+by hand-written SQL instead. This is the same defect `audit:underlines` had and had fixed on
+2026-08-25 — it connects as `anon` (3,000 ms cap) rather than `service_role` (8 s), and its
+scan is unindexed.
+
+**Why:** the CLAUDE.md commands table says to run this after every ingest, and it is the only
+gate covering LITERAL_NEWLINE, TABLE_NO_SEPARATOR, DROPPED_SYMBOL and OPTION_LEAK. A gate that
+times out on anything large is a gate nobody runs — and the corpora keep growing, so the
+failure will spread rather than stay confined to CDS GK. Worse, the failure is loud enough to
+be dismissed as environmental rather than read as "this corpus was never audited".
+
+**How to apply:** port the `audit:underlines` fix — connect service-role, keep the existing
+source-substring filter, and consider paging. Then re-run it against `CDS GK` to confirm the
+corpus is genuinely clean rather than clean-by-hand-SQL. Note the hand SQL used on the day had
+its own bug worth avoiding: in Postgres **backslash is LIKE's default ESCAPE character**, so a
+literal-newline probe written `text LIKE '%\n%'` matches every row containing the letter *n*
+(it reported 2,253 of 2,280 as corrupt); use `position(chr(92)||'n' in text) > 0`.
+
+### Browser-verify the 2,280 published CDS General Knowledge rows
+
+The corpus went PUBLIC on 2026-08-28 with no render verification of any kind. Every check was
+data-level: `verify.ts` on all 19 papers, catalog conformance, control characters, math-delimiter
+balance, table separators. Nothing has been looked at in a browser.
+
+**Why:** this corpus carries shapes the data checks cannot judge — GFM pipe tables for every
+Match List (dozens of them), `[Diagram: …]` bracketed descriptions standing in for two printed
+maps, LaTeX in physics and chemistry stems, and a `pyq_note` provenance clause that is now
+student-visible on all 2,280 rows and has never been seen rendered. The provenance clause
+matters most: it is the thing telling a reader the answers are derived rather than official, and
+if it renders badly or is truncated, the disclosure silently fails. Related to the existing open
+item for the Batch J worksheet rows (2026-08-14) — same class, different corpus.
+
+**How to apply:** open `/browse` filtered to CDS → General Knowledge and spot-check ~15 rows
+spanning the range: a Match List (2016-2 Q34), a map question (2017-2 Q82 or Q101), a
+statement-code question, a LaTeX-bearing physics row (2019-1 Q62 carries `\neq`), and any row's
+answer reveal to confirm the provenance clause reads correctly. Also confirm the derived-answer
+note appears on the Word answer-key export, which is a different render path.
+
+---
+
 ## 2026-08-22
 
 ### `/browse` is hitting the same 8s statement-timeout wall — and unlike the dashboard, this one CAN reach students
