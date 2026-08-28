@@ -22,6 +22,7 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { sendEmail } from "@/lib/email/resend";
 import { buildBatchInviteEmail, SITE_URL } from "@/lib/email/templates";
 import { parseInviteEmails, inviteState, type InviteState } from "./invites";
+import { generateJoinCode, normalizeJoinCode } from "./joinCode";
 
 /** Where an invited student lands to accept or decline. */
 const INVITE_ACTION_URL = `${SITE_URL}/account`;
@@ -488,4 +489,145 @@ export async function listMyBatches(userId: string): Promise<MyBatch[]> {
       joinedAt: r.joined_at as string,
     };
   });
+}
+
+// ────────────────────────────────────────────────────────────────────
+// join codes (migration 0085)
+// ────────────────────────────────────────────────────────────────────
+
+/**
+ * Mint (or replace) a batch's join code.
+ *
+ * Rotating INVALIDATES the old code, which is the point: it is the only way to
+ * shut out a code that has escaped the classroom. Existing enrollments are
+ * untouched — the code is a door, not a membership.
+ *
+ * Authorization is the caller's RLS client: batches_update_scoped (0057)
+ * rejects a teacher writing to another branch's batch.
+ */
+export async function rotateJoinCode(
+  client: SupabaseClient,
+  batchId: string
+): Promise<{ kind: "ok"; code: string } | { kind: "error"; message: string }> {
+  // The DB holds the uniqueness constraint, so a collision is a retry, not a
+  // pre-check — checking first would be a race.
+  for (let attempt = 0; attempt < 5; attempt++) {
+    const code = generateJoinCode();
+    const { data, error } = await client
+      .from("batches")
+      .update({ join_code: code, join_open: true })
+      .eq("id", batchId)
+      .select("id")
+      .maybeSingle();
+    if (!error) {
+      // RLS returning no row means the caller may not touch this batch — NOT
+      // that the batch is missing, and definitely not something to retry.
+      if (!data) return { kind: "error", message: "Batch not found" };
+      return { kind: "ok", code };
+    }
+    if (error.code !== "23505") return { kind: "error", message: error.message };
+  }
+  return { kind: "error", message: "Could not generate a unique code. Try again." };
+}
+
+/** Open or close the door without archiving the cohort. */
+export async function setJoinOpen(
+  client: SupabaseClient,
+  batchId: string,
+  open: boolean
+): Promise<{ kind: "ok" } | { kind: "error"; message: string }> {
+  const { data, error } = await client
+    .from("batches")
+    .update({ join_open: open })
+    .eq("id", batchId)
+    .select("id")
+    .maybeSingle();
+  if (error) return { kind: "error", message: error.message };
+  if (!data) return { kind: "error", message: "Batch not found" };
+  return { kind: "ok" };
+}
+
+export type JoinByCodeResult =
+  | { kind: "ok"; batchName: string; orgName: string }
+  | { kind: "already_member"; batchName: string }
+  | { kind: "invalid_code" }
+  | { kind: "closed" }
+  | { kind: "error"; message: string };
+
+/**
+ * A student joins by typing the code.
+ *
+ * Service-role by necessity: a student cannot read `batches` at all (its policy
+ * needs an org id and they have none), so nothing but the server can turn a
+ * code into a batch. Presenting a valid code IS the grant, which is why
+ * batch_enrollments still has no INSERT policy.
+ *
+ * `closed` is reported distinctly from `invalid_code`, which does concede that
+ * a valid-but-closed code exists. That is a deliberate trade: over a 1.1e12
+ * space behind a rate-limited endpoint the leak is negligible, and the student
+ * standing in the classroom needs to know the difference between "you mistyped
+ * it" and "ask your teacher to reopen it".
+ */
+export async function joinByCode(input: {
+  userId: string;
+  rawCode: string;
+}): Promise<JoinByCodeResult> {
+  const code = normalizeJoinCode(input.rawCode);
+  if (!code) return { kind: "invalid_code" };
+
+  try {
+    const admin = createSupabaseAdminClient();
+    const { data: batch } = await admin
+      .from("batches")
+      .select("id, name, org_id, archived, join_open")
+      .eq("join_code", code)
+      .maybeSingle<{
+        id: string;
+        name: string;
+        org_id: string;
+        archived: boolean;
+        join_open: boolean;
+      }>();
+    if (!batch) return { kind: "invalid_code" };
+    if (!batch.join_open || batch.archived) return { kind: "closed" };
+
+    const { data: existing } = await admin
+      .from("batch_enrollments")
+      .select("user_id")
+      .eq("batch_id", batch.id)
+      .eq("user_id", input.userId)
+      .maybeSingle();
+    if (existing) return { kind: "already_member", batchName: batch.name };
+
+    const { error } = await admin
+      .from("batch_enrollments")
+      .upsert(
+        { batch_id: batch.id, user_id: input.userId },
+        { onConflict: "batch_id,user_id" }
+      );
+    if (error) return { kind: "error", message: error.message };
+
+    // Any pending invite to this batch is now moot — resolve it so the student
+    // is not asked to accept something they have already joined.
+    const { data: user } = await admin.auth.admin.getUserById(input.userId);
+    const email = user?.user?.email?.toLowerCase();
+    if (email) {
+      await admin
+        .from("batch_invites")
+        .update({ status: "accepted", responded_at: new Date().toISOString() })
+        .eq("batch_id", batch.id)
+        .eq("email", email)
+        .eq("status", "pending");
+    }
+
+    const { data: org } = await admin
+      .from("organizations")
+      .select("name")
+      .eq("id", batch.org_id)
+      .maybeSingle<{ name: string }>();
+
+    return { kind: "ok", batchName: batch.name, orgName: org?.name ?? "An institute" };
+  } catch (err) {
+    return { kind: "error", message: err instanceof Error ? err.message : String(err) };
+  }
 }

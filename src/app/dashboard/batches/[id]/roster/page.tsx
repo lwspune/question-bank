@@ -26,9 +26,9 @@ export default async function RosterPage({ params }: { params: { id: string } })
   const client = createSupabaseServerClient();
   const { data: batch } = await client
     .from("batches")
-    .select("id, name")
+    .select("id, name, join_code, join_open")
     .eq("id", params.id)
-    .maybeSingle<{ id: string; name: string }>();
+    .maybeSingle<{ id: string; name: string; join_code: string | null; join_open: boolean }>();
   if (!batch) notFound();
 
   const { students, pendingInvites } = await loadRoster(client, batch.id);
@@ -61,6 +61,8 @@ export default async function RosterPage({ params }: { params: { id: string } })
 
         <RosterClient
           batchId={batch.id}
+          joinCode={batch.join_code}
+          joinOpen={batch.join_open}
           students={students}
           pendingInvites={pendingInvites}
         />

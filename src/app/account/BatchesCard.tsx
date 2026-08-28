@@ -2,7 +2,7 @@
 
 /**
  * "Your classes" on /account — pending batch invites, and the batches a student
- * has joined (migrations 0083/0084).
+ * has joined (migrations 0083-0085).
  *
  * THE CONSENT LINE IS THE POINT OF THIS CARD, not decoration. Accepting lets an
  * institute see this person's exam results, so the card says exactly that
@@ -14,6 +14,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { GraduationCap, Users } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 export type PendingInviteView = {
@@ -37,8 +38,7 @@ export default function BatchesCard({
 }) {
   const router = useRouter();
   const [busy, setBusy] = useState<string | null>(null);
-
-  if (invites.length === 0 && batches.length === 0) return null;
+  const [code, setCode] = useState("");
 
   async function post(body: Record<string, string>, key: string, okMsg: string) {
     setBusy(key);
@@ -54,6 +54,39 @@ export default function BatchesCard({
         return;
       }
       toast.success(okMsg);
+      router.refresh();
+    } catch {
+      toast.error("Network error. Please try again.");
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  async function joinByCode(e: React.FormEvent) {
+    e.preventDefault();
+    if (!code.trim()) return;
+    setBusy("code");
+    try {
+      const res = await fetch("/api/batches/respond", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "join_code", code }),
+      });
+      const json = (await res.json().catch(() => ({}))) as {
+        error?: string;
+        batchName?: string;
+        already?: boolean;
+      };
+      if (!res.ok) {
+        toast.error(json.error ?? "Could not join that class.");
+        return;
+      }
+      toast.success(
+        json.already
+          ? `You are already in ${json.batchName}.`
+          : `Joined ${json.batchName}.`
+      );
+      setCode("");
       router.refresh();
     } catch {
       toast.error("Network error. Please try again.");
@@ -135,6 +168,30 @@ export default function BatchesCard({
           ))}
         </ul>
       )}
+      <form onSubmit={joinByCode} className="mt-5 border-t pt-4">
+        <label htmlFor="join-code" className="text-sm font-medium">
+          Have a class code?
+        </label>
+        <p className="mt-0.5 text-sm text-muted-foreground">
+          Enter the code your teacher gave you. They will be able to see your mock test
+          results, and you can leave at any time.
+        </p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          <Input
+            id="join-code"
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+            placeholder="ABCD-2345"
+            autoComplete="off"
+            autoCapitalize="characters"
+            spellCheck={false}
+            className="max-w-[180px] font-mono tracking-widest"
+          />
+          <Button type="submit" variant="outline" disabled={busy !== null || !code.trim()}>
+            {busy === "code" ? "Joining…" : "Join class"}
+          </Button>
+        </div>
+      </form>
     </section>
   );
 }

@@ -11,18 +11,23 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { Mail, UserMinus, X } from "lucide-react";
+import { KeyRound, Mail, RefreshCw, UserMinus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { RosterStudent } from "@/lib/batches/invitesAdmin";
+import { formatJoinCode } from "@/lib/batches/joinCode";
 
 type PendingInvite = { id: string; email: string; expiresAt: string };
 
 export default function RosterClient({
   batchId,
+  joinCode,
+  joinOpen,
   students,
   pendingInvites,
 }: {
   batchId: string;
+  joinCode: string | null;
+  joinOpen: boolean;
   students: RosterStudent[];
   pendingInvites: PendingInvite[];
 }) {
@@ -85,6 +90,26 @@ export default function RosterClient({
     }
   }
 
+  async function codeAction(body: Record<string, unknown>, okMsg: string) {
+    setBusy("code");
+    try {
+      const res = await fetch("/api/batches/invite", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...body, batchId }),
+      });
+      const json = (await res.json().catch(() => ({}))) as { error?: string };
+      if (!res.ok) {
+        toast.error(json.error ?? "Something went wrong.");
+        return;
+      }
+      toast.success(okMsg);
+      router.refresh();
+    } finally {
+      setBusy(null);
+    }
+  }
+
   async function revoke(inviteId: string) {
     setBusy(inviteId);
     try {
@@ -128,6 +153,66 @@ export default function RosterClient({
 
   return (
     <div className="space-y-6">
+      <section className="rounded-xl border bg-card p-4">
+        <h2 className="flex items-center gap-2 text-sm font-semibold">
+          <KeyRound className="h-4 w-4 text-brand-accent" aria-hidden />
+          Class join code
+        </h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Read this out in class or share it in your group. Students enter it on their
+          account page to join — no email addresses needed.
+        </p>
+        {joinCode ? (
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            <code className="rounded-lg border bg-muted px-3 py-2 font-mono text-lg tracking-widest">
+              {formatJoinCode(joinCode)}
+            </code>
+            <span className="text-sm text-muted-foreground">
+              {joinOpen ? "Open — students can join" : "Closed — nobody can join"}
+            </span>
+          </div>
+        ) : (
+          <p className="mt-3 text-sm text-muted-foreground">No code yet.</p>
+        )}
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Button
+            variant={joinCode ? "outline" : "brand"}
+            size="sm"
+            disabled={busy !== null}
+            onClick={() =>
+              codeAction(
+                { action: "rotate_code" },
+                joinCode ? "New code generated. The old one no longer works." : "Join code created."
+              )
+            }
+          >
+            <RefreshCw className="h-3.5 w-3.5" aria-hidden />
+            {joinCode ? "Generate a new code" : "Create a join code"}
+          </Button>
+          {joinCode && (
+            <Button
+              variant="ghost"
+              size="sm"
+              disabled={busy !== null}
+              onClick={() =>
+                codeAction(
+                  { action: "set_join_open", open: !joinOpen },
+                  joinOpen ? "Closed to new students." : "Open to new students."
+                )
+              }
+            >
+              {joinOpen ? "Stop new students joining" : "Allow students to join"}
+            </Button>
+          )}
+        </div>
+        {joinCode && (
+          <p className="mt-2 text-xs text-muted-foreground">
+            Generating a new code invalidates the old one. Students already in the batch
+            stay in.
+          </p>
+        )}
+      </section>
+
       <section className="rounded-xl border bg-card p-4">
         <h2 className="flex items-center gap-2 text-sm font-semibold">
           <Mail className="h-4 w-4 text-brand-accent" aria-hidden />

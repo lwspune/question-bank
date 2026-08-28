@@ -13,13 +13,21 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { respondToInvite } from "@/lib/batches/invitesAdmin";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { checkAndIncrement } from "@/lib/rate-limit";
+import { respondToInvite, joinByCode } from "@/lib/batches/invitesAdmin";
 
 export const maxDuration = 15;
 
 type Body =
   | { action: "accept" | "decline"; inviteId: string }
-  | { action: "leave"; batchId: string };
+  | { action: "leave"; batchId: string }
+  | { action: "join_code"; code: string };
+
+const HOUR_MS = 60 * 60 * 1000;
+/** Codes are guessable in principle; 10 tries an hour makes that useless in
+ *  practice while leaving room for a student fat-fingering it a few times. */
+const JOIN_ATTEMPT_LIMIT = 10;
 
 export async function POST(request: NextRequest) {
   const user = await getSessionUser();
@@ -31,6 +39,44 @@ export async function POST(request: NextRequest) {
   const body = (await request.json().catch(() => null)) as Body | null;
   if (!body || typeof body !== "object" || !("action" in body)) {
     return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  }
+
+  if (body.action === "join_code") {
+    if (typeof body.code !== "string") {
+      return NextResponse.json({ error: "code is required" }, { status: 400 });
+    }
+    // Rate-limit BEFORE resolving, so a wrong guess still costs a try.
+    const rl = await checkAndIncrement(
+      createSupabaseAdminClient(),
+      `batch-join:${user.id}`,
+      { limit: JOIN_ATTEMPT_LIMIT, windowMs: HOUR_MS }
+    );
+    if (!rl.ok) {
+      return NextResponse.json(
+        { error: "Too many attempts. Try again later." },
+        { status: 429 }
+      );
+    }
+
+    const res = await joinByCode({ userId: user.id, rawCode: body.code });
+    switch (res.kind) {
+      case "ok":
+        return NextResponse.json({ ok: true, batchName: res.batchName, orgName: res.orgName });
+      case "already_member":
+        return NextResponse.json({ ok: true, batchName: res.batchName, already: true });
+      case "invalid_code":
+        return NextResponse.json(
+          { error: "That code doesn't match any class. Check it with your teacher." },
+          { status: 404 }
+        );
+      case "closed":
+        return NextResponse.json(
+          { error: "That class isn't accepting new students right now." },
+          { status: 409 }
+        );
+      case "error":
+        return NextResponse.json({ error: res.message }, { status: 500 });
+    }
   }
 
   if (body.action === "leave") {

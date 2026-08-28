@@ -15,7 +15,12 @@ import { requireEditor, HttpError } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { checkAndIncrement } from "@/lib/rate-limit";
-import { inviteToBatch, revokeInvite } from "@/lib/batches/invitesAdmin";
+import {
+  inviteToBatch,
+  revokeInvite,
+  rotateJoinCode,
+  setJoinOpen,
+} from "@/lib/batches/invitesAdmin";
 
 export const maxDuration = 60; // a full class is up to 200 sequential sends
 
@@ -24,7 +29,9 @@ const INVITE_LIMIT = 20; // requests per user per hour, not addresses
 
 type Body =
   | { action: "invite"; batchId: string; emails: string }
-  | { action: "revoke"; batchId: string; inviteId: string };
+  | { action: "revoke"; batchId: string; inviteId: string }
+  | { action: "rotate_code"; batchId: string }
+  | { action: "set_join_open"; batchId: string; open: boolean };
 
 export async function POST(request: NextRequest) {
   try {
@@ -41,6 +48,28 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: "batchId and inviteId are required" }, { status: 400 });
       }
       const res = await revokeInvite(db, body.batchId, body.inviteId);
+      if (res.kind === "error") {
+        return NextResponse.json({ error: res.message }, { status: 400 });
+      }
+      return NextResponse.json({ ok: true });
+    }
+
+    if (body.action === "rotate_code") {
+      if (!body.batchId) {
+        return NextResponse.json({ error: "batchId is required" }, { status: 400 });
+      }
+      const res = await rotateJoinCode(db, body.batchId);
+      if (res.kind === "error") {
+        return NextResponse.json({ error: res.message }, { status: 400 });
+      }
+      return NextResponse.json({ ok: true, code: res.code });
+    }
+
+    if (body.action === "set_join_open") {
+      if (!body.batchId || typeof body.open !== "boolean") {
+        return NextResponse.json({ error: "batchId and open are required" }, { status: 400 });
+      }
+      const res = await setJoinOpen(db, body.batchId, body.open);
       if (res.kind === "error") {
         return NextResponse.json({ error: res.message }, { status: 400 });
       }
