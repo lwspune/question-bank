@@ -1,0 +1,42 @@
+{
+  "paper": "2020-p2",
+  "pass": "a",
+  "packet": "p4",
+  "items": [
+    {
+      "number": 76,
+      "answer": "D",
+      "value": "5/6, whose value changes least (by 5/66, about 0.0758)",
+      "confidence": "HIGH",
+      "reasoning": "Adding 5 to both parts gives 2/3 -> 7/8, 3/4 -> 8/9, 4/5 -> 9/10 and 5/6 -> 10/11. The changes are 7/8 - 2/3 = 5/24 = 0.2083, 8/9 - 3/4 = 5/36 = 0.1389, 9/10 - 4/5 = 1/10 = 0.1000 and 10/11 - 5/6 = 5/66 = 0.0758. The smallest change is on 5/6. This is the general pattern: adding the same amount to numerator and denominator pushes a proper fraction towards 1, and the fraction already closest to 1 has the least distance left to move."
+    },
+    {
+      "number": 77,
+      "answer": "D",
+      "value": "3n + 1, which for the only admissible digit n = 9 equals 28 = 4 x 7",
+      "confidence": "HIGH",
+      "reasoning": "The stem says n is a DIGIT greater than 3, so n lies in 4 to 9. The digits there divisible by 3 are 6 and 9, and 6 is excluded because it is divisible by 6; hence n = 9 uniquely. Testing the options at n = 9: 2n = 18, 3n = 27 and 2n + 4 = 22 are none of them multiples of 4, while 3n + 1 = 28 = 4 x 7 is. The word 'digit' is load-bearing - if n were allowed to be any odd multiple of 3 then no option would always work (for n = 15, 3n + 1 = 46 leaves remainder 2), so the printed restriction to a single digit is what makes the item answerable."
+    },
+    {
+      "number": 78,
+      "answer": "C",
+      "value": "100 cubic millimetres",
+      "confidence": "HIGH",
+      "reasoning": "One litre = 1000 cubic centimetres, and 1 cubic centimetre = 10 x 10 x 10 = 1000 cubic millimetres, so 1 litre = 1,000,000 cubic mm. That same litre weighs 1 kg = 1000 gm, so 1 gm of water occupies 1,000,000 / 1000 = 1000 cubic mm, and 0.1 gm occupies 100 cubic mm."
+    },
+    {
+      "number": 79,
+      "answer": "A",
+      "value": "10 kg",
+      "confidence": "HIGH",
+      "reasoning": "Let V be the weight of the empty vessel and W the weight of a full load of water. Then V + W = 40 and V + W/3 = 20. Subtracting gives (2/3)W = 20, so W = 30 and V = 40 - 30 = 10 kg. Checking: 10 + 30 = 40 kg full, and 10 + 10 = 20 kg when one-third filled."
+    },
+    {
+      "number": 80,
+      "answer": "B",
+      "value": "29 jumps",
+      "confidence": "HIGH",
+      "reasoning": "The well is 4.5 m = 450 cm deep. Each jump gains 30 cm but the slide-back of 15 cm means a net gain of 15 cm per completed cycle - except on the final jump, where the frog is already out and does not slide. After k complete cycles the frog is at 15k cm, and it escapes on the next jump when 15k + 30 >= 450, i.e. k >= 28. So after 28 cycles it stands at 420 cm and the 29th jump carries it 30 cm more to exactly 450 cm, the top of the well. The total is 29 jumps; the trap answer 30 comes from dividing 450 by the net 15 cm and forgetting that the last jump has no slide."
+    }
+  ]
+}

@@ -47,6 +47,7 @@ Write exactly one file: `scripts/upsc/data/<paperId>.<band>.json`
   "pages": [1, 2, 3, 4],
   "bandReport": {
     "numbersFound": [1, 2, 3, 4, 5],
+    "itemsByPage": { "1": [1, 2], "2": [3], "3": [4, 5], "4": [] },
     "firstComplete": true,
     "lastComplete": true,
     "notes": ""
@@ -73,10 +74,30 @@ Write exactly one file: `scripts/upsc/data/<paperId>.<band>.json`
 
 `bandReport`:
 - `numbersFound` — every item number you actually saw, in order.
+- `itemsByPage` — **one key per page in your band, including any page you found
+  empty.** This is not bookkeeping; it is the only field that can show you opened
+  every page you were given. See the box below.
 - `firstComplete` / `lastComplete` — is the first/last item in your band **whole**
   on your pages, or does it start before / continue after them?
 - `notes` — anything a later reader needs. Sliced crops, a defective question,
   an item you could not read, a number that skips.
+
+> **WHY `itemsByPage` EXISTS.** `firstComplete` / `lastComplete` describe the
+> items you *did* transcribe, not the pages you were *assigned* — so neither can
+> show that you opened every page. Nothing else in the file can either. If a page
+> were ever skipped, the paper-level coverage gate would catch the missing items,
+> but only after every band was written, and working out *which* page went missing
+> means rendering pages and reading them by eye.
+>
+> `itemsByPage` turns that into a glance, and it costs you nothing: several bands
+> already volunteer a per-page table in `notes` unprompted, which is where this
+> field came from. A page key with an empty list is either a genuinely blank page
+> or one you never opened, and you are the only one who can say which — so say it
+> in `notes` when it happens.
+>
+> Fill it in from what you actually read, page by page, as you go. Do not
+> reconstruct it at the end from `numbersFound` — a reconstruction cannot
+> distinguish those two cases and defeats the entire point.
 
 ---
 

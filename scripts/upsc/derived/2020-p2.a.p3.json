@@ -1,0 +1,182 @@
+{
+  "paper": "2020-p2",
+  "pass": "a",
+  "packet": "p3",
+  "items": [
+    {
+      "number": 51,
+      "answer": "D",
+      "value": "1 3/4 m (i.e. 7/4 m)",
+      "confidence": "HIGH",
+      "reasoning": "The greatest length that measures both 3 1/2 m = 7/2 m and 8 3/4 m = 35/4 m a whole number of times is the HCF of the two fractions = HCF(7, 35) / LCM(2, 4) = 7/4 m = 1 3/4 m. Checking: (7/2) / (7/4) = 2 and (35/4) / (7/4) = 5, both integers. No other option works for both lengths: 5/4 divides 35/4 exactly 7 times but gives (7/2) / (5/4) = 14/5, while 3/2 and 4/3 divide neither (7/3 and 35/6; 21/8 and 105/16)."
+    },
+    {
+      "number": 52,
+      "answer": "D",
+      "value": "1971-1981, where the natural growth rate is 37.1 - 14.8 = 22.3, the highest in the table",
+      "confidence": "HIGH",
+      "reasoning": "Natural growth rate = birth rate minus death rate. Decade by decade: 1911-21 = 12.6, 1921-31 = 10.1, 1931-41 = 14.0, 1941-51 = 12.5, 1951-61 = 18.9, 1961-71 = 22.2, 1971-81 = 22.3. The maximum is 22.3 in 1971-1981. It is only marginally ahead of 1961-1971 (22.2), which is the trap: the birth rate is falling steadily, but the death rate falls faster, so the gap keeps widening to the last decade shown."
+    },
+    {
+      "number": 53,
+      "answer": "B",
+      "value": "14/11",
+      "confidence": "HIGH",
+      "reasoning": "In 1.272727... the pair '27' repeats, so the fractional part is 27/99 = 3/11 and the number is 1 + 3/11 = 14/11. Dividing back, 14/11 = 1.272727... exactly. The other options evaluate to 1.1818... (13/11), 1.2828... (127/99) and 1.3838... (137/99); 127/99 is the trap that comes from wrongly treating the whole of '127' as the repeating block."
+    },
+    {
+      "number": 54,
+      "answer": "B",
+      "value": "1022",
+      "confidence": "HIGH",
+      "reasoning": "A number leaving remainder 2 on division by 3, 4, 5 and 6 has the form 60k + 2, since LCM(3, 4, 5, 6) = 60. The least four-digit such number needs 60k + 2 >= 1000, i.e. k >= 16.63, so k = 17 and the number is 1022. Verified directly: 1022 leaves remainder 2 on all four divisors, whereas 1012 leaves 1, 0, 2, 4 and 1122 leaves 0, 2, 2, 0."
+    },
+    {
+      "number": 55,
+      "answer": "C",
+      "value": "34 2/7 %",
+      "confidence": "HIGH",
+      "reasoning": "Because marriages are strictly one-to-one and there are no widows or widowers, the number of married men equals the number of married women: 0.40M = 0.30W, so W = 4M/3. Take M = 3 and W = 4 (in any common unit). Married persons = 0.4(3) + 0.3(4) = 1.2 + 1.2 = 2.4, out of a total adult population of 7. That is 2.4/7 = 240/7 % = 34 2/7 %. The tempting 35% is the plain average of 40 and 30, which is wrong because the two sexes are not equal in number."
+    },
+    {
+      "number": 56,
+      "answer": "A",
+      "value": "50",
+      "confidence": "HIGH",
+      "reasoning": "Only the last two digits matter. Working stepwise mod 100: 35 x 62 = 2170 -> 70; 70 x 75 = 5250 -> 50; 50 x 51 = 2550 -> 50; 50 x 27 = 1350 -> 50. The full product 51 x 27 x 35 x 62 x 75 = 224106750, which indeed ends in 50. Once a factor of 50 appears alongside an even factor the tail settles at 50, never at 25 or 5."
+    },
+    {
+      "number": 57,
+      "answer": "C",
+      "value": "Rs 400",
+      "confidence": "HIGH",
+      "reasoning": "Multiply the ratio 1/2 : 3/4 : 5/6 by the LCM of the denominators, 12, to get 6 : 9 : 10, a total of 25 parts. Each part is 2500/25 = Rs 100, so the shares are Rs 600, Rs 900 and Rs 1000. The difference between the largest and the smallest is 1000 - 600 = Rs 400."
+    },
+    {
+      "number": 58,
+      "answer": "B",
+      "value": "For any whole number n",
+      "confidence": "HIGH",
+      "reasoning": "For every whole number n, 10^n + 1 is written as 1, then n-1 zeros, then 1 (and for n = 0 it is simply 2), so the digit sum is 2 in every case: n = 0 gives 2, n = 1 gives 11, n = 2 gives 101, n = 3 gives 1001, and so on. Option C is wrong because of the word 'only' - it excludes n = 0, which also works - and A is wrong for the same reason in reverse. D fails because a non-integer n gives a non-integer such as 10^0.5 + 1 = 4.162..., for which a digit sum of 2 is not defined."
+    },
+    {
+      "number": 59,
+      "answer": "C",
+      "value": "The average weight of the class remains the same",
+      "confidence": "HIGH",
+      "reasoning": "The students are only moved between groups inside the same class; nobody joins or leaves. The total weight of the class and the number of students in it are therefore both unchanged, and the class average is total weight divided by number of students. Only the group averages of A, B and C can move; the question asks about the class, so the answer is fixed and option D ('insufficient data') is a distractor."
+    },
+    {
+      "number": 60,
+      "answer": "A",
+      "value": "16 different sums",
+      "confidence": "HIGH",
+      "reasoning": "Taking at least three of the five denominations at a time means choosing 3, 4 or all 5 of them: C(5,3) + C(5,4) + C(5,5) = 10 + 5 + 1 = 16 selections. Enumerating all 16 totals - 350, 650, 750, 800, 850, 2150, 2250, 2300, 2350, 2550, 2600, 2650, 2700, 2750, 2800, 2850 - shows every one is distinct, so no two selections collapse into the same sum and the count of different sums is also 16."
+    },
+    {
+      "number": 61,
+      "answer": "C",
+      "value": "India lacks the institutional mechanism to deal with the failure of banks",
+      "confidence": "HIGH",
+      "reasoning": "The passage says the institutional change that should have followed the 1991 reforms was 'setting up of a resolution corporation for banks', and states plainly that 'we cannot shut down banks because there is no proper system to shut them down'. That is exactly a missing institutional mechanism for bank failure. A overstates - the passage faults an institutional gap, not the banking system's ability to support growth; B generalises the incomplete reforms into a verdict on the whole economy, which the passage never delivers; D introduces foreign investment, which the passage does not mention at all."
+    },
+    {
+      "number": 62,
+      "answer": "C",
+      "value": "Getting renewable resources to market too soon may be costly",
+      "confidence": "HIGH",
+      "reasoning": "The passage says certain renewable resources are 'still going through their cost curves and learning curves', and that business houses are wary of investing too heavily 'at a time when the technology is not yet ready'. Together these say that deploying renewables before the technology matures carries a cost penalty, which is option C. A is contradicted by the passage's description of a strong commitment and heavy investment; B and D are prescriptions about importing or exploring gas that the passage never makes - it mentions a push towards a gas-based economy only as one of two parallel steps."
+    },
+    {
+      "number": 63,
+      "answer": "D",
+      "value": "Neither assumption 1 nor assumption 2 is valid",
+      "confidence": "MED",
+      "reasoning": "Assumption 1 fails because the passage never mentions subsidies at all, let alone inefficient or costly ones - it says the government 'invested heavily', which is not the same claim, and 'often' generalises to governments in general, well beyond the text. Assumption 2 fails because the passage gives the emission target two supports, not one: 'it has initiated a strong push towards a gas-based economy and has also invested heavily in renewable energy'. Saying the commitment 'shall be on the basis of gas-based economy' drops the second half and so is not something the passage takes for granted. The judgement call is on statement 2, where a looser reading of 'on the basis of' could be defended."
+    },
+    {
+      "number": 64,
+      "answer": "C",
+      "value": "Both assumptions are valid",
+      "confidence": "MED",
+      "reasoning": "Assumption 2 is close to explicit: the passage says the repair of the genome 'is a process that occurs naturally when plants are under attack' and throws up mutations that let the plant survive future attacks, and that this can now be speeded up by mechanisms through which 'the relevant genes can be altered very precisely'. Assumption 1 is the unstated premise behind the passage's opening line that 'genome editing is different from genome modification': every step it describes - locating a part of the plant's own genome, cutting it with molecular scissors, repairing it - works on the plant's existing genes, with no gene brought in from another plant. The judgement call is on statement 1, which the passage implies through the editing-versus-modification contrast rather than stating."
+    },
+    {
+      "number": 65,
+      "answer": "C",
+      "value": "Solid waste management should be integrated with the maintenance of drainage and sewerage networks",
+      "confidence": "HIGH",
+      "reasoning": "The passage's whole point is the poorly understood interaction: what happens when unscientific solid waste management 'combines with' poor drainage and untreated sewage in storm-water drains, producing choked drains, stagnant water, mosquitoes and water-borne disease. The corrective that follows from treating those three systems as one problem is option C. A picks up a supporting detail rather than the message; B raises resources and legislative authority, which the passage never discusses; D names drinking water shortage, whereas the passage's stated outcome is water-borne disease, not scarcity."
+    },
+    {
+      "number": 66,
+      "answer": "B",
+      "value": "Religious freedom under the Constitution is open to State intervention",
+      "confidence": "HIGH",
+      "reasoning": "The passage stresses that Article 25's guarantee is prefixed by 'subject to public order, morality, health and to the other provisions of this Part', and calls this a subordination clause that places the other fundamental rights - including equality before law - above the right to religious freedom. A right hedged by public order, morality, health and other rights is by definition open to State regulation, which is B. A and D assert the opposite of the passage's central claim, and C is simply false on the text, which places Article 25 in Part III on fundamental rights."
+    },
+    {
+      "number": 67,
+      "answer": "D",
+      "value": "6 words",
+      "confidence": "HIGH",
+      "reasoning": "DELHI has five distinct letters. Fixing D in the first place and I in the last leaves E, L and H to fill the three middle places, which can be done in 3! = 6 ways. Enumerating them confirms exactly six: DEHLI, DELHI, DHELI, DHLEI, DLEHI, DLHEI. The 24 in option A is 4!, which would be the count if only one end were fixed."
+    },
+    {
+      "number": 68,
+      "answer": "C",
+      "value": "16 : 9",
+      "confidence": "HIGH",
+      "reasoning": "Each operation removes one-fifth of whatever is in the bottle, so the quantity of A left after two operations is 20 x (1 - 4/20)^2 = 20 x (4/5)^2 = 12.8 litres. Step by step: after the first replacement 16 litres of A remain; the second draw of 4 litres of a 16:4 mixture removes 3.2 litres of A, leaving 12.8 litres. B is therefore 20 - 12.8 = 7.2 litres, and 12.8 : 7.2 = 128 : 72 = 16 : 9. The 4 : 1 in option A is the ratio after only the first replacement."
+    },
+    {
+      "number": 69,
+      "answer": "C",
+      "value": "62",
+      "confidence": "HIGH",
+      "reasoning": "Runs after 50 innings = 50 x 46.4 = 2320. The average rises by 2.6 to 49.0 after 60 innings, so runs after 60 innings = 60 x 49 = 2940. The last ten innings therefore produced 2940 - 2320 = 620 runs, an average of 62. A common error is to add 2.6 x 60 to 46.4, which produces the inflated figures in options A and B."
+    },
+    {
+      "number": 70,
+      "answer": "B",
+      "value": "Rs 40 per kg",
+      "confidence": "HIGH",
+      "reasoning": "If the original price is p, the new price is 1.25p and the quantity bought for Rs 1200 falls from 1200/p to 1200/(1.25p) = 960/p. The shortfall is 240/p = 6, so p = Rs 40. Checking against the options: at Rs 40 the person gets 30 kg before and 24 kg after, exactly 6 kg less; at Rs 30 the drop is 8 kg, at Rs 50 it is 4.8 kg and at Rs 60 it is 4 kg."
+    },
+    {
+      "number": 71,
+      "answer": "A",
+      "value": "6 days",
+      "confidence": "HIGH",
+      "reasoning": "X does 20% in 8 days, so X's rate is 2.5% per day (a full job in 40 days); Y does 25% in 6 days, so Y's rate is 25/6 % per day (a full job in 24 days). Together they do 1/40 + 1/24 = 1/15 of the work each day, that is 100/15 % per day. To finish 40% they need 40 / (100/15) = 6 days."
+    },
+    {
+      "number": 72,
+      "answer": "B",
+      "value": "The average speed is 48v/25 = 1.92v, which lies between v and 2v km/hr",
+      "confidence": "HIGH",
+      "reasoning": "Each of the four legs covers the same distance d, so the average speed is the harmonic mean of v, 2v, 3v and 4v, not their arithmetic mean. Total distance = 4d and total time = d/v + d/2v + d/3v + d/4v = (d/v)(25/12), giving average speed = 4d / [(d/v)(25/12)] = 48v/25 = 1.92v. That lies strictly between v and 2v. The arithmetic mean 2.5v would wrongly place the answer in option C - the slow legs dominate the time, pulling the true average down."
+    },
+    {
+      "number": 73,
+      "answer": "B",
+      "value": "Only statement 2 is correct: the maximum number of points of intersection is 8, but the minimum is not 2",
+      "confidence": "HIGH",
+      "reasoning": "Statement 2 is correct: a circle can cut each of the four sides of a square in at most two points, giving 8, and this is actually attained - for a square of side 2 centred at the origin and a circle of radius 1.2 about the same centre, each side is crossed twice. Statement 1 is wrong: a circle drawn entirely inside the square, or entirely outside it, meets the square in no points at all, so the minimum is 0 (and even where the two touch, a single tangent point of 1 is possible). Since the minimum is never 2, only statement 2 stands."
+    },
+    {
+      "number": 74,
+      "answer": "D",
+      "value": "3 : 1",
+      "confidence": "HIGH",
+      "reasoning": "Let b be the speed in still water and c the speed of the current, over a fixed distance d. Downstream time is d/(b + c) and upstream time is d/(b - c); the condition that downstream takes half the upstream time gives 1/(b + c) = (1/2) x 1/(b - c), so 2(b - c) = b + c, i.e. b = 3c. The required ratio of still-water speed to current is therefore 3 : 1."
+    },
+    {
+      "number": 75,
+      "answer": "A",
+      "value": "3 pairs - namely (8, 1), (12, 9) and (32, 31)",
+      "confidence": "HIGH",
+      "reasoning": "Write a^2 - b^2 = (a - b)(a + b) = 63. Since 63 is odd, both factors must be odd, and a - b < a + b, so the factor pairs are (1, 63), (3, 21) and (7, 9). These give (a, b) = (32, 31), (12, 9) and (8, 1) respectively - three pairs, confirmed by an exhaustive search over natural numbers. Note that the printed options are not in numeric order: the value 3 is option (a), so the answer letter is A, not the (a) 2 / (b) 3 pattern one might expect."
+    }
+  ]
+}
