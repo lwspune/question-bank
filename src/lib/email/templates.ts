@@ -165,3 +165,64 @@ function firstMockCopy(who: string): { subject: string; lead: string } {
 function round(n: number): string {
   return Number.isInteger(n) ? String(n) : n.toFixed(2).replace(/\.?0+$/, "");
 }
+
+// ── batch invites (migration 0084) ───────────────────────────────────────────
+
+export type InviteEmailInput = {
+  /** The inviting institute, from organizations.name. See the BRAND note below. */
+  orgName: string;
+  batchName: string;
+  /** Absolute URL of the page where the invite is accepted or declined. */
+  actionUrl: string;
+};
+
+/**
+ * "X invited you to their batch" — transactional, sent on a teacher's action.
+ *
+ * BRAND EXCEPTION, DELIBERATE. Everywhere else the tenant org name is a
+ * staff-gated string and a student never sees it (see CLAUDE.md). Here it MUST
+ * appear: the student is being asked to let a specific institute see their exam
+ * results, and consent that cannot name the party is not consent. PYQ Vault
+ * remains the sender brand; the org is named as the inviter, not as the product.
+ *
+ * DELIBERATELY THIN. A mistyped address reaches a stranger, so this discloses
+ * the institute, the batch name and nothing else — no student name, no scores,
+ * no hint about whether the address has an account here. It ends with an
+ * explicit ignore path so a wrong recipient has an action that is not "accept".
+ *
+ * NOT unsubscribable, and that is correct: this is a one-off transactional
+ * message a human requested, not a campaign. `email_opt_out` gates the mock
+ * recommendation run and does not apply.
+ */
+export function buildBatchInviteEmail(input: InviteEmailInput): BuiltEmail {
+  const { orgName, batchName, actionUrl } = input;
+  const subject = `${orgName} invited you to ${batchName} on ${BRAND}`;
+
+  const text = [
+    "Hi,",
+    "",
+    `${orgName} has invited you to join their batch "${batchName}" on ${BRAND}.`,
+    "",
+    "If you accept, their teachers will be able to see your mock test results.",
+    "You can leave the batch at any time, which stops that.",
+    "",
+    `Accept or decline: ${actionUrl}`,
+    "",
+    `Don't recognise ${orgName}? Ignore this email — nothing happens unless you accept.`,
+    "",
+    `— ${BRAND}`,
+  ].join("\n");
+
+  const html = `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:520px;margin:0 auto;color:${INK};line-height:1.55">
+  <p style="margin:0 0 16px">Hi,</p>
+  <p style="margin:0 0 16px"><strong>${escapeHtml(orgName)}</strong> has invited you to join their batch &ldquo;${escapeHtml(batchName)}&rdquo; on ${BRAND}.</p>
+  <p style="margin:0 0 20px">If you accept, their teachers will be able to see your mock test results. You can leave the batch at any time, which stops that.</p>
+  <p style="margin:0 0 24px">
+    <a href="${actionUrl}" style="background:${ACCENT};color:#fff;text-decoration:none;padding:11px 20px;border-radius:6px;display:inline-block;font-weight:600">Accept or decline</a>
+  </p>
+  <p style="margin:0 0 24px;color:${MUTED};font-size:14px">Don&#39;t recognise ${escapeHtml(orgName)}? Ignore this email — nothing happens unless you accept.</p>
+  <p style="margin:0">— ${BRAND}</p>
+</div>`;
+
+  return { subject, text, html, replyTo: REPLY_TO, headers: {} };
+}
