@@ -1,0 +1,303 @@
+{
+  "band": "b5",
+  "pages": [34, 36, 38, 40, 42],
+  "bandReport": {
+    "numbersFound": [62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Item 80 is present and COMPLETE (stem + all four options, ending '(d) Three') and is the last item of the paper — p42 ends there. Item 62 is complete: its governing Passage-2 opens at the top of p34-c1 and its options close in the same column.\n\nNeither seam cut an item. p34-c1 opens on the 'Passage - 2' heading itself, with nothing above it, so no item was in progress at the leading edge — items 60 and 61 are not on my pages and belong wholly to the preceding band. p42 is the last content page and ends after item 80's fourth option.\n\nTWO directions blocks are in play and the passage numbering RESTARTS between them, so a reader of context strings alone will see two 'Passage - 2' and two 'Passage - 3'. Their prose is entirely different, so the contexts do not collide. (a) An earlier block, whose 'Directions' preamble sits on p32 (band b4, not my territory), supplies Passage-2 -> item 62, Passage-3 -> item 63, Passage-4 -> item 64. I did not read the preamble; the mapping is read off the page layout (each Passage heading is followed immediately by exactly one item, and the next Passage heading follows that item's options). It is self-consistent with a four-passage block covering items 61-64. (b) A NEW block opens at the top of p38-c2: 'Directions for the following 3 (three) items : Read the following three passages ...' -> Passage-1 = item 71, Passage-2 = item 72, Passage-3 = item 73.\n\nEvery context in this band is therefore used by exactly ONE item, and all six will raise lonely-context warnings at merge. They are the LEGITIMATE case named in findLonelyContexts: a directions block carrying several passages gives each item its own. No sibling item lost a copy at a band seam, and no per-item material was parked in context — each item's own statement list, 'Question' text and code line are in its stem. There are no data-sufficiency items in this band.\n\nThe directions preamble itself is deliberately NOT included in any context; contexts hold passage prose only, without the 'Passage - N' label.\n\nVERBATIM ODDITY, transcribed as printed and not corrected: item 69 opens 'There are large number of silver coins ...' (the printed text omits the article before 'large number'). Flagged on the item.\n\nCOLUMN CROPS. p36-c2, p38-c2, p40-c2 and p42-c2 each have their item NUMBERS clipped off at the left edge (the numbers were caught in the right margin of the matching -c1 crop instead); no body text was lost. I recovered the numbers from the -c1 margin and then confirmed every one of them against the whole-page images p36.png, p38.png, p40.png and p42.png. p40 was the flagged weak-gutter page (gutterFound=false, fell back near the page midpoint): its split is in fact clean — no line is sliced — but because it was flagged I read p40 from p40.png as well as from p40-c2.png and the two agree. All text in this band was read from column images; whole-page images were used only to verify item numbering and column boundaries.\n\nNo item number skips: 62-80 contiguous, each seen exactly once. Reading order was c1 top-to-bottom then c2 top-to-bottom on every page."
+  },
+  "questions": [
+    {
+      "number": 62,
+      "context": "Household finance in India is unique. We have a tendency to invest heavily in physical assets such as gold and property. Steps to encourage the financialization of savings are critical. A populace accustomed to traditional processes will not simply jump into financialization. Hurdles to change include onerous bureaucracy, a scepticism of organized financial institutions, a lack of basic information about which of the myriad services and providers is best for each family, and how (and even if) one can make the transition between them if necessary.",
+      "stem": "Regarding the financialization of household savings, which of the following statements best reflect the solutions that are implied by the passage ?\n1. A flexible environment is needed to develop solutions.\n2. Households need customised solutions.\n3. Innovations in financial technology are required.\nSelect the correct answer using the code given below :",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "2 and 3 only" },
+        { "label": "C", "text": "1 and 3 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 63,
+      "context": "Pharmaceutical patents grant protection to the patentee for the duration of the patent term. The patentees enjoy the liberty to determine the prices of medicines, which is time-limited to the period of monopoly, but could be unaffordable to the public. Such patent protection offered to the patentees is believed to benefit the public over the longer term through innovations and research and development (R&D), although it comes at a cost, in the nature of higher prices for the patented medicine. The patent regime and price protection — through a legally validated high price for the medicine during the currency of the patent — provide the patentee with a legitimate mechanism to get returns on the costs incurred in innovation and research.",
+      "stem": "Based on the above passage, the following assumptions have been made :\n1. Patent protection given to patentees puts a huge burden on public’s purchasing power in accessing patented medicines.\n2. Dependence on other countries for pharmaceutical products is a huge burden for developing and poor countries.\n3. Providing medicines to the public at affordable prices is a key goal during the public health policy design in many countries.\n4. Governments need to find an appropriate balance between the rights of patentees and the requirements of the patients.\nWhich of the above assumptions are valid ?",
+      "options": [
+        { "label": "A", "text": "1 and 2" },
+        { "label": "B", "text": "1 and 4" },
+        { "label": "C", "text": "3 and 4" },
+        { "label": "D", "text": "2 and 3" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 64,
+      "context": "India should ensure the growth of the digital economy while keeping personal data of citizens secure and protected. No one will innovate in a surveillance-oriented environment or in a place where an individual’s personal information is compromised. The ultimate control of data must reside with the individuals who generate it; they should be enabled to use, restrict or monetise it as they wish. Therefore, data protection laws should enable the right kind of innovation — one that is user-centric and privacy protecting.",
+      "stem": "Based on the above passage, the following assumptions have been made :\n1. Protection of privacy is not just a right, but it has value to the economy.\n2. There is a fundamental link between privacy and innovation.\nWhich of the above assumptions is/are valid ?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 65,
+      "stem": "In an examination, the maximum marks for each of the four papers namely P, Q, R and S are 100. Marks scored by the students are in integers. A student can score 99% in \\(n\\) different ways. What is the value of \\(n\\) ?",
+      "options": [
+        { "label": "A", "text": "16" },
+        { "label": "B", "text": "17" },
+        { "label": "C", "text": "23" },
+        { "label": "D", "text": "35" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Permutations and Combinations",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 66,
+      "stem": "A flag has to be designed with 4 horizontal stripes using some or all of the colours red, green and yellow. What is the number of different ways in which this can be done so that no two adjacent stripes have the same colour ?",
+      "options": [
+        { "label": "A", "text": "12" },
+        { "label": "B", "text": "18" },
+        { "label": "C", "text": "24" },
+        { "label": "D", "text": "36" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Permutations and Combinations",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 67,
+      "stem": "A rectangular floor measures 4 m in length and 2·2 m in breadth. Tiles of size 140 cm by 60 cm have to be laid such that the tiles do not overlap. A tile can be placed in any orientation so long as its edges are parallel to the edges of the floor. What is the maximum number of tiles that can be accommodated on the floor ?",
+      "options": [
+        { "label": "A", "text": "6" },
+        { "label": "B", "text": "7" },
+        { "label": "C", "text": "8" },
+        { "label": "D", "text": "9" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Mensuration and Geometry",
+      "subtopic": "Areas and Perimeters",
+      "difficulty": "HARD",
+      "flags": ["Breadth is printed with the booklet's raised decimal point: '2·2 m'."]
+    },
+    {
+      "number": 68,
+      "stem": "There are five persons P, Q, R, S and T each one of whom has to be assigned one task. Neither P nor Q can be assigned Task-1. Task-2 must be assigned to either R or S. In how many ways can the assignment be done ?",
+      "options": [
+        { "label": "A", "text": "6" },
+        { "label": "B", "text": "12" },
+        { "label": "C", "text": "18" },
+        { "label": "D", "text": "24" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Permutations and Combinations",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 69,
+      "stem": "There are large number of silver coins weighing 2 gm, 5 gm, 10 gm, 25 gm, 50 gm each. Consider the following statements :\n1. To buy 78 gm of coins one must buy at least 7 coins.\n2. To weigh 78 gm using these coins one can use less than 7 coins.\nWhich of the statements given above is/are correct ?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Miscellaneous Mental Ability",
+      "subtopic": "Logical Puzzles",
+      "difficulty": "HARD",
+      "flags": ["Printed as 'There are large number of silver coins' — the article before 'large number' is missing in the booklet. Transcribed verbatim, not corrected."]
+    },
+    {
+      "number": 70,
+      "stem": "Consider the following :\nI. \\(A + B\\) means A is neither smaller nor equal to B.\nII. \\(A - B\\) means A is not greater than B.\nIII. \\(A \\times B\\) means A is not smaller than B.\nIV. \\(A \\div B\\) means A is neither greater nor equal to B.\nV. \\(A \\pm B\\) means A is neither smaller nor greater than B.\nStatement : \\(P \\times Q\\), \\(P - T\\), \\(T \\div R\\), \\(R \\pm S\\)\nConclusion-1 : \\(Q \\pm T\\)\nConclusion-2 : \\(S + Q\\)\nWhich one of the following is correct in respect of the above Statement and the Conclusions ?",
+      "options": [
+        { "label": "A", "text": "Only Conclusion-1 follows from the Statement." },
+        { "label": "B", "text": "Only Conclusion-2 follows from the Statement." },
+        { "label": "C", "text": "Both Conclusion-1 and Conclusion-2 follow from the Statement." },
+        { "label": "D", "text": "Neither Conclusion-1 nor Conclusion-2 follows from the Statement." }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Coding-Decoding and Symbol Logic",
+      "subtopic": "Symbol and Inequality Coding",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 71,
+      "context": "In India, while the unemployment rate is a frequently used measure of poor performance of the economy, under conditions of rising school and college enrolment, it paints an inaccurate picture. The reported unemployment rate is dominated by the experience of younger Indians who face higher employment challenges and exhibit greater willingness to wait for the right job than their older peers. The unemployment challenge is greater for people with secondary or higher education, and rising education levels inflate unemployment challenges.",
+      "stem": "Which one of the following statements most likely reflects as to what the author of the passage intends to say ?",
+      "options": [
+        { "label": "A", "text": "Enrolment in schools and colleges is high but there is no quality education." },
+        { "label": "B", "text": "Unemployment must be seen as a function of rising education and aspirations of young Indians." },
+        { "label": "C", "text": "There are no labour-intensive industries to accommodate the huge number of unemployed people." },
+        { "label": "D", "text": "The education system should be properly designed so as to enable the educated people to be self-employed." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 72,
+      "context": "“Science by itself is not enough, there must be a force and discipline outside the sciences to coordinate them and point to a goal. It is not possible to run a course aright when the goal itself has not been rightly placed. What science needs is philosophy — the analysis of scientific method and the coordination of scientific purposes and results; without this, any science must be superficial. Government suffers, precisely like science, for lack of philosophy. Philosophy bears to science the same relationship which statesmanship bears to politics : movement guided by total knowledge and perspective, as against aimless and individual seeking. Just as the pursuit of knowledge becomes scholasticism when divorced from the actual needs of men and life, so the pursuit of politics becomes a destructive bedlam when divorced from science and philosophy.”",
+      "stem": "Which one of the following statements best reflects the most rational, logical and practical message conveyed by the passage ?",
+      "options": [
+        { "label": "A", "text": "Modern statesmen need to be well trained in scientific methods and philosophical thinking to enable them to have a better perspective of their roles, responsibilities and goals." },
+        { "label": "B", "text": "It is not desirable to have Governments managed by empirical statesmen unless well mixed with others who are grounded in learning and reflect wisdom." },
+        { "label": "C", "text": "As the statesmen/bureaucrats are the products of a society, it is desirable to have a system of education in a society that focuses on training its citizens in scientific method and philosophical thinking from a very early age." },
+        { "label": "D", "text": "It is desirable that all scientists need to be philosophers as well to make their work goal-oriented and thus purposeful and useful to the society." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 73,
+      "context": "“The last end of the state is not to dominate men, nor to restrain them by fear; rather it is so to free each man from fear that he may live and act with full security and without injury to himself or his neighbour. The end of the state, I repeat, is not to make rational beings into brute beasts and machines. It is to enable their bodies and their minds to function safely. It is to lead men to live by, and to exercise, a free reason; that they may not waste their strength in hatred, anger and guile, nor act unfairly toward one another.”",
+      "stem": "Based on the above passage, which one of the following terms best expresses the ultimate goal of the state ?",
+      "options": [
+        { "label": "A", "text": "Personal safety" },
+        { "label": "B", "text": "Health of body and mind" },
+        { "label": "C", "text": "Communal harmony" },
+        { "label": "D", "text": "Liberty" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 74,
+      "stem": "What is the remainder if \\(2^{192}\\) is divided by 6 ?",
+      "options": [
+        { "label": "A", "text": "0" },
+        { "label": "B", "text": "1" },
+        { "label": "C", "text": "2" },
+        { "label": "D", "text": "4" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 75,
+      "stem": "Consider the sequence\nABC_ _ ABC_ DABBCD_ ABCD\nthat follows a certain pattern.\nWhich one of the following completes the sequence ?",
+      "options": [
+        { "label": "A", "text": "DACB" },
+        { "label": "B", "text": "CDAB" },
+        { "label": "C", "text": "DCCA" },
+        { "label": "D", "text": "DDCA" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Series and Analogy",
+      "subtopic": "Letter and Alphanumeric Series",
+      "difficulty": "MODERATE",
+      "flags": ["The sequence is printed with four blanks set as underscores: 'ABC_ _ ABC_ DABBCD_ ABCD' (two blanks after the first ABC, one after the second ABC, one after DABBCD). Transcribed exactly as printed."]
+    },
+    {
+      "number": 76,
+      "stem": "AB and CD are 2-digit numbers. Multiplying AB with CD results in a 3-digit number DEF. Adding DEF to another 3-digit number GHI results in 975. Further A, B, C, D, E, F, G, H, I are distinct digits. If \\(E = 0\\), \\(F = 8\\), then what is \\(A + B + C\\) equal to ?",
+      "options": [
+        { "label": "A", "text": "6" },
+        { "label": "B", "text": "7" },
+        { "label": "C", "text": "8" },
+        { "label": "D", "text": "9" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 77,
+      "stem": "Consider the following statements in respect of five candidates P, Q, R, S and T. Two statements are true and one statement is false.\nTrue Statement : One of P and Q was selected for the job.\nFalse Statement : At least one of R and S was selected for the job.\nTrue Statement : At most two of R, S and T were selected for the job.\nWhich of the following conclusions can be drawn ?\n1. At least four were selected for the job.\n2. S was selected for the job.\nSelect the correct answer using the code given below :",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Syllogisms and Logical Deduction",
+      "subtopic": "Statements and Conclusions",
+      "difficulty": "HARD",
+      "flags": ["The three labelled lines are printed in italics as 'True Statement :', 'False Statement :' and 'True Statement :' in that order — the label is part of the printed stem, not an editorial addition."]
+    },
+    {
+      "number": 78,
+      "stem": "Let P, Q, R, S and T be five statements such that :\nI. If P is true, then both Q and S are true.\nII. If R and S are true, then T is false.\nWhich of the following can be concluded ?\n1. If T is true, then at least one of P and R must be false.\n2. If Q is true, then P is true.\nSelect the correct answer using the code given below :",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Syllogisms and Logical Deduction",
+      "subtopic": "Statements and Conclusions",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 79,
+      "stem": "A cuboid of dimensions \\(7 \\text{ cm} \\times 5 \\text{ cm} \\times 3 \\text{ cm}\\) is painted red, green and blue colour on each pair of opposite faces of dimensions \\(7 \\text{ cm} \\times 5 \\text{ cm}\\), \\(5 \\text{ cm} \\times 3 \\text{ cm}\\), \\(7 \\text{ cm} \\times 3 \\text{ cm}\\) respectively. Then the cuboid is cut and separated into various cubes each of side length 1 cm. Which of the following statements is/are correct ?\n1. There are exactly 15 small cubes with no paint on any face.\n2. There are exactly 6 small cubes with exactly two faces, one painted with blue and the other with green.\nSelect the correct answer using the code given below :",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Cubes, Dice and Spatial Reasoning",
+      "subtopic": "Cubes and Cuboids",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 80,
+      "stem": "The letters of the word “INCOMPREHENSIBILITIES” are arranged alphabetically in reverse order. How many positions of the letter/letters will remain unchanged ?",
+      "options": [
+        { "label": "A", "text": "None" },
+        { "label": "B", "text": "One" },
+        { "label": "C", "text": "Two" },
+        { "label": "D", "text": "Three" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Series and Analogy",
+      "subtopic": "Letter and Alphanumeric Series",
+      "difficulty": "HARD",
+      "flags": []
+    }
+  ]
+}

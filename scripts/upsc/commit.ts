@@ -191,8 +191,16 @@ async function main() {
     .eq("id", jobId);
 
   console.log(`done. ${linked} rows linked to job ${jobId}.`);
-  if ((linked ?? 0) !== pat.questions) {
-    console.log(`\n!! expected ${pat.questions} rows for this paper, found ${linked}.`);
+  // A paper with questions UPSC withdrew commits FEWER rows than the paper has
+  // items, by design — they carry no correct answer. Comparing against the raw
+  // item count would flag every such paper as short.
+  const expected = pat.questions - dropped.length;
+  if ((linked ?? 0) !== expected) {
+    console.log(
+      `\n!! expected ${expected} row(s) for this paper` +
+        (dropped.length ? ` (${pat.questions} items minus ${dropped.length} dropped)` : "") +
+        `, found ${linked}.`
+    );
   }
 }
 
