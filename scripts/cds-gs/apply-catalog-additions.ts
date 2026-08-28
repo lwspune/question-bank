@@ -481,6 +481,68 @@ const ADDITIONS_ROUND2: Addition[] = [
 // NOT here. An addition prevents future mis-filing and is cheaper the earlier it
 // lands; a rename only corrects filing that already happened, so its cost is
 // per-question and identical whenever paid. It waits for one end-of-run pass.
+/*
+ * ROUND 4 CANDIDATES — evidence banked 2026-08-28, NOT applied.
+ *
+ * THE ONE THAT IS CHAPTER-LEVEL, and the first since round 1: CHEMISTRY HAS NO
+ * THERMODYNAMICS CHAPTER. Verified against the full catalog — Chemistry's twelve
+ * chapters are Acids/Bases/Salts, Atomic Structure, Carbon, Chemical Bonding,
+ * Chemical Reactions, Everyday Life, Hydrogen and Water, Industrial and Applied,
+ * Matter and Its States, Metals and Non-Metals, Mole Concept, Practical — and the
+ * ONLY thermodynamics home anywhere is `Physics > Heat and Thermodynamics`. So
+ * 2019-1 Q79 (state functions) and Q80 (Gibbs free energy and spontaneity) were
+ * filed under PHYSICS: the closest genuine home, and still the wrong SUBJECT, so a
+ * student filtering `subject = Chemistry` will never see them.
+ *
+ * A chapter needs `newChapter: true` and more evidence than two questions from one
+ * paper, so it is deliberately not bolted onto round 3. Watch for
+ * enthalpy/entropy/Hess's-law rows in the remaining papers.
+ *
+ * WHAT 2019-1 CHANGED ABOUT THE SHAPE OF THE GAP LIST. Every earlier round found
+ * gaps INSIDE the existing subject structure — a missing subtopic under a chapter
+ * that exists. This paper produced the first cluster that sits OUTSIDE it:
+ *   - Sociology / modern Indian social theory (Q31, Ashis Nandy) — no subject, let
+ *     alone a chapter, anywhere in the catalog.
+ *   - 19th-century AMERICAN history (Q43, Kansas-Nebraska Act) — World History's
+ *     five chapters are Ancient/Classical, Renaissance, Enlightenment and Political
+ *     Revolutions, Industrial Revolution, 20th Century. No 19th-century slot.
+ *   - Medieval Islamic world / history of science outside Europe (Q42, Al-Khwarizmi).
+ *   - Macroeconomic THEORY — consumption function, Keynesian effective demand (Q39,
+ *     Q40). Economics' three chapters are all applied/Indian-economy.
+ * These are a different KIND of finding from "add a subtopic", and the honest
+ * response is not to bolt four more chapters on. The catalog was generated once from
+ * NDA's GAT-GK taxonomy, and CDS evidently reaches further into academic material
+ * than NDA does. Decide the SCOPE question deliberately at the end of the run, with
+ * all 19 papers' evidence in hand, rather than one paper at a time.
+ *
+ * Subtopic-level, in chapters that already exist:
+ *   - ELASTICITY — Hooke's law, stress-strain, Young's modulus (2019-1 Q85), absent
+ *     from `Fluid Mechanics and Properties of Matter` despite that chapter being
+ *     named for properties of matter. With KINETIC THEORY OF GASES (Q83) this
+ *     corrects round 3's reading that Physics is well-fitted: it fits at CHAPTER
+ *     level and still has real subtopic holes.
+ *   - Medieval temple architecture (2021-2 Q58). Ancient India has `Temple and
+ *     Rock-Cut Architecture` and Medieval has no counterpart — the round-2 period
+ *     asymmetry again, and the closest of these to applying on its own.
+ *   - Indian tribes and ethnic communities — THREE hits now (2023-1 Q35, 2020-1 Q38,
+ *     2019-1 Q3 Damin-i-Koh/Santals). The best-evidenced item on this list.
+ *   - Linguistic geography / world language families (2020-1 Q89 + Q90).
+ *   - Polymers and plastics (2019-1 Q56 and Q78, two hits in one paper, and the two
+ *     transcribers independently filed them the same way).
+ *   - Colonial education and Orientalist institutions — Fort William College, the
+ *     Asiatic Society, Serampore (2019-1 Q1).
+ *   - Stereochemistry / conformational analysis (2019-1 Q55).
+ *   - Airports and civil aviation infrastructure (2019-1 Q17, Pakyong).
+ *   - Non-current book authorship: the only books-and-authors home is under CURRENT
+ *     AFFAIRS, so a 1976 academic work has nowhere to go (2019-1 Q30).
+ *   - Modern historiography, historians of India and their works (2019-1 Q109).
+ *   - Water harvesting and watershed structures (2019-1 Q76).
+ *   - World industrial cities and their products (2019-1 Q74). Same world-scope shape
+ *     as the round-3 geography additions.
+ *   - Taxonomic hierarchy and binomial nomenclature (2020-2 Q92); antibiotic
+ *     MECHANISM as distinct from discovery (2020-2 Q110); biogeography (2020-1 Q64);
+ *     crustal abundance of an element (2021-2 Q9).
+ */
 const ADDITIONS_ROUND3: Addition[] = [
   // ── The asymmetry rule, violation 1: a dynastic slot the Sultanate never got ──
   // Medieval India names the Mughals and Vijayanagara as chapters' worth of dynasty

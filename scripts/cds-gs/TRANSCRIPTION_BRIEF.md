@@ -157,6 +157,19 @@ Write **one JSON file** to the path your prompt names. Shape:
 }
 ```
 
+## NAMESPACE YOUR SCRATCH FILES BY BAND — the scratchpad is SHARED
+
+Several agents run at once on this pipeline and they all share one scratchpad
+directory. Two agents transcribing the same paper independently created
+`merge_2019_1.py`, and one silently overwrote the other's copy mid-run. The two
+scripts had different contracts and one of them deleted its own fragments on
+exit, so running the wrong one would have destroyed work with no error.
+
+Prefix EVERY scratch file you create — scripts as well as crops — with the paper
+and band you own: `2019-1-B1_merge.py`, not `merge.py`. Nothing you write is
+private just because you made it, and a generic filename is an invitation for a
+peer to clobber it. Delete your own when done and leave everyone else's alone.
+
 ## WRITE AFTER EVERY PAGE — not "early", not "when the band is done"
 
 Agents on this pipeline die to transient API errors. Three have. What separates a
