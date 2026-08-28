@@ -38,6 +38,38 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
   ],
 
+  // The remaining nine humanities chapters — History 4-9 and PolSci 3-5. Every
+  // one of them closes with a single "Exercise" block, exactly like the five
+  // above, so each outline is one block. Verified per chapter against the
+  // rendered exercise page, not assumed from the pattern.
+  "indian-arts-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "mass-media-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "entertainment-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sports-history-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "tourism-history-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "heritage-management-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "political-parties-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "social-political-movements-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "challenges-democracy-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+
   // Geometry Ch.2 — the first MULTI-BLOCK outline in this file, in the book's
   // physical reading order (printed pp.36-46).
   //

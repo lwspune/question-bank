@@ -180,6 +180,197 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ══ THE REMAINING NINE HUMANITIES CHAPTERS (History 4-9, PolSci 3-5) ══
+  //
+  // Page ranges were read off the book, not inferred: every chapter opener and
+  // every "Exercise" heading was located by scanning all 112 pages, because the
+  // chapters are NOT uniform in length (Ch.5 is 7pp, Ch.7 is 6pp) and the
+  // Political Science half restarts its own numbering at 1.
+  //
+  // ⚠ SUBTOPIC POLICY HERE DIFFERS FROM THE 2026-08-02 PILOT, DELIBERATELY.
+  // That pass RENAMED six drifted PYQ-era subtopics to the book's headings.
+  // These nine chapters carry drift too, but renaming a subtopic re-files
+  // SHIPPED board-PYQ rows, so the names below REUSE the existing DB strings
+  // verbatim and only ADD the book sections that have no subtopic at all. The
+  // drift is real and is recorded per chapter as `// drift:` so the rename can
+  // be made later as one reviewed pass rather than smuggled in with an ingest.
+
+  "indian-arts-10": {
+    id: "indian-arts-10",
+    chapterName: "History of Indian Arts",
+    subjectName: "History",
+    sourceFile: "StateBoard_10_History__History_of_Indian_Arts.pdf",
+    pdf: HIST,
+    pages: range(31, 40), // printed pp 22-31; Exercise on idx 40
+    note: "Maharashtra State Board (Class 10) — History of Indian Arts (Balbharati textbook, History and Political Science)",
+    // Book sections 4.1-4.4. Only 4.1 is new; the other three already exist.
+    subtopics: [
+      "What is Art", // NEW — §4.1
+      "Indian Traditions of Visual Arts",
+      "Indian Traditions of Performing Arts",
+      "Art, Applied Art and Professional Opportunities",
+    ],
+  },
+
+  "mass-media-10": {
+    id: "mass-media-10",
+    chapterName: "Mass Media and History",
+    subjectName: "History",
+    sourceFile: "StateBoard_10_History__Mass_Media_and_History.pdf",
+    pdf: HIST,
+    pages: range(41, 47), // printed pp 32-38; Exercise on idx 46, Projects idx 47
+    note: "Maharashtra State Board (Class 10) — Mass Media and History (Balbharati textbook, History and Political Science)",
+    // Book sections 5.1-5.5. §5.4 prints in full as "Critical understanding of
+    // the information received through Mass Media"; the existing DB subtopic is
+    // the shortened "Critical Understanding of Mass Media" and is reused.
+    // drift: "Newspapers, Radio and Television" is NOT a book section — it is
+    // the three sub-parts of §5.2 History of Mass Media, promoted by the PYQ
+    // ingest. Kept because 11 shipped PYQ rows sit on it.
+    subtopics: [
+      "Introduction to Mass Media", // NEW — §5.1
+      "History of Mass Media",
+      "Newspapers, Radio and Television",
+      "Why do we need Mass Media", // NEW — §5.3
+      "Critical Understanding of Mass Media",
+      "Mass Media and Professional Opportunities", // NEW — §5.5
+    ],
+  },
+
+  "entertainment-10": {
+    id: "entertainment-10",
+    chapterName: "Entertainment and History",
+    subjectName: "History",
+    sourceFile: "StateBoard_10_History__Entertainment_and_History.pdf",
+    pdf: HIST,
+    pages: range(48, 54), // printed pp 39-45; Exercise on idx 54
+    note: "Maharashtra State Board (Class 10) — Entertainment and History (Balbharati textbook, History and Political Science)",
+    // drift: the book's §6.2 is "Folk Theatre"; the DB carries "Folk Theatre and
+    // Puppetry" (6 shipped PYQ rows). Reused rather than renamed.
+    subtopics: [
+      "Why do we need Entertainment",
+      "Folk Theatre and Puppetry",
+      "Marathi Theatre",
+      "Indian Film Industry",
+      "Entertainment and Professional Opportunities", // NEW — §6.5
+    ],
+  },
+
+  "sports-history-10": {
+    id: "sports-history-10",
+    chapterName: "Sports and History",
+    subjectName: "History",
+    sourceFile: "StateBoard_10_History__Sports_and_History.pdf",
+    pdf: HIST,
+    pages: range(55, 60), // printed pp 46-51; Exercise on idx 60
+    note: "Maharashtra State Board (Class 10) — Sports and History (Balbharati textbook, History and Political Science)",
+    // This chapter has SEVEN book sections (7.1-7.7), the most of any here.
+    // drift: the DB's "Importance and Types of Sports" fuses §7.1 Importance of
+    // Sports with §7.2 Types of sports (7 shipped PYQ rows). Reused as one.
+    subtopics: [
+      "Importance and Types of Sports",
+      "Globalisation of Sports",
+      "Game Materials and Toys",
+      "Toys and History", // NEW — §7.5
+      "Literature and Movies on Sport", // NEW — §7.6
+      "Sports and Professional Opportunities", // NEW — §7.7
+    ],
+  },
+
+  "tourism-history-10": {
+    id: "tourism-history-10",
+    chapterName: "Tourism and History",
+    subjectName: "History",
+    sourceFile: "StateBoard_10_History__Tourism_and_History.pdf",
+    pdf: HIST,
+    pages: range(61, 67), // printed pp 52-58; Exercise on idx 67
+    note: "Maharashtra State Board (Class 10) — Tourism and History (Balbharati textbook, History and Political Science)",
+    // The only chapter here whose five DB subtopics already cover all five book
+    // sections 1:1. §8.5 prints as "Professional Opportunities in the Tourism
+    // and Hospitality Industry"; the DB's "Tourism and Professional
+    // Opportunities" is reused for it. Nothing new.
+    subtopics: [
+      "Tourism in the Past",
+      "Types of Tourism",
+      "Development of Tourism",
+      "Conservation and Preservation of Historical Places",
+      "Tourism and Professional Opportunities",
+    ],
+  },
+
+  "heritage-management-10": {
+    id: "heritage-management-10",
+    chapterName: "Heritage Management",
+    subjectName: "History",
+    sourceFile: "StateBoard_10_History__Heritage_Management.pdf",
+    pdf: HIST,
+    pages: range(68, 75), // printed pp 59-66; Exercise on idx 75
+    note: "Maharashtra State Board (Class 10) — Heritage Management (Balbharati textbook, History and Political Science)",
+    // drift: the book's §9.2 is "Some Famous Museums"; the DB carries the
+    // shorter "Museums" (4 shipped PYQ rows). Reused.
+    subtopics: [
+      "Sources of History, their Conservation and Preservation",
+      "Museums",
+      "Libraries and Archives",
+      "Encyclopaedias", // NEW — §9.4
+    ],
+  },
+
+  // ── POLITICAL SCIENCE 3-5. Sections here are UNNUMBERED (the same as the two
+  //    shipped PolSci chapters), so there is no printed contents list to check
+  //    against — the subtopics are the existing DB names, each of which already
+  //    corresponds to a bold heading in the chapter.
+  "political-parties-10": {
+    id: "political-parties-10",
+    chapterName: "Political Parties",
+    subjectName: "Political Science",
+    sourceFile: "StateBoard_10_PolSci__Political_Parties.pdf",
+    pdf: HIST,
+    pages: range(91, 99), // printed pp 82-90; Exercise on idx 99
+    note: "Maharashtra State Board (Class 10) — Political Parties (Balbharati textbook, History and Political Science)",
+    subtopics: [
+      "Characteristics and Functions of Political Parties",
+      "Party Systems",
+      "National and Regional Parties",
+    ],
+  },
+
+  "social-political-movements-10": {
+    id: "social-political-movements-10",
+    chapterName: "Social and Political Movements",
+    subjectName: "Political Science",
+    sourceFile: "StateBoard_10_PolSci__Social_and_Political_Movements.pdf",
+    pdf: HIST,
+    pages: range(100, 105), // printed pp 91-96; Exercise on idx 105
+    note: "Maharashtra State Board (Class 10) — Social and Political Movements (Balbharati textbook, History and Political Science)",
+    subtopics: [
+      "Why Movements Arise",
+      "Types of Movements",
+      "Tribal Movements in the Pre-independence Period",
+      "Farmers' Movement and the Green Revolution",
+    ],
+  },
+
+  "challenges-democracy-10": {
+    id: "challenges-democracy-10",
+    chapterName: "Challenges faced by Indian Democracy",
+    subjectName: "Political Science",
+    sourceFile: "StateBoard_10_PolSci__Challenges_faced_by_Indian_Democracy.pdf",
+    pdf: HIST,
+    pages: range(106, 108), // printed pp 97-99; Exercise on idx 108
+    note: "Maharashtra State Board (Class 10) — Challenges faced by Indian Democracy (Balbharati textbook, History and Political Science)",
+    // The four existing subtopics leave the chapter's terrorism / Naxalism block
+    // with no home at all — the book runs it as its own inline heading ("Left
+    // extremists - Naxalism :") between the global-challenges opening and the
+    // corruption block — so one subtopic is added for it.
+    subtopics: [
+      "Deepening of Democracy",
+      "Casteism, Communalism and Regionalism",
+      "Terrorism and Left Extremism", // NEW
+      "Corruption and Criminalisation of Politics",
+      "Challenges before Democracy at the Global Level",
+    ],
+  },
+
   // ── GEOMETRY Ch.2 — the first MATHS chapter in this pipeline, and it breaks
   //    two of the assumptions the humanities chapters above were built on.
   //
