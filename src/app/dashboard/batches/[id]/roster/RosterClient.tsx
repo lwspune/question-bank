@@ -49,6 +49,7 @@ export default function RosterClient({
         error?: string;
         invited?: number;
         alreadyEnrolled?: number;
+        declined?: number;
         invalid?: string[];
         overflow?: number;
         emailFailures?: number;
@@ -69,6 +70,11 @@ export default function RosterClient({
       // teacher as "all sent", and they would not chase the student.
       if (json.alreadyEnrolled) {
         toast.info(`${json.alreadyEnrolled} already in this batch — skipped.`);
+      }
+      if (json.declined) {
+        toast.info(
+          `${json.declined} previously declined — not re-invited. Share the join code with them instead.`
+        );
       }
       if (json.invalid?.length) {
         toast.warning(`Skipped ${json.invalid.length} invalid: ${json.invalid.join(", ")}`);

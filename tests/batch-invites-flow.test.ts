@@ -198,6 +198,48 @@ describe.skipIf(!HAS_ENV)("batch invite flow (migration 0084)", () => {
     expect(res.invited).toBe(0);
   });
 
+  it("a DECLINED invite is not resurrected by re-inviting — no means no", async () => {
+    const email = `bi-dec-${RUN_ID}@test.local`;
+    const { data: u } = await admin.auth.admin.createUser({
+      email,
+      password: PASSWORD,
+      email_confirm: true,
+    });
+    const uid = u.user!.id;
+
+    await inviteToBatch({ client: adminClient, batchId, invitedBy: adminId, raw: email });
+    const [inv] = await listPendingInvitesForEmail(email);
+    expect(
+      (await respondToInvite({ userId: uid, userEmail: email, inviteId: inv.id, action: "decline" }))
+        .kind
+    ).toBe("ok");
+
+    // The teacher re-sends. The address must be reported back, not re-invited.
+    const again = await inviteToBatch({
+      client: adminClient,
+      batchId,
+      invitedBy: adminId,
+      raw: email,
+    });
+    expect(again.kind).toBe("ok");
+    if (again.kind !== "ok") return;
+    expect(again.declined).toBe(1);
+    expect(again.invited).toBe(0);
+    expect(await listPendingInvitesForEmail(email)).toHaveLength(0);
+
+    // ...and the join code remains a way in, so this is a conversation to have,
+    // not a lockout.
+    const { data: row } = await admin
+      .from("batch_invites")
+      .select("status")
+      .eq("batch_id", batchId)
+      .eq("email", email)
+      .single();
+    expect(row!.status).toBe("declined");
+
+    await admin.auth.admin.deleteUser(uid);
+  });
+
   it("a revoked invite disappears from the student's pending list", async () => {
     const before = await listPendingInvitesForEmail(STRANGER);
     expect(before).toHaveLength(1);

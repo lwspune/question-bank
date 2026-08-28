@@ -79,6 +79,8 @@ export type InviteResult =
       overflow: number;
       /** Addresses whose invite mail did not go out. */
       emailFailures: number;
+      /** Previously DECLINED, so deliberately not re-invited. */
+      declined: number;
     }
   | { kind: "no_valid_emails"; invalid: string[] }
   | { kind: "batch_not_found" }
@@ -137,17 +139,30 @@ export async function inviteToBatch(input: {
       .eq("batch_id", batchId);
     const enrolledIds = new Set((enrolled ?? []).map((r) => r.user_id as string));
 
+    // A DECLINED invite is NOT reset to pending. "No" has to stick, or a
+    // one-click re-invite turns consent into accept-or-be-pestered. The
+    // student is not locked out: the join code is still open to them, so this
+    // costs a teacher a conversation rather than a route back in.
+    const { data: declinedRows } = await admin
+      .from("batch_invites")
+      .select("email")
+      .eq("batch_id", batchId)
+      .eq("status", "declined");
+    const declinedEmails = new Set((declinedRows ?? []).map((r) => r.email as string));
+
     const toInvite: string[] = [];
     let alreadyEnrolled = 0;
+    let declined = 0;
     for (const email of parsed.valid) {
       const uid = idByEmail.get(email);
       if (uid && enrolledIds.has(uid)) alreadyEnrolled += 1;
+      else if (declinedEmails.has(email)) declined += 1;
       else toInvite.push(email);
     }
 
     if (toInvite.length > 0) {
-      // Re-inviting resets the row: a previously declined or expired invite
-      // becomes a fresh pending one, which is what a teacher re-sending means.
+      // Re-inviting refreshes an EXPIRED or still-pending invite into a new
+      // 30-day window. Declined addresses never reach here (filtered above).
       const { error } = await admin.from("batch_invites").upsert(
         toInvite.map((email) => ({
           batch_id: batchId,
@@ -189,6 +204,7 @@ export async function inviteToBatch(input: {
       invalid: parsed.invalid,
       overflow: parsed.overflow,
       emailFailures,
+      declined,
     };
   } catch (err) {
     return { kind: "error", message: err instanceof Error ? err.message : String(err) };
