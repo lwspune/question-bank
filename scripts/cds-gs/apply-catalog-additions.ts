@@ -484,6 +484,30 @@ const ADDITIONS_ROUND2: Addition[] = [
 /*
  * ROUND 4 CANDIDATES — evidence banked 2026-08-28, NOT applied.
  *
+ * FIRST, A CORRECTION TO ROUND 3'S OWN WORK. Round 3 added `Scientists and
+ * Discoveries` to Biology and Chemistry on the reasoning that "who discovered X"
+ * is a question SHAPE occurring in every subject, not a physics topic. It added the
+ * subtopic to the two subjects that had produced hits and left every other subject
+ * alone. Within one paper of applying it, 2019-2 Q72 asked who coined the word
+ * "Geography" — and GEOGRAPHY has no such subtopic either, so the question went to
+ * `World History > Ancient and Classical World`.
+ *
+ * The rule was right and the application was too narrow: I followed the evidence to
+ * the subjects that happened to have it rather than to the subjects the rule names.
+ * That is the SAME mistake round 2 made twice at period-chapter level and that
+ * round 3 was explicitly written to stop making. Add `Scientists and Discoveries`
+ * to Geography in round 4, and when a rule of this shape is applied again, apply it
+ * to every subject it names — the cost of an unused subtopic is a filter nobody
+ * clicks, while the cost of a missing one is a question filed under the wrong
+ * SUBJECT, which no `/browse` filter can recover.
+ *
+ * (Not a licence to mirror everything: the round-3 geography note declined to
+ * mirror all eight Indian economic subtopics, and that was right, because there
+ * the rule was about SCOPE and only two axes had ever been asked. The distinction
+ * is whether the rule itself names the targets — "every science subject" does;
+ * "world equivalents of Indian economic geography" does not.)
+
+ *
  * THE ONE THAT IS CHAPTER-LEVEL, and the first since round 1: CHEMISTRY HAS NO
  * THERMODYNAMICS CHAPTER. Verified against the full catalog — Chemistry's twelve
  * chapters are Acids/Bases/Salts, Atomic Structure, Carbon, Chemical Bonding,
