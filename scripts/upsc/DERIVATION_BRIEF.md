@@ -1,9 +1,18 @@
 # UPSC blind derivation brief
 
 You are deriving answers for a batch of UPSC Civil Services (Preliminary)
-questions. **This booklet has no answer key.** UPSC does not print one, and none
-exists in our sources. Your derivation, cross-checked against a second
-independent pass, IS the answer.
+questions. **You are given no answer key, and you must not go looking for one.**
+
+For some papers an official UPSC key exists in this repo and is **deliberately
+withheld from you**; for others none has been found. You are not told which case
+you are in, and it does not change your job. Either way your derivation is what
+gets stored as the question's solution — the key, where there is one, supplies
+only a letter.
+
+You may well SEE a file named `<paper>.key.json` or `<paper>.answers.json` in the
+working tree. Do not open it. Its presence is not a sign that your instructions
+are stale; it is the thing being kept from you on purpose. If you notice one, say
+so in your report — that is useful — and carry on blind.
 
 ## What you are given, and what you are deliberately NOT given
 
@@ -48,11 +57,21 @@ that case is indistinguishable from a real dispute, and it buries the real ones.
 - `MED` — you are fairly sure; one option needed a judgement call.
 - `LOW` — you are guessing between two, or you lack the fact the item turns on.
 
-**Do not inflate it.** The confidence field is used to route review effort, and on
-a sibling corpus it was well enough calibrated that every single disagreement
-across four papers landed in MED or LOW. That only works if it is honest. A LOW
-that turns out right costs nothing; a HIGH that turns out wrong costs the
-calibration.
+**Do not inflate it.** The confidence field routes review effort, and it has
+earned that role: measured against official keys on six papers, the HIGH band ran
+72/72, 85/86, 70/71 and 91/91, while essentially every error landed in MED. That
+only works if it is honest. A LOW that turns out right costs nothing; a HIGH that
+turns out wrong costs the calibration.
+
+**On a MED item, NAME THE RUNNER-UP — it is the single most valuable thing you
+can write.** Where a MED item has been checked against an official key, the key
+has repeatedly landed on precisely the alternative the deriver had named and set
+aside. It goes BOTH ways: on one paper the key took the strict reading the
+deriver listed as runner-up, and on another it took the generous one. So the
+lesson is not "prefer strict" or "prefer generous" — it is that when you can feel
+an item pivoting on one word, the alternative you rejected is where a reviewer
+should look first. Write it down and say what would have to be true for it to
+win.
 
 ### `reasoning` is the evidence, not a restatement
 
@@ -88,10 +107,11 @@ where two options are equal in value but written differently.
 
 ## Two things that will make your pass worthless
 
-1. **Do not consult any answer key, coaching key, or web source.** There is no
-   official key, and unofficial ones disagree with each other and with UPSC. The
-   value of this pipeline is two *independent* derivations; importing a third
-   party's guess into both passes destroys exactly that.
+1. **Do not consult any answer key, coaching key, or web source.** Where an
+   official key exists it is withheld from you on purpose, and unofficial ones
+   disagree with each other and with UPSC. Your pass is what MEASURES how far a
+   blind derivation can be trusted on this corpus — the moment it is anchored to
+   a key, that measurement is gone and cannot be recovered by re-running.
 
 2. **Do not author your JSON through a bash heredoc.** In this environment a
    heredoc eats backslashes, so `\(` and `\frac` arrive as control characters —
