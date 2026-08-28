@@ -1,0 +1,282 @@
+[
+  {
+    "id": "e44aa166-2a35-48ad-8abf-acc5f09f8abe",
+    "ref": "Ex 6.1 Q.1",
+    "solution": "Direct method. The class marks are 1, 3, 5, 7, 9.\n\n| Class (Time, hrs.) | Class mark \\(x_i\\) | Frequency \\(f_i\\) | \\(x_i f_i\\) |\n|---|---|---|---|\n| 0-2 | 1 | 7 | 7 |\n| 2-4 | 3 | 18 | 54 |\n| 4-6 | 5 | 12 | 60 |\n| 6-8 | 7 | 10 | 70 |\n| 8-10 | 9 | 3 | 27 |\n| Total | | \\(\\Sigma f_i = 50\\) | \\(\\Sigma x_i f_i = 218\\) |\n\nMean \\(= \\overline{X} = \\dfrac{\\Sigma x_i f_i}{\\Sigma f_i} = \\dfrac{218}{50} = 4.36\\)\n\n\\(\\therefore\\) the mean time spent by a student for studies is 4.36 hours."
+  },
+  {
+    "id": "c7659e0e-13f4-4f38-b394-861440d609cf",
+    "ref": "Ex 6.1 Q.2",
+    "solution": "Assumed mean method. Take \\(A = 550\\) (the class mark of the middle class 500-600) and \\(d_i = x_i - A\\).\n\n| Class (Toll, ₹) | Class mark \\(x_i\\) | \\(d_i = x_i - 550\\) | Frequency \\(f_i\\) | \\(f_i d_i\\) |\n|---|---|---|---|---|\n| 300-400 | 350 | \\(-200\\) | 80 | \\(-16000\\) |\n| 400-500 | 450 | \\(-100\\) | 110 | \\(-11000\\) |\n| 500-600 | 550 | 0 | 120 | 0 |\n| 600-700 | 650 | 100 | 70 | 7000 |\n| 700-800 | 750 | 200 | 40 | 8000 |\n| Total | | | \\(\\Sigma f_i = 420\\) | \\(\\Sigma f_i d_i = -12000\\) |\n\n\\(\\overline{d} = \\dfrac{\\Sigma f_i d_i}{\\Sigma f_i} = \\dfrac{-12000}{420} = -28.57\\)\n\nMean \\(= A + \\overline{d} = 550 - 28.57 = 521.43\\)\n\n\\(\\therefore\\) the mean of the toll is ₹ 521.43."
+  },
+  {
+    "id": "9a0302f4-78fa-4254-8997-35a5150515e3",
+    "ref": "Ex 6.1 Q.3",
+    "solution": "Direct method. The class marks are 1.5, 2.5, 3.5, 4.5, 5.5.\n\n| Class (Milk sold, litre) | Class mark \\(x_i\\) | Frequency \\(f_i\\) | \\(x_i f_i\\) |\n|---|---|---|---|\n| 1-2 | 1.5 | 17 | 25.5 |\n| 2-3 | 2.5 | 13 | 32.5 |\n| 3-4 | 3.5 | 10 | 35 |\n| 4-5 | 4.5 | 7 | 31.5 |\n| 5-6 | 5.5 | 3 | 16.5 |\n| Total | | \\(\\Sigma f_i = 50\\) | \\(\\Sigma x_i f_i = 141\\) |\n\nMean \\(= \\dfrac{141}{50} = 2.82\\)\n\n\\(\\therefore\\) the mean of the milk sold is 2.82 litre."
+  },
+  {
+    "id": "e33752cd-43b4-4217-9355-d52ba50d4177",
+    "ref": "Ex 6.1 Q.4",
+    "solution": "Assumed mean method. Take \\(A = 37.5\\) (the class mark of 35-40) and \\(d_i = x_i - A\\).\n\n| Class (Production, thousand ₹) | Class mark \\(x_i\\) | \\(d_i = x_i - 37.5\\) | Frequency \\(f_i\\) | \\(f_i d_i\\) |\n|---|---|---|---|---|\n| 25-30 | 27.5 | \\(-10\\) | 20 | \\(-200\\) |\n| 30-35 | 32.5 | \\(-5\\) | 25 | \\(-125\\) |\n| 35-40 | 37.5 | 0 | 15 | 0 |\n| 40-45 | 42.5 | 5 | 10 | 50 |\n| 45-50 | 47.5 | 10 | 10 | 100 |\n| Total | | | \\(\\Sigma f_i = 80\\) | \\(\\Sigma f_i d_i = -175\\) |\n\n\\(\\overline{d} = \\dfrac{-175}{80} = -2.1875\\)\n\nMean \\(= A + \\overline{d} = 37.5 - 2.1875 = 35.3125\\) (thousand rupees)\n\n\\(\\therefore\\) the mean production of oranges is 35.3125 thousand rupees, that is ₹ 35,312.50.\n\n[Textbook note: the printed key gives ₹ 35310, which is the same answer with the mean first rounded to 35.31 thousand rupees. The exact value is 35.3125 thousand = ₹ 35,312.50.]"
+  },
+  {
+    "id": "be8a214f-e5cf-46d9-a1c5-cd9e67202390",
+    "ref": "Ex 6.1 Q.5",
+    "solution": "Step deviation method. Take \\(A = 1250\\) and \\(g = 500\\), so \\(u_i = \\dfrac{x_i - A}{g}\\).\n\n| Class (Fund, ₹) | Class mark \\(x_i\\) | \\(u_i\\) | Frequency \\(f_i\\) | \\(f_i u_i\\) |\n|---|---|---|---|---|\n| 0-500 | 250 | \\(-2\\) | 35 | \\(-70\\) |\n| 500-1000 | 750 | \\(-1\\) | 28 | \\(-28\\) |\n| 1000-1500 | 1250 | 0 | 32 | 0 |\n| 1500-2000 | 1750 | 1 | 15 | 15 |\n| 2000-2500 | 2250 | 2 | 10 | 20 |\n| Total | | | \\(\\Sigma f_i = 120\\) | \\(\\Sigma f_i u_i = -63\\) |\n\n\\(\\overline{u} = \\dfrac{\\Sigma f_i u_i}{\\Sigma f_i} = \\dfrac{-63}{120} = -0.525\\)\n\nMean \\(= A + \\overline{u}\\,g = 1250 + (-0.525)(500) = 1250 - 262.5 = 987.5\\)\n\n\\(\\therefore\\) the mean of the funds is ₹ 987.50."
+  },
+  {
+    "id": "b1386089-7392-4ff0-b447-4cabf755ce37",
+    "ref": "Ex 6.1 Q.6",
+    "solution": "Step deviation method. Take \\(A = 2500\\) and \\(g = 1000\\), so \\(u_i = \\dfrac{x_i - A}{g}\\).\n\n| Class (Weekly wages, ₹) | Class mark \\(x_i\\) | \\(u_i\\) | Frequency \\(f_i\\) | \\(f_i u_i\\) |\n|---|---|---|---|---|\n| 1000-2000 | 1500 | \\(-1\\) | 25 | \\(-25\\) |\n| 2000-3000 | 2500 | 0 | 45 | 0 |\n| 3000-4000 | 3500 | 1 | 50 | 50 |\n| 4000-5000 | 4500 | 2 | 30 | 60 |\n| Total | | | \\(\\Sigma f_i = 150\\) | \\(\\Sigma f_i u_i = 85\\) |\n\n\\(\\overline{u} = \\dfrac{85}{150} = 0.5667\\)\n\nMean \\(= A + \\overline{u}\\,g = 2500 + 0.5667 \\times 1000 = 2500 + 566.67 = 3066.67\\)\n\n\\(\\therefore\\) the mean of the weekly wages is ₹ 3066.67 (exactly \\(\\dfrac{9200}{3}\\) rupees)."
+  },
+  {
+    "id": "24fa3aeb-decc-482a-b321-ab4f6488d9d2",
+    "ref": "Ex 6.2 Q.1",
+    "solution": "The classes are already continuous. Prepare the 'less than' cumulative frequency column.\n\n| Class (Daily hours) | Frequency \\(f_i\\) | Cumulative frequency less than \\(cf\\) |\n|---|---|---|\n| 8-10 | 150 | 150 |\n| 10-12 | 500 | 650 |\n| 12-14 | 300 | 950 |\n| 14-16 | 50 | 1000 |\n\n\\(N = 1000\\), \\(\\therefore \\dfrac{N}{2} = 500\\). The 500th score lies in the class 10-12, so 10-12 is the median class.\n\n\\(L = 10\\), \\(cf = 150\\), \\(f = 500\\), \\(h = 2\\)\n\nMedian \\(= L + \\left[\\dfrac{\\frac{N}{2} - cf}{f}\\right] \\times h = 10 + \\dfrac{500 - 150}{500} \\times 2 = 10 + 1.4 = 11.4\\)\n\n\\(\\therefore\\) the median of the number of hours worked is 11.4 hours."
+  },
+  {
+    "id": "bae27db3-531a-4777-9669-0c8c9f1db378",
+    "ref": "Ex 6.2 Q.2",
+    "solution": "| Class (No. of mangoes) | Frequency \\(f_i\\) | Cumulative frequency less than \\(cf\\) |\n|---|---|---|\n| 50-100 | 33 | 33 |\n| 100-150 | 30 | 63 |\n| 150-200 | 90 | 153 |\n| 200-250 | 80 | 233 |\n| 250-300 | 17 | 250 |\n\n\\(N = 250\\), \\(\\therefore \\dfrac{N}{2} = 125\\). The 125th score lies in the class 150-200, so 150-200 is the median class.\n\n\\(L = 150\\), \\(cf = 63\\), \\(f = 90\\), \\(h = 50\\)\n\nMedian \\(= 150 + \\dfrac{125 - 63}{90} \\times 50 = 150 + \\dfrac{62 \\times 50}{90} = 150 + 34.44 = 184.44\\)\n\n\\(\\therefore\\) the median yield is about 184 mangoes per tree."
+  },
+  {
+    "id": "39542251-e58f-401d-90ab-1a3465f9c81f",
+    "ref": "Ex 6.2 Q.3",
+    "solution": "[Textbook note: the printed class list reads 60-64, 64-69, 70-74, 75-79, 79-84, 84-89. As printed it is inconsistent — 64 and 79 each appear as both an upper and a lower limit, while 69 to 70 and 74 to 75 leave the one-unit gap of a discrete classification. The intended classes are 60-64, 65-69, 70-74, 75-79, 80-84, 85-89, and the book's own printed answer 74.558 follows only from that reading, since it requires the true lower boundary 74.5.]\n\nThe classes are discontinuous with a gap of 1, so subtract 0.5 from each lower limit and add 0.5 to each upper limit.\n\n| Given class | Continuous class | Frequency \\(f_i\\) | Cumulative frequency less than \\(cf\\) |\n|---|---|---|---|\n| 60-64 | 59.5-64.5 | 10 | 10 |\n| 65-69 | 64.5-69.5 | 34 | 44 |\n| 70-74 | 69.5-74.5 | 55 | 99 |\n| 75-79 | 74.5-79.5 | 85 | 184 |\n| 80-84 | 79.5-84.5 | 10 | 194 |\n| 85-89 | 84.5-89.5 | 6 | 200 |\n\n\\(N = 200\\), \\(\\therefore \\dfrac{N}{2} = 100\\). The 100th score lies in 74.5-79.5, so that is the median class.\n\n\\(L = 74.5\\), \\(cf = 99\\), \\(f = 85\\), \\(h = 5\\)\n\nMedian \\(= 74.5 + \\dfrac{100 - 99}{85} \\times 5 = 74.5 + \\dfrac{5}{85} = 74.5 + 0.06 = 74.56\\)\n\n\\(\\therefore\\) the median of the average speeds is about 74.56 km/hr.\n\n[Textbook note: the printed key reads \"74.558 = 75 vehicles\". The value is right, but the unit is not — the median here is a SPEED in km/hr, not a number of vehicles.]"
+  },
+  {
+    "id": "2b6cc98a-c8ff-458c-bb3a-d31250f57434",
+    "ref": "Ex 6.2 Q.4",
+    "solution": "| Class (Bulbs produced, thousands) | Frequency \\(f_i\\) | Cumulative frequency less than \\(cf\\) |\n|---|---|---|\n| 30-40 | 12 | 12 |\n| 40-50 | 35 | 47 |\n| 50-60 | 20 | 67 |\n| 60-70 | 15 | 82 |\n| 70-80 | 8 | 90 |\n| 80-90 | 7 | 97 |\n| 90-100 | 8 | 105 |\n\n\\(N = 105\\), \\(\\therefore \\dfrac{N}{2} = 52.5\\). The 52.5th score lies in the class 50-60, so 50-60 is the median class.\n\n\\(L = 50\\), \\(cf = 47\\), \\(f = 20\\), \\(h = 10\\)\n\nMedian \\(= 50 + \\dfrac{52.5 - 47}{20} \\times 10 = 50 + \\dfrac{5.5 \\times 10}{20} = 50 + 2.75 = 52.75\\) (thousand)\n\n\\(\\therefore\\) the median of the production is 52.75 thousand, that is 52750 bulbs."
+  },
+  {
+    "id": "c190fadd-5586-427b-b64a-76cf3513d533",
+    "ref": "Ex 6.3 Q.1",
+    "solution": "The maximum frequency 80 is in the class 4-5, so 4-5 is the modal class.\n\n\\(L = 4\\), \\(h = 1\\), \\(f_1 = 80\\), \\(f_0 = 70\\), \\(f_2 = 60\\)\n\nMode \\(= L + \\left[\\dfrac{f_1 - f_0}{2f_1 - f_0 - f_2}\\right] \\times h = 4 + \\left[\\dfrac{80 - 70}{160 - 70 - 60}\\right] \\times 1\\)\n\n\\(= 4 + \\dfrac{10}{30} = 4 + 0.33 = 4.33\\)\n\n\\(\\therefore\\) the mode of the fat content is 4.33 %.\n\n[Textbook note: the printed key reads \"4.33 litre\". The value is right, but the unit is not — the mode here is a PERCENTAGE of fat, not a volume; the litres in the table are the milk collected, which is the frequency.]"
+  },
+  {
+    "id": "36624451-5343-4520-9e52-19761c4c0c4f",
+    "ref": "Ex 6.3 Q.2",
+    "solution": "The maximum frequency 100 is in the class 60-80, so 60-80 is the modal class.\n\n\\(L = 60\\), \\(h = 20\\), \\(f_1 = 100\\), \\(f_0 = 70\\), \\(f_2 = 80\\)\n\nMode \\(= 60 + \\left[\\dfrac{100 - 70}{200 - 70 - 80}\\right] \\times 20 = 60 + \\dfrac{30}{50} \\times 20\\)\n\n\\(= 60 + 12 = 72\\)\n\n\\(\\therefore\\) the mode of the use of electricity is 72 units."
+  },
+  {
+    "id": "27609557-d87c-4be4-9d2a-a314808007d4",
+    "ref": "Ex 6.3 Q.3",
+    "solution": "The maximum frequency 35 is in the class 9-11, so 9-11 is the modal class.\n\n\\(L = 9\\), \\(h = 2\\), \\(f_1 = 35\\), \\(f_0 = 20\\), \\(f_2 = 18\\)\n\nMode \\(= 9 + \\left[\\dfrac{35 - 20}{70 - 20 - 18}\\right] \\times 2 = 9 + \\dfrac{15}{32} \\times 2\\)\n\n\\(= 9 + \\dfrac{30}{32} = 9 + 0.9375 = 9.94\\)\n\n\\(\\therefore\\) the mode of the supply of milk is 9.94 litre."
+  },
+  {
+    "id": "ebd66a44-9ac0-44a4-a4e2-318101681f55",
+    "ref": "Ex 6.3 Q.4",
+    "solution": "The class \"Less than 5\" means 0-4, so the classes are discontinuous with a gap of 1. Subtract 0.5 from each lower limit and add 0.5 to each upper limit.\n\n| Given class | Continuous class | Frequency |\n|---|---|---|\n| Less than 5 (0-4) | \\(-0.5\\)-4.5 | 38 |\n| 5-9 | 4.5-9.5 | 32 |\n| 10-14 | 9.5-14.5 | 50 |\n| 15-19 | 14.5-19.5 | 36 |\n| 20-24 | 19.5-24.5 | 24 |\n| 25-29 | 24.5-29.5 | 20 |\n\nThe maximum frequency 50 is in 9.5-14.5, so that is the modal class.\n\n\\(L = 9.5\\), \\(h = 5\\), \\(f_1 = 50\\), \\(f_0 = 32\\), \\(f_2 = 36\\)\n\nMode \\(= 9.5 + \\left[\\dfrac{50 - 32}{100 - 32 - 36}\\right] \\times 5 = 9.5 + \\dfrac{18}{32} \\times 5\\)\n\n\\(= 9.5 + 2.8125 = 12.31\\)\n\n\\(\\therefore\\) the mode of the ages of the patients is 12.31 years."
+  },
+  {
+    "id": "0a7aafec-4659-428e-a2be-2c41e38a9ee2",
+    "ref": "Ex 6.4 Q.1",
+    "solution": "The classes are already continuous, so no adjustment is needed.\n\nSteps:\n1. Take the classes on the X-axis with a suitable scale, e.g. 1 cm = 5 cm of height, marking 135, 140, 145, 150, 155.\n2. Take the frequency on the Y-axis, e.g. 1 cm = 4 students, marking 0, 4, 8, 12, 16.\n3. On each class as base, draw a rectangle of height equal to its frequency.\n4. Show a krink on the X-axis between the origin and 135, because there are no observations below 135.\n\nThe four rectangles have these bases and heights:\n\n| Class (Height, cm) | 135-140 | 140-145 | 145-150 | 150-155 |\n|---|---|---|---|---|\n| Height of rectangle (No. of students) | 4 | 12 | 16 | 8 |\n\nThe tallest rectangle stands on 145-150."
+  },
+  {
+    "id": "4303c503-05e4-4844-806a-6920d1cb1105",
+    "ref": "Ex 6.4 Q.2",
+    "solution": "The given classes are discontinuous — the upper limit of a class and the lower limit of the next differ by 1 — so subtract \\(1 \\div 2 = 0.5\\) from each lower limit and add 0.5 to each upper limit.\n\n| Given class (quintal) | 2-3 | 4-5 | 6-7 | 8-9 | 10-11 |\n|---|---|---|---|---|---|\n| Continuous class | 1.5-3.5 | 3.5-5.5 | 5.5-7.5 | 7.5-9.5 | 9.5-11.5 |\n| No. of farmers | 30 | 50 | 55 | 40 | 20 |\n\nSteps:\n1. Take the continuous classes on the X-axis (1 cm = 2 quintal) and the number of farmers on the Y-axis (1 cm = 10 farmers).\n2. On each continuous class as base, draw a rectangle of height equal to its frequency.\n3. Show a krink on the X-axis between the origin and 1.5.\n\nThe tallest rectangle stands on 5.5-7.5, of height 55."
+  },
+  {
+    "id": "08c6698b-2b18-4f09-8440-4a568fd0a538",
+    "ref": "Ex 6.4 Q.3",
+    "solution": "The classes are already continuous.\n\nSteps:\n1. Take the classes on the X-axis (1 cm = 5 thousand rupees), marking 10, 15, 20, 25, 30, 35.\n2. Take the number of families on the Y-axis (1 cm = 10 families).\n3. On each class as base, draw a rectangle of height equal to its frequency.\n4. Show a krink on the X-axis between the origin and 10.\n\n| Class (Investment, thousand ₹) | 10-15 | 15-20 | 20-25 | 25-30 | 30-35 |\n|---|---|---|---|---|---|\n| Height of rectangle (No. of families) | 30 | 50 | 60 | 55 | 15 |\n\nThe tallest rectangle stands on 20-25. (Check: \\(30 + 50 + 60 + 55 + 15 = 210\\) families, as the question states.)"
+  },
+  {
+    "id": "ab69eb94-37c6-4efd-9eb5-c235ab9bf3b3",
+    "ref": "Ex 6.4 Q.4",
+    "solution": "The classes are already continuous.\n\nSteps:\n1. Take the classes on the X-axis (1 cm = 20 minutes), marking 60, 80, 100, 120, 140, 160.\n2. Take the number of students on the Y-axis (1 cm = 4 students).\n3. On each class as base, draw a rectangle of height equal to its frequency.\n4. Show a krink on the X-axis between the origin and 60.\n\n| Class (Time, minutes) | 60-80 | 80-100 | 100-120 | 120-140 | 140-160 |\n|---|---|---|---|---|---|\n| Height of rectangle (No. of students) | 14 | 20 | 24 | 22 | 16 |\n\nThe tallest rectangle stands on 100-120."
+  },
+  {
+    "id": "14708876-6454-427a-acc5-b7b224df284d",
+    "ref": "Ex 6.5 Q.1(1)",
+    "solution": "On a frequency polygon the number of students is the \\(y\\)-coordinate. The largest \\(y\\)-coordinate on the polygon is 60, at the point (65, 60).\n\n65 is the class mark of the class 60-70.\n\n\\(\\therefore\\) the class 60-70 has the maximum number of students."
+  },
+  {
+    "id": "e482a060-8bbd-43d5-917a-b03e4bcf2890",
+    "ref": "Ex 6.5 Q.1(2)",
+    "solution": "The polygon meets the X-axis at \\(x = 25\\) and at \\(x = 95\\); at both these points the frequency is 0.\n\n25 is the class mark of the class 20-30 and 95 is the class mark of the class 90-100.\n\n\\(\\therefore\\) the classes 20-30 and 90-100 have zero frequency."
+  },
+  {
+    "id": "b8e7bc1c-0605-47ec-bec7-e4b3afa10047",
+    "ref": "Ex 6.5 Q.1(3)",
+    "solution": "The point whose \\(y\\)-coordinate is 50 is (55, 50).\n\nThe \\(x\\)-coordinate of a point on a frequency polygon is the class mark of its class.\n\n\\(\\therefore\\) the class-mark of the class having frequency 50 students is 55."
+  },
+  {
+    "id": "03997789-27e5-4556-8579-63b7b81cbc66",
+    "ref": "Ex 6.5 Q.1(4)",
+    "solution": "The classes here have width 10, and 85 is the class mark of that class.\n\nIf the class is \\(a\\)-\\(b\\), then \\(\\dfrac{a + b}{2} = 85\\) and \\(b - a = 10\\), so \\(a = 80\\) and \\(b = 90\\).\n\n\\(\\therefore\\) the lower class limit is 80 and the upper class limit is 90."
+  },
+  {
+    "id": "d8cdce90-d011-4f53-b365-ef15141c705b",
+    "ref": "Ex 6.5 Q.1(5)",
+    "solution": "The class mark of the class 80-90 is \\(\\dfrac{80 + 90}{2} = 85\\).\n\nThe point on the polygon whose \\(x\\)-coordinate is 85 is (85, 15).\n\n\\(\\therefore\\) there are 15 students in the class 80-90."
+  },
+  {
+    "id": "ac298ff8-58ce-45c8-95b0-7d2b402e02f8",
+    "ref": "Ex 6.5 Q.2",
+    "solution": "The classes are continuous, so the class marks may be used directly.\n\n| Class (Electricity bill, ₹) | 0-200 | 200-400 | 400-600 | 600-800 | 800-1000 |\n|---|---|---|---|---|---|\n| Class mark | 100 | 300 | 500 | 700 | 900 |\n| Frequency (Families) | 240 | 300 | 450 | 350 | 160 |\n| Coordinates of points | (100, 240) | (300, 300) | (500, 450) | (700, 350) | (900, 160) |\n\nSteps:\n1. Take the class marks on the X-axis (1 cm = ₹ 100) and the number of families on the Y-axis (1 cm = 50 families).\n2. Plot the five points above and join them by line segments in order.\n3. To close the polygon, take one class of the same width before the first and one after the last, each of frequency zero. Their class marks are \\(-100\\) and 1100, so the polygon also passes through \\((-100, 0)\\) and (1100, 0).\n\nThe highest point of the polygon is (500, 450)."
+  },
+  {
+    "id": "9eea63e0-69d4-40e5-b9bb-de4ca3e4014d",
+    "ref": "Ex 6.5 Q.3",
+    "solution": "The classes are continuous, so the class marks may be used directly.\n\n| Class (Result %) | 30-40 | 40-50 | 50-60 | 60-70 | 70-80 | 80-90 | 90-100 |\n|---|---|---|---|---|---|---|---|\n| Class mark | 35 | 45 | 55 | 65 | 75 | 85 | 95 |\n| Frequency (Students) | 7 | 33 | 45 | 65 | 47 | 18 | 5 |\n\nThe points to be plotted are (35, 7), (45, 33), (55, 45), (65, 65), (75, 47), (85, 18) and (95, 5).\n\nSteps:\n1. Take the class marks on the X-axis (1 cm = 10 %) and the number of students on the Y-axis (1 cm = 10 students).\n2. Plot the seven points and join them by line segments in order.\n3. Close the polygon at the class marks of the preceding and succeeding classes of zero frequency, that is at (25, 0) and (105, 0).\n\nThe highest point of the polygon is (65, 65)."
+  },
+  {
+    "id": "e230d7ca-85ed-4e93-88af-c52e5e8d70b9",
+    "ref": "Ex 6.6 Q.1",
+    "solution": "Total number of persons \\(= 80 + 60 + 35 + 25 = 200\\).\n\nMeasure of central angle \\(\\theta = \\dfrac{\\text{Number of persons in the component}}{\\text{Total number of persons}} \\times 360^\\circ\\)\n\n| Age group (Yrs) | No. of persons | Measure of central angle |\n|---|---|---|\n| 20-25 | 80 | \\(\\dfrac{80}{200} \\times 360 = 144^\\circ\\) |\n| 25-30 | 60 | \\(\\dfrac{60}{200} \\times 360 = 108^\\circ\\) |\n| 30-35 | 35 | \\(\\dfrac{35}{200} \\times 360 = 63^\\circ\\) |\n| 35-40 | 25 | \\(\\dfrac{25}{200} \\times 360 = 45^\\circ\\) |\n| Total | 200 | \\(360^\\circ\\) |\n\nDraw a circle of a suitable radius and divide it into four sectors of these central angles, labelling each with its age group."
+  },
+  {
+    "id": "9f90ccfd-d299-42f1-804d-49904f6579d9",
+    "ref": "Ex 6.6 Q.2",
+    "solution": "Total marks \\(= 50 + 70 + 80 + 90 + 60 + 50 = 400\\).\n\n| Subject | Marks | Measure of central angle |\n|---|---|---|\n| English | 50 | \\(\\dfrac{50}{400} \\times 360 = 45^\\circ\\) |\n| Marathi | 70 | \\(\\dfrac{70}{400} \\times 360 = 63^\\circ\\) |\n| Science | 80 | \\(\\dfrac{80}{400} \\times 360 = 72^\\circ\\) |\n| Mathematics | 90 | \\(\\dfrac{90}{400} \\times 360 = 81^\\circ\\) |\n| Social science | 60 | \\(\\dfrac{60}{400} \\times 360 = 54^\\circ\\) |\n| Hindi | 50 | \\(\\dfrac{50}{400} \\times 360 = 45^\\circ\\) |\n| Total | 400 | \\(360^\\circ\\) |\n\nDraw a circle of a suitable radius and divide it into six sectors of these central angles."
+  },
+  {
+    "id": "7f50968f-fa45-4431-8cfa-85f43e6f35aa",
+    "ref": "Ex 6.6 Q.3",
+    "solution": "Total number of trees \\(= 40 + 50 + 75 + 50 + 70 + 75 = 360\\).\n\nSince the total is 360, each central angle in degrees is numerically equal to the number of trees.\n\n| Standard | No. of trees | Measure of central angle |\n|---|---|---|\n| 5th | 40 | \\(\\dfrac{40}{360} \\times 360 = 40^\\circ\\) |\n| 6th | 50 | \\(50^\\circ\\) |\n| 7th | 75 | \\(75^\\circ\\) |\n| 8th | 50 | \\(50^\\circ\\) |\n| 9th | 70 | \\(70^\\circ\\) |\n| 10th | 75 | \\(75^\\circ\\) |\n| Total | 360 | \\(360^\\circ\\) |\n\nDraw a circle of a suitable radius and divide it into six sectors of these central angles."
+  },
+  {
+    "id": "d597eaa3-aee5-4aae-ae54-3017f5c4f1f7",
+    "ref": "Ex 6.6 Q.4",
+    "solution": "The demands are given as percentages and they total \\(30 + 15 + 25 + 20 + 10 = 100\\).\n\nMeasure of central angle \\(= \\dfrac{\\text{Percentage of demand}}{100} \\times 360^\\circ\\)\n\n| Fruits | Percentage of demand | Measure of central angle |\n|---|---|---|\n| Mango | 30 | \\(\\dfrac{30}{100} \\times 360 = 108^\\circ\\) |\n| Sweet lime | 15 | \\(54^\\circ\\) |\n| Apples | 25 | \\(90^\\circ\\) |\n| Cheeku | 20 | \\(72^\\circ\\) |\n| Oranges | 10 | \\(36^\\circ\\) |\n| Total | 100 | \\(360^\\circ\\) |\n\nDraw a circle of a suitable radius and divide it into five sectors of these central angles."
+  },
+  {
+    "id": "e9e92357-c1a5-4d0e-ad3b-6a7e1ec68d6d",
+    "ref": "Ex 6.6 Q.5(1)",
+    "solution": "The central angle of the construction sector is \\(72^\\circ\\) and the total number of workers is 10,000.\n\nNumber of workers in construction \\(= \\dfrac{72}{360} \\times 10000 = 2000\\)\n\n\\(\\therefore\\) 2000 workers are in the field of construction."
+  },
+  {
+    "id": "93666bd0-6844-4a1f-b3d8-82693ef231e1",
+    "ref": "Ex 6.6 Q.5(2)",
+    "solution": "The central angle of the administration sector is \\(36^\\circ\\).\n\nNumber of workers in administration \\(= \\dfrac{36}{360} \\times 10000 = 1000\\)\n\n\\(\\therefore\\) 1000 workers are working in the administration."
+  },
+  {
+    "id": "17743106-c025-41f0-a2c3-2e5de70cb218",
+    "ref": "Ex 6.6 Q.5(3)",
+    "solution": "The central angle of the production sector is \\(90^\\circ\\), and the whole circle is \\(360^\\circ\\).\n\nPercentage of workers in production \\(= \\dfrac{90}{360} \\times 100 = 25\\)\n\n\\(\\therefore\\) 25 % of the workers are in production."
+  },
+  {
+    "id": "bf1a3ec6-7eb3-44dc-b697-f6479ec56680",
+    "ref": "Ex 6.6 Q.6(1)",
+    "solution": "The central angle of the shares sector is \\(60^\\circ\\) and it stands for ₹ 2000.\n\nLet the total investment be ₹ \\(x\\). Then \\(\\dfrac{60}{360} \\times x = 2000\\)\n\n\\(\\therefore x = 2000 \\times \\dfrac{360}{60} = 12000\\)\n\n\\(\\therefore\\) the total investment is ₹ 12,000."
+  },
+  {
+    "id": "2bd14cf5-72f2-4d6a-a3ad-f70448609f21",
+    "ref": "Ex 6.6 Q.6(2)",
+    "solution": "The central angle of the \"Deposit in bank\" sector is \\(90^\\circ\\) and the total investment is ₹ 12,000.\n\nAmount deposited in bank \\(= \\dfrac{90}{360} \\times 12000 = 3000\\)\n\n\\(\\therefore\\) ₹ 3000 is deposited in the bank."
+  },
+  {
+    "id": "7c564b7d-37ff-4d97-8ded-43e143f72f4a",
+    "ref": "Ex 6.6 Q.6(3)",
+    "solution": "Amount in immovable property \\(= \\dfrac{120}{360} \\times 12000 = 4000\\)\n\nAmount in mutual fund \\(= \\dfrac{60}{360} \\times 12000 = 2000\\)\n\nDifference \\(= 4000 - 2000 = 2000\\)\n\n\\(\\therefore\\) ₹ 2000 more is invested in immovable property than in mutual fund."
+  },
+  {
+    "id": "5ca4bc89-8c98-4371-82f4-b920dd7833b3",
+    "ref": "Ex 6.6 Q.6(4)",
+    "solution": "The central angle of the post sector is \\(30^\\circ\\) and the total investment is ₹ 12,000.\n\nAmount invested in post \\(= \\dfrac{30}{360} \\times 12000 = 1000\\)\n\n\\(\\therefore\\) ₹ 1000 is invested in post."
+  },
+  {
+    "id": "b1709c3a-8ee1-4b38-9613-d64caabcc56a",
+    "ref": "PS6 Q.2",
+    "solution": "Direct method. The class marks are 25, 35, 45, 55, 65, 75.\n\n| Class (Income, thousand ₹) | Class mark \\(x_i\\) | Frequency \\(f_i\\) | \\(x_i f_i\\) |\n|---|---|---|---|\n| 20-30 | 25 | 10 | 250 |\n| 30-40 | 35 | 11 | 385 |\n| 40-50 | 45 | 15 | 675 |\n| 50-60 | 55 | 16 | 880 |\n| 60-70 | 65 | 18 | 1170 |\n| 70-80 | 75 | 14 | 1050 |\n| Total | | \\(\\Sigma f_i = 84\\) | \\(\\Sigma x_i f_i = 4410\\) |\n\nMean \\(= \\dfrac{4410}{84} = 52.5\\) (thousand rupees)\n\n\\(\\therefore\\) the mean income of the farmers is ₹ 52,500."
+  },
+  {
+    "id": "006a9e93-085b-4047-9be9-7e4b8932c2cc",
+    "ref": "PS6 Q.3",
+    "solution": "Direct method. The class marks are 45, 55, 65, 75, 85.\n\n| Class (Loan, thousand ₹) | Class mark \\(x_i\\) | Frequency \\(f_i\\) | \\(x_i f_i\\) |\n|---|---|---|---|\n| 40-50 | 45 | 13 | 585 |\n| 50-60 | 55 | 20 | 1100 |\n| 60-70 | 65 | 24 | 1560 |\n| 70-80 | 75 | 36 | 2700 |\n| 80-90 | 85 | 7 | 595 |\n| Total | | \\(\\Sigma f_i = 100\\) | \\(\\Sigma x_i f_i = 6540\\) |\n\nMean \\(= \\dfrac{6540}{100} = 65.4\\) (thousand rupees)\n\n\\(\\therefore\\) the mean of the loans is ₹ 65,400."
+  },
+  {
+    "id": "cc567728-0e62-4d20-9ca3-591374c50a1c",
+    "ref": "PS6 Q.4",
+    "solution": "Assumed mean method. Take \\(A = 3000\\) (the class mark of 2000-4000) and \\(d_i = x_i - A\\).\n\n| Class (Weekly wages, ₹) | Class mark \\(x_i\\) | \\(d_i = x_i - 3000\\) | Frequency \\(f_i\\) | \\(f_i d_i\\) |\n|---|---|---|---|---|\n| 0-2000 | 1000 | \\(-2000\\) | 15 | \\(-30000\\) |\n| 2000-4000 | 3000 | 0 | 35 | 0 |\n| 4000-6000 | 5000 | 2000 | 50 | 100000 |\n| 6000-8000 | 7000 | 4000 | 20 | 80000 |\n| Total | | | \\(\\Sigma f_i = 120\\) | \\(\\Sigma f_i d_i = 150000\\) |\n\n\\(\\overline{d} = \\dfrac{150000}{120} = 1250\\)\n\nMean \\(= A + \\overline{d} = 3000 + 1250 = 4250\\)\n\n\\(\\therefore\\) the mean of the weekly wages is ₹ 4250."
+  },
+  {
+    "id": "1b1f576b-27ab-4202-8f05-1faa977b5668",
+    "ref": "PS6 Q.5",
+    "solution": "Direct method. The class marks are 55, 65, 75, 85, 95.\n\n| Class (Amount of aid, thousand ₹) | Class mark \\(x_i\\) | Frequency \\(f_i\\) | \\(x_i f_i\\) |\n|---|---|---|---|\n| 50-60 | 55 | 7 | 385 |\n| 60-70 | 65 | 13 | 845 |\n| 70-80 | 75 | 20 | 1500 |\n| 80-90 | 85 | 6 | 510 |\n| 90-100 | 95 | 4 | 380 |\n| Total | | \\(\\Sigma f_i = 50\\) | \\(\\Sigma x_i f_i = 3620\\) |\n\nMean \\(= \\dfrac{3620}{50} = 72.4\\) (thousand rupees)\n\n\\(\\therefore\\) the mean of the amount of aid is ₹ 72,400."
+  },
+  {
+    "id": "68e5d520-3113-4891-8b47-0b0713b1611f",
+    "ref": "PS6 Q.6",
+    "solution": "| Class (Distance, km) | Frequency \\(f_i\\) | Cumulative frequency less than \\(cf\\) |\n|---|---|---|\n| 200-210 | 40 | 40 |\n| 210-220 | 60 | 100 |\n| 220-230 | 80 | 180 |\n| 230-240 | 50 | 230 |\n| 240-250 | 20 | 250 |\n\n\\(N = 250\\), \\(\\therefore \\dfrac{N}{2} = 125\\). The 125th score lies in the class 220-230, so that is the median class.\n\n\\(L = 220\\), \\(cf = 100\\), \\(f = 80\\), \\(h = 10\\)\n\nMedian \\(= 220 + \\dfrac{125 - 100}{80} \\times 10 = 220 + \\dfrac{25 \\times 10}{80} = 220 + 3.125 = 223.13\\)\n\n\\(\\therefore\\) the median of the distances is 223.13 km."
+  },
+  {
+    "id": "033143d4-0e7f-419f-a686-05e960c0667e",
+    "ref": "PS6 Q.7",
+    "solution": "The first class \"20 less than\" means \"less than 20\", that is the class 0-20.\n\n| Class (Price, ₹) | Frequency \\(f_i\\) | Cumulative frequency less than \\(cf\\) |\n|---|---|---|\n| 0-20 | 140 | 140 |\n| 20-40 | 100 | 240 |\n| 40-60 | 80 | 320 |\n| 60-80 | 60 | 380 |\n| 80-100 | 20 | 400 |\n\n\\(N = 400\\), \\(\\therefore \\dfrac{N}{2} = 200\\). The 200th score lies in the class 20-40, so that is the median class.\n\n\\(L = 20\\), \\(cf = 140\\), \\(f = 100\\), \\(h = 20\\)\n\nMedian \\(= 20 + \\dfrac{200 - 140}{100} \\times 20 = 20 + \\dfrac{60 \\times 20}{100} = 20 + 12 = 32\\)\n\n\\(\\therefore\\) the median of the prices is ₹ 32."
+  },
+  {
+    "id": "a1894475-bb75-43ef-a57f-bee3a4f4036f",
+    "ref": "PS6 Q.8",
+    "solution": "The maximum frequency 60 is in the class 250-500, so 250-500 is the modal class.\n\n\\(L = 250\\), \\(h = 250\\), \\(f_1 = 60\\), \\(f_0 = 10\\), \\(f_2 = 25\\)\n\nMode \\(= L + \\left[\\dfrac{f_1 - f_0}{2f_1 - f_0 - f_2}\\right] \\times h = 250 + \\left[\\dfrac{60 - 10}{120 - 10 - 25}\\right] \\times 250\\)\n\n\\(= 250 + \\dfrac{50}{85} \\times 250 = 250 + 147.06 = 397.06\\)\n\n\\(\\therefore\\) the mode of the demand of the sweet is 397.06 gram."
+  },
+  {
+    "id": "85c68285-b098-4b0d-abbf-adc5c58f4ea9",
+    "ref": "PS6 Q.9",
+    "solution": "The classes are already continuous, so no adjustment is needed.\n\nSteps:\n1. Take the classes on the X-axis (1 cm = 20 units), marking 50, 70, 90, 110, 130, 150, 170.\n2. Take the number of families on the Y-axis (1 cm = 100 families).\n3. On each class as base, draw a rectangle of height equal to its frequency.\n4. Show a krink on the X-axis between the origin and 50.\n\n| Class (Use of electricity, unit) | 50-70 | 70-90 | 90-110 | 110-130 | 130-150 | 150-170 |\n|---|---|---|---|---|---|---|\n| Height of rectangle (No. of families) | 150 | 400 | 460 | 540 | 600 | 350 |\n\nThe tallest rectangle stands on 130-150."
+  },
+  {
+    "id": "5d8fb424-a4e7-4486-860d-7d5b8ce9bc89",
+    "ref": "PS6 Q.10",
+    "solution": "The classes are continuous, so the class marks may be used directly.\n\n| Class (No. of days) | 8-10 | 10-12 | 12-14 | 14-16 | 16-18 | 18-20 |\n|---|---|---|---|---|---|---|\n| Class mark | 9 | 11 | 13 | 15 | 17 | 19 |\n| Frequency (Workers) | 5 | 16 | 30 | 40 | 35 | 14 |\n\nThe points to be plotted are (9, 5), (11, 16), (13, 30), (15, 40), (17, 35) and (19, 14).\n\nSteps:\n1. Take the class marks on the X-axis (1 cm = 2 days) and the number of workers on the Y-axis (1 cm = 5 workers).\n2. Plot the six points and join them by line segments in order.\n3. Close the polygon at the class marks of the preceding and succeeding classes of zero frequency, that is at (7, 0) and (21, 0).\n\nThe highest point of the polygon is (15, 40)."
+  },
+  {
+    "id": "8787c257-cb8a-45a5-9075-797809510231",
+    "ref": "PS6 Q.11",
+    "solution": "The classes are already continuous, so the same table serves both diagrams.\n\n| Class (Time, minutes) | 20-22 | 22-24 | 24-26 | 26-28 | 28-30 | 30-32 |\n|---|---|---|---|---|---|---|\n| Class mark | 21 | 23 | 25 | 27 | 29 | 31 |\n| Frequency (Students) | 8 | 16 | 22 | 18 | 14 | 12 |\n\n**Histogram:** take the classes on the X-axis (1 cm = 2 minutes) and the frequency on the Y-axis (1 cm = 4 students), and on each class as base draw a rectangle of height equal to its frequency. Show a krink between the origin and 20. The tallest rectangle stands on 24-26.\n\n**Frequency polygon:** plot the points (21, 8), (23, 16), (25, 22), (27, 18), (29, 14) and (31, 12) and join them in order; close the polygon at (19, 0) and (33, 0). Equivalently, join the mid-points of the tops of the histogram's rectangles."
+  },
+  {
+    "id": "29c932b4-733b-4fa2-b606-12aa1259faa7",
+    "ref": "PS6 Q.12",
+    "solution": "The given classes are discontinuous — the upper limit of a class and the lower limit of the next differ by 1 — so make them continuous by subtracting 0.5 from each lower limit and adding 0.5 to each upper limit. The class marks are unchanged by this step.\n\n| Given class (Age, Yrs.) | 20-24 | 25-29 | 30-34 | 35-39 | 40-44 | 45-49 |\n|---|---|---|---|---|---|---|\n| Continuous class | 19.5-24.5 | 24.5-29.5 | 29.5-34.5 | 34.5-39.5 | 39.5-44.5 | 44.5-49.5 |\n| Class mark | 22 | 27 | 32 | 37 | 42 | 47 |\n| Frequency (Blood donors) | 38 | 46 | 35 | 24 | 15 | 12 |\n\nThe points to be plotted are (22, 38), (27, 46), (32, 35), (37, 24), (42, 15) and (47, 12).\n\nTake the class marks on the X-axis (1 cm = 5 years) and the number of donors on the Y-axis (1 cm = 5 donors), plot the six points, join them in order, and close the polygon at (17, 0) and (52, 0).\n\nThe highest point of the polygon is (27, 46)."
+  },
+  {
+    "id": "f93e85af-343d-4942-a26d-36fbec60d044",
+    "ref": "PS6 Q.13",
+    "solution": "The classes are continuous, so the class marks may be used directly.\n\n| Class (Average rainfall, cm) | 0-20 | 20-40 | 40-60 | 60-80 | 80-100 |\n|---|---|---|---|---|---|\n| Class mark | 10 | 30 | 50 | 70 | 90 |\n| Frequency (Towns) | 14 | 12 | 36 | 48 | 40 |\n\nThe points to be plotted are (10, 14), (30, 12), (50, 36), (70, 48) and (90, 40).\n\nTake the class marks on the X-axis (1 cm = 10 cm of rainfall) and the number of towns on the Y-axis (1 cm = 5 towns), plot the five points and join them in order. Close the polygon at the class marks of the preceding and succeeding classes of zero frequency, that is at \\((-10, 0)\\) and (110, 0).\n\n(Check: \\(14 + 12 + 36 + 48 + 40 = 150\\) towns, as the question states.) The highest point of the polygon is (70, 48)."
+  },
+  {
+    "id": "653dddc5-cd8f-4eaf-bc21-49946f70912f",
+    "ref": "PS6 Q.14(1)",
+    "solution": "The percentages total \\(30 + 12 + 8 + 10 + 40 = 100\\), and\n\nMeasure of central angle \\(= \\dfrac{\\text{Percentage}}{100} \\times 360^\\circ\\)\n\n| Type of vehicle | Percentage | Measure of central angle |\n|---|---|---|\n| Cars | 30 | \\(\\dfrac{30}{100} \\times 360 = 108^\\circ\\) |\n| Tempos | 12 | \\(\\dfrac{12}{100} \\times 360 = 43.2^\\circ \\approx 43^\\circ\\) |\n| Buses | 8 | \\(\\dfrac{8}{100} \\times 360 = 28.8^\\circ \\approx 29^\\circ\\) |\n| Auto-rikshaws | 10 | \\(\\dfrac{10}{100} \\times 360 = 36^\\circ\\) |\n| Two wheelers | 40 | \\(\\dfrac{40}{100} \\times 360 = 144^\\circ\\) |\n| Total | 100 | \\(360^\\circ\\) |"
+  },
+  {
+    "id": "d6d55ff6-10fb-46d9-9ddc-381d699272a2",
+    "ref": "PS6 Q.14(2)",
+    "solution": "Two-wheelers are 40 % of all the vehicles, and their number is 1200.\n\nLet the total number of vehicles be \\(x\\). Then \\(\\dfrac{40}{100} \\times x = 1200\\)\n\n\\(\\therefore x = \\dfrac{1200 \\times 100}{40} = 3000\\)\n\n\\(\\therefore\\) the total number of vehicles is 3000."
+  },
+  {
+    "id": "7c63b6ec-dc40-4f55-aa89-992c310c0e53",
+    "ref": "PS6 Q.15",
+    "solution": "The percentages total \\(10 + 50 + 9 + 20 + 11 = 100\\).\n\nMeasure of central angle \\(= \\dfrac{\\text{Percentage}}{100} \\times 360^\\circ\\)\n\n| Cause | Percentage | Measure of central angle |\n|---|---|---|\n| Construction | 10 | \\(36^\\circ\\) |\n| Traffic | 50 | \\(180^\\circ\\) |\n| Aircraft take offs | 9 | \\(32.4^\\circ\\) |\n| Industry | 20 | \\(72^\\circ\\) |\n| Trains | 11 | \\(39.6^\\circ\\) |\n| Total | 100 | \\(360^\\circ\\) |\n\nDraw a circle of a suitable radius and divide it into five sectors of these central angles, labelling each with its cause."
+  },
+  {
+    "id": "18ca50a6-6681-4bc6-958d-7056de59688e",
+    "ref": "PS6 Q.16(1)",
+    "solution": "The central angle of the cricket sector is \\(81^\\circ\\) and the total number of students is 1000.\n\nNumber of students who like cricket \\(= \\dfrac{81}{360} \\times 1000 = 225\\)\n\n\\(\\therefore\\) 225 students like cricket."
+  },
+  {
+    "id": "0078c219-7a0e-41b0-9f4d-c21176a73f67",
+    "ref": "PS6 Q.16(2)",
+    "solution": "The central angle of the football sector is \\(63^\\circ\\).\n\nNumber of students who like football \\(= \\dfrac{63}{360} \\times 1000 = 175\\)\n\n\\(\\therefore\\) 175 students like football."
+  },
+  {
+    "id": "b0c88bc1-31d1-4c5b-bd0a-a43d41baaa4e",
+    "ref": "PS6 Q.16(3)",
+    "solution": "The central angle of the \"Other\" sector is \\(72^\\circ\\).\n\nNumber of students who prefer other games \\(= \\dfrac{72}{360} \\times 1000 = 200\\)\n\n\\(\\therefore\\) 200 students prefer other games."
+  },
+  {
+    "id": "dff8d5b9-d129-4f41-b826-87846d96e820",
+    "ref": "PS6 Q.17",
+    "solution": "Total number of women = 180.\n\nNumber of healthy women \\(= 180 - (50 + 10 + 25) = 180 - 85 = 95\\)\n\nMeasure of central angle \\(= \\dfrac{\\text{Number of women in the component}}{180} \\times 360^\\circ\\)\n\n| Condition | No. of women | Measure of central angle |\n|---|---|---|\n| Short of haemoglobin | 50 | \\(\\dfrac{50}{180} \\times 360 = 100^\\circ\\) |\n| Cataract | 10 | \\(\\dfrac{10}{180} \\times 360 = 20^\\circ\\) |\n| Respiratory disorders | 25 | \\(\\dfrac{25}{180} \\times 360 = 50^\\circ\\) |\n| Healthy | 95 | \\(\\dfrac{95}{180} \\times 360 = 190^\\circ\\) |\n| Total | 180 | \\(360^\\circ\\) |\n\nDraw a circle of a suitable radius and divide it into four sectors of these central angles."
+  },
+  {
+    "id": "faa16c82-ec8b-4ea2-bcb9-0f36429358df",
+    "ref": "PS6 Q.18",
+    "solution": "Total number of trees \\(= 20 + 28 + 24 + 22 + 26 = 120\\), as the question states.\n\nMeasure of central angle \\(= \\dfrac{\\text{Number of trees}}{120} \\times 360^\\circ = \\text{Number of trees} \\times 3^\\circ\\)\n\n| Tree name | No. of trees | Measure of central angle |\n|---|---|---|\n| Karanj | 20 | \\(\\dfrac{20}{120} \\times 360 = 60^\\circ\\) |\n| Behada | 28 | \\(84^\\circ\\) |\n| Arjun | 24 | \\(72^\\circ\\) |\n| Bakul | 22 | \\(66^\\circ\\) |\n| Kadunimb | 26 | \\(78^\\circ\\) |\n| Total | 120 | \\(360^\\circ\\) |\n\nDraw a circle of a suitable radius and divide it into five sectors of these central angles, labelling each with its tree name."
+  }
+]

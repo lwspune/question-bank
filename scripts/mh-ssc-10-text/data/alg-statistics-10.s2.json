@@ -1,0 +1,29 @@
+[
+  {
+    "ref": "Median SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mean, Median and Mode of Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "The following table shows frequency distribution of marks of 100 students of 10th class which they obtained in a practice examination. Find the median of the marks.\n\n| Marks in exam | 0-20 | 20-40 | 40-60 | 60-80 | 80-100 |\n|---|---|---|---|---|---|\n| No. of students | 4 | 20 | 30 | 40 | 6 |",
+    "solution": "\\(N = 100\\), \\(\\therefore \\dfrac{N}{2} = 50\\). Hence the 50th number will be the approximate median, so we have to find the class which contains the 50th term. Writing the cumulative frequencies less than the upper limit, we can find it.\n\n| Class (Student's marks) | No. of students \\(f_i\\) | Cumulative frequency less than the upper limit \\(cf\\) |\n|---|---|---|\n| 0-20 | 4 | 4 |\n| 20-40 | 20 | 24 |\n| 40-60 | 30 | 54 |\n| 60-80 | 40 | 94 |\n| 80-100 | 6 | 100 |\n\n- From the table, the 50th score is in the class 40-60. The class which contains the median is called the **median class**, so here 40-60 is the median class.\n- The lower class limit of 40-60 is 40. Its frequency is 30.\n- Out of the first 50 scores, 24 scores are less than 40. The remaining \\(50 - 24 = 26\\) are in the class 40-60.\n- 26 out of 30 scores in the class 40-60 are upto the 50th score and the class interval is 20. So it is assumed that the 50th score is more than 40 by \\(\\dfrac{26}{30} \\times 20\\).\n\n\\(\\therefore\\) it is approximately \\(40 + \\dfrac{26}{30} \\times 20 = 40 + \\dfrac{52}{3} = 57\\tfrac{1}{3}\\)\n\n\\(\\therefore\\) median \\(= 57\\tfrac{1}{3}\\) (that is, about 57.33 marks)."
+  },
+  {
+    "ref": "Median cf SolvedEx.1",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mean, Median and Mode of Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "Observe the following frequency distribution table. It shows the distances travelled by 60 public transport buses in a day. Find the median of the distance travelled.\n\n| Daily distance travelled (in Km) | 200-209 | 210-219 | 220-229 | 230-239 | 240-249 |\n|---|---|---|---|---|---|\n| No. of buses | 4 | 14 | 26 | 10 | 6 |",
+    "solution": "(1) The classes in the table are not continuous. The upper class limit of a class and the lower class limit of its succeeding class differ by 1. \\(\\therefore\\) let us subtract \\(1 \\div 2 = 0.5\\) from the lower class limit of each class and add it to the upper class limit of each class, and make the classes continuous.\n\n(2) Make a column of cumulative frequency 'less than' in the new table showing the continuous classes.\n\n| Given Class | Continuous classes | Frequency \\(f_i\\) | Cumulative frequency less than |\n|---|---|---|---|\n| 200-209 | 199.5-209.5 | 4 | 4 |\n| 210-219 | 209.5-219.5 | 14 | 18 \\(\\to cf\\) |\n| 220-229 | 219.5-229.5 | 26 \\(\\to f\\) | 44 |\n| 230-239 | 229.5-239.5 | 10 | 54 |\n| 240-249 | 239.5-249.5 | 6 | 60 |\n\nHere, total of frequencies \\(= \\Sigma f_i = N = 60\\), \\(\\therefore \\dfrac{N}{2} = 30\\), so the 30th score is the approximate median.\n\nFirst 18 scores are less than 219.5 and the remaining \\(30 - 18 = 12\\) scores are in the class 219.5-229.5. Therefore 219.5-229.5 is the median class.\n\nIn the formula, \\(L = 219.5\\), \\(h = 10\\), \\(cf = 18\\), \\(f = 26\\).\n\nMedian \\(= L + \\left[\\dfrac{\\frac{N}{2} - cf}{f}\\right] \\times h\\)\n\n\\(\\therefore\\) Median \\(= 219.5 + \\left(\\dfrac{30 - 18}{26}\\right) \\times 10 = 219.5 + \\left(\\dfrac{12 \\times 10}{26}\\right) = 219.50 + 4.62 = 224.12\\)\n\n\\(\\therefore\\) the median of the distance travelled is 224.12 Km."
+  },
+  {
+    "ref": "Median cf SolvedEx.2",
+    "bucket": "solved",
+    "format": "subjective",
+    "subtopic": "Mean, Median and Mode of Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "The following table shows the ages of persons who visited a museum on a certain day. Find the median age of the persons visiting the museum.\n\n| Age (Years) | No. of persons |\n|---|---|\n| Less than 10 | 3 |\n| Less than 20 | 10 |\n| Less than 30 | 22 |\n| Less than 40 | 40 |\n| Less than 50 | 54 |\n| Less than 60 | 71 |",
+    "solution": "The given cumulative frequency table is of the 'less than' form. So we will have to decide the true class limits first. We know that the 'less than' cumulative frequency is associated with the upper class limits.\n\n| Class (Age in years) | Frequency \\(f_i\\) (No. of persons) | Cumulative frequency less than \\(cf\\) |\n|---|---|---|\n| 0-10 | 3 | 3 |\n| 10-20 | 7 | 10 |\n| 20-30 | 12 | 22 \\(\\to cf\\) |\n| 30-40 | 18 \\(\\to f\\) | 40 |\n| 40-50 | 14 | 54 |\n| 50-60 | 17 | 71 |\n\nHere \\(N = 71\\), \\(\\therefore \\dfrac{N}{2} = 35.5\\). The 35.5th score lies in the class 30-40, so 30-40 is the median class.\n\n\\(L = 30\\), \\(cf = 22\\), \\(f = 18\\), \\(h = 10\\)\n\nMedian \\(= L + \\left[\\dfrac{\\frac{N}{2} - cf}{f}\\right] \\times h = 30 + \\left(\\dfrac{35.5 - 22}{18}\\right) \\times 10\\)\n\n\\(= 30 + \\dfrac{13.5 \\times 10}{18} = 30 + 7.5 = 37.5\\)\n\n\\(\\therefore\\) the median age of the persons visiting the museum is 37.5 years."
+  }
+]

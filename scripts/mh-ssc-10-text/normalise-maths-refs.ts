@@ -67,12 +67,23 @@ async function main() {
   for (const ch of maths) {
     const { data, error } = await client
       .from("questions")
-      .select("id, question_number")
+      .select("id, question_number, visibility")
       .eq("exam_id", EXAM_ID)
       .eq("source_file", ch.sourceFile)
       .eq("question_kind", "practice");
     if (error) throw new Error(`${ch.id}: ${error.message}`);
-    const rows = (data ?? []) as Array<{ id: string; question_number: string }>;
+    const rows = (data ?? []) as Array<{ id: string; question_number: string; visibility: string }>;
+
+    // Skip a chapter that has not finished publishing. A PRIVATE row means its
+    // ingestion is still in flight, and this script rewrites that chapter's source
+    // JSONs — racing an agent's own writes to the same files. Nothing about the
+    // rename is urgent, and the script is idempotent, so deferring costs a re-run.
+    const stillPrivate = rows.filter((r) => r.visibility === "PRIVATE").length;
+    if (stillPrivate) {
+      console.log(`  WAIT  ${ch.id.padEnd(32)} ${stillPrivate} row(s) still PRIVATE — ingestion in flight, skipping`);
+      continue;
+    }
+
     const todo = rows.filter((r) => houseRef(r.question_number) !== r.question_number);
     if (!todo.length) {
       if (rows.length) console.log(`  ok    ${ch.id.padEnd(32)} ${rows.length} rows already house style`);
