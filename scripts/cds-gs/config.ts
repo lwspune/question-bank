@@ -76,7 +76,31 @@ const p = (
 // `CDS GK 2016.pdf` carries no sitting in its name; its cover is stamped
 // "CDS Exam(II):2016", so it is the SECOND sitting. Do not "tidy" these.
 export const PAPERS: Record<string, Paper> = {
-  "2026-1": p("2026-1", "CDS_2026_1.pdf", 2026, "I", []), // [] = pre-pass not done yet
+  // PRE-PASS DONE 2026-08-28. English question pages are the EVEN indices 2..42.
+  //
+  // The booklet has NO text layer at all — 48 pages, 0 extractable characters —
+  // so the split could not be detected by counting Devanagari and had to be read
+  // off rendered images. Its structure, established from samples across the whole
+  // booklet (p02 Q1-8, p04 Q9-14, p22 Q62-68, p40 Q108-112, p42 Q113-120 all
+  // English; p03 Hindi):
+  //
+  //   printed page = index + 1, and English printed pages are ODD (3, 5, 7 ... 43),
+  //   which is the same convention the 18 reprints follow — they simply dropped the
+  //   even Hindi pages, which is why they have no englishPages entry.
+  //
+  // The order is HINDI BLOCK then ENGLISH BLOCK of the SAME questions: p03 carries
+  // Q9-14 in Hindi and p04 carries Q9-14 in English. Reading consecutive pages
+  // therefore looks like the numbering jumps backwards, which is the trap here —
+  // it is not a misprint and not a duplicate.
+  //
+  // Q120 completes on p42 (printed 43-A). p44 (45-A) and p46 (47-A) are SPACE FOR
+  // ROUGH WORK — even indices, so a naive "all even pages" rule would feed two
+  // blank pages to a transcriber. The range stops at 42 deliberately.
+  //
+  // 21 English pages for 120 questions is 5.7 q/page, matching the 2018-2019 tier
+  // in the brief's density table.
+  "2026-1": p("2026-1", "CDS_2026_1.pdf", 2026, "I",
+    [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42]),
   "2025-2": p("2025-2", "CDS GK 2025II.pdf", 2025, "II"),
   "2025-1": p("2025-1", "CDS GK 2025I.pdf", 2025, "I"),
   "2024-2": p("2024-2", "CDS GK 2024II.pdf", 2024, "II"),
