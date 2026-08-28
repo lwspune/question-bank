@@ -62,6 +62,23 @@ export const KEY_URLS: Record<string, string> = {
   "2018-p1": "AnsKey-CSP-18-Paper-I.pdf",
 };
 
+/**
+ * Keys obtained from a MIRROR rather than upsc.gov.in, because the official URL
+ * could not be located (the Answer Keys index is JS-rendered).
+ *
+ * Verified as genuine before use, and that check is the point of recording them
+ * separately: each is 4 pages, one per series A/B/C/D, and page 0 reads
+ * "CS(P)-2025 / Series A / Paper ONE / GS-I / Total Questions 100 / Dropped 0" —
+ * the same layout as the keys fetched from UPSC directly. A mirror is not
+ * self-evidently authentic; matching the official format is what makes it usable.
+ */
+export const MIRROR_URLS: Record<string, string> = {
+  "2025-p1":
+    "https://www.insightsonindia.com/wp-content/uploads/2026/05/UPSC-CSE-2025-GS-1-OFFCIAL-ANSWER-KEY.pdf",
+  "2025-p2":
+    "https://www.insightsonindia.com/wp-content/uploads/2026/05/UPSC-CSE-2025-CSAT-Official-Answer-Key.pdf",
+};
+
 function download(remote: string, dest: string): { ok: boolean; note: string } {
   const url = `https://www.upsc.gov.in/sites/default/files/${remote}`;
   try {

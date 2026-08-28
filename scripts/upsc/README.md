@@ -83,6 +83,45 @@ Pure core in `lib.ts` (TDD: `tests/upsc-lib.test.ts`, 37 cases).
 `out/` is gitignored (regenerable); `data/` and `derived/` are **committed** —
 the derivations are the evidence behind every answer.
 
+## What the pilot measured, once the official key arrived
+
+The 2025 pilot shipped under the no-key regime: two independent blind passes,
+**98.3% agreement (177/180)**, every disagreement in LOW. The official UPSC keys
+for CSE 2025 were located afterwards, which turns that agreement rate into a
+measured accuracy — and the gap is the point.
+
+| | Paper I | Paper II | combined |
+|---|---|---|---|
+| single blind pass A | 94.0% | 91.2% | **92.8%** |
+| single blind pass B | 95.0% | 93.8% | **94.4%** |
+| what we shipped | 95.0% | 92.5% | **93.9%** |
+
+**Where the two passes AGREED — 177 of 180 — they were right 94.4% of the time.**
+
+That is the caveat this pipeline has always carried, now with a number on it:
+agreement bounds *disagreement* risk and is blind to *correlated* error. Here it
+**overstated accuracy by about four points**, because on 10 questions both passes
+were confidently wrong in the same direction. One of those was HIGH/HIGH.
+
+Confidence remains well calibrated against ground truth, which is why it is
+still worth routing review by it — Paper II's blind pass scored **HIGH 63/63**,
+and Paper I's **HIGH 69/70**. Every other error sat in MED or LOW.
+
+Two lessons worth carrying:
+
+- **Treat a dual-blind agreement rate as a floor, and assume roughly a 4-point
+  shortfall to true accuracy** on this kind of content.
+- **Hand adjudication is not automatically better than a pass.** Of the three
+  disputes, two were adjudicated correctly and one was not: on `2025-p2 Q49` the
+  stem states no truth-telling rule, pass B answered "cannot be concluded" at LOW,
+  and the maintainer overrode it with the answer the setter *probably* intended.
+  The official key says pass B was right. The brief already tells derivers to
+  solve the question **as printed** rather than the intended version; that rule
+  applies to the adjudicator too.
+
+All 180 rows were re-derived to the official key afterwards — see `apply-key.ts`,
+and note the delete-and-recommit that an answer change forces.
+
 ## Passages are SETS, not repeated text
 
 Items sharing a passage are grouped: `assignSetLabels` labels each group by its
