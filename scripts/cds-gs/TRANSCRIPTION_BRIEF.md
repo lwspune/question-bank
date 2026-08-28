@@ -157,6 +157,51 @@ Write **one JSON file** to the path your prompt names. Shape:
 }
 ```
 
+## WHY THE SHELL CORRUPTS YOUR PROBES AND NOT YOUR DATA
+
+A dozen agents on this pipeline have had a validation script silently corrupted by
+a shell heredoc, and NONE has corrupted a question file that way. That is not luck
+and it is worth understanding, because it tells you where to be careful.
+
+The shell eats ONE backslash level. Your DATA carries single backslashes — `\(`,
+`\neq`, `\theta` — and a lone backslash survives a heredoc intact. Your PROBES carry
+DOUBLED backslashes, because a regex or a string literal that means "a literal
+backslash followed by n" is written `\\n`. That doubled pair is exactly what gets
+collapsed, so the probe compiles to "contains a real newline" and reports a clean
+file as broken. One agent's checker falsely flagged five stems this way; another's
+turned `\text{th}` into a literal TAB and then failed to notice, because the same
+probe exempted tab as "ordinarily legitimate".
+
+Three consequences:
+- Author probes with the Write tool, exactly like data. `python -c` is no safer —
+  it round-trips through the shell's encoding too, and one agent's checkpoint came
+  out as cp1252 with every em dash a raw 0x97, which would have failed the merge.
+- When a probe disagrees with the data, suspect the probe FIRST. On this pipeline
+  it has been wrong every single time.
+- Never exempt tab in long-form text. Nothing here is tab-separated — prose, inline
+  LaTeX and GFM pipe-tables all use pipes and spaces — so a tab is always damage,
+  and exempting it defeats the check that would have caught the corruption above.
+
+## PAGE COUNT IS DENSITY, NOT BILINGUALISM
+
+Every booklet in this corpus is printed in Hindi AND English, and every render
+carries the ENGLISH half only — which is why printed page numbers are always
+odd-only, image n mapping to printed 2n+1. That is UNIVERSAL, so it explains
+nothing about why one booklet is 18 pages and another 23.
+
+The difference is question density, and it tracks the year:
+
+| booklet   | pages | English pages | q/page |
+|-----------|-------|---------------|--------|
+| 2020-2025 |  18   |      17       |  7.1   |
+| 2018-2019 |  22   |      21       |  5.7   |
+| 2016-2017 |  23   |      22       |  5.5   |
+
+So do not predict a per-page count from the page total, and do not conclude that a
+long booklet has extra content. Report the range you actually find on each page —
+the older papers run 4 to 7 and the rhythm breaks whenever a Directions block or a
+long option set eats a column.
+
 ## NAMESPACE YOUR SCRATCH FILES BY BAND — the scratchpad is SHARED
 
 Several agents run at once on this pipeline and they all share one scratchpad
