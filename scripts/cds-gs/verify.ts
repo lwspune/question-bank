@@ -15,6 +15,7 @@
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { EXAM_ID, QUESTIONS_PER_PAPER, catalog, requirePaper } from "./config";
+import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -113,7 +114,18 @@ async function main() {
       const open = (v.match(/\\\(/g) || []).length;
       const close = (v.match(/\\\)/g) || []).length;
       if (open !== close) fail.push(`Q${n} ${field}: unbalanced \\( ${open} vs \\) ${close}`);
-      if (v.includes("\\n")) fail.push(`Q${n} ${field}: literal backslash-n`);
+      // Reuse the PRODUCTION normaliser rather than a second hand-rolled check.
+      // This line used to be `v.includes("\\n")`, which flags ANY LaTeX command
+      // beginning with n. It fired on `\\neq` inside a math zone and reported a
+      // perfectly clean row as FAILED, while `commitStaged`'s own guard stayed
+      // silent throughout — correctly, because that guard uses this helper.
+      //
+      // Two checks of one invariant that can disagree is exactly what
+      // textGuard.ts warns against: "detection reuses normalizeNewlines itself
+      // rather than a second regex, so the guard can never disagree with the
+      // normaliser." When a probe contradicts the production guard, the probe
+      // is the thing that is wrong.
+      if (normalizeNewlines(v) !== v) fail.push(`Q${n} ${field}: literal backslash-n`);
       // Control characters are checked by CODE POINT, not by a regex. A regex
       // character class for this range has to CONTAIN the control bytes it
       // matches -- the first version of this line did, invisibly -- so the probe
