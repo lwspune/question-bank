@@ -7,6 +7,11 @@ import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { loadEntitlements } from "@/lib/entitlements/query";
 import { isEntitlementActive } from "@/lib/entitlements/access";
+import BatchesCard from "./BatchesCard";
+import {
+  listPendingInvitesForEmail,
+  listMyBatches,
+} from "@/lib/batches/invitesAdmin";
 import { getOwnProfile } from "@/lib/profile/service";
 import ProfileForm from "./ProfileForm";
 
@@ -30,9 +35,13 @@ export default async function AccountPage() {
   if (!user) redirect("/login?next=/account");
 
   const db = createSupabaseServerClient();
-  const [rows, profile] = await Promise.all([
+  const [rows, profile, invites, myBatches] = await Promise.all([
     loadEntitlements(db, user.id),
     getOwnProfile(db, user.id),
+    // Resolved by VERIFIED email on read — there is no binding step at signup,
+    // so an invite sent before this account existed shows up here too.
+    user.email ? listPendingInvitesForEmail(user.email) : Promise.resolve([]),
+    listMyBatches(user.id),
   ]);
   const now = Date.now();
   const active = rows
@@ -57,6 +66,21 @@ export default async function AccountPage() {
 
         <div className="mb-6">
           <ProfileForm profile={profile} />
+        </div>
+
+        <div className="mb-6">
+          <BatchesCard
+            invites={invites.map((i) => ({
+              id: i.id,
+              batchName: i.batchName,
+              orgName: i.orgName,
+            }))}
+            batches={myBatches.map((b) => ({
+              batchId: b.batchId,
+              batchName: b.batchName,
+              orgName: b.orgName,
+            }))}
+          />
         </div>
 
         <div className="rounded-xl border bg-card p-6">
