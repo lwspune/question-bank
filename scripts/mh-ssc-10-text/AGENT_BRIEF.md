@@ -221,6 +221,14 @@ Transcribe the stem exactly as printed. If the book is wrong, record it:
 - for an answer-affecting defect, a bracket at the START of the stored solution:
   `[Textbook note: the book prints X; the correct value is Y, because …]`
 
+**The bracket is the load-bearing half — a `note` is NOT persisted anywhere.**
+`buildRecords` in the shared `scripts/stateboard` core ignores the field, so a note
+survives only in the committed `data/<id>.questions.json` where it documents the
+transcription for the next reader. Nothing queries it and no student sees it. So if
+a defect touches the ANSWER, it must also be written as a bracket in the solution,
+which does reach the database. Use a `note` alone only for a defect that changes
+nothing a reader needs — a misspelling in the stem, a dropped "and".
+
 Never silently correct a printed stem — `content_hash` is stem-derived, so a
 "helpful" repair makes the row un-dedupable against a later re-ingest, and it hides a
 real finding.
