@@ -182,6 +182,29 @@ Three consequences:
   LaTeX and GFM pipe-tables all use pipes and spaces — so a tab is always damage,
   and exempting it defeats the check that would have caught the corruption above.
 
+## WHICH HALF THE REPRINT KEPT IS NOT UNIVERSAL — CHECK, DO NOT ASSUME
+
+Every booklet is printed in Hindi AND English and every reprint carries ONE
+language's pages, so printed page numbers always advance in steps of 2. WHICH
+parity you get is a property of the individual reprint and it is NOT constant
+across the corpus:
+
+- 2017-2025 reprints kept the ODD pages: image n -> printed 2n+1 (p01 -> 3).
+- **2016-2 kept the EVEN pages: image n -> printed 2n (p01 -> 2).**
+
+An earlier version of this brief asserted 2n+1 as though it were universal. It is
+not, and it matters, because the printed sequence is one of the strands used to
+confirm a paper ends at Q120 — an agent told to expect odd numbers would read a
+correct even sequence as a defect.
+
+So derive the mapping from the FIRST page you read, then check the sequence is
+contiguous in steps of 2 and ends where the images end. Never check for oddness.
+
+(The raw UPSC booklet `2026-1` is the one paper that keeps BOTH languages, which
+is why it needs an explicit `englishPages` list. Its English pages are the even
+INDICES and the odd PRINTED numbers — the two parities are different things and
+it is easy to conflate them.)
+
 ## PAGE COUNT IS DENSITY, NOT BILINGUALISM
 
 Every booklet in this corpus is printed in Hindi AND English, and every render
