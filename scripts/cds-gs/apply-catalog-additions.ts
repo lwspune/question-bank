@@ -684,6 +684,50 @@ const ADDITIONS_ROUND4: Addition[] = [
     why: "2019-2 Q72 (who coined the word 'Geography') had to go to World History > Ancient and Classical World. Physics, Biology and Chemistry all carry such a slot after round 3; Geography did not, which is round 3's rule applied too narrowly rather than a new finding." },
 ];
 
+// ROUND 5 — applied 2026-08-28, after measuring the two items round 4 deferred.
+//
+// THE MEASUREMENT CORRECTED THE FRAMING, which is the point of this round. Both
+// had been described as a cluster sitting "outside the subject structure entirely"
+// and needing new CHAPTERS. Measured across all 2,280 committed questions, only
+// one of them is even in the wrong subject, and the largest is not a scope
+// question at all:
+//
+//   macro theory        6 q — and ALL SIX ARE ALREADY FILED UNDER ECONOMICS.
+//                       Right subject, applied chapters. An ordinary subtopic
+//                       addition, not a scope decision.
+//   chem thermodynamics 2 q — the ONLY case in the corpus of questions under the
+//                       WRONG SUBJECT (they sit in Physics). A new chapter for two
+//                       questions is disproportionate; a subtopic fixes the subject
+//                       error at ordinary cost.
+//   sociology           2 q — both defensibly filed already (Ashis Nandy under
+//                       History/Modern India, Burnham under Polity/Political Theory)
+//   19th-c world hist   2 q — of four probe hits, TWO WERE FALSE POSITIVES (the
+//                       Deccan Riots and the Hathigumpha inscription both matched on
+//                       "confederacy" and are Indian history, correctly filed)
+//   medieval Islamic    1 q — of four hits, THREE are Al-Biruni and Ibn Battuta
+//                       under Medieval Travellers, which is right: they are sources
+//                       FOR Indian history
+//
+// So the last three total FIVE questions across NINETEEN papers, ~0.26/paper, most
+// already sitting somewhere reasonable. No new chapters were added for them. The two
+// genuinely awkward rows — Kansas-Nebraska (1854) under "Enlightenment and Political
+// Revolutions", and Al-Khwarizmi (9th c.) under "Ancient and Classical World" — were
+// checked for a better existing home and have none, since World History carries no
+// 19th-century and no medieval chapter. They stay put rather than justify structure
+// on their own.
+//
+// The probe also UNDER-counted chemistry, missing the Gibbs-energy row because it
+// matched "spontaneit" and the stem says "spontaneous". Both directions of probe
+// error in one round: two false positives and one false negative.
+const ADDITIONS_ROUND5: Addition[] = [
+  { subject: "Economics", chapter: "National Income, Growth and Development Indicators",
+    subtopics: ["Macroeconomic Theory and Schools of Thought"],
+    why: "SIX hits, the largest single gap left: 2016-2 Q91 (Classical Theory of Employment) and Q92 (capital deepening), 2018-2 Q54 (natural-rate hypothesis), 2019-1 Q40 (Keynes on employment), 2021-2 Q69, 2022-1 Q37 (deficit financing). All six were already under Economics — five in this very chapter — so this is a chapter-fit problem, not a subject one: every Economics chapter is applied or Indian-institutional and none holds THEORY or the history of economic thought." },
+  { subject: "Chemistry", chapter: "Chemical Reactions",
+    subtopics: ["Thermochemistry and Energetics"],
+    why: "2019-1 Q79 (which of q+w, q, w, H-TS are state functions) and Q80 (Gibbs energy and the minimum temperature for spontaneity). THE ONLY QUESTIONS IN THE CORPUS FILED UNDER THE WRONG SUBJECT — both sit in Physics > Heat and Thermodynamics, the closest honest home available, and a student filtering Chemistry cannot reach them by any /browse control. Chemistry genuinely has no thermodynamics CHAPTER, but two questions at 0.11/paper do not warrant one; a subtopic corrects the subject error at ordinary-addition cost and the chapter question can be revisited if the rate ever rises." },
+];
+
 function main() {
   const apply = process.argv.includes("--apply");
   const path = join(__dirname, "catalog.json");
@@ -693,7 +737,7 @@ function main() {
   let newSubtopics = 0;
   const errors: string[] = [];
 
-  for (const a of [...ADDITIONS, ...ADDITIONS_ROUND2, ...ADDITIONS_ROUND3, ...ADDITIONS_ROUND4]) {
+  for (const a of [...ADDITIONS, ...ADDITIONS_ROUND2, ...ADDITIONS_ROUND3, ...ADDITIONS_ROUND4, ...ADDITIONS_ROUND5]) {
     const chapters = catalog[a.subject];
     if (!chapters) {
       errors.push(`unknown subject "${a.subject}" — additions never create a subject`);
