@@ -48,6 +48,9 @@ async function main() {
   const answersRaw = JSON.parse(readFileSync(answersFile, "utf8"));
   const answers: Derivation[] = answersRaw.answers;
   const reconciled = new Set<number>(answersRaw.reconciled ?? []);
+  // Questions UPSC WITHDREW. They carry no correct answer, so they are absent
+  // from the rows on purpose and must not read as a coverage failure.
+  const dropped: number[] = answersRaw.dropped ?? [];
 
   const built = buildRecords(questions, answers, { reconciled });
   // Normalise long-form text at the write boundary, mirroring the upload parser.
@@ -66,7 +69,7 @@ async function main() {
 
   // Run each row through the SAME validator the Excel upload path uses, so this
   // pipeline cannot write a row shape the normal ingest would have rejected.
-  const errs = validateRows(built, 1, pat.questions);
+  const errs = validateRows(built, 1, pat.questions, { exclude: dropped });
   const parsed = [];
   for (const r of built) {
     const v = validateRow(r);

@@ -231,7 +231,10 @@ export const PAPERS: Record<string, Paper> = {
   // All raw bilingual booklets.
   "2026-p2": p2(2026, "QP_CSP_2026_GENERAL_STUDIES_PAPER-II_25052026.pdf", evens(2, 42), 300),
   "2024-p2": p2(2024, "QP-CSP-24-GENERAL-STUDIES-PAPER-II-180624.pdf", evens(2, 42), 299),
-  "2023-p2": p2(2023, "QP_CS_Pre_Exam_2023_GENERAL_STUDIES_PAPER_II_280523.pdf", [], 300),
+  "2023-p2": p2(2023, "QP_CS_Pre_Exam_2023_GENERAL_STUDIES_PAPER_II_280523.pdf", evens(2, 42), 300),
+  // classify-pages.py flagged p32 as a COVER (gutter 0.063 vs a 0.060 threshold).
+  // Checked on the page: it is a question page (Q59 plus a Directions block) whose
+  // tight italic block narrows the gutter. Included deliberately.
   "2022-p2": p2(2022, "GENERAL STUDIES PAPER II.pdf", evens(2, 42), 150),
   "2021-p2": p2(2021, "QP-CSP-21-GeneralStudiesPaper-II-121021.pdf", evens(2, 42), 301),
   "2020-p2": p2(2020, "CSP_2020_GS_Paper-2.pdf", [], 200),

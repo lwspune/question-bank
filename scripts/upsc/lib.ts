@@ -665,10 +665,19 @@ function findTableWithoutSeparator(s: string): string | null {
 }
 
 /** Coverage + structural + collision checks over the assembled rows. */
-export function validateRows(rows: RawRow[], qFrom: number, qTo: number): string[] {
+export function validateRows(
+  rows: RawRow[],
+  qFrom: number,
+  qTo: number,
+  opts: { exclude?: number[] } = {}
+): string[] {
   const errs: string[] = [];
   const nums = new Set(rows.map((r) => Number(r.questionNumber)));
-  for (let n = qFrom; n <= qTo; n++) if (!nums.has(n)) errs.push(`missing Q${n}`);
+  // `exclude` is for questions UPSC WITHDREW. They are absent by design — the key
+  // marks them `X` and they have no correct answer — so counting them as missing
+  // coverage would make every paper with a dropped question fail its own gate.
+  const skip = new Set(opts.exclude ?? []);
+  for (let n = qFrom; n <= qTo; n++) if (!nums.has(n) && !skip.has(n)) errs.push(`missing Q${n}`);
 
   const seen = new Map<string, number>();
   for (const r of rows) {
