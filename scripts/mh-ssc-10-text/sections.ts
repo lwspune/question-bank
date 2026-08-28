@@ -70,6 +70,38 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
   ],
 
+  // GEOGRAPHY — one "Exercise" block per chapter, like the humanities book. This
+  // is measured rather than assumed: an Exercise-heading scan of all 82 pages of
+  // 10th_Geog_SB.pdf returns exactly nine hits, one per chapter, and no chapter
+  // carries a solved-example or miscellaneous block.
+  "geog-field-visit-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "geog-location-extent-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "geog-physiography-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "geog-climate-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "geog-vegetation-wildlife-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "geog-population-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "geog-settlements-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "geog-economy-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "geog-tourism-transport-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+
   // Geometry Ch.2 — the first MULTI-BLOCK outline in this file, in the book's
   // physical reading order (printed pp.36-46).
   //

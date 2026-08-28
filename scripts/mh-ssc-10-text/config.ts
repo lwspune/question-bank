@@ -50,6 +50,16 @@ export const OUT = join(__dirname, "out"); // gitignored: rendered PNGs + text d
 export const DATA = join(__dirname, "data"); // committed: transcription source of truth
 
 const HIST = join(SOURCE_ROOT, "10th_Hist_SB.pdf"); // History + Political Science
+// Balbharati Geography Std X, 82pp. Printed page N → 0-based PDF index N+10 —
+// note this is a DIFFERENT offset from HIST's N+9, so do not carry it across.
+// Like HIST it ships NO answers section; born-digital, so text-first.
+// Structurally it is the odd book of the three: it teaches India and Brazil
+// COMPARATIVELY throughout, its exercises lean on maps and figures far more
+// heavily than the humanities book, and — as in the Class-9 Geography book —
+// several "choose the correct option" blocks print fewer than four choices.
+// NEVER invent a fourth option to reach four; ingest such an item as subjective
+// with the printed choices inside the stem (see HUMANITIES_BRIEF.md).
+const GEOG = join(SOURCE_ROOT, "10th_Geog_SB.pdf");
 // Balbharati Mathematics Part II (Geometry), 180pp. Printed page N → 0-based PDF
 // index N+9, the same offset as HIST. Carries an ANSWERS section at idx 173+.
 // VISION-ONLY — see the note on "pythagoras-10" below before touching it.
@@ -62,6 +72,13 @@ export type Chapter = {
   sourceFile: string; // questions.source_file + upload_jobs.filename (dedup/rollback key)
   pdf: string;
   pages?: number[]; // 0-based page indices to render
+  /**
+   * PDF index MINUS printed page number, used ONLY to label dump-text.ts output.
+   * HIST and MATHS2 are 9 (the default); GEOG is 10. Getting it wrong mislabels
+   * every page heading in out/<id>.text.md by one, which is how a later reader
+   * ends up hunting a question on the wrong page.
+   */
+  printedOffset?: number;
   answersPdf?: string; // never set for this book — see the header note
   answerPages?: number[];
   note: string; // questions.pyq_note
@@ -368,6 +385,173 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Terrorism and Left Extremism", // NEW
       "Corruption and Criminalisation of Politics",
       "Challenges before Democracy at the Global Level",
+    ],
+  },
+
+  // ══ GEOGRAPHY — all nine chapters of 10th_Geog_SB.pdf ══
+  //
+  // Ranges come from the book's own contents page (idx 10) cross-checked against
+  // an Exercise-heading scan of all 82 pages. THREE chapters' exercises spill onto
+  // the next page (3, 8) or are followed by a further body box (5), so those
+  // ranges deliberately run one page past the Exercise heading.
+  //
+  // Subtopics are the existing DB names — all nine chapters already carry a full
+  // set from the board-PYQ ingest and they map cleanly onto the book's own
+  // headings, so unlike the History chapters nothing new is added here.
+  // drift worth recording: Location and Extent carries BOTH "Historical
+  // Background" and "Historical Background of Brazil" (1 shipped PYQ row each),
+  // which are one concept under two names. Reused rather than merged, because
+  // merging re-files shipped rows.
+
+  "geog-field-visit-10": {
+    id: "geog-field-visit-10",
+    chapterName: "Field Visit",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_10_Geography__Field_Visit.pdf",
+    pdf: GEOG,
+    printedOffset: 10, // GEOG: printed page N -> idx N+10, unlike HIST's N+9
+    pages: range(11, 18), // printed pp 1-8; Exercise on idx 18
+    note: "Maharashtra State Board (Class 10) — Field Visit (Balbharati textbook, Geography)",
+    subtopics: [
+      "Purpose and Planning of a Field Visit",
+      "Questionnaire and Report Writing",
+    ],
+  },
+
+  "geog-location-extent-10": {
+    id: "geog-location-extent-10",
+    chapterName: "Location and Extent",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_10_Geography__Location_and_Extent.pdf",
+    pdf: GEOG,
+    printedOffset: 10, // GEOG: printed page N -> idx N+10, unlike HIST's N+9
+    pages: range(19, 23), // printed pp 9-13; Exercise on idx 23
+    note: "Maharashtra State Board (Class 10) — Location and Extent (Balbharati textbook, Geography)",
+    subtopics: [
+      "Latitudinal and Longitudinal Extent",
+      "Neighbouring Countries and Boundaries",
+      "Area, Shape and Standard Time",
+      "States and Administrative Divisions of Brazil",
+      "Coastal States of Brazil",
+      "Historical Background",
+      "Historical Background of Brazil",
+      "India and Brazil — A Comparative Overview",
+    ],
+  },
+
+  "geog-physiography-10": {
+    id: "geog-physiography-10",
+    chapterName: "Physiography and Drainage",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_10_Geography__Physiography_and_Drainage.pdf",
+    pdf: GEOG,
+    printedOffset: 10, // GEOG: printed page N -> idx N+10, unlike HIST's N+9
+    pages: range(24, 34), // printed pp 14-24; Exercise SPANS idx 33-34
+    note: "Maharashtra State Board (Class 10) — Physiography and Drainage (Balbharati textbook, Geography)",
+    subtopics: [
+      "Physiographic Divisions",
+      "Mountains, Plateaus and Plains",
+      "Coastal Plains and Islands",
+      "River Systems and Drainage Basins",
+    ],
+  },
+
+  "geog-climate-10": {
+    id: "geog-climate-10",
+    chapterName: "Climate",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_10_Geography__Climate.pdf",
+    pdf: GEOG,
+    printedOffset: 10, // GEOG: printed page N -> idx N+10, unlike HIST's N+9
+    pages: range(35, 41), // printed pp 25-31; Exercise on idx 41
+    note: "Maharashtra State Board (Class 10) — Climate (Balbharati textbook, Geography)",
+    subtopics: [
+      "Factors Affecting Climate",
+      "Temperature and Rainfall Distribution",
+      "Winds and Monsoon",
+      "Climatic Regions",
+    ],
+  },
+
+  "geog-vegetation-wildlife-10": {
+    id: "geog-vegetation-wildlife-10",
+    chapterName: "Natural Vegetation and Wildlife",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_10_Geography__Natural_Vegetation_and_Wildlife.pdf",
+    pdf: GEOG,
+    printedOffset: 10, // GEOG: printed page N -> idx N+10, unlike HIST's N+9
+    pages: range(42, 47), // printed pp 32-37; Exercise on idx 46, a body box follows on idx 47
+    note: "Maharashtra State Board (Class 10) — Natural Vegetation and Wildlife (Balbharati textbook, Geography)",
+    subtopics: [
+      "Types of Natural Vegetation",
+      "Wildlife and Biodiversity",
+      "Conservation of Vegetation and Wildlife",
+    ],
+  },
+
+  "geog-population-10": {
+    id: "geog-population-10",
+    chapterName: "Population",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_10_Geography__Population.pdf",
+    pdf: GEOG,
+    printedOffset: 10, // GEOG: printed page N -> idx N+10, unlike HIST's N+9
+    pages: range(48, 55), // printed pp 38-45; Exercise on idx 55
+    note: "Maharashtra State Board (Class 10) — Population (Balbharati textbook, Geography)",
+    subtopics: [
+      "Distribution and Density of Population",
+      "Population Growth and Composition",
+      "Sex Ratio, Literacy and Life Expectancy",
+      "Migration and Urbanisation",
+    ],
+  },
+
+  "geog-settlements-10": {
+    id: "geog-settlements-10",
+    chapterName: "Human Settlements",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_10_Geography__Human_Settlements.pdf",
+    pdf: GEOG,
+    printedOffset: 10, // GEOG: printed page N -> idx N+10, unlike HIST's N+9
+    pages: range(56, 61), // printed pp 46-51; Exercise on idx 61
+    note: "Maharashtra State Board (Class 10) — Human Settlements (Balbharati textbook, Geography)",
+    subtopics: [
+      "Factors Affecting Settlement",
+      "Settlement Patterns",
+      "Rural and Urban Settlements",
+    ],
+  },
+
+  "geog-economy-10": {
+    id: "geog-economy-10",
+    chapterName: "Economy and Occupations",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_10_Geography__Economy_and_Occupations.pdf",
+    pdf: GEOG,
+    printedOffset: 10, // GEOG: printed page N -> idx N+10, unlike HIST's N+9
+    pages: range(62, 70), // printed pp 52-60; Exercise SPANS idx 69-70
+    note: "Maharashtra State Board (Class 10) — Economy and Occupations (Balbharati textbook, Geography)",
+    subtopics: [
+      "Primary, Secondary and Tertiary Activities",
+      "Agriculture and Allied Occupations",
+      "Minerals, Industries and Manufacturing",
+      "Types of Economy and National Income",
+    ],
+  },
+
+  "geog-tourism-transport-10": {
+    id: "geog-tourism-transport-10",
+    chapterName: "Tourism, Transport and Communication",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_10_Geography__Tourism_Transport_and_Communication.pdf",
+    pdf: GEOG,
+    printedOffset: 10, // GEOG: printed page N -> idx N+10, unlike HIST's N+9
+    pages: range(71, 78), // printed pp 61-68; Exercise on idx 78
+    note: "Maharashtra State Board (Class 10) — Tourism, Transport and Communication (Balbharati textbook, Geography)",
+    subtopics: [
+      "Types of Tourism",
+      "Tourism and the Economy",
+      "Land, Water and Air Transport",
     ],
   },
 

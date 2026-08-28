@@ -41,7 +41,7 @@ d = fitz.open(ch["pdf"])
 pages = ch.get("pages") or list(range(len(d)))
 parts = []
 for p in pages:
-    parts.append("\\n\\n===== PDF page index " + str(p) + " (printed p" + str(p - 9) + ") =====\\n")
+    parts.append("\\n\\n===== PDF page index " + str(p) + " (printed p" + str(p - ch.get("printedOffset", 9)) + ") =====\\n")
     parts.append(d[p].get_text())
 d.close()
 open(out, "w", encoding="utf-8").write("".join(parts))
