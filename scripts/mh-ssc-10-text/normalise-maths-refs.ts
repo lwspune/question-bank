@@ -25,7 +25,7 @@
  * It also rewrites the `ref` in the committed source JSONs, because a DB-only fix
  * is reverted by the next re-commit.
  */
-import { readFileSync, writeFileSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { CHAPTERS, DATA, EXAM_ID } from "./config";
@@ -74,13 +74,37 @@ async function main() {
     if (error) throw new Error(`${ch.id}: ${error.message}`);
     const rows = (data ?? []) as Array<{ id: string; question_number: string; visibility: string }>;
 
-    // Skip a chapter that has not finished publishing. A PRIVATE row means its
-    // ingestion is still in flight, and this script rewrites that chapter's source
-    // JSONs — racing an agent's own writes to the same files. Nothing about the
-    // rename is urgent, and the script is idempotent, so deferring costs a re-run.
+    // Skip a chapter whose ingestion may still be running — this script rewrites
+    // that chapter's source JSONs, so it can race an agent's own writes.
+    //
+    // TWO SIGNALS, because the first one alone is TOO WEAK and that was measured
+    // the hard way. "No PRIVATE rows" was the original guard, on the reasoning that
+    // a PRIVATE row means unpublished work. But an agent publishes and then keeps
+    // going — running audits, re-reading its rows, sometimes re-applying — so
+    // PUBLIC does not mean finished. On the Statistics chapter this script renamed
+    // 62 rows and 12 files out from under an agent that was still verifying. It
+    // recovered (it checked the house style rather than reverting, and re-proved
+    // its refs), but that was its care, not this guard's.
+    //
+    // So a recently-touched data file counts as in-flight too. Neither signal is
+    // proof; the honest position is that this script should be run when the run is
+    // KNOWN to be over, and the guards are a backstop, not a substitute for that.
     const stillPrivate = rows.filter((r) => r.visibility === "PRIVATE").length;
     if (stillPrivate) {
       console.log(`  WAIT  ${ch.id.padEnd(32)} ${stillPrivate} row(s) still PRIVATE — ingestion in flight, skipping`);
+      continue;
+    }
+    const QUIET_MS = 10 * 60 * 1000;
+    const recent = readdirSync(DATA)
+      .filter((n) => n.startsWith(`${ch.id}.`))
+      .map((n) => statSync(join(DATA, n)).mtimeMs)
+      .filter((t) => Date.now() - t < QUIET_MS);
+    if (recent.length) {
+      const ageMin = Math.round((Date.now() - Math.max(...recent)) / 60000);
+      console.log(
+        `  WAIT  ${ch.id.padEnd(32)} ${recent.length} data file(s) written ${ageMin} min ago — ` +
+          `agent may still be working, skipping`,
+      );
       continue;
     }
 
