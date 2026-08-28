@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import {
+  validateRows as validateRowsX,
   parseOfficialKey,
   compareToKey,
   applyOfficialKey,
@@ -115,5 +116,25 @@ describe("applyOfficialKey", () => {
   it("drops a question the key answers but nobody derived, rather than shipping it without working", () => {
     const out = applyOfficialKey(key, [d(1, "A")]);
     expect(out.map((x) => x.number)).toEqual([1]);
+  });
+});
+
+describe("validateRows with dropped questions", () => {
+  it("does NOT report a dropped question as missing coverage", () => {
+    const rows = [
+      { sourceRow: 1, questionNumber: "1", subject: "S", chapter: "C", question: "q1?",
+        optionA: "a", optionB: "b", optionC: "c", optionD: "d", answer: "A", difficulty: "MODERATE" },
+      { sourceRow: 3, questionNumber: "3", subject: "S", chapter: "C", question: "q3?",
+        optionA: "a", optionB: "b", optionC: "c", optionD: "d", answer: "B", difficulty: "MODERATE" },
+    ];
+    expect(validateRowsX(rows, 1, 3, { exclude: [2] })).toEqual([]);
+  });
+
+  it("still reports a genuinely missing question", () => {
+    const rows = [
+      { sourceRow: 1, questionNumber: "1", subject: "S", chapter: "C", question: "q1?",
+        optionA: "a", optionB: "b", optionC: "c", optionD: "d", answer: "A", difficulty: "MODERATE" },
+    ];
+    expect(validateRowsX(rows, 1, 3, { exclude: [2] }).join(" ")).toMatch(/missing Q3/);
   });
 });

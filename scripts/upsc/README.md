@@ -4,7 +4,17 @@ Scanned UPSC Civil Services (Preliminary) booklets (image PDFs, **no text layer*
 **NO ANSWER KEY**) → the bank, `question_kind='pyq'`, under a new **UPSC CSE
 (Prelims)** exam across **14 subjects** — nine for Paper I, five for Paper II.
 
-**Status: PILOT. 2025 Paper I + Paper II. Nothing is PUBLIC.**
+**Status: 4 of 22 papers committed PRIVATE — 359 questions. Nothing is PUBLIC.**
+
+| paper | rows | regime | blind pass vs official key |
+|---|---|---|---|
+| 2025-p1 | 100 | key applied after the fact | 94.0% / 95.0% (two passes) |
+| 2025-p2 | 80 | key applied after the fact | 91.2% / 93.8% (two passes) |
+| 2021-p1 | 99 | key from the start | **93.9%** (HIGH 81/82) |
+| 2023-p2 | 80 | key from the start | **96.3%** (HIGH 63/64) |
+
+All 359 stored answers verified against their official keys: **0 mismatches**.
+2021-p1 commits 99 rather than 100 because UPSC dropped its Q80.
 
 ## The corpus
 
