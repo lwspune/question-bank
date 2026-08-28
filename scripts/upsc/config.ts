@@ -237,7 +237,14 @@ export const PAPERS: Record<string, Paper> = {
   // tight italic block narrows the gutter. Included deliberately.
   "2022-p2": p2(2022, "GENERAL STUDIES PAPER II.pdf", evens(2, 42), 150),
   "2021-p2": p2(2021, "QP-CSP-21-GeneralStudiesPaper-II-121021.pdf", evens(2, 42), 301),
-  "2020-p2": p2(2020, "CSP_2020_GS_Paper-2.pdf", [], 200),
+  // P2 2020: the page detector reports 23 English pages, two of which (29, 33)
+  // are ODD and break the booklet's alternation. Both were opened and are HINDI:
+  // their right-hand items are a letter-analogy string and bare numeric options,
+  // so the page carries too little Devanagari for the shirorekha signal to fire
+  // (p33 scored p95run=8, inside the English range of 6-8). Confirmed by finding
+  // items 56-60 printed in Hindi on p33 and in English on p34. The real run is
+  // the clean even sequence, same as every other Paper II.
+  "2020-p2": p2(2020, "CSP_2020_GS_Paper-2.pdf", evens(2, 42), 200),
   "2019-p2": p2(2019, "csp-p2.pdf", [], 200),
   "2018-p2": p2(2018, "QP-CSP-18-GS-II-C.pdf", evens(2, 42), 150), // strip-scanned
   "2017-p2": p2(2017, "CSP-17-GS_PAPER-II-C.pdf", [], 150), // strip-scanned

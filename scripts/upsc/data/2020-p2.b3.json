@@ -1,0 +1,502 @@
+{
+  "band": "b3",
+  "pages": [
+    18,
+    20,
+    22,
+    24
+  ],
+  "bandReport": {
+    "numbersFound": [
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "ITEM RANGE. My four English pages (indices 18, 20, 22, 24 = printed pages 19, 21, 23, 25) carry items 27-42 whole, contiguous, no skips and no repeats. Item 27 is COMPLETE on p18-c1 (number, stem and all four options) but it is the SECOND item of a passage block that opens on page 16, which is not my band - see PASSAGE MAPPING. Item 42 closes cleanly at the foot of p24-c2 followed by '[ P.T.O.'; I read p26 far enough to confirm it opens with a fresh 'Passage-3' heading and item 43, so nothing of item 42 continues past my band and no item of mine spills onto page 26. firstComplete and lastComplete are therefore both true in the printed sense; the only thing reaching outside my pages is item 27's passage, which I fetched.\n\nPASSAGE MAPPING. Two directions blocks touch this band and they split UNEVENLY - do not assume a fixed items-per-passage ratio.\n  Block A opens on page 16 (previous band). Its 'Passage-5' (Indian agriculture / slow structural transformation) is printed across the gutter of page 16: it starts at the foot of p16-c1 ('In India, agriculture still engages about half of...') and finishes in the upper half of p16-c2 ('...led to unprecedented fall in poverty.'). It governs item 26 (not mine) AND item 27 (mine). Per the task instruction I opened page 16, read the passage off BOTH column crops - never off the whole page - and joined the two halves into item 27's `context`. Without this, item 27 ships as 'best reflects the critical message of the passage?' with no passage at all.\n  Block B opens at the top of p24-c1: 'Directions for the following 6 (six) items : Read the following five passages and answer the items that follow. Your answers to these items should be based on the passages only.' Six items over FIVE passages, so exactly one passage in this block governs two items. On MY pages the block yields Passage-1 (Spanish ships / the Lumper potato / Phytophthora infestans, p24-c1) governing item 41 ONLY, and Passage-2 (India / malnourished children, p24-c2) governing item 42 ONLY. I verified this by reading p26, which opens with a fresh 'Passage-3' heading immediately followed by item 43 - so neither of my two passages carries forward, and the one two-item passage of this block lies beyond page 26 (items 45/46), outside my band. The 'Directions...' preamble is deliberately NOT in any `context` field; only passage prose is.\n\nCONTEXT-vs-STEM CALL. All three passages here are in `context`, including the two that govern a single item each (41 and 42). The brief's rule of thumb would put a single-item passage in the stem, but the shipped sibling 2022-p2.b3.json carries an explicit '[MERGE FIX]' note recording that its one stem-placed single-item passage was MOVED to `context` for consistency with every other single-item passage in the shipped 2022-p2, 2023-p2 and 2025-p2 files. I followed that settled convention.\n\nCOLLISION WATCH - READ THIS. Items 27 and 41 have BYTE-IDENTICAL stems: 'Which one of the following statements best reflects the critical message of the passage?' They are different questions on different passages, and what distinguishes them lives in `context`, which content_hash excludes. They do NOT collide, because their four options share no text at all, so stem+sorted-options still differs. Recorded because this is precisely the pattern the brief warns about, and it would become a real collision if anyone ever trimmed or normalised those option sets. Two further same-option families were checked and are safe for the same reason: items 28, 29 and 30 carry the identical four data-sufficiency options and are distinguished only by their S1/S2/Question lines, which are kept in the STEM exactly as the brief requires; items 32 and 33 carry the identical four Conclusion options and are distinguished by their Statements/Conclusions, also in the stem. No `context` field in this file holds material unique to one item other than the two single-item passages named above.\n\nCOLUMN CROPS. All eight of my column images (p18, p20, p22, p24 x c1, c2) split cleanly: every item number sits with its own item, no line is cut down its middle, and no option block is orphaned or misattributed. Nothing on my pages had to be read off a whole-page image; pNN.png was used only for reading order and to confirm what spans the gutter. The detected gutter does move across this scan as warned (826 on p18/p20/p22 but 848 on p24, and 773 on the page-16 excursion), and the visible consequence is an EXPECTED SLIVER, not a slice: p24-c2 and p16-c2 each show a narrow strip of the LEFT column's line-END letters down their left margin, because those crops begin a little left of the gutter. In both cases the column's own text is complete and starts cleanly, so no text was lost and none was reconstructed by guesswork. Page-16's c1 clips the printed page number '17' to '1' in the footer, which is footer furniture and carries no item text.\n\nDIGITS. Item 34 is the only digit-critical item in the band and its 26-digit sequence was re-cropped and re-read at 3x magnification off p20-c2 before transcription. Confirmed as two printed lines - '5 1 4 7 3 9 8 5 7 2 6 3 1 5' (14 digits) then, indented, '8 6 3 8 5 2 2 4 3 4 9 6' (12 digits). The line break is the booklet's own wrapping of one continuous sequence and is preserved. Item 35's three letter labels (A, V, G) were also re-read at 3x because a mis-read letter would silently change the item; they are unambiguously A, V and G.\n\nPRINTED ODDITY, TRANSCRIBED AS PRINTED AND NOT CORRECTED. Item 34 asks 'How many odd numbers are followed by the odd number in the above sequence?' - the booklet prints the definite article 'the' where 'an' or 'another' would be idiomatic. Verified at 3x. Left exactly as printed; it is flagged on the item. No other misprint, no duplicated option, no blank option and no defective item was seen in this band, and no item was unreadable.\n\nTRANSCRIPTION CONVENTIONS. Typographic marks are preserved as printed rather than normalised to ASCII - curly quotes around 'Lumper' and 'Phytophthora infestans', the apostrophe in India's, en dashes in year ranges (1988-2014 etc.), the em dash in 'dramatically-almost', and the booklet's house-style raised MIDDLE DOT as a decimal point in '1.3 million', '4.1%' and '2.4%'. All of those code points already occur in the shipped Paper II files, and the middle dot in particular is a decimal point, not a multiplication sign. LaTeX is applied only to genuine mathematical quantities (item 28's four numbers P/Q/R/S, item 29's n, item 38's x, y, m, n, u, v and its four option equations); single letters that are merely ENTITY LABELS are left as plain text - item 35's boys A/V/G, item 36's persons A/B/C/D and item 38's cubes P and Q - which follows the shipped precedent where 'three cities P, Q and R' and 'Six persons A, B, C, D, E and F' are plain while 'Is x an integer?' is wrapped. The bold-italic emphasis the booklet uses on phrases such as 'best reflects the critical message' and 'most rational and practical implication/implications' is not carried into the text, matching the shipped sibling files.\n\nCLASSIFICATION. One subtopic is not in catalog.json and is flagged on its item: item 34, a scan-and-count over a printed digit string. Its chapter 'Counting and Enumeration' fits, but neither listed subtopic does - 'Counting Figures and Objects' is about figures and objects, and 'Permutations and Combinations' is about arrangement rather than tallying occurrences. Proposed label: 'Counting in a Number Sequence'. Every other subject, chapter and subtopic in this file is copied verbatim from catalog.json, and all five subjects used (Comprehension; Logical Reasoning and Analytical Ability; General Mental Ability; Basic Numeracy; Data Interpretation and Data Sufficiency) are Paper II subjects."
+  },
+  "questions": [
+    {
+      "number": 27,
+      "context": "In India, agriculture still engages about half of its workforce, and about 85 per cent of its farms are small and marginal. Compared to China and Vietnam, which have experienced fast structural and rural transformation, India's story is of slow transformation. As a result, poverty reduction in India was at a much slower pace during 1988–2014, compared to China and Vietnam. India's poverty reduction was slow during 1988–2005, but during 2005–2012, it accelerated dramatically—almost three times faster than during the earlier period. What did India do during this period? Research reveals that the relative price scenario changed significantly (by more than 50%) in favour of agriculture in the wake of rising global prices. This boosted private investments in agriculture by more than 50%. As a result, agri-GDP growth touched 4·1% during 2007–2012 as against 2·4% during 2002–2007. The net surplus of agri-trade touched $25 billion in 2013–2014; real farm wages rose by 7% per annum. All this led to unprecedented fall in poverty.",
+      "stem": "Which one of the following statements best reflects the critical message of the passage?",
+      "options": [
+        {
+          "label": "A",
+          "text": "India should create large-scale off-farm rural employment to reduce poverty in the near future."
+        },
+        {
+          "label": "B",
+          "text": "India should create a large number of farmer producer companies."
+        },
+        {
+          "label": "C",
+          "text": "Private investment in agriculture should be given priority over public investment."
+        },
+        {
+          "label": "D",
+          "text": "Inclusive agricultural growth is key to reduce poverty in the near future."
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "MODERATE",
+      "flags": [
+        "GOVERNING PASSAGE IS PRINTED OUTSIDE THIS BAND. This is the second item of a block that opens on page 16 (previous band). Its passage ('Passage-5') spans the gutter of page 16 - foot of p16-c1 into the upper half of p16-c2 - and governs items 26 and 27. Per the task instruction I opened page 16 and read both halves off the two column crops, and the joined text is in `context` here. The item is otherwise complete on p18-c1.",
+        "STEM IS BYTE-IDENTICAL TO ITEM 41's. The two are distinguished only by their passages, which live in the hash-excluded `context`. No collision results because the two option sets share no text, but see bandReport.notes - this is the pattern the brief warns about."
+      ]
+    },
+    {
+      "number": 28,
+      "stem": "Two Statements S1 and S2 are given below with regard to four numbers \\(P\\), \\(Q\\), \\(R\\) and \\(S\\) followed by a Question :\nS1 : \\(R\\) is greater than \\(P\\) as well as \\(Q\\).\nS2 : \\(S\\) is not the largest one.\nQuestion :\nAmong four numbers \\(P\\), \\(Q\\), \\(R\\) and \\(S\\), which one is the largest?\nWhich one of the following is correct in respect of the above Statements and the Question?",
+      "options": [
+        {
+          "label": "A",
+          "text": "S1 alone is sufficient to answer the Question."
+        },
+        {
+          "label": "B",
+          "text": "S2 alone is sufficient to answer the Question."
+        },
+        {
+          "label": "C",
+          "text": "S1 and S2 together are sufficient to answer the Question, but neither S1 alone nor S2 alone is sufficient to answer the Question."
+        },
+        {
+          "label": "D",
+          "text": "S1 and S2 together are not sufficient to answer the Question."
+        }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Sufficiency",
+      "subtopic": "Two-Statement Data Sufficiency",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Shares an identical four-option set with items 29 and 30. The S1/S2/Question lines are what distinguish the three items and are deliberately kept in the STEM, per the brief's data-sufficiency rule, so no `context` is used and the three hashes stay distinct."
+      ]
+    },
+    {
+      "number": 29,
+      "stem": "Two Statements S1 and S2 are given below followed by a Question :\nS1 : \\(n\\) is a prime number.\nS2 : \\(n\\) leaves a remainder of 1 when divided by 4.\nQuestion :\nIf \\(n\\) is a unique natural number between 10 and 20, then what is \\(n\\)?\nWhich one of the following is correct in respect of the above Statements and the Question?",
+      "options": [
+        {
+          "label": "A",
+          "text": "S1 alone is sufficient to answer the Question."
+        },
+        {
+          "label": "B",
+          "text": "S2 alone is sufficient to answer the Question."
+        },
+        {
+          "label": "C",
+          "text": "S1 and S2 together are sufficient to answer the Question, but neither S1 alone nor S2 alone is sufficient to answer the Question."
+        },
+        {
+          "label": "D",
+          "text": "S1 and S2 together are not sufficient to answer the Question."
+        }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Sufficiency",
+      "subtopic": "Two-Statement Data Sufficiency",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Shares an identical four-option set with items 28 and 30; distinguished by the S1/S2/Question lines held in the stem."
+      ]
+    },
+    {
+      "number": 30,
+      "stem": "Two Statements S1 and S2 are given below with regard to two numbers followed by a Question :\nS1 : Their product is 21.\nS2 : Their sum is 10.\nQuestion :\nWhat are the two numbers?\nWhich one of the following is correct in respect of the above Statements and the Question?",
+      "options": [
+        {
+          "label": "A",
+          "text": "S1 alone is sufficient to answer the Question."
+        },
+        {
+          "label": "B",
+          "text": "S2 alone is sufficient to answer the Question."
+        },
+        {
+          "label": "C",
+          "text": "S1 and S2 together are sufficient to answer the Question, but neither S1 alone nor S2 alone is sufficient to answer the Question."
+        },
+        {
+          "label": "D",
+          "text": "S1 and S2 together are not sufficient to answer the Question."
+        }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Sufficiency",
+      "subtopic": "Two-Statement Data Sufficiency",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Shares an identical four-option set with items 28 and 29; distinguished by the S1/S2/Question lines held in the stem."
+      ]
+    },
+    {
+      "number": 31,
+      "stem": "A man walks down the backside of his house straight 25 metres, then turns to the right and walks 50 metres again; then he turns towards left and again walks 25 metres. If his house faces to the East, what is his direction from the starting point?",
+      "options": [
+        {
+          "label": "A",
+          "text": "South-East"
+        },
+        {
+          "label": "B",
+          "text": "South-West"
+        },
+        {
+          "label": "C",
+          "text": "North-East"
+        },
+        {
+          "label": "D",
+          "text": "North-West"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Blood Relations and Directions",
+      "subtopic": "Directions and Distances",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 32,
+      "stem": "Two Statements are given followed by two Conclusions :\nStatements :\nAll numbers are divisible by 2.\nAll numbers are divisible by 3.\nConclusion-I :\nAll numbers are divisible by 6.\nConclusion-II :\nAll numbers are divisible by 4.\nWhich of the above Conclusions logically follows/follow from the two given Statements?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Only Conclusion-I"
+        },
+        {
+          "label": "B",
+          "text": "Only Conclusion-II"
+        },
+        {
+          "label": "C",
+          "text": "Neither Conclusion-I nor Conclusion-II"
+        },
+        {
+          "label": "D",
+          "text": "Both Conclusion-I and Conclusion-II"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Syllogisms and Logical Deduction",
+      "subtopic": "Statements and Conclusions",
+      "difficulty": "MODERATE",
+      "flags": [
+        "The booklet sets the Conclusion labels with an en dash ('Conclusion–I'); written here with an ASCII hyphen to match the shipped sibling Paper II files. Shares an identical four-option set with item 33, distinguished by the Statements and Conclusions held in the stem."
+      ]
+    },
+    {
+      "number": 33,
+      "stem": "Two Statements are given followed by two Conclusions :\nStatements :\nAll cats are dogs.\nAll cats are black.\nConclusion-I :\nAll dogs are black.\nConclusion-II :\nSome dogs are not black.\nWhich of the above Conclusions logically follows/follow from the two given Statements, disregarding commonly known facts?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Only Conclusion-I"
+        },
+        {
+          "label": "B",
+          "text": "Only Conclusion-II"
+        },
+        {
+          "label": "C",
+          "text": "Neither Conclusion-I nor Conclusion-II"
+        },
+        {
+          "label": "D",
+          "text": "Both Conclusion-I and Conclusion-II"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Syllogisms and Logical Deduction",
+      "subtopic": "Categorical Syllogisms",
+      "difficulty": "MODERATE",
+      "flags": [
+        "The booklet sets the Conclusion labels with an en dash ('Conclusion–I'); written here with an ASCII hyphen to match the shipped sibling Paper II files. Shares an identical four-option set with item 32, distinguished by the Statements and Conclusions held in the stem."
+      ]
+    },
+    {
+      "number": 34,
+      "stem": "Consider the following sequence of numbers :\n5 1 4 7 3 9 8 5 7 2 6 3 1 5\n8 6 3 8 5 2 2 4 3 4 9 6\nHow many odd numbers are followed by the odd number in the above sequence?",
+      "options": [
+        {
+          "label": "A",
+          "text": "5"
+        },
+        {
+          "label": "B",
+          "text": "6"
+        },
+        {
+          "label": "C",
+          "text": "7"
+        },
+        {
+          "label": "D",
+          "text": "8"
+        }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Counting in a Number Sequence",
+      "difficulty": "MODERATE",
+      "flags": [
+        "DIGITS VERIFIED AT 3x off p20-c2. The sequence is printed on two lines - 14 digits, then an indented continuation of 12 digits, 26 in all. The line break is the booklet's own wrapping of one continuous sequence and is preserved here.",
+        "Printed as 'followed by the odd number' - the booklet uses the definite article where 'an' or 'another' would be idiomatic. Verified at 3x and transcribed verbatim, not corrected.",
+        "Subtopic not in catalog.json. The chapter 'Counting and Enumeration' fits, but neither listed subtopic does: 'Counting Figures and Objects' is about figures and objects, and 'Permutations and Combinations' is about arrangement rather than tallying occurrences in a given string. Proposed label: 'Counting in a Number Sequence'."
+      ]
+    },
+    {
+      "number": 35,
+      "stem": "A is 16th from the left end in a row of boys and V is 18th from the right end. G is 11th from A towards the right and 3rd from V towards the right end. How many boys are there in the row?",
+      "options": [
+        {
+          "label": "A",
+          "text": "40"
+        },
+        {
+          "label": "B",
+          "text": "41"
+        },
+        {
+          "label": "C",
+          "text": "42"
+        },
+        {
+          "label": "D",
+          "text": "Cannot be determined due to insufficient data"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Analytical Arrangements",
+      "subtopic": "Ordering and Ranking",
+      "difficulty": "MODERATE",
+      "flags": [
+        "The three boys are labelled A, V and G - an unusual, non-consecutive set. All three letters were re-read at 3x magnification off p22-c1 and are unambiguous. Left as plain text rather than LaTeX because they are entity labels, matching the shipped precedent for persons and cities."
+      ]
+    },
+    {
+      "number": 36,
+      "stem": "Three Statements S1, S2 and S3 are given below followed by a Question :\nS1 : C is younger than D, but older than A and B.\nS2 : D is the oldest.\nS3 : A is older than B.\nQuestion :\nWho among A, B, C and D is the youngest?\nWhich one of the following is correct in respect of the above Statements and the Question?",
+      "options": [
+        {
+          "label": "A",
+          "text": "S1 alone is sufficient to answer the Question."
+        },
+        {
+          "label": "B",
+          "text": "S1 and S2 together are sufficient to answer the Question."
+        },
+        {
+          "label": "C",
+          "text": "S2 and S3 together are sufficient to answer the Question."
+        },
+        {
+          "label": "D",
+          "text": "S1 and S3 together are sufficient to answer the Question."
+        }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Sufficiency",
+      "subtopic": "Adequacy of Given Data",
+      "difficulty": "MODERATE",
+      "flags": [
+        "A THREE-statement data-sufficiency item, so its option set differs from the two-statement items 28/29/30 even though its option (a) is worded identically. Subtopic 'Adequacy of Given Data' chosen over 'Two-Statement Data Sufficiency' for that reason."
+      ]
+    },
+    {
+      "number": 37,
+      "stem": "How many integers are there between 1 and 100 which have 4 as a digit but are not divisible by 4?",
+      "options": [
+        {
+          "label": "A",
+          "text": "5"
+        },
+        {
+          "label": "B",
+          "text": "11"
+        },
+        {
+          "label": "C",
+          "text": "12"
+        },
+        {
+          "label": "D",
+          "text": "13"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 38,
+      "stem": "Let \\(x\\), \\(y\\) be the volumes; \\(m\\), \\(n\\) be the masses of two metallic cubes P and Q respectively. Each side of Q is two times that of P and mass of Q is two times that of P. Let \\(u = m/x\\) and \\(v = n/y\\). Which one of the following is correct?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(u = 4v\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(u = 2v\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(v = u\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(v = 4u\\)"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Mensuration and Geometry",
+      "subtopic": "Volumes and Surface Areas",
+      "difficulty": "HARD",
+      "flags": [
+        "The cube labels P and Q are left as plain text while the quantities x, y, m, n, u, v are wrapped as LaTeX, following the shipped precedent that entity labels stay plain and mathematical variables are wrapped."
+      ]
+    },
+    {
+      "number": 39,
+      "stem": "The average age of a teacher and three students is 20 years. If all the three students are of same age and the difference between the age of the teacher and each student is 20 years, then what is the age of the teacher?",
+      "options": [
+        {
+          "label": "A",
+          "text": "25 years"
+        },
+        {
+          "label": "B",
+          "text": "30 years"
+        },
+        {
+          "label": "C",
+          "text": "35 years"
+        },
+        {
+          "label": "D",
+          "text": "45 years"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Average",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 40,
+      "stem": "A person bought a car and sold it for ₹3,00,000. If he incurred a loss of 20%, then how much did he spend to buy the car?",
+      "options": [
+        {
+          "label": "A",
+          "text": "₹3,60,000"
+        },
+        {
+          "label": "B",
+          "text": "₹3,65,000"
+        },
+        {
+          "label": "C",
+          "text": "₹3,70,000"
+        },
+        {
+          "label": "D",
+          "text": "₹3,75,000"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Commercial Arithmetic",
+      "subtopic": "Profit, Loss and Discount",
+      "difficulty": "EASY",
+      "flags": [
+        "The booklet prints a space between the rupee glyph and the figure ('₹ 3,00,000'); written closed up here, matching the shipped sibling Paper II files."
+      ]
+    },
+    {
+      "number": 41,
+      "context": "Spanish ships in the late 16th century first brought the potato tuber from South America to Europe whereby in the early 19th century, it had become a reliable backup to cereal crops, particularly in the cold, rain-soaked soils of Ireland. The Irish were soon almost wholly dependent on the potato as their staple food. And they were planting primarily one prodigious variety, the 'Lumper' potato, whose genetic frailty would be cruelly exposed by the fungus 'Phytophthora infestans'. In 1845, spores of the deadly fungus began spreading across the country, destroying nearly all the Lumpers in its path. The resulting famine killed or displaced millions.",
+      "stem": "Which one of the following statements best reflects the critical message of the passage?",
+      "options": [
+        {
+          "label": "A",
+          "text": "For introducing any foreign plant into a country, the soil and climate conditions of that country should be suitable."
+        },
+        {
+          "label": "B",
+          "text": "As a staple food of a country, tuber crops like potato cannot replace cereal crops."
+        },
+        {
+          "label": "C",
+          "text": "Some of the fungal infections of plants cannot be prevented or stopped from spreading across large areas."
+        },
+        {
+          "label": "D",
+          "text": "Relying on a homogeneous food source is not desirable."
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "MODERATE",
+      "flags": [
+        "SINGLE-ITEM PASSAGE. 'Passage-1' of the six-item directions block opening on p24-c1 governs this item alone - page 26 opens with a fresh 'Passage-3' heading and item 43, which I checked. Placed in `context` rather than the stem, following the '[MERGE FIX]' note in the shipped 2022-p2.b3.json that moved a stem-placed single-item passage into `context` for consistency with every other single-item passage in the shipped Paper II files.",
+        "STEM IS BYTE-IDENTICAL TO ITEM 27's. No hash collision results because the two option sets share no text, but see bandReport.notes.",
+        "'Phytophthora infestans' is printed in italics inside single quotation marks; the quotation marks are preserved and the italics are not carried into the text."
+      ]
+    },
+    {
+      "number": 42,
+      "context": "India is at once among the fastest growing global economies and home to the largest number of malnourished children in the world. There are regions where malnutrition is not the exception but the norm. And across the country, malnutrition is the cause of death for roughly half the 1·3 million children who die before their fifth birthday each year. Even those children who survive suffer permanently from the damage that has already been done to their bodies and minds from not getting enough of the right foods and nutrients. Around 44 million children under 5 are stunted. That makes it harder for them to learn in school and subsequently earn a living as adults. Their lifetime earnings potential is almost a quarter less than that of their healthy peers.",
+      "stem": "With reference to the above passage, which of the following is/are the most rational and practical implication/implications?\n1. India's Public Distribution System should be monitored by the Union Government.\n2. Girls should be encouraged to delay marriage and first pregnancy.\n3. Mothers should be encouraged to breastfeed their children immediately after birth.\n4. The supply of safe drinking water and proper sanitation facilities to all should be ensured.\n5. Authorities should ensure the vaccination as prescribed.\nSelect the correct answer using the code given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "1, 2, 3 and 4"
+        },
+        {
+          "label": "B",
+          "text": "2, 3, 4 and 5"
+        },
+        {
+          "label": "C",
+          "text": "1 only"
+        },
+        {
+          "label": "D",
+          "text": "3 and 5 only"
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": [
+        "SINGLE-ITEM PASSAGE. 'Passage-2' of the six-item directions block governs this item alone - confirmed by reading p26, which opens with 'Passage-3' and item 43. Placed in `context` for the same reason as item 41.",
+        "The passage prints '1·3 million' with the booklet's house-style raised middle dot as the decimal point. It is a decimal point, not a multiplication sign.",
+        "Last item of this band; it closes complete at the foot of p24-c2 followed by '[ P.T.O.'."
+      ]
+    }
+  ]
+}

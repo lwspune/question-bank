@@ -1,0 +1,449 @@
+{
+  "band": "b5",
+  "pages": [34, 36, 38, 40, 42],
+  "bandReport": {
+    "numbersFound": [56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "BOUNDARIES. p34 opens cleanly on item 56 with nothing above it - no item and no passage runs in from p32 (band b4, whose own report states 'p32 ends with Q55 complete, and I checked p34: it opens with Q56'). Item 56 is whole in p34-c1. At the other edge, item 80 is complete on p42-c2 (stem + all four options, closing '(d) 31') and is the last item of the 80-item paper; the '[ P.T.O.' beneath it leads to the Hindi/rough-work tail, not to more items. p42 is the last rendered page of this booklet. Nothing of mine continues beyond my pages and I have transcribed no item outside 56-80.\n\nPASSAGE MAPPING. One directions block governs items 61-66: 'Directions for the following 6 (six) items : Read the following five passages and answer the items that follow. Your answers to these items should be based on the passages only.' printed at the head of p36-c1. FIVE passages over SIX items, distributed as: Passage-1 -> item 61 ALONE; Passage-2 -> items 62 AND 63 (this is the passage that carries two items, which is how five passages cover six items); Passage-3 -> item 64 ALONE; Passage-4 -> item 65 ALONE; Passage-5 -> item 66 ALONE. Item 63 says 'With reference to the above passage' and item 66 says 'from the above passage'; in each case I confirmed on the whole-page image that no new 'Passage-N' header stands between the item and the passage I have attached. The directions preamble itself is NOT in any context field. Every passage governing an item of mine is printed on MY OWN pages - none begins on a page I do not own - so I did not need to read a neighbouring band's page for a passage.\n\nEXPECTED LONELY-CONTEXT WARNINGS (4). Items 61, 64, 65 and 66 each carry a context used by that item alone. These are the legitimate case the warning names - a directions block giving an item its own passage - not per-item material parked in context and not a passage lost at a band seam. This matches the same-paper precedent exactly: 2020-p2.b2 has context groups [21][22][23][24,25][26] and 2020-p2.b4 has [43][44][45,46]. My groups are [61][62,63][64][65][66]. Items 62 and 63 carry byte-identical copies of Passage-2 so they group into one consecutive set.\n\nHASH SAFETY. Items 61 and 62 have BYTE-IDENTICAL stems ('Which one of the following is the most logical and rational inference that can be made from the above passage?'), distinguished only by their passages, which live in the hash-excluded context. No collision results because their four option sets share no text at all. The same pattern holds for items 63 and 64, which share the opening 'With reference to the above passage, the following assumptions have been made :' and an identical four-option set (1 only / 2 only / Both 1 and 2 / Neither 1 nor 2) but carry DIFFERENT numbered statement lists, which are kept in the STEM, not the context - so their stems, and therefore their hashes, stay distinct. I checked all 25 stem+option pairs in this band for collisions and found none.\n\nCROPS. All ten column crops are clean; none is sliced, no item number is missing from the top of a c2, and no option block is cut. Every c2 crop on my pages (p34, p36, p38, p40, p42) carries a thin sliver of the neighbouring column's line-END letters down its far left margin - e.g. 'n / g / s / n' down the left edge of p34-c2 - which is the expected overlap described in the brief, not a slice. I paid particular attention to the last three pages as instructed, since the detected gutter drifts across this scan (p34 gutterX 851, p36 830, p38 857, p40 844, p42 842) and the right column is sparse on p40: p40-c2 and p42-c2 were checked item by item and both are complete. All text was read from the c1/c2 crops in the order c1-top-to-bottom then c2-top-to-bottom; the whole-page images were used only for structure - specifically to establish that Passage-2 (p36), Passage-4 (p38) and Passage-5 (p38 into p40-c1) each flow across a column or page break, after which the text itself was read from the columns.\n\nTWO-PER-LINE OPTION LAYOUT ON p42. The last page changes its option layout: items 71, 74, 75, 76, 77, 78 and 80 print their options TWO PER LINE - '(a) ... (b) ...' on one line and '(c) ... (d) ...' on the next - rather than one per line as everywhere else in this band. Reading order within such a row is left then right, so (a) and (b) share the first line and (c) and (d) the second. Each of those seven items was re-read at 3x magnification to confirm the label-to-text pairing, because this layout is exactly where an option can be attributed to the wrong label. Item 75 is the one worth a second look: its options are printed OUT OF NUMERIC ORDER as (a) 3, (b) 4, (c) 5, (d) 2. That is verified at 3x and is what the booklet prints; it has NOT been reordered.\n\nPRINTED DEFECT (transcribed verbatim, NOT corrected). Item 65 option (d) prints 'drinking water shortagcs in our cities' - 'shortagcs' for 'shortages'. Verified at 3x off p38-c2: the glyph after 'shorta-g' is an open 'c', clearly distinct from the closed, cross-barred 'e' in 'the' and 'reason' on the line directly above. It is a compositor's typo in the booklet and is transcribed as printed.\n\nTYPOGRAPHY. (1) DECIMAL SEPARATOR - the booklet sets the decimal point as a raised MIDDLE DOT in its house style, and I have PRESERVED it as U+00B7 in items 69 ('46\u00b74', '2\u00b76'), 78 ('0\u00b71 gm') and 80 ('4\u00b75 m'). Each was verified at 3x; in item 69 the raised dot of '46\u00b74' and the baseline full stop that ends the same sentence are visible side by side, so this is a distinct glyph and not a period. This follows the majority convention of the shipped Paper II corpus, including 2020-p2.b2 (7 middle dots) and the 2022-p2 and 2023-p2 bands. REPORTED FOR A HUMAN, NOT CHANGED BY ME: the other band of this same paper, 2020-p2.b4, normalised the same glyph to an ordinary full stop in 15 places (Q52's table and Q53), so 2020-p2 is internally inconsistent on this one point. That is b4's territory and I have not touched it; whoever reconciles the paper should pick one convention for both bands. No gate is affected either way. (2) Curly quotation marks and apostrophes in Passage-1, Passage-3 and Passage-5 are transcribed as straight ASCII ' and \", matching the stated convention of 2020-p2.b4. (3) The em dash in Passage-5 ('laws\u2014assured at the outset') is preserved as U+2014, which is the corpus norm. (4) Italic emphasis is not carried into the text: the booklet sets 'most logical and rational inference' (items 61, 62), 'best reflects the critical message' (item 65), 'most logical inference' (item 66) and 'inter alia' (Passage-5) in bold italic or italic, and all are transcribed as plain text.\n\nSUBTOPIC WARNINGS (soft, deliberate - no listed subtopic fits). Item 73 'Circles and Polygons': the item counts points of intersection of a square and a circle; the listed subtopics under 'Mensuration and Geometry' are 'Areas and Perimeters', 'Volumes and Surface Areas' and 'Lines, Angles and Triangles', and none describes it. Item 78 'Unit Conversion': the item converts between litres/kilograms and cubic millimetres/grams; no listed subtopic under 'Arithmetic Operations and Ratios' covers unit conversion. A sibling band coined 'Unit Conversion and Time Units' for a time-unit item, which I have deliberately not reused here because this item has no time component. Both are filed under listed subjects and listed chapters; only the subtopic is new.\n\nNOT A DEFECT, RECORDED SO IT IS NOT 'FIXED' LATER. Item 77 opens 'A digit n > 3 is divisible by 3 but not divisible by 6' - 'digit', not 'number'. Verified at 3x; the word is deliberate and constrains n, so it has been left exactly as printed.\n\nTERRITORY I DO NOT OWN - A SET THAT FAILS TO FORM, INVISIBLE TO EVERY GATE. Not my items and not changed by me; recorded because the whole-paper merge passes all four gates while still carrying it. Band b2 states in its own report that Passage-5 of the seven-item block governs BOTH item 26 (its page) and item 27 (band b3's page), and both bands duly attached that passage. But the two copies do NOT group into a set: they are 1035 characters each and differ in exactly TWO characters, the two occurrences of 'India's' in 'India's story is of' and 'India's poverty red...', where b2 wrote a straight apostrophe U+0027 and b3 wrote a curly U+2019. `assignSetLabels` keys on the whitespace-normalised, lower-cased context, which does not fold quote glyphs, so it reads them as two different passages. The merge output shows this directly: 'GATE 3b SETS: ok (4 set(s) covering 8 item(s))' with context groups [26] and [27] listed separately, and both raising lonely-context warnings. Consequence if shipped as is: Passage-5 renders TWICE, once above item 26 and once above item 27, instead of once above the pair - the exact defect the set mechanism exists to prevent - and a later correction to one copy will not mirror to the other. The fix is one character in either file, and it belongs to whoever reconciles b2 and b3, not to me. It is the same root cause as the decimal-separator divergence noted above: this paper has no single agreed convention for glyph normalisation across its bands. My own shared passage (items 62 and 63) is byte-identical in both copies and groups correctly."
+  },
+  "questions": [
+    {
+      "number": 56,
+      "stem": "What is the remainder when \\(51 \\times 27 \\times 35 \\times 62 \\times 75\\) is divided by 100?",
+      "options": [
+        { "label": "A", "text": "50" },
+        { "label": "B", "text": "25" },
+        { "label": "C", "text": "5" },
+        { "label": "D", "text": "1" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 57,
+      "stem": "A sum of \u20b9 2,500 is distributed among X, Y and Z in the ratio \\(\\frac{1}{2} : \\frac{3}{4} : \\frac{5}{6}\\). What is the difference between the maximum share and the minimum share?",
+      "options": [
+        { "label": "A", "text": "\u20b9 300" },
+        { "label": "B", "text": "\u20b9 350" },
+        { "label": "C", "text": "\u20b9 400" },
+        { "label": "D", "text": "\u20b9 450" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Ratio and Proportion",
+      "difficulty": "MODERATE",
+      "flags": [
+        "The ratio is printed as three STACKED fractions separated by colons and is written here as \\(\\frac{1}{2} : \\frac{3}{4} : \\frac{5}{6}\\). Verified at 3x off p34-c1. The booklet prints a space between the rupee glyph and the figure ('\u20b9 2,500'), preserved here in the stem and in all four options."
+      ]
+    },
+    {
+      "number": 58,
+      "stem": "For what value of \\(n\\), the sum of digits in the number \\((10^{n} + 1)\\) is 2?",
+      "options": [
+        { "label": "A", "text": "For \\(n = 0\\) only" },
+        { "label": "B", "text": "For any whole number \\(n\\)" },
+        { "label": "C", "text": "For any positive integer \\(n\\) only" },
+        { "label": "D", "text": "For any real number \\(n\\)" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 59,
+      "stem": "In a class, there are three groups A, B and C. If one student from group A and two students from group B are shifted to group C, then what happens to the average weight of the students of the class?",
+      "options": [
+        { "label": "A", "text": "It increases." },
+        { "label": "B", "text": "It decreases." },
+        { "label": "C", "text": "It remains the same." },
+        { "label": "D", "text": "No conclusion can be drawn due to insufficient data." }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Average",
+      "difficulty": "EASY",
+      "flags": [
+        "The group labels A, B and C are set in italics in the booklet and are left as plain text here, following the shipped precedent that entity labels stay plain while mathematical variables are wrapped in LaTeX."
+      ]
+    },
+    {
+      "number": 60,
+      "stem": "How many different sums can be formed with the denominations \u20b9 50, \u20b9 100, \u20b9 200, \u20b9 500 and \u20b9 2,000 taking at least three denominations at a time?",
+      "options": [
+        { "label": "A", "text": "16" },
+        { "label": "B", "text": "15" },
+        { "label": "C", "text": "14" },
+        { "label": "D", "text": "10" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Permutations and Combinations",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 61,
+      "context": "Bank credit to the industrial sector has started shrinking. Its decline has been a serious concern as credit growth is essential to revive investment. The problem's origins lie in the incomplete reforms of the last 25 years. An institutional change that should have followed the 1991 reforms should have been setting up of a resolution corporation for banks. In a market economy with booms and busts, banks should be allowed to be set up and to fail. Today, we cannot shut down banks because there is no proper system to shut them down. Weak loss-making banks continue to need more capital.",
+      "stem": "Which one of the following is the most logical and rational inference that can be made from the above passage?",
+      "options": [
+        { "label": "A", "text": "Indian banking system is not able to help the country in its economic growth." },
+        { "label": "B", "text": "Economic reforms that started in 1991 have not helped in improving the economy to expected levels." },
+        { "label": "C", "text": "India lacks the institutional mechanism to deal with the failure of banks." },
+        { "label": "D", "text": "Encouraging the foreign investments in our industrial sector is a good alternative to this sector's dependence on banks for credit." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": [
+        "SINGLE-ITEM PASSAGE. Passage-1 of the six-item directions block opening at the head of p36-c1 governs this item ALONE - a fresh 'Passage-2' header stands between item 61's options and item 62. Placed in `context` rather than the stem, matching the same-paper precedent of 2020-p2.b2 and 2020-p2.b4, both of which put single-item passages in `context`. The expected lonely-context warning is legitimate, not a lost sibling.",
+        "STEM IS BYTE-IDENTICAL TO ITEM 62's. The two are distinguished only by their passages, which live in the hash-excluded `context`. No collision results because the two option sets share no text; see bandReport.notes."
+      ]
+    },
+    {
+      "number": 62,
+      "context": "India has tremendous potential for solar energy. We all realize that we have to stop burning fossil fuels to meet our energy needs. But certain renewable resources are still going through their cost curves and learning curves to get the required amount of output. The Indian Government has strongly committed to its targets of reducing emissions by 33 per cent by 2030, and towards this it has initiated a strong push towards a gas-based economy and has also invested heavily in renewable energy. However, business houses are wary of investing too heavily in renewable energy at a time when the technology is not yet ready.",
+      "stem": "Which one of the following is the most logical and rational inference that can be made from the above passage?",
+      "options": [
+        { "label": "A", "text": "India's commitment to reduce emissions by 33% is unlikely to be achieved." },
+        { "label": "B", "text": "India should import gas rather than invest in renewable resources." },
+        { "label": "C", "text": "Getting renewable resources to market too soon may be costly." },
+        { "label": "D", "text": "India should put in more efforts in the exploration of natural gas." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": [
+        "SHARED PASSAGE. Passage-2 governs BOTH this item and item 63, and the two carry byte-identical copies of it. The passage SPANS THE GUTTER of p36: its first two sentences ('India has tremendous potential ... to meet our energy needs.') close p36-c1 and it continues at the top of p36-c2 ('But certain renewable resources ...'). The booklet does not indent paragraph openings, and the c2 line begins flush at the left margin exactly as the continuation lines do, so this is one continuous paragraph and is joined as such. The break itself was identified on the whole-page image; both halves were then read from the column crops.",
+        "STEM IS BYTE-IDENTICAL TO ITEM 61's - see that item's flag and bandReport.notes."
+      ]
+    },
+    {
+      "number": 63,
+      "context": "India has tremendous potential for solar energy. We all realize that we have to stop burning fossil fuels to meet our energy needs. But certain renewable resources are still going through their cost curves and learning curves to get the required amount of output. The Indian Government has strongly committed to its targets of reducing emissions by 33 per cent by 2030, and towards this it has initiated a strong push towards a gas-based economy and has also invested heavily in renewable energy. However, business houses are wary of investing too heavily in renewable energy at a time when the technology is not yet ready.",
+      "stem": "With reference to the above passage, the following assumptions have been made :\n1. Governments often provide inefficient and costly subsidies for technologies that may not be ready in the near future.\n2. India's commitment of reducing emissions by 33% by 2030 shall be on the basis of gas-based economy.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": [
+        "SHARED PASSAGE. This item takes Passage-2, the same passage as item 62, carried here byte-identically. No 'Passage-N' header stands between item 62's options and this item - verified on the whole-page image of p36 - and the stem's own 'With reference to the above passage' confirms it.",
+        "Shares an identical four-option set with item 64. The two are distinguished by their numbered statement lists, which are deliberately kept in the STEM and not the context, so their hashes stay distinct."
+      ]
+    },
+    {
+      "number": 64,
+      "context": "Genome editing is different from genome modification. Genome editing typically involves finding the part of a plant genome that could be changed to render it less vulnerable to disease, or resistant to certain herbicides, or to increase yields. Researchers use 'molecular scissors' to dissect the genome and repair it, which is a process that occurs naturally when plants are under attack from diseases and can throw up new mutations that enable the plant to survive future attacks. This evolutionary process can effectively be speeded up now that it is possible to examine plant genomes in detail in laboratories, and create mechanisms through which the relevant genes can be altered very precisely.",
+      "stem": "With reference to the above passage, the following assumptions have been made :\n1. Genome editing does not require the transfer of genes from one plant to another.\n2. Through genome editing, the chosen genes can be altered precisely in a manner akin to the natural process that helps plants to adapt to the environmental factors.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": [
+        "SINGLE-ITEM PASSAGE. Passage-3 is printed whole at the head of p38-c1 and governs this item ALONE - a fresh 'Passage-4' header follows item 64's options in the same column. Placed in `context` per the same-paper precedent; the lonely-context warning is legitimate.",
+        "'molecular scissors' is printed inside curly single quotation marks in the booklet; the quotation marks are preserved and written as straight apostrophes.",
+        "Shares an identical four-option set with item 63; distinguished by the numbered statement list held in the stem."
+      ]
+    },
+    {
+      "number": 65,
+      "context": "Many people understand the connection between solid waste management and health in terms of the consequences of unattended heaps of dry garbage which become home for flies and other vermin. However, there is another aspect that is not well-understood, that is, what happens when unscientific solid waste management combines with poor drainage and dumping of untreated sewage into drains which are meant to carry storm water during rains. The result is choked drains which are full of stagnant water breeding mosquitoes, resulting in the spread of water-borne diseases.",
+      "stem": "In the context of India, which one of the following statements best reflects the critical message of the passage?",
+      "options": [
+        { "label": "A", "text": "In India, the drainage networks are not separate for sewerage and storm water." },
+        { "label": "B", "text": "Urban local bodies do not have enough resources and legislative authority to deal with the problems of waste management." },
+        { "label": "C", "text": "Solid waste management should be integrated with the maintenance of drainage and sewerage networks." },
+        { "label": "D", "text": "Bad management of solid waste and sewerage systems by our municipalities is the reason for drinking water shortagcs in our cities." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "MODERATE",
+      "flags": [
+        "PRINTED DEFECT, TRANSCRIBED VERBATIM. Option (d) prints 'drinking water shortagcs' - 'shortagcs' for 'shortages'. Verified at 3x off p38-c2: the glyph after 'shorta-g' is an open 'c', clearly distinct from the closed, cross-barred 'e' in 'the' and 'reason' on the line directly above it. NOT corrected.",
+        "SINGLE-ITEM PASSAGE. Passage-4 governs this item ALONE - a fresh 'Passage-5' header follows item 65's options. The passage SPANS THE GUTTER of p38: it opens at the foot of p38-c1 ('Many people understand ... However, there is another') and continues at the top of p38-c2 ('aspect that is not well-understood ...'). One continuous paragraph, joined here; the break was identified on the whole-page image and both halves read from the column crops."
+      ]
+    },
+    {
+      "number": 66,
+      "context": "In Part III of the Constitution, which assures people certain fundamental rights, Article 25 proclaims that \"all persons are equally entitled to freedom of conscience and the right freely to profess, practise and propagate religion\". What people fail to notice is that this proclamation is prefixed with the words \"subject to public order, morality, health and to the other provisions of this Part\", which set conditions precedent for the legal protection of religious practices of any community. The closing words of this prefatory rider in Article 25 virtually constitute a subordination clause placing other fundamental rights mentioned in Part III over and above the right to religious freedom. Among those other fundamental rights is the right to equality before law and equal protection of laws\u2014assured at the outset and elaborated in later articles to mean, inter alia, that the State shall not deny equal protection of laws to any person or group of persons on the basis of religion alone.",
+      "stem": "What is the most logical inference from the above passage?",
+      "options": [
+        { "label": "A", "text": "State shall not interfere with the religious affairs of the citizens." },
+        { "label": "B", "text": "Religious freedom under the Constitution is open to State intervention." },
+        { "label": "C", "text": "Religious freedom of the citizens is not covered under fundamental rights." },
+        { "label": "D", "text": "Religious practices of any community are immune to State laws." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": [
+        "SINGLE-ITEM PASSAGE SPANNING TWO OF MY PAGES. Passage-5 is the last passage of the six-item directions block. It BEGINS at the foot of p38-c2 (under its 'Passage-5' header, running to '... a subordination clause placing other') and CONTINUES at the top of p40-c1 ('fundamental rights mentioned in Part III over ... on the basis of religion alone.'), where item 66 follows it. Both pages are mine, so no neighbouring band's page was needed. One continuous paragraph, joined here; the page break was identified on the whole-page images and both halves read from the column crops. It governs this item ALONE - item 67 follows with no passage reference - so the lonely-context warning is legitimate.",
+        "The two quoted extracts from Article 25 are printed in curly double quotation marks and are written here with straight double quotes; the full stop after 'religion\"' is OUTSIDE the closing quote in the booklet and is kept there. The em dash in 'laws\u2014assured' is preserved as U+2014. 'inter alia' is set in italics in the booklet; the italics are not carried into the text."
+      ]
+    },
+    {
+      "number": 67,
+      "stem": "How many different 5-letter words (with or without meaning) can be constructed using all the letters of the word 'DELHI' so that each word has to start with D and end with I?",
+      "options": [
+        { "label": "A", "text": "24" },
+        { "label": "B", "text": "18" },
+        { "label": "C", "text": "12" },
+        { "label": "D", "text": "6" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Permutations and Combinations",
+      "difficulty": "EASY",
+      "flags": [
+        "'DELHI' is printed inside curly single quotation marks; the quotation marks are preserved and written as straight apostrophes."
+      ]
+    },
+    {
+      "number": 68,
+      "stem": "A bottle contains 20 litres of liquid A. 4 litres of liquid A is taken out of it and replaced by same quantity of liquid B. Again 4 litres of the mixture is taken out and replaced by same quantity of liquid B. What is the ratio of quantity of liquid A to that of liquid B in the final mixture?",
+      "options": [
+        { "label": "A", "text": "4 : 1" },
+        { "label": "B", "text": "5 : 1" },
+        { "label": "C", "text": "16 : 9" },
+        { "label": "D", "text": "17 : 8" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Partnership and Mixtures",
+      "difficulty": "MODERATE",
+      "flags": [
+        "The liquid labels A and B are set in italics in the booklet and are left as plain text here, following the shipped precedent that entity labels stay plain."
+      ]
+    },
+    {
+      "number": 69,
+      "stem": "The average score of a batsman after his 50th innings was 46\u00b74. After 60th innings, his average score increases by 2\u00b76. What was his average score in the last ten innings?",
+      "options": [
+        { "label": "A", "text": "122" },
+        { "label": "B", "text": "91" },
+        { "label": "C", "text": "62" },
+        { "label": "D", "text": "49" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Average",
+      "difficulty": "MODERATE",
+      "flags": [
+        "The booklet sets the decimal point as a raised middle dot in its house style: '46\u00b74' and '2\u00b76', preserved here as U+00B7. Verified at 3x off p40-c2, where the raised dot of '46\u00b74' and the baseline full stop ending the same sentence sit side by side and are plainly different glyphs. It is a decimal point, not a multiplication sign. See bandReport.notes on the divergence from band b4 of this same paper."
+      ]
+    },
+    {
+      "number": 70,
+      "stem": "As a result of 25% hike in the price of rice per kg, a person is able to purchase 6 kg less rice for \u20b9 1,200. What was the original price of rice per kg?",
+      "options": [
+        { "label": "A", "text": "\u20b9 30" },
+        { "label": "B", "text": "\u20b9 40" },
+        { "label": "C", "text": "\u20b9 50" },
+        { "label": "D", "text": "\u20b9 60" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Percentage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 71,
+      "stem": "A person X can complete 20% of work in 8 days and another person Y can complete 25% of the same work in 6 days. If they work together, in how many days will 40% of the work be completed?",
+      "options": [
+        { "label": "A", "text": "6" },
+        { "label": "B", "text": "8" },
+        { "label": "C", "text": "10" },
+        { "label": "D", "text": "12" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Time, Speed and Work",
+      "subtopic": "Time and Work",
+      "difficulty": "MODERATE",
+      "flags": [
+        "TWO-PER-LINE OPTION LAYOUT. p42 prints this item's options two to a line - '(a) 6   (b) 8' then '(c) 10   (d) 12'. The pairing was re-read at 3x off p42-c1 to confirm each label goes with the value to its immediate right."
+      ]
+    },
+    {
+      "number": 72,
+      "stem": "A car travels from a place X to place Y at an average speed of \\(v\\) km/hr, from Y to X at an average speed of \\(2v\\) km/hr, again from X to Y at an average speed of \\(3v\\) km/hr and again from Y to X at an average speed of \\(4v\\) km/hr. Then the average speed of the car for the entire journey",
+      "options": [
+        { "label": "A", "text": "is less than \\(v\\) km/hr" },
+        { "label": "B", "text": "lies between \\(v\\) and \\(2v\\) km/hr" },
+        { "label": "C", "text": "lies between \\(2v\\) and \\(3v\\) km/hr" },
+        { "label": "D", "text": "lies between \\(3v\\) and \\(4v\\) km/hr" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Time, Speed and Work",
+      "subtopic": "Time, Speed and Distance",
+      "difficulty": "MODERATE",
+      "flags": [
+        "The stem is a sentence FRAGMENT that each option completes ('Then the average speed of the car for the entire journey' / 'is less than ...'), exactly as printed - there is no question mark in the booklet. The place labels X and Y are left as plain text while the speed \\(v\\) is wrapped as LaTeX, following the shipped precedent that entity labels stay plain and mathematical variables are wrapped."
+      ]
+    },
+    {
+      "number": 73,
+      "stem": "Consider the following statements :\n1. The minimum number of points of intersection of a square and a circle is 2.\n2. The maximum number of points of intersection of a square and a circle is 8.\nWhich of the above statements is/are correct?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Mensuration and Geometry",
+      "subtopic": "Circles and Polygons",
+      "difficulty": "MODERATE",
+      "flags": [
+        "Subtopic not in catalog.json. The chapter 'Mensuration and Geometry' fits, but none of its listed subtopics does: 'Areas and Perimeters' and 'Volumes and Surface Areas' are about measurement, and 'Lines, Angles and Triangles' is about triangles. The item counts points of intersection of a square and a circle. Proposed label: 'Circles and Polygons'."
+      ]
+    },
+    {
+      "number": 74,
+      "stem": "A man takes half time in rowing a certain distance downstream than upstream. What is the ratio of the speed in still water to the speed of current?",
+      "options": [
+        { "label": "A", "text": "1 : 2" },
+        { "label": "B", "text": "2 : 1" },
+        { "label": "C", "text": "1 : 3" },
+        { "label": "D", "text": "3 : 1" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Time, Speed and Work",
+      "subtopic": "Trains, Boats and Streams",
+      "difficulty": "MODERATE",
+      "flags": [
+        "TWO-PER-LINE OPTION LAYOUT - '(a) 1 : 2   (b) 2 : 1' then '(c) 1 : 3   (d) 3 : 1'. Re-read at 3x off p42-c1 to confirm the label-to-value pairing.",
+        "Printed as 'takes half time in rowing a certain distance downstream than upstream' - the booklet uses 'half ... than' where 'half the time ... that taken upstream' would be idiomatic. Transcribed verbatim, not corrected."
+      ]
+    },
+    {
+      "number": 75,
+      "stem": "How many pairs of natural numbers are there such that the difference of whose squares is 63?",
+      "options": [
+        { "label": "A", "text": "3" },
+        { "label": "B", "text": "4" },
+        { "label": "C", "text": "5" },
+        { "label": "D", "text": "2" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Factors, Multiples, HCF and LCM",
+      "difficulty": "MODERATE",
+      "flags": [
+        "OPTIONS ARE PRINTED OUT OF NUMERIC ORDER: (a) 3, (b) 4, (c) 5, (d) 2. Verified at 3x off p42-c2 in the two-per-line layout - '(a) 3   (b) 4' on the first line and '(c) 5   (d) 2' on the second. The order has NOT been changed; it is what the booklet prints.",
+        "Printed as 'such that the difference of whose squares is 63' - the booklet mixes 'such that' with the relative 'whose'. Transcribed verbatim, not corrected."
+      ]
+    },
+    {
+      "number": 76,
+      "stem": "Which one of the following will have minimum change in its value if 5 is added to both numerator and the denominator of the fractions \\(2/3\\), \\(3/4\\), \\(4/5\\) and \\(5/6\\)?",
+      "options": [
+        { "label": "A", "text": "\\(2/3\\)" },
+        { "label": "B", "text": "\\(3/4\\)" },
+        { "label": "C", "text": "\\(4/5\\)" },
+        { "label": "D", "text": "\\(5/6\\)" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Ratio and Proportion",
+      "difficulty": "MODERATE",
+      "flags": [
+        "The fractions are printed in SLASH form, not stacked - verified at 3x off p42-c2 - so they are written as \\(2/3\\) rather than \\(\\frac{2}{3}\\), preserving the printed form.",
+        "TWO-PER-LINE OPTION LAYOUT - '(a) 2/3   (b) 3/4' then '(c) 4/5   (d) 5/6'. Pairing confirmed at 3x."
+      ]
+    },
+    {
+      "number": 77,
+      "stem": "A digit \\(n > 3\\) is divisible by 3 but not divisible by 6. Which one of the following is divisible by 4?",
+      "options": [
+        { "label": "A", "text": "\\(2n\\)" },
+        { "label": "B", "text": "\\(3n\\)" },
+        { "label": "C", "text": "\\(2n + 4\\)" },
+        { "label": "D", "text": "\\(3n + 1\\)" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "MODERATE",
+      "flags": [
+        "The booklet prints 'A digit \\(n > 3\\)', not 'a number'. Verified at 3x off p42-c2. The word constrains \\(n\\) and is deliberate, so it is transcribed exactly as printed and must not be 'corrected' later.",
+        "TWO-PER-LINE OPTION LAYOUT - '(a) 2n   (b) 3n' then '(c) 2n + 4   (d) 3n + 1'. Pairing confirmed at 3x."
+      ]
+    },
+    {
+      "number": 78,
+      "stem": "If 1 litre of water weighs 1 kg, then how many cubic millimetres of water will weigh 0\u00b71 gm?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "10" },
+        { "label": "C", "text": "100" },
+        { "label": "D", "text": "1000" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Unit Conversion",
+      "difficulty": "MODERATE",
+      "flags": [
+        "The booklet sets the decimal point as a raised middle dot: '0\u00b71 gm', preserved here as U+00B7. Verified at 3x off p42-c2. It is a decimal point, not a multiplication sign.",
+        "Subtopic not in catalog.json. No listed subtopic under 'Arithmetic Operations and Ratios' covers unit conversion; the item converts between litres/kilograms and cubic millimetres/grams. A sibling band coined 'Unit Conversion and Time Units' for a time-unit item, deliberately not reused here because this item has no time component. Proposed label: 'Unit Conversion'.",
+        "TWO-PER-LINE OPTION LAYOUT - '(a) 1   (b) 10' then '(c) 100   (d) 1000'. Pairing confirmed at 3x."
+      ]
+    },
+    {
+      "number": 79,
+      "stem": "A vessel full of water weighs 40 kg. If it is one-third filled, its weight becomes 20 kg. What is the weight of the empty vessel?",
+      "options": [
+        { "label": "A", "text": "10 kg" },
+        { "label": "B", "text": "15 kg" },
+        { "label": "C", "text": "20 kg" },
+        { "label": "D", "text": "25 kg" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Algebra and Equations",
+      "subtopic": "Linear and Quadratic Equations",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 80,
+      "stem": "A frog tries to come out of a dried well 4\u00b75 m deep with slippery walls. Every time the frog jumps 30 cm, slides down 15 cm. What is the number of jumps required for the frog to come out of the well?",
+      "options": [
+        { "label": "A", "text": "28" },
+        { "label": "B", "text": "29" },
+        { "label": "C", "text": "30" },
+        { "label": "D", "text": "31" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Miscellaneous Mental Ability",
+      "subtopic": "Logical Puzzles",
+      "difficulty": "MODERATE",
+      "flags": [
+        "LAST ITEM OF THE PAPER. It closes complete at the foot of p42-c2 - stem plus all four options - followed by '[ P.T.O.'. p42 is the last rendered page of this booklet.",
+        "The booklet sets the decimal point as a raised middle dot: '4\u00b75 m', preserved here as U+00B7. Verified at 3x off p42-c2.",
+        "Printed as 'Every time the frog jumps 30 cm, slides down 15 cm' - the subject of the second clause is omitted in the booklet. Transcribed verbatim, not corrected.",
+        "TWO-PER-LINE OPTION LAYOUT - '(a) 28   (b) 29' then '(c) 30   (d) 31'. Pairing confirmed at 3x."
+      ]
+    }
+  ]
+}

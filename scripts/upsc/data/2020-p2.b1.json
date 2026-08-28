@@ -1,0 +1,258 @@
+{
+  "band": "b1",
+  "pages": [2, 4, 6, 8],
+  "bandReport": {
+    "numbersFound": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "BOUNDARIES. Item 1 is the first item of the paper: p02-c1 opens with the directions block, then Passage-1, then item 1 whole, so nothing precedes my band. Item 16 ends with its option (d) on p08-c2 and is followed by the '[ P.T.O.' footer, so it is whole on my pages. I did NOT open p10; the neighbouring band b2 already reports that item 17 opens at the top of p10-c1 with its own number, which is consistent with what I see. || PASSAGE MAPPING. One directions block governs my first six items and is printed at the top of p02-c1: 'Directions for the following 6 (six) items : Read the following five passages and answer the items that follow. Your answers to these items should be based on the passages only.' Per the brief the preamble itself is NOT in any context field. Five passages cover six items and the mapping is: Passage-1 -> Q1 alone; Passage-2 -> Q2 alone; Passage-3 -> Q3 alone; Passage-4 -> Q4 alone; Passage-5 -> BOTH Q5 and Q6. Q6 carries no passage header of its own and reads 'best implies the crux of the passage', immediately following Q5 under Passage-5 with nothing between them - that is how five passages cover six items. Q1-Q4 will therefore each raise a 'lonely-context' warning (one item per passage); those are legitimate, not transcription errors. Passage-4 begins at the foot of p04-c1 and finishes at the top of p04-c2; Passage-5 is wholly on p06-c1. || ITEMS 7-16 ARE STANDALONE. The directions block covers only items 1-6. Item 7 begins immediately after item 6 on p06-c2 with no new directions block and no passage, and items 7-16 are self-contained numeracy/reasoning items, so none of them carries a context field. b2 independently reports that p08 carries no directions block, which agrees. || CROPS. All four of my pages (2, 4, 6, 8) have gutterFound=true at x=826 and none is sliced: every item number is present at the head of its column, no line is cut down its middle, and both columns read as continuous prose. There is a thin sliver of the neighbouring column bleeding into the edge of some crops - on p02-c1 the right edge carries the line-START letters of c2 and on p06-c2 the left edge carries the line-END letters of c1 - but in each case the owning column retains the full text, so this is the expected overlap, not a slice. I verified this by checking that p02-c2 opens with the complete 'Passage-2' heading and complete words on every line. I read all text from the column crops; I did not need to fall back to any pNN.png. || PRINTED DEFECT, transcribed verbatim and NOT corrected. Item 12 reads 'what is the minimum length can you measure?', which is ungrammatical as printed (it wants either 'what is the minimum length you can measure' or 'what minimum length can you measure'). Confirmed at 3x magnification. The wording is left exactly as printed. || TRANSCRIPTION NOTES. Item 11's symbol is a circled cross and is rendered as \\otimes inside math delimiters; the printed sum is a cryptarithm and I verified it character by character at 3x. Item 15's letter string 'abab_b_bcb_dcdcded_d' was verified at 4x - it carries exactly four underscores, matching the four letters in each option. Item 16's letter-digit strings are printed in italic as A3BC and DE2F and are wrapped in math delimiters. Decimal points in item 12 are printed as raised middle dots (7·5, 3·25, 0·05, 0·25) and are preserved as U+00B7, consistent with the sibling band b2. Curly apostrophes in the passages and options (biotechnology's, citizens', country's, Biotechnology's) are transcribed as plain ASCII apostrophes, also consistent with b2. Item 7's product is printed across two lines with the continuation beginning with a multiplication sign; it is transcribed as one LaTeX expression. No duplicate option texts were found in any item in this band."
+  },
+  "questions": [
+    {
+      "number": 1,
+      "context": "In India, over the last decade or so, labour has been departing agriculture, but is only going to construction and unregistered manufacturing which are not markedly better jobs. Services, where labour tends to be most productive, are not generating the additional jobs the country needs. India will need 24 million or so jobs over the next decade. The new sector, e-commerce, can at best close only half the jobs gap. Only those sectors that drive domestic demand such as health and education can comfortably fill the other half.",
+      "stem": "Which one of the following is best implied in the passage?",
+      "options": [
+        { "label": "A", "text": "Strong measures need to be taken to reduce the rural to urban migration of labour." },
+        { "label": "B", "text": "The working condition in construction and unregistered manufacturing needs to be improved." },
+        { "label": "C", "text": "Service sector has been reducing the problem of unemployment." },
+        { "label": "D", "text": "Increased social sector spending is imperative for large-scale job creation." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 2,
+      "context": "In India, the current focus on the right to privacy is based on some new realities of the digital age. A right is a substantive right only if it works in all situations, and for everyone. A right to free expression for an individual about her exploitation, for instance, is meaningless without actual availability of security that guarantees that private force cannot be used to thwart this right. The role of the State, therefore, is not just to abstain from preventing rightful free expression, but also to actively ensure that private parties are not able to block it.",
+      "stem": "On the basis of the above passage, the following assumptions have been made :\n1. State should have some institutions to ensure its appropriate role in a digital society.\n2. State should ensure that private parties do not violate the citizens' right to privacy.\n3. Digital economy is not compatible with the idea of not violating the citizens' privacy.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        { "label": "A", "text": "1 and 2" },
+        { "label": "B", "text": "3 only" },
+        { "label": "C", "text": "1 and 3" },
+        { "label": "D", "text": "2 only" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 3,
+      "context": "One of the biggest ironies around water is that it comes from rivers and other wetlands. Yet it is seen as divorced from them. While water is used as a resource, public policy does not always grasp that it is a part of the natural ecosystem. Efforts at engineering water systems are thus efforts at augmenting water supply rather than strengthening the capacities of ecological systems.",
+      "stem": "Which one of the following is the most logical and rational inference that can be made from the above passage?",
+      "options": [
+        { "label": "A", "text": "Rivers and other wetlands should be protected under Ramsar Convention." },
+        { "label": "B", "text": "Engineering water systems should be modernized and further augmented." },
+        { "label": "C", "text": "Wetlands need to be reinforced as more than just open sources of water." },
+        { "label": "D", "text": "Water supply should not be free of cost so as to prevent its misuse or overuse." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 4,
+      "context": "Asset allocation is the most important investment decision we will ever make, and sadly, most of us do not give that decision the importance it deserves. We are adamant about seeking predictability with our future. We tend to think of investing in risky assets as extremely volatile and value eroding. We also dislike fluctuating returns and the loss of control of investment. We think our money is best left idle, unproductive but safe. There is no asset that is risk-free. We could lose our jobs, our homes can lose value, our banks can go bankrupt, our bonds can default, the government can collapse and companies we chose fondly may cease to exist. But we cannot live life assuming that all these extreme events are waiting to happen, and all at the same time. All these extreme forms of risks we know will not manifest at the same time.",
+      "stem": "Which one of the following statements best implies the suggestion given by the author of the passage?",
+      "options": [
+        { "label": "A", "text": "Distribute your wealth across different kinds of assets so that your risks would be minimized." },
+        { "label": "B", "text": "Risk-taking behaviour should be a necessary component of your personality if you want to generate wealth." },
+        { "label": "C", "text": "While making investments, find a trustworthy asset management organization which would manage your wealth for you." },
+        { "label": "D", "text": "You should know that investing your money is a risky business." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 5,
+      "context": "Although most of the Genetically Modified (GM) crops cultivated now are genetically engineered for a single trait, in future, crops genetically engineered for more than one trait will be the norm. Thus, biotechnology's role in agriculture and the regulation of the same cannot be understood solely in the context of the current generation of GM crops. Instead, there is a need to take a comprehensive look, taking into account various aspects, including socio-economic impacts, so that the potential of the technology can be harnessed while minimizing negative impacts. Given the importance of biotechnology in developing varieties that can help in climate change mitigation and adaptation, not using biotechnology as a part of the climate change action plan cannot be an option. Domestic regulation of biotechnology cannot be viewed in isolation of trade policy and obligations under various international treaties and conventions.",
+      "stem": "With reference to the above passage, the following assumptions have been made :\n1. Biotechnology regulation is an evolving process.\n2. Participation of people is needed in policy decisions regarding biotechnology regulation.\n3. Biotechnology regulation should take into account socio-economic aspects in decision-making.\n4. Wider involvement of political executive in biotechnology regulation improves its effectiveness in dealing with the country's trade policies and international obligations.\nWhich of the above assumptions are valid?",
+      "options": [
+        { "label": "A", "text": "1, 2 and 4 only" },
+        { "label": "B", "text": "1 and 3 only" },
+        { "label": "C", "text": "2, 3 and 4 only" },
+        { "label": "D", "text": "1, 2, 3 and 4" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 6,
+      "context": "Although most of the Genetically Modified (GM) crops cultivated now are genetically engineered for a single trait, in future, crops genetically engineered for more than one trait will be the norm. Thus, biotechnology's role in agriculture and the regulation of the same cannot be understood solely in the context of the current generation of GM crops. Instead, there is a need to take a comprehensive look, taking into account various aspects, including socio-economic impacts, so that the potential of the technology can be harnessed while minimizing negative impacts. Given the importance of biotechnology in developing varieties that can help in climate change mitigation and adaptation, not using biotechnology as a part of the climate change action plan cannot be an option. Domestic regulation of biotechnology cannot be viewed in isolation of trade policy and obligations under various international treaties and conventions.",
+      "stem": "Which one of the following statements best implies the crux of the passage?",
+      "options": [
+        { "label": "A", "text": "Precautionary principle is not given importance in current debate on developing GM crops." },
+        { "label": "B", "text": "Biotechnology is not currently used in climate change mitigation and adaptation mechanisms." },
+        { "label": "C", "text": "Biotechnology's role is not confined to the current priorities of developing GM crops." },
+        { "label": "D", "text": "The negative impacts of biotechnology are not properly understood." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 7,
+      "stem": "How many zeroes are there at the end of the following product?\n\\(1 \\times 5 \\times 10 \\times 15 \\times 20 \\times 25 \\times 30 \\times 35 \\times 40 \\times 45 \\times 50 \\times 55 \\times 60\\)",
+      "options": [
+        { "label": "A", "text": "10" },
+        { "label": "B", "text": "12" },
+        { "label": "C", "text": "14" },
+        { "label": "D", "text": "15" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Prime Numbers and Factorisation",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 8,
+      "stem": "Let \\(XYZ\\) be a three-digit number, where \\((X + Y + Z)\\) is not a multiple of 3. Then \\((XYZ + YZX + ZXY)\\) is not divisible by",
+      "options": [
+        { "label": "A", "text": "3" },
+        { "label": "B", "text": "9" },
+        { "label": "C", "text": "37" },
+        { "label": "D", "text": "\\((X + Y + Z)\\)" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 9,
+      "stem": "Let \\(p\\), \\(q\\), \\(r\\) and \\(s\\) be natural numbers such that\n\\(p - 2016 = q + 2017 = r - 2018 = s + 2019\\)\nWhich one of the following is the largest natural number?",
+      "options": [
+        { "label": "A", "text": "\\(p\\)" },
+        { "label": "B", "text": "\\(q\\)" },
+        { "label": "C", "text": "\\(r\\)" },
+        { "label": "D", "text": "\\(s\\)" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Algebra and Equations",
+      "subtopic": "Linear and Quadratic Equations",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 10,
+      "stem": "How many five-digit prime numbers can be obtained by using all the digits 1, 2, 3, 4 and 5 without repetition of digits?",
+      "options": [
+        { "label": "A", "text": "Zero" },
+        { "label": "B", "text": "One" },
+        { "label": "C", "text": "Nine" },
+        { "label": "D", "text": "Ten" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Prime Numbers and Factorisation",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 11,
+      "stem": "In the sum\n\\(\\otimes + 1\\otimes + 5\\otimes + \\otimes\\otimes + \\otimes 1 = 1\\otimes\\otimes\\)\nfor which digit does the symbol \\(\\otimes\\) stand?",
+      "options": [
+        { "label": "A", "text": "2" },
+        { "label": "B", "text": "3" },
+        { "label": "C", "text": "4" },
+        { "label": "D", "text": "5" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 12,
+      "stem": "If you have two straight sticks of length 7·5 feet and 3·25 feet, what is the minimum length can you measure?",
+      "options": [
+        { "label": "A", "text": "0·05 foot" },
+        { "label": "B", "text": "0·25 foot" },
+        { "label": "C", "text": "1 foot" },
+        { "label": "D", "text": "3·25 feet" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Factors, Multiples, HCF and LCM",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 13,
+      "stem": "A simple mathematical operation in each number of the sequence 14, 18, 20, 24, 30, 32, ... results in a sequence with respect to prime numbers. Which one of the following is the next number in the sequence?",
+      "options": [
+        { "label": "A", "text": "34" },
+        { "label": "B", "text": "36" },
+        { "label": "C", "text": "38" },
+        { "label": "D", "text": "40" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Series and Analogy",
+      "subtopic": "Number Series",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 14,
+      "stem": "One page is torn from a booklet whose pages are numbered in the usual manner starting from the first page as 1. The sum of the numbers on the remaining pages is 195. The torn page contains which of the following numbers?",
+      "options": [
+        { "label": "A", "text": "5, 6" },
+        { "label": "B", "text": "7, 8" },
+        { "label": "C", "text": "9, 10" },
+        { "label": "D", "text": "11, 12" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Algebra and Equations",
+      "subtopic": "Progressions and Series",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 15,
+      "stem": "Consider the following arrangement that has some missing letters :\nabab_b_bcb_dcdcded_d\nThe missing letters which complete the arrangement are",
+      "options": [
+        { "label": "A", "text": "a, b, c, d" },
+        { "label": "B", "text": "a, b, d, e" },
+        { "label": "C", "text": "a, c, c, e" },
+        { "label": "D", "text": "b, c, d, e" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Series and Analogy",
+      "subtopic": "Letter and Alphanumeric Series",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 16,
+      "stem": "Let \\(A3BC\\) and \\(DE2F\\) be four-digit numbers where each letter represents a different digit greater than 3. If the sum of the numbers is 15902, then what is the difference between the values of \\(A\\) and \\(D\\)?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "3" },
+        { "label": "D", "text": "4" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE",
+      "flags": []
+    }
+  ]
+}
