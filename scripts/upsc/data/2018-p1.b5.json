@@ -1,0 +1,267 @@
+{
+  "band": "b5",
+  "pages": [18, 19, 20, 21],
+  "bandReport": {
+    "numbersFound": [84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100],
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Items 84-100, no gaps. Page layout: p18 = 84,85 | 86,87; p19 = 88,89,90 | 91,92; p20 = 93,94 | 95,96; p21 = 97,98 | 99,100. Item 84 begins at the top of p18 column 1 (nothing carries over from p17, which belongs to another agent), and item 100 ends complete on p21 with the paper's last item, so firstComplete and lastComplete are both true. COLUMN CROPS: no slicing on any of the four pages, and every page was cross-checked against pNN.png after reading c1 then c2. Each crop pair overlaps slightly into its neighbour, which is expected and harmless: p18-c1 and p19-c1 catch the NEXT column's item numbers (86./87. and 91./92.) at their right edge, and p21-c2 catches a sliver of column 1's line-END letters at its left edge. In every case the crop contains its own item numbers and its own complete lines, so no text was attributed across the gutter. Page 21 carries the narrowest gutter in the band (gutterX 826, width 30 per _render.json) and was inspected with particular care; it is clean, and its sparse right column (99, 100) split correctly. PRINTED DEFECTS, both transcribed verbatim per the brief and also recorded in the affected question's flags: (1) Q84 option (d) - the first character is set as a lowercase letter 'l', not the digit '1'. Verified at 12x zoom against the digit '1' in options (a) and (c) of the same question: the digit has a triangular top-left flag and a wide two-sided base serif, this glyph has neither and is a taller, thinner stem. Transcribed as the digit '1', which is unmistakably the intended reading and keeps the option usable. (2) Q96 statement 2 ends 'the merger of associate banks with the parent State Bank of India has been affected' - the booklet prints 'affected' where 'effected' is standard usage. Verified at 6x zoom, transcribed as printed, NOT corrected. Q97 option (c) carries a small ink speck above the digit '4'; checked at 6x zoom and it is scan noise, the digit is a plain '4' and the option reads '1, 2 and 4 only'. No missing, duplicated or unreadable items, no identical option pairs. SOFT SUBTOPICS not present in catalog.json (subject and chapter are copied exactly from it in every case): Q86 'Invasive Alien Species' and Q91 'Post-Independence India'. Q91 also needed a judgement call on chapter - it is a chronology of four POST-1947 events, and History in catalog.json has no post-independence chapter, so it is filed under 'Miscellaneous Historical Areas', that subject's explicit catch-all, rather than under 'Modern India and the Freedom Struggle', which the events postdate."
+  },
+  "questions": [
+    {
+      "number": 84,
+      "stem": "\"3D printing\" has applications in which of the following ?\n1. Preparation of confectionery items\n2. Manufacture of bionic ears\n3. Automotive industry\n4. Reconstructive surgeries\n5. Data processing technologies\nSelect the correct answer using the code given below :",
+      "options": [
+        { "label": "A", "text": "1, 3 and 4 only" },
+        { "label": "B", "text": "2, 3 and 5 only" },
+        { "label": "C", "text": "1 and 4 only" },
+        { "label": "D", "text": "1, 2, 3, 4 and 5" }
+      ],
+      "subject": "Current Affairs and IR",
+      "chapter": "Science, Technology and Space in the News",
+      "subtopic": "Emerging Technologies in the News",
+      "difficulty": "MODERATE",
+      "flags": ["printed-glyph: in option (d) the first character is set as a lowercase letter 'l', not the digit '1' (verified at 12x zoom against the digit '1' in options (a) and (c)); transcribed as the digit, which is plainly the intended reading"]
+    },
+    {
+      "number": 85,
+      "stem": "Consider the following statements :\n1. The Barren Island volcano is an active volcano located in the Indian territory.\n2. Barren Island lies about 140 km east of Great Nicobar.\n3. The last time the Barren Island volcano erupted was in 1991 and it has remained inactive since then.\nWhich of the statements given above is/are correct ?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 and 3" },
+        { "label": "C", "text": "3 only" },
+        { "label": "D", "text": "1 and 3" }
+      ],
+      "subject": "Geography",
+      "chapter": "Geomorphology (Physical Geography of the Earth)",
+      "subtopic": "Volcanology",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 86,
+      "stem": "Why is a plant called Prosopis juliflora often mentioned in news ?",
+      "options": [
+        { "label": "A", "text": "Its extract is widely used in cosmetics." },
+        { "label": "B", "text": "It tends to reduce the biodiversity in the area in which it grows." },
+        { "label": "C", "text": "Its extract is used in the synthesis of pesticides." },
+        { "label": "D", "text": "None of the above" }
+      ],
+      "subject": "Environment and Ecology",
+      "chapter": "Biodiversity and Conservation",
+      "subtopic": "Invasive Alien Species",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 87,
+      "stem": "Consider the following statements :\n1. Most of the world's coral reefs are in tropical waters.\n2. More than one-third of the world's coral reefs are located in the territories of Australia, Indonesia and Philippines.\n3. Coral reefs host far more number of animal phyla than those hosted by tropical rainforests.\nWhich of the statements given above is/are correct ?",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "3 only" },
+        { "label": "C", "text": "1 and 3 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "subject": "Geography",
+      "chapter": "Oceanography",
+      "subtopic": "Marine Ecology",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 88,
+      "stem": "\"Momentum for Change : Climate Neutral Now\" is an initiative launched by",
+      "options": [
+        { "label": "A", "text": "The Intergovernmental Panel on Climate Change" },
+        { "label": "B", "text": "The UNEP Secretariat" },
+        { "label": "C", "text": "The UNFCCC Secretariat" },
+        { "label": "D", "text": "The World Meteorological Organization" }
+      ],
+      "subject": "Environment and Ecology",
+      "chapter": "Climate Change",
+      "subtopic": "UNFCCC, Paris Agreement and COP Outcomes",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 89,
+      "stem": "With reference to educational institutions during colonial rule in India, consider the following pairs :\n\n| Institution | Founder |\n|---|---|\n| 1. Sanskrit College at Benaras | William Jones |\n| 2. Calcutta Madarsa | Warren Hastings |\n| 3. Fort William College | Arthur Wellesley |\n\nWhich of the pairs given above is/are correct ?",
+      "options": [
+        { "label": "A", "text": "1 and 2" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "1 and 3" },
+        { "label": "D", "text": "3 only" }
+      ],
+      "subject": "History",
+      "chapter": "Modern India and the Freedom Struggle",
+      "subtopic": "Education under British Rule",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 90,
+      "stem": "Consider the following pairs :\n\n| Regions sometimes mentioned in news | Country |\n|---|---|\n| 1. Catalonia | Spain |\n| 2. Crimea | Hungary |\n| 3. Mindanao | Philippines |\n| 4. Oromia | Nigeria |\n\nWhich of the pairs given above are correctly matched ?",
+      "options": [
+        { "label": "A", "text": "1, 2 and 3" },
+        { "label": "B", "text": "3 and 4 only" },
+        { "label": "C", "text": "1 and 3 only" },
+        { "label": "D", "text": "2 and 4 only" }
+      ],
+      "subject": "Current Affairs and IR",
+      "chapter": "Persons, Places and Events in the News",
+      "subtopic": "Places in the News",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 91,
+      "stem": "Consider the following events :\n1. The first democratically elected communist party government formed in a State in India.\n2. India's then largest bank, 'Imperial Bank of India', was renamed 'State Bank of India'.\n3. Air India was nationalised and became the national carrier.\n4. Goa became a part of independent India.\nWhich of the following is the correct chronological sequence of the above events ?",
+      "options": [
+        { "label": "A", "text": "4 – 1 – 2 – 3" },
+        { "label": "B", "text": "3 – 2 – 1 – 4" },
+        { "label": "C", "text": "4 – 2 – 1 – 3" },
+        { "label": "D", "text": "3 – 1 – 2 – 4" }
+      ],
+      "subject": "History",
+      "chapter": "Miscellaneous Historical Areas",
+      "subtopic": "Post-Independence India",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 92,
+      "stem": "Right to Privacy is protected as an intrinsic part of Right to Life and Personal Liberty. Which of the following in the Constitution of India correctly and appropriately imply the above statement ?",
+      "options": [
+        { "label": "A", "text": "Article 14 and the provisions under the 42nd Amendment to the Constitution" },
+        { "label": "B", "text": "Article 17 and the Directive Principles of State Policy in Part IV" },
+        { "label": "C", "text": "Article 21 and the freedoms guaranteed in Part III" },
+        { "label": "D", "text": "Article 24 and the provisions under the 44th Amendment to the Constitution" }
+      ],
+      "subject": "Polity and Governance",
+      "chapter": "Constitutional Framework and Philosophy",
+      "subtopic": "Fundamental Rights",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 93,
+      "stem": "Consider the following :\n1. Areca nut\n2. Barley\n3. Coffee\n4. Finger millet\n5. Groundnut\n6. Sesamum\n7. Turmeric\nThe Cabinet Committee on Economic Affairs has announced the Minimum Support Price for which of the above ?",
+      "options": [
+        { "label": "A", "text": "1, 2, 3 and 7 only" },
+        { "label": "B", "text": "2, 4, 5 and 6 only" },
+        { "label": "C", "text": "1, 3, 4, 5 and 6 only" },
+        { "label": "D", "text": "1, 2, 3, 4, 5, 6 and 7" }
+      ],
+      "subject": "Economy",
+      "chapter": "Agriculture and Rural Economy",
+      "subtopic": "Agricultural Pricing and MSP",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 94,
+      "stem": "In which one of the following States is Pakhui Wildlife Sanctuary located ?",
+      "options": [
+        { "label": "A", "text": "Arunachal Pradesh" },
+        { "label": "B", "text": "Manipur" },
+        { "label": "C", "text": "Meghalaya" },
+        { "label": "D", "text": "Nagaland" }
+      ],
+      "subject": "Environment and Ecology",
+      "chapter": "Biodiversity and Conservation",
+      "subtopic": "National Parks and Wildlife Sanctuaries",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 95,
+      "stem": "With reference to India's satellite launch vehicles, consider the following statements :\n1. PSLVs launch the satellites useful for Earth resources monitoring whereas GSLVs are designed mainly to launch communication satellites.\n2. Satellites launched by PSLV appear to remain permanently fixed in the same position in the sky, as viewed from a particular location on Earth.\n3. GSLV Mk III is a four-staged launch vehicle with the first and third stages using solid rocket motors; and the second and fourth stages using liquid rocket engines.\nWhich of the statements given above is/are correct ?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 and 3" },
+        { "label": "C", "text": "1 and 2" },
+        { "label": "D", "text": "3 only" }
+      ],
+      "subject": "Physics",
+      "chapter": "Dynamics and Orbital Mechanics",
+      "subtopic": "Satellite Launch Physics",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 96,
+      "stem": "With reference to the governance of public sector banking in India, consider the following statements :\n1. Capital infusion into public sector banks by the Government of India has steadily increased in the last decade.\n2. To put the public sector banks in order, the merger of associate banks with the parent State Bank of India has been affected.\nWhich of the statements given above is/are correct ?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Economy",
+      "chapter": "Money, Banking and Financial Institutions",
+      "subtopic": "Commercial and Public Sector Banking",
+      "difficulty": "MODERATE",
+      "flags": ["printed-typo: statement 2 ends 'has been affected' where 'effected' is the standard usage; verified at 6x zoom and transcribed verbatim as printed"]
+    },
+    {
+      "number": 97,
+      "stem": "Consider the following items :\n1. Cereal grains hulled\n2. Chicken eggs cooked\n3. Fish processed and canned\n4. Newspapers containing advertising material\nWhich of the above items is/are exempted under GST (Goods and Services Tax) ?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 and 3 only" },
+        { "label": "C", "text": "1, 2 and 4 only" },
+        { "label": "D", "text": "1, 2, 3 and 4" }
+      ],
+      "subject": "Economy",
+      "chapter": "Public Finance and Fiscal Policy",
+      "subtopic": "Taxation and GST",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 98,
+      "stem": "Consider the following statements :\n1. The definition of \"Critical Wildlife Habitat\" is incorporated in the Forest Rights Act, 2006.\n2. For the first time in India, Baigas have been given Habitat Rights.\n3. Union Ministry of Environment, Forest and Climate Change officially decides and declares Habitat Rights for Primitive and Vulnerable Tribal Groups in any part of India.\nWhich of the statements given above is/are correct ?",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "2 and 3 only" },
+        { "label": "C", "text": "3 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "subject": "Environment and Ecology",
+      "chapter": "Forests and Natural Resource Management",
+      "subtopic": "Forest Rights and Community Forestry",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 99,
+      "stem": "Consider the following :\n1. Birds\n2. Dust blowing\n3. Rain\n4. Wind blowing\nWhich of the above spread plant diseases ?",
+      "options": [
+        { "label": "A", "text": "1 and 3 only" },
+        { "label": "B", "text": "3 and 4 only" },
+        { "label": "C", "text": "1, 2 and 4 only" },
+        { "label": "D", "text": "1, 2, 3 and 4" }
+      ],
+      "subject": "Biology",
+      "chapter": "Botany (Plant Biology)",
+      "subtopic": "Agricultural Botany",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 100,
+      "stem": "With reference to organic farming in India, consider the following statements :\n1. 'The National Programme for Organic Production' (NPOP) is operated under the guidelines and directions of the Union Ministry of Rural Development.\n2. 'The Agricultural and Processed Food Products Export Development Authority' (APEDA) functions as the Secretariat for the implementation of NPOP.\n3. Sikkim has become India's first fully organic State.\nWhich of the statements given above is/are correct ?",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "2 and 3 only" },
+        { "label": "C", "text": "3 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "subject": "Current Affairs and IR",
+      "chapter": "Government Schemes and Programmes",
+      "subtopic": "Agriculture and Rural Schemes",
+      "difficulty": "MODERATE",
+      "flags": []
+    }
+  ]
+}
