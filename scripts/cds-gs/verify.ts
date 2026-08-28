@@ -109,6 +109,34 @@ async function main() {
       warn.push(`Q${n}: visibility is ${r.visibility} — this corpus has no key and should stay PRIVATE until published deliberately`);
     }
 
+    // 6a. TAB / VT / FF anywhere in long-form text.
+    //
+    // Checked SEPARATELY from the generic control-character sweep below, which
+    // exempts tab, newline and carriage return as ordinarily-legitimate. That
+    // exemption is right for a file and WRONG for a question stem: nothing in
+    // this corpus's long-form text is ever tab-separated — prose, inline LaTeX
+    // and GFM pipe-tables all use pipes and spaces — so a tab here is always
+    // damage.
+    //
+    // It is a live failure mode, not a hypothetical. Authoring through a shell
+    // heredoc silently eats a backslash level and turns a LaTeX command into the
+    // control character its escape names: one agent's `\text{th}` reached its own
+    // output file as a literal TAB. It survived that agent's control-character
+    // probe for exactly the reason above — the probe exempted 0x09 — and was
+    // caught only by reading the stored value back. Two other agents produced VT
+    // and FF the same way on other papers.
+    //
+    // Measured at the time this was added: 0 occurrences across all 1,680
+    // committed rows, so this guards the papers still to come rather than
+    // repairing anything.
+    for (const [field, v] of [["stem", r.text], ["solution", r.solution ?? ""]] as [string, string][]) {
+      const hit = [...v].find((ch) => ch === "\t" || ch === "\v" || ch === "\f");
+      if (hit) {
+        const code = hit.codePointAt(0)!.toString(16).padStart(2, "0");
+        fail.push(`Q${n} ${field}: control character U+00${code.toUpperCase()} in long-form text (likely a shell-eaten LaTeX escape)`);
+      }
+    }
+
     // 6. render hazards the standing audits also cover, checked here per-paper
     for (const [field, v] of [["stem", r.text], ["solution", r.solution ?? ""]] as [string, string][]) {
       const open = (v.match(/\\\(/g) || []).length;
