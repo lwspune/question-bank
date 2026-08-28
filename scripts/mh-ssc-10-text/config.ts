@@ -115,6 +115,38 @@ export type Chapter = {
   subtopics: string[]; // the textbook's own section headings
 };
 
+/**
+ * DERIVED-ANSWER PROVENANCE, shared so the two writers cannot drift apart.
+ *
+ * These textbooks print almost no answer key, so nearly every stored answer here
+ * was authored rather than transcribed, and a published derived answer that does
+ * not announce itself reads as an official key. Both halves matter and they are
+ * written by different scripts: `apply-solutions.ts` stamps them as it writes an
+ * answer, `backfill-provenance.ts` fills them in for rows applied before that
+ * existed, and `flip-public.ts` refuses to publish an authored answer without them.
+ *
+ * The MACHINE half is `derived_model`/`derived_at` - what the publish gate checks.
+ * The HUMAN half is this clause on `pyq_note`, which otherwise names only the book
+ * and so says nothing about where the ANSWER came from. Stamping one without the
+ * other leaves the row half-labelled, which is how 355 rows ended up with the
+ * columns set and the sentence missing.
+ *
+ * All three fields sit OUTSIDE content_hash, so writing them cannot move a row's
+ * identity or orphan a paper reference.
+ */
+export const DERIVED_MODEL = "claude-opus-5";
+export const DERIVED_NOTE_CLAUSE =
+  "The answer is DERIVED: this textbook prints no answer key for this exercise, so the " +
+  "model answer was authored from the chapter's own content and has not been checked " +
+  "against an official key.";
+
+/** Append the clause to an existing pyq_note, idempotently. */
+export function withDerivedNote(existing: string | null): string {
+  const base = (existing ?? "").trim();
+  if (base.includes(DERIVED_NOTE_CLAUSE)) return base;
+  return base ? `${base} — ${DERIVED_NOTE_CLAUSE}` : DERIVED_NOTE_CLAUSE;
+}
+
 const range = (a: number, b: number) => Array.from({ length: b - a + 1 }, (_, i) => a + i);
 
 export const CHAPTERS: Record<string, Chapter> = {
@@ -854,7 +886,11 @@ export const CHAPTERS: Record<string, Chapter> = {
     subjectName: "Science and Technology II",
     sourceFile: "StateBoard_10_ScienceII__Heredity_and_Evolution.pdf",
     pdf: SCI2,
-    pages: range(10, 19), // printed pp 1-10; Exercise on idx 19
+    // MEASURED, and the first range here was SHORT BY ONE: the Exercise starts on
+    // idx 19 and runs onto idx 20, which carries Q3-Q7 - 17 of its 23 items. Found
+    // by the ingestion agent, which rendered the extra page rather than concluding
+    // the chapter had six questions.
+    pages: range(10, 20), // printed pp 1-11; Exercise on idx 19, spills to 20
     note: "Maharashtra State Board (Class 10) \u2014 Heredity and Evolution (Balbharati textbook, Science and Technology Part II)",
     subtopics: [
       "Heredity and Variation",
@@ -870,7 +906,11 @@ export const CHAPTERS: Record<string, Chapter> = {
     subjectName: "Science and Technology II",
     sourceFile: "StateBoard_10_ScienceII__Life_Processes_in_Living_Organisms_Part_1.pdf",
     pdf: SCI2,
-    pages: range(20, 30), // printed pp 11-21; Exercise on idx 30
+    // Starts at 21, not 20: idx 20 is Heredity's exercise tail (see that chapter's
+    // note), and Chapter 2 opens on idx 21. Including it put another chapter's text
+    // into this one's grounding corpus, which loosens the audit rather than
+    // tightening it - the failure direction that hides an invention.
+    pages: range(21, 30), // printed pp 12-21; Exercise on idx 30
     note: "Maharashtra State Board (Class 10) \u2014 Life Processes in Living Organisms Part 1 (Balbharati textbook, Science and Technology Part II)",
     subtopics: [
       "Cell Division — Mitosis and Meiosis",

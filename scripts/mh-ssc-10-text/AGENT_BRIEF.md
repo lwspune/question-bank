@@ -112,11 +112,21 @@ body are deliberately OUT of scope.
 
 **Maths chapters (Algebra, Geometry)** are different: the questions are in numbered
 `Practice set N.M` blocks spread through the chapter, plus a terminal `Problem set N`,
-plus worked `Solved Examples`. All three are in scope. Refs:
+plus worked `Solved Examples`. All three are in scope.
 
-- `Ex 1.1 Q3` for Practice set 1.1 question 3
-- `PS1 Q4` for Problem set 1 question 4
+**For a Maths chapter, read `MATHS_TRANSCRIPTION_BRIEF.md` and
+`MATHS_SOLUTION_BRIEF.md` in this directory as well — they are older and more
+specific than this file, and where they disagree with it THEY WIN.** In particular
+the house ref style carries a DOT and this file originally did not, which split the
+twelve Maths chapters six-and-six before it was caught:
+
+- `Ex 1.1 Q.3` for Practice set 1.1 question 3
+- `PS1 Q.4 (2)` for Problem set 1, question 4, sub-item (2)
 - `<Topic> SolvedEx.2` for a worked example under a named topic heading
+
+(There are also `HUMANITIES_BRIEF.md` and `HUMANITIES_SOLUTION_BRIEF.md` for the
+History / Political Science / Geography chapters. This file is the shared spine;
+those four are the per-subject detail.)
 
 A Maths chapter needs its own section outline. Write
 `scripts/mh-ssc-10-text/data/<id>.sections.json`:
