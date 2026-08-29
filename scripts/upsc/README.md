@@ -4,8 +4,9 @@ Scanned UPSC Civil Services (Preliminary) booklets (image PDFs, **no text layer*
 **NO ANSWER KEY**) → the bank, `question_kind='pyq'`, under a new **UPSC CSE
 (Prelims)** exam across **14 subjects** — nine for Paper I, five for Paper II.
 
-**Status: 20 of 22 papers committed PRIVATE - 1,789 questions. Nothing is PUBLIC.**
-**Only 2016 remains** (both papers; no key URL located - see `fetch-keys.ts`).
+**Status: COMPLETE at 20 papers / 1,789 questions, all PRIVATE. Nothing is PUBLIC.**
+Every sitting **2017-2026**, both papers. **2016 is deliberately OUT OF SCOPE**
+(decision 2026-08-29) - see below. This corpus is closed unless that changes.
 
 Every paper below was derived BLIND first and only then scored against the
 official UPSC key, so these are real accuracies against ground truth, not
@@ -67,10 +68,23 @@ Rows are fewer than 100/80 where UPSC withdrew an item: 2020-p1 Q27+Q52,
 KEY ("C or D", struck in by hand on the official page, with a matching footnote),
 which the key format cannot express; see the note on its entry in `config.ts`.
 
-**2 papers remain**, both 2016, and they are blocked on EVIDENCE rather than
-effort: no key URL can be located (the answer-key index is JS-rendered, and
-systematic probing of the era's own filename pattern produced only 404s). See
-`fetch-keys.ts`.
+**2016 IS OUT OF SCOPE - a decision, not a backlog item (2026-08-29).**
+
+Both booklets are on disk and both would ingest fine. What is missing is the
+KEY: no URL can be located, because the answer-key index is JS-rendered and
+systematic probing of the era's own filename pattern produced only 404s
+(`fetch-keys.ts` records exactly which forms were tried). Finding it needs a
+browser against that index.
+
+Ingesting 2016 WITHOUT a key would mean shipping ~180 answers on an unscored
+blind pass into the one corpus whose entire value is that its answers are
+measured against ground truth. Measured here, a single blind pass is
+confidently wrong about 5 times in 100 - so that is ~9 wrong answers, each with
+a fluent argument attached, and no way to find them. **Do not ingest 2016 on a
+derived-only basis.** If the key later turns up, the pipeline is unchanged: add
+the URL to `KEY_URLS`, and 2016-p2's `englishPages` is still an empty array, so
+`requirePaper` will refuse it until someone runs `classify-pages.py` and fills
+it in.
 
 ## The corpus
 

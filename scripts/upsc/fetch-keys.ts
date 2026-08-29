@@ -49,11 +49,18 @@
  * capitalisation reason above. Probe before recording — a wrong guess is safe,
  * because the bare host answers 404 with HTML and the magic-byte check deletes it.
  *
- * STILL MISSING, and the two gaps are NOT the same kind of gap:
- *   2016-p1/p2 — no URL found. Systematic probing of the era's own pattern
- *     (2015 is `CSP_15_GS_I_AKy.pdf`, confirmed live) produced only 404s across
- *     `CSP_16_GS_I_AKy`, `CSP_16_GS_Paper_I_AKy`, `CSP-16-GS-I-AKy`,
- *     `CSP_2016_GS_I_AKy` and the AnsKey-era forms. Needs a browser.
+ * 2016 IS OUT OF SCOPE — a decision (2026-08-29), not a backlog item. Its key
+ * URL could not be found: systematic probing of the era's own pattern (2015 is
+ * `CSP_15_GS_I_AKy.pdf`, confirmed live) produced only 404s across
+ * `CSP_16_GS_I_AKy`, `CSP_16_GS_Paper_I_AKy`, `CSP-16-GS-I-AKy`,
+ * `CSP_2016_GS_I_AKy` and the AnsKey-era forms; the index is JS-rendered, so
+ * locating it needs a browser.
+ *
+ * Both 2016 booklets ARE on disk and would ingest fine — which is the trap.
+ * Doing so would put ~180 answers into this corpus on an unscored blind pass,
+ * and this corpus's whole value is that its answers are measured against ground
+ * truth. At the ~5-per-100 rate measured here that is ~9 confidently-wrong
+ * answers with no way to find them. **Do not ingest 2016 without a key.**
  *
  * 2026 IS INGESTED ON A PROVISIONAL KEY (decision 2026-08-29). It was released
  * 2026-05-27, three days after the exam, with an objection window that closed

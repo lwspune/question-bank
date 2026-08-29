@@ -248,6 +248,11 @@ export const PAPERS: Record<string, Paper> = {
   "2019-p1": p1(2019, "CSE_P1_2019.pdf", range(1, 21), 198),
   "2018-p1": p1(2018, "CSE_P1_2018.pdf", range(1, 21), 150), // strip-scanned
   "2017-p1": p1(2017, "CSE_P1_2017.pdf", range(1, 17), 150), // strip-scanned
+  // 2016 IS OUT OF SCOPE (decision 2026-08-29) — kept here so its page range and
+  // filename are not lost, NOT as a backlog item. Its answer key could not be
+  // located and this corpus does not ingest a paper without one; see the header
+  // of `fetch-keys.ts` for what was probed and why a derived-only 2016 would be
+  // worse than no 2016.
   "2016-p1": p1(2016, "CSE_P1_2016.pdf", range(1, 18), 150), // strip-scanned
 
   // --- Paper II, remaining years (pre-pass not done) ----------------------
@@ -304,8 +309,12 @@ export const PAPERS: Record<string, Paper> = {
   // 262/342/360/450) with barely any Devanagari for the shirorekha signal to
   // catch. Same failure as 2020-p2 p29/p33; caught by `parity_outliers`.
   "2017-p2": p2(2017, "CSP-17-GS_PAPER-II-C.pdf", evens(2, 44), 150), // strip-scanned
-  // AT RISK: ~72 DPI, 40 pages of 594x90 strips. Dense two-column text at that
-  // resolution may simply not be transcribable. Measure before promising it.
+  // OUT OF SCOPE (decision 2026-08-29), and doubly so: no answer key could be
+  // located, AND this scan is ~72 DPI, 40 pages of 594x90 strips — dense
+  // two-column text at that resolution may simply not be transcribable. The
+  // empty `englishPages` makes `requirePaper` refuse it anyway, so nothing can
+  // ingest this by accident. Measure the scan before promising it, and find the
+  // key before measuring.
   "2016-p2": p2(2016, "GENERAL_STUDIES_PAPER-II.pdf", [], 72),
 };
 
