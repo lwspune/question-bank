@@ -1,0 +1,237 @@
+{
+  "band": "b-a",
+  "pages": [2, 4, 6, 8, 10],
+  "bandReport": {
+    "numbersFound": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+    "itemsByPage": {
+      "2": [1, 2],
+      "4": [3, 4],
+      "6": [5, 6, 7, 8, 9, 10],
+      "8": [11, 12],
+      "10": [13, 14]
+    },
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "DECIMAL SEPARATOR: this booklet uses a RAISED MIDDLE DOT (U+00B7), not a baseline full stop. Verified at 2x zoom off p06-c1 item 7, where '0·1m' and '0·15n' sit clearly above the baseline while the sentence-ending full stops of the same line sit on it. Preserved as U+00B7 in item 7, matching the shipped 2020-p2 / 2022-p2 / 2025-p2 convention. Raised-dot numerals are kept as PLAIN TEXT (not wrapped in LaTeX), also matching those papers; LaTeX is used only for genuine typeset math (exponents, superscript ordinals).\n\nSTRUCTURE. Two 'Directions for the following 4 (four) items' blocks fall in this band, and in BOTH the block contains FOUR passages, each governing exactly ONE item - so no passage is shared by two items and this band contains no multi-item SET. Block 1 (p02-p04) = Passage-1 -> item 1, Passage-2 -> item 2, Passage-3 -> item 3, Passage-4 -> item 4. Block 2 (p08-p10) = Passage-1 -> item 11, Passage-2 -> item 12, Passage-3 -> item 13, Passage-4 -> item 14. Each passage is still recorded in that item's `context`, following the shipped house convention (see 2020-p2.b1, where single-item passages are also `context`). Every statement/assumption list and every 'Consider the following' list is in the STEM, so no two items collide on `content_hash`.\n\nItems 5-10 (p06) are standalone numeracy/reasoning items with no passage and no directions block; they carry no `context`.\n\nBAND EDGES. p02 opens the paper at item 1 and p10 ends at item 14, which is the last item of Directions block 2 - a clean block boundary, so nothing is cut. Nothing on my pages belongs to a neighbouring band.\n\nCOLUMN CROPS. All ten crops were usable. Two cosmetic notes, neither affecting reading order: (a) p06-c1 extends a few pixels past the gutter rule and catches the bare item numbers '8.', '9.', '10.' from the right column - their bodies are wholly in p06-c2 and were read from there; (b) every page shows Hindi show-through from the reverse leaf as faint grey text, which is print bleed, not content.\n\nNo defective questions found: all 14 items have four distinct printed options, no duplicated option text, and the numbering runs 1-14 with no skip. Nothing was unreadable.\n\nQUOTE GLYPHS. The booklet is typeset with TYPOGRAPHIC quotes, verified at 3x rather than assumed: 'world's' (item 2 passage) and 'India's' (item 2 statement 1) use U+2019; ''waste'' (item 12 passage) uses U+2018/U+2019; '\"Internet of Things\"' (item 13 passage) uses U+201C/U+201D. All preserved as the printed glyph, matching the shipped 2020/2022/2025-p2 convention. This band has no shared context so a glyph slip could not have split a passage here, but the fidelity is recorded so a later reader need not re-check. Only two other non-ASCII characters occur in the band: U+00B7 (item 7, the decimal separator) and U+2014 (item 1 passage, the em dash in 'two different types of light — a white light').\n\nVERBATIM NOTE: item 12 prints 'i.e.,' twice inside Passage-2 with inconsistent surrounding punctuation ('loops, i.e., returning' vs 'soil fertility i.e., through'); transcribed exactly as printed, not normalised."
+  },
+  "questions": [
+    {
+      "number": 1,
+      "context": "Researchers simulated street lighting on artificial grassland plots containing pea-aphids, sap-sucking insects, at night. These were exposed to two different types of light — a white light similar to newer commercial LED lights and an amber light similar to sodium street lamps. The low intensity amber light was shown to inhibit, rather than induce, flowering in a wild plant of the pea family which is a source of food for the pea-aphids in grasslands. The number of aphids was also significantly suppressed under the light treatment due to the limited amount of food available.",
+      "stem": "Which one of the following statements best reflects the most critical inference that can be made from the passage given above ?",
+      "options": [
+        { "label": "A", "text": "Low intensity light has more adverse effect on the plants as compared to high intensity light." },
+        { "label": "B", "text": "Light pollution can have a permanent adverse impact on an ecosystem." },
+        { "label": "C", "text": "White light is better for the flowering of plants as compared to the light of other colours." },
+        { "label": "D", "text": "Proper intensity of light in an ecosystem is important not only for plants but for animals too." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 2,
+      "context": "Approximately 80 percent of all flowering plant species are pollinated by animals, including birds and mammals, but the main pollinators are insects. Pollination is responsible for providing us with a wide variety of food, as well as many plant-derived medicines. At least one-third of the world’s agricultural crops depend upon pollination. Bees are the most dominant taxa when it comes to pollination and they are crucial to more than four hundred crops. Pollination is an essential service that is the result of intricate relationships between plants and animals, and the reduction or loss of either affects the survival of both. Effective pollination requires resources, such as refuges of pristine natural vegetation.",
+      "stem": "On the basis of the passage given above, the following assumptions have been made :\n1. Sustainable production of India’s cereal food grains is impossible without the diversity of pollinating animals.\n2. Monoculture of horticultural crops hampers the survival of insects.\n3. Pollinators become scarce in cultivated areas devoid of natural vegetation.\n4. Diversity in insects induces diversity of plants.\nWhich of the above assumptions is/are valid ?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2, 3 and 4 only" },
+        { "label": "C", "text": "1 and 2 only" },
+        { "label": "D", "text": "3 and 4 only" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 3,
+      "context": "A study conducted on the impacts of climate change over the Cauvery basin of Tamil Nadu using regional climate models showed an increasing trend for maximum and minimum temperatures, and a decrease in the number of rainy days. These climatic shifts will have an impact on the hydrological cycles in the region, lead to more run-off and less recharge, and affect the groundwater tables. Further, there has been an increase in the frequency of droughts in the State. This has driven farmers to increase dependency on groundwater resources to secure their crops.",
+      "stem": "Which one of the following statements best reflects the crux of the passage given above ?",
+      "options": [
+        { "label": "A", "text": "Development of regional climate models helps in choosing climate-smart agricultural practices." },
+        { "label": "B", "text": "Heavy dependence on groundwater resources can be reduced by adopting dry-land cropping systems." },
+        { "label": "C", "text": "Climate changes increase the criticality of water resources while simultaneously threatening it." },
+        { "label": "D", "text": "Climate changes cause the farmers to adopt unsustainable livelihoods and risky coping strategies." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 4,
+      "context": "Researchers were able to use stem cells to gauge the neurotoxic effects of the environmental pollutant Bisphenol A (BPA). They used a combination of biochemical and cell-based assays to examine the gene expression profile during the differentiation of mouse embryonic stem cells upon treatment with BPA, a compound known to cause heart diseases, diabetes, and developmental abnormalities in humans. They were able to detect and measure BPA toxicity towards the proper specification of primary germ layers, such as endoderm and ectoderm, and the establishment of neural progenitor cells.",
+      "stem": "On the basis of the passage given above, the following assumptions have been made :\n1. BPA may alter embryonic development in vivo.\n2. Biochemical and cell-based assays are useful in finding out treatments for pollution-induced diseases.\n3. Embryonic stem cells could serve as a model to evaluate the physiological effects of environmental pollutants.\nWhich of the above assumptions are valid ?",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "2 and 3 only" },
+        { "label": "C", "text": "1 and 3 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 5,
+      "stem": "If \\(3^{2019}\\) is divided by 10, then what is the remainder ?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "3" },
+        { "label": "C", "text": "7" },
+        { "label": "D", "text": "9" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Unit Digit and Powers",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 6,
+      "stem": "The number 3798125P369 is divisible by 7. What is the value of the digit P ?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "6" },
+        { "label": "C", "text": "7" },
+        { "label": "D", "text": "9" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 7,
+      "stem": "From January 1, 2021, the price of petrol (in Rupees per litre) on \\(m^{\\text{th}}\\) day of the year is 80 + 0·1m, where m = 1, 2, 3, ..., 100 and thereafter remains constant. On the other hand, the price of diesel (in Rupees per litre) on \\(n^{\\text{th}}\\) day of 2021 is 69 + 0·15n for any n. On which date in the year 2021 are the prices of these two fuels equal ?",
+      "options": [
+        { "label": "A", "text": "\\(21^{\\text{st}}\\) May" },
+        { "label": "B", "text": "\\(20^{\\text{th}}\\) May" },
+        { "label": "C", "text": "\\(19^{\\text{th}}\\) May" },
+        { "label": "D", "text": "\\(18^{\\text{th}}\\) May" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Algebra and Equations",
+      "subtopic": "Linear and Quadratic Equations",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 8,
+      "stem": "A biology class at high school predicted that a local population of animals will double in size every 12 years. The population at the beginning of the year 2021 was estimated to be 50 animals. If P represents the population after n years, then which one of the following equations represents the model of the class for the population ?",
+      "options": [
+        { "label": "A", "text": "\\(P = 12 + 50n\\)" },
+        { "label": "B", "text": "\\(P = 50 + 12n\\)" },
+        { "label": "C", "text": "\\(P = 50\\,(2)^{12n}\\)" },
+        { "label": "D", "text": "\\(P = 50\\,(2)^{n/12}\\)" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Algebra and Equations",
+      "subtopic": "Progressions and Series",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 9,
+      "stem": "In a class, 60% of students are from India and 50% of the students are girls. If 30% of the Indian students are girls, then what percentage of foreign students are boys ?",
+      "options": [
+        { "label": "A", "text": "45%" },
+        { "label": "B", "text": "40%" },
+        { "label": "C", "text": "30%" },
+        { "label": "D", "text": "20%" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Percentage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 10,
+      "stem": "A Statement followed by Conclusion-I and Conclusion-II is given below. You have to take the Statement to be true even if it seems to be at variance from the commonly known facts. Read all Conclusions and then decide which of the given Conclusion(s) logically follows/follow from the Statement, disregarding the commonly known facts.\nStatement : Some radios are mobiles. All mobiles are computers. Some computers are watches.\nConclusion-I : Certainly some radios are watches.\nConclusion-II : Certainly some mobiles are watches.\nWhich one of the following is correct ?",
+      "options": [
+        { "label": "A", "text": "Only Conclusion-I" },
+        { "label": "B", "text": "Only Conclusion-II" },
+        { "label": "C", "text": "Both Conclusion-I and Conclusion-II" },
+        { "label": "D", "text": "Neither Conclusion-I nor Conclusion-II" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Syllogisms and Logical Deduction",
+      "subtopic": "Categorical Syllogisms",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 11,
+      "context": "Fig trees (genus Ficus) are considered sacred in India, East Asia and Africa and are common in agricultural and urban landscapes where other large trees are absent. In natural forests, fig trees provide food for wildlife when other resources are scarce and support a high density and diversity of frugivores (fruit-eating animals). If frugivorous birds and bats continue to visit fig trees located in sites with high human disturbance, sacred fig trees may promote frugivore abundance. Under favourable microclimate, plenty of seedlings of other tree species would grow around fig trees.",
+      "stem": "On the basis of the passage given above, the following assumptions have been made :\n1. Fig trees can often be keystone species in natural forests.\n2. Fig trees can grow where other large woody species cannot grow.\n3. Sacred trees can have a role in biodiversity conservation.\n4. Fig trees have a role in the seed dispersal of other tree species.\nWhich of the above assumptions is/are valid ?",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "3 only" },
+        { "label": "C", "text": "2 and 4 only" },
+        { "label": "D", "text": "1, 3 and 4 only" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 12,
+      "context": "At the heart of agroecology is the idea that agroecosystems should mimic the biodiversity levels and functioning of natural ecosystems. Such agricultural mimics, like their natural models, can be productive, pest-resistant, nutrient conserving, and resilient to shocks and stresses. In ecosystems there is no ‘waste’, nutrients are recycled indefinitely. Agroecology aims at closing nutrient loops, i.e., returning all nutrients that come out of the soil back to the soil such as through application of farmyard manure. It also harnesses natural processes to control pests and build soil fertility i.e., through intercropping. Agroecological practices include integrating trees with livestock and crops.",
+      "stem": "Consider the following :\n1. Cover crops\n2. Fertigation\n3. Hydroponics\n4. Mixed farming\n5. Polyculture\n6. Vertical farming\nWhich of the above farming practices can be compatible with agroecology, as implied by the passage ?",
+      "options": [
+        { "label": "A", "text": "1, 4 and 5 only" },
+        { "label": "B", "text": "2, 3, 4 and 5 only" },
+        { "label": "C", "text": "1, 2, 3 and 6 only" },
+        { "label": "D", "text": "4 and 6 only" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 13,
+      "context": "Computers increasingly deal not just with abstract data like credit card details and databases, but also with the real world of physical objects and vulnerable human bodies. A modern car is a computer on wheels; an aeroplane is a computer on wings. The arrival of the “Internet of Things” will see computers baked into everything from road signs and MRI scanners to prosthetics and insulin pumps. There is little evidence that these gadgets will be any more trustworthy than their desktop counterparts. Hackers have already proved that they can take remote control of internet connected cars and pacemakers.",
+      "stem": "Which one of the following statements best reflects the most critical inference that can be made from the passage given above ?",
+      "options": [
+        { "label": "A", "text": "Computers are not completely safe." },
+        { "label": "B", "text": "Companies producing the software do not take cyber security seriously." },
+        { "label": "C", "text": "Stringent data security laws are needed." },
+        { "label": "D", "text": "The present trend of communication technologies will affect our lives in future." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 14,
+      "context": "A social and physical environment riddled with poverty, inequities, unhygienic and insanitary conditions generates the risk of infectious diseases. Hygiene has different levels : personal, domestic and community hygiene. There is no doubt that personal cleanliness brings down the rate of infectious diseases. But the entry of the market into this domain has created a false sense of security that gets conditioned and reinforced by the onslaught of advertisements. Experience in Western Europe shows that along with personal hygiene, general improvements in environmental conditions and components like clean water, sanitation and food security have brought down infant/child death/infection rates considerably. The obsession with hand hygiene also brings in the persisting influence of the market on personal health, overriding or marginalising the negative impact on ecology and the emergence of resistant germs.",
+      "stem": "On the basis of the passage given above, the following assumptions have been made :\n1. People who are obsessed with personal hygiene tend to ignore the community hygiene.\n2. Emergence of multi-drug resistant germs can be prevented by personal cleanliness.\n3. Entry of the market in the domain of hygiene increases the risk of infectious diseases.\n4. Scientific and micro-level interventions are not sufficient to bring down the burden of infectious diseases.\n5. It is community hygiene implemented through public health measures that is really effective in the battle against infectious diseases.\nWhich of the above assumptions are valid ?",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "3 and 4 only" },
+        { "label": "C", "text": "4 and 5 only" },
+        { "label": "D", "text": "1, 2 and 4 only" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    }
+  ]
+}
