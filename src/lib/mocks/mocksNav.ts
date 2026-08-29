@@ -10,6 +10,8 @@
  */
 
 import { EXAM_REGISTRY, type ExamSlug } from "@/lib/exam/examContext";
+// Type-only: keeps this module pure (no DB import at runtime).
+import type { MockListItem } from "@/lib/mocks/query";
 
 export type MockExamNav = {
   slug: ExamSlug;
@@ -60,4 +62,50 @@ export function mockExamNames(): string {
   if (names.length === 0) return "";
   if (names.length === 1) return names[0];
   return `${names.slice(0, -1).join(", ")} & ${names[names.length - 1]}`;
+}
+
+/** One exam's card on the /mock picker. Every number is DERIVED from the rows
+ *  /mock already fetches, so a new sitting updates the card by itself. */
+export type MockExamCard = MockExamNav & {
+  /** Published mocks for this exam. 0 renders as "coming soon". */
+  count: number;
+  /** Oldest / newest sitting; both 0 when nothing is published yet. */
+  firstYear: number;
+  lastYear: number;
+  /** Distinct papers a sitting is made of — NDA 2 (Maths + GAT), CDS/NEET 1. */
+  paperCount: number;
+};
+
+/**
+ * The /mock exam picker's model, in EXAM_REGISTRY order.
+ *
+ * /mock used to render every published mock as one flat exam -> year -> card
+ * list — 63 cards under 29 headings, ~7 screens on desktop and ~11 on mobile,
+ * with the exam filter living only in a rail that is a Sheet below `lg`. Its
+ * ordering was also an accident: it sorted on newest year and fell through to
+ * a localeCompare tiebreak, and since all three exams have a 2026 sitting the
+ * tiebreak decided the page. That put CDS (6 attempts) above NDA (252) and
+ * disagreed with the rail beside it, which has always been registry order.
+ *
+ * So this is a picker, matching /notes' index and /guide's picker — /mock was
+ * the only cross-exam surface that dumped every leaf. Per-exam listing already
+ * lived at /mock/exam/[slug], which until now was linked from nowhere.
+ *
+ * Rows whose examName is not a mock-exam are IGNORED rather than dropped
+ * silently into a void: tests/mocks-registry.test.ts is the standing probe
+ * that stops such a row existing, because the flat list used to render
+ * whatever the DB returned and a picker cannot.
+ */
+export function buildMockExamCards(mocks: MockListItem[]): MockExamCard[] {
+  return getMockExams().map((exam) => {
+    const mine = mocks.filter((m) => m.examName === exam.examName);
+    const years = mine.map((m) => m.pyqYear);
+    return {
+      ...exam,
+      count: mine.length,
+      firstYear: years.length ? Math.min(...years) : 0,
+      lastYear: years.length ? Math.max(...years) : 0,
+      paperCount: new Set(mine.map((m) => m.paperCode)).size,
+    };
+  });
 }
