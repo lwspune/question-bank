@@ -1,0 +1,361 @@
+{
+  "band": "b3",
+  "pages": [
+    18,
+    20
+  ],
+  "bandReport": {
+    "numbersFound": [
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "itemsByPage": {
+      "18": [
+        33,
+        34,
+        35,
+        36,
+        37
+      ],
+      "20": [
+        38,
+        39,
+        40,
+        41,
+        42,
+        43
+      ]
+    },
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "COVERAGE. 11 items, 33-43, no gaps, none duplicated. Printed page numbers on my two pages read 19 and 21, consecutive odd numbers, so no English page falls between them and the even printed pages are the Hindi side. Both page keys in itemsByPage carry items; neither is empty. p18 opens with the 'Passage-4' heading, so nothing of item 33 is printed before my band, and p20 ends with item 43's four options, so nothing of it continues after. firstComplete and lastComplete are both true.\n\nSHARED CONTEXT FOR ITEMS 43-48 - VERIFIED BYTE-IDENTICAL. p20-c2 prints 'Directions for the following 6 (six) items :', then 'Read the information given below and answer the six items that follow.', then the setup paragraph and the (i)-(v) clauses. Items 44-48 are on p22 and belong to band b4, which had already put that same setup in each of their context fields and flagged the two likeliest divergence points. I did NOT retype the setup: item 43's context is copied programmatically out of 2018-p2.b4.json item 44, so byte-identity is guaranteed by construction rather than by careful typing. sha256 of the shared context is c9ffefea1a9cc1c0f98ade39ccc16ff241f89c728fd54d00e9e7901beb762647 and it is identical across items 43, 44, 45, 46, 47 and 48.\n\nI then read the copied text back against the p20-c2 column crop word by word, and specifically checked band b4's two flagged points. (i) 'Further, it is given that' ends in an EM DASH. Confirmed at 7x zoom off p20-c2: the mark is a full character wide, clearly longer than the hyphens elsewhere on the page, and matches the U+2014 in b4's file. (ii) The five sub-clauses (i)-(v) carry NO terminating punctuation. Confirmed at 2.8x zoom: no full stop, comma or semicolon on any of the five. THE PAGE AND THE SIBLING AGREE COMPLETELY - there is nothing for a human to adjudicate. The wording of the setup paragraph, the 'viz.,' abbreviations, the four parenthetical '(not necessarily in that order)' clauses and all five clause texts match the print exactly as b4 recorded them.\n\nPer b4's convention the 'Directions ...' header and the 'Read the information given below ...' line are NOT in context; only the setup paragraph and the (i)-(v) list are, and the clauses are kept on their own lines.\n\nPASSAGE-4 GOVERNS ONE ITEM. p18-c1 prints the 'Passage-4' heading, the passage, then item 33; the next item, 34, is a numeracy item with no passage. So the mapping here is one passage to one item, not a shared block. Following the shipped Paper II convention (documented by band b4 for its own eight single-item passages) the passage is still placed in context, and the 'Passage-4' label is not included. No hash collision results: item 33's stem and option set are unique in this band.\n\nDECIMAL SEPARATOR. Not applicable to my band - there is no decimal number anywhere on p18 or p20. Every numeric value in items 33-43 is an integer, a percentage written with a whole number, or a vulgar fraction. So no U+00B7 middle dot was needed and none was introduced.\n\nCOLUMN CROPS. Both c1 crops are clean and complete. Both c2 crops carry a narrow bleed of the LEFT column's right edge down their far-left margin (stray letter fragments from the neighbouring column's line ends). That is cosmetic - it adds a sliver of the other column rather than removing anything from this one - and no item number or option block is cut. Nothing was read off the whole-page image except the printed page numbers and the overall column structure. Reading order was strictly all of c1 then all of c2 on each page.\n\nTRANSCRIPTION CHOICES WORTH A SECOND EYE, each also flagged on its own item. (a) Item 37 compares words with < and > signs; those are left as plain text because the compared terms are ordinary words, and a scan of every shipped band file in scripts/upsc/data found no precedent in either direction. (b) Item 39 is a probability item and catalog.json has no probability chapter or subtopic under any CSAT subject; no shipped Paper II file contains a probability item either. It is filed under Basic Numeracy > Arithmetic Operations and Ratios with a new soft subtopic label 'Probability' - a genuine catalog gap, not a near-miss. (c) Item 40 wraps the person labels A and B as math zones, following b1 item 5 and b5 item 71 of this paper, while item 43 leaves the puzzle's A-D plain, following b4; each block therefore matches its own precedent. (d) Item 36's three possessives are printed with typographic apostrophes and are transcribed with the ASCII apostrophe, which is what b4 and b5 use throughout.\n\nPAPER DEFECTS. None found. No duplicated option text, no item with a missing or blank option, no item number skipped, no arithmetic or spelling oddity in the printed text of these eleven items. Item 40's option (d) is the unreduced ratio 4 : 2, which is how it is printed and is a distractor rather than a defect. No item in this band needs a figure; every one is answerable from its printed text."
+  },
+  "questions": [
+    {
+      "number": 33,
+      "context": "Some people believe that leadership is a quality which you have at birth or not at all. This theory is false, for the art of leadership can be acquired and can indeed be taught. This discovery is made in time of war and the results achieved can surprise even the instructors. Faced with the alternatives of going left or right, every soldier soon grasps that a prompt decision either way is better than an endless discussion. A firm choice of direction has an even chance of being right while to do nothing will be almost certainly wrong.",
+      "stem": "The author of the passage holds the view that",
+      "options": [
+        {
+          "label": "A",
+          "text": "leadership can be taught through war experience only"
+        },
+        {
+          "label": "B",
+          "text": "leadership can be acquired as well as taught"
+        },
+        {
+          "label": "C",
+          "text": "the results of training show that more people acquire leadership than are expected"
+        },
+        {
+          "label": "D",
+          "text": "despite rigorous instruction, very few leaders are produced"
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "EASY",
+      "flags": [
+        "SINGLE-ITEM PASSAGE. The booklet prints 'Passage-4' at the top of p18-c1 and item 33 is the only item that follows it before item 34, which is a numeracy item with no passage. So this passage governs one item, not a block. It is still placed in `context` following the shipped Paper II convention (band b4 of this same paper documents that all six shipped p2 files put a single-item passage in `context`, and that no shipped p2 item contains the 'Passage-N' label or the 'Directions ...' header, so neither is included here)."
+      ]
+    },
+    {
+      "number": 34,
+      "stem": "A number consists of three digits of which the middle one is zero and their sum is 4. If the number formed by interchanging the first and last digits is greater than the number itself by 198, then the difference between the first and last digits is",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "2"
+        },
+        {
+          "label": "C",
+          "text": "3"
+        },
+        {
+          "label": "D",
+          "text": "4"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 35,
+      "stem": "A solid cube of 3 cm side, painted on all its faces, is cut up into small cubes of 1 cm side. How many of the small cubes will have exactly two painted faces?",
+      "options": [
+        {
+          "label": "A",
+          "text": "12"
+        },
+        {
+          "label": "B",
+          "text": "8"
+        },
+        {
+          "label": "C",
+          "text": "6"
+        },
+        {
+          "label": "D",
+          "text": "4"
+        }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Cubes, Dice and Spatial Reasoning",
+      "subtopic": "Cubes and Cuboids",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 36,
+      "stem": "While writing all the numbers from 700 to 1000, how many numbers occur in which the digit at hundred's place is greater than the digit at ten's place, and the digit at ten's place is greater than the digit at unit's place?",
+      "options": [
+        {
+          "label": "A",
+          "text": "61"
+        },
+        {
+          "label": "B",
+          "text": "64"
+        },
+        {
+          "label": "C",
+          "text": "85"
+        },
+        {
+          "label": "D",
+          "text": "91"
+        }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Permutations and Combinations",
+      "difficulty": "HARD",
+      "flags": [
+        "The booklet sets the three possessives with typographic right single quotes (hundred's / ten's / unit's). Transcribed with the ASCII apostrophe, which is the dominant convention in the sibling bands of this paper (b4 and b5 use ASCII throughout). No other band transcribes this item, so the choice cannot cause a cross-band disagreement."
+      ]
+    },
+    {
+      "number": 37,
+      "stem": "If Pen < Pencil, Pencil < Book and Book > Cap, then which one of the following is always true?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Pen > Cap"
+        },
+        {
+          "label": "B",
+          "text": "Pen < Book"
+        },
+        {
+          "label": "C",
+          "text": "Pencil = Cap"
+        },
+        {
+          "label": "D",
+          "text": "Pencil > Cap"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Coding-Decoding and Symbol Logic",
+      "subtopic": "Symbol and Inequality Coding",
+      "difficulty": "EASY",
+      "flags": [
+        "The comparison signs are left as plain text rather than wrapped in LaTeX. The compared terms are ordinary words (Pen, Pencil, Book, Cap), and the brief's rule is to keep plain prose plain and not to wrap ordinary words in math. There is no precedent either way: a scan of every shipped band file in scripts/upsc/data found no other item comparing words with < or >. Flagged so a human can normalise at merge if the pipeline prefers math zones.",
+        "The stem is printed with wide inter-word gaps ('If    Pen < Pencil,    Pencil < Book    and') purely from justification; collapsed to single spaces as ordinary prose wrapping."
+      ]
+    },
+    {
+      "number": 38,
+      "stem": "A bookseller sold '\\(a\\)' number of Geography textbooks at the rate of ₹\\(x\\) per book, '\\(a + 2\\)' number of History textbooks at the rate of ₹\\((x + 2)\\) per book and '\\(a - 2\\)' number of Mathematics textbooks at the rate of ₹\\((x - 2)\\) per book. What is his total sale in ₹?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(3x + 3a\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(3ax + 8\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(9ax\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(x^3 a^3\\)"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Algebra and Equations",
+      "subtopic": "Linear and Quadratic Equations",
+      "difficulty": "MODERATE",
+      "flags": [
+        "The three quantity expressions are printed inside typographic single quotes in the booklet ('a', 'a + 2', 'a - 2'); the quotes are kept as ASCII apostrophes and the expression inside each is wrapped as a math zone."
+      ]
+    },
+    {
+      "number": 39,
+      "stem": "A bag contains 15 red balls and 20 black balls. Each ball is numbered either 1 or 2 or 3. 20% of the red balls are numbered 1 and 40% of them are numbered 3. Similarly, among the black balls, 45% are numbered 2 and 30% are numbered 3. A boy picks a ball at random. He wins if the ball is red and numbered 3 or if it is black and numbered 1 or 2. What are the chances of his winning?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(\\frac{1}{2}\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(\\frac{4}{7}\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(\\frac{5}{9}\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(\\frac{12}{13}\\)"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Probability",
+      "difficulty": "MODERATE",
+      "flags": [
+        "SUBTOPIC NOT IN THE CATALOG. This is a probability item and catalog.json has no probability chapter or subtopic anywhere under the CSAT subjects. A scan of every shipped Paper II file found no probability item at all, so there is no precedent to follow. Filed under the nearest valid hard-validated chapter (Basic Numeracy > Arithmetic Operations and Ratios - the work is percentages of two ball counts and the answer is a ratio) with a new soft subtopic label 'Probability'. Worth a catalog addition."
+      ]
+    },
+    {
+      "number": 40,
+      "stem": "Two persons, \\(A\\) and \\(B\\) are running on a circular track. At the start, \\(B\\) is ahead of \\(A\\) and their positions make an angle of \\(30^\\circ\\) at the centre of the circle. When \\(A\\) reaches the point diametrically opposite to his starting point, he meets \\(B\\). What is the ratio of speeds of \\(A\\) and \\(B\\), if they are running with uniform speeds?",
+      "options": [
+        {
+          "label": "A",
+          "text": "\\(6 : 5\\)"
+        },
+        {
+          "label": "B",
+          "text": "\\(4 : 3\\)"
+        },
+        {
+          "label": "C",
+          "text": "\\(6 : 1\\)"
+        },
+        {
+          "label": "D",
+          "text": "\\(4 : 2\\)"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Time, Speed and Work",
+      "subtopic": "Time, Speed and Distance",
+      "difficulty": "HARD",
+      "flags": [
+        "The person labels A and B are wrapped as math zones, following band b1 item 5 of this same paper (vehicles A and B) and band b5 item 71 (countries A and B). Note band b4 deliberately leaves the student labels A-D plain in the items 43-48 puzzle block; that convention is followed there and this quantitative convention here, matching each block's own precedent.",
+        "Option (d) is printed as 4 : 2, an unreduced ratio. Transcribed as printed."
+      ]
+    },
+    {
+      "number": 41,
+      "stem": "A student has to get 40% marks to pass in an examination. Suppose he gets 30 marks and fails by 30 marks, then what are the maximum marks in the examination?",
+      "options": [
+        {
+          "label": "A",
+          "text": "100"
+        },
+        {
+          "label": "B",
+          "text": "120"
+        },
+        {
+          "label": "C",
+          "text": "150"
+        },
+        {
+          "label": "D",
+          "text": "300"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Percentage",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 42,
+      "stem": "19 boys turn out for playing hockey. Of these, 11 are wearing hockey shirts and 14 are wearing hockey pants. There are no boys without shirts and/or pants. What is the number of boys wearing full uniform?",
+      "options": [
+        {
+          "label": "A",
+          "text": "3"
+        },
+        {
+          "label": "B",
+          "text": "5"
+        },
+        {
+          "label": "C",
+          "text": "6"
+        },
+        {
+          "label": "D",
+          "text": "8"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Venn Diagrams and Set Logic",
+      "subtopic": "Set-Based Counting",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 43,
+      "context": "A, B, C and D are students. They are studying in four different cities, viz., P, Q, R and S (not necessarily in that order). They are studying in Science college, Arts college, Commerce college and Engineering college (not necessarily in that order), which are situated in four different States, viz., Gujarat, Rajasthan, Assam and Kerala (not necessarily in that order). Further, it is given that—\n(i) D is studying in Assam\n(ii) Arts college is located in city S which is in Rajasthan\n(iii) A is studying in Commerce college\n(iv) B is studying in city Q\n(v) Science college is located in Kerala",
+      "stem": "A is studying in",
+      "options": [
+        {
+          "label": "A",
+          "text": "Rajasthan"
+        },
+        {
+          "label": "B",
+          "text": "Gujarat"
+        },
+        {
+          "label": "C",
+          "text": "city Q"
+        },
+        {
+          "label": "D",
+          "text": "Kerala"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Analytical Arrangements",
+      "subtopic": "Matrix and Distribution Puzzles",
+      "difficulty": "MODERATE",
+      "flags": [
+        "FIRST ITEM OF A SIX-ITEM SHARED BLOCK (43-48). The booklet prints 'Directions for the following 6 (six) items :' followed by 'Read the information given below and answer the six items that follow.' and the setup on p20-c2, which is my page; items 44-48 are printed on p22 and belong to band b4. The `context` here is a byte-for-byte copy of band b4's item 44 context, taken programmatically from scripts/upsc/data/2018-p2.b4.json rather than retyped, and then read back against the p20-c2 column crop word by word. The two agree; see bandReport.notes for the two specific glyph checks.",
+        "The student labels A-D, the city labels P-S and the State and college names are left as plain text rather than LaTeX, matching band b4's treatment of the same block so the six items read consistently.",
+        "Per band b4's convention the 'Directions for the following 6 (six) items :' header and the 'Read the information given below ...' line are NOT included in `context`; only the setup paragraph and the (i)-(v) clauses are."
+      ]
+    }
+  ]
+}

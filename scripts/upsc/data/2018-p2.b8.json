@@ -1,0 +1,61 @@
+{
+  "band": "b8",
+  "pages": [16],
+  "bandReport": {
+    "numbersFound": [30, 31, 32],
+    "itemsByPage": { "16": [30, 31, 32] },
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "SCOPE: p16 only (printed page 17). Opened p16.png for structure, then read p16-c1.png top-to-bottom followed by p16-c2.png top-to-bottom; itemsByPage was filled in as I went, not reconstructed at the end. Three items, 30-32, each whole on this page - nothing starts before it or runs past it, and the page closes with the [P.T.O. rule under the last option of item 32.\n\nBLOCK STRUCTURE. The left column opens with the heading 'Passage-2' (em dash, U+2014) at the top of the page, so that passage is complete on p16 and nothing of it is carried over from p14. It governs BOTH items 30 and 31 - item 31 opens 'With reference to the above passage' and there is no other passage between them - so the identical passage text is stored as 'context' on both, composed once and pasted byte-identically (verified by string comparison after writing). The right column then prints the heading 'Passage-3', also complete on p16, and item 32 follows it referring to 'the above passage'. On MY page Passage-3 governs item 32 alone; whether it also governs an item on p18 I cannot say, because p18 is outside my band. Passage-3 is stored as item 32's 'context' either way, following the shipped p2 convention recorded in the 2018-p2.b1 band report (a reading passage goes in 'context' even where it governs a single item, as 2019-p2 does for 18 of its 26 passages).\n\nDIRECTIONS BLOCK. No 'Directions for the following N items' line appears anywhere on p16 - the page begins straight at the 'Passage-2' heading. Since the passages are numbered 2 and 3, the governing directions line and Passage-1 sit on an earlier page (p14 or before), which I did not open because p14 is being transcribed concurrently by another agent. A later reader wanting the directions wording should take it from that band, not from here.\n\nCOLLISION SAFETY. Every distinguishing element is in the STEM, never in 'context': item 30 carries its four-point list and its 'Select the correct answer using the code given below.' line, and item 31 carries its two numbered assumptions and its 'Which of the above assumptions is/are valid?' line. Items 30 and 31 therefore cannot collide on content_hash despite sharing a passage, and item 32's option set is unique to it.\n\nCOLUMN CROPS. Both crops are usable and no line of either column is sliced. One artefact worth recording: p16-c2.png carries a narrow bleed strip down its far-left margin holding the clipped right-hand edges of the LEFT column's lines (isolated letters such as 'd', 'e', 't', 'g', 'r'). It obscures nothing in c2 and every c2 line is whole, but a reader must not mistake those fragments for c2 content - they belong to the passage already transcribed from c1. Reading order was checked against p16.png before transcribing, and no item's option block sits in a different column from its stem, so the column-attribution defect class does not arise on this page.\n\nTRANSCRIPTION DETAIL. 'enhanced CO2' in Passage-2 is printed with a true subscript 2 followed by a full stop, confirmed at 3x; it is stored as the LaTeX zone \\(\\text{CO}_2\\) since plain text cannot carry the subscript. Item 31's lead-in is printed 'have been made :' with a SPACE BEFORE THE COLON - UPSC house style, preserved as printed and not tidied. Item 32 sets 'most crucial and logical inference' in bold italic; the emphasis is presentational and the words are transcribed plain, as elsewhere in this paper. The em dash in both passage headings is U+2014. In Passage-3 the word 'ones' in 'the frugal ones' scans with a partly filled 'e' that reads at low zoom as 'oncs'; examined at 9x the letter shows the horizontal crossbar and narrow aperture of an 'e', not the open aperture of a 'c', so it is transcribed 'ones'. That is the only ambiguous letterform on the page.\n\nNOT APPLICABLE ON THIS PAGE. There are no decimal numerals anywhere on p16, so the booklet's raised-middle-dot (U+00B7) decimal convention does not arise here. No figures, no artwork, no pipe tables, no maths beyond the one chemical subscript.\n\nDEFECT COUNTS for p16 - print defects 0, duplicate options within an item 0, missing or blank options 0, item numbers skipped or repeated 0, items I could not read 0, sliced column crops 0. Every one of items 30-32 has exactly four options labelled A-D in printed order, none reordered, and no answer field is supplied anywhere in this file."
+  },
+  "questions": [
+    {
+      "number": 30,
+      "context": "A diversity of natural assets will be needed to cope with climate change and ensure productive agriculture, forestry, and fisheries. For example, crop varieties are needed that perform well under drought, heat, and enhanced \\(\\text{CO}_2\\). But the private-sector and farmer-led process of choosing crops favours homogeneity adapted to past or current conditions, not varieties capable of producing consistently high yields in warmer, wetter, or drier conditions. Accelerated breeding programmes are needed to conserve a wider pool of genetic resources of existing crops, breeds, and their wild relatives. Relatively intact ecosystems, such as forested catchments, mangroves, wetlands, can buffer the impacts of climate change. Under a changing climate, these ecosystems are themselves at risk, and management approaches will need to be more proactive and adaptive. Connections between natural areas, such as migration corridors, may be needed to facilitate species movements to keep up with the change in climate.",
+      "stem": "With reference to the above passage, which of the following would assist us in coping with the climate change?\n1. Conservation of natural water sources\n2. Conservation of wider gene pool\n3. Existing crop management practices\n4. Migration corridors\nSelect the correct answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "1, 2 and 3 only" },
+        { "label": "B", "text": "1, 2 and 4 only" },
+        { "label": "C", "text": "3 and 4 only" },
+        { "label": "D", "text": "1, 2, 3 and 4" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Supporting and Contradicting Statements",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 31,
+      "context": "A diversity of natural assets will be needed to cope with climate change and ensure productive agriculture, forestry, and fisheries. For example, crop varieties are needed that perform well under drought, heat, and enhanced \\(\\text{CO}_2\\). But the private-sector and farmer-led process of choosing crops favours homogeneity adapted to past or current conditions, not varieties capable of producing consistently high yields in warmer, wetter, or drier conditions. Accelerated breeding programmes are needed to conserve a wider pool of genetic resources of existing crops, breeds, and their wild relatives. Relatively intact ecosystems, such as forested catchments, mangroves, wetlands, can buffer the impacts of climate change. Under a changing climate, these ecosystems are themselves at risk, and management approaches will need to be more proactive and adaptive. Connections between natural areas, such as migration corridors, may be needed to facilitate species movements to keep up with the change in climate.",
+      "stem": "With reference to the above passage, the following assumptions have been made :\n1. Diversification of livelihoods acts as a coping strategy for climate change.\n2. Adoption of monocropping practice leads to the extinction of plant varieties and their wild relatives.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 32,
+      "context": "Today, the top environmental challenge is a combination of people and their aspirations. If the aspirations are more like the frugal ones we had after the Second World War, a lot more is possible than if we view the planet as a giant shopping mall. We need to get beyond the fascination with glitter and understand that the planet works as a biological system.",
+      "stem": "Which of the following is the most crucial and logical inference that can be made from the above passage?",
+      "options": [
+        { "label": "A", "text": "The Earth can meet only the basic needs of humans for food, clothing and shelter." },
+        { "label": "B", "text": "The only way to meet environmental challenge is to limit human population." },
+        { "label": "C", "text": "Reducing our consumerism is very much in our own interest." },
+        { "label": "D", "text": "Knowledge of biological systems can only help us save this planet." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    }
+  ]
+}

@@ -4,7 +4,7 @@ Scanned UPSC Civil Services (Preliminary) booklets (image PDFs, **no text layer*
 **NO ANSWER KEY**) → the bank, `question_kind='pyq'`, under a new **UPSC CSE
 (Prelims)** exam across **14 subjects** — nine for Paper I, five for Paper II.
 
-**Status: 17 of 22 papers committed PRIVATE - 1,530 questions. Nothing is PUBLIC.**
+**Status: 18 of 22 papers committed PRIVATE - 1,610 questions. Nothing is PUBLIC.**
 
 Every paper below was derived BLIND first and only then scored against the
 official UPSC key, so these are real accuracies against ground truth, not
@@ -14,7 +14,7 @@ agreement rates. Re-measured by running `keycheck.ts` over each paper.
 |---|---|---|---|---|---|
 | **year** | **rows** | **vs key** | **HIGH** | **rows / vs key** | **HIGH** |
 | 2017 | 100 | 96.0% | 88/89 | 80 / 96.3% | 71/72 |
-| 2018 | 100 | **98.0%** | 91/91 | *(in progress)* | |
+| 2018 | 100 | **98.0%** | 91/91 | 80 / 95.0% | 70/72 |
 | 2019 | 100 | 97.0% | 91/92 | 80 / **97.5%** | 64/65 |
 | 2020 | 98 | 93.9% | 85/86 | 80 / 95.0% | 70/71 |
 | 2021 | 99 | 93.9% | 81/82 | 79 / 92.4% | 64/67 |
@@ -23,11 +23,11 @@ agreement rates. Re-measured by running `keycheck.ts` over each paper.
 | 2024 | 97 | 94.8% | 76/78 | 80 / 96.3% | 71/71 |
 | 2025 | 100 | 94.0% | 69/70 | 80 / 91.3% | 63/63 |
 
-**Corpus-wide: 1,454 of 1,530 correct = 95.0%.** GS Paper I 94.96%, CSAT Paper II
-95.14% - the two paper types are, to within a fifth of a point, equally hard for
+**Corpus-wide: 1,530 of 1,610 correct = 95.0%.** GS Paper I 94.96%, CSAT Paper II
+95.13% - the two paper types are, to within a fifth of a point, equally hard for
 a blind pass, which is not what the difference in their content would suggest.
 
-**The confidence flag is the usable product: HIGH ran 1,267/1,286 = 98.5%**, and
+**The confidence flag is the usable product: HIGH ran 1,337/1,358 = 98.5%**, and
 in most papers every single error landed in MED. That is what makes the MED list
 a review queue worth working rather than a pile. It holds only because the brief
 forbids inflating the flag, and it is not free - see 2021-p2 below.
@@ -52,8 +52,10 @@ Rows are fewer than 100/80 where UPSC withdrew an item: 2020-p1 Q27+Q52,
 KEY ("C or D", struck in by hand on the official page, with a matching footnote),
 which the key format cannot express; see the note on its entry in `config.ts`.
 
-**5 papers remain**: 2018-p2 (transcribed, deriving), and 2016-p1/p2 + 2026-p1/p2,
-both blocked on evidence rather than effort - see `fetch-keys.ts`.
+**4 papers remain**: 2016-p1/p2 + 2026-p1/p2, both blocked on EVIDENCE rather than
+effort - 2016's key URL cannot be located (the index is JS-rendered) and 2026's
+key is PROVISIONAL, a different kind of evidence from every other key here. See
+`fetch-keys.ts`.
 
 ## The corpus
 

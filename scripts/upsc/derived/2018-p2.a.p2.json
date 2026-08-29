@@ -1,0 +1,146 @@
+{
+  "paper": "2018-p2",
+  "packet": "p2",
+  "items": [
+    {
+      "number": 21,
+      "answer": "A",
+      "value": "DELHI codes to CCIDD, using a positional backward shift of 1, 2, 3, 4, 5, 6 on successive letters",
+      "confidence": "HIGH",
+      "reasoning": "Compare MUMBAI with LSJXVC letter by letter: M to L is -1, U to S is -2, M to J is -3, B to X is -4 (B is the 2nd letter, and 2 - 4 wraps round the 26-letter alphabet to 24 = X), A to V is -5 (1 - 5 wraps to 22 = V), I to C is -6. The shift is simply the position of the letter in the word. Applying the same rule to the five letters of DELHI: D - 1 = C, E - 2 = C, L - 3 = I, H - 4 = D, I - 5 = D, giving CCIDD. Option D (CCIFE) fails at the fourth letter, where H - 4 must be D and not F."
+    },
+    {
+      "number": 22,
+      "answer": "B",
+      "value": "HAMAM is written as 92323",
+      "confidence": "HIGH",
+      "reasoning": "From RAMON = 12345 read off R = 1, A = 2, M = 3, O = 4, N = 5. From DINESH = 675849 read off D = 6, I = 7, N = 5, E = 8, S = 4, H = 9; the value N = 5 agrees across both words, which confirms the alignment. Substituting into H-A-M-A-M gives 9, 2, 3, 2, 3, that is 92323. (The two codes do clash on the digit 4, which stands for O in the first word and S in the second, but neither letter appears in HAMAM, so the answer is unaffected.)"
+    },
+    {
+      "number": 23,
+      "answer": "D",
+      "value": "X squared minus Y squared lies strictly between 0 and 9",
+      "confidence": "HIGH",
+      "reasoning": "If X lies between -3 and -1 then X squared lies between 1 and 9. If Y lies between -1 and 1 then Y squared lies between 0 and 1. The smallest the difference can approach is 1 - 1 = 0 (X near -1 with Y near 1 or -1), and the largest it can approach is 9 - 0 = 9 (X near -3 with Y near 0). So the expression is confined to the interval from 0 to 9. Option C is too tight: taking X = -2.9 and Y = 0 gives 8.41, which already exceeds 8. Options A and B are wrong because the expression can never be negative, since X squared is always greater than 1 while Y squared is always less than 1."
+    },
+    {
+      "number": 24,
+      "answer": "A",
+      "value": "The product XY is the largest of the four expressions",
+      "confidence": "HIGH",
+      "reasoning": "Since X and Y are natural numbers other than 1 and Y is greater than X, we have X at least 2 and Y at least 3, so XY is at least 6. X/Y is less than 1 because X is smaller than Y. (X+Y)/XY equals 1/Y + 1/X, which is at most 1/3 + 1/2, so it too is less than 1. Y/X is greater than 1, but XY beats it: XY divided by Y/X equals X squared, which is at least 4, so XY is at least four times Y/X. Hence XY is the largest."
+    },
+    {
+      "number": 25,
+      "answer": "C",
+      "value": "C's office is to E's left",
+      "confidence": "MED",
+      "reasoning": "The clues fix the plan uniquely. B and C are on the right of the corridor and A on the left; F is on A's side, so F is on the left and therefore E, who is on the opposite side to F, is on the right. E is not in a corner, so E takes the middle office on the right. F must be further down the corridor than A, and F cannot face E, so F takes the far office on the left. C faces D, so D is on the left in the same position as C; since the middle right office is E's and the far left office is F's, C and D must both be in the first position, leaving A in the middle on the left and B at the far end on the right. Reading from the entrance, the left side runs D, A, F and the right side runs C, E, B. E is in the middle on the right; when he turns to face the corridor, the entrance end is on his left, so the office beside him on that side is C's. Runner-up: D. D would win if 'to his left' is read as the office diagonally across the corridor on his left-hand side rather than the adjoining office on his own side; on the strict reading, everything across the corridor is in front of E, not beside him, and D's office is A's neighbour, not E's."
+    },
+    {
+      "number": 26,
+      "answer": "A",
+      "value": "A is F's only immediate neighbour",
+      "confidence": "HIGH",
+      "reasoning": "On the plan derived above, the left side of the corridor runs D, A, F from the entrance and the right side runs C, E, B. F therefore occupies the far corner office on the left, and has only one adjoining office, A's. D is two places away on the same side, and B and C are across the corridor, so none of them adjoins F. That rules out options B, C and D and leaves 'A only'."
+    },
+    {
+      "number": 27,
+      "answer": "D",
+      "value": "All four consequences are supported: loss of topsoil, loss of smaller rivers, adverse effect on agricultural production, and declining groundwater",
+      "confidence": "MED",
+      "reasoning": "Statement 1 is supported by the passage's repeated references to accelerated erosion, 'soil and nutrient losses', 'site degradation through erosive losses' and 'soil degradation', all attributed to deforestation. Statement 2 is stated almost word for word: the drying up of smaller rivers in the Himalayan region is attributed to drastic changes in forest cover. Statement 3 is supported twice, by the loss in tea productivity along the Brahmaputra flood-plains and by the closing 'decline in food, fodder and fuel-wood yields'. Statement 4 rests on the same sentence as statement 2, which names the 'declining moisture retention of the mountain soils' and the 'drying up of the underground springs' - springs drying up is a decline in groundwater - reinforced by the closing 'alteration in available water and its quality'. Runner-up: A (1, 2 and 3 only). A would win if the marker requires the word groundwater to appear and refuses to treat 'underground springs' and soil moisture as groundwater; statements 1, 2 and 3 are not in doubt, so the whole item turns on that single reading."
+    },
+    {
+      "number": 28,
+      "answer": "A",
+      "value": "Only inference 1 is correct - deforestation can cause changes in the course of rivers",
+      "confidence": "MED",
+      "reasoning": "Inference 1 follows from two linked sentences: erosion rates in the Ganga and Brahmaputra systems are said to be rising 'due to deforestation and ill-suited land management practices subsequent to forest clearing', and the damage to Assam's tea plantations is attributed to the rising river bottom 'because of siltation and the changing course of the river system'. Deforestation feeds erosion, erosion feeds siltation, and siltation is what shifts the river's course, so the modest claim that deforestation 'can cause' such changes is sound. Inference 2 fails on the word 'only': the passage cites salinization in green revolution areas as one way human-impacted ecosystems degrade, but never claims human activity is the sole cause. Inference 3 fails on scope: the monotonous monoculture of rice and wheat is tied specifically to the Indian plains, whereas Tropical Asia, Africa and South America are mentioned only as having the highest erosion levels, so the passage never makes monoculture a major reason for desertification across those three continents. Runner-up: D (none of the above). D would win if the marker treats the deforestation-to-river-course link as too indirect, since the passage never places the two in a single sentence."
+    },
+    {
+      "number": 29,
+      "answer": "D",
+      "value": "Neither assumption is valid",
+      "confidence": "HIGH",
+      "reasoning": "Assumption 1 is contradicted by the opening lines, which link desertification to arid, semi-arid and sub-humid ecosystems and then add that the impact can be most dramatic 'even in the humid tropics'. That places the phenomenon well beyond tropical areas, so it cannot be a phenomenon of tropical areas only. Assumption 2 overstates the passage on both halves: floods appear only in the single Assam example of inundation along the Brahmaputra flood-plains, never as an invariable outcome, and the passage's own use of 'invariably' attaches to consequences arising out of site degradation, not to floods. The passage also treats salinization and monoculture as separate routes to degradation, so deforestation is not presented as an inevitable single cause. Both assumptions therefore fail."
+    },
+    {
+      "number": 30,
+      "answer": "B",
+      "value": "Conservation of natural water sources, conservation of a wider gene pool, and migration corridors would assist - existing crop management practices would not",
+      "confidence": "HIGH",
+      "reasoning": "Item 1 is supported by the sentence that relatively intact ecosystems such as forested catchments, mangroves and wetlands can buffer the impacts of climate change. Item 2 is stated directly: accelerated breeding programmes are needed to conserve a wider pool of genetic resources. Item 4 is stated directly too: connections between natural areas, such as migration corridors, may be needed to facilitate species movements. Item 3 is the one the passage rejects rather than recommends, because the existing farmer-led and private-sector process of choosing crops favours homogeneity adapted to past or current conditions rather than varieties that perform in warmer, wetter or drier conditions. Excluding item 3 leaves 1, 2 and 4."
+    },
+    {
+      "number": 31,
+      "answer": "D",
+      "value": "Neither assumption is valid",
+      "confidence": "MED",
+      "reasoning": "Assumption 1 substitutes livelihoods for assets. The passage calls for a diversity of natural assets - genetic resources, intact ecosystems, connected habitats - so that agriculture, forestry and fisheries stay productive; it nowhere suggests that people should spread across several livelihoods as a coping strategy. Assumption 2 overshoots in two ways: the passage speaks of a crop-choice process that favours homogeneity, not of monocropping as such, and it calls for conserving a wider gene pool rather than asserting that varieties and their wild relatives are being driven to extinction. Since an assumption must be something the argument takes for granted, and neither claim is needed for the passage's case, neither is valid. Runner-up: B (2 only). B would win if the marker reads the call to 'conserve' genetic resources as presupposing that the homogeneity-favouring process is wiping those resources out, which would make assumption 2 the unstated premise."
+    },
+    {
+      "number": 32,
+      "answer": "C",
+      "value": "Reducing our consumerism is very much in our own interest",
+      "confidence": "HIGH",
+      "reasoning": "The passage sets frugal post-war aspirations against viewing the planet as a giant shopping mall, and says that with the frugal aspirations 'a lot more is possible'. That is exactly the claim that curbing consumerism serves our own interests, which option C states. Option A is contradicted by 'a lot more is possible'. Option B fails on 'the only way', since the passage names the challenge as a combination of people and their aspirations, not population alone. Option D fails on 'only' as well, and inverts the closing line, which asks us to understand that the planet works as a biological system rather than claiming such knowledge is the sole remedy."
+    },
+    {
+      "number": 33,
+      "answer": "B",
+      "value": "Leadership can be acquired as well as taught",
+      "confidence": "HIGH",
+      "reasoning": "The author calls the born-leader theory false and states plainly that 'the art of leadership can be acquired and can indeed be taught', which option B restates. Option A misreads the reference to war: war is where the discovery was made, not the only medium of instruction. Option C misreads 'the results achieved can surprise even the instructors', which is about the scale of the effect, not about a count of people exceeding expectations. Option D contradicts the passage outright."
+    },
+    {
+      "number": 34,
+      "answer": "B",
+      "value": "The difference between the first and last digits is 2 (the number is 103 and its reversal 301)",
+      "confidence": "HIGH",
+      "reasoning": "Let the digits be a, 0 and c, so the number is 100a + c and its reversal is 100c + a. The digit sum gives a + c = 4. The reversal exceeds the number by 198, so 100c + a - (100a + c) = 99c - 99a = 198, hence c - a = 2. Solving a + c = 4 with c - a = 2 gives a = 1 and c = 3, so the number is 103 and its reversal 301; checking, 301 - 103 = 198. The difference between the first and last digits is 2."
+    },
+    {
+      "number": 35,
+      "answer": "A",
+      "value": "12 of the small cubes have exactly two painted faces",
+      "confidence": "HIGH",
+      "reasoning": "Cutting a 3 cm cube into 1 cm cubes gives 27 pieces. A piece has exactly two painted faces when it sits along an edge of the big cube but not at a corner. Each edge of the big cube holds 3 small cubes, of which the 2 at the ends are corners, leaving exactly 1 edge-middle cube per edge. A cube has 12 edges, so 12 small cubes have exactly two painted faces. (For completeness: 8 corner cubes have three painted faces, 6 face-centre cubes have one, and the single innermost cube has none, and 12 + 8 + 6 + 1 = 27.)"
+    },
+    {
+      "number": 36,
+      "answer": "C",
+      "value": "85 numbers between 700 and 1000 have hundreds digit greater than tens digit greater than units digit",
+      "confidence": "HIGH",
+      "reasoning": "Only the three-digit numbers 700 to 999 can qualify, since 1000 has no digit in the required pattern. The hundreds digit can be 7, 8 or 9, and the tens and units digits must both be smaller than it and strictly decreasing, so once two distinct digits are chosen from the permitted range their order is forced. For hundreds digit 7 the tens and units digits come from 0 to 6, giving C(7,2) = 21 choices; for 8 they come from 0 to 7, giving C(8,2) = 28; for 9 they come from 0 to 8, giving C(9,2) = 36. The total is 21 + 28 + 36 = 85."
+    },
+    {
+      "number": 37,
+      "answer": "B",
+      "value": "Pen is less than Book",
+      "confidence": "HIGH",
+      "reasoning": "Pen < Pencil and Pencil < Book chain together to give Pen < Book, which is therefore always true. The third relation, Book > Cap, places Cap below Book but says nothing about where Cap stands relative to Pen or Pencil - Cap could be larger than both, smaller than both, or between them. That leaves options A, C and D unsupported, since each asserts a fixed relation involving Cap."
+    },
+    {
+      "number": 38,
+      "answer": "B",
+      "value": "Total sale is 3ax + 8 rupees",
+      "confidence": "HIGH",
+      "reasoning": "The three sales are a times x, (a + 2) times (x + 2), and (a - 2) times (x - 2). Expanding the second gives ax + 2a + 2x + 4 and the third gives ax - 2a - 2x + 4. Adding all three, the terms 2a and -2a cancel, the terms 2x and -2x cancel, and the constants 4 and 4 add, leaving 3ax + 8."
+    },
+    {
+      "number": 39,
+      "answer": "B",
+      "value": "The chance of winning is 4/7, from 20 favourable balls out of 35",
+      "confidence": "HIGH",
+      "reasoning": "Of the 15 red balls, 20 per cent numbered 1 is 3 balls and 40 per cent numbered 3 is 6 balls, leaving 6 numbered 2. Of the 20 black balls, 45 per cent numbered 2 is 9 balls and 30 per cent numbered 3 is 6 balls, leaving 5 numbered 1. He wins on a red 3 (6 balls) or a black 1 or 2 (5 + 9 = 14 balls), so 20 of the 35 balls are favourable. The probability is 20/35 = 4/7."
+    },
+    {
+      "number": 40,
+      "answer": "A",
+      "value": "The ratio of the speeds of A and B is 6 : 5, since A covers 180 degrees while B covers 150 degrees in the same time",
+      "confidence": "HIGH",
+      "reasoning": "Take A's start as 0 degrees; B starts 30 degrees ahead on the same track and both run the same way round. A finishes at the diametrically opposite point, 180 degrees from his start, so A sweeps 180 degrees. B, starting at 30 degrees and ending at the same 180 degree point, sweeps 180 - 30 = 150 degrees. Equal times with uniform speeds means the speeds are in the ratio of the arcs covered, that is 180 : 150 = 6 : 5."
+    }
+  ]
+}
