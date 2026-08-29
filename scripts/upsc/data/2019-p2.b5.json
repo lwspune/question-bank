@@ -1,0 +1,563 @@
+{
+  "band": "b5",
+  "pages": [
+    36,
+    38,
+    40,
+    42
+  ],
+  "bandReport": {
+    "numbersFound": [
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80
+    ],
+    "itemsByPage": {
+      "36": [
+        63,
+        64,
+        65
+      ],
+      "38": [
+        66,
+        67
+      ],
+      "40": [
+        68,
+        69,
+        70,
+        71,
+        72,
+        73
+      ],
+      "42": [
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ]
+    },
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "All four assigned pages opened and read; no page was empty. This is the LAST band and it ends at item 80, the last item of the paper. COLUMN SPLIT: pages 36 and 42 were both gutter-detection fallbacks (gutterFound false, split near the page midpoint) and both were checked against the full-page render before any text was trusted. This booklet prints a vertical RULE between the columns with the type set tight against it, which is why detection failed - but the fallback split lands so that the two crops OVERLAP across that rule (e.g. page 36: c1 = x0..834, c2 = x766..1645 of a 1645px page), so each crop over-includes a sliver of its neighbour's edge letters rather than cutting into its own column. Nothing is lost on either page: p36-c1 holds the 'Passage - 2' heading and item 63 whole, p36-c2 holds the '64.' item number, all of Passage-3 and item 65 whole; p42-c1 holds items 74, 75, the 3-item directions block and item 76 whole, p42-c2 holds the '77.' item number through item 80 whole. Page 42 was checked twice as instructed: its right column is NOT sparse - it carries four items (77, 78, 79, 80) plus a directions block and is the fuller of the two columns - so the historical sparse-right-column failure does not arise here. Page 38 had a detected gutter and its crops were clean. PASSAGE MAPPING for the directions block that opens on page 34 ('Directions for the following 7 (seven) items :' / 'Read the following five passages...'): Passage-1 -> items 61, 62 (page 34, previous band); Passage-2 -> items 63 AND 64 (Passage-2 and item 63 are in p36-c1 while item 64 is at the TOP of p36-c2, so item 64's 'above passage' is the passage in the LEFT column, not anything above it in its own column); Passage-3 -> item 65 only; Passage-4 -> item 66 only; Passage-5 -> item 67 only. That accounts for exactly 7 items across exactly 5 passages, matching the block's own count, which is the check that nothing was dropped at the 34/36 or 36/38 seams. Passages 3, 4 and 5 therefore each have a context used by a single item and WILL trip the lonely-context warning; that is legitimate here (a directions block giving each item its own passage), not a sibling that lost its copy. TWO FURTHER SHARED BLOCKS, both on page 42, both with their preamble deliberately kept OUT of context: a 'Directions for the following 3 (three) items :' six-students information block shared byte-identically by items 76, 77 and 78 (it is printed in c1 with item 76, while items 77 and 78 sit in c2), and a 'Directions for the following 2 (two) items :' S1/S2 weight block shared byte-identically by items 79 and 80. Items 79 and 80 have IDENTICAL stems and are told apart only by their options ('greatest' vs 'least'), so their content_hash values still differ and neither can be dropped at commit - the S1/S2 lines are genuinely shared material and belong in context, unlike the data-sufficiency case the brief warns about. PRINTED ODDITIES: (1) The booklet is inconsistent about the space before a question mark in the same recurring sentence - page 34 item 62 prints 'is/are valid ?' with a space while page 36 items 64 and 65 print 'is/are valid?' with none, and page 38 item 66 is back to 'is/are valid ?'. Each is transcribed exactly as printed on its own page; the difference is the booklet's, not a transcription slip. (2) Item 67 varies the wording to 'Which of the above assumptions are valid ?' (no 'is/'). (3) Item 68's options differ only by letter case and were resolved glyph by glyph rather than by eye: option (d) is 'jUlY' with a LOWERCASE L, not 'jUIY' with a capital I. Verified against reference glyphs elsewhere on the same page - the capital I in 'In' (item 70) has symmetric ~10px serif bars top and bottom on a 4px stem, whereas the questioned glyph has a left-extending top flag and a 7px bottom serif, matching the lowercase l in 'alternative' on item 68's own first line exactly. Options (c) 'jUly' and (d) 'jUlY' consequently differ only in the case of the final letter (lowercase y with a descender vs capital Y without one), which was confirmed the same way. (4) Item 66 statement 3 is crossed by a diagonal scan scuff that partially erases the 'm' of 'Humans', printing as 'Hur ans'; the glyph slot is the correct width for 'm' and faint ink remains, so it is scan damage rather than a printing defect and is transcribed as 'Humans'. (5) Item 74's expression and item 75's number were both magnified to confirm every character: '10#5@1$5' and '4252746B' (8 characters, consistent with the stem's '8-digit'). ⚠ EXPECTED GATE FALSE POSITIVE ON ITEM 68 - READ BEFORE 'FIXING' IT: item 68's four options are JuLY / jULy / jUly / jUlY, which are four case-permutations of the same word because the question asks how JULY is written under a capitalisation rule. They are four DISTINCT strings as printed, but `validateRows` in lib.ts compares options through `norm()`, which lowercases - so all four collapse to 'july' and the duplicate-option guard will raise SIX errors on this one item (A/B, A/C, A/D, B/C, B/D, C/D). That guard exists to catch the CDS mis-slotted-option defect and is right to be loud, but here it is measuring case-insensitively a question whose entire content is case. The options are transcribed exactly as printed and verified glyph by glyph; do NOT edit them, and in particular do not 'repair' this by moving the answer - the guard's own comment says never to. If the gate needs to pass, the fix belongs in the guard (compare case-sensitively, or exempt an item flagged 'case-sensitive-options'), not in this data."
+  },
+  "questions": [
+    {
+      "number": 63,
+      "context": "In a study, scientists compared the microbiomes of poorly nourished and well nourished infants and young children. Gut microbes were isolated from faecal samples of malnourished and healthy children. The microbiome was \"immature\" and less diverse in malnourished children compared to the better developed \"mature\" microbiome found in healthy children of the same age. According to some studies, the chemical composition of mother's milk has shown the presence of a modified sugar (sialylated oligosaccharides). This is not utilized by the baby for its own nutrition. However, the bacteria constituting the infant's microbiome thrive on this sugar which serves as their food. Malnourished mothers have low levels of this sugar in their milk. Consequently, the microbiomes of their infants fail to mature. That in turn, leads to malnourished babies.",
+      "stem": "Which one of the following is the most logical, rational and crucial inference that can be derived from the above passage ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "If malnourished condition in children is caused by gut bacteria, it cannot be treated."
+        },
+        {
+          "label": "B",
+          "text": "The guts of malnourished babies should be inoculated with mature microbiomes."
+        },
+        {
+          "label": "C",
+          "text": "Babies of malnourished mothers should be fed with dairy milk fortified with sialylated oligosaccharides instead of mother's milk."
+        },
+        {
+          "label": "D",
+          "text": "Research on benign effects of gut bacteria on nutrition has policy implications."
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 64,
+      "context": "In a study, scientists compared the microbiomes of poorly nourished and well nourished infants and young children. Gut microbes were isolated from faecal samples of malnourished and healthy children. The microbiome was \"immature\" and less diverse in malnourished children compared to the better developed \"mature\" microbiome found in healthy children of the same age. According to some studies, the chemical composition of mother's milk has shown the presence of a modified sugar (sialylated oligosaccharides). This is not utilized by the baby for its own nutrition. However, the bacteria constituting the infant's microbiome thrive on this sugar which serves as their food. Malnourished mothers have low levels of this sugar in their milk. Consequently, the microbiomes of their infants fail to mature. That in turn, leads to malnourished babies.",
+      "stem": "On the basis of the above passage, the following assumptions have been made :\n1. Processed probiotic foods are a solution to treat the children suffering from malnutrition due to immature gut bacteria composition.\n2. The babies of malnourished mothers generally tend to be malnourished.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 only"
+        },
+        {
+          "label": "B",
+          "text": "2 only"
+        },
+        {
+          "label": "C",
+          "text": "Both 1 and 2"
+        },
+        {
+          "label": "D",
+          "text": "Neither 1 nor 2"
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 65,
+      "context": "Temperatures have risen nearly five times as rapidly on the Western Antarctic Peninsula than the global average over the past five decades. Researchers have now found that melting glaciers are causing a loss of species diversity among benthos in the coastal waters off the Antarctic Peninsula, impacting an entire seafloor ecosystem. They believe increased levels of suspended sediment in water to be the cause of the dwindling biodiversity in the coastal region.",
+      "stem": "On the basis of the above passage, the following assumptions have been made :\n1. Regions of glaciers warm faster than other regions due to global warming.\n2. Global warming can lead to seafloor sedimentation in some areas.\n3. Melting glaciers can reduce marine biodiversity in some areas.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 and 2 only"
+        },
+        {
+          "label": "B",
+          "text": "3 only"
+        },
+        {
+          "label": "C",
+          "text": "2 and 3 only"
+        },
+        {
+          "label": "D",
+          "text": "1, 2 and 3"
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 66,
+      "context": "A research team examined a long-term owl roost. Owls prey on small mammals and the excreted remains of those meals that accumulated over the time, provide us an insight into the composition and structure of small mammals over the past millennia. The research suggested that when the Earth went through a period of rapid warming about 13,000 years ago, the small mammal community was stable and resilient. But, from the last quarter of the nineteenth century, human-made changes to the environment had caused an enormous drop in biomass and energy flow. This dramatic decline in energy flow means modern ecosystems are not adapting as easily as they did in the past.",
+      "stem": "On the basis of the above passage, the following assumptions have been made :\n1. Global warming is a frequently occurring natural phenomenon.\n2. The impending global warming will not adversely affect small mammals.\n3. Humans are responsible for the loss of the Earth's natural resilience.\nWhich of the above assumptions is/are valid ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 and 2 only"
+        },
+        {
+          "label": "B",
+          "text": "3 only"
+        },
+        {
+          "label": "C",
+          "text": "2 and 3 only"
+        },
+        {
+          "label": "D",
+          "text": "1, 2 and 3"
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 67,
+      "context": "Food varieties extinction is happening all over the world — and it is happening fast. For example, of the 7,000 apple varieties that were grown during the nineteenth century, fewer than a hundred remain. In the Philippines, thousands of varieties of rice once thrived; now only up to a hundred are grown there. In China, 90 percent of the wheat varieties cultivated just a century ago have disappeared. Farmers in the past painstakingly bred and developed crops well suited to the peculiarities of their local climate and environment. In the recent past, our heavy dependence on a few high yielding varieties and technology-driven production and distribution of food is causing the dwindling of diversity in food crops. If some mutating crop disease or future climate change decimates the few crop plants we have come to depend on to feed our growing population, we might desperately need some of those varieties we have let go extinct.",
+      "stem": "On the basis of the above passage, the following assumptions have been made :\n1. Humans have been the main reason for the large scale extinction of plant species.\n2. Consumption of food mainly from locally cultivated crops ensures crop diversity.\n3. The present style of production and distribution of food will finally lead to the problem of food scarcity in the near future.\n4. Our food security may depend on our ability to preserve the locally cultivated varieties of crops.\nWhich of the above assumptions are valid ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 and 3"
+        },
+        {
+          "label": "B",
+          "text": "2 and 4"
+        },
+        {
+          "label": "C",
+          "text": "2 and 3"
+        },
+        {
+          "label": "D",
+          "text": "1 and 4"
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 68,
+      "stem": "If every alternative letter of the English alphabet from B onwards (including B) is written in lower case (small letters) and the remaining letters are capitalized, then how is the first month of the second half of the year written ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "JuLY"
+        },
+        {
+          "label": "B",
+          "text": "jULy"
+        },
+        {
+          "label": "C",
+          "text": "jUly"
+        },
+        {
+          "label": "D",
+          "text": "jUlY"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Coding-Decoding and Symbol Logic",
+      "subtopic": "Letter and Number Coding",
+      "difficulty": "MODERATE",
+      "flags": [
+        "case-sensitive-options",
+        "expect-false-positive:duplicate-option-text"
+      ]
+    },
+    {
+      "number": 69,
+      "stem": "Sunita cuts a sheet of paper into three pieces. Length of first piece is equal to the average of the three single digit odd prime numbers. Length of the second piece is equal to that of the first plus one-third the length of the third. The third piece is as long as the other two pieces together. The length of the original sheet of paper is",
+      "options": [
+        {
+          "label": "A",
+          "text": "13 units"
+        },
+        {
+          "label": "B",
+          "text": "15 units"
+        },
+        {
+          "label": "C",
+          "text": "16 units"
+        },
+        {
+          "label": "D",
+          "text": "30 units"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Algebra and Equations",
+      "subtopic": "Linear and Quadratic Equations",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 70,
+      "stem": "In the sequence 1, 5, 7, 3, 5, 7, 4, 3, 5, 7, how many such 5s are there which are not immediately preceded by 3 but are immediately followed by 7 ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "2"
+        },
+        {
+          "label": "C",
+          "text": "3"
+        },
+        {
+          "label": "D",
+          "text": "None"
+        }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Counting in a Number Sequence",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 71,
+      "stem": "A joint family consists of seven members A, B, C, D, E, F and G with three females. G is a widow and sister-in-law of D's father F. B and D are siblings and A is daughter of B. C is cousin of B. Who is E ?\n1. Wife of F\n2. Grandmother of A\n3. Aunt of C\nSelect the correct answer using the code given below :",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 and 2 only"
+        },
+        {
+          "label": "B",
+          "text": "2 and 3 only"
+        },
+        {
+          "label": "C",
+          "text": "1 and 3 only"
+        },
+        {
+          "label": "D",
+          "text": "1, 2 and 3"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Blood Relations and Directions",
+      "subtopic": "Blood Relations",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 72,
+      "stem": "Each face of a cube can be painted in black or white colours. In how many different ways can the cube be painted ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "9"
+        },
+        {
+          "label": "B",
+          "text": "10"
+        },
+        {
+          "label": "C",
+          "text": "11"
+        },
+        {
+          "label": "D",
+          "text": "12"
+        }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Cubes, Dice and Spatial Reasoning",
+      "subtopic": "Cubes and Cuboids",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 73,
+      "stem": "How many triplets \\((x, y, z)\\) satisfy the equation \\(x + y + z = 6\\), where \\(x\\), \\(y\\) and \\(z\\) are natural numbers ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "4"
+        },
+        {
+          "label": "B",
+          "text": "5"
+        },
+        {
+          "label": "C",
+          "text": "9"
+        },
+        {
+          "label": "D",
+          "text": "10"
+        }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Permutations and Combinations",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 74,
+      "stem": "If \\(\\$\\) means 'divided by'; @ means 'multiplied by'; # means 'minus', then the value of 10#5@1\\(\\$\\)5 is",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "1"
+        },
+        {
+          "label": "C",
+          "text": "2"
+        },
+        {
+          "label": "D",
+          "text": "9"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Coding-Decoding and Symbol Logic",
+      "subtopic": "Symbol and Inequality Coding",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 75,
+      "stem": "An 8-digit number 4252746B leaves remainder 0 when divided by 3. How many values of B are possible ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "2"
+        },
+        {
+          "label": "B",
+          "text": "3"
+        },
+        {
+          "label": "C",
+          "text": "4"
+        },
+        {
+          "label": "D",
+          "text": "6"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 76,
+      "context": "Six students A, B, C, D, E and F appeared in several tests. Either C or F scores the highest. Whenever C scores the highest, then E scores the least. Whenever F scores the highest, B scores the least.\n\nIn all the tests they got different marks; D scores higher than A, but they are close competitors; A scores higher than B; C scores higher than A.",
+      "stem": "If F stands second in the ranking, then the position of B is",
+      "options": [
+        {
+          "label": "A",
+          "text": "Third"
+        },
+        {
+          "label": "B",
+          "text": "Fourth"
+        },
+        {
+          "label": "C",
+          "text": "Fifth"
+        },
+        {
+          "label": "D",
+          "text": "Sixth"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Analytical Arrangements",
+      "subtopic": "Ordering and Ranking",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 77,
+      "context": "Six students A, B, C, D, E and F appeared in several tests. Either C or F scores the highest. Whenever C scores the highest, then E scores the least. Whenever F scores the highest, B scores the least.\n\nIn all the tests they got different marks; D scores higher than A, but they are close competitors; A scores higher than B; C scores higher than A.",
+      "stem": "If B scores the least, the rank of C will be",
+      "options": [
+        {
+          "label": "A",
+          "text": "Second"
+        },
+        {
+          "label": "B",
+          "text": "Third"
+        },
+        {
+          "label": "C",
+          "text": "Fourth"
+        },
+        {
+          "label": "D",
+          "text": "Second or third"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Analytical Arrangements",
+      "subtopic": "Ordering and Ranking",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 78,
+      "context": "Six students A, B, C, D, E and F appeared in several tests. Either C or F scores the highest. Whenever C scores the highest, then E scores the least. Whenever F scores the highest, B scores the least.\n\nIn all the tests they got different marks; D scores higher than A, but they are close competitors; A scores higher than B; C scores higher than A.",
+      "stem": "If E is ranked third, then which one of the following is correct ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "E gets more marks than C"
+        },
+        {
+          "label": "B",
+          "text": "C gets more marks than E"
+        },
+        {
+          "label": "C",
+          "text": "A is ranked fourth"
+        },
+        {
+          "label": "D",
+          "text": "D is ranked fifth"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Analytical Arrangements",
+      "subtopic": "Ordering and Ranking",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 79,
+      "context": "S1 : Twice the weight of Sohan is less than the weight of Mohan or that of Rohan.\nS2 : Twice the weight of Rohan is greater than the weight of Mohan or that of Sohan.",
+      "stem": "Which one of the following statements is correct ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Weight of Mohan is greatest"
+        },
+        {
+          "label": "B",
+          "text": "Weight of Sohan is greatest"
+        },
+        {
+          "label": "C",
+          "text": "Weight of Rohan is greatest"
+        },
+        {
+          "label": "D",
+          "text": "'Whose weight is greatest' cannot be determined"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Analytical Arrangements",
+      "subtopic": "Ordering and Ranking",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 80,
+      "context": "S1 : Twice the weight of Sohan is less than the weight of Mohan or that of Rohan.\nS2 : Twice the weight of Rohan is greater than the weight of Mohan or that of Sohan.",
+      "stem": "Which one of the following statements is correct ?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Weight of Mohan is least"
+        },
+        {
+          "label": "B",
+          "text": "Weight of Sohan is least"
+        },
+        {
+          "label": "C",
+          "text": "Weight of Rohan is least"
+        },
+        {
+          "label": "D",
+          "text": "'Whose weight is least' cannot be determined"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Analytical Arrangements",
+      "subtopic": "Ordering and Ranking",
+      "difficulty": "MODERATE",
+      "flags": []
+    }
+  ]
+}

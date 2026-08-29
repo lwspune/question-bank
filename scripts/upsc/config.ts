@@ -236,6 +236,24 @@ export const PAPERS: Record<string, Paper> = {
   // Checked on the page: it is a question page (Q59 plus a Directions block) whose
   // tight italic block narrows the gutter. Included deliberately.
   "2022-p2": p2(2022, "GENERAL STUDIES PAPER II.pdf", evens(2, 42), 150),
+  // P2 2021 CARRIES THE CORPUS'S ONLY DUAL KEY, and it is stored as a lie we
+  // cannot currently avoid. On the official Series-A page, Q39's printed letter
+  // is struck out by hand and replaced with "C or D", corroborated by a
+  // handwritten footnote at the foot of the page. UPSC accepted BOTH answers --
+  // a grace item, NOT a withdrawal: the same header reads "No. of items
+  // dropped- NIL" and "No. of items taken for scoring- 80".
+  //
+  // `parseOfficialKey` accepts only A-D or X, so `2021-p2.key.json` stores "X".
+  // That is the only value that does not fabricate an answer, and it correctly
+  // makes keycheck EXCLUDE Q39 instead of scoring a derivation against a
+  // two-answer key. But X means DROPPED, which Q39 is not, so:
+  //   - do NOT "fix" that X into a letter. Picking one of C/D marks every
+  //     student who gave the other one wrong.
+  //   - do NOT read key.dropped.length as this paper's drop count. It is 0.
+  //   - the paper therefore commits 79 rows, not 80, and Q39 is absent from
+  //     the bank rather than present with a single asserted answer.
+  // If a dual/grace marker is ever added to the key format, this is its first
+  // real case; `src/lib/mocks` already models exactly this as `grace`.
   "2021-p2": p2(2021, "QP-CSP-21-GeneralStudiesPaper-II-121021.pdf", evens(2, 42), 301),
   // P2 2020: the page detector reports 23 English pages, two of which (29, 33)
   // are ODD and break the booklet's alternation. Both were opened and are HINDI:
@@ -245,14 +263,17 @@ export const PAPERS: Record<string, Paper> = {
   // items 56-60 printed in Hindi on p33 and in English on p34. The real run is
   // the clean even sequence, same as every other Paper II.
   "2020-p2": p2(2020, "CSP_2020_GS_Paper-2.pdf", evens(2, 42), 200),
-  // P2 2019: the run STARTS AT 4, not 2 — this booklet opens with THREE cover
-  // pages. Page 14 is also a genuine English question page (items 22-25) that
+  // P2 2019: 21 English pages, evens 2..42 — and BOTH ends of that were got
+  // wrong first. The detector calls index 2 a COVER, so this was set to
+  // evens(4, 42) and would have LOST ITEMS 1-3 entirely; a transcription agent
+  // caught it only because its band was supposed to open at item 1. Page 14 is
+  // the same failure inside the run (items 22-25) that
   // the detector dropped: its script signal reads 8, squarely English, but the
   // page prints a vertical rule with the columns tight against it, so the
   // GUTTER test called it single-column. Verified by reading it. That is the
   // failure `parity_gaps` now flags, and it is the dangerous direction — an
   // excluded page loses ~5 items in silence.
-  "2019-p2": p2(2019, "csp-p2.pdf", evens(4, 42), 200),
+  "2019-p2": p2(2019, "csp-p2.pdf", evens(2, 42), 200),
   "2018-p2": p2(2018, "QP-CSP-18-GS-II-C.pdf", evens(2, 42), 150), // strip-scanned
   // P2 2017: runs to 44, not 42 like every other Paper II — 22 English pages.
   // Page 43 is HINDI despite scoring in the English range: items 77-80 are

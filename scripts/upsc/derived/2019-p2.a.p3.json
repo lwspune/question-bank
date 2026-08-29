@@ -1,0 +1,182 @@
+{
+  "paper": "2019-p2",
+  "packet": "p3",
+  "pass": "a",
+  "items": [
+    {
+      "number": 51,
+      "answer": "B",
+      "value": "X = 64",
+      "confidence": "HIGH",
+      "reasoning": "The sequence interleaves two square progressions. The odd-position terms are 4, 16, 36, 64 = 2^2, 4^2, 6^2, 8^2 (even bases increasing). The even-position terms are 196, 144, 100 = 14^2, 12^2, 10^2 (even bases decreasing by 2), so the next even-position term is 8^2 = 64. X = 64. Option C (125) is a cube and fits neither strand; 48 and 256 are not squares of the required bases."
+    },
+    {
+      "number": 52,
+      "answer": "B",
+      "value": "9 people can read exactly one language",
+      "confidence": "HIGH",
+      "reasoning": "Of 15 people, 3 read neither language, so 12 read at least one. By inclusion-exclusion, 7 + 8 - (both) = 12, giving both = 3. Exactly one language = 12 - 3 = 9. Option A (10) is the count of people reading French or English minus something else; option C (5) and D (4) do not arise."
+    },
+    {
+      "number": 53,
+      "answer": "C",
+      "value": "The book has 1049 pages",
+      "confidence": "HIGH",
+      "reasoning": "Pages 1-9 use 9 digits, pages 10-99 use 90 x 2 = 180 (running total 189), pages 100-999 use 900 x 3 = 2700 (running total 2889). The remaining 3089 - 2889 = 200 digits at 4 digits per page cover 50 more pages, i.e. 1000 to 1049. Direct count confirms 1049 pages use exactly 3089 digits, while 1048 uses 3085 and 1050 uses 3093."
+    },
+    {
+      "number": 54,
+      "answer": "B",
+      "value": "The gaps are filled by c, b, b, b - giving ccacc / aabaa / bbcbb",
+      "confidence": "HIGH",
+      "reasoning": "The string c_accaa_aa_bc_b has 15 characters with gaps at positions 2, 8, 11 and 14. Filling with 'cbbb' gives ccaccaabaabbcbb, which splits into three blocks of five: ccacc, aabaa, bbcbb. Every block has the palindromic form XXYXX, and the inner letter of each block is the outer letter of the next (a, b, c cycling). No other option produces this pattern: 'abba' gives bbcab, 'bbbb' gives cbacc and 'cccc' gives cbccb, none of which is of the XXYXX form."
+    },
+    {
+      "number": 55,
+      "answer": "D",
+      "value": "The mother weighs 54 kg",
+      "confidence": "HIGH",
+      "reasoning": "Children plus father average 52 over 3 people, so their total is 156; with the father at 60 kg the two children together weigh 96 kg. Children plus mother average 50 over 3 people, so their total is 150, giving the mother 150 - 96 = 54 kg."
+    },
+    {
+      "number": 56,
+      "answer": "C",
+      "value": "18 different ways",
+      "confidence": "HIGH",
+      "reasoning": "Count non-negative solutions of a + 10b + 50c = 107. With c = 0, b can be 0 to 10 (11 ways); with c = 1, 10b is at most 57 so b is 0 to 5 (6 ways); with c = 2, 10b is at most 7 so b = 0 (1 way). Total 11 + 6 + 1 = 18, confirmed by exhaustive enumeration. The rupee-1 notes make up whatever remains in each case, so every combination is payable."
+    },
+    {
+      "number": 57,
+      "answer": "B",
+      "value": "The two offices are 17 m apart",
+      "confidence": "HIGH",
+      "reasoning": "Taking the house as origin and East as +x: both reach (30, 0) after 20 m and 10 m East. A turns left (North) 2 m to (30, 2), then right (East) 12 m to his office at (42, 2). B turns right (South) 8 m to (30, -8), then left (East) 4 m to (34, -8), then right (South) 5 m to his office at (34, -13). The horizontal gap is 8 m and the vertical gap 15 m, so the shortest distance is the square root of 64 + 225 = 289, i.e. 17 m."
+    },
+    {
+      "number": 58,
+      "answer": "B",
+      "value": "S2 alone is sufficient: p + q odd forces pq to be even, so the answer to the question is a definite No",
+      "confidence": "HIGH",
+      "reasoning": "S2 says p + q is odd, which for integers means exactly one of p and q is even. An even factor makes pq even, so pq is definitely not odd - a definite answer, so S2 alone suffices. S1 alone does not: p = 3, q = 5 gives pq = 15 (odd) while p = 2, q = 3 gives pq = 6 (even), so both parities are possible. Since S2 alone settles it, S1 is not necessary, ruling out C and D."
+    },
+    {
+      "number": 59,
+      "answer": "D",
+      "value": "2015 has the same calendar as 2009",
+      "confidence": "HIGH",
+      "reasoning": "Two years share a calendar when the day-of-week shift between them is a multiple of 7 and both are of the same leap type. Adding odd days from 2009 onwards (1 for a common year, 2 for a leap year): 2009, 2010, 2011 give 1 each, 2012 gives 2, 2013 and 2014 give 1 each, totalling 7, i.e. a shift of 0. Both 2009 and 2015 are common years, so their calendars are identical. The shifts to 2016, 2017 and 2018 are 1, 3 and 4 respectively, so none of them matches."
+    },
+    {
+      "number": 60,
+      "answer": "D",
+      "value": "B = 8 (587 + 136 = 723)",
+      "confidence": "HIGH",
+      "reasoning": "136 + 5B7 = 643 + 10B and 7A3 = 703 + 10A, so 10B - 10A = 60, i.e. B = A + 6. Divisibility of 7A3 by 3 needs 7 + A + 3 = 10 + A to be a multiple of 3, so A is 2, 5 or 8; but B = A + 6 must stay a single digit, forcing A = 2 and B = 8. Check: 136 + 587 = 723, and 723 = 3 x 241. An exhaustive scan over B = 0 to 9 returns this as the only solution."
+    },
+    {
+      "number": 61,
+      "answer": "B",
+      "value": "In a competitive global economy, India must use regulations strategically",
+      "confidence": "MED",
+      "reasoning": "The passage closes by saying that in today's hyper competitive global economy regulations 'need to be viewed as weapons' that deliver cost-justified social and environmental benefits while improving citizens' economic well-being; read together with 'India especially needs an effective long-term regulatory system', that is precisely a call to use regulations strategically. A is an overreach - nothing links regulation to matching the economy's size to its population. C introduces 'integration with the global economy', a notion the passage never raises. Runner-up is D: the passage does complain that regulations 'fail to consider impacts on jobs and economic growth', and D would win if 'dominant considerations' were read as merely 'important considerations' - but the passage weighs social and environmental benefits equally, so nothing there is made dominant."
+    },
+    {
+      "number": 62,
+      "answer": "D",
+      "value": "Neither assumption is valid",
+      "confidence": "HIGH",
+      "reasoning": "Assumption 1 is contradicted by the text: the passage states that regulations 'may be used to protect local markets at the expense of more widely shared prosperity', so protection of local markets is presented as something regulations do achieve, not something they fail at. Assumption 2 is nowhere supported - the passage says regulations 'seek desirable outcomes' and should seek social and environmental benefits, and the concerns it says are actually neglected are jobs and economic growth, not social and environmental ones; 'generally ignored by governments across the world' is a sweeping claim the passage never makes."
+    },
+    {
+      "number": 63,
+      "answer": "D",
+      "value": "Research on the benign effects of gut bacteria on nutrition has policy implications",
+      "confidence": "MED",
+      "reasoning": "The passage establishes a causal chain - malnourished mother, low sialylated oligosaccharides in her milk, immature infant microbiome, malnourished baby - which shows that findings about beneficial gut bacteria bear directly on child nutrition and therefore on nutrition policy; that is the broad, safe inference the text supports. A is unsupported: nothing in the passage says the condition is untreatable, and the identified mechanism in fact suggests the opposite. C is wrong twice over, since the sugar comes from mother's milk and no substitution by fortified dairy milk is mentioned. Runner-up is B (inoculating infant guts with mature microbiomes): it would win if 'crucial inference' were read as 'the intervention the finding points to', but the passage attributes the failure to a missing food source for the bacteria rather than to missing bacteria, and inoculation is never discussed."
+    },
+    {
+      "number": 64,
+      "answer": "B",
+      "value": "Only assumption 2 is valid - babies of malnourished mothers tend to be malnourished",
+      "confidence": "HIGH",
+      "reasoning": "Assumption 2 is effectively stated: malnourished mothers have low levels of the sugar, so their infants' microbiomes fail to mature, and 'that in turn leads to malnourished babies'. Assumption 1 is not supported anywhere - the passage never mentions probiotic foods, processed or otherwise, and offers no treatment at all, so claiming them as 'a solution' goes well beyond the text."
+    },
+    {
+      "number": 65,
+      "answer": "C",
+      "value": "Only assumptions 2 and 3 are valid",
+      "confidence": "MED",
+      "reasoning": "Assumption 2 is supported: warming melts the glaciers, and the researchers attribute the change to 'increased levels of suspended sediment in water', i.e. sedimentation reaching the seafloor in that area. Assumption 3 is stated almost verbatim - melting glaciers are 'causing a loss of species diversity among benthos in the coastal waters'. Assumption 1 generalises from a single locality: the passage reports only that the Western Antarctic Peninsula warmed about five times faster than the global average, and never claims that glacier regions as a class warm faster, nor is that claim needed for the argument about sediment and biodiversity. Runner-up is D: it would win if the Peninsula figure were taken as licensing the general statement about glacier regions."
+    },
+    {
+      "number": 66,
+      "answer": "B",
+      "value": "Only assumption 3 is valid - humans are responsible for the loss of the Earth's natural resilience",
+      "confidence": "HIGH",
+      "reasoning": "Assumption 3 is exactly the passage's conclusion: 'human-made changes to the environment had caused an enormous drop in biomass and energy flow', and this decline is why 'modern ecosystems are not adapting as easily as they did in the past' - that is a loss of resilience laid at human doors. Assumption 1 fails because the passage cites one warming episode about 13,000 years ago, which cannot establish that warming is 'frequently occurring'. Assumption 2 is contradicted rather than assumed: the whole point is that today's small-mammal ecosystems are less resilient than the stable community of 13,000 years ago."
+    },
+    {
+      "number": 67,
+      "answer": "B",
+      "value": "Assumptions 2 and 4 are valid",
+      "confidence": "HIGH",
+      "reasoning": "Assumption 2 follows from the contrast the passage draws: farmers who bred crops suited to local climate and environment produced thousands of varieties, while 'heavy dependence on a few high yielding varieties and technology-driven production and distribution' is what is causing diversity to dwindle. Assumption 4 is the passage's closing thought - if disease or climate change decimates the few crops we depend on, 'we might desperately need some of those varieties we have let go extinct'. Assumption 1 overreaches from crop varieties to 'plant species' generally and asserts humans as the 'main reason', neither of which the passage claims. Assumption 3 is too strong: the passage frames scarcity as conditional ('if some mutating crop disease or future climate change decimates...'), not as something that will finally happen in the near future."
+    },
+    {
+      "number": 68,
+      "answer": "D",
+      "value": "July is written as jUlY",
+      "confidence": "HIGH",
+      "reasoning": "The first month of the second half of the year is July. Under the rule, alternate letters starting from B - that is B, D, F, H, J, L, N, P, R, T, V, X, Z, the letters in even alphabet positions - are lower case, and the rest are capitals. J is the 10th letter (even, lower case), U is the 21st (odd, capital), L is the 12th (even, lower case) and Y is the 25th (odd, capital), giving jUlY. All four options are distinct case-permutations of 'July'; only option D matches, since A capitalises J, B capitalises L and lowercases Y, and C lowercases Y."
+    },
+    {
+      "number": 69,
+      "answer": "D",
+      "value": "The original sheet was 30 units long",
+      "confidence": "HIGH",
+      "reasoning": "The single-digit odd prime numbers are 3, 5 and 7, whose average is 5, so the first piece is 5. Let the second be b and the third c. Then b = 5 + c/3 and c = 5 + b. Substituting gives c = 10 + c/3, so 2c/3 = 10 and c = 15, hence b = 10. Both conditions check out: 15 = 5 + 10, and 10 = 5 + 15/3. The sheet was 5 + 10 + 15 = 30 units. Option B (15) is the third piece alone."
+    },
+    {
+      "number": 70,
+      "answer": "A",
+      "value": "Exactly one such 5",
+      "confidence": "HIGH",
+      "reasoning": "The 5s in 1, 5, 7, 3, 5, 7, 4, 3, 5, 7 sit at positions 2, 5 and 9. The 5 at position 2 is preceded by 1 and followed by 7, so it qualifies. The 5s at positions 5 and 9 are each immediately preceded by a 3, so both are excluded even though each is followed by 7. Count = 1."
+    },
+    {
+      "number": 71,
+      "answer": "D",
+      "value": "E is all three - wife of F, grandmother of A, and aunt of C",
+      "confidence": "MED",
+      "reasoning": "F is the father of D and, since B and D are siblings, of B too. A is B's daughter. C is B's cousin, so C is not F's child; G, the widowed sister-in-law of F, is C's parent, which places C's late father as F's brother. That accounts for F, B, D, A, G and C, so the seventh member E is F's wife - and this also fixes the three females as A, E and G. E is therefore the wife of F, the mother of B and hence grandmother of A, and the wife of C's paternal uncle and hence C's aunt. Runner-up is A (1 and 2 only), which would win only if 'aunt' were restricted to a blood relation and aunt-by-marriage were not counted; note that on the alternative reading in which G is the widowed sister of F's wife, E is C's maternal aunt by blood, so statement 3 holds either way."
+    },
+    {
+      "number": 72,
+      "answer": "B",
+      "value": "10 distinct ways",
+      "confidence": "HIGH",
+      "reasoning": "Counting colourings that differ up to rotation of the cube, group them by the number of black faces: 0 black (1 way), 1 black (1), 2 black (2 - adjacent or opposite), 3 black (2 - three round a corner or three in a band), 4 black (2, complementary to the 2 case), 5 black (1) and 6 black (1), totalling 10. Burnside's lemma gives the same figure: (1x2^6 + 6x2^3 + 3x2^4 + 8x2^2 + 6x2^3)/24 = 240/24 = 10."
+    },
+    {
+      "number": 73,
+      "answer": "D",
+      "value": "10 triplets",
+      "confidence": "HIGH",
+      "reasoning": "With x, y, z natural numbers (positive integers), the number of ordered solutions of x + y + z = 6 is the number of ways to place 2 dividers in the 5 gaps between 6 units, that is C(5,2) = 10. Exhaustive enumeration confirms exactly 10 ordered triplets. If 0 were allowed the count would be C(8,2) = 28 and if order were ignored it would be 3, neither of which is offered, so the intended reading is ordered triplets of positive integers."
+    },
+    {
+      "number": 74,
+      "answer": "D",
+      "value": "9",
+      "confidence": "HIGH",
+      "reasoning": "Substituting the symbols, 10#5@1$5 becomes 10 - 5 x 1 / 5. By the order of operations, multiplication and division are done first and left to right: 5 x 1 = 5, then 5 / 5 = 1. Subtracting gives 10 - 1 = 9."
+    },
+    {
+      "number": 75,
+      "answer": "C",
+      "value": "4 values of B (0, 3, 6 and 9)",
+      "confidence": "HIGH",
+      "reasoning": "A number is divisible by 3 when its digit sum is. The known digits 4, 2, 5, 2, 7, 4, 6 sum to 30, which is already a multiple of 3, so B itself must be a multiple of 3. That gives B = 0, 3, 6 or 9 - four values, confirmed by testing all ten digits."
+    }
+  ]
+}

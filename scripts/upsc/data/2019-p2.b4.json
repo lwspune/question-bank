@@ -1,0 +1,272 @@
+{
+  "band": "b4",
+  "pages": [28, 30, 32, 34],
+  "bandReport": {
+    "numbersFound": [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62],
+    "itemsByPage": { "28": [46, 47], "30": [48, 49, 50, 51, 52, 53, 54], "32": [55, 56, 57, 58, 59, 60], "34": [61, 62] },
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "All four assigned pages opened and read; no page was empty. COLUMN SPLIT: page 28 was flagged as a gutter-detection fallback (gutterWidth 0, split at the page midpoint). Checked against p28.png: the booklet prints a vertical rule between the columns and the two crops OVERLAP across it (c1 = x0..834, c2 = x766..1645 of a 1645px page), so each crop over-includes a sliver of its neighbour rather than cutting into its own column. Nothing is lost: p28-c1 holds all of Passage-5 and item 46 whole, p28-c2 holds the 'Passage - 6' heading, the '47.' item number and all four of its options whole. Pages 30, 32, 34 had a detected gutter and their crops were clean. PASSAGES: items 46 and 47 sit under an earlier directions block (running from before page 26) in which each numbered passage governs exactly ONE item - page 26, which belongs to the previous band, shows the same one-passage-one-item pattern for Passage-3/item 44 and Passage-4/item 45. Passage-5 and Passage-6 both BEGIN on page 28 (their headings are printed there), so nothing carried over from page 26. Their contexts are therefore each used by a single item and WILL trip the lonely-context warning; that is legitimate here, not a lost sibling. A NEW directions block opens on page 34: 'Directions for the following 7 (seven) items :' followed by 'Read the following five passages...'. Its Passage-1 is printed whole in p34-c1 and governs BOTH item 61 and item 62, which share a byte-identical context. Passage-1 ends on page 34; page 36 opens the next passage (verified directly - I own both sides of the 34/36 seam). PRINTED ODDITIES: (1) item 52 prints a semicolon where a comma belongs - 'In a group of 15 people; 7 can read French' - transcribed verbatim and flagged. (2) The page-34 directions block itself is internally mismatched as printed: it announces '7 (seven) items' while the sentence beneath says 'Read the following five passages'; both are transcribed as printed and the preamble is deliberately kept OUT of every context field. (3) Item 55 line 3 carries a short detached dash-like speck immediately before 'is' ('their mother -is 50 kg'). Examined at magnification: it floats above the baseline, is detached from both words, and the surrounding justified word-spacing is normal, so it is scan noise rather than a typeset character; transcribed as 'their mother is 50 kg'. (4) Item 58's internal 'Question :' line ends 'an odd integer?' with no space before the question mark while the booklet's other question lines print ' ?' with a space - preserved as printed. CATALOG: item 49 is a gaining/losing-clock problem and neither listed subtopic under 'Clocks and Calendars' fits (the listed pair is 'Calendars and Day Calculation' and 'Clocks and Angles', and this item involves no angle), so it carries the unlisted label 'Faulty Clocks and Gaining Time' - a catalog-extension candidate. Subject and chapter are listed values."
+  },
+  "questions": [
+    {
+      "number": 46,
+      "context": "A vast majority of Indians are poor, with barely 10 percent employed in the organised sector. We are being convinced that vigorous economic growth is generating substantial employment. But this is not so. When our economy was growing at 3 percent per year, employment in the organised sector was growing at 2 percent per year. As the economy began to grow at 7 – 8 percent per year, the rate of growth of employment in the organised sector actually declined to 1 percent per year.",
+      "stem": "The above passage seems to imply that\n1. most of modern economic growth is based on technological progress.\n2. much of modern Indian economy does not nurture sufficient symbiotic relationship with labour-intensive, natural resource-based livelihoods.\n3. service sector in India is not very labour-intensive.\n4. literate rural population is not willing to enter organised sector.\nWhich of the statements given above are correct ?",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "3 and 4 only" },
+        { "label": "C", "text": "1, 2 and 3 only" },
+        { "label": "D", "text": "1, 2, 3 and 4" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 47,
+      "context": "India has banking correspondents, who help bring people in the hinterland into the banking fold. For them to succeed, banks cannot crimp on costs. They also cannot afford to ignore investing in financial education and literacy. Banking correspondents are way too small to be viewed as a systemic risk. Yet India's banking regulator has restricted them to serving only one bank, perhaps to prevent arbitrage. Efforts at banking outreach may succeed only if there are better incentives at work for such last-mile workers and also those providers who ensure not just basic bank accounts but also products such as accident and life insurance and micro pension schemes.",
+      "stem": "Which one of the following is the most logical, rational and crucial inference that can be derived from the above passage ?",
+      "options": [
+        { "label": "A", "text": "Efforts to bring people in India's hinterland into the banking system are not successful." },
+        { "label": "B", "text": "For meaningful financial inclusion, India's banking system needs more number of banking correspondents and other such last-mile workers." },
+        { "label": "C", "text": "Meaningful financial inclusion in India requires that banking correspondents have diverse skills." },
+        { "label": "D", "text": "Better banking outreach would be impossible unless each banking correspondent is allowed to serve a number of banks." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 48,
+      "stem": "What is X in the sequence\n132, 129, 124, 117, 106, 93, X ?",
+      "options": [
+        { "label": "A", "text": "74" },
+        { "label": "B", "text": "75" },
+        { "label": "C", "text": "76" },
+        { "label": "D", "text": "77" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Series and Analogy",
+      "subtopic": "Number Series",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 49,
+      "stem": "A wall clock moves 10 minutes fast in every 24 hours. The clock was set right to show the correct time at 8:00 a.m. on Monday. When the clock shows the time 6:00 p.m. on Wednesday, what is the correct time ?",
+      "options": [
+        { "label": "A", "text": "5:36 p.m." },
+        { "label": "B", "text": "5:30 p.m." },
+        { "label": "C", "text": "5:24 p.m." },
+        { "label": "D", "text": "5:18 p.m." }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Clocks and Calendars",
+      "subtopic": "Faulty Clocks and Gaining Time",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 50,
+      "stem": "If the numerator and denominator of a proper fraction are increased by the same positive quantity which is greater than zero, the resulting fraction is",
+      "options": [
+        { "label": "A", "text": "always less than the original fraction" },
+        { "label": "B", "text": "always greater than the original fraction" },
+        { "label": "C", "text": "always equal to the original fraction" },
+        { "label": "D", "text": "such that nothing can be claimed definitely" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Fractions and Recurring Decimals",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 51,
+      "stem": "What is X in the sequence\n4, 196, 16, 144, 36, 100, 64, X ?",
+      "options": [
+        { "label": "A", "text": "48" },
+        { "label": "B", "text": "64" },
+        { "label": "C", "text": "125" },
+        { "label": "D", "text": "256" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Series and Analogy",
+      "subtopic": "Number Series",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 52,
+      "stem": "In a group of 15 people; 7 can read French, 8 can read English while 3 of them can read neither of these two languages. The number of people who can read exactly one language is",
+      "options": [
+        { "label": "A", "text": "10" },
+        { "label": "B", "text": "9" },
+        { "label": "C", "text": "5" },
+        { "label": "D", "text": "4" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Venn Diagrams and Set Logic",
+      "subtopic": "Set-Based Counting",
+      "difficulty": "EASY",
+      "flags": ["printed-punctuation-oddity"]
+    },
+    {
+      "number": 53,
+      "stem": "A printer numbers the pages of a book starting with 1 and uses 3089 digits in all. How many pages does the book have ?",
+      "options": [
+        { "label": "A", "text": "1040" },
+        { "label": "B", "text": "1048" },
+        { "label": "C", "text": "1049" },
+        { "label": "D", "text": "1050" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Counting in a Number Sequence",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 54,
+      "stem": "Consider the following sequence that follows some arrangement :\nc_accaa_aa_bc_b\nThe letters that appear in the gaps are",
+      "options": [
+        { "label": "A", "text": "abba" },
+        { "label": "B", "text": "cbbb" },
+        { "label": "C", "text": "bbbb" },
+        { "label": "D", "text": "cccc" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Series and Analogy",
+      "subtopic": "Letter and Alphanumeric Series",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 55,
+      "stem": "A family has two children along with their parents. The average of the weights of the children and their mother is 50 kg. The average of the weights of the children and their father is 52 kg. If the weight of the father is 60 kg, then what is the weight of the mother ?",
+      "options": [
+        { "label": "A", "text": "48 kg" },
+        { "label": "B", "text": "50 kg" },
+        { "label": "C", "text": "52 kg" },
+        { "label": "D", "text": "54 kg" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Average",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 56,
+      "stem": "Suppose you have sufficient amount of rupee currency in three denominations : ₹ 1, ₹ 10 and ₹ 50. In how many different ways can you pay a bill of ₹ 107 ?",
+      "options": [
+        { "label": "A", "text": "16" },
+        { "label": "B", "text": "17" },
+        { "label": "C", "text": "18" },
+        { "label": "D", "text": "19" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Permutations and Combinations",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 57,
+      "stem": "'A' started from his house and walked 20 m towards East, where his friend 'B' joined him. They together walked 10 m in the same direction. Then 'A' turned left while 'B' turned right and travelled 2 m and 8 m respectively. Again 'B' turned left to travel 4 m followed by 5 m to his right to reach his office. 'A' turned right and travelled 12 m to reach his office. What is the shortest distance between the two offices ?",
+      "options": [
+        { "label": "A", "text": "15 m" },
+        { "label": "B", "text": "17 m" },
+        { "label": "C", "text": "19 m" },
+        { "label": "D", "text": "20 m" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Blood Relations and Directions",
+      "subtopic": "Directions and Distances",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 58,
+      "stem": "Consider two statements S1 and S2 followed by a question :\nS1 : \\(p\\) and \\(q\\) both are prime numbers.\nS2 : \\(p + q\\) is an odd integer.\nQuestion : Is \\(pq\\) an odd integer?\nWhich one of the following is correct ?",
+      "options": [
+        { "label": "A", "text": "S1 alone is sufficient to answer the question" },
+        { "label": "B", "text": "S2 alone is sufficient to answer the question" },
+        { "label": "C", "text": "Both S1 and S2 taken together are not sufficient to answer the question" },
+        { "label": "D", "text": "Both S1 and S2 are necessary to answer the question" }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Sufficiency",
+      "subtopic": "Two-Statement Data Sufficiency",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 59,
+      "stem": "Which year has the same calendar as that of 2009 ?",
+      "options": [
+        { "label": "A", "text": "2018" },
+        { "label": "B", "text": "2017" },
+        { "label": "C", "text": "2016" },
+        { "label": "D", "text": "2015" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Clocks and Calendars",
+      "subtopic": "Calendars and Day Calculation",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 60,
+      "stem": "Number 136 is added to 5B7 and the sum obtained is 7A3, where A and B are integers. It is given that 7A3 is exactly divisible by 3. The only possible value of B is",
+      "options": [
+        { "label": "A", "text": "2" },
+        { "label": "B", "text": "5" },
+        { "label": "C", "text": "7" },
+        { "label": "D", "text": "8" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 61,
+      "context": "India's economic footprint, given its population, still remains small compared to the US, the European Union or China. It has much to learn from other economies, yet must implement solutions that fit its unique circumstances. India especially needs an effective long-term regulatory system based on collaboration rather than the current top-down approach. Regulations seek desirable outcomes yet are repeatedly used as political tools to push one agenda or another. Often, regulations fail to consider impacts on jobs and economic growth — or less restrictive alternatives. Regulations may be used to protect local markets at the expense of more widely shared prosperity in the future. Additionally, regulations inevitably result in numerous unintended consequences. In today's hyper competitive global economy, regulations need to be viewed as \"weapons\" that seek cost-justified social and environmental benefits while improving the economic well-being of most citizens.",
+      "stem": "Which one of the following is the most logical, rational and crucial inference that can be derived from the above passage ?",
+      "options": [
+        { "label": "A", "text": "A better regulatory system will help India achieve the size of economy appropriate to its population." },
+        { "label": "B", "text": "In a competitive global economy, India must use regulations strategically." },
+        { "label": "C", "text": "Regulations in India do not favour its integration with today's hyper competitive global economy." },
+        { "label": "D", "text": "Job creation and economic growth should be dominant considerations in developing India's regulatory system." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 62,
+      "context": "India's economic footprint, given its population, still remains small compared to the US, the European Union or China. It has much to learn from other economies, yet must implement solutions that fit its unique circumstances. India especially needs an effective long-term regulatory system based on collaboration rather than the current top-down approach. Regulations seek desirable outcomes yet are repeatedly used as political tools to push one agenda or another. Often, regulations fail to consider impacts on jobs and economic growth — or less restrictive alternatives. Regulations may be used to protect local markets at the expense of more widely shared prosperity in the future. Additionally, regulations inevitably result in numerous unintended consequences. In today's hyper competitive global economy, regulations need to be viewed as \"weapons\" that seek cost-justified social and environmental benefits while improving the economic well-being of most citizens.",
+      "stem": "On the basis of the above passage, the following assumptions have been made :\nIn today's global economy,\n1. regulations are not effectively used to protect local markets.\n2. social and environmental concerns are generally ignored by the governments across the world while implementing the regulations.\nWhich of the above assumptions is/are valid ?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    }
+  ]
+}
