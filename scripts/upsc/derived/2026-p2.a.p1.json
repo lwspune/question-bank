@@ -1,0 +1,146 @@
+{
+  "paper": "2026-p2",
+  "packet": "p1",
+  "items": [
+    {
+      "number": 1,
+      "answer": "A",
+      "value": "Statement II alone settles it (every qualifying total contains a 5); Statement I alone does not, because 32 = 2+10+20 is non-prime and has no 5",
+      "confidence": "HIGH",
+      "reasoning": "Read as printed: X gets three coins whose denominations are three DIFFERENT values drawn from 1, 2, 5, 10, 20. The ten possible totals are 8, 13, 23, 16, 26, 31, 17, 27, 32, 35. Statement I (m not prime) leaves 8, 16, 26, 27, 32, 35 — of these 32 = 2+10+20 has no 5 while the rest do, so I alone cannot decide. Statement II (digit sum of m greater than 5) leaves 8, 16, 26, 17, 27, 35 (digit sums 8, 7, 8, 8, 9, 8), and every one of those six totals contains the 5-coin; the four excluded totals 13, 23, 31, 32 have digit sums 4, 5, 4, 5. So II alone answers YES and I alone does not, which is exactly option A."
+    },
+    {
+      "number": 2,
+      "answer": "D",
+      "value": "Neither statement alone nor both together fix which of x and y is bigger",
+      "confidence": "HIGH",
+      "reasoning": "Statement I alone fails: with x = 0.5, y = 0.3 satisfies 0.25 < 0.3 < 1 and gives x > y, while y = 0.9 satisfies it and gives y > x. Statement II alone fails: with x = 0.25 (so sqrt(x) = 0.5), y = 0.1 gives x > y and y = 0.4 gives y > x, both satisfying y < sqrt(x) < 1. Together the conditions reduce to x^2 < y < sqrt(x) with 0 < x < 1, and since x^2 < x < sqrt(x) on that interval, x itself lies strictly inside the permitted band for y — x = 0.25 with y = 0.1 and with y = 0.4 both satisfy BOTH statements yet give opposite answers. Hence the question cannot be answered even using both."
+    },
+    {
+      "number": 3,
+      "answer": "C",
+      "value": "Both statements together prove x is even; neither alone does",
+      "confidence": "HIGH",
+      "reasoning": "Statement I says x^2 y^2 = (xy)^2 is even, so xy is even, meaning x or y is even — x = 1, y = 2 satisfies it with x odd, so I alone is not enough. Statement II says 1 + x^2 + y^2 is odd, so x^2 + y^2 is even, so x and y have the same parity — both odd (x = y = 1) or both even (x = y = 2), so II alone is not enough. Combining them: if x and y were both odd, x^2 y^2 would be odd, contradicting I; so both must be even, and x is even. Both together suffice, neither alone does."
+    },
+    {
+      "number": 4,
+      "answer": "D",
+      "value": "Both statements only force every member of T to have the same parity; they never distinguish an all-odd T from an all-even T",
+      "confidence": "HIGH",
+      "reasoning": "Statement I says the sum of any two members of T is even, which happens exactly when all members share a parity — so T is entirely odd (all from X) or entirely even (all from Y), and I alone cannot say which. Statement II says (p-1)q is even for any p, q drawn from T; a mixed T fails this (take p even and q odd, then p-1 and q are both odd and the product is odd), but an all-odd T passes (p-1 is even) and an all-even T also passes (q is even), so II alone likewise only proves homogeneity. Since both statements deliver the identical conclusion, combining them adds nothing and the all-odd case is never ruled out. The question therefore cannot be answered even with both."
+    },
+    {
+      "number": 5,
+      "answer": "A",
+      "value": "Statement I alone forces x = 29, which is prime; Statement II alone leaves x as 3, 9, 29 or 87, which is not decisive",
+      "confidence": "HIGH",
+      "reasoning": "Statement I: 116 = 2^2 x 29, so its only perfect-square divisors are 1 and 4; since y > 1 we need y^2 = 4, giving y = 2 and x = 29, a prime — so I alone answers YES. Statement II: 261 = 3^2 x 29, so with both factors greater than 1 the pairs (x, z) are (3, 87), (9, 29), (29, 9) and (87, 3); x could be 3 or 29 (prime) or 9 or 87 (not prime), so II alone cannot decide. Exactly one statement works alone, which is option A."
+    },
+    {
+      "number": 6,
+      "answer": "A",
+      "value": "Only conclusions 1 and 2 are valid; 3 contradicts the passage's 'age-old techniques' and 4 overstates 'all regions of India'",
+      "confidence": "MED",
+      "reasoning": "Conclusion 1 restates the opening clause — seven meticulously crafted Sanskriti Angans representing India's diverse regions in Kalagram — and conclusion 2 restates that the temple-inspired thematic zones were treasure troves of regional artistry. Conclusion 3 fails on one word: the passage says the 230 artisans worked 'using age-old techniques', which is the opposite of 'contemporary craftsmanship'. Conclusion 4 fails on another: the passage names four states' art forms and speaks of 'India's diverse regions', not of all regions of India, and seven Angans cannot cover every region. Runner-up is C (1, 2 and 4), which would win if 'a mosaic of India's diverse regions, each represented by...' is read as claiming complete regional coverage rather than a selection; note also that any defensible option must contain 2, since the only option omitting it (D) pairs 1 with the clearly false 3."
+    },
+    {
+      "number": 7,
+      "answer": "A",
+      "value": "The claim that paintings from four States were mentioned is not correct — only two of the four States are credited with paintings",
+      "confidence": "HIGH",
+      "reasoning": "The passage lists Bengal's Pattachitra PAINTINGS, Assam's bamboo CRAFTS, Tamil Nadu's Thanjavur PAINTINGS and Madhya Pradesh's tribal SCULPTURE. Four states are named, but paintings come from only two of them, so option A misreads the list and is the statement that is not correct. B matches 'stepping through the grand portal was like entering another world', C matches 'these living galleries', and D matches 'These thematic zones, inspired by iconic temples', so all three are correct and cannot be the answer."
+    },
+    {
+      "number": 8,
+      "answer": "B",
+      "value": "P + Q = 7 exceeds A + C = 6, so P and Q together weigh more than A and C together",
+      "confidence": "HIGH",
+      "reasoning": "From A + B + C + D = 17 and A + C = 6 we get B + D = 11. Substituting S = Q and R = P into the other two equations gives P + 2Q + D = 15 and 2P + Q + B = 17; adding them yields 3(P + Q) + (B + D) = 32, so 3(P + Q) = 21 and P + Q = 7. Since A + C = 6, option B is true, while option A is false because B + D = 11 is greater than 7, not less. Options C and D cannot be settled: the equations only fix Q - P = B - D - 2, and B and D are individually undetermined."
+    },
+    {
+      "number": 9,
+      "answer": "D",
+      "value": "12 arrangements of QUEUE in which Q is immediately followed by U",
+      "confidence": "HIGH",
+      "reasoning": "QUEUE is the multiset {Q, U, U, E, E}. Requiring Q to be followed by U means gluing Q to one U as a single block QU; the remaining letters are U, E, E, so we arrange four objects of which the two E's are identical, giving 4!/2! = 12. There is no double counting, because in any qualifying word the U immediately after Q is the blocked one. (The 12 words are QUUEE, QUEUE, QUEEU, UQUEE, EQUUE, EQUEU, UEQUE, EUQUE, UEEQU, EUEQU, EEQUU, EEUQU.)"
+    },
+    {
+      "number": 10,
+      "answer": "D",
+      "value": "14 common marks — 199, 259, ... , 979, i.e. 199 + 60n for n = 0 to 13",
+      "confidence": "MED",
+      "reasoning": "X, Y and Z land on 199 + 4k, 199 + 6k and 199 + 5k respectively, so a mark where all three land must be 199 + 60n, since LCM(4, 6, 5) = 60. Between 195 and 1000 these marks are 199, 259, 319, 379, 439, 499, 559, 619, 679, 739, 799, 859, 919 and 979 — the next one, 1039, is past 1000 — giving 14. The lower limit is deliberately set at 195 rather than 199 or 200, which is what puts the 8 AM mark 199 inside the range, and the stem itself says they 'land' on 199. Runner-up is C (13), which wins if the 8 AM position is treated as a starting point rather than a landing and so excluded from the count."
+    },
+    {
+      "number": 11,
+      "answer": "D",
+      "value": "Conclusions 1, 2 and 3 are valid; 4 is contradicted because the passage lists exactly the skills corporates prize",
+      "confidence": "HIGH",
+      "reasoning": "Conclusion 1 follows from 'Sport is not just about winning medals' together with the call for 'a culture in which sport is seen as a way of life'. Conclusion 2 follows from the children who 'are inactive and rarely leave the house' — that is seclusion — and 'Sport can help tackle these problems'. Conclusion 3 is presupposed by the opening sentence, which concedes that sport does get people jobs through a sports quota while denying that this is all it is. Conclusion 4 is directly contradicted: the passage says one learns time management, teamwork and coordination from sport, which are standard corporate skills."
+    },
+    {
+      "number": 12,
+      "answer": "B",
+      "value": "Statements 2 and 3 are correct; statement 1 is not supported, since the passage reports parents complaining, not parents discouraging",
+      "confidence": "HIGH",
+      "reasoning": "Statement 2 is supported by 'From sport you can learn time management, fitness, teamwork, coordination, and so much more' — life skills. Statement 3 is supported by the closing line, which frames sport as a way of life and 'a path to building a healthier, happier society'. Statement 1 is the trap: the passage says only that 'Parents often say that their children are inactive and rarely leave the house', which reports parental concern and says nothing about parents failing to encourage sport."
+    },
+    {
+      "number": 13,
+      "answer": "D",
+      "value": "11 forward and 20 backward jumps, a difference of 9",
+      "confidence": "HIGH",
+      "reasoning": "Let f be forward jumps and b backward jumps, so f + b = 31 and 5f - 2b = 15. Substituting b = 31 - f gives 5f - 62 + 2f = 15, so 7f = 77 and f = 11, hence b = 20. Check: 11 x 5 = 55 forward and 20 x 2 = 40 backward, a net of 15 feet in 31 jumps. The difference is 20 - 11 = 9."
+    },
+    {
+      "number": 14,
+      "answer": "A",
+      "value": "Q crosses 5 persons — R, S, T, U and V — before reaching W",
+      "confidence": "HIGH",
+      "reasoning": "P and R both adjacent to Q gives P-Q-R; T and R both adjacent to S gives R-S-T, so the five link as P-Q-R-S-T, while U and W both adjacent to V gives U-V-W. Joining the two chains into the circle allows only T-U with W-P, or T-W with U-P; the second puts S and W two seats apart, so the opposite-chairs condition forces the cycle P-Q-R-S-T-U-V-W (S in seat 4 and W in seat 8 are indeed opposite). Since going clockwise from P one meets R before T, clockwise runs P to Q to R to S to T to U to V to W. Moving clockwise from Q one therefore passes R, S, T, U and V — five persons — before meeting W."
+    },
+    {
+      "number": 15,
+      "answer": "B",
+      "value": "4 patterns — the two blue strips must occupy diagonally or vertically separated corners, giving {bottom-left, top-left}, {bottom-left, top-right}, {bottom-right, top-left}, {bottom-right, top-right}",
+      "confidence": "MED",
+      "reasoning": "A 2.5 by 8 rectangle with two sides lying on two table edges must sit in a corner, and its 8-foot side can only run along a 10-foot edge (8 will not fit on a 6-foot edge), so there are exactly four possible positions, one per corner. Taking the top as [0,10] x [0,6], these are [0,8]x[0,2.5], [2,10]x[0,2.5], [0,8]x[3.5,6] and [2,10]x[3.5,6]. Of the six pairs, the two that share a horizontal band overlap on the middle stretch and so cannot be two separate 2.5 by 8 portions; the remaining four pairs are disjoint. Because the table is fixed to the ground, patterns related by rotation or reflection still count separately, so the answer is 4. Runner-up is C (6), which wins if the two overlapping placements are allowed and each is counted as a distinct observed pattern (each would show as a single 10 by 2.5 blue band); A (2) would win only if rotations and reflections were treated as the same pattern, which 'fixed to the ground' appears written to exclude."
+    },
+    {
+      "number": 16,
+      "answer": "A",
+      "value": "Only statement 1 is correct; double deflation is used by 'most countries', not universally — India itself does not use it",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 restates the passage's own example almost word for word: if oil prices fall while output prices do not and quantities remain the same, real value added should not change. Statement 2 gets the first half right but overreaches on the second: the passage says 'Most countries use a method called double deflation', and then names India as a country that instead uses the same deflator for inputs and outputs — so the practice is plainly not universally adopted by all economies."
+    },
+    {
+      "number": 17,
+      "answer": "A",
+      "value": "Only assumption 1 is valid; double deflation means deflating inputs and outputs SEPARATELY, not against a single input price",
+      "confidence": "HIGH",
+      "reasoning": "Assumption 1 is supported by the last sentence: using the same deflator for inputs and outputs makes it 'look as if the manufacturer had become more productive' when nothing real has changed, so the choice of deflation method can make a manufacturer appear to be doing better than it is. Assumption 2 inverts the passage's definition — 'double deflation' is precisely the method 'where input and output prices are deflated separately'; deflating both against a single price is the alternative the passage criticises."
+    },
+    {
+      "number": 18,
+      "answer": "D",
+      "value": "bb — the string is the 5-character block abbab repeated three times, so positions 7 and 8 are the block's 2nd and 3rd characters, b and b",
+      "confidence": "HIGH",
+      "reasoning": "The string has 15 characters, so a repeated pattern must have length 3 or 5 (length 1 cannot be 'formed by two characters a and b'). Length 3 fails: position 2 forces the block's 2nd character to be b, while position 11 forces the same character to be a. Length 5 works: positions 6 and 11 give the 1st character a, position 2 gives the 2nd b, position 13 gives the 3rd b, positions 4, 9 and 14 give the 4th a, and position 15 gives the 5th b, so the block is abbab. Repeating it gives abbab abbab abbab, which matches every known letter, and positions 7 and 8 are b and b."
+    },
+    {
+      "number": 19,
+      "answer": "B",
+      "value": "m = 111, since the right side carries 5^114 and 1000 already supplies 5^3",
+      "confidence": "HIGH",
+      "reasoning": "Factorise the right side: 75^25 = (3 x 5^2)^25 = 3^25 x 5^50, 25^32 = 5^64, and 32^75 = (2^5)^75 = 2^375, so the product is 2^375 x 5^114 x 3^25. The left side is 2^(m+3) x 5^(m+3) x n. If m + 3 were less than 114, n would retain both a factor 2 and a factor 5 and so be divisible by 10, which is forbidden; taking m + 3 = 114 leaves n = 2^261 x 3^25, which has no factor 5 and is therefore not divisible by 10. Hence m = 111."
+    },
+    {
+      "number": 20,
+      "answer": "C",
+      "value": "About 13.85 seconds — the train is 400 m long and the relative speed becomes 104 km/h",
+      "confidence": "HIGH",
+      "reasoning": "Travelling in the same direction the relative speed is 100 - 4 = 96 km/h, so in 15 seconds the train covers its own length: 96 x 15/3600 = 0.4 km, i.e. 400 metres. In the opposite direction the relative speed is 100 + 4 = 104 km/h, so the crossing time is 0.4/104 hours = 1440/104 = 13.846... seconds, which rounds to 13.85."
+    }
+  ]
+}
