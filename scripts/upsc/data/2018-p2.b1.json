@@ -1,0 +1,333 @@
+{
+  "band": "b1",
+  "pages": [2, 4, 6, 8, 10],
+  "bandReport": {
+    "numbersFound": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+    "itemsByPage": {
+      "2": [1, 2, 3, 4, 5, 6],
+      "4": [7, 8],
+      "6": [9, 10, 11, 12, 13],
+      "8": [14, 15, 16],
+      "10": [17, 18, 19, 20]
+    },
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "All five assigned pages (p02, p04, p06, p08, p10) were opened and read from the column crops; itemsByPage was filled in page by page as I went. Item 1 opens my band cleanly and item 20 finishes at the foot of p10-c2, so nothing runs into a neighbouring band. DECIMAL SEPARATOR: this booklet uses the RAISED MIDDLE DOT (U+00B7), not a full stop - '1·6 billion', '7·2 billion', '9·6 billion', '10·9 billion' in the Passage-1 text and '1·2 : 1', '1·4 : 1', '1·6 : 1' in the options of item 13. Preserved as U+00B7 throughout, matching the shipped 2022-p2 / 2023-p2 / 2025-p2 convention. Curly quotes (U+2018/U+2019/U+201C/U+201D) and the em dash (U+2014) are likewise preserved as printed. COLUMN CROPS: all five pages split cleanly - the detected gutter sits at x=826 on every page and c1+c2 (838+883=1721) overlaps the 1653-px page width by 68 px, so no strip is lost between columns. Reading order was independently confirmed by two mid-sentence carries across a page boundary: Passage-3 breaks at 'in today's culture there' at the foot of p04-c2 and resumes 'seems to be a widespread presumption' at the top of p06-c1, and the RTE passage breaks at 'Teacher' at the foot of p08-c2 and resumes 'accountability systems and processes' at the top of p10-c1. Both were rejoined without inserting or dropping a word. BLOCK STRUCTURE: items 1-6 are standalone with no directions block. Items 7-10 sit under one 'Directions for the following 4 (four) items' block that contains FOUR separate passages, one governing each item - Passage-1 -> item 7, Passage-2 -> item 8, Passage-3 -> item 9, Passage-4 -> item 10 - so each item carries only its own passage, never the whole block. Items 11-13 share ONE bar graph. Items 14-16 share ONE set of figures. Items 17-20 share ONE two-paragraph passage. Following the shipped p2 convention (2019-p2 puts 18 of its 26 distinct passages against a single item), a reading passage goes in 'context' even where it governs only one item; the four shared contexts (11-13, 14-16, 17-20) were each composed once and pasted byte-identically. Every statement list and every 'Select the correct answer using the code given below' line is kept in the STEM, so no two items can collide on content_hash. FIGURES: four items depend on artwork that cannot be embedded here, and each is flagged 'figure-required' - item 1 (the polyhedron whose triangles are to be counted), item 5 (the velocity-time graph), items 11-13 (the steel-imports bar chart) and items 14-16 (the four rotated solids). For the last two I read the values off the printed artwork at 2x-7x magnification and tabulated them inside the figure description, so the items stay answerable without the image; the arithmetic and the spatial reasoning are untouched, no answer is implied. Bar-chart heights (thousands of tons): Jan 30/40/32, Feb 31/37/34, Mar 33/36/32, Apr 34/36/31, May 36/34/32, Jun 38/34/32 for Coil/Sheet/Scrap. Coil for April, May and June sits a fraction above the gridline (about 34.2, 36.2 and 38.3); I have recorded the nearest whole values and note the imprecision here. For items 14-16 each solid shows three faces and the dot counts were confirmed one solid at a time at 6x-7x: (I) top line, front 1 dot, right 2 dots; (II) top line, front 2 dots, right 3 dots; (III) top line, front 3 dots, right 4 dots; (IV) top cross, front 2 dots, right 1 dot. The stroke on the top face is drawn slanting in (I) and (III) and horizontal in (II); that orientation is recorded in the figure description as an observation only. SUSPECTED PRINT DEFECT, transcribed as printed and NOT corrected: the RTE passage shared by items 17-20 reads 'from regularly attending and complementing elementary education' where the sense wants 'completing'. Verified on the page image; 'complementing' is what is printed, so that is what is stored. NUMERALS: on p04 the phrase 'in 2050 and 10·9 billion in 2100' sets '2100' with a visible gap ('2 100') because that line is heavily justified; adjacent '2050' on the same line has no gap, so I read the gap as kerning rather than content and stored '2100'. LAYOUT NOT REPRESENTABLE: item 3 prints its four rows of numbers as a column-addition, with a short horizontal rule under each entry of the THIRD row separating the three operand rows from the result row. A GFM table cannot express a mid-table rule, so the grid is stored as a four-column table with an EMPTY header row, which keeps all four printed rows as body rows in their printed order rather than promoting the first row to a header it never was. The position of the rule is recorded here instead. No item number is missing or repeated in 1-20, every item has exactly four options, none is blank, no two options within an item are identical, and no answer field is supplied anywhere."
+  },
+  "questions": [
+    {
+      "number": 1,
+      "stem": "Consider the following three-dimensional figure :\n\n[FIGURE: the plane drawing of a three-dimensional solid. A regular hexagonal outline encloses a further set of interior vertices, and the vertices are joined by many straight line segments — drawn solid where the edge lies on the near side of the solid and dashed where it is hidden behind it.]\n\nHow many triangles does the above figure have?",
+      "options": [
+        { "label": "A", "text": "18" },
+        { "label": "B", "text": "20" },
+        { "label": "C", "text": "22" },
+        { "label": "D", "text": "24" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Counting Figures and Objects",
+      "difficulty": "HARD",
+      "flags": ["figure-required"]
+    },
+    {
+      "number": 2,
+      "stem": "Consider the following sum :\n\n\\(\\bullet + 1\\bullet + 2\\bullet + \\bullet 3 + \\bullet 1 = 21\\bullet\\)\n\nIn the above sum, \\(\\bullet\\) stands for",
+      "options": [
+        { "label": "A", "text": "4" },
+        { "label": "B", "text": "5" },
+        { "label": "C", "text": "6" },
+        { "label": "D", "text": "8" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 3,
+      "stem": "Consider the following pattern of numbers :\n\n|  |  |  |  |\n|---|---|---|---|\n| 8 | 10 | 15 | 13 |\n| 6 | 5 | 7 | 4 |\n| 4 | 6 | 8 | 8 |\n| 6 | 11 | 16 | ? |\n\nWhat is the number at ? in the above pattern?",
+      "options": [
+        { "label": "A", "text": "17" },
+        { "label": "B", "text": "19" },
+        { "label": "C", "text": "21" },
+        { "label": "D", "text": "23" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Series and Analogy",
+      "subtopic": "Number Series",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 4,
+      "stem": "How many diagonals can be drawn by joining the vertices of an octagon?",
+      "options": [
+        { "label": "A", "text": "20" },
+        { "label": "B", "text": "24" },
+        { "label": "C", "text": "28" },
+        { "label": "D", "text": "64" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Permutations and Combinations",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 5,
+      "stem": "The figure drawn below gives the velocity graphs of two vehicles \\(A\\) and \\(B\\). The straight line \\(OKP\\) represents the velocity of vehicle \\(A\\) at any instant, whereas the horizontal straight line \\(CKD\\) represents the velocity of vehicle \\(B\\) at any instant. In the figure, \\(D\\) is the point where perpendicular from \\(P\\) meets the horizontal line \\(CKD\\) such that \\(PD = \\frac{1}{2} LD\\) :\n\n[FIGURE: velocity is plotted on the vertical axis, labelled \"Velocity\", and time on the horizontal axis, labelled \"Time\". From the origin \\(O\\) a straight line rises steadily to the right, passing through \\(K\\) and ending at \\(P\\) at the top right; it is labelled \"Vehicle A\". A horizontal straight line begins at \\(C\\) on the velocity axis and runs to the right, labelled \"Vehicle B\", passing through \\(K\\) and then through \\(D\\). The two lines cross at \\(K\\). A dashed vertical line drops from \\(P\\), meets the horizontal line at \\(D\\), and continues to the time axis at \\(L\\).]\n\nWhat is the ratio between the distances covered by vehicles \\(A\\) and \\(B\\) in the time interval \\(OL\\)?",
+      "options": [
+        { "label": "A", "text": "\\(1 : 2\\)" },
+        { "label": "B", "text": "\\(2 : 3\\)" },
+        { "label": "C", "text": "\\(3 : 4\\)" },
+        { "label": "D", "text": "\\(1 : 1\\)" }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Interpretation",
+      "subtopic": "Line Graphs",
+      "difficulty": "MODERATE",
+      "flags": ["figure-required"]
+    },
+    {
+      "number": 6,
+      "stem": "A train 200 metres long is moving at the rate of 40 kmph. In how many seconds will it cross a man standing near the railway line?",
+      "options": [
+        { "label": "A", "text": "12" },
+        { "label": "B", "text": "15" },
+        { "label": "C", "text": "16" },
+        { "label": "D", "text": "18" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Time, Speed and Work",
+      "subtopic": "Trains, Boats and Streams",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 7,
+      "context": "Global population was around 1·6 billion in 1990—today it is around 7·2 billion and growing. Recent estimates on population growth predict a global population of 9·6 billion in 2050 and 10·9 billion in 2100. Unlike Europe and North America, where only three to four per cent of population is engaged in agriculture, around 47 per cent of India’s population is dependent upon agriculture. Even if India continues to do well in the service sector and the manufacturing sector picks up, it is expected that around 2030 when India overtakes China as the world’s most populous country, nearly 42 per cent of India’s population will still be predominantly dependent on agriculture.",
+      "stem": "Which of the following is the most logical and rational inference that can be made from the above passage?",
+      "options": [
+        { "label": "A", "text": "Prosperity of agriculture sector is of critical importance to India." },
+        { "label": "B", "text": "Indian economy greatly depends on its agriculture." },
+        { "label": "C", "text": "India should take strict measures to control its rapid population growth." },
+        { "label": "D", "text": "India’s farming communities should switch over to other occupations to improve their economic conditions." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 8,
+      "context": "Many pathogens that cause foodborne illnesses are unknown. Food contamination can occur at any stage from farm to plate. Since most cases of food poisoning go unreported, the true extent of global foodborne illnesses is unknown. Improvements in international monitoring have led to greater public awareness, yet the rapid globalization of food production increases consumers’ vulnerability by making food harder to regulate and trace. “We have the world on our plates”, says an official of WHO.",
+      "stem": "Which of the following is the most logical corollary to the above passage?",
+      "options": [
+        { "label": "A", "text": "With more options for food come more risks." },
+        { "label": "B", "text": "Food processing is the source of all foodborne illnesses." },
+        { "label": "C", "text": "We should depend on locally produced food only." },
+        { "label": "D", "text": "Globalization of food production should be curtailed." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 9,
+      "context": "I am a scientist, privileged to be somebody who tries to understand nature using the tools of science. But it is also clear that there are some really important questions that science cannot really answer, such as : Why is there something instead of nothing? Why are we here? In those domains, I have found that faith provides a better path to answers. I find it oddly anachronistic that in today’s culture there seems to be a widespread presumption that scientific and spiritual views are incompatible.",
+      "stem": "Which of the following is the most logical and rational inference that can be made from the above passage?",
+      "options": [
+        { "label": "A", "text": "It is the faith and not science that can finally solve all the problems of mankind." },
+        { "label": "B", "text": "Science and faith can be mutually complementary if their proper domains are understood." },
+        { "label": "C", "text": "There are some very fundamental questions which cannot be answered by either science or faith." },
+        { "label": "D", "text": "In today’s culture, scientific views are given more importance than spiritual views." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 10,
+      "context": "Though I have discarded much of past tradition and custom, and am anxious that India should rid herself of all shackles that bind and contain her and divide her people, and suppress vast numbers of them, and prevent the free development of the body and the spirit; though I seek all this, yet I do not wish to cut myself off from that past completely. I am proud of that great inheritance that has been and is, ours and I am conscious that I too, like all of us, am a link in that unbroken chain which goes back to the dawn of history in the immemorial past of India.",
+      "stem": "The author wants India to rid herself of certain past bonds because",
+      "options": [
+        { "label": "A", "text": "he is not able to see the relevance of the past" },
+        { "label": "B", "text": "there is not much to be proud of" },
+        { "label": "C", "text": "he is not interested in the history of India" },
+        { "label": "D", "text": "they obstruct her physical and spiritual growth" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 11,
+      "context": "The following three items are based on the graph given below which shows imports of three different types of steel over a period of six months of a year. Study the graph and answer the three items that follow.\n\n[FIGURE: a grouped vertical bar chart. The vertical axis is labelled \"Thousands of tons imported\" and runs from 20 to 44 in steps of 2. The horizontal axis carries six months — January, February, March, April, May, June — and each month has three bars, in the order Coil (plain outline), Sheet (vertical stripes) and Scrap (square grid). The bar heights read off the printed chart are:]\n\n| Month | Coil | Sheet | Scrap |\n|---|---|---|---|\n| January | 30 | 40 | 32 |\n| February | 31 | 37 | 34 |\n| March | 33 | 36 | 32 |\n| April | 34 | 36 | 31 |\n| May | 36 | 34 | 32 |\n| June | 38 | 34 | 32 |\n\nLegend as printed : Coil ($ 320)   Sheet ($ 256)   Scrap ($ 175)\n\nThe figures in the brackets indicate the average cost per ton over six months period.",
+      "stem": "By how much (measured in thousands of tons) did the import of sheet steel exceed the import of coil steel in the first three months of the year?",
+      "options": [
+        { "label": "A", "text": "11" },
+        { "label": "B", "text": "15" },
+        { "label": "C", "text": "19" },
+        { "label": "D", "text": "23" }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Interpretation",
+      "subtopic": "Bar and Column Charts",
+      "difficulty": "MODERATE",
+      "flags": ["figure-required"]
+    },
+    {
+      "number": 12,
+      "context": "The following three items are based on the graph given below which shows imports of three different types of steel over a period of six months of a year. Study the graph and answer the three items that follow.\n\n[FIGURE: a grouped vertical bar chart. The vertical axis is labelled \"Thousands of tons imported\" and runs from 20 to 44 in steps of 2. The horizontal axis carries six months — January, February, March, April, May, June — and each month has three bars, in the order Coil (plain outline), Sheet (vertical stripes) and Scrap (square grid). The bar heights read off the printed chart are:]\n\n| Month | Coil | Sheet | Scrap |\n|---|---|---|---|\n| January | 30 | 40 | 32 |\n| February | 31 | 37 | 34 |\n| March | 33 | 36 | 32 |\n| April | 34 | 36 | 31 |\n| May | 36 | 34 | 32 |\n| June | 38 | 34 | 32 |\n\nLegend as printed : Coil ($ 320)   Sheet ($ 256)   Scrap ($ 175)\n\nThe figures in the brackets indicate the average cost per ton over six months period.",
+      "stem": "What was the approximate total value (in $) of sheet steel imported over the six months period?",
+      "options": [
+        { "label": "A", "text": "45,555" },
+        { "label": "B", "text": "50,555" },
+        { "label": "C", "text": "55,550" },
+        { "label": "D", "text": "65,750" }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Interpretation",
+      "subtopic": "Bar and Column Charts",
+      "difficulty": "MODERATE",
+      "flags": ["figure-required"]
+    },
+    {
+      "number": 13,
+      "context": "The following three items are based on the graph given below which shows imports of three different types of steel over a period of six months of a year. Study the graph and answer the three items that follow.\n\n[FIGURE: a grouped vertical bar chart. The vertical axis is labelled \"Thousands of tons imported\" and runs from 20 to 44 in steps of 2. The horizontal axis carries six months — January, February, March, April, May, June — and each month has three bars, in the order Coil (plain outline), Sheet (vertical stripes) and Scrap (square grid). The bar heights read off the printed chart are:]\n\n| Month | Coil | Sheet | Scrap |\n|---|---|---|---|\n| January | 30 | 40 | 32 |\n| February | 31 | 37 | 34 |\n| March | 33 | 36 | 32 |\n| April | 34 | 36 | 31 |\n| May | 36 | 34 | 32 |\n| June | 38 | 34 | 32 |\n\nLegend as printed : Coil ($ 320)   Sheet ($ 256)   Scrap ($ 175)\n\nThe figures in the brackets indicate the average cost per ton over six months period.",
+      "stem": "What was the approximate ratio of sheet steel and scrap steel imports in the first three months of the year?",
+      "options": [
+        { "label": "A", "text": "\\(1 : 1\\)" },
+        { "label": "B", "text": "\\(1·2 : 1\\)" },
+        { "label": "C", "text": "\\(1·4 : 1\\)" },
+        { "label": "D", "text": "\\(1·6 : 1\\)" }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Interpretation",
+      "subtopic": "Bar and Column Charts",
+      "difficulty": "MODERATE",
+      "flags": ["figure-required"]
+    },
+    {
+      "number": 14,
+      "context": "Rotated positions of a single solid are shown below. The various faces of the solid are marked with different symbols like dots, cross and line. Answer the three items that follow the given figures.\n\n[FIGURE: four drawings of the same cuboid, labelled (I), (II), (III) and (IV), each drawn in isometric view so that three faces are visible — the top face, the front face and the right-hand side face. The symbols printed on the visible faces are:]\n\n| Position | Top face | Front face | Right side face |\n|---|---|---|---|\n| (I) | line | one dot | two dots |\n| (II) | line | two dots | three dots |\n| (III) | line | three dots | four dots |\n| (IV) | cross | two dots | one dot |\n\nThe line on the top face is drawn slanting in (I) and (III) and horizontal in (II).",
+      "stem": "What is the symbol on the face opposite to that containing a single dot?",
+      "options": [
+        { "label": "A", "text": "Four dots" },
+        { "label": "B", "text": "Three dots" },
+        { "label": "C", "text": "Two dots" },
+        { "label": "D", "text": "Cross" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Cubes, Dice and Spatial Reasoning",
+      "subtopic": "Dice and Spatial Visualisation",
+      "difficulty": "MODERATE",
+      "flags": ["figure-required"]
+    },
+    {
+      "number": 15,
+      "context": "Rotated positions of a single solid are shown below. The various faces of the solid are marked with different symbols like dots, cross and line. Answer the three items that follow the given figures.\n\n[FIGURE: four drawings of the same cuboid, labelled (I), (II), (III) and (IV), each drawn in isometric view so that three faces are visible — the top face, the front face and the right-hand side face. The symbols printed on the visible faces are:]\n\n| Position | Top face | Front face | Right side face |\n|---|---|---|---|\n| (I) | line | one dot | two dots |\n| (II) | line | two dots | three dots |\n| (III) | line | three dots | four dots |\n| (IV) | cross | two dots | one dot |\n\nThe line on the top face is drawn slanting in (I) and (III) and horizontal in (II).",
+      "stem": "What is the symbol on the face opposite to that containing two dots?",
+      "options": [
+        { "label": "A", "text": "Single dot" },
+        { "label": "B", "text": "Three dots" },
+        { "label": "C", "text": "Four dots" },
+        { "label": "D", "text": "Line" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Cubes, Dice and Spatial Reasoning",
+      "subtopic": "Dice and Spatial Visualisation",
+      "difficulty": "MODERATE",
+      "flags": ["figure-required"]
+    },
+    {
+      "number": 16,
+      "context": "Rotated positions of a single solid are shown below. The various faces of the solid are marked with different symbols like dots, cross and line. Answer the three items that follow the given figures.\n\n[FIGURE: four drawings of the same cuboid, labelled (I), (II), (III) and (IV), each drawn in isometric view so that three faces are visible — the top face, the front face and the right-hand side face. The symbols printed on the visible faces are:]\n\n| Position | Top face | Front face | Right side face |\n|---|---|---|---|\n| (I) | line | one dot | two dots |\n| (II) | line | two dots | three dots |\n| (III) | line | three dots | four dots |\n| (IV) | cross | two dots | one dot |\n\nThe line on the top face is drawn slanting in (I) and (III) and horizontal in (II).",
+      "stem": "What is the symbol on the face opposite to that containing the cross?",
+      "options": [
+        { "label": "A", "text": "Single dot" },
+        { "label": "B", "text": "Two dots" },
+        { "label": "C", "text": "Line" },
+        { "label": "D", "text": "Four dots" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Cubes, Dice and Spatial Reasoning",
+      "subtopic": "Dice and Spatial Visualisation",
+      "difficulty": "MODERATE",
+      "flags": ["figure-required"]
+    },
+    {
+      "number": 17,
+      "context": "It is no longer enough for us to talk about providing for universal access to education. Making available schooling facilities is an essential prerequisite, but is insufficient to ensure that all children attend school and participate in the learning process. The school may be there, but children may not attend or they may drop out after a few months. Through school and social mapping, we must address the entire gamut of social, economic, cultural and indeed linguistic and pedagogic issues, factors that prevent children from weaker sections and disadvantaged groups, as also girls, from regularly attending and complementing elementary education. The focus must be on the poorest and most vulnerable since these groups are the most disempowered and at the greatest risk of violation or denial of their right to education.\n\nThe right to education goes beyond free and compulsory education to include quality education for all. Quality is an integral part of the right to education. If the education process lacks quality, children are being denied their right. The Right of Children to Free and Compulsory Education Act lays down that the curriculum should provide for learning through activities, exploration and discovery. This places an obligation on us to change our perception of children as passive receivers of knowledge, and to move beyond the convention of using textbooks as the basis of examinations. The teaching-learning process must become stress-free; and a massive programme for curricular reform should be initiated to provide for a child-friendly learning system, that is more relevant and empowering. Teacher accountability systems and processes must ensure that children are learning, and that their right to learn in a child-friendly environment is not violated. Testing and assessment systems must be reexamined and redesigned to ensure that these do not force children to struggle between school and tuition centres, and bypass childhood.",
+      "stem": "According to the passage, which of the following is/are of paramount importance under the Right to Education?\n1. Sending of children to school by all parents\n2. Provision of adequate physical infrastructure in schools\n3. Curricular reforms for developing child-friendly learning system\nSelect the correct answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "1 and 2 only" },
+        { "label": "C", "text": "3 only" },
+        { "label": "D", "text": "None of the above" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Supporting and Contradicting Statements",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 18,
+      "context": "It is no longer enough for us to talk about providing for universal access to education. Making available schooling facilities is an essential prerequisite, but is insufficient to ensure that all children attend school and participate in the learning process. The school may be there, but children may not attend or they may drop out after a few months. Through school and social mapping, we must address the entire gamut of social, economic, cultural and indeed linguistic and pedagogic issues, factors that prevent children from weaker sections and disadvantaged groups, as also girls, from regularly attending and complementing elementary education. The focus must be on the poorest and most vulnerable since these groups are the most disempowered and at the greatest risk of violation or denial of their right to education.\n\nThe right to education goes beyond free and compulsory education to include quality education for all. Quality is an integral part of the right to education. If the education process lacks quality, children are being denied their right. The Right of Children to Free and Compulsory Education Act lays down that the curriculum should provide for learning through activities, exploration and discovery. This places an obligation on us to change our perception of children as passive receivers of knowledge, and to move beyond the convention of using textbooks as the basis of examinations. The teaching-learning process must become stress-free; and a massive programme for curricular reform should be initiated to provide for a child-friendly learning system, that is more relevant and empowering. Teacher accountability systems and processes must ensure that children are learning, and that their right to learn in a child-friendly environment is not violated. Testing and assessment systems must be reexamined and redesigned to ensure that these do not force children to struggle between school and tuition centres, and bypass childhood.",
+      "stem": "With reference to the above passage, the following assumptions have been made :\n1. The Right to Education guarantees teachers’ accountability for the learning process of children.\n2. The Right to Education guarantees 100% enrolment of children in the schools.\n3. The Right to Education intends to take full advantage of demographic dividend.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 and 3 only" },
+        { "label": "C", "text": "3 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 19,
+      "context": "It is no longer enough for us to talk about providing for universal access to education. Making available schooling facilities is an essential prerequisite, but is insufficient to ensure that all children attend school and participate in the learning process. The school may be there, but children may not attend or they may drop out after a few months. Through school and social mapping, we must address the entire gamut of social, economic, cultural and indeed linguistic and pedagogic issues, factors that prevent children from weaker sections and disadvantaged groups, as also girls, from regularly attending and complementing elementary education. The focus must be on the poorest and most vulnerable since these groups are the most disempowered and at the greatest risk of violation or denial of their right to education.\n\nThe right to education goes beyond free and compulsory education to include quality education for all. Quality is an integral part of the right to education. If the education process lacks quality, children are being denied their right. The Right of Children to Free and Compulsory Education Act lays down that the curriculum should provide for learning through activities, exploration and discovery. This places an obligation on us to change our perception of children as passive receivers of knowledge, and to move beyond the convention of using textbooks as the basis of examinations. The teaching-learning process must become stress-free; and a massive programme for curricular reform should be initiated to provide for a child-friendly learning system, that is more relevant and empowering. Teacher accountability systems and processes must ensure that children are learning, and that their right to learn in a child-friendly environment is not violated. Testing and assessment systems must be reexamined and redesigned to ensure that these do not force children to struggle between school and tuition centres, and bypass childhood.",
+      "stem": "According to the passage, which one of the following is critical in bringing quality in education?",
+      "options": [
+        { "label": "A", "text": "Ensuring regular attendance of children as well as teachers in school" },
+        { "label": "B", "text": "Giving pecuniary benefits to teachers to motivate them" },
+        { "label": "C", "text": "Understanding the socio-cultural background of children" },
+        { "label": "D", "text": "Inculcating learning through activities and discovery" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Supporting and Contradicting Statements",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 20,
+      "context": "It is no longer enough for us to talk about providing for universal access to education. Making available schooling facilities is an essential prerequisite, but is insufficient to ensure that all children attend school and participate in the learning process. The school may be there, but children may not attend or they may drop out after a few months. Through school and social mapping, we must address the entire gamut of social, economic, cultural and indeed linguistic and pedagogic issues, factors that prevent children from weaker sections and disadvantaged groups, as also girls, from regularly attending and complementing elementary education. The focus must be on the poorest and most vulnerable since these groups are the most disempowered and at the greatest risk of violation or denial of their right to education.\n\nThe right to education goes beyond free and compulsory education to include quality education for all. Quality is an integral part of the right to education. If the education process lacks quality, children are being denied their right. The Right of Children to Free and Compulsory Education Act lays down that the curriculum should provide for learning through activities, exploration and discovery. This places an obligation on us to change our perception of children as passive receivers of knowledge, and to move beyond the convention of using textbooks as the basis of examinations. The teaching-learning process must become stress-free; and a massive programme for curricular reform should be initiated to provide for a child-friendly learning system, that is more relevant and empowering. Teacher accountability systems and processes must ensure that children are learning, and that their right to learn in a child-friendly environment is not violated. Testing and assessment systems must be reexamined and redesigned to ensure that these do not force children to struggle between school and tuition centres, and bypass childhood.",
+      "stem": "What is the essential message in this passage?",
+      "options": [
+        { "label": "A", "text": "The Right to Education now is a Fundamental Right." },
+        { "label": "B", "text": "The Right to Education enables the children of poor and weaker sections of the society to attend schools." },
+        { "label": "C", "text": "The Right to Free and Compulsory Education should include quality education for all." },
+        { "label": "D", "text": "The Government as well as parents should ensure that all children attend schools." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "EASY",
+      "flags": []
+    }
+  ]
+}

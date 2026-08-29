@@ -1,0 +1,541 @@
+{
+  "band": "b-d",
+  "pages": [
+    32,
+    34,
+    36,
+    38,
+    40,
+    42
+  ],
+  "bandReport": {
+    "numbersFound": [
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80
+    ],
+    "itemsByPage": {
+      "32": [
+        65,
+        66
+      ],
+      "34": [
+        67,
+        68,
+        69,
+        70
+      ],
+      "36": [
+        71,
+        72
+      ],
+      "38": [
+        73,
+        74
+      ],
+      "40": [
+        75,
+        76,
+        77
+      ],
+      "42": [
+        78,
+        79,
+        80
+      ]
+    },
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Band d = printed pages 33, 35, 37, 39, 41, 43 (0-based render indices 32-42 even). Items 65-80; item 80 is the last item of the paper and is complete on p42, so the booklet's 80 items are reached exactly at the end of this band. p42's footer still prints '[ P.T.O.' but that leads to the Hindi mirror pages, not to more English content. Every page in the band carried items; no page was empty. COLUMN CROPS: all six pages have gutterFound=true in _render.json and all twelve crops are clean - no line cut down its middle, no item number lost from the head of c2. Each page was also opened as pNN.png to confirm what straddles the gutter. DECIMAL SEPARATOR: this booklet uses the RAISED MIDDLE DOT (U+00B7), not a full stop - verified at 4x zoom on item 69 ('12.5%' is set with the dot at mid-height, plainly higher than the baseline comma in the same line's '22,800') and independently on the axis labels of items 71 and 73 ('1.2', '7.50', '(+.25)') and on all 54 decimal cells of the item-74/75 table. Every decimal in this band is transcribed with U+00B7, matching the shipped 2022-p2 / 2023-p2 / 2025-p2 convention. FIGURE-BEARING ITEMS: seven of the sixteen items (65, 66, 67, 70, 71, 73, 76) cannot be answered from their text alone. Each carries an inline [FIGURE: ...] description and the 'figure-required' flag, following the convention already used by band b-a of this paper. Items 66 and 70 are the hard case - they are PURELY PICTORIAL, with no text in the stimulus and NO TEXT IN ANY OF THE FOUR OPTIONS, so the option texts here are figure descriptions I wrote rather than anything printed. They are described as literally as I could manage (shape, head symbol, number and type of legs / sector positions) and each option is prefixed [FIGURE: ...] so no reader mistakes them for printed wording. A maintainer wanting the real artwork should crop item 66's matrix from p32-c2 and item 70's from p34-c2. SHARED PASSAGES / SETS: three directions blocks fall in this band, and they nest differently. (1) 'Directions for the following 2 (two) items' on p38-c2 governs items 74 and 75 - the stimulus is a data TABLE, not prose, and it is carried in `context` as a GFM pipe table with its introductory paragraph, identically on both items. (2) 'Directions for the following 3 (three) items' on p42-c1 announces TWO passages over THREE items, and they split 1 + 2: Passage-1 (factory farming) governs item 78 ALONE - item 79's own 'Passage-2' header stands between item 78's options and it - while Passage-2 (the Pench/Panna tiger) governs items 79 and 80. Item 78 will therefore raise the expected lonely-context warning at merge; it is legitimate, not a lost sibling, and I placed it in `context` rather than the stem following the same-corpus precedent of 2020-p2.b5 (items 61, 64, 66) and 2024-p2.b3 (items 51, 52). Passage-2 SPANS THE GUTTER of p42: it begins under its header at the foot of c1 ('A male tiger was removed ... Many wildlife reserves exist') and continues at the head of c2 ('as islands of fragile habitat ... unmolested passage.'); the two halves were read from the column crops and the join was confirmed against p42.png. It is one continuous paragraph and is stored byte-identical on items 79 and 80 (same straight apostrophe in \"India's\", same spacing) so the set cannot silently split. GUTTER STRADDLES ELSEWHERE: item 71's statements 1 and 2 print at the foot of p36-c1 and statement 3, the code line and all four options at the head of p36-c2; item 76's stem and graph print in p40-c1 and its statements, code line and options in p40-c2. Both were assembled by reading c1 in full and then c2 in full, and both were checked against the whole-page image. OPTIONS PRINTED TWO-ACROSS on items 67, 68, 69 and 74 (two options per line, read left-to-right then down); every other item in the band prints them one per line. PRINTED ODDITY on item 77: the stem offers THREE numbered statements but options (a), (b) and (c) refer only to statements 1 and 2 - there is no option naming statement 3 except the blanket (d) 'Neither 1 nor 2 nor 3'. Transcribed exactly as printed and flagged on the item; it is the paper's asymmetry, not a transcription slip. BOLD ITALIC EMPHASIS: the booklet sets 'most logical and rational inferences' (item 71), 'most likely reason' (item 73), 'most logical and rational inference/inferences' (items 74, 76) and 'most rational and crucial message' (items 78, 79) in bold italic; transcribed as plain text, as elsewhere in this corpus. APOSTROPHES: the straight ASCII apostrophe is used throughout ('Lakshmi's', 'India's', 'world's'), matching the dominant convention in the existing band files. ANSWERS: the TRANSCRIPTION_BRIEF forbids an `answer` field and this file has none, so the blind derivation pass is unaffected. My dispatch brief separately asked me to solve each item, so the derivation is recorded in the non-standard `derivedAnswer` / `derivedConfidence` / `derivedNote` fields, exactly as band b-c of 2017-p1 already does. These are safe: `normalizeQuestions` passes unknown fields through untouched, and `dump-derive.ts` whitelists only number/stem/options/context when it builds a blind packet, so a derived letter here CANNOT reach a blind deriver. No key of any kind was consulted; no *.key.json and no keys PDF was opened. ***MERGE WILL NOT SEE THIS FILE AS NAMED.*** `loadBands` in merge.ts matches `^<paperId>\\.b\\d+\\.json$` - literally 'b' followed by DIGITS. This file is `2018-p2.b-d.json`, and 'b-d' does not match. THIS IS NOT HYPOTHETICAL: at the time I finished, data/ held FOUR band files for this paper under TWO naming schemes - `2018-p2.b1.json` (band b1, pages 2-10, items 1-20), `2018-p2.b-a.json` (band b-a, pages 2-10, items 1-6, its own notes say IN PROGRESS), `2018-p2.b-c.json` (band b-c, pages 22-30, items 44-64) and this file (band b-d, pages 32-42, items 65-80). The regex selects ONLY b1, so merge would run on 20 items and fail Gate 3 COVERAGE with 60 'missing Qn' lines - loud, but with a cause nothing in the output points at. A maintainer must either rename the letter-form files to b2/b3/b4... or widen the regex to `b[\\w-]+` BEFORE running merge. The three `2017-p1.b-*.json` files have the same problem. TWO FURTHER THINGS I CAN SEE BUT DO NOT OWN: items 21-43 (pages 12-20) are covered by no band file that existed when I finished, so a band is still outstanding; and b1 and b-a are assigned the SAME pages 2-10 and both start at item 1, so once b-a completes the two will be compared item-by-item by Gate 1 BAND AGREEMENT and any difference in reading will refuse the merge. Neither is mine to resolve. CONCURRENCY: I did not touch any file other than this one."
+  },
+  "questions": [
+    {
+      "number": 65,
+      "stem": "Average hourly earnings per year \\(E\\) of the workers in a firm are represented in figures \\(A\\) and \\(B\\) as follows :\n[FIGURE: two line graphs of the SAME five data points drawn on DIFFERENT vertical scales. Fig. A - vertical axis headed \\(E\\) and labelled \"Hourly earnings\", ruled at 20, 25, 30, 35, 40 with 20 sitting at the origin; horizontal axis labelled \"Years\", marked 2013, 14, 15, 16, 17 and headed \\(Y\\). Five small circles are plotted at (2013, 20), (14, 25), (15, 30), (16, 35), (17, 40) and joined by a single straight rising line. Fig. B - vertical axis headed \\(E\\) and labelled \"Hourly earnings\", ruled at 10, 20, 30, 40 with 0 at the origin; the same horizontal axis. The same five points are plotted and joined by a straight rising line, and each point is dropped to the horizontal axis by a vertical line. Because Fig. B's vertical axis starts at 0 and Fig. A's starts at 20, the line in Fig. A is drawn visibly steeper than the line in Fig. B although both carry identical values.]\nFrom the figures, it is observed that the",
+      "options": [
+        {
+          "label": "A",
+          "text": "values of \\(E\\) are different"
+        },
+        {
+          "label": "B",
+          "text": "ranges (i.e., the difference between the maximum and the minimum) of \\(E\\) are different"
+        },
+        {
+          "label": "C",
+          "text": "slopes of the graphs are same"
+        },
+        {
+          "label": "D",
+          "text": "rates of increase of \\(E\\) are different"
+        }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Interpretation",
+      "subtopic": "Line Graphs",
+      "difficulty": "MODERATE",
+      "flags": [
+        "figure-required"
+      ]
+    },
+    {
+      "number": 66,
+      "stem": "Consider the figures given below :\n[FIGURE: a boxed 3 x 3 matrix of nine line drawings, the ninth cell holding a question mark. Every drawing is one horizontal element carrying a head at its LEFT end and a row of legs hanging below it. The horizontal element is one of three kinds - a curve bowed DOWNWARD (concave up, like a shallow U), a STRAIGHT line, or a curve bowed UPWARD (an arch, concave down). The head is one of three kinds - a filled CIRCLE, a filled SQUARE, or an OPEN TRIANGLE pointing left. The legs are one of three kinds - TWO legs each bent/slanted at the foot, THREE plain vertical legs, or FOUR legs each ending in a forked V-shaped foot. Row 1: (concave-up curve, filled circle, two bent legs), (straight line, filled square, three plain legs), (arch, open triangle, four forked legs). Row 2: (straight line, filled square, four forked legs), (arch, open triangle, two bent legs), (concave-up curve, filled circle, three plain legs). Row 3: (arch, open triangle, three plain legs), (concave-up curve, filled circle, four forked legs), question mark.]\nTo fit the question mark, the correct answer is",
+      "options": [
+        {
+          "label": "A",
+          "text": "[FIGURE: a straight horizontal line with a filled SQUARE at its left end and TWO legs hanging below, each bent at the foot]"
+        },
+        {
+          "label": "B",
+          "text": "[FIGURE: a straight horizontal line with a filled CIRCLE at its left end and TWO legs hanging below, each bent at the foot]"
+        },
+        {
+          "label": "C",
+          "text": "[FIGURE: a straight horizontal line with an OPEN TRIANGLE pointing left at its left end and TWO legs hanging below, each ending in a forked V-shaped foot]"
+        },
+        {
+          "label": "D",
+          "text": "[FIGURE: a straight horizontal line with a filled CIRCLE at its RIGHT end and TWO legs hanging below, each bent at the foot]"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Series and Analogy",
+      "subtopic": "Figure Matrix and Pattern Completion",
+      "difficulty": "MODERATE",
+      "flags": [
+        "figure-required",
+        "PURELY PICTORIAL - the stimulus and all four options are drawings with no printed text; the option texts here are descriptions written by the transcriber, not printed wording",
+        "subtopic not in catalog.json - 'Figure Matrix and Pattern Completion' proposed under Logical Reasoning and Analytical Ability > Series and Analogy"
+      ]
+    },
+    {
+      "number": 67,
+      "stem": "Consider the following figures \\(A\\) and \\(B\\) :\n[FIGURE: Fig. A - a gridded line graph, vertical axis labelled \"Cost of production (₹ in lakhs)\" and ruled at 4, 5, 6, 7, 8; horizontal axis labelled \"No. of pieces manufactured\" and marked 1000, 2000, 3000. A straight line rises from 5 at the vertical axis and passes through 6 at 1000, 7 at 2000 and 8 at 3000. Fig. B - a gridded line graph, vertical axis labelled \"Selling price per piece (₹)\" and ruled at 300, 350, 400, 450, 500; horizontal axis labelled \"No. of pieces sold\" and marked 1000, 2000, 3000. A falling curve starts above 500 close to the vertical axis and passes through 400 at 1000, 350 at 2000 and 300 at 3000.]\nThe manufacturing cost and projected sales for a product are shown in the above figures \\(A\\) and \\(B\\) respectively. What is the minimum number of pieces that should be manufactured to avoid a loss?",
+      "options": [
+        {
+          "label": "A",
+          "text": "2000"
+        },
+        {
+          "label": "B",
+          "text": "2500"
+        },
+        {
+          "label": "C",
+          "text": "3000"
+        },
+        {
+          "label": "D",
+          "text": "3500"
+        }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Interpretation",
+      "subtopic": "Line Graphs",
+      "difficulty": "MODERATE",
+      "flags": [
+        "figure-required",
+        "options printed two-across; read left-to-right then down"
+      ]
+    },
+    {
+      "number": 68,
+      "stem": "A lift has the capacity of 18 adults or 30 children. How many children can board the lift with 12 adults?",
+      "options": [
+        {
+          "label": "A",
+          "text": "6"
+        },
+        {
+          "label": "B",
+          "text": "10"
+        },
+        {
+          "label": "C",
+          "text": "12"
+        },
+        {
+          "label": "D",
+          "text": "15"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Ratio and Proportion",
+      "difficulty": "EASY",
+      "flags": [
+        "options printed two-across; read left-to-right then down"
+      ]
+    },
+    {
+      "number": 69,
+      "stem": "A person bought a refrigerator worth ₹ 22,800 with 12·5% interest compounded yearly. At the end of first year he paid ₹ 8,650 and at the end of second year ₹ 9,125. How much will he have to pay at the end of third year to clear the debt?",
+      "options": [
+        {
+          "label": "A",
+          "text": "₹ 9,990"
+        },
+        {
+          "label": "B",
+          "text": "₹ 10,000"
+        },
+        {
+          "label": "C",
+          "text": "₹ 10,590"
+        },
+        {
+          "label": "D",
+          "text": "₹ 11,250"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Commercial Arithmetic",
+      "subtopic": "Simple and Compound Interest",
+      "difficulty": "MODERATE",
+      "flags": [
+        "options printed two-across; read left-to-right then down"
+      ]
+    },
+    {
+      "number": 70,
+      "stem": "Consider the following figures :\n[FIGURE: six circles labelled (I) to (VI), each divided into six equal sectors by three diameters - one horizontal and two slanting - so that the sectors are Top, Upper-right, Lower-right, Bottom, Lower-left and Upper-left. Each circle carries a small SQUARE in one sector and a small TRIANGLE in one sector. (I) square in the Top sector, triangle in the Lower-left sector. (II) square in the Upper-right sector, triangle in the Bottom sector. (III) square and triangle BOTH in the Lower-right sector, the square above the triangle. (IV) triangle in the Upper-right sector, square in the Bottom sector. (V) triangle in the Top sector, square in the Lower-left sector. (VI) triangle and square BOTH in the Upper-left sector, side by side.]\nIn the figures (I) to (VI) above, some parts are shown to change their positions in regular directions. Following the same sequence, which of the figures given below will appear at (VII) stage?",
+      "options": [
+        {
+          "label": "A",
+          "text": "[FIGURE: a circle in six sectors with the TRIANGLE in the Upper-left sector and the SQUARE in the Lower-right sector]"
+        },
+        {
+          "label": "B",
+          "text": "[FIGURE: a circle in six sectors with the SQUARE in the Top sector and the TRIANGLE in the Lower-left sector]"
+        },
+        {
+          "label": "C",
+          "text": "[FIGURE: a circle in six sectors with the SQUARE and the TRIANGLE side by side, both in the Bottom sector]"
+        },
+        {
+          "label": "D",
+          "text": "[FIGURE: a circle in six sectors with the TRIANGLE in the Top sector and the SQUARE in the Bottom sector]"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Series and Analogy",
+      "subtopic": "Figure Matrix and Pattern Completion",
+      "difficulty": "MODERATE",
+      "flags": [
+        "figure-required",
+        "PURELY PICTORIAL - the six stimulus figures and all four options are drawings with no printed text; the option texts here are descriptions written by the transcriber, not printed wording",
+        "subtopic not in catalog.json - 'Figure Matrix and Pattern Completion' proposed under Logical Reasoning and Analytical Ability > Series and Analogy"
+      ]
+    },
+    {
+      "number": 71,
+      "stem": "Consider the following graphs. The curves in the graphs indicate different age groups in the populations of two countries \\(A\\) and \\(B\\) over a period of few decades :\n[FIGURE: two line graphs, one headed \"Country A\" and one headed \"Country B\". Each has a vertical axis labelled \"Population (in millions)\" ruled 0, 0·2, 0·4, 0·6, 0·8, 1·0, 1·2 and a horizontal axis labelled \"Years\" marked 1950, 1970, 1990, 2010, 2030, 2050. Each carries three curves, keyed below the graph as a solid line for \"<15\", a dotted line for \"15-64\" and a dashed line for \"64+\". Country A: the <15 solid line starts near 0·2 in 1950, peaks near 0·33 about 1970 and declines gently to about 0·22 by 2050; the 15-64 dotted line starts near 0·35, climbs to a peak of about 1·0 around 2010 and falls back to about 0·88 by 2050; the 64+ dashed line starts near 0·05, rises slowly, crosses the <15 solid line at about 2030 and reaches about 0·33 by 2050. Country B: the <15 solid line starts near 0·12 in 1950, rises to a broad plateau of about 0·35 between 2010 and 2030 and eases to about 0·28 by 2050; the 15-64 dotted line starts near 0·22 and climbs steadily throughout to about 1·1 by 2050; the 64+ dashed line starts near 0·03 and rises slowly to about 0·27 by 2050, still below the solid line at 2050.]\nWith reference to the above graphs, which of the following are the most logical and rational inferences that can be made?\n1. Over the last two and a half decades, the dependency ratio for country \\(B\\) has decreased.\n2. By the end of next two and a half decades, the dependency ratio of country \\(A\\) will be much less than that of country \\(B\\).\n3. In the next two decades, the workforce relative to its total population will increase in country \\(B\\) as compared to country \\(A\\).\nSelect the correct answer using the code given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 and 2 only"
+        },
+        {
+          "label": "B",
+          "text": "2 and 3 only"
+        },
+        {
+          "label": "C",
+          "text": "1 and 3 only"
+        },
+        {
+          "label": "D",
+          "text": "1, 2 and 3"
+        }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Interpretation",
+      "subtopic": "Line Graphs",
+      "difficulty": "HARD",
+      "flags": [
+        "figure-required",
+        "gutter-straddle: statements 1 and 2 print at the foot of p36-c1 and statement 3, the code line and all four options at the head of p36-c2; assembled by reading p36-c1 in full, then p36-c2 in full"
+      ]
+    },
+    {
+      "number": 72,
+      "stem": "Lakshmi, her brother, her daughter and her son are badminton players. A game of doubles is about to begin :\n(i) Lakshmi's brother is directly across the net from her daughter.\n(ii) Her son is diagonally across the net from the worst player's sibling.\n(iii) The best player and the worst player are on the same side of the net.\nWho is the best player?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Her brother"
+        },
+        {
+          "label": "B",
+          "text": "Her daughter"
+        },
+        {
+          "label": "C",
+          "text": "Her son"
+        },
+        {
+          "label": "D",
+          "text": "Lakshmi"
+        }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Analytical Arrangements",
+      "subtopic": "Grouping and Selection",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 73,
+      "stem": "The graph given below indicates the changes in key policy rates made by the Central Bank several times in a year :\n[FIGURE: a line graph headed \"Key policy rates in %\", vertical axis ruled 3·00 to 7·50 in steps of 0·50, horizontal axis marked Jul 2, Jul 27, Sep 16, Nov 2, Dec 16 (grouped under 2010) and Jan 25, Mar 17, May 3, Jun 16 (grouped under 2011). Three curves are labelled on the plot. \"Repo Rate\" starts at 5·50 and climbs throughout, passing 7·25 at May 3 and ending at 7·50 (+·25) at Jun 16. \"Reverse Repo Rate\" starts at 4·00, climbs through a plateau near 5·35, passes 6·25 at May 3 and ends at 6·50 (+·25) at Jun 16. \"CRR\" starts at 6·00 and runs essentially flat across the whole period, marked 6·00 and 6·00 (0) at the right-hand end.]\nWhich one of the following can be the most likely reason for the Central Bank for such an action?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Encouraging foreign investment"
+        },
+        {
+          "label": "B",
+          "text": "Increasing the liquidity"
+        },
+        {
+          "label": "C",
+          "text": "Encouraging both public and private savings"
+        },
+        {
+          "label": "D",
+          "text": "Anti-inflationary stance"
+        }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Interpretation",
+      "subtopic": "Line Graphs",
+      "difficulty": "MODERATE",
+      "flags": [
+        "figure-required"
+      ]
+    },
+    {
+      "number": 74,
+      "context": "The following table gives the GDP growth rate and Tele-density data of different States of a country in a particular year. Study the table and answer the two items that follow.\n\n| States | Per capita income ($) | GDP growth rate (%) | Tele-density |\n|---|---|---|---|\n| State 1 | 704 | 9·52 | 70·27 |\n| State 2 | 419 | 5·31 | 35·88 |\n| State 3 | 254 | 10·83 | 50·07 |\n| State 4 | 545 | 9·78 | 5·94 |\n| State 5 | 891 | 10·8 | 76·12 |\n| State 6 | 1077 | 11·69 | 77·5 |\n| State 7 | 900 | 8·88 | 104·86 |\n| State 8 | 395 | 5·92 | 6 |\n| State 9 | 720 | 7·76 | 82·25 |\n| State 10 | 893 | 9·55 | 96·7 |\n| State 11 | 363 | 4·7 | 57·7 |\n| State 12 | 966 | 7·85 | 63·8 |\n| State 13 | 495 | 9·37 | 52·3 |\n| State 14 | 864 | 5·46 | 97·9 |\n| State 15 | 497 | 7·48 | 62·3 |\n| State 16 | 777 | 7·03 | 93·8 |\n| State 17 | 335 | 5·8 | 49·9 |\n| State 18 | 599 | 7·49 | 47·84 |",
+      "stem": "With reference to the above table, which of the following is/are the most logical and rational inference/inferences that can be made?\n1. Higher per capita income is generally associated with higher Tele-density.\n2. Higher GDP growth rate always ensures higher per capita income.\n3. Higher GDP growth rate does not necessarily ensure higher Tele-density.\nSelect the correct answer using the code given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 only"
+        },
+        {
+          "label": "B",
+          "text": "2 and 3"
+        },
+        {
+          "label": "C",
+          "text": "1 and 3"
+        },
+        {
+          "label": "D",
+          "text": "3 only"
+        }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Interpretation",
+      "subtopic": "Tables",
+      "difficulty": "MODERATE",
+      "flags": [
+        "options printed two-across; read left-to-right then down",
+        "shares a 2-item directions block with item 75; the table is the shared context"
+      ]
+    },
+    {
+      "number": 75,
+      "context": "The following table gives the GDP growth rate and Tele-density data of different States of a country in a particular year. Study the table and answer the two items that follow.\n\n| States | Per capita income ($) | GDP growth rate (%) | Tele-density |\n|---|---|---|---|\n| State 1 | 704 | 9·52 | 70·27 |\n| State 2 | 419 | 5·31 | 35·88 |\n| State 3 | 254 | 10·83 | 50·07 |\n| State 4 | 545 | 9·78 | 5·94 |\n| State 5 | 891 | 10·8 | 76·12 |\n| State 6 | 1077 | 11·69 | 77·5 |\n| State 7 | 900 | 8·88 | 104·86 |\n| State 8 | 395 | 5·92 | 6 |\n| State 9 | 720 | 7·76 | 82·25 |\n| State 10 | 893 | 9·55 | 96·7 |\n| State 11 | 363 | 4·7 | 57·7 |\n| State 12 | 966 | 7·85 | 63·8 |\n| State 13 | 495 | 9·37 | 52·3 |\n| State 14 | 864 | 5·46 | 97·9 |\n| State 15 | 497 | 7·48 | 62·3 |\n| State 16 | 777 | 7·03 | 93·8 |\n| State 17 | 335 | 5·8 | 49·9 |\n| State 18 | 599 | 7·49 | 47·84 |",
+      "stem": "With reference to the above table, the following assumptions have been made :\n1. Nowadays, prosperity of an already high performing State cannot be sustained without making further large investments in its telecom infrastructure.\n2. Nowadays, a very high Tele-density is the most essential condition for promoting the business and economic growth in a State.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 only"
+        },
+        {
+          "label": "B",
+          "text": "2 only"
+        },
+        {
+          "label": "C",
+          "text": "Both 1 and 2"
+        },
+        {
+          "label": "D",
+          "text": "Neither 1 nor 2"
+        }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Interpretation",
+      "subtopic": "Tables",
+      "difficulty": "MODERATE",
+      "flags": [
+        "shares a 2-item directions block with item 74; the table is the shared context"
+      ]
+    },
+    {
+      "number": 76,
+      "stem": "The following graph indicates the composition of our tax revenue for a period of two decades :\n[FIGURE: a line graph, vertical axis labelled \"Per cent of gross tax revenue\" and ruled 0 to 45 in steps of 5, horizontal axis labelled \"Years\" with the categories 1990-91, 1995-96, 2003-04, 2004-05, 2005-06, 2006-07, 2007-08, 2008-09, 2009-10 (Prov) and 2010-11 (BE). Five curves are keyed below the graph: a solid line for \"Excise\", a dash-dot line for \"Customs\", a dotted line for \"Corporate tax\", a dashed line for \"Personal income tax\" and a dash-dot-dot line for \"Service tax\". Excise falls from about 42·5 in 1990-91 to about 19·5 in 2010-11. Customs falls from about 36 to about 17·5, dropping steeply between 1995-96 and 2003-04. Corporate tax rises from about 9 to about 42, overtaking Excise around 2005-06 and finishing the highest of the five. Personal income tax rises from about 10 to about 19. Service tax begins at 0, stays near 0 until the mid-1990s and rises to about 10·5.]\nWith reference to the above graph, which of the following is/are the most logical and rational inference/inferences that can be made?\n1. During the given period, the revenue from Direct Taxes as percentage of gross tax revenue has increased while that of Indirect Taxes decreased.\n2. The trend in the revenue from Excise Duty demonstrates that the growth of manufacturing sector has been negative during the given period.\nSelect the correct answer using the code given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 only"
+        },
+        {
+          "label": "B",
+          "text": "2 only"
+        },
+        {
+          "label": "C",
+          "text": "Both 1 and 2"
+        },
+        {
+          "label": "D",
+          "text": "Neither 1 nor 2"
+        }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Interpretation",
+      "subtopic": "Line Graphs",
+      "difficulty": "MODERATE",
+      "flags": [
+        "figure-required",
+        "gutter-straddle: the stem and the graph print in p40-c1 and the two numbered statements, the code line and all four options at the head of p40-c2; assembled by reading p40-c1 in full, then p40-c2 in full"
+      ]
+    },
+    {
+      "number": 77,
+      "stem": "If \\(x - y = 8\\), then which of the following must be true?\n1. Both \\(x\\) and \\(y\\) must be positive for any value of \\(x\\) and \\(y\\).\n2. If \\(x\\) is positive, \\(y\\) must be negative for any value of \\(x\\) and \\(y\\).\n3. If \\(x\\) is negative, \\(y\\) must be positive for any value of \\(x\\) and \\(y\\).\nSelect the correct answer using the code given below.",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 only"
+        },
+        {
+          "label": "B",
+          "text": "2 only"
+        },
+        {
+          "label": "C",
+          "text": "Both 1 and 2"
+        },
+        {
+          "label": "D",
+          "text": "Neither 1 nor 2 nor 3"
+        }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Algebra and Equations",
+      "subtopic": "Linear and Quadratic Equations",
+      "difficulty": "EASY",
+      "flags": [
+        "printed-oddity: the stem carries THREE numbered statements but options (a), (b) and (c) name only statements 1 and 2 - no option names statement 3 except the blanket (d); transcribed verbatim as printed, not corrected"
+      ]
+    },
+    {
+      "number": 78,
+      "context": "The quest for cheap and plentiful meat has resulted in factory farms where more and more animals are squeezed into smaller lots in cruel and shocking conditions. Such practices have resulted in many of the world's health pandemics such as the avian flu. Worldwide, livestock are increasingly raised in cruel, cramped conditions, where animals spend their short lives under artificial light, pumped full of antibiotics and growth hormones, until the day they are slaughtered. Meat production is water-intensive. 15000 litres of water is needed for every kilogram of meat compared with 3400 litres for rice, 3300 litres for eggs and 255 litres for a kilogram of potatoes.",
+      "stem": "What is the most rational and crucial message given by the passage?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Mass production of meat through industrial farming is cheap and is suitable for providing protein nutrition to poor countries."
+        },
+        {
+          "label": "B",
+          "text": "Meat-producing industry violates the laws against cruelty to animals."
+        },
+        {
+          "label": "C",
+          "text": "Mass production of meat through industrial farming is undesirable and should be stopped immediately."
+        },
+        {
+          "label": "D",
+          "text": "Environmental cost of meat production is unsustainable when it is produced through industrial farming."
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "MODERATE",
+      "flags": [
+        "SINGLE-ITEM PASSAGE. Passage-1 of the 3-item directions block on p42 governs THIS ITEM ALONE - a fresh 'Passage-2' header stands between item 78's options and item 79. Placed in `context` rather than the stem following the same-corpus precedent of 2020-p2.b5 (items 61, 64, 66) and 2024-p2.b3 (items 51, 52). The lonely-context warning merge will raise is legitimate, not a lost sibling."
+      ]
+    },
+    {
+      "number": 79,
+      "context": "A male tiger was removed from Pench Tiger Reserve and was relocated in Panna National Park. Later, this tiger trekked toward his home 250 miles away. The trek of this solitary tiger highlights a crisis. Many wildlife reserves exist as islands of fragile habitat in a vast sea of humanity, yet tigers can range over a hundred miles, seeking prey, mates and territory. Nearly a third of India's tigers live outside tiger reserves, a situation that is dangerous for both human and animal. Prey and tigers can only disperse if there are recognized corridors of land between protected areas to allow unmolested passage.",
+      "stem": "Which of the following is the most rational and crucial message given by the passage?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The conflict between man and wildlife cannot be resolved, no matter what efforts we make."
+        },
+        {
+          "label": "B",
+          "text": "Safe wildlife corridors between protected areas is an essential aspect of conservation efforts."
+        },
+        {
+          "label": "C",
+          "text": "India needs to declare more protected areas and set up more tiger reserves."
+        },
+        {
+          "label": "D",
+          "text": "India's National Parks and Tiger Reserves need to be professionally managed."
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "EASY",
+      "flags": [
+        "Passage-2 of the 3-item directions block on p42; shared with item 80. The passage SPANS THE GUTTER - it opens under its header at the foot of p42-c1 and continues at the head of p42-c2 - and is stored byte-identical on both items."
+      ]
+    },
+    {
+      "number": 80,
+      "context": "A male tiger was removed from Pench Tiger Reserve and was relocated in Panna National Park. Later, this tiger trekked toward his home 250 miles away. The trek of this solitary tiger highlights a crisis. Many wildlife reserves exist as islands of fragile habitat in a vast sea of humanity, yet tigers can range over a hundred miles, seeking prey, mates and territory. Nearly a third of India's tigers live outside tiger reserves, a situation that is dangerous for both human and animal. Prey and tigers can only disperse if there are recognized corridors of land between protected areas to allow unmolested passage.",
+      "stem": "With reference to the above passage, the following assumptions have been made :\n1. The strategy of conservation of wildlife by relocating them from one protected area to another is not often successful.\n2. India does not have suitable legislation to save the tigers, and its conservation efforts have failed which forced the tigers to live outside protected areas.\nWhich of the above assumptions is/are valid?",
+      "options": [
+        {
+          "label": "A",
+          "text": "1 only"
+        },
+        {
+          "label": "B",
+          "text": "2 only"
+        },
+        {
+          "label": "C",
+          "text": "Both 1 and 2"
+        },
+        {
+          "label": "D",
+          "text": "Neither 1 nor 2"
+        }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "HARD",
+      "flags": [
+        "Passage-2 of the 3-item directions block on p42; shared with item 79. Context stored byte-identical to item 79's so the two form one set."
+      ]
+    }
+  ]
+}

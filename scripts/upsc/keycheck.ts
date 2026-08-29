@@ -26,7 +26,7 @@
  */
 import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { DERIVED, dataPath, pattern, requirePaper } from "./config";
+import { DERIVED, PROVISIONAL_KEYS, dataPath, pattern, requirePaper } from "./config";
 import {
   applyOfficialKey,
   compareToKey,
@@ -75,14 +75,27 @@ function main() {
   const mismatch = by("MISMATCH");
   const scored = match.length + mismatch.length;
 
-  console.log(`${paper.id}  Paper ${paper.paper}  official key, Series A\n`);
+  // Name WHICH kind of key. 2026 is scored against a PROVISIONAL key published
+  // before its objection window closed; printing "official key" for it would
+  // overstate the evidence in the one place a reader looks for the number.
+  const provisional = PROVISIONAL_KEYS.has(paper.id);
+  console.log(
+    `${paper.id}  Paper ${paper.paper}  ${provisional ? "PROVISIONAL" : "official"} key, Series A\n`
+  );
+  if (provisional) {
+    console.log(
+      `!! Measured against a PROVISIONAL key, not a final one — a weaker\n` +
+        `   measurement than every other paper in this corpus.\n`
+    );
+  }
   console.log(`  questions          ${pat.questions}`);
   console.log(`  dropped by UPSC    ${key.dropped.length}${key.dropped.length ? ` (Q${key.dropped.join(", Q")})` : ""}`);
   console.log(`  not derived        ${by("NOT_DERIVED").length}`);
   console.log(`  scored             ${scored}`);
   console.log(
     `\n  MATCH    ${String(match.length).padStart(3)}   ` +
-      `ACCURACY vs the official key: ${scored ? ((match.length / scored) * 100).toFixed(1) : "0.0"}%`
+      `ACCURACY vs the ${provisional ? "PROVISIONAL" : "official"} key: ` +
+      `${scored ? ((match.length / scored) * 100).toFixed(1) : "0.0"}%`
   );
   console.log(`  MISMATCH ${String(mismatch.length).padStart(3)}`);
 
@@ -123,7 +136,13 @@ function main() {
     JSON.stringify(
       {
         paper: paper.id,
-        source: "official UPSC answer key (Series A)",
+        // The answers file is a COMMITTED artifact and is the record of what
+        // these answers rest on. Calling a provisional key "official" here would
+        // put the overstatement in the durable place rather than the console.
+        source: provisional
+          ? "UPSC PROVISIONAL answer key (Series A), released 2026-05-27 before the objection window closed — NOT the final post-cycle key"
+          : "official UPSC answer key (Series A)",
+        provisionalKey: provisional || undefined,
         dropped: key.dropped,
         correctedFromKey: mismatch.map((r) => r.number),
         answers,

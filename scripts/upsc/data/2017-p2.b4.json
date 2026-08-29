@@ -1,0 +1,333 @@
+{
+  "band": "b-d",
+  "pages": [34, 36, 38, 40, 42, 44],
+  "bandReport": {
+    "numbersFound": [61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80],
+    "itemsByPage": {
+      "34": [61, 62],
+      "36": [63, 64],
+      "38": [65, 66, 67],
+      "40": [68, 69, 70, 71],
+      "42": [72, 73, 74, 75, 76],
+      "44": [77, 78, 79, 80]
+    },
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Band d = items 61-80 (20 items), all whole on my pages. Every assigned page was opened and every one carried items; no empty pages. Item 80 is the last item of the paper, and it is complete on p44 (the printed '[ P.T.O.' on p45 leads to the Hindi half / rough-work pages, not to more items). Page index 43 was correctly excluded as Hindi and was not opened.\n\nDECIMAL SEPARATOR: this booklet prints a RAISED MIDDLE DOT (U+00B7), not a full stop. Verified at 5x magnification on item 68 — the glyph sits at mid x-height, clearly above the baseline: '0·40', '0·50', '0·60 inch', '0·70 inch', '0·80 inch', '0·90 inch'. Preserved as U+00B7 throughout. Item 68 is the ONLY item in my band containing a decimal number, so I cannot speak to intra-paper consistency from this band alone — worth cross-checking against the other bands.\n\nPASSAGES / SETS in this band (5 sets, 8 standalone items):\n- 'Directions for the following 7 (seven) items' (p34 c1) opens a block of SEVEN separate passages, one per item, covering items 61-67. Passage-1 -> 61, Passage-2 -> 62, Passage-3 -> 63, Passage-4 -> 64, Passage-5 -> 65, Passage-6 -> 66, Passage-7 -> 67. Each passage governs exactly ONE item, so these are seven one-item contexts, not one seven-item set. Each passage is in that item's own `context`; the directions boilerplate itself is deliberately NOT pasted onto any item.\n- 'Directions for the following 3 (three) items' (p40 c1) — the seven-Lecturer puzzle (A-G, seven cities, seven subjects, 7 numbered clues) governs items 69, 70, 71. Shared `context`, written byte-identical across all three (same em dash, same numbered-clue line breaks).\n- 'Directions for the following 3 (three) items' (p42 c2) — the eight railway stations puzzle governs items 76, 77, 78. Shared `context`, byte-identical across all three. NOTE this set STRADDLES the Hindi gap: 76 is on p42 and 77-78 are on p44.\n- Standalone (no context): 68, 72, 73, 74, 75, 79, 80.\n\nCOLLISION CHECK (content_hash excludes context): items 61-64 share the byte-identical stem 'Which among the following is the most logical and rational inference that can be made from the above passage?'. Their OPTION SETS are all different, so the hashes differ and none is at risk of being dropped. No distinguishing text was parked in `context` for any item.\n\nSCAN ARTEFACTS (not print defects — do NOT 'restore' these as errata): at low resolution several 'e' glyphs read as 'c'. Passage-2 appears to read 'if pcr capita incomcs' and Passage-3 'less damagc'. Both were re-cropped and magnified 3x: the page plainly prints 'per capita incomes' and 'less damage'. Transcribed correctly.\n\nSUBTOPIC WARNING (soft, expected): items 76, 77, 78 use subtopic 'Route and Network Puzzles', which is NOT in catalog.json. The puzzle is a directed-graph connectivity/route-tracing problem — there is no matrix, no attribute distribution, no seating and no ranking, so every listed subtopic under 'Analytical Arrangements' would be affirmatively wrong rather than merely imprecise, and 'Directions and Distances' (under Blood Relations and Directions) means compass directions, not network routes. Proposed as a catalog extension under Logical Reasoning and Analytical Ability > Analytical Arrangements. subject and chapter are both copied exactly from the catalog, so this is a warning only.\n\nTYPOGRAPHY PRESERVED AS PRINTED: curly apostrophes/quotes in ‘Red/Dangerous’ (Passage-1), ‘Mitch’ (Passage-3), farmers’ / world’s / India’s; the em dash in 'different cities—Hyderabad'; the spaced ratio colons '4 : 3' and '3 : 2'; the rupee sign and its following space in '₹ 6,000' / '₹ 28,000'; and the space before the question mark in item 80 ('from 1 to 150 ?'), which is present on the page and absent from the other items in this band.\n\nCROP QUALITY: all six pages read cleanly from the c1/c2 column crops in c1-then-c2 order. p40-c2 and p42-c2 carry a narrow sliver of the neighbouring column's line-ends down the left edge (fragments such as 'e/e/o/it' and 'B,/nd/cs'), but no whole word or option is duplicated or lost and nothing is sliced mid-line, so no page needed to be re-read from the full-page image. p44 was additionally checked against the full page to confirm the column order and that nothing sits across the gutter. Faint mirrored 'SPACE FOR ROUGH WORK' show-through from the reverse of p44 is visible on both its crops; it is bleed-through, not content.\n\nNo defective questions, no duplicate option texts, no unreadable text, no skipped item numbers."
+  },
+  "questions": [
+    {
+      "number": 61,
+      "context": "An air quality index (AQI) is a way to combine measurements of multiple air pollutants into a single number or rating. This index is ideally kept constantly updated and available in different places. The AQI is most useful when lots of pollution data are being gathered and when pollution levels are normally, but not always, low. In such cases, if pollution levels spike for a few days, the public can quickly take preventive action (like staying indoors) in response to an air quality warning. Unfortunately, that is not urban India. Pollution levels in many large Indian cities are so high that they remain well above any health or regulatory standard for large part of the year. If our index stays in the ‘Red/Dangerous’ region day after day, there is not much any one can do, other than getting used to ignoring it.",
+      "stem": "Which among the following is the most logical and rational inference that can be made from the above passage?",
+      "options": [
+        { "label": "A", "text": "Our governments are not responsible enough to keep our cities pollution free." },
+        { "label": "B", "text": "There is absolutely no need for air quality indices in our country." },
+        { "label": "C", "text": "Air quality index is not helpful to the residents of many of our large cities." },
+        { "label": "D", "text": "In every city, public awareness about pollution problems should increase." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 62,
+      "context": "Productive jobs are vital for growth and a good job is the best form of inclusion. More than half of our population depends on agriculture, but the experience of other countries suggests that the number of people dependent on agriculture will have to shrink if per capita incomes in agriculture are to go up substantially. While industry is creating jobs, too many such jobs are low-productivity non-contractual jobs in the unorganized sector, offering low incomes, little protection, and no benefits. Service jobs are relatively of high productivity, but employment growth in services has been slow in recent years.",
+      "stem": "Which among the following is the most logical and rational inference that can be made from the above passage?",
+      "options": [
+        { "label": "A", "text": "We must create conditions for the faster growth of highly productive service jobs to ensure employment growth and inclusion." },
+        { "label": "B", "text": "We must shift the farm workers to the highly productive manufacturing and service sectors to ensure the economic growth and inclusion." },
+        { "label": "C", "text": "We must create conditions for the faster growth of productive jobs outside of agriculture even while improving the productivity of agriculture." },
+        { "label": "D", "text": "We must emphasize the cultivation of high-yielding hybrid varieties and genetically modified crops to increase the per capita income in agriculture." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 63,
+      "context": "A landscape-scale approach to land use can encourage greater biodiversity outside protected areas. During hurricane ‘Mitch’ in 1998, farms using ecoagricultural practices suffered 58 per cent, 70 per cent and 99 per cent less damage in Honduras, Nicaragua and Guatemala, respectively, than farms using conventional techniques. In Costa Rica, vegetative windbreaks and fencerows boosted farmers’ income from pasture and coffee while also increasing bird diversity. Bee pollination is more effective when agricultural fields are closer to natural or seminatural habitat, a finding that matters because 87 per cent of the world’s 107 leading crops depend on animal pollinators. In Costa Rica, Nicaragua and Colombia silvopastoral systems that integrate trees with pastureland are improving the sustainability of cattle production, and diversifying and increasing farmers’ income.",
+      "stem": "Which among the following is the most logical and rational inference that can be made from the above passage?",
+      "options": [
+        { "label": "A", "text": "Agricultural practices that enhance biodiversity can often increase farm output and reduce the vulnerability to disasters." },
+        { "label": "B", "text": "All the countries of the world should be encouraged to replace ecoagriculture with conventional agriculture." },
+        { "label": "C", "text": "Ecoagriculture should be permitted in protected areas without destroying the biodiversity there." },
+        { "label": "D", "text": "The yield of food crops will be very high if ecoagricultural practices are adopted to cultivate them." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 64,
+      "context": "The medium term challenge for Indian manufacturing is to move from lower to higher tech sectors, from lower to higher value-added sectors, and from lower to higher productivity sectors. Medium tech industries are primarily capital intensive and resource processing; and high tech industries are mainly capital and technology intensive. In order to push the share of manufacturing in overall GDP to the projected 25 per cent, Indian manufacturing needs to capture the global market in sectors showing a rising trend in demand. These sectors are largely high technology and capital intensive.",
+      "stem": "Which among the following is the most logical and rational inference that can be made from the above passage?",
+      "options": [
+        { "label": "A", "text": "India’s GDP displays high value-added and high productivity levels in medium tech and resource processing industries." },
+        { "label": "B", "text": "Promotion of capital and technology intensive manufacturing is not possible in India." },
+        { "label": "C", "text": "India should push up the public investments and encourage the private investments in research and development, technology upgradation and skill development." },
+        { "label": "D", "text": "India has already gained a great share in global markets in sectors showing a rising trend in demand." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 65,
+      "context": "Over the last decade, Indian agriculture has become more robust with record production of food grains and oilseeds. Increased procurement, consequently, has added huge stocks of food grains in the granaries. India is one of the world’s top producers of rice, wheat, milk, fruits and vegetables. India is still home to a quarter of all undernourished people in the world. On an average, almost half of the total expenditure of nearly half of the households is on food.",
+      "stem": "Which among the following is the most logical corollary to the above passage?",
+      "options": [
+        { "label": "A", "text": "Increasing the efficiency of farm-to-fork value chain is necessary to reduce the poverty and malnutrition." },
+        { "label": "B", "text": "Increasing the agricultural productivity will automatically eliminate the poverty and malnutrition in India." },
+        { "label": "C", "text": "India’s agricultural productivity is already great and it is not necessary to increase it further." },
+        { "label": "D", "text": "Allocation of more funds for social welfare and poverty alleviation programmes will ultimately eliminate the poverty and malnutrition in India." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 66,
+      "context": "The States are like pearls and the Centre is the thread which turns them into a necklace; if the thread snaps, the pearls are scattered.",
+      "stem": "Which one of the following views corroborates the above statement?",
+      "options": [
+        { "label": "A", "text": "A strong Centre and strong States make the federation strong." },
+        { "label": "B", "text": "A strong Centre is a binding force for national integrity." },
+        { "label": "C", "text": "A strong Centre is a hindrance to State autonomy." },
+        { "label": "D", "text": "State autonomy is a prerequisite for a federation." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Supporting and Contradicting Statements",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 67,
+      "context": "Really I think that the poorest he that is in England has a life to live, as the greatest he, and therefore truly, I think it is clear that every man that is to live under a government ought first by his own consent to put himself under the government, and I do think that the poorest man in England is not at all bound in a strict sense to that government that he has not had a voice to put himself under.",
+      "stem": "The above statement argues for",
+      "options": [
+        { "label": "A", "text": "distribution of wealth equally to all" },
+        { "label": "B", "text": "rule according to the consent of the governed" },
+        { "label": "C", "text": "rule of the poor" },
+        { "label": "D", "text": "expropriation of the rich" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 68,
+      "stem": "The average rainfall in a city for the first four days was recorded to be 0·40 inch. The rainfall on the last two days was in the ratio of 4 : 3. The average of six days was 0·50 inch. What was the rainfall on the fifth day?",
+      "options": [
+        { "label": "A", "text": "0·60 inch" },
+        { "label": "B", "text": "0·70 inch" },
+        { "label": "C", "text": "0·80 inch" },
+        { "label": "D", "text": "0·90 inch" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Average",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 69,
+      "context": "A, B, C, D, E, F and G are Lecturers from different cities—Hyderabad, Delhi, Shillong, Kanpur, Chennai, Mumbai and Srinagar (not necessarily in the same order) who participated in a conference. Each one of them is specialized in a different subject, viz., Economics, Commerce, History, Sociology, Geography, Mathematics and Statistics (not necessarily in the same order). Further\n1. Lecturer from Kanpur is specialized in Geography\n2. Lecturer D is from Shillong\n3. Lecturer C from Delhi is specialized in Sociology\n4. Lecturer B is specialized in neither History nor Mathematics\n5. Lecturer A who is specialized in Economics does not belong to Hyderabad\n6. Lecturer F who is specialized in Commerce belongs to Srinagar\n7. Lecturer G who is specialized in Statistics belongs to Chennai",
+      "stem": "Who is specialized in Geography?",
+      "options": [
+        { "label": "A", "text": "B" },
+        { "label": "B", "text": "D" },
+        { "label": "C", "text": "E" },
+        { "label": "D", "text": "Cannot be determined as data are inadequate" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Analytical Arrangements",
+      "subtopic": "Matrix and Distribution Puzzles",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 70,
+      "context": "A, B, C, D, E, F and G are Lecturers from different cities—Hyderabad, Delhi, Shillong, Kanpur, Chennai, Mumbai and Srinagar (not necessarily in the same order) who participated in a conference. Each one of them is specialized in a different subject, viz., Economics, Commerce, History, Sociology, Geography, Mathematics and Statistics (not necessarily in the same order). Further\n1. Lecturer from Kanpur is specialized in Geography\n2. Lecturer D is from Shillong\n3. Lecturer C from Delhi is specialized in Sociology\n4. Lecturer B is specialized in neither History nor Mathematics\n5. Lecturer A who is specialized in Economics does not belong to Hyderabad\n6. Lecturer F who is specialized in Commerce belongs to Srinagar\n7. Lecturer G who is specialized in Statistics belongs to Chennai",
+      "stem": "To which city does the Lecturer specialized in Economics belong?",
+      "options": [
+        { "label": "A", "text": "Hyderabad" },
+        { "label": "B", "text": "Mumbai" },
+        { "label": "C", "text": "Neither Hyderabad nor Mumbai" },
+        { "label": "D", "text": "Cannot be determined as data are inadequate" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Analytical Arrangements",
+      "subtopic": "Matrix and Distribution Puzzles",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 71,
+      "context": "A, B, C, D, E, F and G are Lecturers from different cities—Hyderabad, Delhi, Shillong, Kanpur, Chennai, Mumbai and Srinagar (not necessarily in the same order) who participated in a conference. Each one of them is specialized in a different subject, viz., Economics, Commerce, History, Sociology, Geography, Mathematics and Statistics (not necessarily in the same order). Further\n1. Lecturer from Kanpur is specialized in Geography\n2. Lecturer D is from Shillong\n3. Lecturer C from Delhi is specialized in Sociology\n4. Lecturer B is specialized in neither History nor Mathematics\n5. Lecturer A who is specialized in Economics does not belong to Hyderabad\n6. Lecturer F who is specialized in Commerce belongs to Srinagar\n7. Lecturer G who is specialized in Statistics belongs to Chennai",
+      "stem": "Who of the following belongs to Hyderabad?",
+      "options": [
+        { "label": "A", "text": "B" },
+        { "label": "B", "text": "E" },
+        { "label": "C", "text": "Neither B nor E" },
+        { "label": "D", "text": "Cannot be determined as data are inadequate" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Analytical Arrangements",
+      "subtopic": "Matrix and Distribution Puzzles",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 72,
+      "stem": "In a school, there are five teachers A, B, C, D and E. A and B teach Hindi and English. C and B teach English and Geography. D and A teach Mathematics and Hindi. E and B teach History and French. Who teaches maximum number of subjects?",
+      "options": [
+        { "label": "A", "text": "A" },
+        { "label": "B", "text": "B" },
+        { "label": "C", "text": "D" },
+        { "label": "D", "text": "E" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Analytical Arrangements",
+      "subtopic": "Matrix and Distribution Puzzles",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 73,
+      "stem": "A 2-digit number is reversed. The larger of the two numbers is divided by the smaller one. What is the largest possible remainder?",
+      "options": [
+        { "label": "A", "text": "9" },
+        { "label": "B", "text": "27" },
+        { "label": "C", "text": "36" },
+        { "label": "D", "text": "45" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Divisibility and Remainders",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 74,
+      "stem": "The monthly incomes of X and Y are in the ratio of 4 : 3 and their monthly expenses are in the ratio of 3 : 2. However, each saves ₹ 6,000 per month. What is their total monthly income?",
+      "options": [
+        { "label": "A", "text": "₹ 28,000" },
+        { "label": "B", "text": "₹ 42,000" },
+        { "label": "C", "text": "₹ 56,000" },
+        { "label": "D", "text": "₹ 84,000" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Ratio and Proportion",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 75,
+      "stem": "Two walls and a ceiling of a room meet at right angles at a point P. A fly is in the air 1 m from one wall, 8 m from the other wall and 9 m from the point P. How many meters is the fly from the ceiling?",
+      "options": [
+        { "label": "A", "text": "4" },
+        { "label": "B", "text": "6" },
+        { "label": "C", "text": "12" },
+        { "label": "D", "text": "15" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Mensuration and Geometry",
+      "subtopic": "Lines, Angles and Triangles",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 76,
+      "context": "Eight railway stations A, B, C, D, E, F, G and H are connected either by two-way passages or one-way passages. One-way passages are from C to A, E to G, B to F, D to H, G to C, E to C and H to G. Two-way passages are between A and E, G and B, F and D, and E and D.",
+      "stem": "While travelling from C to H, which one of the following stations must be passed through?",
+      "options": [
+        { "label": "A", "text": "G" },
+        { "label": "B", "text": "E" },
+        { "label": "C", "text": "D" },
+        { "label": "D", "text": "F" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Analytical Arrangements",
+      "subtopic": "Route and Network Puzzles",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 77,
+      "context": "Eight railway stations A, B, C, D, E, F, G and H are connected either by two-way passages or one-way passages. One-way passages are from C to A, E to G, B to F, D to H, G to C, E to C and H to G. Two-way passages are between A and E, G and B, F and D, and E and D.",
+      "stem": "In how many different ways can a train travel from F to A without passing through any station more than once?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "3" },
+        { "label": "D", "text": "4" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Analytical Arrangements",
+      "subtopic": "Route and Network Puzzles",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 78,
+      "context": "Eight railway stations A, B, C, D, E, F, G and H are connected either by two-way passages or one-way passages. One-way passages are from C to A, E to G, B to F, D to H, G to C, E to C and H to G. Two-way passages are between A and E, G and B, F and D, and E and D.",
+      "stem": "If the route between G and C is closed, which one of the following stations need not be passed through while travelling from H to C?",
+      "options": [
+        { "label": "A", "text": "E" },
+        { "label": "B", "text": "D" },
+        { "label": "C", "text": "A" },
+        { "label": "D", "text": "B" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Analytical Arrangements",
+      "subtopic": "Route and Network Puzzles",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 79,
+      "stem": "There are certain 2-digit numbers. The difference between the number and the one obtained on reversing it is always 27. How many such maximum 2-digit numbers are there?",
+      "options": [
+        { "label": "A", "text": "3" },
+        { "label": "B", "text": "4" },
+        { "label": "C", "text": "5" },
+        { "label": "D", "text": "None of the above" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 80,
+      "stem": "What is the total number of digits printed, if a book containing 150 pages is to be numbered from 1 to 150 ?",
+      "options": [
+        { "label": "A", "text": "262" },
+        { "label": "B", "text": "342" },
+        { "label": "C", "text": "360" },
+        { "label": "D", "text": "450" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Counting in a Number Sequence",
+      "difficulty": "MODERATE",
+      "flags": []
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "paper": "2026-p2",
+  "packet": "p2",
+  "items": [
+    {
+      "number": 21,
+      "answer": "B",
+      "value": "Only statement II is always correct; statement I fails on the part of the range below t = 1",
+      "confidence": "HIGH",
+      "reasoning": "Statement I uses f(t) = t + 1/t, which is decreasing on (1/3, 1) and increasing on (1, 2), so it is not monotonic on the given range: taking x = 0.4 and y = 0.5 gives f(x) = 2.9 and f(y) = 2.5, so x + 1/x < y + 1/y is false. Statement II uses g(t) = sqrt(1 + t^2)/t, which can be rewritten as sqrt(1/t^2 + 1); since 1/t^2 strictly decreases as t increases, g is strictly decreasing on the whole positive axis, so x < y forces g(y) < g(x), which is exactly statement II. Hence II always holds and I does not."
+    },
+    {
+      "number": 22,
+      "answer": "B",
+      "value": "5 measurements: 100 + 100 + 100 = 300, then take out 1 litre twice",
+      "confidence": "HIGH",
+      "reasoning": "If only pouring in were allowed, the minimum would be 100x2 + 25x2 + 6x8 = 298 in 12 measurements, and 12 is not among the options, so the intended reading permits measuring water back out as well. With signed measures, no combination of four cylinder-fulls from {1, 6, 25, 100} totals 298 (three 100s leave a shortfall of 2, which no single cylinder supplies, and two 100s leave 98, which no two cylinders make), so 4 is impossible. Five works: 100 + 100 + 100 - 1 - 1 = 298. The distractor 13 is the greedy addition 100x2 + 25x3 + 6x3 + 1x5."
+    },
+    {
+      "number": 23,
+      "answer": "B",
+      "value": "8 different ways",
+      "confidence": "HIGH",
+      "reasoning": "Let n be the number of 1 kg weights, with 8 <= n <= 11, and solve 2a + 5b + 10c = 20 - n in non-negative integers. For n = 8 (remainder 12): 2x6, 5+5+2, and 10+2, i.e. 3 ways. For n = 9 (remainder 11): only 5+2+2+2, i.e. 1 way. For n = 10 (remainder 10): 10, 5+5, and 2x5, i.e. 3 ways. For n = 11 (remainder 9): only 5+2+2, i.e. 1 way. The total is 3 + 1 + 3 + 1 = 8."
+    },
+    {
+      "number": 24,
+      "answer": "A",
+      "value": "16 is the value that cannot be reached; the fourth cut can never double an eight-piece cube",
+      "confidence": "HIGH",
+      "reasoning": "Three cuts leaving identical pieces give x3 = 4 (three parallel equally spaced cuts), 6 (two parallel cuts plus one perpendicular through the middle) or 8 (three mutually perpendicular central cuts). A fourth plane adds exactly as many pieces as it passes through, and a single plane can meet at most 6 of the 8 blocks of a 2x2x2 arrangement, so from x3 = 8 the ceiling is 14; independently, four planes can divide a convex solid into at most 15 regions. So 16 is unreachable. The other three are easy: 5 = 4 slabs plus a cut through one slab, 8 = 4 slabs plus a perpendicular cut through all four, and 12 = 6 identical blocks plus a horizontal cut through all six."
+    },
+    {
+      "number": 25,
+      "answer": "B",
+      "value": "y - x = 3",
+      "confidence": "HIGH",
+      "reasoning": "The first rectification raises one score from 0 to 100, adding 100 to the total; since the average rises by 4, the class size is 100/4 = 25. The second rectification lowers a score from the recorded 81 to the true 56, a fall of 25, which lowers the average by 25/25 = 1. The net change from the original average x is therefore +4 - 1 = +3, so y - x = 3."
+    },
+    {
+      "number": 26,
+      "answer": "B",
+      "value": "Only conclusion 2 is valid: the two viruses differ fundamentally in their impact and so should not be handled alike",
+      "confidence": "MED",
+      "reasoning": "Conclusion 1 opens by calling the two 'similar viruses with somewhat different epidemiology', which the passage flatly contradicts: it says they 'belong to two very different virus families with fundamentally different characteristics and epidemiology'. The rest of conclusion 1 (novelty and absence of prior exposure) is supported, but the statement as printed rests on a premise the passage denies, so it is not valid. Conclusion 2's first half is squarely supported - different severity of symptoms, non-overlapping affected populations, milder illness and no long-term symptoms for HMPV - and the practical corollary that they should not be dealt with alike is the point the passage is building towards. Runner-up is D (neither): D wins if the examiner treats 'should not therefore be dealt with in a similar manner' as a prescriptive leap, since the passage never discusses how either virus should be handled."
+    },
+    {
+      "number": 27,
+      "answer": "D",
+      "value": "None of the listed combinations reflects the writer's intent",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 fails because the passage proposes no methodology for analysis; it simply reports established facts. Statement 3 fails because remedies for HMPV are never mentioned - the passage discusses severity and seasonality, not treatment. Every printed option except D contains 1 or 3, so all of them are ruled out. Even statement 2 is only a partial fit, since the passage establishes epidemiological differences rather than similarities, and in any case no '2 only' option exists, which leaves D."
+    },
+    {
+      "number": 28,
+      "answer": "B",
+      "value": "Statements 1, 2 and 3 are valid inferences; 4 is contradicted by the passage",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 follows from HMPV being known 'for decades' and 'well-studied' while SARS-CoV-2 was 'truly novel' in 2019, so HMPV has the longer documentary record. Statement 2 follows from the different severity of symptoms and the affected population segments that 'do not fully overlap'. Statement 3 follows from the passage naming long-term effects specifically - differing severity 'particularly over the long term', with HMPV showing 'no long-term post-viral symptoms'. Statement 4 is directly refuted: the passage says strong seasonality is 'seen in HMPV, unlike SARS-CoV-2', so seasonality is a point of difference, not a common factor. Only option B contains exactly 1, 2 and 3."
+    },
+    {
+      "number": 29,
+      "answer": "C",
+      "value": "M - N = 23 - 10 = 13",
+      "confidence": "HIGH",
+      "reasoning": "The three variables take distinct values from {2, 3, 4, 5}. To maximise (x times y) + z, put the two largest into the product: 4 x 5 = 20, then take the largest value still available, 3, giving M = 23. To minimise it, put the two smallest into the product: 2 x 3 = 6, then take the smallest value still available, 4, giving N = 10. Hence M - N = 13."
+    },
+    {
+      "number": 30,
+      "answer": "B",
+      "value": "z = 1/5 (with x = 7 at that point)",
+      "confidence": "HIGH",
+      "reasoning": "From y proportional to x squared and x inversely proportional to z, write x = c/z and y = k x^2. The given data z = 7/25 with x = 5 gives 5 = 25c/7, so c = 7/5; and y = 50 with x = 5 gives k = 50/25 = 2. Therefore y = 2(7/5)^2 / z^2 = (98/25)/z^2. Setting y = 98 gives z^2 = 1/25, so z = 1/5. Check: z = 1/5 gives x = (7/5)/(1/5) = 7 and y = 2 x 49 = 98."
+    },
+    {
+      "number": 31,
+      "answer": "B",
+      "value": "Only assumption 2 is valid: affordable, local-language AI tools would extend AI solutions to more small farmers",
+      "confidence": "MED",
+      "reasoning": "Assumption 1 is not supported: the passage says AI tools in the US and Europe 'have started offering precision farming at scale', which is a statement about early adoption, not a claim that Western agricultural productivity has advanced because of AI-driven economies of scale. Assumption 2 is the unstated belief behind the passage's own recommendation to build Indian-language tools and affordable AgTech solutions for smallholders - the recommendation makes sense only if such tools would in fact reach more small farmers. Statement 3 is an accurate paraphrase of the passage's first two sentences, but an assumption is something taken for granted rather than stated, so an explicit premise does not qualify. Runner-up is D (2 and 3 only): D wins if 'assumption' is being used loosely to mean 'validly supported by the passage', because statement 3 is then plainly true."
+    },
+    {
+      "number": 32,
+      "answer": "A",
+      "value": "Statements 1 and 3 are the ones that are not correct",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 is not correct: the passage says only that AI penetration in India is at present limited to a small subset of tech-savvy farmers, and says nothing about those farmers driving future AgTech companies. Statement 3 is not correct: 'have started offering precision farming at scale' is a long way from 'have replaced traditional agricultural practices'. Statement 2 is correct, since the passage recommends disseminating AI-based advisory services through government programmes. Statement 4 is correct, since generative AI tools in the US and Europe are already 'integrating large datasets to provide real-time agronomic insights'. So the not-correct set is exactly {1, 3}."
+    },
+    {
+      "number": 33,
+      "answer": "D",
+      "value": "Neither conditional holds: when S is 3 T is 5, and when Q is 3 T is 2",
+      "confidence": "HIGH",
+      "reasoning": "P is 4 and R is 1, so Q, S and T occupy ranks 2, 3 and 5. Q is not 5, S is not 2 and T is not 3, which leaves exactly two arrangements: (R1, Q2, S3, P4, T5) and (R1, T2, Q3, P4, S5). In the only arrangement where S is 3, T is 5 and not 2, so statement I fails. In the only arrangement where Q is 3, T is 2 and not 5, so statement II fails. Both are false, giving D."
+    },
+    {
+      "number": 34,
+      "answer": "C",
+      "value": "Both are possible, and both can even hold in one and the same arrangement",
+      "confidence": "MED",
+      "reasoning": "Placing the rods side by side aligns the five positions, so 'matching' means occupying the same position, and the constraints are position(P1) = position(Q3), position(P4) equal to that of Q1 or Q2, and position(Q4) equal to that of P3 or P5, with Q3 and Q5 in adjacent positions. One arrangement satisfies everything and both propositions at once: rod one P2, P5, P1, P4, P3 and rod two Q1, Q5, Q3, Q2, Q4 in positions 1 to 5. Here P1 and Q3 both sit at position 3, P4 and Q2 both at position 4, Q4 and P3 both at position 5, Q3 and Q5 are adjacent at positions 3 and 2, Q3 is at the middle portion (statement I) and P2 is at an extreme portion (statement II). Runner-up is A (I only), which would win only if the paper intends some further restriction pinning P2 away from the ends - nothing in the printed stem supplies one."
+    },
+    {
+      "number": 35,
+      "answer": "B",
+      "value": "Statements I and III hold; II fails because F rides with A as well as D",
+      "confidence": "HIGH",
+      "reasoning": "'Only E travels with G' means G's car holds exactly G and E, so it cannot be X, which holds A plus two others. C is in Z; B is not in Y and cannot share A's car X, so B is in Z. Since Z already contains B and C, the two-person car {E, G} must be Y, leaving Z = {B, C} and X = {A, D, F}. Statement I is true, as the cars hold 3, 2 and 2. Statement II is false, because F travels with A as well as D, so D is not F's only companion. Statement III is true, because B's only companion is C."
+    },
+    {
+      "number": 36,
+      "answer": "A",
+      "value": "Only statement I is correct; Z correct does in fact force Y correct",
+      "confidence": "HIGH",
+      "reasoning": "Write the three rules as implications: not-X implies not-Z; not-Y implies W; W implies not-X. Taking contrapositives, X implies not-W, not-W implies Y, and Z implies X. Chaining the first two gives X implies Y, so statement I is correct. Chaining all three gives Z implies X implies Y, so if Z is correct then Y is necessarily correct, which makes statement II ('it is not necessary that Y is correct') false."
+    },
+    {
+      "number": 37,
+      "answer": "A",
+      "value": "They meet 35 times strictly between starting and stopping",
+      "confidence": "HIGH",
+      "reasoning": "Take the track as one unit and the speeds as 7 and 5 units per hour, so X's 7 rounds and Y's 5 rounds both finish at t = 1 hour, when Y turns round and doubles his speed to 10. X needs 21 rounds in all, so they stop at t = 3. In the first hour the gain is 7t - 5t, which is a whole number of laps at t = 0.5 and t = 1, giving 2 meetings (at t = 1 both are back at the start line, so that instant genuinely is a meeting). From t = 1 they close at 7 + 10 = 17 laps per hour from a common point, so meetings occur whenever 17t is an integer; over t in [1, 3] that is 17t = 17 to 51, and dropping t = 1 (already counted) and t = 3 (the stopping instant, excluded by 'before they finally stopped') leaves 33. Total 2 + 33 = 35. Counting the terminal coincidence too would give 36, which is not offered, confirming the exclusion."
+    },
+    {
+      "number": 38,
+      "answer": "B",
+      "value": "81 questions (33 correct, 48 wrong)",
+      "confidence": "HIGH",
+      "reasoning": "Let c be correct and w wrong, with every question attempted. The two schemes give 5c - 2w = 69 and 4c - w = 84. From the second, w = 4c - 84; substituting, 5c - 8c + 168 = 69, so 3c = 99 and c = 33, whence w = 132 - 84 = 48. The paper had 33 + 48 = 81 questions. Check: 165 - 96 = 69 and 132 - 48 = 84."
+    },
+    {
+      "number": 39,
+      "answer": "B",
+      "value": "Only conclusion 2 is valid: the 2021 amendment classifies by maximum, not minimum, sentence",
+      "confidence": "HIGH",
+      "reasoning": "Conclusion 1 misstates the passage. Transfer to the adult system is permitted for a heinous offence under the 2015 Act, an offence carrying a minimum punishment of seven years; the 'serious offence' category created by the 2021 amendment is precisely the one that activists say does not merit transfer. So it is not the serious offence that justifies transfer, and 'only' compounds the error. Conclusion 2 restates the amendment correctly: an offence with no minimum sentence but a maximum of seven years or more is now a serious offence, so the classifying criterion there is the maximum sentence rather than the minimum."
+    },
+    {
+      "number": 40,
+      "answer": "C",
+      "value": "Both statements are correct as printed in the passage",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 follows directly: a heinous offence is defined by a minimum punishment of seven years, and the passage says culpable homicide and causing death by negligence are not heinous precisely because they carry no prescribed minimum punishment - so an offence with no minimum cannot be heinous under the 2015 Act. Statement 2 is the amendment stated almost verbatim: the JJ Act as amended in 2021 categorises an offence with no minimum sentence but a maximum of seven years or more as a serious offence. Both hold, giving C."
+    }
+  ]
+}

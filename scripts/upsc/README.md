@@ -4,17 +4,73 @@ Scanned UPSC Civil Services (Preliminary) booklets (image PDFs, **no text layer*
 **NO ANSWER KEY**) → the bank, `question_kind='pyq'`, under a new **UPSC CSE
 (Prelims)** exam across **14 subjects** — nine for Paper I, five for Paper II.
 
-**Status: 4 of 22 papers committed PRIVATE — 359 questions. Nothing is PUBLIC.**
+**Status: 20 of 22 papers committed PRIVATE - 1,789 questions. Nothing is PUBLIC.**
+**Only 2016 remains** (both papers; no key URL located - see `fetch-keys.ts`).
 
-| paper | rows | regime | blind pass vs official key |
-|---|---|---|---|
-| 2025-p1 | 100 | key applied after the fact | 94.0% / 95.0% (two passes) |
-| 2025-p2 | 80 | key applied after the fact | 91.2% / 93.8% (two passes) |
-| 2021-p1 | 99 | key from the start | **93.9%** (HIGH 81/82) |
-| 2023-p2 | 80 | key from the start | **96.3%** (HIGH 63/64) |
+Every paper below was derived BLIND first and only then scored against the
+official UPSC key, so these are real accuracies against ground truth, not
+agreement rates. Re-measured by running `keycheck.ts` over each paper.
 
-All 359 stored answers verified against their official keys: **0 mismatches**.
-2021-p1 commits 99 rather than 100 because UPSC dropped its Q80.
+| | GS Paper I | | | CSAT Paper II | |
+|---|---|---|---|---|---|
+| **year** | **rows** | **vs key** | **HIGH** | **rows / vs key** | **HIGH** |
+| 2017 | 100 | 96.0% | 88/89 | 80 / 96.3% | 71/72 |
+| 2018 | 100 | **98.0%** | 91/91 | 80 / 95.0% | 70/72 |
+| 2019 | 100 | 97.0% | 91/92 | 80 / **97.5%** | 64/65 |
+| 2020 | 98 | 93.9% | 85/86 | 80 / 95.0% | 70/71 |
+| 2021 | 99 | 93.9% | 81/82 | 79 / 92.4% | 64/67 |
+| 2022 | 99 | 93.9% | 81/84 | 79 / 96.2% | 67/69 |
+| 2023 | 99 | 92.9% | 72/72 | 80 / 96.3% | 63/64 |
+| 2024 | 97 | 94.8% | 76/78 | 80 / 96.3% | 71/71 |
+| 2025 | 100 | 94.0% | 69/70 | 80 / 91.3% | 63/63 |
+| **2026** | **99** | **98.0%†** | **74/74** | **80 / 96.3%†** | 62/64 |
+
+† 2026 is scored against UPSC's **PROVISIONAL** key (released 2026-05-27, before
+its objection window closed), not the final post-cycle key every other row rests
+on. Every 2026 row carries that caveat in its own `pyq_note`; `PROVISIONAL_KEYS`
+in `config.ts` drives it, and says what to do when the final key appears.
+
+**Corpus-wide: 1,704 of 1,789 correct = 95.3%.** GS Paper I 95.26%, CSAT Paper II
+95.24% - the two paper types are, to within a fifth of a point, equally hard for
+a blind pass, which is not what the difference in their content would suggest.
+
+**The confidence flag is the usable product: HIGH ran 1,473/1,496 = 98.5%**, and
+in most papers every single error landed in MED. That is what makes the MED list
+a review queue worth working rather than a pile. It holds only because the brief
+forbids inflating the flag, and it is not free - see 2021-p2 below.
+
+**Two things the table does not show.**
+
+*A "recent papers are harder" story was proposed and then REFUTED - by 2026.*
+2018-p1 98.0% and 2019 97.0/97.5 against 92-94% for 2020-2023 looked like recent
+papers leaning harder on current affairs, where a blind pass has no anchor. Then
+**2026-p1 came in at 98.0%, tied for the corpus best, while being 33% Current
+Affairs - DOUBLE the previous maximum and 2.5x the ten-paper mean.** The
+prediction made from that share was for a below-average score; it was wrong.
+
+The explanation a deriver gave is the useful part: a Current-Affairs LABEL does
+not mean an item needs post-cutoff facts. Most are structurally overdetermined -
+one clearly-false statement eliminates three of four options, so the answer
+survives even when a secondary fact is shaky. **Subject label is a poor proxy for
+derivability**, and per-paper accuracy here has no explanation the data supports.
+
+*2021-p2 is where the confidence flag was weakest*: HIGH 64/67, against 71/71 and
+63/63 elsewhere. Its three HIGH misses were checked against the pages for a
+mis-slotted option (keycheck's second hypothesis) and are genuine calibration
+misses - e.g. Q16's stem is honestly ambiguous about whether a ball's final
+contact counts as a hit "before the ball stops bouncing", and both 5 and 6 are
+defensible. The deriver should have marked it MED.
+
+Rows are fewer than 100/80 where UPSC withdrew an item: 2020-p1 Q27+Q52,
+2021-p1 Q80, 2022-p1 Q61, 2022-p2 Q36, 2023-p1 Q34, 2024-p1 Q20+Q52+Q57.
+**2021-p2 is the exception and is NOT a withdrawal** - its Q39 carries a DUAL
+KEY ("C or D", struck in by hand on the official page, with a matching footnote),
+which the key format cannot express; see the note on its entry in `config.ts`.
+
+**2 papers remain**, both 2016, and they are blocked on EVIDENCE rather than
+effort: no key URL can be located (the answer-key index is JS-rendered, and
+systematic probing of the era's own filename pattern produced only 404s). See
+`fetch-keys.ts`.
 
 ## The corpus
 
