@@ -105,6 +105,29 @@ export const P2_ROOT = "C:\\Vilas\\LWS_Pune\\UPSC\\Paper-2";
  */
 export const KEY_ROOT = "C:\\Vilas\\LWS_Pune\\UPSC\\AnswerKeys";
 
+/**
+ * Papers whose key on disk is PROVISIONAL, not final.
+ *
+ * UPSC published the 2026 keys on 2026-05-27, three days after the exam, with an
+ * objection window that closed 2026-05-31 — the first time it has released a key
+ * before the cycle closed. Every OTHER key in this corpus is final and
+ * post-cycle, so an answer verified against one of these rests on WEAKER
+ * evidence than the rest of the bank, and that difference has to travel with the
+ * ROW rather than live only in a comment.
+ *
+ * Consumers: `commit.ts` stamps a `pyq_note` clause on every row of such a
+ * paper, and `keycheck.ts` labels its accuracy PROVISIONAL rather than official.
+ *
+ * WHEN UPSC PUBLISHES THE FINAL 2026 KEY: swap the URL in `fetch-keys.ts`,
+ * re-run keycheck, drop the paper from this set, and treat any answer that moves
+ * as a real correction — not a re-derivation.
+ *
+ * Deliberately HERE and not in `fetch-keys.ts`, which calls main() at module
+ * level: importing a constant out of that file runs the downloader as a side
+ * effect. That is not hypothetical — it happened on the first attempt.
+ */
+export const PROVISIONAL_KEYS = new Set<string>(["2026-p1", "2026-p2"]);
+
 /** Page index of Series A inside a key PDF. Our booklets are all Series A. */
 export const KEY_SERIES_A_PAGE = 0;
 

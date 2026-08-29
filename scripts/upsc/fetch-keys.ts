@@ -54,13 +54,15 @@
  *     (2015 is `CSP_15_GS_I_AKy.pdf`, confirmed live) produced only 404s across
  *     `CSP_16_GS_I_AKy`, `CSP_16_GS_Paper_I_AKy`, `CSP-16-GS-I-AKy`,
  *     `CSP_2016_GS_I_AKy` and the AnsKey-era forms. Needs a browser.
- *   2026-p1/p2 — a key EXISTS but is **PROVISIONAL**, released 2026-05-27, three
- *     days after the exam and with an objection window that closed 2026-05-31.
- *     That is a first for UPSC and it is a DIFFERENT KIND OF EVIDENCE from every
- *     other key here, all of which are final and post-cycle. Do not quietly mix
- *     one into a corpus whose whole claim is that its answers are key-verified —
- *     if 2026 is ingested on a provisional key, that fact belongs in the row
- *     provenance, and the final key should supersede it when the cycle closes.
+ *
+ * 2026 IS INGESTED ON A PROVISIONAL KEY (decision 2026-08-29). It was released
+ * 2026-05-27, three days after the exam, with an objection window that closed
+ * 2026-05-31 — a first for UPSC, and a DIFFERENT KIND OF EVIDENCE from every
+ * other key here, all of which are final and post-cycle. The condition attached
+ * to that decision is that the difference travels with the ROW: `PROVISIONAL_KEYS`
+ * below drives a `pyq_note` clause stamped by `commit.ts` on every 2026 row.
+ * When the final key appears, swap the URL, re-run keycheck, drop the paper from
+ * that set, and treat any answer that moves as a real correction.
  */
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, statSync, unlinkSync } from "node:fs";
@@ -114,7 +116,33 @@ export const KEY_URLS: Record<string, string> = {
   // That is why sibling symmetry found 2019-p2 and 2021-p2 but not this one.
   "2017-p1": "Anskey-CSP-17-GS-I.pdf",
   "2017-p2": "ANskey-CSP-17-GS-II.pdf",
+
+  // 2026 IS A PROVISIONAL KEY AND A DIFFERENT KIND OF EVIDENCE. See the header,
+  // and `PROVISIONAL_KEYS` below - nothing may commit against one of these
+  // without recording that fact in the row's own provenance.
+  //
+  // The separator after "ProvAnsKey" is an EN DASH (U+2013), not a hyphen, and
+  // it is written as an escape here so the source stays ASCII and the oddity
+  // cannot be silently "tidied" into a hyphen by an editor or a copy-paste. It
+  // is load-bearing: the hyphen form answers 404 with HTML. Both were probed.
+  //
+  // CORROBORATED ON A SECOND HOST, which is worth more than the magic-byte check
+  // for a key this corpus is going to rest 180 answers on. UPSC also serves it
+  // from the QPRep portal under a completely different filename —
+  //   https://upsconline.nic.in/ngrp/assets/PDF/Prov.%20Ans%20Key.%20%E2%80%93%20(GS-I)%20CS%20(P)%20Exam,%202026.pdf
+  // — and that download is BYTE-IDENTICAL to this one (sha256
+  // 3fa5d8e6d18a92b20dde87c87f18269981898da6687884cc7143fb47ad3740c1). Two
+  // independent UPSC hosts serving the same bytes is real provenance; a 200 with
+  // %PDF magic on one host is only evidence that a PDF came back.
+  "2026-p1": "ProvAnsKey–GS-I-CSP-Exam-2026-270526.pdf",
+  "2026-p2": "ProvAnsKey–GS-II-CSP-Exam-2026-270526.pdf",
 };
+
+// PROVISIONAL_KEYS lives in config.ts, NOT here. This file calls main() at module
+// level, so importing a constant out of it would RUN THE DOWNLOADER as a side
+// effect — which is exactly what happened when it was first put here: `keycheck
+// 2024-p1` started printing the key-fetch report. Shared constants belong in the
+// side-effect-free module.
 
 /**
  * Keys obtained from a MIRROR rather than upsc.gov.in, because the official URL
@@ -134,7 +162,11 @@ export const MIRROR_URLS: Record<string, string> = {
 };
 
 function download(remote: string, dest: string): { ok: boolean; note: string } {
-  const url = `https://www.upsc.gov.in/sites/default/files/${remote}`;
+  // encodeURI, because the 2026 provisional keys carry an EN DASH in the
+  // filename and the bare character does not survive the request. Every other
+  // filename here is plain ASCII that encodeURI leaves byte-identical, so this
+  // is a no-op for them — verified against the 16 pre-2026 entries.
+  const url = `https://www.upsc.gov.in/sites/default/files/${encodeURI(remote)}`;
   try {
     execFileSync(
       "curl",
