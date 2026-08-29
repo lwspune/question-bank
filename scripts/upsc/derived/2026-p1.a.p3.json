@@ -1,0 +1,146 @@
+{
+  "paper": "2026-p1",
+  "packet": "p3",
+  "items": [
+    {
+      "number": 41,
+      "answer": "C",
+      "value": "Genetic medicines correct or compensate for faulty genes and are delivered by engineered viral vectors and lipid nanoparticles, but they do not alter the entire DNA sequence",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 is the working definition of genetic medicine (gene therapy/gene silencing/gene editing) — it supplies a functional copy of, silences, or repairs a defective gene. Statement 2 is correct: the two dominant delivery platforms are engineered viruses (AAV, lentivirus, adenovirus) and lipid nanoparticles, the latter being the carrier used for mRNA therapeutics. Statement 3 is false — the whole point of these therapies is that they are targeted at a specific gene or transcript; nothing in clinical use rewrites the entire genome. False statement 3 eliminates B and D, and statement 2 being true rules out A, leaving 1 and 2 only."
+    },
+    {
+      "number": 42,
+      "answer": "B",
+      "value": "LLMs predict the next token by probability and are trained by optimisation that minimises prediction error, but their outputs are not unbiased",
+      "confidence": "HIGH",
+      "reasoning": "Statement 3 is plainly false: an LLM inherits the biases present in its training corpus, which is the standard caveat attached to these systems — that eliminates options C and D. Statement 2 is correct: training is gradient-based optimisation of a loss function that penalises prediction error. Statement 1 describes next-token prediction, which is how these models generate text. With 3 false and 2 true, and no '2 only' option available, B is the only remaining choice. (A pedantic reader may note that real decoding often samples rather than always taking the single highest-probability token, but that quibble cannot change the answer, since statement 2 alone already forces B over A.)"
+    },
+    {
+      "number": 43,
+      "answer": "C",
+      "value": "Stealth objects have a small radar cross-section with radar-absorbing coatings and can be detected at certain (low) frequencies; metamaterials are used to reduce, not increase, scattering",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 is the definition of stealth — shaping to deflect returns plus Radar Absorbing Material to soak up incident energy, together giving a very small radar cross-section. Statement 2 is correct: stealth shaping and coatings are optimised against the centimetric bands (S, C, X) used by fire-control radars, so long-wavelength VHF/UHF radars can still pick such targets up through resonance effects. Statement 3 is false and inverts the physics — metamaterials are applied to absorb or bend electromagnetic waves around an object so as to suppress scattering; increasing scattering would defeat stealth entirely. That eliminates B and D, and statement 2 being true gives 1 and 2 only."
+    },
+    {
+      "number": 44,
+      "answer": "B",
+      "value": "Black boxes record cockpit voice and flight data in crash-survivable stainless-steel or titanium memory units; their underwater beacon emits acoustic pings, not red light",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 is false: the Underwater Locator Beacon fitted to a flight recorder emits an ultrasonic acoustic 'ping' (nominally 37.5 kHz) when immersed, because light is absorbed within metres in seawater while sound carries for kilometres. Statement 2 is correct — 'black box' collectively denotes the Cockpit Voice Recorder and the Flight Data Recorder. Statement 3 is correct: the crash-survivable memory unit is armoured in stainless steel or titanium to withstand impact, fire and pressure. Once statement 1 falls, every option containing it (A, C, D) is out and B is forced."
+    },
+    {
+      "number": 45,
+      "answer": "B",
+      "value": "Green hydrogen is made by electrolysis of water using renewable electricity, and the National Green Hydrogen Mission targets abatement of nearly 50 MMT of annual greenhouse gas emissions by 2030; hydrogen from natural gas reforming with CCS is blue, not green",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 describes BLUE hydrogen — steam methane reforming of natural gas with the carbon dioxide captured and stored — so it is false, which removes options A and D. Statement 2 is the definition of green hydrogen: water electrolysis powered by renewable electricity, so the only carbon-free input is the renewable power. Statement 3 matches the stated targets of the National Green Hydrogen Mission (approved 2023), whose published goals include 5 MMT per annum of production capacity, about 125 GW of associated renewable capacity, and abatement of nearly 50 MMT of annual greenhouse gas emissions by 2030."
+    },
+    {
+      "number": 46,
+      "answer": "C",
+      "value": "IN-SPACe is the autonomous single-window agency for private space participation and Agnikul flew the world's first 3D-printed rocket engine; Skyroot has not developed liquid fuel for the GSLV",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 is correct: the Indian National Space Promotion and Authorisation Centre, set up under the Department of Space, is an autonomous body acting as the single-window agency to authorise and promote private participation in space activities. Statement 2 is correct: Agnikul Cosmos's Agnibaan SOrTeD sub-orbital flight in 2024 was the world's first flight powered by a single-piece 3D-printed semi-cryogenic engine. Statement 3 is false — Skyroot Aerospace builds its own Vikram series of launch vehicles (Vikram-S, a solid-propellant suborbital vehicle, being its first flight); the GSLV is an ISRO vehicle and its cryogenic/liquid stages are ISRO's work. That eliminates B and D, leaving 1 and 2 only."
+    },
+    {
+      "number": 47,
+      "answer": "B",
+      "value": "Drones within a swarm communicate with one another, and GPS spoofing is a common counter-swarm technique; the swarm's link to the command centre is not in the terahertz band",
+      "confidence": "MED",
+      "reasoning": "Statement 2 is definitional — a swarm is distinguished from a mere formation precisely by inter-drone communication that lets the group behave collectively. Statement 3 is correct: counter-UAS systems routinely use jamming and GPS spoofing, feeding false navigation signals so the drones are misdirected or forced down. Statement 1 is the pivot and I read it as false: terahertz links suffer severe atmospheric attenuation and have effective ranges of metres to tens of metres, so they cannot carry a link back to a command centre, which in practice uses RF/ISM bands, datalinks or satellite. RUNNER-UP: D (1, 2 and 3). D wins if the paper's source treated terahertz-band communication as a feature of drone swarms — it is an active 6G research theme for very-short-range intra-swarm links, and a source that blurred the intra-swarm link with the command link would make statement 1 read as true. The whole item turns on that one word 'command centre'."
+    },
+    {
+      "number": 48,
+      "answer": "B",
+      "value": "GenomeIndia is a DBT-funded Indian project to catalogue the genetic diversity of the Indian population; it is not part of the Human Genome Project",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 is false: GenomeIndia is an independent national initiative launched in 2020, whereas the international Human Genome Project was a separate effort completed in 2003; the two are unrelated programmes. Statement 2 is correct — the project is funded and coordinated by the Department of Biotechnology, Government of India, across a consortium of Indian institutions. Statement 3 is correct and is the project's stated purpose: to sequence thousands of genomes across India's diverse population groups and build a reference database of Indian genetic variation. Statement 1 being false removes A, C and D."
+    },
+    {
+      "number": 49,
+      "answer": "C",
+      "value": "Both are correct — the National Quantum Mission targets intermediate-scale quantum computers of 50–1000 physical qubits and is implemented through four Thematic Hubs in academic and national R&D institutions",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 matches the Mission's stated objective of developing intermediate-scale quantum computers with 50 to 1000 physical qubits over eight years, across platforms such as superconducting and photonic systems. Statement 2 is also correct: the Mission is delivered through four Thematic Hubs hosted in academic and national R&D institutes, covering quantum computation, quantum communication, quantum sensing and metrology, and quantum materials and devices. With both statements sound, the answer is 'Both 1 and 2'."
+    },
+    {
+      "number": 50,
+      "answer": "B",
+      "value": "Matsya-6000 is designed to carry three people and Samudrayaan is a project under the Deep Ocean Mission, which is run by the Ministry of Earth Sciences, not the Ministry of Ports, Shipping and Waterways",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 is false: the Deep Ocean Mission is a Ministry of Earth Sciences programme, implemented through bodies such as the National Institute of Ocean Technology; the Ministry of Ports, Shipping and Waterways handles maritime transport, not ocean science. Statement 2 is correct — the Matsya-6000 crewed submersible is designed to carry three persons to a depth of 6000 metres. Statement 3 is correct: Samudrayaan is the manned-submersible component of the Deep Ocean Mission. Once statement 1 falls, A, C and D are all eliminated."
+    },
+    {
+      "number": 51,
+      "answer": "C",
+      "value": "Accountability — Mr. X answered for the public interest by reporting the wrongdoing to the vigilance authority and halting the defective contract despite pressure",
+      "confidence": "HIGH",
+      "reasoning": "Accountability is the obligation of a public servant to answer for the use of public authority and resources, and to hold contractors answerable for performance. Mr. X did exactly that: he detected a quality compromise, reported it to the designated vigilance authority and stopped the contract, accepting responsibility for citizen welfare over vested interests. Esprit de corps (Fayol's team-spirit principle) would have pushed the opposite way, towards shielding colleagues and partners. Equity concerns fair and impartial treatment of people, which is not what the situation turns on. Delegation is about devolving authority downward and plays no part in these actions."
+    },
+    {
+      "number": 52,
+      "answer": "A",
+      "value": "Statements 1, 3 and 4 aid resolution — acknowledging cultural concerns first, creating a multi-stakeholder dialogue platform, and conducting a transparent independent ESIA; pressing ahead while dismissing the tribal community as a 'small group' would not",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 is sound mediation practice: where a group's objection is about sacred land and cultural identity, technical alternatives cannot be heard until that concern is first acknowledged, so acknowledgement is the entry point to negotiation. Statement 3 builds the joint forum in which tribal leaders, environmental experts and municipal representatives can hear one another, which is the standard route to de-escalation. Statement 4 replaces contested assertions with an independent, transparently shared evidence base that both sides can argue from. Statement 2 is the outlier and works against resolution — proceeding without delay while dismissing the objectors as 'a small group' whose sentiments are outweighed would ignore their rights, inflame the blockades and worsen the conflict the official is asked to resolve."
+    },
+    {
+      "number": 53,
+      "answer": "B",
+      "value": "Ms. X should propose a limited disclosure to an oversight committee while keeping the unproven information confidential from the public for now",
+      "confidence": "HIGH",
+      "reasoning": "The stem supplies the two facts that decide this: the material is confidential, and nothing has been legally proven. Statement 1 fails on both counts — publishing unproven allegations breaches the confidentiality under which she received them and can defame a contractor against whom nothing is established. Statement 2 fails on the second — recommending removal from the shortlist on the strength of unproven allegations is prejudgment without due process and would be an unfair, legally exposed procurement decision. Statement 3 threads the needle: it routes the information to a body competent to examine it, so the concern is neither buried at Mr. Y's instruction nor broadcast prematurely, and any action on the contractor then follows a proper inquiry rather than her own conclusion."
+    },
+    {
+      "number": 54,
+      "answer": "D",
+      "value": "Only Y is correct — Article 13 expressly defines 'law' to include custom or usage having the force of law, so X's refusal to accept custom is wrong",
+      "confidence": "HIGH",
+      "reasoning": "Article 13(3)(a) defines 'law' to include 'any Ordinance, order, bye-law, rule, regulation, notification, custom or usage having in the territory of India the force of law'. Custom or usage is therefore named in the text itself, so Y is right and X's refusal to be convinced is wrong. Option A is wrong because it endorses precisely that non-inclusion. Option B is wrong because it denies what the Article says. Option C fails because X's position, taken as a whole, includes rejecting custom — the very point on which he is not convinced — so both views cannot stand together. The items X listed are indeed within the definition, but his view is incomplete and incorrect on the disputed point, leaving only Y's view correct."
+    },
+    {
+      "number": 55,
+      "answer": "B",
+      "value": "None of the three statements is correct — Article 393 names the Constitution, Article 395 repeals the 1947 and 1935 Acts, and Article 394 fixes 26 January 1950 as the date of commencement",
+      "confidence": "HIGH",
+      "reasoning": "Each statement claims an absence that the text of the Constitution contradicts. Article 393 (Short title) provides that 'This Constitution may be called the Constitution of India', so statement 1 is wrong. Article 395 (Repeals) expressly repeals the Indian Independence Act, 1947 and the Government of India Act, 1935 together with all enactments amending or supplementing the latter, so statement 2 is wrong. Article 394 (Commencement) provides that the remaining provisions come into force 'on the twenty-sixth day of January, 1950, which day is referred to in this Constitution as the commencement of this Constitution', so statement 3 is wrong. All three being incorrect, the conclusion is that there is no correct statement."
+    },
+    {
+      "number": 56,
+      "answer": "B",
+      "value": "Only the Sugamya Bharat Abhiyan statement is correct — the RPwD Act was passed in 2016, not 2018, and the NDFDC is under the Ministry of Social Justice and Empowerment, not the Ministry of Corporate Affairs",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 is wrong on its date: the Rights of Persons with Disabilities Act was passed by Parliament in 2016 and brought into force in 2017. Its substance — reservation in education and employment, and duties of accessibility and non-discrimination — is accurately described, but the year is not, and a statement is judged as printed. Statement 2 is correct: the Accessible India Campaign (Sugamya Bharat Abhiyan) is built on exactly three verticals — the built environment, the transport system, and the information and communication technology ecosystem. Statement 3 is wrong on the ministry: the National Divyangjan Finance and Development Corporation functions under the Department of Empowerment of Persons with Disabilities in the Ministry of Social Justice and Empowerment; it is merely registered as a not-for-profit company under the Companies Act, which is not the same as being set up by the Ministry of Corporate Affairs."
+    },
+    {
+      "number": 57,
+      "answer": "A",
+      "value": "Two statements are correct — the income-tax exemption for certain tribes and the reservation of Panchayat seats for SC/ST women — while the tribal areas of Assam, Meghalaya, Tripura and Mizoram fall under the Sixth Schedule, not the Fifth",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 is wrong: administration of the tribal areas in Assam, Meghalaya, Tripura and Mizoram is governed by the Sixth Schedule through Autonomous District and Regional Councils; the Fifth Schedule covers Scheduled Areas and Scheduled Tribes in the other States. Statement 2 is correct — Section 10(26) of the Income-tax Act exempts members of notified Scheduled Tribes residing in specified areas from tax on income arising there. Statement 3 is correct — Article 243D reserves seats in Panchayats for the Scheduled Castes and Scheduled Tribes and requires that not less than one-third of those reserved seats go to women of those communities. Since the two correct statements are 2 and 3, the conclusion that fits is 'two correct statements, that include statement 2'; option B is excluded because it names statement 1, which is false."
+    },
+    {
+      "number": 58,
+      "answer": "C",
+      "value": "Only one statement is correct — that no supplementary question may be asked on an unstarred question; statements 1 and 2 reverse the definitions of starred and unstarred questions",
+      "confidence": "HIGH",
+      "reasoning": "The two categories are the other way round from what statements 1 and 2 assert. A starred question is one for which the Member desires an ORAL answer, distinguished by an asterisk, and supplementary questions may be asked on it. An unstarred question is one for which a WRITTEN answer is desired; the answer is deemed laid on the Table of the House. Statement 3 follows from that and is correct: because an unstarred question receives no oral reply on the floor, no supplementary question arises on it. With statements 1 and 2 both false and only statement 3 true, the correct conclusion is that there is only one correct statement."
+    },
+    {
+      "number": 59,
+      "answer": "D",
+      "value": "None of the four statements is correct — the Speaker appoints the Chairperson, twenty members come from the Lok Sabha and ten from the Rajya Sabha, no Minister at all may be a member, and the term is one year",
+      "confidence": "HIGH",
+      "reasoning": "Statement 1 is wrong: the Chairperson of this Committee is appointed by the Speaker of the Lok Sabha from among its members, not by the Chairman of the Rajya Sabha. Statement 2 reverses the composition — of the thirty members, twenty are elected by the Lok Sabha and ten by the Rajya Sabha. Statement 3 is wrong because the bar on Ministers is absolute; there is no exception for any Minister, and a member who is appointed a Minister ceases to be a member. Statement 4 is wrong on the term, which is one year, like the other financial and standing committees of this type, not two. All four failing, the answer is that there is no correct statement — and the alternatives confirm it, since option B rests on statement 2 and option C on statement 1, each of which is demonstrably reversed."
+    },
+    {
+      "number": 60,
+      "answer": "A",
+      "value": "All three are correct — Mission Sudarshan Chakra is aimed at integrated air defence, ballistic missile defence and offensive response, at rapid and precise indigenous capability reinforcing strategic autonomy, and at a nationwide protective shield extending to public and civilian sites by 2035",
+      "confidence": "MED",
+      "reasoning": "Statement 2 is safe: the Mission is presented as an indigenous, self-reliant system giving rapid and precise defensive response, which is squarely a strategic-autonomy argument. Statement 1 is also sound — the Mission was announced as a shield that does not merely intercept incoming aircraft and missiles but also enables a counter-strike, so air defence, ballistic missile defence and offensive capability are all within its scope. Statement 3 matches the announced 2035 horizon and the stated intent to extend protection beyond purely military installations to civilian and religious sites across the country. RUNNER-UP: B (1 and 2 only). B wins if 'all public places of India' is read as overstating what was announced — the announcement spoke of important establishments, religious places and civilian areas rather than literally every public place, and UPSC frequently falsifies a statement by exactly this kind of universal quantifier. I am reasoning here partly from a recalled 2025 announcement rather than from the stem's own logic, so this is a genuine MED and statement 3 is where a reviewer should look."
+    }
+  ]
+}
