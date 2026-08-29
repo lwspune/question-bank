@@ -1,0 +1,310 @@
+{
+  "band": "b3",
+  "pages": [18, 20, 22, 24],
+  "bandReport": {
+    "numbersFound": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52],
+    "itemsByPage": {
+      "18": [34, 35, 36, 37, 38, 39, 40],
+      "20": [41, 42],
+      "22": [43, 44, 45, 46, 47, 48, 49, 50],
+      "24": [51, 52]
+    },
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "PAGES. All four assigned pages were opened and read from their COLUMN crops (c1 then c2), with the whole-page image used only to confirm structure. Page index -> printed page number: p18 = 19, p20 = 21, p22 = 23, p24 = 25 (bilingual booklet; the odd indices are the Hindi mirror and are not mine). Every page carried items; no page in my band was empty. No column crop was sliced: on all four pages c1 ended cleanly at the gutter and c2 opened on its own item number, no line was cut down its middle and no fragment of the neighbouring column appeared in either crop. The only crop artefact is cosmetic — the centred footer page number bleeds into the right edge of each c1 crop (e.g. '19' on p18-c1) and the left edge of each c2 crop, because the footer spans the full page width; no body text is affected.\n\nTERRITORY I DO NOT OWN. Item 34 is the LAST item of a 'Directions for the following 4 (four) items' block that OPENS ON PAGE 16, which belongs to another band. I opened p16 and p16-c2 to read the passage that governs it. That block carries TWO passages: Passage-1 governs items 31-32 and Passage-2 governs items 33-34. Item 34 therefore carries Passage-2 only; Passage-1 is not on any item of mine. Its sibling item 33 sits on p16 and is another band's to report, so within THIS file that context is used by exactly one question. That is a band seam, not per-item material parked in context — but note that assignSetLabels groups on the passage string, so the two copies must agree byte-for-byte or the set will not form and the passage will render twice. I transcribed it from the p16-c2 crop at full resolution; it contains no apostrophes or quotation marks, which is the usual source of such a mismatch. VERIFIED after writing: band b2's file was already on disk, and its item 33 context compares BYTE-IDENTICAL to my item 34 context, so the 33/34 set will form. If b2 is ever re-transcribed, re-check that comparison rather than assuming it still holds.\n\nSEAMS. Checked against the neighbouring band files as written: b2 ends at item 33 and I open at 34; I close at 52 and b4 opens at 53. No item is claimed by two bands, so there is nothing here for the merge to reconcile, and across all five bands the paper covers 1-80 with no missing number.\n\nItems 51-52 are the first two items of a 'Directions for the following 3 (three) items' block on p24 which carries THREE passages, one per item: Passage-1 -> item 51, Passage-2 -> item 52, Passage-3 -> item 53. Passage-3 and item 53 are on page 26, which belongs to the next band; I did not transcribe them. Consequently each of my two p24 contexts is used by exactly one item. This is the legitimate 'a directions block gives each item its own passage' case that findLonelyContexts documents as not-a-defect, NOT per-item material parked in context — every item's distinguishing text (its stem question and, for item 52, its numbered assumptions) is in the stem, so no two items in this file share a stem+options hash.\n\nItems 41-44 are a 'Directions for the following 4 (four) items' block lying wholly inside my band. Passage-1 (p20-c1) governs items 41 and 42; Passage-2 governs items 43 and 44 and is SPLIT ACROSS A PAGE BREAK — it opens at the foot of p20-c2 ('When a child reaches adolescence ... The options they express, however, are so') and finishes at the top of p22-c1 ('dogmatic that the young seldom confide in them, and usually go their own way in secret.'). I stitched the two halves into one continuous paragraph and used the identical string on both items. In every case only the passage prose is in context; the 'Directions for the following N items' preamble and the 'Passage-1' / 'Passage-2' headers are deliberately excluded.\n\nPRINTED DEFECT (verbatim, not corrected). p20-c2, Passage-2 (governing items 43 and 44) prints 'The options they express, however, are so dogmatic that the young seldom confide in them'. The sense of the sentence, and the wording of the Russell passage it is taken from, is 'opinions'; the booklet prints 'options'. Verified at high magnification on the p20-c2 crop. Transcribed exactly as printed on both items 43 and 44.\n\nSCAN DEFECT (not a printed defect). p22-c1, item 44: the opening capital 'W' of 'Which' is broken and faint in this scan and renders as a partial glyph. The word is unambiguously 'Which' — the rest of the word is intact and the phrasing 'Which one of the following statements best reflects ...' is repeated verbatim at item 51 on p24. Transcribed as 'Which'.\n\nTRANSCRIPTION CONVENTIONS. The booklet's house-style raised MIDDLE DOT decimal point is preserved as U+00B7 in item 40's options ('12·5°', '17·5°'); it is a decimal point, not a multiplication sign. The rupee sign in item 47 is U+20B9 with the printed space after it. Item 46's sequence ends in a printed centred ellipsis, transcribed as '...' to match the shipped sibling files. Item 48's 'A, B, C, D, E denote distinct digits' carries a stray ink mark above the comma after D in the scan; it is an ordinary comma. LaTeX is applied only to genuine mathematical quantities — item 35's X and Y, item 39's p/q/r/s and its three expressions, item 47's article labels P/Q/R (which enter an arithmetic relation), item 49's x/y/z and its inequality chain — while entity labels that carry no arithmetic are left plain, which is why item 48's digit letters A/B/C/D/E and item 36's prose equation of weights are unwrapped. Every '\\(' has a matching '\\)'. No question in this band prints a data grid, so no pipe table was needed. No option in this band was blank and no option duplicated another within its item.\n\nCLASSIFICATION. All subjects used are Paper II subjects (Comprehension; General Mental Ability; Basic Numeracy) and every subject/chapter pair is copied verbatim from catalog.json. Every subtopic in this file resolves against the catalog as it stands at the time of writing, with no soft warnings. Two are worth a note. Item 39 is filed under Basic Numeracy -> Number System -> 'Parity of Numbers'; I chose that label as a proposed extension because none of the seven subtopics listed under that chapter when I first read catalog.json fitted an odd/even parity item ('Divisibility and Remainders' is about division, and the item never divides), and on re-reading the file at the end of the band it had gained exactly that entry — catalog.json was modified mid-band, presumably by a sibling agent hitting the same gap, so the label is now a listed value rather than an extension request. Item 49 is filed under General Mental Ability -> Counting and Enumeration -> 'Permutations and Combinations', which is a listed value but only the NEAREST fit: the item is really an enumeration of integer triplets satisfying an inequality chain rather than an arrangement or selection count, and a label such as 'Counting under Constraints' would describe it better if the catalog is extended again.\n\nCOMPLETENESS. Items 34 through 52 inclusive, each present exactly once, no number skipped. firstComplete = true: item 34's stem and all four options are whole on p18 (only the passage that governs it starts earlier, on p16, and is reported above). lastComplete = true: item 52's stem and all four options are whole on p24; the block it belongs to continues to item 53 on p26, which is the next band's."
+  },
+  "questions": [
+    {
+      "number": 34,
+      "context": "Only with long experience and opening of his wares on many a beach where his language is not spoken, will the merchant come to know the worth of what he carries, and what is parochial and what is universal in his choice. Such delicate goods as justice, love and honour, courtesy, and indeed all the things we care for, are valid everywhere but they are variously moulded and often differently handled, and sometimes nearly unrecognizable if you meet them in a foreign land, and the art of learning fundamental common values is perhaps the greatest gain of travel to those who wish to live at ease among their fellows.",
+      "stem": "With reference to the above passage, the following assumptions have been made :\n1. Travel leads to an understanding of humans.\n2. Travel helps those who wish to learn fundamental common values.\n3. A person with long experience in travel can resolve differences amongst people.\nWhich of the assumptions given above are valid?",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "2 and 3 only" },
+        { "label": "C", "text": "1 and 3 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": ["passage-opens-on-p16-previous-band"]
+    },
+    {
+      "number": 35,
+      "stem": "Let \\(X\\) be a two-digit number and \\(Y\\) be another two-digit number formed by interchanging the digits of \\(X\\). If \\((X + Y)\\) is the greatest two-digit number, then what is the number of possible values of \\(X\\)?",
+      "options": [
+        { "label": "A", "text": "2" },
+        { "label": "B", "text": "4" },
+        { "label": "C", "text": "6" },
+        { "label": "D", "text": "8" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 36,
+      "stem": "Consider the following :\nWeight of 6 boys = Weight of 7 girls = Weight of 3 men = Weight of 4 women\nIf the average weight of the women is 63 kg, then what is the average weight of the boys?",
+      "options": [
+        { "label": "A", "text": "40 kg" },
+        { "label": "B", "text": "42 kg" },
+        { "label": "C", "text": "45 kg" },
+        { "label": "D", "text": "63 kg" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Ratio and Proportion",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 37,
+      "stem": "How many times the hour hand and the minute hand coincide in a clock between 10:00 a.m. and 2:00 p.m. (same day)?",
+      "options": [
+        { "label": "A", "text": "3 times" },
+        { "label": "B", "text": "4 times" },
+        { "label": "C", "text": "5 times" },
+        { "label": "D", "text": "6 times" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Clocks and Calendars",
+      "subtopic": "Clocks and Angles",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 38,
+      "stem": "The calendar for the year 2025 is same for",
+      "options": [
+        { "label": "A", "text": "2029" },
+        { "label": "B", "text": "2030" },
+        { "label": "C", "text": "2031" },
+        { "label": "D", "text": "2033" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Clocks and Calendars",
+      "subtopic": "Calendars and Day Calculation",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 39,
+      "stem": "Let \\(p\\), \\(q\\), \\(r\\) and \\(s\\) be distinct positive integers. Let \\(p, q\\) be odd and \\(r, s\\) be even. Consider the following statements :\n1. \\((p - r)^2 (qs)\\) is even.\n2. \\((q - s) q^2 s\\) is even.\n3. \\((q + r)^2 (p + s)\\) is odd.\nWhich of the statements given above are correct?",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "2 and 3 only" },
+        { "label": "C", "text": "1 and 3 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Parity of Numbers",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 40,
+      "stem": "What is the angle between the minute hand and hour hand when the clock shows 4:25 hours?",
+      "options": [
+        { "label": "A", "text": "12·5°" },
+        { "label": "B", "text": "15°" },
+        { "label": "C", "text": "17·5°" },
+        { "label": "D", "text": "20°" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Clocks and Calendars",
+      "subtopic": "Clocks and Angles",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 41,
+      "context": "Conventional classrooms, by emphasizing fixed duration over learning effectiveness, resign themselves to variable outcomes. The tyranny of the classroom is that every learner is subjected to the same set of lectures in the same way for the same duration. In the end, a few learners shine, some survive, and the rest are left behind. After the fixed duration, the classroom model moves on, with not a thought spared for those left behind. This is how we end up with 10 percent employability in our graduates after a decade and half of formal education. Repeating the same ineffectual script in the realm of skill education will not produce different results.",
+      "stem": "Which of the following statements best reflects/reflect the most logical and rational inference/inferences that can be made from the passage?\n1. In conventional classroom learning, the central goal is duration of learning rather than attainment of competency.\n2. Conventional classrooms encourage one-size-fits-all approach and stamp out all differentiation.\nSelect the correct answer using the code given below.",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 42,
+      "context": "Conventional classrooms, by emphasizing fixed duration over learning effectiveness, resign themselves to variable outcomes. The tyranny of the classroom is that every learner is subjected to the same set of lectures in the same way for the same duration. In the end, a few learners shine, some survive, and the rest are left behind. After the fixed duration, the classroom model moves on, with not a thought spared for those left behind. This is how we end up with 10 percent employability in our graduates after a decade and half of formal education. Repeating the same ineffectual script in the realm of skill education will not produce different results.",
+      "stem": "Based on the above passage, the following assumptions have been made :\n1. As a large number of workers in our country are employed in unorganized sector, India does not need to change its present conventional classroom system of education.\n2. Even with its present conventional classroom system of education, India produces sufficient number of skilled workers to fully realize the benefits of demographic dividend.\nWhich of the assumptions given above is/are valid?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 43,
+      "context": "When a child reaches adolescence, there is apt to be a conflict between the parents and the child, since the latter considers himself to be by now quite capable of managing his own affairs, while the former are filled with parental solicitude, which is often a disguise for love of power. Parents consider, usually, that the various moral problems which arise in adolescence are peculiarly their province. The options they express, however, are so dogmatic that the young seldom confide in them, and usually go their own way in secret.",
+      "stem": "Based on the above passage, the following assumptions have been made :\n1. The adolescent does not feel comfortable with his parents because they tend to be dominating and assertive.\n2. The adolescent of modern times does not have much respect for parents.\nWhich of the assumptions given above is/are valid?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": ["passage-split-across-p20-p22", "printed-defect-in-passage-options-for-opinions"]
+    },
+    {
+      "number": 44,
+      "context": "When a child reaches adolescence, there is apt to be a conflict between the parents and the child, since the latter considers himself to be by now quite capable of managing his own affairs, while the former are filled with parental solicitude, which is often a disguise for love of power. Parents consider, usually, that the various moral problems which arise in adolescence are peculiarly their province. The options they express, however, are so dogmatic that the young seldom confide in them, and usually go their own way in secret.",
+      "stem": "Which one of the following statements best reflects the central idea of the above passage?",
+      "options": [
+        { "label": "A", "text": "Parents in general may not be of much help when children are on their way to becoming adults." },
+        { "label": "B", "text": "When children reach adolescence, involvement of parents in their lives is unnecessary." },
+        { "label": "C", "text": "Modern-day nuclear families are not capable of bringing up children properly." },
+        { "label": "D", "text": "In modern societies, adolescents tend to be stubborn, disobedient and careless." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "MODERATE",
+      "flags": ["passage-split-across-p20-p22", "printed-defect-in-passage-options-for-opinions", "scan-damaged-initial-W-in-stem"]
+    },
+    {
+      "number": 45,
+      "stem": "What is the number of fives used in numbering a 260-page book?",
+      "options": [
+        { "label": "A", "text": "55" },
+        { "label": "B", "text": "56" },
+        { "label": "C", "text": "57" },
+        { "label": "D", "text": "60" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Counting in a Number Sequence",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 46,
+      "stem": "What is the sum of the first 28 terms in the following sequence?\n1, 1, 2, 1, 3, 2, 1, 4, 3, 2, 1, 5, 4, 3, 2, ...",
+      "options": [
+        { "label": "A", "text": "83" },
+        { "label": "B", "text": "84" },
+        { "label": "C", "text": "85" },
+        { "label": "D", "text": "86" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Algebra and Equations",
+      "subtopic": "Progressions and Series",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 47,
+      "stem": "A person buys three articles \\(P\\), \\(Q\\) and \\(R\\) for ₹ 3,330. If \\(P\\) costs 25% more than \\(R\\) and \\(R\\) costs 20% more than \\(Q\\), then what is the cost of \\(P\\)?",
+      "options": [
+        { "label": "A", "text": "₹ 1,000" },
+        { "label": "B", "text": "₹ 1,200" },
+        { "label": "C", "text": "₹ 1,250" },
+        { "label": "D", "text": "₹ 1,350" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Percentage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 48,
+      "stem": "If the sum of the two-digit numbers AB and CD is the three-digit number 1CE, where the letters A, B, C, D, E denote distinct digits, then what is the value of A?",
+      "options": [
+        { "label": "A", "text": "9" },
+        { "label": "B", "text": "8" },
+        { "label": "C", "text": "7" },
+        { "label": "D", "text": "Cannot be determined due to insufficient data" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 49,
+      "stem": "Three numbers \\(x\\), \\(y\\), \\(z\\) are selected from the set of the first seven natural numbers such that \\(x > 2y > 3z\\). How many such distinct triplets \\((x, y, z)\\) are possible?",
+      "options": [
+        { "label": "A", "text": "One triplet" },
+        { "label": "B", "text": "Two triplets" },
+        { "label": "C", "text": "Three triplets" },
+        { "label": "D", "text": "Four triplets" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Counting and Enumeration",
+      "subtopic": "Permutations and Combinations",
+      "difficulty": "MODERATE",
+      "flags": ["subtopic-nearest-fit-only"]
+    },
+    {
+      "number": 50,
+      "stem": "The total cost of 4 oranges, 6 mangoes and 8 apples is equal to twice the total cost of 1 orange, 2 mangoes and 5 apples. Consider the following statements :\n1. The total cost of 3 oranges, 5 mangoes and 9 apples is equal to the total cost of 4 oranges, 6 mangoes and 8 apples.\n2. The total cost of one orange and one mango is equal to the cost of one apple.\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Algebra and Equations",
+      "subtopic": "Linear and Quadratic Equations",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 51,
+      "context": "When an international team of scientists pumped a carbon dioxide and water mix into underground basalt rocks, basic chemistry took over. The acidic mixture dissolved rocks’ calcium and magnesium and formed limestone. Basically carbon dioxide is converted into stone, exclaimed the scientists.",
+      "stem": "Which one of the following statements best reflects the most logical, rational and practical suggestion implied by the passage?",
+      "options": [
+        { "label": "A", "text": "It is a cheap and practical method to produce limestone at commercial level for building purposes." },
+        { "label": "B", "text": "This can be used as one of the methods of carbon sequestration." },
+        { "label": "C", "text": "Basalt rock can be made a good source of calcium and magnesium minerals by this method." },
+        { "label": "D", "text": "Good rock-dissolving acid can be produced by mixing carbon dioxide and water." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": ["own-passage-within-3-item-directions-block"]
+    },
+    {
+      "number": 52,
+      "context": "Geographers analyzed 175 satellite images of ocean colour, which is an indicator of phytoplankton productivity at the ocean’s surface, and found that giant icebergs are responsible for storing up to 20 percent of carbon in the Southern Ocean. The researchers discovered that melting water from giant icebergs which contains iron and other nutrients, supports hitherto unexpectedly high levels of phytoplankton growth.",
+      "stem": "Based on the above passage, the following assumptions have been made :\n1. Giant icebergs have a bearing on primary productivity and food chains of the Southern Ocean.\n2. Melting of giant icebergs can produce climate change effects and impact world fisheries.\nWhich of the assumptions given above is/are valid?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": ["own-passage-within-3-item-directions-block"]
+    }
+  ]
+}

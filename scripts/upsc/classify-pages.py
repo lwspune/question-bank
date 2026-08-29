@@ -228,6 +228,40 @@ def parity_outliers(english: list) -> list:
     return minority if len(minority) * 4 <= len(english) else []
 
 
+def parity_gaps(english: list) -> list:
+    """Pages of the DOMINANT parity that are missing from the middle of the run.
+
+    THE ASYMMETRY THIS EXISTS FOR, and it is the whole point. `parity_outliers`
+    catches a page wrongly ADDED to the English list. It is structurally blind to
+    one wrongly LEFT OUT, because a missing page does not break parity — the
+    surviving pages are all still even.
+
+    And the missing case is the more damaging one. An extra page gets a
+    Devanagari image in front of a transcriber, who says so. A MISSING page just
+    silently removes ~5 items from the paper, and the only thing downstream that
+    would notice is the merge's coverage gate, long after the transcription pass
+    has been spent.
+
+    Measured on 2019-p2: page 14 is a genuine English question page carrying
+    items 22-25, and `classify` called it COVER — not on the script signal, which
+    read 8 and is squarely English, but on the GUTTER test. That page prints a
+    vertical rule with the columns set tight against it, so the windowed median
+    ink never drops below NO_GUTTER (0.097 against 0.005-0.058 on its siblings).
+    No script-based rule can see that, and parity alone could not either.
+
+    Returns the absent same-parity indices strictly inside the run, or [].
+    """
+    if len(english) < 4:
+        return []
+    evens = [i for i in english if i % 2 == 0]
+    odds = [i for i in english if i % 2 == 1]
+    major = evens if len(evens) >= len(odds) else odds
+    if len(major) < 4:
+        return []
+    lo, hi = min(major), max(major)
+    return [i for i in range(lo, hi + 1, 2) if i not in set(major)]
+
+
 CALIBRATION = {
     # Established by reading the pages during the 2025 pilot.
     "2025-p2": list(range(2, 43, 2)),
@@ -290,6 +324,19 @@ def main() -> None:
             f"{pid:9s} {r['pageCount']:2d}pp  "
             f"EN {fmt(r['english']):34s}  HI {len(r['hindi']):2d}  BLANK {len(r['blank']):2d}  COVER {len(r['cover']):2d}"
         )
+        gaps = parity_gaps(r["english"])
+        if gaps:
+            suspect = True
+            print(
+                f"          !! {len(gaps)} page(s) MISSING from the run: {gaps}\n"
+                f"             These sit on the same parity as the English pages and inside their\n"
+                f"             range, so a question page was almost certainly dropped — most often\n"
+                f"             by the GUTTER test rather than the script test (a page whose columns\n"
+                f"             sit tight against a printed rule reads as single-column). OPEN THEM.\n"
+                f"             A page wrongly EXCLUDED loses ~5 items silently; nothing downstream\n"
+                f"             notices until the merge's coverage gate."
+            )
+
         outliers = parity_outliers(r["english"])
         if outliers:
             suspect = True

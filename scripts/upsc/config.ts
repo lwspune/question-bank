@@ -245,9 +245,21 @@ export const PAPERS: Record<string, Paper> = {
   // items 56-60 printed in Hindi on p33 and in English on p34. The real run is
   // the clean even sequence, same as every other Paper II.
   "2020-p2": p2(2020, "CSP_2020_GS_Paper-2.pdf", evens(2, 42), 200),
-  "2019-p2": p2(2019, "csp-p2.pdf", [], 200),
+  // P2 2019: the run STARTS AT 4, not 2 — this booklet opens with THREE cover
+  // pages. Page 14 is also a genuine English question page (items 22-25) that
+  // the detector dropped: its script signal reads 8, squarely English, but the
+  // page prints a vertical rule with the columns tight against it, so the
+  // GUTTER test called it single-column. Verified by reading it. That is the
+  // failure `parity_gaps` now flags, and it is the dangerous direction — an
+  // excluded page loses ~5 items in silence.
+  "2019-p2": p2(2019, "csp-p2.pdf", evens(4, 42), 200),
   "2018-p2": p2(2018, "QP-CSP-18-GS-II-C.pdf", evens(2, 42), 150), // strip-scanned
-  "2017-p2": p2(2017, "CSP-17-GS_PAPER-II-C.pdf", [], 150), // strip-scanned
+  // P2 2017: runs to 44, not 42 like every other Paper II — 22 English pages.
+  // Page 43 is HINDI despite scoring in the English range: items 77-80 are
+  // almost pure numerals (two-digit-number puzzles, options 1/2/3/4 and
+  // 262/342/360/450) with barely any Devanagari for the shirorekha signal to
+  // catch. Same failure as 2020-p2 p29/p33; caught by `parity_outliers`.
+  "2017-p2": p2(2017, "CSP-17-GS_PAPER-II-C.pdf", evens(2, 44), 150), // strip-scanned
   // AT RISK: ~72 DPI, 40 pages of 594x90 strips. Dense two-column text at that
   // resolution may simply not be transcribable. Measure before promising it.
   "2016-p2": p2(2016, "GENERAL_STUDIES_PAPER-II.pdf", [], 72),
