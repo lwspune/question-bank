@@ -76,9 +76,17 @@ function main() {
         {
           paper: paper.id,
           packet: `p${i + 1}`,
+          // Do NOT reinstate "no answer key exists for this booklet" here. It was
+          // written during the 2025 pilot, before any official key had been found,
+          // and it is now false for most papers — a deriver on 2024-p2 read the
+          // note, saw `2024-p2.key.json` sitting in the tree, and correctly
+          // reported the contradiction rather than concluding its instructions
+          // were stale and opening the file. A withheld key must be described as
+          // withheld, never as absent.
           note:
-            "BLIND PACKET. No answer key exists for this booklet. Subject, chapter, " +
-            "difficulty and transcription flags are withheld on purpose — see " +
+            "BLIND PACKET. An official key may exist for this paper and is WITHHELD " +
+            "from you on purpose; do not go looking for one. Subject, chapter, " +
+            "difficulty and transcription flags are withheld too — see " +
             "scripts/upsc/DERIVATION_BRIEF.md.",
           items: blind,
         },
