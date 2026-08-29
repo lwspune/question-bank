@@ -1,0 +1,246 @@
+{
+  "band": "b5",
+  "pages": [34, 36, 38, 40, 42],
+  "bandReport": {
+    "numbersFound": [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80],
+    "itemsByPage": {
+      "34": [66, 67, 68],
+      "36": [69, 70],
+      "38": [71, 72],
+      "40": [73, 74, 75],
+      "42": [76, 77, 78, 79, 80]
+    },
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "Band covers items 66-80 and ends the paper at item 80. Filled itemsByPage page by page while reading; no page in the band was empty and none was skipped.\n\nCOMPLETENESS. Item 66 begins at the top of p34-c1 and is whole; item 80 ends on p42-c2 with all four options and is whole. Nothing runs into or out of the band.\n\nTERRITORY I DO NOT OWN. I opened p32 (band b4's page) to check whether any Directions block or shared preamble started there and carried into my first page. It does not: p32 holds items 63, 64 and 65, each complete on that page, and item 65 (a data-sufficiency item) ends with its full option block in the right column. So there is no passage or directions preamble spanning the p32/p34 boundary, and my item 66 stands alone. I did not transcribe p32's items.\n\nSHARED PASSAGES. Only one Directions block falls in this band, on p38: 'Directions for the following 2 (two) items :' followed by two passages. Passage-1 (poetry / absolute truths) governs item 71 ONLY; Passage-2 (the flower / pollen) governs item 72 ONLY. Each item's own passage is in its context; the directions preamble is NOT in context. Because each passage governs exactly one item, no passage text is repeated, so there is no cross-item byte-identity risk here. Item 71's and item 72's stems and options are distinct, so nothing collides on content_hash.\n\nSLICED CROPS. p38-c2 and p42-c2 both carry a narrow vertical strip of the LEFT column's line-ends bleeding down their left edge (on p38-c2 the fragments 'er/ur/on', 'ot/1s./ve/rn' etc. are the tails of Passage-1's lines). The right-column content itself is complete in both, but because the split was clearly off I re-read both pages from p38.png and p42.png and confirmed the right column word for word. No content was lost or misattributed. p34, p36 and p40 crops are clean; I still cross-checked each against its full page.\n\nFINAL-PAGE CHECK. p42 is the last page of the band and its right column is NOT sparse - it carries items 78, 79 and 80 in full. I verified against p42.png that nothing sits below item 80 on either column; the page ends with option (d) of item 80, the footer 'KSPC-B-GSPT/61A', page number 43 and '[ P.T.O.' The [ P.T.O. is the booklet's standing footer and does not imply a further English item; the paper's 80 items are complete here. p42 is also the one page in the band with no Hindi shadow-through.\n\nPRINTED ODDITIES, all transcribed verbatim, none corrected:\n- Item 78 prints the second code word with a space inside the opening quote: \u2018 TRAP\u2019, where \u2018POT\u2019 on the same line is set tight. Transcribed with the space as printed. Verified at 2.6x zoom.\n- Item 76 uses the struck relational glyphs \u226f (not greater than) and \u226e (not less than) inside the quoted definitions; written as \\ngtr and \\nless. Verified at zoom - they are struck-through > and < , not ordinary ones.\n- Item 76's statement lines are set with irregular spacing around the parenthesised operators ('2x (S)3y', '9y(P) 8z'); I collapsed that typesetting space, since it carries no meaning, and kept the operator order exactly.\n- Item 79 prints an asterisk as the unknown term. I wrapped both occurrences as math (\\(*\\)) so a markdown renderer cannot read the pair as emphasis delimiters; the printed character is a plain asterisk.\n- The paper sets the statement labels with an en dash: 'Statement\u2013I', 'Statement\u2013II'. Preserved as printed (U+2013), which is visibly longer than the hyphen the same page uses in 'by-product'.\n- Item 69 prints the rupee sign with a space before the amount (\u20b9 50, \u20b9 16). Preserved.\n\nNo option was reordered anywhere in this band, and no item printed its options out of numeric/alphabetic order. No duplicate option texts were found - item 78's four near-anagrams (AARENA / AANREA / AANEAR / AANERA) were checked individually at 2.6x zoom and are all distinct. Every item in the band has exactly four options.\n\nItems 66, 67, 68, 69, 70 and 73 are the data-sufficiency family. Following the brief, each one's 'Question :' and 'Statement\u2013I / Statement\u2013II' lines are kept in the STEM (not context), because those lines are what distinguish otherwise-identical items and the shared four options would otherwise collapse them onto one content_hash."
+  },
+  "questions": [
+    {
+      "number": 66,
+      "stem": "A Question is given followed by two Statements I and II. Consider the Question and the Statements.\nQuestion :\nIf the average marks in a class are 60, then what is the number of students in the class?\nStatement\u2013I :\nThe highest marks in the class are 70 and the lowest marks are 50.\nStatement\u2013II :\nExclusion of highest and lowest marks from the class does not change the average.\nWhich one of the following is correct in respect of the above Question and the Statements?",
+      "options": [
+        { "label": "A", "text": "The Question can be answered by using one of the Statements alone, but cannot be answered using the other Statement alone" },
+        { "label": "B", "text": "The Question can be answered by using either Statement alone" },
+        { "label": "C", "text": "The Question can be answered by using both the Statements together, but cannot be answered using either Statement alone" },
+        { "label": "D", "text": "The Question cannot be answered even by using both the Statements together" }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Sufficiency",
+      "subtopic": "Two-Statement Data Sufficiency",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 67,
+      "stem": "A Question is given followed by two Statements I and II. Consider the Question and the Statements.\nThere are three distinct prime numbers whose sum is a prime number.\nQuestion :\nWhat are those three numbers?\nStatement\u2013I : Their sum is less than 23.\nStatement\u2013II : One of the numbers is 5.\nWhich one of the following is correct in respect of the above Question and the Statements?",
+      "options": [
+        { "label": "A", "text": "The Question can be answered by using one of the Statements alone, but cannot be answered using the other Statement alone" },
+        { "label": "B", "text": "The Question can be answered by using either Statement alone" },
+        { "label": "C", "text": "The Question can be answered by using both the Statements together, but cannot be answered using either Statement alone" },
+        { "label": "D", "text": "The Question cannot be answered even by using both the Statements together" }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Sufficiency",
+      "subtopic": "Two-Statement Data Sufficiency",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 68,
+      "stem": "A Question is given followed by two Statements I and II. Consider the Question and the Statements.\nQuestion : Is \\((x + y)\\) an integer?\nStatement\u2013I : \\((2x + y)\\) is an integer.\nStatement\u2013II : \\((x + 2y)\\) is an integer.\nWhich one of the following is correct in respect of the above Question and the Statements?",
+      "options": [
+        { "label": "A", "text": "The Question can be answered by using one of the Statements alone, but cannot be answered using the other Statement alone" },
+        { "label": "B", "text": "The Question can be answered by using either Statement alone" },
+        { "label": "C", "text": "The Question can be answered by using both the Statements together, but cannot be answered using either Statement alone" },
+        { "label": "D", "text": "The Question cannot be answered even by using both the Statements together" }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Sufficiency",
+      "subtopic": "Two-Statement Data Sufficiency",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 69,
+      "stem": "A Question is given followed by two Statements I and II. Consider the Question and the Statements.\nA person buys three articles p, q and r for \u20b9 50. The price of the article q is \u20b9 16 which is the least.\nQuestion :\nWhat is the price of the article p?\nStatement\u2013I :\nThe cost of p is not more than that of r.\nStatement\u2013II :\nThe cost of r is not more than that of p.\nWhich one of the following is correct in respect of the above Question and the Statements?",
+      "options": [
+        { "label": "A", "text": "The Question can be answered by using one of the Statements alone, but cannot be answered using the other Statement alone" },
+        { "label": "B", "text": "The Question can be answered by using either Statement alone" },
+        { "label": "C", "text": "The Question can be answered by using both the Statements together, but cannot be answered using either Statement alone" },
+        { "label": "D", "text": "The Question cannot be answered even by using both the Statements together" }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Sufficiency",
+      "subtopic": "Two-Statement Data Sufficiency",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 70,
+      "stem": "A Question is given followed by two Statements I and II. Consider the Question and the Statements.\nP, Q, R and S appeared in a test.\nQuestion :\nHas P scored more marks than Q?\nStatement\u2013I :\nThe sum of the marks scored by P and Q is equal to the sum of the marks scored by R and S.\nStatement\u2013II :\nThe sum of the marks scored by P and S is more than the sum of the marks scored by Q and R.\nWhich one of the following is correct in respect of the above Question and the Statements?",
+      "options": [
+        { "label": "A", "text": "The Question can be answered by using one of the Statements alone, but cannot be answered using the other Statement alone" },
+        { "label": "B", "text": "The Question can be answered by using either Statement alone" },
+        { "label": "C", "text": "The Question can be answered by using both the Statements together, but cannot be answered using either Statement alone" },
+        { "label": "D", "text": "The Question cannot be answered even by using both the Statements together" }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Sufficiency",
+      "subtopic": "Two-Statement Data Sufficiency",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 71,
+      "context": "Unlike religion and science, poetry does not posit or expect any belief in absolute truths. Those forces or individuals who claim to have absolute truths in their grasp tend to turn dictatorial and tyrannical. Truth usually does not admit any contradictions or imperfections. It is unitarian. It is, therefore, not of much use for poetry. Poetry abides by the plurality of life and existence. Perhaps poetry follows reality which is plural, anachronistic, full of contradictions. Against the tyranny of truth, poetry remains a partisan of democratic reality. Against the arrogance of power, wealth and hierarchy, poetry proposes both humility and defiance.",
+      "stem": "Which one of the following statements best reflects the most logical and rational message conveyed by the above passage?",
+      "options": [
+        { "label": "A", "text": "It is the poetry, not science or religion, which recognizes and accepts imperfections in humans." },
+        { "label": "B", "text": "Truth is revealed through science or religion and poetry is anathema to truth." },
+        { "label": "C", "text": "Poetry is romantic, imaginary and is about feeling whereas science and religion are about truth." },
+        { "label": "D", "text": "In a world of violence, tyranny and bigotry, poetry is a form of dynamic resistance." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 72,
+      "context": "The flower was not invented to please us. It flaunted its petals and spread its perfume to attract an insect. The insect carries the pollen from flower to flower so that pollen is not carried away by wind and thus not wasted. What we call a flower\u2019s beauty is merely a by-product and a human invention. The perfume is not there to please us, it pleases us because it is there and we have been conditioned to it.",
+      "stem": "Based on the above passage, the following assumptions have been made :\n1. The author of the passage believes that flowers are creations of Nature\u2019s luxury.\n2. The author of the passage does not believe in the usefulness of flowers except as things of beauty.\nWhich of the assumptions given above is/are valid?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 73,
+      "stem": "A Question is given followed by two Statements I and II. Consider the Question and the Statements.\nAge of each of P and Q is less than 100 years but more than 10 years. If you interchange the digits of the age of P, the number represents the age of Q.\nQuestion :\nWhat is the difference of their ages?\nStatement\u2013I :\nThe age of P is greater than the age of Q.\nStatement\u2013II :\nThe sum of their ages is \\(11/6\\) times their difference.\nWhich one of the following is correct in respect of the above Question and the Statements?",
+      "options": [
+        { "label": "A", "text": "The Question can be answered by using one of the Statements alone, but cannot be answered using the other Statement alone" },
+        { "label": "B", "text": "The Question can be answered by using either Statement alone" },
+        { "label": "C", "text": "The Question can be answered by using both the Statements together, but cannot be answered using either Statement alone" },
+        { "label": "D", "text": "The Question cannot be answered even by using both the Statements together" }
+      ],
+      "subject": "Data Interpretation and Data Sufficiency",
+      "chapter": "Data Sufficiency",
+      "subtopic": "Two-Statement Data Sufficiency",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 74,
+      "stem": "A Main Statement is followed by four Statements labelled P, Q, R and S. Choose the ordered pair of the Statements where the first Statement implies the second, and the two Statements are logically consistent with the Main Statement.\nMain Statement :\nPradeep becomes either a Director or a Producer.\nStatement P : Pradeep is a Director.\nStatement Q : Pradeep is a Producer.\nStatement R : Pradeep is not a Director.\nStatement S : Pradeep is not a Producer.\nSelect the correct answer.",
+      "options": [
+        { "label": "A", "text": "SP only" },
+        { "label": "B", "text": "RQ only" },
+        { "label": "C", "text": "Both SP and RQ" },
+        { "label": "D", "text": "Neither SP nor RQ" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Syllogisms and Logical Deduction",
+      "subtopic": "Statements and Conclusions",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 75,
+      "stem": "If \\(a + b\\) means \\(a - b\\); \\(a - b\\) means \\(a \\times b\\); \\(a \\times b\\) means \\(a \\div b\\); \\(a \\div b\\) means \\(a + b\\), then what is the value of \\(10 + 30 - 100 \\times 50 \\div 25\\)? (Operations are to be replaced simultaneously)",
+      "options": [
+        { "label": "A", "text": "15" },
+        { "label": "B", "text": "0" },
+        { "label": "C", "text": "\\(-15\\)" },
+        { "label": "D", "text": "\\(-25\\)" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Coding-Decoding and Symbol Logic",
+      "subtopic": "Symbol and Inequality Coding",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 76,
+      "stem": "If P means \u2018greater than \\((>)\\)\u2019; Q means \u2018less than \\((<)\\)\u2019; R means \u2018not greater than \\((\\ngtr)\\)\u2019; S means \u2018not less than \\((\\nless)\\)\u2019 and T means \u2018equal to \\((=)\\)\u2019, then consider the following statements :\n1. If \\(2x(S)3y\\) and \\(3x(T)4z\\), then \\(9y(P)8z\\).\n2. If \\(x(Q)2y\\) and \\(y(R)z\\), then \\(x(R)z\\).\nWhich of the statements given above is/are correct?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Coding-Decoding and Symbol Logic",
+      "subtopic": "Symbol and Inequality Coding",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 77,
+      "stem": "If in a certain code, \u2018ABCD\u2019 is written as 24 and \u2018EFGH\u2019 is written as 1680, then how is \u2018IJKL\u2019 written in that code?",
+      "options": [
+        { "label": "A", "text": "11880" },
+        { "label": "B", "text": "11240" },
+        { "label": "C", "text": "7920" },
+        { "label": "D", "text": "5940" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Coding-Decoding and Symbol Logic",
+      "subtopic": "Letter and Number Coding",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 78,
+      "stem": "If in a certain code, \u2018POT\u2019 is written as ATOP and \u2018 TRAP\u2019 is written as APART, then how is \u2018ARENA\u2019 written in that code?",
+      "options": [
+        { "label": "A", "text": "AARENA" },
+        { "label": "B", "text": "AANREA" },
+        { "label": "C", "text": "AANEAR" },
+        { "label": "D", "text": "AANERA" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Coding-Decoding and Symbol Logic",
+      "subtopic": "Letter and Number Coding",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 79,
+      "stem": "What will come in place of \\(*\\) in the sequence 3, 14, 39, 84, \\(*\\), 258?",
+      "options": [
+        { "label": "A", "text": "150" },
+        { "label": "B", "text": "155" },
+        { "label": "C", "text": "160" },
+        { "label": "D", "text": "176" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Series and Analogy",
+      "subtopic": "Number Series",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 80,
+      "stem": "In some code, letters P, Q, R, S, T represent numbers 4, 5, 10, 12, 15. It is not known which letter represents which number. If \\(Q - S = 2S\\) and \\(T = R + S + 3\\), then what is the value of \\(P + R - T\\)?",
+      "options": [
+        { "label": "A", "text": "1" },
+        { "label": "B", "text": "2" },
+        { "label": "C", "text": "3" },
+        { "label": "D", "text": "Cannot be determined due to insufficient data" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Coding-Decoding and Symbol Logic",
+      "subtopic": "Letter and Number Coding",
+      "difficulty": "MODERATE",
+      "flags": []
+    }
+  ]
+}

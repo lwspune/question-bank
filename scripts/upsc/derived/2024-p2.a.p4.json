@@ -1,0 +1,41 @@
+{
+  "paper": "2024-p2",
+  "packet": "p4",
+  "items": [
+    {
+      "number": 76,
+      "answer": "D",
+      "value": "Neither statement is correct — statement 1 asserts an inequality that can never hold, and statement 2 fails to a counterexample",
+      "confidence": "HIGH",
+      "reasoning": "Decode the letters: P is 'greater than', Q is 'less than', R is 'not greater than' (at most), S is 'not less than' (at least) and T is 'equal to'. Statement 1 gives 2x at least 3y and 3x equal to 4z; multiplying the first by 3 gives 6x at least 9y and the second by 2 gives 6x equal to 8z, so 9y is at most 8z — the exact opposite of the claimed 9y greater than 8z, which therefore never holds. Statement 2 gives x less than 2y and y at most z, and concludes x at most z; but x = 3, y = 2, z = 2 satisfies both premises (3 < 4 and 2 is at most 2) while x = 3 exceeds z = 2, so the conclusion fails. Since x less than 2y only yields x less than 2z, it cannot be tightened to x at most z."
+    },
+    {
+      "number": 77,
+      "answer": "A",
+      "value": "11880 — the code multiplies the four letters' alphabetical positions",
+      "confidence": "HIGH",
+      "reasoning": "The code is the product of the positions of the letters in the alphabet. ABCD gives 1 x 2 x 3 x 4 = 24, and EFGH gives 5 x 6 x 7 x 8 = 1680, both matching the values shown. Applying the same rule, IJKL gives 9 x 10 x 11 x 12 = 11880. The distractors are near misses: 5940 is half that value and 7920 is 9 x 10 x 88, neither produced by the rule that fits both worked examples."
+    },
+    {
+      "number": 78,
+      "answer": "D",
+      "value": "AANERA — reverse the word, then prefix the letter A",
+      "confidence": "HIGH",
+      "reasoning": "POT reversed is TOP, and prefixing A gives ATOP; TRAP reversed is PART, and prefixing A gives APART. Both examples fit the same two-step rule, so it is the code. ARENA reversed is ANERA (reading A-R-E-N-A backwards gives A, N, E, R, A), and prefixing A gives AANERA. The other three options are anagrams of the correct string with letters transposed — AANREA swaps the third and fourth letters and AANEAR the last two — so the reversal must be read out character by character."
+    },
+    {
+      "number": 79,
+      "answer": "B",
+      "value": "155 — the sequence is n cubed plus n squared plus n",
+      "confidence": "HIGH",
+      "reasoning": "Subtracting n cubed from each term leaves 2, 6, 12, 20, ..., 42, which is n(n + 1), so the nth term is n cubed + n squared + n. Checking every printed term: n = 1 gives 3, n = 2 gives 14, n = 3 gives 39, n = 4 gives 84 and n = 6 gives 216 + 42 = 258, all matching. The missing fifth term is therefore 125 + 25 + 5 = 155. Equivalently the term is n(n squared + n + 1), and 5 x 31 = 155."
+    },
+    {
+      "number": 80,
+      "answer": "B",
+      "value": "2 — the assignment is P = 10, Q = 15, R = 4, S = 5, T = 12",
+      "confidence": "HIGH",
+      "reasoning": "Q - S = 2S means Q = 3S, and among 4, 5, 10, 12 and 15 the only such pairs are S = 4 with Q = 12, and S = 5 with Q = 15. If S = 4 and Q = 12, then T = R + 7 must be met from the leftover 5, 10 and 15, and no leftover pair works (5 would need 12, which is taken). If S = 5 and Q = 15, the leftovers are 4, 10 and 12, and T = R + 8 is satisfied only by R = 4 with T = 12, leaving P = 10. An exhaustive check of all 120 assignments returns this one solution, so P + R - T = 10 + 4 - 12 = 2, and option D is not needed."
+    }
+  ]
+}
