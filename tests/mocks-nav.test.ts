@@ -5,7 +5,9 @@ import {
   mockSideNav,
   mockExamSlugs,
   mockExamNames,
+  buildMockExamCards,
 } from "@/lib/mocks/mocksNav";
+import type { MockListItem } from "@/lib/mocks/query";
 
 /**
  * The /mock nav derives from EXAM_REGISTRY's `hasMocks` flag, so these assert
@@ -76,5 +78,112 @@ describe("mocksNav — cross-exam mock grouping", () => {
       expect((prose.match(/,/g) ?? []).length).toBe(n - 2);
       expect(prose).not.toMatch(/,\s*&/); // no Oxford comma before the ampersand
     });
+  });
+});
+
+/**
+ * buildMockExamCards — the derived model behind the /mock exam picker.
+ *
+ * /mock used to render every published mock as one flat exam -> year -> card
+ * list: 63 cards under 29 headings, ~7 screens on desktop and ~11 on mobile.
+ * Worse, its ordering was an accident — it sorted on newest year and then fell
+ * through to a localeCompare tiebreak, and since all three exams have a 2026
+ * sitting the tiebreak decided the whole page. That put CDS first (6 attempts,
+ * 2.3% of all attempts) above NDA (252, 95.5%), and disagreed with the left
+ * rail one column over, which has always been registry order.
+ *
+ * So the ordering assertion below is the point of this suite, not decoration.
+ *
+ * Every number a card shows is DERIVED from the rows /mock already fetches, so
+ * a new sitting updates the card by itself. /guide's picker hand-writes its
+ * "8,259 questions - 2017-2026" meta line; this project has watched that class
+ * of string rot, so none of it is hand-typed here.
+ */
+describe("buildMockExamCards — the /mock picker model", () => {
+  function fixture(
+    examName: string,
+    pyqYear: number,
+    over: Partial<MockListItem> = {}
+  ): MockListItem {
+    return {
+      id: `${examName}-${pyqYear}-${over.paperCode ?? "full"}`,
+      slug: `${examName.toLowerCase()}-${pyqYear}-${over.paperCode ?? "full"}`,
+      paperCode: "full",
+      pyqYear,
+      pyqMonth: null,
+      title: `${examName} ${pyqYear}`,
+      durationSecs: 120 * 60,
+      marking: { correct: 1, wrong: 0 },
+      sections: [],
+      totalQuestions: 100,
+      totalMarks: 100,
+      examName,
+      ...over,
+    };
+  }
+
+  /** A miniature of the live shape: NDA two papers, CDS one, NEET one. */
+  const SAMPLE: MockListItem[] = [
+    fixture("CDS", 2026),
+    fixture("CDS", 2017),
+    fixture("NDA", 2026, { paperCode: "maths" }),
+    fixture("NDA", 2026, { paperCode: "gat" }),
+    fixture("NDA", 2017, { paperCode: "maths" }),
+    fixture("NEET", 2021),
+  ];
+
+  it("orders exams by the registry, never alphabetically", () => {
+    const slugs = buildMockExamCards(SAMPLE).map((c) => c.slug);
+    const expected = getMockExams().map((e) => e.slug);
+    expect(slugs).toEqual(expected);
+
+    // Pin the actual regression: the old list sorted CDS above NDA on a
+    // localeCompare tiebreak. Registry order leads with NDA.
+    expect(slugs.indexOf("nda")).toBeLessThan(slugs.indexOf("cds"));
+  });
+
+  it("derives the count and the year span from the rows", () => {
+    const cards = buildMockExamCards(SAMPLE);
+    const nda = cards.find((c) => c.slug === "nda")!;
+    expect(nda.count).toBe(3);
+    expect(nda.firstYear).toBe(2017);
+    expect(nda.lastYear).toBe(2026);
+
+    const neet = cards.find((c) => c.slug === "neet")!;
+    expect(neet.count).toBe(1);
+    expect(neet.firstYear).toBe(2021);
+    expect(neet.lastYear).toBe(2021);
+  });
+
+  it("counts the distinct papers a sitting is made of", () => {
+    const cards = buildMockExamCards(SAMPLE);
+    // NDA sits two papers (Maths + GAT); CDS and NEET are one paper each.
+    expect(cards.find((c) => c.slug === "nda")!.paperCount).toBe(2);
+    expect(cards.find((c) => c.slug === "cds")!.paperCount).toBe(1);
+    expect(cards.find((c) => c.slug === "neet")!.paperCount).toBe(1);
+  });
+
+  it("still renders a card for a mock-exam with nothing published yet", () => {
+    // hasMocks can legitimately be flipped a beat before the build lands.
+    // Silently omitting a shipped exam is the worse failure, so the card
+    // renders and reads as empty — the per-exam page already says so too.
+    const cards = buildMockExamCards([]);
+    expect(cards.map((c) => c.slug)).toEqual(getMockExams().map((e) => e.slug));
+    for (const c of cards) {
+      expect(c.count).toBe(0);
+      expect(c.firstYear).toBe(0);
+      expect(c.lastYear).toBe(0);
+      expect(c.paperCount).toBe(0);
+    }
+  });
+
+  it("ignores mocks belonging to an exam that is not a mock-exam", () => {
+    // The flat list rendered whatever the DB returned; the picker renders only
+    // registry exams. A row for an unflagged exam must not appear, and must not
+    // disturb the exams that are flagged. (The prod-contract probe in
+    // tests/mocks-registry.test.ts is what stops such a row existing at all.)
+    const cards = buildMockExamCards([...SAMPLE, fixture("MHT-CET", 2026)]);
+    expect(cards.map((c) => c.slug)).not.toContain("mht-cet");
+    expect(cards.find((c) => c.slug === "nda")!.count).toBe(3);
   });
 });

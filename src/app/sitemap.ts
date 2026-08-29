@@ -21,6 +21,7 @@ import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { listChapterLandings, landingHref } from "@/lib/questions/landing";
+import { getMockExams } from "@/lib/mocks/mocksNav";
 import { CONTENT_DATES } from "@/lib/seo/contentDates.generated";
 import {
   contentDateFor,
@@ -70,6 +71,74 @@ async function publicQuizEntries(buildDate: Date): Promise<MetadataRoute.Sitemap
       changeFrequency: "weekly" as const,
       priority: 0.7,
     }));
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * The /mock surface: the exam picker, the per-exam catalogues, and every
+ * published mock's instructions page.
+ *
+ * These were absent from the sitemap entirely — Google only ever found the 63
+ * mock pages by crawling the flat list /mock used to render. The exam-picker
+ * rewrite removed those 63 links, putting every mock two hops from an indexed
+ * page, so listing them here is what keeps them discoverable rather than a
+ * nice-to-have.
+ *
+ * lastModified is each mock's own updated_at (a rebuild of that sitting), and
+ * a per-exam page carries the newest of its mocks — so re-running the build
+ * script for one paper moves exactly the URLs it touched. Guarded like
+ * publicQuizEntries so a missing-env build still emits a sitemap.
+ */
+async function mockEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> {
+  try {
+    const db = createSupabaseAdminClient();
+    const { data } = await db
+      .from("mock_tests")
+      .select("slug, updated_at, exam:exams(name)")
+      .eq("status", "published")
+      .limit(1000); // 63 today; explicit so this can never silently truncate
+
+    const rows = data ?? [];
+    /** exam NAME -> the updated_at of every mock it holds, as ISO strings. */
+    const isoByExam = new Map<string, string[]>();
+    const allIso: string[] = [];
+
+    const mockUrls: MetadataRoute.Sitemap = rows.map((m) => {
+      const exam = (Array.isArray(m.exam) ? m.exam[0] : m.exam) as { name: string } | null;
+      const iso = (m.updated_at as string | null) ?? null;
+      if (exam?.name && iso) {
+        isoByExam.set(exam.name, [...(isoByExam.get(exam.name) ?? []), iso]);
+        allIso.push(iso);
+      }
+      return {
+        url: `${SITE_URL}/mock/${m.slug}`,
+        // A published mock is an immutable question snapshot (migration 0044),
+        // so it changes only on a deliberate rebuild.
+        lastModified: parseIsoDate(iso, buildDate),
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+      };
+    });
+
+    const examUrls: MetadataRoute.Sitemap = getMockExams().map((e) => ({
+      url: `${SITE_URL}/mock/exam/${e.slug}`,
+      lastModified: newestOf(isoByExam.get(e.examName) ?? [], buildDate),
+      changeFrequency: "weekly" as const,
+      priority: 0.75,
+    }));
+
+    return [
+      {
+        url: `${SITE_URL}/mock`,
+        lastModified: newestOf(allIso, buildDate),
+        changeFrequency: "weekly" as const,
+        priority: 0.8,
+      },
+      ...examUrls,
+      ...mockUrls,
+    ];
   } catch {
     return [];
   }
@@ -335,6 +404,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   const quizEntries = await publicQuizEntries(buildDate);
+  const mockUrlEntries = await mockEntries(buildDate);
 
   // Per-chapter question landing pages — the cacheable, indexable face of the
   // bank. Until these existed the sitemap offered Google exactly ONE URL
@@ -387,6 +457,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...withContentDates(guideEntries, contentDates, buildDate),
     ...withContentDates(notesEntries, contentDates, buildDate),
     ...quizEntries,
+    ...mockUrlEntries,
     {
       // Teacher-access lead page — a real acquisition surface for coaching staff.
       url: `${SITE_URL}/request-access`,
