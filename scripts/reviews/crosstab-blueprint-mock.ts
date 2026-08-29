@@ -86,7 +86,17 @@ async function main() {
   // silently drops every row into MISSING, which reads as "the solver never ran"
   // — the most misleading outcome this tool can produce.
   const derived = new Map<string, Blind>();
-  const files = readdirSync(dir).filter((f) => /^result\d+\.json$/.test(f));
+  // SORT NUMERICALLY, NOT LEXICOGRAPHICALLY. A later batch is how a re-derivation
+  // supersedes the stale one it replaces, so "later wins" below is load-bearing —
+  // but readdirSync returns result1, result10, result11, result2, ..., which puts
+  // result2 AFTER result11 and lets the STALE derivation win. On Mock 3 that made
+  // seven repaired questions still report their pre-repair verdicts, so the paper
+  // read as 2 FLIP + 2 NONE when every one had already been fixed and re-derived.
+  // The failure is silent in the worst way: the tool prints "later wins" and is
+  // telling the truth about its own order, just not the order you want.
+  const files = readdirSync(dir)
+    .filter((f) => /^result\d+\.json$/.test(f))
+    .sort((a, b) => Number(a.match(/\d+/)![0]) - Number(b.match(/\d+/)![0]));
   let loaded = 0;
   for (const f of files) {
     for (const raw of JSON.parse(readFileSync(join(dir, f), "utf8")) as any[]) {
