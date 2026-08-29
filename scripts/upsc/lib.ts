@@ -690,7 +690,18 @@ export function validateRows(
     // Duplicate option text makes the answer ambiguous as a LETTER even when it is
     // unambiguous as fact — the defect class that produced 19 wrong keys on the
     // sibling CDS English corpus. Never repair by moving the answer.
-    const normed = opts_.map((o) => norm(o || ""));
+    //
+    // CASE IS SIGNIFICANT HERE, unlike in `fingerprint`. This compares with
+    // whitespace collapsed but case PRESERVED, because CSAT sets items whose
+    // whole subject is capitalisation: 2019-p2 Q68 asks which letters of "JULY"
+    // become lower case under a stated rule, and its four options are JuLY /
+    // jULy / jUly / jUlY — four distinct printed strings that `norm` collapses to
+    // one, firing all six pair-wise duplicate errors on a perfectly good item.
+    //
+    // Folding case costs nothing in detection power either: the defect this guard
+    // exists for is an option typed or printed twice, which is character-identical
+    // in practice, not a case variant of its twin.
+    const normed = opts_.map((o) => (o ?? "").replace(/\s+/g, " ").trim());
     for (let i = 0; i < normed.length; i++) {
       for (let j = i + 1; j < normed.length; j++) {
         if (normed[i] && normed[i] === normed[j]) {

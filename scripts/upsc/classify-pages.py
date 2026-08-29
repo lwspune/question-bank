@@ -151,6 +151,42 @@ def classify(m: dict) -> str:
     return "HINDI" if m["p95"] >= DEVA_RUN else "ENGLISH"
 
 
+def cover_suspects(pages: list) -> list:
+    """Pages called COVER whose SCRIPT signal says they are English text.
+
+    THIS IS THE SHARPER VERSION OF `parity_gaps`, and it catches the case parity
+    structurally cannot. `classify` rejects a page as COVER on the GUTTER test —
+    no clear vertical channel means single-column, so a cover or instructions
+    page. But a question page that prints a vertical rule with its columns set
+    tight against it has no clear channel either, and is thrown out the same way.
+
+    Parity finds such a page only when it falls INSIDE the run. On 2019-p2 the
+    very first English page (index 2, carrying items 1-3) was rejected this way,
+    and because it sits at the START of the run nothing about the surviving
+    pages looked irregular — `evens(4, 42)` is a perfectly plausible list. The
+    error was caught only because a transcription agent noticed its band was
+    supposed to begin at item 1 and did not.
+
+    The discriminator is that the two tests disagree: run-length puts the page
+    squarely in the Latin range while the gutter test calls it single-column.
+    Measured on 2019-p2, both real question pages scored p95run=8 against Hindi's
+    14-25, and the genuine covers scored 23, 24 and 21.
+
+    Index 0 and the final page are excluded: they are covers by position, and the
+    back cover's furniture can score in the Latin range (2019-p2's reads 11).
+    """
+    if len(pages) < 4:
+        return []
+    last = len(pages) - 1
+    return [
+        p["index"]
+        for p in pages
+        if p["kind"] == "COVER"
+        and p["index"] not in (0, last)
+        and p["p95"] < DEVA_RUN
+    ]
+
+
 def run(paper_id: str, verbose: bool = False) -> dict:
     pdf, hint = PAPERS[paper_id]
     if not pdf.exists():
@@ -281,6 +317,15 @@ PARITY_CASES = {
     "2020-p2": [29, 33],
 }
 
+# Booklets where a genuine English question page was rejected as COVER by the
+# gutter test. 2019-p2's index 2 is the expensive one: it carries items 1-3 and
+# sits at the START of the run, where no parity or gap check can see it — the
+# surviving pages still look like a clean even alternation. It was caught only
+# because a transcription agent's band was supposed to open at item 1.
+COVER_CASES = {
+    "2019-p2": [2, 14],
+}
+
 
 def main() -> None:
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
@@ -308,6 +353,15 @@ def main() -> None:
             if not match:
                 print("    the alternation check no longer flags a page known to be Hindi.")
 
+        print("\nCOVER-AS-ENGLISH — question pages the GUTTER test throws out\n")
+        for pid, expected in COVER_CASES.items():
+            got = cover_suspects(run(pid)["pages"])
+            match = got == expected
+            ok &= match
+            print(f"  {pid}: {'CATCHES IT' if match else 'MISSED IT'}  (flagged {got}, expected {expected})")
+            if not match:
+                print("    a page known to carry questions is no longer flagged; items can vanish.")
+
         print(f"\n{'detector reproduces every known answer' if ok else 'DETECTOR IS NOT TRUSTWORTHY'}")
         sys.exit(0 if ok else 1)
 
@@ -324,6 +378,18 @@ def main() -> None:
             f"{pid:9s} {r['pageCount']:2d}pp  "
             f"EN {fmt(r['english']):34s}  HI {len(r['hindi']):2d}  BLANK {len(r['blank']):2d}  COVER {len(r['cover']):2d}"
         )
+        cov = cover_suspects(r["pages"])
+        if cov:
+            suspect = True
+            print(
+                f"          !! {len(cov)} page(s) called COVER but reading as ENGLISH TEXT: {cov}\n"
+                f"             Their run-length is in the Latin range; they were rejected by the\n"
+                f"             GUTTER test, which a question page fails when it prints a vertical\n"
+                f"             rule with the columns tight against it. OPEN THEM. If one sits at\n"
+                f"             the START or END of the run, nothing else here can detect it —\n"
+                f"             the surviving pages still look like a clean alternation."
+            )
+
         gaps = parity_gaps(r["english"])
         if gaps:
             suspect = True

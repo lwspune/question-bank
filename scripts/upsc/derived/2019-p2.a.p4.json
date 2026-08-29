@@ -1,0 +1,42 @@
+{
+  "paper": "2019-p2",
+  "packet": "p4",
+  "pass": "a",
+  "items": [
+    {
+      "number": 76,
+      "answer": "C",
+      "value": "B stands fifth",
+      "confidence": "HIGH",
+      "reasoning": "If F is second, F is not the highest, so by the first condition C must be the highest; and whenever C is highest, E scores the least. That fixes C first, F second and E sixth, leaving ranks three, four and five for A, B and D. The given order D above A above B then forces D third, A fourth and B fifth. An exhaustive check of all orderings satisfying every condition confirms fifth is the only possible position for B."
+    },
+    {
+      "number": 77,
+      "answer": "D",
+      "value": "C is ranked second or third",
+      "confidence": "MED",
+      "reasoning": "If B scores the least, C cannot be the highest, because whenever C is highest it is E who scores the least; so F is highest and B sixth. That leaves ranks two to five for A, C, D and E, subject to C above A and D immediately above A - 'close competitors' being read as adjacent ranks. Either D and A take fourth and fifth, leaving C and E to take second and third in either order, or D and A take third and fourth, in which case C must be second and E fifth. So C is second or third, never fourth. Runner-up is A (Second): it would win if the arrangement were pinned further so that C always sits immediately below F. Note that if 'close competitors' is not read as adjacency, C could also be fourth (order F, E, C or D, D or C, A, B), and then no option is correct - which is itself the evidence that adjacency is intended."
+    },
+    {
+      "number": 78,
+      "answer": "B",
+      "value": "C gets more marks than E; the order is F, C, E, D, A, B",
+      "confidence": "MED",
+      "reasoning": "E ranked third rules out C being highest, since that would put E last; so F is first and B sixth, leaving ranks two, four and five for A, C and D. With D immediately above A ('close competitors'), the only consecutive pair available is four and five, so D is fourth, A fifth and C second. Hence C outscores E, making B correct; A is fifth not fourth and D is fourth not fifth, so options C and D are false, and those two near-misses confirm the intended arrangement. Runner-up is A (E gets more marks than C): dropping the adjacency reading admits a second arrangement, F, D, E, C, A, B, in which E beats C - so if 'close competitors' means only that D and A are near each other in marks rather than adjacent in rank, the item has no unique answer and A becomes live."
+    },
+    {
+      "number": 79,
+      "answer": "D",
+      "value": "Whose weight is greatest cannot be determined",
+      "confidence": "HIGH",
+      "reasoning": "The statements do rule Sohan out: twice his weight is below at least one of the others, so he cannot be the heaviest. But they cannot separate Mohan from Rohan. Rohan heaviest is consistent - for example Mohan 5, Rohan 10, Sohan 2 - and so is Mohan heaviest - for example Mohan 19, Rohan 10, Sohan 4. Both examples satisfy S1 and S2, and they do so on either reading of the 'or' in the two statements, so the greatest weight is genuinely undetermined."
+    },
+    {
+      "number": 80,
+      "answer": "B",
+      "value": "Sohan's weight is the least",
+      "confidence": "MED",
+      "reasoning": "Reading S1 as saying that twice Sohan's weight is below the weight of Mohan and below that of Rohan, we get 2S < M and 2S < R, so S is less than half of each of the other two and Sohan is definitely the lightest. S2 then only bounds Mohan below twice Rohan, which is why the heaviest stays undetermined in the companion item - a sensible pairing, one determinate and one not. Runner-up is D (cannot be determined): it wins if the 'or' is read strictly as a disjunction, so that S1 requires only 2S < M or 2S < R. On that reading Mohan can be lightest (Mohan 1, Sohan 2, Rohan 10) and so can Rohan (Rohan 10, Sohan 15, Mohan 40), and nothing is fixed - but then S2 is close to vacuous and both items in the pair collapse to 'cannot be determined', which is why the stronger reading is taken here."
+    }
+  ]
+}

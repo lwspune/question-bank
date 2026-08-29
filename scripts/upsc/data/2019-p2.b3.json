@@ -1,0 +1,233 @@
+{
+  "band": "b3",
+  "pages": [20, 22, 24, 26],
+  "bandReport": {
+    "numbersFound": [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
+    "itemsByPage": {
+      "20": [32, 33, 34, 35, 36, 37],
+      "22": [38, 39, 40],
+      "24": [41, 42, 43],
+      "26": [44, 45]
+    },
+    "firstComplete": true,
+    "lastComplete": true,
+    "notes": "COLUMN-CROP CHECK ON THE GUTTER-FALLBACK PAGE. One of my four pages is on the fallback list (26; gutterFound=false, gutterWidth 10). I opened p26.png and diffed it against the c1/c2 crops: THE CROPS ARE USABLE. The split falls just right of the printed vertical rule, so c1 carries Passage-3 and item 44 whole (all three numbered assumptions and all four options) and c2 carries Passage-4 and item 45 whole. Only single-character fragments of the neighbouring column bleed in, never a word and never an option. Pages 20, 22 and 24 all detected their gutters normally (widths 31, 18, 33) and their crops are clean. --- SEAMS, BOTH CHECKED DIRECTLY ON BOTH SIDES. 18/20 (b2 to b3, both mine): item 31 completes in full at the foot of page 18 column 2 and page 20 column 1 opens cleanly at item 32, nothing straddles it. 26/28 (b3 to a band I DO NOT OWN): I opened p28.png specifically to check this. Item 45 completes in full at the foot of page 26 column 2, and page 28 opens with a fresh 'Passage - 5' heading and item 46 — it does NOT continue item 45 and it does NOT refer back to my Passage-4. So no passage of mine governs an item on page 28 and there is no context that another band must reproduce. For that band's benefit: page 28 carries Passage-5 -> item 46 and Passage-6 -> item 47, one item each, which completes the third directions block. --- A PASSAGE THAT SPANS A PAGE BREAK, INSIDE MY OWN BAND. Page 22 column 2 opens the THIRD directions block ('Directions for the following 7 (seven) items : Read the following six passages...', numbering restarting again at 'Passage - 1') and prints Passage-1 in full, but NO ITEM FOLLOWS IT ON THAT PAGE — the passage ends at the foot of the column and its items are overleaf on page 24. So page 22 yields only items 38, 39, 40, and items 41 and 42 on page 24 both open with 'the above passage' referring back to a passage printed on the PREVIOUS page. Both carry that Passage-1 text as their context, byte-identical (written once and copied, never retyped). A band cut between pages 22 and 24 would have silently produced two items whose context was unrecoverable from their own page; it happens not to be cut there, but it is the exact shape that would go wrong and is worth recording. --- FULL PASSAGE MAPPING FOR THE THIRD BLOCK (items 41-47, six passages), reconciled against the printed count: Passage-1 -> items 41 AND 42; Passage-2 -> item 43; Passage-3 -> item 44; Passage-4 -> item 45; Passage-5 -> item 46 (page 28, not mine); Passage-6 -> item 47 (page 28, not mine). Six passages over seven items, matching the '7 (seven) items' heading exactly. Within my band the only two-item passage is Passage-1; Passages 2, 3 and 4 govern one item each and will raise 'lonely-context' warnings at merge, which are correct rather than defects. The directions preamble itself is deliberately NOT in any context field. Items 32-40 are standalone numeracy/reasoning with no passage and no context. --- PRINTED / SCAN DEFECTS AND TYPOGRAPHY. (i) ITEM 37 OPTION (b): the minus sign in '(y - x)' carries a stray ink tick on its right-hand end, so at page resolution it images as something like a broken dash rather than a clean minus. I zoomed this to 600 dpi to settle it: it is a minus sign with an attached speck, confirmed by comparing it against the clean minus printed in option (c) of the same item, which is the identical expression. Transcribed as a minus. Nothing else in the item is affected. (ii) RAISED MIDDLE DOT decimals preserved as U+00B7 exactly as printed, NOT as a full stop: Q40 options (b) '39·7' and (d) '40·3'. (iii) Items 35 and 38 print ordinals as superscripts (1st, 7th, 8th, 12th, 13th January); transcribed as plain 'st'/'th' since the superscript is typographic, not mathematical. (iv) Passage-1 of block 3 prints curly SINGLE quotes around ‘Genetic Modification (GM)’ and ‘Intellectual Property Rights’; preserved as typed. Passage-4 on page 26 prints em dashes around '— the static Development Plan —'; preserved. (v) Q45 option (d) prints 'peoples’' — the apostrophe placed AFTER the s of an already-plural 'peoples' — which is unusual but is exactly what the page shows and is transcribed verbatim, not silently corrected to 'people's'. (vi) Q38 stem prints 'her parents’ marriage' with the same trailing-apostrophe plural possessive; also verbatim. (vii) No duplicate option text and no blank option anywhere in items 32-45. --- MATH. Item 37 is the only item in this band with mathematical expressions; its variables and the expressions (y - x) and (x + y) are wrapped in \\( \\) inline delimiters. Item 36's X, Y, Z, item 33's ratio '4 : 7' and item 34's A and B are contestant/person labels and plain prose respectively, and are deliberately left unwrapped, consistent with items 11, 29 and 30 in my other bands. No pipe tables occur anywhere in this band."
+  },
+  "questions": [
+    {
+      "number": 32,
+      "stem": "In a school, 60% students play cricket. A student who does not play cricket, plays football. Every football player has got a two-wheeler. Which of the following conclusions cannot be drawn from the above data ?\n1. 60% of the students do not have two-wheelers.\n2. No cricketer has a two-wheeler.\n3. Cricket players do not play football.\nSelect the correct answer using the code given below :",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "2 and 3 only" },
+        { "label": "C", "text": "1 and 3 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "subject": "Logical Reasoning and Analytical Ability",
+      "chapter": "Syllogisms and Logical Deduction",
+      "subtopic": "Statements and Conclusions",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 33,
+      "stem": "The ratio of a two-digit natural number to a number formed by reversing its digits is 4 : 7. The number of such pairs is",
+      "options": [
+        { "label": "A", "text": "5" },
+        { "label": "B", "text": "4" },
+        { "label": "C", "text": "3" },
+        { "label": "D", "text": "2" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Digits and Place Value",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 34,
+      "stem": "In an examination, A has scored 20 marks more than B. If B has scored 5% less marks than A, how much has B scored ?",
+      "options": [
+        { "label": "A", "text": "360" },
+        { "label": "B", "text": "380" },
+        { "label": "C", "text": "400" },
+        { "label": "D", "text": "420" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Percentage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 35,
+      "stem": "Seeta and Geeta go for a swim after a gap of every 2 days and every 3 days respectively. If on 1st January both of them went for a swim together, when will they go together next ?",
+      "options": [
+        { "label": "A", "text": "7th January" },
+        { "label": "B", "text": "8th January" },
+        { "label": "C", "text": "12th January" },
+        { "label": "D", "text": "13th January" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Number System",
+      "subtopic": "Factors, Multiples, HCF and LCM",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 36,
+      "stem": "X, Y and Z are three contestants in a race of 1000 m. Assume that all run with different uniform speeds. X gives Y a start of 40 m and X gives Z a start of 64 m. If Y and Z were to compete in a race of 1000 m, how many metres start will Y give to Z ?",
+      "options": [
+        { "label": "A", "text": "20" },
+        { "label": "B", "text": "25" },
+        { "label": "C", "text": "30" },
+        { "label": "D", "text": "35" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Time, Speed and Work",
+      "subtopic": "Time, Speed and Distance",
+      "difficulty": "HARD",
+      "flags": []
+    },
+    {
+      "number": 37,
+      "stem": "If \\(x\\) is greater than or equal to 25 and \\(y\\) is less than or equal to 40, then which one of the following is always correct ?",
+      "options": [
+        { "label": "A", "text": "\\(x\\) is greater than \\(y\\)" },
+        { "label": "B", "text": "\\((y - x)\\) is greater than 15" },
+        { "label": "C", "text": "\\((y - x)\\) is less than or equal to 15" },
+        { "label": "D", "text": "\\((x + y)\\) is greater than or equal to 65" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Algebra and Equations",
+      "subtopic": "Inequalities and Maxima-Minima",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 38,
+      "stem": "Ena was born 4 years after her parents’ marriage. Her mother is three years younger than her father and 24 years older than Ena, who is 13 years old. At what age did Ena's father get married ?",
+      "options": [
+        { "label": "A", "text": "22 years" },
+        { "label": "B", "text": "23 years" },
+        { "label": "C", "text": "24 years" },
+        { "label": "D", "text": "25 years" }
+      ],
+      "subject": "General Mental Ability",
+      "chapter": "Miscellaneous Mental Ability",
+      "subtopic": "Age Problems",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 39,
+      "stem": "Rakesh had money to buy 8 mobile handsets of a specific company. But the retailer offered very good discount on that particular handset. Rakesh could buy 10 mobile handsets with the amount he had. What was the discount the retailer offered ?",
+      "options": [
+        { "label": "A", "text": "15%" },
+        { "label": "B", "text": "20%" },
+        { "label": "C", "text": "25%" },
+        { "label": "D", "text": "30%" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Commercial Arithmetic",
+      "subtopic": "Profit, Loss and Discount",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 40,
+      "stem": "The average marks of 100 students are given to be 40. It was found later that marks of one student were 53 which were misread as 83. The corrected mean marks are",
+      "options": [
+        { "label": "A", "text": "39" },
+        { "label": "B", "text": "39·7" },
+        { "label": "C", "text": "40" },
+        { "label": "D", "text": "40·3" }
+      ],
+      "subject": "Basic Numeracy",
+      "chapter": "Arithmetic Operations and Ratios",
+      "subtopic": "Average",
+      "difficulty": "EASY",
+      "flags": []
+    },
+    {
+      "number": 41,
+      "context": "What stands in the way of the widespread and careful adoption of ‘Genetic Modification (GM)’ technology is an ‘Intellectual Property Rights’ regime that seeks to create private monopolies for such technologies. If GM technology is largely corporate driven, it seeks to maximize profits and that too in the short run. That is why corporations make major investments for herbicide-tolerant and pest-resistant crops. Such properties have only a short window, as soon enough, pests and weeds will evolve to overcome such resistance. This suits the corporations. The National Farmers Commission pointed out that priority must be given in genetic modification to the incorporation of genes that can help impart resistance to drought, salinity and other stresses.",
+      "stem": "Which one of the following is the most logical, rational and crucial message conveyed by the above passage ?",
+      "options": [
+        { "label": "A", "text": "Public research institutions should take the lead in GM technology and prioritise the technology agenda." },
+        { "label": "B", "text": "Developing countries should raise this issue in WTO and ensure the abolition of Intellectual Property Rights." },
+        { "label": "C", "text": "Private corporations should not be allowed to do agribusiness in India, particularly the seed business." },
+        { "label": "D", "text": "Present Indian circumstances do not favour the cultivation of genetically modified crops." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Central Idea and Best Reflection",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 42,
+      "context": "What stands in the way of the widespread and careful adoption of ‘Genetic Modification (GM)’ technology is an ‘Intellectual Property Rights’ regime that seeks to create private monopolies for such technologies. If GM technology is largely corporate driven, it seeks to maximize profits and that too in the short run. That is why corporations make major investments for herbicide-tolerant and pest-resistant crops. Such properties have only a short window, as soon enough, pests and weeds will evolve to overcome such resistance. This suits the corporations. The National Farmers Commission pointed out that priority must be given in genetic modification to the incorporation of genes that can help impart resistance to drought, salinity and other stresses.",
+      "stem": "On the basis of the above passage, the following assumptions have been made :\n1. The issue of effects of natural calamities on agriculture is not given due consideration by GM technology companies.\n2. In the long run, GM technology will not be able to solve agricultural problems arising due to global warming.\nWhich of the above assumptions is/are valid ?",
+      "options": [
+        { "label": "A", "text": "1 only" },
+        { "label": "B", "text": "2 only" },
+        { "label": "C", "text": "Both 1 and 2" },
+        { "label": "D", "text": "Neither 1 nor 2" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 43,
+      "context": "Most invasive species are neither terribly successful nor very harmful. Britain's invasive plants are not widespread, not spreading especially quickly, and often less of a nuisance than vigorous natives such as bracken. The arrival of new species almost always increases biological diversity in a region; in many cases, a flood of newcomers drives no native species to extinction. One reason is that invaders tend to colonise disturbed habitats like polluted lakes and post-industrial wasteland, where little else lives. They are nature's opportunists.",
+      "stem": "Which one of the following is the most logical and rational inference that can be made from the above passage ?",
+      "options": [
+        { "label": "A", "text": "Invasive species should be used to rehabilitate desert areas and wastelands of a country." },
+        { "label": "B", "text": "Laws against the introduction of foreign plants are unnecessary." },
+        { "label": "C", "text": "Sometimes, the campaigns against foreign plants are pointless." },
+        { "label": "D", "text": "Foreign plants should be used to increase the biodiversity of a country." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Inference and Implication",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 44,
+      "context": "Diarrhoeal deaths among Indian children are mostly due to food and water contamination. Use of contaminated groundwater and unsafe chemicals in agriculture, poor hygiene in storage and handling of food items to food cooked and distributed in unhygienic surroundings; there are myriad factors that need regulation and monitoring. People need to have awareness of adulteration and ways of complaining to the relevant authorities. Surveillance of food-borne diseases involves a number of government agencies and entails a good training of inspection staff. Considering the proportion of the urban population that depends on street food for its daily meals, investing in training and education of street vendors is of great significance.",
+      "stem": "On the basis of the above passage, the following assumptions have been made :\n1. Food safety is a complex issue that calls for a multipronged solution.\n2. Great investments need to be made in developing the manpower for surveillance and training.\n3. India needs to make sufficient legislation for governing food processing industry.\nWhich of the above assumptions is/are valid ?",
+      "options": [
+        { "label": "A", "text": "1 and 2 only" },
+        { "label": "B", "text": "3 only" },
+        { "label": "C", "text": "1 and 3 only" },
+        { "label": "D", "text": "1, 2 and 3" }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Assumptions Underlying the Passage",
+      "difficulty": "MODERATE",
+      "flags": []
+    },
+    {
+      "number": 45,
+      "context": "The interests of working and poor people have historically been neglected in the planning of our cities. Our cities are increasingly intolerant, unsafe and unlivable places for large numbers of citizens and yet we continue to plan via the old ways — the static Development Plan — that draws exclusively from technical expertise, distanced from people's live experiences and needs, and actively excluding large number of people, places, activities and practices that are an integral part of the city.",
+      "stem": "The passage seems to argue",
+      "options": [
+        { "label": "A", "text": "against the monopoly of builders and the interests of elite groups." },
+        { "label": "B", "text": "against the need for global and smart cities." },
+        { "label": "C", "text": "in favour of planning cities mainly for working class and poor people." },
+        { "label": "D", "text": "in favour of participation of peoples’ groups in city planning." }
+      ],
+      "subject": "Comprehension",
+      "chapter": "Reading Comprehension",
+      "subtopic": "Author's Tone and Attitude",
+      "difficulty": "MODERATE",
+      "flags": []
+    }
+  ]
+}
