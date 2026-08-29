@@ -1,0 +1,122 @@
+[
+ {
+  "questionId": "9e13d47e-2e12-4b46-be5a-6e900dc077af",
+  "qnum": "118",
+  "derived": "B",
+  "value": "2*cos(2*theta)",
+  "confidence": "high",
+  "note": "z/zbar = e^(2 i theta), zbar/z = e^(-2 i theta), sum = 2 cos 2theta. sympy simplifies the expression to 2*cos(2*theta) exactly. Checked numerically at theta = 0.3, 1.1, 2.4 (r=2.7): all four options are numerically distinct at each of those points and only 2cos2theta matches."
+ },
+ {
+  "questionId": "51a2b64e-a1b0-408d-aa5c-ca7d11b14484",
+  "qnum": "161",
+  "derived": "NONE",
+  "value": "64 - 64*sqrt(3)*i = -128*omega (modulus 128), not real and not equal to any option",
+  "confidence": "high",
+  "note": "STEM DEFECT. As printed the product runs over exponents 2^k for k=0..6, i.e. SEVEN factors, the last being (1 - w^64 + w^128). Each factor is -2w (k even) or -2w^2 (k odd), so the product is (-2)^7 * w^4 * w^6 = -128*w = 64 - 64*sqrt(3)*i. Verified with sympy using w = -1/2 + i*sqrt(3)/2. Because the number of factors is ODD the value is not even well defined for 'an imaginary cube root of unity': taking the other primitive root gives the conjugate 64 + 64*sqrt(3)*i. Only an EVEN number of factors gives a real value, 4^(n/2): 2 factors -> 4 (option A), 4 factors -> 16 (option D), 6 factors -> 64, 8 -> 256. The 4-factor truncation ending at (1 - w^8 + w^16) gives exactly 16 = option D, which is almost certainly the intended question; options 8 and 12 correspond to no truncation at all. Recommend fixing the last printed factor rather than the key."
+ },
+ {
+  "questionId": "af1ddb6f-01bf-4cdf-be92-a76bb88eca70",
+  "qnum": "182",
+  "derived": "C",
+  "value": "a^2 - 2b^2",
+  "confidence": "high",
+  "note": "alpha+beta = a, alpha*beta = b^2, so alpha^2+beta^2 = a^2 - 2b^2. sympy solved the quadratic and expanded the sum of squares to a**2 - 2*b**2. Discriminating numeric checks at (a,b) = (3,2), (5,7), (-4,3): the four options give distinct values at each point (e.g. at (5,7): 1, 74, -73, -24) and only option C matches the computed value every time."
+ },
+ {
+  "questionId": "51d330ae-cb75-474e-9e85-2c808ca366ce",
+  "qnum": "209",
+  "derived": "A",
+  "value": "a = -3, b = -15, ab = 45",
+  "confidence": "high",
+  "note": "Real coefficients force the conjugate 2+i to be the other root. Sum 4 = -12/a gives a = -3; product 5 = b/a gives b = -15. Solved as a real linear system by separating real and imaginary parts of a(2-i)^2 + 12(2-i) + b = 0; sympy returned the unique solution {a: -3, b: -15}. Back-check: roots of -3x^2 + 12x - 15 are exactly 2-i and 2+i. ab = 45."
+ },
+ {
+  "questionId": "31d258a0-8344-4202-bd96-c09f15f0cc33",
+  "qnum": "210",
+  "derived": "B",
+  "value": "p + q = 2r",
+  "confidence": "high",
+  "note": "Clearing denominators gives x^2 + (p+q-2r)x + (pq - r(p+q)) = 0. Roots equal in magnitude and opposite in sign means their sum is 0, so p+q-2r = 0, i.e. p+q = 2r. Verified numerically with p=1, q=5, r=3 (so p+q = 6 = 2r): the roots are +/-3.6056, they sum to 0, and both satisfy the ORIGINAL equation 1/(x+p) + 1/(x+q) = 1/3 to double precision."
+ },
+ {
+  "questionId": "50670494-6b76-49ae-a5d3-ca8d1ee383b2",
+  "qnum": "245",
+  "derived": "D",
+  "value": "72",
+  "confidence": "high",
+  "note": "'Using all the digits' means every one of 1,2,3,4,5 exactly once, so the number is a 5-digit permutation. Brute-forced all 120 permutations of '12345' and counted those below 40000: exactly 72 (leading digit 1, 2 or 3, i.e. 3 * 4! = 72). For the record, the looser reading 'any length, no repetition' would give 277, which is not an option, so the intended reading is confirmed by the option set."
+ },
+ {
+  "questionId": "a8088368-2ba4-47ff-9ea8-ee97a1f7688b",
+  "qnum": "268",
+  "derived": "D",
+  "value": "12",
+  "confidence": "high",
+  "note": "Enumerated all 4! = 24 orderings of P,Q,R,S and counted those where Q's position index exceeds P's: exactly 12. By symmetry P-before-Q and Q-before-P split the 24 evenly, so 4!/2 = 12."
+ },
+ {
+  "questionId": "19a60ecd-5e7f-49f7-9fa3-2f7e607d2621",
+  "qnum": "284",
+  "derived": "B",
+  "value": "r = 3 (with n = 9)",
+  "confidence": "high",
+  "note": "Exhaustive search over n < 60 and 1 <= r < n for the simultaneous conditions C(n,r-1)=36, C(n,r)=84, C(n,r+1)=126 returned the unique pair (n,r) = (9,3): 9C2=36, 9C3=84, 9C4=126. Trap worth noting: option A = 9 is the value of n, not r; the question asks for r."
+ },
+ {
+  "questionId": "50b8fb46-7572-4e00-b5d6-88e9bf8872ec",
+  "qnum": "304",
+  "derived": "A",
+  "value": "n = 5",
+  "confidence": "high",
+  "note": "T_n = C(n,3) since no three vertices of a regular polygon are collinear. C(n+1,3) - C(n,3) = C(n,2) = n(n-1)/2 = 10 gives n = 5. Searched n from 3 to 59 and n = 5 is the only solution; the distractors give 21 (n=7), 28 (n=8) and 45 (n=10)."
+ },
+ {
+  "questionId": "0ca0441f-57c1-4827-9dbd-b70c9bfe079b",
+  "qnum": "353",
+  "derived": "B",
+  "value": "60",
+  "confidence": "high",
+  "note": "Fully expanded (1+x^2)^5 * (1+x)^4 with sympy; the x^5 coefficient is 60. By hand: 2k + j = 5 with j <= 4 gives (k,j) = (1,3) -> 5*4 = 20 and (k,j) = (2,1) -> 10*4 = 40, total 60. The distractor 40 is the single (2,1) term and 20 (absent) would be the (1,3) term alone."
+ },
+ {
+  "questionId": "def44974-cb60-4d29-9344-159d25d590ca",
+  "qnum": "392",
+  "derived": "C",
+  "value": "1",
+  "confidence": "high",
+  "note": "The sum of all coefficients of a polynomial is its value at x = 1: (1 + 3 - 3)^1143 = 1^1143 = 1. Cross-checked by fully expanding the cube (1+3x-3x^2)^3 and substituting x=1, which returns 1. The odd exponent 1143 is a red herring aimed at the -1 distractor; the base evaluates to +1, not -1."
+ },
+ {
+  "questionId": "6e01ae35-5ee7-4774-842b-09372263c979",
+  "qnum": "423",
+  "derived": "D",
+  "value": "-27c",
+  "confidence": "high",
+  "note": "Take roots alpha-d, alpha, alpha+d. Then a = -3*alpha, b = 3*alpha^2 - d^2, c = -alpha^3 + alpha*d^2. Symbolically 2a^3 - 9ab = 27*alpha*(alpha^2 - d^2), and sympy confirms 2a^3 - 9ab + 27c = 0 identically while 2a^3 - 9ab - 27c is not zero. Two discriminating concrete AP root sets: {1,2,3} gives 2a^3-9ab = 162 with 27c = -162 and -27c = 162; {2,5,8} gives 2160 with -27c = 2160. Sign matches -27c in both."
+ },
+ {
+  "questionId": "e1e5e944-7378-4038-9c71-6f387ad2b2cc",
+  "qnum": "530",
+  "derived": "B",
+  "value": "A is the zero matrix (A = A^T and A = -A^T force 2A = O)",
+  "confidence": "high",
+  "note": "Solved the full 3x3 entrywise system a_ij = a_ji and a_ij = -a_ji with sympy; the unique solution is every entry 0. FLAG: options A, C and D are all vacuously TRUE as well, since a zero square matrix is diagonal, is a scalar matrix with scalar 0, and is square. B is the only option that fully characterises A and is clearly the intended answer, but the stem does not say 'best' or 'most specific', so strictly more than one option is true."
+ },
+ {
+  "questionId": "e1e047df-58ba-42f7-ae03-22daab459a58",
+  "qnum": "538",
+  "derived": "A",
+  "value": "A + A^T is symmetric",
+  "confidence": "high",
+  "note": "(A + A^T)^T = A^T + A = A + A^T, so it is symmetric. Symbolically for a general 2x2 matrix, (A+A^T) - (A+A^T)^T is the zero matrix while (A+A^T) + (A+A^T)^T is not, so it is symmetric and not skew. Checked a random integer 3x3 A: A+A^T, A*A^T, A^T+A and A^T*A are ALL symmetric and none is skew, so options B, C and D are false and exactly one option is true. Note C is the same object as A merely rewritten, but it asserts the wrong property."
+ },
+ {
+  "questionId": "3a9fb28d-ef41-486b-bdd5-908fba172d92",
+  "qnum": "545",
+  "derived": "B",
+  "value": "A^(-1) = I - A",
+  "confidence": "high",
+  "note": "From A^2 - A + I = O we get A - A^2 = I, i.e. A(I - A) = I, so A^(-1) = I - A. Verified on two independent concrete matrices that satisfy A^2 - A + I = O: the companion matrix [[0,-1],[1,1]] (its inverse is [[1,1],[-1,0]] which equals I - A exactly, while A-I, A+I and A all differ) and the 60-degree rotation [[1/2,-sqrt(3)/2],[sqrt(3)/2,1/2]] (again inverse minus (I - A) is the zero matrix). A is invertible because det is nonzero for both."
+ }
+]

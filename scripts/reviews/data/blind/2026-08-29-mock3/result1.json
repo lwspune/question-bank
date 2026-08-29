@@ -1,0 +1,122 @@
+[
+ {
+  "questionId": "404b2535-0772-49bc-8837-c4217e32a923",
+  "qnum": "01-18",
+  "derived": "C",
+  "value": "Area = 7/2 = 3.5 square units",
+  "confidence": "high",
+  "note": "AB=(-1,2,0), AC=(-1,0,3); cross product = (6,3,2), magnitude exactly 7, so area = 7/2. Confirmed independently by Heron with sides sqrt5, sqrt10, sqrt13, which also gives exactly 7/2. Option A (7) is the cross-product magnitude before halving. Distractors sqrt14 = 3.742 and sqrt61/2 = 3.905 are numerically close to 3.5, so this must be matched on exact value, not on decimals."
+ },
+ {
+  "questionId": "f8d91813-ddec-46bd-9493-9251750ba554",
+  "qnum": "02-16",
+  "derived": "A",
+  "value": "minimum P(A union B) = 3/4",
+  "confidence": "high",
+  "note": "P(A union B) = P(A)+P(B)-P(A and B), and P(A and B) is at most min(3/4, 5/8) = 5/8, so the union is at least 3/4 + 5/8 - 5/8 = 3/4. Equivalently the union can never be smaller than the larger of the two, 3/4, and that bound is attained when B is contained in A (possible since 5/8 < 3/4). Option B 7/8 is not attainable at all here since P(A)+P(B) = 11/8 > 1 forces overlap at least 3/8, capping the union at 1 and the range is [3/4, 1]. Option D 1/2 is below P(A) and impossible."
+ },
+ {
+  "questionId": "d09d60af-f80c-44aa-b925-335b92e753e4",
+  "qnum": "02-23",
+  "derived": "D",
+  "value": "angle A = 30 degrees",
+  "confidence": "high",
+  "note": "Sine rule: sinA/sinB = a/b = 1/sqrt3, and sinB = sin60 = sqrt3/2, so sinA = 1/2 exactly. That gives A = 30 or 150; 150+60 = 210 > 180 so 150 is rejected and A = 30. Corroborated by the stem's own parenthetical: the resulting angles are 30, 60, 90, which are in AP with 60 as the middle term, exactly as the stem asserts. Clean value, no ugly root here."
+ },
+ {
+  "questionId": "10c62ee4-bb96-46dd-956f-253e3390a2ec",
+  "qnum": "02-41",
+  "derived": "B",
+  "value": "BC = 30 m (tower height 30*sqrt3 = 51.96 m)",
+  "confidence": "high",
+  "note": "An elevation of 90 degrees means C is at the foot of the tower, so horizontal distances from the foot are h/tan30 = h*sqrt3 for A and h/tan60 = h/sqrt3 for B. AB = h*sqrt3 - h/sqrt3 = 2h/sqrt3 = 60 gives h = 30*sqrt3, hence BC = h/sqrt3 = 30. Check: AC = 90 = AB + BC = 60 + 30, consistent with A, B, C collinear in that order."
+ },
+ {
+  "questionId": "465d3fd1-3072-4315-ac01-362253e2d5b6",
+  "qnum": "03-9",
+  "derived": "D",
+  "value": "quotient = 11100 in binary (decimal 28)",
+  "confidence": "high",
+  "note": "111000 base 2 = 56 and 10 base 2 = 2, so the quotient is 28 with remainder 0, and 28 = 11100 base 2. Cross-check: dividing by binary 10 is a single right shift, and shifting 111000 right by one gives 11100 directly. Options evaluate to A=24, B=26, C=30, D=28, so only D matches."
+ },
+ {
+  "questionId": "3c284319-61b9-4909-837e-663616c50bd7",
+  "qnum": "03-14",
+  "derived": "D",
+  "value": "angle C = 120 degrees",
+  "confidence": "high",
+  "note": "Expanding gives a^2 + ab + b^2 - c^2 = 0, so a^2 + b^2 - c^2 = -ab and cosC = (a^2+b^2-c^2)/(2ab) = -1/2 exactly, hence C = 120. Verified numerically with a = b = 1, giving c = sqrt3, which satisfies the triangle inequality and returns 120.0 degrees from the cosine rule. Note the given relation forces C obtuse, which alone eliminates options A, B and C."
+ },
+ {
+  "questionId": "2a8814e6-8f9b-4c59-92ab-eeea8dacb9d5",
+  "qnum": "4",
+  "derived": "D",
+  "value": "all three statements true: AB defined, BA defined, and AB = BA = [[3,5],[0,8]]",
+  "confidence": "high",
+  "note": "Both matrices are 2x2 so both products are defined. Computed AB = [[3,5],[0,8]] and BA = [[3,5],[0,8]]; the difference matrix is exactly zero, so statement 3 holds too. These two upper-triangular matrices commute because B = (A + something) is not needed - it is checked directly, not assumed; matrices generally do not commute, so statement 3 has to be computed rather than reasoned away."
+ },
+ {
+  "questionId": "86e5cae6-ea2a-4fea-ab4d-68431c522a5d",
+  "qnum": "5",
+  "derived": "C",
+  "value": "6",
+  "confidence": "high",
+  "note": "Enumerated all 8 subsets of {1,2,3}; removing the set itself leaves 7 proper subsets, and removing the empty set leaves 6 non-empty proper subsets: {1},{2},{3},{1,2},{1,3},{2,3}. Formula 2^n - 2 = 8 - 2 = 6. Option A 8 is all subsets, option B 7 is all proper subsets including the empty set."
+ },
+ {
+  "questionId": "0daa867c-8b3e-4530-b832-f3069fc5e354",
+  "qnum": "06-36",
+  "derived": "C",
+  "value": "greatest coefficient is 15360 (the coefficient of x^3)",
+  "confidence": "medium",
+  "note": "FLAG: heterogeneous option set - three options name a POSITION and one gives a VALUE. Full coefficient list of (2+x)^10 is 1024, 5120, 11520, 15360, 13440, 8064, 3360, 960, 180, 20, 1 for k = 0..10, so the greatest is 15360 at x^3. No positional option names x^3: coefficient of x^10 is 1, of x^5 is 8064, of x^1 is 5120. Only C is true. Confidence medium only because an alternative reading, greatest BINOMIAL coefficient C(10,k) ignoring the 2^(10-k) factor, peaks at k=5 and would make B true; the wording 'the coefficient that has the greatest numerical value' means the actual coefficient of the term, and the presence of the exact value 15360 among the options confirms that reading."
+ },
+ {
+  "questionId": "be1e340a-e384-4de0-86ce-2230bef0ce4b",
+  "qnum": "07-21",
+  "derived": "C",
+  "value": "r = 0.8",
+  "confidence": "high",
+  "note": "Regression coefficient of X on Y is b_xy = r * (SD_X / SD_Y) = r * 5/10 = r/2. Setting r/2 = 0.4 gives r = 0.8. Consistency check: then b_yx = r * SD_Y/SD_X = 1.6 and b_xy * b_yx = 0.4 * 1.6 = 0.64 = r^2, as required. Option A 0.2 is the trap from inverting the SD ratio, i.e. treating the given number as the regression coefficient of Y on X instead; note |r| <= 1 does not discriminate between 0.2 and 0.8, so the definition is what settles it."
+ },
+ {
+  "questionId": "2e4c835e-0c3a-4e10-96d4-8f33997c0266",
+  "qnum": "9",
+  "derived": "D",
+  "value": "k = 9 and k = -7",
+  "confidence": "high",
+  "note": "Collecting terms gives 2x^2 + (1-k)x + 8 = 0, discriminant (1-k)^2 - 64 = k^2 - 2k - 63 = 0, so k = 9 or k = -7. Verified by substitution: k = 9 gives the double root x = 2, and k = -7 gives the double root x = -2; both roots are real and repeated. Option C (-9 and 7) is the sign-flipped distractor."
+ },
+ {
+  "questionId": "258331ea-69b6-4644-9dda-7edacc06b8cc",
+  "qnum": "18",
+  "derived": "B",
+  "value": "always even",
+  "confidence": "high",
+  "note": "Let g(x) = (1/2)[f(x) + f(-x)]. Then g(-x) = (1/2)[f(-x) + f(x)] = g(x) for every f, so g is always even. Tested on f = x^3, x^2, e^x, x^2+x+1 and sin+cos, giving 0, x^2, cosh x, x^2+1 and cos x, all even. Minor note: when f is odd, g is identically zero and is then both even and odd, but odd fails for f = x^2 (g = x^2), so 'odd' is not ALWAYS true while 'even' is. Option D fails too since g = x^2 is not one-one."
+ },
+ {
+  "questionId": "317bcc56-f33a-4107-91cd-acacae28bc60",
+  "qnum": "24",
+  "derived": "D",
+  "value": "a - d = 0",
+  "confidence": "high",
+  "note": "Subtracting a+(m-1)d = 1/n from a+(n-1)d = 1/m gives (m-n)d = (m-n)/(mn), so d = 1/(mn) (valid since m is not equal to n), and back-substituting gives a = 1/(mn) as well. Hence a = d and a - d = 0. Verified at (m,n) = (2,5), (3,7) and (4,9): in each case both terms reproduce the required 1/n and 1/m exactly and a - d = 0. Option C 1/mn is the common value of a and of d, not their difference."
+ },
+ {
+  "questionId": "a702666e-781f-4e87-bad2-272892c992c9",
+  "qnum": "27",
+  "derived": "A",
+  "value": "the expression equals A",
+  "confidence": "high",
+  "note": "AB = A(I-A) = A - A^2 = 0 and BA = (I-A)A = A - A^2 = 0 by idempotency, while (I-A)^2 = I - 2A + A^2 = I - A. So the expression is 0 + 0 + I - (I-A) = A. Verified on five concrete idempotent matrices including non-symmetric ones ([[1,1],[0,0]] and [[2,-1],[2,-1]]) and a 3x3 case, all returning exactly A. Discriminating point matters here: the zero matrix is a degenerate idempotent for which A, 2A and -A all coincide, so it proves nothing; the non-zero idempotents separate option A from B and C cleanly."
+ },
+ {
+  "questionId": "378f81e1-0562-41f2-87c7-8738e03c4f12",
+  "qnum": "31",
+  "derived": "A",
+  "value": "p^2, q^2, r^2 are in A.P. (condition reduces to 2q^2 = p^2 + r^2)",
+  "confidence": "high",
+  "note": "The AP condition 2/(r+p) = 1/(p+q) + 1/(q+r) clears to the numerator 2q^2 - p^2 - r^2 = 0, i.e. exactly 2q^2 = p^2 + r^2, which is p^2, q^2, r^2 in AP. Tested at discriminating points: (p,q,r) = (1,5,7) satisfies the condition and has p^2,q^2,r^2 in AP while p,q,r are NOT in AP and 1/p,1/q,1/r are NOT in AP, so it eliminates B and C as necessary consequences. Conversely (1,2,3) and (2,5,8) are in AP but fail the condition (kills B), and (2,3,6), whose reciprocals are in AP, also fails the condition (kills C)."
+ }
+]

@@ -1,0 +1,122 @@
+[
+ {
+  "questionId": "720eaf87-044b-4920-86f8-6e01ad4a004f",
+  "qnum": "1144",
+  "derived": "D",
+  "value": "13 (identically constant)",
+  "confidence": "high",
+  "note": "Let s=sin x cos x. 3(1-2s)^2 = 3-12s+12s^2; 6(1+2s)=6+12s; 4(1-3s^2)=4-12s^2. Sum = 13, all s-terms cancel. Verified numerically at x = 0.3, 1.1, 2.7, -0.8, 5.0 (all give exactly 13.0), so the constant is confirmed at points where sin/cos differ in sign and magnitude."
+ },
+ {
+  "questionId": "984f0e82-eedd-4928-ad76-5e2691d08468",
+  "qnum": "1156",
+  "derived": "A",
+  "value": "1",
+  "confidence": "high",
+  "note": "25+20=45, so (tan25+tan20)/(1-tan25 tan20)=1, giving tan25+tan20 = 1 - tan25 tan20, hence the sum is 1. Numerically 1.0000000."
+ },
+ {
+  "questionId": "bbcc543d-d5b2-4dc0-a1da-6f630c3cdb03",
+  "qnum": "1158",
+  "derived": "A",
+  "value": "2 sqrt(2) = 2.8284271247",
+  "confidence": "high",
+  "note": "tan t + cot t = 2/sin 2t; 2t = 135 deg, sin 135 = 1/sqrt(2), so value = 2 sqrt(2). Numerically tan 67.5 + cot 67.5 = 2.82842712474619, identical to 2 sqrt(2) to 40 digits."
+ },
+ {
+  "questionId": "824943a6-a78f-4b52-be84-41fee4e9b4f0",
+  "qnum": "1164",
+  "derived": "B",
+  "value": "a/b",
+  "confidence": "high",
+  "note": "Componendo-dividendo: (sin(x+y)+sin(x-y))/(sin(x+y)-sin(x-y)) = 2 sin x cos y/(2 cos x sin y) = tan x/tan y, and the RHS becomes 2a/2b = a/b. Verified by solving the given relation numerically for x with y = 0.4 fixed, at three DISCRIMINATING (a,b) pairs where a/b differs from b/a: (5,2) -> 2.5, (7,3) -> 2.3333, (2,9) -> 0.22222. Each matches a/b, none matches b/a."
+ },
+ {
+  "questionId": "8760ae44-87df-4788-bb74-9be3cbc4855d",
+  "qnum": "1165",
+  "derived": "B",
+  "value": "-1/16 = -0.0625",
+  "confidence": "high",
+  "note": "Product cos(2^k t), k=0..3, equals sin(16t)/(16 sin t) with t = pi/15; sin(16 pi/15) = sin(pi + pi/15) = -sin(pi/15), so the product is -1/16. The sign is the whole point (cos(8pi/15) < 0). Numerically -0.0625 exactly."
+ },
+ {
+  "questionId": "df503c9b-76f5-4328-a878-3cf45f0a41af",
+  "qnum": "1181",
+  "derived": "A",
+  "value": "empty set",
+  "confidence": "high",
+  "note": "The expression equals tan(3x-2x) = tan x wherever it is defined, so it would need tan x = 1, i.e. x = n*pi + pi/4. But at every one of those x, 2x = 2n*pi + pi/2, so tan 2x is undefined (cos 2x = 0 checked for n = -2..3) and the expression itself is undefined. Sympy returns nan at x = pi/4 while the LIMIT there is 1 - that limit is the trap. A scan of 200000 points on (-6,6) found NO x with value within 1e-6 of 1. FLAG: option C is defective independently of this, since it omits n = 0 and all negative n, so it is not the full formal solution set either."
+ },
+ {
+  "questionId": "2d7e6587-3739-45c4-b502-63bdfeced868",
+  "qnum": "1237",
+  "derived": "D",
+  "value": "pi/6 = 0.5235987756",
+  "confidence": "high",
+  "note": "cot x + cosec x = (1+cos x)/sin x = cot(x/2) = sqrt(3), so x/2 = pi/6 and the principal value is x = pi/3; x - pi/6 = pi/6. Root-solved numerically: x = 1.0471975512 = pi/3, check cot x + cosec x = 1.7320508076 = sqrt(3). A sign-change scan on (-2pi, 2pi) found only x = pi/3 and pi/3 - 2pi, confirming x = 2n*pi + pi/3. Option A (pi/3) is the value of x itself, not of x - pi/6."
+ },
+ {
+  "questionId": "80256463-3f4f-4067-b44c-5bf9d32d0306",
+  "qnum": "1278",
+  "derived": "D",
+  "value": "sqrt(2) - 1 = 0.4142135624",
+  "confidence": "high",
+  "note": "5-12-13 with b = 13 opposite B, so cos B = (25+144-169)/(2*5*12) = 0 exactly and B = 90 deg. tan(B/4) = tan 22.5 = sqrt(2) - 1 = 0.41421356237, matching option D to 40 digits (sqrt(2)+1 = 2.414, sqrt(3)-1 = 0.732, sqrt(3)+1 = 2.732 all excluded)."
+ },
+ {
+  "questionId": "31ff19f0-97a6-4d8f-b5fc-1f66c4ad3883",
+  "qnum": "1309",
+  "derived": "D",
+  "value": "3",
+  "confidence": "high",
+  "note": "Each arccos lies in [0, pi], so a sum of 3pi forces all three to equal pi, i.e. x = y = z = -1. Then xy + yz + zx = 1 + 1 + 1 = 3. Checked 3*acos(-1) = 9.42477796 = 3pi."
+ },
+ {
+  "questionId": "563ed4d4-222e-43d2-bb44-5abcd6c945fb",
+  "qnum": "1379",
+  "derived": "B",
+  "value": "1 - pi/4 = 0.2146018366",
+  "confidence": "high",
+  "note": "(sin t - 1)/cos t = -tan(pi/4 - t/2), so arctan gives t/2 - pi/4 = 1 - pi/4 at t = 2, and that value 0.2146 lies inside (-pi/2, pi/2) so the principal branch is correct. Direct computation: arctan((sin 2 - 1)/cos 2) = 0.21460183660255169, equal to 1 - pi/4 to 40 digits. Note sin 2 - 1 and cos 2 are BOTH negative, so the quotient is positive - option D is the sign trap."
+ },
+ {
+  "questionId": "48c6adbc-6b11-4347-a4ed-a1b2b687a181",
+  "qnum": "1481",
+  "derived": "A",
+  "value": "(1, -1)",
+  "confidence": "high",
+  "note": "A.P. gives 2b = a + c, so ax + 2by + c = a(x+y) + c(y+1) = 0 for all admissible a, c, forcing x + y = 0 and y + 1 = 0, i.e. (1, -1). Tested all four options against five distinct A.P.s (1,2,3), (5,7,9), (-2,1,4), (3,3,3), (0,5,10): only (1,-1) satisfies every one."
+ },
+ {
+  "questionId": "41327c9f-07a6-42c8-959a-7e6495e2275e",
+  "qnum": "1488",
+  "derived": "B",
+  "value": "r(q-p)/(pq)",
+  "confidence": "high",
+  "note": "a = r/p (y = 0) and b = -r/q (x = 0, since -qb = r), so a + b = r/p - r/q = r(q-p)/(pq). Sympy: option B minus (a+b) simplifies to 0; options A and C do not. Discriminating numeric p=2, q=3, r=6: a+b = 3 - 2 = 1, and B = 1, C = -1, A = 5, D = -30. The sign of b is the whole question."
+ },
+ {
+  "questionId": "6b81397e-8733-4219-9532-1dfac578d3ee",
+  "qnum": "1527",
+  "derived": "B",
+  "value": "2(x+y) = 3xy",
+  "confidence": "high",
+  "note": "The two lines meet at (4/3, 4/3). With A = (2h, 0), B = (0, 2k) the midpoint is (h, k), and the line x/(2h) + y/(2k) = 1 through (4/3, 4/3) gives (2/3)(1/h + 1/k) = 1, i.e. 2(h+k) = 3hk. Verified at four DISCRIMINATING slopes m = -1, -2, -0.5, -3: 2(h+k)-3hk = 0 in every case, while the other three option-expressions are non-zero and slope-dependent (m = -1 gives the symmetric point h = k = 4/3, so the other slopes are what separate the options)."
+ },
+ {
+  "questionId": "6d571ddf-a8af-4e22-8b13-abf7e5d67766",
+  "qnum": "1535",
+  "derived": "B",
+  "value": "x^2 - y^2 - 10x + 6y + 16 = 0",
+  "confidence": "high",
+  "note": "x = 5 and y = 3 are perpendicular and meet at (5,3), so the bisectors are y - 3 = +/-(x - 5). Joint equation (y-3)^2 - (x-5)^2 = 0, i.e. x^2 - y^2 - 10x + 6y + 16 = 0; sympy confirms option B minus this expands to 0. Spot check (6,4), a point on y-3 = x-5: 36 - 16 - 60 + 24 + 16 = 0. Option A is the ORIGINAL pair of lines, not the bisectors; option D factors as (x-3)(y-5), a different pair."
+ },
+ {
+  "questionId": "5e6a98e4-167c-47e8-a687-290439ce0e04",
+  "qnum": "1547",
+  "derived": "A",
+  "value": "(0, 0)",
+  "confidence": "high",
+  "note": "xy = 0 is the pair x = 0, y = 0, so the triangle has vertices (0,0), (1,0), (0,1) with the right angle at the origin; the orthocentre of a right triangle is the right-angle vertex. Confirmed by solving two altitude equations simultaneously in sympy: {xo: 0, yo: 0}."
+ }
+]

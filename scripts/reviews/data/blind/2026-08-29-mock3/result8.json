@@ -1,0 +1,122 @@
+[
+ {
+  "questionId": "445e89cb-2dfb-401e-b5e0-74b0991334ab",
+  "qnum": "2272",
+  "derived": "C",
+  "value": "right-hand limit = +sqrt(2), left-hand limit = -sqrt(2); two-sided limit does not exist",
+  "confidence": "high",
+  "note": "1 - cos(2h) = 2 sin^2(h), so the numerator is sqrt(2)*|sin h| and the quotient is sqrt(2)*|sin h|/h. Computed at h = 1e-3, 1e-6, 1e-9 on both sides: +1.4142135624 and -1.4142135624. Options A and D each state one one-sided value, so neither is the two-sided limit."
+ },
+ {
+  "questionId": "4798ad12-7c4b-4918-981f-58c32fd32eb8",
+  "qnum": "2292",
+  "derived": "B",
+  "value": "f'(5) = f(5)*f'(0) = 2*3 = 6",
+  "confidence": "high",
+  "note": "From f(x+h) = f(x)f(h) and f(0) = 1, f'(x) = f(x)*f'(0) for all x. FLAG: the given data is over-determined/inconsistent - the only differentiable solutions are f(x) = e^(kx) with k = f'(0) = 3, which forces f(5) = e^15 = 3269017, not 2. The intended relation still yields 6."
+ },
+ {
+  "questionId": "391dfe40-96bc-4e6c-91c7-5ec088c26c25",
+  "qnum": "2381",
+  "derived": "D",
+  "value": "empty set - f is continuous at every point of [-2, 3]",
+  "confidence": "high",
+  "note": "|x| and |1-x| are each continuous everywhere, so their sum is. Checked left limit = right limit = f(p) at the two corner candidates p = 0 and p = 1 (both give 1) and at -2, 1/2, 2, 3. The corners are points of non-differentiability, not discontinuity. Empty set is not offered, so None of these."
+ },
+ {
+  "questionId": "2a97d3cb-1c33-4bd8-9f11-1d32e60304d2",
+  "qnum": "2386",
+  "derived": "A",
+  "value": "f'(x) = sqrt(2)*(x-2)/(2*x^(3/2)); f'(2) = 0",
+  "confidence": "high",
+  "note": "The factor (x-2) vanishes at x = 2. Equivalent form: f'(x) = (1 - 2/x)/sqrt(2x), zero exactly at x = 2, which is where sqrt(2x) = 4/sqrt(2x) = 2 and f attains its minimum."
+ },
+ {
+  "questionId": "362c0ee7-42c8-4e23-adfc-c30b33cfee83",
+  "qnum": "2441",
+  "derived": "C",
+  "value": "2/sqrt(5) = 0.8944271910",
+  "confidence": "high",
+  "note": "h'(x) = 2 is a constant, so h'(g'(x)) = 2 regardless of g' - the g' layer is a red herring and the answer carries no x. f'(t) = t/sqrt(t^2+1), so f'(2) = 2/sqrt(5). Options B and D still contain x and cannot be the value of a constant expression."
+ },
+ {
+  "questionId": "495a73c5-7d89-49de-a751-28500e3c227d",
+  "qnum": "2479",
+  "derived": "C",
+  "value": "h is constant (= 5), so h(2015) - h(2014) = 0",
+  "confidence": "high",
+  "note": "f(x) = integral of g means g = f'. Then h = f^2 + f'^2 and h' = 2f'(f + f'') = 0 by the ODE. Verified symbolically with the general solution f = A cos x + B sin x: h simplifies to A^2 + B^2, and the difference at 2015 and 2014 is exactly 0. h(0) = 5 fixes the constant but is irrelevant to the difference."
+ },
+ {
+  "questionId": "64ffec69-3875-4343-8ce9-a097d8c44a08",
+  "qnum": "2489",
+  "derived": "A",
+  "value": "d2y/dx2 = 1/(a*theta*cos^3(theta)); at theta = pi/4 it is 8*sqrt(2)/(a*pi)",
+  "confidence": "high",
+  "note": "dx/dtheta = a*theta*cos(theta), dy/dtheta = a*theta*sin(theta), so dy/dx = tan(theta). Second derivative = (d/dtheta of tan)/(dx/dtheta) = sec^2/(a*theta*cos) = sec^3/(a*theta). At pi/4: sec^3 = 2*sqrt(2) and theta = pi/4, giving 8*sqrt(2)/(a*pi). Option B is the common slip of forgetting the 1/theta factor's 4."
+ },
+ {
+  "questionId": "1c3443fb-7613-4a8c-ba1a-06c102311592",
+  "qnum": "2519",
+  "derived": "A",
+  "value": "dV/dt = 3*x^2*(dx/dt) = 3*25*10 = 750 cm^3/sec",
+  "confidence": "high",
+  "note": "V = x^3 for a cube; at x = 5 and dx/dt = 10 the rate is 750. Option D (150) is 3*5*10 (using x instead of x^2)."
+ },
+ {
+  "questionId": "2bec445a-86d9-459d-afca-1a1f3d7c2f60",
+  "qnum": "2673",
+  "derived": "C",
+  "value": "tan(theta) = sqrt(2)",
+  "confidence": "high",
+  "note": "With slant height l fixed, r = l sin(theta) and h = l cos(theta), so V is proportional to sin^2(theta)cos(theta). Setting the derivative to zero gives 2cos^2 = sin^2, i.e. tan^2 = 2. sympy returns theta = asin(sqrt(6)/3), whose tangent is sqrt(2) = 1.41421356. Confirmed a maximum, not a minimum: V(theta*-0.2) = 0.3421, V(theta*) = 0.3849, V(theta*+0.2) = 0.3379."
+ },
+ {
+  "questionId": "36cee655-913c-46a5-a46c-864eb34e00ea",
+  "qnum": "2686",
+  "derived": "B",
+  "value": "(ae)^x / log(ae) + C, equivalently a^x e^x/(1 + log a) + C",
+  "confidence": "high",
+  "note": "e^(x log a) = a^x, so the integrand is (ae)^x. Differentiating option B returns the integrand exactly (sympy: difference simplifies to 0). Option A is missing the 1/log(ae) factor; option C differentiates to e^x/(1 + log a), which lacks the a^x, so it is wrong unless a = 1."
+ },
+ {
+  "questionId": "67e4943f-b337-4a0b-a1a3-057bce645b6e",
+  "qnum": "2721",
+  "derived": "B",
+  "value": "5^(5^(5^x)) / (log 5)^3 + c",
+  "confidence": "high",
+  "note": "Each of the three exponential layers contributes one factor of log 5 on differentiation, so d/dx of the tower is (log 5)^3 times the integrand. Verified symbolically (difference simplifies to 0) and numerically at the discriminating points x = -0.3 and x = -0.1, where derivative and integrand agree to 50 digits (128.377132715 and 1889.504303248)."
+ },
+ {
+  "questionId": "15eba3a9-1ec4-44f1-b738-62eea93b0efa",
+  "qnum": "2861",
+  "derived": "B",
+  "value": "0",
+  "confidence": "high",
+  "note": "sin(2nx)/sin(x) = 2*(cos x + cos 3x + ... + cos((2n-1)x)); verified exactly for n = 3. Each cos(kx) with k odd integrates to 0 over [0, pi], so the whole integral is 0. Numerically 0 to 1e-35 for n = 1..6. FLAG: the stem does not state n is an integer, and the result depends on it - for n = 2.25 the integral is 27.11, not 0 (n = 0.5 and 1.5 happen to give pi). Standard reading n in N gives 0."
+ },
+ {
+  "questionId": "2ee0919a-4e3e-4771-b799-95f6679ba37b",
+  "qnum": "2892",
+  "derived": "C",
+  "value": "pi/3 (about 1.047197551) - the 30 degree sector of the disc of radius 2",
+  "confidence": "medium",
+  "note": "x = sqrt(3)y is y = x/sqrt(3), a line through the origin at 30 degrees, so it is a diameter and splits the first-quadrant quarter-disc (area pi) into a 30 degree sector (pi/3) and a 60 degree sector (2pi/3). Computed both explicitly: region between the line and the x-axis = 1.047197551 = pi/3, region between the line and the y-axis = 2.094395102 = 2pi/3. FLAG: the stem is ambiguous about which of the two regions is meant, since a line through the centre plus the circle alone does not close a region without an axis; only the pi/3 reading appears among the options."
+ },
+ {
+  "questionId": "6456711f-3fed-4d27-b545-56f2c77b8de9",
+  "qnum": "2969",
+  "derived": "C",
+  "value": "order n = 2, degree m = 3, so (m+n)/(m-n) = 5/1 = 5",
+  "confidence": "high",
+  "note": "Cubing to clear the 2/3 power gives (1 + y1^2)^2 = y2^3, a polynomial in the derivatives. Highest derivative is y2, so order = 2; its highest power is 3, so degree = 3. The stem assigns m = degree and n = order, giving (3+2)/(3-2) = 5. Note that swapping the two labels would give 5/(-1) = -5, which is not an option, so the stated assignment is the only one consistent with the choices."
+ },
+ {
+  "questionId": "2c54f6a3-eb2b-47de-b8ff-48a70971ac2c",
+  "qnum": "3065",
+  "derived": "C",
+  "value": "1 + y^2 = C(1 + x^2), i.e. y^2 - C x^2 = C - 1: a family of hyperbolas",
+  "confidence": "high",
+  "note": "Variables separate: y dy/(1+y^2) = x dx/(1+x^2), giving log(1+y^2) = log(1+x^2) + const. dsolve returns y = +/- sqrt(C1*x^2 + C1 - 1). Since C > 0, the x^2 and y^2 coefficients always carry opposite signs, so the conic is a hyperbola for every C except the degenerate C = 1 (which gives the pair of lines y = +/- x)."
+ }
+]

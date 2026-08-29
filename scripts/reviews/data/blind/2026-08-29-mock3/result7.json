@@ -1,0 +1,122 @@
+[
+ {
+  "questionId": "6c1b21bc-c5dc-4dd5-81d9-9bd982129388",
+  "qnum": "1572",
+  "derived": "NONE",
+  "value": "common chord length = sqrt(4403)/17 = sqrt(259/17) = 3.903241...",
+  "confidence": "high",
+  "note": "FLAG: no option matches. C1: x^2+(y-1)^2=5, centre (0,1), r=sqrt5. C2: (x-4)^2+(y-2)^2=31, centre (4,2), r=sqrt31. Radical axis (subtract) = 8x+2y+7=0. Half-chord computed from BOTH centres agrees: sqrt(5-(9/sqrt68)^2) = sqrt(31-(43/sqrt68)^2) = 1.9516207, so chord = 3.9032415. Cross-checked by solving for the two intersection points directly and taking their distance: same value. Options are 1.6583, 11.6190, 2.9047, 3.0104. Option B (sqrt135 = 11.619) is geometrically IMPOSSIBLE - it exceeds the smaller circle's diameter 2sqrt5 = 4.472. I also brute-forced 96 sign/coefficient variants of the two circles; not one reproduces any listed option, so this is not a simple sign typo."
+ },
+ {
+  "questionId": "4ea44a9a-acb8-41e1-8833-71d49842ab69",
+  "qnum": "1632",
+  "derived": "B",
+  "value": "lambda^2 - mu^2 = 2c, i.e. x^2 - y^2 = 2c",
+  "confidence": "high",
+  "note": "Circle 1 centre (-lambda,0) with r^2 = lambda^2 - c; circle 2 centre (0,mu) with r^2 = mu^2 + c. Equal radii gives lambda^2 - c = mu^2 + c. Numeric check c=1, lambda=2 forces mu=sqrt2: r1=r2=sqrt3 exactly, and lambda^2-mu^2 = 2 = 2c. Sign is the discriminator between B and C; B is correct."
+ },
+ {
+  "questionId": "2a691d19-fae7-4ca1-b59e-9125d755b4b7",
+  "qnum": "1662",
+  "derived": "C",
+  "value": "y = -1",
+  "confidence": "high",
+  "note": "x^2-4x-8y+12 = 0 completes to (x-2)^2 = 8(y-1) (expansion verified identical to the stem). Vertex (2,1), 4a=8 so a=2, opens upward, focus (2,3), directrix y = 1-2 = -1. Verified with the focus-directrix property at the on-curve point (6,3): distance to focus = 4 = distance to the line y=-1. Options B and D are vertical lines and cannot be the directrix of a vertically-opening parabola."
+ },
+ {
+  "questionId": "2ec089c9-2fe4-4942-b4b5-d233faec9653",
+  "qnum": "1706",
+  "derived": "C",
+  "value": "x = cos(theta) - 1, y = 2 sin(theta) + 1",
+  "confidence": "high",
+  "note": "4(x+1)^2+(y-1)^2=4 is (x+1)^2/1 + (y-1)^2/4 = 1, so x+1 = cos t and y-1 = 2 sin t. Substituted all four candidates into the conic and simplified: only C gives residual identically 0. Residuals A: 4-8sin t, B: 12-15sin^2 t, D: 16cos t+16. theta = pi/2 is a discriminating point - B's residual is -3 there while C's is 0 (at theta = 0 both A and C would look closer, so a single convenient angle would not have separated them)."
+ },
+ {
+  "questionId": "4ddb62aa-c402-4254-95ea-05db978fcd2b",
+  "qnum": "1801",
+  "derived": "D",
+  "value": "right angled isosceles: |AB|=|AC|=3, AB.AC=0, |BC|=3sqrt2",
+  "confidence": "high",
+  "note": "A(2,4,-1), B(4,5,1), C(3,6,-3). AB=(2,1,2) with |AB|=3; AC=(1,2,-2) with |AC|=3; BC=(-1,1,-4) with |BC|=3sqrt2. AB.AC = 2+2-4 = 0 so the right angle is at A, and the two legs are equal. Not equilateral since 18 != 9. Both conditions hold simultaneously, which rules out B and C."
+ },
+ {
+  "questionId": "123b4387-cca6-40a1-b194-3d4160d40d1f",
+  "qnum": "1887",
+  "derived": "A",
+  "value": "sin(theta) = sqrt(5/21) = sqrt(105)/21 = 0.4879500",
+  "confidence": "high",
+  "note": "a.b = 8, |a| = sqrt14, |b| = sqrt6, so cos^2 = 64/84 and sin^2 = 20/84 = 5/21. Cross-checked independently via the cross product a x b = (0,-4,2), |a x b| = 2sqrt5, sin = 2sqrt5/(sqrt14 sqrt6) = sqrt(5/21). Both routes agree. Note option B (5/sqrt21 = 1.0911) is greater than 1 and so cannot be any sine."
+ },
+ {
+  "questionId": "33a8c023-36b8-4970-ae36-e9b424cd3ca7",
+  "qnum": "1892",
+  "derived": "D",
+  "value": "a.b = 1/2, so theta = pi/3 (60 degrees), which is not among options A-C",
+  "confidence": "high",
+  "note": "With |a|=|b|=1, (a+3b).(7a-5b) = 7 - 5(a.b) + 21(a.b) - 15 = 16(a.b) - 8, which vanishes at a.b = 1/2, giving theta = pi/3 = 1.047198. Confirmed by explicit construction a=(1,0,0), b=(1/2, sqrt3/2, 0): the dot product is exactly 0. pi/3 equals none of pi/2, pi/6, 2pi/3, so 'None of these' is the correct choice, not a failure to match - D is a genuine hit. Worth noting pi/6 is a plausible distractor for a key-setter who halved 60 degrees instead of reading it off cos = 1/2."
+ },
+ {
+  "questionId": "1f01e46d-bf1e-4b0f-a3d3-572eed1a0028",
+  "qnum": "1912",
+  "derived": "C",
+  "value": "13 (= |a x (b+c)|^2); the literal comma-as-dot reading gives 0",
+  "confidence": "low",
+  "note": "FLAG: CORRUPT STEM - the operator between the two expressions is missing (a bare comma). b+c = (1,0,0); a x (b+c) = (0,3,-2); a x [(b+c) x a] = (13,-2,-3). Reading the comma as a dot product gives 0 - and I proved symbolically that (a x S).(a x (S x a)) = 0 for ARBITRARY a and S, so that reading makes the specific vectors irrelevant and the question vacuous; 0 is also not an option. Every reading that does reach a listed option lands on 13: |a x (b+c)|^2 = 13, (b+c).(a x [(b+c) x a]) = 13, and the first component of a x [(b+c) x a] = 13. I checked ~20 candidate quantities (magnitudes, squares, sums, all pairwise dots, scalar triple products, a.b, a.c, b.c, |a|^2) and 13 was the ONLY option value reachable by any of them - 9, 21 and 7 are reachable by none. C on that convergence, but the stem needs repair and the key deserves a human look."
+ },
+ {
+  "questionId": "7ceff81c-fd04-43cf-914e-8eab0cde8971",
+  "qnum": "1978",
+  "derived": "A",
+  "value": "2i - j + 2k",
+  "confidence": "high",
+  "note": "The given direction cosines satisfy l^2+m^2+n^2 = 4/9+1/9+4/9 = 1, so they are legal. Vector = magnitude x unit vector = 3(2/3, -1/3, 2/3) = (2,-1,2). All four options happen to have magnitude 3, so magnitude alone is NOT discriminating here - the direction cosines are what separate them: A gives (2/3,-1/3,2/3) matching exactly, B (1/3,2/3,2/3), C (2/3,1/3,2/3), D (2/3,-2/3,1/3). Minor stem defect: the clause 'and a > 0' refers to a symbol 'a' that appears nowhere else in the question; it is stray and does not affect the answer."
+ },
+ {
+  "questionId": "d5ffda83-c7de-47e2-ae5b-66a8d44c5484",
+  "qnum": "2004",
+  "derived": "A",
+  "value": "(9, -13, 4)  [the other solution is (-7, 11, -4), not offered]",
+  "confidence": "high",
+  "note": "Parametrise (1+2t, -1-3t, t); the reference point (1,-1,0) lies on the line at t=0, and the direction (2,-3,1) has magnitude sqrt14, so the distance is |t|sqrt14 and 4sqrt14 gives t = +/-4. t=4 yields (9,-13,4) exactly. Verified A independently: its ratios (x-1)/2, (y+1)/(-3), z are 4, 4, 4 - all equal, so it is on the line - and its distance is exactly 4sqrt14. B and C are on neither count (B: ratios -5, -14/3, 4, distance 2sqrt78; C: ratios 4, -14/3, -4, distance 2sqrt69). An earlier probe of mine reported A as off the line; that was a float-comparison artifact in the probe, corrected by redoing it in exact rationals."
+ },
+ {
+  "questionId": "28f9e37f-edcd-4b6c-925e-58c2cc158306",
+  "qnum": "2136",
+  "derived": "B",
+  "value": "one-to-one but not onto",
+  "confidence": "high",
+  "note": "n^3+3 is strictly increasing on N (f(1..7) = 4,11,30,67,128,219,346), so it is injective. It is not surjective onto N: the least value is f(1)=4, so 1, 2, 3 have no preimage, and beyond that only n^3+3 values are hit - 5, 10, 12 etc. are not (n^3 = 2, 7, 9 have no positive integer root, checked)."
+ },
+ {
+  "questionId": "4e67700e-5880-46ce-b8c7-b34f7b7d15e3",
+  "qnum": "2167",
+  "derived": "D",
+  "value": "x = (2^10 - 1)/(2^10 3^10 - 1) = 93/5496925 = 1.6918550e-5",
+  "confidence": "high",
+  "note": "(fog)(x) = 2^10(3^10 x - 1) + 1 = 60466176x - 1023; setting equal to x gives x = 1023/60466175 = 93/5496925. Option D is (1 - 2^-10)/(3^10 - 2^-10); multiplying numerator and denominator by 2^10 turns it into (2^10-1)/(2^10 3^10 - 1), exactly the answer - confirmed numerically to 25 digits and by substituting D back into fog(x)-x, which is exactly 0. The distractors are the same expression with 2 and 3 swapped or the reciprocal grouping: A = 0.99998, B = 0.99902, C = 9.7655e-4, none equal to D's 1.69185e-5."
+ },
+ {
+  "questionId": "145f7e66-60d6-4a49-b88f-eec400ebc1be",
+  "qnum": "2193",
+  "derived": "B",
+  "value": "1/x",
+  "confidence": "high",
+  "note": "(fog)(x) = 2((x-1)/2) + 1 = x, so fog is the identity map (gof is the identity too - f and g are mutual inverses). The inverse of the identity is the identity, so (fog)^-1(u) = u for all u, hence (fog)^-1(1/x) = 1/x. Confirmed by solving fog(x) = y for x, which returns x = y."
+ },
+ {
+  "questionId": "ed5a4be9-a1d2-4666-9060-862f77f5ffa4",
+  "qnum": "2247",
+  "derived": "D",
+  "value": "20",
+  "confidence": "high",
+  "note": "The limit is the derivative of (1+2x)^10 at x=0, namely 10(1+2x)^9 * 2 = 20. Symbolic limit returns 20; numeric approach confirms monotone convergence: x=1e-2 gives 21.899, 1e-3 gives 20.181, 1e-4 gives 20.018, 1e-6 gives 20.00018. Option B (10) is the trap for forgetting the chain-rule factor of 2."
+ },
+ {
+  "questionId": "aee5d656-4ea6-4ba4-bdc5-a4c999b4fec7",
+  "qnum": "2249",
+  "derived": "B",
+  "value": "3/2",
+  "confidence": "high",
+  "note": "Standard form (x^n-1)/(x^m-1) -> n/m as x->1, so 15/10 = 3/2. Symbolic limit returns 3/2. Checked numerically from BOTH sides (a one-sided check would not rule out option D): x = 1.000001 gives 1.5000038 and x = 0.999999 gives 1.4999963, so the two-sided limit exists and equals 1.5, which disposes of D. Option A (2/3) is the inverted ratio."
+ }
+]

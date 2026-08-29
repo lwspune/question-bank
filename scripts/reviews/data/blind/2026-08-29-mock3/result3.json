@@ -1,0 +1,122 @@
+[
+ {
+  "questionId": "0d64bb8f-5c50-4403-9bf2-320d71717bc0",
+  "qnum": "82",
+  "derived": "D",
+  "value": "All three (AM, median, GM) are defined measures of central tendency for a set of discrete numbers",
+  "confidence": "low",
+  "note": "STEM SUSPECT. Read literally ('which is/are defined'), all three are legitimate measures, so 'All of them' is the only self-consistent option. But strictly the GM is undefined when any datum is negative or zero, and the careful answer '1 and 2 only' is NOT among the options; the option set (Only 1 / Only 2 / Only 3 / All of them) is the shape used by the standard NDA item 'which of the above can be determined graphically?', whose answer is median only (Only 2). If the stem was altered from that wording the key would be B. Flagged for source check."
+ },
+ {
+  "questionId": "27c79bc8-f358-4689-b3ca-f40f75e411ed",
+  "qnum": "86",
+  "derived": "D",
+  "value": "f'(x) = 6(x-1)(x-2) < 0 exactly on the open interval 1 < x < 2",
+  "confidence": "high",
+  "note": "Discriminating points x=0.5 (f'=+4.5), x=1.5 (f'=-1.5), x=2.5 (f'=+4.5) kill options A, B and C; sympy solve_univariate_inequality returns Interval.open(1,2)."
+ },
+ {
+  "questionId": "45481b26-cb41-4152-a540-e0878cac2853",
+  "qnum": "86",
+  "derived": "A",
+  "value": "f'(x) = 1 - sin x >= 0 for all real x, zero only at isolated points x = pi/2 + 2k*pi, so f is strictly increasing on all of R",
+  "confidence": "high",
+  "note": "Checked straddling the stationary point: f(pi/2-0.1)=1.570630 < f(pi/2+0.1)=1.570963, so the isolated zeros of f' do not break monotonicity. Minimum of f' over R is 0 (sympy), never negative, so B and C are out."
+ },
+ {
+  "questionId": "00526aaf-b5d7-44db-bf65-830eaa8894ef",
+  "qnum": "92",
+  "derived": "C",
+  "value": "A - P(A) = A is the identity that holds for an ordinary set (elements of A are not subsets of A)",
+  "confidence": "medium",
+  "note": "CORRUPT STEM AND OPTION A. The first alternative leaked into the stem and was truncated ('(a) $A \\cup P(A) = P'), leaving option A as the bare text '$'. Labels B, C, D still carry the original (b), (c), (d). Brute-force over sample sets: (d) P(A)-{A}=P(A) is ALWAYS false since A is always an element of P(A); (a) and (b) are mathematically EQUIVALENT (both say A is a subset of P(A)) and fail for ordinary sets such as A={1,2}; (c) holds for every ordinary set and is the standard intended answer. Note none of the four is a universal truth: for A={} all of (a),(b),(c) hold, and for A={{}} statement (c) fails while (a),(b) hold."
+ },
+ {
+  "questionId": "046e7171-1b3e-46af-9d76-b668bc7185ae",
+  "qnum": "92",
+  "derived": "D",
+  "value": "a pie chart - the only listed graph that partitions a whole into sectors proportional to subparts",
+  "confidence": "high",
+  "note": "Definitional. An ogive plots cumulative frequency, a pictograph uses symbol counts, a histogram shows a frequency distribution over class intervals; none partitions a total into component shares."
+ },
+ {
+  "questionId": "339a949c-0aa6-4f11-831a-d3e063ee99af",
+  "qnum": "97",
+  "derived": "B",
+  "value": "pi/4",
+  "confidence": "high",
+  "note": "King's property: adding I(x) and I(pi/2 - x) gives the integral of 1 over [0,pi/2] = pi/2, so I = pi/4. Numeric check with mpmath at 30 dps (split at pi/4 for the endpoint singularities) gives 0.785398163397448309615660845820, equal to pi/4 to every digit; pi/2 = 1.5707963 is clearly excluded."
+ },
+ {
+  "questionId": "5f58e5bc-b441-4e0e-a94b-59f69137e8fa",
+  "qnum": "104",
+  "derived": "B",
+  "value": "1/32 = 0.03125",
+  "confidence": "high",
+  "note": "np=4 and npq=2 give q=1/2, p=1/2, n=8 (unique solution from sympy). P(X=1) = 8*(1/2)^8 = 8/256 = 1/32. The three other options (1/4, 1/16, 1/8) are all distinct from it."
+ },
+ {
+  "questionId": "158e40d7-4f34-45ba-aeeb-5e97887b633e",
+  "qnum": "105",
+  "derived": "D",
+  "value": "2^(2n)/(n+1), i.e. 4^n/(n+1)",
+  "confidence": "high",
+  "note": "By symmetry the first n+1 of the 2n+2 terms of row 2n+1 sum to half of 2^(2n+1) = 2^(2n); there are n+1 terms, so AM = 2^(2n)/(n+1). Note n=1 is NOT discriminating (AM=2 matches both option A and option D); n=2 separates them - actual AM=16/3, option D=16/3, option A=2, option B=4/3, option C=8. Verified n=2..6, D matches every time."
+ },
+ {
+  "questionId": "0c7e6435-f6df-43ea-801c-f50ca3262b76",
+  "qnum": "111",
+  "derived": "B",
+  "value": "65",
+  "confidence": "high",
+  "note": "Class total 100*72 = 7200; boys total 70*75 = 5250; girls total 1950 over 30 girls = 65."
+ },
+ {
+  "questionId": "9e332864-b7c4-48cb-8654-fed63574943e",
+  "qnum": "111",
+  "derived": "B",
+  "value": "the point (-1, 4, -2)",
+  "confidence": "high",
+  "note": "Sphere centre (1,2,-1), radius 3; distance from centre to plane = |2-4-1+12|/3 = 3, so it is genuinely tangent. Foot of perpendicular from centre = (1,2,-1) - 1*(2,-2,1) = (-1,4,-2). Tested all four options against BOTH equations: only B gives plane residual 0 and sphere residual 0 (A: 20 and 28, C: 20 and 40, D: 4 and -4)."
+ },
+ {
+  "questionId": "09bde199-d0e5-4d84-9bf3-48d5e340d94a",
+  "qnum": "112",
+  "derived": "B",
+  "value": "xbar + (n+1)",
+  "confidence": "high",
+  "note": "Mean of x_i + 2i = xbar + (1/n)*sum(2i, i=1..n) = xbar + (1/n)*n(n+1) = xbar + n + 1. sympy summation confirms the shift is n+1."
+ },
+ {
+  "questionId": "1d06ae0e-519b-4202-8703-ccc382553787",
+  "qnum": "116",
+  "derived": "D",
+  "value": "90 degrees",
+  "confidence": "high",
+  "note": "The line's direction ratios (a,b,c) are identical to the plane's normal (a,b,c), so the line is parallel to the normal, i.e. perpendicular to the plane. sin(angle with plane) = |d.n|/(|d||n|) = 1, giving 90 degrees, independent of a, b, c (assumed not all zero)."
+ },
+ {
+  "questionId": "28b11dbc-eb1a-4e7a-bab6-76e022d6d566",
+  "qnum": "116",
+  "derived": "D",
+  "value": "sqrt(19) = 4.358898943540674",
+  "confidence": "high",
+  "note": "Expanding, 3cos t + 5 sin(t - pi/6) = (1/2)cos t + (5*sqrt(3)/2) sin t, whose amplitude is sqrt(1/4 + 75/4) = sqrt(19). sympy maximum over the reals evaluates to 4.35889894354067 = sqrt(19) exactly; a 2001-point numeric sweep peaks at 4.3588954, just under it as expected from grid resolution. The distractors sqrt(79)/2=4.4441, sqrt(34)=5.8310, sqrt(31)=5.5678 are all clearly separated."
+ },
+ {
+  "questionId": "9871c43a-f6a8-44b3-9745-d81f77f6aca5",
+  "qnum": "116",
+  "derived": "C",
+  "value": "pi/2",
+  "confidence": "high",
+  "note": "sin(pi/19) = 0.16459 > 0, so the number is purely imaginary with positive imaginary part and its amplitude (argument) is pi/2, independent of the magnitude. sympy arg gives 1.5707963267949 = pi/2. The trap options pi/19 = 0.16535 and pi/2 - pi/19 = 1.40545 confuse the modulus with the argument."
+ },
+ {
+  "questionId": "18957818-a5cc-4a51-b48e-04bd339aa869",
+  "qnum": "118",
+  "derived": "A",
+  "value": "S = {sqrt(2), -sqrt(2)} - exactly two elements",
+  "confidence": "high",
+  "note": "Replacing x by 1/x and solving the pair gives f(x) = 2/x - x, verified by substituting back (residual 0). f is odd, so f(x) = f(-x) forces f(x) = 0, i.e. x^2 = 2, x = +/- sqrt(2). Both roots checked to give residual exactly 0; x=0 is excluded by the stem."
+ }
+]
