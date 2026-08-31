@@ -1,0 +1,54 @@
+name: Prod contract
+
+# Read-only assertions that the hand-written surfaces still match the LIVE
+# production bank: guide drill targets resolve, notes/guide cross-links hold,
+# registry flags (mixedFormats, hasMocks, book chapters) match the corpus,
+# live count shapes are sane. The suites are listed in
+# tests/prodContractFiles.ts; run locally with `npm run test:prod-contract`.
+#
+# WHY A SCHEDULE, NOT THE PUSH GATE (2026-08-31): the drift these catch comes
+# from two directions — editing the editorial TS (pushes) and changing the
+# bank (ingestion scripts, which never push). Half the risk arrives
+# independently of pushes, so the check was never inherently a push concern;
+# meanwhile the prod host's memory stalls (409 MB instance, swap-thrash —
+# measured 2026-08-30) were cancelling these queries mid-gate and failing
+# pushes over questions unrelated to the pushed code. Daily means drift is
+# caught within ~a day instead of within a push — accepted trade.
+#
+# A failure here means DRIFT (or, rarely, a still-stalled database — the two
+# historically flaky suites retry statement timeouts with backoff, see
+# tests/helpers/retryTimeout.ts, so a red run is worth reading). GitHub emails
+# the repo owner on failure; the log names the exact mismatch and the edit.
+#
+# 03:00 UTC = 08:30 IST — half an hour after the db-health snapshot
+# (db-health.yml, 02:30 UTC) so the two daily jobs never hit the database at
+# the same moment.
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch: # run on demand from the Actions tab
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # MUST match ci.yml / db-health.yml — on Node 20 supabase-js dies at
+          # createClient() ("without native WebSocket support") before any
+          # useful context. Copy from a working workflow; don't type a default.
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Prod-contract tests (read-only against production)
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npm run test:prod-contract

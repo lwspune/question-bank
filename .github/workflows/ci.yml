@@ -1,9 +1,13 @@
 name: CI
 
 # Runs the full local gate (typecheck → lint → notes guards → tests → build)
-# on every push to main and every PR. Vercel still owns deploys; this job is
-# the correctness gate that the build-only pre-push hook can't fully cover —
-# in particular the live-taxonomy rename guards.
+# on every push to main and every PR. Vercel still owns deploys.
+#
+# The prod-contract suite is NOT here (2026-08-31): it moved to a daily
+# schedule (prod-contract.yml). Its drift arrives from ingestion scripts as
+# often as from pushes, so it never had to be welded to the push — and the
+# prod host's memory stalls were failing pushes on it over questions that had
+# nothing to do with the pushed code.
 #
 # The Build step is CONDITIONAL (2026-08-05) — skipped when a push changed
 # nothing `next build` reads. Vercel's deploy build still runs unconditionally,
@@ -12,7 +16,7 @@ name: CI
 # REQUIRED REPO SECRETS (Settings → Secrets and variables → Actions → New
 # repository secret).
 #
-# PRODUCTION project (build prerender + notes:lint + the prod-contract suite):
+# PRODUCTION project (build prerender + notes:lint):
 #   NEXT_PUBLIC_SUPABASE_URL
 #   NEXT_PUBLIC_SUPABASE_ANON_KEY
 #   SUPABASE_SERVICE_ROLE_KEY   (service role → catches PRIVATE rows too)
@@ -70,10 +74,6 @@ jobs:
           TEST_SUPABASE_ANON_KEY: ${{ secrets.TEST_SUPABASE_ANON_KEY }}
           TEST_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.TEST_SUPABASE_SERVICE_ROLE_KEY }}
         run: npm test
-      # Read-only assertions against LIVE prod content (guide/notes editorial ↔
-      # live taxonomy). Uses the PROD secrets from the job env.
-      - name: Prod-contract tests (read-only against production)
-        run: npm run test:prod-contract
       # `next build` prerenders 689 pages, ~317 of which query Postgres (~25 MB
       # of egress). 78 of the last 145 pushes to main changed nothing the
       # compiler reads, so that build could not have failed. Same rule as the

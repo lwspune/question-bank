@@ -19,6 +19,7 @@
  */
 import { describe, it, expect, beforeAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { retryOnStatementTimeout } from "./helpers/retryTimeout";
 
 import { STRATEGY_HEADLINE as MATHS_HEADLINE } from "@/app/guide/nda-maths/_data/strategy";
 import { STRATEGY_HEADLINE as ENGLISH_HEADLINE } from "@/app/guide/nda-english/_data/strategy";
@@ -168,16 +169,21 @@ describe.skipIf(!HAS_ENV)(
         const pageSize = 1000;
         let offset = 0;
         while (true) {
-          const { data, error } = await client
-            .from("questions")
-            .select(
-              "pyq_year, pyq_month, pyq_note, exams!inner(name), subjects!inner(name)"
-            )
-            .eq("visibility", "PUBLIC")
-            .eq("exams.name", examName)
-            .eq("subjects.name", subjectName)
-            .not("pyq_year", "is", null)
-            .range(offset, offset + pageSize - 1);
+          // Retried on 57014: the prod host's memory stalls cancel healthy
+          // queries for seconds at a time (this exact query failed several
+          // pushes, Aug 2026). See tests/helpers/retryTimeout.ts.
+          const { data, error } = await retryOnStatementTimeout(() =>
+            client
+              .from("questions")
+              .select(
+                "pyq_year, pyq_month, pyq_note, exams!inner(name), subjects!inner(name)"
+              )
+              .eq("visibility", "PUBLIC")
+              .eq("exams.name", examName)
+              .eq("subjects.name", subjectName)
+              .not("pyq_year", "is", null)
+              .range(offset, offset + pageSize - 1)
+          );
 
           expect(error, error?.message).toBeNull();
           if (!data || data.length === 0) break;
@@ -209,7 +215,10 @@ describe.skipIf(!HAS_ENV)(
           `${guide}: STRATEGY_HEADLINE.paperQ = ${headline.paperQ}, but live bank avg = ${avgQPerPaper.toFixed(1)} (range ${Math.min(...counts)}–${Math.max(...counts)} across ${counts.length} papers). Allowed range ±30%: [${lowerBound.toFixed(1)}, ${upperBound.toFixed(1)}]. See [[per-paper-q-counts]] memory.`
         ).toBeGreaterThanOrEqual(lowerBound);
         expect(headline.paperQ).toBeLessThanOrEqual(upperBound);
-      });
+        // 90s: worst case is 3 pages x (3 attempts x 8s cancellation + 6s of
+        // backoff) — the default 30s testTimeout would kill a retrying test
+        // mid-recovery, re-creating the failure the retry exists to absorb.
+      }, 90_000);
     }
   }
 );

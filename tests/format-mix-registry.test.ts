@@ -24,6 +24,7 @@
  */
 import { describe, it, expect, beforeAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { retryOnStatementTimeout } from "./helpers/retryTimeout";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 
 const HAS_ENV =
@@ -42,9 +43,11 @@ describe.skipIf(!HAS_ENV)("EXAM_REGISTRY.mixedFormats vs the live bank", () => {
       { auth: { persistSession: false } }
     );
 
-    const { data: exams, error: examErr } = await client
-      .from("exams")
-      .select("id, name");
+    // Both beforeAll reads are retried on 57014 — a host memory stall
+    // cancels healthy queries; see tests/helpers/retryTimeout.ts.
+    const { data: exams, error: examErr } = await retryOnStatementTimeout(() =>
+      client.from("exams").select("id, name")
+    );
     expect(examErr).toBeNull();
     const nameById = new Map(
       (exams ?? []).map((e) => [e.id as string, e.name as string])
@@ -53,7 +56,14 @@ describe.skipIf(!HAS_ENV)("EXAM_REGISTRY.mixedFormats vs the live bank", () => {
     // The same aggregate the runtime cannot afford — fine here, and grouped in
     // SQL rather than derived from a row payload (the PostgREST 1000-row
     // truncation trap has bitten this codebase five times).
-    const { data, error } = await client.rpc("get_format_mix");
+    // 4 attempts x 5s-spread backoff (~60s of patience, inside the 90s hook
+    // budget): this is the one deliberately-heavy scan in the suite, and on
+    // first contact a stall outlasted the default 3-attempt/30s window.
+    const { data, error } = await retryOnStatementTimeout(
+      () => client.rpc("get_format_mix"),
+      4,
+      5000
+    );
     expect(error).toBeNull();
     type Row = { exam_id: string; question_format: string; q_count: number };
     for (const row of (data ?? []) as Row[]) {

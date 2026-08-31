@@ -44,7 +44,7 @@
     "testdb:migrate": "tsx scripts/testdb/migrate.ts",
     "testdb:seed": "tsx scripts/testdb/seed.ts",
     "testdb:reset": "tsx scripts/testdb/reset.ts",
-    "prepush:quick": "npm run typecheck && npm run lint && npm run notes:lint && npm run notes:latex && npm run test && npm run test:prod-contract",
+    "prepush:quick": "npm run typecheck && npm run lint && npm run notes:lint && npm run notes:latex && npm run test",
     "prepush": "npm run prepush:quick && npm run build",
     "needs-build": "tsx scripts/needs-build.ts",
     "prepare": "git config core.hooksPath .githooks 2>/dev/null || true",
