@@ -19,6 +19,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { NDA_CDS_ENGLISH, bookExams } from "../../src/lib/books/registry";
 import { loadBookChapter, loadBookOverview } from "../../src/lib/books/query";
+import { chapterContents, numberChapter } from "../../src/lib/books/print";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -144,6 +145,47 @@ async function main() {
       }
     }
 
+    // ---- the printed chapter: numbering + its contents table ----
+    // The contents is what a reader navigates by, and a wrong range is
+    // invisible on the page: every question is still present and the table
+    // still looks complete. So it is checked against the numbering it claims
+    // to describe, on real chapters, here.
+    const numbering = numberChapter(view.sections, view.excludedIds);
+    const contents = chapterContents(view.sections, numbering);
+
+    const covered = contents.columns
+      .flatMap((c) =>
+        c.range ? [...Array(c.range.to - c.range.from + 1)].map((_, i) => c.range!.from + i) : []
+      )
+      .sort((a, b) => a - b);
+    check(
+      covered.length === numbering.total &&
+        covered.every((n, i) => n === i + 1),
+      `${chapter.name}: contents covers ${covered.length} numbers, chapter prints ${numbering.total} — a gap or overlap between the halves`
+    );
+
+    for (const section of view.sections) {
+      const column = contents.columns.findIndex((c) => c.key === section.key);
+      check(column >= 0, `${chapter.name}/${section.title}: no contents column`);
+
+      for (const block of section.blocks ?? []) {
+        const live = block.sets
+          .flatMap((s) => s.questionIds)
+          .filter((id) => !view.excludedIds.includes(id)).length;
+        const cell = contents.rows.find((r) => r.name === block.name)?.cells[column] ?? null;
+        if (live === 0) continue; // an entirely-excluded block prints nothing and lists nothing
+        check(
+          cell != null && cell.count === live,
+          `${chapter.name}/${section.title}: contents says ${cell?.count ?? "nothing"} for ${block.name}, the book prints ${live}`
+        );
+        // Contiguity is what lets a range stand in for a list of numbers.
+        check(
+          cell == null || cell.to - cell.from + 1 === cell.count,
+          `${chapter.name}/${section.title}: ${block.name} spans ${cell!.from}-${cell!.to} but holds ${cell!.count} — the block is not consecutive in the numbering`
+        );
+      }
+    }
+
     for (const section of view.sections) {
       if (!section.blocks) continue;
       const shape = section.blocks
@@ -151,6 +193,21 @@ async function main() {
         .join("  |  ");
       console.log(`    ${section.title.padEnd(10)} ${shape}`);
     }
+
+    // The contents as it will print, so a reader of this output sees the same
+    // ranges the book does.
+    const head = contents.columns.map((c) => c.title.padStart(14)).join("");
+    console.log(`    ${"CONTENTS".padEnd(26)}${head}`);
+    for (const row of contents.rows) {
+      const cells = row.cells
+        .map((c) => (c ? `Q.${c.from}-${c.to}` : "—").padStart(14))
+        .join("");
+      console.log(`    ${row.name.padEnd(26)}${cells}`);
+    }
+    const totals = contents.columns
+      .map((c) => (c.range ? `Q.${c.range.from}-${c.range.to}` : "—").padStart(14))
+      .join("");
+    console.log(`    ${"All questions".padEnd(26)}${totals}`);
 
     const first = view.sections[0];
     const second = view.sections[1];
