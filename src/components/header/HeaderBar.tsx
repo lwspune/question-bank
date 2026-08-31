@@ -90,6 +90,7 @@ export default function HeaderBar({ examIds }: { examIds: ExamIdMap }) {
         notesHref={nav.notesHref}
         boardHref={nav.boardHref}
         showPapers={!!session?.isStaff}
+        showBooks={!!session?.isSuperadmin}
       />
 
       <div className="ml-auto flex min-w-0 items-center gap-1.5 sm:gap-2">

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, Compass, FileText, Library, NotebookPen, Timer } from "lucide-react";
+import { BookMarked, BookOpen, Compass, FileText, Library, NotebookPen, Timer } from "lucide-react";
 import { getActiveTab, type ActiveTab } from "@/lib/exam/examContext";
 
 type Props = {
@@ -14,6 +14,10 @@ type Props = {
    *  /dashboard/papers redirects non-members to /login, so showing it to anon
    *  or students would dead-end them. */
   showPapers?: boolean;
+  /** Superadmins get the Books tab; /books requires superadmin, so showing it
+   *  to anyone else would dead-end them. The gate is chrome — the real
+   *  boundary is requireSuperadmin() on the pages themselves. */
+  showBooks?: boolean;
 };
 
 type Tab = {
@@ -29,6 +33,7 @@ export default function PrimaryNav({
   notesHref,
   boardHref,
   showPapers = false,
+  showBooks = false,
 }: Props) {
   const pathname = usePathname() ?? "/";
   const active = getActiveTab(pathname);
@@ -46,6 +51,16 @@ export default function PrimaryNav({
     // Board reader — always visible (like Notes); boardHref resolves per-exam:
     // /board (index) normally, /board/<slug> when a board exam is active.
     { id: "board", label: "Board", href: boardHref, Icon: Library },
+    ...(showBooks
+      ? [
+          {
+            id: "books" as const,
+            label: "Books",
+            href: "/books",
+            Icon: BookMarked,
+          },
+        ]
+      : []),
     ...(showPapers
       ? [
           {
@@ -75,7 +90,12 @@ export default function PrimaryNav({
               // Icon-only on phones (label hidden) so the tabs + account fit
               // at 360px; label returns from sm: up. Removing the exam pill
               // freed ~70px, which is what affords Mocks being unconditional.
-              // (Papers only shows for org members, who skew desktop.)
+              // (Papers only shows for org members, and Books only for a
+              // superadmin — both skew desktop. A superadmin who is ALSO org
+              // staff sees seven tabs, which is the widest this row ever gets:
+              // ~264px of tabs at 360px. It shrinks rather than overflowing
+              // (`min-w-0 shrink` on the nav), but that combination is the one
+              // to check first if this row ever needs to lose something.)
               "group inline-flex items-center gap-1.5 rounded-md px-2.5 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:px-3 sm:py-1.5 " +
               (isActive
                 ? "bg-brand-accent/10 text-brand-accent"

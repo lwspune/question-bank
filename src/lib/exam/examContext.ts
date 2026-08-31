@@ -380,7 +380,14 @@ export function resolveBoardHref(slug: string | null | undefined): string {
   return exam?.boardExam ? `/board/${exam.slug}` : "/board";
 }
 
-export type ActiveTab = "bank" | "guides" | "notes" | "board" | "papers" | "mock";
+export type ActiveTab =
+  | "bank"
+  | "guides"
+  | "notes"
+  | "board"
+  | "papers"
+  | "mock"
+  | "books";
 
 /**
  * Maps a pathname to the primary-nav tab that owns it. Returns null for
@@ -398,6 +405,10 @@ export function getActiveTab(pathname: string): ActiveTab | null {
   if (matchesSegment(path, "/board")) return "board";
   if (matchesSegment(path, "/mock")) return "mock";
   if (matchesSegment(path, "/dashboard/papers")) return "papers";
+  // Books — the superadmin PYQ-master-book reader. Its tab is drawn only for a
+  // superadmin, but the mapping is unconditional: whoever can reach the route
+  // should see which tab owns it.
+  if (matchesSegment(path, "/books")) return "books";
   return null;
 }
 
