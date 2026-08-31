@@ -181,6 +181,198 @@ type PaperSpec = {
 
 const PAPERS: PaperSpec[] = [
   {
+    // ── NDA GAT — LWS Mock 4 ────────────────────────────────────────────────
+    //
+    // Built to NDA_GAT_BLUEPRINT.md §3: English 50 · Physics 25 · Geography 20 ·
+    // Chemistry 15 · History 12 · CA 11 · Biology 10 · Polity 6 · Economics 1.
+    //
+    // ⚠ MOCK 3'S HEADER SAYS "THIS EXHAUSTS CONFIRMED CDS ENGLISH. Mock 4 cannot
+    // be built this way." That was true when written. It stopped being true on
+    // 2026-08-30/31, when a review pass added 68 confirmed CDS English rows and a
+    // follow-up run confirmed 12 repaired ones — including the single row that was
+    // keeping an RC set below its atomic threshold. That note is now historical;
+    // this paper is the counter-example. Free confirmed English supply is 66.
+    //
+    // ENGLISH IS BACK TO 6 BLOCKS, NOT 14. Mock 3 printed fourteen, four of them
+    // 2-question, because it was scraping fragments. This one draws whole printed
+    // blocks (10/10/10/5/5/5) and CARRIES AN RC BLOCK AGAIN — 55d278a3…:S7b became
+    // drawable only after its Q57 key was corrected against printed p17 and the
+    // post-repair state confirmed.
+    //
+    // WHY NO CLOZE BLOCK, AND IT IS NOT THE SAME REASON AS MOCK 3'S. Both
+    // remaining cloze sets sit one or two confirmed rows short of their atomic
+    // threshold: 04a5e194…:S4 is 9/10 (Q34 is a genuine dispute — "the organisms"
+    // vs "live organisms", both defensible, and CDS ships no key) and
+    // fecd882e…:S15 is 8/10. Neither can be topped up honestly.
+    //
+    // ⚠ THE THREE CHAPTERS UNBLOCKED ON 2026-08-30 ARE NOT DRAWN HERE, AND THE
+    // REASON IS A SECOND GATE. Atoms and Molecules (50 free), Is Matter Around Us
+    // Pure (54) and Heredity and Evolution (52) now carry confirmed reviews — but
+    // ALL 156 store a bare key with NO SOLUTION, and this paper sets
+    // requireSolution: true because an answer key of bare letters is not a teacher
+    // artifact. The blueprint called these chapters "gate-only"; that assessment
+    // counted the review gate and missed the solution gate. Authoring working for
+    // them is the cheapest way to widen Foundation supply — see §9.
+    //
+    // SUPPLY IS TIGHT AND SEVERAL CHAPTERS ARE AT EXACTLY THEIR SEAT COUNT
+    // (PHY Human Eye 2/2, Sound 2/2, Work and Energy 2/2; CHE Carbon 2/2, Acids 1/1,
+    // Matter 2/2, Chemical Reactions 2/2, Metals 2/2; BIO Life Processes 1/1,
+    // Tissues 1/1, Reproduce 2/2; CA Awards 1/1, National Events 1/1). One STRUCT
+    // or DUP refusal in any of them lands the paper short. Force and Laws,
+    // Structure of the Atom and Fundamental Unit of Life have ZERO free and are
+    // omitted rather than left to fail.
+    slug: "nda-gat-lws-mock-4",
+    title: "NDA GAT — LWS Mock 4",
+    examId: EXAM_ID,
+    // Mock 3 excluded three rows, which means they were never drawn and are still
+    // in the free pool for this paper. Re-checked here rather than copied across:
+    // ONE OF THE THREE HAS SINCE BEEN REPAIRED. NDA GAT Q102's climate match list
+    // now parses as a GFM pipe table (fixed in the 2026-08-27 match-list pass), so
+    // it is drawable and is deliberately NOT excluded. The other two stand.
+    exclude: [
+      {
+        id: "06a7cd42-2eff-454f-b913-092de073f7cc",
+        reason:
+          "Foundation Physics 'The Human Eye and the Colourful World' Q5: the OPTIONS are diagrams ('as shown in the four option figures') and no image is stored, so the question is unanswerable as it stands (GAT rule 7 / P4-figure-ref-no-image). Still true on 2026-08-31 — re-checked, image_url is null. NOTE the seat cost: this chapter has exactly 2 free confirmed rows and one of them is this, so Human Eye takes 1 here, not Mock 3's 3, and the freed seat moved to NDA Modern Physics.",
+      },
+      {
+        id: "9a0a10a4-0e6e-4e22-9826-2e9a34529453",
+        reason:
+          "NDA 2018-Sep GAT Q73 (sunrise order of Itanagar/Imphal/Agartala/Aizawl): the stored solution derives option B and is right by longitude, while the stored key says C, which puts the easternmost city last. Still unadjudicated on 2026-08-31 — re-keying an NDA PYQ needs the source paper, and its key came from a prep-house Excel. Excluded again so no student is handed a key that contradicts its own printed solution.",
+      },
+    ],
+    sections: [
+      { key: "english", label: "Part A — English", ordering: "english-blocks" },
+      { key: "gk", label: "Part B — General Knowledge" },
+    ],
+    kinds: ["pyq"], // per-chapter overrides carry the Foundation + CA practice rows
+    requireSolution: true,
+    layout: "sequential",
+    chapters: [
+      // ── Part A — English 50 (Idioms 10 · Spotting 10 · Grammar 10 ·
+      //    Vocabulary 10 · Rearrangement 5 · Reading Comprehension 5) ─────────
+      {
+        chapterId: "b4bd8726-c6de-45ca-911e-950c1e96ed88", label: "Idioms and Phrases (CDS)",
+        sectionKey: "english", fromExam: "CDS", requireConfirmedReview: true,
+        blocks: [{ setId: "04a5e194-7f03-4d6c-9d40-d1185d5056e0:S2", take: 10, note: "2019-II" }],
+      },
+      {
+        chapterId: "573a9ea2-e537-4417-b17c-67f5854877a2", label: "Spotting Errors (CDS)",
+        sectionKey: "english", fromExam: "CDS", requireConfirmedReview: true,
+        blocks: [{ setId: "82fc90f2-e71d-4238-82fa-517828b7b9d5:S2", take: 10, note: "2020-II" }],
+      },
+      {
+        chapterId: "a2dee362-7083-4c47-94a9-fcc8878c83de", label: "Grammar (CDS)",
+        sectionKey: "english", fromExam: "CDS", requireConfirmedReview: true,
+        // ⚠ 2025-I S11 IS DELIBERATELY NOT DRAWN, AND THE REASON IS ORDERING, NOT
+        // SUPPLY. `orderEnglishBlocks` keys a non-stimulus row on
+        // chapter+subtopic+setId, so a set spanning several subtopics prints as
+        // several buckets. 2025-II S3 spans three (Articles 3 / Discourse Markers 1
+        // / Preposition 1) and S11 is entirely Discourse Markers, so S11 sorts
+        // BETWEEN S3's own buckets and splits it — R5-scattered-set, and the paper
+        // would print S3's directions twice. Dropping S11 leaves S3's three
+        // subtopics adjacent. Grammar is therefore 10, not 15, and Vocabulary
+        // carries the freed 5.
+        blocks: [
+          { setId: "48c9d9a3-5e50-4582-8933-2d30c73a01ae:S3", take: 5, note: "2025-II" },
+          { setId: "2fb47771-8ec7-4532-a9ff-257a9f621541:S3", take: 5, note: "2024-II" },
+        ],
+      },
+      {
+        chapterId: "ba40834a-8074-44e9-9f47-29be8c0a8811", label: "Vocabulary (CDS)",
+        sectionKey: "english", fromExam: "CDS", requireConfirmedReview: true,
+        // One whole 10-row printed block (2026-I homophone set) rather than two
+        // part-blocks: it keeps the directions printing once and fills the seats
+        // freed by the Grammar ordering conflict above.
+        blocks: [{ setId: "0908c614-73f6-4d5a-895c-4f8de0dc8408:S9", take: 10, note: "2026-I" }],
+      },
+      {
+        chapterId: "12af0006-e2c9-43d6-8cbc-052be8f24bc5", label: "Sentence Rearrangement (CDS)",
+        sectionKey: "english", fromExam: "CDS", requireConfirmedReview: true,
+        blocks: [{ setId: "04a5e194-7f03-4d6c-9d40-d1185d5056e0:S6", take: 5, note: "2019-II" }],
+      },
+      {
+        chapterId: "9d51a7e8-221f-4460-9604-7270447147e9", label: "Reading Comprehension (CDS)",
+        sectionKey: "english", fromExam: "CDS", requireConfirmedReview: true,
+        blocks: [{ setId: "55d278a3-5600-474f-aa18-d4296ab1b0f5:S7b", take: 5, note: "2024-I" }],
+      },
+
+      // ── Part B — Physics 25 (Foundation 20 + NDA 5) ────────────────────────
+      { chapterId: "c1e9dd85-6c07-4c3c-b5d9-73c4350eb32c", label: "PHY Light - Reflection and Refraction", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      // take: 1, not 2 — the chapter has exactly 2 free confirmed rows and one of
+      // them is the excluded figure-less Q5 above.
+      { chapterId: "266bfff5-57f9-4ac4-a6e6-d1d79a449db1", label: "PHY The Human Eye and the Colourful World", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 1 },
+      { chapterId: "08e44970-d5fa-4e62-b750-93c1d0902c99", label: "PHY Electricity", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      { chapterId: "cbf0cd21-bb77-46b3-a7cc-b8d5e9469426", label: "PHY Magnetic Effects of Electric Current", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      { chapterId: "65aeabdf-8fa2-4d2f-b91b-1442885b723c", label: "PHY Sound (incl. the Oscillations seat)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      { chapterId: "17cfdfa0-e201-4a5e-8402-3e915dc971f7", label: "PHY Motion", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      { chapterId: "baf73524-d5eb-43f4-917e-a5c9d928883f", label: "PHY Work and Energy", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      { chapterId: "09018942-cca4-4b54-bf6b-6c1a360f1691", label: "PHY Gravitation (+ the Fluids seat)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      // NDA PYQ covers the two Foundation has no counterpart for.
+      // MODERATE 2, not M1/H1: with requireSolution the free pool is E19/M9/H0 —
+      // there is no HARD row left in this chapter to draw, so asking for one only
+      // lands the paper short. Recorded rather than left as a silent shortfall.
+      { chapterId: "5dedf98c-7681-4f33-869e-f341313d8fd0", label: "PHY Heat and Thermodynamics", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      // MODERATE 2, carrying the seat freed by the Human Eye exclusion above.
+      { chapterId: "51f93cb7-95f0-4a12-af8b-6c894de8d17c", label: "PHY Modern Physics", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 0 } },
+
+      // ── Part B — Chemistry 15 (Foundation 9 + NDA 6) ───────────────────────
+      { chapterId: "82892c84-a5ba-41db-a229-c6105acf7f8b", label: "CHE Carbon and Its Compounds (+ the Bonding seat)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      { chapterId: "695fea8c-e966-4c6e-b585-bdd9a7323f49", label: "CHE Acids, Bases and Salts", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 1 },
+      { chapterId: "33325289-969e-4b06-892d-3da4bce00b89", label: "CHE Matter in Our Surroundings", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      { chapterId: "c4efaa8a-82fa-4e1c-9181-06eb16465bf8", label: "CHE Chemical Reactions and Equations", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      { chapterId: "1ff615cf-3256-4f95-bd53-0e3807aa000e", label: "CHE Metals and Non-metals (+ the Industrial seats)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      // Foundation Chemistry is otherwise dry, so NDA carries 6 rather than Mock 3's 1.
+      { chapterId: "d14c8662-10f9-42c7-b03f-9260c6131c81", label: "CHE Hydrogen and Water", sectionKey: "gk", take: 6 },
+
+      // ── Part B — Biology 10 (Foundation Course) ────────────────────────────
+      { chapterId: "9990265b-e948-4e97-8d63-b8e2e580bb97", label: "BIO Life Processes (+ a Plant Biology seat)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 1 },
+      { chapterId: "7d63025f-f1bb-4975-b410-5b5168986045", label: "BIO Control and Coordination", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+      { chapterId: "1b08c219-c055-41a8-9899-f1950683c3b3", label: "BIO Tissues (+ a Plant Biology seat)", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 1 },
+      { chapterId: "5c46629b-978d-45ed-b9d1-e3593b1c4b1d", label: "BIO How Do Organisms Reproduce", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 2 },
+      { chapterId: "be8227bd-721e-46ec-b71c-ff0c202d5ff1", label: "BIO Our Environment", sectionKey: "gk", fromExam: "Foundation Course", kinds: ["practice"], requireConfirmedReview: true, take: 3 },
+
+      // ── Part B — Geography 20 (NDA PYQ) ────────────────────────────────────
+      { chapterId: "6df02248-239f-49bd-9c2e-63cb0860defb", label: "GEO Indian Geo - Economy, Resources, Transport", sectionKey: "gk", quota: { EASY: 1, MODERATE: 3, HARD: 1 } },
+      { chapterId: "63289cd6-4373-4840-8d57-407e47844c97", label: "GEO Earth's Structure and Landforms", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 1 } },
+      { chapterId: "a5a3c06a-a8da-4cf1-96a4-608ea3279d14", label: "GEO Indian Geo - Physical Features", sectionKey: "gk", quota: { EASY: 1, MODERATE: 2, HARD: 1 } },
+      { chapterId: "8c4cb7d9-c77d-4155-939f-9cf0ada26bba", label: "GEO Climatology, Atmosphere and Weather", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 1 } },
+      { chapterId: "3b4f15e9-42a8-4a7d-accc-53a4374e059f", label: "GEO World and Human Geography", sectionKey: "gk", quota: { EASY: 1, MODERATE: 1, HARD: 0 } },
+      { chapterId: "5424e638-b1eb-4319-ad6f-cd6c238d758e", label: "GEO Earth in Space, Maps and Coordinates", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "b6db578c-0079-42f4-898b-dedc0bb4ba82", label: "GEO Oceanography", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — History 12 (NDA PYQ) ──────────────────────────────────────
+      { chapterId: "7362f273-e8bf-4c26-b1a2-5cc17e5d56f0", label: "HIS Modern India", sectionKey: "gk", quota: { EASY: 1, MODERATE: 3, HARD: 2 } },
+      { chapterId: "e376f822-a8e5-4ce2-b58b-e921c9b9ae9e", label: "HIS Medieval India", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "e87bba6c-60b7-4264-868f-0a50d688bcd6", label: "HIS Ancient India", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "c4efbafd-4cc9-4b06-8e03-259610410ab7", label: "HIS World History", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+
+      // ── Part B — Polity 6 (NDA PYQ) ────────────────────────────────────────
+      { chapterId: "a2f2ba52-9dfd-43e3-b220-2b6de50cb37f", label: "POL Government Structure", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      { chapterId: "d1448908-30ee-40e9-8f2f-920a64aed7bc", label: "POL Fundamental Rights, DPSP, Local Governance", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      { chapterId: "ecff6022-f64b-49d5-a5c1-4f89012e192b", label: "POL Indian Constitution", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      // MODERATE, not HARD: the free pool here is E4/M3/H0.
+      { chapterId: "fccc9f7a-66da-4374-b48d-f65e8a09e4df", label: "POL World Polity and IR", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — Economics 1 (NDA PYQ; the subject is one chapter) ─────────
+      { chapterId: "4c64341f-f757-4d44-b1e4-a30572cd4bae", label: "ECO Indian Economy", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+
+      // ── Part B — Current Affairs 11 (Sep-2026 pool, PINNED) ────────────────
+      // `sourceFile` is what makes the pinning true rather than intended: NDA
+      // Current Affairs holds 21 distinct practice source files and a stale pick
+      // is silently wrong — a 2024 question asks about 2024 facts and still reads
+      // as well-formed.
+      { chapterId: "2d7691db-838d-419c-8ae8-bd299af89482", label: "CA International Affairs", sectionKey: "gk", kinds: ["practice"], sourceFile: "Current Affairs_Sep26.docx", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      { chapterId: "2843a36f-4171-4d21-b8af-165d3ed2b7ad", label: "CA Government Schemes and Policy", sectionKey: "gk", kinds: ["practice"], sourceFile: "Current Affairs_Sep26.docx", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
+      { chapterId: "8643c509-7ea1-4b37-8c2d-5adc53c7f2eb", label: "CA Defence and Military Exercises", sectionKey: "gk", kinds: ["practice"], sourceFile: "Current Affairs_Sep26.docx", quota: { EASY: 0, MODERATE: 1, HARD: 1 } },
+      { chapterId: "06f78bba-e820-49e4-ada5-7b2c90eb3c1d", label: "CA Sports", sectionKey: "gk", kinds: ["practice"], sourceFile: "Current Affairs_Sep26.docx", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "c5cd2e0e-f664-4967-abb6-a1033bcffec6", label: "CA Science and Technology", sectionKey: "gk", kinds: ["practice"], sourceFile: "Current Affairs_Sep26.docx", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "47cd81d5-4985-4a5a-b884-71f2c2de4634", label: "CA Awards, Honours and Culture", sectionKey: "gk", kinds: ["practice"], sourceFile: "Current Affairs_Sep26.docx", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
+      { chapterId: "37f60677-b0d4-4c76-9431-60f0f603d324", label: "CA National Events and India GK", sectionKey: "gk", kinds: ["practice"], sourceFile: "Current Affairs_Sep26.docx", take: 1 },
+      { chapterId: "b9f361d6-4126-44da-a34c-b420370fc63f", label: "CA Environment, Ecology and Energy", sectionKey: "gk", kinds: ["practice"], sourceFile: "Current Affairs_Sep26.docx", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+    ],
+  },
+  {
     // ── NDA GAT — LWS Mock 3 (150 q) ─────────────────────────────────────────
     //
     // Built to scripts/bank-paper/NDA_GAT_BLUEPRINT.md. READ THAT FIRST — the
@@ -347,7 +539,8 @@ const PAPERS: PaperSpec[] = [
       { chapterId: "a2f2ba52-9dfd-43e3-b220-2b6de50cb37f", label: "POL Government Structure", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
       { chapterId: "d1448908-30ee-40e9-8f2f-920a64aed7bc", label: "POL Fundamental Rights, DPSP, Local Governance", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
       { chapterId: "ecff6022-f64b-49d5-a5c1-4f89012e192b", label: "POL Indian Constitution", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
-      { chapterId: "fccc9f7a-66da-4374-b48d-f65e8a09e4df", label: "POL World Polity and IR", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+      // MODERATE, not HARD: the free pool here is E4/M3/H0.
+      { chapterId: "fccc9f7a-66da-4374-b48d-f65e8a09e4df", label: "POL World Polity and IR", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
 
       // ── Part B — Economics 1 (NDA PYQ; the subject is one chapter) ─────────
       { chapterId: "4c64341f-f757-4d44-b1e4-a30572cd4bae", label: "ECO Indian Economy", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
@@ -510,7 +703,8 @@ const PAPERS: PaperSpec[] = [
       { chapterId: "a2f2ba52-9dfd-43e3-b220-2b6de50cb37f", label: "POL Government Structure", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
       { chapterId: "d1448908-30ee-40e9-8f2f-920a64aed7bc", label: "POL Fundamental Rights, DPSP, Local Governance", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
       { chapterId: "ecff6022-f64b-49d5-a5c1-4f89012e192b", label: "POL Indian Constitution", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
-      { chapterId: "fccc9f7a-66da-4374-b48d-f65e8a09e4df", label: "POL World Polity and IR", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+      // MODERATE, not HARD: the free pool here is E4/M3/H0.
+      { chapterId: "fccc9f7a-66da-4374-b48d-f65e8a09e4df", label: "POL World Polity and IR", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
 
       // ── Part B — Economics 1 (NDA PYQ; the subject is one chapter) ─────────
       { chapterId: "4c64341f-f757-4d44-b1e4-a30572cd4bae", label: "ECO Indian Economy", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
@@ -682,7 +876,8 @@ const PAPERS: PaperSpec[] = [
       { chapterId: "a2f2ba52-9dfd-43e3-b220-2b6de50cb37f", label: "POL Government Structure", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
       { chapterId: "d1448908-30ee-40e9-8f2f-920a64aed7bc", label: "POL Fundamental Rights, DPSP, Local Governance", sectionKey: "gk", quota: { EASY: 0, MODERATE: 2, HARD: 0 } },
       { chapterId: "ecff6022-f64b-49d5-a5c1-4f89012e192b", label: "POL Indian Constitution", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
-      { chapterId: "fccc9f7a-66da-4374-b48d-f65e8a09e4df", label: "POL World Polity and IR", sectionKey: "gk", quota: { EASY: 0, MODERATE: 0, HARD: 1 } },
+      // MODERATE, not HARD: the free pool here is E4/M3/H0.
+      { chapterId: "fccc9f7a-66da-4374-b48d-f65e8a09e4df", label: "POL World Polity and IR", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },
 
       // ── Part B — Economics 1 (NDA PYQ; the subject is one chapter) ─────────
       { chapterId: "4c64341f-f757-4d44-b1e4-a30572cd4bae", label: "ECO Indian Economy", sectionKey: "gk", quota: { EASY: 0, MODERATE: 1, HARD: 0 } },

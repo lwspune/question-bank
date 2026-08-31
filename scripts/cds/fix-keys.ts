@@ -74,6 +74,30 @@ const FIXES: Fix[] = [
     why: "'A biography is ___ person's life history' — keyed 'about', which leaves the sentence ungrammatical ('about person's life history'). Only 'about a' supplies the article the noun phrase needs. (Section type is fill-blank-grammar, so no directions ambiguity: this fix stands.)",
   },
   {
+    // 2024-1 Q57, RC set 55d278a3…:S7b. Found 2026-08-30 during the CDS review
+    // pass, and the FIDELITY CHECK IS WHY IT COUNTS: all five stems and all
+    // twenty options of that set were compared against the printed booklet
+    // (Eng_CDS_2024_1.pdf, printed p17 — pure scan, rendered) and match exactly
+    // in label order. So this is NOT the mis-slotted-option class; the
+    // transcription is faithful and the key itself is simply wrong.
+    //
+    // The passage says meaning is clarified "by identifying and describing its
+    // separate dimensions", and uses "aspects" throughout — which is option (b)
+    // "there is clarity regarding its aspects" almost verbatim. The stored key
+    // (a) "they find meaning of the innovation in their use" is Michael Fullan's
+    // actual thesis (the passage is his), but the word "use" appears nowhere in
+    // the excerpt, and the printed Directions restrict answers to "the contents
+    // of the passage and the opinion of the author only". So (a) is defensible
+    // only by importing outside knowledge the question forbids.
+    //
+    // Derived BLIND (key and solution withheld at dump time) before the page was
+    // opened; the page then confirmed the options were transcribed correctly.
+    id: "48f15a12-d60c-42e7-b0e8-4bedd87da6bb",
+    from: "A",
+    to: "B",
+    why: "2024-1 Q57 RC: the passage clarifies meaning 'by identifying and describing its separate dimensions', which is option (b) 'clarity regarding its aspects'. The keyed (a) 'find meaning ... in their use' introduces a concept absent from the excerpt, and the Directions restrict answers to the passage only. Options verified faithful against printed p17, so this is a wrong key rather than a mis-slot.",
+  },
+  {
     // 2025-1 Q111, cloze set fecd882e…:S15. Found 2026-08-27 while topping up the
     // set for NDA GAT Mock 3, and VERIFIED against the printed booklet
     // (Eng_CDS_2025_1.pdf, printed p27 — rendered, no text layer).
@@ -102,6 +126,37 @@ const FIXES: Fix[] = [
     stemFrom: 'Blank (111): "... give us ___ magnificent examples of the ... eye and the trained hand ..."',
     stemTo: 'Blank (111): "___ by the charm of Nature around him, man has expressed his appreciation of it in works of art produced by him."',
     why: "2025-1 Q111 cloze: the stem quoted blank 114's sentence, and the key was derived from that corruption. Printed p27 puts blank 111 at the passage opening — 'Moved by the charm of Nature around him, man has expressed ...' — so the answer is the past participle (a) Moved, not (b) Moving.",
+  },
+  {
+    // 2019-2 Q31, cloze set 04a5e194…:S4 (Comprehension-II). Found 2026-08-30
+    // while reviewing the set for NDA GAT Mock 4, and verified against the
+    // printed booklet (Eng_CDS_2019_2.pdf, printed p6 — rendered, no text layer).
+    //
+    // The page prints:
+    //   ... other hand. ___ (30) the term 'ecology' was first coined and used by the
+    //   German biologist Ernst Haeckel in 1869, a few conceptual terms ___ (31)
+    //   already proposed to reveal relationships ___ (32) organisms and their
+    //   environment.
+    //   31. (a) are (b) were (c) have been (d) have
+    //
+    // Blank 30 is "Though" (stored key C, which this pass agreed with), so the
+    // subordinate clause is anchored firmly in the past — "was first coined ... in
+    // 1869" — and the surrounding narrative stays past throughout ("Hilaire used",
+    // "Mivart proposed"). A present-perfect main clause clashes with that. Two
+    // further marks against the stored (c): the printed word order would be "have
+    // been already proposed" where standard English is "have already been
+    // proposed"; and (d) "have" is active, which "terms" cannot be.
+    //
+    // Derived BLIND (key and stored solution withheld at dump time) but WITH the
+    // section directions and the whole passage — the omission that made three
+    // earlier vocabulary "fixes" wrong (see the ⚠ in the header) does not apply
+    // here. The page was opened only afterwards, and confirmed the option set and
+    // the label order are both transcribed faithfully, so this is a wrong key and
+    // not a mis-slot.
+    id: "2111336d-9826-4423-ad07-69a357a7f2e0",
+    from: "C",
+    to: "B",
+    why: "2019-2 Q31 cloze: blank 30 is 'Though' and the clause it introduces is past ('was first coined ... in 1869'), so the main clause takes the simple past (b) 'were already proposed'. The keyed (c) 'have been' clashes in tense and mis-orders the adverb. Options verified faithful against printed p6.",
   },
 ];
 
