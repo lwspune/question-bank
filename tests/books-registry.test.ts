@@ -25,7 +25,7 @@
  */
 import { describe, it, expect, beforeAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { BOOKS } from "@/lib/books/registry";
+import { BOOKS, bookExams } from "@/lib/books/registry";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -59,13 +59,13 @@ describe.skipIf(!HAS_ENV)("book registry vs the live taxonomy", () => {
       const { data: exams, error: examErr } = await client
         .from("exams")
         .select("id, name")
-        .in("name", book.exams);
+        .in("name", bookExams(book));
       if (examErr) throw new Error(`exams: ${examErr.message}`);
 
       const examIdByName = new Map(
         (exams ?? []).map((e) => [e.name as string, e.id as string])
       );
-      for (const exam of book.exams) {
+      for (const exam of bookExams(book)) {
         expect(examIdByName.get(exam), `exam "${exam}" is missing`).toBeTruthy();
       }
 
@@ -104,7 +104,7 @@ describe.skipIf(!HAS_ENV)("book registry vs the live taxonomy", () => {
       }
 
       // Direction 1: nothing in the registry has stopped resolving.
-      for (const exam of book.exams) {
+      for (const exam of bookExams(book)) {
         const live = liveByExam.get(exam)!;
         const missing = book.chapters.filter((c) => !live.has(c.name)).map((c) => c.name);
         expect(

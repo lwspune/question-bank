@@ -93,7 +93,7 @@ async function loadDerived(
 
   const out: DerivedRow[] = [];
   for (const chapter of book.chapters) {
-    const sections = buildChapterSections(byChapter.get(chapter.name) ?? []);
+    const sections = buildChapterSections(byChapter.get(chapter.name) ?? [], book.sections, chapter.groupSubtopics);
     for (const section of sections) {
       let order = 0;
       for (const set of section.sets) {

@@ -11,7 +11,7 @@ import { redirect } from "next/navigation";
 import { BookMarked } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { getSessionSuperadmin } from "@/lib/auth";
-import { BOOKS } from "@/lib/books/registry";
+import { BOOKS, bookExams } from "@/lib/books/registry";
 
 export const dynamic = "force-dynamic";
 
@@ -49,7 +49,7 @@ export default async function BooksIndexPage() {
                     {book.subtitle}
                   </span>
                   <span className="mt-1 block text-xs text-muted-foreground">
-                    {book.chapters.length} chapters · {book.exams.join(" + ")}
+                    {book.chapters.length} chapters · {bookExams(book).join(" + ")}
                   </span>
                 </span>
               </Link>

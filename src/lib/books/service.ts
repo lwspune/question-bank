@@ -13,14 +13,14 @@
  * without a policy, and this table deliberately has none.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { buildStoredSections, sittingOrdinal, type BookSectionKey, type SetMeta } from "./order";
+import { buildStoredSections, sittingOrdinal, type SetMeta } from "./order";
 import { planSetMove, planSetToSection, type PositionedSet } from "./curate";
 import { loadBookMeta } from "./query";
 import type { BookChapter, BookDefinition } from "./registry";
 
 type Row = {
   questionId: string;
-  sectionKey: BookSectionKey;
+  sectionKey: string;
   position: number;
   excluded: boolean;
 };
@@ -57,7 +57,7 @@ async function chapterRows(
     for (const r of data ?? []) {
       rows.push({
         questionId: r.question_id,
-        sectionKey: r.section_key as BookSectionKey,
+        sectionKey: r.section_key as string,
         position: r.position,
         excluded: r.excluded,
       });
@@ -77,15 +77,15 @@ async function positionedSets(
   book: BookDefinition,
   chapter: BookChapter,
   rows: Row[]
-): Promise<Map<BookSectionKey, PositionedSet[]>> {
+): Promise<Map<string, PositionedSet[]>> {
   const meta = await loadBookMeta(client, book, { chapterName: chapter.name });
   const metaById = new Map<string, SetMeta>(
     meta.map((m) => [m.id, { setId: m.setId, year: m.pyqYear, sitting: sittingOrdinal(m) }])
   );
   const positionById = new Map(rows.map((r) => [r.questionId, r.position]));
-  const sections = buildStoredSections(rows, metaById);
+  const sections = buildStoredSections(rows, metaById, book.sections, chapter.groupSubtopics);
 
-  const out = new Map<BookSectionKey, PositionedSet[]>();
+  const out = new Map<string, PositionedSet[]>();
   for (const section of sections) {
     out.set(
       section.key,
@@ -105,7 +105,7 @@ async function positionedSets(
 async function applyMoves(
   client: SupabaseClient,
   bookId: string,
-  moves: { questionId: string; position: number; sectionKey?: BookSectionKey }[]
+  moves: { questionId: string; position: number; sectionKey?: string }[]
 ): Promise<void> {
   for (const move of moves) {
     const patch: Record<string, unknown> = { position: move.position };
@@ -146,7 +146,7 @@ export async function moveSet(
   client: SupabaseClient,
   book: BookDefinition,
   chapter: BookChapter,
-  sectionKey: BookSectionKey,
+  sectionKey: string,
   setKey: string,
   direction: "up" | "down"
 ): Promise<boolean> {
@@ -164,9 +164,9 @@ export async function moveSetToSection(
   client: SupabaseClient,
   book: BookDefinition,
   chapter: BookChapter,
-  fromSection: BookSectionKey,
+  fromSection: string,
   setKey: string,
-  toSection: BookSectionKey
+  toSection: string
 ): Promise<boolean> {
   if (fromSection === toSection) return false;
   const bookId = await bookIdOf(client, book);

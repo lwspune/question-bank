@@ -2,24 +2,44 @@
  * The book registry — what a "book" IS, declared as data.
  *
  * A book here is a DERIVED VIEW over questions that already exist in the bank.
- * It stores no content and duplicates nothing: it names a subject, the exams to
- * draw from, and the chapters to draw them into, in order. Phase 3 will layer
- * curation (exclude / move / reorder) on top; until then a chapter's contents
- * are entirely a function of the bank plus `src/lib/books/order.ts`.
+ * It stores no content and duplicates nothing: it names a subject, the SECTIONS
+ * each chapter is split into, and the chapters to draw them into, in order.
+ *
+ * SECTIONS ARE PER-BOOK, and that is what makes a second book possible. The
+ * first version hardcoded `[nda, cds]` in order.ts behind a `"NDA" | "CDS"`
+ * union; a book over one exam, or three, could not have used it. What is NOT
+ * here is how to read an exam's SITTING — that is a property of the exam
+ * (`EXAM_SITTING` in order.ts), true for every book containing it, so a new
+ * book inheriting NDA does not restate NDA's rule.
  *
  * CHAPTER NAMES MUST MATCH THE DB EXACTLY. They are matched by name against
- * `chapters.name`, and a near-miss — a stray space, "&" for "and" — does not
- * error, it silently yields an empty chapter. `tests/books-registry.test.ts`
- * is the standing guard: it resolves every name against the live bank in BOTH
- * exams and fails if one stops matching.
+ * `chapters.name`, and a near-miss does not error — it silently yields an empty
+ * chapter. `tests/books-registry.test.ts` is the standing guard: it resolves
+ * every name against the live bank in every exam the book draws from, and fails
+ * in both directions.
  */
-import type { BookExam } from "./order";
+import type { BookSectionDef, SubtopicGroupDef } from "./order";
 
 export type BookChapter = {
   /** URL segment. Stable — it is the shareable link to a chapter of the book. */
   slug: string;
   /** Must equal `chapters.name` in the bank, character for character. */
   name: string;
+  /**
+   * Opt-in subtopic grouping (layout A), in print order.
+   *
+   * ONLY set this where NO SET SPANS A SUBTOPIC — measured per chapter, since
+   * a set takes the subtopic of its first question. Vocabulary, Sentence
+   * Rearrangement and Fill in the Blanks are clean (0 spanning sets). Grammar
+   * (18 of 72), Spotting Errors (28 of 37) and Reading Comprehension (49 of 65)
+   * are NOT: grouping them would tear questions away from their passage.
+   *
+   * `directions` is an authored line replacing the per-set Directions for the
+   * whole block. Set it only where every set genuinely shares one instruction.
+   * Omit it and the block keeps its per-set Directions, which is right for the
+   * catch-all subtopics that mix task types.
+   */
+  groupSubtopics?: SubtopicGroupDef[];
 };
 
 export type BookDefinition = {
@@ -29,23 +49,19 @@ export type BookDefinition = {
   subtitle: string;
   /** Matched against `subjects.name`. */
   subject: string;
-  /**
-   * The halves of every chapter, in render order. Each becomes a titled
-   * section — "NDA PYQ", then "CDS PYQ" — via order.ts.
-   */
-  exams: BookExam[];
+  /** Every chapter is split into these, in this order. */
+  sections: BookSectionDef[];
   chapters: BookChapter[];
 };
 
 /**
  * Chapter order is EDITORIAL, not derived.
  *
- * It runs heaviest-first by combined NDA+CDS question count, which is how the
- * `/guide` subjects tier their chapters — a student meets the highest-yield
- * material first. It is deliberately a hand-written list rather than a
- * `count desc` sort, because a derived order would silently reshuffle the book
- * every time the bank grows, and a book's chapter order should change only
- * when someone decides it should.
+ * It runs heaviest-first by combined question count, which is how the `/guide`
+ * subjects tier their chapters. It is a hand-written list rather than a
+ * `count desc` sort because a derived order would silently reshuffle the book
+ * on every ingest, and a book's chapter order should change only when someone
+ * decides it should.
  */
 export const NDA_CDS_ENGLISH: BookDefinition = {
   slug: "nda-cds-english",
@@ -53,16 +69,70 @@ export const NDA_CDS_ENGLISH: BookDefinition = {
   subtitle:
     "Every English past-year question from both exams, chapter by chapter — NDA first, then CDS, oldest to newest.",
   subject: "English",
-  exams: ["NDA", "CDS"],
+  sections: [
+    { key: "nda", title: "NDA PYQ", exam: "NDA" },
+    { key: "cds", title: "CDS PYQ", exam: "CDS" },
+  ],
   chapters: [
-    { slug: "vocabulary", name: "Vocabulary" },
+    {
+      slug: "vocabulary",
+      name: "Vocabulary",
+      // 0 of 91 sets span a subtopic. Synonyms and Antonyms carry an authored
+      // line because all 65 of their sets say the same thing in 22 different
+      // wordings; the other two mix task types (Word Definition alone spans
+      // Match-List, word-pair meaning and single-word meaning), so no single
+      // line would be true of them and they keep their per-set Directions.
+      groupSubtopics: [
+        {
+          name: "Synonyms",
+          directions:
+            "Each item consists of a sentence with an underlined word or words, followed by four options. Select the option nearest in meaning to the underlined part.",
+        },
+        {
+          name: "Antonyms",
+          directions:
+            "Each item consists of a sentence with an underlined word or words, followed by four options. Select the option opposite in meaning to the underlined part.",
+        },
+        { name: "Word Definition" },
+        { name: "Confusable Word Pairs" },
+      ],
+    },
     { slug: "grammar", name: "Grammar" },
-    { slug: "sentence-rearrangement", name: "Sentence Rearrangement" },
+    {
+      slug: "sentence-rearrangement",
+      name: "Sentence Rearrangement",
+      // 0 of 55 sets span a subtopic. Both blocks are genuinely one task type,
+      // but the two differ from each other, so each carries its own line.
+      groupSubtopics: [
+        {
+          name: "Sentence Part Rearrangement (PQRS)",
+          directions:
+            "Each item is a sentence whose parts have been jumbled and labelled P, Q, R and S. Select the sequence that produces the correct sentence.",
+        },
+        {
+          name: "Paragraph Sequencing (S1–S6)",
+          directions:
+            "Each item is a passage of six sentences. The first and sixth are given as S1 and S6; the middle four have been jumbled and labelled P, Q, R and S. Select the correct order.",
+        },
+      ],
+    },
     { slug: "spotting-errors", name: "Spotting Errors" },
     { slug: "reading-comprehension", name: "Reading Comprehension" },
     { slug: "idioms-and-phrases", name: "Idioms and Phrases" },
     { slug: "cloze-test", name: "Cloze Test" },
-    { slug: "fill-in-the-blanks", name: "Fill in the Blanks" },
+    {
+      slug: "fill-in-the-blanks",
+      name: "Fill in the Blanks",
+      // 0 of 11 sets span a subtopic.
+      groupSubtopics: [
+        {
+          name: "Contextual Fill-in-Blank",
+          directions:
+            "Each sentence has a blank space followed by four options. Select the word or group of words most appropriate for the blank.",
+        },
+        { name: "Contextual Word Selection (Phrasal Verbs and Collocations)" },
+      ],
+    },
   ],
 };
 
@@ -77,4 +147,9 @@ export function getBookChapter(
   chapterSlug: string
 ): BookChapter | null {
   return book.chapters.find((c) => c.slug === chapterSlug) ?? null;
+}
+
+/** The distinct exams a book draws on, in section order. */
+export function bookExams(book: BookDefinition): string[] {
+  return Array.from(new Set(book.sections.map((s) => s.exam)));
 }

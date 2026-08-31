@@ -28,7 +28,29 @@ import {
   buildChapterSections,
   buildStoredSections,
   type BookQuestionMeta,
+  type BookSectionDef,
+  type SetMeta,
+  type StoredPlacement,
+  type SubtopicGroupDef,
 } from "../src/lib/books/order";
+
+/**
+ * Sections are per-BOOK now rather than hardcoded, so the suite supplies the
+ * pair this book uses. The wrappers keep every case below reading as it did.
+ */
+const SECTIONS: BookSectionDef[] = [
+  { key: "nda", title: "NDA PYQ", exam: "NDA" },
+  { key: "cds", title: "CDS PYQ", exam: "CDS" },
+];
+
+const build = (metas: BookQuestionMeta[], groups?: SubtopicGroupDef[]) =>
+  buildChapterSections(metas, SECTIONS, groups);
+
+const buildStored = (
+  ordered: StoredPlacement[],
+  metaById: Map<string, SetMeta>,
+  groups?: SubtopicGroupDef[]
+) => buildStoredSections(ordered, metaById, SECTIONS, groups);
 
 /** Terse builder so a case shows only the fields it is actually about. */
 function q(over: Partial<BookQuestionMeta> & { id: string }): BookQuestionMeta {
@@ -108,7 +130,7 @@ describe("sittingLabel", () => {
 
 describe("buildChapterSections", () => {
   it("always returns both sections, in the fixed NDA-then-CDS order", () => {
-    const sections = buildChapterSections([q({ id: "a", exam: "CDS", sourceFile: "Eng_CDS_2020_1.pdf", pyqMonth: null })]);
+    const sections = build([q({ id: "a", exam: "CDS", sourceFile: "Eng_CDS_2020_1.pdf", pyqMonth: null })]);
     expect(sections.map((s) => s.key)).toEqual(["nda", "cds"]);
     expect(sections.map((s) => s.title)).toEqual(["NDA PYQ", "CDS PYQ"]);
   });
@@ -118,7 +140,7 @@ describe("buildChapterSections", () => {
   // looked and there are none" — the same absence-vs-zero distinction the
   // errata report makes.
   it("keeps an empty section present with a zero count", () => {
-    const sections = buildChapterSections([
+    const sections = build([
       q({ id: "a", exam: "CDS", pyqMonth: null, sourceFile: "Eng_CDS_2020_1.pdf" }),
     ]);
     expect(sections[0].questionCount).toBe(0);
@@ -127,7 +149,7 @@ describe("buildChapterSections", () => {
   });
 
   it("never files a question into the other exam's section", () => {
-    const sections = buildChapterSections([
+    const sections = build([
       q({ id: "n1", exam: "NDA" }),
       q({ id: "c1", exam: "CDS", pyqMonth: null, sourceFile: "Eng_CDS_2020_1.pdf" }),
       q({ id: "n2", exam: "NDA" }),
@@ -137,7 +159,7 @@ describe("buildChapterSections", () => {
   });
 
   it("orders a half oldest-first, and by sitting within a year", () => {
-    const sections = buildChapterSections([
+    const sections = build([
       q({ id: "2020sep", pyqYear: 2020, pyqMonth: "Sep" }),
       q({ id: "2019apr", pyqYear: 2019, pyqMonth: "Apr" }),
       q({ id: "2020apr", pyqYear: 2020, pyqMonth: "Apr" }),
@@ -153,7 +175,7 @@ describe("buildChapterSections", () => {
 
   it("keeps a set's questions contiguous and in paper order", () => {
     // Two interleaved sets from one paper, deliberately supplied shuffled.
-    const sections = buildChapterSections([
+    const sections = build([
       q({ id: "b2", setId: "B", sourceRow: 21 }),
       q({ id: "a2", setId: "A", sourceRow: 11 }),
       q({ id: "b1", setId: "B", sourceRow: 20 }),
@@ -168,7 +190,7 @@ describe("buildChapterSections", () => {
   it("places a set by its earliest question, not its last", () => {
     // Set EARLY starts at row 5 but ends at row 40; set LATE spans 10-12 and
     // must still come second. Ordering on the max row would invert these.
-    const sections = buildChapterSections([
+    const sections = build([
       q({ id: "late1", setId: "LATE", sourceRow: 10 }),
       q({ id: "late2", setId: "LATE", sourceRow: 12 }),
       q({ id: "early1", setId: "EARLY", sourceRow: 5 }),
@@ -180,7 +202,7 @@ describe("buildChapterSections", () => {
   it("does not merge same-named sets from different papers", () => {
     // set_id is unique per paper in the bank, but the grouping key must not
     // assume that: two papers' sets must never be welded into one passage.
-    const sections = buildChapterSections([
+    const sections = build([
       q({ id: "y1", setId: "S", pyqYear: 2019, sourceRow: 3 }),
       q({ id: "y2", setId: "S", pyqYear: 2020, sourceRow: 3 }),
     ]);
@@ -189,7 +211,7 @@ describe("buildChapterSections", () => {
   });
 
   it("carries standalone questions through as their own single-question sets", () => {
-    const sections = buildChapterSections([
+    const sections = build([
       q({ id: "solo1", setId: null, sourceRow: 7 }),
       q({ id: "solo2", setId: null, sourceRow: 2 }),
     ]);
@@ -199,7 +221,7 @@ describe("buildChapterSections", () => {
   });
 
   it("gives every set a key that is unique within the chapter", () => {
-    const sections = buildChapterSections([
+    const sections = build([
       q({ id: "n", exam: "NDA", setId: "S", sourceRow: 1 }),
       q({ id: "c", exam: "CDS", setId: "S", pyqMonth: null, sourceFile: "Eng_CDS_2020_1.pdf", sourceRow: 1 }),
       q({ id: "s1", setId: null, sourceRow: 2 }),
@@ -210,7 +232,7 @@ describe("buildChapterSections", () => {
   });
 
   it("counts questions, not sets", () => {
-    const sections = buildChapterSections([
+    const sections = build([
       q({ id: "a", setId: "S", sourceRow: 1 }),
       q({ id: "b", setId: "S", sourceRow: 2 }),
       q({ id: "c", setId: null, sourceRow: 3 }),
@@ -220,7 +242,7 @@ describe("buildChapterSections", () => {
   });
 
   it("sorts rows with no year last rather than dropping them", () => {
-    const sections = buildChapterSections([
+    const sections = build([
       q({ id: "noyear", pyqYear: null, pyqMonth: null, sourceRow: 1 }),
       q({ id: "yes", pyqYear: 2017, sourceRow: 2 }),
     ]);
@@ -234,8 +256,8 @@ describe("buildChapterSections", () => {
       q({ id: "b", setId: "S", sourceRow: 1, pyqYear: 2018 }),
       q({ id: "c", setId: null, sourceRow: 9, pyqYear: 2017 }),
     ];
-    const forward = buildChapterSections(rows);
-    const reversed = buildChapterSections([...rows].reverse());
+    const forward = build(rows);
+    const reversed = build([...rows].reverse());
     expect(JSON.stringify(reversed)).toEqual(JSON.stringify(forward));
   });
 });
@@ -257,7 +279,7 @@ describe("buildStoredSections", () => {
   ]);
 
   it("keeps both sections in NDA-then-CDS order regardless of input order", () => {
-    const sections = buildStoredSections(
+    const sections = buildStored(
       [
         { questionId: "c", sectionKey: "cds" },
         { questionId: "a", sectionKey: "nda" },
@@ -271,7 +293,7 @@ describe("buildStoredSections", () => {
   });
 
   it("preserves the stored order exactly, even against the bank's order", () => {
-    const sections = buildStoredSections(
+    const sections = buildStored(
       [
         { questionId: "d", sectionKey: "nda" },
         { questionId: "c", sectionKey: "nda" },
@@ -283,7 +305,7 @@ describe("buildStoredSections", () => {
   });
 
   it("groups CONSECUTIVE same-set rows into one set", () => {
-    const sections = buildStoredSections(
+    const sections = buildStored(
       [
         { questionId: "a", sectionKey: "nda" },
         { questionId: "b", sectionKey: "nda" },
@@ -298,7 +320,7 @@ describe("buildStoredSections", () => {
   // A reorder that separates set siblings is a real, visible state — the book
   // says so. Re-welding them would hide the split from the person reviewing it.
   it("does not re-weld a set that a reorder split apart", () => {
-    const sections = buildStoredSections(
+    const sections = buildStored(
       [
         { questionId: "a", sectionKey: "nda" },
         { questionId: "c", sectionKey: "nda" },
@@ -311,7 +333,7 @@ describe("buildStoredSections", () => {
   });
 
   it("gives every set a key unique within the chapter", () => {
-    const sections = buildStoredSections(
+    const sections = buildStored(
       [
         { questionId: "a", sectionKey: "nda" },
         { questionId: "c", sectionKey: "nda" },
@@ -324,7 +346,7 @@ describe("buildStoredSections", () => {
   });
 
   it("skips a row with no metadata rather than rendering a blank", () => {
-    const sections = buildStoredSections(
+    const sections = buildStored(
       [
         { questionId: "a", sectionKey: "nda" },
         { questionId: "ghost", sectionKey: "nda" },

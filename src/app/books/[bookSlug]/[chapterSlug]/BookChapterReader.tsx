@@ -14,7 +14,7 @@ import {
 import BlockText from "@/components/math/BlockText";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { cn } from "@/lib/utils";
-import type { BookSection, BookSectionKey } from "@/lib/books/order";
+import type { BookSection } from "@/lib/books/order";
 import type { QuestionRow } from "@/lib/questions/query";
 import {
   moveSetAction,
@@ -34,7 +34,7 @@ type Props = {
 };
 
 /** The chapter's other half. There are two sections, so this is a flip. */
-function otherSection(key: BookSectionKey): BookSectionKey {
+function otherSection(key: string): string {
   return key === "nda" ? "cds" : "nda";
 }
 

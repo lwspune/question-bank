@@ -76,7 +76,8 @@ async function sectionsOf(
   );
   return buildStoredSections(
     (data ?? []).map((r) => ({ questionId: r.question_id, sectionKey: r.section_key })),
-    metaById
+    metaById,
+    NDA_CDS_ENGLISH.sections
   );
 }
 

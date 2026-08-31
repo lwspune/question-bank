@@ -19,13 +19,11 @@
  *                             divergence is the "move this question" feature,
  *                             so an auto-move would undo it every run.
  */
-import type { BookSectionKey } from "./order";
-
 /** What the bank says: one row per in-scope question, in derived book order. */
 export type DerivedRow = {
   questionId: string;
   chapterSlug: string;
-  sectionKey: BookSectionKey;
+  sectionKey: string;
   /** 0-based index within its (chapter, section) in the derived order. */
   order: number;
 };
@@ -34,7 +32,7 @@ export type DerivedRow = {
 export type StoredRow = {
   questionId: string;
   chapterSlug: string;
-  sectionKey: BookSectionKey;
+  sectionKey: string;
   position: number;
   excluded: boolean;
 };
@@ -42,7 +40,7 @@ export type StoredRow = {
 export type BookInsert = {
   questionId: string;
   chapterSlug: string;
-  sectionKey: BookSectionKey;
+  sectionKey: string;
   position: number;
 };
 
@@ -57,7 +55,7 @@ export type SyncPlan = {
   unchanged: number;
 };
 
-const sectionOf = (chapterSlug: string, sectionKey: BookSectionKey) =>
+const sectionOf = (chapterSlug: string, sectionKey: string) =>
   `${chapterSlug}\u0000${sectionKey}`;
 
 /**
