@@ -263,6 +263,161 @@ describe("buildChapterSections", () => {
 });
 
 /**
+ * Layout A: a section regrouped into subtopic blocks.
+ *
+ * A block is a HEADING in the printed book, and the contents table quotes its
+ * question range, so a set filed under the wrong block is a printed claim that
+ * is untrue — with every question still present, so no count can catch it.
+ *
+ * `members` exists because a subtopic split is not always a task split. CDS
+ * Grammar prints one instruction, "fill the blank with the appropriate word",
+ * over ten questions whose answers happen to be prepositions, connectors and
+ * determiners; we tag those as three subtopics, and all 18 of the chapter's
+ * mixed sets mix ONLY those three. Declaring them as one block's members makes
+ * every set pure again, without splitting a set or re-tagging the bank.
+ */
+describe("subtopic blocks", () => {
+  const sub = (id: string, subtopic: string, year: number, setId: string) =>
+    q({ id, setId, subtopic, pyqYear: year, sourceRow: 1 });
+
+  const PREP = "Preposition Usage";
+  const DISC = "Discourse Markers and Connectors";
+  const ART = "Articles, Determiners and Quantifiers";
+
+  it("groups sets into the declared blocks, in the declared order", () => {
+    const [nda] = build(
+      [sub("a", "Antonyms", 2017, "S1"), sub("b", "Synonyms", 2018, "S2")],
+      [{ name: "Synonyms" }, { name: "Antonyms" }]
+    );
+    expect(nda.blocks?.map((b) => b.name)).toEqual(["Synonyms", "Antonyms"]);
+    expect(nda.blocks?.map((b) => b.questionCount)).toEqual([1, 1]);
+  });
+
+  it("APPENDS a subtopic the registry forgot rather than dropping its questions", () => {
+    const [nda] = build(
+      [sub("a", "Synonyms", 2017, "S1"), sub("b", "Idioms", 2018, "S2")],
+      [{ name: "Synonyms" }]
+    );
+    expect(nda.blocks?.map((b) => b.name)).toEqual(["Synonyms", "Idioms"]);
+    expect(nda.questionCount).toBe(2);
+  });
+
+  it("omits a declared block that has no questions", () => {
+    const [nda] = build([sub("a", "Synonyms", 2017, "S1")], [
+      { name: "Synonyms" },
+      { name: "Antonyms" },
+    ]);
+    expect(nda.blocks?.map((b) => b.name)).toEqual(["Synonyms"]);
+  });
+
+  it("files a question with no subtopic under Other instead of losing it", () => {
+    const [nda] = build([q({ id: "a", setId: "S1", sourceRow: 1 })], [{ name: "Synonyms" }]);
+    expect(nda.blocks?.map((b) => b.name)).toEqual(["Other"]);
+    expect(nda.questionCount).toBe(1);
+  });
+
+  it("carries an authored directions line onto its block", () => {
+    const [nda] = build(
+      [sub("a", "Synonyms", 2017, "S1")],
+      [{ name: "Synonyms", directions: "Pick the nearest in meaning." }]
+    );
+    expect(nda.blocks?.[0].directions).toBe("Pick the nearest in meaning.");
+  });
+
+  it("merges every named member into ONE block under the block's own name", () => {
+    const [nda] = build(
+      [
+        sub("a", PREP, 2017, "S1"),
+        sub("b", DISC, 2018, "S2"),
+        sub("c", ART, 2019, "S3"),
+        sub("d", "Parts of Speech", 2020, "S4"),
+      ],
+      [
+        { name: "Prepositions, Determiners and Connectors", members: [PREP, DISC, ART] },
+        { name: "Parts of Speech" },
+      ]
+    );
+    expect(nda.blocks?.map((b) => b.name)).toEqual([
+      "Prepositions, Determiners and Connectors",
+      "Parts of Speech",
+    ]);
+    expect(nda.blocks?.[0].questionCount).toBe(3);
+  });
+
+  /**
+   * THE ONE THAT MATTERS. A merged block must keep the section's chronological
+   * order, not read all of one member then all of the next — the halves are
+   * printed oldest-first and a member-major order would silently shuffle them.
+   */
+  it("keeps a merged block in the section's own order, not member by member", () => {
+    const [nda] = build(
+      [
+        sub("y2017", PREP, 2017, "S1"),
+        sub("y2018", DISC, 2018, "S2"),
+        sub("y2019", PREP, 2019, "S3"),
+      ],
+      [{ name: "Merged", members: [PREP, DISC] }]
+    );
+    expect(nda.blocks?.[0].sets.flatMap((s) => s.questionIds)).toEqual([
+      "y2017",
+      "y2018",
+      "y2019",
+    ]);
+  });
+
+  it("does not ALSO append a member as its own block", () => {
+    const [nda] = build(
+      [sub("a", PREP, 2017, "S1"), sub("b", DISC, 2018, "S2")],
+      [{ name: "Merged", members: [PREP, DISC] }]
+    );
+    expect(nda.blocks?.map((b) => b.name)).toEqual(["Merged"]);
+    expect(nda.questionCount).toBe(2);
+  });
+
+  it("still renders a merged block when only some members have questions", () => {
+    const [nda] = build([sub("a", PREP, 2017, "S1")], [
+      { name: "Merged", members: [PREP, DISC, ART] },
+    ]);
+    expect(nda.blocks?.map((b) => b.name)).toEqual(["Merged"]);
+    expect(nda.blocks?.[0].questionCount).toBe(1);
+  });
+
+  it("accounts for every question exactly once across the blocks", () => {
+    const metas = [
+      sub("a", PREP, 2017, "S1"),
+      sub("b", DISC, 2018, "S2"),
+      sub("c", "Parts of Speech", 2019, "S3"),
+      sub("d", "Unlisted", 2020, "S4"),
+    ];
+    const [nda] = build(metas, [
+      { name: "Merged", members: [PREP, DISC] },
+      { name: "Parts of Speech" },
+    ]);
+    const inBlocks = nda.blocks!.flatMap((b) => b.sets.flatMap((s) => s.questionIds));
+    expect(inBlocks.sort()).toEqual(["a", "b", "c", "d"]);
+    expect(new Set(inBlocks).size).toBe(4);
+  });
+
+  it("applies members to the STORED order too, not just the derived one", () => {
+    // The reader runs off `book_questions`, so a rule that held only in
+    // `buildChapterSections` would be invisible in the shipped book.
+    const [nda] = buildStored(
+      [
+        { questionId: "a", sectionKey: "nda" },
+        { questionId: "b", sectionKey: "nda" },
+      ],
+      new Map([
+        ["a", { setId: "S1", year: 2017, sitting: 1, subtopic: PREP }],
+        ["b", { setId: "S2", year: 2018, sitting: 1, subtopic: DISC }],
+      ]),
+      [{ name: "Merged", members: [PREP, DISC] }]
+    );
+    expect(nda.blocks?.map((b) => b.name)).toEqual(["Merged"]);
+    expect(nda.blocks?.[0].questionCount).toBe(2);
+  });
+});
+
+/**
  * Once a book is assembled, ORDER comes from `book_questions`, not from the
  * bank — that is the whole point of materialising it. But sets still have to be
  * rebuilt for rendering, because a passage must print once above the questions

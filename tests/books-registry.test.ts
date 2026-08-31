@@ -127,4 +127,103 @@ describe.skipIf(!HAS_ENV)("book registry vs the live taxonomy", () => {
       ).toEqual([]);
     }
   );
+
+  /**
+   * `groupSubtopics` names bank subtopics as strings too, and a near-miss there
+   * is quieter than a bad chapter name: the declared block simply never
+   * matches, and those questions are APPENDED under their own raw subtopic in
+   * alphabetical order instead. The chapter still renders, still holds every
+   * question, and silently disagrees with the order and the headings someone
+   * authored — including the contents table's ranges.
+   *
+   * Checked in both directions, per exam, because a subtopic that exists in one
+   * exam and not the other is normal (Grammar's Subject-Verb Agreement is NDA
+   * only) — so a name must resolve in AT LEAST ONE, and every subtopic the bank
+   * holds for that chapter must be covered by some block.
+   */
+  it.each(BOOKS.map((b) => [b.slug, b] as const))(
+    "%s: every declared subtopic resolves, and every live subtopic is declared",
+    async (_slug, book) => {
+      const grouped = book.chapters.filter((c) => c.groupSubtopics?.length);
+      if (grouped.length === 0) return;
+
+      const { data: rows, error } = await client
+        .from("subtopics")
+        .select("name, chapter:chapters!chapter_id(name, subject:subjects!subject_id(name))")
+        .in(
+          "chapter_id",
+          await chapterIdsFor(client, book, grouped.map((c) => c.name))
+        );
+      if (error) throw new Error(`subtopics: ${error.message}`);
+
+      const liveByChapter = new Map<string, Set<string>>();
+      for (const row of rows ?? []) {
+        const chapterName = embedName(row.chapter);
+        if (!chapterName) continue;
+        const set = liveByChapter.get(chapterName) ?? new Set<string>();
+        set.add(row.name as string);
+        liveByChapter.set(chapterName, set);
+      }
+
+      for (const chapter of grouped) {
+        const live = liveByChapter.get(chapter.name) ?? new Set<string>();
+        const declared = chapter.groupSubtopics!.flatMap((g) => g.members ?? [g.name]);
+
+        // Direction 1: a declared name that matches nothing is a typo, and the
+        // block it names would silently never render.
+        const unresolved = declared.filter((n) => !live.has(n));
+        expect(
+          unresolved,
+          `${chapter.name}: declared subtopic names not in the bank — their blocks would never render`
+        ).toEqual([]);
+
+        // Direction 2: a live subtopic no block covers gets appended in
+        // alphabetical order, out of the authored sequence, with nothing on
+        // screen to say so.
+        const covered = new Set(declared);
+        const uncovered = Array.from(live).filter((n) => !covered.has(n)).sort();
+        expect(
+          uncovered,
+          `${chapter.name}: bank subtopics no block declares — they would be appended out of order`
+        ).toEqual([]);
+
+        // A subtopic listed under two blocks would silently land in whichever
+        // is declared first, dropping it from the other.
+        expect(
+          new Set(declared).size,
+          `${chapter.name}: a subtopic is declared by more than one block`
+        ).toBe(declared.length);
+      }
+    }
+  );
 });
+
+/** A PostgREST to-one embed arrives as an object but is typed as possibly an array. */
+function embedName(value: unknown): string | null {
+  const row = Array.isArray(value) ? value[0] : value;
+  const name = (row as { name?: unknown } | null | undefined)?.name;
+  return typeof name === "string" ? name : null;
+}
+
+/** Chapter row ids for the book's subject, across every exam it draws from. */
+async function chapterIdsFor(
+  client: SupabaseClient,
+  book: (typeof BOOKS)[number],
+  chapterNames: string[]
+): Promise<string[]> {
+  const { data: exams } = await client
+    .from("exams")
+    .select("id, name")
+    .in("name", bookExams(book));
+  const { data: subjects } = await client
+    .from("subjects")
+    .select("id")
+    .eq("name", book.subject)
+    .in("exam_id", (exams ?? []).map((e) => e.id));
+  const { data: chapters } = await client
+    .from("chapters")
+    .select("id")
+    .in("subject_id", (subjects ?? []).map((s) => s.id))
+    .in("name", chapterNames);
+  return (chapters ?? []).map((c) => c.id as string);
+}

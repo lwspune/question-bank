@@ -97,7 +97,48 @@ export const NDA_CDS_ENGLISH: BookDefinition = {
         { name: "Confusable Word Pairs" },
       ],
     },
-    { slug: "grammar", name: "Grammar" },
+    {
+      slug: "grammar",
+      name: "Grammar",
+      // 18 of 75 sets span a subtopic, ALL of them in CDS — and every one mixes
+      // ONLY the three merged below, never any other subtopic (measured:
+      // `npx tsx scripts/books/subtopic-report.ts --chapter=grammar --spanning`).
+      //
+      // They interleave because they are ONE task. Those CDS papers print a
+      // single instruction — "fill the blank with the appropriate word" — over
+      // ten questions, and the three subtopics classify what the ANSWER turned
+      // out to be, not what the student was asked to do. CDS says so itself:
+      // three of its "Preposition Usage" sets are headed "select the most
+      // appropriate preposition OR DETERMINER". Merging them takes the chapter
+      // to 0 spanning sets and 0 questions printed under a wrong heading,
+      // without splitting a set or re-tagging the bank.
+      //
+      // NO authored `directions` on any block, deliberately. Parts of Speech
+      // and Sentence Completion would each take one (all their wordings are the
+      // same task), but writing that prose needs the full Directions text read
+      // rather than the measured claim that it exists. Correct Sentence
+      // Identification can never take one: its five CDS wordings are five
+      // different tasks — combining two sentences, choosing which of two uses a
+      // word correctly, a word used variously across S1/S2/S3. Per-set
+      // Directions are always correct, so they stay.
+      groupSubtopics: [
+        {
+          name: "Prepositions, Determiners and Connectors",
+          members: [
+            "Preposition Usage",
+            "Discourse Markers and Connectors",
+            "Articles, Determiners and Quantifiers",
+          ],
+        },
+        { name: "Parts of Speech" },
+        { name: "Sentence Completion" },
+        { name: "Correct Sentence Identification" },
+        { name: "Direct and Indirect Speech" },
+        { name: "Active and Passive Voice" },
+        // NDA only — CDS has never asked it, so it prints a blank CDS cell.
+        { name: "Subject-Verb Agreement" },
+      ],
+    },
     {
       slug: "sentence-rearrangement",
       name: "Sentence Rearrangement",
