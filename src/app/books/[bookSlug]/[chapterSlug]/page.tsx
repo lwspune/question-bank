@@ -54,6 +54,14 @@ export default async function BookChapterPage({
             Chapter {index + 1} of {book.chapters.length}
           </p>
           <h1 className="text-2xl font-semibold tracking-tight">{chapter.name}</h1>
+          <p className="mt-1 text-sm">
+            <Link
+              href={`/books/${book.slug}/${chapter.slug}/print`}
+              className="font-medium text-brand-accent hover:underline"
+            >
+              View as printed pages &rarr;
+            </Link>
+          </p>
           <p className="mt-1 text-sm text-muted-foreground">
             {view.total.toLocaleString()} questions ·{" "}
             {view.sections
