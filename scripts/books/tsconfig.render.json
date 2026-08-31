@@ -1,0 +1,7 @@
+{
+  "//": "For `render-print.tsx` ONLY. The root config sets jsx=preserve, which Next compiles itself; a plain tsx run has no such step and falls back to the CLASSIC runtime, so every app component fails with 'React is not defined'. react-jsx makes esbuild emit the automatic runtime the app is written for. Not used by the build, the gate, or typecheck.",
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx"
+  }
+}
