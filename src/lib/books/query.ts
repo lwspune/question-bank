@@ -19,14 +19,12 @@ import { queryQuestionsByIds, type QuestionRow } from "@/lib/questions/query";
 import {
   buildStoredSections,
   sittingOrdinal,
-  type BookExam,
   type BookQuestionMeta,
   type BookSection,
-  type BookSectionKey,
   type SetMeta,
   type StoredPlacement,
 } from "./order";
-import type { BookChapter, BookDefinition } from "./registry";
+import { bookExams, type BookChapter, type BookDefinition } from "./registry";
 
 /** PostgREST truncates a `.select()` at 1000 rows, silently. Page under it. */
 const PAGE_SIZE = 1000;
@@ -48,13 +46,20 @@ function chunk<T>(items: T[], size: number): T[][] {
   return out;
 }
 
+/** A PostgREST to-one embed arrives as an object but is typed as possibly an array. */
+function embeddedName(value: unknown): string | null {
+  const row = Array.isArray(value) ? value[0] : value;
+  const name = (row as { name?: unknown } | null | undefined)?.name;
+  return typeof name === "string" ? name : null;
+}
+
 export type BookMetaRow = BookQuestionMeta & { chapterName: string };
 
 /** Per-chapter tallies for the book's table of contents. */
 export type BookChapterSummary = {
   chapter: BookChapter;
   /** Question count per exam, keyed by exam name. */
-  byExam: Record<BookExam, number>;
+  byExam: Record<string, number>;
   total: number;
 };
 
@@ -147,7 +152,7 @@ async function loadStored(
       rows.push({
         questionId: r.question_id,
         chapterSlug: r.chapter_slug,
-        sectionKey: r.section_key as BookSectionKey,
+        sectionKey: r.section_key as string,
         position: r.position,
         excluded: r.excluded,
       });
@@ -162,13 +167,13 @@ function setMetaById(meta: BookMetaRow[]): Map<string, SetMeta> {
   return new Map(
     meta.map((m) => [
       m.id,
-      { setId: m.setId, year: m.pyqYear, sitting: sittingOrdinal(m) },
+      { setId: m.setId, year: m.pyqYear, sitting: sittingOrdinal(m), subtopic: m.subtopic },
     ])
   );
 }
 
 type Scope = {
-  examNameById: Map<string, BookExam>;
+  examNameById: Map<string, string>;
   subjectIds: string[];
   /** chapter name -> the chapter row ids carrying it (one per exam). */
   chapterIdsByName: Map<string, string[]>;
@@ -187,13 +192,13 @@ async function resolveScope(
   const { data: exams, error: examErr } = await client
     .from("exams")
     .select("id, name")
-    .in("name", book.exams);
+    .in("name", bookExams(book));
   if (examErr) throw new Error(`books: exam lookup failed — ${examErr.message}`);
 
-  const examNameById = new Map<string, BookExam>();
+  const examNameById = new Map<string, string>();
   for (const row of exams ?? []) {
-    if ((book.exams as string[]).includes(row.name)) {
-      examNameById.set(row.id, row.name as BookExam);
+    if (bookExams(book).includes(row.name)) {
+      examNameById.set(row.id, row.name as string);
     }
   }
 
@@ -251,7 +256,9 @@ async function loadMeta(
   for (let from = 0; ; from += PAGE_SIZE) {
     const { data, error } = await client
       .from("questions")
-      .select("id, exam_id, chapter_id, set_id, source_row, pyq_year, pyq_month, source_file")
+      .select(
+        "id, exam_id, chapter_id, set_id, source_row, pyq_year, pyq_month, source_file, subtopic:subtopics!subtopic_id(name)"
+      )
       .in("chapter_id", chapterIds)
       .eq("visibility", "PUBLIC")
       .eq("question_kind", "pyq")
@@ -274,6 +281,11 @@ async function loadMeta(
         pyqYear: row.pyq_year,
         pyqMonth: row.pyq_month,
         sourceFile: row.source_file,
+        // PostgREST returns a to-one embed as an object; the generated types
+        // model it as possibly-an-array, so normalise both shapes rather than
+        // trusting either. A question with no subtopic yields null, which the
+        // grouping files under "Other" instead of dropping it.
+        subtopic: embeddedName(row.subtopic),
       });
     }
 
@@ -315,7 +327,7 @@ export async function loadBookOverview(
 ): Promise<BookOverview> {
   const row = await resolveBookId(client, book);
   const empty = () =>
-    Object.fromEntries(book.exams.map((e) => [e, 0])) as Record<BookExam, number>;
+    Object.fromEntries(bookExams(book).map((e) => [e, 0])) as Record<string, number>;
 
   if (!row) {
     return {
@@ -329,9 +341,9 @@ export async function loadBookOverview(
   }
 
   const stored = await loadStored(client, row.id);
-  const examOfSection: Record<BookSectionKey, BookExam> = { nda: "NDA", cds: "CDS" };
+  const examOfSection: Record<string, string> = { nda: "NDA", cds: "CDS" };
 
-  const counts = new Map<string, Record<BookExam, number>>();
+  const counts = new Map<string, Record<string, number>>();
   let excluded = 0;
   for (const r of stored) {
     if (r.excluded) {
@@ -380,7 +392,7 @@ export async function loadBookChapter(
     return {
       book,
       chapter,
-      sections: buildStoredSections([], new Map()),
+      sections: buildStoredSections([], new Map(), book.sections),
       questionsById: new Map(),
       total: 0,
       assembled: false,
@@ -397,7 +409,7 @@ export async function loadBookChapter(
   // Sections are built from EVERY stored row, excluded ones included, so a
   // curated-out question still appears in place. The reader strikes it through;
   // hiding it would make the decision invisible and irreversible from the page.
-  const sections = buildStoredSections(stored, setMetaById(meta));
+  const sections = buildStoredSections(stored, setMetaById(meta), book.sections, chapter.groupSubtopics);
   const excludedIds = stored.filter((r) => r.excluded).map((r) => r.questionId);
 
   const orderedIds = sections.flatMap((s) => s.sets.flatMap((set) => set.questionIds));

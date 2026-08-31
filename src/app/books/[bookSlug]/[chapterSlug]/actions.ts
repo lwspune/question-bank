@@ -18,7 +18,6 @@ import { revalidatePath } from "next/cache";
 import { requireSuperadmin } from "@/lib/auth";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { getBookBySlug, getBookChapter } from "@/lib/books/registry";
-import type { BookSectionKey } from "@/lib/books/order";
 import { moveSet, moveSetToSection, setQuestionExcluded } from "@/lib/books/service";
 
 export type ActionResult = { ok: boolean; message?: string };
@@ -57,7 +56,7 @@ export async function setExcludedAction(
 export async function moveSetAction(
   bookSlug: string,
   chapterSlug: string,
-  sectionKey: BookSectionKey,
+  sectionKey: string,
   setKey: string,
   direction: "up" | "down"
 ): Promise<ActionResult> {
@@ -87,9 +86,9 @@ export async function moveSetAction(
 export async function moveSetToSectionAction(
   bookSlug: string,
   chapterSlug: string,
-  fromSection: BookSectionKey,
+  fromSection: string,
   setKey: string,
-  toSection: BookSectionKey
+  toSection: string
 ): Promise<ActionResult> {
   await requireSuperadmin();
   const { book, chapter } = resolve(bookSlug, chapterSlug);

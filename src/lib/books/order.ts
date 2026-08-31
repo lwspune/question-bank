@@ -1,47 +1,91 @@
 /**
- * Pure ordering core for the NDA/CDS English PYQ master book.
+ * Pure ordering core for the books surface. No I/O.
  *
- * A chapter of the book reads: "NDA PYQ" -> every NDA question for that
- * chapter, oldest first, then "CDS PYQ" -> every CDS question, oldest first.
- * This module turns a flat bag of question metadata into exactly that shape.
- * It does no I/O; the caller supplies the rows and renders the result.
+ * A chapter is laid out as an ordered list of SECTIONS — for the NDA/CDS
+ * English master that is "NDA PYQ" then "CDS PYQ" — and, where a chapter opts
+ * in, each section is further grouped by SUBTOPIC.
  *
- * Two properties of the bank drive every decision here — see
- * tests/books-order.test.ts, which pins both.
+ * NOTHING HERE IS BOOK-SPECIFIC. Sections are supplied by the caller from the
+ * registry, and a sitting rule is a property of the EXAM rather than of a book,
+ * so a second book that includes NDA inherits NDA's rule without restating it.
+ * The first version of this file hardcoded `[nda, cds]` and a `"NDA" | "CDS"`
+ * union, which book #2 could not have used.
  *
- * THE TWO EXAMS NEED OPPOSITE SORT KEYS. NDA carries `pyq_month` on all 900
- * English PYQ rows (Apr = NDA 1, Sep = NDA 2) while its 18 source filenames
- * follow eight different conventions — `GAT_2017_NDA1_QuestionBank.xlsx`,
- * `GAT_NDA2_2017_PYQ.xlsx`, `NDA1_2019_GAT_PYQ.xlsx`, `NDA_II_2024_GAT_...`.
- * CDS is the exact mirror: `pyq_month` is NULL on all 2,280 rows and the
- * sitting is legible only from a uniform `Eng_CDS_<year>_<sitting>.pdf`.
- * Applying either exam's rule to the other silently mis-orders it; in NDA 2019
- * a filename sort actively inverts the two sittings, because
- * "GAT_NDA2_2019..." sorts before "NDA1_2019...".
+ * TWO MEASURED FACTS DRIVE THE REST — see tests/books-order.test.ts.
  *
- * SETS ARE ATOMIC. 3,175 of the 3,180 questions sit in a shared-`context` set
- * (a Directions block); in Reading Comprehension one passage feeds five or more
- * questions. So the unit of ordering is the SET, never the question — a
- * question separated from its set is separated from the passage it needs, and
- * nothing downstream would notice, because every question is still present.
+ * EXAMS NEED DIFFERENT SORT KEYS. NDA carries `pyq_month` on all 900 English
+ * PYQ rows (Apr = NDA 1, Sep = NDA 2) while its 18 source filenames follow
+ * eight different conventions. CDS is the mirror: `pyq_month` is NULL on all
+ * 2,280 and the sitting is legible only from a uniform
+ * `Eng_CDS_<year>_<sitting>.pdf`. Applying either rule to the other exam
+ * mis-orders it SILENTLY; in NDA 2019 a filename sort actively inverts the two
+ * sittings, because `GAT_NDA2_2019...` sorts before `NDA1_2019...`.
+ *
+ * SETS ARE ATOMIC. 3,175 of the 3,180 questions sit in a shared-`context` set;
+ * in Reading Comprehension one passage feeds five or more questions. So the
+ * unit of ordering is the SET — a question separated from its set is separated
+ * from the passage it needs, and nothing downstream would notice.
  */
 
-/** The two exams this book draws from. */
-export type BookExam = "NDA" | "CDS";
+/** A section of a chapter, declared by the book. `key` is stored in `book_questions.section_key`. */
+export type BookSectionDef = {
+  key: string;
+  /** Heading printed above the half, e.g. "NDA PYQ". */
+  title: string;
+  /** Matched against `exams.name`. */
+  exam: string;
+};
+
+/**
+ * How to read which sitting of its year a question came from — a property of
+ * the EXAM, so every book drawing on that exam gets the same answer.
+ */
+export type SittingRule =
+  | { from: "month"; map: Record<string, number>; label: "numbered" }
+  | { from: "sourceFile"; label: "roman" }
+  | { from: "none" };
+
+/**
+ * `Eng_CDS_2017_1.pdf` -> 1. The four-digit year group is load-bearing, not
+ * decoration: without it `Eng_CDS_2017.pdf` matches on its YEAR and reports
+ * sitting 2017.
+ */
+const SOURCE_FILE_SITTING_RE = /_(\d{4})_(\d{1,2})\.pdf$/i;
+
+/**
+ * Both the short and long month spellings are accepted: the English bank stores
+ * "Apr"/"Sep" today, but other exams in this bank store "April", and a future
+ * ingest using the long form should not silently lose its sitting.
+ */
+export const EXAM_SITTING: Record<string, SittingRule> = {
+  NDA: {
+    from: "month",
+    map: { apr: 1, april: 1, sep: 2, sept: 2, september: 2 },
+    label: "numbered",
+  },
+  CDS: { from: "sourceFile", label: "roman" },
+};
+
+/** An exam with no declared rule has no readable sitting — stated, not guessed. */
+const NO_SITTING: SittingRule = { from: "none" };
+
+export function sittingRuleFor(exam: string): SittingRule {
+  return EXAM_SITTING[exam] ?? NO_SITTING;
+}
 
 /** The ordering fields — deliberately narrow, so this stays testable without a DB. */
 export type BookQuestionMeta = {
   id: string;
-  exam: BookExam;
+  exam: string;
   /** Shared-passage / shared-Directions group. Null = a standalone question. */
   setId: string | null;
   /** Position in the source paper. NDA rows start at 2 (Excel header), CDS at 1. */
   sourceRow: number | null;
   pyqYear: number | null;
-  /** "Apr" | "Sep" for NDA; always null for CDS. */
   pyqMonth: string | null;
-  /** `Eng_CDS_<year>_<sitting>.pdf` for CDS; an inconsistent .xlsx name for NDA. */
   sourceFile: string | null;
+  /** Conceptual subtopic, used only when a chapter opts into grouping. */
+  subtopic?: string | null;
 };
 
 /** One passage/Directions group, rendered as a unit. */
@@ -56,90 +100,86 @@ export type BookSet = {
   label: string;
 };
 
-export type BookSectionKey = "nda" | "cds";
+/**
+ * A subtopic block inside a section (layout A). Only present when the chapter
+ * declares `groupSubtopics`; otherwise a section holds its sets directly.
+ */
+export type BookSubtopicBlock = {
+  name: string;
+  /**
+   * One authored Directions line covering every set in the block. Present only
+   * where every set genuinely shares an instruction — Synonyms and Antonyms do;
+   * Word Definition mixes Match-List with plain meaning items and does not, so
+   * those blocks keep their per-set Directions.
+   */
+  directions?: string;
+  sets: BookSet[];
+  questionCount: number;
+};
 
 export type BookSection = {
-  key: BookSectionKey;
-  exam: BookExam;
-  /** The heading printed above the half. */
+  key: string;
+  exam: string;
   title: string;
+  /** Flat set list. Always populated, so a consumer can ignore grouping. */
   sets: BookSet[];
+  /** Non-null only when the chapter opts into subtopic grouping. */
+  blocks: BookSubtopicBlock[] | null;
   /** Questions, not sets — the number a reader expects to see. */
   questionCount: number;
 };
 
-/**
- * The chapter layout, fixed. Both sections are ALWAYS returned, in this order,
- * even when one is empty: a heading over a zero says "we looked and there are
- * none", whereas a missing heading says "this chapter has no such half". Those
- * are different claims and only one of them is ours to make.
- */
-const SECTIONS: { key: BookSectionKey; exam: BookExam; title: string }[] = [
-  { key: "nda", exam: "NDA", title: "NDA PYQ" },
-  { key: "cds", exam: "CDS", title: "CDS PYQ" },
-];
-
-/**
- * NDA's two annual sittings, by the month stamped on the row. Both the short
- * and long spellings are accepted: the English bank stores "Apr"/"Sep" today,
- * but other exams in this bank store "April", and a future ingest using the
- * long form should not silently lose its sitting.
- */
-const NDA_SITTING_BY_MONTH: Record<string, number> = {
-  apr: 1,
-  april: 1,
-  sep: 2,
-  sept: 2,
-  september: 2,
-};
-
-/**
- * `Eng_CDS_2017_1.pdf` -> 1. The four-digit year group is load-bearing, not
- * decoration: without it `Eng_CDS_2017.pdf` would match on its YEAR and report
- * sitting 2017.
- */
-const CDS_SITTING_RE = /_(\d{4})_(\d{1,2})\.pdf$/i;
+/** A chapter's opt-in subtopic grouping, declared by the registry. */
+export type SubtopicGroupDef = { name: string; directions?: string };
 
 /** Sorts a missing value last instead of first, without dropping the row. */
 const LAST = Number.MAX_SAFE_INTEGER;
 
 /**
  * Which sitting of its year a question came from, or null when that genuinely
- * cannot be read. Null is a real answer here — a guessed sitting would order
- * the book confidently and wrongly.
+ * cannot be read. Null is a real answer — a guessed sitting would order the
+ * book confidently and wrongly.
  */
 export function sittingOrdinal(meta: BookQuestionMeta): number | null {
-  if (meta.exam === "NDA") {
+  const rule = sittingRuleFor(meta.exam);
+  if (rule.from === "month") {
     const month = meta.pyqMonth?.trim().toLowerCase();
     if (!month) return null;
-    return NDA_SITTING_BY_MONTH[month] ?? null;
+    return rule.map[month] ?? null;
   }
-  const match = meta.sourceFile?.match(CDS_SITTING_RE);
-  if (!match) return null;
-  const sitting = Number(match[2]);
-  return Number.isFinite(sitting) && sitting > 0 ? sitting : null;
+  if (rule.from === "sourceFile") {
+    const match = meta.sourceFile?.match(SOURCE_FILE_SITTING_RE);
+    if (!match) return null;
+    const sitting = Number(match[2]);
+    return Number.isFinite(sitting) && sitting > 0 ? sitting : null;
+  }
+  return null;
 }
 
 const ROMAN = ["", "I", "II", "III", "IV"];
 
 /**
- * How a sitting is named in the book's provenance line. The two exams are
- * spoken about differently — an NDA paper is "NDA 1 / NDA 2", a CDS paper is
- * "2019 (I) / 2019 (II)" — so the label follows the exam rather than imposing
- * one house style on both.
+ * How a sitting is named in the provenance line. The two styles exist because
+ * the exams are spoken about differently — an NDA paper is "NDA 1 / NDA 2", a
+ * CDS paper is "2019 (I) / 2019 (II)" — rather than imposing one house style.
  */
 export function sittingLabel(
-  exam: BookExam,
+  exam: string,
   year: number | null,
   sitting: number | null
 ): string {
   const yearText = year == null ? "" : String(year);
-  if (exam === "NDA") {
-    if (sitting == null) return yearText ? `NDA ${yearText}` : "NDA";
-    return yearText ? `NDA ${sitting} · ${yearText}` : `NDA ${sitting}`;
+  const rule = sittingRuleFor(exam);
+
+  if (rule.from === "month" && rule.label === "numbered") {
+    if (sitting == null) return yearText ? `${exam} ${yearText}` : exam;
+    return yearText ? `${exam} ${sitting} · ${yearText}` : `${exam} ${sitting}`;
   }
-  const edition = sitting != null && ROMAN[sitting] ? ` (${ROMAN[sitting]})` : "";
-  return yearText ? `CDS ${yearText}${edition}` : `CDS${edition}`;
+  if (rule.from === "sourceFile" && rule.label === "roman") {
+    const edition = sitting != null && ROMAN[sitting] ? ` (${ROMAN[sitting]})` : "";
+    return yearText ? `${exam} ${yearText}${edition}` : `${exam}${edition}`;
+  }
+  return yearText ? `${exam} ${yearText}` : exam;
 }
 
 /**
@@ -147,8 +187,7 @@ export function sittingLabel(
  *
  * `set_id` is unique per paper in the bank today, but this must not depend on
  * that: welding two papers' sets together would put one paper's questions under
- * another paper's passage. So the paper is part of the key — by filename where
- * there is one, else by the (year, sitting) that identifies it.
+ * another paper's passage. So the paper is part of the key.
  */
 function groupKey(meta: BookQuestionMeta, sitting: number | null): string {
   const paper = meta.sourceFile ?? `${meta.pyqYear ?? ""}-${sitting ?? ""}`;
@@ -161,21 +200,88 @@ type Group = {
   setId: string | null;
   year: number | null;
   sitting: number | null;
+  subtopic: string | null;
   /** The set's position in its paper — its EARLIEST question, never its last. */
   anchorRow: number;
   rows: { id: string; sourceRow: number }[];
 };
 
+function toSet(group: Group, exam: string): BookSet {
+  return {
+    setId: group.setId,
+    key: group.key,
+    questionIds: group.rows
+      .sort((a, b) => a.sourceRow - b.sourceRow || a.id.localeCompare(b.id))
+      .map((r) => r.id),
+    year: group.year,
+    sitting: group.sitting,
+    label: sittingLabel(exam, group.year, group.sitting),
+  };
+}
+
 /**
- * Group a chapter's questions into the book's two halves.
+ * Split a section's sets into subtopic blocks, in the order the chapter
+ * declares.
  *
- * Ordering within a half: year ascending, then sitting, then the set's earliest
- * question, then paper order inside the set. The comparator is TOTAL — every
- * tie falls through to the group key — so the output depends only on the
- * content of the input, never on the order it arrived in.
+ * A subtopic present in the data but MISSING from the declared list is appended
+ * rather than dropped — forgetting to list one must never silently remove
+ * questions from the book. A set takes the subtopic of its first question;
+ * that is safe only for chapters that opt in, which are exactly the ones
+ * measured to have no set spanning subtopics.
  */
-export function buildChapterSections(metas: BookQuestionMeta[]): BookSection[] {
-  return SECTIONS.map(({ key, exam, title }) => {
+function toBlocks(
+  sets: BookSet[],
+  subtopicOfSet: Map<string, string>,
+  declared: SubtopicGroupDef[]
+): BookSubtopicBlock[] {
+  const byName = new Map<string, BookSet[]>();
+  for (const set of sets) {
+    const name = subtopicOfSet.get(set.key) ?? "Other";
+    const list = byName.get(name) ?? [];
+    list.push(set);
+    byName.set(name, list);
+  }
+
+  const blocks: BookSubtopicBlock[] = [];
+  const taken = new Set<string>();
+  for (const def of declared) {
+    const found = byName.get(def.name);
+    if (!found || found.length === 0) continue;
+    taken.add(def.name);
+    blocks.push({
+      name: def.name,
+      directions: def.directions,
+      sets: found,
+      questionCount: found.reduce((n, s) => n + s.questionIds.length, 0),
+    });
+  }
+  for (const [name, found] of Array.from(byName.entries()).sort((a, b) =>
+    a[0].localeCompare(b[0])
+  )) {
+    if (taken.has(name)) continue;
+    blocks.push({
+      name,
+      sets: found,
+      questionCount: found.reduce((n, s) => n + s.questionIds.length, 0),
+    });
+  }
+  return blocks;
+}
+
+/**
+ * Group a chapter's questions into the book's sections, from the BANK's order.
+ *
+ * Ordering within a section: year ascending, then sitting, then the set's
+ * earliest question, then paper order inside the set. The comparator is TOTAL —
+ * every tie falls through to the group key — so output depends only on the
+ * content of the input, never the order it arrived in.
+ */
+export function buildChapterSections(
+  metas: BookQuestionMeta[],
+  sections: BookSectionDef[],
+  groupSubtopics?: SubtopicGroupDef[]
+): BookSection[] {
+  return sections.map(({ key, exam, title }) => {
     const groups = new Map<string, Group>();
 
     for (const meta of metas) {
@@ -193,36 +299,32 @@ export function buildChapterSections(metas: BookQuestionMeta[]): BookSection[] {
           setId: meta.setId,
           year: meta.pyqYear,
           sitting,
+          subtopic: meta.subtopic ?? null,
           anchorRow: row,
           rows: [{ id: meta.id, sourceRow: row }],
         });
       }
     }
 
-    const sets: BookSet[] = Array.from(groups.values())
-      .sort(
-        (a, b) =>
-          (a.year ?? LAST) - (b.year ?? LAST) ||
-          (a.sitting ?? LAST) - (b.sitting ?? LAST) ||
-          a.anchorRow - b.anchorRow ||
-          a.key.localeCompare(b.key)
-      )
-      .map((group) => ({
-        setId: group.setId,
-        key: group.key,
-        questionIds: group.rows
-          .sort((a, b) => a.sourceRow - b.sourceRow || a.id.localeCompare(b.id))
-          .map((r) => r.id),
-        year: group.year,
-        sitting: group.sitting,
-        label: sittingLabel(exam, group.year, group.sitting),
-      }));
+    const ordered = Array.from(groups.values()).sort(
+      (a, b) =>
+        (a.year ?? LAST) - (b.year ?? LAST) ||
+        (a.sitting ?? LAST) - (b.sitting ?? LAST) ||
+        a.anchorRow - b.anchorRow ||
+        a.key.localeCompare(b.key)
+    );
+
+    const sets = ordered.map((g) => toSet(g, exam));
+    const subtopicOfSet = new Map(
+      ordered.map((g) => [g.key, g.subtopic ?? "Other"] as const)
+    );
 
     return {
       key,
       exam,
       title,
       sets,
+      blocks: groupSubtopics ? toBlocks(sets, subtopicOfSet, groupSubtopics) : null,
       questionCount: sets.reduce((n, s) => n + s.questionIds.length, 0),
     };
   });
@@ -231,7 +333,7 @@ export function buildChapterSections(metas: BookQuestionMeta[]): BookSection[] {
 /** A question's placement, as `book_questions` records it. */
 export type StoredPlacement = {
   questionId: string;
-  sectionKey: BookSectionKey;
+  sectionKey: string;
 };
 
 /** The ordering facts a stored row needs but does not itself carry. */
@@ -239,31 +341,33 @@ export type SetMeta = {
   setId: string | null;
   year: number | null;
   sitting: number | null;
+  subtopic?: string | null;
 };
 
 /**
- * Rebuild the two sections from the STORED order.
+ * Rebuild the sections from the STORED order.
  *
  * Once a book is assembled, `book_questions` is the source of truth for what is
- * in it and in what order — that is the point of materialising it. But sets
- * still have to be reconstructed for rendering, because a passage prints once
- * above the questions that share it.
+ * in it and in what order. Sets are still reconstructed for rendering, because
+ * a passage prints once above the questions that share it.
  *
  * Grouping is on CONSECUTIVE rows carrying the same `set_id`, never on the set
- * id alone. That difference is deliberate: if a reorder separates two siblings,
- * the book genuinely says they are apart, and re-welding them would hide that
- * from the person reviewing it. The reader shows what the book says.
+ * id alone: if a reorder separates two siblings, the book genuinely says they
+ * are apart, and re-welding them would hide that from the person reviewing it.
  *
  * A row whose question has no metadata is SKIPPED rather than rendered blank —
- * that only happens when a question left the book's scope between the two
- * reads, and half a question on screen is worse than none.
+ * that only happens when a question left the book's scope between two reads,
+ * and half a question on screen is worse than none.
  */
 export function buildStoredSections(
   ordered: StoredPlacement[],
-  metaById: Map<string, SetMeta>
+  metaById: Map<string, SetMeta>,
+  sections: BookSectionDef[],
+  groupSubtopics?: SubtopicGroupDef[]
 ): BookSection[] {
-  return SECTIONS.map(({ key, exam, title }) => {
+  return sections.map(({ key, exam, title }) => {
     const sets: BookSet[] = [];
+    const subtopicOfSet = new Map<string, string>();
     let current: BookSet | null = null;
     let currentSetId: string | null = null;
 
@@ -279,15 +383,17 @@ export function buildStoredSections(
         continue;
       }
 
+      const setKey = `${key}|${meta.setId ?? "solo"}|${row.questionId}`;
       current = {
         setId: meta.setId,
-        key: `${key}|${meta.setId ?? "solo"}|${row.questionId}`,
+        key: setKey,
         questionIds: [row.questionId],
         year: meta.year,
         sitting: meta.sitting,
         label: sittingLabel(exam, meta.year, meta.sitting),
       };
       currentSetId = meta.setId;
+      subtopicOfSet.set(setKey, meta.subtopic ?? "Other");
       sets.push(current);
     }
 
@@ -296,6 +402,7 @@ export function buildStoredSections(
       exam,
       title,
       sets,
+      blocks: groupSubtopics ? toBlocks(sets, subtopicOfSet, groupSubtopics) : null,
       questionCount: sets.reduce((n, s) => n + s.questionIds.length, 0),
     };
   });

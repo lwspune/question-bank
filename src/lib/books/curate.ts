@@ -16,8 +16,6 @@
  * will exhaust it. Nothing renormalises today — if a section is ever reordered
  * that heavily, that is the moment to add it.
  */
-import type { BookSectionKey } from "./order";
-
 /** A set as it currently sits in its section: its questions and their positions. */
 export type PositionedSet = {
   key: string;
@@ -26,7 +24,7 @@ export type PositionedSet = {
 };
 
 export type PositionMove = { questionId: string; position: number };
-export type SectionMove = PositionMove & { sectionKey: BookSectionKey };
+export type SectionMove = PositionMove & { sectionKey: string };
 
 /**
  * Spread `count` strictly-increasing positions into the gap (`lower`, `upper`).
@@ -104,7 +102,7 @@ export function planSetMove(
 export function planSetToSection(
   sets: PositionedSet[],
   key: string,
-  sectionKey: BookSectionKey,
+  sectionKey: string,
   targetSets: PositionedSet[]
 ): SectionMove[] | null {
   const moving = sets.find((s) => s.key === key);

@@ -12,7 +12,7 @@ import { ChevronRight } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { getSessionSuperadmin } from "@/lib/auth";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { getBookBySlug } from "@/lib/books/registry";
+import { bookExams, getBookBySlug } from "@/lib/books/registry";
 import { loadBookOverview } from "@/lib/books/query";
 
 export const dynamic = "force-dynamic";
@@ -79,7 +79,7 @@ export default async function BookTocPage({
                 <span className="min-w-0 flex-1">
                   <span className="block font-medium">{summary.chapter.name}</span>
                   <span className="mt-0.5 block text-xs text-muted-foreground">
-                    {book.exams
+                    {bookExams(book)
                       .map((exam) => `${exam} ${summary.byExam[exam] ?? 0}`)
                       .join(" · ")}
                   </span>

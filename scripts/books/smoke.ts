@@ -17,7 +17,7 @@
  */
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { NDA_CDS_ENGLISH } from "../../src/lib/books/registry";
+import { NDA_CDS_ENGLISH, bookExams } from "../../src/lib/books/registry";
 import { loadBookChapter, loadBookOverview } from "../../src/lib/books/query";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -44,7 +44,7 @@ async function main() {
   console.log(`\n${book.title}`);
   console.log(`${"-".repeat(64)}`);
   for (const row of overview.chapters) {
-    const split = book.exams.map((e) => `${e} ${String(row.byExam[e] ?? 0).padStart(4)}`).join("  ");
+    const split = bookExams(book).map((e) => `${e} ${String(row.byExam[e] ?? 0).padStart(4)}`).join("  ");
     console.log(`  ${row.chapter.name.padEnd(24)} ${split}   total ${String(row.total).padStart(4)}`);
     check(row.total > 0, `${row.chapter.name}: renders EMPTY — the registry name may not match the bank`);
   }
@@ -100,6 +100,27 @@ async function main() {
         }
       }
 
+      // Layout A: where a chapter groups by subtopic, the blocks must account
+      // for EVERY set. A subtopic present in the data but missing from the
+      // registry list is appended rather than dropped, and this is what proves
+      // it — silently losing questions is the failure mode that matters.
+      if (section.blocks) {
+        const inBlocks = section.blocks.flatMap((b) => b.sets.map((s) => s.key));
+        check(
+          inBlocks.length === section.sets.length,
+          `${chapter.name}/${section.title}: blocks hold ${inBlocks.length} sets, section has ${section.sets.length}`
+        );
+        check(
+          new Set(inBlocks).size === inBlocks.length,
+          `${chapter.name}/${section.title}: a set appears in more than one block`
+        );
+        const blockQs = section.blocks.reduce((n, b) => n + b.questionCount, 0);
+        check(
+          blockQs === section.questionCount,
+          `${chapter.name}/${section.title}: blocks hold ${blockQs} questions, section has ${section.questionCount}`
+        );
+      }
+
       // Sets must be non-decreasing by year: the half reads oldest-first.
       let lastYear = -Infinity;
       for (const set of section.sets) {
@@ -121,6 +142,14 @@ async function main() {
           `${chapter.name}/${section.title}: ${set.label} groups questions with DIFFERENT contexts`
         );
       }
+    }
+
+    for (const section of view.sections) {
+      if (!section.blocks) continue;
+      const shape = section.blocks
+        .map((b) => `${b.name} ${b.questionCount}${b.directions ? "*" : ""}`)
+        .join("  |  ");
+      console.log(`    ${section.title.padEnd(10)} ${shape}`);
     }
 
     const first = view.sections[0];
