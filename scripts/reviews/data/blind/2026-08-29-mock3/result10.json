@@ -1,0 +1,75 @@
+[
+ {
+  "questionId": "3fec3a58-1019-438a-92de-9340f26379b7",
+  "qnum": "6",
+  "derived": "AMBIGUOUS",
+  "value": "The symmetric difference A Δ B. Options C and D denote the SAME set: D = (A' u B') - (A' n B') = (A n B)' - (A u B)' = (A u B) - (A n B) = C. Options A and B both evaluate to the complement (A Δ B)'.",
+  "confidence": "high",
+  "why": "C = (A n B') u (A' n B) is the symmetric difference, which is option C verbatim; applying De Morgan to option D gives (A n B)' minus (A u B)', i.e. (A u B) n (A n B)', the identical set. Exhaustive check over all 256 (A,B) pairs on a 4-element universe (and separately over the 24 non-degenerate pairs where all four Boolean atoms are non-empty) found options C and D agreeing with the definition on every case and options A and B failing on every case.",
+  "flag": "MULTIPLE"
+ },
+ {
+  "questionId": "86e9934e-04c3-4a87-9fac-126b42acfc41",
+  "qnum": "69",
+  "derived": "B",
+  "value": "0 (the function is identically 2 on the whole interval (1,3), so its derivative at x=2 is 0)",
+  "confidence": "high",
+  "why": "For 1 < x < 3, |x-1| = x-1 and |x-3| = 3-x, so f(x) = (x-1)+(3-x) = 2, a constant; x=2 is interior to that interval, well away from both corner points. Exact one-sided difference quotients with h = ±1/10 and ±1/1000 (Fractions, no floats) are all exactly 0, and sympy's derivative at 2 is 0. Option D 'Undefined' is the trap for treating any modulus point as non-differentiable."
+ },
+ {
+  "questionId": "3b9d33f7-7a26-4249-95d5-aab1e839bded",
+  "qnum": "71",
+  "derived": "C",
+  "value": "i",
+  "confidence": "high",
+  "why": "i has period 4, so i^(4n) = (i^4)^n = 1 for every positive integer n, giving i^(4n+1) = 1 · i = i. Verified symbolically for n = 1..7, every case returning I."
+ },
+ {
+  "questionId": "32f6cd31-d333-467e-a725-a2eb0cba5e32",
+  "qnum": "110",
+  "derived": "D",
+  "value": "1 (frequency 4, the unique highest)",
+  "confidence": "high",
+  "why": "Tallying 1,2,1,1,2,1,4,6,5,4 gives frequencies 1→4, 2→2, 4→2, 5→1, 6→1. The maximum frequency is 4 and it is attained only by the value 1, so the mode is unique and equals 1."
+ },
+ {
+  "questionId": "51a2b64e-a1b0-408d-aa5c-ca7d11b14484",
+  "qnum": "161",
+  "derived": "D",
+  "value": "16",
+  "confidence": "high",
+  "why": "Using w^3 = 1 and 1+w+w^2 = 0: the exponents reduce to w^4=w, w^8=w^2, w^16=w, so the four factors are (1-w+w^2) = -2w, (1-w^2+w) = -2w^2, (1-w+w^2) = -2w and (1-w^2+w) = -2w^2; the product is 16·w^6 = 16. Verified exactly in sympy for BOTH primitive cube roots (-1±i√3)/2, each giving factors (1∓i√3) alternating and a product of exactly 16."
+ },
+ {
+  "questionId": "50b8fb46-7572-4e00-b5d6-88e9bf8872ec",
+  "qnum": "304",
+  "derived": "D",
+  "value": "n = 9",
+  "confidence": "high",
+  "why": "T_n = C(n,3), so T_(n+1) - T_n = C(n+1,3) - C(n,3) = C(n,2) = n(n-1)/2; setting that to 36 gives n(n-1) = 72, i.e. n = 9. Sympy confirms the difference simplifies to n(n-1)/2, that n=9 yields exactly 36, and that n=9 is the ONLY solution in 1..59 (the distractors give 1, 10 and 15 for n = 2, 5, 6)."
+ },
+ {
+  "questionId": "6c1b21bc-c5dc-4dd5-81d9-9bd982129388",
+  "qnum": "1572",
+  "derived": "C",
+  "value": "3√15/4 = √135/4 ≈ 2.904737509656",
+  "confidence": "high",
+  "why": "Subtracting the two circle equations gives the radical axis 8x - 11 = 0, i.e. x = 11/8; the first circle has centre (0,2) and radius 2, so the half-chord is √(4 - (11/8)^2) = √135/8 and the chord is √135/4. Solved the system exactly in sympy: the intersections are (11/8, 2 ± 3√15/8), both verified to satisfy BOTH circle equations exactly, giving a distance of 3√15/4, which sympy confirms is identically option C (√135 = 3√15); options A, B and D evaluate to 1.658, 11.619 and 3.010 respectively."
+ },
+ {
+  "questionId": "33a8c023-36b8-4970-ae36-e9b424cd3ca7",
+  "qnum": "1892",
+  "derived": "A",
+  "value": "π/3 (cosθ = 1/2)",
+  "confidence": "high",
+  "why": "(a+3b)·(7a-5b) = 7|a|^2 - 5a·b + 21a·b - 15|b|^2 = 7 - 15 + 16cosθ = 16cosθ - 8, which vanishes iff cosθ = 1/2, i.e. θ = π/3 in [0,π]. Checked with explicit concrete unit vectors: at π/3 the dot product is exactly 0, while at π/6 it is 8√3 - 8 ≠ 0 and at 2π/3 it is -16 ≠ 0, so the two rival options are genuinely excluded rather than merely unchosen."
+ },
+ {
+  "questionId": "1f01e46d-bf1e-4b0f-a3d3-572eed1a0028",
+  "qnum": "1912",
+  "derived": "C",
+  "value": "13",
+  "confidence": "high",
+  "why": "b + c = (1,0,0). Writing u = b+c, the expression is the scalar triple u·(a×(u×a)); by the BAC-CAB expansion a×(u×a) = |a|^2 u - (a·u)a, so the value is |a|^2|u|^2 - (a·u)^2 = |a×u|^2 = 14·1 - 1^2 = 13. Computed three independent ways in sympy (direct cross products giving (b+c)×a = (0,-3,2) then a×that = (13,-2,-3); the Lagrange identity; and |a×u|^2), all returning exactly 13."
+ }
+]

@@ -21,6 +21,10 @@
 // ever switched on for Class-10 textbook content, and costs nothing meanwhile.
 import type { SectionSpec } from "./lib";
 
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+import { DATA } from "./config";
+
 export const SECTIONS: Record<string, SectionSpec[]> = {
   "historiography-west-10": [
     { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
@@ -35,6 +39,70 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
   ],
   "electoral-process-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+
+  // The remaining nine humanities chapters — History 4-9 and PolSci 3-5. Every
+  // one of them closes with a single "Exercise" block, exactly like the five
+  // above, so each outline is one block. Verified per chapter against the
+  // rendered exercise page, not assumed from the pattern.
+  "indian-arts-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "mass-media-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "entertainment-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sports-history-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "tourism-history-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "heritage-management-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "political-parties-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "social-political-movements-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "challenges-democracy-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+
+  // GEOGRAPHY — one "Exercise" block per chapter, like the humanities book. This
+  // is measured rather than assumed: an Exercise-heading scan of all 82 pages of
+  // 10th_Geog_SB.pdf returns exactly nine hits, one per chapter, and no chapter
+  // carries a solved-example or miscellaneous block.
+  "geog-field-visit-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "geog-location-extent-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "geog-physiography-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "geog-climate-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "geog-vegetation-wildlife-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "geog-population-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "geog-settlements-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "geog-economy-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "geog-tourism-transport-10": [
     { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
   ],
 
@@ -71,10 +139,99 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Practice set 2.2", label: "Practice set 2.2", kind: "exercise", refPrefixes: ["Ex 2.2 "] },
     { group: "Problem set 2", label: "Problem set 2", kind: "miscellaneous", refPrefixes: ["PS2 "] },
   ],
+
+  // ══ Science and Technology, both volumes ══
+  // One Exercise block per chapter, exactly as with the humanities chapters. These books
+  // DO carry worked "Solved Examples" inside the body, unlike the humanities ones - they are
+  // deliberately OUT of scope for this pipeline, whose unit is the end-of-chapter Exercise.
+  // Ingesting them would be a real addition (they are fully worked), but it is a scope
+  // decision of its own and is reversible: add a `solved` block here and a `solved` bucket
+  // to the chapter's questions file.
+  "sci-gravitation-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-periodic-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-chem-reactions-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-electric-current-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-heat-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-refraction-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-lenses-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-metallurgy-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-carbon-compounds-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-space-missions-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-heredity-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-life-processes-1-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-life-processes-2-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-environment-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-green-energy-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-animal-classification-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-microbiology-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-cell-biotech-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-social-health-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+  "sci-disaster-10": [
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
 };
 
+/**
+ * A chapter's outline may also live in `data/<id>.sections.json`, same shape as the
+ * entries above. That exists so a per-chapter ingestion agent owns its own file:
+ * a dozen agents editing this one module in parallel is a merge conflict at best
+ * and a silently dropped outline at worst. The in-module table wins where both
+ * exist, so nothing already shipped can be overridden from disk.
+ */
 export function sectionsFor(id: string): SectionSpec[] {
   const s = SECTIONS[id];
-  if (!s) throw new Error(`no section outline for chapter "${id}" — author one in scripts/mh-ssc-10-text/sections.ts`);
-  return s;
+  if (s) return s;
+  const fromDisk = join(DATA, `${id}.sections.json`);
+  if (existsSync(fromDisk)) {
+    const parsed = JSON.parse(readFileSync(fromDisk, "utf8")) as SectionSpec[];
+    if (!Array.isArray(parsed) || parsed.length === 0)
+      throw new Error(`${id}.sections.json is empty — an outline must list at least one block`);
+    for (const b of parsed) {
+      if (!b.group || !b.label || !b.kind || !Array.isArray(b.refPrefixes) || b.refPrefixes.length === 0)
+        throw new Error(`${id}.sections.json: every block needs group, label, kind and a non-empty refPrefixes`);
+    }
+    return parsed;
+  }
+  throw new Error(
+    `no section outline for chapter "${id}" — author one in scripts/mh-ssc-10-text/sections.ts ` +
+      `or in scripts/mh-ssc-10-text/data/${id}.sections.json`,
+  );
 }

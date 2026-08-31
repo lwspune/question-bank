@@ -40,6 +40,43 @@ async function main() {
     .not("solution", "is", null);
   console.log(`solved examples (subjective + solution) for ${ch.chapterName}: ${solvedCount ?? 0}`);
 
+  // PROVENANCE GATE — fail CLOSED, before visibility, never after.
+  //
+  // These books print almost no answer key, so nearly every stored answer is one we
+  // authored. `apply-solutions.ts` stamps `derived_model`/`derived_at` as it writes
+  // them, and this is the gate that makes the stamp non-optional: a derived answer
+  // that goes PUBLIC without announcing itself is indistinguishable from an official
+  // key, which is exactly the defect this project recorded on the CDS General
+  // Knowledge corpus — noticed at the publish gate, one step too late.
+  //
+  // Rows the BOOK answered are legitimately unstamped (a Maths solved example
+  // carries the book's own printed solution), so this cannot simply demand a stamp
+  // on everything. It demands one on every row whose solution came from
+  // apply-solutions, which is precisely the set that file wrote.
+  const { data: unstamped, error: pErr } = await client
+    .from("questions")
+    .select("id, question_number, section_kind")
+    .eq("exam_id", EXAM_ID)
+    .eq("source_file", ch.sourceFile)
+    .not("solution", "is", null)
+    .is("derived_model", null);
+  if (pErr) throw new Error(`provenance check failed: ${pErr.message}`);
+  const authoredUnstamped = (unstamped ?? []).filter(
+    (r: any) => r.section_kind !== "solved_example",
+  );
+  if (authoredUnstamped.length) {
+    console.log(
+      `\n⚠  ${authoredUnstamped.length} row(s) carry an AUTHORED answer with no derived_model stamp:` +
+        `\n     ${authoredUnstamped.slice(0, 8).map((r: any) => r.question_number).join(", ")}` +
+        (authoredUnstamped.length > 8 ? ", …" : "") +
+        `\n   Re-run apply-solutions.ts --apply (it stamps as it writes), or use` +
+        `\n   scripts/mh-ssc-10-text/backfill-provenance.ts for rows already applied.` +
+        `\n   Refusing to publish: a derived answer must say so before it is readable.`,
+    );
+    process.exitCode = 1;
+    return;
+  }
+
   if (!apply) {
     console.log("[dry-run] pass --apply to flip these to PUBLIC.");
     if (withMcq) console.log("[dry-run] --with-mcq would ALSO flip MCQs with a correct option.");

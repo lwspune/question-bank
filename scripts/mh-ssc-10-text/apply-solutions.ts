@@ -20,7 +20,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { findLatexImbalance } from "../practice/lib";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
-import { DATA, EXAM_ID, requireChapter } from "./config";
+import { DATA, DERIVED_MODEL, EXAM_ID, requireChapter, withDerivedNote } from "./config";
 
 type SolutionRow = { id: string; ref: string; solution: string };
 
@@ -70,6 +70,35 @@ async function main() {
     auth: { persistSession: false },
   });
 
+  // DERIVED-ANSWER PROVENANCE. These textbooks print almost no answer key (the two
+  // Science volumes carry 24 printed answers across six chapters; the humanities and
+  // Geography books carry none), so every answer this script writes was AUTHORED by
+  // us. A published derived answer that does not announce itself reads as an
+  // official key — the failure this project already recorded on the CDS General
+  // Knowledge corpus, where provenance was noticed at the publish gate, one step too
+  // late.
+  //
+  // This script is the right seam, and that is not arbitrary: it writes ONLY the
+  // answers we authored. A Maths chapter's solved examples carry the BOOK's own
+  // printed solution and arrive at commit time from the questions file, so they
+  // never pass through here and are correctly left unstamped. No bucket logic is
+  // needed to tell the two apart.
+  // Both halves, or the row is only half-labelled: the columns are what the publish
+  // gate checks, the note clause is what a human reading the row actually sees.
+  const derivedAt = new Date().toISOString();
+  const stamp = { derived_model: DERIVED_MODEL, derived_at: derivedAt };
+
+  // One batched read of the existing notes so the clause can be appended rather than
+  // clobbered — `pyq_note` already carries the book/chapter provenance set at commit.
+  const allIds = [...rows.map((r) => r.id)];
+  const noteById = new Map<string, string | null>();
+  for (let i = 0; i < allIds.length; i += 150) {
+    const { data, error: nErr } = await client
+      .from("questions").select("id, pyq_note").in("id", allIds.slice(i, i + 150));
+    if (nErr) throw new Error(`pyq_note read: ${nErr.message}`);
+    for (const r of data ?? []) noteById.set((r as any).id, (r as any).pyq_note);
+  }
+
   let updated = 0;
   for (const r of rows) {
     // Write-boundary rule: long-form text must go through normalizeNewlines so a
@@ -78,7 +107,7 @@ async function main() {
     const solution = normalizeNewlines(r.solution);
     const { error, count } = await client
       .from("questions")
-      .update({ solution }, { count: "exact" })
+      .update({ solution, ...stamp, pyq_note: withDerivedNote(noteById.get(r.id) ?? null) }, { count: "exact" })
       .eq("id", r.id)
       .eq("exam_id", EXAM_ID)
       .eq("question_format", "subjective");
@@ -102,9 +131,17 @@ async function main() {
     for (const m of frag) {
       if (m.matches_current === false) mismatches.push(`${m.ref}: verifier says ${m.derived_answer}, differs from current key — RE-KEY MANUALLY`);
       if (!m.solution) continue;
+      // Same both-halves rule as the subjective path. MCQ counts are small (single
+      // digits per chapter), so a per-row read is cheaper than another batch.
+      const { data: cur } = await client
+        .from("questions").select("pyq_note").eq("id", m.id).maybeSingle();
       const { error, count } = await client
         .from("questions")
-        .update({ solution: normalizeNewlines(m.solution) }, { count: "exact" })
+        .update(
+          { solution: normalizeNewlines(m.solution), ...stamp,
+            pyq_note: withDerivedNote((cur as any)?.pyq_note ?? null) },
+          { count: "exact" },
+        )
         .eq("id", m.id).eq("exam_id", EXAM_ID).eq("question_format", "mcq");
       if (error) throw new Error(`mcq update ${m.ref}: ${error.message}`);
       if (count === 1) mcqUpdated++;

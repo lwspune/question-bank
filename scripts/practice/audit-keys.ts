@@ -157,9 +157,32 @@ async function main() {
   // so loudly instead — the likeliest cause is a typo'd or over-specific
   // substring, not a clean bank.
   if (filter && scanned === 0) {
+    // Two very different things reach this branch and they need different answers,
+    // so ask the DB which one it is rather than making the caller work it out.
+    // A source that matches rows but holds no MCQ is COMMON and benign — whole
+    // textbook chapters are free-response — while a substring that matches nothing
+    // is an operator error and the run proved nothing. Every ingestion agent that
+    // hit this had to reconstruct the distinction by hand from the probe's scope.
+    const { count, error: cErr } = await db
+      .from("questions")
+      .select("id", { count: "exact", head: true })
+      .eq("question_kind", "practice")
+      .ilike("source_file", `%${filter}%`);
+    if (cErr) throw cErr;
+    if (count && count > 0) {
+      console.log(
+        `\n✓  NO MCQs TO SCAN — "${filter}" matches ${count} practice question(s), none of them MCQ-shaped.` +
+          `\n   This probe's scope is question_format IS NULL OR = 'mcq', so a wholly` +
+          `\n   free-response source has nothing for it to check. That is a real result:` +
+          `\n   there are no keys here to get wrong. It is NOT evidence about the` +
+          `\n   subjective rows, which this probe never looks at.`
+      );
+      return; // exit 0 — nothing is wrong
+    }
     console.log(
       `\n⚠  NOTHING SCANNED — no practice question has a source_file containing "${filter}".` +
-        `\n   This is NOT a clean result. Check the substring against:` +
+        `\n   This is NOT a clean result: the substring matches no rows at all, so the` +
+        `\n   run proved nothing. Check it against:` +
         `\n     select distinct source_file from questions where question_kind='practice';`
     );
     process.exitCode = 1;

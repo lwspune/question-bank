@@ -1,0 +1,10 @@
+[
+ {
+  "questionId": "7ae5e015-0c3f-4a9b-b03f-f8a02ac3dbb2",
+  "qnum": "75",
+  "derived": "B",
+  "value": "1/15 (4^2022 = 16^1011 = (15+1)^1011, so 4^2022 mod 15 = 1; verified with Python arbitrary-precision integers: 4**2022 % 15 == 1, and Fraction(4**2022,15) - 4**2022//15 == 1/15)",
+  "confidence": "high",
+  "note": "Write 4^2022 = (4^2)^1011 = 16^1011 = (15+1)^1011. Binomially, (15+1)^1011 = sum_{k=0}^{1011} C(1011,k) 15^k; every term with k >= 1 carries an explicit factor of 15, so only the k=0 term (which is 1) survives modulo 15. Hence 4^2022 = 15m + 1 and the fractional part of 4^2022/15 is 1/15. Verified by exact integer computation on the full 1218-digit number, not by floating point. All four options are distinct and none is equivalent to another (4/15, 1/15, 14/15, 8/15), so only one is defensible. Option A = 4/15 is the answer for an ODD exponent (4^2021 mod 15 = 4) and is the intended parity trap; option C = 14/15 corresponds to a remainder of -1, which would need 4^n = -1 mod 15, impossible since 4 has order 2 mod 15."
+ }
+]

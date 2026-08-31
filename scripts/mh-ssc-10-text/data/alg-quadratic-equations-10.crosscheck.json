@@ -1,0 +1,666 @@
+{
+  "chapter": "Quadratic Equations (Algebra, MH State Board Class 10)",
+  "method": "Every stored answer was diffed against the book's printed ANSWERS key (pp.170-172) AND against an independent sympy re-derivation from the stem (alg-quadratic-equations-10.verify.py, 0 failures across every numeric row). Verdicts are one of AGREE / OUR-ANSWER-WRONG / BOOK-KEY-WRONG.",
+  "coverage": {
+    "rows_in_chapter": 135,
+    "rows_diffed": 108,
+    "solved_examples_outside_gate": 27,
+    "exercise_rows_with_no_key_entry": 0,
+    "unkeyed_refs": []
+  },
+  "tally": {
+    "AGREE": 108,
+    "OUR-ANSWER-WRONG": 0,
+    "BOOK-KEY-WRONG": 0
+  },
+  "rows": [
+    {
+      "ref": "Ex 2.1 Q.1",
+      "printed_key": "Any equations of the type m^2 + 5m + 3 = 0, y^2 - 3 = 0",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.1 Q.2 (1)",
+      "printed_key": "(1), (2), (4), (5) are quadratic equations.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.1 Q.2 (2)",
+      "printed_key": "(1), (2), (4), (5) are quadratic equations.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.1 Q.2 (3)",
+      "printed_key": "(1), (2), (4), (5) are quadratic equations.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.1 Q.2 (4)",
+      "printed_key": "(1), (2), (4), (5) are quadratic equations.",
+      "verdict": "AGREE",
+      "note": "x + 1/x = -2 is keyed as quadratic. The book's rule is applied after clearing the denominator: this becomes x^2 + 2x + 1 = 0 (quadratic) whereas item (3) becomes a cubic. That reading is consistent with Ex 2.2 Q.1 (6) and PS2 Q.7 (1), which the book itself sets as quadratic equations."
+    },
+    {
+      "ref": "Ex 2.1 Q.2 (5)",
+      "printed_key": "(1), (2), (4), (5) are quadratic equations.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.1 Q.2 (6)",
+      "printed_key": "(1), (2), (4), (5) are quadratic equations.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.1 Q.3 (1)",
+      "printed_key": "y^2 + 2y - 10 = 0, a = 1, b = 2, c = -10",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.1 Q.3 (2)",
+      "printed_key": "x^2 - 4x - 2 = 0, a = 1, b = -4, c = -2",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.1 Q.3 (3)",
+      "printed_key": "x^2 + 4x + 3 = 0, a = 1, b = 4, c = 3",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.1 Q.3 (4)",
+      "printed_key": "m^2 + 0m + 9 = 0, a = 1, b = 0, c = 9",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.1 Q.3 (5)",
+      "printed_key": "6p^2 + 3p + 5 = 0, a = 6, b = 3, c = 5",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.1 Q.3 (6)",
+      "printed_key": "x^2 + 0x - 22 = 0, a = 1, b = 0, c = -22",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.1 Q.4 (1)",
+      "printed_key": "1 is a root, -1 is not.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.1 Q.4 (2)",
+      "printed_key": "5/2 is a root, 2 is not.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.1 Q.5",
+      "printed_key": "k = 3",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.1 Q.6",
+      "printed_key": "k = -7",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.2 Q.1 (1)",
+      "printed_key": "9, 6",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.2 Q.1 (2)",
+      "printed_key": "-5, 4",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.2 Q.1 (3)",
+      "printed_key": "-13, -1/2",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.2 Q.1 (4)",
+      "printed_key": "5, -3/5",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.2 Q.1 (5)",
+      "printed_key": "1/2, 1/2",
+      "verdict": "AGREE",
+      "note": "double root; the book prints 1/2 twice."
+    },
+    {
+      "ref": "Ex 2.2 Q.1 (6)",
+      "printed_key": "2/3, -1/2",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.2 Q.1 (7)",
+      "printed_key": "-5/sqrt(2), -sqrt(2)",
+      "verdict": "AGREE",
+      "note": "book prints -5/sqrt(2) unrationalised; our answer uses the same form. (= -5*sqrt(2)/2)"
+    },
+    {
+      "ref": "Ex 2.2 Q.1 (8)",
+      "printed_key": "sqrt(2)/sqrt(3), sqrt(2)/sqrt(3)",
+      "verdict": "AGREE",
+      "note": "book prints sqrt(2)/sqrt(3) twice (equal roots); our answer uses the same form and adds that it equals sqrt(6)/3."
+    },
+    {
+      "ref": "Ex 2.2 Q.1 (9)",
+      "printed_key": "25, -1",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.2 Q.1 (10)",
+      "printed_key": "-3/5, 3/5",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.2 Q.1 (11)",
+      "printed_key": "0, 3",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.2 Q.1 (12)",
+      "printed_key": "-sqrt(11), sqrt(11)",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.3 (1)",
+      "printed_key": "4, -5",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.3 (2)",
+      "printed_key": "(sqrt(6) - 1), (-sqrt(6) - 1)",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.3 (3)",
+      "printed_key": "(sqrt(13) + 5)/2, (-sqrt(13) + 5)/2",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.3 (4)",
+      "printed_key": "(sqrt(2) + 2)/3, (-sqrt(2) + 2)/3",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.3 (5)",
+      "printed_key": "-2, -5/2",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.3 (6)",
+      "printed_key": "(2 + sqrt(39))/5, (2 - sqrt(39))/5",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.4 Q.1 (1)",
+      "printed_key": "1, -7, 5",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.4 Q.1 (2)",
+      "printed_key": "2, -5, 5",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.4 Q.1 (3)",
+      "printed_key": "1, -7, 0",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.4 Q.2 (1)",
+      "printed_key": "-1, -5",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.4 Q.2 (2)",
+      "printed_key": "(3 + sqrt(17))/2, (3 - sqrt(17))/2",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.4 Q.2 (3)",
+      "printed_key": "(-1 + sqrt(22))/3, (-1 - sqrt(22))/3",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.4 Q.2 (4)",
+      "printed_key": "(2 + sqrt(14))/5, (2 - sqrt(14))/5",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.4 Q.2 (5)",
+      "printed_key": "(-1 + sqrt(73))/6, (-1 - sqrt(73))/6",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.4 Q.2 (6)",
+      "printed_key": "-1, -8/5",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.4 Q.3",
+      "printed_key": "-sqrt(3), -sqrt(3)",
+      "verdict": "AGREE",
+      "note": "double root; the book prints -sqrt(3) twice."
+    },
+    {
+      "ref": "Ex 2.5 Q.1 (1)",
+      "printed_key": "Roots are distinct and real when b^2 - 4ac = 5, not real when b^2 - 4ac = -5.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.5 Q.1 (2)",
+      "printed_key": "x^2 + 7x + 5 = 0",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.5 Q.1 (3)",
+      "printed_key": "alpha + beta = 2, alpha x beta = -3/2",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.5 Q.2 (1)",
+      "printed_key": "53",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.5 Q.2 (2)",
+      "printed_key": "-55",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.5 Q.2 (3)",
+      "printed_key": "0",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.5 Q.3 (1)",
+      "printed_key": "Real and equal.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.5 Q.3 (2)",
+      "printed_key": "Real and unequal.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.5 Q.3 (3)",
+      "printed_key": "Not real.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.5 Q.4 (1)",
+      "printed_key": "x^2 - 4x = 0",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.5 Q.4 (2)",
+      "printed_key": "x^2 + 7x - 30 = 0",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.5 Q.4 (3)",
+      "printed_key": "x^2 - 1/4 = 0",
+      "verdict": "AGREE",
+      "note": "book prints x^2 - 1/4 = 0 (the x-term has coefficient 0)."
+    },
+    {
+      "ref": "Ex 2.5 Q.4 (4)",
+      "printed_key": "x^2 - 4x - 1 = 0",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.5 Q.5",
+      "printed_key": "k = 3",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.5 Q.6 (1)",
+      "printed_key": "18",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.5 Q.6 (2)",
+      "printed_key": "50",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.5 Q.7 (1)",
+      "printed_key": "k = 12 or k = -12",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.5 Q.7 (2)",
+      "printed_key": "k = 6",
+      "verdict": "AGREE",
+      "note": "the book's k = 6 discards the root k = 0, which would leave a non-quadratic equation; our solution states that rejection explicitly."
+    },
+    {
+      "ref": "Ex 2.6 Q.1",
+      "printed_key": "9 years",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.6 Q.2",
+      "printed_key": "10 and 12",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.6 Q.3",
+      "printed_key": "In vertical row 10, in horizontal row 15.",
+      "verdict": "AGREE",
+      "note": "the book words its answer as 'In vertical row 10, in horizontal row 15' — 10 trees per column, 15 per row, which is what our answer says."
+    },
+    {
+      "ref": "Ex 2.6 Q.4",
+      "printed_key": "Kishor's present age is 10 years and Vivek's present age is 15 years",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.6 Q.5",
+      "printed_key": "10 marks",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.6 Q.6",
+      "printed_key": "No. of pots 6, production cost of each is Rs 100.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.6 Q.7",
+      "printed_key": "6 km/hr",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.6 Q.8",
+      "printed_key": "For Nishu 6 days, for Pintu 12 days.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.6 Q.9",
+      "printed_key": "Divisor = 9, quotient = 51",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "Ex 2.6 Q.10",
+      "printed_key": "AB = 7 cm, CD = 15 cm, AD = BC = 5 cm.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.1 (1)",
+      "printed_key": "B",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.1 (2)",
+      "printed_key": "A",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.1 (3)",
+      "printed_key": "C",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.1 (4)",
+      "printed_key": "B",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.1 (5)",
+      "printed_key": "B",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.1 (6)",
+      "printed_key": "D",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.1 (7)",
+      "printed_key": "C",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.1 (8)",
+      "printed_key": "C",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.2 (1)",
+      "printed_key": "(1) and (3) are quadratic equations.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.2 (2)",
+      "printed_key": "(1) and (3) are quadratic equations.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.2 (3)",
+      "printed_key": "(1) and (3) are quadratic equations.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.3 (1)",
+      "printed_key": "-15",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.3 (2)",
+      "printed_key": "1",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.3 (3)",
+      "printed_key": "21",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.4",
+      "printed_key": "k = 3",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.5 (1)",
+      "printed_key": "x^2 - 100 = 0",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.5 (2)",
+      "printed_key": "x^2 - 2x - 44 = 0",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.5 (3)",
+      "printed_key": "x^2 - 7x = 0",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.6 (1)",
+      "printed_key": "Not real.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.6 (2)",
+      "printed_key": "Real and unequal",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.6 (3)",
+      "printed_key": "Real and equal",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.7 (1)",
+      "printed_key": "(1 + sqrt(21))/2, (1 - sqrt(21))/2",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.7 (2)",
+      "printed_key": "1/2, -1/5",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.7 (3)",
+      "printed_key": "1, -4",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.7 (4)",
+      "printed_key": "(-5 + sqrt(5))/2, (-5 - sqrt(5))/2",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.7 (5)",
+      "printed_key": "Roots are not real.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.7 (6)",
+      "printed_key": "(2 + sqrt(7)), (2 - sqrt(7))",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.8",
+      "printed_key": "m = 14",
+      "verdict": "AGREE",
+      "note": "the book's m = 14 discards m = 12, which would leave a non-quadratic equation; our solution states that rejection explicitly."
+    },
+    {
+      "ref": "PS2 Q.9",
+      "printed_key": "x^2 - 5x + 6 = 0",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.10",
+      "printed_key": "x^2 - 4pqx - (p^2 - q^2)^2 = 0",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.11",
+      "printed_key": "Rs 100 with Sagar, Rs 150 with Mukund.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.12",
+      "printed_key": "12 and sqrt(24) or 12 and -sqrt(24)",
+      "verdict": "AGREE",
+      "note": "book prints sqrt(24); 2*sqrt(6) is the same number. The negative root of y^2 = 24 is admissible because the question does not say the numbers are positive, and the book keeps both, as we do."
+    },
+    {
+      "ref": "PS2 Q.13",
+      "printed_key": "No. of students 60",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.14",
+      "printed_key": "Breadth 45 m. length 100 m, side of the pond 15 m.",
+      "verdict": "AGREE",
+      "note": ""
+    },
+    {
+      "ref": "PS2 Q.15",
+      "printed_key": "For larger tap 3 hours and for smaller tap 6 hours.",
+      "verdict": "AGREE",
+      "note": ""
+    }
+  ]
+}

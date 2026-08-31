@@ -38,6 +38,18 @@ const NON_QUESTION_ARTIFACTS = [
   ".crosscheck.json", // step-6 answer-key cross-check findings
   ".errata.json", // book-defect register — read by errata.ts
   ".answers.json", // transcribed printed answer key
+  // The per-chapter /board outline, read by sectionsFor() in sections.ts. Added
+  // when the twelve Mathematics chapters landed: those need multi-block outlines
+  // and a dozen agents editing one shared module is a merge conflict at best, so
+  // the outline moved to a data file — which the bare auto-glob then tried to
+  // ingest as questions. It fails closed (the rows have no `ref`, so the duplicate
+  // guard throws) rather than corrupting anything, but the glob is unusable for a
+  // Maths chapter until this line exists.
+  ".sections.json",
+  // Verification artifacts an agent commits as evidence beside its data.
+  ".verify.json",
+  ".stemcheck.json",
+  ".figtext.json", // figure labels the PDF text layer cannot see — read by audit-grounding
 ];
 
 function main() {
@@ -65,6 +77,28 @@ function main() {
   const seen = new Set<string>();
   for (const f of files) {
     const frag: SBQuestion[] = JSON.parse(readFileSync(join(DATA, f), "utf8"));
+    // FAIL-CLOSED SHAPE GUARD, and it is here because the name list above cannot be
+    // trusted on its own: a denylist fails OPEN and grows stale by construction.
+    // Agents legitimately commit evidence beside their data, and this run alone
+    // produced `.solution-images.json`, `.solutions-by-ref.json` and
+    // `.mcq-blind-derivation.json` — none of which ends in a suffix the list knows,
+    // and all of which the bare glob would have merged as questions.
+    //
+    // A question fragment always carries a string `ref`, `bucket` and `stem`. If the
+    // first row does not, this is not a question file, and refusing BY NAME is far
+    // better than silently ingesting whatever it holds. (Same guard `scripts/ncert`
+    // added after its own near-miss.)
+    if (!Array.isArray(frag)) {
+      throw new Error(`${f} is not an array of questions — exclude it or pass fragments explicitly`);
+    }
+    const head = frag[0] as Partial<SBQuestion> | undefined;
+    if (head && !(typeof head.ref === "string" && typeof head.bucket === "string" && typeof head.stem === "string")) {
+      throw new Error(
+        `${f} does not look like a question fragment (a row needs string ref/bucket/stem). ` +
+          `If it is an artifact, add its suffix to NON_QUESTION_ARTIFACTS; if it is questions, ` +
+          `pass the fragment names explicitly.`,
+      );
+    }
     for (const q of frag) {
       if (seen.has(q.ref)) throw new Error(`duplicate ref "${q.ref}" (in ${f})`);
       seen.add(q.ref);

@@ -95,3 +95,72 @@ describe("ungroundedTokens — does not fire on sentence glue", () => {
     expect(hits.map((h) => h.token)).toContain("Dumbarton Oaks");
   });
 });
+
+// ── Added when the Science chapters landed: the first solutions in this pipeline
+//    to carry LaTeX and markdown emphasis. Every "not" case below was a REAL false
+//    positive on Gravitation before the fix; the "still sees" cases exist so the
+//    fix cannot quietly widen into a blind spot.
+describe("ungroundedTokens — LaTeX and markdown artefacts", () => {
+  const chapter = "The value of g is 9.8 and the period of revolution is T.";
+  const tokens = (sol: string) => ungroundedTokens(sol, chapter).map((h) => h.token);
+
+  it("ignores a LaTeX macro name inside a math zone", () => {
+    // \\Rightarrow is a macro, not a claim about the world. It was reported on
+    // four separate Gravitation answers.
+    const sol = "By the law, \\(0 = u - gt \\Rightarrow t = u/g\\), so the times are equal.";
+    expect(tokens(sol)).not.toContain("Rightarrow");
+  });
+
+  it("still sees a proper noun that sits OUTSIDE the math zone", () => {
+    const sol = "The result \\(T^2 = KR^3\\) is due to Kepler and nobody else.";
+    expect(tokens(sol)).toContain("Kepler");
+  });
+
+  it("treats a bolded sentence-opening word as sentence-initial", () => {
+    const sol = "First do this. **Convert the distance to metres.**";
+    expect(tokens(sol)).not.toContain("Convert");
+  });
+
+  it("treats a paragraph break as a sentence boundary", () => {
+    // "Numerator:" opens its own paragraph after a math zone, so the preceding
+    // sentence never ended in punctuation and it read as mid-sentence.
+    const sol = "The force is \\(F = GMm/d^2\\)\n\nNumerator: six times seven.";
+    expect(tokens(sol)).not.toContain("Numerator");
+  });
+
+  it("does not swallow a real name that merely follows a math zone", () => {
+    const sol = "Given \\(g = 9.8\\), the value on Zargon is quite different.";
+    expect(tokens(sol)).toContain("Zargon");
+  });
+
+  it("still sees a name emphasised in bold mid-sentence", () => {
+    const sol = "The law is named after **Cavendish** and nobody else.";
+    expect(tokens(sol)).toContain("Cavendish");
+  });
+});
+
+// ── The possessive asymmetry, proved with a control by the Environmental
+//    Management ingestion agent: the candidate token has `'s` stripped but the
+//    chapter haystack does not, so any MULTI-WORD name containing a possessive can
+//    never match, however plainly it is printed.
+describe("ungroundedTokens — possessives in the haystack", () => {
+  it("matches a multi-word name whose chapter form carries a possessive", () => {
+    const chapter = "The box on page 41 is headed Let's Discuss and asks for information.";
+    const sol = "The chapter's Let's Discuss box asks the student to collect information.";
+    expect(ungroundedTokens(sol, chapter).map((h) => h.token)).not.toContain("Let Discuss");
+  });
+
+  it("matches a curly-apostrophe possessive too", () => {
+    const chapter = "Hope’s apparatus demonstrates the anomalous behaviour of water.";
+    // Mid-sentence on purpose: a sentence-INITIAL capital is a separate rule, and
+    // testing both at once would not tell us which one fired.
+    const sol = "The experiment uses Hope’s apparatus to show the effect.";
+    expect(ungroundedTokens(sol, chapter).map((h) => h.token)).not.toContain("Hope apparatus");
+  });
+
+  it("still reports a name that is genuinely absent", () => {
+    const chapter = "The box on page 41 is headed Let's Discuss.";
+    const sol = "The chapter never mentions Bishnoi's Movement anywhere.";
+    expect(ungroundedTokens(sol, chapter).map((h) => h.token)).toContain("Bishnoi Movement");
+  });
+});

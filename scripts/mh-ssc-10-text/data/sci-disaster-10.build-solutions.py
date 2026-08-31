@@ -1,0 +1,333 @@
+# Build data/sci-disaster-10.solutions.json by joining these authored answers
+# (keyed by the printed exercise ref) against the topaper dump ON REF, asserting
+# that every emitted row's id still pairs with its own ref.
+#
+# Every claim below is taken from the chapter itself (Balbharati Class 10,
+# Science and Technology Part II, ch.10 "Disaster Management", printed pp109-120
+# = PDF idx 118-129). The chapter prints NO answers, so grounding is the only
+# control: where the chapter does not state something the answer says so instead
+# of supplying it from general knowledge.
+
+import json, os, sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+DUMP = os.path.join(HERE, "sci-disaster-10.all.topaper.json")
+OUT = os.path.join(HERE, "sci-disaster-10.solutions.json")
+
+A = {}
+
+A["Ex Q1"] = """The chapter gives no list of warning signs for any single disaster - it says the opposite: "As the disaster occurs suddenly, it cannot be predicted. Hence, precautions are not possible." So the "Symptoms" column below records the **nature** the chapter itself assigns to each disaster in its "Types of Disasters" chart (printed p110) and in its short-term / long-duration division on p109. The "Effects" column is taken from the chapter's concept map of the effects of disaster (p111) and from the effects it names for particular disasters; the "Remedy" column from its pre-disaster and post-disaster management lists (p114) and its three phases (p112).
+
+The printed table gives only two blank rows while twelve disasters are named above it, so any two may be entered. All twelve are covered here.
+
+| Disaster | Symptoms (the nature the chapter gives it) | Effects | Remedy |
+|---|---|---|---|
+| Flood | Geophysical; the chart lists flooding under the Geological branch and flood under the Atmospheric branch | Collapsing of bridges, flooding of coastal villages, shortage of food; contamination of water | Identifying pro-disaster areas and using hazard maps beforehand; search and rescue, medical assistance and removing people from the affected area in the emergency phase; clearing debris, restoring water supply and repairing roads in the transitional phase |
+| Famine | Natural; the chapter's own example of a disaster whose impact lasts for a long duration | Shortage of food; sudden increase in fund expenditure, shortage of funds for development of other sectors, decrease in productivity | Rehabilitation of the victims, which the chapter says is true only when they are given a permanent means of earning livelihood |
+| Drought | Geophysical - Atmospheric | Adversely affects the environment; drying out of water sources | Collecting information about intensity and probable sites through predictive intensity maps and hazard maps; increasing public awareness through training programmes and mass media |
+| Forest fire | Biological - Plant (the chart's first example of a plant disaster) | Adversely affects the environment | Awareness through training programmes and mass media; quick response, for which the chapter names the fire fighters and the National Disaster Response Force |
+| Land sliding | Geophysical - Geological (the chart lists land-slides and land-fall) | Partial or complete collapsing of buildings; the chapter's example is the huge landslide of 2014 in the village Malin, Tal. Ambegaon, Dist. Pune | Rescue by the National Disaster Response Force, whose personnel the chapter credits with rescue work in cliff-sliding and building collapse; reconstruction, as the school at Malin was rebuilt after the disaster |
+| Epidemic | Biological - Animal (infectious viruses and bacteria such as cholera, malaria, hepatitis, plague) | Increase in epidemics, death of victims, injuries, emotional / mental stress | Medical assistance and first aid in the emergency phase; the World Health Organization is one of the international organisations the chapter lists as working for disaster management |
+| Locust attack | Biological; the chart's Animal branch names insects, but it does not name the locust | The chapter states no effect for it; by its own "various problems of crop" such damage belongs with the long-duration disasters | The chapter states no remedy for it |
+| Motor accident | Man Made; the chart's "Accident.." under unplanned action | Injuries, emotional / mental stress, death of victims; stress on workers and collapsing of the transport system | First aid before actual medical treatment; transport of the injured by the cradle method, carrying on back or carrying on two hands; the help-lines the chapter prints - Ambulance 102, Police 100 |
+| Theft | Man Made; the chart does not name theft | The chapter states no effect for it | The chapter's general point that man-made disasters can be avoided |
+| Riot | Man Made; the chart does not name riot, its nearest entries being war, fire, bomb blast and terrorism | Total chaos and loss of life and property; the chapter says instability arises from economic inequality and racial and religious differences | Man-made disasters can be avoided; the help-line the chapter prints for the police is 100 |
+| War | Man Made - International (the chart's first example) | Huge loss of life and property; the chapter notes that such disasters increased after World War-II | Man-made disasters can be avoided; the chapter calls helping each other in the crisis of disaster "our ethical responsibility" |
+| Financial crisis | Man made and long-lasting; the chart does not name it, and the chapter's long-duration list names the related "strikes of workers" | Sudden increase in fund expenditure, shortage of funds for development of other sectors, decrease in productivity | The chapter states no remedy for it |
+
+[Note: the chapter supports the Effects and Remedy columns well but supports a "Symptoms" column for none of the twelve, because it holds that a disaster cannot be predicted. The nearest thing it offers is collecting information about the intensity of a disaster and the probable sites of disasters through predictive intensity maps and hazard maps.]"""
+
+A["Ex Q2(a)"] = """In case of disaster an authority has been established at the level of government. The chapter's flow chart "indicates the function of control and coordination under the disaster management from national to village level", and it has five levels, each with its own chairman:
+
+| Level | Authority | Chairman |
+|---|---|---|
+| National | National disaster management authority | Prime Minister |
+| State | State disaster management authority | Chief Minister |
+| District | District disaster management authority | Collector |
+| Taluka | Taluka disaster management authority | Tahsildar |
+| Village | Village level Committee | Sarpanch |
+
+Control and coordination pass downward from the national authority to the village level committee. Three other groups are shown alongside them in the chart: **organisations providing precautionary warning**, which feed into the national, state and district authorities; **other social / private organisations**, which also feed into those three; and the **general public**, which feeds into the village level committee. The district authority, the taluka authority, the village level committee and the general public all lead into the **system involved in actual rescue and rehabilitation work**.
+
+The chapter describes only one of the five levels in detail, the **District Disaster Management Authority**. At the district level the district collector is responsible for disaster management and for the implementation of rehabilitation schemes. The collector plans, coordinates and controls the implementation of the rehabilitation programme, gives out the necessary instructions and reviews the entire system. The district collector is also responsible for designing the schemes for each district, separately for each type of disaster, and for getting those sanctioned from the state-level authorities.
+
+The chapter introduces this structure in the same paragraph in which it states that the Disaster Management Act, 2005 has been passed in our country."""
+
+A["Ex Q2(b)"] = """[Note: the chapter has no section called "Nature of disaster management". This answer is built from its definition of disaster management on pp113-114 and from its section "Nature and scope of disaster" on p112.]
+
+**What it is.** Disaster management is "achieving or time to time improving the ability to face the disasters through scientific and careful observations and analysis of data" - for example, preparing an action plan by studying preventive measures, rehabilitation and reconstruction, and then executing that plan. It is either the prevention of disasters, or making arrangements to face them, or at least achieving the abilities to face them.
+
+**Its nature.**
+1. It is planned. "Disasters are never planned but losses due it can be prevented in a planned manner", and the attempt throughout is to minimise the losses.
+2. It is not fixed. The schemes "should be changed with respect to location, time and nature of the disaster. It should not be restricted for a particular period."
+3. It depends on people. "There is close relationship between disaster management and public participation", and "direct participation of citizens in disaster management is highly necessary", because the citizens of every country are the main sufferers in any type of disaster.
+4. It is divided into two parts - pre-disaster management and post-disaster management.
+
+**Its scope.** Taking the nature and scope of a disaster into account, the chapter lists six phases: the pre-disaster phase, the warning phase, the emergency phase, the rehabilitation phase, the recovery phase and the reconstruction phase. Of these only three are said to be important for the common citizen:
+
+1. **Phase of emergency** - maximum lives can be saved by quick action during this phase alone. Search and rescue operations, medical assistance, first aid, restoring communication services and removing people from the affected area belong here, and the gravity of the disaster can be estimated only in this phase.
+2. **Transitional phase** - rehabilitation begins once the disaster subsides: clearing of debris, restoring water supply, repairing roads, so that normalcy returns to public life. Different institutes offer monetary and other help; the chapter says true rehabilitation is offering the victims a permanent means of earning livelihood, which soothes their mental stress earliest.
+3. **Reconstruction phase** - the most complicated phase, which begins within the transitional phase. People reconstruct their buildings, roads and water supply are restored and farming is restarted, but reconstruction takes a long time."""
+
+A["Ex Q2(c)"] = """A mock drill "is a practice to check the preparedness of facing the disaster as early as possible". A virtual or apparent situation of disaster is created to check the reaction time for any type of disaster. Trained personnel observe their responsibilities so that the execution of the plan designed for disaster redressal can be checked, and this helps to check the efficacy of the whole system prepared for disaster redressal.
+
+In schools a mock drill is arranged on the disaster of fire by the fire fighters. It includes demonstrations such as extinguishing the fire, rescuing people trapped on the higher floors of buildings, and rescuing persons whose clothing has caught fire. Such activities are also arranged by the police force and by voluntary organisations.
+
+The chapter lists six objectives of a mock drill:
+1. Evaluating the response to the disaster.
+2. Improving the coordination between various departments of disaster control.
+3. Identification of own abilities.
+4. Improving the ability of quick response to disaster.
+5. Checking the competency of the planned actions.
+6. Identifying the possible errors and risks."""
+
+A["Ex Q2(d)"] = """The chapter says three things about this Act, and no more.
+
+1. **It has been passed in our country.** The chapter states this in the paragraph that introduces the Structure of Disaster Management Authority: "In case of disaster, an authority has been established at the level of government. Following flow chart indicates the function of control and coordination under the disaster management from national to village level. Disaster Management Act, 2005 has been passed in our country." So the chapter presents the five-level structure - National (Chairman: Prime Minister), State (Chief Minister), District (Collector), Taluka (Tahsildar) and the Village level Committee (Sarpanch) - together with the Act.
+
+2. **The National Disaster Response Force has been established as per this Act.** The divisions of this force work in the army; overall 12 divisions are working in the country; its headquarter is in Delhi and it is in action all over the country with the help of the army. In Maharashtra the National Disaster Response Force is in action through the State Reserve Police Force. Its personnel have a substantial contribution in rescue work in disasters such as cyclones, cliff-sliding and building collapse. Its website is http://www.ndrf.gov.in
+
+3. That is the whole of it. **The chapter does not give the date on which the Act was passed, the number of its sections, or any list of its provisions**, so nothing further about the Act can be said from this chapter."""
+
+A["Ex Q3(a)"] = """The chapter answers this under the heading "District-wise Disaster Control Unit".
+
+The district control unit **is established immediately**, either after the impact of the disaster or on getting intimation about it. After that its role is:
+
+1. **Reviewing.** It reviews the various aspects of the disaster.
+2. **Getting help from the major agencies.** It keeps continuous contact with various agencies such as the army, the air force, the navy, the telecommunication department and the paramilitary forces for getting help.
+3. **Coordinating voluntary help.** It is also responsible for coordinating with various voluntary organisations for their help in disaster management.
+
+The chapter's post-disaster management list shows what the control unit's work leads to: the quick establishment of a help centre - and it notes that different types of disasters need different types of control centres - and then the categorisation of the help material received from the control centre, delivering that material to the victims, and a continuous review of the help.
+
+This unit should not be confused with the District Disaster Management Authority described on the previous page, which is the standing authority whose chairman is the Collector, who plans, coordinates and controls the implementation of the rehabilitation programme and designs the schemes for the district."""
+
+A["Ex Q3(b)"] = """The chapter states plainly that "Such disasters have been increased after the world war-II" and gives these reasons:
+
+1. **Old problems have become fierce.** "In reality, old problems of several years have become fierce. Ex. Increasing population, its increasing needs emerging problems out of it are now at the extreme end."
+2. **Instability within countries.** "Condition of instability arises in the country due to various reasons like economic inequality, racial and religious differences, etc." As a result "Incidences like terrorism, abduction, social differences have been a routine now."
+3. **Harmful chemicals made where they are not banned.** The production and use of harmful chemicals is under ban in developed countries; however, the production of either the same chemicals or of those which can wipe out the human race is common in developing and poor countries.
+4. **Atomic energy plants.** "Another such threat to human being is from the atomic energy plants." The chapter's example is the radiation leakage that occurred after a blast in the atomic energy plant at Chernobyl, Ukraine, whose ill-effects are still experienced in the region - and that plant was used only for electricity generation. Many countries are now equipped with atomic energy, and the risk of radiation leakage is increasing due to carelessness.
+5. **Greed for economic progress.** The chapter's underlying reason is that "such conditions of natural imbalance have been arisen due to greed of economic progress of human being." It makes the same point at the start of the chapter: the environment is damaged by the use of natural resources for our development, and this leads to sudden disasters unexpected to human beings, which can be called man-made disasters."""
+
+A["Ex Q3(c)"] = """The chapter lists five objectives of disaster management:
+
+1. Saving of human life during the calamity and release of the people.
+2. Supply of essential commodities of the people to reduce the effect of disaster.
+3. To restore the human life in the region by creating reconciliation in disaster.
+4. Rehabilitate disaster victims.
+5. Considering protective measures in disaster, such disaster will not reach in future and take care to reduce their intensity.
+
+Behind all five lies the chapter's general aim: "In case of disaster management, there should be an attempt to minimize the losses. Disasters are never planned but losses due it can be prevented in a planned manner." """
+
+A["Ex Q3(d)"] = """First aid is the primary help given to a victim **before** actual medical treatment: "Victims of disaster need to be offered some primary help before actual medical treatment. First aid is useful in such circumstances." Training in it is essential for these reasons.
+
+1. **Lives are saved in the first minutes.** In the phase of emergency "maximum lives can be saved by quick actions during this phase only", and first aid is one of the actions the chapter names for that phase, along with search and rescue operations, medical assistance and removing people from the affected area.
+2. **It is what first aid is for.** The chapter's objectives of first aid are saving lives, relieving the pains, preventing deterioration of the condition of the victims of disaster, and an attempt to improve the condition. None of these can be done by an untrained person.
+3. **These situations are everyday ones, not rare ones.** "We face different types of major or minor disasters in our daily life. Varieties of disasters like accidents, stampede, injuries in fighting, electric shock, burns, heat shock, snake bite, dog bite, fire due to electric short circuit, epidemic of any disease, etc. happen around us."
+4. **The help has to be given by whoever is present.** The chapter says the knowledge of first aid "is useful for offering the help to classmates or people around you facing any disaster and injured there in", and that "Helping each other in the crisis of disaster is our ethical responsibility."
+5. **You must be able to improvise.** Along with keeping the material of a first aid kit, "It is also important to use whatever the material available in the given condition for first aid" - which only a trained person can do.
+6. **It is part of preparation.** Getting special training for disaster management is one of the four things the chapter lists under pre-disaster management."""
+
+A["Ex Q3(e)"] = """The chapter names three methods: "In emergency condition, various transportation methods like **cradle method**, **carrying on back**, **carrying on two hands** are to be followed." Its figure 10.4 "Various activities" also shows such activities, including lifting a victim on to a stretcher and two people supporting an injured person between them.
+
+**Why several methods, and why choose between them:** "Those methods depend upon the condition of victim." A single method cannot suit every injured person, so the method used is decided by the condition the victim is in.
+
+Transporting the victim matters because removing the people from the affected area is one of the actions the chapter expects in the phase of emergency, the phase in which maximum lives can be saved by quick action, and because the victim has to be moved to where actual medical treatment can be given after the first aid."""
+
+A["Ex Q4"] = """[Note: the chapter does not print a structure for a school. What follows applies its own national-to-village flow chart, which is what the question asks for. The chapter's "Try this" box on p115 asks the related question of which factors you would consider while designing the pre-disaster management plan for your school or home.]
+
+The chapter's chart works by having a chairman at each level, control and coordination passing downward, and warning bodies, other organisations and the general public feeding into it. The same shape for a school:
+
+| The book's level | Corresponding level in the school | Chairman |
+|---|---|---|
+| National disaster management authority (Prime Minister) | School disaster management committee | Principal |
+| State disaster management authority (Chief Minister) | Section committee - primary and secondary sections | Section head / supervisor |
+| District disaster management authority (Collector) | Class committee | Class teacher |
+| Taluka disaster management authority (Tahsildar) | Division committee | Division monitor |
+| Village level Committee (Sarpanch) | Student group of each bench row | Group leader |
+
+The three groups the chart shows alongside the levels have their counterparts too:
+
+- **Organisations providing precautionary warning** - the fire fighters, the police and the taluka and district disaster management authorities, who give the school its warning, and who the chapter says arrange the mock drill.
+- **Other social / private organisations** - the parents' association and the local voluntary organisations, which the chapter says the district control unit coordinates with.
+- **General public** - all the students, teachers and non-teaching staff of the school.
+- **System involved in actual rescue and rehabilitation work** - the school's first-aid group, its fire-fighting group and the students trained in the mock drill.
+
+As in the book's chart, control passes down from the principal to the group leaders, while warning and outside help come in from the side, and everyone finally feeds into the group that does the actual rescue work."""
+
+A["Ex Q5"] = """[Note: this question asks about disasters you have yourself experienced, so the two disasters chosen must be your own. The two taken here as a model are flood and earthquake, because they are the two the chapter itself describes in most detail.]
+
+**1. Flood**
+
+- *Reasons.* The chapter classes flooding under the Geological branch and flood under the Atmospheric branch of its "Types of Disasters" chart, so it treats it as a natural disaster. Its general reason for such disasters is that the environment is damaged by the use of natural resources for our development, and that conditions of natural imbalance arise from the greed of economic progress of human beings.
+- *Effects.* "Collapsing of bridges, flooding of coastal villages, shortage of food are some of the problems of floods." To these the chapter's concept map adds contamination of water, drying out of water sources and stinky pollution of the environment due to decomposing corpses; injuries, mental stress, increase in epidemics and death of victims; sudden increase in fund expenditure and decrease in productivity; and stress on workers and collapsing of the transport system.
+- *Remedial measures.* Before: identifying the pro-disaster areas, collecting information about intensity and probable sites through predictive intensity maps and hazard maps, training, and public awareness through mass media. During: search and rescue operations, medical assistance, first aid, restoring communication services and removing people from the affected area. After: clearing of debris, restoring water supply and repairing roads, and rehabilitation of the victims, which is true rehabilitation only when they are given a permanent means of earning livelihood.
+
+**2. Earthquake**
+
+- *Reasons.* The chapter places earthquake first among the Geological disasters, that is, a natural disaster of the earth itself. It gives no cause for earthquakes beyond that classification.
+- *Effects.* "Collapsing of houses, developing cracks in land are some of the effects of earthquake." The chapter's examples of catastrophic earthquakes are those of Gujarat and Latur, which led to total chaos and huge loss of life and property in their regions, although it notes that life returned to normal within a short time.
+- *Remedial measures.* The same disaster management cycle, which the chapter itself asks the student to apply to an earthquake: preparation, redemption, preparedness, impact of disaster, response, restoration and resurgence. Rescue work is done by the National Disaster Response Force, whose personnel the chapter credits with rescue in building collapse, and in Maharashtra it acts through the State Reserve Police Force.
+
+A local example the chapter gives of the whole sequence is the huge landslide of 2014 in the village Malin, Tal. Ambegaon, Dist. Pune, where the chapter prints the image of the school that was reconstructed after the disaster - reconstruction being the last and most complicated phase."""
+
+A["Ex Q6"] = """The chapter's own "Main aspects of disaster management cycle" gives the list to check, and its pre-disaster and post-disaster management lists say what to check within each. For a school:
+
+| Aspect from the chapter's cycle | What to check in the school | Why |
+|---|---|---|
+| Preparation | Whether a plan exists to minimise destruction if a disaster occurs - exits, staircases, the electrical wiring, the water supply | The chapter defines this aspect as the plan prepared to minimise the destruction in any disaster, if it occurs |
+| Redemption | Whether the plan limits the damage to everyone in the school and around it | It is the plan for minimising damage to the society and the country |
+| Preparedness | Whether students, teachers and staff would respond quickly - which is what the mock drill tests | It is the plan chalked out to get a quick response from the general public and the administration |
+| Impact of disaster | Whether the school reviews how severe a disaster would be for it | The intensity of the various aspects of the disaster and of the management are reviewed here |
+| Response | Whether help can be called and given immediately - the help-lines the chapter prints are Police 100, Fire fighting force 101, Disaster Control Unit 108 and Ambulance 102 | Response is to be given immediately after the incidence |
+| Restoration and Resurgence | Whether teaching, water supply and the building can be restored afterwards | These are the links between the measures after a disaster and national development and progress |
+
+Within these, the four things the chapter lists under **pre-disaster management** are the ones to check first: identifying the pro-disaster areas of the school, collecting information about the intensity and probable sites of disaster, getting special training for disaster management, and increasing awareness among everyone in the school through training programmes and mass media.
+
+The specifically school-level things the chapter names are:
+- **The mock drill.** The chapter says a mock drill on the disaster of fire is arranged in various schools by the fire fighters, with demonstrations of extinguishing the fire, rescuing people trapped on the higher floors of buildings, and rescuing persons whose clothing has caught fire. Check whether it has been held and how the school performed.
+- **The first aid kit**, and whether the material in it is complete - bandage strips of different sizes, wound gauze, triangular and circular bandage, medicated cotton, hand gloves, clean and dry cloth pieces, soap, antiseptic, safety pins, blade, small pins, needle, band aid, torch, scissor, thermometer and petroleum jelly - and whether anyone has been trained to use it.
+- **The everyday rules** the chapter prints for students: not making chaos and pushing each other while using the staircase, remembering the help-lines, following the traffic rules, not touching any unclaimed object, not spreading rumours, and not making chaos at crowded places.
+
+The reason for checking all of this is the chapter's own: "Disasters are never planned but losses due it can be prevented in a planned manner", and "Though avoidance of natural disaster is impossible, loss out of it can be minimized. However man-made disasters can be avoided." """
+
+A["Ex Q7(a)"] = """**Man made disaster.** Terrorism is named in the chart's Man Made branch, under International, along with war, fire, bomb blast, forced migration, rapes and child labour.
+
+The chapter also treats it as a modern man-made problem: it says that conditions of instability arise in a country from economic inequality and racial and religious differences, and that "Incidences like terrorism, abduction, social differences have been a routine now" - one of the reasons it gives for human disasters increasing after World War-II."""
+
+A["Ex Q7(b)"] = """**Geophysical disaster of the Geological type.** The chart's Geological branch lists earthquake, volcano, tsunami, land-slides, land-fall, **erosion**, alkalization and flooding."""
+
+A["Ex Q7(c)"] = """**Biological disaster of the Animal type.** The chart's Animal branch reads "Infectious viruses, bacteria (cholera, malaria, **hepatitis**, plague), insects, bite of poisonous animals", so the chapter places hepatitis among the diseases caused by infectious viruses and bacteria.
+
+The chapter also lists "epidemic of any disease" among the disasters we meet in daily life, and "increase in epidemics" among the medical effects of a disaster."""
+
+A["Ex Q7(d)"] = """**Biological disaster of the Plant type.** This is worth noting, because a forest fire might be expected to be classed as atmospheric or man-made: the chart puts it first among the Plant disasters, along with fungal disease spreading (Blister) and weeds such as aquatic weed, carrot grass and common grass.
+
+The chapter separately says that "Disasters like forest fire and drought also adversely affect the environment." """
+
+A["Ex Q7(e)"] = """**A natural disaster, of long duration.**
+
+[Note: the chapter's "Types of Disasters" chart does not name famine in any of its six branches, so it cannot be placed from the chart alone.] The chapter's prose settles it twice:
+
+1. Its opening paragraph names famine among the natural disasters: "Some of the main natural disasters are floods, **wet and dry famine**, cyclones, earthquakes, volcanoes, etc."
+2. It is the chapter's first example of a disaster whose impact lasts long: "Disasters making the impact for long duration are those whose after-effects are either severe or severity increases with time. Ex. **Famine**, various problems of crop, strikes of workers, rising levels of oceans, desertification, etc." - as against the catastrophic disasters, after which "life has always returned to normal within short time".
+
+Within the chart, the branch it comes nearest to is the Geophysical - Atmospheric one, which lists drought."""
+
+A["Ex Q7(f)"] = """**Man made disaster.**
+
+[Note: the chart does not name theft in any of its branches; outside this question itself it appears in the chapter exactly once, in the word list of Exercise Q1.] It is placed under Man Made because it is entirely a human act, which is what that branch of the chart collects - war, fire, bomb blast, forced migration, terrorism, rapes, child labour, and unplanned action and accidents.
+
+The chapter's own test also puts it there: "Though avoidance of natural disaster is impossible, loss out of it can be minimized. **However man-made disasters can be avoided.**" A theft is avoidable in a way an earthquake is not."""
+
+A["Ex Q8"] = """[Note: the chapter neither names nor explains any of these nine symbols. It prints them without labels. Its own figure 10.2 "Signs" on p116 shows three **different** placards, and those do carry printed labels - FLAMMABLE LIQUID, FLAMMABLE GAS and EXPLOSIVES. So the meanings below are read from the pictures themselves, with the chapter's own three labels used wherever the drawing matches one of them.]
+
+What the chapter does say about such symbols is this: "Sometimes, we have to face the disaster due to our own unawareness. Some symbols given beside are seen used around us. Those symbols can not be ignored. Such symbols are useful to avoid the mishaps."
+
+All nine are drawn the same way - a black picture inside a red-bordered diamond.
+
+| The symbol as drawn | What it warns of | The disaster if it is ignored |
+|---|---|---|
+| A thick exclamation mark | A general warning - be careful here | Any mishap arising from what the chapter calls unplanned action, and accident |
+| A skull above two crossed bones | Poison; danger to life | Poisoning; the chart's man-made "Unknown poisonous gases" |
+| A dead tree beside a dead fish in water | Harm to living things and to the environment | Contamination of water and stinky pollution of the environment, which the chapter lists among the environmental effects of a disaster |
+| A human figure with a burst mark across the chest | Danger to the health of the body | Injuries and illness - the chapter's medical effects: injuries, increase in epidemics, death of victims |
+| Two test tubes pouring liquid, one on to a flat surface and one on to a hand, both being eaten away | A substance that destroys what it touches | Burns, which the chapter lists among the disasters of daily life |
+| A flame burning above a circle | Fire | Fire, which the chart names in its Man Made branch |
+| A flame burning above a line | Something that catches fire easily - matching the chapter's own FLAMMABLE LIQUID and FLAMMABLE GAS placards | Fire, and "fire due to electric short circuit", which the chapter lists among the disasters of daily life |
+| A bursting ball throwing out fragments | An explosion - matching the chapter's own EXPLOSIVES placard | Bomb blast, which the chart names in its Man Made branch |
+| A cylinder lying on its side | Gas filled in a cylinder | A gas leak and the fire or poisoning that follows it |
+
+The chapter does not distinguish between the two flame symbols, and it gives no meaning at all for the exclamation mark, the human figure, the dead tree and fish, the corroding liquid or the cylinder. All the disasters named in the last column - fire, bomb blast, unknown poisonous gases, accident from unplanned action, burns, electric short circuit, contamination of water - are ones the chapter itself names, and every one of them is man-made, which is why the chapter's rule applies: man-made disasters can be avoided."""
+
+A["Ex Q9(A)"] = """A mock drill is a practice to check the preparedness of facing a disaster as early as possible: a virtual or apparent situation of disaster is created to check the reaction time for any type of disaster, trained personnel observe their responsibilities so that the execution of the plan can be checked, and this checks the efficacy of the system prepared for disaster redressal.
+
+It is said to be useful because of what it achieves - the six objectives the chapter lists:
+1. It evaluates the response to the disaster, so the school or department finds out what it would actually do rather than what it believes it would do.
+2. It improves the coordination between the various departments of disaster control, which matters because in a real disaster the district control unit has to work with the army, air force, navy, telecommunication department and paramilitary forces at once.
+3. It identifies one's own abilities.
+4. It improves the ability of quick response to disaster - and the chapter says that in the phase of emergency "maximum lives can be saved by quick actions during this phase only".
+5. It checks the competency of the planned actions.
+6. It identifies the possible errors and risks - while it is still a practice and no life is lost by them.
+
+It is also useful because it is practical and available: in schools the fire fighters arrange a mock drill on the disaster of fire, with demonstrations of extinguishing the fire, rescuing people trapped on the higher floors of buildings and rescuing persons whose clothing has caught fire, and such activities are also arranged by the police force and by voluntary organisations."""
+
+A["Ex Q9(B)"] = """Because disaster management is by its nature about the future, not about the present emergency alone.
+
+1. **Preparing for the future is one of its stated objectives.** The last of the chapter's five objectives of disaster management is "Considering protective measures in disaster, such disaster will not reach in future and take care to reduce their intensity."
+2. **It is defined as a growing ability.** "Disaster management is achieving or time to time improving the ability to face the disasters through scientific and careful observations and analysis of data." An ability that is improved from time to time is an ability held ready for what has not yet happened.
+3. **Losses can be planned against even though disasters cannot be planned.** "Disasters are never planned but losses due it can be prevented in a planned manner", and "Though avoidance of natural disaster is impossible, loss out of it can be minimized. However man-made disasters can be avoided."
+4. **Pre-disaster management is entirely future-directed.** It is "the complete preparation and planning to face any type of disaster" - identifying the pro-disaster areas, collecting information about the intensity of disaster and the probable sites through predictive intensity maps and hazard maps, getting special training, and increasing awareness among the general public.
+5. **Its cycle returns to preparation.** In the chapter's disaster management cycle, restoration and resurgence are called the important links between the measures taken after a disaster and national development and progress, and the cycle leads from them back to preparation - so what is learnt from one disaster becomes the preparation for the next.
+6. **Post-disaster management ends in readiness.** The last of its five points is "Being always prepared for disaster rescue."
+
+The chapter adds that this preparation is not a one-time thing: the schemes "should be changed with respect to location, time and nature of the disaster. It should not be restricted for a particular period." """
+
+A["Ex Q10"] = """The chapter gives exactly four properties of pre-disaster management, which fill the four boxes. Pre-disaster management "includes the complete preparation and planning to face any type of disaster", and for that purpose:
+
+| | Properties of Predisaster management |
+|---|---|
+| a | Identifying the pro-disaster areas. |
+| b | Collecting the information about intensity of disaster and probable sites of disasters through predictive intensity maps and hazard maps respectively. |
+| c | Getting special training for disaster management. |
+| d | Increasing awareness about disaster management among the general public through training programmes, mass media, and etc. |"""
+
+A["Ex Q11"] = """The four pictures show, as drawn:
+
+- **a.** A red gas cylinder with its hose, greenish gas escaping from it, and a man covering his nose and mouth with both hands - a **gas leak**. The chart names "Unknown poisonous gases" in its Man Made branch.
+- **b.** School students fighting, two of them fallen on the ground with injuries - **injuries in fighting**, which the chapter names among the disasters of daily life.
+- **c.** A house and a tree in heavy rain under dark clouds, with a car standing half under water - a **flood**.
+- **d.** A whirling funnel-shaped column of cloud rising between rocky hills under dark clouds - a **cyclone**, which the chart lists in its Geophysical - Atmospheric branch and which the chapter names among the disasters the National Disaster Response Force is called out for.
+
+The chapter's two lists give the management for all four. **Pre-disaster management** is the complete preparation and planning to face any type of disaster: identifying the pro-disaster areas, collecting information about the intensity of disaster and the probable sites through predictive intensity maps and hazard maps, getting special training for disaster management, and increasing awareness among the general public through training programmes and mass media. **Post-disaster management** is providing all types of necessary help to the victims; participation of preferably local people saved from the disaster in arranging that help; quick establishment of a help centre, remembering that different types of disasters need different types of control centres; categorisation of the help material received from the control centre, delivering it to the victims and continuously reviewing the help; and being always prepared for disaster rescue.
+
+Applied to each picture:
+
+| Picture | Pre-disaster management | Post-disaster management |
+|---|---|---|
+| a. Gas leak | Noticing the warning symbols on the cylinder, which the chapter says "can not be ignored"; awareness training about handling gas; keeping the fire fighting force's help-line 101 known | Removing people from the affected area, one of the actions of the emergency phase; first aid before actual medical treatment; calling the ambulance on 102 |
+| b. Injuries in fighting | Not making chaos and pushing each other, and not making chaos at crowded places, which the chapter lists among the things to always remember; the school's own disaster committee | First aid, whose objectives are saving lives, relieving the pains, preventing deterioration of the condition and an attempt to improve the condition; transport of the injured by the cradle method, carrying on back or on two hands, the method depending on the condition of the victim |
+| c. Flood | Identifying the pro-disaster areas and using predictive intensity maps and hazard maps; awareness through mass media | Search and rescue operations, medical assistance and first aid in the emergency phase; then clearing of debris, restoring water supply and repairing roads; rehabilitation of the victims, true only when they are given a permanent means of earning livelihood |
+| d. Cyclone | Warning from the organisations providing precautionary warning, which the chapter's chart shows feeding into every level of the disaster management authority; training and public awareness | Rescue by the National Disaster Response Force, which in Maharashtra acts through the State Reserve Police Force and whose personnel the chapter credits with rescue work in cyclones; quick establishment of a help centre; reconstruction of buildings, roads and water supply |
+
+For all four the chapter's own rule applies: of these, the gas leak and the fight are man-made and can be avoided altogether, while the flood and the cyclone are natural, so their avoidance is impossible but the loss out of them can be minimised."""
+
+
+def main():
+    dump = json.load(open(DUMP, encoding="utf-8"))
+    by_ref = {}
+    for row in dump:
+        if row["ref"] in by_ref:
+            sys.exit("duplicate ref in dump: %s" % row["ref"])
+        by_ref[row["ref"]] = row
+
+    missing_answer = [r for r in by_ref if r not in A]
+    unknown_ref = [r for r in A if r not in by_ref]
+    if missing_answer or unknown_ref:
+        sys.exit("ref mismatch: no answer for %s ; answer for unknown ref %s"
+                 % (missing_answer, unknown_ref))
+
+    out = []
+    for row in dump:                      # dump order, so nothing is reordered
+        ref = row["ref"]
+        sol = A[ref].strip()
+        # the pairing gate: the id we emit must be the id the dump carries for
+        # THIS ref, looked up by ref and not by position.
+        assert by_ref[ref]["id"] == row["id"], "id/ref pairing broken at %s" % ref
+        assert sol, "empty solution for %s" % ref
+        out.append({"id": row["id"], "ref": ref, "solution": sol})
+
+    # independent re-check: every emitted (id, ref) pair must appear in the dump
+    pairs_dump = {(r["id"], r["ref"]) for r in dump}
+    pairs_out = {(r["id"], r["ref"]) for r in out}
+    assert pairs_out == pairs_dump, "emitted id/ref pairs differ from the dump"
+    assert len(out) == len(dump) == 24, "row count changed"
+
+    json.dump(out, open(OUT, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
+    print("wrote %d solutions -> %s" % (len(out), OUT))
+    for r in out:
+        print("  %-12s %5d chars" % (r["ref"], len(r["solution"])))
+
+
+if __name__ == "__main__":
+    main()

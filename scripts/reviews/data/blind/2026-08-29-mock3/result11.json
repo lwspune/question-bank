@@ -1,0 +1,34 @@
+[
+ {
+  "questionId": "dddd2978-81b3-4141-9f27-47b8ad854d1d",
+  "qnum": "3",
+  "derived": "A",
+  "value": "A u (A n B) = A by absorption, NOT A u B; it fails whenever B is not a subset of A (2800 of 4096 triples over a 4-element universe). B is the dual absorption law and C, D are the two distributive laws — all three are genuine identities, verified over every (A,B,C) triple.",
+  "confidence": "high",
+  "why": "Exhaustive check over all 4096 triples of subsets of a 4-element universe: options B, C and D hold identically while A fails, e.g. A = {}, B = {1} gives A u (A n B) = {} against A u B = {1}. Pairwise equivalence testing found no two options stating the same relation — B, C and D share an all-true truth-vector only because each is a tautology, not because their expressions coincide, so exactly one option is 'not correct'."
+ },
+ {
+  "questionId": "86e5cae6-ea2a-4fea-ab4d-68431c522a5d",
+  "qnum": "5",
+  "derived": "C",
+  "value": "6 — the set has 2^3 = 8 subsets; removing the empty set and the set itself leaves {1},{2},{3},{1,2},{1,3},{2,3}.",
+  "confidence": "high",
+  "why": "Enumerated the full power set of {1,2,3} and filtered out the empty subset and the improper subset, giving 2^3 - 2 = 6, which matches option C uniquely (8 counts all subsets, 7 counts proper subsets including the empty set, 5 matches nothing)."
+ },
+ {
+  "questionId": "a702666e-781f-4e87-bad2-272892c992c9",
+  "qnum": "27",
+  "derived": "A",
+  "value": "The expression equals A. With A^2 = A: AB = A - A^2 = 0, BA = A - A^2 = 0, and (I-A)^2 = I - 2A + A^2 = I - A, so the total is 0 + 0 + I - (I - A) = A.",
+  "confidence": "high",
+  "why": "Hand expansion using only A^2 = A gives A, and this was confirmed on six concrete idempotent 3x3 matrices including non-symmetric and non-diagonal ones, where 2A, -A and I - A are all genuinely distinct from A. A = 0 and A = I alone would not discriminate, so the non-trivial idempotents were the load-bearing test points; only option A matched every case."
+ },
+ {
+  "questionId": "9e332864-b7c4-48cb-8654-fed63574943e",
+  "qnum": "111",
+  "derived": "B",
+  "value": "The point of contact is (-1, 4, -2). Sphere centre (1, 2, -1), radius 3; the plane is at distance |2-4-1+12|/3 = 3 from the centre, so it is tangent, and the foot of the perpendicular is (1,2,-1) - (9/9)(2,-2,1) = (-1, 4, -2).",
+  "confidence": "high",
+  "why": "Tangency was confirmed exactly (distance^2 = 9 = r^2 in Fraction arithmetic), and the foot of the perpendicular from the centre along the plane normal (2,-2,1) lands on (-1,4,-2). Each option was tested against both equations: only B gives zero residual in the plane and in the sphere simultaneously (A and C are off the plane by 20, D by 4)."
+ }
+]

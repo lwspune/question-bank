@@ -1,0 +1,122 @@
+[
+  {
+    "questionId": "3efc73d3-cfc5-489a-b582-64d29dac1234",
+    "qnum": "31",
+    "derived": "B",
+    "value": "a6/a21 = 121/1681 = 0.0719809637",
+    "confidence": "high",
+    "note": "Uses only the single instance p=11, q=41, so no 'holds for all p,q' assumption is needed. For any AP the sum of an odd number of terms is count x middle term, so a6 = S11/11 and a21 = S41/41 (both identities verified symbolically, residual 0). Hence a6/a21 = (41/11)(11/41)^3 = 11^2/41^2. Confirmed by constructing the explicit AP a = -399, d = 104: S11/S41 = 1331/68921 = (11/41)^3 exactly, a6 = 121, a21 = 1681. Option D 121/1861 is a digit-transposition decoy of 1681; C 11/41 is the answer to the p^2/q^2 version. Aside: the relation cannot hold simultaneously for all p,q (solving the p=1,q=2 and p=1,q=3 instances together returns no solution), but the question does not need it to."
+  },
+  {
+    "questionId": "50b41fbe-8db3-4731-a61b-5efde38a285c",
+    "qnum": "32",
+    "derived": "C",
+    "value": "x = a^(1/(1 - log_a z)); the map t -> 1/(1-t) on logs has period 3",
+    "confidence": "high",
+    "note": "With u = log_a x, log_a y = 1/(1-u) and log_a z = (u-1)/u = 1 - 1/u, so 1/u = 1 - log_a z and u = 1/(1 - log_a z). The transformation is a 3-cycle, so x is recovered from z by the same formula. Checked numerically at six discriminating points across two bases (a=2 with x = 1.5, 5, 7/3, 1/3; a=7 with x = 11/4, 2/9): option C reproduced x exactly every time while A and B never did (e.g. a=7, x=2.75 gives A = 1.15e11, B = 0.3636)."
+  },
+  {
+    "questionId": "2aed1a01-7136-4eb1-a2c6-ca9e1c11f2f8",
+    "qnum": "38",
+    "derived": "C",
+    "value": "n = 4",
+    "confidence": "high",
+    "note": "Boy-vs-boy matches 7 x 4 = 28; girl-vs-girl matches n x 6 = 6n. 28 + 6n = 52 gives 6n = 24, n = 4."
+  },
+  {
+    "questionId": "428fc102-a217-472b-94f4-ce972b158462",
+    "qnum": "40",
+    "derived": "A",
+    "value": "x = y/(1 + y)",
+    "confidence": "high",
+    "note": "Infinite GP with first term x and ratio x sums to x/(1-x) for |x| < 1, so y - xy = x and x = y/(1+y). Discriminating points matter here: at x = 1/3 (y = 1/2) options B and C both evaluate to 1 and would look equally right, so I also tested x = 1/5 (y = 1/4) and x = -1/4 (y = -1/5), where only A returns x. C = y/(1-y) is the inverted-solve decoy."
+  },
+  {
+    "questionId": "0a6bbfa8-9fff-4c72-ad2e-f164eb6a1f1e",
+    "qnum": "55",
+    "derived": "C",
+    "value": "t = 5",
+    "confidence": "high",
+    "note": "A + tB = (1-t, 2+2t, 3+t). Dot with C = (3,1,0) gives 3(1-t) + (2+2t) + 0 = 5 - t, which vanishes at t = 5. The k-component of C is 0, so the 3+t term never enters."
+  },
+  {
+    "questionId": "14368b77-e5a6-4835-9128-4538112227ae",
+    "qnum": "61",
+    "derived": "A",
+    "value": "R is reflexive only (it is also symmetric, but symmetric is not offered)",
+    "confidence": "high",
+    "note": "Reflexive since |a-a| = 0 <= 1 for every real a. Not transitive: 1R2 and 2R3 hold but |1-3| = 2 > 1. Not anti-symmetric: 1R1.5 and 1.5R1 both hold while 1 is not 1.5. So exactly one listed property holds and D is wrong."
+  },
+  {
+    "questionId": "4747a282-f826-418c-8f1a-809c19071573",
+    "qnum": "61",
+    "derived": "C",
+    "value": "minimum n = 5",
+    "confidence": "high",
+    "note": "P(at least one hit in n shots) = 1 - (2/3)^n. Exact rational comparison against 5/6: n=4 gives 65/81 = 0.80247 which is NOT greater than 5/6 = 0.83333, while n=5 gives 211/243 = 0.86831 which is. The threshold sits between 4 and 5 (n > ln6/ln1.5 = 4.42), so 4 is the near-miss decoy."
+  },
+  {
+    "questionId": "29914d40-6b53-4214-b84f-0f10ead758d8",
+    "qnum": "63",
+    "derived": "C",
+    "value": "domain = [4, 6]",
+    "confidence": "high",
+    "note": "Both radicands must be non-negative: x >= 4 and x <= 6. On that interval the argument of the log is at its minimum sqrt(2) = 1.414 > 0 at both endpoints, so the log imposes no further restriction and the endpoints are included. sympy continuous_domain returns Interval(4, 6); at x = 3.9 and x = 6.1 the argument is complex."
+  },
+  {
+    "questionId": "88c8ecf4-a2a4-43d6-8a8a-5c80dc2fab0f",
+    "qnum": "64",
+    "derived": "B",
+    "value": "5/11 = 0.454545...",
+    "confidence": "high",
+    "note": "Sum over k >= 1 of (5/6)^(2k-1) x (1/6) = (5/36)/(1 - 25/36) = 5/11; sympy summation to infinity gives 5/11 and a 59-term partial sum converges to 0.4545454543. Option C 6/11 is P(2 appears on an ODD throw) - the complementary distractor, and the two sum to 1 as they must."
+  },
+  {
+    "questionId": "7504a84f-abe7-402c-bc21-6500d8ee0bd7",
+    "qnum": "67",
+    "derived": "D",
+    "value": "(1/3)(1 - cos(a^3))",
+    "confidence": "high",
+    "note": "Substituting u = x^3, du = 3x^2 dx gives (1/3) times the integral of sin u from 0 to a^3. sympy returns 1/3 - cos(a^3)/3 and the difference from option D simplifies to exactly 0. Tested at the discriminating value a = 1.3 (where cos(a^3) is not a special value): integral = 0.52869, matching D, while A = 1.58607, B = 4.75822 and C = -0.52869."
+  },
+  {
+    "questionId": "86e9934e-04c3-4a87-9fac-126b42acfc41",
+    "qnum": "69",
+    "derived": "B",
+    "value": "derivative = 0",
+    "confidence": "high",
+    "note": "For 1 < x < 3 the function is (x-1) + (3-x) = 2, a constant, so it is differentiable at the interior point x = 2 with derivative 0. Verified: g(1.9) = g(2) = g(2.1) = 2, and the one-sided difference quotients are both exactly 0. FLAG: option B is printed as the LETTER 'O', not the digit 0 - an OCR/typo in the option text. The intended value is zero, so B is the answer, but the glyph should be repaired."
+  },
+  {
+    "questionId": "ed0fa5b5-0d6a-4c30-abdd-f1e8ef634246",
+    "qnum": "69",
+    "derived": "B",
+    "value": "area = pi/4 = 0.7853982",
+    "confidence": "high",
+    "note": "sin^2 x = (1 - cos 2x)/2, so the integral from 0 to pi/2 is [x/2 - sin(2x)/4] = pi/4 - 0 = pi/4. sin^2 x >= 0 throughout, so the signed integral is the area. Option C pi/8 is the halving error."
+  },
+  {
+    "questionId": "3b9d33f7-7a26-4249-95d5-aab1e839bded",
+    "qnum": "71",
+    "derived": "C",
+    "value": "i^(4n+1) = i",
+    "confidence": "high",
+    "note": "i^4 = 1, so i^(4n+1) = (i^4)^n x i = i. Confirmed symbolically for n = 1, 2, 3, 7. FLAG: option C is printed as a capital 'I' rather than the imaginary unit i, and option D is printed as '--i' with a double hyphen rather than '-i'. Both are transcription artifacts; the mathematics is unambiguous."
+  },
+  {
+    "questionId": "2b49c27f-9c48-4942-b9ce-4efe7fe41166",
+    "qnum": "72",
+    "derived": "D",
+    "value": "5 - sqrt(2) - sqrt(3) = 1.8537356300580277",
+    "confidence": "high",
+    "note": "floor(x^2) is 0 on [0,1), 1 on [1,sqrt2), 2 on [sqrt2,sqrt3), 3 on [sqrt3,2], giving (sqrt2-1) + 2(sqrt3-sqrt2) + 3(2-sqrt3) = 5 - sqrt2 - sqrt3. My first numeric quadrature disagreed at the 4th decimal because I omitted the breakpoint at x = 1; with breakpoints [0,1,sqrt2,sqrt3,2] mpmath agrees with the exact value to 1e-30, and an independent 4-million-point midpoint Riemann sum gives 1.8537355."
+  },
+  {
+    "questionId": "561f5427-7266-4aae-8e27-87313b5d0996",
+    "qnum": "79",
+    "derived": "B",
+    "value": "y = e^(-2x)/4 + cx + d",
+    "confidence": "high",
+    "note": "Integrating twice: y' = -e^(-2x)/2 + c, y = e^(-2x)/4 + cx + d. sympy dsolve returns C1 + C2*x + exp(-2x)/4, which is option B. FLAG: option A also has residual 0 and is a genuine SOLUTION of the ODE, but only a particular one - a second-order equation needs exactly two arbitrary constants for the general solution, which is what 'the solution of the equation' asks for, so B is the answer and A is a legitimate-looking trap. C fails (residual 2c, since cx^2 contributes to y'') and D fails (wrong exponent, e^(-4x))."
+  }
+]
