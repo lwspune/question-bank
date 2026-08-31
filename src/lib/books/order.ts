@@ -129,8 +129,26 @@ export type BookSection = {
   questionCount: number;
 };
 
-/** A chapter's opt-in subtopic grouping, declared by the registry. */
-export type SubtopicGroupDef = { name: string; directions?: string };
+/**
+ * A chapter's opt-in subtopic grouping, declared by the registry.
+ *
+ * `members` lets ONE printed block cover SEVERAL bank subtopics, and `name` is
+ * then the block's own heading rather than a subtopic. It exists because a
+ * subtopic split is not always a task split: CDS Grammar prints one
+ * instruction — "fill the blank with the appropriate word" — over ten questions
+ * whose answers happen to be prepositions, connectors and determiners, which we
+ * tag as three subtopics. All 18 of that chapter's mixed sets mix ONLY those
+ * three, so declaring them one block's members makes every set pure without
+ * splitting a set or re-tagging the bank.
+ *
+ * Omit it and the block covers the single subtopic its `name` matches.
+ */
+export type SubtopicGroupDef = {
+  name: string;
+  /** Bank subtopic names this block absorbs. Defaults to `[name]`. */
+  members?: string[];
+  directions?: string;
+};
 
 /** Sorts a missing value last instead of first, without dropping the row. */
 const LAST = Number.MAX_SAFE_INTEGER;
@@ -227,43 +245,59 @@ function toSet(group: Group, exam: string): BookSet {
  * rather than dropped — forgetting to list one must never silently remove
  * questions from the book. A set takes the subtopic of its first question;
  * that is safe only for chapters that opt in, which are exactly the ones
- * measured to have no set spanning subtopics.
+ * measured to have no set spanning a BLOCK.
+ *
+ * A block spans several subtopics when it declares `members`, and that is what
+ * lets a chapter opt in whose bank subtopics interleave: Grammar's three
+ * fill-a-blank subtopics mix inside 18 CDS sets and nowhere else, so merging
+ * them makes every set pure. The measurement is therefore against blocks, not
+ * raw subtopics — see scripts/books/subtopic-report.ts.
  */
 function toBlocks(
   sets: BookSet[],
   subtopicOfSet: Map<string, string>,
   declared: SubtopicGroupDef[]
 ): BookSubtopicBlock[] {
-  const byName = new Map<string, BookSet[]>();
-  for (const set of sets) {
-    const name = subtopicOfSet.get(set.key) ?? "Other";
-    const list = byName.get(name) ?? [];
-    list.push(set);
-    byName.set(name, list);
-  }
+  const nameOf = (set: BookSet) => subtopicOfSet.get(set.key) ?? "Other";
+  const count = (found: BookSet[]) =>
+    found.reduce((n, s) => n + s.questionIds.length, 0);
 
   const blocks: BookSubtopicBlock[] = [];
   const taken = new Set<string>();
+
   for (const def of declared) {
-    const found = byName.get(def.name);
-    if (!found || found.length === 0) continue;
-    taken.add(def.name);
+    const members = def.members ?? [def.name];
+    const covered = new Set(members);
+    // FILTERED from the ordered list, never concatenated per member: the half
+    // prints oldest-first, and gathering all of one member then all of the next
+    // would silently reorder a merged block's questions out of chronology.
+    const found = sets.filter((set) => covered.has(nameOf(set)));
+    if (found.length === 0) continue;
+    // Every member is taken, including any with no sets of its own, so a
+    // member can never also surface as its own appended block below.
+    for (const member of members) taken.add(member);
     blocks.push({
       name: def.name,
       directions: def.directions,
       sets: found,
-      questionCount: found.reduce((n, s) => n + s.questionIds.length, 0),
+      questionCount: count(found),
     });
   }
-  for (const [name, found] of Array.from(byName.entries()).sort((a, b) =>
+
+  // Anything the registry did not declare is APPENDED rather than dropped —
+  // forgetting to list a subtopic must never silently remove questions.
+  const rest = new Map<string, BookSet[]>();
+  for (const set of sets) {
+    const name = nameOf(set);
+    if (taken.has(name)) continue;
+    const list = rest.get(name) ?? [];
+    list.push(set);
+    rest.set(name, list);
+  }
+  for (const [name, found] of Array.from(rest.entries()).sort((a, b) =>
     a[0].localeCompare(b[0])
   )) {
-    if (taken.has(name)) continue;
-    blocks.push({
-      name,
-      sets: found,
-      questionCount: found.reduce((n, s) => n + s.questionIds.length, 0),
-    });
+    blocks.push({ name, sets: found, questionCount: count(found) });
   }
   return blocks;
 }

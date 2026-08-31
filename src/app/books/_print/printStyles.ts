@@ -35,6 +35,32 @@ export const BOOK_PRINT_CSS = `
 .btitle h1 { font-size: 14pt; font-weight: 700; margin: 0; }
 .btitle .bsub { font-size: 10pt; color: #333; margin-top: 1.5mm; }
 
+/* ---- chapter contents (front matter, outside the two-column flow) ----
+   NOT break-inside:avoid on the block: a chapter with many subtopics would be
+   taller than the space left and strand most of a page, which this project has
+   already done once (see the /notes handout). Each ROW is the safe unit. */
+.bcontents { margin: 0 0 5mm; }
+.bcontentshead {
+  font-size: 11pt; font-weight: 700;
+  margin: 0 0 1.5mm; padding-bottom: 1mm;
+  border-bottom: 1.2pt solid #000;
+  break-after: avoid; page-break-after: avoid;
+}
+.bctable { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
+.bctable th, .bctable td {
+  padding: 0.7mm 2mm; text-align: right; white-space: nowrap;
+  vertical-align: baseline;
+}
+.bctable thead th { font-size: 9pt; border-bottom: 0.5pt solid #999; }
+/* The subtopic label: left-aligned, and the only cell allowed to wrap. */
+.bctable .bcname { text-align: left; font-weight: 400; width: 40%; white-space: normal; }
+.bctable tbody tr, .bctable tfoot tr { break-inside: avoid; page-break-inside: avoid; }
+.bctable tfoot .bcname, .bctable tfoot td {
+  border-top: 0.5pt solid #999; font-weight: 700; padding-top: 1.2mm;
+}
+.bctable .bccount { color: #555; }
+.bctable .bcnone { color: #999; }
+
 /* ---- the two-column flow ---- */
 .bflow { columns: 2; column-gap: 12.7mm; }
 
