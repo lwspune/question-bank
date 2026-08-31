@@ -1,0 +1,34 @@
+[
+ {
+  "questionId": "e9330747-dbd7-4ebd-a927-b212865d8cdf",
+  "qnum": "99",
+  "derived": "C",
+  "value": "24 three-digit even numbers",
+  "confidence": "high",
+  "why": "The units digit must be 2 or 4 (2 choices); the remaining two places are filled from the other 4 digits in 4x3 = 12 ways, giving 2*12 = 24. Brute-force enumeration of all permutations of 3 distinct digits from {1,2,3,4,5} with an even units digit returns exactly 24 numbers, and all four options are distinct values so no equivalence issue arises. (36 would be the count if repetition were allowed in only some places; the true repetition-allowed count is 50, so no distractor matches the misread question either.)"
+ },
+ {
+  "questionId": "8e4963f5-1d1d-43b1-b7d6-9717b89745d2",
+  "qnum": "426",
+  "derived": "A",
+  "value": "x = log_5 3 and x = log_5 4  (equivalently 5^x = 3 or 4); numerically 0.6826061945 and 0.8613531161",
+  "confidence": "high",
+  "why": "The A.P. condition 2*log(5^x - 1) = log 5 + log(5^x - 11/5) with t = 5^x gives (t-1)^2 = 5t - 11, i.e. t^2 - 7t + 12 = (t-3)(t-4) = 0, so t = 3 or 4; both satisfy the domain requirements 5^x > 1 and 5^x > 11/5, and direct substitution makes the AP difference exactly 0. An independent numeric root scan of the original equation over the valid domain found exactly these two roots at 25 significant figures. Evaluating all four option pairs to 40 dps, only A matches as a set (B and C share log_3 4 but differ in their second element)."
+ },
+ {
+  "questionId": "65467409-2a43-40d3-9a96-b836f4be79ef",
+  "qnum": "659",
+  "derived": "D",
+  "value": "det(adj P) = 64, a SCALAR (adj P = 4*I_3; equivalently (det P)^(n-1) = 8^2 = 64 = 2^6)",
+  "confidence": "low",
+  "why": "P = 2*I_3 so det P = 8, adj P = 4*I_3 and det(adj P) = 64 - a scalar. As printed, options A/B/C denote P^27, P^17, P^6, which are POWERS OF THE MATRIX P and hence 3x3 matrices, not scalars; P^6 = 64*I_3 has diagonal entries 64 but the matrix 64*I_3 is not the number 64 (and det(P^6) = 262144, not 64), so on the literal reading no option equals the answer and the printed 'None of these' is correct. CAVEAT - the notation is genuinely ambiguous: if the 'P' in the options is a typo for the scalar 2 (or the setter meant 2^k), then 2^6 = 64 exactly and the answer is C, which is very likely the intended key since 6 = n(n-1) is the standard exponent here; if instead 'P' is read as |P| = 8 then 8^6 != 64 and the answer is D again. I took the strict as-printed reading (P is defined as a matrix, so P^k is a matrix) and answer D; under the 2^k reading it is C."
+ },
+ {
+  "questionId": "55fb413d-da97-46f2-b70a-999aab16895b",
+  "qnum": "1227",
+  "derived": "A",
+  "value": "cos x + cos 2x + cos 3x = cos 2x * (2 cos x + 1); excluding cos x = -1/2 the COMPLETE solution set is cos 2x = 0, i.e. x = (2n+1)*pi/4 (pi/4, 3pi/4, 5pi/4, 7pi/4 per period). Option A, 2n*pi +/- pi/4, is a PROPER SUBSET of this - it captures only 2 of the 4 solutions per 2pi period.",
+  "confidence": "high",
+  "why": "Using cos x + cos 3x = 2 cos 2x cos x the equation factors exactly as cos 2x (2 cos x + 1) = 0 (verified symbolically), and the hypothesis cos x != -1/2 kills the second factor, leaving x = (2n+1)pi/4. A high-precision root scan over [0,2pi) found exactly six roots - 2pi/3 and 4pi/3 (barred by cos x = -1/2) plus pi/4, 3pi/4, 5pi/4, 7pi/4. Every member of family A solves the equation while B (pi/3), C (pi/6) and D (pi/2) give f = -1, 1.366 and -1 respectively and contain no solution at all, so A is the only defensible letter. CAVEAT - A is incomplete: 3pi/4 and 5pi/4 are genuine solutions not covered by 2n*pi +/- pi/4; the complete family would be n*pi/2 + pi/4 (or 2n*pi +/- pi/4 together with 2n*pi +/- 3pi/4)."
+ }
+]

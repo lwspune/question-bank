@@ -1,0 +1,122 @@
+[
+ {
+  "questionId": "12ec326f-8037-438b-a247-be7bdc90f78b",
+  "qnum": "1",
+  "derived": "B",
+  "value": "k = 9/2",
+  "confidence": "high",
+  "why": "Writing L1 as (1,-1,1)+t(2,3,4) and L2 as (3,k,0)+s(1,2,1), the x- and z-equations force t=-3/2, s=-5; the y-equation then gives k = -1+3t-2s = 9/2, and both lines meet at (-2,-11/2,-5). The coplanarity determinant is 2k-9, so k=9/2 is the unique value (option A, 2/9, is the reciprocal distractor)."
+ },
+ {
+  "questionId": "3f7f7564-9d87-4d06-9dce-81216bf078dd",
+  "qnum": "3",
+  "derived": "A",
+  "value": "512 = 2^9",
+  "confidence": "high",
+  "why": "10+120+252+120+10 = 512, i.e. the sum of the odd-index binomial coefficients of (1+x)^10 is 2^(10-1) = 2^9. Options B (1024) and C (1023) are distinct from it, so the match is unique."
+ },
+ {
+  "questionId": "c46ca38e-7b95-490f-8ecf-aeaaf068aa14",
+  "qnum": "03-28",
+  "derived": "D",
+  "value": "quotient = 8 = 1000 in binary",
+  "confidence": "high",
+  "why": "(11000)_2 = 24 and (11)_2 = 3, so 24/3 = 8 exactly, which is 1000_2. The other options evaluate to 6, 7 and 10, all distinct."
+ },
+ {
+  "questionId": "2b399276-166a-4751-b06f-a4767dff1b01",
+  "qnum": "7",
+  "derived": "D",
+  "value": "x - 2y - z = 6; normals (3,1,1)-(1,-2,-1) dot product = 0",
+  "confidence": "high",
+  "why": "Two planes are perpendicular exactly when their normals are orthogonal. Against n=(3,1,1) the four option normals give dot products 6, 2, 4 and 0, so only x-2y-z=6 qualifies."
+ },
+ {
+  "questionId": "45b56093-6fd2-49ed-a017-b8d97dd0eda0",
+  "qnum": "9",
+  "derived": "D",
+  "value": "k = 9 and k = -7",
+  "confidence": "high",
+  "why": "The equation is 2x^2 + (1-k)x + 8 = 0; equal real roots need (1-k)^2 - 64 = 0, so 1-k = +/-8 and k = -7 or 9 (giving the repeated roots x = -2 and x = 2 respectively). Only option D lists that pair."
+ },
+ {
+  "questionId": "8bd765ec-4b6f-4de6-b804-7c00064d6a10",
+  "qnum": "12",
+  "derived": "A",
+  "value": "|C u H u F| = 43",
+  "confidence": "high",
+  "why": "Inclusion-exclusion: 21+26+29-14-15-12+8 = 43. The Venn regions are all non-negative and consistent (8, 6, 7, 4 pairwise/triple and 3, 5, 10 exclusive), summing to 43, so the data is coherent."
+ },
+ {
+  "questionId": "4245d940-b908-4c7f-adbe-3a8bdb56d0f0",
+  "qnum": "13",
+  "derived": "C",
+  "value": "2",
+  "confidence": "high",
+  "why": "(1+i)/(1-i) = i and (1-i)/(1+i) = -i, so the expression is i^4 + (-i)^4 = 1 + 1 = 2; sympy simplification confirms exactly 2."
+ },
+ {
+  "questionId": "0c8298cd-838c-44c8-a64b-5f8fe6893a40",
+  "qnum": "20",
+  "derived": "C",
+  "value": "1/24",
+  "confidence": "high",
+  "why": "Enumerating all 4! = 24 permutations, exactly one puts every letter in its own envelope, so the probability is 1/24. (Option B, 23/24, is the complement and option A, 11/12, matches nothing; P(no letter correct) is 3/8, also not offered.)"
+ },
+ {
+  "questionId": "0f0d062e-a94e-4d04-876c-285000ee5b5f",
+  "qnum": "21",
+  "derived": "D",
+  "value": "Rs. 416",
+  "confidence": "high",
+  "why": "9 workers plus the owner is 10 people averaging 110, so the total is 1100; the 9 workers contribute 9 x 76 = 684, leaving 1100 - 684 = 416 for the owner."
+ },
+ {
+  "questionId": "aa2482e1-6ce9-4d26-9bc4-a9ca0f33c96d",
+  "qnum": "22",
+  "derived": "D",
+  "value": "y = x^2",
+  "confidence": "high",
+  "why": "dy/dx = 2x integrates to y = x^2 + C, and y(0)=0 gives C=0 (dsolve with that initial condition returns y = x^2). The other curves fail the slope condition away from the origin, e.g. option A has slope 3 at x=1/2 where 2x = 1."
+ },
+ {
+  "questionId": "c7a17945-6454-4838-8685-e4020416aa31",
+  "qnum": "25",
+  "derived": "B",
+  "value": "2a - b = sqrt(6) R = sqrt(2) * c  (with C = 60 degrees)",
+  "confidence": "high",
+  "why": "C = 180 - 75 - 45 = 60. By the sine rule 2a-b = 2R(2 sin75 - sin45) = 2R(sqrt6/2) = sqrt6 R, while c = 2R sin60 = sqrt3 R, so 2a-b = sqrt2 c exactly (checked symbolically and at 50 digits). None of the other three options matches."
+ },
+ {
+  "questionId": "4981b275-62d8-4253-ac51-d8601b597ef6",
+  "qnum": "28",
+  "derived": "C",
+  "value": "f(x) = cos(x^2) is not periodic",
+  "confidence": "high",
+  "why": "cos((x+T)^2) = cos(x^2) for all x would need 2Tx + T^2 constant mod 2pi in x, forcing T = 0; a 40-digit check rejects 2pi, sqrt(2pi) and pi as periods. The rival reading (cos x)^2 is ruled out by the options themselves: under it BOTH A (2pi) and D (pi) would be periods, so only the cos(x^2) reading yields a unique answer."
+ },
+ {
+  "questionId": "647e10fb-6bd0-4d76-9698-33cf1ac7efd3",
+  "qnum": "28",
+  "derived": "D",
+  "value": "a - d = 0 (a = d = 1/(mn))",
+  "confidence": "high",
+  "why": "Subtracting a+(m-1)d = 1/n from a+(n-1)d = 1/m gives (m-n)d = (m-n)/(mn), so d = 1/(mn), and back-substitution gives a = 1/(mn) as well; hence a-d = 0 (verified symbolically and on the instance m=3, n=5)."
+ },
+ {
+  "questionId": "51d36256-350f-4ba4-815b-24ad7e8b55a3",
+  "qnum": "29",
+  "derived": "D",
+  "value": "150th term = 0",
+  "confidence": "high",
+  "why": "100(a+99d) = 50(a+49d) gives 50a + 7450d = 0, so a = -149d and a_150 = a + 149d = 0. Option B is not an equivalent restatement: a_50 = -100d, so 150 x a_50 = -15000d, non-zero because d is non-zero."
+ },
+ {
+  "questionId": "55c8caa0-fb1f-41bb-8122-1512e188a902",
+  "qnum": "33",
+  "derived": "B",
+  "value": "4020",
+  "confidence": "high",
+  "why": "The common terms of the two APs (d = 4 and d = 5) start at 11 and recur with difference lcm(4,5) = 20, i.e. 11, 31, 51, ...; the first 20 sum to (20/2)(22 + 19x20) = 4020, confirmed by intersecting the two generated sets."
+ }
+]

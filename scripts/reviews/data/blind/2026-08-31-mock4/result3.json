@@ -1,0 +1,123 @@
+[
+ {
+  "questionId": "0d9a7a56-e0f3-43c6-aa5c-3edad5945919",
+  "qnum": "74",
+  "derived": "D",
+  "value": "-1/a^2",
+  "confidence": "high",
+  "why": "The quotient is exactly the difference quotient of f(x)=1/x at x=a, so the limit is f'(a) = -1/a^2. Sympy returns -1/a**2, and a numeric probe at a=2 gives -0.25, which is distinct from all three other options there (0.5, -0.5, 0.25)."
+ },
+ {
+  "questionId": "f10d98eb-e52c-47a0-87e4-78b61ca192e0",
+  "qnum": "74",
+  "derived": "B",
+  "value": "0",
+  "confidence": "high",
+  "why": "For x<0, |x| = -x, so x/|x| is identically the constant -1 on that whole ray and its derivative is 0. Exact difference quotients at x=-3 and x=-1/2 (both signs of h) are 0. Option A (-1) is the VALUE of the function, not its derivative, which is the trap here."
+ },
+ {
+  "questionId": "4e5467a9-a496-413f-85fd-8efd077eefba",
+  "qnum": "76",
+  "derived": "A",
+  "value": "5",
+  "confidence": "high",
+  "why": "Let y be the value; then y = sqrt(5y) so y^2 = 5y and y = 5 (y=0 rejected). Equivalently the exponents form 1/2+1/4+1/8+... = 1, giving 5^1. Fixed-point iteration of y -> sqrt(5y) converges to exactly 5.0."
+ },
+ {
+  "questionId": "6e4a4b27-574e-4914-8014-b4cd908fad0b",
+  "qnum": "79",
+  "derived": "A",
+  "value": "pi/12 (approx 0.2617993877991494)",
+  "confidence": "high",
+  "why": "The limits satisfy pi/6 + pi/3 = pi/2, and f(x) + f(pi/2 - x) = 1 identically (checked to 20 dp at three interior points), so 2I = pi/3 - pi/6 = pi/6 and I = pi/12. 50-dp mpmath quadrature matches pi/12 with zero difference."
+ },
+ {
+  "questionId": "d97d28b2-afde-4761-ac66-33c417594f94",
+  "qnum": "79",
+  "derived": "C",
+  "value": "the matrix [[2,-4],[0,6]], which equals 2X",
+  "confidence": "high",
+  "why": "X^2 = [[1,-8],[0,9]], so X^2 - 2X + 3I = [[1-2+3, -8+4+0],[0, 9-6+3]] = [[2,-4],[0,6]] = 2X exactly. -I = [[-1,0],[0,-1]] and -2X = [[-2,4],[0,-6]] both fail, so C is the unique match and D is wrong."
+ },
+ {
+  "questionId": "0d64bb8f-5c50-4403-9bf2-320d71717bc0",
+  "qnum": "82",
+  "derived": "D",
+  "value": "all three (AM, Median, GM) taken as defined measures of central tendency; but note only AM and Median are ALWAYS defined",
+  "confidence": "low",
+  "why": "AM and Median exist for any finite numeric set, while GM requires a non-negative product (GM of {-4, 9} has no real value), so under a strict reading the correct response is '1 and 2 only' and that option is absent. Given the option set, 'Only 1' and 'Only 2' each refute the other and 'Only 3' is plainly false, so 'All of them' is the only non-self-refuting choice and is the standard textbook answer for a set of (positive) discrete numbers.",
+  "flag": "NO_OPTION"
+ },
+ {
+  "questionId": "3197a5db-31ce-4d7d-b160-731c828dd635",
+  "qnum": "82",
+  "derived": "B",
+  "value": "1/e (approx 0.36787944117144233)",
+  "confidence": "high",
+  "why": "log e = 1, so the expression is the difference quotient of ln x at x = e and the limit is 1/e; sympy returns exp(-1). This assumes log means natural log — with base 10 the numerator would not vanish at x=e and the limit would fail to exist (option D) — but the presence of 1/e among the options shows natural log is intended."
+ },
+ {
+  "questionId": "413cd1b5-3401-4f07-ad7c-8da6e0da2f20",
+  "qnum": "82",
+  "derived": "C",
+  "value": "Ogive",
+  "confidence": "high",
+  "why": "Definitional: the graph of cumulative frequencies against class boundaries is the ogive. A histogram plots ordinary (not cumulative) frequencies as bar areas, while cartogram and pictogram are map- and picture-based displays."
+ },
+ {
+  "questionId": "326e4001-5b0f-4ee6-8213-2bab5ea5df8e",
+  "qnum": "85",
+  "derived": "B",
+  "value": "symmetric only",
+  "confidence": "high",
+  "why": "|a-b|>0 just means a != b: not reflexive since |a-a| = 0, symmetric since |a-b| = |b-a|, and not transitive because 1R2 and 2R1 hold while 1R1 does not. Exhaustive check on {1,2,3} confirms reflexive False, symmetric True, transitive False, so D is also ruled out and B is the unique correct option."
+ },
+ {
+  "questionId": "4822d3f0-f96f-4d8e-9ebe-a639ee343769",
+  "qnum": "88",
+  "derived": "D",
+  "value": "71/8 = 8.875",
+  "confidence": "high",
+  "why": "Expanding, f(a) = 2a^2 - 3 + 9 - 3a + 4 = 2a^2 - 3a + 10, an upward parabola with f''=4>0; the vertex is at a = 3/4 and f(3/4) = 10 - 9/8 = 71/8 exactly. The exact match to an offered option is also evidence the stem is not corrupt."
+ },
+ {
+  "questionId": "00526aaf-b5d7-44db-bf65-830eaa8894ef",
+  "qnum": "92",
+  "derived": "C",
+  "value": "A - P(A) = A",
+  "confidence": "low",
+  "why": "THE STEM IS CORRUPT: option (a) has been absorbed into the stem and truncated ('...(a) $A \\cup P(A) = P'), leaving option A's own text as a bare '$' — as printed the question is unanswerable by a student and option A cannot be evaluated from its text. Reconstructing (a) as A u P(A) = P(A), an exhaustive check over six sets shows (a) and (b) fail for any ordinary set, (d) is false for EVERY A because A is always an element of P(A), and only (c) holds — though (c) is not universally true either (it fails for A = {{}}), so strictly no option is correct for all A."
+ },
+ {
+  "questionId": "33948492-e926-4b65-a429-3626de4c5279",
+  "qnum": "96",
+  "derived": "C",
+  "value": "60 degrees (cos theta = 1/2)",
+  "confidence": "high",
+  "why": "From c = -(a+b), |c|^2 = |a|^2 + |b|^2 + 2|a||b|cos t gives 49 = 9 + 25 + 30 cos t, so cos t = 1/2 and t = 60 degrees. Realised concretely by a = (3,0) and b = 5(cos60, sin60), for which |c| is exactly 7."
+ },
+ {
+  "questionId": "fce52b2d-4fef-40c8-a796-7314b64a962c",
+  "qnum": "96",
+  "derived": "C",
+  "value": "13/3 sq units",
+  "confidence": "high",
+  "why": "y = x^2 + 2 is strictly positive on [1,2] so no sign-splitting is needed and the area is the plain integral: [x^3/3 + 2x] from 1 to 2 = (8/3 + 4) - (1/3 + 2) = 13/3. Sympy returns 13/3."
+ },
+ {
+  "questionId": "7e488e4a-e36c-443e-b523-25bfea2df3df",
+  "qnum": "100",
+  "derived": "A",
+  "value": "z^2 = h^2 (cot^2 y - cot^2 x)",
+  "confidence": "high",
+  "why": "With O the foot of the tower, A due south of O and B due east of A, angle OAB is a right angle; OA = h cot x and OB = h cot y, so z^2 + h^2 cot^2 x = h^2 cot^2 y. Sympy's solve returns z^2 = h^2(cot^2 y - cot^2 x), and the identity holds exactly (residual 0) at two independent instances (h=10,x=60,z=4 and h=7,x=45,z=9) where options B, C and D all have non-zero residuals."
+ },
+ {
+  "questionId": "0061cf3f-1f1f-4d2e-b86d-b50dcb11943f",
+  "qnum": "102",
+  "derived": "C",
+  "value": "4/216 = 1/54",
+  "confidence": "high",
+  "why": "Exhaustive enumeration of all 216 ordered outcomes: only (6,6,6) totals 18 and the three permutations of (6,6,5) total 17, giving 4 favourable outcomes and an exact probability of Fraction(4,216) = 1/54. Since C matches, 'None of these' is wrong."
+ }
+]

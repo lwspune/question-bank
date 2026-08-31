@@ -1,0 +1,29 @@
+[
+ {
+  "questionId": "df5bbe2a-50b6-4a4b-8192-5dae24d84715",
+  "qnum": "79",
+  "derived": "A",
+  "value": "Left-hand derivative = (-1)^k (k-1) pi",
+  "confidence": "high",
+  "why": "For x just below the integer k the greatest-integer part is k-1, so on (k-1,k) f(x) = (k-1) sin(pi x); f(k) = k sin(pi k) = 0 and f is left-continuous there, so the left difference quotient tends to (k-1) pi cos(pi k) = (-1)^k (k-1) pi. Verified by sympy one-sided limits and by high-precision numeric difference quotients for k = -3..5: only option A matches at every k (at k = 1 both A and B give 0, so that value is non-discriminating and was not relied on).",
+  "flag": null
+ },
+ {
+  "questionId": "fb039a72-6921-4a0e-a538-ca2081c72135",
+  "qnum": "113",
+  "derived": "A",
+  "value": "New arithmetic mean = 45/20 = 2.25",
+  "confidence": "high",
+  "why": "The transformation y_i = (x_i - 5)/20 is linear, so the mean transforms the same way: (50 - 5)/20 = 9/4 = 2.25. Checked with exact Fraction arithmetic on a synthetic 100-value dataset of unequal values whose mean is exactly 50; the reversed reading (50/20 - 5 = -2.5) matches no option.",
+  "flag": null
+ },
+ {
+  "questionId": "6b1266cb-8a72-432f-aa82-9b6e79fa7bcc",
+  "qnum": "139",
+  "derived": "A",
+  "value": "Root set { -3, i*sqrt(3), -i*sqrt(3) }, i.e. { -3, 1 + 2w, 1 + 2w^2 }",
+  "confidence": "high",
+  "why": "Putting y = x + 1 gives y^3 = -8, so y = -2, -2w, -2w^2 and x = -3, -1-2w, -1-2w^2, which evaluates to { -3, i*sqrt(3), -i*sqrt(3) }; by 1 + w + w^2 = 0 we have -1-2w^2 = 1+2w and -1-2w = 1+2w^2, so that set is exactly option A written differently. Every option was evaluated numerically as a SET for both primitive cube roots of unity: A matches the true root set under either choice of w, B (2 +/- i sqrt 3) and C (-2 +/- i sqrt 3, which solve (x+1)^3 = +8) do not, D mixes one correct and one incorrect entry, and no two options denote the same set, so there is no ambiguity.",
+  "flag": null
+ }
+]

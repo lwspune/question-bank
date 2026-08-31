@@ -1,0 +1,3603 @@
+[
+  {
+    "questionId": "12ec326f-8037-438b-a247-be7bdc90f78b",
+    "questionNumber": "1",
+    "disposition": "review",
+    "text": "If the line \\(\\frac{x - 1}{2} = \\frac{y + 1}{3} = \\frac{z - 1}{4}\\) and \\(\\frac{x - 3}{1} = \\frac{y - k}{2} = \\frac{z}{1}\\) intersect, then \\(k =\\)",
+    "options": [
+      {
+        "text": "\\(2/9\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(9/2\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "0",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(- 1\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "We have, \\(\\frac{x - 1}{2} = \\frac{y + 1}{3} = \\frac{z - 1}{4} = r_{1}\\) (Let) \\(x = 2r_{1} + 1,y = 3r_{1} - 1,z = 4r_{1} + 1\\) i.e. point is \\(\\left( 2r_{1} + 1,3r_{1} - 1,4r_{1} + 1 \\right)\\) and \\(\\frac{x - 3}{1} = \\frac{y - k}{2} = \\frac{z}{1} = r_{2}\\) (Let) i.e. point is \\(\\left( r_{2} + 3,2r_{2} + k,r_{2} \\right)\\).\\\r\nIf the lines are intersecting, then they have a common point.\r\n\r\n\\[\\Rightarrow 2r_{1} + 1 = r_{2} + 3,3r_{1} - 1 = 2r_{2} + k,4r_{1} + 1 = r_{2}\\]\r\n\r\nOn solving, \\(r_{1} = - 3/2,r_{2} = - 5\\)\\\r\nHence, \\(k = 9/2\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "3f7f7564-9d87-4d06-9dce-81216bf078dd",
+    "questionNumber": "3",
+    "disposition": "review",
+    "text": "\\(^{10}C_{1} + {}^{10}C_{3} + {}^{10}C_{5} + {}^{10}C_{7} + {}^{10}C_{9} =\\)",
+    "options": [
+      {
+        "text": "\\(2^{9}\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(2^{10}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(2^{10} - 1\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "None of these",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "The sum of coefficients of odd powers of \\(x\\): \\({}^{10}c_{1} + {}^{10}c_{3} + {}^{10}c_{5} + {}^{10}C_{7} + {}^{10}c_{9} = 2^{(10-1)} = 2^{9}\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "c46ca38e-7b95-490f-8ecf-aeaaf068aa14",
+    "questionNumber": "03-28",
+    "disposition": "review",
+    "text": "Compute \\((11000)_2 \\div (11)_2\\) and express the quotient in binary (assume exact division).",
+    "options": [
+      {
+        "text": "\\(110_2\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(111_2\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(1010_2\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(1000_2\\)",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "Step 1: Convert \\((11000)_2\\) to decimal: \\(1\\cdot 2^4 + 1\\cdot 2^3 = 16 + 8 = 24\\).\r\nStep 2: Convert \\((11)_2\\) to decimal: \\(3\\).\r\nStep 3: Divide in decimal: \\(24 \\div 3 = 8\\).\r\nStep 4: Convert \\(8_{10}\\) to binary: \\(8 = 2^3\\) so \\(1000_2\\).\r\nStep 5: Thus, \\((11000)_2 \\div (11)_2 = (1000)_2\\). Option D is correct.",
+    "verdict": ""
+  },
+  {
+    "questionId": "2b399276-166a-4751-b06f-a4767dff1b01",
+    "questionNumber": "7",
+    "disposition": "review",
+    "text": "Which one of the following planes is normal to the plane \\(3x + y + z = 5\\) ?",
+    "options": [
+      {
+        "text": "\\(x + 2y + z = 6\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(x - 2y + z = 6\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(x + 2y - z = 6\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(x - 2y - z = 6\\)",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "Let a,b,c and \\(a_{2},b_{2},\\ c_{2}\\) are line direction ratios of the normal to the two planes, respectively, then condition of perpendicularly of two planes is \\(a_{1}a_{2} + b_{1}b_{2} + c_{1}c_{2} = 0\\)\\\r\n    Given plane is \\(3x + y + z = 5\\)\\\r\n    Let another plane be ax + by +cz = d\\\r\n    then, \\(3a + b + c = 0\\)\\\r\n    Which is satisfied by \\(a = 1,\\ b = \\  - 2,\\ c = - 1\\)\\\r\n    So, plane is \\(x - 2y - z = 6\\)",
+    "verdict": ""
+  },
+  {
+    "questionId": "45b56093-6fd2-49ed-a017-b8d97dd0eda0",
+    "questionNumber": "9",
+    "disposition": "review",
+    "text": "The value of k for which \\(2x^{2} - kx + x + 8 = 0\\) has equal and real roots are",
+    "options": [
+      {
+        "text": "-9 and -7",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "9 and 7",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "-9 and 7",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "9 and -7",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "Equation \\(2x^{2} - kx + x + 8 = 0\\) has equal and real roots, then \\(D = b^{2} - 4ac = 0\\)\\\r\n    \\(\\Rightarrow (1 - k)^{2} - 4.2.8 = 0 \\Rightarrow k^{2} + 1 - 2k - 64 = 0\\)\\\r\n    \\(\\Rightarrow k^{2} - 2k - 63 = 0 \\Rightarrow k = 9,\\  - 7\\)",
+    "verdict": ""
+  },
+  {
+    "questionId": "8bd765ec-4b6f-4de6-b804-7c00064d6a10",
+    "questionNumber": "12",
+    "disposition": "review",
+    "text": "Of the members of three athletic teams in a school 21 are in the cricket team, 26 are in the hockey team and 29 are in the football team. Among them, 14 play hockey and cricket, 15 play hockey and football, and 12 play football and cricket. Eight play all the three games. The total number of members in the three athletic teams is",
+    "options": [
+      {
+        "text": "43",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "76",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "49",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "None of these",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Let \\(B,H,F\\) denote the sets of members who are on the basketball team, hockey team and football team respectively.\\\r\nThen we are given \\(n(B) = 21,n(H) = 26,n(F) = 29\\) \\(n(H \\cap B) = 14,n(H \\cap F) = 15,n(F \\cap B) = 12\\)\\\r\nand \\(n(B \\cap H \\cap F) = 8\\).\\\r\nWe have to find \\(n(B \\cup H \\cup F)\\).\\\r\nTo find this, we use the formula\\\r\n\\[{n(B \\cup H \\cup F) = n(B) + n(H) + n(F)\r\n}{- n(B \\cap H) - n(H \\cap F) - n(F \\cap B) + n(B \\cap H \\cap F)\r\n}\\]Hence,\\\r\n\\[n(B \\cup H \\cup F) = (21 + 26 + 29) - (14 + 15 + 12) + 8 = 43\r\n\\]Thus these are 43 members in all.",
+    "verdict": ""
+  },
+  {
+    "questionId": "4245d940-b908-4c7f-adbe-3a8bdb56d0f0",
+    "questionNumber": "13",
+    "disposition": "review",
+    "text": "\\(\\left( \\frac{1 + i}{1 - i} \\right)^{4} + \\left( \\frac{1 - i}{1 + i} \\right)^{4}\\) is equal to",
+    "options": [
+      {
+        "text": "0",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "1",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "2",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "4",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Ans. (c)** : Given,\r\n\r\n\\(\\left( \\frac{1 + i}{1 - i} \\right)^{4} + \\left( \\frac{1 - i}{1 + i} \\right)^{4}\\)\r\n\r\nNow, \\(\\frac{1 + i}{1 - i} = \\frac{(1 + i)^{2}}{1 - i^{2}}\\)\r\n\r\n\\(\\begin{matrix}\r\n & \\  = \\frac{1 + i^{2} + 2i}{1 - i^{2}} \\\\\r\n & \\  = \\frac{2i}{2} = i\r\n\\end{matrix}\\)\r\n\r\nSimilarly,\r\n\r\n\\(\\begin{matrix}\r\n & \\frac{1 - i}{1 + i} = \\frac{1 - i}{1 + i} \\times \\frac{1 - i}{(1 - i)} = \\frac{(1 - i)^{2}}{1 + i^{2}} \\\\\r\n & \\  = \\frac{1 + i^{2} - 2i}{2} \\\\\r\n & \\  = - \\frac{2i}{2} = - i \\\\\r\n & \\ \\therefore i^{4} + ( - i)^{4} \\\\\r\n & \\  = 1 + 1 = 2\r\n\\end{matrix}\\)\r\n\r\n∴ option (c) is correct.",
+    "verdict": ""
+  },
+  {
+    "questionId": "0c8298cd-838c-44c8-a64b-5f8fe6893a40",
+    "questionNumber": "20",
+    "disposition": "review",
+    "text": "There are 4 letters and 4 directed envelopes. These 4 letters are randomly inserted into the 4 envelopes. What is the probability that the letters are inserted into the corresponding envelopes?",
+    "options": [
+      {
+        "text": "11/12",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "23/24",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "1/24",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "None of these",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "There are 4 letters and 4 envelopes, so total cases of inserting letters into envelopes = \\(4! = 24\\)\\\r\n    cases of inserting letters into corresponding envelopes = 1\\\r\n    So, probability = \\(\\frac{1}{24}\\)",
+    "verdict": ""
+  },
+  {
+    "questionId": "0f0d062e-a94e-4d04-876c-285000ee5b5f",
+    "questionNumber": "21",
+    "disposition": "review",
+    "text": "The average daily income of workers of a factory including that of the owner is Rs. 110. however, if the income of the owner is excluded, the average daily income of the remaining 9 workers is Rs. 76. What is the daily income of the owner?",
+    "options": [
+      {
+        "text": "Rs. 300",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "Rs. 316",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "Rs. 322",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "Rs. 416",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "There are total 10 employees including the owner.\\\r\n    Average income = Rs. 110\\\r\n    Total income of 10 employees = Rs. 1100\\\r\n    Similarly, total income of workers = Rs. \\(76 \\times 9 = Rs.\\ 684\\)\\\r\n    So, income of owner = \\(1100 - 684 = Rs.\\ 416\\)",
+    "verdict": ""
+  },
+  {
+    "questionId": "aa2482e1-6ce9-4d26-9bc4-a9ca0f33c96d",
+    "questionNumber": "22",
+    "disposition": "review",
+    "text": "What is the equation of the curve whose slope at any point is equal to 2x and which passes through the origin?",
+    "options": [
+      {
+        "text": "\\(y(1 - x) = x^{2}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(y^{2}\\left( 1 + x^{3} \\right) = x^{4}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(y^{2} = (x + 1)^{2}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(y = x^{2}\\)",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "Slope = 2x\\\r\n    So, \\(\\frac{dy}{dx} = 2x\\)\\\r\n    On integrating, \\(y = x^{2} + c\\)\\\r\n    So, c = 0\\\r\n    \\(\\Rightarrow Curve\\ is\\ y = x^{2}\\)",
+    "verdict": ""
+  },
+  {
+    "questionId": "c7a17945-6454-4838-8685-e4020416aa31",
+    "questionNumber": "25",
+    "disposition": "review",
+    "text": "In a triangle \\(ABC\\), \\(\\angle A=75^\\circ\\) and \\(\\angle B=45^\\circ\\). What is \\(2a-b\\) equal to?",
+    "options": [
+      {
+        "text": "\\(c\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\sqrt{2}c\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(2c\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(2\\sqrt{2}c\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "The three angles are \\(A = 75^\\circ\\), \\(B = 45^\\circ\\) and therefore \\(C = 180^\\circ - 75^\\circ - 45^\\circ = 60^\\circ\\).\n\nBy the sine rule, \\(a = 2R\\sin A\\), \\(b = 2R\\sin B\\) and \\(c = 2R\\sin C\\) for the circumradius \\(R\\), so every side can be written on the same scale and the \\(2R\\) will cancel.\n\nTake the quantity asked for:\n\n\\(2a - b = 2R\\left(2\\sin 75^\\circ - \\sin 45^\\circ\\right)\\).\n\nNow \\(\\sin 75^\\circ = \\sin(45^\\circ + 30^\\circ) = \\dfrac{\\sqrt{6} + \\sqrt{2}}{4}\\), so\n\n\\(2\\sin 75^\\circ = \\dfrac{\\sqrt{6} + \\sqrt{2}}{2}\\) and \\(\\sin 45^\\circ = \\dfrac{\\sqrt{2}}{2}\\).\n\nSubtracting, the \\(\\sqrt{2}\\) terms cancel:\n\n\\(2\\sin 75^\\circ - \\sin 45^\\circ = \\dfrac{\\sqrt{6} + \\sqrt{2} - \\sqrt{2}}{2} = \\dfrac{\\sqrt{6}}{2}\\).\n\nCompare that with \\(c\\): \\(\\sin C = \\sin 60^\\circ = \\dfrac{\\sqrt{3}}{2}\\), and \\(\\sqrt{2}\\cdot\\dfrac{\\sqrt{3}}{2} = \\dfrac{\\sqrt{6}}{2}\\), the same value.\n\nHence \\(2a - b = \\sqrt{2}\\,c\\), which is (B).",
+    "verdict": ""
+  },
+  {
+    "questionId": "4981b275-62d8-4253-ac51-d8601b597ef6",
+    "questionNumber": "28",
+    "disposition": "review",
+    "text": "Consider the function \\(f(x) = cosx^{2}\\). Then,",
+    "options": [
+      {
+        "text": "\\(f\\) is of period \\(2\\pi\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "f is of period \\(\\sqrt{2\\pi}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "f is not periodic",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "f is of period \\(\\pi\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Ans. (c)** : We have,\r\n\r\n\\(f(x) = cosx^{2}\\)\r\n\r\nLet \\(T\\) be the period of \\(f(x)\\). Then\r\n\r\n\\(\\begin{matrix}\r\n & f(x + T) = f(x) \\\\\r\n \\Rightarrow \\  & cos(x + T)^{2} = cosx^{2}\r\n\\end{matrix}\\)\r\n\r\nBut there is no value of T for which\r\n\r\n\\(cos(x + T)^{2} = cosx^{2}\\)\r\n\r\n\\(\\therefore f(x)\\) is not periodic",
+    "verdict": ""
+  },
+  {
+    "questionId": "647e10fb-6bd0-4d76-9698-33cf1ac7efd3",
+    "questionNumber": "28",
+    "disposition": "review",
+    "text": "\\(m^{\\text{th}}\\) and \\(n^{\\text{th}}\\) term of an A.P. with first term is \\(a\\) and common difference \\(d\\) are \\(\\dfrac{1}{n}\\) and \\(\\dfrac{1}{m}\\) respectively \\(m \\ne n\\), then \\(a - d\\) is equal to",
+    "options": [
+      {
+        "text": "\\(\\dfrac{1}{m} + \\dfrac{1}{n}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{1}{mn}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "1",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "0",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "Given \\(a_m = 1/n\\), i.e. \\(a + (m-1)d = \\frac{1}{n}\\) ... (i); and \\(a_n = 1/m\\), i.e. \\(a + (n-1)d = \\frac{1}{m}\\) ... (ii). On solving eq (i) and (ii) we get \\(d = \\frac{1}{mn},\\ a = \\frac{1}{mn}\\). Therefore \\(a - d = \\frac{1}{mn} - \\frac{1}{mn} = 0\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "51d36256-350f-4ba4-815b-24ad7e8b55a3",
+    "questionNumber": "29",
+    "disposition": "review",
+    "text": "If 100 times the \\(100^{\\text{th~}}\\) term of an AP with nonzero common difference equal to the 50 times its \\(\\mathbf{50}^{\\text{th~}}\\) term, then the \\(\\mathbf{150}^{\\text{th~}}\\) term of this AP is",
+    "options": [
+      {
+        "text": "-150",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "150 times its \\(50^{\\text{th~}}\\) term",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "150",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "zero",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "Ans. (d)** : Let d be the common difference and a be the first term of given A.P.\\\r\nThen, \\(\\ T_{150} = a + 149\\text{ }d\\)\\\r\nSince, \\(\\ 100\\left( {\\text{ }T}_{100} \\right) = 50{\\text{ }T}_{50}\\)\r\n\r\n\\(\\begin{matrix}\r\n & 100(a + 99d) = 50(a + 49d) \\\\\r\n & 2(a + 99d) = (a + 49d) \\\\\r\n & 2a + 198d - a - 49d = 0 \\\\\r\n & a + 149d = 0\r\n\\end{matrix}\\)\r\n\r\nFrom (i) & (ii), we get-\r\n\r\n\\(T_{150} = 0\\)",
+    "verdict": ""
+  },
+  {
+    "questionId": "55c8caa0-fb1f-41bb-8122-1512e188a902",
+    "questionNumber": "33",
+    "disposition": "review",
+    "text": "The sum of the first 20 terms common between the series \\(3 + 7 + 11 + 15 + \\cdots\\) and \\(1 + 6 + 11 + 16 + \\cdots\\) is",
+    "options": [
+      {
+        "text": "4000",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "4020",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "4200",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "4220",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "*\\*\r\n\\[\\begin{matrix}\r\n3 + 7 + & 11 + 15 + 19 + 23 + 27 + 31 + 35 + \\cdots \\\\\r\n & \\uparrow \\\\\r\n & 1 + 6 + 11 + 16 + 21 + 26 + 31 + \\cdots\r\n\\end{matrix}\\]\r\n\r\nTherefore, the common term series is \\(11 + 31 + 51 + \\ldots 20\\) terms. Therefore,\r\n\r\n\\[S = \\frac{20}{2}\\lbrack 2 \\times 11 + (20 - 1)20\\rbrack = 10\\lbrack 22 + 380\\rbrack = 10 \\times 402 = 4020\\]",
+    "verdict": ""
+  },
+  {
+    "questionId": "7e67854d-2388-48df-852a-44ef009d7c11",
+    "questionNumber": "36",
+    "disposition": "review",
+    "text": "If \\(f(x) = x\\) and \\(g(x) = |x|,\\) then what is \\((f + g)(x)\\) equal to?",
+    "options": [
+      {
+        "text": "0 for all \\(x\\ \\epsilon R\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(2x\\ for\\ all\\ x\\ \\epsilon\\ R\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\left\\{ \\begin{matrix} 2x, & for\\ x \\geq 0 \\\\ 0, & for\\ x < 0 \\end{matrix} \\right.\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\left\\{ \\begin{matrix} 0 & for\\ x \\geq 0 \\\\ 2x & for\\ x < 0 \\end{matrix} \\right.\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\(f(x) = x\\) and \\(g(x) = |x|\\)\\\r\n    \\(f(x) + g(x) = x + |x|\\)\\\r\n    So, \\((f + g)(x) = \\ \\left\\{ \\begin{matrix}\r\n    2x & x \\geq 0 \\\\\r\n    0, & x < 0\r\n    \\end{matrix} \\right.\\)",
+    "verdict": ""
+  },
+  {
+    "questionId": "e18478d3-b50a-48e1-95c1-9610172c290e",
+    "questionNumber": "37",
+    "disposition": "review",
+    "text": "If \\(a^{2} + 4b^{2} = 12ab\\), then \\(log(a + 2b) =\\)",
+    "options": [
+      {
+        "text": "\\(\\frac{1}{2}(loga + logb - log2)\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(log\\frac{a}{2} + log\\frac{b}{2} + log2\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{1}{2}(loga + logb + 4log2)\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\frac{1}{2}(loga - logb + 4log2)\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Ans-(c)**\\\r\nहल : We have\r\n\r\n\\(\\begin{matrix}\r\na^{2} + 4b^{2} & \\  = 12ab \\\\\r\na^{2} + 4b^{2} + 4ab & \\  = 12ab + 4ab \\\\\r\n(a + 2b)^{2} & \\  = 16ab\r\n\\end{matrix}\\)\r\n\r\nTaking \\(\\log\\) of both sides we obtain\r\n\r\n\\(\\begin{matrix}\r\n2log(a + 2b) & \\  = log16 + loga + logb \\\\\r\n & \\  = 4log2 + loga + logb \\\\\r\nlog(a + 2b) & \\  = \\frac{1}{2}\\lbrack 4log2 + loga + logb\\rbrack\r\n\\end{matrix}\\)\r\n\r\n\\(\\begin{matrix}\r\n\\mathbf{38.} & \\text{~}\\text{हल}\\text{ :~}\\left| \\begin{matrix}\r\n1 + \\sin^{2}\\theta & \\cos^{2}\\theta & 4sin4\\theta \\\\\r\n\\sin^{2}\\theta & 1 + \\cos^{2}\\theta & 4sin4\\theta \\\\\r\n\\sin^{2}\\theta & \\cos^{2}\\theta & 1 + 4sin4\\theta\r\n\\end{matrix} \\right| = 0 \\\\\r\n & \\  \\Rightarrow \\left| \\begin{matrix}\r\n1 + \\sin^{2}\\theta & \\cos^{2}\\theta & 4sin4\\theta \\\\\r\n - 1 & 1 & 0 \\\\\r\n0 & - 1 & 1\r\n\\end{matrix} \\right| = 0\\ \\begin{matrix}\r\nR_{3} \\rightarrow R_{3} - R_{2} \\\\\r\n\\text{~and~}_{2} \\rightarrow R_{2} - R_{1}\r\n\\end{matrix} \\\\\r\n & \\  \\Rightarrow \\left| \\begin{matrix}\r\n2 & \\sin^{2}\\theta & 4sin4\\theta \\\\\r\n0 & 1 & 0 \\\\\r\n - 1 & - 1 & 1\r\n\\end{matrix} \\right| = 0\\ c_{1} \\rightarrow c_{1} + c_{2} \\\\\r\n & \\  \\Rightarrow 2\\{ 1 - 0\\} - \\sin^{2}\\theta\\{ 0 - 0\\} + 4sin4\\theta\\{ 0 + 1\\} = 0 \\\\\r\n & 2 + 4sin4\\theta = 0 \\\\\r\n & sin4\\theta = - \\frac{1}{2} = - sin\\frac{\\pi}{6} \\\\\r\n & \\  = sin\\left( - \\frac{\\pi}{6} \\right) \\\\\r\n & \\  \\Rightarrow \\theta = n\\pi + ( - 1)^{n}\\left( - \\frac{\\pi}{6} \\right) \\\\\r\n & \\text{~Clearly,~}\\theta = \\frac{7\\pi}{24},\\frac{11\\pi}{24}\\text{~are two value of~}\\theta\\text{~lying between~} \\\\\r\n & 0\\text{~and~}\\frac{\\pi}{2}\r\n\\end{matrix}\\)",
+    "verdict": ""
+  },
+  {
+    "questionId": "08ba7c6a-e8b6-4dae-9c48-e5721973626d",
+    "questionNumber": "43",
+    "disposition": "review",
+    "text": "Consider the following statements:\nI. If \\(\\mathbf{A}\\) is skew-symmetric matrix, then \\(\\mathbf{A}^{\\mathbf{2}}\\) is symmetric.\nII. Trace of a skew-symmetric matrix of an odd order is always zero.\nWhich of the above statements is/are true?",
+    "options": [
+      {
+        "text": "Only I",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "Only II",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "Both I and II",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "Neither I nor II",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Both statements are true, but each needs its own argument.\n\n**I. If \\(A\\) is skew-symmetric then \\(A^2\\) is symmetric.**\n\nSkew-symmetric means \\(A^{T} = -A\\). Transposing a product reverses it, so\n\n\\((A^{2})^{T} = (AA)^{T} = A^{T}A^{T} = (-A)(-A) = A^{2}\\).\n\nA matrix equal to its own transpose is symmetric, so \\(A^2\\) is symmetric. (Note this holds for EVERY skew-symmetric \\(A\\), of any order.)\n\n**II. The trace of a skew-symmetric matrix of odd order is always zero.**\n\nCompare the \\((i,i)\\) entries of \\(A^{T} = -A\\). The transpose leaves the diagonal fixed, so \\(a_{ii} = -a_{ii}\\), giving \\(2a_{ii} = 0\\) and hence \\(a_{ii} = 0\\) for every \\(i\\). Every diagonal entry is zero, so the trace is zero.\n\nBoth statements are therefore true. Hence (C).\n\nWorth noticing: the trace argument never used the order at all, so the conclusion holds for skew-symmetric matrices of ANY order — 'odd' in the statement is a red herring, not a condition. What IS special about odd order is a different fact the question does not ask about: the determinant of an odd-order skew-symmetric matrix is zero.",
+    "verdict": ""
+  },
+  {
+    "questionId": "3a37b91c-bd20-44f8-948d-d843d9a73be2",
+    "questionNumber": "43",
+    "disposition": "review",
+    "text": "What is the number of ordered pairs of on-zero positive integers (x,y), such that \\(x + y \\leq 4?\\)",
+    "options": [
+      {
+        "text": "4",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "5",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "6",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "8",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Both \\(x\\) and \\(y\\) are positive integers, so each is at least 1, and the constraint is \\(x + y \\le 4\\).\n\nWork through the possible sums:\n\n\\(x + y = 2\\): \\((1,1)\\) — 1 pair\n\n\\(x + y = 3\\): \\((1,2)\\), \\((2,1)\\) — 2 pairs\n\n\\(x + y = 4\\): \\((1,3)\\), \\((2,2)\\), \\((3,1)\\) — 3 pairs\n\nThat is \\(1 + 2 + 3 = 6\\) ordered pairs in all. Hence (C).\n\n(In general the number of ordered pairs of positive integers with \\(x + y = s\\) is \\(s - 1\\), so the running total to \\(s = 4\\) is \\(1 + 2 + 3\\).)",
+    "verdict": ""
+  },
+  {
+    "questionId": "d9ea7b68-3dc0-4703-a270-50a5374c0e54",
+    "questionNumber": "43",
+    "disposition": "review",
+    "text": "If \\(A = \\begin{bmatrix}\n1 & 1 \\\\\n0 & 1\n\\end{bmatrix}\\) then the value of \\(A + A^{2} + A^{3} + \\ldots + A^{n - 1}\\) is equal to:",
+    "options": [
+      {
+        "text": "\\(n\\begin{bmatrix} 1 & \\frac{n - 1}{2} \\\\ 0 & 1 \\end{bmatrix}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\((n - 1)\\begin{bmatrix} 1 & \\frac{n - 1}{2} \\\\ 1 & 0 \\end{bmatrix}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\((n - 1)\\begin{bmatrix} 1 & \\frac{n}{2} \\\\ 0 & 1 \\end{bmatrix}\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\((n - 1)\\begin{bmatrix} 1 & \\frac{n}{2} \\\\ 1 & 0 \\end{bmatrix}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "First find the pattern of powers. With \\(A = \\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}\\), multiplying gives\n\n\\(A^{2} = \\begin{bmatrix} 1 & 2 \\\\ 0 & 1 \\end{bmatrix}\\), \\(A^{3} = \\begin{bmatrix} 1 & 3 \\\\ 0 & 1 \\end{bmatrix}\\), and in general \\(A^{k} = \\begin{bmatrix} 1 & k \\\\ 0 & 1 \\end{bmatrix}\\).\n\n(Each multiplication by \\(A\\) adds 1 to the top-right entry and leaves the rest alone.)\n\nThe sum runs from \\(A^{1}\\) to \\(A^{n-1}\\), so it has \\(n - 1\\) TERMS — not \\(n\\). Adding entry by entry:\n\nthe two diagonal entries each pick up 1 from every term, giving \\(n - 1\\);\n\nthe top-right entry picks up \\(1 + 2 + \\cdots + (n-1) = \\dfrac{(n-1)n}{2}\\).\n\nSo\n\n\\(A + A^{2} + \\cdots + A^{n-1} = \\begin{bmatrix} n-1 & \\dfrac{n(n-1)}{2} \\\\ 0 & n-1 \\end{bmatrix}\\).\n\nTaking the common factor \\(n - 1\\) out of both rows:\n\n\\(= (n-1)\\begin{bmatrix} 1 & \\dfrac{n}{2} \\\\ 0 & 1 \\end{bmatrix}\\).\n\nHence (C).\n\nThe trap is the term count: summing \\(n\\) terms instead of \\(n-1\\) produces \\(n\\begin{bmatrix} 1 & \\frac{n-1}{2} \\\\ 0 & 1 \\end{bmatrix}\\), which is a printed option — so the wrong count lands on a wrong answer rather than on nothing.",
+    "verdict": ""
+  },
+  {
+    "questionId": "f4faa372-4d30-4e07-bb33-bc7f8406a319",
+    "questionNumber": "47",
+    "disposition": "review",
+    "text": "Consider the proper subsets of \\(\\{1,2,3,4\\}\\). How many of these proper subsets are superset of the set \\(\\{3\\}\\)?",
+    "options": [
+      {
+        "text": "5",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "6",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "7",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "8",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Supersets of \\(\\{3\\}\\) within proper subsets of \\(\\{1,2,3,4\\}\\): subsets containing 3 but not the full set. Choose any combo of \\(\\{1,2,4\\}\\) and always include 3: \\(2^3=8\\) subsets, minus the full set \\(\\{1,2,3,4\\}\\) itself \\(=7\\). Matches option C: 7.",
+    "verdict": ""
+  },
+  {
+    "questionId": "b9667d22-b6da-4750-a156-60efe1bf34e1",
+    "questionNumber": "50",
+    "disposition": "review",
+    "text": "In a triangle ABC, \\(a = 4, b = 3, c = 2\\). What is \\(\\cos 3C\\) equal to?",
+    "options": [
+      {
+        "text": "\\(\\frac{7}{128}\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\frac{11}{128}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{7}{64}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{11}{64}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\(\\cos C = \\frac{4^2+3^2-2^2}{2\\cdot4\\cdot3} = \\frac{21}{24} = \\frac{7}{8}\\). \\(\\cos3C = 4\\cos^3C - 3\\cos C = 4\\cdot\\frac{343}{512}-3\\cdot\\frac{7}{8} = \\frac{1372-1344}{512} = \\frac{28}{512} = \\frac{7}{128}\\). Matches option A: \\(\\frac{7}{128}\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "48ab28d3-c556-49d1-b2dd-8c4065e95a22",
+    "questionNumber": "53",
+    "disposition": "review",
+    "text": "The value of \\(x\\) for the maximum value of \\(\\sqrt{3}cosx + sinx\\) is",
+    "options": [
+      {
+        "text": "\\(30^{\\circ}\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(45^{\\circ}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(60^{\\circ}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(90^{\\circ}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Let \\(f(x) = \\sqrt{3}cosx + sinx\\)\r\n\r\n\\[\\Rightarrow f(x) = 2\\left( \\frac{\\sqrt{3}}{2}cosx + \\frac{1}{2}sinx \\right) = 2sin\\left( x + \\frac{\\pi}{3} \\right)\\]\r\n\r\nBut \\(- 1 \\leq sin\\left( x + \\frac{\\pi}{3} \\right) \\leq 1\\)\\\r\nHence, \\(f(x)\\) is maximum, \\(x + \\frac{\\pi}{3} = 90^{\\circ} \\Rightarrow x = 30^{\\circ}\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "9ca445a0-a52f-4acf-bed7-258f476317be",
+    "questionNumber": "57",
+    "disposition": "review",
+    "text": "If \\(A\\) and \\(B\\) are two independent events such that \\(P\\left( A \\cap B' \\right) = \\frac{3}{25}\\) and \\(P\\left( A' \\cap B \\right) = \\frac{8}{25}\\), then \\(P(A)\\) could be:",
+    "options": [
+      {
+        "text": "\\(\\frac{1}{5}\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\frac{3}{8}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{4}{5}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{1}{2}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Equations: \\(P(A)(1 - P(B)) = \\frac{3}{25}\\) and \\((1 - P(A))P(B) = \\frac{8}{25}\\).\\\r\nLet \\(P(A) = x\\) and \\(P(B) = y\\).\\\r\n\\(x - xy = \\frac{3}{25}\\) and \\(y - xy = \\frac{8}{25}\\).\\\r\nSubtracting them: \\(y - x = \\frac{5}{25} = \\frac{1}{5} \\Rightarrow y = x + \\frac{1}{5}\\).\\\r\nSubstitute \\(y\\) back: \\(x - x\\left( x + \\frac{1}{5} \\right) = \\frac{3}{25} \\Rightarrow 25x^{2} - 20x + 3 = 0\\).\\\r\nSolving the quadratic: \\((5x - 3)(5x - 1) = 0\\). So, \\(x = 1/5\\) or \\(3/5\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "5c8cc484-8a08-41e5-95d6-0518b66ad0a0",
+    "questionNumber": "58",
+    "disposition": "review",
+    "text": "A fair coin is tossed 16 times. If the probability of getting 7 heads is equal to the probability of getting 9 heads, find the probability of getting 3 heads.",
+    "options": [
+      {
+        "text": "\\(\\ \\ \\frac{35}{2^{12}}\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\frac{35}{2^{16}}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{16}{2^{12}}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{7}{2^{10}}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Given \\(P(X = 7) = P(X = 9)\\). Since \\(P(X = k) = \\binom{16}{k}\\left( \\frac{1}{2} \\right)^{16}\\).\\\r\n\\(\\binom{16}{7} = \\binom{16}{9}\\) is true because \\(\\binom{n}{r} = \\binom{n}{n - r}\\).\r\n\r\n\\(P(X = 3) = \\binom{16}{3}\\left( \\frac{1}{2} \\right)^{16} = \\frac{16 \\times 15 \\times 14}{3 \\times 2 \\times 1} \\times \\frac{1}{2^{16}} = \\frac{560}{2^{16}}.\\)\r\n\r\n\\(560 = 35 \\times 16 = 35 \\times 2^{4}\\).\\\r\nResult: \\(\\frac{35 \\times 2^{4}}{2^{16}} = \\frac{\\mathbf{35}}{\\mathbf{2}^{\\mathbf{12}}}\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "14d831de-041b-404b-b316-21002752e5ce",
+    "questionNumber": "61",
+    "disposition": "review",
+    "text": "What is the length of the diameter of the sphere whose centre is at \\((1,-2,3)\\) and which touches the plane \\(6x-3y+2z-4=0\\)?",
+    "options": [
+      {
+        "text": "1 unit",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "2 units",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "3 units",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "4 units",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "Radius \\(=\\) distance from centre \\((1,-2,3)\\) to the tangent plane: \\(r=\\frac{|6(1)-3(-2)+2(3)-4|}{\\sqrt{36+9+4}}=\\frac{|6+6+6-4|}{\\sqrt{49}}=\\frac{14}{7}=2\\). Diameter \\(=2r=4\\) units. Matches option D: 4 units.",
+    "verdict": ""
+  },
+  {
+    "questionId": "4ff9a51a-8351-4fff-8150-c56422e052cf",
+    "questionNumber": "63",
+    "disposition": "review",
+    "text": "If \\(f(x) = \\frac{1}{x + 1} - log(1 + x),x > 0\\) then \\(f\\) is",
+    "options": [
+      {
+        "text": "an increasing function",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "a decreasing function",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "both increasing and decreasing fucntion",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "neither increasing nor decreasing function",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Ans. (b)** :\r\n\r\n\\(\\begin{matrix}\r\n & f(x) = \\frac{1}{x + 1} - log(1 + x) \\\\\r\n & f'(x) = \\frac{- 1}{(x + 1)^{2}} - \\frac{1}{x + 1} \\\\\r\n & f'(x) = - \\frac{2 + x}{(x + 1)^{2}}\\ \\lbrack x > 0\\text{~given~}\\rbrack \\\\\r\n & f'(x) < 0\r\n\\end{matrix}\\)\r\n\r\nTherefore, function is decreasing.",
+    "verdict": ""
+  },
+  {
+    "questionId": "65d9638b-d893-4ba3-8ab6-86f5c966fafb",
+    "questionNumber": "66",
+    "disposition": "review",
+    "text": "A random variable \\(X\\) has a binomial distribution \\(B(n,p)\\). If the mean is 4 and the variance is 3 , then \\(P(X = 1)\\) is:",
+    "options": [
+      {
+        "text": "\\(16\\left( \\frac{3}{4} \\right)^{15}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(4\\left( \\frac{1}{4} \\right)^{15}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(n = 16,p = 1/4\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "None of these",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "** \\(4\\left( \\frac{\\mathbf{1}}{\\mathbf{4}} \\right)^{\\mathbf{15}}\\)\r\n\r\n\\(np = 4,npq = 3\\).\r\n\r\nDivide: \\(q = 3/4 \\Rightarrow p = 1/4\\).\r\n\r\n\\(n(1/4) = 4 \\Rightarrow n = 16\\).\r\n\r\n\\(\\mathbf{P}(X = 1) = \\binom{16}{1}(1/4)^{1}(3/4)^{15} = 16 \\times \\frac{1}{4} \\times \\left( \\frac{3}{4} \\right)^{15} = \\mathbf{4} \\times \\left( \\frac{\\mathbf{3}}{\\mathbf{4}} \\right)^{\\mathbf{15}}\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "8acb5c48-e946-433d-b85f-614a50b8bf6f",
+    "questionNumber": "66",
+    "disposition": "review",
+    "text": "\\(\\int_{0}^{1}(1 - x)^{9}dx =\\)",
+    "options": [
+      {
+        "text": "1",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{1}{10}\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\frac{11}{10}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "2",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Required value \\(= \\left\\lbrack \\frac{- (1 - x)^{10}}{10} \\right\\rbrack_{0}^{1} = \\frac{1}{10}\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "c1bcdbfe-a28b-4c8a-8108-24f1d2cb9ae8",
+    "questionNumber": "69",
+    "disposition": "review",
+    "text": "What is the number of possible values of \\(k\\) for which the line joining the points \\((k, 1, 3)\\) and \\((1, -2, k+1)\\) also passes through the point \\((15, 2, -4)\\)?",
+    "options": [
+      {
+        "text": "Zero",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "One",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "Two",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "Infinite",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Three points are collinear exactly when the two vectors joining them are parallel, i.e. their cross product is the zero vector. Note that all THREE components must vanish for the SAME \\(k\\) — checking one is not enough, and that is the whole question.\n\nWrite \\(P = (k,\\ 1,\\ 3)\\), \\(Q = (1,\\ -2,\\ k+1)\\) and \\(R = (15,\\ 2,\\ -4)\\). Then\n\n\\(\\vec{PQ} = (1 - k,\\ -3,\\ k - 2)\\) and \\(\\vec{PR} = (15 - k,\\ 1,\\ -7)\\).\n\nTake the cross product component by component:\n\n\\(\\hat{i}\\): \\((-3)(-7) - (k-2)(1) = 23 - k\\)\n\n\\(\\hat{j}\\): \\((k-2)(15-k) - (1-k)(-7) = -k^{2} + 10k - 23\\)\n\n\\(\\hat{k}\\): \\((1-k)(1) - (-3)(15-k) = 46 - 4k\\)\n\nNow solve each for zero SEPARATELY and compare the root sets:\n\n\\(23 - k = 0 \\Rightarrow k = 23\\)\n\n\\(k^{2} - 10k + 23 = 0 \\Rightarrow k = 5 \\pm \\sqrt{2}\\)\n\n\\(46 - 4k = 0 \\Rightarrow k = \\dfrac{23}{2}\\)\n\nThe three sets \\(\\{23\\}\\), \\(\\{5 - \\sqrt{2},\\ 5 + \\sqrt{2}\\}\\) and \\(\\left\\{\\dfrac{23}{2}\\right\\}\\) have NO value in common, so no \\(k\\) makes the cross product vanish and the three points are never collinear.\n\nHence the number of possible values is ZERO, which is (A).\n\n[Note: this answer is DERIVED. The source paper publishes no answer key, and the value previously stored here came from a prep-house compilation rather than an official one. The stem was checked against the printed paper and is faithful.]",
+    "verdict": ""
+  },
+  {
+    "questionId": "881cbe76-af13-4222-adf4-63ec89e6d46c",
+    "questionNumber": "73",
+    "disposition": "review",
+    "text": "The value of \\(I = \\int_{0}^{\\pi/2}\\frac{(sinx + cosx)^{2}}{\\sqrt{1 + sin2x}}dx\\) is",
+    "options": [
+      {
+        "text": "3",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "1",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "2",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "0",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\(I = \\int_{0}^{\\frac{\\pi}{2}}\\frac{(sinx + cosx)^{2}}{\\sqrt{1 + sin2x}}dx\\)\\\r\nWe know \\(\\left\\lbrack (sinx + cosx)^{2} = 1 + sin2x \\right\\rbrack\\), so\r\n\r\n\\[\\begin{matrix}\r\n & I = \\int_{0}^{\\frac{\\pi}{2}}\\frac{(sinx + cosx)^{2}}{(sinx + cosx)}dx = \\int_{0}^{\\frac{\\pi}{2}}(sinx + cosx)dx \\\\\r\n & \\left\\lbrack \\because sinx + cosx > 0\\text{~if~}0 < x < \\frac{\\pi}{2} \\right\\rbrack \\\\\r\n & \\text{~or~}I = \\lbrack - cosx + sinx\\rbrack_{0}^{\\frac{\\pi}{2}} = 2\r\n\\end{matrix}\\]",
+    "verdict": ""
+  },
+  {
+    "questionId": "0d9a7a56-e0f3-43c6-aa5c-3edad5945919",
+    "questionNumber": "74",
+    "disposition": "review",
+    "text": "\\(\\lim_{x \\rightarrow a}\\frac{\\left( x^{- 1} - a^{- 1} \\right)}{x - a} =\\)",
+    "options": [
+      {
+        "text": "\\(\\frac{1}{a}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{- 1}{a}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{1}{a^{2}}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{- 1}{a^{2}}\\)",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "\\(\\lim_{x \\rightarrow a}\\frac{(1/x) - (1/a)}{x - a} = \\lim_{x \\rightarrow a}\\frac{a - x}{ax(x - a)} = \\lim_{x \\rightarrow a}\\frac{- 1}{ax} = \\frac{- 1}{a^{2}}\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "f10d98eb-e52c-47a0-87e4-78b61ca192e0",
+    "questionNumber": "74",
+    "disposition": "review",
+    "text": "What is the derivative of \\(\\dfrac{x}{|x|}\\) with respect to \\(x\\), where \\(x<0\\)?",
+    "options": [
+      {
+        "text": "-1",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "0",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "1",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "x",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "For \\(x<0\\): \\(x/|x|=x/(-x)=-1\\), a constant. Derivative of a constant \\(=0\\). Matches option B: 0.",
+    "verdict": ""
+  },
+  {
+    "questionId": "4e5467a9-a496-413f-85fd-8efd077eefba",
+    "questionNumber": "76",
+    "disposition": "review",
+    "text": "What is the value of \\(\\sqrt{5\\sqrt{5\\sqrt{5\\ldots\\infty}}}\\) ?",
+    "options": [
+      {
+        "text": "5",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\sqrt{5}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "1",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\((5)^{\\frac{1}{4}}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Let \\(x = \\sqrt{5\\sqrt{5\\sqrt{5\\ldots\\infty}}}\\)\\\r\n    \\(\\Rightarrow x = \\sqrt{5x}\\) \\(\\Rightarrow x^{2} - 5x = 0\\)\\\r\n    \\(\\Rightarrow x(x - 5) = 0\\)\\\r\n    \\(\\Rightarrow x = 5\\)",
+    "verdict": ""
+  },
+  {
+    "questionId": "6e4a4b27-574e-4914-8014-b4cd908fad0b",
+    "questionNumber": "79",
+    "disposition": "review",
+    "text": "\\(\\int_{\\pi/6}^{\\pi/3}\\frac{dx}{1 + \\sqrt{tanx}} =\\)",
+    "options": [
+      {
+        "text": "\\(\\pi/12\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\pi/2\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\pi/6\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\pi/4\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\begin{matrix}\r\n & I = \\frac{1}{2}\\left\\lbrack \\frac{\\pi}{3} - \\frac{\\pi}{6} \\right\\rbrack = \\frac{1}{2}\\left\\lbrack \\frac{2\\pi - \\pi}{6} \\right\\rbrack \\\\\r\n & I = \\frac{\\pi}{12}\r\n\\end{matrix}$$",
+    "verdict": ""
+  },
+  {
+    "questionId": "d97d28b2-afde-4761-ac66-33c417594f94",
+    "questionNumber": "79",
+    "disposition": "review",
+    "text": "If \\(x = \\ \\begin{bmatrix}\n    1 & - 2 \\\\\n    0 & 3\n    \\end{bmatrix}\\) and I is a \\(2 \\times 2\\) identity matrix, then \\(X^{2} - 2X + 3I\\) equals to which one of the following?",
+    "options": [
+      {
+        "text": "-I",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "-2X",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "2X",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "None of these",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\(X = \\ \\begin{bmatrix}\r\n    1 & - 2 \\\\\r\n    0 & 3\r\n    \\end{bmatrix}\\)\\\r\n    \\(x^{2} = \\ \\begin{bmatrix}\r\n    1 & - 2 \\\\\r\n    0 & 3\r\n    \\end{bmatrix}\\ \\begin{bmatrix}\r\n    1 & - 2 \\\\\r\n    0 & 3\r\n    \\end{bmatrix} = \\ \\begin{bmatrix}\r\n    1 & - 8 \\\\\r\n    0 & 9\r\n    \\end{bmatrix}\\)\\\r\n    \\(\\therefore x^{2} - 2x + 3I = \\ \\begin{bmatrix}\r\n    1 & - 8 \\\\\r\n    0 & 9\r\n    \\end{bmatrix} - 2\\begin{bmatrix}\r\n    1 & - 2 \\\\\r\n    0 & 3\r\n    \\end{bmatrix} + 3\\begin{bmatrix}\r\n    1 & 0 \\\\\r\n    0 & 1\r\n    \\end{bmatrix}\\)\\\r\n    \\(= \\ \\begin{bmatrix}\r\n    2 & - 4 \\\\\r\n    0 & 6\r\n    \\end{bmatrix} = 2\\ \\begin{bmatrix}\r\n    1 & - 2 \\\\\r\n    0 & 3\r\n    \\end{bmatrix} = 2x\\)",
+    "verdict": ""
+  },
+  {
+    "questionId": "df5bbe2a-50b6-4a4b-8192-5dae24d84715",
+    "questionNumber": "79",
+    "disposition": "review",
+    "text": "The left-hand derivative of \\(f(x) = [x]\\sin(\\pi x)\\) at \\(x = k\\), where \\(k\\) is an integer and \\([x]\\) is the greatest integer function, is",
+    "options": [
+      {
+        "text": "\\((-1)^k(k-1)\\pi\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\((-1)^{k-1}(k-1)\\pi\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\((-1)^k k\\pi\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\((-1)^{k-1}k\\pi\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "LHD at \\(x=k\\): \\(\\lim_{h\\to 0^-}\\frac{f(k+h)-f(k)}{h}=\\lim_{h\\to 0^-}\\frac{[k+h]\\sin\\pi(k+h)-0}{h}=(k-1)\\lim_{h\\to 0^-}\\frac{\\sin(\\pi k+\\pi h)}{h}=(k-1)\\cdot\\sin(\\pi k)\\cdot\\frac{\\pi h}{h}\\cdot(-1)^0...\\). \\(\\sin(\\pi k+\\pi h)\\approx\\sin(\\pi k)\\cos(\\pi h)+\\cos(\\pi k)\\sin(\\pi h)\\approx 0+(-1)^k\\cdot\\pi h\\). So LHD \\(=(k-1)(-1)^k\\pi\\). Matches option A.",
+    "verdict": ""
+  },
+  {
+    "questionId": "3197a5db-31ce-4d7d-b160-731c828dd635",
+    "questionNumber": "82",
+    "disposition": "review",
+    "text": "The value of \\(\\lim_{x \\rightarrow e}\\frac{logx - 1}{x - e}\\) is",
+    "options": [
+      {
+        "text": "e",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{1}{e}\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "1",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "indefinite",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\(\\lim_{x \\rightarrow e}\\frac{logx - 1}{x - e}\\) = \\(\\lim_{x \\rightarrow e}\\frac{logx - loge}{x - e}\\) = \\(\\lim_{x \\rightarrow e}\\frac{\\log\\frac{x}{e}}{e\\left( \\frac{x}{e} - 1 \\right)}\\) = \\(\\frac{1}{e}\\lim_{h \\rightarrow 0}\\frac{log(1 + h)}{h}\\) [Let \\(\\frac{x}{e}\\) - 1 =h, when x=e then h=0] = \\(\\frac{1}{e}\\lim_{h \\rightarrow 0}\\frac{h - \\frac{h^{2}}{2!} + \\frac{h^{3}}{3!}\\ldots.\\infty}{h}\\) = \\(\\frac{1}{e}\\lim_{h \\rightarrow 0}\\left( 1 - \\frac{h}{2!} + \\frac{h^{2}}{3!}\\ldots.\\infty \\right)\\) = \\(\\frac{1}{e}\\) x 1 = \\(\\frac{1}{e}\\)",
+    "verdict": ""
+  },
+  {
+    "questionId": "413cd1b5-3401-4f07-ad7c-8da6e0da2f20",
+    "questionNumber": "82",
+    "disposition": "review",
+    "text": "What is the cumulative frequency curve of statistical data commonly called?",
+    "options": [
+      {
+        "text": "cartogram",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "Histogram",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "Ogive",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "Pictogram",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Cumulative frequency curve of statistical data is commonly called ogive.",
+    "verdict": ""
+  },
+  {
+    "questionId": "326e4001-5b0f-4ee6-8213-2bab5ea5df8e",
+    "questionNumber": "85",
+    "disposition": "flag",
+    "known": "blind_rederivation=defect_preserved",
+    "text": "If R be a relation defined \\(aRb\\) iff \\(|a - b| > 0\\), then the relation is",
+    "options": [
+      {
+        "text": "reflexive",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "symmetric",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "transitive",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "both symmetric and transitive",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\(aRb\\iff|a-b|>0\\iff a\\ne b\\). Not reflexive (\\(|a-a|=0\\)); symmetric (\\(a\\ne b\\iff b\\ne a\\)); NOT transitive (\\(1\\ne2,\\ 2\\ne1\\) but \\(1=1\\)). So symmetric only. Hence (B). [Textbook note: the source book's key calls the relation both symmetric and transitive, but transitivity fails — 1≠2 and 2≠1, yet 1=1, so 1 is not related to itself. The relation is symmetric only.]",
+    "verdict": ""
+  },
+  {
+    "questionId": "4822d3f0-f96f-4d8e-9ebe-a639ee343769",
+    "questionNumber": "88",
+    "disposition": "review",
+    "text": "The minimum value of \\(f(a) = \\left( 2a^{2} - 3 \\right) + 3(3 - a) + 4\\) is",
+    "options": [
+      {
+        "text": "\\(\\frac{15}{2}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{11}{2}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{- 13}{2}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{71}{8}\\)",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "\\(f(a) = 2a^{2} - 3a + 10\\)\r\n\r\n\\[f'(a) = 4a - 3,f^{''}(a) = 4 > 0\\]\r\n\r\nfor exteremum, \\(f'(a) = 0 \\Rightarrow a = \\frac{3}{4}\\)\\\r\n\\(\\therefore f(a)\\) is minimum at \\(a = \\frac{3}{4}\\)\r\n\r\n\\[f(a)_{\\min} = 2 \\times \\left( \\frac{3}{4} \\right)^{2} - 3 \\times \\left( \\frac{3}{4} \\right) + 10 = \\frac{71}{8}.\\]",
+    "verdict": ""
+  },
+  {
+    "questionId": "33948492-e926-4b65-a429-3626de4c5279",
+    "questionNumber": "96",
+    "disposition": "review",
+    "text": "If \\(\\overrightarrow{a} + \\overrightarrow{b} + \\overrightarrow{c} = 0\\) and \\(|\\overrightarrow{a}| = 3,|\\overrightarrow{b}| = 5,|\\overrightarrow{c}| = 7\\), then the angle between \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\) is:",
+    "options": [
+      {
+        "text": "\\(30^{\\circ}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(45^{\\circ}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(60^{\\circ}\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(90^{\\circ}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Angle between \\(\\overrightarrow{a}\\) and \\(\\overrightarrow{b}\\)\r\n\r\n\\(\\overrightarrow{a} + \\overrightarrow{b} = - \\overrightarrow{c} \\Rightarrow |\\overrightarrow{a} + \\overrightarrow{b}|^{2} = | - \\overrightarrow{c}|^{2}\\).\r\n\r\n\\(|\\overrightarrow{a}|^{2} + |\\overrightarrow{b}|^{2} + 2|\\overrightarrow{a}||\\overrightarrow{b}|cos\\theta = |\\overrightarrow{c}|^{2}\\).\r\n\r\n\\(3^{2} + 5^{2} + 2(3)(5)cos\\theta = 7^{2} \\Rightarrow 9 + 25 + 30cos\\theta = 49\\).\r\n\r\n\\(30cos\\theta = 15 \\Rightarrow cos\\theta = 1/2 \\Rightarrow \\theta = 60^{\\circ}\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "fce52b2d-4fef-40c8-a796-7314b64a962c",
+    "questionNumber": "96",
+    "disposition": "review",
+    "text": "The area bounded by \\(\\mathbf{y} = \\mathbf{x}^{2} + \\mathbf{2},\\mathbf{x}\\)-axis, \\(\\mathbf{x} = \\mathbf{1}\\) and \\(\\mathbf{x} = \\mathbf{2}\\) is",
+    "options": [
+      {
+        "text": "\\(\\frac{16}{3}\\) sq unit",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{17}{3}\\) sq unit",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{13}{3}\\) sq unit",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\frac{20}{3}\\) sq unit",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Ans. (c)** : Given curve, \\(y = x^{2} + 2\\)\\\r\n\\(\\therefore\\) The required area is\r\n\r\n\\(\\begin{matrix}\r\n & A = \\int_{1}^{2} y \\cdot dx = \\int_{1}^{2}\\left( x^{2} + 2 \\right)dx = \\int_{1}^{2} x^{2}dx + \\int_{1}^{2} 2 \\cdot dx \\\\\r\n & \\  = \\left\\lbrack \\frac{x^{3}}{3} \\right\\rbrack_{1}^{2} + 2 \\cdot \\lbrack x\\rbrack_{1}^{2} = \\frac{1}{3}(8 - 1) + 2(2 - 1) \\\\\r\n & \\  = \\frac{7}{3} + 2 = \\frac{13}{3}\\text{~}\\text{square units}\\text{~}\r\n\\end{matrix}\\)",
+    "verdict": ""
+  },
+  {
+    "questionId": "e9330747-dbd7-4ebd-a927-b212865d8cdf",
+    "questionNumber": "99",
+    "disposition": "review",
+    "text": "How many three-digit even numbers can be formed using the digits 1, 2, 3, 4 and 5 when repetition of digits is \\(\\textbf{\\text{not}}\\) allowed?",
+    "options": [
+      {
+        "text": "36",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "30",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "24",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "12",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Units digit must be even: choices 2 or 4 (2 options). Remaining 2 digits from remaining 4: \\(P(4,2)=12\\) ways. Total \\(=2\\times12=24\\). Matches option C: 24.",
+    "verdict": ""
+  },
+  {
+    "questionId": "7e488e4a-e36c-443e-b523-25bfea2df3df",
+    "questionNumber": "100",
+    "disposition": "review",
+    "text": "The angle of elevation of a tower of height h from a point A due South of it is x and from a point B due East of A is y. If \\(AB=z\\), then which one of the following is correct?",
+    "options": [
+      {
+        "text": "\\(h^2(\\cot^2 y-\\cot^2 x)=z^2\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(z^2(\\cot^2 y-\\cot^2 x)=h^2\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(h^2(\\tan^2 y-\\tan^2 x)=z^2\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(z^2(\\tan^2 y-\\tan^2 x)=h^2\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Let the tower base be O. From A (due South), \\(\\tan x=\\dfrac{h}{OA}\\Rightarrow OA=h\\cot x\\); from B (due East of A), \\(OB=h\\cot y\\). Since A is due South of O and B is due East of A, \\(\\angle OAB=90^\\circ\\), so \\(OB^2=OA^2+AB^2\\): \\(h^2\\cot^2y=h^2\\cot^2x+z^2\\Rightarrow z^2=h^2(\\cot^2y-\\cot^2x)\\), i.e. \\(h^2(\\cot^2y-\\cot^2x)=z^2\\). Matches option A.",
+    "verdict": ""
+  },
+  {
+    "questionId": "0061cf3f-1f1f-4d2e-b86d-b50dcb11943f",
+    "questionNumber": "102",
+    "disposition": "review",
+    "text": "Three dice are thrown simultaneously. What is the probability of obtaining a total of 17 or 18",
+    "options": [
+      {
+        "text": "1/9",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "1/72",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "1/54",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "None of these",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Total ways = \\(6 \\times 6 \\times 6 = 216\\)\\\r\n     Sum as 17 or 18\\\r\n     \\(= \\left\\{ (6,6,6);(5,6,6),\\ (6,5,6),(6,6,5) \\right\\} = 4\\) ways\\\r\n     \\(P\\ (sum = 17\\ or\\ 18) = \\frac{4}{216} = \\frac{1}{54}\\)",
+    "verdict": ""
+  },
+  {
+    "questionId": "186a2af2-d9a7-4ef2-9276-6383a427bd13",
+    "questionNumber": "102",
+    "disposition": "review",
+    "text": "In a set of \\(2n\\) distinct observations, each of the observation below the median of all the observations is increased by 5 and each of the remaining observations is decreased by 3 . Then the mean of the new set of observations:",
+    "options": [
+      {
+        "text": "Increases by 1 .",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "Decreases by 1 .",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "Decreases by 2 .",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "Increases by 2 .",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Solution: Let observation be \\(a_{1},a_{2'},\\ldots,a_{n'}a_{n + 1},a_{n + 2'}\\ldots,a_{2n^{2}}\\). Then\r\n\r\n\\[\\text{~Mean~} = \\bar{x} = \\frac{a_{1} + a_{2} + \\cdots + a_{n} + a_{n + 1} + a_{n + 2} + \\cdots + a_{2n}}{2n}\\]\r\n\r\n\\(\\bar{x}\\) =\\(\\frac{\\left( a_{1} + 5 \\right) + \\left( a_{2} + 5 \\right) + \\cdots + \\left( a_{n} + 5 \\right) + \\left( a_{n + 1} - 3 \\right) + \\left( a_{n + 2} - 3 \\right) + \\cdots + \\left( a_{2n} - 3 \\right)}{2n}\\)\r\n\r\n\\[= \\frac{a_{1} + a_{2} + \\cdots + a_{n} + a_{n + 1} + a_{n + 2} + \\cdots + a_{2n}}{2n} + \\frac{5n - 3n}{2n}\\]\r\n\r\n\\(= \\bar{x} + 1\\)",
+    "verdict": ""
+  },
+  {
+    "questionId": "4557ccee-8cb8-44b9-b085-e6923a9b15b7",
+    "questionNumber": "104",
+    "disposition": "review",
+    "text": "Let \\(x+2y+1=0\\) and \\(2x+3y+4=0\\) be two lines of regression computed from some bivariate data. If \\(\\theta\\) is the acute angle between them, then what is the value of \\(488\\tan 3\\theta\\)?",
+    "options": [
+      {
+        "text": "\\(191\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(161\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(131\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(121\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Slopes: \\(m_1=-1/2\\), \\(m_2=-2/3\\). \\(\\tan\\theta=\\left|\\frac{m_1-m_2}{1+m_1m_2}\\right|=\\frac{|{-1/2+2/3}|}{|1+1/3|}=\\frac{1/6}{4/3}=\\frac{1}{8}\\). Triple-angle: \\(\\tan 3\\theta=\\frac{3\\tan\\theta-\\tan^3\\theta}{1-3\\tan^2\\theta}=\\frac{3/8-1/512}{1-3/64}=\\frac{(192-1)/512}{61/64}=\\frac{191/512\\cdot 64}{61}=\\frac{191}{488}\\). Therefore \\(488\\tan 3\\theta=191\\). Matches option A: 191.",
+    "verdict": ""
+  },
+  {
+    "questionId": "499c5d5e-492f-4f81-9888-eacec21bc2c0",
+    "questionNumber": "106",
+    "disposition": "review",
+    "text": "If A, B, C are three events, then what is the probability that at least two of these events occur together?",
+    "options": [
+      {
+        "text": "\\(P(A\\cap B)+P(B\\cap C)+P(C\\cap A)\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(P(A\\cap B)+P(B\\cap C)+P(C\\cap A)-P(A\\cap B\\cap C)\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(P(A\\cap B)+P(B\\cap C)+P(C\\cap A)-2P(A\\cap B\\cap C)\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(P(A\\cap B)+P(B\\cap C)+P(C\\cap A)-3P(A\\cap B\\cap C)\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "P(at least two of A,B,C) \\(=P(A\\cap B)+P(B\\cap C)+P(C\\cap A)-2P(A\\cap B\\cap C)\\). This is a standard formula derived by inclusion-exclusion. Matches option C.",
+    "verdict": ""
+  },
+  {
+    "questionId": "1429b511-3c31-4e4b-ac58-fedeebf81909",
+    "questionNumber": "108",
+    "disposition": "review",
+    "text": "A random variable \\(X\\) has the probability distribution:\n\n| X | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |\n|---|---|---|---|---|---|---|---|---|\n| p(X) | 0.15 | 0.23 | 0.12 | 0.10 | 0.20 | 0.08 | 0.07 | 0.05 |\n\nFor the events \\(E = \\{x\\ \\text{is a prime number}\\}\\) and \\(F = \\{x < 4\\},\\) what is \\(P(E \\cup F)\\) equal to?",
+    "options": [
+      {
+        "text": "\\(0.50\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(0.77\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(0.35\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(0.87\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\(P(E) = P(2\\) or 3 or 5 or 7\\()\\)\\\r\n\\[\\  = 0.23 + 0.12 + 0.20 + 0.07 = 0.62\r\n\\]\\(P(F) = P(1\\) or 2 or 3\\() = 0.15 + 0.23 + 0.12 = 0.50\\)\\\r\n\\(P(E \\cap F) = P(2\\) or 3\\() = 0.23 + 0.12 = 0.35\\)\\\r\n\\[{\\therefore P(EUF) = P(E) + P(F) - P(E \\cap F)\r\n}{\\  = 0.62 + 0.50 - 0.35 = 0.77}\\]",
+    "verdict": ""
+  },
+  {
+    "questionId": "19634200-cebe-4194-bea0-94838d542207",
+    "questionNumber": "112",
+    "disposition": "review",
+    "text": "Let \\(f(x + y) = f(x)f(y)\\) for all \\(x,y\\). If \\(f(5) = 2\\) and \\(f'(0) = 3\\), then \\(f'(5)\\) is:",
+    "options": [
+      {
+        "text": "5",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "6",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(2/3\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "0",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Solution:\r\n\r\nUsing the first principle: \\(f'(x) = \\lim_{h \\rightarrow 0}\\frac{f(x + h) - f(x)}{h}\\).\r\n\r\n\\(f'(x) = \\lim_{h \\rightarrow 0}\\frac{f(x)f(h) - f(x)}{h} = f(x)\\lim_{h \\rightarrow 0}\\frac{f(h) - 1}{h}\\).\r\n\r\nSince \\(f(0 + 0) = f(0)f(0),f(0) = 1\\). So the limit is \\(f'(0)\\).\r\n\r\n\\(f'(x) = f(x) \\cdot f'(0)\\).\r\n\r\n\\(f'(5) = f(5) \\cdot f'(0) = 2 \\times 3 = \\mathbf{6}\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "fb039a72-6921-4a0e-a538-ca2081c72135",
+    "questionNumber": "113",
+    "disposition": "review",
+    "text": "The arithmetic mean of 100 observations is 50. If 5 is subtracted from each observation and then divided by 20, then what is the new arithmetic mean?",
+    "options": [
+      {
+        "text": "\\(2.25\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(3.5\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(4.25\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(5.5\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "New mean = \\(\\frac{\\text{old mean}-5}{20} = \\frac{50-5}{20} = \\frac{45}{20} = 2.25\\). Common mistake: only dividing without subtracting first, giving \\(\\frac{50}{20}=2.5\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "1595b182-0ecc-4bcb-89ab-ec227e5c684a",
+    "questionNumber": "114",
+    "disposition": "review",
+    "text": "Consider the following statements:\n1. Mode can be computed from histogram\n2. Median is not independent of change of scale\n3. Variance is independent of change of origin and scale.\nWhich of these is/are correct?",
+    "options": [
+      {
+        "text": "(1), (2) and (3)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "Only (2)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "Only (1) and (2)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "Only (1)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Only first \\((A)\\) and second \\((B)\\) statements are correct.",
+    "verdict": ""
+  },
+  {
+    "questionId": "6b1266cb-8a72-432f-aa82-9b6e79fa7bcc",
+    "questionNumber": "139",
+    "disposition": "review",
+    "text": "If \\(\\omega\\) denotes the imaginary cube root of unity, then the roots of the equation \\((x + 1)^3 + 8 = 0\\) are",
+    "options": [
+      {
+        "text": "\\(-3, 1 + 2\\omega, 1 + 2\\omega^2\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(-3, 1 - 2\\omega, 1 - 2\\omega^2\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(-3, -1 + 2\\omega, -1 + 2\\omega^2\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(-3, 1 - 2\\omega, -1 - 2\\omega^2\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Rewrite the equation as \\((x+1)^3 = -8\\), so \\(x + 1\\) is a cube root of \\(-8\\).\n\nThe three cube roots of \\(-8\\) are \\(-2\\), \\(-2\\omega\\) and \\(-2\\omega^2\\), because multiplying any one cube root by \\(\\omega\\) or \\(\\omega^2\\) gives the others. Hence\n\n\\(x = -3,\\quad x = -1 - 2\\omega,\\quad x = -1 - 2\\omega^2\\).\n\nNow put those in the form the options use. With \\(\\omega = -\\dfrac{1}{2} + \\dfrac{\\sqrt{3}}{2}i\\) and \\(\\omega^2 = -\\dfrac{1}{2} - \\dfrac{\\sqrt{3}}{2}i\\):\n\n\\(-1 - 2\\omega = -1 + 1 - \\sqrt{3}i = -\\sqrt{3}i\\) and \\(-1 - 2\\omega^2 = -1 + 1 + \\sqrt{3}i = \\sqrt{3}i\\).\n\nSo the root set is \\(\\{-3,\\ \\sqrt{3}i,\\ -\\sqrt{3}i\\}\\).\n\nOption (A) reads \\(-3,\\ 1 + 2\\omega,\\ 1 + 2\\omega^2\\), and \\(1 + 2\\omega = 1 - 1 + \\sqrt{3}i = \\sqrt{3}i\\), \\(1 + 2\\omega^2 = -\\sqrt{3}i\\) — the SAME three numbers, just written the other way round. Hence (A).\n\n(Check the others: \\(1 - 2\\omega = 2 - \\sqrt{3}i\\), whose distance from \\(-1\\) is \\(\\sqrt{12} \\neq 2\\), so it is not a root; the same rules out \\(-1 + 2\\omega\\).)\n\n[Textbook: the booklet's own answer key points at the option reading \\(-3,\\ 1 - 2\\omega,\\ -1 - 2\\omega^2\\), but that list is not the root set — its middle entry \\(2 - \\sqrt{3}i\\) does not satisfy the equation. The option naming all three roots is the correct one.]",
+    "verdict": ""
+  },
+  {
+    "questionId": "a0774976-f099-4f7e-a46e-1f43d64e57ef",
+    "questionNumber": "148",
+    "disposition": "review",
+    "text": "If \\(z\\) satisfies the equation \\(|z| - z = 1 + 2i\\), then \\(z\\) is equal to",
+    "options": [
+      {
+        "text": "\\(\\dfrac{3}{2} + 2i\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{3}{2} - 2i\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(2 - \\dfrac{3}{2}i\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(2 + \\dfrac{3}{2}i\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "With \\(z = x + iy\\): \\(-y = 2 \\Rightarrow y = -2\\), and \\(\\sqrt{x^2 + 4} = 1 + x \\Rightarrow x = \\tfrac32\\). So \\(z = \\tfrac32 - 2i\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "e2351034-62d4-45f1-917f-dff16dd8a1c9",
+    "questionNumber": "168",
+    "disposition": "review",
+    "text": "Let \\(\\arg z < 0\\), then \\(\\arg(-z) - \\arg z =\\)",
+    "options": [
+      {
+        "text": "\\(\\pi\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\dfrac{\\pi}{2}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{\\pi}{3}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "None of these",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "For \\(\\arg z < 0\\), \\(\\arg(-z) = \\arg z + \\pi\\), so \\(\\arg(-z) - \\arg z = \\pi\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "af0f901a-4824-4453-9602-4214f329a2fa",
+    "questionNumber": "170",
+    "disposition": "review",
+    "text": "\\(x = (8\\sqrt{3}+ 13)^{13}\\) and \\(y = (7\\sqrt{2}+ 9)^{9}\\). If \\(\\lbrack t\\rbrack\\) denotes the greatest integer \\(\\leq t\\), then",
+    "options": [
+      {
+        "text": "\\(\\lbrack x\\rbrack\\) is odd but \\(\\lbrack y\\rbrack\\) is even",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\lbrack x\\rbrack + \\lbrack y\\rbrack\\) is even",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\lbrack x\\rbrack\\) and \\(\\lbrack y\\rbrack\\) are both odd",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\lbrack x\\rbrack\\) is even but \\(\\lbrack y\\rbrack\\) is odd",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "With \\(\\alpha=13+8\\sqrt3\\) and \\(c=13-8\\sqrt3\\in(-1,0)\\), \\(s_n=\\alpha^n+c^n\\) satisfies \\(s_n=26s_{n-1}+23s_{n-2}\\) with every \\(s_n\\) even; since \\(c^{13}\\in(-1,0)\\), \\([x]=s_{13}\\) is even. Likewise with \\(9+7\\sqrt2\\), \\([y]=s'_9\\) is even. Hence \\([x]+[y]\\) is even.",
+    "verdict": ""
+  },
+  {
+    "questionId": "52b4e3c6-975e-4dd8-82cf-6e5d58bac8ac",
+    "questionNumber": "175",
+    "disposition": "review",
+    "text": "If the roots of the quadratic equation \\(mx^2 - nx + k = 0\\) are \\(\\tan 33^\\circ\\) and \\(\\tan 12^\\circ\\), then the value of \\(\\dfrac{2m + n + k}{m}\\) is equal to",
+    "options": [
+      {
+        "text": "0",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "1",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "2",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "3",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "Sum of roots \\(=\\tan33^\\circ+\\tan12^\\circ=n/m\\); product \\(=\\tan33^\\circ\\tan12^\\circ=k/m\\). Since \\(33^\\circ+12^\\circ=45^\\circ\\), \\(\\tan45^\\circ=\\frac{\\tan33^\\circ+\\tan12^\\circ}{1-\\tan33^\\circ\\tan12^\\circ}=1\\Rightarrow \\frac{n/m}{1-k/m}=1\\Rightarrow n=m-k\\Rightarrow m=n+k\\). So \\(\\frac{2m+n+k}{m}=\\frac{2m+m}{m}=3\\). Hence (D).",
+    "verdict": ""
+  },
+  {
+    "questionId": "5f08a417-b00e-49bf-9cf1-4d69c80bfdfc",
+    "questionNumber": "196",
+    "disposition": "review",
+    "text": "If \\(|x^2 - x - 6| = x + 2\\), then the values of \\(x\\) are",
+    "options": [
+      {
+        "text": "\\(-2, 2, -4\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(-2, 2, 4\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(3, 2, -2\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(4, 4, 3\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Case \\(x^2-x-6\\ge0\\): \\(x^2-x-6=x+2\\Rightarrow x^2-2x-8=0\\Rightarrow x=4,-2\\) (both valid). Case \\(<0\\): \\(-(x^2-x-6)=x+2\\Rightarrow x^2-4=0\\Rightarrow x=\\pm2\\) (only \\(x=2\\) lies where \\(x^2-x-6<0\\)). Solutions \\(\\{4,2,-2\\}\\). Hence (B).",
+    "verdict": ""
+  },
+  {
+    "questionId": "e28d32d8-e781-48c0-8523-dfc4f34496dc",
+    "questionNumber": "199",
+    "disposition": "review",
+    "text": "One root of \\(mx^2 - 14x + 8 = 0\\) is 6 times the other root. Then \\(m\\) is",
+    "options": [
+      {
+        "text": "2",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "1",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "3",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "None of these",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Roots \\(t,6t\\): sum \\(7t=\\frac{14}{m}\\Rightarrow t=\\frac{2}{m}\\); product \\(6t^2=\\frac{8}{m}\\Rightarrow 6\\cdot\\frac{4}{m^2}=\\frac{8}{m}\\Rightarrow \\frac{24}{m}=8\\Rightarrow m=3\\). Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "56ffd170-da34-4957-819d-505876355c5e",
+    "questionNumber": "238",
+    "disposition": "review",
+    "text": "How many four digit numbers abcd exist such that a is odd, b is divisible by 3, c is even and d is prime?",
+    "options": [
+      {
+        "text": "380",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "360",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "400",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "520",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Conditions on the four digit number abcd: a odd and nonzero (4-digit) gives \\(a \\in \\{1,3,5,7,9\\}\\), 5 choices. b divisible by 3 gives \\(b \\in \\{0,3,6,9\\}\\), 4 choices. c even gives \\(c \\in \\{0,2,4,6,8\\}\\), 5 choices. d prime digit gives \\(d \\in \\{2,3,5,7\\}\\), 4 choices. Total \\(= 5 \\times 4 \\times 5 \\times 4 = 400\\). Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "20040c06-fff1-4e0d-a0a2-7d482dee3554",
+    "questionNumber": "273",
+    "disposition": "review",
+    "text": "The range of the function \\(f(x) = {}^{7-x}P_{x-3}\\) is",
+    "options": [
+      {
+        "text": "\\(\\{1, 2, 3, 4\\}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\{3, 4, 5, 6\\}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\{0, 1, 2, 3, 4, 5\\}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\{1, 2, 3\\}\\)",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "For \\(f(x) = {}^{7-x}P_{x-3}\\) to be defined: \\(7 - x \\geq 0\\), \\(x - 3 \\geq 0\\), and \\(x - 3 \\leq 7 - x\\). These give \\(x \\geq 3\\), \\(x \\leq 7\\), and \\(2x \\leq 10\\), so \\(x \\in \\{3, 4, 5\\}\\). Then \\(f(3) = {}^{4}P_{0} = 1\\), \\(f(4) = {}^{3}P_{1} = 3\\), \\(f(5) = {}^{2}P_{2} = 2\\). Range \\(= \\{1, 2, 3\\}\\). Hence (D).",
+    "verdict": ""
+  },
+  {
+    "questionId": "79b7899c-fbde-417a-b3f8-1533b95f35e3",
+    "questionNumber": "330",
+    "disposition": "review",
+    "text": "The straight lines \\(L_{1}, L_{2}, L_{3}\\) are parallel and lie in the same plane. A total of m points are taken on \\(L_{1}\\), n points on \\(L_{2}\\), k points on \\(L_{3}\\). The maximum number of triangles formed with vertices at these points are",
+    "options": [
+      {
+        "text": "\\({}^{m+n+k}C_{3}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\({}^{m+n+k}C_{3} - {}^{m}C_{3} - {}^{n}C_{3}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\({}^{m+n+k}C_{3} + {}^{m}C_{3} + {}^{n}C_{3}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "None of these",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "With m, n, k points on three parallel lines, maximum triangles \\(= {}^{m+n+k}C_{3} - {}^{m}C_{3} - {}^{n}C_{3} - {}^{k}C_{3}\\) (subtracting collinear triplets on each line). None of options A, B, C gives this complete expression (option B omits \\({}^{k}C_{3}\\)). Hence (D).",
+    "verdict": ""
+  },
+  {
+    "questionId": "3780050e-9dbe-4da7-b112-ceddd573eadf",
+    "questionNumber": "359",
+    "disposition": "review",
+    "text": "The coefficient of \\(x^{2}\\) in the expansion of \\((1+x+x^{2}+x^{3})^{10}\\) is",
+    "options": [
+      {
+        "text": "42",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "43",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "44",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "55",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "Factor \\(1+x+x^{2}+x^{3}=(1+x)(1+x^{2})\\), so the expression is \\((1+x)^{10}(1+x^{2})^{10}\\). Coefficient of \\(x^{2}\\): from \\(x^{2}\\) in \\((1+x)^{10}\\) and \\(x^{0}\\) in \\((1+x^{2})^{10}\\) gives \\(\\binom{10}{2}=45\\); from \\(x^{0}\\) and \\(x^{2}\\) gives \\(\\binom{10}{1}=10\\). Total \\(=45+10=55\\). Hence (D).",
+    "verdict": ""
+  },
+  {
+    "questionId": "8e4963f5-1d1d-43b1-b7d6-9717b89745d2",
+    "questionNumber": "426",
+    "disposition": "review",
+    "text": "If \\(\\log_e 5,\\ \\log_e(5^x - 1)\\) and \\(\\log_e\\left(5^x - \\dfrac{11}{5}\\right)\\) are in A.P., then the values of \\(x\\) are",
+    "options": [
+      {
+        "text": "\\(\\log_5 4\\) and \\(\\log_5 3\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\log_3 4\\) and \\(\\log_4 3\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\log_3 4\\) and \\(\\log_3 5\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\log_5 6\\) and \\(\\log_5 7\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Three terms are in A.P. exactly when twice the middle one equals the sum of the outer two:\n\n\\(2\\log_e(5^x - 1) = \\log_e 5 + \\log_e\\left(5^x - \\dfrac{11}{5}\\right)\\).\n\nCollapse each side into a single logarithm using \\(2\\log_e A = \\log_e A^2\\) and \\(\\log_e P + \\log_e Q = \\log_e PQ\\):\n\n\\(\\log_e (5^x - 1)^2 = \\log_e\\left[5\\left(5^x - \\dfrac{11}{5}\\right)\\right]\\).\n\nThe logarithm is one-to-one, so the arguments are equal. Writing \\(t = 5^x\\):\n\n\\((t - 1)^2 = 5t - 11\\)\n\n\\(t^2 - 2t + 1 = 5t - 11\\)\n\n\\(t^2 - 7t + 12 = 0\\)\n\n\\((t - 3)(t - 4) = 0\\), so \\(t = 3\\) or \\(t = 4\\).\n\nBoth must be CHECKED against the domain, since a logarithm needs a positive argument: the question requires \\(5^x - 1 > 0\\) and \\(5^x - \\dfrac{11}{5} > 0\\), i.e. \\(t > \\dfrac{11}{5} = 2.2\\). Both 3 and 4 clear that, so neither root is rejected.\n\nFinally \\(5^x = 3\\) gives \\(x = \\log_5 3\\) and \\(5^x = 4\\) gives \\(x = \\log_5 4\\). Hence (A).",
+    "verdict": ""
+  },
+  {
+    "questionId": "e367cd22-0425-4fc3-ace9-d252a08a7841",
+    "questionNumber": "492",
+    "disposition": "review",
+    "text": "Let P and Q are matrices such that \\(PQ = Q\\) and \\(QP = P\\), then \\(P^2 + Q^2 =\\)",
+    "options": [
+      {
+        "text": "P",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "Q",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(P + Q\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(P - Q\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Given \\(PQ = Q\\) and \\(QP = P\\). Then \\(P^2 = P \\cdot P = P(QP) = (PQ)P = QP = P\\), so \\(P^2 = P\\). Similarly \\(Q^2 = Q \\cdot Q = Q(PQ) = (QP)Q = PQ = Q\\), so \\(Q^2 = Q\\). Therefore \\(P^2 + Q^2 = P + Q\\). Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "300cdb2c-71a6-4815-9726-2ba829344d78",
+    "questionNumber": "577",
+    "disposition": "review",
+    "text": "Let \\(a\\mu^3 + b\\mu^2 + c\\mu + d = \\begin{vmatrix} 3\\mu & \\mu+1 & \\mu-1 \\\\ \\mu-3 & -2\\mu & \\mu+2 \\\\ \\mu+3 & \\mu-4 & 5\\mu \\end{vmatrix}\\) be an identity in \\(\\mu\\), where a, b, c, d are constants, then the value of d is",
+    "options": [
+      {
+        "text": "5",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(-6\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "9",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "0",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "The constant term d equals the determinant evaluated at \\(\\mu = 0\\): \\(\\begin{vmatrix} 0 & 1 & -1 \\\\ -3 & 0 & 2 \\\\ 3 & -4 & 0 \\end{vmatrix} = 0 - 1(0 - 6) + (-1)(12 - 0) = 6 - 12 = -6\\). Hence (B).",
+    "verdict": ""
+  },
+  {
+    "questionId": "1c989182-9012-43ec-92d0-c43e2584c5a0",
+    "questionNumber": "616",
+    "disposition": "review",
+    "text": "\\(\\begin{vmatrix} a^2+1 & ab & ac \\\\ ab & b^2+1 & bc \\\\ ac & bc & c^2+1 \\end{vmatrix} = \\)",
+    "options": [
+      {
+        "text": "\\(1 + a + b + c\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(1 + ab + bc + ca\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(1 + a^2 + b^2 + c^2\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(abc\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "The determinant equals \\(\\det(I+vv^{T})\\) with \\(v=(a,b,c)^{T}\\), i.e. \\(1+|v|^2=1+a^2+b^2+c^2\\) (sympy-verified). Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "add09dd1-53ef-4010-b13b-8676e7421e7b",
+    "questionNumber": "627",
+    "disposition": "review",
+    "text": "\\(\\begin{vmatrix} a-b+c & -a-b+c & 1 \\\\ a+b+2c & -a+b+2c & 2 \\\\ 3c & 3c & 3 \\end{vmatrix}\\) is",
+    "options": [
+      {
+        "text": "\\(12ab\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(-12ab\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(ab\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{1}{12ab}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Apply \\(C_1 \\to C_1 + C_2\\): \\((-2b, 2b, 6c)\\); then row/column reductions. Direct expansion yields the value \\(12ab\\). Matches option A.",
+    "verdict": ""
+  },
+  {
+    "questionId": "a67f37d4-0884-4ca4-a7f9-b140e508a457",
+    "questionNumber": "628",
+    "disposition": "review",
+    "text": "\\(\\begin{vmatrix} \\log_z x & \\log_z y & 1 \\\\ 1 & \\log_x y & \\log_x z \\\\ \\log_y x & 1 & \\log_y z \\end{vmatrix}\\) is equal to",
+    "options": [
+      {
+        "text": "3",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "1",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\log x + \\log y + \\log z\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "0",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "Each entry is a logarithm; using change of base \\(\\log_b a = \\dfrac{\\ln a}{\\ln b}\\), the rows become linearly dependent (the determinant of such a log-matrix with this cyclic structure is 0). Numerical evaluation confirms the value is 0. Matches option D.",
+    "verdict": ""
+  },
+  {
+    "questionId": "65467409-2a43-40d3-9a96-b836f4be79ef",
+    "questionNumber": "659",
+    "disposition": "review",
+    "text": "If \\(P = \\begin{pmatrix} 2 & 0 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 2 \\end{pmatrix}\\) then, \\(\\det(\\text{adj } P) = \\)",
+    "options": [
+      {
+        "text": "\\(P^{27}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(P^{17}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(P^6\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "None of these",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "Here \\(P = 2I\\) (order 3), so \\(|P| = 8\\), and \\(\\det(\\text{adj} P) = |P|^{n-1} = |P|^2 = 64\\). This is a scalar (64), whereas the matrix-power options \\(P^{27}, P^{17}, P^6\\) are matrices, not equal to the scalar 64. Hence none of those match. Matches option D (None of these).",
+    "verdict": ""
+  },
+  {
+    "questionId": "673f35ed-a9ef-4161-8630-05d1a1acf6b3",
+    "questionNumber": "671",
+    "disposition": "review",
+    "text": "If \\(B\\) is a non-singular matrix and \\(A\\) is a square matrix such that \\(B^{-1}AB\\) exists, then \\(\\det(B^{-1}AB)\\) is equal to",
+    "options": [
+      {
+        "text": "\\(\\det(A^{-1})\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\det(B^{-1})\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\det(B)\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\det(A)\\)",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "\\(\\det(B^{-1}AB) = \\det(B^{-1})\\det(A)\\det(B) = \\det(A)\\) (the \\(B\\) factors cancel). Matches option D.",
+    "verdict": ""
+  },
+  {
+    "questionId": "32ca66f2-8d34-4939-b180-4fedccda152a",
+    "questionNumber": "722",
+    "disposition": "review",
+    "text": "Two persons A and B are throwing an unbiased six faced die. A throws 1, then the game is over. If A starts the game, the probabilities of A and B to win the game are respectively",
+    "options": [
+      {
+        "text": "\\(\\dfrac{6}{11}, \\dfrac{5}{11}\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\dfrac{5}{11}, \\dfrac{6}{11}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{7}{13}, \\dfrac{6}{13}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{5}{13}, \\dfrac{7}{13}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "A wins on his first throw with probability \\(\\dfrac{1}{6}\\); the game returns to A only if both miss (probability \\(\\dfrac{5}{6}\\cdot\\dfrac{5}{6}\\)). So \\(P(A) = \\dfrac{1/6}{1 - (5/6)^2} = \\dfrac{1/6}{11/36} = \\dfrac{6}{11}\\) and \\(P(B) = 1 - \\dfrac{6}{11} = \\dfrac{5}{11}\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "5ce591cd-54bb-4c62-b8f2-0847c5ed99d3",
+    "questionNumber": "732",
+    "disposition": "review",
+    "text": "A four-digit number is formed by the digits 1, 2, 3, 4 with no repetition. The probability that the number is odd, is",
+    "options": [
+      {
+        "text": "zero",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{1}{3}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{1}{4}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "None of these",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "Using all four digits, the number is odd when the unit digit is 1 or 3 (2 of the 4 digits). \\(P = \\dfrac{2 \\cdot 3!}{4!} = \\dfrac{12}{24} = \\dfrac{1}{2}\\). Since \\(\\dfrac{1}{2}\\) is not among the listed options, the answer is None of these.",
+    "verdict": ""
+  },
+  {
+    "questionId": "54d85558-c837-4cad-a246-cc6859f73913",
+    "questionNumber": "756",
+    "disposition": "review",
+    "text": "In a non-leap year, the probability of having 53 Friday or Saturday is",
+    "options": [
+      {
+        "text": "\\(\\dfrac{3}{7}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{4}{7}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{2}{7}\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\dfrac{1}{7}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "A non-leap year is 52 weeks plus 1 extra day. For a 53rd Friday or 53rd Saturday the extra day must be Friday or Saturday, so probability \\(= \\dfrac{2}{7}\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "2b520d2f-2561-4c6d-bdc6-9832c7169e10",
+    "questionNumber": "829",
+    "disposition": "review",
+    "text": "There are two coins, one unbiased with probability \\(\\dfrac{1}{2}\\) of getting heads and the other one is biased with probability \\(\\dfrac{3}{4}\\) of getting heads. A coin is selected at random and tossed. It shows heads up. Then the probability that the unbiased coin was selected is",
+    "options": [
+      {
+        "text": "\\(\\dfrac{2}{3}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{3}{5}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{1}{2}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{2}{5}\\)",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "Each coin chosen with probability \\(\\dfrac{1}{2}\\). \\(P(\\text{unbiased} \\mid \\text{head}) = \\dfrac{(1/2)(1/2)}{(1/2)(1/2) + (1/2)(3/4)} = \\dfrac{1/4}{1/4 + 3/8} = \\dfrac{1/4}{5/8} = \\dfrac{2}{5}\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "5b833424-457c-4917-90a1-3f616b51d72d",
+    "questionNumber": "926",
+    "disposition": "review",
+    "text": "The mean of four observations is 3. If the sum of the squares of these observations is 48, then the standard deviation is",
+    "options": [
+      {
+        "text": "\\(\\sqrt{2}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\sqrt{3}\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\sqrt{5}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\sqrt{7}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Variance \\(= \\dfrac{48}{4} - 3^2 = 12 - 9 = 3\\), so SD \\(= \\sqrt{3}\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "69f7e443-a75e-47ac-8319-225a39b47d7e",
+    "questionNumber": "929",
+    "disposition": "review",
+    "text": "The standard deviation of 9, 16, 23, 30, 37, 44, 51 is",
+    "options": [
+      {
+        "text": "7",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "9",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "12",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "14",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "These form an A.P. with \\(d = 7\\), \\(n = 7\\). SD \\(= d\\sqrt{\\dfrac{n^2-1}{12}} = 7\\sqrt{4} = 14\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "ce7c03cd-79aa-4548-a589-dc568ace650b",
+    "questionNumber": "1048",
+    "disposition": "review",
+    "text": "If \\(5(\\tan^2 x - \\cos^2 x) = 2\\cos 2x + 9\\), then the value of \\(\\cos 4x\\) is",
+    "options": [
+      {
+        "text": "\\(\\frac{1}{3}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{2}{9}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(-\\frac{7}{9}\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(-\\frac{3}{5}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Let \\(c = \\cos^2 x\\). Then \\(\\tan^2 x = \\frac{1}{c} - 1\\) and \\(\\cos 2x = 2c - 1\\). The equation \\(5\\left(\\frac{1}{c} - 1 - c\\right) = 2(2c - 1) + 9\\) gives \\(9c^2 + 12c - 5 = 0\\), so \\(c = \\frac{1}{3}\\). Then \\(\\cos 2x = 2c - 1 = -\\frac{1}{3}\\) and \\(\\cos 4x = 2\\cos^2 2x - 1 = 2\\cdot\\frac{1}{9} - 1 = -\\frac{7}{9}\\). Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "14925a1b-d03a-43d7-84ea-72776d712f3e",
+    "questionNumber": "1070",
+    "disposition": "review",
+    "text": "The value of \\(\\tan(1^\\circ) + \\tan(89^\\circ)\\) is",
+    "options": [
+      {
+        "text": "\\(\\frac{2}{\\sin(2^\\circ)}\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\frac{1}{\\sin(2^\\circ)}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{1}{\\sin(1^\\circ)}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{2}{\\sin(1^\\circ)}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\(\\tan 89^\\circ = \\cot 1^\\circ\\), so \\(\\tan 1^\\circ + \\cot 1^\\circ = \\frac{\\sin^2 1^\\circ + \\cos^2 1^\\circ}{\\sin 1^\\circ\\cos 1^\\circ} = \\frac{1}{\\frac{1}{2}\\sin 2^\\circ} = \\frac{2}{\\sin 2^\\circ}\\). Hence (A).",
+    "verdict": ""
+  },
+  {
+    "questionId": "b6fc4c6c-2f0f-4a44-8efe-a43e10e61e1d",
+    "questionNumber": "1099",
+    "disposition": "review",
+    "text": "If \\(\\sin x \\cos y = \\frac{1}{4}\\) and \\(3\\tan x = 4\\tan y\\), then \\(\\sin(x-y)\\) equals to",
+    "options": [
+      {
+        "text": "\\(\\frac{1}{16}\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\frac{1}{8}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{3}{16}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{3}{4}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\(\\sin x\\cos y = \\frac{1}{4}\\). From \\(3\\tan x = 4\\tan y\\): \\(\\frac{\\sin x\\cos y}{\\cos x\\sin y} = \\frac{4}{3}\\), so \\(\\cos x\\sin y = \\frac{3}{4}\\sin x\\cos y = \\frac{3}{4}\\cdot\\frac{1}{4} = \\frac{3}{16}\\). Then \\(\\sin(x-y) = \\sin x\\cos y - \\cos x\\sin y = \\frac{1}{4} - \\frac{3}{16} = \\frac{4-3}{16} = \\frac{1}{16}\\). Hence (A).",
+    "verdict": ""
+  },
+  {
+    "questionId": "8e92d9cf-6cae-427b-ac12-0424a3ccb078",
+    "questionNumber": "1136",
+    "disposition": "review",
+    "text": "\\(\\left(1 + \\cos\\frac{\\pi}{8}\\right)\\left(1 + \\cos\\frac{3\\pi}{8}\\right)\\left(1 + \\cos\\frac{5\\pi}{8}\\right)\\left(1 + \\cos\\frac{7\\pi}{8}\\right)\\) is equal to",
+    "options": [
+      {
+        "text": "\\(\\frac{1}{2}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\cos\\dfrac{\\pi}{8}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{1}{8}\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\frac{1+\\sqrt{2}}{2\\sqrt{2}}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Pair: \\((1+\\cos\\tfrac{\\pi}{8})(1+\\cos\\tfrac{7\\pi}{8})=(1+\\cos\\tfrac{\\pi}{8})(1-\\cos\\tfrac{\\pi}{8})=\\sin^2\\tfrac{\\pi}{8}\\); \\((1+\\cos\\tfrac{3\\pi}{8})(1+\\cos\\tfrac{5\\pi}{8})=\\sin^2\\tfrac{3\\pi}{8}\\). Product \\(=\\sin^2\\tfrac{\\pi}{8}\\cos^2\\tfrac{\\pi}{8}=\\tfrac14\\sin^2\\tfrac{\\pi}{4}=\\tfrac14\\cdot\\tfrac12=\\tfrac18\\). Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "c673d3f9-f560-4df5-9321-8dee98501ad8",
+    "questionNumber": "1141",
+    "disposition": "review",
+    "text": "\\(\\cos^2\\frac{\\pi}{12} + \\cos^2\\frac{\\pi}{4} + \\cos^2\\frac{5\\pi}{12} =\\)",
+    "options": [
+      {
+        "text": "\\(\\frac{3}{2}\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\frac{2}{3}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{3 + \\sqrt{3}}{2}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{2}{3 + \\sqrt{3}}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\(\\cos^2\\frac{5\\pi}{12} = \\cos^2(75^\\circ) = \\sin^2(15^\\circ) = \\sin^2\\frac{\\pi}{12}\\). So \\(\\cos^2\\frac{\\pi}{12} + \\cos^2\\frac{5\\pi}{12} = \\cos^2\\frac{\\pi}{12} + \\sin^2\\frac{\\pi}{12} = 1\\). Plus \\(\\cos^2\\frac{\\pi}{4} = \\frac12\\). Total \\(= 1 + \\frac12 = \\frac{3}{2}\\). Hence (A).",
+    "verdict": ""
+  },
+  {
+    "questionId": "a0a97d14-1bbd-4bbf-a3b2-aa4cd01ba985",
+    "questionNumber": "1146",
+    "disposition": "review",
+    "text": "If \\(\\alpha\\) and \\(\\beta\\) satisfying \\(2\\sec2\\alpha = \\tan\\beta + \\cot\\beta\\) then \\(\\alpha + \\beta =\\)",
+    "options": [
+      {
+        "text": "\\(\\pi/2\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\pi/3\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\pi/4\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\pi\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\(\\tan\\beta+\\cot\\beta=\\frac{1}{\\sin\\beta\\cos\\beta}=2\\csc 2\\beta\\), so \\(2\\sec 2\\alpha=2\\csc 2\\beta\\Rightarrow\\cos 2\\alpha=\\sin 2\\beta\\Rightarrow 2\\alpha+2\\beta=\\frac{\\pi}{2}\\Rightarrow\\alpha+\\beta=\\frac{\\pi}{4}\\). Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "edd0fd13-992b-4c8b-8a9a-4f6c5ce99cf1",
+    "questionNumber": "1176",
+    "disposition": "review",
+    "text": "If \\(0 \\le x < 2\\pi\\), then the number of real values of x, which satisfy the equation \\(\\cos x + \\cos 2x + \\cos 3x + \\cos 4x = 0\\), is",
+    "options": [
+      {
+        "text": "3",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "5",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "7",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "9",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Group as \\((\\cos x + \\cos 4x) + (\\cos 2x + \\cos 3x) = 0\\), i.e. \\(2\\cos\\frac{5x}{2}\\cos\\frac{3x}{2} + 2\\cos\\frac{5x}{2}\\cos\\frac{x}{2} = 0\\), so \\(2\\cos\\frac{5x}{2}\\left(\\cos\\frac{3x}{2} + \\cos\\frac{x}{2}\\right) = 0\\), which gives \\(4\\cos\\frac{5x}{2}\\cos x \\cos\\frac{x}{2} = 0\\). In \\([0, 2\\pi)\\): \\(\\cos\\frac{5x}{2} = 0\\) gives \\(x = \\frac{\\pi}{5}, \\frac{3\\pi}{5}, \\pi, \\frac{7\\pi}{5}, \\frac{9\\pi}{5}\\) (5 values); \\(\\cos x = 0\\) gives \\(x = \\frac{\\pi}{2}, \\frac{3\\pi}{2}\\) (2 values); \\(\\cos\\frac{x}{2} = 0\\) gives \\(x = \\pi\\) (already counted). Removing the repeat, the distinct count is 7. Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "55fb413d-da97-46f2-b70a-999aab16895b",
+    "questionNumber": "1227",
+    "disposition": "review",
+    "text": "If \\(\\cos x \\ne -\\frac{1}{2}\\), then the solutions of \\(\\cos x + \\cos 2x + \\cos 3x = 0\\) are",
+    "options": [
+      {
+        "text": "\\(2n\\pi \\pm \\frac{\\pi}{4}, n \\in Z\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(2n\\pi \\pm \\frac{\\pi}{3}, n \\in Z\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(2n\\pi \\pm \\frac{\\pi}{6}, n \\in Z\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(2n\\pi \\pm \\frac{\\pi}{2}, n \\in Z\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Group the outer two terms with the sum-to-product identity. Since \\(\\dfrac{x + 3x}{2} = 2x\\) and \\(\\dfrac{3x - x}{2} = x\\),\n\n\\(\\cos x + \\cos 3x = 2\\cos 2x\\cos x\\).\n\nThe equation therefore becomes\n\n\\(2\\cos 2x\\cos x + \\cos 2x = 0\\), i.e. \\(\\cos 2x\\,(2\\cos x + 1) = 0\\).\n\nA product is zero when a factor is, so either \\(\\cos 2x = 0\\) or \\(\\cos x = -\\dfrac{1}{2}\\). The stem EXCLUDES the second, which is exactly why that condition is given, so the equation reduces to\n\n\\(\\cos 2x = 0\\).\n\nCosine vanishes at the odd multiples of \\(\\dfrac{\\pi}{2}\\), so \\(2x = (2n+1)\\dfrac{\\pi}{2}\\) and hence\n\n\\(x = (2n+1)\\dfrac{\\pi}{4}\\) — the odd multiples of \\(\\dfrac{\\pi}{4}\\), which can equally be written \\(x = n\\pi \\pm \\dfrac{\\pi}{4}\\).\n\nHence (A).\n\n[Textbook: no printed option is the complete solution set. The keyed option reads \\(2n\\pi \\pm \\dfrac{\\pi}{4}\\), which lists only \\(\\dfrac{\\pi}{4}\\) and \\(\\dfrac{7\\pi}{4}\\) in \\([0, 2\\pi)\\) and so omits \\(\\dfrac{3\\pi}{4}\\) and \\(\\dfrac{5\\pi}{4}\\) — both genuine solutions, at which \\(\\cos x = -\\dfrac{1}{\\sqrt{2}}\\), not the excluded \\(-\\dfrac{1}{2}\\). It is still the only defensible choice: substituting the other three options gives \\(-1\\), \\(1.366\\) and \\(-1\\) respectively, so none of them contains a solution at all.]",
+    "verdict": ""
+  },
+  {
+    "questionId": "f7ba6f20-a383-4309-8907-108067cb9e32",
+    "questionNumber": "1286",
+    "disposition": "review",
+    "text": "The periodic function \\(f(\\theta) = 4 + 4\\sin^3\\theta - 3\\sin\\theta\\) is",
+    "options": [
+      {
+        "text": "\\(\\frac{2\\pi}{3}\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\frac{\\pi}{3}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{\\pi}{2}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\pi\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Since \\(3\\sin\\theta - 4\\sin^3\\theta = \\sin 3\\theta\\), we have \\(4\\sin^3\\theta - 3\\sin\\theta = -\\sin 3\\theta\\). So \\(f(\\theta) = 4 - \\sin 3\\theta\\). The period of \\(\\sin 3\\theta\\) is \\(\\frac{2\\pi}{3}\\). Hence (A).",
+    "verdict": ""
+  },
+  {
+    "questionId": "5a729868-5076-4f31-a3fc-30536feaa9d4",
+    "questionNumber": "1333",
+    "disposition": "review",
+    "text": "The value of \\(\\sin^{-1}\\left(\\cos\\frac{53\\pi}{5}\\right)\\) is",
+    "options": [
+      {
+        "text": "\\(\\frac{3\\pi}{5}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{-3\\pi}{5}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{\\pi}{10}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{-\\pi}{10}\\)",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "\\(\\frac{53\\pi}{5} = 10\\pi + \\frac{3\\pi}{5}\\), so \\(\\cos\\frac{53\\pi}{5} = \\cos\\frac{3\\pi}{5}\\). Now \\(\\cos\\frac{3\\pi}{5} = \\sin\\left(\\frac{\\pi}{2} - \\frac{3\\pi}{5}\\right) = \\sin\\left(-\\frac{\\pi}{10}\\right)\\). Therefore \\(\\sin^{-1}\\left(\\sin\\left(-\\frac{\\pi}{10}\\right)\\right) = -\\frac{\\pi}{10}\\). Hence (D).",
+    "verdict": ""
+  },
+  {
+    "questionId": "3769f793-95b5-48dc-a23e-07813c7d44c0",
+    "questionNumber": "1392",
+    "disposition": "review",
+    "text": "If \\(\\tan^{-1}x + \\tan^{-1}y + \\tan^{-1}z = \\pi\\), then \\(x + y + z = \\)",
+    "options": [
+      {
+        "text": "\\(xyz\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\((xyz)^2\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{1}{xyz}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "None of these",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "From \\(\\tan^{-1}x + \\tan^{-1}y + \\tan^{-1}z = \\pi\\), write \\(\\tan^{-1}y + \\tan^{-1}z = \\pi - \\tan^{-1}x\\), so \\(\\dfrac{y+z}{1-yz} = -x\\). Then \\(y + z = -x(1 - yz) = -x + xyz\\), giving \\(x + y + z = xyz\\). Hence (A).",
+    "verdict": ""
+  },
+  {
+    "questionId": "56786c1f-10f1-4006-aa13-4d15c524e65a",
+    "questionNumber": "1445",
+    "disposition": "review",
+    "text": "The equation of the straight line passing through the point \\((-2, 9)\\) and perpendicular to the x-axis is",
+    "options": [
+      {
+        "text": "\\(x + 9 = 0\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(x - 2 = 0\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(x + 2 = 0\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(x - 9 = 0\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "A line perpendicular to the x-axis is vertical, of the form \\(x=\\text{constant}.\\) Through \\((-2, 9)\\) it is \\(x=-2\\), i.e. \\(x+2=0.\\) Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "d70c29ca-b4d2-43a2-9b57-d02b19ceb097",
+    "questionNumber": "1449",
+    "disposition": "review",
+    "text": "A line passes through \\((2, 2)\\) and is perpendicular to the line \\(3x + y = 3\\). What is its \\(y\\)-intercept?",
+    "options": [
+      {
+        "text": "\\(\\frac{1}{3}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{2}{3}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(1\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{4}{3}\\)",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "Line \\(3x+y=3\\) has slope \\(-3\\), so a perpendicular has slope \\(\\tfrac{1}{3}.\\) Through \\((2, 2)\\): \\(y-2=\\tfrac{1}{3}(x-2)\\Rightarrow y=\\tfrac{1}{3}x+\\tfrac{4}{3}.\\) The \\(y\\)-intercept is \\(\\tfrac{4}{3}.\\) Hence (D).",
+    "verdict": ""
+  },
+  {
+    "questionId": "49c87605-314f-41b1-bbd3-a70b3c80991e",
+    "questionNumber": "1457",
+    "disposition": "review",
+    "text": "If a straight line passes through the points \\(\\left(\\frac{-1}{2}, 1\\right)\\) and \\((1, 2)\\), then its \\(x\\)-intercept is",
+    "options": [
+      {
+        "text": "\\(-2\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(-1\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(2\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(1\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Slope \\(=\\dfrac{2-1}{1-(-1/2)}=\\dfrac{1}{3/2}=\\tfrac{2}{3}.\\) Line: \\(y-2=\\tfrac{2}{3}(x-1).\\) At \\(y=0\\): \\(-2=\\tfrac{2}{3}(x-1)\\Rightarrow x-1=-3\\Rightarrow x=-2.\\) Hence (A).",
+    "verdict": ""
+  },
+  {
+    "questionId": "647a5cbc-0726-4fcd-89f5-076374493f03",
+    "questionNumber": "1489",
+    "disposition": "review",
+    "text": "The equations \\(y=\\pm\\sqrt{3}\\,x,\\ y=1\\) are the sides of",
+    "options": [
+      {
+        "text": "an equilateral triangle",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "a right angled triangle",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "an isosceles triangle",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "an obtuse angled triangle",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\(y=\\sqrt{3}x\\) and \\(y=-\\sqrt{3}x\\) meet at the origin; with \\(y=1\\) the vertices are \\((0,0),\\left(\\frac{1}{\\sqrt3},1\\right),\\left(-\\frac{1}{\\sqrt3},1\\right)\\). Each slant side has length \\(\\sqrt{\\frac13+1}=\\frac{2}{\\sqrt3}\\) and the base \\(=\\frac{2}{\\sqrt3}\\); all three sides are equal, so it is an equilateral triangle. Hence (A).",
+    "verdict": ""
+  },
+  {
+    "questionId": "6ce09756-93d1-4cda-be24-a4b9acb79bd2",
+    "questionNumber": "1515",
+    "disposition": "review",
+    "text": "The line \\(L\\) given by \\(\\frac{x}{5}+\\frac{y}{b}=1\\) passes through the point \\((13,32)\\). The line \\(K\\) is parallel to \\(L\\) and has the equation \\(\\frac{x}{c}+\\frac{y}{3}=1\\). Then the distance between \\(L\\) and \\(K\\) is",
+    "options": [
+      {
+        "text": "\\(\\frac{23}{\\sqrt{15}}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\sqrt{17}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{17}{\\sqrt{15}}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{23}{\\sqrt{17}}\\)",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "\\(L:\\frac{x}{5}+\\frac{y}{b}=1\\) through \\((13,32)\\): \\(\\frac{13}{5}+\\frac{32}{b}=1\\Rightarrow\\frac{32}{b}=-\\frac{8}{5}\\Rightarrow b=-20\\). So \\(L:4x-y=20\\) (slope \\(4\\)). \\(K\\) parallel to \\(L\\): \\(\\frac{x}{c}+\\frac{y}{3}=1\\) has slope \\(-\\frac{3}{c}=4\\Rightarrow c=-\\frac34\\), giving \\(K:4x-y=-3\\). Distance between \\(4x-y-20=0\\) and \\(4x-y+3=0\\) is \\(\\frac{|-20-3|}{\\sqrt{4^{2}+1^{2}}}=\\frac{23}{\\sqrt{17}}\\). Hence (D).",
+    "verdict": ""
+  },
+  {
+    "questionId": "69ec37dd-cd11-416f-8af1-25afc9c970ef",
+    "questionNumber": "1577",
+    "disposition": "review",
+    "text": "The lines \\(2x - 3y = 5\\) and \\(3x - 4y = 7\\) are the diameters of a circle of area \\(154\\) square units. Then the equation of the circle is",
+    "options": [
+      {
+        "text": "\\(x^2 + y^2 - 2x + 2y + 47 = 0\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(x^2 + y^2 + 2x - 2y - 47 = 0\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(x^2 + y^2 - 2x + 2y - 47 = 0\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(x^2 + y^2 - 2x - 2y + 47 = 0\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "The centre is the intersection of the diameters \\(2x-3y=5\\) and \\(3x-4y=7\\), i.e. \\((1,-1)\\). Area \\(=\\pi r^2=154=\\tfrac{22}{7}r^2\\Rightarrow r^2=49\\). Circle: \\((x-1)^2+(y+1)^2=49\\Rightarrow x^2+y^2-2x+2y-47=0\\). Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "7c00aa12-bc66-4945-a7ee-e1bd6345703b",
+    "questionNumber": "1584",
+    "disposition": "review",
+    "text": "The straight lines \\(x - 4y + 7 = 0\\) and \\(3x - 12y + 11 = 0\\) are tangents to a circle. The radius of the circle is",
+    "options": [
+      {
+        "text": "\\(\\dfrac{10}{3\\sqrt{17}}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{5}{3\\sqrt{7}}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{5}{\\sqrt{17}}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{5}{3\\sqrt{17}}\\)",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "The lines \\(x - 4y + 7 = 0\\) and \\(3x - 12y + 11 = 0\\) (i.e. \\(x - 4y + \\tfrac{11}{3} = 0\\)) are parallel tangents. The distance between them equals the diameter: \\(d = \\tfrac{|7 - \\tfrac{11}{3}|}{\\sqrt{1 + 16}} = \\tfrac{\\tfrac{10}{3}}{\\sqrt{17}} = \\tfrac{10}{3\\sqrt{17}}\\). Radius \\(= \\tfrac{d}{2} = \\tfrac{5}{3\\sqrt{17}}\\). Hence (D).",
+    "verdict": ""
+  },
+  {
+    "questionId": "2f8184bb-429d-481a-93f5-326526e499de",
+    "questionNumber": "1657",
+    "disposition": "review",
+    "text": "The parametric coordinates of any point on the parabola \\(y^2 = 4ax\\) are given by",
+    "options": [
+      {
+        "text": "\\((-at^2, 2at)\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\((a\\sin^2 t, -2a\\sin t)\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\((-at^2, -2at)\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\((a\\sin t, -2a\\sin t)\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Test each pair against \\(y^2 = 4ax\\). For \\((a\\sin^2 t, -2a\\sin t)\\): \\(y^2 = 4a^2\\sin^2 t\\) and \\(4ax = 4a \\cdot a\\sin^2 t = 4a^2\\sin^2 t\\), which are equal. The other options give a sign or power mismatch. Hence (B).",
+    "verdict": ""
+  },
+  {
+    "questionId": "6386aa47-343a-45ce-9895-5b1a7a4dfa13",
+    "questionNumber": "1738",
+    "disposition": "review",
+    "text": "The sum of the focal distances from any point on the ellipse \\(9x^2 + 16y^2 = 144\\) is",
+    "options": [
+      {
+        "text": "\\(2\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(3\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(4\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(8\\)",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "\\(9x^2 + 16y^2 = 144\\) gives \\(\\dfrac{x^2}{16} + \\dfrac{y^2}{9} = 1\\), \\(a = 4\\). Sum of focal distances \\(= 2a = 8\\). Hence (D).",
+    "verdict": ""
+  },
+  {
+    "questionId": "9bf3f0a3-00d1-481f-a98c-903d8c16a5d4",
+    "questionNumber": "1831",
+    "disposition": "review",
+    "text": "If \\(\\hat{i} + \\hat{j} - \\hat{k}\\) and \\(2\\hat{i} - 3\\hat{j} + \\hat{k}\\) are adjacent sides of a parallelogram, then the lengths of its diagonals are",
+    "options": [
+      {
+        "text": "\\(\\sqrt{21}, \\sqrt{13}\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\sqrt{3}, \\sqrt{14}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\sqrt{13}, \\sqrt{14}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\sqrt{21}, \\sqrt{3}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "If \\(\\vec{u}\\) and \\(\\vec{v}\\) are adjacent sides of a parallelogram, its diagonals are \\(\\vec{u} + \\vec{v}\\) and \\(\\vec{u} - \\vec{v}\\).\n\nHere \\(\\vec{u} = \\hat{i} + \\hat{j} - \\hat{k} = (1,\\,1,\\,-1)\\) and \\(\\vec{v} = 2\\hat{i} - 3\\hat{j} + \\hat{k} = (2,\\,-3,\\,1)\\).\n\nFirst diagonal: \\(\\vec{u} + \\vec{v} = (1+2,\\ 1-3,\\ -1+1) = (3,\\,-2,\\,0)\\), so its length is \\(\\sqrt{3^2 + (-2)^2 + 0^2} = \\sqrt{9+4} = \\sqrt{13}\\).\n\nSecond diagonal: \\(\\vec{u} - \\vec{v} = (1-2,\\ 1+3,\\ -1-1) = (-1,\\,4,\\,-2)\\), so its length is \\(\\sqrt{1 + 16 + 4} = \\sqrt{21}\\).\n\nThe diagonals are \\(\\sqrt{21}\\) and \\(\\sqrt{13}\\). Hence (A).",
+    "verdict": ""
+  },
+  {
+    "questionId": "3effaaec-15e5-4043-bf69-07e8837f5f32",
+    "questionNumber": "1870",
+    "disposition": "review",
+    "text": "The angle subtended at the point \\((1,2,3)\\) by the points P\\((2,4,5)\\) and Q\\((3,3,1)\\), is",
+    "options": [
+      {
+        "text": "\\(90^\\circ\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(60^\\circ\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(30^\\circ\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(0^\\circ\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\(\\vec{AQ}=(2,1,-2)\\), \\(\\vec{AP}=(1,2,2)\\) from A\\((1,2,3)\\). \\(\\vec{AP}\\cdot\\vec{AQ}=2+2-4=0\\), so the angle is \\(90^\\circ\\). Hence (A).",
+    "verdict": ""
+  },
+  {
+    "questionId": "180ac283-5a4e-4302-83a7-ad4cbcf11826",
+    "questionNumber": "1893",
+    "disposition": "review",
+    "text": "If \\( |\\vec{a}| = 2 \\), \\( |\\vec{b}| = 5 \\) and \\( |\\vec{a} \\times \\vec{b}| = 8 \\), then \\( \\vec{a} \\cdot \\vec{b} = ? \\)",
+    "options": [
+      {
+        "text": "\\( 3 \\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\( 4 \\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\( 5 \\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\( 6 \\)",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "For any two vectors, with \\(\\theta\\) the angle between them,\n\\(\\vec{a}\\cdot\\vec{b} = |\\vec{a}||\\vec{b}|\\cos\\theta\\) and \\(|\\vec{a}\\times\\vec{b}| = |\\vec{a}||\\vec{b}|\\sin\\theta\\).\n\nSquaring and adding kills \\(\\theta\\):\n\\((\\vec{a}\\cdot\\vec{b})^{2} + |\\vec{a}\\times\\vec{b}|^{2} = |\\vec{a}|^{2}|\\vec{b}|^{2}\\left(\\cos^{2}\\theta + \\sin^{2}\\theta\\right) = |\\vec{a}|^{2}|\\vec{b}|^{2}\\).\n\nSubstitute \\(|\\vec{a}| = 2\\), \\(|\\vec{b}| = 5\\), \\(|\\vec{a}\\times\\vec{b}| = 8\\):\n\\((\\vec{a}\\cdot\\vec{b})^{2} + 64 = 2^{2}\\cdot 5^{2} = 100\\)\n\\(\\Rightarrow (\\vec{a}\\cdot\\vec{b})^{2} = 36\\)\n\\(\\Rightarrow \\vec{a}\\cdot\\vec{b} = \\pm 6\\).\n\nOnly \\(6\\) appears among the options.\n\nHence (D).\n\nA quick consistency check on the data: \\(\\sin\\theta = \\dfrac{8}{2\\times 5} = \\dfrac{4}{5} \\leq 1\\), so the magnitudes given are genuinely realisable, and \\(\\cos\\theta = \\pm\\dfrac{3}{5}\\) reproduces \\(\\vec{a}\\cdot\\vec{b} = \\pm 6\\).",
+    "verdict": ""
+  },
+  {
+    "questionId": "28a712d8-24cd-4f3c-8c96-b32930e40bd7",
+    "questionNumber": "1903",
+    "disposition": "review",
+    "text": "The area of the parallelogram with \\( \\vec{a} \\) and \\( \\vec{b} \\) as adjacent sides is \\( 20 \\) sq. units. Then the area of the parallelogram having \\( 7\\vec{a} + 5\\vec{b} \\) and \\( 8\\vec{a} + 11\\vec{b} \\) as adjacent sides is",
+    "options": [
+      {
+        "text": "\\( 2960 \\) sq. units",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\( 740 \\) sq. units",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\( 1340 \\) sq. units",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\( 3340 \\) sq. units",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Area \\( = |(7\\vec{a}+5\\vec{b})\\times(8\\vec{a}+11\\vec{b})| = |56(\\vec{a}\\times\\vec{a}) + 77(\\vec{a}\\times\\vec{b}) + 40(\\vec{b}\\times\\vec{a}) + 55(\\vec{b}\\times\\vec{b})| = |77 - 40||\\vec{a}\\times\\vec{b}| = 37\\times20 = 740 \\) sq units. Matches option B.",
+    "verdict": ""
+  },
+  {
+    "questionId": "946b7450-5838-4a41-add8-fa6436c75889",
+    "questionNumber": "1991",
+    "disposition": "review",
+    "text": "If a line makes angles \\( \\pi/3 \\) and \\( \\pi/4 \\) with the \\( x \\) and \\( y \\) axis respectively, then the angle made by the line \\( z \\)-axis is",
+    "options": [
+      {
+        "text": "\\( \\pi/4 \\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\( \\pi/3 \\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\( \\pi/2 \\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\( \\pi/6 \\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\( \\cos^2\\frac{\\pi}{3} + \\cos^2\\frac{\\pi}{4} + \\cos^2\\theta = 1 \\Rightarrow \\frac14 + \\frac12 + \\cos^2\\theta = 1 \\Rightarrow \\cos^2\\theta = \\frac14 \\Rightarrow \\theta = \\frac{\\pi}{3} \\). Matches option B.",
+    "verdict": ""
+  },
+  {
+    "questionId": "30b97858-600a-4395-be3e-8b86f6392139",
+    "questionNumber": "2165",
+    "disposition": "review",
+    "text": "The mapping \\(f:N\\to N\\) given by \\(f(n)=1+n^{2}\\), where \\(n\\in N\\) where \\(N\\) is the set of natural numbers, is",
+    "options": [
+      {
+        "text": "One to one and onto",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "Onto but not one-to-one",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "One-to-one but not onto",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "Neither one-to-one nor onto",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "For \\(f(n)=1+n^{2}\\) on \\(N\\): distinct positive integers give distinct values, so it is one-to-one. But the range \\(\\{2,5,10,17,\\ldots\\}\\) misses most natural numbers (e.g. \\(1,3,4\\)), so it is not onto. Therefore one-to-one but not onto. Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "8988fd43-c69c-449c-b735-7a3d1f9a5fcd",
+    "questionNumber": "2173",
+    "disposition": "review",
+    "text": "If \\(g(f(x))=|\\sin x|\\), \\(f(g(x))=(\\sin\\sqrt{x})^{2}\\), then",
+    "options": [
+      {
+        "text": "\\(f(x)=\\sin x\\), \\(g(x)=|x|\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(f(x)=x^{2}\\), \\(g(x)=\\sin\\sqrt{x}\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(f\\) and \\(g\\) cannot be determined",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(f(x)=\\sin^{2}x\\), \\(g(x)=\\sqrt{x}\\)",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "Test option D: \\(f(x)=\\sin^{2}x\\), \\(g(x)=\\sqrt{x}\\). Then \\(g(f(x))=\\sqrt{\\sin^{2}x}=|\\sin x|\\) and \\(f(g(x))=\\sin^{2}(\\sqrt{x})=(\\sin\\sqrt{x})^{2}\\), matching both given composites. Hence (D).",
+    "verdict": ""
+  },
+  {
+    "questionId": "2f132e22-596a-42c4-9de4-57c001ea21b9",
+    "questionNumber": "2189",
+    "disposition": "review",
+    "text": "If \\(f(x) = \\sin x + \\cos x\\), \\(x \\in (-\\infty, \\infty)\\) and \\(g(x) = x^2\\), \\(x \\in (-\\infty, \\infty)\\), then \\((f \\circ g)(x)\\) is equal to",
+    "options": [
+      {
+        "text": "\\(1\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(0\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\sin x^2 + \\cos x^2\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\sin(x^2) + \\cos^2(x)\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\((f \\circ g)(x) = f(g(x)) = f(x^2) = \\sin(x^2) + \\cos(x^2)\\). Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "66822744-98c4-43ef-8a7a-2e64ca2bd235",
+    "questionNumber": "2353",
+    "disposition": "review",
+    "text": "Let \\(f : R \\to R\\) be defined as \\(f(x) = \\begin{cases} 0 & x \\text{ is irrational} \\\\ \\sin|x| & x \\text{ is rational} \\end{cases}\\) Then which of the following is true?",
+    "options": [
+      {
+        "text": "\\(f\\) is discontinuous for all \\(x\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(f\\) is continuous for all \\(x\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(f\\) is discontinuous at \\(x = k\\pi\\) where k is an integer",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(f\\) is continuous at \\(x = k\\pi\\), where k is an integer",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "Continuity at \\(a\\) requires the rational-limit \\(\\sin|x|\\to\\sin|a|\\) and the irrational-limit \\(0\\) to agree with \\(f(a)\\). This forces \\(\\sin|a| = 0\\), i.e. \\(a = k\\pi\\). At such points \\(f\\) is continuous; elsewhere it is discontinuous. So \\(f\\) is continuous at \\(x = k\\pi\\), \\(k\\) an integer. Hence (D).",
+    "verdict": ""
+  },
+  {
+    "questionId": "51969cf0-2b1c-46c3-88e6-0917765229b8",
+    "questionNumber": "2366",
+    "disposition": "review",
+    "text": "If \\(f(x) = x\\sin(\\pi/x)\\) is continuous everywhere, then \\(f(0) =\\)",
+    "options": [
+      {
+        "text": "\\(-1\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(1\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(0\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "all of these",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "As \\(x\\to 0\\), \\(x\\sin(\\pi/x)\\) is bounded by \\(|x|\\to 0\\) (since \\(|\\sin(\\pi/x)|\\le 1\\)), so \\(\\lim_{x\\to 0}f(x) = 0\\). For continuity everywhere, \\(f(0) = 0\\). Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "41ff30b9-75fd-4f7b-b4b4-ceefc55e2773",
+    "questionNumber": "2392",
+    "disposition": "review",
+    "text": "If \\(y = \\tan^{-1}\\left(\\frac{2x}{1 + 3x^2}\\right) + \\tan^{-1}\\left(\\frac{5 + x}{1 - 5x}\\right)\\), then \\(\\frac{dy}{dx} = \\)",
+    "options": [
+      {
+        "text": "\\(\\frac{9}{1 + 9x^2}\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{3}{1 + 9x^2}\\)",
+        "label": "B",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\frac{1}{1 + 9x^2}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{3}{1 + 3x^2}\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Write \\(\\tan^{-1}\\left(\\frac{2x}{1 + 3x^2}\\right) = \\tan^{-1}(3x) - \\tan^{-1}(x)\\) and \\(\\tan^{-1}\\left(\\frac{5 + x}{1 - 5x}\\right) = \\tan^{-1}(5) + \\tan^{-1}(x)\\). Then \\(y = \\tan^{-1}(3x) - \\tan^{-1}(x) + \\tan^{-1}(5) + \\tan^{-1}(x) = \\tan^{-1}(3x) + \\tan^{-1}(5)\\). Differentiating, \\(\\frac{dy}{dx} = \\frac{3}{1 + 9x^2}\\). Hence (B).",
+    "verdict": ""
+  },
+  {
+    "questionId": "534c7d06-63d2-41d8-aa4a-ee491b63a114",
+    "questionNumber": "2429",
+    "disposition": "review",
+    "text": "If \\(f(x) = |x - 2| + |x + 1| - x\\), then \\(f'(-10)\\) is equal to",
+    "options": [
+      {
+        "text": "\\(-3\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(-2\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(-1\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "0",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "At \\(x = -10\\): \\(x - 2 = -12 < 0\\) so \\(|x - 2| = 2 - x\\); \\(x + 1 = -9 < 0\\) so \\(|x + 1| = -x - 1\\). Then \\(f(x) = (2 - x) + (-x - 1) - x = 1 - 3x\\), so \\(f'(x) = -3\\) and \\(f'(-10) = -3\\). Hence (A).",
+    "verdict": ""
+  },
+  {
+    "questionId": "6a425f74-4a2e-42ad-8e98-907aa99d6cc8",
+    "questionNumber": "2483",
+    "disposition": "review",
+    "text": "If \\(y=(\\tan^{-1}x)^2\\), then \\((x^2+1)^2 y_2+2x(x^2+1)y_1\\) is equal to",
+    "options": [
+      {
+        "text": "\\(4\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(0\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(2\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(1\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\(y=(\\tan^{-1}x)^2\\Rightarrow y_1=\\dfrac{2\\tan^{-1}x}{1+x^2}\\Rightarrow (1+x^2)y_1=2\\tan^{-1}x\\). Differentiating: \\(2xy_1+(1+x^2)y_2=\\dfrac{2}{1+x^2}\\). Multiplying by \\((1+x^2)\\): \\((1+x^2)^2y_2+2x(1+x^2)y_1=2\\). Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "88ceaef9-2b51-4a47-9347-9e10f0ff6e8d",
+    "questionNumber": "2496",
+    "disposition": "review",
+    "text": "If \\(y=e^{a\\sin^{-1}x}\\), then \\((1-x^2)y_{n+2}-(2n+1)xy_{n+1}\\) is equal to",
+    "options": [
+      {
+        "text": "\\(-(n^2+a^2)y_n\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\((n^2-a^2)y_n\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\((n^2+a^2)y_n\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(-(n^2-a^2)y_n\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\(y=e^{a\\sin^{-1}x}\\Rightarrow y_1=\\dfrac{ay}{\\sqrt{1-x^2}}\\Rightarrow (1-x^2)y_1^2=a^2y^2\\). Differentiating and dividing by \\(2y_1\\): \\((1-x^2)y_2-xy_1-a^2y=0\\). Applying Leibniz's rule for the \\(n^{\\text{th}}\\) derivative gives \\((1-x^2)y_{n+2}-(2n+1)xy_{n+1}-(n^2+a^2)y_n=0\\), so \\((1-x^2)y_{n+2}-(2n+1)xy_{n+1}=(n^2+a^2)y_n\\). Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "2b500104-4a8d-4588-a6a9-d8ebea722ec0",
+    "questionNumber": "2559",
+    "disposition": "review",
+    "text": "The function \\(f(x) = 2x^3 + 3x^2 - 12x + 1\\) decreases in the interval",
+    "options": [
+      {
+        "text": "\\((2, 3)\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\((1, 2)\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\((-2, 1)\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\((-3, -2)\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\(f(x) = 2x^3 + 3x^2 - 12x + 1\\), \\(f'(x) = 6x^2 + 6x - 12 = 6(x^2 + x - 2) = 6(x + 2)(x - 1)\\). \\(f'(x) < 0\\) (decreasing) where \\((x + 2)(x - 1) < 0\\): \\(-2 < x < 1\\), i.e. \\((-2, 1)\\). Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "612e1574-36e8-4a95-8426-d4526af346f7",
+    "questionNumber": "2674",
+    "disposition": "review",
+    "text": "The function \\(f(x) = \\sum_{k=1}^{5}(x - k)^2\\) assumes minimum value for \\(x\\) given by",
+    "options": [
+      {
+        "text": "3",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "2",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{5}{2}\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "5",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "\\(f(x) = \\sum_{k=1}^{5}(x - k)^2\\) is minimised at the mean of \\(1, 2, 3, 4, 5\\), which is \\(x = 3\\). Hence (A).",
+    "verdict": ""
+  },
+  {
+    "questionId": "85ce5f54-dece-4a37-be2d-8c99847bbe18",
+    "questionNumber": "2683",
+    "disposition": "review",
+    "text": "If \\(\\displaystyle\\int f(x)\\,dx = \\frac{f(x)}{2} + C\\), then which one of the following is correct?",
+    "options": [
+      {
+        "text": "\\(f(x) = e^{2x} + C\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(f(x) = x + C\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(f(x) = C\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(f(x) = e^{2x}\\)",
+        "label": "D",
+        "is_correct": true
+      }
+    ],
+    "solution": "Differentiate \\(\\displaystyle\\int f(x)\\,dx = \\dfrac{f(x)}{2} + C\\): we get \\(f(x) = \\dfrac{f'(x)}{2}\\), i.e. \\(f'(x) = 2f(x)\\). The solution of this differential equation is \\(f(x) = e^{2x}\\) (an exponential, no additive constant). Matches option D. Hence (D).",
+    "verdict": ""
+  },
+  {
+    "questionId": "8292ad09-7561-48ea-af78-9288b9b77100",
+    "questionNumber": "2729",
+    "disposition": "review",
+    "text": "Let \\(I = \\displaystyle\\int \\frac{e^x}{e^{4x} + e^{2x} + 1}\\,dx,\\ J = \\displaystyle\\int \\frac{e^{-x}}{e^{-4x} + e^{-2x} + 1}\\,dx\\). Then for an arbitrary constant \\(C\\), the value of \\(J - I\\) equals",
+    "options": [
+      {
+        "text": "\\(\\dfrac{1}{2}\\log\\left(\\dfrac{e^{4x} - e^{2x} + 1}{e^{4x} + e^{2x} + 1}\\right) + C\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{1}{2}\\log\\left(\\dfrac{e^{2x} + e^x + 1}{e^{2x} - e^x + 1}\\right) + C\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\dfrac{1}{2}\\log\\left(\\dfrac{e^{2x} - e^x + 1}{e^{2x} + e^x + 1}\\right) + C\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\dfrac{1}{2}\\log\\left(\\dfrac{e^{4x} + e^{2x} + 1}{e^{4x} - e^{2x} + 1}\\right) + C\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Multiply \\(J\\) top and bottom by \\(e^{4x}\\): \\(J = \\displaystyle\\int \\dfrac{e^{3x}}{e^{4x} + e^{2x} + 1}\\,dx\\). Then \\(J - I = \\displaystyle\\int \\dfrac{e^x(e^{2x} - 1)}{e^{4x} + e^{2x} + 1}\\,dx\\). With \\(t = e^x\\), this is \\(\\displaystyle\\int \\dfrac{t^2 - 1}{t^4 + t^2 + 1}\\,dt\\); dividing by \\(t^2\\) and putting \\(u = t + \\tfrac{1}{t}\\) gives \\(\\displaystyle\\int \\dfrac{du}{u^2 - 1} = \\dfrac{1}{2}\\log\\left|\\dfrac{u - 1}{u + 1}\\right| = \\dfrac{1}{2}\\log\\!\\left(\\dfrac{e^{2x} - e^x + 1}{e^{2x} + e^x + 1}\\right) + C\\). Matches option C. Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "1fbeb833-3a95-4645-a19f-286216a9d945",
+    "questionNumber": "2871",
+    "disposition": "review",
+    "text": "The value of \\(\\displaystyle\\int_{-\\pi}^{\\pi} \\frac{\\cos^2 x}{1+a^{x}}\\,dx,\\ a>0\\) is",
+    "options": [
+      {
+        "text": "\\(a\\pi\\)",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\pi\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\pi/2\\)",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(2\\pi\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Let \\(I=\\int_{-\\pi}^{\\pi}\\frac{\\cos^2 x}{1+a^{x}}\\,dx\\). Using \\(x\\to -x\\) over the symmetric interval, \\(I=\\int_{-\\pi}^{\\pi}\\frac{\\cos^2 x\\cdot a^{x}}{1+a^{x}}\\,dx\\). Adding, \\(2I=\\int_{-\\pi}^{\\pi}\\cos^2 x\\,dx=\\pi\\), so \\(I=\\frac{\\pi}{2}\\). Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "590044d4-05d3-4688-aa29-5993fb1578c3",
+    "questionNumber": "2917",
+    "disposition": "review",
+    "text": "Area of region bounded by \\(y^2 = 4x\\) and \\(y = 2\\) is",
+    "options": [
+      {
+        "text": "\\(\\frac{1}{3}\\) sq. unit",
+        "label": "A",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{8}{9}\\) sq. unit",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(\\frac{2}{3}\\) sq. unit",
+        "label": "C",
+        "is_correct": true
+      },
+      {
+        "text": "\\(\\frac{1}{9}\\) sq. unit",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "The line \\(y = 2\\) meets \\(y^2 = 4x\\) at \\(x = 1\\). Integrating with respect to \\(y\\) from \\(0\\) to \\(2\\) (region between the \\(y\\)-axis and the parabola \\(x = \\frac{y^2}{4}\\)): Area \\(= \\int_{0}^{2}\\frac{y^2}{4}\\,dy = \\left[\\frac{y^3}{12}\\right]_{0}^{2} = \\frac{8}{12} = \\frac{2}{3}\\) sq. unit. Hence (C).",
+    "verdict": ""
+  },
+  {
+    "questionId": "d5530f12-547d-4eb4-8b5a-c28aac0ab073",
+    "questionNumber": "2998",
+    "disposition": "review",
+    "text": "The degree of the differential equation satisfied by the curve \\(\\sqrt{1+x} - a\\sqrt{1+y} = 1\\), where '\\(a\\)' is a parameter, is",
+    "options": [
+      {
+        "text": "1",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "2",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "3",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "None of these",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Differentiating \\(\\sqrt{1+x} - a\\sqrt{1+y} = 1\\) to eliminate the single parameter \\(a\\): \\(\\frac{1}{2\\sqrt{1+x}} - \\frac{a}{2\\sqrt{1+y}}\\frac{dy}{dx} = 0\\). Eliminating \\(a\\) gives a first order equation that is of degree 1 in \\(\\frac{dy}{dx}\\). Hence (A).",
+    "verdict": ""
+  },
+  {
+    "questionId": "71bbe6c7-0d56-4822-8e82-d3743ffeaaaf",
+    "questionNumber": "3001",
+    "disposition": "review",
+    "text": "The differential equation representing the family of parabolas having vertex at origin and axis along positive direction of \\(x\\)-axis is",
+    "options": [
+      {
+        "text": "\\(y^2 - 2xy\\frac{dy}{dx} = 0\\)",
+        "label": "A",
+        "is_correct": true
+      },
+      {
+        "text": "\\(y^2 + 2xy\\frac{dy}{dx} = 0\\)",
+        "label": "B",
+        "is_correct": false
+      },
+      {
+        "text": "\\(y^2 - 2xy\\frac{d^2y}{dx^2} = 0\\)",
+        "label": "C",
+        "is_correct": false
+      },
+      {
+        "text": "\\(y^2 + 2xy\\frac{d^2y}{dx^2} = 0\\)",
+        "label": "D",
+        "is_correct": false
+      }
+    ],
+    "solution": "Parabolas with vertex at the origin and axis along the positive \\(x\\)-axis are \\(y^2 = 4ax\\). Differentiating: \\(2y\\frac{dy}{dx} = 4a\\), and \\(4a = \\frac{y^2}{x}\\), so \\(2y\\frac{dy}{dx} = \\frac{y^2}{x}\\), giving \\(2xy\\frac{dy}{dx} = y^2\\), i.e. \\(y^2 - 2xy\\frac{dy}{dx} = 0\\). Hence (A).",
+    "verdict": ""
+  }
+]

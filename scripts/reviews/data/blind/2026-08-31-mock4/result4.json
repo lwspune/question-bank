@@ -1,0 +1,123 @@
+[
+ {
+  "questionId": "186a2af2-d9a7-4ef2-9276-6383a427bd13",
+  "qnum": "102",
+  "derived": "A",
+  "value": "mean increases by exactly 1",
+  "confidence": "high",
+  "why": "With 2n distinct observations the median is (x_n+x_{n+1})/2, so exactly n observations lie below it and n above. Total change = 5n - 3n = 2n over 2n observations, i.e. +1; simulated at n = 1,2,3,5,10 with exact rationals, delta = 1 every time."
+ },
+ {
+  "questionId": "4557ccee-8cb8-44b9-b085-e6923a9b15b7",
+  "qnum": "104",
+  "derived": "A",
+  "value": "488*tan(3*theta) = 191 exactly (tan theta = 1/8, tan 3theta = 191/488)",
+  "confidence": "high",
+  "why": "Slopes are -1/2 and -2/3, so tan(theta) = |(m1-m2)/(1+m1m2)| = (1/6)/(4/3) = 1/8; the triple-angle formula gives (3/8 - 1/512)/(1 - 3/64) = (191/512)/(61/64) = 191/488, so 488 tan 3theta = 191 (exact Fraction arithmetic, confirmed to 60 dps with mpmath). The regression assignment byx = -1/2, bxy = -3/2 is the admissible one (r^2 = 3/4 <= 1), but the angle is the same either way."
+ },
+ {
+  "questionId": "499c5d5e-492f-4f81-9888-eacec21bc2c0",
+  "qnum": "106",
+  "derived": "C",
+  "value": "P(AB)+P(BC)+P(CA) - 2P(ABC)",
+  "confidence": "high",
+  "why": "P(exactly two) = sum of pairwise - 3P(ABC), and at least two = exactly two + P(ABC) = sum - 2P(ABC). Brute-forced over the 8 atoms of the sample space with four random exact-rational probability vectors: only option C equalled P(#occurring >= 2) in every trial."
+ },
+ {
+  "questionId": "1429b511-3c31-4e4b-ac58-fedeebf81909",
+  "qnum": "108",
+  "derived": "B",
+  "value": "P(E u F) = 0.77",
+  "confidence": "high",
+  "why": "The distribution sums to 1. E = {2,3,5,7} gives 0.23+0.12+0.20+0.07 = 0.62 (1 is not prime), F = {1,2,3} gives 0.50, E n F = {2,3} gives 0.35, so P(E u F) = 0.62 + 0.50 - 0.35 = 0.77 (computed with exact Fractions: 77/100)."
+ },
+ {
+  "questionId": "19634200-cebe-4194-bea0-94838d542207",
+  "qnum": "112",
+  "derived": "B",
+  "value": "f'(5) = 6",
+  "confidence": "high",
+  "why": "From f(x+y)=f(x)f(y) with f not identically zero, f(0)=1, and f'(x) = lim_h [f(x)f(h)-f(x)]/h = f(x)f'(0). Hence f'(5) = f(5)*f'(0) = 2*3 = 6; the identity f'(x)/f(x) = f'(0) was confirmed symbolically on the general solution f(x)=e^{kx}."
+ },
+ {
+  "questionId": "1595b182-0ecc-4bcb-89ab-ec227e5c684a",
+  "qnum": "114",
+  "derived": "C",
+  "value": "statements (1) and (2) only are correct",
+  "confidence": "high",
+  "why": "(1) is true - the modal class rectangle construction on a histogram locates the mode; (2) is true - median(a*x) = a*median(x), verified numerically (median 5 -> 15 under x -> 3x), so the median is NOT independent of change of scale; (3) is false - Var(x+10) = Var(x) but Var(3x) = 9Var(x) (60/7 -> 540/7), so variance is independent of origin only."
+ },
+ {
+  "questionId": "6b1266cb-8a72-432f-aa82-9b6e79fa7bcc",
+  "qnum": "139",
+  "derived": "AMBIGUOUS",
+  "value": "root set = {-3, i*sqrt(3), -i*sqrt(3)}; both option A and option D denote exactly this set",
+  "confidence": "high",
+  "why": "(x+1)^3 = -8 gives x+1 in {-2, -2w, -2w^2}, i.e. x in {-3, -1-2w, -1-2w^2} = {-3, i*sqrt3, -i*sqrt3} - which is option D. But 1+w+w^2 = 0 forces 1+2w = -1-2w^2 and 1+2w^2 = -1-2w, so option A's triple {-3, 1+2w, 1+2w^2} is the SAME set merely with the two non-real roots swapped; sympy confirms both A and D satisfy the equation and that their sets are equal, while B and C do not. Two correct options, four distinct strings - the equivalent-option defect class.",
+  "flag": "MULTIPLE"
+ },
+ {
+  "questionId": "a0774976-f099-4f7e-a46e-1f43d64e57ef",
+  "qnum": "148",
+  "derived": "B",
+  "value": "z = 3/2 - 2i",
+  "confidence": "high",
+  "why": "Writing z = a+bi, |z| is real so the imaginary parts give -b = 2, b = -2; the real parts give sqrt(a^2+4) = 1+a, whence a^2+4 = a^2+2a+1 and a = 3/2 (and 1+a = 5/2 > 0, so the squaring introduces no extraneous root). sympy returns the unique solution a = 3/2, b = -2 and |z| - z checks back to 1+2i exactly."
+ },
+ {
+  "questionId": "e2351034-62d4-45f1-917f-dff16dd8a1c9",
+  "qnum": "168",
+  "derived": "A",
+  "value": "arg(-z) - arg(z) = pi",
+  "confidence": "high",
+  "why": "Under the principal branch arg z in (-pi, 0) means arg z + pi lies in (0, pi), which is still inside (-pi, pi], so arg(-z) = arg z + pi with no 2pi wrap and the difference is exactly pi. Checked numerically at arg z = -0.1, -0.5, -1, -2, -3, -3.1: the difference is pi to 1e-12 in every case. (Had arg z been positive the answer would be -pi, which is why the hypothesis arg z < 0 is load-bearing.)"
+ },
+ {
+  "questionId": "af0f901a-4824-4453-9602-4214f329a2fa",
+  "qnum": "170",
+  "derived": "B",
+  "value": "[x] = 3781139627706655994 (even) and [y] = 307646363250 (even), so [x]+[y] is even",
+  "confidence": "high",
+  "why": "Exact surd arithmetic: (13+8sqrt3)^13 = A + B*sqrt3 and (8sqrt3-13)^13 = -A + B*sqrt3 with A = 1890569813853327997, so x - (8sqrt3-13)^13 = 2A, an even integer, and since 8sqrt3-13 = 0.8564 makes that power 0.1333 in (0,1), [x] = 2A is even. Identically y - (7sqrt2-9)^9 = 2*153823181625 with the small term 0.3855 in (0,1), so [y] is even. Both even makes B true and A, C, D all false - in particular C is false, so there is no second correct option."
+ },
+ {
+  "questionId": "52b4e3c6-975e-4dd8-82cf-6e5d58bac8ac",
+  "qnum": "175",
+  "derived": "D",
+  "value": "(2m+n+k)/m = 3",
+  "confidence": "high",
+  "why": "Sum of roots = n/m and product = k/m; since 33 + 12 = 45, tan45 = 1 = (n/m)/(1 - k/m), giving n/m + k/m = 1, i.e. n + k = m. Hence (2m+n+k)/m = (2m+m)/m = 3. Verified to 50 dps with mpmath (tan33+tan12+tan33*tan12 = 1.000...), symbolically simplified by sympy to exactly 1, and re-checked scale-invariant for m = 1, 5, -3, 2/7."
+ },
+ {
+  "questionId": "5f08a417-b00e-49bf-9cf1-4d69c80bfdfc",
+  "qnum": "196",
+  "derived": "B",
+  "value": "x = -2, 2, 4",
+  "confidence": "high",
+  "why": "|x^2-x-6| = |x+2||x-3| and the RHS forces x >= -2, so |x+2| = x+2 and the equation becomes (x+2)(|x-3| - 1) = 0, giving x = -2 or |x-3| = 1 i.e. x = 2, 4. sympy's solveset over the reals returns exactly {-2, 2, 4}; direct substitution confirms x = 3 fails (0 vs 5) and x = -4 fails (14 vs -2), killing options C and A."
+ },
+ {
+  "questionId": "e28d32d8-e781-48c0-8523-dfc4f34496dc",
+  "qnum": "199",
+  "derived": "C",
+  "value": "m = 3",
+  "confidence": "high",
+  "why": "With roots a and 6a, 7a = 14/m and 6a^2 = 8/m; substituting a = 2/m gives 24/m^2 = 8/m, so m = 3. Confirmed by solving 3x^2 - 14x + 8 = 0, whose roots are 2/3 and 4 with ratio exactly 6; m = 1 and m = 2 give irrational roots with non-integer ratios."
+ },
+ {
+  "questionId": "56ffd170-da34-4957-819d-505876355c5e",
+  "qnum": "238",
+  "derived": "C",
+  "value": "400 four-digit numbers",
+  "confidence": "high",
+  "why": "a odd and non-zero leading digit: {1,3,5,7,9} = 5; b divisible by 3: {0,3,6,9} = 4 (0 is divisible by 3); c even: {0,2,4,6,8} = 5; d prime: {2,3,5,7} = 4. 5*4*5*4 = 400, confirmed by exhaustive enumeration over all 9000 four-digit numbers. Excluding b = 0 would give 300, which matches no option - corroborating the inclusive reading."
+ },
+ {
+  "questionId": "20040c06-fff1-4e0d-a0a2-7d482dee3554",
+  "qnum": "273",
+  "derived": "D",
+  "value": "range = {1, 2, 3}",
+  "confidence": "high",
+  "why": "nPr needs n = 7-x >= 0, r = x-3 >= 0 and r <= n, so x >= 3, x <= 7 and 2x <= 10, giving the integer domain {3,4,5}. Values are 4P0 = 1, 3P1 = 3, 2P2 = 2, so the range is {1,2,3}; option A's extra element 4 is attained nowhere (enumerated over x = -5..14)."
+ }
+]

@@ -1,0 +1,122 @@
+[
+ {
+  "questionId": "49c87605-314f-41b1-bbd3-a70b3c80991e",
+  "qnum": "1457",
+  "derived": "A",
+  "value": "x-intercept = -2 (slope 2/3, line 2x - 3y + 4 = 0)",
+  "confidence": "high",
+  "why": "Slope = (2-1)/(1-(-1/2)) = 1/(3/2) = 2/3; setting y = 0 in y - 2 = (2/3)(x - 1) gives x = -2. Both given points were re-substituted into y = (2/3)(x + 2) exactly and satisfy it."
+ },
+ {
+  "questionId": "647a5cbc-0726-4fcd-89f5-076374493f03",
+  "qnum": "1489",
+  "derived": "A",
+  "value": "Triangle with vertices (0,0), (1/sqrt3, 1), (-1/sqrt3, 1); all three sides = 2/sqrt3, all angles 60 deg - equilateral",
+  "confidence": "high",
+  "why": "The three pairwise intersections give side lengths 2*sqrt(3)/3 each (exact, via sympy), and the angle at the origin has cosine exactly 1/2, so the triangle is equilateral. Note the containment caveat: under the inclusive definition an equilateral triangle is also isosceles (option C), but A is the strictly stronger and uniquely descriptive statement, so it is the intended and correct choice; B and D are false since every angle is 60 deg."
+ },
+ {
+  "questionId": "6ce09756-93d1-4cda-be24-a4b9acb79bd2",
+  "qnum": "1515",
+  "derived": "D",
+  "value": "b = -20, c = -3/4; L: 4x - y - 20 = 0, K: 4x - y + 3 = 0; distance = 23/sqrt(17)",
+  "confidence": "high",
+  "why": "13/5 + 32/b = 1 gives b = -20, so L has slope 4; matching slopes for x/c + y/3 = 1 gives c = -3/4 and K: 4x - y + 3 = 0. Distance |(-20) - 3|/sqrt(17) = 23/sqrt(17), confirmed independently by dropping a perpendicular from the point (5,0) on L onto K."
+ },
+ {
+  "questionId": "69ec37dd-cd11-416f-8af1-25afc9c970ef",
+  "qnum": "1577",
+  "derived": "C",
+  "value": "Centre (1,-1), r^2 = 49 (r = 7); circle x^2 + y^2 - 2x + 2y - 47 = 0",
+  "confidence": "high",
+  "why": "Two diameters meet at the centre: solving 2x-3y=5 and 3x-4y=7 gives exactly (1,-1); area 154 = pi*r^2 with pi = 22/7 gives r^2 = 49 exactly (with true pi it is 49.0197, so 22/7 is plainly intended). Expanding (x-1)^2+(y+1)^2=49 matches option C alone; A, B and D were each differenced against the expansion and are non-zero."
+ },
+ {
+  "questionId": "7c00aa12-bc66-4945-a7ee-e1bd6345703b",
+  "qnum": "1584",
+  "derived": "D",
+  "value": "radius = 5/(3*sqrt(17)) = 5*sqrt(17)/51",
+  "confidence": "high",
+  "why": "3x - 12y + 11 = 0 normalises to x - 4y + 11/3 = 0, parallel to x - 4y + 7 = 0, so the two tangents are opposite tangents and the diameter equals their separation |7 - 11/3|/sqrt(17) = 10/(3*sqrt(17)); the radius is half that. Option A is the diameter (a live distractor) and C omits the factor 3."
+ },
+ {
+  "questionId": "2f8184bb-429d-481a-93f5-326526e499de",
+  "qnum": "1657",
+  "derived": "B",
+  "value": "Residual y^2 - 4ax is identically 0 only for (a sin^2 t, -2a sin t); it is 8a^2t^2 for A and C, and 4a^2 sin t (sin t - 1) for D",
+  "confidence": "high",
+  "why": "Substituting each option into y^2 = 4ax symbolically, only B satisfies the parabola identically (A and C give x <= 0 against y^2 >= 0, and D holds only at the isolated values sin t = 0 or 1). Worth recording that B is an imperfect parametrisation - x = a sin^2 t only sweeps [0, a], so it does not reach every point of the parabola the way the standard (at^2, 2at) does - but it is the only option whose points lie on the curve at all."
+ },
+ {
+  "questionId": "6386aa47-343a-45ce-9895-5b1a7a4dfa13",
+  "qnum": "1738",
+  "derived": "D",
+  "value": "2a = 8 (ellipse x^2/16 + y^2/9 = 1, a = 4, b = 3, foci at (+-sqrt7, 0))",
+  "confidence": "high",
+  "why": "9x^2 + 16y^2 = 144 divides to x^2/16 + y^2/9 = 1, so a = 4 and the constant focal-distance sum is 2a = 8. Verified numerically at two non-special parameter values (theta = pi/7 and theta = 1/3 rad, deliberately not vertex points where a wrong answer could coincide) - the sum evaluates to exactly 8 at both."
+ },
+ {
+  "questionId": "9bf3f0a3-00d1-481f-a98c-903d8c16a5d4",
+  "qnum": "1831",
+  "derived": "A",
+  "value": "diagonals a+b = (3,-2,0) with length sqrt(13), a-b = (-1,4,-2) with length sqrt(21); the pair is {sqrt21, sqrt13}",
+  "confidence": "high",
+  "why": "For adjacent sides a and b the diagonals are a+b and a-b, giving lengths sqrt(13) and sqrt(21). Option A lists exactly this unordered pair (C substitutes sqrt14 for sqrt21). Cross-checked with the parallelogram law: |a+b|^2 + |a-b|^2 = 34 = 2(|a|^2 + |b|^2) = 2(3 + 14)."
+ },
+ {
+  "questionId": "3effaaec-15e5-4043-bf69-07e8837f5f32",
+  "qnum": "1870",
+  "derived": "A",
+  "value": "AP = (1,2,2), AQ = (2,1,-2), AP.AQ = 2 + 2 - 4 = 0, so the angle is exactly 90 degrees",
+  "confidence": "high",
+  "why": "The two vectors from (1,2,3) to P and Q have dot product exactly zero (integer arithmetic, no rounding), so cos of the subtended angle is 0 and the angle is 90 degrees."
+ },
+ {
+  "questionId": "180ac283-5a4e-4302-83a7-ad4cbcf11826",
+  "qnum": "1893",
+  "derived": "D",
+  "value": "(a.b)^2 = |a|^2|b|^2 - |a x b|^2 = 100 - 64 = 36, so a.b = +-6; magnitude 6",
+  "confidence": "high",
+  "why": "Lagrange's identity gives (a.b)^2 = 36 exactly. Constructed an explicit realisation a = (2,0,0), b = (+-3, +-4, 0) with |b| = 5 and |a x b| = 8, confirming a.b = +6 or -6; only the magnitude 6 appears among the options (all four are positive), so D."
+ },
+ {
+  "questionId": "28a712d8-24cd-4f3c-8c96-b32930e40bd7",
+  "qnum": "1903",
+  "derived": "B",
+  "value": "(7a+5b) x (8a+11b) = (77 - 40)(a x b) = 37(a x b); area = 37 * 20 = 740 sq units",
+  "confidence": "high",
+  "why": "Bilinearity plus a x a = b x b = 0 and b x a = -(a x b) give the scalar factor 7*11 - 5*8 = 37. Confirmed with concrete vectors a = (4,0,0), b = (0,5,0) whose cross magnitude is 20: the transformed cross magnitude computes to exactly 740."
+ },
+ {
+  "questionId": "946b7450-5838-4a41-add8-fa6436c75889",
+  "qnum": "1991",
+  "derived": "B",
+  "value": "cos^2(gamma) = 1 - 1/4 - 1/2 = 1/4, so gamma = 60 deg = pi/3 (or its supplement 120 deg, which is not offered)",
+  "confidence": "high",
+  "why": "Direction cosines satisfy cos^2 a + cos^2 b + cos^2 g = 1; with a = pi/3 and b = pi/4 the residual is exactly 1/4, giving gamma = pi/3 or 2pi/3. Each distractor was tested by substitution: pi/4 totals 5/4, pi/2 totals 3/4, pi/6 totals 3/2 - none equals 1, so pi/3 is the unique valid option."
+ },
+ {
+  "questionId": "30b97858-600a-4395-be3e-8b86f6392139",
+  "qnum": "2165",
+  "derived": "C",
+  "value": "f(n) = n^2 + 1 on N is injective (n^2+1 = m^2+1 with n,m > 0 forces n = m) but not surjective (range {2,5,10,17,...} misses 1,3,4,6,7,...)",
+  "confidence": "high",
+  "why": "Injectivity verified by exhaustive collision check over n = 1..199 (no repeats) and holds generally since squaring is strictly increasing on positive integers; surjectivity fails because e.g. 3 and 4 are never attained. The verdict is unchanged whether or not 0 is counted in N - 3 is still not attained."
+ },
+ {
+  "questionId": "8988fd43-c69c-449c-b735-7a3d1f9a5fcd",
+  "qnum": "2173",
+  "derived": "D",
+  "value": "f(x) = sin^2 x, g(x) = sqrt(x): g(f(x)) = sqrt(sin^2 x) = |sin x| and f(g(x)) = sin^2(sqrt x) = (sin sqrt x)^2 - both required identities hold",
+  "confidence": "high",
+  "why": "Only D satisfies BOTH compositions. A gives f(g(x)) = sin|x| (at x = 4 that is -0.7568 against the target sin^2(2) = 0.8268) and B gives g(f(x)) = sin|x|, not |sin x|; each was checked symbolically and on a five-point grid. C is therefore false since D determines a valid pair."
+ },
+ {
+  "questionId": "2f132e22-596a-42c4-9de4-57c001ea21b9",
+  "qnum": "2189",
+  "derived": "C",
+  "value": "(f o g)(x) = f(x^2) = sin(x^2) + cos(x^2)",
+  "confidence": "high",
+  "why": "Composing outward-in, f(g(x)) = f(x^2) = sin(x^2) + cos(x^2), which is option C read conventionally as sin(x^2) + cos(x^2). Option D differs (cos^2 x rather than cos(x^2)) - at x = 1 it gives 1.1334 against the true 1.3818 - and the expression is not the constant 1 or 0 (at x = 1/2 it is 1.2163), ruling out A and B."
+ }
+]

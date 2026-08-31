@@ -198,6 +198,111 @@ const FILL_SETS: Record<string, Fill[]> = {
         "The alternative was a within-chapter swap to a greatest-coefficient question, which would have held the label at H32 but dropped a subtopic the blueprint flags as a newly live NDA pattern (0 questions before 2022, 8 since).",
     },
   ],
+
+  // ── Mock 4 ────────────────────────────────────────────────────────────────
+  // Nine cells short, ten questions. THE SOURCE MIX CHANGES HERE, and the reason
+  // is a measurement rather than a preference: for seven of the nine cells an
+  // unused NDA PYQ exists at the EXACT subtopic AND the EXACT difficulty. Mocks
+  // 2 and 3 filled those same cells from Worksheets — not because a PYQ was
+  // absent, but because the builder's pool is `question_kind = 'practice'` and
+  // nothing ever looked at the PYQ side. An NDA PYQ is the better fill twice
+  // over: it is the same bank, so RULE 2a's difficulty translation does not
+  // apply at all, and it is a real question from the exam being mocked.
+  //
+  // Only two cells still need a cross-bank fill, and both are genuinely empty on
+  // the NDA side rather than merely depleted.
+  "NDA Mathematics — Blueprint Mock 4 (120 Q)": [
+    {
+      chapter: "Probability",
+      subtopic: "Bounds on Probability",
+      difficulty: "HARD",
+      ids: ["499c5d5e-492f-4f81-9888-eacec21bc2c0"],
+      source: "NDA PYQ (2019 I, Q106)",
+      why:
+        "NDA practice still has no HARD row in this subtopic, but an unused NDA PYQ sits in it at HARD. 'Probability that at least two of A, B, C occur together' resolves to sum of the pairwise intersections minus 2P(A n B n C) — the inclusion-exclusion bound the cell is about, and a different attack from the max/min bound questions Mocks 2 and 3 used, so the three papers do not repeat the idea.",
+    },
+    {
+      chapter: "Statistics",
+      subtopic: "Regression and Correlation",
+      difficulty: "HARD",
+      ids: ["4557ccee-8cb8-44b9-b085-e6923a9b15b7"],
+      source: "NDA PYQ (2024 Apr, Q104)",
+      why:
+        "Practice still holds only 2 rows here, both MODERATE — but five unused NDA PYQs sit at HARD. The ACUTE ANGLE between two regression lines, which is a different quantity from the correlation coefficient Mocks 2 and 3 each recovered, so the cell is not asked the same way a third time.",
+    },
+    {
+      chapter: "3D Geometry",
+      subtopic: "Sphere",
+      difficulty: "MODERATE",
+      ids: ["14d831de-041b-404b-b316-21002752e5ce"],
+      source: "NDA PYQ (2020 I, Q61)",
+      why:
+        "NEW gap: the practice supply for Sphere MODERATE is used up across Mocks 1-3. Diameter of the sphere centred (1,-2,3) touching 6x-3y+2z-4=0 — the perpendicular distance is 14/7 = 2, so the diameter is 4. Squarely the cell's topic and squarely MODERATE.",
+    },
+    {
+      chapter: "3D Geometry",
+      subtopic: "Distance, Section, and Collinearity in 3D",
+      difficulty: "HARD",
+      ids: ["c1bcdbfe-a28b-4c8a-8108-24f1d2cb9ae8"],
+      source: "NDA PYQ (2021 I, Q69)",
+      why:
+        "Practice has 2 rows here and both are MODERATE, the same structural gap Mocks 2 and 3 hit — but five unused NDA PYQs sit at HARD. 'How many values of k make (k,1,3), (1,-2,k+1) and (15,2,-4) collinear' is literally the COLLINEARITY the subtopic names, and it is hard because it needs a consistent solution of the ratio equations rather than a formula.",
+    },
+    {
+      chapter: "Differentiation",
+      subtopic:
+        "Differentiability of Absolute Value, Piecewise, and Greatest Integer Functions",
+      difficulty: "EASY",
+      ids: ["f10d98eb-e52c-47a0-87e4-78b61ca192e0"],
+      source: "NDA PYQ (2026 I, Q74)",
+      why:
+        "NEW gap: this is the paper's only unfilled EASY cell — the practice pool holds 24 free rows in the subtopic but none labelled EASY. 'Derivative of x/|x| for x < 0' is exactly the cell's concept at exactly its level: for x < 0 the function is the constant -1, so the derivative is 0.",
+    },
+    {
+      chapter: "Properties of Triangle",
+      subtopic: "Sine and Cosine Rules — Solving Triangles",
+      difficulty: "HARD",
+      ids: [
+        "c7a17945-6454-4838-8685-e4020416aa31",
+        "b9667d22-b6da-4750-a156-60efe1bf34e1",
+      ],
+      source: "NDA PYQ (2024 Sep Q25 and 2022 II Q50)",
+      why:
+        "Practice has exactly ONE unused HARD row in this chapter and the cell needs two, the same shortfall Mock 2 met — but these are the two unused NDA PYQs at HARD in this subtopic, and it needs both. 2a - b in a 75/45/60 triangle, and cos 3C for the 4-3-2 triangle (cos C = 7/8, so cos 3C = 7/128). " +
+        "NOTE the first one was REPAIRED to get here: its stored stem said 'sqrt(2)a - b', which matches no option, against a printed '2a - b' that gives exactly the stored key. Source-verified against the scanned paper and fixed by scripts/reviews/apply-mock4-fixes.ts BEFORE this build — reading a fill per RULE 2a is what exposed it.",
+    },
+    {
+      chapter: "Height & Distance",
+      subtopic: "Heights and Distances from Angles of Elevation",
+      difficulty: "HARD",
+      ids: ["7e488e4a-e36c-443e-b523-25bfea2df3df"],
+      source: "NDA PYQ (2019 I, Q100)",
+      why:
+        "Mock 3 took the last NDA-practice HARD in this chapter, but seven unused NDA PYQs sit at HARD. Tower of height h seen from A due South at elevation x and from B due East of A at elevation y, with AB = z: the foot, A and B form a right angle, so (h cot y)^2 = (h cot x)^2 + z^2. Genuinely hard and pleasingly free of a figure, which matters for a printed paper.",
+    },
+    {
+      chapter: "Binary Numbers",
+      subtopic: "Binary Arithmetic — Addition, Division, and Algebraic Identities",
+      difficulty: "MODERATE",
+      ids: ["c46ca38e-7b95-490f-8ecf-aeaaf068aa14"],
+      source: "Worksheets",
+      why:
+        "Genuinely empty on the NDA side, not merely depleted: this subtopic has ZERO NDA PYQs at any difficulty and no unused practice row at MODERATE. Worksheets has a 'Binary Arithmetic' subtopic that matches concept-for-concept. (11000)_2 / (11)_2 = 24/3 = 8 = (1000)_2 — binary DIVISION, which the NDA cell's own subtopic name calls out.",
+    },
+    {
+      chapter: "Binomial Theorem",
+      subtopic: "Integer and Fractional Parts of Binomial Expressions",
+      difficulty: "HARD",
+      ids: ["af0f901a-4824-4453-9602-4214f329a2fa"],
+      source: "JEE Mains 2023 (labelled MODERATE there — see the note)",
+      why:
+        "Still empty on the NDA side: zero unused NDA PYQs at HARD in this subtopic, and the practice supply went into Mocks 2 and 3. JEE carries a subtopic named 'Integral and Fractional Parts' — the same idea under the other bank's wording. " +
+        "x = (8*sqrt(3)+13)^13 and y = (7*sqrt(2)+9)^9, asking about [x] and [y]: the conjugate-surd argument that IS this subtopic's technique. " +
+        "Clean on the syllabus-fit screen (no question_audience_exclusions row). " +
+        "LABELLED MODERATE IN JEE, so the recorded split is E30/M59/H31 rather than E30/M58/H32 — reported as BUILT, not as designed, exactly as in Mock 3. RULE 2a says a JEE MODERATE sits nearer an NDA HARD, so the paper is not easier than the target; only the label comes from another bank's scale. " +
+        "The MH State Board Class 11 rows that also match this concept were REJECTED: they are subjective (zero options), which no MCQ paper can take.",
+    },
+  ],
 };
 
 /**
@@ -349,6 +454,44 @@ async function fetchByIds(
   return out;
 }
 
+/**
+ * Questions a review has judged UNANSWERABLE — excluded from the pool for good.
+ *
+ * WHY THIS EXISTS. Mock 3's review found two questions that could not be shipped
+ * (one with two correct options, one whose keyed answer holds only under a
+ * condition the stem never states) and swapped them OUT of that paper. Removing
+ * a question from a paper makes it ELIGIBLE AGAIN, because the only durable
+ * exclusion the builder had was "is it in some paper" — so Mock 4 promptly
+ * selected one of them back. The rejection was recorded in a script comment,
+ * which no query can see.
+ *
+ * `question_reviews.verdict = 'unverifiable'` is exactly the right record for
+ * this and it is already written by the review pass, so the exclusion is now
+ * derived from the audit trail rather than from a hand-kept list. A row is
+ * excluded only while its LATEST verdict is unverifiable, so repairing a
+ * question and recording a new verdict returns it to the pool by itself.
+ */
+async function fetchUnverifiable(client: SupabaseClient): Promise<Set<string>> {
+  const latest = new Map<string, { at: string; verdict: string }>();
+  const PAGE = 1000;
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await client
+      .from("question_reviews")
+      .select("question_id, verdict, reviewed_at")
+      .range(from, from + PAGE - 1);
+    if (error) throw new Error(`fetchUnverifiable: ${error.message}`);
+    for (const r of (data ?? []) as any[]) {
+      const prev = latest.get(r.question_id);
+      if (!prev || String(r.reviewed_at) >= prev.at)
+        latest.set(r.question_id, { at: String(r.reviewed_at), verdict: String(r.verdict) });
+    }
+    if (!data || data.length < PAGE) break;
+  }
+  const out = new Set<string>();
+  for (const [id, v] of latest) if (v.verdict === "unverifiable") out.add(id);
+  return out;
+}
+
 async function fetchUsed(client: SupabaseClient): Promise<Set<string>> {
   const used = new Set<string>();
   const PAGE = 1000;
@@ -452,15 +595,20 @@ async function main() {
     { auth: { persistSession: false } },
   );
 
-  const [pool, used] = await Promise.all([
+  const [pool, used, unverifiable] = await Promise.all([
     fetchPool(client),
     fetchUsed(client),
+    fetchUnverifiable(client),
   ]);
 
-  const dropped = { used: 0, structural: 0, setBound: 0, dashedTable: 0 };
+  const dropped = { used: 0, unverifiable: 0, structural: 0, setBound: 0, dashedTable: 0 };
   const eligible = pool.filter((r) => {
     if (used.has(r.id)) {
       dropped.used++;
+      return false;
+    }
+    if (unverifiable.has(r.id)) {
+      dropped.unverifiable++;
       return false;
     }
     if (!structurallyClean(r)) {
@@ -479,7 +627,7 @@ async function main() {
   });
   console.log(
     `pool ${pool.length} -> eligible ${eligible.length}  ` +
-      `(dropped: ${dropped.used} already in a paper, ${dropped.structural} structural, ` +
+      `(dropped: ${dropped.used} already in a paper, ${dropped.unverifiable} review-rejected, ${dropped.structural} structural, ` +
       `${dropped.setBound} set/context-bound, ${dropped.dashedTable} dashed table)\n`,
   );
 
