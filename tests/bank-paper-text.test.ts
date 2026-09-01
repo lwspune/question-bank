@@ -50,6 +50,66 @@ describe("P1 — labelled statements must not share a line", () => {
   });
 });
 
+/**
+ * The dominant NDA style is a BARE label after a lead-in — "Consider the
+ * following statements: 1. ... 2. ..." — with no literal word "Statement".
+ * The first draft required that word, so a 120-question paper carrying 22 such
+ * run-on stems reported "Paper text: OK". These cases pin that gap shut.
+ */
+describe("P1 — bare numbered statement labels (the dominant NDA style)", () => {
+  it("flags bare numeric labels run together on one line", () => {
+    const r = row({
+      stem: "Consider the following statements: 1. The null set is a subset of every set. 2. Every set is a subset of itself. Which of the above statements are correct?",
+    });
+    expect(codes([r])).toContain("P1-statement-run-on");
+  });
+
+  it("passes when each bare numeric label starts its own line", () => {
+    const r = row({
+      stem: "Consider the following statements:\n1. The null set is a subset of every set.\n2. Every set is a subset of itself.\nWhich of the above statements are correct?",
+    });
+    expect(codes([r])).not.toContain("P1-statement-run-on");
+  });
+
+  // The word-label scan catches stems the bare scan does not, so it survives.
+  it("still flags the word-'Statement' form", () => {
+    const r = row({ stem: "Statement 1: Copper conducts. Statement 2: Rubber does not. Which is correct?" });
+    expect(codes([r])).toContain("P1-statement-run-on");
+  });
+
+  it("does NOT fire on 'which of the following statements is correct?' with no labels", () => {
+    const r = row({ stem: "Which of the following statements is correct?" });
+    expect(codes([r])).not.toContain("P1-statement-run-on");
+  });
+
+  // A Match List's labels are table CELLS, not run-on statements. P2 owns the
+  // match-list rule; P1 must stay out of it.
+  it("does NOT fire on a Match List that is a real GFM pipe table", () => {
+    const r = row({
+      stem: "Match List-I with List-II.\n\n| List-I | List-II |\n|---|---|\n| 1. Kolkata | A. West Bengal |\n| 2. Mormugao | B. Goa |",
+    });
+    expect(codes([r])).not.toContain("P1-statement-run-on");
+  });
+
+  // `findStatementLabels` reports offsets into the MATH-MASKED string, which is
+  // SHORTER than the raw stem. Testing "at line start" by slicing the RAW text
+  // at a masked offset lands in the wrong place and mis-reads a correctly
+  // formatted stem as a run-on.
+  it("does NOT fire when a leading math zone shifts every label offset", () => {
+    const r = row({
+      stem: "Let \\(a+b=c\\) hold.\n1. The sum is positive.\n2. The product is positive.\nWhich is correct?",
+    });
+    expect(codes([r])).not.toContain("P1-statement-run-on");
+  });
+
+  it("still flags a run-on stem that carries a math zone", () => {
+    const r = row({
+      stem: "Let \\(a+b=c\\) hold. 1. The sum is positive. 2. The product is positive. Which is correct?",
+    });
+    expect(codes([r])).toContain("P1-statement-run-on");
+  });
+});
+
 describe("P2 — a match-list must render as a table", () => {
   it("flags List-I/List-II prose with no separator row", () => {
     const r = row({ stem: "Match List-I with List-II.\nList-I (Port) | List-II (State)\nA. Kolkata | 1. West Bengal" });
@@ -184,5 +244,27 @@ describe("severity and reporting", () => {
 
   it("passes a clean paper", () => {
     expect(auditPaperText([row(), row({ id: "q2" })])).toEqual([]);
+  });
+});
+
+describe("a linearised 'Match the following' belongs to P2, not P1", () => {
+  it("fires P2-matchlist-not-a-table and NOT P1-statement-run-on", () => {
+    // Live shape (Foundation Course): the numbered items are a column of pairs,
+    // not claims. P1 used to fire on it while the auto-repair skipped it, leaving
+    // a blocking violation with no fix. P2's message names the right remedy.
+    const rows = [
+      {
+        id: "q-match",
+        where: "Foundation / Physics Q1",
+        stem: "Match the following with correct response. (1) Newton's first law (2) Newton's second law (3) Newton's third law",
+        context: null,
+        solution: null,
+        optionsText: "",
+        hasImage: false,
+      },
+    ];
+    const kinds = auditPaperText(rows).map((v) => v.rule);
+    expect(kinds).toContain("P2-matchlist-not-a-table");
+    expect(kinds).not.toContain("P1-statement-run-on");
   });
 });

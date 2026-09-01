@@ -35,6 +35,8 @@
  * clearly" — and are pinned so a future tightening cannot reintroduce them.
  */
 import { parseTableBlocks } from "../../src/components/math/parseTableBlocks";
+import { maskMathZones } from "../../src/components/math/parseLatex";
+import { findStatementLabels } from "../lib/statementLayout";
 
 export type PaperTextRow = {
   id: string;
@@ -66,7 +68,14 @@ export const BLOCKING_RULES = [
 
 /** A LABELLED claim — "Statement I:", "Statement-2.", "Assertion (A):". The
  *  label and its delimiter are both required, so the prose word "statements"
- *  (as in "which of the following statements") cannot match. */
+ *  (as in "which of the following statements") cannot match.
+ *
+ *  This is only HALF of P1. It cannot see the dominant NDA style, which labels
+ *  bare after a lead-in ("Consider the following statements: 1. ... 2. ...") —
+ *  that half is `findStatementLabels`, whose own guards (ascending run, both-
+ *  side whitespace, math masked, GFM tables excluded) are what let it match a
+ *  bare "1." without matching every numeral in the bank. Neither scan subsumes
+ *  the other, so P1 fires on either. */
 const STATEMENT_LABEL = /(?:Statement\s*[-–—]?\s*(?:[IVX]+|\d+)|Assertion\s*\((?:A)\)|Reason\s*\((?:R)\))\s*[:.]/gi;
 /** A rearrangement part label. The boundary is a NON-CONSUMING lookbehind: a
  *  consuming `(?:^|[\s.])` swallows the preceding newline, which then makes the
@@ -74,7 +83,7 @@ const STATEMENT_LABEL = /(?:Statement\s*[-–—]?\s*(?:[IVX]+|\d+)|Assertion\s*
  *  is-it-at-line-start test below. */
 const PQRS_LABEL = /(?<![^\s.])(?:S\s*[16]|[PQRS])\s*:/g;
 
-const MATCHLIST = /List\s*[-–—]?\s*(?:I\b|1\b)/i;
+const MATCHLIST = /List\s*[-–—]?\s*(?:I\b|1\b)|\bMatch\s+the\s+(?:following|column)/i;
 
 /** Cites a figure the question expects the reader to look at. */
 const FIGURE_REF =
@@ -116,12 +125,19 @@ const PROVENANCE: [RegExp, string][] = [
   [/\b(?:an?\s+)?(?:AI|language model)\s+(?:agent|assistant|model)\b/i, "names an AI agent"],
 ];
 
+/** Is the label at `index` the first thing on its line? `index` MUST be an
+ *  offset into `s` itself — mixing a math-masked offset with the raw string
+ *  slices at the wrong place, because masking shortens the text. */
+function atLineStart(s: string, index: number): boolean {
+  const before = s.slice(0, index);
+  return before.length === 0 || /\n[ \t]*$/.test(before);
+}
+
 /** Count labels NOT at the start of a line. */
 function inlineCount(s: string, re: RegExp): number {
   let n = 0;
   for (const m of s.matchAll(re)) {
-    const before = s.slice(0, m.index ?? 0);
-    if (!(before.length === 0 || /\n[ \t]*$/.test(before))) n += 1;
+    if (!atLineStart(s, m.index ?? 0)) n += 1;
   }
   return n;
 }
@@ -139,10 +155,20 @@ export function auditPaperText(rows: PaperTextRow[]): TextViolation[] {
     const sol = r.solution ?? "";
     const both = `${stem}\n${r.context ?? ""}`;
 
-    // P1
-    const stmtTotal = stem.match(STATEMENT_LABEL)?.length ?? 0;
-    if (stmtTotal >= 2 && inlineCount(stem, STATEMENT_LABEL) >= 1) {
-      push("P1-statement-run-on", r, `${stmtTotal} labelled statements, not all on their own line`);
+    // P1 — two independent scans, either of which can fire.
+    const wordTotal = stem.match(STATEMENT_LABEL)?.length ?? 0;
+    const wordRunOn = wordTotal >= 2 && inlineCount(stem, STATEMENT_LABEL) >= 1;
+
+    // `findStatementLabels` reports offsets into the MATH-MASKED stem, so the
+    // line test must run against that same string, never the raw one.
+    const maskedStem = maskMathZones(stem).masked;
+    const bare = findStatementLabels(stem);
+    const bareRunOn =
+      bare.length >= 2 && bare.some((l) => !atLineStart(maskedStem, l.index));
+
+    if (wordRunOn || bareRunOn) {
+      const total = Math.max(wordTotal, bare.length);
+      push("P1-statement-run-on", r, `${total} labelled statements, not all on their own line`);
     }
 
     // P2
