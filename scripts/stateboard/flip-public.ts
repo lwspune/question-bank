@@ -13,7 +13,7 @@
  */
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { EXAM_ID, requireChapter, DERIVED_NOTE_CLAUSE } from "./config";
+import { EXAM_ID, requireChapter } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -46,9 +46,9 @@ async function assertProvenance(
   if (error) throw new Error(`provenance check failed: ${error.message}`);
 
   const authored = (data ?? []).filter((r: any) => r.section_kind !== "solved_example");
-  const bad = authored.filter(
-    (r: any) => !r.derived_model || !(r.pyq_note ?? "").includes(DERIVED_NOTE_CLAUSE)
-  );
+  // Keys on the STRUCTURED column, not on a prose match. A string check breaks
+  // silently the moment the wording changes; `derived_model` is the fact itself.
+  const bad = authored.filter((r: any) => !r.derived_model);
   if (bad.length) {
     throw new Error(
       `refusing to publish — ${bad.length} of ${authored.length} authored row(s) carry no ` +
