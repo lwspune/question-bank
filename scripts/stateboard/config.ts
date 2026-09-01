@@ -26,6 +26,23 @@ export const SOURCE_ROOT = "C:\\tmp\\PYQPs\\MHT-CET\\State_Board";
 export const OUT = join(__dirname, "out"); // gitignored: rendered PNGs
 export const DATA = join(__dirname, "data"); // committed: transcription (source of truth)
 
+/**
+ * Provenance clause appended to `pyq_note` on every AUTHORED answer of a chapter
+ * whose source book prints no answer key (`Chapter.derivedAnswers`).
+ *
+ * It lives HERE, and not in stamp-provenance.ts, for a concrete reason: that
+ * script runs `main()` at module load, so importing a constant from it EXECUTES
+ * it — which made `flip-public.ts` exit with the stamper's own error for every
+ * chapter that does not set the flag. Keep shared constants in a module with no
+ * top-level side effects.
+ */
+export const DERIVED_NOTE_CLAUSE =
+  "This textbook publishes no answer key; the answer here is derived/authored and " +
+  "verified independently, and where the book prints an inline [Ans: ...] it was " +
+  "cross-checked against it.";
+
+export const DERIVED_MODEL = "claude-opus-5";
+
 export type Chapter = {
   id: string; // slug → data/<id>.* + source_file
   chapterName: string; // DB chapter (auto-created on commit)
@@ -34,11 +51,68 @@ export type Chapter = {
   pdf: string; // absolute path to the chapter PDF
   pages?: number[]; // 0-based page indices to render; omit → all pages
   note: string; // questions.pyq_note
+  /**
+   * Set when the SOURCE BOOK PRINTS NO ANSWER KEY, so every MCQ key and every
+   * exercise answer is DERIVED or AUTHORED by us rather than checked against a
+   * printed one. Physics is the case; the Maths volumes all carry an end-of-book
+   * ANSWERS section and leave this unset.
+   *
+   * It turns on two things, and OFF is the default precisely so the 15 shipped
+   * Maths chapters keep their exact current behaviour:
+   *   - `stamp-provenance.ts` writes `derived_model`/`derived_at` and appends a
+   *     clause to `pyq_note` saying the answer is derived and the book publishes
+   *     no key.
+   *   - `flip-public.ts` REFUSES to publish an authored row that carries no such
+   *     stamp.
+   * A published derived answer that does not announce itself reads as an
+   * official key. That was caught at the publish gate on CDS General Knowledge —
+   * one step too late — so here the stamp is a precondition of publishing.
+   *
+   * Solved examples are deliberately EXCLUDED: they carry the BOOK's own printed
+   * worked solution, so claiming them as ours would be the opposite error.
+   */
+  derivedAnswers?: boolean;
   // Canonical subtopics for this chapter — transcription maps each question to one.
   subtopics: string[];
 };
 
 const cls12 = (p: string) => join(SOURCE_ROOT, "12th", p);
+
+// ── PHYSICS (added 2026-09-02) ───────────────────────────────────────────────
+// A SECOND subject on this same exam, from a DIFFERENT publisher folder — hence
+// its own root rather than a path under SOURCE_ROOT. Pre-split per-chapter PDFs,
+// so `pdf` points at a whole chapter and `pages` is omitted.
+//
+// ⚠ TRANSCRIPTION IS VISION-ONLY, AND THE Std-XII TEXT LAYER FAILS SILENTLY.
+// This is MEASURED across the whole volume, not assumed:
+//   - U+221A occurs ZERO times in all 376 pages, in a physics book full of radicals.
+//   - Superscript ² occurs 4 times; exponents are flattened to the baseline, so
+//     "m/s²" extracts as "m/s2" and "1.6 × 10⁻⁵" as "1.6 u 10-5".
+//   - GREEK IS SET IN SYMBOL FONT AND EXTRACTS AS LATIN LETTERS. Measured map:
+//       S → π      q → °      u → ×      | → ≈      Z → ω      G → δ      I → φ
+//     So Oscillations Q1(ii) extracts as `x = 6 sin (100t + S/4)` and Q11 as
+//     `0.1 S2 x2 joule`. Both READ as well-formed equations in a variable S.
+// That last one is the dangerous part: unlike the Maths books (which yield a
+// visibly broken "3 2" for √3/2), this corruption is PLAUSIBLE — a text-first
+// pass ships physics that is silently wrong with nothing to flag it. Std XI
+// differs in mechanism, not in verdict: it keeps real Greek but emits 572
+// private-use glyphs (U+F0xx) for vector arrows, so `B⃗` extracts as `B ur`.
+// dump-text.ts stays useful ONLY for locating block boundaries and prose checks.
+//
+// ⚠ THERE IS NO ANSWERS SECTION IN EITHER PHYSICS VOLUME. Verified across all
+// 644 pages of both books: no standalone `Answers` heading, and both end on the
+// last chapter's Exercises. So the step-6 answer-key cross-check gate CANNOT run
+// as it does for Maths — do NOT go looking for a missing `answersPdf`.
+// What DOES exist is a PARTIAL, per-question key: the numericals print their own
+// answer inline as `[Ans: …]` (338 across the two books, ~38% of all exercise
+// questions). Those are transcribed into `book_answer` and diffed against our
+// derivation — a real gate on the numerical half. The MCQs (5 per chapter) and
+// the theory/derivation questions carry NO printed answer anywhere, so they run
+// the mh-sb-9 humanities regime: blind MCQ re-derivation, answers authored from
+// the chapter's own prose, and derived-provenance stamped at COMMIT.
+const PHYSICS_ROOT =
+  "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Subjects\\Physics\\State_Board\\Topics";
+const phy12 = (p: string) => join(PHYSICS_ROOT, "12th_Topics", p);
 
 export const CHAPTERS: Record<string, Chapter> = {
   // ── Validation chapter — Ch.1 Mathematical Logic (12th, Part 1). The hardest
@@ -453,6 +527,69 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Bernoulli Trials",
       "The Binomial Distribution",
       "Mean and Variance of a Binomial Distribution",
+    ],
+  },
+
+  // ══ PHYSICS ═════════════════════════════════════════════════════════════════
+  // ── Ch.5 Oscillations (12th Physics). PILOT chapter for the Physics lane,
+  //    chosen because it exercises all three unknowns at once: it is where the
+  //    Symbol-font π→`S` corruption was first measured, it carries 15 inline
+  //    `[Ans:]` numericals to validate the vision transcription against, and its
+  //    Q1(v) is a genuinely figure-dependent MCQ (reads a displacement graph).
+  //
+  //    22pp, TWO-COLUMN throughout (left x0≈85, right x0≈309/329) — read the
+  //    LEFT column fully, then the RIGHT.
+  //
+  //    Block map (0-based page, y), verified via page.get_text("blocks"):
+  //      Solved examples 5.1-5.13 are scattered through the BODY, p03-p17:
+  //        5.1 p03 · 5.2,5.3 p04 · 5.4,5.5 p05 · 5.6 p06 · 5.7,5.8 p09
+  //        5.9 p13 · 5.10 p14 · 5.11 p15 · 5.12,5.13 p17
+  //      (5.3 and 5.8 do NOT start a text block — a header scan misses both.
+  //       The count is 13 and the refs are contiguous 5.1-5.13; a gap is a bug.)
+  //      Exercises  p20 y≈76 (LEFT col) → end of p21:
+  //        `1. Choose the correct option`  p20 L y≈107   → i)-v)   = 5 MCQ
+  //        `2. Answer in brief`            p20 R y≈212   → i)-v)   = 5 subjective
+  //        flat items 3.-8.                p20 R (after) = 6 subjective
+  //        flat items 9.-23.               p21           = 15 subjective
+  //      Expected total: 13 solved + 5 MCQ + 26 exercise-subjective = 44.
+  "oscillations-12-phy": {
+    id: "oscillations-12-phy",
+    chapterName: "Oscillations",
+    subjectName: "Physics",
+    sourceFile: "StateBoard_12_Physics__Oscillations.pdf",
+    pdf: phy12("05. Oscillations.pdf"),
+    derivedAnswers: true, // no ANSWERS section in either Physics volume — see the type comment
+    note: "Maharashtra State Board (Class 12) — Oscillations (Balbharati Physics textbook)",
+    // The BOOK's own section headings (the `syllabus_concepts` MH-State-Board XII
+    // Physics spine, extracted from this very file), merged where the book splits
+    // one teaching unit across thin sub-sections (5.6.1-5.6.3 → one; 5.12.1 into
+    // Simple Pendulum; 5.13.1 into Angular S.H.M.).
+    //
+    // TWO sections are deliberately NOT subtopics, because a subtopic with no
+    // questions ships a /browse filter that returns nothing (the Class-12 Linear
+    // Programming precedent):
+    //   - §5.1 Introduction — question-less prose.
+    //   - §5.14 Damped Oscillations + §5.15 Free/Forced Oscillations and
+    //     Resonance. These ARE taught (10 and 5 mentions in the body) and are
+    //     simply never examined: measured across the whole Exercises block,
+    //     `resonan`/`forced`/`free oscill` occur ZERO times and the single
+    //     `damp` hit is the word "UNdamped" inside Q.21, an incidental
+    //     qualifier on an angular-S.H.M. torque question. There is no solved
+    //     example for either section either.
+    //
+    // ⚠ EXPECT THIS ACROSS THE PHYSICS LANE: these chapters teach more than they
+    // examine, so a subtopic list derived from section headings routinely
+    // over-generates. Always diff the committed `by subtopic` tally against this
+    // list BEFORE --apply, and drop what got nothing.
+    subtopics: [
+      "Periodic Motion and Linear S.H.M.",
+      "Acceleration, Velocity and Displacement in S.H.M.",
+      "Amplitude, Period and Frequency of S.H.M.",
+      "Reference Circle, Phase and Graphical Representation",
+      "Composition of Two S.H.M.s",
+      "Energy of a Particle Performing S.H.M.",
+      "Simple Pendulum",
+      "Angular S.H.M. and Magnet Vibrating in a Magnetic Field",
     ],
   },
 };
