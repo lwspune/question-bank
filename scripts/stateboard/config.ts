@@ -27,20 +27,28 @@ export const OUT = join(__dirname, "out"); // gitignored: rendered PNGs
 export const DATA = join(__dirname, "data"); // committed: transcription (source of truth)
 
 /**
- * Provenance clause appended to `pyq_note` on every AUTHORED answer of a chapter
- * whose source book prints no answer key (`Chapter.derivedAnswers`).
+ * Model credited on an answer we derived, written to `questions.derived_model`
+ * (with `derived_at`) for every AUTHORED row of a `derivedAnswers` chapter.
  *
- * It lives HERE, and not in stamp-provenance.ts, for a concrete reason: that
- * script runs `main()` at module load, so importing a constant from it EXECUTES
- * it — which made `flip-public.ts` exit with the stamper's own error for every
- * chapter that does not set the flag. Keep shared constants in a module with no
- * top-level side effects.
+ * ⚠ THE DISCLOSURE IS DELIBERATELY *NOT* PUT IN `pyq_note`, and that is a
+ * reversal of what this pipeline did on 2026-09-02 — read this before
+ * "restoring" it. `pyq_note` has exactly one consumer, the /browse card footer
+ * (`formatProvenance` -> QuestionCard), whose job is to cross-reference a
+ * question against its SOURCE. A ~200-char disclosure there was wrong three ways:
+ *   - wrong moment: a reader looking at the QUESTION has not seen an answer yet,
+ *     so there is nothing for them to mistake for an official key;
+ *   - wrong field: it crowded out the source line's only job, on every row;
+ *   - wrong premise: it was copied from CDS General Knowledge, which is EXAM
+ *     PAPERS, where "official answer key" is a real artifact students hunt for.
+ *     This is a TEXTBOOK, and the note already names it — nobody expects an
+ *     official key for a textbook exercise.
+ *
+ * The derived-answer fact is therefore kept as STRUCTURED DATA
+ * (`derived_model` / `derived_at`), which is queryable, auditable, and what the
+ * flip-public gate keys on. If it should ever be shown to a reader, the right
+ * place is a marker on the ANSWER REVEAL driven by that column — not prose
+ * stuffed into a text field. Product call, 2026-09-02.
  */
-export const DERIVED_NOTE_CLAUSE =
-  "This textbook publishes no answer key; the answer here is derived/authored and " +
-  "verified independently, and where the book prints an inline [Ans: ...] it was " +
-  "cross-checked against it.";
-
 export const DERIVED_MODEL = "claude-opus-5";
 
 export type Chapter = {

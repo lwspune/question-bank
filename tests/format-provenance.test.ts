@@ -15,6 +15,49 @@ import { describe, it, expect } from "vitest";
 import { formatProvenance } from "@/lib/questions/formatProvenance";
 
 describe("formatProvenance", () => {
+  // A textbook/worksheet ref is DESCRIPTIVE, not a bare paper numeral, and
+  // prefixing it with "Q" produces "QEx Q.2 (ii)" / "QMisc I (iv)" /
+  // "QA relation between length of an arc...". 22,368 PUBLIC rows across 8
+  // exams carry such a ref (every textbook + worksheet corpus). The "Q" is
+  // right for a PYQ paper's bare numeral and wrong for everything else, so
+  // the prefix is CONDITIONAL rather than removed.
+  it("does NOT prefix Q onto a descriptive textbook ref", () => {
+    expect(
+      formatProvenance({
+        examName: "Maharashtra HSC Class 12",
+        questionNumber: "Ex Q.2 (ii)",
+        pyqYear: null,
+        pyqMonth: null,
+        pyqNote: null,
+      })
+    ).toBe("Ex Q.2 (ii)");
+  });
+
+  it("does NOT prefix Q onto a ref that merely starts with a digit", () => {
+    // "1.1 SolvedEx.1" is a section-scoped textbook ref, not question 1.
+    expect(
+      formatProvenance({
+        examName: "Maharashtra State Board Class 9",
+        questionNumber: "1.1 SolvedEx.1",
+        pyqYear: null,
+        pyqMonth: null,
+        pyqNote: null,
+      })
+    ).toBe("1.1 SolvedEx.1");
+  });
+
+  it("still prefixes Q onto a bare paper numeral", () => {
+    expect(
+      formatProvenance({
+        examName: "JEE Mains",
+        questionNumber: "42",
+        pyqYear: null,
+        pyqMonth: null,
+        pyqNote: null,
+      })
+    ).toBe("Q42");
+  });
+
   it("renders NDA: Q# · month · year (drops note)", () => {
     expect(
       formatProvenance({

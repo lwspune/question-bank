@@ -23,17 +23,22 @@
  *     which backfill-sections.ts has already written.
  *   - everything else (exercise MCQ + exercise subjective) is ours → stamped.
  *
- * The note is deliberately specific about what IS corroborated: this book prints
- * an inline `[Ans: …]` after most numericals, so those answers are cross-checked
- * even though no key section exists. Saying "derived, unchecked" would be as
- * inaccurate as saying nothing.
+ * WHAT THIS DOES NOT DO: it does not write a disclosure into `pyq_note`. An
+ * earlier version of this script did, on the CDS General Knowledge pattern; that
+ * was reversed the same day — see DERIVED_MODEL in config.ts for the full
+ * reasoning. `pyq_note` carries the SOURCE only, and this script RESETS it to
+ * `ch.note` so a row stamped under the old design is cleaned on the next run.
  *
- * Idempotent: re-running appends nothing twice (the clause is matched before it
- * is added) and re-stamping is a no-op.
+ * The derived-answer fact lives in `derived_model` / `derived_at`, which is what
+ * the flip-public gate keys on — a structured column rather than a prose match,
+ * so it cannot break silently when wording changes.
+ *
+ * Idempotent BY CONSTRUCTION: both fields are SET, never appended to, and written
+ * only when they differ, so a re-run is a no-op.
  */
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { EXAM_ID, requireChapter, DERIVED_NOTE_CLAUSE, DERIVED_MODEL } from "./config";
+import { EXAM_ID, requireChapter, DERIVED_MODEL } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -81,14 +86,17 @@ async function main() {
   const authored = rows.filter((r) => r.section_kind !== "solved_example");
   const bookOwn = rows.length - authored.length;
   const needStamp = authored.filter((r) => !r.derived_model);
-  const needNote = authored.filter((r) => !(r.pyq_note ?? "").includes(DERIVED_NOTE_CLAUSE));
+  // The note carries the SOURCE only — see DERIVED_MODEL in config.ts for why
+  // the disclosure is structured data rather than prose. Rows stamped before
+  // that decision carry an appended clause, so this RESETS rather than appends.
+  const needNote = authored.filter((r) => r.pyq_note !== ch.note);
 
   console.log(`\n${ch.chapterName} (${ch.subjectName}) — derived-answer provenance`);
   console.log(`  rows                          ${rows.length}`);
   console.log(`  book's own solved examples    ${bookOwn}  (left unstamped, deliberately)`);
   console.log(`  authored/derived by us        ${authored.length}`);
   console.log(`  missing derived_model         ${needStamp.length}`);
-  console.log(`  missing the note clause       ${needNote.length}`);
+  console.log(`  note needing reset to source  ${needNote.length}`);
 
   if (!apply) {
     console.log("\n[dry-run] pass --apply to write. Nothing updated.");
@@ -103,10 +111,10 @@ async function main() {
       patch.derived_model = DERIVED_MODEL;
       patch.derived_at = now;
     }
-    const note = r.pyq_note ?? ch.note;
-    if (!note.includes(DERIVED_NOTE_CLAUSE)) {
-      patch.pyq_note = `${note} ${DERIVED_NOTE_CLAUSE}`.trim();
-    }
+    // SET the note to the chapter's source note, never append to it. Idempotent
+    // by construction, and it also cleans a row stamped under the earlier
+    // disclosure-in-the-note design.
+    if (r.pyq_note !== ch.note) patch.pyq_note = ch.note;
     if (!Object.keys(patch).length) continue;
     const { error: uErr } = await db.from("questions").update(patch).eq("id", r.id);
     if (uErr) throw new Error(`${r.question_number}: ${uErr.message}`);
