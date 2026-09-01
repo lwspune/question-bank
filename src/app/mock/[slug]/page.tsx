@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { getSessionUser, getSessionMember } from "@/lib/auth";
 import { getMockBySlug, getUserAttempts } from "@/lib/mocks/query";
+import { markingCopy } from "@/lib/mocks/marking";
 import StartMock from "./StartMock";
 import ShareMock from "./ShareMock";
 import AttemptsList from "../_components/AttemptsList";
@@ -32,7 +33,10 @@ export default async function MockInstructions({ params }: { params: Params }) {
     : [];
 
   const mins = Math.round(mock.durationSecs / 60);
-  const { correct, wrong } = mock.marking;
+  // Copy is derived, not hard-coded: MHT-CET has NO negative marking, and the
+  // old wording asserted a penalty and told the reader to "skip if unsure" —
+  // advice that costs marks when a blank scores the same as a wrong answer.
+  const marking = markingCopy(mock.marking);
 
   return (
     <>
@@ -58,15 +62,18 @@ export default async function MockInstructions({ params }: { params: Params }) {
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
             <li className="flex items-start gap-2">
               <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" aria-hidden />
-              <span><strong className="text-foreground">+{correct}</strong> marks for every correct answer.</span>
+              <span><strong className="text-foreground">{marking.correctValue}</strong> marks for every correct answer.</span>
             </li>
             <li className="flex items-start gap-2">
-              <XCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-600" aria-hidden />
-              <span><strong className="text-foreground">{wrong}</strong> marks for every wrong answer (negative marking).</span>
+              <XCircle
+                className={`mt-0.5 h-4 w-4 shrink-0 ${marking.hasPenalty ? "text-red-600" : "text-muted-foreground"}`}
+                aria-hidden
+              />
+              <span><strong className="text-foreground">{marking.wrongValue}</strong> {marking.wrongNote}</span>
             </li>
             <li className="flex items-start gap-2">
               <MinusCircle className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />
-              <span><strong className="text-foreground">0</strong> marks for un-attempted questions — skip if unsure.</span>
+              <span><strong className="text-foreground">0</strong> {marking.unattemptedAdvice}</span>
             </li>
             <li className="flex items-start gap-2">
               <Clock className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />

@@ -158,6 +158,36 @@ export function cdsMockTitle(year: number, edition: CdsEdition): string {
 }
 
 /**
+ * MHT-CET slug — the sitting KEY carries the date and shift, e.g.
+ * "mht-cet-2023-may-03-s1-maths" / "mht-cet-2021-phy-chem".
+ *
+ * THE REASON THIS EXISTS: the generic mockSlug() keys on (year, month), and 17
+ * of the 45 MHT-CET sittings share (2023, "May") — so it would emit ONE slug for
+ * all 17, and since the mock id is slugToUuid(slug) the upserts would silently
+ * overwrite each other, leaving 16 real sittings missing with no error. The key
+ * (see scripts/mocks/mhtcetSittings.ts) is the only per-sitting identity the
+ * corpus has; undated sources carry a bare year, dated ones "YYYY-mon-DD-sN".
+ */
+export function mhtCetMockSlug(sittingKey: string, paperCode: string): string {
+  return `mht-cet-${sittingKey}-${paperCode}`;
+}
+
+/**
+ * MHT-CET title, e.g. "MHT-CET 2023 (3 May Shift 1) — Paper I — Mathematics".
+ *
+ * `label` is null for the three sources that carry no date on disk or in the
+ * bank (the 2021 and 2022 single papers) — those title as a bare year rather
+ * than claiming a sitting nobody has established.
+ */
+export function mhtCetMockTitle(
+  year: number,
+  label: string | null,
+  bp: MockPaperBlueprint
+): string {
+  return `MHT-CET ${year}${label ? ` (${label})` : ""} — ${bp.paperLabel}`;
+}
+
+/**
  * Check reconstructed rows against the blueprint. Returns a list of issue
  * strings (empty = the paper faithfully reconstructs). Never throws.
  */

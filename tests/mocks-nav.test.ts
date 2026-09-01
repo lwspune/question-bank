@@ -11,8 +11,13 @@ import type { MockListItem } from "@/lib/mocks/query";
 
 /**
  * The /mock nav derives from EXAM_REGISTRY's `hasMocks` flag, so these assert
- * structural invariants (NDA + NEET + CDS have mocks; MHT-CET does not yet)
- * rather than exact counts.
+ * structural invariants (NDA + NEET + CDS + MHT-CET have mocks; JEE Mains does
+ * not) rather than exact counts.
+ *
+ * MHT-CET was this file's exemplar of a registered-but-mock-less exam until its
+ * 60 PYQ mocks shipped (2026-09-01). Each invariant moved to JEE Mains — a live
+ * exam with 10,614 questions and no mocks — rather than being deleted, and
+ * MHT-CET gained the positive assertion instead.
  */
 describe("mocksNav — cross-exam mock grouping", () => {
   it("lists only exams that have published mocks", () => {
@@ -21,14 +26,16 @@ describe("mocksNav — cross-exam mock grouping", () => {
     const slugs = exams.map((e) => e.slug);
     expect(slugs).toContain("nda");
     expect(slugs).toContain("neet");
-    // MHT-CET has notes but no mocks yet — must NOT appear.
-    expect(slugs).not.toContain("mht-cet");
+    expect(slugs).toContain("mht-cet");
+    // JEE Mains has guides + notes but no mocks — must NOT appear.
+    expect(slugs).not.toContain("jee-mains");
   });
 
   it("resolves a mock exam by slug, null for no-mocks or unknown", () => {
     expect(getMockExam("nda")?.examName).toBe("NDA");
     expect(getMockExam("neet")?.examName).toBe("NEET");
-    expect(getMockExam("mht-cet")).toBeNull(); // registered, but no mocks
+    expect(getMockExam("mht-cet")?.examName).toBe("MHT-CET");
+    expect(getMockExam("jee-mains")).toBeNull(); // registered, but no mocks
     expect(getMockExam("not-an-exam")).toBeNull();
   });
 
@@ -45,7 +52,8 @@ describe("mocksNav — cross-exam mock grouping", () => {
     const slugs = mockExamSlugs();
     expect(slugs).toContain("nda");
     expect(slugs).toContain("neet");
-    expect(slugs).not.toContain("mht-cet");
+    expect(slugs).toContain("mht-cet");
+    expect(slugs).not.toContain("jee-mains");
   });
 
   it("includes CDS, whose 19 English PYQ papers ship as mocks", () => {
@@ -182,8 +190,8 @@ describe("buildMockExamCards — the /mock picker model", () => {
     // registry exams. A row for an unflagged exam must not appear, and must not
     // disturb the exams that are flagged. (The prod-contract probe in
     // tests/mocks-registry.test.ts is what stops such a row existing at all.)
-    const cards = buildMockExamCards([...SAMPLE, fixture("MHT-CET", 2026)]);
-    expect(cards.map((c) => c.slug)).not.toContain("mht-cet");
+    const cards = buildMockExamCards([...SAMPLE, fixture("JEE Mains", 2026)]);
+    expect(cards.map((c) => c.slug)).not.toContain("jee-mains");
     expect(cards.find((c) => c.slug === "nda")!.count).toBe(3);
   });
 });

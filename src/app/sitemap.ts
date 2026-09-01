@@ -80,11 +80,12 @@ async function publicQuizEntries(buildDate: Date): Promise<MetadataRoute.Sitemap
  * The /mock surface: the exam picker, the per-exam catalogues, and every
  * published mock's instructions page.
  *
- * These were absent from the sitemap entirely — Google only ever found the 63
- * mock pages by crawling the flat list /mock used to render. The exam-picker
- * rewrite removed those 63 links, putting every mock two hops from an indexed
- * page, so listing them here is what keeps them discoverable rather than a
- * nice-to-have.
+ * These were absent from the sitemap entirely — Google only ever found the mock
+ * pages (63 of them at the time, 123 since MHT-CET landed) by crawling the flat
+ * list /mock used to render. The exam-picker rewrite removed those links,
+ * putting every mock two hops from an indexed page, so listing them here is what
+ * keeps them discoverable rather than a nice-to-have. The query is unfiltered, so
+ * a newly built exam enters the sitemap with no change here.
  *
  * lastModified is each mock's own updated_at (a rebuild of that sitting), and
  * a per-exam page carries the newest of its mocks — so re-running the build
