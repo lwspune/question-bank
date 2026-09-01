@@ -4,6 +4,7 @@ import {
   selectTotal,
   orderPaper,
   orderPaperBySections,
+  passesChapterFilters,
   type Cand,
 } from "../scripts/bank-paper/lib";
 
@@ -254,5 +255,57 @@ describe("orderPaperBySections", () => {
         orderPaper([phy, chem, geo]).map((q) => q.id)
       );
     });
+  });
+});
+
+describe("passesChapterFilters", () => {
+  const used = new Set(["used-1", "used-2"]);
+  const row = (id: string, setId: string | null = null, hasContext = false) => ({
+    id,
+    setId,
+    hasContext,
+  });
+
+  it("defaults to the pre-existing behaviour: drop rows already in a paper", () => {
+    expect(passesChapterFilters(row("fresh"), {}, used)).toBe(true);
+    expect(passesChapterFilters(row("used-1"), {}, used)).toBe(false);
+  });
+
+  it("allowUsed lets a repeat through — needed when a topic's HARD supply is exhausted", () => {
+    expect(passesChapterFilters(row("used-1"), { allowUsed: true }, used)).toBe(true);
+  });
+
+  it("soloOnly drops set members (RULE 1: a context is all-or-nothing)", () => {
+    expect(passesChapterFilters(row("a", "set:S1"), { soloOnly: true }, used)).toBe(false);
+    expect(passesChapterFilters(row("a"), { soloOnly: true }, used)).toBe(true);
+  });
+
+  it("soloOnly also drops a context-bearing row with a NULL set_id", () => {
+    // set_id alone is not a sufficient guard — some sources share a context
+    // with set_id NULL, which a set_id-only check cannot see.
+    expect(passesChapterFilters(row("a", null, true), { soloOnly: true }, used)).toBe(false);
+  });
+
+  it("soloOnly is off by default, so specs predating it are unaffected", () => {
+    expect(passesChapterFilters(row("a", "set:S1"), {}, used)).toBe(true);
+  });
+
+  it("includeIds restricts the pool to exactly the listed ids", () => {
+    const f = { includeIds: ["keep"] };
+    expect(passesChapterFilters(row("keep"), f, used)).toBe(true);
+    expect(passesChapterFilters(row("other"), f, used)).toBe(false);
+  });
+
+  it("an EMPTY includeIds means nothing is eligible, not everything", () => {
+    // Fails closed: an accidentally-empty screening list must starve the chapter
+    // loudly (shortfall) rather than silently admit the whole chapter.
+    expect(passesChapterFilters(row("a"), { includeIds: [] }, used)).toBe(false);
+  });
+
+  it("includeIds does not bypass the used-question rule", () => {
+    expect(passesChapterFilters(row("used-1"), { includeIds: ["used-1"] }, used)).toBe(false);
+    expect(
+      passesChapterFilters(row("used-1"), { includeIds: ["used-1"], allowUsed: true }, used)
+    ).toBe(true);
   });
 });
