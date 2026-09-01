@@ -17,7 +17,18 @@ export type ProvenanceInput = {
 export function formatProvenance(p: ProvenanceInput): string | null {
   const parts: string[] = [];
 
-  if (p.questionNumber) parts.push(`Q${p.questionNumber}`);
+  // The "Q" prefix is for a PYQ paper's BARE NUMERAL ("42" → "Q42"), which is
+  // how a teacher cross-references the printed paper. Every textbook and
+  // worksheet corpus instead stores a DESCRIPTIVE ref, and prefixing those
+  // yields "QEx Q.2 (ii)", "QMisc I (iv)", "QLvl I-CW Q1" or
+  // "QA relation between length of an arc…" — 22,368 PUBLIC rows across 8 exams.
+  // So the prefix is conditional: a descriptive ref already names itself and is
+  // rendered verbatim. Deliberately NOT a blanket removal — "Q42" is correct and
+  // wanted for the PYQ corpora, and the tests pin both directions.
+  if (p.questionNumber) {
+    const isBareNumeral = /^\d+$/.test(p.questionNumber.trim());
+    parts.push(isBareNumeral ? `Q${p.questionNumber}` : p.questionNumber);
+  }
 
   // NDA: month is the disambiguator (Apr⇒NDA 1, Sep⇒NDA 2, enforced
   // by the 2026-05-26 metadata cleanup). pyq_note is structurally
