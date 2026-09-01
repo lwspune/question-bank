@@ -359,6 +359,45 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Miscellaneous Exercise 8", label: "Choose the correct option", kind: "miscellaneous", refPrefixes: ["Misc 8 I ("] },
     { group: "Miscellaneous Exercise 8", label: "Solve the following", kind: "miscellaneous", refPrefixes: ["Misc 8 Q."] },
   ],
+
+  // ── Ch.5 Oscillations (12th PHYSICS) — verified against
+  //    `12th_Topics/05. Oscillations.pdf` via a get_text('blocks') (page, y)
+  //    scan (2026-09-02). The Physics book is laid out UNLIKE the Maths ones and
+  //    the outline reflects that faithfully:
+  //    (a) There are NO boxed "Solved Examples" blocks and NO per-section
+  //        exercises. Worked examples 5.1-5.13 are printed INLINE in the theory,
+  //        scattered p03-p17, each immediately after the section it illustrates.
+  //        So they form ONE solved_example block in book order, not one per
+  //        section — inventing per-section blocks would assert a structure the
+  //        book does not have.
+  //    (b) The whole chapter has exactly ONE `Exercises` block (p20 y≈76 → end of
+  //        p21), internally numbered 1., 2., then flat 3.-23.
+  //    (c) There is no Miscellaneous exercise anywhere in this book, so `kind`
+  //        never takes `miscellaneous` here.
+  //
+  //    ⚠ REF-PREFIX COLLISION — the reason the flat items are enumerated rather
+  //    than matched by a stem. `Ex Q.2` is a prefix of `Ex Q.23`, so a single
+  //    `"Ex Q."` or `"Ex Q.2"` prefix would route Q.23 into the "Answer in brief"
+  //    block. Longest-prefix-wins saves `Ex Q.2 (i)` but NOT `Ex Q.23`. Listing
+  //    each flat ref exactly is unambiguous, and backfill-sections.ts reports any
+  //    ref that matches no block — so a deviation fails loudly rather than
+  //    landing in the wrong section.
+  "oscillations-12-phy": [
+    { group: "5. Oscillations — worked examples", label: "Solved Examples", kind: "solved_example", refPrefixes: ["Solved Ex.5."] },
+    { group: "Exercises", label: "Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q.1 ("] },
+    { group: "Exercises", label: "Answer in brief", kind: "exercise", refPrefixes: ["Ex Q.2 ("] },
+    {
+      group: "Exercises",
+      label: "Solve the following",
+      kind: "exercise",
+      refPrefixes: [
+        "Ex Q.3", "Ex Q.4", "Ex Q.5", "Ex Q.6", "Ex Q.7", "Ex Q.8", "Ex Q.9",
+        "Ex Q.10", "Ex Q.11", "Ex Q.12", "Ex Q.13", "Ex Q.14", "Ex Q.15",
+        "Ex Q.16", "Ex Q.17", "Ex Q.18", "Ex Q.19", "Ex Q.20", "Ex Q.21",
+        "Ex Q.22", "Ex Q.23",
+      ],
+    },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

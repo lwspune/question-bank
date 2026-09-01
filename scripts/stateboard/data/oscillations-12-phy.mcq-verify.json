@@ -1,0 +1,37 @@
+[
+  {
+    "id": "bd1831a8-6597-4f9c-ad8c-8b21f4c2cd46",
+    "ref": "Ex Q.1 (i)",
+    "derived_answer": "A",
+    "solution": "For linear S.H.M. the speed at displacement \\( x \\) is \\( v = \\omega \\sqrt{A^{2} - x^{2}} \\), and the maximum speed (at the mean position) is \\( v_{\\max} = \\omega A \\).\n\nPut \\( v = \\dfrac{v_{\\max}}{2} \\):\n\n\\( \\omega \\sqrt{A^{2} - x^{2}} = \\dfrac{\\omega A}{2} \\)\n\nSquaring and cancelling \\( \\omega^{2} \\):\n\n\\( A^{2} - x^{2} = \\dfrac{A^{2}}{4} \\quad \\Rightarrow \\quad x^{2} = \\dfrac{3A^{2}}{4} \\quad \\Rightarrow \\quad x = \\dfrac{\\sqrt{3}}{2} A \\)\n\nNote that the time period \\( T \\) is not needed — the speed-displacement relation is independent of it.\n\nWhy the others fail: \\( \\dfrac{2}{\\sqrt{3}} A \\approx 1.15 A \\) is larger than the amplitude, so the particle can never reach it. At \\( x = A/2 \\) the speed is \\( \\dfrac{\\sqrt{3}}{2} v_{\\max} \\approx 0.87 v_{\\max} \\), not half. At \\( x = \\dfrac{A}{\\sqrt{2}} \\) the speed is \\( \\dfrac{v_{\\max}}{\\sqrt{2}} \\approx 0.71 v_{\\max} \\) — that is the point where kinetic and potential energies are equal, a different condition.",
+    "matches_current": true
+  },
+  {
+    "id": "85d0bd58-b44b-40ba-8c52-cd269e97271d",
+    "ref": "Ex Q.1 (ii)",
+    "derived_answer": "D",
+    "solution": "Compare \\( x = 6 \\sin(100t + \\pi/4) \\) with \\( x = A \\sin(\\omega t + \\phi) \\).\n\nThe displacement is given in centimetres, so the amplitude must be converted to SI units:\n\n\\( A = 6 \\text{ cm} = 0.06 \\text{ m}, \\qquad \\omega = 100 \\text{ rad/s}, \\qquad m = 1 \\text{ kg} \\)\n\nThe kinetic energy is maximum at the mean position, where the speed is \\( v_{\\max} = \\omega A = 100 \\times 0.06 = 6 \\text{ m/s} \\).\n\n\\( (K.E.)_{\\max} = \\dfrac{1}{2} m v_{\\max}^{2} = \\dfrac{1}{2} m \\omega^{2} A^{2} = \\dfrac{1}{2} \\times 1 \\times (100)^{2} \\times (0.06)^{2} \\)\n\n\\( = \\dfrac{1}{2} \\times 10000 \\times 0.0036 = 18 \\text{ J} \\)\n\nWhy the others fail: \\( 36 \\) J is what you get by dropping the factor \\( \\dfrac{1}{2} \\), i.e. computing \\( m \\omega^{2} A^{2} \\). \\( 9 \\) J and \\( 27 \\) J do not follow from the given data at all. (Leaving the amplitude in centimetres gives an absurd \\( 1.8 \\times 10^{5} \\) J, which is the unit trap this question is built around.)",
+    "matches_current": true
+  },
+  {
+    "id": "e87fcce4-b89c-4a5e-bfd8-31831d5a0238",
+    "ref": "Ex Q.1 (iii)",
+    "derived_answer": "A",
+    "solution": "A second's pendulum is *defined* by its period: \\( T = 2 \\) s, wherever it is. So the period must be the same on the moon as on the earth.\n\nFor a simple pendulum \\( T = 2\\pi \\sqrt{\\dfrac{L}{g}} \\), so \\( L = \\dfrac{g T^{2}}{4\\pi^{2}} \\).\n\nWith \\( T \\) fixed, \\( L \\propto g \\). Hence\n\n\\( \\dfrac{L_{m}}{L_{e}} = \\dfrac{g_{m}}{g_{e}} = \\dfrac{1}{6} \\)\n\n\\( L_{m} = \\dfrac{1}{6} \\times 1 = \\dfrac{1}{6} \\text{ m} \\approx 0.17 \\text{ m} \\)\n\nPhysically: gravity on the moon is weaker, so the bob is restored more slowly; the pendulum must be made *shorter* to keep the same 2-second beat.\n\nWhy the others fail: \\( 6 \\) m would follow if \\( g \\) on the moon were six times larger, not smaller. \\( \\dfrac{1}{36} \\) m assumes \\( L \\propto g^{2} \\), and \\( \\dfrac{1}{\\sqrt{6}} \\) m assumes \\( L \\propto \\sqrt{g} \\); the relation is linear in \\( g \\).",
+    "matches_current": true
+  },
+  {
+    "id": "fce1ee9a-0ec3-4c34-bde5-0b2ec12d931d",
+    "ref": "Ex Q.1 (iv)",
+    "derived_answer": "B",
+    "solution": "For a mass \\( m \\) on a spring combination of effective constant \\( k_{\\text{eff}} \\), the frequency is \\( n = \\dfrac{1}{2\\pi} \\sqrt{\\dfrac{k_{\\text{eff}}}{m}} \\), so \\( n \\propto \\sqrt{k_{\\text{eff}}} \\).\n\nTwo identical springs of constant \\( k \\):\n\n**Series:** \\( \\dfrac{1}{k_{s}} = \\dfrac{1}{k} + \\dfrac{1}{k} = \\dfrac{2}{k} \\quad \\Rightarrow \\quad k_{s} = \\dfrac{k}{2} \\)\n\n**Parallel:** \\( k_{p} = k + k = 2k \\)\n\nTherefore\n\n\\( \\dfrac{n_{s}}{n_{p}} = \\sqrt{\\dfrac{k_{s}}{k_{p}}} = \\sqrt{\\dfrac{k/2}{2k}} = \\sqrt{\\dfrac{1}{4}} = \\dfrac{1}{2} \\)\n\nSo \\( n_{s} : n_{p} = 1 : 2 \\) — the series combination is the softer (more easily stretched) one and therefore oscillates at the lower frequency.\n\nWhy the others fail: \\( 1:4 \\) is the ratio of the spring constants \\( k_{s} : k_{p} \\), not of the frequencies — the square root has been forgotten. \\( 2:1 \\) and \\( 4:1 \\) are these two ratios written the other way round, i.e. parallel-to-series, whereas the question asks for series first.",
+    "matches_current": true
+  },
+  {
+    "id": "53459f7c-b8c0-4f56-99f7-215c9ff0fe5c",
+    "ref": "Ex Q.1 (v)",
+    "derived_answer": "B",
+    "solution": "The graph starts at \\( x = 0 \\) and rises, so \\( x = A \\sin\\left(\\dfrac{2\\pi t}{T}\\right) \\).\n\nFor S.H.M. the restoring force is \\( F = -m\\omega^{2} x \\), so \\( |F| \\) (and \\( |a| \\)) is largest where \\( |x| \\) is largest — at the extreme positions — and zero at the mean position, where instead the speed is largest.\n\nReading the graph at the marked instants:\n\n- \\( t = T/4 \\): \\( x = +A \\) (positive extreme) — velocity zero, so \\( K.E. = 0 \\) and all the energy is potential.\n- \\( t = T/2 \\): \\( x = 0 \\) (mean position) — speed is *maximum*, not zero.\n- \\( t = 3T/4 \\): \\( x = -A \\) (negative extreme) — \\( |x| \\) is maximum, so \\( |F| = m\\omega^{2} A \\) is **maximum**.\n- \\( t = T \\): \\( x = 0 \\) (mean position) — acceleration \\( = -\\omega^{2} x = 0 \\), i.e. minimum, not maximum.\n\nHence only the statement about the force at \\( t = 3T/4 \\) is correct.\n\nWhy the others fail: the acceleration at \\( t = T \\) is zero (option A); the velocity at \\( t = T/2 \\) is maximum, not zero (option C); and at \\( t = T/4 \\) the particle is momentarily at rest, so the kinetic energy is zero while the *potential* energy equals the total energy (option D).",
+    "matches_current": true
+  }
+]
