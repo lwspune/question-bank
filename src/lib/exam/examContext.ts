@@ -125,6 +125,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "MHT-CET",
     guidesPath: "/guide/mht-cet", // hub: MHT-CET Mathematics (Template C)
     notesPath: "/notes/mht-cet", // exam hub: MHT-CET Maths notes
+    hasMocks: true, // 60 mocks: Paper I (Maths) + Paper II (Phy & Chem) per sitting
   },
   {
     slug: "jee-mains",

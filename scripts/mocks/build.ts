@@ -11,11 +11,15 @@
  *   • YEAR × MONTH (NDA) — `pyq_month` distinguishes the two sittings of a year,
  *     so the sittings can be discovered from the bank itself. Driven by
  *     MOCK_BLUEPRINTS.
- *   • SOURCE_FILE (NEET, CDS) — `pyq_month` is NULL and two sittings share a
- *     year (NEET 2024 + Re-NEET 2024; CDS (I) + CDS (II)), so the bank cannot
- *     tell them apart and the sittings come from a registry. NEET's is
- *     hand-written (each sitting carries bespoke grace/override/length facts);
- *     CDS's is DERIVED from scripts/cds/config.ts (see cdsSittings.ts).
+ *   • SOURCE_FILE (NEET, CDS, MHT-CET) — the bank cannot tell two sittings of a
+ *     year apart, so the sittings come from a registry. NEET's is hand-written
+ *     (each sitting carries bespoke grace/override/length facts); CDS's is
+ *     DERIVED from scripts/cds/config.ts (see cdsSittings.ts); MHT-CET's is BOTH
+ *     (13 of 45 derived from scripts/mhtcet/config.ts, the rest hand-written
+ *     because no config exists for them — see mhtcetSittings.ts).
+ *     For MHT-CET `pyq_month` is not merely null but ACTIVELY MISLEADING: 17 of
+ *     its 45 sittings share (2023, "May"), so the year+month loop would emit one
+ *     slug for all 17 and silently overwrite 16 real papers.
  * Both feed one shared loop (`buildFromSourceFiles`) and one shared writer
  * (`emitMock`) so a fix to the write path cannot land on one exam and miss the
  * other — the drift this repo has already paid for twice.
@@ -25,8 +29,10 @@
  *   npx tsx scripts/mocks/build.ts --apply --publish     # ...and publish
  *   npx tsx scripts/mocks/build.ts --paper=gat --apply --publish
  *   npx tsx scripts/mocks/build.ts --paper=cds
+ *   npx tsx scripts/mocks/build.ts --paper=mht-cet          # both CET papers
  *   npx tsx scripts/mocks/build.ts --only=2024-Sep --apply --publish
  *   npx tsx scripts/mocks/build.ts --only=cds-2026-i-english
+ *   npx tsx scripts/mocks/build.ts --only=2023-may-03-s1    # one CET sitting
  *
  * NOTE ON --publish: the upsert writes `status` unconditionally, so re-running
  * an already-published family WITHOUT --publish demotes it to 'draft'. Re-run
@@ -41,16 +47,21 @@ import {
   MOCK_BLUEPRINTS,
   NEET_PAPER,
   CDS_ENGLISH_PAPER,
+  MHT_CET_MATHS_PAPER,
+  MHT_CET_PHY_CHEM_PAPER,
   type MockPaperBlueprint,
 } from "../../src/lib/mocks/blueprints";
 import {
   buildMockPaper,
   neetMockSlug,
   neetMockTitle,
+  mhtCetMockSlug,
+  mhtCetMockTitle,
   type MockPaperSnapshot,
   type PaperQuestionRow,
 } from "../../src/lib/mocks/reconstruct";
 import { deriveCdsSittings } from "./cdsSittings";
+import { deriveMhtCetSittings } from "./mhtcetSittings";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -62,6 +73,8 @@ type RunState = {
   publish: boolean;
   only: string | undefined;
   built: { n: number };
+  /** Papers deliberately not shipped because they cannot reconstruct whole. */
+  held: { n: number };
   failures: string[];
 };
 
@@ -244,6 +257,17 @@ type SourceFileSitting = {
   questionCount?: number;
   /** Per-sitting row surgery, applied after fetch and before reconstruction. */
   prepare?: (rows: PaperQuestionRow[]) => PaperQuestionRow[];
+  /**
+   * This paper is KNOWN not to reconstruct whole — the reason, e.g.
+   * "48/50 — 2 questions withheld PRIVATE (flawed)". A mock is the real paper
+   * or it is nothing, so a held paper is not shipped.
+   *
+   * It is an ASSERTION, not a mute. The build is still attempted, and a hold
+   * whose paper NOW reconstructs is reported as a failure telling you to delete
+   * the line — otherwise closing a corpus hole would silently leave the mock
+   * un-shipped forever. Used by MHT-CET (30 of its 90 papers).
+   */
+  hold?: string;
 };
 
 async function buildFromSourceFiles(
@@ -274,7 +298,24 @@ async function buildFromSourceFiles(
         durationSecs: s.durationSecs,
       });
     } catch (e) {
+      // A KNOWN-short paper is a decision, not a breakage — but an unexplained
+      // one is a real failure and must stay loud.
+      if (s.hold) {
+        console.log(`  ⊘ ${s.key.padEnd(18)} held — ${s.hold}`);
+        run.held.n++;
+        continue;
+      }
       run.failures.push(`${s.key}: ${e instanceof Error ? e.message.split("\n").slice(0, 4).join(" | ") : String(e)}`);
+      continue;
+    }
+    // The other half of the assertion: the corpus hole has been closed, so the
+    // hold is stale. Refuse to ship rather than contradict the registry — that
+    // is a human's call, and a silent emit would leave the stale line in place.
+    if (s.hold) {
+      run.failures.push(
+        `${s.key} (${bp.code}): STALE HOLD — this paper now reconstructs whole ` +
+          `(recorded as "${s.hold}"). Delete the hold in mhtcetSittings.ts and re-run.`
+      );
       continue;
     }
     await emitMock(db, examId, snap, run);
@@ -372,6 +413,28 @@ function cdsSittings(): SourceFileSitting[] {
   }));
 }
 
+// ── MHT-CET ─────────────────────────────────────────────────────────────────
+// TWO papers per sitting (Maths, and Physics+Chemistry), so one registry feeds
+// buildFromSourceFiles twice. source_file-keyed because 17 of the 45 sittings
+// share (2023, "May") — the year+month loop would collapse them onto one slug.
+//
+// `paper` is passed explicitly rather than sniffed from bp.code: NDA also uses
+// the code "maths", and a mis-read there would silently attach the Maths holds
+// to the Physics+Chemistry paper.
+function mhtCetSittings(
+  bp: MockPaperBlueprint,
+  paper: "maths" | "phyChem"
+): SourceFileSitting[] {
+  return deriveMhtCetSittings().map((s) => ({
+    key: s.key,
+    sourceFile: s.sourceFile,
+    year: s.year,
+    slug: mhtCetMockSlug(s.key, bp.code),
+    title: mhtCetMockTitle(s.year, s.label, bp),
+    hold: paper === "maths" ? s.hold?.maths : s.hold?.phyChem,
+  }));
+}
+
 async function main() {
   const apply = process.argv.includes("--apply");
   const publish = process.argv.includes("--publish");
@@ -388,11 +451,12 @@ async function main() {
   const runNda = !paperFilter || NDA_CODES.has(paperFilter);
   const runNeet = !paperFilter || paperFilter === "neet";
   const runCds = !paperFilter || paperFilter === "cds";
-  if (paperFilter && !runNda && !runNeet && !runCds) {
-    throw new Error(`no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds)`);
+  const runMhtCet = !paperFilter || paperFilter === "mht-cet";
+  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet) {
+    throw new Error(`no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet)`);
   }
 
-  const run: RunState = { apply, publish, only, built: { n: 0 }, failures: [] };
+  const run: RunState = { apply, publish, only, built: { n: 0 }, held: { n: 0 }, failures: [] };
 
   const blueprints = runNda ? MOCK_BLUEPRINTS.filter((b) => !paperFilter || b.code === paperFilter) : [];
   for (const bp of blueprints) {
@@ -421,8 +485,13 @@ async function main() {
 
   if (runNeet) await buildFromSourceFiles(db, NEET_PAPER, neetSittings(), run);
   if (runCds) await buildFromSourceFiles(db, CDS_ENGLISH_PAPER, cdsSittings(), run);
+  if (runMhtCet) {
+    await buildFromSourceFiles(db, MHT_CET_MATHS_PAPER, mhtCetSittings(MHT_CET_MATHS_PAPER, "maths"), run);
+    await buildFromSourceFiles(db, MHT_CET_PHY_CHEM_PAPER, mhtCetSittings(MHT_CET_PHY_CHEM_PAPER, "phyChem"), run);
+  }
 
   console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);
+  if (run.held.n) console.log(`${run.held.n} paper(s) held — cannot reconstruct whole (see ⊘ lines above).`);
   if (run.failures.length) { console.log(`\n${run.failures.length} failure(s):`); run.failures.forEach((f) => console.log(`  ✗ ${f}`)); }
   if (!apply) console.log("\n(dry-run — re-run with --apply to write)");
 }

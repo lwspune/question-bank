@@ -166,6 +166,64 @@ export const CDS_ENGLISH_PAPER: MockPaperBlueprint = {
   ],
 };
 
+/**
+ * MHT-CET (PCM group) — TWO papers per sitting, the NDA shape.
+ *
+ *   Paper I  — Mathematics:          50 q  x 2 marks = 100 marks, 90 min
+ *   Paper II — Physics + Chemistry: 100 q  x 1 mark  = 100 marks, 90 min
+ *
+ * ZERO NEGATIVE MARKING, and it is the first such exam in this file. That is a
+ * real property of MHT-CET, not a placeholder: src/app/guide/mht-cet-maths
+ * /_data/strategy.ts sets penaltyPerWrong: 0 and, for exactly that reason, makes
+ * targetAttempts equal the full paper — a blank scores the same as a wrong
+ * answer, so leaving one is strictly worse than guessing. It is also why
+ * src/lib/mocks/marking.ts exists: the instructions screen used to hard-code
+ * "(negative marking)" and "skip if unsure", both wrong here.
+ *
+ * Both papers declare HARD section counts. Short sittings are NOT a layout
+ * variant the way NEET's 180-vs-200 is — they are questions missing from the
+ * bank — so a soft count would ship a fragment as "the real paper". The 30 of 90
+ * papers that cannot reconstruct whole are held in scripts/mocks/mhtcetSittings.ts
+ * with a stated reason rather than shipped short.
+ *
+ * The bank's subject row is "Maths", NOT "Mathematics" — resolvePaper looks
+ * subjects up by name, so the wrong spelling resolves zero chapters and every
+ * sitting reconstructs empty.
+ *
+ * Sittings are source_file-keyed (17 of the 45 share (2023, "May"), so the NDA
+ * year+month loop would collapse them onto one slug) — hence both papers are
+ * deliberately absent from MOCK_BLUEPRINTS.
+ */
+export const MHT_CET_MATHS_PAPER: MockPaperBlueprint = {
+  code: "maths",
+  examName: "MHT-CET",
+  examSlug: "mht-cet",
+  paperLabel: "Paper I — Mathematics",
+  durationSecs: 90 * 60,
+  marking: { correct: 2, wrong: 0 },
+  sections: [
+    { key: "mathematics", label: "Mathematics", subjects: ["Maths"], count: 50 },
+  ],
+};
+
+/**
+ * Section ORDER is the paper order. Every source file numbers Physics 1-50 and
+ * Chemistry 51-100, and buildMockPaper walks sections in blueprint order, so
+ * swapping these two would renumber the whole paper.
+ */
+export const MHT_CET_PHY_CHEM_PAPER: MockPaperBlueprint = {
+  code: "phy-chem",
+  examName: "MHT-CET",
+  examSlug: "mht-cet",
+  paperLabel: "Paper II — Physics & Chemistry",
+  durationSecs: 90 * 60,
+  marking: { correct: 1, wrong: 0 },
+  sections: [
+    { key: "physics", label: "Physics", subjects: ["Physics"], count: 50 },
+    { key: "chemistry", label: "Chemistry", subjects: ["Chemistry"], count: 50 },
+  ],
+};
+
 /** The NDA blueprints the build script's year+month discovery loop iterates. */
 export const MOCK_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   NDA_MATHS_PAPER,
@@ -177,6 +235,8 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   ...MOCK_BLUEPRINTS,
   NEET_PAPER,
   CDS_ENGLISH_PAPER,
+  MHT_CET_MATHS_PAPER,
+  MHT_CET_PHY_CHEM_PAPER,
 ];
 
 /** Sum of the DECLARED section counts (0 when a blueprint declares none). */

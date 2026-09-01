@@ -5,6 +5,8 @@ import {
   NDA_GAT_PAPER,
   NEET_PAPER,
   CDS_ENGLISH_PAPER,
+  MHT_CET_MATHS_PAPER,
+  MHT_CET_PHY_CHEM_PAPER,
   getBlueprint,
   totalQuestions,
   totalMarks,
@@ -125,5 +127,75 @@ describe("CDS blueprint", () => {
     // carry a NULL pyq_month, so it must never enter that loop.
     expect(MOCK_BLUEPRINTS).not.toContain(CDS_ENGLISH_PAPER);
     expect(MOCK_BLUEPRINTS).toHaveLength(2);
+  });
+});
+
+/**
+ * MHT-CET (PCM group) — TWO papers per sitting, like NDA.
+ *
+ * The load-bearing property here is ZERO negative marking: every other
+ * blueprint in this file carries a penalty, so MHT-CET is the first exam where
+ * `marking.wrong` is 0. That is a real property of the exam (confirmed by
+ * src/app/guide/mht-cet-maths/_data/strategy.ts, which sets penaltyPerWrong: 0
+ * and targetAttempts === paperQ for exactly this reason), not a placeholder.
+ */
+describe("MHT-CET blueprints", () => {
+  it("Paper I is 50 Maths questions at +2 for 100 marks in 90 minutes", () => {
+    expect(totalQuestions(MHT_CET_MATHS_PAPER)).toBe(50);
+    expect(MHT_CET_MATHS_PAPER.sections).toHaveLength(1);
+    expect(MHT_CET_MATHS_PAPER.sections[0].count).toBe(50);
+    expect(totalMarks(MHT_CET_MATHS_PAPER)).toBe(100);
+    expect(MHT_CET_MATHS_PAPER.durationSecs).toBe(90 * 60);
+  });
+
+  /**
+   * The bank's MHT-CET subject row is "Maths", NOT "Mathematics" (which is what
+   * NDA uses). resolvePaper looks subjects up BY NAME, so getting this wrong
+   * resolves zero chapters and every sitting silently reconstructs as empty.
+   */
+  it("Paper I resolves the bank subject 'Maths', not 'Mathematics'", () => {
+    expect(MHT_CET_MATHS_PAPER.sections[0].subjects).toEqual(["Maths"]);
+  });
+
+  it("Paper II is Physics (50) + Chemistry (50) at +1 for 100 marks", () => {
+    expect(totalQuestions(MHT_CET_PHY_CHEM_PAPER)).toBe(100);
+    expect(MHT_CET_PHY_CHEM_PAPER.sections.map((s) => s.count)).toEqual([50, 50]);
+    expect(totalMarks(MHT_CET_PHY_CHEM_PAPER)).toBe(100);
+    expect(MHT_CET_PHY_CHEM_PAPER.durationSecs).toBe(90 * 60);
+  });
+
+  /**
+   * Section ORDER is the paper order: Physics occupies question numbers 1-50 and
+   * Chemistry 51-100 in every source file, and buildMockPaper walks sections in
+   * blueprint order. Reversing these two would renumber the whole paper.
+   */
+  it("Paper II puts Physics before Chemistry", () => {
+    expect(MHT_CET_PHY_CHEM_PAPER.sections.map((s) => s.key)).toEqual([
+      "physics",
+      "chemistry",
+    ]);
+  });
+
+  it("both papers have ZERO negative marking", () => {
+    expect(MHT_CET_MATHS_PAPER.marking).toEqual({ correct: 2, wrong: 0 });
+    expect(MHT_CET_PHY_CHEM_PAPER.marking).toEqual({ correct: 1, wrong: 0 });
+  });
+
+  it("are resolvable by getBlueprint but NOT in the NDA discovery list", () => {
+    expect(getBlueprint("mht-cet", "maths")).toBe(MHT_CET_MATHS_PAPER);
+    expect(getBlueprint("mht-cet", "phy-chem")).toBe(MHT_CET_PHY_CHEM_PAPER);
+    // 17 of the 45 sittings share (2023, "May"), so the NDA year+month loop
+    // would collapse them onto one slug and silently overwrite 16 of them.
+    expect(MOCK_BLUEPRINTS).not.toContain(MHT_CET_MATHS_PAPER);
+    expect(MOCK_BLUEPRINTS).not.toContain(MHT_CET_PHY_CHEM_PAPER);
+  });
+
+  /**
+   * getBlueprint keys on (examSlug, code) and NDA also uses the code "maths" —
+   * so a lookup must not cross exams.
+   */
+  it("does not collide with NDA's 'maths' paper code", () => {
+    expect(getBlueprint("nda", "maths")).toBe(NDA_MATHS_PAPER);
+    expect(getBlueprint("mht-cet", "maths")).not.toBe(NDA_MATHS_PAPER);
   });
 });
